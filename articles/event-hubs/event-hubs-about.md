@@ -3,12 +3,12 @@ title: Azure Event Hubs nedir? -Büyük veri alma hizmeti | Microsoft Docs
 description: Saniyede milyonlarca olayın eklenmesini sağlayan bir Büyük Veri akış hizmeti olan Azure Event Hubs hakkında daha fazla bilgi edinin.
 ms.topic: overview
 ms.date: 06/23/2020
-ms.openlocfilehash: 6669760bceee558a058878fbb89342aedda80117
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b0124f023eab6638c986beb2305b1c4c375b47ee
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88927910"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954354"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs — büyük bir veri akışı platformu ve olay alma hizmeti
 Azure Event Hubs, büyük bir veri akışı platformu ve olay alma hizmetidir. Saniyede milyonlarca olayı alabilir ve işleyebilir. Bir olay hub’ına gönderilen veriler, herhangi bir gerçek zamanlı analiz sağlayıcısı ve işlem grubu oluşturma/depolama bağdaştırıcıları kullanılarak dönüştürülüp depolanabilir.
@@ -42,7 +42,7 @@ Event Hubs, çok az yapılandırma veya yönetim yüküyle birlikte tam olarak y
 
 Eyleme dönüştürülebilir içgörüler elde etmek için akışınızı gerçek zamanlı olarak ekleyin, arabelleğe alın, depolayın ve işleyin. Event Hubs, birden fazla uygulamanın akışı eşzamanlı olarak işlemesini ve işleme hızını denetlemenize olanak sağlayan [bölümlenmiş bir tüketici modeli](event-hubs-scalability.md#partitions)kullanır.
 
-Verilerinizi [Azure Blob depolamada](https://azure.microsoft.com/services/storage/blobs/) neredeyse gerçek zamanlı olarak [yakalayın](event-hubs-capture-overview.md) veya [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/)   uzun süreli saklama veya mikro toplu işleme için Azure Data Lake Storage. Bu davranışı gerçek zamanlı analiz türetmede kullandığınız akışta elde edebilirsiniz. Olay verilerinin yakalanması hızlı bir şekilde ayarlanır. Çalıştırmak için yönetim maliyeti yoktur ve Event Hubs [üretilen iş birimleriyle](event-hubs-scalability.md#throughput-units)otomatik olarak ölçeklendirilir. Event Hubs veri yakalama yerine veri işlemeye odaklanmanızı sağlar.
+Verilerinizi [Azure Blob depolamada](https://azure.microsoft.com/services/storage/blobs/) neredeyse gerçek zamanlı olarak [yakalayın](event-hubs-capture-overview.md) veya [](https://azure.microsoft.com/services/data-lake-store/)   uzun süreli saklama veya mikro toplu işleme için Azure Data Lake Storage. Bu davranışı gerçek zamanlı analiz türetmede kullandığınız akışta elde edebilirsiniz. Olay verilerinin yakalanması hızlı bir şekilde ayarlanır. Çalıştırmak için yönetim maliyeti yoktur ve Event Hubs [üretilen iş birimleriyle](event-hubs-scalability.md#throughput-units)otomatik olarak ölçeklendirilir. Event Hubs veri yakalama yerine veri işlemeye odaklanmanızı sağlar.
 
 Azure Event Hubs, sunucusuz mimari için [Azure İşlevleri](../azure-functions/index.yml) ile de tümleştirilebilir.
 
@@ -52,10 +52,9 @@ Event Hubs ile megabayt boyutunda veri akışlarıyla başlayıp gigabayt veya t
 
 ## <a name="rich-ecosystem"></a>Zengin ekosistem
 
-[Apache Kafka ekosistemleri için Event Hubs](event-hubs-for-kafka-ecosystem-overview.md) [, Apache Kafka (1,0 ve üzeri)](https://kafka.apache.org/) istemcilerin ve uygulamaların Event Hubs ile iletişim kurmasını sağlar. Kendi Kafka kümelerinizi ayarlamanız, yapılandırmanız ve yönetmeniz gerekmez.
+Endüstri standardı AMQP 1,0 protokolünü temel alan geniş bir ekosistemle ve [.net](https://github.com/Azure/azure-sdk-for-net/), [Java](https://github.com/Azure/azure-sdk-for-java/), [Python](https://github.com/Azure/azure-sdk-for-python/), [JavaScript](https://github.com/Azure/azure-sdk-for-js/)gibi çeşitli dillerde kullanabileceğiniz akışlarınızın Event Hubs kolayca işlenmesine başlayabilirsiniz. Desteklenen tüm istemci dilleri, düşük düzeyde tümleştirme sağlar. Ekosistem Ayrıca, Azure Stream Analytics ve Azure Işlevleri gibi Azure hizmetleriyle sorunsuz bir tümleştirme sağlar ve bu sayede sunucusuz mimariler oluşturmanızı sağlar.
 
-[.Net](https://github.com/Azure/azure-sdk-for-net/), [Java](https://github.com/Azure/azure-sdk-for-java/), [Python](https://github.com/Azure/azure-sdk-for-python/), [JavaScript](https://github.com/Azure/azure-sdk-for-js/)gibi çeşitli dillerde sunulan geniş bir ekosistemle, akışlarınızın Event Hubs üzerinden kolayca işlenmesini sağlayabilirsiniz. Desteklenen tüm istemci dilleri, düşük düzeyde tümleştirme sağlar. Ekosistem Ayrıca, Azure Stream Analytics ve Azure Işlevleri gibi Azure hizmetleriyle sorunsuz bir tümleştirme sağlar ve bu sayede sunucusuz mimariler oluşturmanızı sağlar.
-
+[Apache Kafka ekosistemleri için Event Hubs](event-hubs-for-kafka-ecosystem-overview.md) Ayrıca [Apache Kafka (1,0 ve üzeri)](https://kafka.apache.org/) istemcilerin ve uygulamaların Event Hubs ile iletişim kurmasını sağlar. Kendi Kafka ve Zookeeper kümelerinizi ayarlamanız, yapılandırmanız ve yönetmeniz ya da Azure 'da yerel olmayan bazı Kafka hizmet olarak kullanıma almanız gerekmez.
 ## <a name="key-architecture-components"></a>Temel mimari bileşenler
 Event Hubs şu [temel bileşenleri](event-hubs-features.md) içerir:
 

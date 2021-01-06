@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 167e7c447fe43851255677a44043c508cbdc4239
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 8b597f54f22aaf6d904ba276ebdfa3a051b93b2d
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934841"
+ms.locfileid: "97954303"
 ---
 # <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>Hızlı başlangıç: Kotlin ve Maven ile ilk işlevinizi oluşturma
 
@@ -32,9 +32,9 @@ Kotlin kullanarak işlevleri geliştirmek için aşağıdakilerin yüklü olmas�
 > [!IMPORTANT]
 > Bu hızlı başlangıcın tamamlanabilmesi için JAVA_HOME ortam değişkeni JDK’nin yükleme konumu olarak ayarlanmalıdır.
 
-## <a name="generate-a-new-functions-project"></a>Yeni İşlevler projesi oluşturma
+## <a name="generate-a-new-azure-functions-project"></a>Yeni bir Azure Işlevleri projesi oluştur
 
-İşlevler projesini bir [Maven arketipinden](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) oluşturmak için boş bir klasörde aşağıdaki komutu çalıştırın.
+Boş bir klasörde, bir [Maven arşiv ETYPE](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html)'Tan Azure işlevleri projesini oluşturmak için aşağıdaki komutu çalıştırın.
 
 # <a name="bash"></a>[Bash](#tab/bash)
 ```bash
@@ -164,16 +164,16 @@ Azure İşlevleri’ne dağıtım işlemi, Azure CLI’dan hesap kimlik bilgiler
 az login
 ```
 
-`azure-functions:deploy` Maven hedefini kullanarak kodunuzu yeni bir İşlev uygulamasına dağıtın.
+Maven hedefini kullanarak kodunuzu yeni bir işlev uygulamasına dağıtın `azure-functions:deploy` .
 
 > [!NOTE]
-> Işlev uygulamanızı dağıtmak için Visual Studio Code kullandığınızda, ücretsiz olmayan bir abonelik seçin ya da bir hata alırsınız. Aboneliğinizi IDE 'nin sol tarafında izleyebilirsiniz.
+> İşlev uygulamanızı dağıtmak için Visual Studio Code kullandığınızda, ücretsiz olmayan bir abonelik seçin ya da bir hata alırsınız. Aboneliğinizi IDE 'nin sol tarafında izleyebilirsiniz.
 
 ```
 mvn azure-functions:deploy
 ```
 
-Dağıtım tamamlandığında, Azure işlev uygulamanıza erişmek için kullanabileceğiniz URL’yi görürsünüz:
+Dağıtım tamamlandığında, işlev uygulamanıza erişmek için kullanabileceğiniz URL 'YI görürsünüz:
 
 <pre>
 [INFO] Successfully deployed Function App with package.
@@ -198,7 +198,7 @@ Hello AzureFunctions!
 
 ## <a name="make-changes-and-redeploy"></a>Değişiklik yapma ve yeniden dağıtma
 
-İşlev uygulamanız tarafından döndürülen metinde değişiklikler yapmak için oluşturulan projedeki `src/main.../Function.java` kaynak dosyasını düzenleyin. Bu satırı değiştirin:
+`src/main.../Function.java`İşlev uygulamanız tarafından döndürülen metni değiştirmek için oluşturulan projedeki kaynak dosyayı düzenleyin. Bu satırı değiştirin:
 
 ```kotlin
 return request
@@ -231,7 +231,7 @@ Hi, AzureFunctionsTest
 
 ## <a name="reference-bindings"></a>Başvuru bağlamaları
 
-HTTP tetikleyicisi ve Zamanlayıcı tetikleyicisi dışındaki [işlev Tetikleyicileri ve bağlamalarla](functions-triggers-bindings.md) çalışmak için bağlama uzantıları yüklemeniz gerekir. Bu makalede gerekli olmasa da, diğer bağlama türleriyle çalışırken uzantıların nasıl etkinleştirileceğini bilmeniz gerekir.
+HTTP tetikleyicisi ve Zamanlayıcı tetikleyicisi dışındaki [Azure işlevleri Tetikleyicileri ve bağlamaları](functions-triggers-bindings.md) ile çalışmak için bağlama uzantıları yüklemeniz gerekir. Bu makalede gerekli olmasa da, diğer bağlama türleriyle çalışırken uzantıların nasıl etkinleştirileceğini bilmeniz gerekir.
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
@@ -239,7 +239,7 @@ HTTP tetikleyicisi ve Zamanlayıcı tetikleyicisi dışındaki [işlev Tetikleyi
 
 Basit bir HTTP tetikleyicisiyle bir Kotlin işlev uygulaması oluşturdunuz ve bunu Azure Işlevlerine dağıttınız.
 
-- Java ve Kotlin işlevleri geliştirme hakkında daha fazla bilgi için  [Java işlevleri Geliştirici Kılavuzu ' nu](functions-reference-java.md) gözden geçirin.
+- Java ve Kotlin işlevleri geliştirme hakkında daha fazla bilgi için [Azure Işlevleri Java Geliştirici Kılavuzu ' nu](functions-reference-java.md) gözden geçirin.
 - `azure-functions:add` Maven hedefini kullanarak projenize farklı tetikleyicilere sahip ek işlevler ekleyin.
 - [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md) ve [Eclipse](functions-create-maven-eclipse.md) ile yerel olarak işlev yazın ve işlevlerde hata ayıklayın. 
 - Visual Studio Code ile Azure’da dağıtılan işlevlerde hata ayıklayın. Yönergeler için [sunucusuz Java uygulamaları](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud) belgelerine bakın.

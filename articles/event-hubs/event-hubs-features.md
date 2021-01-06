@@ -3,12 +3,12 @@ title: Özelliklere genel bakış-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, Azure Event Hubs özellikleri ve terminolojisi hakkında ayrıntılar sağlanmaktadır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: a38cf4ba6a06dc6e977f9ea168fcf67ce83ff5de
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 0730a5fa3abbc6b27cb96431125564a2475a90d1
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339991"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955663"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure Event Hubs'ın özellikleri ve terminolojisi
 
@@ -16,32 +16,48 @@ Azure Event Hubs, düşük gecikme süresi ve yüksek güvenilirlikle büyük ha
 
 Bu makale, [genel bakış makalesindeki](./event-hubs-about.md)bilgileri oluşturur ve Event Hubs bileşenleri ve özellikleri hakkında teknik ve uygulama ayrıntıları sağlar.
 
+> [!TIP]
+> [ **Apache Kafka** istemcileri için protokol desteği](event-hubs-for-kafka-ecosystem-overview.md)  (sürümler >= 1,0), Event Hubs kullanmak üzere herhangi bir istemciyle Apache Kafka kullanılmak üzere yapılandırılmış uygulamaları etkinleştiren ağ uç noktaları sağlar. Çoğu mevcut Kafka uygulaması yalnızca bir Kafka Cluster önyükleme sunucusu yerine bir olay hub 'ı ad alanı işaret etmek üzere yeniden yapılandırılabilir. 
+>
+>Azure Event Hubs, maliyet, operasyonel çaba ve güvenilirlik açısından, kendi Kafka ve Zookeeper kümelerini dağıtmaya ve çalıştırmaya yönelik harika bir alternatiftir ve Azure 'da yerel olmayan Kafka servis teklifleri sağlar. 
+>
+> Apache Kafka aracısından itibaren aynı temel işlevselliği almanın yanı sıra, [Event Hubs yakalama](event-hubs-capture-overview.md), otomatik ölçeklendirme ve dengeleme, olağanüstü durum kurtarma, düşük maliyetli kullanılabilirlik alanı desteği, esnek ve güvenli ağ tümleştirmesi ve güvenlik duvarı kullanımı kolay AMQP-Over-WebSockets protokolü gibi çok protokollü destek aracılığıyla otomatik toplu işlem ve arşivleme gibi Azure Event hub özelliklerine de erişebilirsiniz.
+
+
 ## <a name="namespace"></a>Ad Alanı
-Bir Event Hubs ad alanı, [tam etki alanı adı](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)tarafından başvurulan, bir veya daha fazla olay hub 'ı veya Kafka konu oluşturacağınız benzersiz bir kapsam kapsayıcısı sağlar. 
-
-## <a name="event-hubs-for-apache-kafka"></a>Apache Kafka için Event Hubs
-
-[Bu özellik](event-hubs-for-kafka-ecosystem-overview.md) , müşterilerin Kafka protokolünü kullanarak Event Hubs konuşmalarını sağlayan bir uç nokta sağlar. Bu tümleştirme müşterilere bir Kafka uç noktası sağlar. Bu, müşterilerin, kendi Kafka kümelerini çalıştırmaya alternatif olarak, var olan Kafka uygulamalarını Event Hubs konuşmak üzere yapılandırmalarına olanak sağlar. Apache Kafka için Event Hubs, Kafka Protocol 1,0 ve üstünü destekler. 
-
-Bu tümleştirmeyle Kafka kümelerini çalıştırmanız veya Zookeeper ile yönetmeniz gerekmez. Bu Ayrıca, yakalama, otomatik Şişir ve coğrafi olağanüstü durum kurtarma gibi Event Hubs en zorlu özelliklerden bazıları ile çalışmanıza olanak sağlar.
-
-Bu tümleştirme Ayrıca, yalnızca yapılandırma değişiklikleriyle birlikte Kafka Connect gibi yansıtma Oluşturucu veya çerçeve gibi uygulamalara izin verir. 
+Event Hubs ad alanı, DNS tümleşik ağ uç noktaları ve [IP filtrelemesi](event-hubs-ip-filtering.md), [sanal ağ hizmeti uç noktası](event-hubs-service-endpoints.md)ve [özel bağlantı](private-link-service.md) gibi bir dizi erişim denetimi ve ağ tümleştirme yönetimi özellikleri sağlar ve birden çok olay hub 'ının örneklerinden biri (veya Kafka Pari) için yönetim kapsayıcısıdır.
 
 ## <a name="event-publishers"></a>Olay yayımcıları
 
-Bir olay hub 'ına veri gönderen herhangi bir varlık bir olay üreticisi veya *olay yayımcısıdır*. Olay yayımcıları, HTTPS veya AMQP 1,0 ya da Kafka 1,0 ve üstünü kullanarak olayları yayımlayabilir. Olay yayımcıları kendilerini bir olay hub'ına tanıtmak için Paylaşılan Erişim İmzası (SAS) belirteci kullanır ve benzersiz bir kimliğe sahip olabilir ya da ortak bir SAS belirteci kullanabilir.
+Bir olay hub 'ına veri gönderen herhangi bir varlık bir *olay yayımcısıdır* (terimler *olay üreticisi* ile kullanılır). Olay yayımcıları, HTTPS veya AMQP 1,0 veya Kafka protokolünü kullanarak olayları yayımlayabilir. Olay yayımcıları, OAuth2 tarafından verilen JWT belirteçleri veya bir olay hub 'ına özgü paylaşılan erişim Imzası (SAS) belirteç kazanç yayınlama erişimi ile Azure Active Directory tabanlı yetkilendirme kullanır.
 
 ### <a name="publishing-an-event"></a>Olay yayımlama
 
-AMQP 1,0, Kafka 1,0 (ve üzeri) veya HTTPS aracılığıyla bir olay yayımlayabilirsiniz. Event Hubs hizmeti, olayları bir olay hub 'ına yayımlamak için [REST API](/rest/api/eventhub/) ve [.net](event-hubs-dotnet-standard-getstarted-send.md), [Java](event-hubs-java-get-started-send.md), [Python](event-hubs-python-get-started-send.md), [JavaScript](event-hubs-node-get-started-send.md)ve [Go](event-hubs-go-get-started-send.md) istemci kitaplıkları sağlar. Diğer çalışma zamanları ve platformlar için [Apache Qpid](https://qpid.apache.org/) gibi herhangi bir AMQP 1.0 istemcisi kullanabilirsiniz. 
+AMQP 1,0, Kafka Protocol veya HTTPS aracılığıyla bir olay yayımlayabilirsiniz. Event Hubs hizmeti, olayları bir olay hub 'ına yayımlamak için [REST API](/rest/api/eventhub/) ve [.net](event-hubs-dotnet-standard-getstarted-send.md), [Java](event-hubs-java-get-started-send.md), [Python](event-hubs-python-get-started-send.md), [JavaScript](event-hubs-node-get-started-send.md)ve [Go](event-hubs-go-get-started-send.md) istemci kitaplıkları sağlar. Diğer çalışma zamanları ve platformlar için [Apache Qpid](https://qpid.apache.org/) gibi herhangi bir AMQP 1.0 istemcisi kullanabilirsiniz. 
 
-Olayları ayrı ayrı veya toplu olarak yayımlayabilirsiniz. Tek bir yayın (olay verileri örneği), tek bir olay veya toplu iş olmasına bakılmaksızın 1 MB 'lik bir sınıra sahiptir. Bu eşikten daha büyük yayımlama olayları hata ile sonuçlanır. Yayımcıların olay hub'ındaki bölümleri bilmemesi ve yalnızca bir *bölüm anahtarı* (sonraki bölümde açıklanmıştır) ya da kimliklerini SAS belirteci üzerinden belirtmeleri en iyi yöntemdir.
+AMQP veya HTTPS kullanma seçimi kullanım senaryosuna bağlıdır. AMQP, taşıma düzeyi güvenliği (TLS) veya SSL/TLS’ye ek olarak kalıcı bir çift yönlü yuva oluşturulmasını gerektirir. AMQP, oturum başlatırken daha yüksek ağ maliyetlerine sahiptir, ancak HTTPS her istek için ek TLS yükü gerektirir. AMQP, sık kullanılan yayımcılar için önemli ölçüde daha yüksek performansa sahiptir ve zaman uyumsuz yayımlama koduyla kullanıldığında çok daha düşük gecikme süreleri elde edebilir
 
-AMQP veya HTTPS kullanma seçimi kullanım senaryosuna bağlıdır. AMQP, taşıma düzeyi güvenliği (TLS) veya SSL/TLS’ye ek olarak kalıcı bir çift yönlü yuva oluşturulmasını gerektirir. AMQP, oturum başlatırken daha yüksek ağ maliyetlerine sahiptir, ancak HTTPS her istek için ek TLS yükü gerektirir. Daha sık yayımcılar için AMQP daha yüksek performans sunar.
+Olayları ayrı ayrı veya toplu şekilde yayımlayabilirsiniz. Tek bir yayının, tek bir olay veya toplu iş olmasına bakılmaksızın 1 MB 'lik bir sınırı vardır. Bu eşikten daha büyük yayımlama olayları reddedilir. 
+
+Event Hubs üretilen iş birimleri, bölümler ve üretilen iş birimi ayırmaları kullanılarak ölçeklendirilir (aşağıya bakın). Yayımcıların bir olay hub 'ı için seçilen belirli bölümlendirme modelinden haberdar olması ve yalnızca ilgili olayları tutarlı olarak aynı bölüme atamak için kullanılan bir *bölüm anahtarı* belirtmesi için en iyi uygulamadır.
 
 ![Bölüm anahtarları](./media/event-hubs-features/partition_keys.png)
 
-Event Hubs aynı bölüm anahtarı değerini paylaşan tüm olayların sırayla ve aynı bölüme iletilmesini sağlar. Bölüm anahtarlarının yayımcı ilkeleriyle birlikte kullanılması durumunda yayımcı kimliğinin ve bölüm anahtarı değerinin eşleşmesi gerekir. Aksi takdirde bir hata oluşur.
+Event Hubs, bölüm anahtarı değerini paylaşan tüm olayların birlikte depolanmasını ve varış sırasına göre teslim edilmesini sağlar. Bölüm anahtarlarının yayımcı ilkeleriyle birlikte kullanılması durumunda yayımcı kimliğinin ve bölüm anahtarı değerinin eşleşmesi gerekir. Aksi takdirde bir hata oluşur.
+
+### <a name="event-retention"></a>Olay saklama
+
+Yayımlanan olaylar yapılandırılabilir, süreli tabanlı bir bekletme ilkesine göre bir olay hub 'ından kaldırılır. Varsayılan değer ve mümkün olan en kısa saklama süresi 1 gündür (24 saat). Event Hubs standart için maksimum saklama süresi 7 gündür. Event Hubs Ayrılmış için maksimum saklama süresi 90 gündür.
+
+> [!NOTE]
+> Event Hubs gerçek zamanlı bir olay akış altyapısıdır ve bir veritabanı ve/veya sonsuz olay akışları için kalıcı bir mağaza olarak kullanılmak üzere tasarlanmamıştır. 
+> 
+> Bir olay akışının geçmişi daha derin olduğunda, belirli bir akışın belirli bir geçmiş dilimini bulmak için yardımcı dizinlere ihtiyacınız olacaktır. Olay yüklerini ve Dizin oluşturmayı denetleme Event Hubs (veya Apache Kafka) özellik kapsamında değil. [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md), [Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-overview.md) ve [Azure SYNAPSE](../synapse-analytics/overview-what-is.md) gibi veritabanları ve özelleştirilmiş analiz depoları ve motorları, geçmiş olayları depolamak için çok daha uygundur.
+>
+> [Event Hubs yakalama](event-hubs-capture-overview.md) , doğrudan Azure Blob depolama ve Azure Data Lake Storage ile tümleşir ve bu tümleştirme aracılığıyla [doğrudan Azure SYNAPSE 'e akan olayları](store-captured-data-data-warehouse.md)da sunar.
+>
+> Uygulamanız için [olay](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) kaynağını belirleme düzenini kullanmak istiyorsanız, anlık görüntü stratejinizi Event Hubs bekletme limitleriyle hizalamanız gerekir. Ham olaylardaki gerçekleştirilmiş görünümleri, zaman başından başlayarak yeniden oluşturmayı Hedeflemeyin. Uygulamanız bir süredir üretimde olduğunda ve iyi kullanıldığında ve projeksiyon oluşturucunun en son ve devam eden değişikliklere yönelik olarak değişiklik olayları arasında dalgalanmak zorunda kaldıktan sonra bu tür bir stratejiye katılın. 
+
 
 ### <a name="publisher-policy"></a>Yayımcı ilkesi
 

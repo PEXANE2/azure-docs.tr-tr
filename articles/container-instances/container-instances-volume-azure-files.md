@@ -4,16 +4,16 @@ description: Azure Container Instances ile devam etmek için bir Azure dosyalar�
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: afebdcdc9d9c5852d7fe66ed06ac457c1dbb0afb
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: d52ad8ad02735c98b29a83d8ca69cdea8c6af7d8
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881812"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954983"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Azure Container Instances'ta Azure dosya paylaşımı bağlama
 
-Azure Container Instances varsayılan olarak durum bilgilerini saklamaz. Kapsayıcı kilitlenir veya durdurulursa tüm durum bilgileri kaybolur. Durum bilgilerinin kapsayıcının ömründen bağımsız olarak kalıcı olmasını sağlamak için dış bir depodan birim bağlamanız gerekir. Bu makalede gösterildiği gibi Azure Container Instances [Azure dosyaları](../storage/files/storage-files-introduction.md)ile oluşturulmuş bir Azure dosya paylaşımından bağlanabilir. Azure dosyaları, Azure depolama 'da barındırılan, sektör standart sunucu Ileti bloğu (SMB) protokolü aracılığıyla erişilebilen, tam olarak yönetilen dosya paylaşımları sunar. Azure Container Instances ile bir Azure dosya paylaşımının kullanılması, Azure sanal makinelerle Azure dosya paylaşımı kullanmaya benzer dosya paylaşımı özellikleri sağlar.
+Azure Container Instances varsayılan olarak durum bilgilerini saklamaz. Kapsayıcı yeniden başlatılırsa, kilitlenirse veya durdurulduğunda, tüm durumu kaybedilir. Durum bilgilerinin kapsayıcının ömründen bağımsız olarak kalıcı olmasını sağlamak için dış bir depodan birim bağlamanız gerekir. Bu makalede gösterildiği gibi Azure Container Instances [Azure dosyaları](../storage/files/storage-files-introduction.md)ile oluşturulmuş bir Azure dosya paylaşımından bağlanabilir. Azure dosyaları, Azure depolama 'da barındırılan, sektör standart sunucu Ileti bloğu (SMB) protokolü aracılığıyla erişilebilen, tam olarak yönetilen dosya paylaşımları sunar. Azure Container Instances ile bir Azure dosya paylaşımının kullanılması, Azure sanal makinelerle Azure dosya paylaşımı kullanmaya benzer dosya paylaşımı özellikleri sağlar.
 
 > [!NOTE]
 > Azure dosya paylaşımının bağlanması şu anda Linux kapsayıcılarıyla kısıtlıdır. [Genel bakışta](container-instances-overview.md#linux-and-windows-containers)geçerli platform farklarını bulun.

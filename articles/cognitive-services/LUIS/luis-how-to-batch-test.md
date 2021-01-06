@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 12/29/2020
-ms.openlocfilehash: a6f4b0a503e942b79dff28212863831055892246
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 0834b8f00e4c414b3a36314b80f6c99fb8f2aea2
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916567"
+ms.locfileid: "97955221"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Bir dizi örnek ile toplu test
 
@@ -168,7 +168,7 @@ Yeşil renkte grafiğin iki bölümü beklenen tahminiyle eşleşiyor.
 
 LUSıS, Lu, portalını ve REST API kullanarak toplu test yapmanızı sağlar. REST API uç noktaları aşağıda listelenmiştir. LUU portalını kullanarak Batch test hakkında bilgi için bkz. [öğretici: Batch test veri kümeleri](luis-tutorial-batch-testing.md). Yer tutucu değerlerini kendi LUSıS tahmin anahtarınızla ve uç noktanızla değiştirerek aşağıdaki URL 'Leri kullanın. 
 
-Üst bilgide HALSıS anahtarınızı eklemeyi `Apim-Subscription-Id` ve öğesini olarak ayarlamayı unutmayın `Content-Type` `application/json` .
+Üst bilgide HALSıS anahtarınızı eklemeyi `Ocp-Apim-Subscription-Key` ve öğesini olarak ayarlamayı unutmayın `Content-Type` `application/json` .
 
 ### <a name="start-a-batch-test"></a>Batch testi başlatma
 

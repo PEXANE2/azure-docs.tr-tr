@@ -3,12 +3,12 @@ title: Azure Relay nedir? | Microsoft Belgeleri
 description: Bu makale, bir güvenlik duvarı bağlantısı açmak ya da kurumsal ağ altyapısına müdahale eden değişiklikler yapmak zorunda kalmadan kurumsal ağınızda çalışan şirket içi hizmetleri kullanan bulut uygulamaları geliştirmenizi sağlayan Azure Relay hizmetine genel bakış sağlamaktadır.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 0c9a67bcad47ad2e7284bcf6e70914d2ffb06a8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbf1b2134a4c2dce7a3e6a62668d0852dc08c18a
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85322642"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955391"
 ---
 # <a name="what-is-azure-relay"></a>Azure Relay nedir?
 Azure Relay hizmeti, kurumsal ağınızda çalışan hizmetleri güvenli bir şekilde genel buluta açmanızı sağlar. Bu şekilde, güvenlik duvarınızda bir bağlantı noktasını açmadan veya kurumsal ağ altyapınızda izinsiz değişiklikler yapmaya gerek kalmadan yapabilirsiniz. 
@@ -17,7 +17,7 @@ Geçiş hizmeti, şirket içi hizmetler ile bulutta veya başka bir şirket içi
 
 - Geleneksel tek yönlü, istek/yanıt ve eşler arası iletişim 
 - Yayımlama/abone olma senaryolarını desteklemek için internet kapsamında olay dağıtımı 
-- Ağ sınırlarının ötesinde çift yönlü ve arabelleksiz yuva iletişimi.
+- Ağ sınırları genelinde iki yönlü ve arabelleğe alınmamış yuva iletişimi
 
 Azure Relay hizmeti, VPN gibi ağ düzeyindeki tümleştirme teknolojilerinden farklıdır. Bir Azure geçişinin kapsamı, tek bir makinedeki tek bir uygulama uç noktası olarak belirlenebilir. VPN teknolojisinde çok daha fazla müdahale vardır ve ağ ortamının değiştirilmesine dayanır. 
 
@@ -56,7 +56,7 @@ Hem Karma Bağlantılar hem de WCF Geçişi bir kuruluş ağı içinde bulunan v
 | **WCF** |x | |
 | **.NET Core** | |x |
 | **.NET Framework** |x |x |
-| **Java script/Node.JS** | |x |
+| **JavaScript/Node.js** | |x |
 | **Standart Tabanlı açık protokol** | |x |
 | **RPC programlama modelleri** | |x |
 

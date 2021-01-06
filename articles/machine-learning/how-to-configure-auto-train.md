@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 60aab2c77a5ccf59e129b21deab34daf756b2e23
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: 054d18337e50a367cf1f6f004f4e1d1652c7751e
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827436"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954422"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python’da otomatik ML denemelerini yapılandırma
 
@@ -37,7 +37,7 @@ Otomatik makine öğreniminde kullanılabilen yapılandırma seçenekleri:
 
 Kod deneyimini tercih ediyorsanız, [Azure Machine Learning Studio 'da otomatik makine öğrenimi denemeleri de oluşturabilirsiniz](how-to-use-automated-ml-for-ml-models.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 İhtiyacınız olan bu makalede, 
 * Azure Machine Learning çalışma alanı. Çalışma alanını oluşturmak için, bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
@@ -463,20 +463,22 @@ Model açıklamalarının ve özelliklerinin önem derecesine ilişkin genel bil
 
 * **`import numpy` Windows 'da başarısız oldu**: bazı Windows ortamlarında, en son Python sürümü 3.6.8 ile bir sayısal tuş takımı yükleme hatası görüntülenir. Bu sorunu görürseniz Python sürüm 3.6.7 ile deneyin.
 
-* **`import numpy` başarısız oldu**: otomatik ml Conda ortamındaki TensorFlow sürümünü denetleyin. Desteklenen sürümler < 1,13 ' dir. Sürüm >= 1,13 ise, TensorFlow ortamdan kaldırın. TensorFlow sürümünü ve kaldırma işlemini aşağıdaki şekilde kontrol edebilirsiniz.
+* **`import numpy` başarısız oldu**: otomatik ml Conda ortamındaki TensorFlow sürümünü denetleyin. Desteklenen sürümler < 1,13 ' dir. Sürüm >= 1,13 ise, TensorFlow ortamdan kaldırın. TensorFlow sürümünü ve kaldırma işlemini aşağıdaki şekilde kontrol edebilirsiniz:
   1. Bir komut kabuğu başlatın, otomatik ml paketlerinin yüklendiği Conda ortamını etkinleştirin.
   2. `pip freeze` `tensorflow` Bulunursa, listelenen sürüm < 1,13 olmalıdır.
   3. Listelenen sürüm desteklenen bir sürüm değilse, `pip uninstall tensorflow` komut kabuğu 'nda, onay için y girin.
   
- * **Çalıştırma başarısız `jwt.exceptions.DecodeError`**: tam hata iletisi: `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()` . 
- 
-    En son oto ml SDK sürümüne yükseltmeyi göz önünde bulundurun: `pip install -U azureml-sdk[automl]` . 
-    
-    Bu önemli değilse, PyJWT sürümünü denetleyin. Desteklenen sürümler < 2.0.0. Sürüm >= 2.0.0 olduğunda PyJWT öğesini ortamdan kaldırın. PyJWT sürümünü denetleyebilir, doğru sürümü aşağıdaki şekilde kaldırıp yükleyebilirsiniz:
+ * **Çalıştırma başarısız `jwt.exceptions.DecodeError`**: tam hata iletisi: `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()` .
+
+    SDK 'nın <= 1.17.0 sürümleri için yükleme, PyJWT 'nin desteklenmeyen bir sürümüyle sonuçlanabilir. Otomatik ml Conda ortamındaki PyJWT sürümünü denetleyin. Desteklenen sürümler < 2.0.0. PyJWT sürümünü aşağıdaki şekilde kontrol edebilirsiniz:
     1. Bir komut kabuğu başlatın, otomatik ml paketlerinin yüklendiği Conda ortamını etkinleştirin.
     2. `pip freeze` `PyJWT` Bulunursa, listelenen sürümün < 2.0.0 olması gerektiğini belirtin
-    3. Listelenen sürüm desteklenen bir sürüm değilse, `pip uninstall PyJWT` komut kabuğu 'nda, onay için y girin.
-    4. Uygulamasını kullanarak `pip install 'PyJWT<2.0.0'` .
+
+    Listelenen sürüm desteklenen bir sürüm değilse:
+    1. En son oto ml SDK sürümüne yükseltmeyi göz önünde bulundurun: `pip install -U azureml-sdk[automl]` .
+    2. Bu önemli değilse, ortamdan PyJWT ' yi kaldırın ve doğru sürümü aşağıdaki şekilde yükleme:
+        - `pip uninstall PyJWT` yazın ve `y` onay için girin.
+        - Uygulamasını kullanarak `pip install 'PyJWT<2.0.0'` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

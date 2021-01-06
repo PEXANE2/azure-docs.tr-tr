@@ -3,17 +3,17 @@ title: Windows sanal masaüstündeki yenilikler nelerdir? - Azure
 description: Windows sanal masaüstü için yeni özellikler ve ürün güncelleştirmeleri.
 author: Heidilohr
 ms.topic: overview
-ms.date: 12/02/2020
+ms.date: 01/06/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: e42e49f69a159bf3bfdc732d41dc66a9a707f42f
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: df3dd8b5b18ec2997ee20ad4955ffd7bc1dc573d
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617366"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955017"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows sanal masaüstündeki yenilikler nelerdir?
 
@@ -25,6 +25,44 @@ Windows sanal masaüstü güncelleştirmeleri düzenli aralıklarla yapılır. B
 - Hata düzeltmeleri
 
 Bu makale aylık olarak güncelleştirilir. Yeni güncelleştirmeleri kullanmaya devam etmek için bu adımları en sık kontrol ettiğinizden emin olun.
+
+## <a name="december-2020"></a>Aralık 2020
+
+Aralık 2020 ' de değiştirilen özellikler: 
+
+### <a name="azure-monitor-for-windows-virtual-desktop"></a>Windows sanal masaüstü için Azure Izleyici
+
+Windows sanal masaüstü için Azure Izleyici için genel önizleme kullanıma sunuldu. Bu yeni özellik, BT uzmanlarının Windows sanal masaüstü ortamlarını anlamasına yardımcı olmak üzere Azure Izleyici çalışma kitaplarının üzerine oluşturulmuş sağlam bir Pano içerir. Daha fazla ayrıntı için [Blogumuzdaki duyuruya](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/azure-monitor-for-windows-virtual-desktop-public-preview/m-p/1946587) göz atın. 
+
+### <a name="azure-resource-manager-template-change"></a>Şablon değişikliğini Azure Resource Manager 
+
+En son güncelleştirmede, konak havuzlarının oluşturulması ve sağlanması için Azure Resource Manager şablonundan tüm genel IP adresi parametrelerini kaldırdık. Dağıtımınızın güvenliğini sağlamak için Windows sanal masaüstü için genel IP 'Leri kullanmaktan kaçınmanızı öneririz. Dağıtımınız genel IP 'lerde güvense, bunun yerine özel IP 'Leri kullanmak için yeniden yapılandırmanız gerekir, aksi takdirde dağıtımınız düzgün çalışmaz.
+
+### <a name="msix-app-attach-public-preview"></a>MALTı uygulama iliştirme genel önizlemesi 
+
+MSIX uygulama iliştirme, bu ay genel önizlemeyi başlaeden başka bir hizmettir. MSIX uygulama iliştirme, Windows sanal masaüstü oturumu ana bilgisayar VM 'lerinize dinamik olarak MALTÝ uygulama sunan bir hizmettir. Daha fazla ayrıntı için [Blogumuzdaki duyuruya](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/msix-app-attach-azure-portal-integration-public-preview/m-p/1986231) göz atın. 
+
+### <a name="screen-capture-protection"></a>Ekran yakalama koruması 
+
+Bu ay Ayrıca ekran yakalama koruması için genel önizlemenin başlangıcını de işaretledi. Bu özelliği, önemli bilgilerin istemci uç noktalarında yakalanmasını engellemek için kullanabilirsiniz. [Bu sayfaya](https://aka.ms/WVDScreenCaptureProtection)giderek ekran yakalama korumasına bir deneme sunun.  
+
+### <a name="built-in-roles"></a>Yerleşik roller
+
+Yönetici izinleri için Windows sanal masaüstü için yeni yerleşik roller ekledik. Daha fazla bilgi için bkz. [Windows sanal masaüstü Için yerleşik roller](rbac.md). 
+
+### <a name="application-group-limit-increase"></a>Uygulama grubu sınırı artışı
+
+Azure Active Directory kiracının başına varsayılan uygulama grubu sınırını 200 grup olarak artırdık.
+
+### <a name="client-updates-for-december-2020"></a>Aralık 2020 için istemci güncelleştirmeleri
+
+Aşağıdaki istemcilerin yeni sürümlerini yayımladık: 
+
+- Android
+- macOS
+- Windows
+
+İstemci güncelleştirmeleri hakkında daha fazla bilgi için bkz. [istemci güncelleştirmeleri](whats-new.md#client-updates).
 
 ## <a name="november-2020"></a>Kasım 2020
 

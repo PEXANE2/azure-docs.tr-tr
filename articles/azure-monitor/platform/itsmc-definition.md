@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: b26643daede9e26f2bf1807ae99a6ced5d1cb08c
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 072abffcc74b8b060d98c07d1f310413c7b323ef
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901581"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954949"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>BT Hizmet Yönetimi Bağlayıcısı kullanarak Azure 'ı ıTSM araçlarına bağlama
 
@@ -127,30 +127,34 @@ Eylem grupları oluşturmak için aşağıdaki yordamı kullanın:
 
 8. Sabit değerlerle kullanıma hazır alanları doldurmanız istiyorsanız **özel şablon kullan**' ı seçin. Aksi takdirde, **şablon** listesinde var olan bir [şablonu](#template-definitions) seçin ve şablon alanlarına sabit değerleri girin.
 
-9. Action ıTSM grup tanımının son bölümünde, her uyarıdan kaç uyarı oluşturulacağını tanımlayabilirsiniz. Bu bölüm yalnızca günlük arama uyarıları için geçerlidir.
+9. ITSM grup tanımının son bölümünde her uyarı için kaç iş öğesi oluşturulacağını tanımlayabilirsiniz.
+
+    >[!NOTE]
+    >
+    > * Bu bölüm yalnızca günlük arama uyarıları için geçerlidir.
+    > * Ölçüm uyarıları ve etkinlik günlüğü uyarıları her zaman uyarı başına bir iş öğesi oluşturur.
 
     * İş öğesi açılan kutusunda "olay" veya "uyarı" olarak seçtiğiniz bir durumda:
-        * **Her yapılandırma öğesi için bireysel çalışma öğeleri oluştur** onay kutusunu işaretleyin, her uyarıdaki her yapılandırma öğesi yeni bir iş öğesi oluşturur. ITSM sisteminde yapılandırma öğesi başına birden fazla iş öğesi olabilir.
+        * **"Her yapılandırma öğesi için bireysel çalışma öğeleri Oluştur"** onay kutusunu işaretleyin, her uyarıdaki her yapılandırma öğesi yeni bir iş öğesi oluşturur. ITSM sisteminde yapılandırma öğesi başına birden fazla iş öğesi olabilir.
 
             Örneğin:
             1) 3 yapılandırma öğesiyle uyarı 1: A, B, C-3 iş öğesi oluşturur.
-            2) 1 yapılandırma öğesiyle uyarı 2: D-1 iş öğesi oluşturur.
+            2) 1 yapılandırma öğesiyle uyarı 2: A-1 iş öğesi oluşturur.
 
-                **Bu akışın sonuna kadar 4 uyarı olacaktır**
-        * **Her yapılandırma öğesi için bireysel çalışma öğeleri oluştur** onay kutusunu temizlerseniz, yeni bir iş öğesi oluşturmayacak uyarılar olacaktır. iş öğeleri, uyarı kuralına göre birleştirilir.
+        * **"Her yapılandırma öğesi için bireysel çalışma öğeleri Oluştur"** onay kutusunu temizlerseniz ITSM Bağlayıcısı her bir uyarı kuralı için tek bir iş öğesi oluşturur ve bu tüm etkilenen yapılandırma öğelerine eklenir. Önceki biri kapatılmışsa yeni bir iş öğesi oluşturulur.
+        >[!NOTE]
+        > Bu durumda, tetiklenen uyarıdan bazıları ıTSM aracında yeni iş öğeleri oluşturmaz.
 
-            Örneğin:
-            1) 3 yapılandırma öğesiyle uyarı 1: A, B, C-1 iş öğesi oluşturur.
-            2) 1 yapılandırma öğesiyle Phase 1 ile aynı uyarı kuralı için uyarı 2: D-1. aşama içindeki iş öğesiyle birleştirilir.
-            3) 1 yapılandırma öğesiyle farklı bir uyarı kuralı için uyarı 3: E-1 iş öğesi oluşturur.
-
-                **Bu akışın sonuna kadar 2 uyarı olacaktır**
+            For example:
+            1) Alert 1 with 3 Configuration Items: A, B, C - will create 1 work item.
+            2) Alert 2 for the same alert rule as phase 1 with 1 Configuration Item: D - will be merged to the work item in phase 1.
+            3) Alert 3 for a different alert rule with 1 Configuration Item: E - will create 1 work item.
 
        ![ITSM olay penceresini gösteren ekran görüntüsü.](media/itsmc-overview/itsm-action-configuration.png)
 
     * İş öğesi açılan kutusu "olay" nda seçtiğiniz bir durumda:
-        * Radyo düğmeleri seçiminde **her günlük girdisi için bireysel çalışma öğeleri oluştur** ' u seçerseniz, günlük araması uyarı sorgusunun arama sonuçlarındaki her bir satır için bir uyarı oluşturulur. Uyarının yükünde Açıklama özelliği arama sonuçlarından satıra sahip olacaktır.
-        * Radyo düğmeleri seçiminde **her yapılandırma öğesi için bireysel çalışma öğeleri oluştur** ' u seçerseniz, her uyarıdaki her yapılandırma öğesi yeni bir iş öğesi oluşturur. ITSM sisteminde yapılandırma öğesi başına birden fazla iş öğesi olabilir. Bu, olay/uyarı onay kutusu ile aynı olacaktır.
+        * **"Her günlük girdisi için bireysel iş öğeleri Oluştur" seçeneğini belirlerseniz (yapılandırma öğesi alanı doldurulmamış olur. Çok sayıda iş öğesine neden olabilir.) "** radyo düğmeleri seçiminde, günlük araması uyarı sorgusunun arama sonuçlarındaki her bir satır için bir uyarı oluşturulur. Uyarının yükünde Açıklama özelliği arama sonuçlarından satıra sahip olacaktır.
+        * Radyo düğmeleri seçiminde **"her yapılandırma öğesi için bireysel çalışma öğeleri Oluştur"** seçeneğini belirlerseniz, her uyarıdaki her yapılandırma öğesi yeni bir iş öğesi oluşturur. ITSM sisteminde yapılandırma öğesi başına birden fazla iş öğesi olabilir. Bu, olay/uyarı onay kutusu ile aynı olacaktır.
     ![ITSM olay penceresini gösteren ekran görüntüsü.](media/itsmc-overview/itsm-action-configuration-event.png)
 
 10. **Tamam**’ı seçin.

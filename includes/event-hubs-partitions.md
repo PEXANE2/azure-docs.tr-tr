@@ -5,15 +5,15 @@ services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.topic: include
-ms.date: 11/24/2020
+ms.date: 01/05/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: ce906ad62b51956cb85f854846740fa09e06895d
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 780da47e6f071d854a16ca1d1c5cd02dbdd6bef0
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97664990"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955662"
 ---
 Olay Hub 'ı, olay dizilerini bir veya daha fazla bölüm halinde düzenler. Daha yeni olaylar geldikçe, bu sıranın sonuna eklenir. Bölüm bir "yürütme günlüğü" olarak düşünülebilir.
 
@@ -21,11 +21,11 @@ Bölümler, olayın gövdesini, olayı tanımlayan Kullanıcı tanımlı özelli
 
 ![Daha eski olay sırasını görüntüleyen diyagram.](./media/event-hubs-partitions/partition.png)
 
-Event Hubs, çok büyük hacimden olayların işlenmesine yardımcı olmak üzere tasarlanmıştır ve bölümleme iki şekilde bu şekilde yardımcı olur:
+Event Hubs, büyük hacimden olayların işlenmesine yardımcı olmak üzere tasarlanmıştır ve bölümleme iki şekilde bu şekilde yardımcı olur:
 
 İlk olarak, Event Hubs PaaS hizmeti olsa da, altında fiziksel bir gerçeklik vardır ve olayların sırasını koruyan bir günlüğün tutulması, bu olayların temel depolama ve çoğaltmalarda bir araya gelse ve bu tür bir günlük için üretilen iş üst sınırına neden olur. Bölümlendirme, aynı Olay Hub 'ı için birden çok paralel günlüklerin kullanılmasına izin verir ve bu nedenle kullanılabilir ham GÇ üretilen iş kapasitesini çarpar.
 
-İkincisi, kendi uygulamalarınız bir olay hub 'ına gönderilen olayların hacminin işlenmesine devam edebilmelidir. Bu çok karmaşık olabilir ve önemli, ölçeği genişletilmiş ve paralel işleme kapasitesi gerektirir. Bölümler için ationale, yukarıdaki gibi aynıdır: olayları işlemek için tek bir işlemin kapasitesi sınırlıdır ve bu nedenle birkaç işlem yapmanız gerekir ve bölümler, her bir olayın açık bir işleme sahibine sahip olmasını sağlar. 
+İkincisi, kendi uygulamalarınız bir olay hub 'ına gönderilen olayların hacminin işlenmesine devam edebilmelidir. Karmaşık olabilir ve önemli, ölçeği genişletilmiş ve paralel işleme kapasitesi gerektirir. Bölümler için ationale, yukarıdaki gibi aynıdır: olayları işlemek için tek bir işlemin kapasitesi sınırlıdır ve bu nedenle birkaç işlem yapmanız gerekir ve bölümler, her bir olayın açık bir işleme sahibine sahip olmasını sağlar. 
 
 Event Hubs, tüm bölümler için geçerli olan yapılandırılmış bir saklama süresi için olayları tutar. Saklama süresine ulaşıldığında olaylar otomatik olarak kaldırılır. Bir günün bekletme dönemini belirtirseniz olay, kabul edildikten sonra tam 24 saat kullanılamaz hale gelir. Olayları açıkça silemezsiniz. 
 
@@ -51,7 +51,7 @@ Bir bölüm anahtarı belirtilmesi, ilgili olayları aynı bölümde ve gönderi
 
 Bölüm anahtarı tarafından tanımlanan olaylar dizisi bir *akıştır*. Bölüm, birçok sayıda akış için çoğullanmış bir günlük deposudur. 
 
-Bir olay hub 'ının bölüm sayısı, Olay Hub 'ı oluşturulduktan sonra artırılabilir, ancak bölümler arasında akış dağıtımı, Bölüm anahtarlarının bölüm değişikliklerinin eşlemesi yapıldığında değişeceği zaman değişir. bu nedenle, olaylarınızın göreli sırası uygulamanızda önemli sıralama yaparken bu değişikliklerden kaçınmak için katı çalışmanız gerekir.
+[Ayrılmış bir Event Hubs kümesindeki](../articles/event-hubs/event-hubs-dedicated-overview.md) bir olay hub 'ının bölüm sayısı, Olay Hub 'ı oluşturulduktan sonra [artırılabilir](../articles/event-hubs/dynamically-add-partitions.md) , ancak bölümler arasında akış dağıtımı, Bölüm anahtarlarının bölüm değişikliklerinin eşlenmesiyle yapıldığında, bu değişikliklerden kaçınmaya devam etmeniz gerekir. bu nedenle, olayların göreli sırası uygulamanızda önemli olduğunda bu değişikliklere engel olmak için katı çalışmanız gerekir.
 
 Bölüm sayısının izin verilen maksimum değere ayarlanması, ancak her zaman birden çok bölümden faydalanmak için olay akışlarınızın yapılandırılması gerektiğini aklınızda bulundurun. Tüm olaylarda veya yalnızca bir alt akışlarda mutlak sipariş koruması gerekiyorsa, birçok bölümden faydalanabilmeyebilirsiniz. Ayrıca, birçok bölüm işleme tarafını daha karmaşık hale getirir. 
 

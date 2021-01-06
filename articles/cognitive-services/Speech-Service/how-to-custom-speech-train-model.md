@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: 5a912790b4a7a86c44576b98ce7e95f44b810c9e
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: a7227195c767d90141a9b6cd95f784c239a31fd5
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857384"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955204"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>Özel Konuşma Tanıma modeli eğitme ve dağıtma
 
@@ -48,6 +48,11 @@ Bir modeli eğiten ilk adım eğitim verilerini karşıya yüklemedir. Bkz. insa
 
 Özel Konuşma Tanıma modeli doğruluğunu değerlendirmek ve iyileştirmek için bkz. [nasıl yapılır](how-to-custom-speech-evaluate-data.md) . Doğruluk sınamasını tercih ederseniz, modelin performansını gerçekçi bir şekilde anlamak için modelinizle birlikte kullandığınız bir akustik veri kümesini seçmeniz önemlidir.
 
+> [!NOTE]
+> Hem temel modeller hem de özel modeller yalnızca belirli bir tarihe kadar kullanılabilir (bkz. [model yaşam döngüsü](custom-speech-overview.md#model-lifecycle)). Konuşma Studio, bu tarihi her model ve uç nokta için **süre sonu** sütununda gösterir. Bu tarih isteği bir uç noktaya veya toplu iş dökümden sonra başarısız olabilir veya temel modele geri dönemez.
+>
+> Doğruluk geliştirmelerinden faydalanmak ve modelinizin süresinin dolmasını önlemek için en son temel modeli kullanarak modelinize yeniden eğitme.
+
 ## <a name="deploy-a-custom-model"></a>Özel bir modeli dağıtma
 
 Verileri yükleyip İnceleme, doğruluğu değerlendirin ve özel bir model eğdikten sonra, uygulamalarınız, araçları ve ürünleriniz ile kullanmak üzere özel bir uç nokta dağıtabilirsiniz. 
@@ -63,7 +68,7 @@ Sonra, **uç nokta Ekle** ' yi seçin ve özel uç noktanız Için bir **ad** ve
 
 Sonra **Oluştur**' u seçin. Bu eylem sizi **dağıtım** sayfasına döndürür. Tablo artık özel uç noktanıza karşılık gelen bir giriş içerir. Uç noktanın durumu geçerli durumunu gösterir. Özel modellerinizi kullanarak yeni bir uç noktanın örneklendirilecek 30 dakikaya kadar zaman alabilir. Dağıtımın durumu **tamamlandığında**, uç nokta kullanıma kullanılır.
 
-Uç noktanız dağıtıldıktan sonra, uç nokta adı bir bağlantı olarak görünür. Uç nokta anahtarı, uç nokta URL 'SI ve örnek kod gibi uç noktanıza özgü bilgileri görmek için bağlantıyı seçin.
+Uç noktanız dağıtıldıktan sonra, uç nokta adı bir bağlantı olarak görünür. Uç nokta anahtarı, uç nokta URL 'SI ve örnek kod gibi uç noktanıza özgü bilgileri görmek için bağlantıyı seçin. Zaman aşımı tarihini bir yere göz atın ve kesintisiz hizmeti sağlamak için bitiş noktasının modelini bu tarihten önce güncelleştirin.
 
 ## <a name="view-logging-data"></a>Günlük verilerini görüntüleme
 

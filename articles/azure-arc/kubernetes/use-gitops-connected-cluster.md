@@ -1,5 +1,5 @@
 ---
-title: Yay etkin Kubernetes kümesinde Gilar kullanarak yapılandırma dağıtma (Önizleme)
+title: Arc özellikli Kubernetes kümesinde (Önizleme) GitOps kullanarak yapılandırmaları dağıtma
 services: azure-arc
 ms.service: azure-arc
 ms.date: 05/19/2020
@@ -8,14 +8,14 @@ author: mlearned
 ms.author: mlearned
 description: Azure Arc etkin bir Kubernetes kümesi (Önizleme) yapılandırmak için Gilar 'ı kullanma
 keywords: Gilar, Kubernetes, K8s, Azure, Arc, Azure Kubernetes hizmeti, AKS, kapsayıcılar
-ms.openlocfilehash: 85771824a6cecd10346937220e400028a4570377
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 906021377cbfd6960769f98f9dbd15a5c430c71f
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653461"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955340"
 ---
-# <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Yay etkin Kubernetes kümesinde Gilar kullanarak yapılandırma dağıtma (Önizleme)
+# <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Arc özellikli Kubernetes kümesinde (Önizleme) GitOps kullanarak yapılandırmaları dağıtma
 
 Gilar, Kubernetes ile ilişkili olduğu gibi, bir git deposunda Kubernetes yapılandırmasının (dağıtımlar, ad alanları vb.) istenen durumunu bildirme ve ardından bu yapılandırmaların bir işleç kullanılarak kümeye bir yoklama ve çekme tabanlı dağıtımı ile ilgili bir uygulamadır. Bu belge, Azure Arc etkin Kubernetes kümelerinde bu tür iş akışlarının kurulumunu içerir.
 
@@ -150,7 +150,7 @@ Yapılandırmayı özelleştirmek için kullanabileceğiniz daha fazla parametre
 
 `--helm-operator-chart-version` : Held işleci için *Isteğe bağlı* grafik sürümü (etkinse). Varsayılan: ' 1.2.0 '.
 
-`--operator-namespace` : İşleç ad alanı için *Isteğe bağlı* ad. Varsayılan: ' varsayılan '
+`--operator-namespace` : İşleç ad alanı için *Isteğe bağlı* ad. Varsayılan: ' default '. En fazla 23 karakter.
 
 `--operator-params` : İşleç için *Isteğe bağlı* parametreler. Tek tırnak içinde verilmelidir. Örneğin, ```--operator-params='--git-readonly --git-path=releases --sync-garbage-collection' ```
 
@@ -169,12 +169,6 @@ Yapılandırmayı özelleştirmek için kullanabileceğiniz daha fazla parametre
 | --Git-e-posta  | Git yürütmesi için kullanılacak e-posta. |
 
 * '--Git-User ' veya '--git-email ' ayarlanmamışsa (Bu, akıcı x 'in depoya yazmasını istemediğiniz anlamına gelir), sonra--git-ReadOnly otomatik olarak ayarlanır (henüz ayarlanmamışsa).
-
-* EnableHelmOperator değeri true ise, operatorInstanceName + operatorNamespace dizeleri 47 karakteri aşamaz.  Bu sınıra uymayacak, şu hatayı alırsınız:
-
-   ```console
-   {"OperatorMessage":"Error: {failed to install chart from path [helm-operator] for release [<operatorInstanceName>-helm-<operatorNamespace>]: err [release name \"<operatorInstanceName>-helm-<operatorNamespace>\" exceeds max length of 53]} occurred while doing the operation : {Installing the operator} on the config","ClusterState":"Installing the operator"}
-   ```
 
 Daha fazla bilgi için bkz. [Flox belgeleri](https://aka.ms/FluxcdReadme).
 
@@ -251,7 +245,7 @@ Sağlama işlemi gerçekleşirken, `sourceControlConfiguration` birkaç durum de
 
 ## <a name="apply-configuration-from-a-private-git-repository"></a>Özel bir git deposundan yapılandırma Uygula
 
-Özel bir git deposu kullanıyorsanız, deponuzda SSH ortak anahtarını yapılandırmanız gerekir. Ortak anahtarı git deposunda veya depoya erişimi olan git kullanıcısına yapılandırabilirsiniz. SSH ortak anahtarı sizin sağladığınız ya da akıcı x 'in oluşturduğu bir tane olacaktır.
+Özel bir git deposu kullanıyorsanız, deponuzda SSH ortak anahtarını yapılandırmanız gerekir. Ortak anahtarı belirli bir git deposunda veya depoya erişimi olan git kullanıcısına yapılandırabilirsiniz. SSH ortak anahtarı sizin sağladığınız ya da akıcı x 'in oluşturduğu bir tane olacaktır.
 
 **Kendi ortak anahtarınızı alın**
 
@@ -260,7 +254,7 @@ Kendi SSH anahtarlarınızı oluşturduysanız, özel ve ortak anahtarlarınız 
 **Azure CLı kullanarak ortak anahtarı alın (Flox anahtarları oluşturuyorsa yararlıdır)**
 
 ```console
-$ az k8sconfiguration show --resource-group <resource group name> --cluster-name <connected cluster name> --name <configuration name> --query 'repositoryPublicKey'
+$ az k8sconfiguration show --resource-group <resource group name> --cluster-name <connected cluster name> --name <configuration name> --cluster-type connectedClusters --query 'repositoryPublicKey' 
 Command group 'k8sconfiguration' is in preview. It may be changed/removed in a future release.
 "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAREDACTED"
 ```

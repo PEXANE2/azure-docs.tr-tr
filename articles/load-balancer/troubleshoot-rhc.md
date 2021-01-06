@@ -11,16 +11,28 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2020
 ms.author: errobin
-ms.openlocfilehash: dcfce06bb158888b56483a73ededd354c229a99b
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3acaaba86c9a546a0bd45b5386287908168d50d0
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696328"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955629"
 ---
-# <a name="troubleshoot-resource-health-frontend-and-backend-availability-issues"></a>Kaynak durumu, ön uç ve arka uç kullanılabilirliği sorunlarını giderme 
+# <a name="troubleshoot-resource-health-and-inbound-availability-issues"></a>Kaynak sistem durumu ve gelen kullanılabilirlik sorunlarını giderme 
 
 Bu makale, yük dengeleyici ön uç IP ve arka uç kaynaklarınızın kullanılabilirliğini etkileyen sorunları araştırmak için bir kılavuzdur. 
+
+Load Balancer için Kaynak Durumu denetimi (RHC), yük dengeleyicinizin sistem durumunu belirlemede kullanılır. Yük Dengeleme uç noktaları, Yük Dengeleme kurallarıyla ön uç IP ve ön uç bağlantı noktaları birleşimleri varsa, veri yolu kullanılabilirliği ölçüsünü **2 dakikalık** bir aralıkta analiz eder.
+
+Aşağıdaki tabloda, yük dengeleyicinizin sistem durumunu belirlemede kullanılan RHC mantığı açıklanmaktadır.
+
+| Kaynak sistem durumu | Açıklama |
+| --- | --- |
+| Kullanılabilir | Standart yük dengeleyici kaynağınız sağlıklı ve kullanılabilir durumda. |
+| Düzeyi düşürüldü | Standart yük dengeleyiciye, performansı etkileyen platform veya Kullanıcı tarafından başlatılan olaylar vardır. Veri Yolu Kullanılabilirliği ölçümü en az iki dakika süreyle %90’dan az ama %25’ten fazla durum bildirdi. Orta derecede önemli performans etkisi yaşayacaktır. 
+| Kullanılamaz | Standart yük dengeleyici kaynağınız sağlıklı değil. Veri yolu kullanılabilirlik ölçümü, en az iki dakika boyunca %25 sistem durumunu daha az raporladı. Gelen bağlantı için önemli bir performans etkisi veya kullanılabilirlik eksikliği yaşanacaktır. Kullanılamaz duruma neden olan kullanıcı veya platform olayları olabilir. |
+| Bilinmiyor | Standart yük dengeleyici kaynağınızın kaynak sistem durumu henüz güncelleştirilmemiş veya son 10 dakika boyunca veri yolu kullanılabilirliği bilgilerini almamış. Bu durum geçici olacak ve veriler alınınca hemen doğru durum yansıtılacaktır. |
+
 
 ## <a name="about-the-metrics-well-use"></a>Kullanacağımız ölçümler hakkında
 Kullanılacak iki ölçüm *veri yolu kullanılabilirliği* ve *sistem durumu araştırma durumudur* ve doğru öngörüleri türetmede anlamını anlamak önemlidir. 

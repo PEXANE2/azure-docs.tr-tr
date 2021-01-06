@@ -9,18 +9,18 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 0b4cf72622df78e13add723853d935fc97649b4a
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 19451fb09919238a04ac953c9c38fc70b4744d16
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359005"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955306"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>Azure Arc veri denetleyicisi 'ni kullanarak oluşturma [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Genel bakış bilgileri için [Azure Arc veri denetleyicisi oluşturma](create-data-controller.md) konusunu gözden geçirin.
 
@@ -271,12 +271,12 @@ Komutu çalıştırdığınızda, [oluşturma durumunu izlemek](#monitoring-the-
 Azure Red Hat OpenShift üzerinde veri denetleyicisi oluşturmadan önce, belirli güvenlik bağlamı kısıtlamalarını (SCC) uygulamanız gerekir. Önizleme sürümü için bu, güvenlik kısıtlamalarını daha rahat hale getiren. Gelecekteki yayınlar, güncelleştirilmiş SCC sağlayacak.
 
 1. Özel güvenlik bağlamı kısıtlamasını (SCC) indirin. Aşağıdakilerden birini kullanın: 
-   - [GitHub](https://github.com/microsoft/azure_arc/tree/master/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
-   - ([Ham](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/arc-data-scc.yaml))
+   - [GitHub](https://github.com/microsoft/azure_arc/tree/main/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
+   - ([Ham](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml))
    - `curl` Aşağıdaki komut yay-Data-SCC. YAML 'yi indirir:
 
       ```console
-      curl https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
+      curl https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
       ```
 
 1. SCC oluşturun.
@@ -329,12 +329,12 @@ Komutu çalıştırdığınızda, [oluşturma durumunu izlemek](#monitoring-the-
 Red Hat OCP üzerinde veri denetleyicisi oluşturmadan önce, belirli güvenlik bağlamı kısıtlamalarını (SCC) uygulamanız gerekir. Önizleme sürümü için bu, güvenlik kısıtlamalarını daha rahat hale getiren. Gelecekteki yayınlar, güncelleştirilmiş SCC sağlayacak.
 
 1. Özel güvenlik bağlamı kısıtlamasını (SCC) indirin. Aşağıdakilerden birini kullanın: 
-   - [GitHub](https://github.com/microsoft/azure_arc/tree/master/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
-   - ([Ham](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/arc-data-scc.yaml))
+   - [GitHub](https://github.com/microsoft/azure_arc/tree/main/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
+   - ([Ham](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml))
    - `curl` Aşağıdaki komut yay-Data-SCC. YAML 'yi indirir:
 
       ```console
-      curl https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
+      curl https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
       ```
 
 1. SCC oluşturun.

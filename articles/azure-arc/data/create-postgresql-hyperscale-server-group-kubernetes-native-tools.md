@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: f447c6028b1750aa96e531a97e7b0861f66a5749
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30852b6b3f9a4b490c4b58fe07f34ee49c60fa9f
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761677"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955255"
 ---
 # <a name="create-a-postgresql-hyperscale-server-group-using-kubernetes-tools"></a>Kubernetes araçlarını kullanarak bir PostgreSQL hiper ölçek sunucu grubu oluşturma
 
@@ -34,7 +34,7 @@ PostgreSQL hiper ölçek sunucu grubu oluşturmak için, Postgres yönetici otur
 
 ## <a name="create-a-yaml-file"></a>YAML dosyası oluşturma
 
-Kendi özel PostgreSQL hiper ölçek sunucu grubu YAML Dosyanızı oluşturmak için bir başlangıç noktası olarak, [YAML dosyasını şablon](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/postsgresql.yaml) olarak kullanabilirsiniz.  Bu dosyayı yerel bilgisayarınıza indirip bir metin düzenleyicisinde açın.  YAML dosyaları için söz dizimi vurgulamasını destekleyen [vs Code](https://code.visualstudio.com/download) gibi bir metin Düzenleyicisi kullanmak faydalıdır.
+Kendi özel PostgreSQL hiper ölçek sunucu grubu YAML Dosyanızı oluşturmak için bir başlangıç noktası olarak, [YAML dosyasını şablon](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/postgresql.yaml) olarak kullanabilirsiniz.  Bu dosyayı yerel bilgisayarınıza indirip bir metin düzenleyicisinde açın.  YAML dosyaları için söz dizimi vurgulamasını destekleyen [vs Code](https://code.visualstudio.com/download) gibi bir metin Düzenleyicisi kullanmak faydalıdır.
 
 Bu örnek bir YAML dosyasıdır:
 

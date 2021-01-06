@@ -1,5 +1,5 @@
 ---
-title: Azure 'da genel IP adresleri
+title: Azure’da genel IP adresleri
 titlesuffix: Azure Virtual Network
 description: Azure’da genel IP adresleri hakkında bilgi edinin.
 services: virtual-network
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: ef79844cf2f90ce97ea30a1948a441f909255f98
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1e46cf78c76e873bcb78af4942f42a5c4be45391
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169945"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955595"
 ---
 # <a name="public-ip-addresses"></a>Genel IP adresleri
 
@@ -55,6 +55,7 @@ Standart SKU genel IP adresleri:
 - Varsayılan olarak güvenli hale getirin ve gelen trafiğe kapalıdır. [Ağ güvenlik grubuyla](security-overview.md#network-security-groups)gelen trafik listesine izin ver.
 - Ağ arabirimlerine, standart genel yük dengeleyicileri veya uygulama ağ geçitlerine atanır. Standart yük dengeleyici hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - Bölgesel olarak yedekli (tüm 3 bölgeden reklam verebilir) ya da bölgesel (belirli bir kullanılabilirlik bölgesinde bir veya daha fazla garanti edilebilir) olabilir. Kullanılabilirlik alanları hakkında daha fazla bilgi için bkz. [Kullanılabilirlik alanlarına genel bakış](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ve [Standart Yük Dengeleyici ve Kullanılabilirlik Alanları](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json). **Bölgesel olarak yedekli IP 'Ler, yalnızca [3 kullanılabilirlik bölgesinin canlı olduğu bölgelerde](https://docs.microsoft.com/azure/availability-zones/az-region) oluşturulabilir.** Bölgeler etkin olmadan önce oluşturulan IP 'Ler bölge yedekli olmayacaktır.
+- [Bölgeler arası yük dengeleyiciler](https://docs.microsoft.com/azure/load-balancer/cross-region-overview) için her noktaya yayın ön uç IP 'si olarak kullanılabilir (Önizleme işlevselliği).
  
 > [!NOTE]
 > Standart SKU kaynağıyla gelen iletişim, bir [ağ güvenlik grubu](security-overview.md#network-security-groups) oluşturup ilişkilendirene ve istenen gelen trafiğe açıkça izin verene kadar başarısız olur.
@@ -180,11 +181,11 @@ Aşağıdaki tabloda, genel bir IP 'nin en üst düzey bir kaynakla ve olası ay
 
 | En üst düzey kaynak | IP Adresi ilişkilendirme | Dinamik | Statik |
 | --- | --- | --- | --- |
-| Sanal makine |Ağ arabirimi |Evet |Evet |
-| İnternet'e yönelik yük dengeleyici |Ön uç yapılandırması |Evet |Evet |
-| VPN ağ geçidi |Ağ geçidi IP yapılandırması |Evet |Hayır |
+| Sanal makine |Ağ arabirimi |Yes |Yes |
+| İnternet'e yönelik yük dengeleyici |Ön uç yapılandırması |Yes |Yes |
+| VPN ağ geçidi |Ağ geçidi IP yapılandırması |Yes |Hayır |
 | Uygulama ağ geçidi |Ön uç yapılandırması |Evet (yalnızca v1) |Evet (yalnızca v2) |
-| Azure Güvenlik Duvarı | Ön uç yapılandırması | Hayır | Evet|
+| Azure Güvenlik Duvarı | Ön uç yapılandırması | Hayır | Yes|
 
 ## <a name="limits"></a>Sınırlar
 

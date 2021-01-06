@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 01/05/2021
 ms.author: aahi
-ms.openlocfilehash: ffa70afa0edf29181bc622cbef6ff8716134b1f7
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 9a4e179767cc38169cd794f4cd629604bdcdaab0
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364947"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955051"
 ---
-# <a name="frequently-asked-questions-faq-about-the-text-analytics-cognitive-service"></a>Metin Analizi bilişsel hizmet hakkında sık sorulan sorular (SSS)
+# <a name="frequently-asked-questions-faq-about-the-text-analytics-api"></a>Metin Analizi API'si hakkında sık sorulan sorular (SSS)
 
- Azure 'da Microsoft bilişsel hizmetler için Metin Analizi API'si ilgili kavramlar, kod ve senaryolar hakkında sık sorulan soruların yanıtlarını bulun.
+ Azure bilişsel hizmetler 'deki Metin Analizi API'si ilgili kavramlar, kod ve senaryolar hakkında sık sorulan soruların yanıtlarını bulun.
 
 ## <a name="can-text-analytics-identify-sarcasm"></a>Metin Analizi, sarcasm tanımlayabilir miyim?
 
@@ -47,11 +47,21 @@ Genellikle, çıkış, tümcenin isimleri ve nesnelerinden oluşur. Çıktı ön
 
 Model ve algoritmalara yönelik iyileştirmeler, değişikliğin büyük olması durumunda duyurulur veya güncelleştirme küçük olduğunda hizmete sessizce kaydedilir. Zaman içinde, aynı metin girişinin farklı bir yaklaşım puanına veya anahtar tümceciği çıktısına neden olduğunu fark edebilirsiniz. Bu, bulutta yönetilen makine öğrenimi kaynaklarını kullanmanın normal ve bilerek bir sonucudur.
 
+## <a name="service-availability-and-redundancy"></a>Hizmet kullanılabilirliği ve artıklığı
+
+### <a name="is-text-analytics-service-zone-resilient"></a>Metin Analizi hizmet bölgesi dayanıklı mi?
+
+Evet. Metin Analizi hizmet varsayılan olarak bölge esnektir.
+
+### <a name="how-do-i-configure-the-text-analytics-service-to-be-zone-resilient"></a>Metin Analizi hizmeti bölge-dayanıklı olacak şekilde Nasıl yaparım? mı?
+
+Bölge dayanıklılığı sağlamak için hiçbir müşteri yapılandırması gerekmez. Metin Analizi kaynaklar için bölge esnekliği, varsayılan olarak kullanılabilir ve hizmet tarafından yönetilir.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Sorunuz, eksik bir özellik veya işlevlerle ilgili mi? [UserVoice Web sitemizdeki](https://cognitive.uservoice.com/forums/555922-text-analytics)BT için istek veya oylama yapmayı deneyin.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
- [StackOverflow: Metin Analizi API'si](https://stackoverflow.com/questions/tagged/text-analytics-api)   
- [StackOverflow: bilişsel hizmetler](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
+ * [StackOverflow: Metin Analizi API'si](https://stackoverflow.com/questions/tagged/text-analytics-api)   
+ * [StackOverflow: bilişsel hizmetler](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

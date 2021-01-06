@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 051a7f506d351a17764e38c760ffba06d224cc38
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: e8d00055d9a4d7355ccd8a33c8a9b811b852f5c8
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422578"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955289"
 ---
 # <a name="create-azure-arc-data-controller-using-kubernetes-tools"></a>Kubernetes araçlarını kullanarak Azure Arc veri denetleyicisi oluşturma
 
@@ -38,11 +38,9 @@ Azure Arc Data Controller 'ı geçmişte yüklediyseniz, aynı kümede ve Azure 
 ```console
 # Cleanup azure arc data service artifacts
 kubectl delete crd datacontrollers.arcdata.microsoft.com 
-kubectl delete sqlmanagedinstances.sql.arcdata.microsoft.com 
-kubectl delete postgresql-11s.arcdata.microsoft.com 
-kubectl delete postgresql-12s.arcdata.microsoft.com
-kubectl delete clusterroles azure-arc-data:cr-arc-metricsdc-reader
-kubectl delete clusterrolebindings azure-arc-data:crb-arc-metricsdc-reader
+kubectl delete crd sqlmanagedinstances.sql.arcdata.microsoft.com 
+kubectl delete crd postgresql-11s.arcdata.microsoft.com 
+kubectl delete crd postgresql-12s.arcdata.microsoft.com
 ```
 
 ## <a name="overview"></a>Genel Bakış
@@ -59,7 +57,7 @@ Azure Arc Data Controller 'ın oluşturulması, aşağıdaki üst düzey adımla
 Özel kaynak tanımlarını oluşturmak için aşağıdaki komutu çalıştırın.  **[Kubernetes Küme Yöneticisi Izinleri gerektirir]**
 
 ```console
-kubectl create -f https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/custom-resource-definitions.yaml
+kubectl create -f https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/custom-resource-definitions.yaml
 ```
 
 ## <a name="create-a-namespace-in-which-the-data-controller-will-be-created"></a>Veri denetleyicisinin oluşturulacağı bir ad alanı oluşturun
@@ -79,7 +77,7 @@ Diğer kişiler küme yöneticileri olmayan bu ad alanını kullanacaksanız, bi
 Önyükleyici hizmeti, önyükleyici hizmeti için bir hizmet hesabı ve önyükleyici hizmet hesabı için rol ve rol bağlama oluşturmak için aşağıdaki komutu çalıştırın.
 
 ```console
-kubectl create --namespace arc -f https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/bootstrapper.yaml
+kubectl create --namespace arc -f https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/bootstrapper.yaml
 ```
 
 Aşağıdaki komutu kullanarak önyükleyici Pod 'un çalıştığını doğrulayın.  Durum ' a dönüşene kadar birkaç kez çalıştırmanız gerekebilir `Running` .
@@ -102,7 +100,7 @@ containers:
       - env:
         - name: ACCEPT_EULA
           value: "Y"
-        #image: mcr.microsoft.com/arcdata/arc-bootstrapper:public-preview-oct-2020  <-- template value to change
+        #image: mcr.microsoft.com/arcdata/arc-bootstrapper:public-preview-dec-2020  <-- template value to change
         image: <your registry DNS name or IP address>/<your repo>/arc-bootstrapper:<your tag>
         imagePullPolicy: IfNotPresent
         name: bootstrapper
@@ -150,7 +148,7 @@ echo '<your string to encode here>' | base64
 # echo 'example' | base64
 ```
 
-Kullanıcı adını ve parolayı kodladıktan sonra [şablon dosyasını](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/controller-login-secret.yaml) temel alan bir dosya oluşturabilir ve Kullanıcı adı ve parola değerlerini kendi değerlerinizle değiştirin.
+Kullanıcı adını ve parolayı kodladıktan sonra [şablon dosyasını](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/controller-login-secret.yaml) temel alan bir dosya oluşturabilir ve Kullanıcı adı ve parola değerlerini kendi değerlerinizle değiştirin.
 
 Ardından, parolayı oluşturmak için aşağıdaki komutu çalıştırın.
 
@@ -165,26 +163,26 @@ kubectl create --namespace arc -f C:\arc-data-services\controller-login-secret.y
 
 Artık veri denetleyicisinin kendisini oluşturmaya hazırsınız.
 
-İlk olarak, bazı ayarları değiştirebilmeniz için, bilgisayarınızda yerel olarak [şablon dosyasının](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/data-controller.yaml) bir kopyasını oluşturun.
+İlk olarak, bazı ayarları değiştirebilmeniz için, bilgisayarınızda yerel olarak [şablon dosyasının](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/data-controller.yaml) bir kopyasını oluşturun.
 
 Gerektiğinde aşağıdakileri düzenleyin:
 
 **Gerekli**
-- **konum** : bunu, veri denetleyicisi hakkındaki _meta_ verilerin depolanacağı Azure konumu olacak şekilde değiştirin.  Kullanılabilir Azure konumlarının listesini, [veri denetleyicisine genel bakış](create-data-controller.md) makalesinde görebilirsiniz.
-- **resourceGroup** : Azure Resource Manager veri denetleyicisi Azure kaynağı oluşturmak istediğiniz Azure Kaynak grubu.  Genellikle bu kaynak grubu zaten var olmalıdır, ancak verileri Azure 'a yüklediğiniz zamana kadar gerekli değildir.
-- **abonelik** : içinde Azure kaynaklarını oluşturmak Istediğiniz aboneliğin Azure abonelik GUID 'i.
+- **konum**: bunu, veri denetleyicisi hakkındaki _meta_ verilerin depolanacağı Azure konumu olacak şekilde değiştirin.  Kullanılabilir Azure konumlarının listesini, [veri denetleyicisine genel bakış](create-data-controller.md) makalesinde görebilirsiniz.
+- **resourceGroup**: Azure Resource Manager veri denetleyicisi Azure kaynağı oluşturmak istediğiniz Azure Kaynak grubu.  Genellikle bu kaynak grubu zaten var olmalıdır, ancak verileri Azure 'a yüklediğiniz zamana kadar gerekli değildir.
+- **abonelik**: içinde Azure kaynaklarını oluşturmak Istediğiniz aboneliğin Azure abonelik GUID 'i.
 
 **GÖZDEN GEÇIRMENIZ VE MUHTEMELEN VARSAYıLANLARı DEĞIŞTIRMENIZ ÖNERILIR**
-- **depolama.. className** : veri denetleyicisi verileri ve günlük dosyaları için kullanılacak depolama sınıfı.  Kubernetes kümenizdeki kullanılabilir depolama sınıflarından emin değilseniz, şu komutu çalıştırabilirsiniz: `kubectl get storageclass` .  Varsayılan değer, `default` var olan ve `default` _is_ varsayılan olan bir depolama sınıfı olan adlı bir depolama sınıfı olduğunu varsaymaktadır.  Note: veri için bir tane olmak üzere istenen depolama sınıfına ayarlanacak iki className ayarı vardır.
-- **serviceType** : bir LoadBalancer kullanmıyorsanız, hizmet türünü olarak değiştirin `NodePort` .  Note: değiştirilmesi gereken iki serviceType ayarı vardır.
+- **depolama.. className**: veri denetleyicisi verileri ve günlük dosyaları için kullanılacak depolama sınıfı.  Kubernetes kümenizdeki kullanılabilir depolama sınıflarından emin değilseniz, şu komutu çalıştırabilirsiniz: `kubectl get storageclass` .  Varsayılan değer, `default` var olan ve `default`  varsayılan olan bir depolama sınıfı olan adlı bir depolama sınıfı olduğunu varsaymaktadır.  Note: veri için bir tane olmak üzere istenen depolama sınıfına ayarlanacak iki className ayarı vardır.
+- **serviceType**: bir LoadBalancer kullanmıyorsanız, hizmet türünü olarak değiştirin `NodePort` .  Note: değiştirilmesi gereken iki serviceType ayarı vardır.
 
 **SEÇIM**
-- **ad** : veri denetleyicisinin varsayılan adı, `arc` ancak isterseniz bunu değiştirebilirsiniz.
-- **DisplayName** : bunu, dosyanın en üstündeki ad özniteliğiyle aynı değere ayarlayın.
-- **kayıt defteri** : Microsoft Container Registry varsayılandır.  Microsoft Container Registry görüntüleri çekiliyor ve [bunları özel bir kapsayıcı kayıt defterine](offline-deployment.md)alıyorsa, kayıt defterinizin IP ADRESINI veya DNS adını buraya girin.
-- **Dockerregistry** : gerekirse özel bir kapsayıcı kayıt defterinden görüntüleri çekmek için kullanılacak görüntü çekme gizli dizisi.
-- **Depo** : Microsoft Container Registry varsayılan depo `arcdata` .  Özel bir kapsayıcı kayıt defteri kullanıyorsanız, Azure ARR özellikli veri Hizmetleri kapsayıcı görüntülerini içeren klasör/deponun yolunu girin.
-- **ImageTag** : geçerli en son sürüm etiketi şablonda varsayılan olarak ayarlanır, ancak eski bir sürümü kullanmak istiyorsanız bunu değiştirebilirsiniz.
+- **ad**: veri denetleyicisinin varsayılan adı, `arc` ancak isterseniz bunu değiştirebilirsiniz.
+- **DisplayName**: bunu, dosyanın en üstündeki ad özniteliğiyle aynı değere ayarlayın.
+- **kayıt defteri**: Microsoft Container Registry varsayılandır.  Microsoft Container Registry görüntüleri çekiliyor ve [bunları özel bir kapsayıcı kayıt defterine](offline-deployment.md)alıyorsa, kayıt defterinizin IP ADRESINI veya DNS adını buraya girin.
+- **Dockerregistry**: gerekirse özel bir kapsayıcı kayıt defterinden görüntüleri çekmek için kullanılacak görüntü çekme gizli dizisi.
+- **Depo**: Microsoft Container Registry varsayılan depo `arcdata` .  Özel bir kapsayıcı kayıt defteri kullanıyorsanız, Azure ARR özellikli veri Hizmetleri kapsayıcı görüntülerini içeren klasör/deponun yolunu girin.
+- **ImageTag**: geçerli en son sürüm etiketi şablonda varsayılan olarak ayarlanır, ancak eski bir sürümü kullanmak istiyorsanız bunu değiştirebilirsiniz.
 
 Tamamlanan veri denetleyicisi YAML dosyası örneği:
 ```yaml
@@ -200,7 +198,7 @@ spec:
     serviceAccount: sa-mssql-controller
   docker:
     imagePullPolicy: Always
-    imageTag: public-preview-oct-2020 
+    imageTag: public-preview-dec-2020 
     registry: mcr.microsoft.com
     repository: arcdata
   security:

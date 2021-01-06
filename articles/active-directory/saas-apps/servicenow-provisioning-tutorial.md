@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 5c21efc9cb082d915fd87e9ae01606fce18016bc
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 71f4cfa9e7b69e51bafa5364f857f8ab689f2ad0
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897321"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955476"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için ServiceNow 'ı yapılandırma
 
@@ -31,7 +31,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Servic
 > * ServiceNow 'da grupları ve grup üyeliklerini sağlama
 > * ServiceNow ['Da çoklu oturum açma](servicenow-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -152,6 +152,11 @@ Hazırlama ayarlarını yapılandırdıktan sonra dağıtımınızı izlemek iç
    ![SOAP isteğini yetkilendirme](media/servicenow-provisioning-tutorial/servicenow-webservice.png)
 
    Sorunlarınızı giderirse ServiceNow desteğiyle iletişime geçin ve sorun gidermeye yardımcı olması için SOAP hata ayıklamayı etkinleştirmesini isteyin. 
+
+* **IP aralıkları** 
+
+   Azure AD sağlama hizmeti şu anda belirli bir IP aralığı altında çalışır. Gerekirse, diğer IP aralıklarını kısıtlayabilir ve bu belirli IP aralıklarını uygulamanızın izin öğesine ekleyerek Azure AD sağlama hizmeti 'nden uygulamanıza trafik akışına izin verebilirsiniz. [IP aralıklarında](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#ip-ranges)belgelere başvurun.
+
 ## <a name="additional-resources"></a>Ek kaynaklar
 
 * [Kurumsal Uygulamalar için kullanıcı hesabı hazırlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)

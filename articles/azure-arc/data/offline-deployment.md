@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 575903654a165bef0d09ac6abf0793af3f6784e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fa0b6ca41349d20614a64006536e78d8ee71844
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90942086"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955374"
 ---
 # <a name="offline-deployment-overview"></a>Çevrimdışı dağıtıma genel bakış
 
@@ -22,7 +22,7 @@ Genellikle, Azure Arc veri denetleyicisinin oluşturulmasında kullanılan kapsa
 
 Azure Arc etkin veri Hizmetleri için aylık güncelleştirmeler sağlandığı ve çok sayıda kapsayıcı görüntüsü olduğu için, bir betik kullanarak kapsayıcı görüntülerini bir özel kapsayıcı kayıt defterine çekme, etiketleme ve itme işlemlerini gerçekleştirmek en iyisidir.  Betik otomatikleştirilebilir veya el ile çalıştırılabilir.
 
-Azure Arc GitHub deposunda [örnek bir betik](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/scripts/pull-and-push-arc-data-services-images-to-private-registry.py) bulunabilir.
+Azure Arc GitHub deposunda [örnek bir betik](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/scripts/pull-and-push-arc-data-services-images-to-private-registry.py) bulunabilir.
 
 > [!NOTE]
 > Bu betik Python ve [Docker CLI](https://docs.docker.com/install/)yüklemesini gerektirir.

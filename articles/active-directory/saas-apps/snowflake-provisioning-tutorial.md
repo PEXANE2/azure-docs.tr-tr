@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: ac6981d998f25b8df7cea553fe152d68cd43fee5
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: cc88712dd686983baed858de47e11dfa44e85350
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181433"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955527"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için kar ke 'yi yapılandırma
 
@@ -159,6 +159,12 @@ Hazırlama ayarlarını yapılandırdıktan sonra dağıtımınızı izlemek iç
 ## <a name="connector-limitations"></a>Bağlayıcı sınırlamaları
 
 * Kar tanesi tarafından oluşturulan SCıM belirteçleri 6 ay içinde sona erer. Sağlama eşitlenmesinin çalışmaya devam etmesine izin vermek için bunların süreleri dolmadan önce yenilenmesi gerektiğini unutmayın. 
+
+## <a name="troubleshooting-tips"></a>Sorun Giderme İpuçları
+
+* **IP aralıkları** 
+
+   Azure AD sağlama hizmeti şu anda belirli bir IP aralığı altında çalışır. Gerekirse, diğer IP aralıklarını kısıtlayabilir ve bu belirli IP aralıklarını uygulamanızın izin öğesine ekleyerek Azure AD sağlama hizmeti 'nden uygulamanıza trafik akışına izin verebilirsiniz. [IP aralıklarında](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#ip-ranges)belgelere başvurun.
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
 

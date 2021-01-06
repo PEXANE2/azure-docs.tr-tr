@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 11/09/2020
+ms.date: 01/05/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f10d8a94be53780f732112c012600a7fb840642b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 18e504579c750caf452ef74844c4a388ec96448a
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180651"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954494"
 ---
 # <a name="what-is-risk"></a>Risk nedir?
 
@@ -63,6 +63,9 @@ Bu riskler, gerçek zamanlı olarak hesaplanabilir veya güvenlik araştırmacı
 | Şüpheli gelen kutusu düzenleme kuralları | Çevrimdışı | Bu algılama [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-manipulation-rules)tarafından keşfedilir. Bu algılama, ortamınızı profiller ve iletileri veya klasörleri silen veya taşıyan şüpheli kurallar bir kullanıcının gelen kutusunda ayarlandığında uyarıları tetikler. Bu algılama, Kullanıcı hesabının güvenliğinin aşıldığını, iletilerin kasıtlı olarak gizlendiğini ve posta kutusunun kuruluşunuzda istenmeyen posta veya kötü amaçlı yazılım dağıtmak için kullanıldığını belirtebilir. |
 | Parola spreyi | Çevrimdışı | Bir parola spreyi saldırısı, birden çok Kullanıcı adı, Birleşik bir deneme yanılma, yetkisiz erişim elde etmek için ortak parolalar kullanan saldırıya neden olur. Bu risk algılama, bir parola spreyi saldırısı gerçekleştirildiğinde tetiklenir. |
 | Mümkün olmayan seyahat | Çevrimdışı | Bu algılama [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#impossible-travel)tarafından keşfedilir. Bu algılama, farklı bir kullanıcının aynı kimlik bilgilerini kullandığını gösteren bir zaman dilimi içinde coğrafi olarak uzak konumların ikinci kez, ilk konumdan saniye içinde hareket etmek için geçen süreden daha kısa bir süre içinde olan iki kullanıcı etkinliğini tanımlar (tek veya birden çok oturumdur). |
+| Yeni ülke | Çevrimdışı | Bu algılama [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-infrequent-country)tarafından keşfedilir. Bu algılama, geçmiş etkinlik konumlarını göz önünde bulundurur ve yeni ve seyrek bulunan konumları belirlemektir. Anomali algılama altyapısı, kuruluştaki kullanıcılar tarafından kullanılan önceki konumlara ilişkin bilgileri depolar. |
+| Anonim IP adresinden etkinlik | Çevrimdışı | Bu algılama [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-anonymous-ip-addresses)tarafından keşfedilir. Bu algılama, kullanıcıların anonim proxy IP adresi olarak tanımlanmış bir IP adresinden etkin olduğunu tanımlar. |
+| Şüpheli gelen kutusu iletme | Çevrimdışı | Bu algılama [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-forwarding)tarafından keşfedilir. Bu algılama, şüpheli e-posta iletme kurallarını arar, örneğin, bir Kullanıcı tüm e-postaların bir kopyasını bir dış adrese ileten bir gelen kutusu kuralı oluşturmuşsam. |
 
 ### <a name="other-risk-detections"></a>Diğer risk algılamaları
 

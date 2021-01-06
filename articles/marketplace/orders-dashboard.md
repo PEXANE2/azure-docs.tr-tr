@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 943f1361a2a9d6bf8d891f8b4f2137b8738f0836
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 31216db98cc02724ac3625eb1a8fa18b0f75c6ee
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450754"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955034"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Ticari market analizinde Siparişler panosu
 
 Bu makalede, Iş Ortağı Merkezi 'nde siparişler panosu hakkında bilgi sağlanmaktadır. Bu Pano, bir grafik ve indirilebilir biçimde sunulan büyüme eğilimleri dahil olmak üzere siparişleriniz hakkındaki bilgileri görüntüler.
 
-İş ortağı merkezindeki siparişler panosuna erişmek için **ticari Market**' in altında siparişleri **[Çözümle](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**' yi seçin  >  **Orders**.
+İş ortağı merkezindeki siparişler panosuna erişmek için **ticari Market**' in altında siparişleri **[Çözümle](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**' yi seçin  >  .
 
 >[!NOTE]
 > Analiz terminolojisi hakkında ayrıntılı tanımlamalar için bkz. [ticari Market Analytics terminolojisi ve sık sorulan sorular](./analytics-faq.md).
@@ -109,17 +109,16 @@ Sipariş Ayrıntıları tablosu, Alım tarihine göre sıralanan 1.000 üst sipa
 - Veriler bir öğesine ayıklanabilir. CSV veya. TSV dosyası 1.000 ' den küçükse, kayıt sayısı.
 - 1.000 üzerinden kayıt numarası varsa, verilen veriler sonraki 30 güne ait bir indirmeler sayfasına zaman uyumsuz olarak yerleştirilir.
 - Yalnızca ilgilendiğiniz verileri göstermek için **sipariş ayrıntıları** tablosuna filtre uygulayın. Ülke/bölge, Azure lisans türü, ticari Market lisans türü, teklif türü, sipariş durumu, ücretsiz izler, ticari Market abonelik KIMLIĞI, müşteri KIMLIĞI ve şirket adına göre filtreleyin.
-- Azure Market veya Microsoft AppSource aracılığıyla satın alınan SaaS teklifleri için Azure aboneliği gerektirmeyin, Market abonelik KIMLIĞI **ayrıntılı siparişler verileri** bölümünde 00000000-0000-0000-0000-000000000000 biçiminde görünür.
 - Bir sipariş, korunan bir müşteri tarafından satın alındığında, **ayrıntılı verilerin emirdeki** bilgileri maskelenir (* * * * * * * * * * * *).
 
 **_Tablo 1: veri koşullarının sözlüğü_* _
 
 | Sütun adı | Öznitelik adı | Tanım |
 | ------------ | ------------- | ------------- |
-| Market abonelik kimliği | Market abonelik KIMLIĞI | Ticari Market teklifinizi satın almak için kullanılan müşterinin Azure aboneliğiyle ilişkili benzersiz tanımlayıcı. KIMLIĞI daha önce Azure aboneliği GUID 'iydi. |
+| Market abonelik kimliği | Market abonelik KIMLIĞI | Ticari Market teklifinizi satın almak için kullanılan müşterinin Azure aboneliğiyle ilişkili benzersiz tanımlayıcı. Altyapı teklifleri için bu müşterinin Azure abonelik GUID 'sidir. SaaS tekliflerini bir Azure aboneliği gerektirmediğinden, SaaS teklifleri için bu sıfır olarak gösterilir. |
 | MonthStartDate | Ay başlangıç tarihi | Ayın başlangıç tarihi, satın alma ayı ile temsil eder. |
 | Teklif Türü | Teklif Türü | Ticari Market teklifi türü. |
-| Azure lisans türü | Azure lisans türü | Müşteriler tarafından Azure satın alma için kullanılan lisans sözleşmesinin türü. Kanal olarak da bilinir. Olası değerler şunlardır:<ul><li>Bulut çözümü sağlayıcısı</li><li>Enterprise</li><li>Satıcı aracılığıyla kurumsal</li><li>Kullandıkça öde</li></ul> |
+| Azure lisans türü | Azure lisans türü | Müşteriler tarafından Azure satın alma için kullanılan lisans sözleşmesinin türü. Kanal olarak da bilinir. Olası değerler şunlardır:<ul><li>Bulut çözümü sağlayıcısı</li><li>Kurumsal</li><li>Satıcı aracılığıyla kurumsal</li><li>Kullandıkça öde</li></ul> |
 | Market lisans türü | Market lisans türü | Ticari Market teklifinin faturalandırma yöntemi. Farklı değerler şunlardır:<ul><li>Azure üzerinden faturalandırılır</li><li>Kendi lisansınızı getirin</li><li>Ücretsiz</li><li>Satıcı olarak Microsoft</li></ul> |
 | SKU | SKU | Teklifle ilişkili plan |
 | Müşteri ülkesi | Müşteri ülkesi/bölgesi | Müşterinin sunduğu ülke/bölge adı. Ülke/bölge, müşterinin Azure aboneliğindeki ülke/bölgeden farklı olabilir. |

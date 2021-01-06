@@ -4,15 +4,15 @@ description: Algılayıcıların kullanıcılarını ve şirket içi yönetim ko
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/21/2020
+ms.date: 1/3/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: c3a9e1c7e96d0392e1f94b71549f612738622dea
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 22d0c59110ba033232fbdf41062b49e9a146ca6f
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97843341"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955179"
 ---
 # <a name="about-defender-for-iot-console-users"></a>IoT konsol kullanıcıları için Defender hakkında
 
@@ -89,8 +89,8 @@ Bu bölümde kullanıcıların nasıl tanımlanacağı açıklanmaktadır. Six, 
 Bir kullanıcı tanımlamak için:
 
 1. Algılayıcı veya şirket içi yönetim konsolunun sol bölmesinden **Kullanıcılar**' ı seçin.
-2. **Kullanıcılar** penceresinde, **Kullanıcı oluştur**' u seçin.
-3. **Kullanıcı oluştur** bölmesinde, aşağıdaki parametreleri tanımlayın:
+1. **Kullanıcılar** penceresinde, **Kullanıcı oluştur**' u seçin.
+1. **Kullanıcı oluştur** bölmesinde, aşağıdaki parametreleri tanımlayın:
 
    - **Kullanıcı adı**: bir Kullanıcı adı girin.
    - **E-posta**: kullanıcının e-posta adresini girin.
@@ -122,7 +122,7 @@ Komutuna erişmek için:
 
 1. IoT yönetim kimlik bilgileri için Defender 'ı kullanarak sensör veya şirket içi yönetim konsolu için CLı 'da oturum açın.
 
-2. `sudo nano /var/cyberx/properties/authentication` yazın.
+1. `sudo nano /var/cyberx/properties/authentication` yazın.
 
 ```azurecli-interactive
     infinity_session_expiration = true
@@ -138,7 +138,6 @@ Komutuna erişmek için:
 Özelliği devre dışı bırakmak için öğesini `infinity_session_expiration = true` olarak değiştirin `infinity_session_expiration = false` .
 
 Oturum kapatma sayma dönemlerini güncelleştirmek için `= <number>` değeri gerekli zamana ayarlayın.
-
 
 ## <a name="track-user-activity"></a>Kullanıcı etkinliğini izleme 
 
@@ -171,11 +170,11 @@ Active Directory yapılandırmak için:
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-system-settings-v2.png" alt-text="Active Directory sistem ayarlarınızı görüntüleyin.":::
 
-2. **Sistem ayarları** bölmesinde **Active Directory**' yi seçin.
+1. **Sistem ayarları** bölmesinde **Active Directory**' yi seçin.
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-configurations-v2.png" alt-text="Active Directory yapılandırmalarınızı düzenleyin.":::
 
-3. **Active Directory yapılandırmayı Düzenle** iletişim kutusunda **Active Directory tümleştirme etkin**  >  **Kaydet**' i seçin. **Active Directory yapılandırmayı Düzenle** iletişim kutusu genişletilir ve artık Active Directory yapılandırılacak parametreleri girebilirsiniz.
+1. **Active Directory yapılandırmayı Düzenle** iletişim kutusunda **Active Directory tümleştirme etkin**  >  **Kaydet**' i seçin. **Active Directory yapılandırmayı Düzenle** iletişim kutusu genişletilir ve artık Active Directory yapılandırılacak parametreleri girebilirsiniz.
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-integration-enabled-v2.png" alt-text="Active Directory yapılandırılacak parametreleri girin.":::
 
@@ -184,7 +183,7 @@ Active Directory yapılandırmak için:
     > - Tüm Active Directory parametreleri için yalnızca küçük harf kullanın. Active Directory ' deki yapılandırmaların büyük harfle kullanıldığı durumlarda bile küçük harf kullanın.
     > - Aynı etki alanı için hem LDAP hem de LDAPS yapılandıramazsınız. Ancak, aynı anda farklı etki alanları için her ikisini de kullanabilirsiniz.
 
-4. Active Directory sunucusu parametrelerini aşağıdaki şekilde ayarlayın:
+1. Active Directory sunucusu parametrelerini aşağıdaki şekilde ayarlayın:
 
    | Sunucu parametresi | Açıklama |
    |--|--|
@@ -194,9 +193,79 @@ Active Directory yapılandırmak için:
    | Active Directory grupları | LDAP sunucusundaki Active Directory yapılandırmanızda tanımlanan grup adlarını girin. |
    | Güvenilen etki alanları | Güvenilen bir etki alanı eklemek için, etki alanı adını ve güvenilen bir etki alanının bağlantı türünü ekleyin. <br />Güvenilen etki alanlarını yalnızca kullanıcılar altında tanımlı kullanıcılar için yapılandırabilirsiniz. |
 
-5. **Kaydet**’i seçin.
+1. **Kaydet**’i seçin.
 
-6. Güvenilen bir sunucu eklemek için **Sunucu Ekle** ve başka bir sunucu Yapılandır ' ı seçin.
+1. Güvenilen bir sunucu eklemek için **Sunucu Ekle** ve başka bir sunucu Yapılandır ' ı seçin.
+
+## <a name="resetting-a-users-password-for-the-sensor-or-on-premises-management-console"></a>Kullanıcının algılayıcısı veya şirket içi yönetim konsolu için parolasını sıfırlama
+
+### <a name="cyberx-or-support-user"></a>Six veya destek kullanıcısı
+
+**Parola kurtarma** özelliğine yalnızca **Six** ve **destek** kullanıcısının erişimi vardır. **Six** veya **destek** kullanıcısı parolasını unutmuşsa, IoT oturum açma sayfası için Defender 'daki **parola kurtarma** seçeneği aracılığıyla parolayı sıfırlayabilirler.
+
+Bir Six veya destek kullanıcısının parolasını sıfırlamak için:
+
+1. IoT için Defender oturum açma ekranında  **parola kurtarma**' yı seçin. **Parola kurtarma** ekranı açılır.
+
+1. **Six** ya da **destek**' i seçin ve benzersiz tanımlayıcıyı kopyalayın.
+
+1. Azure portal gidin ve **siteler ve Algılayıcılar '** ı seçin.  
+
+1. Üstteki araç çubuğundan **Abonelik filtresi** simgesini seçin :::image type="icon" source="media/password-recovery-images/subscription-icon.png" border="false":::  ve sensörizin bağlı olduğu aboneliği seçin.
+
+1. **Şirket içi yönetim konsolu parolasını kurtar** sekmesini seçin.
+
+   :::image type="content" source="media/password-recovery-images/recover-button.png" alt-text="Kurtarma dosyasını indirmek için şirket içi yönetimi kurtar düğmesini seçin.":::
+
+1. **Parola kurtarma** ekranında aldığınız benzersiz tanımlayıcıyı girip **kurtar**' ı seçin. `password_recovery.zip`Dosya indirilir.
+
+    > [!NOTE]
+    > Parola kurtarma dosyasını değiştirmeyin. Bu, imzalanmış bir dosyadır ve bununla karşılaşırsanız çalışmaz.
+
+1. **Parola kurtarma** ekranında **karşıya yükle**' yi seçin. **Parola kurtarma dosyası yükle** penceresi açılır.
+
+   :::image type="content" source="media/password-recovery-images/upload.png" alt-text="Yeni bir parola almak için kurtarma dosyanızı karşıya yükleyin.":::
+
+1. Dosyanızı bulmak için **Araştır** `password_recovery.zip` ' ı seçin veya `password_recovery.zip` pencereyi pencereye sürükleyin.
+
+    > [!NOTE]
+    > Dosyanın geçersiz olduğunu belirten bir hata iletisi görünebilir. Bu hata iletisini onarmak için, yüklemeden önce doğru aboneliği seçtiğinizden emin olun `password_recovery.zip` ve yeniden indirin.  
+
+1. **İleri**' yi seçtiğinizde, Kullanıcı ve yönetim konsolunuz için sistem tarafından oluşturulan parolanız görüntülenir.
+
+### <a name="administrator-security-analyst-and-read-only-user"></a>Yönetici, güvenlik çözümleyici ve salt okuma Kullanıcı
+
+Salt okuma ve Güvenlik analistleri kendi parolalarını sıfırlayamaz ve parolasını sıfırlamak için yönetici, destek veya Six rolleriyle bir kullanıcıyla iletişim kurmak zorunda kalmaz. Bir yönetici kullanıcı, parolasını sıfırlamak için **Six** veya **destek** kullanıcısına başvurmalıdır.
+
+Kullanıcının algılayıcıdaki parolasını sıfırlamak için:
+
+1. Yönetici, destek veya Six rolü Kullanıcı sensörde oturum açması gerekir.
+
+1. Sol taraftaki panelden **Kullanıcılar** ' ı seçin.
+
+   :::image type="content" source="media/password-recovery-images/sensor-page.png" alt-text="Sol taraftaki bölmeden Kullanıcı seçeneğini belirleyin.":::
+
+1. Kullanıcıyı bulun ve **Eylemler** açılan menüsünden **Düzenle** ' yi seçin.
+
+   :::image type="content" source="media/password-recovery-images/edit.png" alt-text="Eylemler açılan menüsünden Düzenle ' yi seçin.":::
+
+1. Yeni parola alanına yeni parolayı girin **ve** **Yeni parola onaylama alanlarını onaylayın** .
+
+1. **Güncelleştir**’i seçin.
+
+Şirket içi yönetim konsolunda bir kullanıcının parolasını sıfırlamak için:
+
+1. Yönetici, destek veya Six rolü Kullanıcı sensörde oturum açması gerekir.
+
+1. Sol taraftaki panelden **Kullanıcılar** ' ı seçin.
+
+   :::image type="content" source="media/password-recovery-images/console-page.png" alt-text="Sol panelde kullanıcının seçeneğini belirleyin.":::
+
+1. Kullanıcıyı bulun ve Düzenle simgesini seçin :::image type="icon" source="media/password-recovery-images/edit-icon.png" border="false"::: .
+
+1. Yeni parola alanına yeni parolayı girin **ve** **Yeni parola onaylama alanlarını onaylayın** .
+
+1. **Güncelleştir**’i seçin.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

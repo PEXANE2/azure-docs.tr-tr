@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: add763b713b93604e089d7aec586876fecd2887c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bd35d3288591a01c14e306960601eef6dea7e761
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95895647"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954150"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak genel IP adresi oluşturma
 
@@ -26,7 +26,7 @@ Bu makalede, Azure portal kullanarak genel IP adresi kaynağı oluşturma göste
 
 **Mystandardzrpublicıp** adlı standart bölge-YEDEKLI genel IP adresi oluşturmak için aşağıdaki adımları kullanın.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. **Kaynak oluştur**’u seçin. 
 3. Arama kutusuna *genel IP adresi* yazın.
 4. Arama sonuçlarında **genel IP adresi**' ni seçin. Sonra, **genel IP adresi** sayfasında **Oluştur**' u seçin.
@@ -36,7 +36,8 @@ Bu makalede, Azure portal kullanarak genel IP adresi kaynağı oluşturma göste
     | ---                     | ---                         |
     | IP sürümü              | IPv4 seçin                 |    
     | SKU                     | **Standart** seçin         |
-    | Name                    | *Mystandardzrpublicıp* girin          |
+    | Katman (gösteriliyorsa *)                  | **Bölgesel** seçme         |
+    | Ad                    | *Mystandardzrpublicıp* girin          |
     | IP adresi ataması   | Bu, "static" olarak kilitlenecek                                        |
     | Boşta kalma zaman aşımı (dakika)  | Değeri 4 ' te bırakın        |
     | DNS ad etiketi          | Değeri boş bırakın    |
@@ -47,11 +48,13 @@ Bu makalede, Azure portal kullanarak genel IP adresi kaynağı oluşturma göste
 
 Bunların [kullanılabilirlik alanları](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones)bölgelerde yalnızca geçerli seçimler olduğunu unutmayın.  (Bu bölgelerde belirli bir bölgeyi de seçebilirsiniz, ancak bu bölge, bir hataya dayanıklı olmayacaktır.)
 
+\* = Katman, şu anda önizleme aşamasında olan [çapraz bölge Load Balancer](https://docs.microsoft.com/azure/load-balancer/cross-region-overview) işlevleriyle ilgilidir.
+
 # <a name="basic-sku"></a>[**Temel SKU**](#tab/option-create-public-ip-basic)
 
 **Mybasicpublicıp** adlı temel bir STATIK genel IP adresi oluşturmak için aşağıdaki adımları kullanın.  Temel genel IP 'Lerde kullanılabilirlik alanları kavramı yoktur.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. **Kaynak oluştur**’u seçin. 
 3. Arama kutusuna *genel IP adresi* yazın.
 4. Arama sonuçlarında **genel IP adresi**' ni seçin. Sonra, **genel IP adresi** sayfasında **Oluştur**' u seçin.
@@ -61,7 +64,7 @@ Bunların [kullanılabilirlik alanları](https://docs.microsoft.com/azure/availa
     | ---                     | ---                         |
     | IP sürümü              | IPv4 seçin                 |    
     | SKU                     | **Standart** seçin         |
-    | Name                    | *Mybasicpublicıp* girin          |
+    | Ad                    | *Mybasicpublicıp* girin          |
     | IP adresi ataması   | **Statik** öğesini seçin (aşağıdaki nota bakın)                                     |
     | Boşta kalma zaman aşımı (dakika)  | Değeri 4 ' te bırakın        |
     | DNS ad etiketi          | Değeri boş bırakın    |

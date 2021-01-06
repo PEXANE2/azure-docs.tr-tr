@@ -3,18 +3,18 @@ title: PCI-DSS v 3.2.1 şema örnek denetimleri
 description: Ödeme kartı sektör verileri güvenliği standart v 3.2.1 şema örneğinin Azure ilkesi ve Azure RBAC 'e eşlenmesini denetleme.
 ms.date: 08/19/2020
 ms.topic: sample
-ms.openlocfilehash: c634e8cc64f6376251e2cd07725c5c5a643b27c7
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 7391b32b23f6f0fb8b337a8178b83cffd7dba69b
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931436"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955697"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>PCI DSS v 3.2.1 şema örneğinin denetim eşlemesi
 
 Aşağıdaki makalede, Azure şemaları PCI-DSS v 3.2.1 şema örneğinin PCI-DSS v 3.2.1 denetimleriyle nasıl eşleştiği açıklanır. Denetimler hakkında daha fazla bilgi için bkz. [PCI-DSS v 3.2.1](https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf).
 
-Aşağıdaki eşlemeler **PCI-DSS v 3.2.1:2018** denetimlerine göre yapılır. Sağ taraftaki gezinmeyi kullanarak doğrudan belirli bir denetim eşlemesine atlayın. Eşlenmiş denetimlerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından, ** \[ PREVIEW \] audit PCI v 3.2.1:2018 denetimlerini** bulun ve seçin ve denetim gereksinimleri yerleşik ilke girişimi ' nı desteklemek için belirli VM uzantılarını dağıtın.
+Aşağıdaki eşlemeler **PCI-DSS v 3.2.1:2018** denetimlerine göre yapılır. Sağ taraftaki gezinmeyi kullanarak doğrudan belirli bir denetim eşlemesine atlayın. Eşlenmiş denetimlerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından, **PCI v 3.2.1:2018** yerleşik ilke girişimi ' ni bulun ve seçin.
 
 > [!IMPORTANT]
 > Aşağıdaki her denetim bir veya daha fazla [Azure ilke](../../../policy/overview.md) tanımı ile ilişkilidir. Bu ilkeler, denetimiyle [uyumluluğu değerlendirmenize](../../../policy/how-to/get-compliance-data.md) yardımcı olabilir; Ancak, bir denetim ile bir veya daha fazla ilke arasında genellikle bire bir veya tam eşleşme yoktur. Bu nedenle, Azure Ilkesi ile **uyumlu** , yalnızca ilkelerin kendilerine başvurur; Bu, bir denetimin tüm gereksinimleriyle tamamen uyumlu olduğunuzdan emin değildir. Buna ek olarak, uyumluluk standardı şu anda herhangi bir Azure Ilke tanımı tarafından açıklanmayan denetimler içerir. Bu nedenle, Azure Ilkesinde uyumluluk, genel uyumluluk durumunuzu yalnızca kısmi görünümüdür. Bu uyumluluk şeması örneği için denetimler ve Azure Ilke tanımları arasındaki ilişkilendirmeler zaman içinde değişebilir. Değişiklik geçmişini görüntülemek için [GitHub kayıt geçmişine](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/pci-dss-3.2.1/control-mapping.md)bakın.

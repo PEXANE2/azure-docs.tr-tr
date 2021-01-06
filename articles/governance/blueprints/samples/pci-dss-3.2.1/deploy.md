@@ -3,12 +3,12 @@ title: Dağıtım PCI-DSS v 3.2.1 şema örneği
 description: Ödeme kartı sektör verileri güvenliği standart v 3.2.1 şema örneği için adımları dağıtın ve şema yapıtı parametresi ayrıntıları dahil.
 ms.date: 08/19/2020
 ms.topic: sample
-ms.openlocfilehash: a7917f09e5e5ff898bd155f0961e5c9765b8d791
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0b1d635a073dc19e41a7ba73e130d6028daca99
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88649219"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955680"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>PCI DSS v 3.2.1 şema örneğini dağıtma
 
@@ -52,7 +52,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="assign-the-sample-copy"></a>Örnek kopyayı atama
 
-Şema örneğinin kopyası başarıyla **yayımlandıktan**sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adımda, şema örneği kopyasının her bir dağıtımını benzersiz hale getirmek için parametreler sağlanır.
+Şema örneğinin kopyası başarıyla **yayımlandıktan** sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adımda, şema örneği kopyasının her bir dağıtımını benzersiz hale getirmek için parametreler sağlanır.
 
 1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 
@@ -93,7 +93,7 @@ Aşağıdaki tabloda, şema yapıtı parametrelerinin bir listesi verilmiştir:
 
 |Yapıt adı|Yapıt türü|Parametre adı|Açıklama|
 |-|-|-|-|
-|\[Preview \] AUDIT PCI v 3.2.1:2018 denetimleri ve belırlı VM uzantılarını, denetim gereksinimlerini destekleyecek şekilde dağıtın|İlke Ataması|Kaynak türleri listesi | Seçili kaynak türleri için tanılama ayarını denetleyin. Varsayılan değer tüm kaynaklar seçilidir| 
+|PCI v 3.2.1:2018|İlke Ataması|Kaynak türleri listesi | Seçili kaynak türleri için tanılama ayarını denetleyin. Varsayılan değer tüm kaynaklar seçilidir| 
 |İzin verilen konumlar|İlke Ataması|Izin verilen konumların listesi|Herhangi bir kaynağın dağıtılması için izin verilen veri merkezi konumları listesi. Bu liste, istenen Azure konumlarına küresel olarak özelleştirilebilir. İzin vermek istediğiniz konumları seçin.| 
 |Kaynak grupları için izin verilen konumlar|İlke Ataması |İzin verilen konum |Bu ilke, kuruluşunuzun içinde kaynak grupları oluşturabileceğiniz konumları kısıtlamanıza olanak sağlar. Coğrafi uyumluluk gereksinimlerinizi zorunlu kılmak için kullanabilirsiniz.| 
 |SQL Server 'lar üzerinde denetim dağıtma|İlke Ataması|Bekletme günleri|Gün sayısı cinsinden veri saklama. Varsayılan değer 180, ancak PCI 365 gerektirir.| 

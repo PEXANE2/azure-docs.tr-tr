@@ -4,12 +4,12 @@ description: Bu makalede, Microsoft Azure Backup sunucusu (MABS) ve DPM (Data Pr
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.openlocfilehash: cd974181c78586f915dad6cc6ed39d9255a1456b
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 1663a842b7e00c611543451d4caef96b5b5a913f
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172586"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955000"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Sunucusu ve DPM-SSS
 
@@ -56,6 +56,10 @@ VMware/Hyper-V koruması için ayrı lisansa sahip olmanız gerekmez.
 
 - System Center müşterisiyseniz, VMware VM 'lerini korumak için System Center Data Protection Manager (DPM) kullanın.
 - Bir System Center müşterisi değilseniz, VMware VM 'lerini korumak için Azure Backup Sunucusu (Kullandıkça öde) kullanabilirsiniz.
+
+### <a name="can-i-restore-a-backup-of-a-hyper-v-or-vmware-vm-stored-in-azure-to-azure-as-an-azure-vm"></a>Azure 'da depolanan bir Hyper-V veya VMware sanal makinesinin yedeklemesini Azure VM olarak Azure 'a geri yükleyebilir miyim?
+
+Hayır, şu anda mümkün değildir. Yalnızca şirket içi bir konağa geri yükleyebilirsiniz.
 
 ## <a name="sharepoint"></a>SharePoint
 

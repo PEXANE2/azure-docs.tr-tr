@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 878fa181ff09d547ef6594a238e9c1d883cc89b7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c98b47507a7543002f00aae82370f5ea0043510d
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460492"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954286"
 ---
 # <a name="customers-dashboard-in-commercial-marketplace-analytics"></a>Ticari Market Analytics 'te müşteriler panosu
 
 Bu makalede, Iş Ortağı Merkezi 'ndeki müşteriler panosu hakkında bilgi sağlanmaktadır. Bu Pano, bir grafik ve indirilebilir biçimde sunulan büyüme eğilimleri dahil olmak üzere müşterilerinizle ilgili bilgileri görüntüler.
 
-İş Ortağı Merkezi 'nde müşteriler panosuna erişmek için, **ticari Market** altında müşterileri **[Çözümle](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**' yi seçin  >  **Customers**.
+İş Ortağı Merkezi 'nde müşteriler panosuna erişmek için, **ticari Market** altında müşterileri **[Çözümle](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**' yi seçin  >  .
 
 >[!NOTE]
 > Analiz terminolojisi hakkında ayrıntılı tanımlamalar için bkz. [ticari Market Analytics terminolojisi ve sık sorulan sorular](./analytics-faq.md).
@@ -144,7 +144,7 @@ _**Tablo 1: veri koşullarının sözlüğü**_
 
 | Sütun adı | Öznitelik adı | Tanım |
 | ------------ | ------------- | ------------- |
-| Market abonelik kimliği | Market abonelik KIMLIĞI | Ticari Market teklifinizi satın almak için kullanılan müşterinin Azure aboneliğiyle ilişkili benzersiz tanımlayıcı. KIMLIĞI daha önce Azure aboneliği GUID 'iydi. |
+| Market abonelik kimliği | Market abonelik KIMLIĞI | Ticari Market teklifinizi satın almak için kullanılan müşterinin Azure aboneliğiyle ilişkili benzersiz tanımlayıcı. Altyapı teklifleri için bu müşterinin Azure abonelik GUID 'sidir. SaaS tekliflerini bir Azure aboneliği gerektirmediğinden, SaaS teklifleri için bu sıfır olarak gösterilir. |
 | Tarih alındı | Alınma tarihi | Müşterinin yayımladığınız teklifi satın aldığı ilk tarih. |
 | Tarih kayıp | Kayıp tarihi | Müşterinin önceden satın alınan tüm tekliflerden en son iptal edilme tarihi. |
 | Sağlayıcı Adı | Sağlayıcı Adı | Microsoft ile müşteri arasındaki ilişkide yer alan sağlayıcının adı. Müşteri, satıcı üzerinden bir kurumsal ise, bu satıcı olacaktır. Bir bulut çözümü sağlayıcısı (CSP) dahil edilmişse, bu CSP olacaktır. |
@@ -157,7 +157,7 @@ _**Tablo 1: veri koşullarının sözlüğü**_
 | Müşteri posta kodu | Müşteri posta kodu | Müşteri tarafından sunulan posta kodu. Kod, müşterinin Azure aboneliğinde girilen posta kodundan farklı olabilir. |
 | CustomerCommunicationCulture | Müşteri Iletişim dili | İletişim için müşterinin tercih ettiği dil. |
 | CustomerCountryRegion | Müşteri ülkesi/bölgesi | Müşterinin sunduğu ülke/bölge adı. Ülke/bölge, müşterinin Azure aboneliğindeki ülke/bölgeden farklı olabilir. |
-| AzureLicenseType | Azure lisans türü | Müşteriler tarafından Azure satın alma için kullanılan lisans sözleşmesinin türü. _Kanal_ olarak da bilinir. Olası değerler şunlardır:<ul><li>Bulut çözümü sağlayıcısı</li><li>Enterprise</li><li>Satıcı aracılığıyla kurumsal</li><li>Kullandıkça öde</li></ul> |
+| AzureLicenseType | Azure lisans türü | Müşteriler tarafından Azure satın alma için kullanılan lisans sözleşmesinin türü. _Kanal_ olarak da bilinir. Olası değerler şunlardır:<ul><li>Bulut çözümü sağlayıcısı</li><li>Kurumsal</li><li>Satıcı aracılığıyla kurumsal</li><li>Kullandıkça öde</li></ul> |
 | Promotionalmüşterileri | Promosyon ekibine katılım kabul ediyor | Bu değer, müşterinin yayımcılardan promosyon kişisini önceden kabul eder olduğunu bilmenizi sağlar. Şu anda, bu seçeneği müşterilere sunuyoruz, bu nedenle Pano genelinde "Hayır" belirtiyoruz. Bu özellik dağıtıldıktan sonra, güncelleştirmeye uygun olarak başlayacağız. |
 | CustomerState | Müşteri durumu | Müşterinin verdiği durum. Durum, müşterinin Azure aboneliğinde belirtilen durumdan farklı olabilir. |
 | Ticari sertifika kimliği müşterisi | Ticaret kök müşterisi | Bir faturalandırma hesabı KIMLIĞI, birden fazla müşteri kimliğiyle ilişkilendirilebilir.<br>Bir faturalandırma hesabı KIMLIĞI ve müşteri KIMLIĞI birleşimi, birden çok ticari Market abonelikleriyle ilişkilendirilebilir.<br>Commerce root müşterisi, abonelik müşterisinin adını belirtir. |

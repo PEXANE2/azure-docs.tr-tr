@@ -4,15 +4,15 @@ description: Sahip olabileceğiniz sorunları ortadan kaldırmak için sensöriz
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/12/2020
+ms.date: 1/3/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: a57db4f88de4a3b32b4fb315fb331500f955d501
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: b91827fc0a6fb8380c9f8aa87a3def3bc1819523
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97843002"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955442"
 ---
 # <a name="troubleshoot-the-sensor-and-on-premises-management-console"></a>Algılayıcı ve şirket içi yönetim konsolunda sorun giderme
 
@@ -28,22 +28,33 @@ Bu makalede, algılayıcı ve şirket içi yönetim konsolu için temel sorun gi
 
 ### <a name="investigate-password-failure-at-initial-sign-in"></a>İlk oturum açma sırasında parola hatasını araştırın
 
-Önceden yapılandırılmış bir ok algılayıcısı üzerinde ilk kez oturum açtığınızda, aşağıdaki parola kurtarma işlemini gerçekleştirmeniz gerekir:
+Önceden yapılandırılmış bir ok algılayıcısı içinde ilk kez oturum açarken parola kurtarma gerçekleştirmeniz gerekir.
 
-1. IoT için Defender oturum açma ekranında **parola kurtarma** seçeneğini belirleyin. 
+Parolanızı kurtarmak için:
 
-   **Parola kurtarma** ekranı açılır. Burada, Kullanıcı ve aboneliği seçmeniz istenir ve benzersiz bir tanımlayıcı verilirler.
+1. IoT için Defender oturum açma ekranında  **parola kurtarma**' yı seçin. **Parola kurtarma** ekranı açılır.
 
-1. IoT **siteleri ve sensör** için Defender sayfasına gidin ve **parolamı kurtar** sekmesini seçin.
+1. **Six** ya da **destek**' i seçin ve benzersiz tanımlayıcıyı kopyalayın.
+
+1. Azure portal gidin ve **siteler ve Algılayıcılar '** ı seçin.  
+
+1. **Şirket içi yönetim konsolu parolasını kurtar** sekmesini seçin.
+
+   :::image type="content" source="media/password-recovery-images/recover-button.png" alt-text="Kurtarma dosyasını indirmek için şirket içi yönetimi kurtar düğmesini seçin.":::
 
 1. **Parola kurtarma** ekranında aldığınız benzersiz tanımlayıcıyı girip **kurtar**' ı seçin. `password_recovery.zip`Dosya indirilir.
 
-   > [!NOTE]
-   > Etkinleştirme dosyasını değiştirmeyin. Bu, imzalanmış bir dosyadır ve bununla karşılaşırsanız çalışmaz.
+    > [!NOTE]
+    > Parola kurtarma dosyasını değiştirmeyin. Bu, imzalanmış bir dosyadır ve bununla karşılaşırsanız çalışmaz.
 
-1. **Parola kurtarma** ekranında dosyayı karşıya yükleyin `password_recovery.zip` ve **İleri ' yi** seçin.
+1. **Parola kurtarma** ekranında **karşıya yükle**' yi seçin. **Parola kurtarma dosyası yükle** penceresi açılır.
 
-Daha sonra yönetim konsolunuz için sistem tarafından oluşturulan parolayı alırsınız. 
+1. Dosyanızı bulmak için **Araştır** `password_recovery.zip` ' ı seçin veya `password_recovery.zip` pencereyi pencereye sürükleyin.
+
+1. **İleri**' yi seçtiğinizde, Kullanıcı ve yönetim konsolunuz için sistem tarafından oluşturulan parolanız görüntülenir.
+
+    > [!NOTE]
+    > İlk kez bir sensör veya şirket içi yönetim konsolunda oturum açtığınızda, onu bağladığınız aboneliğe bağlanır. Six veya destek kullanıcısının parolasını sıfırlamanız gerekiyorsa, bu aboneliği seçmeniz gerekir. Bir Six veya destek Kullanıcı parolasını kurtarma hakkında daha fazla bilgi için bkz [. kullanıcının algılayıcısı veya şirket içi yönetim konsolu için Kullanıcı parolasını sıfırlama](how-to-create-and-manage-users.md#resetting-a-users-password-for-the-sensor-or-on-premises-management-console)
 
 ### <a name="investigate-a-lack-of-traffic"></a>Trafik eksikliğinden araştırma
 
@@ -65,35 +76,35 @@ Sistem performansını denetlemek için:
 
    :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/dashboard-view-v2.png" alt-text="Örnek panonun ekran görüntüsü."::: 
 
-2. Yan menüden **cihazlar**' ı seçin.
+1. Yan menüden **cihazlar**' ı seçin.
 
-3. **Cihazlar** penceresinde cihazların bulunduğundan emin olun.
+1. **Cihazlar** penceresinde cihazların bulunduğundan emin olun.
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/discovered-devices.png" alt-text="Cihazların bulunduğundan emin olun.":::
 
-4. Yan menüden **veri araştırma**' yı seçin.
+1. Yan menüden **veri araştırma**' yı seçin.
 
-5. **Veri araştırma** penceresinde, **Tümü** ' nü seçin ve bir rapor oluşturun.
+1. **Veri araştırma** penceresinde, **Tümü** ' nü seçin ve bir rapor oluşturun.
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/new-report-generated.png" alt-text="Veri madenciliği kullanarak yeni bir rapor oluşturun.":::
 
-6. Raporun veri içerdiğinden emin olun.
+1. Raporun veri içerdiğinden emin olun.
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/new-report-generated.png" alt-text="Raporun veri içerdiğinden emin olun.":::
 
-7. Yan menüden **eğilimler & istatistik**' i seçin.
+1. Yan menüden **eğilimler & istatistik**' i seçin.
 
-8. **Eğilimler & istatistikleri** penceresinde **pencere öğesi Ekle**' yi seçin.
+1. **Eğilimler & istatistikleri** penceresinde **pencere öğesi Ekle**' yi seçin.
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/add-widget.png" alt-text="Seçerek bir pencere öğesi ekleyin.":::
 
-9. Pencere öğesi ekleyin ve verileri gösterdiğinizden emin olun.
+1. Pencere öğesi ekleyin ve verileri gösterdiğinizden emin olun.
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/widget-data.png" alt-text="Pencere öğesinin verileri göstermesini sağlayın.":::
 
-10. Yan menüden **Uyarılar**' ı seçin. **Uyarılar** penceresi görüntülenir.
+1. Yan menüden **Uyarılar**' ı seçin. **Uyarılar** penceresi görüntülenir.
 
-11. Uyarıların oluşturulduğundan emin olun.
+1. Uyarıların oluşturulduğundan emin olun.
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/alerts-created.png" alt-text="Uyarıların oluşturulduğundan emin olun.":::
 
@@ -154,9 +165,9 @@ Yapılandırmayı onarmak için:
 
 1. Cihaz haritasında bulut simgesine sağ tıklayın ve **IP adreslerini dışarı aktar**' ı seçin. Özel olan ortak aralıkları kopyalayın ve bunları alt ağ listesine ekleyin. Daha fazla bilgi için bkz. [alt ağları yapılandırma](how-to-control-what-traffic-is-monitored.md#configure-subnets).
 
-2. İnternet bağlantıları için yeni bir veri araştırma raporu oluşturun.
+1. İnternet bağlantıları için yeni bir veri araştırma raporu oluşturun.
 
-3. Veri araştırma raporunda, :::image type="icon" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/administrator-mode.png" border="false"::: yönetici moduna girmek ve ICS cihazlarınızın IP adreslerini silmek için seçin.
+1. Veri araştırma raporunda, :::image type="icon" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/administrator-mode.png" border="false"::: yönetici moduna girmek ve ICS cihazlarınızın IP adreslerini silmek için seçin.
 
 ### <a name="tweak-the-sensors-quality-of-service"></a>Sensörin hizmet kalitesini ince ayar
 
@@ -179,7 +190,7 @@ Hizmet kalitesini ince ayar için:
    > [!NOTE]
    > Fiziksel bir gereç için EM1 arabirimini kullanın.
 
-2. Arabirim sınırlamasını temizlemek için girin `sudo cyberx-xsense-limit-interface -i eth0 -l 1mbps -c` .
+1. Arabirim sınırlamasını temizlemek için girin `sudo cyberx-xsense-limit-interface -i eth0 -l 1mbps -c` .
 
 ## <a name="on-premises-management-console-troubleshooting-tools"></a>Şirket içi yönetim konsolu sorun giderme araçları
 
@@ -203,7 +214,7 @@ Hizmet kalitesini ince ayar için:
 
 1. IoT kullanıcısı için bir Defender olarak oturum açın. 
 
-2. Varsayılan değerleri doğrulayın:
+1. Varsayılan değerleri doğrulayın:
 
    ```bash
    grep \"notifications\" /var/cyberx/properties/management.properties
@@ -216,20 +227,20 @@ Hizmet kalitesini ince ayar için:
    notifications.max_time_to_report=10 (seconds)
    ```
 
-3. Varsayılan ayarları düzenleyin:
+1. Varsayılan ayarları düzenleyin:
 
    ```bash
    sudo nano /var/cyberx/properties/management.properties
    ```
 
-4. Aşağıdaki satırların ayarlarını düzenleyin:
+1. Aşağıdaki satırların ayarlarını düzenleyin:
 
    ```bash
    notifications.max_number_to_report=50
    notifications.max_time_to_report=10 (seconds)
    ```
 
-5. Değişiklikleri kaydedin. Yeniden başlatma gerekmez.
+1. Değişiklikleri kaydedin. Yeniden başlatma gerekmez.
 
 ## <a name="export-information-for-troubleshooting"></a>Sorun giderme için dışarı aktarma bilgileri
 
@@ -239,13 +250,13 @@ Günlükleri dışarı aktarmak için:
 
 1. Sol bölmede **sistem ayarları**' nı seçin.
 
-2. **Günlükleri Dışarı Aktar** öğesini seçin.
+1. **Günlükleri Dışarı Aktar** öğesini seçin.
 
     :::image type="content" source="media/how-to-export-information-for-troubleshooting/export-a-log.png" alt-text="Bir günlüğü sistem desteğine aktarma.":::
 
-3. **Dosya adı** kutusuna, günlük dışarı aktarma için kullanmak istediğiniz dosya adını girin. Varsayılan değer geçerli tarihtir.
+1. **Dosya adı** kutusuna, günlük dışarı aktarma için kullanmak istediğiniz dosya adını girin. Varsayılan değer geçerli tarihtir.
 
-4. Dışarı aktarmak istediğiniz verileri tanımlamak için veri kategorilerini seçin:  
+1. Dışarı aktarmak istediğiniz verileri tanımlamak için veri kategorilerini seçin:  
 
     | Kategoriyi dışarı aktar | Açıklama |
     |--|--|
@@ -261,12 +272,12 @@ Günlükleri dışarı aktarmak için:
     | **Web uygulaması günlükleri** | Uygulamanın web arabiriminden gönderilen tüm istekler hakkında bilgi almak için bu seçeneği belirleyin. |
     | **Sistem yedeklemesi** | Sistemin tam durumunu araştırmak için tüm sistem verilerinin bir yedeklemesini dışarı aktarmak için bu seçeneği belirleyin. |
     | **Dissection Istatistikleri** | Protokol istatistiklerinin gelişmiş incelemesini sağlamak için bu seçeneği belirleyin. |
-    | **Veritabanı günlükleri** | Günlükleri sistem veritabanından dışarı aktarmak için bu seçeneği belirleyin. Sistem günlüklerini araştırmak, sistem sorunlarını tanımlamaya yardımcı olur. |
+    | **Veritabanı günlükleri** | Günlükleri sistem veritabanından dışarı aktarmak için bu seçeneği belirleyin. Sistem günlüklerini araştırmak, sistem sorunlarını belirlemenize yardımcı olur. |
     | **Yapılandırma** | Her şeyin doğru şekilde yapılandırıldığından emin olmak için tüm yapılandırılabilir parametrelerle ilgili bilgileri dışarı aktarmak için bu seçeneği belirleyin. |
 
-5. Tüm seçenekleri belirlemek için **Kategoriler Seç**' ın yanındaki **Tümünü Seç** ' i seçin.
+1. Tüm seçenekleri belirlemek için **Kategoriler Seç**' ın yanındaki **Tümünü Seç** ' i seçin.
 
-6. **Günlükleri Dışarı Aktar** öğesini seçin.
+1. **Günlükleri Dışarı Aktar** öğesini seçin.
 
 İçe aktarılmış Günlükler **arşivlenmiş günlükler** listesine eklenir. OTP 'yi destek ekibine ayrı bir ileti ile ve orta/veya orta düzeydeki günlüklere gönderin. Destek ekibi, yalnızca günlükleri şifrelemek için kullanılan benzersiz OTP 'yi kullanarak dışarı aktarılmış günlükleri ayıklayabilecektir.
 
@@ -276,6 +287,6 @@ Arşivlenmiş günlüklerin listesi en fazla beş öğe içerebilir. Listedeki �
 
 - [Uyarıları görüntüleme](how-to-view-alerts.md)
 
-- [SNMP MıB izlemeyi ayarlama](how-to-set-up-snmp-mib-monitoring.md)
+- [SNMP MIB izlemesini ayarlama](how-to-set-up-snmp-mib-monitoring.md)
 
 - [Algılayıcı bağlantısının kesilmesi olaylarını anlama](how-to-manage-sensors-from-the-on-premises-management-console.md#understand-sensor-disconnection-events)
