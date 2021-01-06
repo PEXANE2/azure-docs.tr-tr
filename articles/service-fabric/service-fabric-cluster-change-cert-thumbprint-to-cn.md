@@ -3,12 +3,12 @@ title: Bir kümeyi sertifika ortak adını kullanacak şekilde güncelleştirme
 description: Azure Service Fabric küme sertifikasını parmak izi tabanlı bildirimlerden ortak adlara nasıl dönüştüreceğiniz hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 013b8190390a4b05791b0a56072487f249956ec5
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: f719b1eb39da776827c6babec61e9e6701bb4602
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495198"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900813"
 ---
 # <a name="convert-cluster-certificates-from-thumbprint-based-declarations-to-common-names"></a>Küme sertifikalarını parmak izi tabanlı bildirimlerden ortak adlara Dönüştür
 
@@ -63,8 +63,11 @@ Bir dönüştürme için birden çok geçerli başlangıç durumu var. Bu, küme
 #### <a name="valid-starting-states"></a>Geçerli başlangıç durumları
 
 - `Thumbprint: GoalCert, ThumbprintSecondary: None`
-- `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1`, `GoalCert` bu değerden sonraki bir `NotAfter` tarihe sahip `OldCert1`
-- `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert`, `GoalCert` bu değerden sonraki bir `NotAfter` tarihe sahip `OldCert1`
+- `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1`, `GoalCert` bu değerden sonraki bir `NotBefore` tarihe sahip `OldCert1`
+- `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert`, `GoalCert` bu değerden sonraki bir `NotBefore` tarihe sahip `OldCert1`
+
+> [!NOTE]
+> Sürüm 7.2.445 (7,2 CU4) öncesinde, en uzun süresi dolan sertifikayı (en uzak ' NotAfter ' özelliğine sahip sertifika) Service Fabric, bu nedenle yukarıdaki başlangıç durumları 7,2 ' den önce, GoalCert 'ın daha sonraki bir tarihe sahip olmasını gerektirir `NotAfter``OldCert1`
 
 Kümeniz daha önce açıklanan durumlardan birinde değilse, bu makalenin sonundaki bölümde bu durumu elde etmeye yönelik bilgiler bölümüne bakın.
 
@@ -79,7 +82,7 @@ Farkları ve her iki mekanizmayı seçme etkilerine ilişkin iyi bir fikir sahib
    >
    > Herhangi bir veren belirtilmemişse veya liste boşsa, zinciri derleyebileceğinden kimlik doğrulaması için sertifika kabul edilecektir. Daha sonra sertifika, doğrulayıcı tarafından güvenilen bir kökte sona erer. Bir veya daha fazla veren parmak izi belirtilirse, zincirdeki ayıklanarak doğrudan veren 'in parmak izi, bu alanda belirtilen değerlerden biriyle eşleşiyorsa, sertifika kabul edilir. Sertifika, köke güvenilip güvenilmediği kabul edilir.
    >
-   > Bir PKI, belirli bir konuyla sertifikaların imzalandığı farklı sertifika yetkilileri ( *verenler*olarak da bilinir) kullanabilir. Bu nedenle, söz konusu konu için beklenen tüm veren parmak izlerinin belirtilmesi önemlidir. Diğer bir deyişle, bir sertifikanın yenilenmesi, yenilenen sertifikayla aynı veren tarafından imzalanmamış olarak garanti edilmez.
+   > Bir PKI, belirli bir konuyla sertifikaların imzalandığı farklı sertifika yetkilileri ( *verenler* olarak da bilinir) kullanabilir. Bu nedenle, söz konusu konu için beklenen tüm veren parmak izlerinin belirtilmesi önemlidir. Diğer bir deyişle, bir sertifikanın yenilenmesi, yenilenen sertifikayla aynı veren tarafından imzalanmamış olarak garanti edilmez.
    >
    > Verenin belirtilmesi en iyi yöntem olarak kabul edilir. Sertifikayı dışarıda bırakmak, güvenilen bir köke kadar olan sertifikalar için çalışmaya devam eder, ancak bu davranışın sınırlamaları vardır ve yakın gelecekte kullanıma hazır olabilir. Azure 'da dağıtılan ve özel bir PKI tarafından verilen x509 sertifikalarıyla güvenli hale getirilen ve konuya göre belirtilen kümeler Service Fabric (kümeden hizmete iletişim için) tarafından doğrulanmamış olabilir. Doğrulama PKI 'nın sertifika ilkesinin bulunabilir, kullanılabilir ve erişilebilir olmasını gerektirir.
 
@@ -217,11 +220,14 @@ New-AzResourceGroupDeployment -ResourceGroupName $groupname -Verbose `
 
 | Başlangıç durumu | Yükseltme 1 | Yükseltme 2 |
 | :--- | :--- | :--- |
-| `Thumbprint: OldCert1, ThumbprintSecondary: None` ve `GoalCert` sonraki bir `NotAfter` tarihe sahiptir `OldCert1` | `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert` | - |
-| `Thumbprint: OldCert1, ThumbprintSecondary: None` ve `OldCert1` sonraki bir `NotAfter` tarihe sahiptir `GoalCert` | `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1` | `Thumbprint: GoalCert, ThumbprintSecondary: None` |
-| `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert`, burada `OldCert1` şundan sonraki bir `NotAfter` Tarih vardır `GoalCert` | Sürümüne yükselt `Thumbprint: GoalCert, ThumbprintSecondary: None` | - |
-| `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1`, burada `OldCert1` şundan sonraki bir `NotAfter` Tarih vardır `GoalCert` | Sürümüne yükselt `Thumbprint: GoalCert, ThumbprintSecondary: None` | - |
+| `Thumbprint: OldCert1, ThumbprintSecondary: None` ve `GoalCert` sonraki bir `NotBefore` tarihe sahiptir `OldCert1` | `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert` | - |
+| `Thumbprint: OldCert1, ThumbprintSecondary: None` ve `OldCert1` sonraki bir `NotBefore` tarihe sahiptir `GoalCert` | `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1` | `Thumbprint: GoalCert, ThumbprintSecondary: None` |
+| `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert`, burada `OldCert1` şundan sonraki bir `NotBefore` Tarih vardır `GoalCert` | Sürümüne yükselt `Thumbprint: GoalCert, ThumbprintSecondary: None` | - |
+| `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1`, burada `OldCert1` şundan sonraki bir `NotBefore` Tarih vardır `GoalCert` | Sürümüne yükselt `Thumbprint: GoalCert, ThumbprintSecondary: None` | - |
 | `Thumbprint: OldCert1, ThumbprintSecondary: OldCert2` | `OldCert1` `OldCert2` Durumuna ulaşmak için veya birini kaldırın`Thumbprint: OldCertx, ThumbprintSecondary: None` | Yeni başlangıç durumundan devam et |
+
+> [!NOTE]
+> Sürüm 7.2.445 (7,2 CU4) öncesindeki bir sürümdeki küme için, `NotBefore` `NotAfter` Yukarıdaki durumlarda ile değiştirin.
 
 Bu yükseltmelerden herhangi birini gerçekleştirme hakkında yönergeler için bkz. [Azure Service Fabric kümesinde sertifikaları yönetme](service-fabric-cluster-security-update-certs-azure.md).
 

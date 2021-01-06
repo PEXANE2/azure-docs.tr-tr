@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 5cac21046b6b4afdefc4213f6a1fab438d62cca3
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: dbff136ac5787ef9549cca9dc8f946c56a138986
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957546"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900510"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux görüntülerine genel bakış
 
@@ -22,7 +22,7 @@ Bu makalede Azure Marketi 'ndeki kullanılabilir Red Hat Enterprise Linux (RHEL)
 Tüm RHEL sürümleri için Red Hat destek ilkeleri hakkında daha fazla bilgi için, [Red Hat Enterprise Linux yaşam döngüsü](https://access.redhat.com/support/policy/updates/errata)' ne bakın. Fiyatlandırma ayrıntıları için bkz. [Azure Fiyatlandırma hesaplayıcısı](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
 >[!IMPORTANT]
-> Şu anda Azure Marketi 'nde bulunan RHEL görüntüleri, kendi aboneliğinizi getir (KCG) veya kullandıkça öde lisans modellerini destekler. KCG ve kullandıkça öde lisanslaması arasında [Azure hibrit kullanım avantajı](../../windows/hybrid-use-benefit-licensing.md) ve dinamik geçiş desteklenmez. Lisans modunu değiştirmek için, VM 'yi karşılık gelen görüntüden yeniden dağıtmanız gerekir.
+> Şu anda Azure Marketi 'nde bulunan RHEL görüntüleri, kendi aboneliğinizi getir (KCG) veya kullandıkça öde lisans modellerini destekler. KCG ve kullandıkça öde lisanslaması arasında dinamik geçiş, [Azure hibrit kullanım teklifi](../../linux/azure-hybrid-benefit-linux.md)aracılığıyla yapılabilir.
 
 >[!NOTE]
 > Azure Marketi 'ndeki RHEL görüntüleriyle ilgili herhangi bir sorun için Microsoft ile bir destek bileti dosyası yazın.
@@ -146,7 +146,7 @@ Aşağıdaki tabloda yer alan bilgiler, EUS depolarına bağlı RHEL görüntül
 RHEL 7,4      |RedHat: RHEL: 7.4:7.4.2019041718 | 2019 Nisan ve üzeri yayımlanan görüntüler varsayılan olarak EUS ' dir.|
 RHEL 7.5      |RedHat: RHEL: 7.5:7.5.2019060305 | 2019 Haziran ve üzeri yayımlanan görüntüler varsayılan olarak EUS ' dir. |
 RHEL 7,6      |RedHat: RHEL: 7.6:7.6.2019052206 | 2019 ve sonraki sürümlerde yayınlanan görüntüler varsayılan olarak EUS olabilir. |
-RHEL 8,0      |YOK                            | Red Hat tarafından kullanılabilir EUS yok.                               |
+RHEL 8,0      |Yok                            | Red Hat tarafından kullanılabilir EUS yok.                               |
 
 ### <a name="update-services-for-sap"></a>SAP için Güncelleştirme Hizmetleri
 

@@ -1,34 +1,35 @@
 ---
 title: İzleme ve günlüğe kaydetme-Azure
-description: Bu makalede, IoT Edge izleme ve günlüğe kaydetme hakkında canlı video analizine genel bakış sunulmaktadır.
+description: Bu makalede, IoT Edge üzerindeki canlı video analizlerinde izleme ve günlüğe kaydetme konusunda genel bir bakış sunulmaktadır.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: 8ae455a4157cd649f610620e486323ac2c0a5744
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 6a7251b62421642ad9f5dba4f4c2a15ce74cd5cf
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401058"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900884"
 ---
 # <a name="monitoring-and-logging"></a>İzleme ve günlüğe kaydetme
 
-Bu makalede, uzaktan izleme için IoT Edge modülündeki canlı video analizinden nasıl olay alabileceğinizi öğreneceksiniz. 
+Bu makalede, IoT Edge modülündeki canlı video analizinden uzaktan izleme olaylarının nasıl alınacağını öğreneceksiniz. 
 
-Ayrıca, modülün oluşturduğu günlükleri nasıl denetleyebileceğinizi de öğreneceksiniz.
+Ayrıca, modülün oluşturduğu günlükleri nasıl denetleyeceğinizi de öğreneceksiniz.
 
 ## <a name="taxonomy-of-events"></a>Olayların taksonomisi
 
-IoT Edge canlı video analizi, olayları veya telemetri verilerini aşağıdaki sınıflandırmaya göre yayar.
+Canlı video analizi, aşağıdaki sınıflandırmaya göre olayları veya telemetri verilerini IoT Edge yayar:
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/telemetry-schema/taxonomy.png" alt-text="Olayların taksonomisi":::
+> :::image type="content" source="./media/telemetry-schema/taxonomy.png" alt-text="Olay taksonomini gösteren diyagram.":::
 
-* İşletimsel: bir kullanıcı tarafından alınan eylemlerin bir parçası olarak veya bir [medya grafiğinin](media-graph-concept.md)yürütülmesi sırasında oluşturulan olaylar.
+* İşletimsel: bir kullanıcının eylemleri veya bir [medya grafiğinin](media-graph-concept.md) yürütülmesi sırasında oluşturulan olaylar
    
-   * Birim: düşük (bir dakika veya daha düşük bir hız) olması bekleniyor.
+   * Birim: düşük olması bekleniyordu (birkaç dakika, hatta daha az)
    * Örnekler:
 
-      Kayıt başlatıldı (aşağıda), kayıt durduruldu
+      - Kayıt başlatıldı (aşağıdaki örnekte gösterildiği gibi)
+      - Kayıt durduruldu
       
       ```
       {
@@ -45,12 +46,13 @@ IoT Edge canlı video analizi, olayları veya telemetri verilerini aşağıdaki 
         }
       }
       ```
-* Tanılama: sorunları ve/veya performansla ilgili sorunları tanılamaya yardımcı olan olaylar.
+* Tanılama: performans sorunlarını tanılamaya yardımcı olan olaylar
 
-   * Birim: yüksek (birkaç kez bir dakika) olabilir.
+   * Birim: yüksek (birkaç kez bir dakika) olabilir
    * Örnekler:
    
-      RTSP [SDP](https://en.wikipedia.org/wiki/Session_Description_Protocol) bilgileri (aşağıda) veya gelen video akışındaki boşluklar.
+      - RTSP [SDP](https://en.wikipedia.org/wiki/Session_Description_Protocol) bilgileri (aşağıdaki örnekte gösterilen) 
+      - Gelen video akışındaki boşluklar
 
       ```
       {
@@ -66,12 +68,13 @@ IoT Edge canlı video analizi, olayları veya telemetri verilerini aşağıdaki 
         }
       }
       ```
-* Analytics: video analizinin bir parçası olarak oluşturulan olaylar.
+* Analytics: video analizinin bir parçası olarak oluşturulan olaylar
 
-   * Birim: yüksek (bir dakika veya daha fazla zaman) olabilir.
+   * Birim: yüksek (birkaç dakika veya daha fazla) olabilir
    * Örnekler:
       
-      Hareket algılandı (aşağıda), çıkarım sonucu.
+      - Hareket algılandı (aşağıdaki örnekte gösterildiği gibi) 
+      - Çıkarım sonucu
 
    ```      
    {
@@ -101,19 +104,19 @@ IoT Edge canlı video analizi, olayları veya telemetri verilerini aşağıdaki 
    }
    ```
 
-Modül tarafından yayılan olaylar [IoT Edge hub 'ına](../../iot-edge/iot-edge-runtime.md#iot-edge-hub)gönderilir ve oradan başka hedeflere yönlendirilebilir. 
+Modül tarafından yayılan olaylar [IoT Edge hub 'ına](../../iot-edge/iot-edge-runtime.md#iot-edge-hub)gönderilir. Bunlar, diğer hedeflere yönlendirilebilir. 
 
 ### <a name="timestamps-in-analytic-events"></a>Analitik olaylardaki zaman damgaları
 
-Yukarıda belirtildiği gibi, video analizinin bir parçası olarak oluşturulan olaylar kendileriyle ilişkili bir zaman damgasına sahiptir. Canlı videoyu grafik topolojinizin bir parçası olarak [kaydettiyse](video-recording-concept.md) bu zaman damgası, Kaydedilen videoda belirli bir olayın oluştuğu yeri bulmanıza yardımcı olur. Aşağıda, bir analitik olaydaki zaman damgasının, bir [Azure Media Service](terminology.md#asset)varlığına kaydedilen videonun zaman çizelgesine eşlenme yönergeleri verilmiştir.
+Daha önce belirtildiği gibi, video analizinin bir parçası olarak oluşturulan olaylar, bunlarla ilişkili zaman damgalarına sahiptir. Canlı videoyu grafik topolojinizin bir parçası olarak [kaydettiyse](video-recording-concept.md) , bu zaman damgaları kayıtlı videoda belirli bir olayın gerçekleştiği yeri bulmanıza yardımcı olur. Aşağıda, bir analitik olaydaki zaman damgasının [Azure Media Services bir varlık](terminology.md#asset)olarak kaydedilen videonun zaman çizelgesine nasıl eşleneceğini gösteren yönergeler verilmiştir.
 
-İlk olarak, `eventTime` değeri ayıklayın. Kaydın uygun bir bölümünü almak için bu değeri bir [zaman aralığı filtresinde](playback-recordings-how-to.md#time-range-filters) kullanın. Örneğin, 30 saniye önce başlayan `eventTime` ve daha sonra sona erecek bir video getirmek isteyebilirsiniz. Yukarıdaki örnekte, `eventTime` 2020-05-12T23:33:09.381 z olduğunda, +/-30 saniye penceresi için BIR HLS bildirimi isteği aşağıdaki gibi görünür:
+İlk olarak, `eventTime` değeri ayıklayın. Kaydın uygun bir bölümünü almak için bu değeri bir [zaman aralığı filtresinde](playback-recordings-how-to.md#time-range-filters) kullanın. Örneğin, 30 saniye önce başlayan `eventTime` ve sonrasında 30 saniye biten videoları almak isteyebilirsiniz. Önceki örnekte, burada `eventTime` 2020-05-12T23:33:09.381 z, her ne kadar 30 saniye önce ve sonrasında BIR HLS bildirimi isteği `eventTime` Bu istek gibi görünür:
 
 ```
 https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2020-05-12T23:32:39Z,endTime=2020-05-12T23:33:39Z).m3u8
 ```
 
-Yukarıdaki URL, medya çalma listeleri için URL 'Leri içeren, bu şekilde adlandırılan [ana çalma listesini](https://developer.apple.com/documentation/http_live_streaming/example_playlists_for_http_live_streaming)döndürür. Medya çalma listesi aşağıdaki gibi girdileri içerir:
+Yukarıdaki URL, medya çalma listeleri için URL 'Leri içeren bir [ana çalma listesi](https://developer.apple.com/documentation/http_live_streaming/example_playlists_for_http_live_streaming) döndürür. Medya çalma listesi şöyle bir giriş içerir:
 
 ```
 ...
@@ -121,21 +124,21 @@ Yukarıdaki URL, medya çalma listeleri için URL 'Leri içeren, bu şekilde adl
 Fragments(video=143039375031270,format=m3u8-aapl)
 ...
 ```
-Yukarıdaki girişte Giriş, bir zaman damgası değeri ile başlayan bir video parçasının kullanılabilir olduğunu bildiriyor `143039375031270` . `timestamp`Analitik olaydaki değer, medya çalma listesiyle aynı zaman ölçeğini kullanır ve ilgili video parçasını tanımlamak ve doğru çerçeveye arama yapmak için kullanılabilir.
+Yukarıdaki giriş, bir değeri ile başlayan bir video parçasının kullanılabilir olduğunu bildirir `timestamp` `143039375031270` . `timestamp`Analitik olaydaki değer, medya çalma listesiyle aynı zaman ölçeğini kullanır. İlgili video parçasını tanımlamak ve doğru çerçeveye arama yapmak için kullanılabilir.
 
-Daha fazla bilgi için, HLS 'de kare doğru arama hakkında birçok [makaleyi](https://www.bing.com/search?q=frame+accurate+seeking+in+HLS) okuyabilirsiniz.
+Daha fazla bilgi için bkz. HLS 'de [çerçeveye doğru arama hakkında bu makalelere](https://www.bing.com/search?q=frame+accurate+seeking+in+HLS) bakın.
 
 ## <a name="controlling-events"></a>Olayları denetleme
 
-IoT Edge modülündeki canlı video analizi tarafından yayımlanan işletimsel ve Tanılama olaylarını denetlemek için, aşağıdaki modül ikizi özelliklerini [Modül IKIZI JSON şeması](module-twin-configuration-schema.md)'nda belgelendiği şekilde kullanabilirsiniz.
+IoT Edge modülündeki canlı video analizi tarafından yayımlanan işletimsel ve Tanılama olaylarını denetlemek için aşağıdaki Module ikizi özelliklerini kullanabilirsiniz. Bu özellikler [module IKIZI JSON şemasında](module-twin-configuration-schema.md)belgelenmiştir.
 
-`diagnosticsEventsOutputName` – modülden tanılama olayları almak için bu özellik için dahil etme ve sağlama (any) değeri. Bunu atlayın veya modülün Tanılama olaylarını yayımlamasını durdurmak için boş bırakın.
+- `diagnosticsEventsOutputName`: Modülden Tanılama olaylarını almak için bu özelliği ekleyin ve bunun için herhangi bir değer sağlayın. Modülün Tanılama olaylarını yayımlamasını durdurmak için bunu atlayın veya boş bırakın.
    
-`operationalEventsOutputName` – modülden işlem olaylarını almak için bu özellik için dahil etme ve sağlama (any) değeri. Modülün işlemsel olayları yayımlamasını durdurmak için bunu atlayın veya boş bırakın.
+- `operationalEventsOutputName`: Modülden işlem olaylarını almak için bu özelliği ekleyin ve bunun için herhangi bir değer sağlayın. Modülün işlemsel olayları yayımlamasına izin vermek için bunu atlayın veya boş bırakın.
    
-Analiz olayları, hareket algılama işlemcisi veya HTTP uzantısı işlemcisi gibi düğümler tarafından oluşturulur ve bunları IoT Edge hub 'ına göndermek için IoT Hub havuzu kullanılır. 
+Analiz olayları, hareket algılama işlemcisi veya HTTP uzantısı işlemcisi gibi düğümler tarafından oluşturulur. IoT Hub 'ı havuzu, IoT Edge hub 'ına göndermek için kullanılır. 
 
-[Yukarıdaki tüm olayların](../../iot-edge/module-composition.md#declare-routes) ikizi $edgeHub modülünün istenen özelliği aracılığıyla yönlendirilmesini denetleyebilirsiniz (dağıtım bildiriminde):
+Dağıtım bildiriminde ikizi modülünün özelliğini kullanarak [önceki tüm olayların yönlendirilmesini](../../iot-edge/module-composition.md#declare-routes) denetleyebilirsiniz `desired` `$edgeHub` :
 
 ```
  "$edgeHub": {
@@ -151,38 +154,38 @@ Analiz olayları, hareket algılama işlemcisi veya HTTP uzantısı işlemcisi g
  }
 ```
 
-Yukarıdaki, lvaEdge, IoT Edge Module üzerindeki canlı video analizinin adıdır ve yönlendirme kuralı, [yolları bildir](../../iot-edge/module-composition.md#declare-routes)bölümünde tanımlanan şemayı izler.
+Önceki JSON 'da, `lvaEdge` IoT Edge modülündeki canlı video analizinin adıdır. Yönlendirme kuralı, [bildirimi rotalar](../../iot-edge/module-composition.md#declare-routes)bölümünde tanımlanan şemayı izler.
 
 > [!NOTE]
-> Analiz olaylarının IoT Edge hub 'ına ulaşmasını sağlamak için, herhangi bir hareket algılama işlemcisi düğümü ve/veya herhangi bir HTTP uzantısı işlemci düğümünün bir IoT Hub havuz düğümü aşağı akış olması gerekir.
+> Analiz olaylarının IoT Edge hub 'ına ulaşmasını sağlamak için, herhangi bir hareket algılama işlemcisi düğümü ve/veya herhangi bir HTTP uzantısı işlemci düğümü için bir IoT Hub havuz düğümü aşağı akış olması gerekir.
 
 ## <a name="event-schema"></a>Olay şeması
 
-Olaylar Edge cihazında olur ve kenarda veya bulutta tüketilebilir. IoT Edge üzerinde canlı video analizi tarafından oluşturulan olaylar, Azure IoT Hub tarafından oluşturulan ve sistem özellikleri, uygulama özellikleri ve bir gövdedeki [akış mesajlaşma düzenine](../../iot-hub/iot-hub-devguide-messages-construct.md) uygundur.
+Olaylar Edge cihazında olur ve kenarda veya bulutta tüketilebilir. IoT Edge canlı video analizi tarafından oluşturulan olaylar, Azure IoT Hub tarafından oluşturulan [akış mesajlaşma düzenine](../../iot-hub/iot-hub-devguide-messages-construct.md) uygun. Bu model, sistem özellikleri, uygulama özellikleri ve bir gövdeden oluşur.
 
 ### <a name="summary"></a>Özet
 
-IoT Hub üzerinden gözlemlendiği her olayın, aşağıda açıklandığı gibi ortak özellikler kümesi olacaktır.
+IoT Hub aracılığıyla gözlemlendiği her olayın ortak özellikler kümesi vardır:
 
-|Özellik   |Özellik Türü| Veri Türü   |Açıklama|
+|Özellik   |Özellik türü| Veri türü   |Açıklama|
 |---|---|---|---|
-|ileti kimliği |sistemin |guid|  Benzersiz olay KIMLIĞI.|
-|konu başlığı| applicationProperty |string|    Media Services hesabının yolunu Azure Resource Manager.|
-|subject|   applicationProperty |string|    Olayı yayan varlığın alt yolu.|
-|eventTime| applicationProperty|    string| Olayın oluşturulduğu zaman.|
-|eventType| applicationProperty |string|    Olay türü tanımlayıcısı (aşağıya bakın).|
-|body|body  |object|    Belirli olay verileri.|
-|dataVersion    |applicationProperty|   string  |{Birincil}. Bazı|
+|`message-id`   |sistemin |guid|  Benzersiz olay KIMLIĞI.|
+|`topic`|   applicationProperty |string|    Azure Media Services hesabının yolunu Azure Resource Manager.|
+|`subject`| applicationProperty |string|    Olayı yayan varlığın alt yolu.|
+|`eventTime`|   applicationProperty|    string| Olayın oluşturulduğu zaman.|
+|`eventType`|   applicationProperty |string|    Olay türü tanımlayıcısı. (Aşağıdaki bölüme bakın.)|
+|`body`|body    |object|    Belirli olay verileri.|
+|`dataVersion`  |applicationProperty|   string  |{Birincil}. Bazı|
 
 ### <a name="properties"></a>Özellikler
 
 #### <a name="message-id"></a>ileti kimliği
 
-Olay genel benzersiz tanıtıcısı (GUID)
+Olay için bir genel benzersiz tanımlayıcı (GUID).
 
 #### <a name="topic"></a>konu başlığı
 
-Grafikle ilişkili Azure Medya hizmeti hesabını temsil eder.
+Grafikle ilişkili Azure Media Services hesabını temsil eder.
 
 `/subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Media/mediaServices/{accountName}`
 
@@ -195,17 +198,17 @@ Olayı yayan varlık:
 `/graphInstances/{graphInstanceName}/processors/{processorName}`<br/>
 `/graphInstances/{graphInstanceName}/sinks/{sinkName}`
 
-Subject özelliği, genel olayların oluşturma modülüyle eşleştirilmesini sağlar. Örneğin, geçersiz RTSP Kullanıcı adı veya parola durumunda oluşturulan olay `Microsoft.Media.Graph.Diagnostics.ProtocolError` `/graphInstances/myGraph/sources/myRtspSource` düğümde olur.
+`subject`Özelliği, genel olayları oluşturma modülüne eşlemenizi sağlar. Örneğin, geçersiz bir RTSP Kullanıcı adı veya parolası için, oluşturulan olay `Microsoft.Media.Graph.Diagnostics.ProtocolError` `/graphInstances/myGraph/sources/myRtspSource` düğümde olur.
 
 #### <a name="event-types"></a>Olay türleri
 
-Olay türleri bir ad alanına aşağıdaki şemaya göre atanır:
+Olay türleri, bu şemaya göre bir ad alanına atanır:
 
 `Microsoft.Media.Graph.{EventClass}.{EventType}`
 
 #### <a name="event-classes"></a>Olay sınıfları
 
-|Sınıf Adı|Description|
+|Sınıf adı|Açıklama|
 |---|---|
 |Analiz  |İçerik analizinin bir parçası olarak oluşturulan olaylar.|
 |Tanılama    |Sorunların ve performansın tanılanmasına yardımcı olan olaylar.|
@@ -215,32 +218,32 @@ Olay türleri her bir olay sınıfına özeldir.
 
 Örnekler:
 
-* Microsoft. Media. Graph. Analytics. çıkarımı
-* Microsoft. Media. Graph. Diagnostics. AuthorizationError
-* Microsoft. Media. Graph. Operational. Graphınstancestarted
+* `Microsoft.Media.Graph.Analytics.Inference`
+* `Microsoft.Media.Graph.Diagnostics.AuthorizationError`
+* `Microsoft.Media.Graph.Operational.GraphInstanceStarted`
 
 ### <a name="event-time"></a>Olay saati
 
-Olay saati, ıSO8601 dizesinde ve olayın gerçekleştiği zaman ile açıklanır.
+Olay saati bir ISO 8601 dizesinde biçimlendirilir. Olayın gerçekleştiği süreyi temsil eder.
 
-### <a name="azure-monitor-collection-using-telegraf"></a>Telegraf kullanarak Azure Izleyici koleksiyonu
+### <a name="azure-monitor-collection-via-telegraf"></a>Telegraf aracılığıyla Azure Izleyici koleksiyonu
 
-Bu ölçümler IoT Edge modülündeki canlı video analizlerini raporlacaktır:  
+Bu ölçümler IoT Edge modülündeki canlı video analizinden raporlanır:  
 
-|Ölçüm Adı|Tür|Etiketle|Description|
+|Ölçüm adı|Tür|Etiketle|Açıklama|
 |-----------|----|-----|-----------|
 |lva_active_graph_instances|Ölçer|ıothub, edge_device, module_name graph_topology|Topoloji başına toplam etkin grafik sayısı.|
-|lva_received_bytes_total|Sayaç|ıothub, edge_device, module_name, graph_topology, graph_instance, graph_node|Bir düğüm tarafından alınan toplam bayt sayısı. Yalnızca RTSP kaynakları için desteklenir|
-|lva_data_dropped_total|Sayaç|ıothub, edge_device, module_name, graph_topology, graph_instance, graph_node, data_kind|Bırakılan tüm veriler (olaylar, ortamlar, vb.) sayacı|
+|lva_received_bytes_total|Sayaç|ıothub, edge_device, module_name, graph_topology, graph_instance, graph_node|Bir düğüm tarafından alınan toplam bayt sayısı. Yalnızca RTSP kaynakları için desteklenir.|
+|lva_data_dropped_total|Sayaç|ıothub, edge_device, module_name, graph_topology, graph_instance, graph_node, data_kind|Bırakılan tüm veriler (olaylar, medya vb.) sayacı.|
 
 > [!NOTE]
-> Bir [Prometheus uç noktası](https://prometheus.io/docs/practices/naming/) , kapsayıcının **9600** numaralı bağlantı noktasında kullanıma sunulur. Canlı video analizinizi "lvaEdge" IoT Edge modüle ayarlarsanız, ' a bir GET isteği göndererek ölçümlere erişebilecektir http://lvaEdge:9600/metrics .   
+> Bir [Prometheus uç noktası](https://prometheus.io/docs/practices/naming/) , kapsayıcının 9600 numaralı bağlantı noktasında kullanıma sunulur. Canlı video analizinizi "lvaEdge" IoT Edge modüle ayarlarsanız, ' a bir GET isteği göndererek ölçümlere erişebilecektir http://lvaEdge:9600/metrics .   
 
 IoT Edge modülündeki canlı video analizinden ölçüm toplamayı etkinleştirmek için şu adımları izleyin:
 
-1. Geliştirme makinenizde bir klasör oluşturun ve bu klasöre gidin
+1. Geliştirme bilgisayarınızda bir klasör oluşturun ve bu klasöre gidin.
 
-1. Bu klasörde, `telegraf.toml` aşağıdaki içeriklerle dosya oluşturun
+1. Klasöründe, `telegraf.toml` aşağıdaki konfigürasyonları içeren bir dosya oluşturun:
     ```
     [agent]
         interval = "30s"
@@ -256,25 +259,26 @@ IoT Edge modülündeki canlı video analizinden ölçüm toplamayı etkinleştir
       resource_id = "/subscriptions/{SUBSCRIPTON_ID}/resourceGroups/{RESOURCE_GROUP}/providers/Microsoft.Devices/IotHubs/{IOT_HUB_NAME}"
     ```
     > [!IMPORTANT]
-    > İçerik dosyasında değişkenleri (ile işaretlenen) değiştirdiğinizden emin olun `{ }`
+    > . TOML dosyasındaki değişkenleri değiştirdiğinizden emin olun. Değişkenler kaşlı ayraç () ile gösterilir `{}` .
 
-1. Bu klasörde, `.dockerfile` aşağıdaki içerikle bir oluştur
+1. Aynı klasörde `.dockerfile` aşağıdaki komutları içeren bir oluşturun:
     ```
         FROM telegraf:1.15.3-alpine
         COPY telegraf.toml /etc/telegraf/telegraf.conf
     ```
 
-1. Şimdi Docker CLı komutunu kullanarak **Docker dosyasını derleyin** ve görüntüyü Azure Container Registry yayımlayın.
-    1. [Docker görüntülerini gönderme ve çekme-Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-docker-cli)hakkında bilgi edinin.  Daha fazla Azure Container Registry (ACR) [bulunabilir.](https://docs.microsoft.com/azure/container-registry/)
+1. Docker CLı komutlarını kullanarak Docker dosyasını oluşturun ve görüntüyü Azure Container Registry 'nize yayımlayın.
+    
+   Docker CLı kullanarak bir kapsayıcı kayıt defterine gönderim hakkında daha fazla bilgi için bkz. [Push ve pull Docker görüntüleri](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-docker-cli). Azure Container Registry hakkında diğer bilgiler için [belgelerine](https://docs.microsoft.com/azure/container-registry/)bakın.
 
 
-1. ACR 'ye gönderme işlemi tamamlandıktan sonra, dağıtım bildirimi dosyanızda aşağıdaki düğümü ekleyin:
+1. Azure Container Registry gönderme işlemi tamamlandıktan sonra, aşağıdaki düğümü dağıtım bildirimi dosyanıza ekleyin:
     ```
     "telegraf": 
     {
       "settings": 
         {
-            "image": "{ACR_LINK_TO_YOUR_TELEGRAF_IMAGE}"
+            "image": "{AZURE_CONTAINER_REGISTRY_LINK_TO_YOUR_TELEGRAF_IMAGE}"
         },
       "type": "docker",
       "version": "1.0",
@@ -288,64 +292,72 @@ IoT Edge modülündeki canlı video analizinden ölçüm toplamayı etkinleştir
         }
     ``` 
     > [!IMPORTANT]
-    > İçerik dosyasında değişkenleri (ile işaretlenen) değiştirdiğinizden emin olun `{ }`
+    > Bildirim dosyasındaki değişkenleri değiştirdiğinizden emin olun. Değişkenler kaşlı ayraç () ile gösterilir `{}` .
 
 
-1. **Kimlik Doğrulaması**
-    1. Azure Izleyici, [hizmet sorumlusu tarafından doğrulanabilir](https://github.com/influxdata/telegraf/blob/master/plugins/outputs/azure_monitor/README.md#azure-authentication).
-        1. Azure Izleyici telegraf eklentisi [çeşitli kimlik doğrulama yöntemleri](https://github.com/influxdata/telegraf/blob/master/plugins/outputs/azure_monitor/README.md#azure-authentication)sunar. Hizmet sorumlusu kimlik doğrulamasını kullanmak için aşağıdaki ortam değişkenleri ayarlanmalıdır.  
-            • AZURE_TENANT_ID: kimlik doğrulaması yapılacak kiracıyı belirtir.  
-            • AZURE_CLIENT_ID: kullanılacak uygulama istemci KIMLIĞINI belirtir.  
-            • AZURE_CLIENT_SECRET: kullanılacak uygulama gizli dizesini belirtir.  
-    >[!TIP]
-    > Hizmet sorumlusuna "**Izleme ölçümleri yayımcısı**" rolü verilebilir.
+   Azure Izleyici, [hizmet sorumlusu aracılığıyla doğrulanabilir](https://github.com/influxdata/telegraf/blob/master/plugins/outputs/azure_monitor/README.md#azure-authentication).
+        
+   Azure Izleyici telegraf eklentisi [çeşitli kimlik doğrulama yöntemleri](https://github.com/influxdata/telegraf/blob/master/plugins/outputs/azure_monitor/README.md#azure-authentication)sunar. 
 
-1. Modüller dağıtıldıktan sonra, ölçümler Azure Izleyici 'de, Prometheus tarafından yayıldıklarla eşleşen ölçüm adlarıyla tek bir ad alanı altında görüntülenir. 
-    1. Bu durumda, Azure portal IoT Hub gidin ve sol gezinti bölmesindeki "**ölçümler**" bağlantısına tıklayın. Ölçümleri burada görmeniz gerekir.
+  1. Hizmet sorumlusu kimlik doğrulamasını kullanmak için şu ortam değişkenlerini ayarlayın:  
+     `AZURE_TENANT_ID`: Kimlik doğrulaması yapılacak kiracıyı belirtir.  
+     `AZURE_CLIENT_ID`: Kullanılacak uygulama istemci KIMLIĞINI belirtir.  
+     `AZURE_CLIENT_SECRET`: Kullanılacak uygulama gizli dizesini belirtir.  
+     
+     >[!TIP]
+     > Hizmet sorumlusu ' **nı Izleme ölçümleri yayımcısı** rolüne verebilirsiniz.
+
+1. Modüller dağıtıldıktan sonra, ölçümler tek bir ad alanı altında Azure Izleyici 'de görüntülenir. Ölçüm adları, Prometheus tarafından yayıldıklarınızla eşleşir. 
+
+   Bu durumda, Azure portal IoT Hub 'ına gidin ve sol bölmedeki **ölçümler** ' i seçin. Ölçümleri burada görmeniz gerekir.
+
 ## <a name="logging"></a>Günlüğe kaydetme
 
-Diğer IoT Edge modülleriyle benzer şekilde, uç cihazdaki [kapsayıcı günlüklerini de inceleyebilirsiniz](../../iot-edge/troubleshoot.md#check-container-logs-for-issues) . Günlüklere yazılan bilgiler [aşağıdaki Module ikizi](module-twin-configuration-schema.md) özellikleri tarafından denetlenebilir:
+Diğer IoT Edge modüllerinde olduğu gibi, uç cihazdaki [kapsayıcı günlüklerini de inceleyebilirsiniz](../../iot-edge/troubleshoot.md#check-container-logs-for-issues) . Günlüklere yazılan bilgileri [aşağıdaki Module ikizi](module-twin-configuration-schema.md) özelliklerini kullanarak yapılandırabilirsiniz:
 
-* logLevel
+* `logLevel`
 
-   * İzin verilen değerler verbose, bilgi, uyarı, hata, yok.
-   * Varsayılan değer bilgi: günlüklerde hata, uyarı ve bilgi yer alacak. iletilerine.
-   * Değeri uyarı olarak ayarlarsanız, Günlükler hata ve uyarı iletileri içerir
-   * Değeri hata olarak ayarlarsanız, Günlükler yalnızca hata iletileri içerir.
-   * Değeri None olarak ayarlarsanız hiçbir günlük oluşturulmaz (bu önerilmez).
-   * Yalnızca bir sorunu tanılamak için günlükleri Azure desteğiyle paylaşmanız gerekiyorsa verbose ' i kullanmanız gerekir.
-* Günlüğe kaydetme kategorileri
+   * İzin verilen değerler,,, `Verbose` `Information` `Warning` `Error` ve `None` .
+   * `Information` varsayılan değerdir. Günlüklerde hata, uyarı ve bilgi iletileri yer alacak.
+   * Değerini olarak ayarlarsanız `Warning` , Günlükler hata ve uyarı iletileri içerir.
+   * Değerini olarak ayarlarsanız `Error` , Günlükler yalnızca hata iletilerini içerir.
+   * Değerini olarak ayarlarsanız `None` , hiçbir günlük oluşturulmaz. (Bu yapılandırmayı önermiyoruz.)
+   * `Verbose`Yalnızca bir sorunu tanılamak için günlükleri Azure desteğiyle paylaşmanız gerekiyorsa kullanın.
 
-   * Aşağıdakilerden biri veya daha fazlası için virgülle ayrılmış bir liste: Application, Events, MediaPipeline.
-   * Varsayılan: uygulama, olaylar.
-   * Uygulama – modül başlangıç iletileri, ortam hataları ve doğrudan Yöntem çağrıları gibi modülden yüksek düzey bilgiler.
-   * Olaylar: Bunlar, bu makalede daha önce açıklanan olaylardır.
-   * MediaPipeline: Bunlar, bir RTSP özellikli kamerayla bağlantı kurmaya yönelik zorluklar gibi sorunları giderirken öngörü sunan bazı düşük düzeyli günlüklerdir.
+* `logCategories`
+
+   * Şu değerlerden biri veya daha fazlası için virgülle ayrılmış bir liste: `Application` , `Events` , `MediaPipeline` .
+   * `Application, Events` varsayılan değerdir.
+   * `Application`: Modülden modül başlangıç iletileri, ortam hataları ve doğrudan Yöntem çağrıları gibi üst düzey bilgiler.
+   * `Events`: Bu makalede daha önce açıklanan tüm olaylar.
+   * `MediaPipeline`: Bir RTSP özellikli kamerayla bağlantı kurma sorunları gibi sorun giderirken öngörülere neden olabilecek düşük düzey Günlükler.
    
 ### <a name="generating-debug-logs"></a>Hata ayıklama günlükleri oluşturuluyor
 
-Belirli durumlarda, Azure desteği 'nin bir sorunu çözümlemesine yardımcı olması için yukarıda açıklananlardan daha ayrıntılı Günlükler oluşturmanız gerekebilir. Bunu yapmanın iki adımı vardır.
+Belirli durumlarda, Azure desteği 'nin bir sorunu çözmesi için, daha önce açıklananlara göre daha ayrıntılı Günlükler oluşturmanız gerekebilir. Bu günlükleri oluşturmak için:
 
-İlk olarak, createOptions aracılığıyla [Modül depolamayı cihaz depolamasına bağlarsınız](../../iot-edge/how-to-access-host-storage-from-module.md#link-module-storage-to-device-storage) . Hızlı başlayan bir [dağıtım bildirimi şablonunu](https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp/blob/master/src/edge/deployment.template.json) incelerseniz şunları görürsünüz:
+1. İle [Modül depolama alanını cihaz depolamasına bağlayın](../../iot-edge/how-to-access-host-storage-from-module.md#link-module-storage-to-device-storage) `createOptions` . Hızlı başlangıçlardan bir [Dağıtım bildirim şablonuna](https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp/blob/master/src/edge/deployment.template.json) bakarsanız şu kodu görürsünüz:
 
-```
-"createOptions": {
-   …
-   "Binds": [
-     "/var/local/mediaservices/:/var/lib/azuremediaservices/"
-   ]
- }
-```
+   ```
+   "createOptions": {
+     …
+     "Binds": [
+       "/var/local/mediaservices/:/var/lib/azuremediaservices/"
+     ]
+    }
+   ```
 
-Yukarıdaki sınır modülünün günlükleri (cihaz) depolama yoluna "/var/Local/mediaservices/" yazmasını sağlar. Aşağıdaki istenen özelliği modüle eklerseniz:
+   Bu kod, sınır modülünün günlükleri cihaz depolama yoluna yazmasını sağlar `/var/local/mediaservices/` . 
 
-`"debugLogsDirectory": "/var/lib/azuremediaservices/debuglogs/",`
+ 1. Aşağıdaki `desired` özelliği modüle ekleyin:
 
-Ardından, modül hata ayıklama günlüklerini bir ikili biçimde (cihaz) depolama yolu/var/Local/mediaservices/debuglogs/dizinine yazacak ve bu da Azure desteğiyle paylaşabilirsiniz.
+    `"debugLogsDirectory": "/var/lib/azuremediaservices/debuglogs/",`
+
+Modül artık hata ayıklama günlüklerini bir ikili biçimde cihaz depolama yoluna yazacak `/var/local/mediaservices/debuglogs/` . Bu günlükleri Azure desteğiyle paylaşabilirsiniz.
 
 ## <a name="faq"></a>SSS
 
-[SSS](faq.md#monitoring-and-metrics)
+Sorularınız varsa [izleme ve ölçümler hakkında SSS](faq.md#monitoring-and-metrics)bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

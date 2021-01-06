@@ -3,15 +3,15 @@ title: Kaynak gruplarını yönetme-Azure CLı
 description: Kaynak gruplarınızı Azure Resource Manager aracılığıyla yönetmek için Azure CLı 'yi kullanın. Kaynak grupları oluşturma, listeleme ve silme işlemlerinin nasıl yapılacağını gösterir.
 author: mumian
 ms.topic: conceptual
-ms.date: 09/01/2020
+ms.date: 01/05/2021
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4a9a4ed4ebba7f6f2470bb9e7000a899ebc26323
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: db4a938d2f773ed24d4c7a48d747dd5cc22c0bd2
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185819"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900289"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>Azure CLı kullanarak Azure Resource Manager kaynak gruplarını yönetme
 
@@ -84,14 +84,14 @@ Gruptaki kaynakları başka bir kaynak grubuna taşıyabilirsiniz. Daha fazla bi
 
 ## <a name="lock-resource-groups"></a>Kaynak gruplarını kilitle
 
-Kilitleme, kuruluşunuzdaki diğer kullanıcıların Azure aboneliği, kaynak grubu veya kaynak gibi önemli kaynakları yanlışlıkla silmesini veya değiştirmelerini engeller. 
+Kilitleme, kuruluşunuzdaki diğer kullanıcıların Azure aboneliği, kaynak grubu veya kaynak gibi önemli kaynakları yanlışlıkla silmesini veya değiştirmelerini engeller.
 
 Aşağıdaki betik bir kaynak grubunu kilitleyerek kaynak grubu silinemez.
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
-az lock create --name LockGroup --lock-type CanNotDelete --resource-group $resourceGroupName  
+az lock create --name LockGroup --lock-type CanNotDelete --resource-group $resourceGroupName
 ```
 
 Aşağıdaki betik, bir kaynak grubu için tüm kilitleri alır:
@@ -99,7 +99,7 @@ Aşağıdaki betik, bir kaynak grubu için tüm kilitleri alır:
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
-az lock list --resource-group $resourceGroupName  
+az lock list --resource-group $resourceGroupName
 ```
 
 Aşağıdaki betik bir kilidi siler:
@@ -125,13 +125,88 @@ Kaynak grubunuzu başarıyla ayarladıktan sonra, kaynak grubunun Kaynak Yöneti
 - Şablon tüm bütün altyapıyı içerdiğinden çözümün gelecekteki dağıtımlarını otomatikleştirin.
 - Çözümünüzü temsil eden JavaScript Nesne Gösterimi (JSON) bakarak Şablon sözdizimini öğrenin.
 
+Bir kaynak grubundaki tüm kaynakları dışarı aktarmak için [az Group Export](/cli/azure/group?view=azure-cli-latest#az_group_export&preserve-view=true) kullanın ve kaynak grubu adını sağlayın.
+
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
-az group export --name $resourceGroupName  
+az group export --name $resourceGroupName
 ```
 
-Betik, şablonu konsolunda görüntüler.  JSON ' ı kopyalayın ve dosya olarak kaydedin.
+Betik, şablonu konsolunda görüntüler. JSON ' ı kopyalayın ve dosya olarak kaydedin.
+
+Kaynak grubundaki tüm kaynakları dışarı aktarmak yerine, hangi kaynakların dışarı aktarılacağını seçebilirsiniz.
+
+Bir kaynağı dışarı aktarmak için bu kaynak KIMLIĞINI geçirin.
+
+```azurecli-interactive
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+echo "Enter the storage account name:" &&
+read storageAccountName &&
+storageAccount=$(az resource show --resource-group $resourceGroupName --name $storageAccountName --resource-type Microsoft.Storage/storageAccounts --query id --output tsv) &&
+az group export --resource-group $resourceGroupName --resource-ids $storageAccount
+```
+
+Birden fazla kaynağı dışarı aktarmak için, boşlukla ayrılmış kaynak kimliklerini geçirin. Tüm kaynakları dışarı aktarmak için bu bağımsız değişkeni belirtmeyin veya "*" sağlayın.
+
+```azurecli-interactive
+az group export --resource-group <resource-group-name> --resource-ids $storageAccount1 $storageAccount2
+```
+
+Şablonu dışarı aktarırken, şablonda parametrelerin kullanılıp kullanılmayacağını belirtebilirsiniz. Varsayılan olarak, kaynak adları için parametreler dahil edilir ancak varsayılan bir değere sahip değildir. Dağıtım sırasında bu parametre değerini geçirmeniz gerekir.
+
+```json
+"parameters": {
+  "serverfarms_demoHostPlan_name": {
+    "type": "String"
+  },
+  "sites_webSite3bwt23ktvdo36_name": {
+    "type": "String"
+  }
+}
+```
+
+Kaynağında, adı için parametresi kullanılır.
+
+```json
+"resources": [
+  {
+    "type": "Microsoft.Web/serverfarms",
+    "apiVersion": "2016-09-01",
+    "name": "[parameters('serverfarms_demoHostPlan_name')]",
+    ...
+  }
+]
+```
+
+`--include-parameter-default-value`Şablonu dışarı aktarırken parametresini kullanırsanız, şablon parametresi geçerli değere ayarlanmış bir varsayılan değer içerir. Bu varsayılan değeri kullanabilir ya da farklı bir değere geçirerek varsayılan değerin üzerine yazabilirsiniz.
+
+```json
+"parameters": {
+  "serverfarms_demoHostPlan_name": {
+    "defaultValue": "demoHostPlan",
+    "type": "String"
+  },
+  "sites_webSite3bwt23ktvdo36_name": {
+    "defaultValue": "webSite3bwt23ktvdo36",
+    "type": "String"
+  }
+}
+```
+
+`--skip-resource-name-params`Şablonu dışarı aktarırken parametresini kullanırsanız, kaynak adları parametreleri şablona dahil edilmez. Bunun yerine, kaynak adı kaynak üzerinde doğrudan geçerli değerine ayarlanır. Dağıtım sırasında adı özelleştiremezsiniz.
+
+```json
+"resources": [
+  {
+    "type": "Microsoft.Web/serverfarms",
+    "apiVersion": "2016-09-01",
+    "name": "demoHostPlan",
+    ...
+  }
+]
+```
 
 Şablonu dışarı aktar özelliği Azure Data Factory kaynaklarının dışarı aktarılmasını desteklemez. Data Factory kaynaklarını nasıl dışarı aktarabilirsiniz hakkında bilgi edinmek için bkz. [Azure Data Factory veri fabrikasını kopyalama veya](../../data-factory/copy-clone-data-factory.md)kopyalama.
 

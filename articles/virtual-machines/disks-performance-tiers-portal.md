@@ -4,16 +4,16 @@ description: Azure portal kullanarak, yeni ve mevcut yönetilen disklerin perfor
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 11/19/2020
+ms.date: 01/05/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: a868d5d236cf4c5a8d29f15490909c2f1a53546f
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 625fb1e3dd0b433da6b60f995aa6b380c23ec9ce
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "96016614"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901043"
 ---
 # <a name="change-your-performance-tier-using-the-azure-portal"></a>Azure portal kullanarak performans katmanınızı değiştirin
 
@@ -29,7 +29,7 @@ ms.locfileid: "96016614"
 
 Aşağıdaki adımlarda, diski ilk oluşturduğunuzda diskinizin performans katmanının nasıl değiştirileceği gösterilmektedir:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 1. İçin yeni bir disk oluşturmak istediğiniz VM 'ye gidin.
 1. Yeni diski seçerken, önce ihtiyacınız olan diskin boyutunu seçin.
 1. Bir boyut seçtikten sonra, performansını değiştirmek için farklı bir performans katmanı seçin.
@@ -42,12 +42,12 @@ Aşağıdaki adımlarda, diski ilk oluşturduğunuzda diskinizin performans katm
 
 Aşağıdaki adımlarda, var olan bir diskin performans katmanının nasıl değiştirileceği ana hatlarıyla verilmiştir:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 1. Değiştirmek istediğiniz diski içeren VM 'ye gidin.
 1. VM 'yi serbest bırakın veya diski ayırın.
 1. Diskinizi seçin
 1. **Boyut + performans**' ı seçin.
-1. **Performans katmanı** açılan menüsünde, diskin geçerli taban çizgisinden farklı bir katman seçin.
+1. **Performans katmanı** açılan menüsünde, diskin geçerli performans katmanından farklı bir katman seçin.
 1. **Yeniden boyutlandır**’ı seçin.
 
 :::image type="content" source="media/disks-performance-tiers-portal/change-tier-existing-disk.png" alt-text="Boyut + performans dikey penceresinin ekran görüntüsü, performans katmanı vurgulanır." lightbox="media/disks-performance-tiers-portal/performance-tier-settings.png":::

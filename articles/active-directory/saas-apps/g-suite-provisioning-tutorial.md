@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 552322b9452d380dd5507fb579d7cc44e1a456fe
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: c3f61c3fe688a0b7533902fb0caa19b67f883482
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/05/2021
-ms.locfileid: "97899028"
+ms.locfileid: "97901598"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için G Suite 'i yapılandırma
 
@@ -24,13 +24,6 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem G Suit
 
 > [!NOTE]
 > Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Hizmetin işlevleri ve çalışma şekli hakkında daha fazla bilgi edinmek ve sık sorulan soruları incelemek için bkz. [Azure Active Directory ile SaaS uygulamalarına kullanıcı hazırlama ve kaldırma işlemlerini otomatik hale getirme](../app-provisioning/user-provisioning.md).
-
-> [!NOTE]
-> G Suite Bağlayıcısı son zamanlarda 2019 Ekim tarihinde güncelleştirildi. G Suite bağlayıcısında yapılan değişiklikler şunları içerir:
->
-> * Ek G Suite Kullanıcı ve grup öznitelikleri için destek eklendi.
-> * [Burada](https://developers.google.com/admin-sdk/directory)tanımlananla eşleşecek şekilde, G Suite hedef öznitelik adları güncelleştirildi.
-> * Varsayılan öznitelik eşlemeleri güncelleştirildi.
 
 > [!NOTE]
 > Bu makalede, Microsoft tarafından kullanılmayan bir terim olan *beyaz liste* teriminin başvuruları yer almaktadır. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
@@ -43,7 +36,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem G Suit
 > * G Suite 'te grupları ve grup üyeliklerini sağlama
 > * G Suite ['Te çoklu oturum açma](./google-apps-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -276,7 +269,13 @@ Hazırlama ayarlarını yapılandırdıktan sonra dağıtımınızı izlemek iç
 
 1. Hazırlama işlemi başarılı ve başarısız olan kullanıcıları belirlemek için [hazırlama günlüklerini](../reports-monitoring/concept-provisioning-logs.md) kullanın
 2. Hazırlama döngüsünün durumunu ve tamamlanması için kalan miktarı görmek için [ilerleme çubuğuna](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) bakın
-3. Hazırlama yapılandırmasının durumu iyi görünmüyorsa uygulama karantinaya geçer. Karantina durumu hakkında daha fazla bilgi edinmek için [buraya](../app-provisioning/application-provisioning-quarantine-status.md) bakın.
+3. Hazırlama yapılandırmasının durumu iyi görünmüyorsa uygulama karantinaya geçer. Karantina durumu hakkında daha fazla bilgi edinmek için [buraya](../app-provisioning/application-provisioning-quarantine-status.md) bakın.  
+
+## <a name="change-log"></a>Değişiklik günlüğü
+
+* 10/17/2020-ek G Suite Kullanıcı ve grup öznitelikleri için destek eklendi.
+* 10/17/2020- [burada](https://developers.google.com/admin-sdk/directory)tanımlananla eşleşecek şekilde, G Suite hedef öznitelik adları güncelleştirildi.
+* 10/17/2020-varsayılan öznitelik eşlemeleri güncelleştirildi.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

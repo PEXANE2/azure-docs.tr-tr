@@ -3,20 +3,20 @@ title: Azure Otomasyonu runbook 'tan e-posta gönderme
 description: Bu makalede, runbook 'tan bir e-posta gönderme yöntemi açıklanır.
 services: automation
 ms.subservice: process-automation
-ms.date: 07/15/2019
+ms.date: 01/05/2021
 ms.topic: conceptual
-ms.openlocfilehash: a81ae680a5f04eca0a6cc01ee24b474cc5daabea
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 65fa226b368baa3b1d4f376600e610a518c48c02
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97005214"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900330"
 ---
 # <a name="send-an-email-from-a-runbook"></a>Runbook’tan e-posta gönderme
 
 PowerShell kullanarak, [SendGrid](https://sendgrid.com/solutions) ile runbook 'tan bir e-posta gönderebilirsiniz. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Henüz bir hesabınız yoksa  [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)için kaydolabilirsiniz.
 * [SendGrid hesabı](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account).
@@ -67,7 +67,7 @@ Azure Key Vault oluşturup gizli dizi depolamanın diğer yolları için bkz. [K
 
 Bir runbook içinde Azure Key Vault kullanmak için aşağıdaki modülleri Otomasyon hesabınıza aktarmanız gerekir:
 
-* [Az.Profile](https://www.powershellgallery.com/packages/Az.Profile)
+* [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts)
 * [Az.KeyVault](https://www.powershellgallery.com/packages/Az.KeyVault)
 
 Yönergeler için bkz. [Import az modules](shared-resources/modules.md#import-az-modules).
@@ -142,7 +142,7 @@ Test e-postanızı başlangıçta görmüyorsanız, istenmeyen ve **Istenmeyen p
 
 1. Runbook artık gerekli olmadığında runbook listesinden seçin ve **Sil**' e tıklayın.
 
-2. [Remove-Azkeykasası](/powershell/module/az.keyvault/remove-azkeyvault?view=azps-3.7.0) cmdlet 'ini kullanarak Key Vault silin.
+2. [Remove-Azkeykasası](/powershell/module/az.keyvault/remove-azkeyvault) cmdlet 'ini kullanarak Key Vault silin.
 
 ```azurepowershell-interactive
 $VaultName = "<your KeyVault name>"

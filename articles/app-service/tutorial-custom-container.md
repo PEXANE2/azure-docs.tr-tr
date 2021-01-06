@@ -7,22 +7,22 @@ ms.author: msangapu
 keywords: Azure App Service, Web uygulaması, Linux, Windows, Docker, kapsayıcı
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 68fe49ff201ead89d846a0676e81dda9fc9b75b9
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: b3507e22c691f3e3ca9f9e6562a313e95e42f080
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558615"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900204"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Özel bir kapsayıcı kullanarak Azure App Service özel yazılım geçirme
 
 ::: zone pivot="container-windows"  
 
-[Azure App Service](overview.md), Windows'da IIS üzerinde çalışan ASP.NET veya Node.js gibi önceden tanımlı uygulama yığınları sunar. Önceden yapılandırılmış Windows ortamı, işletim sistemini yönetimsel erişime, yazılım yüklemesine ve genel derleme önbelleğine ve benzeri uygulamalara karşı kilitler (bkz. [Azure App Service'teki işletim sistemi işlevleri](operating-system-functionality.md)). Ancak, App Service (Önizleme) içinde özel bir Windows kapsayıcısı kullanmak uygulamanızın ihtiyaç duyduğu işletim sistemi değişikliklerini yapmanızı sağlar, bu sayede özel işletim sistemi ve yazılım yapılandırması gerektiren şirket içi uygulamayı kolayca geçirebilirsiniz. Bu öğreticide Windows yazı tipi kitaplığında yüklü olan özel yazı tiplerini kullanan bir ASP.NET uygulamasını App Service'e geçirme adımları gösterilmektedir. Visual Studio'dan [Azure Container Registry](../container-registry/index.yml)'ye özel olarak yapılandırılmış bir Windows görüntüsü dağıtıp ardından bunu App Service'te çalıştıracaksınız.
+[Azure App Service](overview.md), Windows'da IIS üzerinde çalışan ASP.NET veya Node.js gibi önceden tanımlı uygulama yığınları sunar. Önceden yapılandırılmış Windows ortamı, işletim sistemini yönetimsel erişime, yazılım yüklemesine ve genel derleme önbelleğine ve benzeri uygulamalara karşı kilitler (bkz. [Azure App Service'teki işletim sistemi işlevleri](operating-system-functionality.md)). Ancak App Service içinde özel bir Windows kapsayıcısı kullanmak, uygulamanızın ihtiyaç duyduğu işletim sistemi değişikliklerini kolayca gerçekleştirmenizi sağlar. Bu sayede özel işletim sistemi ve yazılım yapılandırmasına ihtiyaç duyan bir şirket içi uygulamayı geçirmek oldukça kolaydır. Bu öğreticide Windows yazı tipi kitaplığında yüklü olan özel yazı tiplerini kullanan bir ASP.NET uygulamasını App Service'e geçirme adımları gösterilmektedir. Visual Studio'dan [Azure Container Registry](../container-registry/index.yml)'ye özel olarak yapılandırılmış bir Windows görüntüsü dağıtıp ardından bunu App Service'te çalıştıracaksınız.
 
 ![Bir Windows kapsayıcısında çalışan Web uygulamasını gösterir.](media/tutorial-custom-container/app-running.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -30,7 +30,7 @@ Bu öğreticiyi tamamlamak için:
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Docker for Windows'u yükleyin</a>.
 - <a href="/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Windows kapsayıcılarını çalıştırmak için Docker’a geçiş yapın</a>.
 - **ASP.net ve Web geliştirme** ve **Azure geliştirme** Iş yükleriyle <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> ' i yükledikten sonra. Visual Studio 2019 zaten yüklüyse:
-    - **Help**  >  **Güncelleştirmeler için yardım denetimi**' ne tıklayarak Visual Studio 'ya en son güncelleştirmeleri yüklersiniz.
+    -   >  **Güncelleştirmeler için yardım denetimi**' ne tıklayarak Visual Studio 'ya en son güncelleştirmeleri yüklersiniz.
     - **Araçlar**  >  **ve Özellikler al**' a tıklayarak iş yüklerini Visual Studio 'da ekleyin.
 
 ## <a name="set-up-the-app-locally"></a>Uygulamayı yerel ortamda oluşturma
@@ -102,7 +102,7 @@ _InstallFont.ps1_ dosyasını **CustomFontSample** projesinde bulabilirsiniz. Ya
 
 ### <a name="create-registry-and-publish"></a>Kayıt defterini oluşturma ve yayımlama
 
-Yayımla sihirbazında **Container Registry**  >  **yeni Azure Container Registry oluştur**' u seçin  >  **Publish**.
+Yayımla sihirbazında **Container Registry**  >  **yeni Azure Container Registry oluştur**' u seçin  >  .
 
 :::image type="content" source="media/tutorial-custom-container/create-registry.png" alt-text="Container Registry, yeni Azure Container Registry oluştur ve Yayımla düğmesi seçili olan Yayımla Sihirbazı ekran görüntüsü.":::
 
@@ -144,7 +144,7 @@ Sol menüden **kaynak oluştur**  >  **Web**  >  **kapsayıcılar için Web App*
 |**Abonelik**| Doğru aboneliğin seçildiğinden emin olun. |  |
 |**Kaynak Grubu**| **Yeni oluştur**' u seçin, **myresourcegroup** yazın ve **Tamam**' a tıklayın. |  |
 |**Ad**| Benzersiz bir ad yazın. | Web uygulamasının URL'si `http://<app-name>.azurewebsites.net` şeklindedir; burada `<app-name>`, uygulamanızın adıdır. |
-|**Yayımlama**| Docker kapsayıcısı | |
+|**Yayımla**| Docker kapsayıcısı | |
 |**İşletim Sistemi**| Windows | |
 |**Bölge**| West Europe | |
 |**Windows Planı**| **Yeni oluştur**' u seçin, **myappserviceplan** yazın ve **Tamam**' a tıklayın. | |

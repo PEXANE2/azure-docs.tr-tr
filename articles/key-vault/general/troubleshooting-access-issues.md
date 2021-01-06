@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 78b42a8ad3685d07b61c4faca384c7ee8f5a5f94
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 8e4e64cd872794354479c29d4aaa000cee45c5a3
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616397"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901224"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Azure Anahtar Kasası erişim ilkesi sorunlarını giderme
 
@@ -32,10 +32,10 @@ Hizmetinizi ölçeklendirmeye başladığınızda, anahtar kasanıza gönderilen
 ### <a name="i-am-not-able-to-modify-access-policy-how-can-it-be-enabled"></a>Erişim ilkesini değiştiremem mümkün değil mi?
 Kullanıcının erişim ilkesini değiştirmek için yeterli AAD izinleri olması gerekir. Bu durumda, kullanıcının daha yüksek katkıda bulunan rolüne sahip olması gerekir.
 
-### <a name="i-am-seeing-unkwown-policy-error-what-does-that-mean"></a>' Unkize Ilkesi ' hatası görüyorum. Bu ne anlama gelir?
+### <a name="i-am-seeing-unknown-policy-error-what-does-that-mean"></a>' Bilinmeyen Ilke ' hatası görüyorum. Bu ne anlama gelir?
 Erişim ilkesini bilinmeyen bölümde görmekten iki farklı olasılık vardır:
 * Kullanıcının mevcut olmadığı bir nedenden dolayı, erişimi olan önceki bir kullanıcı olabilir.
-* Erişim ilkesi PowerShell aracılığıyla eklenirse ve erişim ilkesi, hizmet priciple yerine uygulama ObjectID için eklenirse
+* Erişim ilkesi PowerShell aracılığıyla eklenirse ve hizmet sorumlusu yerine uygulama ObjectID için erişim ilkesi eklendiyse.
 
 ### <a name="how-can-i-assign-access-control-per-key-vault-object"></a>Anahtar Kasası nesnesine göre erişim denetimini nasıl atayabilirim? 
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 8bffe0c3871eae12f3b875a96301136d11dfc516
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 4e87e99f16a89cab95f9bd07b75b80f1c13d47f1
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783802"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900663"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Depolama Gezgini sorun giderme kılavuzu
 
@@ -46,7 +46,7 @@ Kaynaklardan veri okuma erişimi veren en az bir rol atanması gerekir. Örneği
 
 ### <a name="why-do-i-need-a-management-layer-role-to-see-my-resources-in-storage-explorer"></a>Kaynaklarımı Depolama Gezgini görmek için neden bir yönetim katmanı rolüne ihtiyacım var?
 
-Azure Storage iki erişim katmanına sahiptir: _Yönetim_ ve _veri_ . Abonelikler ve depolama hesaplarına yönetim katmanı üzerinden erişilir. Kapsayıcılar, Bloblar ve diğer veri kaynaklarına veri katmanı üzerinden erişilir. Örneğin, Azure 'daki depolama hesaplarınızın bir listesini almak istiyorsanız Yönetim uç noktasına bir istek gönderirsiniz. Bir hesapta blob kapsayıcıları listesini isterseniz, uygun hizmet uç noktasına bir istek gönderirsiniz.
+Azure Storage iki erişim katmanına sahiptir: _Yönetim_ ve _veri_. Abonelikler ve depolama hesaplarına yönetim katmanı üzerinden erişilir. Kapsayıcılar, Bloblar ve diğer veri kaynaklarına veri katmanı üzerinden erişilir. Örneğin, Azure 'daki depolama hesaplarınızın bir listesini almak istiyorsanız Yönetim uç noktasına bir istek gönderirsiniz. Bir hesapta blob kapsayıcıları listesini isterseniz, uygun hizmet uç noktasına bir istek gönderirsiniz.
 
 Azure rolleri, size yönetim veya veri katmanı erişimi için izin verebilir. Örneğin, okuyucu rolü, yönetim katmanı kaynaklarına salt okuma erişimi verir.
 
@@ -61,22 +61,25 @@ Herhangi bir yönetim katmanı izni veren bir rolünüz yoksa Depolama Gezgini v
 Blob kapsayıcılarına veya kuyruklara erişmek istiyorsanız, Azure kimlik bilgilerinizi kullanarak bu kaynaklara iliştirebilirsiniz.
 
 1. Bağlan iletişim kutusunu açın.
-2. "Azure Active Directory aracılığıyla Kaynak Ekle (Azure AD) seçeneğini belirleyin. İleri'ye tıklayın.
-3. İliştirmekte olduğunuz kaynakla ilişkili kullanıcı hesabı ve kiracıyı seçin. İleri'ye tıklayın.
-4. Kaynak türünü seçin, kaynağın URL 'sini girin ve bağlantı için benzersiz bir görünen ad girin. İleri'ye tıklayın. Bağlan'a tıklayın.
+2. "Azure Active Directory aracılığıyla Kaynak Ekle (Azure AD)" seçeneğini belirleyin. İleri’yi seçin.
+3. İliştirmekte olduğunuz kaynakla ilişkili kullanıcı hesabı ve kiracıyı seçin. İleri’yi seçin.
+4. Kaynak türünü seçin, kaynağın URL 'sini girin ve bağlantı için benzersiz bir görünen ad girin. Ileri ' yi ve ardından Bağlan ' ı seçin
 
 Diğer kaynak türleri için şu anda Azure RBAC ile ilgili bir çözümünüz yoktur. Geçici bir çözüm olarak, [kaynağına eklemek](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux#use-a-shared-access-signature-uri)IÇIN BIR SAS URI 'si isteyebilirsiniz.
 
 ### <a name="recommended-azure-built-in-roles"></a>Önerilen Azure yerleşik rolleri
 
 Depolama Gezgini kullanmak için gereken izinleri sağlayabilecek çeşitli Azure yerleşik rolleri vardır. Bu rollerden bazıları şunlardır:
-- [Sahip](../../role-based-access-control/built-in-roles.md#owner): kaynaklara erişim dahil olmak üzere her şeyi yönetin. **Note** : Bu rol size anahtar erişimi verecektir.
-- [Katkıda bulunan](../../role-based-access-control/built-in-roles.md#contributor): kaynaklara erişimi hariç her şeyi yönetin. **Note** : Bu rol size anahtar erişimi verecektir.
-- [Okuyucu](../../role-based-access-control/built-in-roles.md#reader): kaynakları okuyun ve listeleyin.
-- [Depolama hesabı katılımcısı](../../role-based-access-control/built-in-roles.md#storage-account-contributor): depolama hesaplarının tam yönetimi. **Note** : Bu rol size anahtar erişimi verecektir.
-- [Depolama Blobu veri sahibi](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner): Azure depolama blob kapsayıcılarına ve verilerine tam erişim.
-- [Depolama Blobu verileri katılımcısı](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor): Azure depolama kapsayıcıları ve bloblarını okuma, yazma ve silme.
-- [Depolama Blobu veri okuyucusu](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader): Azure depolama kapsayıcıları ve bloblarını okuyun ve listeleyin.
+- [Sahip](/azure/role-based-access-control/built-in-roles#owner): kaynaklara erişim dahil olmak üzere her şeyi yönetin.
+- [Katkıda bulunan](/azure/role-based-access-control/built-in-roles#contributor): kaynaklara erişimi hariç her şeyi yönetin.
+- [Okuyucu](/azure/role-based-access-control/built-in-roles#reader): kaynakları okuyun ve listeleyin.
+- [Depolama hesabı katılımcısı](/azure/role-based-access-control/built-in-roles#storage-account-contributor): depolama hesaplarının tam yönetimi.
+- [Depolama Blobu veri sahibi](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner): Azure depolama blob kapsayıcılarına ve verilerine tam erişim.
+- [Depolama Blobu verileri katılımcısı](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor): Azure depolama kapsayıcıları ve bloblarını okuma, yazma ve silme.
+- [Depolama Blobu veri okuyucusu](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader): Azure depolama kapsayıcıları ve bloblarını okuyun ve listeleyin.
+
+> [!NOTE]
+> Sahip, katkıda bulunan ve depolama hesabı katılımcısı rolleri hesap anahtarı erişimi verir.
 
 ## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Hata: sertifika zincirinde otomatik olarak imzalanan sertifika (ve benzer hatalar)
 
@@ -88,7 +91,7 @@ Sertifika hataları genellikle aşağıdaki durumlardan birinde oluşur:
 Depolama Gezgini kendinden imzalı veya güvenilmeyen bir sertifikayı gördüğünde, alınan HTTPS iletisinin değiştirilip değiştirilmediğini artık bilmez. Otomatik olarak imzalanan sertifikanın bir kopyasına sahipseniz, aşağıdaki adımları izleyerek Depolama Gezgini güveneceği konusunda talimat verebilirsiniz:
 
 1. Sertifikanın Base-64 kodlamalı bir X. 509.440 (. cer) kopyasını edinin.
-2. **Edit**  >  **SSL sertifikalarını** Düzenle  >  **sertifikaları içeri aktar** ' a gidin ve ardından dosya seçicisini kullanarak. cer dosyasını bulun, seçin ve açın.
+2.   >  **SSL sertifikalarını** Düzenle  >  **sertifikaları içeri aktar**' a gidin ve ardından dosya seçicisini kullanarak. cer dosyasını bulun, seçin ve açın.
 
 Bu sorun, birden fazla sertifika (kök ve ara) varsa da oluşabilir. Bu hatayı onarmak için her iki sertifikanın de eklenmesi gerekir.
 
@@ -100,10 +103,10 @@ Sertifikanın nereden geldiği konusunda emin değilseniz, bulmak için aşağı
 2. OpenSSL 'yi çalıştırın.
     * Windows: yükleme dizinini açın, **/bin/** seçin ve ardından **openssl.exe** öğesine çift tıklayın.
     * Mac ve Linux: `openssl` terminalden çalıştırın.
-3. Şu komutu çalıştırın: `s_client -showcerts -connect microsoft.com:443`.
+3. `s_client -showcerts -connect microsoft.com:443` öğesini çalıştırın.
 4. Otomatik olarak imzalanan sertifikaları bulun. Hangi sertifikaların kendinden imzalandığına ilişkin emin değilseniz, konunun ve verenin aynı olduğu her yerde dikkat edin `("s:")` `("i:")` .
 5. Her biri için otomatik olarak imzalanan sertifikalar bulduğunuzda, (ve dahil) her şeyi `-----BEGIN CERTIFICATE-----` `-----END CERTIFICATE-----` Yeni bir. cer dosyasına kopyalayıp yapıştırın.
-6. Depolama Gezgini açın ve **Edit**  >  **SSL sertifikalarını** düzenlemek için  >  **sertifikaları içeri aktarın** ' a gidin. Ardından, oluşturduğunuz. cer dosyalarını bulmak, seçmek ve açmak için dosya seçiciyi kullanın.
+6. Depolama Gezgini açın ve   >  **SSL sertifikalarını** düzenlemek için  >  **sertifikaları içeri aktarın**' a gidin. Ardından, oluşturduğunuz. cer dosyalarını bulmak, seçmek ve açmak için dosya seçiciyi kullanın.
 
 Bu adımları izleyerek kendinden imzalı bir sertifika bulamıyorsanız, geri bildirim aracı aracılığıyla bizimle iletişim kurun. Bayrağını kullanarak komut satırından Depolama Gezgini de açabilirsiniz `--ignore-certificate-errors` . Bu bayrağıyla açıldığında, Depolama Gezgini sertifika hatalarını yoksayar.
 
@@ -113,7 +116,7 @@ Bu adımları izleyerek kendinden imzalı bir sertifika bulamıyorsanız, geri b
 
 Active Directory Federasyon Hizmetleri (AD FS) (AD FS), elektron tarafından desteklenmeyen bir yeniden yönlendirme gerçekleştirmeyi Depolama Gezgini istem yaparken, boş oturum açma iletişim kutuları çoğu zaman oluşur. Bu sorunu geçici olarak çözmek için, oturum açma için cihaz kod akışını kullanmayı deneyebilirsiniz. Bunu yapmak için aşağıdaki adımları izleyin:
 
-1. Sol dikey araç çubuğunda **Ayarlar** ' ı açın. Ayarlar panelinde **uygulama**  >  **oturum açma** ' ya gidin. **Cihaz kod akışı oturum açma** özelliğini etkinleştir.
+1. Sol dikey araç çubuğunda **Ayarlar**' ı açın. Ayarlar panelinde **uygulama**  >  **oturum açma**' ya gidin. **Cihaz kod akışı oturum açma** özelliğini etkinleştir.
 2. **Bağlan** iletişim kutusunu açın (sol taraftaki dikey çubukta bulunan tak simgesi veya hesap panelinde **Hesap Ekle** ' yi seçerek).
 3. Oturum açmak istediğiniz ortamı seçin.
 4. **Oturum aç '** ı seçin.
@@ -175,9 +178,9 @@ Başarıyla oturum açtıktan sonra aboneliklerinizi alamadıysanız aşağıdak
 
 Kullanıcı arabirimi aracılığıyla ekli bir hesabı veya depolama kaynağını kaldıramıyorum, aşağıdaki klasörleri silerek tüm bağlı kaynakları el ile silebilirsiniz:
 
-* Pencerelerin `%AppData%/StorageExplorer`
+* Windows: `%AppData%/StorageExplorer`
 * MacOS `/Users/<your_name>/Library/Application Support/StorageExplorer`
-* 'Un `~/.config/StorageExplorer`
+* Linux: `~/.config/StorageExplorer`
 
 > [!NOTE]
 > Bu klasörleri silmeden önce Depolama Gezgini kapatın.
@@ -187,46 +190,62 @@ Kullanıcı arabirimi aracılığıyla ekli bir hesabı veya depolama kaynağın
 
 ## <a name="proxy-issues"></a>Proxy sorunları
 
-İlk olarak, girdiğiniz aşağıdaki bilgilerin doğru olduğundan emin olun:
+Depolama Gezgini, Azure depolama kaynaklarına bir proxy sunucu aracılığıyla bağlanmayı destekler. Ara sunucu aracılığıyla Azure 'a bağlantı sorunlarıyla karşılaşırsanız, bazı öneriler aşağıda verilmiştir.
 
-* Proxy URL 'SI ve bağlantı noktası numarası
-* Ara sunucu için gerekliyse Kullanıcı adı ve parola
+> [!NOTE]
+> Depolama Gezgini yalnızca Proxy sunucularıyla temel kimlik doğrulamasını destekler. NTLM gibi diğer kimlik doğrulama yöntemleri desteklenmez.
 
 > [!NOTE]
 > Depolama Gezgini, proxy ayarlarını yapılandırmak için proxy otomatik yapılandırma dosyalarını desteklemez.
 
-### <a name="common-solutions"></a>Yaygın çözümler
+### <a name="verify-storage-explorer-proxy-settings"></a>Depolama Gezgini proxy ayarlarını doğrulayın
 
-Sorun yaşamaya devam ediyorsanız, aşağıdaki sorun giderme yöntemlerini deneyin:
+**Application → Proxy → proxy yapılandırma** ayarı, proxy yapılandırmasını hangi kaynak Depolama Gezgini alır belirler.
 
-* Proxy 'nizi kullanmadan internet 'e bağlanabildiğinizi, Depolama Gezgini proxy ayarları etkin olmadan çalıştığını doğrulayın. Bu durumda, ara sunucu ayarlarınızda bir sorun olabilir. Sorunları belirlemek için yöneticinizle birlikte çalışın.
-* Proxy sunucusunu kullanan diğer uygulamaların beklendiği gibi çalıştığını doğrulayın.
-* Kullanmaya çalıştığınız Azure ortamı için portala bağlanabildiğinizi doğrulayın.
-* Hizmet uç noktaınızdan yanıt alabildiğinizi doğrulayın. Tarayıcınızın uç nokta URL 'Lerinden birini girin. Bağlantı kurmak için InvalidQueryParameterValue veya benzer bir XML yanıtı almalısınız.
-* Başka biri de ara sunucu ile Depolama Gezgini kullanıyorsa, bağlanabildiğini doğrulayın. Mümkünse, proxy sunucu yöneticinize başvurmanız gerekebilir.
+"Ortam değişkenlerini kullan" seçeneğini belirlerseniz, veya ortam değişkenlerini ayarladığınızdan emin olun `HTTPS_PROXY` `HTTP_PROXY` (ortam değişkenleri büyük/küçük harfe duyarlıdır, bu nedenle doğru değişkenleri ayarladığınızdan emin olun). Bu değişkenler tanımsız veya geçersiz ise Depolama Gezgini proxy kullanmaz. Herhangi bir ortam değişkenini değiştirdikten sonra Depolama Gezgini yeniden başlatın.
+
+"Uygulama proxy 'si ayarlarını kullan" seçeneğini belirlerseniz, uygulama içi proxy ayarlarının doğru olduğundan emin olun.
+
+### <a name="steps-for-diagnosing-issues"></a>Sorunları tanılamaya yönelik adımlar
+
+Sorun yaşamaya devam ediyorsanız, şu sorun giderme yöntemlerini deneyin:
+
+1. Proxy 'nizi kullanmadan internet 'e bağlanabildiğinizi, Depolama Gezgini proxy ayarları etkin olmadan çalıştığını doğrulayın. Depolama Gezgini başarıyla bağlanırsa, ara sunucu ile ilgili bir sorun olabilir. Sorunları belirlemek için yöneticinizle birlikte çalışın.
+2. Proxy sunucusunu kullanan diğer uygulamaların beklendiği gibi çalıştığını doğrulayın.
+3. Kullanmaya çalıştığınız Azure ortamı için portala bağlanabildiğinizi doğrulayın.
+4. Hizmet uç noktaınızdan yanıt alabildiğinizi doğrulayın. Tarayıcınızın uç nokta URL 'Lerinden birini girin. Bağlantı kurmak için bir `InvalidQueryParameterValue` veya benzer BIR XML yanıtı almanız gerekir.
+5. Aynı proxy sunucusuyla Depolama Gezgini başka birisinin bağlanıp bağlanamayacağını denetleyin. Mümkünse, proxy sunucu yöneticinize başvurmanız gerekebilir.
 
 ### <a name="tools-for-diagnosing-issues"></a>Sorunları tanılamaya yönelik araçlar
 
-Windows için Fiddler gibi ağ araçlarınız varsa, sorunları aşağıdaki gibi tanılayabilirsiniz:
+Fiddler gibi bir ağ aracı, sorunları tanılamanıza yardımcı olabilir.
 
-* Proxy 'niz üzerinden çalışmanız gerekiyorsa, ağ iletişimi aracınızı proxy üzerinden bağlanacak şekilde yapılandırmanız gerekebilir.
-* Ağ aracınız tarafından kullanılan bağlantı noktası numarasını kontrol edin.
-* Depolama Gezgini ' deki proxy ayarları olarak yerel ana bilgisayar URL 'sini ve ağ aracının bağlantı noktası numarasını girin. Bunu doğru yaptığınızda, ağ aracınız, yönetim ve hizmet uç noktalarına Depolama Gezgini tarafından yapılan ağ isteklerini günlüğe kaydetmeye başlar. Örneğin, `https://cawablobgrs.blob.core.windows.net/` bir tarayıcıda blob uç noktanız için girin ve aşağıdakine benzer bir yanıt alırsınız:
+1. Ağ aracınızı yerel konakta çalışan bir ara sunucu olarak yapılandırın. Gerçek bir proxy 'nin arkasında çalışmaya devam etmeniz gerekirse, ağ aracınızı proxy üzerinden bağlanacak şekilde yapılandırmanız gerekebilir.
+2. Ağ aracınız tarafından kullanılan bağlantı noktası numarasını kontrol edin.
+3. Depolama Gezgini proxy ayarlarını yerel ana bilgisayarı ve ağ aracının bağlantı noktası numarasını (örneğin, "localhost: 8888") kullanacak şekilde yapılandırın.
+ 
+Doğru şekilde ayarlandığında, ağ aracınız Depolama Gezgini tarafından yapılan ağ isteklerini yönetim ve hizmet uç noktalarına kaydeder.
+ 
+Ağ aracınız Depolama Gezgini trafiği günlüğe kaydetme gibi görünmezse, aracınızı farklı bir uygulamayla test etmeyi deneyin. Örneğin, bir Web tarayıcısına depolama kaynaklarınızdan biri (gibi) için uç nokta URL 'sini girin `https://contoso.blob.core.windows.net/` ve şuna benzer bir yanıt alırsınız:
 
   ![Kod örneği](./media/storage-explorer-troubleshooting/4022502_en_2.png)
 
-  Bu yanıt, erişemeseniz de kaynağın mevcut olduğunu önerir.
+  Yanıt, erişemeseniz de kaynağın mevcut olduğunu önerir.
+
+Ağ aracınız yalnızca diğer uygulamalardan gelen trafiği gösteriyorsa, ara sunucu ayarlarını Depolama Gezgini ayarlamanız gerekebilir. Aksi takdirde, aracınızın ayarlarını ayarlamanız gerekir.
 
 ### <a name="contact-proxy-server-admin"></a>Proxy Sunucu Yöneticisi ile iletişim kurun
 
-Proxy ayarlarınız doğruysa, proxy sunucu yöneticinizle iletişime geçerek şunları yapabilirsiniz:
+Proxy ayarlarınız doğruysa, proxy sunucu yöneticinize başvurmanız gerekebilir:
 
 * Proxy 'nizin Azure yönetimine veya kaynak uç noktalarına giden trafiği engellemediğinden emin olun.
-* Proxy sunucunuz tarafından kullanılan kimlik doğrulama protokolünü doğrulayın. Depolama Gezgini Şu anda NTLM proxy 'leri desteklemiyor.
+* Proxy sunucunuz tarafından kullanılan kimlik doğrulama protokolünü doğrulayın. Depolama Gezgini yalnızca temel kimlik doğrulama protokollerini destekler. Depolama Gezgini, NTLM proxy 'lerini desteklemez.
 
 ## <a name="unable-to-retrieve-children-error-message"></a>"Alt öğeler alınamıyor" hata iletisi
 
-Azure 'a bir proxy üzerinden bağlıysanız, proxy ayarlarınızın doğru olduğundan emin olun. Aboneliğin veya hesabın sahibinden bir kaynağa erişim izni verildiyse, bu kaynak için okuma veya listeleme izinlerine sahip olduğunuzu doğrulayın.
+Azure 'a bir proxy üzerinden bağlıysanız, proxy ayarlarınızın doğru olduğundan emin olun.
+
+Bir aboneliğin veya hesabın sahibi size bir kaynağa erişim izni verdiyseniz, bu kaynak için okuma veya listeleme izinlerine sahip olduğunuzu doğrulayın.
 
 ## <a name="connection-string-doesnt-have-complete-configuration-settings"></a>Bağlantı dizesinin yapılandırma ayarları Tamam
 
@@ -239,7 +258,7 @@ Hesap anahtarlarını görürseniz, sorunu çözmenize yardımcı olması için 
 Özel bir bağlantı eklemeye çalıştığınızda bu hata iletisini alırsanız, yerel kimlik bilgileri Yöneticisi 'nde depolanan bağlantı verileri bozulmuş olabilir. Bu sorunu geçici olarak çözmek için bozuk yerel bağlantılarınızı silmeyi ve sonra yeniden eklemeyi deneyin:
 
 1. Depolama Gezgini başlatın. Menüden, **Yardım**  >  **Geliştirici Araçları** seçeneğine gidin.
-2. Açılan pencerede, **uygulama** sekmesinde, **File://** > **yerel depolama** (sol taraf) seçeneğine gidin.
+2. Açılan pencerede, **uygulama** sekmesinde, **File://**> **yerel depolama** (sol taraf) seçeneğine gidin.
 3. Sorun yaşadığınız bağlantı türüne bağlı olarak, anahtarını bulun ve sonra değerini bir metin düzenleyicisine kopyalayın. Değer, aşağıdaki gibi özel bağlantı adlarınızın bir dizisidir:
     * Depolama hesapları
         * `StorageExplorer_CustomConnections_Accounts_v1`
@@ -265,7 +284,7 @@ Tüm bağlantılarınız bittikten sonra, geri eklenmemiş tüm bağlantı adlar
 # <a name="windows"></a>[Windows](#tab/Windows)
 
 1. **Başlat** menüsünde **kimlik bilgileri Yöneticisi** ' ni arayın ve açın.
-2. **Windows kimlik bilgileri** ' ne gidin.
+2. **Windows kimlik bilgileri**' ne gidin.
 3. **Genel kimlik bilgileri** altında, anahtarına sahip olan girişleri arayın `<connection_type_key>/<corrupted_connection_name>` (örneğin, `StorageExplorer_CustomConnections_Accounts_v1/account1` ).
 4. Bu girişleri silip bağlantıları yeniden ekleyin.
 

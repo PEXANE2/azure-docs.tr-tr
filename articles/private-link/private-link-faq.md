@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: 2e5edb0ccf20ab0dba14864487f2b2ddef7d57e7
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: c074c29b7a37f49d5a4c7a5fab00b9a3e41c6893
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544216"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901547"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure özel bağlantı hakkında sık sorulan sorular (SSS)
 
@@ -43,8 +43,8 @@ Evet. Aynı VNet veya alt ağda birden fazla özel uç noktaya sahip olabilirsin
 ### <a name="do-i-require-a-dedicated-subnet-for-private-endpoints"></a>Özel uç noktalar için ayrılmış bir alt ağa ihtiyacım var mı? 
 Hayır. Özel uç noktalar için adanmış bir alt ağ gerekmez. Hizmetinizin dağıtıldığı VNet 'ten herhangi bir alt ağdan özel bir uç nokta IP 'si seçebilirsiniz.  
  
-### <a name="can-private-endpoint-connect-to-private-link-service-across-azure-active-directory-tenants"></a>Özel uç nokta, Azure Active Directory kiracılar genelinde özel bağlantı hizmetine bağlanabilir mi? 
-Evet. Özel uç noktalar, AD kiracılarında özel bağlantı hizmetlerine veya Azure PaaS 'ye bağlanabilir.  
+### <a name="can-a-private-endpoint-connect-to-private-link-services-across-azure-active-directory-tenants"></a>Özel bir uç nokta, Azure Active Directory kiracılar genelinde özel bağlantı hizmetlerine bağlanabilir mi? 
+Evet. Özel uç noktalar, özel bağlantı hizmetlerine veya Azure PaaS Azure Active Directory kiracılar arasında bağlanabilir. Kiracılar genelinde bağlanan özel uç noktalar el ile istek onayı gerektirir. 
  
 ### <a name="can-private-endpoint-connect-to-azure-paas-resources-across-azure-regions"></a>Özel uç nokta Azure bölgeleri arasında Azure PaaS kaynaklarına bağlanabilir mi?
 Evet. Özel uç noktalar Azure bölgeleri arasında Azure PaaS kaynaklarına bağlanabilir.

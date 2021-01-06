@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 55692122461ef1b22b43b0def43e826ac7aeae30
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: e3a665e3615c9ff3a68cf13eeaef5e8f41632f6a
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813794"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900369"
 ---
 # <a name="test-through-simulations"></a>Simülasyonlar aracılığıyla test etme
 
@@ -29,7 +29,7 @@ Azure müşterilerinin benzetimler için DDoS koruması etkinleştirilmiş ortak
 - DDoS uyumluluğunu belgeleyin.
 - Ağ Güvenlik ekiplerinizi eğitme.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Bu öğreticideki adımları tamamlayabilmeniz için önce, korunan genel IP adreslerine sahip bir [Azure DDoS standart koruma planı](manage-ddos-protection.md) oluşturmanız gerekir.
 - Önce [BreakingPoint bulutu](http://breakingpoint.cloud/)ile bir hesap oluşturmanız gerekir. 
@@ -42,9 +42,9 @@ Azure müşterilerinin benzetimler için DDoS koruması etkinleştirilmiş ortak
     |---------      |---------                                          |
     |Hedef IP adresi           | Test etmek istediğiniz genel IP adresinden birini girin.                     |
     |Bağlantı Noktası Numarası   | _443_ girin.                       |
-    |DDoS profili | **TCP SYN sel** öğesini seçin.|
-    |Test boyutu       | **200K PPS, 100 Mbps ve 8 Kaynak IP 'leri seçin.**                                  |
-    |Test süresi | **10 dakika** seçin.|
+    |DDoS profili | Olası değerler şunlardır; **DNS sel**, **NTPv2 sel**, **SSDP sel**, **TCP SYN sel**, **UDP 64B sel**, **UDP 128b sel**, UDP **256B** sel, UDP **512B** sel, UDP **1024b sel**, UDP **1514b sel**, **UDP parçalanma** **UDP memönbellekli**.|
+    |Test boyutu       | Olası değerler **100K PPS, 50 Mbps ve 4 kaynak IP**, **200k PPS, 100 Mbps ve 8 Kaynak IP**, **400K PPS, 200Mbps ve 16 kaynak** ıp, **800k PPS, 400 Mbps ve 32 Kaynak IP 'leri** içerir.                                  |
+    |Test süresi | Olası değerler şunlardır **10 dakika**, **15 dakika**, **20 dakika**, **25 dakika**, **30 dakika**.|
 
 Şu şekilde görünür:
 

@@ -3,12 +3,12 @@ title: Service Fabric kümesinde X. 509.440 sertifika tabanlı kimlik doğrulama
 description: Service Fabric kümelerinde sertifika tabanlı kimlik doğrulaması ve sertifikayla ilgili sorunları algılama, azaltma ve çözme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 4d81cb9d224bdc2e3002c621c86729df235e0d81
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 8af0246e0e576f9877c4c5e3b1f1a4314ae29827
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574777"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901258"
 ---
 # <a name="x509-certificate-based-authentication-in-service-fabric-clusters"></a>Service Fabric kümelerinde X. 509.440 sertifika tabanlı kimlik doğrulaması
 
@@ -170,7 +170,10 @@ Düğüm türü sertifikaları, aşağıda belirtildiği gibi, konu ortak adına
   </NodeTypes>
 ```
 
-Her iki tür bildirim için, Service Fabric bir düğüm başlangıçta yapılandırmayı okur, belirtilen sertifikaları bulup yükler ve NotAfter özniteliklerini azalan düzende sıralar; süre biten sertifikalar yok sayılır ve listenin ilk öğesi bu düğüm tarafından denenen tüm Service Fabric bağlantıları için istemci kimlik bilgileri olarak seçilir. (Aslında Service Fabric, en fazla süresi dolan sertifikayı tercih eder.)
+Her iki tür bildirim için, Service Fabric bir düğüm başlangıçta yapılandırmayı okur, belirtilen sertifikaları bulup yükler ve bunları NotBefore özniteliğiyle azalan düzende sıralayacak; süre biten sertifikalar yok sayılır ve listenin ilk öğesi bu düğüm tarafından denenen tüm Service Fabric bağlantıları için istemci kimlik bilgileri olarak seçilir. (Aslında Service Fabric en son verilen sertifikayı tercih eder.)
+
+> [!NOTE]
+> Sürüm 7.2.445 (7,2 CU4) öncesinde, en fazla süresi dolan sertifikayı Service Fabric (en uzak ' NotAfter ' özelliğine sahip sertifika) seçildi
 
 Ortak ad tabanlı sunum bildirimleri için, özne ortak adı bildirimin X509FindValue (veya X509FindValueSecondary) alanına eşitse, büyük/küçük harfe duyarlı, tam bir dize karşılaştırması olarak bir sertifikanın eşleşme olarak kabul edileceğini unutmayın. Bu, joker karakterle eşleştirmeyi destekleyen ve büyük/küçük harfe duyarsız dize karşılaştırmalarının yanı sıra, doğrulama kurallarına karşılık gelir.  
 

@@ -7,18 +7,18 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 5f511a898b3b2964f954ba150b05f02486456dcf
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: e49a84f5ac507ac80481313c103701a88934083a
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171491"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900785"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Öğretici: Azure statik Web Apps önizleme 'ye bir Hugo sitesi yayımlama
 
 Bu makalede, [Azure statik Web Apps](overview.md)bir [Hugo](https://gohugo.io/) Web uygulaması oluşturma ve dağıtma gösterilmektedir. Nihai sonuç, uygulamanın nasıl oluşturulduğunu ve yayımlanabileceğini denetlemenize olanak tanıyan, ilişkili GitHub eylemlerine sahip yeni bir Azure statik Web uygulamasıdır.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -105,17 +105,17 @@ Aşağıdaki adımlarda, yeni bir statik site uygulamasının nasıl oluşturula
 
    :::image type="content" source="./media/publish-hugo/create-in-portal.png" alt-text="Portalda Azure statik Web Apps kaynağı oluşturma":::
 
-1. **Abonelik**için, listelenen aboneliği kabul edin veya açılan listeden yeni bir tane seçin.
+1. **Abonelik** için, listelenen aboneliği kabul edin veya açılan listeden yeni bir tane seçin.
 
 1. _Kaynak grubu_' nda **Yeni**' yi seçin. _Yeni kaynak grubu adı_' nda **Hugo-static-App** yazın ve **Tamam**' ı seçin.
 
 1. Ardından, **ad** kutusunda uygulamanız için bir ad. Geçerli karakterler `a-z` ,, `A-Z` ve `0-9` içerir `-` .
 
-1. _Bölge_için bir kullanılabilir bölge seçin.
+1. _Bölge_ için bir kullanılabilir bölge seçin.
 
-1. _SKU_için **ücretsiz**' i seçin.
+1. _SKU_ için **ücretsiz**' i seçin.
 
-   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="Portalda Azure statik Web Apps kaynağı oluşturma":::
+   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="Ayrıntılar dolduruldu":::
 
 1. **GitHub Ile oturum aç** düğmesine tıklayın.
 
@@ -123,9 +123,9 @@ Aşağıdaki adımlarda, yeni bir statik site uygulamasının nasıl oluşturula
 
 1. _Depo_ olarak **Hugo-static-App** ' i seçin.
 
-1. _Dal_ için **ana öğe**seçin.
+1. _Dal_ için **ana öğe** seçin.
 
-   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="Portalda Azure statik Web Apps kaynağı oluşturma":::
+   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="Tamamlanan GitHub bilgileri":::
 
 ### <a name="build"></a>Yapı
 
@@ -135,7 +135,7 @@ Daha sonra, yapı işleminin uygulamanızı derlemek için kullandığı yapıla
 
 1. _Uygulama konumunu_ olarak ayarlayın **/** .
 
-1. _Uygulama yapıtı konumunu_ **ortak**olarak ayarlayın.
+1. _Uygulama yapıtı konumunu_ **ortak** olarak ayarlayın.
 
    Şu anda bir API dağıtmadığından, _API konumu_ için bir değer gerekli değildir.
 
@@ -149,7 +149,7 @@ Daha sonra, yapı işleminin uygulamanızı derlemek için kullandığı yapıla
 
 1. Yeni oluşturulan Azure statik Web Apps kaynağının Azure portal _genel bakış_ penceresinde, dağıtılan uygulamanızı açmak için _URL_ bağlantısına tıklayın.
 
-   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="Portalda Azure statik Web Apps kaynağı oluşturma":::
+   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="Dağıtılan uygulama":::
 
 #### <a name="custom-hugo-version"></a>Özel Kugo sürümü
 
@@ -176,7 +176,7 @@ jobs:
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
           app_location: "/" # App source code path
           api_location: "api" # Api source code path - optional
-          app_artifact_location: "public" # Built app content directory - optional
+          output_location: "public" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
         env:
           HUGO_VERSION: 0.58.0

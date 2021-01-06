@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/05/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 69c2bd96c7aa3bb3328784bb3b5027ade4902c43
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 129809a83bcebdcf80b05a7300dd9acf862e5886
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97669236"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900408"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-salesforce-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir Salesforce hesabı ile kaydolma ve oturum açma ayarlama
 
@@ -30,7 +30,7 @@ ms.locfileid: "97669236"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -48,10 +48,12 @@ Azure Active Directory B2C (Azure AD B2C) ' de Salesforce hesabı kullanmak içi
     1. **API adı** 
     1. **Iletişim e-postası** -Salesforce için iletişim e-postası
 1. **API (OAuth ayarlarını etkinleştir)** altında **OAuth ayarlarını etkinleştir** ' i seçin.
-1. **Geri arama URL 'si**' nde, girin `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . `your-tenant-name`Kiracınızın adıyla değiştirin. Kiracı, Azure AD B2C büyük harfle tanımlansa bile kiracı adınızı girerken tüm küçük harfleri kullanmanız gerekir.
-1. **Seçili OAuth kapsamlarında**, **temel bilgilere (kimlik, profil, e-posta, adres, telefon) erişin** ve **benzersiz tanımlayıcısına (OpenID) erişim izni verin**.
-1. **Web sunucusu akışı Için gizli iste**' yi seçin.
-1. **Kimlik belirtecini Yapılandır**' ı seçin ve **Standart talepler dahil et**' i seçin.
+    1. **Geri arama URL 'si**' nde, girin `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . `your-tenant-name`Kiracınızın adıyla değiştirin. Kiracı, Azure AD B2C büyük harfle tanımlansa bile kiracı adınızı girerken tüm küçük harfleri kullanmanız gerekir.
+    1. **Seçili OAuth kapsamlarında**, **temel bilgilere (kimlik, profil, e-posta, adres, telefon) erişin** ve **benzersiz tanımlayıcısına (OpenID) erişim izni verin**.
+    1. **Web sunucusu akışı Için gizli iste**' yi seçin.
+1. **Kimlik belirtecini Yapılandır** ' ı seçin 
+    1. Belirteç 5 dakika **geçerli** olacak şekilde ayarlayın.
+    1. **Standart talepleri içer**' i seçin.
 1. **Kaydet**’e tıklayın.
 1. **Tüketici anahtarı** ve **Tüketici parolası** değerlerini kopyalayın. Salesforce 'ı kiracınızda bir kimlik sağlayıcısı olarak yapılandırmak için her ikisine de ihtiyacınız olacak. **İstemci parolası** önemli bir güvenlik kimlik bilgileridir.
 
@@ -63,10 +65,10 @@ Azure Active Directory B2C (Azure AD B2C) ' de Salesforce hesabı kullanmak içi
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 1. **Kimlik sağlayıcıları**' nı seçin ve ardından **Yeni OpenID Connect sağlayıcısı**' nı seçin.
 1. Bir **ad** girin. Örneğin *Salesforce* girin.
-1. **Meta veri URL 'si** için Salesforce kuruluşunuzla aşağıdaki URL 'yi girin `{org}` :
+1. **Meta veri URL 'si** Için [Salesforce OpenID Connect yapılandırma belgesinin](https://help.salesforce.com/articleView?id=remoteaccess_using_openid_discovery_endpoint.htm)URL 'sini girin. Bir korumalı alan için login.salesforce.com, test.salesforce.com ile değiştirilmiştir. Bir topluluk için login.salesforce.com, username.force.com/.well-known/openid-configuration gibi topluluk URL 'siyle değiştirilmiştir. URL 'nin HTTPS olması gerekir.
 
     ```
-    https://{org}.my.salesforce.com/.well-known/openid-configuration
+    https://login.salesforce.com/.well-known/openid-configuration
     ```
 
 1. **ISTEMCI kimliği** için, daha önce KAYDETTIĞINIZ uygulama kimliğini girin.
@@ -80,7 +82,7 @@ Azure Active Directory B2C (Azure AD B2C) ' de Salesforce hesabı kullanmak içi
     - **Görünen ad**: *ad*
     - **Verilen ad**: *given_name*
     - **Soyadı**: *family_name*
-    - **E-posta**: *preferred_username*
+    - **Eposta**: *e-posta*
 
 1. **Kaydet**’i seçin.
 ::: zone-end
@@ -91,7 +93,7 @@ Azure Active Directory B2C (Azure AD B2C) ' de Salesforce hesabı kullanmak içi
 
 Daha önce Azure AD B2C kiracınızda kaydettiğiniz istemci gizli anahtarını depolamanız gerekir.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve kiracınızı içeren dizini seçin.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. Genel Bakış sayfasında **kimlik deneyimi çerçevesi**' ni seçin.
@@ -121,8 +123,7 @@ Bir Salesforce hesabını, ilkenizin uzantı dosyasındaki **Claimsproviders** �
           <DisplayName>Salesforce</DisplayName>
           <Protocol Name="OpenIdConnect" />
           <Metadata>
-            <!-- Update the {org} below to your Salesforce organization -->
-            <Item Key="METADATA">https://{org}.my.salesforce.com/.well-known/openid-configuration</Item>
+            <Item Key="METADATA">https://login.salesforce.com/.well-known/openid-configuration</Item>
             <Item Key="response_types">code</Item>
             <Item Key="response_mode">form_post</Item>
             <Item Key="scope">openid id profile email</Item>
@@ -154,7 +155,7 @@ Bir Salesforce hesabını, ilkenizin uzantı dosyasındaki **Claimsproviders** �
     </ClaimsProvider>
     ```
 
-4. **Meta veri** URI 'sini `{org}` Salesforce kuruluşunuzla ayarlayın.
+4. **Meta veriler** [Salesforce OpenID Connect yapılandırma belgesinin](https://help.salesforce.com/articleView?id=remoteaccess_using_openid_discovery_endpoint.htm)URL 'sine ayarlanır. Bir korumalı alan için login.salesforce.com, test.salesforce.com ile değiştirilmiştir. Bir topluluk için login.salesforce.com, username.force.com/.well-known/openid-configuration gibi topluluk URL 'siyle değiştirilmiştir. URL 'nin HTTPS olması gerekir.
 5. Uygulama kaydından uygulama KIMLIĞINE **client_id** ayarlayın.
 6. Dosyayı kaydedin.
 

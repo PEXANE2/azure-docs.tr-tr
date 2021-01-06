@@ -4,12 +4,12 @@ description: X. 509.440 sertifikalarıyla güvenliği sağlanmış bir Service F
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
-ms.openlocfilehash: aba681157d71f94914462b8d9fc13b90d4d6b153
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 722c84c25cb5188e45dd96363bab9af6ff93f6dc
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88653673"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901275"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Service Fabric kümelerinde sertifika yönetimi
 
@@ -109,9 +109,12 @@ Bir yan not olarak: IETF [RFC 3647](https://tools.ietf.org/html/rfc3647) resmi b
 
 Azure Key Vault, otomatik sertifika döndürmeyi desteklediğine daha önce gördük: sertifikayı ilişkilendir ilkesi, sertifikanın kasada döndürüldüğü zaman aşımı süresi veya toplam yaşam süresinin yüzdesi ' ne kadar günler tanımlar. Bu yeni sertifikayı kümenin tüm düğümlerine dağıtmak için, sağlama aracısının bu tarihten sonra ve şimdi önceki sertifikanın süresi dolduktan önce çağrılması gerekir. Service Fabric, bir sertifikanın sona erme tarihi (ve kümede kullanımda olan) önceden belirlenmiş bir aralıktan daha önce gerçekleştiğinde sistem durumu uyarılarını vererek yardımcı olur. Kasa sertifikasını gözlemleyecek şekilde yapılandırılan bir otomatik sağlama Aracısı (yani, Anahtar Kasası VM uzantısı), kasayı düzenli olarak yokladığında, döndürmeyi tespit eder ve yeni sertifikayı alıp yükler. VM/VMSS ' gizli dizileri ' özelliği aracılığıyla yapılan sağlama, VM/VMSS 'yi yeni sertifikaya karşılık gelen sürümlü Anahtar Kasası URI 'SI ile güncelleştirmek için yetkilendirilmiş bir operatör gerektirir.
 
-Her iki durumda da, döndürülen sertifika artık tüm düğümlere sağlanır ve bu mekanizmayı tespit etmek için Service Fabric mekanizmasını açıklıyoruz; daha sonra ne olduğunu incelemektir. bu durum, konu ortak adı (Bu yazma zamanına göre geçerlidir ve çalışma zamanı sürümü 7.1.409 Service Fabric) tarafından belirtilen küme sertifikasına uygulanan döndürme işleminin ne olduğunu inceleyelim:
-  - içindeki yeni bağlantılarda ve küme içinde, Service Fabric çalışma zamanı, en son sona erme tarihi (sertifikanın ' NotAfter ' özelliği, genellikle ' na ' olarak kısaltılır) ile eşleşen sertifikayı bulup seçer.
+Her iki durumda da, döndürülen sertifika artık tüm düğümlere sağlanır ve bu mekanizmayı tespit etmek için Service Fabric mekanizmasını açıklıyoruz; daha sonra ne olduğunu inceleyeceğiz. Bu, bir sonraki deyişle, bir konu ortak adına göre belirtilen küme sertifikasına uygulanan döndürme
+  - içindeki yeni bağlantılarda ve küme içinde, Service Fabric çalışma zamanı en son verilen eşleşen sertifikayı bulup seçer (' NotBefore ' özelliğinin en büyük değeri). Bu, Service Fabric çalışma zamanının önceki sürümlerinden bir değişiklik olduğunu göz önünde.
   - Mevcut bağlantılar canlı tutulacak/doğal olarak sona erecek veya sonlanmayacak; bir iç işleyici, yeni bir eşleşme olduğu bildirildi
+
+> [!NOTE] 
+> Sürüm 7.2.445 (7,2 CU4) öncesinde, en fazla süresi dolan sertifikayı Service Fabric (en uzak ' NotAfter ' özelliğine sahip sertifika) seçildi
 
 Bu, aşağıdaki önemli gözlemleri çevirir:
   - Son kullanma tarihi Şu anda kullanılmakta olan sertifikadan daha önce ise, yenileme sertifikası yoksayılabilir.
@@ -134,8 +137,11 @@ Mekanizmaları, kısıtlamaları, ana hatlarıyla açıklanan kuralları ve tan�
 
 Dizi tamamen betik/otomatik hale getirilebilir ve sertifika otomatik geçişi için yapılandırılmış bir kümenin Kullanıcı dokunmadan bir başlangıç dağıtımına izin verir. Ayrıntılı adımlar aşağıda verilmiştir. PowerShell cmdlet 'lerinin bir karışımını ve JSON şablonlarının parçalarını kullanacağız. Aynı işlevsellik, Azure ile etkileşime geçen tüm desteklenen yollarla ulaşılabilir.
 
-[!NOTE] Bu örnek, bir sertifikanın zaten kasada bulunduğunu varsayar; Anahtar Kasası tarafından yönetilen bir sertifikayı kaydetme ve yenileme, bu makalenin önceki kısımlarında açıklandığı gibi önkoşul adımlarını gerektirir. Üretim ortamları için, Anahtar Kasası tarafından yönetilen sertifikaları kullanın-Microsoft-iç PKI 'ya özgü bir örnek betik aşağıda verilmiştir.
-Sertifika oto geçişi yalnızca CA tarafından verilen sertifikalar için anlamlı olur; Azure portal bir Service Fabric kümesi dağıtımında oluşturulanlar dahil olmak üzere otomatik olarak imzalanan sertifikalar kullanmak, verenin parmak izini yaprak sertifikayla aynı olacak şekilde bildirerek, yerel/geliştirici tarafından barındırılan dağıtımlar için yine de mümkündür.
+> [!NOTE]
+> Bu örnek, bir sertifikanın zaten kasada bulunduğunu varsayar; Anahtar Kasası tarafından yönetilen bir sertifikayı kaydetme ve yenileme, bu makalenin önceki kısımlarında açıklandığı gibi önkoşul adımlarını gerektirir. Üretim ortamları için, Anahtar Kasası tarafından yönetilen sertifikaları kullanın-Microsoft-iç PKI 'ya özgü bir örnek betik aşağıda verilmiştir.
+
+> [!NOTE]
+> Sertifika oto geçişi yalnızca CA tarafından verilen sertifikalar için anlamlı olur; Azure portal bir Service Fabric kümesi dağıtımında oluşturulanlar dahil olmak üzere otomatik olarak imzalanan sertifikalar kullanmak, verenin parmak izini yaprak sertifikayla aynı olacak şekilde bildirerek, yerel/geliştirici tarafından barındırılan dağıtımlar için yine de mümkündür.
 
 ### <a name="starting-point"></a>Başlangıç noktası
 Kısaltma için, şu başlangıç durumunu varsayacağız:
@@ -455,7 +461,7 @@ Bir güvenlik açısından, sanal makinenin (ölçek kümesi) Azure kimliğiyle 
 ## <a name="troubleshooting-and-frequently-asked-questions"></a>Sorun giderme ve sık sorulan sorular
 
 *S*: program aracılığıyla Anahtar Kasası tarafından yönetilen bir sertifikaya nasıl kaydolur?
-Y *: anahtar*Kasası belgelerinden verenin adını bulun ve aşağıdaki komut dosyasında değiştirin.  
+Y *: anahtar* Kasası belgelerinden verenin adını bulun ve aşağıdaki komut dosyasında değiştirin.  
 ```PowerShell
   $issuerName=<depends on your PKI of choice>
     $clusterVault="sftestcus"
@@ -478,7 +484,7 @@ Y *: anahtar*Kasası belgelerinden verenin adını bulun ve aşağıdaki komut d
 ```
 
 *S*: bir sertifika bildirilmemiş/belirtilmemiş veren tarafından verildiğinde ne olur? Belirli bir PKI 'nın etkin verenler listesini nereden alabilirim?
-Y *: sertifika*bildirimi veren parmak izlerini belirtir ve sertifikayı doğrudan veren sabitlenmiş verenler listesine dahil edilmiyorsa, sertifika, köküne istemci tarafından güvenilip güvenilmediği bağımsız olarak kabul edilir. Bu nedenle, verenler listesinin güncel/güncel olmasını sağlamak önemlidir. Yeni bir veren 'in tanıtımı nadir bir olaydır ve sertifika verilmesinden önce yaygın olarak genel kullanıma sunulmalıdır. 
+Y *: sertifika* bildirimi veren parmak izlerini belirtir ve sertifikayı doğrudan veren sabitlenmiş verenler listesine dahil edilmiyorsa, sertifika, köküne istemci tarafından güvenilip güvenilmediği bağımsız olarak kabul edilir. Bu nedenle, verenler listesinin güncel/güncel olmasını sağlamak önemlidir. Yeni bir veren 'in tanıtımı nadir bir olaydır ve sertifika verilmesinden önce yaygın olarak genel kullanıma sunulmalıdır. 
 
 Genellikle bir PKI, IETF [RFC 7382](https://tools.ietf.org/html/rfc7382)' ye uygun olarak bir sertifika uygulama ekstresi yayımlayıp bakımını sağlayacaktır. Diğer bilgiler arasında, tüm etkin verenler dahil edilir. Bu listenin program aracılığıyla alınması bir PKI 'dan diğerine farklılık gösterebilir.   
 
@@ -488,7 +494,7 @@ Microsoft-iç PKI 'lar için lütfen yetkili verenler almak için kullanılan u�
 Y *: Evet*; küme bildiriminde aynı değere sahip birden fazla CN girişi bildiremeyebilirsiniz, ancak aynı CN 'ye karşılık gelen birden fazla PKI 'dan verenler listeleyebilir. Önerilen bir uygulama değildir ve sertifika saydamlığı uygulamaları, bu tür sertifikaların verilmasını önleyebilir. Ancak, bir PKI 'dan diğerine geçiş yapmak için bu kabul edilebilir bir mekanizmadır.
 
 *S*: geçerli küme sertifikası CA tarafından yayınlanmıyorsa veya amaçlanan konusu yoksa ne olur? 
-Y *: hedeflenen konuya sahip bir sertifika*alın ve bunu, parmak izine göre ikincil olarak kümenin tanımına ekleyin. Yükseltme başarıyla tamamlandıktan sonra, sertifika bildirimini ortak ada dönüştürmek için başka bir küme yapılandırma yükseltmesi başlatın. 
+Y *: hedeflenen konuya sahip bir sertifika* alın ve bunu, parmak izine göre ikincil olarak kümenin tanımına ekleyin. Yükseltme başarıyla tamamlandıktan sonra, sertifika bildirimini ortak ada dönüştürmek için başka bir küme yapılandırma yükseltmesi başlatın. 
 
 [Image1]:./media/security-cluster-certificate-mgmt/certificate-journey-thumbprint.png
 [Image2]:./media/security-cluster-certificate-mgmt/certificate-journey-common-name.png

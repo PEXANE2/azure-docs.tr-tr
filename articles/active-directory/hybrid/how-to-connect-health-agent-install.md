@@ -17,12 +17,12 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b680c275b92340cc7efba187769cb17602b08b45
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 365c9a990f16e9077450ae15f6677ab716fc45ba
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95973295"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900459"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Aracı yüklemesini Azure AD Connect Health
 
@@ -283,6 +283,17 @@ Uygun aracı *setup.exe* dosyasını yükledikten sonra, rolüne bağlı olarak 
     Register-AzureADConnectHealthSyncAgent
 
 ```
+
+> [!NOTE]
+> Bağımsız bulutlarına göre kaydolmak için aşağıdaki komut satırlarını kullanın:
+>
+> ```powershell
+> Register-AzureADConnectHealthADFSAgent -UserPrincipalName upn-of-the-user
+> Register-AzureADConnectHealthADDSAgent -UserPrincipalName upn-of-the-user
+> Register-AzureADConnectHealthSyncAgent -UserPrincipalName upn-of-the-user
+> ```
+>
+
 
 Bu komutlar `Credential` , kaydı etkileşimli olmayan bir şekilde tamamlamaya veya sunucu çekirdeği çalıştıran bir makinede kaydı tamamlamaya yönelik bir parametre olarak kabul eder. Şunları göz önünde bulundurun:
 * `Credential`Bir parametre olarak geçirilmiş bir PowerShell değişkeninde yakalayabilirsiniz.

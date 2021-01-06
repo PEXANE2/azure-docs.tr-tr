@@ -2,13 +2,13 @@
 title: Kapsayıcılar için Azure Izleyici 'deki uyarıları günlüğe kaydet | Microsoft Docs
 description: Bu makalede, kapsayıcılar için Azure Izleyici 'den bellek ve CPU kullanımı için nasıl özel günlük uyarıları oluşturacağınız açıklanır.
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: e9b0e01ca4c0ccb24d0d1b04a4d17ec06db253b6
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.date: 01/05/2021
+ms.openlocfilehash: 131f5ebc0f72afce381b4b82d6fe50a5d5e37123
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966260"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901513"
 ---
 # <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici 'den günlük uyarıları oluşturma
 
@@ -224,7 +224,7 @@ KubePodInventory
         KubePodInventory
         | where TimeGenerated < endDateTime
         | where TimeGenerated >= startDateTime
-        | summarize PodStatus=any(PodStatus) by TimeGenerated, PodUid, ClusterId
+        | summarize PodStatus=any(PodStatus) by TimeGenerated, PodUid, ClusterName
         | summarize TotalCount = count(),
                     PendingCount = sumif(1, PodStatus =~ 'Pending'),
                     RunningCount = sumif(1, PodStatus =~ 'Running'),
@@ -281,7 +281,7 @@ Bu bölümde, kapsayıcılar için Azure Izleyici 'den performans verilerini kul
 >Kapsayıcı kaynak kullanımı için bir uyarı kuralı oluşturmak için aşağıdaki yordam, [günlük uyarıları Için anahtar API tercihi](../platform/alerts-log-api-switch.md)bölümünde açıklandığı gibi yeni bir günlük uyarıları API 'sine geçmeniz gerekir.
 >
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Azure portal, **Log Analytics çalışma alanlarını** arayıp seçin.
 3. Log Analytics çalışma alanları listenizde, kapsayıcılar için Azure Izleyicisini destekleyen çalışma alanını seçin. 
 4. Sol taraftaki bölmede **Günlükler** ' i seçerek Azure izleyici günlükleri sayfasını açın. Azure günlük sorgularını yazmak ve yürütmek için bu sayfayı kullanın.

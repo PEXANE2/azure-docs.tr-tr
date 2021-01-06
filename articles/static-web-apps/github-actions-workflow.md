@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 3518935991409d87917582558a34ad7c54841e23
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 5e6188ca2e8e0972e86bed578144a29a96570876
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173675"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901207"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemesi için GitHub eylemleri iş akışları
 
@@ -63,7 +63,7 @@ jobs:
         ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
         app_location: '/' # App source code path
         api_location: 'api' # Api source code path - optional
-        app_artifact_location: 'dist' # Built app content directory - optional
+        output_location: 'dist' # Built app content directory - optional
         ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
@@ -132,15 +132,15 @@ with:
     ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
     app_location: '/' # App source code path
     api_location: 'api' # Api source code path - optional
-    app_artifact_location: 'dist' # Built app content directory - optional
+    output_location: 'dist' # Built app content directory - optional
     ###### End of Repository/Build Configurations ######
 ```
 
 | Özellik | Açıklama | Gerekli |
 |---|---|---|
-| `app_location` | Uygulama kodunuzun konumu.<br><br>Örneğin, `/` uygulamanızın kaynak kodu deponun kökünde veya `/app` uygulama kodunuz adlı bir dizinde ise girin `app` . | Yes |
+| `app_location` | Uygulama kodunuzun konumu.<br><br>Örneğin, `/` uygulamanızın kaynak kodu deponun kökünde veya `/app` uygulama kodunuz adlı bir dizinde ise girin `app` . | Evet |
 | `api_location` | Azure Işlevleri kodunuzun konumu.<br><br>Örneğin, `/api` uygulama kodunuz adlı bir klasörde ise yazın `api` . Klasörde hiçbir Azure Işlevleri uygulaması algılanmazsa, derleme başarısız olmaz, iş akışı bir API istemediğinizi varsayar. | Hayır |
-| `app_artifact_location` | Derleme çıkış dizininin öğesine göre konumu `app_location` .<br><br>Örneğin, uygulama kaynak kodunuz adresinde bulunuyorsa `/app` ve derleme betiği dosyaları klasörüne çıktıdaysa `/app/build` `build` değer olarak ayarlanır `app_artifact_location` . | Hayır |
+| `output_location` | Derleme çıkış dizininin öğesine göre konumu `app_location` .<br><br>Örneğin, uygulama kaynak kodunuz adresinde bulunuyorsa `/app` ve derleme betiği dosyaları klasörüne çıktıdaysa `/app/build` `build` değer olarak ayarlanır `output_location` . | Hayır |
 
 `repo_token`, `action` , Ve `azure_static_web_apps_api_token` değerleri Azure static tarafından sizin için ayarlanır Web Apps el ile değiştirilmemelidir.
 
@@ -163,7 +163,7 @@ Deponuzdaki herhangi bir klasörde [routes.js](routes.md) aramak için iş akı�
 |---------------------|-------------|
 | `routes_location` | Dosyadaki _routes.js_ bulunduğu dizin konumunu tanımlar. Bu konum, deponun köküne göredir. |
 
- _routes.jsdosya üzerinde_ açık olması özellikle, ön uç Framework derleme adımınız bu dosyayı varsayılan olarak ' a taşımadığından önemlidir `app_artifact_location` .
+ _routes.jsdosya üzerinde_ açık olması özellikle, ön uç Framework derleme adımınız bu dosyayı varsayılan olarak ' a taşımadığından önemlidir `output_location` .
 
 ## <a name="environment-variables"></a>Ortam değişkenleri
 
@@ -189,7 +189,7 @@ jobs:
           ###### Repository/Build Configurations
           app_location: "/"
           api_location: "api"
-          app_artifact_location: "public"
+          output_location: "public"
           ###### End of Repository/Build Configurations ######
         env: # Add environment variables here
           HUGO_VERSION: 0.58.0

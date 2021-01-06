@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 01/05/2021
 ms.author: mbullwin
 keywords: anomali algılama, makine öğrenimi, algoritmalar
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: d8698a17db8be6a3d5b26d764ef86702320ebfa4
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 425c6cab4a4a5e1329e2d38f49c5058ec8ffc5b9
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705090"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901377"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Anomali Algılayıcısı API'si nedir?
 
@@ -83,8 +83,17 @@ Kaydolduktan sonra:
 
 Microsoft 'un geliştirdiği SR-CNN algoritmaları hakkında daha fazla bilgi edinmek için [Microsoft 'ta kağıt zaman serisi anomali algılama hizmeti](https://arxiv.org/abs/1906.03821) 'ni okuyabilirsiniz (kdd 2019 tarafından kabul edilir).
 
-
 > [!VIDEO https://www.youtube.com/embed/ERTaAnwCarM]
+
+## <a name="service-availability-and-redundancy"></a>Hizmet kullanılabilirliği ve artıklığı
+
+### <a name="is-the-anomaly-detector-service-zone-resilient"></a>Anomali algılayıcı hizmeti bölgesi dayanıklı mi?
+
+Evet. Anomali algılayıcı hizmeti, varsayılan olarak bölge esnektir.
+
+### <a name="how-do-i-configure-the-anomaly-detector-service-to-be-zone-resilient"></a>Anomali algılayıcısı hizmetini bölge-dayanıklı olacak şekilde mi Nasıl yaparım??
+
+Bölge dayanıklılığı sağlamak için hiçbir müşteri yapılandırması gerekmez. Anomali algılayıcı kaynakları için bölge esnekliği, varsayılan olarak kullanılabilir ve hizmet tarafından yönetilir.
 
 ## <a name="deploy-on-premises-using-docker-containers"></a>Docker kapsayıcılarını kullanarak şirket içinde dağıtma
 

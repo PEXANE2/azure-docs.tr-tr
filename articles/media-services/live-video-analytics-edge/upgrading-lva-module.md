@@ -5,12 +5,12 @@ author: naiteeks
 ms.topic: how-to
 ms.author: naiteeks
 ms.date: 12/14/2020
-ms.openlocfilehash: 7904269a8ca87d3d801c7ff78def1b60f242b9ab
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 9621f0a933c6102309286505f2c551c5256c5506
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97425994"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901564"
 ---
 # <a name="upgrading-live-video-analytics-on-iot-edge-from-10-to-20"></a>1,0 ' den 2,0 ' e IoT Edge canlı video analizlerini yükseltme
 
@@ -19,7 +19,7 @@ Bu makalede, Azure IoT Edge modülündeki canlı video analizi (LVA) yükseltili
 ## <a name="change-list"></a>Değişiklik listesi
 
 > [!div class="mx-tdCol4BreakAll"]
-> |Başlık|Canlı video analizi 1,0|Canlı video analizi 2,0|Description|
+> |Title|Canlı video analizi 1,0|Canlı video analizi 2,0|Açıklama|
 > |-------------|----------|---------|---------|
 > |Kapsayıcı görüntüsü|mcr.microsoft.com/media/live-video-analytics:1.0.0|mcr.microsoft.com/media/live-video-analytics:2.0.0|Azure IoT Edge üzerinde canlı video analizi için Microsoft tarafından yayınlanan Docker görüntüleri|
 > |**MediaGraph düğümleri** |    |   |   |
@@ -169,7 +169,7 @@ Bu sürümde, telegraf Azure Izleyici 'ye ölçüm göndermek için kullanılabi
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/telemetry-schema/telegraf.png" alt-text="Olayların taksonomisi":::
 
-Docker 'ı kullanarak özel bir yapılandırmaya sahip telegraf görüntüsünü kolayca oluşturabilirsiniz. [İzleme ve günlüğe kaydetme](monitoring-logging.md#azure-monitor-collection-using-telegraf) sayfasında bu konuda daha fazla bilgi edinin.
+Docker 'ı kullanarak özel bir yapılandırmaya sahip telegraf görüntüsünü kolayca oluşturabilirsiniz. [İzleme ve günlüğe kaydetme](monitoring-logging.md#azure-monitor-collection-via-telegraf) sayfasında bu konuda daha fazla bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

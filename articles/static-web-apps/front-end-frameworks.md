@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 07/18/2020
 ms.author: cshoe
-ms.openlocfilehash: 4b1bc58b6b4a87cd6e5e09e83020a38261b8746f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14564b0591ef0146131b3f9324556b613e25daac
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905364"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901241"
 ---
 # <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemesi ile ön uç çerçeveleri ve kitaplıkları yapılandırma
 
@@ -24,7 +24,7 @@ Aşağıdaki tablo, bir dizi çerçeve ve kitaplık için ayarları listeler<sup
 
 Tablo sütunlarının amacı aşağıdaki öğeler tarafından açıklanmıştır:
 
-- **Uygulama yapıt konumu**: `app_artifact_location` [uygulama dosyalarının oluşturulan sürümlerinin klasörü](github-actions-workflow.md#build-and-deploy)olan için değerini listeler.
+- **Çıkış konumu**: `output_location` [uygulama dosyalarının oluşturulan sürümlerinin klasörü](github-actions-workflow.md#build-and-deploy)olan için değerini listeler.
 
 - **Özel derleme komutu**: Framework veya öğesinden farklı bir komut gerektirdiğinde `npm run build` `npm run azure:build` , [özel bir yapı komutu](github-actions-workflow.md#custom-build-commands)tanımlayabilirsiniz.
 

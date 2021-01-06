@@ -4,12 +4,12 @@ description: Bir etkinlik günlüğü uyarısı etkinleşdiğinde bir Web kancas
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
-ms.openlocfilehash: 026613c3f5710137fb110153b34f9ed74bbf8a7b
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: a73ab12d1729acba132aeffd4104ca7846ecb9e8
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522796"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901445"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure etkinlik günlüğü uyarıları için Web kancaları
 Bir eylem grubu tanımının bir parçası olarak, Web kancası uç noktalarını etkinlik günlüğü uyarı bildirimlerini alacak şekilde yapılandırabilirsiniz. Web kancaları ile bu bildirimleri, işlem sonrası veya özel eylemler için diğer sistemlere yönlendirebilirsiniz. Bu makalede, bir Web kancası için HTTP POST yükünün nasıl göründüğü gösterilmektedir.
@@ -27,6 +27,19 @@ Web kancası isteğe bağlı olarak, kimlik doğrulaması için belirteç tabanl
 
 ## <a name="payload-schema"></a>Yük şeması
 POST işleminde yer alan JSON yükü, yükün Data. Context. activityLog. eventSource alanına göre farklılık gösterir.
+
+> [!NOTE]
+> Şu anda, etkinlik günlüğü olayının bir parçası olan açıklama tetiklenen **"Uyarı açıklaması"** özelliğine kopyalanır.
+>
+> Etkinlik Günlüğü yükünü diğer uyarı türleriyle hizalamak için, 1 Nisan 2021 ' den Itibaren, tetiklenen uyarı özelliği **"Description"** , bunun yerine uyarı kuralı açıklamasını içerir.
+>
+> Bu değişikliğe hazırlanmak için, etkinlik günlüğü tetiklenen uyarı ' a yeni bir **"etkinlik günlüğü olayı açıklaması"** özelliği oluşturduk. Bu yeni özellik, zaten kullanıma açık olan **"Description"** özelliği ile doldurulur. Bu, yeni **"etkinlik günlüğü olay açıklaması"** alanının etkinlik günlüğü olayının bir parçası olan açıklamayı içereceği anlamına gelir.
+>
+> Lütfen uyarı kurallarınızı, eylem kurallarınızı, Web kancaları, mantıksal uygulamanızı veya tetiklenen uyarıdan **"Açıklama"** özelliğini kullandığınız ve **"etkinlik günlüğü olay açıklaması"** özelliği ile değiştirmek isteyebileceğiniz diğer yapılandırmalardan birini gözden geçirin.
+>
+> koşulunuz (eylem kurallarınız, Web kancaları, mantıksal uygulama veya diğer yapılandırmalarda) Şu anda etkinlik günlüğü uyarıları için **"Açıklama"** özelliğini temel alıyorsa, bunun yerine **"etkinlik günlüğü olay açıklaması"** özelliğine dayalı olarak değiştirmeniz gerekebilir.
+>
+> Yeni **"Description"** özelliğini dolduracak şekilde, uyarı kuralı tanımına bir açıklama ekleyebilirsiniz.
 
 ### <a name="common"></a>Common
 

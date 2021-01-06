@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 12/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 6fa8705221e1f1f9a9143f274a53db21b657988f
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 0a7f54d991d31594a6ab522dbf9e73958cde3023
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763921"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900153"
 ---
 # <a name="gpu-vms-for-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro cihazınız için GPU VM 'Leri
 
@@ -338,7 +338,7 @@ Daha fazla bilgi için bkz. [Windows Için NVıDıA GPU sürücü uzantısı](..
 
 ### <a name="gpu-extension-for-linux"></a>Linux için GPU uzantısı
 
-Mevcut bir VM için NVIDIA GPU sürücülerini dağıtmak üzere, `addGPUExtLinuxVM.parameters.json` Parametreler dosyasını düzenleyin ve şablonu dağıtın `addGPUextensiontoVM.json` .
+Mevcut bir VM için NVIDIA GPU sürücülerini dağıtmak üzere, parametreler dosyasını düzenleyin ve şablonu dağıtın `addGPUextensiontoVM.json` . Aşağıdaki bölümlerde anlatıldığı gibi Ubuntu ve Red Hat Enterprise Linux (RHEL) için belirli parametre dosyaları vardır.
 
 #### <a name="edit-parameters-file"></a>Parametre dosyasını Düzenle
 
@@ -371,8 +371,7 @@ Ubuntu kullanılıyorsa, `addGPUExtLinuxVM.parameters.json` dosya aşağıdaki p
     }
     }
 ```
-Red Hat Enterprise Linux (RHEL) kullanılıyorsa, dosya aşağıdaki parametreleri alır:
-
+Red Hat Enterprise Linux (RHEL) kullanılıyorsa, `addGPUExtensionRHELVM.parameters.json` dosya aşağıdaki parametreleri alır:
 
 ```powershell
 {

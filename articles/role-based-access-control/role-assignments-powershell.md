@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 11/25/2020
 ms.author: rolyon
-ms.openlocfilehash: c4082f7fc535807ec996034ba695549a51969a99
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 6eadba7d778a632896529f3c7c53886619d96444
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182419"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901479"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-powershell"></a>Azure PowerShell kullanarak Azure rol atamalarını ekleme veya kaldırma
 
@@ -28,6 +28,7 @@ Rol atamaları eklemek veya kaldırmak için şunları yapmanız gerekir:
 
 - `Microsoft.Authorization/roleAssignments/write`ve `Microsoft.Authorization/roleAssignments/delete` [Kullanıcı erişimi Yöneticisi](built-in-roles.md#user-access-administrator) veya [sahibi](built-in-roles.md#owner) gibi izinler
 - [Azure Cloud Shell](../cloud-shell/overview.md) veya [Azure PowerShell](/powershell/azure/install-az-ps) PowerShell
+- PowerShell komutunu çalıştırmak için kullandığınız hesap Microsoft Graph iznine sahip olmalıdır `Directory.Read.All` .
 
 ## <a name="steps-to-add-a-role-assignment"></a>Rol ataması ekleme adımları
 

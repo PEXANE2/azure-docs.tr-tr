@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 17b0564b4b73f5a5032343dcb78669cbf4cabd5a
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 057f965c67c25d486771a4c037e13153a7f2cf66
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516149"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901156"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>ML modellerinin eşitliği 'i değerlendirmek için Fairlearn açık kaynak paketiyle birlikte Azure Machine Learning kullanın (Önizleme)
 
@@ -46,7 +46,7 @@ Sonraki Fairlearn sürümleri de aşağıdaki örnek kodda çalışmalıdır.
 
 Aşağıdaki örnek, eşitliği paketinin nasıl kullanılacağını göstermektedir. Model eşitliği öngörülerini Azure Machine Learning yükleyecek ve Azure Machine Learning Studio 'daki eşitliği değerlendirme panosunu görmeniz gerekir.
 
-1. Bir Jupyter not defterinde örnek modeli eğitme. 
+1. Jupyter Notebook bir örnek modeli eğitme. 
 
     Veri kümesi için, OpenML 'den aldığımız iyi bilinen yetişkinlere yönelik veri kümesini kullanırız. Bu, bir tek bir repaıp 'nin önceki kredisinin bulunduğu etiketle ilgili bir kredi kararı sorunuyla karşılaştık. Daha önce görmeyen bireyler bir kredisi yeniden boyar. Bu tür bir model, kredi kararları vermek için kullanılabilir.
 

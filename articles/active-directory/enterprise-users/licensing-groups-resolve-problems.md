@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc3dce8bb51299eb78bd2958eebf7a69594318a4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 3bba64f8c07545107d57f79ae94dab96e517815f
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546480"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900714"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Azure Active Directory bir grup için lisans atama sorunlarını tanımla ve çözümle
 
@@ -68,7 +68,6 @@ Hangi kullanıcıların ve grupların lisans tükettiğini görmek için bir ür
 
 Aşağıdaki örneği inceleyin. Bir kullanıcının, tüm planlar etkinken doğrudan atanmış Office 365 Enterprise *E1* lisansına sahip olması gerekir. Kullanıcı, kendisine atanmış Office 365 Enterprise *E3* ürünü olan bir gruba eklenmiştir. E3 ürünü, E1 'a eklenen planlarla çakışmayan hizmet planları içerir, bu nedenle Grup lisans ataması "çakışan hizmet planları" hatası ile başarısız olur. Bu örnekte, çakışan hizmet planları şunlardır:
 
-- SharePoint Online (plan 2), SharePoint Online (plan 1) ile çakışıyor.
 - Exchange Online (plan 2), Exchange Online (plan 1) ile çakışıyor.
 
 Bu çakışmayı gidermek için planları iki adet devre dışı bırakmanız gerekir. Kullanıcıya doğrudan atanan E1 lisansını devre dışı bırakabilirsiniz. Ya da, tüm grup lisansı atamasını değiştirmeniz ve E3 lisansındaki planları devre dışı bırakmanız gerekir. Alternatif olarak, E3 lisansı bağlamında yedekli ise E1 lisansını Kullanıcı tarafından kaldırmaya karar verebilirsiniz.

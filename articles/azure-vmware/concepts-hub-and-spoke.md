@@ -3,12 +3,12 @@ title: Kavram-bir hub ve bağlı bileşen mimarisinde bir Azure VMware çözüm 
 description: Azure 'da bir hub ve bağlı bileşen mimarisinde Azure VMware çözüm dağıtımını tümleştirme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: 788ef9886e0d102a549e84cd01c658e9e4131c63
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0d511c8d6a96ffb6fa666bcb7c989764f398bdc9
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967457"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901394"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Azure VMware çözümünü bir hub ve bağlı bileşen mimarisinde tümleştirme
 
@@ -128,7 +128,7 @@ En iyi güvenlik uygulaması olarak, hub sanal ağı içinde [Microsoft Azure](.
 
 Azure DNS çözümleme için kullanılabilecek iki seçenek vardır:
 
--   Hub üzerinde dağıtılan Azure Active Directory (Azure AD) etki alanı denetleyicilerini ( [kimlik hususları](#identity-considerations)bölümünde açıklanmıştır) ad sunucuları olarak kullanın.
+-   Hub üzerinde dağıtılan etki alanı denetleyicilerini ( [kimlik hususları](#identity-considerations)bölümünde açıklanmıştır) ad sunucuları olarak kullanın.
 
 -   Azure DNS bir özel bölge dağıtın ve yapılandırın.
 
@@ -136,7 +136,7 @@ En iyi yaklaşım, Azure VMware çözümü, şirket içi ve Azure için güvenil
 
 Genel bir tasarım önerisi olarak, hub sanal ağında dağıtılan ve bağlı olan sanal ağlarda, DNS ayarlarında bu Azure DNS sunucularını kullanmak için yapılandırılmış olan en az iki Azure VM 'ye dağıtılan mevcut Azure DNS altyapısını (Bu örnekte Active Directory tümleşik DNS) kullanın.
 
-Azure Özel DNS bölgesinin sanal ağa bağlandığı Azure Özel DNS kullanabilirsiniz.  DNS sunucuları, Azure Özel DNS altyapısını kullanarak DNS çalıştıran şirket içi veya Azure VMware çözümüne koşullu iletme ile karma çözümleyiciler olarak kullanılır. 
+Azure Özel DNS bölgesinin sanal ağa bağlandığı Azure Özel DNS kullanabilirsiniz.  DNS sunucuları, müşteri Azure Özel DNS altyapısını kullanarak DNS çalıştıran şirket içi veya Azure VMware çözümüne koşullu iletme ile karma çözümleyiciler olarak kullanılır. 
 
 Bağlı olan sanal ağlarda dağıtılan VM 'Ler için DNS kayıtlarının yaşam döngüsünü otomatik olarak yönetmek için otomatik kayıt özelliğini etkinleştirin. Etkinleştirildiğinde, en fazla özel DNS bölgesi sayısı yalnızca bir tane olur. Devre dışı bırakılırsa, en büyük sayı 1000 ' dir.
 
@@ -144,7 +144,7 @@ Bağlı olan sanal ağlarda dağıtılan VM 'Ler için DNS kayıtlarının yaşa
 
 ## <a name="identity-considerations"></a>Kimlik konuları
 
-Kimlik açısından en iyi yaklaşım, hub 'da en az bir AD etki alanı denetleyicisi dağıtmaktır. Bölge tarafından dağıtılan veya VM kullanılabilirlik kümesindeki iki paylaşılan hizmet alt ağını kullanın. Şirket içi AD etki alanınızı Azure 'a genişletmek için [Azure mimari merkezi](/azure/architecture/reference-architectures/identity/adds-extend-domain) bakın.
+Kimlik açısından en iyi yaklaşım, hub 'da en az bir etki alanı denetleyicisi dağıtmaktır. Bölge tarafından dağıtılan veya VM kullanılabilirlik kümesindeki iki paylaşılan hizmet alt ağını kullanın. Şirket içi Active Directory (AD) etki alanınızı Azure 'a genişletme hakkında daha fazla bilgi için bkz. [Azure mimari merkezi](/azure/architecture/reference-architectures/identity/adds-extend-domain).
 
 Ayrıca, vSphere ortamında kimlik ve DNS kaynağı olarak görev yapmak için Azure VMware Çözüm tarafında başka bir etki alanı denetleyicisi dağıtın.
 
