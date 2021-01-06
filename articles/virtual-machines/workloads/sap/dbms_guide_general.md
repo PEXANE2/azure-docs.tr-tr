@@ -9,10 +9,10 @@ ms.date: 09/20/2020
 ms.author: juergent
 ms.reviewer: cynthn
 ms.openlocfilehash: 5638b60b60f3952ab40fa000e457082f4748ac35
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 01/05/2021
 ms.locfileid: "96484354"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için Azure sanal makineler DBMS dağıtımına yönelik konular
@@ -74,7 +74,7 @@ Azure 'da SAP iş yükünde başka makaleler de mevcuttur. [Azure 'Da SAP iş y�
 
 Aşağıdaki SAP notları, bu belgede ele alınan alanla ilgili olarak Azure 'daki SAP ile ilgilidir.
 
-| Dekont numarası | Başlık |
+| Dekont numarası | Title |
 | --- | --- |
 | [1928533] |Azure 'da SAP uygulamaları: Desteklenen Ürünler ve Azure VM türleri |
 | [2015553] |Microsoft Azure SAP: destek önkoşulları |
@@ -158,7 +158,7 @@ IOPS gereksiniminizi tek bir VHD 'nin sağlayabileceği şekilde aşarsa, verita
 >
 > ![Linux depolama şeridi][Logo_Linux] Linux
 >
-> Linux 'ta yazılım RAID oluşturmak için yalnızca MDADDM ve mantıksal birim Yöneticisi (LVM) desteklenir. Daha fazla bilgi için bkz.
+> Linux 'ta yazılım RAID oluşturmak için yalnızca MDADDM ve mantıksal birim Yöneticisi (LVM) desteklenir. Daha fazla bilgi için bkz:
 >
 > - MDADDM kullanarak [Linux 'ta yazılım RAID yapılandırma](/previous-versions/azure/virtual-machines/linux/configure-raid)
 > - LVM ['yi kullanarak Azure 'da bir LINUX VM 'de LVM 'Yi yapılandırma](/previous-versions/azure/virtual-machines/linux/configure-lvm)
@@ -210,7 +210,7 @@ Aşağıdaki öneriler, bu g/ç özelliklerinin standart DBMS için olduğunu va
 
 Standart depolama için olası önbellek türleri şunlardır:
 
-* Yok
+* Hiçbiri
 * Okuma
 * Okuma/Yazma
 
@@ -218,7 +218,7 @@ Tutarlı ve belirleyici performans sağlamak için, DBMS ile ilgili veri dosyala
 
 Azure Premium Depolama için aşağıdaki önbelleğe alma seçenekleri mevcuttur:
 
-* Yok
+* Hiçbiri
 * Okuma
 * Okuma/yazma
 * Hiçbiri + yalnızca Azure a serisi VM 'Ler için olan Yazma Hızlandırıcısı
