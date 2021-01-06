@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/16/2020
+ms.date: 01/05/2020
 ms.author: b-juche
-ms.openlocfilehash: 1537a87999f9a8eecf83a2431b2f53d3ceaedacb
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 913d61c506505d18fff416291e7f3b718f1d92f3
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854708"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913507"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files hakkında SSS
 
@@ -137,6 +137,16 @@ Birimin dışa aktarma ilkesini kullanarak, kök hesabın birime erişip erişem
 Evet, yazabilirsiniz. Ancak, dosya yolu farklı bir abonelikte ya da farklı bir bölgede kullanılmalıdır.   
 
 Örneğin, adlı bir birim oluşturursunuz `vol1` . Daha sonra `vol1` farklı bir kapasite havuzunda, ancak aynı abonelikte ve bölgede adlı başka bir birim de oluşturabilirsiniz. Bu durumda, aynı birim adının kullanılması `vol1` hataya neden olur. Aynı dosya yolunu kullanmak için, ad farklı bir bölgede veya abonelikte olmalıdır.
+
+### <a name="when-i-try-to-access-nfs-volumes-through-a-windows-client-why-does-the-client-take-a-long-time-to-search-folders-and-subfolders"></a>NFS birimlerine bir Windows istemcisi aracılığıyla erişmeyi denediğimde, istemci klasör ve alt klasörleri aramak için uzun zaman alır mi?
+
+`CaseSensitiveLookup`Klasörlerin ve alt klasörlerin arama hızını hızlandırmak Için Windows istemcisinde etkinleştirildiğinden emin olun:
+
+1. CaseSensitiveLookup etkinleştirmek için aşağıdaki PowerShell komutunu kullanın:   
+    `Set-NfsClientConfiguration -CaseSensitiveLookup 1`    
+2. Windows Server 'da birimi bağlayın.   
+    Örnek:   
+    `Mount -o rsize=1024 -o wsize=1024 -o mtype=hard \\10.x.x.x\testvol X:*`
 
 ## <a name="smb-faqs"></a>SMB hakkında SSS
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/16/2019
+ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: e8cb939b48f8cfe311ec10c0850cfb234de04fad
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: f3fcad14ae0c448ee2a41cddf56f5ea64c8e08d2
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589789"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916142"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>Öğretici: Andromeda ile tümleştirme Azure Active Directory
 
@@ -26,9 +26,6 @@ Andromeda Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 * Andromeda 'e erişimi olan Azure AD 'de denetim yapabilirsiniz.
 * Kullanıcılarınızın Azure AD hesaplarıyla Andromeda (çoklu oturum açma) ile otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
-
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -48,59 +45,39 @@ Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandı
 
 Andromeda tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden Andromeda yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
 
-**Galeriden Andromeda eklemek için aşağıdaki adımları uygulayın:**
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **Andromeda** yazın.
+1. Sonuçlar panelinden **Andromeda** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-sso-for-andromeda"></a>Andromeda için Azure AD SSO 'yu yapılandırma ve test etme
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Andromeda ile yapılandırın ve test edin. SSO 'nun çalışması için, Andromeda içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+Azure AD SSO 'yu Andromeda ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
-3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
 
-    ![Yeni uygulama düğmesi](common/add-new-app.png)
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Andromeda SSO 'Yu yapılandırın](#configure-andromeda-sso)** .
+    1. Kullanıcının Azure AD gösterimine bağlı olan Andromeda 'de Britta Simon 'ın bir karşılığı olacak şekilde **[Andromeda test kullanıcısı oluşturun](#create-andromeda-test-user)** .
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-4. Arama kutusuna **Andromeda** yazın, sonuç panelinden **Andromeda** ' yi seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-    ![Sonuç listesinde Andromeda](common/search-new-app.png)
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
+1. Azure portal, **Andromeda** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre Andromeda ile yapılandırıp test edersiniz.
-Çoklu oturum açma için, bir Azure AD kullanıcısı ve Andromeda 'deki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-Azure AD çoklu oturum açmayı Andromeda ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
-
-1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Andromeda çoklu oturum açmayı yapılandırın](#configure-andromeda-single-sign-on)** .
-3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-5. Kullanıcının Azure AD gösterimine bağlı olan Andromeda 'de Britta Simon 'ın bir karşılığı olacak şekilde **[Andromeda test kullanıcısı oluşturun](#create-andromeda-test-user)** .
-6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
-
-Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
-
-Azure AD çoklu oturum açmayı Andromeda ile yapılandırmak için aşağıdaki adımları uygulayın:
-
-1. [Azure Portal](https://portal.azure.com/), **Andromeda** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
-
-    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
-
-2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
-
-    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
-
-3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
-
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
-
-4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
-
-    ![Ekran görüntüsü; tanımlayıcı girebileceğiniz, yanıt U R L ve Kaydet ' i seçebileceğiniz temel SAML yapılandırmasını gösterir.](common/idp-intiated.png)
+1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<tenantURL>.ngcxpress.com/`
 
@@ -124,32 +101,32 @@ Azure AD çoklu oturum açmayı Andromeda ile yapılandırmak için aşağıdaki
 
 7. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde, yukarıdaki görüntüde gösterildiği gibi, **Düzen simgesini** kullanarak talepleri DÜZENLEYIN veya aşağıdaki resimde gösterildiği gibi SAML belirteci özniteliğini yapılandırmak için **yeni talep Ekle** ' yi kullanarak talepleri ekleyin ve aşağıdaki adımları gerçekleştirin: 
 
-    | Name | Kaynak özniteliği|
+    | Ad | Kaynak özniteliği|
     | ------ | -----------|
-    | rol | Uygulamaya özel rol |
-    | tür | Uygulama Türü |
-    | şirket | CompanyName |
+    | rol        | Uygulamaya özel rol |
+    | tür        | Uygulama Türü |
+    | şirket       | CompanyName |
 
     > [!NOTE]
-    > Gerçek değer yok. Bu değerler yalnızca tanıtım amaçlı amaçlıdır, lütfen kuruluş rollerinizi kullanın.
+    > Andromeda, uygulamaya atanan kullanıcılara roller bekliyor. Kullanıcılara uygun roller atanabilmeleri için lütfen bu rolleri Azure AD 'de ayarlayın. Azure AD 'de rolleri nasıl yapılandıracağınızı anlamak için [buraya](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)bakın.
 
-    1. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
+    a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
 
-        ![Ekran görüntüsü, yeni talep ekleme ve kaydetme seçenekleri ile Kullanıcı taleplerini gösterir.](common/new-save-attribute.png)
+    ![Ekran görüntüsü, yeni talep ekleme ve kaydetme seçenekleri ile Kullanıcı taleplerini gösterir.](common/new-save-attribute.png)
 
-        ![Ekran görüntüsünde, bu adımla ilgili değer girebileceğiniz Kullanıcı taleplerini yönetme gösterilir.](common/new-attribute-details.png)
+    ![Ekran görüntüsünde, bu adımla ilgili değer girebileceğiniz Kullanıcı taleplerini yönetme gösterilir.](common/new-attribute-details.png)
 
-    1. **Ad** metin kutusuna, bu satır için gösterilen öznitelik adını yazın.
+    b. **Ad** metin kutusuna, bu satır için gösterilen öznitelik adını yazın.
 
-    1. **Ad alanını** boş bırakın.
+    c. **Ad alanını** boş bırakın.
 
-    1. **Öznitelik** olarak kaynak seçin.
+    d. **Öznitelik** olarak kaynak seçin.
 
-    1. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini yazın.
+    e. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini yazın.
 
-    1. **Tamam 'a** tıklayın
+    f. **Tamam 'a** tıklayın
 
-    1. **Kaydet**’e tıklayın.
+    örneğin: **Kaydet**’e tıklayın.
 
 8. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
@@ -159,13 +136,32 @@ Azure AD çoklu oturum açmayı Andromeda ile yapılandırmak için aşağıdaki
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-    1. Oturum Açma URL’si
 
-    1. Azure AD tanımlayıcısı
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-    1. Oturum kapatma URL 'SI
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-### <a name="configure-andromeda-single-sign-on"></a>Andromeda Single Sign-On yapılandırma
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+   1. **Ad** alanına `B.Simon` girin.  
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**’a tıklayın.
+
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
+
+Bu bölümde, Andromeda 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
+
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde **Andromeda**' yi seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Rolleri yukarıda açıklanan şekilde ayarlarsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+
+### <a name="configure-andromeda-sso"></a>Andromeda SSO 'yu yapılandırma
 
 1. Andromeda şirket sitenizde yönetici olarak oturum açın.
 
@@ -181,90 +177,47 @@ Azure AD çoklu oturum açmayı Andromeda ile yapılandırmak için aşağıdaki
 
     ![Andromeda yapılandırması](./media/andromedascm-tutorial/tutorial_andromedascm_config.png)
 
-    1. **SAML Ile SSO 'Yu etkinleştir**' i işaretleyin.
+    a. **SAML Ile SSO 'Yu etkinleştir**' i işaretleyin.
 
-    1. **Andromeda bilgileri** bölümünde, **SP kimlik** DEĞERINI kopyalayın ve **temel SAML yapılandırması** bölümünün **tanımlayıcı** metin kutusuna yapıştırın.
+    b. **Andromeda bilgileri** bölümünde, **SP kimlik** DEĞERINI kopyalayın ve **temel SAML yapılandırması** bölümünün **tanımlayıcı** metin kutusuna yapıştırın.
 
-    1. **Tüketici URL 'si** değerini kopyalayın ve **temel SAML YAPıLANDıRMASı** bölümünün **yanıt URL** metin kutusuna yapıştırın.
+    c. **Tüketici URL 'si** değerini kopyalayın ve **temel SAML YAPıLANDıRMASı** bölümünün **yanıt URL** metin kutusuna yapıştırın.
 
-    1. **Oturum açma URL 'si** değerini kopyalayın ve **temel SAML yapılandırması** bölümünün **oturum açma URL 'si** metin kutusuna yapıştırın.
+    d. **Oturum açma URL 'si** değerini kopyalayın ve **temel SAML yapılandırması** bölümünün **oturum açma URL 'si** metin kutusuna yapıştırın.
 
-    1. **SAML kimlik sağlayıcısı** bölümünde IDP adınızı yazın.
+    e. **SAML kimlik sağlayıcısı** bölümünde IDP adınızı yazın.
 
-    1. **Çoklu oturum açma uç noktası** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
+    f. **Çoklu oturum açma uç noktası** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-    1. İndirilen **Base64 kodlamalı sertifikayı** Not defteri 'ndeki Azure Portal açın, **X 509 Certificate** metin kutusuna yapıştırın.
+    örneğin: İndirilen **Base64 kodlamalı sertifikayı** Not defteri 'ndeki Azure Portal açın, **X 509 Certificate** metin kutusuna yapıştırın.
+    
+    h. Azure AD 'den SSO oturumu açmayı kolaylaştırmak için aşağıdaki öznitelikleri ilgili değerle eşleyin. Oturum açmak için **Kullanıcı kimliği** özniteliği gereklidir. Sağlama, **e-posta**, **Şirket**, **Kullanıcı türü** ve **rol** için gereklidir. Bu bölümde, Azure portal içinde tanımlananlarla bağıntılı öznitelik eşlemesini (ad ve değerler) tanımlayacağız
 
-    1. Azure AD 'den SSO oturumu açmayı kolaylaştırmak için aşağıdaki öznitelikleri ilgili değerle eşleyin. Oturum açmak için **Kullanıcı kimliği** özniteliği gereklidir. Sağlama, **e-posta**, **Şirket**, **Kullanıcı türü** ve **rol** için gereklidir. Bu bölümde, Azure portal içinde tanımlananlarla bağıntılı öznitelik eşlemesini (ad ve değerler) tanımlayacağız
+    ![Andromeda attbmap](./media/andromedascm-tutorial/tutorial_andromedascm_attbmap.png)
 
-        ![Andromeda attbmap](./media/andromedascm-tutorial/tutorial_andromedascm_attbmap.png)
+    i. **Kaydet**’e tıklayın.
 
-    1. **Kaydet**’e tıklayın.
-
-### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
-
-Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
-
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-
-    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
-
-2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
-
-    ![Yeni Kullanıcı düğmesi](common/new-user.png)
-
-3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
-
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
-
-    a. **Ad** alanına **Brittasıon** girin.
-
-    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com
-
-    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
-
-    d. **Oluştur**’a tıklayın.
-
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
-
-Bu bölümde, Andromeda 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon özelliğini etkinleştirin.
-
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **Andromeda**' yi seçin.
-
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
-
-2. Uygulamalar listesinde **Andromeda**' yi seçin.
-
-    ![Uygulamalar listesindeki Andromeda bağlantısı](common/all-applications.png)
-
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
-
-    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
-4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
-
-5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-
-6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-
-7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ### <a name="create-andromeda-test-user"></a>Andromeda test kullanıcısı oluştur
 
 Bu bölümde, Andromeda içinde Britta Simon adlı bir Kullanıcı oluşturulur. Andromeda, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir Kullanıcı Andromeda içinde zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur. Bir kullanıcıyı el ile oluşturmanız gerekiyorsa, [Andromeda istemci desteği ekibine](https://www.ngcsoftware.com/support/)başvurun.
 
-### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
+## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-Erişim panelinde Andromeda kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Andromeda için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>SP başlatıldı:
 
-## <a name="additional-resources"></a>Ek Kaynaklar
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz Andromeda oturum açma URL 'sine yeniden yönlendirilir.  
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
+* Doğrudan Andromeda oturum açma URL 'sine gidin ve oturum açma akışını buradan başlatın.
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP başlatıldı:
 
-- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)
+* Azure portal **Bu uygulamayı test et** ' e tıklayın ve SSO 'Yu ayarladığınız Andromeda otomatik olarak oturum açmış olmanız gerekir 
+
+Uygulamayı dilediğiniz modda test etmek için Microsoft My Apps ' i de kullanabilirsiniz. Uygulamamda Andromeda kutucuğuna tıkladığınızda, SP modunda yapılandırıldıysa oturum açma akışını başlatmak için uygulama oturum açma sayfasına yönlendirilirsiniz ve ıDP modunda yapılandırıldıysa, SSO 'yu ayarladığınız Andromeda için otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Andromeda yapılandırıldıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

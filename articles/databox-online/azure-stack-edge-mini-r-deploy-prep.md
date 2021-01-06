@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 12/16/2020
+ms.date: 01/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Mini R device so I can use it to transfer data to Azure.
-ms.openlocfilehash: 6d41c186a5d239ad7228c37902f5691085e43dbf
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 03b4ed41b3110825d4e4797f2c5f733152504919
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631253"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913796"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-mini-r"></a>Öğretici: Azure Stack Edge Mini R 'yi dağıtmaya hazırlanma
 
-Bu, Azure Stack Edge Mini R cihazının tamamen dağıtılması için gereken dağıtım öğreticilerinde ilk öğreticidir. Bu öğreticide, Azure portal Azure Stack Edge kaynağını dağıtmaya yönelik nasıl hazırlanılacağı açıklanmaktadır.
+Bu öğretici, Azure Stack Edge Mini R cihazının tamamen dağıtılması için gereken dağıtım öğreticilerinde ilkidir. Bu öğreticide, Azure portal Azure Stack Edge kaynağını dağıtmaya yönelik nasıl hazırlanılacağı açıklanmaktadır.
 
 Kurulum ve yapılandırma işlemini tamamlamak için yönetici ayrıcalıkları gerekir. Portal hazırlığı 10 dakikadan kısa sürer.
 
@@ -32,11 +32,11 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure Stack Edge Mini R dağıtmak için, önceden tanımlanmış sırada aşağıdaki öğreticilere bakın.
 
-| Adım | Description |
+| Adım | Açıklama |
 | --- | --- |
 | **Hazırlama** |Bu adımların, yaklaşan dağıtım için hazırlanmasından tamamlanması gerekir. |
 | **[Dağıtım yapılandırma denetim listesi](#deployment-configuration-checklist)** |Dağıtımdan önce ve dağıtım sırasında bilgi toplamak ve bilgileri kaydetmek için bu denetim listesini kullanın. |
-| **[Dağıtım önkoşulları](#prerequisites)** |Bunlar, ortamın dağıtım için hazır olduğunu doğrular. |
+| **[Dağıtım önkoşulları](#prerequisites)** |Bu Önkoşullar, ortamın dağıtım için hazırlandığını doğrular. |
 |  | |
 |**Dağıtım öğreticileri** |Azure Stack Edge Mini R cihazınızı üretime dağıtmak için bu öğreticiler gereklidir. |
 |**[1. cihaz için Azure portal hazırlayın](azure-stack-edge-mini-r-deploy-prep.md)** |Fiziksel cihazı yüklemeden önce Azure Stack Edge kaynağını oluşturun ve yapılandırın. |
@@ -46,7 +46,7 @@ Azure Stack Edge Mini R dağıtmak için, önceden tanımlanmış sırada aşağ
 |**[5. cihaz ayarlarını yapılandırma](azure-stack-edge-mini-r-deploy-set-up-device-update-time.md)** |Bir cihaz adı ve DNS etki alanı atayın, güncelleştirme sunucusunu ve cihaz zamanını yapılandırın. |
 |**[6. güvenlik ayarlarını yapılandırma](azure-stack-edge-mini-r-deploy-configure-certificates-vpn-encryption.md)** |Kendi sertifikalarınızı kullanarak sertifikaları yapılandırın, VPN ayarlayın ve cihazınız için bekleyen şifrelemeyi yapılandırın.   |
 |**[7. cihazı etkinleştirin](azure-stack-edge-mini-r-deploy-activate.md)** |Cihazı etkinleştirmek için hizmetten etkinleştirme anahtarını kullanın. Cihaz, SMB veya NFS paylaşımlarını ayarlamaya veya REST aracılığıyla bağlamaya hazırlanıyor. |
-|**[8. işlem yapılandırma](azure-stack-edge-gpu-deploy-configure-compute.md)** |Cihazınızda işlem rolünü yapılandırın. Bu, bir Kubernetes kümesi de oluşturur. |
+|**[8. işlem yapılandırma](azure-stack-edge-gpu-deploy-configure-compute.md)** |Cihazınızda işlem rolünü yapılandırın. Bir Kubernetes kümesi de oluşturulur. |
 
 Artık Azure portalını ayarlamaya başlayabilirsiniz.
 
@@ -54,7 +54,7 @@ Artık Azure portalını ayarlamaya başlayabilirsiniz.
 
 Cihazınızı dağıtmadan önce, Azure Stack Edge Mini R cihazınızda yazılımı yapılandırmak için bilgi toplamanız gerekir. Bu bilgilerin bir bölümünü önceden hazırlamak, cihazı ortamınızda dağıtma işlemini kolaylaştırmaya yardımcı olur. Cihazınızı dağıtırken yapılandırma ayrıntılarını bir yere dönmek için [Azure Stack Edge Mini dağıtım yapılandırması denetim listesini](azure-stack-edge-mini-r-deploy-checklist.md) kullanın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Stack Edge kaynağınız, Azure Stack Edge cihazınız ve veri merkezi ağı için yapılandırma önkoşulları aşağıda verilmiştir.
 
@@ -105,7 +105,7 @@ Azure Stack Edge kaynağı oluşturmak için Azure portal aşağıdaki adımlar�
     
     |Ayar  |Değer  |
     |---------|---------|
-    |Abonelik    |Bu, önceki seçime göre otomatik olarak doldurulur. Abonelik fatura hesabınıza bağlıdır. |
+    |Abonelik    |Abonelik, önceki seçime göre otomatik olarak doldurulur. Abonelik fatura hesabınıza bağlıdır. |
     |Kaynak grubu  |Mevcut grubu seçin veya yeni bir grup oluşturun.<br>[Azure Kaynak Grupları](../azure-resource-manager/management/overview.md) hakkında daha fazla bilgi edinin.     |
 
 
@@ -113,19 +113,19 @@ Azure Stack Edge kaynağı oluşturmak için Azure portal aşağıdaki adımlar�
 
     |Ayar  |Değer  |
     |---------|---------|
-    |Ad   | Kaynağı tanımlamak için kolay bir ad.<br>Ad 2 ile 50 karakter arasında olmalı, harf, rakam ve kısa çizgilerden oluşmalıdır.<br> Ad bir harf veya rakamla başlar ve biter.        |
-    |Bölge     |Azure Stack Edge kaynağının kullanılabildiği tüm bölgelerin listesi için bkz. [bölgeye göre kullanılabilir Azure ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Kamu kullanıyorsanız, tüm kamu bölgeleri [Azure bölgelerinde](https://azure.microsoft.com/global-infrastructure/regions/)gösterildiği gibi kullanılabilir.<br> Cihazınızı dağıtmak istediğiniz coğrafi bölgeye yakın bir konum seçin.|
+    |Ad   | Kaynağı tanımlamak için kolay bir ad.<br>Ad, harf, sayı ve kısa çizgi içeren 2 ile 50 karakter arasında bir addır.<br> Ad bir harf veya rakamla başlar ve biter.        |
+    |Region     |Azure Stack Edge kaynağının kullanılabildiği tüm bölgelerin listesi için bkz. [bölgeye göre kullanılabilir Azure ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Kamu kullanıyorsanız, tüm kamu bölgeleri [Azure bölgelerinde](https://azure.microsoft.com/global-infrastructure/regions/)gösterildiği gibi kullanılabilir.<br> Cihazınızı dağıtmak istediğiniz coğrafi bölgeye yakın bir konum seçin.|
 
     ![Kaynak oluşturma 4](media/azure-stack-edge-mini-r-deploy-prep/create-resource-4.png)
 
 
 8. **İleri ' yi seçin: sevkiyat adresi**.
 
-    - Zaten bir cihazınız varsa, **Azure Stack Edge Pro R cihazım** için Birleşik giriş kutusunu seçin.
+    - Zaten bir cihazınız varsa, **zaten bir cihazım varsa** Birleşik giriş kutusunu seçin.
 
         ![Kaynak oluştur 5](media/azure-stack-edge-mini-r-deploy-prep/create-resource-5.png)
 
-    - Bu, sipariş ettiğiniz yeni bir cihaz ise, kişi adını, şirketi, cihazı sevk etmek için adresi ve iletişim bilgilerini girin.
+    - Bu, sipariş ettiğiniz yeni bir cihaz ise, ilgili kişi adını, şirketi, cihazı teslim etmek için adresi ve iletişim bilgilerini girin.
 
         ![Kaynak oluştur 6](media/azure-stack-edge-mini-r-deploy-prep/create-resource-6.png)
 
@@ -133,7 +133,7 @@ Azure Stack Edge kaynağı oluşturmak için Azure portal aşağıdaki adımlar�
 
 10. **Gözden geçir + oluştur** sekmesinde, **fiyatlandırma ayrıntılarını**, **kullanım koşulları** ve kaynağınızın ayrıntılarını gözden geçirin. **Gizlilik koşullarını Incelediğim** Birleşik giriş kutusunu seçin.
 
-    ![Kaynak oluşturma 7](media/azure-stack-edge-mini-r-deploy-prep/create-resource-7.png) 
+    ![Kaynak oluşturma 7](media/azure-stack-edge-mini-r-deploy-prep/create-resource-7.png)
 
     Ayrıca, kaynak oluşturma sırasında, bulut hizmetlerinde kimlik doğrulaması yapmanızı sağlayan bir Yönetilen Hizmet Kimliği (MSI) etkin olduğunu da size bildirilir. Bu kimlik, kaynak mevcut olduğu sürece için mevcut.
 
@@ -159,7 +159,7 @@ Azure Stack Edge kaynağı çalışır duruma geçtikten sonra etkinleştirme an
 
 2. **Etkinleştir** kutucuğunda Azure Key Vault için bir ad girin veya varsayılan adı kabul edin. Anahtar Kasası adı 3 ila 24 karakter arasında olabilir. 
 
-    Cihazınızla etkinleştirilen her Azure Stack Edge kaynağı için bir Anahtar Kasası oluşturulur. Anahtar Kasası, gizli dizileri depolamanıza ve erişmenize izin verir, örneğin, hizmetin kanal bütünlüğü anahtarı (CIK) anahtar kasasında depolanır. 
+    Cihazınızla etkinleştirilen her Azure Stack Edge kaynağı için bir Anahtar Kasası oluşturulur. Anahtar Kasası, gizli dizileri depolamanıza ve erişmenize olanak tanır. Örneğin, hizmetin kanal bütünlüğü anahtarı (CIK) anahtar kasasında depolanır.
 
     Bir Anahtar Kasası adı belirledikten sonra, etkinleştirme anahtarı oluşturmak için **anahtar oluştur** ' u seçin. 
 

@@ -8,18 +8,18 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8d6e10b025b9e9524982b1558beacfab1970eb59
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: f9f37bc27c54971c15db457abf157e04cc5d60e8
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216445"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914680"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Öğretici: Azure 'da değişiklikleri Izleme ve Windows sanal makinesini güncelleştirme
 
 Azure [değişiklik izleme](../../automation/change-tracking/overview.md) ve [güncelleştirme yönetimi](../../automation/update-management/overview.md)ile Azure 'daki Windows sanal makinelerinizdeki değişiklikleri kolayca tanımlayabilir ve bu VM 'ler için işletim sistemi güncelleştirmelerini yönetebilirsiniz.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Windows güncelleştirmelerini yönetme.
@@ -37,7 +37,7 @@ Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de açabilirsin
 
 Bu öğreticide Azure izlemesi ve güncelleştirme yönetimini yapılandırmak için, Azure'da bir Windows VM'sine ihtiyacınız vardır.
 
-İlk olarak, VM için [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) ile bir yönetici kullanıcı adı ve parola ayarlayın:
+İlk olarak, VM için [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true) ile bir yönetici kullanıcı adı ve parola ayarlayın:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
@@ -113,10 +113,10 @@ VM için yeni bir güncelleştirme dağıtımı zamanlamak üzere güncelleştir
 | **Ad** |Güncelleştirme dağıtımını tanımlamak için benzersiz bir ad girin. |
 |**İşletim sistemi**| **Linux** veya **Windows**' u seçin.|
 | **Güncelleştirilecek gruplar** |Azure üzerinde barındırılan VM 'Ler için abonelik, kaynak grubu, konum ve etiketlerin birleşimine göre bir sorgu tanımlayın. Bu sorgu, dağıtımınıza dahil etmek için Azure 'da barındırılan sanal makinelerin dinamik bir grubunu oluşturur. </br></br>Azure üzerinde barındırılmayan VM 'Ler için, var olan kayıtlı bir aramayı seçin. Bu aramayla, dağıtıma dahil etmek için bu VM 'lerin bir grubunu seçebilirsiniz. </br></br> Daha fazla bilgi için bkz. [Dinamik Gruplar](../../automation/update-management/configure-groups.md).|
-| **Güncelleştirilecek makineler** |**Kaydedilmiş arama**, **içeri aktarılan grup**veya **makineler**seçin.<br/><br/>**Makineler**' i seçerseniz, açılan listeden makineleri tek tek seçebilirsiniz. Her makinenin hazır olması, tablonun **GÜNCELLEŞTIRME ARACıSı hazırlık** sütununda gösterilir.</br></br> Azure Izleyici günlüklerinde bilgisayar grupları oluşturmaya yönelik farklı yöntemler hakkında bilgi edinmek için bkz. [Azure izleyici günlüklerinde bilgisayar grupları](../../azure-monitor/platform/computer-groups.md) |
-|**Güncelleştirme sınıflandırmaları**|Tüm gerekli güncelleştirme sınıflandırmalarını seçin.|
+| **Güncelleştirilecek makineler** |**Kaydedilmiş arama**, **içeri aktarılan grup** veya **makineler** seçin.<br/><br/>**Makineler**' i seçerseniz, açılan listeden makineleri tek tek seçebilirsiniz. Her makinenin hazır olması, tablonun **GÜNCELLEŞTIRME ARACıSı hazırlık** sütununda gösterilir.</br></br> Azure Izleyici günlüklerinde bilgisayar grupları oluşturmaya yönelik farklı yöntemler hakkında bilgi edinmek için bkz. [Azure izleyici günlüklerinde bilgisayar grupları](../../azure-monitor/platform/computer-groups.md) |
+|**Update classifications**|Tüm gerekli güncelleştirme sınıflandırmalarını seçin.|
 |**Güncelleştirmeleri dahil et/Dışla**|**Dahil et/hariç tut** bölmesini açmak için bu seçeneği belirleyin. Dahil edilecek güncelleştirmeler ve dışlanması gerekenler ayrı sekmelerde bulunur. Ekleme hakkında daha fazla bilgi için bkz. [güncelleştirme dağıtımı zamanlama](../../automation/update-management/deploy-updates.md#schedule-an-update-deployment). |
-|**Zamanlama ayarları**|Başlatılacak saati seçin ve **bir** veya **tekrardan**birini seçin.|
+|**Zamanlama ayarları**|Başlatılacak saati seçin ve **bir** veya **tekrardan** birini seçin.|
 | **Ön betikler + betikleri sonrası**|Dağıtımdan önce ve sonra çalıştırılacak betikleri seçin.|
 | **Bakım penceresi** | Güncelleştirmeler için ayarlanan dakika sayısını girin. Geçerli değerler 30 ila 360 dakika arasındadır. |
 | **Yeniden başlatma denetimi**| Yeniden başlatmaları nasıl ele alındığını seçin. Kullanılabilir seçimler şunlardır:<ul><li>**Gerekirse yeniden Başlat**</li><li>**Her zaman yeniden başlat**</li><li>**Hiçbir zaman yeniden başlatma**</li><li>**Yalnızca yeniden Başlat**</li></ul>**Gerekirse yeniden Başlat** varsayılan seçimdir. **Yalnızca yeniden başlatma**' yı seçerseniz güncelleştirmeler yüklenmez.|
@@ -170,7 +170,7 @@ Kullanılacak konumu, Log Analytics çalışma alanını ve otomasyon hesabını
 
 ### <a name="track-changes"></a>Değişiklikleri izleme
 
-**İşlem**kapsamındaki sanal makinenizde **değişiklik izleme** seçin ve ardından **Ayarları Düzenle**' yi seçin. **Değişiklik izleme** bölmesi açılır. İzlemek istediğiniz ayar türünü seçin ve **+ Ekle**’yi seçerek ayarları yapılandırın.
+**İşlem** kapsamındaki sanal makinenizde **değişiklik izleme** seçin ve ardından **Ayarları Düzenle**' yi seçin. **Değişiklik izleme** bölmesi açılır. İzlemek istediğiniz ayar türünü seçin ve **+ Ekle**’yi seçerek ayarları yapılandırın.
 
 Windows için kullanılabilir ayarlar seçenekleri şunlardır:
 

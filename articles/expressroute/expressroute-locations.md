@@ -6,14 +6,14 @@ author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 12/10/2020
+ms.date: 01/05/2021
 ms.author: duau
-ms.openlocfilehash: dab480012ced3a8fc50fd5f4295272c0eccc4307
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: c68d9654c673b75742205853ec186caa5d6a3ce5
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831865"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916159"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute bağlantı iş ortakları ve eşleme konumları
 
@@ -52,7 +52,7 @@ Aşağıdaki tablo, coğrafi bölge içindeki Azure bölgeler ile ExpressRoute k
 | **Güney Kore** | Güney Kore - Orta, Güney Kore - Güney |Busan, Seul|
 | **BAE** | BAE Orta, BAE Kuzey | Dubai, Dubai2 |
 | **Güney Afrika** | Güney Afrika Batı, Güney Afrika Kuzey |Cape Town, Johannesburg |
-| **Güney Amerika** | Güney Brezilya |Bogota, Sao Paulo |
+| **Güney Amerika** | Brezilya Güney |Bogota, Sao Paulo |
 
 
 ## <a name="regions-and-geopolitical-boundaries-for-national-clouds"></a>Ulusal bulutlar için bölgeler ve coğrafi sınırlar
@@ -105,7 +105,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **du datamena** |Desteklenir |Desteklenir | Dubai2 |
 | **eir** |Desteklenir |Desteklenir |Dublin|
 | **[Epsilon genel Iletişimler](https://www.epsilontel.com/solutions/direct-cloud-connect)** |Desteklenir |Desteklenir |Singapur, Singapur2 |
-| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Desteklenir |Desteklenir |Amsterdam, Atlanta, Berlin, Canberra2, Chicago, Dallas, Dubai2, Dublin, Frankfurt, Geneva, Hong Kong ÖIB, Londra, London2, Los Angeles, Los Angeles2, Melbourne, Miamı, Milan, New York, Osaka, Paris, Sao Paulo, Istanbul, Seoul, Silicon Valley, Singapur, Stockholm, Sidney, Tokyo, Toron, Washington DC, Zurich |
+| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Desteklenir |Desteklenir |Amsterdam, Amsterdam2, Atlanta, Berlin, Canberra2, Chicago, Dallas, Dubai2, Dublin, Frankfurt, Geneva, Hong Kong ÖIB, Londra, London2, Los Angeles, Los Angeles2, Melbourne, Miamı, Milan, New York, Osaka, Paris, Sao Paulo, Istanbul, Seoul, Silicon Valley, Singapur, Stockholm, Sidney, Tokyo, Toron, Washington DC, Zurich |
 | **Etisalat UAE** |Desteklenir |Desteklenir |Dubai|
 | **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |Desteklenir |Desteklenir |Amsterdam, Amsterdam2, Dublin, Frankfurt, Londra |
 | **[FarEasTone](https://www.fetnet.net/corporate/en/Enterprise.html)** |Desteklenir |Desteklenir |Taipei|

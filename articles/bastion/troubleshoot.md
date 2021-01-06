@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: f3c142491363f30513877ae4368f291430aa3675
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4f5d4b7fed8f14f048794616ee272342d1e8343
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85831939"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915564"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Azure Bastion sorunlarını giderme
 
@@ -81,7 +81,7 @@ Y **:** Dosya aktarımı Şu anda desteklenmiyor. Destek eklemek için çalış�
 
 ## <a name="black-screen-in-the-azure-portal"></a><a name="blackscreen"></a>Azure portal siyah ekran
 
-**S:** Azure savunma 'yı kullanarak bağlanmayı denediğimde Azure portal bir siyah ekran alıyorum.
+**S:** Azure savunma 'yı kullanarak bağlanmayı denediğimde, hedef VM 'ye bağlanamıyorum ve Azure portal bir siyah ekran alıyorum.
 
 Y **:** Bu durum, Web tarayıcınız ile Azure savunma arasında bir ağ bağlantısı sorunu olduğunda (istemci Internet güvenlik duvarınız WebSockets trafiği engelliyor veya benzer şekilde) ya da Azure savunma ile hedef sanal makinenizin arasında bir ağ bağlantısı sorunu olduğunda meydana gelir. Çoğu durumda, AzureBastionSubnet 'e veya sanal ağınızdaki RDP/SSH trafiğini engelleyen hedef VM alt ağına uygulanan bir NSG bulunur. İstemci internet güvenlik duvarınız üzerinde WebSockets trafiğe izin verin ve hedef VM alt ağınızdaki NSG 'leri kontrol edin.
 

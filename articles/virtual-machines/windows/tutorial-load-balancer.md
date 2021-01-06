@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 12/03/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b93c8d48313dc41928400efdddf14e88c8a7e6c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 537b01e39bf911c7bf0b16c29ff1611e810410f9
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86508144"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912861"
 ---
 # <a name="tutorial-load-balance-windows-virtual-machines-in-azure-to-create-a-highly-available-application-with-azure-powershell"></a>Öğretici: Azure PowerShell ile yüksek oranda kullanılabilir bir uygulama oluşturmak için Azure’da Windows sanal makinelerinde yük dengeleme
 Yük dengeleme, gelen istekleri birden çok sanal makineye dağıtarak yüksek düzeyde kullanılabilirlik sunar. Bu öğreticide, Azure yük dengeleyicisinin trafiği dağıtan ve yüksek kullanılabilirlik sağlayan farklı bileşenleri hakkında bilgi edinebilirsiniz. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
@@ -71,7 +71,7 @@ $frontendIP = New-AzLoadBalancerFrontendIpConfig `
   -PublicIpAddress $publicIP
 ```
 
-[New-Azloadbalancerbackendadddresspoolconfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig)ile bir arka uç adres havuzu oluşturun. Kalan adımlarda VM’ler bu arka uç havuzuna eklenir. Aşağıdaki örnek, *Mybackendpool*adlı bir arka uç adres havuzu oluşturur:
+[New-Azloadbalancerbackendadddresspoolconfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig)ile bir arka uç adres havuzu oluşturun. Kalan adımlarda VM’ler bu arka uç havuzuna eklenir. Aşağıdaki örnek, *Mybackendpool* adlı bir arka uç adres havuzu oluşturur:
 
 ```azurepowershell-interactive
 $backendPool = New-AzLoadBalancerBackendAddressPoolConfig `
@@ -188,7 +188,7 @@ $availabilitySet = New-AzAvailabilitySet `
   -PlatformUpdateDomainCount 2
 ```
 
-VM’ler için [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) ile bir yönetici kullanıcı adı ve parola ayarlayın:
+VM’ler için [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true) ile bir yönetici kullanıcı adı ve parola ayarlayın:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
@@ -256,7 +256,7 @@ Yük dengeleyicinin trafiği, uygulamanızı çalıştıran üç VM’ye dağıt
 Uygulamanızı çalıştıran VM’lerde işletim sistemi güncelleştirmelerini yükleme gibi bakım işlemleri gerçekleştirmeniz gerekebilir. Uygulamanıza gelen trafiği fazla trafiği yönetmek için ek VM’lere ihtiyaç duyabilirsiniz. Bu bölümde VM’yi yük dengeleyiciden nasıl kaldırabileceğiniz veya ekleyebileceğiniz gösterilmektedir.
 
 ### <a name="remove-a-vm-from-the-load-balancer"></a>VM’yi yük dengeleyiciden kaldırma
-[Get-Aznetworkınterface](/powershell/module/az.network/get-aznetworkinterface)ile ağ arabirim kartını alın, sonra sanal NIC 'Nin *Loadbalancerbackendadddresspoir* özelliğini *$null*olarak ayarlayın. Son olarak, sanal NIC’yi güncelleştirin:
+[Get-Aznetworkınterface](/powershell/module/az.network/get-aznetworkinterface)ile ağ arabirim kartını alın, sonra sanal NIC 'Nin *Loadbalancerbackendadddresspoir* özelliğini *$null* olarak ayarlayın. Son olarak, sanal NIC’yi güncelleştirin:
 
 ```azurepowershell-interactive
 $nic = Get-AzNetworkInterface `

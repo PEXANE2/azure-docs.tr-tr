@@ -1,14 +1,14 @@
 ---
 title: Azure PowerShell kullanarak VM uzantısını etkinleştirme
 description: Bu makalede, Azure PowerShell kullanarak karma bulut ortamlarında çalışan Azure Arc etkin sunucularına sanal makine uzantılarının nasıl dağıtılacağı açıklanır.
-ms.date: 11/24/2020
+ms.date: 01/05/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6b38c425042c260a29682db11212a1f6324abd38
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 9b1f83ad976aa3471430a912280fac25dc5c5c0c
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387420"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916193"
 ---
 # <a name="enable-azure-vm-extensions-using-azure-powershell"></a>Azure PowerShell kullanarak Azure VM uzantılarını etkinleştirme
 
@@ -35,8 +35,10 @@ Aşağıdaki örnek, bir yay etkin Linux sunucusunda Log Analytics VM uzantısı
 ```powershell
 PS C:\> $Setting = @{ "workspaceId" = "workspaceId" }
 PS C:\> $protectedSetting = @{ "workspaceKey" = "workspaceKey" }
-PS C:\> New-AzConnectedMachineExtension -Name OMSLinuxAgent -ResourceGroupName "myResourceGroup" -MachineName "myMachine" -Location "eastus" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -TypeHandlerVersion "1.10" -Settings $Setting -ProtectedSetting $protectedSetting -ExtensionType "OmsAgentforLinux"
+PS C:\> New-AzConnectedMachineExtension -Name OMSLinuxAgent -ResourceGroupName "myResourceGroup" -MachineName "myMachine" -Location "eastus" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -TypeHandlerVersion "1.10" -Settings $Setting -ProtectedSetting $protectedSetting -ExtensionType "OmsAgentForLinux"
 ```
+
+Bir yay etkin Windows Server üzerinde Log Analytics VM uzantısını etkinleştirmek için, `-ExtensionType` önceki örnekteki parametresinin değerini değiştirin `"MicrosoftMonitoringAgent"` .
 
 Aşağıdaki örnek, bir yay etkin sunucusunda özel betik uzantısının etkinleştirilmesini sunar:
 

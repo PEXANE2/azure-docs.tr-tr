@@ -6,21 +6,18 @@ ms.subservice: sizes
 author: vikancha-MSFT
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 08/10/2020
+ms.date: 01/05/2021
 ms.author: vikancha
-ms.openlocfilehash: 2de6cceb1e3b85060a146b18a689b57573bc932e
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 6463e54fb7f0a2cc03ffa043c00048c1131899ce
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585437"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913439"
 ---
-# <a name="ncast4_v3-series-in-preview"></a>NCasT4_v3 serisi (önizlemede) 
+# <a name="ncast4_v3-series"></a>NCasT4_v3 serisi 
 
 NCasT4_v3 serisi sanal makineler, [NVIDIA Tesla T4](https://www.nvidia.com/en-us/data-center/tesla-t4/) GPU 'LARı ve AMD Epde 7V12 (Roma) CPU 'lar tarafından desteklenir. VM 'Ler, en fazla 64, çok iş parçacıklı AMD EPIC 7V12 (Roma) işlemci çekirdeği ve 440 GiB 'a kadar, her biri 16 GB bellek içeren 4 KB 'a kadar NVıDıA T4 GPU özelliğine sahiptir. Bu sanal makineler, Kullanıcı tarafından oluşturulan isteklerin gerçek zamanlı olarak kullanılması veya NVıDıA 'ın KıLAVUZ sürücüsü ve sanal GPU teknolojisini kullanan etkileşimli grafikler ve görselleştirme iş yükleri gibi AI hizmetlerini dağıtmak için idealdir. CUDA, TensorRT, Caffe, ONNX ve diğer çerçeveleri temel alan standart GPU hesaplama iş yükleri ya da GPU hızlandırmalı grafik uygulamaları tabanlı OpenGL ve DirectX, NCasT4_v3 serisinde kullanıcılara yakın bir şekilde dağıtılır.
-
-> [!NOTe]
-> Önizleme programının bir parçası olarak [bir Istek gönderir](https://aka.ms/NCT4v3Preview) .
 
 <br>
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: fac26c616c977eedc466f004a9455297ec995fb8
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9fe1b7a077142b00aaf2a8502faa0e166c4311c4
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352550"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915632"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Azure HDInsight kümelerini özel bağlantıyla güvenli hale getirme ve yalıtma (Önizleme)
 
@@ -29,7 +29,7 @@ Varsayılan olarak, HDInsight RP genel IP 'Leri kullanarak kümeye *gelen* bir b
 
 Varsayılan sanal ağ mimarisinde kullanılan temel yük dengeleyiciler, HDInsight RP gibi gerekli giden bağımlılıklara erişmek için otomatik olarak ortak NAT (ağ adresi çevirisi) sağlar. Genel internet 'e giden bağlantıyı kısıtlamak istiyorsanız [bir güvenlik duvarı yapılandırabilirsiniz](./hdinsight-restrict-outbound-traffic.md), ancak bu bir gereksinim değildir.
 
-Ayrıca, giden olarak yapılandırmak, `resourceProviderConnection` Özel uç noktalar kullanarak Azure Data Lake Storage 2. veya dış meta veri gibi kümeye özgü kaynaklara erişmenize olanak tanır. Bu kaynaklar için özel uç noktaların kullanılması, bir şekilde değildir, ancak bu kaynaklar için özel uç noktalarınız varsa, HDInsight kümesini oluşturduğunuz özel uç noktaları ve DNS girdilerini yapılandırmanız gerekir `before` . Küme oluşturma sırasında Apache Ranger, ambarı, Oozie ve Hive metastores gibi tüm dış SQL veritabanlarını oluşturmanızı ve sağlamanızı öneririz. Gereksinim, bu kaynakların tümünün kendi özel uç noktaları aracılığıyla veya başka bir şekilde küme alt ağının içinden erişilebilir olması gerekir.
+Ayrıca, giden olarak yapılandırmak, `resourceProviderConnection` Özel uç noktalar kullanarak Azure Data Lake Storage 2. veya dış meta veri gibi kümeye özgü kaynaklara erişmenize olanak tanır. Bu kaynaklar için özel uç noktalar kullanılması zorunlu değildir, ancak bu kaynaklar için özel uç noktalara sahip olmak istiyorsanız, HDInsight kümesini oluşturduğunuz özel uç noktaları ve DNS girdilerini yapılandırmanız gerekir `before` . Küme oluşturma sırasında Apache Ranger, ambarı, Oozie ve Hive metastores gibi tüm dış SQL veritabanlarını oluşturmanızı ve sağlamanızı öneririz. Gereksinim, bu kaynakların tümünün kendi özel uç noktaları aracılığıyla veya başka bir şekilde küme alt ağının içinden erişilebilir olması gerekir.
 
 Azure Key Vault için özel uç noktalar kullanılması desteklenmez. Rest 'de CMK şifrelemesi için Azure Key Vault kullanıyorsanız, Azure Key Vault uç noktası, HDInsight alt ağının içinden özel uç nokta olmadan erişilebilir olmalıdır.
 

@@ -4,13 +4,13 @@ description: Bu makale, Azure bilişsel hizmetler Language Understanding API hak
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 06/15/2020
-ms.openlocfilehash: 52f8aad0a429d3378d46265fab719b1cb9f07fd0
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.date: 01/05/2021
+ms.openlocfilehash: 4591bc26c848032d1c0f8b96720c4ec66b9b064d
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813199"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916363"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding yenilikleri
 
@@ -20,7 +20,8 @@ Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler sürüm notlarını, Vide
 
 ### <a name="december-2020"></a>Aralık 2020
 
-* Tüm LUYA kullanıcıları [BIR lusıs authorınt kaynağına geçirilmesi](luis-migration-authoring.md) gerekir
+* [Lusıs yazma kaynağına geçiş](luis-migration-authoring.md) yapmak IÇIN tüm luya kullanıcıları gereklidir
+* REST API bir toplu işlem testi göndermenize ve amaç ve varlıklarınız için doğruluk sonuçları elde etmeniz için yeni [değerlendirme uç noktaları](luis-how-to-batch-test.md#batch-testing-using-the-rest-api) . V 3.0-Preview LUSıS uç noktasından başlayarak kullanılabilir.
 
 ### <a name="june-2020"></a>Haziran 2020
 

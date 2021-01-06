@@ -3,12 +3,12 @@ title: Azure VMware çözüm dağıtımını planlama
 description: Bu makalede bir Azure VMware Çözüm dağıtımı iş akışı özetlenmektedir.  Nihai sonuç, sanal makine (VM) oluşturma ve geçirme için hazırlanma ortamıdır.
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 1d1deebd56717c63a745500198eb8df9e3687b49
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 2cc4d40fd8088a632e0c24e3c4b770ebdc9de2e8
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558700"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912742"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Azure VMware çözüm dağıtımını planlama
 
@@ -62,7 +62,7 @@ NSX-T yönetici parolasını tanımlayın.  Dağıtım sırasında bir NSX-T yö
 
 Dağıtımı planlamada ilk adım, IP segmentlemesini planlıyor.  Azure VMware çözümü sağladığınız a/22 ağı. Daha sonra bu IP segmentlerini daha küçük parçalara ayırır ve vCenter, VMware HCX, NSX-T ve vMotion için bu IP segmentlerini kullanır.
 
-Azure VMware çözümü, bir iç ExpressRoute devresi aracılığıyla Microsoft Azure Sanal Ağ bağlanır. Çoğu durumda, ExpressRoute Global Reach aracılığıyla veri merkezinize bağlanır. 
+Azure VMware çözümü, bir iç ExpressRoute devresi üzerinden Microsoft Azure Sanal Ağ bağlanır. Çoğu durumda, ExpressRoute Global Reach aracılığıyla veri merkezinize bağlanır. 
 
 Azure VMware çözümü, mevcut Azure ortamınız ve şirket içi ortamınız tüm Exchange yolları (genellikle). Bu durumda, bu adımda tanımladığınız/22 CıDR ağ adresi bloğu, şirket içi veya Azure 'da zaten sahip olduğunuz herhangi bir şeyle çakışmamalıdır.
 

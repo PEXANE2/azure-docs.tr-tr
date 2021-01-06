@@ -1,7 +1,7 @@
 ---
 title: Açık kaynak makine öğrenimi tümleştirmesi
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning ' de uçtan uca makine öğrenimi çözümlerini eğitme, dağıtma ve yönetme amacıyla açık kaynaklı Python makine öğrenimi çerçevelerini nasıl kullanacağınızı öğrenin.
+description: Azure Machine Learning ' de uçtan uca makine öğrenimi çözümlerini eğerek, dağıtmaya ve yönetmeye yönelik açık kaynaklı Python makine öğrenimi çerçevelerini nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 12/16/2020
-ms.openlocfilehash: b3fa9767310bfc300087c9dc7384f33993aca70d
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: d987d21700e5f19ad8228b08508e8da842cc39eb
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97675948"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914119"
 ---
 # <a name="open-source-integration-with-azure-machine-learning-projects"></a>Azure Machine Learning projelerle açık kaynaklı tümleştirme
 
@@ -52,7 +52,7 @@ Derin bir öğrenme modelinin sıfırdan eğitimi, genellikle büyük miktarda z
 
 Pekiştirmeye dayalı Learning, eylemleri, durumları ve depoları kullanarak modelleyen yapay zeka tekniğidir: pekiştirmeye dayalı öğrenme aracıları, ortamının geçerli durumuna göre belirtilen yeniden temellerin en üst düzeye çıkaran bir dizi önceden tanımlanmış eylem yapmayı öğreniyor. 
 
-[Ray RLLib](https://github.com/ray-project/ray) projesi, eğitim sürecinde yüksek ölçeklenebilirliğe izin veren bir özellik kümesi içerir. Yinelemeli işlem hem zaman hem de kaynak yoğunluklu olarak pekiştirmeye dayalı öğrenme aracıları bir görevi elde etmenin en iyi yolunu öğrenmeye çalışır.  Ray, TensorFlow ve PyTorch gibi derin öğrenme çerçevelerini de yerel olarak destekler.  
+[Ray RLLib](https://github.com/ray-project/ray) projesinde eğitim sürecinde yüksek ölçeklenebilirlik sağlayan bir dizi özellik vardır. Yinelemeli işlem hem zaman hem de kaynak yoğunluklu olarak pekiştirmeye dayalı öğrenme aracıları bir görevi elde etmenin en iyi yolunu öğrenmeye çalışır.  Ray, TensorFlow ve PyTorch gibi derin öğrenme çerçevelerini de yerel olarak destekler.  
 
 Azure Machine Learning ile Ray yöntemi ile birlikte kullanma hakkında bilgi edinmek için bkz. [pekiştirmeye dayalı Learning modelini eğitme](how-to-use-reinforcement-learning.md).
 
@@ -101,4 +101,4 @@ Makine öğrenimi için genellikle DevOps olarak düşünüldük Machine Learnin
 
 Sürekli tümleştirme (CI) ve sürekli dağıtım (CD) gibi DevOps uygulamalarını kullanarak, uçtan uca makine öğrenimi yaşam döngüsünü otomatik hale getirebilir ve BT genelinde idare verileri yakalayabilirsiniz. Azure Machine Learning eğitim ve dağıtım görevlerini çalıştırmak için, [GitHub eylemlerinizde Machine LEARNING CI/CD işlem](./how-to-github-actions-machine-learning.md) hattınızı tanımlayabilirsiniz. 
 
-Yazılım bağımlılıklarını yakalama, ölçümler, meta veriler, veri ve model sürümü oluşturma, saydam, tekrarlanabilir ve denetlenebilir işlem hatları oluşturmak için MLOps işleminin önemli bir parçasıdır. Bu görev için, Azure Machine Learning ve [Azure Databricks ' de makine öğrenimi modellerini öğreticiyi](./how-to-use-mlflow-azure-databricks.md) [kullanarak mlflow 'u kullanabilirsiniz](how-to-use-mlflow.md) .
+Yazılım bağımlılıklarını yakalama, ölçümler, meta veriler, veri ve model sürümü oluşturma, saydam, tekrarlanabilir ve denetlenebilir işlem hatları oluşturmak için MLOps işleminin önemli bir parçasıdır. Bu görev için, Azure Machine Learning ve [Azure Databricks ' de makine öğrenimi modellerini öğreticiyi](./how-to-use-mlflow-azure-databricks.md) [kullanarak mlflow 'u kullanabilirsiniz](how-to-use-mlflow.md) . Ayrıca, [MLflow modellerini bir Azure Web hizmeti olarak dağıtabilirsiniz](how-to-deploy-mlflow-models.md). 

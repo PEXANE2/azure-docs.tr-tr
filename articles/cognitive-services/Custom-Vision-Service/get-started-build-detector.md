@@ -12,12 +12,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: görüntü tanıma, görüntü tanıma uygulaması, Özel Vizyon
-ms.openlocfilehash: ab747ad5e7b9362e9c587741198a0191c032b124
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8274ddd0e492d1a27ebc1579fc6efdcc8cc84955
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018399"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912993"
 ---
 # <a name="quickstart-build-an-object-detector-with-the-custom-vision-website"></a>Hızlı başlangıç: Özel Görüntü İşleme Web sitesiyle bir nesne algılayıcısı oluşturma
 
@@ -33,7 +33,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [create-resources](includes/create-resources.md)]
 
-## <a name="create-a-new-project"></a>Yeni bir proje oluşturma
+## <a name="create-a-new-project"></a>Yeni proje oluşturma
 
 Web tarayıcınızda [özel görüntü işleme Web sayfasına](https://customvision.ai) gidin ve __oturum aç '__ ı seçin. Azure portal oturum açmak için kullandığınız hesapla oturum açın.
 
@@ -100,6 +100,7 @@ Eğitim tamamlandıktan sonra modelin performansı hesaplanır ve görüntüleni
 
 - **Duyarlık** , doğru olan belirlenen sınıflandırmaların kesirini gösterir. Örneğin, model, 100 görüntüsünü köpekler olarak tanımlarsa ve bunların 99 ' i gerçekten dotalar ise, duyarlık %99% olur.
 - **Geri çağırma** , doğru şekilde tanımlanan gerçek sınıflandırmaların kesirini belirtir. Örneğin, gerçekten de 100 resim ve bir model, her ikisi de 80 olarak tanımlanmış ise, geri çekme %80% olur.
+- Ortalama **duyarlık** , ortalama Duyarlığın ortalama DEĞERIDIR (AP). AP duyarlık/geri çağırma eğrisinin (her tahmin için geri çağırmaya yönelik olarak çizilen duyarlık) altındaki alandır.
 
 ![Eğitim sonuçları, genel duyarlık ve geri çağırma ve ortalama duyarlık hassasiyetini gösterir.](./media/get-started-build-detector/trained-performance.png)
 

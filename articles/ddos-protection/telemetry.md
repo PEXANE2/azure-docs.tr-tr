@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: a54404dafaf1093a2e2acbde88187739bd6c9f06
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: 86e4a111be7585373ecf4c2fe9508f2bfca7de16
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827419"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915088"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>DDoS konuma telemetrisini görüntüleme ve yapılandırma
 
@@ -37,7 +37,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 Azure DDoS koruma standardı için aşağıdaki [ölçümler](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftnetworkpublicipaddresses) kullanılabilir. Bu ölçümler Ayrıca Tanılama ayarları aracılığıyla dışarı aktarılabilir (bkz. [DDoS tanılama günlüğünü görüntüleme ve yapılandırma](diagnostic-logging.md)).
 
 
-| Metric | Ölçüm görünen adı | Birim | Toplama Türü | Açıklama |
+| Ölçüm | Ölçüm görünen adı | Birim | Toplama Türü | Açıklama |
 | --- | --- | --- | --- | --- |
 | ByteCount | Bayt sayısı | Count | Toplam | Zaman aralığı içinde aktarılan toplam bayt sayısı |
 | BytesDroppedDDoS | Gelen bayt bırakıldı DDoS | BytesPerSecond | Maksimum | Gelen bayt bırakıldı DDoS| 
@@ -70,7 +70,7 @@ Azure DDoS koruma standardı için aşağıdaki [ölçümler](https://docs.micro
 
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 - Bu öğreticideki adımları tamamlayabilmeniz için önce bir [Azure DDoS standart koruma planı](manage-ddos-protection.md) oluşturmanız ve DDoS koruma standardının bir sanal ağ üzerinde etkinleştirilmesi gerekir.
-- DDoS, bir sanal ağ içindeki kaynaklara atanan genel IP adreslerini izler. Sanal ağda genel IP adresleri olan kaynaklarınız yoksa, önce genel IP adresine sahip bir kaynak oluşturmanız gerekir. [Azure hizmetleri Için sanal ağda](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network) (klasik değil), Azure App Service ortamları ve Azure VPN Gateway hariç, arka uç sanal makinelerin sanal ağda bulunduğu Azure yük dengeleyiciler dahil olmak üzere Kaynak Yöneticisi aracılığıyla dağıtılan tüm KAYNAKLARıN genel IP adresini izleyebilirsiniz. Bu öğreticiye devam etmek için hızlı bir şekilde [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veya [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) sanal makinesi oluşturabilirsiniz.  
+- DDoS, bir sanal ağ içindeki kaynaklara atanan genel IP adreslerini izler. Sanal ağda genel IP adresleri olan kaynaklarınız yoksa, önce genel IP adresine sahip bir kaynak oluşturmanız gerekir. Azure App Service ortamları dışında, [Azure hizmetleri Için sanal ağda](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network) (arka uç sanal makinelerin sanal ağda bulunduğu Azure yük dengeleyiciler dahil) (klasik değil), Kaynak Yöneticisi aracılığıyla dağıtılan tüm KAYNAKLARıN genel IP adresini izleyebilirsiniz. Bu öğreticiye devam etmek için hızlı bir şekilde [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veya [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) sanal makinesi oluşturabilirsiniz.  
 
 ## <a name="view-ddos-protection-telemetry"></a>DDoS koruması telemetrisini görüntüle
 
@@ -111,4 +111,4 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 Saldırı risk azaltma raporlarının ve akış günlüklerinin nasıl yapılandırılacağı hakkında bilgi edinmek için sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [DDoS tanılama günlüğünü görüntüleyin ve yapılandırın](diagnostic-logging.md)
+> [DDoS tanılama günlüğünü görüntüleme ve yapılandırma](diagnostic-logging.md)

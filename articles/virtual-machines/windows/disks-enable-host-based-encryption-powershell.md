@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 87b032b3a8382f632c1db56d2724b267c2db6727
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 4dd6736afe835eefe02b8095ec08cd65ac0d63b4
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734428"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915836"
 ---
 # <a name="use-the-azure-powershell-module-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Konakta şifrelemeyi kullanarak uçtan uca şifrelemeyi etkinleştirmek için Azure PowerShell modülünü kullanın
 
@@ -33,7 +33,7 @@ Konakta şifrelemeyi etkinleştirdiğinizde, VM konağında depolanan veriler, R
 
 Ayrıca, VM boyutlarını programlı bir şekilde bulabilirsiniz. Programlı olarak nasıl alınacağını öğrenmek için [desteklenen VM boyutlarını bulma](#finding-supported-vm-sizes) bölümüne bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 VM 'niz veya sanal makine ölçek kümeleriniz için konakta şifrelemeyi kullanabilmeniz için, özelliği aboneliğinizde etkinleştirilmiş olarak almanız gerekir. encryptionAtHost@microsoft.comAbonelikleriniz için etkin özelliği sağlamak üzere abonelik kimliklerinizle e-posta gönderin.
 
@@ -293,7 +293,7 @@ Eski VM boyutları desteklenmez. Desteklenen VM boyutlarının listesini şunlar
     }
 ```
 
-Veya [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku?view=azps-3.8.0) PowerShell cmdlet 'ini çağırarak.
+Veya [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku?view=azps-3.8.0&preserve-view=true) PowerShell cmdlet 'ini çağırarak.
 
 ```powershell
 $vmSizes=Get-AzComputeResourceSku | where{$_.ResourceType -eq 'virtualMachines' -and $_.Locations.Contains('CentralUSEUAP')} 

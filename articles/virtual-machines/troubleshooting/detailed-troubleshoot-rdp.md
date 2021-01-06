@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 91f15e32866cca008553286f7585247909d9a4ba
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5782765504eb1e0cb57558d3d4772d08de6b4d25
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002689"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913116"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Azure'daki Windows VM’lerine uzak masaüstü bağlantısı sorunlarında ayrıntılı sorun giderme adımları
 Bu makalede, Windows tabanlı Azure sanal makineleri için karmaşık uzak masaüstü hatalarını tanılamak ve gidermek için ayrıntılı sorun giderme adımları sağlanmaktadır.
@@ -38,7 +38,7 @@ Aşağıdaki bileşenler bir RDP bağlantısına dahil değildir:
 
 ![Uzak Masaüstü (RDP) bağlantısıyla ilgili bileşenleri gösteren diyagram.](./media/detailed-troubleshoot-rdp/tshootrdp_0.png)
 
-Devam etmeden önce, sanal makineye yönelik son başarılı uzak masaüstü bağlantısından bu yana nelerin değiştiğini gözden geçirmek için yardımcı olabilir. Örnek:
+Devam etmeden önce, sanal makineye yönelik son başarılı uzak masaüstü bağlantısından bu yana nelerin değiştiğini gözden geçirmek için yardımcı olabilir. Örneğin:
 
 * VM 'nin genel IP adresi veya VM 'yi (sanal IP adresi [VIP](https://en.wikipedia.org/wiki/Virtual_IP_address)de denir) içeren bulut hizmeti değişmiştir. DNS istemci önbelleğiniz hala DNS adı için kaydedilmiş *ESKI IP adresine* sahıp olduğundan RDP hatası olabilir. DNS istemci önbelleğinizi boşaltıp VM 'yi yeniden bağlamayı deneyin. Ya da yeni VIP ile doğrudan bağlanmayı deneyin.
 * Azure portal tarafından oluşturulan bağlantıyı kullanmak yerine uzak masaüstü bağlantılarınızı yönetmek için üçüncü taraf bir uygulama kullanıyorsunuz. Uygulama yapılandırmasının, uzak masaüstü trafiği için doğru TCP bağlantı noktasını içerdiğini doğrulayın. Bu bağlantı noktasını [Azure Portal](https://portal.azure.com)klasik bir sanal makine IÇIN, VM 'nin ayarlarını > uç noktalarına tıklayarak kontrol edebilirsiniz.
@@ -135,7 +135,7 @@ Klasik dağıtım modeli kullanılarak oluşturulan VM 'Ler için Azure sanal ma
 
 Daha önce yapmadıysanız Azure PowerShell ' yi yükleyebilirsiniz. Bkz. [Azure PowerShell'i yükleme ve yapılandırma](/powershell/azure/).
 
-Sonra, bir Azure PowerShell komut istemi açın ve geçerli klasörü **InstallWinRMCertAzureVM.ps1** betik dosyasının konumuyla değiştirin. Bir Azure PowerShell Betiği çalıştırmak için doğru Yürütme ilkesini ayarlamanız gerekir. Geçerli ilke düzeyinizi öğrenmek için **Get-ExecutionPolicy** komutunu çalıştırın. Uygun düzeyi ayarlama hakkında daha fazla bilgi için bkz. [set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-5.1).
+Sonra, bir Azure PowerShell komut istemi açın ve geçerli klasörü **InstallWinRMCertAzureVM.ps1** betik dosyasının konumuyla değiştirin. Bir Azure PowerShell Betiği çalıştırmak için doğru Yürütme ilkesini ayarlamanız gerekir. Geçerli ilke düzeyinizi öğrenmek için **Get-ExecutionPolicy** komutunu çalıştırın. Uygun düzeyi ayarlama hakkında daha fazla bilgi için bkz. [set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-5.1&preserve-view=true).
 
 Ardından, Azure abonelik adınızı, bulut hizmeti adını ve sanal makine adınızı (< ve > karakterlerini kaldırarak) girin ve ardından bu komutları çalıştırın.
 

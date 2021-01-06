@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to,automl,contperf-fy21q2
 ms.date: 12/18/2020
-ms.openlocfilehash: 526afe758063ce6c5f6bd86f8192f56d5f844a85
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: b26b0d9086f464556cbca2c70773374c3cccbd52
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97693996"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915870"
 ---
 # <a name="data-featurization-in-automated-machine-learning"></a>Otomatik makine öğreniminde veri korleştirme
 
@@ -28,7 +28,7 @@ Azure Machine Learning ' deki veri özelliği belirleme ayarları ve bu özellik
 
 *Özellik Mühendisliği* , makine öğrenimi (ml) algoritmalarının daha iyi öğrenilmesine yardımcı olan özellikler oluşturmak için verilerin etki alanı bilgisini kullanma işlemidir. Azure Machine Learning, özellik Mühendisliği kolaylaştırmak için veri ölçekleme ve normalleştirme teknikleri uygulanır. Toplu olarak, bu teknikler ve bu özellik Mühendisliği otomatik makine öğrenimi veya *Otomatik ml*, denemeleri içinde *korleştirme* olarak adlandırılır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede, bir oto ml denemesinin nasıl yapılandırılacağı zaten bildiğiniz varsayılmaktadır. Yapılandırma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
@@ -68,9 +68,6 @@ Aşağıdaki tabloda verilerinize otomatik olarak uygulanan teknikler özetlenme
 |_*Daha fazla özellik Oluştur**_ |Tarih saat özellikleri için: yıl, ay, gün, haftanın günü, yılın günü, üç aylık dönem, yılın haftası, saat, dakika, saniye.<br><br> Görevleri tahmin _For, * bu ek tarih saat özellikleri oluşturulur: ISO yılı, yarı yarı yıl, gün olarak Takvim, hafta, hafta günü, haftanın günü, haftanın günü, yıl günü, yıl/saat (0), saat, günün saati (12-SA tabanlı)<br/><br/>Metin özellikleri için: tek tek gram, bigram ve trigram temelinde Dönem sıklığı. [BERT ile bunun nasıl yapılacağı](#bert-integration) hakkında daha fazla bilgi edinin.|
 |**Dönüştür ve kodla** _|Çok sayıda benzersiz değere sahip sayısal özellikleri kategorik Özellikler halinde dönüştürün.<br/><br/>Tek yönlü kodlama, düşük önemlilik kategorik özellikleri için kullanılır. Yüksek kardinalite kategorik özellikler için tek bir Hot-Hash kodlaması kullanılır.|
 |_ *Sözcük katıştırlamaları**|Bir metin kullanımı, metin belirteçlerinin vektörlerini, önceden eğitilen bir model kullanarak tümce vektörlerine dönüştürür. Belgedeki her bir sözcüğün katıştırma vektörü, bir belge özelliği vektörü oluşturmak için geri kalan ile toplanır.|
-|**Hedef kodlamalar**|Kategorik özellikler için, bu adım her bir kategoriyi gerileme sorunları için Ortalama bir hedef değerle ve sınıflandırma sorunları için her sınıf için sınıf olasılığa eşler. Sıklık tabanlı ağırlığa ve k katlamalı çapraz doğrulama, seyrek veri kategorilerinin neden olduğu eşlemenin ve gürültü üzerine fazla sığdırmayı azaltmak için uygulanır.|
-|**Metin hedefi kodlaması**|Metin girişi için, her bir sınıfın olasılığını oluşturmak için kelimeleri olan bir yığılmış Doğrusal model kullanılır.|
-|**Kanıt ağırlığı (WoE)**|, Kategorik sütunların bağıntısı olarak hedef sütuna bir ölçü olarak, WoE hesaplar. WoE, sınıf içi ve sınıf dışı olasılıkların oranının günlüğü olarak hesaplanır. Bu adım, her sınıf için bir sayısal özellik sütunu üretir ve eksik değerler ve aykırı değer işleme gereksinimini ortadan kaldırır.|
 |**Küme uzaklığı**|K. a, tüm sayısal sütunlarda kümeleme modeli anlamına gelir. Her bir örneğin her bir kümenin centroıd değerine her birinin uzaklığını içeren *k* yeni özellikler (küme başına yeni bir sayısal özellik) üretir.|
 
 ## <a name="data-guardrails"></a>Veri, guardrayları
@@ -123,7 +120,7 @@ Desteklenen özelleştirmeler şunlardır:
 |--|--|
 |**Sütun amacı güncelleştirmesi**|Belirtilen sütun için, oto algılanan Özellik türünü geçersiz kılın.|
 |**Transformatör parametresi güncelleştirmesi** |Belirtilen transformatör için parametreleri güncelleştirin. Şu anda *ımputer* (ortalama, en sık ve ortanca) ve *Hashonehotencoder*'ı desteklemektedir.|
-|**Bırakma sütunları** |Bir şekilde bırakılacak sütunları belirler.|
+|**Sütunları bırakma** |Bir şekilde bırakılacak sütunları belirler.|
 |**Blok dönüştürücüler**| Korleştirme işleminde kullanılacak blok dönüştürücüler belirtir.|
 
 `FeaturizationConfig`API çağrılarını kullanarak nesneyi oluşturun:

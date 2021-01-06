@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 085ba4d9d4e78acec4505ddb0e9e89d4e0b5c4a3
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: ed9d41a84e455241ed3cfc41b905a671f2a2d499
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881489"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912963"
 ---
 # <a name="train-and-track-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>MLflow ve Azure Machine Learning (Önizleme) ile ML modellerini eğitme ve izleme
 
@@ -60,7 +60,7 @@ Aşağıdaki diyagramda, MLflow Izlemenin yanı sıra, Azure Machine Learning ç
 |Model performansını izleme||✓|  |   |
 | Veri değişikliklerini algılama |   | ✓ |   | ✓ |
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * `azureml-mlflow` paketini yükleyin. 
     * Bu paket `azureml-core` , çalışma alanınıza erişmek Için MLflow bağlantısını sağlayan [Azure Machine Learning Python SDK 'sını](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)otomatik olarak getirir.
@@ -211,7 +211,7 @@ run.get_metrics()
 
 MLflow modeli kayıt defterini destekleyen [Azure Machine Learning modeli kayıt defteriyle](concept-model-management-and-deployment.md#register-package-and-deploy-models-from-anywhere) modellerinizi kaydedin ve izleyin. Azure Machine Learning modeller, bu modelleri farklı iş akışlarıyla dışarı ve içeri aktarmayı kolaylaştıran MLflow model şeması ile hizalanır. Çalıştırma KIMLIĞI gibi MLflow ile ilgili meta veriler de izlenebilirlik için kayıtlı modelle etiketlenir. Kullanıcılar, MLflow çalıştırmalarından üretilen eğitim çalıştırmaları, kayıt ve dağıtım modellerini gönderebilir. 
 
-Üretime yönelik modeli tek bir adımda dağıtmak ve kaydettirmek istiyorsanız bkz. [MLflow modellerini dağıtma ve kaydetme](how-to-deploy-models-with-mlflow.md).
+Üretime yönelik modeli tek bir adımda dağıtmak ve kaydettirmek istiyorsanız bkz. [MLflow modellerini dağıtma ve kaydetme](how-to-deploy-mlflow-models.md).
 
 Bir çalışma kaynağından bir modeli kaydetmek ve görüntülemek için aşağıdaki adımları kullanın:
 
@@ -260,7 +260,7 @@ Bir çalışma kaynağından bir modeli kaydetmek ve görüntülemek için aşa�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [MLflow ile modeller dağıtın](how-to-deploy-models-with-mlflow.md).
+* [MLflow ile modeller dağıtın](how-to-deploy-mlflow-models.md).
 * [Veri kayması](./how-to-enable-data-collection.md)için üretim modellerinizi izleyin.
 * [MLflow ile Azure Databricks çalıştırmalarını izleyin](how-to-use-mlflow-azure-databricks.md).
 * [Modellerinizi yönetin](concept-model-management-and-deployment.md).

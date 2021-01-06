@@ -1,86 +1,74 @@
 ---
 title: "Bilişsel hizmetler: docs 'taki yenilikler"
-description: "1 Kasım 2020 ' de 30 Kasım 2020 ' ye kadar bilişsel hizmetler belgelerinden yenilikler. "
+description: 1 Aralık 2020 ' de 31 Aralık 2020 ' de bilişsel hizmetler belgelerinden yenilikler.
 author: erhopf
 manager: nitinme
 ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
-ms.date: 12/07/2020
-ms.openlocfilehash: 9069a53166b30e206559f0c68c4bcef2ec136ac5
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.date: 01/05/2021
+ms.openlocfilehash: dad3cf9ce79ade827e77e442a38b3404ee35bfb3
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631508"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913133"
 ---
-# <a name="cognitive-services-docs-whats-new-for-november-1-2020---november-30-2020"></a>Bilişsel hizmetler belgeleri: 1 Kasım 2020 ' deki yenilikler-30 Kasım 2020
+# <a name="cognitive-services-docs-whats-new-for-december-1-2020---december-31-2020"></a>Bilişsel hizmetler belgeleri: 1 Aralık 2020 ' deki yenilikler-31 Aralık 2020
 
-1 Kasım 2020 ' den 30 Kasım 2020 ' e kadar bilişsel hizmetler belgelerinden yenilikler 'e hoş geldiniz. Bu makalede, bu süre boyunca docs 'ta yapılan önemli değişikliklerden bazıları listelenir.
+1 Aralık 2020 ile 31 Aralık 2020 arasında bilişsel hizmetler belgelerinden yeniliklere hoş geldiniz. Bu makalede, bu süre boyunca docs 'ta yapılan önemli değişikliklerden bazıları listelenir.
 
 ## <a name="cognitive-services"></a>Bilişsel Hizmetler
 
+### <a name="new-articles"></a>Yeni makaleler
+
+- [Azure bilişsel hizmetler için maliyetleri planlayın ve yönetin](plan-manage-costs.md)
+
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 
-- [Hızlı başlangıç: Azure Command-Line arabirimini (CLı) kullanarak bilişsel hizmetler kaynağı oluşturma](cognitive-services-apis-create-account-cli.md)
-- [Bilişsel Hizmetler dağıtım seçenekleri](cognitive-services-development-options.md)
-- [Azure bilişsel Hizmetler desteği ve yardım seçenekleri](cognitive-services-support-options.md)
-- [Azure bilişsel hizmetler için tanılama günlüğünü etkinleştirme](diagnostic-logging.md)
-- [Azure bilişsel hizmetler için doğal dil desteği](language-support.md)
-- [Bilişsel hizmetler için Azure Güvenlik temeli](security-baseline.md)
+- [Azure Bilişsel Hizmetler sanal ağlarını yapılandırma](cognitive-services-virtual-networks.md)
+
+## <a name="anomaly-detector"></a>Anomali Algılayıcısı
+
+### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
+
+- [Anomali algılayıcısı REST API hızlı başlangıç](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/quickstarts/client-libraries?tabs=windows&pivots=rest-api)
+
+## <a name="bing-visual-search"></a>Bing Görsel Arama
+
+### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
+
+- [Bir görüntü için Öngörüler elde etmek için bir Öngörüler belirteci kullanma](/azure/cognitive-services/bing-visual-search/use-insights-token.md)
 
 ## <a name="containers"></a>Kapsayıcılar
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 
-- [Azure bilişsel hizmetler kapsayıcı görüntü etiketleri ve sürüm notları](/azure/cognitive-services/containers/container-image-tags)
+- [Azure Container Örneğinde kapsayıcı dağıtma ve çalıştırma](/azure/cognitive-services/containers/azure-container-instance-recipe.md)
 
 ## <a name="form-recognizer"></a>Form Tanıma
 
-### <a name="new-articles"></a>Yeni makaleler
-
-- [Form tanıyıcı önceden oluşturulmuş fatura modeli](/azure/cognitive-services/form-recognizer/concept-invoices)
-- [Form tanıyıcı düzen hizmeti](/azure/cognitive-services/form-recognizer/concept-layout)
-- [Hızlı başlangıç: Python ile REST API form tanıyıcı kullanarak fatura verilerini ayıklama](/azure/cognitive-services/form-recognizer/quickstarts/python-invoices)
-
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 
-- [Makbuz kavramları](/azure/cognitive-services/form-recognizer/concept-receipts)
-- [Form Tanıma nedir?](/azure/cognitive-services/form-recognizer/overview)
-- [Örnek etiketleme aracını kullanarak form tanıyıcı modelini etiketlerle eğitme](/azure/cognitive-services/form-recognizer/quickstarts/label-tool)
-- [Hızlı başlangıç: Python ile REST API form tanıyıcı kullanarak iş kartı verilerini ayıklama](/azure/cognitive-services/form-recognizer/quickstarts/python-business-cards)
-- [Form Tanıma'daki yenilikler](/azure/cognitive-services/form-recognizer/whats-new)
-
-## <a name="metrics-advisor"></a>Ölçüm Danışmanı
-
-### <a name="new-articles"></a>Yeni makaleler
-
-- [Ölçüm Danışmanı: docs 'taki yenilikler](/azure/cognitive-services/metrics-advisor/whats-new)
-
-### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
-
-- [Anomali geri bildirimi sağlama](/azure/cognitive-services/metrics-advisor/how-tos/anomaly-feedback)
-- [Ölçüm Danışmanı sık sorulan sorular](/azure/cognitive-services/metrics-advisor/faq)
-- [Hızlı başlangıç: çözümünüzü özelleştirmek için istemci kitaplıklarını veya REST API 'Lerini kullanma](/azure/cognitive-services/metrics-advisor/quickstarts/rest-api-and-client-library)
-
-## <a name="qna-maker"></a>Soru-Cevap Oluşturucu 
-
-### <a name="new-articles"></a>Yeni makaleler 
-
-* [Soru-Cevap Oluşturma yönetilen genel önizleme duyurusu](https://techcommunity.microsoft.com/t5/azure-ai/introducing-qna-maker-managed-now-in-public-preview/ba-p/1845575)
-* [Yeni bir Soru-Cevap Oluşturma yönetilen hizmeti oluşturun](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure?tabs=v2)
-* [Mevcut bilgi tabanınızı yönetilen Soru-Cevap Oluşturma geçirin](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/migrate-knowledge-base)
+- [Form tanıyıcı giriş sayfası](/azure/cognitive-services/form-recognizer/index.yml)
+- [Hızlı başlangıç: form tanıyıcı istemci kitaplığını kullanma](/azure/cognitive-services/form-recognizer/quickstarts/client-library.md)
 
 ## <a name="text-analytics"></a>Metin Analizi
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 
-- [Metin Analizi API'si için veri ve hız sınırları](/azure/cognitive-services/text-analytics/concepts/data-limits)
-- [Nasıl yapılır: sistem durumu için Metin Analizi kullanma (Önizleme)](/azure/cognitive-services/text-analytics/how-tos/text-analytics-for-health)
-- [Metin Analizi nasıl çağrılacağını REST API](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api)
-- [Metin Analizi içinde adlandırılmış varlık tanımayı kullanma](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking)
-- [Nasıl yapılır: yaklaşım Analizi ve Görüşleme madenciliği](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis)
-- [Metin Analizi API’sindeki yenilikler](/azure/cognitive-services/text-analytics/whats-new)
-- [Örnek: Metin Analizi Dili algıla](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection)
+- [Metin Analizi API'si v3 dil desteği](/azure/cognitive-services/text-analytics/language-support.md)
+- [Metin Analizi nasıl çağrılacağını REST API](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api.md)
+- [Metin Analizi içinde adlandırılmış varlık tanımayı kullanma](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking.md)
+- [Örnek: Metin Analizi kullanarak anahtar tümceleri ayıklama](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-keyword-extraction.md)
+- [Metin Analizi API’si Belgeleri - Öğreticiler, API Başvurusu - Azure Bilişsel Hizmetler | Microsoft Docs](/azure/cognitive-services/text-analytics/index.yml)
+- [Hızlı başlangıç: Metin Analizi istemci kitaplığı ve REST API kullanın](/azure/cognitive-services/text-analytics/quickstarts/client-libraries-rest-api.md)
+
+## <a name="community-contributors"></a>Topluluk katkı sağlayanlar
+
+Aşağıdaki kişiler bu süre boyunca bilişsel hizmetler belgelerine katkıda bulunanlar. Teşekkür ederiz!
+
+- [hyoshioka0128](https://github.com/hyoshioka0128) -Hiroshi Yoshioka (1)
+- [pymıa](https://github.com/pymia) -MIA//Huai-Wen Chang (1)
 
 [!INCLUDE [Service specific updates](./includes/service-specific-updates.md)]

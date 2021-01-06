@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/04/2021
+ms.date: 01/05/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d56ed0cdae9046cb7d76f7d74545309ee6292ecd
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: f74e6435af9084b0c8f222c33dc922fe678bc4c7
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883104"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914528"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -83,6 +83,7 @@ Bu bölümde, Microsoft Power BI tümleştirme hakkındaki belgeleri SAP veri ka
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
 
+- 01/05/2021: [SLES 'de ANF Ile Azure VM](./sap-hana-scale-out-standby-netapp-files-suse.md) 'lerinde yer alan ve Azure VM 'lerinde yer alan SAP HANA ve [RHEL 'de ANF üzerinde](./sap-hana-scale-out-standby-netapp-files-rhel.md)yer alan Azure sanal makinelerinde bekleyen bir düğüm ile ölçek GENIŞLETME SAP HANA değişiklik, SAP konak aracısının yerel bağlantı noktası aralığını yönetmesine izin vermek için önerilen yapılandırmayı yeniden gözden geçirme  
 - 01/04/2021: Azure 'da SAP HANA, HLI tarafından desteklenen yeni Azure bölgelerini ekleme [(büyük örnekler)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
 - 12/29/2020: [Azure kullanılabilirlik alanları Ile SAP iş yükü yapılandırmalarında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones) belirli Azure bölgeleri için mimari önerileri ekleyin
 - 12/21/2020: [HLI Için kullanılabilir SKU](./hana-available-skus.md) 'Larda Hana büyük örnek SKU 'larına yeni sertifikalar ekleyin

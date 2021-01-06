@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/04/2020
+ms.date: 01/05/2020
 ms.author: b-juche
-ms.openlocfilehash: e74b729f837c8e6ebe86514a01b6c8bdddc616e4
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: d296f80d85bb5081c466b27e6a8624e8b3f2c924
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881098"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915018"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files için bir çift protokol (NFSv3 ve SMB) birimi oluşturun
 
@@ -133,7 +133,10 @@ Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMB3 veya Dual Protocol kullanarak 
     * Kök sertifikayı içeren etki alanındaki başka bir makine  
 
 3. Kök CA sertifikasını dışarı aktarın.  
-    Kök CA sertifikaları, kişisel veya güvenilen kök sertifika yetkililerinden aktarılabilir.   
+    Kök CA sertifikaları, aşağıdaki örneklerde gösterildiği gibi kişisel veya güvenilen kök sertifika yetkilileri dizininden verilebilir:   
+    ![kişisel sertifikaları gösteren ekran görüntüsü](../media/azure-netapp-files/personal-certificates.png)   
+    ![Güvenilen kök sertifika yetkililerini gösteren ekran görüntüsü](../media/azure-netapp-files/trusted-root-certification-authorities.png)    
+
     Sertifikanın Base-64 ile kodlanmış X. 509.440 (. CER) biçimi: 
 
     ![Sertifika Dışarı Aktarma Sihirbazı](../media/azure-netapp-files/certificate-export-wizard.png)

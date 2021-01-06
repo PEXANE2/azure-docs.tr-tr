@@ -17,12 +17,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e8268630b2c108dc95ded059ce41866a14fadd0e
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 3fe87f94ce05efa4a784ba7e3f65e53abb00fd05
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359260"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914255"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>SQL Server IaaS Aracısı Uzantısı ile yönetimi otomatikleştirme
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -42,20 +42,21 @@ SQL Server IaaS Aracısı uzantısı, Azure VM 'lerinde SQL Server için birkaç
 
 - **Ücretsiz**: tüm üç yönetilebilirlik modundaki uzantı tamamen ücretsizdir. Uzantı ile ilişkili ek maliyet yoktur veya değiştirme yönetimi modları vardır. 
 
-- **Basitleştirilmiş lisans yönetimi**: uzantı SQL Server lisans yönetimini basitleştirir ve [Azure Portal](manage-sql-vm-portal.md), Azure CLI veya PowerShell kullanarak etkinleştirilen Azure hibrit avantajı SQL Server VM 'leri hızlıca tanımlamanızı sağlar: 
-
-   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-   ```azurecli-interactive
-   $vms = az sql vm list | ConvertFrom-Json
-   $vms | Where-Object {$_.sqlServerLicenseType -eq "AHUB"}
-   ```
+- **Basitleştirilmiş lisans yönetimi**: uzantı SQL Server lisans yönetimini basitleştirir ve [Azure Portal](manage-sql-vm-portal.md), PowerShell veya Azure clı kullanarak etkinleştirilen Azure hibrit avantajı SQL Server VM 'leri hızlıca tanımlamanızı sağlar: 
 
    # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
    ```powershell-interactive
    Get-AzSqlVM | Where-Object {$_.LicenseType -eq 'AHUB'}
    ```
+
+   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+   ```azurecli-interactive
+   $ az sql vm list --query "[?sqlServerLicenseType=='AHUB']"
+   ```
+
+
 
    ---
 

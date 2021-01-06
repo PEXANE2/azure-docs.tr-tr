@@ -6,24 +6,24 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: acomet
-ms.openlocfilehash: 959070ca431c3397779a2a22c16f03b3adebbb35
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: be2657d9606f260fcea06d2535be87fc6976577c
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444497"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915683"
 ---
 # <a name="use-power-bi-and-serverless-synapse-sql-pool-preview-to-analyze-azure-cosmos-db-data-with-synapse-link"></a>SYNAPSE bağlantısı ile Azure Cosmos DB verileri çözümlemek için Power BI ve sunucusuz SYNAPSE SQL Havuzu (Önizleme) kullanın 
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 Bu makalede, Azure Cosmos DB için SYNAPSE link üzerinden sunucusuz bir SQL havuzu veritabanı ve görünümleri oluşturmayı öğreneceksiniz. Azure Cosmos DB kapsayıcıları sorgulayıp, ardından bu görünümler üzerinde Power BI olan ve bu sorguyu yansıtan bir model oluşturacaksınız.
 
-Bu senaryoda, bir iş ortağı perakende deposunda Surface ürün satışları hakkında kukla verileri kullanacaksınız. Her mağaza için gelir, büyük bir evye yakınlık ve belirli bir hafta için tanıtım etkisi doğrultusunda analiz edersiniz. Bu makalede, **RetailSales** ve **storedemographics** adlı iki görünüm ve aralarında bir sorgu oluşturacaksınız. Bu [GitHub](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/RetailData) deposundan örnek ürün verilerini alabilirsiniz.
+Bu senaryoda, bir iş ortağı perakende deposunda Surface ürün satışları hakkında kukla verileri kullanacaksınız. Her mağaza için gelir, büyük bir evye yakınlık ve belirli bir hafta için tanıtım etkisi doğrultusunda analiz edersiniz. Bu makalede, **RetailSales** ve **storedemographics** adlı iki görünüm ve aralarında bir sorgu oluşturacaksınız. Bu [GitHub](https://github.com/Azure-Samples/Synapse/tree/main/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/RetailData) deposundan örnek ürün verilerini alabilirsiniz.
 
 > [!IMPORTANT]
 > Azure Cosmos DB için Azure SYNAPSE bağlantısı için SYNAPSE sunucusuz SQL havuzu desteği şu anda önizleme aşamasındadır. Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce aşağıdaki kaynakları oluşturduğunuzdan emin olun:
 
@@ -33,7 +33,7 @@ Başlamadan önce aşağıdaki kaynakları oluşturduğunuzdan emin olun:
 
 * Azure Cosmos hesabı ve [analitik deponun etkinleştirildiği](configure-synapse-link.md#create-analytical-ttl) iki kapsayıcı içinde bir veritabanı oluşturun.
 
-* Ürün verilerini, bu [toplu veri](https://github.com/Azure-Samples/Synapse/blob/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/spark-notebooks/pyspark/1CosmoDBSynapseSparkBatchIngestion.ipynb) alma not defterinde açıklandığı gibi Azure Cosmos kapsayıcılarına yükleyin.
+* Ürün verilerini, bu [toplu veri](https://github.com/Azure-Samples/Synapse/blob/main/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/spark-notebooks/pyspark/1CosmoDBSynapseSparkBatchIngestion.ipynb) alma not defterinde açıklandığı gibi Azure Cosmos kapsayıcılarına yükleyin.
 
 * **SynapseLinkBI** adlı [bir Synapse çalışma alanı oluşturun](../synapse-analytics/quickstart-create-workspace.md) .
 

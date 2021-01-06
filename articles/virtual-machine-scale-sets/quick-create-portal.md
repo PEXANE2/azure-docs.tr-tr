@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 33f7f407c1df45131b0ebb5b14e8fcad2626bffd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8243619bc7a32c5fa86b6e108d954674b54394e5
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87077550"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913744"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Hızlı Başlangıç: Azure portalında sanal makine ölçek kümesi oluşturma
 
@@ -32,21 +32,21 @@ Azure [yük dengeleyici](../load-balancer/load-balancer-overview.md) , gelen tra
 
 İlk olarak, portalı kullanarak bir ortak Standart Load Balancer oluşturun. Oluşturduğunuz ad ve genel IP adresi, yük dengeleyicinin ön ucu olarak otomatik olarak yapılandırılır.
 
-1. Arama kutusuna **yük dengeleyici**yazın. Arama sonuçlarında **Market** ' ın altında **yük dengeleyici**' yi seçin.
+1. Arama kutusuna **yük dengeleyici** yazın. Arama sonuçlarında **Market** ' ın altında **yük dengeleyici**' yi seçin.
 1. **Yük dengeleyici oluştur** sayfasının **temel bilgiler** sekmesinde, aşağıdaki bilgileri girin veya seçin:
 
     | Ayar                 | Değer   |
     | ---| ---|
     | Abonelik  | Aboneliğinizi seçin.    |    
     | Kaynak grubu | **Yeni oluştur** ' u seçin ve metin kutusuna *Myvmssresourcegroup* yazın.|
-    | Name           | *myLoadBalancer*         |
+    | Ad           | *myLoadBalancer*         |
     | Region         | **Doğu ABD**’yi seçin.       |
     | Tür          | **Genel**’i seçin.       |
     | SKU           | **Standart**' ı seçin.       |
     | Genel IP adresi | **Yeni oluştur**’u seçin. |
     | Genel IP adresi adı  | *Mypıp*   |
     | Atama| Statik |
-    | Kullanılabilirlik alanı | **Bölge yedekli**seçeneğini belirleyin. |
+    | Kullanılabilirlik alanı | **Bölge yedekli** seçeneğini belirleyin. |
 
 1. İşiniz bittiğinde **gözden geçir + oluştur** ' u seçin. 
 1. Doğrulama başarılı olduktan sonra **Oluştur**' u seçin. 
@@ -56,24 +56,23 @@ Azure [yük dengeleyici](../load-balancer/load-balancer-overview.md) , gelen tra
 ## <a name="create-virtual-machine-scale-set"></a>Sanal makine ölçek kümesi oluşturma
 RHEL, CentOS, Ubuntu veya SLES gibi bir Linux görüntüsü ya da Windows Server görüntüsü ile ölçek kümesi dağıtabilirsiniz.
 
-1. Arama kutusuna **Ölçek kümesi** yazın. Sonuçlarda, **Market**altında **Sanal Makine Ölçek Kümeleri**' ni seçin. Sanal makine ölçek **kümeleri** Oluştur sayfasında **Oluştur** ' u seçerek **sanal makine ölçek kümesi oluşturma** sayfasını açarsınız. 
+1. Arama kutusuna **Ölçek kümesi** yazın. Sonuçlarda, **Market** altında **Sanal Makine Ölçek Kümeleri**' ni seçin. Sanal makine ölçek **kümeleri** Oluştur sayfasında **Oluştur** ' u seçerek **sanal makine ölçek kümesi oluşturma** sayfasını açarsınız. 
 1. **Temel Bilgiler** sekmesinde, **Proje ayrıntıları** altında, doğru aboneliğin seçildiğinden emin olun, ardından **Yeni oluştur** kaynak grubunu seçin. Ad için *Myvmssresourcegroup* yazın ve ardından **Tamam** ' ı seçin. 
 1. Ölçek kümesi için ad olarak *myScaleSet* yazın.
 1. **Bölge**' de, bulunduğunuz alana yakın bir bölge seçin.
-1. **Ölçek kümesi VM** 'lerinin **düzenleme modu**için varsayılan değerini bırakın.
-1. **Görüntü**için bir market görüntüsü seçin. Bu örnekte, *Ubuntu Server 18,04 LTS*' yi seçtik.
+1. **Görüntü** için bir market görüntüsü seçin. Bu örnekte, *Ubuntu Server 18,04 LTS*' yi seçtik.
 1. İstediğiniz kullanıcı adını girin ve tercih ettiğiniz kimlik doğrulaması türünü seçin.
    - **Parola** en az 12 karakter uzunluğunda olmalı ve şu dört karmaşıklık gereksiniminden üçünü karşılamalıdır: bir küçük harf karakter, bir büyük harf karakter, bir sayı ve bir özel karakter. Daha fazla bilgi için [kullanıcı adı ve parola gereksinimlerine](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm) bakın.
    - Bir Linux OS disk görüntüsü seçerseniz bunun yerine **SSH genel anahtarını** seçebilirsiniz. Yalnızca genel anahtarınızı sağlayın (örn. *~/.ssh/id_rsa.pub*). [SSH anahtarları oluşturmak ve kullanmak](../virtual-machines/linux/mac-create-ssh-keys.md) için portaldan Azure Cloud Shell’i kullanabilirsiniz.
    
-    ![Sanal makine ölçek kümesi oluşturma](./media/virtual-machine-scale-sets-create-portal/quick-create-scaleset.png)
+    :::image type="content" source="./media/virtual-machine-scale-sets-create-portal/quick-create-scale-set.png" alt-text="Görüntü, Azure portal ölçek kümeleri için oluşturma seçeneklerini gösterir.":::
 
 1. Diğer sayfaları taşımak için **İleri ' yi** seçin. 
 1. **Örnek** ve **disk** sayfaları için varsayılan değerleri bırakın.
-1. **Ağ** sayfasında, **Yük Dengeleme**altında, ölçek kümesi örneklerini bir yük dengeleyicinin arkasına koymak için **Evet** ' i seçin. 
+1. **Ağ** sayfasında, **Yük Dengeleme** altında, ölçek kümesi örneklerini bir yük dengeleyicinin arkasına koymak için **Evet** ' i seçin. 
 1. **Yük dengeleme seçenekleri**' nde **Azure yük dengeleyici**' ni seçin.
 1. **Yük dengeleyici seçin**' de, daha önce oluşturduğunuz *myloadbalancer* ' ı seçin.
-1. **Bir arka uç havuzu seçin**Için **Yeni oluştur**' u seçin, *Mybackendpool*yazın ve **Oluştur**' u seçin.
+1. **Bir arka uç havuzu seçin** Için **Yeni oluştur**' u seçin, *Mybackendpool* yazın ve **Oluştur**' u seçin.
 1. İşiniz bittiğinde, **gözden geçir + oluştur**' u seçin. 
 1. Doğrulama başarılı olduktan sonra, ölçek kümesini dağıtmak için **Oluştur** ' u seçin.
 

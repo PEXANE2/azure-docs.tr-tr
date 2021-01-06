@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 4f9de2f956451cd6ab8bc8a7a0fc51903ec54694
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: d9b77def3ccefe3c866ccef78684d38da0b8a268
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97815921"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915157"
 ---
-# <a name="view-and-configure-ddos-protection-alerts"></a>DDoS koruma uyarılarını görüntüleme ve yapılandırma
+# <a name="view-and-configure-ddos-protection-alerts"></a>DDoS konuma uyarılarını görüntüleme ve yapılandırma
 
 Azure DDoS koruması standardı, DDoS saldırı analiziyle ayrıntılı saldırı öngörüleri ve görselleştirmeleri sağlar. Sanal ağlarını DDoS saldırılarına karşı koruyan müşteriler, saldırı saldırılarına karşı saldırı ve risk azaltma & raporları aracılığıyla saldırının etkilerini azaltmak için gerçekleştirilen saldırı ve eylemler hakkında ayrıntılı görünürlük sağlar. Zengin telemetri, DDoS saldırısının süresi boyunca ayrıntılı ölçümler dahil olmak üzere Azure Izleyici aracılığıyla sunulur. DDoS koruması tarafından sunulan Azure Izleyici ölçümlerinden herhangi biri için uyarı yapılandırılabilir. Günlüğe kaydetme, Azure Izleme tanılama arabirimi aracılığıyla [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md), splunk (Azure Event Hubs), OMS Log Analytics ve gelişmiş analiz Için Azure depolama ile daha da tümleştirilebilir.
 
@@ -34,7 +34,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 - Bu öğreticideki adımları tamamlayabilmeniz için önce bir [Azure DDoS standart koruma planı](manage-ddos-protection.md) oluşturmanız ve DDoS koruma standardının bir sanal ağ üzerinde etkinleştirilmesi gerekir.
-- DDoS, bir sanal ağ içindeki kaynaklara atanan genel IP adreslerini izler. Sanal ağda genel IP adresleri olan kaynaklarınız yoksa, önce genel IP adresine sahip bir kaynak oluşturmanız gerekir. [Azure hizmetleri Için sanal ağda](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network) (klasik değil), Azure App Service ortamları ve Azure VPN Gateway hariç, arka uç sanal makinelerin sanal ağda bulunduğu Azure yük dengeleyiciler dahil olmak üzere Kaynak Yöneticisi aracılığıyla dağıtılan tüm KAYNAKLARıN genel IP adresini izleyebilirsiniz. Bu öğreticiye devam etmek için hızlı bir şekilde [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veya [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) sanal makinesi oluşturabilirsiniz.     
+- DDoS, bir sanal ağ içindeki kaynaklara atanan genel IP adreslerini izler. Sanal ağda genel IP adresleri olan kaynaklarınız yoksa, önce genel IP adresine sahip bir kaynak oluşturmanız gerekir. Azure App Service ortamları dışında, [Azure hizmetleri Için sanal ağda](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network) (arka uç sanal makinelerin sanal ağda bulunduğu Azure yük dengeleyiciler dahil) (klasik değil), Kaynak Yöneticisi aracılığıyla dağıtılan tüm KAYNAKLARıN genel IP adresini izleyebilirsiniz. Bu öğreticiye devam etmek için hızlı bir şekilde [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veya [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) sanal makinesi oluşturabilirsiniz.     
 
 ## <a name="configure-alerts-through-azure-monitor"></a>Uyarıları Azure Izleyici aracılığıyla yapılandırma
 
@@ -64,7 +64,7 @@ Azure Izleyici uyarı yapılandırması kullanılarak saldırı sırasında etki
     |---------                |---------                                                                                           |
     | Kapsam                   | **Kaynak seç** seçeneğini belirleyin. </br> Günlüğe kaydetmek istediğiniz genel IP adresini içeren **aboneliği** seçin, **kaynak türü** için **genel IP adresi** ' ni seçin ve ardından ÖLÇÜMLERINI günlüğe kaydetmek istediğiniz belirli genel IP adresini seçin. </br> **Bitti**’yi seçin. | 
     | Koşul | **Koşul Seç**' i seçin. </br> Sinyal adı altında, **DDoS saldırısı altında** öğesini seçin. </br> **İşleç** altında, **büyüktür veya eşittir**' i seçin. </br> **Toplama türü** altında **en fazla**' yı seçin. </br> **Eşik değeri** altında *1* girin. For **DDoS saldırısı veya ölçüm değil** için **0** , saldırı altında değil, saldırı altında **olduğunuz anlamına gelir** . </br> **Bitti**’yi seçin. | 
-    | Eylemler | **Eylem grubu Ekle**' yi seçin. </br> **Eylem grubu oluştur**'u seçin. </br> **Bildirimler**' in altında, **bildirim türü** altında **e-posta/SMS ileti/gönderim/ses**' i seçin </br> **Ad**' ın altında, _Myundersaldırıda Kemailalert_' i girin. </br> Düzenle düğmesine tıklayın, ardından **e-posta** ' i seçin ve aşağıdaki seçeneklerden birçoğu gerekir ve ardından **Tamam**' ı seçin. </br> **Gözden geçir ve oluştur**’u seçin. | 
+    | Actions | **Eylem grubu Ekle**' yi seçin. </br> **Eylem grubu oluştur**'u seçin. </br> **Bildirimler**' in altında, **bildirim türü** altında **e-posta/SMS ileti/gönderim/ses**' i seçin </br> **Ad**' ın altında, _Myundersaldırıda Kemailalert_' i girin. </br> Düzenle düğmesine tıklayın, ardından **e-posta** ' i seçin ve aşağıdaki seçeneklerden birçoğu gerekir ve ardından **Tamam**' ı seçin. </br> **Gözden geçir ve oluştur**’u seçin. | 
     | Uyarı kuralı ayrıntıları | **Uyarı kuralı adı** altında, _Myddosalert_ yazın. |
 
 Birkaç dakikalık saldırı algılamasında, Azure Izleyici ölçümlerinden aşağıdaki resme benzer bir e-posta almalısınız:

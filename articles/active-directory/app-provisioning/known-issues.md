@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 12/14/2020
+ms.date: 01/05/2021
 ms.reviewer: arvinh
-ms.openlocfilehash: 78e9d7355b8c96295456f8aa9cb80b1d3bdd2fab
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: bde5cecc4052724f795cac03f6efceb3451ea2ee
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509555"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914357"
 ---
 # <a name="known-issues-application-provisioning"></a>Bilinen sorunlar: uygulama sağlama
 Uygulama sağlama ile çalışırken farkında olmak üzere bilinen sorunlar. UserVoice üzerinde uygulama sağlama hizmeti hakkında geri bildirimde bulunmak için bkz. [Azure AD uygulama sağlama UserVoice](https://aka.ms/appprovisioningfeaturerequest). Hizmeti iyileştirebilmemiz için UserVoice 'ı yakından izliyoruz. 
@@ -82,6 +82,10 @@ Sağlama döngüleri arasındaki [süre](./application-provisioning-when-will-pr
 **Değişiklikler hedef uygulamadan Azure AD 'ye taşınmıyor**
 
 Uygulama sağlama hizmeti dış uygulamalarda yapılan değişikliklerden haberdar değildir. Bu nedenle, geri alınacak bir eylem yapılmaz. Uygulama sağlama hizmeti, Azure AD 'de yapılan değişiklikleri temel alır. 
+
+**Eşitlemeden eşitleme atanmayan eşitleme için geçiş çalışmıyor**
+
+Kapsam ' Tümünü Eşitle ' iken ' Sync atandı ' olarak değiştirildikten sonra, değişikliğin geçerli olduğundan emin olmak için yeniden başlatma işlemi de gerçekleştirdiğinizden emin olun. Yeniden başlatma işlemini kullanıcı arabiriminden yapabilirsiniz.
 
 **Sağlama çevrimi tamamlanana kadar devam ediyor**
 

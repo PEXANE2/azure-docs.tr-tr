@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 25d8c36cc42c3f1d1cc2a8477a7361ba45bec706
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 17b99a9d3fa6b2934705d913170f2f617c856998
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977927"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915768"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>Bir VHD 'yi Azure 'a yükleme veya yönetilen bir diski başka bir bölgeye kopyalama-Azure PowerShell
 
@@ -44,7 +44,7 @@ Bu tür yönetilen disklerin iki benzersiz durumu vardır:
 
 Karşıya yüklemek üzere boş bir standart HDD oluşturabilmeniz için önce, yüklemek istediğiniz VHD 'nin bayt cinsinden dosya boyutu gerekir. Örnek kod, sizin tarafınızdan sizin için bunu sizin için kullanabilirsiniz `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length` . Bu değer **-uploadsizeınbytes** parametresini belirtirken kullanılır.
 
-Şimdi, yerel kabuğunuzun içinde, **-createoption** parametresindeki **karşıya yükleme** ayarını ve [New-azdiskconfig](/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0) cmdlet 'inde **-uploadsizeınbytes** PARAMETRESINI belirterek karşıya yüklemek üzere boş bir standart HDD oluşturun. Ardından, diski oluşturmak için [New-AzDisk](/powershell/module/az.compute/new-azdisk?view=azps-1.8.0) ' i çağırın.
+Şimdi, yerel kabuğunuzun içinde, **-createoption** parametresindeki **karşıya yükleme** ayarını ve [New-azdiskconfig](/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0&preserve-view=true) cmdlet 'inde **-uploadsizeınbytes** PARAMETRESINI belirterek karşıya yüklemek üzere boş bir standart HDD oluşturun. Ardından, diski oluşturmak için [New-AzDisk](/powershell/module/az.compute/new-azdisk?view=azps-1.8.0&preserve-view=true) ' i çağırın.
 
 `<yourdiskname>`, `<yourresourcegroupname>` Ve `<yourregion>` ardından aşağıdaki komutları çalıştırın:
 
@@ -59,7 +59,7 @@ $diskconfig = New-AzDiskConfig -SkuName 'Standard_LRS' -OsType 'Windows' -Upload
 New-AzDisk -ResourceGroupName '<yourresourcegroupname' -DiskName '<yourdiskname>' -Disk $diskconfig
 ```
 
-Premium SSD veya standart SSD yüklemek isterseniz, **Standard_LRS** **Premium_LRS** veya **StandardSSD_LRS**ile değiştirin. Ultra diskler henüz desteklenmiyor.
+Premium SSD veya standart SSD yüklemek isterseniz, **Standard_LRS** **Premium_LRS** veya **StandardSSD_LRS** ile değiştirin. Ultra diskler henüz desteklenmiyor.
 
 Karşıya yükleme işlemi için yapılandırılmış boş bir yönetilen disk oluşturduğunuza göre, buna bir VHD yükleyebilirsiniz. Bir VHD 'yi diske yüklemek için, bir yazılabilir SAS gerekir, bu sayede karşıya yüklemenizin hedefi olarak başvurabilirsiniz.
 

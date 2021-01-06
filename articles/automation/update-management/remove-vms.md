@@ -3,14 +3,14 @@ title: Azure Otomasyonu Güncelleştirme Yönetimi VM 'Leri kaldırma
 description: Bu makalede, Güncelleştirme Yönetimi ile yönetilen makinelerin nasıl kaldırılacağı açıklanır.
 services: automation
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 01/05/2021
 ms.custom: mvc
-ms.openlocfilehash: 774dbe29cbb6b4d063d3619d0c710efb1949b99a
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: d0399aed9be8d81abb2aa55190225570ddcc1a4e
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222946"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913201"
 ---
 # <a name="remove-vms-from-update-management"></a>VM’leri Güncelleştirme Yönetimi'nden kaldırma
 
@@ -18,7 +18,7 @@ Ortamınızdaki sanal makinelerinizdeki güncelleştirmeleri yönetmeyi tamamlad
 
 ## <a name="sign-into-the-azure-portal"></a>Azure portalda oturum açma
 
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com) oturum açın.
 
 ## <a name="to-remove-your-vms"></a>VM 'lerinizi kaldırmak için
 
@@ -32,13 +32,20 @@ Ortamınızdaki sanal makinelerinizdeki güncelleştirmeleri yönetmeyi tamamlad
 
 3. Azure portal, **Log Analytics çalışma alanları**' na gidin. Listeden çalışma alanınızı seçin.
 
-4. Log Analytics çalışma alanınızda **Günlükler** ' i seçin ve ardından üstteki Eylemler menüsünden **sorgu Gezgini** ' ni seçin.
+4. Log Analytics çalışma alanınızda, **Gelişmiş ayarlar** ' ı seçin ve sol taraftaki menüden **bilgisayar grupları** ' nı seçin.
 
-5. Sağ bölmedeki **sorgu Gezgini** ' nden, **kaydedilmiş Queries\Updates** ' i genişletin ve kayıtlı arama sorgusunu seçerek `MicrosoftDefaultComputerGroup` düzenleyin.
+5. Sağ bölmedeki **bilgisayar gruplarından** , **kaydedilmiş gruplar**' ı seçin.
 
-6. Sorgu Düzenleyicisi 'nde, sorguyu gözden geçirin ve VM için UUID 'yi bulun. VM için UUID 'yi kaldırın ve kaldırmak istediğiniz diğer VM 'Ler için adımları tekrarlayın.
+6. Tablodan, kayıtlı arama sorgusu **güncelleştirmeleri: MicrosoftDefaultComputerGroup** için, çalıştırılacak **üyeleri görüntüle** simgesine tıklayın ve üyelerini görüntüleyin.
 
-7. En üstteki çubuktan **Kaydet** ' i seçerek, kayıt düzenlemesini tamamladıktan sonra kaydedilmiş aramayı kaydedin.
+7. Sorgu Düzenleyicisi 'nde, sorguyu gözden geçirin ve VM için UUID 'yi bulun. VM için UUID 'yi kaldırın ve kaldırmak istediğiniz diğer VM 'Ler için adımları tekrarlayın.
+
+8. En üstteki çubuktan **Kaydet** ' i seçerek, kayıt düzenlemesini tamamladıktan sonra kaydedilmiş aramayı kaydedin. İstendiğinde, aşağıdakileri belirtin:
+
+    * **Ad**: microsoftdefaultcomputergroup
+    * **Farklı kaydet**: işlev
+    * **Diğer ad**: Updates__MicrosoftDefaultComputerGroup
+    * **Kategori**: güncelleştirmeler
 
 >[!NOTE]
 >Son 24 saat içinde değerlendirilen tüm makinelere rapor verdiğimiz için makineler kaydolduktan sonra gösterilmeye devam eder. Makineyi kaldırdıktan sonra, artık listelenmemesi için 24 saat beklemeniz gerekir.

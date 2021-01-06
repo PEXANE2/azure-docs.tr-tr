@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 14d0190a97c22a805065ceaf41dcd655b9e8182b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9a5cb463646762c262cc3c8e27123a768ef11d8
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87065286"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914748"
 ---
 # <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>Öğretici - Azure’da Özel Betik Uzantısı ile bir Windows sanal makinesine uygulama dağıtma
 
@@ -39,7 +39,7 @@ Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i se
 
 
 ## <a name="create-virtual-machine"></a>Sanal makine oluşturma
-VM için yönetici kullanıcı adını ve parolasını [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1)ile ayarlayın:
+VM için yönetici kullanıcı adını ve parolasını [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true)ile ayarlayın:
 
 ```azurepowershell-interactive
 $cred = Get-Credential

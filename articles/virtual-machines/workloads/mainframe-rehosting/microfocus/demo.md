@@ -6,12 +6,12 @@ ms.author: sread
 ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 7fb72b9a7d0d655f99d1e5cf194f7c6f26976a37
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b2cac7a8310482305467a1cb3ed3127eb18ae416
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95976202"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915785"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Azure 'da Micro Focus Enterprise Developer 4,0 için Micro Focus CICS BankDemo ayarlama
 
@@ -22,13 +22,13 @@ CICS, çevrimiçi ana bilgisayar uygulamalarının birçoğu tarafından kullan�
 > [!NOTE]
 > Yakında: Azure VM 'lerinde [Micro Focus Enterprise Server 5,0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110) kurma yönergeleri.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Kurumsal Geliştirici](set-up-micro-focus-azure.md)IÇEREN bir VM. Enterprise Developer 'ın geliştirme ve test amaçlarıyla bunun üzerinde bir Enterprise Server örneği olduğunu aklınızda bulundurun. Bu örnek, demo için kullanılan kurumsal sunucu örneğidir.
 
 - [SQL Server 2017 Express Edition](https://www.microsoft.com/sql-server/sql-server-editions-express). Enterprise Developer VM üzerine indirin ve yükleyin. Enterprise Server, CICS Region yönetimi için bir veritabanı gerektirir ve BankDemo uygulaması da BANKDEMO adlı bir SQL Server veritabanı kullanır. Bu tanıtım, her iki veritabanı için SQL Server Express kullandığınızı varsayar. Yükleme sırasında temel yüklemeyi seçin.
 
-- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) (SSMS). SSMS veritabanlarını yönetmek ve bir T-SQL betiği çalıştırmak için kullanılır. Enterprise Developer VM üzerine indirin ve yükleyin.
+- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017&preserve-view=true) (SSMS). SSMS veritabanlarını yönetmek ve bir T-SQL betiği çalıştırmak için kullanılır. Enterprise Developer VM üzerine indirin ve yükleyin.
 
 - Ücretsiz olarak indirebileceğiniz en son hizmet paketi veya [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/)Ile [Visual Studio 2019](https://azure.microsoft.com/downloads/) .
 

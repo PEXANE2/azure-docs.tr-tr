@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/30/2020
+ms.date: 1/04/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: e0185cc8786dc101375262ddfd187c5d8e7e054f
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 6f95b4eca8dbaf6cfaa7546fddada7577a1541b3
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509572"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916261"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Nasıl yapılır: uygulamanıza isteğe bağlı talepler sağlama
 
@@ -85,7 +85,17 @@ Bu talepler her zaman v 1.0 Azure AD belirteçlerine dahil edilmiştir, ancak is
 | `in_corp`     | İç Şirket Ağı        | İstemci şirket ağından oturum açıyorsanız bildirir. Aksi takdirde talep dahil edilmez.   |  MFA 'daki [Güvenilen IP 'lerin](../authentication/howto-mfa-mfasettings.md#trusted-ips) ayarlarını temel alarak.    |
 | `family_name` | Soyadı                       | Kullanıcı nesnesinde tanımlandığı şekilde kullanıcının soyadı, soyadı veya aile adını sağlar. <br>"family_name": "Miller" | MSA ve Azure AD 'de desteklenir. Kapsam gerektirir `profile` .   |
 | `given_name`  | Ad                      | Kullanıcı nesnesinde ayarlandığı gibi, kullanıcının ilk veya "verilen" adını sağlar.<br>"given_name": "filiz"                   | MSA ve Azure AD 'de desteklenir.  Kapsam gerektirir `profile` . |
-| `upn`         | Kullanıcı Asıl Adı | Kullanıcı için username_hint parametresiyle kullanılabilecek bir tanımlayıcı.  Kullanıcı için dayanıklı bir tanımlayıcı değildir ve Kullanıcı bilgilerini (örneğin, bir veritabanı anahtarı olarak) benzersiz olarak kimlik için kullanılmamalıdır. Bunun yerine, Kullanıcı nesnesi KIMLIĞINI ( `oid` ) bir veritabanı anahtarı olarak kullanın. [Alternatif bir oturum açma kimliğiyle](../authentication/howto-authentication-use-email-signin.md) oturum açan kullanıcılar, Kullanıcı asıl adı (UPN) gösterilmemelidir. Bunun yerine, kullanıcının oturum açma durumunu görüntülemek için aşağıdaki KIMLIK belirteci taleplerini kullanın: `preferred_username` ya da `unique_name` v1 belirteçleri ve `preferred_username` v2 belirteçleri için. | Talebin yapılandırması için aşağıdaki [ek özelliklere](#additional-properties-of-optional-claims) bakın. Kapsam gerektirir `profile` .|
+| `upn`         | Kullanıcı Asıl Adı | Kullanıcı için username_hint parametresiyle kullanılabilecek bir tanımlayıcı.  Kullanıcı için dayanıklı bir tanımlayıcı değildir ve Kullanıcı bilgilerini (örneğin, bir veritabanı anahtarı olarak) benzersiz olarak kimlik için kullanılmamalıdır. Bunun yerine, Kullanıcı nesnesi KIMLIĞINI ( `oid` ) bir veritabanı anahtarı olarak kullanın. [Alternatif bir oturum açma kimliğiyle](../authentication/howto-authentication-use-email-signin.md) oturum açan kullanıcılar, Kullanıcı asıl adı (UPN) gösterilmemelidir. Bunun yerine, `preferred_username` kullanıcının oturum açma durumunu görüntülemek için aşağıdaki talebi kullanın. | Talebin yapılandırması için aşağıdaki [ek özelliklere](#additional-properties-of-optional-claims) bakın. Kapsam gerektirir `profile` .|
+
+
+**Tablo 4: v 1.0-yalnızca isteğe bağlı talepler**
+
+V2 belirteç biçimi geliştirmelerinden bazıları, güvenlik ve güvenilirliği artırmaya yardımcı olduklarından v1 belirteç biçimini kullanan uygulamalar için kullanılabilir. Bu, v2 uç noktasından istenen KIMLIK belirteçleri veya v2 belirteç biçimini kullanan API 'Ler için belirteçlere erişim için geçerli olmayacaktır. 
+
+| JWT talebi     | Ad                            | Açıklama | Notlar |
+|---------------|---------------------------------|-------------|-------|
+|`aud`          | Hedef kitle | Her zaman JWTs 'de bulunur, ancak v1 erişim belirteçlerinde, belirteç doğrulaması gerçekleştirilirken kod için zor olabilen çeşitli yollarla dağıtılabilir.  [Bu talep için ek özellikleri](#additional-properties-of-optional-claims) , her zaman v1 erişim belirteçlerinde bir GUID olarak ayarlandığından emin olmak için kullanın. | yalnızca v1 JWT erişim belirteçleri|
+|`preferred_username` | Tercih edilen Kullanıcı adı        | V1 belirteçleri içinde tercih edilen Kullanıcı adı talebini sağlar. Bu, uygulamaların Kullanıcı adı ipuçları sağlamasını ve kendi belirteç türlerine bakılmaksızın okunabilir görünen adları göstermesini kolaylaştırır.  Bunun yerine isteğe bağlı talebi kullanmanız önerilir, örn. `upn` veya `unique_name` . | V1 KIMLIK belirteçleri ve erişim belirteçleri |
 
 ### <a name="additional-properties-of-optional-claims"></a>İsteğe bağlı taleplerin ek özellikleri
 
@@ -97,7 +107,9 @@ Bu talepler her zaman v 1.0 Azure AD belirteçlerine dahil edilmiştir, ancak is
 |----------------|--------------------------|-------------|
 | `upn`          |                          | Hem SAML hem de JWT yanıtları için ve v 1.0 ve v 2.0 belirteçleri için kullanılabilir. |
 |                | `include_externally_authenticated_upn`  | , Kaynak kiracısında depolanan Konuk UPN 'sini içerir. Örneğin, `foo_hometenant.com#EXT#@resourcetenant.com` |
-|                | `include_externally_authenticated_upn_without_hash` | Yukarıdaki gibi, karma işaretlerinin ( `#` ) alt çizgi () ile değiştirilmeleri dışında, `_` Örneğin `foo_hometenant.com_EXT_@resourcetenant.com` |
+|                | `include_externally_authenticated_upn_without_hash` | Yukarıdaki gibi, karma işaretlerinin ( `#` ) alt çizgi () ile değiştirilmeleri dışında, `_` Örneğin `foo_hometenant.com_EXT_@resourcetenant.com`|
+| `aud`          |                          | V1 erişim belirteçlerinde, bu, talebin biçimini değiştirmek için kullanılır `aud` .  Bu, `aud` her zaman ISTEMCI kimliği olan v2 belirteçleri veya kimlik belirteçleri üzerinde hiçbir etkiye sahip değildir. API 'nizin daha kolay bir şekilde izleyici doğrulaması gerçekleştirmesini sağlamak için bunu kullanın. Erişim belirtecini etkileyen tüm isteğe bağlı talepler gibi, kaynak erişim belirtecine ait olduğundan istekteki kaynağın bu isteğe bağlı talebi ayarlaması gerekir.|
+|                | `use_guid`               | Kaynak (API) istemci KIMLIĞINI `aud` bir AppID URI 'si veya GUID yerine talep olarak GUID biçiminde yayar. Bu nedenle, bir kaynağın istemci KIMLIĞI ise `bb0a297b-6a42-4a55-ac40-09a501456577` , söz konusu kaynak için erişim belirteci isteyen herhangi bir uygulama, şu ile bir erişim belirteci alır `aud` : `bb0a297b-6a42-4a55-ac40-09a501456577` .|
 
 #### <a name="additional-properties-example"></a>Ek özellikler örneği
 
@@ -137,7 +149,7 @@ Kullanıcı arabirimi veya uygulama bildirimi aracılığıyla uygulamanız içi
 1. **İsteğe bağlı talep Ekle**' yi seçin.
 1. Yapılandırmak istediğiniz belirteç türünü seçin.
 1. Eklenecek isteğe bağlı talepler ' i seçin.
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
 > [!NOTE]
 > UI seçeneği **belirteci yapılandırma** dikey penceresi, şu anda Azure AD B2C kiracısında kayıtlı olan uygulamalar için kullanılamaz. B2C kiracısında kayıtlı olan uygulamalar için, isteğe bağlı talepler uygulama bildirimi değiştirilerek yapılandırılabilir. Daha fazla bilgi için bkz. [Azure Active Directory B2C talepler ekleme ve Kullanıcı girişini özelleştirme, özel ilkeleri kullanma](../../active-directory-b2c/configure-user-input.md) 
@@ -233,7 +245,7 @@ Bu bölüm, Grup taleplerinde kullanılan grup özniteliklerinin, şirket içi W
 
 **Grupları kullanıcı arabirimi aracılığıyla isteğe bağlı talepler yapılandırma:**
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Kimlik doğrulamasından geçtikten sonra, sayfanın sağ üst köşesinden seçerek Azure AD kiracınızı seçin.
 1. **Azure Active Directory**'yi bulun ve seçin.
 1. **Yönet**'in altında **Uygulama kayıtları** nı seçin.
@@ -246,7 +258,7 @@ Bu bölüm, Grup taleplerinde kullanılan grup özniteliklerinin, şirket içi W
 
 **Grupları uygulama bildirimi aracılığıyla isteğe bağlı talepler yapılandırma:**
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Kimlik doğrulamasından geçtikten sonra, sayfanın sağ üst köşesinden seçerek Azure AD kiracınızı seçin.
 1. **Azure Active Directory**'yi bulun ve seçin.
 1. Listede için isteğe bağlı talepler yapılandırmak istediğiniz uygulamayı seçin.
@@ -260,7 +272,7 @@ Bu bölüm, Grup taleplerinde kullanılan grup özniteliklerinin, şirket içi W
    - "DirectoryRole"
    - "ApplicationGroup" (Bu seçenek yalnızca uygulamaya atanan grupları içerir)
 
-   Örnek:
+   Örneğin:
 
     ```json
     "groupMembershipClaims": "SecurityGroup"
@@ -377,7 +389,7 @@ Aşağıdaki örnekte, uygulamanız için tasarlanan erişim, KIMLIK ve SAML bel
 
 **Kullanıcı arabirimi yapılandırması:**
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Kimlik doğrulamasından geçtikten sonra, sayfanın sağ üst köşesinden seçerek Azure AD kiracınızı seçin.
 
 1. **Azure Active Directory**'yi bulun ve seçin.
@@ -400,7 +412,7 @@ Aşağıdaki örnekte, uygulamanız için tasarlanan erişim, KIMLIK ve SAML bel
 
 **Bildirim yapılandırması:**
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Kimlik doğrulamasından geçtikten sonra, sayfanın sağ üst köşesinden seçerek Azure AD kiracınızı seçin.
 1. **Azure Active Directory**'yi bulun ve seçin.
 1. Listede için isteğe bağlı talepler yapılandırmak istediğiniz uygulamayı bulun ve seçin.

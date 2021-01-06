@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/05/2021
 ms.author: alkohli
-ms.openlocfilehash: a0d596c7c1046ea26ac389a48c17fa5abccbfd12
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 3182258245701903e7b3d6d6163cf3e2bd55c1fc
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951613"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915479"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU 'unuzda bant genişliği zamanlamalarını yönetmek için Azure portal kullanma 
 
@@ -35,18 +35,18 @@ Bu makalede şunları öğreneceksiniz:
 
 Bir zamanlama eklemek için Azure portal aşağıdaki adımları uygulayın.
 
-1. Azure Stack Edge kaynağınız için Azure portal **bant genişliğine**gidin.
+1. Azure Stack Edge kaynağınız için Azure portal **bant genişliğine** gidin.
 2. Sağ bölmede **+ zamanlama Ekle**' yi seçin.
 
     ![Bant genişliği seçin](media/azure-stack-edge-j-series-manage-bandwidth-schedules/add-schedule-1.png)
 
-3. **Zamanlama ekle** sayfasında: 
+3. **Zamanlama ekle** sayfasında:
 
-   1. **Başlangıç gününü**, **bitiş gününü**, **başlangıç saatini**ve zamanlamanın **bitiş saatini** belirtin.
+   1. **Başlangıç gününü**, **bitiş gününü**, **başlangıç saatini** ve zamanlamanın **bitiş saatini** belirtin.
    2. Bu zamanlamanın her gün çalışması gerekiyorsa, **tüm gün** seçeneğini işaretleyin.
    3. **Bant genişliği oranı** , bulut ile ilgili işlemlerde (her ikisi de karşıya yükleme ve indirme) kullanılan bit/sn (Mbps) cinsinden bant genişliğidir. Bu alan için 20 ile 2.147.483.647 arasında bir sayı girin.
-   4. Veri yükleme ve indirme işlemlerini kısıtlamak istemiyorsanız **Sınırsız** bant genişliğini seçin.
-   5. **Ekle**’yi seçin.
+   4. Karşıya yükleme ve indirme tarihini azaltmak istemiyorsanız **sınırsız bant genişliği** seçin.
+   5. **Add (Ekle)** seçeneğini belirleyin.
 
       ![Zamanlama Ekle](media/azure-stack-edge-j-series-manage-bandwidth-schedules/add-schedule-2.png)
 
@@ -58,9 +58,10 @@ Bir zamanlama eklemek için Azure portal aşağıdaki adımları uygulayın.
 
 Bir bant genişliği zamanlamasını düzenlemek için aşağıdaki adımları gerçekleştirin.
 
-1. Azure portal, Azure Stack Edge kaynağına gidin ve ardından **bant genişliğine**gidin. 
+1. Azure portal, Azure Stack Edge kaynağına gidin ve ardından **bant genişliğine** gidin.
 2. Bant genişliği zamanlamaları listesinden, değiştirmek istediğiniz bir zamanlamayı seçin.
-    ![Bant genişliği zamanlamasını seçin](media/azure-stack-edge-j-series-manage-bandwidth-schedules/modify-schedule-1.png)
+
+   ![Bant genişliği zamanlamasını seçin](media/azure-stack-edge-j-series-manage-bandwidth-schedules/modify-schedule-1.png)
 
 3. İstediğiniz değişiklikleri yapın ve değişiklikleri kaydedin.
 
@@ -75,7 +76,7 @@ Bir bant genişliği zamanlamasını düzenlemek için aşağıdaki adımları g
 
 Azure Stack Edge Pro aygıtınızla ilişkili bir bant genişliği zamanlamasını silmek için aşağıdaki adımları uygulayın.
 
-1. Azure portal, Azure Stack Edge kaynağına gidin ve ardından **bant genişliğine**gidin.  
+1. Azure portal, Azure Stack Edge kaynağına gidin ve ardından **bant genişliğine** gidin.  
 
 2. Bant genişliği zamanlaması listesinden silmek istediğiniz zamanlamayı seçin. **Düzenleme zamanlamasında** **Sil**' i seçin. Onay istendiğinde **Evet**' i seçin.
 

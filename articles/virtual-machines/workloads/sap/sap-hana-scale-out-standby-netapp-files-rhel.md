@@ -14,14 +14,14 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 06/15/2020
+ms.date: 01/05/2021
 ms.author: radeltch
-ms.openlocfilehash: d2cc8487f9864a27c1a2b02ef6e846bc43727e27
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 8dfbdb338416511de403733ce61b7b2472190963
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608546"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916278"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux Azure NetApp Files kullanarak Azure VM 'lerinde bekleme düğümüne sahip bir SAP HANA genişleme sistemi dağıtma 
 
@@ -264,7 +264,7 @@ Sonraki yönergelerde, kaynak grubunu, Azure sanal ağını ve üç Azure sanal 
 
 6. `storage` `hana` Aşağıdaki adımları uygulayarak ve alt ağları için ek ağ arabirimleri için hızlandırılmış ağı etkinleştirin:  
 
-    a. Azure portal [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) açın. [Azure portal](https://portal.azure.com/#home)  
+    a. Azure portal [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) açın. [](https://portal.azure.com/#home)  
 
     b. `storage`Ve alt ağlarına eklenen ek ağ arabirimleri için hızlandırılmış ağı etkinleştirmek üzere aşağıdaki komutları yürütün `hana` .  
 
@@ -370,11 +370,13 @@ Aşağıdaki adımları uygulayarak işletim sistemini yapılandırın ve hazır
     # Add the following entries in the configuration file
     net.ipv6.conf.all.disable_ipv6 = 1
     net.ipv4.tcp_max_syn_backlog = 16348
-    net.ipv4.ip_local_port_range = 40000 65300
     net.ipv4.conf.all.rp_filter = 0
     sunrpc.tcp_slot_table_entries = 128
     vm.swappiness=10
     </code></pre>
+
+> [!TIP]
+> SAP konak aracısının bağlantı noktası aralıklarını yönetmesine izin vermek için net.ipv4.ip_local_port_range ve net.ipv4.ip_local_reserved_ports açıkça sysctl yapılandırma dosyalarında ayarlamayı önleyin. Daha fazla bilgi için bkz. SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421).  
 
 5. **[A]** [Azure NetApp Files kullanarak MICROSOFT Azure NetApp SAP uygulamalarında][anf-sap-applications-azure]önerildiği gibi sunrpc ayarlarını ayarlayın.  
 
@@ -712,7 +714,7 @@ Bu örnekte, Azure ile bekleme moduna sahip genişleme yapılandırmasında SAP 
 
 6. Temel Azure NetApp Files depolama SAP HANA iyileştirmek için aşağıdaki SAP HANA parametrelerini ayarlayın:
 
-   - `max_parallel_io_requests` **128**
+   - `max_parallel_io_requests`**128**
    - `async_read_submit`**üzerinde**
    - `async_write_submit_active`**üzerinde**
    - `async_write_submit_blocks`**Tümü**

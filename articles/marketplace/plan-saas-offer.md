@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 5b39ccc365575853a4a74a471023989f34ebc577
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: e188c74c6eba5e4182f7b72277db8dd8e08db8d4
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821494"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913949"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Ticari Market için SaaS teklifi planlaması
 
@@ -113,10 +113,10 @@ SaaS teklifiniz hem BT çözümü (Azure Marketi) hem *de* bir iş çözümü (a
 
 | Ölçülen faturalandırma | Ortak plan | Özel plan | Kullanılabilir: |
 |---|---|---|---|
-| Yes             | Yes         | Hayır           | Azure Marketi ve Azure portal |
-| Yes             | Yes         | Yes          | Azure Marketi ve Azure portal * |
-| Yes             | Hayır          | Yes          | Yalnızca Azure portal |
-| Hayır              | Hayır          | Yes          | Yalnızca Azure portal |
+| Evet             | Evet         | Hayır           | Azure Marketi ve Azure portal |
+| Evet             | Evet         | Evet          | Azure Marketi ve Azure portal * |
+| Evet             | Hayır          | Evet          | Yalnızca Azure portal |
+| Hayır              | Hayır          | Evet          | Yalnızca Azure portal |
 |||||
 
 &#42; teklifin özel planı yalnızca Azure portal ile kullanılabilir
@@ -156,7 +156,7 @@ Iş Ortağı Merkezi 'nde [Yeni bir SaaS teklifi oluşturduğunuzda](create-new-
 
 Aşağıdaki örnekte Azure portal bir teklif listesi gösterilmektedir.
 
-![Azure portal bir teklif listesi gösterir.](./media/example-managed-services.png)
+![Azure portal bir teklif listesi gösterir.](./media/example-managed-service-azure-portal.png)
 
 **Arama açıklamaları**
 

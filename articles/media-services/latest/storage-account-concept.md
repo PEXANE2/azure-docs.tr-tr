@@ -10,14 +10,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 01/05/2021
 ms.author: inhenkel
-ms.openlocfilehash: f37b453a294a0d0a7b9a99bfebe8f3eff09e8956
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36593efd4f2583f28dffbb4f5b491fbeec7ba21d
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291203"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916329"
 ---
 # <a name="azure-storage-accounts"></a>Azure Depolama hesapları
 
@@ -27,7 +27,7 @@ Azure 'da medya içeriğini yönetmeye, şifrelemeye, kodlamaya, çözümlemeye 
 
 Media Services hesabı ve onunla ilişkili tüm depolama hesaplarının aynı Azure aboneliğinde olması gerekir. Ek gecikme ve veri çıkışı maliyetlerini önlemek için, depolama hesaplarının Media Services hesabıyla aynı konumda kullanılması önemle önerilir.
 
-Bir **birincil** depolama hesabınız olmalıdır ve Media Services hesabınızla Ilişkili birkaç **İkincil** depolama hesabı olabilir. Media Services, **General-purpose v2** (GPv2) veya **General-purpose v1** (GPv1) hesaplarını destekler. Yalnızca blob hesaplarına **birincil**olarak izin verilmez.
+Bir **birincil** depolama hesabınız olmalıdır ve Media Services hesabınızla Ilişkili birkaç **İkincil** depolama hesabı olabilir. Media Services, **General-purpose v2** (GPv2) veya **General-purpose v1** (GPv1) hesaplarını destekler. Yalnızca blob hesaplarına **birincil** olarak izin verilmez.
 
 En son özellikler ve performans avantajlarından yararlanabilmek için GPv2 kullanmanızı öneririz. Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](../../storage/common/storage-account-overview.md).
 
@@ -54,6 +54,9 @@ Varlıkları bekleyen bir şekilde korumak için, varlıkların depolama tarafı
 |[Depolama istemci tarafı şifrelemesi](../../storage/common/storage-client-side-encryption.md)|Azure depolama tarafından sunulan ve Key Vault ' de müşteri tarafından yönetilen anahtar olan istemci tarafı şifreleme.|Desteklenmez.|
 
 <sup>1</sup> Media Services v3 'de, depolama ŞIFRELEMESI (AES-256 şifrelemesi) yalnızca, varlıklarınız Media Services V2 ile oluşturulduysa, bu da v3 'in mevcut depolama şifreli varlıklarıyla çalıştığı ancak yeni olanların oluşturulmasına izin vermediği durumlarda geriye dönük uyumluluk için desteklenir.
+
+## <a name="double-encryption"></a>Çift şifreleme
+Media Services, Çift şifrelemeyi destekler.  Çift şifreleme hakkında daha fazla bilgi edinmek için bkz. [Azure Çift şifreleme](https://docs.microsoft.com/azure/security/fundamentals/double-encryption).
 
 ## <a name="storage-account-errors"></a>Depolama hesabı hataları
 

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: d0c26255e6d9d35d51390ed2b432b9c5dc9ab2be
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: db29fbda404900c29f85fa876e9427994ee9a093
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862462"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915921"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure dijital TWINS 'de bilinen sorunlar
 
@@ -47,11 +47,11 @@ Bu makalede, Azure dijital TWINS ile ilişkili bilinen sorunlar hakkında bilgi 
 
 ## <a name="issue-with-default-azure-credential-authentication-on-azureidentity-130"></a>Azure 'da varsayılan Azure kimlik bilgisi kimlik doğrulamasıyla sorun. Identity 1.3.0
 
-**Sorun açıklaması:** Azure **[. Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) kitaplığı**'Nın **1.3.0** sürümünü kullanarak Azure dijital TWINS uygulamalarınıza kimlik doğrulama kodu yazarken, bu docs genelinde birçok örnekte kullanılan [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet?view=azure-dotnet&preserve-view=true) yöntemiyle ilgili sorunlarla karşılaşabilirsiniz. Bu, kod kimlik doğrulamaya çalıştığında "Azure. Identity. AuthenticationFailedException: SharedTokenCacheCredential kimlik doğrulaması başarısız oldu" hata yanıtı olarak sunulur.
+**Sorun açıklaması:** **[Azure. Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) kitaplığı**'nın **1.3.0** sürümünü kullanarak kimlik doğrulama kodu yazarken, bazı kullanıcılar bu Azure dijital TWINS belgeleri genelinde birçok örnekte kullanılan [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet?view=azure-dotnet&preserve-view=true) yöntemiyle ilgili sorunlarla karşılaşmıştır. Bu, kod kimlik doğrulamaya çalıştığında "Azure. Identity. AuthenticationFailedException: SharedTokenCacheCredential kimlik doğrulaması başarısız oldu" hata yanıtı olarak sunulur.
 
 | Bu, beni etkiler mi? | Nedeni | Çözüm |
 | --- | --- | --- |
-| DefaultAzureCredential, kimlik doğrulaması içeren birçok belge örneği için kullanılır. DefaultAzureCredential kullanarak kimlik doğrulama kodu yazıyorsanız ve kitaplığın 1.3.0 sürümünü kullanıyorsanız `Azure.Identity` , bu durum sizi etkileyebilir. | Bu sorun, kitaplığın sürüm **1.3.0** ile DefaultAzureCredential kullanılırken size sunulur `Azure.Identity` . | Bu sorunu çözmek için uygulamanızı [1.2.2 sürümünü](https://www.nuget.org/packages/Azure.Identity/1.2.2) kullanacak şekilde değiştirin `Azure.Identity` . Kitaplık sürümünü değiştirdikten sonra, kimlik doğrulamasının beklenen şekilde başarılı olması gerekir. |
+| `DefaultAzureCredential` , bu hizmet için kimlik doğrulaması içeren belge örneklerinin çoğunda kullanılır. Kitaplığı sürüm 1.3.0 ile kullanarak kimlik doğrulama kodu yazıyorsanız `DefaultAzureCredential` `Azure.Identity` ve bu hata iletisini görüyorsanız, bu sizi etkiler. | Bunun nedeni, ile ilgili bazı yapılandırma sorununa neden olur `Azure.Identity` . | Bu `SharedTokenCacheCredential` , şu anda açık olan bu [DefaultAzureCredential sorunu](https://github.com/Azure/azure-sdk/issues/1970) bölümünde açıklandığı gibi, kimlik bilgilerinizin dışında tutulacak bir stratejidir `Azure.Identity` .<br>Başka bir seçenek de Uygulamanızı `Azure.Identity` , [Sürüm 1.2.3](https://www.nuget.org/packages/Azure.Identity/1.2.3)gibi önceki bir sürümünü kullanacak şekilde değiştirmek. Bu, Azure dijital TWINS üzerinde işlevsel bir etkiye sahip değildir ve bu nedenle de kabul edilen bir çözümdür. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

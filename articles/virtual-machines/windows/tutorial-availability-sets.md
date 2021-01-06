@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7fe1c01542df2fcc38982fe2a30f9e94c712eacb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2617308d342be19f74e1f3145a1137fadb04d073
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87065249"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914697"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>Öğretici: Azure PowerShell ile yüksek oranda kullanılabilir sanal makineler oluşturma ve dağıtma
 
@@ -47,7 +47,7 @@ Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i se
 
 Konumdaki donanım, birden çok etki alanına ve hata etki alanına bölünmüştür. **Güncelleştirme etki alanı**, aynı anda yeniden başlatılabilen bir VM grubu ve temel alınan fiziksel donanımdır. Aynı **hata etki alanında** bulunan VM’ler, ortak güç kaynağı ve ağ anahtarıyla birlikte ortak depolama alanını paylaşır.  
 
-[New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset)kullanarak bir kullanılabilirlik kümesi oluşturabilirsiniz. Bu örnekte, hem güncelleştirme hem de hata etki alanlarının sayısı *2* ' dir ve kullanılabilirlik kümesi *myAvailabilitySet*olarak adlandırılır.
+[New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset)kullanarak bir kullanılabilirlik kümesi oluşturabilirsiniz. Bu örnekte, hem güncelleştirme hem de hata etki alanlarının sayısı *2* ' dir ve kullanılabilirlik kümesi *myAvailabilitySet* olarak adlandırılır.
 
 Bir kaynak grubu oluşturun.
 
@@ -75,7 +75,7 @@ Donanım genelinde doğru şekilde dağıtıldığından emin olmak için VM 'Le
 
 [New-azvm](/powershell/module/az.compute/new-azvm)Ile bir VM oluşturduğunuzda, `-AvailabilitySetName` kullanılabilirlik kümesinin adını belirtmek için parametresini kullanın.
 
-İlk olarak, VM için [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) ile bir yönetici kullanıcı adı ve parola ayarlayın:
+İlk olarak, VM için [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true) ile bir yönetici kullanıcı adı ve parola ayarlayın:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
@@ -101,7 +101,7 @@ for ($i=1; $i -le 2; $i++)
 
 İki VM’yi de oluşturup yapılandırmak birkaç dakika sürer. Tamamlandığında, temel alınan donanım arasında dağıtılmış iki sanal makineye sahip olursunuz. 
 
-MyResourceGroupAvailability myAvailabilitySet **kaynak gruplarına**giderek portaldaki kullanılabilirlik kümesine bakarsanız  >  **myResourceGroupAvailability**  >  **myAvailabilitySet**, VM 'lerin iki hata ve güncelleştirme etki alanı arasında nasıl dağıtıldığını görmeniz gerekir.
+MyResourceGroupAvailability myAvailabilitySet **kaynak gruplarına** giderek portaldaki kullanılabilirlik kümesine bakarsanız  >    >  , VM 'lerin iki hata ve güncelleştirme etki alanı arasında nasıl dağıtıldığını görmeniz gerekir.
 
 ![Portaldaki kullanılabilirlik kümesi](./media/tutorial-availability-sets/fd-ud.png)
 

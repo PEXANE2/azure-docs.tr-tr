@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/10/2020
+ms.date: 01/05/2021
 ms.author: memildin
-ms.openlocfilehash: 283dbf152778b5ef58e298444058f619356ef241
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 1e6b66fce6b22dfd12c162d469ce44137c94ab87
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97756118"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916380"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik puanı
 
@@ -72,7 +72,7 @@ Daha sonra, güvenli puanınız Güvenlik Merkezi 'nin Portal sayfalarında aşa
 
 ### <a name="get-your-secure-score-from-the-rest-api"></a>REST API güvenli puanınızı alın
 
-Puanınızı güvenli Puanlama API 'SI (Şu anda önizleme aşamasında) aracılığıyla erişebilirsiniz. API yöntemleri, verileri sorgulama ve zaman içinde güvenli Puanlarınızın kendi raporlama mekanizmanızı oluşturma esnekliğini sağlar. Örneğin, belirli bir aboneliğin Puanını almak için [güvenli puanlar API](/rest/api/securitycenter/securescores) 'sini kullanabilirsiniz. Ayrıca, güvenlik denetimlerini ve aboneliklerinizin geçerli Puanını listelemek için [güvenli puan DENETIMLERI API](/rest/api/securitycenter/securescorecontrols) 'sini de kullanabilirsiniz.
+Puanınızı güvenli Puanlama API 'SI aracılığıyla erişebilirsiniz. API yöntemleri, verileri sorgulama ve zaman içinde güvenli Puanlarınızın kendi raporlama mekanizmanızı oluşturma esnekliğini sağlar. Örneğin, belirli bir aboneliğin Puanını almak için [güvenli puanlar API](/rest/api/securitycenter/securescores) 'sini kullanabilirsiniz. Ayrıca, güvenlik denetimlerini ve aboneliklerinizin geçerli Puanını listelemek için [güvenli puan DENETIMLERI API](/rest/api/securitycenter/securescorecontrols) 'sini de kullanabilirsiniz.
 
 ![API aracılığıyla tek bir güvenli puan alma](media/secure-score-security-controls/single-secure-score-via-api.png)
 
@@ -152,7 +152,7 @@ Bu denetim için en yüksek puan, sistem güncelleştirmelerini Uygula, her zama
 
 ### <a name="calculations---understanding-your-score"></a>Hesaplamalar-puanınızı anlama
 
-|Metric|Formül ve örnek|
+|Ölçüm|Formül ve örnek|
 |-|-|
 |**Güvenlik denetiminin geçerli puanı**|<br>![Güvenlik denetiminin Puanını hesaplama denklemi](media/secure-score-security-controls/secure-score-equation-single-control.png)<br><br>Her bireysel güvenlik denetimi güvenlik puanına katkıda bulunur. Denetim içindeki bir öneriden etkilenen her kaynak, denetimin geçerli puanına doğru katkıda bulunur. Her denetim için geçerli *puan, denetimdeki kaynakların durumunun* ölçüsüdür.<br>![Güvenlik denetiminin geçerli puanı hesaplanırken kullanılan değerleri gösteren araç ipuçları](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>Bu örnekte, sağlıklı ve sağlıksız kaynakların toplamı olduğundan, 6 ' nın en fazla puanı 78 olarak bölünür.<br>6/78 = 0,0769<br>Sağlıklı kaynak sayısına (4) göre çarpılması geçerli puanın sonucunu elde ediyor:<br>0,0769 * 4 = **0,31**<br><br>|
 |**Güvenlik puanı**<br>Tek abonelik|<br>![Aboneliğin güvenli Puanını hesaplama denklemi](media/secure-score-security-controls/secure-score-equation-single-sub.png)<br><br>![Tüm denetimler etkin olan tek abonelik güvenli puanı](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>Bu örnekte, kullanılabilen tüm güvenlik denetimlerine sahip tek bir abonelik vardır (en fazla 60 punto puanı). Puan, olası bir 60 28 noktayı gösterir ve kalan 32 noktaları, güvenlik denetimlerinin "potansiyel puan artışı" biçiminde yansıtılır.<br>![Denetimlerin listesi ve olası puan artışı](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|

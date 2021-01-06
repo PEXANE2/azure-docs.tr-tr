@@ -1,18 +1,21 @@
 ---
 title: Service Fabric Hizmetleri bölümlendirme
-description: Service Fabric durum bilgisi olan hizmetlerin nasıl bölümleneceğini açıklar. Bölümler, veri ve işlem birlikte ölçeklendirilebilmeleri için yerel makinelerde veri depolamayı mümkün bir şekilde sunar.
+description: Durum bilgisiz ve durum bilgisi olan hizmetlerin Service Fabric nasıl bölümleyeceğinizi öğrenin
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d33e7b5ee293cf9dfb49e509bec2e1950033a956
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 199ae9d9844149c1931da638633110f717fe0517
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89005437"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915904"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Partition Service Fabric güvenilir hizmetleri
-Bu makalede, Azure Service Fabric güvenilir Hizmetleri bölümlemeye yönelik temel kavramlara giriş sunulmaktadır. Makalede kullanılan kaynak kodu [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)'da da kullanılabilir.
+Bu makalede, Azure Service Fabric güvenilir Hizmetleri bölümlemeye yönelik temel kavramlara giriş sunulmaktadır. Bölümlendirme, veri ve işlem birlikte ölçeklenebilmesi için yerel makinelerde veri depolamayı mümkün bir şekilde sunar.
+
+> [!TIP]
+> Bu makaledeki kodun [tamamen bir örneği](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions) GitHub 'da bulunabilir.
 
 ## <a name="partitioning"></a>Bölümleme
 Bölümlendirme Service Fabric için benzersiz değil. Aslında, ölçeklenebilir hizmetler oluşturmanın temel bir düzendir. Daha geniş bir anlamda, ölçeklenebilirliği ve performansı geliştirmek için durum (veri) ve işlem süresini daha küçük erişilebilir birimlere bölme kavramı olarak bölümleme hakkında fikir veririz. Bir bölümlemenin iyi bilinen bir biçimi, parçalı olarak da bilinen [veri bölümleniyor][wikipartition].
@@ -348,14 +351,14 @@ Her harf için tek bir bölüme sahip olmak istediğimiz için, her bir harf ken
     
     ![Tarayıcı ekran görüntüsü](./media/service-fabric-concepts-partitioning/samplerunning.png)
 
-Örneğin tüm kaynak kodu [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)' da kullanılabilir.
+Bu makalede kullanılan kodun tamamen çözümü şurada bulunabilir: https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions .
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Service Fabric kavramları hakkında daha fazla bilgi için aşağıdakilere bakın:
+Service Fabric hizmetleri hakkında daha fazla bilgi edinin:
 
+* [Service Fabric ile bağlanma ve hizmetlerle iletişim kurma](service-fabric-connect-and-communicate-with-services.md)
 * [Service Fabric hizmetlerinin kullanılabilirliği](service-fabric-availability-services.md)
 * [Service Fabric Hizmetleri ölçeklenebilirliği](service-fabric-concepts-scalability.md)
-* [Service Fabric uygulamalar için kapasite planlaması](service-fabric-capacity-planning.md)
 
 [wikipartition]: https://en.wikipedia.org/wiki/Partition_(database)
 

@@ -9,12 +9,13 @@ ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 761b031916dd9ead71f5be6a6887208a1f200f58
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 385a67e117bf0cf9508b81d014e3accac4725744
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966143"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914918"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>X. 509.440 sertifikalarını kullanarak bir IoT Edge cihazı oluşturma ve sağlama
 
@@ -78,7 +79,7 @@ Tek bir IoT Edge cihaz için DPS 'de tek bir kayıt oluşturmak üzere oluşturu
 
 Birden çok IoT Edge cihaz sağlamak istiyorsanız, bir sonraki bölümdeki adımları izleyin, [BIR DPS grup kaydı oluşturun](#create-a-dps-group-enrollment).
 
-DPS 'de bir kayıt oluşturduğunuzda, bir **Ilk cihaz Ikizi durumu**bildirme fırsatına sahip olursunuz. Device ikizi 'da, bir cihaz için gereken bölge, ortam, konum veya cihaz türü gibi herhangi bir ölçüme cihazları gruplamak için Etiketler ayarlayabilirsiniz. Bu Etiketler [otomatik dağıtımlar](how-to-deploy-at-scale.md)oluşturmak için kullanılır.
+DPS 'de bir kayıt oluşturduğunuzda, bir **Ilk cihaz Ikizi durumu** bildirme fırsatına sahip olursunuz. Device ikizi 'da, bir cihaz için gereken bölge, ortam, konum veya cihaz türü gibi herhangi bir ölçüme cihazları gruplamak için Etiketler ayarlayabilirsiniz. Bu Etiketler [otomatik dağıtımlar](how-to-deploy-at-scale.md)oluşturmak için kullanılır.
 
 Cihaz sağlama hizmetindeki kayıtlar hakkında daha fazla bilgi için bkz. cihaz kayıtlarını [yönetme](../iot-dps/how-to-manage-enrollments.md).
 
@@ -87,11 +88,11 @@ Cihaz sağlama hizmetindeki kayıtlar hakkında daha fazla bilgi için bkz. ciha
 
 1. [Azure Portal](https://portal.azure.com), IoT Hub cihaz sağlama hizmeti örneğinize gidin.
 
-1. **Ayarlar**altında kayıtları **Yönet**' i seçin.
+1. **Ayarlar** altında kayıtları **Yönet**' i seçin.
 
 1. **Bireysel kayıt Ekle** ' yi seçin, ardından kaydı yapılandırmak için aşağıdaki adımları izleyin:  
 
-   * **Mekanizma**: **X. 509.440**öğesini seçin.
+   * **Mekanizma**: **X. 509.440** öğesini seçin.
 
    * **Birincil sertifika. pek veya. cer dosyası**: ortak dosyayı cihaz kimliği sertifikasından karşıya yükleyin. Bir test sertifikası oluşturmak için betikleri kullandıysanız aşağıdaki dosyayı seçin:
 
@@ -103,7 +104,7 @@ Cihaz sağlama hizmetindeki kayıtlar hakkında daha fazla bilgi için bkz. ciha
 
    * **Bu cihazın atanabileceği IoT Hub 'Larını seçin**: Cihazınızı bağlamak Istediğiniz bağlantılı IoT Hub 'ını seçin. Birden çok hub seçebilirsiniz ve bu cihaz, seçilen ayırma ilkesine göre bu cihazdan birine atanır.
 
-   * **Ilk cihaz Ikizi durumu**: isterseniz, cihaza ikizi eklenecek bir etiket değeri ekleyin. Otomatik dağıtım için cihaz gruplarını hedeflemek üzere etiketleri kullanabilirsiniz. Örnek:
+   * **Ilk cihaz Ikizi durumu**: isterseniz, cihaza ikizi eklenecek bir etiket değeri ekleyin. Otomatik dağıtım için cihaz gruplarını hedeflemek üzere etiketleri kullanabilirsiniz. Örneğin:
 
       ```json
       {
@@ -116,7 +117,7 @@ Cihaz sağlama hizmetindeki kayıtlar hakkında daha fazla bilgi için bkz. ciha
       }
       ```
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 Bu cihaz için bir kayıt mevcut olduğuna göre, IoT Edge çalışma zamanı cihazı yükleme sırasında otomatik olarak sağlayabilir. IoT Edge cihazınızı ayarlamak için [IoT Edge çalışma zamanı 'Nı yüklemeye](#install-the-iot-edge-runtime) devam edin.
 
@@ -126,7 +127,7 @@ Birden çok IoT Edge cihaz için DPS 'de bir grup kaydı oluşturmak için oluş
 
 Bunun yerine tek bir IoT Edge cihaz sağlamak istiyorsanız, önceki bölümdeki adımları izleyin, [BIR DPS bireysel kaydı oluşturun](#create-a-dps-individual-enrollment).
 
-DPS 'de bir kayıt oluşturduğunuzda, bir **Ilk cihaz Ikizi durumu**bildirme fırsatına sahip olursunuz. Device ikizi 'da, bir cihaz için gereken bölge, ortam, konum veya cihaz türü gibi herhangi bir ölçüme cihazları gruplamak için Etiketler ayarlayabilirsiniz. Bu Etiketler [otomatik dağıtımlar](how-to-deploy-at-scale.md)oluşturmak için kullanılır.
+DPS 'de bir kayıt oluşturduğunuzda, bir **Ilk cihaz Ikizi durumu** bildirme fırsatına sahip olursunuz. Device ikizi 'da, bir cihaz için gereken bölge, ortam, konum veya cihaz türü gibi herhangi bir ölçüme cihazları gruplamak için Etiketler ayarlayabilirsiniz. Bu Etiketler [otomatik dağıtımlar](how-to-deploy-at-scale.md)oluşturmak için kullanılır.
 
 ### <a name="verify-your-root-certificate"></a>Kök sertifikanızı doğrulama
 
@@ -142,7 +143,7 @@ Bir kayıt grubu oluşturduğunuzda, doğrulanmış bir sertifika kullanma seçe
 
    Tanıtım sertifikalarını kullanıyorsanız, sertifikayı karşıya yükleyin `<wrkdir>/certs/azure-iot-test-only.root.ca.cert.pem` .
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 1. Sertifikanızın artık **Sertifikalar** sayfasında listelenmesi gerekir. Sertifika ayrıntılarını açmak için seçin.
 
@@ -172,15 +173,15 @@ Cihaz sağlama hizmetindeki kayıtlar hakkında daha fazla bilgi için bkz. ciha
 
 1. [Azure Portal](https://portal.azure.com), IoT Hub cihaz sağlama hizmeti örneğinize gidin.
 
-1. **Ayarlar**altında kayıtları **Yönet**' i seçin.
+1. **Ayarlar** altında kayıtları **Yönet**' i seçin.
 
 1. Kayıt **grubu Ekle** ' yi seçin, ardından kaydı yapılandırmak için aşağıdaki adımları izleyin:
 
    * **Grup adı**: Bu grup kaydı için hatırlayabileceğiniz bir ad sağlayın.
 
-   * **Kanıtlama türü**: **sertifika**seçin.
+   * **Kanıtlama türü**: **sertifika** seçin.
 
-   * **IoT Edge cihaz**: **doğru**öğesini seçin. Bir grup kaydı için tüm cihazların IoT Edge cihaz olması veya hiçbirinin olmaması gerekir.
+   * **IoT Edge cihaz**: **doğru** öğesini seçin. Bir grup kaydı için tüm cihazların IoT Edge cihaz olması veya hiçbirinin olmaması gerekir.
 
    * **Sertifika türü**: yalnızca bu kayıt için yeni bir dosya yüklemek ISTIYORSANıZ, DPS ile depolanan DOĞRULANMıŞ bir CA sertifikanız varsa **CA Sertifikası** ' nı veya **Ara Sertifika** ' yı seçin.
 
@@ -188,7 +189,7 @@ Cihaz sağlama hizmetindeki kayıtlar hakkında daha fazla bilgi için bkz. ciha
 
    * **Bu cihazın atanabileceği IoT Hub 'Larını seçin**: Cihazınızı bağlamak Istediğiniz bağlantılı IoT Hub 'ını seçin. Birden çok hub seçebilirsiniz ve bu cihaz, seçilen ayırma ilkesine göre bu cihazdan birine atanır.
 
-   * **Ilk cihaz Ikizi durumu**: isterseniz, cihaza ikizi eklenecek bir etiket değeri ekleyin. Otomatik dağıtım için cihaz gruplarını hedeflemek üzere etiketleri kullanabilirsiniz. Örnek:
+   * **Ilk cihaz Ikizi durumu**: isterseniz, cihaza ikizi eklenecek bir etiket değeri ekleyin. Otomatik dağıtım için cihaz gruplarını hedeflemek üzere etiketleri kullanabilirsiniz. Örneğin:
 
       ```json
       {
@@ -201,11 +202,11 @@ Cihaz sağlama hizmetindeki kayıtlar hakkında daha fazla bilgi için bkz. ciha
       }
       ```
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 Bu cihaz için bir kayıt mevcut olduğuna göre, IoT Edge çalışma zamanı cihazı yükleme sırasında otomatik olarak sağlayabilir. IoT Edge cihazınızı ayarlamak için sonraki bölüme geçin.
 
-## <a name="install-the-iot-edge-runtime"></a>IoT Edge çalışma zamanını yükler
+## <a name="install-the-iot-edge-runtime"></a>IoT Edge çalışma zamanını yükleme
 
 IoT Edge çalışma zamanı tüm IoT Edge cihazlarına dağıtılır. Bileşenleri kapsayıcılarda çalıştırılır ve kenarda kod çalıştırabilmeniz için cihaza ek kapsayıcılar dağıtmanıza izin verir.
 
@@ -251,7 +252,7 @@ Aşağıdaki bilgileri hazırlayın:
 
 1. , Ve değerlerini, `scope_id` `identity_cert` `identity_pk` DPS ve cihaz bilgileriniz ile güncelleştirin.
 
-   X. 509.952 sertifikasını ve anahtar bilgilerini config. YAML dosyasına eklediğinizde, yolların dosya URI 'Leri olarak sağlanması gerekir. Örnek:
+   X. 509.952 sertifikasını ve anahtar bilgilerini config. YAML dosyasına eklediğinizde, yolların dosya URI 'Leri olarak sağlanması gerekir. Örneğin:
 
    `file:///<path>/identity_certificate_chain.pem`
    `file:///<path>/identity_key.pem`

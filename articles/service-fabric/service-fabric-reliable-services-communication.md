@@ -4,12 +4,12 @@ description: Hizmetlere yönelik dinleyicileri açmak, uç noktaları çözümle
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e7dc10055633c8e6dd2c645f28b774d5d5f3ac3f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 3436d29446e963faea9bda47f5a5247b7de7d859
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574335"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912623"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>Reliable Services iletişim API 'Lerini kullanma
 Platform olarak Azure Service Fabric, hizmetler arasındaki iletişim hakkında tamamen bağımsızdır. Her protokol ve yığın, UDP 'den HTTP 'ye kadar kabul edilebilir. Hizmetlerin nasıl iletişim kurması gerektiğini seçmek için hizmet geliştiricisi 'nin bir daha vardır. Reliable Services uygulama çerçevesi, yerleşik iletişim yığınlarının yanı sıra özel iletişim bileşenlerinizi oluşturmak için kullanabileceğiniz API 'Ler sağlar.
@@ -206,7 +206,7 @@ ServicePartitionResolver resolver = ServicePartitionResolver.GetDefault();
 FabricServicePartitionResolver resolver = FabricServicePartitionResolver.getDefault();
 ```
 
-Farklı bir kümedeki hizmetlere bağlanmak için bir küme ağ geçidi uç noktası kümesiyle bir ServicePartitionResolver oluşturulabilir. Ağ Geçidi uç noktalarının aynı kümeye bağlanmak için yalnızca farklı uç noktalar olduğunu unutmayın. Örnek:
+Farklı bir kümedeki hizmetlere bağlanmak için bir küme ağ geçidi uç noktası kümesiyle bir ServicePartitionResolver oluşturulabilir. Ağ Geçidi uç noktalarının aynı kümeye bağlanmak için yalnızca farklı uç noktalar olduğunu unutmayın. Örneğin:
 
 ```csharp
 ServicePartitionResolver resolver = new  ServicePartitionResolver("mycluster.cloudapp.azure.com:19000", "mycluster.cloudapp.azure.com:19001");
@@ -288,7 +288,7 @@ public class MyCommunicationClient implements CommunicationClient {
 }
 ```
 
-İstemci fabrikası, birincil olarak iletişim istemcileri oluşturmaktan sorumludur. HTTP istemcisi gibi kalıcı bir bağlantı bulundurmeyen istemciler için, yalnızca fabrika 'nin istemciyi oluşturması ve döndürmesi gerekir. Bazı ikili protokoller gibi kalıcı bir bağlantı sağlayan diğer protokoller de, bağlantının yeniden oluşturulması gerekip gerekmediğini belirleyebilmek için fabrika tarafından doğrulanması gerekir.  
+İstemci fabrikası, birincil olarak iletişim istemcileri oluşturmaktan sorumludur. HTTP istemcisi gibi kalıcı bir bağlantı bulundurmeyen istemciler için, yalnızca fabrika 'nin istemciyi oluşturması ve döndürmesi gerekir. Bazı ikili protokoller gibi kalıcı bir bağlantı sağlayan diğer protokoller, `ValidateClient(string endpoint, MyCommunicationClient client)` bağlantının yeniden oluşturulması gerekip gerekmediğini tespit etmek için fabrika tarafından da doğrulanıp () doğrulanması gerekir.  
 
 ```csharp
 public class MyCommunicationClientFactory : CommunicationClientFactoryBase<MyCommunicationClient>

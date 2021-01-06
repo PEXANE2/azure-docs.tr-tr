@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 776db820ffb1a216c3f6f7e9c6d6b8d90913a063
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 9e0102cdb7e8494a8540b1970932f0d9f7f39fde
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881472"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912926"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>MLflow ve Azure Machine Learning ile Azure Databricks ML denemeleri izleme (Önizleme)
 
@@ -24,7 +24,7 @@ Bu makalede, Azure Databricks (ADB) denemeleri, MLflow ve Azure Machine Learning
 
 [Mlflow](https://www.mlflow.org) , Machine Learning denemeleri 'in yaşam döngüsünü yönetmeye yönelik açık kaynaklı bir kitaplıktır. MLFlow Izlemesi, öğreticinizi günlüğe kaydeden ve izleyen bir MLflow bileşenidir. [Azure Databricks ve MLflow](/azure/databricks/applications/mlflow/)hakkında daha fazla bilgi edinin. 
 
-Daha fazla MLflow ve Azure Machine Learning işlevselliği tümleştirmeleri için bkz. [deneme çalıştırmalarını izleyin ve MLflow ile Azure Machine Learning uç noktalar oluşturun](how-to-use-mlflow.md) .
+Daha fazla MLflow ve Azure Machine Learning işlevselliği tümleştirmeleri için bkz. [MLflow ve Azure Machine Learning deneme çalıştırmalarını izleyin](how-to-use-mlflow.md) .
 
 >[!NOTE]
 > Açık kaynak kitaplığı olarak MLflow sık sık değişir. Bu nedenle, Azure Machine Learning ve MLflow tümleştirmesiyle sunulan işlevlerin Microsoft tarafından tam olarak desteklenmeden bir önizleme olarak değerlendirilmesi gerekir.
@@ -32,7 +32,7 @@ Daha fazla MLflow ve Azure Machine Learning işlevselliği tümleştirmeleri iç
 > [!TIP]
 > Bu belgedeki bilgiler öncelikli olarak, model eğitimi sürecini izlemek isteyen veri bilimcileri ve geliştiricileri içindir. Kotalar, tamamlanan eğitim çalıştırmaları veya tamamlanmış model dağıtımları gibi Azure Machine Learning kaynak kullanımını ve olayları izlemek isteyen bir yöneticiyseniz, bkz. [izleme Azure Machine Learning](monitor-azure-machine-learning.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * `azureml-mlflow` paketini yükleyin. 
     * Bu paket `azureml-core` , çalışma alanınıza erişmek Için MLflow bağlantısını sağlayan [Azure Machine Learning Python SDK 'sını](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)otomatik olarak getirir.
@@ -181,8 +181,8 @@ ML modelleriniz için bir uç nokta oluşturmaya hazırsanız. Dağıtım yapabi
 Azure Machine Learning çalışma alanınıza bir model dağıtmak için [mlflow. azureml. deploy](https://www.mlflow.org/docs/latest/python_api/mlflow.azureml.html#mlflow.azureml.deploy) API 'sinden yararlanabilirsiniz. Modeli, [MLflow ile kaydet](#register-models-with-mlflow) bölümünde açıklandığı gibi Azure Databricks çalışma alanına kaydettirdiğiniz takdirde, `model_name` modelin Azure Machine Learning çalışma alanına kaydedileceği parametreyi belirtin. 
 
 Azure Databricks çalıştırmaları aşağıdaki uç noktalara dağıtılabilir. 
-* [Azure Container örneği](how-to-deploy-models-with-mlflow.md#deploy-to-aci)
-* [Azure Kubernetes Service](how-to-deploy-models-with-mlflow.md#deploy-to-aks)
+* [Azure Container örneği](how-to-deploy-mlflow-models.md#deploy-to-azure-container-instance-aci)
+* [Azure Kubernetes Service](how-to-deploy-mlflow-models.md#deploy-to-azure-kubernetes-service-aks)
 
 ### <a name="deploy-models-to-adb-endpoints-for-batch-scoring"></a>Toplu Puanlama için ADB uç noktalarına modeller dağıtın 
 
@@ -232,7 +232,7 @@ display(preds)
 [Azure Machine Learning Not defterlerindeki Mlflow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/track-and-monitor-experiments/using-mlflow) , bu makalede sunulan kavramları gösterir ve genişletir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-
+* [MLflow modellerini bir Azure Web hizmeti olarak dağıtın](how-to-deploy-mlflow-models.md). 
 * [Modellerinizi yönetin](concept-model-management-and-deployment.md).
-* [Deneme çalıştırmalarını izleyin ve MLflow ve Azure Machine Learning uç noktaları oluşturun](how-to-use-mlflow.md). 
+* [MLflow ve Azure Machine Learning ile deneme çalıştırmalarını izleyin](how-to-use-mlflow.md). 
 * [Azure Databricks ve MLflow](/azure/databricks/applications/mlflow/)hakkında daha fazla bilgi edinin.

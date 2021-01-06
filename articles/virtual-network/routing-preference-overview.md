@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/02/2020
 ms.author: mnayak
-ms.openlocfilehash: c1c2c5f27143be7fc10269c948bee9d5465d565a
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 656f8a0e0530a20807fc8fddd4cd96d1d955c8ac
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530451"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912708"
 ---
 # <a name="what-is-routing-preference-preview"></a>Yönlendirme tercihi nedir (Önizleme)?
 
@@ -72,11 +72,6 @@ Depolama için birincil uç noktalar her zaman **Microsoft Global ağını** kul
 ## <a name="pricing"></a>Fiyatlandırma
 Her iki seçenek arasındaki fiyat farkı, Internet çıkış veri aktarımı fiyatlandırmasına yansıtılır. **Microsoft Global Network** veri aktarımı fiyatı üzerinden yönlendirme, geçerli internet çıkış fiyatıyla aynı. En son fiyatlandırma bilgileri için [Azure bant genişliği fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/bandwidth/) ziyaret edin. 
 
-## <a name="availability"></a>Kullanılabilirlik
-
-Yönlendirme tercihi desteği, internet çıkış-Kuzey Avrupa, Batı Avrupa, Fransa Güney, UK Güney, Doğu ABD, Orta Kuzey ABD, Orta Güney ABD, Batı ABD, Orta Batı ABD, Güneydoğu Asya, Almanya Orta Batı, İsviçre Batı, Japonya Doğu ve Japonya Batı için genel bir IP kullanan sanal makine ve internet 'e yönelik yük dengeleyici gibi hizmetler için aşağıdaki bölgelerde kullanılabilir.
-
-Depolama hesabı için yönlendirme tercihi desteği, aşağıdaki Azure bölgelerinde bulunur-Orta Kuzey ABD, Orta Batı ABD, Orta Güney ABD, Doğu ABD, Batı ABD, Kuzey Avrupa, Fransa Güney, Almanya Orta Batı, İsviçre Batı, Güney Doğu Asya, Japonya Doğu ve Japonya Batı.
 ## <a name="limitations"></a>Sınırlamalar
 
 * Yönlendirme tercihi yalnızca standart genel IP adresi SKU 'SU ile uyumludur. Temel genel IP adresi SKU 'SU desteklenmiyor.
