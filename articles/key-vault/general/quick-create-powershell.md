@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: quickstart
 ms.date: 12/08/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c3407b9539047b5c683f304549977eace7b57341
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 73d247464f167040c6f7129bdf7014b877317fc5
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779014"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936274"
 ---
 # <a name="quickstart-create-a-key-vault-using-powershell"></a>Hızlı başlangıç: PowerShell kullanarak bir Anahtar Kasası oluşturma
 
@@ -78,4 +78,5 @@ Bu hızlı başlangıçta Azure PowerShell kullanarak bir Key Vault oluşturdunu
 
 - [Azure Key Vault genel bakışını](overview.md) okuyun
 - [Azure PowerShell Key Vault cmdlet 'lerine](/powershell/module/az.keyvault/) yönelik başvuruya bakın
-- [En iyi uygulamaları](best-practices.md) gözden geçirin Azure Key Vault
+- [Azure Key Vault güvenliğine genel bakış](security-overview.md) konusunu gözden geçirin
+

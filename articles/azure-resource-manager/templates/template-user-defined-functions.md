@@ -3,12 +3,12 @@ title: Şablonlarda Kullanıcı tanımlı işlevler
 description: Bir Azure Resource Manager şablonunda (ARM şablonu) Kullanıcı tanımlı işlevlerin nasıl tanımlanacağını ve kullanılacağını açıklar.
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 12199aca788438e4558ed2c607b866f0dc723e2a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: f428fa3bc827af3820ad9f928f4f92b881c9c84c
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436972"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934688"
 ---
 # <a name="user-defined-functions-in-arm-template"></a>ARM şablonunda Kullanıcı tanımlı işlevler
 
@@ -44,7 +44,7 @@ Bu makalede, Azure Resource Manager şablonunuzda (ARM şablonu) Kullanıcı tan
 
 ## <a name="use-the-function"></a>İşlevini kullanma
 
-Aşağıdaki örnek, Kullanıcı tanımlı bir işlev içeren bir şablonu gösterir. Bir depolama hesabı için benzersiz bir ad almak üzere bu işlevi kullanır. Şablon, işleve parametre olarak geçen **storageNamePrefix** adlı bir parametreye sahiptir.
+Aşağıdaki örnek, Kullanıcı tanımlı bir işlev içeren bir şablonu gösterir. Bir depolama hesabı için benzersiz bir ad almak üzere bu işlevi kullanır. Şablon, `storageNamePrefix` işlevine parametre olarak geçen adlı bir parametreye sahiptir.
 
 ```json
 {

@@ -3,12 +3,12 @@ title: Azure Işlevlerinde tüketim planı maliyetlerini tahmin etme
 description: İşlev uygulamanızı Azure 'da bir tüketim planında çalıştırırken tabi olabilecek maliyetleri daha iyi tahmin etme hakkında bilgi edinin.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 58082e03c1416848e9aa1e97308bed1ceaa67295
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 430804d478df718f51ae1da9adb6693f597157a9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168129"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934892"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Tüketim planı maliyetlerini tahmin etme
 
@@ -16,9 +16,9 @@ Azure Işlevleri 'nde çalışan bir uygulama için şu anda üç tür barındı
 
 | Planlama | Description |
 | ---- | ----------- |
-| [**Mine**](functions-scale.md#consumption-plan) | Yalnızca işlev uygulamanızın çalıştırıldığı zaman ücretlendirilirsiniz. Bu plan, abonelik bazında [ücretsiz]bir[fiyatlandırma sayfası] içerir.|
-| [**Premium**](functions-scale.md#premium-plan) | Tüketim planıyla aynı özellikleri ve ölçeklendirme mekanizmasını, ancak gelişmiş performans ve VNET erişimi sağlar. Maliyet, seçtiğiniz fiyatlandırma katmanına göre belirlenir. Daha fazla bilgi için bkz. [Azure Işlevleri Premium planı](functions-premium-plan.md). |
-| [**Adanmış (App Service)**](functions-scale.md#app-service-plan) <br/>(temel katman veya daha yüksek) | Adanmış VM 'lerde veya yalıtımda çalıştırmanız gerektiğinde, özel görüntüleri kullanın veya fazla App Service planı kapasitenizi kullanmak isteyebilirsiniz. [Düzenli App Service planı faturalandırmasını](https://azure.microsoft.com/pricing/details/app-service/)kullanır. Maliyet, seçtiğiniz fiyatlandırma katmanına göre belirlenir.|
+| [**Tüketim**](consumption-plan.md) | Yalnızca işlev uygulamanızın çalıştırıldığı zaman ücretlendirilirsiniz. Bu plan, abonelik bazında [ücretsiz]bir[fiyatlandırma sayfası] içerir.|
+| [**Premium**](functions-premium-plan.md) | Tüketim planıyla aynı özellikleri ve ölçeklendirme mekanizmasını, ancak gelişmiş performans ve VNET erişimi sağlar. Maliyet, seçtiğiniz fiyatlandırma katmanına göre belirlenir. Daha fazla bilgi için bkz. [Azure Işlevleri Premium planı](functions-premium-plan.md). |
+| [**Adanmış (App Service)**](dedicated-plan.md) <br/>(temel katman veya daha yüksek) | Adanmış VM 'lerde veya yalıtımda çalıştırmanız gerektiğinde, özel görüntüleri kullanın veya fazla App Service planı kapasitenizi kullanmak isteyebilirsiniz. [Düzenli App Service planı faturalandırmasını](https://azure.microsoft.com/pricing/details/app-service/)kullanır. Maliyet, seçtiğiniz fiyatlandırma katmanına göre belirlenir.|
 
 İşlev performansınızı ve maliyet gereksinimlerinizi en iyi şekilde destekleyen planı seçtiniz. Daha fazla bilgi için bkz. [Azure işlevleri ölçeklendirme ve barındırma](functions-scale.md).
 
@@ -28,7 +28,7 @@ Dayanıklı İşlevler, bir tüketim planında da çalıştırılabilir. Dayanı
 
 ## <a name="consumption-plan-costs"></a>Tüketim planı maliyetleri
 
-Tek bir işlev yürütmenin yürütme *ücreti* *GB saniye*cinsinden ölçülür. Yürütme maliyeti, bellek kullanımını yürütme süresi ile birleştirerek hesaplanır. Daha fazla bellek tüketen bir işlev olduğu gibi daha uzun maliyetler için çalışan bir işlev. 
+Tek bir işlev yürütmenin yürütme *ücreti* *GB saniye* cinsinden ölçülür. Yürütme maliyeti, bellek kullanımını yürütme süresi ile birleştirerek hesaplanır. Daha fazla bellek tüketen bir işlev olduğu gibi daha uzun maliyetler için çalışan bir işlev. 
 
 İşlev tarafından kullanılan bellek miktarının sabit kaldığından bir durum düşünün. Bu durumda, maliyeti hesaplamak basit çarpma olur. Örneğin, işlevinizin 3 saniye boyunca 0,5 GB tükettiğini varsayalım. Ardından yürütme maliyeti olur `0.5GB * 3s = 1.5 GB-seconds` . 
 
@@ -63,7 +63,7 @@ Tüketim planında çalışan işlevler için toplam maliyet, işlevlerinizin y�
 
 ## <a name="viewing-cost-related-data"></a>Maliyetle ilgili verileri görüntüleme
 
-[Faturanızda](../cost-management-billing/understand/download-azure-invoice.md), **Toplam yürütme-Işlev** ve **yürütme süresi-işlevlerinin**maliyet ile ilgili verilerini, gerçek fatura maliyetleriyle birlikte görüntüleyebilirsiniz. Ancak, bu fatura verileri geçmiş bir fatura dönemi için aylık bir topladır. 
+[Faturanızda](../cost-management-billing/understand/download-azure-invoice.md), **Toplam yürütme-Işlev** ve **yürütme süresi-işlevlerinin** maliyet ile ilgili verilerini, gerçek fatura maliyetleriyle birlikte görüntüleyebilirsiniz. Ancak, bu fatura verileri geçmiş bir fatura dönemi için aylık bir topladır. 
 
 ### <a name="function-app-level-metrics"></a>İşlev uygulama düzeyi ölçümleri
 
@@ -75,7 +75,7 @@ Tüketim planı işlev uygulamalarınızın maliyet ile ilgili verilerini grafik
 
 1. **Arama Hizmetleri, kaynaklar ve docs** 'daki [Azure Portal] üst kısmında, `monitor` **Hizmetler**' in altında **izleme** ' yi arayın ve seçin.
 
-1. Sol tarafta **ölçümler**' i seçin  >  **Select a resource**ve ardından işlev uygulamanızı seçmek için görüntünün altındaki ayarları kullanın.
+1. Sol tarafta **ölçümler**' i seçin  >  ve ardından işlev uygulamanızı seçmek için görüntünün altındaki ayarları kullanın.
 
     ![İşlev uygulaması kaynağını seçin](media/functions-consumption-costing/select-a-resource.png)
 
@@ -89,7 +89,7 @@ Tüketim planı işlev uygulamalarınızın maliyet ile ilgili verilerini grafik
 
 1. İşlev uygulamanızı izlenecek kaynak olarak seçmek için **Uygula** ' yı seçin.
 
-1. **Ölçüm**'Den, **toplama**için **işlev yürütme sayısı** ve **toplamı** ' nı seçin. Bu, seçilen dönemdeki yürütme sayılarının toplamını grafiğe ekler.
+1. **Ölçüm**'Den, **toplama** için **işlev yürütme sayısı** ve **toplamı** ' nı seçin. Bu, seçilen dönemdeki yürütme sayılarının toplamını grafiğe ekler.
 
     ![Grafiğe eklemek için bir işlevler uygulama ölçümü tanımlayın](media/functions-consumption-costing/monitor-metrics-add-metric.png)
 
@@ -103,7 +103,7 @@ Yürütme birimlerinin sayısı, yürütme sayısından çok daha fazla olduğu 
 
 Bu grafik `Function Execution Units` , MB cinsinden ölçülen, iki saatlik bir dönemde tüketilen toplam 1.110.000.000 sayısını gösterir. GB saniyeye dönüştürmek için 1024000 ile bölün. Bu örnekte, işlev uygulaması `1110000000 / 1024000 = 1083.98` GB-saniye tüketilebilir. Bu değeri alabilir ve [işlevler fiyatlandırma sayfası][fiyatlandırma sayfasındaki]geçerli yürütme süresi fiyatına göre çarpıp, size bu iki saatin maliyetini sağlayan, size herhangi bir ücretsiz yürütme süresi verdiğini kabul eden bir ücret verir. 
 
-#### <a name="azure-cli"></a>Azure CLI’si
+#### <a name="azure-cli"></a>Azure CLI
 
 [Azure CLI](/cli/azure/) , ölçümleri almak için komutlar içerir. CLı 'yi yerel bir komut ortamından veya [Azure Cloud Shell](../cloud-shell/overview.md)kullanarak doğrudan portaldan kullanabilirsiniz. Örneğin, aşağıdaki [az Monitor ölçümleri List](/cli/azure/monitor/metrics#az-monitor-metrics-list) komutu, daha önce kullanılan aynı zaman dilimine göre saatlik verileri döndürür.
 
@@ -208,4 +208,4 @@ Daha önce yapmadıysanız, [işlev uygulamanızda Application Insights etkinle�
 > [İşlev uygulamalarını Izleme hakkında daha fazla bilgi edinin](functions-monitoring.md)
 
 [fiyatlandırma sayfası]:https://azure.microsoft.com/pricing/details/functions/
-[Azure portalı]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

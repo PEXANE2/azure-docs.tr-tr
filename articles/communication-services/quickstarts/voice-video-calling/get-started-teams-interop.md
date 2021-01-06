@@ -1,5 +1,5 @@
 ---
-title: Azure Iletişim hizmetlerinde takımlar birlikte çalışabilirliği ile çalışmaya başlama
+title: Hızlı başlangıç-Azure Iletişim hizmetlerinde takımlar birlikte çalışabilirliği
 titleSuffix: An Azure Communication Services quickstart
 description: Bu hızlı başlangıçta, SDK 'Yı çağıran Azure Iletişimi ile bir takım toplantısına nasıl katılacağınızı öğreneceksiniz.
 author: matthewrobertson
@@ -7,12 +7,12 @@ ms.author: chpalm
 ms.date: 10/10/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: a51833088ad10fc261405d350bb8d0ba61cbcb66
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 48b9e1139ecae3deed513c954bf4faa7022a88a1
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114653"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936694"
 ---
 # <a name="quickstart-join-your-calling-app-to-a-teams-meeting"></a>Hızlı başlangıç: çağıran uygulamanızı bir takımlar toplantısı 'na ekleme
 

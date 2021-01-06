@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: fcbe2101f85678414d4496977d9a0a1d41a71ea5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 1c63639321966cbb73f5c47524f408d17ba46c3a
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517506"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936575"
 ---
 # <a name="tutorial-configure-zscaler-two-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Zscaler 'ı yapılandırma
 
@@ -25,7 +25,7 @@ Bu öğreticide, Kullanıcı ve/veya grupları Zscaler 'ya otomatik olarak sağl
 > [!NOTE]
 > Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti 'nde oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne olduğu ve nasıl çalıştığı hakkında önemli ayrıntılar ve sık sorulan soruların yanıtları için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen adımları tamamlayabilmeniz için şunlar gerekir:
 
@@ -52,7 +52,7 @@ Bir uygulama eklemek için pencerenin üst kısmındaki **Yeni uygulama** ' yı 
 
 ![Yeni uygulama seçin](common/add-new-app.png)
 
-Arama kutusuna **Zscaler Two**yazın. Sonuçlarda **Zscaler** öğesini seçin ve ardından **Ekle**' yi seçin.
+Arama kutusuna **Zscaler Two** yazın. Sonuçlarda **Zscaler** öğesini seçin ve ardından **Ekle**' yi seçin.
 
 ![Sonuçlar listesi](common/search-new-app.png)
 
@@ -75,6 +75,9 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve grup ata
 > [!TIP]
 > Ayrıca, Zscaler için SAML tabanlı çoklu oturum açmayı etkinleştirmek isteyebilirsiniz. Bunu yaparsanız, [Zscaler iki çoklu oturum açma öğreticisindeki](zscaler-two-tutorial.md)yönergeleri izleyin. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak iki özellik birbirini tamamlayabilirler.
 
+> [!NOTE]
+> Kullanıcılar ve gruplar sağlandığında veya sağlanmak istendiğinde, grup üyeliklerinin düzgün şekilde güncelleştirildiğinden emin olmak için düzenli aralıklarla sağlamayı yeniden başlatmanızı öneririz. Yeniden başlatma işlemi yapıldığında, hizmetimizi tüm grupları yeniden değerlendirmeye ve üyelikleri güncelleştirmeye zorlar. 
+
 1. [Azure Portal](https://portal.azure.com) oturum açın ve **Kurumsal uygulamalar**  >  **tüm uygulamalar**  >  **Zscaler**' ı seçin:
 
     ![Kurumsal uygulamalar](common/enterprise-applications.png)
@@ -87,13 +90,13 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve grup ata
 
     ![Zscaler Iki sağlama](./media/zscaler-two-provisioning-tutorial/provisioning-tab.png)
 
-4. **Sağlama modunu** **Otomatik**olarak ayarlayın:
+4. **Sağlama modunu** **Otomatik** olarak ayarlayın:
 
     ![Sağlama modunu ayarlama](./media/zscaler-two-provisioning-tutorial/provisioning-credentials.png)
 
 5. **Yönetici kimlik bilgileri** bölümünde, bir sonraki adımda açıklandığı gibi Zscaler hesabınızın **kiracı URL 'Sini** ve **gizli belirtecini** girin.
 
-6. **Kiracı URL 'sini** ve **gizli anahtarı**almak için, **Administration**  >  Zscaler portalında Yönetim**kimlik doğrulama ayarları** ' na gidin ve **kimlik doğrulaması türü**altında **SAML** ' yi seçin:
+6. **Kiracı URL 'sini** ve **gizli anahtarı** almak için,   >  Zscaler portalında Yönetim **kimlik doğrulama ayarları** ' na gidin ve **kimlik doğrulaması türü** altında **SAML** ' yi seçin:
 
     ![Zscaler Iki kimlik doğrulama ayarı](./media/zscaler-two-provisioning-tutorial/secret-token-1.png)
 
@@ -101,7 +104,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve grup ata
 
     ![SAML penceresini Yapılandır](./media/zscaler-two-provisioning-tutorial/secret-token-2.png)
 
-    **Sağlamayı SCIM-Based etkinleştir** ' i seçin ve **temel URL** 'yi ve **taşıyıcı belirtecini**kopyalayın ve ardından ayarları kaydedin. Azure portal, **temel URL** 'yi **kiracı URL 'Si** kutusuna ve **taşıyıcı belirtecini** **gizli belirteç** kutusuna yapıştırın.
+    **Sağlamayı SCIM-Based etkinleştir** ' i seçin ve **temel URL** 'yi ve **taşıyıcı belirtecini** kopyalayın ve ardından ayarları kaydedin. Azure portal, **temel URL** 'yi **kiracı URL 'Si** kutusuna ve **taşıyıcı belirtecini** **gizli belirteç** kutusuna yapıştırın.
 
 7. **Kiracı URL 'si** ve **gizli belirteç** kutularına değerleri GIRDIKTEN sonra, Azure AD 'Nin Zscaler 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' yı seçin. Bağlantı başarısız olursa, Zscaler hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 

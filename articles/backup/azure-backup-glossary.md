@@ -3,12 +3,12 @@ title: Azure Backup sözlüğü
 description: Bu makalede, Azure Backup ile kullanım için yararlı olan terimler tanımlanmaktadır.
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: 8baa47667e86b99ebbbf273610809814e768c077
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: 1e28f0c2ad5d14ea2a8dc6ce8d5fa2b21c7e65ac
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733447"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935079"
 ---
 # <a name="azure-backup-glossary"></a>Azure Backup sözlüğü
 
@@ -172,7 +172,7 @@ Artımlı yedeklemeler yalnızca önceki yedeklemeden bu yana değişmiş olan b
 
 ## <a name="instant-restore"></a>Anında geri yükleme
 
-Anında geri yükleme, kasadaki anlık görüntünün kopyasından değil, bir makineyi doğrudan yedekleme anlık görüntüsünden geri yüklemeyi içerir. Anında geri yüklemeler bir kasadan geri yükleme işleminden daha hızlıdır. Kullanılabilir anlık geri yükleme noktalarının sayısı, anlık görüntüler için yapılandırılan saklama süresine bağlıdır.
+(İş yüküne özgü terim) Anında geri yükleme, kasadaki anlık görüntünün kopyasından değil, bir makineyi doğrudan yedekleme anlık görüntüsünden geri yüklemeyi içerir. Anında geri yüklemeler bir kasadan geri yükleme işleminden daha hızlıdır. Kullanılabilir anlık geri yükleme noktalarının sayısı, anlık görüntüler için yapılandırılan saklama süresine bağlıdır. Şu anda yalnızca Azure VM yedeklemesi için geçerlidir.
 
 ## <a name="iops"></a>IOPS
 
@@ -192,7 +192,7 @@ Bir kullanıcı veya Azure Backup hizmeti tarafından oluşturulan, yedeklemeyle
 
 (İş yüküne özgü terim)
 
-Azure Backup Sunucusu ile, Hyper-V VM 'Leri, Microsoft SQL Server, SharePoint Server, Microsoft Exchange ve Windows istemcileri gibi uygulama iş yüklerini tek bir konsoldan koruyabilirsiniz. DPM 'den iş yükü yedekleme işlevselliğinin çoğunu devralır, ancak birkaç farklılık vardır. [Daha fazla bilgi](backup-azure-microsoft-azure-backup.md)
+Azure Backup Sunucusu ile, Hyper-V VM 'Leri, Microsoft SQL Server, SharePoint Server, Microsoft Exchange ve Windows istemcileri gibi uygulama iş yüklerini tek bir konsoldan koruyabilirsiniz. DPM 'den iş yükü yedekleme işlevselliğinin çoğunu devralır, ancak birkaç farklılık vardır. [Daha fazla bilgi edinin](backup-azure-microsoft-azure-backup.md)
 
 ## <a name="managed-disks"></a>Yönetilen diskler
 
@@ -226,23 +226,19 @@ Geri yükleme noktasından, yedeklemelerin alındığı kaynak konuma, kurtarma 
 
 Bir parola, şirket içi veya yerel makinenizi, MARS aracısını veya Azure 'dan veya Azure 'dan yedekleme sırasında verileri şifrelemek ve şifrelerini çözmek için kullanılır.
 
-## <a name="point-in-time-restore"></a>Belirli bir noktaya geri yükleme
-
-Bir öğeyi belirli bir zaman noktasındaki durumuna geri yükleme (PIT).
-
 ## <a name="private-endpoint"></a>Özel uç nokta
 
 [Özel uç nokta belgelerine](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)bakın.
 
 ## <a name="protected-instance"></a>Korumalı örnek
 
-Korumalı örnek, Azure 'a yedeklemeyi yapılandırmak için kullandığınız bilgisayarı, fiziksel veya sanal sunucuyu ifade eder.  Bir **Faturalandırma açısından**, bir makine Için korunan örnek sayısı, ön uç boyutunun bir işlevidir. [Daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/backup/).
+Korumalı örnek, Azure 'a yedeklemeyi yapılandırmak için kullandığınız bilgisayarı, fiziksel veya sanal sunucuyu ifade eder.  Bir **Faturalandırma açısından**, bir makine Için korunan örnek sayısı, ön uç boyutunun bir işlevidir. Bu nedenle, tek bir yedekleme örneği (Azure 'a yedeklenen bir VM gibi), ön uç boyutuna bağlı olarak birden çok korumalı örneğe karşılık gelir. [Daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/backup/).
 
 ## <a name="rbac-role-based-access-control"></a>RBAC (rol tabanlı erişim denetimi)
 
 [RBAC belgelerini](https://docs.microsoft.com/azure/role-based-access-control/overview)inceleyin.
 
-## <a name="recovery-point-restore-point-retention-point"></a>Kurtarma noktası/geri yükleme noktası/bekletme noktası
+## <a name="recovery-point-restore-point-retention-point--point-in-time-pit"></a>Kurtarma noktası/geri yükleme noktası/bekletme noktası/zaman aşımı (PIT)
 
 Yedeklenmekte olan özgün verilerin bir kopyası. Bir saklama noktası bir zaman damgasıyla ilişkilendirilir, bu sayede bir öğeyi belirli bir noktaya geri yüklemek için kullanabilirsiniz.
 
@@ -264,11 +260,11 @@ Yedeklemelerin ne kadar süreyle tutulacağını belirten Kullanıcı tanımlı 
 
 ## <a name="rpo-recovery-point-objective"></a>RPO (kurtarma noktası hedefi)
 
-RPO, bir veri kaybı senaryosunda kabul edilebilir maksimum veri kaybını gösterir. Bu, yedekleme sıklığıyla belirlenir.
+RPO, bir veri kaybı senaryosunda mümkün olan en büyük veri kaybını gösterir. Bu, yedekleme sıklığıyla belirlenir.
 
 ## <a name="rto-recovery-time-objective"></a>RTO (kurtarma süresi hedefi)
 
-RTO, verilerin bir veri kaybı senaryosundan sonra en son kullanılabilir noktaya geri yüklenebileceği maksimum kabul edilebilir süreyi belirtir.
+RTO, verilerin bir veri kaybı senaryosunda son kullanılabilir noktaya geri yüklenebileceği maksimum süreyi gösterir.
 
 ## <a name="scheduled-backup"></a>Zamanlanan yedekleme
 
@@ -284,7 +280,7 @@ Geçici silme, yedekleme verilerinin yanlışlıkla silinmesine karşı koruma s
 
 ## <a name="snapshot"></a>Anlık Görüntü
 
-Anlık görüntü, bir sanal sabit sürücünün (VHD) tam, salt okunurdur bir kopyasıdır. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk).
+Anlık görüntü, bir sanal sabit sürücünün (VHD) veya Azure dosya paylaşımının tam, salt okunurdur bir kopyasıdır. [Disk anlık görüntüleri](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk) ve [dosya anlık görüntüleri](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files)hakkında daha fazla bilgi edinin.
 
 ## <a name="storage-account"></a>Depolama hesabı
 
@@ -314,7 +310,7 @@ Azure 'da yedekleme verilerinin barındırıldığı bir depolama varlığı. Ay
 
 ## <a name="vault-credentials"></a>Kasa kimlik bilgileri
 
-Kasa kimlik bilgileri dosyası, her kasa için Portal tarafından oluşturulan bir sertifikadır. Bu, bir sunucu kasaya kaydedilirken kullanılır. [Daha fazla bilgi edinin](backup-azure-dpm-introduction.md).
+Kasa kimlik bilgileri dosyası, her kasa için Portal tarafından oluşturulan bir sertifikadır. Bu, bir şirket içi sunucu kasayla kaydedilirken kullanılır. [Daha fazla bilgi edinin](backup-azure-dpm-introduction.md).
 
 ## <a name="vnet-virtual-network"></a>VNET (sanal ağ)
 

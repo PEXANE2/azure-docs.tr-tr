@@ -1,14 +1,14 @@
 ---
 title: Güvenlik Duvarı erişim kuralları
-description: ("Beyaz listeye") REST API ve veri uç noktası etki alanı adlarına veya hizmete özel IP adresi aralıklarına erişime izin vererek bir güvenlik duvarının arkasındaki Azure Container Registry 'ye erişmek için kuralları yapılandırın.
+description: REST API ve veri uç noktası etki alanı adlarına veya hizmete özel IP adresi aralıklarına erişime izin vererek bir güvenlik duvarının arkasındaki Azure Container Registry 'ye erişmek için kuralları yapılandırın.
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: b9ecd5f802176cdc6881294f5dedefd3dd467244
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 548d64632c1d726111770dfb49f705d31f5ca714
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148506"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935997"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Güvenlik duvarının arkasındaki bir Azure Container Registry 'ye erişmek için kuralları yapılandırma
 
@@ -61,7 +61,7 @@ Erişime izin vermeniz gereken ACR REST uç nokta IP aralıklarını bulmak içi
 
 ### <a name="rest-ip-addresses-for-a-specific-region"></a>Belirli bir bölge için REST IP adresleri
 
-**AzureContainerRegistry. AustraliaEast**gibi belirli bir bölgeyi arayın.
+**AzureContainerRegistry. AustraliaEast** gibi belirli bir bölgeyi arayın.
 
 ```json
 {
@@ -95,7 +95,7 @@ Erişime izin vermeniz gereken ACR REST uç nokta IP aralıklarını bulmak içi
 
 ### <a name="storage-ip-addresses-for-specific-regions"></a>Belirli bölgeler için depolama IP adresleri
 
-**Storage. AustraliaCentral**gibi belirli bir bölgeyi arayın.
+**Storage. AustraliaCentral** gibi belirli bir bölgeyi arayın.
 
 ```json
 {
@@ -131,7 +131,7 @@ Azure portal veya Azure CLı kullanarak adanmış veri uç noktalarını etkinle
 Portalı kullanarak veri uç noktalarını etkinleştirmek için:
 
 1. Kapsayıcı Kayıt defterinize gidin.
-1. **Ağ**  >  **genel erişimini**seçin.
+1. **Ağ**  >  **genel erişimini** seçin.
 1. **Adanmış veri uç noktası etkinleştir** onay kutusunu seçin.
 1. **Kaydet**’i seçin.
 
@@ -139,11 +139,11 @@ Veri uç noktası veya uç noktalar portalda görüntülenir.
 
 :::image type="content" source="media/container-registry-firewall-access-rules/dedicated-data-endpoints-portal.png" alt-text="Portalda adanmış veri uç noktaları":::
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Azure CLı kullanarak veri uç noktalarını etkinleştirmek için Azure CLı sürüm 2.4.0 veya üstünü kullanın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
-Aşağıdaki [az ACR Update][az-acr-update] komutu, kayıt defteri *myregistry*üzerinde adanmış veri uç noktalarını etkin bir şekilde sunar. 
+Aşağıdaki [az ACR Update][az-acr-update] komutu, kayıt defteri *myregistry* üzerinde adanmış veri uç noktalarını etkin bir şekilde sunar. 
 
 ```azurecli
 az acr update --name myregistry --data-endpoint-enabled

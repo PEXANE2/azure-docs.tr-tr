@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c13b6ed991403e65c4c4d71c964f1f7f4d1ffe7b
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 9416005c708cafe5adbad2b09ce70c41fae66fd7
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443322"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936031"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Web API 'Lerini çağıran Daemon uygulaması-belirteç alma
 
@@ -57,7 +57,7 @@ final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default"
 
 > [!IMPORTANT]
 > MSAL, sürüm 1,0 erişim belirtecini kabul eden bir kaynak için bir erişim belirteci istediğinde, Azure AD, son eğik çizgiden önce her şeyi alarak ve bunu kaynak tanımlayıcısı olarak kullanarak istenen kapsamdaki hedef kitleyi ayrıştırır.
-> Bu nedenle, Azure SQL veritabanı ( **https: \/ /Database.Windows.net** ) gibi, kaynak bir eğik ÇIZGI (Azure SQL veritabanı için) ile biten bir hedef kitle beklediğinde `https://database.windows.net/` , bir kapsamını istemeniz gerekir `https://database.windows.net//.default` . (Çift eğik çizgiye göz önünde edin.) Ayrıca bkz. MSAL.NET sorun [#747: kaynak URL 'sinin sondaki eğik çizgi atlandığından SQL kimlik doğrulama hatasına neden olur](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
+> Bu nedenle, Azure SQL veritabanı (**https: \/ /Database.Windows.net**) gibi, kaynak bir eğik ÇIZGI (Azure SQL veritabanı için) ile biten bir hedef kitle beklediğinde `https://database.windows.net/` , bir kapsamını istemeniz gerekir `https://database.windows.net//.default` . (Çift eğik çizgiye göz önünde edin.) Ayrıca bkz. MSAL.NET sorun [#747: kaynak URL 'sinin sondaki eğik çizgi atlandığından SQL kimlik doğrulama hatasına neden olur](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient API 'SI
 
@@ -91,6 +91,10 @@ catch (MsalServiceException ex) when (ex.Message.Contains("AADSTS70011"))
     // Mitigation: Change the scope to be as expected.
 }
 ```
+
+### <a name="acquiretokenforclient-uses-the-application-token-cache"></a>AcquireTokenForClient uygulama belirteci önbelleğini kullanır
+
+MSAL.NET ' de, `AcquireTokenForClient` uygulama belirteci önbelleğini kullanır. (Tüm diğer AcquireToken *xx* yöntemleri kullanıcı belirteci önbelleğini kullanır.) `AcquireTokenSilent` Çağrısı yapmadan önce çağrı yapmayın `AcquireTokenForClient` , çünkü `AcquireTokenSilent` *Kullanıcı* belirteci önbelleğini kullanır. `AcquireTokenForClient`*uygulama* belirteci önbelleğinin kendisini denetler ve güncelleştirir.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -200,10 +204,6 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 Daha fazla bilgi için bkz. protokol belgeleri: [Microsoft Identity platform ve OAuth 2,0 istemci kimlik bilgileri akışı](v2-oauth2-client-creds-grant-flow.md).
 
-## <a name="application-token-cache"></a>Uygulama belirteci önbelleği
-
-MSAL.NET ' de, `AcquireTokenForClient` uygulama belirteci önbelleğini kullanır. (Tüm diğer AcquireToken *xx* yöntemleri kullanıcı belirteci önbelleğini kullanır.) `AcquireTokenSilent` Çağrısı yapmadan önce çağrı yapmayın `AcquireTokenForClient` , çünkü `AcquireTokenSilent` *Kullanıcı* belirteci önbelleğini kullanır. `AcquireTokenForClient`*uygulama* belirteci önbelleğinin kendisini denetler ve güncelleştirir.
-
 ## <a name="troubleshooting"></a>Sorun giderme
 
 ### <a name="did-you-use-the-resourcedefault-scope"></a>Resource/. Default kapsamını mı kullanıyorsunuz?
@@ -228,6 +228,12 @@ Content: {
   }
 }
 ```
+
+### <a name="are-you-calling-your-own-api"></a>Kendi API 'nizi mi arıyorsunuz?
+
+Kendi Web API 'nizi çağırırsanız ve arka plan uygulamanız için uygulama kaydına bir uygulama izni ekleyemediyseniz, Web API 'niz üzerinde bir uygulama rolü sergiledınız mı?
+
+Ayrıntılar için bkz. [uygulama Izinlerini gösterme (uygulama rolleri)](scenario-protected-web-api-app-registration.md#exposing-application-permissions-app-roles) ve özellikle de [Azure AD 'nın, Web API 'niz için belirteçleri yalnızca izin verilen Istemcilere olarak görmesini sağlama](scenario-protected-web-api-app-registration.md#ensuring-that-azure-ad-issues-tokens-for-your-web-api-to-only-allowed-clients).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 07/06/2020
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: e9c49d472f6cf0b9f0e5b3e2f7728417034059b1
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: d59dfe5b0fe3268dcda20fbc83aa31bba8a8713b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007102"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936218"
 ---
 # <a name="app-service-overview"></a>App Service’e genel bakış
 
@@ -45,6 +45,12 @@ App Service, Web uygulamalarını desteklenen uygulama yığınları için yerel
 ### <a name="built-in-languages-and-frameworks"></a>Yerleşik diller ve çerçeveler
 
 Linux üzerinde App Service, bir dizi dile özgü yerleşik görüntüyü destekler. Kodunuzu dağıtmanız yeterlidir. Desteklenen diller şunlardır: Node.js, Java (JRE 8 & JRE 11), PHP, Python, .NET Core ve Ruby. [`az webapp list-runtimes --linux`](/cli/azure/webapp#az-webapp-list-runtimes)En son dilleri ve desteklenen sürümleri görüntülemek için ' i çalıştırın. Uygulamanızın gerektirdiği çalışma zamanı yerleşik resimlerde desteklenmiyorsa, özel bir kapsayıcı ile dağıtabilirsiniz.
+
+Süresi geçmiş çalışma zamanları, portalda Web Apps oluşturma ve yapılandırma dikey penceresinden düzenli aralıklarla kaldırılır. Bu çalışma zamanları, bakım organizasyonu tarafından kullanım dışı olduklarında veya önemli güvenlik açıklarına sahip olduğu durumlarda portaldan gizlenir. Bu seçenekler, müşterileri en başarılı olacağı en son çalışma zamanları ile rehberlik etmek için gizlidir. 
+
+Süresi geçmiş bir çalışma zamanı portaldan gizliyse, bu sürümü kullanan mevcut siteleriniz çalışmaya devam edecektir. Bir çalışma zamanı App Service platformundan tamamen kaldırılırsa, Azure abonelik sahipleriniz kaldırılmadan önce bir e-posta bildirimi alır.
+
+Artık portalda gösterilmemiş eski bir çalışma zamanı sürümü ile başka bir Web uygulaması oluşturmanız gerekiyorsa, sitenizin çalışma zamanı sürümünü alma yönergeleri için dil yapılandırma kılavuzlarını inceleyin. Aynı çalışma zamanına sahip başka bir site oluşturmak için Azure CLı kullanabilirsiniz. Alternatif olarak, sitenin ARM şablonunu dışarı aktarmak için portalda Web uygulaması dikey penceresinde **şablonu dışarı aktar** düğmesini de kullanabilirsiniz. Bu şablonu, aynı çalışma zamanına ve yapılandırmaya sahip yeni bir site dağıtmak için yeniden kullanabilirsiniz.
 
 ### <a name="limitations"></a>Sınırlamalar
 

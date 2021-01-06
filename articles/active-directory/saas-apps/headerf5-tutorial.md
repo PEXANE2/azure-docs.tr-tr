@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 8706ac588f2cc868805de7126140a1edd4b8c735
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 6bf21205c028eaff08eef91757424f8b52764ada
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92445554"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936150"
 ---
 # <a name="tutorial-configure-single-sign-on-sso-between-azure-active-directory-and-f5"></a>Öğretici: Azure Active Directory ile F5 arasında çoklu oturum açma (SSO) yapılandırma
 
@@ -122,7 +122,7 @@ F5 'in tümleştirmesini Azure AD 'ye göre yapılandırmak için Galeri 'den y�
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-f5"></a>F5 için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu F5 ile yapılandırın ve test edin. SSO 'nun çalışması için, F5 'teki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu F5 ile yapılandırın ve test edin. SSO 'nun çalışması için, F5 'teki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu F5 ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -195,7 +195,7 @@ Bu bölümde, F5 'e erişim vererek Azure çoklu oturum açma özelliğini kulla
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 1. **Koşullu erişim** ' e tıklayın.
 1. **Yeni ilke**' ye tıklayın.
-1. Artık F5 uygulamanızı CA Ilkesi için bir kaynak olarak görebilir ve çok faktörlü auth, cihaz tabanlı erişim denetimi veya kimlik koruma Ilkesi dahil tüm koşullu erişimi uygulayabilirsiniz.
+1. Şimdi, koşullu erişim ilkesi için bir kaynak olarak F5 uygulamanızı görebilir ve çok faktörlü auth, cihaz tabanlı erişim denetimi veya kimlik koruma Ilkesi dahil herhangi bir koşullu erişim uygulayabilirsiniz.
 
 ## <a name="configure-f5-sso"></a>F5 SSO 'yu Yapılandır
 
@@ -209,7 +209,7 @@ Bu bölümde, F5 'e erişim vererek Azure çoklu oturum açma özelliğini kulla
 
 1. Yeni bir Web tarayıcı penceresi açın ve F5 (üst bilgi tabanlı) Şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
 
-1. **System > sertifika yönetimi > trafik sertifikası yönetimi > SSL sertifikası listesi**' ne gidin. Sağ köşeden **Içeri aktar** ' ı seçin. Bir **sertifika adı** belirtin (daha sonra yapılandırmadan başvurulacak). **Sertifika kaynağında**karşıya yükle ' yı seçin SAML çoklu oturum açmayı yapılandırırken Azure 'dan indirilen sertifikayı belirtin. **İçeri Aktar**’a tıklayın.
+1. **System > sertifika yönetimi > trafik sertifikası yönetimi > SSL sertifikası listesi**' ne gidin. Sağ köşeden **Içeri aktar** ' ı seçin. Bir **sertifika adı** belirtin (daha sonra yapılandırmadan başvurulacak). **Sertifika kaynağında** karşıya yükle ' yı seçin SAML çoklu oturum açmayı yapılandırırken Azure 'dan indirilen sertifikayı belirtin. **İçeri Aktar**’a tıklayın.
 
     ![Ekran görüntüsü, sertifika adı ve sertifika kaynağını seçtiğiniz S S L sertifika listesini gösterir.](./media/headerf5-tutorial/configure12.png)
  
@@ -226,26 +226,26 @@ Bu bölümde, F5 'e erişim vererek Azure çoklu oturum açma özelliğini kulla
 
     ![Ekran görüntüsü SAML hizmet sağlayıcısı sayfasını gösterir.](./media/headerf5-tutorial/configure02.png)
  
-1. Bir **yapılandırma adı**girin. **VARLıK kimliğini** (Azure AD uygulama yapılandırmasında yapılandırdığınız gibi) belirtin. **Ana bilgisayar adını**belirtin. Başvuru için bir **Açıklama** ekleyin. Kalan varsayılan girişleri kabul edin ve ardından **& kaydet**' e tıklayın.
+1. Bir **yapılandırma adı** girin. **VARLıK kimliğini** (Azure AD uygulama yapılandırmasında yapılandırdığınız gibi) belirtin. **Ana bilgisayar adını** belirtin. Başvuru için bir **Açıklama** ekleyin. Kalan varsayılan girişleri kabul edin ve ardından **& kaydet**' e tıklayın.
 
     ![Ekran görüntüsü, hizmet sağlayıcısı özellikleri sayfasını gösterir.](./media/headerf5-tutorial/configure03.png) 
 
-1. Bu örnekte, 443 numaralı bağlantı noktası ile 192.168.30.20 olarak yeni bir sanal sunucu oluşturacağız. **Hedef adreste**sanal sunucu IP adresini belirtin. Istemci **SSL profilini**seçin, yeni oluştur ' u seçin. Daha önce karşıya yüklenen uygulama sertifikasını (Bu örnekteki joker karakter sertifikası) ve ilişkili anahtarı belirtin ve ardından **& Ileri kaydet**' e tıklayın.
+1. Bu örnekte, 443 numaralı bağlantı noktası ile 192.168.30.20 olarak yeni bir sanal sunucu oluşturacağız. **Hedef adreste** sanal sunucu IP adresini belirtin. Istemci **SSL profilini** seçin, yeni oluştur ' u seçin. Daha önce karşıya yüklenen uygulama sertifikasını (Bu örnekteki joker karakter sertifikası) ve ilişkili anahtarı belirtin ve ardından **& Ileri kaydet**' e tıklayın.
 
     >[!NOTE]
     >Bu örnekte, Iç Web sunucusu 888 numaralı bağlantı noktasında çalışıyor ve bunu 443 ile yayımlamak istiyoruz.
 
     ![Ekran görüntüsü, sanal sunucu özellikleri sayfasını gösterir.](./media/headerf5-tutorial/configure04.png) 
 
-1. **IDP bağlayıcınızı yapılandırmak için yöntem seçin**altında, meta veri ' yi belirtin, Dosya Seç ' e tıklayın ve daha önce Azure AD 'Den Indirilen meta veri xml dosyasını yükleyin SAML ıDP Bağlayıcısı için benzersiz bir **ad** belirtin. Daha önce karşıya yüklenen **meta veri Imzalama sertifikasını** seçin. **İleri & kaydet**' e tıklayın.
+1. **IDP bağlayıcınızı yapılandırmak için yöntem seçin** altında, meta veri ' yi belirtin, Dosya Seç ' e tıklayın ve daha önce Azure AD 'Den Indirilen meta veri xml dosyasını yükleyin SAML ıDP Bağlayıcısı için benzersiz bir **ad** belirtin. Daha önce karşıya yüklenen **meta veri Imzalama sertifikasını** seçin. **İleri & kaydet**' e tıklayın.
 
     ![Ekran görüntüsü dış kimlik sağlayıcısı bağlayıcı ayarları sayfasını gösterir.](./media/headerf5-tutorial/configure05.png)
  
-1. **Havuz Seç**altında **Yeni oluştur** ' u (alternatif olarak zaten var olan bir havuz seçin) belirtin. Diğer değerin varsayılan olmasına izin verin. Havuz sunucuları ' nın altında IP **adresi/düğüm adı**altında IP adresini yazın. **Bağlantı noktasını**belirtin. **İleri & kaydet**' e tıklayın.
+1. **Havuz Seç** altında **Yeni oluştur** ' u (alternatif olarak zaten var olan bir havuz seçin) belirtin. Diğer değerin varsayılan olmasına izin verin. Havuz sunucuları ' nın altında IP **adresi/düğüm adı** altında IP adresini yazın. **Bağlantı noktasını** belirtin. **İleri & kaydet**' e tıklayın.
 
     ![Ekran görüntüsü havuz özellikleri sayfasını gösterir.](./media/headerf5-tutorial/configure06.png)
 
-1. Tek Sign-On ayarları ekranında **Çoklu oturum açmayı etkinleştir**' i seçin. Seçili tek Sign-On türü altında **http üst bilgi tabanlı**' yı seçin. Username. **SAML. Last. Identity** ' i **session.saml.last.attr.name.Identity** (Azure AD 'de talep eşlemesi kullanarak ayarlanan bu değişken) Kullanıcı adı kaynak (Bu değişken). SSO üstbilgileri altında.
+1. Tek Sign-On ayarları ekranında **Çoklu oturum açmayı etkinleştir**' i seçin. Seçili tek Sign-On türü altında **http üst bilgi tabanlı**' yı seçin. Username. **SAML. Last. Identity** ' i  (Azure AD 'de talep eşlemesi kullanarak ayarlanan bu değişken) Kullanıcı adı kaynak (Bu değişken). SSO üstbilgileri altında.
 
     * **HeaderName: Myauthorleştirme**
 
@@ -260,7 +260,7 @@ Bu bölümde, F5 'e erişim vererek Azure çoklu oturum açma özelliğini kulla
 
     ![Ekran görüntüsü tek Sign-On ayarları sayfasını gösterir.](./media/headerf5-tutorial/configure07.png) 
 
-1. Bu kılavuzun amaçları doğrultusunda Endpoint denetimlerini atlayacağız.  Ayrıntılar için F5 belgelerine bakın. **& Kaydet İleri ' yi**seçin.
+1. Bu kılavuzun amaçları doğrultusunda Endpoint denetimlerini atlayacağız.  Ayrıntılar için F5 belgelerine bakın. **& Kaydet İleri ' yi** seçin.
 
     ![Ekran görüntüsü, uç nokta denetimleri Özellikler sayfasını gösterir.](./media/headerf5-tutorial/configure08.png)
 
@@ -293,7 +293,7 @@ Bu bölüm, Kılavuzlu yapılandırmayı kullanmezseniz veya ek parametreler ekl
  
     ![Ekran görüntüsü, şablon seçimine sahip Uygulama Hizmetleri sayfasını gösterir.](./media/headerf5-tutorial/configure18.png)
 
-1. Bu durumda HeaderApp2 dışarıdan HTTPS olarak yayımlanacak, **büyük IP SISTEM SSL trafiğini nasıl işleyeceğiz**? Istemciden bir **düz metin (SSL yük boşaltma) Için sonlandırma SSL**'yi belirttik. **Kullanmak ISTEDIĞINIZ SSL sertifikası** ile sertifikanızı ve anahtarınızı belirtin ve **hangi SSL özel anahtarını kullanmak istiyorsunuz?**. Sanal sunucu **için kullanmak ISTEDIĞINIZ IP adresi**altında sanal sunucu IP 'sini belirtin. 
+1. Bu durumda HeaderApp2 dışarıdan HTTPS olarak yayımlanacak, **büyük IP SISTEM SSL trafiğini nasıl işleyeceğiz**? Istemciden bir **düz metin (SSL yük boşaltma) Için sonlandırma SSL**'yi belirttik. **Kullanmak ISTEDIĞINIZ SSL sertifikası** ile sertifikanızı ve anahtarınızı belirtin ve **hangi SSL özel anahtarını kullanmak istiyorsunuz?**. Sanal sunucu **için kullanmak ISTEDIĞINIZ IP adresi** altında sanal sunucu IP 'sini belirtin. 
 
     * **Diğer ayrıntıları belirtin**
 
@@ -301,7 +301,7 @@ Bu bölüm, Kılavuzlu yapılandırmayı kullanmezseniz veya ek parametreler ekl
 
         * Uygulama havuzundan çıkılıyor veya yeni bir tane oluşturun.
 
-        * Yeni bir uygulama sunucusu oluşturuyorsanız, **Iç IP adresini** ve **bağlantı noktası numarasını**belirtin.
+        * Yeni bir uygulama sunucusu oluşturuyorsanız, **Iç IP adresini** ve **bağlantı noktası numarasını** belirtin.
 
         ![Ekran görüntüsü bu ayrıntıları belirtebileceğiniz bölmeyi gösterir.](./media/headerf5-tutorial/configure19.png) 
 
@@ -341,7 +341,7 @@ Bu bölüm, Kılavuzlu yapılandırmayı kullanmezseniz veya ek parametreler ekl
  
     ![Ekran görüntüsünde, yeni ı d P Bağlayıcısı Oluştur seçiliyken Bu S P kullanan bu S P 'yi Düzenle adlı SAML ı 'Leri Düzenle iletişim kutusu gösterilir.](./media/headerf5-tutorial/configure29.png)
 
-    a. Azure AD 'den indirilen metadata.xml dosyasına gidin ve bir **kimlik sağlayıcısı adı**belirtin.
+    a. Azure AD 'den indirilen metadata.xml dosyasına gidin ve bir **kimlik sağlayıcısı adı** belirtin.
 
     b. **Tamam**' a tıklayın.
 
@@ -355,9 +355,9 @@ Bu bölüm, Kılavuzlu yapılandırmayı kullanmezseniz veya ek parametreler ekl
 
     f. **Eşleşen kaynak =% {Session. Server. landinguri}** 
 
-    örneğin: **Eşleşen değer =/**_
+    örneğin: **Eşleşen değer =/** _
 
-    h. _*Update* 'e tıklayın*
+    h. _ *Update* 'e tıklayın*
 
     i. **Tamam 'a** tıklayın
 

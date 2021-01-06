@@ -4,12 +4,12 @@ description: C# kullanarak Azure Işlevleri geliştirmeyi anlayın.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 9e11d013b6e7473f290ba1ccb54857034491d116
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 77ae736c787666df5e78358bc78e06eee9b7d4f9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672674"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936932"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Işlevleri C# Geliştirici Başvurusu
 
@@ -138,7 +138,7 @@ public static class BindingExpressionsExample
 
 Yapı işlemi, derleme klasöründeki bir işlev klasöründe bir *function.js* dosya oluşturur. Daha önce belirtildiği gibi, bu dosyanın doğrudan düzenlenmesi amaçlıyordu. Bu dosyayı düzenleyerek bağlama yapılandırmasını değiştiremez veya işlevi devre dışı bırakabilirsiniz. 
 
-Bu dosyanın amacı, [Tüketim planındaki kararları ölçeklendirirken](functions-scale.md#how-the-consumption-and-premium-plans-work)kullanılacak ölçek denetleyicisine bilgi sağlamaktır. Bu nedenle, dosya yalnızca tetikleyici bilgisine sahiptir, giriş veya çıkış bağlamaları değildir.
+Bu dosyanın amacı, [Tüketim planındaki kararları ölçeklendirirken](event-driven-scaling.md)kullanılacak ölçek denetleyicisine bilgi sağlamaktır. Bu nedenle, dosya yalnızca tetikleyici bilgisine sahiptir, giriş veya çıkış bağlamaları değildir.
 
 Dosyada oluşturulan *function.js* , `configurationSource` çalışma zamanına yapılandırma *function.js* yerine bağlama için .net öznitelikleri kullanmasını söyleyen bir özelliği içerir. Aşağıda bir örnek verilmiştir:
 
@@ -208,7 +208,7 @@ Ana araçları NPM kullanarak yüklerseniz, Visual Studio tarafından kullanıla
 
 ## <a name="readytorun"></a>ReadyToRun
 
-İşlev uygulamanızı [Readytorun ikilileri](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images)olarak derleyebilirsiniz. ReadyToRun, bir [Tüketim planında](functions-scale.md#consumption-plan)çalışırken [soğuk başlatmanın](functions-scale.md#cold-start) etkisini azaltmaya yardımcı olmak için başlangıç performansını iyileştirebilecek bir süre öncesi derleme biçimidir.
+İşlev uygulamanızı [Readytorun ikilileri](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images)olarak derleyebilirsiniz. ReadyToRun, bir [Tüketim planında](consumption-plan.md)çalışırken [soğuk başlatmanın](event-driven-scaling.md#cold-start) etkisini azaltmaya yardımcı olmak için başlangıç performansını iyileştirebilecek bir süre öncesi derleme biçimidir.
 
 ReadyToRun, .NET 3,0 ' de kullanılabilir ve [Azure işlevleri çalışma zamanının 3,0 sürümünü](functions-versions.md)gerektirir.
 
@@ -618,7 +618,7 @@ public static class IBinderExample
 
 ### <a name="multiple-attribute-example"></a>Birden çok öznitelik örneği
 
-Yukarıdaki örnek, işlev uygulamasının ana depolama hesabı bağlantı dizesi (yani) için uygulama ayarını alır `AzureWebJobsStorage` . [Storageaccountattribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) ' i ekleyip öznitelik dizisini Içine geçirerek depolama hesabı için kullanılacak özel bir uygulama ayarı belirtebilirsiniz `BindAsync<T>()` . `Binder`Değil parametresini kullanın `IBinder` .  Örnek:
+Yukarıdaki örnek, işlev uygulamasının ana depolama hesabı bağlantı dizesi (yani) için uygulama ayarını alır `AzureWebJobsStorage` . [Storageaccountattribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) ' i ekleyip öznitelik dizisini Içine geçirerek depolama hesabı için kullanılacak özel bir uygulama ayarı belirtebilirsiniz `BindAsync<T>()` . `Binder`Değil parametresini kullanın `IBinder` .  Örneğin:
 
 ```cs
 public static class IBinderExampleMultipleAttributes

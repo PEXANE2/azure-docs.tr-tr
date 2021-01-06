@@ -3,12 +3,12 @@ title: Şablonlarda değişkenler
 description: Azure Resource Manager şablonunda değişkenlerin nasıl tanımlanacağını açıklar (ARM şablonu).
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 5d9b58d63e96656c45d3494d24099bbeadc46b11
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 7f782f9c7d3107472a74fcab73290c4cebf73693
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353468"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934671"
 ---
 # <a name="variables-in-arm-template"></a>ARM şablonundaki değişkenler
 
@@ -28,7 +28,7 @@ Aşağıdaki örnekte bir değişken tanımı gösterilmektedir. Depolama hesab�
 },
 ```
 
-Değişkenler bölümünde [başvuru](template-functions-resource.md#reference) işlevini veya [liste](template-functions-resource.md#list) işlevlerinden herhangi birini kullanamazsınız. Bu işlevler, bir kaynağın çalışma zamanı durumunu alır ve değişkenler çözümlendiğinde dağıtımdan önce yürütülemez.
+Bölümünde [başvuru](template-functions-resource.md#reference) işlevini veya herhangi bir [liste](template-functions-resource.md#list) işlevini kullanamazsınız `variables` . Bu işlevler, bir kaynağın çalışma zamanı durumunu alır ve değişkenler çözümlendiğinde dağıtımdan önce yürütülemez.
 
 ## <a name="use-variable"></a>Değişken kullan
 
@@ -63,7 +63,7 @@ Bir ortamı yapılandırmak için ilgili değerleri tutan değişkenler tanımla
 },
 ```
 
-Parametreler ' de, hangi yapılandırma değerlerinin kullanılacağını belirten bir değer oluşturursunuz.
+İçinde `parameters` , hangi yapılandırma değerlerinin kullanılacağını belirten bir değer oluşturursunuz.
 
 ```json
 "parameters": {
@@ -87,7 +87,7 @@ Belirtilen ortamın ayarlarını almak için değişkeni ve parametresini birlik
 
 Aşağıdaki örneklerde, değişkenlerini kullanma senaryoları gösterilmektedir.
 
-|Şablon  |Açıklama  |
+|Şablon  |Description  |
 |---------|---------|
 | [değişken tanımları](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | Farklı değişken türlerini gösterir. Şablon hiçbir kaynak dağıtmaz. Değişken değerleri oluşturur ve bu değerleri döndürür. |
 | [Yapılandırma değişkeni](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | Yapılandırma değerlerini tanımlayan bir değişkenin kullanımını gösterir. Şablon hiçbir kaynak dağıtmaz. Değişken değerleri oluşturur ve bu değerleri döndürür. |

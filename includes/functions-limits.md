@@ -4,14 +4,14 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 05/04/2020
 ms.author: glenga
-ms.openlocfilehash: 826fccad043b067ce86d5f56eaebc6ee48b532d1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: aa75d1d57f44bb1a4d6513823ac97ac9917b260f
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96025605"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934478"
 ---
-| Kaynak |[Tüketim planı](../articles/azure-functions/functions-scale.md#consumption-plan)|[Premium planı](../articles/azure-functions/functions-scale.md#premium-plan)|[Adanmış plan](../articles/azure-functions/functions-scale.md#app-service-plan)|[ASE](../articles/app-service/environment/intro.md)| [Kubernetes](../articles/aks/quotas-skus-regions.md) |
+| Kaynak |[Tüketim planı](../articles/azure-functions/consumption-plan.md)|[Premium planı](../articles/azure-functions/functions-premium-plan.md)|[Adanmış plan](../articles/azure-functions/dedicated-plan.md)|[ASE](../articles/app-service/environment/intro.md)| [Kubernetes](../articles/aks/quotas-skus-regions.md) |
 | --- | --- | --- | --- | --- | --- |
 |Varsayılan [zaman aşımı süresi](../articles/azure-functions/functions-scale.md#timeout) (dk) |5 | 30 |30<sup>1</sup> | 30 | 30 |
 |En fazla [zaman aşımı süresi](../articles/azure-functions/functions-scale.md#timeout) (dk) |10 | sınırsız<sup>7</sup> | sınırsız<sup>2</sup> | unbounded | unbounded |
@@ -28,10 +28,10 @@ ms.locfileid: "96025605"
 | Özel etki alanı [SSL desteği](../articles/app-service/configure-ssl-bindings.md) |sınırsız SNI SSL bağlantısı dahildir | sınırsız SNI SSL ve 1 IP SSL bağlantı dahildir |sınırsız SNI SSL ve 1 IP SSL bağlantı dahildir | sınırsız SNI SSL ve 1 IP SSL bağlantı dahildir | yok |
 
 <sup>1</sup> varsayılan olarak, bir App Service planındaki işlev 1. x çalışma zamanının zaman aşımı değeri sınırsız olur.  
-<sup>2</sup> App Service planının [her zaman açık](../articles/azure-functions/functions-scale.md#always-on)olarak ayarlanmasını gerektirir. Standart [oranlarda](https://azure.microsoft.com/pricing/details/app-service/)ödeyin.  
+<sup>2</sup> App Service planının [her zaman açık](../articles/azure-functions/dedicated-plan.md#always-on)olarak ayarlanmasını gerektirir. Standart [oranlarda](https://azure.microsoft.com/pricing/details/app-service/)ödeyin.  
 <sup>3</sup> bu sınırlar [konakta ayarlanır](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/web.config).  
 <sup>4</sup> barındırabilmeniz gereken işlev uygulamalarının gerçek sayısı, uygulamaların etkinliğine, makine örneklerinin boyutuna ve karşılık gelen kaynak kullanımına göre değişir.  
 <sup>5</sup> depolama sınırı, aynı App Service planındaki tüm uygulamalarda geçici depolamadaki toplam içerik boyutudur. Tüketim planı, geçici depolama için Azure dosyalarını kullanır.  
-<sup>6</sup> işlev uygulamanız bir [Tüketim PLANıNDA](../articles/azure-functions/functions-scale.md#consumption-plan)barındırılıyorsa yalnızca CNAME seçeneği desteklenir. Bir [Premium planındaki](../articles/azure-functions/functions-scale.md#premium-plan) veya bir [App Service planındaki](../articles/azure-functions/functions-scale.md#app-service-plan)işlev UYGULAMALARı için, bir CNAME veya a kaydı kullanarak özel bir etki alanını eşleyebilirsiniz.  
+<sup>6</sup> işlev uygulamanız bir [Tüketim PLANıNDA](../articles/azure-functions/consumption-plan.md)barındırılıyorsa yalnızca CNAME seçeneği desteklenir. Bir [Premium planındaki](../articles/azure-functions/functions-premium-plan.md) veya bir [App Service planındaki](../articles/azure-functions/dedicated-plan.md)işlev UYGULAMALARı için, bir CNAME veya a kaydı kullanarak özel bir etki alanını eşleyebilirsiniz.  
 <sup>7</sup> 60 dakikaya kadar garanti edilir.  
 <sup>8</sup> çalışan, müşteri uygulamalarını barındıran rollerdir. Çalışanlar üç sabit boyutta kullanılabilir: bir vCPU/3,5 GB RAM; İki vCPU/7 GB RAM; Dört vCPU/14 GB RAM.

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 1/04/2021
+ms.date: 1/05/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 6f95b4eca8dbaf6cfaa7546fddada7577a1541b3
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 4674fe41a0e3d63ef0cadc6ad55eca02fc69618e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916261"
+ms.locfileid: "97935912"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Nasıl yapılır: uygulamanıza isteğe bağlı talepler sağlama
 
@@ -94,7 +94,7 @@ V2 belirteç biçimi geliştirmelerinden bazıları, güvenlik ve güvenilirliğ
 
 | JWT talebi     | Ad                            | Açıklama | Notlar |
 |---------------|---------------------------------|-------------|-------|
-|`aud`          | Hedef kitle | Her zaman JWTs 'de bulunur, ancak v1 erişim belirteçlerinde, belirteç doğrulaması gerçekleştirilirken kod için zor olabilen çeşitli yollarla dağıtılabilir.  [Bu talep için ek özellikleri](#additional-properties-of-optional-claims) , her zaman v1 erişim belirteçlerinde bir GUID olarak ayarlandığından emin olmak için kullanın. | yalnızca v1 JWT erişim belirteçleri|
+|`aud`          | Hedef kitle | Her zaman JWTs 'de bulunur, ancak v1 erişim belirteçlerinde, her bir AppID URI 'SI, sonunda veya sonunda eğik çizgi ve kaynak istemci KIMLIĞI olmak üzere çeşitli yollarla dağıtılabilir. Bu rastgele seçim, belirteç doğrulaması gerçekleştirilirken kod için zor olabilir.  [Bu talep için ek özellikleri](#additional-properties-of-optional-claims) , her zaman v1 erişim belirteçlerinde KAYNAĞıN istemci kimliğine ayarlandığından emin olmak için kullanın. | yalnızca v1 JWT erişim belirteçleri|
 |`preferred_username` | Tercih edilen Kullanıcı adı        | V1 belirteçleri içinde tercih edilen Kullanıcı adı talebini sağlar. Bu, uygulamaların Kullanıcı adı ipuçları sağlamasını ve kendi belirteç türlerine bakılmaksızın okunabilir görünen adları göstermesini kolaylaştırır.  Bunun yerine isteğe bağlı talebi kullanmanız önerilir, örn. `upn` veya `unique_name` . | V1 KIMLIK belirteçleri ve erişim belirteçleri |
 
 ### <a name="additional-properties-of-optional-claims"></a>İsteğe bağlı taleplerin ek özellikleri
@@ -103,13 +103,13 @@ V2 belirteç biçimi geliştirmelerinden bazıları, güvenlik ve güvenilirliğ
 
 **Tablo 4: isteğe bağlı talepler yapılandırma değerleri**
 
-| Özellik adı  | Ek özellik adı | Açıklama |
+| Özellik adı  | Ek özellik adı | Description |
 |----------------|--------------------------|-------------|
 | `upn`          |                          | Hem SAML hem de JWT yanıtları için ve v 1.0 ve v 2.0 belirteçleri için kullanılabilir. |
 |                | `include_externally_authenticated_upn`  | , Kaynak kiracısında depolanan Konuk UPN 'sini içerir. Örneğin, `foo_hometenant.com#EXT#@resourcetenant.com` |
 |                | `include_externally_authenticated_upn_without_hash` | Yukarıdaki gibi, karma işaretlerinin ( `#` ) alt çizgi () ile değiştirilmeleri dışında, `_` Örneğin `foo_hometenant.com_EXT_@resourcetenant.com`|
-| `aud`          |                          | V1 erişim belirteçlerinde, bu, talebin biçimini değiştirmek için kullanılır `aud` .  Bu, `aud` her zaman ISTEMCI kimliği olan v2 belirteçleri veya kimlik belirteçleri üzerinde hiçbir etkiye sahip değildir. API 'nizin daha kolay bir şekilde izleyici doğrulaması gerçekleştirmesini sağlamak için bunu kullanın. Erişim belirtecini etkileyen tüm isteğe bağlı talepler gibi, kaynak erişim belirtecine ait olduğundan istekteki kaynağın bu isteğe bağlı talebi ayarlaması gerekir.|
-|                | `use_guid`               | Kaynak (API) istemci KIMLIĞINI `aud` bir AppID URI 'si veya GUID yerine talep olarak GUID biçiminde yayar. Bu nedenle, bir kaynağın istemci KIMLIĞI ise `bb0a297b-6a42-4a55-ac40-09a501456577` , söz konusu kaynak için erişim belirteci isteyen herhangi bir uygulama, şu ile bir erişim belirteci alır `aud` : `bb0a297b-6a42-4a55-ac40-09a501456577` .|
+| `aud`          |                          | V1 erişim belirteçlerinde, bu, talebin biçimini değiştirmek için kullanılır `aud` .  Bu, `aud` her zaman ISTEMCI kimliği olan v2 belirteçleri veya sürümün kimlik belirteçleri üzerinde hiçbir etkiye sahip değildir. API 'nizin daha kolay bir şekilde izleyici doğrulaması gerçekleştirmesini sağlamak için bu yapılandırmayı kullanın. Erişim belirtecini etkileyen tüm isteğe bağlı talepler gibi, kaynak erişim belirtecine ait olduğundan istekteki kaynağın bu isteğe bağlı talebi ayarlaması gerekir.|
+|                | `use_guid`               | Kaynak (API) öğesinin istemci KIMLIĞINI, `aud` her zaman çalışma zamanına bağımlı olması yerine, her zaman talep olarak GUID biçiminde yayar. Örneğin, bir kaynak bu bayrağı ayarlarsa ve istemci KIMLIĞI ise `bb0a297b-6a42-4a55-ac40-09a501456577` , bu kaynak için erişim belirteci isteyen herhangi bir uygulama, şu ile bir erişim belirteci alır `aud` : `bb0a297b-6a42-4a55-ac40-09a501456577` . </br></br> Bu talep kümesi olmadan, bir API, bu `aud` `api://MyApi.com` `api://MyApi.com/` `api://myapi.com/AdditionalRegisteredField` API için bir uygulama kimliği URI 'si olarak,, ya da başka bir değer kümesi ve kaynağın istemci kimliği için bir talep olan belirteçleri alabilir. |
 
 #### <a name="additional-properties-example"></a>Ek özellikler örneği
 
@@ -199,7 +199,7 @@ Bir uygulama tarafından istenen isteğe bağlı talepleri bildirir. Bir uygulam
 
 **Tablo 5: Optionalclaim türü özellikleri**
 
-| Ad          | Tür                       | Açıklama                                           |
+| Ad          | Tür                       | Description                                           |
 |---------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Koleksiyon (OptionalClaim) | JWT KIMLIK belirtecinde döndürülen isteğe bağlı talepler.     |
 | `accessToken` | Koleksiyon (OptionalClaim) | JWT erişim belirtecinde döndürülen isteğe bağlı talepler. |
@@ -212,7 +212,7 @@ Belirli bir talep tarafından destekleniyorsa, Additionalclaim 'nin davranışı
 
 **Tablo 6: OptionalClaim türü özellikleri**
 
-| Ad                   | Tür                    | Açıklama                                                                                                                                                                                                                                                                                                   |
+| Ad                   | Tür                    | Description                                                                                                                                                                                                                                                                                                   |
 |------------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | İsteğe bağlı talebin adı.                                                                                                                                                                                                                                                                               |
 | `source`               | Edm.String              | Talebin kaynağı (Dizin nesnesi). Uzantı özelliklerinden önceden tanımlı talepler ve Kullanıcı tanımlı talepler vardır. Kaynak değeri null ise, talep önceden tanımlanmış isteğe bağlı bir talep olur. Kaynak değeri kullanıcı ise, ad özelliğindeki değer kullanıcı nesnesinden uzantı özelliğidir. |

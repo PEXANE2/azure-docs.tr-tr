@@ -1,24 +1,24 @@
 ---
 title: Kaynaklar için dağıtım sırasını ayarla
-description: Dağıtım sırasında bir kaynağı başka bir kaynağa bağımlı olarak nasıl ayarlayabileceğinizi açıklar. Bağımlılıklar kaynakların doğru sırada dağıtılmasını güvence altına alınır.
+description: Dağıtım sırasında başka bir kaynağa bağlı olarak bir Azure kaynağının nasıl ayarlanacağını açıklar. Bağımlılıklar kaynakların doğru sırada dağıtılmasını güvence altına alınır.
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: a96dca0ab30d0baee2688427d78867ea128e673a
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: f6b63b066da06a17c3a2e51ab0f3ab9bf521a144
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722020"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934756"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>ARM şablonlarında kaynak dağıtma sırasını tanımlayın
 
-Kaynakları dağıttığınızda, bazı kaynakların diğer kaynaklardan önce mevcut olduğundan emin olmanız gerekebilir. Örneğin, bir veritabanını dağıtmaya başlamadan önce mantıksal bir SQL Server gerekir. Bu ilişkiyi, bir kaynağı diğer kaynağa bağımlı olarak işaretleyerek kurarsınız. Açık bir bağımlılık tanımlamak için **Bağımlıdson** öğesini kullanın. Örtük bir bağımlılık tanımlamak için **başvuru** veya **liste** işlevlerini kullanın.
+Kaynakları dağıttığınızda, bazı kaynakların diğer kaynaklardan önce mevcut olduğundan emin olmanız gerekebilir. Örneğin, bir veritabanını dağıtmaya başlamadan önce mantıksal bir SQL Server gerekir. Bu ilişkiyi, bir kaynağı diğer kaynağa bağımlı olarak işaretleyerek kurarsınız. `dependsOn`Açık bir bağımlılık tanımlamak için öğesini kullanın. Örtük bir bağımlılık tanımlamak için **başvuru** veya **liste** işlevlerini kullanın.
 
-Resource Manager, kaynaklar arasındaki bağımlılıkları değerlendirir ve bunları bağımlılık sırasına göre dağıtır. Resource Manager, birbirine bağımlı olmayan kaynakları paralel olarak dağıtır. Yalnızca aynı şablonda dağıtılan kaynaklar için bağımlılıklar tanımlamanız gerekir.
+Azure Resource Manager, kaynaklar arasındaki bağımlılıkları değerlendirir ve bunları kendi bağımlı sıralarına dağıtır. Resource Manager, birbirine bağımlı olmayan kaynakları paralel olarak dağıtır. Yalnızca aynı şablonda dağıtılan kaynaklar için bağımlılıklar tanımlamanız gerekir.
 
 ## <a name="dependson"></a>dependsOn
 
-Şablonunuzda, Bağımlıdson öğesi bir kaynağı bir veya daha fazla kaynağa bağımlı olarak tanımlamanızı sağlar. Değeri, her biri bir kaynak adı veya KIMLIĞI olan dizelerin JSON dizisidir. Dizi, [koşullu olarak dağıtılan](conditional-resource-deployment.md)kaynakları içerebilir. Koşullu bir kaynak dağıtıldığında Azure Resource Manager, gerekli bağımlılıklardan otomatik olarak kaldırır.
+Azure Resource Manager şablonunuz (ARM şablonu) içinde, öğesi bir `dependsOn` veya daha fazla kaynağa bağımlı olan bir kaynağı tanımlamanızı sağlar. Değeri, her biri bir kaynak adı veya KIMLIĞI olan dizelerin bir JavaScript Nesne Gösterimi (JSON) dizisidir. Dizi, [koşullu olarak dağıtılan](conditional-resource-deployment.md)kaynakları içerebilir. Koşullu bir kaynak dağıtıldığında Azure Resource Manager, gerekli bağımlılıklardan otomatik olarak kaldırır.
 
 Aşağıdaki örnek, bir sanal ağa, ağ güvenlik grubuna ve genel IP adresine bağlı olan bir ağ arabirimini gösterir. Tam şablon için bkz. [bir Linux sanal makinesi için hızlı başlangıç şablonu](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-simple-linux/azuredeploy.json).
 
@@ -37,11 +37,11 @@ Aşağıdaki örnek, bir sanal ağa, ağ güvenlik grubuna ve genel IP adresine 
 }
 ```
 
-Kaynaklarınız arasındaki ilişkileri eşlemek için Bağımlılıson ' u kullanmaya da ihtiyacınız olsa da, bunu neden yaptığınızı anlamak önemlidir. Örneğin, kaynakların nasıl birbirine bağlı olduğunu belgelemek için, Bağımlıdson doğru yaklaşım değildir. Dağıtımdan sonra Bağımlıdson öğesinde tanımlanan kaynakları sorgulayamaz. Gereksiz bağımlılıkların ayarlanması dağıtım süresini yavaşlatır çünkü Kaynak Yöneticisi bu kaynakları paralel olarak dağıtabuyor.
+`dependsOn`Kaynaklarınız arasındaki ilişkileri eşlemek için kullanılması, bu işlemi neden yaptığınızı anlamak önemlidir. Örneğin, kaynakların nasıl birbirine bağlı olduğunu belgelemek için `dependsOn` doğru yaklaşım değildir. Dağıtımdan sonra öğede tanımlanan kaynakları sorgulayamaz `dependsOn` . Gereksiz bağımlılıkların ayarlanması dağıtım süresini yavaşlatır çünkü Kaynak Yöneticisi bu kaynakları paralel olarak dağıtabuyor.
 
 ## <a name="child-resources"></a>Alt kaynaklar
 
-Bir [alt kaynak](child-resource-name-type.md) ve üst kaynak arasında örtük bir dağıtım bağımlılığı otomatik olarak oluşturulmaz. Alt kaynağı üst kaynaktan sonra dağıtmanız gerekiyorsa, Bağımlıdson özelliğini ayarlayın.
+Bir [alt kaynak](child-resource-name-type.md) ve üst kaynak arasında örtük bir dağıtım bağımlılığı otomatik olarak oluşturulmaz. Alt kaynağı üst kaynaktan sonra dağıtmanız gerekiyorsa, `dependsOn` özelliği ayarlayın.
 
 Aşağıdaki örnekte, bir mantıksal SQL Server ve veritabanı gösterilmektedir. Veritabanı sunucusunun bir alt öğesi olsa da, veritabanı ve sunucu arasında açık bir bağımlılık tanımlandığına dikkat edin.
 
@@ -85,13 +85,13 @@ Başvuru ve liste ifadeleri, bir kaynağın diğerine bağlı olduğunu dolaylı
 
 Örtülü bağımlılığı zorlamak için kaynağa kaynak KIMLIĞI değil, ada göre başvurun. Kaynak KIMLIĞINI başvuru veya liste işlevlerine geçirirseniz, örtük bir başvuru oluşturulmaz.
 
-Başvuru işlevinin genel biçimi:
+İşlevin genel biçimi `reference` :
 
 ```json
 reference('resourceName').propertyPath
 ```
 
-ListKeys işlevinin genel biçimi:
+İşlevin genel biçimi `listKeys` :
 
 ```json
 listKeys('resourceName', 'yyyy-mm-dd')
@@ -165,7 +165,7 @@ Aşağıdaki örnek, birden çok sanal makinenin nasıl dağıtılacağını gö
 }
 ```
 
-Aşağıdaki örnek, sanal makineyi dağıtmadan önce üç depolama hesabının nasıl dağıtılacağını göstermektedir. Kopyalama öğesinin adı olarak ayarlanmış olduğuna `storagecopy` ve sanal makine Için Bağımlıdson öğesinin de olarak ayarlandığından emin olun `storagecopy` .
+Aşağıdaki örnek, sanal makineyi dağıtmadan önce üç depolama hesabının nasıl dağıtılacağını göstermektedir. `copy`Öğesinin `name` olarak ayarlandığını `storagecopy` ve `dependsOn` sanal makine için olan öğesinin de olarak ayarlandığını unutmayın `storagecopy` .
 
 ```json
 {
@@ -213,10 +213,9 @@ Dağıtım sırasını değerlendirme ve bağımlılık hatalarını çözme hak
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Öğreticiye gitmek için bkz. [öğretici: bağımlı kaynaklarla Azure Resource Manager şablonları oluşturma](template-tutorial-create-templates-with-dependent-resources.md).
+* Öğreticiye gitmek için bkz. [öğretici: bağımlı kaynaklarla ARM şablonları oluşturma](template-tutorial-create-templates-with-dependent-resources.md).
 * Kaynak bağımlılıklarını içeren Microsoft Learn bir modül için bkz. [GELIŞMIŞ ARM şablon özelliklerini kullanarak karmaşık bulut dağıtımlarını yönetme](/learn/modules/manage-deployments-advanced-arm-template-features/).
-* Bağımlılıkları ayarlarken öneriler için bkz. [Azure Resource Manager şablonu en iyi yöntemleri](template-best-practices.md).
+* Bağımlılıkları ayarlarken öneriler için bkz. [ARM şablonu en iyi uygulamaları](template-best-practices.md).
 * Dağıtım sırasında bağımlılıklar sorunlarını giderme hakkında bilgi edinmek için bkz. [Azure Resource Manager ile yaygın Azure dağıtım hatalarıyla Ilgili sorunları giderme](common-deployment-errors.md).
-* Azure Resource Manager şablonları oluşturma hakkında bilgi edinmek için bkz. [yazma şablonları](template-syntax.md).
-* Bir şablondaki kullanılabilir işlevlerin listesi için bkz. [Şablon işlevleri](template-functions.md).
-
+* Azure Resource Manager şablonları oluşturma hakkında bilgi edinmek için bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
+* Bir şablondaki kullanılabilir işlevlerin listesi için bkz. [ARM şablon işlevleri](template-functions.md).

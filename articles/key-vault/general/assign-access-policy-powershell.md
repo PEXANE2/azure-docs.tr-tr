@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: fb28b4b678b37f69331b2ecff6272fd7aa64d191
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 4cf0393cdb0aae1b352b81df4893f874f34970cc
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287628"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934546"
 ---
 # <a name="assign-a-key-vault-access-policy-using-azure-powershell"></a>Azure PowerShell kullanarak Key Vault erişim ilkesi atama
 
@@ -51,7 +51,7 @@ Erişim ilkesini atamak istediğiniz uygulamanın, grubun veya kullanıcının n
     Get-AzADServicePrincipal -SearchString <search-string>
     ```
 
-- Gruplar: sonuçları istenen grubun adıyla filtrelemek için [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup?view=azps-2.7.0) cmdlet 'ini parametresiyle birlikte kullanın `-SearchString` :
+- Gruplar: sonuçları istenen grubun adıyla filtrelemek için [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup) cmdlet 'ini parametresiyle birlikte kullanın `-SearchString` :
 
     ```azurepowershell-interactive
     Get-AzADGroup -SearchString <search-string>
@@ -79,7 +79,6 @@ Yalnızca `-PermissionsToSecrets` `-PermissionsToKeys` `-PermissionsToCertificat
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Key Vault güvenliği: kimlik ve erişim yönetimi](overview-security.md#identity-and-access-management)
+- [Azure Key Vault güvenliği: kimlik ve erişim yönetimi](security-overview.md#identity-management)
 - [Anahtar kasanızın güvenliğini sağlayın](secure-your-key-vault.md).
 - [Geliştirici Kılavuzu Azure Key Vault](developers-guide.md)
-- [En iyi Azure Key Vault uygulamalar](best-practices.md)

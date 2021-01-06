@@ -1,20 +1,29 @@
 ---
-title: Değişiklik verilerini yakalama için Debezium ile Azure Event Hubs 'da (Önizleme) Apache Kafka Connect 'i tümleştirin
+title: Değişiklik verilerini yakalama için Azure Event Hubs üzerinde Debezium ile tümleştirme Apache Kafka bağlama
 description: Bu makalede, Kafka için Azure Event Hubs Debezium kullanımı hakkında bilgi sağlanır.
 ms.topic: how-to
 author: abhirockzz
 ms.author: abhishgu
-ms.date: 08/11/2020
-ms.openlocfilehash: ae3ef2e1f35be432558769c512845543867ef27a
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.date: 01/06/2021
+ms.openlocfilehash: 0ad1df23e71e652f7d380ffbabb542b81954e038
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505418"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935181"
 ---
-# <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview-with-debezium-for-change-data-capture"></a>Değişiklik verilerini yakalama için Debezium ile Azure Event Hubs (Önizleme) üzerinde Apache Kafka Connect desteğini tümleştirin
+# <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-with-debezium-for-change-data-capture"></a>Değişiklik verilerini yakalama için Debezium ile Azure Event Hubs 'de Apache Kafka Connect desteğini tümleştirin
 
 **Değişiklik verilerini yakalama (CDC)** , oluşturma, güncelleştirme ve silme işlemlerine yanıt olarak veritabanı tablolarındaki satır düzeyi değişiklikleri izlemek için kullanılan bir tekniktir. [Debezium](https://debezium.io/) , farklı veritabanlarında bulunan değişiklik verilerini yakalama özelliklerini (örneğin, [PostgreSQL içinde mantıksal kod çözme](https://www.postgresql.org/docs/current/static/logicaldecoding-explanation.html)) oluşturan, dağıtılmış bir platformdur. Veritabanı tabloları içindeki satır düzeyi değişikliklere dokunarak [Kafka Connect bağlayıcıları](https://debezium.io/documentation/reference/1.2/connectors/index.html) kümesi sağlar ve bunları [Apache Kafka](https://kafka.apache.org/)' a gönderilen olay akışlarına dönüştürür.
+
+> [!WARNING]
+> Apache Kafka Connect Framework 'ün yanı sıra, Debezium platformu ve bağlayıcıları **Microsoft Azure aracılığıyla ürün desteği için uygun değildir**.
+>
+> Apache Kafka Connect, dinamik yapılandırmasının, aksi takdirde sınırsız saklama ile sıkıştırılmış konularda tutulmasını kabul eder. Azure Event Hubs, [bir aracı özelliği olarak sıkıştırmayı uygulamaz](event-hubs-federation-overview.md#log-projections) ve Azure Event Hubs 'in, uzun süreli bir veri veya yapılandırma deposu olmayan gerçek zamanlı bir olay akışı altyapısı olduğu prensip.
+>
+> Apache Kafka projesi bu rolleri karıştırmaya rahat olabileceğinden, Azure bu bilgilerin uygun bir veritabanı veya yapılandırma deposunda en iyi şekilde yönetildiğini düşünmektedir.
+>
+> Birçok Apache Kafka Connect senaryosu işlevsel olacaktır, ancak Apache Kafka ve Azure Event Hubs ' saklama modelleri arasındaki bu kavramsal farklılıklar bazı yapılandırmaların beklendiği gibi çalışmamasına neden olabilir. 
 
 Bu öğretici, Azure 'da Azure [Event Hubs](./event-hubs-about.md?WT.mc_id=devto-blog-abhishgu) (Kafka için), [PostgreSQL için Azure DB](../postgresql/overview.md) ve debezium kullanarak Azure 'da değişiklik verilerini yakalama tabanlı sistem ayarlama konusunda size kılavuzluk eder. Azure Event Hubs PostgreSQL 'ten Kafka konularına veritabanı değişiklikleri akışı için [Debezium PostgreSQL bağlayıcısını](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html) kullanır
 

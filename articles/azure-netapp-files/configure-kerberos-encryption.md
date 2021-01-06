@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/09/2020
 ms.author: b-juche
-ms.openlocfilehash: 1ffbcc24a2ee386be1a8ce50b55375d5bd458df1
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 69168060cbce4a904c53d7f79895e909c8c42e01
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410105"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935232"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Azure NetApp Files için NFSv 4.1 Kerberos şifrelemesini yapılandırma
 
@@ -172,6 +172,7 @@ Krb5p 'in performans etkisi:
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 
+* [NFSv 4.1 Kerberos birimi sorunlarını giderme](troubleshoot-nfsv41-kerberos-volumes.md)
 * [Azure NetApp Files hakkında SSS](azure-netapp-files-faqs.md)
 * [Azure NetApp Files için NFS birimi oluşturma](azure-netapp-files-create-volumes.md)
 * [Active Directory bağlantısı oluşturma](azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection)

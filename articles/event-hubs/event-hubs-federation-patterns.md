@@ -3,12 +3,12 @@ title: Olay çoğaltma görev desenleri-Azure Event Hubs | Microsoft Docs
 description: Bu makale, belirli olay çoğaltma görevi desenlerini uygulamaya yönelik ayrıntılı kılavuz sağlar
 ms.topic: article
 ms.date: 12/12/2020
-ms.openlocfilehash: 494de442b636d535fa1ed6fdeeeda28db9783952
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 438964c228f060dede93abf582c9504b698db8b0
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861370"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934620"
 ---
 # <a name="event-replication-tasks-patterns"></a>Olay çoğaltma görevleri desenleri
 
@@ -124,7 +124,7 @@ Her iki senaryoyu da gerçekleştirmek ve ilgili Azure SDK 'sının olay işlemc
 
 Geçiş yaptığınız Olay Hub 'ının denetim noktası deposuna hala erişiminiz varsa, yukarıda açıklanan [yayılmış meta veriler](#service-assigned-metadata) , zaten işlenmiş ve en son kaldığınız yerden tam olarak devam eden olayları atlayabilmenize yardımcı olur.
 
-## <a name="merge"></a>Birleştir
+## <a name="merge"></a>Birleştirme
 
 Birleştirme deseninin tek bir hedefe işaret eden bir veya daha fazla çoğaltma görevi vardır. Bu, muhtemelen düzenli üreticileri aynı hedefe olay gönderiyor.
 

@@ -10,16 +10,18 @@ ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: sudbalas
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d1b1c27fe0136220d5a1851af4a5c24102a37da1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3639237a0dc34c521fd3fa52631fdb19c26ec284
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015562"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936354"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Azure Key Vault güvenlik duvarlarını ve sanal ağları yapılandırma
 
 Bu makale, Azure Key Vault güvenlik duvarının nasıl yapılandırılacağı hakkında rehberlik sağlar. Bu belge, Key Vault güvenlik duvarının farklı yapılandırmalarının ayrıntılarını kapsar ve Azure Key Vault diğer uygulamalarla ve Azure hizmetleriyle çalışmak üzere nasıl yapılandırılacağına ilişkin adım adım yönergeler sağlar.
+
+Daha fazla bilgi için bkz. [sanal ağ hizmeti uç noktaları Azure Key Vault](overview-vnet-service-endpoints.md).
 
 ## <a name="firewall-settings"></a>Güvenlik Duvarı ayarları
 
@@ -74,7 +76,7 @@ Anahtar Kasanızda bir özel bağlantı bağlantısının nasıl yapılandırıl
 > * IP ağ kurallarına yalnızca genel IP adresleri için izin verilir. Özel ağlar için ayrılan IP adresi aralıklarına (RFC 1918 ' de tanımlandığı gibi) IP kurallarında izin verilmez. Özel ağlarda **10.**, **172.16-31** ve 192,168 ile başlayan adresler bulunur **.** 
 > * Şu anda yalnızca IPv4 adresleri destekleniyor.
 
-## <a name="use-the-azure-portal"></a>Azure portalı kullanma
+## <a name="use-the-azure-portal"></a>Azure portalını kullanma
 
 Azure portal kullanarak Key Vault güvenlik duvarlarını ve sanal ağları yapılandırma:
 
@@ -85,7 +87,7 @@ Azure portal kullanarak Key Vault güvenlik duvarlarını ve sanal ağları yap�
 5. Açılan yeni dikey pencerede, bu Anahtar Kasası 'na erişime izin vermek istediğiniz aboneliği, sanal ağları ve alt ağları seçin. Seçtiğiniz sanal ağlarda ve alt ağlarda hizmet uç noktaları etkinleştirilmemişse, hizmet uç noktalarını etkinleştirmek istediğinizi onaylayın ve **Etkinleştir**' i seçin. Etkili olması 15 dakika kadar sürebilir.
 6. **IP ağları** altında [CIDR (sınıfsız etki alanları arası yönlendirme) gösteriminde](https://tools.ietf.org/html/rfc4632) veya tek tek IP adreslerinde IPv4 adresi aralıklarını yazarak IPv4 adres aralıkları ekleyin.
 7. Microsoft güvenilen hizmetlerin Key Vault güvenlik duvarını atlamasına izin vermek istiyorsanız ' Evet ' seçeneğini belirleyin. Geçerli Key Vault güvenilen hizmetlerin tam listesi için lütfen aşağıdaki bağlantıya bakın. [Güvenilen Hizmetleri Azure Key Vault](./overview-vnet-service-endpoints.md#trusted-services)
-7. **Kaydet**'i seçin.
+7. **Kaydet**’i seçin.
 
 Ayrıca yeni sanal ağlar ve alt ağlar ekleyebilir ve ardından **+ Yeni sanal ağ ekle**' yi seçerek yeni oluşturulan sanal ağlar ve alt ağlar için hizmet uç noktalarını etkinleştirebilirsiniz. Ardından istemleri izleyin.
 
@@ -167,10 +169,10 @@ PowerShell kullanarak Key Vault güvenlik duvarlarını ve sanal ağları yapıl
 
 ## <a name="references"></a>Başvurular
 * ARM şablon başvurusu: [Azure Key Vault ARM şablon başvurusu](/azure/templates/Microsoft.KeyVault/vaults)
-* Azure CLı komutları: [az keykasa Network-Rule](/cli/azure/keyvault/network-rule?view=azure-cli-latest)
+* Azure CLı komutları: [az keykasa Network-Rule](/cli/azure/keyvault/network-rule)
 * Azure PowerShell cmdlet 'leri: [Get-Azkeykasa,](/powershell/module/az.keyvault/get-azkeyvault) [Add-azkeyvaultnetworkrule](/powershell/module/az.KeyVault/Add-azKeyVaultNetworkRule), [Remove-azkeyvaultnetworkrule](/powershell/module/az.KeyVault/Remove-azKeyVaultNetworkRule), [Update-azkeyvaultnetworkruleset](/powershell/module/az.KeyVault/Update-azKeyVaultNetworkRuleSet)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Key Vault için sanal ağ hizmeti uç noktaları](overview-vnet-service-endpoints.md)
-* [Anahtar kasanızın güvenliğini sağlama](secure-your-key-vault.md)
+* [Azure Key Vault güvenliğe genel bakış](security-overview.md)

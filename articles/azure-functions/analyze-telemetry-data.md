@@ -4,12 +4,12 @@ description: Tarafından toplanan ve Azure Application Insights 'de depolanan Az
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1d8d9cc9a7a4111e98b1d9141957769d6f157d45
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 14b6ed3964900e3395ca335c301dfd0285da46e7
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027739"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937306"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>Application Insights 'de Azure Işlevleri telemetrisini çözümleyin 
 
@@ -108,7 +108,7 @@ traces
 
 ## <a name="consumption-plan-specific-metrics"></a>Tüketim planına özgü ölçümler
 
-Bir [Tüketim planında](functions-scale.md#consumption-plan)çalışırken, tek bir işlev yürütmenin yürütme *ücreti* *GB saniye* cinsinden ölçülür. Yürütme maliyeti, bellek kullanımını yürütme süresi ile birleştirerek hesaplanır. Daha fazla bilgi edinmek için bkz. [Tüketim planı maliyetlerini tahmin](functions-consumption-costs.md)etme.
+Bir [Tüketim planında](consumption-plan.md)çalışırken, tek bir işlev yürütmenin yürütme *ücreti* *GB saniye* cinsinden ölçülür. Yürütme maliyeti, bellek kullanımını yürütme süresi ile birleştirerek hesaplanır. Daha fazla bilgi edinmek için bkz. [Tüketim planı maliyetlerini tahmin](functions-consumption-costs.md)etme.
 
 Aşağıdaki telemetri sorguları, tüketim planında çalışan işlevlerin maliyetini etkileyen ölçümlere özgüdür.
 

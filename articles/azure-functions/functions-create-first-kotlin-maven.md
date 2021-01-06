@@ -7,16 +7,16 @@ ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: acb4290a90532b38f44a957e33c69f7d2b3f11f8
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 167e7c447fe43851255677a44043c508cbdc4239
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104827"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934841"
 ---
 # <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>Hızlı başlangıç: Kotlin ve Maven ile ilk işlevinizi oluşturma
 
-Bu makale, Azure Işlevleri 'ne bir Kotlin işlev projesi derlemek ve yayımlamak için Maven komut satırı aracını kullanarak size rehberlik eder. Tüm adımları tamamladığınızda işleviniz Azure'da [Tüketim Planı](functions-scale.md#consumption-plan)'nda çalışmaya başlar ve HTTP isteği kullanılarak tetiklenebilir.
+Bu makale, Azure Işlevleri 'ne bir Kotlin işlev projesi derlemek ve yayımlamak için Maven komut satırı aracını kullanarak size rehberlik eder. Tüm adımları tamamladığınızda işleviniz Azure'da [Tüketim Planı](consumption-plan.md)'nda çalışmaya başlar ve HTTP isteği kullanılarak tetiklenebilir.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

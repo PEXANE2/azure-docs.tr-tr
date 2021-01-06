@@ -5,12 +5,12 @@ author: anthonychu
 ms.author: antchu
 ms.date: 12/1/2020
 ms.topic: article
-ms.openlocfilehash: 099f90ba8c5d9dabb6c4c505e50d8c077e3eaf0f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: f527b387afc01eb60bd582adc13a4ad3d516055b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746038"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937000"
 ---
 # <a name="azure-functions-custom-handlers"></a>Azure Işlevleri özel işleyiciler
 
@@ -193,7 +193,7 @@ Kurala göre, işlev yanıtları anahtar/değer çiftleri olarak biçimlendirili
 | ------------- | --------- | ------------------------------------------------------------ |
 | `Outputs`     | object    | `bindings` *function.json* öğesinde dizi tarafından tanımlanan yanıt değerlerini barındırır.<br /><br />Örneğin, bir işlev "myQueueOutput" adlı bir sıra çıkış bağlaması ile yapılandırıldıysa `Outputs` adlı bir anahtar içerir `myQueueOutput` ve bu, özel işleyici tarafından kuyruğa gönderilen iletilere ayarlanır. |
 | `Logs`        | array     | İletiler, Işlev çağırma günlüklerinde görüntülenir.<br /><br />Azure 'da çalışırken iletiler Application Insights görüntülenir. |
-| `ReturnValue` | string    | function.jsdosyadaki bir çıktı yapılandırıldığında bir yanıt sağlamak için kullanılır `$return` . *function.json* |
+| `ReturnValue` | string    | function.jsdosyadaki bir çıktı yapılandırıldığında bir yanıt sağlamak için kullanılır `$return` .  |
 
 Bu bir yanıt yükünün örneğidir.
 
@@ -407,7 +407,7 @@ Bu, bu işleyicinin Işlevler ana bilgisayarına döndürdüğü örnek bir yük
 Ek bağlama veya çıkış içermeyen HTTP ile tetiklenen işlevlerde, işleyicinizin özel işleyici [isteği](#request-payload) ve [Yanıt](#response-payload) yükü yerine http isteği ve yanıtı ile doğrudan çalışmasını isteyebilirsiniz. Bu davranış ayarı kullanılarak *host.js* ' de yapılandırılabilir `enableForwardingHttpRequest` .
 
 > [!IMPORTANT]
-> Özel işleyiciler özelliğinin birincil amacı, Azure Işlevleri üzerinde şu anda birinci sınıf desteği olmayan dilleri ve çalışma zamanlarını etkinleştirmektir. Özel işleyiciler kullanarak Web uygulamalarını çalıştırmak mümkün olsa da, Azure Işlevleri standart bir ters proxy değildir. Yanıt akışı, HTTP/2 ve WebSockets gibi bazı özellikler kullanılamaz. Belirli üstbilgiler ve rotalar gibi HTTP isteğinin bazı bileşenleri kısıtlanabilir. Uygulamanız aşırı [soğuk başlatmaya](functions-scale.md#cold-start)da karşılaşabilir.
+> Özel işleyiciler özelliğinin birincil amacı, Azure Işlevleri üzerinde şu anda birinci sınıf desteği olmayan dilleri ve çalışma zamanlarını etkinleştirmektir. Özel işleyiciler kullanarak Web uygulamalarını çalıştırmak mümkün olsa da, Azure Işlevleri standart bir ters proxy değildir. Yanıt akışı, HTTP/2 ve WebSockets gibi bazı özellikler kullanılamaz. Belirli üstbilgiler ve rotalar gibi HTTP isteğinin bazı bileşenleri kısıtlanabilir. Uygulamanız aşırı [soğuk başlatmaya](event-driven-scaling.md#cold-start)da karşılaşabilir.
 >
 > Bu koşullara yönelik olarak, [Azure App Service](../app-service/overview.md)Web uygulamalarınızı çalıştırmayı göz önünde bulundurun.
 
@@ -572,7 +572,7 @@ Azure 'da günlük iletilerini görüntülemek için [Application Insights izlem
 
 ### <a name="test-custom-handler-in-isolation"></a>Yalıtım halinde test özel işleyicisi
 
-Özel işleyici uygulamaları bir Web sunucusu işlemidir, bu nedenle, bir veya daha fazla [izleme veya Postman](https://www.postman.com/)gibi bir araç kullanarak sahte [http istekleri](#request-payload) göndererek kendi ve test işlev etkinleştirmeleri üzerinde [cURL](https://curl.haxx.se/) başlatmak faydalı olabilir.
+Özel işleyici uygulamaları bir Web sunucusu işlemidir, bu nedenle, bir veya daha fazla [izleme veya Postman](https://www.postman.com/)gibi bir araç kullanarak sahte [http istekleri](#request-payload) göndererek kendi ve test işlev etkinleştirmeleri üzerinde [](https://curl.haxx.se/) başlatmak faydalı olabilir.
 
 Bu stratejiyi, özel işleyicinizde otomatik testler çalıştırmak için CI/CD işlem hatlarınız içinde de kullanabilirsiniz.
 
@@ -580,7 +580,7 @@ Bu stratejiyi, özel işleyicinizde otomatik testler çalıştırmak için CI/CD
 
 Özel işleyiciler, tipik bir Azure Işlevleri uygulamasıyla aynı ortamda çalışır. Ortamın çalışması için gereken tüm bağımlılıkları içerdiğinden emin olmak için işleyicinizi test edin. Ek bağımlılıklar gerektiren uygulamalar için, bunları Azure Işlevleri [Premium planında](functions-premium-plan.md)barındırılan [özel bir kapsayıcı görüntüsü](functions-create-function-linux-custom-image.md) kullanarak çalıştırmanız gerekebilir.
 
-### <a name="get-support"></a>Destek alma
+### <a name="get-support"></a>Destek alın
 
 Özel işleyicilerle bir işlev uygulaması için yardıma ihtiyacınız varsa, normal destek kanalları aracılığıyla bir istek gönderebilirsiniz. Ancak, özel işleyiciler uygulamaları oluşturmak için kullanılan çok çeşitli diller nedeniyle destek sınırsız değildir.
 

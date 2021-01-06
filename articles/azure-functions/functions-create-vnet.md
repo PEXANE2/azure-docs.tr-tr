@@ -3,12 +3,12 @@ title: Azure Işlevlerini Azure sanal ağıyla tümleştirme
 description: Bir Azure sanal ağına bir işlev bağlamayı gösteren adım adım öğretici
 ms.topic: article
 ms.date: 4/23/2020
-ms.openlocfilehash: f50c923104fdfcf26f400f20f0de66a82eb3d245
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efc936111d162d73b1cc5465ae6b677c9006ab32
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87387532"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937029"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Öğretici: İşlevleri bir Azure sanal ağı ile tümleştirme
 
@@ -29,7 +29,7 @@ Aşağıdaki diyagramda, oluşturduğunuz çözümün mimarisi gösterilmektedir
 
 Premium planda çalışan işlevler, VNet tümleştirme özelliği de dahil olmak üzere Azure App Service Web Apps ile aynı barındırma özelliklerine sahiptir. Sorun giderme ve gelişmiş yapılandırma dahil VNet tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [uygulamanızı bir Azure sanal ağı Ile tümleştirme](../app-service/web-sites-integrate-with-vnet.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide IP adresleme ve alt ağ oluşturma hakkında bilgi almanız önemlidir. [Bu makaleyle, adresleme ve alt ağ oluşturma temellerini kapsayan bir](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics)başlangıç yapabilirsiniz. Daha birçok makale ve video çevrimiçi olarak kullanılabilir.
 
@@ -60,9 +60,9 @@ Daha sonra, bir sanal ağ içinde WordPress çalıştıran önceden yapılandır
     | **Abonelik** | Aboneliğiniz | Kaynaklarınızın oluşturulduğu abonelik. | 
     | **[Kaynak grubu](../azure-resource-manager/management/overview.md)**  | myResourceGroup | `myResourceGroup`İşlev uygulamanız ile oluşturduğunuz kaynak grubunu seçin. İşlev uygulaması, WordPress VM ve barındırma planı için aynı kaynak grubunu kullanmak, bu öğreticiyle işiniz bittiğinde kaynakları temizlemeyi kolaylaştırır. |
     | **Sanal makine adı** | VNET-Wordpress | VM adının kaynak grubunda benzersiz olması gerekir |
-    | **[Bölge](https://azure.microsoft.com/regions/)** | 'Ya Batı Avrupa | Size yakın veya sanal makineye erişen işlevlerin yakınında bir bölge seçin. |
+    | **[Region](https://azure.microsoft.com/regions/)** | 'Ya Batı Avrupa | Size yakın veya sanal makineye erişen işlevlerin yakınında bir bölge seçin. |
     | **Boyut** | B1S | **Boyutu Değiştir** ' i seçin ve ardından 1 vCPU ve 1 GB belleği olan B1S standart görüntüsünü seçin. |
-    | **Kimlik doğrulaması türü** | Parola | Parola kimlik doğrulamasını kullanmak için bir **Kullanıcı adı**, güvenli bir **parola**belirtmeniz ve ardından **parolayı onaylamanız**gerekir. Bu öğreticide, sorun gidermenize gerek olmadığı takdirde VM 'de oturum açmanız gerekmez. |
+    | **Kimlik doğrulaması türü** | Parola | Parola kimlik doğrulamasını kullanmak için bir **Kullanıcı adı**, güvenli bir **parola** belirtmeniz ve ardından **parolayı onaylamanız** gerekir. Bu öğreticide, sorun gidermenize gerek olmadığı takdirde VM 'de oturum açmanız gerekmez. |
 
 1. **Ağ** sekmesini seçin ve sanal ağları Yapılandır altında **Yeni oluştur**' u seçin.
 
@@ -79,15 +79,15 @@ Daha sonra, bir sanal ağ içinde WordPress çalıştıran önceden yapılandır
 
 1. Sanal ağı oluşturmak için **Tamam ' ı** seçin.
 
-1. **Ağ** sekmesine geri döndüğünüzde **genel IP**için **yok** ' u seçin.
+1. **Ağ** sekmesine geri döndüğünüzde **genel IP** için **yok** ' u seçin.
 
 1. **Yönetim** sekmesini seçin ve ardından **Tanılama depolama hesabı**' nda, işlev uygulamanızla oluşturduğunuz depolama hesabını seçin.
 
 1. **Gözden geçir ve oluştur**’u seçin. Doğrulama tamamlandıktan sonra **Oluştur**' u seçin. VM oluşturma işlemi birkaç dakika sürer. Oluşturulan VM yalnızca sanal ağa erişebilir.
 
-1. VM oluşturulduktan sonra, yeni VM 'nizin sayfasını görüntülemek için **Kaynağa Git** ' i seçin ve ardından **Ayarlar**altında **ağ** ' ı seçin.
+1. VM oluşturulduktan sonra, yeni VM 'nizin sayfasını görüntülemek için **Kaynağa Git** ' i seçin ve ardından **Ayarlar** altında **ağ** ' ı seçin.
 
-1. **Genel IP**bulunmadığından emin olun. İşlev uygulamanızdan sanal makineye bağlanmak için kullandığınız **özel IP**'yi bir yere unutmayın.
+1. **Genel IP** bulunmadığından emin olun. İşlev uygulamanızdan sanal makineye bağlanmak için kullandığınız **özel IP**'yi bir yere unutmayın.
 
     ![VM 'deki ağ ayarları](./media/functions-create-vnet/vm-networking.png)
 
@@ -99,13 +99,13 @@ Bir sanal ağdaki VM 'de çalışan bir WordPress sitesi ile artık işlev uygul
 
 1. Yeni işlev uygulamanızda, sol taraftaki menüden **ağ** ' ı seçin.
 
-1. **VNET tümleştirmesi**altında, **yapılandırmak Için buraya tıklayın ' ı**seçin.
+1. **VNET tümleştirmesi** altında, **yapılandırmak Için buraya tıklayın ' ı** seçin.
 
     :::image type="content" source="./media/functions-create-vnet/networking-0.png" alt-text="İşlev uygulamasındaki ağı seçin":::
 
 1. **Sanal ağ tümleştirmesi** sayfasında **VNET Ekle**' yi seçin.
 
-    :::image type="content" source="./media/functions-create-vnet/networking-2.png" alt-text="İşlev uygulamasındaki ağı seçin":::
+    :::image type="content" source="./media/functions-create-vnet/networking-2.png" alt-text="VNet tümleştirme önizlemesini ekleyin":::
 
 1. **Ağ özelliği durumu**' nda, görüntünün altındaki tabloda bulunan ayarları kullanın:
 
@@ -129,7 +129,7 @@ VNet tümleştirmesi etkinken, sanal ağda çalışan VM 'ye istekleri iletmek i
 
 1. İşlev uygulamanızda, sol menüden  **proxy 'ler** ' i seçin ve ardından **Ekle**' yi seçin. Görüntünün altındaki tabloda bulunan ara sunucu ayarlarını kullanın:
 
-    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="İşlev uygulamasındaki ağı seçin":::
+    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="Proxy ayarlarını tanımlama":::
 
     | Ayar  | Önerilen değer  | Açıklama      |
     | -------- | ---------------- | ---------------- |
@@ -141,7 +141,7 @@ VNet tümleştirmesi etkinken, sanal ağda çalışan VM 'ye istekleri iletmek i
 
 ## <a name="try-it-out"></a>Deneyin
 
-1. Tarayıcınızda, **arka uç URL 'si**olarak kullandığınız URL 'ye erişmeyi deneyin. Beklendiği gibi, istek zaman aşımına uğrar. WordPress siteniz internet 'e değil yalnızca sanal ağınıza bağlı olduğundan zaman aşımı oluşur.
+1. Tarayıcınızda, **arka uç URL 'si** olarak kullandığınız URL 'ye erişmeyi deneyin. Beklendiği gibi, istek zaman aşımına uğrar. WordPress siteniz internet 'e değil yalnızca sanal ağınıza bağlı olduğundan zaman aşımı oluşur.
 
 1. **Proxy URL 'si** değerini yeni proxy 'nizden kopyalayıp tarayıcınızın adres çubuğuna yapıştırın. Döndürülen görüntü, sanal ağınızın içinde çalışan WordPress sitesinden yapılır.
 
@@ -160,4 +160,4 @@ Premium planda çalışan işlevler, PremiumV2 planlarındaki Web Apps ile aynı
 > [!div class="nextstepaction"]
 > [Işlevlerde ağ seçenekleri hakkında daha fazla bilgi edinin](./functions-networking-options.md)
 
-[Premium planı]: functions-scale.md#premium-plan
+[Premium planı]: functions-premium-plan.md

@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: af9490433c344c712da55e9b29bf9df364380736
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 61ed3ed274505101c65e251260bd759fe78f7b31
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422544"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936796"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Işlevleri PowerShell Geliştirici Kılavuzu
 
@@ -126,7 +126,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 Çağırmak için geçerli parametreler aşağıda verilmiştir `Push-OutputBinding` :
 
-| Ad | Tür | Konum | Açıklama |
+| Ad | Tür | Konum | Description |
 | ---- | ---- |  -------- | ----------- |
 | **`-Name`** | Dize | 1 | Ayarlamak istediğiniz çıkış bağlamasının adı. |
 | **`-Value`** | Nesne | 2 | Ayarlamak istediğiniz çıkış bağlamasının değeri, işlem hattı ByValue 'dan kabul edilir. |
@@ -227,7 +227,7 @@ MyQueue                        myData
 
 Joker karakterler (*) ' de desteklenir `Get-OutputBinding` .
 
-## <a name="logging"></a>Günlüğe Kaydetme
+## <a name="logging"></a>Günlüğe kaydetme
 
 PowerShell işlevlerinde günlüğe kaydetme, normal PowerShell günlüğü gibi çalışır. Günlük cmdlet 'lerini her bir çıkış akışına yazmak için kullanabilirsiniz. Her cmdlet, Işlevleri tarafından kullanılan bir günlük düzeyiyle eşlenir.
 
@@ -388,7 +388,7 @@ Aşağıdaki tabloda, Işlevlerin çalışma zamanının her ana sürümü için
 
 | İşlevler sürümü | PowerShell sürümü                               | .NET sürümü  | 
 |-------------------|--------------------------------------------------|---------------|
-| 3. x (önerilir) | PowerShell 7 (önerilir)<br/>PowerShell Core 6 | .NET Core 3,1<br/>.NET Core 2.1 |
+| 3. x (önerilir) | PowerShell 7 (önerilir)<br/>PowerShell Core 6 | .NET Core 3.1<br/>.NET Core 2.1 |
 | 2.x               | PowerShell Core 6                                | .NET Core 2.2 |
 
 Geçerli sürümü `$PSVersionTable` herhangi bir işlevden yazdırarak görebilirsiniz.
@@ -418,11 +418,11 @@ Yerel olarak çalıştırılırken Azure Işlevleri çalışma zamanı varsayıl
 
 1. [Azure Portal](https://portal.azure.com), işlev uygulamanıza gidin.
 
-1. **Ayarlar** altında **yapılandırma** ' yı seçin. **Genel ayarlar** sekmesinde **PowerShell sürümünü** bulun. 
+1. **Ayarlar** altında **yapılandırma**' yı seçin. **Genel ayarlar** sekmesinde **PowerShell sürümünü** bulun. 
 
     :::image type="content" source="media/functions-reference-powershell/change-powershell-version-portal.png" alt-text="İşlev uygulaması tarafından kullanılan PowerShell sürümünü seçin"::: 
 
-1. İstediğiniz **PowerShell Çekirdek sürümünüzü** seçin ve **Kaydet** ' i seçin. Bekleyen yeniden başlatma hakkında uyarı olduğunda **devam** ' ı seçin. İşlev uygulaması, seçilen PowerShell sürümünde yeniden başlatılır. 
+1. İstediğiniz **PowerShell Çekirdek sürümünüzü** seçin ve **Kaydet**' i seçin. Bekleyen yeniden başlatma hakkında uyarı olduğunda **devam**' ı seçin. İşlev uygulaması, seçilen PowerShell sürümünde yeniden başlatılır. 
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -470,7 +470,7 @@ requirements.psd1 dosyasını güncelleştirdiğinizde, bir yeniden başlatmanı
 
 Aşağıdaki uygulama ayarları, yönetilen bağımlılıkların nasıl indirileceğini ve yükleneceğini değiştirmek için kullanılabilir. Uygulama yükseltmeniz içinde başlar `MDMaxBackgroundUpgradePeriod` ve yükseltme işlemi yaklaşık olarak içinde tamamlanır `MDNewSnapshotCheckPeriod` .
 
-| İşlev Uygulaması ayarı              | Varsayılan değer             | Açıklama                                         |
+| İşlev Uygulaması ayarı              | Varsayılan değer             | Description                                         |
 |   -----------------------------   |   -------------------     |  -----------------------------------------------    |
 | **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00` (7 gün)     | Her PowerShell çalışan işlemi, işlem başlatma ve sonrasında PowerShell Galerisi modül yükseltmelerini denetlemeyi başlatır `MDMaxBackgroundUpgradePeriod` . PowerShell Galerisi yeni bir modül sürümü kullanılabilir olduğunda, dosya sistemine yüklenir ve PowerShell çalışanları için kullanılabilir hale getirilir. Bu değeri azaltmak, işlev uygulamanızın daha önce daha yeni modül sürümlerini almasını sağlar, ancak aynı zamanda uygulama kaynak kullanımını (ağ g/ç, CPU, depolama) de artırır. Bu değerin artırılması uygulamanın kaynak kullanımını düşürür, ancak uygulamanıza yeni modül sürümlerinin teslim edilmesini de erteleyebilir. | 
 | **`MDNewSnapshotCheckPeriod`**         | `01:00:00` (1 saat)       | Yeni modül sürümleri dosya sistemine yüklendikten sonra, her PowerShell çalışan işleminin yeniden başlatılması gerekir. PowerShell çalışanlarını yeniden başlatmak, geçerli işlev yürütmesini kesintiye uğratmak için uygulamanızın kullanılabilirliğini etkiler. Tüm PowerShell çalışan süreçler yeniden başlatılana kadar, işlev etkinleştirmeleri eski veya yeni modül sürümlerini kullanabilir. Tüm PowerShell çalışanlarının yeniden başlatılması içinde tamamlanır `MDNewSnapshotCheckPeriod` . Bu değerin artırılması kesintiler sıklığını düşürür, ancak işlev etkinleştirmeleri eski veya yeni modül sürümlerini belirleyici olmayan şekilde kullandığınızda zaman dilimini de artırabilir. |
@@ -525,7 +525,7 @@ Birçok modül genellikle PowerShell dil çalışanı tarafından kullanılır. 
 Geçerli modüller listesi aşağıdaki gibidir:
 
 * [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive):, ve gibi Arşivlerle çalışmak için kullanılan `.zip` modül `.nupkg` .
-* **Threadjob** : PowerShell iş API 'lerinin iş parçacığı tabanlı bir uygulamasıdır.
+* **Threadjob**: PowerShell iş API 'lerinin iş parçacığı tabanlı bir uygulamasıdır.
 
 Varsayılan olarak, Işlevler bu modüllerin en son sürümünü kullanır. Belirli bir modül sürümünü kullanmak için, söz konusu sürümü `Modules` işlev uygulamanızın klasörüne yerleştirin.
 
@@ -649,11 +649,11 @@ PowerShell işlevleriyle çalışırken, aşağıdaki bölümlerde yer aldığı
 
 ### <a name="cold-start"></a>Soğuk başlangıç
 
-[Sunucusuz barındırma modelinde](functions-scale.md#consumption-plan)Azure işlevleri geliştirirken soğuk başlar. *Soğuk başlatma* , bir isteği işlemek için işlev uygulamanızın çalışmaya başlaması için gereken süreyi ifade eder. İşlev uygulamanız işlem yapılmayan dönemler sırasında kapandığı için, tüketim planında soğuk başlatma daha sık gerçekleşir.
+[Sunucusuz barındırma modelinde](consumption-plan.md)Azure işlevleri geliştirirken soğuk başlar. *Soğuk başlatma* , bir isteği işlemek için işlev uygulamanızın çalışmaya başlaması için gereken süreyi ifade eder. İşlev uygulamanız işlem yapılmayan dönemler sırasında kapandığı için, tüketim planında soğuk başlatma daha sık gerçekleşir.
 
 ### <a name="bundle-modules-instead-of-using-install-module"></a>Kullanmak yerine modülleri paketleyin `Install-Module`
 
-Komut dosyası her çağrıdan çalıştırılır. `Install-Module`Betiğinizdeki kullanmaktan kaçının. Bunun yerine `Save-Module` yayımlamadan önce kullanın, böylece işlevinizin modül indirmede zaman harcanmasına sahip olmaması gerekir. Soğuk başlıyorsa işlevlerinizi etkilese, işlev uygulamanızı *her zaman açık* veya bir [Premium plana](functions-scale.md#premium-plan)ayarlanmış bir [App Service plana](functions-scale.md#app-service-plan) dağıtmaya göz önünde bulundurun.
+Komut dosyası her çağrıdan çalıştırılır. `Install-Module`Betiğinizdeki kullanmaktan kaçının. Bunun yerine `Save-Module` yayımlamadan önce kullanın, böylece işlevinizin modül indirmede zaman harcanmasına sahip olmaması gerekir. Soğuk başlıyorsa işlevlerinizi etkilese, işlev uygulamanızı *her zaman açık* veya bir [Premium plana](functions-premium-plan.md)ayarlanmış bir [App Service plana](dedicated-plan.md) dağıtmaya göz önünde bulundurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

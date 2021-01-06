@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 12/16/2020
+ms.date: 01/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro R so I can use it to transfer data to Azure.
-ms.openlocfilehash: 7ca9b21838d35b54b4ed84d5aaf3aa797b02d9e0
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: dd0b6833c4c51c218497cea4fec04390200edff4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630777"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935365"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-r"></a>Öğretici: Azure Stack Edge Pro R 'yi dağıtmaya hazırlanma
 
-Bu, Azure Stack Edge Pro R 'yi tamamen dağıtmak için gereken dağıtım öğreticilerinde ilk öğreticidir. Bu öğreticide, Azure portal Azure Stack Edge kaynağını dağıtmaya yönelik nasıl hazırlanılacağı açıklanmaktadır. Öğretici, kesintisiz güç kaynağı (UPS) ile birlikte gelen 1 düğümlü Azure Stack Edge Pro R cihazını kullanır.
+Bu öğretici, Azure Stack Edge Pro R 'yi tamamen dağıtmak için gereken dağıtım öğreticilerinde ilkidir. Bu öğreticide, Azure portal Azure Stack Edge kaynağını dağıtmaya yönelik nasıl hazırlanılacağı açıklanmaktadır. Öğretici, kesintisiz güç kaynağı (UPS) ile birlikte gelen 1 düğümlü Azure Stack Edge Pro R cihazını kullanır.
 
 Kurulum ve yapılandırma işlemini tamamlamak için yönetici ayrıcalıkları gerekir. Portal hazırlığı 10 dakikadan kısa sürer.
 
@@ -37,7 +37,7 @@ Azure Stack Edge Pro R 'yi dağıtmak için, önceden tanımlanmış sırada aş
 | --- | --- |
 | **Hazırlama** |Bu adımların, yaklaşan dağıtım için hazırlanmasından tamamlanması gerekir. |
 | **[Dağıtım yapılandırma denetim listesi](#deployment-configuration-checklist)** |Dağıtımdan önce ve dağıtım sırasında bilgi toplamak ve bilgileri kaydetmek için bu denetim listesini kullanın. |
-| **[Dağıtım önkoşulları](#prerequisites)** |Bunlar, ortamın dağıtım için hazır olduğunu doğrular. |
+| **[Dağıtım önkoşulları](#prerequisites)** |Bu Önkoşullar, ortamın dağıtım için hazırlandığını doğrular. |
 |  | |
 |**Dağıtım öğreticileri** |Azure Stack Edge Pro R cihazınızı üretime dağıtmak için bu öğreticiler gereklidir. |
 |**[1. cihaz için Azure portal hazırlayın](azure-stack-edge-pro-r-deploy-prep.md)** |Azure Stack Edge kaynağını bir Azure Stack Box Edge fiziksel cihazı yüklemeden önce oluşturun ve yapılandırın. |
@@ -47,7 +47,7 @@ Azure Stack Edge Pro R 'yi dağıtmak için, önceden tanımlanmış sırada aş
 |**[5. cihaz ayarlarını yapılandırma](azure-stack-edge-pro-r-deploy-set-up-device-update-time.md)** |Bir cihaz adı ve DNS etki alanı atayın, güncelleştirme sunucusunu ve cihaz zamanını yapılandırın. |
 |**[6. güvenlik ayarlarını yapılandırma](azure-stack-edge-pro-r-deploy-configure-certificates-vpn-encryption.md)** |Cihazınız için sertifikaları, VPN, bekleyen şifrelemeyi yapılandırın. Cihaz tarafından oluşturulan sertifikaları kullanın veya kendi sertifikalarınızı getirin.   |
 |**[7. cihazı etkinleştirin](azure-stack-edge-pro-r-deploy-activate.md)** |Cihazı etkinleştirmek için hizmetten etkinleştirme anahtarını kullanın. Cihaz, SMB veya NFS paylaşımlarını ayarlamaya veya REST aracılığıyla bağlamaya hazırlanıyor. |
-|**[8. işlem yapılandırma](azure-stack-edge-gpu-deploy-configure-compute.md)** |Cihazınızda işlem rolünü yapılandırın. Bu, bir Kubernetes kümesi de oluşturur. |
+|**[8. işlem yapılandırma](azure-stack-edge-gpu-deploy-configure-compute.md)** |Cihazınızda işlem rolünü yapılandırın. Bir Kubernetes kümesi de oluşturulur. |
 
 Artık Azure portalını ayarlamaya başlayabilirsiniz.
 
@@ -55,7 +55,7 @@ Artık Azure portalını ayarlamaya başlayabilirsiniz.
 
 Cihazınızı dağıtmadan önce, Azure Stack Edge Pro cihazınızda yazılımı yapılandırmak için bilgi toplamanız gerekir. Bu bilgilerin bir bölümünü önceden hazırlamak, cihazı ortamınızda dağıtma işlemini kolaylaştırmaya yardımcı olur. Cihazınızı dağıtırken yapılandırma ayrıntılarını göz önünde bırakmak için [Azure Stack Edge Pro R dağıtım yapılandırma denetim listesini](azure-stack-edge-pro-r-deploy-checklist.md) kullanın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Stack Edge kaynağınız, Azure Stack Edge cihazınız ve veri merkezi ağı için yapılandırma önkoşulları aşağıda verilmiştir.
 
@@ -109,7 +109,7 @@ Azure Stack Edge kaynağı oluşturmak için Azure portal aşağıdaki adımlar�
     
     |Ayar  |Değer  |
     |---------|---------|
-    |Abonelik    |Bu, önceki seçime göre otomatik olarak doldurulur. Abonelik fatura hesabınıza bağlıdır. |
+    |Abonelik    |Abonelik, önceki seçime göre otomatik olarak doldurulur. Abonelik fatura hesabınıza bağlıdır. |
     |Kaynak grubu  |Mevcut grubu seçin veya yeni bir grup oluşturun.<br>[Azure Kaynak Grupları](../azure-resource-manager/management/overview.md) hakkında daha fazla bilgi edinin.     |
 
 7. Aşağıdaki **örnek ayrıntılarını** girin veya seçin.
@@ -117,7 +117,7 @@ Azure Stack Edge kaynağı oluşturmak için Azure portal aşağıdaki adımlar�
     |Ayar  |Değer  |
     |---------|---------|
     |Ad   | Kaynağı tanımlamak için kolay bir ad.<br>Ad 2 ile 50 karakter arasında olmalı, harf, rakam ve kısa çizgilerden oluşmalıdır.<br> Ad bir harf veya rakamla başlar ve biter.        |
-    |Bölge     |Azure Stack Edge kaynağının kullanılabildiği tüm bölgelerin listesi için bkz. [bölgeye göre kullanılabilir Azure ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Kamu kullanıyorsanız, tüm kamu bölgeleri [Azure bölgelerinde](https://azure.microsoft.com/global-infrastructure/regions/)gösterildiği gibi kullanılabilir.<br> Cihazınızı dağıtmak istediğiniz coğrafi bölgeye yakın bir konum seçin.|
+    |Region     |Azure Stack Edge kaynağının kullanılabildiği tüm bölgelerin listesi için bkz. [bölgeye göre kullanılabilir Azure ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Kamu kullanıyorsanız, tüm kamu bölgeleri [Azure bölgelerinde](https://azure.microsoft.com/global-infrastructure/regions/)gösterildiği gibi kullanılabilir.<br> Cihazınızı dağıtmak istediğiniz coğrafi bölgeye yakın bir konum seçin.|
 
     ![Kaynak oluşturma 4](media/azure-stack-edge-pro-r-deploy-prep/create-resource-4.png)
 
@@ -150,7 +150,7 @@ Kaynak başarıyla oluşturulup dağıtıldıktan sonra bilgilendirirsiniz. **Ka
 
 Sipariş yerleştirildikten sonra, Microsoft siparişi inceler ve gönderim ayrıntıları ile size (e-posta aracılığıyla) ulaşır.
 
-<!--![Notification for review of the Azure Stack Edge Pro order](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png)-->
+<!--![Notification for review of the Azure Stack Edge Pro order](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png) - If this is restored, it must go above "After the resource is successfully created." The azure-stack-edge-resource-1.png would seem superfluous in that case.--> 
 
 Sipariş işlemi sırasında herhangi bir sorunla karşılaşırsanız, bkz. [sorun giderme sorunları giderme](azure-stack-edge-troubleshoot-ordering.md).
 
@@ -158,20 +158,17 @@ Sipariş işlemi sırasında herhangi bir sorunla karşılaşırsanız, bkz. [so
 
 Azure Stack Edge kaynağı çalışır duruma geçtikten sonra etkinleştirme anahtarını almanız gerekir. Bu anahtar Azure Stack Edge Pro cihazınızı etkinleştirmek ve kaynakla bağlamak için kullanılır. Bu anahtarı şimdi, Azure portalındayken alabilirsiniz.
 
-1. Oluşturduğunuz kaynağı seçin. **Genel bakış** ' ı ve ardından **Cihaz kurulumu**' nu seçin.
+1. Oluşturduğunuz kaynağı seçin ve **genel bakış**' ı seçin.
 
-    ![Cihaz kurulumunu seçin](media/azure-stack-edge-pro-r-deploy-prep/azure-stack-edge-resource-2.png)
+2. Sağ bölmede, Azure Key Vault için bir ad girin veya varsayılan adı kabul edin. Anahtar Kasası adı 3 ila 24 karakter arasında olabilir.
 
-2. **Etkinleştir** kutucuğunda Azure Key Vault için bir ad girin veya varsayılan adı kabul edin. Anahtar Kasası adı 3 ila 24 karakter arasında olabilir. 
+   Cihazınızla etkinleştirilen her Azure Stack Edge kaynağı için bir Anahtar Kasası oluşturulur. Anahtar Kasası, gizli dizileri depolamanıza ve erişmenize izin verir, örneğin, hizmetin kanal bütünlüğü anahtarı (CIK) anahtar kasasında depolanır.
 
-    Cihazınızla etkinleştirilen her Azure Stack Edge kaynağı için bir Anahtar Kasası oluşturulur. Anahtar Kasası, gizli dizileri depolamanıza ve erişmenize izin verir, örneğin, hizmetin kanal bütünlüğü anahtarı (CIK) anahtar kasasında depolanır. 
+   Anahtar Kasası adı belirttikten sonra etkinleştirme anahtarı oluşturmak için **etkinleştirme anahtarı oluştur** ' u seçin.
 
-    Bir Anahtar Kasası adı belirledikten sonra, etkinleştirme anahtarı oluşturmak için **anahtar oluştur** ' u seçin. 
+   ![Etkinleştirme anahtarını alma](media/azure-stack-edge-pro-r-deploy-prep/azure-stack-edge-resource-3.png)
 
-    ![Etkinleştirme anahtarını alma](media/azure-stack-edge-pro-r-deploy-prep/azure-stack-edge-resource-3.png)
-
-    Anahtar Kasası ve etkinleştirme anahtarı oluşturulurken birkaç dakika bekleyin. Anahtarı kopyalamak için Kopyala simgesini seçin ve daha sonra kullanmak üzere kaydedin.
-
+   Anahtar Kasası ve etkinleştirme anahtarı oluşturulurken birkaç dakika bekleyin. Anahtarı kopyalamak için Kopyala simgesini seçin ve daha sonra kullanmak üzere kaydedin.<!--Verify that the new screen has a copy icon.-->
 
 > [!IMPORTANT]
 > - Etkinleştirme anahtarı üretilmeden üç gün sonra dolar.

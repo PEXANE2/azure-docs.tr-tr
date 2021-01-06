@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95f70005f2c7f53833163dcd5f0d2ee89b3db37c
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: d7e4d0c41990fcc23dd19b5682997f6381bfdb20
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861298"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937102"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Azure Active Directory ile dayanıklı bir erişim denetimi yönetim stratejisi oluşturma
 
@@ -38,8 +38,8 @@ Bu belge, bir kuruluşun aşağıdaki senaryolarla öngörülemeyen kesintiler s
 Bu belgede dört temel kilit vardır:
 
 * Acil durum erişim hesapları kullanarak yönetici kilitlemesini önleyin.
-* Kullanıcı başına MFA yerine koşullu erişim (CA) kullanarak MFA uygulayın.
-* Birden çok koşullu erişim (CA) denetimi kullanarak Kullanıcı kilitlemeyi azaltır.
+* Kullanıcı başına MFA yerine koşullu erişim kullanarak MFA uygulayın.
+* Birden fazla koşullu erişim denetimi kullanarak Kullanıcı kilitlemeyi azaltın.
 * Her bir kullanıcı için birden çok kimlik doğrulama yöntemini veya eşdeğerlerini sağlayarak Kullanıcı kilitlemeyi azaltabilirsiniz.
 
 ## <a name="before-a-disruption"></a>Kesintiden önce
@@ -120,13 +120,13 @@ Bir yedek koşullu erişim ilkesi, Azure AD MFA, üçüncü taraf MFA, risk taba
 * Bir kimlik bilgisi türü veya bir erişim denetimi mekanizmasının uygulamalarınıza erişimi etkilediği bir geri dönüş ilkeleri kümesi yapılandırın. Yalnızca rapor olarak etki alanına katılmayı gerektiren bir ilke yapılandırma olarak, bir üçüncü taraf MFA sağlayıcısı gerektiren etkin bir ilke için yedekleme olarak.
 * [Parola Kılavuzu](https://aka.ms/passwordguidance) teknik incelemesindeki UYGULAMALARı izleyerek MFA gerekli olmadığında, kötü aktör tahmin parolalarının riskini azaltın.
 * Kullanıcıların, bir ortak parola ve daha çok tercih ettiğiniz koşulları kullanmayın olduğundan emin olmak için [Azure ad Self-Service parola sıfırlama (SSPR)](./tutorial-enable-sspr.md) ve [Azure AD parola korumasını](./howto-password-ban-bad-on-premises-deploy.md) dağıtın.
-* Belirli bir kimlik doğrulama düzeyi yalnızca tam erişime geri düşmeniz yerine, uygulamalar içindeki erişimi kısıtlayan ilkeler kullanın. Örnek:
+* Belirli bir kimlik doğrulama düzeyi yalnızca tam erişime geri düşmeniz yerine, uygulamalar içindeki erişimi kısıtlayan ilkeler kullanın. Örneğin:
   * Exchange ve SharePoint 'e kısıtlı oturum talebi gönderen bir yedekleme ilkesi yapılandırın.
   * Kuruluşunuz Microsoft Cloud App Security kullanıyorsa, MCAS 'nin bulunduğu ilkeye geri dönerek MCAS, salt okuma erişimine Izin verir ancak karşıya yüklemelerden yararlanır.
 * Kesintilerinizi bir kesinti sırasında bulmanın kolay olduğundan emin olmak için ilkelerinizi adlandırın. İlke adına aşağıdaki öğeleri ekleyin:
   * İlke için bir *etiket numarası* .
   * Gösterilecek metin, bu ilke yalnızca acil durumlar içindir. Örneğin: **acıl durumda etkinleştir**
-  * İçin *disruption* geçerli olan kesinti. Örneğin: **MFA kesintisi sırasında**
+  * İçin  geçerli olan kesinti. Örneğin: **MFA kesintisi sırasında**
   * İlkeleri etkinleştirmeniz gereken sırayı göstermek için bir *sıra numarası* .
   * İçin geçerli olduğu *uygulamalar* .
   * Uygulanan *denetimler* .
@@ -138,9 +138,9 @@ Acil durum ilkeleri için bu adlandırma standardı aşağıdaki gibi olacaktır
 EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions]
 ```
 
-Aşağıdaki örnek: **görev açısından kritik Işbirliği uygulamalarına erişimi geri yüklemek Için örnek a-acil durum CA ilkesi** tipik bir kurumsal öneme sahiptir. Bu senaryoda, kuruluş genellikle tüm Exchange Online ve SharePoint Online erişimi için MFA gerektirir ve bu durumda, müşterinin bir kesinti (Azure AD MFA, şirket içi MFA sağlayıcısı veya üçüncü taraf MFA) vardır. Bu ilke, belirli bir hedeflenmiş kullanıcıların, güvenilen Windows cihazlarından bu uygulamalara erişmesine izin vererek bu kesinti için güvenlik altına alınır. Ayrıca, bu kısıtlamalardan acil durum hesaplarını ve çekirdek yöneticileri de hariç tutar. Daha sonra hedeflenen kullanıcılar Exchange Online ve SharePoint Online 'a erişim kazanacaktır, diğer kullanıcılar da kesinti nedeniyle uygulamalara erişim sahibi olmaya devam eder. Bu örnek, hedef kullanıcılarla adlandırılmış bir ağ **konumu corpnetwork** ve bir güvenlik **grubu gerektirir** , çekirdek yöneticilerle **coreadmins** adlı bir grup ve acil durum erişim hesapları **ile acil durum adı adlı** bir grup gerekir. Acil durum, istenen erişimi sağlamak için dört ilke gerektirir. 
+Aşağıdaki örnek: **görev açısından kritik Işbirliği uygulamalarına erişimi geri yüklemek Için örnek a-acil durum koşullu erişim ilkesi** tipik bir kurumsal öneme sahiptir. Bu senaryoda, kuruluş genellikle tüm Exchange Online ve SharePoint Online erişimi için MFA gerektirir ve bu durumda, müşterinin bir kesinti (Azure AD MFA, şirket içi MFA sağlayıcısı veya üçüncü taraf MFA) vardır. Bu ilke, belirli bir hedeflenmiş kullanıcıların, güvenilen Windows cihazlarından bu uygulamalara erişmesine izin vererek bu kesinti için güvenlik altına alınır. Ayrıca, bu kısıtlamalardan acil durum hesaplarını ve çekirdek yöneticileri de hariç tutar. Daha sonra hedeflenen kullanıcılar Exchange Online ve SharePoint Online 'a erişim kazanacaktır, diğer kullanıcılar da kesinti nedeniyle uygulamalara erişim sahibi olmaya devam eder. Bu örnek, hedef kullanıcılarla adlandırılmış bir ağ **konumu corpnetwork** ve bir güvenlik **grubu gerektirir** , çekirdek yöneticilerle **coreadmins** adlı bir grup ve acil durum erişim hesapları **ile acil durum adı adlı** bir grup gerekir. Acil durum, istenen erişimi sağlamak için dört ilke gerektirir. 
 
-**Örnek A-iş açısından kritik Işbirliği uygulamalarına erişimi geri yüklemek için acil durum CA ilkeleri:**
+**Örnek A-görev açısından kritik Işbirliği uygulamalarına erişimi geri yüklemek için acil durum koşullu erişim ilkeleri:**
 
 * İlke 1: Exchange ve SharePoint için etki alanına katılmış cihazlar gerektir
   * Ad: EM001-acıl ETKINLEŞTIRME: MFA kesintisi [1/4]-Exchange SharePoint-karma Azure AD JOIN gerektir
@@ -180,9 +180,9 @@ Etkinleştirme sırası:
 5. Ilkeyi etkinleştir 4: tüm kullanıcıların mobil cihazlardaki yerel posta uygulamalarından Exchange Online 'ı alamıyor olduğunu doğrulayın.
 6. SharePoint Online ve Exchange Online için mevcut MFA ilkesini devre dışı bırakın.
 
-Bu sonraki örnekte, **örnek B-Salesforce 'a mobil erişime izin veren CA ilkeleri**, bir iş uygulamasının erişimi geri yüklenir. Bu senaryoda, müşteri genellikle, mobil cihazlardan yalnızca uyumlu cihazlardan izin verilmesini sağlamak üzere satış çalışanlarının Salesforce (Azure AD ile çoklu oturum açma için yapılandırılmış) erişimine ihtiyaç duyar. Bu durumda, cihaz uyumluluğunu değerlendirmek için bir sorun olduğu ve kesinti, satış ekibinin anlaşmaları kapatmak için Salesforce 'a erişmesi gereken hassas bir süre içinde meydana gelir. Bu yedek ilkeler, kritik kullanıcılara bir mobil cihazdan Salesforce erişimi verir, böylece anlaşmaları kapatmaya ve işi kesintiye uğramayacak şekilde devam edebilirler. Bu örnekte, **Salesforceyedek** , erişimi sürdürmeniz gereken tüm satış çalışanlarını Içerir ve **salesadmins** 'nin gereken Salesforce yöneticileri vardır.
+Bu sonraki örnekte örnek **B-Salesforce 'a mobil erişime izin vermek için** bir iş uygulamasının erişimi geri yüklenir. Bu senaryoda, müşteri genellikle, mobil cihazlardan yalnızca uyumlu cihazlardan izin verilmesini sağlamak üzere satış çalışanlarının Salesforce (Azure AD ile çoklu oturum açma için yapılandırılmış) erişimine ihtiyaç duyar. Bu durumda, cihaz uyumluluğunu değerlendirmek için bir sorun olduğu ve kesinti, satış ekibinin anlaşmaları kapatmak için Salesforce 'a erişmesi gereken hassas bir süre içinde meydana gelir. Bu yedek ilkeler, kritik kullanıcılara bir mobil cihazdan Salesforce erişimi verir, böylece anlaşmaları kapatmaya ve işi kesintiye uğramayacak şekilde devam edebilirler. Bu örnekte, **Salesforceyedek** , erişimi sürdürmeniz gereken tüm satış çalışanlarını Içerir ve **salesadmins** 'nin gereken Salesforce yöneticileri vardır.
 
-**Örnek B-yedek CA ilkeleri:**
+**Örnek B-yedek koşullu erişim ilkeleri:**
 
 * İlke 1: Salesyedek takımda bulunmayan herkesi engelleyin
   * Ad: EM001-acıl durum: cihaz uyumluluğu kesintisi [1/2]-Salesforce-Salesforceyedek hariç tüm kullanıcıları engelle

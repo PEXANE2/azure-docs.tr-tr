@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e011417b936ed83b4658e6dad25bf8e8ee88aed
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: b5c960c7fbcc29d0aaea7511ba2187c916e84ab3
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96318281"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935249"
 ---
 # <a name="f5-big-ip-access-policy-manager-and-azure-active-directory-integration-for-secure-hybrid-access"></a>F5 BIG-IP Access Policy Manager ve güvenli karma erişim için Azure Active Directory tümleştirme
 
@@ -67,11 +67,11 @@ Diyagramdaki Adım 1-4, bir Kullanıcı, büyük IP ve Azure AD arasında bir hi
 
 ![Görüntüde yüksek düzey mimari gösteriliyor](./media/f5-aad-integration/integration-flow-diagram.png)
 
-| Adım | Açıklama |
+| Adım | Description |
 |:------|:-----------|
 | 1. | Kullanıcı portalda bir uygulama simgesi seçer, URL 'YI SAML SP 'ye çözümlüyor (BIG-IP) |
 | 2. | BÜYÜK IP, kullanıcıyı ön kimlik doğrulama için SAML ıDP 'ye (Azure AD) yönlendirir|
-| 3. | Azure AD, yetkilendirme için CA ilkelerini ve [oturum denetimlerini](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-session) işler|
+| 3. | Azure AD, yetkilendirme için koşullu erişim ilkelerini ve [oturum denetimlerini](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-session) işler|
 | 4. | Kullanıcı, Azure AD tarafından verilen SAML taleplerini sunan büyük IP 'ye yeniden yönlendirir |
 | 5. | BÜYÜK-IP yayımlanan hizmete [SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) ve [rol tabanlı ERIŞIM denetimi (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) dahil etmek için ek oturum bilgileri ister |
 | 6. | BÜYÜK IP, istemci isteğini arka uç hizmetine iletir
@@ -100,7 +100,7 @@ Olayları yerel olarak veya bir güvenlik bilgileri ve olay yönetimi (SıEM) ç
 
 ![Görüntü, izleme akışını gösterir](media/f5-aad-integration/azure-sentinel.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 SHA için Azure AD ile F5 BIG-IP tümleştirme aşağıdaki önkoşulların yerine getirilmesini ister:
 

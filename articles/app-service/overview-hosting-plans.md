@@ -6,16 +6,16 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8033235cde5b7ebe298bb1fa8d4222e208df998b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a29d81be9b750d89230a180b8a7c786466d99bb8
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183014"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936439"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service planına genel bakış
 
-App Service (Web Apps, API Apps veya Mobile Apps), bir uygulama her zaman bir _App Service planında_ çalışır. Ayrıca, [Azure işlevleri](../azure-functions/functions-scale.md#app-service-plan) bir _App Service planında_ çalıştırma seçeneğine de sahiptir. App Service planı, bir web uygulamasının birlikte çalıştırılacağı işlem kaynakları kümesini tanımlar. Bu işlem kaynakları geleneksel web barındırma içindeki [_sunucu grubuna_](https://wikipedia.org/wiki/Server_farm) benzerdir. Bir veya daha fazla uygulama aynı bilgi işlem kaynaklarında (veya aynı App Service planında) çalışacak şekilde yapılandırılabilir.
+App Service (Web Apps, API Apps veya Mobile Apps), bir uygulama her zaman bir _App Service planında_ çalışır. Ayrıca, [Azure işlevleri](../azure-functions/dedicated-plan.md) bir _App Service planında_ çalıştırma seçeneğine de sahiptir. App Service planı, bir web uygulamasının birlikte çalıştırılacağı işlem kaynakları kümesini tanımlar. Bu işlem kaynakları geleneksel web barındırma içindeki [_sunucu grubuna_](https://wikipedia.org/wiki/Server_farm) benzerdir. Bir veya daha fazla uygulama aynı bilgi işlem kaynaklarında (veya aynı App Service planında) çalışacak şekilde yapılandırılabilir.
 
 Belirli bir bölgede bir App Service planı oluşturduğunuzda (örneğin, Batı Avrupa), bu plan için o bölgedeki bir işlem kaynakları kümesi oluşturulur. Bu App Service planına yerleştirdiğiniz uygulamalar, App Service planınız tarafından tanımlandığı şekilde bu işlem kaynakları üzerinde çalışır. Her App Service planı şunları tanımlar:
 

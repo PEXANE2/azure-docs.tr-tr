@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: 75e3886e31592b0672487bacd5ff2266e07e39cd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 766ad12daeb6d2763f7ed5fe026cd4a0021eaf33
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182520"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937051"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Öğretici: Azure Işlevleri özel site erişimi oluşturma
 
@@ -130,7 +130,7 @@ Bu öğreticideki ilk adım, sanal ağ içinde yeni bir sanal makine oluşturmak
 
 ## <a name="create-an-azure-functions-app"></a>Azure İşlevleri uygulaması oluşturma
 
-Sonraki adım, [Tüketim planını](functions-scale.md#consumption-plan)kullanarak Azure 'da bir işlev uygulaması oluşturmaktır. İşlev kodunuzu bu kaynağa daha sonra öğreticide dağıtırsınız.
+Sonraki adım, [Tüketim planını](consumption-plan.md)kullanarak Azure 'da bir işlev uygulaması oluşturmaktır. İşlev kodunuzu bu kaynağa daha sonra öğreticide dağıtırsınız.
 
 1. Portalda, kaynak grubu görünümünün üst kısmında **Ekle** ' yi seçin.
 1. **İşlem > seçin işlev uygulaması**
@@ -149,7 +149,7 @@ Sonraki adım, [Tüketim planını](functions-scale.md#consumption-plan)kullanar
 
     | Ayar      | Önerilen değer  | Açıklama      |
     | ------------ | ---------------- | ---------------- |
-    | _Depolama hesabı_ | Genel olarak benzersiz bir ad | İşlev uygulamanız tarafından kullanılan bir depolama hesabı oluşturun. Depolama hesabı adları 3 ile 24 karakter arasında olmalı ve yalnızca sayıyla küçük harf içermelidir. Ayrıca, [depolama hesabı gereksinimlerini](./functions-scale.md#storage-account-requirements)karşılaması gereken mevcut bir hesabı da kullanabilirsiniz. |
+    | _Depolama hesabı_ | Genel olarak benzersiz bir ad | İşlev uygulamanız tarafından kullanılan bir depolama hesabı oluşturun. Depolama hesabı adları 3 ile 24 karakter arasında olmalı ve yalnızca sayıyla küçük harf içermelidir. Ayrıca, [depolama hesabı gereksinimlerini](storage-considerations.md#storage-account-requirements)karşılaması gereken mevcut bir hesabı da kullanabilirsiniz. |
     | _İşletim sistemi_ | Tercih edilen işletim sistemi | Çalışma zamanı yığını seçiminize göre sizin için bir işletim sistemi önceden seçilmiştir, ancak gerekirse ayarı değiştirebilirsiniz. |
     | _Plan_ | Tüketim | [Barındırma planı](./functions-scale.md) , işlev uygulamasının nasıl ölçeklendirileceğini ve her örnek için kullanılabilir kaynakları belirler. |
 1. Uygulama yapılandırma seçimlerini gözden geçirmek için **gözden geçir + oluştur** ' u seçin.

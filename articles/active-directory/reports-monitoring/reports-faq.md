@@ -16,12 +16,12 @@ ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c274424641ee0173d68f0de9061415815b0df588
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 45b6b182d030c267dcec7ed57c0c0dd1901b0cb1
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107439"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935096"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Azure Active Directory raporlarının etrafında sık sorulan sorular
 
@@ -143,8 +143,8 @@ Y **:** Başlamak için:
 
 Y **:** Koşullu erişim durumu aşağıdaki değerlere sahip olabilir:
 
-* **Uygulanmadı**: Bu, kapsamdaki Kullanıcı ve uygulamayla bir CA ilkesi olmadığı anlamına gelir. 
-* **Başarı**: Bu, kapsamdaki Kullanıcı ve uygulamayla bir CA ilkesi olduğu ve CA ilkelerinin başarıyla karşılanmadığı anlamına gelir. 
+* **Uygulanmadı**: Bu, kapsamdaki Kullanıcı ve uygulamayla koşullu erişim ilkesi olmadığı anlamına gelir. 
+* **Başarı**: Bu, kapsamdaki Kullanıcı ve uygulamayla koşullu erişim ilkesi olduğu ve koşullu erişim ilkelerinin başarıyla karşılamadığı anlamına gelir. 
 * **Hata**: oturum açma, en az bir koşullu erişim ilkesinin Kullanıcı ve uygulama koşulunu karşıladı ve izin verme denetimleri karşılanmadı ya da erişimi engelle olarak ayarlı değil.
     
 **S: koşullu erişim ilkesi sonucu için olası tüm değerler nelerdir?**
@@ -158,7 +158,7 @@ Y **:** Koşullu erişim ilkesi aşağıdaki sonuçlara sahip olabilir:
     
 **S: tüm oturum açma raporundaki ilke adı, CA 'daki ilke adı ile eşleşmiyor. neden?**
 
-Y **:** Tüm oturum açma raporundaki ilke adı, oturum açma sırasında CA ilkesi adını temel alır. İlke adını daha sonra (oturum açma işleminden sonra) güncelleştirdiyseniz, bu, CA 'daki ilke adı ile tutarsız olabilir.
+Y **:** Tüm oturum açma raporundaki ilke adı, oturum açma sırasında koşullu erişim ilkesi adını temel alır. İlke adını daha sonra (oturum açma işleminden sonra) güncelleştirdiyseniz, bu, CA 'daki ilke adı ile tutarsız olabilir.
 
 **S: oturum açma, koşullu erişim ilkesi nedeniyle engellendi, ancak oturum açma Etkinliği raporu, oturum açma etkinliğinin başarılı olduğunu gösteriyor. Kaydol?**
 

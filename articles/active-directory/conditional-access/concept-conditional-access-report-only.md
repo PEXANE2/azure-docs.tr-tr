@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df25278d37e518e99bc315a315e017b98c7f4e58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: deced953089fcbb2640cbf3e402db24cb511e769
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049392"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935895"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>Koşullu erişim yalnızca rapor modu nedir?
 
@@ -30,7 +30,7 @@ Yalnızca rapor modu, yöneticilerin koşullu erişim ilkelerinin ortamlarında 
 - Azure Izleyici aboneliğine sahip müşteriler, koşullu erişim öngörüleri çalışma kitabını kullanarak koşullu erişim ilkelerinin etkilerini izleyebilir.
 
 > [!WARNING]
-> Yalnızca rapor modundaki, uyumlu cihazlar gerektiren ilkeler, cihaz uyumluluğu zorlanmasa da, ilke değerlendirmesi sırasında bir cihaz sertifikası seçmesini, Mac, iOS ve Android 'de kullanıcılara istem verebilir. Bu istemler, cihaz uyumlu hale gelene kadar yinelenir. Son kullanıcıların oturum açma sırasında istemler almasını engellemek için cihaz platformları Mac, iOS ve Android cihaz uyumluluk denetimleri yapan yalnızca rapor ilkelerinden hariç tutun. Yalnızca rapor modunun "Kullanıcı eylemleri" kapsamına sahip CA ilkeleri için geçerli olmadığına unutmayın.
+> Yalnızca rapor modundaki, uyumlu cihazlar gerektiren ilkeler, cihaz uyumluluğu zorlanmasa da, ilke değerlendirmesi sırasında bir cihaz sertifikası seçmesini, Mac, iOS ve Android 'de kullanıcılara istem verebilir. Bu istemler, cihaz uyumlu hale gelene kadar yinelenir. Son kullanıcıların oturum açma sırasında istemler almasını engellemek için cihaz platformları Mac, iOS ve Android cihaz uyumluluk denetimleri yapan yalnızca rapor ilkelerinden hariç tutun. Yalnızca rapor modunun "Kullanıcı eylemleri" kapsamına sahip koşullu erişim ilkeleri için geçerli olmadığına unutmayın.
 
 ![Azure AD oturum açma günlüğünde yalnızca rapor sekmesi](./media/concept-conditional-access-report-only/report-only-detail-in-sign-in-log.png)
 
@@ -38,7 +38,7 @@ Yalnızca rapor modu, yöneticilerin koşullu erişim ilkelerinin ortamlarında 
 
 Belirli bir oturum açma işlemi için yalnızca rapor modundaki bir ilke değerlendirildiğinde, dört yeni olası sonuç değeri vardır:
 
-| Sonuç | Açıklama |
+| Sonuç | Description |
 | --- | --- |
 | Yalnızca rapor: başarılı | Tüm yapılandırılmış ilke koşulları, gerekli etkileşimli olmayan izin denetimleri ve oturum denetimleri karşılandı. Örneğin, bir Multi-Factor Authentication gereksinimi, belirteçte zaten bulunan bir MFA talebi tarafından karşılanır veya uyumlu bir cihazda cihaz denetimi gerçekleştirerek uyumlu bir cihaz ilkesi karşılanır. |
 | Yalnızca rapor: hata | Tüm yapılandırılmış ilke koşulları karşılandı, ancak gerekli etkileşimli olmayan izin denetimleri veya oturum denetimleri karşılanmadı. Örneğin, bir ilke bir blok denetiminin yapılandırıldığı bir kullanıcı için geçerlidir veya bir cihaz uyumlu bir cihaz ilkesiyle başarısız olur. |

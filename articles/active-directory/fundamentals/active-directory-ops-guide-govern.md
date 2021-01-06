@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: d4df373f78a9c74584d0e4046f7532a2190f3a3f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ba3ca140abe36a31ffa03422420ea537bbe4f39a
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370976"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935759"
 ---
 # <a name="azure-active-directory-governance-operations-reference-guide"></a>Azure Active Directory idare işlemleri başvuru kılavuzu
 
@@ -59,7 +59,7 @@ Bir paralel test kiracısında bir değişikliği dağıtmak için kullanıcıla
 | Senaryo| Öneri |
 |-|-|
 |Kimlik doğrulama türünü federe iken PHS/PTA veya tam tersi olarak değiştirme| Kimlik doğrulama türünü değiştirmenin etkilerini test etmek için [hazırlanan dağıtımı](../hybrid/how-to-connect-staged-rollout.md) kullanın.|
-|Yeni bir koşullu erişim (CA) ilkesi veya kimlik koruma Ilkesi kullanıma alınıyor|Yeni bir CA Ilkesi oluşturun ve test kullanıcılarına atayın.|
+|Yeni bir koşullu erişim (CA) ilkesi veya kimlik koruma Ilkesi kullanıma alınıyor|Yeni bir koşullu erişim ilkesi oluşturun ve test kullanıcılarına atayın.|
 |Uygulamanın test ortamını ekleme|Uygulamayı bir üretim ortamına ekleyin, Uygps panelinden gizleyin ve kalite güvencesi (QA) aşamasında kullanıcıları test etmek üzere atayın.|
 |Eşitleme kurallarını değiştirme|Bir test Azure AD Connect içindeki değişiklikleri, hazırlama modu olarak da bilinen ve şu anda üretimde olan aynı yapılandırmayla gerçekleştirin ve CSExport sonuçlarını çözümleyin. Memnun kalmıyorsa, hazırlık sırasında üretime geçin.|
 |Markalamayı değiştirme|Ayrı bir test kiracısında test edin.|

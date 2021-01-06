@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 708478f50078276245a7dfab7d185dd50d597407
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: f9c11c0671db882edd9a72bca8d11c7326edee43
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589806"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936898"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Işlevlerinde işlev uygulamanız için kaynak dağıtımını otomatikleştirme
 
@@ -175,7 +175,7 @@ Bu özellikler, `appSettings` özelliğindeki koleksiyonda belirtilir `siteConfi
 
 ## <a name="deploy-on-consumption-plan"></a>Tüketim planına dağıt
 
-Tüketim planı, kodunuz çalışırken otomatik olarak işlem gücü ayırır, yükü işlemek için gereken şekilde ölçeklenmez ve kod çalışmadığı zaman içinde ölçeklendirilir. Boştaki VM 'Ler için ödeme yapmanız gerekmez ve kapasiteyi önceden ayırmanız gerekmez. Daha fazla bilgi için bkz. [Azure işlevleri ölçeklendirme ve barındırma](functions-scale.md#consumption-plan).
+Tüketim planı, kodunuz çalışırken otomatik olarak işlem gücü ayırır, yükü işlemek için gereken şekilde ölçeklenmez ve kod çalışmadığı zaman içinde ölçeklendirilir. Boştaki VM 'Ler için ödeme yapmanız gerekmez ve kapasiteyi önceden ayırmanız gerekmez. Daha fazla bilgi için bkz. [Azure işlevleri ölçeklendirme ve barındırma](consumption-plan.md).
 
 Örnek bir Azure Resource Manager şablonu için bkz. [Tüketim planındaki işlev uygulaması].
 
@@ -646,7 +646,7 @@ Bir işlev uygulamasının, dağıtımınızda kullanabileceğiniz uygulama ayar
 
 * [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 * [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
-* [Azure portalı](../azure-resource-manager/templates/deploy-portal.md)
+* [Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
 * [REST API](../azure-resource-manager/templates/deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>Azure'a Dağıt düğmesi

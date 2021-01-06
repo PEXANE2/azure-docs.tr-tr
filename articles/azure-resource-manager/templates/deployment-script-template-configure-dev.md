@@ -1,26 +1,26 @@
 ---
 title: Şablonlarda dağıtım betikleri için geliştirme ortamını yapılandırma | Microsoft Docs
-description: Azure Resource Manager şablonlarındaki dağıtım betikleri için geliştirme ortamını yapılandırın.
+description: Azure Resource Manager şablonlarındaki (ARM şablonları) dağıtım betikleri için geliştirme ortamını yapılandırın.
 services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: jgao
-ms.openlocfilehash: d12ec5e3fef45429741fff1665f435d68e6c83f6
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 13dc072e31f0d27768de8d9a62ea942d55460713
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734190"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936405"
 ---
-# <a name="configure-development-environment-for-deployment-scripts-in-templates"></a>Şablonlarda dağıtım betikleri için geliştirme ortamını yapılandırma
+# <a name="configure-development-environment-for-deployment-scripts-in-arm-templates"></a>ARM şablonlarındaki dağıtım betikleri için geliştirme ortamını yapılandırma
 
 Dağıtım komut dosyalarını bir dağıtım betiği görüntüsüyle geliştirmek ve test etmek için bir geliştirme ortamı oluşturmayı öğrenin. [Azure Container Instance](../../container-instances/container-instances-overview.md) oluşturabilir ya da [Docker](https://docs.docker.com/get-docker/)kullanabilirsiniz. Her ikisi de bu makalede ele alınmıştır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Dağıtım betiğinizin yoksa, aşağıdaki içeriğe sahip bir **hello.ps1** dosyası oluşturabilirsiniz:
+Dağıtım betiğinizin yoksa, aşağıdaki içeriğe sahip bir _hello.ps1_ dosyası oluşturabilirsiniz:
 
 ```powershell
 param([string] $name)
@@ -39,11 +39,11 @@ Betiklerinizi bilgisayarınızda yazmak için bir depolama hesabı oluşturmanı
 
 ### <a name="create-an-azure-container-instance"></a>Azure Container Instance oluşturma
 
-Aşağıdaki ARM şablonu bir kapsayıcı örneği ve bir dosya paylaşma oluşturup dosya paylaşımının kapsayıcı görüntüsüne takar.
+Aşağıdaki Azure Resource Manager şablonu (ARM şablonu) bir kapsayıcı örneği ve bir dosya paylaşma oluşturup dosya paylaşımının kapsayıcı görüntüsüne takar.
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "projectName": {
@@ -153,12 +153,13 @@ Aşağıdaki ARM şablonu bir kapsayıcı örneği ve bir dosya paylaşma oluşt
   ]
 }
 ```
-Bağlama yolu için varsayılan değer **Deploymentscript**' dir.  Bu, kapsayıcı örneğindeki yoldur ve dosya paylaşımında bağlanır.
 
-Şablonda belirtilen varsayılan kapsayıcı görüntüsü **MCR.Microsoft.com/azuredeploymentscripts-PowerShell:AZ4.3 "** dir.   [Desteklenen Azure PowerShell sürümlerinin](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)listesini görüntüleyin. [Desteklenen Azure CLI sürümlerinin](https://mcr.microsoft.com/v2/azure-cli/tags/list)listesini görüntüleyin.
+Bağlama yolu için varsayılan değer `deploymentScript` . Bu, kapsayıcı örneğindeki yoldur ve dosya paylaşımında bağlanır.
+
+Şablonda belirtilen varsayılan kapsayıcı görüntüsü `mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3` . [Desteklenen Azure PowerShell sürümlerinin](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)listesini görüntüleyin. [Desteklenen Azure CLI sürümlerinin](https://mcr.microsoft.com/v2/azure-cli/tags/list)listesini görüntüleyin.
 
   >[!IMPORTANT]
-  > Dağıtım betiği, Microsoft Container Registry (MCR) ' deki kullanılabilir CLı görüntülerini kullanır. Dağıtım betiği için bir CLı görüntüsünü onaylamak üzere bir ay sürer. 30 gün içinde Yayınlanan CLı sürümlerini kullanmayın. Görüntülerin yayın tarihlerini bulmak için bkz. [Azure CLI sürüm notları](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true). Desteklenmeyen bir sürüm kullanılırsa, hata iletisi desteklenen sürümleri listeler.
+  > Dağıtım betiği, Microsoft Container Registry (MCR) ' deki kullanılabilir CLı görüntülerini kullanır. Dağıtım betiği için bir CLı görüntüsünü onaylamak üzere bir ay sürer. 30 gün içinde Yayınlanan CLı sürümlerini kullanmayın. Görüntülerin yayın tarihlerini bulmak için bkz. [Azure CLI sürüm notları](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true). Desteklenmeyen bir sürüm kullanılırsa, hata iletisinde desteklenen sürümler listelenir.
 
 Şablon, 1800 saniye kapsayıcı örneğini askıya alır. Kapsayıcı örneği Terminal durumuna geçmeden önce 30 dakika, oturum sona erer.
 
@@ -196,7 +197,7 @@ Ayrıca, Azure portal ve Azure CLı kullanarak dosyayı karşıya yükleyebilirs
 
 1. Azure portal, kapsayıcı örneğini ve depolama hesabını dağıttığınız kaynak grubunu açın.
 1. Kapsayıcı grubunu açın. Varsayılan kapsayıcı grubu adı **CG** 'ye eklenen proje adıdır. Kapsayıcı örneğinin **çalışır** durumda olduğunu görürsünüz.
-1. Sol menüden **kapsayıcılar** ' ı seçin. Bir kapsayıcı örneği görürsünüz.  Kapsayıcı örneği adı **kapsayıcının** eklendiği proje adıdır.
+1. Sol menüden **kapsayıcılar** ' ı seçin. Bir kapsayıcı örneği görürsünüz. Kapsayıcı örneği adı **kapsayıcının** eklendiği proje adıdır.
 
     ![Dağıtım betiği bağlama kapsayıcı örneği](./media/deployment-script-template-configure-dev/deployment-script-container-instance-connect.png)
 
@@ -248,7 +249,7 @@ Ayrıca, Dağıtım betiklerini Docker kapsayıcısına içeren dizini bağlamak
     docker run -v <host drive letter>:/<host directory name>:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3
     ```
 
-    **&lt; Konak sürücü harfi>** ve **&lt; konak dizin adı>** paylaşılan sürücüdeki mevcut bir klasörle değiştirin.  Klasörü, kapsayıcıdaki **/Data** klasörüne eşler. Örneğin, D:\docker 'ı eşlemek için:
+    **&lt; Konak sürücü harfi>** ve **&lt; konak dizin adı>** paylaşılan sürücüdeki mevcut bir klasörle değiştirin. Klasörü, kapsayıcıdaki _/Data_ klasörüne eşler. Örneğin, _D:\docker_'ı eşlemek için:
 
     ```command
     docker run -v d:/docker:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3
@@ -262,7 +263,7 @@ Ayrıca, Dağıtım betiklerini Docker kapsayıcısına içeren dizini bağlamak
     docker run -v d:/docker:/data -it mcr.microsoft.com/azure-cli:2.0.80
     ```
 
-1. Aşağıdaki ekran görüntüsünde, paylaşılan sürücüde bir helloworld.ps1 dosyanız olduğunda bir PowerShell betiğinin nasıl çalıştırılacağı gösterilmektedir.
+1. Aşağıdaki ekran görüntüsünde, paylaşılan sürücüde bir _helloworld.ps1_ dosyanız olduğunda bir PowerShell betiğinin nasıl çalıştırılacağı gösterilmektedir.
 
     ![Kaynak Yöneticisi şablonu dağıtım betiği Docker cmd](./media/deployment-script-template/resource-manager-deployment-script-docker-cmd.png)
 
@@ -273,4 +274,4 @@ Betiği başarıyla test edildikten sonra, şablonlarınızı şablonlarda bir d
 Bu makalede dağıtım betiklerini nasıl kullanacağınızı öğrendiniz. Bir dağıtım betiği öğreticisini gözden aktarmak için:
 
 > [!div class="nextstepaction"]
-> [Öğretici: Azure Resource Manager şablonlarda dağıtım betikleri kullanma](./template-tutorial-deployment-script.md)
+> [Öğretici: ARM şablonlarında dağıtım betikleri kullanma](./template-tutorial-deployment-script.md)

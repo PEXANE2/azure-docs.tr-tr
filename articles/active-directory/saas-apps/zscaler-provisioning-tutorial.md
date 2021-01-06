@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 2c7f4aebc70ff831459fe111bcc30f5385088028
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 9f368a4aebc4d5de38ebbab800241366650633e6
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357700"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936592"
 ---
 # <a name="tutorial-configure-zscaler-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Zscaler 'ı yapılandırma
 
@@ -26,7 +26,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları Zscale
 > Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Hizmetin işlevleri ve çalışma şekli hakkında daha fazla bilgi edinmek ve sık sorulan soruları incelemek için bkz. [Azure Active Directory ile SaaS uygulamalarına kullanıcı hazırlama ve kaldırma işlemlerini otomatik hale getirme](../app-provisioning/user-provisioning.md).
 >
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, zaten aşağıdakilere sahip olduğunuzu varsayar:
 
@@ -80,13 +80,16 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 > [!TIP]
 > Zscaler [Çoklu oturum açma öğreticisinde](zscaler-tutorial.md)belirtilen yönergeleri Izleyerek Zscaler için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
 
+> [!NOTE]
+> Kullanıcılar ve gruplar sağlandığında veya sağlanmak istendiğinde, grup üyeliklerinin düzgün şekilde güncelleştirildiğinden emin olmak için düzenli aralıklarla sağlamayı yeniden başlatmanızı öneririz. Yeniden başlatma işlemi yapıldığında, hizmetimizi tüm grupları yeniden değerlendirmeye ve üyelikleri güncelleştirmeye zorlar. 
+
 ### <a name="to-configure-automatic-user-provisioning-for-zscaler-in-azure-ad"></a>Azure AD 'de Zscaler için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın ve **Kurumsal uygulamalar** ' ı seçin, **tüm uygulamalar** ' ı seçin ve ardından **Zscaler** ' ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın ve **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **Zscaler**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Zscaler** ' ı seçin.
+2. Uygulamalar listesinde **Zscaler**' ı seçin.
 
     ![Uygulamalar listesindeki Zscaler bağlantısı](common/all-applications.png)
 
@@ -94,7 +97,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
     ![, Sağlama seçeneği vurgulanmış şekilde, Zscaler-kurumsal uygulama kenar çubuğu sağlama başlıklı ekran görüntüsü.](./media/zscaler-provisioning-tutorial/provisioning-tab.png)
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Sağlama modunun otomatik olarak ayarlandığı sağlama sayfasının ekran görüntüsü.](./media/zscaler-provisioning-tutorial/provisioning-credentials.png)
 
@@ -108,7 +111,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
     ![Ana U R L ve taşıyıcı belirteci metin kutuları olan bir M L 'yi Yapılandır iletişim kutusunun ekran görüntüsü.](./media/zscaler-provisioning-tutorial/secret-token-2.png)
 
-    **Temel URL** ve **taşıyıcı belirtecini** almak için **SCIM-Based sağlamayı etkinleştir** ' i seçin, sonra ayarları kaydedin. **Temel URL** 'YI **kiracı URL** 'sine ve **taşıyıcı belirtecini** Azure Portal **gizli belirtece** kopyalayın.
+    **Temel URL** ve **taşıyıcı belirtecini** almak için **SCIM-Based sağlamayı etkinleştir** ' i seçin, sonra ayarları kaydedin. **Temel URL** 'YI **kiracı URL**'sine ve **taşıyıcı belirtecini** Azure Portal **gizli belirtece** kopyalayın.
 
 7. Adım 5 ' te gösterilen alanlar doldurulduğdan sonra Azure AD 'nin Zscaler 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Zscaler hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
@@ -118,9 +121,9 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
     ![Bildirim e-postası metin kutusunun ekran görüntüsü.](./media/zscaler-provisioning-tutorial/notification.png)
 
-9. **Kaydet** ’e tıklayın.
+9. **Kaydet**’e tıklayın.
 
-10. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Zscaler ile eşitler** ' ı seçin.
+10. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Zscaler ile eşitler**' ı seçin.
 
     ![Eşlemeleri Azure Active Directory Kullanıcıları Zscaler seçeneği vurgulanmış şekilde eşlemeler bölümünün ekran görüntüsü.](./media/zscaler-provisioning-tutorial/user-mappings.png)
 
@@ -128,7 +131,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
     ![Yedi eşleşme görüntülenirken öznitelik eşlemeleri bölümünün ekran görüntüsü.](./media/zscaler-provisioning-tutorial/user-attribute-mappings.png)
 
-12. **Eşlemeler** bölümünde **Azure Active Directory gruplarını Zscaler olarak eşitler** ' ı seçin.
+12. **Eşlemeler** bölümünde **Azure Active Directory gruplarını Zscaler olarak eşitler**' ı seçin.
 
     ![Eşlemeleri Azure Active Directory gruplarını Zscaler seçeneği vurgulanmış şekilde eşitleyeceğiniz eşlemeler bölümünün ekran görüntüsü.](./media/zscaler-provisioning-tutorial/group-mappings.png)
 
@@ -146,7 +149,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
     ![Kapsam ayarının yalnızca atanmış kullanıcıları ve grupları Eşitle seçeneğinin vurgulandığı ekran görüntüsü.](./media/zscaler-provisioning-tutorial/scoping.png)
 
-17. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
+17. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
     ![Zscaler-kurumsal uygulama kenar çubuğunun kullanıma alma seçeneği ile sağlama adlı ekran görüntüsü.](./media/zscaler-provisioning-tutorial/save-provisioning.png)
 

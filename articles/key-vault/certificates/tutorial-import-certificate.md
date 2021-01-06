@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-azurecli
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 8689b6851ae219ee6f41ebf58736692e557b2344
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 626d7f161d23e6105eea0ca160cd2c9be0ed0ea0
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289722"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935946"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>Öğretici: Azure Key Vault sertifikayı Içeri aktarma
 
@@ -41,22 +41,22 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="create-a-vault"></a>Kasa oluşturma
 
-1. Azure portal menüsünde veya **giriş** sayfasından **kaynak oluştur** ' u seçin.
+1. Azure portal menüsünde veya **giriş** sayfasından **kaynak oluştur**' u seçin.
 2. Arama kutusuna **Key Vault** girin.
-3. Sonuç listesinden **Key Vault** ’u seçin.
-4. Key Vault bölümünde **Oluştur** ’u seçin.
+3. Sonuç listesinden **Key Vault**’u seçin.
+4. Key Vault bölümünde **Oluştur**’u seçin.
 5. **Anahtar kasası oluşturma** bölümünde aşağıdaki bilgileri sağlayın:
-    - **Ad** : Benzersiz bir ad gereklidir. Bu hızlı başlangıçta **örnek kasasını** kullanırız. 
-    - **Abonelik** : Bir abonelik seçin.
+    - **Ad**: Benzersiz bir ad gereklidir. Bu hızlı başlangıçta **örnek kasasını** kullanırız. 
+    - **Abonelik**: Bir abonelik seçin.
     - **Kaynak grubu** altında **Yeni oluştur** ' u seçin ve bir kaynak grubu adı girin.
     - **Konum** aşağı açılan menüsünde bir konum seçin.
     - Diğer seçenekleri varsayılan değerlerinde bırakın.
-6. Yukarıdaki bilgileri girdikten sonra **Oluştur** ’u seçin.
+6. Yukarıdaki bilgileri girdikten sonra **Oluştur**’u seçin.
 
 Aşağıda listelenen iki özelliği not edin:
 
-* **Kasa adı** : örnekte bu **örnek kasadır**. Bu adı diğer adımlar için kullanacaksınız.
-* **Kasa URI’si** : Örnekte bu: https://example-vault.vault.azure.net/. REST API'si aracılığıyla kasanızı kullanan uygulamaların bu URI'yi kullanması gerekir.
+* **Kasa adı**: örnekte bu **örnek kasadır**. Bu adı diğer adımlar için kullanacaksınız.
+* **Kasa URI’si**: Örnekte bu: https://example-vault.vault.azure.net/. REST API'si aracılığıyla kasanızı kullanan uygulamaların bu URI'yi kullanması gerekir.
 
 Bu noktada Azure hesabınız, bu yeni anahtar kasasında işlemler gerçekleştirmeye yetkili olan tek hesaptır.
 
@@ -71,14 +71,14 @@ Bir sertifikayı kasaya aktarmak için diskte olması gereken bir ped veya PFX S
 > - . pek dosya biçimi bir veya daha fazla x509 sertifika dosyası içeriyor.
 > - . pfx dosya biçimi, birden çok şifreleme nesnesini tek bir dosyada (etki alanınız için verilir), eşleşen bir özel anahtarla depolamak için bir arşiv dosyası biçimidir ve isteğe bağlı olarak bir ara CA 'yı içerebilir.  
 
-1. Key Vault Özellikler sayfalarında, **Sertifikalar** ' ı seçin.
-2. **Oluştur/İçeri Aktar** ’a tıklayın.
+1. Key Vault Özellikler sayfalarında, **Sertifikalar**' ı seçin.
+2. **Oluştur/İçeri Aktar**’a tıklayın.
 3. **Sertifika oluştur** ekranında aşağıdaki değerleri seçin:
-    - **Sertifika oluşturma yöntemi** : içeri aktarma.
-    - **Sertifika adı** : örnek sertifikası.
-    - **Sertifika dosyasını karşıya yükle** : diskten sertifika dosyasını seçin
+    - **Sertifika oluşturma yöntemi**: içeri aktarma.
+    - **Sertifika adı**: örnek sertifikası.
+    - **Sertifika dosyasını karşıya yükle**: diskten sertifika dosyasını seçin
     - **Parola** : parola korumalı bir sertifika dosyası yüklüyorsanız, bu parolayı burada belirtin. Aksi takdirde, boş bırakın. Sertifika dosyası başarıyla alındıktan sonra Anahtar Kasası bu parolayı kaldırır.
-4. **Oluştur** 'a tıklayın.
+4. **Oluştur**’a tıklayın.
 
 ![Sertifika Özellikleri](../media/certificates/tutorial-import-cert/cert-import.png)
 
@@ -144,8 +144,8 @@ Diğer Key Vault hızlı başlangıçları ve öğreticileri bu hızlı başlang
 Artık gerek kalmadığında kaynak grubunu silin; bunu yaptığınızda Key Vault ve ilgili kaynaklar silinir. Kaynak grubunu portal aracılığıyla silmek için:
 
 1. Portalın üst kısmındaki Arama kutusuna kaynak grubunuzun adını girin. Bu hızlı başlangıçta kullanılan kaynak grubunu arama sonuçlarında gördüğünüzde seçin.
-2. **Kaynak grubunu sil** 'i seçin.
-3. **KAYNAK GRUBU ADINI YAZIN:** kutusuna kaynak grubunun adını yazın ve **Sil** ’i seçin.
+2. **Kaynak grubunu sil**'i seçin.
+3. **KAYNAK GRUBU ADINI YAZIN:** kutusuna kaynak grubunun adını yazın ve **Sil**’i seçin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -154,4 +154,4 @@ Bu öğreticide bir Key Vault oluşturdunuz ve bir sertifikayı içeri aktardın
 
 - [Azure Key Vault 'da sertifika oluşturmayı yönetme](./create-certificate-scenarios.md) hakkında daha fazla bilgi edinin
 - [REST API 'Leri kullanarak sertifika alma](/rest/api/keyvault/importcertificate/importcertificate) örneklerine bakın
-- [En iyi uygulamaları](../general/best-practices.md) gözden geçirin Azure Key Vault
+- [Key Vault güvenliğine genel bakış](../general/security-overview.md) konusunu gözden geçirin

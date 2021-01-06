@@ -4,12 +4,12 @@ description: Azure Işlevlerine kod dağıtabilmeniz için farklı yollar edinin
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 7a75408008a90a2c40553b1f6c5c196775a48e61
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 04d96a09d41ace64bed5667bb9f0fa6e4beed244
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96168109"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936966"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Işlevlerinde dağıtım teknolojileri
 
@@ -25,7 +25,7 @@ Aşağıdaki tabloda, Işlev projeniz için kullanılabilir dağıtım yöntemle
 | -- | -- | -- |
 | Araçlar tabanlı | &bull;&nbsp;[Visual &nbsp; Studio &nbsp; Code &nbsp; Yayımlama](functions-develop-vs-code.md#publish-to-azure)<br/>&bull;&nbsp;[Visual Studio yayımlama](functions-develop-vs.md#publish-to-azure)<br/>&bull;&nbsp;[Temel araçlar yayımlama](functions-run-local.md#publish) | Geliştirme ve diğer ad-Hock dağıtımları sırasında dağıtımlar. Dağıtımlar araç tarafından yerel olarak yönetilir. | 
 | App Service yönetilen| &bull;&nbsp;[Dağıtım &nbsp; Merkezi &nbsp; (CI/CD)](functions-continuous-deployment.md)<br/>&bull;&nbsp;[Kapsayıcı &nbsp; dağıtımları](functions-create-function-linux-custom-image.md#enable-continuous-deployment-to-azure) |  Kaynak denetiminden veya bir kapsayıcı kayıt defterinden sürekli dağıtım (CI/CD). Dağıtımlar App Service platformu (kudu) tarafından yönetilir.|
-| Dış işlem hatları|&bull;&nbsp;[DevOps işlem hatları](functions-how-to-azure-devops.md)<br/>&bull;&nbsp;[GitHub eylemleri](functions-how-to-github-actions.md) | Ek doğrulama, test ve diğer eylemleri içeren üretim ve DevOps işlem hatları otomatik dağıtımın bir parçası olarak çalıştırılır. Dağıtımlar işlem hattı tarafından yönetilir. |
+| Dış işlem hatları|&bull;&nbsp;[Azure Pipelines](functions-how-to-azure-devops.md)<br/>&bull;&nbsp;[GitHub eylemleri](functions-how-to-github-actions.md) | Ek doğrulama, test ve diğer eylemleri içeren üretim ve DevOps işlem hatları otomatik dağıtımın bir parçası olarak çalıştırılır. Dağıtımlar işlem hattı tarafından yönetilir. |
 
 Belirli Işlev dağıtımları, kendi bağlamına göre en iyi teknolojiyi kullanır, ancak çoğu dağıtım yöntemi [ZIP dağıtımına](#zip-deploy)dayalıdır.
 
@@ -33,9 +33,9 @@ Belirli Işlev dağıtımları, kendi bağlamına göre en iyi teknolojiyi kulla
 
 Azure Işlevleri, platformlar arası yerel geliştirme ve Windows ve Linux üzerinde barındırma desteği sunmaktadır. Şu anda üç barındırma planı kullanılabilir:
 
-+ [Mine](functions-scale.md#consumption-plan)
-+ [Premium](functions-scale.md#premium-plan)
-+ [Adanmış (App Service)](functions-scale.md#app-service-plan)
++ [Tüketim](consumption-plan.md)
++ [Premium](functions-premium-plan.md)
++ [Adanmış (App Service)](dedicated-plan.md)
 
 Her planın farklı davranışları vardır. Her Azure Işlevleri özelliği için tüm dağıtım teknolojileri bulunmaz. Aşağıdaki grafikte, her bir işletim sistemi ve barındırma planı birleşimi için hangi dağıtım teknolojilerinin desteklendiği gösterilmektedir:
 
@@ -96,7 +96,7 @@ Tüketim planında çalışan Linux işlev uygulamalarının, dağıtım seçene
 
 ##### <a name="dedicated-and-premium-plans"></a>Adanmış ve Premium planlar
 
-Linux üzerinde çalışan işlev uygulamalarının [adanmış (App Service) planı](functions-scale.md#app-service-plan) ve [Premium planda](functions-scale.md#premium-plan) Ayrıca sınırlı bir SCM/kudu sitesi de vardır.
+Linux üzerinde çalışan işlev uygulamalarının [adanmış (App Service) planı](dedicated-plan.md) ve [Premium planda](functions-premium-plan.md) Ayrıca sınırlı bir SCM/kudu sitesi de vardır.
 
 ## <a name="deployment-technology-details"></a>Dağıtım teknolojisi ayrıntıları
 

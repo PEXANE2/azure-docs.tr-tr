@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf30570f10f176c47aed0f99127e03a027eff775
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: fc631e4329c1df2cdcbfe57c2b43ccccf14afa85
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093098"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936456"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Azure Active Directory cihaz dağıtımınızı planlayın
 
@@ -38,13 +38,13 @@ Cihazlarınızı Azure AD ile tümleştirmeye yönelik birden çok yöntem vard�
 
 Başlamadan önce, [cihaz kimlik yönetimine genel bakış](overview.md)hakkında bilgi sahibi olduğunuzdan emin olun.
 
-### <a name="benefits"></a>Yararları
+### <a name="benefits"></a>Avantajlar
 
 Cihazlarınıza bir Azure AD kimliği verme hakkında önemli avantajlar:
 
 * Üretkenliği artırın – Azure AD Ile kullanıcılarınız şirket içi ve bulut kaynaklarınız için [sorunsuz oturum açma (SSO)](./azuread-join-sso.md) yapabilir ve bu sayede her yerde üretken olmalarını sağlar.
 
-* Güvenliği artırma – Azure AD cihazları, cihaz veya kullanıcı kimliğine göre kaynaklara [koşullu erişim (CA) ilkeleri](../conditional-access/require-managed-devices.md) uygulamanızı sağlar. CA ilkeleri, [Azure AD kimlik koruması](../identity-protection/overview-identity-protection.md)kullanarak ek koruma sunabilir. Bir cihazın Azure AD 'ye katılması, güvenli bir şekilde [Passwordbir kimlik doğrulama](../authentication/concept-authentication-passwordless.md) stratejisi ile Güvenliğinizi artırmaya yönelik bir önkoşuldur.
+* Güvenliği artırma – Azure AD cihazları, cihaz veya kullanıcı kimliğine göre kaynaklara [koşullu erişim ilkeleri](../conditional-access/require-managed-devices.md) uygulamanızı sağlar. Koşullu erişim ilkeleri, [Azure AD kimlik koruması](../identity-protection/overview-identity-protection.md)kullanarak ek koruma sunabilir. Bir cihazın Azure AD 'ye katılması, güvenli bir şekilde [Passwordbir kimlik doğrulama](../authentication/concept-authentication-passwordless.md) stratejisi ile Güvenliğinizi artırmaya yönelik bir önkoşuldur.
 
 * Kullanıcı deneyimini geliştirme: Azure AD 'de cihaz kimlikleri sayesinde kullanıcılarınıza kuruluşunuzun bulut tabanlı kaynaklarına hem kişisel hem de şirket cihazlarından kolay erişim sağlayabilirsiniz. Yöneticiler, tüm Windows cihazlarında birleştirilmiş bir deneyim için [Enterprise State Roaming](enterprise-state-roaming-overview.md) etkinleştirebilir.
 
@@ -129,7 +129,7 @@ Koşullu Erişim <br>(Karma Azure AD 'ye katılmış cihazlar gerektir)| | | ![B
 
 Kayıtlı cihazlar genellikle [Microsoft Intune](/mem/intune/enrollment/device-enrollment)ile yönetilir. Cihazlar, işletim sistemine bağlı olarak çeşitli yollarla Intune 'A kaydedilir. 
 
-Azure AD kayıtlı cihazlar, kendi cihazlarını getir (KCG) ve şirkete ait cihazlar için bulut kaynaklarına SSO 'ya yönelik destek sağlar. Kaynaklara erişim, cihaza ve kullanıcıya uygulanan Azure AD [CA ilkelerini](../conditional-access/require-managed-devices.md) temel alır.
+Azure AD kayıtlı cihazlar, kendi cihazlarını getir (KCG) ve şirkete ait cihazlar için bulut kaynaklarına SSO 'ya yönelik destek sağlar. Kaynaklara erişim, cihaza ve kullanıcıya uygulanan Azure AD [koşullu erişim ilkelerini](../conditional-access/require-managed-devices.md) temel alır.
 
 ### <a name="registering-devices"></a>Cihazları kaydetme
 

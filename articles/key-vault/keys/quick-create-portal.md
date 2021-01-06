@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 41f3d60d91b7418d6e9733b8351d4830b31dbace
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 419fe72d400177ce9fa3d9811d7dfa06e74c0810
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81424198"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935062"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Azure Key Vault bir anahtar ayarlama ve alma
 
@@ -31,13 +31,13 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 ## <a name="create-a-vault"></a>Kasa oluşturma
 
 1. Azure portal menüsünde veya **giriş** sayfasından **kaynak oluştur**' u seçin.
-2. Arama kutusuna **Key Vault**girin.
+2. Arama kutusuna **Key Vault** girin.
 3. Sonuç listesinden **Key Vault**’u seçin.
 4. Key Vault bölümünde **Oluştur**’u seçin.
 5. **Anahtar kasası oluşturma** bölümünde aşağıdaki bilgileri sağlayın:
-    - **Ad**: Benzersiz bir ad gereklidir. Bu hızlı başlangıçta **örnek kasasını**kullanırız. 
+    - **Ad**: Benzersiz bir ad gereklidir. Bu hızlı başlangıçta **örnek kasasını** kullanırız. 
     - **Abonelik**: Bir abonelik seçin.
-    - **Kaynak grubu**altında **Yeni oluştur** ' u seçin ve bir kaynak grubu adı girin.
+    - **Kaynak grubu** altında **Yeni oluştur** ' u seçin ve bir kaynak grubu adı girin.
     - **Konum** aşağı açılan menüsünde bir konum seçin.
     - Diğer seçenekleri varsayılan değerlerinde bırakın.
 6. Yukarıdaki bilgileri girdikten sonra **Oluştur**’u seçin.
@@ -53,7 +53,7 @@ Bu noktada Azure hesabınız, bu yeni anahtar kasasında işlemler gerçekleşti
 
 ## <a name="add-a-key-to-key-vault"></a>Key Vault bir anahtar ekleyin
 
-Kasaya bir anahtar eklemek için, birkaç ek adım yapmanız yeterlidir. Bu durumda, bir uygulama tarafından kullanılabilecek bir anahtar ekleyeceğiz. Anahtar **examplekey**olarak adlandırılır.
+Kasaya bir anahtar eklemek için, birkaç ek adım yapmanız yeterlidir. Bu durumda, bir uygulama tarafından kullanılabilecek bir anahtar ekleyeceğiz. Anahtar **examplekey** olarak adlandırılır.
 
 1. Key Vault Özellikler sayfalarında **anahtarlar**' ı seçin.
 2. **Oluştur/İçeri Aktar**’a tıklayın.
@@ -83,4 +83,4 @@ Bu hızlı başlangıçta bir Key Vault oluşturdunuz ve içinde bir anahtar dep
 
 - [Azure Key Vault genel bakışını](../general/overview.md) okuyun
 - [Azure Key Vault geliştirici kılavuzuna](../general/developers-guide.md) bakın
-- [En iyi uygulamaları](../general/best-practices.md) gözden geçirin Azure Key Vault
+- [Key Vault güvenliğine genel bakış](../general/security-overview.md) konusunu gözden geçirin

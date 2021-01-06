@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: ca5f237585f74225a04091b5694dbfad12864332
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 555709776c88dd3003e400bbcefe2ec1cfa0f4af
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656045"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934178"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Azure Bilişsel Arama dizinindeki dize alanlarına dil Çözümleyicileri ekleme
 
@@ -68,9 +68,9 @@ Dizin özellikleri hakkında daha fazla bilgi için bkz. [Create ındex &#40;Azu
 ## <a name="language-analyzer-list"></a>Dil Çözümleyicisi listesi 
  Aşağıda, Lucene ve Microsoft çözümleyici adlarıyla birlikte desteklenen dillerin listesi verilmiştir.  
 
-| Dil | Microsoft Çözümleyicisi adı | Lucene çözümleyici adı |  |
-|--|--|--|--|
-| Arapça | ar. Microsoft | ar. Lucene |  |
+| Dil | Microsoft Çözümleyicisi adı | Lucene çözümleyici adı |
+|--|--|--|
+| Arapça | ar. Microsoft | ar. Lucene |
 | Ermenice |  | HY. Lucene |  |
 | Bangla | milyar TL. Microsoft |  |  |
 | Baskça |  | AB. Lucene |  |

@@ -3,12 +3,12 @@ title: Şablonlarla koşullu dağıtım
 description: Azure Resource Manager şablonunda bir kaynağın koşullu olarak nasıl dağıtılacağını açıklar (ARM şablonu).
 ms.topic: conceptual
 ms.date: 12/17/2020
-ms.openlocfilehash: 1492e9f9f45f23628f9933628fd2740e08ad9eb0
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 5650f7fb9f1483f2dc7059607732ecc68cbb7b9d
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672857"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934790"
 ---
 # <a name="conditional-deployment-in-arm-templates"></a>ARM şablonlarında koşullu dağıtım
 
@@ -19,7 +19,7 @@ Bazen bir Azure Resource Manager şablonunda (ARM şablonu) bir kaynağı dağı
 
 ## <a name="new-or-existing-resource"></a>Yeni veya mevcut kaynak
 
-Koşullu dağıtımı, yeni bir kaynak oluşturmak veya var olan bir kaynağı kullanmak için kullanabilirsiniz. Aşağıdaki örnek, yeni bir depolama hesabı dağıtmak veya var olan bir depolama hesabını kullanmak için koşulun nasıl kullanılacağını gösterir.
+Koşullu dağıtımı, yeni bir kaynak oluşturmak veya var olan bir kaynağı kullanmak için kullanabilirsiniz. Aşağıdaki örnek, `condition` Yeni bir depolama hesabı dağıtmak veya var olan bir depolama hesabını kullanmak için nasıl kullanılacağını gösterir.
 
 ```json
 {
@@ -36,7 +36,7 @@ Koşullu dağıtımı, yeni bir kaynak oluşturmak veya var olan bir kaynağı k
 }
 ```
 
-**Neworexıting** parametresi **New** olarak ayarlandığında, koşul true olarak değerlendirilir. Depolama hesabı dağıtılır. Ancak, **Neworexıting** özelliği **var** olarak ayarlandığında, koşul yanlış olarak değerlendirilir ve depolama hesabı dağıtılmaz.
+Parametre `newOrExisting` **Yeni** olarak ayarlandığında, koşul true olarak değerlendirilir. Depolama hesabı dağıtılır. Ancak, `newOrExisting` **var** olarak ayarlandığında, koşul yanlış olarak değerlendirilir ve depolama hesabı dağıtılmaz.
 
 Öğesini kullanan bir örnek şablon için `condition` , bkz. [Yeni veya var olan sanal ağ, depolama ve genel IP ile VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions).
 
@@ -80,13 +80,13 @@ Tüm şablon için bkz. [Azure SQL mantıksal sunucusu](https://github.com/Azure
 
 Koşullu olarak dağıtılan bir kaynakla [başvuru](template-functions-resource.md#reference) veya [liste](template-functions-resource.md#list) işlevi kullanıyorsanız, işlev, kaynak dağıtılmasa bile değerlendirilir. İşlev mevcut olmayan bir kaynağa başvuruyorsa bir hata alırsınız.
 
-İşlevin yalnızca kaynak dağıtıldığında koşullara göre değerlendirildiğinden emin olmak için [IF](template-functions-logical.md#if) işlevini kullanın. Koşullu olarak dağıtılan bir kaynakla IF ve Reference kullanan bir örnek şablon için [IF işlevine](template-functions-logical.md#if) bakın.
+İşlevin yalnızca kaynak dağıtıldığında koşullara göre değerlendirildiğinden emin olmak için [IF](template-functions-logical.md#if) işlevini kullanın. Koşullu olarak dağıtılan bir kaynakla ve kullanan örnek bir şablon için [IF işlevine](template-functions-logical.md#if) bakın `if` `reference` .
 
 Bir kaynağı koşullu kaynağa [bağlı olarak](define-resource-dependency.md) , diğer tüm kaynaklar gibi ayarlarsınız. Koşullu bir kaynak dağıtıldığında Azure Resource Manager, gerekli bağımlılıklardan otomatik olarak kaldırır.
 
 ## <a name="complete-mode"></a>Mod Tamam
 
-Bir şablonu, [tamamlanma modu](deployment-modes.md) ile dağıtırsanız ve koşul false olarak değerlendirdiği için bir kaynak dağıtılmamışsa, sonuç, şablonu dağıtmak için kullandığınız REST API sürümüne bağlıdır. 2019-05-10 'den önceki bir sürümü kullanıyorsanız, kaynak **silinmez**. 2019-05-10 veya sonraki bir sürümü kullanarak kaynak **silinir**. Azure PowerShell ve Azure CLı 'nın en son sürümleri, koşul false olduğunda kaynağı siler.
+Bir şablonu, [tamamen modu](deployment-modes.md) ile dağıtırsanız ve bir kaynak dağıtılmamışsa `condition` , false olarak değerlendirilirse, sonuç, şablonu dağıtmak için kullandığınız REST API sürümüne bağlıdır. 2019-05-10 'den önceki bir sürümü kullanıyorsanız, kaynak **silinmez**. 2019-05-10 veya sonraki bir sürümü kullanarak kaynak **silinir**. Azure PowerShell ve Azure CLı 'nın en son sürümleri, koşul false olduğunda kaynağı siler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

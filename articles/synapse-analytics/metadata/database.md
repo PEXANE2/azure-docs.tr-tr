@@ -10,18 +10,18 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 14ae8b8670db53761d085bc019711e829633601b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 93602e522338166abac98c3e4a198e1aff392d21
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451806"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934977"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Azure SYNAPSE Analytics paylaşılan veritabanı
 
-Azure SYNAPSE Analytics, farklı hesaplama çalışma alanı altyapılarının, sunucusuz Apache Spark havuzları ve sunucusuz SQL havuzu altyapısı arasında veritabanlarını ve tabloları paylaşmasına izin verir.
+Azure SYNAPSE Analytics, farklı hesaplama çalışma alanı altyapılarının veritabanlarını ve tabloları paylaşmasına izin verir. Şu anda, Apache Spark havuzlarında oluşturulan veritabanları ve Parquet tabloları sunucusuz SQL havuzu altyapısı ile otomatik olarak paylaşılır.
 
-Spark işiyle oluşturulmuş bir veritabanı, sunucusuz SQL havuzu altyapısı dahil, çalışma alanındaki tüm geçerli ve gelecekteki Spark havuzlarıyla aynı ad ile görünür hale gelir.
+Spark işiyle oluşturulmuş bir veritabanı, sunucusuz SQL havuzu altyapısı dahil, çalışma alanındaki tüm geçerli ve gelecekteki Spark havuzlarıyla aynı ad ile görünür hale gelir. Sunucusuz SQL havuzunu kullanarak doğrudan bu çoğaltılan veritabanına özel nesneler (dış tablolar, görünümler, yordamlar) ekleyemezsiniz.
 
 Adlı Spark varsayılan veritabanı, `default` adlı veritabanı olarak sunucusuz SQL havuzu bağlamında da görünür olacaktır `default` .
 

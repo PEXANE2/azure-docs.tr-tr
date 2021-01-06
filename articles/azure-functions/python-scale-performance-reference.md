@@ -4,19 +4,19 @@ description: Çok iyi performans ve yük altında ölçeklendirme olan Python ku
 ms.topic: article
 ms.date: 10/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 3383ec322903d15c6090630890d14ce6d90bc96f
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: baa362f029678f266f154df912a9178a6626667d
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97899408"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935878"
 ---
 # <a name="improve-throughput-performance-of-python-apps-in-azure-functions"></a>Azure Işlevlerinde Python uygulamalarının üretilen iş performansını geliştirme
 
 Python kullanarak Azure Işlevleri için geliştirme yaparken, işlevlerinizin nasıl gerçekleştirileceğini ve bu performansın, işlev uygulamanızın nasıl ölçeklendirileceğini anlamanız gerekir. Yüksek performanslı uygulamalar tasarlarken gerek daha önemlidir. İşlevlerinizi tasarlarken, yazarken ve yapılandırırken göz önünde bulundurmanız gereken ana faktörler, yatay ölçeklendirme ve verimlilik performans yapılandırmalarıdır.
 
 ## <a name="horizontal-scaling"></a>Yatay ölçeklendirme
-Varsayılan olarak, Azure Işlevleri uygulamanızdaki yükü otomatik olarak izler ve gerektiğinde Python için ek konak örnekleri oluşturur. Azure Işlevleri, QueueTrigger için ileti yaşı ve sıra boyutu gibi örneklerin ne zaman ekleneceğini belirlemek için farklı tetikleyici türleri için yerleşik eşikleri kullanır. Bu eşikler Kullanıcı tarafından yapılandırılabilir değildir. Daha fazla bilgi için bkz. [Tüketim ve Premium planların nasıl çalıştığı](functions-scale.md#how-the-consumption-and-premium-plans-work).
+Varsayılan olarak, Azure Işlevleri uygulamanızdaki yükü otomatik olarak izler ve gerektiğinde Python için ek konak örnekleri oluşturur. Azure Işlevleri, QueueTrigger için ileti yaşı ve sıra boyutu gibi örneklerin ne zaman ekleneceğini belirlemek için farklı tetikleyici türleri için yerleşik eşikleri kullanır. Bu eşikler Kullanıcı tarafından yapılandırılabilir değildir. Daha fazla bilgi için bkz. [Azure Işlevlerinde olay odaklı ölçeklendirme](event-driven-scaling.md).
 
 ## <a name="improving-throughput-performance"></a>Verimlilik performansını artırma
 

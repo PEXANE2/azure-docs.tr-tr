@@ -5,12 +5,12 @@ ms.date: 12/2/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions-full
-ms.openlocfilehash: f270f74f97a9b9306d7b23dacec12c38f418dbd1
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: fb85920b04e3cd457dc36d1ba1fd0f18dcd7abb6
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921829"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937068"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Linux üzerinde özel kapsayıcı kullanarak bir işlev oluşturma
 
@@ -20,7 +20,7 @@ Bu öğreticide, bir Linux temel görüntüsü kullanarak kodunuzu oluşturup Az
 Azure Işlevleri, [özel işleyiciler](functions-custom-handlers.md)kullanarak tüm dilleri veya çalışma zamanını destekler. Bu öğreticide kullanılan R programlama dili gibi bazı dillerde, çalışma zamanını veya ek kitaplıkları özel bir kapsayıcının kullanılmasını gerektiren bağımlılıklar olarak yüklemeniz gerekir.
 ::: zone-end
 
-İşlev kodunuzu özel bir Linux kapsayıcısında dağıtmak [Premium plan](functions-premium-plan.md#features) veya [adanmış (App Service) bir plan](functions-scale.md#app-service-plan) barındırmayı gerektirir. Bu öğreticiyi tamamlamak, Azure hesabınızda birkaç ABD Doları ücretlerinden oluşur ve bu işlem tamamlandığında [kaynakları temizleyerek](#clean-up-resources) en aza indirmenize neden olur.
+İşlev kodunuzu özel bir Linux kapsayıcısında dağıtmak [Premium plan](functions-premium-plan.md) veya [adanmış (App Service) bir plan](dedicated-plan.md) barındırmayı gerektirir. Bu öğreticiyi tamamlamak, Azure hesabınızda birkaç ABD Doları ücretlerinden oluşur ve bu işlem tamamlandığında [kaynakları temizleyerek](#clean-up-resources) en aza indirmenize neden olur.
 
 [Linux üzerinde barındırılan ilk işlevinizi oluşturma](./create-first-function-cli-csharp.md?pivots=programming-language-python)konusunda açıklandığı gibi varsayılan bir Azure App Service kapsayıcısını de kullanabilirsiniz. Azure Işlevleri için desteklenen temel görüntüler, [Azure işlevleri temel görüntüler](https://hub.docker.com/_/microsoft-azure-functions-base)deposunda bulunur.
 
@@ -280,7 +280,7 @@ func start
 
 `HttpExample`Uç noktanın çıktıda göründüğünü gördüğünüzde öğesine gidin `http://localhost:7071/api/HttpExample?name=Functions` . Tarayıcı `Functions` , sorgu parametresine sağlanan değeri gösteren bir "Merhaba" iletisi görüntülemelidir `name` .
 
-**Ctrl** - Konağı durdurmak için CTRL **C** 'yi kullanın.
+ - Konağı durdurmak için CTRL **C** 'yi kullanın.
 
 ## <a name="build-the-container-image-and-test-locally"></a>Kapsayıcı görüntüsünü oluşturma ve yerel olarak test etme
 
@@ -330,7 +330,7 @@ Görüntü yerel kapsayıcıda çalışmaya başladıktan sonra, bir tarayıcı 
 Görüntü yerel kapsayıcıda çalışmaya başladıktan sonra, `http://localhost:8080/api/HttpExample?name=Functions` daha önce olduğu gibi aynı "Merhaba" iletisini görüntülemesi gereken öğesine gidin. Maven arşiv ETYPE, anonim yetkilendirme kullanan bir HTTP ile tetiklenen bir işlev oluşturduğundan, kapsayıcıda çalışıyor olsa bile işlevi çağırabilirsiniz. 
 ::: zone-end  
 
-Kapsayıcıda işlev uygulamasını doğruladıktan sonra, **CTRL** C ile Docker 'ı durdurun + **C**.
+Kapsayıcıda işlev uygulamasını doğruladıktan sonra, **CTRL** C ile Docker 'ı durdurun + .
 
 ## <a name="push-the-image-to-docker-hub"></a>Görüntüyü Docker Hub 'a gönderme
 

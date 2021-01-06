@@ -2,16 +2,25 @@
 title: Apache Kafka Connect ile tümleştirme-Azure Event Hubs | Microsoft Docs
 description: Bu makalede Kafka için Azure Event Hubs ile Kafka Connect 'in nasıl kullanılacağı hakkında bilgi verilmektedir.
 ms.topic: how-to
-ms.date: 06/23/2020
-ms.openlocfilehash: d37d2465d9389a0bcfaabdec32bad0c86846cfb2
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.date: 01/06/2021
+ms.openlocfilehash: f82dcdafa7921f4a994361371536b2f1ace7cbc5
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369548"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935164"
 ---
-# <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview"></a>Azure Event Hubs'a Apache Kafka Connect desteğiyle tümleştirme (Önizleme)
-İş gereksinimleri için alma işlemleri arttıkça, çeşitli dış kaynaklar ve havuzlar için alma gereksinimi de artıyor. [Apache Kafka Connect](https://kafka.apache.org/documentation/#connect), Kafka kümesi aracılığıyla MySQL, HDFS ve dosya sistemi gibi herhangi bir dış sistemden/sisteme bağlanmak ve verileri içeri/dışarı aktarmak için böyle bir çerçeve sağlar. Bu öğreticide, Event Hubs ile Kafka Connect Framework kullanımı gösterilmektedir.
+# <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs"></a>Azure Event Hubs'a Apache Kafka Connect desteğiyle tümleştirme
+[Apache Kafka Connect](https://kafka.apache.org/documentation/#connect) , bir Kafka kümesi aracılığıyla MySQL,, ve dosya sistemi gibi herhangi bir dış sisteme bağlanmak ve bunlardan veri içeri/dışarı aktarmak için bir çerçevedir. Bu öğreticide, Event Hubs ile Kafka Connect Framework kullanımı gösterilmektedir.
+
+> [!WARNING]
+> Apache Kafka Connect Framework 'ün kullanımı ve bağlayıcıları **Microsoft Azure aracılığıyla ürün desteği için uygun değildir**.
+>
+> Apache Kafka Connect, dinamik yapılandırmasının, aksi takdirde sınırsız saklama ile sıkıştırılmış konularda tutulmasını kabul eder. Azure Event Hubs, [bir aracı özelliği olarak sıkıştırmayı uygulamaz](event-hubs-federation-overview.md#log-projections) ve Azure Event Hubs 'in, uzun süreli bir veri veya yapılandırma deposu olmayan gerçek zamanlı bir olay akışı altyapısı olduğu prensip.
+>
+> Apache Kafka projesi bu rolleri karıştırmaya rahat olabileceğinden, Azure bu bilgilerin uygun bir veritabanı veya yapılandırma deposunda en iyi şekilde yönetildiğini düşünmektedir.
+>
+> Birçok Apache Kafka Connect senaryosu işlevsel olacaktır, ancak Apache Kafka ve Azure Event Hubs ' saklama modelleri arasındaki bu kavramsal farklılıklar bazı yapılandırmaların beklendiği gibi çalışmamasına neden olabilir. 
 
 Bu öğretici, Kafka Connect 'i bir olay hub 'ı ile tümleştirerek temel FileStreamSource ve FileStreamSink bağlayıcılarını dağıtmanıza yardımcı olur. Bu özellik şu anda önizleme sürümündedir. Bu bağlayıcılar üretimde kullanıma yönelik olmasa da, Azure Event Hubs'ın bir Kafa aracısı işlevi üstlendiği uçtan uca bir Kafka Connect senaryosunu gösterirler.
 
@@ -101,7 +110,7 @@ Bu adımda, bir Kafka Connect çalışanı dağıtılmış modda yerel olarak ba
 
 1. Yukarıdaki `connect-distributed.properties` dosyasını yerel olarak kaydedin.  Küme ayracı içindeki tüm değerleri değiştirdiğinizden emin olun.
 2. Makinenizde Kafka sürümünün konumuna gidin.
-4. Şu komutu çalıştırın: `./bin/connect-distributed.sh /PATH/TO/connect-distributed.properties`.  `'INFO Finished starting connectors and tasks'` iletisini gördüğünüzde Connect çalışanı REST API etkileşime hazır demektir. 
+4. `./bin/connect-distributed.sh /PATH/TO/connect-distributed.properties` öğesini çalıştırın.  `'INFO Finished starting connectors and tasks'` iletisini gördüğünüzde Connect çalışanı REST API etkileşime hazır demektir. 
 
 > [!NOTE]
 > Kafka Connect, Kafka AdminClient API 'sini kullanarak, sıkıştırma de dahil olmak üzere önerilen yapılandırmalara sahip konuları otomatik olarak oluşturur. Azure portalında ad alanına hızla göz attığınızda, Connect çalışanı iç konusunun otomatik olarak oluşturulduğu ortaya çıkar.

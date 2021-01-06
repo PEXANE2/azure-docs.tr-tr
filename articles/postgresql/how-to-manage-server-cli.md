@@ -3,21 +3,21 @@ title: Sunucuyu yönetme-Azure CLı-PostgreSQL için Azure veritabanı
 description: Azure CLı 'dan PostgreSQL için Azure veritabanı sunucusunu yönetmeyi öğrenin.
 author: ajlam
 ms.author: andrela
-ms.service: mysql
+ms.service: postgresql
 ms.topic: how-to
 ms.date: 9/22/2020
-ms.openlocfilehash: d99634388b9c4db99c996cfccb9bb5f12682f217
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2ea07e2bc12e6fc0d62abd462b8537c6a93689f9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490127"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935810"
 ---
 # <a name="manage-an-azure-database-for-postgresql-single-server-using-the-azure-cli"></a>Azure CLı kullanarak PostgreSQL için Azure veritabanı tek sunucu yönetme
 
 Bu makalede, Azure 'da dağıtılan tek sunucularınızın nasıl yönetileceği gösterilmektedir. Yönetim görevleri işlem ve depolama ölçeklendirmesi, yönetici parola sıfırlama ve sunucu ayrıntılarını görüntüleme içerir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun. Bu makalede, Azure CLı sürüm 2,0 veya üstünü yerel olarak çalıştırıyor olmanız gerekir. Yüklü sürümü görmek için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
@@ -33,7 +33,7 @@ az login
 az account set --subscription <subscription id>
 ```
 
-Zaten bir sunucu oluşturmadıysanız, oluşturmak için bu [hızlı](quickstart-create-server-database-azure-cli.md) başlangıca bakın.
+Zaten bir sunucu oluşturmadıysanız, bu [hızlı başlangıç](quickstart-create-server-database-azure-cli.md) bölümüne başvurarak bir tane oluşturun.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
@@ -62,7 +62,7 @@ storage-size | 6144 | Sunucunun depolama kapasitesi (birim olan megabayt kullan�
 ## <a name="manage-postgresql-databases-on-a-server"></a>Bir sunucudaki PostgreSQL veritabanlarını yönetin.
 Sunucunuzdaki bir veritabanının veritabanı özelliklerini oluşturmak, silmek, listelemek ve görüntülemek için aşağıdaki komutlardan herhangi birini kullanabilirsiniz
 
-| Cmdlet | Kullanım| Açıklama |
+| Cmdlet | Kullanım| Description |
 | --- | ---| --- |
 |[az Postgres DB Create](/cli/azure/sql/db#az-mysql-db-create)|```az postgres db create -g myresourcegroup -s mydemoserver -n mydatabasename``` |Bir veritabanı oluşturur|
 |[az Postgres DB Delete](/cli/azure/sql/db#az-mysql-db-delete)|```az postgres db delete -g myresourcegroup -s mydemoserver -n mydatabasename```|Veritabanınızı sunucudan silin. Bu komut, sunucunuzu silmez. |

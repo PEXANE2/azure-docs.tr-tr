@@ -5,12 +5,12 @@ ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: f597e58c70d6ac9daff753f5c0a54199c2383c42
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 746a97ecd9b0bdd676e70cca38edc75905e3e4bd
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019523"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936949"
 ---
 # <a name="manage-your-function-app"></a>İşlev uygulamanızı yönetme 
 
@@ -35,7 +35,7 @@ Bu makalede, işlev uygulamalarınızın nasıl yapılandırılacağı ve yönet
 
 Özel bakış sayfasından, özellikle **[uygulama ayarları](#settings)** ve **[platform özellikleri](#platform-features)**' nde, işlev uygulamanızı yönetmek için ihtiyacınız olan her şeye gidebilirsiniz.
 
-## <a name="application-settings"></a><a name="settings"></a>Uygulama ayarları
+## <a name="work-with-application-settings"></a><a name="settings"></a>Uygulama ayarlarıyla çalışma
 
 **Uygulama ayarları** sekmesi, işlev uygulamanız tarafından kullanılan ayarları korur. Bu ayarlar şifreli olarak depolanır ve portalda değerleri görmek için **değerleri göster** ' i seçmeniz gerekir. Ayrıca, Azure CLı kullanarak uygulama ayarlarına erişebilirsiniz.
 
@@ -45,7 +45,7 @@ Portalda bir ayar eklemek için **Yeni uygulama ayarı** ' nı seçin ve yeni an
 
 ![Azure portal işlev uygulaması ayarları.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 [`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-list)Komut, aşağıdaki örnekte olduğu gibi var olan uygulama ayarlarını döndürür:
 
@@ -68,6 +68,56 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 [!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
 
 Yerel olarak bir işlev uygulaması geliştirirken, bu değerlerin yerel kopyalarını proje dosyasında local.settings.jskorumanız gerekir. Daha fazla bilgi için bkz. [yerel ayarlar dosyası](functions-run-local.md#local-settings-file).
+
+## <a name="hosting-plan-type"></a>Barındırma planı türü
+
+Bir işlev uygulaması oluşturduğunuzda, uygulamanın çalıştırıldığı App Service bir barındırma planı da oluşturursunuz. Bir planda bir veya daha fazla işlev uygulaması olabilir. İşlevlerinizin işlevselliği, ölçeklendirilmesi ve fiyatları plan türüne bağlıdır. Daha fazla bilgi edinmek için bkz. [Azure işlevleri fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/functions/).
+
+İşlev uygulamanız tarafından kullanılan planın türünü Azure portal veya Azure CLı veya Azure PowerShell API 'Lerini kullanarak belirleyebilirsiniz. 
+
+Aşağıdaki değerler plan türünü gösterir:
+
+| Plan türü | Portal | Azure CLı/PowerShell |
+| --- | --- | --- |
+| [Tüketim](consumption-plan.md) | **Tüketim** | `Dynamic` |
+| [Premium](functions-premium-plan.md) | **Elaun Premium** | `ElasticPremium` |
+| [Adanmış (App Service)](dedicated-plan.md) | Türlerini | Türlerini |
+
+# <a name="portal"></a>[Portal](#tab/portal)
+
+İşlev uygulamanız tarafından kullanılan planın türünü öğrenmek için, [Azure Portal](https://portal.azure.com)işlev uygulaması Için **genel bakış** sekmesinde **App Service plan** bölümüne bakın. Fiyatlandırma katmanını görmek için **App Service planının** adını seçin ve ardından sol bölmedeki **Özellikler** ' i seçin.
+
+![Portalda ölçeklendirme planını görüntüleme](./media/functions-scale/function-app-overview-portal.png)
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
+
+Barındırma planı türünü almak için aşağıdaki Azure CLı komutunu çalıştırın:
+
+```azurecli-interactive
+functionApp=<FUNCTION_APP_NAME>
+resourceGroup=FunctionMonitoringExamples
+appServicePlanId=$(az functionapp show --name $functionApp --resource-group $resourceGroup --query appServicePlanId --output tsv)
+az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output tsv
+
+```  
+
+Önceki örnekte `<RESOURCE_GROUP>` `<FUNCTION_APP_NAME>` , ve ile ilgili kaynak grubu ve işlev uygulama adları ile değiştirin. 
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+Barındırma planı türünü almak için aşağıdaki Azure PowerShell komutunu çalıştırın:
+
+```azurepowershell-interactive
+$FunctionApp = '<FUNCTION_APP_NAME>'
+$ResourceGroup = '<RESOURCE_GROUP>'
+
+$PlanID = (Get-AzFunctionApp -ResourceGroupName $ResourceGroup -Name $FunctionApp).AppServicePlan
+(Get-AzFunctionAppPlan -Name $PlanID -ResourceGroupName $ResourceGroup).SkuTier
+```
+Önceki örnekte `<RESOURCE_GROUP>` `<FUNCTION_APP_NAME>` , ve ile ilgili kaynak grubu ve işlev uygulama adları ile değiştirin. 
+
+---
+
 
 ## <a name="platform-features"></a>Platform özellikleri
 
@@ -136,7 +186,7 @@ az functionapp cors add --name <FUNCTION_APP_NAME> \
 
 [`az functionapp cors show`](/cli/azure/functionapp/cors#az-functionapp-cors-show)Mevcut izin verilen kaynakları listelemek için komutunu kullanın.
 
-### <a name="authentication"></a><a name="auth"></a>Kimlik Doğrulaması
+### <a name="authentication"></a><a name="auth"></a>Kimlik doğrulama
 
 ![İşlev uygulaması için kimlik doğrulamasını yapılandırma](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-authentication.png)
 

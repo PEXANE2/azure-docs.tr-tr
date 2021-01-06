@@ -1,17 +1,17 @@
 ---
-title: Azure Logic Apps önizlemesi için genel bakış
+title: Azure Logic Apps Önizleme sürümüne genel bakış
 description: Azure Logic Apps Preview, uygulamaları, verileri, hizmetleri ve sistemleri kurumsal düzeyde senaryolar için en az kodla tümleştiren otomatik durum bilgisiz ve durum bilgisi olmayan iş akışları oluşturmaya yönelik bir bulut çözümüdür.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 0c4d0416c107c9ceb4cd0dbdf80761ab9b52d56c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 7c15b3a854b533d93bc05f7e5302671711da75c2
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96924422"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936133"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Genel Bakış: Azure Logic Apps Önizleme
 
@@ -148,7 +148,7 @@ Azure Logic Apps önizleme birçok geçerli ve ek özellik içerir, örneğin:
 
 Azure portal yeni mantıksal uygulama türünü oluştururken veya Visual Studio Code dağıtırken, mantıksal uygulamanızın kullanması için [App Service veya Premium](../azure-functions/functions-scale.md)bir barındırma planı seçmelisiniz. Bu plan, mantıksal uygulamanızı çalıştırmak için geçerli olan fiyatlandırma modelini belirler. App Service planını seçerseniz, ayrıca bir [fiyatlandırma katmanı](../app-service/overview-hosting-plans.md)da seçmeniz gerekir.
 
-*Durum bilgisi olan* iş akışları [harici depolama](../azure-functions/functions-scale.md#storage-account-requirements)kullanır, bu nedenle [Azure Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/) Azure Logic Apps önizlemesi çalışma zamanının gerçekleştirdiği depolama işlemleri için geçerlidir. Örneğin, kuyruklar zamanlama için kullanılır, ancak tablolar ve Bloblar iş akışı durumlarını depolamak için kullanılır.
+*Durum bilgisi olan* iş akışları [harici depolama](../azure-functions/storage-considerations.md#storage-account-requirements)kullanır, bu nedenle [Azure Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/) Azure Logic Apps önizlemesi çalışma zamanının gerçekleştirdiği depolama işlemleri için geçerlidir. Örneğin, kuyruklar zamanlama için kullanılır, ancak tablolar ve Bloblar iş akışı durumlarını depolamak için kullanılır.
 
 > [!NOTE]
 > Genel Önizleme sırasında App Service Logic apps çalıştırmak, seçtiğiniz planın üzerine *ek* ücret vermez.

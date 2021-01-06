@@ -3,12 +3,12 @@ title: Şablonlardaki parametreler
 description: Azure Resource Manager şablonunda parametrelerin nasıl tanımlanacağını açıklar (ARM şablonu).
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 4ac1aeb579040b35b2a9b4cb90fb5687f91ebd3b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 929d871bc0087d4fda585773b349dee4e0945c7c
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353519"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934722"
 ---
 # <a name="parameters-in-arm-templates"></a>ARM şablonlarındaki parametreler
 
@@ -20,7 +20,7 @@ Her parametrenin [veri türlerinden](template-syntax.md#data-types)birine ayarla
 
 ## <a name="define-parameter"></a>Parametre tanımla
 
-Aşağıdaki örnek bir basit parametre tanımını gösterir. **Storagesku** adlı bir parametre tanımlar. Parametresi bir dize değeridir ve yalnızca amaçlanan kullanımı için geçerli olan değerleri kabul eder. Dağıtım sırasında hiçbir değer sağlanmamışsa parametre varsayılan değeri kullanır.
+Aşağıdaki örnek bir basit parametre tanımını gösterir. Adlı bir parametreyi tanımlar `storageSKU` . Parametresi bir dize değeridir ve yalnızca amaçlanan kullanımı için geçerli olan değerleri kabul eder. Dağıtım sırasında hiçbir değer sağlanmamışsa parametre varsayılan değeri kullanır.
 
 ```json
 "parameters": {
@@ -154,7 +154,7 @@ Nokta işlecini kullanarak nesnesinin özelliklerine başvurun.
 
 Aşağıdaki örneklerde, parametreleri kullanmaya yönelik senaryolar gösterilmektedir.
 
-|Şablon  |Açıklama  |
+|Şablon  |Description  |
 |---------|---------|
 |[Varsayılan değerler için işlevlere sahip parametreler](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | Parametreler için varsayılan değerleri tanımlarken şablon işlevlerinin nasıl kullanılacağını gösterir. Şablon hiçbir kaynak dağıtmaz. Parametre değerlerini oluşturur ve bu değerleri döndürür. |
 |[Parameter nesnesi](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | Bir parametre için bir nesne kullanmayı gösterir. Şablon hiçbir kaynak dağıtmaz. Parametre değerlerini oluşturur ve bu değerleri döndürür. |

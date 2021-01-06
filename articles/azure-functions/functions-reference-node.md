@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 21ab58095fa919e6302251c16e474b02f1445993
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: bf6ebd01a18a0ebf0ab5dd7d7ac3aa34256b4696
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302003"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936813"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Işlevleri JavaScript Geliştirici Kılavuzu
 
@@ -18,7 +18,7 @@ Bu kılavuz, JavaScript kullanarak Azure Işlevleri geliştirmeye yardımcı ola
 
 Express.js, Node.js veya JavaScript geliştiricisi olarak Azure Işlevleri 'ne yeni bir deyişle, lütfen önce aşağıdaki makalelerden birini okuyun:
 
-| Kullanmaya başlama | Kavramlar| Kılavuzlu öğrenme |
+| Başlarken | Kavramlar| Kılavuzlu öğrenme |
 | -- | -- | -- | 
 | <ul><li>[ Visual Studio Code kullanarakNode.js işlevi](./create-first-function-vs-code-node.md)</li><li>[ Terminal/komut istemiyleNode.js işlevi](./create-first-function-cli-java.md)</li></ul> | <ul><li>[Geliştirici kılavuzu](functions-reference.md)</li><li>[Barındırma seçenekleri](functions-scale.md)</li><li>[TypeScript işlevleri](#typescript)</li><li>[Performans &nbsp; konuları](functions-best-practices.md)</li></ul> | <ul><li>[Sunucusuz uygulamalar oluşturma](/learn/paths/create-serverless-applications/)</li><li>[Node.js ve hızlı API 'Leri sunucusuz API 'lere yeniden düzenleme](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
@@ -201,7 +201,7 @@ module.exports = (context) => {
 
 İşlevinize geçirilen bağlam, `executionContext` aşağıdaki özelliklere sahip bir nesne olan bir özelliği gösterir:
 
-| Özellik adı  | Tür  | Açıklama |
+| Özellik adı  | Tür  | Description |
 |---------|---------|---------|
 | `invocationId` | Dize | Belirli işlev çağrısı için benzersiz bir tanımlayıcı sağlar. |
 | `functionName` | Dize | Çalışan işlevin adını sağlar |
@@ -270,7 +270,7 @@ context.done([err],[propertyBag])
 
 Çalışma zamanının kodunuzun tamamlandığını bilmesini sağlar. İşleviniz [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) bildirimi kullandığında, kullanmanız gerekmez `context.done()` . `context.done`Geri çağırma örtük olarak çağırılır. Zaman uyumsuz işlevler, Node 8 veya daha sonraki bir sürümde kullanılabilir ve bu Işlevler çalışma zamanının 2. x sürümünü gerektirir.
 
-İşleviniz zaman uyumsuz bir işlev değilse, **you must call** `context.done` çalışma zamanını işlevinizin tamamlandığını bilgilendirmek için öğesini çağırmanız gerekir. Eksik ise yürütme zaman aşımına uğrar.
+İşleviniz zaman uyumsuz bir işlev değilse,  `context.done` çalışma zamanını işlevinizin tamamlandığını bilgilendirmek için öğesini çağırmanız gerekir. Eksik ise yürütme zaman aşımına uğrar.
 
 `context.done`Yöntemi, hem Kullanıcı tanımlı bir hatayı çalışma zamanına hem de çıkış bağlama verilerini içeren BIR JSON nesnesine geri geçirmenize olanak sağlar. `context.done`Nesne üzerinde ayarlanan her şeyi üzerine yazmak için geçirilen Özellikler `context.bindings` .
 
@@ -493,7 +493,7 @@ HTTP tetikleyicilerle çalışırken, HTTP isteğine ve yanıt nesnelerine çeş
 
 ## <a name="scaling-and-concurrency"></a>Ölçeklendirme ve eşzamanlılık
 
-Varsayılan olarak, Azure Işlevleri uygulamanızdaki yükü otomatik olarak izler ve gerektiğinde Node.js için ek konak örnekleri oluşturur. İşlevler, iletilerin yaşı ve QueueTrigger için sıra boyutu gibi örneklerin ne zaman ekleneceğini belirlemek için farklı tetikleyici türleri için yerleşik (Kullanıcı tarafından yapılandırılamaz) eşikleri kullanır. Daha fazla bilgi için bkz. [Tüketim ve Premium planların nasıl çalıştığı](functions-scale.md#how-the-consumption-and-premium-plans-work).
+Varsayılan olarak, Azure Işlevleri uygulamanızdaki yükü otomatik olarak izler ve gerektiğinde Node.js için ek konak örnekleri oluşturur. İşlevler, iletilerin yaşı ve QueueTrigger için sıra boyutu gibi örneklerin ne zaman ekleneceğini belirlemek için farklı tetikleyici türleri için yerleşik (Kullanıcı tarafından yapılandırılamaz) eşikleri kullanır. Daha fazla bilgi için bkz. [Tüketim ve Premium planların nasıl çalıştığı](event-driven-scaling.md).
 
 Bu ölçeklendirme davranışı birçok Node.js uygulama için yeterlidir. CPU 'ya yönelik uygulamalar için, birden çok dil çalışan işlemini kullanarak performansı daha da artırabilirsiniz.
 

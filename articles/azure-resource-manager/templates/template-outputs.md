@@ -3,12 +3,12 @@ title: Şablonlarda çıkış çıkışları
 description: Azure Resource Manager şablonunda çıkış değerlerinin nasıl tanımlanacağını açıklar (ARM şablonu).
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 6a375dfbc767bcbbfd8ec6b7f8cb9e942e275582
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9e4ac134e9c1864bca8dd56c3a6e2311d0328d7d
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353536"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934739"
 ---
 # <a name="outputs-in-arm-templates"></a>ARM şablonlarındaki çıktılar
 
@@ -47,7 +47,7 @@ Koşullu çıkışın basit bir örneği için bkz. [koşullu çıkış şablonu
 
 ## <a name="dynamic-number-of-outputs"></a>Dinamik çıkış sayısı
 
-Bazı senaryolarda, şablonu oluştururken döndürmeniz gereken bir değerin örnek sayısını bilemezsiniz. **Copy** öğesini kullanarak, değişken sayıda değer döndürebilirsiniz.
+Bazı senaryolarda, şablonu oluştururken döndürmeniz gereken bir değerin örnek sayısını bilemezsiniz. Öğesini kullanarak değişken sayıda değer döndürebilirsiniz `copy` .
 
 ```json
 "outputs": {
@@ -61,7 +61,7 @@ Bazı senaryolarda, şablonu oluştururken döndürmeniz gereken bir değerin ö
 }
 ```
 
-Daha fazla bilgi için bkz. [Azure Resource Manager şablonlarda çıkış yinelemesi](copy-outputs.md).
+Daha fazla bilgi için bkz. [ARM şablonlarındaki çıkış yinelemesi](copy-outputs.md).
 
 ## <a name="linked-templates"></a>Bağlı şablonlar
 
@@ -112,7 +112,7 @@ az deployment group show \
 
 Aşağıdaki örneklerde, çıkışları kullanmaya yönelik senaryolar gösterilmektedir.
 
-|Şablon  |Açıklama  |
+|Şablon  |Description  |
 |---------|---------|
 |[Değişkenleri Kopyala](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Karmaşık değişkenler oluşturur ve bu değerleri verir. Hiçbir kaynak dağıtmaz. |
 |[Genel IP adresi](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Genel bir IP adresi oluşturur ve kaynak KIMLIĞINI verir. |

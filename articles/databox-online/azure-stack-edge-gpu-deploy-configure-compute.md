@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 08/28/2020
+ms.date: 01/05/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 711da24b3edf08f4867109d0d70165955236c39a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c884ad6850b8f94baa7c658d685651c3241be33f
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184663"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935695"
 ---
 # <a name="tutorial-configure-compute-on-azure-stack-edge-pro-gpu-device"></a>Öğretici: Azure Stack Edge Pro GPU cihazında işlem yapılandırma
 
@@ -25,7 +25,7 @@ Bu öğreticide, Azure Stack Edge Pro cihazınızda bir işlem rolünün nasıl 
 Bu yordamın tamamlanması 20 ila 30 dakika kadar sürebilir.
 
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * İşlem yapılandırma
@@ -45,40 +45,38 @@ Azure Stack Edge Pro cihazınızda bir işlem rolü ayarlamadan önce şunları 
 
 Azure Stack Edge Pro ortamınızda işlem yapılandırmak için Azure portal aracılığıyla bir IoT Hub kaynağı oluşturacaksınız.
 
-1. Azure Stack Edge kaynağınızın Azure portal **Genel Bakış ' a** gidin. Sağ bölmede, **işlem** kutucuğunda **başlayın**' ı seçin.
+1. Azure Stack Edge kaynağınızın Azure portal, **Genel Bakış ' a** gidin ve **IoT Edge**' yı seçin.
 
-    ![İşlem ile çalışmaya başlama](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-1.png)
+   ![İşlem ile çalışmaya başlama](./media/azure-stack-edge-gpu-deploy-configure-compute/configure-compute-1.png)
 
-2. **Uç Işlem yapılandırma** kutucuğunda, **işlem Yapılandır**' ı seçin.
+2. **IoT Edge hizmeti 'Ni etkinleştir** bölümünde **Ekle**' yi seçin.
 
-    ![İşlem yapılandırma](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-2.png)
+   ![İşlem yapılandırma](./media/azure-stack-edge-gpu-deploy-configure-compute/configure-compute-2.png)
 
-3. **Uç Işlem yapılandırma** dikey penceresinde aşağıdakileri girin:
-
+3. **Uç Işlem yapılandırma** dikey penceresinde aşağıdaki bilgileri girin:
    
-    |Alan  |Değer  |
-    |---------|---------|
-    |IoT Hub     | **Yeni** veya **mevcut** seçeneklerinden birini belirleyin. <br> Varsayılan olarak IoT kaynağı oluşturulurken Standart katmanı (S1) kullanılır. Bir ücretsiz katman IoT kaynağı kullanmak için kaynağı oluşturun ve sonra da mevcut kaynağı seçin. <br> Her durumda IoT Hub kaynak, Azure Stack Edge kaynağı tarafından kullanılan aynı abonelik ve kaynak grubunu kullanır.     |
-    |Adı     |IoT Hub kaynağınız için bir ad girin.         |
+   |Alan  |Değer  |
+   |---------|---------|
+   |IoT Hub     | **Yeni** veya **mevcut** seçeneklerinden birini belirleyin. <br> Varsayılan olarak IoT kaynağı oluşturulurken Standart katmanı (S1) kullanılır. Bir ücretsiz katman IoT kaynağı kullanmak için kaynağı oluşturun ve sonra da mevcut kaynağı seçin. <br> Her durumda IoT Hub kaynak, Azure Stack Edge kaynağı tarafından kullanılan aynı abonelik ve kaynak grubunu kullanır.     |
+   |Ad     |IoT Hub kaynağınız için bir ad girin.         |
 
-    ![İşlem 2 ile çalışmaya başlama](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
+   ![İşlem 2 ile çalışmaya başlama](./media/azure-stack-edge-gpu-deploy-configure-compute/configure-compute-3.png)
 
-4. **Oluştur**’u seçin. IoT Hub kaynak oluşturma birkaç dakika sürer. IoT Hub kaynağı oluşturulduktan sonra, işlem yapılandırmasını göstermek için işlem kutucuğunu **Yapılandır** ' ı güncelleştirir. 
+4. Ayarları tamamladığınızda, **gözden geçir + oluştur**' u seçin. IoT Hub kaynağınız için ayarları gözden geçirin ve **Oluştur**' u seçin.
 
-    ![İşlem 3 ' ü kullanmaya başlama](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-4.png)
+   Bir IoT Hub kaynağı için kaynak oluşturma birkaç dakika sürer. Kaynak oluşturulduktan sonra **genel bakış** IoT Edge hizmetin çalıştığını gösterir.
 
-5. Edge işlem rolünün yapılandırıldığını doğrulamak için, **Işlem yapılandırma** kutucuğunda işlemi **görüntüle** ' yi seçin.
-    
-    ![İşlem 4 ' ü kullanmaya başlama](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
+   ![İşlem 3 ' ü kullanmaya başlama](./media/azure-stack-edge-gpu-deploy-configure-compute/configure-compute-4.png)
 
-    > [!NOTE]
-    > IoT Hub Azure Stack Edge Pro cihazı ile ilişkilendirilmeden önce **Işlem Yapılandır** iletişim kutusu kapatılırsa IoT Hub oluşturulur ancak işlem yapılandırmasında gösterilmez. 
-    
-Edge cihazında Edge hesaplama rolü ayarlandığında, iki cihaz oluşturur: bir IoT cihazı ve bir IoT Edge cihaz. Her iki cihaz de IoT Hub kaynağında görüntülenebilir. Bu IoT Edge cihazında aynı zamanda bir IoT Edge çalışma zamanı çalışıyor. Bu noktada, IoT Edge cihazınız için yalnızca Linux platformu kullanılabilir.
+5. Uç işlem rolünün yapılandırıldığını onaylamak için **Özellikler**' i seçin.
 
-Arka planda, sanal makinelerin ve Kubernetes kümesinin oluşturulmasından bu yana işlem yapılandırmak 20-30 dakika sürebilir. 
+   ![İşlem 4 ' ü kullanmaya başlama](./media/azure-stack-edge-gpu-deploy-configure-compute/configure-compute-5.png)
 
-Azure portal içinde işlem başarıyla yapılandırıldıktan sonra, bir Kubernetes kümesi ve IoT ad alanıyla ilişkili bir varsayılan kullanıcı (Azure Stack Edge Pro tarafından denetlenen bir sistem ad alanı) mevcuttur. 
+   Edge cihazında Edge hesaplama rolü ayarlandığında, iki cihaz oluşturur: bir IoT cihazı ve bir IoT Edge cihaz. Her iki cihaz de IoT Hub kaynağında görüntülenebilir. Bu IoT Edge cihazında aynı zamanda bir IoT Edge çalışma zamanı çalışıyor. Bu noktada, IoT Edge cihazınız için yalnızca Linux platformu kullanılabilir.
+
+Arka planda, sanal makinelerin ve Kubernetes kümesinin oluşturulduğu için işlem yapılandırması 20-30 dakika sürebilir.
+
+Azure portal işlem başarıyla yapılandırıldıktan sonra, bir Kubernetes kümesi ve IoT ad alanıyla ilişkili bir varsayılan kullanıcı (Azure Stack Edge Pro tarafından denetlenen bir sistem ad alanı) mevcuttur.
 
 ## <a name="get-kubernetes-endpoints"></a>Kubernetes uç noktalarını al
 
@@ -89,15 +87,15 @@ Bir istemciyi Kubernetes kümesine erişecek şekilde yapılandırmak için Kube
 
     ![Yerel Kullanıcı arabirimindeki cihaz sayfası](./media/azure-stack-edge-j-series-create-kubernetes-cluster/device-kubernetes-endpoint-1.png)
 
-3. Uç nokta dizesini kaydedin. Bu daha sonra, kubectl aracılığıyla Kubernetes kümesine erişmek üzere bir istemciyi yapılandırırken kullanacaksınız.
+3. Uç nokta dizesini kaydedin. Bu uç nokta dizesini daha sonra, kubectl aracılığıyla Kubernetes kümesine erişmek için bir istemciyi yapılandırırken kullanacaksınız.
 
 4. Yerel Web Kullanıcı arabirimdeyken şunları yapabilirsiniz:
 
-    - Kubernetes API 'sine gidin, **Gelişmiş ayarlar** ' ı seçin ve Kubernetes için gelişmiş bir yapılandırma dosyası indirin. 
+    - Kubernetes API 'sine gidin, **Gelişmiş ayarlar**' ı seçin ve Kubernetes için gelişmiş bir yapılandırma dosyası indirin. 
 
         ![Yerel Kullanıcı arabirimi 1 ' deki cihaz sayfası](./media/azure-stack-edge-gpu-deploy-configure-compute/download-advanced-config-1.png)
 
-        Microsoft 'tan bir anahtar sağladıysanız (Select Users bu olabilir), bu yapılandırma dosyasını kullanabilirsiniz.
+        Microsoft 'tan bir anahtar sağladıysanız (kullanıcıları seç bir anahtara sahip olabilir), bu yapılandırma dosyasını kullanabilirsiniz.
 
         ![Yerel Kullanıcı arabirimi 2 ' deki cihaz sayfası](./media/azure-stack-edge-gpu-deploy-configure-compute/download-advanced-config-2.png)
 

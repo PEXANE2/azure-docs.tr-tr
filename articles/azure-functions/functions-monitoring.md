@@ -5,12 +5,12 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.custom: devx-track-csharp, fasttrack-edit, contperf-fy21q2, devx-track-js
-ms.openlocfilehash: 7dbaa8712e09de9084e2bcb66d43f2181af292a0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 6dc3c582466fe0646b0350213947ff2173368bde
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033043"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936847"
 ---
 # <a name="monitor-azure-functions"></a>Azure İşlevlerini İzleme
 
@@ -113,7 +113,7 @@ Işlevler aynı zamanda Azure Izleyici ile tümleştiğinden, Azure Izleyici gü
 
 _Bu özellik önizleme aşamasındadır._ 
 
-[Azure işlevleri ölçek denetleyicisi](./functions-scale.md#runtime-scaling) , uygulamanızın çalıştırıldığı Azure işlevleri ana bilgisayarının örneklerini izler. Bu denetleyici, geçerli performansa göre örnek ekleme veya kaldırma hakkında kararlar verir. Ölçek denetleyicisinin işlev uygulamanız için yapmakta olduğu kararları daha iyi anlamak için ölçek denetleyicisinin günlükleri Application Insights ' ye yaymasına sahip olabilirsiniz. Oluşturulan günlükleri başka bir hizmet tarafından analiz edilmek üzere BLOB depolama alanında da saklayabilirsiniz. 
+[Azure işlevleri ölçek denetleyicisi](./event-driven-scaling.md#runtime-scaling) , uygulamanızın çalıştırıldığı Azure işlevleri ana bilgisayarının örneklerini izler. Bu denetleyici, geçerli performansa göre örnek ekleme veya kaldırma hakkında kararlar verir. Ölçek denetleyicisinin işlev uygulamanız için yapmakta olduğu kararları daha iyi anlamak için ölçek denetleyicisinin günlükleri Application Insights ' ye yaymasına sahip olabilirsiniz. Oluşturulan günlükleri başka bir hizmet tarafından analiz edilmek üzere BLOB depolama alanında da saklayabilirsiniz. 
 
 Bu özelliği etkinleştirmek için, işlev uygulaması ayarlarınıza adlı bir uygulama ayarı eklersiniz `SCALE_CONTROLLER_LOGGING_ENABLED` . Nasıl yapılacağını öğrenmek için bkz. [Ölçek denetleyicisi günlüklerini yapılandırma](configure-monitoring.md#configure-scale-controller-logs).
 

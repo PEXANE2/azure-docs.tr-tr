@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/06/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to learn the options available to monitor the health of my vaults
-ms.openlocfilehash: 7ff3daded48612fd308396420dca65cd81d9fafc
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 5946a5d6d1adb5f609f497b4c2194582f624fe24
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724706"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934603"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Azure Key Vault için izleme ve uyarma
 
@@ -25,8 +25,8 @@ ms.locfileid: "97724706"
 Üretim sırlarınızı depolamak için Anahtar Kasası 'nı kullanmaya başladıktan sonra, hizmetinizin istendiği gibi çalıştığından emin olmak için anahtar kasasının sistem durumunu izlemek önemlidir. Hizmetinizi ölçeklendirmeye başladığınızda, anahtar kasanıza gönderilen isteklerin sayısı artacaktır. Bu, isteklerinizin gecikme süresini artırmak ve olağanüstü durumlarda, hizmetinizin performansını etkileyecek olan isteklerinizin kısıtlanmasına neden olur. Ayrıca, anahtar kasanızın olağan dışı sayıda hata kodu göndermesi durumunda uyarı almanız gerekir, bu sayede herhangi bir erişim ilkesi veya güvenlik duvarı yapılandırma sorunu hakkında hızlı bir bildirim alabilirsiniz. Bu belgede aşağıdaki konular ele alınacaktır:
 
 + İzlenecek temel Key Vault ölçümleri
-+ Ölçümleri yapılandırma ve pano oluşturma 
-+ Belirtilen eşikte uyarı oluşturma 
++ Ölçümleri yapılandırma ve pano oluşturma
++ Belirtilen eşikte uyarı oluşturma
 
 ## <a name="basic-key-vault-metrics-to-monitor"></a>İzlenecek temel Key Vault ölçümleri
 

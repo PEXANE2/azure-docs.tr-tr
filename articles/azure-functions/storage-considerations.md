@@ -3,12 +3,12 @@ title: Azure Işlevleri için depolama konuları
 description: Azure Işlevlerinin depolama gereksinimlerini ve depolanan verileri şifreleme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: 67ff822208f065041e479fc484173d9f06a773ba
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 66bfded384be47224e86ee8e0a2999fe3d4ed5d9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107252"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936167"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Işlevleri için depolama konuları
 
@@ -18,8 +18,8 @@ Bir işlev uygulaması örneği oluşturduğunuzda Azure Işlevleri bir Azure de
 |Depolama hizmeti  | İşlev kullanımı  |
 |---------|---------|
 | [Azure Blob Depolama](../storage/blobs/storage-blobs-introduction.md)     | Bağlama durumu ve işlev anahtarlarını koruyun.  <br/>Ayrıca [, dayanıklı işlevler görev hub 'ları](durable/durable-functions-task-hubs.md)tarafından kullanılır. |
-| [Azure Dosyaları](../storage/files/storage-files-introduction.md)  | İşlev uygulaması kodunuzu bir [Tüketim planı](functions-scale.md#consumption-plan) ve [Premium planda](functions-scale.md#premium-plan)depolamak ve çalıştırmak için kullanılan dosya paylaşma. |
-| [Azure Kuyruk Depolama](../storage/queues/storage-queues-introduction.md)     | [Dayanıklı işlevler 'de görev hub 'ları](durable/durable-functions-task-hubs.md)tarafından kullanılır.   |
+| [Azure Dosyaları](../storage/files/storage-files-introduction.md)  | İşlev uygulaması kodunuzu bir [Tüketim planı](consumption-plan.md) ve [Premium planda](functions-premium-plan.md)depolamak ve çalıştırmak için kullanılan dosya paylaşma. |
+| [Azure kuyruk depolama](../storage/queues/storage-queues-introduction.md)     | [Dayanıklı işlevler 'de görev hub 'ları](durable/durable-functions-task-hubs.md)tarafından kullanılır.   |
 | [Azure Tablo Depolama](../storage/tables/table-storage-overview.md)  |  [Dayanıklı işlevler 'de görev hub 'ları](durable/durable-functions-task-hubs.md)tarafından kullanılır.       |
 
 > [!IMPORTANT]
@@ -32,6 +32,8 @@ Bir işlev uygulaması oluştururken blob, kuyruk ve tablo depolamayı destekley
 Depolama hesabı türleri hakkında daha fazla bilgi edinmek için bkz. [Azure Depolama Hizmetlerine Giriş](../storage/common/storage-introduction.md#core-storage-services). 
 
 İşlev uygulamanızla mevcut bir depolama hesabını kullanabilirsiniz, ancak bu gereksinimleri karşıladığından emin olmanız gerekir. Bu depolama hesabı gereksinimlerini karşılamak için Azure portal, işlev uygulaması oluşturma akışının bir parçası olarak oluşturulan depolama hesapları garanti edilir. Portalda, bir işlev uygulaması oluştururken Mevcut bir depolama hesabı seçerken desteklenmeyen hesaplar filtrelenmez. Bu akışta yalnızca oluşturmakta olduğunuz işlev uygulamasıyla aynı bölgedeki mevcut depolama hesaplarını seçebilirsiniz. Daha fazla bilgi için bkz. [depolama hesabı konumu](#storage-account-location).
+
+<!-- JH: Does using a Premium Storage account improve perf? -->
 
 ## <a name="storage-account-guidance"></a>Depolama hesabı Kılavuzu
 
@@ -59,7 +61,15 @@ Birden çok işlevli uygulamanın herhangi bir sorun olmadan aynı depolama hesa
 
 [!INCLUDE [functions-storage-encryption](../../includes/functions-storage-encryption.md)]
 
-## <a name="mount-file-shares-linux"></a>Bağlama dosyası paylaşımları (Linux)
+### <a name="in-region-data-residency"></a>Bölge içi veri yerleşimi
+
+Tüm müşteri verilerinin tek bir bölge içinde kalması gerektiğinde, işlev uygulamasıyla ilişkili depolama hesabı, [bölge içi yedeklerle](../storage/common/storage-redundancy.md)bir tane olmalıdır. Bölgesel olarak yedekli depolama hesabının da [Azure dayanıklı işlevler](./durable/durable-functions-perf-and-scale.md#storage-account-selection)ile kullanılması gerekir.
+
+Diğer platform tarafından yönetilen müşteri verileri yalnızca iç yük dengeli bir App Service Ortamı (ASE) barındırırken bölge içinde depolanır. Daha fazla bilgi için bkz. [AI bölge artıklığı](../app-service/environment/zone-redundancy.md#in-region-data-residency).
+
+## <a name="mount-file-shares"></a>Dosya paylaşımlarını bağlama
+
+_Bu işlevsellik yalnızca Linux üzerinde çalışırken geçerlidir._ 
 
 Mevcut Azure dosya paylaşımlarını Linux işlev uygulamalarınıza bağlayabilirsiniz. Linux işlev uygulamanıza bir paylaşma bağlayarak, işlevlerinizde mevcut makine öğrenimi modellerini veya diğer verileri kullanabilirsiniz. [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add)Komutunu, mevcut bir paylaşımın Linux işlev uygulamanıza bağlamak için kullanabilirsiniz. 
 

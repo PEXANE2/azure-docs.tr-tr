@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/04/2021
+ms.date: 01/05/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Mini R device so I can use it to transfer data to Azure.
-ms.openlocfilehash: 03b4ed41b3110825d4e4797f2c5f733152504919
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 4535368b7d8d044469a4b0effee914176aca78e4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913796"
+ms.locfileid: "97935416"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-mini-r"></a>Öğretici: Azure Stack Edge Mini R 'yi dağıtmaya hazırlanma
 
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure Stack Edge Mini R dağıtmak için, önceden tanımlanmış sırada aşağıdaki öğreticilere bakın.
 
-| Adım | Açıklama |
+| Adım | Description |
 | --- | --- |
 | **Hazırlama** |Bu adımların, yaklaşan dağıtım için hazırlanmasından tamamlanması gerekir. |
 | **[Dağıtım yapılandırma denetim listesi](#deployment-configuration-checklist)** |Dağıtımdan önce ve dağıtım sırasında bilgi toplamak ve bilgileri kaydetmek için bu denetim listesini kullanın. |
@@ -89,7 +89,7 @@ Azure Stack Edge kaynağı oluşturmak için Azure portal aşağıdaki adımlar�
 1. Bu URL 'de Azure portal oturum açmak için Microsoft Azure kimlik bilgilerinizi kullanın: [https://portal.azure.com](https://portal.azure.com) .
 
 
-2. Sol bölmede **+ kaynak oluştur**' u seçin. **Azure Stack Edge/Data Box Gateway** için arama yapın ve seçin. **Oluştur**’u seçin. 
+2. Soldaki bölmede **+ Kaynak oluştur**’u seçin. **Azure Stack Edge/Data Box Gateway** için arama yapın ve seçin. **Oluştur**’u seçin. 
 
 3. Azure Stack Edge Pro cihazı için kullanmak istediğiniz aboneliği seçin. Bu fiziksel cihazı göndermek istediğiniz ülkeyi seçin. **Cihazları göster**' i seçin.
 
@@ -101,7 +101,7 @@ Azure Stack Edge kaynağı oluşturmak için Azure portal aşağıdaki adımlar�
     [![Kaynak oluştur 2](media/azure-stack-edge-mini-r-deploy-prep/create-resource-2.png)](media/azure-stack-edge-mini-r-deploy-prep/create-resource-2.png#lightbox)
 
 
-6. **Temel bilgiler** sekmesinde, aşağıdaki **proje ayrıntılarını** girin veya seçin.
+5. **Temel bilgiler** sekmesinde, aşağıdaki **proje ayrıntılarını** girin veya seçin.
     
     |Ayar  |Değer  |
     |---------|---------|
@@ -109,7 +109,7 @@ Azure Stack Edge kaynağı oluşturmak için Azure portal aşağıdaki adımlar�
     |Kaynak grubu  |Mevcut grubu seçin veya yeni bir grup oluşturun.<br>[Azure Kaynak Grupları](../azure-resource-manager/management/overview.md) hakkında daha fazla bilgi edinin.     |
 
 
-7. Aşağıdaki **örnek ayrıntılarını** girin veya seçin.
+6. Aşağıdaki **örnek ayrıntılarını** girin veya seçin.
 
     |Ayar  |Değer  |
     |---------|---------|
@@ -119,25 +119,25 @@ Azure Stack Edge kaynağı oluşturmak için Azure portal aşağıdaki adımlar�
     ![Kaynak oluşturma 4](media/azure-stack-edge-mini-r-deploy-prep/create-resource-4.png)
 
 
-8. **İleri ' yi seçin: sevkiyat adresi**.
+7. **İleri ' yi seçin: sevkiyat adresi**.
 
     - Zaten bir cihazınız varsa, **zaten bir cihazım varsa** Birleşik giriş kutusunu seçin.
 
-        ![Kaynak oluştur 5](media/azure-stack-edge-mini-r-deploy-prep/create-resource-5.png)
+     ![Kaynak oluştur 5](media/azure-stack-edge-mini-r-deploy-prep/create-resource-5.png)
 
     - Bu, sipariş ettiğiniz yeni bir cihaz ise, ilgili kişi adını, şirketi, cihazı teslim etmek için adresi ve iletişim bilgilerini girin.
 
-        ![Kaynak oluştur 6](media/azure-stack-edge-mini-r-deploy-prep/create-resource-6.png)
+     ![Kaynak oluştur 6](media/azure-stack-edge-mini-r-deploy-prep/create-resource-6.png)
 
-9. **Sonraki: Etiketler**' i seçin. İsteğe bağlı olarak kaynakları kategorilere ayırarak ve faturalandırmayı birleştirmek için Etiketler sağlayın. **Sonraki: Gözden geçirme ve oluşturma**’yı seçin.
+8. **Sonraki: Etiketler**' i seçin. İsteğe bağlı olarak kaynakları kategorilere ayırarak ve faturalandırmayı birleştirmek için Etiketler sağlayın. **Sonraki: Gözden geçirme ve oluşturma**’yı seçin.
 
-10. **Gözden geçir + oluştur** sekmesinde, **fiyatlandırma ayrıntılarını**, **kullanım koşulları** ve kaynağınızın ayrıntılarını gözden geçirin. **Gizlilik koşullarını Incelediğim** Birleşik giriş kutusunu seçin.
+9. **Gözden geçir + oluştur** sekmesinde, **fiyatlandırma ayrıntılarını**, **kullanım koşulları** ve kaynağınızın ayrıntılarını gözden geçirin. **Gizlilik koşullarını Incelediğim** Birleşik giriş kutusunu seçin.
 
     ![Kaynak oluşturma 7](media/azure-stack-edge-mini-r-deploy-prep/create-resource-7.png)
 
     Ayrıca, kaynak oluşturma sırasında, bulut hizmetlerinde kimlik doğrulaması yapmanızı sağlayan bir Yönetilen Hizmet Kimliği (MSI) etkin olduğunu da size bildirilir. Bu kimlik, kaynak mevcut olduğu sürece için mevcut.
 
-8. **Oluştur**’u seçin.
+10. **Oluştur**’u seçin.
 
     Kaynağın oluşturulması birkaç dakika sürer. Azure Stack Edge cihazının Azure 'da kaynak sağlayıcısıyla iletişim kurmasına imkan tanıyan bir MSI de oluşturulur.
     
@@ -153,15 +153,15 @@ Azure Stack Edge kaynağı oluşturmak için Azure portal aşağıdaki adımlar�
 
 Azure Stack Edge kaynağı çalışır duruma geçtikten sonra etkinleştirme anahtarını almanız gerekir. Bu anahtar Azure Stack Edge Mini R cihazınızı etkinleştirmek ve kaynakla bağlamak için kullanılır. Bu anahtarı şimdi, Azure portalındayken alabilirsiniz.
 
-1. Oluşturduğunuz kaynağı seçin. **Genel bakış** ' ı ve ardından **Cihaz kurulumu**' nu seçin.
+1. Oluşturduğunuz kaynağı seçin ve **genel bakış**' ı seçin.
 
-    ![Cihaz kurulumunu seçin](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-2.png)
+   ![Cihaz kurulumunu seçin](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-2.png)
 
 2. **Etkinleştir** kutucuğunda Azure Key Vault için bir ad girin veya varsayılan adı kabul edin. Anahtar Kasası adı 3 ila 24 karakter arasında olabilir. 
 
     Cihazınızla etkinleştirilen her Azure Stack Edge kaynağı için bir Anahtar Kasası oluşturulur. Anahtar Kasası, gizli dizileri depolamanıza ve erişmenize olanak tanır. Örneğin, hizmetin kanal bütünlüğü anahtarı (CIK) anahtar kasasında depolanır.
 
-    Bir Anahtar Kasası adı belirledikten sonra, etkinleştirme anahtarı oluşturmak için **anahtar oluştur** ' u seçin. 
+    Anahtar Kasası adı belirttikten sonra etkinleştirme anahtarı oluşturmak için **etkinleştirme anahtarı oluştur** ' u seçin.
 
     [![Etkinleştirme anahtarını alma](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-3.png)](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-3.png#lightbox)
 

@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: e7f861d7fb10ed5dd13b5883ba70b553daa67892
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: afb0e04d6f8a34d844df382081d53a32899e9a5c
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825159"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934773"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-javascript-version-4"></a>Hızlı başlangıç: JavaScript için Azure Key Vault gizli istemci kitaplığı (sürüm 4)
 
@@ -27,7 +27,7 @@ Key Vault ve gizli dizileri hakkında daha fazla bilgi için bkz.:
 - [Key Vault genel bakış](../general/overview.md)
 - [Gizli dizi genel bakış](about-secrets.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - İşletim sisteminiz için geçerli [Node.js](https://nodejs.org) .
@@ -91,7 +91,7 @@ set KEY_VAULT_NAME=<your-key-vault-name>
 ````
 Windows PowerShell
 ```powershell
-$Env:KEY_VAULT_NAME=<your-key-vault-name>
+$Env:KEY_VAULT_NAME="<your-key-vault-name>"
 ```
 
 macOS veya Linux
@@ -287,4 +287,4 @@ Bu hızlı başlangıçta bir Anahtar Kasası oluşturdunuz, gizli dizi depoland
 - [Azure Key Vault gizliliklerin genel bakışını](about-secrets.md) okuyun
 - [Anahtar kasasına erişimi güvenli hale getirme](../general/secure-your-key-vault.md)
 - [Azure Key Vault geliştirici kılavuzuna](../general/developers-guide.md) bakın
-- [En iyi uygulamaları](../general/best-practices.md) gözden geçirin Azure Key Vault
+- [Key Vault güvenliğine genel bakış](../general/security-overview.md) konusunu gözden geçirin

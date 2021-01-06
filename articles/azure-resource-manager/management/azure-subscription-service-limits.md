@@ -3,14 +3,14 @@ title: Azure abonelik limitleri ve kotaları
 description: Ortak Azure aboneliği ve hizmet sınırları, Kotalar ve kısıtlamaların bir listesini sağlar. Bu makale, limitlerin en yüksek değerleriyle birlikte nasıl artabileceğine ilişkin bilgiler içerir.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 4d56c5c3fd33d1cda05e23d5bc53e7540428671b
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 182df937ae5c0194aecfbe20b5962b44b363c708
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547857"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934479"
 ---
-# <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar
+# <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure aboneliği ve hizmet limitleri, kotalar ve kısıtlamalar
 
 Bu belgede, bazen kotalar olarak da adlandırılan en yaygın Microsoft Azure limitlerin bazıları listelenir.
 
@@ -132,7 +132,7 @@ PostgreSQL için Azure veritabanı limitleri için bkz. [PostgreSQL Için Azure 
 
 [!INCLUDE [functions-limits](../../../includes/functions-limits.md)]
 
-Daha fazla bilgi için bkz. [Işlev barındırma planları karşılaştırması](../../azure-functions/functions-scale.md#hosting-plans-comparison).
+Daha fazla bilgi için bkz. [Işlev barındırma planları karşılaştırması](../../azure-functions/functions-scale.md).
 
 ## <a name="azure-kubernetes-service-limits"></a>Azure Kubernetes hizmet limitleri
 

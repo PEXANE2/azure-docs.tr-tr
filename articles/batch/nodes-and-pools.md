@@ -3,12 +3,12 @@ title: Azure Batch düğümler ve havuzlar
 description: İşlem düğümleri ve havuzlar hakkında bilgi edinin ve bunların bir geliştirme açısından Azure Batch iş akışında nasıl kullanıldığını öğrenin.
 ms.topic: conceptual
 ms.date: 11/20/2020
-ms.openlocfilehash: 880a956a2d839483c59578afad1b62146799578a
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: c229381ba1019a5a40a4ca6b7db88f534f57de29
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95243078"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934654"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch düğümler ve havuzlar
 
@@ -64,6 +64,9 @@ Bir Batch havuzu oluşturduğunuzda, havuzdaki her bir işlem düğümünde çal
 
 Toplu Işte kullanılabilen iki tür havuz yapılandırması vardır.
 
+> [!IMPORTANT]
+> Havuzlar ' Cloud Services Configuration ' değil ' sanal makine yapılandırması ' kullanılarak yapılandırılmalıdır. Tüm Batch özellikleri ' sanal makine yapılandırması ' havuzları tarafından desteklenir ve yeni özellikler ekleniyor. ' Cloud Services Configuration ' havuzları tüm özellikleri desteklemez ve yeni bir özellik planlanmaz.
+
 ### <a name="virtual-machine-configuration"></a>Sanal makine yapılandırması
 
 **Sanal makine yapılandırması** , havuzun Azure sanal makinelerinden oluştuğunu belirtir. Bu VM'ler Linux veya Windows görüntülerinden oluşturulabilir.
@@ -101,7 +104,7 @@ Bir havuz oluşturduğunuzda istediğiniz düğüm türlerini ve her biri için 
 - **Ayrılmış düğümler.** Adanmış bir işlem düğümleri, iş yükleriniz için ayrılmıştır. Bunlar düşük öncelikli düğümlerinden daha pahalıdır, ancak hiçbir zaman etkisiz hale getirilmeyeceği garanti edilir.
 - **Düşük öncelikli düğümler.** Düşük öncelikli düğümler, Batch iş yüklerinizi çalıştırmak için Azure’daki fazla kapasiteden yararlanır. Düşük öncelikli düğümler, özel düğümlerden saat başına daha ucuz ve önemli işlem gücü gerektiren iş yüklerini etkinleştirir. Daha fazla bilgi için bkz. [Batch ile düşük öncelikli VM’ler kullanma](batch-low-pri-vms.md).
 
-Düşük öncelikli düğümler, Azure 'un fazlalık kapasitesi yetersiz olduğunda bozulabilir. Görevler çalıştırılırken bir düğüm etkisiz hale getirilirse, işlem düğümü yeniden kullanılabilir olduğunda görevler yeniden kuyruğa alınır ve tekrar çalıştırılır. Düşük öncelikli düğümler, iş tamamlama süresinin esnek olduğu ve işin çok sayıda düğüme dağıtıldığı iş yükleri için iyi bir seçenektir. Senaryonuz için düşük öncelikli düğümleri kullanmaya karar vermeden önce, ön işleme nedeniyle kaybolan tüm çalışmanın en az ve yeniden oluşturulması kolay olacağından emin olun.
+Düşük öncelikli düğümler, Azure 'un fazlalık kapasitesi yetersiz olduğunda bozulabilir. Görevler çalıştırılırken bir düğüm etkisiz hale getirilirse, işlem düğümü yeniden kullanılabilir olduğunda görevler yeniden kuyruğa alınır ve tekrar çalıştırılır. Düşük öncelikli düğümler, iş tamamlama süresinin esnek olduğu ve işin çok sayıda düğüme dağıtıldığı iş yükleri için iyi bir seçenektir. Senaryonuzda düşük öncelikli düğümleri kullanmaya karar vermeden önce, önalım kaynaklı iş kaybının minimum düzeyde olacağından ve kolayca yeniden oluşturulabileceğinden emin olun.
 
 Aynı havuzda hem düşük öncelikli hem de adanmış işlem düğümleri olabilir. Her düğüm türünün kendi hedef ayarı vardır ve bu, istenen sayıda düğüm belirtebilirsiniz.
 

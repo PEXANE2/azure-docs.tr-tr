@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: trbye
-ms.openlocfilehash: b3e9c1e8ad23ea0ebf540eddbd6d4a03b8a72fe2
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 1a002b6efbe2603ae254c19f9e3cc7377198cea2
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835083"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935827"
 ---
 # <a name="develop-custom-commands-applications"></a>Özel komut uygulamaları geliştirme
 
@@ -178,7 +178,7 @@ Bu bölümde, komutlarınıza nasıl parametre ekleneceğini öğrenirsiniz. Kom
    1. **Güncelleştir**’i seçin.
 
        > [!div class="mx-imgBorder"]
-       > ![Gerekli parametre yanıtının nerede oluşturulacağını gösteren ekran görüntüsü.](media/custom-commands/add-required-on-off-parameter-response.png)
+       > ![' Basit Düzenleyici ' sekmesi seçiliyken ' gerekli parametre için yanıtı Ekle ' bölümünü gösteren ekran görüntüsü.](media/custom-commands/add-required-on-off-parameter-response.png)
    
    1. Aşağıdaki tabloyu kullanarak parametrenin özelliklerini yapılandırın. Bir komutun tüm yapılandırma özellikleri hakkında daha fazla bilgi için bkz. [özel komutlar kavramlar ve tanımlar](./custom-commands-references.md).
       
@@ -221,7 +221,7 @@ Bu bölümde, komutlarınıza nasıl parametre ekleneceğini öğrenirsiniz. Kom
 
 #### <a name="modify-example-sentences"></a>Örnek cümleleri değiştirme
 
-Parametreleri kullanan komutlar için, olası tüm birleşimleri kapsayan örnek cümleler eklemek yararlıdır. Örnek:
+Parametreleri kullanan komutlar için, olası tüm birleşimleri kapsayan örnek cümleler eklemek yararlıdır. Örneğin:
 
 * Parametre bilgilerini doldurun: `turn {OnOff} the {SubjectDevice}`
 * Kısmi parametre bilgileri: `turn it {OnOff}`

@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20b51cc747d3a24b1437eda988397a2e999f6ab3
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: a43200985820779c56983f09b81a86989261c36f
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837490"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935011"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Koşullu Erişim dağıtımını planlama
 
@@ -24,7 +24,7 @@ Koşullu erişim dağıtımınızı planlamak, kuruluşunuzun uygulamalar ve kay
 
 Mobil ve bulut öncelikli bir dünyada, kullanıcılarınız kuruluşunuzun kaynaklarına çeşitli cihaz ve uygulama kullanarak her yerden erişir. Sonuç olarak, kaynağa erişebilecek olan bir kaynağa odaklanma artık yeterli değildir. Ayrıca, kullanıcının nerede olduğunu, kullanılmakta olan cihazı, erişilmekte olan kaynağı ve daha fazlasını da dikkate almanız gerekir. 
 
-Azure Active Directory (Azure AD) koşullu erişim (CA), kararları otomatik hale getirmek ve kaynak için kuruluş erişim ilkelerini zorlamak için Kullanıcı, cihaz ve konum gibi sinyalleri sağlar. CA ilkelerini, Multi-Factor Authentication (MFA) gibi erişim denetimleri uygulamak için kullanabilirsiniz. CA ilkeleri, kullanıcılardan güvenlik için gerektiğinde MFA için kullanıcılara istem yapmanızı ve gerek duyulmadığında kullanıcıların nasıl bir şekilde haberdar olmanızı sağlar.
+Azure Active Directory (Azure AD) koşullu erişim analizleri, kararları otomatik hale getirmek ve kaynak için kuruluş erişim ilkelerini zorlamak için Kullanıcı, cihaz ve konum gibi sinyallere sahiptir. Multi-Factor Authentication (MFA) gibi erişim denetimleri uygulamak için koşullu erişim ilkelerini kullanabilirsiniz. Koşullu erişim ilkeleri, kullanıcılardan güvenlik için gerektiğinde MFA için kullanıcılara istem yapmanızı ve gerek duyulmadığında kullanıcıların nasıl daha fazla şekilde haberdar olmanızı sağlar.
 
 ![Koşullu Erişime genel bakış](./media/plan-conditional-access/conditional-access-overview-how-it-works.png)
 
@@ -34,11 +34,11 @@ Microsoft, temel düzeyde güvenlik sağlayan [güvenlik Varsayılanları](../fu
 
 Başlamadan önce, [Koşullu erişimin](overview.md) nasıl çalıştığını ve ne zaman kullanılacağını anladığınızdan emin olun.
 
-### <a name="benefits"></a>Yararları
+### <a name="benefits"></a>Avantajlar
 
 Koşullu erişim dağıtmanın avantajları şunlardır:
 
-* Üretkenliği artırın. Yalnızca bir veya daha fazla sinyal bunu yaparken MFA gibi bir oturum açma koşuluna sahip kullanıcıları kesintiye uğratır. CA ilkeleri, kullanıcılardan MFA için ne zaman istendiğini, erişim engellendiğinde ve ne zaman güvenilir bir cihaz kullanması gerektiğini denetlemenize olanak tanır.
+* Üretkenliği artırın. Yalnızca bir veya daha fazla sinyal bunu yaparken MFA gibi bir oturum açma koşuluna sahip kullanıcıları kesintiye uğratır. Koşullu erişim ilkeleri, kullanıcılardan MFA için ne zaman istendiğini, erişim engellendiğinde ve ne zaman güvenilir bir cihaz kullanması gerektiğini denetlemenize olanak tanır.
 
 * Riski yönetin. Risk değerlendirmesi ilke koşulları ile otomatikleştirilmesi, riskli oturum açma işlemlerinin bir kez tanımlanmış ve düzeltilmiş veya engellenmiş olduğu anlamına gelir. [Kimlik koruması](../identity-protection/overview-identity-protection.md)Ile koşullu erişimi, anormallikleri ve şüpheli olayları algılayan şekilde, kaynaklara erişim engellendiğinde veya kapıya erişimi önleyecek şekilde hedefetmenize olanak tanır. 
 
@@ -71,7 +71,7 @@ Koşullu erişim hakkında bilgi edinmek için aşağıdaki kaynaklar yararlı o
 
 * [Koşullu Erişim nedir?](https://youtu.be/ffMAw2IVO7A)
 * [Koşullu erişim nasıl dağıtılır?](https://youtu.be/c_izIRNJNuk)
-* [CA ilkelerinin son kullanıcılara nasıl alınacağı?](https://youtu.be/0_Fze7Zpyvc)
+* [Koşullu erişim ilkelerinin son kullanıcılara nasıl alınacağı?](https://youtu.be/0_Fze7Zpyvc)
 * [Cihaz denetimleriyle Koşullu Erişim](https://youtu.be/NcONUf-jeS4)
 * [Azure AD MFA ile koşullu erişim](https://youtu.be/Tbc-SU97G-w)
 * [Enterprise Mobility + Security koşullu erişim](https://youtu.be/A7IrxAH87wc)
@@ -102,13 +102,13 @@ Ortamınız için yeni ilkeler hazırlanıyor, bunları üretim ortamında aşam
 > [!NOTE]
 > Yöneticilere özgü yeni ilkeler çıkarmak için tüm yöneticileri hariç tutun. Bu, yöneticilerin ilkeye erişmeye devam edip değişiklik yapabilmesini veya önemli bir etki olması durumunda değişikliği iptal edebilmesini sağlar. Tüm kullanıcılara uygulamadan önce ilkeyi daha küçük kullanıcı gruplarıyla her zaman doğrulayın.
 
-## <a name="understand-ca-policy-components"></a>CA ilkesi bileşenlerini anlama
-CA ilkeleri-then ifadeleridir: atama karşılanırsa, bu erişim denetimlerini uygulayın.
+## <a name="understand-conditional-access-policy-components"></a>Koşullu erişim ilkesi bileşenlerini anlama
+Koşullu erişim ilkeleri-then ifadeleridir: atama karşılanırsa, bu erişim denetimlerini uygulayın.
 
-CA ilkelerini yapılandırırken, koşullar *atama* olarak adlandırılır. CA ilkeleri, belirli atamalara göre Kuruluşunuzun uygulamalarına erişim denetimlerini zorlamanıza olanak sağlar.
+Koşullu erişim ilkelerini yapılandırırken, koşullar *atama* olarak adlandırılır. Koşullu erişim ilkeleri, belirli atamalara göre Kuruluşunuzun uygulamalarına erişim denetimlerini zorlamanıza olanak sağlar.
 
 
-Daha fazla bilgi için bkz. [CA Ilkesi oluşturma](concept-conditional-access-policies.md).
+Daha fazla bilgi için bkz. [koşullu erişim Ilkesi oluşturma](concept-conditional-access-policies.md).
 
 ![ilke ekranı oluştur](media/plan-conditional-access/create-policy.png)
 
@@ -195,7 +195,7 @@ Erişim belirteçlerinin nasıl verildiğini anlamak önemlidir.
 ![Erişim belirteci verme diyagramı](media/plan-conditional-access/CA-policy-token-issuance.png)
 
 > [!NOTE]
-> Atama gerekmiyorsa ve etkin olmayan bir CA ilkesi yoksa, varsayılan davranış bir erişim belirteci vermektir. 
+> Atama gerekmiyorsa ve koşullu erişim ilkesi etkin değilse, varsayılan davranış bir erişim belirteci vermektir. 
 
 Örneğin, şu durumlarda bir ilke göz önünde bulundurun:
 
@@ -207,14 +207,14 @@ Grup 1 ' de olmayan bir Kullanıcı uygulamaya erişmeyi denerse "If" koşulu ka
 
 Koşullu erişim çerçevesi size harika bir yapılandırma esnekliği sağlar. Ancak harika esneklik, istenmeyen sonuçlara engel olmak için, her yapılandırma ilkesini serbest bırakmadan önce dikkatli bir şekilde incelemeniz gerektiğini gösterir.
 
-### <a name="apply-ca-policies-to-every-app"></a>Her uygulamaya CA ilkeleri uygulama
+### <a name="apply-conditional-access-policies-to-every-app"></a>Koşullu erişim ilkelerini her uygulamaya Uygula
 
-Bir CA Ilkesi koşulu bir erişim denetimi tetikleyemezse, erişim belirteçleri varsayılan olarak verilir. Her uygulamanın en az bir koşullu erişim ilkesinin uygulanmış olduğundan emin olun
+Erişim belirteçleri, bir koşullu erişim ilkesi koşulu bir erişim denetimi tetikleyemezse varsayılan olarak verilir. Her uygulamanın en az bir koşullu erişim ilkesinin uygulanmış olduğundan emin olun
 
 > [!IMPORTANT]
 > Tek bir ilkedeki blok ve tüm uygulamaları kullanmaya çok dikkat edin. Bu, yöneticileri Azure Yönetim portalından kilitleyip kilit, Microsoft Graph gibi önemli uç noktaları için yapılandırılamaz.
 
-### <a name="minimize-the-number-of-ca-policies"></a>CA ilkelerinin sayısını en aza indirme
+### <a name="minimize-the-number-of-conditional-access-policies"></a>Koşullu erişim ilkelerinin sayısını en aza indirme
 
 Her uygulama için bir ilke oluşturulması verimli değildir ve zor yönetime yol açar. Koşullu erişim, Kullanıcı başına yalnızca ilk 195 ilkeyi uygular. Uygulamalarınızı analiz etmenizi ve aynı kullanıcılar için aynı kaynak gereksinimlerine sahip uygulamalarda gruplanmasını öneririz. Örneğin, tüm Microsoft 365 uygulamalar veya tüm IK uygulamalar aynı kullanıcılar için aynı gereksinimlere sahip ise, tek bir ilke oluşturun ve geçerli olduğu tüm uygulamaları dahil edin. 
 
@@ -228,9 +228,9 @@ Bir ilkeyi yanlış yapılandırırsanız, kuruluşları Azure portal dışına 
 
   * Şirket içi bir güvenlik grubu oluşturun ve Azure AD ile eşitleyin. Güvenlik grubu, adanmış ilke yönetimi hesabınızı içermelidir. 
 
-   * Bu güvenlik grubunu tüm CA ilkelerini DıŞARıDA tut.
+   * Bu güvenlik grubunu tüm koşullu erişim ilkelerini DıŞARıDA tut.
 
-   * Bir hizmet kesintisi oluştuğunda, diğer yöneticilerinizi şirket içi gruba uygun şekilde ekleyin ve eşitlemeye zorlayın. Bu, CA ilkelerine ait muafiyetini hareketlendirir.
+   * Bir hizmet kesintisi oluştuğunda, diğer yöneticilerinizi şirket içi gruba uygun şekilde ekleyin ve eşitlemeye zorlayın. Bu, kendi muafiyetini koşullu erişim ilkelerine hareketlendirir.
 
 ### <a name="set-up-report-only-mode"></a>Yalnızca rapor modunu ayarlama
 
@@ -240,9 +240,9 @@ Bir ilkeyi yanlış yapılandırırsanız, kuruluşları Azure portal dışına 
 * MFA gerektirme
 * oturum açma risk ilkelerini uygulama
 
-[Yalnızca rapor modu ](concept-conditional-access-report-only.md) , yöneticilerin, kendi ortamlarında ETKINLEŞTIRILMEDEN önce CA ilkelerinin etkilerini değerlendirmelerini sağlar.
+[Yalnızca rapor modu ](concept-conditional-access-report-only.md) , yöneticilerin koşullu erişim ilkelerinin ortamlarında etkinleştirilmeden önce etkisini değerlendirmelerini sağlar.
 
-[CA ilkesinde yalnızca rapor modunu yapılandırmayı](howto-conditional-access-insights-reporting.md)öğrenin.
+[Koşullu erişim ilkesinde yalnızca rapor modunu yapılandırmayı](howto-conditional-access-insights-reporting.md)öğrenin.
 
 ### <a name="plan-for-disruption"></a>Kesintiyi planlayın
 
@@ -295,7 +295,7 @@ Ortamınız için yeni ilkeler hazırlanıyor, istenmeyen sonuçlara engel olmak
 
 ## <a name="common-policies"></a>Ortak ilkeler
 
-CA ilkesi çözümünüzü planlarken, aşağıdaki sonuçları elde etmek için ilke oluşturmanız gerekip gerekmediğini değerlendirin.
+Koşullu erişim ilkesi çözümünüzü planlarken, aşağıdaki sonuçları elde etmek için ilkeler oluşturmanız gerekip gerekmediğini değerlendirin.
 
 * [MFA gerektirme](#require-mfa)
 * [Tehlikede riskli hesaplara yanıt verme](#respond-to-potentially-compromised-accounts)
@@ -319,7 +319,7 @@ MFA erişimi gerektiren yaygın kullanım örnekleri:
 
 ### <a name="respond-to-potentially-compromised-accounts"></a>Tehlikede riskli hesaplara yanıt verme
 
-CA ilkeleriyle, riskli olabilecek kimlikler tarafından gerçekleştirilen oturum açma işlemleri için otomatik yanıtlar uygulayabilirsiniz. Bir hesabın tehlikeye düşmesi olasılığı, risk düzeyleri biçiminde ifade edilir. Kimlik koruması ile hesaplanan iki risk düzeyi vardır: oturum açma riski ve Kullanıcı riski. Aşağıdaki üç varsayılan ilke etkinleştirilebilir.
+Koşullu erişim ilkeleriyle, riskli olabilecek kimlikler tarafından gerçekleştirilen oturum açma işlemleri için otomatik yanıtlar uygulayabilirsiniz. Bir hesabın tehlikeye düşmesi olasılığı, risk düzeyleri biçiminde ifade edilir. Kimlik koruması ile hesaplanan iki risk düzeyi vardır: oturum açma riski ve Kullanıcı riski. Aşağıdaki üç varsayılan ilke etkinleştirilebilir.
 
 * [Tüm kullanıcıların MFA için kaydolmesini gerektir](howto-conditional-access-policy-risk.md)
 
@@ -374,7 +374,7 @@ Bazı kuruluşların bu amaçla test kiracılar vardır. Ancak, bir ilkenin sonu
 
 ### <a name="create-a-test-plan"></a>Test planı oluşturma
 
-Test planı, beklenen sonuçlarla gerçek sonuçlar arasında bir karşılaştırma yapmak için önemlidir. Bir şeyi test etmeden önce her zaman bir beklenmelidir. Aşağıdaki tabloda örnek test çalışmaları özetlenmektedir. CA ilkelerinizin nasıl yapılandırıldığına bağlı olarak senaryoları ve beklenen sonuçları ayarlayın.
+Test planı, beklenen sonuçlarla gerçek sonuçlar arasında bir karşılaştırma yapmak için önemlidir. Bir şeyi test etmeden önce her zaman bir beklenmelidir. Aşağıdaki tabloda örnek test çalışmaları özetlenmektedir. Koşullu erişim ilkelerinizin nasıl yapılandırıldığına bağlı olarak senaryoları ve beklenen sonuçları ayarlayın.
 
 | İlke| Senaryo| Beklenen Sonuç |
 | - | - | - |
@@ -389,9 +389,9 @@ Test planı, beklenen sonuçlarla gerçek sonuçlar arasında bir karşılaştı
 
 ### <a name="configure-the-test-policy"></a>Test ilkesini yapılandırma
 
-[Azure Portal](https://portal.azure.com/), Azure Active Directory > güvenlik > koşullu ERIŞIM altında CA ilkelerini yapılandırırsınız.
+[Azure Portal](https://portal.azure.com/), koşullu erişim ilkelerini Azure Active Directory > güvenlik > koşullu erişim altında yapılandırırsınız.
 
-CA ilkeleri oluşturma hakkında daha fazla bilgi edinmek istiyorsanız, bkz. Bu örnek: [kullanıcı Azure Portal oturum AÇTıĞıNDA MFA istemek Için CA ilkesi](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json). Bu hızlı başlangıç şunları yapmanıza yardımcı olur:
+Koşullu erişim ilkeleri oluşturma hakkında daha fazla bilgi edinmek istiyorsanız, bkz. Bu örnek: [kullanıcı Azure Portal oturum AÇTıĞıNDA MFA istemek Için koşullu erişim ilkesi](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json). Bu hızlı başlangıç şunları yapmanıza yardımcı olur:
 
 * Kullanıcı arabirimi hakkında bilgi sahibi olun
 
@@ -415,7 +415,7 @@ Koşullu erişim ilkelerinizin Birleşik etkisini Öngörüler ve raporlama çal
 Koşullu erişim ilkenizi doğrulamak için başka bir yöntem de, kuramsal şartlar altında oturum açan bir kullanıcı için hangi ilkelerin uygulanacağını taklit eden, [ne tür aracı](troubleshoot-conditional-access-what-if.md)kullanmaktır. Sınamak istediğiniz oturum açma özniteliklerini (Kullanıcı, uygulama, cihaz platformu ve konum gibi) seçin ve hangi ilkelerin uygulanacağını görüntüleyin.
 
 > [!NOTE] 
-> Sanal bir çalıştırma, CA ilkesinin sahip olduğu etkiyi size iyi bir fikir sunarken, gerçek bir test çalıştırmasının yerini almaz.
+> Sanal bir çalıştırma, koşullu erişim ilkesinin sahip olduğu etkiyi size iyi bir fikir sunurken, gerçek bir test çalıştırmasının yerini almaz.
 
 ### <a name="test-your-policy"></a>İlkenizi test etme
 
@@ -442,14 +442,14 @@ Yeni uygulanan ilkelerinizi geri almanız gerekiyorsa, aşağıdaki seçeneklerd
 
 ## <a name="manage-access-to-cloud-apps"></a>Bulut uygulamalarına erişimi yönetme
 
-CA ilkelerinizi denetlemek ve yönetmek için aşağıdaki yönetme seçeneklerini kullanın:
+Koşullu erişim ilkelerinizi denetlemek ve yönetmek için aşağıdaki yönetme seçeneklerini kullanın:
 
 ![Ekran görüntüsü, adlandırılmış konumlar, özel denetimler, Kullanım koşulları, V P N bağlantısı ve seçili klasik ilkeler de dahil olmak üzere C A ilkelerinin yönetme seçeneklerini gösterir.](media/plan-conditional-access/manage-access.png)
 
 
 ### <a name="named-locations"></a>Adlandırılmış konumlar
 
-CA ilkesinin konum koşulu, erişim denetimleri ayarlarını kullanıcılarınızın ağ konumlarına bağlamamanızı sağlar. [Adlandırılmış konumlarla](location-condition.md), IP adresi aralıkları veya ülkeler ve bölgeler için mantıksal gruplandırmaları oluşturabilirsiniz.
+Koşullu erişim ilkesinin konum koşulu, erişim denetimleri ayarlarını kullanıcılarınızın ağ konumlarına bağlamamanızı sağlar. [Adlandırılmış konumlarla](location-condition.md), IP adresi aralıkları veya ülkeler ve bölgeler için mantıksal gruplandırmaları oluşturabilirsiniz.
 
 ### <a name="custom-controls"></a>Özel denetimler
 
@@ -461,7 +461,7 @@ Ortamınızdaki belirli bulut uygulamalarına erişmeden önce, Kullanım koşul
 
 ## <a name="troubleshoot-conditional-access"></a>Koşullu erişim sorunlarını giderme
 
-Bir Kullanıcı CA ilkesiyle ilgili bir sorun yaşadığınızda, sorun gidermeyi kolaylaştırmak için aşağıdaki bilgileri toplayın.
+Bir Kullanıcı, koşullu erişim ilkesiyle ilgili bir sorun yaşadığınızda, sorun gidermeyi kolaylaştırmak için aşağıdaki bilgileri toplayın.
 
 * Kullanıcı asıl adı
 
@@ -493,4 +493,4 @@ Bilgileri topladıktan sonra, aşağıdaki kaynaklara bakın:
 
 [Kimlik koruması hakkında daha fazla bilgi](../identity-protection/overview-identity-protection.md)
 
-[CA ilkelerini Microsoft Graph API ile yönetme](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)
+[Koşullu erişim ilkelerini Microsoft Graph API ile yönetme](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)

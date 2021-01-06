@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 07/03/2017
-ms.openlocfilehash: 3584f83c5e1a5e83d069373395227b70c084eae9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d21deea13aac3d40c452a183c340d3108a1a01f4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81428959"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936337"
 ---
 # <a name="azure-key-vault-security-worlds-and-geographic-boundaries"></a>Azure Key Vault güvenlik ve coğrafi sınırlar
 
@@ -43,6 +43,3 @@ Bölgeler, tablolardaki ana başlıklar olarak gösterilen güvenlik dünyaları
 >Bir özel durum, US DOD Doğu ve ABD DOD CENTRAL 'ın kendi güvenlik dünyalarına sahip olduğu durumdur. 
 
 Benzer şekilde, **Avrupa** SEKMESINDE Kuzey Avrupa ve Batı Avrupa, her Ikisi de Avrupa bölgesi ile eşlenir. Aynı zamanda **Asya Pasifik** sekmesinde de geçerlidir.
-
-
-

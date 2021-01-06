@@ -4,16 +4,16 @@ description: Azure İşlevleri’ni kullanarak bir işlev uygulaması oluşturun
 ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 752d8a729c56fc2e0e110fcedc263eab4ba7a96b
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 219e993ad7132c90de6db680facc9b8f815947cc
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565322"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934399"
 ---
 # <a name="create-a-function-app-in-azure-that-is-deployed-from-github"></a>Azure’da GitHub’dan dağıtılmış bir işlev uygulaması oluşturma
 
-Bu Azure Işlevleri örnek betiği, [Tüketim planını](../functions-scale.md#consumption-plan)kullanarak ilgili kaynaklarıyla birlikte bir işlev uygulaması oluşturur. Betik ayrıca işlev kodunuzu bir GitHub deposundan sürekli dağıtım için yapılandırır. 
+Bu Azure Işlevleri örnek betiği, [Tüketim planını](../consumption-plan.md)kullanarak ilgili kaynaklarıyla birlikte bir işlev uygulaması oluşturur. Betik ayrıca işlev kodunuzu bir GitHub deposundan sürekli dağıtım için yapılandırır. 
 
 Bu örnekte aşağıdakilere ihtiyacınız olacak:
 
@@ -42,7 +42,7 @@ Tablodaki her komut, komuta özgü belgelere yönlendirir. Bu betik şu komutlar
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | İşlev uygulaması için gereken depolama hesabını oluşturur. |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Sunucusuz [Tüketim planında](../functions-scale.md#consumption-plan) bir işlev uygulaması oluşturur ve bunu bir git veya Mercurial deposu ile ilişkilendirir. |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Sunucusuz [Tüketim planında](../consumption-plan.md) bir işlev uygulaması oluşturur ve bunu bir git veya Mercurial deposu ile ilişkilendirir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

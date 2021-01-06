@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 0a2c1b39f5688b4fc544e5456666ccb8b4801517
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e55c0832638105ad681f74cbeb6429a6704b7fb2
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91281059"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935147"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Azure Key Vault bir sertifikayı ayarlama ve alma
 
@@ -31,13 +31,13 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 ## <a name="create-a-vault"></a>Kasa oluşturma
 
 1. Azure portal menüsünde veya **giriş** sayfasından **kaynak oluştur**' u seçin.
-2. Arama kutusuna **Key Vault**girin.
+2. Arama kutusuna **Key Vault** girin.
 3. Sonuç listesinden **Key Vault**’u seçin.
 4. Key Vault bölümünde **Oluştur**’u seçin.
 5. **Anahtar kasası oluşturma** bölümünde aşağıdaki bilgileri sağlayın:
-    - **Ad**: Benzersiz bir ad gereklidir. Bu hızlı başlangıçta **örnek kasasını**kullanırız. 
+    - **Ad**: Benzersiz bir ad gereklidir. Bu hızlı başlangıçta **örnek kasasını** kullanırız. 
     - **Abonelik**: Bir abonelik seçin.
-    - **Kaynak grubu**altında **Yeni oluştur** ' u seçin ve bir kaynak grubu adı girin.
+    - **Kaynak grubu** altında **Yeni oluştur** ' u seçin ve bir kaynak grubu adı girin.
     - **Konum** aşağı açılan menüsünde bir konum seçin.
     - Diğer seçenekleri varsayılan değerlerinde bırakın.
 6. Yukarıdaki bilgileri girdikten sonra **Oluştur**’u seçin.
@@ -53,7 +53,7 @@ Bu noktada Azure hesabınız, bu yeni anahtar kasasında işlemler gerçekleşti
 
 ## <a name="add-a-certificate-to-key-vault"></a>Key Vault bir sertifika ekleyin
 
-Kasaya bir sertifika eklemek için, birkaç ek adım yapmanız yeterlidir. Bu durumda, bir uygulama tarafından kullanılabilecek otomatik olarak imzalanan bir sertifika ekleyeceğiz. Sertifikaya **örnek sertifikası**denir.
+Kasaya bir sertifika eklemek için, birkaç ek adım yapmanız yeterlidir. Bu durumda, bir uygulama tarafından kullanılabilecek otomatik olarak imzalanan bir sertifika ekleyeceğiz. Sertifikaya **örnek sertifikası** denir.
 
 1. Key Vault Özellikler sayfalarında, **Sertifikalar**' ı seçin.
 2. **Oluştur/İçeri Aktar**’a tıklayın.
@@ -88,4 +88,4 @@ Bu hızlı başlangıçta bir Key Vault oluşturdunuz ve içinde bir sertifika d
 
 - [Azure Key Vault genel bakışını](../general/overview.md) okuyun
 - [Azure Key Vault geliştirici kılavuzuna](../general/developers-guide.md) bakın
-- [En iyi uygulamaları](../general/best-practices.md) gözden geçirin Azure Key Vault
+- [Key Vault güvenliğine genel bakış](../general/security-overview.md) konusunu gözden geçirin

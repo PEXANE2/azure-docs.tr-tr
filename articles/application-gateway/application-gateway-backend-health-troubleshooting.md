@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: b8acf1b025a5943773821c8ab78de6288eb6bec2
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 05df2144b892aed764f9606fb19bd6a3242b97f3
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397907"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934909"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Application Gateway arka uç sistem durumu sorunlarını giderme
 ==================================================
@@ -21,6 +21,9 @@ ms.locfileid: "93397907"
 --------
 
 Varsayılan olarak Azure Application Gateway, arka uç sunucularını inceleyerek sistem durumunu denetler ve istekleri sunmaya hazır olup olmadığını kontrol eder. Kullanıcılar ayrıca ana bilgisayar adından, araştırılan yoldan ve durum kodlarından sağlıklı olarak kabul edileceği özel yoklamalar oluşturabilir. Her durumda, arka uç sunucusu başarıyla yanıt vermezse, Application Gateway sunucuyu sağlıksız olarak işaretler ve istekleri sunucuya iletmeyi sonlandırır. Sunucu başarıyla yanıt vermeye başladıktan sonra Application Gateway istekleri iletmeyi sürdürür.
+
+> [!NOTE]
+> Bu makalede, Microsoft tarafından kullanılmayan bir terim olan *beyaz liste* teriminin başvuruları yer almaktadır. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
 
 ### <a name="how-to-check-backend-health"></a>Arka uç durumunu denetleme
 
@@ -109,7 +112,7 @@ Zaman aşımı değerini artırmak için aşağıdaki adımları izleyin:
 
 **Neden:** Arka uç havuzu IP adresi/FQDN veya App Service türünde ise, Application Gateway etki alanı adı sistemi (DNS) ile girilen FQDN 'nin IP adresine (özel veya Azure varsayılan) çözülür ve HTTP ayarlarında belirtilen TCP bağlantı noktasındaki sunucuya bağlanmaya çalışır. Ancak bu ileti görüntüleniyorsa Application Gateway, girilen FQDN 'nin IP adresini başarıyla çözümleyemediğini önerir.
 
-**Çözünürlüğüne**
+**Çözüm:**
 
 1.  Arka uç havuzunda girilen FQDN 'nin doğru olduğundan ve ortak bir etki alanı olduğundan emin olun ve ardından yerel makinenizden çözümlemeyi deneyin.
 
@@ -157,7 +160,7 @@ Ayrıca, herhangi bir NSG/UDR/güvenlik duvarının IP 'ye ve bu arka ucun bağl
 
     a.  Bir komut istemi açın (Win + R- \> cmd), girin `netstat` ve ENTER ' u seçin.
 
-    b.  Sunucunun yapılandırılmış bağlantı noktasında dinleme yapıp yapmadığını denetleyin. Örnek:
+    b.  Sunucunun yapılandırılmış bağlantı noktasında dinleme yapıp yapmadığını denetleyin. Örneğin:
     ```
             Proto Local Address Foreign Address State PID
             TCP 0.0.0.0:80 0.0.0.0:0 LISTENING 4
@@ -218,13 +221,13 @@ Bir TLS/SSL sertifikasının güvenilir olması için, arka uç sunucusunun bu s
 
 1.  Uygulamanızın barındırıldığı makinede oturum açın.
 
-1.  Win + R ' yi seçin veya **Başlat** düğmesine sağ tıklayıp **Çalıştır** ' ı seçin.
+1.  Win + R ' yi seçin veya **Başlat** düğmesine sağ tıklayıp **Çalıştır**' ı seçin.
 
 1.  Girin `certmgr.msc` ve ENTER ' u seçin. Ayrıca, **Başlangıç** menüsünde Sertifika Yöneticisi 'ni de arayabilirsiniz.
 
 1.  Sertifikayı bulun, genellikle içinde `\Certificates - Current User\\Personal\\Certificates\` açın ve açın.
 
-1.  Kök sertifikayı seçin ve ardından **sertifikayı görüntüle** ' yi seçin.
+1.  Kök sertifikayı seçin ve ardından **sertifikayı görüntüle**' yi seçin.
 
 1.  Sertifika Özellikleri ' nde **Ayrıntılar** sekmesini seçin.
 
@@ -232,7 +235,7 @@ Bir TLS/SSL sertifikasının güvenilir olması için, arka uç sunucusunun bu s
 
 1.  Azure portal Application Gateway HTTP **ayarları** sayfasını açın.
 
-1. HTTP ayarlarını açın, **sertifika ekle** ' yi seçin ve az önce kaydettiğiniz sertifika dosyasını bulun.
+1. HTTP ayarlarını açın, **sertifika ekle**' yi seçin ve az önce kaydettiğiniz sertifika dosyasını bulun.
 
 1. HTTP ayarlarını kaydetmek için **Kaydet** ' i seçin.
 
@@ -257,7 +260,7 @@ Güvenilen kök sertifikaların Application Gateway nasıl ayıklanıp yüklenem
 > [!NOTE]
 > Bu hata, arka uç sunucusu, TLS el sıkışması sırasında kök > ara (varsa) > yaprak dahil olmak üzere tüm sertifika zincirini değişmediğinde meydana gelebilir. Doğrulamak için herhangi bir istemciden OpenSSL komutlarını kullanabilir ve Application Gateway araştırmakta yapılandırılan ayarları kullanarak arka uç sunucusuna bağlanabilirsiniz.
 
-Örnek:
+Örneğin:
 ```
 OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 ```
@@ -302,7 +305,7 @@ Windows için:
 
 1.  Uygulamanızın barındırıldığı makinede oturum açın.
 
-1.  Win + R ' yi seçin veya **Başlat** düğmesine sağ tıklayıp **Çalıştır** ' ı seçin.
+1.  Win + R ' yi seçin veya **Başlat** düğmesine sağ tıklayıp **Çalıştır**' ı seçin.
 
 1.  **Certmgr. msc** girin ve ENTER ' u seçin. Ayrıca, **Başlangıç** menüsünde Sertifika Yöneticisi 'ni de arayabilirsiniz.
 
@@ -331,9 +334,9 @@ OpenSSL kullanan Linux için:
 
 1.  Application Gateway HTTP ayarlarınızı portalda açın.
 
-1.  Süresi biten sertifikayı içeren ayarı seçin, **sertifika ekle** ' yi seçin ve yeni sertifika dosyasını açın.
+1.  Süresi biten sertifikayı içeren ayarı seçin, **sertifika ekle**' yi seçin ve yeni sertifika dosyasını açın.
 
-1.  Sertifikanın yanındaki **Sil** simgesini kullanarak eski sertifikayı kaldırın ve ardından **Kaydet** ' i seçin.
+1.  Sertifikanın yanındaki **Sil** simgesini kullanarak eski sertifikayı kaldırın ve ardından **Kaydet**' i seçin.
 
 #### <a name="certificate-verification-failed"></a>Sertifika doğrulaması başarısız oldu
 
@@ -359,7 +362,7 @@ Bu davranış, aşağıdakilerden biri veya birkaçı nedeniyle oluşabilir:
 
 **Çözüm:**
 
-1.  NSG 'nizin **Internet** 'ten 65503-65534 (v1 SKU) veya 65200-65535 (v2 SKU) bağlantı noktalarına erişimi engelleyip engellemediğini denetleyin:
+1.  NSG 'nizin **Internet**'ten 65503-65534 (v1 SKU) veya 65200-65535 (v2 SKU) bağlantı noktalarına erişimi engelleyip engellemediğini denetleyin:
 
     a.  Application Gateway **genel bakış** sekmesinde **sanal ağ/alt ağ** bağlantısını seçin.
 
@@ -367,7 +370,7 @@ Bu davranış, aşağıdakilerden biri veya birkaçı nedeniyle oluşabilir:
 
     c.  Herhangi bir NSG 'nin yapılandırılıp yapılandırılmadığını denetleyin.
 
-    d.  Bir NSG yapılandırılmışsa, **arama** sekmesinde veya **tüm kaynaklar** ' da bu NSG kaynağını arayın.
+    d.  Bir NSG yapılandırılmışsa, **arama** sekmesinde veya **tüm kaynaklar**' da bu NSG kaynağını arayın.
 
     e.  **Gelen kuralları** bölümünde, v1 SKU 'su veya 65200-65535 v2 SKU 'su için 65503-65534 hedef bağlantı noktası aralığına, **herhangi bir** veya **Internet** olarak **kaynak** kümesiyle izin veren bir gelen kuralı ekleyin.
 
@@ -381,7 +384,7 @@ Bu davranış, aşağıdakilerden biri veya birkaçı nedeniyle oluşabilir:
 
     c.  Sonraki atlama ile **Internet** olarak ayarlanmamış varsayılan yolların (0.0.0.0/0) olup olmadığını denetleyin. Ayar **Sanal Gereç** ya da **sanal ağ geçidi** ise, sanal gerecinizin veya şirket içi cihazın paketi değiştirmeden paketi Internet hedefine doğru şekilde yönlendirebileceğine emin olmanız gerekir.
 
-    d.  Aksi halde, bir sonraki atlamayı **Internet** olarak değiştirin, **Kaydet** ' i seçin ve arka uç durumunu doğrulayın.
+    d.  Aksi halde, bir sonraki atlamayı **Internet** olarak değiştirin, **Kaydet**' i seçin ve arka uç durumunu doğrulayın.
 
 1.  BGP üzerinden sanal ağa ExpressRoute/VPN bağlantısı tarafından tanıtılan varsayılan yol:
 

@@ -4,12 +4,12 @@ description: İzleme için işlev uygulamanızı Application Insights bağlama v
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 77cc87e44990f471ef38871c0225835660779a3c
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 24350eb07481db66907d199cd96f84a02cc98c9e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825758"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937289"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>Azure Işlevleri için izlemeyi yapılandırma
 
@@ -143,7 +143,7 @@ Aşağıdaki örnek, günlüğü aşağıdaki kurallara göre tanımlar:
 
 ## <a name="configure-the-aggregator"></a>Toplayıcısı yapılandırma
 
-Önceki bölümde belirtildiği gibi, çalışma zamanı bir süre boyunca işlev yürütmeleri hakkındaki verileri toplar. Varsayılan süre 30 saniye veya 1.000 çalışma olur ve hangisi önce gelir. Bu ayarı, [host.jsdosya üzerinde] yapılandırabilirsiniz.  İşte bir örnek:
+Önceki bölümde belirtildiği gibi, çalışma zamanı bir süre boyunca işlev yürütmeleri hakkındaki verileri toplar. Varsayılan süre 30 saniye veya 1.000 çalışma olur ve hangisi önce gelir. Bu ayarı, [host.jsdosya üzerinde] yapılandırabilirsiniz.  Aşağıda bir örnek verilmiştir:
 
 ```json
 {
@@ -156,7 +156,7 @@ Aşağıdaki örnek, günlüğü aşağıdaki kurallara göre tanımlar:
 
 ## <a name="configure-sampling"></a>Örnekleme yapılandırma
 
-Application Insights, yoğun yük saatlerinde tamamlanan yürütmeler üzerinde çok fazla telemetri verisi üretmenin bir [örnekleme](../azure-monitor/app/sampling.md) özelliğine sahiptir. Gelen yürütmeler oranı belirtilen eşiği aştığında Application Insights, gelen yürütmelerin bazılarını rastgele yok saymaya başlar. Saniyedeki en fazla yürütme sayısı için varsayılan ayar 20 ' dir (sürüm 1. x içinde beş). [Üzerindehost.js](./functions-host-json.md#applicationinsights)örnekleme yapılandırabilirsiniz.  İşte bir örnek:
+Application Insights, yoğun yük saatlerinde tamamlanan yürütmeler üzerinde çok fazla telemetri verisi üretmenin bir [örnekleme](../azure-monitor/app/sampling.md) özelliğine sahiptir. Gelen yürütmeler oranı belirtilen eşiği aştığında Application Insights, gelen yürütmelerin bazılarını rastgele yok saymaya başlar. Saniyedeki en fazla yürütme sayısı için varsayılan ayar 20 ' dir (sürüm 1. x içinde beş). [Üzerindehost.js](./functions-host-json.md#applicationinsights)örnekleme yapılandırabilirsiniz.  Aşağıda bir örnek verilmiştir:
 
 # <a name="v2x"></a>[v2. x +](#tab/v2)
 
@@ -197,7 +197,7 @@ Daha fazla bilgi için bkz. [örnekleme Application Insights](../azure-monitor/a
 
 _Bu özellik önizleme aşamasındadır._ 
 
-Ölçek denetleyicisinin işlev uygulamanızda yapmakta olduğu kararları daha iyi anlamak için, [Azure işlevleri](./functions-scale.md#runtime-scaling) 'nin, ölçek denetleyicisinin günlükleri Application Insights veya blob depolama alanına almasını sağlayabilirsiniz.
+Ölçek denetleyicisinin işlev uygulamanızda yapmakta olduğu kararları daha iyi anlamak için, [Azure işlevleri](./event-driven-scaling.md#runtime-scaling) 'nin, ölçek denetleyicisinin günlükleri Application Insights veya blob depolama alanına almasını sağlayabilirsiniz.
 
 Bu özelliği etkinleştirmek için, işlev uygulaması ayarlarınıza adlı bir uygulama ayarı eklersiniz `SCALE_CONTROLLER_LOGGING_ENABLED` . Bu ayarın değeri `<DESTINATION>:<VERBOSITY>` , aşağıdakilere bağlı olarak şu biçimde olmalıdır:
 

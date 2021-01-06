@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: jehollan
-ms.openlocfilehash: bed76a6f3a17332f9a1e411ff1d4efb52703f3e1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f4d7611f285535680469f3a334ab889b0b644bfe
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021019"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936876"
 ---
 # <a name="azure-functions-networking-options"></a>Azure İşlevleri ağ seçenekleri
 
@@ -21,9 +21,9 @@ Barındırma modellerinin farklı düzeylerde ağ yalıtımı vardır. Doğru ol
 İşlev uygulamalarını birkaç yolla barındırabilirsiniz:
 
 * Farklı düzeylerde sanal ağ bağlantısı ve ölçeklendirme seçenekleri sayesinde çok kiracılı bir altyapıda çalışan plan seçenekleri arasından seçim yapabilirsiniz:
-    * [Tüketim planı](functions-scale.md#consumption-plan) , yükleme yanıt olarak dinamik olarak ölçeklendirilir ve en düşük ağ yalıtımı seçeneklerini sunar.
-    * [Premium plan](functions-scale.md#premium-plan) ayrıca dinamik olarak ölçeklendiriyor ve daha kapsamlı ağ yalıtımı sunmaktadır.
-    * Azure [App Service planı](functions-scale.md#app-service-plan) sabit bir ölçekte çalışır ve Premium plana benzer ağ yalıtımı sağlar.
+    * [Tüketim planı](consumption-plan.md) , yükleme yanıt olarak dinamik olarak ölçeklendirilir ve en düşük ağ yalıtımı seçeneklerini sunar.
+    * [Premium plan](functions-premium-plan.md) ayrıca dinamik olarak ölçeklendiriyor ve daha kapsamlı ağ yalıtımı sunmaktadır.
+    * Azure [App Service planı](dedicated-plan.md) sabit bir ölçekte çalışır ve Premium plana benzer ağ yalıtımı sağlar.
 * İşlevleri bir [App Service ortamı](../app-service/environment/intro.md)çalıştırabilirsiniz. Bu yöntem, işlevinizi sanal ağınıza dağıtır ve tam ağ denetimi ve yalıtımı sağlar.
 
 ## <a name="matrix-of-networking-features"></a>Ağ özellikleri matrisi
@@ -34,7 +34,7 @@ Barındırma modellerinin farklı düzeylerde ağ yalıtımı vardır. Doğru ol
 
 Uygulamanıza erişim izni verilen veya reddedilen IP adreslerinin öncelik sırasına sahip bir listesini tanımlamak için erişim kısıtlamalarını kullanabilirsiniz. Liste, IPv4 ve IPv6 adreslerini veya [hizmet uç noktaları](#use-service-endpoints)kullanan belirli sanal ağ alt ağlarını içerebilir. Bir veya daha fazla giriş olduğunda, listenin sonunda örtülü bir "Tümünü Reddet" bulunur. IP kısıtlamaları tüm işlev barındırma seçenekleriyle çalışır.
 
-Erişim kısıtlamaları [Premium](functions-premium-plan.md), [Tüketim](functions-scale.md#consumption-plan)ve [App Service](functions-scale.md#app-service-plan)kullanılabilir.
+Erişim kısıtlamaları [Premium](functions-premium-plan.md), [Tüketim](consumption-plan.md)ve [App Service](dedicated-plan.md)kullanılabilir.
 
 > [!NOTE]
 > Ağ kısıtlamalarına sahip olmak için, yalnızca sanal ağınızdan veya kullandığınız makinenin IP adresini, Güvenli Alıcılar listesindeki Azure portal erişmek için girdiğinizde dağıtabilirsiniz. Ancak, portalı kullanarak işlevi yine de yönetebilirsiniz.
@@ -143,7 +143,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 Sanal ağ Tetikleyicileri, Işlevler çalışma zamanının 2. x ve üzerinde desteklenir. Aşağıdaki HTTP olmayan tetikleyici türleri desteklenir.
 
-| Uzantı | En düşük sürüm |
+| Dahili numara | En düşük sürüm |
 |-----------|---------| 
 |[Microsoft. Azure. WebJobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/) | 3.0.10 veya üzeri |
 |[Microsoft. Azure. WebJobs. Extensions. EventHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs)| 4.1.0 veya üzeri|

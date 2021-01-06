@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: bbea6a0aa31034cd1c04145fb50b72432c9f8520
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 9e5d12bcea1bd7a587568c30b49c8c4ee95f8362
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319008"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937391"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Öğretici: Akamai ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -53,7 +53,7 @@ Microsoft ve Akamai EAA ortaklığı, iş gereksinimlerinize göre birden çok t
 
 #### <a name="integration-scenario-1"></a>Tümleştirme senaryosu 1
 
-Akamai EAA, Azure AD 'de tek bir uygulama olarak yapılandırılır. Yönetici, uygulama üzerinde CA Ilkesini yapılandırabilir ve koşullar karşılandıktan sonra kullanıcılara Akamai EAA portalına erişim elde edebilir.
+Akamai EAA, Azure AD 'de tek bir uygulama olarak yapılandırılır. Yönetici, uygulama üzerinde koşullu erişim ilkesini yapılandırabilir ve koşullar karşılandıktan sonra kullanıcılar Akamai EAA portalına erişim kazanabilirler.
 
 **Uzmanları**:
 
@@ -63,13 +63,13 @@ Akamai EAA, Azure AD 'de tek bir uygulama olarak yapılandırılır. Yönetici, 
 
 * Kullanıcılar iki uygulama portalı ile sona erdir
 
-* Tüm uygulamalar için tek ortak CA Ilkesi kapsamı.
+* Tüm uygulamalar için tek bir genel koşullu erişim ilkesi kapsamı.
 
 ![Tümleştirme senaryosu 1](./media/header-akamai-tutorial/scenario1.png)
 
 #### <a name="integration-scenario-2"></a>Tümleştirme senaryosu 2
 
-Akamai EAA uygulaması, Azure AD portalında ayrı ayrı ayarlanır. Yönetici, uygulamalar üzerinde bireysel CA Ilkesini yapılandırabilir ve koşullar karşılandıktan sonra kullanıcılar doğrudan belirli bir uygulamaya yeniden yönlendirilebilir.
+Akamai EAA uygulaması, Azure AD portalında ayrı ayrı ayarlanır. Yönetici, uygulamalar üzerinde tek tek koşullu erişim ilkesini yapılandırabilir ve koşullar karşılandıktan sonra kullanıcılar doğrudan belirli bir uygulamaya yeniden yönlendirilebilir.
 
 **Uzmanları**:
 
@@ -99,7 +99,7 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 #### <a name="important"></a>Önemli
 
-Aşağıda listelenen tüm kurulum, **tümleştirme senaryosu 1** ve **Senaryo 2**için aynıdır. **Tümleştirme senaryosu 2** Için, Akamai EAA 'da tek BIR IDP ayarlamanız gerekır ve URL ÖZELLIĞININ uygulama URL 'sine işaret etmek için değiştirilmesi gerekir.
+Aşağıda listelenen tüm kurulum, **tümleştirme senaryosu 1** ve **Senaryo 2** için aynıdır. **Tümleştirme senaryosu 2** Için, Akamai EAA 'da tek BIR IDP ayarlamanız gerekır ve URL ÖZELLIĞININ uygulama URL 'sine işaret etmek için değiştirilmesi gerekir.
 
 ![Akamai Enterprise Application Access 'te AZURESSO-SP için Genel sekmesinin ekran görüntüsü. Kimlik doğrulama yapılandırma URL 'SI alanı vurgulanır.](./media/header-akamai-tutorial/important.png)
 
@@ -116,7 +116,7 @@ Akamai tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden Aka
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-akamai"></a>Akamai için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Akamai ile yapılandırın ve test edin. SSO 'nun çalışması için, Akamai içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Akamai ile yapılandırın ve test edin. SSO 'nun çalışması için, Akamai içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Akamai ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -204,7 +204,7 @@ Bu bölümde, Akamai 'e erişim vererek Azure çoklu oturum açma özelliğini k
 
     ![Akamai EAA konsolundaki yeni kimlik sağlayıcıları oluştur iletişim kutusunun ekran görüntüsü.](./media/header-akamai-tutorial/configure02.png)
 
-    a. **Benzersiz adı**belirtin.
+    a. **Benzersiz adı** belirtin.
 
     b. **Üçüncü taraf SAML** ' yi seçin ve **kimlik sağlayıcısı oluştur ve Yapılandır**' a tıklayın.
 
@@ -269,7 +269,7 @@ Akamai üst bilgi tabanlı kimlik doğrulaması
 
     ![Access Apps bölümünde listelenen CustomHTTP 'yi gösteren Akamai EAA konsolunun uygulama ekleme Sihirbazı ekran görüntüsü.](./media/header-akamai-tutorial/configure05.png)
 
-2. **Uygulama adı** ve **açıklamasını**girin.
+2. **Uygulama adı** ve **açıklamasını** girin.
 
     ![Uygulama adı ve açıklama ayarlarını gösteren özel bir HTTP uygulaması iletişim kutusunun ekran görüntüsü.](./media/header-akamai-tutorial/configure06.png)
 
@@ -295,7 +295,7 @@ Kaydet ' e tıklayın ve kimlik doğrulaması ' na gidin.
 
 #### <a name="advanced-settings"></a>Gelişmiş Ayarlar
 
-1. **MÜŞTERI http üstbilgileri**altında **Customerheader** ve **SAML özniteliğini**belirtin.
+1. **MÜŞTERI http üstbilgileri** altında **Customerheader** ve **SAML özniteliğini** belirtin.
 
     ![Kimlik doğrulaması altında vurgulanan SSO kayıtlı URL alanını gösteren Akamai EAA konsolu Gelişmiş ayarları sekmesinin ekran görüntüsü.](./media/header-akamai-tutorial/configure12.png)
 
@@ -331,7 +331,7 @@ Kaydet ' e tıklayın ve kimlik doğrulaması ' na gidin.
 
     ![Erişim uygulamaları bölümündeki uygulamalar arasında listelenen RDP 'yi gösteren Akamai EAA konsolunun uygulama ekleme Sihirbazı ekran görüntüsü.](./media/header-akamai-tutorial/configure16.png)
 
-1. **Uygulama adı** ve **açıklamasını**girin.
+1. **Uygulama adı** ve **açıklamasını** girin.
 
     ![Uygulama adı ve açıklamasına yönelik ayarları gösteren bir RDP uygulaması iletişim kutusunun ekran görüntüsü.](./media/header-akamai-tutorial/configure17.png)
 
@@ -385,7 +385,7 @@ Kaydet ' e tıklayın ve kimlik doğrulaması ' na gidin.
 
     ![Akamai EAA konsolunun uygulama ekleme Sihirbazı 'nın, erişim uygulamaları bölümündeki uygulamalar arasında listelenen SSH 'yi gösteren ekran görüntüsü.](./media/header-akamai-tutorial/configure25.png)
 
-1. **Uygulama adı** ve **açıklamasını**girin.
+1. **Uygulama adı** ve **açıklamasını** girin.
 
     ![Uygulama adı ve açıklamasına yönelik ayarları gösteren bir SSH uygulaması iletişim kutusunun ekran görüntüsü.](./media/header-akamai-tutorial/configure26.png)
 
@@ -504,12 +504,12 @@ Kimlik sağlayıcısını ata
 
 #### <a name="step-1-create-an-account"></a>1. Adım: hesap oluşturma 
 
-1. Örnekte **Eaatemsili**adlı bir hesap kullanacağız. Bunu, **Kullanıcı ve bilgisayar** Snappin Active Directory kullanarak yapabilirsiniz.
+1. Örnekte **Eaatemsili** adlı bir hesap kullanacağız. Bunu, **Kullanıcı ve bilgisayar** Snappin Active Directory kullanarak yapabilirsiniz.
 
     ![Azure AD SSO için Akamai EAA konsol dizinleri sekmesinin ekran görüntüsü. Superdemo. Live dizini şu anda atanmış olan dizinler altında listelenir.](./media/header-akamai-tutorial/assigndirectory.png)
 
     > [!NOTE]
-    > Kullanıcı adının **kimlik kesme adına**göre belirli bir biçimde olması gerekebilir. Şekil 1 ' den **corpapps.Login.go.Akamai-Access.com** olduğunu görtik
+    > Kullanıcı adının **kimlik kesme adına** göre belirli bir biçimde olması gerekebilir. Şekil 1 ' den **corpapps.Login.go.Akamai-Access.com** olduğunu görtik
 
 1. Kullanıcı oturum açma adı şu şekilde olacaktır:`HTTP/corpapps.login.go.akamai-access.com`
 

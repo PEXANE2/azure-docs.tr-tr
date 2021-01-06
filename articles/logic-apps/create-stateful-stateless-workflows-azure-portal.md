@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: d10689937a037469399863395e0190e399334bd3
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: a7e19894a4688fe270422e93f7081f98e0b699a3
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96924521"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936541"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-the-azure-portal-with-azure-logic-apps-preview"></a>Azure Logic Apps önizlemesiyle Azure portal durum bilgisiz ve durum bilgisi olmayan iş akışları oluşturma
 
@@ -43,7 +43,7 @@ Bu makalede **mantıksal uygulama (Önizleme)** kaynak türünü kullanarak ve b
 > [!NOTE]
 > Bilinen güncel sorunlar hakkında daha fazla bilgi için [GitHub 'Daki bilinen sorunlar Logic Apps Genel Önizleme sayfasını](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)gözden geçirin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir Azure hesabı ve aboneliği Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -74,11 +74,11 @@ Bu makalede **mantıksal uygulama (Önizleme)** kaynak türünü kullanarak ve b
 
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Abonelik** | Evet | <*Azure-abonelik-adı*> | Mantıksal uygulamanız için kullanılacak Azure aboneliği. |
-   | **Kaynak grubu** | Evet | <*Azure-Resource-Group-Name*> | Mantıksal uygulamanızı ve ilgili kaynaklarınızı oluşturduğunuz Azure Kaynak grubu. Bu kaynak adı bölgeler genelinde benzersiz olmalıdır ve yalnızca harf, rakam, kısa çizgi ( **-** ), alt çizgi (**_**), parantez (**()**) ve nokta (**.**) içerebilir. <p><p>Bu örnek adlı bir kaynak grubu oluşturur `Fabrikam-Workflows-RG` . |
-   | **Mantıksal uygulama adı** | Evet | <*Logic-App-adı*> | Mantıksal uygulamanız için kullanılacak ad. Bu kaynak adı bölgeler genelinde benzersiz olmalıdır ve yalnızca harf, rakam, kısa çizgi ( **-** ), alt çizgi (**_**), parantez (**()**) ve nokta (**.**) içerebilir. <p><p>Bu örnek adlı bir mantıksal uygulama oluşturur `Fabrikam-Workflows` . <p><p>**Note**: mantıksal uygulama `.azurewebsites.net` **(Önizleme)** kaynağı, aynı uygulama adlandırma kuralını kullanan Azure işlevleri tarafından desteklenen mantıksal uygulamanızın adı otomatik olarak alınır. |
-   | **Yayımla** | Evet | <*Dağıtım-ortam*> | Mantıksal uygulamanız için dağıtım hedefi. **Iş akışı** ' nı veya bir Docker kapsayıcısını seçerek Azure 'a dağıtım yapabilirsiniz. <p><p>Bu örnek, Azure 'da **mantıksal uygulama (Önizleme)** kaynağı olan **iş akışını** kullanır. <p><p>**Docker kapsayıcısı**' nı seçerseniz, [mantıksal uygulamanızın ayarlarında kullanılacak kapsayıcıyı belirtin](#set-docker-container). |
-   | **Bölge** | Evet | <*Azure-bölge*> | Kaynak grubunuz ve kaynaklarınız oluşturulurken kullanılacak Azure bölgesi. <p><p>Bu örnek **Batı ABD** kullanır. |
+   | **Abonelik** | Yes | <*Azure-abonelik-adı*> | Mantıksal uygulamanız için kullanılacak Azure aboneliği. |
+   | **Kaynak grubu** | Yes | <*Azure-Resource-Group-Name*> | Mantıksal uygulamanızı ve ilgili kaynaklarınızı oluşturduğunuz Azure Kaynak grubu. Bu kaynak adı bölgeler genelinde benzersiz olmalıdır ve yalnızca harf, rakam, kısa çizgi ( **-** ), alt çizgi (**_**), parantez (**()**) ve nokta (**.**) içerebilir. <p><p>Bu örnek adlı bir kaynak grubu oluşturur `Fabrikam-Workflows-RG` . |
+   | **Mantıksal uygulama adı** | Yes | <*Logic-App-adı*> | Mantıksal uygulamanız için kullanılacak ad. Bu kaynak adı bölgeler genelinde benzersiz olmalıdır ve yalnızca harf, rakam, kısa çizgi ( **-** ), alt çizgi (**_**), parantez (**()**) ve nokta (**.**) içerebilir. <p><p>Bu örnek adlı bir mantıksal uygulama oluşturur `Fabrikam-Workflows` . <p><p>**Note**: mantıksal uygulama `.azurewebsites.net` **(Önizleme)** kaynağı, aynı uygulama adlandırma kuralını kullanan Azure işlevleri tarafından desteklenen mantıksal uygulamanızın adı otomatik olarak alınır. |
+   | **Yayımla** | Yes | <*Dağıtım-ortam*> | Mantıksal uygulamanız için dağıtım hedefi. **Iş akışı** ' nı veya bir Docker kapsayıcısını seçerek Azure 'a dağıtım yapabilirsiniz. <p><p>Bu örnek, Azure 'da **mantıksal uygulama (Önizleme)** kaynağı olan **iş akışını** kullanır. <p><p>**Docker kapsayıcısı**' nı seçerseniz, [mantıksal uygulamanızın ayarlarında kullanılacak kapsayıcıyı belirtin](#set-docker-container). |
+   | **Bölge** | Yes | <*Azure-bölge*> | Kaynak grubunuz ve kaynaklarınız oluşturulurken kullanılacak Azure bölgesi. <p><p>Bu örnek **Batı ABD** kullanır. |
    |||||
 
    Aşağıda bir örnek verilmiştir:
@@ -89,10 +89,10 @@ Bu makalede **mantıksal uygulama (Önizleme)** kaynak türünü kullanarak ve b
 
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Depolama hesabı** | Evet | <*Azure-Storage-Account-Name*> | Depolama işlemleri için kullanılacak [Azure depolama hesabı](../storage/common/storage-account-overview.md) . Bu kaynak adı bölgeler genelinde benzersiz olmalıdır ve yalnızca rakamlar ve küçük harflerden oluşan 3-24 karakter içermelidir. Mevcut bir hesap seçin veya yeni hesap oluşturun. <p><p>Bu örnek adlı bir depolama hesabı oluşturur `fabrikamstorageacct` . |
-   | **Plan türü** | Evet | <*Azure-barındırma-plan*> | Mantıksal uygulamanızı dağıtmak için kullanılan, [**Premium**](../azure-functions/functions-scale.md#premium-plan) veya [**App Service planı**](../azure-functions/functions-scale.md#app-service-plan)olan [barındırma planı](../app-service/overview-hosting-plans.md) . Seçiminiz, daha sonra seçebileceğiniz fiyatlandırma katmanlarını etkiler. <p><p>Bu örnek, **App Service planını** kullanır. <p><p>**Note**: Azure işlevlerine benzer şekilde, **mantıksal uygulama (Önizleme)** kaynak türü bir barındırma planı ve fiyatlandırma katmanı gerektirir. Tüketim barındırma planları bu kaynak türü için desteklenmiyor veya kullanılamıyor. Daha fazla bilgi için şu konuları gözden geçirin: <p><p>- [Azure Işlevleri ölçeklendirme ve barındırma](../azure-functions/functions-scale.md) <br>- [App Service fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/app-service/) <p><p> |
-   | **Windows Planı** | Evet | <*Plan adı*> | Kullanılacak plan adı. Mevcut bir planı seçin ya da yeni bir plan için adı belirtin. <p><p>Bu örnek, adını kullanır `Fabrikam-Service-Plan` . |
-   | **SKU ve boyut** | Evet | <*Fiyatlandırma Katmanı*> | Mantıksal uygulamanızı barındırmak için kullanılacak [fiyatlandırma katmanı](../app-service/overview-hosting-plans.md) . Seçenekleriniz, daha önce seçtiğiniz plan türünden etkilenir. Varsayılan katmanı değiştirmek için **boyutu Değiştir**' i seçin. Daha sonra, ihtiyacınız olan iş yüküne göre diğer fiyatlandırma katmanlarını seçebilirsiniz. <p><p>Bu örnek, **geliştirme ve test** iş yükleri Için ücretsiz **F1 fiyatlandırma katmanını** kullanır. Daha fazla bilgi için [App Service fiyatlandırma ayrıntılarını](https://azure.microsoft.com/pricing/details/app-service/)gözden geçirin. |
+   | **Depolama hesabı** | Yes | <*Azure-Storage-Account-Name*> | Depolama işlemleri için kullanılacak [Azure depolama hesabı](../storage/common/storage-account-overview.md) . Bu kaynak adı bölgeler genelinde benzersiz olmalıdır ve yalnızca rakamlar ve küçük harflerden oluşan 3-24 karakter içermelidir. Mevcut bir hesap seçin veya yeni hesap oluşturun. <p><p>Bu örnek adlı bir depolama hesabı oluşturur `fabrikamstorageacct` . |
+   | **Plan türü** | Yes | <*Azure-barındırma-plan*> | Mantıksal uygulamanızı dağıtmak için kullanılan, [**Premium**](../azure-functions/functions-premium-plan.md) veya [**App Service planı**](../azure-functions/dedicated-plan.md)olan [barındırma planı](../app-service/overview-hosting-plans.md) . Seçiminiz, daha sonra seçebileceğiniz fiyatlandırma katmanlarını etkiler. <p><p>Bu örnek, **App Service planını** kullanır. <p><p>**Note**: Azure işlevlerine benzer şekilde, **mantıksal uygulama (Önizleme)** kaynak türü bir barındırma planı ve fiyatlandırma katmanı gerektirir. Tüketim barındırma planları bu kaynak türü için desteklenmiyor veya kullanılamıyor. Daha fazla bilgi için şu konuları gözden geçirin: <p><p>- [Azure Işlevleri ölçeklendirme ve barındırma](../azure-functions/functions-scale.md) <br>- [App Service fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/app-service/) <p><p> |
+   | **Windows Planı** | Yes | <*Plan adı*> | Kullanılacak plan adı. Mevcut bir planı seçin ya da yeni bir plan için adı belirtin. <p><p>Bu örnek, adını kullanır `Fabrikam-Service-Plan` . |
+   | **SKU ve boyut** | Yes | <*Fiyatlandırma Katmanı*> | Mantıksal uygulamanızı barındırmak için kullanılacak [fiyatlandırma katmanı](../app-service/overview-hosting-plans.md) . Seçenekleriniz, daha önce seçtiğiniz plan türünden etkilenir. Varsayılan katmanı değiştirmek için **boyutu Değiştir**' i seçin. Daha sonra, ihtiyacınız olan iş yüküne göre diğer fiyatlandırma katmanlarını seçebilirsiniz. <p><p>Bu örnek, **geliştirme ve test** iş yükleri Için ücretsiz **F1 fiyatlandırma katmanını** kullanır. Daha fazla bilgi için [App Service fiyatlandırma ayrıntılarını](https://azure.microsoft.com/pricing/details/app-service/)gözden geçirin. |
    |||||
 
 1. Daha sonra, oluşturma ve dağıtım ayarlarınız [Application Insights](../azure-monitor/app/app-insights-overview.md)kullanmayı destekliyorsa, mantıksal uygulamanız için isteğe bağlı olarak tanılama günlüğü ve izlemeyi etkinleştirebilirsiniz.
@@ -103,7 +103,7 @@ Bu makalede **mantıksal uygulama (Önizleme)** kaynak türünü kullanarak ve b
 
 1. Azure mantıksal uygulamanızın ayarlarını doğruladıktan sonra, **gözden geçir + oluştur** sekmesinde **Oluştur**' u seçin.
 
-   Örnek:
+   Örneğin:
 
    ![Azure portal ve yeni mantıksal uygulama kaynak ayarlarını gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-azure-portal/check-logic-app-resource-settings.png)
 
@@ -223,9 +223,9 @@ Boş bir iş akışına tetikleyici ekleyebilmek için önce iş akışı tasar�
 
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Hedef** | Evet | <*e-posta adresiniz*> | E-posta alıcısı, test amacıyla e-posta adresiniz olabilir. Bu örnek, kurgusal e-postayı kullanır `sophiaowen@fabrikam.com` . |
-   | **Konu** | Evet | `An email from your example workflow` | E-posta konusu |
-   | **Gövde** | Evet | `Hello from your example workflow!` | E-posta gövdesi içeriği |
+   | **Amaç** | Yes | <*e-posta adresiniz*> | E-posta alıcısı, test amacıyla e-posta adresiniz olabilir. Bu örnek, kurgusal e-postayı kullanır `sophiaowen@fabrikam.com` . |
+   | **Konu** | Yes | `An email from your example workflow` | E-posta konusu |
+   | **Gövde** | Yes | `Hello from your example workflow!` | E-posta gövdesi içeriği |
    ||||
 
    > [!NOTE]
@@ -299,7 +299,7 @@ Durum bilgisi olan bir iş akışı için, her iş akışı çalıştıktan sonr
    > [!TIP]
    > En son çalıştırma durumu görünmezse, **izleyici** bölmesi araç çubuğunda **Yenile**' yi seçin. Karşılanmayan ölçütler veya veri bulma nedeniyle atlanan bir tetikleyici için çalıştırma gerçekleşilmedi.
 
-   | Çalışma durumu | Açıklama |
+   | Çalışma durumu | Description |
    |------------|-------------|
    | **İptal edildi** | Çalıştırma, dış sorunlar nedeniyle durdurulmuş veya bitmedi; Örneğin, bir sistem kesintisi veya bir Azure aboneliği. |
    | **Yürütüldükten** | Çalıştırma tetiklendi ve başlatıldı, ancak bir iptal isteği alındı. |
@@ -318,7 +318,7 @@ Durum bilgisi olan bir iş akışı için, her iş akışı çalıştıktan sonr
 
    İşte iş akışındaki her adımın sahip olduğu olası durumlar şunlardır:
 
-   | Eylem durumu | Simge | Açıklama |
+   | Eylem durumu | Simge | Description |
    |---------------|------|-------------|
    | İptal edildi | !["Durdurulan" eylem durumu simgesi][aborted-icon] | Bu eylem, dış sorunlar nedeniyle durdurulmuş veya bitmedi; Örneğin, bir sistem kesintisi veya bir Azure aboneliği. |
    | İptal Edildi | !["Iptal edildi" eylem durumu simgesi][cancelled-icon] | Eylem çalışıyor ancak iptal isteği alındı. |
@@ -385,7 +385,7 @@ Durum bilgisi olmayan bir iş akışında daha kolay hata ayıklamak için bu i�
 
 1. **Değer** kutusuna aşağıdaki değeri girin:`WithStatelessRunHistory`
 
-   Örnek:
+   Örneğin:
 
    ![Azure portal ve mantıksal uygulama (Önizleme) kaynağını "yapılandırma" > "yeni uygulama ayarı" < "uygulama ayarı Ekle/Düzenle" bölmesi açık ve "Iş akışları" olarak gösteren ekran görüntüsü. {yourWorkflowName}. OperationOptions "seçeneği" WithStatelessRunHistory "olarak ayarlandı.](./media/create-stateful-stateless-workflows-azure-portal/stateless-operation-options-run-history.png)
 

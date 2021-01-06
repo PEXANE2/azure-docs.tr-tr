@@ -3,12 +3,12 @@ title: Azure İşlevleri için uygulama ayarları başvurusu
 description: Azure Işlevleri uygulama ayarları veya ortam değişkenleri için başvuru belgeleri.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 3d7292999fc4b53fed06822461857185127dc793
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 72b42e392f350a8693ca8a052bdec1d5fd337234
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898734"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937119"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure İşlevleri için uygulama ayarları başvurusu
 
@@ -256,7 +256,7 @@ Yalnızca tüketim & Premium planlar için. İşlev uygulaması kodu ve yapılan
 İşlev uygulamasının ölçeklenebilen en fazla örnek sayısı. Varsayılan sınır yoktur.
 
 > [!IMPORTANT]
-> Bu ayar önizlemededir.  [İşlev için en fazla ölçek genişletme için bir uygulama özelliği](./functions-scale.md#limit-scale-out) eklenmiştir ve ölçeği ölçeğini sınırlamak için önerilen yoldur.
+> Bu ayar önizlemededir.  [İşlev için en fazla ölçek genişletme için bir uygulama özelliği](./event-driven-scaling.md#limit-scale-out) eklenmiştir ve ölçeği ölçeğini sınırlamak için önerilen yoldur.
 
 |Anahtar|Örnek değer|
 |---|------------|
