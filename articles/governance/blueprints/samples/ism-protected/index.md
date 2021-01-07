@@ -3,16 +3,16 @@ title: Avustralya Devleti’nin ISM PROTECTED adlı şemasına genel bakış
 description: Avustralya Devleti’nin ISM PROTECTED adlı şemasına genel bakış. Bu şema örneği, müşterilerin belirli ISM PROTECTED denetimlerini değerlendirmesine yardımcı olur.
 ms.date: 09/11/2020
 ms.topic: sample
-ms.openlocfilehash: 4e6b1db0d2f4ecff13068c8e673f2237740ffec2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69f18c7a34bdf39ebbc2031b187d033c999165a9
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90038711"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955578"
 ---
 # <a name="overview-of-the-australian-government-ism-protected-blueprint-sample"></a>Avustralya Devleti’nin ISM PROTECTED adlı şemasına genel bakış
 
-ISM İdaresi şema örneği, ISM PROTECTED planının (Şubat 2020 sürümü) kanıtlanmasına yardımcı olan [Azure İlkesi](../../../policy/overview.md)'ni kullanarak bir idare koruma kümesi sağlar. Bu Şema, müşterilerin ISM çerçevesiyle akreditasyon veya uyumluluk gerektiren herhangi bir Azure tarafından dağıtılan mimari için temel bir ilke kümesi dağıtmasına yardımcı olur. Denetim eşlemesi bölümünde bu girişime dahil edilen ilkelerin ayrıntıları ve bu ilkelerin ISM çerçevesi tarafından tanımlanan çeşitli denetimleri karşılamaya nasıl yardımcı olduğu hakkında ayrıntılı bilgiler sağlanır. Kaynaklar bir mimariye atandığında, atanan ilkeler ile uyumsuzluk için Azure İlkesi tarafından değerlendirilecektir.
+ISM İdaresi şema örneği, ISM PROTECTED planının (Şubat 2020 sürümü) kanıtlanmasına yardımcı olan [Azure İlkesi](../../../policy/overview.md)'ni kullanarak bir idare koruma kümesi sağlar. Bu Şema, müşterilerin ISM çerçevesiyle akreditasyon veya uyumluluk gerektiren herhangi bir Azure tarafından dağıtılan mimari için temel bir ilke kümesi dağıtmasına yardımcı olur. 
 
 ## <a name="control-mapping"></a>Denetim eşlemesi
 

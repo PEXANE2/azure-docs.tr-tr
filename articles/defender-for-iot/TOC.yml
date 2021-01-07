@@ -3,6 +3,8 @@
 - name: Genel Bakış
   href: overview.md
   items:
+    - name: Yenilikler
+      href: release-notes.md
     - name: Çözüm mimarisi
       href: architecture.md
 - name: Hızlı Başlangıçlar
