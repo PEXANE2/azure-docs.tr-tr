@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: eddee6bc0fdcd636b7b9ffb81b121052499251b2
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 97b8f889bf625ac36917debe2cc2848cb1a97e37
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97745764"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97956459"
 ---
 [Başvuru belgeleri](/javascript/api/@azure/arm-cognitiveservices/?view=azure-node-latest)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/arm-cognitiveservices)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices#sample-code)
 
@@ -74,7 +74,7 @@ Sonra, `quickstart` programınızın ana işini işlemek için aşağıdaki işl
 
 `quickstart`Kullanılabilir kaynakları listelemek için işlevinizin sonuna aşağıdaki kodu ekleyin, örnek bir kaynak oluşturun, sahip olduğunuz kaynakları listeleyin ve ardından örnek kaynağı silin. Sonraki adımlarda bu işlevleri tanımlayacaksınız.
 
-## <a name="create-a-cognitive-services-resource"></a>Bilişsel Hizmetler kaynağı oluşturma
+## <a name="create-a-cognitive-services-resource-nodejs"></a>Bilişsel hizmetler kaynağı oluşturma (Node.js)
 
 Yeni bir bilişsel hizmetler kaynağı oluşturup abone olmak için **Create** işlevini kullanın. Bu işlev, geçirdiğiniz kaynak grubuna yeni bir faturalanabilir kaynak ekler. Yeni kaynağınızı oluşturduğunuzda, kullanmak istediğiniz hizmetin "tür" değerini, fiyatlandırma katmanını (veya SKU 'SU) ve bir Azure konumunu bilmeniz gerekir. Aşağıdaki işlev bu bağımsız değişkenlerin tümünü alır ve bir kaynak oluşturur.
 

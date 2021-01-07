@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: cynthn
-ms.openlocfilehash: 45c959bc3cb71a965f254867798ae32d86ba1e70
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: cd3ff3fce80e66d7cd61636b4416cb2fc28f5e77
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97612641"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97956450"
 ---
 | Kaynak | Sınır |
 | --- | --- |
@@ -19,6 +19,7 @@ ms.locfileid: "97612641"
 | Abonelik başına dv2 ve F gibi sanal makine, [abonelik](https://azure.microsoft.com/pricing/) başına çekirdek |Bölge başına 20<sup>1</sup> . Limiti artırmak için desteğe başvurun. |
 | Abonelik başına [kullanılabilirlik kümesi](../articles/virtual-machines/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) sayısı |Bölge başına 2.500. |
 | Kullanılabilirlik kümesi başına sanal makineler | 200 |
+| [Kaynak grubu](../articles/azure-resource-manager/management/overview.md#resource-groups) başına [yakınlık yerleştirme grupları](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups-portal) | 800 | 
 | Kullanılabilirlik kümesi başına sertifika | 199<sup>2</sup> |
 | Abonelik başına sertifika |Sınırsız<sup>3</sup> |
 
