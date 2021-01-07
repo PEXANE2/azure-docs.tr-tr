@@ -15,16 +15,16 @@ ms.date: 11/17/2019
 ms.author: zhenlwa
 ms.custom: devx-track-csharp, azure-functions
 ms.tgt_pltfrm: Azure Functions
-ms.openlocfilehash: e603aa8ba85fdd214c04de515f405bcf9028791e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: add4b54adb02db09536f4e56a7f039c46245c182
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88207098"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963573"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-azure-functions-app"></a>Öğretici: Azure Işlevleri uygulamasında dinamik yapılandırma kullanma
 
-Uygulama yapılandırma .NET Standard yapılandırma sağlayıcısı, uygulama etkinliğine göre dinamik olarak yönetilen yapılandırmayı önbelleğe almayı ve yenilemeyi destekler. Bu öğreticide, kodunuzda dinamik yapılandırma güncelleştirmelerini nasıl uygulayabileceğinizi gösterir. Hızlı başlangıçlarda tanıtılan Azure Işlevleri uygulamasında oluşturulur. Devam etmeden önce, önce [Azure Uygulama yapılandırması ile bir Azure işlevleri uygulaması oluşturun](./quickstart-azure-functions-csharp.md) .
+Uygulama yapılandırması .NET yapılandırma sağlayıcısı, uygulama etkinliğine göre dinamik olarak yönetilen yapılandırmayı önbelleğe almayı ve yenilemeyi destekler. Bu öğreticide, kodunuzda dinamik yapılandırma güncelleştirmelerini nasıl uygulayabileceğinizi gösterir. Hızlı başlangıçlarda tanıtılan Azure Işlevleri uygulamasında oluşturulur. Devam etmeden önce, önce [Azure Uygulama yapılandırması ile bir Azure işlevleri uygulaması oluşturun](./quickstart-azure-functions-csharp.md) .
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -41,44 +41,71 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="reload-data-from-app-configuration"></a>Uygulama yapılandırmasından verileri yeniden yükleme
 
-1. *Function1.cs*'i açın. Özelliğine ek olarak `static` `Configuration` , `static` `ConfigurationRefresher` `IConfigurationRefresher` işlevler daha sonra çağrılar sırasında yapılandırma güncelleştirmelerini işaret etmek için kullanılacak tek bir örneğini tutmak üzere yeni bir özellik ekleyin.
+1. *Startup.cs*'i açın ve yöntemi güncelleştirin `ConfigureAppConfiguration` . 
+
+   `ConfigureRefresh`Yöntemi, uygulama içinde bir yenileme tetiklendiğinde bir ayarı değişiklikler için denetlenecek bir ayar kaydeder ve bu, daha sonra eklenirken daha sonraki adımda gerçekleştirilir `_configurationRefresher.TryRefreshAsync()` . `refreshAll`Parametresi, kayıtlı ayarda her değişiklik algılandığında uygulama yapılandırma sağlayıcısına tüm yapılandırmayı yeniden yüklemesi talimatını verir.
+
+    Yenileme için kaydedilen tüm ayarlar varsayılan önbellek süresi olan 30 saniyedir. Yöntemi çağırarak güncelleştirilemeyebilir `AzureAppConfigurationRefreshOptions.SetCacheExpiration` .
 
     ```csharp
-    private static IConfiguration Configuration { set; get; }
-    private static IConfigurationRefresher ConfigurationRefresher { set; get; }
-    ```
-
-2. Oluşturucuyu güncelleştirin ve `ConfigureRefresh` uygulama yapılandırma deposundan yenilenecek ayarı belirtmek için yöntemini kullanın. Bir örneği `IConfigurationRefresher` yöntemi kullanılarak alınır `GetRefresher` . İsteğe bağlı olarak, yapılandırma önbelleği sona erme zamanı penceresini varsayılan 30 saniyeden 1 dakika olarak değiştiririz.
-
-    ```csharp
-    static Function1()
+    public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
     {
-        var builder = new ConfigurationBuilder();
-        builder.AddAzureAppConfiguration(options =>
+        builder.ConfigurationBuilder.AddAzureAppConfiguration(options =>
         {
             options.Connect(Environment.GetEnvironmentVariable("ConnectionString"))
+                   // Load all keys that start with `TestApp:`
+                   .Select("TestApp:*")
+                   // Configure to reload configuration if the registered 'Sentinel' key is modified
                    .ConfigureRefresh(refreshOptions =>
-                        refreshOptions.Register("TestApp:Settings:Message")
-                                      .SetCacheExpiration(TimeSpan.FromSeconds(60))
-            );
-            ConfigurationRefresher = options.GetRefresher();
+                      refreshOptions.Register("TestApp:Settings:Sentinel", refreshAll: true));
         });
-        Configuration = builder.Build();
     }
     ```
 
-3. `Run`İşlev çağrısının başlangıcında yöntemi kullanarak yapılandırmayı yenilemek için yöntemi ve sinyali güncelleştirin `TryRefreshAsync` . Önbellek sona erme saati penceresine ulaşılırsa bu işlem yapılmaz. `await`Yapılandırmanın engellenmeden yenilenmesini tercih ediyorsanız işleci kaldırın.
+   > [!TIP]
+   > Uygulama yapılandırmasında birden çok anahtar değeri güncelleştirirken, uygulamanızın tüm değişiklikler yapılmadan önce yapılandırmayı yeniden yüklenmesini istemezsiniz. **Sentinel** anahtarını kaydedebilir ve yalnızca diğer tüm yapılandırma değişiklikleri tamamlandığında onu güncelleştirebilirsiniz. Bu, uygulamanızda yapılandırmanın tutarlılığını sağlamaya yardımcı olur.
+
+2. `Configure`Azure uygulama yapılandırma Hizmetleri 'ni bağımlılık ekleme yoluyla kullanılabilir hale getirmek için yöntemini güncelleştirin.
 
     ```csharp
-    public static async Task<IActionResult> Run(
+    public override void Configure(IFunctionsHostBuilder builder)
+    {
+        builder.Services.AddAzureAppConfiguration();
+    }
+    ```
+
+3. *Function1.cs* açın ve aşağıdaki ad alanlarını ekleyin.
+
+    ```csharp
+    using System.Linq;
+    using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+    ```
+
+   `IConfigurationRefresherProvider`Örneğini elde ettiğiniz bağımlılık ekleme yoluyla örneğini almak için oluşturucuyu güncelleştirin `IConfigurationRefresher` .
+
+    ```csharp
+    private readonly IConfiguration _configuration;
+    private readonly IConfigurationRefresher _configurationRefresher;
+
+    public Function1(IConfiguration configuration, IConfigurationRefresherProvider refresherProvider)
+    {
+        _configuration = configuration;
+        _configurationRefresher = refresherProvider.Refreshers.First();
+    }
+    ```
+
+4. `Run`İşlev çağrısının başlangıcında yöntemi kullanarak yapılandırmayı yenilemek için yöntemi ve sinyali güncelleştirin `TryRefreshAsync` . Önbellek sona erme saati penceresine ulaşılırsa, bu işlem yapılmaz. `await`Yapılandırmanın geçerli işlev çağrısını engellemeden yenilenmesini tercih ediyorsanız işleci kaldırın. Bu durumda, sonraki Işlev çağrıları güncelleştirilmiş değeri alır.
+
+    ```csharp
+    public async Task<IActionResult> Run(
         [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req, ILogger log)
     {
         log.LogInformation("C# HTTP trigger function processed a request.");
 
-        await ConfigurationRefresher.TryRefreshAsync(); 
+        await _configurationRefresher.TryRefreshAsync(); 
 
         string keyName = "TestApp:Settings:Message";
-        string message = Configuration[keyName];
+        string message = _configuration[keyName];
             
         return message != null
             ? (ActionResult)new OkObjectResult(message)
@@ -88,7 +115,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="test-the-function-locally"></a>İşlevi yerel olarak test etme
 
-1. **ConnectionString**adlı bir ortam değişkeni ayarlayın ve uygulama yapılandırma deponuzu için erişim anahtarı olarak ayarlayın. Windows komut istemi 'ni kullanırsanız, aşağıdaki komutu çalıştırın ve değişikliğin etkili olması için komut istemi ' ni yeniden başlatın:
+1. **ConnectionString** adlı bir ortam değişkeni ayarlayın ve uygulama yapılandırma deponuzu için erişim anahtarı olarak ayarlayın. Windows komut istemi 'ni kullanırsanız, aşağıdaki komutu çalıştırın ve değişikliğin etkili olması için komut istemi ' ni yeniden başlatın:
 
     ```console
     setx ConnectionString "connection-string-of-your-app-configuration-store"
@@ -116,19 +143,27 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
     ![Hızlı başlangıç Işlevi yerel başlatma](./media/quickstarts/dotnet-core-function-launch-local.png)
 
-5. [Azure Portal](https://portal.azure.com)’ında oturum açın. **Tüm kaynaklar**' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
+5. [Azure Portal](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposunu seçin.
 
-6. **Yapılandırma Gezgini**' ni seçin ve aşağıdaki anahtarın değerlerini güncelleştirin:
+6. **Yapılandırma Gezgini**' ni seçin ve aşağıdaki anahtarın değerini güncelleştirin:
 
     | Anahtar | Değer |
     |---|---|
     | TestApp: ayarlar: Ileti | Azure Uygulama yapılandırmasından alınan veriler-güncelleştirildi |
 
-7. Tarayıcıyı birkaç kez yenileyin. Önbellek ayarı bir dakika sonra sona erdiğinde, sayfa, güncelleştirilmiş değer ile Işlev çağrısının yanıtını gösterir.
+   Daha sonra Sentinel anahtarını oluşturun veya zaten mevcutsa değeri değiştirin, örneğin
+
+    | Anahtar | Değer |
+    |---|---|
+    | TestApp: ayarlar: Sentinel | v1 |
+
+
+7. Tarayıcıyı birkaç kez yenileyin. Önbelleğe alınan ayarın süresi 30 saniye sonra dolarsa, sayfa, güncelleştirilmiş değer ile Işlev çağrısının yanıtını gösterir.
 
     ![Hızlı başlangıç Işlevi yerel olarak Yenile](./media/quickstarts/dotnet-core-function-refresh-local.png)
 
-Bu öğreticide kullanılan örnek kod, [uygulama yapılandırması GitHub deposundan](https://github.com/Azure/AppConfiguration/tree/master/examples/DotNetCore/AzureFunction) indirilebilir
+> [!NOTE]
+> Bu öğreticide kullanılan örnek kod, [uygulama yapılandırması GitHub](https://github.com/Azure/AppConfiguration/tree/master/examples/DotNetCore/AzureFunction)deposundan indirilebilir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

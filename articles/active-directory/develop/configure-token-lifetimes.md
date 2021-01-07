@@ -9,57 +9,89 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: e663cdd3846e804d1dcf96076c07b9a3db84272c
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 4d6a7150c854ba89c3cd8eacd6b553c4b8e97343
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507753"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963358"
 ---
 # <a name="configure-token-lifetime-policies-preview"></a>Belirteç ömür ilkelerini yapılandırma (Önizleme)
-Uygulamalar, hizmet sorumluları ve genel kuruluşunuz için belirteç yaşam sürelerini oluşturup yönetebilmeniz için Azure AD 'de birçok senaryo mümkündür.  
+Microsoft Identity platform tarafından verilen erişim, SAML veya KIMLIK belirtecinin ömrünü belirtebilirsiniz. Kuruluşunuzdaki tüm uygulamalar, çok kiracılı (çok kuruluşlu) bir uygulama veya belirli bir hizmet sorumlusu için belirteç ömrünü ayarlayabilirsiniz. Daha fazla bilgi için, [yapılandırılabilir belirteç yaşam sürelerini](active-directory-configurable-token-lifetimes.md)okuyun.
 
-> [!IMPORTANT]
-> 2020 Mayıs 'tan sonra, kiracılar artık yenileme ve oturum belirteci yaşam sürelerini yapılandıramayacak.  Azure Active Directory, 30 Ocak 2021 ' den sonra ilkelerde bulunan mevcut yenileme ve oturum belirteci yapılandırmasını durdurur. Kullanımdan kaldırıldıktan sonra erişim belirteci yaşam sürelerini yapılandırabilirsiniz.  Daha fazla bilgi edinmek için [Microsoft Identity platformunda yapılandırılabilir belirteç yaşam sürelerini](active-directory-configurable-token-lifetimes.md)okuyun.
-> Azure AD koşullu erişim 'de [kimlik doğrulama oturumu yönetimi özellikleri](../conditional-access/howto-conditional-access-session-lifetime.md)uyguladık   . Bu yeni özelliği, oturum açma sıklığını ayarlayarak yenileme belirteci yaşam sürelerini yapılandırmak için kullanabilirsiniz.
+Bu bölümde, belirteç ömrü için yeni kurallar almanıza yardımcı olabilecek ortak bir ilke senaryosuna kılavuzluk ederiz. Örnekte, kullanıcıların Web uygulamanızda daha sık kimlik doğrulaması yapmasını gerektiren bir ilke oluşturmayı öğreneceksiniz.
 
-
-Bu bölümde, için yeni kurallar sungetirmenize yardımcı olabilecek birkaç ortak ilke senaryosundan ilerliyoruz:
-
-* Belirteç ömrü
-* Belirteç en fazla etkin değil süresi
-* En fazla belirteç yaşı
-
-Örneklerde, şunları nasıl yapacağınızı öğrenebilirsiniz:
-
-* Kuruluşun varsayılan ilkesini yönetme
-* Web 'de oturum açma ilkesi oluşturma
-* Web API 'sini çağıran yerel uygulama için bir ilke oluşturma
-* Gelişmiş bir ilkeyi yönetme
-
-## <a name="prerequisites"></a>Önkoşullar
-Aşağıdaki örneklerde uygulamalar, hizmet sorumluları ve genel kurumunuzun ilkelerini oluşturur, güncelleştirir, bağlar ve silebilirsiniz. Azure AD 'de yeni başladıysanız, bu örneklere geçmeden önce [bir Azure AD kiracısı alma](quickstart-create-new-tenant.md) hakkında bilgi almanızı öneririz.  
-
+## <a name="get-started"></a>başlarken
 Başlamak için aşağıdaki adımları uygulayın:
 
 1. En son [Azure AD PowerShell modülü genel önizleme sürümünü](https://www.powershellgallery.com/packages/AzureADPreview)indirin.
-2. `Connect`Azure AD yönetici hesabınızda oturum açmak için komutunu çalıştırın. Her yeni oturumu başlattığınızda bu komutu çalıştırın.
+1. `Connect`Azure AD yönetici hesabınızda oturum açmak için komutunu çalıştırın. Her yeni oturumu başlattığınızda bu komutu çalıştırın.
 
     ```powershell
     Connect-AzureAD -Confirm
     ```
 
-3. Kuruluşunuzda oluşturulan tüm ilkeleri görmek için aşağıdaki komutu çalıştırın. Aşağıdaki senaryolarda işlemlerden en çok sonra bu komutu çalıştırın. Komutu çalıştırmak, ilkeleriniz için * * * * * * * * * * * * * *.
+1. Kuruluşunuzda oluşturulan tüm ilkeleri görmek için [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) cmdlet 'ini çalıştırın.  Yukarıda listelenen varsayılandan farklı olarak tanımlanmış özellik değerleri olan sonuçlar, emeklilik kapsamıdır.
 
     ```powershell
-    Get-AzureADPolicy
+    Get-AzureADPolicy -All
     ```
 
-## <a name="manage-an-organizations-default-policy"></a>Kuruluşun varsayılan ilkesini yönetme
+1. Belirlediğiniz belirli bir ilkeye bağlı olan uygulamaları ve hizmet sorumlularını görmek için, aşağıdaki [Get-AzureADPolicyAppliedObject](/powershell/module/azuread/get-azureadpolicyappliedobject?view=azureadps-2.0-preview&preserve-view=true) cmdlet 'ini çalıştırarak **1a37dad8-5dad7-4cc8-87c7-efbc0326cf20** ' i ilke kimliklerinizle değiştirin. Daha sonra koşullu erişim oturum açma sıklığını yapılandırıp yapılandırmamaya veya Azure AD varsayılanları ile kalmaya karar verebilirsiniz.
+
+    ```powershell
+    Get-AzureADPolicyAppliedObject -id 1a37dad8-5da7-4cc8-87c7-efbc0326cf20
+    ```
+
+Kiracınızda yenileme ve oturum belirteci yapılandırma özellikleri için özel değerler tanımlayan ilkeler varsa, Microsoft bu ilkeleri yukarıda belirtilen Varsayılanları yansıtan değerlere güncelleştirmenizi önerir. Hiçbir değişiklik yapılgerekmediğinden, Azure AD varsayılan değerleri otomatik olarak kabul eder.
+
+## <a name="create-a-policy-for-web-sign-in"></a>Web 'de oturum açma ilkesi oluşturma
+
+Bu örnekte, kullanıcıların Web uygulamanızda daha sık kimlik doğrulaması yapmasını gerektiren bir ilke oluşturacaksınız. Bu ilke, erişim/KIMLIK belirteçlerinin ömrünü ve çok faktörlü bir oturum belirtecinin en fazla yaşını Web uygulamanızın hizmet sorumlusuna ayarlar.
+
+1. Belirteç ömür ilkesi oluşturun.
+
+    Bu ilke, Web 'de oturum açmak için erişim/KIMLIK belirteci ömrünü ve en fazla tek faktörlü oturum belirteci yaşını iki saate ayarlar.
+
+    1. İlkeyi oluşturmak için [New-AzureADPolicy](/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) cmdlet 'ini çalıştırın:
+
+        ```powershell
+        $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
+        ```
+
+    1. Yeni ilkenize bakmak ve ilke **ObjectID**'yi almak için [Get-azureadpolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) cmdlet 'ini çalıştırın:
+
+        ```powershell
+        Get-AzureADPolicy -Id $policy.Id
+        ```
+
+1. İlkeyi hizmet sorumlusuna atayın. Ayrıca hizmet sorumlunun **ObjectID** 'sini almanız gerekir.
+
+    1. Tüm kuruluşunuzun hizmet sorumlularını veya tek bir hizmet sorumlusunu görmek için [Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) cmdlet 'ini kullanın.
+        ```powershell
+        # Get ID of the service principal
+        $sp = Get-AzureADServicePrincipal -Filter "DisplayName eq '<service principal display name>'"
+        ```
+
+    1. Hizmet sorumlusu varsa [Add-Azureadservicesprincipalpolicy](/powershell/module/azuread/add-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) cmdlet 'ini çalıştırın:
+        ```powershell
+        # Assign policy to a service principal
+        Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
+        ```
+
+## <a name="create-token-lifetime-policies-for-refresh-and-session-tokens"></a>Yenileme ve oturum belirteçleri için belirteç ömür ilkeleri oluşturma
+> [!IMPORTANT]
+> Mayıs 2020 itibariyle yeni kiracılar yenileme ve oturum belirteci yaşam sürelerini yapılandıramaz.  Mevcut yapılandırmaya sahip kiracılar, 30 Ocak 2021 ' ye kadar yenileme ve oturum belirteci ilkelerini değiştirebilir.  Azure Active Directory, 30 Ocak 2021 ' den sonra ilkelerde bulunan mevcut yenileme ve oturum belirteci yapılandırmasını durdurur. Kullanımdan sonra erişimi, SAML ve KIMLIK belirteci yaşam sürelerini yapılandırabilirsiniz.
+>
+> Bir kullanıcının yeniden oturum açması istenmeden önce geçen süreyi tanımlamaya devam etmeniz gerekiyorsa, koşullu erişimde oturum açma sıklığını yapılandırın. Koşullu erişim hakkında daha fazla bilgi edinmek için [koşullu erişimle kimlik doğrulama oturumu yönetimini yapılandırma](/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)makalesini okuyun.
+>
+> Kullanımdan kaldırma tarihinden sonra koşullu erişim kullanmak istemiyorsanız, yenileme ve oturum belirteçleriniz bu tarih için [varsayılan yapılandırmaya](active-directory-configurable-token-lifetimes.md#configurable-token-lifetime-properties-after-the-retirement) ayarlanır ve artık yaşam sürelerini değiştiremeyeceksiniz.
+
+### <a name="manage-an-organizations-default-policy"></a>Kuruluşun varsayılan ilkesini yönetme
 Bu örnekte, kullanıcılarınızın kuruluşunuzun tamamında daha az sıklıkta oturum açmasını sağlayan bir ilke oluşturacaksınız. Bunu yapmak için, kuruluşunuz genelinde uygulanan tek faktörlü yenileme belirteçleri için bir belirteç ömür ilkesi oluşturun. İlke, kuruluşunuzdaki her uygulamaya ve zaten bir ilke kümesi olmayan her bir hizmet sorumlusuna uygulanır.
 
 1. Belirteç ömür ilkesi oluşturun.
@@ -102,41 +134,7 @@ Bu örnekte, kullanıcılarınızın kuruluşunuzun tamamında daha az sıklıkt
     Set-AzureADPolicy -Id $policy.Id -DisplayName $policy.DisplayName -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"2.00:00:00"}}')
     ```
 
-## <a name="create-a-policy-for-web-sign-in"></a>Web 'de oturum açma ilkesi oluşturma
-
-Bu örnekte, kullanıcıların Web uygulamanızda daha sık kimlik doğrulaması yapmasını gerektiren bir ilke oluşturacaksınız. Bu ilke, erişim/KIMLIK belirteçlerinin ömrünü ve çok faktörlü bir oturum belirtecinin en fazla yaşını Web uygulamanızın hizmet sorumlusuna ayarlar.
-
-1. Belirteç ömür ilkesi oluşturun.
-
-    Bu ilke, Web 'de oturum açmak için erişim/KIMLIK belirteci ömrünü ve en fazla tek faktörlü oturum belirteci yaşını iki saate ayarlar.
-
-    1. İlkeyi oluşturmak için [New-AzureADPolicy](/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) cmdlet 'ini çalıştırın:
-
-        ```powershell
-        $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
-        ```
-
-    1. Yeni ilkenize bakmak ve ilke **ObjectID**'yi almak için [Get-azureadpolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) cmdlet 'ini çalıştırın:
-
-        ```powershell
-        Get-AzureADPolicy -Id $policy.Id
-        ```
-
-1. İlkeyi hizmet sorumlusuna atayın. Ayrıca hizmet sorumlunun **ObjectID** 'sini almanız gerekir.
-
-    1. Tüm kuruluşunuzun hizmet sorumlularını veya tek bir hizmet sorumlusunu görmek için [Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) cmdlet 'ini kullanın.
-        ```powershell
-        # Get ID of the service principal
-        $sp = Get-AzureADServicePrincipal -Filter "DisplayName eq '<service principal display name>'"
-        ```
-
-    1. Hizmet sorumlusu varsa [Add-Azureadservicesprincipalpolicy](/powershell/module/azuread/add-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) cmdlet 'ini çalıştırın:
-        ```powershell
-        # Assign policy to a service principal
-        Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
-        ```
-
-## <a name="create-a-policy-for-a-native-app-that-calls-a-web-api"></a>Web API 'sini çağıran yerel uygulama için bir ilke oluşturma
+### <a name="create-a-policy-for-a-native-app-that-calls-a-web-api"></a>Web API 'sini çağıran yerel uygulama için bir ilke oluşturma
 Bu örnekte, kullanıcılardan daha az sıklıkta kimlik doğrulaması yapmasını gerektiren bir ilke oluşturursunuz. İlke, Kullanıcı yeniden kimlik doğrulaması yapmadan önce kullanıcının devre dışı kalabileceği süreyi de uzar. İlke, Web API 'sine uygulanır. Yerel uygulama, Web API 'sini bir kaynak olarak istediğinde, bu ilke uygulanır.
 
 1. Belirteç ömür ilkesi oluşturun.
@@ -165,7 +163,7 @@ Bu örnekte, kullanıcılardan daha az sıklıkta kimlik doğrulaması yapmasın
     Add-AzureADApplicationPolicy -Id $app.ObjectId -RefObjectId $policy.Id
     ```
 
-## <a name="manage-an-advanced-policy"></a>Gelişmiş bir ilkeyi yönetme
+### <a name="manage-an-advanced-policy"></a>Gelişmiş bir ilkeyi yönetme
 Bu örnekte, öncelik sisteminin nasıl çalıştığını öğrenmek için birkaç ilke oluşturursunuz. Ayrıca, çeşitli nesnelere uygulanan birden çok ilkeyi yönetmeyi öğreneceksiniz.
 
 1. Belirteç ömür ilkesi oluşturun.

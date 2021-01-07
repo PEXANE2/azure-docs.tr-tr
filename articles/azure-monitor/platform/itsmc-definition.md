@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 072abffcc74b8b060d98c07d1f310413c7b323ef
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: fc0f148da518c718dafaab082f9598ccd4372a1f
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954949"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963819"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>BT Hizmet Yönetimi Bağlayıcısı kullanarak Azure 'ı ıTSM araçlarına bağlama
 
@@ -140,15 +140,15 @@ Eylem grupları oluşturmak için aşağıdaki yordamı kullanın:
             Örneğin:
             1) 3 yapılandırma öğesiyle uyarı 1: A, B, C-3 iş öğesi oluşturur.
             2) 1 yapılandırma öğesiyle uyarı 2: A-1 iş öğesi oluşturur.
-
-        * **"Her yapılandırma öğesi için bireysel çalışma öğeleri Oluştur"** onay kutusunu temizlerseniz ITSM Bağlayıcısı her bir uyarı kuralı için tek bir iş öğesi oluşturur ve bu tüm etkilenen yapılandırma öğelerine eklenir. Önceki biri kapatılmışsa yeni bir iş öğesi oluşturulur.
-        >[!NOTE]
+       >[!NOTE]
         > Bu durumda, tetiklenen uyarıdan bazıları ıTSM aracında yeni iş öğeleri oluşturmaz.
 
-            For example:
-            1) Alert 1 with 3 Configuration Items: A, B, C - will create 1 work item.
-            2) Alert 2 for the same alert rule as phase 1 with 1 Configuration Item: D - will be merged to the work item in phase 1.
-            3) Alert 3 for a different alert rule with 1 Configuration Item: E - will create 1 work item.
+        * **"Her yapılandırma öğesi için bireysel çalışma öğeleri Oluştur"** onay kutusunu temizlerseniz ITSM Bağlayıcısı her bir uyarı kuralı için tek bir iş öğesi oluşturur ve bu tüm etkilenen yapılandırma öğelerine eklenir. Önceki biri kapatılmışsa yeni bir iş öğesi oluşturulur.
+
+            Örneğin:
+             1) 3 yapılandırma öğesiyle uyarı 1: A, B, C-1 iş öğesi oluşturur.
+             2) 1 yapılandırma öğesiyle Phase 1 ile aynı uyarı kuralı için uyarı 2: D-1. aşama içindeki iş öğesiyle birleştirilir.
+             3) 1 yapılandırma öğesiyle farklı bir uyarı kuralı için uyarı 3: E-1 iş öğesi oluşturur.
 
        ![ITSM olay penceresini gösteren ekran görüntüsü.](media/itsmc-overview/itsm-action-configuration.png)
 

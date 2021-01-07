@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/11/2020
 ms.author: jeedes
-ms.openlocfilehash: a282e1be019c697ad15d86df56ad191043ab4ae9
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: b6b8dab3472473082562f1e4c0216886191e4a59
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935855"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97962814"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-netweaver"></a>Öğretici: SAP NetWeaver ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -138,7 +138,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Azure portal, **SAP NetWeaver** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -206,7 +206,7 @@ Bu bölümde, SAP NetWeaver 'e erişim vererek Azure çoklu oturum açma özelli
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ## <a name="configure-sap-netweaver-using-saml"></a>SAML kullanarak SAP NetWeaver yapılandırma
@@ -339,7 +339,7 @@ Bu bölümde, SAP NetWeaver 'e erişim vererek Azure çoklu oturum açma özelli
     ![OAuth 'ı yapılandırma](./media/sapnetweaver-tutorial/oauth03.png)
 
     > [!NOTE]
-    > İleti `soft state status is not supported` – sorun olmadığından yoksayılabilir. Daha fazla ayrıntı için [buraya](https://help.sap.com/doc/saphelp_nw74/7.4.16/1e/c60c33be784846aad62716b4a1df39/content.htm?no_cache=true) bakın
+    > İleti `soft state status is not supported` – sorun olmadığından yoksayılabilir. Daha ayrıntılı bilgi için [buraya](https://help.sap.com/doc/saphelp_nw74/7.4.16/1e/c60c33be784846aad62716b4a1df39/content.htm?no_cache=true)bakın.
 
 ### <a name="create-a-service-user-for-the-oauth-20-client"></a>OAuth 2,0 Istemcisi için bir hizmet kullanıcısı oluşturma
 
@@ -348,7 +348,7 @@ Bu bölümde, SAP NetWeaver 'e erişim vererek Azure çoklu oturum açma özelli
 2. Bir OAuth Istemcisi kaydedilirken, kullanılır `SAML Bearer Grant type` .
 
     >[!NOTE]
-    >Daha fazla ayrıntı için, [burada](https://wiki.scn.sap.com/wiki/display/Security/OAuth+2.0+Client+Registration+for+the+SAML+Bearer+Grant+Type) SAML taşıyıcı verme türü için OAuth 2,0 istemci kaydına başvurun
+    >Daha fazla ayrıntı için, [burada](https://wiki.scn.sap.com/wiki/display/Security/OAuth+2.0+Client+Registration+for+the+SAML+Bearer+Grant+Type)SAML taşıyıcı verme türü için OAuth 2,0 istemci kaydına bakın.
 
 3. TCOD: SU01/Kullanıcı ISTEMCI1 'i oluşturma `System type` ve parola atama, kimlik bilgisini, çağıran koda Kullanıcı adı ile yazmak ısteyen API Programlayıcısının kimlik bilgilerini sağlamak için gereken şekilde kaydedin. Hiçbir profil veya rol atanmalıdır.
 

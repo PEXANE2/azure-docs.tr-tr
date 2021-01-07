@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 1217ecba7a5fcb3c0fc95f505e7ca07fc76129b2
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: f729c00d3b78631a32013ec9453302584cecbd16
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97930829"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97962440"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Kullanılabilirlik Alanları arasında bir Azure Service Fabric kümesi dağıtma
 Azure 'daki Kullanılabilirlik Alanları, uygulamalarınızı ve verilerinizi veri merkezi hatalarından koruyan yüksek kullanılabilirliğe sahip bir tekliftir. Bir kullanılabilirlik alanı, bir Azure bölgesi içinde bağımsız güç, soğutma ve ağ ile donatılmış benzersiz bir fiziksel konumdur.
@@ -344,7 +344,7 @@ Tam örnek şablon [burada](https://github.com/Azure-Samples/service-fabric-clus
 Bir sanal makine ölçek kümesindeki bölgeleri etkinleştirmek için, sanal makine ölçek kümesi kaynağına aşağıdaki üç değeri eklemeniz gerekir.
 
 * İlk değer, sanal makine ölçek kümesinde var olan Kullanılabilirlik Alanları belirten **Zones** özelliğidir.
-* İkinci değer, true olarak ayarlanması gereken "singlePlacementGroup" özelliğidir.
+* İkinci değer, true olarak ayarlanması gereken "singlePlacementGroup" özelliğidir. **3 AZ ' de yayılmış ölçek kümesi, "singlePlacementGroup = true" ile birlikte 300 VM 'ye ölçeklendirebilir.**
 * Üçüncü değer "bölge bakiyesi" ve isteğe bağlıdır; bu, doğru olarak ayarlandıysa katı bölge dengelemesi sağlar. [Bölge Dengeleme](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing)hakkında bilgi edinin.
 * FaultDomain ve UpgradeDomain geçersiz kılmalarını yapılandırmak için gerekli değildir.
 

@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8789015c239aae58ec25f0f644d4c497da477c2b
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 0033b6985313de351ffdaf7028d2c1e9bd76ba72
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881251"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963528"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication için yeniden kimlik doğrulama istemlerini iyileştirin ve oturum ömrünü anlayın
 
@@ -121,7 +121,7 @@ Oturum açma sıklığı ve kalıcı tarayıcı oturumu için koşullu erişim i
 1. **Güvenlik** ve **koşullu erişim**' i seçin.
 1. Bu makalede ayrıntılı olarak önerilen oturum yönetimi seçeneklerini kullanarak bir ilke yapılandırın.
 
-Belirteç ömrünü gözden geçirmek için Azure AD [PowerShell 'i kullanarak Azure AD ilkelerini sorgulayın](../develop/configure-token-lifetimes.md#prerequisites). Yerinde olan tüm ilkeleri devre dışı bırakın.
+Belirteç ömrünü gözden geçirmek için Azure AD [PowerShell 'i kullanarak Azure AD ilkelerini sorgulayın](../develop/configure-token-lifetimes.md#get-started). Yerinde olan tüm ilkeleri devre dışı bırakın.
 
 Kiracınızda birden fazla ayar etkinse, sizin için kullanılabilir lisanslama temelinde ayarlarınızı güncelleştirmenizi öneririz. Örneğin, Azure AD Premium lisanslarınız varsa, yalnızca *oturum açma sıklığı* ve *kalıcı tarayıcı oturumunun* koşullu erişim ilkesini kullanmanız gerekir. Microsoft 365 uygulamalarınız veya Azure AD ücretsiz lisanslarınız varsa, *oturum açmış durumda kaldı?* yapılandırmasını kullanmanız gerekir.
 

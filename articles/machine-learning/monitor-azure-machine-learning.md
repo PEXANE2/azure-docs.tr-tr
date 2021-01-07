@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/01/2020
-ms.openlocfilehash: a77f9c8f7e37d2c5a040a48b6bd96bef11d51f14
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 183d8b415ccb35d22dcc23ccf11d0707ad0778dd
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533489"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963664"
 ---
 # <a name="monitor-azure-machine-learning"></a>Azure Machine Learning'i izleme
 
@@ -91,6 +91,8 @@ Azure Machine Learning tüm ölçümler, **Machine Learning hizmet çalışma** 
 
 Başvuru için, [Azure izleyici 'de desteklenen tüm kaynak ölçümlerinin](../azure-monitor/platform/metrics-supported.md)bir listesini görebilirsiniz.
 
+> [!TIP]
+> Azure Izleyici ölçüm verileri 90 gün boyunca kullanılabilir. Ancak grafik oluştururken yalnızca 30 gün görselleştirilebilir. Örneğin, 90 günlük bir dönemi görselleştirmek istiyorsanız, bu alanı 90 gün süresince 30 günlük üç grafik içine kesmeniz gerekir.
 ### <a name="filtering-and-splitting"></a>Filtreleme ve bölme
 
 Boyutları destekleyen ölçümler için bir boyut değeri kullanarak filtre uygulayabilirsiniz. Örneğin, bir **küme adı** Için **etkin çekirdekleri** filtreleme `cpu-cluster` . 

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f2d55d1fcc92abdc629581d6e4d277ec0294dce0
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 8e657386c417ce3407aea9b3765419e1d2b70bb9
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858697"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97962457"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Windows 'da Azure dosyaları sorunlarını giderme (SMB)
 
@@ -126,7 +126,7 @@ Azure dosyaları da SMB 'ye ek olarak REST 'i destekler. REST erişimi, 443 numa
 
 İstemcide NTLMv1 iletişimi etkinse sistem hatası 53 veya sistem hatası 87 oluşur. Azure Dosyalar yalnızca NTLMv2 kimlik doğrulamasını destekler. NTLMv1'in etkinleştirilmesi daha az güvenli bir istemci oluşturur. Bu nedenle Azure Dosyalar için iletişim engellenir. 
 
-Hatanın nedeninin bu olup olmadığını saptamak için aşağıdaki kayıt defteri alt anahtarının 3 değerine ayarlandığını doğrulayın:
+Hatanın nedeni olup olmadığını anlamak için, aşağıdaki kayıt defteri alt anahtarının 3 ' ten küçük bir değere ayarlandığını doğrulayın:
 
 **HKLM\SYSTEM\CurrentControlSet\Control\Lsa > LmCompatibilityLevel**
 

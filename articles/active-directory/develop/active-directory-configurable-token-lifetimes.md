@@ -1,7 +1,7 @@
 ---
 title: Yapılandırılabilir belirteç yaşam süreleri
 titleSuffix: Microsoft identity platform
-description: Microsoft Identity platform tarafından verilen belirteçler için yaşam sürelerini ayarlamayı öğrenin.
+description: Microsoft Identity platform tarafından verilen erişim, SAML ve KIMLIK belirteçleri için yaşam sürelerini ayarlamayı öğrenin.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -9,65 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/14/2020
+ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: f73186612fe79af88e84956bb4d0f0b374f4c986
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ecd7c3b034a65fa239248bf0e286181475376da2
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507804"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963488"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft Identity platformunda yapılandırılabilir belirteç yaşam süreleri (Önizleme)
 
-> [!IMPORTANT]
-> 2020 Mayıs 'tan sonra, kiracılar artık yenileme ve oturum belirteci yaşam sürelerini yapılandıramayacak.  Azure Active Directory, 30 Ocak 2021 ' den sonra ilkelerde bulunan mevcut yenileme ve oturum belirteci yapılandırmasını durdurur. Kullanımdan kaldırıldıktan sonra erişim belirteci yaşam sürelerini yapılandırabilirsiniz.
->
-> Bir kullanıcının yeniden oturum açması istenmeden önce geçen süreyi tanımlamaya devam etmeniz gerekiyorsa, koşullu erişimde oturum açma sıklığını yapılandırın. Koşullu erişim hakkında daha fazla bilgi edinmek için [kimlik doğrulama oturumu yönetimini koşullu erişimle yapılandırma](/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)makalesini ziyaret edin.
->
-> Kullanımdan kaldırma tarihinden sonra koşullu erişim kullanmak istemediğiniz kiracılar için, Azure AD 'nin bir sonraki bölümde özetlenen varsayılan yapılandırmayı kabul edebilecekleri bir işlem olabilir.
-
-## <a name="configurable-token-lifetime-properties-after-the-retirement"></a>Kullanımdan kaldırıldıktan sonra yapılandırılabilir belirteç ömrü özellikleri
-Yenileme ve oturum belirteci yapılandırması aşağıdaki özelliklerden ve sırasıyla ayarlanan değerleriyle etkilenir. Yenileme ve oturum belirteci yapılandırması kullanımdan kaldırıldıktan sonra, ilkelerin özel değerler yapılandırılmış özel değerler mi olduğunu bağımsız olarak, Azure AD yalnızca aşağıda açıklanan varsayılan değeri kabul eder. Devre dışı bırakma sonrasında erişim belirteci yaşam sürelerini yapılandırmaya devam edebilirsiniz. 
-
-|Özellik   |İlke Özellik dizesi    |Ekranlarını |Varsayılan |
-|----------|-----------|------------|------------|
-|Yenileme belirteci en fazla etkin olmayan süre |Maxınactivetime  |Belirteçleri Yenile |90 gün  |
-|Single-Factor yenileme belirtecinin en fazla yaşı  |Maxagesinglefaktör  |Belirteçleri Yenile (tüm kullanıcılar için)  |İptal edilene kadar  |
-|Multi-Factor Refresh belirtecinin en fazla yaşı  |MaxAgeMultiFactor  |Belirteçleri Yenile (tüm kullanıcılar için) |180 gün  |
-|Single-Factor oturum belirtecinin maksimum yaşı  |Maxagesessionsinglefaktör |Oturum belirteçleri (kalıcı ve kalıcı olmayan)  |İptal edilene kadar |
-|Multi-Factor Session belirtecinin en fazla yaşı  |MaxAgeSessionMultiFactor  |Oturum belirteçleri (kalıcı ve kalıcı olmayan)  |180 gün |
-
-## <a name="identify-configuration-in-scope-of-retirement"></a>Kullanımdan kaldırma kapsamında yapılandırmayı tanımla
-
-Başlamak için aşağıdaki adımları uygulayın:
-
-1. En son [Azure AD PowerShell modülü genel önizleme sürümünü](https://www.powershellgallery.com/packages/AzureADPreview)indirin.
-1. `Connect`Azure AD yönetici hesabınızda oturum açmak için komutunu çalıştırın. Her yeni oturumu başlattığınızda bu komutu çalıştırın.
-
-    ```powershell
-    Connect-AzureAD -Confirm
-    ```
-
-1. Kuruluşunuzda oluşturulan tüm ilkeleri görmek için [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) cmdlet 'ini çalıştırın.  Yukarıda listelenen varsayılandan farklı olarak tanımlanmış özellik değerleri olan sonuçlar, emeklilik kapsamıdır.
-
-    ```powershell
-    Get-AzureADPolicy -All
-    ```
-
-1. Belirlediğiniz belirli bir ilkeye bağlı olan uygulamaları ve hizmet sorumlularını görmek için, aşağıdaki [Get-AzureADPolicyAppliedObject](/powershell/module/azuread/get-azureadpolicyappliedobject?view=azureadps-2.0-preview&preserve-view=true) cmdlet 'ini çalıştırarak **1a37dad8-5dad7-4cc8-87c7-efbc0326cf20** ' i ilke kimliklerinizle değiştirin. Daha sonra koşullu erişim oturum açma sıklığını yapılandırıp yapılandırmamaya veya Azure AD varsayılanları ile kalmaya karar verebilirsiniz.
-
-    ```powershell
-    Get-AzureADPolicyAppliedObject -id 1a37dad8-5da7-4cc8-87c7-efbc0326cf20
-    ```
-
-Kiracınızda yenileme ve oturum belirteci yapılandırma özellikleri için özel değerler tanımlayan ilkeler varsa, Microsoft bu ilkeleri yukarıda belirtilen Varsayılanları yansıtan değerlere güncelleştirmenizi önerir. Hiçbir değişiklik yapılgerekmediğinden, Azure AD varsayılan değerleri otomatik olarak kabul eder.  
-
-## <a name="overview"></a>Genel Bakış
-
-Microsoft Identity platform tarafından verilen belirtecin ömrünü belirtebilirsiniz. Kuruluşunuzdaki tüm uygulamalar, çok kiracılı (çok kuruluşlu) bir uygulama veya belirli bir hizmet sorumlusu için belirteç ömrünü ayarlayabilirsiniz. Ancak, şu anda [yönetilen kimlik hizmeti sorumluları](../managed-identities-azure-resources/overview.md)için belirteç yaşam sürelerini yapılandırmayı desteklemiyoruz.
+Microsoft Identity platform tarafından verilen erişim, KIMLIK veya SAML belirtecinin ömrünü belirtebilirsiniz. Kuruluşunuzdaki tüm uygulamalar, çok kiracılı (çok kuruluşlu) bir uygulama veya belirli bir hizmet sorumlusu için belirteç ömrünü ayarlayabilirsiniz. Ancak, şu anda [yönetilen kimlik hizmeti sorumluları](../managed-identities-azure-resources/overview.md)için belirteç yaşam sürelerini yapılandırmayı desteklemiyoruz.
 
 Azure AD 'de bir ilke nesnesi, tek tek uygulamalarda veya bir kuruluştaki tüm uygulamalarda zorlanan bir kurallar kümesini temsil eder. Her ilke türünün, atandıkları nesnelere uygulanan bir özellikler kümesi ile benzersiz bir yapısı vardır.
 
@@ -79,13 +34,19 @@ Bir ilkeyi kuruluşunuz için varsayılan ilke olarak belirleyebilirsiniz. İlke
 > Yapılandırılabilir belirteç ömür ilkesi yalnızca SharePoint Online ve OneDrive Iş kaynaklarına erişen mobil ve Masaüstü istemcilerine uygulanır ve Web tarayıcı oturumları için geçerli değildir.
 > SharePoint Online ve OneDrive Iş için Web tarayıcısı oturumlarının ömrünü yönetmek üzere [koşullu erişim oturumu ömrü](../conditional-access/howto-conditional-access-session-lifetime.md) özelliğini kullanın. Boş oturum zaman aşımlarını yapılandırma hakkında daha fazla bilgi edinmek için [SharePoint Online bloguna](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208) bakın.
 
-## <a name="token-types"></a>Belirteç türleri
+## <a name="license-requirements"></a>Lisans gereksinimleri
 
-Yenileme belirteçleri, erişim belirteçleri, SAML belirteçleri, oturum belirteçleri ve KIMLIK belirteçleri için belirteç ömür ilkeleri ayarlayabilirsiniz.
+Bu özelliğin kullanılması için Azure AD Premium P1 lisansı gerekir. Gereksinimleriniz için doğru lisans bulmak için bkz. [ücretsiz ve Premium sürümlerin genel kullanıma sunulan özelliklerini karşılaştırma](https://azure.microsoft.com/pricing/details/active-directory/).
+
+[Microsoft 365 iş lisanslarına](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) sahip müşterilerin koşullu erişim özelliklerine de erişimi vardır.
+
+## <a name="token-lifetime-policies-for-access-saml-and-id-tokens"></a>Erişim, SAML ve KIMLIK belirteçleri için belirteç ömür ilkeleri
+
+Erişim belirteçleri, SAML belirteçleri ve KIMLIK belirteçleri için belirteç ömür ilkeleri ayarlayabilirsiniz. 
 
 ### <a name="access-tokens"></a>Erişim belirteçleri
 
-İstemciler korumalı bir kaynağa erişmek için erişim belirteçlerini kullanır. Erişim belirteci, yalnızca belirli bir Kullanıcı, istemci ve kaynak birleşimi için kullanılabilir. Erişim belirteçleri iptal edilemez ve süresi sona ermeden geçerli olur. Erişim belirteci elde eden kötü niyetli bir aktör bunu yaşam süresinin kapsamı için kullanabilir. Erişim belirtecinin kullanım süresini ayarlamak, sistem performansını artırma ve kullanıcının hesabı devre dışı bırakıldıktan sonra istemcinin erişimi koruduğunu geçen süreyi artırma arasında bir denge. Gelişmiş sistem performansı, bir istemcinin yeni bir erişim belirteci almak için ihtiyaç duymasının kaç kez daha fazla azaltılmasıyla elde edilir.  Varsayılan değer 1 saattir-1 saat sonra, istemcinin yenileme belirtecini kullanması (genellikle sessizce) yeni bir yenileme belirteci ve erişim belirteci almaları gerekir. 
+İstemciler korumalı bir kaynağa erişmek için erişim belirteçlerini kullanır. Erişim belirteci, yalnızca belirli bir Kullanıcı, istemci ve kaynak birleşimi için kullanılabilir. Erişim belirteçleri iptal edilemez ve süresi sona ermeden geçerli olur. Erişim belirteci elde eden kötü niyetli bir aktör bunu yaşam süresinin kapsamı için kullanabilir. Erişim belirtecinin kullanım süresini ayarlamak, sistem performansını artırma ve kullanıcının hesabı devre dışı bırakıldıktan sonra istemcinin erişimi koruduğunu geçen süreyi artırma arasında bir denge. Gelişmiş sistem performansı, bir istemcinin yeni bir erişim belirteci almak için ihtiyaç duymasının kaç kez daha fazla azaltılmasıyla elde edilir.  Varsayılan değer 1 saattir-1 saat sonra, istemcinin yenileme belirtecini kullanması (genellikle sessizce) yeni bir yenileme belirteci ve erişim belirteci almaları gerekir.
 
 ### <a name="saml-tokens"></a>SAML belirteçleri
 
@@ -94,6 +55,38 @@ SAML belirteçleri, Web tabanlı birçok SAAS uygulaması tarafından kullanıl�
 NotOnOrAfter değeri, `AccessTokenLifetime` içindeki parametresi kullanılarak değiştirilebilir `TokenLifetimePolicy` . Varsa, ilkede yapılandırılan yaşam süresine ayarlanır ve beş dakikalık bir saat eğriltme faktörü olur.
 
 Öğesinde belirtilen konu onayı NotOnOrAfter, `<SubjectConfirmationData>` belirteç ömür yapılandırmasından etkilenmez. 
+
+### <a name="id-tokens"></a>Kimlik belirteçleri
+
+KIMLIK belirteçleri Web sitelerine ve yerel istemcilere geçirilir. KIMLIK belirteçleri bir kullanıcıyla ilgili profil bilgilerini içerir. KIMLIK belirteci, belirli bir Kullanıcı ve istemci birleşimine bağlanır. KIMLIK belirteçleri, süresi doluncaya kadar geçerli kabul edilir. Genellikle, bir Web uygulaması, kullanıcının uygulamadaki oturum ömrünü Kullanıcı için verilen KIMLIK belirtecinin ömrü boyunca eşleştirir. Web uygulamasının uygulama oturumunun ne sıklıkta dolacağını ve kullanıcının Microsoft Identity platformu ile yeniden kimlik doğrulaması gerektirdiğini denetlemek için bir KIMLIK belirtecinin ömrünü ayarlayabilirsiniz (sessizce veya etkileşimli olarak).
+
+### <a name="token-lifetime-policy-properties"></a>Belirteç ömür ilkesi özellikleri
+
+Belirteç ömür ilkesi, belirteç ömrü kurallarını içeren bir ilke nesnesi türüdür. Bu ilke, bu kaynak için ne kadar erişim, SAML ve KIMLIK belirteçleri geçerli kabul edileceğini denetler. İlke ayarlanmamışsa, sistem varsayılan yaşam süresi değerini uygular. 
+
+Erişim belirteci yaşam süresi özelliğinin azaltılması, bir erişim belirtecinin veya kötü amaçlı aktör tarafından uzun bir süre için kullanılan KIMLIK belirtecinin riskini azaltır. (Bu belirteçler iptal edilemez.) Bu konuda, belirteçlerin daha sık değiştirilmeleri gerektiğinden, performansın olumsuz bir şekilde etkilenmesi önemlidir.
+
+Bir örnek için bkz. [Web oturumu için Ilke oluşturma](configure-token-lifetimes.md#create-a-policy-for-web-sign-in).
+
+| Özellik | İlke Özellik dizesi | Ekranlarını | Varsayılan | Minimum | Maksimum |
+| --- | --- | --- | --- | --- | --- |
+| Erişim belirteci ömrü |AccessTokenLifetime |Erişim belirteçleri, KIMLIK belirteçleri, SAML2 belirteçleri |1 saat |10 dakika |1 gün |
+
+> [!NOTE]
+> Microsoft ekipleri web istemcisinin çalıştığından emin olmak için, Microsoft ekipleri için AccessTokenLifetime 'ın 15 dakikadan fazla tutulması önerilir.
+
+## <a name="token-lifetime-policies-for-refresh-tokens-and-session-tokens"></a>Belirteçleri ve oturum belirteçlerini yenileme için belirteç ömür ilkeleri
+
+Belirteçleri ve oturum belirteçlerini yenileme belirteçleri için belirteç ömür ilkeleri ayarlayabilirsiniz.
+
+> [!IMPORTANT]
+> Mayıs 2020 itibariyle yeni kiracılar yenileme ve oturum belirteci yaşam sürelerini yapılandıramaz.  Mevcut yapılandırmaya sahip kiracılar, 30 Ocak 2021 ' ye kadar yenileme ve oturum belirteci ilkelerini değiştirebilir.   Azure Active Directory, 30 Ocak 2021 ' den sonra ilkelerde bulunan mevcut yenileme ve oturum belirteci yapılandırmasını durdurur. Kullanımdan sonra erişimi, SAML ve KIMLIK belirteci yaşam sürelerini yapılandırabilirsiniz.
+>
+> Bir kullanıcının yeniden oturum açması istenmeden önce geçen süreyi tanımlamaya devam etmeniz gerekiyorsa, koşullu erişimde oturum açma sıklığını yapılandırın. Koşullu erişim hakkında daha fazla bilgi edinmek için [koşullu erişimle kimlik doğrulama oturumu yönetimini yapılandırma](/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)makalesini okuyun.
+>
+> Kullanımdan kaldırma tarihinden sonra koşullu erişim kullanmak istemiyorsanız, yenileme ve oturum belirteçleriniz bu tarih için [varsayılan yapılandırmaya](#configurable-token-lifetime-properties-after-the-retirement) ayarlanır ve artık yaşam sürelerini değiştiremeyeceksiniz.
+
+:::image type="content" source="./media/active-directory-configurable-token-lifetimes/roadmap.svg" alt-text="Kullanımdan kaldırma bilgileri":::
 
 ### <a name="refresh-tokens"></a>Belirteçleri Yenile
 
@@ -111,9 +104,6 @@ Ortak istemciler, bir istemci parolasını (gizli) güvenli bir şekilde depolay
 > [!NOTE]
 > Maksimum yaş özelliği, tek bir belirtecin kullanılabileceği sürenin uzunluğudur. 
 
-### <a name="id-tokens"></a>Kimlik belirteçleri
-KIMLIK belirteçleri Web sitelerine ve yerel istemcilere geçirilir. KIMLIK belirteçleri bir kullanıcıyla ilgili profil bilgilerini içerir. KIMLIK belirteci, belirli bir Kullanıcı ve istemci birleşimine bağlanır. KIMLIK belirteçleri, süresi doluncaya kadar geçerli kabul edilir. Genellikle, bir Web uygulaması, kullanıcının uygulamadaki oturum ömrünü Kullanıcı için verilen KIMLIK belirtecinin ömrü boyunca eşleştirir. Web uygulamasının uygulama oturumunun ne sıklıkta dolacağını ve kullanıcının Microsoft Identity platformu ile yeniden kimlik doğrulaması gerektirdiğini (sessizce veya etkileşimli) denetlemek için bir KIMLIK belirtecinin ömrünü ayarlayabilirsiniz.
-
 ### <a name="single-sign-on-session-tokens"></a>Çoklu oturum açma oturum belirteçleri
 Bir Kullanıcı Microsoft Identity platformu ile kimlik doğruladığında, kullanıcının tarayıcısı ve Microsoft Identity platformu ile çoklu oturum açma oturumu (SSO) oluşturulur. Bir tanımlama bilgisi biçimindeki SSO belirteci bu oturumu temsil eder. SSO oturum belirteci belirli bir kaynak/istemci uygulamasına bağlanmamış. SSO oturum belirteçleri iptal edilebilir ve bunların geçerlilik süresi her kullanıldığında denetlenir.
 
@@ -123,13 +113,12 @@ Kalıcı olmayan oturum belirteçlerinin 24 saat ömrü vardır. Kalıcı belirt
 
 Oturum belirtecinin artık kabul edilmeden önce ilk oturum belirtecinin verilme zamanından sonraki süreyi ayarlamak için bir ilke kullanabilirsiniz. (Bunu yapmak için, oturum belirteci en yüksek yaş özelliğini kullanın.) Bir Web uygulaması kullanılırken sessizce kimlik doğrulamasından geçmek yerine, bir kullanıcının kimlik bilgilerini ne zaman ve ne sıklıkta yeniden girmesi gerektiğini denetlemek için bir oturum belirtecinin ömrünü ayarlayabilirsiniz.
 
-### <a name="token-lifetime-policy-properties"></a>Belirteç ömür ilkesi özellikleri
+### <a name="refresh-and-session-token-lifetime-policy-properties"></a>Yenileme ve oturum belirteci ömür ilkesi özellikleri
 Belirteç ömür ilkesi, belirteç ömrü kurallarını içeren bir ilke nesnesi türüdür. Belirtilen belirteç ömrünü denetlemek için ilkenin özelliklerini kullanın. İlke ayarlanmamışsa, sistem varsayılan yaşam süresi değerini uygular.
 
-### <a name="configurable-token-lifetime-properties"></a>Yapılandırılabilir belirteç ömrü özellikleri
+#### <a name="configurable-token-lifetime-properties"></a>Yapılandırılabilir belirteç ömrü özellikleri
 | Özellik | İlke Özellik dizesi | Ekranlarını | Varsayılan | Minimum | Maksimum |
 | --- | --- | --- | --- | --- | --- |
-| Erişim belirteci ömrü |AccessTokenLifetime<sup>2</sup> |Erişim belirteçleri, KIMLIK belirteçleri, SAML2 belirteçleri |1 saat |10 dakika |1 gün |
 | Yenileme belirteci en fazla etkin olmayan süre |Maxınactivetime |Belirteçleri Yenile |90 gün |10 dakika |90 gün |
 | Single-Factor yenileme belirtecinin en fazla yaşı |Maxagesinglefaktör |Belirteçleri Yenile (tüm kullanıcılar için) |İptal edilene kadar |10 dakika |Until-iptal edildi<sup>1</sup> |
 | Multi-Factor Refresh belirtecinin en fazla yaşı |MaxAgeMultiFactor |Belirteçleri Yenile (tüm kullanıcılar için) | 180 gün |10 dakika |180 gün<sup>1</sup> |
@@ -137,9 +126,8 @@ Belirteç ömür ilkesi, belirteç ömrü kurallarını içeren bir ilke nesnesi
 | Multi-Factor Session belirtecinin en fazla yaşı |MaxAgeSessionMultiFactor |Oturum belirteçleri (kalıcı ve kalıcı olmayan) | 180 gün |10 dakika | 180 gün<sup>1</sup> |
 
 * <sup>1</sup>365 gün, bu öznitelikler için ayarlanoluşturulabilecek maksimum açık uzunluktadır.
-* <sup>2</sup> Microsoft ekipleri web istemcisinin çalıştığından emin olmak için, Microsoft ekipleri için AccessTokenLifetime 'ın 15 dakikadan fazla tutulması önerilir.
 
-### <a name="exceptions"></a>Özel durumlar
+#### <a name="exceptions"></a>Özel durumlar
 | Özellik | Ekranlarını | Varsayılan |
 | --- | --- | --- |
 | Yenileme belirteci maksimum yaşı (yetersiz iptal bilgileri<sup>1</sup>olan Federasyon kullanıcıları için verilir) |Belirteçleri Yenile (yetersiz iptal bilgileri<sup>1</sup>olan Federasyon kullanıcıları için verilir) |12 saat |
@@ -148,52 +136,9 @@ Belirteç ömür ilkesi, belirteç ömrü kurallarını içeren bir ilke nesnesi
 
 * <sup>1</sup> yetersiz iptal bilgisine sahip olan Federasyon kullanıcıları, "LastPasswordChangeTimestamp" özniteliği eşitlenmemiş tüm kullanıcıları içerir. Azure Active Directory eski bir kimlik bilgisine bağlı olan belirteçlerin iptal edileceği zamanı doğrulayamadığından ve Kullanıcı ve ilişkili belirteçlerin hala iyi durumda olduğundan emin olmak için daha sık kontrol etmeleri gereken bu kullanıcılara bu kısa maksimum yaş verilir. Bu deneyimi geliştirmek için, kiracı yöneticilerinin "LastPasswordChangeTimestamp" özniteliğini eşitlediklerinden emin olması gerekir (Bu, PowerShell kullanılarak veya AADSync aracılığıyla Kullanıcı nesnesinde ayarlanabilir).
 
-### <a name="policy-evaluation-and-prioritization"></a>İlke değerlendirmesi ve önceliği belirleme
-Belirli bir uygulamaya, kuruluşunuza ve hizmet sorumlularına bir belirteç ömür İlkesi oluşturup bu ilke atayabilirsiniz. Belirli bir uygulama için birden çok ilke uygulanabilir. Geçerli olan belirteç ömrü ilkesi şu kurallara uyar:
+### <a name="configurable-policy-property-details"></a>Yapılandırılabilir ilke özelliği ayrıntıları
 
-* Bir ilke hizmet sorumlusuna açıkça atanmışsa, zorlanır.
-* Hizmet sorumlusuna açıkça bir ilke atanmamışsa, hizmet sorumlusunun ana kuruluşa açıkça atanan bir ilke zorlanır.
-* Hizmet sorumlusuna veya kuruluşa açıkça bir ilke atanmamışsa, uygulamaya atanan ilke zorlanır.
-* Hizmet sorumlusuna, kuruluşa veya uygulama nesnesine bir ilke atanmamışsa, varsayılan değerler zorlanır. ( [Yapılandırılabilir belirteç ömrü özelliklerindeki](#configurable-token-lifetime-properties)tabloya bakın.)
-
-Uygulama nesneleri ve hizmet sorumlusu nesneleri arasındaki ilişki hakkında daha fazla bilgi için, bkz. [Azure Active Directory uygulama ve hizmet sorumlusu nesneleri](app-objects-and-service-principals.md).
-
-Belirtecin geçerliliği, belirtecin kullanıldığı sırada değerlendirilir. Erişildiği uygulama üzerinde en yüksek önceliğe sahip ilke devreye girer.
-
-Burada kullanılan tüm zaman dilimlerini C# [TimeSpan](/dotnet/api/system.timespan) nesnesine göre biçimlendirilir-D. hh: mm: ss.  Bu nedenle 80 gün ve 30 dakika olabilir `80.00:30:00` .  0 olduğunda önde gelen D bırakılabilir, bu nedenle 90 dakika olur `00:90:00` .  
-
-> [!NOTE]
-> İşte örnek bir senaryo.
->
-> Kullanıcı iki Web uygulamasına erişmek istiyor: Web uygulaması A ve Web uygulaması B.
-> 
-> Etmen
-> * Her iki Web uygulaması da aynı ana kuruluştur.
-> * Bir oturum belirteci en fazla sekiz saat olan belirteç ömür Ilkesi 1, ana kuruluşun varsayılan değeri olarak ayarlanır.
-> * Web uygulaması, düzenli olarak kullanılan bir Web uygulamasıdır ve hiçbir ilkeye bağlanmaz.
-> * Web uygulaması B, son derece duyarlı süreçler için kullanılır. Hizmet sorumlusu, en fazla 30 dakikalık bir oturum belirteci olan belirteç ömür Ilkesi 2 ' ye bağlıdır.
->
-> 12:00 PM 'de Kullanıcı yeni bir tarayıcı oturumu başlatır ve Web uygulamasına erişmeye çalışır. Kullanıcı Microsoft Identity platformu 'na yönlendirilir ve oturum açması istenir. Bu, tarayıcıda oturum belirtecine sahip bir tanımlama bilgisi oluşturur. Kullanıcı, kullanıcının uygulamaya erişmesine izin veren bir KIMLIK belirteciyle bir Web uygulamasına yeniden yönlendirilir.
->
-> 12:15 ' de, Kullanıcı B Web uygulamasına erişmeye çalışır. Tarayıcı, oturum tanımlama bilgisini algılayan Microsoft Identity platform 'a yeniden yönlendirir. Web uygulaması B 'nin hizmet sorumlusu, belirteç ömür Ilkesi 2 ' ye bağlıdır, ancak aynı zamanda üst kuruluşun bir parçasıdır ve varsayılan belirteç yaşam süresi Ilke 1 ' dir. Belirteç yaşam süresi Ilkesi 2, hizmet sorumlularıyla bağlantılı ilkelerin kuruluş varsayılan ilkelerine kıyasla daha yüksek bir önceliğe sahip olduğu için devreye girer. Oturum belirteci ilk olarak son 30 dakika içinde verildi, bu nedenle geçerli kabul edilir. Kullanıcı, erişim izni veren bir KIMLIK belirteciyle B Web uygulamasına yeniden yönlendirilir.
->
-> 1:00 ' de, Kullanıcı A Web uygulamasına erişmeyi dener. Kullanıcı Microsoft Identity platform 'a yönlendirilir. A Web uygulaması hiçbir ilkeyle bağlantılı değildir, ancak varsayılan belirteç ömür Ilkesi 1 olan bir kuruluşta olduğundan, bu ilke geçerli olur. Son sekiz saat içinde ilk olarak verilen oturum tanımlama bilgisi algılanır. Kullanıcı yeni bir KIMLIK belirteci ile sessizce Web uygulamasına geri yönlendirilir. Kullanıcının kimlik doğrulaması için gerekli değildir.
->
-> Daha sonra Kullanıcı, B Web uygulamasına erişmeye çalışır. Kullanıcı Microsoft Identity platform 'a yönlendirilir. Daha önce olduğu gibi, belirteç ömür Ilkesi 2 etkili olur. Belirteç 30 dakikadan önce verildiği için kullanıcıdan oturum açma kimlik bilgilerini yeniden girmesi istenir. Yepyeni bir oturum belirteci ve KIMLIK belirteci verilir. Kullanıcı daha sonra B Web uygulamasına erişebilir.
->
->
-
-## <a name="configurable-policy-property-details"></a>Yapılandırılabilir ilke özelliği ayrıntıları
-### <a name="access-token-lifetime"></a>Erişim belirteci ömrü
-**Dize:** AccessTokenLifetime
-
-**Şunları etkiler:** Erişim belirteçleri, KIMLIK belirteçleri, SAML belirteçleri
-
-**Özet:** Bu ilke, bu kaynak için ne kadar erişimin ve KIMLIK belirteçlerinin geçerli kabul edileceğini denetler. Erişim belirteci yaşam süresi özelliğinin azaltılması, bir erişim belirtecinin veya kötü amaçlı aktör tarafından uzun bir süre için kullanılan KIMLIK belirtecinin riskini azaltır. (Bu belirteçler iptal edilemez.) Bu konuda, belirteçlerin daha sık değiştirilmeleri gerektiğinden, performansın olumsuz bir şekilde etkilenmesi önemlidir.
-
-Bir örnek için bkz. [Web oturumu için Ilke oluşturma](configure-token-lifetimes.md#create-a-policy-for-web-sign-in).
-
-### <a name="refresh-token-max-inactive-time"></a>Yenileme belirteci en fazla etkin olmayan süre
+#### <a name="refresh-token-max-inactive-time"></a>Yenileme belirteci en fazla etkin olmayan süre
 **Dize:** Maxınactivetime
 
 **Şunları etkiler:** Belirteçleri Yenile
@@ -206,7 +151,7 @@ Yenileme belirteci en fazla etkin olmayan süre özelliği, Single-Factor belirt
 
 Bir örnek için bkz. [bir Web API 'si çağıran yerel uygulama için Ilke oluşturma](configure-token-lifetimes.md#create-a-policy-for-a-native-app-that-calls-a-web-api).
 
-### <a name="single-factor-refresh-token-max-age"></a>Single-Factor yenileme belirtecinin en fazla yaşı
+#### <a name="single-factor-refresh-token-max-age"></a>Single-Factor yenileme belirtecinin en fazla yaşı
 **Dize:** Maxagesinglefaktör
 
 **Şunları etkiler:** Belirteçleri Yenile
@@ -217,7 +162,7 @@ Maksimum yaşı azaltmak, kullanıcıların daha sık kimlik doğrulamasından g
 
 Bir örnek için bkz. [bir Web API 'si çağıran yerel uygulama için Ilke oluşturma](configure-token-lifetimes.md#create-a-policy-for-a-native-app-that-calls-a-web-api).
 
-### <a name="multi-factor-refresh-token-max-age"></a>Multi-Factor Refresh belirtecinin en fazla yaşı
+#### <a name="multi-factor-refresh-token-max-age"></a>Multi-Factor Refresh belirtecinin en fazla yaşı
 **Dize:** MaxAgeMultiFactor
 
 **Şunları etkiler:** Belirteçleri Yenile
@@ -228,7 +173,7 @@ Maksimum yaşı azaltmak, kullanıcıların daha sık kimlik doğrulamasından g
 
 Bir örnek için bkz. [bir Web API 'si çağıran yerel uygulama için Ilke oluşturma](configure-token-lifetimes.md#create-a-policy-for-a-native-app-that-calls-a-web-api).
 
-### <a name="single-factor-session-token-max-age"></a>Single-Factor oturum belirtecinin maksimum yaşı
+#### <a name="single-factor-session-token-max-age"></a>Single-Factor oturum belirtecinin maksimum yaşı
 **Dize:** Maxagesessionsinglefaktör
 
 **Şunları etkiler:** Oturum belirteçleri (kalıcı ve kalıcı olmayan)
@@ -239,7 +184,7 @@ Maksimum yaşı azaltmak, kullanıcıların daha sık kimlik doğrulamasından g
 
 Bir örnek için bkz. [Web oturumu için Ilke oluşturma](configure-token-lifetimes.md#create-a-policy-for-web-sign-in).
 
-### <a name="multi-factor-session-token-max-age"></a>Multi-Factor Session belirtecinin en fazla yaşı
+#### <a name="multi-factor-session-token-max-age"></a>Multi-Factor Session belirtecinin en fazla yaşı
 **Dize:** MaxAgeSessionMultiFactor
 
 **Şunları etkiler:** Oturum belirteçleri (kalıcı ve kalıcı olmayan)
@@ -247,6 +192,52 @@ Bir örnek için bkz. [Web oturumu için Ilke oluşturma](configure-token-lifeti
 **Özet:** Bu ilke, bir kullanıcının birden çok faktör kullanarak başarıyla kimlik doğrulamasından geçtikten sonra yeni bir KIMLIK ve oturum belirteci almak için oturum belirtecini ne kadar süreyle kullanabileceğinizi denetler. Kullanıcı kimlik doğrulamasından ve yeni bir oturum belirtecini aldıktan sonra, Kullanıcı, belirtilen süre boyunca oturum belirteci akışını kullanabilir. (Geçerli oturum belirteci iptal edilmediği ve süresi dolmamış olduğu sürece bu doğrudur.) Belirtilen süre geçtikten sonra, Kullanıcı yeni bir oturum belirteci almak için yeniden kimlik doğrulaması yapmak üzere zorlanır.
 
 Maksimum yaşı azaltmak, kullanıcıların daha sık kimlik doğrulamasından geçmesini zorlar. Tek faktörlü kimlik doğrulaması Multi-Factor Authentication 'dan daha az güvenli kabul edildiğinden, bu özelliği Single-Factor oturum belirteci en yüksek yaş özelliğinden eşit veya ondan daha büyük bir değere ayarlamanızı öneririz.
+
+## <a name="configurable-token-lifetime-properties-after-the-retirement"></a>Kullanımdan kaldırıldıktan sonra yapılandırılabilir belirteç ömrü özellikleri
+Yenileme ve oturum belirteci yapılandırması aşağıdaki özelliklerden ve sırasıyla ayarlanan değerleriyle etkilenir. 30 Ocak 2021 tarihinde yenileme ve oturum belirteci yapılandırması kullanımdan kaldırıldıktan sonra, Azure AD yalnızca aşağıda açıklanan varsayılan değerleri kabul eder. Oturum açma sıklığını yönetmek için koşullu erişimi kullanmamaya karar verirseniz yenileme ve oturum belirteçleriniz bu tarih için varsayılan yapılandırmaya ayarlanır ve artık yaşam sürelerini değiştiremeyeceksiniz.  
+
+|Özellik   |İlke Özellik dizesi    |Ekranlarını |Varsayılan |
+|----------|-----------|------------|------------|
+|Erişim belirteci ömrü |AccessTokenLifetime |Erişim belirteçleri, KIMLIK belirteçleri, SAML2 belirteçleri |1 saat |
+|Yenileme belirteci en fazla etkin olmayan süre |Maxınactivetime  |Belirteçleri Yenile |90 gün  |
+|Single-Factor yenileme belirtecinin en fazla yaşı  |Maxagesinglefaktör  |Belirteçleri Yenile (tüm kullanıcılar için)  |İptal edilene kadar  |
+|Multi-Factor Refresh belirtecinin en fazla yaşı  |MaxAgeMultiFactor  |Belirteçleri Yenile (tüm kullanıcılar için) |İptal edilene kadar  |
+|Single-Factor oturum belirtecinin maksimum yaşı  |Maxagesessionsinglefaktör |Oturum belirteçleri (kalıcı ve kalıcı olmayan)  |İptal edilene kadar |
+|Multi-Factor Session belirtecinin en fazla yaşı  |MaxAgeSessionMultiFactor  |Oturum belirteçleri (kalıcı ve kalıcı olmayan)  |İptal edilene kadar |
+
+Kullanımdan kaldırılacak ilkeleri bulmak için PowerShell kullanabilirsiniz.  Kuruluşunuzda oluşturulan tüm ilkeleri görmek veya belirli bir ilkeye bağlı olan uygulamaları ve hizmet sorumlularını bulmak için [PowerShell cmdlet 'lerini](configure-token-lifetimes.md#get-started) kullanın.
+
+## <a name="policy-evaluation-and-prioritization"></a>İlke değerlendirmesi ve önceliği belirleme
+Belirli bir uygulamaya, kuruluşunuza ve hizmet sorumlularına bir belirteç ömür İlkesi oluşturup bu ilke atayabilirsiniz. Belirli bir uygulama için birden çok ilke uygulanabilir. Geçerli olan belirteç ömrü ilkesi şu kurallara uyar:
+
+* Bir ilke hizmet sorumlusuna açıkça atanmışsa, zorlanır.
+* Hizmet sorumlusuna açıkça bir ilke atanmamışsa, hizmet sorumlusunun ana kuruluşa açıkça atanan bir ilke zorlanır.
+* Hizmet sorumlusuna veya kuruluşa açıkça bir ilke atanmamışsa, uygulamaya atanan ilke zorlanır.
+* Hizmet sorumlusuna, kuruluşa veya uygulama nesnesine bir ilke atanmamışsa, varsayılan değerler zorlanır. ( [Yapılandırılabilir belirteç ömrü özelliklerindeki](#configurable-token-lifetime-properties-after-the-retirement)tabloya bakın.)
+
+Uygulama nesneleri ve hizmet sorumlusu nesneleri arasındaki ilişki hakkında daha fazla bilgi için, bkz. [Azure Active Directory uygulama ve hizmet sorumlusu nesneleri](app-objects-and-service-principals.md).
+
+Belirtecin geçerliliği, belirtecin kullanıldığı sırada değerlendirilir. Erişildiği uygulama üzerinde en yüksek önceliğe sahip ilke devreye girer.
+
+Burada kullanılan tüm zaman dilimlerini C# [TimeSpan](/dotnet/api/system.timespan) nesnesine göre biçimlendirilir-D. hh: mm: ss.  Bu nedenle 80 gün ve 30 dakika olabilir `80.00:30:00` .  0 olduğunda önde gelen D bırakılabilir, bu nedenle 90 dakika olur `00:90:00` .  
+
+### <a name="example-scenario"></a>Örnek senaryo
+
+Kullanıcı iki Web uygulamasına erişmek istiyor: Web uygulaması A ve Web uygulaması B.
+
+Etmen
+* Her iki Web uygulaması da aynı ana kuruluştur.
+* Bir oturum belirteci en fazla sekiz saat olan belirteç ömür Ilkesi 1, ana kuruluşun varsayılan değeri olarak ayarlanır.
+* Web uygulaması, düzenli olarak kullanılan bir Web uygulamasıdır ve hiçbir ilkeye bağlanmaz.
+* Web uygulaması B, son derece duyarlı süreçler için kullanılır. Hizmet sorumlusu, en fazla 30 dakikalık bir oturum belirteci olan belirteç ömür Ilkesi 2 ' ye bağlıdır.
+
+12:00 PM 'de Kullanıcı yeni bir tarayıcı oturumu başlatır ve Web uygulamasına erişmeye çalışır. Kullanıcı Microsoft Identity platformu 'na yönlendirilir ve oturum açması istenir. Bu, tarayıcıda oturum belirtecine sahip bir tanımlama bilgisi oluşturur. Kullanıcı, kullanıcının uygulamaya erişmesine izin veren bir KIMLIK belirteciyle bir Web uygulamasına yeniden yönlendirilir.
+
+12:15 ' de, Kullanıcı B Web uygulamasına erişmeye çalışır. Tarayıcı, oturum tanımlama bilgisini algılayan Microsoft Identity platform 'a yeniden yönlendirir. Web uygulaması B 'nin hizmet sorumlusu, belirteç ömür Ilkesi 2 ' ye bağlıdır, ancak aynı zamanda üst kuruluşun bir parçasıdır ve varsayılan belirteç yaşam süresi Ilke 1 ' dir. Belirteç yaşam süresi Ilkesi 2, hizmet sorumlularıyla bağlantılı ilkelerin kuruluş varsayılan ilkelerine kıyasla daha yüksek bir önceliğe sahip olduğu için devreye girer. Oturum belirteci ilk olarak son 30 dakika içinde verildi, bu nedenle geçerli kabul edilir. Kullanıcı, erişim izni veren bir KIMLIK belirteciyle B Web uygulamasına yeniden yönlendirilir.
+
+1:00 ' de, Kullanıcı A Web uygulamasına erişmeyi dener. Kullanıcı Microsoft Identity platform 'a yönlendirilir. A Web uygulaması hiçbir ilkeyle bağlantılı değildir, ancak varsayılan belirteç ömür Ilkesi 1 olan bir kuruluşta olduğundan, bu ilke geçerli olur. Son sekiz saat içinde ilk olarak verilen oturum tanımlama bilgisi algılanır. Kullanıcı yeni bir KIMLIK belirteci ile sessizce Web uygulamasına geri yönlendirilir. Kullanıcının kimlik doğrulaması için gerekli değildir.
+
+Daha sonra Kullanıcı, B Web uygulamasına erişmeye çalışır. Kullanıcı Microsoft Identity platform 'a yönlendirilir. Daha önce olduğu gibi, belirteç ömür Ilkesi 2 etkili olur. Belirteç 30 dakikadan önce verildiği için kullanıcıdan oturum açma kimlik bilgilerini yeniden girmesi istenir. Yepyeni bir oturum belirteci ve KIMLIK belirteci verilir. Kullanıcı daha sonra B Web uygulamasına erişebilir.
 
 ## <a name="cmdlet-reference"></a>Cmdlet başvurusu
 
@@ -281,12 +272,6 @@ Hizmet sorumlusu ilkeleri için aşağıdaki cmdlet 'leri kullanabilirsiniz.
 | [Add-Azureadservicesprincipalpolicy](/powershell/module/azuread/add-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | Belirtilen ilkeyi bir hizmet sorumlusu ile bağlantılandırır. |
 | [Get-Azureadservicesprincipalpolicy](/powershell/module/azuread/get-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | Belirtilen hizmet sorumlusuna bağlı herhangi bir ilkeyi alır.|
 | [Remove-AzureADServicePrincipalPolicy](/powershell/module/azuread/remove-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | İlkeyi belirtilen hizmet sorumlusu 'ndan kaldırır.|
-
-## <a name="license-requirements"></a>Lisans gereksinimleri
-
-Bu özelliğin kullanılması için Azure AD Premium P1 lisansı gerekir. Gereksinimleriniz için doğru lisans bulmak için bkz. [ücretsiz ve Premium sürümlerin genel kullanıma sunulan özelliklerini karşılaştırma](https://azure.microsoft.com/pricing/details/active-directory/).
-
-[Microsoft 365 iş lisanslarına](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) sahip müşterilerin koşullu erişim özelliklerine de erişimi vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -13,12 +13,12 @@ ms.date: 12/09/2020
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 1c88b9f77513021609b99c81ea572c2b5b3d365b
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 9c316362e2cd3fca9290e5f8070879567d9b7ea5
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936803"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963511"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Nasıl yapılır: kurumsal uygulamalar için SAML belirtecinde verilen talepleri özelleştirme
 
@@ -135,7 +135,7 @@ Talepleri dönüştürmek için aşağıdaki işlevleri kullanabilirsiniz.
 | **StartWith ()** | Giriş belirtilen değerle başlıyorsa bir öznitelik veya sabit verir. Aksi takdirde, eşleşme yoksa başka bir çıktı belirleyebilirsiniz.<br/>Örneğin, ülke/bölge "ABD" ile başlıyorsa değerin kullanıcının çalışan KIMLIĞI olduğu bir talep oluşturmak istiyorsanız, aksi takdirde bir uzantı özniteliği çıktısını almak isteyebilirsiniz. Bunu yapmak için, aşağıdaki değerleri yapılandırırsınız:<br/>*Parametre 1 (giriş)*: User. Country<br/>*Değer*: "US"<br/>Parametre 2 (çıkış): User. EmployeeID<br/>Parametre 3 (eşleşme yoksa çıkış): User. extensionAttribute1 |
 | **Ayıkla ()-sonrasında eşleme** | Belirtilen değerle eşleştirdikten sonra alt dizeyi döndürür.<br/>Örneğin, girişin değeri "Finance_BSimon" ise, eşleşen değer "Finance_" ise, talebin çıktısı "Bsıon" olur. |
 | **Extract ()-öncesinde eşleme** | Belirtilen değerle eşleşene kadar alt dizeyi döndürür.<br/>Örneğin, girişin değeri "BSimon_US" ise, eşleşen değer "_US" ise, talebin çıktısı "Bsıon" olur. |
-| **Ayıkla ()-eşleşen** | Belirtilen değerle eşleşene kadar alt dizeyi döndürür.<br/>Örneğin, girişin değeri "Finance_BSimon_US" ise, ilk eşleşen değer "Finance_", ikinci eşleşen değer "_US" ise, talebin çıktısı "Bsıon" olur. |
+| **Ayıkla ()-eşleşen** | Belirtilen değerle eşleşene kadar alt dizeyi döndürür.<br/>Örneğin, girişin değeri "Finance_BSimon_US" ise, ilk eşleşen değer "Finans \_ ", ikinci eşleşen değer " \_ US" ise, talebin çıktısı "Bsıon" olur. |
 | **ExtractAlpha ()-önek** | Dizenin ön ek alfabetik bölümünü döndürür.<br/>Örneğin, girişin değeri "BSimon_123" ise, "Bsıon" döndürür. |
 | **ExtractAlpha ()-sonek** | Dizenin son ek alfabetik bölümünü döndürür.<br/>Örneğin, girişin değeri "123_Simon" ise, "Simon" döndürür. |
 | **ExtractNumeric ()-ön ek** | Dizenin ön ek sayısal parçasını döndürür.<br/>Örneğin, girişin değeri "123_BSimon" ise, "123" döndürür. |

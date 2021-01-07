@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: bfbfb1ff5b6cb9c711d987608226c51822dfc935
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 12eba5a0de85f97dba9c220ed71679bdd35d7482
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442965"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963341"
 ---
 # <a name="protected-web-api-code-configuration"></a>Korumalı Web API 'SI: kod yapılandırması
 
@@ -140,7 +140,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
- Şu anda ASP.NET Core şablonları, kuruluşunuzdaki veya herhangi bir kuruluşun içindeki kullanıcıların oturum açmasını sağlayan Azure Active Directory (Azure AD) Web API 'Leri oluşturur. Kişisel hesaplarla kullanıcıları oturum açtıklarında oturum açabilirler. Ancak, *Startup.cs* ' deki kodu değiştirerek [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) kullanarak şablonları Microsoft Identity platform uç noktasını kullanacak şekilde değiştirebilirsiniz:
+ Şu anda ASP.NET Core şablonları, kuruluşunuzdaki veya herhangi bir kuruluşun içindeki kullanıcıların oturum açmasını sağlayan Azure Active Directory (Azure AD) Web API 'Leri oluşturur. Kişisel hesaplarla kullanıcıları oturum açtıklarında oturum açabilirler. Ancak, *Startup.cs*' deki kodu değiştirerek [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) kullanarak şablonları Microsoft Identity platform uç noktasını kullanacak şekilde değiştirebilirsiniz:
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -170,12 +170,12 @@ services.AddControllers();
 ```
 
 > [!NOTE]
-> Microsoft. Identity. Web kullanıyorsanız ve ' `Audience` de *appsettings.js* ' yi ayarlamazsanız, aşağıdakiler kullanılır:
+> Microsoft. Identity. Web kullanıyorsanız ve ' `Audience` de *appsettings.js*' yi ayarlamazsanız, aşağıdakiler kullanılır:
 > -  `$"{ClientId}"`[erişim belirtecinin kabul edilen sürümünü](scenario-protected-web-api-app-registration.md#accepted-token-version) `2` veya Azure AD B2C Web API 'lerini olarak ayarladıysanız.
 > - `$"api://{ClientId}` diğer tüm durumlarda (v 1.0 [erişim belirteçleri](access-tokens.md)için).
 > Ayrıntılar için bkz. Microsoft. Identity. Web [kaynak kodu](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/Resource/RegisterValidAudience.cs#L70-L83).
 
-Yukarıdaki kod parçacığı [ASP.NET Core Web API 'si artımlı öğreticiden](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/63087e83326e6a332d05fee6e1586b66d840b08f/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Startup.cs#L23-L28)ayıklanır. **AddMicrosoftIdentityWebApiAuthentication** ayrıntısı [Microsoft. Identity. Web](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiServiceCollectionExtensions.cs#L27)içinde kullanılabilir. Bu yöntem, kendi ara yazılım tarafından belirtecin nasıl doğrulanacağı hakkında bir [Addmicrosoftwebapi](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiAuthenticationBuilderExtensions.cs#L58)çağırır. Ayrıntılar için bkz. [kaynak kodu](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiAuthenticationBuilderExtensions.cs#L104-L122).
+Yukarıdaki kod parçacığı [ASP.NET Core Web API 'si artımlı öğreticiden](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/63087e83326e6a332d05fee6e1586b66d840b08f/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Startup.cs#L23-L28)ayıklanır. **AddMicrosoftIdentityWebApiAuthentication** ayrıntısı [Microsoft. Identity. Web](microsoft-identity-web.md)içinde kullanılabilir. Bu yöntem, kendi ara yazılım tarafından belirtecin nasıl doğrulandığını bildiren [Addmicrosoftidentitywebapi](https://docs.microsoft.com/dotnet/api/microsoft.identity.web.microsoftidentitywebapiauthenticationbuilderextensions.addmicrosoftidentitywebapi?view=azure-dotnet-preview&preserve-view=true)' i çağırır.
 
 ## <a name="token-validation"></a>Belirteç doğrulama
 

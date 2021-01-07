@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: cbae833c1b207669e35b467707f946e9bafe31d2
-ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
+ms.openlocfilehash: 077d200dcaf957f636acecebb441ff99a68eb96f
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854953"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963596"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Uygulamanızı bir Azure sanal ağı ile tümleştirme
 
@@ -130,6 +130,12 @@ App Service planı VNet tümleştirmesi Kullanıcı arabirimi, App Service plan�
 
 * **Ağ eşitleme**: ağ eşitleme işlemi yalnızca ağ geçidine bağımlı VNET tümleştirme özelliği için kullanılır. Bir eşitleme ağı işleminin gerçekleştirilmesi, sertifikalarınızın ve ağ bilgilerinizin eşitlenmiş olmasını sağlar. VNet 'nizin DNS 'sini ekler veya değiştirirseniz, bir eşitleme ağı işlemi gerçekleştirin. Bu işlem, bu VNet 'i kullanan tüm uygulamaları yeniden başlatır. Farklı aboneliklere ait bir uygulama ve VNET kullanıyorsanız bu işlem çalışmayacaktır.
 * **Rotalar ekleme**: yollar ekleme giden trafiği sanal ağınıza yönlendirir.
+
+Örneğe atanan özel IP, **WEBSITE_PRIVATE_IP** ortam değişkeni aracılığıyla sunulur. Kudu konsol Kullanıcı arabirimi, Web uygulaması için kullanılabilen ortam değişkenlerinin listesini de gösterir. Bu IP, tümleşik alt ağın adres aralığından atanır. Bölgesel VNet tümleştirmesi için, WEBSITE_PRIVATE_IP değeri, temsilcili alt ağın adres aralığından bir IP 'dir ve ağ geçidi gerektiren VNet tümleştirmesi için, bu değer sanal ağ geçidinde yapılandırılan Noktadan siteye adres havuzunun giriş aralığından bir IP olur. Bu, Web uygulaması tarafından, kaynaklara sanal ağ üzerinden bağlanmak için kullanılacak olan IP 'dir. 
+
+> [!NOTE]
+> WEBSITE_PRIVATE_IP değeri değişikliğe bağlanır. Ancak, tümleştirme alt ağının veya Noktadan siteye adres aralığının adres aralığında bir IP olacaktır, bu nedenle tüm adres aralığından erişime izin vermeniz gerekir.
+>
 
 ### <a name="gateway-required-vnet-integration-routing"></a>Ağ Geçidi-gerekli VNet tümleştirme yönlendirmesi
 VNet 'iniz üzerinde tanımlanan yollar uygulamanızdan sanal ağınıza giden trafiği yönlendirmek için kullanılır. VNet 'e ek giden trafik göndermek için bu adres bloklarını buraya ekleyin. Bu özellik yalnızca ağ geçidi için gerekli VNet tümleştirmesiyle birlikte kullanılabilir. Ağ Geçidi gerekli VNet tümleştirmesinin bölgesel VNet tümleştirmesiyle gerçekleştirdikleri şekilde kullanılması durumunda yol tabloları uygulama trafiğinizi etkilemez.

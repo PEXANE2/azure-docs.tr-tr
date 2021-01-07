@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: a0b76c21ee76731f78ecd7f482472908fe93a9ee
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 72072feebfcf8dba249d2045a399e09714177698
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92513339"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963698"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-palo-alto-networks---globalprotect"></a>Öğretici: Palo Alto Networks ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory-GlobalProtect
 
@@ -26,7 +26,7 @@ Bu öğreticide, Palo Alto Networks-GlobalProtect Azure Active Directory (Azure 
 * Kullanıcılarınızın Azure AD hesaplarıyla ağları genele almak için otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -53,7 +53,7 @@ Azure AD 'de Palo Alto Networks-GlobalProtect tümleştirmesini yapılandırmak 
 
 ## <a name="configure-and-test-azure-ad-sso-for-palo-alto-networks---globalprotect"></a>Palo Alto Networks için Azure AD SSO 'Yu yapılandırma ve test etme-GlobalProtect
 
-Azure AD SSO 'Yu, Palo Alto Networks-GlobalProtect ile, **B. Simon**adlı bir test kullanıcısı kullanarak yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Palo Alto Networks-GlobalProtect içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+Azure AD SSO 'Yu, Palo Alto Networks-GlobalProtect ile, **B. Simon** adlı bir test kullanıcısı kullanarak yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Palo Alto Networks-GlobalProtect içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
 Azure AD SSO 'Yu Palo Alto Networks-GlobalProtect ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
@@ -70,7 +70,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Azure portal, **Palo Alto Networks-GlobalProtect** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -145,12 +145,12 @@ Bu bölümde, Palo Alto Networks-GlobalProtect içinde B. Simon adlı bir Kullan
 
 Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-1. Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu işlem, oturum açma akışını başlatabileceğiniz bir oturum açma URL 'SI olan, Palo Alto Networks 'a yönlendirilir. 
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu işlem, oturum açma akışını başlatabileceğiniz bir oturum açma URL 'SI olan, Palo Alto Networks 'a yönlendirilir. 
 
-2. Palo Alto Networks 'e gidin-GlobalG oturum açma URL 'sini doğrudan koruyun ve oturum akışını buradan başlatın.
+* Palo Alto Networks 'e gidin-GlobalG oturum açma URL 'sini doğrudan koruyun ve oturum akışını buradan başlatın.
 
-3. Microsoft Access panel ' i kullanabilirsiniz. Erişim panelinde Palo Alto Networks-GlobalProtect kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Palo Alto Networks-GlobalProtect ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki Palo Alto Networks-GlobalProtect kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Palo Alto Networks-GlobalProtect ' de otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="next-steps"></a>Sonraki Adımlar
+## <a name="next-steps"></a>Sonraki adımlar
 
 Palo Alto ağlarını-GlobalProtect ' ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).

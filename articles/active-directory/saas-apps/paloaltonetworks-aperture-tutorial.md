@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: a70d075ae25b0059e4e1ab75c44907f584e15350
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7b4c8ab55a9b2afc9c1a215236fa1276a630a5cf
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92512846"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963630"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---aperture"></a>Öğretici: Palo Alto Networks-diyafram ile tümleştirme Azure Active Directory
 
@@ -27,7 +27,7 @@ Azure AD ile Palo Alto ağlarını tümleştirme, aşağıdaki avantajları sağ
 * Kullanıcılarınızın Azure AD hesaplarıyla ağları açıklık (çoklu oturum açma) için otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini Palo Alto Networks-diyafram ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -53,7 +53,7 @@ Palo Alto 'nın ağlar açıklığı ile Azure AD arasındaki tümleştirmeyi ya
 
 ## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma ve test etme
 
-Bu bölümde, **B. Simon**adlı bir test kullanıcısına göre Palo Alto Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Bu bölümde, **B. Simon** adlı bir test kullanıcısına göre Palo Alto Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Palo Alto Networks-açıklık içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açmayı, Palo Alto Networks-diyafram ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
@@ -71,7 +71,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Azure portal, **Palo Alto Networks-diyafram** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -142,11 +142,11 @@ Bu bölümde, Palo Alto Networks-diyafram erişimine izin vererek Azure çoklu o
 
     a. Çoklu oturum **açmayı etkinleştir (desteklenen SSP sağlayıcıları okta, bir oturum açma)** Ile **Çoklu oturum** açma alanını denetleyin.
 
-    b. **Kimlik sağlayıcısı kimliği** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının**değerini yapıştırın.
+    b. **Kimlik sağlayıcısı kimliği** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının** değerini yapıştırın.
 
     c. **Kimlik sağlayıcısı sertifikası** alanında, Azure AD 'Den indirilen sertifikayı karşıya yüklemek Için **Dosya Seç** ' e tıklayın.
 
-    d. **Kimlik sağlayıcısı SSO URL** metin kutusuna, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    d. **Kimlik sağlayıcısı SSO URL** metin kutusuna, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
     e. **Açıklık bilgisi** bölümünde IDP bilgilerini gözden geçirin ve sertifikayı **açıklık anahtarı** alanından indirin.
 
@@ -171,9 +171,9 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 * Azure portal **Bu uygulamayı test et** ' e tıklayın ve SSO 'Yu ayarladığınız Palo Alto ağları için otomatik olarak oturum açmış olmanız gerekir 
 
-Uygulamayı dilediğiniz modda test etmek için Microsoft Access panel ' i de kullanabilirsiniz. Erişim panelinde Palo Alto Networks-açıklık kutucuğuna tıkladığınızda, SP modunda yapılandırıldıysa, oturum açma akışını başlatmak için uygulama oturum açma sayfasına yönlendirilirsiniz ve ıDP modunda yapılandırıldıysa, SSO 'yu ayarladığınız Palo Alto ağları için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+Uygulamayı dilediğiniz modda test etmek için Microsoft My Apps ' i de kullanabilirsiniz. Uygulamalarım içindeki Palo Alto ağları-açıklık kutucuğuna tıkladığınızda, SP modunda yapılandırıldıysa, oturum açma akışını başlatmak için uygulama oturum açma sayfasına yönlendirilirsiniz ve ıDP modunda yapılandırıldıysa, SSO 'yu ayarladığınız Palo Alto ağları için otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](../user-help/my-apps-portal-end-user-access.md).
 
 
-## <a name="next-steps"></a>Sonraki Adımlar
+## <a name="next-steps"></a>Sonraki adımlar
 
 Palo Alto Networks-diyafram ' i yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).

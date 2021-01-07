@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 612576698d9eb40807b90e9d70f401aa6e9b864e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 57b1d47fa40c0af4bced1e4169fe60cd759ee2f3
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92512948"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963647"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>Öğretici: Palo Alto Networks-admin kullanıcı arabirimi ile Azure Active Directory tümleştirme
 
@@ -27,7 +27,7 @@ Azure AD ile Palo Alto Networks-admin kullanıcı arabirimine tümleştirme, aş
 * Kullanıcılarınızın Azure AD hesaplarıyla Networks-admin kullanıcı arabirimine (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini Palo Alto Networks-admin kullanıcı arabirimine göre yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -54,7 +54,7 @@ Palo Alto Networks-admin kullanıcı arabirimini Azure AD 'ye tümleştirmeyi ya
 
 ## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma ve test etme
 
-Bu bölümde, **B. Simon**adlı bir test kullanıcısına bağlı olarak, Palo Alto Networks-admin kullanıcı ARABIRIMINDEKI Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Bu bölümde, **B. Simon** adlı bir test kullanıcısına bağlı olarak, Palo Alto Networks-admin kullanıcı ARABIRIMINDEKI Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Palo Alto Networks-admin kullanıcı ARABIRIMINDEKI ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açmayı, Palo Alto Networks-admin UI ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
@@ -72,7 +72,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Azure portal, **Palo Alto Networks-admin kullanıcı arabirimi** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -96,11 +96,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     ![image](common/default-attributes.png)
 
    > [!NOTE]
-   > Öznitelik değerleri yalnızca örnekler olduğundan, *Kullanıcı adı* ve *adminrole*için uygun değerleri eşleyin. Güvenlik duvarındaki belirli sanal sistemlere yönetici erişimini kısıtlamak için kullanılan başka bir isteğe bağlı öznitelik olan *accessdomain*.
+   > Öznitelik değerleri yalnızca örnekler olduğundan, *Kullanıcı adı* ve *adminrole* için uygun değerleri eşleyin. Güvenlik duvarındaki belirli sanal sistemlere yönetici erişimini kısıtlamak için kullanılan başka bir isteğe bağlı öznitelik olan *accessdomain*.
 
 1. Yukarıdaki ' a ek olarak, Palo Alto Networks-admin kullanıcı arabirimi uygulaması, daha az sayıda özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı |  Kaynak özniteliği|
+    | Ad |  Kaynak özniteliği|
     | --- | --- |
     | username | User. UserPrincipalName |
     | adminrole | customadmin |
@@ -165,7 +165,7 @@ Bu bölümde, Azure çoklu oturum açmayı kullanarak, Palo Alto Networks-admin 
 
     a. **Profil adı** kutusuna bir ad girin (örneğin, **AZUREAD admin kullanıcı arabirimi**).
 
-    b. **Kimlik sağlayıcısı meta verileri**altında, **Araştır**' ı seçin ve daha önce Azure Portal indirdiğiniz metadata.xml dosyasını seçin.
+    b. **Kimlik sağlayıcısı meta verileri** altında, **Araştır**' ı seçin ve daha önce Azure Portal indirdiğiniz metadata.xml dosyasını seçin.
 
     c. **Kimlik sağlayıcısı sertifikasını doğrula** onay kutusunu temizleyin.
 
@@ -220,7 +220,7 @@ Bu bölümde, Azure çoklu oturum açmayı kullanarak, Palo Alto Networks-admin 
 
     örneğin: **Tamam**’ı seçin.
 
-13. Yöneticilerin Azure kullanarak SAML SSO 'yu kullanmasını sağlamak için **cihaz**  >  **kurulumu**' nu seçin. **Kurulum** bölmesinde, **Yönetim** sekmesini seçin ve ardından **kimlik doğrulama ayarları**altında **Ayarlar** ("dişli") düğmesini seçin.
+13. Yöneticilerin Azure kullanarak SAML SSO 'yu kullanmasını sağlamak için **cihaz**  >  **kurulumu**' nu seçin. **Kurulum** bölmesinde, **Yönetim** sekmesini seçin ve ardından **kimlik doğrulama ayarları** altında **Ayarlar** ("dişli") düğmesini seçin.
 
     ![Ayarlar düğmesi](./media/paloaltoadmin-tutorial/tutorial_paloaltoadmin_authsetup.png)
 
@@ -240,13 +240,13 @@ Palo Alto Networks-yönetici kullanıcı ARABIRIMI, tam zamanında Kullanıcı s
 
 Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-1. Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz Palo Alto Networks-admin UI oturum açma URL 'sine yönlendirecektir. 
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz Palo Alto Networks-admin UI oturum açma URL 'sine yönlendirecektir. 
 
-2. Palo Alto Networks-admin kullanıcı arabirimi oturum açma URL 'sine doğrudan gidin ve oturum akışını buradan başlatın.
+* Palo Alto Networks-admin kullanıcı arabirimi oturum açma URL 'sine doğrudan gidin ve oturum akışını buradan başlatın.
 
-3. Microsoft Access panel ' i kullanabilirsiniz. Erişim panelinde Palo Alto Networks-admin kullanıcı arabirimi kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Palo Alto Networks-admin kullanıcı arabirimine otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içinde Palo Alto Networks-admin kullanıcı arabirimi kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Palo Alto Networks-admin kullanıcı arabirimine otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](../user-help/my-apps-portal-end-user-access.md).
 
 
-## <a name="next-steps"></a>Sonraki Adımlar
+## <a name="next-steps"></a>Sonraki adımlar
 
 Palo Alto Networks-admin kullanıcı arabirimini yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin boyutunu gerçek zamanlı olarak koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).

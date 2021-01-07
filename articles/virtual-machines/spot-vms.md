@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: b8e5c6b6b755134772cc8eaea3dab3af7f5346c9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e1666b7e74ceefd7e7e4fe6e499667b09efa0ac7
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963372"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963802"
 ---
 # <a name="use-spot-vms-in-azure"></a>Azure 'da spot VM 'Leri kullanma
 
@@ -24,11 +24,11 @@ Kullanılabilir kapasite miktarı boyut, bölge, günün saati ve daha fazlası 
 
 ## <a name="eviction-policy"></a>Çıkarma ilkesi
 
-VM 'Ler, belirlenen kapasiteye veya en yüksek fiyata göre çıkartılabilir. Bir spot VM oluştururken, çıkarma ilkesini *serbest bırakma* (varsayılan) veya *silme*işlemleri için ayarlayabilirsiniz. 
+VM 'Ler, belirlenen kapasiteye veya en yüksek fiyata göre çıkartılabilir. Bir spot VM oluştururken, çıkarma ilkesini *serbest bırakma* (varsayılan) veya *silme* işlemleri için ayarlayabilirsiniz. 
 
 *Serbest bırakma* ILKESI, VM 'nizi durdurulmuş serbest bırakılmış duruma, daha sonra yeniden dağıtmanıza olanak tanır. Ancak, ayırmanın başarılı olacağını garanti etmez. Serbest bırakılmış VM 'Ler kotaıza göre sayılır ve temel diskler için depolama maliyetleri ücretlendirilecektir. 
 
-SANAL makinenizin çıkarıldıktan sonra silinmesini isterseniz, çıkarma ilkesini *silme*olarak ayarlayabilirsiniz. Çıkarılan VM 'Ler temel disklerle birlikte silinir, bu nedenle depolama alanı için ücretlendirilmeye devam edersiniz. 
+SANAL makinenizin çıkarıldıktan sonra silinmesini isterseniz, çıkarma ilkesini *silme* olarak ayarlayabilirsiniz. Çıkarılan VM 'Ler temel disklerle birlikte silinir, bu nedenle depolama alanı için ücretlendirilmeye devam edersiniz. 
 
 [Azure zamanlanan olaylar](./linux/scheduled-events.md)aracılığıyla VM içi bildirimler almayı tercih edebilirsiniz. Bu, VM 'leriniz çıkarıldıktan sonra herhangi bir işi tamamlamak ve çıkarma öncesi görevleri gerçekleştirmek için 30 saniyelik bir işlem yapmanız durumunda size bildirir. 
 
@@ -81,7 +81,7 @@ Portaldaki bir bölgedeki boyut başına geçmiş fiyatlandırma ve çıkarma or
 
 **Tablo**:
 
-:::image type="content" source="./media/spot-table.png" alt-text="Fiyatlandırma ve çıkarma tarifelerinin bir grafik olarak bulunduğu bölge seçeneklerinin ekran görüntüsü.":::
+:::image type="content" source="./media/spot-table.png" alt-text="Fiyatlandırma ve çıkarma tarifelerinin bir tablo olarak bulunduğu bölge seçeneklerinin ekran görüntüsü.":::
 
 
 
@@ -110,6 +110,11 @@ Y **:** Evet, [Standart kota isteği işlemi](../azure-portal/supportability/per
 **S:** Sorularınızı nereden gönderebilirim?
 
 Y **:** Soru- `azure-spot` [cevap A&](/answers/topics/azure-spot.html), sorunuzu gönderebilirsiniz ve etiketleyebilirsiniz. 
+
+
+**S:** Bir spot VM 'nin en yüksek fiyatını nasıl değiştirebilirim?
+
+Y **:** Maksimum fiyatı değiştirebilmeniz için önce VM 'yi serbest bırakabilirsiniz. Ardından, VM 'nin **yapılandırma** bölümünde, portalda en fazla fiyata değişiklik yapabilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Spot VM 'Leri dağıtmak için [CLI](./linux/spot-cli.md), [Portal](spot-portal.md), [ARM şablonu](./linux/spot-template.md)veya [PowerShell](./windows/spot-powershell.md) kullanın.

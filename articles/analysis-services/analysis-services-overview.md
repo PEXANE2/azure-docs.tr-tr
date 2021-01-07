@@ -8,12 +8,12 @@ ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 555c41a9d53b27119299e5e9dca7c9e392fc5e25
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 4be8c8a6163fe0400b37a3f2e1884ff389c00518
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955493"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963715"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services nedir?
 
@@ -160,7 +160,7 @@ Uyumluluk düzeyi Analysis Services altyapıdaki yayına özgü davranışları 
 
 ## <a name="your-data-is-secure"></a>Verileriniz güvende
 
-Azure Analysis Services, birden fazla düzeyde hassas verileriniz için güvenlik sağlar. Azure hizmeti olarak Analysis Services, Azure platformunun bir parçası olarak otomatik olarak etkinleştirilen **temel** hizmet reddi (DDoS) saldırıları sağlar. Daha fazla bilgi için bkz. [Azure DDoS koruması standardına genel bakış](../ddos-protection/ddos-protection-overview.md). 
+Azure Analysis Services, birden fazla düzeyde hassas verileriniz için güvenlik sağlar. Azure hizmeti olarak Analysis Services, Azure platformunun bir parçası olarak otomatik olarak etkinleştirilmiş dağıtılmış hizmet reddi (DDoS) saldırılarının **temel** düzey korumasını sağlar. Daha fazla bilgi için bkz. [Azure DDoS koruması standardına genel bakış](../ddos-protection/ddos-protection-overview.md). 
 
 Sunucu düzeyinde Analysis Services, güvenlik duvarı, Azure kimlik doğrulaması, sunucu yöneticisi rolleri ve Server-Side şifreleme sağlar. Veri modeli düzeyinde, Kullanıcı rolleri, satır düzeyi ve nesne düzeyinde güvenlik, verilerinizin güvende olduğundan ve yalnızca bunu gördüğü kullanıcılar tarafından görülendiğinden emin olmanızı sağlar.
 
