@@ -5,12 +5,12 @@ ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 07/14/2017
-ms.openlocfilehash: ef32372cbaa70f7bca609c2ed1db118f33237e2b
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 194fe3494915be9f6784e1596e647885634817ad
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "92216207"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97969019"
 ---
 # <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>U-SQL çalıştırma ve Visual Studio Code yerel olarak hata ayıklama
 Bu makalede, erken kodlama aşamalarını hızlandırmak veya Visual Studio Code yerel olarak kodda hata ayıklamak için U-SQL işlerinin yerel bir geliştirme makinesinde nasıl çalıştırılacağı açıklanmaktadır. Visual Studio Code Azure Data Lake aracı hakkında yönergeler için bkz. [Visual Studio için Azure Data Lake araçları kodu kullanma](data-lake-analytics-data-lake-tools-for-vscode.md).
@@ -68,7 +68,7 @@ Yalnızca Visual Studio için Azure Data Lake Araçları Windows yüklemeleri U-
   ![Anımsatıcı, DotNet yükleme](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/remind-install-dotnet.png)
 3. Yüklü değilse, ileti kutusunda gösterildiği gibi Visual Studio Code Için C# ' i yükleme. Devam etmek için **yüklensin** ' e tıklayın ve ardından vscode 'u yeniden başlatın.
 
-    ![C 'yi yüklemek için anımsatıcı #](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/install-csharp.png)
+![C 'yi yüklemek için anımsatıcı #](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/install-csharp.png)
 
 Yerel hata ayıklamayı gerçekleştirmek için aşağıdaki adımları izleyin:
   

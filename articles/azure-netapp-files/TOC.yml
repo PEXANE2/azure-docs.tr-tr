@@ -123,6 +123,8 @@
           href: troubleshoot-cross-region-replication.md
         - name: Çift protokol birimlerinde sorunları giderme
           href: troubleshoot-dual-protocol-volumes.md
+        - name: NFSv4.1 Kerberos birimlerinde sorun giderme
+          href: troubleshoot-nfsv41-kerberos-volumes.md
         - name: Anlık görüntü ilkelerinde sorun giderme
           href: troubleshoot-snapshot-policies.md
         - name: Kaynak Sağlayıcısı sorunlarını giderme

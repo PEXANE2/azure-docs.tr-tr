@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: c29af68433f29d7bdd363bedfa6d36316b952f4c
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 87fb7f0eb4017a39aca081f73de543a67400d4b5
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795352"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97969070"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Telemetri, özellik ve komut yükleri
 
@@ -829,9 +829,6 @@ Cihaz, güncelleştirmeyi tamamladıktan sonra IoT Central aşağıdaki JSON yü
 
 ## <a name="commands"></a>Komutlar
 
-> [!NOTE]
-> IoT Central Web Kullanıcı arabiriminde, bir komut için **çevrimdışı** seçeneğini belirleyebilirsiniz. Bu ayar, cihaz şablonundan bir modeli veya arabirimi dışa aktardığınızda dahil değildir.
-
 Bir cihaz modelinden aşağıdaki kod parçacığında, parametresi olmayan ve cihazın herhangi bir şeyi döndürmesini beklemediği bir komutun tanımı gösterilmektedir:
 
 ```json
@@ -1000,6 +997,91 @@ Cihaz isteği işlemeyi tamamladığında, aşağıdaki örnek gibi görünen Io
 }
 ```
 
+### <a name="offline-commands"></a>Çevrimdışı komutlar
+
+IoT Central Web Kullanıcı arabiriminde, bir komut için **çevrimdışı** seçeneğini belirleyebilirsiniz. Çevrimdışı komutlar, bir cihazın bağlanması halinde teslim edilen çözümünüzde cihaza tek yönlü bildirimlerdir. Çevrimdışı komutların istek parametreleri olabilir ancak yanıt döndürmez.
+
+Cihaz şablonundan bir modeli veya arabirimi dışa aktardığınızda, **çevrimdışıyken sıra** ayarı dahil değildir. Bir komutun çevrimdışı bir komut olduğu, dışarıya aktarılmış bir modele veya Interface JSON 'a bakarak bilgi alamazsınız.
+
+Çevrimdışı komutlar, cihaza komut ve yük göndermek için [buluttan cihaza iletileri IoT Hub](../../iot-hub/iot-hub-devguide-messages-c2d.md) kullanır.
+
+Bir cihaz modelinden aşağıdaki kod parçacığında bir komutun tanımı gösterilmektedir. Komutun bir tarih saat alanı ve sabit listesi içeren bir nesne parametresi vardır:
+
+```json
+{
+  "@type": "Command",
+  "displayName": {
+    "en": "Generate Diagnostics"
+  },
+  "name": "GenerateDiagnostics",
+  "request": {
+    "@type": "CommandPayload",
+    "displayName": {
+      "en": "Payload"
+    },
+    "name": "Payload",
+    "schema": {
+      "@type": "Object",
+      "displayName": {
+        "en": "Object"
+      },
+      "fields": [
+        {
+          "displayName": {
+            "en": "StartTime"
+          },
+          "name": "StartTime",
+          "schema": "dateTime"
+        },
+        {
+          "displayName": {
+            "en": "Bank"
+          },
+          "name": "Bank",
+          "schema": {
+            "@type": "Enum",
+            "displayName": {
+              "en": "Enum"
+            },
+            "enumValues": [
+              {
+                "displayName": {
+                  "en": "Bank 1"
+                },
+                "enumValue": 1,
+                "name": "Bank1"
+              },
+              {
+                "displayName": {
+                  "en": "Bank2"
+                },
+                "enumValue": 2,
+                "name": "Bank2"
+              },
+              {
+                "displayName": {
+                  "en": "Bank3"
+                },
+                "enumValue": 2,
+                "name": "Bank3"
+              }
+            ],
+            "valueSchema": "integer"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+Önceki kod parçacığında komut için cihaz şablonu Kullanıcı arabiriminde bu **sırayı** etkinleştirirseniz, cihazın aldığı ileti aşağıdaki özellikleri içerir:
+
+| Özellik adı | Örnek değer |
+| ---------- | ----- |
+| `custom_properties` | `{'method-name': 'GenerateDiagnostics'}` |
+| `data` | `{"StartTime":"2021-01-05T08:00:00.000Z","Bank":2}` |
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Cihaz geliştiricisi olarak, artık "cihaz şablonlarının öğrenilmesi" sayesinde, cihazların IoT Central nasıl kaydedileceği ve cihaz bağlantılarının IoT Central nasıl güvenlik altına aldığı hakkında daha fazla bilgi edinmek için [Azure IoT Central 'a bağlanma](./concepts-get-connected.md) hakkında daha fazla bilgi almak üzere önerilen bir sonraki adım.
+Cihaz geliştiricisi olarak cihaz şablonları hakkında bilgi edindiğinize göre, cihazların IoT Central nasıl kaydedileceği ve cihaz bağlantılarını IoT Central nasıl güvenlik altına aldığı hakkında daha fazla bilgi edinmek için, önerilen bir sonraki adım [Azure IoT Central 'a](./concepts-get-connected.md) bağlanın.

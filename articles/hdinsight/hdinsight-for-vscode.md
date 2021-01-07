@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 1bbc3b3cd755aabd348a238ad65cda132b9a7547
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: c32f90221a73d04fd6c54c8332826232d0e6a6f3
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746618"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968543"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Visual Studio Code için Spark & Hive araçlarını kullanma
 
@@ -269,7 +269,7 @@ Araç **Spark SQL** sorgusunu da destekler:
 
 > [!NOTE]
 >
-> ["MS-python >= 2020.5.78807 sürümü bu uzantı üzerinde desteklenmiyor"](#issues-changed) çözümlendi. Şimdilik en son MS-Python sürümü kullanılabilir.
+> ["MS-python >= 2020.5.78807 sürümü bu uzantı üzerinde desteklenmiyor"](#issues-changed) çözümlendi. Lütfen şu anda **MS-Python** **sürümünü en son sürüme** güncelleştirin.
 
 ## <a name="submit-pyspark-batch-job"></a>PySpark Batch işini gönder
 
@@ -491,7 +491,7 @@ Menü çubuğundan **Görünüm**  >  **komut paleti**' ne gidin ve **Azure: otu
 
 ## <a name="issues-changed"></a>Değiştirilen sorunlar
 
-Bu sorun için "MS-Python >= 2020.5.78807 sürümü bu uzantı üzerinde desteklenmez" çözümlenmişse, şimdilik **en son MS-Python sürümü** kullanılabilir.
+Bu sorun için "MS-Python >= 2020.5.78807 sürümü bu uzantıda desteklenmiyor" çözümlendi, lütfen şu anda **MS-Python** 'u **en son sürüme** güncelleştirin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

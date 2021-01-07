@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 01/05/2021
 ms.author: lle
 ms.reviewer: craigg
-ms.openlocfilehash: fac4f3029d783e9257d00466ddb9fc9741b0f5a2
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 3b7b405e34b6ca82da593507ad6103d360c5df1e
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895657"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968594"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Azure Data Factory güvenlik ve erişim denetimi sorunlarını giderme
 
@@ -151,16 +151,6 @@ Sorunu çözmek için [Azure Data Factory Için Azure özel bağlantısı](https
 Aşağıdaki ekran görüntüsünde gösterildiği gibi, Kullanıcı arabiriminde ortak ağ erişimini etkinleştirmeyi deneyin:
 
 ![Ağ bölmesinde "ortak ağ erişimine Izin ver" için "etkin" denetimin ekran görüntüsü.](media/self-hosted-integration-runtime-troubleshoot-guide/enable-public-network-access.png)
-
-### <a name="pipeline-runtime-varies-when-basing-on-different-ir"></a>Ardışık düzen çalışma zamanı farklı IR 'ye dayandırırken farklılık gösterir
-
-#### <a name="symptoms"></a>Belirtiler
-
-Veri kümesindeki bağlantılı hizmet açılan listesini değiştirmek, aynı işlem hattı etkinliklerini gerçekleştirir, ancak büyük ölçüde farklı çalışma sürelerine sahip olur. Veri kümesi yönetilen sanal ağ Integration Runtime temel alıyorsa, çalışmayı tamamlamaya yönelik ortalama 2 dakikadan uzun sürer, ancak varsayılan Integration Runtime baz alınarak yaklaşık 20 saniye sürer.
-
-#### <a name="cause"></a>Nedeni
-
-İşlem hattı çalışmalarının ayrıntılarını kontrol etmek için, normal bir işlem Azure IR üzerinde çalışırken, yavaş işlem hattının yönetilen VNet (sanal ağ) IR üzerinde çalıştığını görebilirsiniz. Tasarıma göre, yönetilen VNet IR, Veri Fabrikası başına bir işlem düğümü ayırmadığımızda Azure IR sıra süresi daha uzun sürer. bu nedenle, her kopyalama etkinliğinin başlaması 2 dakika kadar bir süre daha vardır ve öncelikle Azure IR yerine VNet JOIN üzerinde gerçekleşir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

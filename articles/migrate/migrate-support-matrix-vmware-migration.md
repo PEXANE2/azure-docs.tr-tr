@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 6e80b1446142786cbd77245a2b6696cac1bb9272
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: b263d3e62ae97914fc8e06580486bddd0cb9b3b7
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897102"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968458"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware geçişi için destek matrisi
 
@@ -44,7 +44,7 @@ Tablo, VMware hiper yönetici gereksinimlerini özetler.
 --- | ---
 **VMware vCenter Server** | Sürüm 5,5, 6,0, 6,5, 6,7, 7,0.
 **VMware vSphere ESXI Konağı** | Sürüm 5,5, 6,0, 6,5, 6,7, 7,0.
-**vCenter Server izinleri** | Aracısız geçiş, [geçiş](migrate-appliance.md)gereci kullanır. Gereç vCenter Server içinde bu izinlere ihtiyaç duyuyor:<br/><br/> - **DataStore. gözatma** (veri deposu-> veri deposuna gözatma): anlık görüntü oluşturma ve silme sorunlarını GIDERMEK için VM günlük dosyalarına göz atmaya izin verin.<br/><br/> - **DataStore. FileManagement** (datastore-> düşük düzey dosya işlemleri): anlık görüntü oluşturma ve silme sorunlarını gidermek için veri deposu tarayıcısında okuma/yazma/silme/yeniden adlandırma Işlemlerine izin verir.<br/><br/> - **VirtualMachine.Config. ChangeTracking** (sanal makine-> disk değişikliği izleme): VM disklerinin değişiklik izlemesini etkinleştirme veya devre dışı bırakma olanağı, anlık görüntüler arasında değişen veri bloklarını çekme.<br/><br/> - **VirtualMachine.Config. DiskLease** (sanal makine-> disk kirası): VMware vSphere sanal disk geliştirme seti 'ni (VDDK) kullanarak diski okumak için BIR VM 'ye yönelik disk Kiralama Işlemlerine Izin verin.<br/><br/> - **VirtualMachine. sağlama. DiskAccess**: (özellikle vsphere 6,0 ve üzeri için), VDDK kullanarak disk üzerinde rastgele okuma erişimi IÇIN bir VM 'de disk açmaya izin verir.<br/><br/> - **VirtualMachine. sağlama. DiskRandomRead** (sanal makine-> sağlama-> salt okuma özellikli disk erişimine izin ver): VDDK kullanarak diski okumak IÇIN bir VM 'de disk açmaya izin verin.<br/><br/> - **VirtualMachine. sağlama. DiskRandomAccess** (sanal makine-> sağlama-> disk erişimine izin ver): VDDK kullanarak diski okumak IÇIN bir VM 'de disk açmaya izin verin.<br/><br/> - **VirtualMachine. sağlama. GetVmFiles** (sanal makine-> sağlama-> sanal makine Indirmeye izin ver): bir VM ile ilişkili dosyalardaki okuma Işlemlerine izin verir, bu durumda günlükleri indirebilir ve hata oluşursa sorun giderin.<br/><br/> - **VirtualMachine. State. \* *_ (Sanal makine-> anlık görüntü yönetimi): çoğaltma IÇIN VM anlık görüntülerinin oluşturulmasına ve yönetimine Izin verin. <br/> <br/> -_* VirtualMachine. ınterbir. poweroff** (sanal makine-> etkileşimi-> gücü kapalı): Azure 'a GEÇIŞ sırasında VM 'Nin kapatılmasını sağlar.
+**vCenter Server izinleri** | Aracısız geçiş, [geçiş](migrate-appliance.md)gereci kullanır. Gereç vCenter Server içinde bu izinlere ihtiyaç duyuyor:<br/><br/> - **DataStore. gözatma** (veri deposu-> veri deposuna gözatma): anlık görüntü oluşturma ve silme sorunlarını GIDERMEK için VM günlük dosyalarına göz atmaya izin verin.<br/><br/> - **DataStore. FileManagement** (datastore-> düşük düzey dosya işlemleri): anlık görüntü oluşturma ve silme sorunlarını gidermek için veri deposu tarayıcısında okuma/yazma/silme/yeniden adlandırma Işlemlerine izin verir.<br/><br/> - **VirtualMachine.Config. ChangeTracking** (sanal makine-> disk değişikliği izleme): VM disklerinin değişiklik izlemesini etkinleştirme veya devre dışı bırakma olanağı, anlık görüntüler arasında değişen veri bloklarını çekme.<br/><br/> - **VirtualMachine.Config. DiskLease** (sanal makine-> disk kirası): VMware vSphere sanal disk geliştirme seti 'ni (VDDK) kullanarak diski okumak için BIR VM 'ye yönelik disk Kiralama Işlemlerine Izin verin.<br/><br/> - **VirtualMachine. sağlama. DiskRandomRead** (sanal makine-> sağlama-> salt okuma özellikli disk erişimine izin ver): VDDK kullanarak diski okumak IÇIN bir VM 'de disk açmaya izin verin.<br/><br/> - **VirtualMachine. sağlama. DiskRandomAccess** (sanal makine-> sağlama-> disk erişimine izin ver): VDDK kullanarak diski okumak IÇIN bir VM 'de disk açmaya izin verin.<br/><br/> - **VirtualMachine. sağlama. GetVmFiles** (sanal makine-> sağlama-> sanal makine Indirmeye izin ver): bir VM ile ilişkili dosyalardaki okuma Işlemlerine izin verir, bu durumda günlükleri indirebilir ve hata oluşursa sorun giderin.<br/><br/> - **VirtualMachine. State. \* *_ (Sanal makine-> anlık görüntü yönetimi): çoğaltma IÇIN VM anlık görüntülerinin oluşturulmasına ve yönetimine Izin verin. <br/> <br/> -_* VirtualMachine. ınterbir. poweroff** (sanal makine-> etkileşimi-> gücü kapalı): Azure 'a GEÇIŞ sırasında VM 'Nin kapatılmasını sağlar.
 
 
 

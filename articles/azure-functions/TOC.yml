@@ -141,8 +141,16 @@
     - name: Çalışma zamanı sürümlerini karşılaştırma
       href: functions-versions.md
       displayName: 'migrate, migration, v3'
-    - name: Premium planı
-      href: functions-premium-plan.md
+    - name: Barındırma ve ölçeklendirme
+      items:
+        - name: Tüketim planı
+          href: consumption-plan.md
+        - name: Premium planı
+          href: functions-premium-plan.md
+        - name: Ayrılmış plan
+          href: dedicated-plan.md
+        - name: Olay temelli ölçeklendirme
+          href: event-driven-scaling.md
     - name: Dağıtımlar
       href: functions-deployment-technologies.md
     - name: Olaylar ve mesajlaşma
@@ -261,6 +269,8 @@
                   href: create-function-app-linux-app-service-plan.md
                 - name: Linux Tüketimi planı
                   href: create-first-function-cli-python.md
+                - name: Premium planı
+                  href: create-premium-plan-function-app-portal.md
                 - name: Öğrenciler için Azure Başlangıç
                   href: functions-create-student-starter.md
             - name: Azure Cosmos DB tetikleyicisi

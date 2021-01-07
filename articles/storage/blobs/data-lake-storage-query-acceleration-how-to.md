@@ -5,16 +5,16 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/09/2020
+ms.date: 01/06/2021
 ms.author: normesta
 ms.reviewer: jamsbak
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: b02f5a7c390c5594a7c5692798a0691c8d9a42d0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: cc63a9787a3611f28e6466564735d029bf65b757
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95912782"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968407"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>Azure Data Lake Storage sorgu hızlandırmasını kullanarak verileri filtreleme
 
@@ -32,7 +32,7 @@ Sorgu hızlandırma, uygulama ve analiz çerçevelerinin yalnızca belirli bir i
 
   ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-  Uygulanamaz
+  Geçerli değil
 
   ### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -236,7 +236,7 @@ Bir Terminal penceresi açarak ve ardından aşağıdaki komutu yazarak JavaScri
 
 #### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Uygulanamaz
+Geçerli değil
 
 #### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -437,7 +437,7 @@ def dump_query_csv(blob: BlobClient, query: str, headers: bool):
 
 ### <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-Bu örnek sorguyu sorgu hızlandırma API 'sine gönderir ve ardından sonuçları geri akıp.
+Bu örnek sorguyu sorgu hızlandırma API 'sine gönderir ve ardından sonuçları geri akıp. `blob` `queryHemingway` Yardımcı işlevine geçirilen nesne [blockblobclient](https://docs.microsoft.com/javascript/api/@azure/storage-blob/blockblobclient)türündedir. [Blockblobclient](https://docs.microsoft.com/javascript/api/@azure/storage-blob/blockblobclient) nesnesinin nasıl alınacağı hakkında daha fazla bilgi edinmek için bkz. [hızlı başlangıç: JavaScript V12 SDK Ile blobları yönetme Node.js](storage-quickstart-blobs-nodejs.md).
 
 ```javascript
 async function queryHemingway(blob)

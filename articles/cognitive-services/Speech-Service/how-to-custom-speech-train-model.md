@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: a7227195c767d90141a9b6cd95f784c239a31fd5
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 41fdb3d2e69ae39dbe80f21a953fd9fdaa6d1127
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955204"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968475"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>Özel Konuşma Tanıma modeli eğitme ve dağıtma
 
@@ -35,12 +35,12 @@ Bir temel modelle ilgili tanıma sorunlarıyla karşılaşırsanız, özel bir m
 
 Bir modeli eğiten ilk adım eğitim verilerini karşıya yüklemedir. Bkz. insanlar etiketli onayları ve ilgili metinleri (utde ve söylenişleri) hazırlamak için [verilerinizi hazırlama ve test](./how-to-custom-speech-test-and-train.md) etme adımları. Eğitim verilerini karşıya yükledikten sonra modelinize eğitime başlamak için aşağıdaki yönergeleri izleyin:
 
-1. [Özel konuşma tanıma portalında](https://speech.microsoft.com/customspeech)oturum açın.
+1. [Özel konuşma tanıma portalında](https://speech.microsoft.com/customspeech)oturum açın. Bir modeli ses + insan etiketli döküm veri kümeleri ile eğmayı planlıyorsanız, eğitim için [adanmış donanıma sahip bir bölgede](custom-speech-overview.md#set-up-your-azure-account) konuşma aboneliği seçin.
 2. **Konuşmayı metne**  >  **özel konuşma tanıma**  >  **[proje adı]**  >  **eğitimi**' ne gidin.
 3. **Modeli eğitme**' yi seçin.
 4. Eğitimle bir **ad** ve **Açıklama** sağlayın.
 5. **Senaryo ve temel model** listesinde, etki alanına en uygun senaryoyu seçin. Hangi senaryonun seçeceğiniz konusunda emin değilseniz, **genel**' i seçin. Temel model, eğitimin başlangıç noktasıdır. En son model genellikle en iyi seçenektir.
-6. **Eğitim verilerini seçin** sayfasında, eğitim için kullanmak istediğiniz bir veya daha fazla ses + insan etiketli döküm veri kümesi seçin.
+6. **Eğitim verilerini seçin** sayfasında, eğitim için kullanmak istediğiniz bir veya daha fazla ilgili metin veri kümesi veya ses + insan etiketli döküm veri kümeleri seçin. Yeni bir modeli eğitedığınızda ilgili metinle başlayın; Sesli eğitim ve insan etiketli döküm çok daha uzun sürebilir ( [birkaç güne](how-to-custom-speech-evaluate-data.md#improve-model-recognition)kadar).
 7. Eğitim tamamlandıktan sonra, yeni eğitilen modelde doğruluk testi yapabilirsiniz. Bu adım isteğe bağlıdır.
 8. Özel modelinizi derlemek için **Oluştur** ' u seçin.
 

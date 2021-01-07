@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 01/06/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: d2961bbf65fe1cf3ddf59c648f506cee85e248a5
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 10741fbf2deb61d63f444ff9e2247bc59f41af38
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951630"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968810"
 ---
 # <a name="tutorial-transform-the-data-with-azure-stack-edge-pro"></a>Öğretici: Azure Stack Edge Pro ile verileri dönüştürme
 
@@ -22,7 +22,7 @@ Bu öğreticide, Azure Stack Edge Pro cihazınızda bir işlem rolünün nasıl 
 
 Bu yordamın tamamlanması yaklaşık 10 ila 15 dakika sürebilir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * İşlem yapılandırma
@@ -31,7 +31,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > * Veri dönüştürme işlemini doğrulama ve verileri aktarma
 
  
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Stack Edge Pro cihazınızda bir işlem rolü ayarlamadan önce şunları yaptığınızdan emin olun:
 
@@ -42,30 +42,35 @@ Azure Stack Edge Pro cihazınızda bir işlem rolü ayarlamadan önce şunları 
 
 Azure Stack Edge Pro ortamınızda işlem yapılandırmak için bir IoT Hub kaynağı oluşturacaksınız.
 
-1. Azure Stack Edge kaynağınızın Azure portal genel bakış ' a gidin. Sağ bölmede, **işlem** kutucuğunda **başlayın**' ı seçin.
+1. Azure Stack Edge kaynağınızın Azure portal **Genel Bakış ' a** gidin. Sağ bölmede **IoT Edge**' yi seçin.
 
     ![İşlem ile çalışmaya başlama](./media/azure-stack-edge-deploy-configure-compute/configure-compute-1.png)
 
-2. **Uç Işlem yapılandırma** kutucuğunda, **işlem Yapılandır**' ı seçin.
-3. **Uç Işlem yapılandırma** dikey penceresinde aşağıdakileri girin:
+1. **Etkinleştir IoT Edge** kutucuğunda **Ekle**' yi seçin. Bu, IoT Edge modüllerini cihazınıza yerel olarak dağıtmanıza olanak sağlayan IoT Edge hizmeti sağlar.
+
+    ![İşlem 2 ile çalışmaya başlama](./media/azure-stack-edge-deploy-configure-compute/configure-compute-2.png)
+
+1. **IoT Edge hizmeti oluştur** dikey penceresinde aşağıdakileri girin:
 
    
     |Alan  |Değer  |
     |---------|---------|
-    |IoT Hub     | **Yeni** veya **mevcut**seçeneklerinden birini belirleyin. <br> Varsayılan olarak IoT kaynağı oluşturulurken Standart katmanı (S1) kullanılır. Bir ücretsiz katman IoT kaynağı kullanmak için kaynağı oluşturun ve sonra da mevcut kaynağı seçin. <br> Her durumda IoT Hub kaynak, Azure Stack Edge kaynağı tarafından kullanılan aynı abonelik ve kaynak grubunu kullanır.     |
-    |Name     |IoT Hub kaynağınız için bir ad girin.         |
+    |Abonelik     |IoT Hub kaynağınız için bir abonelik seçin. Azure Stack Edge kaynağı tarafından kullanılan aboneliğin aynısını kullanabilirsiniz.         |
+    |Kaynak grubu     |IoT Hub kaynağınız için bir kaynak grubu seçin. Azure Stack Edge kaynağı tarafından kullanılan aynı kaynak grubunu kullanabilirsiniz.         |
+    |IoT Hub     | **Yeni** veya **mevcut** seçeneklerinden birini belirleyin. <br> Varsayılan olarak IoT kaynağı oluşturulurken Standart katmanı (S1) kullanılır. Bir ücretsiz katman IoT kaynağı kullanmak için kaynağı oluşturun ve sonra da mevcut kaynağı seçin. <br> Her durumda IoT Hub kaynak, Azure Stack Edge kaynağı tarafından kullanılan aynı abonelik ve kaynak grubunu kullanır.     |
+    |Ad     |IoT Hub kaynağınız için bir ad girin.         |
 
-    ![İşlem 2 ile çalışmaya başlama](./media/azure-stack-edge-deploy-configure-compute/configure-compute-2.png)
-
-4. **Oluştur**’u seçin. IoT Hub kaynak oluşturma birkaç dakika sürer. IoT Hub kaynağı oluşturulduktan sonra, işlem yapılandırmasını göstermek için işlem kutucuğunu **Yapılandır** ' ı güncelleştirir. Edge işlem rolünün yapılandırıldığını doğrulamak için, **Işlem yapılandırma** kutucuğunda işlemi **görüntüle** ' yi seçin.
-    
     ![İşlem 3 ' ü kullanmaya başlama](./media/azure-stack-edge-deploy-configure-compute/configure-compute-3.png)
 
-    > [!NOTE]
-    > IoT Hub Azure Stack Edge Pro cihazı ile ilişkilendirilmeden önce **Işlem Yapılandır** iletişim kutusu kapatılırsa IoT Hub oluşturulur ancak işlem yapılandırmasında gösterilmez. 
-    
-    Edge cihazında Edge hesaplama rolü ayarlandığında, iki cihaz oluşturur: bir IoT cihazı ve bir IoT Edge cihaz. Her iki cihaz de IoT Hub kaynağında görüntülenebilir. Bu IoT Edge cihazında aynı zamanda bir IoT Edge çalışma zamanı çalışıyor. Bu noktada, IoT Edge cihazınız için yalnızca Linux platformu kullanılabilir.
+4. **Gözden geçir + oluştur**' u seçin. IoT Hub kaynak oluşturma birkaç dakika sürer. IoT Hub kaynağı oluşturulduktan sonra, **genel bakış** , IoT Edge hizmetinin çalıştığını göstermek için güncelleştirilir. 
 
+    ![İşlem 4 ' ü kullanmaya başlama](./media/azure-stack-edge-deploy-configure-compute/configure-compute-4.png)    
+    
+    Sınır cihazında IoT Edge hizmeti yapılandırıldığında, iki cihaz oluşturur: bir IoT cihazı ve bir IoT Edge cihaz. Her iki cihaz de IoT Hub kaynağında görüntülenebilir. Bu IoT Edge cihazında aynı zamanda bir IoT Edge çalışma zamanı çalışıyor. Bu noktada, IoT Edge cihazınız için yalnızca Linux platformu kullanılabilir.
+
+    Edge işlem rolünün yapılandırıldığını onaylamak için **IoT Edge hizmeti > Özellikler** ' i seçin ve IoT cihazını ve IoT Edge cihazını görüntüleyin.
+
+    ![İşlem 5 ' i kullanmaya başlama](./media/azure-stack-edge-deploy-configure-compute/configure-compute-5.png) 
 
 ## <a name="add-shares"></a>Paylaşımlar Ekle
 
@@ -73,11 +78,11 @@ Bu öğreticide basit dağıtım için iki paylaşım gerekir: bir kenar paylaş
 
 1. Aşağıdaki adımları uygulayarak cihaza bir Edge paylaşma ekleyin:
 
-    1. Azure Stack Edge kaynağında, **uç işlem >** başlayın ' a gidin.
-    2. **Paylaşma Ekle** kutucuğunda **Ekle**' yi seçin.
+    1. Azure Stack Edge kaynağınız **IoT Edge > paylaşımlarına** gidin.
+    2. Komut çubuğundan **+ paylaşma Ekle**' yi seçin.
     3. **Paylaşma Ekle** dikey penceresinde, paylaşma adını girip paylaşma türünü seçin.
-    4. Edge payını bağlamak için, **kenar ile paylaşma kullanımını kullanın**onay kutusunu seçin.
-    5. Mevcut bir kullanıcı olan **Depolama hesabını**, **Depolama hizmetini**seçin ve ardından **Oluştur**' u seçin.
+    4. Edge payını bağlamak için, **kenar ile paylaşma kullanımını kullanın** onay kutusunu seçin.
+    5. Mevcut bir kullanıcı olan **Depolama hesabını**, **Depolama hizmetini** seçin ve ardından **Oluştur**' u seçin.
 
         ![Kenar paylaşma ekleme](./media/azure-stack-edge-deploy-configure-compute/add-edge-share-1.png) 
 
@@ -89,12 +94,12 @@ Bu öğreticide basit dağıtım için iki paylaşım gerekir: bir kenar paylaş
 
     Kenar paylaşma oluşturulur ve başarılı bir oluşturma bildirimi alırsınız. Paylaşma listesi güncelleştirilmiş olabilir, ancak paylaşımın oluşturulmasının tamamlanmasını beklemeniz gerekir.
 
-2. Önceki adımda yer alan tüm adımları tekrarlayarak ve **Edge Yerel paylaşma olarak Yapılandır**onay kutusunu seçerek Edge cihazında Edge Yerel bir paylaşımından bir sınır ekleyin. Yerel paylaşımdaki veriler cihazda kalır.
+2. Önceki adımda yer alan tüm adımları tekrarlayarak ve **Edge Yerel paylaşma olarak Yapılandır** onay kutusunu seçerek Edge cihazında Edge Yerel bir paylaşımından bir sınır ekleyin. Yerel paylaşımdaki veriler cihazda kalır.
 
     ![Edge Yerel paylaşma ekleme](./media/azure-stack-edge-deploy-configure-compute/add-edge-share-2.png)
 
   
-3. Güncelleştirilmiş paylaşımların listesini görmek için **Paylaşım Ekle** ' yi seçin.
+3. Güncel paylaşımların listesini görmek için **IoT Edge > paylaşımlarına** gidin.
 
     ![Güncelleştirilmiş paylaşım listesi](./media/azure-stack-edge-deploy-configure-compute/add-edge-share-3.png) 
  
@@ -105,24 +110,24 @@ Bu öğreticide basit dağıtım için iki paylaşım gerekir: bir kenar paylaş
 
 Bu bölümde, [Azure Stack Edge Pro Için C# modülü geliştirme](azure-stack-edge-create-iot-edge-module.md)bölümünde oluşturduğunuz IoT Edge cihazına özel bir modül eklersiniz. Bu özel modül, uç cihazdaki bir uç yerel paylaşımından dosya alır ve bunları cihazdaki bir kenar (bulut) paylaşımıyla taşımalıdır. Ardından bulut paylaşımından, dosyaları bulut paylaşımıyla ilişkili Azure depolama hesabına iter.
 
-1. **Edge compute >** başlayın ' a gidin. **Modül Ekle** kutucuğunda senaryo türünü **basit**olarak seçin. **Ekle**’yi seçin.
+1. **IoT Edge > modüllerine** gidin. Cihaz komut çubuğundan **+ Modül Ekle**' yi seçin.
 2. **Modül yapılandırma ve ekleme** dikey penceresinde aşağıdaki değerleri girin:
 
     
     |Alan  |Değer  |
     |---------|---------|
-    |Adı     | Modül için benzersiz bir ad. Bu modül, Azure Stack Edge Pro ile ilişkili IoT Edge cihazına dağıtabileceğiniz bir Docker kapsayıcısıdır.        |
+    |Ad     | Modül için benzersiz bir ad. Bu modül, Azure Stack Edge Pro ile ilişkili IoT Edge cihazına dağıtabileceğiniz bir Docker kapsayıcısıdır.        |
     |Görüntü URI 'SI     | Modülün karşılık gelen kapsayıcı görüntüsü için görüntü URI 'SI.        |
     |Kimlik bilgileri gerekli     | İşaretliyse, Kullanıcı adı ve parola, eşleşen bir URL ile modülleri almak için kullanılır.        |
     |Giriş paylaşma     | Bir giriş paylaşma seçin. Edge Yerel paylaşma, bu durumda giriş paylaşımıdır. Burada kullanılan modül, dosyaları uç yerel paylaşımından buluta yüklendikleri bir kenar paylaşımıyla taşıırlar.        |
     |Çıkış payı     | Bir çıkış payı seçin. Edge paylaşma, bu durumda çıkış paylaşımıdır.        |
-    |Tetikleyici türü     | **Dosya** veya **zamanlama**arasından seçim yapın. Dosya tetikleyicisi, giriş paylaşımına dosya yazılması gibi bir dosya olayı gerçekleştiğinde tetiklenir. Zamanlanmış tetikleyici, sizin tanımladığınız zamanlamaya göre tetiklenir.         |
+    |Tetikleyici türü     | **Dosya** veya **zamanlama** arasından seçim yapın. Dosya tetikleyicisi, giriş paylaşımına dosya yazılması gibi bir dosya olayı gerçekleştiğinde tetiklenir. Zamanlanmış tetikleyici, sizin tanımladığınız zamanlamaya göre tetiklenir.         |
     |Tetikleyici adı     | Tetikleyiciniz için benzersiz bir ad.         |
     |Ortam değişkenleri| Modülünüzün çalışacağı ortamı tanımlamaya yardımcı olacak isteğe bağlı bilgiler.   |
 
     ![Modül ekleme ve yapılandırma](./media/azure-stack-edge-deploy-configure-compute/add-module-1.png)
 
-3. **Ekle**’yi seçin. Modül eklendi. Modülün dağıtıldığını belirtmek için **Modül Ekle** kutucuk güncelleştirmeleri. 
+3. **Ekle**’yi seçin. Modül eklendi. **IoT Edge > genel bakış** sayfası, modülün dağıtıldığını belirtecek şekilde güncelleştirilir. 
 
     ![Modül dağıtıldı](./media/azure-stack-edge-deploy-configure-compute/add-module-2.png)
 
@@ -132,7 +137,7 @@ Son adım modülün bağlı olduğundan ve beklendiği gibi çalıştığından 
 
 Modülün çalıştığını doğrulamak için aşağıdakileri yapın:
 
-1. **Modül Ekle** kutucuğunu seçin. Bu sizi **modüller** dikey penceresine götürür. Modüller listesinde, dağıttığınız modülü ayırt edin. Eklediğiniz modülün çalışma zamanı durumu *çalışıyor*olmalıdır.
+1. **Modül Ekle** kutucuğunu seçin. Bu sizi **modüller** dikey penceresine götürür. Modüller listesinde, dağıttığınız modülü ayırt edin. Eklediğiniz modülün çalışma zamanı durumu *çalışıyor* olmalıdır.
 
     ![Veri dönüştürmeyi doğrulama](./media/azure-stack-edge-deploy-configure-compute/verify-data-1.png)
  

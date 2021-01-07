@@ -3,18 +3,18 @@ title: Hızlı Başlangıç - Maliyet analiziyle Azure maliyetlerini keşfetme
 description: Bu hızlı başlangıç, Azure kurumsal maliyetlerinizi keşfetmek ve analiz etmek için maliyet analizini kullanmanıza yardımcı olur.
 author: bandersmsft
 ms.author: banders
-ms.date: 11/20/2020
+ms.date: 01/04/2021
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1926a5a2ee81b6be4abee5e4064a4a23354da1a1
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 83f2d87e3f4a03ff17526ea5706e4f87b8f39487
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033587"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882458"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Hızlı Başlangıç: Maliyet analiziyle maliyetleri araştırma ve analiz etme
 
@@ -72,6 +72,8 @@ Maliyet tahmini, seçili döneme ait maliyetlerinizle ilgili bir tahmin gösteri
 
 Model, en fazla altı aylık eğitim verilerini kullanarak bir yıllık maliyet tahmininde bulunabilir. Tahminini değiştirmek için en az yedi günlük eğitim verisine ihtiyaç duyar. Bu tahmin, maliyet ve kullanım düzenlerindeki ani artışlar ve düşüşler gibi önemli değişiklikleri temel alır. Tahmin, **Gruplama ölçütü** özelliklerindeki her bir öğe için ayrı tahminler oluşturmaz. Yalnızca toplam birikmiş maliyetlerle ilgili tahmin sunar. Birden çok para birimi kullanıyorsanız model yalnızca ABD doları cinsindeki maliyetler için tahmin sağlar.
 
+Modelin verilerdeki ani düşüş ve artışlara bağlı olması nedeniyle, ayrılmış örnekler gibi büyük satın alımlar tahminlerinizin yapay olarak şişirilmesine yol açar. Bu durumun tahmini ne kadar süreyle etkileyeceği, tahmin döneminin süresine ve satın almaların boyutuna bağlıdır. Harcama sabitlendiğinde tahmin de normale döner.
+
 ## <a name="customize-cost-views"></a>Maliyet görünümlerini özelleştirme
 
 Maliyet analizi, en yaygın hedeflere göre iyileştirilmiş dört yerleşik görünüme sahiptir:
@@ -88,7 +90,7 @@ Fatura ayrıntıları | Son faturamdaki ücretler nelerdi?
 
 Öte yandan, birçok durumda daha derin analizler gerekir. Özelleştirme, seçilen tarihle sayfanın en üstünde başlatılır.
 
-Maliyet analizi, varsayılan olarak geçerli ayın verilerini gösterir. Tarih seçiciyi kullanarak yaygın tarih aralıkları arasında hızlıca geçiş yapabilirsiniz. Örneğin son yedi gün, geçen ay, geçerli yıl veya özel tarih aralığı seçebilirsiniz. Kullandıkça öde abonelikleri ayrıca faturalama döneminize göre belirlenen ve takvim ayına bağlı olmayan tarih aralıklarına da sahiptir (geçerli faturalama dönemi veya son fatura gibi). Menünün üst tarafındaki **<ÖNCEKİ** ve **SONRAKİ>** bağlantılarını kullanarak önceki veya sonraki döneme geçiş yapabilirsiniz. Örneğin **<ÖNCEKİ** bağlantısı, **Son 7 gün** görünümünü **8-14 gün önce** veya **15-21 gün önce** olarak değiştirir. Özel bir tarih aralığı belirlerken en fazla bir yıl (örneğin 1 Ocak-31 Aralık) seçebileceğinizi unutmayın.
+Maliyet analizi, varsayılan olarak geçerli ayın verilerini gösterir. Tarih seçiciyi kullanarak yaygın tarih aralıkları arasında hızlıca geçiş yapabilirsiniz. Örneğin son yedi gün, geçen ay, geçerli yıl veya özel tarih aralığı seçebilirsiniz. Kullandıkça öde abonelikleri ayrıca faturalama döneminize göre belirlenen ve takvim ayına bağlı olmayan tarih aralıklarına da sahiptir (geçerli faturalama dönemi veya son fatura gibi). Menünün üst tarafındaki **<ÖNCEKİ** ve **SONRAKİ>** bağlantılarını kullanarak önceki veya sonraki döneme geçiş yapabilirsiniz. Örneğin **<ÖNCEKİ** bağlantısı, **Son 7 gün** görünümünü **8-14 gün önce** veya **15-21 gün önce** olarak değiştirir. Özel bir tarih aralığı belirlerken en fazla bir yıl (örneğin, 1 Ocak-31 Aralık) seçebileceğinizi unutmayın.
 
 ![Bu ay için örnek seçimi gösteren tarih seçici](./media/quick-acm-cost-analysis/date-selector.png)
 
@@ -123,7 +125,7 @@ Maliyet analizi varsayılan olarak tüm kullanım ve satın alma maliyetlerini t
 
 ![Rezervasyon satın alma işlemlerinin döneme yayıldığını ve rezervasyonu kullanan kaynaklara ayrıldığını görmek için gerçek ve amorti edilen maliyetler arasında geçiş yapın](./media/quick-acm-cost-analysis/metric-picker.png)
 
-Amorti edilen maliyet, rezervasyon satın alma işlemlerini günlük parçalara böler ve rezervasyon süresine yayar. Örneğin 1 Ocak tarihinde 365 ABD doları tutarında bir satın alma işlemi görmek yerine 1 Ocak ile 31 Aralık arasındaki her gün 1,00 ABD doları değerinde satın alma işlemi görürsünüz. Bu maliyetler, temel amorti işlemlerinin yanı sıra rezervasyonu kullanan kaynaklara yeniden atanır ve onlarla ilişkilendirilir. Örneğin 1,00 ABD doları değerindeki günlük ücretin iki sanal makineye ayrılması durumunda gün içinde iki farklı 0,50 ABD doları ücret görürsünüz. Rezervasyonun bir bölümünün aynı gün kullanılmaması halinde ilgili sanal makine ile ilişkilendirilmiş 0,50 ABD doları değerinde ücret ve `UnusedReservation` ücret türüne sahip ayrı bir 0,50 ABD doları harcama görürsünüz. Kullanılmayan rezervasyon maliyetleri yalnızca amorti edilen maliyet görünümünde görüntülenebilir.
+Amorti edilen maliyet, rezervasyon satın alma işlemlerini günlük parçalara böler ve rezervasyon süresine yayar. Örneğin 1 Ocak tarihinde 365 ABD doları tutarında bir satın alma işlemi görmek yerine 1 Ocak ile 31 Aralık arasındaki her gün 1,00 ABD doları değerinde satın alma işlemi görürsünüz. Bu maliyetler, temel amorti işlemlerinin yanı sıra rezervasyonu kullanan kaynaklara yeniden atanır ve onlarla ilişkilendirilir. Örneğin 1,00 ABD doları değerindeki günlük ücretin iki sanal makineye ayrılması durumunda gün içinde iki farklı 0,50 ABD doları ücret görürsünüz. Rezervasyonun bir bölümünün aynı gün kullanılmaması halinde ilgili sanal makine ile ilişkilendirilmiş 0,50 ABD doları değerinde ücret ve `UnusedReservation` ücret türüne sahip ayrı bir 0,50 ABD doları harcama görürsünüz. Kullanılmayan rezervasyon maliyetleri yalnızca itfa edilen maliyet gösterilirken görülebilir.
 
 Maliyetlerin gösterilmesindeki değişiklik nedeniyle gerçek maliyet ile amorti edilen maliyet görünümlerinde farklı toplam değerlerin gösterildiğini unutmayın. Genel olarak amorti edilen maliyetler görüntülendiğinde rezervasyon satın alma işlemi gerçekleştirilen ayların toplam maliyeti azalacak, rezervasyon satın alma işlemini takip eden ayların maliyeti ise artacaktır. Amorti etme yalnızca rezervasyon satın alma işlemleri için geçerlidir ve şu an için Azure Market satın alma işlemlerine uygulanmaz.
 
@@ -151,9 +153,9 @@ Portalı kullanarak kuruluşunuzda maliyet bilgilerini paylaşma hakkında daha 
 
 >[!VIDEO https://www.youtube.com/embed/kQkXXj-SmvQ]
 
-Maliyet analizini sabitlemek için sağ üst köşede veya "<Subscription Name> | Maliyet analizi" öğesinden sonra yer alan raptiye simgesini seçin. Maliyet analizini sabitlediğinizde yalnızca ana grafik veya tablo görünümü kaydedilir. Panoyu kaydederek kutucuğa başkalarının da erişmesini sağlayabilirsiniz. Bu işlem yalnızca pano yapılandırmasını paylaşır ve başkalarına temel alınan veriler için erişim izni vermez. Maliyetlere erişiminiz yoksa ancak paylaşılan bir panoya erişebiliyorsanız "erişim engellendi" iletisiyle karşılaşırsınız.
+Maliyet analizini sabitlemek için sağ üst köşede veya "<Subscription Name> | Maliyet analizi" öğesinden sonra yer alan raptiye simgesini seçin. Maliyet analizini sabitlediğinizde yalnızca ana grafik veya tablo görünümü kaydedilir. Panoyu kaydederek kutucuğa başkalarının da erişmesini sağlayabilirsiniz. Paylaşım yalnızca pano yapılandırmasını paylaşır ve başkalarına temel alınan veriler için erişim izni vermez. Maliyetlere erişiminiz yoksa ancak paylaşılan bir panoya erişebiliyorsanız "erişim engellendi" iletisiyle karşılaşırsınız.
 
-Maliyet analizi bağlantısını paylaşmak için dikey pencerenin üst tarafında **Paylaş**'ı seçin. Bu belirli kapsam için belirli görünümü açan özel bir URL gösterilir. Maliyetlere erişiminiz yoksa bu URL'yi kullandığınızda "erişim engellendi" iletisiyle karşılaşırsınız.
+Maliyet analizi bağlantısını paylaşmak için pencerenin üst tarafında **Paylaş**'ı seçin. Bu belirli kapsam için belirli görünümü açan özel bir URL gösterilir. Maliyetlere erişiminiz yoksa bu URL'yi kullandığınızda "erişim engellendi" iletisiyle karşılaşırsınız.
 
 ## <a name="download-usage-data"></a>Kullanım verilerini indirme
 
@@ -161,7 +163,7 @@ Maliyet analizi bağlantısını paylaşmak için dikey pencerenin üst tarafın
 
 Ek analiz gerçekleştirmek için verileri indirmek, kendi verilerinizle birleştirmek veya kendi sistemlerinizle tümleştirmek isteyebilirsiniz. Maliyet Yönetimi birkaç farklı seçenek sunar. Başlangıç noktası olarak maliyet analizinde olduğu gibi anlık üst düzey özete ihtiyacınız varsa ihtiyacınız olan görünümü oluşturmanız gerekir. Ardından **Dışarı aktar**'ı ve ardından **Verileri CSV olarak indir** veya **Verileri Excel'e indir**'i seçerek oluşturduğunuz görünümü indirebilirsiniz. Excel dosyası kapsam, sorgu yapılandırması, toplam ve oluşturma tarihi gibi indirilen dosyayı oluşturmak için kullandığınız görünümle ilgili ek bağlam bilgisi sunar.
 
-Tam, toplanmamış veri kümesine ihtiyacınız varsa ödeme hesabından indirebilirsiniz. Ardından, portalın sol gezinti bölmesindeki hizmetler listesinden **Maliyet Yönetimi + Faturalandırma**'yı seçin. Gerekirse ödeme hesabınızı seçin. **Kullanım + ücretler**'e gidip istediğiniz faturalama dönemine ait **İndir** simgesini seçin.
+Tam, toplanmamış veri kümesine ihtiyacınız varsa ödeme hesabından indirebilirsiniz. Ardından, portalın sol gezinti bölmesindeki hizmetler listesinden **Maliyet Yönetimi + Faturalandırma**'yı seçin. Gerekirse ödeme hesabınızı seçin. **Kullanım + ücretler**'e gidip bir faturalama dönemine ait **İndir** simgesini seçin.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

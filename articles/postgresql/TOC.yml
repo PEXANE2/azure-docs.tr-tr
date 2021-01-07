@@ -14,7 +14,7 @@
   items:
     - name: Veritabanı dağıtımı
       items:
-        - name: GitHub Actions
+        - name: GitHub eylemleri
           href: how-to-deploy-github-action.md
     - name: Geçiş
       items:
@@ -640,6 +640,8 @@
           href: howto-hyperscale-create-users.md
         - name: Dağıtılmış veriler
           items:
+            - name: Tablo boyutunu belirleme
+              href: howto-hyperscale-table-size.md
             - name: Tabloları dağıtma ve değiştirme
               href: howto-hyperscale-modify-distributed-tables.md
         - name: Yüksek kullanılabilirlik
@@ -657,6 +659,8 @@
             - name: Bağlantı hatalarını giderme
               href: howto-hyperscale-troubleshoot-common-connection-issues.md
               displayName: 'connection errors, hyperscale'
+            - name: Yararlı tanılama sorguları
+              href: howto-hyperscale-useful-diagnostic-queries.md
 - name: Başvuru
   items:
     - name: Azure CLI

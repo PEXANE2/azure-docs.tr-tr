@@ -3,12 +3,12 @@ title: Visual Studio Code-Azure Işlevleri kullanarak bir PowerShell işlevi olu
 description: PowerShell işlevi oluşturmayı öğrenin ve ardından Visual Studio Code içindeki Azure Işlevleri uzantısını kullanarak yerel projeyi Azure Işlevleri 'nde sunucusuz barındırma için yayımlayın.
 ms.topic: quickstart
 ms.date: 11/04/2020
-ms.openlocfilehash: 5d85c0362daa9dc3b42ed0cc1329329ffa598bee
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: ad129d8faec5725a6e76f14577e6a0e9deae8d86
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637056"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968016"
 ---
 # <a name="quickstart-create-a-powershell-function-in-azure-using-visual-studio-code"></a>Hızlı başlangıç: Visual Studio Code kullanarak Azure 'da PowerShell işlevi oluşturma
 
@@ -26,8 +26,7 @@ Başlamadan önce, aşağıdaki gereksinimlerin yerinde olduğundan emin olun:
 
 + Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-+ [Node.js](https://nodejs.org/), NPM için Windows için gereklidir. Yalnızca [ETKIN LTS ve bakım LTS sürümleri](https://nodejs.org/about/releases/). `node --version`Sürümünüzü denetlemek için komutunu kullanın.
-    MacOS ve Linux 'ta yerel geliştirme için gerekli değildir.
++ [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) sürüm 3. x.
 
 + [PowerShell 7](/powershell/scripting/install/installing-powershell-core-on-windows)
 
@@ -47,22 +46,22 @@ Bu bölümde, PowerShell 'de yerel bir Azure Işlevleri projesi oluşturmak içi
 
     ![Yeni proje oluştur seçeneğini belirleyin](./media/functions-create-first-function-vs-code/create-new-project.png)
 
-1. Proje çalışma alanınız için bir dizin konumu seçin ve **Seç** ' i seçin.
+1. Proje çalışma alanınız için bir dizin konumu seçin ve **Seç**' i seçin.
 
     > [!NOTE]
     > Bu adımlar, bir çalışma alanının dışında tamamlanacak şekilde tasarlandı. Bu örnekte, bir çalışma alanının parçası olan bir proje klasörünü seçmeyin.
 
 1. İstemlere aşağıdaki bilgileri sağlayın:
 
-    + **İşlev projeniz için bir dil seçin** : seçin `PowerShell` .
+    + **İşlev projeniz için bir dil seçin**: seçin `PowerShell` .
 
-    + **Projenizin ilk işlevi için bir şablon seçin** : seçin `HTTP trigger` .
+    + **Projenizin ilk işlevi için bir şablon seçin**: seçin `HTTP trigger` .
 
-    + **Bir işlev adı girin** : tür `HttpExample` .
+    + **Bir işlev adı girin**: tür `HttpExample` .
 
-    + **Yetkilendirme düzeyi** : `Anonymous` herhangi bir kişinin işlev uç noktanızı çağırmasını sağlayan öğesini seçin. Yetkilendirme düzeyi hakkında bilgi edinmek için bkz. [Yetkilendirme anahtarları](functions-bindings-http-webhook-trigger.md#authorization-keys).
+    + **Yetkilendirme düzeyi**: `Anonymous` herhangi bir kişinin işlev uç noktanızı çağırmasını sağlayan öğesini seçin. Yetkilendirme düzeyi hakkında bilgi edinmek için bkz. [Yetkilendirme anahtarları](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
-    + **Projenizi nasıl açmak Istediğinizi seçin** : seçin `Add to workspace` .
+    + **Projenizi nasıl açmak Istediğinizi seçin**: seçin `Add to workspace` .
 
 1. Bu bilgileri kullanarak, Visual Studio Code HTTP tetikleyicisiyle bir Azure Işlevleri projesi oluşturur. Yerel proje dosyalarını Gezgin içinde görüntüleyebilirsiniz. Oluşturulan dosyalar hakkında daha fazla bilgi edinmek için bkz. [oluşturulan proje dosyaları](functions-develop-vs-code.md#generated-project-files). 
 

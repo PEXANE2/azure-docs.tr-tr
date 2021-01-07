@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 12/29/2020
-ms.openlocfilehash: 34a5dfb44ee78245b56c1774701f48b3b8a494df
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.date: 12/30/2020
+ms.openlocfilehash: ee6c116d02a7be1682d9e8379037ef1b8c92bce8
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827487"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967047"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Logic Apps REST API'sini kullanarak tümleştirme hizmeti ortamı (ISE) oluşturma
 
@@ -121,7 +121,7 @@ Dağıtımın tamamlanabilmesi için genellikle iki saat içinde sürer. Bazen d
             }
          ]
       },
-      // Include `certificates` object to enable self-signed certiificate and certificate issued by Enterprise Certificate Authority
+      // Include `certificates` object to enable self-signed certificate and the certificate issued by Enterprise Certificate Authority
       "certificates": {
          "testCertificate": {
             "publicCertificate": "{base64-encoded-certificate}",
@@ -185,6 +185,7 @@ Bu örnek istek gövdesinde örnek değerler gösterilmektedir:
    }
 }
 ```
+
 ## <a name="add-custom-root-certificates"></a>Özel kök sertifikaları Ekle
 
 Genellikle sanal ağınızdaki veya Şirket içindeki özel hizmetlere bağlanmak için bir ıSE kullanırsınız. Bu özel hizmetler genellikle kurumsal sertifika yetkilisi veya otomatik olarak imzalanan sertifika gibi özel kök sertifika yetkilisi tarafından verilen bir sertifika tarafından korunur. Otomatik olarak imzalanan sertifikaları kullanma hakkında daha fazla bilgi için bkz. [diğer hizmetlere ve sistemlere giden çağrılar Için güvenli erişim ve veri erişimi](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests). Bu hizmetlere Aktarım Katmanı Güvenliği (TLS) üzerinden başarıyla bağlanmak için, ıSE 'nin bu kök sertifikalara erişmesi gerekir. ISE 'nizi özel bir güvenilen kök sertifikayla güncelleştirmek için şu HTTPS isteğini yapın `PATCH` :

@@ -137,6 +137,8 @@
           href: batch-automatic-scaling.md
         - name: İşlem düğümleri için VM boyutu seçme
           href: batch-pool-vm-sizes.md
+        - name: Bulut hizmetinden sanal makine havuzlarına taşıma
+          href: batch-pool-cloud-service-to-virtual-machine-configuration.md
         - name: İşlem düğümlerine erişimi yapılandırma
           href: pool-endpoint-configuration.md
         - name: Paylaşılan Görüntü Galerisi ile bir havuz oluşturma

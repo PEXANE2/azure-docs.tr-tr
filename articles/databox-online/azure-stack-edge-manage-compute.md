@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 05/20/2019
+ms.date: 01/06/2021
 ms.author: alkohli
-ms.openlocfilehash: 0d93edbefb61cb8ded09f6402ca1e1661429efe1
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: ebf967fe02ab6424b9952bb0315b70fadb547fe3
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952157"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967920"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro"></a>Azure Stack Edge Pro 'unuzda işlem yönetme
 
@@ -38,7 +38,7 @@ Olaylar, bulut ortamınızda veya cihazınızda gerçekleşen ve üzerinde işle
 
 Bir tetikleyici oluşturmak için Azure portal aşağıdaki adımları uygulayın.
 
-1. Azure portal, Azure Stack Edge kaynağına gidip **kenar işlem > tetikleyicisine**gidin. Komut çubuğunda **+ tetikleyici Ekle** ' yi seçin.
+1. Azure portal, Azure Stack Edge kaynağına gidip **IoT Edge > tetikleyicilerine** gidin. Komut çubuğunda **+ tetikleyici Ekle** ' yi seçin.
 
     ![Tetikleyici Ekle 'yi seçin](media/azure-stack-edge-manage-compute/add-trigger-1.png)
 
@@ -68,15 +68,15 @@ Bir tetikleyiciyi silmek için Azure portal aşağıdaki adımları uygulayın.
 
 1. Tetikleyiciler listesinden silmek istediğiniz tetikleyiciyi seçin.
 
-    ![Tetikleyiciyi seçin](media/azure-stack-edge-manage-compute/add-trigger-1.png)
+    ![Tetikleyiciyi seçin](media/azure-stack-edge-manage-compute/delete-trigger-1.png)
 
 2. Sağ tıklayıp **Sil**' i seçin.
 
-    ![Sil ' i seçin](media/azure-stack-edge-manage-compute/add-trigger-1.png)
+    ![Sil ' i seçin](media/azure-stack-edge-manage-compute/delete-trigger-2.png)
 
 3. Onayınız istendiğinde **Evet**’e tıklayın.
 
-    ![Silmeyi onayla](media/azure-stack-edge-manage-compute/add-trigger-1.png)
+    ![Silmeyi onayla](media/azure-stack-edge-manage-compute/delete-trigger-3.png)
 
 Tetikleyicilerin listesi, silme işlemini yansıtacak şekilde güncelleştirilir.
 
@@ -88,11 +88,11 @@ Tetikleyicilerin listesi, silme işlemini yansıtacak şekilde güncelleştirili
 
 Cihazınızın işlem yapılandırmasını görüntülemek için Azure portal aşağıdaki adımları uygulayın.
 
-1. Azure portal, Azure Stack Edge kaynağına gidin ve sonra **uç işlem > modüller**' e gidin. Komut çubuğunda **Işlem görüntüle** ' yi seçin.
+1. Azure portal, Azure Stack Edge kaynağına gidip **IoT Edge > genel bakış**' a gidin. 
 
     ![İşlem görüntüleme seçin](media/azure-stack-edge-manage-compute/view-compute-1.png)
 
-2. Cihazınızda işlem yapılandırmasını bir yere getirin. İşlem yapılandırdığınızda, bir IoT Hub kaynağı oluşturdunuz. Bu IoT Hub kaynağı altında, bir IoT cihazı ve bir IoT Edge cihaz yapılandırılır. IoT Edge cihazda çalıştırmak için yalnızca Linux modülleri desteklenir.
+2. **Özellikler** sayfasına gidin. Cihazınızda işlem yapılandırmasını bir yere getirin. İşlem yapılandırdığınızda, bir IoT Hub kaynağı oluşturdunuz. Bu IoT Hub kaynağı altında, bir IoT cihazı ve bir IoT Edge cihaz yapılandırılır. IoT Edge cihazda çalıştırmak için yalnızca Linux modülleri desteklenir.
 
     ![Yapılandırmayı görüntüle](media/azure-stack-edge-manage-compute/view-compute-2.png)
 
@@ -101,7 +101,7 @@ Cihazınızın işlem yapılandırmasını görüntülemek için Azure portal a�
 
 Cihazınızın mevcut Edge işlem yapılandırmasını kaldırmak için Azure portal aşağıdaki adımları uygulayın.
 
-1. Azure portal, Azure Stack Edge kaynağınız ' ne gidin ve ardından **uç işlem >** başlayın ' a gidin. Komut çubuğunda işlemi **Kaldır** ' ı seçin.
+1. Azure portal, Azure Stack Edge kaynağına gidip **IoT Edge > genel bakış**' a gidin. Komut çubuğunda **Kaldır** ' ı seçin.
 
     ![İşlem kaldırma seçeneğini belirleyin](media/azure-stack-edge-manage-compute/remove-compute-1.png)
 
@@ -119,7 +119,7 @@ IoT cihazınız ve IoT Edge cihaz anahtarlarınız döndürülürse, en son eri�
 
 Cihazınızın erişim anahtarlarını eşitlemek için Azure portal aşağıdaki adımları uygulayın.
 
-1. Azure portal, Azure Stack Edge kaynağınız ' ne gidin ve ardından **uç işlem >** başlayın ' a gidin. Komut çubuğunda **yapılandırmayı Yenile** ' yi seçin.
+1. Azure portal, Azure Stack Edge kaynağına gidip **IoT Edge > genel bakış**' a gidin. Komut çubuğunda **yapılandırmayı Yenile** ' yi seçin.
 
     ![Yapılandırmayı Yenile seçeneğini belirleyin](media/azure-stack-edge-manage-compute/refresh-configuration-1.png)
 

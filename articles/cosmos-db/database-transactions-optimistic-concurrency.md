@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: bdfbe5106f220a9fe4a3568709187b9071bc7917
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 96652b2a1eb35668bd8a810b309ab31cec5afdb7
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93334285"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967268"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>İşlemler ve iyimser eşzamanlılık denetimi
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -53,7 +53,9 @@ Doğrudan veritabanı altyapısının içinde JavaScript yürütme özelliği, b
 
 İyimser eşzamanlılık denetimi, kayıp güncelleştirmeleri ve silmeleri engellemenizi sağlar. Eşzamanlı, çakışan işlemler, öğenin sahibi olan mantıksal bölüm tarafından barındırılan veritabanı altyapısının normal kötümser kilitlemesinde tabi. İki eşzamanlı işlem, bir mantıksal bölüm içindeki bir öğenin en son sürümünü güncelleştirmeye çalıştığında, bunlardan biri kazanıyacaktır ve diğeri başarısız olur. Bununla birlikte, aynı öğeyi aynı anda güncelleştirmeye çalışan bir veya iki işlem daha önce öğenin daha eski bir değerini okuseydi, veritabanı daha önce veya her iki çakışan işlemin öğenin en son değeri olan veya her ikisi tarafından daha önce okunan değerin ne olduğunu bilmez. Neyse ki, bu durum **Iyimser eşzamanlılık denetimi (OCC)** ile birlikte algılanarak iki işlemin veritabanı altyapısının içinde işlem sınırını girmelerini önlenebilir. OCC, verilerinizi yanlışlıkla başkalarının yaptığı değişikliklerin üzerine yazmalarını önler. Ayrıca başkalarının kendi değişikliklerinizi yanlışlıkla üzerine yazmasını engeller.
 
-Bir öğenin eşzamanlı güncelleştirmeleri, Azure Cosmos DB 'in iletişim protokolü katmanına göre OCC ile tabi. Azure Cosmos veritabanı, güncelleştirdiğiniz (veya sildiğiniz) öğenin istemci tarafı sürümünün Azure Cosmos kapsayıcısındaki öğenin sürümüyle aynı olmasını sağlar. Bu, yazlarınızın başkalarının yazmaları tarafından yanlışlıkla üzerine yazılmasını ve bunun tersini sağlar. Çok kullanıcılı bir ortamda, iyimser eşzamanlılık denetimi bir öğenin yanlış sürümünü yanlışlıkla silmenizi veya güncelleştirmenizi önler. Bu nedenle, öğeler "kayıp güncelleştirme" veya "kayıp silme" sorunlarına karşı korunur.
+Bir öğenin eşzamanlı güncelleştirmeleri, Azure Cosmos DB 'in iletişim protokolü katmanına göre OCC ile tabi. **Tek bölgeli yazma işlemleri** Için yapılandırılmış Azure Cosmos hesapları için Azure Cosmos DB, güncelleştirdiğiniz (veya sildiğiniz) öğenin istemci tarafı sürümünün Azure Cosmos kapsayıcısındaki öğenin sürümüyle aynı olmasını sağlar. Bu, yazlarınızın başkalarının yazmaları tarafından yanlışlıkla üzerine yazılmasını ve bunun tersini sağlar. Çok kullanıcılı bir ortamda, iyimser eşzamanlılık denetimi bir öğenin yanlış sürümünü yanlışlıkla silmenizi veya güncelleştirmenizi önler. Bu nedenle, öğeler "kayıp güncelleştirme" veya "kayıp silme" sorunlarına karşı korunur.
+
+**Çok bölgeli yazmalar** ile yapılandırılmış bir Azure Cosmos hesabında, verileri `_etag` yerel bölgedeki verilerle eşleşiyorsa, veriler ikincil bölgelere bağımsız olarak uygulanabilir. Yeni veriler ikincil bir bölgede yerel olarak kaydedildikten sonra merkez veya birincil bölgede birleştirilir. Çakışma çözümleme ilkesi yeni verileri Merkez bölgesiyle birleşiyorsa, bu veriler daha sonra, yeni ile genel olarak çoğaltılır `_etag` . Çakışma çözümleme ilkesi yeni verileri reddederse, ikincil bölge özgün verilere ve geri alınacaktır `_etag` .
 
 Azure Cosmos kapsayıcısında depolanan her öğenin sistem tarafından tanımlanan bir özelliği vardır `_etag` . Öğesinin değeri, `_etag` öğe her güncelleştirildiği zaman otomatik olarak oluşturulur ve sunucu tarafından güncelleştirilir. `_etag``if-match`, sunucunun bir öğenin koşullu olarak güncelleştirilip güncelleştirilmediğini istemediğinize karar vermesini sağlamak için istemci tarafından sağlanan istek üst bilgisi ile birlikte kullanılabilir. Üstbilginin değeri, `if-match` sunucudaki değeri ile eşleşir `_etag` , öğe daha sonra güncelleştirilir. `if-match`İstek üstbilgisinin değeri artık geçerli değilse, sunucu işlemi "HTTP 412 Önkoşul hatası" Yanıt iletisiyle reddeder. İstemci daha sonra öğenin geçerli sürümünü elde etmek için öğeyi yeniden alabilir veya öğe için kendi değeri ile sunucudaki öğenin sürümünü geçersiz kılabilir `_etag` . Ayrıca, `_etag` `if-none-match` bir kaynağın tekrar al gerekip gerekmediğini öğrenmek için üst bilgiyle birlikte kullanılabilir.
 

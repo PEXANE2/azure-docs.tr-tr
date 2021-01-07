@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: 2b54ee29b1b03bab5af8410a3fae06438180299d
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ce7c0cba4a231fbdb33679f8cdac7d57c79845f5
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507532"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968883"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>Kopyalama etkinliğinde şema ve veri türü eşleme
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -66,7 +66,7 @@ Aşağıdaki özellikler aşağıdakilere ek olarak desteklenir `translator` `ma
 
 Örneğin, Salesforce 'tan Azure SQL veritabanı 'na veri kopyalama ve üç sütunu açıkça eşleme:
 
-1. Kopyalama etkinliği-> eşleme sekmesinde, hem kaynak hem de havuz şemalarını içeri aktarmak için **Şemayı Içeri aktar** düğmesini tıklatın.
+1. Kopyalama etkinliği-> eşleme sekmesinde, hem kaynak hem de havuz şemalarını içeri aktarmak için **şemaları Içeri aktar** düğmesine tıklayın.
 
 2. Gerekli alanları eşleyin ve geri kalanı hariç tutun/silin.
 
@@ -180,7 +180,7 @@ Ayrıca, üst bilgi satırı ile aşağıdaki biçimdeki bir metin dosyasına ko
 
 Data Factory yazma Kullanıcı arabiriminde bu eşlemeyi tanımlayabilirsiniz:
 
-1. Kopyalama etkinliği-> eşleme sekmesinde, hem kaynak hem de havuz şemalarını içeri aktarmak için **Şemayı Içeri aktar** düğmesini tıklatın. Data Factory şemayı içeri aktarırken en az sayıda nesneyi örneklediğinizde, herhangi bir alan görünmüyorsa, var olan bir alan adının üzerine gelin ve düğüm, nesne veya dizi eklemeyi tercih edebilirsiniz.
+1. Kopyalama etkinliği-> eşleme sekmesinde, hem kaynak hem de havuz şemalarını içeri aktarmak için **şemaları Içeri aktar** düğmesine tıklayın. Data Factory şemayı içeri aktarırken en az sayıda nesneyi örneklediğinizde, herhangi bir alan görünmüyorsa, var olan bir alan adının üzerine gelin ve düğüm, nesne veya dizi eklemeyi tercih edebilirsiniz.
 
 2. Yinelemek istediğiniz diziyi seçin ve verileri ayıklayın. **Koleksiyon başvurusu** olarak otomatik olarak doldurulur. Note bu işlem için yalnızca tek bir dizi desteklenir.
 

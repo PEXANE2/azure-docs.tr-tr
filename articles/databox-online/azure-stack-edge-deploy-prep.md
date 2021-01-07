@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 11/11/2020
+ms.date: 01/06/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 3943caba5249432b3a0a4b7c2e63b2b818e2b7a1
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: aabc141666fe5c9fb52a3eac5ee1866f390e4551
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575712"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968507"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro"></a>Öğretici: Azure Stack Edge Pro 'Yu dağıtmaya hazırlanma  
 
@@ -150,11 +150,11 @@ Sipariş yerleştirildikten sonra, Microsoft siparişi inceler ve gönderim ayr�
 
 Azure Stack Edge kaynağı çalışır duruma geçtikten sonra etkinleştirme anahtarını almanız gerekir. Bu anahtar Azure Stack Edge Pro cihazınızı etkinleştirmek ve kaynakla bağlamak için kullanılır. Bu anahtarı şimdi, Azure portalındayken alabilirsiniz.
 
-1. Oluşturduğunuz kaynağı seçin. **Genel bakış** ' ı ve ardından **Cihaz kurulumu**' nu seçin.
+1. Oluşturduğunuz kaynağa gidin ve **Genel Bakış ' ı** seçin. Siparişinizin işlenme efektiyle ilgili bir bildirim görürsünüz.
 
-    ![Cihaz kurulumunu seçin](media/azure-stack-edge-deploy-prep/data-box-edge-select-devicesetup.png)
+    ![Genel Bakış ' ı seçin](media/azure-stack-edge-deploy-prep/data-box-edge-select-devicesetup.png)
 
-2. **Etkinleştir** kutucuğunda bir etkinleştirme anahtarı oluşturmak Için **anahtar oluştur** ' u seçin. Anahtarı kopyalamak için Kopyala simgesini seçin ve daha sonra kullanmak üzere kaydedin.
+2. Sipariş işlendikten ve cihaz sizin bir biçimde olduğunda, **genel bakış** güncelleştirilir. Varsayılan **Azure Key Vault adını** kabul edin veya yeni bir tane girin. **Etkinleştirme anahtarı oluştur**' u seçin. Anahtarı kopyalamak için Kopyala simgesini seçin ve daha sonra kullanmak üzere kaydedin.
 
     ![Etkinleştirme anahtarını alma](media/azure-stack-edge-deploy-prep/get-activation-key.png)
 

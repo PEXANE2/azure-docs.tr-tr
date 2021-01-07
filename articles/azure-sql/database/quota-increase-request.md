@@ -9,12 +9,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 06/04/2020
-ms.openlocfilehash: cfcdd143a26d36ed3c4646122fce7c19c41976d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44a37a912c5c7a882d21631b8ce2da2c7ba9c05e
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448844"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967710"
 ---
 # <a name="request-quota-increases-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL veritabanı ve SQL yönetilen örneği için istek kotası artıyor
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -29,19 +29,19 @@ SQL veritabanı için Azure portal yeni bir destek isteği oluşturmak için aş
 
    ![Yardım + destek bağlantısı](./media/quota-increase-request/help-plus-support.png)
 
-1. **Yardım + Destek**bölümünde **Yeni destek isteği**' ni seçin.
+1. **Yardım + Destek** bölümünde **Yeni destek isteği**' ni seçin.
 
     ![Yeni bir destek isteği oluşturun](./media/quota-increase-request/new-support-request.png)
 
-1. **Sorun türü**için **hizmet ve abonelik sınırları (kotalar)** öğesini seçin.
+1. **Sorun türü** için **hizmet ve abonelik sınırları (kotalar)** öğesini seçin.
 
    ![Sorun türü seçin](./media/quota-increase-request/select-quota-issue-type.png)
 
-1. **Abonelik**için, kotasını artırmak istediğiniz aboneliği seçin.
+1. **Abonelik** için, kotasını artırmak istediğiniz aboneliği seçin.
 
    ![Daha fazla kota için bir abonelik seçin](./media/quota-increase-request/select-subscription-support-request.png)
 
-1. **Kota türü**için aşağıdaki kota türlerinden birini seçin:
+1. **Kota türü** için aşağıdaki kota türlerinden birini seçin:
 
    - Tek veritabanı ve elastik havuz kotaları için **SQL veritabanı** .
    - Yönetilen örnekler için **SQL veritabanı yönetilen örneği** .
@@ -105,20 +105,22 @@ Aboneliğinizin belirli bir bölgede erişmesi gerekiyorsa **bölge erişimi** s
 
 1. **Konum seçin** listesinde, kullanılacak Azure bölgesini seçin. Kota her bölgede abonelik başına olur.
 
-1. **Satın alma modelini**ve **beklenen tüketim** ayrıntılarını girin.
+1. **Satın alma modelini** ve **beklenen tüketim** ayrıntılarını girin.
 
    ![İstek bölgesi erişimi](./media/quota-increase-request/quota-request.png)
 
-### <a name="enable-m-series-access-to-a-region"></a><a id="mseries"></a> Bir bölgeye e-serisi erişimi etkinleştir
+<!--
+### <a id="mseries"></a> Enable M-series access to a region
 
-Bir abonelik ve bölge için, e serisi donanım etkinleştirmek üzere bir destek isteği açılmalıdır.
+To enable M-series hardware for a subscription and region, a support request must be opened.
 
-1. **D serisi bölge erişim** kotası türünü seçin.
+1. Select the **M-series region access** quota type.
 
-1. **Konum seçin** listesinde, kullanılacak Azure bölgesini seçin. Kota her bölgede abonelik başına olur.
+1. In the **Select a location** list, select the Azure region to use. The quota is per subscription in each region.
 
 
-   ![İstek a serisi bölge erişimi](./media/quota-increase-request/quota-m-series.png)
+   ![Request M-series region access](./media/quota-increase-request/quota-m-series.png)
+-->
 
 ## <a name="sql-managed-instance-quota-type"></a><a id="sqlmiquota"></a> SQL yönetilen örnek kota türü
 
@@ -126,7 +128,7 @@ Bir abonelik ve bölge için, e serisi donanım etkinleştirmek üzere bir deste
 
 1. **Bölge** listesinde, hedeflenecek Azure bölgesini seçin.
 
-1. **Alt ağ** ve **sanal çekirdek**için istediğiniz yeni limitleri girin.
+1. **Alt ağ** ve **sanal çekirdek** için istediğiniz yeni limitleri girin.
 
    ![SQL yönetilen örnek kotası ayrıntıları](./media/quota-increase-request/quota-details-managed-instance.png)
 

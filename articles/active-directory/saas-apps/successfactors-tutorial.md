@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 12/26/2020
 ms.author: jeedes
-ms.openlocfilehash: 6570845c6a37a09315b038287ee35a3b48f1cdd0
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: fba29f77d67c5b571253b842f865ae29a6ccfacd
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521977"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968390"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-successfactors"></a>Öğretici: başarıyla Azure Active Directory çoklu oturum açma (SSO) Tümleştirmesi
 
@@ -26,7 +26,6 @@ Bu öğreticide, başarılı faktörleri Azure Active Directory (Azure AD) ile t
 * Kullanıcılarınızın Azure AD hesaplarıyla başarılı bir şekilde oturum açmaya yönelik otomatik olarak oturum açmaya olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -40,13 +39,12 @@ Başlamak için aşağıdaki öğeler gereklidir:
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
 * Başarılı etken **SP** tarafından başlatılan SSO 'yu destekler.
-* Başarılı faktörleri yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin boyutunu gerçek zamanlı olarak koruyan, oturum denetimlerini zorunlu kılabilirsiniz. Oturum denetimleri koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-successfactors-from-the-gallery"></a>Galeriden başarılı faktör ekleme
 
 Başarılı faktörlerin Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize başarılı bir faktör eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
@@ -56,9 +54,9 @@ Başarılı faktörlerin Azure AD ile tümleştirilmesini yapılandırmak için,
 
 ## <a name="configure-and-test-azure-ad-sso-for-successfactors"></a>Başarılı faktörlere yönelik Azure AD SSO 'yu yapılandırın ve test edin
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu başarılı faktörlerle yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında başarılı bir şekilde bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu başarılı faktörlerle yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında başarılı bir şekilde bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO 'yu başarılı faktörlerle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO 'yu başarılı faktörlerle yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
@@ -71,22 +69,22 @@ Azure AD SSO 'yu başarılı faktörlerle yapılandırmak ve test etmek için a�
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **başarılı etken** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. Azure portal, **başarılı etken** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
 1. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
+    a. **Oturum açma URL 'si** metin kutusuna aşağıdaki desenlerden birini kullanarak bir URL yazın:
 
     - `https://<companyname>.successfactors.com/<companyname>`
     - `https://<companyname>.sapsf.com/<companyname>`
     - `https://<companyname>.successfactors.eu/<companyname>`
     - `https://<companyname>.sapsf.eu`
 
-    b. **Tanımlayıcı** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
+    b. **Tanımlayıcı** metin kutusuna aşağıdaki desenlerden birini kullanarak bir URL yazın:
 
     - `https://www.successfactors.com/<companyname>`
     - `https://www.successfactors.com`
@@ -98,7 +96,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     - `https://www.successfactors.cn`
     - `https://www.successfactors.cn/<companyname>`
 
-    c. **Yanıt URL** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
+    c. **Yanıt URL** metin kutusuna aşağıdaki desenlerden birini kullanarak bir URL yazın:
 
     - `https://<companyname>.successfactors.com/<companyname>`
     - `https://<companyname>.successfactors.com`
@@ -141,22 +139,16 @@ Bu bölümde, başarılı etkenlere erişim vererek Azure çoklu oturum açma ö
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde, **başarılı etmenler**' ı seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
-
-    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
-
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ## <a name="configure-successfactors-sso"></a>Başarılı etken SSO 'yu yapılandırma
 
 1. Farklı bir Web tarayıcısı penceresinde, yönetici olarak başarılı bir şekilde **Yönetim Portalı** 'nda oturum açın.
 
-2. **Uygulama güvenliğini** ve yerel olarak **Çoklu oturum açma özelliğini**ziyaret edin.
+2. **Uygulama güvenliğini** ve yerel olarak **Çoklu oturum açma özelliğini** ziyaret edin.
 
 3. Herhangi bir değeri **sıfırlama belirtecine** koyun ve SAML SSO 'yu etkinleştirmek Için **belirteci kaydet** ' e tıklayın.
 
@@ -179,11 +171,11 @@ Bu bölümde, başarılı etkenlere erişim vererek Azure çoklu oturum açma ö
 
     e. **ETKIN** **SAML bayrağını etkinleştir**' i seçin.
 
-    f. **Oturum açma Isteği imzası olarak Hayır (SF tarafından oluşturulan/SP/RP)** seçeneğini belirleyin. **No**
+    f. **Oturum açma Isteği imzası olarak Hayır (SF tarafından oluşturulan/SP/RP)** seçeneğini belirleyin. 
 
-    örneğin: **SAML profili**olarak **tarayıcı/gönderi profili** ' ni seçin.
+    örneğin: **SAML profili** olarak **tarayıcı/gönderi profili** ' ni seçin.
 
-    h. **Sertifikayı zorla geçerli süre**olarak **Hayır** ' ı seçin.
+    h. **Sertifikayı zorla geçerli süre** olarak **Hayır** ' ı seçin.
 
     i. İndirilen sertifika dosyasının içeriğini Azure portal kopyalayın ve ardından bunu **SAML sertifikası** metin kutusuna yapıştırın.
 
@@ -194,13 +186,13 @@ Bu bölümde, başarılı etkenlere erişim vererek Azure çoklu oturum açma ö
 
     ![Ekran görüntüsü SAML V2 S P başlatılan oturum kapatma bölmesini gösterir; burada, açıklanan değerleri girebilirsiniz.][13]
 
-    a. **SP tarafından başlatılan genel oturum kapatma desteği**olarak **Evet** ' i seçin.
+    a. **SP tarafından başlatılan genel oturum kapatma desteği** olarak **Evet** ' i seçin.
 
     b. **Global oturum kapatma hizmeti URL 'si (LogoutRequest Destination)** metin kutusunda, Azure Portal formunu kopyaladığınız **oturum kapatma URL 'si** değerini yapıştırın.
 
     c. **Hayır** , **SP ıste tüm NameID öğelerini şifrelemelidir**.
 
-    d. **NameID biçimi**olarak **belirtilmemiş** öğesini seçin.
+    d. **NameID biçimi** olarak **belirtilmemiş** öğesini seçin.
 
     e. **SP tarafından başlatılan oturum açmayı etkinleştir (authbir)** olarak **Evet** ' i seçin.
 
@@ -210,9 +202,9 @@ Bu bölümde, başarılı etkenlere erişim vererek Azure çoklu oturum açma ö
 
     ![Tek Sign-On yapılandırma][29]
 
-    a. **Şirket ayarlarını**ziyaret edin (alt kısma yakın).
+    a. **Şirket ayarlarını** ziyaret edin (alt kısma yakın).
 
-    b. **Büyük/küçük harfe duyarlı olmayan kullanıcı adını etkinleştir**yakınında onay kutusunu seçin.
+    b. **Büyük/küçük harfe duyarlı olmayan kullanıcı adını etkinleştir** yakınında onay kutusunu seçin.
 
     c. **Kaydet**’e tıklayın.
 
@@ -227,23 +219,18 @@ Kullanıcıları başarılı bir şekilde oluşturulan kullanıcılara almak iç
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-Erişim panelinde başarılı bir kutucuğa tıkladığınızda, SSO 'yu ayarladığınız başarılı faktörlerin otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz başarılı bir oturum açma URL 'sine yönlendirecektir. 
 
-## <a name="additional-resources"></a>Ek kaynaklar
+* Başarılı bir şekilde oturum açma URL 'sine doğrudan gidin ve oturum akışını buradan başlatın.
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki başarılı etmenler kutucuğuna tıkladığınızda, bu işlem başarılı bir şekilde oturum açma URL 'sine yönlendirecektir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
+## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure AD ile başarılı faktörleri deneyin](https://aad.portal.azure.com)
-
-- [Microsoft Cloud App Security oturum denetimi nedir?](/cloud-app-security/proxy-intro-aad)
-
-- [Gelişmiş görünürlük ve denetimlerle başarılı etmenleri koruma](/cloud-app-security/proxy-intro-aad)
+Başarılı faktörleri yapılandırdıktan sonra, kuruluşunuzun gizli verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimlerini uygulayabilirsiniz. Oturum denetimleri koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-aad)
 
 <!--Image references-->
 

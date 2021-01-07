@@ -3,12 +3,12 @@ title: Azure VM yedeklemesi hakkında
 description: Bu makalede, Azure Backup hizmetinin Azure sanal makinelerini nasıl yedeklediği ve en iyi yöntemleri nasıl izledikleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 7fa47b83eb8fa06c028079cf47ea0cb46df31860
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 291c50d4ac52d34a218b1b7cc76d625da3119d25
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325239"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97969002"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM yedeklemesine genel bakış
 
@@ -76,7 +76,7 @@ Azure Backup, anlık görüntüleri yedekleme zamanlamalarına göre alır.
 
 Aşağıdaki tabloda farklı türde anlık görüntü tutarlılığı açıklanmaktadır:
 
-**Görüntüye** | **Ayrıntılar** | **Kurtarma** | **Dikkate Alınacak Nokta**
+**Görüntüye** | **Ayrıntılar** | **Kurtarma** | **Değerlendirme**
 --- | --- | --- | ---
 **Uygulamayla tutarlı** | Uygulamayla tutarlı yedeklemeler bellek içeriğini ve bekleyen g/ç işlemlerini yakalar. Uygulamayla tutarlı anlık görüntüler, bir yedekleme gerçekleşmeden önce uygulama verilerinin tutarlılığını sağlamak için bir VSS yazıcısı (veya Linux için ön betikler öncesi) kullanır. | VM 'yi uygulamayla tutarlı bir anlık görüntüyle kurtarırken, VM önyüklenir. Veri bozulması veya kaybı yok. Uygulamalar tutarlı bir durumda başlar. | Windows: tüm VSS yazıcıları başarılı oldu<br/><br/> Linux: ön/son betik yapılandırma ve başarılı
 **Dosya sistemiyle tutarlı** | Dosya sistemiyle tutarlı yedeklemeler, tüm dosyaların bir anlık görüntüsünü aynı anda alarak tutarlılık sağlar.<br/><br/> | Bir sanal makineyi dosya sistemiyle tutarlı bir anlık görüntüyle kurtarırken, VM önyüklenir. Veri bozulması veya kaybı yok. Geri yüklenen verilerin tutarlı olduğundan emin olmak için uygulamaların kendi "düzeltilmesi" mekanizmasını uygulaması gerekir. | Windows: bazı VSS yazıcıları başarısız oldu <br/><br/> Linux: varsayılan (ön/sonrası betikler yapılandırılmamışsa veya başarısız olursa)
@@ -87,7 +87,7 @@ Aşağıdaki tabloda farklı türde anlık görüntü tutarlılığı açıklanm
 
 ## <a name="backup-and-restore-considerations"></a>Yedekleme ve geri yükleme konusunda dikkat edilmesi gerekenler
 
-**Dikkate Alınacak Nokta** | **Ayrıntılar**
+**Değerlendirme** | **Ayrıntılar**
 --- | ---
 **Dis** | VM disklerinin yedeklenmesi paralel. Örneğin, bir VM 'nin dört diski varsa, yedekleme hizmeti dört diski paralel olarak yedeklemeye çalışır. Yedekleme artımlı (yalnızca değiştirilen veriler).
 **Zamanlama** |  Yedekleme trafiğini azaltmak için günün farklı saatlerinde farklı VM 'Leri yedekleyin ve zamanların çakışmadığından emin olun. VM'lerin aynı anda yedeklenmesi trafik yoğunluğuna neden olur.
@@ -121,6 +121,7 @@ VM yedekleme yapılandırması sırasında aşağıdaki yöntemleri uygulamanız
 - VM 'Leri tek bir kasadan geri yüklüyorsanız, hedef depolama hesabının kısıtlanmasını sağlamak için farklı [genel amaçlı v2 depolama hesapları](../storage/common/storage-account-upgrade.md) kullanmanızı önemle tavsiye ederiz. Örneğin, her sanal makinenin farklı bir depolama hesabı olmalıdır. Örneğin, 10 VM geri yüklenirse, 10 farklı depolama hesabı kullanın.
 - Anlık geri yükleme ile Premium depolama kullanan VM 'lerin yedeklenmesi için, **yalnızca** ilk yedekleme için gerekli olan toplam ayrılan depolama alanının *%50* boş alanını ayırmayı öneririz. İlk yedekleme tamamlandıktan sonra %50 boş alan yedeklemeler için bir gereksinim değildir
 - Depolama hesabı başına disk sayısı sınırı, disklere hizmet olarak altyapı (IaaS) VM üzerinde çalışan uygulamalar tarafından hangi düzeyde erişim sağlandığına göre değişir. Genellikle tek bir depolama hesabında 5-10 arası veya daha fazla disk varsa bazı diskleri ayrı depolama hesaplarına taşıyarak yükü dengelemeniz önerilir.
+- PowerShell kullanarak VM 'Leri yönetilen disklere geri yüklemek için, yönetilen disklerin geri yükleneceği kaynak grubunu belirtmek üzere **_Targetresourcegroupname_* _ ek parametresini sağlayın, [daha fazla bilgi edinin](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-managed-disks).
 
 ## <a name="backup-costs"></a>Yedekleme maliyetleri
 
@@ -130,7 +131,7 @@ Azure Backup ile yedeklenen Azure VM 'Leri [Azure Backup fiyatlandırmaya](https
 
 Belirtilen bir VM için faturalandırma yalnızca koruma durdurulmuşsa ve tüm yedekleme verileri silinirse durdurulur. Koruma durdurulduğunda ve etkin yedekleme işi olmadığında, son başarılı VM yedeklemesinin boyutu aylık fatura için kullanılan korumalı örnek boyutu olur.
 
-Korumalı örnek boyutu hesaplaması, sanal makinenin *gerçek* boyutuna göre belirlenir. VM 'nin boyutu, geçici depolama hariç olmak üzere VM 'deki tüm verilerin toplamıdır. Fiyatlandırma, sanal makineye bağlı her bir veri diski için desteklenen en büyük boyuta göre değil, veri disklerinde depolanan gerçek verileri temel alır.
+Korumalı örnek boyutu hesaplaması, sanal makinenin _actual * boyutunu temel alır. VM 'nin boyutu, geçici depolama hariç olmak üzere VM 'deki tüm verilerin toplamıdır. Fiyatlandırma, sanal makineye bağlı her bir veri diski için desteklenen en büyük boyuta göre değil, veri disklerinde depolanan gerçek verileri temel alır.
 
 Benzer şekilde, yedekleme depolama alanı faturanız, her kurtarma noktasındaki gerçek verilerin toplamı olan Azure Backup depolanan veri miktarına bağlıdır.
 

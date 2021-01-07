@@ -4,12 +4,12 @@ description: C# işlevi oluşturmayı öğrenin ve ardından Visual Studio Code 
 ms.topic: quickstart
 ms.date: 11/03/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 444dff214a70a47ced127a3ca2533c20ea2a779a
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 791416a54fa75091facf1f7bc2aadf6fccf54b05
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93425137"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968628"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-using-visual-studio-code"></a>Hızlı başlangıç: Visual Studio Code kullanarak Azure 'da C# işlevi oluşturma
 
@@ -27,8 +27,7 @@ Başlamadan önce, aşağıdaki gereksinimlerin yerinde olduğundan emin olun:
 
 + Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-+ [Node.js](https://nodejs.org/), NPM için Windows için gereklidir. Yalnızca [ETKIN LTS ve bakım LTS sürümleri](https://nodejs.org/about/releases/). `node --version`Sürümünüzü denetlemek için komutunu kullanın.
-    MacOS ve Linux 'ta yerel geliştirme için gerekli değildir.
++ [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) sürüm 3. x.
 
 + [Desteklenen platformlardan](https://code.visualstudio.com/docs/supporting/requirements#_platforms)birine [Visual Studio Code](https://code.visualstudio.com/) .
 
@@ -44,24 +43,24 @@ Bu bölümde, C# ' de yerel bir Azure Işlevleri projesi oluşturmak için Visua
 
     ![Yeni proje oluştur seçeneğini belirleyin](./media/functions-create-first-function-vs-code/create-new-project.png)
 
-1. Proje çalışma alanınız için bir dizin konumu seçin ve **Seç** ' i seçin.
+1. Proje çalışma alanınız için bir dizin konumu seçin ve **Seç**' i seçin.
 
     > [!NOTE]
     > Bu adımlar, bir çalışma alanının dışında tamamlanacak şekilde tasarlandı. Bu örnekte, bir çalışma alanının parçası olan bir proje klasörünü seçmeyin.
 
 1. İstemlere aşağıdaki bilgileri sağlayın:
 
-    + **İşlev projeniz için bir dil seçin** : seçin `C#` .
+    + **İşlev projeniz için bir dil seçin**: seçin `C#` .
 
-    + **Projenizin ilk işlevi için bir şablon seçin** : seçin `HTTP trigger` .
+    + **Projenizin ilk işlevi için bir şablon seçin**: seçin `HTTP trigger` .
 
-    + **Bir işlev adı girin** : tür `HttpExample` .
+    + **Bir işlev adı girin**: tür `HttpExample` .
 
-    + **Ad alanı belirtin** : tür `My.Functions` .
+    + **Ad alanı belirtin**: tür `My.Functions` .
 
-    + **Yetkilendirme düzeyi** : `Anonymous` herhangi bir kişinin işlev uç noktanızı çağırmasını sağlayan öğesini seçin. Yetkilendirme düzeyi hakkında bilgi edinmek için bkz. [Yetkilendirme anahtarları](functions-bindings-http-webhook-trigger.md#authorization-keys).
+    + **Yetkilendirme düzeyi**: `Anonymous` herhangi bir kişinin işlev uç noktanızı çağırmasını sağlayan öğesini seçin. Yetkilendirme düzeyi hakkında bilgi edinmek için bkz. [Yetkilendirme anahtarları](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
-    + **Projenizi nasıl açmak Istediğinizi seçin** : seçin `Add to workspace` .
+    + **Projenizi nasıl açmak Istediğinizi seçin**: seçin `Add to workspace` .
 
 1. Bu bilgileri kullanarak, Visual Studio Code HTTP tetikleyicisiyle bir Azure Işlevleri projesi oluşturur. Yerel proje dosyalarını Gezgin içinde görüntüleyebilirsiniz. Oluşturulan dosyalar hakkında daha fazla bilgi edinmek için bkz. [oluşturulan proje dosyaları](functions-develop-vs-code.md#generated-project-files).
 

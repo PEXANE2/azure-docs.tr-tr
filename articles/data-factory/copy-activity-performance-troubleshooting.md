@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/09/2020
-ms.openlocfilehash: d22d040b0001ee30e29c551e686a7cb6bc47c2af
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 01/07/2021
+ms.openlocfilehash: ee6105376f5e8dc884f13e04db51126c039328e9
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921923"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968900"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Kopyalama etkinliği performansını sorun giderme
 
@@ -142,7 +142,7 @@ Kopyalama performansı beklentilerinizi karşılamıyorsa, Azure Integration Run
 
   - Data Factory-> genel bakış sayfanıza Azure portal > şirket içinde barındırılan IR 'nin CPU ve bellek kullanımı eğilimini kontrol edin. CPU kullanımı yüksek veya kullanılabilir bellek düşükse, [ölçeği artırma/genişletme](create-self-hosted-integration-runtime.md#high-availability-and-scalability) için göz önünde bulundurun.
 
-  - Varsa bağlayıcıya özgü verileri yükleme en iyi uygulamasını benimseyin. Örnek:
+  - Varsa bağlayıcıya özgü verileri yükleme en iyi uygulamasını benimseyin. Örneğin:
 
     - [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP HANA](connector-sap-hana.md#sap-hana-as-source), [SAP tablosu](connector-sap-table.md#sap-table-as-source)ve [SAP açık hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)'dan verileri kopyalarken, verileri paralel olarak kopyalamak için veri bölümü seçeneklerini etkinleştirin.
 
@@ -172,6 +172,60 @@ Kopyalama performansı beklentilerinizi karşılamıyorsa, Azure Integration Run
 
   - [Paralel kopyaları](copy-activity-performance-features.md)kademeli olarak ayarlamayı göz önünde bulundurun. çok fazla paralel kopya, hatta performansın zarar görmediğini unutmayın.
 
+
+## <a name="connector-and-ir-performance"></a>Bağlayıcı ve IR performansı
+
+Bu bölüm, belirli bağlayıcı türü veya tümleştirme çalışma zamanı için bazı performans sorun giderme kılavuzlarını araştırır.
+
+### <a name="activity-execution-time-varies-using-azure-ir-vs-azure-vnet-ir"></a>Etkinlik yürütme süresi, Azure IR ile Azure VNet IR kullanımını değiştirir
+
+Etkinlik yürütme süresi, veri kümesinin farklı Integration Runtime temel aldığı zaman değişir.
+
+- **Belirtiler**: veri kümesindeki bağlantılı hizmet açılan listesini değiştirmek, aynı işlem hattı etkinliklerini gerçekleştirir, ancak büyük ölçüde farklı çalışma sürelerine sahip olur. Veri kümesi yönetilen sanal ağ Integration Runtime temel alıyorsa, çalışmayı tamamlamaya yönelik ortalama 2 dakikadan uzun sürer, ancak varsayılan Integration Runtime baz alınarak yaklaşık 20 saniye sürer.
+
+- **Neden**: işlem hattı çalışmalarının ayrıntılarını kontrol etmek için, normal bir işlem Azure IR üzerinde çalışırken, yavaş Işlem hattının yönetilen VNET (sanal ağ) IR üzerinde çalıştığını görebilirsiniz. Tasarıma göre, yönetilen VNet IR, Veri Fabrikası başına bir işlem düğümü ayırmadığımızda Azure IR sıra süresi daha uzun sürer. bu nedenle, her kopyalama etkinliğinin başlaması 2 dakika kadar bir süre daha vardır ve öncelikle Azure IR yerine VNet JOIN üzerinde gerçekleşir.
+
+    
+### <a name="low-performance-when-loading-data-into-azure-sql-database"></a>Azure SQL veritabanı 'na veri yüklenirken düşük performans
+
+- **Belirtiler**: Azure SQL veritabanı 'na veri kopyalama yavaş olur.
+
+- **Neden**: sorunun kök nedeni çoğunlukla Azure SQL veritabanı 'nın performans sorunlarına karşı tetiklenir. Olası bazı nedenler şunlardır:
+
+    - Azure SQL veritabanı katmanı yeterince yüksek değil.
+
+    - Azure SQL veritabanı DTU kullanımı %100 ' e yakın. [Performansı izleyebilir](https://docs.microsoft.com/azure/azure-sql/database/monitor-tune-overview) ve Azure SQL veritabanı katmanını yükseltmeyi göz önünde bulundurun.
+
+    - Dizinler düzgün ayarlanmadı. Veri yüklemeden önce tüm dizinleri kaldırın ve yükleme tamamlandıktan sonra yeniden oluşturun.
+
+    - WriteBatchSize, şema satır boyutuna sığacak kadar büyük değil. Sorunun özelliğini genişletmenize çalışın.
+
+    - Toplu iç içe değil, saklı yordam kullanılıyor, bu da daha kötü performansa sahip olması beklenir. 
+
+- **Çözüm**: [kopyalama etkinliği performansını sorun giderme](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting)bölümüne bakın.
+
+### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>Büyük Excel dosyası ayrıştırılırken zaman aşımı veya yavaş performans
+
+- **Belirtiler**:
+
+    - Excel veri kümesi oluşturduğunuzda ve şemayı bağlantı/depolama alanından içeri aktardığınızda, verileri Önizle, Listele veya Yenile, Excel dosyası boyutta büyükse zaman aşımı hatası ile karşılaşabilirsiniz.
+
+    - Büyük Excel dosyasından (>= 100 MB) verileri başka veri deposuna kopyalamak için kopyalama etkinliğini kullandığınızda, yavaş performans veya OOM sorunu yaşayabilirsiniz.
+
+- **Neden**: 
+
+    - Excel veri kümesindeki şemayı içeri aktarma, verileri önizleme ve çalışma sayfalarını listeleme gibi işlemler için zaman aşımı 100 s ve statiktir. Büyük Excel dosyası için, bu işlemler zaman aşımı değeri içinde bitmeyebilir.
+
+    - ADF kopyalama etkinliği tüm Excel dosyasını belleğe okur ve verileri okumak için belirtilen çalışma sayfasını ve hücreleri bulur. Bu davranış, temel alınan ADF tarafından kullanılan SDK 'nın kullanımından kaynaklanır.
+
+- **Çözüm**: 
+
+    - Şemayı içeri aktarmak için, özgün dosyanın bir alt kümesi olan daha küçük bir örnek dosya oluşturabilir ve "şemayı bağlantı/depodan içeri aktar" yerine "örnek dosyadan şemayı içeri aktar" seçeneğini belirleyebilirsiniz.
+
+    - Çalışma sayfası listesinde, çalışma sayfası açılan menüsünde "Düzenle" düğmesine tıklayabilir ve bunun yerine sayfa adını/dizinini girebilirsiniz.
+
+    - Büyük Excel dosyasını (>100 MB) başka bir depoya kopyalamak için, spor akışı okuma ve daha iyi bir şekilde gerçekleştirdiğiniz veri akışı Excel kaynağını kullanabilirsiniz.
+    
 ## <a name="other-references"></a>Diğer başvurular
 
 Desteklenen bazı veri depoları için performans izleme ve ayarlama başvuruları aşağıda verilmiştir:

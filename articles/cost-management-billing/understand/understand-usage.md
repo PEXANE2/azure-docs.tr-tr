@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 01/04/2021
 ms.author: banders
-ms.openlocfilehash: 559fe43bbd9b8951a97733ae1250046f65f10404
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 07e3cfdce238d5fc4e2737a49dde6fd624de8506
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149358"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882509"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Azure kullanımı ve ücretleri dosyasındaki terimleri anlama
 
@@ -126,10 +126,24 @@ UsageDate | Tarih
 UsageEnd | Tarih
 UsageStart | Tarih
 
-
 ## <a name="ensure-charges-are-correct"></a>Ücretlerin doğru olduğundan emin olun
 
 Ayrıntılı kullanım ve ücretler hakkında daha fazla bilgi edinmek için [kullandıkça öde](review-individual-bill.md) veya [Microsoft Müşteri Sözleşmesi](review-customer-agreement-bill.md) faturanızı anlamayla ilgili makaleleri okuyun.
+
+## <a name="unexpected-usage-or-charges"></a>Beklenmeyen kullanım veya ücretler
+
+Haberdar olmadığınız kullanım veya ücretlerle karşılaşırsanız bunun sebebini anlamak için yapabileceğiniz birkaç şey vardır:
+
+- Kaynak için ücret yansıtılan faturayı gözden geçirin
+- Maliyet analizinde faturalanmış ücretlerinizi gözden geçirin
+- Kaynaktan sorumlu kişileri bulup kendileriyle iletişim kurun
+- Denetim günlüklerini analiz edin
+- Kaynağın üst kapsamına yönelik kullanıcı izinlerini analiz etme
+- Ücretleri tespit etmenize yardımcı olması için [Azure destek isteği](https://go.microsoft.com/fwlink/?linkid=2083458) oluşturun
+
+Daha fazla bilgi için bkz. [Beklenmeyen ücretleri analiz etme](analyze-unexpected-charges.md).
+
+Azure’ın birçok kullanıcı eylemini günlüğe kaydetmediğini unutmayın. Bunun yerine Microsoft, faturalama için kaynak kullanımını günlüğe kaydeder. Geçmişte günlüğe kaydetme özelliğinin etkin olmadığı bir tarihte ani bir kullanım artışı fark ederseniz Microsoft bunun nedeni bulamaz. Uygun teknik ekibin sorun hakkında size yardımcı olabilmesi için, kullanım artışını görüntülemek istediğiniz hizmetin günlüğe kaydetme özelliğini etkinleştirin.
 
 ## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 

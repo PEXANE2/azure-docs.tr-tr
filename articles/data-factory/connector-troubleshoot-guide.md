@@ -5,16 +5,16 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 12/30/2020
+ms.date: 01/07/2021
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: e6591762ed6a7e2b462a209730276f3198d86ae8
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 68547b8fb673cd54b7c21963ede122553bbbc390
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821477"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967132"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory bağlayıcı sorunlarını giderme
 
@@ -458,34 +458,15 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 - **Neden**: Azure SYNAPSE Analytics 'ten dış tabloyu sorgulama sorunu.
 
 - **Çözüm**: aynı sorguyu SSMS 'de çalıştırın ve aynı sonucu görüp gör, kontrol edin. Yanıt Evet ise, Azure SYNAPSE Analytics 'e yönelik bir destek bileti açın ve daha fazla sorun gidermek için Azure SYNAPSE Analytics sunucunuzu ve veritabanı adınızı sağlayın.
-            
-
-### <a name="low-performance-when-load-data-into-azure-sql"></a>Azure SQL 'e veri yüklerken düşük performans
-
-- **Belirtiler**: VERILERI Azure SQL 'e kopyalama yavaş olur.
-
-- **Neden**: sorunun kök nedeni çoğunlukla Azure SQL tarafında performans sorunu tetikleniyor. Olası bazı nedenler şunlardır:
-
-    - Azure DB katmanı yeterince yüksek değil.
-
-    - Azure DB DTU kullanımı %100 ' e yakın. [Performansı izleyebilir](https://docs.microsoft.com/azure/azure-sql/database/monitor-tune-overview) ve DB katmanını yükseltmeyi göz önünde bulundurun.
-
-    - Dizinler düzgün ayarlanmadı. Veri yüklemeden önce tüm dizinleri kaldırın ve yükleme tamamlandıktan sonra yeniden oluşturun.
-
-    - WriteBatchSize, şema satır boyutuna sığacak kadar büyük değil. Sorunun özelliğini genişletmenize çalışın.
-
-    - Toplu iç içe değil, saklı yordam kullanılıyor, bu da daha kötü performansa sahip olması beklenir. 
-
-- **Çözüm**: [kopyalama etkinliği performansı](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting) için TSG 'ye başvurun
 
 
 ### <a name="performance-tier-is-low-and-leads-to-copy-failure"></a>Performans katmanı düşük ve kopyalamanın başarısız olmasına yol açar
 
-- **Belirtiler**: Azure SQL 'e veri kopyalanırken aşağıdaki hata iletisi oluştu: `Database operation failed. Error message from database execution : ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.`
+- **Belirtiler**: Azure SQL veritabanı 'na veri kopyalanırken aşağıdaki hata iletisi oluştu: `Database operation failed. Error message from database execution : ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.`
 
-- **Neden**: Azure SQL S1 kullanılıyor, bu durum bu durumda GÇ sınırlarına ulaştı.
+- **Neden**: Azure SQL veritabanı S1 kullanıldığı için bu durum GÇ sınırlarına ulaşıldı.
 
-- **Çözüm**: sorunu çözmek IÇIN Azure SQL performans katmanını yükseltin. 
+- **Çözüm**: sorunu çözmek IÇIN Azure SQL veritabanı performans katmanını yükseltin. 
 
 
 ### <a name="sql-table-cannot-be-found"></a>SQL tablosu bulunamıyor 
@@ -619,31 +600,6 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 - **Neden**: Dynamics sunucusu kararlı değil veya erişilemez durumda veya ağda sorun yaşanıyor.
 
 - **Öneri**: daha fazla ayrıntı için ağ bağlantısını denetleyin veya Dynamics Server günlüğünü kontrol edin. Daha fazla yardım için Dynamics desteği ile iletişime geçin.
-
-
-## <a name="excel-format"></a>Excel biçimi
-
-### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>Büyük Excel dosyası ayrıştırılırken zaman aşımı veya yavaş performans
-
-- **Belirtiler**:
-
-    - Excel veri kümesi oluşturduğunuzda ve şemayı bağlantı/depolama alanından içeri aktardığınızda, verileri Önizle, Listele veya Yenile, Excel dosyası boyutta büyükse zaman aşımı hatası ile karşılaşabilirsiniz.
-
-    - Büyük Excel dosyasından (>= 100 MB) verileri başka veri deposuna kopyalamak için kopyalama etkinliğini kullandığınızda, yavaş performans veya OOM sorunu yaşayabilirsiniz.
-
-- **Neden**: 
-
-    - Excel veri kümesindeki şemayı içeri aktarma, verileri önizleme ve çalışma sayfalarını listeleme gibi işlemler için zaman aşımı 100 s ve statiktir. Büyük Excel dosyası için, bu işlemler zaman aşımı değeri içinde bitmeyebilir.
-
-    - ADF kopyalama etkinliği tüm Excel dosyasını belleğe okur ve verileri okumak için belirtilen çalışma sayfasını ve hücreleri bulur. Bu davranış, temel alınan ADF tarafından kullanılan SDK 'nın kullanımından kaynaklanır.
-
-- **Çözüm**: 
-
-    - Şemayı içeri aktarmak için, özgün dosyanın bir alt kümesi olan daha küçük bir örnek dosya oluşturabilir ve "şemayı bağlantı/depodan içeri aktar" yerine "örnek dosyadan şemayı içeri aktar" seçeneğini belirleyebilirsiniz.
-
-    - Çalışma sayfası listesinde, çalışma sayfası açılan menüsünde "Düzenle" düğmesine tıklayabilir ve bunun yerine sayfa adını/dizinini girebilirsiniz.
-
-    - Büyük Excel dosyasını (>100 MB) başka bir depoya kopyalamak için, spor akışı okuma ve daha iyi bir şekilde gerçekleştirdiğiniz veri akışı Excel kaynağını kullanabilirsiniz.
     
 
 ## <a name="ftp"></a>FTP
