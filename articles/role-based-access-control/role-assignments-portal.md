@@ -10,16 +10,16 @@ ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1aebb80fcba6c21ccce63772195af80b94092bde
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7c58641f0039982f05be14d0f24ba89c62273d4b
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368328"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964312"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-the-azure-portal"></a>Azure portalını kullanarak Azure rol ataması ekleme veya kaldırma
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] Bu makalede, Azure portal kullanarak rollerin nasıl atanacağı açıklanır.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] Bu makalede, Azure portal kullanarak rollerin nasıl atanacağı açıklanır.
 
 Azure Active Directory ' de yönetici rolleri atamanız gerekiyorsa, bkz. [Azure Active Directory yönetici rollerini görüntüleme ve atama](../active-directory/roles/manage-roles-portal.md).
 
@@ -49,7 +49,7 @@ Erişim denetimi (ıAM) sayfası ile en etkili olması için, rol atamak üzere 
 
 Azure RBAC 'de, bir Azure kaynağına erişim izni vermek için bir rol ataması eklersiniz. Rol atamak için aşağıdaki adımları izleyin.
 
-1. Azure portal, **tüm hizmetler** ' e tıklayın ve ardından erişim vermek istediğiniz kapsamı seçin. Örneğin, **Yönetim grupları**, **abonelikler**, **kaynak grupları**veya bir kaynak seçebilirsiniz.
+1. Azure portal, **tüm hizmetler** ' e tıklayın ve ardından erişim vermek istediğiniz kapsamı seçin. Örneğin, **Yönetim grupları**, **abonelikler**, **kaynak grupları** veya bir kaynak seçebilirsiniz.
 
 1. Bu kapsam için özel kaynağa tıklayın.
 
@@ -59,7 +59,7 @@ Azure RBAC 'de, bir Azure kaynağına erişim izni vermek için bir rol ataması
 
     ![Erişim denetimi (ıAM) ve rol atamaları sekmesi](./media/role-assignments-portal/role-assignments.png)
 
-1. **Add**  >  **Rol Ekle ataması**Ekle ' ye tıklayın.
+1.   >  **Rol Ekle ataması** Ekle ' ye tıklayın.
 
    Rol atama izniniz yoksa rol ataması Ekle seçeneği devre dışı bırakılır.
 
@@ -93,7 +93,7 @@ Bir kullanıcıyı bir Azure aboneliğinin Yöneticisi yapmak için, abonelik ka
 
     ![Erişim denetimi (ıAM) ve rol atamaları sekmesi](./media/role-assignments-portal/role-assignments.png)
 
-1. **Add**  >  **Rol Ekle ataması**Ekle ' ye tıklayın.
+1.   >  **Rol Ekle ataması** Ekle ' ye tıklayın.
 
    Rol atama izniniz yoksa rol ataması Ekle seçeneği devre dışı bırakılır.
 
@@ -130,7 +130,7 @@ Yönetilen kimlikle başlayarak, sistem tarafından atanan yönetilen kimliğe b
 
     ![Sistem tarafından atanan yönetilen kimlik](./media/shared/identity-system-assigned.png)
 
-1. **İzinler**altında **Azure rol atamaları**' na tıklayın.
+1. **İzinler** altında **Azure rol atamaları**' na tıklayın.
 
     Seçilen sistem tarafından atanan yönetilen kimliğe roller zaten atanmışsa, rol atamalarının listesini görürsünüz. Bu liste, okuma izninizin olduğu tüm rol atamalarını içerir.
 
@@ -140,7 +140,7 @@ Yönetilen kimlikle başlayarak, sistem tarafından atanan yönetilen kimliğe b
 
 1. **Rol ataması Ekle (Önizleme)** seçeneğine tıklayın.
 
-1. Rol atamasının **abonelik**, **kaynak grubu**veya kaynak gibi uyguladığı kaynak kümesini seçmek için açılan listeleri kullanın.
+1. Rol atamasının **abonelik**, **kaynak grubu** veya kaynak gibi uyguladığı kaynak kümesini seçmek için açılan listeleri kullanın.
 
     Seçili kapsam için rol ataması yazma izinleriniz yoksa, bir satır içi ileti görüntülenir. 
 
@@ -168,7 +168,7 @@ Yönetilen kimlikle başlayarak Kullanıcı tarafından atanan yönetilen kimli�
 
 1. **Rol ataması Ekle (Önizleme)** seçeneğine tıklayın.
 
-1. Rol atamasının **abonelik**, **kaynak grubu**veya kaynak gibi uyguladığı kaynak kümesini seçmek için açılan listeleri kullanın.
+1. Rol atamasının **abonelik**, **kaynak grubu** veya kaynak gibi uyguladığı kaynak kümesini seçmek için açılan listeleri kullanın.
 
     Seçili kapsam için rol ataması yazma izinleriniz yoksa, bir satır içi ileti görüntülenir. 
 

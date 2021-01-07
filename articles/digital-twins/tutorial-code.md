@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 96533c1742e8ad5fde9796ea2073f6e402ac8dcf
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 22600f6519a44e71ae5c4b59b0165401b54e55fd
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862369"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964550"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Öğretici: Azure dijital TWINS API 'Leri ile kodlama
 
@@ -25,7 +25,7 @@ Azure dijital TWINS ile çalışan geliştiriciler, Azure dijital TWINS hizmeti 
 > * Kaynakları temizleme
 > * Sonraki adımlar
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğretici, kurulum ve proje çalışması için komut satırını kullanır. Bu nedenle, alýþtýrmalar üzerinde gezinmek için herhangi bir kod düzenleyicisini kullanabilirsiniz.
 
@@ -60,9 +60,6 @@ Bu, kodunuzun büyük bir kısmını yazacağınız bir *program.cs* dahil olmak
 Ardından, projenize Azure dijital TWINS ile çalışmak için gerekli olacak **iki bağımlılık ekleyin** . NuGet üzerindeki paketlere gitmek için aşağıdaki bağlantıları kullanabilirsiniz. buradan, her birini projenize eklemek için konsol komutlarının (.NET CLı için de dahil olmak üzere) bulabilirsiniz.
 * [**Azure. DigitalTwins. Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Bu paket, [.net Için Azure Digital TWINS SDK 'sına](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)yöneliktir. En son sürümü ekleyin.
 * [**Azure. Identity**](https://www.nuget.org/packages/Azure.Identity). Bu kitaplık, Azure 'da kimlik doğrulamaya yardımcı olacak araçlar sağlar. Sürüm 1.2.2 ekleyin.
-
->[!NOTE]
-> Şu anda bu öğreticiyle Azure. Identity Version 1.3.0 kullanma özelliğini etkileyen [bilinen bir sorun](troubleshoot-known-issues.md#issue-with-default-azure-credential-authentication-on-azureidentity-130) var. Lütfen bu sorun devam ederken sürüm 1.2.2 kullanın.
 
 ## <a name="get-started-with-project-code"></a>Proje kodu ile çalışmaya başlama
 

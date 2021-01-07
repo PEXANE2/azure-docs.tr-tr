@@ -7,11 +7,11 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/13/2020
-ms.openlocfilehash: 26efa840bacd3ee542816cf861cf2ef586b0582f
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 88fb9c823df6ae5df345911ccce1c579009fba02
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 01/07/2021
 ms.locfileid: "96780221"
 ---
 # <a name="supported-data-stores"></a>Desteklenen veri depoları
@@ -31,7 +31,6 @@ Takip görünümü aşağıdaki veri depolarını destekler. Desteklenen özelli
 ||[Azure SQL Veritabanı Yönetilen Örneği](register-scan-azure-sql-database-managed-instance.md)|Yes| Yes| Hayır| Yes| Yes| Yes|
 ||[Azure Synapse Analytics (eski adı SQL DW)](register-scan-azure-synapse-analytics.md)|Yes| Yes| Hayır| Yes| Yes| Yes|
 |Veritabanı|[SQL Server](register-scan-on-premises-sql-server.md)|Yes| Yes| Hayır| Yes| Yes| Yes|
-||[Teradata (Önizleme)](register-scan-teradata-source.md)|Yes| Yes| Hayır| Hayır| Hayır| Yes|
 |Power BI|[Power BI](register-scan-power-bi-tenant.md)|Yes| Yes| Hayır| Hayır| Hayır| Evet|
 
 ## <a name="next-steps"></a>Sonraki adımlar

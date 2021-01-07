@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 3d1b8481aa4d4a81c95643727c1eff2a4a22da2f
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 9b6ea9491575236a3ef84d660ead8022d13e01ef
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426264"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964137"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4 ve Easv4 serisi
 
@@ -28,7 +28,7 @@ Eav4-Series ve Easv4 serisi, en fazla 256 MB boyutlu önbellek kullanan çok iş
 [VM oluşturma desteği](generation-2.md): 1. ve 2. nesil<br>
 <br>
 
-Eav4 serisi Boyutlar, 3.35 GHz 'nin en yüksek frekansını ve Premium SSD 'yi kullanmayı sağlayan 2.35 GHz AMD EPIC<sup>TM</sup> 7452 işlemcisini temel alır. Eav4 serisi Boyutlar, bellek açısından yoğun kurumsal uygulamalar için idealdir. Veri disk depolaması, sanal makinelerden ayrı olarak faturalandırılır. Premium SSD 'yi kullanmak için Easv4-Series boyutlarını kullanın. Easv4 boyutları için fiyatlandırma ve faturalandırma ölçümleri Eav3 serisi ile aynıdır.
+Eav4 serisi Boyutlar, 3.35 GHz 'nin en yüksek frekansını elde etmeye yönelik 2.35 GHz AMD EPıC<sup>TM</sup> 7452 işlemcisini temel alır. Eav4 serisi Boyutlar, bellek açısından yoğun kurumsal uygulamalar için idealdir. Veri disk depolaması, sanal makinelerden ayrı olarak faturalandırılır. Premium SSD 'yi kullanmak için Easv4-Series boyutlarını kullanın. Easv4 boyutları için fiyatlandırma ve faturalandırma ölçümleri Eav3 serisi ile aynıdır.
 
 | Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | Maksimum veri diskleri | Maksimum geçici depolama aktarım hızı: IOPS / Okuma MB/sn / Yazma MB/sn | En fazla NIC | Beklenen ağ bant genişliği (MB/sn) |
 | -----|-----|-----|-----|-----|-----|-----|-----|

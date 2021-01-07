@@ -15,12 +15,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, contperf-fy21q2
-ms.openlocfilehash: e7a8f54abbadb63c870c4d92843699c67f59752c
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 393d0c69201f87ad7c96bd2f9a1f9f57df512e31
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505639"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964533"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>SQL IaaS Aracısı Uzantısı ile SQL Server VM kaydetme
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,7 +41,7 @@ SQL IaaS Aracısı uzantısını kullanmak için öncelikle [aboneliğinizi **Mi
 > [!IMPORTANT]
 > SQL IaaS Aracısı uzantısı, Azure sanal makineler 'de SQL Server kullanırken müşterilere isteğe bağlı avantajlar vermek için veri toplar. Microsoft, bu verileri müşterinin öncelikli onayı olmadan lisanslama denetimleri için kullanmaz. Daha fazla bilgi için [SQL Server Gizlilik Eki](/sql/sql-server/sql-server-privacy#non-personal-data) ' ne bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 SQL Server VM uzantıya kaydetmek için şunlar gerekir: 
 
@@ -189,12 +189,15 @@ $sqlvm.SqlManagementType
 
 Uzantıyı *hafif* modda kaydetmiş SQL Server VM 'ler, Azure Portal, Azure clı veya Azure PowerShell kullanarak _tam_ olarak yükseltebilir. _Noagent_ modundaki SQL Server VM 'ler, Işletim sistemi Windows 2008 R2 ve üzeri sürümlere yükseltildikten sonra _tam_ sürümüne yükseltilebilir. Bunun için düşürme yapılamaz, bunun için SQL IaaS Aracısı uzantısından SQL Server VM [kaydını](#unregister-from-extension) kaldırmanız gerekir. Bunun yapılması **SQL sanal makine** _kaynağını_ kaldıracak, ancak gerçek sanal makineyi silmeyecektir. 
 
+> [!NOTE]
+> SQL IaaS uzantısının yönetim modunu tam olarak yükselttiğinizde, SQL Server hizmeti başlatılır. Bazı durumlarda, yeniden başlatma SQL Server hizmetiyle ilişkili hizmet asıl adlarının (SPN 'Ler) yanlış Kullanıcı hesabına değişmesine neden olabilir. Yönetim modunu tam olarak yükselttikten sonra bağlantı sorunlarınız varsa, [SPN 'leri silin ve yeniden kaydettirin](/sql/database-engine/configure-windows/register-a-service-principal-name-for-kerberos-connections).
+
 
 ### <a name="azure-portal"></a>Azure portal
 
 Azure portal kullanarak uzantıyı tam moda yükseltmek için aşağıdaki adımları izleyin: 
 
-1. [Azure portalda](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. [SQL sanal makineler](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) kaynağına gidin. 
 1. SQL Server VM seçin ve **genel bakış**' ı seçin. 
 1. NoAgent veya Lightweight IaaS modundaki sanal makineler SQL Server için, **SQL IaaS uzantı Iletisiyle tek lisans türünü seçin ve sürüm güncelleştirmelerini** seçin.
@@ -237,7 +240,7 @@ SQL Server VM, Azure portal, Azure CLı veya Azure PowerShell kullanarak SQL Iaa
 
 Azure portal kullanarak kayıt durumunu doğrulamak için aşağıdaki adımları izleyin: 
 
-1. [Azure portalda](https://portal.azure.com) oturum açın. 
+1. [Azure Portal](https://portal.azure.com) oturum açın. 
 1. [SQL Server sanal](manage-sql-vm-portal.md)makinelerinize gidin.
 1. Listeden SQL Server VM seçin. SQL Server VM burada listelenmiyorsa, büyük olasılıkla SQL IaaS Aracısı uzantısına kayıtlı değildir. 
 1. **Durum** altındaki değeri görüntüleyin. **Durum** **başarılı** olursa SQL Server VM SQL IaaS Aracısı uzantısı başarıyla kaydedildi. 
@@ -279,7 +282,7 @@ Yönetim modunun tam olarak indirgenmesini sağlamak için SQL sanal makinesinin
 
 Azure portal kullanarak SQL Server VM uzantıdan kaydını silmek için şu adımları izleyin:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure portal](https://portal.azure.com) oturum açın.
 1. SQL VM kaynağına gidin. 
   
    ![SQL sanal makineler kaynağı](./media/sql-agent-extension-manually-register-single-vm/sql-vm-manage.png)

@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: 8ef3ff20c67eefa2091ffb1732ced813b169e596
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: d6b3d60a44725869d68dd9f1158d2279f3cf3e86
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929761"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963989"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Uygulama Yapılandırması’na erişmek için yönetilen kimlikleri kullanma
 
@@ -37,7 +37,7 @@ Bu makalede şunları öğreneceksiniz:
 > * Uygulamanızı, uygulama yapılandırmasına bağlandığınızda yönetilen bir kimlik kullanacak şekilde yapılandırın.
 > * İsteğe bağlı olarak, uygulama yapılandırma Key Vault başvurusu aracılığıyla Key Vault bağlandığınızda Uygulamanızı yönetilen bir kimlik kullanacak şekilde yapılandırın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gereklidir:
 
@@ -102,7 +102,7 @@ Portalda yönetilen bir kimlik ayarlamak için, önce bir uygulama oluşturun ve
     using Azure.Identity;
     ```
 
-1. Yalnızca uygulama yapılandırmasında doğrudan depolanan değerlere erişmek istiyorsanız yöntemini `CreateWebHostBuilder` değiştirerek yöntemi güncelleştirin `config.AddAzureAppConfiguration()` .
+1. Yalnızca uygulama yapılandırmasında doğrudan depolanan değerlere erişmek istiyorsanız yöntemini `CreateWebHostBuilder` değiştirerek yöntemi güncelleştirin `config.AddAzureAppConfiguration()` (Bu `Microsoft.Azure.AppConfiguration.AspNetCore` pakette bulunur).
 
     > [!IMPORTANT]
     > `CreateHostBuilder``CreateWebHostBuilder`, .NET Core 3,0 ' de yer alır.  Ortamınıza göre doğru söz dizimini seçin.

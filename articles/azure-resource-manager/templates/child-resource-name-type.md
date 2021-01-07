@@ -3,12 +3,12 @@ title: Şablonlarda alt kaynaklar
 description: Bir Azure Resource Manager şablonunda (ARM şablonu) alt kaynaklar için ad ve tür ayarlamayı açıklar.
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: 408914fd309676da36904a364f905a8ee809d648
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: a950d72751b829c0a2aa3ba5ca27316a0544d9cc
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934314"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963921"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>Alt kaynaklar için ad ve tür ayarla
 
@@ -137,5 +137,4 @@ Aşağıdaki örnekte, kök düzeyinde tanımlanan bir sanal ağ ve alt ağ gös
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * ARM şablonları oluşturma hakkında bilgi edinmek için bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
-
 * Kaynağa başvururken kaynak adının biçimi hakkında bilgi edinmek için [başvuru işlevine](template-functions-resource.md#reference)bakın.

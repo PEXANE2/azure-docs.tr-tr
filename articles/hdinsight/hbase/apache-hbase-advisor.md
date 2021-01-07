@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/03/2021
-ms.openlocfilehash: 36d40215f759190cc9e6c6e3f4918dcbc384f94f
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 73af7e2a1920e6cfdad9245d965908255ef95a1f
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97893296"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964601"
 ---
 # <a name="apache-hbase-advisories-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache HBase Danışma belgeleri
 
@@ -21,9 +21,9 @@ Bu makalede, Azure HDInsight 'ta Apache HBase performansını en iyi hale getirm
 
 ## <a name="optimize-hbase-to-read-most-recently-written-data"></a>En son yazılan verileri okumak için HBase 'i iyileştirme
 
-Azure HDInsight 'ta Apache HBase kullandığınızda, uygulamanızın en son yazılan verileri okuduğu senaryo için HBase yapılandırmasını en iyi hale getirebilirsiniz. Yüksek performans için, HBase okumaların uzak depolama yerine memstore 'den sunulması idealdir.
+UseCase 'in HBase 'den en son yazılan verileri okumasını içeriyorsa, bu danışmanlık size yardımcı olabilir. Yüksek performans için, HBase okumaların uzak depolama yerine memstore 'den sunulması idealdir.
 
-Sorgu danışmanlığı, bir tablodaki belirli bir sütun ailesi için memstore 'tan sunulan %75 okuma > olduğunu gösterir. Bu gösterge, memstore üzerinde bir temizleme gerçekleşse bile son dosyanın erişilmesi ve önbellekte olması gerekir. Veriler ilk olarak memstore 'e yazılır ve sistem burada en son verilere erişir. İç HBase flusher iş parçacıklarının, belirli bir bölgenin 128M (varsayılan) boyutuna ulaştığından ve bir temizlemeyi tetikleyebildiği bir şansınız vardır. Bu senaryo, memstore boyut olarak 128Gb etrafında olduğunda yazılan en son veriler bile olur. Bu nedenle, bu son kayıtların daha sonra okunması, memstore yerine bir dosya okuması gerektirebilir. Bu nedenle, son olarak temizlenen son verilerin önbellekte yer alabilse de iyileştirmek en iyisidir.
+Sorgu danışmanlığı, bir tablodaki belirli bir sütun ailesi için, memstore 'tan sunulan %75 okuma > olduğunu gösterir. Bu gösterge, memstore üzerinde bir temizleme gerçekleşse bile son dosyanın erişilmesi ve önbellekte olması gerekir. Veriler ilk olarak memstore 'e yazılır ve sistem burada en son verilere erişir. İç HBase flusher iş parçacıklarının, belirli bir bölgenin 128M (varsayılan) boyutuna ulaştığından ve bir temizlemeyi tetikleyebildiği bir şansınız vardır. Bu senaryo, memstore boyut olarak 128Gb etrafında olduğunda yazılan en son veriler bile olur. Bu nedenle, bu son kayıtların daha sonra okunması, memstore yerine bir dosya okuması gerektirebilir. Bu nedenle, son olarak temizlenen son verilerin önbellekte yer alabilse de iyileştirmek en iyisidir.
 
 Önbellekteki son verileri iyileştirmek için aşağıdaki yapılandırma ayarlarını göz önünde bulundurun:
 
@@ -33,9 +33,9 @@ Sorgu danışmanlığı, bir tablodaki belirli bir sütun ailesi için memstore 
 
 3. 2. adım ve compactionThreshold ayarlarsanız, daha `hbase.hstore.compaction.max` yüksek bir değere geçiş yapın `100` ve ayrıca, örneğin, yapılandırmaya ait değeri `hbase.hstore.blockingStoreFiles` daha yüksek değere yükseltin `300` .
 
-4. Yalnızca son verilerde mutlaka okumanız gerekiyorsa, `hbase.rs.cachecompactedblocksonwrite` yapılandırmayı **Açık** olarak ayarlayın. Bu yapılandırma sisteme, sıkıştırma gerçekleşse bile verilerin önbellekte kalmasını söyler. Konfigürasyonlar Ayrıca aile düzeyinde ayarlanabilir. 
+4. Yalnızca son verileri okuduğunuzdan emin değilseniz, `hbase.rs.cachecompactedblocksonwrite` yapılandırmayı **Açık** olarak ayarlayın. Bu yapılandırma sisteme, sıkıştırma gerçekleşse bile verilerin önbellekte kalmasını söyler. Konfigürasyonlar Ayrıca aile düzeyinde ayarlanabilir. 
 
-   HBase kabuğunda, aşağıdaki komutu çalıştırın:
+   HBase kabuğunda, yapılandırmayı ayarlamak için aşağıdaki komutu çalıştırın `hbase.rs.cachecompactedblocksonwrite` :
    
    ```
    alter '<TableName>', {NAME => '<FamilyName>', CONFIGURATION => {'hbase.hstore.blockingStoreFiles' => '300'}}
@@ -43,15 +43,15 @@ Sorgu danışmanlığı, bir tablodaki belirli bir sütun ailesi için memstore 
 
 5. Blok önbelleği, bir tablodaki belirli bir aile için kapatılabilir. En son veri okuma özelliği olan **aileleri için açık** olduğundan emin olun. Varsayılan olarak, blok önbelleği bir tablodaki tüm aileler için açıktır. Bir aile için blok önbelleğini devre dışı bırakmış ve açmanız gerekiyorsa, HBase kabuğu 'ndaki alter komutunu kullanın.
 
-   Bu yapılandırma, verilerin önbellekte ve son verilerin sıkıştırmasa emin olmanıza yardımcı olur. Senaryonuz için bir TTL mümkünse, tarih katmanlı sıkıştırmayı kullanmayı düşünün. Daha fazla bilgi için bkz [. Apache HBase başvuru kılavuzu: Tarih katmanlı sıkıştırma](https://hbase.apache.org/book.html#ops.date.tiered)  
+   Bu yapılandırma, verilerin önbellekte kullanılabilir olduğundan ve son verilerin sıkıştırmamadığından emin olmanıza yardımcı olur. Senaryonuz için bir TTL mümkünse, tarih katmanlı sıkıştırmayı kullanmayı düşünün. Daha fazla bilgi için bkz [. Apache HBase başvuru kılavuzu: Tarih katmanlı sıkıştırma](https://hbase.apache.org/book.html#ops.date.tiered)  
 
 ## <a name="optimize-the-flush-queue"></a>Temizleme kuyruğunu iyileştirme
 
-Temizleme kuyruğunu en iyileştirme Danışma belgesi, HBase temizlerinin ayarlamaya ihtiyacı olabileceğini gösterir. Temizleme işleyicileri yapılandırılmış kadar yeterince yüksek olmayabilir.
+Bu danışmanlık, HBase boşaltmalarının ayarlamaya ihtiyacı olabileceğini gösterir. Temizleme işleyicilerinin geçerli yapılandırması, Temizleme işlemlerinin yavaşlamasına neden olabilecek yazma trafiği ile başa çıkmasına yetecek kadar yüksek olmayabilir.
 
 Bölge sunucusu kullanıcı arabiriminde, temizleme sırasının 100 ' den fazla büyüdiğine dikkat edin. Bu eşik, temizlemeleri yavaş olduğunu gösterir ve yapılandırmayı ayarlamanız gerekebilir   `hbase.hstore.flusher.count` . Varsayılan olarak değer 2 ' dir. En fazla flusher iş parçacıklarının 6 ' dan fazla artırmayın olduğundan emin olun.
 
-Ayrıca, bölge sayısı ayarlama önerisine sahip olup olmadığını görebilirsiniz. Öyleyse, daha hızlı boşaltmaları konusunda yardımcı olup olmadığını görmek için önce bölge ayarlamayı deneyin. Flusher iş parçacıklarını ayarlama, şunun gibi birden çok yolla yardımcı olabilirler 
+Ayrıca, bölge sayısı ayarlama önerisine sahip olup olmadığını görebilirsiniz. Yanıt Evet ise, daha hızlı boşaltmaları konusunda yardımcı olup olmadığını görmek için bölge ayarlamayı denemenizi öneririz. Aksi takdirde, flusher iş parçacıklarını ayarlamak size yardımcı olabilir.
 
 ## <a name="region-count-tuning"></a>Bölge sayısı ayarlama
 
@@ -65,7 +65,7 @@ Bölge sayısı ayarlama danışmanlığı, HBase 'in güncelleştirmeleri engel
 
 - Bu ayarlar yerinde olduğunda bölge sayısı 100 ' dir. 4 GB genel memstore artık 100 bölge arasında bölünür. Böylece her bölge, memstore için yalnızca 40 MB alır. Yazmalar Tekdüzen olduğunda, sistem sık temizleme ve sıra boyutunu daha küçük olan 40 MB <. Birçok flusher iş parçacığına sahip olma, temizleme hızını artırabilir `hbase.hstore.flusher.count` .
 
-Bu Danışma belgesi, sunucu başına bölge sayısını, yığın boyutunu ve Global memstore boyut yapılandırmasını ve bu tür güncelleştirmelerin engellenmesini sağlamak için temizleme iş parçacıkları ayarıyla birlikte yeniden düşünmek iyi olacaktır.
+Danışma belgesi sunucu başına bölge sayısını, yığın boyutunu ve genel memstore boyut yapılandırmasını ve güncelleştirmelerin engellenmesini önlemek için temizleme iş parçacıklarının ayarlamasıyla birlikte yeniden düşünmek iyi olacaktır.
 
 ## <a name="compaction-queue-tuning"></a>Sıkıştırma sırası ayarlama
 

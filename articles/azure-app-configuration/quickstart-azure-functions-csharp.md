@@ -8,18 +8,18 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: alkemper
-ms.openlocfilehash: 4197891949062123042736e578cfbcc5def4e1f9
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: b5c659a673ece8fd7fbb9566d8bb84201a668a7f
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96930815"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964091"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Hızlı başlangıç: Azure Uygulama yapılandırması ile Azure Işlevleri uygulaması oluşturma
 
 Bu hızlı başlangıçta, Azure App Configuration hizmetini bir Azure Işlevleri uygulamasına, tüm uygulama ayarlarınızı kodınızdan ayrı olarak depolamayı ve yönetimini merkezileştirmek için kullanacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/dotnet)
 - **Azure geliştirme** iş yüküyle [Visual Studio 2019](https://visualstudio.microsoft.com/vs) .
@@ -44,45 +44,75 @@ Bu hızlı başlangıçta, Azure App Configuration hizmetini bir Azure Işlevler
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
 ## <a name="connect-to-an-app-configuration-store"></a>Uygulama yapılandırma deposuna bağlanma
+Bu proje, [.net Azure işlevlerine bağımlılık ekleme](/azure/azure-functions/functions-dotnet-dependency-injection) ve ek yapılandırma kaynağı olarak Azure Uygulama yapılandırması 'nı kullanacaktır.
 
-1. Projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin. Araştır sekmesine **gidin** ve `Microsoft.Extensions.Configuration.AzureAppConfiguration` projenize NuGet paketini ekleyin. Bulamıyorsanız, **ön sürümü dahil** et onay kutusunu seçin.
+1. Projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin. **Araştır** sekmesinde, aşağıdaki NuGet paketlerini arayıp projenize ekleyin.
+   - [Microsoft.Extensions.Configurlama. AzureAppConfiguration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureAppConfiguration/) sürümü 4.1.0 veya üzeri
+   - [Microsoft. Azure. Functions. Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/) sürüm 1.1.0 veya üzeri 
 
-2. *Function1.cs*'i açın ve .NET Core yapılandırması ve uygulama yapılandırma yapılandırma sağlayıcısının ad alanlarını ekleyin.
+2. Aşağıdaki kodla, *Startup.cs* adlı yeni bir dosya ekleyin. Soyut sınıfı uygulayan adlı bir sınıfı tanımlar `Startup` `FunctionsStartup` . Azure Işlevleri başlatılırken kullanılan tür adını belirtmek için bir derleme özniteliği kullanılır.
+
+    `ConfigureAppConfiguration`Yöntemi geçersiz kılınır ve Azure uygulama yapılandırma sağlayıcısı, çağırarak ek bir yapılandırma kaynağı olarak eklenir `AddAzureAppConfiguration()` . `Configure`Bu noktada herhangi bir hizmeti kaydetmeniz gerekmiyorsa yöntem boş bırakılır.
+    
+    ```csharp
+    using System;
+    using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Configuration;
+
+    [assembly: FunctionsStartup(typeof(FunctionApp.Startup))]
+
+    namespace FunctionApp
+    {
+        class Startup : FunctionsStartup
+        {
+            public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
+            {
+                string cs = Environment.GetEnvironmentVariable("ConnectionString");
+                builder.ConfigurationBuilder.AddAzureAppConfiguration(cs);
+            }
+
+            public override void Configure(IFunctionsHostBuilder builder)
+            {
+            }
+        }
+    }
+    ```
+
+3. *Function1.cs* açın ve aşağıdaki ad alanını ekleyin.
 
     ```csharp
     using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-3. `static` `Configuration` Tek bir örneği oluşturmak için adlı bir özellik ekleyin `IConfiguration` . Ardından `static` çağırarak uygulama yapılandırmasına bağlanmak için bir Oluşturucu ekleyin `AddAzureAppConfiguration()` . Bu, uygulama başlangıcında yapılandırmayı bir kez yükler. Aynı yapılandırma örneği, daha sonra yapılan çağrılar için de kullanılır.
+   Bağımlılık ekleme aracılığıyla bir örneğini almak için kullanılan bir Oluşturucu ekleyin `IConfiguration` .
 
     ```csharp
-    private static IConfiguration Configuration { set; get; }
+    private readonly IConfiguration _configuration;
 
-    static Function1()
+    public Function1(IConfiguration configuration)
     {
-        var builder = new ConfigurationBuilder();
-        builder.AddAzureAppConfiguration(Environment.GetEnvironmentVariable("ConnectionString"));
-        Configuration = builder.Build();
+        _configuration = configuration;
     }
     ```
 
 4. `Run`Yapılandırmadan değerleri okumak için yöntemini güncelleştirin.
 
     ```csharp
-    public static async Task<IActionResult> Run(
+    public async Task<IActionResult> Run(
         [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req, ILogger log)
     {
         log.LogInformation("C# HTTP trigger function processed a request.");
 
         string keyName = "TestApp:Settings:Message";
-        string message = Configuration[keyName];
+        string message = _configuration[keyName];
 
         return message != null
             ? (ActionResult)new OkObjectResult(message)
             : new BadRequestObjectResult($"Please create a key-value with the key '{keyName}' in App Configuration.");
     }
     ```
+
+   `Function1`Sınıfı ve `Run` yöntemi statik olmamalıdır. Otomatik olarak `static` belirtilmişse değiştiriciyi kaldırın.
 
 ## <a name="test-the-function-locally"></a>İşlevi yerel olarak test etme
 
@@ -120,7 +150,7 @@ Bu hızlı başlangıçta, Azure App Configuration hizmetini bir Azure Işlevler
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, yeni bir uygulama yapılandırma deposu oluşturdunuz ve bunu [uygulama yapılandırma sağlayıcısı](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)aracılığıyla bir Azure işlevleri uygulamasıyla kullandınız. Yapılandırma ayarlarını dinamik olarak yenilemek üzere Azure Işlevleri uygulamanızı yapılandırma hakkında bilgi edinmek için sonraki öğreticiye geçin.
+Bu hızlı başlangıçta, yeni bir uygulama yapılandırma deposu oluşturdunuz ve bunu [uygulama yapılandırma sağlayıcısı](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)aracılığıyla bir Azure işlevleri uygulamasıyla kullandınız. Yapılandırmayı dinamik olarak yenilemek üzere Azure Işlevleri uygulamanızı güncelleştirme hakkında bilgi edinmek için sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [Dinamik yapılandırmayı etkinleştirme](./enable-dynamic-configuration-azure-functions-csharp.md)
+> [Azure İşlevleri’nde dinamik yapılandırmayı etkinleştirme](./enable-dynamic-configuration-azure-functions-csharp.md)

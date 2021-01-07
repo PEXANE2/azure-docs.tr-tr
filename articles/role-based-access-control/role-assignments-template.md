@@ -13,16 +13,16 @@ ms.workload: identity
 ms.date: 11/13/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1e05ecd162ccb333c6ab29b0185f6ffcb04a6213
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: dc8a704fd864fbb0e11da6cd062e0c5325679d8b
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591370"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964239"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Azure rol atamaları ekleme
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] Azure PowerShell veya Azure CLı kullanmaya ek olarak, [Azure Resource Manager şablonları](../azure-resource-manager/templates/template-syntax.md)kullanarak roller atayabilirsiniz. Kaynakları sürekli ve sürekli olarak dağıtmanız gerektiğinde şablonlar yararlı olabilir. Bu makalede, şablonlar kullanılarak rollerin nasıl atanacağı açıklanır.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] Azure PowerShell veya Azure CLı kullanmaya ek olarak, [Azure Resource Manager şablonları](../azure-resource-manager/templates/template-syntax.md)kullanarak roller atayabilirsiniz. Kaynakları sürekli ve sürekli olarak dağıtmanız gerektiğinde şablonlar yararlı olabilir. Bu makalede, şablonlar kullanılarak rollerin nasıl atanacağı açıklanır.
 
 ## <a name="get-object-ids"></a>Nesne kimliklerini al
 

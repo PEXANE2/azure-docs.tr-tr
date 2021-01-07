@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: 023dc877158c7074f46945893d40291e94ab2f09
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: e5fb425afdd4b212a0b28ce91418eb0ee9e3632f
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629585"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964442"
 ---
 # <a name="how-to-create-plans-for-a-virtual-machine-offer"></a>Bir sanal makine teklifi için plan oluşturma
 
@@ -30,7 +30,7 @@ Planlarınızı oluşturduktan sonra, görüntülenecek **plana genel bakış** 
 
 **Plana genel bakış** bölmesinde bulunan eylemlere, planınızın geçerli durumuna bağlı olarak değişiklik gösterir.
 
-- Plan durumu bir taslak ise, **taslağı Sil** ' i seçin.
+- Plan durumu bir taslak ise, **taslağı Sil**' i seçin.
 - Plan durumu canlı olarak yayınlanıyorsa, **satışı durdur** veya **özel izleyiciyi Eşitle** seçeneğini belirleyin.
 
 ## <a name="create-a-new-plan"></a>Yeni bir plan oluşturun
@@ -40,11 +40,11 @@ En üstte **+ Yeni plan oluştur** ' u seçin.
 **Yeni plan** iletişim kutusunda, bu teklifin her bir planı için benzersiz BIR **plan kimliği** girin. Bu KIMLIK, ürün web adresinde müşterilere görünür olacaktır. Yalnızca küçük harf ve rakam, tire veya alt çizgi ve en fazla 50 karakter kullanın.
 
 > [!NOTE]
-> Plan KIMLIĞI, **Oluştur** ' u seçtikten sonra değiştirilemez.
+> Plan KIMLIĞI, **Oluştur**' u seçtikten sonra değiştirilemez.
 
-Bir **Plan adı** girin. Müşteriler teklifiniz dahilinde hangi planın seçeceğinize karar verirken bu adı görür. Planlar arasındaki farkları açıkça gösteren benzersiz bir ad oluşturun. Örneğin, *Kullandıkça Öde* , *KLG* , *Gelişmiş* ve *Kurumsal* planlar ile **Windows Server** girebilirsiniz.
+Bir **Plan adı** girin. Müşteriler teklifiniz dahilinde hangi planın seçeceğinize karar verirken bu adı görür. Planlar arasındaki farkları açıkça gösteren benzersiz bir ad oluşturun. Örneğin, *Kullandıkça Öde*, *KLG*, *Gelişmiş* ve *Kurumsal* planlar ile **Windows Server** girebilirsiniz.
 
-**Oluştur** ’u seçin. Bu, **plan kurulumu** sayfasını açar.
+**Oluştur**’u seçin. Bu, **plan kurulumu** sayfasını açar.
 
 ## <a name="plan-setup"></a>Planı ayarla
 
@@ -52,7 +52,7 @@ Plan türü için üst düzey yapılandırmayı ayarlayın, başka bir plandan b
 
 ### <a name="reuse-technical-configuration"></a>Teknik yapılandırmayı yeniden kullanma
 
-Aynı türde birden fazla planınız varsa ve paketler aralarında aynıysa, **Bu planı başka bir plandaki teknik yapılandırmayı yeniden kullanır** ' ı seçebilirsiniz. Bu seçenek, bu teklif için aynı türdeki diğer planlardan birini seçmenizi sağlar ve teknik yapılandırmasını yeniden kullanmanıza olanak tanır.
+Aynı türde birden fazla planınız varsa ve paketler aralarında aynıysa, **Bu planı başka bir plandaki teknik yapılandırmayı yeniden kullanır**' ı seçebilirsiniz. Bu seçenek, bu teklif için aynı türdeki diğer planlardan birini seçmenizi sağlar ve teknik yapılandırmasını yeniden kullanmanıza olanak tanır.
 
 > [!NOTE]
 > Teknik yapılandırmayı başka bir plandan yeniden kullandığınızda, tüm **Teknik yapılandırma** sekmesi bu plandan kaybolur. Daha sonra yaptığınız tüm güncelleştirmeler dahil olmak üzere diğer plandaki teknik yapılandırma ayrıntıları, bu plan için de kullanılacaktır. Plan yayımlandıktan sonra bu ayar değiştirilemez.
@@ -139,11 +139,11 @@ Müşterilerinize bir adet, üç veya altı aylık **ücretsiz deneme** olanağ�
 
 Her planı herkese görünür olacak şekilde veya yalnızca önceden seçilmiş bir kitleye tasarlayabilirsiniz. Azure abonelik kimliklerini kullanarak bu kısıtlanmış hedef kitlelere üyelik atayın.
 
-**Ortak** : planınız herkes tarafından görülebilir.
+**Ortak**: planınız herkes tarafından görülebilir.
 
-**Özel** : planınızı yalnızca önceden seçilmiş bir kitleye görünür hale getirin. Özel bir plan olarak yayımlandıktan sonra, hedef kitleyi güncelleştirebilir veya ortak olarak değiştirebilirsiniz. Planı herkese açık hale geçirdikten sonra, genel olarak kalması gerekir. Özel bir plana geri değiştirilemez.
+**Özel**: planınızı yalnızca önceden seçilmiş bir kitleye görünür hale getirin. Özel bir plan olarak yayımlandıktan sonra, hedef kitleyi güncelleştirebilir veya ortak olarak değiştirebilirsiniz. Planı herkese açık hale geçirdikten sonra, genel olarak kalması gerekir. Özel bir plana geri değiştirilemez.
 
-**Azure ABONELIK kimliği** 'ni kullanarak bu özel plana erişimi olacak hedef kitleleri atayın. İsteğe bağlı olarak, atadığınız her bir Azure abonelik KIMLIĞI için bir **Açıklama** ekleyin. Bir CSV elektronik tablosu içeri aktarıyorsanız, el ile en fazla 10 abonelik kimliği ekleyin veya 20.000 'e kadar. Azure abonelik kimlikleri GUID olarak temsil edilir ve tüm harflerin küçük harf olması gerekir.
+**Azure ABONELIK kimliği**'ni kullanarak bu özel plana erişimi olacak hedef kitleleri atayın. İsteğe bağlı olarak, atadığınız her bir Azure abonelik KIMLIĞI için bir **Açıklama** ekleyin. Bir CSV elektronik tablosu içeri aktarıyorsanız, el ile en fazla 10 abonelik kimliği ekleyin veya 20.000 'e kadar. Azure abonelik kimlikleri GUID olarak temsil edilir ve tüm harflerin küçük harf olması gerekir.
 
 > [!NOTE]
 > Özel veya kısıtlanmış bir hedef kitle, **Önizleme** bölmesinde tanımladığınız önizleme izleyicilerinizden farklıdır. Bir önizleme hedef kitlesi, Azure Market 'Te canlı olarak yayımlanmadan *önce* teklifinizin erişimine açabilir. Özel hedef kitle seçimi yalnızca belirli bir plana uygulansa da, önizleme hedef kitlesi tüm özel ve genel planları doğrulama amaçlarıyla görüntüleyebilir.
@@ -156,7 +156,7 @@ Sanal makineniz, başka bir çözüm şablonu veya yönetilen uygulama aracılı
 
 Gizli planlar önizleme bağlantılarını desteklemez.
 
-Sol gezinti planı menüsündeki **Teknik yapılandırma** ' da bir sonraki sekmeye geçmeden önce **Taslağı kaydet** ' i seçin.
+Sol gezinti planı menüsündeki **Teknik yapılandırma**' da bir sonraki sekmeye geçmeden önce **Taslağı kaydet** ' i seçin.
 
 ## <a name="technical-configuration"></a>Teknik yapılandırma
 
@@ -191,7 +191,7 @@ Bir sanal makine oluşturmak, kullandığı sanal donanımı tanımlar. Müşter
 
 1. Yeni bir teklif oluştururken, bir **oluşturma türü** seçin ve istenen ayrıntıları girin:
 
-    :::image type="content" source="./media/create-vm/azure-vm-generations-image-details-1.png" alt-text="Oluşturma açılan kutusunun bir görünümü.":::
+    :::image type="content" source="./media/create-vm/azure-vm-generations-image-details-1.png" alt-text="Iş Ortağı Merkezi 'nin oluşturma ayrıntısı bölümünün bir görünümü.":::
 
 2. Bir plana başka nesil bir oluşturma eklemek için **oluşturma oluştur**... seçeneğini belirleyin.
 
@@ -203,9 +203,7 @@ Bir sanal makine oluşturmak, kullandığı sanal donanımı tanımlar. Müşter
 
 <!--    The **Generation ID** you choose will be visible to customers in places such as product URLs and ARM templates (if applicable). Use only lowercase, alphanumeric characters, dashes, or underscores; it cannot be modified once published.
 -->
-3. 1. nesil zaten yayınlanmış var olan bir VM 'yi güncelleştirmek için bu **Teknik yapılandırma** sayfasında ayrıntıları düzenleyin:
-
-    :::image type="content" source="./media/create-vm/azure-vm-generations-updating.png" alt-text="Teknik yapılandırma planı sayfasının bir görünümü.":::
+3. 1. nesil zaten yayınlanmış var olan bir VM 'yi güncelleştirmek için **Teknik yapılandırma** sayfasında ayrıntıları düzenleyin.
 
 1. nesil ve 2. nesil yetenekler arasındaki farklar hakkında daha fazla bilgi edinmek için bkz. [Azure 'da 2. nesil sanal makineler Için destek](../virtual-machines/generation-2.md).
 
@@ -215,15 +213,15 @@ Sanal makine görüntüleri için bir disk sürümü ve paylaşılan erişim imz
 
 Bu iki zorunlu alan, yukarıdaki önceki görüntüde gösterilmektedir:
 
-- **Disk sürümü** : sağlaettiğiniz görüntünün sürümü.
-- **OS VHD bağlantısı** : işletim sistemi VHD 'Si için Azure Depolama hesabınızdaki konum. SAS URI 'sini alma hakkında bilgi edinmek için bkz. [VM Görüntünüz için paylaşılan erişim imzası URI 'Si alma](azure-vm-get-sas-uri.md).
+- **Disk sürümü**: sağlaettiğiniz görüntünün sürümü.
+- **OS VHD bağlantısı**: işletim sistemi VHD 'Si için Azure Depolama hesabınızdaki konum. SAS URI 'sini alma hakkında bilgi edinmek için bkz. [VM Görüntünüz için paylaşılan erişim imzası URI 'Si alma](azure-vm-get-sas-uri.md).
 
 Veri diskleri ( **veri diski Ekle (en fazla 16)** seçin) Ayrıca, Azure depolama HESAPLARıNDA depolanan VHD paylaşılan erişim imza URI 'larıdır. Bir plana gönderim başına yalnızca bir resim ekleyin.
 
 Kullandığınız işletim sisteminden bağımsız olarak, yalnızca çözüm için gereken en az sayıda veri diski ekleyin. Dağıtım sırasında, müşteriler bir görüntünün parçası olan diskleri kaldıramaz, ancak dağıtım sırasında veya sonrasında her zaman disk ekleyebilirler.
 
-**Taslağı kaydet** ' i seçin, sonra yeni oluşturduğunuz planı görmek için sol üstteki **← plana genel bakış** ' ı seçin.
+**Taslağı kaydet**' i seçin, sonra yeni oluşturduğunuz planı görmek için sol üstteki **← plana genel bakış** ' ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [CSP 'Ler aracılığıyla yeniden satış](azure-vm-create-resell-csp.md)
+- [CSP’ler aracılığıyla satış](azure-vm-create-resell-csp.md)

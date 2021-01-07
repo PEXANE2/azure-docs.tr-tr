@@ -11,12 +11,12 @@ ms.devlang: na
 ms.date: 12/16/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7eda805a5fdf24a7a55b9296a0f0a1c9a5bfc576
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 36fb54b4b6521d87c7461936c84a644bf22f7e31
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683498"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963972"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate"></a>Öğretici: otomatik olarak imzalanan sertifika oluşturmak için dağıtım betikleri kullanın
 
@@ -36,7 +36,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Dağıtım betiklerini içeren bir Microsoft Learn modülü için bkz. [Dağıtım betiklerini kullanarak ARM şablonlarını genişletme](/learn/modules/extend-resource-manager-template-deployment-scripts/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
@@ -329,13 +329,13 @@ Dağıtım betiği, anahtar kasasına bir sertifika ekler. Yönetilen kimliğe i
 
     ![Kaynak Yöneticisi şablonu dağıtım betiği kaynakları](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)
 
-    Her iki dosya da **azscripts** sonekine sahiptir. Biri bir depolama hesabıdır ve diğeri bir kapsayıcı örneğidir.
+    Her iki dosya da _azscripts_ sonekine sahiptir. Biri bir depolama hesabıdır ve diğeri bir kapsayıcı örneğidir.
 
     Kaynağı listelemek için **gizli türleri göster** ' i seçin `deploymentScripts` .
 
-1. **Azscripts** sonekine sahip depolama hesabını seçin.
-1. **Dosya paylaşımları** kutucuğunu seçin. **Azscripts** klasörü görüntülenir. Klasör, dağıtım betiği yürütme dosyalarını içerir.
-1. **Azscripts** seçin. İki klasör **azscriptınput** ve **azscriptoutput** görürsünüz. Giriş klasörü bir sistem PowerShell betik dosyası ve kullanıcı dağıtımı komut dosyalarını içerir. Çıkış klasörü, üzerinde bir _executionresult.js_ ve betik çıkış dosyası içerir. Hata iletisini _üzerindeexecutionresult.js_ görebilirsiniz. Yürütme başarısız olduğundan çıkış dosyası yok.
+1. _Azscripts_ sonekine sahip depolama hesabını seçin.
+1. **Dosya paylaşımları** kutucuğunu seçin. Dağıtım betiği yürütme dosyalarını içeren bir _azscripts_ klasörü görürsünüz.
+1. _Azscripts_ seçin. İki klasör _azscriptınput_ ve _azscriptoutput_ görürsünüz. Giriş klasörü bir sistem PowerShell betik dosyası ve kullanıcı dağıtımı komut dosyalarını içerir. Çıkış klasörü, üzerinde bir _executionresult.js_ ve betik çıkış dosyası içerir. Hata iletisini _üzerindeexecutionresult.js_ görebilirsiniz. Yürütme başarısız olduğundan çıkış dosyası yok.
 
 Satırı kaldırın `Write-Output1` ve şablonu yeniden dağıtın.
 

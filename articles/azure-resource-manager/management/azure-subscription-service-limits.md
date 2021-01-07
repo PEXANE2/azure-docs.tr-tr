@@ -3,12 +3,12 @@ title: Azure abonelik limitleri ve kotaları
 description: Ortak Azure aboneliği ve hizmet sınırları, Kotalar ve kısıtlamaların bir listesini sağlar. Bu makale, limitlerin en yüksek değerleriyle birlikte nasıl artabileceğine ilişkin bilgiler içerir.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 182df937ae5c0194aecfbe20b5962b44b363c708
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 20de08ee30deae74954f2857b4de756b8cf46f08
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934479"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964204"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure aboneliği ve hizmet limitleri, kotalar ve kısıtlamalar
 
@@ -176,6 +176,10 @@ Azure Machine Learning Işlem kotaları için en son değerler [Azure Machine Le
 
 [!INCLUDE [policy-limits](../../../includes/azure-policy-limits.md)]
 
+## <a name="azure-role-based-access-control-limits"></a>Azure rol tabanlı erişim denetimi limitleri
+
+[!INCLUDE [role-based-access-control-limits](../../../includes/role-based-access-control/limits.md)]
+
 ## <a name="azure-signalr-service-limits"></a>Azure SignalR hizmeti sınırları
 
 [!INCLUDE [signalr-service-limits](../../../includes/signalr-service-limits.md)]
@@ -339,10 +343,6 @@ Azure purview kotaları için en son değerler [Azure purview kota sayfasında](
 ## <a name="notification-hubs-limits"></a>Notification Hubs sınırları
 
 [!INCLUDE [notification-hub-limits](../../../includes/notification-hub-limits.md)]
-
-## <a name="azure-role-based-access-control-limits"></a>Azure rol tabanlı erişim denetimi limitleri
-
-[!INCLUDE [role-based-access-control-limits](../../../includes/role-based-access-control-limits.md)]
 
 ## <a name="service-bus-limits"></a>Service Bus sınırları
 

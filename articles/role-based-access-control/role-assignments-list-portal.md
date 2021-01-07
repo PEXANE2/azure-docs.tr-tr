@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 12/09/2020
 ms.author: rolyon
-ms.openlocfilehash: 06a9a955e8a963f94b1885abf5a920cb96c01940
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: adb3691625d6cdde03c803480ae948bb1911cc7d
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007485"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964380"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>Azure portal kullanarak Azure rol atamalarını listeleyin
 
-[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] Bu makalede, Azure portal kullanarak rol atamalarının nasıl listeleneceğini açıklanmaktadır.
+[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control/definition-list.md)] Bu makalede, Azure portal kullanarak rol atamalarının nasıl listeleneceğini açıklanmaktadır.
 
 > [!NOTE]
 > Kuruluşunuzun, [Azure tarafından yetkilendirilen kaynak yönetimi](../lighthouse/concepts/azure-delegated-resource-management.md)kullanan bir hizmet sağlayıcısına dış kaynaklı yönetim işlevleri varsa, bu hizmet sağlayıcısı tarafından yetkilendirilen rol atamaları burada gösterilmez.

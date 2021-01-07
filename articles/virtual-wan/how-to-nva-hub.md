@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a Network Virtual Appliance (NVA) in my Virtual WAN hub.
-ms.openlocfilehash: 0e174f9b78606e0bea5cded3a176f4207745bb5c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 7a52d3971e4ec0cb8ec104a57ba7fb4057c23b72
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077312"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964652"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Azure sanal WAN hub 'ında ağ sanal gereci oluşturma (Önizleme)
 
@@ -21,10 +21,10 @@ Bu makalede, Azure 'daki bir **ağ sanal** gereci (NVA) aracılığıyla Azure '
 
 Bu makaledeki adımlar, sanal WAN hub 'ında bir **Barbcuda CloudGen WAN** ağ sanal gereci oluşturmanıza yardımcı olur. Bu alıştırmayı tamamlayabilmeniz için, başlamadan önce hub 'a dağıttığınız bir barbcuda bulut şirket Içi aygıtı (CPE) ve bir Barrampaya da CloudGen WAN gereci lisansına sahip olmanız gerekir.
 
-Azure sanal WAN içinde **CISCO SD-WAN** 'ın dağıtım belgeleri için lütfen aşağıdaki e-posta adresinden Cisco 'ya e-posta gönderin: vwan_public_preview@external.cisco.com
+Azure sanal WAN içinde **CISCO SD-WAN** 'ın dağıtım belgeleri için lütfen bkz. [Multi-Cloud Için Cisco Cloud onrampa](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701). Hesabınızı kaydetmek ve gerekli Cisco SD-WAN lisanslarını almak için aşağıdaki e-posta adresinden Cisco 'ya e-posta gönderin: vwan_public_preview@external.cisco.com
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Yapılandırmanıza başlamadan önce aşağıdaki ölçütleri karşıladığınızı doğrulayın:
 
@@ -49,13 +49,13 @@ Hub, siteden siteye, ExpressRoute, Noktadan siteye veya ağ sanal gereç işlevl
 1. Oluşturduğunuz sanal WAN 'ı bulun. **Sanal WAN** sayfasında, **bağlantı** bölümünde, **hub**' ı seçin.
 1. **Hub 'lar** sayfasında + yeni hub ' ı seçerek **sanal hub oluştur** sayfasını açın.
 
-   :::image type="content" source="./media/how-to-nva-hub/vwan-hub.png" alt-text="Temel Bilgiler":::
+   :::image type="content" source="./media/how-to-nva-hub/vwan-hub.png" alt-text="Temel bilgiler":::
 1. **Sanal hub** sayfası **temel bilgileri** Oluştur sekmesinde aşağıdaki alanları doldurun:
 
    **Proje ayrıntıları**
 
    * Bölge (daha önce konum olarak adlandırılır)
-   * Name
+   * Ad
    * Hub özel adres alanı. En küçük adres alanı bir hub oluşturmak için/24 ' tir. Bu,/25 ile/32 arasında herhangi bir aralığın oluşturulması sırasında bir hata üretecektir. Microsoft tarafından yönetilen bir hizmet olan Azure sanal WAN, farklı ağ geçitleri/hizmetler için sanal hub 'da uygun alt ağları oluşturur. (Örneğin: ağ sanal cihazları, VPN ağ geçitleri, ExpressRoute ağ geçitleri, kullanıcı VPN/Noktadan siteye ağ geçitleri, güvenlik duvarı, yönlendirme vb.). Microsoft bunu hizmetin bir parçası olarak yaptığından, kullanıcının sanal hub 'daki hizmetler için alt ağ adres alanını açıkça planlaması gerekmez.
 1. Doğrulamak için **gözden geçir + oluştur** ' u seçin.
 1. Hub 'ı oluşturmak için **Oluştur** ' u seçin.
@@ -66,14 +66,14 @@ Bu adımda, hub 'da bir ağ sanal gereci oluşturacaksınız. Her NVA 'nın yord
 
 1. Önceki adımda oluşturduğunuz sanal WAN hub 'ını bulun ve açın.
 
-   :::image type="content" source="./media/how-to-nva-hub/nva-hub.png" alt-text="Temel Bilgiler":::
+   :::image type="content" source="./media/how-to-nva-hub/nva-hub.png" alt-text="Sanal hub":::
 1. Ağ sanal cihazları kutucuğunu bulun ve **Oluştur** bağlantısını seçin.
 1. **Ağ sanal gereç** dikey penceresinde **Barescuda cloudgen WAN**' ı seçin ve ardından **Oluştur** düğmesini seçin.
 
-   :::image type="content" source="./media/how-to-nva-hub/select-nva.png" alt-text="Temel Bilgiler":::
+   :::image type="content" source="./media/how-to-nva-hub/select-nva.png" alt-text="NVA seçin":::
 1. Bu işlem sizi Barırcuda CloudGen WAN Gateway için Azure Market teklifine götürür. Koşulları okuyun ve ardından, hazırsanız **Oluştur** düğmesini seçin.
 
-   :::image type="content" source="./media/how-to-nva-hub/barracuda-create-basics.png" alt-text="Temel Bilgiler":::
+   :::image type="content" source="./media/how-to-nva-hub/barracuda-create-basics.png" alt-text="Barbcuda NVA temelleri":::
 1. **Temel bilgiler** sayfasında, aşağıdaki bilgileri sağlamanız gerekir:
 
    * **Abonelik** -sanal WAN ve hub 'ı dağıtmak için kullandığınız aboneliği seçin.
@@ -83,7 +83,7 @@ Bu adımda, hub 'da bir ağ sanal gereci oluşturacaksınız. Her NVA 'nın yord
    * **Yönetilen kaynak grubu** -bu, Barçcuda tarafından yönetilen kaynakları dağıtan yönetilen kaynak grubunun adıdır. Bu ad için önceden doldurulmuş olmalıdır.
 1. **Sonraki: CloudGen WAN Gateway** düğmesini seçin.
 
-   :::image type="content" source="./media/how-to-nva-hub/barracuda-cloudgen-wan.png" alt-text="Temel Bilgiler":::
+   :::image type="content" source="./media/how-to-nva-hub/barracuda-cloudgen-wan.png" alt-text="CloudGen WAN Gateway":::
 1. Aşağıdaki bilgileri buraya sağlayın:
 
    * **Sanal WAN hub 'ı** -bu NVA 'yı dağıtmak ISTEDIĞINIZ sanal WAN hub 'ı.

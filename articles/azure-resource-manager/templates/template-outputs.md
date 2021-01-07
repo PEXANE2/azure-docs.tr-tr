@@ -3,16 +3,16 @@ title: Şablonlarda çıkış çıkışları
 description: Azure Resource Manager şablonunda çıkış değerlerinin nasıl tanımlanacağını açıklar (ARM şablonu).
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 9e4ac134e9c1864bca8dd56c3a6e2311d0328d7d
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: f8f13b6caf063cea79dc71775fb936f406a3ee6c
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934739"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964023"
 ---
 # <a name="outputs-in-arm-templates"></a>ARM şablonlarındaki çıktılar
 
-Bu makalede, Azure Resource Manager şablonunuzda (ARM şablonu) çıkış değerlerinin nasıl tanımlanacağı açıklanmaktadır. Dağıtılan kaynaklardan değer döndürihtiyacınız olduğunda çıktıları kullanırsınız.
+Bu makalede, Azure Resource Manager şablonunuzda (ARM şablonu) çıkış değerlerinin nasıl tanımlanacağı açıklanmaktadır. `outputs`Dağıtılan kaynaklardan değer döndürihtiyacınız olduğunda kullanırsınız.
 
 Her bir çıkış değerinin biçimi, [veri türlerinden](template-syntax.md#data-types)biriyle aynı olmalıdır.
 
@@ -31,7 +31,7 @@ Aşağıdaki örnek, bir genel IP adresi için kaynak KIMLIĞININ nasıl döneg�
 
 ## <a name="conditional-output"></a>Koşullu çıkış
 
-Çıktılar bölümünde, koşullu bir değer döndürebilirsiniz. Genellikle, bir kaynağı [koşullu olarak dağıttığınız](conditional-resource-deployment.md) durumunda çıkışların durumunu kullanırsınız. Aşağıdaki örnek, bir genel IP adresi için kaynak KIMLIĞININ, yeni bir birinin dağıtılıp dağıtıldığına göre nasıl koşullu olarak döndürülüp döndürülmeyeceğini göstermektedir:
+`outputs`Bölümünde, koşullu bir değer döndürebilirsiniz. Genellikle, ' `condition` de `outputs` bir kaynağı [koşullu olarak dağıttığınıza](conditional-resource-deployment.md) kullanırsınız. Aşağıdaki örnek, bir genel IP adresi için kaynak KIMLIĞININ, yeni bir birinin dağıtılıp dağıtıldığına göre nasıl koşullu olarak döndürülüp döndürülmeyeceğini göstermektedir:
 
 ```json
 "outputs": {
@@ -112,7 +112,7 @@ az deployment group show \
 
 Aşağıdaki örneklerde, çıkışları kullanmaya yönelik senaryolar gösterilmektedir.
 
-|Şablon  |Description  |
+|Şablon  |Açıklama  |
 |---------|---------|
 |[Değişkenleri Kopyala](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Karmaşık değişkenler oluşturur ve bu değerleri verir. Hiçbir kaynak dağıtmaz. |
 |[Genel IP adresi](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Genel bir IP adresi oluşturur ve kaynak KIMLIĞINI verir. |
