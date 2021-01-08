@@ -2,25 +2,21 @@
 title: 'Öğretici: FortiGate SSL VPN ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
 description: FortiGate SSL VPN 'i Azure Active Directory (Azure AD) ile bütünleştirmek için gerçekleştirmeniz gereken adımları öğrenin.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 18a3d9d5-d81c-478c-be7e-ef38b574cb88
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 08/11/2020
+ms.date: 12/26/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 021550598452516d45ae67c1139c2f891629a875
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: b9a22025f124e7639aa1b9a157dbbd020e2ff966
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296582"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020273"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortigate-ssl-vpn"></a>Öğretici: FortiGate SSL VPN ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -30,9 +26,7 @@ Bu öğreticide, FortiGate SSL VPN 'i Azure Active Directory (Azure AD) ile tüm
 * Kullanıcılarınızın Azure AD hesaplarıyla SSL VPN 'yi yasakladığından otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin: Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
-
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -45,13 +39,12 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edece
 
 FortiGate SSL VPN, SP tarafından başlatılan SSO 'yu destekler.
 
-FortiGate SSL VPN 'i yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-fortigate-ssl-vpn-from-the-gallery"></a>Galeriden FortiGate SSL VPN 'i ekleme
 
 FortiGate SSL VPN 'nin tümleştirmesini Azure AD ile yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize Fortıgate SSL VPN eklemeniz gerekir:
 
-1. [Azure Portal](https://portal.azure.com) bir iş veya okul hesabıyla ya da kişisel bir Microsoft hesabı oturum açın.
+1. Azure portal bir iş veya okul hesabıyla ya da kişisel bir Microsoft hesabı oturum açın.
 1. Sol bölmede **Azure Active Directory**’yi seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Bir uygulama eklemek için **Yeni uygulama**' yı seçin.
@@ -69,13 +62,13 @@ FortiGate SSL VPN ile Azure AD SSO 'yu yapılandırmak ve test etmek için şu �
     1. Bu Kullanıcı için Azure AD çoklu oturum açmayı etkinleştirmek üzere **[Test kullanıcısına erişim Izni verin](#grant-access-to-the-test-user)** .
 1. Uygulama tarafında **[FortiGate SSL VPN SSO 'Yu yapılandırın](#configure-fortigate-ssl-vpn-sso)** .
     1. Kullanıcının Azure AD gösterimine karşılık gelen bir **FortiGate SSL VPN test kullanıcısı oluşturun** .
-1. Yapılandırmanın çalıştığını doğrulamak için **[test SSO 'su](#test-single-sign-on)** .
+1. Yapılandırmanın çalıştığını doğrulamak için **[test SSO 'su](#test-sso)** .
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com/), **FORTIGATE SSL VPN** uygulama tümleştirmesi sayfasında, **Yönet** bölümünde **Çoklu oturum açma**' yı seçin.
+1. Azure portal, **Fortigate SSL VPN** uygulama tümleştirmesi sayfasında, **Yönet** bölümünde **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem düğmesini seçin:
 
@@ -100,23 +93,32 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
 
 1. FortiGate SSL VPN için gereken iki ek talep aşağıdaki tabloda gösterilmiştir. Bu taleplerin adları, Bu öğreticinin **FortiGate komut satırı yapılandırma** bölümünde kullanılan adlarla eşleşmelidir. 
 
-   | Adı |  Kaynak özniteliği|
+   | Ad |  Kaynak özniteliği|
    | ------------ | --------- |
    | username | User. UserPrincipalName |
    | group | Kullanıcı. gruplar |
    
    Bu ek talepleri oluşturmak için:
+
+   a. **Kullanıcı öznitelikleri & talepler**' ın yanındaki **Düzenle**' yi seçin.
+
+   b. **Yeni talep Ekle**' yi seçin.
+
+   c. **Ad** için **Kullanıcı adı** girin.
+
+   d. **Kaynak özniteliği** için **User. UserPrincipalName**' i seçin.
+
+   e. **Kaydet**’i seçin.
+
+   f. **Grup talebi ekle**' yi seçin.
+
+   örneğin: **Tüm uygulamalar**’ı seçin.
+
+   h. **Grup talebinin adını Özelleştir** onay kutusunu seçin.
+
+   i. **Ad** için **Grup** girin.
    
-   1. **Kullanıcı öznitelikleri & talepler**' ın yanındaki **Düzenle**' yi seçin.
-   1. **Yeni talep Ekle**' yi seçin.
-   1. **Ad** için **Kullanıcı adı** girin.
-   1. **Kaynak özniteliği** için **User. UserPrincipalName**' i seçin.
-   1. **Kaydet**’i seçin.
-   1. **Grup talebi ekle**' yi seçin.
-   1. **Tüm uygulamalar**’ı seçin.
-   1. **Grup talebinin adını Özelleştir** onay kutusu.
-   1. **Ad** için **Grup** girin.
-   1. **Kaydet**’i seçin.   
+   j. **Kaydet**’i seçin.   
 
 1. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, sertifikayı Indirip bilgisayarınıza kaydetmek için **sertifika (base64)** yanındaki **indirme** bağlantısını seçin:
 
@@ -144,14 +146,8 @@ Bu bölümde, bu kullanıcıya FortiGate SSL VPN 'e erişimi vererek Azure çokl
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde **Fortigate SSL VPN**' yi seçin.
-1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünde, **Kullanıcılar ve gruplar**' ı seçin:
-
-   ![Kullanıcılar ve gruplar seçeneğini gösteren ekran görüntüsü.](common/users-groups-blade.png)
-
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin:
-
-    ![Kullanıcı Ekle düğmesini gösteren ekran görüntüsü.](common/add-assign-user.png)
-
+1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünde **Kullanıcılar ve gruplar**' ı seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, **Kullanıcılar** listesinde **B. Simon** öğesini seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 1. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin. Ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 1. **Atama Ekle** Iletişim kutusunda **ata**' yı seçin.
@@ -182,7 +178,7 @@ Kiracınızdaki FortiGate uygulamasının SAML yapılandırmasını tamamladıkt
 1. FortiGate gerecinizin yönetim portalında oturum açın.
 1. Sol bölmede **sistem**' i seçin.
 1. **Sistem** altında **Sertifikalar**' ı seçin.
-1. Uzak **sertifikayı içeri aktar**' ı seçin  >  **Remote Certificate**.
+1. Uzak **sertifikayı içeri aktar**' ı seçin  >  .
 1. Azure kiracısındaki FortiGate uygulama dağıtımından indirilen sertifikaya gidin, seçin ve ardından **Tamam**' ı seçin.
 
 Sertifika karşıya yüklendikten sonra, **sistem**  >  **sertifikaları**  >  **uzak sertifikası** altında adını göz önünde atın. Varsayılan olarak, REMOTE_Cert_ *n* olarak adlandırılır; burada *n* bir tamsayı değeridir.
@@ -229,9 +225,9 @@ Bu adımları tamamlayabilmeniz için, daha önce kaydettiğiniz değerlere ihti
 
 #### <a name="configure-fortigate-for-group-matching"></a>Grup eşleştirme için FortiGate yapılandırma
 
-Bu bölümde, FortiGate 'i test kullanıcısını içeren güvenlik grubunun nesne kimliğini tanıyacak şekilde yapılandıracaksınız. Bu yapılandırma, FortiGate 'in grup üyeliğine göre erişim kararları almasına izin verir.
+Bu bölümde, FortiGate 'i test kullanıcısını içeren güvenlik grubunun nesne KIMLIĞINI tanıyacak şekilde yapılandıracaksınız. Bu yapılandırma, FortiGate 'in grup üyeliğine göre erişim kararları almasına izin verir.
 
-Bu adımları tamamlayabilmeniz için, bu öğreticide daha önce oluşturduğunuz FortiGateAccess güvenlik grubunun nesne kimliğine ihtiyacınız vardır.
+Bu adımları tamamlayabilmeniz için, bu öğreticide daha önce oluşturduğunuz FortiGateAccess güvenlik grubunun nesne KIMLIĞINE ihtiyacınız vardır.
 
 1. FortiGate gerecinizde bir SSH oturumu oluşturun ve bir FortiGate yönetici hesabıyla oturum açın.
 1. Şu komutları çalıştırın:
@@ -256,22 +252,17 @@ Bu bölümde, bu öğreticide daha önce oluşturduğunuz FortiGateAccess güven
 
 Fortigate VPN platformuna VPN portalları ve güvenlik duvarı Ilkesi eklemek için [Fortigate destek ekibi](mailto:tac_amer@fortinet.com) ile çalışın. Çoklu oturum açma kullanmadan önce bu adımı gerçekleştirmeniz gerekir.
 
-### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
+## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim paneli 'ni kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edeceksiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-Erişim paneli 'nde FortiGate SSL VPN kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız FortiGate SSL VPN 'de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneli 'Ne giriş](../user-help/my-apps-portal-end-user-access.md).
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz FortiGate VPN oturum açma URL 'sine yeniden yönlendirilir. 
 
-Microsoft ve FortiGate, en iyi Son Kullanıcı deneyimi için Fortinet VPN istemcisini FortiClient kullanmanızı önerir.
+* Doğrudan FortiGate VPN oturum açma URL 'sine gidin ve oturum açma akışını buradan başlatın.
 
-## <a name="additional-resources"></a>Ek kaynaklar
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki FortiGate VPN kutucuğuna tıkladığınızda, bu, FortiGate VPN oturum açma URL 'sine yeniden yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)
-
-- [Azure AD ile SSL VPN 'yi deneyin](https://aad.portal.azure.com/)
-
-- [Microsoft Cloud App Security oturum denetimi nedir?](/cloud-app-security/proxy-intro-aad)
+FortiGate VPN 'i yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-aad)

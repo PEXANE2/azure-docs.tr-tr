@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 12c9fd43933f9f54e013752c5fe482ce31650536
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 52a43874060748479beebc994bf0a9b663cde9dc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95238403"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020188"
 ---
 # <a name="create-an-app-service-environment"></a>App Service Ortamı oluşturma
 
@@ -20,10 +20,9 @@ ms.locfileid: "95238403"
 > Bu makale, App Service Ortamı v3 (Önizleme) ile ilgilidir
 > 
 
-[App Service ortamı (ASE)][Intro] , Azure sanal ağınıza (VNet) eklenen App Service tek bir kiracı dağıtımsıdır.  ASEv3 yalnızca sanal ağınızdaki özel bir adreste bulunan uygulamaların sunulmasını destekler. Önizleme sırasında bir ASEv3 oluşturulduğunda, aboneliğinize üç kaynak eklenir.
+[App Service ortamı (ASE)][Intro] , Azure sanal ağınıza (VNet) eklenen App Service tek bir kiracı dağıtımsıdır.  ASEv3 yalnızca sanal ağınızdaki özel bir adreste bulunan uygulamaların sunulmasını destekler. Önizleme sırasında bir ASEv3 oluşturulduğunda, bu kaynaklar aboneliğinize eklenir.
 
 - App Service Ortamı
-- Özel bölge Azure DNS
 - Özel uç nokta
 
 Ao 'un dağıtımı iki alt ağın kullanılmasını gerektirir.  Bir alt ağ, Özel uç noktasını tutacaktır.  Bu alt ağ, VM 'Ler gibi diğer şeyler için kullanılabilir.  Diğer alt ağ, Ao 'dan yapılan giden çağrılar için kullanılır.  Bu alt ağ asa dışında başka bir şey için kullanılamaz. 

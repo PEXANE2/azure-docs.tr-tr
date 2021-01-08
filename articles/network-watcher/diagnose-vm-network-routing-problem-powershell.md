@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
-ms.date: 04/20/2018
+ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: 362157f023f7ed4d2da81962acd32e2da968193e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6569a99ec851da478151665921e7689e1c3488f1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84738796"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020222"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-powershell"></a>Bir sanal makine ağ yönlendirme sorununu tanılama-Azure PowerShell
 
@@ -94,7 +94,7 @@ Get-AzNetworkWatcherNextHop `
   -DestinationIPAddress 13.107.21.200
 ```
 
-Birkaç saniye sonra çıktı, **Nexthoptype** 'un **Internet**olduğunu ve **routetableıd** 'in **sistem yolu**olduğunu bildirir. Bu sonuç, hedefe geçerli bir yol olduğunu bilmenizi sağlar.
+Birkaç saniye sonra çıktı, **Nexthoptype** 'un **Internet** olduğunu ve **routetableıd** 'in **sistem yolu** olduğunu bildirir. Bu sonuç, hedefe geçerli bir yol olduğunu bilmenizi sağlar.
 
 Sanal makineden 172.31.0.100 adresine giden iletişimi test etme:
 
@@ -106,7 +106,7 @@ Get-AzNetworkWatcherNextHop `
   -DestinationIPAddress 172.31.0.100
 ```
 
-Döndürülen çıktı, **hiçbir** bir **nexthoptype**olmadığı ve **Routetableıd** 'in de **sistem rotası**olduğunu size bildirir. Bu sonuç, hedefin geçerli bir sistem yolu olmasına rağmen trafiği hedefe yönlendiren bir sonraki atlama olmadığını size bildirir.
+Döndürülen çıktı, **hiçbir** bir **nexthoptype** olmadığı ve **Routetableıd** 'in de **sistem rotası** olduğunu size bildirir. Bu sonuç, hedefin geçerli bir sistem yolu olmasına rağmen trafiği hedefe yönlendiren bir sonraki atlama olmadığını size bildirir.
 
 ## <a name="view-details-of-a-route"></a>Bir yolun ayrıntılarını görüntüleme
 
@@ -131,7 +131,7 @@ Name State  Source  AddressPrefix           NextHopType NextHopIpAddress
      Active Default {172.16.0.0/12}         None        {}              
 ```
 
-Önceki çıktıda görebileceğiniz gibi **0.0.0.0/0** ' ın **addresspredüzeltmesini** içeren yol, diğer yönlendirmelerin adres ön eklerinin Içindeki adreslere hiçbir şekilde **Internet**'in bir sonraki atına yol açabilir. Ayrıca çıktıda da görebileceğiniz gibi, 172.31.0.100 adresini içeren 172.16.0.0/12 ön ekine varsayılan bir yol vardır ancak **Nexthoptype** **none**olur. Azure, 172.16.0.0/12 için varsayılan bir yol oluşturur ancak bir neden olmadıkça sonraki atlama türünü belirtmez. Örneğin, 172.16.0.0/12 adres aralığını sanal ağın adres alanına eklediyseniz Azure, **Nexthoptype** 'ı yol için **sanal ağ** olarak değiştirir. Ardından bir denetim, **sanal ağı** **nexthoptype**olarak gösterir.
+Önceki çıktıda görebileceğiniz gibi **0.0.0.0/0** ' ın **addresspredüzeltmesini** içeren yol, diğer yönlendirmelerin adres ön eklerinin Içindeki adreslere hiçbir şekilde **Internet**'in bir sonraki atına yol açabilir. Ayrıca çıktıda da görebileceğiniz gibi, 172.31.0.100 adresini içeren 172.16.0.0/12 ön ekine varsayılan bir yol vardır ancak **Nexthoptype** **none** olur. Azure, 172.16.0.0/12 için varsayılan bir yol oluşturur ancak bir neden olmadıkça sonraki atlama türünü belirtmez. Örneğin, 172.16.0.0/12 adres aralığını sanal ağın adres alanına eklediyseniz Azure, **Nexthoptype** 'ı yol için **sanal ağ** olarak değiştirir. Ardından bir denetim, **sanal ağı** **nexthoptype** olarak gösterir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

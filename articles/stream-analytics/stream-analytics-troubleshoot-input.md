@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics ilgili sorun giderme girdileri
 description: Bu makalede Azure Stream Analytics işlerinde giriş bağlantılarınızın sorunlarını gidermeye yönelik teknikler açıklanmaktadır.
-author: sidram
+author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 05/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 760c98ce9464e4d40f01256a973e07d9084c6dfe
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 2d7171c9ec1e60447fb3342caa72098fb2eb9337
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123294"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019916"
 ---
 # <a name="troubleshoot-input-connections"></a>Giriş bağlantısı sorunlarını giderme
 
@@ -31,7 +30,7 @@ Bu makalede Azure Stream Analytics giriş bağlantılarıyla ilgili yaygın soru
     
     1. Olayların gönderildiğinden emin olmak için [Olay Hub 'ı ölçümlerini](../event-hubs/event-hubs-metrics-azure-monitor.md) denetleyin. Event Hubs ileti alıyorsanız, ileti ölçümleri sıfırdan büyük olmalıdır.
 
-3.  Giriş önizlemede bir zaman aralığı seçtiğinizden emin olun. **Zaman aralığını Seç** ' i seçin ve ardından sorgunuzu test etmeden önce bir örnek süre girin.
+3.  Giriş önizlemede bir zaman aralığı seçtiğinizden emin olun. **Zaman aralığını Seç**' i seçin ve ardından sorgunuzu test etmeden önce bir örnek süre girin.
 
 ## <a name="malformed-input-events-causes-deserialization-errors"></a>Yanlış biçimlendirilmiş giriş olayları seri durumundan çıkarma hatalarına neden oluyor 
 
@@ -71,7 +70,7 @@ AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1.
 
 Event Hubs örneğinize yeni bir tüketici grubu eklemek için aşağıdaki adımları izleyin:
 
-1. Azure portalında oturum açın.
+1. Azure Portal’da oturum açın.
 
 2. Olay Hub 'ınızı bulun.
 
@@ -79,7 +78,7 @@ Event Hubs örneğinize yeni bir tüketici grubu eklemek için aşağıdaki adı
 
 4. Olay Hub 'ını ada göre seçin.
 
-5. **Event Hubs örneği** sayfasında, **varlıklar** başlığı altında **tüketici grupları** ' nı seçin. **$Default** adlı bir tüketici grubu listelenir.
+5. **Event Hubs örneği** sayfasında, **varlıklar** başlığı altında **tüketici grupları**' nı seçin. **$Default** adlı bir tüketici grubu listelenir.
 
 6. Yeni bir tüketici grubu eklemek için **+ Tüketici grubu** ' nu seçin. 
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: 7e27c3dd6e70d9a532c326d8187d82e14bf7ddda
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: d37fca06a3d2eafa0af9e31c3a30ac66be5404f0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591625"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020613"
 ---
 # <a name="cicd-for-custom-speech"></a>Özel Konuşma Tanıma için CI/CD
 
@@ -83,7 +83,7 @@ Eğitim verilerine yönelik bir güncelleştirme bir modelin tanınmasını iyil
 [Konuşma DevOps şablonu deposu](https://github.com/Azure-Samples/Speech-Service-DevOps-Template) , için altyapı ve ayrıntılı rehberlik sağlar:
 
 - Şablon deposunu GitHub hesabınıza kopyalayın, ardından GitHub eylemleri CI/CD iş akışları için Azure kaynakları ve [hizmet sorumlusu](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) oluşturun.
-- "[Geliştirme iç döngüsü](https://mitchdenny.com/the-inner-loop/)" boyunca ilerleyin. Güncelleştirme eğitimi ve bir özellik dalında verileri test edin, değişiklikleri geçici bir geliştirme modeliyle test edin ve değişiklikleri önermek ve gözden geçirmek için bir çekme isteği yükseltin.
+- "[Geliştirme iç döngüsü](/dotnet/architecture/containerized-lifecycle/design-develop-containerized-apps/docker-apps-inner-loop-workflow)" boyunca ilerleyin. Güncelleştirme eğitimi ve bir özellik dalında verileri test edin, değişiklikleri geçici bir geliştirme modeliyle test edin ve değişiklikleri önermek ve gözden geçirmek için bir çekme isteği yükseltin.
 - Eğitim verileri bir çekme isteğinde *Main*'e güncelleniyorsa, modelleri GITHUB eylemleri CI iş akışıyla eğitme.
 - Bir modelin [sözcük hata oranını](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy) (WER) oluşturmak için otomatik doğruluk testi gerçekleştirin. Test sonuçlarını Azure Blob 'da depolayın.
 - WER artdığı zaman bir uç nokta oluşturmak için CD iş akışını yürütün.

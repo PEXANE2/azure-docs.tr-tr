@@ -1,18 +1,17 @@
 ---
 title: Azure Stream Analytics zaman işlemeyi anlama
 description: En iyi başlangıç zamanını seçme, geç ve erken olayları işleme ve Azure Stream Analytics içinde zaman işleme ölçümleri hakkında bilgi edinin.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: c8f40808834c64ad74673f1c5f0c19892607fdcc
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f9dbdb3907b376df8de988730c6c48ed01bfccd0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127482"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019950"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Azure Stream Analytics zaman işlemeyi anlama
 
@@ -22,11 +21,11 @@ Bu makalede, Azure Stream Analytics işlerinde pratik zaman işleme sorunların�
 
 Tartışmayı daha iyi çerçeveetmek için bazı arka plan kavramları tanımlayalim:
 
-- **Olay saati** : özgün olayın gerçekleştiği zaman. Örneğin, bir hareketli araba otoyol üzerinde bir stand yaklaşırsa.
+- **Olay saati**: özgün olayın gerçekleştiği zaman. Örneğin, bir hareketli araba otoyol üzerinde bir stand yaklaşırsa.
 
-- **İşleme süresi** : olayın işleme sistemine ulaştığı ve gözlemlendiği zaman. Örneğin, bir stand algılayıcısı arabayı gördüğünde ve bilgisayar sisteminin verileri işlemesi birkaç dakika sürer.
+- **İşleme süresi**: olayın işleme sistemine ulaştığı ve gözlemlendiği zaman. Örneğin, bir stand algılayıcısı arabayı gördüğünde ve bilgisayar sisteminin verileri işlemesi birkaç dakika sürer.
 
-- **Filigran** : hangi nokta olaylarının akış işlemcisine geçtiğini gösteren bir olay zaman işaretleyicisi. Filigranlar, sistemin olayları geri almaya yönelik Temizleme ilerlemesini belirtebilmesine izin verir. Akışların doğası gereği, gelen olay verileri hiçbir şekilde durdurulmayacağından, Filigranlar akışta belirli bir noktaya yönelik ilerlemeyi gösterir.
+- **Filigran**: hangi nokta olaylarının akış işlemcisine geçtiğini gösteren bir olay zaman işaretleyicisi. Filigranlar, sistemin olayları geri almaya yönelik Temizleme ilerlemesini belirtebilmesine izin verir. Akışların doğası gereği, gelen olay verileri hiçbir şekilde durdurulmayacağından, Filigranlar akışta belirli bir noktaya yönelik ilerlemeyi gösterir.
 
    Filigran kavramı önemlidir. Filigranlar, sistemin geri çekilmesi gerekmeyen tamamen, doğru ve yinelenebilir sonuçlara ne zaman üreteceğini belirlemesine izin Stream Analytics verir. İşlem öngörülebilir ve yinelenebilir bir şekilde yapılabilir. Örneğin, bazı hata işleme koşullarınız için bir yeniden sayım yapılması gerekiyorsa, Filigranlar güvenli başlangıç ve bitiş noktalarıdır.
 

@@ -2,18 +2,17 @@
 title: Azure Stack üzerinde Azure Stream Analytics Çalıştır (Önizleme)
 description: Azure Stream Analytics Edge işi oluşturun ve IoT Edge çalışma zamanı aracılığıyla Azure Stack hub 'a dağıtın.
 ms.service: stream-analytics
-author: raan
+author: an-emma
 ms.author: raan
-ms.reviewer: mamccrea
 ms.topic: how-to
 ms.date: 08/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 21cf432576829b575d70a94227f28df373a4d899
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 3463b3eae96c0a65206023ed0f21efe44294d4eb
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126167"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020137"
 ---
 # <a name="run-azure-stream-analytics-on-azure-stack-preview"></a>Azure Stack üzerinde Azure Stream Analytics Çalıştır (Önizleme)
 
@@ -67,25 +66,25 @@ IoT Edge cihazında çalıştırmak üzere oluşturduğunuz Azure Stream Analyti
    | Ad | Depolama hesabınıza benzersiz bir ad verin. |
    | Konum | Size yakın bir konum seçin.|
    | Abonelik | IoT hub'ınızla aynı aboneliği seçin.|
-   | Kaynak Grubu | [Hızlı başlangıç](../iot-edge/quickstart.md) ve öğreticiler IoT Edge için oluşturduğunuz tüm test kaynakları için aynı kaynak grubunu kullanmanızı öneririz. Örneğin, **IoTEdgeResources** . |
+   | Kaynak Grubu | [Hızlı başlangıç](../iot-edge/quickstart.md) ve öğreticiler IoT Edge için oluşturduğunuz tüm test kaynakları için aynı kaynak grubunu kullanmanızı öneririz. Örneğin, **IoTEdgeResources**. |
 
-3. Diğer alanlar için varsayılan değerleri kullanın ve **Oluştur** 'u seçin.
+3. Diğer alanlar için varsayılan değerleri kullanın ve **Oluştur**'u seçin.
 
 
 ### <a name="create-a-new-job"></a>Yeni bir iş oluşturma
 
-1. Azure portal **> Nesnelerin İnterneti > kaynak oluştur ' a gidin Stream Analytics işi** .
+1. Azure portal **> Nesnelerin İnterneti > kaynak oluştur ' a gidin Stream Analytics işi**.
 2. Depolama hesabınızı oluşturmak için aşağıdaki değerleri girin:
 
    | Alan | Değer |
    | --- | --- |
    | İş Adı | İşinize bir ad verin. Örneğin, **IoTEdgeJob** |
    | Abonelik | IoT hub'ınızla aynı aboneliği seçin.|
-   | Kaynak Grubu | [Hızlı başlangıç](../iot-edge/quickstart.md) ve öğreticiler IoT Edge için oluşturduğunuz tüm test kaynakları için aynı kaynak grubunu kullanmanızı öneririz. Örneğin, **IoTEdgeResources** . |
+   | Kaynak Grubu | [Hızlı başlangıç](../iot-edge/quickstart.md) ve öğreticiler IoT Edge için oluşturduğunuz tüm test kaynakları için aynı kaynak grubunu kullanmanızı öneririz. Örneğin, **IoTEdgeResources**. |
    | Konum | Size yakın bir konum seçin. |
-   | Barındırma ortamı | **Kenar** 'ı seçin. |
+   | Barındırma ortamı | **Kenar**'ı seçin. |
 
-3. **Oluştur** ’u seçin.
+3. **Oluştur**’u seçin.
 
 ### <a name="configure-your-job"></a>İşinizi yapılandırma
 
@@ -96,7 +95,7 @@ Azure portalda Stream Analytics işiniz oluşturulduktan sonra iletilen verilerl
    > [!div class="mx-imgBorder"]
    > [![İş depolama hesabı ayarı ](media/on-azure-stack/storage-account-settings.png)](media/on-azure-stack/storage-account-settings.png#lightbox)
 3. **Iş topolojisi** altında **girişler** ' i ve ardından **akış girişi Ekle** ' yi seçin.
-4. Aşağı açılan listeden **IoT Hub** , **Olay Hub** 'ı veya **kenar hub 'ını** seçin. 
+4. Aşağı açılan listeden **IoT Hub**, **Olay Hub**'ı veya **kenar hub 'ını** seçin. 
 5. Giriş bir olay hub 'ı veya bir Azure Stack hub aboneliğinde IoT Hub, lütfen aşağıda gösterildiği gibi el ile bilgi sağlayın.
 
    #### <a name="event-hub"></a>Olay Hub'ı
@@ -104,7 +103,7 @@ Azure portalda Stream Analytics işiniz oluşturulduktan sonra iletilen verilerl
    | Alan | Değer |
    | --- | --- |
    | Girdi diğer adı | Bu girişe başvurmak için iş sorgusunda kullandığınız kolay bir ad. |
-   | Service Bus ad alanı | Ad alanı, bir mesajlaşma varlıkları kümesi için bir kapsayıcıdır. Yeni bir olay hub 'ı oluşturduğunuzda ad alanını da oluşturursunuz. (Örnek: *SB:// <Event Hub Name> . eventhub.Shanghai.azurestack.Corp.Microsoft.com* ) |
+   | Service Bus ad alanı | Ad alanı, bir mesajlaşma varlıkları kümesi için bir kapsayıcıdır. Yeni bir olay hub 'ı oluşturduğunuzda ad alanını da oluşturursunuz. (Örnek: *SB:// <Event Hub Name> . eventhub.Shanghai.azurestack.Corp.Microsoft.com*) |
    | Olay Hub'ı adı | Giriş olarak kullanılacak Olay Hub 'ının adı. |
    | Olay Hub'ı ilke adı | Olay Hub 'ına erişim sağlayan paylaşılan erişim ilkesi. Her paylaşılan erişim ilkesinin adı, sizin ayarladığınız izinler ve anahtarlara erişim vardır. Bu seçenek, Olay Hub 'ı ayarlarını el ile sağlama seçeneğini seçmediğiniz takdirde otomatik olarak doldurulur. |
    | Olay Hub 'ı ilke anahtarı | Olay Hub 'ına erişim yetkisi vermek için kullanılan paylaşılan erişim anahtarı. Bu seçenek, Olay Hub 'ı ayarlarını el ile sağlama seçeneğini seçmediğiniz takdirde otomatik olarak doldurulur. Bunu, Olay Hub 'ı ayarlarında bulabilirsiniz. |
@@ -119,7 +118,7 @@ Azure portalda Stream Analytics işiniz oluşturulduktan sonra iletilen verilerl
    | Alan | Değer |
    | --- | --- |
    | Girdi diğer adı | Bu girişe başvurmak için iş sorgusunda kullandığınız kolay bir ad. |
-   | IoT Hub | Giriş olarak kullanılacak IoT Hub adı. (Örnek: *<IoT Hub Name> . Shanghai.azurestack.Corp.Microsoft.com* ) |
+   | IoT Hub | Giriş olarak kullanılacak IoT Hub adı. (Örnek:*<IoT Hub Name> . Shanghai.azurestack.Corp.Microsoft.com*) |
    | Paylaşılan erişim ilkesi adı | IoT Hub erişim sağlayan paylaşılan erişim ilkesi. Her paylaşılan erişim ilkesinin adı, sizin ayarladığınız izinler ve anahtarlara erişim vardır. |
    | Paylaşılan erişim ilkesi anahtarı | IoT Hub erişimi yetkilendirmek için kullanılan paylaşılan erişim anahtarı. IoT Hub ayarlarını el ile sağlama seçeneğini seçmediğiniz takdirde bu seçenek otomatik olarak doldurulur. |
    | Tüketici grubu (isteğe bağlı) | Her Stream Analytics işi için farklı bir tüketici grubu kullanmanız önemle tavsiye edilir. Tüketici grubu IoT Hub verileri almak için kullanılır. Stream Analytics, aksi belirtilmedikçe $Default tüketicisi grubunu kullanır. |
@@ -138,7 +137,7 @@ Azure portalda Stream Analytics işiniz oluşturulduktan sonra iletilen verilerl
    | Alan | Değer |
    | --- | --- |
    | Çıktı diğer adı | Sorgu çıkışını bu olay hub 'ına yönlendirmek için sorgularda kullanılan kolay bir ad. |
-   | Service Bus ad alanı | Bir mesajlaşma varlıkları kümesi için kapsayıcı. Yeni bir olay hub 'ı oluşturduğunuzda bir Service Bus ad alanı da oluşturdunuz. (Örnek: *SB:// <Event Hub Name> . eventhub.Shanghai.azurestack.Corp.Microsoft.com* ) |
+   | Service Bus ad alanı | Bir mesajlaşma varlıkları kümesi için kapsayıcı. Yeni bir olay hub 'ı oluşturduğunuzda bir Service Bus ad alanı da oluşturdunuz. (Örnek: *SB:// <Event Hub Name> . eventhub.Shanghai.azurestack.Corp.Microsoft.com*) |
    | Olay Hub'ı adı | Olay Hub 'ınız çıktısının adı. |
    | Olay Hub'ı ilke adı | Olay Hub 'ının Yapılandır sekmesinde oluşturabileceğiniz paylaşılan erişim ilkesi. Her paylaşılan erişim ilkesinin adı, sizin ayarladığınız izinler ve anahtarlara erişim vardır. |
    | Olay Hub 'ı ilke anahtarı | Olay Hub 'ı ad alanına erişimin kimliğini doğrulamak için kullanılan paylaşılan erişim anahtarı. |
@@ -151,7 +150,7 @@ Azure portalda Stream Analytics işiniz oluşturulduktan sonra iletilen verilerl
    | Alan | Değer |
    | --- | --- |
    | Çıktı diğer adı | Sorgu çıkışını bu blob depolamaya yönlendirmek için sorgularda kullanılan kolay bir ad. |
-   | Depolama hesabı | Çıktlarınızı gönderdiğiniz depolama hesabının adı. (Örnek: *<Storage Account Name> . blob.Shanghai.azurestack.Corp.Microsoft.com* ) |
+   | Depolama hesabı | Çıktlarınızı gönderdiğiniz depolama hesabının adı. (Örnek: *<Storage Account Name> . blob.Shanghai.azurestack.Corp.Microsoft.com*) |
    | Depolama hesabı anahtarı | Depolama hesabıyla ilişkili gizli anahtar. BLOB depolama ayarlarını el ile sağlama seçeneğini seçmediğiniz takdirde bu seçenek otomatik olarak doldurulur. |
 
 > [!NOTE]
@@ -161,14 +160,14 @@ Azure portalda Stream Analytics işiniz oluşturulduktan sonra iletilen verilerl
 ## <a name="deploy-stream-analytics-on-a-vm-or-device-connected-to-azure-stack"></a>Azure Stack bağlı bir VM veya cihazda Stream Analytics dağıtın
 
 1. Azure portal, IoT Hub açın. **IoT Edge** gidin ve bu dağıtım için hedeflemek istediğiniz CIHAZA (VM) tıklayın.
-2. **Modül ayarla** ' yı seçin. Ardından **+ Ekle** ' yi seçin ve **Azure Stream Analytics modülü** ' nü seçin. 
-3. Oluşturduğunuz aboneliği ve Steme Analizi kenar işini seçin. **Kaydet** ' e tıklayın ve **İleri: rotalar** ' ı seçin.
+2. **Modül ayarla**' yı seçin. Ardından **+ Ekle** ' yi seçin ve **Azure Stream Analytics modülü**' nü seçin. 
+3. Oluşturduğunuz aboneliği ve Steme Analizi kenar işini seçin. **Kaydet** ' e tıklayın ve **İleri: rotalar**' ı seçin.
 
    > [!div class="mx-imgBorder"]
    > [![Modül ](media/on-azure-stack/edge-modules.png) Ekle](media/on-azure-stack/edge-modules.png#lightbox)
 
-4. **Gözden geçir + >oluştur** ' a tıklayın.
-5. **Gözden geçir + oluştur** adımında **Oluştur** ' u seçin. 
+4. **Gözden geçir + >oluştur**' a tıklayın.
+5. **Gözden geçir + oluştur** adımında **Oluştur**' u seçin. 
    > [!div class="mx-imgBorder"]
    > [![Bildirim ](media/on-azure-stack/module-content.png)](media/on-azure-stack/module-content.png#lightbox)
 6. Modülün listeye eklendiğini doğrulayın.

@@ -1,18 +1,18 @@
 ---
 title: Azure Data Lake Storage 1. Azure Stream Analytics kimlik doğrulama
 description: Bu makalede, Azure Data Lake Storage 1. çıkışı için Azure Stream Analytics işinizin kimliğini doğrulamak üzere yönetilen kimliklerin nasıl kullanılacağı açıklanır.
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 82c5a246dca69c0723394e41058c4fc123bbb84e
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: d7e9b1ecef9cfda804b89f0ba1beeb54d7d48b98
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571955"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020358"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>Yönetilen kimlikler kullanarak Azure Data Lake Storage 1. Stream Analytics kimlik doğrulama (Önizleme)
 
@@ -22,7 +22,7 @@ Bu makalede, Visual Studio için Azure portal, Azure Resource Manager şablon da
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="azure-portal"></a>Azure portalı
+## <a name="azure-portal"></a>Azure portal
 
 1. Yeni bir Stream Analytics işi oluşturarak veya mevcut bir işi Azure portal açarak başlatın. Ekranın sol tarafındaki menü çubuğundan **Yapılandır**' ın altında bulunan **yönetilen kimlik** ' i seçin.
 

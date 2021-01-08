@@ -1,25 +1,24 @@
 ---
 title: Öğretici-Visual Studio 'da Azure Stream Analytics işleri için C# Kullanıcı tanımlı işlevleri yazma (Önizleme)
 description: Bu öğreticide, Visual Studio 'da Stream Analytics işleri için c# Kullanıcı tanımlı işlevlerinin nasıl yazılacağı gösterilmektedir.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: d53f13cb740b3feb39dc64ce012ff320afbb1db5
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 851229e441aa2fbdf7b6eec05390c0ce2b149da2
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130502"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020477"
 ---
 # <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-job-preview"></a>Öğretici: Azure Stream Analytics işi için C# Kullanıcı tanımlı bir işlev yazma (Önizleme)
 
 Visual Studio'da oluşturulan C# kullanıcı tanımlı işlevler (UDF), Azure Stream Analytics sorgu dilini kendi işlevlerinizi kullanarak genişletmenizi sağlar. C# ile var olan kodu (DLL'ler dahil) yeniden kullanabilir, matematiksel veya karmaşık mantıklardan faydalanabilirsiniz. UDF uygulamak için kullanabileceğiniz üç yöntem vardır: Stream Analytics projesinde CodeBehind dosyaları kullanma, yerel C# projesindeki UDF'leri alma veya bir depolama hesabındaki pakette bulunan UDF'leri alma. Bu öğreticide CodeBehind yöntemi kullanılarak basit bir C# işlevi uygulanmaktadır. Stream Analytics işleri için UDF özelliği şu anda önizlemededir ve üretim iş yükleri içinde kullanılmamalıdır.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * CodeBehind kullanarak C# ile kullanıcı tanımlı işlev oluşturma.
@@ -42,17 +41,17 @@ Oluşturduğunuz kapsayıcı, derlenen C# paketini depolamak için kullanılacak
 
 1. Visual Studio’yu çalıştırın.
 
-2. **Dosya > Yeni > Proje** 'yi seçin.
+2. **Dosya > Yeni > Proje**'yi seçin.
 
-3. Soldaki şablonlar listesinde **Stream Analytics** ' yi seçin ve **Azure Stream Analytics Edge uygulaması** veya **Azure Stream Analytics uygulaması** ' nı seçin.
+3. Soldaki şablonlar listesinde **Stream Analytics**' yi seçin ve **Azure Stream Analytics Edge uygulaması** veya **Azure Stream Analytics uygulaması**' nı seçin.
 
-4.  Projenin **Ad** , **Konum** ve **Çözüm adı** değerlerini girip **Tamam** 'ı seçin.
+4.  Projenin **Ad**, **Konum** ve **Çözüm adı** değerlerini girip **Tamam**'ı seçin.
 
     ![Visual Studio’da Azure Stream Analytics Edge projesi oluşturma](./media/stream-analytics-edge-csharp-udf/stream-analytics-create-edge-app.png)
 
 ## <a name="configure-assembly-package-path"></a>Derleme paketi yolunu yapılandırma
 
-1. Visual Studio'yu açın ve **Çözüm Gezgini** 'ne gidin.
+1. Visual Studio'yu açın ve **Çözüm Gezgini**'ne gidin.
 
 2. İş yapılandırma dosyasına (`EdgeJobConfig.json`) çift tıklayın.
 
@@ -69,9 +68,9 @@ Oluşturduğunuz kapsayıcı, derlenen C# paketini depolamak için kullanılacak
 
 
 ## <a name="write-a-c-udf-with-codebehind"></a>CodeBehind ile C# UDF yazma
-CodeBehind dosyası, tek bir ASA sorgu betiği ile ilişkili bir C# dosyasıdır. Gönderme işlemi sırasında Visual Studio araçları CodeBehind dosyasını otomatik olarak sıkıştırıp Azure depolama hesabınıza yükler. Tüm sınıfların *genel* , tüm nesnelerin de *statik genel* olarak tanımlanması gerekir.
+CodeBehind dosyası, tek bir ASA sorgu betiği ile ilişkili bir C# dosyasıdır. Gönderme işlemi sırasında Visual Studio araçları CodeBehind dosyasını otomatik olarak sıkıştırıp Azure depolama hesabınıza yükler. Tüm sınıfların *genel*, tüm nesnelerin de *statik genel* olarak tanımlanması gerekir.
 
-1. **Çözüm Gezgini** 'nde **Script.asql** dosyasını genişleterek **Script.asaql.cs** CodeBehind dosyasını bulun.
+1. **Çözüm Gezgini**'nde **Script.asql** dosyasını genişleterek **Script.asaql.cs** CodeBehind dosyasını bulun.
 
 2. Kodu aşağıdaki örnekle değiştirin:
 
@@ -97,7 +96,7 @@ CodeBehind dosyası, tek bir ASA sorgu betiği ile ilişkili bir C# dosyasıdır
 
 ## <a name="implement-the-udf"></a>UDF'yi uygulama
 
-1. **Çözüm Gezgini** 'nde **Script.asaql** dosyasını açın.
+1. **Çözüm Gezgini**'nde **Script.asaql** dosyasını açın.
 
 2. Var olan sorguyu aşağıdakiyle değiştirin:
 
@@ -111,19 +110,19 @@ CodeBehind dosyası, tek bir ASA sorgu betiği ile ilişkili bir C# dosyasıdır
 
 1. [Sıcaklık simülatörü örnek veri dosyasını](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Sample%20Data/TemperatureSampleData.json)indirin.
 
-2. **Çözüm Gezgini** 'nde **Girişler** 'i genişletin, **Input.json** dosyasına sağ tıklayın ve **Yerel Giriş Ekle** 'yi seçin.
+2. **Çözüm Gezgini**'nde **Girişler**'i genişletin, **Input.json** dosyasına sağ tıklayın ve **Yerel Giriş Ekle**'yi seçin.
 
    ![Visual Studio 'da Stream Analytics işe yerel giriş ekleme](./media/stream-analytics-edge-csharp-udf/stream-analytics-add-local-input.png)
 
-3. İndirdiğiniz örnek verilerin yerel giriş dosyası yolunu belirtin ve **Kaydet** 'i seçin.
+3. İndirdiğiniz örnek verilerin yerel giriş dosyası yolunu belirtin ve **Kaydet**'i seçin.
 
     ![Visual Studio 'da Stream Analytics işi için yerel giriş yapılandırması](./media/stream-analytics-edge-csharp-udf/stream-analytics-local-input-config.png)
 
-4. Betik düzenleyicisinde **Yerel Olarak Çalıştır** 'a tıklayın. Yerel çalıştırma çıkış sonuçlarını başarıyla kaydettikten sonra sonuçları tablo biçiminde görmek için herhangi bir tuşa basın. 
+4. Betik düzenleyicisinde **Yerel Olarak Çalıştır**'a tıklayın. Yerel çalıştırma çıkış sonuçlarını başarıyla kaydettikten sonra sonuçları tablo biçiminde görmek için herhangi bir tuşa basın. 
 
     ![Visual Studio'da Azure Stream Analytics işini yerel olarak çalıştırma](./media/stream-analytics-edge-csharp-udf/stream-analytics-run-locally.png)
 
-5. İsterseniz **Sonuç Klasörünü Aç** 'ı seçerek JSON ve CSV biçimindeki ham dosyaları da görüntüleyebilirsiniz.
+5. İsterseniz **Sonuç Klasörünü Aç**'ı seçerek JSON ve CSV biçimindeki ham dosyaları da görüntüleyebilirsiniz.
 
     ![Visual Studio'da Azure Stream Analytics işinin sonuçlarını görüntüleme](./media/stream-analytics-edge-csharp-udf/stream-analytics-view-local-results.png)
 
@@ -134,12 +133,12 @@ C# UDF hatalarını yerel ortamda standart C# kodunda olduğu gibi ayıklayabili
 
     ![Visual Studio 'da Kullanıcı tanımlı Stream Analytics işleve kesme noktaları ekleme](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-breakpoints.png)
 
-2. Hata ayıklamaya başlamak için **F5** 'e basın. Program beklendiği gibi kesme noktalarında durur.
+2. Hata ayıklamaya başlamak için **F5**'e basın. Program beklendiği gibi kesme noktalarında durur.
 
     ![Kullanıcı tanımlı Stream Analytics hata ayıklama sonuçlarını görüntüle](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-debug.png)
 
 ## <a name="publish-your-job-to-azure"></a>İşinizi Azure'da yayımlama
-Sorgunuzu yerel ortamda test ettikten sonra işi Azure'da yayımlamak için betik düzenleyicisinde **Azure'a Gönder** 'i seçin.
+Sorgunuzu yerel ortamda test ettikten sonra işi Azure'da yayımlamak için betik düzenleyicisinde **Azure'a Gönder**'i seçin.
 
 ![Stream Analytics Edge işinizi Visual Studio'dan Azure'a gönderme](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-submit-job.png)
 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/5/2020
 ms.author: anwigley
-ms.openlocfilehash: b733e90b69be4e2bd458be5486564747ed4cca78
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 448b3d93ed58e4cfc73da576f0c5871600400ac6
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018880"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019848"
 ---
 # <a name="apply-devops-to-luis-app-development-using-github-actions"></a>GitHub eylemlerini kullanarak LUSıS uygulama geliştirmeye DevOps uygulama
 
@@ -29,7 +29,7 @@ LUSıS için DevOps ve yazılım mühendisliği en iyi uygulamaları uygulayan t
 * **Şablonu** kopyala depo-şablonu kendi GitHub deponuza kopyalayın.
 * **Lusıs kaynaklarını yapılandırma** -Azure 'da sürekli tümleştirme iş akışları tarafından kullanılacak [lusıs yazma ve tahmin kaynaklarını](./luis-how-to-azure-subscription.md) oluşturun.
 * **CI/CD iş akışlarını yapılandırma** -CI/CD iş akışları için parametreleri yapılandırın ve [GitHub gizli](https://help.github.com/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets)dizileri içinde depolayın.
-* **["Geliştirme iç döngüsü"](https://mitchdenny.com/the-inner-loop/) boyunca izlenecek yol** -geliştirici bir geliştirme DALıNDA çalışırken örnek bir Luo uygulaması için güncelleştirmeler yapar, güncelleştirmeleri sınar ve sonra değişiklikler önermek ve araştırma gözden geçirmesi için bir çekme isteği oluşturur.
+* **["Geliştirme iç döngüsü"](/dotnet/architecture/containerized-lifecycle/design-develop-containerized-apps/docker-apps-inner-loop-workflow) boyunca izlenecek yol** -geliştirici bir geliştirme DALıNDA çalışırken örnek bir Luo uygulaması için güncelleştirmeler yapar, güncelleştirmeleri sınar ve sonra değişiklikler önermek ve araştırma gözden geçirmesi için bir çekme isteği oluşturur.
 * **CI/CD iş akışlarını yürütme** -GitHub eylemlerini kullanarak [bir lusıs uygulaması derlemek ve test etmek için sürekli tümleştirme iş akışlarını](luis-concept-devops-automation.md) yürütün.
 * **Otomatikleştirilmiş test gerçekleştirin** -uygulamanın kalitesini değerlendirmek IÇIN [bir Luo uygulaması için otomatik toplu işlem testi](luis-concept-devops-testing.md) gerçekleştirin.
 * Lusıs **uygulamasını dağıtın** -lusıs uygulamasını yayımlamak için [SÜREKLI teslim (CD) işini](luis-concept-devops-automation.md#continuous-delivery-cd) yürütün.

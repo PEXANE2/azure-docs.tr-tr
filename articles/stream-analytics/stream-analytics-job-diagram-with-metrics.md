@@ -3,16 +3,15 @@ title: Azure Stream Analytics veri odaklı hata ayıklama
 description: Bu makalede, Azure portal iş diyagramını ve ölçümleri kullanarak Azure Stream Analytics işinizin nasıl giderileceği açıklanmaktadır.
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/01/2017
-ms.openlocfilehash: e4ee868125ee30d40ef0d9ca5a42881ad003e9a8
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 6d20454515088ccca87665d9b3b27c0d82c3cdf9
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123991"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020409"
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>İş diyagramını kullanarak veri odaklı hata ayıklama
 
@@ -20,7 +19,7 @@ Azure portal **izleme** dikey penceresindeki iş diyagramı, iş işlem hattın�
 
 ## <a name="using-the-job-diagram"></a>İş diyagramını kullanma
 
-Azure portal, bir Stream Analytics işinde, **destek + sorun giderme** altında **iş diyagramı** ' nı seçin:
+Azure portal, bir Stream Analytics işinde, **destek + sorun giderme** altında **iş diyagramı**' nı seçin:
 
 ![Ölçüm-konum ile iş diyagramı](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-1.png)
 
@@ -59,7 +58,7 @@ Yukarıdaki sorgu adımı bir giriş işlemcisidir, aşağıdaki hedeflenen soru
  
 ### <a name="is-time-moving-forward-if-actual-events-are-read-punctuation-might-not-be-issued"></a>Zaman ileri taşınıyor mı? Gerçek olaylar okunuyorsa noktalama işaretleri verilmeyebilir.
 
-*   **InputEventsLastPunctuationTime** , zamanın ilerlemesini sağlamak için bir noktalama işaretinin ne zaman verildiğini gösterir. Noktalama işareti verilmemişse, veri akışı engellenebilir.
+*   **InputEventsLastPunctuationTime**, zamanın ilerlemesini sağlamak için bir noktalama işaretinin ne zaman verildiğini gösterir. Noktalama işareti verilmemişse, veri akışı engellenebilir.
  
 ### <a name="are-there-any-errors-in-the-input"></a>Girişte herhangi bir hata var mı?
 

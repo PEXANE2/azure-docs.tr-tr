@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d04f2d1717e1d95f8bcafb8f72f2b0a2f83a248
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: 6da053bb04e5ee3f2b2b307c382f2695663669e5
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97976835"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020664"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'deki yönetici rolü izinleri
 
@@ -87,6 +87,14 @@ Bu role sahip kullanıcılar, bazı kullanıcılar için parola olmayan kimlik b
 >* Grup üyeliğini yönetebilen güvenlik grubu ve Grup sahipleri Microsoft 365. Bu gruplar, Azure AD 'de ve başka bir yerde hassas veya özel bilgilere veya kritik yapılandırmaya erişim verebilir.
 >* Exchange Online, Office Security ve Uyumluluk Merkezi ve insan kaynakları sistemleri gibi Azure AD dışında diğer hizmetlerde bulunan yöneticiler.
 >* Gizli veya özel bilgilere erişebilen Yöneticiler, yasal Counsel ve insan kaynakları çalışanları gibi yönetici olmayanlar.
+
+### <a name="attack-payload-author"></a>[Saldırı yükü yazarı](#attack-payload-author-permissions)
+
+Bu roldeki kullanıcılar, saldırı yükleri oluşturabilir ancak bunları gerçekten başlatamaz veya zamanlayamaz. Böylece saldırı yükleri, kiracının benzetim oluşturmak için kullanabilecekleri tüm yöneticiler tarafından kullanılabilir.
+
+### <a name="attack-simulation-administrator"></a>[Saldırı simülasyonu Yöneticisi](#attack-simulation-administrator-permissions)
+
+Bu roldeki kullanıcılar, saldırı simülasyonu oluşturma, simülasyon başlatma/zamanlama ve simülasyon sonuçlarının incelenmesi gibi tüm özellikleri oluşturabilir ve yönetebilir. Bu rolün üyeleri Kiracıdaki tüm benzetimler için bu erişime sahiptir.
 
 ### <a name="azure-devops-administrator"></a>[Azure DevOps Yöneticisi](#azure-devops-administrator-permissions)
 
@@ -489,6 +497,10 @@ Bu role sahip kullanıcılar takımlar [tarafından sertifikalı cihazları](htt
 
 Bu roldeki kullanıcılar Microsoft ekipleri & Skype Kurumsal Yönetici Merkezi ve ilgili PowerShell modülleri aracılığıyla Microsoft ekipleri iş yükünün tüm yönlerini yönetebilir. Bu, diğer alanların yanı sıra telefon, mesajlaşma, toplantılar ve takımların kendileri ile ilgili tüm yönetim araçlarını içerir. Bu rol Ayrıca, tüm Microsoft 365 grupları oluşturma ve yönetme, destek biletlerini yönetme ve hizmet durumunu izleme özelliğini verir.
 
+### <a name="usage-summary-reports-reader"></a>[Kullanım Özeti raporları okuyucusu](#usage-summary-reports-reader-permissions)
+
+Bu role sahip kullanıcılar, kullanım ve üretkenlik puanı için Microsoft 365 Yönetim Merkezi 'nde kiracı düzeyindeki toplu verilere ve ilişkili öngörülere erişebilir, ancak herhangi bir Kullanıcı düzeyi ayrıntılarına veya öngörülere erişemez. İki rapor için Microsoft 365 Yönetim Merkezi 'nde, kiracı düzeyi toplanmış veriler ve Kullanıcı düzeyi ayrıntıları arasında ayrım yaptık. Bu rol, hem müşteriler hem de yasal takımlar tarafından istenen bireysel kullanıcı tarafından tanımlanabilen veriler üzerinde ek bir koruma katmanı sağlar. 
+
 ### <a name="user-administrator"></a>[Kullanıcı Yöneticisi](#user-administrator-permissions)
 
 Bu role sahip kullanıcılar Kullanıcı oluşturabilir ve bazı kısıtlamalara sahip kullanıcıların tüm yönlerini yönetebilir (tabloya bakın) ve parola süre sonu ilkelerini güncelleştirebilir. Ayrıca, bu role sahip kullanıcılar tüm grupları oluşturabilir ve yönetebilir. Bu rol Ayrıca Kullanıcı görünümleri oluşturma ve yönetme, destek biletlerini yönetme ve hizmet durumunu izleme özelliğini de içerir. Kullanıcı yöneticilerinin çoğu yönetici rolünde kullanıcılar için bazı kullanıcı özelliklerini yönetme izni yoktur. Bu role sahip olan kullanıcının MFA 'yı yönetme izni yok. Bu kısıtlamanın özel durumları olan roller aşağıdaki tabloda listelenmiştir.
@@ -591,6 +603,25 @@ Yönetici olmayan kullanıcılar için kimlik doğrulama yöntemi bilgilerini g�
 | Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 | Microsoft. Directory/Users/Password/Update | Microsoft 365 kuruluştaki tüm kullanıcılar için parolaları güncelleştirin. Daha ayrıntılı bilgi için çevrimiçi belgelere bakın. |
+
+### <a name="attack-payload-author-permissions"></a>Saldırı yükü yazar izinleri
+
+, Bir yönetici tarafından daha sonra dağıtılabilecek saldırı yükleri oluşturabilir.
+
+| **Eylemler** | **Açıklama** |
+| --- | --- |
+| Microsoft. office365. protectionCenter/saldırıda Ksimülatör/yük/allProperties/allTasks | Saldırı simülatörü 'nda saldırı yüklerini oluşturun ve yönetin. |
+| Microsoft. office365. protectionCenter/saldırıda Ksimülatör/raporlar/allProperties/Read | Saldırı simülasyonu, yanıtları ve ilgili eğitimin raporlarını okuyun. |
+
+### <a name="attack-simulation-administrator-permissions"></a>Saldırı simülasyonu yönetici izinleri
+
+, Saldırı Benzetimi kampanyalarının tüm yönlerini oluşturabilir ve yönetebilir.
+
+| **Eylemler** | **Açıklama** |
+| --- | --- |
+| Microsoft. office365. protectionCenter/saldırıda Ksimülatör/yük/allProperties/allTasks | Saldırı simülatörü 'nda saldırı yüklerini oluşturun ve yönetin. |
+| Microsoft. office365. protectionCenter/saldırıda Ksimülatör/raporlar/allProperties/Read | Saldırı simülasyonu, yanıtları ve ilgili eğitimin raporlarını okuyun. |
+| Microsoft. office365. protectionCenter/saldırıda Ksimülatör/simülasyon/allProperties/allTasks | Saldırı simülatörü 'nda saldırı simülasyonu şablonları oluşturun ve yönetin. |
 
 ### <a name="azure-devops-administrator-permissions"></a>Azure DevOps yönetici izinleri
 
@@ -1876,6 +1907,14 @@ Ekip sertifikalı cihazlarda yönetim ile ilgili görevler gerçekleştirebilir.
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 | Microsoft. ekipler/allEntities/allProperties/allTasks | Ekipteki tüm kaynakları yönetin. |
 
+### <a name="usage-summary-reports-reader-permissions"></a>Kullanım Özeti raporları okuyucu izinleri
+, M365 kullanım analizlerinin ve üretkenlik puanındaki yalnızca kiracı düzeyindeki toplamaları görebilir.
+
+| **Eylemler** | **Açıklama** |
+| --- | --- |
+| Microsoft. office365. usageReports/allEntities/standart/okuma | Kiracı düzeyinde toplanmış Office 365 kullanım raporlarını okuyun. |
+| Microsoft. office365. webPortal/allEntities/standart/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun.|
+
 ### <a name="user-administrator-permissions"></a>Kullanıcı Yöneticisi izinleri
 , Sınırlı yöneticiler için parola sıfırlama dahil olmak üzere kullanıcıların ve grupların tüm yönlerini yönetebilir.
 
@@ -1922,6 +1961,8 @@ Grafik displayName | Görünen ad Azure portal | Directoryroletemplateıd
 Uygulama Yöneticisi | Uygulama Yöneticisi | 9B895D92-2CD3-44C7-9D02-A6AC2D5EA5C3
 Uygulama Geliştirici | Uygulama geliştiricisi | CF1C38E5-3621-4004-A7CB-879624DCED7C
 Kimlik doğrulama Yöneticisi | Kimlik doğrulama Yöneticisi | c4e39bd9-1100-46d3-8c65-fb160da0071f
+Saldırı yükü yazarı | Saldırı yükü yazarı | 9c6df0f2-1e7c-4dc3-B195-66dfbd24aa8f
+Saldırı simülasyonu Yöneticisi | Saldırı simülasyonu Yöneticisi | c430b396-e693-46cc-96f3-db01bf8bb62a
 Azure DevOps Yöneticisi | Azure DevOps Yöneticisi | e3973bdf-4987-49ae-837a-ba8e231c7286
 Azure Information Protection Yöneticisi | Azure Information Protection Yöneticisi | 7495fdc4-34c4-4d15-A289-98788ce399fd
 B2C ıEF anahtar kümesi Yöneticisi | B2C ıEF anahtar kümesi Yöneticisi | aaf43236-0c0d-4d5f-883a-6955382ac081
@@ -1985,6 +2026,7 @@ Takımlar Iletişimleri Destek Mühendisi | Takımlar Iletişimleri Destek Mühe
 Takımlar Iletişimleri destek uzmanı | Takımlar Iletişimleri destek uzmanı | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
 Takımlar cihazları Yöneticisi | Takımlar cihazları Yöneticisi | 3d762c5a-1B6C-493F-843e-55a3b42923d4
 Takımlar Hizmet Yöneticisi | Takımlar Hizmet Yöneticisi | 69091246-20e8-4a56-aa4d-066075b2a7a8
+Kullanım Özeti raporları okuyucusu | Kullanım Özeti raporları okuyucusu | 75934031-6c7e-415A-99d7-48dbd49e875e
 Kullanıcı | Kullanılmadığından gösterilmez | a0b1b346-4d3e-4e8b-98f8-753987be4970
 Kullanıcı hesabı Yöneticisi | Kullanıcı yöneticisi | fe930be7-5e62-47db-91af-98c3a49a38b1
 Çalışma alanına cihaz katılımı | Kullanım Dışı | c34f683f-4d5a-4403-AFD-6615e00e3a7f

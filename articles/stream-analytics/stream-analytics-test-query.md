@@ -1,19 +1,18 @@
 ---
 title: Örnek verilerle Azure Stream Analytics işi test etme
 description: Bu makalede, bir Azure Stream Analytics işini, örnek girişi test etmek ve örnek verileri karşıya yüklemek için Azure portal nasıl kullanılacağı açıklanır.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: ajetasin
+ms.author: ajetasi
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/6/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8e08c4c34495b58c105560dba9d818be9ebf5e34
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: eff9103f476e6074ab46198ff8cc78588675569f
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490976"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020052"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>Portalda Azure Stream Analytics işi test etme
 
@@ -23,7 +22,7 @@ Azure Stream Analytics, işinizi başlatmadan veya durdurmaksızın sorgunuzu te
 
 Azure Stream Analytics akış girişlerinizin olaylarını otomatik olarak getirir. Varsayılan örnekteki sorguları çalıştırabilir veya örnek için belirli bir zaman çerçevesini ayarlayabilirsiniz.
 
-1. Azure portalında oturum açın.
+1. Azure Portal’da oturum açın.
 
 2. Mevcut Stream Analytics işinizi bulun ve seçin.
 
@@ -45,15 +44,15 @@ Azure Stream Analytics akış girişlerinizin olaylarını otomatik olarak getir
 
    ![Ham biçimde Azure Stream Analytics örnek girişi](./media/stream-analytics-test-query/asa-sample-raw.png)
 
-5. Sorgunuzu gelen verilerle test etmek için **Test sorgusu** ' nu seçin. Sonuçlar, **test sonuçları** sekmesinde görünür. Sonuçları indirmek için **sonuçları indir** ' i de seçebilirsiniz.
+5. Sorgunuzu gelen verilerle test etmek için **Test sorgusu**' nu seçin. Sonuçlar, **test sonuçları** sekmesinde görünür. Sonuçları indirmek için **sonuçları indir** ' i de seçebilirsiniz.
 
    ![Azure Stream Analytics örnek testi sorgu sonuçları](./media/stream-analytics-test-query/asa-test-query.png)
 
-6. Sorgunuzu belirli bir zaman aralığı gelen olaylara karşı test etmek için **Saat aralığını Seç** ' i seçin.
+6. Sorgunuzu belirli bir zaman aralığı gelen olaylara karşı test etmek için **Saat aralığını Seç**' i seçin.
    
    ![Gelen örnek olaylar için zaman aralığını Azure Stream Analytics](./media/stream-analytics-test-query/asa-select-time-range.png)
 
-7. Sorgunuzu test etmek için kullanmak istediğiniz olayların zaman aralığını ayarlayın ve **örnek** ' i seçin. Bu zaman çerçevesinde, en fazla 1000 olay veya 1 MB, hangisi önce geldiğini elde edebilirsiniz.
+7. Sorgunuzu test etmek için kullanmak istediğiniz olayların zaman aralığını ayarlayın ve **örnek**' i seçin. Bu zaman çerçevesinde, en fazla 1000 olay veya 1 MB, hangisi önce geldiğini elde edebilirsiniz.
 
    ![Gelen örnek olaylar için zaman aralığını ayarla Azure Stream Analytics](./media/stream-analytics-test-query/asa-set-time-range.png)
 
@@ -61,7 +60,7 @@ Azure Stream Analytics akış girişlerinizin olaylarını otomatik olarak getir
 
    ![Azure Stream Analytics test sonuçlarını görüntüle](./media/stream-analytics-test-query/asa-view-test-results.png)
 
-9. Gelen olayların örnek listesini görmek için **Sıfırla** ' yı seçin. **Sıfırla** ' yı seçerseniz, zaman aralığı seçiminiz kaybedilir. Sorgunuzu test etmek için **Test sorgusu** ' nu seçin ve sonuçları **test sonuçları** sekmesinde gözden geçirin.
+9. Gelen olayların örnek listesini görmek için **Sıfırla** ' yı seçin. **Sıfırla**' yı seçerseniz, zaman aralığı seçiminiz kaybedilir. Sorgunuzu test etmek için **Test sorgusu** ' nu seçin ve sonuçları **test sonuçları** sekmesinde gözden geçirin.
 
 10. Sorgunuzda değişiklik yaptığınızda, yeni sorgu mantığını test etmek için **sorguyu Kaydet** ' i seçin. Bu, sorgunuzu yinelemeli olarak değiştirmenize ve çıktının nasıl değiştiği hakkında daha fazla test etmenize olanak tanır.
 
@@ -71,7 +70,7 @@ Azure Stream Analytics akış girişlerinizin olaylarını otomatik olarak getir
 
 Canlı verileri kullanmak yerine, Azure Stream Analytics sorgunuzu test etmek için yerel bir dosyadaki örnek verileri kullanabilirsiniz.
 
-1. Azure portalında oturum açın.
+1. Azure Portal’da oturum açın.
    
 2. Mevcut Stream Analytics işinizi bulun ve seçin.
 
@@ -81,11 +80,11 @@ Canlı verileri kullanmak yerine, Azure Stream Analytics sorgunuzu test etmek i�
 
    ![Ekran görüntüsü örnek girişi yükle seçeneğini gösterir.](./media/stream-analytics-test-query/asa-upload-sample-file.png)
 
-5. Sorguyu test etmek için yerel dosyanızı karşıya yükleyin. Dosyaları yalnızca JSON, CSV veya AVRO biçimleriyle karşıya yükleyebilirsiniz. **Tamam** ’ı seçin.
+5. Sorguyu test etmek için yerel dosyanızı karşıya yükleyin. Dosyaları yalnızca JSON, CSV veya AVRO biçimleriyle karşıya yükleyebilirsiniz. **Tamam**’ı seçin.
 
    ![Ekran görüntüsü, dosya seçebileceğiniz örnek verileri karşıya yükle iletişim kutusunu gösterir.](./media/stream-analytics-test-query/asa-upload-sample-json-file.png)
 
-6. Dosyayı karşıya yükledikten hemen sonra form içindeki dosya içeriğini tablo olarak veya ham biçiminde de görebilirsiniz. **Sıfırla** ' yı seçerseniz, örnek veriler önceki bölümde açıklanan gelen giriş verilerine geri döner. Sorguyu dilediğiniz zaman test etmek için başka bir dosya yükleyebilirsiniz.
+6. Dosyayı karşıya yükledikten hemen sonra form içindeki dosya içeriğini tablo olarak veya ham biçiminde de görebilirsiniz. **Sıfırla**' yı seçerseniz, örnek veriler önceki bölümde açıklanan gelen giriş verilerine geri döner. Sorguyu dilediğiniz zaman test etmek için başka bir dosya yükleyebilirsiniz.
 
 7. Sorguyu karşıya yüklenen örnek dosyaya karşı test etmek için **Test sorgusu** ' nu seçin.
 
@@ -123,7 +122,7 @@ Canlı verileri kullanmak yerine, Azure Stream Analytics sorgunuzu test etmek i�
 2. Bu hatayı alırsanız "istek boyutu çok büyük. Lütfen giriş verilerinin boyutunu azaltın ve yeniden deneyin. ", aşağıdaki adımları izleyin:
 
   * Giriş boyutunu küçültün: sorgunuzu daha küçük boyutlu örnek dosyayla veya daha küçük bir zaman aralığıyla test edin.
-  * Sorgu boyutunu azalt – bir sorgu seçimini test etmek Için, sorgunun bir kısmını seçin ve ardından **Seçili sorguyu sına** ' ya tıklayın.
+  * Sorgu boyutunu azalt – bir sorgu seçimini test etmek Için, sorgunun bir kısmını seçin ve ardından **Seçili sorguyu sına**' ya tıklayın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

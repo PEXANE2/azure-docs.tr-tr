@@ -2,18 +2,18 @@
 title: Azure Stream Analytics ile gerçek zamanlı Twitter yaklaşım Analizi
 description: Bu makalede, Stream Analytics gerçek zamanlı Twitter yaklaşım analizi için nasıl kullanılacağı açıklanır. Canlı bir panodaki olay üretimi verilerine yönelik adım adım yönergeler.
 services: stream-analytics
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 02/10/2020
-ms.openlocfilehash: 0941e3d5141b5b8841f5d37e3db0d0b1b1474547
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3b321e318621c5687a2e3e5f0649985210a2d16c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019829"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019882"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure Stream Analytics’te gerçek zamanlı Twitter yaklaşım analizi
 
@@ -212,7 +212,7 @@ Bu nasıl yapılır kılavuzunda, toplanan Tweet olaylarını iş sorgusundan Az
    * **Depolama hesabı**. Depolama hesabınızı seçin.
    * **Kapsayıcı**. **Yeni oluştur** ' u seçin ve girin `socialtwitter` .
    
-4. **Kaydet**'i seçin.   
+4. **Kaydet**’i seçin.   
 
 ## <a name="start-the-job"></a>İşi başlatma
 
@@ -224,7 +224,7 @@ Bir iş girişi, sorgu ve çıkış belirtilir. Stream Analytics işi başlamaya
 
 3. İşi **Başlat** sayfasında, **iş çıkışı başlangıç zamanı** için **Şimdi** ' yi seçin ve ardından **Başlat**' ı seçin.
 
-## <a name="get-support"></a>Destek alma
+## <a name="get-support"></a>Destek alın
 Daha fazla yardım için, [Azure Stream Analytics Için Microsoft Q&soru sayfasını](/answers/topics/azure-stream-analytics.html)deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

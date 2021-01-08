@@ -1,16 +1,16 @@
 ---
 title: Azure Arc etkin sunucularıyla VM Uzantısı yönetimi
 description: Azure Arc etkin sunucuları, Azure olmayan VM 'lerle dağıtım sonrası yapılandırma ve otomasyon görevleri sağlayan sanal makine uzantılarının dağıtımını yönetebilir.
-ms.date: 12/14/2020
+ms.date: 01/07/2021
 ms.topic: conceptual
-ms.openlocfilehash: 55e21f9c6bcd2dfe5f995093034773f2a87d9b03
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 5430b1c1318747cccfb95f031700fddaad716284
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504517"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020630"
 ---
-# <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Azure Arc etkin sunucularıyla sanal makine uzantısı yönetimi
+# <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Azure Arc özellikli sunucularla sanal makine uzantısı yönetimi
 
 Sanal makine (VM) uzantıları, Azure VM 'lerinde dağıtım sonrası yapılandırma ve otomasyon görevleri sağlayan küçük uygulamalardır. Örneğin, bir sanal makine yazılım yüklemesi, virüsten koruma koruması veya bir betik çalıştırmak istiyorsa, bir VM Uzantısı kullanılabilir.
 
@@ -43,20 +43,31 @@ VM Uzantısı işlevselliği yalnızca [Desteklenen bölgeler](overview.md#suppo
 
 Bu sürümde, Windows ve Linux makinelerinde aşağıdaki VM uzantılarını destekliyoruz.
 
-|Uzantı |İşletim Sistemi |Publisher |Ek bilgiler |
-|----------|---|----------|-----------------------|
-|CustomScriptExtension |Windows |Microsoft.Compute |[Windows Özel Betik uzantısı](../../virtual-machines/extensions/custom-script-windows.md)|
-|DSC |Windows |Microsoft. PowerShell|[Windows PowerShell DSC Uzantısı](../../virtual-machines/extensions/dsc-windows.md)|
-|Log Analytics aracısı |Windows |Microsoft. EnterpriseCloud. Monitoring |[Windows için Log Analytics VM Uzantısı](../../virtual-machines/extensions/oms-windows.md)|
-|Microsoft bağımlılık Aracısı | Windows |Microsoft.Compute | [Windows için bağımlılık Aracısı sanal makine uzantısı](../../virtual-machines/extensions/agent-dependency-windows.md)|
-|Key Vault | Windows | Microsoft.Compute | [Windows için Key Vault sanal makine uzantısı](../../virtual-machines/extensions/key-vault-windows.md) |
-|CustomScript|Linux |Microsoft. Azure. Extension |[Linux özel Betik uzantısı sürüm 2](../../virtual-machines/extensions/custom-script-linux.md) |
-|DSC |Linux |Microsoft. OSTCExtensions |[Linux için PowerShell DSC Uzantısı](../../virtual-machines/extensions/dsc-linux.md) |
-|Log Analytics aracısı |Linux |Microsoft. EnterpriseCloud. Monitoring |[Linux için Log Analytics VM Uzantısı](../../virtual-machines/extensions/oms-linux.md) |
-|Microsoft bağımlılık Aracısı | Linux |Microsoft.Compute | [Linux için bağımlılık Aracısı sanal makine uzantısı](../../virtual-machines/extensions/agent-dependency-linux.md) |
-|Key Vault | Linux | Microsoft.Compute | [Linux için sanal makine uzantısı Key Vault](../../virtual-machines/extensions/key-vault-linux.md) |
-
 Azure bağlı makine Aracısı paketi ve uzantı Aracısı bileşeni hakkındaki ayrıntılar hakkında bilgi edinmek için bkz. [aracıya genel bakış](agent-overview.md#agent-component-details).
+
+### <a name="windows-extensions"></a>Windows uzantıları
+
+|Dahili numara |Publisher |Tür |Ek bilgiler |
+|----------|----------|-----|-----------------------|
+|Azure Defender tümleşik güvenlik açığı tarayıcısı |Qualys |WindowsAgent. AzureSecurityCenter |[Azure Defender 'ın Azure ve hibrit makineler için tümleşik güvenlik açığı değerlendirme çözümü](../../security-center/deploy-vulnerability-assessment-vm.md)|
+|Özel Betik uzantısı |Microsoft.Compute | CustomScriptExtension |[Windows Özel Betik uzantısı](../../virtual-machines/extensions/custom-script-windows.md)|
+|PowerShell DSC |Microsoft. PowerShell |DSC |[Windows PowerShell DSC Uzantısı](../../virtual-machines/extensions/dsc-windows.md)|
+|Log Analytics aracısı |Microsoft. EnterpriseCloud. Monitoring |MicrosoftMonitoringAgent |[Windows için Log Analytics VM Uzantısı](../../virtual-machines/extensions/oms-windows.md)|
+|VM'ler için Azure İzleyici (Öngörüler) |Microsoft. Azure. Monitoring. DependencyAgent |DependencyAgentWindows | [Windows için bağımlılık Aracısı sanal makine uzantısı](../../virtual-machines/extensions/agent-dependency-windows.md)|
+|Sertifika eşitlemesini Azure Key Vault | Microsoft. Azure. Key. kasa |KeyVaultForWindows | [Windows için Key Vault sanal makine uzantısı](../../virtual-machines/extensions/key-vault-windows.md) |
+|Azure İzleyici Aracısı |Microsoft. Azure. Monitor |AzureMonitorWindowsAgent |[Azure Izleyici aracısını (Önizleme) yükler](../../azure-monitor/platform/azure-monitor-agent-install.md) |
+
+### <a name="linux-extensions"></a>Linux uzantıları
+
+|Dahili numara |Publisher |Tür |Ek bilgiler |
+|----------|----------|-----|-----------------------|
+|Azure Defender tümleşik güvenlik açığı tarayıcısı |Qualys |LinuxAgent. AzureSecurityCenter |[Azure Defender 'ın Azure ve hibrit makineler için tümleşik güvenlik açığı değerlendirme çözümü](../../security-center/deploy-vulnerability-assessment-vm.md)|
+|Özel Betik uzantısı |Microsoft. Azure. Extensions |CustomScript |[Linux özel Betik uzantısı sürüm 2](../../virtual-machines/extensions/custom-script-linux.md) |
+|PowerShell DSC |Microsoft. OSTCExtensions |DSCForLinux |[Linux için PowerShell DSC Uzantısı](../../virtual-machines/extensions/dsc-linux.md) |
+|Log Analytics aracısı |Microsoft. EnterpriseCloud. Monitoring |OmsAgentForLinux |[Linux için Log Analytics VM Uzantısı](../../virtual-machines/extensions/oms-linux.md) |
+|VM'ler için Azure İzleyici (Öngörüler) |Microsoft. Azure. Monitoring. DependencyAgent |DependencyAgentLinux |[Linux için bağımlılık Aracısı sanal makine uzantısı](../../virtual-machines/extensions/agent-dependency-linux.md) |
+|Sertifika eşitlemesini Azure Key Vault | Microsoft. Azure. Key. kasa |KeyVaultForLinux | [Linux için sanal makine uzantısı Key Vault](../../virtual-machines/extensions/key-vault-linux.md) |
+|Azure İzleyici Aracısı |Microsoft. Azure. Monitor |AzureMonitorLinuxAgent |[Azure Izleyici aracısını (Önizleme) yükler](../../azure-monitor/platform/azure-monitor-agent-install.md) |
 
 ## <a name="prerequisites"></a>Önkoşullar
 

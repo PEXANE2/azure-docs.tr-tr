@@ -3,17 +3,16 @@ title: Visual Studio 'da Azure Stream Analytics Edge işleri
 description: Bu makalede, Visual Studio Stream Analytics araçlarını kullanarak IoT Edge işlerinde Stream Analytics yazma, hata ayıklama ve oluşturma işlemleri açıklanmaktadır.
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 55ff983169e15c74bf343993b66088932a538c36
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 09151ea0fe3d419401d576149f6655b8cdc09f8e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127527"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019967"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>Visual Studio araçlarını kullanarak Stream Analytics Edge işleri geliştirme
 
@@ -29,7 +28,7 @@ Bu öğreticiyi tamamlayabilmeniz için aşağıdaki önkoşullara sahip olmanı
  
 ## <a name="create-a-stream-analytics-edge-project"></a>Stream Analytics Edge projesi oluşturma 
 
-Visual Studio 'da **Dosya**  >  **Yeni**  >  **Proje** ' yi seçin. Sol taraftaki **Şablonlar** listesine gidin > **Azure Stream Analytics**  >  **Stream Analytics Edge**  >  **uygulaması Azure Stream Analytics** ' nı genişletin. Projeniz için bir ad, konum ve çözüm adı girip **Tamam** ' ı seçin.
+Visual Studio 'da **Dosya**  >  **Yeni**  >  **Proje**' yi seçin. Sol taraftaki **Şablonlar** listesine gidin > **Azure Stream Analytics**  >  **Stream Analytics Edge**  >  **uygulaması Azure Stream Analytics**' nı genişletin. Projeniz için bir ad, konum ve çözüm adı girip **Tamam**' ı seçin.
 
 ![Visual Studio 'da yeni Stream Analytics Edge projesi](./media/stream-analytics-tools-for-visual-studio-edge-jobs/new-stream-analytics-edge-project.png)
 
@@ -40,24 +39,24 @@ Proje oluşturulduktan sonra, klasör hiyerarşisini görüntülemek için **Ç�
  
 ## <a name="choose-the-correct-subscription"></a>Doğru aboneliği seçin
 
-1. Visual Studio **Görünüm** menüsünden **Sunucu Gezgini** ' yi seçin.  
+1. Visual Studio **Görünüm** menüsünden **Sunucu Gezgini**' yi seçin.  
 
 2. **Azure** 'a sağ tıklayın > **Microsoft Azure abonelik > Bağlan** ' ı seçin ve ardından Azure hesabınızla oturum açın.
 
 ## <a name="define-inputs"></a>Girişleri tanımlama
 
-1. **Çözüm Gezgini** , **girişler** düğümünü genişletin, **üzerindeEdgeInput.js** adlı bir giriş görmeniz gerekir. Ayarlarını görüntülemek için çift tıklayın.  
+1. **Çözüm Gezgini**, **girişler** düğümünü genişletin, **üzerindeEdgeInput.js** adlı bir giriş görmeniz gerekir. Ayarlarını görüntülemek için çift tıklayın.  
 
-2. Kaynak türünü **veri akışı** olarak ayarlayın. Ardından, kaynağı **Edge hub** , olay serileştirme biçimi olarak ayarlayın ve **UTF8** olarak **kodlama yapın.** İsteğe bağlı olarak, **giriş diğer adını** yeniden adlandırabilir, bu örnekte olduğu gibi bırakım. Giriş diğer adını yeniden adlandırmanız durumunda, sorguyu tanımlarken belirttiğiniz adı kullanın. Ayarları kaydetmek için **Kaydet** ’i seçin.  
+2. Kaynak türünü **veri akışı** olarak ayarlayın. Ardından, kaynağı **Edge hub**, olay serileştirme biçimi olarak ayarlayın ve **UTF8** olarak **kodlama yapın.** İsteğe bağlı olarak, **giriş diğer adını** yeniden adlandırabilir, bu örnekte olduğu gibi bırakım. Giriş diğer adını yeniden adlandırmanız durumunda, sorguyu tanımlarken belirttiğiniz adı kullanın. Ayarları kaydetmek için **Kaydet**’i seçin.  
    ![Stream Analytics iş girişi yapılandırması](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-input-configuration.png)
  
 
 
 ## <a name="define-outputs"></a>Çıktıları tanımlama
 
-1. **Çözüm Gezgini** , **çıktılar** düğümünü genişletin, **üzerindeEdgeOutput.js** adlı bir çıktı görmeniz gerekir. Ayarlarını görüntülemek için çift tıklayın.  
+1. **Çözüm Gezgini**, **çıktılar** düğümünü genişletin, **üzerindeEdgeOutput.js** adlı bir çıktı görmeniz gerekir. Ayarlarını görüntülemek için çift tıklayın.  
 
-2. Havuz 'u **Edge hub** 'ı seçmek, olay serileştirme biçimini **JSON** olarak ayarlamak, kodlamayı **UTF8** olarak ayarlamak ve biçim **dizisi** ayarlamak için ayarladığınızdan emin olun. İsteğe bağlı olarak, **çıktı diğer adını** yeniden adlandırabilir, bu örnekte olduğu gibi bırakım. Çıktı diğer adını yeniden adlandırmanız durumunda, sorguyu tanımlarken belirttiğiniz adı kullanın. Ayarları kaydetmek için **Kaydet** ’i seçin. 
+2. Havuz 'u **Edge hub**'ı seçmek, olay serileştirme biçimini **JSON** olarak ayarlamak, kodlamayı **UTF8** olarak ayarlamak ve biçim **dizisi** ayarlamak için ayarladığınızdan emin olun. İsteğe bağlı olarak, **çıktı diğer adını** yeniden adlandırabilir, bu örnekte olduğu gibi bırakım. Çıktı diğer adını yeniden adlandırmanız durumunda, sorguyu tanımlarken belirttiğiniz adı kullanın. Ayarları kaydetmek için **Kaydet**’i seçin. 
    ![Stream Analytics iş çıkışı yapılandırması](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-output-configuration.png)
  
 ## <a name="define-the-transformation-query"></a>Dönüşüm sorgusunu tanımlama
@@ -71,7 +70,7 @@ Stream Analytics IoT Edge ortamlarında dağıtılan Stream Analytics işleri [S
 
 Portalda bir Stream Analytics Edge işi oluşturduğunuzda, desteklenen bir işleç kullanmıyorsanız derleyici sizi otomatik olarak uyarır.
 
-Visual Studio 'dan aşağıdaki dönüştürme sorgusunu sorgu Düzenleyicisi 'nde ( **Script. aşama QL dosyası** ) tanımlayın
+Visual Studio 'dan aşağıdaki dönüştürme sorgusunu sorgu Düzenleyicisi 'nde (**Script. aşama QL dosyası**) tanımlayın
 
 ```sql
 SELECT * INTO EdgeOutput
@@ -84,11 +83,11 @@ Sorguyu yerel olarak test etmek için örnek verileri karşıya yüklemeniz gere
 
 1. Örnek verileri karşıya yüklemek için dosya **üzerindeEdgeInput.js** sağ tıklayın ve **yerel giriş Ekle** ' yi seçin.  
 
-2. Açılır pencerede > yerel yolunuzda örnek verilere **gözatıp** > **Kaydet** ' i seçin.
+2. Açılır pencerede > yerel yolunuzda örnek verilere **gözatıp** > **Kaydet**' i seçin.
    ![Visual Studio 'da yerel giriş yapılandırması](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-local-input-configuration.png)
  
 3. Giriş klasörünüze **local_EdgeInput.js** adlı bir dosya otomatik olarak eklenir.  
-4. Yerel olarak çalıştırabilir veya Azure 'a gönderebilirsiniz. Sorguyu test etmek için **yerel olarak çalıştır** ' ı seçin.  
+4. Yerel olarak çalıştırabilir veya Azure 'a gönderebilirsiniz. Sorguyu test etmek için **yerel olarak çalıştır**' ı seçin.  
    ![Visual Studio 'da Stream Analytics iş çalıştırma seçenekleri](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-visual-stuidio-run-options.png)
  
 5. Komut istemi penceresinde işin durumu gösterilir. İş başarıyla çalıştırıldığında, "Visual Studio 2015 \ Projects\MyASAEdgejob\MyASAEdgejob\ASALocalRun\2018-02-23-11-31-42" Proje klasörü yolunda "2018-02-23-11-31-42" gibi görünen bir klasör oluşturur. Yerel klasördeki sonuçları görüntülemek için klasör yoluna gidin:
@@ -101,9 +100,9 @@ Sorguyu yerel olarak test etmek için örnek verileri karşıya yüklemeniz gere
 
 1. İşi Azure 'a göndermeden önce Azure aboneliğinize bağlanmanız gerekir. **Sunucu Gezgini** açın **> Azure**  >  **'a Bağlan Microsoft Azure aboneliğe** sağ tıklayın > Azure aboneliğinizde oturum açın.  
 
-2. İşi Azure 'a göndermek için sorgu Düzenleyicisi ' ne gidin > **Azure 'A gönder** ' i seçin.  
+2. İşi Azure 'a göndermek için sorgu Düzenleyicisi ' ne gidin > **Azure 'A gönder**' i seçin.  
 
-3. Açılır pencere açılır. Mevcut bir Stream Analytics Edge işini güncelleştirmeyi veya yenisini oluşturmayı seçin. Var olan bir işi güncelleştirdiğinizde, bu senaryoda tüm iş yapılandırması değiştirilir, yeni bir iş yayımlayacaksınız. **Yeni Azure Stream Analytics Işi oluştur** ' u seçin > **MyASAEdgeJob** gibi bir ad girin > gerekli **aboneliği** , **kaynak grubunu** ve **konumu** seçin > **Gönder** ' i seçin.
+3. Açılır pencere açılır. Mevcut bir Stream Analytics Edge işini güncelleştirmeyi veya yenisini oluşturmayı seçin. Var olan bir işi güncelleştirdiğinizde, bu senaryoda tüm iş yapılandırması değiştirilir, yeni bir iş yayımlayacaksınız. **Yeni Azure Stream Analytics Işi oluştur** ' u seçin > **MyASAEdgeJob** gibi bir ad girin > gerekli **aboneliği**, **kaynak grubunu** ve **konumu** seçin > **Gönder**' i seçin.
 
    ![Visual Studio 'dan Azure 'a Stream Analytics işi gönderme](./media/stream-analytics-tools-for-visual-studio-edge-jobs/submit-stream-analytics-job-to-azure.png)
  
@@ -111,7 +110,7 @@ Sorguyu yerel olarak test etmek için örnek verileri karşıya yüklemeniz gere
 
 ## <a name="manage-the-job"></a>İşi yönetme 
 
-İşin durumunu ve iş diyagramını Sunucu Gezgini görüntüleyebilirsiniz. Sunucu Gezgini **Stream Analytics** , **Server Explorer** Stream Analytics Edge işini dağıttığınız aboneliği ve kaynak grubunu genişletin. **Oluşturulan** durum ile MyASAEdgejob görüntüleyebilirsiniz. İş düğümünü genişletin ve iş görünümünü açmak için çift tıklayın.
+İşin durumunu ve iş diyagramını Sunucu Gezgini görüntüleyebilirsiniz. Sunucu Gezgini **Stream Analytics** , Stream Analytics Edge işini dağıttığınız aboneliği ve kaynak grubunu genişletin. **Oluşturulan** durum ile MyASAEdgejob görüntüleyebilirsiniz. İş düğümünü genişletin ve iş görünümünü açmak için çift tıklayın.
 
 ![Sunucu Gezgini iş yönetimi seçenekleri](./media/stream-analytics-tools-for-visual-studio-edge-jobs/server-explorer-options.png)
  

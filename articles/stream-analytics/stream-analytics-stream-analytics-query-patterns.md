@@ -4,17 +4,16 @@ description: Bu makalede, Azure Stream Analytics işlerinde yararlı olan birka�
 services: stream-analytics
 author: rodrigoaatmicrosoft
 ms.author: rodrigoa
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/18/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: f0c5363cfec42ba78ee6c41a1970211518b74a71
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 8fcda77858b3feb78a04971a7ad1f20c0ea51fa1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127544"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020001"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Azure Stream Analytics ortak sorgu desenleri
 
@@ -34,9 +33,9 @@ Hem JSON hem de avro, iç içe geçmiş nesneler (kayıtlar) veya diziler gibi k
 
 Birden çok **Select** deyimi, verileri farklı çıkış havuzları için çıkarmak üzere kullanılabilir. Örneğin, bir **seçim** eşik tabanlı bir uyarının çıktısını alabilir, başka bir deyişle olaylar BLOB depolama alanına çıktı verebilir.
 
-**Giriş** :
+**Giriş**:
 
-| Marka | Zaman |
+| Marka | Saat |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make1 |2015-01-01T00:00:02.0000000 Z |
@@ -44,9 +43,9 @@ Birden çok **Select** deyimi, verileri farklı çıkış havuzları için çık
 | Make2 |2015-01-01T00:00:02.0000000 Z |
 | Make2 |2015-01-01T00:00:03.0000000 Z |
 
-**Çıktı ArchiveOutput** :
+**Çıktı ArchiveOutput**:
 
-| Marka | Zaman |
+| Marka | Saat |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make1 |2015-01-01T00:00:02.0000000 Z |
@@ -54,13 +53,13 @@ Birden çok **Select** deyimi, verileri farklı çıkış havuzları için çık
 | Make2 |2015-01-01T00:00:02.0000000 Z |
 | Make2 |2015-01-01T00:00:03.0000000 Z |
 
-**Çıkış AlertOutput** :
+**Çıkış AlertOutput**:
 
-| Marka | Zaman | Count |
+| Marka | Saat | Count |
 | --- | --- | --- |
 | Make2 |2015-01-01T00:00:10.0000000 Z |3 |
 
-**Sorgu** :
+**Sorgu**:
 
 ```SQL
 SELECT
@@ -89,7 +88,7 @@ HAVING
 
 **WITH** yan tümcesinin birden çok alt sorgu bloğu tanımlamak için kullanılabileceğini unutmayın. Bu seçenek, giriş kaynağına daha az okuyucu açma avantajına sahiptir.
 
-**Sorgu** :
+**Sorgu**:
 
 ```SQL
 WITH ReaderQuery AS (
@@ -119,21 +118,21 @@ Daha fazla bilgi için bkz. [ **WITH** yan tümcesi](/stream-analytics-query/wit
 
 Giriş akışı verilerini çıkışa kopyalamak için basit bir geçişli sorgu kullanılabilir. Örneğin, gerçek zamanlı araç bilgilerini içeren bir veri akışının mektup analizi için bir SQL veritabanında kaydedilmesi gerekiyorsa, basit bir geçişli sorgu işi işler.
 
-**Giriş** :
+**Giriş**:
 
-| Marka | Zaman | Ağırlık |
+| Marka | Saat | Ağırlık |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
 | Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
 
-**Çıkış** :
+**Çıkış**:
 
-| Marka | Zaman | Ağırlık |
+| Marka | Saat | Ağırlık |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
 | Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
 
-**Sorgu** :
+**Sorgu**:
 
 ```SQL
 SELECT
@@ -144,23 +143,23 @@ FROM Input
 
 Bir **Select** * sorgusu, gelen bir olaydaki tüm alanları ve bunları çıkışa gönderir. Aynı şekilde, **Select** , yalnızca girişte gerekli alanları proje için de kullanılabilir. Bu örnekte, araç *Oluştur* ve *zaman* , kaydedilecek tek gerekli alanlar Ise, bu alanlar **Select** ifadesinde belirlenebilir.
 
-**Giriş** :
+**Giriş**:
 
-| Marka | Zaman | Ağırlık |
+| Marka | Saat | Ağırlık |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |1000 |
 | Make1 |2015-01-01T00:00:02.0000000 Z |2000 |
 | Make2 |2015-01-01T00:00:04.0000000 Z |1500 |
 
-**Çıkış** :
+**Çıkış**:
 
-| Marka | Zaman |
+| Marka | Saat |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make1 |2015-01-01T00:00:02.0000000 Z |
 | Make2 |2015-01-01T00:00:04.0000000 Z |
 
-**Sorgu** :
+**Sorgu**:
 
 ```SQL
 SELECT
@@ -173,22 +172,22 @@ FROM Input
 
 **LIKE** ve **LIKE** , bir alanın belirli bir Düzenle eşleşip eşleşmediğini doğrulamak için kullanılabilir. Örneğin, yalnızca ' A ' harfiyle başlayan ve 9 sayısıyla biten lisans levhalarını döndürmek için bir filtre oluşturulabilir.
 
-**Giriş** :
+**Giriş**:
 
-| Marka | License_plate | Zaman |
+| Marka | License_plate | Saat |
 | --- | --- | --- |
 | Make1 |ABC-123 |2015-01-01T00:00:01.0000000 Z |
 | Make2 |AAA-999 |2015-01-01T00:00:02.0000000 Z |
 | Make3 |ABC-369 |2015-01-01T00:00:03.0000000 Z |
 
-**Çıkış** :
+**Çıkış**:
 
-| Marka | License_plate | Zaman |
+| Marka | License_plate | Saat |
 | --- | --- | --- |
 | Make2 |AAA-999 |2015-01-01T00:00:02.0000000 Z |
 | Make3 |ABC-369 |2015-01-01T00:00:03.0000000 Z |
 
-**Sorgu** :
+**Sorgu**:
 
 ```SQL
 SELECT
@@ -205,20 +204,20 @@ WHERE
 
 **Lag** işlevi, bir zaman penceresi içinde geçmiş olaylara bakmak ve bunları geçerli olaya göre karşılaştırmak için kullanılabilir. Örneğin, geçerli araba, ücretli olarak geçen son arabadan farklıysa, bu marka için de çıktı alınabilir.
 
-**Giriş** :
+**Giriş**:
 
-| Marka | Zaman |
+| Marka | Saat |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make2 |2015-01-01T00:00:02.0000000 Z |
 
-**Çıkış** :
+**Çıkış**:
 
-| Marka | Zaman |
+| Marka | Saat |
 | --- | --- |
 | Make2 |2015-01-01T00:00:02.0000000 Z |
 
-**Sorgu** :
+**Sorgu**:
 
 ```SQL
 SELECT
@@ -238,9 +237,9 @@ Daha fazla bilgi için, [**lag**](/stream-analytics-query/lag-azure-stream-analy
 
 Olaylar, sistem tarafından gerçek zamanlı olarak tüketildiği için, bir olayın o zaman penceresinde gelmesi için en son bir olay olacağını belirleyemeyen bir işlev yoktur. Bu işlemi gerçekleştirmek için, giriş akışının bir olay zamanının, o penceredeki tüm olaylar için en uzun süredir olması gerekir.
 
-**Giriş** :
+**Giriş**:
 
-| License_plate | Marka | Zaman |
+| License_plate | Marka | Saat |
 | --- | --- | --- |
 | DXE 5291 |Make1 |2015-07-27T00:00:05.0000000 Z |
 | YıLZK 5704 |Make3 |2015-07-27T00:02:17.0000000 Z |
@@ -250,14 +249,14 @@ Olaylar, sistem tarafından gerçek zamanlı olarak tüketildiği için, bir ola
 | QYıF 9358 |Make1 |2015-07-27T00:12:02.0000000 Z |
 | MDR 6128 |Make4 |2015-07-27T00:13:45.0000000 Z |
 
-**Çıkış** :
+**Çıkış**:
 
-| License_plate | Marka | Zaman |
+| License_plate | Marka | Saat |
 | --- | --- | --- |
 | VFE 1616 |Make2 |2015-07-27T00:09:31.0000000 Z |
 | MDR 6128 |Make4 |2015-07-27T00:13:45.0000000 Z |
 
-**Sorgu** :
+**Sorgu**:
 
 ```SQL
 WITH LastInWindow AS
@@ -291,22 +290,22 @@ Akışlara katılma hakkında daha fazla bilgi için bkz. [**JOIN**](/stream-ana
 
 Bir zaman penceresinde bilgileri hesaplamak için, veriler birlikte toplanabilir. Bu örnekte, bir sayı her bir otomobil yapması için son 10 saniyelik süre içinde hesaplanır.
 
-**Giriş** :
+**Giriş**:
 
-| Marka | Zaman | Ağırlık |
+| Marka | Saat | Ağırlık |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |1000 |
 | Make1 |2015-01-01T00:00:02.0000000 Z |2000 |
 | Make2 |2015-01-01T00:00:04.0000000 Z |1500 |
 
-**Çıkış** :
+**Çıkış**:
 
 | Marka | Sayı |
 | --- | --- |
 | Make1 | 2 |
 | Make2 | 1 |
 
-**Sorgu** :
+**Sorgu**:
 
 ```SQL
 SELECT
@@ -329,9 +328,9 @@ Toplama hakkında daha fazla bilgi için bkz. [toplama işlevleri](/stream-analy
 
 Düzensiz veya eksik olaylar söz konusu olduğunda, daha seyrek bir veri girişinden düzenli bir zaman aralığı çıkışı oluşturulabilir. Örneğin, en son görülen veri noktasını raporlayan her 5 saniyede bir olay oluşturun.
 
-**Giriş** :
+**Giriş**:
 
-| Zaman | Değer |
+| Saat | Değer |
 | --- | --- |
 | "2014-01-01T06:01:00" |1 |
 | "2014-01-01T06:01:05" |2 |
@@ -340,7 +339,7 @@ Düzensiz veya eksik olaylar söz konusu olduğunda, daha seyrek bir veri giriş
 | "2014-01-01T06:01:30" |5 |
 | "2014-01-01T06:01:35" |6 |
 
-**Çıkış (ilk 10 satır)** :
+**Çıkış (ilk 10 satır)**:
 
 | Window_end | Last_event. Işınızda | Last_event. Deeri |
 | --- | --- | --- |
@@ -355,7 +354,7 @@ Düzensiz veya eksik olaylar söz konusu olduğunda, daha seyrek bir veri giriş
 | 2014-01-01T14:01:40.000 Z |2014-01-01T14:01:35.000 Z |6 |
 | 2014-01-01T14:01:45.000 Z |2014-01-01T14:01:35.000 Z |6 |
 
-**Sorgu** :
+**Sorgu**:
 
 ```SQL
 SELECT
@@ -375,22 +374,22 @@ Daha fazla bilgi için bkz. [hopping penceresi](/stream-analytics-query/hopping-
 
 Aynı akıştaki olayların bağıntılandırgetirilmesi, **gecikme** işlevi kullanılarak geçmiş olaylara bakarak yapılabilir. Örneğin *, aynı kaynaktan* gelen iki araba, son 90 saniye boyunca ücretsiz olarak her seferinde bir çıktı oluşturulabilir.
 
-**Giriş** :
+**Giriş**:
 
-| Marka | License_plate | Zaman |
+| Marka | License_plate | Saat |
 | --- | --- | --- |
 | Make1 |ABC-123 |2015-01-01T00:00:01.0000000 Z |
 | Make1 |AAA-999 |2015-01-01T00:00:02.0000000 Z |
 | Make2 |DEF-987 |2015-01-01T00:00:03.0000000 Z |
 | Make1 |GHI-345 |2015-01-01T00:00:04.0000000 Z |
 
-**Çıkış** :
+**Çıkış**:
 
-| Marka | Zaman | Current_car_license_plate | First_car_license_plate | First_car_time |
+| Marka | Saat | Current_car_license_plate | First_car_license_plate | First_car_time |
 | --- | --- | --- | --- | --- |
 | Make1 |2015-01-01T00:00:02.0000000 Z |AAA-999 |ABC-123 |2015-01-01T00:00:01.0000000 Z |
 
-**Sorgu** :
+**Sorgu**:
 
 ```SQL
 SELECT
@@ -413,20 +412,20 @@ Daha fazla bilgi için, [lag](/stream-analytics-query/lag-azure-stream-analytics
 
 Bir olayın süresi, son olay alındıktan sonra son başlangıç olayına bakarak hesaplanabilir. Bu sorgu, bir kullanıcının bir sayfada veya özellikte harcadığı zamanı belirlemede yararlı olabilir.
 
-**Giriş** :  
+**Giriş**:  
 
-| Kullanıcı | Özellik | Olay | Zaman |
+| Kullanıcı | Özellik | Olay | Saat |
 | --- | --- | --- | --- |
-| user@location.com |RightMenu |Başlangıç |2015-01-01T00:00:01.0000000 Z |
+| user@location.com |RightMenu |Başlat |2015-01-01T00:00:01.0000000 Z |
 | user@location.com |RightMenu |End |2015-01-01T00:00:08.0000000 Z |
 
-**Çıkış** :  
+**Çıkış**:  
 
 | Kullanıcı | Özellik | Süre |
 | --- | --- | --- |
 | user@location.com |RightMenu |7 |
 
-**Sorgu** :
+**Sorgu**:
 
 ```SQL
 SELECT
@@ -447,9 +446,9 @@ WHERE
 
 **Count** ve **DISTINCT** , bir zaman penceresi içinde akışta görünen benzersiz alan değerlerinin sayısını saymak için kullanılabilir. 2 saniyelik bir pencerede ücretli stand üzerinden kaç *tane benzersiz araba* olduğunu hesaplamak için bir sorgu oluşturulabilir.
 
-**Giriş** :
+**Giriş**:
 
-| Marka | Zaman |
+| Marka | Saat |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make1 |2015-01-01T00:00:02.0000000 Z |
@@ -459,7 +458,7 @@ WHERE
 
 **Çıktıların**
 
-| Count_make | Zaman |
+| Count_make | Saat |
 | --- | --- |
 | 2 |2015-01-01T00:00:02.000 Z |
 | 1 |2015-01-01T00:00:04.000 Z |
@@ -482,9 +481,9 @@ Daha fazla bilgi için [ **Count** toplama işlevine](/stream-analytics-query/co
 
 **IsFirst** , zaman penceresinde ilk olayı almak için kullanılabilir. Örneğin, her 10 dakikalık aralıktaki ilk araba bilgisinin çıktısı.
 
-**Giriş** :
+**Giriş**:
 
-| License_plate | Marka | Zaman |
+| License_plate | Marka | Saat |
 | --- | --- | --- |
 | DXE 5291 |Make1 |2015-07-27T00:00:05.0000000 Z |
 | YıLZK 5704 |Make3 |2015-07-27T00:02:17.0000000 Z |
@@ -494,14 +493,14 @@ Daha fazla bilgi için [ **Count** toplama işlevine](/stream-analytics-query/co
 | QYıF 9358 |Make1 |2015-07-27T00:12:02.0000000 Z |
 | MDR 6128 |Make4 |2015-07-27T00:13:45.0000000 Z |
 
-**Çıkış** :
+**Çıkış**:
 
-| License_plate | Marka | Zaman |
+| License_plate | Marka | Saat |
 | --- | --- | --- |
 | DXE 5291 |Make1 |2015-07-27T00:00:05.0000000 Z |
 | QYıF 9358 |Make1 |2015-07-27T00:12:02.0000000 Z |
 
-**Sorgu** :
+**Sorgu**:
 
 ```SQL
 SELECT 
@@ -516,9 +515,9 @@ WHERE
 
 **Islk** Ayrıca verileri bölümleyebilir ve her 10 dakikalık *aralıkta bulunan her* bir otomobil için ilk olayı hesaplayabilir.
 
-**Çıkış** :
+**Çıkış**:
 
-| License_plate | Marka | Zaman |
+| License_plate | Marka | Saat |
 | --- | --- | --- |
 | DXE 5291 |Make1 |2015-07-27T00:00:05.0000000 Z |
 | YıLZK 5704 |Make3 |2015-07-27T00:02:17.0000000 Z |
@@ -526,7 +525,7 @@ WHERE
 | QYıF 9358 |Make1 |2015-07-27T00:12:02.0000000 Z |
 | MDR 6128 |Make4 |2015-07-27T00:13:45.0000000 Z |
 
-**Sorgu** :
+**Sorgu**:
 
 ```SQL
 SELECT 
@@ -545,9 +544,9 @@ Daha fazla bilgi için [**IsFirst**](/stream-analytics-query/isfirst-azure-strea
 
 Belirli bir zaman penceresinde olaylar üzerinde ortalamaları hesaplama gibi bir işlem gerçekleştirirken, yinelenen olayların filtrelenmelidir. Aşağıdaki örnekte ikinci olay, birincisinin yinelemesidir.
 
-**Giriş** :  
+**Giriş**:  
 
-| DeviceId | Zaman | Öznitelik | Değer |
+| DeviceId | Saat | Öznitelik | Değer |
 | --- | --- | --- | --- |
 | 1 |2018-07-27T00:00:01.0000000 Z |Sıcaklık |50 |
 | 1 |2018-07-27T00:00:01.0000000 Z |Sıcaklık |50 |
@@ -556,14 +555,14 @@ Belirli bir zaman penceresinde olaylar üzerinde ortalamaları hesaplama gibi bi
 | 2 |2018-07-27T00:00:05.0000000 Z |Sıcaklık |50 |
 | 1 |2018-07-27T00:00:10.0000000 Z |Sıcaklık |100 |
 
-**Çıkış** :  
+**Çıkış**:  
 
 | Averagedeğeri | DeviceId |
 | --- | --- |
 | 70 | 1 |
 |45 | 2 |
 
-**Sorgu** :
+**Sorgu**:
 
 ```SQL
 With Temp AS (
@@ -594,22 +593,22 @@ Daha fazla bilgi için bkz. [Count (ayrık süre)](/stream-analytics-query/count
 
 **Case** deyimleri, farklı alanlar için belirli bir ölçüte göre farklı hesaplamalar sağlayabilir. Örneğin, *Make1* ve Lane ' B ' öğesinin otomobilleri Için ' A ' kulvarı diğer herhangi bir marka için atayın.
 
-**Giriş** :
+**Giriş**:
 
-| Marka | Zaman |
+| Marka | Saat |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |
 | Make2 |2015-01-01T00:00:02.0000000 Z |
 | Make2 |2015-01-01T00:00:03.0000000 Z |
 
-**Çıkış** :
+**Çıkış**:
 
-| Marka |Dispatch_to_lane | Zaman |
+| Marka |Dispatch_to_lane | Saat |
 | --- | --- | --- |
 | Make1 |A |2015-01-01T00:00:01.0000000 Z |
 | Make2 |Kenarı |2015-01-01T00:00:02.0000000 Z |
 
-**Çözüm** :
+**Çözüm**:
 
 ```SQL
 SELECT
@@ -631,20 +630,20 @@ Daha fazla bilgi için bkz. [case ifadesi](/stream-analytics-query/case-azure-st
 
 Veri **cast** yöntemi kullanılarak gerçek zamanlı olarak ayarlanabilir. Örneğin, araba ağırlığı, **nvarchar (max)** türünden **bigint** türüne dönüştürülebilir ve sayısal bir hesaplamada kullanılabilir.
 
-**Giriş** :
+**Giriş**:
 
-| Marka | Zaman | Ağırlık |
+| Marka | Saat | Ağırlık |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |"1000" |
 | Make1 |2015-01-01T00:00:02.0000000 Z |"2000" |
 
-**Çıkış** :
+**Çıkış**:
 
 | Marka | Ağırlık |
 | --- | --- |
 | Make1 |3000 |
 
-**Sorgu** :
+**Sorgu**:
 
 ```SQL
 SELECT
@@ -665,9 +664,9 @@ Veri türünü belirtmek için bir **cast** ifadesini kullanın. Veri türlerind
 
 Birden çok olayla yayılan koşullar için, bu koşulun süresini tanımlamak üzere **lag** işlevi kullanılabilir. Örneğin, bir hata, tüm otomobillerin yanlış ağırlığa (20.000 sterlini üzerinde) sahip olduğunu ve bu hatanın süresinin hesaplanması gerektiğini varsayalım.
 
-**Giriş** :
+**Giriş**:
 
-| Marka | Zaman | Ağırlık |
+| Marka | Saat | Ağırlık |
 | --- | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000 Z |2000 |
 | Make2 |2015-01-01T00:00:02.0000000 Z |25000 |
@@ -678,13 +677,13 @@ Birden çok olayla yayılan koşullar için, bu koşulun süresini tanımlamak �
 | Make1 |2015-01-01T00:00:07.0000000 Z |26000 |
 | Make2 |2015-01-01T00:00:08.0000000 Z |2000 |
 
-**Çıkış** :
+**Çıkış**:
 
 | Start_fault | End_fault |
 | --- | --- |
 | 2015-01-01T00:00:02.000 Z |2015-01-01T00:00:07.000 Z |
 
-**Sorgu** :
+**Sorgu**:
 
 ```SQL
 WITH SelectPreviousEvent AS
@@ -713,9 +712,9 @@ End_fault, önceki olayın hatalı olduğu ve Start_fault önce son hatalı olma
 Olaylar, Event üreticileri, bölümler arasındaki saat eğetkinlikleri veya ağ gecikmesi arasındaki saat eğlemeleri nedeniyle geçmiş veya sıra dışı olabilir.
 Örneğin, *tollıd* 2 için cihaz saati, *tollıd* 1 ' in arkasında beş saniyedir ve *tollıd* 3 Için cihaz saati, *tollıd* 1 ' in arkasında on saniyedir. Hesaplama her ücretli için bağımsız olarak gerçekleşebilir ve yalnızca kendi saat verileri zaman damgası olarak ele alabilir.
 
-**Giriş** :
+**Giriş**:
 
-| Licenselevha | Marka | Zaman | Tollıd |
+| Licenselevha | Marka | Saat | Tollıd |
 | --- | --- | --- | --- |
 | DXE 5291 |Make1 |2015-07-27T00:00:01.0000000 Z | 1 |
 | YıLHN 6970 |Make2 |2015-07-27T00:00:05.0000000 Z | 1 |
@@ -726,7 +725,7 @@ Olaylar, Event üreticileri, bölümler arasındaki saat eğetkinlikleri veya a�
 | MDR 6128 |Make3 |2015-07-27T00:00:11.0000000 Z | 2 |
 | YıLZK 5704 |Make4 |2015-07-27T00:00:07.0000000 Z | 3 |
 
-**Çıkış** :
+**Çıkış**:
 
 | Tollıd | Count |
 | --- | --- |
@@ -737,7 +736,7 @@ Olaylar, Event üreticileri, bölümler arasındaki saat eğetkinlikleri veya a�
 | 2 | 1 |
 | 3 | 1 |
 
-**Sorgu** :
+**Sorgu**:
 
 ```SQL
 SELECT
@@ -758,9 +757,9 @@ Oturum penceresi, belirli bir süre sonra veya pencere en uzun süreye ulaşırs
 Bu pencere, Kullanıcı etkileşimi verileri hesaplanırken özellikle faydalıdır. Bir pencere, bir Kullanıcı sistemle etkileşime başladığında başlar ve başka hiçbir olay gözlemleniyorsa, yani Kullanıcı etkileşime göre durmuşsa kapatır.
 Örneğin, bir Kullanıcı, tıklama sayısının günlüğe kaydedildiği bir Web sayfasıyla etkileşim kurmuştur, kullanıcının siteyle ne kadar süre içinde işlem açtığını öğrenmek için bir oturum penceresi kullanılabilir.
 
-**Giriş** :
+**Giriş**:
 
-| User_id | Zaman | URL |
+| User_id | Saat | URL |
 | --- | --- | --- |
 | 0 | 2017-01-26T00:00:00.0000000 Z | "www.example.com/a.html" |
 | 0 | 2017-01-26T00:00:20.0000000 Z | "www.example.com/b.html" |
@@ -768,14 +767,14 @@ Bu pencere, Kullanıcı etkileşimi verileri hesaplanırken özellikle faydalıd
 | 0 | 2017-01-26T00:01:10.0000000 Z | "www.example.com/d.html" |
 | 1 | 2017-01-26T00:01:15.0000000 Z | "www.example.com/e.html" |
 
-**Çıkış** :
+**Çıkış**:
 
 | User_id | StartTime | EndTime | Duration_in_seconds |
 | --- | --- | --- | --- |
 | 0 | 2017-01-26T00:00:00.0000000 Z | 2017-01-26T00:01:10.0000000 Z | 70 |
 | 1 | 2017-01-26T00:00:55.0000000 Z | 2017-01-26T00:01:15.0000000 Z | 20 |
 
-**Sorgu** :
+**Sorgu**:
 
 ``` SQL
 SELECT
@@ -797,7 +796,7 @@ GROUP BY
 
 Azure Stream Analytics sorgu dili, JavaScript veya C# dilinde yazılmış özel işlevlerle genişletilebilir. Kullanıcı tanımlı Işlevler (UDF), **SQL** dili kullanılarak kolayca belirtilemez özel/karmaşık hesaplamalardır. Bu UDF 'ler bir kez tanımlanabilir ve bir sorgu içinde birden çok kez kullanılabilir. Örneğin, bir UDF onaltılık bir *nvarchar (max)* değerini bir *bigint* değerine dönüştürmek için kullanılabilir.
 
-**Giriş** :
+**Giriş**:
 
 | Device_id | Onaltıdeğer |
 | --- | --- |
@@ -805,7 +804,7 @@ Azure Stream Analytics sorgu dili, JavaScript veya C# dilinde yazılmış özel 
 | 2 | "11B" |
 | 3 | "121" |
 
-**Çıkış** :
+**Çıkış**:
 
 | Device_id | Ondalık |
 | --- | --- |
@@ -844,9 +843,9 @@ Daha fazla bilgi için [JavaScript](./stream-analytics-javascript-user-defined-f
 **MATCH_RECOGNIZE** , bir olay dizisini iyi tanımlanmış bir normal ifade düzenine eşleştirmek için kullanılabilen gelişmiş bir model eşleştirme mekanizmasıdır.
 Örneğin, bir ATM, hatalara karşı gerçek zamanlı olarak izlenmekte, ancak yöneticiye bildirilmesi gereken iki ardışık uyarı iletisi varsa, bu, ATM 'nin çalışması sırasında.
 
-**Giriş** :
+**Giriş**:
 
-| ATM_id | Operation_id | Return_Code | Zaman |
+| ATM_id | Operation_id | Return_Code | Saat |
 | --- | --- | --- | --- |
 | 1 | "PIN girme" | Başarılı | 2017-01-26T00:10:00.0000000 Z |
 | 2 | "Para yuvası açılıyor" | Başarılı | 2017-01-26T00:10:07.0000000 Z |
@@ -855,7 +854,7 @@ Daha fazla bilgi için [JavaScript](./stream-analytics-javascript-user-defined-f
 | 1 | "Para yuvası açılıyor" | Warning | 2017-01-26T00:10:14.0000000 Z |
 | 1 | "Bank bilançosu yazdırılıyor" | Warning | 2017-01-26T00:10:19.0000000 Z |
 
-**Çıkış** :
+**Çıkış**:
 
 | ATM_id | First_Warning_Operation_id | Warning_Time |
 | --- | --- | --- |
@@ -881,7 +880,7 @@ MATCH_RECOGNIZE (
 
 Bu sorgu, en az iki ardışık hata olayını eşleştirir ve koşullar karşılandığında bir alarm oluşturur.
 **Model** , eşleştirme üzerinde kullanılacak normal ifadeyi tanımlar, bu durumda, her türlü başarılı işlem ve sonrasında en az iki ardışık başarısızlık gelir.
-Başarı ve başarısızlık Return_Code değeri kullanılarak tanımlanır ve koşul karşılandığında, **ölçümler** *ATM_id* , ilk uyarı işlemi ve ilk uyarı süresi ile birlikte gösterilir.
+Başarı ve başarısızlık Return_Code değeri kullanılarak tanımlanır ve koşul karşılandığında, **ölçümler** *ATM_id*, ilk uyarı işlemi ve ilk uyarı süresi ile birlikte gösterilir.
 
 Daha fazla bilgi için [MATCH_RECOGNIZE](/stream-analytics-query/match-recognize-stream-analytics)bakın.
 
@@ -892,24 +891,24 @@ Jeo-uzamsal veriler, coğrafi JSON veya WKT biçimlerinde olay akışı veya ba�
 Örneğin, Passport yazdırma için üretim makinelerinde uzmanlaşmış bir şirkettir, makinelerini kamu ve sarf amaçlı olarak kiralayın. Bu makinelerin konumu yoğun olarak, Passport 'ların sahteciliği ve olası kullanımı ortadan kaldırmak için yoğun olarak denetlenir. Her makine bir GPS izleyiciye uydurulur, bu bilgiler bir Azure Stream Analytics işine geri getirilir.
 Üretim, bu makinelerin konumunu izlemek ve bunlardan biri yetkili bir alandan ayrıldığında, bu şekilde uzaktan devre dışı bırakabilmeleri, uyarı yetkilileri ve ekipmanları alabilmesi için uyarı almak istiyor.
 
-**Giriş** :
+**Giriş**:
 
-| Equipment_id | Equipment_current_location | Zaman |
+| Equipment_id | Equipment_current_location | Saat |
 | --- | --- | --- |
 | 1 | "NOKTA (-122.13288797982818 47.64082002051315)" | 2017-01-26T00:10:00.0000000 Z |
 | 1 | "NOKTA (-122.13307252987875 47.64081350934929)" | 2017-01-26T00:11:00.0000000 Z |
 | 1 | "NOKTA (-122.13308862313283 47.6406508603241)" | 2017-01-26T00:12:00.0000000 Z |
 | 1 | "NOKTA (-122.13341048821462 47.64043760861279)" | 2017-01-26T00:13:00.0000000 Z |
 
-**Başvuru veri girişi** :
+**Başvuru veri girişi**:
 
 | Equipment_id | Equipment_lease_location |
 | --- | --- |
 | 1 | "ÇOKGEN ((-122.13326028450979 47.6409833866794,-122.13261655434621 47.6409833866794,-122.13261655434621 47.64061471602751,-122.13326028450979 47.64061471602751,-122.13326028450979 47.6409833866794))" |
 
-**Çıkış** :
+**Çıkış**:
 
-| Equipment_id | Equipment_alert_location | Zaman |
+| Equipment_id | Equipment_alert_location | Saat |
 | --- | --- | --- |
 | 1 | "NOKTA (-122.13341048821462 47.64043760861279)" | 2017-01-26T00:13:00.0000000 Z |
 
