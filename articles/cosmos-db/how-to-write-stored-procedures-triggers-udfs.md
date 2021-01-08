@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 7938920459654bd59620ad0992f3a13db85ff4fb
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 7600d8aa2f78e06ea4046273635fdbba18042010
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019032"
+ms.locfileid: "98028871"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Saklı yordamları, Tetikleyicileri ve Kullanıcı tanımlı işlevleri Azure Cosmos DB yazma
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -284,7 +284,7 @@ function async_sample() {
 
 ## <a name="how-to-write-triggers"></a><a id="triggers"></a>Tetikleyicileri yazma
 
-Azure Cosmos DB ön Tetikleyicileri ve Tetikleyicileri destekler. Ön Tetikleyiciler, bir veritabanı öğesi değiştirilmeden önce yürütülür ve bir veritabanı öğesi değiştirildikten sonra Tetikleyiciler yürütülür. Tetikleyiciler otomatik değildir. Bunların yürütülmesini istediğiniz her veritabanı işlemi için belirtilmesi gerekir.
+Azure Cosmos DB ön Tetikleyicileri ve Tetikleyicileri destekler. Ön Tetikleyiciler, bir veritabanı öğesi değiştirilmeden önce yürütülür ve bir veritabanı öğesi değiştirildikten sonra Tetikleyiciler yürütülür. Tetikleyiciler otomatik olarak yürütülmez, bunların yürütülmesini istediğiniz her bir veritabanı işlemi için belirtilmesi gerekir. Bir tetikleyiciyi tanımladıktan sonra, Azure Cosmos DB SDK 'larını kullanarak [bir ön tetikleyiciyi kaydetmeniz ve çağırmanız](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) gerekir.
 
 ### <a name="pre-triggers"></a><a id="pre-triggers"></a>Ön Tetikleyiciler
 

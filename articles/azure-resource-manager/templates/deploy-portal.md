@@ -3,12 +3,12 @@ title: Azure portal ile kaynak dağıtma
 description: Kaynaklarınızı aboneliğinizdeki bir kaynak grubuna dağıtmak için Azure portal ve Azure Kaynak yönetme 'yi kullanın.
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: b87ac48bbaec7f94d5e75939cf5ec17df0ff2d2f
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: d8467bb4e51fc4e6ba89a84f1260a8d2743758d2
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92668763"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028684"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-portal"></a>ARM şablonları ve Azure portal kaynak dağıtma
 
@@ -29,20 +29,20 @@ Bu makalede her iki yöntem de gösterilmektedir.
 
    ![Kaynak gruplarını seçin](./media/deploy-portal/select-resource-groups.png)
 
-1. Kaynak grupları altında **Ekle** ' yi seçin.
+1. Kaynak grupları altında **Ekle**' yi seçin.
 
    ![Kaynak Grubu Ekle](./media/deploy-portal/add-resource-group.png)
 
 1. Aşağıdaki özellik değerlerini seçin veya girin:
 
-    - **Abonelik** : bir Azure aboneliği seçin.
-    - **Kaynak grubu** : kaynak grubuna bir ad verin.
-    - **Bölge** : bir Azure konumu belirtin. Bu konum, kaynak grubunun kaynaklarla ilgili meta verileri depoladığı yerdir. Uyumluluk nedenleriyle, meta verilerin depolanacağı yeri belirtmek isteyebilirsiniz. Genel olarak, kaynaklarınızın çoğunun nerede olacağı bir konum belirtmenizi öneririz. Aynı konumun kullanılması şablonunuzun basitleşmesini sağlayabilir.
+    - **Abonelik**: bir Azure aboneliği seçin.
+    - **Kaynak grubu**: kaynak grubuna bir ad verin.
+    - **Bölge**: bir Azure konumu belirtin. Bu konum, kaynak grubunun kaynaklarla ilgili meta verileri depoladığı yerdir. Uyumluluk nedenleriyle, meta verilerin depolanacağı yeri belirtmek isteyebilirsiniz. Genel olarak, kaynaklarınızın çoğunun nerede olacağı bir konum belirtmenizi öneririz. Aynı konumun kullanılması şablonunuzun basitleşmesini sağlayabilir.
 
    ![Grup değerlerini ayarla](./media/deploy-portal/set-group-properties.png)
 
-1. **Gözden geçir ve oluştur** ’u seçin.
-1. Değerleri gözden geçirin ve ardından **Oluştur** ' u seçin.
+1. **Gözden geçir ve oluştur**’u seçin.
+1. Değerleri gözden geçirin ve ardından **Oluştur**' u seçin.
 1. Listeden yeni kaynak grubunu görebilmek için **Yenile** ' yi seçin.
 
 ## <a name="deploy-resources-to-a-resource-group"></a>Kaynakları bir kaynak grubuna dağıtma
@@ -67,7 +67,7 @@ Bir kaynak grubu oluşturduktan sonra Market 'ten gruba kaynak dağıtabilirsini
 
    ![Bildirimi görüntüle](./media/deploy-portal/view-notification.png)
 
-1. Kaynaklarınızı dağıttıktan sonra **Ekle** ' yi seçerek kaynak grubuna daha fazla kaynak ekleyebilirsiniz.
+1. Kaynaklarınızı dağıttıktan sonra **Ekle**' yi seçerek kaynak grubuna daha fazla kaynak ekleyebilirsiniz.
 
    ![Kaynak Ekle](./media/deploy-portal/add-resource.png)
 
@@ -80,16 +80,16 @@ Bir dağıtımı yürütmek, ancak Market 'teki şablonlardan hiçbirini kullanm
 > [!NOTE]
 > Portal arabirimi [Key Vault bir gizli](key-vault-parameter.md)diziyi başvurmayı desteklemez. Bunun yerine, yerel olarak veya harici bir URI 'den şablonunuzu dağıtmak için [PowerShell](deploy-powershell.md) veya [Azure CLI](deploy-cli.md) kullanın.
 
-1. Portal üzerinden özelleştirilmiş bir şablon dağıtmak için **kaynak oluştur** ' u seçin, **şablon** araması yapın. sonra **şablon dağıtımı** ' yi seçin.
+1. Portal üzerinden özelleştirilmiş bir şablon dağıtmak için **kaynak oluştur**' u seçin, **şablon** araması yapın. sonra **şablon dağıtımı**' yi seçin.
 
    ![Arama şablonu dağıtımı](./media/deploy-portal/search-template.png)
 
-1. **Oluştur** ’u seçin.
+1. **Oluştur**’u seçin.
 1. Şablon oluşturmak için çeşitli seçenekler görürsünüz:
 
     - **Düzenleyicide kendi şablonunuzu** oluşturun: Portal şablonu düzenleyicisinde kendi şablonunuzu oluşturun.
-    - **Ortak şablonlar** : ortak çözümler arasından seçim yapın.
-    - **GitHub hızlı başlangıç şablonu yükleme** : [hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/)arasından seçim yapın.
+    - **Ortak şablonlar**: ortak çözümler arasından seçim yapın.
+    - **GitHub hızlı başlangıç şablonu yükleme**: [hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/)arasından seçim yapın.
 
    ![Görüntüleme seçenekleri](./media/deploy-portal/see-options.png)
 
@@ -99,30 +99,30 @@ Bir dağıtımı yürütmek, ancak Market 'teki şablonlardan hiçbirini kullanm
 
     İki seçeneğiniz vardır:
 
-    - **Şablon seçin** : şablonu dağıtın.
-    - **Şablonu Düzenle** : dağıtmadan önce hızlı başlangıç şablonunu düzenleyin.
+    - **Şablon seçin**: şablonu dağıtın.
+    - **Şablonu Düzenle**: dağıtmadan önce hızlı başlangıç şablonunu düzenleyin.
 
-1. Portal şablonu düzenleyicisini araştırmak için **Şablonu Düzenle** ' yi seçin. Şablon düzenleyiciye yüklenir. İki parametre olduğuna dikkat edin: **Storageaccounttype** ve **Location** .
+1. Portal şablonu düzenleyicisini araştırmak için **Şablonu Düzenle** ' yi seçin. Şablon düzenleyiciye yüklenir. İki parametre olduğuna dikkat edin: `storageAccountType` ve `location` .
 
    ![Şablon oluşturma](./media/deploy-portal/show-json.png)
 
-1. Şablonda küçük bir değişiklik yapın. Örneğin, **storageAccountName** değişkenini şu şekilde güncelleştirin:
+1. Şablonda küçük bir değişiklik yapın. Örneğin, `storageAccountName` değişkenini şu şekilde güncelleştirin:
 
     ```json
     "storageAccountName": "[concat('azstore', uniquestring(resourceGroup().id))]"
     ```
 
-1. **Kaydet** ’i seçin. Artık portal şablonu dağıtım arabirimini görürsünüz. Şablonda tanımladığınız iki parametreye dikkat edin.
+1. **Kaydet**’i seçin. Artık portal şablonu dağıtım arabirimini görürsünüz. Şablonda tanımladığınız iki parametreye dikkat edin.
 1. Özellik değerlerini girin veya seçin:
 
-    - **Abonelik** : bir Azure aboneliği seçin.
-    - **Kaynak grubu** : **Yeni oluştur** ' u seçin ve bir ad verin.
-    - **Konum** : bir Azure konumu seçin.
-    - **Depolama hesabı türü** : varsayılan değeri kullanın.
-    - **Konum** : varsayılan değeri kullanın.
-    - **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum** : (seçin)
+    - **Abonelik**: bir Azure aboneliği seçin.
+    - **Kaynak grubu**: **Yeni oluştur** ' u seçin ve bir ad verin.
+    - **Konum**: bir Azure konumu seçin.
+    - **Depolama hesabı türü**: varsayılan değeri kullanın.
+    - **Konum**: varsayılan değeri kullanın.
+    - **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum**: (seçin)
 
-1. **Satın al** 'ı seçin.
+1. **Satın al**'ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

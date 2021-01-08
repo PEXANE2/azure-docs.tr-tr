@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 01/05/2021
 ms.author: duau
-ms.openlocfilehash: f808b12fdb33342d30f1a3ce5b6022bd068a7fa1
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 0dc60f1785ee0d59307cb0d5b62405af62121518
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968033"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98027630"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute ortakları ve eşleme konumları
 
@@ -90,7 +90,7 @@ Aşağıdaki tabloda bağlantı konumları ve her konum için hizmet sağlayıc�
 | **Cape Town** | [Teraco CT1](https://www.teraco.co.za/data-centre-locations/cape-town/) | 3 | Güney Afrika - Batı | 'Yi | BCX, Internet çözümleri-bulut bağlantısı, sıvı telekomünikasyon, Teraco |
 | **Chennai** | Tata Communications | 2 | Güney Hindistan | 'Yi | Global CloudXchange (GCX), SIFY, Tata Communications |
 | **Chennai2** | Airtel | 2 | Güney Hindistan | 'Yi | Airtel |
-| **Chicago** | [Equinix CH1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/chicago-data-centers/ch1/) | 1 | Orta Kuzey ABD | 10G, 100G | Aryaka Networks,&T Netbono, CenturyLink Cloud Connect, Geregix, Colt, Comcast, Coresıte, Equinix, Intercloud, Internet2, Level 3 Communications, Megaport, PacketFabric, PCFA Global Limited, Sprint, Telia taşıyıcısı, Verizon, Zayo |
+| **Chicago** | [Equinix CH1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/chicago-data-centers/ch1/) | 1 | Orta Kuzey ABD | 10G, 100G | Aryaka Networks, AT&T Netbonu, Ingiliz telekomünikasyon, CenturyLink Cloud Connect, Geregix, Colt, Comcast, Coresıte, Equinix, Intercloud, Internet2, Level 3 Communications, Megaport, PacketFabric, PCFA Global Limited, Sprint, Telia taşıyıcısı, Verizon, Zayo |
 | **Kopenhag** | [Interxiyon CPH1](https://www.interxion.com/Locations/copenhagen/) | 1 | yok | 'Yi | Interxion |
 | **Şubesi** | [Equinix DA3](https://www.equinix.com/locations/americas-colocation/united-states-colocation/dallas-data-centers/da3/) | 1 | yok | 10G, 100G | Aryaka Networks,&T Netbonıngıgix, Equinix, Internet2, düzey 3 Communications, Megaport, nörona Networks, Telmex Unınet, Telia taşıyıcısı, Transtelco, Verizon, Zayo|
 | **Denver** | [CoreSite DE1](https://www.coresite.com/data-centers/locations/denver/de1) | 1 | Orta Batı ABD | yok | CoreSite, Megaport, Zayo |

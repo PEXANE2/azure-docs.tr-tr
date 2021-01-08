@@ -199,9 +199,9 @@
           href: event-hubs-kafka-spark-tutorial.md
         - name: Apache Flink'i bir olay hub'ına bağlama
           href: event-hubs-kafka-flink-tutorial.md
-        - name: Apache Kafka Connect’i bir merkez ile tümleştirme (Önizleme)
+        - name: Apache Kafka Connect'i tümleştirme
           href: event-hubs-kafka-connect-tutorial.md
-        - name: Apache Kafka Connect’i (Önizleme) Debezium ile tümleştirme
+        - name: Apache Kafka Connect'i Debezium ile tümleştirme
           href: event-hubs-kafka-connect-debezium.md
         - name: Akka Streams’i bir olay hub’ına bağlama
           href: event-hubs-kafka-akka-streams-tutorial.md

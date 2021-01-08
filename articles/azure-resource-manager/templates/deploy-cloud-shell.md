@@ -1,18 +1,18 @@
 ---
 title: Şablonları Cloud Shell dağıtma
-description: Azure 'a kaynak dağıtmak için Azure Resource Manager ve Cloud Shell kullanın. Kaynaklar bir Azure Resource Manager şablonunda tanımlanır.
+description: Azure 'a kaynak dağıtmak için Azure Resource Manager ve Azure Cloud Shell kullanın. Kaynaklar bir Azure Resource Manager şablonunda tanımlanır (ARM şablonu).
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: d0b519955cb877f5fb9640cc0cf95a898e1743ef
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: c67251a33b6197603be27086bcc6cd047e0c414b
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681633"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028616"
 ---
-# <a name="deploy-arm-templates-from-cloud-shell"></a>ARM şablonlarını Cloud Shell dağıtma
+# <a name="deploy-arm-templates-from-azure-cloud-shell"></a>ARM şablonlarını Azure Cloud Shell dağıtma
 
-Azure Resource Manager şablonu dağıtmak için [Cloud Shell](../../cloud-shell/overview.md) KULLANABILIRSINIZ (ARM şablonu). Uzaktan depolanan bir ARM şablonunu veya Cloud Shell için yerel depolama hesabında depolanan bir ARM şablonunu dağıtabilirsiniz.
+Azure Resource Manager şablonu dağıtmak için [Azure Cloud Shell](../../cloud-shell/overview.md) KULLANABILIRSINIZ (ARM şablonu). Uzaktan depolanan bir ARM şablonunu veya Cloud Shell için yerel depolama hesabında depolanan bir ARM şablonunu dağıtabilirsiniz.
 
 Herhangi bir kapsama dağıtabilirsiniz. Bu makalede bir kaynak grubuna dağıtma gösterilmektedir.
 
@@ -54,7 +54,7 @@ Dış şablon dağıtmak için, şablon URI 'sini tam olarak herhangi bir dış 
 
 Yerel bir şablon dağıtmak için, önce şablonunuzu Cloud Shell oturumunuza bağlı depolama hesabına yüklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. Cloud Shell kaynak grubunuzu seçin. Ad deseni `cloud-shell-storage-<region>` şeklindedir.
 
@@ -62,27 +62,27 @@ Yerel bir şablon dağıtmak için, önce şablonunuzu Cloud Shell oturumunuza b
 
 1. Cloud Shell için depolama hesabınızı seçin.
 
-   :::image type="content" source="./media/deploy-cloud-shell/cloud-shell-storage.png" alt-text="Cloud Shell’i açma":::
+   :::image type="content" source="./media/deploy-cloud-shell/cloud-shell-storage.png" alt-text="Depolama hesabı seçme":::
 
-1. **Dosya paylaşımları** ' nı seçin.
+1. **Dosya paylaşımları**' nı seçin.
 
-   :::image type="content" source="./media/deploy-cloud-shell/files-shares.png" alt-text="Cloud Shell’i açma":::
+   :::image type="content" source="./media/deploy-cloud-shell/files-shares.png" alt-text="Dosya paylaşımlarını seçin":::
 
 1. Cloud Shell için varsayılan dosya payını seçin. Dosya paylaşımının ad biçimi vardır `cs-<user>-<domain>-com-<uniqueGuid>` .
 
-   :::image type="content" source="./media/deploy-cloud-shell/select-file-share.png" alt-text="Cloud Shell’i açma":::
+   :::image type="content" source="./media/deploy-cloud-shell/select-file-share.png" alt-text="Varsayılan dosya paylaşma":::
 
 1. Şablonlarınızı barındırmak için yeni bir dizin ekleyin. Bu dizini seçin.
 
-   :::image type="content" source="./media/deploy-cloud-shell/add-directory.png" alt-text="Cloud Shell’i açma":::
+   :::image type="content" source="./media/deploy-cloud-shell/add-directory.png" alt-text="Dizin ekleme":::
 
-1. **Karşıya Yükle** ’yi seçin.
+1. **Karşıya Yükle**’yi seçin.
 
-   :::image type="content" source="./media/deploy-cloud-shell/upload-template.png" alt-text="Cloud Shell’i açma":::
+   :::image type="content" source="./media/deploy-cloud-shell/upload-template.png" alt-text="Şablonu karşıya yükle":::
 
 1. Şablonunuzu bulup karşıya yükleyin.
 
-   :::image type="content" source="./media/deploy-cloud-shell/select-template.png" alt-text="Cloud Shell’i açma":::
+   :::image type="content" source="./media/deploy-cloud-shell/select-template.png" alt-text="Şablon seç":::
 
 1. Cloud Shell istemi 'ni açın.
 

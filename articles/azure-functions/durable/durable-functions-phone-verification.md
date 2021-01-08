@@ -4,12 +4,12 @@ description: Azure Işlevleri için Dayanıklı İşlevler uzantısında insan e
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4e0f71369bc02fdce5625d9c74e1d52264ed86be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cba3cd0fd5d8727c4ffa4d1b42d7cd9250f21032
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80335754"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028312"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Dayanıklı İşlevler-telefon doğrulama örneğindeki insan etkileşimi
 
@@ -21,11 +21,11 @@ Bu örnek SMS tabanlı bir telefon doğrulama sistemi uygular. Bu akış türler
 
 ## <a name="scenario-overview"></a>Senaryoya genel bakış
 
-Telefon doğrulaması, uygulamanızın son kullanıcılarının istenmeyen posta olmaması ve bunları söyledikleri kim olduğunu doğrulamak için kullanılır. Multi-Factor Authentication, Kullanıcı hesaplarını korsanlardan korumak için kullanılan yaygın bir kullanım durumdur. Kendi telefon doğrulamanızı uygulamayla ilgili zorluk, insanla ilgili **durum bilgisi** olan bir etkileşim gerektirmesidir. Son Kullanıcı genellikle bazı kodları (örneğin, 4 basamaklı bir sayı) ve **makul bir süre içinde**yanıt vermelidir.
+Telefon doğrulaması, uygulamanızın son kullanıcılarının istenmeyen posta olmaması ve bunları söyledikleri kim olduğunu doğrulamak için kullanılır. Multi-Factor Authentication, Kullanıcı hesaplarını korsanlardan korumak için kullanılan yaygın bir kullanım durumdur. Kendi telefon doğrulamanızı uygulamayla ilgili zorluk, insanla ilgili **durum bilgisi** olan bir etkileşim gerektirmesidir. Son Kullanıcı genellikle bazı kodları (örneğin, 4 basamaklı bir sayı) ve **makul bir süre içinde** yanıt vermelidir.
 
 Sıradan Azure Işlevleri durum bilgisi yoktur (diğer platformlarda birçok diğer bulut uç noktası olduğu gibi), bu tür etkileşimler bu şekilde bir veritabanında veya diğer kalıcı depolardaki durumu açıkça yönetme ile ilgilidir. Ayrıca, etkileşim birlikte koordine edilebilir birden çok işleve bölünmelidir. Örneğin, bir kod üzerinde seçim yapmak, bir yere kalıcı hale getirme ve kullanıcının telefonuna gönderilmesi için en az bir işleve ihtiyacınız vardır. Ayrıca, kullanıcıdan yanıt almak için en az bir diğer işleve ihtiyacınız vardır ve kod doğrulamasını yapmak için onu özgün işlev çağrısına geri eşleyin. Bir zaman aşımı, güvenliğin güvence altına almak için de önemli bir yönüdür. Hızlıca karmaşık olabilir.
 
-Dayanıklı İşlevler kullandığınızda bu senaryonun karmaşıklığı büyük ölçüde azalır. Bu örnekte göreceğiniz gibi, bir Orchestrator işlevi, herhangi bir dış veri deposu eklemeden, durum bilgisi olan etkileşimi kolayca yönetebilir. Orchestrator işlevleri *dayanıklı*olduğundan, bu etkileşimli akışlar da son derece güvenilirdir.
+Dayanıklı İşlevler kullandığınızda bu senaryonun karmaşıklığı büyük ölçüde azalır. Bu örnekte göreceğiniz gibi, bir Orchestrator işlevi, herhangi bir dış veri deposu eklemeden, durum bilgisi olan etkileşimi kolayca yönetebilir. Orchestrator işlevleri *dayanıklı* olduğundan, bu etkileşimli akışlar da son derece güvenilirdir.
 
 ## <a name="configuring-twilio-integration"></a>Twilio tümleştirmesini yapılandırma
 
@@ -45,7 +45,7 @@ Bu makalede örnek uygulamada aşağıdaki işlevler gösterilmektedir:
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs?range=17-70)]
 
 > [!NOTE]
-> İlk başta açık olmayabilir, ancak bu Orchestrator işlevi tamamen belirleyici olur. `CurrentUtcDateTime`Özelliğin Zamanlayıcı süre sonu süresini hesaplamak için kullanıldığı ve Orchestrator kodundaki bu noktada her yeniden yürütmeye aynı değeri döndürdüğü için belirleyici olur. Bu davranış, yinelenen her çağrının aynı sonuçlarının aynı olduğundan emin olmak için önemlidir `winner` `Task.WhenAny` .
+> İlk başta açık olmayabilir, ancak bu Orchestrator [belirleyici düzenleme kısıtlamasını](durable-functions-code-constraints.md)ihlal etmez. `CurrentUtcDateTime`Özelliğin Zamanlayıcı süre sonu süresini hesaplamak için kullanıldığı ve Orchestrator kodundaki bu noktada her yeniden yürütmeye aynı değeri döndürdüğü için belirleyici olur. Bu davranış, yinelenen her çağrının aynı sonuçlarının aynı olduğundan emin olmak için önemlidir `winner` `Task.WhenAny` .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -58,7 +58,20 @@ Bu makalede örnek uygulamada aşağıdaki işlevler gösterilmektedir:
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/index.js)]
 
 > [!NOTE]
-> İlk başta açık olmayabilir, ancak bu Orchestrator işlevi tamamen belirleyici olur. `currentUtcDateTime`Özelliğin Zamanlayıcı süre sonu süresini hesaplamak için kullanıldığı ve Orchestrator kodundaki bu noktada her yeniden yürütmeye aynı değeri döndürdüğü için belirleyici olur. Bu davranış, yinelenen her çağrının aynı sonuçlarının aynı olduğundan emin olmak için önemlidir `winner` `context.df.Task.any` .
+> İlk başta açık olmayabilir, ancak bu Orchestrator [belirleyici düzenleme kısıtlamasını](durable-functions-code-constraints.md)ihlal etmez. `currentUtcDateTime`Özelliğin Zamanlayıcı süre sonu süresini hesaplamak için kullanıldığı ve Orchestrator kodundaki bu noktada her yeniden yürütmeye aynı değeri döndürdüğü için belirleyici olur. Bu davranış, yinelenen her çağrının aynı sonuçlarının aynı olduğundan emin olmak için önemlidir `winner` `context.df.Task.any` .
+
+# <a name="python"></a>[Python](#tab/python)
+
+**E4_SmsPhoneVerification** işlevi, Orchestrator işlevleri için *üzerinde standartfunction.js* kullanır.
+
+[!code-json[Main](~/samples-durable-functions-python/samples/human_interaction/E4_SmsPhoneVerification/function.json)]
+
+İşlevi uygulayan kod aşağıda verilmiştir:
+
+[!code-python[Main](~/samples-durable-functions-python/samples/human_interaction/E4_SmsPhoneVerification/\_\_init\_\_.py)]
+
+> [!NOTE]
+> İlk başta açık olmayabilir, ancak bu Orchestrator [belirleyici düzenleme kısıtlamasını](durable-functions-code-constraints.md)ihlal etmez. `currentUtcDateTime`Özelliğin Zamanlayıcı süre sonu süresini hesaplamak için kullanıldığı ve Orchestrator kodundaki bu noktada her yeniden yürütmeye aynı değeri döndürdüğü için belirleyici olur. Bu davranış, yinelenen her çağrının aynı sonuçlarının aynı olduğundan emin olmak için önemlidir `winner` `context.df.Task.any` .
 
 ---
 
@@ -94,6 +107,16 @@ Kullanıcı dört basamaklı kod içeren bir SMS mesajı alır. Doğrulama işle
 Dört basamaklı sınama kodu üreten ve SMS iletisini gönderen kod aşağıda verilmiştir:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/index.js)]
+
+# <a name="python"></a>[Python](#tab/python)
+
+*function.js* , aşağıdaki gibi tanımlanır:
+
+[!code-json[Main](~/samples-durable-functions-python/samples/human_interaction/SendSMSChallenge/function.json)]
+
+Dört basamaklı sınama kodu üreten ve SMS iletisini gönderen kod aşağıda verilmiştir:
+
+[!code-python[Main](~/samples-durable-functions-python/samples/human_interaction/SendSMSChallenge/\_\_init\_\_.py)]
 
 ---
 

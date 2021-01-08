@@ -37,16 +37,12 @@
     - name: Uygulama Ara Sunucusu için Azure PowerShell örnekleri
       href: application-proxy-powershell-samples.md
 - name: Kavramlar
-  expanded: false
+  expanded: true
   items:
     - name: Uygulama yönetimi için en iyi yöntemler
       href: application-management-fundamentals.md
     - name: Yaygın uygulama yönetim senaryoları
       href: common-scenarios.md
-    - name: Kiracınızdaki uygulamaları görüntüleme
-      href: application-types.md
-    - name: Uygulamalara kullanıcı atama
-      href: ways-users-get-assigned-to-applications.md
     - name: Bulut uygulaması tümleştirmesi planlama
       items:
         - name: Uygulama tümleştirmesini kullanmaya başlama
@@ -286,6 +282,10 @@
       href: application-proxy-faq.md
     - name: Uygulama Proxy’si sürüm geçmişi
       href: application-proxy-release-version-history.md
+    - name: Uygulamaların Kurumsal Uygulamalar’da görünmesinin nedenleri
+      href: application-types.md
+    - name: Kullanıcıların bir uygulamaya atanmasının nedenleri
+      href: ways-users-get-assigned-to-applications.md
 - name: Kaynaklar
   items:
     - name: Geliştiriciler için destek ve yardım seçenekleri

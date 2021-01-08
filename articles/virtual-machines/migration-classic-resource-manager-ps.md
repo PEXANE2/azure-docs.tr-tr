@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 07b511182950095c356887d72ffde75ac098674d
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 82eaa597796bf3772faa90a9dbc4151da935c46a
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94904804"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98027732"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>IaaS kaynaklarını klasik bilgisayardan Azure Resource Manager PowerShell kullanarak geçirme
 
@@ -55,7 +55,7 @@ Yükleme yönergeleri için bkz. [Azure PowerShell yükleme ve yapılandırma](/
 ## <a name="step-3-ensure-that-youre-an-administrator-for-the-subscription"></a>3. Adım: abonelik için yönetici olduğunuzdan emin olun
 Bu geçişi gerçekleştirmek için, [Azure Portal](https://portal.azure.com)abonelik için bir ortak yönetici olarak eklenmeli.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. **Hub** menüsünde, **abonelik**' ı seçin. Bunu görmüyorsanız, **tüm hizmetler**' i seçin.
 3. Uygun abonelik girişini bulun ve ardından **rol alanım** ' a bakın. Coadministrator için, değer _Hesap Yöneticisi_ olmalıdır.
 
@@ -265,7 +265,7 @@ Hazırlanan yapılandırma iyi görünüyorsa, aşağıdaki komutu kullanarak ka
 Sanal makineleri geçirmeyi tamamladıktan sonra, depolama hesaplarını geçirmeden önce aşağıdaki önkoşul denetimlerini gerçekleştirin.
 
 > [!NOTE]
-> Depolama hesabınızda ilişkili disk veya VM verisi yoksa, doğrudan "depolama hesaplarını doğrula ve geçişe başla" bölümüne atlayabilirsiniz.
+> Depolama hesabınızda ilişkili disk veya VM verisi yoksa, doğrudan "depolama hesaplarını doğrula ve geçişe başla" bölümüne atlayabilirsiniz. Ayrıca, klasik diskleri silmenin, VM görüntülerinin veya işletim sistemi görüntülerinin depolama hesabındaki kaynak VHD dosyalarını kaldırmadığını unutmayın. Ancak, bu VHD dosyalarındaki kiralamayı keser, böylece geçişten sonra ARM diskleri veya görüntüleri oluşturmak için yeniden kullanılabilir.
 
 * Tüm VM 'Leri geçirdiyseniz veya depolama hesabınızda disk kaynakları varsa önkoşul denetimleri:
     * Diskleri depolama hesabında depolanan sanal makineleri geçirin.

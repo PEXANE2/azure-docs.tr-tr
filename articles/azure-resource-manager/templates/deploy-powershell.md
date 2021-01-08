@@ -3,39 +3,39 @@ title: PowerShell ve şablon ile kaynakları dağıtma
 description: Azure 'a kaynak dağıtmak için Azure Resource Manager ve Azure PowerShell kullanın. Kaynaklar, bir Resource Manager şablonunda tanımlanır.
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 5266aa51422dce6dfa4b82238e905f4f630ccf48
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 40ee659f5892c983f84409a10634c6a8d6d78cc5
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92668568"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028498"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>ARM şablonları ve Azure PowerShell kaynak dağıtma
 
 Bu makalede, kaynaklarınızı Azure 'a dağıtmak için Azure Resource Manager şablonlarla (ARM şablonları) Azure PowerShell nasıl kullanılacağı açıklanmaktadır. Azure çözümlerinizi dağıtma ve yönetme kavramlarını bilmiyorsanız, bkz. [şablon dağıtımına genel bakış](overview.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Dağıtılacak bir şablonunuz olması gerekir. Henüz bir hesabınız yoksa Azure hızlı başlangıç şablonları deposundan bir [örnek şablon](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) indirip kaydedin. Bu makalede kullanılan yerel dosya adı **c:\MyTemplates\azuredeploy.js** .
+Dağıtılacak bir şablonunuz olması gerekir. Henüz bir hesabınız yoksa Azure hızlı başlangıç şablonları deposundan bir [örnek şablon](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) indirip kaydedin. Bu makalede kullanılan yerel dosya adı _C:\MyTemplates\azuredeploy.js_.
 
 Azure PowerShell yüklemeniz ve Azure 'a bağlanmanız gerekir:
 
 - **Azure PowerShell cmdlet 'lerini yerel bilgisayarınıza yükler.** Daha fazla bilgi için bkz. [Azure PowerShell kullanmaya başlayın](/powershell/azure/get-started-azureps).
-- **[Connect-Azaccount](/powershell/module/az.accounts/connect-azaccount)kullanarak Azure 'a bağlanın** . Birden çok Azure aboneliğiniz varsa, [set-AzContext](/powershell/module/Az.Accounts/Set-AzContext)' i de çalıştırmanız gerekebilir. Daha fazla bilgi için bkz. [birden çok Azure aboneliği kullanma](/powershell/azure/manage-subscriptions-azureps).
+- **[Connect-Azaccount](/powershell/module/az.accounts/connect-azaccount)kullanarak Azure 'a bağlanın**. Birden çok Azure aboneliğiniz varsa, [set-AzContext](/powershell/module/Az.Accounts/Set-AzContext)' i de çalıştırmanız gerekebilir. Daha fazla bilgi için bkz. [birden çok Azure aboneliği kullanma](/powershell/azure/manage-subscriptions-azureps).
 
-PowerShell yüklü değilse, Cloud Shell kullanabilirsiniz. Daha fazla bilgi için bkz. [Cloud Shell ARM şablonları dağıtma](deploy-cloud-shell.md).
+PowerShell yüklü değilse, Azure Cloud Shell kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Cloud Shell ARM şablonları dağıtma](deploy-cloud-shell.md).
 
 ## <a name="deployment-scope"></a>Dağıtım kapsamı
 
 Dağıtımınızı bir kaynak grubuna, aboneliğe, yönetim grubuna veya kiracıya hedefleyebilirsiniz. Dağıtımın kapsamına bağlı olarak, farklı komutlar kullanırsınız.
 
-* Bir **kaynak grubuna** dağıtmak Için, [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)kullanın:
+- Bir **kaynak grubuna** dağıtmak Için, [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)kullanın:
 
   ```azurepowershell
   New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template>
   ```
 
-* Bir **aboneliğe** dağıtmak Için, New-AzSubscriptionDeployment kullanın:
+- Bir **aboneliğe** dağıtmak için cmdlet 'in diğer adı olan [New-azsubscriptiondeployment](/powershell/module/az.resources/new-azdeployment) ' ı kullanın `New-AzDeployment` :
 
   ```azurepowershell
   New-AzSubscriptionDeployment -Location <location> -TemplateFile <path-to-template>
@@ -43,7 +43,7 @@ Dağıtımınızı bir kaynak grubuna, aboneliğe, yönetim grubuna veya kiracı
 
   Abonelik düzeyi dağıtımları hakkında daha fazla bilgi için bkz. [abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma](deploy-to-subscription.md).
 
-* Bir **yönetim grubuna** dağıtmak Için, [New-AzManagementGroupDeployment](/powershell/module/az.resources/New-AzManagementGroupDeployment)' ı kullanın.
+- Bir **yönetim grubuna** dağıtmak Için, [New-AzManagementGroupDeployment](/powershell/module/az.resources/New-AzManagementGroupDeployment)' ı kullanın.
 
   ```azurepowershell
   New-AzManagementGroupDeployment -Location <location> -TemplateFile <path-to-template>
@@ -51,7 +51,7 @@ Dağıtımınızı bir kaynak grubuna, aboneliğe, yönetim grubuna veya kiracı
 
   Yönetim grubu düzeyi dağıtımları hakkında daha fazla bilgi için bkz. [Yönetim grubu düzeyinde kaynak oluşturma](deploy-to-management-group.md).
 
-* Bir **kiracıya** dağıtmak Için, [New-AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment)kullanın.
+- Bir **kiracıya** dağıtmak Için, [New-AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment)kullanın.
 
   ```azurepowershell
   New-AzTenantDeployment -Location <location> -TemplateFile <path-to-template>
@@ -209,7 +209,7 @@ Parametreleri betiğinize satır içi değerler olarak geçirmek yerine parametr
 
 Parametre dosyası hakkında daha fazla bilgi için bkz. [Resource Manager parametre dosyası oluşturma](parameter-files.md).
 
-Yerel bir parametre dosyasını geçirmek için **Templateparameterfile** parametresini kullanın:
+Yerel bir parametre dosyasını geçirmek için `TemplateParameterFile` parametresini kullanın:
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
@@ -217,7 +217,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
   -TemplateParameterFile c:\MyTemplates\storage.parameters.json
 ```
 
-Dış parametre dosyasını geçirmek için **Templateparameteruri** parametresini kullanın:
+Dış parametre dosyasını geçirmek için `TemplateParameterUri` parametresini kullanın:
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
@@ -230,4 +230,4 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
 - Hata aldığınızda başarılı bir dağıtıma geri dönmek için, [başarılı bir dağıtımda hata durumunda geri alma](rollback-on-error.md)konusuna bakın.
 - Kaynak grubunda var olan, ancak şablonda tanımlanmamış kaynakların nasıl işleneceğini belirtmek için bkz. [Azure Resource Manager Dağıtım modları](deployment-modes.md).
 - Şablonunuzda parametrelerin nasıl tanımlanacağını anlamak için bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
-- SAS belirteci gerektiren bir şablonu dağıtma hakkında daha fazla bilgi için bkz. [özel şablonu SAS belirteci Ile dağıtma](secure-template-with-sas-token.md).
+- SAS belirteci gerektiren bir şablonu dağıtma hakkında daha fazla bilgi için bkz. [özel ARM ŞABLONUNU SAS belirteci Ile dağıtma](secure-template-with-sas-token.md).

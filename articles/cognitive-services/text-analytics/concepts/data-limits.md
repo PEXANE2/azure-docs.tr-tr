@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/19/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: c60adb09da05ba945bcf6ccb55e71c395f064211
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2adca03a820d02731bca252dee99c76debc85e2e
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965111"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028140"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Metin Analizi API'si için veri ve hız sınırları
 <a name="data-limits"></a>
@@ -35,14 +35,22 @@ Boyut sınırlarını bulmak için bu makaleyi kullanın ve Metin Analizi API'si
 | Tek bir belgenin en büyük boyutu ( `/analyze` uç nokta)  | [StringInfo. LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements)Ile ölçülen 125K karakter. Sistem durumu için Metin Analizi uygulanmaz. |
 | İsteğin tamamının maksimum boyutu | 1 MB. Ayrıca sistem durumu için Metin Analizi için de geçerlidir. |
 
-Tek bir istekte gönderebilmeniz için en fazla belge sayısı, kullanmakta olduğunuz API sürümüne ve özelliğine bağlı olacaktır. `/analyze`Herhangi bir belge en büyük boyutu aşarsa, uç nokta tüm isteği reddeder (125K karakter)
+
+Bir belge karakter sınırını aşarsa, API, kullanmakta olduğunuz uç noktaya göre farklı davranır:
+
+* `/analyze` bkz
+  * API, tüm isteği reddeder ve `400 bad request` içindeki herhangi bir belge en büyük boyutu aşarsa bir hata döndürür.
+* Diğer tüm uç noktalar:  
+  * API, en büyük boyutu aşan bir belgeyi işlemez ve bunun için geçersiz bir belge hatası döndürür. Bir API isteğinde birden çok belge varsa, API, karakter sınırının içindeyse onları işlemeye devam eder.
+
+Tek bir istekte gönderebilmeniz gereken en fazla belge sayısı, aşağıdaki tabloda açıklanan API sürümüne ve kullandığınız özelliğe bağlıdır.
 
 #### <a name="version-3"></a>[Sürüm 3](#tab/version-3)
 
 Aşağıdaki sınırlar geçerli v3 API 'sidir. Aşağıdaki sınırları aşmamak, bir HTTP 400 hata kodu üretir.
 
 
-| Öne çıkan özelliği | Istek başına en fazla belge | 
+| Özellik | Istek başına en fazla belge | 
 |----------|-----------|
 | Dil Algılama | 1000 |
 | Yaklaşım Analizi | 10 |
@@ -55,7 +63,7 @@ Aşağıdaki sınırlar geçerli v3 API 'sidir. Aşağıdaki sınırları aşmam
 
 #### <a name="version-2"></a>[Sürüm 2](#tab/version-2)
 
-| Öne çıkan özelliği | Istek başına en fazla belge | 
+| Özellik | Istek başına en fazla belge | 
 |----------|-----------|
 | Dil Algılama | 1000 |
 | Yaklaşım Analizi | 1000 |

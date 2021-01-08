@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 10/30/2020
+ms.date: 01/06/2021
 ms.author: juliako
-ms.openlocfilehash: 81e52d4a6827492931179055d040b541d51228eb
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 3552d55d995608dd0d471c84cd5e9f9988ebe2c0
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916669"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028650"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer sürüm notları
 
@@ -44,12 +44,15 @@ Video Indexer, bilişsel hizmetler özel Vision ile tümleştirme yoluyla animas
 
 ### <a name="planned-video-indexer-website-authenticatication-changes"></a>Planlı Video Indexer Web sitesi kimlik doğrulama değişiklikleri
 
-1 Ocak 2021 ' den itibaren, Facebook veya LinkedIn kullanarak [video Indexer](https://www.videoindexer.ai/) Web sitesinde (deneme teklifi) Kaydolmayacak ve oturum açamazsınız.
+1 Mart 2021 ' den itibaren, artık Facebook veya LinkedIn kullanarak [video Indexer](https://www.videoindexer.ai/) Web sitesinde oturum açabilmeyeceksiniz.
 
 Şu sağlayıcılardan birini kullanarak kaydolabilir ve oturum açabilirsiniz: Azure AD, Microsoft ve Google.
 
 > [!NOTE]
-> LinkedIn ve Facebook 'a bağlı olan hesaplar silinecek ve içerik artık erişilebilir olmayacak olduğundan, içeriğinizi 1 Ocak 2021 ' den önce dışarı aktarmanız önerilir.
+> LinkedIn ve Facebook 'a bağlı Video Indexer hesaplara 1 Mart 2021 ' den sonra erişilemeyecektir. 
+> 
+> Erişiminiz olacak şekilde, sahip olduğunuz bir Azure AD, Microsoft veya Google e-postasını Video Indexer hesabına [davet](invite-users.md) etmelisiniz.<br/>
+> Alternatif olarak, ücretli bir hesap oluşturabilir ve verileri geçirebilirsiniz.
 
 ## <a name="august-2020"></a>Ağustos 2020
 
@@ -322,4 +325,4 @@ Zaten desteklenen (SRT, VTT ve TTML) kapalı açıklamalı alt yazı biçiminin 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Genel Bakış](video-indexer-overview.md)
+[Genel bakış](video-indexer-overview.md)

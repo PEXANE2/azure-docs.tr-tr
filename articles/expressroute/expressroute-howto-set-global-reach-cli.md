@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 12/12/2018
+ms.date: 01/07/2021
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 16a86982813b667ed5c761da27c8e9e5a43ab6cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27f16ac7d7d799c5467b11fd93352dc5fdef666c
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322504"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028072"
 ---
 # <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>Azure CLı kullanarak ExpressRoute Global Reach yapılandırma
 
@@ -48,7 +48,7 @@ az account set --subscription <your subscription ID>
 
 ### <a name="identify-your-expressroute-circuits-for-configuration"></a>Yapılandırma için ExpressRoute devrelerinizi tanımla
 
-Desteklenen ülkelerde/bölgelerde bulundukları ve farklı eşleme konumlarında oluşturulan her iki ExpressRoute bağlantı hattı arasında ExpressRoute Global Reach etkinleştirebilirsiniz. Aboneliğiniz her iki devrede sahipse, bu makalenin ilerleyen kısımlarında açıklandığı gibi yapılandırmayı çalıştırmaya yönelik her iki devreyi de seçebilirsiniz. İki devre farklı Azure aboneliklerdeyse, bir Azure aboneliğinden yetkilendirmeniz ve diğer Azure aboneliğinde yapılandırma komutunu çalıştırdığınızda yetkilendirme anahtarını geçmesi gerekir.
+İki ExpressRoute bağlantı hattı arasında ExpressRoute Global Reach etkinleştirebilirsiniz. Devrelerin desteklenen ülkelerde/bölgelerde olması ve farklı eşleme konumlarında oluşturulması gerekir. Aboneliğiniz her iki devrede sahipse, yapılandırmayı çalıştırmak için devre öğesini seçebilirsiniz. Ancak, iki devre farklı Azure aboneliklerdeyse, devrelerden birinden bir yetkilendirme anahtarı oluşturmanız gerekir. İlk devreye göre oluşturulan yetkilendirme anahtarını kullanarak ikinci devre üzerinde Global Reach etkinleştirebilirsiniz.
 
 ## <a name="enable-connectivity-between-your-on-premises-networks"></a>Şirket içi ağlarınız arasında bağlantıyı etkinleştirin
 
@@ -58,7 +58,7 @@ Bağlantıyı etkinleştirmek için komutunu çalıştırırken parametre değer
 
   > /Subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}
 
-* *Adres ön eki* bir "/29" IPv4 alt ağı olmalıdır (örneğin, "10.0.0.0/29"). İki ExpressRoute devreleri arasında bağlantı kurmak için bu alt ağdaki IP adreslerini kullanıyoruz. Azure sanal ağlarınızda veya şirket içi ağlarınızda bu alt ağda yer alan adresleri kullanmanız gerekir.
+* *Adres ön eki* bir "/29" IPv4 alt ağı olmalıdır (örneğin, "10.0.0.0/29"). İki ExpressRoute devreleri arasında bağlantı kurmak için bu alt ağdaki IP adreslerini kullanıyoruz. Bu alt ağdaki adresleri Azure sanal ağlarınızda veya şirket içi ağlarınızda kullanamazsınız.
 
 İki ExpressRoute devresine bağlanmak için aşağıdaki CLı komutunu çalıştırın:
 
@@ -94,7 +94,7 @@ Bu işlem tamamlandığında, iki ExpressRoute devreniz aracılığıyla şirket
 
 ## <a name="enable-connectivity-between-expressroute-circuits-in-different-azure-subscriptions"></a>Farklı Azure aboneliklerinde ExpressRoute devreleri arasında bağlantıyı etkinleştirme
 
-İki devre aynı Azure aboneliğinde değilse, yetkilendirme gerekir. Aşağıdaki yapılandırmada, devre 2 aboneliğindeki yetkilendirmeyi oluşturur ve yetkilendirme anahtarını devre 1 ' e geçitirsiniz.
+İki devre aynı Azure aboneliğinde değilse, yetkilendirme gerekir. Aşağıdaki yapılandırmada, devre 2 ' nin aboneliğinde yetkilendirme oluşturursunuz. Ardından, yetkilendirme anahtarını devre 1 ' e geçirirsiniz.
 
 1. Yetkilendirme anahtarı oluştur:
 

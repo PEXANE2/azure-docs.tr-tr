@@ -10,19 +10,17 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: f22213bf192b12e046bab12346e5d5d83fb36b96
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: baaf907d2fafe23805e6b49582ecc7592ee05e0b
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364284"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028242"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Translator v2-v3 geçişine
 
 > [!NOTE]
-> V2, 30 Nisan 2018 tarihinde kullanımdan kaldırılmıştır. Yalnızca v3 'de bulunan yeni işlevsellikten yararlanmak için uygulamalarınızı v3 'e geçirin.
-> 
-> Microsoft Translator hub 'ı 17 Mayıs 2019 tarihinde kullanımdan kaldırılacaktır. [Önemli geçiş bilgilerini ve tarihlerini görüntüleyin](https://www.microsoft.com/translator/business/hub/).  
+> V2, 30 Nisan 2018 tarihinde kullanımdan kaldırılmıştır. Yalnızca v3 'de bulunan yeni işlevsellikten yararlanmak için uygulamalarınızı v3 'e geçirin. V2 24 Mayıs 2021 tarihinde kullanımdan kaldırılacaktır. 
 
 Microsoft Translator ekibi, çeviricisinin sürüm 3 ' ü (v3) yayımladı. Bu sürüm, yeni özellikler, kullanım dışı Yöntemler ve Microsoft Translator hizmetinden veri almaya yönelik yeni bir biçim içerir. Bu belge, uygulamaları v3 kullanacak şekilde değiştirmeye yönelik bilgiler sağlar. 
 
@@ -118,8 +116,8 @@ V3 metin API 'SI ile sinir çevirisi, standart kategorilerin (SMT, konuşma, tek
 
 | Sürüm | Uç Nokta | GDPR Işlemci uyumluluğu | Çevirmen hub 'ı kullan | Özel çevirici kullan (Önizleme) |
 | :------ | :------- | :------------------------ | :----------------- | :------------------------------ |
-|Translator sürüm 2|    api.microsofttranslator.com|    Hayır    |Yes    |Hayır|
-|Translator sürümü 3|    api.cognitive.microsofttranslator.com|    Yes|    Hayır|    Yes|
+|Translator sürüm 2|    api.microsofttranslator.com|    Hayır    |Evet    |Hayır|
+|Translator sürümü 3|    api.cognitive.microsofttranslator.com|    Evet|    Hayır|    Evet|
 
 **Translator sürümü 3**
 * Genel olarak kullanılabilir ve tamamen desteklenir.

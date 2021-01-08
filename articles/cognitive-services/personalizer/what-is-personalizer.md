@@ -7,16 +7,16 @@ ms.topic: overview
 ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: kişiselleştirici, Azure kişiselleştirici, makine öğrenimi
-ms.openlocfilehash: 28aae130d062eaf57a66a9b90a6602c3874f1494
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 33c1770c5c8722a55d8f1df4aff9b1637d903977
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094157"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028786"
 ---
 # <a name="what-is-personalizer"></a>Kişiselleştirme nedir?
 
-Azure kişiselleştirici, uygulamalarınızın kullanıcılarınızı göstermek için en iyi içerik öğesini seçmesini sağlayan bulut tabanlı bir hizmettir. Alışverişçilere hangi ürünün önereceğini belirlemek veya bir tanıtım için en iyi konumu öğrenmek için kişiselleştirici hizmetini kullanabilirsiniz. İçerik kullanıcıya gösterildikten sonra, sistem gerçek zamanlı kullanıcı davranışını izler ve kişiselleştirici hizmetine geri dönüş puanı bildirir. Bu, makine öğrenimi modelinin sürekli gelişmesini ve kişiselleştirici 'nin aldığı bağlamsal bilgileri temel alan en iyi içerik öğesini seçme yeteneğini sağlar.
+Azure kişiselleştirici, uygulamalarınızın kullanıcılarınızı göstermek için en iyi içerik öğesini seçmesini sağlayan bulut tabanlı bir hizmettir. Alışverişçilere hangi ürünün önereceğini belirlemek veya bir tanıtım için en iyi konumu öğrenmek için kişiselleştirici hizmetini kullanabilirsiniz. İçerik kullanıcıya gösterildikten sonra, uygulamanız kullanıcının yeniden eylemini izler ve kişiselleştirici hizmetine geri dönüş puanı bildirir. Bu, makine öğrenimi modelinin sürekli gelişmesini ve kişiselleştirici 'nin aldığı bağlamsal bilgileri temel alan en iyi içerik öğesini seçme yeteneğini sağlar.
 
 > [!TIP]
 > İçerik, metin, görüntü, URL, e-posta veya arasından seçim yapmak istediğiniz herhangi bir şey veya kullanıcılarınıza göstermek istediğiniz herhangi bir bilgi birimidir.
@@ -65,7 +65,7 @@ Kişiselleştiriciye yönelik **Reward** [API 'si](https://westus2.dev.cognitive
 
 İçeriğiniz için kişiselleştirici kullanın:
 
-* Öğesinin arasından seçim yapmak için sınırlı sayıda öğe (en fazla ~ 50) vardır. Daha büyük bir listeniz varsa, listeyi 50 öğe olarak azaltmak için [bir öneri altyapısı kullanın](where-can-you-use-personalizer.md#how-to-use-personalizer-with-a-recommendation-solution) .
+* Her bir kişiselleştirme olayında arasından seçim yapmak için sınırlı bir eylem veya öğe kümesi (en fazla ~ 50) vardır. Daha büyük bir listeniz varsa, kişiselleştirici hizmetinde sıralama her çağırdığınızda listeyi 50 öğe olarak azaltmak için [bir öneri altyapısı kullanın](where-can-you-use-personalizer.md#how-to-use-personalizer-with-a-recommendation-solution) .
 * , Derecelendirilir, Özellikler ve _bağlam özellikleriyle_ _Eylemler_ hakkında bilgi içerir.
 * Kişiselleştirici için en az ~ 1k/gün içeriğe ilişkin olay ile ilgili olaylar geçerlidir. Kişiselleştirici gereken en düşük trafiği almazsa, hizmet en iyi tek içerik öğesini belirlemede daha uzun sürer.
 

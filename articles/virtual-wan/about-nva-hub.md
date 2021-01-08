@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: scottnap
 Customer intent: As someone with a networking background, I want to learn about Network Virtual Appliances in the Virtual WAN hub.
-ms.openlocfilehash: 1e4b8a2d801d7d7eccfaf558c3926ead1ab0a953
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 365ed60e73be9bb2098022fa767f4ae54b93c37c
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91313782"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028089"
 ---
 # <a name="about-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Bir Azure sanal WAN hub 'ında ağ sanal gereci hakkında (Önizleme)
 
 Azure sanal WAN, müşteri şirket Içi ekipmanlarını (CPE) sanal hub 'daki bir Azure VPN ağ geçidine bağlamayı kolaylaştıran bir Otomasyon oluşturmak için ağ ortaklarıyla çalıştı. Azure, müşterilerin bir üçüncü taraf ağ sanal gereci (NVA) doğrudan sanal hub 'a dağıtmasını sağlamak üzere Select Networking partner ile çalışmaktadır. Bu, kendi şubelerini sanal hub 'daki aynı marka NVA 'ya bağlamak isteyen müşterilerin, özel uçtan uca SD-WAN özelliğinden yararlanabilmeleri için bu özellikleri sağlar.
 
-Barnetcuda Networks, sanal WAN hub 'ına doğrudan [Barrampada CloudGen WAN](https://www.barracuda.com/products/cloudgenwan) ürünüyle dağıtılabilecek bir NVA teklifi sağlayan ilk iş ortağıdır. Azure daha fazla iş ortağıyla birlikte çalışarak diğer tekliflerin izlediğini görmenizi bekler.
+Barbcuda ağları ve Cisco sistemleri, doğrudan sanal WAN hub 'ına dağıtılabilecek NVA 'lar sağlayan ilk iş ortaklarıdır.  İlgili ürün belgeleri için bkz. [Barracuda CloudGen WAN](https://www.barracuda.com/products/cloudgenwan) ve [Cisco Cloud onrampa](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) . Azure daha fazla iş ortaklarıyla çalışmaktadır, bu nedenle diğer tekliflerin izlediğini görmek beklenir.
 
 > [!NOTE]
 > Yalnızca sanal WAN hub 'ına dağıtılabilecek olan NVA teklifleri sanal WAN hub 'ına dağıtılabilir. Azure 'da rastgele bir sanal ağa dağıtılamaz.
@@ -50,7 +50,7 @@ NVA Iş ortakları, Gereç dağıtımına, yapılandırma lisanslarına ve yöne
 * **Müşteri kaynak grubu** -bu, yönetilen uygulama için bir uygulama yer tutucusu içerir. İş ortakları bunu, burada seçtikleri müşteri özelliklerini göstermek için kullanabilir.
 * **Yönetilen kaynak grubu** -müşteriler, yönetilen uygulamanın yayımcısı tarafından denetlenerek bu kaynak grubundaki kaynakları doğrudan yapılandıramaz veya değiştiremezler. Bu kaynak grubu **Networkvirtualapplisları** kaynağını içerir.
 
-:::image type="content" source="./media/about-nva-hub/managed-app.png" alt-text="İşleme genel bakış":::
+:::image type="content" source="./media/about-nva-hub/managed-app.png" alt-text="Yönetilen uygulama kaynak grupları":::
 
 ### <a name="nva-infrastructure-units"></a><a name="units"></a>NVA altyapı birimleri
 
@@ -60,7 +60,7 @@ Sanal WAN hub 'ında bir NVA oluşturduğunuzda, dağıtmak istediğiniz NVA alt
 * Azure, belirli bir NVA sanal hub dağıtımı için 1-80 NVA altyapı biriminden destekler.
 * Her iş ortağı desteklenen tüm NVA altyapı birimi yapılandırmalarının alt kümesi olan farklı NVA altyapı birimi paketleri sunabilir.
 
-VPN ölçek birimlerine benzer şekilde, *1 NVA altyapı birimi = 500 MB/sn*seçerseniz, her biri en fazla 500 Mbps hızında olacak şekilde, artıklık için iki örnek oluşturulur. Örneğin, her biri dalda 10 Mbps olan beş dala sahipseniz baş uçta 50 Mbps bir toplama işlemi yapmanız gerekir. NVA 'nın toplam kapasitesini planlama, hub 'a dal sayısını desteklemek için gereken kapasite değerlendirdikten sonra yapılmalıdır.
+VPN ölçek birimlerine benzer şekilde, *1 NVA altyapı birimi = 500 MB/sn* seçerseniz, her biri en fazla 500 Mbps hızında olacak şekilde, artıklık için iki örnek oluşturulur. Örneğin, her biri dalda 10 Mbps olan beş dala sahipseniz baş uçta 50 Mbps bir toplama işlemi yapmanız gerekir. NVA 'nın toplam kapasitesini planlama, hub 'a dal sayısını desteklemek için gereken kapasite değerlendirdikten sonra yapılmalıdır.
 
 ## <a name="network-virtual-appliance-configuration-process"></a><a name="configuration"></a>Ağ sanal gereç yapılandırma işlemi
 
@@ -93,11 +93,11 @@ Ne yazık ki, şu anda yeni iş ortağı tekliflerini şirket içi olarak kapayo
 
 ### <a name="can-i-deploy-any-nva-from-azure-marketplace-into-the-virtual-wan-hub"></a>Azure Marketi 'nden bir NVA 'yı sanal WAN hub 'ına dağıtabilir miyim?
 
-Hayır. Şu anda, sanal WAN hub 'ına yalnızca [Barraycuda CloudGen WAN](https://aka.ms/BarracudaMarketPlaceOffer) dağıtılabilir.
+Şu anda, sanal WAN hub 'ına yalnızca [Barraycuda CloudGen WAN](https://aka.ms/BarracudaMarketPlaceOffer) ve [Cisco Cloud vwan uygulaması](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cisco.cisco_cloud_vwan_app?tab=Overview) dağıtılabilir.
 
 ### <a name="what-is-the-cost-of-the-nva"></a>NVA 'nın maliyeti nedir?
 
-Barbcuda CloudGen WAN NVA için Barrampada bir lisans satın almanız gerekir. Lisanslama hakkında daha fazla bilgi için bkz. [Barbcuda 'ın CloudGen WAN sayfası](https://www.barracuda.com/products/cloudgenwan). Ayrıca, kullandığınız NVA altyapı birimleri ve kullandığınız diğer kaynaklar için de Microsoft 'un ücretlerine tabi olursunuz. Daha fazla bilgi için bkz. [fiyatlandırma kavramları](pricing-concepts.md).
+NVA satıcısından NVA için bir lisans satın almanız gerekir.  Barbcuda CloudGen WAN NVA 'dan Barrampada lisans için bkz. [barbcuda 'ın CloudGen WAN sayfası](https://www.barracuda.com/products/cloudgenwan). Cisco şu anda yalnızca KLG (kendi lisansını getir) lisanslama modelini doğrudan Cisco 'dan temin olması gereken bir lisans modeli sunuyor. Ayrıca, kullandığınız NVA altyapı birimleri ve kullandığınız diğer kaynaklar için de Microsoft 'un ücretlerine tabi olursunuz. Daha fazla bilgi için bkz. [fiyatlandırma kavramları](pricing-concepts.md).
 
 ### <a name="can-i-deploy-an-nva-to-a-basic-hub"></a>Bir NVA 'yı temel bir hub 'a dağıtabilir miyim?
 
@@ -109,7 +109,7 @@ Evet. Barbcuda CloudGen WAN, Azure Güvenlik Duvarı ile bir hub 'a dağıtılab
 
 ### <a name="can-i-connect-any-cpe-device-in-my-branch-office-to-barracuda-cloudgen-wan-nva-in-the-hub"></a>Şube ofisindeki herhangi bir CPE cihazını hub 'daki Barnetcuda CloudGen WAN NVA 'ya bağlayabilir miyim?
 
-Hayır. Barbcuda CloudGen WAN yalnızca Barbcuda CPE cihazlarıyla uyumludur. CloudGen WAN gereksinimleri hakkında daha fazla bilgi edinmek için bkz. [Barbcuda 'ın CloudGen WAN sayfası](https://www.barracuda.com/products/cloudgenwan).
+Hayır. Barbcuda CloudGen WAN yalnızca Barbcuda CPE cihazlarıyla uyumludur. CloudGen WAN gereksinimleri hakkında daha fazla bilgi edinmek için bkz. [Barbcuda 'ın CloudGen WAN sayfası](https://www.barracuda.com/products/cloudgenwan). Cisco için, compatable olan çeşitli SD-WAN CPE cihazları vardır. Lütfen compatable CPEs için [çok bulut belgeleri Için Cisco Cloud onation](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) bölümüne bakın.
 
 ### <a name="what-routing-scenarios-are-supported-with-nva-in-the-hub"></a>Hub 'da NVA ile hangi yönlendirme senaryoları desteklenir?
 

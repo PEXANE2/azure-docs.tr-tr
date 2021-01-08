@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 09/28/2020
-ms.openlocfilehash: bb9768c2a4d3be9ac0e06844c5ac0835707cf455
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.date: 01/08/2021
+ms.openlocfilehash: 71096334f46531bba26f0ead66169340107627cf
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945881"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028701"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Azure Data Factory kullanarak MongoDB 'den veri kopyalama
 
@@ -28,15 +28,18 @@ Bu makalede, bir MongoDB veritabanından veri kopyalamak için Azure Data Factor
 >[!IMPORTANT]
 >ADF, daha iyi yerel MongoDB desteği sağlayan MongoDB bağlayıcısının bu yeni sürümünü yayınlayın. Çözümünüzde önceki MongoDB bağlayıcısını, geriye dönük uyumluluk için olduğu gibi desteklenen bir şekilde kullanıyorsanız [MongoDB bağlayıcı (eski)](connector-mongodb-legacy.md) makalesine başvurun.
 
+
 ## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
 MongoDB veritabanından desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
-Özellikle, bu MongoDB Bağlayıcısı **3,4 'e kadar olan sürümleri**destekler.
+Özellikle, bu MongoDB Bağlayıcısı **4,2 'e kadar olan sürümleri** destekler.
+
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+
 
 ## <a name="getting-started"></a>Başlarken
 
@@ -44,16 +47,17 @@ MongoDB veritabanından desteklenen herhangi bir havuz veri deposuna veri kopyal
 
 Aşağıdaki bölümlerde, MongoDB bağlayıcısına özgü Data Factory varlıkları tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlanmaktadır.
 
+
 ## <a name="linked-service-properties"></a>Bağlı hizmet özellikleri
 
 MongoDB bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür |Type özelliği: **MongoDbV2** olarak ayarlanmalıdır |Yes |
-| Dizisi |MongoDB bağlantı dizesini belirtin, örn. `mongodb://[username:password@]host[:port][/[database][?options]]` . Daha fazla ayrıntı için [bağlantı dizesinde MongoDB kılavuzuna](https://docs.mongodb.com/manual/reference/connection-string/) bakın. <br/><br /> Ayrıca, Azure Key Vault bir bağlantı dizesi de koyabilirsiniz. Daha ayrıntılı bilgi için [Azure Key Vault 'de mağaza kimlik bilgilerini](store-credentials-in-key-vault.md) inceleyin. |Yes |
-| database | Erişmek istediğiniz veritabanının adı. | Yes |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |No |
+| tür |Type özelliği: **MongoDbV2** olarak ayarlanmalıdır |Evet |
+| Dizisi |MongoDB bağlantı dizesini belirtin, örn. `mongodb://[username:password@]host[:port][/[database][?options]]` . Daha fazla ayrıntı için [bağlantı dizesinde MongoDB kılavuzuna](https://docs.mongodb.com/manual/reference/connection-string/) bakın. <br/><br /> Ayrıca, Azure Key Vault bir bağlantı dizesi de koyabilirsiniz. Daha ayrıntılı bilgi için [Azure Key Vault 'de mağaza kimlik bilgilerini](store-credentials-in-key-vault.md) inceleyin. |Evet |
+| database | Erişmek istediğiniz veritabanının adı. | Evet |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |Hayır |
 
 **Örnek:**
 
@@ -80,8 +84,8 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | DataSet 'in Type özelliği: **MongoDbV2Collection** olarak ayarlanmalıdır | Yes |
-| Ma |MongoDB veritabanındaki koleksiyonun adı. |Yes |
+| tür | DataSet 'in Type özelliği: **MongoDbV2Collection** olarak ayarlanmalıdır | Evet |
+| Ma |MongoDB veritabanındaki koleksiyonun adı. |Evet |
 
 **Örnek:**
 
@@ -102,6 +106,7 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 }
 ```
 
+
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
 Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. işlem [hatları](concepts-pipelines-activities.md) makalesi. Bu bölüm, MongoDB kaynağı tarafından desteklenen özelliklerin bir listesini sağlar.
@@ -112,16 +117,16 @@ Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde deste
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **MongoDbV2Source** olarak ayarlanmalıdır | Yes |
-| filtre | Sorgu işleçlerini kullanarak seçim filtresini belirtir. Bir koleksiyondaki tüm belgeleri döndürmek için, bu parametreyi atlayın veya boş bir belge () geçirin {} . | No |
-| cursorMethods. Project | Projeksiyon için belgelere döndürülecek alanları belirtir. Eşleşen belgelerdeki tüm alanları döndürmek için bu parametreyi atlayın. | No |
-| cursorMethods. Sort | Sorgunun eşleşen belgeleri döndürdüğü sırayı belirtir. [İmleç. Sort ()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort)öğesine bakın. | No |
-| cursorMethods. limit | Sunucunun döndürdüğü en fazla belge sayısını belirtir. [İmleç. limit ()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit)öğesine bakın.  | No |
-| cursorMethods. Skip | Atlanacak belge sayısını ve MongoDB 'nin sonuçları döndürmek için başladığı yeri belirtir. [İmleç. Skip ()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip)öğesine başvurun. | No |
-| batchSize | MongoDB örneğinden alınan yanıtın her bir toplu işinde döndürülecek belge sayısını belirtir. Çoğu durumda, toplu iş boyutunu değiştirmek Kullanıcı veya uygulamayı etkilemez. Cosmos DB sınırlar, her toplu işlem, belge boyutunun batchSize toplam sayısı olan 40MB 'ı aşamaz, bu nedenle belge boyutunuz büyükse bu değeri azaltın. | No<br/>(varsayılan değer **100**' dir) |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **MongoDbV2Source** olarak ayarlanmalıdır | Evet |
+| filtre | Sorgu işleçlerini kullanarak seçim filtresini belirtir. Bir koleksiyondaki tüm belgeleri döndürmek için, bu parametreyi atlayın veya boş bir belge () geçirin {} . | Hayır |
+| cursorMethods. Project | Projeksiyon için belgelere döndürülecek alanları belirtir. Eşleşen belgelerdeki tüm alanları döndürmek için bu parametreyi atlayın. | Hayır |
+| cursorMethods. Sort | Sorgunun eşleşen belgeleri döndürdüğü sırayı belirtir. [İmleç. Sort ()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort)öğesine bakın. | Hayır |
+| cursorMethods. limit | Sunucunun döndürdüğü en fazla belge sayısını belirtir. [İmleç. limit ()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit)öğesine bakın.  | Hayır |
+| cursorMethods. Skip | Atlanacak belge sayısını ve MongoDB 'nin sonuçları döndürmek için başladığı yeri belirtir. [İmleç. Skip ()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip)öğesine başvurun. | Hayır |
+| batchSize | MongoDB örneğinden alınan yanıtın her bir toplu işinde döndürülecek belge sayısını belirtir. Çoğu durumda, toplu iş boyutunu değiştirmek Kullanıcı veya uygulamayı etkilemez. Cosmos DB sınırlar, her toplu işlem, belge boyutu toplam değeri olan 40 MB 'ı aşamaz, bu nedenle belge boyutunuz büyük olduğunda bu değeri küçültün. | Hayır<br/>(varsayılan değer **100**' dir) |
 
 >[!TIP]
->ADF desteği BSON belgeyi **katı modda**kullanıyor. Filtre sorgunuzun kabuk modu yerine katı modda olduğundan emin olun. [MongoDB el ile](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html)daha fazla açıklama bulabilirsiniz.
+>ADF desteği BSON belgeyi **katı modda** kullanıyor. Filtre sorgunuzun kabuk modu yerine katı modda olduğundan emin olun. [MongoDB el ile](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html)daha fazla açıklama bulabilirsiniz.
 
 **Örnek:**
 
@@ -161,13 +166,16 @@ Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde deste
 ]
 ```
 
+
 ## <a name="export-json-documents-as-is"></a>JSON belgelerini olduğu gibi dışarı aktarma
 
 Bu MongoDB bağlayıcısını, JSON belgelerini bir MongoDB koleksiyonundan farklı dosya tabanlı depolara veya Azure Cosmos DB dışarı aktarmak için kullanabilirsiniz. Bu tür şemadan bağımsız bir kopya elde etmek için, kopyalama etkinliğinde veri kümesi ve şema eşleme ' de "yapı" (kısaca *şema*) bölümünü atlayın.
 
+
 ## <a name="schema-mapping"></a>Şema eşleme
 
 MongoDB 'den tablolu havuza veri kopyalamak için [Şema eşlemesi](copy-activity-schema-and-type-mapping.md#schema-mapping)' ne bakın.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure Data Factory içindeki kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).

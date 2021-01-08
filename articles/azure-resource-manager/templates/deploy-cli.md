@@ -3,12 +3,12 @@ title: Azure CLı ve şablonuyla kaynak dağıtma
 description: Azure 'a kaynak dağıtmak için Azure Resource Manager ve Azure CLı kullanın. Kaynaklar, bir Resource Manager şablonunda tanımlanır.
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 7b1639f31b696f300177d05107a98effc3f3ae23
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a2caea70a51a737bfa433a089c03b43f252b5d6e
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676199"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028157"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>ARM şablonları ve Azure CLı ile kaynak dağıtma
 
@@ -18,7 +18,7 @@ Azure CLı sürüm 2.2.0 'de dağıtım komutları değişmiştir. Bu makaledeki
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
-Azure CLı yüklü değilse, Cloud Shell kullanabilirsiniz. Daha fazla bilgi için bkz. [Cloud Shell ARM şablonları dağıtma](deploy-cloud-shell.md).
+Azure CLı yüklü değilse, Azure Cloud Shell kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Cloud Shell ARM şablonları dağıtma](deploy-cloud-shell.md).
 
 ## <a name="deployment-scope"></a>Dağıtım kapsamı
 
@@ -169,7 +169,7 @@ Parametre değerlerini geçirmek için satır içi parametreleri ya da bir param
 
 ### <a name="inline-parameters"></a>Satır içi parametreler
 
-Satır içi parametreleri geçirmek için içindeki değerleri sağlayın `parameters` . Örneğin, bir dizeye dize ve dizi geçirmek bir bash kabuğudur, şunu kullanın:
+Satır içi parametreleri geçirmek için içindeki değerleri sağlayın `parameters` . Örneğin, bir bash kabuğundan bir dizeye dize ve dizi geçirmek için şunu kullanın:
 
 ```azurecli-interactive
 az deployment group create \
@@ -191,7 +191,7 @@ az deployment group create \
 
 Bir dosyadan parametre değeri alma, yapılandırma değerleri sağlamanız gerektiğinde faydalıdır. Örneğin, [bir Linux sanal makinesi için Cloud-init değerleri](../../virtual-machines/linux/using-cloud-init.md)sağlayabilirsiniz.
 
-Biçimdeki arrayContent.js:
+Biçimdeki _arrayContent.js_ :
 
 ```json
 [
@@ -228,7 +228,7 @@ Parametreleri betiğinize satır içi değerler olarak geçirmek yerine parametr
 
 Parametre dosyası hakkında daha fazla bilgi için bkz. [Resource Manager parametre dosyası oluşturma](parameter-files.md).
 
-Yerel bir parametre dosyasını geçirmek için, `@` üzerinde storage.parameters.jsadlı yerel bir dosya belirtmek için kullanın.
+Yerel bir parametre dosyasını geçirmek için, `@` _üzerindestorage.parameters.js_ adlı yerel bir dosya belirtmek için kullanın.
 
 ```azurecli-interactive
 az deployment group create \

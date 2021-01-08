@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: juliako
-ms.openlocfilehash: 721af069a76497576b92c4203a93656d19c283aa
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 0fc28a1f808eeb2977b1dcca5046ed29933b8aa8
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217737"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028803"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Video Indexer sık sorulan sorular
 
@@ -51,7 +51,7 @@ Kullanmaya başlarken hakkında daha fazla bilgi edinmek için bkz [..](video-in
 
 ### <a name="do-i-need-coding-skills-to-use-video-indexer"></a>Video Indexer kullanmak için kodlama becerileri almam gerekiyor mu?
 
-Bir **kodlama gerekmeden**hesabınızı değerlendirmek, yapılandırmak ve yönetmek için video Indexer Web tabanlı arabirimi kullanabilirsiniz.  Daha karmaşık uygulamalar geliştirmeye hazırsanız, Azure Logic Apps veya Azure Işlevleri [gibi sunucusuz teknolojileri kullanarak](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/) kendi uygulamalarınıza, Web sitelerinize veya özel iş akışlarıyla video Indexer bütünleştirmek IÇIN [video Indexer API](https://api-portal.videoindexer.ai/) 'sini kullanabilirsiniz.
+Bir **kodlama gerekmeden** hesabınızı değerlendirmek, yapılandırmak ve yönetmek için video Indexer Web tabanlı arabirimi kullanabilirsiniz.  Daha karmaşık uygulamalar geliştirmeye hazırsanız, Azure Logic Apps veya Azure Işlevleri [gibi sunucusuz teknolojileri kullanarak](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/) kendi uygulamalarınıza, Web sitelerinize veya özel iş akışlarıyla video Indexer bütünleştirmek IÇIN [video Indexer API](https://api-portal.videoindexer.ai/) 'sini kullanabilirsiniz.
 
 ### <a name="do-i-need-machine-learning-skills-to-use-video-indexer"></a>Video Indexer kullanmak için makine öğrenimi becerileri gerekir mi?
 
@@ -183,7 +183,7 @@ Video Indexer API 'Leri, dizin oluşturma, meta veri ayıklama, varlık yönetim
 
 Video Indexer API 'si bir yetkilendirme API 'SI ve bir Operations API 'si içerir. Yetkilendirmeler API 'SI size erişim belirteci veren çağrılar içerir. İşlemler API'sine yapılan her çağrı, çağrının yetkilendirme kapsamına uyan bir erişim belirteci ile ilişkilendirilmelidir.
 
-Video Indexer API 'Lerini güvenlik amacıyla kullanmak için erişim belirteçleri gerekir. Bu, herhangi bir çağrının sizin veya hesabınıza erişim izinleri olan kişilerin gelmesini sağlar. 
+Video Indexer API 'Lerini güvenlik amacıyla kullanmak için erişim belirteçleri gerekir. Bu, herhangi bir çağrının sizin veya hesabınıza erişim izinleri olan kişilerin gelmesini sağlar. 
 
 ### <a name="what-is-the-difference-between-account-access-token-user-access-token-and-video-access-token"></a>Hesap erişim belirteci, Kullanıcı erişim belirteci ve video erişim belirteci arasındaki fark nedir?
 
@@ -197,7 +197,7 @@ Erişim belirteçlerinin her saat sonu dolduğunda, her saat için yeni bir eri�
 
 ### <a name="what-are-the-login-options-to-video-indexer-developer-portal"></a>Geliştirici portalı Video Indexer oturum açma seçenekleri nelerdir?
 
-Azure AD, Microsoft hesabı, Google hesabı veya Facebook hesabı kullanarak oturum açabilirsiniz. 
+[Oturum açma bilgileri](release-notes.md#october-2020)hakkında bir sürüm notuna bakın.
 
 Bir kimlik sağlayıcısı kullanarak e-posta hesabınızı kaydettikten sonra, bu e-posta hesabını başka bir kimlik sağlayıcısıyla kullanamazsınız.
 
@@ -217,5 +217,5 @@ Evet, Video Indexer tam hizmet ve API işlevselliği sağlayan ücretsiz bir den
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Genel Bakış](video-indexer-overview.md)
+* [Genel bakış](video-indexer-overview.md)
 * [Stack Overflow](https://stackoverflow.com/search?q=video-indexer)

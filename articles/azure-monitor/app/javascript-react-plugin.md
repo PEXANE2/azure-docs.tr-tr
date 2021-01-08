@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 3348654a83b6d0930d10e1f58e07455623b5861d
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 4c6d8fabbd236a2653fff8168ad73c0b45f09d64
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981094"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98027851"
 ---
 # <a name="react-plugin-for-application-insights-javascript-sdk"></a>JavaScript SDK 'Sı için Application Insights eklentisi
 
@@ -69,12 +69,15 @@ class MyComponent extends React.Component {
     ...
 }
 
-export default withAITracking(reactPlugin, appInsights, MyComponent);
+// withAITracking takes 4 parameters ( reactPlugin, Component, ComponentName, className) 
+// the first two are required and the other two are optional.
+
+export default withAITracking(reactPlugin, MyComponent);
 ```
 
 ## <a name="configuration"></a>Yapılandırma
 
-| Ad    | Varsayılan | Description                                                                                                    |
+| Ad    | Varsayılan | Açıklama                                                                                                    |
 |---------|---------|----------------------------------------------------------------------------------------------------------------|
 | geçmiş | null    | Yönlendirici geçmişini tepki verin. Daha fazla bilgi için bkz. [tepki verme yönlendiricisi paketi belgeleri](https://reactrouter.com/web/api/history). Geçmiş nesnesine bileşenler dışında nasıl erişebileceğinizi öğrenmek için bkz. [tepki verme yönlendiricisi hakkında SSS](https://github.com/ReactTraining/react-router/blob/master/FAQ.md#how-do-i-access-the-history-object-outside-of-components)    |
 

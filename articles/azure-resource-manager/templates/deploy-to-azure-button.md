@@ -3,23 +3,23 @@ title: Azure'a Dağıt düğmesi
 description: Bir GitHub deposundan Azure Resource Manager şablonları dağıtmak için düğmeyi kullanın.
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: 65891cace1cb17614abbfe091e1592d6f13feff4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: abe59f377474540e9209691df8b1d1a7b806c26d
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185734"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028752"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>GitHub deposundan şablon dağıtmak için bir dağıtım düğmesi kullanın
 
-Bu makalede, bir GitHub deposundan şablon dağıtmak için **Azure 'Da dağıtma** düğmesinin nasıl kullanılacağı açıklanır. Düğme doğrudan GitHub deponuzdaki README.md dosyasına eklenebilir. İsterseniz, depoya başvuran bir Web sayfasına düğmeyi de ekleyebilirsiniz.
+Bu makalede, bir GitHub deposundan şablon dağıtmak için **Azure 'Da dağıtma** düğmesinin nasıl kullanılacağı açıklanır. Düğme doğrudan GitHub deponuzdaki _README.MD_ dosyasına eklenebilir. İsterseniz, depoya başvuran bir Web sayfasına düğmeyi de ekleyebilirsiniz.
 
 Dağıtım kapsamı, şablon şemasına göre belirlenir. Daha fazla bilgi için bkz:
 
-* [kaynak grupları](deploy-to-resource-group.md)
-* [Aboneliklerin](deploy-to-subscription.md)
-* [Yönetim grupları](deploy-to-management-group.md)
-* [Kira](deploy-to-tenant.md)
+- [kaynak grupları](deploy-to-resource-group.md)
+- [Aboneliklerin](deploy-to-subscription.md)
+- [Yönetim grupları](deploy-to-management-group.md)
+- [Kira](deploy-to-tenant.md)
 
 ## <a name="use-common-image"></a>Ortak görüntü kullan
 
@@ -78,7 +78,7 @@ Bağlantı için tam URL 'niz vardır.
 
 Genellikle, şablonu genel depoda barındırabilirsiniz. Özel depo kullanırsanız, şablonun ham içeriğine erişmek için bir belirteç dahil etmeniz gerekir. GitHub tarafından oluşturulan belirteç yalnızca kısa bir süre için geçerlidir. Bağlantıyı sık sık güncelleştirmeniz gerekir.
 
-GitHub deposu yerine [Azure Repos git](/azure/devops/repos/git/) kullanıyorsanız, Azure 'a dağıt düğmesini kullanmaya devam edebilirsiniz. Deponuzın ortak olduğundan emin olun. Şablonu almak için [öğeler işlemini](/rest/api/azure/devops/git/items/get) kullanın. İsteğiniz aşağıdaki biçimde olmalıdır:
+GitHub deposu yerine [Azure Repos git](/azure/devops/repos/git/) kullanıyorsanız, **Azure 'a dağıt** düğmesini kullanmaya devam edebilirsiniz. Deponuzın ortak olduğundan emin olun. Şablonu almak için [öğeler işlemini](/rest/api/azure/devops/git/items/get) kullanın. İsteğiniz aşağıdaki biçimde olmalıdır:
 
 ```http
 https://dev.azure.com/{organization-name}/{project-name}/_apis/git/repositories/{repository-name}/items?scopePath={url-encoded-path}&api-version=6.0
@@ -90,7 +90,7 @@ Bu istek URL 'sini kodlayın.
 
 Son olarak, bağlantı ve görüntüyü bir araya getirin.
 
-GitHub deponuzdaki README.md dosyasında veya bir Web sayfasında Marku ile düğme eklemek için şunu kullanın:
+GitHub deponuzdaki _README.MD_ dosyasında veya bir Web sayfasında Marku ile düğme eklemek için şunu kullanın:
 
 ```markdown
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json)
@@ -122,4 +122,4 @@ Portal, kolayca parametre değerleri sağlamanıza olanak tanıyan bir bölme g�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Şablonlar hakkında daha fazla bilgi edinmek için bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
+- Şablonlar hakkında daha fazla bilgi edinmek için bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).

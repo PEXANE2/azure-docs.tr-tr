@@ -4,12 +4,12 @@ description: Azure Işlevleri için Dayanıklı İşlevler uzantısını kullana
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ed92156df9d8e1e07b56cea4b1e64edee11d68d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e70c50098ece516312e1e92984185624c276301b
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77562131"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028429"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Dayanıklı İşlevler-Hava durumu izleyici örneğinde izleme senaryosu
 
@@ -72,6 +72,9 @@ Orchestrator, konum üzerinde açık hale geldiğinde bir ileti göndermek için
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/index.js)]
 
+# <a name="python"></a>[Python](#tab/python)
+Python 'da izleme düzenine yönelik farklı bir öğreticimiz var, lütfen [buradan buraya](durable-functions-monitor-python.md)bakın.
+
 ---
 
 Bu Orchestrator işlevi aşağıdaki eylemleri gerçekleştirir:
@@ -83,8 +86,7 @@ Bu Orchestrator işlevi aşağıdaki eylemleri gerçekleştirir:
 5. Bir sonraki yoklama aralığında Orchestration işlemini sürdürecek dayanıklı bir zamanlayıcı oluşturur. Örnek, breçekimi için sabit kodlanmış bir değer kullanır.
 6. Geçerli UTC saati izleyicinin sona erme zamanını geçirene veya bir SMS uyarısı gönderildiğinde çalışmaya devam eder.
 
-Orchestrator işlevini birden çok kez çağırarak, birden fazla Orchestrator örneği aynı anda çalışabilir. İzlenecek konum ve SMS uyarısı gönderilecek telefon numarası belirtilebilir.
-
+Orchestrator işlevini birden çok kez çağırarak, birden fazla Orchestrator örneği aynı anda çalışabilir. İzlenecek konum ve SMS uyarısı gönderilecek telefon numarası belirtilebilir. Son olarak, Orchestrator işlevinin Zamanlayıcı *beklenirken çalışmadığını,* bu nedenle ücretlendirilmemek istediğinizi unutmayın.
 ### <a name="e3_getisclear-activity-function"></a>E3_GetIsClear Activity işlevi
 
 Diğer örneklerde olduğu gibi, yardımcı etkinlik işlevleri de tetikleyici bağlamayı kullanan normal işlevlerdir `activityTrigger` . **E3_GetIsClear** Işlevi, hava durumu düşük olan API 'yi kullanarak geçerli hava durumu koşullarını alır ve çatonun açık olup olmadığını belirler.
@@ -102,6 +104,9 @@ Diğer örneklerde olduğu gibi, yardımcı etkinlik işlevleri de tetikleyici b
 İşte uygulama.
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/index.js)]
+
+# <a name="python"></a>[Python](#tab/python)
+Python 'da izleme düzenine yönelik farklı bir öğreticimiz var, lütfen [buradan buraya](durable-functions-monitor-python.md)bakın.
 
 ---
 
@@ -125,6 +130,9 @@ Diğer örneklerde olduğu gibi, yardımcı etkinlik işlevleri de tetikleyici b
 SMS iletisini gönderen kod aşağıda verilmiştir:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/index.js)]
+
+# <a name="python"></a>[Python](#tab/python)
+Python 'da izleme düzenine yönelik farklı bir öğreticimiz var, lütfen [buradan buraya](durable-functions-monitor-python.md)bakın.
 
 ---
 
@@ -169,7 +177,7 @@ Azure Işlevleri portalındaki işlev günlüklerine bakarak Orchestration 'un e
 2018-03-01T01:14:54.030 Function completed (Success, Id=561d0c78-ee6e-46cb-b6db-39ef639c9a2c, Duration=62ms)
 ```
 
-Zaman aşımı süresine ulaşıldığında düzenleme [sonlandırılır](durable-functions-instance-management.md) veya temizleme işlemi algılanır. Ayrıca, `TerminateAsync` (.net) veya `terminate` (JavaScript) öğesini başka bir işlev içinde kullanabilir veya yukarıdaki 202 yanıtında başvurulan **terminateposturi** http post Web kancasını çağırarak `{text}` sonlandırma nedeni ile değiştirin:
+Düzenleme, zaman aşımına ulaşıldığında veya temizleme işlemleri saptandıktan sonra tamamlanır. `terminate`API 'yi başka bir işlev içinde de kullanabilir veya yukarıdaki 202 yanıtında belirtilen **Terminateposturi** http post Web kancasını çağırabilirsiniz. Web kancasını kullanmak için, `{text}` erken sonlandırma nedeni ile değiştirin. HTTP POST URL 'SI kabaca şöyle görünür:
 
 ```
 POST https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}

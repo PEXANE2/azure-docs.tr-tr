@@ -4,12 +4,12 @@ description: Azure komut satırı arabirimini kullanarak bir kapsayıcı grubunu
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 02cf514e6c19387e3a9e2f1c78b65f346fff764e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b791d3f37809c2eca53f5a3cd34f7c44dd11ce40
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746891"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028888"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Kapsayıcı örneklerini Azure sanal ağına dağıtma
 
@@ -20,7 +20,7 @@ Bu makalede, Azure CLı 'de [az Container Create][az-container-create] komutunun
 Ağ senaryoları ve sınırlamalar için bkz. [Azure Container Instances Için sanal ağ senaryoları ve kaynakları](container-instances-virtual-network-concepts.md).
 
 > [!IMPORTANT]
-> Bir sanal ağa kapsayıcı grubu dağıtımı, Azure Container Instances kullanılabildiği birçok bölgede genellikle Linux kapsayıcıları için kullanılabilir. Ayrıntılar için bkz. [bölgeler ve kaynak kullanılabilirliği](container-instances-virtual-network-concepts.md#where-to-deploy). 
+> Bir sanal ağa kapsayıcı grubu dağıtımı, Azure Container Instances kullanılabildiği birçok bölgede genellikle Linux kapsayıcıları için kullanılabilir. Ayrıntılar için bkz. [bölgeler ve kaynak kullanılabilirliği][container-regions]. 
 
 Bu makaledeki örnekler bash kabuğu için biçimlendirilir. PowerShell veya komut Istemi gibi başka bir kabuğu tercih ediyorsanız, satır devamlılık karakterlerini uygun şekilde ayarlayın.
 
@@ -69,7 +69,7 @@ Mevcut bir sanal ağa bir kapsayıcı grubu dağıtmak için:
 
 Aşağıdaki örnek, daha önce oluşturulan aynı alt ağa ikinci bir kapsayıcı grubu dağıtır ve iki kapsayıcı örneği arasındaki iletişimi doğrular.
 
-İlk olarak, dağıttığınız ilk kapsayıcı grubunun IP adresini alın, *AppContainer* :
+İlk olarak, dağıttığınız ilk kapsayıcı grubunun IP adresini alın, *AppContainer*:
 
 ```azurecli
 az container show --resource-group myResourceGroup \
@@ -83,7 +83,7 @@ az container show --resource-group myResourceGroup \
 10.0.0.4
 ```
 
-Şimdi, `CONTAINER_GROUP_IP` komutuyla ALDıĞıNıZ IP 'ye ayarlayın `az container show` ve aşağıdaki `az container create` komutu yürütün. Bu ikinci kapsayıcı, *commchecker* , alp Linux tabanlı bir görüntü çalıştırır ve `wget` ilk kapsayıcı grubunun özel alt ağ IP adresine karşı yürütülür.
+Şimdi, `CONTAINER_GROUP_IP` komutuyla ALDıĞıNıZ IP 'ye ayarlayın `az container show` ve aşağıdaki `az container create` komutu yürütün. Bu ikinci kapsayıcı, *commchecker*, alp Linux tabanlı bir görüntü çalıştırır ve `wget` ilk kapsayıcı grubunun özel alt ağ IP adresine karşı yürütülür.
 
 ```azurecli
 CONTAINER_GROUP_IP=<container-group-IP-address>
@@ -238,3 +238,4 @@ Bir Kaynak Yöneticisi şablonu kullanarak yeni bir sanal ağ, alt ağ, ağ prof
 [az-container-show]: /cli/azure/container#az-container-show
 [az-network-vnet-create]: /cli/azure/network/vnet#az-network-vnet-create
 [az-network-profile-list]: /cli/azure/network/profile#az-network-profile-list
+[container-regions]: container-instances-region-availability.md

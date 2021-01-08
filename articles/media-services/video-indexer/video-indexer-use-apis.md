@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 11/10/2020
+ms.date: 01/07/2021
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cdba4ce36322f9c3fb0f898cb7eb1d1185ed1dc6
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: fcd194e2503610db314f6a975a4afb1d27962f8c
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636954"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028214"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Öğretici: Video Indexer API'sini kullanma
 
@@ -29,8 +29,10 @@ Bu makalede geliştiricilerin [Video Indexer API’sinden](https://api-portal.vi
 ## <a name="subscribe-to-the-api"></a>API’ye abone olma
 
 1. [Video Indexer Geliştirici Portalı](https://api-portal.videoindexer.ai/)’nda oturum açın.
+
+    [Oturum açma bilgileriyle](release-notes.md#october-2020)ilgili bir sürüm notuna bakın.
     
-    ![Video Indexer Geliştirici Portalında oturum açın](./media/video-indexer-use-apis/video-indexer-api01.png)
+     ![Video Indexer Geliştirici Portalında oturum açın](./media/video-indexer-use-apis/sign-in.png)
 
    > [!Important]
    > * Video Indexer için kaydolurken kullandığınız sağlayıcıyı kullanmanız gerekir.
@@ -40,14 +42,14 @@ Bu makalede geliştiricilerin [Video Indexer API’sinden](https://api-portal.vi
 
     [Ürünler](https://api-portal.videoindexer.ai/products) sekmesini seçin. Sonra yetkilendirme ve abone ol ' u seçin.
     
-    ![Video Indexer geliştirici portalındaki ürünler sekmesi](./media/video-indexer-use-apis/video-indexer-api02.png)
+    ![Video Indexer geliştirici portalındaki ürünler sekmesi](./media/video-indexer-use-apis/authorization.png)
 
     > [!NOTE]
     > Yeni kullanıcılar otomatik olarak Yetkilendirme’ye abone edilir.
     
     Abone olduktan sonra, aboneliğinizi **ürünlerin**  ->  **yetkilendirmesi** altında bulabilirsiniz. Abonelik sayfasında, birincil ve ikincil anahtarları bulacaksınız. Anahtarlar korunmalıdır. Anahtarlar yalnızca sunucu kodunuz tarafından kullanılmalıdır. İstemci tarafında (. js,. html vb.) kullanılamayacak.
 
-    ![Video Indexer geliştirici portalındaki abonelik ve anahtarlar](./media/video-indexer-use-apis/video-indexer-api03.png)
+    ![Video Indexer geliştirici portalındaki abonelik ve anahtarlar](./media/video-indexer-use-apis/subscriptions.png)
 
 > [!TIP]
 > Video Indexer kullanıcısı, tek bir abonelik anahtarını kullanarak birden çok Video Indexer hesabına bağlanabilir. Daha sonra bu Video Indexer hesaplarını farklı Media Services hesaplarına bağlayabilirsiniz.
@@ -64,9 +66,9 @@ Yetkilendirme API 'sine abone olduktan sonra erişim belirteçleri elde edebilir
 
 Bu belirteçlerin salt okunurdur veya **AllowEdit = true/false** belirterek düzenlenmesine izin verip vermeyeceklerini kontrol edebilirsiniz.
 
-Çoğu sunucu-sunucu senaryosunda, büyük olasılıkla **Hesap** işlemlerini ve **video** işlemlerini kapsadığından aynı **Hesap** belirtecini kullanacaksınız. Ancak, Video Indexer için istemci tarafı çağrıları yapmayı planlıyorsanız (örneğin, JavaScript 'ten), istemcilerin tüm hesaba erişimini engellemek için bir **video** erişim belirteci kullanmak istersiniz. Ayrıca, istemci kodu Video Indexer Katıştırırken (örneğin, **öngörüleri al pencere öğesini** veya **Player pencere öğesini al** ' ı kullanarak), bir **video** erişim belirteci sağlamanız gerekir.
+Çoğu sunucu-sunucu senaryosunda, büyük olasılıkla **Hesap** işlemlerini ve **video** işlemlerini kapsadığından aynı **Hesap** belirtecini kullanacaksınız. Ancak, Video Indexer için istemci tarafı çağrıları yapmayı planlıyorsanız (örneğin, JavaScript 'ten), istemcilerin tüm hesaba erişimini engellemek için bir **video** erişim belirteci kullanmak istersiniz. Ayrıca, istemci kodu Video Indexer Katıştırırken (örneğin, **öngörüleri al pencere öğesini** veya **Player pencere öğesini al**' ı kullanarak), bir **video** erişim belirteci sağlamanız gerekir.
 
-İşleri kolaylaştırmak için **Yetkilendirme** API’si > **GetAccounts** ’u kullanarak ilk önce bir kullanıcı belirteci almaya gerek kalmadan hesaplarınızı alabilirsiniz. Ayrıca, hesapları geçerli belirteçlerle almayı da isteyebilirsiniz. Böylece hesap belirteci almak için yapılacak ek bir çağrıyı atlayabilirsiniz.
+İşleri kolaylaştırmak için **Yetkilendirme** API’si > **GetAccounts**’u kullanarak ilk önce bir kullanıcı belirteci almaya gerek kalmadan hesaplarınızı alabilirsiniz. Ayrıca, hesapları geçerli belirteçlerle almayı da isteyebilirsiniz. Böylece hesap belirteci almak için yapılacak ek bir çağrıyı atlayabilirsiniz.
 
 Erişim belirteçlerinin süresi 1 saatte dolar. İşlemler API'sini kullanmadan önce erişim belirtecinizin geçerli olduğundan emin olun. Süresi dolarsa, yeni bir erişim belirteci almak için yetkilendirme API 'sini yeniden çağırın.
 
@@ -84,7 +86,7 @@ Hesap Kimliği parametresi, işleme yönelik tüm API çağrıları için gerekl
 
         ![Video Indexer ayarları ve hesap KIMLIĞI](./media/video-indexer-use-apis/account-id.png)
 
-* Hesap Kimliğini programlı olarak almak için **Video Indexer Geliştirici Portalı** ’nı kullanın.
+* Hesap Kimliğini programlı olarak almak için **Video Indexer Geliştirici Portalı**’nı kullanın.
 
     [Hesap al](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Account?) API 'sini kullanın.
 

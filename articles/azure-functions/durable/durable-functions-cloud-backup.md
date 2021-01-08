@@ -4,12 +4,12 @@ description: Azure Işlevleri için Dayanıklı İşlevler uzantısında bir fan
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: d61600801286126ea6ffb9a97bc5655b6f233816
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91128033696af6a56488db7991987f1e384b719e
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77562199"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98027659"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Dayanıklı İşlevler-bulut yedekleme örneğinde fan-çıkış/fan senaryosu
 
@@ -51,13 +51,13 @@ Orchestrator işlevini uygulayan kod aşağıda verilmiştir:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs?range=16-42)]
 
-Satıra dikkat edin `await Task.WhenAll(tasks);` . İşleve yapılan tüm çağrılar `E2_CopyFileToBlob` *beklenmez* , bu da paralel çalışmasına izin verir. Bu görev dizisini ' ye ilettiğimiz zaman `Task.WhenAll` , *tüm kopyalama işlemleri tamamlanana kadar*tamamlanmamış bir görevi geri alırız. .NET 'teki görev paralel kitaplığı (TPL) hakkında bilginiz varsa, bu sizin için yeni değildir. Fark, bu görevlerin eşzamanlı olarak birden çok sanal makinede çalışabilmesidir ve Dayanıklı İşlevler uzantısı uçtan uca yürütmenin geri dönüşüm işleminin işlenmesine dayanıklı olmasını sağlar.
+Satıra dikkat edin `await Task.WhenAll(tasks);` . İşleve yapılan tüm çağrılar `E2_CopyFileToBlob` *beklenmez* , bu da paralel çalışmasına izin verir. Bu görev dizisini ' ye ilettiğimiz zaman `Task.WhenAll` , *tüm kopyalama işlemleri tamamlanana kadar* tamamlanmamış bir görevi geri alırız. .NET 'teki görev paralel kitaplığı (TPL) hakkında bilginiz varsa, bu sizin için yeni değildir. Fark, bu görevlerin eşzamanlı olarak birden çok sanal makinede çalışabilmesidir ve Dayanıklı İşlevler uzantısı uçtan uca yürütmenin geri dönüşüm işleminin işlenmesine dayanıklı olmasını sağlar.
 
 ' Den sonra `Task.WhenAll` , tüm işlev çağrılarının tamamlandığını ve bize doğru değerler döndürmediğini biliyoruz. Her bir çağrı, `E2_CopyFileToBlob` karşıya yüklenen bayt sayısını döndürür, bu nedenle toplam bayt sayısını hesaplamak, bu dönüş değerlerinin tümünü birlikte eklemenin bir önemi olur.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-İşlevi, Orchestrator işlevleri için * üzerinde standartfunction.js* kullanır.
+İşlevi, Orchestrator işlevleri için *üzerinde standartfunction.js* kullanır.
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/function.json)]
 
@@ -65,12 +65,29 @@ Orchestrator işlevini uygulayan kod aşağıda verilmiştir:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/index.js)]
 
-Satıra dikkat edin `yield context.df.Task.all(tasks);` . İşleve yapılan her bir çağrı, `E2_CopyFileToBlob` Bu işlevin paralel çalışmasına izin veren bir *şekilde yapılmadı* . Bu görev dizisini ' ye ilettiğimiz zaman `context.df.Task.all` , *tüm kopyalama işlemleri tamamlanana kadar*tamamlanmamış bir görevi geri alırız. [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)JavaScript 'e alışkın değilseniz, bu sizin için yeni bir değildir. Fark, bu görevlerin eşzamanlı olarak birden çok sanal makinede çalışabilmesidir ve Dayanıklı İşlevler uzantısı uçtan uca yürütmenin geri dönüşüm işleminin işlenmesine dayanıklı olmasını sağlar.
+Satıra dikkat edin `yield context.df.Task.all(tasks);` . İşleve yapılan her bir çağrı, `E2_CopyFileToBlob` Bu işlevin paralel çalışmasına izin veren bir *şekilde yapılmadı* . Bu görev dizisini ' ye ilettiğimiz zaman `context.df.Task.all` , *tüm kopyalama işlemleri tamamlanana kadar* tamamlanmamış bir görevi geri alırız. [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)JavaScript 'e alışkın değilseniz, bu sizin için yeni bir değildir. Fark, bu görevlerin eşzamanlı olarak birden çok sanal makinede çalışabilmesidir ve Dayanıklı İşlevler uzantısı uçtan uca yürütmenin geri dönüşüm işleminin işlenmesine dayanıklı olmasını sağlar.
 
 > [!NOTE]
 > Görevler kavramsal olarak JavaScript 'e benzer olsa da, Orchestrator işlevleri `context.df.Task.all` `context.df.Task.any` `Promise.all` `Promise.race` görev paralelleştirme 'yı yönetmek için ve yerine kullanmalıdır.
 
 ' Dan gönderdikten sonra `context.df.Task.all` , tüm işlev çağrılarının tamamlandığını ve bize doğru değerler döndürmediğini biliyoruz. Her bir çağrı, `E2_CopyFileToBlob` karşıya yüklenen bayt sayısını döndürür, bu nedenle toplam bayt sayısını hesaplamak, bu dönüş değerlerinin tümünü birlikte eklemenin bir önemi olur.
+
+# <a name="python"></a>[Python](#tab/python)
+
+İşlevi, Orchestrator işlevleri için *üzerinde standartfunction.js* kullanır.
+
+[!code-json[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_BackupSiteContent/function.json)]
+
+Orchestrator işlevini uygulayan kod aşağıda verilmiştir:
+
+[!code-python[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_BackupSiteContent/\_\_init\_\_.py)]
+
+Satıra dikkat edin `yield context.task_all(tasks);` . İşleve yapılan her bir çağrı, `E2_CopyFileToBlob` Bu işlevin paralel çalışmasına izin veren bir *şekilde yapılmadı* . Bu görev dizisini ' ye ilettiğimiz zaman `context.task_all` , *tüm kopyalama işlemleri tamamlanana kadar* tamamlanmamış bir görevi geri alırız. [`asyncio.gather`](https://docs.python.org/3/library/asyncio-task.html#asyncio.gather)Python 'da bilginiz varsa, bu sizin için yeni değildir. Fark, bu görevlerin eşzamanlı olarak birden çok sanal makinede çalışabilmesidir ve Dayanıklı İşlevler uzantısı uçtan uca yürütmenin geri dönüşüm işleminin işlenmesine dayanıklı olmasını sağlar.
+
+> [!NOTE]
+> Görevler kavramsal olarak Python awaitables 'a benzer olsa da, Orchestrator işlevlerinin `yield` `context.task_all` `context.task_any` görev paralelleştirme 'yi yönetmek için ve API 'leri ve API 'leri kullanması gerekir.
+
+' Dan gönderdikten sonra `context.task_all` , tüm işlev çağrılarının tamamlandığını ve bize doğru değerler döndürmediğini biliyoruz. Her çağrısı, `E2_CopyFileToBlob` karşıya yüklenen bayt sayısını döndürür, bu nedenle tüm dönüş değerlerini birlikte ekleyerek toplam bayt sayısı toplamını hesaplayabiliriz.
 
 ---
 
@@ -95,6 +112,16 @@ Uygulama şu şekildedir:
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/index.js)]
 
 İşlev, `readdirp` dizin yapısını özyinelemeli olarak okumak için modülünü (sürüm 2. x) kullanır.
+
+# <a name="python"></a>[Python](#tab/python)
+
+İçin dosyadaki *function.js* `E2_GetFileList` aşağıdaki gibi görünür:
+
+[!code-json[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_GetFileList/function.json)]
+
+Uygulama şu şekildedir:
+
+[!code-python[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_GetFileList/\_\_init\_\_.py)]
 
 ---
 
@@ -122,6 +149,16 @@ JavaScript uygulama, dosyaları Azure Blob depolama alanına yüklemek için [Az
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_CopyFileToBlob/index.js)]
 
+# <a name="python"></a>[Python](#tab/python)
+
+İçin dosyadaki *function.js* benzer bir işlemdir `E2_CopyFileToBlob` :
+
+[!code-json[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_CopyFileToBlob/function.json)]
+
+Python uygulama, dosyaları Azure Blob depolama alanına yüklemek için [Python Için Azure depolama SDK 'sını](https://github.com/Azure/azure-storage-python) kullanır.
+
+[!code-python[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_CopyFileToBlob/\_\_init\_\_.py)]
+
 ---
 
 Uygulama, dosyayı diskten yükler ve içeriği zaman uyumsuz olarak "yedeklemeler" kapsayıcısında aynı ada sahip bir bloba akıtır. Dönüş değeri, depolamaya kopyalanmış baytların sayısıdır, daha sonra Orchestrator işlevi tarafından toplam toplamı hesaplamak için kullanılır.
@@ -131,7 +168,7 @@ Uygulama, dosyayı diskten yükler ve içeriği zaman uyumsuz olarak "yedeklemel
 
 ## <a name="run-the-sample"></a>Örneği çalıştırma
 
-Aşağıdaki HTTP POST isteğini göndererek düzenleme işlemini başlatabilirsiniz.
+Aşağıdaki HTTP POST isteğini göndererek Orchestration 'u Windows üzerinde başlatabilirsiniz.
 
 ```
 POST http://{host}/orchestrators/E2_BackupSiteContent
@@ -139,6 +176,16 @@ Content-Type: application/json
 Content-Length: 20
 
 "D:\\home\\LogFiles"
+```
+
+Alternatif olarak, bir Linux İşlev Uygulaması (Python şu anda yalnızca App Service için Linux üzerinde çalışır), düzenleme şu şekilde başlatılabilir:
+
+```
+POST http://{host}/orchestrators/E2_BackupSiteContent
+Content-Type: application/json
+Content-Length: 20
+
+"/home/site/wwwroot"
 ```
 
 > [!NOTE]

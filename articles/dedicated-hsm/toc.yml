@@ -14,6 +14,8 @@
   items:
     - name: Azure PowerShell ile Azure Ayrılmış HSM oluşturma
       href: quickstart-create-hsm-powershell.md
+    - name: Azure CLI’si ile Azure Ayrılmış HSM oluşturma
+      href: quickstart-hsm-azure-cli.md
 - name: Kavramlar
   items:
     - name: Yüksek kullanılabilirlik

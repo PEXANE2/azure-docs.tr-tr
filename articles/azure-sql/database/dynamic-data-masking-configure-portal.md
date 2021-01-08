@@ -11,12 +11,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
-ms.openlocfilehash: 3f8c296860fc36772a85039e27c86a72614c2a50
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e551925bbd1426256a81ac2ca3f245af7697245b
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791061"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028021"
 ---
 # <a name="get-started-with-sql-database-dynamic-data-masking-with-the-azure-portal"></a>Azure portal ile SQL veritabanı dinamik veri maskeleme ile çalışmaya başlama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "92791061"
 Bu makalede, Azure portal ile [dinamik veri maskeleme](dynamic-data-masking-overview.md) 'nin nasıl uygulanacağı gösterilmektedir. Ayrıca, [Azure SQL veritabanı cmdlet 'lerini](/powershell/module/az.sql/) veya [REST API](/rest/api/sql/)kullanarak dinamik veri maskeleme uygulayabilirsiniz.
 
 > [!NOTE]
-> Bu özellik Azure SYNAPSE için Portal (PowerShell veya REST API) veya SQL yönetilen örneği kullanılarak ayarlanamaz. Daha fazla bilgi için bkz. [dinamik veri maskeleme](/sql/relational-databases/security/dynamic-data-masking).
+> Bu özellik SQL yönetilen örneği için Portal kullanılarak ayarlanamaz (PowerShell veya REST API kullanın). Daha fazla bilgi için bkz. [dinamik veri maskeleme](/sql/relational-databases/security/dynamic-data-masking).
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-the-azure-portal"></a>Azure portal kullanarak veritabanınız için dinamik veri maskeleme ayarlayın
 
@@ -42,7 +42,7 @@ Bu makalede, Azure portal ile [dinamik veri maskeleme](dynamic-data-masking-over
 
     ![Maske kuralı Yapılandırması Ekle sayfasını gösteren ekran görüntüsü.](./media/dynamic-data-masking-configure-portal/6_ddm_add_mask.png)
 
-6. Maskeleme için belirlenen alanı tanımlamak için **Şemayı** , **tabloyu** ve **sütunu** seçin.
+6. Maskeleme için belirlenen alanı tanımlamak için **Şemayı**, **tabloyu** ve **sütunu** seçin.
 7. Gizli veri maskeleme kategorileri listesinden **maske oluşturmayı seçin** .
 
     ![Nasıl maske seçin bölümünün altında hassas veri maskeleme kategorilerini gösteren ekran görüntüsü.](./media/dynamic-data-masking-configure-portal/7_ddm_mask_field_format.png)

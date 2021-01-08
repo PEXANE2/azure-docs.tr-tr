@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 1/05/2021
+ms.date: 1/06/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: fd3e4a4442f7da89ffee1557e7d908db805931ed
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 1debeab6e420d9021ebba1cecb2d551cf21c9fe2
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014884"
+ms.locfileid: "98028480"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Nasıl yapılır: uygulamanıza isteğe bağlı talepler sağlama
 
@@ -87,10 +87,12 @@ Bu talepler her zaman v 1.0 Azure AD belirteçlerine dahil edilmiştir, ancak is
 | `given_name`  | Ad                      | Kullanıcı nesnesinde ayarlandığı gibi, kullanıcının ilk veya "verilen" adını sağlar.<br>"given_name": "filiz"                   | MSA ve Azure AD 'de desteklenir.  Kapsam gerektirir `profile` . |
 | `upn`         | Kullanıcı Asıl Adı | Kullanıcı için username_hint parametresiyle kullanılabilecek bir tanımlayıcı.  Kullanıcı için dayanıklı bir tanımlayıcı değildir ve Kullanıcı bilgilerini (örneğin, bir veritabanı anahtarı olarak) benzersiz olarak kimlik için kullanılmamalıdır. Bunun yerine, Kullanıcı nesnesi KIMLIĞINI ( `oid` ) bir veritabanı anahtarı olarak kullanın. [Alternatif bir oturum açma kimliğiyle](../authentication/howto-authentication-use-email-signin.md) oturum açan kullanıcılar, Kullanıcı asıl adı (UPN) gösterilmemelidir. Bunun yerine, `preferred_username` kullanıcının oturum açma durumunu görüntülemek için aşağıdaki talebi kullanın. | Talebin yapılandırması için aşağıdaki [ek özelliklere](#additional-properties-of-optional-claims) bakın. Kapsam gerektirir `profile` .|
 
+## <a name="v10-specific-optional-claims-set"></a>v 1.0 'a özgü isteğe bağlı talepler kümesi
+
+V2 belirteç biçimi geliştirmelerinden bazıları, güvenlik ve güvenilirliği artırmaya yardımcı olduklarından v1 belirteç biçimini kullanan uygulamalar için kullanılabilir. Bu, v2 uç noktasından istenen KIMLIK belirteçleri veya v2 belirteç biçimini kullanan API 'Ler için belirteçlere erişim için geçerli olmayacaktır. Bunlar, SAML belirteçleri değil yalnızca JWTs için geçerlidir. 
 
 **Tablo 4: v 1.0-yalnızca isteğe bağlı talepler**
 
-V2 belirteç biçimi geliştirmelerinden bazıları, güvenlik ve güvenilirliği artırmaya yardımcı olduklarından v1 belirteç biçimini kullanan uygulamalar için kullanılabilir. Bu, v2 uç noktasından istenen KIMLIK belirteçleri veya v2 belirteç biçimini kullanan API 'Ler için belirteçlere erişim için geçerli olmayacaktır. 
 
 | JWT talebi     | Ad                            | Açıklama | Notlar |
 |---------------|---------------------------------|-------------|-------|

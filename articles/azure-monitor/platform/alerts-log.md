@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
-ms.openlocfilehash: a8dbadd3af9dc21ced54af151e4de705f854e011
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 950482a96604165a8f1ff20cab9e3eafe1224c90
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97696062"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98029007"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak günlük uyarıları oluşturma, görüntüleme ve yönetme
 
@@ -33,7 +33,7 @@ Ayrıca, [ayrı bir makalede](alerts-log-create-templates.md)açıklanan Azure R
 
 Uyarılar için sorgular yazmaya başlama adımları burada verilmiştir:
 
-1. Uyarı vermek istediğiniz kaynağa gidin.
+1. Uyarı vermek istediğiniz kaynağa gidin. Mümkün olduğunda bir abonelik veya kaynak grubu kapsamını seçerek birden çok kaynakta uyarı kuralları ayarlamayı düşünün. Birden çok kaynak üzerinde uyarı verme maliyetleri azaltır ve birden çok uyarı kuralını yönetme ihtiyacı vardır.
 1. **İzleyici** altında **Günlükler**' i seçin.
 1. Soruna işaret edebilecek günlük verilerini sorgulayın. [Kendi sorgunuzu yazmaya](../log-query/log-analytics-tutorial.md)ne bulabileceğinizi veya başladığınızı anlamak için [Uyarı sorgusu örnekleri konusunu](../log-query/example-queries.md) kullanabilirsiniz. [İyileştirilmiş uyarı sorguları oluşturmayı öğrenin](alerts-log-query.md).
 1. Uyarı oluşturma akışını başlatmak için ' + yeni uyarı kuralı ' düğmesine basın.
@@ -55,7 +55,7 @@ Uyarılar için sorgular yazmaya başlama adımları burada verilmiştir:
 
 1. Günlük uyarıları, iki [**Ölçü**](alerts-unified-log.md#measure)türüne göre olabilir:
     1. **Sonuç sayısı** -sorgu tarafından döndürülen kayıt sayısı.
-    1. **Ölçüm ölçümü**  -  Seçilen ifade ve [bin ()](/azure/kusto/query/binfunction) seçimine göre gruplanmış özetleme kullanılarak hesaplanan *Toplam değer* . Örnek:
+    1. **Ölçüm ölçümü**  -  Seçilen ifade ve [bin ()](/azure/kusto/query/binfunction) seçimine göre gruplanmış özetleme kullanılarak hesaplanan *Toplam değer* . Örneğin:
 
     ```Kusto
     // Reported errors
@@ -155,7 +155,7 @@ Uyarılar için sorgular yazmaya başlama adımları burada verilmiştir:
     1. Gerekirse, [boyutlara göre bölmek için uyarı](alerts-unified-log.md#split-by-alert-dimensions)seçin: 
        - Algılanırsa **kaynak kimliği sütunu** otomatik olarak seçilir ve tetiklenen uyarının bağlamını kaydın kaynağına değiştirir. 
        - **Kaynak kimliği sütunu** , abonelik veya kaynak gruplarında uyarı vermek için devre dışı olabilir. Sorgu sonuçları, çapraz kaynakları temel alarak, devre dışı bırakma yararlı olur. Örneğin, kaynak grubunun sanal makinelerinin %80 ' ünü yüksek CPU kullanımı yaşamadığını kontrol eden bir sorgu.
-       - Boyutlar tablosu kullanılarak herhangi bir sayı veya metin sütunu türü için en fazla altı ek SPIN de seçilebilir.
+       - Boyutlar tablosu kullanılarak herhangi bir sayı veya metin sütunu türü için en fazla altıya kadar ek de seçilebilir.
        - Uyarılar, benzersiz kombinasyonlara ve uyarı yüküne göre bölünme göre ayrı olarak tetiklenir ve bu bilgileri içerir.
     
         ![Toplama parametrelerini seçin ve bölme](media/alerts-log/select-aggregation-parameters-and-splitting.png)

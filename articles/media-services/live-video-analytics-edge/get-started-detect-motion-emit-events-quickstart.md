@@ -3,12 +3,12 @@ title: IoT Edge Azure 'da canlı video analiziyle çalışmaya başlama
 description: Bu hızlı başlangıçta IoT Edge 'da canlı video analiziyle çalışmaya başlama gösterilmektedir. Canlı video akışında hareket algılamayı öğrenin.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: db48183e918fcb1096734f912f02c091ddac1d74
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 8ccf2665f19b66959ce259088d0b322aec7b59f4
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511884"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028718"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Hızlı başlangıç: IoT Edge kullanmaya başlama-canlı video analizi
 
@@ -43,7 +43,7 @@ Bu öğreticide aşağıdaki Azure kaynakları gereklidir:
 
 Bu hızlı başlangıç için, Azure aboneliğinizde gerekli kaynakları dağıtmak üzere [canlı video analizi kaynakları kurulum betiğini](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) kullanmanızı öneririz. Bunu yapmak için aşağıdaki adımları izleyin:
 
-1. [Azure Cloud Shell](https://shell.azure.com)gidin.
+1. [Azure Portal](https://portal.azure.com) ' a gidin ve Cloud Shell simgesini seçin.
 1. İlk kez Cloud Shell kullanıyorsanız, bir depolama hesabı ve bir Microsoft Azure dosya paylaşımının oluşturulması için bir abonelik seçmeniz istenir. Cloud Shell oturum bilgileriniz için bir depolama hesabı oluşturmak üzere **depolama oluştur** ' u seçin. Bu depolama hesabı, komut dosyasının Azure Media Services hesabınızla kullanılmak üzere oluşturulacağı hesaptan farklıdır.
 1. Cloud Shell penceresinin sol tarafındaki açılan menüde, ortamınız olarak **Bash** ' i seçin.
 

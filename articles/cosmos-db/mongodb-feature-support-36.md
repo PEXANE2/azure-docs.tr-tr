@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/07/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: bb9efa3fde0ed840589b66db7b28392de67ee8dd
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 0ca1f1222881a2b4ca640fa31192bd1c151ebd9f
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635628"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028854"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>MongoDB için Azure Cosmos DB API’si (sürüm 3.6): desteklenen özellikler ve söz dizimi
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -23,11 +23,14 @@ MongoDB için Azure Cosmos DB API 'sini kullanarak, kullandığınız MongoDB av
 
 ## <a name="protocol-support"></a>Protokol desteği
 
-MongoDB için Cosmos DB API’si, yeni hesaplar için MongoDB sunucusunun **3.6** sürümüyle varsayılan olarak uyumludur. Desteklenen işleçler ve tüm sınırlamalar veya özel durumlar aşağıda listelenmiştir. Bu protokolleri anlayan tüm istemci sürücüleri MongoDB için Azure Cosmos DB’nin API’sine bağlanabilmesi gerekir. MongoDB hesapları için Azure Cosmos DB'nin API'sini kullanırken, hesapların 3.6 sürümünün uç noktası `*.mongo.cosmos.azure.com` biçimindeyken, hesapların 3.2 sürümünün uç noktası `*.documents.azure.com` biçimindedir.
+MongoDB için Cosmos DB API’si, yeni hesaplar için MongoDB sunucusunun **3.6** sürümüyle varsayılan olarak uyumludur. Desteklenen işleçler ve tüm sınırlamalar veya özel durumlar aşağıda listelenmiştir. Bu protokolleri anlayan tüm istemci sürücüleri MongoDB için Azure Cosmos DB’nin API’sine bağlanabilmesi gerekir. MongoDB hesapları için Azure Cosmos DB API 'SI kullanılırken, hesabın 3,6 sürümünün uç nokta olduğunu `*.mongo.cosmos.azure.com` ancak hesabın 3,2 sürümünün bitiş noktasına sahip olduğunu unutmayın `*.documents.azure.com` .
 
 ## <a name="query-language-support"></a>Sorgu dili desteği
 
-MongoDB için Azure Cosmos DB API 'SI, MongoDB sorgu dili yapıları için kapsamlı destek sağlar. Aşağıda, şu anda desteklenen işlemler, işleçler, aşamalar, komutlar ve seçeneklerin ayrıntılı listesini bulabilirsiniz.
+MongoDB için Azure Cosmos DB API 'SI, MongoDB sorgu dili yapıları için kapsamlı destek sağlar. Aşağıdaki bölümlerde, Azure Cosmos DB tarafından şu anda desteklenen sunucu işlemleri, işleçler, aşamalar, komutlar ve seçeneklerin ayrıntılı listesi gösterilmektedir.
+
+> [!NOTE]
+> Bu makale yalnızca desteklenen sunucu komutlarını listeler ve istemci tarafı sarmalayıcı işlevlerini dışlar. Ve gibi istemci tarafı sarmalayıcı işlevleri `deleteMany()` `updateMany()` `delete()` ve sunucu komutlarını dahili olarak kullanır `update()` . Desteklenen sunucu komutlarını kullanan işlevler, MongoDB için Azure Cosmos DB API 'siyle uyumludur.
 
 ## <a name="database-commands"></a>Veritabanı komutları
 
@@ -341,7 +344,7 @@ MongoDB için Azure Cosmos DB API 'SI aşağıdaki veritabanı komutlarını des
 |Tarih    |Evet    |
 |Null    |Evet    |
 |32-bit tamsayı (int)    |Evet    |
-|Zaman damgası    |Evet    |
+|Timestamp    |Evet    |
 |64 bit tamsayı (uzun)    |Evet    |
 |MinKey    |Evet    |
 |MaxKey    |Evet    |

@@ -2,13 +2,13 @@
 title: Apache Kafka istemcileri için önerilen Yapılandırma-Azure Event Hubs
 description: Bu makalede, Azure Event Hubs Apache Kafka için etkileşim kuran istemciler için önerilen Apache Kafka konfigürasyonları sunulmaktadır.
 ms.topic: reference
-ms.date: 07/20/2020
-ms.openlocfilehash: f9a03d1d3433461a575b32cd69893408a8b0ef97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/07/2021
+ms.openlocfilehash: 713900a3cc7e2b9f6f176edb21455faa577098d6
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87099717"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028837"
 ---
 # <a name="recommended-configurations-for-apache-kafka-clients"></a>Apache Kafka istemcileri için önerilen yapılandırma
 Apache Kafka istemci uygulamalarından Azure Event Hubs kullanmak için önerilen yapılandırma aşağıda verilmiştir. 
@@ -79,7 +79,7 @@ Aşağıdaki yapılandırma ile ilgili ortak hata senaryoları tablosunu inceley
 
 Belirtiler | Sorun | Çözüm
 ----|---|-----
-Yeniden dengeleme nedeniyle işleme başarısızlıklarını dengelemek | Tüketicinizin yoklama () çağrıları arasında çok uzun bekleme süresini bekliyor ve hizmet tüketiciye Grup dışına ıyor. | Birkaç seçeneğiniz vardır: <ul><li>oturum zaman aşımını artırma</li><li>işlemeyi hızlandırmak için ileti toplu iş boyutunu azaltın</li><li>tüketici. yoklama () engellemesini önlemek için paralelleştirme işlemeyi geliştirme</li></ul> Üçünün bir birleşimini uygulamak büyük olasılıkla wisest.
+Yeniden dengeleme nedeniyle işleme başarısızlıklarını dengelemek | Tüketicinizin yoklama () çağrıları arasında çok uzun bekleme süresini bekliyor ve hizmet tüketiciye Grup dışına ıyor. | Birkaç seçeneğiniz vardır: <ul><li>Yoklama işleme zaman aşımını ( `max.poll.interval.ms` ) artır</li><li>İşlemeyi hızlandırmak için ileti toplu iş boyutunu azaltın</li><li>Tüketici. yoklama () engellemesini önlemek için paralelleştirme işlemeyi geliştirme</li></ul> Üçünün bir birleşimini uygulamak büyük olasılıkla wisest.
 Yüksek üretim üretilen iş üzerinde ağ özel durumları | Java istemcisi + varsayılan maks. istek. size mi kullanıyorsunuz?  İstekleriniz çok büyük olabilir. | Yukarıdaki Java yapılandırmalarını konusuna bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
