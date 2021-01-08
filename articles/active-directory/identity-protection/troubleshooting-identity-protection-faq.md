@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: troubleshooting
-ms.date: 10/07/2020
+ms.date: 01/07/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb63a4a0b7b7fdefd636d3460b182f8d907dd36
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 0d80b8f41e11f2fffa86dc7597fdf44dd27825fc
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558938"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028905"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Azure Active Directory 'de sık sorulan sorular kimlik koruması
 
@@ -35,7 +35,7 @@ Kullanıcı riski geri ayırma akışında gecikmeye neden olan geçerli bir bil
 
 Azure AD Kimlik Koruması müşteriyseniz, [riskli kullanıcılar](howto-identity-protection-investigate-risk.md#risky-users) görünümüne gidin ve risk altındaki kullanıcıya tıklayın. Alttaki çekmecede, ' risk geçmişi ' sekmesi, bir Kullanıcı riski değişikliğine yol açan tüm olayları gösterecektir. Kullanıcının tüm riskli oturum açma işlemlerini görmek için, ' kullanıcının riskli oturum açma işlemleri ' ne tıklayın. Bu kullanıcıya yönelik tüm risk algılamalarını görmek için, ' kullanıcının risk algılamaları ' seçeneğine tıklayın.
 
-## <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>Oturum açma, neden engelleniyor, ancak kimlik koruması risk algılama işlemi oluşturmaz mi?
+### <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>Oturum açma, neden engelleniyor, ancak kimlik koruması risk algılama işlemi oluşturmaz mi?
 Oturum açma işlemleri, çeşitli nedenlerle engellenebilir. Kimlik koruması, kimlik doğrulama isteğinde doğru kimlik bilgileri kullanıldığında yalnızca risk algılamalarını ürettiğine dikkat edin. Bir Kullanıcı yanlış kimlik bilgilerini kullanıyorsa, kötü bir aktör doğru kimlik bilgilerini kullanmadığı takdirde kimlik bilgilerinin güvenliğinin olmaması nedeniyle kimlik koruması tarafından işaretlenmeyecektir. Bir kullanıcının bir kimlik koruması algılaması üretmeyecek bir şekilde imzalanmasına neden olabilecek bazı nedenler şunlardır:
 * IP adresinden gelen kötü amaçlı etkinlik nedeniyle **IP engelleniyor olabilir** . IP engellenen ileti, kimlik bilgilerinin doğru olup olmadığını ayırt etmez. IP engellenirse ve kimlik bilgileri doğru değilse, Kimlik Koruması Algılama işlemi oluşturmaz
 * **[Akıllı kilitleme](../authentication/howto-password-smart-lockout.md)** , birden çok başarısız girişimden sonra hesabın oturum açmasını engelleyebilir
@@ -96,3 +96,7 @@ Kullanıcı riskini doğası gereği, kullanım süreleri dolana kadar, kimlik k
 ### <a name="why-does-a-sign-in-have-a-sign-in-risk-aggregate-score-of-high-when-the-detections-associated-with-it-are-of-low-or-medium-risk"></a>Neden bir oturum açma, bununla ilişkili algılamalar düşük veya orta riskli olduğunda bir "oturum açma riski (toplama)" puanı elde ediyor mu?
 
 Yüksek toplu risk puanı, oturum açma işleminin diğer özelliklerine veya bu oturum açma için birden fazla algılamanın tetiklenmesi durumunda olabilir. Üstelik, oturum açma ile ilişkili algılamalar yüksek riskli olsa da, oturum açma, ortamın bir oturum açma riski (toplama) olabilir.
+
+### <a name="what-is-the-difference-between-the-activity-from-anonymous-ip-address-and-anonymous-ip-address-detections"></a>"Anonim IP adresi etkinliği" ve "anonim IP adresi" algılamaları arasındaki fark nedir?
+
+"Anonim IP adresi" algılaması kaynağı Azure AD Kimlik Koruması, "anonim IP adresinden gelen etkinlik" algılaması MCAS 'den (Microsoft Cloud App Security) tümleşiktir. Çok benzer adlara sahip olsa da, bu sinyallerin örtüşmesini görebileceğiniz için farklı arka uç algılamaları vardır.

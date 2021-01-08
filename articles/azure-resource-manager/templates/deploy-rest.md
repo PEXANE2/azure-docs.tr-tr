@@ -3,12 +3,12 @@ title: REST API ve şablonla kaynakları dağıtma
 description: Kaynakları Azure 'a dağıtmak için Azure Resource Manager ve Kaynak Yöneticisi REST API kullanın. Kaynaklar, bir Resource Manager şablonunda tanımlanır.
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: d1c8a365153007d3337d922bc163ba3767eeddc9
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 77192aff9ed4fe33269b5e11891c30e15bc312dd
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675405"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028973"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-resource-manager-rest-api"></a>ARM şablonlarıyla kaynakları dağıtma ve Azure Resource Manager REST API
 
@@ -20,13 +20,13 @@ Bu makalede, kaynaklarınızı Azure 'a dağıtmak için Azure Resource Manager 
 
 Dağıtımınızı bir kaynak grubuna, Azure aboneliğine, yönetim grubuna veya kiracıya hedefleyebilirsiniz. Dağıtımın kapsamına bağlı olarak, farklı komutlar kullanırsınız.
 
-* Bir **kaynak grubuna** dağıtmak Için, [dağıtımlar-oluştur](/rest/api/resources/deployments/createorupdate)' u kullanın. İsteğin gönderildiği yer:
+- Bir **kaynak grubuna** dağıtmak Için, [dağıtımlar-oluştur](/rest/api/resources/deployments/createorupdate)' u kullanın. İsteğin gönderildiği yer:
 
   ```HTTP
   PUT https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
   ```
 
-* Bir **aboneliğe** dağıtmak için [dağıtımlar-abonelik kapsamında oluştur](/rest/api/resources/deployments/createorupdateatsubscriptionscope)' u kullanın. İsteğin gönderildiği yer:
+- Bir **aboneliğe** dağıtmak için [dağıtımlar-abonelik kapsamında oluştur](/rest/api/resources/deployments/createorupdateatsubscriptionscope)' u kullanın. İsteğin gönderildiği yer:
 
   ```HTTP
   PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
@@ -34,7 +34,7 @@ Dağıtımınızı bir kaynak grubuna, Azure aboneliğine, yönetim grubuna veya
 
   Abonelik düzeyi dağıtımları hakkında daha fazla bilgi için bkz. [abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma](deploy-to-subscription.md).
 
-* Bir **yönetim grubuna** dağıtmak Için, [dağıtımlar-yönetim grubu kapsamında oluştur](/rest/api/resources/deployments/createorupdateatmanagementgroupscope)' u kullanın. İsteğin gönderildiği yer:
+- Bir **yönetim grubuna** dağıtmak Için, [dağıtımlar-yönetim grubu kapsamında oluştur](/rest/api/resources/deployments/createorupdateatmanagementgroupscope)' u kullanın. İsteğin gönderildiği yer:
 
   ```HTTP
   PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
@@ -42,7 +42,7 @@ Dağıtımınızı bir kaynak grubuna, Azure aboneliğine, yönetim grubuna veya
 
   Yönetim grubu düzeyi dağıtımları hakkında daha fazla bilgi için bkz. [Yönetim grubu düzeyinde kaynak oluşturma](deploy-to-management-group.md).
 
-* Bir **kiracıya** dağıtmak için [dağıtımlar-kiracı kapsamında oluştur veya Güncelleştir](/rest/api/resources/deployments/createorupdateattenantscope)' i kullanın. İsteğin gönderildiği yer:
+- Bir **kiracıya** dağıtmak için [dağıtımlar-kiracı kapsamında oluştur veya Güncelleştir](/rest/api/resources/deployments/createorupdateattenantscope)' i kullanın. İsteğin gönderildiği yer:
 
   ```HTTP
   PUT https://management.azure.com/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
@@ -83,7 +83,7 @@ Bu makaledeki örnekler, kaynak grubu dağıtımlarını kullanır.
 
    İstek gövdesinde, şablonunuz ve parametre dosyanıza bir bağlantı sağlayın. Parametre dosyası hakkında daha fazla bilgi için bkz. [Resource Manager parametre dosyası oluşturma](parameter-files.md).
 
-   **Modun** **artımlı** olarak ayarlandığını unutmayın. Dağıtımı tamamen çalıştırmak için **modu** , **tamamlanmış** olarak ayarlayın. Şablonunuzda olmayan kaynakları yanlışlıkla silebilmeniz için, tüm modunu kullanırken dikkatli olun.
+   `mode` **Artımlı** olarak ayarlandığını unutmayın. Dağıtımı tamamen çalıştırmak için, `mode` **tamamlanmış** olarak ayarlayın. Şablonunuzda olmayan kaynakları yanlışlıkla silebilmeniz için, tüm modunu kullanırken dikkatli olun.
 
    ```json
    {
@@ -122,9 +122,9 @@ Bu makaledeki örnekler, kaynak grubu dağıtımlarını kullanır.
    }
    ```
 
-    Depolama hesabınızı, paylaşılan erişim imzası (SAS) belirtecini kullanacak şekilde ayarlayabilirsiniz. Daha fazla bilgi için bkz. [paylaşılan erişim Imzasıyla erişim yetkisi verme](/rest/api/storageservices/delegating-access-with-a-shared-access-signature).
+    Depolama hesabınızı, paylaşılan erişim imzası (SAS) belirtecini kullanacak şekilde ayarlayabilirsiniz. Daha fazla bilgi için bkz. [paylaşılan erişim imzasıyla erişim yetkisi verme](/rest/api/storageservices/delegate-access-with-shared-access-signature).
 
-    Bir parametre (örneğin, parola) için hassas bir değer sağlamanız gerekiyorsa, bu değeri bir anahtar kasasına ekleyin. Önceki örnekte gösterildiği gibi dağıtım sırasında anahtar kasasını alın. Daha fazla bilgi için bkz. [dağıtım sırasında güvenli değerleri geçirme](key-vault-parameter.md).
+    Bir parametre (örneğin, parola) için hassas bir değer sağlamanız gerekiyorsa, bu değeri bir anahtar kasasına ekleyin. Önceki örnekte gösterildiği gibi dağıtım sırasında anahtar kasasını alın. Daha fazla bilgi için bkz. [dağıtım sırasında güvenli parametre değeri geçirmek için Azure Key Vault kullanma](key-vault-parameter.md).
 
 1. Şablon ve parametreler için dosyalara bağlantı yapmak yerine, bunları istek gövdesine dahil edebilirsiniz. Aşağıdaki örnek, şablon ve parametre satır içi olan istek gövdesini gösterir:
 
@@ -217,4 +217,3 @@ Eşzamanlı dağıtımlar ile çakışmalardan kaçınmak ve dağıtım geçmiş
 - Kaynak grubunda var olan, ancak şablonda tanımlanmamış kaynakların nasıl işleneceğini belirtmek için bkz. [Azure Resource Manager Dağıtım modları](deployment-modes.md).
 - Zaman uyumsuz REST işlemlerini işleme hakkında bilgi edinmek için bkz. [zaman uyumsuz Azure Işlemlerini izleme](../management/async-operations.md).
 - Şablonlar hakkında daha fazla bilgi edinmek için bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
-

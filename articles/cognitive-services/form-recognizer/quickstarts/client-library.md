@@ -13,16 +13,16 @@ ms.author: pafarley
 zone_pivot_groups: programming-languages-set-formre
 ms.custom: devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 keywords: Form işleme, otomatik veri işleme
-ms.openlocfilehash: f01adc472f94d679366af50c136ddc020b79b811
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: d099feff76d74f358a7d7958fb10406a5b8dc188
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808581"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98029041"
 ---
 # <a name="quickstart-use-the-form-recognizer-client-library"></a>Hızlı başlangıç: form tanıyıcı istemci kitaplığını kullanma
 
-Seçtiğiniz dili kullanarak form tanıyıcısı ile çalışmaya başlayın. Azure form tanıyıcı, makine öğrenimi teknolojisini kullanarak otomatik veri işleme yazılımı oluşturmanıza imkan tanıyan bir bilişsel hizmettir. Formdan metin, anahtar/değer çiftleri ve tablo verilerini belirleyip ayıklayın &mdash; . hizmet, özgün dosyadaki ilişkileri içeren yapılandırılmış verileri çıktı olarak verir. SDK paketini yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. Form tanıyıcı istemci kitaplığı şu anda, ' ın tanıyıcı hizmetinden v 2.0 'ı hedefliyor.
+Seçtiğiniz dili kullanarak form tanıyıcısı ile çalışmaya başlayın. Azure form tanıyıcı, makine öğrenimi teknolojisini kullanarak otomatik veri işleme yazılımı oluşturmanıza imkan tanıyan bir bilişsel hizmettir. Formdan metin, anahtar/değer çiftleri ve tablo verilerini belirleyip ayıklayın &mdash; . hizmet, özgün dosyadaki ilişkileri içeren yapılandırılmış verileri çıktı olarak verir. SDK paketini yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. Form tanıyıcı istemci kitaplığı şu anda form tanıyıcı hizmeti 'nin v 2.0 'ı hedefliyor.
 
 Form tanıyıcı istemci kitaplığını kullanarak şunları yapın:
 

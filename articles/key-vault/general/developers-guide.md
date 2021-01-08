@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 895b8441f340d085932cade513c9f8929491b374
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: b7980bfc58ed696a74d3da259e23fb7e428621a9
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904270"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028922"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault Geliştirici Kılavuzu
 
@@ -41,7 +41,7 @@ Yönetim katmanına erişim, [Azure rol tabanlı erişim denetimi](../../role-ba
 
 | Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[Başvuru](/cli/azure/keyvault)<br>[Hızlı Başlangıç](quick-create-cli.md)|[Başvuru](/powershell/module/az.keyvault)<br>[Hızlı Başlangıç](quick-create-powershell.md)|[Başvuru](/rest/api/keyvault/)|[Başvuru](/azure/templates/microsoft.keyvault/vaults)|[Başvuru](/dotnet/api/microsoft.azure.management.keyvault)|[Başvuru](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)|[Başvuru](/java/api/com.microsoft.azure.management.keyvault)|[Başvuru](/javascript/api/@azure/arm-keyvault)|
+|[Başvuru](/cli/azure/keyvault)<br>[Hızlı Başlangıç](quick-create-cli.md)|[Başvuru](/powershell/module/az.keyvault)<br>[Hızlı Başlangıç](quick-create-powershell.md)|[Başvuru](/rest/api/keyvault/)|[Başvuru](/azure/templates/microsoft.keyvault/vaults)|[Başvuru](/dotnet/api/microsoft.azure.management.keyvault)<br>[Hızlı Başlangıç](https://docs.microsoft.com/azure/key-vault/general/vault-create-template)|[Başvuru](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)|[Başvuru](/java/api/com.microsoft.azure.management.keyvault)|[Başvuru](/javascript/api/@azure/arm-keyvault)|
 
 Bkz. yükleme paketleri ve kaynak kodu için [Istemci kitaplıkları](client-libraries.md) .
 
@@ -68,9 +68,13 @@ Yukarıdaki kimlik doğrulama senaryoları, **Azure Identity istemci kitaplığ�
 Azure Identity Client Libarary hakkında daha fazla bilgi için bkz.:
 
 ### <a name="azure-identity-client-libraries"></a>Azure Identity istemci kitaplıkları
+
 | .NET | Python | Java | JavaScript |
 |--|--|--|--|
 |[Azure Identity SDK .NET](/dotnet/api/overview/azure/identity-readme)|[Azure Identity SDK Python](/python/api/overview/azure/identity-readme)|[Azure Identity SDK 'Sı Java](/java/api/overview/azure/identity-readme)|[Azure Identity SDK JavaScript](/javascript/api/overview/azure/identity-readme)|     
+
+>[!Note]
+> Şu anda etkin olan Key Vault .NET SDK sürüm 3 ' ü için önerilen [uygulama kimlik doğrulama kitaplığı](https://docs.microsoft.com/dotnet/api/overview/azure/service-to-service-authentication) . Key Vault .NET SDK sürüm 4 ' e geçiş yapmak için lütfen [Azure. Identity geçiş kılavuzu 'na yönelik Appauthentication 'ı](https://docs.microsoft.com/dotnet/api/overview/azure/app-auth-migration) izleyin.
 
 Uygulamalarda Key Vault kimlik doğrulaması hakkında öğreticiler için bkz.:
 - [.NET 'te VM 'de barındırılan uygulamada Key Vault kimlik doğrulaması](./tutorial-net-virtual-machine.md)
@@ -86,14 +90,14 @@ Anahtarlar, gizlilikler ve sertifikalara erişim veri düzlemine göre denetleni
 
 | Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[Başvuru](/cli/azure/keyvault/key)<br>[Hızlı Başlangıç](../keys/quick-create-cli.md)|[Başvuru](/powershell/module/az.keyvault/)<br>[Hızlı Başlangıç](../keys/quick-create-powershell.md)|[Başvuru](/rest/api/keyvault/#key-operations)|Yok|[Başvuru](/dotnet/api/azure.security.keyvault.keys)|[Başvuru](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[Hızlı Başlangıç](../keys/quick-create-python.md)|[Başvuru](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)|[Başvuru](/javascript/api/@azure/keyvault-keys/)|
+|[Başvuru](/cli/azure/keyvault/key)<br>[Hızlı Başlangıç](../keys/quick-create-cli.md)|[Başvuru](/powershell/module/az.keyvault/)<br>[Hızlı Başlangıç](../keys/quick-create-powershell.md)|[Başvuru](/rest/api/keyvault/#key-operations)|[Başvuru](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/keys)<br>[Hızlı Başlangıç](../keys/quick-create-template.md)|[Başvuru](/dotnet/api/azure.security.keyvault.keys)<br>[Hızlı Başlangıç](../keys/quick-create-net.md)|[Başvuru](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[Hızlı Başlangıç](../keys/quick-create-python.md)|[Başvuru](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)<br>[Hızlı Başlangıç](../keys/quick-create-java.md)|[Başvuru](/javascript/api/@azure/keyvault-keys/)<br>[Hızlı Başlangıç](../keys/quick-create-node.md)|
 
 **Sertifikalar API 'Leri ve SDK 'Ları**
 
 
 | Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[Başvuru](/cli/azure/keyvault/certificate)<br>[Hızlı Başlangıç](../certificates/quick-create-cli.md)|[Başvuru](/powershell/module/az.keyvault)<br>[Hızlı Başlangıç](../certificates/quick-create-powershell.md)|[Başvuru](/rest/api/keyvault/#certificate-operations)|Yok|[Başvuru](/dotnet/api/azure.security.keyvault.certificates)|[Başvuru](/python/api/overview/azure/keyvault-certificates-readme)<br>[Hızlı Başlangıç](../certificates/quick-create-python.md)|[Başvuru](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-certificates/4.1.0/index.html)|[Başvuru](/javascript/api/@azure/keyvault-certificates/)|
+|[Başvuru](/cli/azure/keyvault/certificate)<br>[Hızlı Başlangıç](../certificates/quick-create-cli.md)|[Başvuru](/powershell/module/az.keyvault)<br>[Hızlı Başlangıç](../certificates/quick-create-powershell.md)|[Başvuru](/rest/api/keyvault/#certificate-operations)|Yok|[Başvuru](/dotnet/api/azure.security.keyvault.certificates)<br>[Hızlı Başlangıç](../certificates/quick-create-net.md)|[Başvuru](/python/api/overview/azure/keyvault-certificates-readme)<br>[Hızlı Başlangıç](../certificates/quick-create-python.md)|[Başvuru](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-certificates/4.1.0/index.html)<br>[Hızlı Başlangıç](../certificates/quick-create-java.md)|[Başvuru](/javascript/api/@azure/keyvault-certificates/)<br>[Hızlı Başlangıç](../certificates/quick-create-node.md)|
 
 **Gizlilikler API 'Leri ve SDK 'ları**
 
