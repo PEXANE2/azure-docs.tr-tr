@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3679bf9d55ddccefddb4bf3b2a96ec1b427315af
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: c0ceae8727681c045c3bbf3e6626937633b38997
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663905"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013541"
 ---
 # <a name="using-an-app-service-environment"></a>App Service Ortamı kullanma
 
@@ -29,7 +29,7 @@ Ao 'a sahip değilseniz, [App Service ortamı oluşturma][MakeASE]bölümündeki
 
 AS 'de bir uygulama oluşturmak için:
 
-1. **Create a resource**  >  **Web + Mobile**  >  **Web uygulaması** Web ve mobil kaynak oluştur ' u seçin.
+1.   >    >  **Web uygulaması** Web ve mobil kaynak oluştur ' u seçin.
 
 1. Bir abonelik seçin.
 
@@ -78,13 +78,20 @@ SCM URL 'SI, kudu konsoluna erişmek veya Web Dağıtımı kullanarak uygulaman�
 
 ### <a name="dns-configuration"></a>DNS yapılandırması 
 
-Ao, gelen trafik için özel uç noktalar kullanır ve Azure DNS özel bölgelerle otomatik olarak yapılandırılır. Kendi DNS sunucunuzu kullanmak istiyorsanız, aşağıdaki kayıtları eklemeniz gerekir:
+ATıCı, gelen trafik için özel uç noktaları kullanır. Azure DNS özel bölgelerle otomatik olarak yapılandırılmamıştır. Kendi DNS sunucunuzu kullanmak istiyorsanız, aşağıdaki kayıtları eklemeniz gerekir:
 
 1. &lt;alname. appserviceenvironment.NET için bir bölge oluşturun &gt;
 1. Bu bölgede, Ao özel uç noktanız tarafından kullanılan gelen IP adresine * işaret eden bir kayıt oluşturun
 1. Bu bölgede, Ao özel uç noktanız tarafından kullanılan gelen IP adresine @ işaret eden bir kayıt oluşturun
 1. &lt;Ao Name &gt; . appserviceenvironment.net adlı SCM adlı bir bölge oluşturun
 1. SCM bölgesinde, Ao özel uç noktanız tarafından kullanılan IP adresine işaret eden bir kayıt oluşturun
+
+Azure DNS özel bölgelerde DNS 'yi yapılandırmak için:
+
+1. . appserviceenvironment.net adlı bir Azure DNS özel bölge oluşturun <ASE name>
+1. Bu bölgede * ıLB IP adresine işaret eden bir kayıt oluşturun
+1. Bu bölgede @ adresli ıLB IP adresine işaret eden bir kayıt oluşturma
+1. Bu bölgede, ıLB IP adresine *. SCM 'yi işaret eden bir kayıt oluşturun
 
 Ao varsayılan etki alanı son ekinin DNS ayarları, uygulamalarınızı yalnızca bu adlara göre erişilebilir olacak şekilde kısıtlamayın. Bir Ao 'da uygulamalarınızda herhangi bir doğrulama yapmadan özel bir etki alanı adı ayarlayabilirsiniz. Daha sonra *contoso.net* adlı bir bölge oluşturmak istiyorsanız bunu yapabilirsiniz ve gelen IP adresine işaret edebilirsiniz. Özel etki alanı adı, uygulama istekleri için geçerlidir ancak SCM sitesi için değildir. SCM sitesi yalnızca *&lt; appname. SCM adresinde kullanılabilir &gt; . &lt; asename &gt; . appserviceenvironment.net*. 
 
@@ -125,7 +132,7 @@ Aşirinizi Azure depolama, Azure Event Hubs veya Log Analytics ile ilgili günl�
 AŞIRDE günlüğe kaydetmeyi etkinleştirmek için:
 
 1. Portalda **Tanılama ayarları**' na gidin.
-1. **Tanılama ayarı Ekle**' yi seçin.
+1. **Tanılama ayarı ekle**’yi seçin.
 1. Günlük tümleştirmesi için bir ad sağlayın.
 1. İstediğiniz günlük hedeflerini seçin ve yapılandırın.
 1. **Appserviceenvironmentplatformlogs**' u seçin.

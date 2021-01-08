@@ -5,19 +5,28 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 12/14/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7931ad9e55d62d5fa2b1828d276e56f7c8cd02e1
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: aea51e56f2d96fa634b1ece2029c9ea5bf3f60fc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286482"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011314"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Azure CLı kullanarak ExpressRoute Direct 'i yapılandırma
 
 ExpressRoute Direct, dünya genelinde stratejik olarak dağıtılan eşleme konumları aracılığıyla Microsoft 'un global ağına doğrudan bağlanma olanağı sağlar. Daha fazla bilgi için bkz. [ExpressRoute Direct Connect hakkında](expressroute-erdirect-about.md).
+
+## <a name="before-you-begin"></a>Başlamadan önce
+
+ExpressRoute Direct kullanmadan önce aboneliğinizi kaydetmeniz gerekir. Kaydolmak için aşağıdaki ayrıntılar dahil olmak üzere abonelik KIMLIĞINIZLE bir e-posta gönderin <ExpressRouteDirect@microsoft.com> :
+
+* **ExpressRoute Direct** ile başarmak için kullandığınız senaryolar
+* Konum tercihleri-tüm konumların tam listesi için [Iş ortakları ve eşleme konumları](expressroute-locations-providers.md) bölümüne bakın
+* Uygulama için zaman çizelgesi
+* Diğer sorular
 
 ## <a name="create-the-resource"></a><a name="resources"></a>Kaynağı oluşturma
 

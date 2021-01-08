@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/26/2020
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: c3ac2eab68963d75cd5c916e06285d49edd37aed
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 06e70bd31e2045925c1fe7b4088e1a0b1d560b2f
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656096"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011076"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>Azure Resource Manager şablonundan NSG akış günlüklerini yapılandırma
 
 > [!div class="op_single_selector"]
-> - [Azure portalı](network-watcher-nsg-flow-logging-portal.md)
+> - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)

@@ -5,25 +5,25 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 01/07/2021
 ms.author: duau
-ms.openlocfilehash: 4b57dec32a3a008cadf68c19ea52353a23fb2cd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae0a39d65bf0f1bc5221cd5e46493c489f7630f8
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89397503"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012674"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>NAT ayarlamak ve yönetmek için yönlendirici yapılandırma örnekleri
 
-Bu sayfa, ExpressRoute ile çalışırken Cisco ASA ve Juniper SRX serisi yönlendiricileri için NAT yapılandırma örnekleri sağlar. Bunların yalnızca rehberlik için örnek olması amaçlanmıştır ve olduğu gibi kullanılmamalıdır. Ağınız için uygun yapılandırmalara sahip olmak üzere satıcınızla birlikte çalışabilirsiniz.
+Bu makalede, ExpressRoute ile çalışırken Cisco ASA ve Juniper SRX serisi yönlendiricileri için NAT yapılandırma örnekleri sağlanmaktadır. Bu yönlendirici yapılandırmalarının yalnızca rehberlik için örnek olması amaçlanmıştır ve olduğu gibi kullanılmamalıdır. Ağınız için uygun yapılandırmalara sahip olmak üzere satıcınızla çalışmanız gerekir.
 
 > [!IMPORTANT]
 > Bu sayfadaki örneklerin amacı yalnızca kılavuzluk amaçlıdır. Gereksinimlerinizi karşılayacak uygun yapılandırmalara sahip olmak için satıcının satış/teknik ekibi ve ağ ekibiniz ile çalışmanız gerekir. Microsoft, bu sayfada listelenen yapılandırmalara ilişkin sorunları desteklemez. Destek sorunları için cihaz satıcınıza başvurmanız gerekir.
 > 
 > 
 
-* Aşağıdaki yönlendirici yapılandırması örnekleri, Azure genel ve Microsoft eşlemeleri için geçerlidir. Azure özel eşlemesi için NAT yapılandırmamalısınız. Daha fazla ayrıntı için [ExpressRoute eşayarlarını](expressroute-circuit-peerings.md) ve [ExpressRoute NAT gereksinimlerini](expressroute-nat.md) gözden geçirin.
+* Aşağıdaki yönlendirici yapılandırması örnekleri, Azure genel ve Microsoft eşlemeleri için geçerlidir. Azure özel eşlemesi için NAT 'ı yapılandırmayın. Daha fazla ayrıntı için [ExpressRoute eşayarlarını](expressroute-circuit-peerings.md) ve [ExpressRoute NAT gereksinimlerini](expressroute-nat.md) gözden geçirin.
 
 * İnternet ve ExpressRoute bağlantısı için ayrı NAT IP havuzları kullanmanız gerekır. İnternet ve ExpressRoute ile aynı NAT IP havuzunun kullanılması, asimetrik yönlendirmeye ve bağlantı kaybına neden olur.
 
@@ -361,5 +361,5 @@ nat (inside,outside) source dynamic MSFT-PAT-Networks pat-pool outbound-PAT dest
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Daha fazla ayrıntı için bkz. [ExpressRoute SSS](expressroute-faqs.md).
+Daha fazla bilgi için bkz. [ExpressRoute SSS](expressroute-faqs.md).
 

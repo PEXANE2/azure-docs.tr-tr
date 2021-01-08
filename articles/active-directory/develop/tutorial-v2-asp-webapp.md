@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 4dca1fa0e823b482044d35f98412187af2fa72ed
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: f0620c4d373ee96c87b575ae7eb173b2f16eecb2
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507770"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013660"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Öğretici: Microsoft 'a bir ASP.NET Web uygulamasına oturum açma ekleme
 
@@ -374,7 +374,8 @@ Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze el ile
    1. SSL etkin olarak değiştirin `True` .
    1. Visual Studio 'da projeye sağ tıklayın, **Özellikler**' i seçin ve ardından **Web** sekmesini seçin. **Sunucular** bölümünde, **proje URL** ayarını **SSL URL 'si** olarak değiştirin.
    1. SSL URL 'sini kopyalayın. Bu URL 'YI, sonraki adımda, kayıt portalının yeniden yönlendirme URI 'leri listesindeki yeniden yönlendirme URI 'Leri listesine ekleyeceksiniz.<br/><br/>![Proje özellikleri](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+   
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
 1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
 1. **Azure Active Directory**'yi bulun ve seçin.
 1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.

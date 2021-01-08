@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5fb7c0df653048adcffceda4d8a384be823b5c3a
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 0caac72125b28a9c6b17eb68413a7242df5cd06c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507702"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011654"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Öğretici: Windows masaüstü uygulamasından Microsoft Graph API 'sini çağırma
 
@@ -104,7 +104,7 @@ Aşağıdakileri yaparak uygulamanızı hızlı bir şekilde kaydedebilirsiniz:
 ### <a name="option-2-advanced-mode"></a>Seçenek 2: Gelişmiş mod
 
 Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze eklemek için aşağıdakileri yapın:
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
 1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
 1. **Azure Active Directory**'yi bulun ve seçin.
 1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.

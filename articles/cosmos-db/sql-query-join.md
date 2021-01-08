@@ -1,25 +1,25 @@
 ---
 title: Azure Cosmos DB için SQL JOIN sorguları
 description: Verileri sorgulamak için Azure Cosmos DB birden çok tabloya nasıl KATıLACAĞıNıZı öğrenin
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/17/2019
-ms.author: mjbrown
-ms.openlocfilehash: c3fad0c7eed2b42a9ac340a091f17b90e22b000a
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.date: 01/07/2021
+ms.author: tisande
+ms.openlocfilehash: cb7b2e62a9fabeeca675edb8e6aa356213e0999e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333860"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011416"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Azure Cosmos DB birleşimler
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-İlişkisel bir veritabanında, tablolar arasında birleşimler, Normalleştirilmemiş şemalar tasarlamanın mantıksal bir ilişkmalarıdır. Buna karşılık, SQL API 'SI, *kendinden JOIN* 'in mantıksal eşdeğeri olan, şema içermeyen öğelerin Normalleştirilmemiş veri modelini kullanır.
+İlişkisel bir veritabanında, tablolar arasında birleşimler, Normalleştirilmemiş şemalar tasarlamanın mantıksal bir ilişkmalarıdır. Buna karşılık, SQL API 'SI, *kendinden JOIN*'in mantıksal eşdeğeri olan, şema içermeyen öğelerin Normalleştirilmemiş veri modelini kullanır.
 
-İç birleşimler, birleşime katılan kümelerden oluşan tüm çapraz ürünlere yol açabilir. N-Way JOIN 'in sonucu, kayıt kümesindeki her bir değerin birleşime katılan diğer ad kümesiyle ilişkilendirildiği ve diğer yan tümcelerde bu diğer ada başvuruda bulunarak erişilebilen N-element tanımlama gruplarının bir kümesidir.
+Birleşimler, birleşime katılan kümelerinin tüm çapraz bir ürününde sonuçlanır. N-Way JOIN 'in sonucu, kayıt kümesindeki her bir değerin birleşime katılan diğer ad kümesiyle ilişkilendirildiği ve diğer yan tümcelerde bu diğer ada başvuruda bulunarak erişilebilen N-element tanımlama gruplarının bir kümesidir.
 
 ## <a name="syntax"></a>Syntax
 
@@ -253,6 +253,8 @@ Sonuçlar:
       }
     ]
 ```
+
+Sorgunuzun bir BIRLEŞIMI ve filtreleri varsa, performansı artırmak için sorgunun bir bölümünü bir [alt sorgu](sql-query-subquery.md#optimize-join-expressions) olarak yeniden yazabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

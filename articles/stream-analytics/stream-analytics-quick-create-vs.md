@@ -1,17 +1,17 @@
 ---
 title: Hızlı Başlangıç-Visual Studio kullanarak Azure Stream Analytics işi oluşturma
 description: Bu hızlı başlangıçta Visual Studio ile bir Stream Analytics işi oluşturma, girdileri ve çıktıları yapılandırma ve bir sorgu tanımlama yoluyla çalışmaya nasıl başlayacağınız gösterilmektedir.
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.openlocfilehash: 034f1497cb6262ca86cd440b914f3ae67356eef9
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 7a02d0914ae111d6e2e00493fe27613e27d836b1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124620"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012368"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>Hızlı başlangıç: Visual Studio 'Yu kullanarak Azure Stream Analytics işi oluşturma
 
@@ -24,7 +24,7 @@ Bu hızlı başlangıçta Visual Studio için Azure Stream Analytics araçların
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-* [Azure portalında](https://portal.azure.com/) oturum açın.
+* [Azure Portal](https://portal.azure.com/) oturum açın.
 
 * Visual Studio 2019, Visual Studio 2015 veya Visual Studio 2013 Güncelleştirme 4 'i yükler. Enterprise (Ultimate/Premium), Professional ve Community sürümleri desteklenir. Express sürümü desteklenmez.
 
@@ -34,30 +34,30 @@ Bu hızlı başlangıçta Visual Studio için Azure Stream Analytics araçların
 
 Stream Analytics işini tanımlamadan önce, daha sonra iş girişi olarak yapılandırılmış olan verileri hazırlamanız gerekir. İş için gereken giriş verilerini hazırlamak için aşağıdaki adımları izleyin:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
-2. IoT Hub **nesnelerin interneti kaynak oluştur** ' u seçin  >  **Internet of Things**  >  **IoT Hub** .
+2. IoT Hub **nesnelerin interneti kaynak oluştur**' u seçin  >    >  .
 
 3. **IoT Hub** bölmesinde aşağıdaki bilgileri girin:
    
    |**Ayar**  |**Önerilen değer**  |**Açıklama**  |
    |---------|---------|---------|
    |Abonelik  | \<Your subscription\> |  Kullanmak istediğiniz Azure aboneliğini seçin. |
-   |Kaynak grubu   |   asaquickstart-resourcegroup  |   **Yeni Oluştur** ’u seçin ve hesabınız için yeni bir kaynak grubu adı girin. |
-   |Bölge  |  \<Select the region that is closest to your users\> | IoT Hub barındırabileceğiniz coğrafi bir konum seçin. Kullanıcılarınıza en yakın konumu kullanın. |
+   |Kaynak grubu   |   asaquickstart-resourcegroup  |   **Yeni Oluştur**’u seçin ve hesabınız için yeni bir kaynak grubu adı girin. |
+   |Region  |  \<Select the region that is closest to your users\> | IoT Hub barındırabileceğiniz coğrafi bir konum seçin. Kullanıcılarınıza en yakın konumu kullanın. |
    |IoT Hub adı  | MyASAIoTHub  |   IoT Hub için bir ad seçin.   |
 
    ![IoT Hub'ı oluşturma](./media/stream-analytics-quick-create-vs/create-iot-hub.png)
 
-4. **İleri ' yi seçin: boyut ve ölçek ayarla** .
+4. **İleri ' yi seçin: boyut ve ölçek ayarla**.
 
 5. **Fiyatlandırma ve ölçek katmanınızı** seçin. Bu hızlı başlangıçta, aboneliğinizde hala kullanılabiliyorsa **F1-ücretsiz** katmanını seçin. Ücretsiz katman kullanılamıyorsa, kullanılabilir en düşük katmanı seçin. Daha fazla bilgi için bkz. [IoT Hub fiyatlandırması](https://azure.microsoft.com/pricing/details/iot-hub/).
 
    ![IoT Hub boyutlandırın ve ölçeklendirin](./media/stream-analytics-quick-create-vs/iot-hub-size-and-scale.png)
 
-6. **Gözden geçir ve oluştur** ’u seçin. IoT Hub bilgilerinizi gözden geçirin ve **Oluştur** ' a tıklayın. IoT Hub oluşturulması birkaç dakika sürebilir. İlerleme durumunu **Bildirimler** bölmesinden izleyebilirsiniz.
+6. **Gözden geçir ve oluştur**’u seçin. IoT Hub bilgilerinizi gözden geçirin ve **Oluştur**' a tıklayın. IoT Hub oluşturulması birkaç dakika sürebilir. İlerleme durumunu **Bildirimler** bölmesinden izleyebilirsiniz.
 
-7. IoT Hub gezinti menüsünde **IoT cihazları** altında **Ekle** ' ye tıklayın. Bir **CIHAZ kimliği** ekleyin ve **Kaydet** ' e tıklayın.
+7. IoT Hub gezinti menüsünde **IoT cihazları** altında **Ekle** ' ye tıklayın. Bir **CIHAZ kimliği** ekleyin ve **Kaydet**' e tıklayın.
 
    ![IoT Hub bir cihaz ekleyin](./media/stream-analytics-quick-create-vs/add-device-iot-hub.png)
 
@@ -77,7 +77,7 @@ Stream Analytics işini tanımlamadan önce, daha sonra iş girişi olarak yapı
 
    ![Depolama hesabına genel bakış](./media/stream-analytics-quick-create-portal/blob-storage.png)
 
-4. **BLOB hizmeti** sayfasından **kapsayıcı** ' yı seçin ve Kapsayıcınız için *kapsayıcı1* gibi bir ad sağlayın. **Ortak erişim düzeyini** **özel (anonim erişim yok)** olarak bırakın ve **Tamam** ' ı seçin.
+4. **BLOB hizmeti** sayfasından **kapsayıcı** ' yı seçin ve Kapsayıcınız için *kapsayıcı1* gibi bir ad sağlayın. **Ortak erişim düzeyini** **özel (anonim erişim yok)** olarak bırakın ve **Tamam**' ı seçin.
 
    ![Blob kapsayıcısı oluşturma](./media/stream-analytics-quick-create-portal/create-blob-container.png)
 
@@ -85,11 +85,11 @@ Stream Analytics işini tanımlamadan önce, daha sonra iş girişi olarak yapı
 
 1. Visual Studio’yu çalıştırın.
 
-2. **Dosya > Yeni Proje** 'yi seçin.  
+2. **Dosya > Yeni Proje**'yi seçin.  
 
-3. Sol taraftaki şablon listesinden **Stream Analytics** 'i ve ardından **Azure Stream Analytics Uygulaması** 'nı seçin.  
+3. Sol taraftaki şablon listesinden **Stream Analytics**'i ve ardından **Azure Stream Analytics Uygulaması**'nı seçin.  
 
-4. Projenin **Ad** , **Konum** ve **Çözüm adı** değerlerini girip **Tamam** 'ı seçin.
+4. Projenin **Ad**, **Konum** ve **Çözüm adı** değerlerini girip **Tamam**'ı seçin.
 
    ![Stream Analytics projesi oluşturma](./media/stream-analytics-quick-create-vs/create-stream-analytics-project.png)
 
@@ -100,38 +100,38 @@ Azure Stream Analytics projesine dahil edilen öğelere dikkat edin.
 
 ## <a name="choose-the-required-subscription"></a>Gerekli aboneliği seçin
 
-1. Visual Studio'nun **Görünüm** menüsünde **Sunucu Gezgini** 'ni seçin.
+1. Visual Studio'nun **Görünüm** menüsünde **Sunucu Gezgini**'ni seçin.
 
-2. **Azure** 'a sağ tıklayıp **Microsoft Azure Aboneliğine Bağlan** 'ı seçin ve Azure hesabınızla oturum açın.
+2. **Azure**'a sağ tıklayıp **Microsoft Azure Aboneliğine Bağlan**'ı seçin ve Azure hesabınızla oturum açın.
 
 ## <a name="define-input"></a>Girişi tanımlama
 
-1. **Çözüm Gezgini** 'nde **Girişler** düğümünü genişletin ve **Input.json** dosyasına çift tıklayın.
+1. **Çözüm Gezgini**'nde **Girişler** düğümünü genişletin ve **Input.json** dosyasına çift tıklayın.
 
-2. **Stream Analytics Giriş Yapılandırması** 'na aşağıdaki değerleri ekleyin:
+2. **Stream Analytics Giriş Yapılandırması**'na aşağıdaki değerleri ekleyin:
 
    |**Ayar**  |**Önerilen değer**  |**Açıklama**   |
    |---------|---------|---------|
-   |Girdi Diğer Adı  |  Giriş   |  İşin girdisini tanımlamak için bir ad girin.   |
+   |Girdi Diğer Adı  |  Girdi   |  İşin girdisini tanımlamak için bir ad girin.   |
    |Kaynak Türü   |  Veri Akışı |  Uygun giriş kaynağını seçin: Veri Akışı veya Başvuru Verileri.   |
    |Kaynak  |  IoT Hub |  Uygun giriş kaynağını seçin.   |
    |Kaynak  | Geçerli hesaptaki veri kaynağını seçin | Verileri el ile girin veya var olan bir hesabı seçin.   |
    |Abonelik  |  \<Your subscription\>   | Oluşturduğunuz IoT Hub sahip Azure aboneliğini seçin.   |
    |IoT Hub  |  MyASAIoTHub   |  IoT Hub adını seçin veya girin. IoT Hub adları, aynı abonelikte oluşturulduklarında otomatik olarak algılanır.   |
    
-3. Diğer seçenekleri varsayılan değerlerinde bırakın ve ayarları kaydetmek **Kaydet** ’i seçin.  
+3. Diğer seçenekleri varsayılan değerlerinde bırakın ve ayarları kaydetmek **Kaydet**’i seçin.  
 
    ![Girdi verilerini yapılandırma](./media/stream-analytics-quick-create-vs/stream-analytics-vs-input.png)
 
 ## <a name="define-output"></a>Çıkışı tanımlama
 
-1. **Çözüm Gezgini** 'nde **Çıkışlar** düğümünü genişletin ve **Output.json** dosyasına çift tıklayın.
+1. **Çözüm Gezgini**'nde **Çıkışlar** düğümünü genişletin ve **Output.json** dosyasına çift tıklayın.
 
-2. **Stream Analytics Çıkış Yapılandırması** 'na aşağıdaki değerleri ekleyin:
+2. **Stream Analytics Çıkış Yapılandırması**'na aşağıdaki değerleri ekleyin:
 
    |**Ayar**  |**Önerilen değer**  |**Açıklama**   |
    |---------|---------|---------|
-   |Çıktı Diğer Adı  |  Çıkış   |  İşin çıktısını tanımlamak için bir ad girin.   |
+   |Çıktı Diğer Adı  |  Çıktı   |  İşin çıktısını tanımlamak için bir ad girin.   |
    |Havuz   |  Blob Depolama |  Uygun havuzu seçin.    |
    |Kaynak  |  Veri kaynağı ayarlarını el ile sağlayın |  Verileri el ile girin veya var olan bir hesabı seçin.   |
    |Abonelik  |  \<Your subscription\>   | Oluşturduğunuz depolama hesabını içeren Azure aboneliğini seçin. Depolama hesabı, aynı veya farklı bir abonelikte olabilir. Bu örnekte, aynı abonelikte depolama hesabı oluşturduğunuz varsayılır.   |
@@ -139,13 +139,13 @@ Azure Stream Analytics projesine dahil edilen öğelere dikkat edin.
    |Kapsayıcı  |  kapsayıcı1   |  Depolama hesabınızda oluşturduğunuz mevcut kapsayıcıyı seçin.   |
    |Yol Deseni  |  çıkış   |  Kapsayıcıda oluşturulacak dosya yolunun adını girin.   |
    
-3. Diğer seçenekleri varsayılan değerlerinde bırakın ve ayarları kaydetmek **Kaydet** ’i seçin.  
+3. Diğer seçenekleri varsayılan değerlerinde bırakın ve ayarları kaydetmek **Kaydet**’i seçin.  
 
    ![Çıkış verilerini yapılandırma](./media/stream-analytics-quick-create-vs/stream-analytics-vs-output.png)
 
 ## <a name="define-the-transformation-query"></a>Dönüşüm sorgusunu tanımlama
 
-1. Visual Studio'da **Çözüm Gezgini** 'nden **Script.asaql** dosyasını açın.
+1. Visual Studio'da **Çözüm Gezgini**'nden **Script.asaql** dosyasını açın.
 
 2. Aşağıdaki sorguyu ekleyin:
 
@@ -158,9 +158,9 @@ Azure Stream Analytics projesine dahil edilen öğelere dikkat edin.
 
 ## <a name="submit-a-stream-analytics-query-to-azure"></a>Azure'a bir Stream Analytics sorgusu gönderme
 
-1. **Sorgu Düzenleyicisi** 'nin betik düzenleyici bölümünde **Azure'a Gönder** 'i seçin.
+1. **Sorgu Düzenleyicisi**'nin betik düzenleyici bölümünde **Azure'a Gönder**'i seçin.
 
-2. **Yeni bir Azure Stream Analytics işi oluştur** 'u seçip bir **İş Adı** girin. Hızlı başlangıcın başında kullandığınız **Abonelik** , **Kaynak Grubu** ve **Konum** bilgilerini seçin.
+2. **Yeni bir Azure Stream Analytics işi oluştur**'u seçip bir **İş Adı** girin. Hızlı başlangıcın başında kullandığınız **Abonelik**, **Kaynak Grubu** ve **Konum** bilgilerini seçin.
 
    ![İşi Azure'a gönderme](./media/stream-analytics-quick-create-vs/stream-analytics-job-to-azure.png)
 
@@ -170,7 +170,7 @@ Azure Stream Analytics projesine dahil edilen öğelere dikkat edin.
 
 2. 15. satırdaki yer tutucusunu, önceki bölümde kaydettiğiniz Azure IoT Hub cihaz bağlantı dizesiyle değiştirin.
 
-3. **Çalıştır** 'a tıklayın. Çıktıda, IoT Hub gönderilen algılayıcı verileri ve iletileri gösterilmelidir.
+3. **Çalıştır**'a tıklayın. Çıktıda, IoT Hub gönderilen algılayıcı verileri ve iletileri gösterilmelidir.
 
    ![Raspberry Pi Azure IoT Çevrimiçi Simülatörü](./media/stream-analytics-quick-create-portal/ras-pi-connection-string.png)
 
@@ -180,7 +180,7 @@ Azure Stream Analytics projesine dahil edilen öğelere dikkat edin.
 
    ![Stream Analytics işini başlatma](./media/stream-analytics-quick-create-vs/start-stream-analytics-job-vs.png)
 
-2. **İş çıkışı başlangıç modunu** **jobstarttime** olarak değiştirin ve **Başlat** ' ı seçin.
+2. **İş çıkışı başlangıç modunu** **jobstarttime** olarak değiştirin ve **Başlat**' ı seçin.
 
    ![İş yapılandırmasını başlatma](./media/stream-analytics-quick-create-vs/stream-analytics-start-configuration.png)
 
@@ -188,7 +188,7 @@ Azure Stream Analytics projesine dahil edilen öğelere dikkat edin.
 
    ![Stream Analytics işini çalıştırma](./media/stream-analytics-quick-create-vs/stream-analytics-job-running.png)
 
-4. Sonuçları görüntülemek için **Görünüm** menüsünde **Bulut Gezgini** 'ni seçin ve kaynak grubunuzdaki depolama hesabına gidin. **Blob Kapsayıcıları** bölümünde **container1** 'e ve ardından **output** dosya yoluna çift tıklayın.
+4. Sonuçları görüntülemek için **Görünüm** menüsünde **Bulut Gezgini**'ni seçin ve kaynak grubunuzdaki depolama hesabına gidin. **Blob Kapsayıcıları** bölümünde **container1**'e ve ardından **output** dosya yoluna çift tıklayın.
 
    ![Sonuçları görüntüleme](./media/stream-analytics-quick-create-vs/stream-analytics-vs-results.png)
 
@@ -196,9 +196,9 @@ Azure Stream Analytics projesine dahil edilen öğelere dikkat edin.
 
 Artık gerekli olmadığında kaynak grubunu, akış işini ve tüm ilgili kaynakları silin. İşin silinmesi, iş tarafından kullanılan akış birimlerinin faturalanmasını önler. İşi gelecekte kullanmayı planlıyorsanız, durdurup daha sonra gerektiğinde yeniden başlatabilirsiniz. Bu işi kullanmaya devam etmeyecekseniz aşağıdaki adımları kullanarak bu hızlı başlangıçla oluşturulan tüm kaynakları silin:
 
-1. Azure portalında sol taraftaki menüden, **Kaynak grupları** 'nı ve ardından oluşturduğunuz kaynağın adını seçin.  
+1. Azure portalında sol taraftaki menüden, **Kaynak grupları**'nı ve ardından oluşturduğunuz kaynağın adını seçin.  
 
-2. Kaynak grubu sayfanızda, **Sil** 'i seçin, metin kutusuna silinecek kaynağın adını yazın ve ardından **Sil** 'i seçin.
+2. Kaynak grubu sayfanızda, **Sil**'i seçin, metin kutusuna silinecek kaynağın adını yazın ve ardından **Sil**'i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

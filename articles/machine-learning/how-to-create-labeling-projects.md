@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: cd35cea28e23e88ba97bb7a27dc252d6bebd65e4
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 087a7ead1ef5f9f46f5b81f8d42fcc0ea0209e61
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739663"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013286"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Veri etiketleme projesi ve dışarı aktarma etiketleri oluşturma 
 
@@ -54,7 +54,7 @@ Etiketleme projeleri Azure Machine Learning yönetilir. Projelerinizi yönetmek 
 
 Verileriniz zaten Azure Blob depolamadaki etiketleme projesini oluşturmadan önce onu bir veri deposu olarak kullanılabilir hale getirin. Veri deposu kullanmanın bir örneği için bkz. [öğretici: ilk görüntü sınıflandırma etiketleme projenizi oluşturma](tutorial-labeling.md).
 
-Proje oluşturmak için **Proje Ekle**' yi seçin. Projeye uygun bir ad verin ve **etiketleme görev türünü** seçin.
+Proje oluşturmak için **Proje Ekle**' yi seçin. Projeye uygun bir ad verin ve **etiketleme görev türünü** seçin. Proje daha sonra silinmiş olsa bile, proje adı yeniden kullanılamaz.
 
 :::image type="content" source="media/how-to-create-labeling-projects/labeling-creation-wizard.png" alt-text="Proje oluşturma Sihirbazı etiketleme":::
 

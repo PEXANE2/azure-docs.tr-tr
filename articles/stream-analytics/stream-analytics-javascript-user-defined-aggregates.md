@@ -3,17 +3,16 @@ title: Azure Stream Analytics 'de JavaScript Kullanıcı tanımlı toplamalar
 description: Bu makalede, Azure Stream Analytics içinde JavaScript Kullanıcı tanımlı toplamalarda Gelişmiş sorgu mekanizması gerçekleştirme işlemi açıklanır.
 author: rodrigoaatmicrosoft
 ms.author: rodrigoa
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
 ms.custom: devx-track-js
-ms.openlocfilehash: 8891bb5cd3b8bd8ae9e02c871d6d0ffe42078c0b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e9695a268d1c6ec43a737afd36536e4ec2a41a41
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124773"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012487"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>JavaScript Kullanıcı tanımlı toplamaları Azure Stream Analytics
  

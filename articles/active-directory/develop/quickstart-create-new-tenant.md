@@ -13,12 +13,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: f43cb80a148f5dadb409f506f237cb1210a2000a
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 869b37aea823cf91dc59211b23fcaccd7646afb9
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934008"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012028"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>Hızlı Başlangıç: Kiracıyı ayarlama
 
@@ -28,7 +28,7 @@ Kiracı, bir kuruluşu temsil eden birimdir. Kuruluş veya uygulama geliştirici
 
 Her Azure AD kiracısı ayrıdır ve diğer Azure AD kiracılarından ayrılmıştır. Kendi iş ve okul kimlikleri, tüketici kimlikleri (bir Azure AD B2C kiracısıysa) ve uygulama kayıtları gösterimi vardır. Kiracınızın içinde yapılan bir uygulama kaydı, yalnızca kiracınızın veya tüm kiracıların içinden hesapların kimlik doğrulaması yapmasına izin verebilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -47,7 +47,7 @@ Bu hızlı başlangıç, derlemek istediğiniz uygulamanın türüne bağlı ola
 
 Birçok geliştiricinin, Azure AD kiracılarına bağlı hizmetler veya abonelikler (örneğin, Microsoft 365 veya Azure abonelikleri) aracılığıyla zaten kiracıları vardır.
 
-1. Kiracıyı denetlemek için, uygulamanızı yönetirken kullanmak istediğiniz hesapla [Azure portalında](https://portal.azure.com) oturum açın.
+1. Kiracıyı denetlemek için, uygulamanızı yönetmek üzere kullanmak istediğiniz hesapla <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a> oturum açın.
 1. Sağ üst köşeye bakın. Bir kiracınız varsa, otomatik olarak bu kiracıda oturum açar ve kiracı adını doğrudan hesap adınızın altında görebilirsiniz.
    * Adınızı, e-postanızı, dizininizi/kiracı kimliğinizi (GUID) ve etki alanınızı görmek için, Azure portalının sağ üst kısmında bulunan hesap adınızın üzerine gelin.
    * Hesabınız birden çok kiracıyla ilişkiliyse, kiracılar arasında geçiş yapabileceğiniz bir menüyü açmak için hesap adınızı seçebilirsiniz. Her kiracının kendi kiracı kimliği vardır.

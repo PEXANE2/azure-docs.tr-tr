@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: justinha
-ms.openlocfilehash: 1fcd46870a4f85d1b88d22d77de5c201404c3a09
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 694ed5304e838057141b7df043565d58188fc870
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96619377"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013048"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Klasik sanal ağ modelinden Azure Active Directory Domain Services Kaynak Yöneticisi 'ye geçirin
 
@@ -155,8 +155,8 @@ Kaynak Yöneticisi dağıtım modeline ve sanal ağa geçiş, 5 ana adıma böl�
 |---------|--------------------|-----------------|-----------|-------------------|
 | [1. adım-yeni sanal ağı güncelleştirme ve bulma](#update-and-verify-virtual-network-settings) | Azure portal | 15 dakika | Kesinti süresi gerekli değildir | Yok |
 | [2. adım-yönetilen etki alanını geçiş için hazırlama](#prepare-the-managed-domain-for-migration) | PowerShell | 15 – ortalama 30 dakika | Azure AD DS kapalı kalma süresi bu komut tamamlandıktan sonra başlar. | Geri alma ve geri yükleme var. |
-| [3. adım-yönetilen etki alanını mevcut bir sanal ağa taşıma](#migrate-the-managed-domain) | PowerShell | 1 – 3 saat (Ortalama) | Bu komut tamamlandığında bir etki alanı denetleyicisi kullanılabilir, kapalı kalma süresi sona erer. | Hata durumunda hem geri alma (self servis) hem de geri yükleme kullanılabilir. |
-| [4. Adım-çoğaltma etki alanı denetleyicisi için test ve bekleme](#test-and-verify-connectivity-after-the-migration)| PowerShell ve Azure portal | test sayısına bağlı olarak 1 saat veya daha fazla | Her iki etki alanı denetleyicisi de kullanılabilir ve normal şekilde çalışır. | Yok. İlk VM başarıyla geçirildikten sonra, geri alma veya geri yükleme seçeneği yoktur. |
+| [3. adım-yönetilen etki alanını mevcut bir sanal ağa taşıma](#migrate-the-managed-domain) | PowerShell | 1 – 3 saat (Ortalama) | Bu komut tamamlandıktan sonra bir etki alanı denetleyicisi kullanılabilir. | Hata durumunda hem geri alma (self servis) hem de geri yükleme kullanılabilir. |
+| [4. Adım-çoğaltma etki alanı denetleyicisi için test ve bekleme](#test-and-verify-connectivity-after-the-migration)| PowerShell ve Azure portal | test sayısına bağlı olarak 1 saat veya daha fazla | Her iki etki alanı denetleyicisi de kullanılabilir ve normal olarak çalışır ve kapalı kalma süresi sona erer | Yok. İlk VM başarıyla geçirildikten sonra, geri alma veya geri yükleme seçeneği yoktur. |
 | [5. adım-Isteğe bağlı yapılandırma adımları](#optional-post-migration-configuration-steps) | Azure portal ve VM 'Ler | Yok | Kesinti süresi gerekli değildir | Yok |
 
 > [!IMPORTANT]
@@ -262,16 +262,14 @@ Bu aşamada, isteğe bağlı olarak diğer mevcut kaynakları klasik dağıtım 
 
 ## <a name="test-and-verify-connectivity-after-the-migration"></a>Geçişten sonra bağlantıyı test edin ve doğrulayın
 
-İkinci etki alanı denetleyicisinin başarıyla dağıtılması ve yönetilen etki alanında kullanılabilmesi biraz zaman alabilir.
+İkinci etki alanı denetleyicisinin başarıyla dağıtılması ve yönetilen etki alanında kullanılabilmesi biraz zaman alabilir. İkinci etki alanı denetleyicisi, geçiş cmdlet 'i bittikten sonra 1-2 saat kullanılabilir olmalıdır. Kaynak Yöneticisi dağıtım modeliyle, yönetilen etki alanı için ağ kaynakları Azure portal veya Azure PowerShell gösterilir. İkinci etki alanı denetleyicisinin kullanılabilir olup olmadığını denetlemek için Azure portal yönetilen etki alanının **Özellikler** sayfasına bakın. İki IP adresi gösteriliyorsa, ikinci etki alanı denetleyicisi hazırlayın.
 
-Kaynak Yöneticisi dağıtım modeliyle, yönetilen etki alanı için ağ kaynakları Azure portal veya Azure PowerShell gösterilir. Bu ağ kaynaklarının ne olduğu hakkında daha fazla bilgi edinmek için bkz. [Azure AD DS tarafından kullanılan ağ kaynakları][network-resources].
-
-En az bir etki alanı denetleyicisi kullanılabilir olduğunda, VM 'lerle ağ bağlantısı için aşağıdaki yapılandırma adımlarını uygulayın:
+İkinci etki alanı denetleyicisi kullanılabilir olduktan sonra VM 'lerle ağ bağlantısı için aşağıdaki yapılandırma adımlarını uygulayın:
 
 * **DNS sunucusu ayarlarını Güncelleştir** Kaynak Yöneticisi sanal ağ üzerindeki diğer kaynakların yönetilen etki alanını çözümleyip kullanmasına izin vermek için DNS ayarlarını, yeni etki alanı denetleyicilerinin IP adresleriyle güncelleştirin. Azure portal bu ayarları sizin için otomatik olarak yapılandırabilir.
 
     Kaynak Yöneticisi sanal ağını yapılandırma hakkında daha fazla bilgi için bkz. [Azure sanal ağı IÇIN DNS ayarlarını güncelleştirme][update-dns].
-* **Etki alanına katılmış VM 'Leri yeniden başlatma** -Azure AD DS etki alanı DENETLEYICILERI için DNS sunucusu IP adresleri değiştiğinde, etki alanına katılmış tüm VM 'leri yeniden başlatarak yeni DNS sunucusu ayarlarını kullanın. Uygulamalar veya VM 'Ler DNS ayarlarını el ile yapılandırdıysa, Azure portal gösterilen etki alanı denetleyicilerinin yeni DNS sunucusu IP adresleriyle el ile güncelleştirin.
+* **Etki alanına katılmış VM 'Leri yeniden başlatma (isteğe bağlı)** Azure AD DS etki alanı denetleyicileri için DNS sunucusu IP adresleri değiştiğinde, etki alanına katılmış tüm VM 'Leri yeniden başlatarak yeni DNS sunucusu ayarlarını kullanabilirsiniz. Uygulamalar veya VM 'Ler DNS ayarlarını el ile yapılandırdıysa, Azure portal gösterilen etki alanı denetleyicilerinin yeni DNS sunucusu IP adresleriyle el ile güncelleştirin. Etki alanına katılmış VM 'Lerin yeniden başlatılması, Yenilemesiz IP adreslerinden kaynaklanan bağlantı sorunlarını önler.
 
 Artık sanal ağ bağlantısını ve ad çözümlemesini test edin. Kaynak Yöneticisi sanal ağa bağlı bir VM 'de veya bu ağa eşlendikten sonra aşağıdaki ağ iletişim testlerini deneyin:
 
@@ -280,7 +278,7 @@ Artık sanal ağ bağlantısını ve ad çözümlemesini test edin. Kaynak Yöne
 1. Yönetilen etki alanının ad çözümlemesini doğrulama, örneğin `nslookup aaddscontoso.com`
     * DNS ayarlarının doğru ve çözümlendiğini doğrulamak için kendi yönetilen etki alanınız için DNS adını belirtin.
 
-İkinci etki alanı denetleyicisi, geçiş cmdlet 'i bittikten sonra 1-2 saat kullanılabilir olmalıdır. İkinci etki alanı denetleyicisinin kullanılabilir olup olmadığını denetlemek için Azure portal yönetilen etki alanının **Özellikler** sayfasına bakın. İki IP adresi gösteriliyorsa, ikinci etki alanı denetleyicisi hazırlayın.
+Diğer ağ kaynakları hakkında daha fazla bilgi edinmek için bkz. [Azure AD DS tarafından kullanılan ağ kaynakları][network-resources].
 
 ## <a name="optional-post-migration-configuration-steps"></a>İsteğe bağlı geçiş sonrası yapılandırma adımları
 

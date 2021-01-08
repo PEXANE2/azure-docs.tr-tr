@@ -13,12 +13,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 2630984d54134ca8fca94fdc1960265ba71935a6
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: fdaaf935dc458a6a5b2a87a81bb98a1392f1034a
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031309"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012130"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>Hızlı başlangıç: bir istemci uygulamasını bir Web API 'sine erişmek için yapılandırma
 
@@ -42,7 +42,7 @@ Bu diyagramda iki uygulama kaydı birbirleriyle nasıl ilişki gösterilmektedir
 
 Hem istemci uygulamanızı hem de Web API 'nizi kaydettikten sonra, kapsamları oluşturarak API 'yi kullanıma aldıktan sonra, aşağıdaki adımları izleyerek istemcinin izinlerini API 'ye yapılandırabilirsiniz:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
 1. Birden çok kiracıya erişiminiz varsa,  :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false"::: istemci uygulamanızın kaydını içeren kiracıyı seçmek Için üst menüdeki Dizin + abonelik filtresini kullanın.
 1. **Azure Active Directory**  >  **uygulama kayıtları**' i seçin ve ardından istemci uygulamanızı (Web API 'nizi *değil* ) seçin.
 1. **API izinleri** Seç  >    >  **API 'lerim** izin Ekle.
@@ -71,14 +71,14 @@ Oturum açmış kullanıcı adına kendi Web API 'nize erişmenin yanı sıra, u
 
 İstemci uygulamanızın oturum açmış kullanıcı adına işlemleri gerçekleştirmesini sağlamak için Microsoft Graph için temsilci izni yapılandırın (örneğin, e-postalarını okumak veya profillerini değiştirmek). Varsayılan olarak, istemci uygulamanızın kullanıcılarına, sizin için yapılandırdığınız Temsilcili izinlere izin vermek üzere oturum açtıklarında sorulur.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
 1. Birden çok kiracıya erişiminiz varsa,  :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false"::: istemci uygulamanızın kaydını içeren kiracıyı seçmek Için üst menüdeki Dizin + abonelik filtresini kullanın.
 1. **Azure Active Directory**  >  **uygulama kayıtları**' i seçin ve ardından istemci uygulamanızı seçin.
 1. **API izinlerini** seçin  >  **izin**  >  **Microsoft Graph** Ekle
 1. **Temsilci izinleri** seçin. Microsoft Graph, listenin en üstünde gösterilen en yaygın olarak kullanılan birçok izni kullanıma sunar.
 1. **Izinleri Seç**' in altında aşağıdaki izinleri seçin:
 
-    | İzin       | Description                                         |
+    | İzin       | Açıklama                                         |
     |------------------|-----------------------------------------------------|
     | `email`          | Kullanıcıların e-posta adresini görüntüleme                           |
     | `offline_access` | Erişimi verdiğiniz verilere erişimi koruyun |
@@ -96,7 +96,7 @@ Kullanıcı etkileşimi veya onay olmadan kendisi olarak kimlik doğrulaması ya
 
 Aşağıdaki adımlarda Microsoft Graph dosyalarına izin verirsiniz. bir örnek olarak *. All Iznini okuyun* .
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
 1. Birden çok kiracıya erişiminiz varsa,  :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false"::: istemci uygulamanızın kaydını içeren kiracıyı seçmek Için üst menüdeki Dizin + abonelik filtresini kullanın.
 1. **Azure Active Directory**  >  **uygulama kayıtları**' i seçin ve ardından istemci uygulamanızı seçin.
 1. **API izinlerini** seçin  >  **bir izin**  >  **Microsoft Graph**  >  **Uygulama izinleri** ekleyin.

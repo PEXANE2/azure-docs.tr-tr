@@ -1,18 +1,18 @@
 ---
 title: Hızlı başlangıç-Azure portal kullanarak Stream Analytics işi oluşturma
 description: Bu hızlı başlangıçta bir Stream Analytic işi oluşturma, girdileri ve çıktıları yapılandırma ve bir sorgu tanımlama yoluyla çalışmaya nasıl başlayacağınız gösterilmektedir.
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.date: 06/21/2019
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 5ad261064adf34945a600983296cb3e0ceaa5247
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c585cedce677599528e036525dead13a85c8b102
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006670"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012385"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Hızlı başlangıç: Azure portalını kullanarak Stream Analytics işi oluşturma
 
@@ -22,15 +22,15 @@ Bu hızlı başlangıçta bir Stream Analytics işini oluşturmaya nasıl başla
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-* [Azure portalında](https://portal.azure.com/) oturum açın.
+* [Azure Portal](https://portal.azure.com/) oturum açın.
 
 ## <a name="prepare-the-input-data"></a>Girdi verilerini hazırlama
 
 Stream Analytics işini tanımlamadan önce, giriş verilerini hazırlamanız gerekir. Gerçek zamanlı algılayıcı verileri, daha sonra iş girişi olarak yapılandırılan IoT Hub alınır. İş için gereken giriş verilerini hazırlamak için aşağıdaki adımları izleyin:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
-2. IoT Hub **nesnelerin interneti kaynak oluştur**' u seçin  >  **Internet of Things**  >  **IoT Hub**.
+2. IoT Hub **nesnelerin interneti kaynak oluştur**' u seçin  >    >  .
 
 3. **IoT Hub** bölmesinde aşağıdaki bilgileri girin:
    
@@ -77,7 +77,7 @@ Stream Analytics işini tanımlamadan önce, giriş verilerini hazırlamanız ge
 
 ## <a name="create-a-stream-analytics-job"></a>Akış Analizi işi oluşturma
 
-1. Azure portalında oturum açın.
+1. Azure Portal’da oturum açın.
 
 2. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesini seçin.  
 
@@ -106,7 +106,7 @@ Bu bölümde, Stream Analytics işine IoT Hub bir cihaz girişi yapılandıracak
 
 1. Stream Analytics işinize gidin.  
 
-2. **Giriş**  >  **IoT Hub akış girişi Ekle**' yi seçin  >  **IoT Hub**.  
+2. **Giriş**  >  **IoT Hub akış girişi Ekle**' yi seçin  >  .  
 
 3. **IoT Hub** sayfasını aşağıdaki değerlerle doldurun:
 
@@ -124,7 +124,7 @@ Bu bölümde, Stream Analytics işine IoT Hub bir cihaz girişi yapılandıracak
 
 1. Daha önce oluşturduğunuz Stream Analytics işine gidin.  
 
-2. **Çıkışları**  >  **Add**  >  **BLOB depolama** Ekle ' yi seçin.  
+2. **Çıkışları**  >    >  **BLOB depolama** Ekle ' yi seçin.  
 
 3. **Blob depolama** sayfasını aşağıdaki değerlerle doldurun:
 
@@ -152,7 +152,7 @@ Bu bölümde, Stream Analytics işine IoT Hub bir cihaz girişi yapılandıracak
    HAVING Temperature > 27
    ```
 
-3. Bu örnekte sorgu IoT Hub verileri okur ve Blobun yeni bir dosyaya kopyalar. **Kaydet**'i seçin.  
+3. Bu örnekte sorgu IoT Hub verileri okur ve Blobun yeni bir dosyaya kopyalar. **Kaydet**’i seçin.  
 
    ![İş dönüşümü yapılandırma](./media/stream-analytics-quick-create-portal/add-asa-query.png)
 

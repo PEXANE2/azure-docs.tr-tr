@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9d3a00491bc0628244a5a7907f0dee03a5f8d3c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: fdff7e62753e75a14d6711b77dd451603353dae5
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744202"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012844"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Azure Active Directory-telefon seçeneklerinde kimlik doğrulama yöntemleri
 
@@ -58,6 +58,8 @@ Azure AD için telefon kimlik doğrulamasıyla ilgili sorunlar yaşıyorsanız, 
 
 * "Doğrulama çağrılarında limitimize ulaştınız" veya "oturum açma sırasında" metin Doğrulama kodlarıyla sınırımız "hata iletileriyle karşılaştık
    * Microsoft, aynı kullanıcı tarafından kısa bir süre içinde yapılan yinelenen kimlik doğrulama girişimlerini sınırlayabilir. Bu sınırlama Microsoft Authenticator veya doğrulama kodu için geçerlidir. Bu sınırlara ulaşırsanız, doğrulayıcı uygulamasını, doğrulama kodunu kullanabilir veya birkaç dakika içinde yeniden oturum açmayı deneyebilirsiniz.
+* "Üzgünüz, oturum açma sırasında hesabınızı doğrularken sorun yaşıyoruz" hata iletisi
+   * Microsoft, yüksek sayıda başarısız sesli veya SMS kimlik doğrulama girişimi nedeniyle aynı kullanıcı, telefon numarası veya kuruluş tarafından gerçekleştirilen sesli veya SMS kimlik doğrulama girişimlerini sınırlayabilir veya engelleyebilir. Bu hatayla karşılaşıyorsanız, kimlik doğrulayıcı uygulaması veya doğrulama kodu gibi başka bir yöntemi deneyebilir veya destek için yöneticinize erişebilirsiniz.
 * Tek bir cihazda engellenen arayan KIMLIĞI.
    * Cihazda yapılandırılan tüm engellenen numaraları gözden geçirin.
 * Yanlış telefon numarası veya yanlış ülke/bölge kodu ya da kişisel telefon numarası ile iş telefonu numarası arasında karışıklık.

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/22/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: e85e433e1b1b31470fc8d7dee24353fd719b64e2
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: ca22d4f1ff48222b33030eb44d7feb62b1d154cd
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031190"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011893"
 ---
 # <a name="quickstart-protect-an-aspnet-core-web-api-with-microsoft-identity-platform"></a>Hızlı başlangıç: ASP.NET Core Web API 'sini Microsoft Identity platformu ile koruma
 
@@ -35,7 +35,7 @@ Bu hızlı başlangıçta, bir ASP.NET Core Web API kodu örneği indirir ve bu 
 >
 > İlk olarak, Web API 'sini Azure AD kiracınıza kaydedin ve aşağıdaki adımları izleyerek bir kapsam ekleyin:
 >
-> 1. [Azure Portal](https://portal.azure.com) oturum açın.
+> 1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
 > 1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
 > 1. **Azure Active Directory**'yi bulun ve seçin.
 > 1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
@@ -98,7 +98,7 @@ Web API 'SI bir istemci uygulamasından bir belirteç alır ve Web API 'sindeki 
 
 İçeren çizgi, `.AddMicrosoftIdentityWebApi` Web API 'Nize Microsoft Identity platform yetkilendirmesi ekler. Daha sonra, `AzureAD` yapılandırma dosyası *appsettings.js* bölümündeki bilgileri temel alarak Microsoft Identity platform uç noktası tarafından verilen erişim belirteçlerini doğrulamak üzere yapılandırılmıştır:
 
-| *appsettings.js* anahtarda | Description                                                                                                                                                          |
+| *appsettings.js* anahtarda | Açıklama                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `ClientId`             | Azure portal kayıtlı uygulamanın **uygulama (istemci) kimliği** .                                                                                       |
 | `Instance`             | Kullanıcının kimlik doğrulaması için güvenlik belirteci hizmeti (STS) uç noktası. Bu değer genellikle `https://login.microsoftonline.com/` Azure genel bulutu 'nı gösterir. |

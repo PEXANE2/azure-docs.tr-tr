@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics 'de iş izlemeyi anlama
 description: Bu makalede, Azure portal Azure Stream Analytics işlerin nasıl izleneceği açıklanır.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: f8e0d49c2a35a1e97c79e6d4b8c867a4a8ab88b3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5141c7fcfe1128574145930548f41731529c2ad8
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006687"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012470"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Stream Analytics iş izlemeyi ve sorguların nasıl izleneceğini anlayın
 
@@ -27,7 +26,7 @@ Bu pencere gösterildiği gibi görünür:
 ![Stream Analytics iş izleme panosu](./media/stream-analytics-monitoring/01-stream-analytics-monitoring.png)  
 
 ## <a name="metrics-available-for-stream-analytics"></a>Stream Analytics için kullanılabilir ölçümler
-| Metric                 | Tanım                               |
+| Ölçüm                 | Tanım                               |
 | ---------------------- | ---------------------------------------- |
 | Biriktirme listesindeki giriş olayları       | Biriktirme listesindeki giriş olaylarının sayısı. Bu ölçüm için sıfır olmayan bir değer, işinizin gelen olay sayısıyla devam edemediğinden emin olmak anlamına gelir. Bu değer yavaş bir şekilde artarak veya sürekli olarak sıfır değilse, işinizi ölçeklendirmelisiniz. Daha fazla bilgi edinmek için öğrenme [ve akış birimlerini ayarlayın](stream-analytics-streaming-unit-consumption.md). |
 | Veri dönüştürme hataları | Beklenen çıkış şemasına dönüştürülemeyen çıkış olaylarının sayısı. Hata ilkesi, bu senaryoya ilişkin olayları bırakmak için ' Drop ' olarak değiştirilebilir. |

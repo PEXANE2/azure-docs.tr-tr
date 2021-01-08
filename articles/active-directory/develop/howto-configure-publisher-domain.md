@@ -13,16 +13,16 @@ ms.date: 07/23/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
-ms.openlocfilehash: d62328534157a1e2d9e53830be9d6b87e08c9e40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d793ed912af1c6fdd6e0da417b8709cad8bf08b9
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87129279"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013643"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain"></a>Nasıl yapılır: bir uygulamanın yayımcı etki alanını yapılandırma
 
-Uygulamanın yayımcı etki alanı, kullanıcıların bilgilerinin gönderildiği yeri bilmesini sağlamak için [uygulamanın onay isteminde](application-consent-experience.md) kullanıcılara görüntülenir. 21 Mayıs 2019 ' den sonra kaydedilen çok kiracılı uygulamalar, yayımcı etki alanı **doğrulanmamış**olarak görünür. Çok kiracılı uygulamalar, tek bir kuruluş dizini dışında hesapları destekleyen uygulamalardır; Örneğin, tüm Azure AD hesaplarını destekler veya tüm Azure AD hesaplarını ve kişisel Microsoft hesaplarını destekler.
+Uygulamanın yayımcı etki alanı, kullanıcıların bilgilerinin gönderildiği yeri bilmesini sağlamak için [uygulamanın onay isteminde](application-consent-experience.md) kullanıcılara görüntülenir. 21 Mayıs 2019 ' den sonra kaydedilen çok kiracılı uygulamalar, yayımcı etki alanı **doğrulanmamış** olarak görünür. Çok kiracılı uygulamalar, tek bir kuruluş dizini dışında hesapları destekleyen uygulamalardır; Örneğin, tüm Azure AD hesaplarını destekler veya tüm Azure AD hesaplarını ve kişisel Microsoft hesaplarını destekler.
 
 ## <a name="new-applications"></a>Yeni uygulamalar
 
@@ -48,7 +48,7 @@ Uygulamanız 21 Mayıs 2019 tarihinden önce kaydedilmişse, bir yayımcı etki 
 
 Uygulamanızın yayımcı etki alanını ayarlamak için aşağıdaki adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a> iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 
 1. Hesabınız birden çok Azure AD kiracısında varsa:
    1. Sayfanın sağ üst köşesindeki menüden profilinizi seçin ve ardından dizin ' i **değiştirin**.

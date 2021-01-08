@@ -3,16 +3,15 @@ title: Azure Stream Analytics ile pano tümleştirmesi Power BI
 description: Bu makalede, bir Azure Stream Analytics işinden verileri görselleştirmek için gerçek zamanlı Power BI panonun nasıl kullanılacağı açıklanır.
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/16/2020
-ms.openlocfilehash: 4e3f31442c5fa645e27a640d8facf86aed20aa75
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3bd35df91e836245de52d8959dff0671582ebc3f
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006704"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012453"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics ve Power BI: veri akışı verileri için gerçek zamanlı analiz panosu
 
@@ -39,7 +38,7 @@ Gerçek zamanlı sahtekarlık algılama öğreticisinde, çıkış Azure Blob de
 
 2. Sol menüde, **iş topolojisi** altında **çıktılar** ' i seçin. Ardından **+ Ekle** ' yi seçin ve açılan menüden **Power BI** seçin.
 
-3. **+ Power BI Ekle**' yi seçin  >  **Power BI**. Daha sonra formu aşağıdaki ayrıntılarla doldurup Power BI bağlanmak için kendi Kullanıcı Kimliğinizi kullanmak üzere **Yetkilendir** ' i seçin (belirteç 90 gün için geçerlidir). 
+3. **+ Power BI Ekle**' yi seçin  >  . Daha sonra formu aşağıdaki ayrıntılarla doldurup Power BI bağlanmak için kendi Kullanıcı Kimliğinizi kullanmak üzere **Yetkilendir** ' i seçin (belirteç 90 gün için geçerlidir). 
 
 >[!NOTE]
 >Üretim işleri için, [Power BI için Azure Stream Analytics işinizin kimliğini doğrulamak üzere yönetilen kimlik kullanmak](./powerbi-output-managed-identity.md)üzere bağlanmanız önerilir.
@@ -59,7 +58,7 @@ Gerçek zamanlı sahtekarlık algılama öğreticisinde, çıkış Azure Blob de
 
 4. **Yetkilendir**'i seçtiğinizde bir açılır pencere görünür ve Power BI hesabınızda kimlik doğrulaması için sizden kimlik bilgilerini sağlamanız istenir. Yetkilendirme başarılı olduktan sonra **Kaydet** seçeneğine tıklayarak ayarları kaydedin.
 
-8. **Oluştur**'a tıklayın.
+8. **Oluştur**’a tıklayın.
 
 Veri kümesi aşağıdaki ayarlarla oluşturulur:
 
@@ -194,7 +193,7 @@ Aşağıdaki denklemi, pencerenize saniye cinsinden vermek için değeri hesapla
 
 ![Saniye cinsinden pencere sağlamak için değer hesaplama denklemi](./media/stream-analytics-power-bi-dashboard/compute-window-seconds-equation.png)  
 
-Örnek:
+Örneğin:
 
 * Tek saniyelik aralıklarla veri gönderen 1.000 cihazlardır.
 * Saat başına 1.000.000 satırı destekleyen Power BI Pro SKU 'SU kullanıyorsunuz.

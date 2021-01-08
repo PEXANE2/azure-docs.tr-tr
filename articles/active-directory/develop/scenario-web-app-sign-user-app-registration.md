@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 30d646ff7d4f97289ff238211418ac57cd8167a4
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 7ca294d3d7764737d4e2be55aae25bc8ff08a8d1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107694"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011535"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Kullanıcılarda oturum açan Web uygulaması: uygulama kaydı
 
@@ -41,7 +41,7 @@ Web uygulamanızın oluşturulmasını önyüklemek için bu bağlantıları kul
 > Kullanılacak Portal, uygulamanızın Microsoft Azure genel bulutta mi yoksa ulusal veya bağımsız bulutta mı çalışmasına bağlı olarak farklılık belirtir. Daha fazla bilgi için bkz. [Ulusal bulutlar](./authentication-national-cloud.md#app-registration-endpoints).
 
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın. 
 1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
 1. **Azure Active Directory**'yi bulun ve seçin.
 1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
@@ -86,7 +86,7 @@ Varsayılan olarak, örnek şunları kullanır:
    - **http://localhost:8080/msal4jsample/graph/me**
 
 1. **Kaydet**’i seçin.
-1. **Yönet** altında **Sertifikalar & gizlilikler**' ı seçin.
+1. **Yönet**’in altında **Sertifikalar ve gizli diziler**’i seçin.
 1. **İstemci gizli** dizileri bölümünde **yeni istemci parolası**' nı seçin ve ardından:
 
    1. Bir anahtar açıklaması girin.
@@ -102,7 +102,7 @@ Varsayılan olarak, örnek şunları kullanır:
    1. **Yeniden yönlendirme URI 'si (isteğe bağlı)** bölümünde, açılan kutuda **Web** ' i seçin ve aşağıdaki yeniden yönlendirme URI 'sini girin: **http://localhost:5000/getAToken** .
    1. Uygulamayı kaydetmek için **Kaydet**'i seçin.
 1. Uygulamanın **genel bakış** sayfasında, **uygulama (istemci) kimlik** değerini bulun ve daha sonra için kaydedin. Bu proje için Visual Studio yapılandırma dosyasını yapılandırmak için gerekli olacaktır.
-1. **Yönet** altında **Sertifikalar & gizlilikler**' ı seçin.
+1. **Yönet**’in altında **Sertifikalar ve gizli diziler**’i seçin.
 1. **Istemci gizli** dizileri bölümünde **yeni istemci parolası**' nı seçin ve ardından:
    1. Bir anahtar açıklaması girin.
    1. **1 yılda** bir anahtar süresi seçin.

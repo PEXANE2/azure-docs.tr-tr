@@ -3,16 +3,15 @@ title: Azure Stream Analytics Azure Machine Learning Studio (klasik) uç noktala
 description: Bu makalede, Azure Stream Analytics ' de makine dili Kullanıcı tanımlı işlevlerinin nasıl kullanılacağı açıklanır.
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/11/2019
-ms.openlocfilehash: 236191710dac19a08db0e8ce94dc695d393009a7
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: a36162d24e18371fdf6b19835e4748e3043d1f24
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127136"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012534"
 ---
 # <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics-preview"></a>Stream Analytics Azure Machine Learning Studio (klasik) Tümleştirmesi (Önizleme)
 Stream Analytics, Azure Machine Learning Studio (klasik) uç noktalarına çağıran kullanıcı tanımlı işlevleri destekler. Bu özellik için REST API desteği [Stream Analytics REST API kitaplığı](/rest/api/streamanalytics/)'nda ayrıntılı olarak açıklanmıştır. Bu makalede, Stream Analytics bu özelliğin başarılı uygulanması için gereken ek bilgiler sağlanmaktadır. Bir öğretici de gönderildi ve [burada](stream-analytics-machine-learning-integration-tutorial.md)kullanılabilir.
@@ -20,10 +19,10 @@ Stream Analytics, Azure Machine Learning Studio (klasik) uç noktalarına çağ�
 ## <a name="overview-azure-machine-learning-studio-classic-terminology"></a>Genel Bakış: Azure Machine Learning Studio (klasik) terminoloji
 Microsoft Azure Machine Learning Studio (klasik), verilerinizde tahmine dayalı analiz çözümleri oluşturmak, test etmek ve dağıtmak için kullanabileceğiniz işbirliğine dayalı bir sürükle ve bırak aracı sağlar. Bu araç *Azure Machine Learning Studio (klasik)* olarak adlandırılır. Studio (klasik) makine öğrenimi kaynaklarıyla etkileşim kurmak ve tasarımınızda kolayca derlemek, test etmek ve yinelemek için kullanılır. Bu kaynaklar ve tanımları aşağıda verilmiştir.
 
-* **Çalışma alanı** : *çalışma alanı* , yönetim ve denetim için bir kapsayıcıda birlikte diğer tüm makine öğrenimi kaynaklarını tutan bir kapsayıcıdır.
-* **Deneme** : *denemeleri* , veri bilimcilerinin veri kümeleri kullanmasını ve makine öğrenimi modeliyle eğmesini sağlar.
-* **Uç nokta** : *uç noktalar* , işlevleri giriş olarak almak için kullanılan Studio (klasik) nesnesidir, belirtilen makine öğrenimi modelini uygular ve puanlanmış çıktıyı döndürür.
-* **Puanlama Web hizmeti** : *Puanlama Web hizmeti* , yukarıda belirtilen bitiş noktaları koleksiyonudur.
+* **Çalışma alanı**: *çalışma alanı* , yönetim ve denetim için bir kapsayıcıda birlikte diğer tüm makine öğrenimi kaynaklarını tutan bir kapsayıcıdır.
+* **Deneme**: *denemeleri* , veri bilimcilerinin veri kümeleri kullanmasını ve makine öğrenimi modeliyle eğmesini sağlar.
+* **Uç nokta**: *uç noktalar* , işlevleri giriş olarak almak için kullanılan Studio (klasik) nesnesidir, belirtilen makine öğrenimi modelini uygular ve puanlanmış çıktıyı döndürür.
+* **Puanlama Web hizmeti**: *Puanlama Web hizmeti* , yukarıda belirtilen bitiş noktaları koleksiyonudur.
 
 Her bitiş noktasında toplu yürütme ve zaman uyumlu yürütme için API 'ler vardır. Stream Analytics zaman uyumlu yürütmeyi kullanır. Belirli bir hizmete Azure Machine Learning Studio (klasik) içinde bir [istek/yanıt hizmeti](../machine-learning/classic/consume-web-services.md) adı verilir.
 

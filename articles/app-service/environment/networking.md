@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 61059c3e0f9737df6ace338f4252a338ea1f200c
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 680b1f3b6af186eba27a4dd926016a04cd863760
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663945"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013501"
 ---
 # <a name="app-service-environment-networking"></a>App Service Ortamı ağı
 
@@ -34,7 +34,11 @@ ATıCı, oluşturma sırasında aşağıdaki adreslere sahiptir:
 | Windows giden adresi | Bu Ao 'daki Windows uygulamaları, internet 'e giden çağrılar yaparken varsayılan olarak bu adresi kullanır. |
 | Linux giden adresi | Bu Ao 'nun içindeki Linux uygulamaları, internet 'e giden çağrılar yaparken varsayılan olarak bu adresi kullanır. |
 
-Ao tarafından kullanılan özel uç noktasını silerseniz Ao 'inizdeki uygulamalara ulaşıamazsınız. AŞIRINIZ ile ilişkili Azure DNS özel bölgesini silmeyin.  
+ASEv3, ASE portalının **IP adresleri** bölümünde ASE tarafından kullanılan adresler hakkında ayrıntılı bilgiler içerir.
+
+![Ao adresler Kullanıcı arabirimi](./media/networking/networking-ip-addresses.png)
+
+Ao tarafından kullanılan özel uç noktasını silerseniz Ao 'inizdeki uygulamalara ulaşıamazsınız.  
 
 ATıCı, Ao tarafından kullanılan altyapıyı desteklemek için giden alt ağdaki adresleri kullanır. App Service planlarınızı Ao uygulamanızda ölçeklendirirseniz, daha fazla adres kullanacaksınız. Ao 'daki uygulamalar giden alt ağda özel adresler içermez. Bir uygulama tarafından giden alt ağdaki bir uygulama tarafından kullanılan adresler zamanla değişecektir.
 
@@ -48,7 +52,7 @@ ASEv2 aksine, ASEv3 ile ağ güvenlik grupları (NSG 'ler) ve yol tabloları (UD
 
 ## <a name="dns"></a>DNS
 
-ASE 'deki uygulamalar, sanal ağınızın yapılandırıldığı DNS 'i kullanacaktır. Bazı uygulamaların farklı bir DNS sunucusu kullanmasını istiyorsanız, uygulama ayarları WEBSITE_DNS_SERVER ve WEBSITE_DNS_ALT_SERVER ile uygulama başına el ile ayarlayabilirsiniz. WEBSITE_DNS_ALT_SERVER uygulama ayarı ikincil DNS sunucusunu yapılandırır. İkincil DNS sunucusu yalnızca birincil DNS sunucusundan yanıt olmadığında kullanılır. 
+ASE 'deki uygulamalar, sanal ağınızın yapılandırıldığı DNS 'i kullanacaktır. DNS sunucunuzu AŞIRINIZI işaret etmek üzere yapılandırmak için [App Service ortamı kullanma](https://docs.microsoft.com/azure/app-service/environment/using#dns-configuration) yönergelerini izleyin. Bazı uygulamaların sanal ağınızın yapılandırılmış olandan farklı bir DNS sunucusu kullanmasını istiyorsanız, uygulama ayarları WEBSITE_DNS_SERVER ve WEBSITE_DNS_ALT_SERVER ile uygulama başına el ile ayarlayabilirsiniz. WEBSITE_DNS_ALT_SERVER uygulama ayarı ikincil DNS sunucusunu yapılandırır. İkincil DNS sunucusu yalnızca birincil DNS sunucusundan yanıt olmadığında kullanılır. 
 
 ## <a name="preview-limitation"></a>Önizleme sınırlaması
 

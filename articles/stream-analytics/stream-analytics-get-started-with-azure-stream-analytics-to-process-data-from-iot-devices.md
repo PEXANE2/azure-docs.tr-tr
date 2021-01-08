@@ -1,18 +1,17 @@
 ---
 title: Azure Stream Analytics ile gerçek zamanlı IoT veri akışlarını işleme
 description: Akış analizi ve gerçek zamanlı veri işleme ile birlikte IoT algılayıcı etiketleri ve veri akışları
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/26/2019
-ms.openlocfilehash: 311aca139220622a0436d490e73a536c3fc898c9
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: a438401ff93c20d8759e6128936c3626bd3de484
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129024"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012691"
 ---
 # <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>Azure Stream Analytics ile gerçek zamanlı IoT veri akışlarını işleme
 
@@ -50,7 +49,7 @@ Kullanım kolaylığı için, bu başlangıç kılavuzunda gerçek algılayıcı
 
 1. Benzersiz bir iş adı girin ve aboneliğin işiniz için doğru olduğundan emin olun. Yeni bir kaynak grubu oluşturun veya aboneliğinizden mevcut bir kaynağı seçin.
 
-1. İşiniz için bir konum seçin. İşlem hızını artırmak ve maliyetlerin düşürülmesi için kaynak grubunuz ve tüm kaynaklar için aynı konumu kullanın. Yapılandırma yaptıktan sonra **Oluştur** ' u seçin.
+1. İşiniz için bir konum seçin. İşlem hızını artırmak ve maliyetlerin düşürülmesi için kaynak grubunuz ve tüm kaynaklar için aynı konumu kullanın. Yapılandırma yaptıktan sonra **Oluştur**' u seçin.
    
     ![Yeni bir Akış Analizi işi oluşturma ayrıntıları](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03.png)
 
@@ -60,7 +59,7 @@ Kullanım kolaylığı için, bu başlangıç kılavuzunda gerçek algılayıcı
 [HelloWorldASA-InputStream.js](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/GettingStarted/HelloWorldASA-InputStream.json
 ) GitHub 'dan indirin. Sonra, Azure portal Azure Stream Analytics işinize gidin.
 
-Sol menüden **iş topolojisi** altında **sorgu** ' yı seçin. Ardından **örnek girişi yükle** ' yi seçin. Dosyayı karşıya yükleyin `HelloWorldASA-InputStream.json` ve **Tamam** ' ı seçin.
+Sol menüden **iş topolojisi** altında **sorgu** ' yı seçin. Ardından **örnek girişi yükle**' yi seçin. Dosyayı karşıya yükleyin `HelloWorldASA-InputStream.json` ve **Tamam**' ı seçin.
 
 ![Pano sorgu kutucuğunu Stream Analytics](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
 
@@ -125,7 +124,7 @@ HAVING Avg(temp)>100
 
 ![30 saniyelik filtre sorgusu](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-10.png)
 
-Ortalama geçicinin 100 ' den büyük olduğu yalnızca 245 satır ve algılayıcı adı içeren sonuçları görmeniz gerekir. Bu sorguda olay akışı, 30 saniyelik bir **Atlayan Pencere** üzerinden algılayıcı adı olan **dspl** 'ye göre gruplanır. Zamana bağlı sorgular, saatin nasıl ilerlemesini istediğinizi belirtmelidir. **Zaman DAMGASı by** yan tümcesini kullanarak, saatleri tüm zamana bağlı hesaplamalarla Ilişkilendirmek Için **outputtime** sütununu belirttiniz. Ayrıntılı bilgi için [zaman yönetimi](/stream-analytics-query/time-management-azure-stream-analytics) ve [Pencereleme işlevleri](/stream-analytics-query/windowing-azure-stream-analytics)hakkında bilgi edinin.
+Ortalama geçicinin 100 ' den büyük olduğu yalnızca 245 satır ve algılayıcı adı içeren sonuçları görmeniz gerekir. Bu sorguda olay akışı, 30 saniyelik bir **Atlayan Pencere** üzerinden algılayıcı adı olan **dspl**'ye göre gruplanır. Zamana bağlı sorgular, saatin nasıl ilerlemesini istediğinizi belirtmelidir. **Zaman DAMGASı by** yan tümcesini kullanarak, saatleri tüm zamana bağlı hesaplamalarla Ilişkilendirmek Için **outputtime** sütununu belirttiniz. Ayrıntılı bilgi için [zaman yönetimi](/stream-analytics-query/time-management-azure-stream-analytics) ve [Pencereleme işlevleri](/stream-analytics-query/windowing-azure-stream-analytics)hakkında bilgi edinin.
 
 ### <a name="query-detect-absence-of-events"></a>Sorgu: Var olmayan olayları algılama
 

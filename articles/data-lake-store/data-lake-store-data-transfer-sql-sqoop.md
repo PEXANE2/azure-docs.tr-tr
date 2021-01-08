@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: twooley
 ms.openlocfilehash: 9bb787138267fd8a9fab4dea233c1c828b457d67
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 01/08/2021
 ms.locfileid: "92109196"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Sqoop kullanarak Data Lake Storage 1. ve Azure SQL veritabanı arasında veri kopyalama
@@ -24,7 +24,7 @@ Büyük veri uygulamaları, Günlükler ve dosyalar gibi yapılandırılmamış 
 
 [Apache Sqoop](https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html) , ilişkisel veritabanları ve Data Lake Storage 1. gibi büyük bir veri deposu arasında veri aktarmak için tasarlanan bir araçtır. Azure SQL veritabanı gibi bir ilişkisel veritabanı yönetim sisteminden (RDBMS) verileri Data Lake Storage 1. içine aktarmak için bu işlemi kullanabilirsiniz. Daha sonra büyük veri iş yüklerini kullanarak verileri dönüştürebilir ve analiz edebilir ve ardından verileri bir RDBMS 'ye geri aktarabilirsiniz. Bu makalede, Azure SQL veritabanı 'nda içeri/dışarı aktarılacak ilişkisel veritabanınız olarak bir veritabanı kullanırsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
@@ -121,11 +121,11 @@ An HDInsight kümesinde Sqoop paketleri zaten var. HDInsight kümesini ek depola
     -rwxrwxrwx   0 sshuser hdfs         18 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00003
     ```
 
-   Her **kısım-5-*** dosyası, **Table1**Kaynak tablosundaki bir satıra karşılık gelir. Doğrulanacak bölüm-n-* dosyalarının içeriğini görüntüleyebilirsiniz.
+   Her **parça-b-** _ dosyası kaynak tablodaki bir satıra karşılık gelir _ *Table1 * *. Doğrulanacak bölüm-b dosyalarının içeriğini görüntüleyebilirsiniz* .
 
 ### <a name="export-data-from-data-lake-storage-gen1-into-azure-sql-database"></a>Data Lake Storage 1. verileri Azure SQL veritabanı 'na aktarma
 
-1. Data Lake Storage 1. hesabındaki verileri, Azure SQL veritabanında bulunan **Table2**boş tablosuna aktarın. Aşağıdaki sözdizimini kullanın.
+1. Data Lake Storage 1. hesabındaki verileri, Azure SQL veritabanında bulunan **Table2** boş tablosuna aktarın. Aşağıdaki sözdizimini kullanın.
 
     ```console
     sqoop-export --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table2 --export-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
