@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/25/2019
 ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: 12c0acd5211a6fbcfd1e2861a3109b57fc67dbcf
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 54306b8bd8718a0a69f5b04ceaab15dff46d21a8
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97930563"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97978860"
 ---
 | Kaynak | Sınır |
 | --- | --- |
@@ -21,7 +21,7 @@ ms.locfileid: "97930563"
 | Abonelik başına her bölge için ExpressRoute devreleri, Azure Resource Manager ile |10 |
 | ExpressRoute standardı ile Azure özel eşlemesine tanıtılan en fazla yol sayısı |4.000 |
 | ExpressRoute Premium eklentisi ile Azure özel eşleme 'ye tanıtılan en fazla yol sayısı |10,000 |
-| ExpressRoute bağlantısı için VNet adres alanından Azure özel eşlemeden tanıtılan en fazla yol sayısı |200 |
+| ExpressRoute bağlantısı için VNet adres alanından Azure özel eşlemeden tanıtılan en fazla yol sayısı |1000 |
 | ExpressRoute standardı ile Microsoft eşlemesine tanıtılan en fazla yol sayısı |200 |
 | ExpressRoute Premium eklentisi ile Microsoft eşlemesi 'ne tanıtılan en fazla yol sayısı |200 |
 | Aynı eşleme konumunda aynı sanal ağa bağlı olan maksimum ExpressRoute bağlantı hattı sayısı |4 |

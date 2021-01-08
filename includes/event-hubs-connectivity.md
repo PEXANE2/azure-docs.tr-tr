@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/19/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: dac82692c76d9d36b1f25d7b93b5c3a2e2400672
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7ebb9dbce020086a716872c86221b97b4b7a6653
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002809"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97978790"
 ---
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Güvenlik duvarında hangi bağlantı noktalarını açmalıyım? 
 Olayları göndermek ve almak için Azure Event Hubs ile aşağıdaki protokolleri kullanabilirsiniz:
@@ -38,7 +38,7 @@ Resmi Azure SDK 'Ları genellikle Event Hubs olayları göndermek ve almak için
 | -------- | ----- |
 | .NET     | [Eventhubstransporttype. AmqpTcp](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype?view=azure-dotnet&preserve-view=true) veya [Eventhubstransporttype. AmqpWebSockets](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype?view=azure-dotnet&preserve-view=true) Ile [Eventhubconnectionoptions. TransportType](/dotnet/api/azure.messaging.eventhubs.eventhubconnectionoptions.transporttype?view=azure-dotnet&preserve-view=true) özelliği |
 | Java     | [com. Microsoft. Azure. eventhubs. EventProcessorClientBuilder. TransportType](/java/api/com.azure.messaging.eventhubs.eventprocessorclientbuilder.transporttype?view=azure-java-stable&preserve-view=true) , [Amqptransporttype. amqp](/java/api/com.azure.core.amqp.amqptransporttype?view=azure-java-stable&preserve-view=true) veya [AmqpTransportType.AMQP_WEB_SOCKETS](/java/api/com.azure.core.amqp.amqptransporttype?view=azure-java-stable&preserve-view=true) |
-| Node  | [Eventhubconsumerclientoptions](/javascript/api/@azure/event-hubs/eventhubconsumerclientoptions?view=azure-node-latest&preserve-view=true) bir `webSocketOptions` özelliğe sahip. |
+| Düğüm  | [Eventhubconsumerclientoptions](/javascript/api/@azure/event-hubs/eventhubconsumerclientoptions?view=azure-node-latest&preserve-view=true) bir `webSocketOptions` özelliğe sahip. |
 | Python | [TransportType. AMQP](/python/api/azure-eventhub/azure.eventhub.transporttype?view=azure-python) veya [TransportType. AmqpOverWebSocket](/python/api/azure-eventhub/azure.eventhub.transporttype?view=azure-python&preserve-view=true) ile [EventHubConsumerClient.transport_type](/python/api/azure-eventhub/azure.eventhub.eventhubconsumerclient?view=azure-python&preserve-view=true) |
 
 ### <a name="what-ip-addresses-do-i-need-to-allow"></a>Hangi IP adreslerine izin vermem gerekir?
@@ -53,7 +53,7 @@ Ayrıca, ad alanınız için IP adresine izin verildiğini doğrulayın. Bağlan
     ```
 2. ' De döndürülen IP adresini aklınızda edin `Non-authoritative answer` . 
 
-Ad alanınız için **bölge yedekliliği** kullanırsanız, birkaç ek adım yapmanız gerekir: 
+Ad alanınız için **bölge yedekliliği** kullanıyorsanız birkaç ek adım yapmanız gerekir: 
 
 1. İlk olarak, ad alanında Nslookup ' ı çalıştırırsınız.
 
@@ -72,7 +72,7 @@ Ad alanınız için **bölge yedekliliği** kullanırsanız, birkaç ek adım ya
     > [!NOTE]
     > Komut tarafından döndürülen IP adresi `nslookup` statik BIR IP adresi değil. Ancak, temeldeki dağıtım silinene veya farklı bir kümeye taşınana kadar sabit kalır.
 
-### <a name="where-can-i-find-client-ip-sending-or-receiving-messages-to-my-namespace"></a>Ad alanım 'a ileti gönderen veya iletiyi alan istemci IP 'yi nerede bulabilirim?
+### <a name="what-client-ips-are-sending-events-to-or-receiving-events-from-my-namespace"></a>Hangi istemci IP 'Leri ad alanım 'dan olay gönderiyor veya olayları alıyor?
 İlk olarak, ad alanında [IP filtrelemeyi](../articles/event-hubs/event-hubs-ip-filtering.md) etkinleştirin. 
 
 Ardından [tanılama günlüklerini etkinleştirme](../articles/event-hubs/event-hubs-diagnostic-logs.md#enable-diagnostic-logs)' deki yönergeleri izleyerek [Event Hubs sanal ağ bağlantı olayları](../articles/event-hubs/event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema) için tanılama günlüklerini etkinleştirin. Bağlantının reddedildiği IP adresini görürsünüz.
@@ -92,3 +92,6 @@ Ardından [tanılama günlüklerini etkinleştirme](../articles/event-hubs/event
 
 > [!IMPORTANT]
 > Sanal ağ günlükleri yalnızca ad alanı **belırlı IP adreslerinden** (IP filtre kuralları) erişime izin veriyorsa oluşturulur. Bu özellikleri kullanarak ad alanınızı erişimi kısıtlamak ve yine de Event Hubs ad alanına bağlanan istemcilerin IP adreslerini izlemek için sanal ağ günlükleri almak istiyorsanız, aşağıdaki geçici çözümü kullanabilirsiniz: IP filtrelemeyi etkinleştirebilir ve toplam adreslenebilir IPv4 aralığını (1.0.0.0/1-255.0.0.0/1) ekleyebilirsiniz. Event Hubs IPv6 adres aralıklarını desteklemez. 
+
+> [!NOTE]
+> Şu anda, tek bir iletinin veya olayın kaynak IP 'sini tespit etmek mümkün değildir. 
