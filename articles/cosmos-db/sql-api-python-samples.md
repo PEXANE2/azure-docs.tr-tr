@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: rosouz
 ms.custom: devx-track-python
-ms.openlocfilehash: 8515ff7102095a278b2656608f00932fe8b19126
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4a1cd5b1773a58cf385fc6cc5c22be8df7b21e20
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098646"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018964"
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Azure Cosmos DB Python örnekleri
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -91,7 +91,7 @@ Azure Cosmos DB kaynaklarında CRUD işlemlerini ve diğer yaygın işlemleri ge
 
 ## <a name="indexing-examples"></a>Dizin örnekleri
 
-[İndex_management. Kopyala](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py) Python örneği aşağıdaki görevlerin nasıl yapılacağını gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB Dizin oluşturma hakkında bilgi edinmek için bkz. [Dizin oluşturma ilkeleri](index-policy.md), [Dizin oluşturma türleri](index-overview.md#index-kinds)ve [Dizin oluşturma yolları](index-policy.md#include-exclude-paths) kavramsal makaleler.
+[İndex_management. Kopyala](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py) Python örneği aşağıdaki görevlerin nasıl yapılacağını gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB Dizin oluşturma hakkında bilgi edinmek için bkz. [Dizin oluşturma ilkeleri](index-policy.md), [Dizin oluşturma türleri](index-overview.md#index-types)ve [Dizin oluşturma yolları](index-policy.md#include-exclude-paths) kavramsal makaleler.
 
 | Görev | API başvurusu |
 | --- | --- |

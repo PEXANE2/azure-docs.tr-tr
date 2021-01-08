@@ -3,7 +3,7 @@ title: Azure AD Connect Health-yinelenen öznitelik eşitleme hatalarını tanı
 description: Bu belgede, yinelenen öznitelik eşitleme hatalarının tanılama işlemi ve doğrudan Azure portal yalnız bırakılmış nesne senaryolarında olası bir çözüm açıklanmaktadır.
 services: active-directory
 documentationcenter: ''
-author: zhiweiwangmsft
+author: billmath
 manager: maheshu
 editor: billmath
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2bd2e72b05cc01b1a351880d565323662635364
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20f1e152d67e653b10b8378b7d667106c48dc116
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89278692"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016941"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Yinelenen öznitelik eşitleme hatalarını tanılama ve düzeltme
 
@@ -39,9 +39,9 @@ Azure AD hakkında daha fazla bilgi için bkz. [kimlik eşitlemesi ve yinelenen 
 ![Eşitleme hatasını tanılama genel senaryosu](./media/how-to-connect-health-diagnose-sync-errors/IIdFixCommonCase.png)
 
 ### <a name="orphaned-object-scenario"></a>Yalnız bırakılmış nesne senaryosu
-Bazen, mevcut bir kullanıcının **kaynak bağlantısını**kaybettiğini fark edebilirsiniz. Kaynak nesnenin silinmesi şirket içi Active Directory oldu. Ancak, silme sinyali değişikliği hiçbir zaman Azure AD ile eşitlenmez. Bu kayıp, eşitleme altyapısı sorunları veya etki alanı geçişi gibi nedenlerle meydana gelir. Aynı nesne geri yüklendiğinde veya yeniden oluşturulduğunda, mantıksal olarak, mevcut bir kullanıcının **kaynak çıpası**ile eşitlenmesi için Kullanıcı olması gerekir. 
+Bazen, mevcut bir kullanıcının **kaynak bağlantısını** kaybettiğini fark edebilirsiniz. Kaynak nesnenin silinmesi şirket içi Active Directory oldu. Ancak, silme sinyali değişikliği hiçbir zaman Azure AD ile eşitlenmez. Bu kayıp, eşitleme altyapısı sorunları veya etki alanı geçişi gibi nedenlerle meydana gelir. Aynı nesne geri yüklendiğinde veya yeniden oluşturulduğunda, mantıksal olarak, mevcut bir kullanıcının **kaynak çıpası** ile eşitlenmesi için Kullanıcı olması gerekir. 
 
-Mevcut bir Kullanıcı yalnızca bulut nesnesürümlerse, çakışan kullanıcıyı Azure AD 'ye eşitlenmiş olarak da görebilirsiniz. Kullanıcı var olan nesneyle eşitlenmiş olarak eşleştirilemiyor. **Kaynak bağlayıcısını**yeniden eşlemek için doğrudan bir yol yoktur. [Mevcut bilgi tabanı](https://support.microsoft.com/help/2647098)hakkında daha fazla bilgi için bkz.. 
+Mevcut bir Kullanıcı yalnızca bulut nesnesürümlerse, çakışan kullanıcıyı Azure AD 'ye eşitlenmiş olarak da görebilirsiniz. Kullanıcı var olan nesneyle eşitlenmiş olarak eşleştirilemiyor. **Kaynak bağlayıcısını** yeniden eşlemek için doğrudan bir yol yoktur. [Mevcut bilgi tabanı](https://support.microsoft.com/help/2647098)hakkında daha fazla bilgi için bkz.. 
 
 Örnek olarak, Azure AD 'deki mevcut nesne Joe lisansını korur. Azure AD 'de yinelenen bir öznitelik durumunda farklı **kaynak bağlantısı** olan yeni eşitlenmiş bir nesne oluşur. Şirket içi Active Directory için olan değişiklikler, Azure AD 'de ali 'nin özgün kullanıcısına (mevcut nesne) uygulanmaz.  
 
@@ -80,9 +80,9 @@ Azure portal, özel düzeltilebilir senaryoları belirlemek için birkaç adım 
 
 1. Hata ayrıntıları altındaki **Tanıla** düğmesini seçin. Birkaç soruyu yanıtlayıp eşitleme hata ayrıntılarını tanımlayacaksınız. Soruların yanıtları yalnız bırakılmış nesne durumunun tanımlanmasına yardımcı olur.
 
-1. Tanılamanın sonunda bir **Kapat** düğmesi görünürse, yanıtlarınıza göre portaldan bir hızlı düzelme yoktur. Son adımda gösterilen çözüme bakın. Şirket içinden gelen düzeltmeler hala çözümlerdir. **Kapat** düğmesini seçin. Geçerli eşitleme hatası, **el ile düzeltilmesi için gereken**durum. Durum, geçerli eşitleme döngüsünün içinde kalır.
+1. Tanılamanın sonunda bir **Kapat** düğmesi görünürse, yanıtlarınıza göre portaldan bir hızlı düzelme yoktur. Son adımda gösterilen çözüme bakın. Şirket içinden gelen düzeltmeler hala çözümlerdir. **Kapat** düğmesini seçin. Geçerli eşitleme hatası, **el ile düzeltilmesi için gereken** durum. Durum, geçerli eşitleme döngüsünün içinde kalır.
 
-1. Yalnız bırakılmış bir nesne durumu tanımlandıktan sonra, yinelenen öznitelik eşitleme hatalarını doğrudan portaldan çözebilirsiniz. İşlemi tetiklemek için, **onarım Uygula** düğmesini seçin. Geçerli eşitleme hatasının durumu **bekleyen eşitlemeye**göre güncelleştirilir.
+1. Yalnız bırakılmış bir nesne durumu tanımlandıktan sonra, yinelenen öznitelik eşitleme hatalarını doğrudan portaldan çözebilirsiniz. İşlemi tetiklemek için, **onarım Uygula** düğmesini seçin. Geçerli eşitleme hatasının durumu **bekleyen eşitlemeye** göre güncelleştirilir.
 
 1. Sonraki eşitleme döngüsünden sonra, hatanın listeden kaldırılması gerekir.
 
@@ -90,14 +90,14 @@ Azure portal, özel düzeltilebilir senaryoları belirlemek için birkaç adım 
 ### <a name="does-the-user-exist-in-your-on-premises-active-directory"></a>Kullanıcı şirket içi Active Directory mi var?
 
 Bu soru, mevcut kullanıcının kaynak nesnesini şirket içi Active Directory doğrulamaya çalışır.  
-1. Azure Active Directory, belirtilen **userPrincipalName**öğesine sahip bir nesneye sahip olup olmadığını denetleyin. Aksi takdirde, yanıt **No**.
+1. Azure Active Directory, belirtilen **userPrincipalName** öğesine sahip bir nesneye sahip olup olmadığını denetleyin. Aksi takdirde, yanıt **No**.
 2. Bu durumda, nesnenin eşitlemeye yönelik kapsamda hala olup olmadığını kontrol edin.  
    - DN 'yi kullanarak Azure AD bağlayıcı alanında arama yapın.
    - Nesne **bekleyen ekleme** durumunda bulunursa yanıt **No**. Azure AD Connect nesneyi doğru Azure AD nesnesine bağlayamıyorum.
-   - Nesne bulunamazsa **Evet**yanıtını verin.
+   - Nesne bulunamazsa **Evet** yanıtını verin.
 
 Bu örneklerde, bu soru, **Joe Jackson** 'ın şirket içi Active Directory hala mevcut olup olmadığını belirlemeyi dener.
-**Ortak senaryo**Için hem **ali Johnson** hem de **ali jackson** kullanıcıları şirket içi Active Directory vardır. Karantinaya alınan nesneler iki farklı kullanıcıdır.
+**Ortak senaryo** Için hem **ali Johnson** hem de **ali jackson** kullanıcıları şirket içi Active Directory vardır. Karantinaya alınan nesneler iki farklı kullanıcıdır.
 
 ![Eşitleme hatasını tanılama genel senaryosu](./media/how-to-connect-health-diagnose-sync-errors/IIdFixCommonCase.png)
 
@@ -111,7 +111,7 @@ Bu soru, aynı kullanıcıya ait olup olmadığını görmek için Azure AD 'dek
    - Görünen Ad
    - Kullanıcı Asıl Adı
    - Nesne Kimliği
-2. Azure AD bunları karşılaştıramazsa, Active Directory, belirtilen **Userprincipalnames**nesnelerine sahip olup olmadığını denetleyin. Her ikisini de bulursanız yanıt **No** .
+2. Azure AD bunları karşılaştıramazsa, Active Directory, belirtilen **Userprincipalnames** nesnelerine sahip olup olmadığını denetleyin. Her ikisini de bulursanız yanıt **No** .
 
 Aşağıdaki örnekte, iki nesne aynı kullanıcı **ali Johnson**' a aittir.
 
@@ -119,7 +119,7 @@ Aşağıdaki örnekte, iki nesne aynı kullanıcı **ali Johnson**' a aittir.
 
 
 ## <a name="what-happens-after-the-fix-is-applied-in-the-orphaned-object-scenario"></a>Bu, yalnız bırakılmış nesne senaryosunda düzeltmeler uygulandıktan sonra ne olur?
-Yukarıdaki sorulara verilen yanıtlara bağlı olarak, Azure AD 'de kullanılabilir bir sorun olduğunda **onarım Uygula** düğmesini görürsünüz. Bu durumda, şirket içi nesne beklenmeyen bir Azure AD nesnesiyle eşitleniyor. İki nesne, **kaynak bağlantısı**kullanılarak eşleştirilir. **Çözüm Uygula** değişikliği, bu veya benzer adımları gerçekleştirir:
+Yukarıdaki sorulara verilen yanıtlara bağlı olarak, Azure AD 'de kullanılabilir bir sorun olduğunda **onarım Uygula** düğmesini görürsünüz. Bu durumda, şirket içi nesne beklenmeyen bir Azure AD nesnesiyle eşitleniyor. İki nesne, **kaynak bağlantısı** kullanılarak eşleştirilir. **Çözüm Uygula** değişikliği, bu veya benzer adımları gerçekleştirir:
 1. **Kaynak bağlayıcıyı** Azure AD 'de doğru nesneye güncelleştirir.
 2. Varsa, Azure AD 'de çakışan nesneyi siler.
 
@@ -129,7 +129,7 @@ Yukarıdaki sorulara verilen yanıtlara bağlı olarak, Azure AD 'de kullanılab
 > **Çözüm Uygula** değişikliği yalnızca yalnız bırakılmış nesne durumları için geçerlidir.
 >
 
-Yukarıdaki adımlardan sonra, Kullanıcı, var olan bir nesneye bağlantı olan özgün kaynağa erişebilir. Liste görünümündeki **Tanılama durumu** değeri **bekleyen eşitleme**için güncellenir. Eşitleme hatası, bir sonraki eşitlemeden sonra çözümlenir. Connect Health artık liste görünümünde çözümlenen eşitleme hatasını göstermeyecektir.
+Yukarıdaki adımlardan sonra, Kullanıcı, var olan bir nesneye bağlantı olan özgün kaynağa erişebilir. Liste görünümündeki **Tanılama durumu** değeri **bekleyen eşitleme** için güncellenir. Eşitleme hatası, bir sonraki eşitlemeden sonra çözümlenir. Connect Health artık liste görünümünde çözümlenen eşitleme hatasını göstermeyecektir.
 
 ## <a name="failures-and-error-messages"></a>Hatalar ve hata iletileri
 **Çakışan özniteliğe sahip Kullanıcı Azure Active Directory geçici olarak silinir. Yeniden denemeden önce kullanıcının kalıcı olarak silindiğinden emin olun.**  
@@ -144,11 +144,11 @@ Azure AD 'deki bulut tabanlı Kullanıcı kaynak tutturucusu içermemelidir. Bu 
 
 
 **Ç.** **Mevcut nesnenin** silinecek nesne olması gerekiyorsa ne olur?  
-**A.** **Mevcut nesnenin** silinmesi gerekiyorsa, Işlem **kaynak bağlayıcının**bir değişikliğini içermez. Genellikle, bunu şirket içi Active Directory çözebilirsiniz. 
+**A.** **Mevcut nesnenin** silinmesi gerekiyorsa, Işlem **kaynak bağlayıcının** bir değişikliğini içermez. Genellikle, bunu şirket içi Active Directory çözebilirsiniz. 
 
 
 **Ç.** Kullanıcının bu çözümü uygulamak için hangi izni vardır?  
-**A.** **Genel yönetici**veya Azure RBAC 'den **katılımcı** , tanılama ve sorun giderme sürecine erişme iznine sahiptir.
+**A.** **Genel yönetici** veya Azure RBAC 'den **katılımcı** , tanılama ve sorun giderme sürecine erişme iznine sahiptir.
 
 
 **Ç.** Bu özellik için Azure AD Connect yapılandırıp Azure AD Connect Health aracıyı güncelleştirmem gerekir mi?  
@@ -156,4 +156,4 @@ Azure AD 'deki bulut tabanlı Kullanıcı kaynak tutturucusu içermemelidir. Bu 
 
 
 **Ç.** Varolan nesne geçici olarak silinirse, tanılama işlemi nesneyi yeniden etkin hale getirir mi?  
-**A.** Hayır, bu çözüm **kaynak bağlantısı**dışındaki nesne özniteliklerini güncelleştirmez.
+**A.** Hayır, bu çözüm **kaynak bağlantısı** dışındaki nesne özniteliklerini güncelleştirmez.

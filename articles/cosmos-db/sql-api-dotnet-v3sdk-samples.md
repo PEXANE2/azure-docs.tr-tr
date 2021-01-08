@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 10/07/2019
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 37ecca6829f348137bbbc8b76fb1934c024550fd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e605c10a765379c8f7d33dbd4d1f884d0e08734e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097269"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018675"
 ---
 # <a name="azure-cosmos-dbnet-v3-sdk-microsoftazurecosmos-examples-for-the-sql-api"></a>SQL API 'SI için Azure Cosmos DB.NET v3 SDK (Microsoft. Azure. Cosmos) örnekleri
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -93,7 +93,7 @@ Bir Azure aboneliği veya ücretsiz Cosmos DB deneme hesabı
 
 ## <a name="indexing-examples"></a>Dizin örnekleri
 
-Örnek *ındexmanagement* projesinin [runındexdemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/IndexManagement/Program.cs#L108-L122) yöntemi aşağıdaki görevlerin nasıl yapılacağını gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB Dizin oluşturma hakkında bilgi edinmek için bkz. [Dizin ilkeleri](index-policy.md), [Dizin türleri](index-overview.md#index-kinds)ve [dizin yolları](index-policy.md#include-exclude-paths). 
+Örnek *ındexmanagement* projesinin [runındexdemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/IndexManagement/Program.cs#L108-L122) yöntemi aşağıdaki görevlerin nasıl yapılacağını gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB Dizin oluşturma hakkında bilgi edinmek için bkz. [Dizin ilkeleri](index-policy.md), [Dizin türleri](index-overview.md#index-types)ve [dizin yolları](index-policy.md#include-exclude-paths). 
 
 | Görev | API başvurusu |
 | --- | --- |

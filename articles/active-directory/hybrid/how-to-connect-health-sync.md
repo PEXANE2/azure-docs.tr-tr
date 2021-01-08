@@ -3,7 +3,7 @@ title: Eşitleme için Azure AD Connect Health'i kullanma| Microsoft Belgeleri
 description: Bu Azure AD Connect Health sayfasında, Azure AD Connect eşitlemesinin nasıl izleneceği ele alınmıştır.
 services: active-directory
 documentationcenter: ''
-author: zhiweiwangmsft
+author: billmath
 manager: daveba
 ms.assetid: 1dfbeaba-bda2-4f68-ac89-1dbfaf5b4015
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efb332cf8d5e34a435010a39a12b38f87cff5875
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e803614a02e76d179579a2258abd563b5c58e63a
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91313374"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016992"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Azure AD Connect eşitlemesini Azure AD Connect Health ile izleme
 Aşağıdaki belgeler Azure AD Connect Health ile Azure AD Connect’in (Eşitleme) izlenmesine özgüdür.  Azure Connect Health ile AD FS'yi izleme hakkında bilgi almak için bkz. [Azure AD Connect Health'i AD FS ile kullanma](how-to-connect-health-adfs.md). Ayrıca, Azure AD Connect Health ile Active Directory Domain Services izleme hakkında bilgi için [AD DS ile Azure AD Connect Health kullanma](how-to-connect-health-adds.md)konusuna bakın.

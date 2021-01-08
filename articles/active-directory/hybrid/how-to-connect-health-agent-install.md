@@ -3,7 +3,7 @@ title: Azure Active Directory 'de Connect Health aracılarını yükler
 description: Bu Azure AD Connect Health makalede, Active Directory Federasyon Hizmetleri (AD FS) (AD FS) ve eşitleme için aracı yüklemesi açıklanmaktadır.
 services: active-directory
 documentationcenter: ''
-author: zhiweiwangmsft
+author: billmath
 manager: daveba
 editor: curtand
 ms.assetid: 1cc8ae90-607d-4925-9c30-6770a4bd1b4e
@@ -17,12 +17,12 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ff6f96c62936d8bf66b908060b91f8cad7989763
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 57362aa84886d7b7d764617ce5a43ca2393bed52
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962605"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018250"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Aracı yüklemesini Azure AD Connect Health
 
@@ -351,7 +351,7 @@ Bir proxy sunucusunu el ile belirtebilirsiniz. Sistem durumu aracısını çalı
 Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress address:port
 ```
 
-Aşağıda bir örnek verilmiştir: 
+İşte bir örnek: 
 
 `Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress myproxyserver: 443`
 

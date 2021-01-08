@@ -13,12 +13,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 4ebae7e97f9128bb9302e9076e71dd3164f0c29e
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: bf8b705aff8ac608d0eb3626026797f1d106414b
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030969"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017761"
 ---
 # <a name="quickstart-configure-an-application-to-expose-a-web-api"></a>Hızlı başlangıç: bir uygulamayı bir Web API 'SI göstermek üzere yapılandırma
 
@@ -45,7 +45,7 @@ Bir istemci uygulamasındaki kod, bir erişim belirtecini korunan kaynağa (Web 
 
 İlk olarak, adlı örnek bir kapsam oluşturmak için aşağıdaki adımları izleyin `Employees.Read.All` :
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
 1. Birden çok kiracıya erişiminiz varsa,  :::image type="icon" source="./media/quickstart-configure-app-expose-web-apis/portal-01-directory-subscription-filter.png" border="false"::: istemci uygulamanızın kaydını içeren kiracıyı seçmek Için üst menüdeki Dizin + abonelik filtresini kullanın.
 1. **Azure Active Directory**  >  **uygulama kayıtları** öğesini seçin ve ardından API 'nizin uygulama kaydını seçin.
 1. **API 'yi kullanıma** sunma bir  >  **kapsam ekleyin**' i seçin.

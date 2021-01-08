@@ -13,12 +13,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: d1a3965fef6966f70a829cd66d6ce10a01d7af98
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 766035490c96d42de33d0b27d976b8e56ba50993
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030901"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017502"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Hızlı başlangıç: Kullanıcı oturum açma ve iOS veya macOS uygulamasından Microsoft Graph API 'sini çağırma
 
@@ -55,7 +55,7 @@ Hızlı başlangıç, hem iOS hem de macOS uygulamaları için geçerlidir. Baz�
 > #### <a name="step-1-register-your-application"></a>1. Adım: Uygulamanızı kaydetme
 > Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze el ile eklemek için şu adımları izleyin:
 >
-> 1. [Azure Portal](https://portal.azure.com) oturum açın.
+> 1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
 > 1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
 > 1. **Azure Active Directory**'yi bulun ve seçin.    
 > 1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
@@ -178,7 +178,7 @@ let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID, r
 self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
 ```
 
-> |Konum: | Description |
+> |Konum: | Açıklama |
 > |---------|---------|
 > | `clientId` | _Portal. Azure. com * ' de kayıtlı uygulamadan uygulama KIMLIĞI |
 > | `authority` | Microsoft Identity platform uç noktası. Çoğu durumda bu durum `https://login.microsoftonline.com/common` |
@@ -242,7 +242,7 @@ let parameters = MSALInteractiveTokenParameters(scopes: kScopes, webviewParamete
 self.applicationContext!.acquireToken(with: parameters) { (result, error) in /* Add your handling logic */}
 ```
 
-> |Konum:| Description |
+> |Konum:| Açıklama |
 > |---------|---------|
 > | `scopes` | İstenen kapsamları içerir (yani `[ "user.read" ]` Microsoft Graph veya `[ "<Application ID URL>/scope" ]` özel Web API 'leri için ( `api://<Application ID>/access_as_user` ) |
 
@@ -262,7 +262,7 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 }
 ```
 
-> |Konum: | Description |
+> |Konum: | Açıklama |
 > |---------|---------|
 > | `scopes` | İstenen kapsamları içerir (yani `[ "user.read" ]` Microsoft Graph veya `[ "<Application ID URL>/scope" ]` özel Web API 'leri için ( `api://<Application ID>/access_as_user` ) |
 > | `account` | Belirtecin istendiği hesap. Bu hızlı başlangıç, tek bir hesap uygulaması hakkında. Çok sunuculu bir uygulama oluşturmak istiyorsanız, kullanarak belirteç istekleri için hangi hesabın kullanılacağını belirlemek `accountsFromDeviceForParameters:completionBlock:` ve doğru geçirme yapmak için Logic tanımlamanız gerekir `accountIdentifier` |

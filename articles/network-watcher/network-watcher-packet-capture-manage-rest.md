@@ -9,19 +9,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2017
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 97b20eae4c6b7d4ee81066638e46f1e9a760d3ec
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: bcdb91d7516acb8f987a3f302c04fbd2d8594fc7
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966488"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019780"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>Azure REST API kullanarak paket yakalamalarını Azure ağ Izleyicisi ile yönetme
 
 > [!div class="op_single_selector"]
-> - [Azure portalı](network-watcher-packet-capture-manage-portal.md)
+> - [Azure Portal](network-watcher-packet-capture-manage-portal.md)
 > - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
 > - [Azure CLI](network-watcher-packet-capture-manage-cli.md)
 > - [Azure REST API](network-watcher-packet-capture-manage-rest.md)

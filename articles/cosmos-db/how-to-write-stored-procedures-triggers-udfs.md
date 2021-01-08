@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 18cedad34a6ca7d9a0ba18cd01c082f2878380a8
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 7938920459654bd59620ad0992f3a13db85ff4fb
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339827"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019032"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Saklı yordamları, Tetikleyicileri ve Kullanıcı tanımlı işlevleri Azure Cosmos DB yazma
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB, **saklı yordamlar** , **Tetikleyiciler** ve **Kullanıcı tanımlı işlevler (UDF 'Ler)** yazmanıza olanak tanıyan JavaScript 'in dil ile tümleşik, işlemsel yürütmesini sağlar. Azure Cosmos DB içinde SQL API 'sini kullanırken, JavaScript dilinde saklı yordamları, Tetikleyicileri ve UDF 'Leri tanımlayabilirsiniz. Mantığınızı JavaScript 'te yazabilir ve veritabanı altyapısının içinde yürütebilirsiniz. Azure Cosmos DB ve [Cosmos db SQL API Istemci SDK](sql-api-dotnet-samples.md)'larının [Azure Portal](https://portal.azure.com/), [JavaScript Dil tümleşik sorgu API 'sini](javascript-query-api.md) kullanarak Tetikleyiciler, saklı yordamlar ve UDF 'ler oluşturabilir ve bunları çalıştırabilirsiniz. 
+Azure Cosmos DB, **saklı yordamlar**, **Tetikleyiciler** ve **Kullanıcı tanımlı işlevler (UDF 'Ler)** yazmanıza olanak tanıyan JavaScript 'in dil ile tümleşik, işlemsel yürütmesini sağlar. Azure Cosmos DB içinde SQL API 'sini kullanırken, JavaScript dilinde saklı yordamları, Tetikleyicileri ve UDF 'Leri tanımlayabilirsiniz. Mantığınızı JavaScript 'te yazabilir ve veritabanı altyapısının içinde yürütebilirsiniz. Azure Cosmos DB ve [Cosmos db SQL API Istemci SDK](sql-api-dotnet-samples.md)'larının [Azure Portal](https://portal.azure.com/), [JavaScript Dil tümleşik sorgu API 'sini](javascript-query-api.md) kullanarak Tetikleyiciler, saklı yordamlar ve UDF 'ler oluşturabilir ve bunları çalıştırabilirsiniz. 
 
 Saklı yordam, tetikleyici ve Kullanıcı tanımlı işlevi çağırmak için kaydetmeniz gerekir. Daha fazla bilgi için bkz. [Azure Cosmos DB saklı yordamlar, Tetikleyiciler, Kullanıcı tanımlı işlevlerle çalışma](how-to-use-stored-procedures-triggers-udfs.md).
 
@@ -284,7 +284,7 @@ function async_sample() {
 
 ## <a name="how-to-write-triggers"></a><a id="triggers"></a>Tetikleyicileri yazma
 
-Azure Cosmos DB ön Tetikleyicileri ve Tetikleyicileri destekler. Ön Tetikleyiciler, bir veritabanı öğesi değiştirilmeden önce yürütülür ve bir veritabanı öğesi değiştirildikten sonra Tetikleyiciler yürütülür.
+Azure Cosmos DB ön Tetikleyicileri ve Tetikleyicileri destekler. Ön Tetikleyiciler, bir veritabanı öğesi değiştirilmeden önce yürütülür ve bir veritabanı öğesi değiştirildikten sonra Tetikleyiciler yürütülür. Tetikleyiciler otomatik değildir. Bunların yürütülmesini istediğiniz her veritabanı işlemi için belirtilmesi gerekir.
 
 ### <a name="pre-triggers"></a><a id="pre-triggers"></a>Ön Tetikleyiciler
 

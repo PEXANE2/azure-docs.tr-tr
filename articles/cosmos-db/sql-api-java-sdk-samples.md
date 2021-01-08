@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 09/23/2020
 ms.custom: devx-track-java
 ms.author: anfeldma
-ms.openlocfilehash: 6b732c2af204cba6e93f9207648a5123b75660b1
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 0b0bdd204b2aa322adeb7373911b90e742c71999
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545545"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019017"
 ---
 # <a name="azure-cosmos-db-sql-api-java-sdk-v4-examples"></a>Azure Cosmos DB SQL API: Java SDK v4 örnekleri
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -164,7 +164,7 @@ Bu örnekleri çalıştırmadan önce otomatik ölçeklendirme hakkında daha fa
 | [Yalnızca belge değiştiğinde belgeyi okuma](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/documentcrud/sync/DocumentCRUDQuickstart.java#L266-L300) | AccessCondition. setType<br>AccessCondition. setCondition |
 
 ## <a name="indexing-examples"></a>Dizin örnekleri
-[Koleksiyon CRUD örnekleri](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java) dosyası, aşağıdaki görevlerin nasıl gerçekleştirileceğini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB Dizin oluşturma hakkında bilgi edinmek için bkz. [Dizin oluşturma ilkeleri](index-policy.md), [Dizin oluşturma türleri](index-overview.md#index-kinds)ve [Dizin oluşturma yolları](index-policy.md#include-exclude-paths) kavramsal makaleler. 
+[Koleksiyon CRUD örnekleri](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java) dosyası, aşağıdaki görevlerin nasıl gerçekleştirileceğini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB Dizin oluşturma hakkında bilgi edinmek için bkz. [Dizin oluşturma ilkeleri](index-policy.md), [Dizin oluşturma türleri](index-overview.md#index-types)ve [Dizin oluşturma yolları](index-policy.md#include-exclude-paths) kavramsal makaleler. 
 
 | Görev | API başvurusu |
 | --- | --- |

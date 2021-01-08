@@ -1,24 +1,24 @@
 ---
 title: Öğretici-Power BI panoda Azure Stream Analytics sahte çağrı verilerini analiz edin ve sonuçları görselleştirin
 description: Bu öğreticide, telefon araması akışındaki sahte aramaların analiz edilmesi için Azure Stream Analytics’in nasıl kullanılacağını gösteren kapsamlı bir örnek sunulmaktadır.
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: contperf-fy21q2
 ms.date: 12/17/2020
-ms.openlocfilehash: b8744d86300287403ca390d93c70b25215bcac4f
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 1e26159c07ca551a78ee2f83a0ca64779c60f7b4
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822140"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018879"
 ---
 # <a name="tutorial-analyze-fraudulent-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Öğretici: Power BI panoda Stream Analytics sahte çağrı verilerini analiz edin ve sonuçları görselleştirin
 
 Bu öğreticide, telefon araması verilerini Azure Stream Analytics kullanarak nasıl analiz edileceği gösterilmektedir. Bir istemci uygulaması tarafından oluşturulan telefon araması verileri, Stream Analytics işi tarafından filtrelenen sahte çağrılar içerir. Kredi kartı sahtekarlığı veya kimlik hırsızlığı gibi diğer sahtekarlık algılama türleri için bu öğreticideki teknikleri kullanabilirsiniz.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Örnek telefon araması verileri oluşturun ve Azure Event Hubs 'a gönderin.
@@ -38,7 +38,7 @@ Başlamadan önce, aşağıdaki adımları tamamladığınızdan emin olun:
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com) oturum açın.
 
 ## <a name="create-an-azure-event-hub"></a>Azure Olay Hub’ı oluşturma
 
@@ -46,7 +46,7 @@ Stream Analytics’in sahte arama veri akışını analiz edebilmesi için veril
 
 Bir olay hub'ı oluşturmak ve arama verilerini bu olay hub'ına göndermek için aşağıdaki adımları izleyin:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Event Hubs **nesnelerin interneti kaynak oluştur**' u seçin  >    >  .
 
    ![Portalda bir Azure Olay Hub 'ı oluşturma](media/stream-analytics-real-time-fraud-detection/find-event-hub-resource.png)

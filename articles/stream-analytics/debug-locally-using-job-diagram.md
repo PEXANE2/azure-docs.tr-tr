@@ -3,16 +3,15 @@ title: Visual Studio 'da iş diyagramını kullanarak Azure Stream Analytics sor
 description: Bu makalede, Visual Studio için Azure Stream Analytics Araçları ' nda iş diyagramı kullanarak sorguların yerel olarak nasıl hata ayıklaması yapılacağı açıklanır.
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/23/2020
-ms.openlocfilehash: c32ba468979e4566d8e349d481eddca7d407b659
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: d0e94fda1fb21be1a01516f4cecf657426ae867e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130995"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019457"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Visual Studio 'da iş diyagramını kullanarak Azure Stream Analytics sorguları yerel olarak ayıklayın
 
@@ -32,7 +31,7 @@ Visual Studio kullanarak Stream Analytics işi oluşturmayı veya [var olan bir 
 > [!NOTE]
 > Bir işi yerel projeye dışa aktarıp canlı bir giriş akışına karşı test etmek istiyorsanız, tüm girişlerin kimlik bilgilerini tekrar belirtmeniz gerekir.  
 
-Betik düzenleyicisinden giriş ve çıkış kaynağını seçin ve **yerel olarak çalıştır** ' ı seçin. İş Diyagramı sağ tarafta görüntülenir.
+Betik düzenleyicisinden giriş ve çıkış kaynağını seçin ve **yerel olarak çalıştır**' ı seçin. İş Diyagramı sağ tarafta görüntülenir.
 
 ### <a name="view-the-intermediate-result-set"></a>Ara sonuç kümesini görüntüleme  
 
@@ -72,7 +71,7 @@ Bu bölümde, diyagramın her bir bölümü için kullanılabilen ölçümleri k
 |-|-|
 |**Taxırıde**| Girişin adı.|
 |**Satır Sayısı**| Adımdan oluşturulan satır sayısı.|
-|**Veri boyutu**| Bu adımdan oluşturulan verilerin boyutu.|
+|**Veri Boyutu**| Bu adımdan oluşturulan verilerin boyutu.|
 |**Yerel giriş**| Yerel verileri giriş olarak kullanın.|
 
 #### <a name="query-steps"></a>Sorgu adımları
@@ -83,7 +82,7 @@ Bu bölümde, diyagramın her bir bölümü için kullanılabilen ölçümleri k
 |-|-|
 |**TripData**|Geçici sonuç kümesinin adı.|
 |**Satır Sayısı**| Adımdan oluşturulan satır sayısı.|
-|**Veri boyutu**| Bu adımdan oluşturulan verilerin boyutu.|
+|**Veri Boyutu**| Bu adımdan oluşturulan verilerin boyutu.|
   
 #### <a name="output-sinks-live-output"></a>Çıkış havuzları (canlı çıkış)
 
@@ -103,7 +102,7 @@ Bu bölümde, diyagramın her bir bölümü için kullanılabilen ölçümleri k
 |**regionaggEH**|Çıkışın adı.|
 |**Yerel çıkış**| Yerel bir dosyaya giden sonuç çıktısı.|
 |**Satır Sayısı**| Yerel dosyaya giden satır sayısı.|
-|**Veri boyutu**| Yerel dosyanın veri çıktısının boyutu.|
+|**Veri Boyutu**| Yerel dosyanın veri çıktısının boyutu.|
 
 ### <a name="close-job-diagram"></a>İş diyagramını kapat
 

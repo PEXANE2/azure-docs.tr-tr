@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
-ms.openlocfilehash: 658069f8c8007be2c1b424d8ccff687b986ac237
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 11c479c6cc8f330a2b3b1edd25bad39321d6ed1c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030952"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017553"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Hızlı başlangıç: ASP.NET Web uygulamasına Microsoft Identity platformu oturum açma ekleme
 
@@ -47,7 +47,7 @@ Bu hızlı başlangıçta, bir ASP.NET Web uygulamasının kullanıcılara herha
 > #### <a name="step-1-register-your-application"></a>1. Adım: Uygulamanızı kaydetme
 > Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze el ile eklemek için şu adımları izleyin:
 >
-> 1. [Azure Portal](https://portal.azure.com) oturum açın.
+> 1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
 > 1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
 > 1. **Azure Active Directory**'yi bulun ve seçin.
 > 1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
@@ -165,7 +165,7 @@ public void Configuration(IAppBuilder app)
 }
 ```
 
-> |Konum  | Description |
+> |Konum  | Açıklama |
 > |---------|---------|
 > | `ClientId`     | Azure portalına kaydedilen uygulamaya ait Uygulama Kimliği |
 > | `Authority`    | Kimlik doğrulaması yapılacak kullanıcı için STS uç noktası. Çoğunlukla, genel bulut için `https://login.microsoftonline.com/{tenant}/v2.0`; burada {tenant}, kiracınızın adı, kiracınızın kimliği veya ortak uç noktaya başvuru olarak *common* değeridir (çok kiracılı uygulamalarda kullanılır) |

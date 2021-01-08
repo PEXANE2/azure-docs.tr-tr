@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
-ms.openlocfilehash: 1469fcfa68b10353b78d31ccc758c61bf7746692
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c540c1b032676e07450eccfea3f9618ddc3ee64
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88120703"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017094"
 ---
 # <a name="azure-portal-registration-fields-for-custom-developed-apps"></a>Özel olarak geliştirilmiş uygulamalar için Azure portalı kayıt alanlarını bulma
 
@@ -24,7 +24,7 @@ Bu makale, [Azure Portal](https://portal.azure.com)uygulama kaydı formundaki t�
 
 ## <a name="register-a-new-application"></a>Yeni uygulama kaydetme
 
--   Yeni bir uygulamayı kaydetmek için [Azure Portal](https://portal.azure.com)gidin.
+-   Yeni bir uygulamayı kaydetmek için <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>gidin.
 
 -   Sol gezinti bölmesinden Azure Active Directory ' ye tıklayın **.**
 
@@ -47,7 +47,7 @@ Yukarıdaki alanları doldurduktan sonra uygulama Azure portal kaydedilir ve uyg
 | Alan           | Açıklama        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Uygulama Kimliği  | Bir uygulamayı kaydettiğinizde, Azure AD uygulamanıza uygulama KIMLIĞI atar. Uygulama KIMLIĞI, uygulamanızı Azure AD 'ye yönelik kimlik doğrulama isteklerinde benzersiz olarak tanımlamak ve Graph API gibi kaynaklara erişmek için kullanılabilir.                                                          |
-| Uygulama Kimliği URI'si      | Bu, genellikle **https:// &lt; kiracı \_ adı &gt; / &lt; uygulama \_ adı &gt; ** biçiminde benzersiz bir URI olmalıdır. Bu, yetkilendirme verme akışı sırasında Belirtecin verilmesi gereken kaynağı belirtmek için benzersiz bir tanımlayıcı olarak kullanılır. Ayrıca, verilen erişim belirtecinde ' AUD ' talebi de olur. |
+| Uygulama Kimliği URI'si      | Bu, genellikle **https:// &lt; kiracı \_ adı &gt; / &lt; uygulama \_ adı &gt;** biçiminde benzersiz bir URI olmalıdır. Bu, yetkilendirme verme akışı sırasında Belirtecin verilmesi gereken kaynağı belirtmek için benzersiz bir tanımlayıcı olarak kullanılır. Ayrıca, verilen erişim belirtecinde ' AUD ' talebi de olur. |
 
 ### <a name="branding"></a>Marka
 

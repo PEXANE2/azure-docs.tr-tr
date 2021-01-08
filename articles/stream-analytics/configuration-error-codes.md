@@ -1,17 +1,17 @@
 ---
 title: Yapılandırma hata kodları-Azure Stream Analytics
 description: Yapılandırma hata kodlarıyla ilgili Azure Stream Analytics sorunları giderin.
-ms.author: mamccrea
-author: mamccrea
+ms.author: sidram
+author: sidramadoss
 ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.service: stream-analytics
-ms.openlocfilehash: 80179506c133de92b56d476c9aa99d55c3e3bbd9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 6137ceeb0d86b1531adab910175ddbc4722ef858
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305800"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019525"
 ---
 # <a name="azure-stream-analytics-configuration-error-codes"></a>Azure Stream Analytics yapılandırma hata kodları
 
@@ -19,82 +19,82 @@ Azure Stream Analytics işinizin beklenmedik davranışlarından hata ayıklamay
 
 ## <a name="eventhubunauthorizedaccess"></a>EventHubUnauthorizedAccess
 
-* **Neden** : Olay Hub 'ı *yetkisiz erişim* hatası oluşturdu.
+* **Neden**: Olay Hub 'ı *yetkisiz erişim* hatası oluşturdu.
 
 ## <a name="eventhubreceiverepochconflict"></a>EventHubReceiverEpochConflict
 
-* **Neden** : farklı dönem değerleri olan birden fazla olay hub alıcısı var.
-* **Öneri** : Stream Analytics işiniz çalışırken *Service Bus Gezgini* 'Nin veya bir *eventprocessorhost* uygulamasının bağlı olmadığından emin olun.
+* **Neden**: farklı dönem değerleri olan birden fazla olay hub alıcısı var.
+* **Öneri**: Stream Analytics işiniz çalışırken *Service Bus Gezgini* 'Nin veya bir *eventprocessorhost* uygulamasının bağlı olmadığından emin olun.
 
 ## <a name="eventhubreceiverquotaexceeded"></a>EventHubReceiverQuotaExceeded
 
-* **Neden** : bir tüketici grubunda bölüm başına izin verilen en fazla alıcı sayısına ulaşıldığından Stream Analytics bölüme bağlanamaz.
-* **Öneri** : diğer Stream Analytics işlerinin veya Service Bus gezgin 'in aynı tüketici grubunu kullandığından emin olun.
+* **Neden**: bir tüketici grubunda bölüm başına izin verilen en fazla alıcı sayısına ulaşıldığından Stream Analytics bölüme bağlanamaz.
+* **Öneri**: diğer Stream Analytics işlerinin veya Service Bus gezgin 'in aynı tüketici grubunu kullandığından emin olun.
 
 ## <a name="eventhuboutputthrottled"></a>Eventhui Putkısıtlanıyor
 
-* **Neden** : azaltma nedeniyle verileri olay hub 'ına yazarken bir hata oluştu.
-* **Öneri** : Bu işlem düzenli olarak oluşursa, üretilen işi yükseltin.
+* **Neden**: azaltma nedeniyle verileri olay hub 'ına yazarken bir hata oluştu.
+* **Öneri**: Bu işlem düzenli olarak oluşursa, üretilen işi yükseltin.
 
 ## <a name="eventhuboutputinvalidconnectionconfig"></a>Eventhui Putınvalidconnectionconfig
 
-* **Neden** : belirtilen bağlantı yapılandırması yanlış.
-* **Öneri** : yapılandırmayı düzeltin ve işi yeniden başlatın.
+* **Neden**: belirtilen bağlantı yapılandırması yanlış.
+* **Öneri**: yapılandırmayı düzeltin ve işi yeniden başlatın.
 
 ## <a name="eventhuboutputinvalidhostname"></a>Eventhui Putınvalidhostname
 
-* **Neden** : Olay Hub 'ı ana bilgisayarına ulaşılamıyor.
-* **Öneri** : sağlanan ana bilgisayar adının doğru olduğundan emin olun.
+* **Neden**: Olay Hub 'ı ana bilgisayarına ulaşılamıyor.
+* **Öneri**: sağlanan ana bilgisayar adının doğru olduğundan emin olun.
 
 ## <a name="eventhuboutputunexpectedpartitioncount"></a>EventHubOutputUnexpectedPartitionCount
 
-* **Neden** : eventhub gönderici beklenmeyen bir EventHub bölüm sayısıyla karşılaştı.
-* **Öneri** : EventHub bölüm sayısı değiştiyse Stream Analytics işinizi yeniden başlatın.
+* **Neden**: eventhub gönderici beklenmeyen bir EventHub bölüm sayısıyla karşılaştı.
+* **Öneri**: EventHub bölüm sayısı değiştiyse Stream Analytics işinizi yeniden başlatın.
 
 ## <a name="cosmosdbpartitionkeynotfound"></a>CosmosDBPartitionKeyNotFound
 
-* **Neden** : Stream Analytics veritabanında belirli bir Cosmos DB koleksiyonunun bölüm anahtarını bulamadı.
-* **Öneri** : Cosmos DB koleksiyon için belirtilen geçerli bir bölüm anahtarı olduğundan emin olun.
+* **Neden**: Stream Analytics veritabanında belirli bir Cosmos DB koleksiyonunun bölüm anahtarını bulamadı.
+* **Öneri**: Cosmos DB koleksiyon için belirtilen geçerli bir bölüm anahtarı olduğundan emin olun.
 
 ## <a name="cosmosdbinvalidpartitionkeycolumn"></a>CosmosDBInvalidPartitionKeyColumn
 
-* **Neden** : bir bölüm anahtarı bir yaprak düğüm veya en üst düzey olmadığında oluşturulur.
+* **Neden**: bir bölüm anahtarı bir yaprak düğüm veya en üst düzey olmadığında oluşturulur.
 
 ## <a name="cosmosdbinvalididcolumn"></a>CosmosDBInvalidIdColumn
 
-* **Neden** : \[ birincil anahtar özelliği olarak farklı bir sütun seçilirse, sorgu çıktısı sütun kimliğini içeremez].
+* **Neden**: \[ birincil anahtar özelliği olarak farklı bir sütun seçilirse, sorgu çıktısı sütun kimliğini içeremez].
 
 ## <a name="cosmosdbdatabasenotfound"></a>CosmosDBDatabaseNotFound
 
-* **Neden** : Stream Analytics cosmosdb veritabanını bulamıyor.
+* **Neden**: Stream Analytics cosmosdb veritabanını bulamıyor.
 
 ## <a name="cosmosdbcollectionnotfound"></a>CosmosDBCollectionNotFound
 
-* **Neden** : Stream Analytics bir veritabanında belirli bir Cosmos DB koleksiyonu bulamıyor.
+* **Neden**: Stream Analytics bir veritabanında belirli bir Cosmos DB koleksiyonu bulamıyor.
 
 ## <a name="cosmosdboutputwritethrottling"></a>Cosmosdi Putwriteazaltma
 
-* **Neden** : Cosmos DB tarafından azaltma nedeniyle veri yazılırken bir hata oluştu.
-* **Öneri** : koleksiyon performans katmanını yükseltin ve veritabanınızın performansını ayarlayın.
+* **Neden**: Cosmos DB tarafından azaltma nedeniyle veri yazılırken bir hata oluştu.
+* **Öneri**: koleksiyon performans katmanını yükseltin ve veritabanınızın performansını ayarlayın.
 
 ## <a name="sqldatabaseconnectionstringerror"></a>SQLDatabaseConnectionStringError
 
-* **Neden** : Stream Analytics işi bir kimlik doğrulama hatasıyla karşılaştı.
-* **Öneri** : SQL veritabanı bağlantı dizesinin doğru olduğundan emin olun.
+* **Neden**: Stream Analytics işi bir kimlik doğrulama hatasıyla karşılaştı.
+* **Öneri**: SQL veritabanı bağlantı dizesinin doğru olduğundan emin olun.
 
 ## <a name="sqldatabasemanagedidentityauthenticationerror"></a>Sqldatabasemanagedıdentityauthenticationerror
 
-* **Neden** : Stream Analytics işi bir kimlik doğrulama hatasıyla karşılaştı. 
-* **Öneri** : hesap adının düzgün yapılandırıldığından ve Iş tarafından YÖNETILEN kimliğin SQL veritabanına erişimi olduğundan emin olun.
+* **Neden**: Stream Analytics işi bir kimlik doğrulama hatasıyla karşılaştı. 
+* **Öneri**: hesap adının düzgün yapılandırıldığından ve Iş tarafından YÖNETILEN kimliğin SQL veritabanına erişimi olduğundan emin olun.
 
 ## <a name="sqldatabaseoutputnotableerror"></a>SQLDatabaseOutputNoTableError
 
-* **Neden** : Stream Analytics belirli bir tablo için şema bilgilerini bulamıyor.
+* **Neden**: Stream Analytics belirli bir tablo için şema bilgilerini bulamıyor.
 
 ## <a name="sqldwoutputinvalidserviceedition"></a>Sqldwoutputınvalidserviceedition
 
-* **Neden** : SQL veritabanı desteklenmiyor.
-* **Öneri** : adanmış SQL havuzu kullanın.
+* **Neden**: SQL veritabanı desteklenmiyor.
+* **Öneri**: adanmış SQL havuzu kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

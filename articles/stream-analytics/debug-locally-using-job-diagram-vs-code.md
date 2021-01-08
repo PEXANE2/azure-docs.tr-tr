@@ -3,16 +3,15 @@ title: Visual Studio Code iş diyagramını kullanarak Azure Stream Analytics so
 description: Bu makalede, Visual Studio Code için Azure Stream Analytics uzantısında iş diyagramını kullanarak sorguların yerel olarak nasıl ayıklanacağı açıklanır.
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 766d3f8d4d4c03fb4fe173dbb12eb85bb09cd71a
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 25ad696ad345fbf672f6bf26eb3f35a13fb03ea5
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124179"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019508"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio-code"></a>Visual Studio Code iş diyagramını kullanarak Azure Stream Analytics sorguları yerel olarak ayıklayın
 
@@ -31,7 +30,7 @@ Visual Studio Code kullanarak Stream Analytics bir iş oluşturmayı veya [var o
 
 Sorguyu yerel giriş verileriyle test etmek istiyorsanız, bu [yönergeleri](visual-studio-code-local-run.md)izleyin. Canlı giriş ile test etmek istiyorsanız, [giriş alanınızı](stream-analytics-add-inputs.md) bir sonraki adıma geçin. 
 
-*\. Aşama QL* betik dosyasını açın ve **yerel olarak çalıştır** ' ı seçin. Ardından, **yerel giriş kullan** veya **canlı giriş kullan** ' ı seçin. İş diyagramı pencerenin sağ tarafında görünür.
+*\. Aşama QL* betik dosyasını açın ve **yerel olarak çalıştır**' ı seçin. Ardından, **yerel giriş kullan** veya **canlı giriş kullan**' ı seçin. İş diyagramı pencerenin sağ tarafında görünür.
 
 ### <a name="view-the-output-and-intermediate-result-set"></a>Çıktıyı ve ara sonuç kümesini görüntüleme  
 

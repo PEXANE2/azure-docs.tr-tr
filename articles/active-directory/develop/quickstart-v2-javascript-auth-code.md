@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: f7bd3822a0acaffe98c1a86eda5e10fe97ab4361
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: c4d77d1eb532aa18dcc575ffcc093587b69c94d9
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96762593"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017451"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>Hızlı başlangıç: Kullanıcı oturum açma ve kimlik doğrulama kod akışını kullanarak JavaScript SPA 'da erişim belirteci edinme
 
@@ -39,7 +39,7 @@ Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL.js 2,0 kullanılı
 >
 > ### <a name="option-1-express-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Seçenek 1 (Express): uygulamanızı kaydedin ve otomatik olarak yapılandırın ve ardından kod örneğinizi indirin
 >
-> 1. [Azure Portal](https://portal.azure.com) oturum açın.
+> 1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
 > 1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst kısımdaki hesabı seçin ve ardından Portal oturumunuzu kullanmak istediğiniz Azure Active Directory (Azure AD) kiracısına ayarlayın.
 > 1. [Uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs)’nı seçin.
 > 1. Uygulamanız için bir ad girin.
@@ -51,10 +51,10 @@ Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL.js 2,0 kullanılı
 >
 > #### <a name="step-1-register-your-application"></a>1. Adım: Uygulamanızı kaydetme
 >
-> 1. [Azure Portal](https://portal.azure.com) oturum açın.
+> 1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
 > 1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
 > 1. **Azure Active Directory**'yi bulun ve seçin.
-> 1. **Yönet** altında **App registrations**  >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
+> 1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
 > 1. Uygulamanız için bir **ad** girin. Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
 > 1. **Desteklenen hesap türleri** altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
 > 1. **Kaydet**’i seçin. Uygulamaya **genel bakış** sayfasında, daha sonra kullanılmak üzere **uygulama (istemci) kimliği** değerini aklınızda edin.

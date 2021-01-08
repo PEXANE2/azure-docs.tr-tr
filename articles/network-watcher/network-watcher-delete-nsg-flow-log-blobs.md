@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/16/2019
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 84f34c9441805352422215fcbac300bd900024d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b73b8fa14271619d07fca63b01e4197f4f7c8cb
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84737963"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017859"
 ---
 # <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>Ağ Izleyicisi 'nde ağ güvenlik grubu akış günlüğü depolama bloblarını silme
 
@@ -130,7 +130,7 @@ Write-Output ('Retention policy for all NSGs evaluated and completed successfull
    - **Konum** [zorunlu]: NSG akış günlüğü bloblarını silmek Istediğiniz nsgs bölgesinin _konum dizesi_ . Bu bilgileri Azure portal veya [GitHub](https://github.com/Azure/azure-extensions-cli/blob/beb3d3fe984cfa9c7798cb11a274c5337968cbc5/regions.go#L23)üzerinde görüntüleyebilirsiniz.
    - **Onayla** [isteğe bağlı]: her bir depolama Blobun silinmesini el ile onaylamak istiyorsanız, Onayla bayrağını geçirin.
 
-1. Komut dosyasının **Delete-NsgFlowLogsBlobs.ps1**olarak kaydedildiği aşağıdaki örnekte gösterildiği gibi kaydedilen betiği çalıştırın:
+1. Komut dosyasının **Delete-NsgFlowLogsBlobs.ps1** olarak kaydedildiği aşağıdaki örnekte gösterildiği gibi kaydedilen betiği çalıştırın:
    ```
    .\Delete-NsgFlowLogsBlobs.ps1 -SubscriptionId <subscriptionId> -Location  <location> -Confirm
    ```

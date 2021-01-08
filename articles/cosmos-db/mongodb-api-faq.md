@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
-ms.openlocfilehash: 4c93aea5a37fb286b49dabfb97522bf40c8f5429
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 08899018d03209dab09f61d4dd74feceee03b246
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333180"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019029"
 ---
 # <a name="frequently-asked-questions-about-the-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB MongoDB için API 'SI hakkında sık sorulan sorular
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -21,7 +21,7 @@ Azure Cosmos DB MongoDB için API 'SI, uygulamaların mevcut, topluluk tarafınd
 
 ## <a name="how-do-i-connect-to-my-database"></a>Nasıl yaparım? veritabanıma bağlansın mı?
 
-MongoDB için Azure Cosmos DB API 'SI ile Cosmos veritabanına bağlanmak için en hızlı yol, [Azure Portal](https://portal.azure.com). Hesabınıza gidin ve ardından sol gezinti menüsünde **hızlı başlangıç** ' ye tıklayın. Hızlı başlangıç, veritabanınıza bağlanmak için kod parçacıkları almanın en iyi yoludur.
+MongoDB için Azure Cosmos DB API 'SI ile Cosmos veritabanına bağlanmak için en hızlı yol, [Azure Portal](https://portal.azure.com). Hesabınıza gidin ve ardından sol gezinti menüsünde **hızlı başlangıç**' ye tıklayın. Hızlı başlangıç, veritabanınıza bağlanmak için kod parçacıkları almanın en iyi yoludur.
 
 Azure Cosmos DB katı güvenlik gereksinimleri ve standartları uygular. Azure Cosmos DB hesapların TLS aracılığıyla kimlik doğrulaması ve güvenli iletişim olması gerekir, bu nedenle TLSv 1.2 kullandığınızdan emin olun.
 
@@ -29,12 +29,7 @@ Daha fazla bilgi için bkz. [MongoDB için Azure Cosmos DB API 'Siyle Cosmos ver
 
 ## <a name="error-codes-while-using-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'SI kullanılırken hata kodları var mı?
 
-Ortak MongoDB hata kodlarıyla birlikte Azure Cosmos DB MongoDB için API 'sinin kendi özel hata kodları vardır:
-
-| Hata               | Kod  | Açıklama  | Çözüm  |
-|---------------------|-------|--------------|-----------|
-| TooManyRequests     | 16500 | Tüketilen istek birimlerinin toplam sayısı, kapsayıcının sağlanan istek birimi oranından daha fazla ve kısıtlanmış. | Azure portal bir kapsayıcıya veya bir kapsayıcı kümesine atanmış üretilen işi ölçeklendirmeye veya yeniden denemeye dikkat edin. |
-| ExceededMemoryLimit | 16501 | Çok kiracılı bir hizmet olarak, işlem istemcinin bellek işlem biriminden çıktı. | Daha kısıtlayıcı sorgu ölçütleri aracılığıyla işlemin kapsamını azaltın veya [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)destek ekibiyle iletişime geçin. <br><br> Örnek: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
+Ortak MongoDB hata kodlarıyla birlikte Azure Cosmos DB MongoDB için API 'sinin kendi özel hata kodları vardır. Bunlar, [sorun giderme kılavuzunda](mongodb-troubleshoot.md)bulunabilir.
 
 ## <a name="supported-drivers"></a>Desteklenen sürücüler
 

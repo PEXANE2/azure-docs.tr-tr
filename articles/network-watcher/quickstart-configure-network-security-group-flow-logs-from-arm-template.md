@@ -6,15 +6,15 @@ author: damendo
 Customer intent: I need to enable the network security group flow logs by using an Azure Resource Manager template.
 ms.service: network-watcher
 ms.topic: quickstart
-ms.date: 07/22/2020
+ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: subject-armqs
-ms.openlocfilehash: 563f111a656376899fcd0201b42f87bfea445865
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: ded7b24461fdcdbc3d020a487cafc20620633097
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94488052"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019729"
 ---
 # <a name="quickstart-configure-network-security-group-flow-logs-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak ağ güvenlik grubu akış günlüklerini yapılandırma
 
@@ -117,8 +117,8 @@ Aşağıdaki şablon bir NSG için akış günlüklerini etkinleştirerek günl�
 
 > [!NOTE]
 > - Kaynak adı _ParentResource_ChildResource_ biçimini kullanır. Örneğimizde, üst kaynak bölgesel Azure ağ Izleyicisi örneğidir:
->    - **Biçim** : NetworkWatcher_RegionName
->    - **Örnek** : NetworkWatcher_centraluseuap
+>    - **Biçim**: NetworkWatcher_RegionName
+>    - **Örnek**: NetworkWatcher_centraluseuap
 > - `targetResourceId` hedef NSG 'nin kaynak KIMLIĞIDIR.
 > - `storageId` , hedef depolama hesabının kaynak KIMLIĞIDIR.
 
@@ -156,11 +156,11 @@ Azure kaynaklarını, tüm dağıtım modunu kullanarak silebilirsiniz. Bir akı
 Ayrıca Azure portal bir NSG akış günlüğünü devre dışı bırakabilirsiniz:
 
 1. Azure portalında oturum açın.
-1. **Tüm Hizmetler** ’i seçin. **Filtre** kutusuna **Ağ İzleyicisi** ' ni girin. Arama sonuçlarında **Ağ İzleyicisi** ' ni seçin.
-1. **Günlükler** altında **NSG akış günlükleri** ' ni seçin.
+1. **Tüm Hizmetler**’i seçin. **Filtre** kutusuna **Ağ İzleyicisi**' ni girin. Arama sonuçlarında **Ağ İzleyicisi**' ni seçin.
+1. **Günlükler** altında **NSG akış günlükleri**' ni seçin.
 1. NSG 'ler listesinde, akış günlüklerini devre dışı bırakmak istediğiniz NSG 'yi seçin.
-1. **Akış günlükleri ayarları** altında **kapalı** ' yı seçin.
-1. **Kaydet** ’i seçin.
+1. **Akış günlükleri ayarları** altında **kapalı**' yı seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

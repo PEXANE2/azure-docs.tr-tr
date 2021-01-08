@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 72d9aefcdda5d224b256c6e969b7a75259a97005
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: c34ea5e2c622b7b203c56c6de2b611d6eca1d35c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95750782"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017519"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Hızlı başlangıç: angular tek sayfalı uygulamada Kullanıcı oturumu açma ve erişim belirteci edinme
 
@@ -35,7 +35,7 @@ Bu hızlı başlangıçta, angular bir tek sayfalı uygulamanın (SPA) kullanıc
 >
 > ### <a name="option-1-express-register-and-automatically-configure-the-app-and-then-download-the-code-sample"></a>Seçenek 1 (Express): uygulamayı kaydedin ve otomatik olarak yapılandırın ve ardından kod örneğini indirin
 >
-> 1. [Azure portalında](https://portal.azure.com) oturum açın.
+> 1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
 > 1. Hesabınızın birden fazla kiracıya erişimi varsa, sağ üst köşedeki hesabı seçin ve ardından Portal oturumunuzu kullanmak istediğiniz Azure Active Directory (Azure AD) kiracısına ayarlayın.
 > 1. Yeni [uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) bölmesini Azure Portal açın.
 > 1. Uygulamanız için bir ad girin ve ardından **Kaydet**' i seçin.
@@ -45,7 +45,7 @@ Bu hızlı başlangıçta, angular bir tek sayfalı uygulamanın (SPA) kullanıc
 >
 > #### <a name="step-1-register-the-application"></a>1. Adım: uygulamayı kaydetme
 >
-> 1. [Azure portalında](https://portal.azure.com) oturum açın.
+> 1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
 > 1. Hesabınızın birden fazla kiracıya erişimi varsa, sağ üst köşedeki hesabınızı seçin ve Portal oturumunuzu kullanmak istediğiniz Azure AD kiracısına ayarlayın.
 > 1. Azure portal [tek sayfalı bir uygulamayı kaydetmek](./scenario-spa-app-registration.md) için yönergeleri izleyin.
 > 1. Uygulama kaydlarınızın **kimlik doğrulama** bölmesine yeni bir platform ekleyin ve yenıden yönlendirme URI 'sini kaydedin: `http://localhost:4200/` .

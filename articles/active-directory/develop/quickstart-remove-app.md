@@ -13,12 +13,12 @@ ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: edfed8ca361d456e622096e23079d5887f96ab30
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 033d5cfa5dbe5e0010bc1182f54643ec04db3ce3
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452988"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017621"
 ---
 # <a name="how-to-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Microsoft Identity platformu ile kaydedilen bir uygulamayı kaldırma
 
@@ -39,7 +39,7 @@ Kendiniz veya kuruluşunuz tarafından kaydedilmiş uygulamalar gerek bir uygula
 
 Uygulama silmek için uygulamanın sahiplerinden biri olarak listelenmeniz veya yönetici ayrıcalıklarına sahip olmanız gerekir.
 
-1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a> iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
 1. Sol taraftaki Gezinti bölmesinde **Azure Active Directory** hizmetini seçin ve **uygulama kayıtları**' ı seçin. Yapılandırmak istediğiniz uygulamayı bulun ve seçin. Uygulamayı seçtikten sonra uygulamanın **Genel Bakış** sayfasını görebilirsiniz.
 1. **Genel Bakış** sayfasından **Sil**'i seçin.

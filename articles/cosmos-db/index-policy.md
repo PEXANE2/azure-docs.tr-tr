@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/07/2020
 ms.author: tisande
-ms.openlocfilehash: 2d99e0e2b65f7131e564e6ab64e454d2947c58a6
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 00c80fa311837918a78f26e941f00cb17f1dc279
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903046"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019185"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB'de dizin oluşturma ilkeleri
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -103,7 +103,7 @@ Yolların dahil edilmesi ve dışlanması için ilke örneklerinin dizinini olu�
 
 Dahil edilen yollarınızın ve dışlanan yolların bir çakışması varsa, daha kesin yol daha önceliklidir.
 
-Aşağıda bir örnek verilmiştir:
+İşte bir örnek:
 
 **Dahil edilen yol**: `/food/ingredients/nutrition/*`
 
@@ -135,7 +135,7 @@ Azure Cosmos DB, varsayılan olarak hiçbir uzamsal dizin oluşturmaz. Uzamsal S
 
 ## <a name="composite-indexes"></a>Bileşik dizinler
 
-`ORDER BY`İki veya daha fazla özelliği olan bir yan tümcesine sahip sorgular bileşik bir dizin gerektirir. Ayrıca, birçok eşitlik ve Aralık sorgusunun performansını artırmak için bir bileşik dizin tanımlayabilirsiniz. Varsayılan olarak, bir bileşik dizin tanımlanmadığında, gereken şekilde [Bileşik dizinler eklemelisiniz](how-to-manage-indexing-policy.md#composite-indexing-policy-examples) .
+`ORDER BY`İki veya daha fazla özelliği olan bir yan tümcesine sahip sorgular bileşik bir dizin gerektirir. Ayrıca, birçok eşitlik ve Aralık sorgusunun performansını artırmak için bir bileşik dizin tanımlayabilirsiniz. Varsayılan olarak, bir bileşik dizin tanımlanmadığında, gereken şekilde [Bileşik dizinler eklemelisiniz](how-to-manage-indexing-policy.md#composite-index) .
 
 Dahil edilen veya dışlanan yolların aksine, joker karakterle bir yol oluşturamazsınız `/*` . Her bileşik yol, `/?` belirtmeniz gerekmeyen yolun sonuna örtülü olarak sahiptir. Bileşik yollar skaler bir değere yol açabilir ve bileşik dizine dahil olan tek değerdir.
 
@@ -160,7 +160,7 @@ Bileşik dizin tanımlarken şunu belirtirsiniz:
 
 Bir bileşik dizinin özellikler adı, yaşı ve _ts tanımlı olduğu aşağıdaki örneği göz önünde bulundurun:
 
-| **Bileşik Dizin**     | **Örnek `ORDER BY` sorgu**      | **Bileşik dizin tarafından destekleniyor mu?** |
+| **Bileşik dizin**     | **Örnek `ORDER BY` sorgu**      | **Bileşik dizin desteği** |
 | ----------------------- | -------------------------------- | -------------- |
 | ```(name ASC, age ASC)```   | ```SELECT * FROM c ORDER BY c.name ASC, c.age asc``` | ```Yes```            |
 | ```(name ASC, age ASC)```   | ```SELECT * FROM c ORDER BY c.age ASC, c.name asc```   | ```No```             |
@@ -205,7 +205,7 @@ Birden çok özelliklerde filtre içeren sorgular için Bileşik dizinler oluşt
 
 Bir bileşik dizinin özellikler adı, yaşı ve zaman damgasında tanımlandığı aşağıdaki örnekleri göz önünde bulundurun:
 
-| **Bileşik Dizin**     | **Örnek sorgu**      | **Bileşik dizin tarafından destekleniyor mu?** |
+| **Bileşik dizin**     | **Örnek sorgu**      | **Bileşik dizin desteği** |
 | ----------------------- | -------------------------------- | -------------- |
 | ```(name ASC, age ASC)```   | ```SELECT * FROM c WHERE c.name = "John" AND c.age = 18``` | ```Yes```            |
 | ```(name ASC, age ASC)```   | ```SELECT * FROM c WHERE c.name = "John" AND c.age > 18```   | ```Yes```             |
@@ -256,7 +256,7 @@ Bir sorguyu bir filtre ve yan tümcesiyle iyileştirmek için Bileşik dizinler 
 * Birden çok özelliği olan sorgular için Bileşik dizinler oluşturmaya yönelik tüm hususlar ve `ORDER BY` birden çok özelliklerde filtre içeren sorgular hala geçerlidir.
 
 
-| **Bileşik Dizin**                      | **Örnek `ORDER BY` sorgu**                                  | **Bileşik dizin tarafından destekleniyor mu?** |
+| **Bileşik dizin**                      | **Örnek `ORDER BY` sorgu**                                  | **Bileşik dizin desteği** |
 | ---------------------------------------- | ------------------------------------------------------------ | --------------------------------- |
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.name ASC, c.timestamp ASC``` | `Yes` |
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" AND c.timestamp > 1589840355 ORDER BY c.name ASC, c.timestamp ASC``` | `Yes` |

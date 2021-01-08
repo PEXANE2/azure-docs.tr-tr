@@ -10,14 +10,14 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 548db64bd93dd561f9c69e9f594d01f4c0825db9
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 47418b9c5235255ff7dbf4a1a151e51e4c9aba58
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94948349"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019678"
 ---
 # <a name="azure-role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Ağ Izleyicisi özelliklerini kullanmak için gereken Azure rol tabanlı erişim denetimi izinleri
 
@@ -103,7 +103,7 @@ Azure rol tabanlı erişim denetimi (Azure RBAC), kuruluşunuzun kendilerine ata
 
 Ağ Izleyicisi özellikleri aşağıdaki eylemleri de gerektirir:
 
-| Eylem (ler)                                                           | Description                                                    |
+| Eylem (ler)                                                           | Açıklama                                                    |
 | ---------                                                           | -------------                                                  |
 | Microsoft. Authorization/ \* /Read                                     | Azure rol atamalarını ve ilke tanımlarını getirmek için kullanılır          |
 | Microsoft. resources/abonelikler/resourceGroups/Read               | Bir abonelikteki tüm kaynak gruplarını listelemek için kullanılır    |

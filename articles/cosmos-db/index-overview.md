@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: 4211f13324b9fda0b0823b2d035eb03863cb686d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b7349a08b93810dcc3befd6058302d6c4573ab8d
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339767"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019338"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB’de dizin oluşturma - Genel bakış
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -64,9 +64,9 @@ Yukarıda açıklanan örnek öğeden her bir özelliğin yolları aşağıda ve
 
 Bir öğe yazıldığında, Azure Cosmos DB her bir özelliğin yolunu ve karşılık gelen değerini etkin bir şekilde dizine ekler.
 
-## <a name="index-kinds"></a>Dizin türleri
+## <a name="types-of-indexes"></a><a id="index-types"></a>Dizin türleri
 
-Azure Cosmos DB Şu anda üç tür dizini desteklemektedir.
+Azure Cosmos DB Şu anda üç tür dizini desteklemektedir. Dizin oluşturma ilkesini tanımlarken bu dizin türlerini yapılandırabilirsiniz.
 
 ### <a name="range-index"></a>Aralık dizini
 
@@ -122,7 +122,7 @@ Azure Cosmos DB Şu anda üç tür dizini desteklemektedir.
    SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'
    ```
 
-Aralık dizinleri, skaler değerlerde (dize veya sayı) kullanılabilir.
+Aralık dizinleri, skaler değerlerde (dize veya sayı) kullanılabilir. Yeni oluşturulan kapsayıcıların varsayılan dizin oluşturma ilkesi tüm dizeler veya sayılar için aralık dizinlerini zorunlu tutar. Aralık dizinlerini yapılandırma hakkında bilgi edinmek için bkz. [Aralık dizin oluşturma ilkesi örnekleri](how-to-manage-indexing-policy.md#range-index)
 
 ### <a name="spatial-index"></a>Uzamsal dizin
 
@@ -146,7 +146,7 @@ Aralık dizinleri, skaler değerlerde (dize veya sayı) kullanılabilir.
    SELECT * FROM c WHERE ST_INTERSECTS(c.property, { 'type':'Polygon', 'coordinates': [[ [31.8, -5], [32, -5], [31.8, -5] ]]  })  
    ```
 
-Uzamsal dizinler, doğru biçimli [geojson](./sql-query-geospatial-intro.md) nesnelerinde kullanılabilir. Noktaları, LineStrings, çokgenler ve MultiPolygon Şu anda desteklenmektedir.
+Uzamsal dizinler, doğru biçimli [geojson](./sql-query-geospatial-intro.md) nesnelerinde kullanılabilir. Noktaları, LineStrings, çokgenler ve MultiPolygon Şu anda desteklenmektedir. Bu dizin türünü kullanmak için, `"kind": "Range"` Dizin oluşturma ilkesini yapılandırırken özelliğini kullanarak ayarlayın. Uzamsal dizinleri yapılandırma hakkında bilgi edinmek için bkz. [uzamsal dizin oluşturma ilkesi örnekleri](how-to-manage-indexing-policy.md#spatial-index)
 
 ### <a name="composite-indexes"></a>Bileşik dizinler
 
@@ -175,6 +175,8 @@ Tek bir filtre koşulu Dizin türünden birini kullandığında, sorgu altyapıs
 * Yukarıdaki sorgu önce dizin kullanılarak firstName = "Andrew" olan girdileri filtreleyecek. Ardından, CONTAINS filtre koşulunu değerlendirmek için firstName = "Andrew" girdilerini sonraki bir işlem hattı aracılığıyla geçirin.
 
 * Dizini kullanan ek filtre koşulları ekleyerek dizini (ör. IÇERIR) kullanmayan işlevleri kullanırken, sorguları hızlandırabilir ve tam kapsayıcı taramalarından kaçınabilirsiniz. Filter yan tümceleri sırası önemli değildir. Sorgu altyapısı, hangi koşulların daha seçmeli olduğunu anlayabilir ve sorguyu uygun şekilde çalıştıracaktır.
+
+Bileşik dizinleri yapılandırma hakkında bilgi edinmek için bkz. [bileşik dizin oluşturma ilkesi örnekleri](how-to-manage-indexing-policy.md#composite-index)
 
 ## <a name="querying-with-indexes"></a>Dizinlerle sorgulama
 

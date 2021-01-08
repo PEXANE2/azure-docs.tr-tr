@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 01/07/2021
 ms.author: alkohli
-ms.openlocfilehash: ec16a2b42b818e96399b8fdbad4a0951f84ef825
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 501136c6f5015dc8c68a1aba004432900675b11c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90893904"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017978"
 ---
 # <a name="replace-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro cihazınızı değiştirme
 
@@ -33,7 +33,7 @@ Bu makalede şunları öğreneceksiniz:
 
 Mevcut cihazınızda bir donanım arızası varsa, bir destek bileti açın. Microsoft Desteği Alan Değiştirme Biriminin (FRU) bu örnekte kullanılamadığını veya cihazın donanım yükseltmesine ihtiyacı olduğunu belirleyecektir. Her iki durumda da destek, bir değiştirme cihazını sıraya alır.
 
-1. Cihazı döndürmek istediğinizi belirten Microsoft Desteği bir destek bileti açın. **Azure Stack Edge Pro donanımı**olarak sorun türünü seçin.
+1. Cihazı döndürmek istediğinizi belirten Microsoft Desteği bir destek bileti açın. **Azure Stack Edge Pro donanımı** olarak sorun türünü seçin.
 
     ![Destek bileti açma](media/azure-stack-edge-replace-device/open-support-ticket-1.png)  
 
@@ -43,11 +43,14 @@ Mevcut cihazınızda bir donanım arızası varsa, bir destek bileti açın. Mic
 
 ## <a name="create-a-resource-for-replacement-device"></a>Değiştirme cihazı için bir kaynak oluşturun
 
+> [!NOTE]
+> Değiştirme cihazınızın etkinleştirilmesi için yeni bir kaynak oluşturun. Değiştirme cihazının mevcut bir kaynağa karşı etkinleştirilmesi desteklenmez.
+
 Kaynak oluşturmak için aşağıdaki adımları izleyin.
 
 1. Değiştirme cihazı için kaynak oluşturmak üzere [Yeni kaynak oluşturma](azure-stack-edge-deploy-prep.md#create-a-new-resource) bölümündeki adımları izleyin. 
 
-2. **Azure Stack Edge Pro cihazım olmasına**karşı onay kutusunu seçtiğinizden emin olun. 
+2. **Azure Stack Edge Pro cihazım olmasına** karşı onay kutusunu seçtiğinizden emin olun. 
 
     ![Değiştirme cihazının kaynağı](media/azure-stack-edge-replace-device/replace-resource-1.png)  
 

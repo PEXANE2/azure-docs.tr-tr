@@ -12,19 +12,19 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: ryanwi
-ms.openlocfilehash: dc37ce474ad3226f5dbf7e6efd687ddf55f7da03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c348bd7a1738742744976c46396f62a3317dc17
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82926689"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017093"
 ---
 # <a name="how-to-discover-endpoints"></a>Uç noktaları bulma
 
 Uygulamanız için kimlik doğrulama uç noktalarını [Azure Portal](https://portal.azure.com)bulabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-1. **Azure Active Directory**seçin.
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
+1. **Azure Active Directory** seçin.
 1. **Yönet**' in altında **uygulama kayıtları**' yi seçin ve ardından üst menüdeki **uç noktalar** ' ı seçin.
 
     Kiracınız için kimlik doğrulama uç noktalarını gösteren **uç noktalar** sayfası görüntülenir.

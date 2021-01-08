@@ -8,18 +8,18 @@ ms.custom: mvc
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 2/28/2018
-ms.openlocfilehash: 4e82c8402584f694cb32bb37ae3e6eae9366eaf7
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 200fdd126e2ed95804f81c1dd36804ecc6c61d85
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341442"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019695"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için PHP 'yi kullanma-tek sunucu
 
 Bu hızlı başlangıçta, [PHP](https://secure.php.net/manual/intro-whatis.php) uygulaması kullanılarak PostgreSQL için Azure Veritabanı’na nasıl bağlanılacağı gösterilmiştir. Ayrıca veritabanında veri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini nasıl kullanacağınız da gösterilmiştir. Bu makaledeki adımlarda, PHP kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve PostgreSQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu hızlı başlangıçta, başlangıç noktası olarak şu kılavuzlardan birinde oluşturulan kaynaklar kullanılmaktadır:
 - [DB Oluşturma - Portal](quickstart-create-server-database-portal.md)
 - [DB Oluşturma - Azure CLI](quickstart-create-server-database-azure-cli.md)
@@ -47,9 +47,9 @@ PHP'yi kendi sunucunuza yükleyin veya PHP içeren bir Azure [web uygulaması](.
 PostgreSQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerini alın. Tam sunucu adına ve oturum açma kimlik bilgilerine ihtiyacınız vardır.
 
 1. [Azure Portal](https://portal.azure.com/)oturum açın.
-2. Azure portalında sol taraftaki menüden **Tüm kaynaklar** 'a tıklayın ve oluşturduğunuz sunucuyu (örneğin, **mydemoserver** ) arayın.
+2. Azure portalında sol taraftaki menüden **Tüm kaynaklar**'a tıklayın ve oluşturduğunuz sunucuyu (örneğin, **mydemoserver**) arayın.
 3. Sunucunun adına tıklayın.
-4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı** ’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
+4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı**’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
  :::image type="content" source="./media/connect-php/1-connection-string.png" alt-text="PostgreSQL için Azure Veritabanı sunucu adı":::
 
 ## <a name="connect-and-create-a-table"></a>Bağlanma ve tablo oluşturma
@@ -87,7 +87,7 @@ PostgreSQL için Azure veritabanı 'na bağlanmak üzere [pg_connect ()](https:/
     // Insert some data into table.
     $name = '\'banana\'';
     $quantity = 150;
-    $query = "INSERT INTO inventory (name, quantity) VALUES ($1, $2);";
+    $query = "INSERT INTO inventory (name, quantity) VALUES ($name, $quantity);";
     pg_query($connection, $query) 
         or die("Encountered an error when executing given sql statement: ". pg_last_error(). "<br/>");
 

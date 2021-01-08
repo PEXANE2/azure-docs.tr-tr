@@ -4,16 +4,16 @@ description: Bulutta kurumsal düzeyde veri modelleri sağlayan, tam olarak yön
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 12/01/2020
+ms.date: 01/07/2021
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 4be8c8a6163fe0400b37a3f2e1884ff389c00518
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: c4a14ab1e5b52eb36a532c6d69713d588864d288
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963715"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019083"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services nedir?
 
@@ -91,6 +91,7 @@ Azure Analysis Services, dünyanın dört bir yanındaki bölgelerde desteklenir
 |Central US     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |Central US     |    S8v2, S9v2     |    1     |
 |Orta Güney ABD     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|Orta Güney ABD     |    S8v2, S9v2     |    1     |
 |Orta Batı ABD   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |Batı ABD     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
 |Batı ABD     |    S8v2, S9v2   |    2  |
@@ -115,6 +116,7 @@ Azure Analysis Services, dünyanın dört bir yanındaki bölgelerde desteklenir
 |Doğu Avustralya     |    S8v2, S9v2    |    1     |
 |Avustralya Güneydoğu     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Doğu Japonya     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
+|Doğu Japonya     |    S8v2, S9v2    |    1     |
 |Güneydoğu Asya     |     B1, B2, S0, S1, S2, S4, D1     |   1      |
 |Güneydoğu Asya     |     S8v2, S9v2     |   1      |
 |Batı Hindistan     |    B1, B2, S0, S1, S2, S4, D1     |    1     |

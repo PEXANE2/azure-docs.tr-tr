@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 95a0dbd61e44e9c5b1f2854f8b3215aa4ef9403c
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 349caa9a4fa34d87e0a4d99089a1063be66307f4
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97439650"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017570"
 ---
 # <a name="quickstart-aspnet-core-web-app-that-signs-in-users-and-calls-microsoft-graph-on-their-behalf"></a>Hızlı başlangıç: kullanıcılara kaydolan ve adına Microsoft Graph çağıran Web uygulaması ASP.NET Core
 
@@ -47,7 +47,7 @@ Bu hızlı başlangıçta, bir ASP.NET Core Web uygulamasının kullanıcılara 
 > #### <a name="step-1-register-your-application"></a>1. Adım: Uygulamanızı kaydetme
 > Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze el ile eklemek için şu adımları izleyin:
 >
-> 1. [Azure portalda](https://portal.azure.com) oturum açın.
+> 1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
 > 1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
 > 1. **Azure Active Directory**'yi bulun ve seçin.
 > 1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
@@ -168,7 +168,7 @@ Bu bölüm, kullanıcıların oturum açması ve Microsoft Graph API 'sini adın
 
 İçeren çizgi, `.AddMicrosoftIdentityWebApp` uygulamanıza Microsoft Identity platform kimlik doğrulaması ekler. Bu, [Microsoft. Identity. Web](microsoft-identity-web.md)tarafından sağlanır. Daha sonra `AzureAD` , yapılandırma dosyası *appsettings.js* bölümündeki bilgileri temel alarak Microsoft Identity platform uç noktasını kullanarak oturum açmak için yapılandırılır:
 
-| *appsettings.js* anahtarda | Description                                                                                                                                                          |
+| *appsettings.js* anahtarda | Açıklama                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `ClientId`             | Azure portal kayıtlı uygulamanın **uygulama (istemci) kimliği** .                                                                                       |
 | `Instance`             | Kullanıcının kimlik doğrulaması için güvenlik belirteci hizmeti (STS) uç noktası. Bu değer genellikle `https://login.microsoftonline.com/` Azure genel bulutu 'nı gösterir. |

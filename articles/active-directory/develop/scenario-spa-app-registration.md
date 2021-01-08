@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: e42b6b7ffa39110ce356094de690bb353a3fb10f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 0050eb61aac53b69c74306b9aaab797d8adfa915
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107796"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017009"
 ---
 # <a name="single-page-application-app-registration"></a>Tek sayfalı uygulama: uygulama kaydı
 
@@ -27,7 +27,7 @@ Microsoft Identity platformunda tek sayfalı uygulama (SPA) kaydetmek için aşa
 
 MSAL.js 1,0 ve 2,0 tabanlı uygulamalarda, ilk uygulama kaydını oluşturmak için aşağıdaki adımları tamamlayarak öğesini başlatın.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
 1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
 1. **Azure Active Directory**'yi bulun ve seçin.
 1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.

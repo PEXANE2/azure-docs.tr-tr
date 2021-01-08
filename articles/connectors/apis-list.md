@@ -3,15 +3,15 @@ title: Azure Logic Apps için Bağlayıcılar
 description: Yerleşik, yönetilen, şirket içi, tümleştirme hesabı, ıSE ve kurumsal bağlayıcılar gibi Azure Logic Apps için bağlayıcıları olan iş akışlarını otomatikleştirin
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 06/11/2020
-ms.openlocfilehash: 8bf91a3b7843d3212b62ced5b6a7c6fa54892ec9
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.date: 01/07/2021
+ms.openlocfilehash: c2b89450c0e474f5030f8812e888890f1fedde7e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359757"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019644"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Azure Logic Apps için Bağlayıcılar
 
@@ -28,7 +28,7 @@ Bağlayıcılar, yerleşik Tetikleyiciler ve eylemler olarak veya yönetilen ba�
 
 <a name="built-in"></a>
 
-* [**Yerleşik**](#built-ins): yerleşik Tetikleyiciler ve eylemler, Azure Logic Apps için "yerel" ve mantıksal uygulamalarınız için bu görevleri gerçekleştirmenize yardımcı olur:
+* [**Yerleşik**](#built-ins): yerleşik Tetikleyiciler ve Eylemler, kullanmadan önce bir bağlantı oluşturmak ve mantıksal uygulamalarınız için bu görevleri gerçekleştirmenize yardımcı olmak üzere Azure Logic Apps yerel olarak çalışır.
 
   * Özel ve gelişmiş zamanlamalarda çalıştırın.
 
@@ -111,7 +111,7 @@ Logic Apps mantıksal uygulamanızın iş akışındaki eylemleri yapılandırma
 | [![Kapsam yerleşik eylem ][scope-icon]<br> **kapsamı**][scope-doc] | Kapsamdaki eylemlerin çalışmasını bitirdikten sonra kendi durumlarını içeren, eylemleri *kapsamlara* gruplandırın. |
 | [![Yerleşik eylem ][switch-icon]<br> **anahtarını** Değiştir][switch-doc] | Eylemleri, varsayılan durum dışında benzersiz değerler atanmış *durumlarına* göre gruplandırın. Yalnızca atanmış değeri bir ifade, nesne veya belirteçten sonuçla eşleşen bu durumu çalıştırın. Hiçbir eşleşme yoksa, varsayılan durumu çalıştırın. |
 | [![Yerleşik eylemi Sonlandır ][terminate-icon]<br> **Sonlandır**][terminate-doc] | Etkin bir şekilde çalışan mantıksal uygulama iş akışını durdurun. |
-| [![Sürece yerleşik eyleme kadar ][until-icon]<br> **Until**][until-doc] | Belirtilen koşul doğru olana veya bir durum değiştirilene kadar eylemleri tekrarlayın. |
+| [![Sürece yerleşik eyleme kadar ][until-icon]<br> ][until-doc] | Belirtilen koşul doğru olana veya bir durum değiştirilene kadar eylemleri tekrarlayın. |
 |||
 
 ### <a name="manage-or-manipulate-data"></a>Verileri yönetme veya işleme
@@ -120,9 +120,9 @@ Logic Apps, veri çıktıları ve biçimleri ile çalışmaya yönelik yerleşik
 
 | Ad | Açıklama |
 |------|-------------|
-| [![Veri Işlemleri yerleşik eylem ][data-operations-icon]<br> **verileri işlemleri**][data-operations-doc] | Verilerle işlemleri gerçekleştirin: <p>- **Oluştur** : çeşitli türlerde birden çok girişe ait tek bir çıktı oluşturun. <br>- **CSV tablosu oluştur** : JSON nesneleriyle bir diziden virgülle ayrılmış değer (CSV) tablosu oluşturun. <br>- **HTML tablosu oluştur** : JSON nesneleriyle BIR diziden HTML tablosu oluşturma. <br>- **Diziyi filtrele** : ölçütlerinizi karşılayan başka bir dizideki öğelerden bir dizi oluşturun. <br>- **Birleştir** : dizideki tüm öğelerden bir dize oluşturun ve bu öğeleri belirtilen sınırlayıcıyla ayırın. <br>- **JSON Ayrıştır** : iş akışınızda bu özellikleri kullanabilmeniz IÇIN, JSON içeriğindeki özelliklerden ve bunların değerlerinden Kullanıcı dostu belirteçler oluşturun. <br>- Şunları **seçin** : öğeleri veya değerleri başka bir dizide dönüştürerek ve bu öğeleri belirtilen ÖZELLIKLERLE eşleyerek JSON nesneleriyle bir dizi oluşturun. |
-| ![Tarih saat yerleşik eylemi][date-time-icon]<br>**Tarih saat** | Zaman damgalarına sahip işlemleri gerçekleştirin: <p>- **Zamana Ekle** : belirtilen birim sayısını bir zaman damgasına ekleyin. <br>- **Saat dilimini Dönüştür** : kaynak saat dilimindeki bir zaman damgasını hedef saat dilimine dönüştürür. <br>- **Geçerli zaman** : geçerli zaman damgasını bir dize olarak döndürür. <br>- **Gelecek zamanı al** : geçerli zaman damgasını ve belirtilen zaman birimlerini döndürün. <br>- **Son saati al** : geçerli zaman damgasını belirtilen zaman birimleriyle döndürün. <br>- Şu **andan itibaren** : zaman damgasından bir dizi zaman birimi çıkar. |
-| [![Değişkenler yerleşik eylem ][variables-icon]<br> **değişkenleri**][variables-doc] | Değişkenlerle işlemleri gerçekleştirin: <p>- **Dizi değişkenine Ekle** : bir değişken tarafından depolanan bir dizideki son öğe olarak bir değer ekleyin. <br>- **Dize değişkenine Ekle** : bir değişken tarafından depolanan bir dizedeki son karakter olarak bir değer ekleyin. <br>- **Değişken azaltma** : bir değişkeni sabit bir değere küçültün. <br>- **Artış değişkeni** : bir değişkeni sabit bir değerle artırın. <br>- **Değişkeni Başlat** : bir değişken oluşturun ve veri türünü ve başlangıç değerini bildirin. <br>- **Set değişkeni** : var olan bir değişkene farklı bir değer atayın. |
+| [![Veri Işlemleri yerleşik eylem ][data-operations-icon]<br> **verileri işlemleri**][data-operations-doc] | Verilerle işlemleri gerçekleştirin: <p>- **Oluştur**: çeşitli türlerde birden çok girişe ait tek bir çıktı oluşturun. <br>- **CSV tablosu oluştur**: JSON nesneleriyle bir diziden virgülle ayrılmış değer (CSV) tablosu oluşturun. <br>- **HTML tablosu oluştur**: JSON nesneleriyle BIR diziden HTML tablosu oluşturma. <br>- **Diziyi filtrele**: ölçütlerinizi karşılayan başka bir dizideki öğelerden bir dizi oluşturun. <br>- **Birleştir**: dizideki tüm öğelerden bir dize oluşturun ve bu öğeleri belirtilen sınırlayıcıyla ayırın. <br>- **JSON Ayrıştır**: iş akışınızda bu özellikleri kullanabilmeniz IÇIN, JSON içeriğindeki özelliklerden ve bunların değerlerinden Kullanıcı dostu belirteçler oluşturun. <br>- Şunları **seçin**: öğeleri veya değerleri başka bir dizide dönüştürerek ve bu öğeleri belirtilen ÖZELLIKLERLE eşleyerek JSON nesneleriyle bir dizi oluşturun. |
+| ![Tarih saat yerleşik eylemi][date-time-icon]<br>**Tarih saat** | Zaman damgalarına sahip işlemleri gerçekleştirin: <p>- **Zamana Ekle**: belirtilen birim sayısını bir zaman damgasına ekleyin. <br>- **Saat dilimini Dönüştür**: kaynak saat dilimindeki bir zaman damgasını hedef saat dilimine dönüştürür. <br>- **Geçerli zaman**: geçerli zaman damgasını bir dize olarak döndürür. <br>- **Gelecek zamanı al**: geçerli zaman damgasını ve belirtilen zaman birimlerini döndürün. <br>- **Son saati al**: geçerli zaman damgasını belirtilen zaman birimleriyle döndürün. <br>- Şu **andan itibaren**: zaman damgasından bir dizi zaman birimi çıkar. |
+| [![Değişkenler yerleşik eylem ][variables-icon]<br> **değişkenleri**][variables-doc] | Değişkenlerle işlemleri gerçekleştirin: <p>- **Dizi değişkenine Ekle**: bir değişken tarafından depolanan bir dizideki son öğe olarak bir değer ekleyin. <br>- **Dize değişkenine Ekle**: bir değişken tarafından depolanan bir dizedeki son karakter olarak bir değer ekleyin. <br>- **Değişken azaltma**: bir değişkeni sabit bir değere küçültün. <br>- **Artış değişkeni**: bir değişkeni sabit bir değerle artırın. <br>- **Değişkeni Başlat**: bir değişken oluşturun ve veri türünü ve başlangıç değerini bildirin. <br>- **Set değişkeni**: var olan bir değişkene farklı bir değer atayın. |
 |||
 
 <a name="managed-api-connectors"></a>
@@ -135,7 +135,7 @@ Logic Apps, bu hizmet veya sistemlerle görevleri, işlemleri ve iş akışları
 |------|-------------|
 | [![Azure Service Bus Managed Connector ][azure-service-bus-icon]<br> **Azure Service Bus**][azure-service-bus-doc] | Logic Apps’te en yaygın kullanılan bağlayıcı ile zaman uyumsuz iletileri, oturumları ve konu aboneliklerini yönetin. |
 | [![SQL Server Managed Connector ][sql-server-icon]<br> **SQL Server**][sql-server-doc] | Kayıtları yönetebilmeniz, saklı yordamları çalıştırabilmeniz veya sorgular gerçekleştirebilmeniz için, şirket içi SQL Server veya buluttaki bir Azure SQL veritabanı 'na bağlanın. |
-| [![Azure Blob depolama yönetilen Bağlayıcısı ][azure-blob-storage-icon]<br> **Azure Blob <br> depolama**][azure-blob-storage-doc] | Blob içeriğini oluşturup yönetebilmeniz için depolama hesabınıza bağlanın. |
+| [![Azure Blob depolama yönetilen Bağlayıcısı ][azure-blob-storage-icon]<br> **Azure Blob <br> depolama**][azure-blob-storage-doc] | Blob içeriğini oluşturma ve yönetme amacıyla depolama hesabınıza bağlanın. |
 | [![Office 365 Outlook Managed Connector ][office-365-outlook-icon]<br> **Office 365 <br> Outlook**][office-365-outlook-doc] | E-postalar, görevler, takvim olayları ve toplantılar, kişiler, istekler ve daha fazlasını oluşturabilmeniz ve yönetebilmeniz için iş veya okul e-posta hesabınıza bağlanın. |
 | [![SFTP-SSH Managed Connector ][sftp-ssh-icon]<br> **SFTP-SSH**][sftp-ssh-doc] | Dosyalarınızla ve klasörlerinizle çalışabilmeniz amacıyla SSH kullanarak İnternet'ten erişim sağlamak için SFTP sunucularına bağlanın. |
 | [![SharePoint Online Managed Connector ][sharepoint-online-icon]<br> **SharePoint <br> Online**][sharepoint-online-doc] | Dosyaları, ekleri, klasörleri ve daha fazlasını yönetmek için SharePoint Online'a bağlanın. |
@@ -369,17 +369,17 @@ Daha fazla bilgi için şu konulara bakın:
 
 ## <a name="triggers-and-action-types"></a>Tetikleyiciler ve eylem türleri
 
-Bağlayıcılar, *Tetikleyiciler* , *Eylemler* veya her ikisini de sağlayabilir. *Tetikleyici* , genellikle tetikleyiciyi tetikleyen ve mantıksal uygulamanızı çalıştırmaya başladığı olayı belirten herhangi bir mantıksal uygulamadaki ilk adımdır. Örneğin, FTP Bağlayıcısı, "bir dosya eklendiğinde veya değiştirildiğinde" mantıksal uygulamanızı başlatan bir tetikleyicisine sahiptir. Bazı Tetikleyiciler, belirtilen olay veya verileri düzenli olarak denetler ve ardından belirtilen olay veya verileri algılarsa tetiklenir. Diğer Tetikleyiciler bekler, ancak belirli bir olay gerçekleştiğinde veya yeni veri kullanılabilir olduğunda anında harekete geçecektir. Tetikleyiciler ayrıca mantıksal uygulamanıza gerekli verileri de geçirir. Mantıksal uygulamanız bu verileri iş akışı boyunca okuyabilir ve kullanabilir. Örneğin, Office 365 Outlook Bağlayıcısı, "yeni bir e-posta geldiğinde" bir tetikleyicisine sahiptir. Bu, içeriği bu e-postadaki mantıksal uygulamanızın iş akışına geçirebilir.
+Bağlayıcılar, *Tetikleyiciler*, *Eylemler* veya her ikisini de sağlayabilir. *Tetikleyici* , genellikle tetikleyiciyi tetikleyen ve mantıksal uygulamanızı çalıştırmaya başladığı olayı belirten herhangi bir mantıksal uygulamadaki ilk adımdır. Örneğin, FTP Bağlayıcısı, "bir dosya eklendiğinde veya değiştirildiğinde" mantıksal uygulamanızı başlatan bir tetikleyicisine sahiptir. Bazı Tetikleyiciler, belirtilen olay veya verileri düzenli olarak denetler ve ardından belirtilen olay veya verileri algılarsa tetiklenir. Diğer Tetikleyiciler bekler, ancak belirli bir olay gerçekleştiğinde veya yeni veri kullanılabilir olduğunda anında harekete geçecektir. Tetikleyiciler ayrıca mantıksal uygulamanıza gerekli verileri de geçirir. Mantıksal uygulamanız bu verileri iş akışı boyunca okuyabilir ve kullanabilir. Örneğin, Office 365 Outlook Bağlayıcısı, "yeni bir e-posta geldiğinde" bir tetikleyicisine sahiptir. Bu, içeriği bu e-postadaki mantıksal uygulamanızın iş akışına geçirebilir.
 
 Bir tetikleyici etkinleştirildikten sonra, Azure Logic Apps mantıksal uygulamanızın bir örneğini oluşturur ve mantıksal uygulamanızın iş akışındaki *eylemleri* çalıştırmaya başlar. Eylemler, tetikleyiciyi izleyen ve mantıksal uygulamanızın iş akışında görevleri gerçekleştiren adımlardır. Örneğin, bir SQL veritabanından müşteri verilerini alan ve daha sonraki eylemlerdeki verileri işleyen bir mantıksal uygulama oluşturabilirsiniz.
 
 Azure Logic Apps sağladığı genel tetikleyici türleri şunlardır:
 
-* *Yinelenme tetikleyicisi* : Bu tetikleyici belirtilen bir zamanlamaya göre çalışır ve belirli bir hizmet ya da sistemle sıkı bir şekilde ilişkilendirilmez.
+* *Yinelenme tetikleyicisi*: Bu tetikleyici belirtilen bir zamanlamaya göre çalışır ve belirli bir hizmet ya da sistemle sıkı bir şekilde ilişkilendirilmez.
 
-* *Yoklama tetikleyicisi* : Bu tetikleyici belirtilen zamanlamaya göre belirli bir hizmeti veya sistemi düzenli olarak yoklar, yeni verileri denetler veya belirli bir olayın olup olmadığını denetler. Yeni veriler varsa veya belirli bir olay meydana gelirse, tetikleyici mantıksal uygulamanızın yeni bir örneğini oluşturur ve çalıştırır. Bu, artık giriş olarak geçirilen verileri kullanabilir.
+* *Yoklama tetikleyicisi*: Bu tetikleyici belirtilen zamanlamaya göre belirli bir hizmeti veya sistemi düzenli olarak yoklar, yeni verileri denetler veya belirli bir olayın olup olmadığını denetler. Yeni veriler varsa veya belirli bir olay meydana gelirse, tetikleyici mantıksal uygulamanızın yeni bir örneğini oluşturur ve çalıştırır. Bu, artık giriş olarak geçirilen verileri kullanabilir.
 
-* *Gönderim tetikleyicisi* : Bu tetikleyici, yeni verileri bekler ve dinler veya bir olayın gerçekleşmesini ister. Yeni veriler kullanılabilir olduğunda veya olay gerçekleştiğinde, tetikleyici mantıksal uygulamanızın yeni bir örneğini oluşturur ve çalıştırır. Bu, artık giriş olarak geçirilen verileri kullanabilir.
+* *Gönderim tetikleyicisi*: Bu tetikleyici, yeni verileri bekler ve dinler veya bir olayın gerçekleşmesini ister. Yeni veriler kullanılabilir olduğunda veya olay gerçekleştiğinde, tetikleyici mantıksal uygulamanızın yeni bir örneğini oluşturur ve çalıştırır. Bu, artık giriş olarak geçirilen verileri kullanabilir.
 
 <a name="connections"></a>
 
@@ -390,6 +390,54 @@ Her bağlayıcının Tetikleyicileri ve eylemleri, yapılandırmanız için kend
 Azure Active Directory (Azure AD) OAuth kullanan bağlayıcılar için bağlantı oluşturmak, erişim belirtecinizin [şifreli](../security/fundamentals/encryption-overview.md) ve güvenli bir şekilde bir Azure gizli deposunda depolandığı Office 365, Salesforce veya GitHub gibi hizmette oturum açma anlamına gelir. FTP ve SQL gibi diğer bağlayıcılar, sunucu adresi, Kullanıcı adı ve parola gibi yapılandırma ayrıntılarına sahip bir bağlantı gerektirir. Bu bağlantı yapılandırma ayrıntıları da şifrelenir ve güvenli bir şekilde depolanır. [Azure 'da şifreleme](../security/fundamentals/encryption-overview.md)hakkında daha fazla bilgi edinin.
 
 Bağlantılar, hizmet veya sistem izin verdiği sürece hedef hizmete veya sisteme erişebilir. Office 365 ve Dynamics gibi Azure AD OAuth bağlantıları kullanan hizmetler için Azure Logic Apps erişim belirteçlerini süresiz olarak yeniler. Diğer hizmetlerde, Azure Logic Apps yenileme olmadan ne kadar süreyle bir belirteç kullanabileceği hakkında sınırlar bulunabilir. Genellikle, bazı eylemler parolanızı değiştirme gibi tüm erişim belirteçlerini geçersiz kılar.
+
+<a name="recurrence-behavior"></a>
+
+## <a name="recurrence-behavior"></a>Yinelenme davranışı
+
+[Yineleme tetikleyicisi](../connectors/connectors-native-recurrence.md)gibi Azure Logic Apps yerel olarak çalışan yinelenen yerleşik tetikleyicilere yönelik davranış, SQL Bağlayıcısı tetikleyicisi gibi, önce bir bağlantı oluşturmanız gereken, yinelenen bağlantı tabanlı tetikleyicilere göre farklılık gösterir.
+
+Ancak, yineleme belirli bir başlangıç tarihi ve saati belirtmezse, her iki tür tetikleyici için de mantıksal uygulamayı kaydettiğinizde veya dağıtırken ilk yinelenme hemen çalışır ve bu da tetikleyicinin yinelenme kurulumuna karşın. Bu davranışı önlemek için, ilk tekrarın çalıştırmak istediğiniz zaman için bir başlangıç tarihi ve saati belirtin.
+
+<a name="recurrence-built-in"></a>
+
+### <a name="recurrence-for-built-in-triggers"></a>Yerleşik Tetikleyiciler için yinelenme
+
+Yinelenen yerleşik Tetikleyiciler, belirlediğiniz zaman dilimi dahil olmak üzere ayarladığınız zamanlamayı kabul ediyor. Ancak, bir yinelenme gelecekteki tekrarları çalıştırmak için belirli saatler gibi herhangi bir Gelişmiş zamanlama seçeneği belirtmezse, bu Yinelenmeler son tetikleyici yürütmeye göre yapılır. Sonuç olarak, bu Yinelenmeler için başlangıç zamanları, depolama aramaları sırasında gecikme süresi gibi faktörlerin düşmesine neden olmuş olabilirler. Ayrıca, bir saat dilimi seçmezseniz, Tetikleyiciler çalıştırıldığında gün ışığından yararlanma saati (DST) etkileyebilir, örneğin, DST başlatıldığında başlangıç saatini bir saat ileri ve DST sona erdiğinde bir saat geriye doğru kaydırma.
+
+Mantıksal uygulamanızın belirttiğiniz başlangıç saatinde çalıştığından ve bir yinelemeyi kaçırmadığınızdan emin olmak için, özellikle sıklık gün veya daha uzun bir süre içinde, bu çözümleri deneyin:
+
+* Mantıksal uygulamanızın belirtilen başlangıç saatinde çalışması için bir saat dilimi seçtiğinizden emin olun. Aksi takdirde, Tetikleyiciler çalıştırıldığında DST, örneğin, DST başladığında bir saat ileri doğru ve DST sona erdiğinde bir saat geriye doğru kaydırma sırasında etkileyebilir.
+
+  İşleri zamanlarken, Logic Apps ileti işleme için iletiyi kuyruğa koyar ve son işin çalıştırıldığı UTC zamanına ve bir sonraki işin çalışmaya zamanlandığı UTC zamanına bağlı olarak iletinin ne zaman kullanılabilir hale geldiğini belirtir. Bir saat dilimi belirterek, mantıksal uygulamanız için UTC saati de mevsimlik zaman değişikliğine karşı değişir. Ancak, bazı durumlarda Windows zaman vardiyada sorunlara neden olabilir. Daha fazla bilgi ve örnek için bkz. [gün ışığından yararlanma saati ve standart saat Için yinelenme](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#daylight-saving-standard-time).
+
+* Yinelenme tetikleyicisini kullanın ve yineleme için bir başlangıç tarihi ve saati, **Bu saat** ve **Bu dakikalar** içinde adlı özellikleri kullanarak ve yalnızca **gün** ve **hafta** sıklıklarında sağlanan belirli zamanları belirtin.
+
+* Yineleme tetikleyicisi yerine [kayan pencere tetikleyicisini](../connectors/connectors-native-sliding-window.md)kullanın.
+
+<a name="recurrence-connection-based"></a>
+
+### <a name="recurrence-for-connection-based-triggers"></a>Bağlantı tabanlı tetikleyiciler için yinelenme
+
+SQL veya SFTP-SSH gibi yinelenen bağlantı tabanlı tetikleyicilere göre zamanlama, yürütmeyi denetleyen tek sürücü değildir ve saat dilimi yalnızca başlangıçtaki başlangıç saatini belirler. Sonraki çalıştırmalar yineleme zamanlaması, son tetikleme yürütmesi *ve* çalışma sürelerinin veya beklenmeyen davranışlara neden olabilecek diğer faktörlerin yanı sıra, örneğin:
+
+* Tetikleyicinin daha fazla veri içeren bir sunucuya erişip erişmeyeceğini, tetikleyicinin doğrudan getirmeye çalıştığı.
+
+* Tetikleyicinin yer aldığı tüm arızalar veya denemeler.
+
+* Depolama çağrıları sırasında gecikme süresi.
+
+* Gün ışığından yararlanma saati (DST) başladığında ve sona erdiğinde belirtilen zamanlamanın korunmasından sakın.
+
+* Sonraki çalışma zamanı gerçekleştiğinde etkileyebilecek diğer faktörler.
+
+Bu sorunları gidermek veya geçici çözüm bulmak için şu çözümleri deneyin:
+
+* DST 'nin etkin olduğu zaman yinelenme saatinin kaymasını sağlamak için, mantıksal uygulamanızın beklenen sürede çalışmaya devam edebilmesi için yinelemeyi el ile ayarlayın. Aksi takdirde, DST başlatıldığında başlangıç saati bir saat ileri ve DST sona erdiğinde bir saat geriye geçer.
+
+* Bir saat dilimi, bir başlangıç tarihi ve saati ve **bu saatlere** ve yalnızca **gün** ve **hafta** sıklıklarında kullanılabilen özellikleri kullanarak sonraki yinelenmeleri çalıştırmak için zaman *dilimini, bir* başlangıç tarihi ve saati ve **Bu dakikalar** içinde çalıştırılacak belirli zamanları belirleyebilmeniz için yinelenme tetikleyicisini kullanın. Ancak, bazı durumlarda Windows zaman vardiyada sorun oluşmasına neden olabilir. Daha fazla bilgi ve örnek için bkz. [gün ışığından yararlanma saati ve standart saat Için yinelenme](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#daylight-saving-standard-time).
+
+* Eksik tekrarlamaları önlemek için yineleme tetikleyicisi yerine [kayan pencere tetikleyicisini](../connectors/connectors-native-sliding-window.md)kullanın.
 
 <a name="custom"></a>
 

@@ -8,17 +8,17 @@ mms.devlang: na
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: kumud
-ms.openlocfilehash: 962f6bcf7747a82749e7ccab95de34f7834a8372
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: f6cba0118a98ea50e8020b91b9c2064299ca4ccf
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814219"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019168"
 ---
 # <a name="partnering-with-azure-ddos-protection-standard"></a>Azure DDoS koruma standardı ile ortaklık
 Bu makalede, Azure DDoS koruma standardı tarafından etkinleştirilen iş ortaklığı olanakları açıklanmaktadır. Bu makale, ürün yöneticilerinin ve iş geliştirme rollerinin yatırım yollarını anlamasına yardımcı olmak ve ortaklık değeri propositions hakkında Öngörüler sağlaması için tasarlanmıştır.
 
-## <a name="background"></a>Arka plan
+## <a name="background"></a>Arka Plan
 Dağıtılmış hizmet reddi (DDoS) saldırıları, uygulamalarını buluta taşıyan müşterilere göre önemli kullanılabilirlik ve güvenlik sorunlarının biridir. DDoS saldırılarına maruz geçen yaygın savunma ve hacktivisk sayesinde, bu uygulamalar görece kolay ve yüksek EAP gibi tür, ölçek ve oluşma sıklığında sürekli olarak arttı.
 
 Azure DDoS koruması, Azure ağ oluşturma küresel ölçeğinden yararlanarak en gelişmiş DDoS tehditlerine karşı önlemler sağlar. Hizmet, sanal ağlarda dağıtılan uygulamalar ve kaynaklar için gelişmiş DDoS azaltma özellikleri sağlar.
@@ -94,4 +94,3 @@ Azure DDoS koruması Standart ortaklık fırsatları Azure portal, API 'Ler ve C
 Mevcut iş ortağı tümleştirmelerini görüntüleyin:
 
 - [Barçcuda WAF-hizmet olarak](https://www.barracuda.com/waf-as-a-service)
-- [Radware 'den Azure bulutu WAF](https://www.radware.com/resources/microsoft-azure/)

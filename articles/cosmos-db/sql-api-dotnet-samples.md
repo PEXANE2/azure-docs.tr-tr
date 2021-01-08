@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 07/23/2019
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 7f520d6f0f9774fcd945d8d2453644e8e2db7f6f
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 2e7bfd3735a57ddfa5d6100e18cf7a5676c1b9b1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359583"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019049"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: SQL API'si için .NET örnekleri
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -91,7 +91,7 @@ Bir Azure aboneliği veya ücretsiz Cosmos DB deneme hesabı
 | [Yalnızca belge değiştiğinde belgeyi okuma](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples/DocumentManagement/Program.cs#L454-L500) |[DocumentClient.AccessCondition](/dotnet/api/microsoft.azure.documents.client.accesscondition)<br>[Documents.Client.AccessConditionType](/dotnet/api/microsoft.azure.documents.client.accessconditiontype) |
 
 ## <a name="indexing-examples"></a>Dizin örnekleri
-Örnek *ındexmanagement* projesinin [runındexdemo](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples/IndexManagement/Program.cs#L93-L115) yöntemi aşağıdaki görevlerin nasıl yapılacağını gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB Dizin oluşturma hakkında bilgi edinmek için bkz. [Dizin ilkeleri](index-policy.md), [Dizin türleri](index-overview.md#index-kinds)ve [dizin yolları](index-policy.md#include-exclude-paths). 
+Örnek *ındexmanagement* projesinin [runındexdemo](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples/IndexManagement/Program.cs#L93-L115) yöntemi aşağıdaki görevlerin nasıl yapılacağını gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB Dizin oluşturma hakkında bilgi edinmek için bkz. [Dizin ilkeleri](index-policy.md), [Dizin türleri](index-overview.md#index-types)ve [dizin yolları](index-policy.md#include-exclude-paths). 
 
 | Görev | API başvurusu |
 | --- | --- |

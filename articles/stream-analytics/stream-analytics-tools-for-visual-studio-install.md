@@ -3,16 +3,15 @@ title: Visual Studio için Azure Stream Analytics araçları ayarlama
 description: Bu makalede, Yükleme gereksinimleri ve Visual Studio için Azure Stream Analytics araçlarının nasıl ayarlanacağı açıklanır.
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/22/2018
-ms.openlocfilehash: 464e8fbf624dfa84ec54bf6a7e0ce202d047e15d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0077ac8465e8f785e772b384f26e0edc6874a1a0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86045119"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018709"
 ---
 # <a name="install-azure-stream-analytics-tools-for-visual-studio"></a>Visual Studio için Azure Stream Analytics araçları 'nı yükler
 
@@ -42,7 +41,7 @@ Gösterildiği gibi **Azure geliştirme** iş yükünü seçin:
 
 İş yükünü ekledikten sonra, araçları güncelleştirin. Bu yordam, Visual Studio 2019 'e başvurur:
 
-1. Uzantıları **Extensions**  >  **Yönet uzantıları**' nı seçin.
+1. Uzantıları   >  **Yönet uzantıları**' nı seçin.
 
 1. **Uzantıları Yönet**' de **güncelleştirmeler** ' i seçin ve **Azure Data Lake ve Stream Analytics araçları**' nı seçin.
 
@@ -66,6 +65,6 @@ Visual Studio 2015 ve Visual Studio 2013 için araçlar, yeni sürümleri otomat
 
 ## <a name="uninstall"></a>Kaldır
 
-Azure Data Lake ve Stream Analytics araçlarını kaldırabilirsiniz. Visual Studio 2019 veya Visual Studio 2017 için **Araçlar**  >  **ve Özellikler al**' ı seçin. **Değiştirme**bölümünde **Azure Data Lake ve Stream Analytics araçlarının**seçimini kaldırın. **Veri depolama ve işleme** iş yükü ya da **Azure geliştirme** iş yükü altında görünür.
+Azure Data Lake ve Stream Analytics araçlarını kaldırabilirsiniz. Visual Studio 2019 veya Visual Studio 2017 için **Araçlar**  >  **ve Özellikler al**' ı seçin. **Değiştirme** bölümünde **Azure Data Lake ve Stream Analytics araçlarının** seçimini kaldırın. **Veri depolama ve işleme** iş yükü ya da **Azure geliştirme** iş yükü altında görünür.
 
 Visual Studio 2015 veya Visual Studio 2013 kaldırmak için **Denetim Masası**  >  **Programlar ve Özellikler**' e gidin. **Visual Studio için Microsoft Azure Data Lake ve Stream Analytics araçları**'nı kaldırın.

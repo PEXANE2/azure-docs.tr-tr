@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
-ms.openlocfilehash: c45445415f3eaa7cb0f9069dd5f64b57c19e5836
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: b24ea79737c9e1f64abb7f62807352dbd9573695
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437159"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018080"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Azure Cosmos DB’ye yüzlerce terabaytlık verileri geçirme 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -43,7 +43,7 @@ Yukarıdaki bölümde açıklanan zorluklar, birden çok örneğe kolayca ölçe
 
 Özel araç, toplu yürütücü kitaplığını kullanır ve birden çok istemcide ölçeklendirmeyi destekler ve alma işlemi sırasında hataları izler. Bu aracı kullanmak için, kaynak verilerin Azure Data Lake Storage (ADLS) içindeki farklı dosyalara bölümlenmesi gerekir, böylece farklı geçiş çalışanları her dosyayı seçip Azure Cosmos DB içine alabilir. Özel araç, ADLS içindeki her bir kaynak dosya için geçiş ilerlemesiyle ilgili meta verileri depolayan ayrı bir koleksiyon kullanır ve bunlarla ilişkili tüm hataları izler.  
 
-Aşağıdaki görüntüde, bu özel aracı kullanan geçiş işlemi açıklanmaktadır. Araç bir sanal makine kümesi üzerinde çalışıyor ve her sanal makine, kaynak veri bölümlerinden birinde kira almak için Azure Cosmos DB 'de izleme koleksiyonunu sorgular. Bu işlem yapıldıktan sonra, kaynak veri bölümü araç tarafından okunarak toplu yürütücü kitaplığı kullanılarak Azure Cosmos DB alınır. Daha sonra, izleme koleksiyonu veri alımı ilerlemesini ve karşılaşılan hatalarla karşılaştıracak şekilde güncelleştirilir. Bir veri bölümü işlendikten sonra araç, bir sonraki kullanılabilir kaynak bölümü sorgulamaya çalışır. Tüm veriler geçirilene kadar sonraki kaynak bölümü işlemeye devam eder. Araç için kaynak kodu [buradan](https://github.com/Azure-Samples/azure-cosmosdb-bulkingestion)edinebilirsiniz.  
+Aşağıdaki görüntüde, bu özel aracı kullanan geçiş işlemi açıklanmaktadır. Araç bir sanal makine kümesi üzerinde çalışıyor ve her sanal makine, kaynak veri bölümlerinden birinde kira almak için Azure Cosmos DB 'de izleme koleksiyonunu sorgular. Bu işlem yapıldıktan sonra, kaynak veri bölümü araç tarafından okunarak toplu yürütücü kitaplığı kullanılarak Azure Cosmos DB alınır. Daha sonra, izleme koleksiyonu veri alımı ilerlemesini ve karşılaşılan hatalarla karşılaştıracak şekilde güncelleştirilir. Bir veri bölümü işlendikten sonra araç, bir sonraki kullanılabilir kaynak bölümü sorgulamaya çalışır. Tüm veriler geçirilene kadar sonraki kaynak bölümü işlemeye devam eder. Araç için kaynak kodu [Azure Cosmos DB toplu](https://github.com/Azure-Samples/azure-cosmosdb-bulkingestion) alma deposunda bulunur.  
 
  
 :::image type="content" source="./media/migrate-cosmosdb-data/migrationsetup.png" alt-text="Geçiş Aracı Kurulumu" border="false":::

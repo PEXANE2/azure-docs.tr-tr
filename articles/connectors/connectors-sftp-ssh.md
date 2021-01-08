@@ -4,28 +4,20 @@ description: SSH ve Azure Logic Apps kullanarak bir SFTP sunucusu için dosya iz
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
-ms.reviewer: estfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 11/03/2020
+ms.date: 01/07/2021
 tags: connectors
-ms.openlocfilehash: 31714eee2e79481bbc8afb47718ed38e178d5b82
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 388d747da692160ab6d0a89c0c35de348d921486
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324234"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016771"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SSH ve Azure Logic Apps kullanarak SFTP dosyalarını izleme, oluşturma ve yönetme
 
 [Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/) protokolünü kullanarak [güvenli bir Dosya Aktarım Protokolü (SFTP)](https://www.ssh.com/ssh/sftp/) sunucusunda dosyaları izleyen, oluşturan, gönderen ve alan görevleri otomatik hale getirmek için Azure Logic Apps ve SFTP-SSH bağlayıcısını kullanarak tümleştirme iş akışları oluşturabilir ve otomatikleştirebilirsiniz. SFTP, herhangi bir güvenilir veri akışı üzerinde dosya erişimi, dosya aktarımı ve dosya yönetimi sağlayan bir ağ protokolüdür.
-
-> [!NOTE]
-> SFTP-SSH Bağlayıcısı Şu anda bu SFTP sunucularını desteklememektedir:
-> 
-> * IBM veri gücü
-> * MessageWay
-> * OpenText güvenli MFT
-> * OpenText GXS
 
 Otomatikleştirebileceğiniz bazı örnek görevler şunlardır:
 
@@ -41,6 +33,13 @@ SFTP-SSH Bağlayıcısı ve SFTP Bağlayıcısı arasındaki farklar için, bu k
 
 ## <a name="limits"></a>Sınırlar
 
+* SFTP-SSH Bağlayıcısı Şu anda bu SFTP sunucularını desteklememektedir:
+
+  * IBM veri gücü
+  * MessageWay
+  * OpenText güvenli MFT
+  * OpenText GXS
+
 * SFTP-SSH Bağlayıcısı, her ikisini de değil, özel anahtar kimlik doğrulamasını veya parola kimlik doğrulamasını destekler.
 
 * SFTP- [öbek](../logic-apps/logic-apps-handle-large-messages.md) oluşturma 'Yı destekleyen SSH EYLEMLERI 1 GB 'a kadar dosya işleyebilir, ancak öbek desteklemeyen SFTP-ssh EYLEMLERI 50 MB 'a kadar olan dosyaları işleyebilir. Varsayılan öbek boyutu 15 MB olsa da, bu boyut, 5 MB 'den başlayarak dinamik olarak değişebilir ve ağ gecikmesi, sunucu yanıt süresi vb. gibi etkenlere bağlı olarak 50 MB 'lık en yüksek düzeyde arttırılır.
@@ -48,7 +47,7 @@ SFTP-SSH Bağlayıcısı ve SFTP Bağlayıcısı arasındaki farklar için, bu k
   > [!NOTE]
   > Bir [tümleştirme hizmeti ortamındaki (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Logic Apps için, bu bağlayıcının Ise etiketli sürümü, bunun yerine [Ise ileti sınırlarını](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) kullanmasını gerektirir.
 
-  Bunun yerine kullanılacak [sabit bir öbek boyutu belirttiğinizde](#change-chunk-size) , bu Uyarlamalı davranışı geçersiz kılabilirsiniz. Bu boyut 5 MB ile 50 MB arasında değişebilir. Örneğin, 45 MB 'lık bir dosyanız olduğunu ve bu dosya boyutunu gecikme süresi olmadan destekleyebildiğini belirten bir ağ olduğunu varsayalım. Uyarlamalı öbek oluşturma, bir çağrı yerine birkaç çağrıya neden olur. Çağrı sayısını azaltmak için 50 MB 'lık öbek boyutunu ayarlamayı deneyebilirsiniz. Farklı bir senaryoda, mantıksal uygulamanız zaman aşımına uğradıysanız (örneğin, 15 MB 'lık öbekleri kullanırken) boyutu 5 MB ile azaltmayı deneyebilirsiniz.
+  Bunun yerine kullanılacak [sabit bir öbek boyutu belirttiğinizde](#change-chunk-size) , bu Uyarlamalı davranışı geçersiz kılabilirsiniz. Bu boyut 5 MB ile 50 MB arasında değişebilir. Örneğin, bir 45 MB dosyanız olduğunu ve bu dosya boyutunu gecikme süresi olmadan destekleyebildiğini belirten bir ağ olduğunu varsayalım. Uyarlamalı öbek oluşturma, bir çağrı yerine birkaç çağrıya neden olur. Çağrı sayısını azaltmak için 50 MB 'lık bir öbek boyutunu ayarlamayı deneyebilirsiniz. Farklı bir senaryoda, mantıksal uygulamanız zaman aşımına uğradıysanız (örneğin, 15 MB öbekleri kullanırken) boyutu 5 MB olarak azaltmayı deneyebilirsiniz.
 
   Öbek boyutu bir bağlantıyla ilişkilendirilir, yani parçalama desteği olan eylemler ve sonra parçalama desteği olmayan eylemler için aynı bağlantıyı kullanabilirsiniz. Bu durumda, öbek oluşturma desteği olmayan eylemler için öbek boyutu 5 MB ile 50 MB arasındadır. Bu tabloda, hangi SFTP-SSH eylemlerinin öbek oluşturma desteği gösterilmektedir:
 
@@ -56,15 +55,15 @@ SFTP-SSH Bağlayıcısı ve SFTP Bağlayıcısı arasındaki farklar için, bu k
   |--------|------------------|-----------------------------|
   | **Dosyayı Kopyala** | Hayır | Geçerli değil |
   | **Dosya oluştur** | Evet | Evet |
-  | **Klasör oluştur** | Uygulanamaz | Uygulanamaz |
-  | **Dosyayı Sil** | Uygulanamaz | Uygulanamaz |
-  | **Arşivi klasöre Ayıkla** | Uygulanamaz | Uygulanamaz |
+  | **Klasör oluştur** | Geçerli değil | Geçerli değil |
+  | **Dosyayı Sil** | Geçerli değil | Geçerli değil |
+  | **Arşivi klasöre Ayıkla** | Geçerli değil | Geçerli değil |
   | **Dosya içeriğini al** | Evet | Evet |
   | **Yolu kullanarak dosya içeriğini al** | Evet | Evet |
-  | **Dosya meta verilerini al** | Uygulanamaz | Uygulanamaz |
-  | **Yolu kullanarak dosya meta verilerini al** | Uygulanamaz | Uygulanamaz |
-  | **Klasördeki dosyaları Listele** | Uygulanamaz | Uygulanamaz |
-  | **Dosyayı yeniden adlandır** | Uygulanamaz | Uygulanamaz |
+  | **Dosya meta verilerini al** | Geçerli değil | Geçerli değil |
+  | **Yolu kullanarak dosya meta verilerini al** | Geçerli değil | Geçerli değil |
+  | **Klasördeki dosyaları Listele** | Geçerli değil | Geçerli değil |
+  | **Dosyayı yeniden adlandır** | Geçerli değil | Geçerli değil |
   | **Güncelleştirme dosyası** | Hayır | Geçerli değil |
   ||||
 
@@ -98,13 +97,13 @@ SFTP-SSH Bağlayıcısı ile SFTP-SSH bağlayıcısının bu yeteneklere sahip o
   >
   > SFTP-SSH Bağlayıcısı *yalnızca* şu özel anahtar biçimlerini, algoritmaları ve parmak izlerini destekler:
   >
-  > * **Özel anahtar formatları** : RSA (Rivest Shamir Adtaman) ve dsa (dijital imza algoritması) anahtarlar hem OpenSSH hem de SSH.com biçimlerinde. Özel anahtarınız PuTTY (. PPK) dosya biçimindeyse, önce [anahtarı OpenSSH (. pem) dosya biçimine dönüştürmeniz](#convert-to-openssh)gerekir.
+  > * **Özel anahtar formatları**: RSA (Rivest Shamir Adtaman) ve dsa (dijital imza algoritması) anahtarlar hem OpenSSH hem de SSH.com biçimlerinde. Özel anahtarınız PuTTY (. PPK) dosya biçimindeyse, önce [anahtarı OpenSSH (. pem) dosya biçimine dönüştürmeniz](#convert-to-openssh)gerekir.
   >
-  > * **Şifreleme algoritmaları** : des-EDE3-CBC, des-EDE3-CFB, des-CBC, aes-128-CBC, aes-192-CBC ve AES-256-CBC
+  > * **Şifreleme algoritmaları**: des-EDE3-CBC, des-EDE3-CFB, des-CBC, aes-128-CBC, aes-192-CBC ve AES-256-CBC
   >
-  > * **Parmak izi** : MD5
+  > * **Parmak izi**: MD5
   >
-  > Mantıksal uygulamanıza istediğiniz SFTP-SSH tetikleyicisini veya eylemini ekledikten sonra, SFTP sunucunuz için bağlantı bilgilerini sağlamanız gerekir. Bu bağlantı için SSH özel anahtarınızı sağladığınızda * *_anahtarını el ile girmeyin veya düzenleyemezsiniz_* , bu da bağlantının başarısız olmasına neden olabilir. Bunun yerine, anahtarı SSH özel anahtar dosyanızdaki _*_kopyalamayın_*_ ve bu anahtarı bağlantı ayrıntılarına _*_yapıştırdığınızdan_*_ emin olun. 
+  > Mantıksal uygulamanıza istediğiniz SFTP-SSH tetikleyicisini veya eylemini ekledikten sonra, SFTP sunucunuz için bağlantı bilgilerini sağlamanız gerekir. Bu bağlantı için SSH özel anahtarınızı sağladığınızda **_anahtarını el ile girmeyin veya düzenleyemezsiniz_*, bu da bağlantının başarısız olmasına neden olabilir. Bunun yerine, anahtarı SSH özel anahtar dosyanızdaki _*_kopyalamayın_*_ ve bu anahtarı bağlantı ayrıntılarına _*_yapıştırdığınızdan_*_ emin olun. 
   > Daha fazla bilgi için bu makalenin ilerleyen kısımlarında [SFTP 'ye SSH Ile bağlanma](#connect) bölümüne bakın.
 
 _ [Mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgi
@@ -113,15 +112,25 @@ _ [Mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-first-logi
 
 ## <a name="how-sftp-ssh-triggers-work"></a>SFTP-SSH tetikleyicileri nasıl çalışır?
 
-SFTP-SSH Tetikleyicileri SFTP dosya sistemini yoklayarak ve Son yoklamadan bu yana değiştirilen herhangi bir dosyayı arayarak çalışır. Bazı araçlar, dosyalar değiştiğinde zaman damgasını korumanıza olanak sağlar. Bu durumlarda, tetikleyicinizin çalışabilmesi için bu özelliği devre dışı bırakmanız gerekir. Yaygın olarak kullanılan bazı ayarlar şunlardır:
+<a name="polling-behavior"></a>
+
+### <a name="polling-behavior"></a>Yoklama davranışı
+
+SFTP-SSH Tetikleyicileri SFTP dosya sistemini yoklayın ve Son yoklamadan bu yana değiştirilen tüm dosyaları arar. Bazı araçlar, dosyalar değiştiğinde zaman damgasını korumanıza olanak sağlar. Bu durumlarda, tetikleyicinizin çalışabilmesi için bu özelliği devre dışı bırakmanız gerekir. Yaygın olarak kullanılan bazı ayarlar şunlardır:
 
 | SFTP istemcisi | Eylem |
 |-------------|--------|
 | WinSCP | **Seçenekler**  >  **Tercihler**  >  **Aktarım**  >  **düzenleme**  >  **zaman damgası**  >  **devre dışı bırak** ' a gidin |
-| FileZilla | **Aktarım** ' a git  >  **aktarılan dosyaların zaman damgalarını koru**  >  **devre dışı bırak** |
+| FileZilla | **Aktarım**' a git  >  **aktarılan dosyaların zaman damgalarını koru**  >  **devre dışı bırak** |
 |||
 
 Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığını ve kısmen yazılmadığını denetler. Örneğin, tetikleyici dosya sunucusunu denetlerken bir dosya sürmekte olan değişiklikler olabilir. Kısmen yazılmış bir dosyanın döndürülmemek için tetikleyici, son değişiklikleri olan dosyanın zaman damgasını Not etmez, ancak bu dosyayı hemen döndürmez. Tetikleyici dosyayı yalnızca sunucuyu yoklayarak geri döndürür. Bazen bu davranış, tetikleyicinin yoklama aralığı iki katına varan bir gecikmeye neden olabilir.
+
+<a name="trigger-recurrence-shift-drift"></a>
+
+### <a name="trigger-recurrence-shift-and-drift"></a>Yineleme kaydırma ve DRFT tetikleme
+
+Önce bir bağlantı oluşturmanız gereken, SFTP-SSH tetikleyicisi gibi bağlantı tabanlı tetikleyiciler, [yineleme tetikleyicisi](../connectors/connectors-native-recurrence.md)gibi Azure Logic Apps yerel olarak çalışan yerleşik tetikleyicilerden farklıdır. Yinelenen bağlantı tabanlı tetikleyicilerle, yineleme zamanlaması, yürütmeyi denetleyen tek sürücü değildir ve saat dilimi yalnızca ilk başlangıç saatini belirler. Sonraki çalıştırmalar yineleme zamanlaması, son tetikleme yürütmesi *ve* çalışma sürelerinin, gün ışığından yararlanma saatı (DST) başladığında ve sona erdiğinde belirtilen zamanlamayı sürdürmemesine neden olabilecek diğer faktörlere bağlıdır. DST 'nin etkin olduğu zaman yinelenme saatinin kaymasını sağlamak için, mantıksal uygulamanızın beklenen sürede çalışmaya devam edebilmesi için yinelemeyi el ile ayarlayın. Aksi takdirde, DST başlatıldığında başlangıç saati bir saat ileri ve DST sona erdiğinde bir saat geriye geçer. Daha fazla bilgi için bkz. [bağlantı tabanlı tetikleyiciler Için yinelenme](../connectors/apis-list.md#recurrence-connection-based).
 
 <a name="convert-to-openssh"></a>
 
@@ -131,7 +140,7 @@ Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığ
 
 ### <a name="unix-based-os"></a>UNIX tabanlı işletim sistemi
 
-1. PuTTY araçları sisteminizde zaten yüklü değilse, bunu şimdi yapın, örneğin:
+1. Sisteminizde PuTTY araçları yüklü değilse, bunu şimdi yapın, örneğin:
 
    `sudo apt-get install -y putty`
 
@@ -147,13 +156,13 @@ Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlandığ
 
 1. Henüz yapmadıysanız, [en son PuTTY Oluşturucu (puttygen.exe) aracını indirin](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)ve ardından aracı başlatın.
 
-1. Bu ekranda **Yükle** ' yi seçin.
+1. Bu ekranda **Yükle**' yi seçin.
 
    !["Yükle" yi seçin](./media/connectors-sftp-ssh/puttygen-load.png)
 
-1. PuTTY biçimindeki özel anahtar dosyanıza gidin ve **Aç** ' ı seçin.
+1. PuTTY biçimindeki özel anahtar dosyanıza gidin ve **Aç**' ı seçin.
 
-1. **Dönüşümler** menüsünde, **OpenSSH anahtarını dışarı aktar** ' ı seçin.
+1. **Dönüşümler** menüsünde, **OpenSSH anahtarını dışarı aktar**' ı seçin.
 
    !["OpenSSH anahtarını dışarı aktar" ı seçin](./media/connectors-sftp-ssh/export-openssh-key.png)
 
@@ -181,9 +190,9 @@ SFTP sunucunuzda bir dosya oluşturmak için, SFTP-SSH **dosya oluştur** eylemi
 
    -veya-
 
-   Mevcut Logic Apps için, eylem eklemek istediğiniz son adım altında **yeni adım** ' ı seçin. Arama kutusuna `sftp ssh` filtreniz olarak yazın. Eylemler listesi altında istediğiniz eylemi seçin.
+   Mevcut Logic Apps için, eylem eklemek istediğiniz son adım altında **yeni adım**' ı seçin. Arama kutusuna `sftp ssh` filtreniz olarak yazın. Eylemler listesi altında istediğiniz eylemi seçin.
 
-   Adımlar arasında bir eylem eklemek için, işaretçinizi adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle** ' yi seçin.
+   Adımlar arasında bir eylem eklemek için, işaretçinizi adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
 
 1. Bağlantınız için gerekli ayrıntıları sağlayın.
 
@@ -195,13 +204,13 @@ SFTP sunucunuzda bir dosya oluşturmak için, SFTP-SSH **dosya oluştur** eylemi
 
    1. SSH özel anahtar dosyanızı bir metin düzenleyicisinde açın. Bu adımlar örnek olarak not defteri 'Ni kullanır.
 
-   1. Not defteri **düzenleme** menüsünde **Tümünü Seç** ' i seçin.
+   1. Not defteri **düzenleme** menüsünde **Tümünü Seç**' i seçin.
 
-   1. Kopyayı **Düzenle** ' yi seçin  >  **Copy**.
+   1. Kopyayı **Düzenle**' yi seçin  >  .
 
    1. Eklediğiniz SFTP-SSH tetikleyicisi veya eyleminde, birden çok satırı destekleyen **SSH özel anahtar** özelliğine kopyaladığınız *tam* anahtarı yapıştırın.  *_ Anahtarını *_yapıştırdığınızdan emin olun_*. _*_Anahtarı el ile girmeyin veya düzenleyemezsiniz_*_.
 
-1. Bağlantı ayrıntılarını girmeyi tamamladığınızda _ * oluştur * * öğesini seçin.
+1. Bağlantı ayrıntılarını girmeyi tamamladıktan sonra _ * oluştur * * öğesini seçin.
 
 1. Şimdi seçtiğiniz tetikleyici veya eyleminiz için gerekli ayrıntıları sağlayın ve mantıksal uygulamanızın iş akışını oluşturmaya devam edin.
 
@@ -211,7 +220,7 @@ SFTP sunucunuzda bir dosya oluşturmak için, SFTP-SSH **dosya oluştur** eylemi
 
 Öbek kullanan varsayılan Uyarlamalı davranışı geçersiz kılmak için 5 MB ile 50 MB arasında bir sabit öbek boyutu belirtebilirsiniz.
 
-1. Eylemin sağ üst köşesinde üç nokta düğmesini ( **...** ) ve ardından **Ayarlar** ' ı seçin.
+1. Eylemin sağ üst köşesinde üç nokta düğmesini (**...**) ve ardından **Ayarlar**' ı seçin.
 
    ![SFTP-SSH ayarlarını aç](./media/connectors-sftp-ssh/sftp-ssh-connector-setttings.png)
 
@@ -219,7 +228,7 @@ SFTP sunucunuzda bir dosya oluşturmak için, SFTP-SSH **dosya oluştur** eylemi
 
    ![Bunun yerine kullanılacak öbek boyutunu belirtin](./media/connectors-sftp-ssh/specify-chunk-size-override-default.png)
 
-1. İşiniz bittiğinde **Bitti** 'yi seçin.
+1. İşiniz bittiğinde **bitti**' yi seçin.
 
 ## <a name="examples"></a>Örnekler
 
@@ -229,7 +238,7 @@ SFTP sunucunuzda bir dosya oluşturmak için, SFTP-SSH **dosya oluştur** eylemi
 
 Bu tetikleyici bir SFTP sunucusunda dosya eklendiğinde veya değiştirildiğinde bir mantıksal uygulama iş akışı başlatır. Örneğin, dosyanın içeriğini denetleyen ve içeriğin belirtilen bir koşulu karşılayıp karşılamadığını temel alarak içeriği alan bir koşul ekleyebilirsiniz. Daha sonra dosyanın içeriğini alan ve bu içeriği SFTP sunucusundaki bir klasöre yerleştiren bir eylem ekleyebilirsiniz.
 
-**Kurumsal örnek** : Bu tetikleyiciyi, Müşteri emirlerini temsil eden yeni dosyalar IÇIN BIR SFTP klasörünü izlemek üzere kullanabilirsiniz. Daha sonra, daha fazla işleme için siparişin içeriğini almak ve bu siparişi bir Siparişler veritabanında depolamak için **Dosya Içeriğini al** gıbı bır SFTP eylemi kullanabilirsiniz.
+**Kurumsal örnek**: Bu tetikleyiciyi, Müşteri emirlerini temsil eden yeni dosyalar IÇIN BIR SFTP klasörünü izlemek üzere kullanabilirsiniz. Daha sonra, daha fazla işleme için siparişin içeriğini almak ve bu siparişi bir Siparişler veritabanında depolamak için **Dosya Içeriğini al** gıbı bır SFTP eylemi kullanabilirsiniz.
 
 <a name="get-content"></a>
 
@@ -239,21 +248,9 @@ Bu eylem, dosya yolunu belirterek SFTP sunucusundaki bir dosyanın içeriğini a
 
 <a name="troubleshooting-errors"></a>
 
-## <a name="troubleshoot-errors"></a>Sorun giderme hataları
+## <a name="troubleshoot-problems"></a>Sorunları giderme
 
 Bu bölümde, yaygın hataların veya sorunların olası çözümleri açıklanmaktadır.
-
-<a name="file-does-not-exist"></a>
-
-### <a name="404-error-a-reference-was-made-to-a-file-or-folder-which-does-not-exist"></a>404 hatası: "varolmayan bir dosya veya klasör için bir başvuru yapıldı"
-
-Bu hata, mantıksal uygulamanız SFTP-SSH **dosya oluştur** eylemi aracılığıyla SFTP sunucunuzda yeni bir dosya oluşturduğunda meydana gelir, ancak yeni oluşturulan dosya daha sonra Logic Apps hizmeti dosyanın meta verilerini alabilmek için hemen taşınır. Mantıksal uygulamanız **dosya oluştur** eylemini çalıştırdığında, Logic Apps hizmeti, dosyanın meta verilerini almak için SFTP sunucunuzu da otomatik olarak çağırır. Bununla birlikte, dosya taşınırsa, hata iletisini almak için Logic Apps hizmeti artık dosyayı bulamıyor olabilir `404` .
-
-Dosyanın taşınmasını önlemek veya bu işlemleri ertelerseniz, aşağıdaki adımları izleyerek Dosya oluşturulduktan sonra dosyanın meta verilerini okumayı atlayabilirsiniz:
-
-1. **Dosya oluştur** eyleminde **yeni parametre Ekle** listesini açın, **tüm dosya meta verilerini al** özelliğini seçin ve değeri **Hayır** olarak ayarlayın.
-
-1. Bu dosya meta verilerine daha sonra ihtiyacınız varsa **dosya meta verilerini al** eylemini kullanabilirsiniz.
 
 <a name="connection-attempt-failed"></a>
 
@@ -272,6 +269,18 @@ Mantıksal uygulamanız SFTP sunucusuyla başarıyla bağlantı kuramazsa bu hat
 * Bağlantı kurma maliyetini azaltmak için, SFTP sunucunuzun SSH yapılandırmasında [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) özelliğini bir saatin etrafında artırın.
 
 * Mantıksal uygulama isteğinin SFTP sunucusuna ulaşıp erişmediğini denetlemek için SFTP sunucusu günlüğünü gözden geçirin. Bağlantı sorunu hakkında daha fazla bilgi edinmek için güvenlik duvarınız ve SFTP sunucunuzda bir ağ izlemesi de çalıştırabilirsiniz.
+
+<a name="file-does-not-exist"></a>
+
+### <a name="404-error-a-reference-was-made-to-a-file-or-folder-which-does-not-exist"></a>404 hatası: "varolmayan bir dosya veya klasör için bir başvuru yapıldı"
+
+Mantıksal uygulamanız SFTP sunucunuzda SFTP-SSH **dosya oluştur** eylemi aracılığıyla yeni bir dosya oluşturduğunda bu hata oluşabilir, ancak Logic Apps hizmeti dosyanın meta verilerini alabilmek için hemen yeni oluşturulan dosyayı hareket ettirir. Mantıksal uygulamanız **dosya oluştur** eylemini çalıştırdığında, Logic Apps hizmeti, dosyanın meta verilerini almak için SFTP sunucunuzu da otomatik olarak çağırır. Ancak, mantıksal uygulamanız dosyayı taşıdıysanız, hata iletisini almak için Logic Apps hizmeti artık dosyayı bulamıyor olabilir `404` .
+
+Dosyanın taşınmasını önlemek veya bu işlemleri ertelerseniz, aşağıdaki adımları izleyerek Dosya oluşturulduktan sonra dosyanın meta verilerini okumayı atlayabilirsiniz:
+
+1. **Dosya oluştur** eyleminde **yeni parametre Ekle** listesini açın, **tüm dosya meta verilerini al** özelliğini seçin ve değeri **Hayır** olarak ayarlayın.
+
+1. Bu dosya meta verilerine daha sonra ihtiyacınız varsa **dosya meta verilerini al** eylemini kullanabilirsiniz.
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 

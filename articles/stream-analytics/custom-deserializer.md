@@ -1,18 +1,17 @@
 ---
 title: Öğretici-Azure Stream Analytics bulut işleri için özel .NET seri hale getiriciler
 description: Bu öğreticide, Visual Studio kullanarak Azure Stream Analytics bir bulut işi için özel bir .NET seri hale getirici oluşturma işlemi gösterilmektedir.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/17/2020
-ms.openlocfilehash: 2353d15707fe215bfcab7912f2a9c598c4af7e49
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 6db65d85b5d5d72e7b4764949abcffed004cae85
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822021"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018216"
 ---
 # <a name="tutorial-custom-net-deserializers-for-azure-stream-analytics"></a>Öğretici: Azure Stream Analytics için özel .NET seri hale Getiricileri
 
@@ -20,7 +19,7 @@ Azure Stream Analytics [üç veri biçimi için yerleşik desteğe](stream-analy
 
 Bu öğreticide, Visual Studio kullanarak Azure Stream Analytics bir bulut işi için özel bir .NET seri hale getirici oluşturma işlemi gösterilmektedir. Visual Studio Code .NET seri hale Getiricileri oluşturma hakkında bilgi edinmek için, bkz. [Visual Studio Code Azure Stream Analytics işleri için .net seri hale Getiricileri oluşturma](visual-studio-code-custom-deserializer.md).
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Protokol arabelleği için özel bir seri hale getirici oluşturun.
@@ -86,7 +85,7 @@ Oluşturduğunuz kapsayıcı, Stream Analytics işle ilgili varlıkları depolam
    |Kaynak|ASA projesi başvurusundan veya CodeBehind 'ten yükleme|
    |CSharp derleme adı|ProtobufDeserializer.dll|
    |Sınıf Adı|MessageBodyProto. MessageBodyDeserializer|
-   |Olay sıkıştırma türü|Hiçbiri|
+   |Olay sıkıştırma türü|Yok|
 
 3. Aşağıdaki sorguyu **Script. aşama QL** dosyasına ekleyin.
 
@@ -98,7 +97,7 @@ Oluşturduğunuz kapsayıcı, Stream Analytics işle ilgili varlıkları depolam
 
    |Ayar|Önerilen Değer|
    |-------|---------------|
-   |Girdi Diğer Adı|Giriş|
+   |Girdi Diğer Adı|Girdi|
    |Kaynak Türü|Veri Akışı|
    |Olay serileştirme biçimi|Diğer (Protoarabellek, XML, özel...)|
    |CSharp derleme adı|ProtobufDeserializer.dll|

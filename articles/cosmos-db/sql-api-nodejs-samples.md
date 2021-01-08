@@ -8,14 +8,14 @@ ms.topic: sample
 ms.date: 08/23/2019
 ms.author: dech
 ms.custom: devx-track-js
-ms.openlocfilehash: 261ffc97d12202b588e519502895d338453c4380
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 192af33c6f07d38daef3a183fa8d746ff082ce2b
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097252"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018981"
 ---
-# <a name="nodejs-examples-to-manage-data-in-azure-cosmos-db"></a>Azure Cosmos DB verileri yönetmek için örnek Node.js
+# <a name="nodejs-examples-to-manage-data-in-azure-cosmos-db"></a>Azure Cosmos DB’de verileri yönetmeye yönelik Node.js örnekleri
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "93097252"
 > 
 > 
 
-Azure Cosmos DB kaynaklarında CRUD işlemlerini ve diğer yaygın işlemleri gerçekleştiren örnek çözümler, [azure-cosmos-js](https://github.com/Azure/azure-cosmos-js/tree/master/samples) GitHub deposuna eklenmiştir. Bu makalede aşağıdakiler sunulmaktadır:
+Azure Cosmos DB kaynaklarında CRUD işlemlerini ve diğer yaygın işlemleri gerçekleştiren örnek çözümler [Azure-Cosmos-js](https://github.com/Azure/azure-cosmos-js/tree/master/samples) GitHub deposuna dahil edilmiştir. Bu makalede aşağıdakiler sunulmaktadır:
 
 * Node.js örnek proje dosyalarının her birindeki görevlere bağlantılar.
 * İlgili API başvurusu içeriğine bağlantılar.
@@ -88,7 +88,7 @@ Azure Cosmos DB kaynaklarında CRUD işlemlerini ve diğer yaygın işlemleri ge
 
 ## <a name="indexing-examples"></a>Dizin örnekleri
 
-[Indexmanagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/IndexManagement.ts) dosyası dizin oluşturma işleminin nasıl yönetileceğini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB Dizin oluşturma hakkında bilgi edinmek için bkz. [Dizin oluşturma ilkeleri](index-policy.md), [Dizin oluşturma türleri](index-overview.md#index-kinds)ve [Dizin oluşturma yolları](index-policy.md#include-exclude-paths) kavramsal makaleler. 
+[Indexmanagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/IndexManagement.ts) dosyası dizin oluşturma işleminin nasıl yönetileceğini gösterir. Aşağıdaki örnekleri çalıştırmadan önce Azure Cosmos DB Dizin oluşturma hakkında bilgi edinmek için bkz. [Dizin oluşturma ilkeleri](index-policy.md), [Dizin oluşturma türleri](index-overview.md#index-types)ve [Dizin oluşturma yolları](index-policy.md#include-exclude-paths) kavramsal makaleler. 
 
 | Görev | API başvurusu |
 | --- | --- |

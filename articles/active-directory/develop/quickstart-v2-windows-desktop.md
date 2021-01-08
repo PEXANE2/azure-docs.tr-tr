@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: bc7c6022f8ed95a69dcb877252fd8c5eff49ce28
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 0ffc3b40ecff1a7935eeef7fabfcb332fcd9dc71
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030493"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017298"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Hızlı Başlangıç: Bir belirteç alma ve bir Windows masaüstü uygulamasından Microsoft Graph API'si çağırma
 
@@ -45,7 +45,7 @@ Bu hızlı başlangıçta, bir Windows Masaüstü .NET (WPF) uygulamasının kul
 > #### <a name="step-1-register-your-application"></a>1. Adım: Uygulamanızı kaydetme
 > Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze el ile eklemek için şu adımları izleyin:
 >
-> 1. [Azure Portal](https://portal.azure.com) oturum açın.
+> 1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
 > 1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
 > 1. **Azure Active Directory**'yi bulun ve seçin.
 > 1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
@@ -135,7 +135,7 @@ PublicClientApplicationBuilder.Create(ClientId)
                 .Build();
 ```
 
-> |Konum: | Description |
+> |Konum: | Açıklama |
 > |---------|---------|
 > | `ClientId` | **Uygulama (istemci) Kimliği**, Azure portalda kayıtlı uygulamadır. Bu değeri Azure portalda uygulamanın **Genel bakış** sayfasında bulabilirsiniz. |
 
@@ -157,7 +157,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
                                       .ExecuteAsync();
 ```
 
-> |Konum:| Description |
+> |Konum:| Açıklama |
 > |---------|---------|
 > | `_scopes` | `{ "user.read" }`Microsoft Graph veya `{ "api://<Application ID>/access_as_user" }` özel Web API 'leri için istenen kapsamları içerir. |
 
@@ -172,7 +172,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |Konum: | Description |
+> |Konum: | Açıklama |
 > |---------|---------|
 > | `scopes` | `{ "user.read" }`Microsoft Graph veya `{ "api://<Application ID>/access_as_user" }` özel Web API 'leri için istenen kapsamları içerir. |
 > | `firstAccount` | Önbellekteki ilk kullanıcıyı belirtir (MSAL destekleyen birden çok kullanıcı tek bir uygulama olarak). |

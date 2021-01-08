@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2017
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 9014f24918013872ce102d094f62fd5703594ddc
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a5db1ac9c70429d4b6a0b690de1b29c3656b3cc8
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94961885"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016720"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>VPN ağ geçitleri aracılığıyla şirket içi bağlantıyı tanılama
 
@@ -87,11 +87,11 @@ Azure ağ Izleyicisi sorun giderme özelliği, VPN Gateway ve bağlantınızı b
 | PlannedMaintenance |  Ağ geçidi örneği bakım aşamasında.  |Hayır|
 | UserDrivenUpdate | Bir Kullanıcı güncelleştirmesi devam ediyor. Bu bir yeniden boyutlandırma işlemi olabilir. | Hayır |
 | VipUnResponsive | Ağ geçidinin birincil örneğine ulaşılamıyor. Bu durum araştırma başarısız olduğunda gerçekleşir. | Hayır |
-| PlatformInActive | Platform ile ilgili bir sorun var. | No|
-| ServiceNotRunning | Temel alınan hizmet çalışmıyor. | No|
-| Noconnectionsdökümforgateway | Ağ geçidinde hiçbir bağlantı yok. Bu yalnızca bir uyarıdır.| No|
-| ConnectionsNotConnected | Bağlantılardan hiçbiri bağlanmadı. Bu yalnızca bir uyarıdır.| Yes|
-| Gatewaycpuusageaşıldı | Geçerli ağ geçidi kullanım CPU kullanımı %95 >. | Yes |
+| PlatformInActive | Platform ile ilgili bir sorun var. | Hayır|
+| ServiceNotRunning | Temel alınan hizmet çalışmıyor. | Hayır|
+| Noconnectionsdökümforgateway | Ağ geçidinde hiçbir bağlantı yok. Bu yalnızca bir uyarıdır.| Hayır|
+| ConnectionsNotConnected | Bağlantılardan hiçbiri bağlanmadı. Bu yalnızca bir uyarıdır.| Evet|
+| Gatewaycpuusageaşıldı | Geçerli ağ geçidi kullanım CPU kullanımı %95 >. | Evet |
 
 ### <a name="connection"></a>Bağlantı
 
@@ -101,14 +101,14 @@ Azure ağ Izleyicisi sorun giderme özelliği, VPN Gateway ve bağlantınızı b
 | GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı. |Hayır|
 | PlannedMaintenance | Ağ geçidi örneği bakım aşamasında.  |Hayır|
 | UserDrivenUpdate | Bir Kullanıcı güncelleştirmesi devam ediyor. Bu bir yeniden boyutlandırma işlemi olabilir.  | Hayır |
-| VipUnResponsive | Ağ geçidinin birincil örneğine ulaşılamıyor. Durum araştırması başarısız olduğunda gerçekleşir. | No |
-| ConnectionEntityNotFound | Bağlantı yapılandırması eksik. | No |
-| Connectionımarkedconnected | Bağlantı "bağlantısı kesildi" olarak işaretlenir. |No|
-| ConnectionNotConfiguredOnGateway | Temeldeki hizmette bağlantı yapılandırılmamış. | Yes |
-| ConnectionMarkedStandby | Temel alınan hizmet bekleme olarak işaretlendi.| Yes|
-| Kimlik Doğrulaması | Önceden paylaşılan anahtar uyumsuzluğu. | Yes|
-| Peerulaşılabilirlik | Eş ağ geçidine erişilemiyor. | Yes|
-| Ikepolicyuyuşmazlığıdır | Eş ağ geçidinde Azure tarafından desteklenmeyen ıKE ilkeleri vardır. | Yes|
+| VipUnResponsive | Ağ geçidinin birincil örneğine ulaşılamıyor. Durum araştırması başarısız olduğunda gerçekleşir. | Hayır |
+| ConnectionEntityNotFound | Bağlantı yapılandırması eksik. | Hayır |
+| Connectionımarkedconnected | Bağlantı "bağlantısı kesildi" olarak işaretlenir. |Hayır|
+| ConnectionNotConfiguredOnGateway | Temeldeki hizmette bağlantı yapılandırılmamış. | Evet |
+| ConnectionMarkedStandby | Temel alınan hizmet bekleme olarak işaretlendi.| Evet|
+| Kimlik Doğrulaması | Önceden paylaşılan anahtar uyumsuzluğu. | Evet|
+| Peerulaşılabilirlik | Eş ağ geçidine erişilemiyor. | Evet|
+| Ikepolicyuyuşmazlığıdır | Eş ağ geçidinde Azure tarafından desteklenmeyen ıKE ilkeleri vardır. | Evet|
 | WfpParse hatası | WFP günlüğü ayrıştırılırken bir hata oluştu. |Evet|
 
 ## <a name="next-steps"></a>Sonraki adımlar

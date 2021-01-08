@@ -5,12 +5,12 @@ ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: e37a14b2634395d7f31565d6d5a6f6ec96a4a2f1
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 5c9612547fcfed8e583f5b2fbcfe0bddd5dc412c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954541"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019117"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Azure portalında ilk işlevinizi oluşturma
 
@@ -61,13 +61,13 @@ Sonra, yeni işlev uygulamasında bir işlev oluşturun.
 
     ![Azure portalından işlev URL’sini kopyalama](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
-1. İşlev URL'sini tarayıcınızın adres çubuğuna yapıştırın. Sorgu dizesi değerini `&name=<your_name>` Bu URL 'nin sonuna ekleyin ve isteği çalıştırmak Için ENTER 'a basın. 
+1. İşlev URL'sini tarayıcınızın adres çubuğuna yapıştırın. Sorgu dizesi değerini `?name=<your_name>` Bu URL 'nin sonuna ekleyin ve isteği çalıştırmak Için ENTER 'a basın. 
 
     Aşağıdaki örnekte tarayıcıdaki yanıt gösterilmektedir:
 
     ![Tarayıcıdaki işlev yanıtı.](./media/functions-create-first-azure-function/function-app-browser-testing.png)
 
-    İstek URL’si, işlevinize HTTP üzerinden erişmek için varsayılan olarak gerekli olan bir anahtar içerir.
+    İstek URL 'SI bir [erişim anahtarı](functions-bindings-http-webhook-trigger.md#authorization-keys) () içeriyorsa `?code=...` , işlevi oluştururken **anonim** erişim düzeyi yerine **işlevi** seçersiniz demektir. Bu durumda, bunun yerine sonuna eklemeniz gerekir `&name=<your_name>` .
 
 1. İşleviniz çalıştığında, izleme bilgileri günlüklere yazılır. İzleme çıktısını görmek için, portalda **Code + test** sayfasına dönüp sayfanın altındaki **Günlükler** okunu genişletin.
 

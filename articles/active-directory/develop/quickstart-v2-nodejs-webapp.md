@@ -12,55 +12,46 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: 643305057490cc550a5a8e39a892297b000cbc8e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c9aa73767fcb9d57ada11f5830fec00b10eee812
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169418"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017349"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Hızlı başlangıç: Node.js Web uygulamasına OpenID Connect ile oturum açma ekleme
 
 Bu hızlı başlangıçta, Express ile Node.js kullanılarak oluşturulmuş bir Web uygulamasında OpenID Connect kimlik doğrulamasının nasıl ayarlanacağını gösteren bir kod örneği indirip çalıştırırsınız. Örnek, herhangi bir platformda çalışmak üzere tasarlanmıştır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js](https://nodejs.org/en/download/).
 
 ## <a name="register-your-application"></a>Uygulamanızı kaydetme
-1. [Azure Portal](https://portal.azure.com/) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
-1. Hesabınız birden çok Azure AD kiracısında varsa:
-    - Sayfanın sağ üst köşesindeki menüden profilinizi seçin ve ardından dizin ' i **değiştirin**.
-    - Uygulamanızı oluşturmak istediğiniz Azure AD kiracısı için oturumunuzu değiştirin.
 
-1. Uygulamanızı kaydetmek için [Azure Active Directory > uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) gidin.
-
-1. **Yeni kayıt** seçeneğini belirleyin.
-
-1. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanızın kayıt bilgilerini girin:
-    - **Ad** bölümünde, uygulamanın kullanıcılarına gösterilecek anlamlı bir ad girin. Örneğin: MyWebApp
-    - **Desteklenen hesap türleri** bölümünde, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında (ör. Skype, Xbox, Outlook.com) hesaplar**' ı seçin.
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
+1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
+1. **Azure Active Directory**'yi bulun ve seçin.
+1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
+1. Uygulamanız için bir **ad** girin (örneğin,) `MyWebApp` . Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
+1. **Desteklenen hesap türleri** bölümünde, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında (ör. Skype, Xbox, Outlook.com) hesaplar**' ı seçin.
 
     Birden fazla yeniden yönlendirme URI 'si varsa, bunları daha sonra uygulama başarıyla oluşturulduktan sonra **kimlik doğrulama** sekmesinden eklemeniz gerekir.
 
 1. Uygulamayı oluşturmak için **Kaydet** ' i seçin.
-
 1. Uygulamanın **genel bakış** sayfasında, **uygulama (istemci) kimlik** değerini bulun ve daha sonra için kaydedin. Uygulamayı bu projede daha sonra yapılandırmak için bu değere ihtiyacınız olacak.
+1. **Yönet** altında **kimlik doğrulaması**' nı seçin.
+1. **Platform**  >  **Web** 'i Ekle 'yi seçin 
+1. **Yeniden yönlendirme URI 'leri** bölümünde, girin `http://localhost:3000/auth/openid/return` .
+1. Bir **oturum kapatma URL 'si** girin `https://localhost:3000` .
+1. Örtük izin bölümünde, **kimlik belirteçlerini** denetleyin. Bu örnek, kullanıcının oturum açması için [örtük verme akışının](./v2-oauth2-implicit-grant-flow.md) etkinleştirilmesini gerektirir.
+1. **Yapılandır**'ı seçin.
+1. **Yönet**' in altında **Sertifikalar & gizli**  >  **anahtar istemci parolası**' nı seçin.
+1. Bir anahtar açıklaması girin (örneğin, uygulama gizli anahtarı).
+1. **1 yılda, 2 yıl içinde** bir anahtar süresi seçin veya **hiçbir zaman sona ermez**.
+1. **Ekle**’yi seçin. Anahtar değeri görüntülenecektir. Anahtar değerini kopyalayın ve daha sonra kullanmak üzere güvenli bir konuma kaydedin.
 
-1. Uygulama sayfa listesinde **Kimlik doğrulaması**'nı seçin.
-    - **Yeniden yönlendirme URI 'leri** bölümünde, açılan kutudan **Web** ' i seçin ve aşağıdaki yeniden yönlendirme URI 'sini girin:`http://localhost:3000/auth/openid/return`
-    - **Gelişmiş ayarlar** bölümünde, **oturum kapatma URL 'sini** olarak ayarlayın `https://localhost:3000` .
-    - **Gelişmiş ayarlar > örtük verme** bölümünde, **kimlik belirteçlerini** denetleyin, bu örnek, kullanıcının oturum açması için [örtük verme akışının](./v2-oauth2-implicit-grant-flow.md) etkinleştirilmesini gerektirir.
-
-1. **Kaydet**’i seçin.
-
-1. **Sertifikalar & gizlilikler** sayfasında, **istemci gizli** dizileri bölümünde **yeni istemci parolası**' nı seçin.
-    - Bir anahtar açıklaması girin (örneğin, uygulama gizli anahtarı).
-    - **1 yılda, 2 yıl içinde** bir anahtar süresi seçin veya **hiçbir zaman sona ermez**.
-    - **Ekle** düğmesine tıkladığınızda, anahtar değeri görüntülenecektir. Anahtar değerini kopyalayın ve güvenli bir konuma kaydedin.
-
-    Uygulamayı yapılandırmak için bu anahtara daha sonra ihtiyacınız olacak. Bu anahtar değeri bir daha görüntülenmez veya başka yollarla alınabilir, bu nedenle Azure portal görünür hale geldiğinde onu kaydedin.
 
 ## <a name="download-the-sample-application-and-modules"></a>Örnek uygulamayı ve modülleri indirin
 
