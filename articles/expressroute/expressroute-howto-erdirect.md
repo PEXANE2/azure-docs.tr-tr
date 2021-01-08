@@ -5,18 +5,27 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 12/14/2020
 ms.author: duau
-ms.openlocfilehash: a450c4057b4639206fd1db4b7f44d27c69441f7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 964af92006aad7b5ce8bdf25a332cbcf9c7ef144
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569843"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014527"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>ExpressRoute Direct 'i yapılandırma
 
 ExpressRoute Direct, dünya genelinde stratejik olarak dağıtılan eşleme konumları aracılığıyla Microsoft 'un global ağına doğrudan bağlanma olanağı sağlar. Daha fazla bilgi için bkz. [ExpressRoute Direct Hakkında](expressroute-erdirect-about.md).
+
+## <a name="before-you-begin"></a>Başlamadan önce
+
+ExpressRoute Direct kullanmadan önce aboneliğinizi kaydetmeniz gerekir. Kaydolmak için aşağıdaki ayrıntılar dahil olmak üzere abonelik KIMLIĞINIZLE bir e-posta gönderin <ExpressRouteDirect@microsoft.com> :
+
+* **ExpressRoute Direct** ile başarmak için kullandığınız senaryolar
+* Konum tercihleri-tüm konumların tam listesi için [Iş ortakları ve eşleme konumları](expressroute-locations-providers.md) bölümüne bakın
+* Uygulama için zaman çizelgesi
+* Diğer sorular
 
 ## <a name="create-the-resource"></a><a name="resources"></a>Kaynağı oluşturma
 

@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: hahamil
 ms.reviewer: marsma
-ms.openlocfilehash: 3f5791bfcf6547b7fc4e84bee3d4c1c49453af9c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c4c98ad377100c35b0c364607bfd3803d07a95a7
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169503"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015938"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-msal"></a>Nasıl yapılır: MSAL kullanarak Android üzerinde uygulamalar arası SSO etkinleştirme
 
@@ -29,7 +29,7 @@ ms.locfileid: "96169503"
 
 Bu nasıl yapılır, uygulamanız tarafından müşterilerinize SSO sağlamak üzere kullanılan SDK 'Ları nasıl yapılandıracağınızı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu şekilde nasıl yapılacağını bildiğiniz varsayılır:
 
@@ -119,7 +119,7 @@ keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.k
 
 *Keytool* ile imza karması oluşturduktan sonra, YENIDEN yönlendirme URI 'sini oluşturmak için Azure Portal kullanın:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın ve **uygulama kayıtları** Android uygulamanızı seçin.
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a> oturum açın ve **uygulama kayıtları** Android uygulamanızı seçin.
 1. **Kimlik doğrulama**  >  **platformu Ekle**  >  **Android**' i seçin.
 1. Açılan **Android uygulamanızı yapılandırın** bölmesinde, daha önce oluşturduğunuz **imza karmasını** ve bir **paket adını** girin.
 1. **Yapılandır** düğmesini seçin.

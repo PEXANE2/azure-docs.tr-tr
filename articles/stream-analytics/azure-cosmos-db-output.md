@@ -1,18 +1,17 @@
 ---
 title: Azure Stream Analytics çıkışı Azure Cosmos DB
 description: Bu makalede, Azure Stream Analytics verilerin Azure Cosmos DB ' den nasıl çıktısının yapılacağı açıklanır.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: a086d9fe150766c6b31210f29bf802a75e0ee4ec
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 9382ac8dc71d1ccb3a85dc0a7a027c8e99296cc6
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491741"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016586"
 ---
 # <a name="azure-cosmos-db-output-from-azure-stream-analytics"></a>Azure Stream Analytics çıkışı Azure Cosmos DB
 
@@ -34,7 +33,7 @@ Aşağıdaki tabloda Azure Cosmos DB çıktısı oluşturma özellikleri açıkl
 | Hesap Kimliği | Azure Cosmos DB hesabının adı veya uç nokta URI 'SI. |
 | Hesap anahtarı | Azure Cosmos DB hesabının paylaşılan erişim anahtarı. |
 | Veritabanı | Azure Cosmos DB veritabanı adı. |
-| Kapsayıcı adı | Cosmos DB olması gereken, kullanılacak kapsayıcı adı. Örnek:  <br /><ul><li> _MyContainer_ : "myContainer" adlı bir kapsayıcı var olmalıdır.</li>|
+| Kapsayıcı adı | Cosmos DB olması gereken, kullanılacak kapsayıcı adı. Örnek:  <br /><ul><li> _MyContainer_: "myContainer" adlı bir kapsayıcı var olmalıdır.</li>|
 | Belge KIMLIĞI |İsteğe bağlı. Ekleme veya güncelleştirme işlemlerinin dayandığı birincil anahtarı belirtmek için kullanılan çıkış olaylarında alanın adı.
 
 ## <a name="partitioning"></a>Bölümleme

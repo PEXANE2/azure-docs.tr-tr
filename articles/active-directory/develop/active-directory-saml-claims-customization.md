@@ -13,12 +13,12 @@ ms.date: 12/09/2020
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 9c316362e2cd3fca9290e5f8070879567d9b7ea5
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 9fb5e229882532fed076f2e0d800f32acfcdbf4c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963511"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013796"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Nasıl yapılır: kurumsal uygulamalar için SAML belirtecinde verilen talepleri özelleştirme
 
@@ -81,7 +81,7 @@ Daha fazla bilgi için bkz. [Tablo 3: kaynak başına GEÇERLI kimlik değerleri
 
 Ayrıca, Azure AD 'de tanımladığınız talepler için herhangi bir sabit (statik) değer atayabilirsiniz. Sabit değer atamak için lütfen aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com/), **Kullanıcı öznitelikleri & talepler** bölümünde, talepleri düzenlemek için **Düzenle** simgesine tıklayın.
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a>, **Kullanıcı öznitelikleri & talepler** bölümünde, talepleri düzenlemek için **Düzenle** simgesine tıklayın.
 
 1. Değiştirmek istediğiniz gerekli talebe tıklayın.
 

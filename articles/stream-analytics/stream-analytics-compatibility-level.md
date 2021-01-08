@@ -1,17 +1,17 @@
 ---
 title: Uyumluluk düzeylerini Azure Stream Analytics
 description: Azure Stream Analytics işi için bir uyumluluk düzeyi ayarlamayı ve en son uyumluluk düzeyindeki önemli değişiklikleri nasıl ayarlayacağınızı öğrenin
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 11014c5a5c5cd0cabae1b62083bd5e662be2c6b7
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 8105988cd2036f44d214befad3365cf9ee96ee0d
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348942"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015989"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics işleri için uyumluluk düzeyi
 
@@ -39,7 +39,7 @@ Azure portal işin uyumluluk düzeyini güncelleştirmek için:
 
 1. Stream Analytics işinizi bulmak için [Azure Portal](https://portal.azure.com) kullanın.
 2. Uyumluluk düzeyini güncelleştirmeden önce işi **durdurun** . İşiniz çalışır durumdaysa uyumluluk düzeyini güncelleştiremezsiniz.
-3. **Yapılandır** başlığı altında, **Uyumluluk düzeyi** ' ni seçin.
+3. **Yapılandır** başlığı altında, **Uyumluluk düzeyi**' ni seçin.
 4. İstediğiniz uyumluluk düzeyi değerini seçin.
 5. Sayfanın alt kısmındaki **Kaydet** ' i seçin.
 
@@ -53,7 +53,7 @@ Aşağıdaki büyük değişiklikler uyumluluk düzeyi 1,2 ' de kullanıma sunul
 
 ###  <a name="amqp-messaging-protocol"></a>AMQP mesajlaşma Protokolü
 
-**1,2 düzeyi** : Azure Stream Analytics Service Bus kuyruklara ve konulara yazmak Için [Gelişmiş ileti sırası Protokolü (AMQP)](../service-bus-messaging/service-bus-amqp-overview.md) mesajlaşma protokolünü kullanır. AMQP, açık bir standart protokol kullanarak platformlar arası karma uygulamalar oluşturmanıza olanak sağlar.
+**1,2 düzeyi**: Azure Stream Analytics Service Bus kuyruklara ve konulara yazmak Için [Gelişmiş ileti sırası Protokolü (AMQP)](../service-bus-messaging/service-bus-amqp-overview.md) mesajlaşma protokolünü kullanır. AMQP, açık bir standart protokol kullanarak platformlar arası karma uygulamalar oluşturmanıza olanak sağlar.
 
 ### <a name="geospatial-functions"></a>Jeo-uzamsal işlevler
 

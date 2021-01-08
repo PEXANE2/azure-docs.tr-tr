@@ -1,19 +1,18 @@
 ---
 title: Azure Machine Learning Studio ile tümleştirme Azure Stream Analytics (klasik)
 description: Bu makalede, Kullanıcı tanımlı bir işlev kullanarak Azure Machine Learning Studio (klasik) tümleştiren basit bir Azure Stream Analytics işinin hızlı bir şekilde nasıl ayarlanacağı açıklanır.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: krishna0815
+ms.author: krishmam
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9b08b59090d9dd23405f8a0ba86ce608e3a64902
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d7d74887b4b4e205645a45fa7e07768a1af73940
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011396"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015309"
 ---
 # <a name="do-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>Azure Stream Analytics ve Azure Machine Learning Studio (klasik) ile yaklaşım analizini yapın
 
@@ -127,13 +126,13 @@ Artık, BLOB depolama alanındaki CSV dosyasından örnek çoklu alanı içeren 
    |Kapsayıcı|Önceki adımda oluşturduğunuz kapsayıcıyı seçin.|
    |Olay serileştirme biçimi|CSV|
 
-3. **Kaydet**'i seçin.
+3. **Kaydet**’i seçin.
 
 ### <a name="configure-the-job-output"></a>İş çıktısını yapılandırma
 
 İş, sonuçları girdi aldığı BLOB depolama alanına gönderir.
 
-1. Stream Analytics işinize gidin. **Iş topolojisi** altında **çıktılar** seçeneğini belirleyin. **Add**  >  **BLOB depolama** Ekle ' yi seçin.
+1. Stream Analytics işinize gidin. **Iş topolojisi** altında **çıktılar** seçeneğini belirleyin.   >  **BLOB depolama** Ekle ' yi seçin.
 
 2. **BLOB depolama** formunu şu değerlerle doldurun:
 
@@ -145,7 +144,7 @@ Artık, BLOB depolama alanındaki CSV dosyasından örnek çoklu alanı içeren 
    |Kapsayıcı|Önceki adımda oluşturduğunuz kapsayıcıyı seçin.|
    |Olay serileştirme biçimi|CSV|
 
-3. **Kaydet**'i seçin.
+3. **Kaydet**’i seçin.
 
 ### <a name="add-the-studio-classic-function"></a>Studio (klasik) işlevini ekleme
 

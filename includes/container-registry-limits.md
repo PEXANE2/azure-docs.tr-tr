@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 3fe1b966b56142fd312850ac5d77839b7d9db434
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: e451171859efc49753131b145642aec4864db45d
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97706197"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015678"
 ---
 | Kaynak | Temel | Standart | Premium |
 |---|---|---|---|
@@ -22,8 +22,8 @@ ms.locfileid: "97706197"
 | Maksimum görüntü katmanı boyutu (GiB) | 200 | 200 | 200 |
 | Dakikada ReadOps<sup>2, 3</sup> | 1.000 | 3.000 | 10,000 |
 | Dakikada WriteOps<sup>2, 4</sup> | 100 | 500 | 2.000 |
-| İndirme bant genişliği Mbps<sup>2</sup> | 30 | 60 | 100 |
-| Karşıya yükleme bant genişliği Mbps<sup>2</sup> | 10 | 20 | 50 |
+| Bant genişliği<sup>2</sup> (Mbps) İndir | 30 | 60 | 100 |
+| Bant genişliğini karşıya yükle <sup>2</sup> (Mbps) | 10 | 20 | 50 |
 | Web Kancaları | 2 | 10 | 500 |
 | Coğrafi çoğaltma | Yok | Yok | [Desteklenir][geo-replication] |
 | Kullanılabilirlik alanları | Yok | Yok | [Önizleme][zones] |
@@ -38,7 +38,7 @@ ms.locfileid: "97706197"
 | &bull; Kapsam başına depo eşleme | Yok | Yok | 500 |
 
 
-<sup>1</sup> depolama her katman için günlük fiyata dahildir. Ek depolama için, depolama sınırına kadar, GiB başına ek bir günlük ücret ödersiniz. Hız bilgileri için bkz. [Azure Container Registry fiyatlandırması][pricing].
+<sup>1</sup> depolama her katman için günlük fiyata dahildir. Ek depolama alanı, kayıt defteri depolama sınırına kadar, GiB başına ek günlük ücretle kullanılabilir. Hız bilgileri için bkz. [Azure Container Registry fiyatlandırması][pricing].
 
 <sup>2</sup>*readops*, *writeops* ve *bant genişliği* minimum tahminlerdir. Azure Container Registry, kullanım gerektirdiğinden performansı artırmak için çaba harcar.
 

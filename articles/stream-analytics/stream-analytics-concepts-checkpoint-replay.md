@@ -1,25 +1,24 @@
 ---
 title: Azure Stream Analytics denetim noktası ve yeniden yürütme kavramları
 description: Bu makalede Azure Stream Analytics içindeki denetim noktası ve yeniden yürütme işi kurtarma kavramları açıklanmaktadır.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 10d9053e082a995085fa255cc0d9f63a2b4e2b17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df31f8538bb9eabeca37fe4c52c4443fd447e415
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84020617"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015332"
 ---
 # <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Azure Stream Analytics işlerinde denetim noktası ve yeniden yürütme kavramları
 Bu makalede, Azure Stream Analytics ' deki iç denetim noktası ve yeniden yürütme kavramları ve bunların iş kurtarmasında etkileri açıklanmaktadır. Stream Analytics iş her çalıştığında durum bilgileri dahili olarak tutulur. Bu durum bilgileri düzenli aralıklarla bir denetim noktasına kaydedilir. Bazı senaryolarda, iş hatası veya yükseltme gerçekleşirse, iş kurtarma için denetim noktası bilgileri kullanılır. Başka bir durumda, denetim noktası kurtarma için kullanılamaz ve yeniden yürütme gereklidir.
 
-## <a name="stateful-query-logicin-temporal-elements"></a>Zamana bağlı öğelerde durum bilgisi olan sorgu mantığı
-Azure Stream Analytics işin benzersiz özelliğinden biri, pencereli toplamalar, zamana bağlı birleşimler ve zamana bağlı analitik işlevler gibi durum bilgisi olmayan bir işlem gerçekleştirmesinin bir özelliğidir. Bu işleçlerin her biri, iş çalıştırıldığında durum bilgilerini tutar.Bu sorgu öğeleri için en büyük pencere boyutu yedi gündür. 
+## <a name="stateful-query-logic-in-temporal-elements"></a>Zamana bağlı öğelerde durum bilgisi olan sorgu mantığı
+Azure Stream Analytics işin benzersiz özelliğinden biri, pencereli toplamalar, zamana bağlı birleşimler ve zamana bağlı analitik işlevler gibi durum bilgisi olmayan bir işlem gerçekleştirmesinin bir özelliğidir. Bu işleçlerin her biri, iş çalıştırıldığında durum bilgilerini tutar. Bu sorgu öğeleri için en büyük pencere boyutu yedi gündür. 
 
 Zamana bağlı pencere kavramı çeşitli Stream Analytics sorgu öğelerinde görünür:
 1. Pencereli toplamalar (Tdönerek gruplama, atlamalı ve kayan pencereler)

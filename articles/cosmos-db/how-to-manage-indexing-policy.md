@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/02/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: cd51210a64223fab5d2d48a91bd3d0a6521a9627
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 8d52f8c59e83a4aae8724100770965f756a439fb
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341323"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015700"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB'de dizin oluşturma ilkelerini yönetme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -27,7 +27,7 @@ Azure Cosmos DB, veriler her kapsayıcı için tanımlanan [Dizin oluşturma ilk
 
 Burada, Azure portal üzerinde sunulduklarında, [JSON biçiminde](index-policy.md#include-exclude-paths)gösterilen dizin oluşturma ilkelerine ilişkin bazı örnekler verilmiştir. Aynı parametreler Azure CLı veya herhangi bir SDK aracılığıyla ayarlanabilir.
 
-### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>Bazı özellik yollarını seçmeli olarak hariç tutmak için devre dışı bırakma ilkesi
+### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a><a id="range-index"></a>Bazı özellik yollarını seçmeli olarak hariç tutmak için devre dışı bırakma ilkesi
 
 ```json
     {
@@ -146,7 +146,7 @@ Bu dizin oluşturma ilkesi,, ve değerlerini el ile ayarlayan, ```kind``` ```dat
 > [!NOTE]
 > Azure Cosmos DB, veri modelinize eklenebilen yeni bir özelliğin etkin bir şekilde dizinlemesini sağlamak için, bir **kabul etme** dizin oluşturma ilkesinin kullanılması genellikle önerilir.
 
-### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>Yalnızca belirli bir özellik yolunda uzamsal dizin kullanma
+### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a><a id="spatial-index"></a>Yalnızca belirli bir özellik yolunda uzamsal dizin kullanma
 
 ```json
 {
@@ -176,7 +176,7 @@ Bu dizin oluşturma ilkesi,, ve değerlerini el ile ayarlayan, ```kind``` ```dat
 }
 ```
 
-## <a name="composite-indexing-policy-examples"></a>Bileşik dizin oluşturma ilkesi örnekleri
+## <a name="composite-indexing-policy-examples"></a><a id="composite-index"></a>Bileşik dizin oluşturma ilkesi örnekleri
 
 Tek tek özellikler için yolların dahil edilmesi veya dışlanması buna ek olarak, bileşik bir dizin de belirtebilirsiniz. `ORDER BY`Birden çok özellik için yan tümcesi içeren bir sorgu gerçekleştirmek istiyorsanız, bu özelliklerde bir [bileşik dizin](index-policy.md#composite-indexes) gereklidir. Ayrıca, bileşik dizinlerin birden çok filtresi veya bir filtre ve ORDER BY yan tümcesi içeren sorgular için bir performans avantajı olacaktır.
 
@@ -351,21 +351,21 @@ Dizin [oluşturma ilkesi güncelleştirmesi](index-policy.md#modifying-the-index
 > [!NOTE]
 > Dizin oluşturma ilkesi güncelleştirilirken Azure Cosmos DB yazma işlemleri kesintiye uğramadan olur. [Dizin oluşturma dönüştürmeleri](index-policy.md#modifying-the-indexing-policy) hakkında daha fazla bilgi edinin
 
-## <a name="use-the-azure-portal"></a>Azure portalı kullanma
+## <a name="use-the-azure-portal"></a>Azure portalını kullanma
 
 Azure Cosmos kapsayıcıları dizin oluşturma ilkelerini, Azure portal doğrudan düzenlemenize izin veren bir JSON belgesi olarak depolar.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. Yeni bir Azure Cosmos hesabı oluşturun veya var olan bir hesabı seçin.
 
 1. **Veri Gezgini** bölmesini açın ve üzerinde çalışmak istediğiniz kapsayıcıyı seçin.
 
-1. **Ölçek & ayarları** ' na tıklayın.
+1. **Ölçek & ayarları**' na tıklayın.
 
 1. Dizin oluşturma ilkesi JSON belgesini değiştirme ( [aşağıdaki](#indexing-policy-examples)örneklere bakın)
 
-1. İşiniz bittiğinde **Kaydet** ’e tıklayın.
+1. İşiniz bittiğinde **Kaydet**’e tıklayın.
 
 :::image type="content" source="./media/how-to-manage-indexing-policy/indexing-policy-portal.png" alt-text="Azure portal kullanarak dizin oluşturmayı yönetme":::
 

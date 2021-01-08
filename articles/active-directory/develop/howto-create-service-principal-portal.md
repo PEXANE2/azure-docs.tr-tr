@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 46781edad6ad9290932216b9e9f23a359d25497a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 284ab3a2aabb2395636982237159117a10151019
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366165"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014952"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Nasıl yapılır: Kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma
 
@@ -37,15 +37,15 @@ Azure AD kiracınızla bir uygulamayı kaydetmek ve uygulamaya Azure aboneliğin
 
 ### <a name="check-azure-ad-permissions"></a>Azure AD izinlerini denetle
 
-1. **Azure Active Directory**seçin.
+1. **Azure Active Directory** seçin.
 1. Rolünüzü aklınızda edin. **Kullanıcı** rolüne sahipseniz, yönetici olmayanların uygulamaları kaydedebiliyorsanız emin olmanız gerekir.
 
    ![Rolünüzü bulun. Bir Kullanıcı kullanıyorsanız, yönetici olmayan uygulamaları kaydedebilirler](./media/howto-create-service-principal-portal/view-user-info.png)
 
 1. Sol bölmede **Kullanıcı ayarları**' nı seçin.
-1. **Uygulama kayıtları** ayarını denetleyin. Bu değer yalnızca bir yönetici tarafından ayarlanabilir. **Evet**olarak ayarlanırsa, Azure AD kiracısındaki tüm kullanıcılar bir uygulamayı kaydedebilir.
+1. **Uygulama kayıtları** ayarını denetleyin. Bu değer yalnızca bir yönetici tarafından ayarlanabilir. **Evet** olarak ayarlanırsa, Azure AD kiracısındaki tüm kullanıcılar bir uygulamayı kaydedebilir.
 
-Uygulama kayıtları ayarı **Hayır**olarak ayarlandıysa, yalnızca yönetici rolüne sahip kullanıcılar bu tür uygulamaları kaydedebilir. Kullanılabilir yönetici rolleri ve Azure AD 'de her role verilen belirli izinler hakkında bilgi edinmek için bkz. [kullanılabilir roller](../roles/permissions-reference.md#available-roles) ve [rol izinleri](../roles/permissions-reference.md#role-permissions) . Hesabınız Kullanıcı rolüne atanırsa, ancak uygulama kaydı ayarı Yönetici kullanıcılarla sınırlı ise, yöneticinizden uygulama kayıtlarının tüm yönlerini oluşturup yönetebilen yönetici rollerinden birini atamasını veya kullanıcıların uygulamaları kaydetmesini sağlamak için bunu yapmasını isteyin.
+Uygulama kayıtları ayarı **Hayır** olarak ayarlandıysa, yalnızca yönetici rolüne sahip kullanıcılar bu tür uygulamaları kaydedebilir. Kullanılabilir yönetici rolleri ve Azure AD 'de her role verilen belirli izinler hakkında bilgi edinmek için bkz. [kullanılabilir roller](../roles/permissions-reference.md#available-roles) ve [rol izinleri](../roles/permissions-reference.md#role-permissions) . Hesabınız Kullanıcı rolüne atanırsa, ancak uygulama kaydı ayarı Yönetici kullanıcılarla sınırlı ise, yöneticinizden uygulama kayıtlarının tüm yönlerini oluşturup yönetebilen yönetici rollerinden birini atamasını veya kullanıcıların uygulamaları kaydetmesini sağlamak için bunu yapmasını isteyin.
 
 ### <a name="check-azure-subscription-permissions"></a>Azure abonelik izinlerini denetle
 
@@ -53,7 +53,7 @@ Azure aboneliğinizde, hesabınız bir `Microsoft.Authorization/*/Write` ad uygu
 
 Abonelik izinlerinizi denetlemek için:
 
-1. **Abonelik**arayın ve seçin veya **giriş** sayfasında **abonelikler** ' i seçin.
+1. **Abonelik** arayın ve seçin veya **giriş** sayfasında **abonelikler** ' i seçin.
 
    ![Arama](./media/howto-create-service-principal-portal/select-subscription.png)
 
@@ -75,11 +75,11 @@ Abonelik izinlerinizi denetlemek için:
 
 Şimdi kimlik oluşturmaya doğrudan atlayalım. Bir sorunla karşılaşırsanız, hesabınızın kimlik oluşturup oluşturerişebildiğinizden emin olmak için [gerekli izinleri](#permissions-required-for-registering-an-app) denetleyin.
 
-1. [Azure Portal](https://portal.azure.com)aracılığıyla Azure hesabınızda oturum açın.
-1. **Azure Active Directory**seçin.
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>aracılığıyla Azure hesabınızda oturum açın.
+1. **Azure Active Directory** seçin.
 1. **Uygulama kayıtları**’nı seçin.
-1. **Yeni kayıt**seçeneğini belirleyin.
-1. Uygulamayı adlandırın. Uygulamayı kimlerin kullanabileceğinizi belirleyen desteklenen bir hesap türü seçin. **Yeniden yönlendirme URI 'si**altında, oluşturmak istediğiniz uygulama türü için **Web** ' i seçin. Erişim belirtecinin gönderildiği URI 'yi girin. [Yerel bir uygulama](../manage-apps/application-proxy-configure-native-client-application.md)için kimlik bilgileri oluşturamazsınız. Bu türü otomatik bir uygulama için kullanamazsınız. Değerleri ayarladıktan sonra **Kaydet**' i seçin.
+1. **Yeni kayıt** seçeneğini belirleyin.
+1. Uygulamayı adlandırın. Uygulamayı kimlerin kullanabileceğinizi belirleyen desteklenen bir hesap türü seçin. **Yeniden yönlendirme URI 'si** altında, oluşturmak istediğiniz uygulama türü için **Web** ' i seçin. Erişim belirtecinin gönderildiği URI 'yi girin. [Yerel bir uygulama](../manage-apps/application-proxy-configure-native-client-application.md)için kimlik bilgileri oluşturamazsınız. Bu türü otomatik bir uygulama için kullanamazsınız. Değerleri ayarladıktan sonra **Kaydet**' i seçin.
 
    ![Uygulamanız için bir ad yazın](./media/howto-create-service-principal-portal/create-app.png)
 
@@ -91,7 +91,7 @@ Aboneliğinizdeki kaynaklara erişmek için uygulamaya bir rol atamanız gerekir
 
 Kapsamı, abonelik, kaynak grubu veya kaynak düzeyinde ayarlayabilirsiniz. İzinler, daha düşük kapsam düzeylerine devralınır. Örneğin, bir kaynak grubu için *okuyucu* rolüne bir uygulama eklemek, kaynak grubunu ve içerdiği kaynakları okuyabileceği anlamına gelir.
 
-1. Azure portal, uygulamayı atamak istediğiniz kapsam düzeyini seçin. Örneğin, abonelik kapsamında bir rol atamak için, **abonelikleri**arayıp seçin ya da **giriş** sayfasında **abonelikler** ' i seçin.
+1. Azure portal, uygulamayı atamak istediğiniz kapsam düzeyini seçin. Örneğin, abonelik kapsamında bir rol atamak için, **abonelikleri** arayıp seçin ya da **giriş** sayfasında **abonelikler** ' i seçin.
 
    ![Örneğin, abonelik kapsamında bir rol atayın](./media/howto-create-service-principal-portal/select-subscription.png)
 
@@ -103,13 +103,13 @@ Kapsamı, abonelik, kaynak grubu veya kaynak düzeyinde ayarlayabilirsiniz. İzi
 
 1. **Erişim denetimi (IAM)** öğesini seçin.
 1. **Rol ataması ekle**’yi seçin.
-1. Uygulamaya atamak istediğiniz rolü seçin. Örneğin, uygulamanın **yeniden başlatma**gibi eylemleri yürütmesine izin vermek için örnekleri **başlatın** ve **durdurun** , **katkıda bulunan** rolünü seçin.  [Kullanılabilir roller](../../role-based-access-control/built-in-roles.md) hakkında daha fazla bilgi için, varsayılan olarak Azure AD uygulamaları kullanılabilir seçeneklerde gösterilmez. Uygulamanızı bulmak için adı arayın ve seçin.
+1. Uygulamaya atamak istediğiniz rolü seçin. Örneğin, uygulamanın **yeniden başlatma** gibi eylemleri yürütmesine izin vermek için örnekleri **başlatın** ve **durdurun** , **katkıda bulunan** rolünü seçin.  [Kullanılabilir roller](../../role-based-access-control/built-in-roles.md) hakkında daha fazla bilgi için, varsayılan olarak Azure AD uygulamaları kullanılabilir seçeneklerde gösterilmez. Uygulamanızı bulmak için adı arayın ve seçin.
 
    ![Uygulamaya atanacak rolü seçin](./media/howto-create-service-principal-portal/select-role.png)
 
 1. Rolü atamaya son vermek için **Kaydet** ' i seçin. Uygulamanızı bu kapsam için bir role sahip olan kullanıcılar listesinde görürsünüz.
 
-Hizmet sorumlusu ayarlanır. Betikleri veya uygulamalarınızı çalıştırmak için kullanmaya başlayabilirsiniz. Hizmet sorumlunuzu yönetmek için (izinler, Kullanıcı onaylı izinler, hangi kullanıcıların onaylı olduğunu görün, izinleri gözden geçirin, oturum açma bilgilerini görüntüleyin ve daha fazla), **kurumsal uygulamalara**gidin.
+Hizmet sorumlusu ayarlanır. Betikleri veya uygulamalarınızı çalıştırmak için kullanmaya başlayabilirsiniz. Hizmet sorumlunuzu yönetmek için (izinler, Kullanıcı onaylı izinler, hangi kullanıcıların onaylı olduğunu görün, izinleri gözden geçirin, oturum açma bilgilerini görüntüleyin ve daha fazla), **kurumsal uygulamalara** gidin.
 
 Sonraki bölümde, programlama yoluyla oturum açarken gereken değerlerin nasıl alınacağı gösterilmektedir.
 
@@ -117,7 +117,7 @@ Sonraki bölümde, programlama yoluyla oturum açarken gereken değerlerin nası
 
 Program aracılığıyla oturum açarken, kiracı KIMLIĞINI kimlik doğrulama isteğinizle ve uygulama KIMLIĞIYLE geçirmeniz gerekir.  Ayrıca bir sertifika veya bir kimlik doğrulama anahtarı (aşağıdaki bölümde açıklanmıştır) gerekir. Bu değerleri almak için aşağıdaki adımları kullanın:
 
-1. **Azure Active Directory**seçin.
+1. **Azure Active Directory** seçin.
 1. Azure AD 'de **uygulama kayıtları** uygulamanızı seçin.
 1. Dizin (kiracı) KIMLIĞINI kopyalayın ve uygulama kodunuzda depolayın.
 
@@ -135,7 +135,7 @@ Hizmet sorumluları için kullanılabilen iki kimlik doğrulama türü vardır: 
 
 ### <a name="option-1-upload-a-certificate"></a>Seçenek 1: bir sertifikayı karşıya yükle
 
-Varsa, var olan bir sertifikayı kullanabilirsiniz.  İsteğe bağlı olarak, *yalnızca sınama amacıyla*otomatik olarak imzalanan bir sertifika oluşturabilirsiniz. Otomatik olarak imzalanan bir sertifika oluşturmak için PowerShell 'i açın ve bilgisayarınızdaki Kullanıcı sertifika deposunda sertifikayı oluşturmak için aşağıdaki parametrelerle [Yeni bir SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) çalıştırın:
+Varsa, var olan bir sertifikayı kullanabilirsiniz.  İsteğe bağlı olarak, *yalnızca sınama amacıyla* otomatik olarak imzalanan bir sertifika oluşturabilirsiniz. Otomatik olarak imzalanan bir sertifika oluşturmak için PowerShell 'i açın ve bilgisayarınızdaki Kullanıcı sertifika deposunda sertifikayı oluşturmak için aşağıdaki parametrelerle [Yeni bir SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) çalıştırın:
 
 ```powershell
 $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature
@@ -143,7 +143,7 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 
 Bu sertifikayı, Windows Denetim Masası 'ndan erişilebilen [Kullanıcı sertifikasını Yönet](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) MMC ek bileşenini kullanarak bir dosyaya dışarı aktarın.
 
-1. **Başlat** menüsünden **Çalıştır** ' ı seçin ve ardından **certmgr. msc**yazın.
+1. **Başlat** menüsünden **Çalıştır** ' ı seçin ve ardından **certmgr. msc** yazın.
 
    Geçerli Kullanıcı için Sertifika Yöneticisi aracı görünür.
 
@@ -153,7 +153,7 @@ Bu sertifikayı, Windows Denetim Masası 'ndan erişilebilen [Kullanıcı sertif
 
 Sertifikayı karşıya yüklemek için:
 
-1. **Azure Active Directory**seçin.
+1. **Azure Active Directory** seçin.
 1. Azure AD 'de **uygulama kayıtları** uygulamanızı seçin.
 1. **Sertifikalar & parolaları**' nı seçin.
 1. **Sertifikayı karşıya yükle** ' yi seçin ve sertifikayı (mevcut bir sertifika ya da verdiğiniz otomatik olarak imzalanan sertifika) seçin.
@@ -168,7 +168,7 @@ Sertifikayı uygulama kayıt portalı 'nda uygulamanıza kaydettikten sonra, ser
 
 Bir sertifika kullanmayı tercih ederseniz, yeni bir uygulama parolası oluşturabilirsiniz.
 
-1. **Azure Active Directory**seçin.
+1. **Azure Active Directory** seçin.
 1. Azure AD 'de **uygulama kayıtları** uygulamanızı seçin.
 1. **Sertifikalar & parolaları**' nı seçin.
 1. Istemci gizli dizileri **-> yeni istemci parolası**' nı seçin.
@@ -181,7 +181,7 @@ Bir sertifika kullanmayı tercih ederseniz, yeni bir uygulama parolası oluştur
 ## <a name="configure-access-policies-on-resources"></a>Kaynaklarda erişim ilkeleri yapılandırma
 Unutmayın, uygulamanızın erişmesi gereken kaynaklarda ek izinler yapılandırmanız gerekebilir. Örneğin, uygulamanıza anahtarlar, gizlilikler veya sertifikalara erişim sağlamak için [bir anahtar kasasının erişim ilkelerini de güncelleştirmeniz](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) gerekir.
 
-1. [Azure Portal](https://portal.azure.com), anahtar kasanıza gidin ve **erişim ilkeleri**' ni seçin.
+1. <a href="https://portal.azure.com/" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> Azure Portal</a>, anahtar kasanıza gidin ve **erişim ilkeleri**' ni seçin.
 1. **Erişim Ilkesi Ekle**' yi seçin, ardından uygulamanıza vermek istediğiniz anahtar, gizli dizi ve sertifika izinlerini seçin.  Daha önce oluşturduğunuz hizmet sorumlusunu seçin.
 1. Erişim ilkesini eklemek için **Ekle** ' yi seçin ve sonra değişikliklerinizi yürütmek için **kaydedin** .
     ![Erişim İlkesi Ekle](./media/howto-create-service-principal-portal/add-access-policy.png)
@@ -190,4 +190,4 @@ Unutmayın, uygulamanızın erişmesi gereken kaynaklarda ek izinler yapılandı
 * [Hizmet sorumlusu oluşturmak için Azure PowerShell kullanmayı](howto-authenticate-service-principal-powershell.md)öğrenin.
 * Güvenlik ilkelerini belirtme hakkında bilgi edinmek için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md).
 * Kullanıcılara verilebilecek veya reddedilmiş olabilecek eylemlerin bir listesi için bkz. [Azure Resource Manager kaynak sağlayıcısı işlemleri](../../role-based-access-control/resource-provider-operations.md).
-* **Microsoft Graph**kullanarak uygulama kayıtlarıyla çalışma hakkında daha fazla bilgi için bkz. [uygulamalar](/graph/api/resources/application) API başvurusu.
+* **Microsoft Graph** kullanarak uygulama kayıtlarıyla çalışma hakkında daha fazla bilgi için bkz. [uygulamalar](/graph/api/resources/application) API başvurusu.

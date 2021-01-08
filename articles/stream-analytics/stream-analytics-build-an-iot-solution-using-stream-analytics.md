@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics kullanarak IoT çözümü oluşturma
 description: Bir tollstand senaryosunun IoT çözümü Stream Analytics için Başlarken öğreticisi
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 87ec59d19fb442293fb7f14d110cf513015ec9f7
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: ddec53b18cd6f374a5665298b43b46122bcfa143
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130808"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016159"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Stream Analytics kullanarak IoT çözümü oluşturma
 
@@ -176,9 +175,9 @@ Bir kaynak grubunda birkaç tıklamayla kolayca dağıtılabilecek birkaç kayna
 ## <a name="start-the-tollapp-streaming-job"></a>TollApp akış işini başlatma
 Akış işini başlatmak için aşağıdaki adımları izleyin:
 
-1. İşin **genel bakış** sayfasında **Başlat** ' ı seçin.
+1. İşin **genel bakış** sayfasında **Başlat**' ı seçin.
 
-2. **Işi Başlat** bölmesinde **Şimdi** ' yi seçin.
+2. **Işi Başlat** bölmesinde **Şimdi**' yi seçin.
 
 3. Birkaç dakika sonra, iş çalışmaya başladıktan sonra, akış işinin **genel bakış** sayfasında **izleme** grafiğini görüntüleyin. Grafik birkaç bin giriş olayı ve onlarca çıkış olayı göstermelidir.
 
@@ -214,7 +213,7 @@ AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
 
 ### <a name="to-update-the-tollapp-streaming-job-query-syntax"></a>TollApp akış işi sorgu söz dizimini güncelleştirmek için:
 
-1. İşin **genel bakış** sayfasında **Durdur** ' u seçin.
+1. İşin **genel bakış** sayfasında **Durdur**' u seçin.
 
 2. İşin durdurulduğu bildirim için birkaç dakika bekleyin.
 
@@ -224,9 +223,9 @@ AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
 
 5. Sorguyu kaydetmek için **Kaydet** ' i seçin. Değişiklikleri kaydetmek için **Evet** ' i onaylayın.
 
-6. İşin **genel bakış** sayfasında **Başlat** ' ı seçin.
+6. İşin **genel bakış** sayfasında **Başlat**' ı seçin.
 
-7. **Işi Başlat** bölmesinde **Şimdi** ' yi seçin.
+7. **Işi Başlat** bölmesinde **Şimdi**' yi seçin.
 
 ### <a name="review-the-total-time-in-the-output"></a>Çıkışdaki toplam süreyi gözden geçirin
 Akış işinden CosmosDB çıkış verilerini gözden geçirmek için yukarıdaki bölümdeki adımları yineleyin. En son JSON belgelerini gözden geçirin.
@@ -301,9 +300,9 @@ Akış işini daha fazla akış birimine ölçeklendirmek için:
 
 2. Sorgu söz dizimini **< > sorgu** sayfasında güncelleştirin ve değişiklikleri kaydedin.
 
-3. Akış işindeki yapılandırma başlığı altında **Ölçek** ' i seçin.
+3. Akış işindeki yapılandırma başlığı altında **Ölçek**' i seçin.
 
-4. **Akış birimleri** kaydırıcısını 1 ' den 6 ' a kaydırın. Akış birimleri, işin alabileceği işlem gücü miktarını tanımlar. **Kaydet** ’i seçin.
+4. **Akış birimleri** kaydırıcısını 1 ' den 6 ' a kaydırın. Akış birimleri, işin alabileceği işlem gücü miktarını tanımlar. **Kaydet**’i seçin.
 
 5. Ek ölçeği göstermek için akış işini **başlatın** . Azure Stream Analytics, işleri daha fazla işlem kaynağına dağıtır ve bölüm BY yan tümcesinde belirtilen sütunu kullanarak işleri kaynaklar genelinde bölümleyerek daha iyi işleme elde edin.
 
@@ -319,7 +318,7 @@ Akış işini daha fazla akış birimine ölçeklendirmek için:
 
 2. TollApp şablonuyla ilgili sekiz kaynak içeren kaynak grubunu bulun.
 
-3. **Kaynak grubunu sil** 'i seçin. Silmeyi onaylamak için kaynak grubunun adını yazın.
+3. **Kaynak grubunu sil**'i seçin. Silmeyi onaylamak için kaynak grubunun adını yazın.
 
 ## <a name="conclusion"></a>Sonuç
 Bu çözüm sizi Azure Stream Analytics hizmetine tanıtmaktadır. Stream Analytics işi için girişlerin ve çıktıların nasıl yapılandırılacağı gösterilmiştir. Ücretsiz veri senaryosunu kullanarak çözüm, hareket halindeki verilerin alanında ortaya çıkan ve Azure Stream Analytics içindeki basit SQL benzeri sorgularla nasıl çözülebilecekleri hakkında yaygın olarak karşılaşılan sorun türlerini açıklanmıştı. Geçici verilerle çalışmak için SQL uzantı yapılarını tarif eden çözüm. Veri akışlarına nasıl katılabileceğiniz, veri akışının statik başvuru verileriyle nasıl zenginleştirileceği ve daha yüksek aktarım hızı elde etmek için bir sorgunun nasıl ölçekleneceği gösterildi.

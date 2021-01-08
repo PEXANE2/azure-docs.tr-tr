@@ -1,14 +1,14 @@
 ---
 title: Kayıt defteri hizmeti katmanları ve özellikleri
-description: Azure Container Registry temel, standart ve Premium hizmet katmanlarında (SKU 'Lar) Özellikler ve sınırlar hakkında bilgi edinin.
+description: Temel, standart ve Premium hizmet katmanlarında (SKU 'Lar) Azure Container Registry Özellikler ve sınırlar (kotalar) hakkında bilgi edinin.
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: e2a5ad52775e9000aa0beb0a926d809da1c5a0e0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: b55fc16dcd6dcb544ed4597ce4bdc6ba17b52646
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048483"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015677"
 ---
 # <a name="azure-container-registry-service-tiers"></a>Azure Container Registry hizmet katmanları
 
@@ -30,7 +30,9 @@ Aşağıdaki tabloda temel, standart ve Premium hizmet katmanlarının özellikl
 
 ## <a name="changing-tiers"></a>Katmanları değiştirme
 
-Bir kayıt defterinin hizmet katmanını Azure CLı ile veya Azure portal değiştirebilirsiniz. Geçiş yaptığınız katman gerekli maksimum depolama kapasitesine sahip olduğu sürece katman arasında serbestçe geçiş yapabilirsiniz. 
+Bir kayıt defterinin hizmet katmanını Azure CLı ile veya Azure portal değiştirebilirsiniz. Geçiş yaptığınız katman gereken en fazla depolama kapasitesine sahip olduğu sürece katmanlar arasında serbestçe geçiş yapabilirsiniz. 
+
+Hizmet katmanları arasında hareket ettiğinizde kayıt defteri işlemlerinde bir kayıt defteri kapalı kalma süresi veya etkisi yoktur.
 
 ### <a name="azure-cli"></a>Azure CLI
 

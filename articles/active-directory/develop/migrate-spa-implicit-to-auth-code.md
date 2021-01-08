@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 05258e201c65138e53e861f0631eb33e08c9c199
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 391febcf8852147aedf5ef61d2442b2f50b4c9ae
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92673594"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014748"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>Bir JavaScript tek sayfalı uygulamayı örtük kimlik doğrulama kod akışına geçirme
 
-JavaScript için Microsoft kimlik doğrulama kitaplığı (MSAL.js) v 2.0, Microsoft Identity platformunda tek sayfalı uygulamalar için PKCE ve CORS ile yetkilendirme kodu akışına yönelik destek sunar. MSAL.js 1. x uygulamanızı örtük olarak MSAL.js 2.0 + (herbundan sonra *2. x* ) ve Auth kod akışı kullanarak geçirmek için aşağıdaki bölümlerde bulunan adımları izleyin.
+JavaScript için Microsoft kimlik doğrulama kitaplığı (MSAL.js) v 2.0, Microsoft Identity platformunda tek sayfalı uygulamalar için PKCE ve CORS ile yetkilendirme kodu akışına yönelik destek sunar. MSAL.js 1. x uygulamanızı örtük olarak MSAL.js 2.0 + (herbundan sonra *2. x*) ve Auth kod akışı kullanarak geçirmek için aşağıdaki bölümlerde bulunan adımları izleyin.
 
 MSAL.js 2. x, dolaylı verme akışı yerine tarayıcıda yetkilendirme kodu akışını destekleyerek MSAL.js 1. x ' i geliştirir. MSAL.js 2. x örtük **akışı desteklemez.**
 
@@ -41,18 +41,18 @@ Uygulamalarınız için mevcut uygulama kaydınızı kullanmaya devam etmek isti
 
 Şu anda **Web** platformu yeniden yönlendirme URI 'leriyle yapılandırılmış olan uygulama kayıtları için şu adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın ve **Azure Active Directory** kiracınızı seçin.
-1. **Uygulama kayıtları** , uygulamanızı ve sonra **kimlik doğrulamasını** seçin.
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a> oturum açın ve **Azure Active Directory** kiracınızı seçin.
+1. **Uygulama kayıtları**, uygulamanızı ve sonra **kimlik doğrulamasını** seçin.
 1. **Yeniden yönlendirme URI 'leri** altındaki **Web** platformu kutucuğunda, URI 'larınızı geçirmeniz gerektiğini belirten uyarı başlığını seçin.
 
     :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-01-implicit-warning-banner.png" alt-text="Azure portal web uygulaması kutucuğunda örtük akış uyarı başlığı":::
-1. *Yalnızca* uygulamaları 2. x MSAL.js kullanacağı yeniden yönlendirme URI 'lerini seçin ve ardından **Yapılandır** ' ı seçin.
+1. *Yalnızca* uygulamaları 2. x MSAL.js kullanacağı yeniden yönlendirme URI 'lerini seçin ve ardından **Yapılandır**' ı seçin.
 
-    :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-02-select-redirect-uri.png" alt-text="Azure portal web uygulaması kutucuğunda örtük akış uyarı başlığı":::
+    :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-02-select-redirect-uri.png" alt-text="Azure portal içindeki SPA bölmesinde URI bölmesini yeniden yönlendir bölmesini seçin":::
 
 Bu yeniden yönlendirme URI 'Leri artık **tek sayfalı uygulama** platformu kutucuğunda görünmeli ve bu URI 'ler için yetkilendirme kodu akışında CORS desteğinin etkin olduğunu gösterir.
 
-:::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-03-spa-redirect-uri-tile.png" alt-text="Azure portal web uygulaması kutucuğunda örtük akış uyarı başlığı":::
+:::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-03-spa-redirect-uri-tile.png" alt-text="Azure portal 'de uygulama kaydında tek sayfalı uygulama kutucuğu":::
 
 Ayrıca, var olan kaydlarınızın yeniden yönlendirme URI 'Lerini güncelleştirmek yerine [Yeni bir uygulama kaydı da oluşturabilirsiniz](scenario-spa-app-registration.md) .
 

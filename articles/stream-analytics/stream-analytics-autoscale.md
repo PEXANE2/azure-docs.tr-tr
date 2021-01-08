@@ -3,16 +3,15 @@ title: Stream Analytics işleri otomatik ölçeklendirme
 description: Bu makalede, iş ölçümlerinin önceden tanımlanmış bir zamanlaması veya değerleri temelinde Stream Analytics işin nasıl otomatik olarak ekleneceği açıklanmaktadır
 author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/03/2020
-ms.openlocfilehash: 8e5bcdaeaf1ec99387a708199f4353736b6bc60f
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: a8e089e302e9d40c69cf7ff2a3480c17894e1463
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129856"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016295"
 ---
 # <a name="autoscale-stream-analytics-jobs-using-azure-automation"></a>Azure Otomasyonu 'Nu kullanarak işleri Stream Analytics otomatik ölçeklendirme
 
@@ -43,7 +42,7 @@ Aşağıdaki değişkenleri Azure Otomasyonu hesabının içine ekleyin. Bu değ
 
 ### <a name="create-runbooks"></a>Runbook oluşturma
 Sonraki adım iki PowerShell runbook oluşturmaktır. Biri ölçeği artırma ve diğeri de ölçek azaltma işlemleri için.
-1. Azure Otomasyonu hesabınızda, **Işlem Otomasyonu** ' nun altındaki **runbook 'Lara** gidin ve **runbook oluştur** ' u seçin.
+1. Azure Otomasyonu hesabınızda, **Işlem Otomasyonu** ' nun altındaki **runbook 'Lara** gidin ve **runbook oluştur**' u seçin.
 2. Tür PowerShell olarak ayarlanan ilk Runbook *Scaleuprunbook 'unu* adlandırın. GitHub 'da bulunan [Scaleuprunbook PowerShell betiğini](https://github.com/Azure/azure-stream-analytics/blob/master/Autoscale/ScaleUpRunbook.ps1) kullanın. Kaydedin ve yayımlayın.
 3. Tür PowerShell ile *Scaledownrunbook* adlı başka bir runbook oluşturun. GitHub 'da bulunan [Scaledownrunbook PowerShell betiğini](https://github.com/Azure/azure-stream-analytics/blob/master/Autoscale/ScaleDownRunbook.ps1) kullanın. Kaydedin ve yayımlayın.
 
@@ -53,7 +52,7 @@ Artık Stream Analytics işteki ölçek artırma ve ölçek azaltma işlemlerini
 
 ## <a name="autoscale-based-on-a-schedule"></a>Zamanlamaya göre otomatik ölçeklendirme
 Azure Otomasyonu, runbook 'larınızı tetiklemek için bir zamanlama yapılandırmanıza olanak tanır.
-1. Azure Otomasyonu hesabınızda, **paylaşılan kaynaklar** altında **zamanlamalar** ' ı seçin. Sonra **zamanlama Ekle** ' yi seçin.
+1. Azure Otomasyonu hesabınızda, **paylaşılan kaynaklar** altında **zamanlamalar** ' ı seçin. Sonra **zamanlama Ekle**' yi seçin.
 2. Örneğin, iki zamanlama oluşturabilirsiniz. İşinizin ölçeğini ne zaman ölçeğini istediğinizi ve işinizin ölçeğini ne zaman ölçeklendirmek istediğinizi temsil eden bir tane. Bu zamanlamalar için bir yinelenme tanımlayabilirsiniz.
 
    ![Azure Otomasyonu 'nda zamanlamalar](./media/autoscale/schedules.png)
@@ -69,11 +68,11 @@ Giriş yükünü tahmin edemeyebilirsiniz. Bu gibi durumlarda, minimum ve maksim
 1. Azure Otomasyonu hesabınızda **MinSu** ve **maxsu** adlı iki tamsayı değişkeni oluşturun. Bu, işinizin içinde Ölçeklendirilecek sınırları ayarlar.
 2. İki yeni runbook oluşturun. İş üzerindeki SUs 'un, **Maxsu** değerine kadar artışlarla artan olan [Stepscaleup PowerShell betiğini](https://github.com/Azure/azure-stream-analytics/blob/master/Autoscale/StepScaleUp.ps1) kullanabilirsiniz. Ayrıca, **MinSu** değerine ulaşılana kadar adımlarda işinizin SUs görüntüsünü azaltan [Stepscaleaşağı PowerShell betiğini](https://github.com/Azure/azure-stream-analytics/blob/master/Autoscale/StepScaleDown.ps1) de kullanabilirsiniz. Alternatif olarak, ölçeklendirmek istediğiniz belirli bir SU değeri varsa, önceki bölümdeki runbook 'ları kullanabilirsiniz.
 3. Stream Analytics işiniz bölümünde, **izleme** altındaki **Uyarı kuralları** ' nı seçin. 
-4. İki eylem grubu oluşturun. Biri ölçek artırma işlemi için ve diğeri de ölçek azaltma işlemi için kullanılır. **Işlemleri Yönet** ' i seçin ve ardından **eylem grubu Ekle** ' ye tıklayın. 
+4. İki eylem grubu oluşturun. Biri ölçek artırma işlemi için ve diğeri de ölçek azaltma işlemi için kullanılır. **Işlemleri Yönet** ' i seçin ve ardından **eylem grubu Ekle**' ye tıklayın. 
 5. Gerekli alanları doldurun. **Eylem türünü** seçerken **Otomasyon Runbook** 'u seçin. Uyarı tetiklendiğinde tetiklemek istediğiniz runbook 'u seçin. Sonra, eylem grubunu oluşturun.
 
    ![Eylem grubu oluşturma](./media/autoscale/create-actiongroup.png)
-6. İşte [**Yeni bir uyarı kuralı**](./stream-analytics-set-up-alerts.md#set-up-alerts-in-the-azure-portal) oluşturun. Tercih ettiğiniz bir ölçümü temel alarak bir koşul belirtin. [ *Giriş olayları* , *su yüzdesi kullanımı* veya *biriktirme listesindeki giriş olayları* ,](./stream-analytics-monitoring.md#metrics-available-for-stream-analytics) otomatik ölçeklendirme mantığını tanımlamak için kullanılması önerilen ölçümlerdir. Ayrıca, ölçek artırma işlemlerini tetiklerken 1 dakikalık *toplama ayrıntı düzeyi* ve *değerlendirme sıklığı* kullanılması önerilir. Bunun yapılması, işinizin giriş hacminde büyük ani artışlar sağlamak için büyük kaynaklar olmasını sağlar.
+6. İşte [**Yeni bir uyarı kuralı**](./stream-analytics-set-up-alerts.md#set-up-alerts-in-the-azure-portal) oluşturun. Tercih ettiğiniz bir ölçümü temel alarak bir koşul belirtin. [ *Giriş olayları*, *su yüzdesi kullanımı* veya *biriktirme listesindeki giriş olayları* ,](./stream-analytics-monitoring.md#metrics-available-for-stream-analytics) otomatik ölçeklendirme mantığını tanımlamak için kullanılması önerilen ölçümlerdir. Ayrıca, ölçek artırma işlemlerini tetiklerken 1 dakikalık *toplama ayrıntı düzeyi* ve *değerlendirme sıklığı* kullanılması önerilir. Bunun yapılması, işinizin giriş hacminde büyük ani artışlar sağlamak için büyük kaynaklar olmasını sağlar.
 7. Son adımda oluşturulan eylem grubunu seçin ve uyarıyı oluşturun.
 8. İş ölçümlerinin koşulu temelinde tetiklemek istediğiniz ek ölçeklendirme işlemleri için 2 ile 4 arasındaki adımları tekrarlayın.
 

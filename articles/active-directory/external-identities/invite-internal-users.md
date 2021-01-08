@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75839893d0048841440f2c790df7d23ad825d962
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 8acc547552cecaebb60888bb7b9777f6279b9b7c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093477"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015768"
 ---
 # <a name="invite-internal-users-to-b2b-collaboration"></a>Dahili kullanıcıları B2B işbirliğiyle davet etme
 
@@ -44,8 +44,7 @@ Bu örneklerde, iç Kullanıcı bir B2B kullanıcısına değiştirilmeli, iç h
 
 İç kullanıcıya bir B2B davetiyesi göndermek için PowerShell veya davet API 'sini kullanabilirsiniz. Davet için kullanmak istediğiniz e-posta adresinin iç Kullanıcı nesnesinde dış e-posta adresi olarak ayarlandığından emin olun.
 
-- Yalnızca bulutta bulunan bir kullanıcı için, davet için User. Otherpostalarını özelliğindeki e-posta adresini kullanın.
-- Şirket içi eşitlenmiş Kullanıcı için, davet için User. Mail özelliğindeki değeri kullanmanız gerekir.
+- Davet için Kullanıcı. posta özelliğindeki e-posta adresini kullanmanız gerekir.
 - Kullanıcının posta özelliğindeki etki alanının, oturum açmak için kullandıkları hesapla eşleşmesi gerekir. Aksi takdirde, takımlar gibi bazı hizmetler kullanıcının kimliğini doğrulayamayacaktır.
 
 Varsayılan olarak, davet kullanıcıya davet edildiklerini bildiren bir e-posta gönderir, ancak bunun yerine bu e-postayı engelleyebilir ve kendi kendinize gönderebilirsiniz.

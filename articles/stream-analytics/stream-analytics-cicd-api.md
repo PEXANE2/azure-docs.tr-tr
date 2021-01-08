@@ -1,18 +1,17 @@
 ---
 title: IoT Edge üzerinde Azure Stream Analytics için CI/CD 'yi yapmak için REST API 'Lerini kullanma
 description: REST API 'Leri kullanarak Azure Stream Analytics için sürekli tümleştirme ve dağıtım işlem hattı uygulamayı öğrenin.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: su-jie
+ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: a7e56758a1a76933d6bb18883aa15ce33ce2e89e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 3c3f776ad0996fa0b7422f0fca2d899a35e853d1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130927"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016142"
 ---
 # <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>API 'Leri kullanarak IoT Edge Stream Analytics için CI/CD uygulayın
 
