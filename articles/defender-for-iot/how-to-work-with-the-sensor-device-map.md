@@ -4,15 +4,15 @@ description: Cihaz eşlemesi, algılanan ağ cihazlarının grafik gösterimini 
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/07/2020
+ms.date: 1/7/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: dd0f28411dccab1a1dd36fbd01d2d1acbcc689e0
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: fd1721060bdc4b18f324a94f7c367bacde6ed4e8
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97843858"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976767"
 ---
 # <a name="investigate-sensor-detections-in-the-device-map"></a>Cihaz eşlemesindeki algılayıcı algılamalarını araştırın
 
@@ -59,7 +59,7 @@ Her alt ağ, bir BT alt ağının ayrıntılarına bakmak için etkileşimli dar
 
 Aşağıdaki şekilde, 27 BT ağ öğeleriyle daraltılmış bir BT alt ağı gösterilmektedir.
 
-:::image type="content" source="media/how-to-work-with-maps/shrunk-it-subnet.png" alt-text="27 BT ağ öğeleriyle daraltılmış BT alt ağı":::
+:::image type="content" source="media/how-to-work-with-maps/shrunk-it-subnet-v2.png" alt-text="27 BT ağ öğeleriyle daraltılmış BT alt ağı":::
 
 BT ağlarını daraltma özelliğini etkinleştirmek için:
 
@@ -120,7 +120,7 @@ Aşağıdaki önceden tanımlanmış gruplar kullanılabilir:
 
 | Grup adı | Açıklama |
 |--|--|
-| **Bilinen uygulamalar veya Standsız Rad bağlantı noktaları (varsayılan)** | TCP gibi ayrılmış bağlantı noktaları kullanan cihazlar. Standart olmayan bağlantı noktaları veya bir diğer ad atanmamış bağlantı noktaları kullanan cihazlar. |
+| **Bilinen uygulamalar veya standart olmayan bağlantı noktaları (varsayılan)** | TCP gibi ayrılmış bağlantı noktaları kullanan cihazlar. Standart olmayan bağlantı noktaları veya bir diğer ad atanmamış bağlantı noktaları kullanan cihazlar. |
 | **OT protokolleri (varsayılan)** | OT trafiğini işleyen cihazlar. |
 | **Yetkilendirme (varsayılan)** | Öğrenme işlemi sırasında ağda bulunan veya resmi olarak ağa eklenen cihazlar |
 | **Cihaz envanteri filtreleri** | Cihazlar, filtre ölçütüne göre gruplandırılan cihaz envanter tablosuna kaydedilir. |
@@ -226,7 +226,7 @@ Cihaz türü simgesi bağlı cihazlarla gösterilir.
 
 Ayrıntılı görünüm, cihazları ve cihaz etiketlerini ve göstergelerini aşağıdaki bilgilerle sunar:
 
-:::image type="content" source="media/how-to-work-with-maps/device-map.png" alt-text="Ayrıntılı görünüm":::
+:::image type="content" source="media/how-to-work-with-maps/device-map-v2.png" alt-text="Ayrıntılı görünüm":::
 
 ### <a name="control-the-zoom-view"></a>Yakınlaştırma görünümünü denetleme
 
@@ -236,7 +236,7 @@ Görüntülenecek harita görünümü harita yakınlaştırma düzeyine bağlıd
 
 ### <a name="enable-simplified-zoom-views"></a>Basitleştirilmiş yakınlaştırma görünümlerini etkinleştir
 
-Güvenlik analistlerini ve Kullanıcı kullanıcılarını Brid 'in göz ve cihaza erişmesini ve bağlantı görünümlerini yazmalı Yöneticiler, Basitleştirilmiş görünüm seçeneğinin etkin olmasını sağlamalıdır.
+Güvenlik analistleri ve Kullanıcı kullanıcıları 'nın kuş bakışı ve cihaza erişmesini ve bağlantı görünümlerini yazalım yöneticileri, Basitleştirilmiş görünüm seçeneğini etkinleştirmelidir.
 
 Basitleştirilmiş harita görünümlerini etkinleştirmek için:
 
@@ -337,7 +337,7 @@ Aşağıdaki bilgiler el ile güncelleştirilebilen olabilir. El ile girilen bil
 | Adres | Cihazın IP adresi. |
 | Ardışık | Cihaz seri numarası. |
 | Modül adresi | Cihaz modeli ve yuva numarası veya KIMLIĞI. |
-| Modelleme | Cihaz modeli numarası. |
+| Model | Cihaz modeli numarası. |
 | Üretici Yazılımı Sürümü | Üretici yazılımı sürüm numarası. |
 
 Cihaz bilgilerini görüntülemek için:

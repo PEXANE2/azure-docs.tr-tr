@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b53c0002af3680567aabf0955f6bb4e0d99c2ab1
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 3ff8406a3634fa946ab8ce7aca694bbc57d556a5
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093443"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976410"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de iş sürekliliği ve olağanüstü durum kurtarma için en iyi uygulamalar
 
@@ -119,10 +119,7 @@ Tipik strateji, uygulamaların verilerini yazabilmesi için ortak bir depolama n
 
 ![Altyapı tabanlı zaman uyumsuz çoğaltma](media/operator-best-practices-bc-dr/aks-infra-based-async-repl.png)
 
-Azure yönetilen diskleri kullanıyorsanız, şu gibi çoğaltma ve DR çözümlerini seçebilirsiniz:
-
-* [Azure 'da Velero](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
-* [Azure Backup](../backup/backup-overview.md)
+Azure yönetilen diskler kullanıyorsanız, çoğaltma ve olağanüstü durum kurtarmayı işlemek için kullanabileceğiniz birkaç seçenek vardır. Azure ve [kasten][kasten] [üzerinde Velero][velero] , Kubernetes 'e yerel çözümler yedekler ancak desteklenmez.
 
 ### <a name="application-based-asynchronous-replication"></a>Uygulama tabanlı zaman uyumsuz çoğaltma
 
@@ -140,3 +137,6 @@ Bu makalede, AKS kümelerine yönelik iş sürekliliği ve olağanüstü durum k
 <!-- INTERNAL LINKS -->
 [aks-best-practices-scheduler]: operator-best-practices-scheduler.md
 [aks-best-practices-cluster-isolation]: operator-best-practices-cluster-isolation.md
+
+[velero]: https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md
+[kasten]: https://www.kasten.io/

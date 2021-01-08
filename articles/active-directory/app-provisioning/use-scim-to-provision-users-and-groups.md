@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: a0abbacc55cff2f561323a22dd83311c87b1511d
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 90debef39b3e657bf96221dfaf5fa762d332a364
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584502"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976529"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Öğretici-Azure AD ile bir SCıM uç noktası oluşturun ve Kullanıcı sağlamayı yapılandırın
 
@@ -330,7 +330,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 
 *GET/Users? Filter = userName EQ "Test_User_dfeef4c5-5681 -4387-B016-bdf221e82081"*
 
-##### <a name="response"></a><a name="response-2"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-2"></a>Yanıt
 
 *HTTP/1.1 200 TAMAM*
 ```json
@@ -371,7 +371,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 
 */Users al? Filter = userName EQ "varolmayan kullanıcı"*
 
-##### <a name="response"></a><a name="response-3"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-3"></a>Yanıt
 
 *HTTP/1.1 200 TAMAM*
 ```json
@@ -408,7 +408,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 }
 ```
 
-##### <a name="response"></a><a name="response-4"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-4"></a>Yanıt
 
 *HTTP/1.1 200 TAMAM*
 ```json
@@ -452,7 +452,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 }
 ```
 
-##### <a name="response"></a><a name="response-5"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-5"></a>Yanıt
 
 *HTTP/1.1 200 TAMAM*
 ```json
@@ -501,7 +501,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 }
 ```
 
-##### <a name="response"></a><a name="response-14"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-14"></a>Yanıt
 
 ```json
 {
@@ -541,7 +541,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 
 */Users/5171a35d82074e068ce2 HTTP/1.1 SILME*
 
-##### <a name="response"></a><a name="response-6"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-6"></a>Yanıt
 
 *HTTP/1.1 204 Içerik yok*
 
@@ -568,7 +568,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 }
 ```
 
-##### <a name="response"></a><a name="response-7"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-7"></a>Yanıt
 
 *HTTP/1.1 201 oluşturuldu*
 ```json
@@ -593,7 +593,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 
 */Groups/40734ae655284ad3abcc? excludedAttributes = Members HTTP/1.1 alın*
 
-##### <a name="response"></a><a name="response-8"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-8"></a>Yanıt
 *HTTP/1.1 200 TAMAM*
 ```json
 {
@@ -614,7 +614,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 ##### <a name="request"></a><a name="request-9"></a>İstek
 */Groups al? excludedAttributes = Members&Filter = displayName EQ "displayName" HTTP/1.1*
 
-##### <a name="response"></a><a name="response-9"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-9"></a>Yanıt
 
 *HTTP/1.1 200 TAMAM*
 ```json
@@ -654,7 +654,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 }
 ```
 
-##### <a name="response"></a><a name="response-10"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-10"></a>Yanıt
 
 *HTTP/1.1 204 Içerik yok*
 
@@ -677,7 +677,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 }
 ```
 
-##### <a name="response"></a><a name="response-11"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-11"></a>Yanıt
 
 *HTTP/1.1 204 Içerik yok*
 
@@ -700,7 +700,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 }
 ```
 
-##### <a name="response"></a><a name="response-12"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-12"></a>Yanıt
 
 *HTTP/1.1 204 Içerik yok*
 
@@ -710,7 +710,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 
 */Groups/cdb1ce18f65944079d37 HTTP/1.1 SILME*
 
-##### <a name="response"></a><a name="response-13"></a>Yanıtıyla
+##### <a name="response"></a><a name="response-13"></a>Yanıt
 
 *HTTP/1.1 204 Içerik yok*
 
@@ -1217,7 +1217,7 @@ OAuth kod verme akışındaki adımlar:
 > [!NOTE]
 > Bu, OAuth olmayan uygulama üzerinde OAuth kurmak mümkün olmasa da, yetkilendirme sunucusundan el ile bir erişim belirteci oluşturabilir ve Galeri dışı uygulamanın gizli belirteç alanında bunu belirtebilirsiniz. Bu, OAuth kod vermeyi destekleyen uygulama galerisine eklemeden önce, Azure AD SCıM istemcisiyle SCıM sunucunuzun uyumluluğunu doğrulamanızı sağlar.  
 
-**Uzun süreli OAuth taşıyıcı belirteçleri:** Uygulamanız OAuth yetkilendirme kodu verme akışını desteklemiyorsa, yöneticinin sağlama tümleştirmesini ayarlamak için kullanabileceği bir uzun süreli OAuth taşıyıcı belirteci de oluşturabilirsiniz. Belirtecin kalıcı olması gerekir, aksi takdirde, belirtecin süresi dolarsa sağlama işi [karantinaya](application-provisioning-quarantine-status.md) alınır. Bu belirtecin boyutu 1KB 'tan sonra olmalıdır.  
+**Uzun süreli OAuth taşıyıcı belirteçleri:** Uygulamanız OAuth yetkilendirme kodu verme akışını desteklemiyorsa, yöneticinin sağlama tümleştirmesini ayarlamak için kullanabileceği bir uzun süreli OAuth taşıyıcı belirteci de oluşturabilirsiniz. Belirtecin kalıcı olması gerekir, aksi takdirde, belirtecin süresi dolarsa sağlama işi [karantinaya](application-provisioning-quarantine-status.md) alınır.
 
 Ek kimlik doğrulama ve yetkilendirme yöntemleri için [UserVoice](https://aka.ms/appprovisioningfeaturerequest)'ta bize bilgi verin.
 

@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/25/2019
-ms.openlocfilehash: 3c966f0efc51a3b2fa8908e060b4031ae1ad1e50
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1b10146e59cefb17ff267eb0b470dd83004a7c2a
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500028"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976580"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory’deki ifadeler ve işlevler
 
@@ -28,7 +28,7 @@ Bu makale, Azure Data Factory tarafından desteklenen ifadeler ve işlevlerle il
 
 ## <a name="expressions"></a>İfadeler
 
-Tanımdaki JSON değerleri, çalışma zamanında değerlendirilen bir sabit değer veya ifadeler olabilir. Örnek:  
+Tanımdaki JSON değerleri, çalışma zamanında değerlendirilen bir sabit değer veya ifadeler olabilir. Örneğin:  
   
 ```json
 "name": "value"
@@ -42,7 +42,7 @@ Tanımdaki JSON değerleri, çalışma zamanında değerlendirilen bir sabit de�
 
 İfadeler JSON dize değerinde herhangi bir yerde görünebilir ve her zaman başka bir JSON değerine neden olabilir. JSON değeri bir ifadesiyse, ifadenin gövdesi at-Sign () kaldırılarak ayıklanır \@ . İle başlayan bir sabit değer dizesi gerekliyse \@ , kullanılarak kaçışlı olması gerekir \@ \@ . Aşağıdaki örneklerde ifadelerin nasıl değerlendirildiği gösterilmektedir.  
   
-|JSON değeri|Result|  
+|JSON değeri|Sonuç|  
 |----------------|------------|  
 |parametrelere|' Parameters ' karakterleri döndürülür.|  
 |"parametreler [1]"|' Parameters [1] ' karakterleri döndürülür.|  
@@ -53,7 +53,7 @@ Tanımdaki JSON değerleri, çalışma zamanında değerlendirilen bir sabit de�
   
  Dize ilişkilendirmeyi kullanarak, sonuç her zaman bir dizedir. Şu şekilde tanımladım `myNumber` `42`  `myString`  `foo` :  
   
-|JSON değeri|Result|  
+|JSON değeri|Sonuç|  
 |----------------|------------|  
 |" \@ Pipeline (). Parameters. myString"| `foo`Bir dize olarak döndürür.|  
 |" \@ {Pipeline (). Parameters. myString}"| `foo`Bir dize olarak döndürür.|  
@@ -178,7 +178,7 @@ Koleksiyonlar, genellikle diziler, dizeler ve bazen sözlüklerle çalışmak i�
 
 | Koleksiyon işlevi | Görev |
 | ------------------- | ---- |
-| [vardır](control-flow-expression-language-functions.md#contains) | Bir koleksiyonun belirli bir öğeye sahip olup olmadığını denetleyin. |
+| [contains](control-flow-expression-language-functions.md#contains) | Bir koleksiyonun belirli bir öğeye sahip olup olmadığını denetleyin. |
 | [empty](control-flow-expression-language-functions.md#empty) | Bir koleksiyonun boş olup olmadığını kontrol edin. |
 | [adı](control-flow-expression-language-functions.md#first) | Bir koleksiyondaki ilk öğeyi döndürür. |
 | [imin](control-flow-expression-language-functions.md#intersection) | Belirtilen koleksiyonlar genelinde *yalnızca* ortak öğeler içeren bir koleksiyon döndürür. |
@@ -196,7 +196,7 @@ Bu işlevler, koşullar içinde yararlı olduğundan, her türlü mantığı de�
 | Mantıksal karşılaştırma işlevi | Görev |
 | --------------------------- | ---- |
 | [and](control-flow-expression-language-functions.md#and) | Tüm ifadelerin doğru olup olmadığını denetleyin. |
-| [equals](control-flow-expression-language-functions.md#equals) | Her iki değerin de eşdeğer olup olmadığını denetleyin. |
+| [eşittir](control-flow-expression-language-functions.md#equals) | Her iki değerin de eşdeğer olup olmadığını denetleyin. |
 | [büyüktür](control-flow-expression-language-functions.md#greater) | İlk değerin ikinci değerden büyük olup olmadığını kontrol edin. |
 | [greaterOrEquals](control-flow-expression-language-functions.md#greaterOrEquals) | İlk değerin ikinci değere eşit veya ondan büyük olup olmadığını kontrol edin. |
 | [if](control-flow-expression-language-functions.md#if) | İfadenin true veya false olduğunu denetleyin. Sonuca göre belirtilen değeri döndürün. |
@@ -221,7 +221,7 @@ Bu işlevler, koşullar içinde yararlı olduğundan, her türlü mantığı de�
 | [base64](control-flow-expression-language-functions.md#base64) | Bir dize için Base64 kodlamalı sürüm döndürün. |
 | [base64ToBinary](control-flow-expression-language-functions.md#base64ToBinary) | Base64 ile kodlanmış bir dize için ikili sürümü döndürün. |
 | [base64ToString](control-flow-expression-language-functions.md#base64ToString) | Base64 ile kodlanmış bir dize için dize sürümünü döndürün. |
-| [ikili](control-flow-expression-language-functions.md#binary) | Bir giriş değeri için ikili sürümü döndürün. |
+| [ý](control-flow-expression-language-functions.md#binary) | Bir giriş değeri için ikili sürümü döndürün. |
 | [bool](control-flow-expression-language-functions.md#bool) | Bir giriş değeri için Boole sürümü döndürün. |
 | [Coalesce](control-flow-expression-language-functions.md#coalesce) | Bir veya daha fazla parametreden null olmayan ilk değeri döndürün. |
 | [createArray](control-flow-expression-language-functions.md#createArray) | Birden çok girişe bir dizi döndürün. |
@@ -235,7 +235,7 @@ Bu işlevler, koşullar içinde yararlı olduğundan, her türlü mantığı de�
 | [float](control-flow-expression-language-functions.md#float) | Giriş değeri için bir kayan nokta numarası döndürür. |
 | [int](control-flow-expression-language-functions.md#int) | Bir dize için tamsayı sürümünü döndürün. |
 | [nesnesinde](control-flow-expression-language-functions.md#json) | Bir dize veya XML için JavaScript Nesne Gösterimi (JSON) türü değerini veya nesnesini döndürün. |
-| [dizisinde](control-flow-expression-language-functions.md#string) | Bir giriş değeri için dize sürümünü döndürün. |
+| [string](control-flow-expression-language-functions.md#string) | Bir giriş değeri için dize sürümünü döndürün. |
 | [URIComponent](control-flow-expression-language-functions.md#uriComponent) | URL-güvenli olmayan karakterleri kaçış karakterleriyle değiştirerek, bir giriş değeri için URI kodlu sürümü döndürün. |
 | [Urıonenttobinary](control-flow-expression-language-functions.md#uriComponentToBinary) | URI kodlamalı dize için ikili sürümü döndürün. |
 | [Urıonenttostring](control-flow-expression-language-functions.md#uriComponentToString) | URI kodlamalı dize için dize sürümünü döndürün. |
@@ -841,7 +841,7 @@ Ve şu sonucu döndürür: `"HelloWorld"`
 
 <a name="contains"></a>
 
-### <a name="contains"></a>şunu içerir
+### <a name="contains"></a>contains
 
 Bir koleksiyonun belirli bir öğeye sahip olup olmadığını denetleyin.
 Öğe bulunduğunda true, bulunamazsa false döndürün.
@@ -965,7 +965,7 @@ Ve şu sonucu döndürür: `"2018-01-01T00:00:00.0000000"`
 Bu örnek, saat dilimini belirtilen saat dilimine ve biçime dönüştürür:
 
 ```
-convertTimeZone('2018-01-01T80:00:00.0000000Z', 'UTC', 'Pacific Standard Time', 'D')
+convertTimeZone('2018-01-01T08:00:00.0000000Z', 'UTC', 'Pacific Standard Time', 'D')
 ```
 
 Ve şu sonucu döndürür: `"Monday, January 1, 2018"`

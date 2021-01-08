@@ -16,12 +16,12 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74bc659c11c4f43ab3cf85cdc53f704cd07a1cde
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 25d4152783129fa1c5950d6cf6287332bf90d32a
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96172376"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976886"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Eşitleme Azure AD Connect: Dizin uzantıları
 Azure Active Directory (Azure AD) içindeki şemayı şirket içi Active Directory kendi nitelikleriyle genişletmek için Dizin uzantıları 'nı kullanabilirsiniz. Bu özellik, şirket içinde yönetmeye devam ettiğiniz öznitelikleri kullanıp LOB uygulamaları oluşturmanıza olanak sağlar. Bu öznitelikler, [Uzantılar](/graph/extensibility-overview
@@ -46,7 +46,7 @@ Yükleme, geçerli adaylar olan aşağıdaki öznitelikleri gösterir:
 
 
 >[!NOTE]
-> Azure AD Connect, çok değerli Active Directory özniteliklerinin Azure AD 'ye çok değerli Dizin uzantıları olarak eşitlenmesini desteklediğinden, ancak şu anda çok değerli dizin uzantısı özniteliklerinde karşıya yüklenen verileri almanın/kullanmanın bir yolu yoktur.
+> Azure AD Connect birden çok değerli Active Directory özniteliği Azure AD 'ye çok değerli bir öznitelik uzantısı olarak eşitlendikten sonra, SAML talebine özniteliği eklemek mümkündür. Ancak, bu verileri API çağrısıyla kullanmak mümkün değildir.
 
 Öznitelik listesi, Azure AD Connect yüklemesi sırasında oluşturulan şema önbelleğinden okunurdur. Active Directory şemasını ek özniteliklerle genişlettiyseniz, bu yeni özniteliklerin görünebilmesi [için şemayı yenilemeniz](how-to-connect-installation-wizard.md#refresh-directory-schema) gerekir.
 

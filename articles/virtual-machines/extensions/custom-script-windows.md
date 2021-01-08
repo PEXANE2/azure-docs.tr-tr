@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: aa95d6792f2f5754a237c7bf5e90a11e2e011ede
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: b0502fb05043a54d81d768a7809d19b108cc6248
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861784"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976852"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows için Özel Betik Uzantısı
 
@@ -50,6 +50,8 @@ Uzantıyı Azure Blob depolamaya erişmek için Azure Blob depolama kimlik bilgi
 ### <a name="internet-connectivity"></a>Internet bağlantısı
 
 GitHub veya Azure Storage gibi dışarıdan bir betiği indirmeniz gerekiyorsa, ek güvenlik duvarı ve ağ güvenlik grubu bağlantı noktalarının açılması gerekir. Örneğin, betiğinizin Azure Storage 'da bulunması halinde [depolama](../../virtual-network/network-security-groups-overview.md#service-tags)için Azure NSG hizmet etiketlerini kullanarak erişime izin verebilirsiniz.
+
+CustomScript uzantısının sertifika doğrulamasını atlamak için herhangi bir yolu olmadığını unutmayın. Bu nedenle, örneğin, güvenli bir konumdan indiriyorsunuz. otomatik olarak imzalanan bir sertifika olan *"uzak sertifika, doğrulama yordamına göre geçersiz"* gibi hatalarla karşılaşabilirsiniz. Lütfen sertifikanın, sanal makinede *"güvenilen kök sertifika yetkilileri"* deposuna doğru yüklendiğinden emin olun.
 
 Betiğinizin yerel bir sunucu üzerinde olması, ek güvenlik duvarı ve ağ güvenlik grubu bağlantı noktalarının açık olması gerekebilir.
 
@@ -345,7 +347,7 @@ Burada `<n>` , uzantının yürütmeleri arasında değişebilir bir ondalık ta
 
 `commandToExecute`Komutu yürütürken, uzantı bu dizini (örneğin, `...\Downloads\2` ) geçerli çalışma dizini olarak ayarlar. Bu işlem, özelliği aracılığıyla indirilen dosyaları bulmak için göreli yolların kullanılmasını sağlar `fileURIs` . Örnekler için aşağıdaki tabloya bakın.
 
-Mutlak indirme yolu zaman içinde farklılık gösterebileceğinden, mümkün olduğunda dizedeki göreli betik/dosya yollarını kabul etmek daha iyidir `commandToExecute` . Örnek:
+Mutlak indirme yolu zaman içinde farklılık gösterebileceğinden, mümkün olduğunda dizedeki göreli betik/dosya yollarını kabul etmek daha iyidir `commandToExecute` . Örneğin:
 
 ```json
 "commandToExecute": "powershell.exe . . . -File \"./scripts/myscript.ps1\""

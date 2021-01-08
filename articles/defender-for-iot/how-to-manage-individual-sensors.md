@@ -1,5 +1,5 @@
 ---
-title: Her sensöri Yönet
+title: Algılayıcıları ayrı ayrı yönetme
 description: Etkinleştirme dosyalarını yönetme, yedeklemeleri gerçekleştirme ve tek başına algılayıcıyı güncelleştirme dahil olmak üzere tek tek algılayıcıları yönetmeyi öğrenin.
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 12/22/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 87bc3b172fdbd99130dbb36cceb5f3d16fc39dbd
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: daaca1d7c6cf43f69241e6a23f8bdfaf4015ba23
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97841991"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976954"
 ---
-# <a name="manage-individual-sensors"></a>Her sensöri Yönet
+# <a name="manage-individual-sensors"></a>Algılayıcıları ayrı ayrı yönetme
 
 Bu makalede, tek tek sensörların nasıl yönetileceği açıklanır. Görevler etkinleştirme dosyalarını yönetmeyi, yedeklemeleri gerçekleştirmeyi ve tek başına algılayıcıyı güncellemeyi içerir.
 
@@ -426,8 +426,6 @@ Hakkındaki ayrıntıları sağlamak için uyarıları üçüncü taraflara ilet
 - Bağlantısı kesilen algılayıcılar
 
 - Uzak yedekleme sorunları
-
-:::image type="content" source="media/how-to-work-with-system-notifications/image81.png" alt-text="Yönetim sistem durumu posta görünümünün ekran görüntüsü.] (medya/image80.png)! [Yönetim sistem durumu posta görünümünün ekran görüntüsü":::
 
 Bu bilgiler, sistem bildirimleri için bir iletme kuralı oluşturduğunuzda gönderilir.
 

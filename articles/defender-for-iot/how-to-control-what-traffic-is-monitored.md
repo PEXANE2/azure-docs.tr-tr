@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 08afba8ade30775a49492f337bb5337320b9e282
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: b2f95ddb13896ed461a20f1948fef34569586d1f
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97843431"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97977085"
 ---
 # <a name="control-what-traffic-is-monitored"></a>Hangi trafiğin izleneceğini denetleme
 
@@ -157,7 +157,7 @@ Dinamik ağlarla çalışıyorsanız, yeni IP adresleri atandığında gerçekle
 
 Her sensörde dinamik IP adreslerini tanımlamak, IP adresi değişiklikleri örneklerinde kapsamlı ve şeffaf destek sunar. Bu, her benzersiz cihaz için kapsamlı raporlama sağlar.
 
-Algılayıcı konsolu, cihazla ilişkili en güncel IP adresini sunar ve hangi cihazların dinamik olduğunu gösterir. Örnek:
+Algılayıcı konsolu, cihazla ilişkili en güncel IP adresini sunar ve hangi cihazların dinamik olduğunu gösterir. Örneğin:
 
 - Veri araştırma raporu ve cihaz envanteri raporu, IP adresi değişikliklerinden bağımsız olarak cihazdan öğrenilen tüm etkinlikleri tek bir varlık olarak birleştirir. Bu raporlar, hangi adreslerin DHCP adresleri olarak tanımlandığını gösterir.
 
@@ -228,7 +228,7 @@ Bir test varlığı kullanarak, tanımladığınız ayarların düzgün çalış
 
 3. **Sunucu Için DNS geriye doğru arama testi** iletişim kutusu Için **arama adresi** ' nde bir adres girin.
 
-    :::image type="content" source="media/how-to-enrich-asset-information/dns-reverse-looup-test-screen.png" alt-text="Arama adres alanını gösteren ekran görüntüsü.":::
+    :::image type="content" source="media/how-to-enrich-asset-information/dns-reverse-lookup-test-screen.png" alt-text="Arama adres alanını gösteren ekran görüntüsü.":::
 
 4. **Test**'i seçin.
 

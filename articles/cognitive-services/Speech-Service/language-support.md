@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: d0cb9dc3c54f409c3bdd71fbb57c823e15abc22d
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 68a384197409115343a81aea23b0f7d42166d716
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97762971"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976818"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -53,9 +53,9 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Arapça (Birleşik Arap Emirlikleri)      | `ar-AE` | Dil modeli                                   |
 | Bulgarca (Bulgaristan)               | `bg-BG` | Dil modeli                                   |
 | Katalanca (İspanya)                    | `ca-ES` | Dil modeli                                   |
-| Çince (Cantoneo, geleneksel)   | `zh-HK` | Dil modeli                                   |
+| Çince (Cantoneo, geleneksel)   | `zh-HK` | Akustik model<br>Dil modeli                 |
 | Çince (Mandarin, Basitleştirilmiş)     | `zh-CN` | Akustik model<br>Dil modeli                 |
-| Çince (Taiwanese Mandarin)       | `zh-TW` | Dil modeli                                   |
+| Çince (Taiwanese Mandarin)       | `zh-TW` | Akustik model<br>Dil modeli                 |
 | Hırvatça (Hırvatistan)                 | `hr-HR` | Dil modeli                                   |
 | Çekçe (Çek Cumhuriyeti)             | `cs-CZ` | Dil modeli                                   |
 | Danca (Danimarka)                   | `da-DK` | Dil modeli                                   |
@@ -83,8 +83,8 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Macarca (Macaristan)                | `hu-HU` | Dil modeli                                   |
 | İrlanda dili (Irlanda)                     | `ga-IE` | Dil modeli                                   |
 | İtalyanca (İtalya)                    | `it-IT` | Akustik model<br>Dil modeli<br>İşi|
-| Japonca (Japonya)                   | `ja-JP` | Dil modeli                                   |
-| Korece (Kore)                     | `ko-KR` | Dil modeli                                   |
+| Japonca (Japonya)                   | `ja-JP` | Akustik model<br>Dil modeli                 |
+| Korece (Kore)                     | `ko-KR` | Akustik model<br>Dil modeli                 |
 | Letonca (Letonya)                   | `lv-LV` | Dil modeli                                   |
 | Litvanca (Litvanya)             | `lt-LT` | Dil modeli                                   |
 | Malta dili (Malta)                     | `mt-MT` | Dil modeli                                   |

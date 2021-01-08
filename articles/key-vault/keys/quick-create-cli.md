@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/30/2020
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3906de9cd94b4db3e675c2b822df2f061040c586
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 8da5e86362f41322102c3b5316df5743e0c2458f
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935300"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97977000"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak Azure Key Vault bir anahtar ayarlama ve alma
 
@@ -59,7 +59,7 @@ Bu noktada Azure hesabınız, bu yeni anahtar kasasında herhangi bir işlemi ge
 
 Kasaya bir anahtar eklemek için, birkaç ek adım yapmanız yeterlidir. Bu anahtar bir uygulama tarafından kullanılabilir. 
 
-Çağrılan bir **örnek anahtarı** oluşturmak için aşağıdaki komutları yazın:
+**Örnek anahtar** adlı bir anahtar oluşturmak için aşağıdaki komutları yazın:
 
 ```azurecli
 az keyvault key create --vault-name "Contoso-Vault2" -n ExampleKey --protection software

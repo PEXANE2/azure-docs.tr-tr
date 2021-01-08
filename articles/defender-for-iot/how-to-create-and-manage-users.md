@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/3/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 22d0c59110ba033232fbdf41062b49e9a146ca6f
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: c33b3e5fee19edc5d4ac85284e507b53e96234a0
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955179"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97977022"
 ---
 # <a name="about-defender-for-iot-console-users"></a>IoT konsol kullanıcıları için Defender hakkında
 
@@ -223,8 +223,6 @@ Bir Six veya destek kullanıcısının parolasını sıfırlamak için:
     > Parola kurtarma dosyasını değiştirmeyin. Bu, imzalanmış bir dosyadır ve bununla karşılaşırsanız çalışmaz.
 
 1. **Parola kurtarma** ekranında **karşıya yükle**' yi seçin. **Parola kurtarma dosyası yükle** penceresi açılır.
-
-   :::image type="content" source="media/password-recovery-images/upload.png" alt-text="Yeni bir parola almak için kurtarma dosyanızı karşıya yükleyin.":::
 
 1. Dosyanızı bulmak için **Araştır** `password_recovery.zip` ' ı seçin veya `password_recovery.zip` pencereyi pencereye sürükleyin.
 

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/24/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: beb38be985457ea36b2cea9a6dc337ba305d503f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 4237aba81a01423a3356a30879fbd27450c876bd
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108510"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976512"
 ---
 # <a name="page-layout-versions"></a>Sayfa düzeni sürümleri
 
@@ -51,7 +51,7 @@ Sayfa düzeni paketleri, sayfa öğelerinde düzeltmeler ve iyileştirmeler içe
 - Artık, e-posta doğrulandıktan sonra parola alanına odak konur.
 - `autofocus`CheckBox denetiminden kaldırılır. 
 - Telefon numarası doğrulaması için bir görüntü denetimi desteği eklendi.
-- Artık `data-preload="true"` [HTML etiketinizdeki] özniteliği ekleyebilirsiniz (özelleştirme-UI-ile-HTML. MD # yönergeleri-
+- Artık `data-preload="true"` ÖZNITELIĞI [HTML etiketlerinizi](customize-ui-with-html.md#guidelines-for-using-custom-page-content) ekleyebilirsiniz
   - Bağlı CSS dosyalarını HTML şablonunuz ile aynı anda yükleyin; böylece dosyalar yüklenirken ' titreşimi ' yoktur.
   - `script`Etiketlerin alındığı ve sayfa yüklenmeden önce yürütüldüğü sırayı denetleyin.
 - E-posta alanı artık `type=email` ve mobil klavyeler doğru önerilere sahip olur.
@@ -112,7 +112,7 @@ Sayfa düzeni paketleri, sayfa öğelerinde düzeltmeler ve iyileştirmeler içe
 - `heading` `intro` Sayfada başlık olarak görüntülenmek için öğesine ek olarak bir uxstring eklendi. Bu, varsayılan olarak gizlidir.  
 - Düzeni seçmek için ilkeyi veya QueryString parametresini kullanma desteği eklendi `pageFlavor` (klasik, oceanBlue veya slateGray).
 
-**1.2.1**
+**1.2.1'i**
 
 - Varsayılan şablonlarda erişilebilirlik düzeltmeleri
 
