@@ -4,12 +4,12 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: 6265a7cde8e276570409238cadfd5ebc777b4527
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 71782661fd960cae3248005a8b90944eff9bef45
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97531871"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024326"
 ---
 | Kaynak | Ücretsiz | Paylaşılan | Temel | Standart | Premium (v1-v3) | Yalıtılmış </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -31,6 +31,7 @@ ms.locfileid: "97531871"
 | Özel etki alanı [SSL desteği](../articles/app-service/configure-ssl-certificate.md) |Desteklenmiyor, \* Varsayılan olarak. azurewebsites.NET için joker sertifika kullanılabilir|Desteklenmiyor, \* Varsayılan olarak. azurewebsites.NET için joker sertifika kullanılabilir|Sınırsız SNI SSL bağlantı |Sınırsız SNI SSL ve 1 IP SSL bağlantı dahil değildir |Sınırsız SNI SSL ve 1 IP SSL bağlantı dahil değildir | Sınırsız SNI SSL ve 1 IP SSL bağlantı dahil değildir|
 | Karma bağlantılar | | | plan başına 5 | plan başına 25 | Uygulama başına 200 | Uygulama başına 200 |
 | [Sanal Ağ Tümleştirmesi](../articles/app-service/web-sites-integrate-with-vnet.md) | | |   |  X |  X  |  X  |
+| [Özel Uç Noktalar](../articles/app-service/networking/private-endpoint.md) | | |   |   |  Uygulama başına 100  |    |
 | Tümleşik yük dengeleyici | |X |X |X |X |X<sup>10</sup> |
 | [Erişim kısıtlamaları](../articles/app-service/networking-features.md#access-restrictions) | Uygulama başına 512 kural | Uygulama başına 512 kural | Uygulama başına 512 kural | Uygulama başına 512 kural | Uygulama başına 512 kural | Uygulama başına 512 kural |
 | [Her zaman açık](../articles/app-service/configure-common.md) | | |X |X |X |X |
