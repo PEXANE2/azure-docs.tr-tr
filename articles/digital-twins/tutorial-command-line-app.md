@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: a9d8c42432d619ab120afd0bd5734f6fa269b514
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: db85bf19c1b040fea1ed2f5d6dcf904288366c7f
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458094"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050247"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Öğretici: örnek bir istemci uygulamasıyla Azure dijital TWINS 'i araştırma
 
@@ -51,27 +51,15 @@ Düzenle penceresinde açmak için *Room.js* seçin ve aşağıdaki yollarla de�
 1. **Bir özelliği düzenleyin**. `Humidity`Özelliğin adını *Humidtylevel* (veya isterseniz farklı bir şey) olarak değiştirin. *Humidtylevel*' dan farklı bir şey kullanırsanız, kullandığınız şeyi hatırlayın ve öğretici genelinde *Humidtylevel* yerine bunu kullanmaya devam edin).
 1. **Özellik ekleyin**. 15. `HumidityLevel` satırda sonlanan özelliğin altında, Odaya bir özellik eklemek için aşağıdaki kodu yapıştırın `RoomName` :
 
-    ```json
-    ,
-    {
-      "@type": "Property",
-      "name": "RoomName",
-      "schema": "string"
-    }
-    ```
-1. **Ilişki ekleyin**. `RoomName`Az önce eklediğiniz özelliğin altında, bu tür bir ikizi oluşturmak için aşağıdaki kodu yapıştırın. *contains*
+    :::code language="json" source="~/digital-twins-docs-samples/models/Room.json" range="16-20":::
 
-    ```json
-    ,
-    {
-      "@type": "Relationship",
-      "name": "contains"
-    }
-    ```
+1. **Ilişki ekleyin**. `RoomName`Az önce eklediğiniz özelliğin altında, bu tür bir ikizi oluşturmak için aşağıdaki kodu yapıştırın. 
 
-İşiniz bittiğinde, güncelleştirilmiş modelin şöyle görünmesi gerekir:
+    :::code language="json" source="~/digital-twins-docs-samples/models/Room.json" range="21-24":::
 
-:::image type="content" source="media/tutorial-command-line-app/room-model.png" alt-text="Güncelleştirilmiş sürüm numarasıyla birlikte Room.jsdüzenlendi, Humidtylevel ve RoomName özellikleri ve ilişki içerir" border="false":::
+İşiniz bittiğinde, güncelleştirilmiş modelin eşleşmesi gerekir:
+
+:::code language="json" source="~/digital-twins-docs-samples/models/Room.json":::
 
 Taşımadan önce dosyayı kaydettiğinizden emin olun.
 

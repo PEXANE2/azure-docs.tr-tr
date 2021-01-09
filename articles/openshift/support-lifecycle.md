@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: b563fac9044dccd832aa42c0193eed24cad26754
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 5b5ae695ac11ae687a9b076005a765feaa46f83c
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94737923"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049516"
 ---
 # <a name="support-lifecycle-for-azure-red-hat-openshift-4"></a>Azure Red Hat OpenShift 4 için destek yaşam döngüsü
 
@@ -100,13 +100,13 @@ Portalda veya Azure CLı ile bir Azure Red Hat OpenShift kümesi dağıttığın
 |4.3|Ocak 2020|Nisan 2020| Ağustos 2020|
 |4.4|Mayıs 2020|Temmuz 2020|4,6 GA|
 |4,5|Temmuz 2020| Kasım 2020|4,7 GA
-|4,6|Ekim 2020| Aralık 2020|4,8 GA|
+|4,6|Ekim 2020| Şubat 2021|4,8 GA|
 
 ## <a name="faq"></a>SSS
 
 **Bir Kullanıcı bir OpenShift kümesini desteklenmeyen bir ikincil sürümle yükselttiğinde ne olur?**
 
-N-2 veya daha eski bir sürüm kullanıyorsanız, destek dışında olduğunuz ve yükseltmeniz istenecek demektir. N-2 sürümünden N-1 ' e yükseltme başarılı olursa, destek ilkilerimize geri dönebilirsiniz. Örnek:
+N-2 veya daha eski bir sürüm kullanıyorsanız, destek dışında olduğunuz ve yükseltmeniz istenecek demektir. N-2 sürümünden N-1 ' e yükseltme başarılı olursa, destek ilkilerimize geri dönebilirsiniz. Örneğin:
 * Desteklenen en eski Azure Red Hat OpenShift sürümü 4.4. z ise ve 4.3. z veya daha eski bir sürümdaysanız, destek dışında olursunuz.
 * 4.3. z 'den 4.4. z 'ye veya daha yüksek bir sürüme yükseltme başarılı olduğunda, destek ilkilerimize geri dönebilirsiniz.
 

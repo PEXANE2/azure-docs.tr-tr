@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 09/13/2020
-ms.openlocfilehash: 805bc2aecda37599234c81dd928868d8c14aea4e
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 242ff1d7c16ca952b19f44fb139f8fae7562524a
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97091998"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98048326"
 ---
 # <a name="train-machine-learning-models"></a>Makine öğrenimi modellerini eğitme
 Azure SYNAPSE Analytics 'teki Apache Spark, büyük miktarlarda yapılandırılmış, yapılandırılmamış ve hızlı hareketli verilerden değerli Öngörüler elde etme olanağı sunan büyük verilerle makine öğrenmesini sağlar. Azure SYNAPSE Analytics 'te Azure Spark kullanarak makine öğrenimi modellerini eğitmek için çeşitli seçenekler vardır: Apache Spark MLlib, Azure Machine Learning ve diğer diğer açık kaynak kitaplıkları. 
@@ -58,6 +58,6 @@ Azure SYNAPSE Analytics içinde otomatik ML kullanırken, kimlik doğrulama & mo
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu makalede, Azure SYNAPSE Analytics 'teki Apache Spark havuzlarında makine öğrenimi modellerini eğitmek için çeşitli seçeneklere genel bakış sunulmaktadır. Aşağıdaki öğreticiyi izleyerek model eğitimi hakkında daha fazla bilgi edinebilirsiniz:
 
-- Azure Machine Learning ve Azure SYNAPSE Analytics kullanarak otomatikleştirilmiş ML denemeleri çalıştırma: [OTOMATIKLEŞTIRILMIŞ ml öğreticisi](./spark/../apache-spark-autoscale.md) 
-- Parlak ml denemeleri çalıştırma: [Apache mini ml öğreticisi](../spark/apache-spark-azure-machine-learning-tutorial.md)
+- Azure Machine Learning ve Azure SYNAPSE Analytics kullanarak otomatikleştirilmiş ML denemeleri çalıştırma: [OTOMATIKLEŞTIRILMIŞ ml öğreticisi](../spark/apache-spark-azure-machine-learning-tutorial.md) 
+- Parlak ml denemeleri çalıştırma: [Apache mini ml öğreticisi](../spark/apache-spark-machine-learning-mllib-notebook.md)
 - Varsayılan kitaplıkları görüntüleme: [Azure SYNAPSE Analytics çalışma zamanı](../spark/apache-spark-version-support.md)

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: dc6412a85beba67551e7683c8127a65730f9218f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 4c703fc1ddac4af2e3cf8716764a21da7e870b19
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535476"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98048683"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Güvenlik duvarını kullanarak Azure HDInsight kümeleri için giden ağ trafiği yapılandırma
 
@@ -53,7 +53,7 @@ Kümenin önemli iletişimleri göndermesini ve almasını sağlayan bir uygulam
 
 1. Azure portal yeni güvenlik duvarını **Test-FW01** seçin.
 
-1. **Ayarlar**  >  **kuralları**  >  **uygulama kuralı koleksiyonu**  >  **+ uygulama kuralı koleksiyonu Ekle** ' ye gidin.
+1. **Ayarlar**  >  **kuralları**  >  **uygulama kuralı koleksiyonu**  >  **+ uygulama kuralı koleksiyonu Ekle**' ye gidin.
 
     ![Başlık: uygulama kuralı koleksiyonu Ekle](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
 
@@ -63,19 +63,19 @@ Kümenin önemli iletişimleri göndermesini ve almasını sağlayan bir uygulam
 
     | Özellik|  Değer|
     |---|---|
-    |Adı| FwAppRule|
+    |Ad| FwAppRule|
     |Öncelik|200|
     |Eylem|İzin Ver|
 
     **FQDN etiketleri bölümü**
 
-    | Name | Kaynak adres | FQDN etiketi | Notlar |
+    | Ad | Kaynak adres | FQDN etiketi | Notlar |
     | --- | --- | --- | --- |
     | Rule_1 | * | WindowsUpdate ve HDInsight | HDI Hizmetleri için gerekli |
 
     **Hedef FQDN bölümü**
 
-    | Name | Kaynak adresler | Protokol:Bağlantı Noktası | Hedef FQDN 'ler | Notlar |
+    | Ad | Kaynak adresler | Protokol:Bağlantı Noktası | Hedef FQDN 'ler | Notlar |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https:443 | login.windows.net | Windows oturum açma etkinliğine izin verir |
     | Rule_3 | * | https:443 | login.microsoftonline.com | Windows oturum açma etkinliğine izin verir |
@@ -83,13 +83,13 @@ Kümenin önemli iletişimleri göndermesini ve almasını sağlayan bir uygulam
 
    ![Başlık: uygulama kuralı koleksiyonu ayrıntılarını girin](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
-1. **Ekle** ’yi seçin.
+1. **Ekle**’yi seçin.
 
 ### <a name="configure-the-firewall-with-network-rules"></a>Ağ kurallarıyla güvenlik duvarını yapılandırma
 
 HDInsight kümenizi doğru şekilde yapılandırmak için ağ kuralları oluşturun.
 
-1. Önceki adımdan devam etmek için **ağ kuralı koleksiyonu**  >  **+ ağ kuralı koleksiyonu Ekle** ' ye gidin.
+1. Önceki adımdan devam etmek için **ağ kuralı koleksiyonu**  >  **+ ağ kuralı koleksiyonu Ekle**' ye gidin.
 
 1. **Ağ kuralı koleksiyonu Ekle** ekranında, aşağıdaki bilgileri sağlayın:
 
@@ -97,36 +97,36 @@ HDInsight kümenizi doğru şekilde yapılandırmak için ağ kuralları oluştu
 
     | Özellik|  Değer|
     |---|---|
-    |Adı| FwNetRule|
+    |Ad| FwNetRule|
     |Öncelik|200|
     |Eylem|İzin Ver|
 
     **Hizmet etiketleri bölümü**
 
-    | Name | Protokol | Kaynak Adresler | Hizmet Etiketleri | Hedef bağlantı noktaları | Notlar |
+    | Ad | Protokol | Kaynak Adresler | Hizmet Etiketleri | Hedef bağlantı noktaları | Notlar |
     | --- | --- | --- | --- | --- | --- |
-    | Rule_5 | TCP | * | SQL | 1433 | HDInsight tarafından sunulan varsayılan SQL sunucularını kullanıyorsanız SQL için SQL trafiğini günlüğe kaydederek ve denetim altına alacak olan hizmet etiketleri bölümünde bir ağ kuralı yapılandırın. HDInsight alt ağında SQL Server için hizmet uç noktaları yapılandırmadığınız takdirde, güvenlik duvarını atlayacak olur. Ambarı, Oozie, Ranger ve Hive metastroes için özel SQL Server kullanıyorsanız yalnızca kendi özel SQL sunucularınız için trafiğe izin vermeniz gerekir.|
+    | Rule_5 | TCP | * | SQL | 1433 | HDInsight tarafından sunulan varsayılan SQL sunucularını kullanıyorsanız SQL için SQL trafiğini günlüğe kaydederek ve denetim altına alacak olan hizmet etiketleri bölümünde bir ağ kuralı yapılandırın. HDInsight alt ağında SQL Server için hizmet uç noktaları yapılandırmadığınız takdirde, güvenlik duvarını atlayacak olur. Ambarı, Oozie, Ranger ve Hive meta depolar için özel SQL Server kullanıyorsanız yalnızca kendi özel SQL sunucularınız için trafiğe izin vermeniz gerekir.|
     | Rule_6 | TCP | * | Azure İzleyici | * | seçim Otomatik ölçeklendirme özelliğini kullanmayı planlayan müşterilerin bu kuralı eklemesi gerekir. |
     
    ![Başlık: uygulama kuralı koleksiyonu girin](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
-1. **Ekle** ’yi seçin.
+1. **Ekle**’yi seçin.
 
 ### <a name="create-and-configure-a-route-table"></a>Rota tablosu oluşturma ve yapılandırma
 
 Aşağıdaki girişlerle bir yol tablosu oluşturun:
 
-* **Internet** 'in bir sonraki atlama türü Ile [sistem durumu ve yönetim HIZMETLERINDEN](../hdinsight/hdinsight-management-ip-addresses.md#health-and-management-services-all-regions) gelen tüm IP adresleri. Bu, genel bölgelerin 4 IP 'sini ve belirli bölgeniz için 2 IP 'yi içermelidir. Bu kural yalnızca ResourceProviderConnection *gelen* olarak ayarlandıysa gereklidir. ResourceProviderConnection *giden* olarak ayarlandıysa, bu IP 'ler UDR 'de gerekli değildir. 
+* **Internet**'in bir sonraki atlama türü Ile [sistem durumu ve yönetim HIZMETLERINDEN](../hdinsight/hdinsight-management-ip-addresses.md#health-and-management-services-all-regions) gelen tüm IP adresleri. Bu, genel bölgelerin 4 IP 'sini ve belirli bölgeniz için 2 IP 'yi içermelidir. Bu kural yalnızca ResourceProviderConnection *gelen* olarak ayarlandıysa gereklidir. ResourceProviderConnection *giden* olarak ayarlandıysa, bu IP 'ler UDR 'de gerekli değildir. 
 
 * 0.0.0.0/0 IP adresi için bir Sanal Gereç yolu, sonraki atlama olan Azure Güvenlik Duvarı özel IP adresiniz.
 
 Örneğin, "Doğu ABD" ABD bölgesinde oluşturulan bir kümenin yol tablosunu yapılandırmak için aşağıdaki adımları kullanın:
 
-1. Azure Güvenlik Duvarı **testinizi seçin-FW01** . **Genel bakış** sayfasında LISTELENEN **özel IP adresini** kopyalayın. Bu örnekte, **10.0.2.4 örnek adresini** kullanacağız.
+1. Azure Güvenlik Duvarı **testinizi seçin-FW01**. **Genel bakış** sayfasında LISTELENEN **özel IP adresini** kopyalayın. Bu örnekte, **10.0.2.4 örnek adresini** kullanacağız.
 
-1. Ardından **tüm hizmetler**  >  **ağ**  >  **yolu tabloları** ' na gidin ve **rota tablosu oluşturun** .
+1. Ardından **tüm hizmetler**  >  **ağ**  >  **yolu tabloları** ' na gidin ve **rota tablosu oluşturun**.
 
-1. Yeni yolınızdan **Ayarlar**  >  **rotalar**  >  **+ Ekle** ' ye gidin. Aşağıdaki yolları ekleyin:
+1. Yeni yolınızdan **Ayarlar**  >  **rotalar**  >  **+ Ekle**' ye gidin. Aşağıdaki yolları ekleyin:
 
 | Yönlendirme adı | Adres ön eki | Sonraki atlama türü | Sonraki atlama adresi |
 |---|---|---|---|
@@ -142,11 +142,11 @@ Yol tablosu yapılandırmasını doldurun:
 
 1. **Ayarlar** altında **alt ağlar** ' i seçerek HDInsight alt ağına oluşturduğunuz yol tablosunu atayın.
 
-1. **+ İlişkilendir** ' i seçin.
+1. **+ İlişkilendir**' i seçin.
 
 1. **Alt ağı ilişkilendir** ekranında, kümenizin oluşturulduğu sanal ağı seçin. Ve HDInsight kümeniz için kullandığınız **alt ağ** .
 
-1. **Tamam** ’ı seçin.
+1. **Tamam**’ı seçin.
 
 ## <a name="edge-node-or-custom-application-traffic"></a>Edge-node veya özel uygulama trafiği
 
@@ -170,7 +170,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 Azure Güvenlik Duvarı 'Nı Azure Izleyici günlükleriyle tümleştirme, ilk olarak bir uygulama çalışırken yararlıdır. Özellikle uygulama bağımlılıklarının tümünün farkında olmadığınız durumlarda. Azure izleyici günlükleri hakkında daha fazla bilgi edinmek için Azure izleyici ['de günlük verilerini çözümleme](../azure-monitor/log-query/log-query-overview.md)
 
-Azure Güvenlik duvarının ölçek sınırları ve istek artışları hakkında bilgi edinmek için [Bu](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits) belgeye bakın veya [SSS](../firewall/firewall-faq.md)bölümüne bakın.
+Azure Güvenlik duvarının ölçek sınırları ve istek artışları hakkında bilgi edinmek için [Bu](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits) belgeye bakın veya [SSS](../firewall/firewall-faq.yml)bölümüne bakın.
 
 ## <a name="access-to-the-cluster"></a>Kümeye erişim
 

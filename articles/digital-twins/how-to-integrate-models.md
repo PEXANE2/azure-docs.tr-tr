@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f5bfe128ddc04e8048bb89a8e39035434dfd2b92
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 3376f5d5e207a33ad39cd7506998e2ee90e084ad
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352890"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051556"
 ---
 # <a name="integrate-industry-standard-models-with-dtdl-for-azure-digital-twins"></a>Azure dijital TWINS için, sektör standardı modellerini DTDL ile tümleştirme
 
@@ -39,7 +39,7 @@ Bu açık kaynaklı DTDL ontoloyüklenimi, modellerin nasıl kullanılacağı ve
 
 Azure dijital TWINS ile bir model kullanmak için, DTDL biçiminde olmalıdır. Bu bölümde, Azure dijital TWINS ile kullanılabilmesi için RDF tabanlı modelleri DTDL 'ye dönüştürmek üzere bir **dönüştürme modeli** biçiminde genel tasarım kılavuzu açıklanmaktadır. 
 
-Ayrıca, [BIR RDF Dönüştürücüsü için, blok şeması için doğrulanan ve yapı sektöründe diğer şemalar için Genişletilebilir **örnek dönüştürücü kodu**](#sample-converter-application)içerir. [Brick](https://brickschema.org/ontology/)
+Ayrıca, [BIR RDF Dönüştürücüsü için, blok şeması için doğrulanan ve yapı sektöründe diğer şemalar için Genişletilebilir **örnek dönüştürücü kodu**](#sample-converter-application)içerir. [](https://brickschema.org/ontology/)
 
 ### <a name="conversion-pattern"></a>Dönüştürme deseninin
 
@@ -56,54 +56,7 @@ Aşağıdaki tabloda, RDFS ve OWL yapılarının DTDL ile nasıl eşleştirilene
 
 Aşağıdaki C# kod parçacığı, bir RDF model dosyasının bir grafiğe nasıl yüklendiğini ve [**Dotnetrdf**](https://www.dotnetrdf.org/) kitaplığı kullanılarak dtdl 'ye nasıl dönüştürüleceğini gösterir. 
 
-```csharp
-using VDS.RDF.Ontology; 
-using VDS.RDF.Parsing; 
-using Microsoft.Azure.DigitalTwins.Parser; 
-
-//...
-
-Console.WriteLine("Reading file..."); 
-
-FileLoader.Load(_ontologyGraph, rdfFile.FullName); 
-
-// Start looping through for each owl:Class 
-foreach (OntologyClass owlClass in _ontologyGraph.OwlClasses) 
-{ 
-
-    // Generate a DTMI for the owl:Class 
-    string Id = GenerateDTMI(owlClass); 
-
-    if (!String.IsNullOrEmpty(Id)) 
-    { 
-
-        Console.WriteLine($"{owlClass.ToString()} -> {Id}"); 
-
-        // Create Interface
-        DtdlInterface dtdlInterface = new DtdlInterface 
-        { 
-            Id = Id, 
-            Type = "Interface", 
-            DisplayName = GetInterfaceDisplayName(owlClass), 
-            Comment = GetInterfaceComment(owlClass), 
-            Contents = new List<DtdlContents>() 
-        }; 
-
-        // Use DTDL 'extends' for super classes 
-        IEnumerable<OntologyClass> foundSuperClasses = owlClass.DirectSuperClasses; 
-
-        //... 
-     }
-
-     // Add interface to the list of interfaces 
-     _interfaceList.Add(dtdlInterface); 
-} 
-
-// Serialize to JSON 
-var json = JsonConvert.SerializeObject(_interfaceList); 
-
-//...
-``` 
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/convertRDF.cs":::
 
 ### <a name="sample-converter-application"></a>Örnek dönüştürücü uygulaması 
 

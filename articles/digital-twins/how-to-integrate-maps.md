@@ -8,12 +8,12 @@ ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 3e5eb49a91e2c8bbd73f5dd37ed90f10b406fa3d
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 7b2039f8b1aebef65112067e4fd9184777192015
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496036"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051590"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure haritalar ınkapısının haritasını güncelleştirmek için Azure dijital TWINS kullanma
 
@@ -29,9 +29,9 @@ Bu şekilde nasıl ele alınacaktır:
 
 * Azure dijital TWINS [*öğreticisini izleyin: uçtan uca çözümü bağlama*](./tutorial-end-to-end.md).
     * Bu ikizi ek bir uç nokta ve rotayla genişletiyorsunuz. Ayrıca, bu öğreticiden işlev uygulamanıza başka bir işlev da eklersiniz. 
-* Azure haritalar öğreticisini izleyin: bir *özellik stateset*Ile Azure Maps ınkapısı haritası oluşturmak üzere [*ınkapılı haritalar oluşturmak Için Azure haritalar Oluşturucu kullanın*](../azure-maps/tutorial-creator-indoor-maps.md) .
+* Azure haritalar öğreticisini izleyin: bir *özellik stateset* Ile Azure Maps ınkapısı haritası oluşturmak üzere [*ınkapılı haritalar oluşturmak Için Azure haritalar Oluşturucu kullanın*](../azure-maps/tutorial-creator-indoor-maps.md) .
     * [Özellik statesets](../azure-maps/creator-indoor-maps.md#feature-statesets) 'ler, odalar veya ekipman gibi veri kümesi özelliklerine atanan dinamik Özellikler (eyaletler) koleksiyonlarıdır. Yukarıdaki Azure haritalar öğreticisinde, stateset özelliği bir haritada görüntülenecek oda durumunu depolar.
-    * Özellik *stateset ID* ve Azure Maps *abonelik kimliği*gereklidir.
+    * Özellik *stateset ID* ve Azure Maps *abonelik kimliği* gereklidir.
 
 ### <a name="topology"></a>Topoloji
 
@@ -78,60 +78,7 @@ Başvuru bilgileri için aşağıdaki belgeye bakın: [*Azure işlevleri için A
 
 İşlev kodunu aşağıdaki kodla değiştirin. Yalnızca TWINS 'in bulunduğu güncelleştirmeleri filtreleyerek, güncelleştirilmiş sıcaklığın okunmasını ve bu bilgileri Azure Maps 'a göndermeyecektir.
 
-```C#
-using Microsoft.Azure.EventGrid.Models;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.EventGrid;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Threading.Tasks;
-using System.Net.Http;
-
-namespace SampleFunctionsApp
-{
-    public static class ProcessDTUpdatetoMaps
-    {   //Read maps credentials from application settings on function startup
-        private static string statesetID = Environment.GetEnvironmentVariable("statesetID");
-        private static string subscriptionKey = Environment.GetEnvironmentVariable("subscription-key");
-        private static HttpClient httpClient = new HttpClient();
-
-        [FunctionName("ProcessDTUpdatetoMaps")]
-        public static async Task Run([EventGridTrigger]EventGridEvent eventGridEvent, ILogger log)
-        {
-            JObject message = (JObject)JsonConvert.DeserializeObject(eventGridEvent.Data.ToString());
-            log.LogInformation("Reading event from twinID:" + eventGridEvent.Subject.ToString() + ": " +
-                eventGridEvent.EventType.ToString() + ": " + message["data"]);
-
-            //Parse updates to "space" twins
-            if (message["data"]["modelId"].ToString() == "dtmi:contosocom:DigitalTwins:Space;1")
-            {   //Set the ID of the room to be updated in your map. 
-                //Replace this line with your logic for retrieving featureID. 
-                string featureID = "UNIT103";
-
-                //Iterate through the properties that have changed
-                foreach (var operation in message["data"]["patch"])
-                {
-                    if (operation["op"].ToString() == "replace" && operation["path"].ToString() == "/Temperature")
-                    {   //Update the maps feature stateset
-                        var postcontent = new JObject(new JProperty("States", new JArray(
-                            new JObject(new JProperty("keyName", "temperature"),
-                                 new JProperty("value", operation["value"].ToString()),
-                                 new JProperty("eventTimestamp", DateTime.Now.ToString("s"))))));
-
-                        var response = await httpClient.PostAsync(
-                            $"https://atlas.microsoft.com/featureState/state?api-version=1.0&statesetID={statesetID}&featureID={featureID}&subscription-key={subscriptionKey}",
-                            new StringContent(postcontent.ToString()));
-
-                        log.LogInformation(await response.Content.ReadAsStringAsync());
-                    }
-                }
-            }
-        }
-    }
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/updateMaps.cs":::
 
 İşlev uygulamanızda iki ortam değişkeni ayarlamanız gerekir. Bunlardan biri [Azure Maps birincil abonelik anahtarınıza](../azure-maps/quick-demo-map-app.md#get-the-primary-key-for-your-account), diğeri Ise [Azure HARITALAR stateset Kimliğinizle](../azure-maps/tutorial-creator-indoor-maps.md#create-a-feature-stateset)biridir.
 
@@ -152,7 +99,7 @@ Canlı güncelleştirme sıcaklığını görmek için aşağıdaki adımları i
 
 Her iki örnek de sıcaklığın uyumlu bir aralığa gönderilmesini sağlamak için, her 30 saniyede bir haritada oda 121 güncelleştirme rengini görmeniz gerekir.
 
-:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="Uçtan uca bir senaryoda Azure hizmetlerinin bir görünümü olan, ınkapıharitaları tümleştirme parçasını vurgulama":::
+:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="Oda 121 renkli turuncu gösteren bir Office Haritası":::
 
 ## <a name="store-your-maps-information-in-azure-digital-twins"></a>Haritalar bilgilerinizi Azure dijital TWINS 'te depolayın
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Data Lake Storage 1. için yerleşik ilke tanımları
 description: Azure Data Lake Storage 1. için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 11/20/2020
+ms.date: 01/08/2021
 ms.topic: reference
 author: twooley
 ms.author: twooley
 ms.service: data-lake-store
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 6c895c65e122154afeb2a29cb2d905460316538f
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: a79a1a2d77893087c73e96f17f05eff55b301520
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94988442"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98048627"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. için Azure Ilkesi yerleşik tanımları
 
@@ -20,7 +20,7 @@ Bu sayfa, Azure Data Lake Storage 1. için [Azure ilkesi](../governance/policy/o
 
 Her yerleşik ilke tanımının adı Azure portal ilke tanımına bağlanır. Kaynağı [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda görüntülemek için **Sürüm** sütunundaki bağlantıyı kullanın.
 
-## <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1
+## <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. Nesil
 
 [!INCLUDE [azure-policy-reference-rp-dlstoregen1](../../includes/policy/reference/byrp/microsoft.datalakestore.md)]
 

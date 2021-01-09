@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 9ee804f7bed01ca0c7f365a04e6108afd9598157
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40f4845ecc21d05ca5e8394dccba080f8a1f8936
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87066400"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049720"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Azure Logic Apps bir veya daha fazla tümleştirme hizmeti ortamı için tek bir IP adresi ayarlayın
 
@@ -41,7 +41,7 @@ Bu konu başlığı altında, giden trafiğin bir Azure Güvenlik Duvarı üzeri
 
    * Sonraki atlama adresi olarak güvenlik duvarı örneği için özel IP adresine gider.
 
-     Bu IP adresini bulmak için, güvenlik duvarı menünüzde **genel bakış**' ı seçin, **özel IP adresi**altında adresi bulun, örneğin:
+     Bu IP adresini bulmak için, güvenlik duvarı menünüzde **genel bakış**' ı seçin, **özel IP adresi** altında adresi bulun, örneğin:
 
      ![Güvenlik Duvarı özel IP adresi bulma](./media/connect-virtual-network-vnet-set-up-single-ip-address/find-firewall-private-ip-address.png)
 
@@ -76,7 +76,7 @@ Bu konu başlığı altında, giden trafiğin bir Azure Güvenlik Duvarı üzeri
    | Özellik | Değer | Açıklama |
    |----------|-------|-------------|
    | **Ad** | <*Ağ kuralı-koleksiyon-adı*> | Ağ kuralı koleksiyonunuzun adı |
-   | **Priority** | <*öncelik düzeyi*> | Kural koleksiyonunu çalıştırmak için kullanılacak öncelik sırası. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı kavramları nelerdir](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts)? |
+   | **Priority** | <*öncelik düzeyi*> | Kural koleksiyonunu çalıştırmak için kullanılacak öncelik sırası. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı kavramları nelerdir](../firewall/firewall-faq.yml#what-are-some-azure-firewall-concepts)? |
    | **Eylem** | **İzin Ver** | Bu kural için gerçekleştirilecek eylem türü |
    |||
 
@@ -85,7 +85,7 @@ Bu konu başlığı altında, giden trafiğin bir Azure Güvenlik Duvarı üzeri
    | Özellik | Değer | Açıklama |
    |----------|-------|-------------|
    | **Ad** | <*Ağ kuralı-adı*> | Ağ kuralınız için ad |
-   | **Protokol** | <*bağlantı-protokoller*> | Kullanılacak bağlantı protokolleri. Örneğin, NSG kurallarını kullanıyorsanız **, yalnızca TCP**değil **TCP** ve **UDP**' yi seçin. |
+   | **Protokol** | <*bağlantı-protokoller*> | Kullanılacak bağlantı protokolleri. Örneğin, NSG kurallarını kullanıyorsanız **, yalnızca TCP** değil **TCP** ve **UDP**' yi seçin. |
    | **Kaynak adresler** | <*ISE-alt ağ-adresler*> | ISE 'nin çalıştığı ve mantıksal uygulamanızdan gelen trafiğin kaynaklandığı alt ağ IP adresleri |
    | **Hedef adresler** | <*hedef-IP adresi*> | Giden trafiğin gitmesini istediğiniz hedef sisteminizin IP adresi. Bu örnekte, bu IP adresi SFTP sunucusu içindir. |
    | **Hedef bağlantı noktaları** | <*hedef bağlantı noktaları*> | Hedef sisteminizin gelen iletişim için kullandığı bağlantı noktaları |
@@ -95,7 +95,7 @@ Bu konu başlığı altında, giden trafiğin bir Azure Güvenlik Duvarı üzeri
 
    * [Ağ kuralını yapılandırma](../firewall/tutorial-firewall-deploy-portal.md#configure-a-network-rule)
    * [Azure Güvenlik Duvarı kural işleme mantığı](../firewall/rule-processing.md#network-rules-and-applications-rules)
-   * [Azure Güvenlik Duvarı hakkında SSS](../firewall/firewall-faq.md)
+   * [Azure Güvenlik Duvarı hakkında SSS](../firewall/firewall-faq.yml)
    * [Azure PowerShell: New-AzFirewallNetworkRule](/powershell/module/az.network/new-azfirewallnetworkrule)
    * [Azure CLı: az Network Firewall Network-Rule](/cli/azure/ext/azure-firewall/network/firewall/network-rule?view=azure-cli-latest#ext-azure-firewall-az-network-firewall-network-rule-create)
 

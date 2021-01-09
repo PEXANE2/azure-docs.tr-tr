@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: e451171859efc49753131b145642aec4864db45d
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 089b1b6f1af2f19c16866858324bde2e151e8bdb
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015678"
+ms.locfileid: "98052926"
 ---
 | Kaynak | Temel | Standart | Premium |
 |---|---|---|---|
@@ -38,7 +38,7 @@ ms.locfileid: "98015678"
 | &bull; Kapsam başına depo eşleme | Yok | Yok | 500 |
 
 
-<sup>1</sup> depolama her katman için günlük fiyata dahildir. Ek depolama alanı, kayıt defteri depolama sınırına kadar, GiB başına ek günlük ücretle kullanılabilir. Hız bilgileri için bkz. [Azure Container Registry fiyatlandırması][pricing].
+<sup>1</sup> depolama her katman için günlük fiyata dahildir. Ek depolama alanı, kayıt defteri depolama sınırına kadar, GiB başına ek günlük ücretle kullanılabilir. Hız bilgileri için bkz. [Azure Container Registry fiyatlandırması][pricing]. Kayıt defteri depolama sınırının ötesinde depolamaya ihtiyacınız varsa lütfen Azure desteğine başvurun.
 
 <sup>2</sup>*readops*, *writeops* ve *bant genişliği* minimum tahminlerdir. Azure Container Registry, kullanım gerektirdiğinden performansı artırmak için çaba harcar.
 

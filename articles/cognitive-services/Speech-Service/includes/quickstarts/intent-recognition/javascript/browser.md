@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: 4ac8ae4fd4218bbf74bbb6760d8344096c214a76
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 77fab9c4a52a1d54f548dfbcb35e351195d13bd9
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97820615"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98052722"
 ---
 ## <a name="start-with-some-boilerplate-code"></a>Bazı demirbaş kodla başlayın
 
@@ -187,6 +187,13 @@ Buraya bu kodu ekleyin `IntentRecognizer` . `"YourLanguageUnderstandingAppId"`Lu
           recognizer.addAllIntents(lm);
         }
 ```
+
+> [!NOTE]
+> FromEndpoint yöntemine bir uç nokta URL 'SI geçirerek bir LanguageUnderstandingModel oluşturabilirsiniz.
+> Konuşma SDK 'Sı yalnızca LUSıS v 2.0 uç noktalarını destekler ve LUıN v 2.0 uç noktaları şu iki desenden birini her zaman izler:
+> * `https://{AzureResourceName}.cognitiveservices.azure.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
+> * `https://{Region}.api.cognitive.microsoft.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
+
 ## <a name="recognize-an-intent"></a>Amacı tanıma
 
 `IntentRecognizer`Nesnesinden yöntemi çağıracağız `recognizeOnceAsync()` . Bu yöntem, konuşma hizmetinin tanıma için tek bir tümcecik gönderdiğini ve bu ifadenin konuşmayı tanımayı durdur olarak belirlenmesinin ardından olduğunu bilmesini sağlar.

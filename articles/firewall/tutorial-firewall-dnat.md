@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 71eda40abd38b4885b8e88085e338667b608902f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 281d0587ca4c041c7149e49aad6227f6dc0b7fbf
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655145"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050876"
 ---
 # <a name="tutorial-filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak gelen Internet trafiğini Azure Güvenlik Duvarı ile filtreleme DNAT
 
 Alt ağlarınıza gelen internet trafiğini çevirmek ve filtrelemek için Azure Güvenlik Duvarı Hedef Ağ Adresi Çevirisi’ni (DNAT) yapılandırabilirsiniz. DNAT yapılandırdığınızda, NAT kuralı toplama eylemi **DNAT** olarak ayarlanır. Daha sonra NAT kural koleksiyonundaki her kural, güvenlik duvarı ortak IP'nizi ve bağlantı noktanızı özel bir IP'ye ve bağlantı noktasına çevirmek için kullanılabilir. DNAT kuralları, çevrilen trafiğe izin verecek ilgili ağ kuralını örtük olarak ekler. Bu davranışı, çevrilen trafikle eşleşen reddetme kuralları olan bir ağ kural koleksiyonunu açıkça ekleyerek geçersiz kılabilirsiniz. Azure Güvenlik Duvarı kural işleme mantığı hakkında daha fazla bilgi için bkz: [Azure Güvenlik Duvarı kural işleme mantığı](rule-processing.md).
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Test amaçlı ağ ortamı oluşturma
@@ -56,7 +56,7 @@ Bu öğretici için eşlenen iki sanal ağ oluşturuyorsunuz:
 
 1. Azure portal giriş sayfasında, **tüm hizmetler**' i seçin.
 2. **Ağ** altında **sanal ağlar**' ı seçin.
-3. **Ekle**'yi seçin.
+3. **Ekle**’yi seçin.
 4. **Ad** için **VN-Hub** yazın.
 5. **Adres alanı** için **10.0.0.0/16** yazın.
 6. **Abonelik** bölümünde aboneliğinizi seçin.
@@ -66,7 +66,7 @@ Bu öğretici için eşlenen iki sanal ağ oluşturuyorsunuz:
 
      Güvenlik duvarı bu alt ağda yer alacaktır ve alt ağ adının **mutlaka** AzureFirewallSubnet olması gerekir.
      > [!NOTE]
-     > AzureFirewallSubnet alt ağının boyutu/26 ' dır. Alt ağ boyutu hakkında daha fazla bilgi için bkz. [Azure Güvenlik DUVARı SSS](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
+     > AzureFirewallSubnet alt ağının boyutu/26 ' dır. Alt ağ boyutu hakkında daha fazla bilgi için bkz. [Azure Güvenlik DUVARı SSS](firewall-faq.yml#why-does-azure-firewall-need-a--26-subnet-size).
 
 10. **Adres aralığı** için **10.0.1.0/26** yazın.
 11. Diğer varsayılan ayarları kullanın ve **Oluştur**' u seçin.
@@ -75,7 +75,7 @@ Bu öğretici için eşlenen iki sanal ağ oluşturuyorsunuz:
 
 1. Azure portal giriş sayfasında, **tüm hizmetler**' i seçin.
 2. **Ağ** altında **sanal ağlar**' ı seçin.
-3. **Ekle**'yi seçin.
+3. **Ekle**’yi seçin.
 4. **Ad** için **VN-Spoke** yazın.
 5. **Adres alanı** için **192.168.0.0/16** yazın.
 6. **Abonelik** bölümünde aboneliğinizi seçin.
@@ -93,7 +93,7 @@ Bu öğretici için eşlenen iki sanal ağ oluşturuyorsunuz:
 
 1. **Vn hub** sanal ağını seçin.
 2. **Ayarlar** altında, eşlemeler ' **i seçin.**
-3. **Ekle**'yi seçin.
+3. **Ekle**’yi seçin.
 4. **VN-Hub eşleme adının VN-ışınsal-kol adına** **eşdüzey-hubışınsal** yazın.
 5. Sanal ağ olarak **VN-Spoke**’u seçin.
 6. **VN-Spoke eşleme adı için, VN-hub ' a** **eş-spokehub** yazın.
@@ -154,7 +154,7 @@ Dağıtım bittikten sonra sanal makineyle ilişkili özel IP adresini not alın
    |Bir sanal ağ seçin     |**Var olanı kullan**: VN-Hub|
    |Genel IP adresi     |**Yeni oluştur**. Genel IP adresinin türü Standart SKU olmalıdır.|
 
-5. **Gözden geçir + oluştur**’u seçin.
+5. **Gözden geçir ve oluştur**’u seçin.
 6. Özeti gözden geçirin ve ardından güvenlik duvarını oluşturmak için **Oluştur** ' u seçin.
 
    Dağıtma işlemi birkaç dakika sürebilir.
@@ -167,7 +167,7 @@ Dağıtım bittikten sonra sanal makineyle ilişkili özel IP adresini not alın
 
 1. Azure portal giriş sayfasında, **tüm hizmetler**' i seçin.
 2. **Ağ** altında, **Rota tabloları**' nı seçin.
-3. **Ekle**'yi seçin.
+3. **Ekle**’yi seçin.
 4. **Ad** için **RT-FWroute** yazın.
 5. **Abonelik** bölümünde aboneliğinizi seçin.
 6. **Kaynak grubu** için **Var olanı kullan**’ı ve **RG-DNAT-Test** girişini seçin.
@@ -201,7 +201,7 @@ Dağıtım bittikten sonra sanal makineyle ilişkili özel IP adresini not alın
 10. **Hedef bağlantı noktaları** için **3389** yazın. 
 11. **Çevrilmiş Adres** için Srv-Workload sanal makinesinin özel IP adresini yazın. 
 12. **Çevrilmiş bağlantı noktası** için **3389** yazın. 
-13. **Ekle**'yi seçin. 
+13. **Ekle**’yi seçin. 
 
 ## <a name="test-the-firewall"></a>Güvenlik duvarını test etme
 

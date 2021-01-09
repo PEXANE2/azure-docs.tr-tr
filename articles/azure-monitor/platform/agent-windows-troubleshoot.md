@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 3d99293ea83c883f8d0870d78dfbec58f74c9bd1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e2531d511193586ef4605cc3732968b6db28d9f
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87927326"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050570"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Windows için Log Analytics aracısıyla ilgili sorunları giderme 
 
@@ -22,9 +22,43 @@ Bu adımlardan hiçbiri sizin için çalışmazsa, aşağıdaki destek kanallar�
 * Azure destek sözleşmeleri olan müşteriler [Azure Portal](https://manage.windowsazure.com/?getsupport=true)bir destek talebi açabilir.
 * Gönderilen fikirleri ve hataları gözden geçirmek [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) veya yeni bir dosya göndermek için Log Analytics geri bildirim sayfasını ziyaret edin. 
 
+## <a name="log-analytics-troubleshooting-tool"></a>Log Analytics sorun giderme aracı
+
+Log Analytics Agent Windows sorun giderme aracı, Log Analytics aracısındaki sorunları bulmaya ve tanılamaya yardımcı olmak üzere tasarlanan bir PowerShell betikleri koleksiyonudur. Yükleme sonrasında aracıya otomatik olarak eklenir. Aracın çalıştırılması, bir sorunu tanılamada ilk adım olmalıdır.
+
+### <a name="how-to-use"></a>Nasıl kullanılır?
+1. Log Analytics aracısının yüklendiği makinede PowerShell komut istemi ' ni yönetici olarak açın.
+1. Aracın bulunduğu dizine gidin.
+   * `cd "C:\Program Files\Microsoft Monitoring Agent\Agent\Troubleshooter"`
+1. Şu komutu kullanarak ana betiği yürütün:
+   * `.\GetAgentInfo.ps1`
+1. Bir sorun giderme senaryosu seçin.
+1. Konsolundaki yönergeleri izleyin. (Note: izleme günlükleri adımları, günlük toplamayı durdurmak için el ile müdahale gerektirir. Sorunun reproducibility temel alınarak, süre için bekleyin ve ' günlük toplamayı durdurmak ve sonraki adıma geçmek için ' a basın.
+
+   Sonuç dosyasının konumları tamamlandığında günlüğe kaydedilir ve yeni bir Gezgin penceresi açılır.
+
+### <a name="installation"></a>Yükleme
+Sorun giderme aracı, Log Analytics Agent derleme 10.20.18053.0 ve sonraki sürümleri yüklendikten sonra otomatik olarak eklenir.
+
+### <a name="scenarios-covered"></a>Kapsanan senaryolar
+Sorun giderme aracı tarafından denetlenen senaryoların listesi aşağıda verilmiştir:
+
+- Aracı veri veya sinyal verisi bildirmiyor
+- Aracı uzantısı dağıtım başarısız
+- Aracı çökme
+- Yüksek CPU/bellek kullanan aracı
+- Yükleme/kaldırma sorunları
+- Özel Günlükler sorunu
+- OMS ağ geçidi sorunu
+- Performans sayaçları sorunu
+- Tüm günlükleri topla
+
+>[!NOTE]
+>Sorun yaşıyorsanız lütfen sorun giderme aracını çalıştırın. Bir bilet açarken, başlangıçta, destek ekibimizin sorununuzu daha hızlı gidermelerine büyük ölçüde yardımcı olur.
+
 ## <a name="important-troubleshooting-sources"></a>Önemli sorun giderme kaynakları
 
- Aracı, Windows için Log Analytics aracısıyla ilgili sorunları gidermeye yardımcı olmak üzere olayları Windows olay günlüğü 'ne özel olarak *uygulama ve Services\Operations Manager*altında günlüğe kaydeder.  
+ Aracı, Windows için Log Analytics aracısıyla ilgili sorunları gidermeye yardımcı olmak üzere olayları Windows olay günlüğü 'ne özel olarak *uygulama ve Services\Operations Manager* altında günlüğe kaydeder.  
 
 ## <a name="connectivity-issues"></a>Bağlantı sorunları
 
@@ -34,10 +68,10 @@ Güvenlik duvarının veya proxy 'nin aşağıdaki tabloda açıklanan bağlant�
 
 |Aracı Kaynağı|Bağlantı noktaları |Yön |HTTPS denetlemesini atlama|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Bağlantı noktası 443 |Outbound|Evet |  
-|*.oms.opinsights.azure.com |Bağlantı noktası 443 |Outbound|Evet |  
-|*.blob.core.windows.net |Bağlantı noktası 443 |Outbound|Evet |  
-|*. agentsvc.azure-automation.net |Bağlantı noktası 443 |Outbound|Evet |  
+|*.ods.opinsights.azure.com |Bağlantı noktası 443 |Giden|Evet |  
+|*.oms.opinsights.azure.com |Bağlantı noktası 443 |Giden|Evet |  
+|*.blob.core.windows.net |Bağlantı noktası 443 |Giden|Evet |  
+|*. agentsvc.azure-automation.net |Bağlantı noktası 443 |Giden|Evet |  
 
 Azure Kamu için gereken güvenlik duvarı bilgileri için bkz. [Azure Kamu Yönetimi](../../azure-government/compare-azure-government-global-azure.md#azure-monitor). Ortamınızdaki runbook 'ları veya yönetim çözümlerini kullanmak üzere otomasyon hizmetine bağlanmak ve kaydolmak için Azure Otomasyonu karma Runbook Worker kullanmayı planlıyorsanız, bağlantı noktası numarasına ve [ağınızı karma Runbook Worker Için yapılandırma](../../automation/automation-hybrid-runbook-worker.md#network-planning)bölümünde açıklanan URL 'lere erişimi olmalıdır. 
 
@@ -55,11 +89,11 @@ Aracının Azure Izleyici ile başarılı bir şekilde iletişim kurduğunu doğ
 
     Bilgisayar hizmetle başarılı bir şekilde iletişim kurduğundan sorgu bir sonuç döndürmelidir. Sorgu bir sonuç döndürmezse, önce aracının doğru çalışma alanına rapor verecek şekilde yapılandırıldığını doğrulayın. Doğru yapılandırılmışsa, adım 3 ' e ilerleyin ve Windows olay günlüğü 'nde, aracının Azure Izleyici ile iletişim kurmasını önlemek için hangi sorunun günlüğe kaydedilmesine neden olduğunu belirlemek için arama yapın.
 
-- Bir bağlantı sorununu belirlemek için başka bir yöntem **Testcloudconnectivity aracını çalıştırmıştır** . Araç varsayılan olarak *%systemroot%\Program Files\Microsoft Monitoring sagent*klasöründe aracı ile yüklenir. Yükseltilmiş bir komut isteminden klasöre gidin ve aracı çalıştırın. Araç sonuçları ve testin başarısız olduğunu vurgular (örneğin, engellenen belirli bir bağlantı noktası/URL ile ilgiliyse). 
+- Bir bağlantı sorununu belirlemek için başka bir yöntem **Testcloudconnectivity aracını çalıştırmıştır** . Araç varsayılan olarak *%systemroot%\Program Files\Microsoft Monitoring sagent* klasöründe aracı ile yüklenir. Yükseltilmiş bir komut isteminden klasöre gidin ve aracı çalıştırın. Araç sonuçları ve testin başarısız olduğunu vurgular (örneğin, engellenen belirli bir bağlantı noktası/URL ile ilgiliyse). 
 
     ![TestCloudConnection Aracı yürütme sonuçları](./media/agent-windows-troubleshoot/output-testcloudconnection-tool-01.png)
 
-- Modül, sistem durumu hizmeti ve **Event sources**hizmet Bağlayıcısı sistem sağlığı hizmeti olay kaynaklarına göre *Operations Manager* olay günlüğünü filtreleyin  -  *Health Service Modules*ve **Olay düzeyi** *uyarısı* *HealthService*ve *hata* ile filtreleyerek olayları aşağıdaki tablodan yazıp yazamadığına emin olun. *Service Connector* Bunlar, olası her olay için dahil edilen çözüm adımlarını gözden geçirin.
+- Modül, sistem durumu hizmeti ve hizmet Bağlayıcısı sistem sağlığı hizmeti olay kaynaklarına göre *Operations Manager* olay günlüğünü filtreleyin  -  ve **Olay düzeyi** *uyarısı* ve *hata* ile filtreleyerek olayları aşağıdaki tablodan yazıp yazamadığına emin olun.  Bunlar, olası her olay için dahil edilen çözüm adımlarını gözden geçirin.
 
     |Olay Kimliği |Kaynak |Açıklama |Çözüm |
     |---------|-------|------------|-----------|

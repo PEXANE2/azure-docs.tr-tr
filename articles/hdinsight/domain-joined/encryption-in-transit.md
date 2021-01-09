@@ -7,24 +7,24 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.openlocfilehash: ba1542d1bb10933edb34b697f1c81cc5e3e7f1c9
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 88a7a0240a4711bebad0ea9007caf6590436e371
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705379"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049788"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>Azure HDInsight için iletim sırasında IPSec şifrelemesi
 
 Bu makalede, Azure HDInsight küme düğümleri arasındaki iletişim için iletim sırasında Şifrelemenin uygulanması ele alınmaktadır.
 
-## <a name="background"></a>Arka plan
+## <a name="background"></a>Arka Plan
 
 Azure HDInsight, kurumsal verilerinizi güvenli hale getirmek için çeşitli güvenlik özellikleri sunar. Bu çözümler, çevre güvenliği, kimlik doğrulama, yetkilendirme, denetim, şifreleme ve uyumluluk gibi değerler altında gruplandırılır. Şifreleme, hem bekleyen hem de aktarım sırasında verilere uygulanabilir.
 
 Bekleyen şifreleme, Azure depolama hesaplarında sunucu tarafı şifrelemenin yanı sıra HDInsight kümenizin bir parçası olan Azure VM 'lerinde disk şifrelemesi de kapsamına alınmıştır.
 
-HDInsight 'ta geçiş sırasında verilerin şifrelenmesi, küme ağ geçitleri ve [Internet Protokolü güvenliğine (IPSec)](https://wikipedia.org/wiki/IPsec) küme düğümleri arasında erişmek Için [Aktarım KATMANı güvenliği (TLS)](../transport-layer-security.md) ile elde edilir. IPSec isteğe bağlı olarak tüm baş düğümler, çalışan düğümleri, kenar düğümleri ve Zookeeper düğümleri arasında etkinleştirilebilir. Windows tabanlı VM 'Ler ve kümedeki diğer Linux tabanlı düğümler olan ağ geçidi veya [kimlik Aracısı](./identity-broker.md) düğümleri arasındaki trafik için etkin değildir.
+HDInsight 'ta geçiş sırasında verilerin şifrelenmesi, küme ağ geçitleri ve [Internet Protokolü güvenliğine (IPSec)](https://wikipedia.org/wiki/IPsec) küme düğümleri arasında erişmek Için [Aktarım KATMANı güvenliği (TLS)](../transport-layer-security.md) ile elde edilir. IPSec isteğe bağlı olarak tüm baş düğümler, çalışan düğümleri, kenar düğümleri, Zookeeper düğümleri ve ağ geçidi ve [kimlik Aracısı](./identity-broker.md) düğümleri arasında etkinleştirilebilir.
 
 ## <a name="enable-encryption-in-transit"></a>İletimde şifrelemeyi etkinleştir
 

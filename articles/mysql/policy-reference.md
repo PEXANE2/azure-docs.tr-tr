@@ -1,18 +1,18 @@
 ---
 title: MySQL için Azure veritabanı 'nın yerleşik ilke tanımları
 description: MySQL için Azure veritabanı 'nın Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 11/20/2020
+ms.date: 01/08/2021
 ms.topic: reference
 author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 46a0e25b2672de5c663201ef44e457f164f3a534
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 57a1ffe3ec5412d3dce83723540c4460de106592
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985670"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051041"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda Azure Ilkesi yerleşik tanımları
 

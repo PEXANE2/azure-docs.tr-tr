@@ -3,21 +3,21 @@ title: PowerShell Galerisi 'de Azure Otomasyonu runbook 'larını ve modüllerin
 description: Bu makalede, Microsoft 'tan ve topluluk PowerShell Galerisi içindeki runbook 'ları ve modülleri nasıl kullanacağınız açıklanır.
 services: automation
 ms.subservice: process-automation
-ms.date: 12/17/2020
+ms.date: 01/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 26dfedf1961cf39645c3bcf3ce5fa2db6c14119e
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 590220782a7f43e785cc7885e68eefa99afb7d1d
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97682759"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049125"
 ---
 # <a name="use-runbooks-and-modules-in-powershell-gallery"></a>PowerShell Galerisi’nde runbook’ları ve modülleri kullanma
 
 Azure Otomasyonu 'nda kendi runbook 'larınızı ve modüllerinizi oluşturmak yerine, Microsoft ve Community tarafından önceden oluşturulmuş senaryolara erişebilirsiniz. Azure Otomasyonu GitHub kuruluşundaki PowerShell Galerisi ve [Python runbook](#use-python-runbooks) 'lardan PowerShell runbook 'ları ve [modülleri](#modules-in-powershell-gallery) alabilirsiniz. Ayrıca, [geliştirdiğiniz senaryoları](#add-a-powershell-runbook-to-the-gallery)paylaşarak topluluğa katkıda bulunabilirsiniz.
 
 > [!NOTE]
-> TechNet Betik Merkezi devre dışı bırakılıyor. Runbook galerisindeki betik merkezi 'ndeki tüm runbook 'lar [Otomasyon GitHub kuruluşumuza](https://github.com/azureautomation)taşındı.
+> TechNet Betik Merkezi devre dışı bırakılıyor. Runbook galerisindeki betik merkezi 'ndeki tüm runbook 'lar, daha fazla [bilgi için bkz](https://github.com/azureautomation) . [buraya](https://techcommunity.microsoft.com/t5/azure-governance-and-management/azure-automation-runbooks-moving-to-github/ba-p/2039337)bakın.
 
 ## <a name="runbooks-in-powershell-gallery"></a>PowerShell Galerisi runbook 'lar
 

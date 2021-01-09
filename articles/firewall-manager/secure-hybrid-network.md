@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 3d4d1e65c2200aee178abefb46d3e330acbd3108
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5d662efc927235711c4dd5e8a424d8775279c30b
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023695"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98048054"
 ---
 # <a name="tutorial-secure-your-hub-virtual-network-using-azure-firewall-manager"></a>Öğretici: Azure Güvenlik Duvarı Yöneticisi 'Ni kullanarak hub Sanal ağınızı güvenli hale getirme
 
@@ -30,7 +30,7 @@ Bu öğretici için üç sanal ağ oluşturursunuz:
 
 ![Hibrit ağ](media/tutorial-hybrid-portal/hybrid-network-firewall.png)
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Güvenlik duvarı ilkesi oluşturma
@@ -107,7 +107,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 ## <a name="create-the-firewall-hub-virtual-network"></a>Güvenlik Duvarı hub 'ı sanal ağını oluşturma
 
 > [!NOTE]
-> AzureFirewallSubnet alt ağının boyutu/26 ' dır. Alt ağ boyutu hakkında daha fazla bilgi için bkz. [Azure Güvenlik DUVARı SSS](../firewall/firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
+> AzureFirewallSubnet alt ağının boyutu/26 ' dır. Alt ağ boyutu hakkında daha fazla bilgi için bkz. [Azure Güvenlik DUVARı SSS](../firewall/firewall-faq.yml#why-does-azure-firewall-need-a--26-subnet-size).
 
 1. Azure portal giriş sayfasında, **kaynak oluştur**' u seçin.
 2. **Ağ** altında **sanal ağ**' ı seçin.
@@ -277,7 +277,7 @@ SpoketoHub eşlemesi için **iletilen trafiğe Izin ver** ' i etkinleştirmeniz 
 2. Sol sütunda, eşlemeler ' i **seçin.**
 3. **Spoketohub** eşlemesini seçin.
 4. **VNET hub 'ından sanal ağa yönlendirilen trafiğe Izin ver** altında, **etkin**' i seçin.
-5. **Kaydet**'i seçin.
+5. **Kaydet**’i seçin.
 
 ## <a name="create-the-routes"></a>Yolları oluşturma
 
@@ -431,7 +431,7 @@ Ardından, güvenlik duvarı kurallarının beklendiği gibi çalıştığını 
 2. **Ayarlar** altında **kurallar**' ı seçin.
 3. **Ağ kuralları** altında **RCNet01** kural koleksiyonunu seçin, üç nokta (...) simgesini seçin ve **Düzenle**' yi seçin.
 4. **Kural toplama eylemi** için **Reddet**' i seçin.
-5. **Kaydet**'i seçin.
+5. **Kaydet**’i seçin.
 
 Değiştirilen kuralları test etmeden önce **VM** 'deki mevcut uzak masaüstlerini ve tarayıcıları kapatın. Kural koleksiyonu güncelleştirmesi tamamlandıktan sonra, testleri yeniden çalıştırın. Bu kez tümü başarısız olmalıdır.
 

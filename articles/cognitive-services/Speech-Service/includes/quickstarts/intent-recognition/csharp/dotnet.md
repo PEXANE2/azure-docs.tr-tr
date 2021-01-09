@@ -7,14 +7,14 @@ ms.topic: include
 ms.author: trbye
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: b039ec76d1010d2bbb552b5c0e6437d9dfd17b6a
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 885751bf4f11312453245a02209f77b62b8344a4
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97966610"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98052745"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce:
 
@@ -73,6 +73,12 @@ Bir `LanguageUnderstandingModel` öğesini amaç tanıyıcı ile ilişkilendirme
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/intent-recognition/helloworld/Program.cs?range=33-35)]
 
 Bu örnek, `AddIntent()` tek tek amaçları eklemek için işlevini kullanır. Bir modelden tüm amaçları eklemek istiyorsanız `AddAllIntents(model)` modeli kullanın ve geçirin. 
+
+> [!NOTE]
+> FromEndpoint yöntemine bir uç nokta URL 'SI geçirerek bir LanguageUnderstandingModel oluşturabilirsiniz.
+> Konuşma SDK 'Sı yalnızca LUSıS v 2.0 uç noktalarını destekler ve LUıN v 2.0 uç noktaları şu iki desenden birini her zaman izler:
+> * `https://{AzureResourceName}.cognitiveservices.azure.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
+> * `https://{Region}.api.cognitive.microsoft.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
 
 ## <a name="recognize-an-intent"></a>Amacı tanıma
 

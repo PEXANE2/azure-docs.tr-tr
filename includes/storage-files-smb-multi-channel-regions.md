@@ -8,27 +8,25 @@ ms.topic: include
 ms.date: 09/16/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6fc70d92d08432de2fed99783d774d73463408ce
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ba62bf6b926ded5f3d976f096cee44c7341b4e50
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97532065"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98052846"
 ---
 Azure dosya paylaşımları için çok kanallı SMB Şu anda yalnızca şu bölgelerde kullanılabilir:
 
-- Doğu Avustralya
-- Brezilya Güney
-- Orta Kanada
-- Doğu Kanada
-- Orta Hindistan
-- Orta Fransa
-- Almanya Orta Batı
-- Doğu Japonya
-- Orta Kuzey ABD
-- Orta Güney ABD
-- BAE Kuzey
-- Güney Birleşik Krallık
-- Batı Birleşik Krallık
-- Orta Batı ABD
-- Batı Hindistan
+| Coğrafi bölge | Azure bölgesi |
+|-------------|-------------------|
+| Avustralya | Doğu Avustralya |
+| Brezilya | Brezilya Güney |
+| Kanada | Kanada Orta, Kanada Doğu |
+| Fransa | Orta Fransa |
+| Almanya | Almanya Orta Batı |
+| Hindistan | Orta Hindistan, Batı Hindistan |
+| Japonya | Japonya Doğu, Japonya Batı |
+| Güney Kore | Kore Orta, Kore Batı |
+| Birleşik Arap Emirlikleri | BAE Kuzey |
+| Birleşik Krallık | UK Güney, UK Batı |
+| Birleşik Devletler | Orta Kuzey ABD, Orta Güney ABD, Orta Batı ABD |

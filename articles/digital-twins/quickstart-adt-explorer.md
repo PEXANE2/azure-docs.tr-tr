@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: d42a32e236eb73f2aa9f2f61d9708314783564dd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f6bd6b13ab4a2e654bdabc86355f2c3388abed31
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187314"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050536"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Hızlı başlangıç-ADT Explorer kullanarak örnek bir Azure dijital TWINS senaryosunu araştırma
 
@@ -35,7 +35,7 @@ Hızlı başlangıç aşağıdaki önemli adımları içerir:
 
 :::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="Oklar ile bağlanmış dört dairesel düğüm tarafından oluşturulan grafiğin görünümü. ' Floor1 ' etiketli bir daire, ' Contains ' etiketli bir okla ' room1 ' etiketli bir daireye bağlanır. ' Floor0 ' etiketli bir daire, ' Contains ' etiketli bir okla ' Room0 ' etiketli bir daireye bağlanır. ' Floor1 ' ve ' Floor0 ' bağlı değil.":::
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için bir Azure aboneliğine sahip olmanız gerekir. Henüz bir tane yoksa, şimdi [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
@@ -55,7 +55,7 @@ Bu bölümün geri kalanında bu adımlarda adım adım gösterilmektedir.
 
 ### <a name="set-up-local-azure-credentials"></a>Yerel Azure kimlik bilgilerini ayarlama
 
-ADT Explorer uygulaması, [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) `Azure.Identity` Yerel makinenizde çalıştırdığınızda Azure dijital TWINS örneğiyle kullanıcıların kimliğini doğrulamak için DefaultAzureCredential (kitaplığın bir parçası) kullanır. İstemci uygulamasının Azure dijital TWINS ile kimlik doğrulaması yapabilme yolları hakkında daha fazla bilgi için bkz. [uygulama kimlik doğrulama kodu yazma](how-to-authenticate-client.md).
+ADT Explorer uygulaması, [](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) `Azure.Identity` Yerel makinenizde çalıştırdığınızda Azure dijital TWINS örneğiyle kullanıcıların kimliğini doğrulamak için DefaultAzureCredential (kitaplığın bir parçası) kullanır. İstemci uygulamasının Azure dijital TWINS ile kimlik doğrulaması yapabilme yolları hakkında daha fazla bilgi için bkz. [uygulama kimlik doğrulama kodu yazma](how-to-authenticate-client.md).
 
 Bu tür bir kimlik doğrulamasıyla, ADT Explorer yerel ortamınızda, yerel bir [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) veya Visual Studio veya Visual Studio Code bir Azure oturum açma gibi kimlik bilgilerini arar. Bu nedenle, ADT Explorer uygulamasının kimlik bilgilerini ayarlamak için bu mekanizmalardan biri aracılığıyla *yerel olarak Azure 'da oturum açmanız* gerekir.
 
@@ -251,9 +251,7 @@ Bu bölümde, ortamınızdaki kaç TWINS 'in 75 üzerinde sıcaklık olduğunu �
 
 Yanıtı görmek için **sorgu Gezgini** kutusunda aşağıdaki sorguyu çalıştırın.
 
-```SQL
-SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="TemperatureQuery":::
 
 Room0 'ın 70 sıcaklığını ve room1 80 sıcaklığını içeren ikizi özelliklerini görüntülemeyi geri çekin. Bu nedenle, sonuçlarda yalnızca room1 gösterilir.
     
@@ -284,9 +282,7 @@ Bu listedeki Özellikler düzenlenebilir. Yeni bir değer girmeyi etkinleştirme
 
 Grafiğin, Room0 için güncelleştirme sıcaklığını başarıyla kaydetdiğini doğrulamak için, daha önce sorguyu yeniden çalıştırın. Bu, ortamdaki tüm TWINS sürümlerini 75 ' ün üzerinde bir sıcaklık ile alır.
 
-```SQL
-SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="TemperatureQuery":::
 
 Room0 'ın sıcaklığı 70 olarak 76 ' e değiştiği için, her iki TWINS de sonuçta görünür.
 

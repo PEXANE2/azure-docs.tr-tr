@@ -1,20 +1,20 @@
 ---
 title: Depolama hesabına genel bakış
 titleSuffix: Azure Storage
-description: Azure depolama 'daki depolama hesaplarına genel bakış konusunu okuyun. Hesap adlandırma, performans katmanları, erişim katmanları, artıklık, şifreleme, uç noktalar ve daha fazlasını inceleyin.
+description: Azure depolama 'da farklı depolama hesabı türleri hakkında bilgi edinin. Hesap adlandırma, performans katmanları, erişim katmanları, artıklık, şifreleme, uç noktalar ve daha fazlasını inceleyin.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/11/2020
+ms.date: 01/08/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 2c9c4cd643e2e4b89f9a7d8f44a6569d0dde2b37
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 5cf43310c68c8446b9465a39d85f84c8273a68d8
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357390"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051233"
 ---
 # <a name="storage-account-overview"></a>Depolama hesabına genel bakış
 
@@ -24,7 +24,40 @@ Azure depolama hesabı oluşturma hakkında bilgi edinmek için bkz. [Depolama h
 
 ## <a name="types-of-storage-accounts"></a>Depolama hesabı türleri
 
-[!INCLUDE [storage-account-types-include](../../../includes/storage-account-types-include.md)]
+Azure depolama, birkaç depolama hesabı türü sunar. Her tür farklı özellikleri destekler ve kendi fiyatlandırma modeline sahiptir. Uygulamalarınız için en iyi hesap türünü belirleyebilmek üzere bir depolama hesabı oluşturmadan önce bu farklılıkları göz önünde bulundurun. Depolama hesaplarının türleri şunlardır:
+
+- **Genel amaçlı v2 hesapları**: Bloblar, dosyalar, kuyruklar ve tablolar için temel depolama hesabı türü. Azure Storage kullanan çoğu senaryo için önerilir.
+- **Genel amaçlı v1 hesapları**: Bloblar, dosyalar, kuyruklar ve tablolar için eski hesap türü. Mümkün olduğunda bunun yerine genel amaçlı v2 hesaplarını kullanın.
+- **Blockblobstorage hesapları**: blok Blobları ve ekleme Blobları için Premium performans özelliklerine sahip depolama hesapları. Yüksek işlem ücretleri olan senaryolar veya daha küçük nesneler kullanan veya tutarlı depolama gecikme süresi gerektiren senaryolar için önerilir.
+- **FileStorage hesapları**: yalnızca dosyalar, Premium performans özelliklerine sahip depolama hesaplarıdır. Kurumsal veya yüksek performanslı ölçekli uygulamalar için önerilir.
+- **Blobstorage hesapları**: eski BLOB depolama hesapları. Mümkün olduğunda bunun yerine genel amaçlı v2 hesaplarını kullanın.
+
+Aşağıdaki tabloda depolama hesabı türleri, destekledikleri hizmetler ve her hesap türü için desteklenen dağıtım modelleri açıklanmaktadır:
+
+| Depolama hesabı türü | Desteklenen hizmetler | Artıklık seçenekleri | Dağıtım modeli<sup>1</sup> |
+|--|--|--|--|
+| Genel amaçlı v2 | Blob, dosya, kuyruk, tablo, disk ve Data Lake Gen2<sup>2</sup> | LRS, GRS, RA-GRS, ZRS, GZRS, RA-GZRS<sup>3</sup> | Resource Manager |
+| Genel amaçlı v1 | Blob, dosya, kuyruk, tablo ve disk | LRS, GRS, RA-GRS | Kaynak Yöneticisi, klasik |
+| BlockBlobStorage | Blob (yalnızca blok Blobları ve ekleme Blobları) | LRS, ZRS<sup>3</sup> | Resource Manager |
+| Dosya depolama | Yalnızca dosya | LRS, ZRS<sup>3</sup> | Resource Manager |
+| BlobStorage | Blob (yalnızca blok Blobları ve ekleme Blobları) | LRS, GRS, RA-GRS | Resource Manager |
+
+<sup>1</sup> Azure Resource Manager dağıtım modelinin kullanılması önerilir. Klasik dağıtım modelini kullanan depolama hesapları bazı konumlarda hala oluşturulabilir ve klasik mevcut hesaplar desteklenmeye devam eder. Daha fazla bilgi için bkz [. Azure Resource Manager ile klasik dağıtım: dağıtım modellerini ve kaynaklarınızın durumunu anlayın](../../azure-resource-manager/management/deployment-models.md).
+
+<sup>2</sup> Azure Data Lake Storage 2., Azure Blob depolama üzerinde oluşturulmuş, büyük veri analizi için adanmış bir yetenekler kümesidir. Data Lake Storage 2. yalnızca hiyerarşik ad alanı etkin olan genel amaçlı v2 depolama hesaplarında desteklenir. Data Lake Storage 2. hakkında daha fazla bilgi için bkz. [Azure Data Lake Storage 2. giriş](../blobs/data-lake-storage-introduction.md).
+
+<sup>3</sup> Bölgesel olarak yedekli depolama (ZRS) ve coğrafi bölge yedekli depolama (GZRS/RA-GZRS) yalnızca belirli bölgelerde standart genel amaçlı v2, blok Blobdepolama ve dosya depolama hesapları için kullanılabilir. Azure depolama artıklığı seçenekleri hakkında daha fazla bilgi için bkz. [Azure depolama artıklığı](storage-redundancy.md).
+
+### <a name="storage-account-redundancy"></a>Depolama hesabı artıklığı
+
+Depolama hesabı için artıklık seçenekleri şunlardır:
+
+- **Yerel olarak yedekli depolama (LRS)**: basit, düşük maliyetli bir artıklık stratejisi. Veriler, birincil bölgedeki tek bir fiziksel konum içinde zaman uyumlu olarak üç kez kopyalanır.
+- Bölgesel olarak **yedekli depolama (ZRS)**: yüksek kullanılabilirlik gerektiren senaryolar için artıklık. Veriler, birincil bölgedeki üç Azure kullanılabilirlik bölgesi arasında zaman uyumlu olarak kopyalanır.
+- **Coğrafi olarak yedekli depolama (GRS)**: bölgesel kesintilere karşı korumak için çapraz bölgesel yedeklilik. Veriler birincil bölgede zaman uyumlu olarak üç kez kopyalanır ve ardından zaman uyumsuz olarak ikincil bölgeye kopyalanır. İkincil bölgedeki verilere yönelik okuma erişimi için Okuma Erişimli Coğrafi olarak yedekli depolamayı (RA-GRS) etkinleştirin.
+- **Coğrafi bölge yedekli depolama (GZRS)**: hem yüksek kullanılabilirlik hem de en yüksek dayanıklılık gerektiren senaryolar için artıklık. Veriler, birincil bölgedeki üç Azure kullanılabilirlik bölgesi arasında zaman uyumlu olarak kopyalanır ve sonra zaman uyumsuz olarak ikincil bölgeye kopyalanır. İkincil bölgedeki verilere yönelik okuma erişimi için, Okuma Erişimli Coğrafi bölge yedekli depolamayı (RA-GZRS) etkinleştirin.
+
+Azure depolama 'daki artıklık seçenekleri hakkında daha fazla bilgi için bkz. [Azure Storage yedekliği](storage-redundancy.md).
 
 ### <a name="general-purpose-v2-accounts"></a>Genel amaçlı v2 hesapları
 
@@ -83,7 +116,17 @@ Depolama hesabınızı adlandırırken şu kuralları göz önünde bulundurun:
 
 ## <a name="performance-tiers"></a>Performans katmanları
 
-Oluşturduğunuz depolama hesabının türüne bağlı olarak, standart ve Premium performans katmanları arasından seçim yapabilirsiniz.
+Oluşturduğunuz depolama hesabının türüne bağlı olarak, standart ve Premium performans katmanları arasından seçim yapabilirsiniz. Aşağıdaki tabloda, hangi depolama hesabı türü için kullanılabilen performans katmanları özetlenmektedir.
+
+| Depolama hesabı türü | Desteklenen performans katmanları |
+|--|--|
+| Genel amaçlı v2 | Standart, Premium<sup>1</sup> |
+| Genel amaçlı v1 | Standart, Premium<sup>1</sup> |
+| BlockBlobStorage | Premium |
+| Dosya depolama | Premium |
+| BlobStorage | Standart |
+
+<sup>1</sup> Genel amaçlı v2 ve genel amaçlı v1 hesapları için Premium performans, yalnızca disk ve Sayfa Blobu için kullanılabilir. Blok veya ekleme Blobları için Premium performans yalnızca blok Blobstorage hesaplarında kullanılabilir. Dosyalar için Premium performans yalnızca FileStorage hesaplarında kullanılabilir.
 
 ### <a name="general-purpose-storage-accounts"></a>Genel amaçlı depolama hesapları
 
@@ -112,12 +155,20 @@ Kullanılabilir erişim katmanları şunlardır:
 
 Verilerinizin kullanım düzeninde bir değişiklik varsa, bu erişim katmanları arasında istediğiniz zaman geçiş yapabilirsiniz. Erişim katmanları hakkında daha fazla bilgi için bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](../blobs/storage-blob-storage-tiers.md).
 
+Aşağıdaki tabloda, her bir depolama hesabı türünde Bloblar için hangi erişim katmanlarının kullanılabildiği gösterilmektedir.
+
+| Depolama hesabı türü | Desteklenen erişim katmanları |
+|--|--|
+| Genel amaçlı v2 | Sık erişimli, seyrek erişimli arşiv<sup>1</sup> |
+| Genel amaçlı v1 | Yok |
+| BlockBlobStorage | Yok |
+| Dosya depolama | Yok |
+| BlobStorage | Sık erişimli, seyrek erişimli arşiv<sup>1</sup> |
+
+<sup>1</sup> arşiv depolama ve BLOB düzeyinde katmanlama yalnızca blok bloblarını destekler. Arşiv katmanı, depolama hesabı düzeyinde değil yalnızca tek bir blob düzeyinde kullanılabilir. Daha fazla bilgi için bkz. [Azure Blob depolama Için erişim katmanları-sık erişimli, seyrek erişimli ve arşiv](../blobs/storage-blob-storage-tiers.md).
+
 > [!IMPORTANT]
-> Mevcut bir depolama hesabı veya Blobun erişim katmanını değiştirmek ek ücretler elde edebilir. Daha fazla bilgi için [depolama hesabı faturalama bölümüne](#storage-account-billing)bakın.
-
-## <a name="redundancy"></a>Yedeklilik
-
-[!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
+> Mevcut bir depolama hesabı veya Blobun erişim katmanını değiştirmek ek ücretler elde edebilir. Daha fazla bilgi için bkz. [depolama hesabı faturalandırması](#storage-account-billing).
 
 ## <a name="encryption"></a>Şifreleme
 
@@ -127,13 +178,15 @@ Depolama hesabınızdaki tüm veriler hizmet tarafında şifrelenir. Şifreleme 
 
 Depolama hesabı, Azure 'da verileriniz için benzersiz bir ad alanı sağlar. Azure Storage 'da depoladığınız her nesnenin benzersiz hesap adınızı içeren bir adresi vardır. Hesap adı ve Azure depolama hizmeti uç noktası birleşimi, depolama hesabınız için uç noktaları oluşturur.
 
-Örneğin, genel amaçlı depolama hesabınız *mystorageaccount* olarak adlandırılmışsa, bu hesaba ait varsayılan uç noktalar şunlardır:
+Aşağıdaki tabloda, Azure Depolama hizmetlerinin her biri için uç noktalar listelenmektedir.
 
-- BLOB depolama alanı: `https://*mystorageaccount*.blob.core.windows.net`
-- Tablo Depolama: `https://*mystorageaccount*.table.core.windows.net`
-- Kuyruk depolama: `https://*mystorageaccount*.queue.core.windows.net`
-- Azure dosyaları: `https://*mystorageaccount*.file.core.windows.net`
-- Azure Data Lake Storage 2.: `https://*mystorageaccount*.dfs.core.windows.net` ( [büyük veriler için özel olarak Iyileştirilmiş ABFS sürücüsünü](../blobs/data-lake-storage-introduction.md#key-features-of-data-lake-storage-gen2)kullanır.)
+| Depolama hizmeti | Uç Nokta |
+|--|--|
+| Blob depolama | `https://<storage-account>.blob.core.windows.net` |
+| Azure Data Lake Storage Gen2 | `https://<storage-account>.dfs.core.windows.net` |
+| Azure Dosyaları | `https://<storage-account>.file.core.windows.net` |
+| Kuyruk depolama | `https://<storage-account>.queue.core.windows.net` |
+| Tablo depolama | `https://<storage-account>.table.core.windows.net` |
 
 > [!NOTE]
 > Blok Blobu ve BLOB depolama hesapları yalnızca blob hizmeti uç noktasını kullanıma sunar.
@@ -184,7 +237,17 @@ Azure depolama REST API hakkında daha fazla bilgi için bkz. [Azure Storage Ser
 
 ## <a name="storage-account-billing"></a>Depolama hesabı faturalama
 
-[!INCLUDE [storage-account-billing-include](../../../includes/storage-account-billing-include.md)]
+Azure depolama, depolama hesabı kullanımınıza göre faturalandırılır. Depolama hesabındaki tüm nesneler bir grup halinde faturalandırılır. Depolama maliyetleri aşağıdaki etkenlere göre hesaplanır:
+
+- **Bölge** , hesabınızın dayandığı coğrafi bölgeyi ifade eder.
+- **Hesap türü** , kullanmakta olduğunuz depolama hesabının türünü belirtir.
+- **Erişim katmanı** , genel amaçlı v2 veya blob depolama hesabınız için belirttiğiniz veri kullanımı modelini ifade eder.
+- **Kapasite** , veri depolamak için kullandığınız depolama hesabı servis biriminden ne kadarının olduğunu ifade eder.
+- **Çoğaltma** , verilerinizin kaç kopyasının aynı anda ve hangi konumlarda tutulmasını belirler.
+- **İşlemler** , Azure depolama 'ya yönelik tüm okuma ve yazma işlemlerine başvurur.
+- **Veri** çıkışı, bir Azure bölgesinden aktarılan tüm verileri ifade eder. Depolama hesabınızdaki verilere aynı bölgede çalışmayan bir uygulama tarafından erişildiğinde, veri çıkışı için ücretlendirilirsiniz. Kaynak gruplarını, çıkış ücretlerini sınırlandırmak için aynı bölgedeki veri ve hizmetlerinizi gruplandırmak üzere kullanma hakkında bilgi için bkz. [Azure Kaynak grubu nedir?](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management#what-is-an-azure-resource-group).
+
+[Azure Storage Fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/) sayfası hesap türüne, depolama kapasitesine, çoğaltmaya ve işlemlere bağlı olarak ayrıntılı fiyatladırma bilgileri sağlar. [Veri Aktarımları Fiyatlandırma Ayrıntıları](https://azure.microsoft.com/pricing/details/data-transfers/), veri çıkışı için ayrıntılı fiyatlandırma bilgileri sağlar. Maliyetlerinizi tahmin etmeye yardımcı olması için [Azure Storage Fiyatlandırması Hesaplayıcısı](https://azure.microsoft.com/pricing/calculator/?scenario=data-management)’nı kullanabilirsiniz.
 
 [!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 

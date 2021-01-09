@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/23/2020
-ms.openlocfilehash: a6f8b79ecc8dcac71dc8f5d1be2bb58a0288a307
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.date: 01/08/2021
+ms.openlocfilehash: 3f5c3400f319a3f9d5f1544457b009f90d479634
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760343"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049839"
 ---
 # <a name="how-to-choose-between-provisioned-throughput-and-serverless"></a>Sağlanan aktarım hızı ve sunucusuz arasından seçim yapma
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -25,11 +25,11 @@ Azure Cosmos DB iki farklı kapasite modunda kullanılabilir: [sağlanan aktarı
 | Ölçütler | Sağlanan aktarım hızı | Sunucusuz |
 | --- | --- | --- |
 | Durum | Genel kullanıma sunuldu | Önizlemede |
-| En uygun | Tahmin edilebilir performans gerektiren görev açısından kritik iş yükleri | Tahmine dayalı hafif ve aralıklı trafik içeren küçük ve orta ölçekli iş yükleri |
+| En uygun | Öngörülebilir performans gerektiren sürekli trafiği olan iş yükleri | Aralıklı veya öngörülemeyen trafik ve düşük ortalama-yoğun trafik oranına sahip iş yükleri |
 | Nasıl çalışır? | Kapsayıcılarınızın her biri için, saniye başına [Istek birimi](request-units.md) cinsinden ifade edilen bazı üretilen iş miktarı sağlayabilirsiniz. Her saniye, veritabanı işlemleriniz için bu Istek birimi miktarı kullanılabilir. Sağlanan üretilen iş, el ile veya otomatik [ölçeklendirme](provision-throughput-autoscale.md)ile ayarlanabilir. | Veritabanı işlemlerinizi herhangi bir kapasite sağlamak zorunda kalmadan kapsayıcılarınıza karşı çalıştırırsınız. |
 | Coğrafi dağıtım | Kullanılabilir (sınırsız sayıda Azure bölgesi) | Kullanılamıyor (sunucusuz hesaplar yalnızca 1 Azure bölgesinde çalışabilir) |
 | Kapsayıcı başına en fazla depolama alanı | Sınırsız | 50 GB |
-| Performans | SLA kapsamındaki% 99,99 ile% 99,999 kullanılabilirlik<br>SLA tarafından kapsanan nokta okuma ve yazma işlemleri için 10 ms gecikme <<br>SLA kapsamındaki% 99,99 garanti edilen aktarım hızı | SLA kapsamındaki% 99,9 ile% 99,99 kullanılabilirlik<br><, SLO tarafından kapsanan yazma işlemleri için nokta okuma ve < 30 MS için 10 ms gecikme süresi<br>SLO tarafından kapsanan %95 burkararlılığı |
+| Performans | SLA tarafından kapsanan nokta okuma ve yazma işlemleri için 10 ms gecikme < | <, SLO tarafından kapsanan yazma işlemleri için nokta okuma ve < 30 MS için 10 ms gecikme süresi |
 | Faturalama modeli | Faturalandırma, ne kadar RUs tüketildiğine bakılmaksızın, sağlanan RU/s için saat başına yapılır. | Faturalama, veritabanı işlemlerinizin kullandığı RUs miktarı için saatlik olarak gerçekleştirilir. |
 
 > [!IMPORTANT]
