@@ -7,21 +7,21 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 052fd0ea7619d566e78806580ee7b39e49cc85d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d14ae86d41caec3c1bd897c2c81bee748dcc312c
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448614"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050893"
 ---
-# <a name="azure-monitor-insights-for-virtual-wan-preview"></a>Sanal WAN için Azure Izleyici öngörüleri (Önizleme)
+# <a name="azure-monitor-insights-for-virtual-wan"></a>Sanal WAN için Azure Izleyici öngörüleri
 
 Azure sanal WAN için [Azure Monitor Insights](../azure-monitor/insights/network-insights-overview.md) , kullanıcılara ve operatörlere, bir oto keşfedilen topik Haritası aracılığıyla sunulan BIR sanal WAN 'ın durumunu ve durumunu görüntüleme olanağı sağlar. Haritadaki kaynak durumu ve durum kaplamaları, sanal WAN 'ın genel durumunun anlık görüntüsünü sunar. Sanal WAN portalının kaynak yapılandırma sayfalarına tek bir tıklama erişimi aracılığıyla haritadaki kaynaklara gidebilirsiniz.
 
 Sanal WAN kaynak düzeyi ölçümleri toplanır ve önceden paketlenmiş bir sanal WAN ölçümleri çalışma kitabı aracılığıyla sunulur. Çalışma kitabı, sanal WAN, hub, ağ geçidi ve bağlantı düzeylerindeki ölçümleri gösterir. Bu makale, sanal WAN topolojinizi ve ölçümlerini tek bir yerde görüntülemek için sanal WAN için Azure Izleyici öngörülerini kullanma adımlarında size yol gösterir.
 
 > [!NOTE]
-> Sanal WAN portalındaki **Öngörüler** menü seçeneği şu anda kullanıma alındı. Bu menü kullanıma alınırken, ağlar için Azure Izleyici 'yi kullanarak sanal WAN topolojisi ve ölçüm çalışma kitabına erişebilirsiniz. Daha fazla bilgi için bkz. [ağlar Için Azure izleyici](../azure-monitor/insights/network-insights-overview.md). 
+> **Öngörüler** menü seçeneği, **Izleme** altındaki sanal WAN portalında bulunur. Ayrıca, ağlar için Azure Izleyici 'yi kullanarak sanal WAN topolojisi ve ölçüm çalışma kitabına erişebilirsiniz. Daha fazla bilgi için bkz. [ağlar Için Azure izleyici](../azure-monitor/insights/network-insights-overview.md). 
 >
 
 ## <a name="before-you-begin"></a>Başlamadan önce
@@ -45,7 +45,7 @@ Kaynak durumu ve durumu renk kodludur ve haritadaki kaynak simgelerinde yer alı
 
 **Şekil 2: Öngörüler görünümü**
 
-:::image type="content" source="./media/azure-monitor-insights/insights-view.png" alt-text="Öngörüler (Önizleme) görünümünü gösteren ekran görüntüsü." lightbox="./media/azure-monitor-insights/insights-view.png":::
+:::image type="content" source="./media/azure-monitor-insights/insights-view.png" alt-text="Öngörüler görünümünü gösteren ekran görüntüsü." lightbox="./media/azure-monitor-insights/insights-view.png":::
 
 ## <a name="dependency-view"></a><a name="dependency"></a>Bağımlılık görünümü
 
@@ -53,7 +53,7 @@ Sanal WAN için **bağımlılık** görünümü, bir hub ve bağlı bileşen mim
 
 **Şekil 3: VWAN bağımlılığı görünümü**
 
-:::image type="content" source="./media/azure-monitor-insights/dependency-map.png" alt-text="Öngörüler (Önizleme) görünümünü gösteren ekran görüntüsü." lightbox="./media/azure-monitor-insights/dependency-map.png":::
+:::image type="content" source="./media/azure-monitor-insights/dependency-map.png" alt-text="Bağımlılık görünümünü gösteren ekran görüntüsü." lightbox="./media/azure-monitor-insights/dependency-map.png":::
 
 **Bağımlılık** görünümü eşlemesi aşağıdaki kaynakları bağlı bir grafik olarak görüntüler:
 
@@ -69,13 +69,13 @@ Bağımlılık eşlemesi, her bir kaynağın yapılandırma ayarlarına kolay ge
 
 **Şekil 4: kaynağa özgü bilgilere gitme**
 
-:::image type="content" source="./media/azure-monitor-insights/resource-information.png" alt-text="Öngörüler (Önizleme) görünümünü gösteren ekran görüntüsü.":::
+:::image type="content" source="./media/azure-monitor-insights/resource-information.png" alt-text="Kaynağa özgü bilgilere nasıl gidebileceğiniz gösteren ekran görüntüsü.":::
 
 **Bağımlılık** görünümündeki arama ve filtre çubuğu, grafikte arama yapmanın kolay bir yolunu sağlar. Çeşitli filtreler, aramanızı belirli bir yola ve duruma göre daraltmak için yardım sağlar.
 
 **Şekil 5: arama ve filtreleme**
 
-:::image type="content" source="./media/azure-monitor-insights/search-filter.png" alt-text="Öngörüler (Önizleme) görünümünü gösteren ekran görüntüsü." lightbox="./media/azure-monitor-insights/search-filter.png":::
+:::image type="content" source="./media/azure-monitor-insights/search-filter.png" alt-text="Arama ve filtre çubuğunu gösteren ekran görüntüsü." lightbox="./media/azure-monitor-insights/search-filter.png":::
 
 ## <a name="detailed-metrics"></a><a name="detailed"></a>Ayrıntılı ölçümler
 
@@ -83,7 +83,7 @@ Ayrıntılı **ölçümler** sayfasına erişmek için **ayrıntılı ölçümle
 
 **Şekil 6: ayrıntılı ölçüm panosu**
 
-:::image type="content" source="./media/azure-monitor-insights/detailed-metrics.png" alt-text="Öngörüler (Önizleme) görünümünü gösteren ekran görüntüsü." lightbox="./media/azure-monitor-insights/detailed-metrics.png":::
+:::image type="content" source="./media/azure-monitor-insights/detailed-metrics.png" alt-text="Ayrıntılı ölçüm panosunu gösteren ekran görüntüsü." lightbox="./media/azure-monitor-insights/detailed-metrics.png":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

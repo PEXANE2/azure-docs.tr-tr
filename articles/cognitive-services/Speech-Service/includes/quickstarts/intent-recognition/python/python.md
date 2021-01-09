@@ -6,12 +6,12 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 44c4427540e1b94ebcaf00e6875723e0a654e9ef
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 8eada631b7e1f632148993e586c70b6811cf9ac9
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94424895"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98052721"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -41,7 +41,7 @@ Bir nesneyi başlatabilmeniz için `IntentRecognizer` , lusıs tahmin kaynağın
 Bu kodu içine ekleyin `quickstart.py` . Bu değerleri güncelleştirdiğinizden emin olun:
 
 * `"YourLanguageUnderstandingSubscriptionKey"`Lusıs tahmin anahtarınızla değiştirin.
-* `"YourLanguageUnderstandingServiceRegion"`Lusıs konumunuz ile değiştirin. Bölgeden **bölge tanımlayıcısı** kullan [region](../../../../regions.md)
+* `"YourLanguageUnderstandingServiceRegion"`Lusıs konumunuz ile değiştirin. Bölgeden **bölge tanımlayıcısı** kullan [](../../../../regions.md)
 
 >[!TIP]
 > Bu değerleri bulmak için yardıma ihtiyacınız varsa bkz. [Amaç tanıma için BIR lusıs uygulaması oluşturma](#create-a-luis-app-for-intent-recognition).
@@ -70,6 +70,12 @@ Buraya bu kodu ekleyin `IntentRecognizer` . `"YourLanguageUnderstandingAppId"`Lu
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=19-27)]
 
 Bu örnek, `add_intents()` açıkça tanımlanmış bir amaç listesi eklemek için işlevini kullanır. Bir modelden tüm amaçları eklemek istiyorsanız `add_all_intents(model)` modeli kullanın ve geçirin.
+
+> [!NOTE]
+> FromEndpoint yöntemine bir uç nokta URL 'SI geçirerek bir LanguageUnderstandingModel oluşturabilirsiniz.
+> Konuşma SDK 'Sı yalnızca LUSıS v 2.0 uç noktalarını destekler ve LUıN v 2.0 uç noktaları şu iki desenden birini her zaman izler:
+> * `https://{AzureResourceName}.cognitiveservices.azure.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
+> * `https://{Region}.api.cognitive.microsoft.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
 
 ## <a name="recognize-an-intent"></a>Amacı tanıma
 

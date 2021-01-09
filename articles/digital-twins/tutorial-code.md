@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 22600f6519a44e71ae5c4b59b0165401b54e55fd
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: fd958c09a14334d8230e52413c590febb2148851
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964550"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98048967"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Öğretici: Azure dijital TWINS API 'Leri ile kodlama
 
@@ -25,7 +25,7 @@ Azure dijital TWINS ile çalışan geliştiriciler, Azure dijital TWINS hizmeti 
 > * Kaynakları temizleme
 > * Sonraki adımlar
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğretici, kurulum ve proje çalışması için komut satırını kullanır. Bu nedenle, alýþtýrmalar üzerinde gezinmek için herhangi bir kod düzenleyicisini kullanabilirsiniz.
 
@@ -57,9 +57,9 @@ Bu, kodunuzun büyük bir kısmını yazacağınız bir *program.cs* dahil olmak
 
 Öğreticinin tamamında kullanmaya devam edebileceksiniz, komut penceresini açık tutun.
 
-Ardından, projenize Azure dijital TWINS ile çalışmak için gerekli olacak **iki bağımlılık ekleyin** . NuGet üzerindeki paketlere gitmek için aşağıdaki bağlantıları kullanabilirsiniz. buradan, her birini projenize eklemek için konsol komutlarının (.NET CLı için de dahil olmak üzere) bulabilirsiniz.
-* [**Azure. DigitalTwins. Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Bu paket, [.net Için Azure Digital TWINS SDK 'sına](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)yöneliktir. En son sürümü ekleyin.
-* [**Azure. Identity**](https://www.nuget.org/packages/Azure.Identity). Bu kitaplık, Azure 'da kimlik doğrulamaya yardımcı olacak araçlar sağlar. Sürüm 1.2.2 ekleyin.
+Ardından, projenize Azure dijital TWINS ile çalışmak için gerekli olacak **iki bağımlılık ekleyin** . Aşağıdaki bağlantıları kullanarak, her birinin en son sürümünü projenize eklemek için konsol komutlarının (.NET CLı için de dahil olmak üzere) bulabileceğiniz NuGet üzerindeki paketlere gidebilirsiniz.
+* [**Azure. DigitalTwins. Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Bu paket, [.net Için Azure Digital TWINS SDK 'sına](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)yöneliktir.
+* [**Azure. Identity**](https://www.nuget.org/packages/Azure.Identity). Bu kitaplık, Azure 'da kimlik doğrulamaya yardımcı olacak araçlar sağlar.
 
 ## <a name="get-started-with-project-code"></a>Proje kodu ile çalışmaya başlama
 
@@ -73,29 +73,19 @@ Bu bölümde, Azure dijital TWINS ile çalışmak üzere yeni uygulama projeniz 
 
 Öğreticinin sonundaki kodun tamamını gösteren bir bölüm de vardır. Bunu, programınızı hareket halindeyken denetlemek için bir başvuru olarak kullanabilirsiniz.
 
-Başlamak için, *program.cs* dosyasını herhangi bir kod düzenleyicisinde açın. Şunun gibi görünen minimal bir kod şablonu görürsünüz:
+Başlamak için, *program.cs* dosyasını herhangi bir kod düzenleyicisinde açın. Aşağıdakine benzer bir kod şablonu görürsünüz:
 
-```csharp
-using System;
-
-namespace DigitalTwinsCodeTutorial
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-        }
-    }
-}
-```
+:::row:::
+    :::column:::
+        :::image type="content" source="media/tutorial-code/starter-template.png" alt-text="Örnek kod parçacığı. Digitaltwınscodeöğretici adlı bir ad alanı olan bir ' using System; ' deyimidir. ad alanındaki program adlı bir sınıf; ve ' static void Main (String [] args) ' standart imzasına sahip sınıfta bir Main yöntemi. Main yöntemi bir Merhaba Dünya Print ifadesini içerir." lightbox="media/tutorial-code/starter-template.png":::
+    :::column-end:::
+    :::column:::
+    :::column-end:::
+:::row-end:::
 
 İlk olarak, `using` gerekli bağımlılıkları çekmek için kodun üst kısmına bazı satırlar ekleyin.
 
-```csharp
-using Azure.DigitalTwins.Core;
-using Azure.Identity;
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Azure_Digital_Twins_dependencies":::
 
 Daha sonra, bazı işlevleri doldurmanız için bu dosyaya kod ekleyeceksiniz. 
 
@@ -107,12 +97,7 @@ Kimlik doğrulamak için, Azure dijital TWINS örneğinizin *ana bilgisayar adı
 
 *Program.cs*' de, aşağıdaki kodu "Hello, World!" altına yapıştırın yöntemdeki çıktı satırı `Main` . Değerini `adtInstanceUrl` Azure Digital TWINS örneğiniz *ana bilgisayar adına* ayarlayın.
 
-```csharp
-string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>"; 
-var credential = new DefaultAzureCredential();
-DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
-Console.WriteLine($"Service client created – ready to go");
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Authentication_code":::
 
 Dosyayı kaydedin. 
 
@@ -134,25 +119,7 @@ Azure dijital TWINS çözümü oluşturmanın ilk adımı, bir DTDL dosyasında 
 
 Projenizi oluşturduğunuz dizinde, *üzerindeSampleModel.js* adlı yeni bir *. JSON* dosyası oluşturun. Aşağıdaki dosya gövdesine yapıştırın: 
 
-```json
-{
-  "@id": "dtmi:example:SampleModel;1",
-  "@type": "Interface",
-  "displayName": "SampleModel",
-  "contents": [
-    {
-      "@type": "Relationship",
-      "name": "contains"
-    },
-    {
-      "@type": "Property",
-      "name": "data",
-      "schema": "string"
-    }
-  ],
-  "@context": "dtmi:dtdl:context;2"
-}
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/SampleModel.json":::
 
 > [!TIP]
 > Bu öğretici için Visual Studio kullanıyorsanız, yeni oluşturulan JSON dosyasını seçmek ve Özellik denetçisindeki *Çıkış Dizinine Kopyala* özelliğini, *daha yeniyse* veya *her zaman* kopyalamak üzere ayarlamak isteyebilirsiniz. Bu, öğreticinin geri kalanı sırasında program 'yu **F5** ile çalıştırdığınızda, Visual Studio 'nun varsayılan yol ile json dosyasını bulmasını sağlayacaktır.
@@ -164,18 +131,11 @@ Daha sonra, yeni oluşturduğunuz modeli Azure dijital TWINS örneğinize yükle
 
 İlk olarak, `using` dosyanın en üstüne birkaç deyim ekleyin:
 
-```csharp
-using System.Threading.Tasks;
-using System.IO;
-using System.Collections.Generic;
-using Azure;
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Model_dependencies":::
 
 Daha sonra, `Main` yöntem imzasını zaman uyumsuz yürütmeye izin verecek şekilde değiştirerek C# hizmet SDK 'sindeki zaman uyumsuz yöntemleri kullanmaya hazırlanın. 
 
-```csharp
-static async Task Main(string[] args)
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Async_signature":::
 
 > [!NOTE]
 > `async`SDK, tüm çağrıların zaman uyumlu sürümlerini de sağladığından, kullanılması kesinlikle gerekli değildir. Bu öğreticiyi kullanma yöntemleri `async` .
@@ -184,15 +144,7 @@ Daha sonra, Azure dijital TWINS hizmetiyle etkileşim kuran kodun ilk biti gelir
 
 Daha önce eklediğiniz yetkilendirme kodu altına aşağıdaki kodu yapıştırın.
 
-```csharp
-Console.WriteLine();
-Console.WriteLine($"Upload a model");
-var typeList = new List<string>();
-string dtdl = File.ReadAllText("SampleModel.json");
-typeList.Add(dtdl);
-// Upload the model to the service
-await client.CreateModelsAsync(typeList);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp_excerpt_model.cs":::
 
 Komut pencerenizde, programı şu komutla çalıştırın: 
 
@@ -203,15 +155,7 @@ dotnet run
 
 Örneğe başarıyla yüklenmiş tüm modelleri gösteren bir Print ifadesini eklemek için, önceki bölümden hemen sonra aşağıdaki kodu ekleyin:
 
-```csharp
-// Read a list of models back from the service
-Console.WriteLine("Models uploaded to the instance:");
-AsyncPageable<DigitalTwinsModelData> modelDataList = client.GetModelsAsync();
-await foreach (DigitalTwinsModelData md in modelDataList)
-{
-    Console.WriteLine($"{md.Id}");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Print_model":::
 
 **Bu yeni kodu test etmek için programı yeniden çalıştırmadan önce**, programı son kez çalıştırdığınızda modelinizi zaten karşıya yüklediğinize geri çekin. Azure dijital TWINS aynı modeli iki kez karşıya yüklemeye izin vermeyecektir. bu nedenle, aynı modeli yeniden yüklemeye çalışırsanız programın bir özel durum oluşturması gerekir.
 
@@ -229,13 +173,7 @@ Sonraki bölümde, bu gibi özel durumlar ve kodunuzda nasıl ele alınacağın�
 
 Programın çökmesini önlemek için, model karşıya yükleme kodunun etrafına özel durum kodu ekleyebilirsiniz. Mevcut istemci çağrısını `await client.CreateModelsAsync(typeList)` bir Try/Catch işleyicisine kaydırın, örneğin:
 
-```csharp
-try {
-    await client.CreateModelsAsync(typeList);
-} catch (RequestFailedException rex) {
-    Console.WriteLine($"Load model: {rex.Status}:{rex.Message}");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Model_try_catch":::
 
 Şimdi komut pencerenizde programını ile çalıştırırsanız `dotnet run` , bir hata kodu geri almanızı göreceksiniz. Model oluşturma kodundaki çıkış şu hatayı gösterir:
 
@@ -249,23 +187,7 @@ Azure dijital TWINS 'e bir model yüklediğinize göre, bu model tanımını **d
 
 `Main`Bu modele göre üç dijital TWINS oluşturmak ve başlatmak için yönteminin sonuna aşağıdaki kodu ekleyin.
 
-```csharp
-// Initialize twin data
-BasicDigitalTwin twinData = new BasicDigitalTwin();
-twinData.Metadata.ModelId = "dtmi:example:SampleModel;1";
-twinData.Contents.Add("data", $"Hello World!");
-
-string prefix="sampleTwin-";
-for(int i=0; i<3; i++) {
-    try {
-        twinData.Id = $"{prefix}{i}";
-        await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(twinData.Id, twinData);
-        Console.WriteLine($"Created twin: {prefix}{i}");
-    } catch(RequestFailedException rex) {
-        Console.WriteLine($"Create twin error: {rex.Status}:{rex.Message}");  
-    }
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Initialize_twins":::
 
 Komut pencerenizde, programını ile çalıştırın `dotnet run` . Çıktıda, *sampleTwin-0*, *sampleTwin-1* ve *sampleTwin-2* ' nin oluşturulduğu yazdırma iletilerini arayın. 
 
@@ -279,34 +201,11 @@ Daha sonra, oluşturduğunuz TWINS arasında **ilişkiler** oluşturarak bunlar�
 
 Yöntemine, yönteminin altına **Yeni bir static yöntem** ekleyin `Program` `Main` (şimdi kodda iki yöntem vardır):
 
-```csharp
-public async static Task CreateRelationship(DigitalTwinsClient client, string srcId, string targetId)
-{
-    var relationship = new BasicRelationship
-    {
-        TargetId = targetId,
-        Name = "contains"
-    };
-
-    try
-    {
-        string relId = $"{srcId}-contains->{targetId}";
-        await client.CreateOrReplaceRelationshipAsync(srcId, relId, relationship);
-        Console.WriteLine("Created relationship successfully");
-    }
-    catch (RequestFailedException rex) {
-        Console.WriteLine($"Create relationship error: {rex.Status}:{rex.Message}");
-    }
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Create_relationship":::
 
 Sonra, yöntemi `Main` çağırmak `CreateRelationship` ve yeni yazdığınız kodu kullanmak için yönteminin sonuna aşağıdaki kodu ekleyin:
 
-```csharp
-// Connect the twins with relationships
-await CreateRelationship(client, "sampleTwin-0", "sampleTwin-1");
-await CreateRelationship(client, "sampleTwin-0", "sampleTwin-2");
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Use_create_relationship":::
 
 Komut pencerenizde, programını ile çalıştırın `dotnet run` . Çıktıda, iki ilişkinin başarıyla oluşturulduğunu belirten Print deyimlerini arayın.
 
@@ -318,32 +217,15 @@ Ekleyeceğiniz bir sonraki kod, oluşturduğunuz ilişkilerin listesini görmeni
 
 Sınıfına aşağıdaki **yeni yöntemi** ekleyin `Program` :
 
-```csharp
-public async static Task ListRelationships(DigitalTwinsClient client, string srcId)
-{
-    try {
-        AsyncPageable<BasicRelationship> results = client.GetRelationshipsAsync<BasicRelationship>(srcId);
-        Console.WriteLine($"Twin {srcId} is connected to:");
-        await foreach (BasicRelationship rel in results)
-        {
-            Console.WriteLine($" -{rel.Name}->{rel.TargetId}");
-        }
-    } catch (RequestFailedException rex) {
-        Console.WriteLine($"Relationship retrieval error: {rex.Status}:{rex.Message}");   
-    }
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="List_relationships":::
 
 Daha sonra, `Main` kodu çağırmak için yönteminin sonuna aşağıdaki kodu ekleyin `ListRelationships` :
 
-```csharp
-//List the relationships
-await ListRelationships(client, "sampleTwin-0");
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Use_list_relationships":::
 
 Komut pencerenizde, programını ile çalıştırın `dotnet run` . Aşağıdaki gibi görünen bir çıktı bildiriminde oluşturduğunuz tüm ilişkilerin bir listesini görmeniz gerekir:
 
-:::image type="content" source= "media/tutorial-code/list-relationships.png" alt-text="' Ikizi sampleTwin-0 ' a bağlı olduğunu belirten bir ileti gösteren program çıktısı: Contains->sampleTwin-1,-Contains->sampleTwin-2 '":::
+:::image type="content" source= "media/tutorial-code/list-relationships.png" alt-text="' Ikizi sampleTwin-0 ' a bağlı olduğunu belirten bir ileti gösteren program çıktısı: Contains->sampleTwin-1,-Contains->sampleTwin-2 '" lightbox="media/tutorial-code/list-relationships.png":::
 
 ### <a name="query-digital-twins"></a>Dijital TWINS sorgula
 
@@ -353,23 +235,11 @@ Bu öğreticide eklenecek kodun son bölümü Azure dijital TWINS örneğinde bi
 
 Bu `using` ifadeyi, `JsonSerializer` dijital ikizi bilgilerinin sunulmasını sağlamak üzere sınıfının kullanımını etkinleştirmek için ekleyin:
 
-```csharp
-using System.Text.Json;
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Query_dependencies":::
 
 Ardından, yönteminin sonuna aşağıdaki kodu ekleyin `Main` :
 
-```csharp
-// Run a query for all twins   
-string query = "SELECT * FROM digitaltwins";
-AsyncPageable<BasicDigitalTwin> result = client.QueryAsync<BasicDigitalTwin>(query);
-
-await foreach (BasicDigitalTwin twin in result)
-{
-    Console.WriteLine(JsonSerializer.Serialize(twin));
-    Console.WriteLine("---------------");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Query_twins":::
 
 Komut pencerenizde, programını ile çalıştırın `dotnet run` . Çıktıda bu örnekteki tüm dijital TWINS ' i görmeniz gerekir.
 
@@ -377,120 +247,8 @@ Komut pencerenizde, programını ile çalıştırın `dotnet run` . Çıktıda b
 
 Öğreticide bu noktada, Azure dijital TWINS 'e yönelik temel eylemleri gerçekleştirmenize yönelik, tüm istemci uygulamanız vardır. Başvuru için, *program.cs* içindeki programın tam kodu aşağıda listelenmiştir:
 
-```csharp
-using System;
-using Azure.DigitalTwins.Core;
-using Azure.Identity;
-using System.Threading.Tasks;
-using System.IO;
-using System.Collections.Generic;
-using Azure;
-using System.Text.Json;
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs":::
 
-namespace minimal
-{
-    class Program
-    {
-        static async Task Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-            
-            string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>"; 
-            
-            var credential = new DefaultAzureCredential();
-            DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
-            Console.WriteLine($"Service client created – ready to go");
-
-            Console.WriteLine();
-            Console.WriteLine($"Upload a model");
-            var typeList = new List<string>();
-            string dtdl = File.ReadAllText("SampleModel.json");
-            typeList.Add(dtdl);
-
-            // Upload the model to the service
-            try {
-                await client.CreateModelsAsync(typeList);
-            } catch (RequestFailedException rex) {
-                Console.WriteLine($"Load model: {rex.Status}:{rex.Message}");
-            }
-            // Read a list of models back from the service
-            Console.WriteLine("Models uploaded to the instance:");
-            AsyncPageable<DigitalTwinsModelData> modelDataList = client.GetModelsAsync();
-            await foreach (DigitalTwinsModelData md in modelDataList)
-            {
-                Console.WriteLine($"{md.Id}");
-            }
-
-            // Initialize twin data
-            BasicDigitalTwin twinData = new BasicDigitalTwin();
-            twinData.Metadata.ModelId = "dtmi:example:SampleModel;1";
-            twinData.Contents.Add("data", $"Hello World!");
-            
-            string prefix="sampleTwin-";
-            for(int i=0; i<3; i++) {
-                try {
-                    twinData.Id = $"{prefix}{i}";
-                    await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(twinData.Id, twinData);
-                    Console.WriteLine($"Created twin: {prefix}{i}");
-                } catch(RequestFailedException rex) {
-                    Console.WriteLine($"Create twin error: {rex.Status}:{rex.Message}");  
-                }
-            }
-
-            // Connect the twins with relationships
-            await CreateRelationship(client, "sampleTwin-0", "sampleTwin-1");
-            await CreateRelationship(client, "sampleTwin-0", "sampleTwin-2");
-
-            //List the relationships
-            await ListRelationships(client, "sampleTwin-0");
-
-            // Run a query for all twins   
-            string query = "SELECT * FROM digitaltwins";
-            AsyncPageable<BasicDigitalTwin> result = client.QueryAsync<BasicDigitalTwin>(query);
-            
-            await foreach (BasicDigitalTwin twin in result)
-            {
-                Console.WriteLine(JsonSerializer.Serialize(twin));
-                Console.WriteLine("---------------");
-            }
-        }
-
-        public async static Task CreateRelationship(DigitalTwinsClient client, string srcId, string targetId)
-        {
-            var relationship = new BasicRelationship
-            {
-                TargetId = targetId,
-                Name = "contains"
-            };
-        
-            try
-            {
-                string relId = $"{srcId}-contains->{targetId}";
-                await client.CreateOrReplaceRelationshipAsync(srcId, relId, relationship);
-                Console.WriteLine("Created relationship successfully");
-            }
-            catch (RequestFailedException rex) {
-                Console.WriteLine($"Create relationship error: {rex.Status}:{rex.Message}");
-            }
-        }
-        
-        public async static Task ListRelationships(DigitalTwinsClient client, string srcId)
-        {
-            try {
-                AsyncPageable<BasicRelationship> results = client.GetRelationshipsAsync<BasicRelationship>(srcId);
-                Console.WriteLine($"Twin {srcId} is connected to:");
-                await foreach (BasicRelationship rel in results)
-                {
-                    Console.WriteLine($" -{rel.Name}->{rel.TargetId}");
-                }
-            } catch (RequestFailedException rex) {
-                Console.WriteLine($"Relationship retrieval error: {rex.Status}:{rex.Message}");   
-            }
-        }
-
-    }
-}
-```
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
  
 Bu öğreticide kullanılan örnek, bir sonraki öğreticide yeniden kullanılabilir, [*öğretici: örnek bir istemci uygulamasıyla ilgili temel bilgileri keşfedebilir*](tutorial-command-line-app.md). Sonraki öğreticiye devam etmeyi planlıyorsanız, burada ayarladığınız Azure dijital TWINS örneğini koruyabilirsiniz.

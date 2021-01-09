@@ -3,14 +3,14 @@ title: Azure Otomasyonu runbook türleri
 description: Bu makalede, Azure Otomasyonu 'nda kullanabileceğiniz runbook 'ların türleri ve hangi türün kullanılacağını belirleme konuları açıklanmaktadır.
 services: automation
 ms.subservice: process-automation
-ms.date: 12/22/2020
+ms.date: 01/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 1a0c12297f19d30bf13ffbe594e0433c83914a8e
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: c1398d25b6d2540abea0012acd69555e5e53e25c
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733969"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050978"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Otomasyonu runbook türleri
 
@@ -117,7 +117,6 @@ Python runbook 'ları Python 2 ve Python 3 altında derlenir. Python 3 runbook '
 * Üçüncü taraf kitaplıklarını kullanmak için paketleri Otomasyon hesabına [aktarmanız](python-packages.md) gerekir.
 *    Bir Python 3 runbook 'unu (Önizleme) başlatmak Için PowerShell/PowerShell iş akışında start-automationrunbook cmdlet 'ini kullanma çalışmaz. Bu sınırlamaya geçici bir çözüm için Azurerd. Automation modülünden az. Automation modülünden veya **Start-AzureRmAutomationRunbook** cmdlet 'inden **Start-azautomationrunbook** cmdlet 'ini kullanabilirsiniz.  
 * Python 3 runbook 'ları (Önizleme) ve paketleri PowerShell ile çalışmaz.
-* Python runbook 'u başlatmak için Web kancası kullanılması desteklenmez.
 * Azure Otomasyonu, **sys. stderr** desteklemez.
 
 ### <a name="known-issues"></a>Bilinen sorunlar

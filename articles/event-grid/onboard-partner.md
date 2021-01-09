@@ -3,12 +3,12 @@ title: Azure portal kullanarak Azure Event Grid iş ortağı olarak ekleme
 description: Bir Azure Event Grid iş ortağı eklemek için Azure portal kullanın.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 8344fcd822bfcdc67e2c27b200d97fa70dfefdf2
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 44dece4d46a6d702d48fa49983818986fcd59f7b
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349395"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050961"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner-using-the-azure-portal"></a>Azure portal kullanarak Azure Event Grid iş ortağı olarak ekleme
 Bu makalede, olay yayımcıları veya iş ortakları olarak da bilinen üçüncü taraf SaaS sağlayıcılarının, hizmetlerinden olayları yayımlayabilmesi ve bu olayların son kullanıcılar tarafından nasıl tüketildiği Event Grid açıklanmaktadır.
@@ -44,7 +44,7 @@ Kalan adımları tamamlayabilmeniz için, şunları yaptığınızdan emin olun:
 - Bir Azure [kiracısı](../active-directory/develop/quickstart-create-new-tenant.md).
 
 ## <a name="register-a-partner-topic-type-optional"></a>İş ortağı konu türünü kaydetme (isteğe bağlı)
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Sol gezinti bölmesinden **tüm hizmetler** ' i seçin, sonra arama çubuğuna **Event Grid iş ortağı kayıtları** yazın ve seçin. 
 1. **Event Grid Iş ortağı kayıtları** sayfasında, araç çubuğunda **+ Ekle** ' yi seçin. 
 
@@ -112,7 +112,6 @@ Kalan adımları tamamlayabilmeniz için, şunları yaptığınızdan emin olun:
     1. **Kanal ayrıntıları** bölümünde şu adımları uygulayın:
         1. **Olay kanalı adı** için olay kanalı için bir ad girin. 
         1. **Kaynağı** girin. Kaynak için uygun bir değer hakkında fikir edinmek için bkz. [bulut olayları 1,0 belirtimleri](https://github.com/cloudevents/spec/blob/v1.0/spec.md#source-1) . Ayrıca bkz. [Bu bulut olayları şeması örneği](cloud-event-schema.md#sample-event-using-cloudevents-schema).
-        1. Kaynağı (nedir?) girin.
     1. **Hedef ayrıntıları** bölümünde, bu olay kanalı için oluşturulacak hedef iş ortağı konusunun ayrıntılarını girin. 
         1. İş ortağı konusunun oluşturulacağı **aboneliğin kimliğini** girin. 
         1. İş ortağı konu kaynağının oluşturulacağı **kaynak grubunun adını** girin. 
