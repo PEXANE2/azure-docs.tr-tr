@@ -3,16 +3,16 @@ title: Öğretici-Azure IoT Central uygulamanızda kurallar oluşturma ve yönet
 description: Bu öğreticide, Azure IoT Central kurallarının cihazınızı neredeyse gerçek zamanlı olarak izlemenize ve kural tetiklendiğinde e-posta gönderme gibi eylemleri otomatik olarak nasıl çağıracağına ilişkin yönergeler gösterilmektedir.
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/16/2020
+ms.date: 01/08/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 6d49e3585460c95ca931f497a63cbc281aed1db1
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: a1991860e1599020c5a91c09dfb30a96ed442ff7
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94991048"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033855"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Öğretici: Azure IoT Central uygulamanızda kural oluşturma ve bildirimleri ayarlama
 
@@ -24,7 +24,7 @@ Cihazlar, cihazdan sayısal veri göndermek için telemetri kullanır. Seçilen 
 
 Bu öğreticide, sanal bir algılayıcı cihazındaki sıcaklık 70 F 'yi aştığında bir e-posta göndermek için bir kural oluşturacaksınız &deg; .
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -38,6 +38,9 @@ Başlamadan önce [Azure IoT Central oluşturma uygulamasını](./quick-deploy-i
 ## <a name="create-a-rule"></a>Kural oluşturma
 
 Bir telemetri kuralı oluşturmak için, cihaz şablonu en az bir telemetri değeri içermelidir. Bu öğretici, sıcaklık ve nem telemetrisi gönderen bir sanal **algılayıcı denetleyicisi** cihazını kullanır. Bu cihaz şablonunu eklediniz ve sanal cihaz oluşturma [IoT Central uygulama](./quick-create-simulated-device.md) hızlı başlangıç bölümünde sanal cihaz oluşturdunuz. Kural, cihaz tarafından bildirilen sıcaklığın izler ve 70 derecenin üzerinde kaldığında bir e-posta gönderir.
+
+> [!NOTE]
+> Uygulama başına 50 kural sınırı vardır.
 
 1. Sol bölmede **kurallar**' ı seçin.
 
@@ -78,7 +81,7 @@ Koşulu tanımladıktan sonra, kural tetiklendiğinde gerçekleştirilecek eylem
 
 1. **Eylemler** bölümünde **+ e-posta** ' yı seçin.
 
-1. Eylem _Temperature warning_ için görünen ad, **to** alanındaki e-posta adresiniz ve _cihazı denetlemeniz gerekir!_ e-postanın gövdesinde görünecek bir notun olması.
+1. Eylem  için görünen ad, **to** alanındaki e-posta adresiniz ve _cihazı denetlemeniz gerekir!_ e-postanın gövdesinde görünecek bir notun olması.
 
     > [!NOTE]
     > E-postalar yalnızca uygulamaya eklenmiş olan ve en az bir kez oturum açan kullanıcılara gönderilir. Azure IoT Central 'de [Kullanıcı yönetimi](howto-administer.md) hakkında daha fazla bilgi edinin.

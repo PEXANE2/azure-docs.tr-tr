@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: macolso
 ms.author: macolso
-ms.openlocfilehash: 967d2da61ffdfa9d1723bcab589deb2277d4041e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68b9b31cdfb55e8150b05e3efd35389320905cdc
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825613"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034280"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>Ayrılmış konaklara dağıtma
 
@@ -18,7 +18,10 @@ ms.locfileid: "91825613"
 
 Adanmış SKU, fiziksel sunucu perspektifinden iş yükü yalıtımı gerektiren kapsayıcı iş yükleri için uygundur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
+
+> [!NOTE]
+> Bazı geçerli sınırlamalar nedeniyle, tüm sınır artış istekleri onaylanmak garanti edilmez.
 
 * Adanmış SKU 'yu kullanmak için abonelik varsayılan sınırı 0 ' dır. Bu SKU 'yu üretim kapsayıcısı dağıtımlarınız için kullanmak isterseniz, sınırı artırmak için bir [Azure destek isteği][azure-support] oluşturun.
 

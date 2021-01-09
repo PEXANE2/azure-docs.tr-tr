@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/10/2020
+ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c746666d58e21c2705a2ef1d6a17d0d1196f7590
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 1577d63822bdb21eff7fcbb3e1343243a3004409
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504483"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033651"
 ---
 # <a name="speech-to-text-rest-api"></a>Konuşmayı metne dönüştürme REST API'si
 
@@ -61,7 +61,7 @@ Kısa ses için konuşmayı metne REST API kullanmadan önce aşağıdakileri g�
 Daha uzun bir ses gönderiyorsanız uygulamanız için bir gereksinimdir, [konuşma SDK 'sını](speech-sdk.md) veya [konuşmayı metne REST API v 3.0](#speech-to-text-rest-api-v30)kullanmayı düşünün.
 
 > [!TIP]
-> Kamu Bulutu (FairFax) uç noktaları için Azure Kamu [belgelerini](../../azure-government/compare-azure-government-global-azure.md) inceleyin.
+> Azure Kamu ve Azure Çin uç noktaları için [Bu makaleye](sovereign-clouds.md) bakın.
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -95,7 +95,7 @@ Bu parametreler REST isteğinin sorgu dizesine dahil edilebilir.
 
 Bu tabloda, konuşma-metin istekleri için gerekli ve isteğe bağlı üstbilgiler listelenmektedir.
 
-|Üst bilgi| Description | Gerekli/Isteğe bağlı |
+|Üst bilgi| Açıklama | Gerekli/Isteğe bağlı |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | Konuşma hizmeti abonelik anahtarınız. | Bu üst bilgi ya da `Authorization` gerekli. |
 | `Authorization` | Bir yetkilendirme belirteci öncesinde kelimedir `Bearer` . Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication). | Bu üst bilgi ya da `Ocp-Apim-Subscription-Key` gerekli. |

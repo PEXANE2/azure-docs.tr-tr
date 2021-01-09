@@ -3,12 +3,12 @@ title: Kapsayıcı grubu için statik IP adresi
 description: Bir sanal ağda kapsayıcı grubu oluşturun ve bir Azure Application Gateway kullanarak kapsayıcılı bir Web uygulamasına statik bir ön uç IP adresi sunun
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: bc128da0f4c2e92af98781cef45f48f9e8aeab31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0131780fdb04a71837d5ae9bf5498bf2bd499f8a
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260779"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035062"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>Bir kapsayıcı grubu için statik IP adresi kullanıma sunma
 
@@ -47,7 +47,7 @@ az network vnet create \
   --subnet-prefix 10.0.1.0/24
 ```
 
-Arka uç kapsayıcı grubu için bir alt ağ oluşturmak için [az Network VNET subnet Create][az-network-vnet-subnet-create] komutunu kullanın. Burada *Myacıubnet*olarak adlandırılmıştır.
+Arka uç kapsayıcı grubu için bir alt ağ oluşturmak için [az Network VNET subnet Create][az-network-vnet-subnet-create] komutunu kullanın. Burada *Myacıubnet* olarak adlandırılmıştır.
 
 ```azurecli
 az network vnet subnet create \
@@ -100,6 +100,9 @@ ACI_IP=$(az container show \
   --resource-group myResourceGroup \
   --query ipAddress.ip --output tsv)
 ```
+
+> [!IMPORTANT]
+> Kapsayıcı grubu durdurulmuş, başlatılmış veya yeniden başlatılırsa, kapsayıcı grubunun özel IP 'si değişebilir. Bu durumda, uygulama ağ geçidi yapılandırmasını güncelleştirmeniz gerekecektir.
 
 ## <a name="create-application-gateway"></a>Uygulama ağ geçidi oluşturma
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 01/07/2021
 ms.author: alkohli
-ms.openlocfilehash: a457c2816d4075190a2174339f7e52a2ea41730a
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 5bbd02f9e15a4ee29e244b2a0307accd151ba487
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97696034"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033957"
 ---
 # <a name="open-a-support-ticket-for-azure-stack-edge-pro-and-azure-data-box-gateway"></a>Azure Stack Edge Pro ve Azure Data Box Gateway için bir destek bileti açın
 
@@ -78,7 +78,7 @@ Bu bilgiler yalnızca Azure Stack cihaz için geçerlidir. Donanım sorunların�
     * Başarısız donanım bölümü için bir alan değiştirme birimi (FRU) gönderilir. Şu anda, güç kaynağı birimleri ve katı hal sürücüleri desteklenen tek FRU 'lardır.
     * Yalnızca FRU 'lar bir sonraki iş günü içinde değiştirilmiştir, başka her şey için bir tam sistem değişikliği (FSR) gerekir.
 
-3. Bir destek bileti, 4:30 PM yerel saatinden (Pazartesi 'Den Cuma 'ya) önce ortaya çıktığında, bir FRU değişikliği yapmak için işyerindeki bir sonraki iş günü, konumunuza karşı bir süredir gönderilir. Tüm sistem değişikliği genellikle çok daha uzun sürer, çünkü parçalar fabrikamızda gönderilir ve nakliye ve gümrük gecikmelerine tabi olabilir.
+3. Bir FRU değişikliği için 1 PM yerel saati (Pazartesi-Cuma) gerektiğini tespit ediyorsanız, bir FRU değişikliği yapmak için işyerindeki bir sonraki iş günü konumunuza bir sonraki iş günü gönderilir. Tüm sistem değişikliği genellikle çok daha uzun sürer, çünkü parçalar fabrikamızda gönderilir ve nakliye ve gümrük gecikmelerine tabi olabilir.
 
 ## <a name="manage-a-support-request"></a>Destek isteğini yönetme
 

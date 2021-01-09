@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.author: mimart
-ms.date: 01/04/2021
+ms.date: 01/08/2021
 ms.custom: mvc
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: e336fe8d8042657329936ed59058ed91109692fc
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 5c45342524a0300f1c67339f27aa905eb3dc79db
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861851"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033380"
 ---
 # <a name="add-an-identity-provider-to-your-azure-active-directory-b2c-tenant"></a>Azure Active Directory B2C kiracınıza bir kimlik sağlayıcısı ekleyin
 
@@ -42,10 +42,11 @@ Genellikle uygulamalarınızda yalnızca bir kimlik sağlayıcısı kullanırsı
 * [GitHub](identity-provider-github.md)
 * [ID.me](identity-provider-id-me.md)
 * [Google](identity-provider-google.md)
-* [LinkedIn](identity-provider-linkedin.md)
+* [Olacak](identity-provider-linkedin.md)
 * [Microsoft Hesabı](identity-provider-microsoft-account.md)
 * [QQ](identity-provider-qq.md)
-* [Salesforce](identity-provider-salesforce-saml.md)
+* [Salesforce](identity-provider-salesforce.md)
+* [Salesforce (SAML Protokolü)](identity-provider-salesforce-saml.md)
 * [Twitter](identity-provider-twitter.md)
 * [WeChat](identity-provider-wechat.md)
 * [Weibo](identity-provider-weibo.md)

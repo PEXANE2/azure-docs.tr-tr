@@ -1,14 +1,14 @@
 ---
 title: DOD etkisi düzey 5 şema örneği
 description: '\ Print yapıt parametresi ayrıntıları dahil DOD etkisi düzeyi 5 şema örneği için adımları dağıtın.'
-ms.date: 09/17/2020
+ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: deb6ffa0f886cc6a4a9bea10a38d7cd82e7df8f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6136136eef5d405ae0849e5ce8c8faede138fb00
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90978230"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034909"
 ---
 # <a name="deploy-the-dod-impact-level-5-blueprint-sample"></a>DOD etkisi düzeyi 5 şema örneğini dağıtma
 
@@ -52,7 +52,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="assign-the-sample-copy"></a>Örnek kopyayı atama
 
-Şema örneğinin kopyası başarıyla **yayımlandıktan**sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adımda, şema örneği kopyasının her bir dağıtımını benzersiz hale getirmek için parametreler sağlanır.
+Şema örneğinin kopyası başarıyla **yayımlandıktan** sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adımda, şema örneği kopyasının her bir dağıtımını benzersiz hale getirmek için parametreler sağlanır.
 
 1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 

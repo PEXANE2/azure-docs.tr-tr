@@ -13,12 +13,12 @@ ms.date: 09/01/2020
 ms.author: curtand
 ms.reviewer: kexia
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: caa2c66d66cce09f5b5b0fe0948ab924389d756e
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 0cb5e3463eda5d77bbbdefe223954105fd125c71
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033791"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033991"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>İki öğeli doğrulama ve iş veya okul hesabınızla ilgili yaygın sorunlar
 
@@ -74,7 +74,7 @@ Doğrulama kodunuzun alınmıyor yaygın bir sorundur. Sorun genellikle mobil ci
 
 Bunu deneyin | Kılavuz bilgileri
 --------- | ------------
-Microsoft Authenticator uygulamasını veya doğrulama kodlarını kullanma | Oturum açma sırasında "doğrulama çağrılarında limitimize ulaştınız" veya "metin Doğrulama kodlarıyla sınırımızda karşılaştık" hata iletileriyle karşılaşıyoruz. <br/><br/>Microsoft, aynı kullanıcı tarafından kısa bir süre içinde yapılan yinelenen kimlik doğrulama girişimlerini sınırlayabilir. Bu sınırlama Microsoft Authenticator veya doğrulama kodu için geçerlidir. Bu sınırlara ulaşırsanız, doğrulayıcı uygulamasını, doğrulama kodunu kullanabilir veya birkaç dakika içinde yeniden oturum açmayı deneyebilirsiniz.
+Microsoft Authenticator uygulamasını veya doğrulama kodlarını kullanma | Oturum açma sırasında "doğrulama çağrılarında limitimize ulaştınız" veya "metin Doğrulama kodlarıyla sınırımızda karşılaştık" hata iletileriyle karşılaşıyoruz. <br/><br/>Microsoft, aynı kullanıcı tarafından kısa bir süre içinde yapılan yinelenen kimlik doğrulama girişimlerini sınırlayabilir. Bu sınırlama Microsoft Authenticator veya doğrulama kodu için geçerlidir. Bu sınırlara ulaşırsanız, doğrulayıcı uygulamasını, doğrulama kodunu kullanabilir veya birkaç dakika içinde yeniden oturum açmayı deneyebilirsiniz. <br/><br/> Oturum açma sırasında "Üzgünüz, hesabınızı doğrularken sorun yaşıyoruz" hata iletisini alıyorsunuz. <br/><br/> Microsoft, yüksek sayıda başarısız sesli veya SMS kimlik doğrulama girişimi nedeniyle aynı kullanıcı, telefon numarası veya kuruluş tarafından gerçekleştirilen sesli veya SMS kimlik doğrulama girişimlerini sınırlayabilir veya engelleyebilir. Bu hatayla karşılaşıyorsanız, kimlik doğrulayıcı uygulaması veya doğrulama kodu gibi başka bir yöntemi deneyebilir veya destek için yöneticinize erişebilirsiniz.
 Mobil cihazınızı yeniden başlatın | Bazen cihazınızda bir yenileme yeterlidir. Cihazınızı yeniden başlattığınızda, tüm arka plan işlem ve Hizmetleri sonlandırılır. Yeniden başlatma, cihazınızın temel bileşenlerini de kapatır. Cihazınızı yeniden başlattığınızda herhangi bir hizmet veya bileşen yenilenir.
 Güvenlik bilgilerinizin doğru olduğundan emin olun | Güvenlik doğrulama yöntemi bilgilerinizin doğru, özellikle telefon numaralarınızı doğru olduğundan emin olun. Yanlış telefon numarasına yerleştirirseniz, Tüm uyarılarınız bu hatalı sayıya gider. Neyse ki, bu kullanıcı uyarılarla hiçbir şey yapamayacaktır, ancak hesabınızda oturum açmanıza de yardımcı olmaz. Bilgilerinizin doğru olduğundan emin olmak için, [iki öğeli doğrulama yöntemi ayarlarını yönetme](multi-factor-authentication-end-user-manage-settings.md) makalesindeki yönergelere bakın.
 Bildirimlerin açık olduğunu doğrulayın | Mobil cihazınızın bildirimleri açık olduğundan emin olun. Aşağıdaki bildirim modlarına izin verildiğinden emin olun: <br/><br/> &bull; Telefon görüşmeleri <br/> &bull; Kimlik doğrulama uygulamanız <br/> &bull; SMS mesajlaşma uygulamanız <br/><br/> Bu modların cihazınızda _görünür_ bir uyarı oluşturtığınızdan emin olun.

@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: 0018b7bafa8ff2ecd328a150df752082c85484e2
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: bc80a4f5c6c2919f0cb3faa15958fb75eed70270
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608519"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035232"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>GitHub eylemini kullanarak sürekli teslim
 
-Azure işlev uygulamanıza otomatik olarak kod derlemek ve dağıtmak için bir iş akışı tanımlamak üzere [GitHub eylemlerini](https://github.com/features/actions) kullanın. 
+Azure Işlevleri 'nde işlev uygulamanıza otomatik olarak kod derlemek ve dağıtmak için bir iş akışı tanımlamak üzere [GitHub eylemlerini](https://github.com/features/actions) kullanın. 
 
-GitHub eylemlerinde, bir [iş akışı](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions) GitHub deponuzda tanımladığınız otomatikleştirilmiş bir işlemdir. Bu süreç, GitHub 'da işlevler uygulama projenizi nasıl oluşturup dağıtacağınızı gösterir. 
+GitHub eylemlerinde, bir [iş akışı](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions) GitHub deponuzda tanımladığınız otomatikleştirilmiş bir işlemdir. Bu süreç, GitHub 'da işlev uygulama projenizi nasıl derleyip dağıtacağınızı gösterir. 
 
 Bir iş akışı, deponuzdaki yoldaki bir YAML (. yıml) dosyası tarafından tanımlanır `/.github/workflows/` . Bu tanım, iş akışını oluşturan çeşitli adımları ve parametreleri içerir. 
 
@@ -29,7 +29,7 @@ Azure Işlevleri iş akışı için, dosyanın üç bölümü vardır:
 | **Derleme** | Ortamı ayarlayın.<br/>İşlev uygulamasını oluşturun.|
 | **Dağıtma** | İşlev uygulamasını dağıtın.|
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - GitHub hesabı. Bir hesabınız yoksa [ücretsiz](https://github.com/join)kaydolun.  
@@ -187,6 +187,7 @@ Aşağıdaki örnek, dile özgü olan işlev uygulamasını oluşturan iş akı�
 ---
 
 ## <a name="deploy-the-function-app"></a>İşlev uygulamasını dağıtma
+
 `Azure/functions-action`Kodunuzu bir işlev uygulamasına dağıtmak için eylemini kullanın. Bu eylemin üç parametresi vardır:
 
 |Parametre |Açıklama  |
@@ -202,7 +203,7 @@ Aşağıdaki örnek, `functions-action` `publish profile` kimlik doğrulaması i
 Yayımlama profili kullanan bir .NET Linux iş akışı ayarlayın.
 
 ```yaml
-name: Deploy DotNet project to Azure function app with a Linux environment
+name: Deploy DotNet project to function app with a Linux environment
 
 on:
   [push]
@@ -241,7 +242,7 @@ jobs:
 Yayımlama profili kullanan bir .NET Windows iş akışı ayarlayın.
 
 ```yaml
-name: Deploy DotNet project to Azure function app with a Windows environment
+name: Deploy DotNet project to function app with a Windows environment
 
 on:
   [push]
@@ -283,7 +284,7 @@ jobs:
 Yayımlama profili kullanan bir Java Linux iş akışı ayarlayın.
 
 ```yaml
-name: Deploy Java project to Azure Function App
+name: Deploy Java project to function app
 
 on:
   [push]
@@ -325,7 +326,7 @@ jobs:
 Yayımlama profili kullanan bir Java Windows iş akışı ayarlayın.
 
 ```yaml
-name: Deploy Java project to Azure Function App
+name: Deploy Java project to function app
 
 on:
   [push]
@@ -369,7 +370,7 @@ jobs:
 Yayımlama profili kullanan bir Node.JS Linux iş akışı ayarlayın.
 
 ```yaml
-name: Deploy Node.js project to Azure Function App
+name: Deploy Node.js project to function app
 
 on:
   [push]
@@ -411,7 +412,7 @@ jobs:
 Yayımlama profili kullanan Node.JS bir Windows iş akışı ayarlayın.
 
 ```yaml
-name: Deploy Node.js project to Azure Function App
+name: Deploy Node.js project to function app
 
 on:
   [push]
@@ -455,7 +456,7 @@ jobs:
 Yayımlama profili kullanan bir Python Linux iş akışı ayarlayın.
 
 ```yaml
-name: Deploy Python project to Azure Function App
+name: Deploy Python project to function app
 
 on:
   [push]

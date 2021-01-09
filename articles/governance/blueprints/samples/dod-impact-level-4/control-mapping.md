@@ -1,14 +1,14 @@
 ---
 title: DoD etki düzeyi 4 şema örnek denetimlerini Yazdır
 description: DOD etkisi düzeyi 4 şema örneğinin denetim eşlemesi. Her denetim, değerlendirmede yardımcı olan bir veya daha fazla Azure Ilke tanımına eşlenir.
-ms.date: 10/26/2020
+ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: 376ddd68373026a93eaf08774cee0a1f8ce06bec
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4345cd67cda5b00d89d9eae1f8abaedb40228759
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019540"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035113"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>DOD etkisi düzeyi 4 şema örneğinin denetim eşlemesi
 

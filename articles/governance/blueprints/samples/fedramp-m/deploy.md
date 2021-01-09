@@ -1,14 +1,14 @@
 ---
 title: Fedrampa orta şema örneğini dağıtma
 description: Şema yapıt parametresi ayrıntıları dahil olmak üzere fedrampa orta şema örneği için adımları dağıtın.
-ms.date: 10/26/2020
+ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: 21da37b66626b3591fc0c4053cb194486273fc22
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a0e391b20ec662d2bb7bc5b22a7f33c056a9378e
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675867"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034841"
 ---
 # <a name="deploy-the-fedramp-moderate-blueprint-sample"></a>Fedrampa orta şema örneğini dağıtma
 
@@ -25,50 +25,50 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 İlk olarak, başlangıç noktası olarak örneği kullanarak ortamınızda yeni bir şema oluşturup şema örneğini uygulayın.
 
-1. Sol bölmede **Tüm hizmetler** 'i seçin. **Şemalar** ’ı arayıp seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 
 1. Soldaki **Başlangıç** sayfasında, _Şema oluştur_ bölümündeki **Oluştur** düğmesini seçin.
 
-1. _Diğer örnekler_ altında **fedrampa orta** şema örneğini bulun ve **Bu örneği kullan** ' ı seçin.
+1. _Diğer örnekler_ altında **fedrampa orta** şema örneğini bulun ve **Bu örneği kullan**' ı seçin.
 
 1. Şema örneğinin _Temel bilgiler_ bölümüne girin:
 
-   - **Şema adı** : fedrata orta şema örneğinin kopyasına bir ad verin.
-   - **Tanım konumu** : üç noktayı kullanın ve örneğin kopyasını kaydetmek için yönetim grubunu seçin.
+   - **Şema adı**: fedrata orta şema örneğinin kopyasına bir ad verin.
+   - **Tanım konumu**: üç noktayı kullanın ve örneğin kopyasını kaydetmek için yönetim grubunu seçin.
 
 1. Sayfanın üst kısmındaki _Yapıtlar_ sekmesini seçin veya sayfanın en altındaki **Sonraki: Yapıtlar** seçeneğini belirleyin.
 
-1. Şema örneğini oluşturan yapıtların listesini gözden geçirin. Yapıtların çoğu parametreler içerir; bu parametreleri daha sonra tanımlayacağız. Şema örneğini gözden geçirmeyi tamamladığınızda **Taslağı Kaydet** ’i seçin.
+1. Şema örneğini oluşturan yapıtların listesini gözden geçirin. Yapıtların çoğu parametreler içerir; bu parametreleri daha sonra tanımlayacağız. Şema örneğini gözden geçirmeyi tamamladığınızda **Taslağı Kaydet**’i seçin.
 
 ## <a name="publish-the-sample-copy"></a>Örnek kopyayı yayımlama
 
 Şimdi şema örneği kopyanız, ortamınızda oluşturulmuştur. Bu, **Taslak** modunda oluşturulur ve atanabilmesi ve dağıtılabilmesi için önce **Yayımlandı** durumunda olmalıdır. Şema örneğinin kopyası ortamınıza ve gereksinimlerinize göre özelleştirilebilir, ancak bu değişiklik, fedrata orta denetimleri ile hizalamadan uzağa taşınabilir.
 
-1. Sol bölmede **Tüm hizmetler** 'i seçin. **Şemalar** ’ı arayıp seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 
 1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. Filtreleri kullanarak şema örneği kopyanızı bulup seçin.
 
-1. Sayfanın üst kısmında **Şemayı yayımla** ’yı seçin. Sağdaki yeni sayfada, şema örneği kopyanız için bir **Sürüm** sağlayın. Bu özellik daha sonra bir değişiklik yaptığınızda faydalı olacaktır. "Fedrampa orta şema örneğinden yayımlanan ilk sürüm" gibi **değişiklik notları** sağlayın. Sayfanın alt kısmında **Yayımla** düğmesini seçin.
+1. Sayfanın üst kısmında **Şemayı yayımla**’yı seçin. Sağdaki yeni sayfada, şema örneği kopyanız için bir **Sürüm** sağlayın. Bu özellik daha sonra bir değişiklik yaptığınızda faydalı olacaktır. "Fedrampa orta şema örneğinden yayımlanan ilk sürüm" gibi **değişiklik notları** sağlayın. Sayfanın alt kısmında **Yayımla** düğmesini seçin.
 
 ## <a name="assign-the-sample-copy"></a>Örnek kopyayı atama
 
 Şema örneğinin kopyası başarıyla **yayımlandıktan** sonra, kaydedildiği yönetim grubu içindeki bir aboneliğe atanabilir. Bu adımda, şema örneği kopyasının her bir dağıtımını benzersiz hale getirmek için parametreler sağlanır.
 
-1. Sol bölmede **Tüm hizmetler** 'i seçin. **Şemalar** ’ı arayıp seçin.
+1. Sol bölmede **Tüm hizmetler**'i seçin. **Şemalar**’ı arayıp seçin.
 
 1. Sol taraftaki **Blueprint tanımları** sayfasını seçin. Filtreleri kullanarak şema örneği kopyanızı bulup seçin.
 
-1. Şema tanımı sayfasının en üstünde **Şema ata** ’yı seçin.
+1. Şema tanımı sayfasının en üstünde **Şema ata**’yı seçin.
 
 1. Şema ataması için parametre değerlerini sağlayın:
 
    - Temel Bilgiler
 
-     - **Abonelikler** : şema örneğinin kopyasını kaydettiğiniz yönetim grubundaki bir veya daha fazla abonelik seçin. Birden fazla abonelik seçerseniz, girilen parametreler kullanılarak her biri için bir atama oluşturulur.
-     - **Atama adı** : ad, BLUEPRINT adına göre önceden doldurulur.
+     - **Abonelikler**: şema örneğinin kopyasını kaydettiğiniz yönetim grubundaki bir veya daha fazla abonelik seçin. Birden fazla abonelik seçerseniz, girilen parametreler kullanılarak her biri için bir atama oluşturulur.
+     - **Atama adı**: ad, BLUEPRINT adına göre önceden doldurulur.
        Gerektiğinde değiştirin veya olduğu gibi bırakın.
-     - **Konum** : yönetilen kimliğin oluşturulacağı bölgeyi seçin. Azure Blueprint bu yönetilen kimliği kullanarak tüm yapıtları atanmış şemaya dağıtır. Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikler](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - Şema **tanımı sürümü** : şema örneğinin kopyasının **yayınlanmış** bir sürümünü seçin.
+     - **Konum**: yönetilen kimliğin oluşturulacağı bölgeyi seçin. Azure Blueprint bu yönetilen kimliği kullanarak tüm yapıtları atanmış şemaya dağıtır. Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikler](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - Şema **tanımı sürümü**: şema örneğinin kopyasının **yayınlanmış** bir sürümünü seçin.
 
    - Kilit ataması
 
@@ -85,7 +85,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 1. Tüm parametreler girildikten sonra, sayfanın alt kısmında **Ata** seçeneğini belirleyin. Şema ataması oluşturulur ve yapıt dağıtımı başlar. Dağıtım kabaca bir saat sürer. Dağıtımın durumunu denetlemek için şema atamasını açın.
 
 > [!WARNING]
-> Azure Blueprints hizmeti ve yerleşik şema örnekleri **ücretsizdir** . Azure kaynakları, [ürüne göre fiyatlandırılır](https://azure.microsoft.com/pricing/). Bu şema örneği tarafından dağıtılan kaynakları çalıştırma maliyetini tahmin etmek için [fiyatlandırma hesaplayıcısını](https://azure.microsoft.com/pricing/calculator/) kullanın.
+> Azure Blueprints hizmeti ve yerleşik şema örnekleri **ücretsizdir**. Azure kaynakları, [ürüne göre fiyatlandırılır](https://azure.microsoft.com/pricing/). Bu şema örneği tarafından dağıtılan kaynakları çalıştırma maliyetini tahmin etmek için [fiyatlandırma hesaplayıcısını](https://azure.microsoft.com/pricing/calculator/) kullanın.
 
 ## <a name="artifact-parameters-table"></a>Yapıt parametreleri tablosu
 

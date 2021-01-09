@@ -1,6 +1,6 @@
 ---
 title: IoT Edge güvenlik modülünü dağıt
-description: IoT Edge 'da IoT güvenlik Aracısı için bir Defender dağıtma hakkında bilgi edinin.
+description: IoT Edge 'da IoT güvenlik Aracısı için bir Defender dağıtımı hakkında bilgi edinin.
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: c2b440413599ce07112231af17daa0bc14817b76
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 9ac283721526488f587fcabc68348dafac1835db
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832786"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033362"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>IoT Edge cihazınızda bir güvenlik modülü dağıtma
 
@@ -51,13 +51,13 @@ IoT Edge için bir Defender for IoT güvenlik modülünü dağıtmak üzere aşa
 
 1. Azure portal **Market**' i açın.
 
-1. **Nesnelerin interneti** seçip **IoT için Defender** araması yapın ve seçin.
+1. **Nesnelerin interneti**' yi seçin, **IoT Için Azure Güvenlik Merkezi** ' ni arayın ve seçin.
 
    :::image type="content" source="media/howto/edge-onboarding-8.png" alt-text="IoT için Defender 'ı seçin":::
 
-1. Dağıtımı yapılandırmak için **Oluştur** ' a tıklayın.
+1. Dağıtımı yapılandırmak için **Oluştur** ' u seçin.
 
-1. IoT Hub Azure **aboneliğini** seçin ve ardından **IoT Hub** seçin.<br>Tek bir cihazı hedeflemek için **cihaza dağıt** ' ı seçin veya birden çok cihazı hedeflemek Için **ölçeğe dağıt** ' ı seçin ve **Oluştur**' a tıklayın. Ölçekli dağıtım hakkında daha fazla bilgi için bkz. [nasıl dağıtılır](../iot-edge/how-to-deploy-at-scale.md).
+1. IoT Hub Azure **aboneliğini** seçin ve ardından **IoT Hub** seçin.<br>Tek bir cihazı hedeflemek için **cihaza dağıt** ' ı seçin veya birden çok cihazı hedeflemek Için **ölçeğe dağıt** ' ı seçin ve **Oluştur**' u seçin. Ölçekli dağıtım hakkında daha fazla bilgi için bkz. [nasıl dağıtılır](../iot-edge/how-to-deploy-at-scale.md).
 
     >[!Note]
     >**Aynı ölçekte dağıt**' ı seçtiyseniz aşağıdaki yönergelerde **Modül Ekle** sekmesine geçmeden önce cihaz adını ve ayrıntılarını ekleyin.
@@ -68,7 +68,7 @@ IoT için Defender için IoT Edge dağıtımınızı tamamlamaya yönelik her ad
 
 1. **AzureSecurityCenterforIoT** modülünü seçin.
 1. **Modül ayarları** sekmesinde **adı** **azureiotsecurity** olarak değiştirin.
-1. **Çalıştırılmaları değişkenleri** sekmesinde, gerekirse bir değişken ekleyin (örneğin, hata ayıklama düzeyi).
+1. **Ortam değişkenleri** sekmesinde, gerekirse bir değişken ekleyin (örneğin, *hata ayıklama düzeyi* ekleyebilir ve şu değerlerden birine ayarlayabilirsiniz: "önemli", "hata", "uyarı" veya "bilgi").
 1. **Kapsayıcı oluşturma seçenekleri** sekmesinde aşağıdaki yapılandırmayı ekleyin:
 
     ``` json
@@ -112,8 +112,12 @@ IoT için Defender için IoT Edge dağıtımınızı tamamlamaya yönelik her ad
 #### <a name="step-2-runtime-settings"></a>2. Adım: çalışma zamanı ayarları
 
 1. **Çalışma zamanı ayarları**' nı seçin.
-1. **Edge hub**'ı altında, **görüntüyü** **MCR.Microsoft.com/azureiotedge-Hub:1.0.8.3** olarak değiştirin.
-1. **Oluşturma seçeneklerini** doğrulama aşağıdaki yapılandırmaya ayarlanır:
+2. **Edge hub**'ı altında, **görüntüyü** **MCR.Microsoft.com/azureiotedge-Hub:1.0.8.3** olarak değiştirin.
+
+    >[!Note]
+    > Şu anda, sürüm 1.0.8.3 veya daha eski sürümlerde desteklenmektedir.
+
+3. **Oluşturma seçeneklerini** doğrulama aşağıdaki yapılandırmaya ayarlanır:
 
     ``` json
     {
@@ -139,9 +143,9 @@ IoT için Defender için IoT Edge dağıtımınızı tamamlamaya yönelik her ad
     }
     ```
 
-1. **Kaydet**’i seçin.
+4. **Kaydet**’i seçin.
 
-1. **İleri**’yi seçin.
+5. **İleri**’yi seçin.
 
 #### <a name="step-3-specify-routes"></a>3. Adım: yolları belirtme
 

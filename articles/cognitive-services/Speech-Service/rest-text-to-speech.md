@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: bfdea5f2e2bd20a35ee948e99b3be9bf55038b13
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: 9bee5fa6b76aad9305947ebe460f37c399340038
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760665"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033473"
 ---
 # <a name="text-to-speech-rest-api"></a>Metin okuma REST API'si
 
@@ -35,7 +35,7 @@ Bu API 'yi kullanmadan önce şunları anlayın:
 * Metin okuma REST API bir yetkilendirme üst bilgisi gerektirir. Bu, hizmete erişmek için bir belirteç değişimini doldurmanız gerektiği anlamına gelir. Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication).
 
 > [!TIP]
-> Kamu Bulutu (FairFax) uç noktaları için [Azure Kamu belgelerini](/azure/azure-government/compare-azure-government-global-azure) inceleyin.
+> Azure Kamu ve Azure Çin uç noktaları için [Bu makaleye](sovereign-clouds.md) bakın.
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -45,12 +45,12 @@ Bu API 'yi kullanmadan önce şunları anlayın:
 
 ### <a name="regions-and-endpoints"></a>Bölgeler ve uç noktalar
 
-| Bölge | Uç Nokta |
+| Region | Uç Nokta |
 |--------|----------|
 | Doğu Avustralya | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Güney Brezilya | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Brezilya Güney | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Orta Kanada | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Orta ABD | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Central US | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Doğu Asya | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Doğu ABD | `https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Doğu ABD 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -76,7 +76,10 @@ Bu tabloda, metinden konuşmaya istekleri için gerekli ve isteğe bağlı üstb
 
 | Üst bilgi | Açıklama | Gerekli/Isteğe bağlı |
 |--------|-------------|---------------------|
-| `Authorization` | Bir yetkilendirme belirteci öncesinde kelimedir `Bearer` . Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication). | Gerekli |
+| `Ocp-Apim-Subscription-Key` | Konuşma hizmeti abonelik anahtarınız. | Bu üst bilgi ya da `Authorization` gerekli. |
+| `Authorization` | Bir yetkilendirme belirteci öncesinde kelimedir `Bearer` . Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication). | Bu üst bilgi ya da `Ocp-Apim-Subscription-Key` gerekli. |
+
+
 
 ### <a name="request-body"></a>İstek gövdesi
 
@@ -90,7 +93,7 @@ Bu istek yalnızca bir yetkilendirme üst bilgisi gerektirir.
 GET /cognitiveservices/voices/list HTTP/1.1
 
 Host: westus.tts.speech.microsoft.com
-Authorization: Bearer [Base64 access_token]
+Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
 ```
 
 ### <a name="sample-response"></a>Örnek yanıt

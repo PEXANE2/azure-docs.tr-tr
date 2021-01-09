@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: b15849fb8fbfed5d55b9c224f51634047b7c75b2
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 222f6ebacb6139ca26a6f1cdd0f896270c9b2fc2
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914493"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034304"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Azure Logic Apps ve güç otomatikleştirme için ifadelerde işlevleri kullanmaya yönelik başvuru kılavuzu
 
@@ -166,7 +166,7 @@ Bir değerin türünü veya biçimini değiştirmek için bu dönüştürme işl
 | [float](../logic-apps/workflow-definition-language-functions-reference.md#float) | Giriş değeri için bir kayan nokta numarası döndürür. |
 | [int](../logic-apps/workflow-definition-language-functions-reference.md#int) | Bir dize için tamsayı sürümünü döndürün. |
 | [nesnesinde](../logic-apps/workflow-definition-language-functions-reference.md#json) | Bir dize veya XML için JavaScript Nesne Gösterimi (JSON) türü değerini veya nesnesini döndürün. |
-| [dizisinde](../logic-apps/workflow-definition-language-functions-reference.md#string) | Bir giriş değeri için dize sürümünü döndürün. |
+| [string](../logic-apps/workflow-definition-language-functions-reference.md#string) | Bir giriş değeri için dize sürümünü döndürün. |
 | [URIComponent](../logic-apps/workflow-definition-language-functions-reference.md#uriComponent) | URL-güvenli olmayan karakterleri kaçış karakterleriyle değiştirerek, bir giriş değeri için URI kodlu sürümü döndürün. |
 | [Urıonenttobinary](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToBinary) | URI kodlamalı dize için ikili sürümü döndürün. |
 | [Urıonenttostring](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToString) | URI kodlamalı dize için dize sürümünü döndürün. |
@@ -1701,7 +1701,7 @@ div(<dividend>, <divisor>)
 
 | Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*Bölüm-sonuç*> | Tamsayı veya kayan | İlk sayının ikinci sayıya bölünme sonucu. Bölünen ya da bölen float türüne sahipse, sonucun float türü vardır. <p><p>**Note**: float sonucunu bir tamsayıya dönüştürmek için, mantıksal uygulamanızdan [bir Azure işlevi oluşturmayı ve çağırmayı](../logic-apps/logic-apps-azure-functions.md) deneyin. |
+| <*Bölüm-sonuç*> | Tamsayı veya kayan | İlk sayının ikinci sayıya bölünme sonucu. Bölünen ya da bölen float türüne sahipse, sonucun float türü vardır. <p><p>**Note**: float sonucunu bir tamsayıya dönüştürmek için, mantıksal uygulamanızdan [Azure 'da bir işlev oluşturma ve çağırma](../logic-apps/logic-apps-azure-functions.md) yapmayı deneyin. |
 ||||
 
 *Örnek 1*

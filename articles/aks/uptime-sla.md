@@ -3,14 +3,14 @@ title: Çalışma süresi SLA 'Sı ile Azure Kubernetes hizmeti (AKS)
 description: Azure Kubernetes hizmeti (AKS) API sunucusu için isteğe bağlı çalışma süresi SLA teklifi hakkında bilgi edinin.
 services: container-service
 ms.topic: conceptual
-ms.date: 06/24/2020
+ms.date: 01/08/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: d9d22b54ef2534cf0adb205175fdc3f1c57205fb
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 95728ca14b96adf7396ca13888107477d953b2a9
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607348"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033345"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes hizmeti (AKS) çalışma süresi SLA 'Sı
 
@@ -26,7 +26,7 @@ Müşteriler, bir hizmet düzeyi hedefi (SLO 99,5) olan sınırsız sayıda ücr
 ## <a name="region-availability"></a>Bölge kullanılabilirliği
 
 * Çalışma süresi SLA 'Sı, [aks 'in desteklendiği](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)Genel bölgelerde ve Azure Kamu bölgelerinde kullanılabilir.
-* Çalışma süresi SLA 'Sı, AKS 'nin desteklendiği tüm bölgelerde [özel aks kümelerinde][private-clusters] kullanılabilir.
+* Çalışma süresi SLA 'Sı, AKS 'nin desteklendiği tüm genel bölgelerde [özel AKS kümelerinde][private-clusters] kullanılabilir.
 
 ## <a name="sla-terms-and-conditions"></a>SLA hüküm ve koşulları
 

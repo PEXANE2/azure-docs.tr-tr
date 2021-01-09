@@ -1,14 +1,14 @@
 ---
 title: Bağlı makine Windows aracısına genel bakış
 description: Bu makalede, karma ortamlarda barındırılan sanal makinelerin izlenmesini destekleyen Azure Arc etkin sunucu aracısına sunulan ayrıntılı bir genel bakış sunulmaktadır.
-ms.date: 12/21/2020
+ms.date: 01/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: bff76cbaa678ed82538eb6d75633aa94cdce30bf
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 86d524665b70725108324b1d88521a4c3cb8ff05
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97723278"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033974"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc etkin sunucular aracısına genel bakış
 
@@ -68,6 +68,8 @@ Windows ve Linux işletim sisteminin aşağıdaki sürümleri resmi olarak Azure
 ### <a name="azure-subscription-and-service-limits"></a>Azure aboneliği ve hizmet limitleri
 
 Makinelerinizi Azure Arc etkin sunucularıyla yapılandırmadan önce, bağlanacak makine sayısını planlamak için Azure Resource Manager [abonelik sınırlarını](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) ve [kaynak grubu sınırlarını](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) gözden geçirin.
+
+Azure Arc etkin sunucuları bir kaynak grubundaki en fazla 5.000 makine örneğini destekler.
 
 ### <a name="transport-layer-security-12-protocol"></a>Aktarım Katmanı Güvenliği 1,2 Protokolü
 

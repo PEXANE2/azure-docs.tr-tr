@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 707c69efddeda364f0c62e9719ae1a6073dfe9ad
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 993cd614f150866817e8d71dbd9dca9be606465f
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935742"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035164"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Azure Işlevleri için Azure Güvenlik temeli
 
@@ -56,16 +56,16 @@ Azure Işlevleri uygulamasıyla ağ güvenlik grupları (NSG 'ler) kullanıyorsa
 
 ### <a name="13-protect-critical-web-applications"></a>1,3: kritik Web uygulamalarını koruma
 
-**Kılavuz**: Azure işlev uç noktalarınızı üretimde tam olarak güvenli hale getirmek için aşağıdaki işlev uygulama düzeyi güvenlik seçeneklerinden birini uygulamayı göz önünde bulundurmanız gerekir:
+**Kılavuz**: Azure işlevleri uç noktalarınızın üretimde tam olarak güvenliğini sağlamak için aşağıdaki işlev uygulama düzeyi güvenlik seçeneklerinden birini uygulamayı göz önünde bulundurmanız gerekir:
 - İşlev uygulamanız için App Service kimlik doğrulaması/yetkilendirme 'yi açın,
 - İsteklerin kimliğini doğrulamak için Azure API Management (APıM) kullanın veya
 - İşlev uygulamanızı bir Azure App Service Ortamı dağıtın.
 
-Ayrıca, uzaktan hata ayıklamanın üretim Azure işlevleriniz için devre dışı bırakıldığından emin olun. Ayrıca, çıkış noktaları arası kaynak paylaşımı (CORS) tüm etki alanlarının Azure Işlev uygulamanıza erişmesine izin vermemelidir. Yalnızca gerekli etki alanlarının Azure Işlev uygulamasıyla etkileşime girmesine izin verin.
+Ayrıca, uzaktan hata ayıklamanın üretim Azure işlevleriniz için devre dışı bırakıldığından emin olun. Ayrıca, çıkış noktaları arası kaynak paylaşımı (CORS), tüm etki alanlarının Azure 'daki işlev uygulamanıza erişmesine izin vermemelidir. Yalnızca gerekli etki alanlarının işlev uygulamanızla etkileşime girmesine izin verin.
 
 Gelen trafiğin ek incelemesi için ağ yapılandırmasının bir parçası olarak Azure Web uygulaması güvenlik duvarı (WAF) dağıtımı yapmayı göz önünde bulundurun. WAF ve alma günlükleri için tanılama ayarını bir depolama hesabı, Olay Hub 'ı veya Log Analytics çalışma alanında etkinleştirin. 
 
-- [Üretimde Azure Işlev uç noktalarının güvenliğini sağlama](./functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production)
+- [Üretimde Azure Işlevleri uç noktalarının güvenliğini sağlama](./functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production)
 
 - [Azure WAF dağıtma](../web-application-firewall/ag/create-waf-policy-ag.md)
 
@@ -76,7 +76,7 @@ Gelen trafiğin ek incelemesi için ağ yapılandırmasının bir parçası olar
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: bilinen kötü amaçlı IP adresleriyle iletişimleri reddetme
 
 **Rehberlik**: DDoS saldırılarına karşı koruma sağlamak için işlevleriniz uygulamalarınızla Ilişkili sanal ağlarda DDoS koruma standardını etkinleştirin. Bilinen kötü amaçlı veya kullanılmayan genel IP adresleriyle iletişimleri reddetmek için Azure Güvenlik Merkezi tümleşik tehdit zekasını kullanın.
-Ayrıca, tüm gelen isteklerin kimliğini doğrulamak ve kötü amaçlı trafiği filtrelemek için Azure Web uygulaması güvenlik duvarı gibi bir ön uç ağ geçidi yapılandırın. Azure Web uygulaması güvenlik duvarı, SQL 'leri, siteler arası betikleri, kötü amaçlı yazılım yüklemelerini ve DDoS saldırılarını engellemek için gelen Web trafiğini inceleyerek Azure Işlev uygulamalarınızın güvenliğini sağlamaya yardımcı olabilir. Bir WAF 'nin tanıtımı için App Service Ortamı veya özel uç noktalar (Önizleme) kullanılması gerekir. Özel uç noktaların, üretim iş yükleriyle kullanılmadan önce artık (Önizleme) olmadığından emin olun.
+Ayrıca, tüm gelen isteklerin kimliğini doğrulamak ve kötü amaçlı trafiği filtrelemek için Azure Web uygulaması güvenlik duvarı gibi bir ön uç ağ geçidi yapılandırın. Azure Web uygulaması güvenlik duvarı, SQL 'leri, siteler arası betikleri, kötü amaçlı yazılım yüklemelerini ve DDoS saldırılarını engellemek için gelen Web trafiğini inceleyerek işlev uygulamanızın güvenliğini sağlamaya yardımcı olabilir. Bir WAF 'nin tanıtımı için App Service Ortamı veya özel uç noktalar (Önizleme) kullanılması gerekir. Özel uç noktaların, üretim iş yükleriyle kullanılmadan önce artık (Önizleme) olmadığından emin olun.
 
 - [Azure İşlevleri ağ seçenekleri](./functions-networking-options.md)
 
@@ -175,9 +175,9 @@ Alternatif olarak, Azure için ID/IP 'ler özellikleri içeren Azure Marketi 'nd
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: ağ cihazları için standart güvenlik yapılandırmalarının bakımını yapma
 
 **Kılavuz**: Azure işlevleriniz ile ilgili ağ ayarları için standart güvenlik yapılandırması tanımlayın ve uygulayın. Azure işlevlerinizin ağ yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak için "Microsoft. Web" ve "Microsoft. Network" ad alanlarında Azure Ilke diğer adlarını kullanın. Azure Işlevleri için yerleşik ilke tanımlarından da yararlanabilirsiniz, örneğin:
-- CORS, her kaynağın Işlev uygulamalarınıza erişmesine izin vermemelidir
-- İşlev Uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
-- İşlev Uygulaması en son TLS sürümü kullanılmalıdır
+- CORS, her kaynağın işlev uygulamalarınıza erişmesine izin vermemelidir
+- İşlev uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
+- İşlev uygulamanızda en son TLS sürümü kullanılmalıdır
 
 Ayrıca, Azure Resource Manager şablonları, Azure rol tabanlı erişim denetimi (Azure RBAC) ve tek bir şema tanımında ilkeler gibi anahtar ortam yapıtlarını paketleyerek büyük ölçekli Azure dağıtımlarını basitleştirmek için Azure şemaları 'nı kullanabilirsiniz. Yeni aboneliklere, ortamlara kolayca şema uygulayabilir ve sürüm oluşturma aracılığıyla denetim ve yönetime yönetim sağlayabilirsiniz.
 
@@ -233,7 +233,7 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzeri
 
 Azure Işlevleri, işlevleri izlemek için Azure Application Insights ile yerleşik tümleştirme de sağlar. Application Insights günlük, performans ve hata verilerini toplar. Performans sorunlarını otomatik olarak algılar ve sorunları tanılamanıza ve işlevlerinizin nasıl kullanıldığını anlamanıza yardımcı olacak güçlü analiz araçları içerir.
 
-Azure Işlev uygulamanızda yerleşik özel güvenlik/denetim günlükleriniz varsa, "FunctionAppLogs" Tanılama ayarını etkinleştirin ve günlükleri bir Log Analytics çalışma alanına, Azure Olay Hub 'ına veya Arşiv için Azure depolama hesabına gönderin. 
+İşlev uygulamanızda yerleşik özel güvenlik/denetim günlükleriniz varsa, "FunctionAppLogs" Tanılama ayarını etkinleştirin ve günlükleri bir Log Analytics çalışma alanına, Azure Olay Hub 'ına veya Arşiv için Azure depolama hesabına gönderin. 
 
 İsteğe bağlı olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri etkinleştirebilir ve bu verileri ayarlayabilirsiniz. 
 
@@ -253,7 +253,7 @@ Azure Işlev uygulamanızda yerleşik özel güvenlik/denetim günlükleriniz va
 
 **Rehberlik**: denetim düzlemi denetim günlüğü Için Azure etkinlik günlüğü tanılama ayarlarını etkinleştirin ve günlükleri bir Log Analytics çalışma alanına, Azure Olay Hub 'ına veya Arşiv için Azure depolama hesabına gönderin. Azure etkinlik günlüğü verilerini kullanarak, Azure kaynaklarınızın denetim düzlemi düzeyinde gerçekleştirilen herhangi bir yazma işlemi (PUT, POST, SILME) için "ne, kim ve ne zaman" seçeneğini belirleyebilirsiniz.
 
-Azure Işlev uygulamanızda yerleşik özel güvenlik/denetim günlükleriniz varsa, "FunctionAppLogs" Tanılama ayarını etkinleştirin ve günlükleri bir Log Analytics çalışma alanına, Azure Olay Hub 'ına veya Arşiv için Azure depolama hesabına gönderin. 
+İşlev uygulamanızda yerleşik özel güvenlik/denetim günlükleriniz varsa, "FunctionAppLogs" Tanılama ayarını etkinleştirin ve günlükleri bir Log Analytics çalışma alanına, Azure Olay Hub 'ına veya Arşiv için Azure depolama hesabına gönderin. 
 
 - [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../azure-monitor/platform/activity-log.md)
 
@@ -273,7 +273,7 @@ Azure Işlev uygulamanızda yerleşik özel güvenlik/denetim günlükleriniz va
 
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: güvenlik günlüğü depolama bekletmesini yapılandırma
 
-**Kılavuz**: Azure izleyici 'de, kuruluşunuzun uyumluluk düzenlemelerine göre Azure işlevleri uygulamalarınızla ilişkili Log Analytics çalışma alanları için günlük tutma süresini ayarlayın.
+**Kılavuz**: Azure izleyici 'de, kuruluşunuzun uyumluluk düzenlemelerine göre işlev uygulamalarınızla ilişkili Log Analytics çalışma alanları için günlük tutma süresini ayarlayın.
 
 - [Günlük tutma parametrelerini ayarlama](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
@@ -283,11 +283,11 @@ Azure Işlev uygulamanızda yerleşik özel güvenlik/denetim günlükleriniz va
 
 ### <a name="26-monitor-and-review-logs"></a>2,6: günlükleri izleme ve gözden geçirme
 
-**Kılavuz**: Azure etkinlik günlüğü tanılama ayarlarını ve Azure işlevleri uygulamanız için tanılama ayarlarını etkinleştirin ve günlükleri bir Log Analytics çalışma alanına gönderin. Terimleri aramak, eğilimleri belirlemek, desenleri analiz etmek ve toplanan verilere göre birçok diğer öngörü sağlamak için Log Analytics sorguları gerçekleştirin.
+**Kılavuz**: Azure etkinlik günlüğü tanılama ayarlarını ve işlev uygulamanız için tanılama ayarlarını etkinleştirin ve günlükleri bir Log Analytics çalışma alanına gönderin. Terimleri aramak, eğilimleri belirlemek, desenleri analiz etmek ve toplanan verilere göre birçok diğer öngörü sağlamak için Log Analytics sorguları gerçekleştirin.
 
-Günlük, performans ve hata verilerini toplamak için Azure Işlevleri uygulamalarınızın Application Insights etkinleştirin. Application Insights tarafından toplanan telemetri verilerini Azure portal içinde görüntüleyebilirsiniz.
+Günlük, performans ve hata verilerini toplamak için işlev uygulamalarınızın Application Insights etkinleştirin. Application Insights tarafından toplanan telemetri verilerini Azure portal içinde görüntüleyebilirsiniz.
 
-Azure Işlev uygulamanızda yerleşik özel güvenlik/denetim günlükleriniz varsa, "FunctionAppLogs" Tanılama ayarını etkinleştirin ve günlükleri bir Log Analytics çalışma alanına, Azure Olay Hub 'ına veya Arşiv için Azure depolama hesabına gönderin. 
+İşlev uygulamanızda yerleşik özel güvenlik/denetim günlükleriniz varsa, "FunctionAppLogs" Tanılama ayarını etkinleştirin ve günlükleri bir Log Analytics çalışma alanına, Azure Olay Hub 'ına veya Arşiv için Azure depolama hesabına gönderin. 
 
 İsteğe bağlı olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri etkinleştirebilir ve bu verileri ayarlayabilirsiniz. 
 
@@ -305,9 +305,9 @@ Azure Işlev uygulamanızda yerleşik özel güvenlik/denetim günlükleriniz va
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: anormal etkinlik için uyarıları etkinleştir
 
-**Kılavuz**: Azure etkinlik günlüğü tanılama ayarlarını ve Azure işlevleri uygulamanız için tanılama ayarlarını etkinleştirin ve günlükleri bir Log Analytics çalışma alanına gönderin. Terimleri aramak, eğilimleri belirlemek, desenleri analiz etmek ve toplanan verilere göre birçok diğer öngörü sağlamak için Log Analytics sorguları gerçekleştirin. Log Analytics çalışma alanı sorgularınızı temel alan uyarılar oluşturabilirsiniz.
+**Kılavuz**: Azure etkinlik günlüğü tanılama ayarlarını ve işlev uygulamanız için tanılama ayarlarını etkinleştirin ve günlükleri bir Log Analytics çalışma alanına gönderin. Terimleri aramak, eğilimleri belirlemek, desenleri analiz etmek ve toplanan verilere göre birçok diğer öngörü sağlamak için Log Analytics sorguları gerçekleştirin. Log Analytics çalışma alanı sorgularınızı temel alan uyarılar oluşturabilirsiniz.
 
-Günlük, performans ve hata verilerini toplamak için Azure Işlevleri uygulamalarınızın Application Insights etkinleştirin. Application Insights tarafından toplanan telemetri verilerini görüntüleyebilir ve Azure portal içinde uyarı oluşturabilirsiniz.
+Günlük, performans ve hata verilerini toplamak için işlev uygulamalarınızın Application Insights etkinleştirin. Application Insights tarafından toplanan telemetri verilerini görüntüleyebilir ve Azure portal içinde uyarı oluşturabilirsiniz.
 
 İsteğe bağlı olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri etkinleştirebilir ve bu verileri ayarlayabilirsiniz. 
 
@@ -327,7 +327,7 @@ Günlük, performans ve hata verilerini toplamak için Azure Işlevleri uygulama
 
 ### <a name="28-centralize-anti-malware-logging"></a>2,8: kötü amaçlı yazılımdan koruma 'yı merkezileştirme
 
-**Rehberlik**: uygulanamaz; Azure Işlevleri uygulamaları, kötü amaçlı yazılımdan koruma ile ilgili günlükleri işlemez veya oluşturmaz.
+**Rehberlik**: uygulanamaz; işlev uygulamaları kötü amaçlı yazılımdan koruma ile ilgili günlükleri işlemez veya oluşturmaz.
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -335,7 +335,7 @@ Günlük, performans ve hata verilerini toplamak için Azure Işlevleri uygulama
 
 ### <a name="29-enable-dns-query-logging"></a>2,9: DNS sorgu günlüğünü etkinleştir
 
-**Rehberlik**: uygulanamaz; Azure Işlevleri uygulamaları, Kullanıcı tarafından erişilebilen DNS ile ilgili günlükleri işlemez veya oluşturmaz.
+**Rehberlik**: uygulanamaz; işlev uygulamaları, Kullanıcı tarafından erişilebilen DNS ile ilgili günlükleri işlemez veya oluşturmaz.
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -399,7 +399,7 @@ Ayrıca, özel yönetim hesaplarını izlemenize yardımcı olmak için Azure G�
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: Azure Active Directory ile çoklu oturum açma (SSO) kullanın
 
-**Rehberlik**: mümkün olan yerlerde, işlev uygulamanıza veri erişimi için tek başına bağımsız kimlik bilgilerini yapılandırmak yerıne Azure Active Directory SSO kullanın. Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini kullanın. App Service kimlik doğrulaması/yetkilendirme özelliğini kullanarak Azure Işlevleri uygulamalarınız için çoklu oturum açma uygulayın.
+**Rehberlik**: mümkün olan yerlerde, işlev uygulamanıza veri erişimi için tek başına bağımsız kimlik bilgilerini yapılandırmak yerıne Azure Active Directory SSO kullanın. Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini kullanın. App Service kimlik doğrulaması/yetkilendirme özelliğini kullanarak işlev uygulamalarınız için çoklu oturum açma uygulayın.
 
 - [Azure Işlevlerinde kimlik doğrulama ve yetkilendirmeyi anlama](../app-service/overview-authentication-authorization.md#identity-providers)
 
@@ -459,9 +459,9 @@ Ayrıca, riskli Kullanıcı davranışında uyarıları ve raporları görüntü
 
 ### <a name="39-use-azure-active-directory"></a>3,9: Azure Active Directory kullanın
 
-**Kılavuz**: Azure işlevleri uygulamalarınız için merkezi kimlik doğrulama ve yetkilendirme sistemi olarak Azure ACTIVE DIRECTORY (ad) kullanın. Azure AD, bekleyen ve aktarım sırasında veriler için güçlü şifrelemeyi kullanarak verileri korur. Azure AD Ayrıca, karma ve Kullanıcı kimlik bilgilerini güvenli bir şekilde depolar.
+**Rehberlik**: işlev uygulamalarınız için merkezi kimlik doğrulama ve yetkilendirme sistemi olarak Azure ACTIVE DIRECTORY (ad) kullanın. Azure AD, bekleyen ve aktarım sırasında veriler için güçlü şifrelemeyi kullanarak verileri korur. Azure AD Ayrıca, karma ve Kullanıcı kimlik bilgilerini güvenli bir şekilde depolar.
 
-- [Azure Işlevleri uygulamanızı Azure AD oturum açma bilgilerini kullanacak şekilde yapılandırma](../app-service/configure-authentication-provider-aad.md)
+- [İşlev uygulamanızı Azure AD oturum açma bilgilerini kullanacak şekilde yapılandırma](../app-service/configure-authentication-provider-aad.md)
 
 - [Azure AD örneği oluşturma ve yapılandırma](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
@@ -483,13 +483,13 @@ Ayrıca, riskli Kullanıcı davranışında uyarıları ve raporları görüntü
 
 ### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3,11: devre dışı bırakılmış hesaplara erişme girişimlerini izleme
 
-**Kılavuz**: Azure işlev uygulamalarınız için merkezi kimlik doğrulama ve yetkilendirme sistemi olarak Azure ACTIVE DIRECTORY (ad) kullanın. Azure AD, bekleyen ve aktarım sırasında veriler için güçlü şifrelemeyi kullanarak verileri korur. Azure AD Ayrıca, karma ve Kullanıcı kimlik bilgilerini güvenli bir şekilde depolar.
+**Rehberlik**: işlev uygulamalarınız için merkezi kimlik doğrulama ve yetkilendirme sistemi olarak Azure ACTIVE DIRECTORY (ad) kullanın. Azure AD, bekleyen ve aktarım sırasında veriler için güçlü şifrelemeyi kullanarak verileri korur. Azure AD Ayrıca, karma ve Kullanıcı kimlik bilgilerini güvenli bir şekilde depolar.
 
 Azure AD oturum açma etkinliğine, denetim ve risk olay günlüğü kaynaklarına erişerek Azure Sentinel veya bir üçüncü taraf SıEM ile tümleştirmenize olanak tanır.
 
 Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturarak ve Log Analytics çalışma alanına denetim günlüklerini ve oturum açma günlüklerini göndererek kolaylaştırabilirsiniz. Log Analytics içinde, istenen günlük uyarılarını yapılandırabilirsiniz.
 
-- [Azure Işlevleri uygulamanızı Azure AD oturum açma bilgilerini kullanacak şekilde yapılandırma](../app-service/configure-authentication-provider-aad.md)
+- [İşlev uygulamanızı Azure AD oturum açma bilgilerini kullanacak şekilde yapılandırma](../app-service/configure-authentication-provider-aad.md)
 
 - [Azure Etkinlik Günlüklerini Azure İzleyici ile tümleştirme](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
@@ -501,7 +501,7 @@ Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturar
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: hesap oturum açma davranışı sapmasından uyar
 
-**Kılavuz**: Azure işlevleri uygulamalarınız için merkezi kimlik doğrulama ve yetkilendirme sistemi olarak Azure ACTIVE DIRECTORY (ad) kullanın. Denetim düzleminde hesap oturum açma davranışı sapması (Azure portal) için, otomatik yanıtları Kullanıcı kimlikleriyle ilgili şüpheli eylemlere yönelik olarak yapılandırmak için Azure Active Directory (AD) kimlik koruması ve risk algılama özelliklerini kullanın. Ayrıca, daha fazla araştırma için verileri Azure Sentinel 'e aktarabilirsiniz.
+**Rehberlik**: işlev uygulamalarınız için merkezi kimlik doğrulama ve yetkilendirme sistemi olarak Azure ACTIVE DIRECTORY (ad) kullanın. Denetim düzleminde hesap oturum açma davranışı sapması (Azure portal) için, otomatik yanıtları Kullanıcı kimlikleriyle ilgili şüpheli eylemlere yönelik olarak yapılandırmak için Azure Active Directory (AD) kimlik koruması ve risk algılama özelliklerini kullanın. Ayrıca, daha fazla araştırma için verileri Azure Sentinel 'e aktarabilirsiniz.
 
 - [Azure AD riskli oturum açma işlemlerini görüntüleme](../active-directory/identity-protection/overview-identity-protection.md)
 
@@ -539,9 +539,9 @@ Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturar
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: hassas bilgileri depolayan veya işleyen sistemleri yalıtma
 
-**Rehberlik**: geliştirme, test ve üretim için ayrı abonelikler ve/veya yönetim grupları uygulayın. Azure Işlevi uygulamalarının sanal ağ (VNet)/subnet ile ayrılması ve uygun şekilde etiketlenmesi gerekir.
+**Rehberlik**: geliştirme, test ve üretim için ayrı abonelikler ve/veya yönetim grupları uygulayın. işlev uygulamalarının sanal ağ (VNet)/subnet ile ayrılması ve uygun şekilde etiketlenmesi gerekir.
 
-Ayrıca, Özel uç noktaları ağ yalıtımı gerçekleştirmek için de kullanabilirsiniz. Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen bir hizmete özel ve güvenli bir şekilde (örneğin: Azure Işlevleri uygulaması HTTPs uç noktası) bağlanan bir ağ arabirimidir. Özel Uç Nokta, sanal ağınızdaki bir özel IP adresini kullanır ve bu sayede hizmeti sanal ağınıza getirir. Özel uç noktalar Premium planda çalışan işlev uygulamalarının (Önizleme) aşamasındadır. Özel uç noktaların, üretim iş yükleriyle kullanılmadan önce artık (Önizleme) olmadığından emin olun.
+Ayrıca, Özel uç noktaları ağ yalıtımı gerçekleştirmek için de kullanabilirsiniz. Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen bir hizmete özel ve güvenli bir şekilde (örneğin: işlev uygulaması HTTPs uç noktası) bağlanan bir ağ arabirimidir. Özel Uç Nokta, sanal ağınızdaki bir özel IP adresini kullanır ve bu sayede hizmeti sanal ağınıza getirir. Özel uç noktalar Premium planda çalışan işlev uygulamalarının (Önizleme) aşamasındadır. Özel uç noktaların, üretim iş yükleriyle kullanılmadan önce artık (Önizleme) olmadığından emin olun.
 
 - [Ek Azure abonelikleri oluşturma](../cost-management-billing/manage/create-subscription.md)
 
@@ -575,7 +575,7 @@ Microsoft, Azure Işlevleri için temel altyapıyı yönetir ve müşteri verile
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: yoldaki tüm hassas bilgileri şifreleyin
 
-**Kılavuz**: Azure işlev uygulamalarınızın Azure Portal, "platform özellikleri: Ağ: SSL" altında "yalnızca https" ayarını etkinleştirin ve en düşük TLS sürümünü 1,2 olarak ayarlayın.
+**Rehberlik**: işlev uygulamalarınızın Azure Portal, "platform özellikleri: Ağ: SSL" altında "yalnızca https" ayarını etkinleştirin ve en düşük TLS sürümünü 1,2 olarak ayarlayın.
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -595,7 +595,7 @@ Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm m�
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
-**Kılavuz**: Azure işlev denetim düzlemi (Azure Portal) erişimini denetlemek için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanın. 
+**Rehberlik**: işlev uygulaması denetim düzlemi (Azure Portal) işlevine erişimi denetlemek için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanın. 
 
 - [Azure RBAC 'yi yapılandırma](../role-based-access-control/role-assignments-portal.md)
 
@@ -629,7 +629,7 @@ Microsoft, Azure Işlevleri için temel altyapıyı yönetir ve müşteri verile
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: kritik Azure kaynaklarında yapılan değişikliklerle ilgili günlük ve uyarı
 
-**Kılavuz**: Azure Izleyici 'Yi Azure etkinlik günlüğü ile birlikte kullanarak, üretim Azure işlev uygulamalarına ve diğer kritik veya ilgili kaynaklara yönelik değişikliklerin ne zaman gerçekleştiği hakkında uyarılar oluşturun.
+**Rehberlik**: Azure Izleyici 'Yi Azure etkinlik günlüğü ile birlikte kullanarak, üretim işlevi uygulamalarına ve diğer kritik veya ilgili kaynaklara yönelik değişikliklerin ne zaman gerçekleştiği hakkında uyarılar oluşturun.
 
 - [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -643,9 +643,9 @@ Microsoft, Azure Işlevleri için temel altyapıyı yönetir ve müşteri verile
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: otomatikleştirilmiş güvenlik açığı tarama araçlarını çalıştırma
 
-**Kılavuz**: Azure işlevleri uygulamalarınızın güvende olmasını sağlamak Için bir DevSecOps uygulaması benimseyin ve yaşam döngüsü süresince mümkün olduğunca güvenli olarak kalır. DevSecOps, kuruluşunuzun güvenlik ekibini ve yeteneklerini, ekipteki herkesin sorumluluğunda güvenlik sağlamak için DevOps uygulamalarınıza ekler.
+**Rehberlik**: işlev uygulamalarınızın güvende olmasını sağlamak Için bir DevSecOps uygulaması benimseyin ve bunların yaşam döngüsü süresince mümkün olduğunca güvenli kalmasını sağlayın. DevSecOps, kuruluşunuzun güvenlik ekibini ve yeteneklerini, ekipteki herkesin sorumluluğunda güvenlik sağlamak için DevOps uygulamalarınıza ekler.
 
-Ayrıca, Azure Işlev uygulamalarınızın güvenliğini sağlamaya yardımcı olmak için Azure Güvenlik Merkezi 'ndeki önerileri izleyin.
+Ayrıca, işlev uygulamalarınızın güvenliğini sağlamaya yardımcı olmak için Azure Güvenlik Merkezi 'ndeki önerileri izleyin.
 
 - [CI/CD ardışık düzenine sürekli güvenlik doğrulaması ekleme](/azure/devops/migrate/security-validation-cicd-pipeline?view=azure-devops)
 
@@ -821,9 +821,9 @@ Azure Kaynak Grafiği 'ni kullanarak aboneliklerinde kaynakları sorgulama/bulma
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: yüksek riskli uygulamaları fiziksel olarak veya mantıksal olarak ayırt edin
 
-**Rehberlik**: hassas veya yüksek riskli Azure işlevi uygulamaları için yalıtım sağlamak üzere ayrı abonelikler ve/veya yönetim grupları uygulayın.
+**Rehberlik**: hassas veya yüksek riskli işlev uygulamaları için yalıtım sağlamak üzere ayrı abonelikler ve/veya yönetim grupları uygulayın.
 
-Yüksek riskli Azure Işlevi uygulamalarını kendi sanal ağına (VNet) dağıtın. Azure Işlevlerinde çevre güvenliği sanal ağlar aracılığıyla sağlanır. Premium planda veya App Service Ortamı (Ao) üzerinde çalışan işlevler VNET 'ler ile tümleştirilebilir. Kullanım durumu için en iyi mimariyi seçin.
+Yüksek riskli işlev uygulamalarını kendi sanal ağına (VNet) dağıtın. İşlev uygulamalarına yönelik çevre güvenliği sanal ağlar aracılığıyla gerçekleştirilir. Premium planda veya App Service Ortamı (Ao) üzerinde çalışan işlevler VNET 'ler ile tümleştirilebilir. Kullanım durumu için en iyi mimariyi seçin.
 
 - [Azure İşlevleri ağ seçenekleri](./functions-networking-options.md)
 
@@ -849,10 +849,10 @@ Yüksek riskli Azure Işlevi uygulamalarını kendi sanal ağına (VNet) dağıt
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: tüm Azure kaynakları için güvenli yapılandırma oluşturma
 
-**Kılavuz**: Azure Ilkesi Ile Azure işlev uygulamanız için standart güvenlik yapılandırması tanımlayın ve uygulayın. Azure Işlevleri uygulamalarınızın yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak için "Microsoft. Web" ad alanındaki Azure Ilke diğer adlarını kullanın. Ayrıca, gibi yerleşik ilke tanımlarından da yararlanabilirsiniz:
-- Yönetilen kimlik İşlev Uygulaması kullanılmalıdır
-- Işlev uygulamaları için uzaktan hata ayıklama kapatılmalıdır
-- İşlev Uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
+**Kılavuz**: Azure ilkesiyle işlev uygulamanız için standart güvenlik yapılandırması tanımlayın ve uygulayın. İşlev uygulamalarınızın yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak için "Microsoft. Web" ad alanındaki Azure Ilke diğer adlarını kullanın. Ayrıca, gibi yerleşik ilke tanımlarından da yararlanabilirsiniz:
+- Yönetilen kimlik, işlev uygulamanızda kullanılmalıdır
+- İşlev uygulamaları için uzaktan hata ayıklama kapatılmalıdır
+- İşlev uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
 
 - [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
@@ -972,7 +972,7 @@ Yüksek riskli Azure Işlevi uygulamalarını kendi sanal ağına (VNet) dağıt
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7,12: kimlikleri güvenli ve otomatik olarak yönetme
 
-**Rehberlik**: Azure Işlev UYGULAMANıZı Azure AD 'de otomatik olarak yönetilen bir kimlikle sağlamak Için Yönetilen kimlikler kullanın. Yönetilen kimlikler, kodunuzda kimlik bilgileri olmadan Key Vault dahil olmak üzere Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmanıza olanak sağlar.
+**Kılavuz**: Azure AD 'de işlev uygulamanızı otomatik olarak yönetilen bir kimlikle sağlamak Için Yönetilen kimlikler kullanın. Yönetilen kimlikler, kodunuzda kimlik bilgileri olmadan Key Vault dahil olmak üzere Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmanıza olanak sağlar.
 
 - [App Service ve Azure Işlevleri için Yönetilen kimlikler kullanma](../app-service/overview-managed-identity.md)
 

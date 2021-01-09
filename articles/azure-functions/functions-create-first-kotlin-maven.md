@@ -1,18 +1,18 @@
 ---
-title: Kotlin ve Maven ile Azure 'da ilk işlevinizi oluşturma
-description: Kotlin ve Maven ile Azure 'da HTTP ile tetiklenen bir işlev oluşturun ve yayımlayın.
+title: Maven kullanarak Azure Işlevlerinde bir Kotlin işlevi oluşturma
+description: Kotlin ve Maven ile Azure Işlevleri 'nde HTTP ile tetiklenen bir işlev uygulaması oluşturun ve yayımlayın.
 author: dglover
 ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8b597f54f22aaf6d904ba276ebdfa3a051b93b2d
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 6f7b79b6e3e72b34a27e5b4f0e1fb5426c539699
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954303"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035249"
 ---
 # <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>Hızlı başlangıç: Kotlin ve Maven ile ilk işlevinizi oluşturma
 
@@ -20,7 +20,7 @@ Bu makale, Azure Işlevleri 'ne bir Kotlin işlev projesi derlemek ve yayımlama
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Kotlin kullanarak işlevleri geliştirmek için aşağıdakilerin yüklü olması gerekir:
 

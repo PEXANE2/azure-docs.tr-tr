@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 20dc6cde9cce6a9d57047940a38adb5cf004ae6a
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 4fc2426189384856d2d2e95887cdabd2f9e9ebea
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347685"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033787"
 ---
 # <a name="azure-table-storage-input-bindings-for-azure-functions"></a>Azure Işlevleri için Azure Tablo depolama Giriş bağlamaları
 
@@ -296,97 +296,6 @@ public class Person : TableEntity
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Aşağıdaki örnek, bir *function.js* dosya ve bağlamayı kullanan [JavaScript kodundaki](functions-reference-node.md) bir tablo girişi bağlamasını gösterir. İşlevi, tek bir tablo satırını okumak için bir kuyruk tetikleyicisi kullanır. 
-
-Dosya *function.js* , bir ve belirtir `partitionKey` `rowKey` . `rowKey`"{QueueTrigger}" değeri, satır anahtarının kuyruk ileti dizesinden geldiğini gösterir.
-
-```json
-{
-  "bindings": [
-    {
-      "queueName": "myqueue-items",
-      "connection": "MyStorageConnectionAppSetting",
-      "name": "myQueueItem",
-      "type": "queueTrigger",
-      "direction": "in"
-    },
-    {
-      "name": "personEntity",
-      "type": "table",
-      "tableName": "Person",
-      "partitionKey": "Test",
-      "rowKey": "{queueTrigger}",
-      "connection": "MyStorageConnectionAppSetting",
-      "direction": "in"
-    }
-  ],
-  "disabled": false
-}
-```
-
-[Yapılandırma](#configuration) bölümünde bu özellikler açıklanmaktadır.
-
-JavaScript kodu aşağıda verilmiştir:
-
-```javascript
-module.exports = function (context, myQueueItem) {
-    context.log('Node.js queue trigger function processed work item', myQueueItem);
-    context.log('Person entity name: ' + context.bindings.personEntity.Name);
-    context.done();
-};
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-Tek tablo satırı 
-
-```json
-{
-  "scriptFile": "__init__.py",
-  "bindings": [
-    {
-      "name": "messageJSON",
-      "type": "table",
-      "tableName": "messages",
-      "partitionKey": "message",
-      "rowKey": "{id}",
-      "connection": "AzureWebJobsStorage",
-      "direction": "in"
-    },
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ],
-      "route": "messages/{id}"
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
-    }
-  ],
-  "disabled": false
-}
-```
-
-```python
-import json
-
-import azure.functions as func
-
-def main(req: func.HttpRequest, messageJSON) -> func.HttpResponse:
-
-    message = json.loads(messageJSON)
-    return func.HttpResponse(f"Table row: {messageJSON}")
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 Aşağıdaki örnek, tablo depolamada belirtilen bir bölümde bulunan kişi nesnelerinin bir listesini döndüren HTTP ile tetiklenen bir işlev gösterir. Örnekte, bölüm anahtarı http rotasına ayıklanır ve tableName ve Connection işlevi işlev ayarlarından çıkarılır. 
@@ -440,7 +349,7 @@ public HttpResponseMessage get(
 }
 ```
 
-Aşağıdaki örnekler, bir Azure tablosunda belirli bir ada sahip kişileri sorgulamak için filtreyi kullanır ve olası eşleşmelerin sayısını 10 sonuçlarla sınırlar.
+Aşağıdaki örnek, bir Azure tablosunda belirli bir ada sahip kişileri sorgulamak için filtreyi kullanır ve olası eşleşmelerin sayısını 10 sonuçla sınırlandırır.
 
 ```java
 @FunctionName("getPersonsByName")
@@ -454,6 +363,143 @@ public Person[] get(
 
     return persons;
 }
+```
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Aşağıdaki örnek, bir *function.js* dosya ve bağlamayı kullanan [JavaScript kodundaki](functions-reference-node.md) bir tablo girişi bağlamasını gösterir. İşlevi, tek bir tablo satırını okumak için bir kuyruk tetikleyicisi kullanır. 
+
+Dosya *function.js* , bir ve belirtir `partitionKey` `rowKey` . `rowKey`"{QueueTrigger}" değeri, satır anahtarının kuyruk ileti dizesinden geldiğini gösterir.
+
+```json
+{
+  "bindings": [
+    {
+      "queueName": "myqueue-items",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "myQueueItem",
+      "type": "queueTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "personEntity",
+      "type": "table",
+      "tableName": "Person",
+      "partitionKey": "Test",
+      "rowKey": "{queueTrigger}",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+[Yapılandırma](#configuration) bölümünde bu özellikler açıklanmaktadır.
+
+JavaScript kodu aşağıda verilmiştir:
+
+```javascript
+module.exports = function (context, myQueueItem) {
+    context.log('Node.js queue trigger function processed work item', myQueueItem);
+    context.log('Person entity name: ' + context.bindings.personEntity.Name);
+    context.done();
+};
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Aşağıdaki işlev, tek bir tablo satırını bir işleve giriş olarak okumak için bir kuyruk tetikleyicisi kullanır.
+
+Bu örnekte, bağlama yapılandırması tablo için açık bir değer belirtir ve ' a `partitionKey` geçirilecek bir ifade kullanır `rowKey` . `rowKey`İfadesi, `{queueTrigger}` satır anahtarının kuyruk ileti dizesinden geldiğini gösterir.
+
+Yapılandırma yapılandırmasında _function.js_:
+
+```json
+{
+  "bindings": [
+    {
+      "queueName": "myqueue-items",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "MyQueueItem",
+      "type": "queueTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "PersonEntity",
+      "type": "table",
+      "tableName": "Person",
+      "partitionKey": "Test",
+      "rowKey": "{queueTrigger}",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+_run.ps1_ içindeki PowerShell kodu:
+
+```powershell
+param($MyQueueItem, $PersonEntity, $TriggerMetadata)
+Write-Host "PowerShell queue trigger function processed work item: $MyQueueItem"
+Write-Host "Person entity name: $($PersonEntity.Name)"
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+Aşağıdaki işlev, tek bir tablo satırını bir işleve giriş olarak okumak için bir kuyruk tetikleyicisi kullanır.
+
+Bu örnekte, bağlama yapılandırması tablo için açık bir değer belirtir ve ' a `partitionKey` geçirilecek bir ifade kullanır `rowKey` . `rowKey`İfadesi, `{id}` satır anahtarının kuyruk ileti dizesinden geldiğini gösterir.
+
+_function.js_ dosyadaki yapılandırma yapılandırması:
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "messageJSON",
+      "type": "table",
+      "tableName": "messages",
+      "partitionKey": "message",
+      "rowKey": "{id}",
+      "connection": "AzureWebJobsStorage",
+      "direction": "in"
+    },
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ],
+      "route": "messages/{id}"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    }
+  ],
+  "disabled": false
+}
+```
+
+*\_ \_ İnit \_ \_ . Kopyala* dosyasındaki Python kodu:
+
+```python
+import json
+
+import azure.functions as func
+
+def main(req: func.HttpRequest, messageJSON) -> func.HttpResponse:
+
+    message = json.loads(messageJSON)
+    return func.HttpResponse(f"Table row: {messageJSON}")
 ```
 
 ---
@@ -522,17 +568,21 @@ Kullanılacak depolama hesabı aşağıdaki sırayla belirlenir:
 
 Öznitelikler C# betiği tarafından desteklenmez.
 
+# <a name="java"></a>[Java](#tab/java)
+
+[Java işlevleri çalışma zamanı kitaplığı](/java/api/overview/azure/functions/runtime)'nda, `@TableInput` değeri tablo depolamadan gelen parametrelerde ek açıklama kullanın.  Bu ek açıklama, kullanılarak yerel Java türleri, POJOs veya null atanabilir değerlerle kullanılabilir `Optional<T>` .
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Öznitelikler JavaScript tarafından desteklenmez.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Öznitelikler PowerShell tarafından desteklenmez.
+
 # <a name="python"></a>[Python](#tab/python)
 
 Öznitelikler Python tarafından desteklenmez.
-
-# <a name="java"></a>[Java](#tab/java)
-
-[Java işlevleri çalışma zamanı kitaplığı](/java/api/overview/azure/functions/runtime)'nda, `@TableInput` değeri tablo depolamadan gelen parametrelerde ek açıklama kullanın.  Bu ek açıklama, kullanılarak yerel Java türleri, POJOs veya null atanabilir değerlerle kullanılabilir `Optional<T>` .
 
 ---
 
@@ -582,17 +632,21 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
   > [!NOTE]
   > `IQueryable`[Functions v2 çalışma zamanında](functions-versions.md)desteklenmez. Alternatif olarak, Azure depolama SDK 'sını kullanarak tabloyu okumak için [CloudTable paramName yöntemi parametresi kullanılır](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) . ' `CloudTable` A bağlanıp bir hata iletisi almaya çalışırsanız, [doğru depolama SDK sürümüne](./functions-bindings-storage-table.md#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.
 
+# <a name="java"></a>[Java](#tab/java)
+
+[Tableınput](/java/api/com.microsoft.azure.functions.annotation.tableinput) özniteliği, işlevi tetikleyen tablo satırına erişmenizi sağlar.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 `filter`Ve özelliklerini ayarlayın `take` . Veya ayarlama `partitionKey` `rowKey` . Kullanarak giriş tablosu varlığına (veya varlıklara) erişin `context.bindings.<BINDING_NAME>` . Seri durumdan çıkarılan nesneler `RowKey` ve `PartitionKey` özellikleri.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Veriler, `name` *function.js* dosyadaki anahtar tarafından belirtilen giriş parametresine geçirilir. `partitionKey`' İ belirtme ve `rowKey` belirli kayıtlara filtrelemenize izin verir. Daha fazla ayrıntı için bkz. [PowerShell örneği](#example) .
+
 # <a name="python"></a>[Python](#tab/python)
 
 Tablo verileri, işleve JSON dizesi olarak geçirilir. `json.loads`Giriş [örneğinde](#example)gösterildiği gibi çağırarak iletiyi seri durumdan kaldırın.
-
-# <a name="java"></a>[Java](#tab/java)
-
-[Tableınput](/java/api/com.microsoft.azure.functions.annotation.tableinput) özniteliği, işlevi tetikleyen tablo satırına erişmenizi sağlar.
 
 ---
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: a78e18de1f495feb6234fa5bfd97162d8b80de4c
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: 25848d313fc01fc41ef8874707bd10b2fa9912d3
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857333"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033521"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Konuşmayı metne sık sorulan sorular
 
@@ -134,11 +134,11 @@ Y **: tek başına bir veri** toplama uygulaması oluşturabilir veya raf dış�
 
 Y **: Evet**. Kendiniz düzenleyebilir veya profesyonel bir döküm hizmeti kullanabilirsiniz. Bazı kullanıcılar profesyonel onayları tercih eder ve diğerleri bu kişilerin kendi kendilerini kullanmasını ister.
 
-**S: özel bir model ses verilerini eğmek için ne kadar sürer?**
+**S: ses verileriyle özel bir modeli eğmek için ne kadar sürer?**
 
 Y: bir modeli ses verileriyle eğitmek **uzun bir işlemdir**. Veri miktarına bağlı olarak, özel bir model oluşturmak birkaç gün sürebilir. Bir hafta içinde bitirilemez servis, eğitim işlemini durdurabilir ve modeli başarısız olarak rapor edebilir. Daha hızlı sonuçlar için, Özel donanımın eğitim için kullanılabildiği [bölgelerden](custom-speech-overview.md#set-up-your-azure-account) birini kullanın. [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription)kullanarak, tamamen eğitilen modeli başka bir bölgeye kopyalayabilirsiniz. Yalnızca metin ile eğitim çok daha hızlıdır ve genellikle dakikalar içinde tamamlanır.
 
-Bazı temel modeller ses verileriyle özelleştirilemez. Bunlar için hizmet, eğitimin metnini yalnızca eğitim için kullanır ve ses verilerini atar. Daha sonra eğitim daha hızlı tamamlanır ve sonuçlar yalnızca metin ile eğitimle aynı olacaktır.
+Bazı temel modeller ses verileriyle özelleştirilemez. Bu hizmet için, bakım için yalnızca eğitim ve ses verilerini yok Sayın metnini kullanır. Daha sonra eğitim daha hızlı tamamlanır ve sonuçlar yalnızca metin ile eğitimle aynı olacaktır.
 
 ## <a name="accuracy-testing"></a>Doğruluk testi
 

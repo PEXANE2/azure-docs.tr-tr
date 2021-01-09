@@ -3,12 +3,12 @@ title: Sanal ağ kullanma senaryoları
 description: Azure sanal ağına kapsayıcı grupları dağıtmaya yönelik senaryolar, kaynaklar ve sınırlamalar.
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 2fb468a6a860bcc076043c30606922f43fbdb1ad
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 65d7fa46ebbb9b072b50731bff68b9b88809075d
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882441"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033838"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>Sanal ağ senaryoları ve kaynakları
 
@@ -33,6 +33,7 @@ Bir Azure sanal ağına dağıtılan kapsayıcı grupları, şunun gibi senaryol
 * **Azure Load Balancer** -ağa bağlı bir kapsayıcı grubundaki kapsayıcı örneklerinin önüne bir Azure Load Balancer yerleştirme desteklenmez
 * **Küresel sanal ağ eşlemesi** -genel eşleme (Azure bölgelerindeki sanal ağları bağlama) desteklenmez
 * **Genel IP veya DNS etiketi** -bir sanal ağa dağıtılan kapsayıcı grupları, şu anda KAPSAYıCıLARı genel IP adresi veya tam etki alanı adı ile doğrudan internet 'te kullanıma sunma desteği vermez
+* **Sanal ağ NAT** -sanal bir ağa dağıtılan kapsayıcı grupları Şu anda giden internet bağlantısı IÇIN bir NAT ağ geçidi kaynağı kullanmayı desteklememektedir.
 
 ## <a name="other-limitations"></a>Diğer sınırlamalar
 

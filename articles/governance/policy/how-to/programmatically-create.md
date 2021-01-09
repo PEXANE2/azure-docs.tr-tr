@@ -3,12 +3,12 @@ title: Programlı olarak ilkeler oluşturma
 description: Bu makalede Azure CLı, Azure PowerShell ve REST API ile Azure Ilkesi için ilkeler oluşturma ve yönetme işlemi adım adım açıklanmaktadır.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 86c1b60608780cba4d8ae27e3c82ace458f09a26
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 4c3a503e8d48573441093879511490608437b1e1
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920024"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033872"
 ---
 # <a name="programmatically-create-policies"></a>Programlı olarak ilkeler oluşturma
 
@@ -16,7 +16,7 @@ Bu makale, ilkeleri programlı olarak oluşturma ve yönetme konusunda size kıl
 
 Uyumluluk hakkında daha fazla bilgi için bkz. [Uyumluluk verileri alma](get-compliance-data.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, aşağıdaki önkoşulların karşılandığından emin olun:
 
@@ -95,7 +95,7 @@ Kaynaklarınızın daha iyi görünürlüğüne yönelik ilk adım, kaynakların
    - Aboneliğiniz `/subscriptions/{subId}`
    - Yönetim grubu- `/providers/Microsoft.Management/managementGroups/{mgName}`
 
-Kaynak Yöneticisi PowerShell modülünü kullanarak kaynak ilkelerini yönetme hakkında daha fazla bilgi için bkz. [az. resources](/powershell/module/az.resources/#policies).
+Kaynak Yöneticisi PowerShell modülünü kullanarak kaynak ilkelerini yönetme hakkında daha fazla bilgi için bkz. [az. resources](/powershell/module/az.resources/#policy).
 
 ### <a name="create-and-assign-a-policy-definition-using-armclient"></a>ARMClient kullanarak ilke tanımı oluşturma ve atama
 
@@ -242,7 +242,7 @@ Azure CLı ile kaynak ilkelerini yönetme hakkında daha fazla bilgi için bkz. 
 Bu makaledeki komutlar ve sorgular hakkında daha fazla bilgi için aşağıdaki makalelere göz atın.
 
 - [Azure REST API kaynakları](/rest/api/resources/)
-- [Azure PowerShell modüller](/powershell/module/az.resources/#policies)
+- [Azure PowerShell modüller](/powershell/module/az.resources/#policy)
 - [Azure CLı Ilkesi komutları](/cli/azure/policy)
 - [Azure Policy Insights kaynak sağlayıcısı REST API başvurusu](/rest/api/policy-insights)
 - [Kaynaklarınızı Azure yönetim gruplarıyla düzenleme](../../management-groups/overview.md).

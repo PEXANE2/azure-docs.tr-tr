@@ -1,60 +1,60 @@
 ---
-title: Veri işleme için bir Azure işlevi ayarlama
+title: Azure 'da verileri işlemek için bir işlev ayarlama
 titleSuffix: Azure Digital Twins
-description: Bkz. dijital TWINS tarafından erişebilen ve tetiklenebilecek bir Azure işlevi oluşturma.
+description: Azure 'da dijital TWINS 'e erişebilen ve tetiklenebilecek bir işlev oluşturma bölümüne bakın.
 author: baanders
 ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5352a95b865851be937af7b9f19268afd23148db
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 7f491bbe61e8574a7275d9ef5c87d05fa61dc7c4
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280034"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035317"
 ---
-# <a name="connect-azure-functions-apps-for-processing-data"></a>Verileri işlemek için Azure Işlevleri uygulamalarına bağlanma
+# <a name="connect-function-apps-in-azure-for-processing-data"></a>Verileri işlemek için Azure 'da işlev uygulamalarına bağlanma
 
-Verileri temel alarak dijital TWINS 'nin güncelleştirilmesi, [Azure işlevleri](../azure-functions/functions-overview.md)gibi işlem kaynakları aracılığıyla [**olay rotaları**](concepts-route-events.md) kullanılarak işlenir. Bir Azure işlevi, yanıt olarak bir dijital ikizi güncelleştirmek için kullanılabilir:
+Verileri temel alarak dijital TWINS 'nin güncelleştirilmesi, [Azure işlevleri](../azure-functions/functions-overview.md)kullanılarak yapılan bir işlev gibi işlem kaynakları aracılığıyla [**olay rotaları**](concepts-route-events.md) kullanılarak işlenir. İşlevleri, yanıt olarak bir dijital ikizi güncelleştirmek için kullanılabilir:
 * IoT Hub gelen cihaz telemetri verileri
 * ikizi grafiğinin içindeki başka bir dijital ikizi gelen özellik değişikliği veya diğer veriler
 
-Bu makalede, Azure dijital TWINS ile kullanmak üzere bir Azure işlevi oluşturma işlemi adım adım açıklanmaktadır. 
+Bu makalede, Azure 'da Azure dijital TWINS ile kullanım için bir işlev oluşturma işlemi adım adım açıklanmaktadır. 
 
 İçerdiği adımlara genel bir bakış aşağıda verilmiştir:
 
-1. Visual Studio 'da Azure Işlevleri uygulaması oluşturma
-2. [Event Grid](../event-grid/overview.md) tetikleyicisiyle bir Azure işlevi yazma
+1. Visual Studio'da bir Azure İşlevleri projesi oluşturma
+2. [Event Grid](../event-grid/overview.md) tetikleyicisiyle bir işlev yazma
 3. İşleve kimlik doğrulama kodu ekleme (Azure dijital TWINS 'ye erişebilmek için)
 4. İşlev uygulamasını Azure 'da yayımlayın
-5. Azure işlevi uygulaması için [güvenlik](concepts-security.md) erişimini ayarlama
+5. İşlev uygulaması için [güvenlik](concepts-security.md) erişimini ayarlama
 
 ## <a name="prerequisite-set-up-azure-digital-twins-instance"></a>Önkoşul: Azure dijital TWINS örneğini ayarlama
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
-## <a name="create-an-azure-functions-app-in-visual-studio"></a>Visual Studio 'da Azure Işlevleri uygulaması oluşturma
+## <a name="create-a-function-app-in-visual-studio"></a>Visual Studio 'da işlev uygulaması oluşturma
 
-Visual Studio 2019 ' de _dosya > yeni > proje_ ' yi seçin ve _Azure işlevleri_ şablonunu arayın, _İleri_ ' yi seçin.
+Visual Studio 2019 ' de _dosya > yeni > proje_ ' yi seçin ve _Azure işlevleri_ şablonunu arayın, _İleri_' yi seçin.
 
 :::image type="content" source="media/how-to-create-azure-function/create-azure-function-project.png" alt-text="Visual Studio: yeni proje iletişim kutusu":::
 
-İşlev uygulaması için bir ad belirtin ve _Oluştur_ ' u seçin.
+İşlev uygulaması için bir ad belirtin ve _Oluştur_' u seçin.
 
 :::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="Visual Studio: yeni proje yapılandırma":::
 
-*Event Grid tetikleyicisi* işlev türünü seçin ve _Oluştur_ ' u seçin.
+*Event Grid tetikleyicisi* işlev türünü seçin ve _Oluştur_' u seçin.
 
-:::image type="content" source="media/how-to-create-azure-function/eventgridtrigger-function.png" alt-text="Visual Studio: Azure işlevi proje tetikleyicisi iletişim kutusu":::
+:::image type="content" source="media/how-to-create-azure-function/eventgridtrigger-function.png" alt-text="Visual Studio: Azure Işlevleri proje tetikleyicisi iletişim kutusu":::
 
-İşlev uygulamanız oluşturulduktan sonra Visual Studio, proje klasörünüzdeki **function.cs** dosyasında otomatik olarak doldurulan kod örneğine sahip olur. Bu kısa Azure işlevi olayları günlüğe kaydetmek için kullanılır.
+İşlev uygulamanız oluşturulduktan sonra Visual Studio, proje klasörünüzdeki **function.cs** dosyasında otomatik olarak doldurulan kod örneğine sahip olur. Bu kısa işlev olayları günlüğe kaydetmek için kullanılır.
 
 :::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Visual Studio: örnek kodlu Proje penceresi":::
 
-## <a name="write-an-azure-function-with-an-event-grid-trigger"></a>Event Grid tetikleyicisiyle bir Azure işlevi yazma
+## <a name="write-a-function-with-an-event-grid-trigger"></a>Event Grid tetikleyicisiyle bir işlev yazma
 
-İşlev uygulamanıza SDK ekleyerek bir Azure işlevi yazabilirsiniz. İşlev uygulaması, [.net Için Azure dijital TWINS SDK 'sını (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)kullanarak Azure Digital TWINS ile etkileşime girer. 
+İşlev uygulamanıza SDK ekleyerek bir işlev yazabilirsiniz. İşlev uygulaması, [.net Için Azure dijital TWINS SDK 'sını (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)kullanarak Azure Digital TWINS ile etkileşime girer. 
 
 SDK 'yı kullanmak için aşağıdaki paketleri projenize eklemeniz gerekir. Paketleri Visual Studio NuGet Paket Yöneticisi 'ni kullanarak yükleyebilir ya da komut satırı aracını kullanarak paketleri ekleyebilirsiniz `dotnet` . Aşağıdaki yöntemlerden birini seçin: 
 
@@ -78,7 +78,7 @@ dotnet add package Azure.identity --version 1.2.2
 dotnet add package System.Net.Http
 dotnet add package Azure.Core.Pipeline
 ```
-Ardından, Visual Studio Çözüm Gezgini, örnek kodunuzun bulunduğu _function.cs_ dosyasını açın ve aşağıdaki _using_ deyimlerini Azure işlevinizde ekleyin. 
+Ardından, Visual Studio Çözüm Gezgini, örnek kodunuzun bulunduğu _function.cs_ dosyasını açın ve işlevinizde aşağıdaki _using_ deyimlerini ekleyin. 
 
 ```csharp
 using Azure.DigitalTwins.Core;
@@ -86,9 +86,9 @@ using Azure.Identity;
 using System.Net.Http;
 using Azure.Core.Pipeline;
 ```
-## <a name="add-authentication-code-to-the-azure-function"></a>Azure işlevine kimlik doğrulama kodu ekleme
+## <a name="add-authentication-code-to-the-function"></a>İşleve kimlik doğrulama kodu ekleyin
 
-Artık sınıf düzeyi değişkenleri bildirecektir ve işlevin Azure dijital TWINS 'e erişmesine izin verecek kimlik doğrulama kodu eklersiniz. {Function Name}. cs dosyanızdaki Azure işleviniz için aşağıdakileri ekleyeceksiniz.
+Artık sınıf düzeyi değişkenleri bildirecektir ve işlevin Azure dijital TWINS 'e erişmesine izin verecek kimlik doğrulama kodu eklersiniz. {Function Name}. cs dosyanızdaki işlevinizi aşağıda bulabilirsiniz.
 
 * ADT hizmeti URL 'sini bir ortam değişkeni olarak okuyun. Hizmet URL 'sini, işlevinde sabit kodlamak yerine, bir ortam değişkeninden okumak iyi bir uygulamadır.
 ```csharp     
@@ -98,7 +98,7 @@ private static readonly string adtInstanceUrl = Environment.GetEnvironmentVariab
 ```csharp
 private static readonly HttpClient httpClient = new HttpClient();
 ```
-* Azure işlevinde yönetilen kimlik kimlik bilgilerini kullanabilirsiniz.
+* Azure Işlevleri 'nde yönetilen kimlik kimlik bilgilerini kullanabilirsiniz.
 ```csharp
 ManagedIdentityCredential cred = new ManagedIdentityCredential("https://digitaltwins.azure.net");
 ```
@@ -159,16 +159,16 @@ namespace adtIngestFunctionSample
 
 ## <a name="publish-the-function-app-to-azure"></a>İşlev uygulamasını Azure 'da yayımlayın
 
-İşlev uygulamasını Azure 'da yayımlamak için Çözüm Gezgini işlev projesini (çözümü değil) sağ seçin ve **Yayımla** ' yı seçin.
+Projeyi Azure 'da bir işlev uygulamasına yayımlamak için, Çözüm Gezgini ' de işlev projesini (çözümü değil) sağ seçin ve **Yayımla**' yı seçin.
 
 > [!IMPORTANT] 
-> Azure işlevi yayımlandığında, aboneliğiniz üzerinde Azure dijital TWINS 'ten bağımsız olarak ek ücretler uygulanır.
+> Azure 'da bir işlev uygulamasına yayımlama, Azure dijital TWINS 'ten bağımsız olarak aboneliğiniz üzerinde ek ücretler doğurur.
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function.png" alt-text="Visual Studio: yayımlama Azure işlevi ":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function.png" alt-text="Visual Studio: Azure 'Da yayımlama işlevi":::
 
 Yayımlama hedefi olarak **Azure** ' u seçin ve **İleri ' yi** seçin.
 
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-1.png" alt-text="Visual Studio: Azure işlev yayımlama iletişim kutusu, Azure 'u seçin ":::
+:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-1.png" alt-text="Visual Studio: Azure Işlevleri yayımlama iletişim kutusu, Azure 'u seçin ":::
 
 :::image type="content" source="media/how-to-create-azure-function/publish-azure-function-2.png" alt-text="Visual Studio: Publish işlevi iletişim kutusunda makinenize göre Azure İşlev Uygulaması (Windows) veya (Linux) seçeneğini belirleyin":::
 
@@ -179,16 +179,16 @@ Yayımlama hedefi olarak **Azure** ' u seçin ve **İleri ' yi** seçin.
 :::image type="content" source="media/how-to-create-azure-function/publish-azure-function-5.png" alt-text="Visual Studio: Publish işlevi iletişim kutusu, listeden işlev uygulamanızı seçin ve son":::
 
 Aşağıdaki sayfada, yeni işlev uygulaması, bir kaynak grubu ve diğer ayrıntılar için istenen adı girin.
-Işlevler uygulamanızın Azure dijital TWINS 'e erişebilmesi için sistem tarafından yönetilen bir kimliğe sahip olması ve Azure dijital TWINS örneğinize erişmek için gereken izinlere sahip olması gerekir.
+İşlev uygulamanızın Azure dijital TWINS 'e erişebilmesi için sistem tarafından yönetilen bir kimliğe sahip olması ve Azure dijital TWINS örneğinize erişmek için gereken izinlere sahip olması gerekir.
 
 Daha sonra, CLı veya Azure portal kullanarak işlev için güvenlik erişimi ayarlayabilirsiniz. Aşağıdaki yöntemlerden birini seçin:
 
-## <a name="set-up-security-access-for-the-azure-function-app"></a>Azure işlevi uygulaması için güvenlik erişimini ayarlama
-Aşağıdaki seçeneklerden birini kullanarak Azure işlev uygulaması için güvenlik erişimi ayarlayabilirsiniz:
+## <a name="set-up-security-access-for-the-function-app"></a>İşlev uygulaması için güvenlik erişimini ayarlama
+İşlev uygulaması için aşağıdaki seçeneklerden birini kullanarak güvenlik erişimi ayarlayabilirsiniz:
 
-### <a name="option-1-set-up-security-access-for-the-azure-function-app-using-cli"></a>Seçenek 1: CLı kullanarak Azure işlev uygulaması için güvenlik erişimini ayarlama
+### <a name="option-1-set-up-security-access-for-the-function-app-using-cli"></a>Seçenek 1: CLı kullanarak işlev uygulaması için güvenlik erişimini ayarlama
 
-Önceki örneklerden Azure işlevi iskelet, Azure dijital TWINS ile kimlik doğrulaması yapabilmek için bir taşıyıcı belirtecinin kendisine geçirilmesini gerektirir. Bu taşıyıcı belirtecinin geçirildiğinden emin olmak için, işlev uygulaması için [yönetilen hizmet kimliği (MSI)](../active-directory/managed-identities-azure-resources/overview.md) ayarlamanız gerekir. Bu, her bir işlev uygulaması için yalnızca bir kez yapılmalıdır.
+Önceki örneklerden iskelet işlevi, Azure Digital TWINS ile kimlik doğrulaması yapabilmek için bir taşıyıcı belirtecinin kendisine geçirilmesini gerektirir. Bu taşıyıcı belirtecinin geçirildiğinden emin olmak için, işlev uygulaması için [yönetilen hizmet kimliği (MSI)](../active-directory/managed-identities-azure-resources/overview.md) ayarlamanız gerekir. Bu, her bir işlev uygulaması için yalnızca bir kez yapılmalıdır.
 
 Azure dijital TWINS örneğiniz için sistem tarafından yönetilen kimlik oluşturabilir ve işlev uygulamasının kimliğini _**Azure Digital TWINS veri sahibi**_ rolüne atayabilirsiniz. Bu, veri düzlemi etkinliklerini gerçekleştirmek için örnekte işlev uygulamasına izin verir. Daha sonra, bir ortam değişkeni ayarlayarak Azure dijital TWINS örneğinin URL 'sini işlevinizle erişilebilir yapın.
 
@@ -214,7 +214,7 @@ Son olarak, bir ortam değişkeni ayarlayarak Azure dijital TWINS örneğinizin 
 ```azurecli-interactive 
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-hostname>"
 ```
-### <a name="option-2-set-up-security-access-for-the-azure-function-app-using-azure-portal"></a>Seçenek 2: Azure portal kullanarak Azure işlev uygulaması için güvenlik erişimini ayarlama
+### <a name="option-2-set-up-security-access-for-the-function-app-using-azure-portal"></a>Seçenek 2: Azure portal kullanarak işlev uygulaması için güvenlik erişimini ayarlama
 
 Bir sistem tarafından atanmış yönetilen kimlik, Azure kaynaklarının kimlik bilgilerini kodda depolamadan (örneğin, Azure Key Vault) kimlik doğrulaması yapmasına olanak sağlar. Etkinleştirildikten sonra, tüm gerekli izinler Azure rol tabanlı erişim denetimi aracılığıyla verilebilir. Bu tür yönetilen kimliğin yaşam döngüsü, bu kaynağın yaşam döngüsüne bağlıdır. Ayrıca, her kaynak (örneğin, sanal makine) yalnızca bir sistem tarafından atanmış yönetilen kimliğe sahip olabilir.
 
@@ -244,10 +244,10 @@ Azure *rol atamaları sayfasını açmak* için _Azure rol atamaları_ düğmesi
 
 Açılan _rol ataması Ekle (Önizleme)_ sayfasında şunları seçin:
 
-* _Kapsam_ : Kaynak grubu
-* _Abonelik_ : Azure aboneliğinizi seçin
-* _Kaynak grubu_ : açılan listeden kaynak grubunuzu seçin
-* _Rol_ : açılan listeden _Azure dijital TWINS veri sahibini_ seçin
+* _Kapsam_: Kaynak grubu
+* _Abonelik_: Azure aboneliğinizi seçin
+* _Kaynak grubu_: açılan listeden kaynak grubunuzu seçin
+* _Rol_: açılan listeden _Azure dijital TWINS veri sahibini_ seçin
 
 Sonra, _Kaydet_ düğmesine basarak ayrıntılarınızı kaydedin.
 
@@ -265,11 +265,11 @@ Uygulama ayarı oluşturmak için ADT_INSTANCE_URL gerekir.
 
 Artık aşağıdaki adımları izleyerek bir uygulama ayarı oluşturabilirsiniz:
 
-* Arama çubuğunda işlev adı ' nı kullanarak Azure işlevinizi arayın ve listeden işlevi seçin
+* Arama çubuğunda App Name işlevini kullanarak uygulamanızı arayın ve listeden işlev uygulamasını seçin
 * Yeni uygulama ayarı oluşturmak için sol taraftaki Gezinti çubuğunda _yapılandırma_ ' yı seçin.
 * _Uygulama ayarları_ sekmesinde _+ Yeni uygulama ayarı_ ' nı seçin.
 
-:::image type="content" source="media/how-to-create-azure-function/search-for-azure-function.png" alt-text="Azure portal: mevcut Azure işlevi için arama":::
+:::image type="content" source="media/how-to-create-azure-function/search-for-azure-function.png" alt-text="Azure portal: var olan bir işlev uygulamasını arama":::
 
 :::image type="content" source="media/how-to-create-azure-function/application-setting.png" alt-text="Azure portal: uygulama ayarlarını yapılandırma":::
 
@@ -295,10 +295,10 @@ _Bildirimler_ simgesini seçerek uygulama ayarlarının güncelleştirildiğini 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Azure Digital TWINS ile kullanmak üzere bir Azure işlevi ayarlama adımları izlenir. Sonra, bir uç nokta dinlemek için Azure işlevinizi Event Grid 'e abone olabilirsiniz. Bu uç nokta şu olabilir:
+Bu makalede, Azure dijital TWINS ile kullanmak üzere Azure 'da bir işlev uygulaması ayarlama adımları izlenir. Sonra, bir uç nokta dinlemek için işlevinizi Event Grid 'e abone olabilirsiniz. Bu uç nokta şu olabilir:
 * Azure dijital TWINS 'den gelen iletileri işlemek için Azure dijital TWINS 'e bağlı Event Grid uç noktası (özellik değişiklik iletileri, ikizi grafiğinde [dijital TWINS](concepts-twins-graph.md) tarafından oluşturulan telemetri iletileri veya yaşam döngüsü iletileri gibi)
 * Telemetri ve diğer cihaz olaylarını göndermek için IoT Hub tarafından kullanılan IoT sistem konuları
 * Diğer hizmetlerden ileti alma Event Grid uç noktası
 
-Daha sonra, Azure dijital TWINS 'e IoT Hub verileri almak için temel Azure işlevinizde nasıl derleme yapılacağını inceleyin:
+Daha sonra, Azure dijital TWINS 'e IoT Hub verileri almak için temel işlevinizde nasıl derleme yapılacağını öğrenin:
 * [*Nasıl yapılır: IoT Hub 'dan alma telemetrisi*](how-to-ingest-iot-hub-data.md)
