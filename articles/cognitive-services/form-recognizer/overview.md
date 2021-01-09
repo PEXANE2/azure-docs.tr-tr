@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Otomatik veri işleme, belge işleme, otomatik veri girişi, form işleme
-ms.openlocfilehash: ed940622f72271ef3e606c5068babcb6366c31b6
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: e1e5a4abf8eab96af62b160e28f98d95cf527eaf
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845519"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044773"
 ---
 # <a name="what-is-form-recognizer"></a>Form Tanıma nedir?
 
@@ -42,11 +42,11 @@ Form tanıyıcı hizmetini denemek için çevrimiçi örnek UI aracına gidin:
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)
 > [!div class="nextstepaction"]
-> [Önceden oluşturulmuş modelleri deneyin](https://fott.azurewebsites.net/)
+> [Form tanıyıcıyı deneyin](https://fott.azurewebsites.net/)
 
 # <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)
 > [!div class="nextstepaction"]
-> [Önceden oluşturulmuş modelleri deneyin](https://fott-preview.azurewebsites.net/)
+> [Form tanıyıcıyı deneyin](https://fott-preview.azurewebsites.net/)
 
 ---
 
@@ -104,7 +104,7 @@ Iş kartları modeli, kişinin adı, iş unvanı, adres, e-posta, şirket ve tel
 :::image type="content" source="./media/overview-business-card.jpg" alt-text="örnek iş kartı" lightbox="./media/overview-business-card.jpg":::
 
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 Formlarınızın verileri çıkarmaya başlamak için [örnek form tanıyıcı aracını](https://fott.azurewebsites.net/) kullanın veya bir hızlı başlangıcı izleyin. Teknolojiyi öğrenirken ücretsiz hizmeti kullanmanızı öneririz. Ücretsiz sayfa sayısının ayda 500 ile sınırlı olduğunu unutmayın.
 
@@ -152,7 +152,18 @@ Daha fazla bilgi edinmek için [REST API başvuru belgelerini](https://westus2.d
 
 ## <a name="deploy-on-premises-using-docker-containers"></a>Docker kapsayıcılarını kullanarak şirket içinde dağıtma
 
-Şirket içinde API özelliklerini dağıtmak için [form tanıyıcı kapsayıcıları (Önizleme) kullanın](form-recognizer-container-howto.md) . Bu Docker kapsayıcısı, uyumluluk, güvenlik veya diğer işletimsel nedenlerle hizmeti verilerinize yaklaştırmanızı sağlar.
+Şirket içinde API özelliklerini dağıtmak için [form tanıyıcı kapsayıcıları (Önizleme) kullanın](form-recognizer-container-howto.md) . Bu Docker kapsayıcısı, uyumluluk, güvenlik veya diğer işletimsel nedenlerle hizmeti verilerinize yaklaştırmanızı sağlar. 
+
+## <a name="service-availability-and-redundancy"></a>Hizmet kullanılabilirliği ve artıklığı
+
+### <a name="is-form-recognizer-service-zone-resilient"></a>Form tanıyıcı hizmeti bölgesi-dayanıklı mı?
+
+Evet. Form tanıyıcı hizmeti varsayılan olarak bölge esnektir.
+
+### <a name="how-do-i-configure-the-form-recognizer-service-to-be-zone-resilient"></a>Form tanıyıcı hizmetini bölge-dayanıklı olarak yapılandırmak Nasıl yaparım??
+
+Bölge dayanıklılığı sağlamak için hiçbir müşteri yapılandırması gerekmez. Form tanıyıcı kaynakları için bölge esnekliği, varsayılan olarak kullanılabilir ve hizmet tarafından yönetilir.
+
 
 ## <a name="data-privacy-and-security"></a>Veri gizliliği ve güvenliği
 

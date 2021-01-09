@@ -1,18 +1,18 @@
 ---
 title: Azure ağ hizmetleri için yerleşik ilke tanımları
 description: Azure ağ hizmetleri için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 11/19/2020
+ms.date: 01/08/2021
 ms.topic: reference
 author: KumudD
 ms.author: kumud
 ms.service: virtual-network
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 378d29785b3b19a42fe5d7895edcb0336ea92a8f
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 0a65f575ba999bcdbcf1b742b34593fd106fd3e4
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97965901"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045889"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-networking-services"></a>Azure Ilkesi Azure ağ hizmetleri için yerleşik tanımlar
 

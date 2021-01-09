@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1a9a2f9d999a51f2b4600e8379d4a8913675b338
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 33233e8a6aa54e65094e0cc6130e804241d7201c
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360025"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044297"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Öğretici: Azure sanal makinelerinde SQL Server üzerinde kullanılabilirlik grupları oluşturmaya yönelik önkoşullar
 
@@ -47,7 +47,7 @@ Bir Azure hesabınız olmalıdır. [Ücretsiz bir Azure hesabı açabilir](https
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. **+** Portalda yeni bir nesne oluşturmak için seçin.
 
    ![Yeni nesne](./media/availability-group-manually-configure-prerequisites-tutorial-/01-portalplus.png)
@@ -235,7 +235,7 @@ Aşağıdaki adımlarda, **ad-birincil DC** makinesini Corp.contoso.com için bi
     ![Rol Ekle iletişim kutusu](./media/availability-group-manually-configure-prerequisites-tutorial-/23-addroles.png)
 
 7. **Onay** bölümüne ulaşana kadar **İleri ' yi** seçin. **Gerekirse hedef sunucuyu otomatik olarak yeniden Başlat** onay kutusunu seçin.
-8. **Yükle**’yi seçin.
+8. **Yükle**'yi seçin.
 9. Özelliklerin yüklenmesi bittikten sonra, **Sunucu Yöneticisi** panosuna geri dönün.
 10. Sol bölmedeki yeni **AD DS** seçeneğini belirleyin.
 11. Sarı uyarı çubuğunda **daha fazla** bağlantıyı seçin.
@@ -251,7 +251,7 @@ Aşağıdaki adımlarda, **ad-birincil DC** makinesini Corp.contoso.com için bi
     | **Etki Alanı Denetleyicisi Seçenekleri** |**DSRM parolası** = contoso! 0000<br/>**Parolayı onaylayın** = contoso! 0000 |
 
 14. Sihirbazdaki diğer sayfalara gitmek için **İleri ' yi** seçin. **Önkoşul denetimi** sayfasında, aşağıdaki iletiyi görmediğinizi doğrulayın: **tüm önkoşul denetimleri başarıyla geçildi**. Geçerli uyarı iletilerini gözden geçirebilirsiniz, ancak yüklemeye devam etmek mümkündür.
-15. **Yükle**’yi seçin. **Ad-birincil-DC** sanal makinesi otomatik olarak yeniden başlatılır.
+15. **Yükle**'yi seçin. **Ad-birincil-DC** sanal makinesi otomatik olarak yeniden başlatılır.
 
 ### <a name="note-the-ip-address-of-the-primary-domain-controller"></a>Birincil etki alanı denetleyicisinin IP adresini aklınızda
 
@@ -539,7 +539,7 @@ Diğer SQL Server VM adımları yineleyin.
 
 ### <a name="tuning-failover-cluster-network-thresholds"></a>Yük devretme kümesi ağ eşiklerini ayarlama
 
-SQL Server AlwaysOn ile Azure VM 'lerinde Windows Yük devretme kümesi düğümlerini çalıştırırken, küme ayarını daha gevşek bir izleme durumuna değiştirme önerilir.  Bu, kümeyi daha kararlı ve güvenilir hale getirir.  Bunun hakkında daha fazla bilgi için, bkz. [IaaS SQL AlwaysOn-ayarlama yük devretme kümesi ağ eşikleri](/windows-server/troubleshoot/iaas-sql-failover-cluster).
+Azure VM 'lerinde Windows Yük devretme kümesi düğümlerini SQL Server kullanılabilirlik gruplarıyla çalıştırırken, küme ayarını daha gevşek bir izleme durumuna değiştirin.  Bu, kümeyi daha kararlı ve güvenilir hale getirir.  Bunun hakkında daha fazla bilgi için bkz. [IaaS SQL Server-yük devretme kümesi ağ eşikleri ayarlama](/windows-server/troubleshoot/iaas-sql-failover-cluster).
 
 
 ## <a name="configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"></a> Her SQL Server VM Güvenlik duvarını yapılandırma

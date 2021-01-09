@@ -8,16 +8,16 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 8/26/2020
 ms.author: alkemper
-ms.openlocfilehash: d1dc843ff676429f202c0b9077057d067294f738
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 6996fdd9dce4314e9365177815d7d310ac80c7cb
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076173"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98046082"
 ---
 # <a name="quickstart-add-feature-flags-to-an-azure-functions-app"></a>Hızlı başlangıç: Azure Işlevleri uygulamasına özellik bayrakları ekleme
 
-Bu hızlı başlangıçta, Azure Uygulama yapılandırması 'nı kullanarak bir Azure Işlevleri uygulamasında bir özellik yönetimi uygulaması oluşturacaksınız. Tüm özellik Bayraklarınızı merkezi olarak depolamak ve durumlarını denetlemek için uygulama yapılandırma hizmeti kullanacaksınız. 
+Bu hızlı başlangıçta, bir Azure Işlevleri uygulaması oluşturup içindeki Özellik bayraklarını kullanacaksınız. Tüm özellik Bayraklarınızı merkezi olarak depolamak ve durumlarını denetlemek için Azure Uygulama yapılandırmasından Özellik yönetimini kullanırsınız.
 
 .NET Özellik Yönetimi kitaplıkları çerçeveyi Özellik bayrağı desteğiyle genişletir. Bu kitaplıklar, .NET yapılandırma sisteminin üzerine kurulmuştur. Bunlar, .NET yapılandırma sağlayıcısı aracılığıyla uygulama yapılandırmasıyla tümleştirilir.
 
@@ -46,66 +46,113 @@ Bu hızlı başlangıçta, Azure Uygulama yapılandırması 'nı kullanarak bir 
 
 ## <a name="connect-to-an-app-configuration-store"></a>Uygulama yapılandırma deposuna bağlanma
 
-1. Projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin. **Araştır** sekmesinde, aşağıdaki NuGet paketlerini arayıp projenize ekleyin. `Microsoft.Extensions.DependencyInjection`En son kararlı yapıda olduğunuzdan emin olun. 
+Bu proje, [.net Azure işlevlerinde bağımlılık ekleme](/azure/azure-functions/functions-dotnet-dependency-injection)işlemini kullanacaktır. Azure uygulama yapılandırmasını, özellik bayraklarınızın depolandığı ek bir yapılandırma kaynağı olarak ekler.
 
-    ```
-    Microsoft.Extensions.DependencyInjection
-    Microsoft.Extensions.Configuration
-    Microsoft.FeatureManagement
-    ```
+1. Projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin. **Araştır** sekmesinde, aşağıdaki NuGet paketlerini arayıp projenize ekleyin.
+   - [Microsoft.Extensions.Configurlama. AzureAppConfiguration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureAppConfiguration/) sürümü 4.1.0 veya üzeri
+   - [Microsoft. FeatureManagement](https://www.nuget.org/packages/Microsoft.FeatureManagement/) sürüm 2.2.0 veya üzeri
+   - [Microsoft. Azure. Functions. Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/) sürüm 1.1.0 veya üzeri 
 
-
-1. *Function1.cs*'i açın ve bu paketlerin ad alanlarını ekleyin.
+2. Aşağıdaki kodla, *Startup.cs* adlı yeni bir dosya ekleyin. Soyut sınıfı uygulayan adlı bir sınıfı tanımlar `Startup` `FunctionsStartup` . Azure Işlevleri başlatılırken kullanılan tür adını belirtmek için bir derleme özniteliği kullanılır.
 
     ```csharp
+    using System;
+    using Microsoft.Azure.Functions.Extensions.DependencyInjection;
     using Microsoft.Extensions.Configuration;
     using Microsoft.FeatureManagement;
-    using Microsoft.Extensions.DependencyInjection;
-    ```
 
-1. `Function1`Azure uygulama yapılandırma sağlayıcısı 'nı önyüklemek için aşağıdaki statik oluşturucuyu ekleyin. Sonra, tek bir örneği oluşturmak için `static` adlı bir alan `ServiceProvider` olan `ServiceProvider` ve ' `Function1` `FeatureManager` ın tek bir örneğini oluşturmak için adlı bir özellik `IFeatureManager` olan iki üye ekleyin. Ardından ' de çağırarak uygulama yapılandırmasına bağlanın `Function1` `AddAzureAppConfiguration()` . Bu işlem, uygulama başlangıcında yapılandırmayı yükleyecek. Aynı yapılandırma örneği, daha sonra yapılan çağrılar için de kullanılır. 
+    [assembly: FunctionsStartup(typeof(FunctionApp.Startup))]
 
-    ```csharp
-        // Implements IDisposable, cached for life time of function
-        private static ServiceProvider ServiceProvider; 
-
-        static Function1()
+    namespace FunctionApp
+    {
+        class Startup : FunctionsStartup
         {
-            IConfigurationRoot configuration = new ConfigurationBuilder()
-                .AddAzureAppConfiguration(options =>
-                {
-                    options.Connect(Environment.GetEnvironmentVariable("ConnectionString"))
-                           .UseFeatureFlags();
-                }).Build();
+            public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
+            {
+            }
 
-            var services = new ServiceCollection();                                                                             
-            services.AddSingleton<IConfiguration>(configuration).AddFeatureManagement();
-
-            ServiceProvider = services.BuildServiceProvider(); 
+            public override void Configure(IFunctionsHostBuilder builder)
+            {
+            }
         }
-
-        private static IFeatureManager FeatureManager => ServiceProvider.GetRequiredService<IFeatureManager>();
+    }
     ```
 
-1. `Run`Özellik bayrağının durumuna bağlı olarak, görüntülenecek iletinin değerini değiştirmek için yöntemini güncelleştirin.
+
+3. Yöntemini güncelleştirin `ConfigureAppConfiguration` ve çağırarak Azure uygulama yapılandırma sağlayıcısını ek bir yapılandırma kaynağı olarak ekleyin `AddAzureAppConfiguration()` . 
+
+   `UseFeatureFlags()`Yöntemi, sağlayıcıya Özellik bayraklarını yüklemesini söyler. Tüm özellik bayrakları, değişiklikler için yeniden denetlemeden önce 30 saniyelik bir varsayılan önbellek süresi. Süre sonu aralığı, `FeatureFlagsOptions.CacheExpirationInterval` yöntemine geçirilen özellik ayarlanarak güncelleştirilemeyebilir `UseFeatureFlags` . 
 
     ```csharp
-        [FunctionName("Function1")]
-        public static async Task<IActionResult> Run(
-                [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
-                ILogger log)
-            {
-                string message = await FeatureManager.IsEnabledAsync("Beta")
-                     ? "The Feature Flag 'Beta' is turned ON"
-                     : "The Feature Flag 'Beta' is turned OFF";
-                
-                return (ActionResult)new OkObjectResult(message); 
-            }
+    public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
+    {
+        builder.ConfigurationBuilder.AddAzureAppConfiguration(options =>
+        {
+            options.Connect(Environment.GetEnvironmentVariable("ConnectionString"))
+                   .Select("_")
+                   .UseFeatureFlags();
+        });
+    }
+    ```
+   > [!TIP]
+   > Özellik bayrakları dışında herhangi bir yapılandırmanın uygulamanıza yüklenmesini istemiyorsanız, `Select("_")` yalnızca var olmayan bir kukla anahtar "_" yüklemek için çağrı yapabilirsiniz. Varsayılan olarak, uygulama yapılandırma Deponuzdaki tüm yapılandırma anahtarı değerleri, hiçbir `Select` Yöntem çağrılmaması durumunda yüklenir.
+
+4. `Configure`Azure uygulama yapılandırma Hizmetleri ve Özellik Yöneticisi 'ni bağımlılık ekleme yoluyla kullanılabilir hale getirmek için yöntemini güncelleştirin.
+
+    ```csharp
+    public override void Configure(IFunctionsHostBuilder builder)
+    {
+        builder.Services.AddAzureAppConfiguration();
+        builder.Services.AddFeatureManagement();
+    }
+    ```
+
+5. *Function1.cs* açın ve aşağıdaki ad alanlarını ekleyin.
+
+    ```csharp
+    using System.Linq;
+    using Microsoft.FeatureManagement;
+    using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+    ```
+
+   `_featureManagerSnapshot`Bağımlılık ekleme yoluyla ve örneklerinin alınması için kullanılan bir Oluşturucu ekleyin `IConfigurationRefresherProvider` . İçinden `IConfigurationRefresherProvider` , örneğini elde edebilirsiniz `IConfigurationRefresher` .
+
+    ```csharp
+    private readonly IFeatureManagerSnapshot _featureManagerSnapshot;
+    private readonly IConfigurationRefresher _configurationRefresher;
+
+    public Function1(IFeatureManagerSnapshot featureManagerSnapshot, IConfigurationRefresherProvider refresherProvider)
+    {
+        _featureManagerSnapshot = featureManagerSnapshot;
+        _configurationRefresher = refresherProvider.Refreshers.First();
+    }
+    ```
+
+6. `Run`Özellik bayrağının durumuna bağlı olarak, görüntülenecek iletinin değerini değiştirmek için yöntemini güncelleştirin.
+
+   `TryRefreshAsync`Yöntemi, özellik bayraklarını yenilemek Için işlev çağrısının başlangıcında çağrılır. Önbellek sona erme saati penceresine ulaşılırsa, bu işlem yapılmaz. `await`Özellik bayraklarının geçerli işlev çağrısını engellemeden yenilenmesini tercih ediyorsanız işleci kaldırın. Bu durumda, sonraki Işlev çağrıları güncelleştirilmiş değeri alır.
+
+    ```csharp
+    [FunctionName("Function1")]
+    public async Task<IActionResult> Run(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
+        ILogger log)
+    {
+        log.LogInformation("C# HTTP trigger function processed a request.");
+
+        await _configurationRefresher.TryRefreshAsync();
+
+        string message = await _featureManagerSnapshot.IsEnabledAsync("Beta")
+                ? "The Feature Flag 'Beta' is turned ON"
+                : "The Feature Flag 'Beta' is turned OFF";
+
+        return (ActionResult)new OkObjectResult(message);
+    }
     ```
 
 ## <a name="test-the-function-locally"></a>İşlevi yerel olarak test etme
 
-1. Değer, **erişim anahtarları**altında uygulama yapılandırma deponuzda daha önce aldığınız erişim anahtarı olan **ConnectionString**adlı bir ortam değişkeni ayarlayın. Windows komut istemi 'ni kullanırsanız, aşağıdaki komutu çalıştırın ve değişikliğin etkili olması için komut istemi ' ni yeniden başlatın:
+1. **ConnectionString** adlı bir ortam değişkeni ayarlayın, burada değer, **erişim anahtarları** altında uygulama yapılandırma deponuzda daha önce aldığınız bağlantı dizesidir. Windows komut istemi 'ni kullanırsanız, aşağıdaki komutu çalıştırın ve değişikliğin etkili olması için komut istemi ' ni yeniden başlatın:
 
     ```cmd
         setx ConnectionString "connection-string-of-your-app-configuration-store"
@@ -133,15 +180,16 @@ Bu hızlı başlangıçta, Azure Uygulama yapılandırması 'nı kullanarak bir 
 
     ![Hızlı başlangıç Işlevi Özellik bayrağı devre dışı](./media/quickstarts/functions-launch-ff-disabled.png)
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. **Tüm kaynaklar**' ı seçin ve oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin ve oluşturduğunuz uygulama yapılandırma deposunu seçin.
 
-1. **Özellik Yöneticisi**' ni seçin ve **Beta** anahtarının durumunu **Açık**olarak değiştirin.
+1. **Özellik Yöneticisi**' ni seçin ve **Beta** anahtarının durumunu **Açık** olarak değiştirin.
 
-1. Komut isteminizde dönün ve ' e basarak çalışan işlemi iptal edin `Ctrl-C` .  F5 tuşuna basarak uygulamanızı yeniden başlatın. 
-
-1. İşlevinizin URL 'sini Azure Işlevleri çalışma zamanı çıktısından, adım 3 ' teki ile aynı işlemi kullanarak kopyalayın. HTTP isteğinin URL’sini tarayıcınızın adres çubuğuna yapıştırın. Aşağıdaki görüntüde gösterildiği gibi, tarayıcı yanıtı Özellik bayrağının açık olduğunu belirtecek şekilde değiştirilmelidir `Beta` .
+1. Tarayıcıyı birkaç kez yenileyin. Önbelleğe alınmış Özellik bayrağının süresi 30 saniye sonra dolarsa, `Beta` aşağıdaki görüntüde gösterildiği gibi, sayfanın Özellik bayrağının açık olduğunu belirtecek şekilde değiştirilmesi gerekir.
  
     ![Hızlı başlangıç Işlevi özelliği bayrağı etkin](./media/quickstarts/functions-launch-ff-enabled.png)
+
+> [!NOTE]
+> Bu öğreticide kullanılan örnek kod, [Azure Uygulama yapılandırması GitHub deposundan](https://github.com/Azure/AppConfiguration/tree/master/examples/DotNetCore/AzureFunction)indirilebilir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -149,8 +197,10 @@ Bu hızlı başlangıçta, Azure Uygulama yapılandırması 'nı kullanarak bir 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir özellik bayrağı oluşturdunuz ve bunu [uygulama yapılandırma sağlayıcısı](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)aracılığıyla bir Azure işlevleri uygulamasıyla kullandınız.
+Bu hızlı başlangıçta, bir özellik bayrağı oluşturdunuz ve [Microsoft. FeatureManagement](/dotnet/api/microsoft.featuremanagement) kitaplığı aracılığıyla bir Azure işlevleri uygulamasıyla kullandınız.
 
-- [Özellik yönetimi](./concept-feature-management.md)hakkında daha fazla bilgi edinin.
-- [Özellik bayraklarını yönetin](./manage-feature-flags.md).
+- [Özellik yönetimi](./concept-feature-management.md) hakkında daha fazla bilgi edinin
+- [Özellik bayraklarını yönetme](./manage-feature-flags.md)
+- [Koşullu Özellik bayraklarını kullanın](./howto-feature-filters-aspnet-core.md)
+- [Hedeflenen izleyiciler için özelliklerin aşamalı dağıtımını etkinleştir](./howto-targetingfilter-aspnet-core.md)
 - [Azure Işlevleri uygulamasında dinamik yapılandırma kullanma](./enable-dynamic-configuration-azure-functions-csharp.md)

@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 0fa3492555b2870ae7b95abec08bbd3280cdc985
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 8ffbe5debaa980385a2c6dc0078de5f1cc2e9bde
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705073"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045521"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Azure Machine Learning için bir güvenlik duvarının arkasındaki çalışma alanını kullan
 
@@ -27,7 +27,7 @@ Bu makalede, Azure Güvenlik Duvarı 'nı Azure Machine Learning çalışma alan
 
 ## <a name="azure-firewall"></a>Azure Güvenlik Duvarı
 
-Azure Güvenlik Duvarı 'nı kullanırken, gelen trafik için NAT kuralları oluşturmak üzere __hedef ağ adresi çevirisi 'ni (DNAT)__ kullanın. Giden trafik için __ağ__ ve/veya __uygulama__ kuralları oluşturun. Bu kural koleksiyonları [, bazı Azure Güvenlik Duvarı kavramları](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts)hakkında daha ayrıntılı olarak açıklanmıştır.
+Azure Güvenlik Duvarı 'nı kullanırken, gelen trafik için NAT kuralları oluşturmak üzere __hedef ağ adresi çevirisi 'ni (DNAT)__ kullanın. Giden trafik için __ağ__ ve/veya __uygulama__ kuralları oluşturun. Bu kural koleksiyonları [, bazı Azure Güvenlik Duvarı kavramları](../firewall/firewall-faq.yml#what-are-some-azure-firewall-concepts)hakkında daha ayrıntılı olarak açıklanmıştır.
 
 ### <a name="inbound-configuration"></a>Gelen yapılandırma
 

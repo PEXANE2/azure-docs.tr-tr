@@ -3,17 +3,17 @@ title: Microsoft Azure haritaları Oluşturucu 'da paket gereksinimlerini çizme
 description: Tesis tasarım dosyalarınızı eşleme verilerine dönüştürmek için çizim paketi gereksinimleri hakkında bilgi edinin
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/07/2020
+ms.date: 1/08/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 26b6273b4dd2371790025515e35b71d1fc863ebe
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: bed5373cbb9967bd1d86bb80bb3a449430c3b6ae
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903471"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044790"
 ---
 # <a name="drawing-package-requirements"></a>Çizim paketi gereksinimleri
 
@@ -41,7 +41,7 @@ Kolay başvuru için, bu makaleyi okurken önemli olan bazı hüküm ve tanımla
 | Katman | Bir AutoCAD DWG katmanı.|
 | Level | Bir küme yükseltmesinde bina alanı. Örneğin, bir bina tabanı. |
 | XREF  |AutoCAD DWG dosya biçimindeki (. dwg), dış başvuru olarak birincil Çizime eklenen bir dosya.  |
-| Özellik | Ek meta veri bilgileriyle geometriyi birleştiren bir nesne. |
+| Özellik | Bir geometriyi daha fazla meta veri bilgileriyle birleştiren bir nesne. |
 | Özellik sınıfları | Özellikler için ortak bir şema. Örneğin, bir *birim* bir özellik sınıfıdır ve *Office* bir özelliktir. |
 
 ## <a name="drawing-package-structure"></a>Çizim paketi yapısı
@@ -49,9 +49,9 @@ Kolay başvuru için, bu makaleyi okurken önemli olan bazı hüküm ve tanımla
 Bir çizim paketi, aşağıdaki dosyaları içeren bir. zip arşividir:
 
 * AutoCAD DWG dosya biçimindeki DWG dosyaları.
-* Tek bir tesis için dosyada _manifest.js_ .
+* Çizim paketindeki DWG dosyalarını açıklayan _manifest.js_ dosyası.
 
-DWG dosyalarını, klasörü içinde herhangi bir şekilde düzenleyebilirsiniz, ancak bildirim dosyası klasörün kök dizininde canlı olmalıdır. Tek bir arşiv dosyasındaki klasörü. zip uzantısına sahip olarak zip etmeniz gerekir. Sonraki bölümlerde, DWG dosyaları, bildirim dosyası ve bu dosyaların içeriği için gereksinimler ayrıntılandırır.  
+Çizim paketi,. zip uzantısına sahip tek bir arşiv dosyasında sıkıştıralınmalıdır. DWG dosyaları paketin içinde herhangi bir şekilde düzenlenebilir, ancak bildirim dosyası daraltılmış paketin kök dizininde canlı olmalıdır. Sonraki bölümlerde, DWG dosyaları, bildirim dosyası ve bu dosyaların içeriği için gereksinimler ayrıntılandırır.
 
 ## <a name="dwg-files-requirements"></a>DWG dosyaları gereksinimleri
 
@@ -60,6 +60,7 @@ Her tesis düzeyi için tek bir DWG dosyası gereklidir. Düzeyin verileri tek b
 * _Dış_ ve _birim_ katmanları tanımlanmalıdır. İsteğe bağlı olarak, aşağıdaki isteğe bağlı katmanları tanımlayabilir: _duvar_, _kapı_, _Unitlabel_, _Zone_ ve _zonelabel_.
 * Birden çok düzeyden Özellikler içermemelidir.
 * Birden çok tesisten Özellikler içermemelidir.
+* , Çizim paketindeki diğer DWG dosyaları ile aynı ölçüm sistemine ve ölçü birimine başvurmalıdır.
 
 [Azure haritalar dönüştürme hizmeti](/rest/api/maps/conversion) , aşağıdaki özellik SıNıFLARıNı bir DWG dosyasından ayıklayabilir:
 
@@ -78,19 +79,19 @@ DWG katmanları da aşağıdaki ölçütlere uymalıdır:
 
 * Tüm DWG dosyaları için çizimlerin kaynakları, aynı Enlem ve Boylam ile hizalanmalıdır.
 * Her düzey, diğer düzeyler ile aynı yönde olmalıdır.
-* Otomatik olarak kesişen çokgenler otomatik olarak onarılır ve [Azure Maps dönüştürme hizmeti](/rest/api/maps/conversion) bir uyarı oluşturur. Beklenen sonuçlarla eşleşeceğinden, onarılan sonuçları el ile incelemeniz gerekir.
+* Otomatik olarak kesişen çokgenler otomatik olarak onarılır ve [Azure Maps dönüştürme hizmeti](/rest/api/maps/conversion) bir uyarı oluşturur. Beklenen sonuçlarla eşleşeceğinden, onarılan sonuçları el ile incelemeniz önerilir.
 
-Tüm katman varlıkları şu türlerden biri olmalıdır: çizgi, çoklu çizgi, Çokgen, dairesel yay, daire veya metin (tek satırlı). Diğer herhangi bir varlık türü yok sayılır.
+Tüm katman varlıkları şu türlerden biri olmalıdır: çizgi, çoklu çizgi, Çokgen, dairesel yay, daire, elips (kapalı) veya metin (tek satırlı). Diğer herhangi bir varlık türü yok sayılır.
 
-Aşağıdaki tabloda, desteklenen varlık türleri ve her katman için desteklenen özellikler özetlenmektedir. Bir katman Desteklenmeyen varlık türleri içeriyorsa, [Azure Maps dönüştürme hizmeti](/rest/api/maps/conversion) bu varlıkları yoksayar.  
+Aşağıdaki tabloda, her katman için desteklenen varlık türleri ve dönüştürülmüş harita özellikleri özetlenmektedir. Bir katman Desteklenmeyen varlık türleri içeriyorsa, [Azure Maps dönüştürme hizmeti](/rest/api/maps/conversion) bu varlıkları yoksayar.  
 
-| Katman | Varlık türleri | Özellikler |
+| Katman | Varlık türleri | Dönüştürülen Özellikler |
 | :----- | :-------------------| :-------
-| [Dış](#exterior-layer) | Çokgen, çoklu çizgi (kapalı), daire | Düzeyler
-| [Birim](#unit-layer) |  Çokgen, çoklu çizgi (kapalı), daire | Dikey penetler, birimler
-| [Dolg](#wall-layer)  | Çokgen, çoklu çizgi (kapalı), daire | Geçerli değildir. Daha fazla bilgi için bkz. [duvar katmanı](#wall-layer).
+| [Dış](#exterior-layer) | Çokgen, çoklu çizgi (kapalı), daire, elips (kapalı) | Düzeyler
+| [Birim](#unit-layer) |  Çokgen, çoklu çizgi (kapalı), daire, elips (kapalı) | Dikey penetler, birim
+| [Dolg](#wall-layer)  | Çokgen, çoklu çizgi (kapalı), daire, elips (kapalı) | Geçerli değildir. Daha fazla bilgi için bkz. [duvar katmanı](#wall-layer).
 | [Kapı](#door-layer) | Çokgen, çoklu çizgi, çizgi, devre bir yay, daire | Larını
-| [Bölge](#zone-layer) | Çokgen, çoklu çizgi (kapalı), daire | Bölge
+| [Bölge](#zone-layer) | Çokgen, çoklu çizgi (kapalı), daire, elips (kapalı) | Bölge
 | [UnitLabel](#unitlabel-layer) | Metin (tek satırlı) | Geçerli değildir. Bu katman yalnızca birimler katmanından birim özelliklerine özellikler ekleyebilir. Daha fazla bilgi için bkz. [Unitlabel katmanı](#unitlabel-layer).
 | [Bölge etiketi](#zonelabel-layer) | Metin (tek satırlı) | Geçerli değildir. Bu katman, bölge özelliklerine yalnızca bölgelere Eslayer öğesinden özellikler ekleyebilir. Daha fazla bilgi için bkz. [bölge etiketi katmanı](#zonelabel-layer).
 
@@ -102,8 +103,10 @@ Her düzeyin DWG dosyası, bu düzeyin çevre birimi tanımlamak için bir katma
 
 Dış katmanda kaç varlık çizimleri olduğuna bakılmaksızın, [sonuçta elde edilen tesis veri kümesi](tutorial-creator-indoor-maps.md#create-a-feature-stateset) her bir DWG dosyası için yalnızca bir düzey özellik içerir. Ek olarak:
 
-* Dış örler, Çokgen, çoklu çizgi (kapalı) veya daire olarak çizmelidir.
-* Dış dosyalar örtüşüyor, ancak tek bir geometride çözülür.
+* Dış örler, Çokgen, çoklu çizgi (kapalı), daire veya elips (kapalı) olarak çizmelidir.
+* Dış değerler çakışabilir, ancak tek bir geometriyle çözülür.
+* Sonuç düzeyi özelliği en az 4 kare metre olmalıdır.
+* Sonuç düzeyi özelliği 400 kare ölçü olmamalıdır.
 
 Katman birden çok çakışan PolyLines içeriyorsa, PolyLines tek düzeyli bir özellik olarak çözülür. Alternatif olarak, katman birden çok çakışmayan PolyLines içeriyorsa, sonuçta elde edilen düzey özelliğin çok Çokgen bir temsili vardır.
 
@@ -111,9 +114,11 @@ Katman birden çok çakışan PolyLines içeriyorsa, PolyLines tek düzeyli bir 
 
 ### <a name="unit-layer"></a>Birim katmanı
 
-Her düzey için DWG dosyası birimleri içeren bir katman tanımlar. Birimler, binadaki ofisler, hallyollar, STAIRS ve yükseltme gibi gezinilebilir alanlar. Birimler katmanının aşağıdaki gereksinimlere uyması gerekir:
+Her düzey için DWG dosyası birimleri içeren bir katman tanımlar. Birimler, binadaki ofisler, hallyollar, STAIRS ve yükseltme gibi gezinilebilir alanlar. `VerticalPenetrationCategory`Özellik tanımlanmışsa, yükseltme ve merdiven gibi birden fazla düzeyi kapsayan gezinebilir birimler dikey sızma özelliklerine dönüştürülür. Birbirleriyle çakışan dikey sızma özelliklerine bir tane atanır `setid` .
 
-* Birimler Çokgen, çoklu çizgi (kapalı) veya daire olarak çizilmelidir.
+Birimler katmanının aşağıdaki gereksinimlere uyması gerekir:
+
+* Birimler Çokgen, çoklu çizgi (kapalı), daire veya elips (kapalı) olarak çizilmelidir.
 * Birimler, Tesis dış çevre sınırları içine düşmelidir.
 * Birimler kısmen örtüşmemelidir.
 * Birimler, kendisiyle kesişen bir geometri içermemelidir.
@@ -126,7 +131,7 @@ UnitLabel katmanında bir metin nesnesi oluşturarak bir birimi adlandırın ve 
 
 Her düzeyin DWG dosyası, duvarların, sütunların ve diğer yapı yapısının fiziksel kapsamlarını tanımlayan bir katman içerebilir.
 
-* Duvarlar Çokgen, çoklu çizgi (kapalı) veya daire olarak çizmelidir.
+* Duvarlar Çokgen, çoklu çizgi (kapalı), daire veya elips (kapalı) olarak çizmelidir.
 * Duvar katmanı veya Katmanlar yalnızca yapı yapısı olarak yorumlanan geometriyi içermelidir.
 
 [Örnek çizim paketindeki](https://github.com/Azure-Samples/am-creator-indoor-data-examples)duvarlar katmanının bir örneğini görebilirsiniz.
@@ -141,9 +146,9 @@ Azure haritalar veri kümesindeki kapı kapalerinin birden çok birim sınırı 
 
 ### <a name="zone-layer"></a>Bölge katmanı
 
-Her düzeyin DWG dosyasında, bölgelerin fiziksel kapsamlarını tanımlayan bir bölge katmanı bulunabilir. Bir bölge, boş bir alan veya bir arka bahçe olabilir.
+Her düzeyin DWG dosyasında, bölgelerin fiziksel kapsamlarını tanımlayan bir bölge katmanı bulunabilir. Bölge, adlandırılmış ve işlenmiş olabilecek, gezinilmemiş bir alandır. Bölgeler birden fazla düzeyi kapsayabilir ve Zonesetıd özelliği kullanılarak birlikte gruplandırılır.
 
-* Bölgeler Çokgen, çoklu çizgi (kapalı) veya daire olarak çizmelidir.
+* Bölgeler Çokgen, çoklu çizgi (kapalı) veya elips (kapalı) olarak çizmelidir.
 * Bölgeler örtüşebilir.
 * Bölgeler, Tesis dış çevre birimi içinde veya dışında olabilir.
 
@@ -153,7 +158,7 @@ Bölge etiketi katmanında bir metin nesnesi oluşturarak ve metin nesnesini bö
 
 ### <a name="unitlabel-layer"></a>UnitLabel katmanı
 
-Her düzeyin DWG dosyası bir UnitLabel katmanı içerebilir. UnitLabel katmanı, birim katmanından ayıklanan birimlere bir Name özelliği ekler. Name özelliğine sahip birimler, bildirim dosyasında belirtilen ek ayrıntılara sahip olabilir.
+Her düzeyin DWG dosyası bir UnitLabel katmanı içerebilir. UnitLabel katmanı, birim katmanından ayıklanan birimlere bir Name özelliği ekler. Name özelliğine sahip birimler, bildirim dosyasında belirtilen daha fazla ayrıntı içerebilir.
 
 * Birim etiketleri tek satırlık metin varlıkları olmalıdır.
 * Birim etiketleri, birimlerinin sınırlarının içine düşmelidir.
@@ -163,7 +168,7 @@ Her düzeyin DWG dosyası bir UnitLabel katmanı içerebilir. UnitLabel katmanı
 
 ### <a name="zonelabel-layer"></a>Bölge etiketi katmanı
 
-Her düzeyin DWG dosyası bir bölge etiketi katmanı içerebilir. Bu katman, bölge katmanından ayıklanan bölgelere bir ad özelliği ekler. Name özelliğine sahip bölgeler, bildirim dosyasında belirtilen ek ayrıntılara sahip olabilir.
+Her düzeyin DWG dosyası bir bölge etiketi katmanı içerebilir. Bu katman, bölge katmanından ayıklanan bölgelere bir ad özelliği ekler. Name özelliğine sahip bölgeler, bildirim dosyasında daha fazla ayrıntı içerebilir.
 
 * Bölgeler etiketleri tek satırlık metin varlıkları olmalıdır.
 * Bölgeler etiketleri kendi bölgelerinin sınırları içine düşmelidir.
@@ -186,14 +191,14 @@ Bildirim nesnelerini kullandığınızda gereksinimler olsa da, tüm nesneler ge
 | `buildingLevels` | true | Bina düzeylerini ve düzeylerin tasarımını içeren dosyaları belirtir. |
 | `georeference` | true | Tesis çizimi için sayısal coğrafi bilgiler içerir. |
 | `dwgLayers` | true | Katmanların adlarını listeler ve her bir katman kendi özelliklerinin adlarını listeler. |
-| `unitProperties` | yanlış | Birim özelliklerine ek meta veri eklemek için kullanılabilir. |
-| `zoneProperties` | yanlış | , Bölge özellikleri için ek meta veri eklemek için kullanılabilir. |
+| `unitProperties` | yanlış | Birim özelliklerine daha fazla meta veri eklemek için kullanılabilir. |
+| `zoneProperties` | yanlış | , Bölge özellikleri için daha fazla meta veri eklemek üzere kullanılabilir. |
 
 Sonraki bölümlerde her bir nesne için gereksinimler ayrıntılandırır.
 
 ### `directoryInfo`
 
-| Özellik  | Tür | Gerekli | Description |
+| Özellik  | Tür | Gerekli | Açıklama |
 |-----------|------|----------|-------------|
 | `name`      | dize | true   |  Oluşturma adı. |
 | `streetAddress`|    string |    yanlış    | Bina adresi. |
@@ -214,7 +219,7 @@ Sonraki bölümlerde her bir nesne için gereksinimler ayrıntılandırır.
 
 `buildingLevels`Nesne, bir bina seviyelerinin JSON dizisini içeriyor.
 
-| Özellik  | Tür | Gerekli | Description |
+| Özellik  | Tür | Gerekli | Açıklama |
 |-----------|------|----------|-------------|
 |`levelName`    |dize    |true |    Açıklayıcı düzey adı. Örneğin: kat 1, giriş, mavi park veya taban.|
 |`ordinal` | tamsayı |    true | Düzeylerin dikey sırasını belirler. Her tesis 0 sıralı bir düzeye sahip olmalıdır. |
@@ -246,7 +251,7 @@ Sonraki bölümlerde her bir nesne için gereksinimler ayrıntılandırır.
 
 `unitProperties`Nesne, birim ÖZELLIKLERININ JSON dizisini içerir.
 
-| Özellik  | Tür | Gerekli | Description |
+| Özellik  | Tür | Gerekli | Açıklama |
 |-----------|------|----------|-------------|
 |`unitName`    |dize    |true    |Bu kayıtla ilişkilendirilecek birimin adı `unitProperty` . Bu kayıt yalnızca katmanlarda eşleşen bir etiket bulunduğunda geçerlidir `unitName` `unitLabel` . |
 |`categoryName`|    string|    yanlış    |Kategori adı. Kategorilerin tüm listesi için [Kategoriler](https://aka.ms/pa-indoor-spacecategories)' e bakın. |
@@ -260,7 +265,7 @@ Sonraki bölümlerde her bir nesne için gereksinimler ayrıntılandırır.
 |`verticalPenetrationDirection`|    string|    yanlış    |`verticalPenetrationCategory`Tanımlanmışsa, isteğe bağlı olarak geçerli seyahat yönünü tanımlayın. İzin verilen değerler: `lowToHigh` , `highToLow` , `both` , ve `closed` . `both` varsayılan değerdir.|
 | `nonPublic` | bool | yanlış | Birimin herkese açık olup olmadığını gösterir. |
 | `isRoutable` | bool | yanlış | Bu özellik olarak ayarlandığında `false` , birime veya birime gidemezsiniz. `true` varsayılan değerdir. |
-| `isOpenArea` | bool | yanlış | Gezinti aracının, birime eklenmiş bir açmaya gerek kalmadan birimi girmesine izin verir. Varsayılan olarak, bu değer, yer `true` içermeyen birimler için ve yer imiyle birimler için olarak ayarlanır `false` . `isOpenArea` `false` Açık olmayan bir birimde el ile olarak ayarlanması bir uyarı ile sonuçlanır. Bunun nedeni, elde edilen birime gezinme Aracısı tarafından erişilememesi olabilir.|
+| `isOpenArea` | bool | yanlış | Gezinti aracının, birime eklenmiş bir açmaya gerek kalmadan birimi girmesine izin verir. Varsayılan olarak, bu değer, yer `true` içermeyen birimler için ve yer imiyle birimler için olarak ayarlanır `false` . `isOpenArea`Sonuç olmadan bir birim üzerinde olarak ' ye el ile ayarlamak `false` bir uyarı ile sonuçlanır, çünkü ortaya çıkan birim bir gezinme Aracısı tarafından erişilemez.|
 
 ### `zoneProperties`
 
@@ -276,7 +281,7 @@ Sonraki bölümlerde her bir nesne için gereksinimler ayrıntılandırır.
 
 ### <a name="sample-drawing-package-manifest"></a>Örnek çizim paketi bildirimi
 
-Örnek çizim paketine yönelik örnek bir bildirim dosyası aşağıda verilmiştir. Tüm paketi indirmek için bkz. [örnek çizim paketi](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
+Örnek çizim paketinin bildirim dosyası aşağıda verilmiştir. Tüm paketi indirmek için bkz. [örnek çizim paketi](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
 
 #### <a name="manifest-file"></a>Bildirim dosyası
 

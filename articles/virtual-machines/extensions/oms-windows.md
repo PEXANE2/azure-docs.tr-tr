@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: akjosh
-ms.openlocfilehash: 389842901a4c508015d527c0fd8fd87af57dcd9b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 22cc9bf1bdfdb8a3026bb09f44e007ab3438325a
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967933"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98046830"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Windows için Log Analytics sanal makine uzantısı
 
 Azure Izleyici günlükleri, bulut ve şirket içi varlıklar arasında izleme özellikleri sağlar. Windows için Log Analytics Aracısı sanal makine uzantısı Microsoft tarafından yayımlanır ve desteklenir. Uzantı Log Analytics aracısını Azure sanal makinelerine yükleyip sanal makineleri mevcut bir Log Analytics çalışma alanına kaydeder. Bu belgede, Windows için Log Analytics sanal makine uzantısı için desteklenen platformlar, konfigürasyonlar ve dağıtım seçenekleri ayrıntılı olarak bulunmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 
@@ -37,6 +37,7 @@ Aşağıdaki tabloda, her sürüm için Windows Log Analytics sanal makine uzant
 
 | Log Analytics Windows Agent paketi sürümü | Log Analytics Windows VM Uzantısı sürümü | Yayın Tarihi | Sürüm Notları |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
+| 10.20.18053| 1.0.18053.0 | Ekim 2020   | <ul><li>Yeni Aracı sorun giderici</li><li>Aracının Azure hizmetlerinde sertifika değişikliklerini nasıl işleyeceği ile ilgilenen güncelleştirmeler</li></ul> |
 | 10.20.18040 | 1.0.18040.2 | Ağustos 2020   | <ul><li>Azure Arc 'da bir sorunu çözer</li></ul> |
 | 10.20.18038 | 1.0.18038 | Nisan 2020   | <ul><li>Azure Izleyici özel bağlantı kapsamlarını kullanarak özel bağlantı üzerinden bağlantıya izin verebilir</li><li>Bir çalışma alanına yönelik alma sırasında ani ve yanlışlıkla etkileyen bir x kullanmaktan kaçınmak için alım azaltma ekler</li><li>Ek Azure Kamu bulutları ve bölgeleri için destek ekler</li><li>HealthService.exe kilitlendiğinde oluşan bir hatayı çözer</li></ul> |
 | 10.20.18029 | 1.0.18029 | Mart 2020   | <ul><li>SHA-2 kod imzalama desteği ekler</li><li>VM Uzantısı yükleme ve yönetimini geliştirir</li><li>Sunucu tümleştirmesi için Azure Arc 'da bir hata çözer</li><li>Müşteri desteği için yerleşik bir sorun giderme aracı ekler</li><li>Ek Azure Kamu bölgeleri için destek ekler</li> |
@@ -88,7 +89,7 @@ Aşağıdaki JSON Log Analytics aracı uzantısının şemasını gösterir. Uza
 ```
 ### <a name="property-values"></a>Özellik değerleri
 
-| Name | Değer/örnek |
+| Ad | Değer/örnek |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | yayımcı | Microsoft. EnterpriseCloud. Monitoring |

@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 90a425fe64424c946a02f3c113889b62b58fbeb4
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: aa6429e27faf92f047c580986d5b434c9a418730
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032329"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044382"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Azure dijital TWINS örneği ve kimlik doğrulaması (portal) ayarlama
 
@@ -44,7 +44,7 @@ Aşağıdaki *kaynak oluştur* sayfasında, aşağıda verilen değerleri girin:
 * **Abonelik**: kullandığınız Azure aboneliği
   - **Kaynak grubu**: Örneğin dağıtılacağı bir kaynak grubu. Zaten bir kaynak grubunuz yoksa, *Yeni bağlantı oluştur* ' u seçerek ve yeni bir kaynak grubu için bir ad girerek buradan bir tane oluşturabilirsiniz.
 * **Konum**: dağıtım Için bir Azure dijital TWINS özellikli bölgesi. Bölgesel destek hakkında daha fazla bilgi için [*bölgeye göre sunulan Azure ürünlerini ziyaret edin (Azure dijital TWINS)*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
-* **Kaynak adı**: Azure dijital TWINS örneğiniz için bir ad. Yeni örneğin adı, aboneliğinizin bölgesi içinde benzersiz olmalıdır (yani, aboneliğiniz seçtiğiniz adı kullanan bölgede başka bir Azure dijital TWINS örneğine sahipse, farklı bir ad seçmeniz istenir).
+* **Kaynak adı**: Azure dijital TWINS örneğiniz için bir ad. Aboneliğiniz zaten belirtilen adı kullanan bölgede başka bir Azure dijital TWINS örneğine sahipse, farklı bir ad seçmeniz istenir.
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="Azure dijital TWINS kaynağı oluşturmak için açıklanan değerleri doldurma":::
 

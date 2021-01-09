@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 22bedcf7921e3c8d4f2566a70515eef3e3b136b6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: a0f2b971eae5d37e8fb0771e213075289af6c519
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461031"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045266"
 ---
 # <a name="understand-event-data"></a>Olay verilerini anlama
 
-Azure Digital TWINS 'deki farklı olaylar, farklı eylemler meydana geldiğinde çözüm arka ucunun farkında olmasını sağlayan **Bildirimler**üretir. Bunlar daha sonra bu bilgileri işlem yapmak için kullanabileceğiniz Azure dijital TWINS içindeki ve dışındaki farklı konumlara [yönlendirilir](concepts-route-events.md) .
+Azure Digital TWINS 'deki farklı olaylar, farklı eylemler meydana geldiğinde çözüm arka ucunun farkında olmasını sağlayan **Bildirimler** üretir. Bunlar daha sonra bu bilgileri işlem yapmak için kullanabileceğiniz Azure dijital TWINS içindeki ve dışındaki farklı konumlara [yönlendirilir](concepts-route-events.md) .
 
 Oluşturulabilecek birçok bildirim türü vardır ve bildirim iletileri, hangi olay türüne bağlı olarak farklı görünebilir. Bu makale, farklı ileti türleri ve nasıl görünebilecekleri hakkında ayrıntılı bilgi sağlar.
 
@@ -93,7 +93,7 @@ Bu bölüm IoT Hub ve Azure dijital TWINS (veya diğer Azure IoT Hizmetleri) tar
 
 ### <a name="digital-twin-life-cycle-notifications"></a>Dijital ikizi yaşam döngüsü bildirimleri
 
-Tüm [dijital TWINS](concepts-twins-graph.md) , [Azure dijital twıns 'de IoT Hub cihazları](how-to-ingest-iot-hub-data.md) temsil etmeksizin bağımsız olarak bildirimleri yayar. Bunun nedeni, dijital ikizi kendisi ile ilgili olan **yaşam döngüsü bildirimlerinin**bir kendisidir.
+Tüm [dijital TWINS](concepts-twins-graph.md) , [Azure dijital twıns 'de IoT Hub cihazları](how-to-ingest-iot-hub-data.md) temsil etmeksizin bağımsız olarak bildirimleri yayar. Bunun nedeni, dijital ikizi kendisi ile ilgili olan **yaşam döngüsü bildirimlerinin** bir kendisidir.
 
 Yaşam döngüsü bildirimleri şu durumlarda tetiklenir:
 * Dijital bir ikizi oluşturulur
@@ -103,7 +103,7 @@ Yaşam döngüsü bildirimleri şu durumlarda tetiklenir:
 
 İşte bir yaşam döngüsü bildiriminin gövdesinde yer alan alanlar.
 
-| Name | Değer |
+| Ad | Değer |
 | --- | --- |
 | `id` | Bir UUID veya hizmet tarafından tutulan bir sayaç gibi bildirimin tanımlayıcısı. `source` + `id` her farklı olay için benzersizdir. |
 | `source` | *Myhub.Azure-Devices.net* veya *mydigitaltwins.westus2.azuredigitaltwins.net* gibi IoT Hub veya Azure dijital TWINS örneğinin adı |
@@ -189,7 +189,7 @@ Dijital ikizi başka bir örneği aşağıda verilmiştir. Bu, bir [modeli](conc
 
 Bir Edge değişiklik bildiriminin gövdesinde yer alan alanlar aşağıda verilmiştir.
 
-| Name    | Değer |
+| Ad    | Değer |
 | --- | --- |
 | `id` | Bir UUID veya hizmet tarafından tutulan bir sayaç gibi bildirimin tanımlayıcısı. `source` + `id` her farklı olay için benzersizdir |
 | `source` | *Mydigitaltwins.westus2.azuredigitaltwins.net* gibi Azure dijital TWINS örneğinin adı |
@@ -245,7 +245,7 @@ Dijital **ikizi değişiklik bildirimleri** , bir dijital ikizi güncelleştiril
 
 Dijital ikizi değişiklik bildiriminin gövdesinde yer alan alanlar aşağıda verilmiştir.
 
-| Name    | Değer |
+| Ad    | Değer |
 | --- | --- |
 | `id` | Bir UUID veya hizmet tarafından tutulan bir sayaç gibi bildirimin tanımlayıcısı. `source` + `id` her farklı olay için benzersizdir |
 | `source` | *Myhub.Azure-Devices.net* veya *mydigitaltwins.westus2.azuredigitaltwins.net* gibi IoT Hub veya Azure dijital TWINS örneğinin adı
@@ -262,20 +262,7 @@ Bildirimin gövdesi, `Twin.Update` dijital ikizi güncelleştirmesini içeren BI
 
 Örneğin, bir dijital ikizi, aşağıdaki düzeltme eki kullanılarak güncelleştirildiğini varsayalım.
 
-```json
-[
-    {
-        "op": "replace",
-        "value": 40,
-        "path": "/Temperature"
-    },
-    {
-        "op": "add",
-        "value": 30,
-        "path": "/comp1/prop1"
-    }
-]
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/patch-component-2.json":::
 
 Karşılık gelen bildirim (Azure Digital TWINS bir dijital ikizi güncelleştiren gibi hizmet tarafından zaman uyumlu olarak yürütülürse) şöyle bir gövdeye sahip olur:
 

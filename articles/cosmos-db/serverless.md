@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/23/2020
-ms.openlocfilehash: c5086eee805ffbcdf0741eae4db405b1bcbe8692
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.date: 01/08/2021
+ms.openlocfilehash: d39bc35d1edcbcfef4c7774259112ec5144efa15
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760387"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044365"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB sunucusuz (Önizleme)
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -31,16 +31,13 @@ Azure Cosmos DB kullanırken, her veritabanı işleminin, [Istek birimlerinde](r
 
 ## <a name="use-cases"></a>Kullanım örnekleri
 
-İstediğiniz yerde sunucusuz en iyi uyan senaryolar Azure Cosmos DB:
-
-- **Düşük, aralıklı ve öngörülemeyen trafik**: Bu gibi durumlarda sağlama kapasitesi gerekli değildir ve maliyet probisel olabilir
-- **Orta performans**: sunucusuz kapsayıcılar [belirli performans özelliklerine](#performance) sahip olduğundan
-
-Bu nedenlerden dolayı sunucusuz Azure Cosmos DB aşağıdaki durumlarda göz önünde bulundurulmalıdır:
+Uzun boşta kalma süreleriyle **aralıklı ve öngörülemeyen trafikte** bekleyen, sunucusuz en iyi uyan senaryolar Azure Cosmos DB. Bu tür durumlarda sağlama kapasitesi gerekli olmadığından ve düşük maliyetli olabileceğinden, Azure Cosmos DB sunucusuz aşağıdaki kullanım durumlarında göz önünde bulundurulmalıdır:
 
 - Azure Cosmos DB kullanmaya başlama
-- Geliştirme, test etme ve yeni uygulamaların prototipini oluşturma
-- Tahmin etmek zor aralıklı trafik sayesinde küçük ve orta ölçekli uygulamalar çalıştırma
+- Uygulamaları çalıştırma
+    - bursty, tahmin etmek zor olan aralıklı trafik veya
+    - düşük (<% 10) ortalamanın yoğun trafik oranı
+- Trafik deseninin bilinmediği, üretim yeni uygulamalarında geliştirme, test etme, prototip yazma ve çalıştırma
 - [Azure işlevleri](../azure-functions/functions-overview.md) gibi sunucusuz işlem hizmetleriyle tümleştirme
 
 Kullanım örneğine en uygun teklifi seçme hakkında daha fazla bilgi için bkz. [sağlanan verimlilik ve sunucusuz](throughput-serverless.md) makale arasından seçim yapma.
@@ -74,14 +71,7 @@ Hesabınızın **ölçümler** bölmesine gözatarken, **genel bakış** sekmesi
 
 ## <a name="performance"></a><a id="performance"></a>Performans
 
-Sunucusuz kaynaklar, sağlanan aktarım hızı kaynaklarından farklı olarak belirli performans özellikleri sunar:
-
-- **Kullanılabilirlik**: sunucusuz teklif genel kullanıma sunulduktan sonra, kullanılabilirlik alanları (bölge yedekliliği) kullanılmazsa sunucusuz kapsayıcıların kullanılabilirliği% 99,9 HIZMET DÜZEYI SÖZLEŞMESI (SLA) kapsamında olur. Kullanılabilirlik Alanları kullanıldığında SLA% 99,99 ' dir.
-- **Gecikme süresi**: sunucusuz teklif genel kullanıma hazır hale geldikten sonra sunucusuz kapsayıcıların gecikmesi, bir hizmet düzeyi hedefı (SLO) için 10 milisaniye veya nokta okuma ve 30 milisaniye ya da daha az yazma için daha az olabilir. Bir nokta okuma işlemi, KIMLIĞINE ve bölüm anahtarı değerine göre tek bir öğe getirilirken oluşur.
-- **Buristimsuz**: sunucusuz bir teklif genel kullanıma sunulduğunda, sunucusuz kapsayıcıların maistikliğine yönelik bir hizmet düzeyi hedefı (SLO) %95 olarak ele alınacaktır. Bu, en fazla patlama süresinin en az %95 ' i kadar erişilebilir olması anlamına gelir.
-
-> [!NOTE]
-> Azure önizlemesi olarak, Azure Cosmos DB sunucusuz hizmet düzeyi sözleşmelerinden (SLA) hariç tutulur. Yukarıda belirtilen performans özellikleri, genel kullanıma sunulduğunda bu teklifin ne kadar teslim edileceği hakkında bir önizleme olarak sağlanır.
+Sunucusuz kaynaklar, sağlanan aktarım hızı kaynaklarından farklı olan belirli performans özellikleri sunar. Sunucusuz teklif genel kullanıma hazır hale geldikten sonra sunucusuz kapsayıcıların gecikmesi, bir hizmet düzeyi hedefi (SLO) ile 10 milisaniyelik veya nokta okuma ve 30 milisaniye ya da daha az yazma için daha küçüktür. Bir nokta okuma işlemi, KIMLIĞINE ve bölüm anahtarı değerine göre tek bir öğe getirilirken oluşur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

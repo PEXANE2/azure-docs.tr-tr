@@ -1,21 +1,21 @@
 ---
 title: Yerleşik ilke girişimleri listesi
 description: Azure Ilkesi için yerleşik ilke girişimlerini listeleyin. Kategoriler, mevzuata uyumluluğu, Konuk yapılandırma ve daha fazlasını içerir.
-ms.date: 11/20/2020
+ms.date: 01/08/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 74ebf960933837953c0b279da14dbb17bd88b330
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 5265005862dd047e347beda2dd2b2f512688464a
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94986977"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98046433"
 ---
 # <a name="azure-policy-built-in-initiative-definitions"></a>Azure Ilkesi yerleşik girişim tanımları
 
 Bu sayfa, Azure Ilkesi yerleşik girişim tanımlarının bir dizinidir.
 
-Her yerleşik bir ad, [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda girişim tanımı kaynağına bağlanır. Yerleşik bileşenler, **meta verilerde** **Kategori** özelliğine göre gruplandırılır. Belirli bir **kategoriye** geçmek için sayfanın sağ tarafındaki menüyü kullanın. Aksi takdirde, <kbd>Ctrl</kbd> - tarayıcınızın arama özelliğini kullanmak için CTRL<kbd>F</kbd> kullanın.
+Her yerleşik bir ad, [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda girişim tanımı kaynağına bağlanır. Yerleşik bileşenler, **meta verilerde** **Kategori** özelliğine göre gruplandırılır. Belirli bir **kategoriye** geçmek için sayfanın sağ tarafındaki menüyü kullanın. Aksi takdirde, <kbd></kbd> - tarayıcınızın arama özelliğini kullanmak için CTRL<kbd>F</kbd> kullanın.
 
 ## <a name="cosmos-db"></a>Cosmos DB
 

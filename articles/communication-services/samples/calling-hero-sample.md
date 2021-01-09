@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c872c2a2799eee3ae9e39653b0046b70ca5d7e8b
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 44f23e4f5b3f65fb4f3c69b2ddc55af8c983aa23
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887544"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98043736"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>Hero örneği çağıran grup ile çalışmaya başlama
 
@@ -56,7 +56,7 @@ Ana arama ekranının bileşenleri:
 
 Aşağıda, önkoşulları ve örneği ayarlama adımlarını hakkında daha fazla bilgi bulacaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin abonelikle bir Azure hesabı oluşturun. Ayrıntılar için bkz. [ücretsiz hesap oluşturma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - [Node.js (12.18.4 ve üzeri)](https://nodejs.org/en/download/)
@@ -72,7 +72,7 @@ Yerel olarak dağıtmak istiyoruz, her iki uygulamayı da başlatmanız gerekir.
 
 Çoklu Kullanıcı çağrısının benzetimini yapmak için çağrın URL 'siyle birden çok tarayıcı oturumu açarak örneği yerel olarak test edebilirsiniz.
 
-## <a name="before-running-the-sample-for-the-first-time"></a>Örneği ilk kez çalıştırmadan önce
+### <a name="before-running-the-sample-for-the-first-time"></a>Örneği ilk kez çalıştırmadan önce
 
 1. PowerShell, Windows Terminal, komut Istemi veya eşdeğer bir örnek açın ve örneği kopyalamak istediğiniz dizine gidin.
 2. `git clone https://github.com/Azure-Samples/communication-services-web-calling-hero.git`

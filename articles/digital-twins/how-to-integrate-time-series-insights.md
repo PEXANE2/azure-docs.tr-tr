@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 58d101bb93b4635e362c5ec78a03a659b71b63da
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 22ee57592af838a236d75fa7f56a0c8e1ed89403
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495267"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98046540"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Azure dijital TWINS 'i Azure Time Series Insights ile tümleştirme
 
@@ -22,7 +22,7 @@ Bu makalede açıklanan çözüm, IoT çözümünüz hakkında geçmiş verileri
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Time Series Insights bir ilişki ayarlayabilmeniz için önce bir **Azure dijital TWINS örneğine**sahip olmanız gerekir. Bu örnek, verileri temel alarak dijital ikizi bilgilerini güncelleştirme özelliği ile ayarlanmalıdır, çünkü bu verileri Time Series Insights ' de izlenen şekilde görmek için ikizi bilgilerini birkaç kez güncelleştirmeniz gerekir. 
+Time Series Insights bir ilişki ayarlayabilmeniz için önce bir **Azure dijital TWINS örneğine** sahip olmanız gerekir. Bu örnek, verileri temel alarak dijital ikizi bilgilerini güncelleştirme özelliği ile ayarlanmalıdır, çünkü bu verileri Time Series Insights ' de izlenen şekilde görmek için ikizi bilgilerini birkaç kez güncelleştirmeniz gerekir. 
 
 Bu ayarı zaten yoksa, Azure dijital TWINS [*öğreticisini izleyerek oluşturabilirsiniz: uçtan uca çözümü bağlama*](./tutorial-end-to-end.md). Öğreticide, dijital ikizi güncelleştirmelerini tetiklemek için bir sanal IoT cihazıyla birlikte çalışarak bir Azure dijital TWINS örneği ayarlama işleminde size yol gösterilir.
 
@@ -82,7 +82,7 @@ Azure dijital TWINS [*öğreticisi: uçtan uca bir çözümü bağlama*](./tutor
     az dt route create -n <your Azure Digital Twins instance name> --endpoint-name <Event Hub endpoint from above> --route-name <name for your route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
     ```
 
-Üzerinde geçiş yapmadan önce, bu makalenin ilerleyen kısımlarında daha sonra başka bir olay hub 'ı oluşturmak üzere kullanacağınız için, *Event Hubs ad alanı* ve *kaynak grubunuzu*göz atın.
+Üzerinde geçiş yapmadan önce, bu makalenin ilerleyen kısımlarında daha sonra başka bir olay hub 'ı oluşturmak üzere kullanacağınız için, *Event Hubs ad alanı* ve *kaynak grubunuzu* göz atın.
 
 ## <a name="create-an-azure-function"></a>Azure işlevi oluşturma 
 
@@ -94,51 +94,7 @@ Azure işlevleri ile Event Hubs kullanma hakkında daha fazla bilgi için bkz. A
 
 Yayınlanan işlev uygulamanızın içinde, işlev kodunu aşağıdaki kodla değiştirin.
 
-```C#
-using Microsoft.Azure.EventHubs;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Threading.Tasks;
-using System.Text;
-using System.Collections.Generic;
-
-namespace SampleFunctionsApp
-{
-    public static class ProcessDTUpdatetoTSI
-    { 
-        [FunctionName("ProcessDTUpdatetoTSI")]
-        public static async Task Run(
-            [EventHubTrigger("twins-event-hub", Connection = "EventHubAppSetting-Twins")]EventData myEventHubMessage, 
-            [EventHub("tsi-event-hub", Connection = "EventHubAppSetting-TSI")]IAsyncCollector<string> outputEvents, 
-            ILogger log)
-        {
-            JObject message = (JObject)JsonConvert.DeserializeObject(Encoding.UTF8.GetString(myEventHubMessage.Body));
-            log.LogInformation("Reading event:" + message.ToString());
-
-            // Read values that are replaced or added
-            Dictionary<string, object> tsiUpdate = new Dictionary<string, object>();
-            foreach (var operation in message["patch"]) {
-                if (operation["op"].ToString() == "replace" || operation["op"].ToString() == "add")
-                {
-                    //Convert from JSON patch path to a flattened property for TSI
-                    //Example input: /Front/Temperature
-                    //        output: Front.Temperature
-                    string path = operation["path"].ToString().Substring(1);                    
-                    path = path.Replace("/", ".");                    
-                    tsiUpdate.Add(path, operation["value"]);
-                }
-            }
-            //Send an update if updates exist
-            if (tsiUpdate.Count>0){
-                tsiUpdate.Add("$dtId", myEventHubMessage.Properties["cloudEvents:subject"]);
-                await outputEvents.AddAsync(JsonConvert.SerializeObject(tsiUpdate));
-            }
-        }
-    }
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/updateTSI.cs":::
 
 Bundan sonra, işlev, oluşturduğu JSON nesnelerini Time Series Insights bağlanacak ikinci bir olay hub 'ına gönderir.
 
@@ -202,14 +158,14 @@ Daha sonra, oluşturduğunuz Olay Hub 'ları için bağlantı dizelerini içeren
 Sonra, ikinci olay hub 'ından verileri almak için bir Time Series Insights örneği ayarlayacaksınız. Aşağıdaki adımları izleyin ve bu işlemle ilgili daha fazla ayrıntı için bkz. [*öğretici: Azure Time Series Insights Gen2 PAYG ortamı ayarlama*](../time-series-insights/tutorials-set-up-tsi-environment.md).
 
 1. Azure portal, bir Time Series Insights kaynağı oluşturmaya başlayın. 
-    1. **PAYG (Önizleme)** fiyatlandırma katmanını seçin.
-    2. Bu ortam için bir **zaman SERISI kimliği** seçmeniz gerekir. Zaman serisi KIMLIĞINIZ, Time Series Insights verilerinizi aramak için kullanacağınız üç değerden fazla olabilir. Bu öğretici için **$dtId**kullanabilirsiniz. [*Bir zaman SERISI kimliği seçmek Için en iyi yöntemler*](../time-series-insights/how-to-select-tsid.md)bölümünde kimlik değeri seçme hakkında daha fazla bilgi edinin.
+    1. **Gen2 (L1)** fiyatlandırma katmanını seçin.
+    2. Bu ortam için bir **zaman SERISI kimliği** seçmeniz gerekir. Zaman serisi KIMLIĞINIZ, Time Series Insights verilerinizi aramak için kullanacağınız üç değerden fazla olabilir. Bu öğretici için **$dtId** kullanabilirsiniz. [*Bir zaman SERISI kimliği seçmek Için en iyi yöntemler*](../time-series-insights/how-to-select-tsid.md)bölümünde kimlik değeri seçme hakkında daha fazla bilgi edinin.
     
-        :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="Uçtan uca bir senaryoda Azure hizmetlerinin görünümü, vurgulama Time Series Insights":::
+        :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="Time Series Insights ortamı için oluşturma portalı UX. Gen2 (L1) Fiyatlandırma Katmanı seçilidir ve zaman serisi KIMLIĞI Özellik adı $dtId" lightbox="media/how-to-integrate-time-series-insights/create-twin-id.png":::
 
 2. **İleri ' yi seçin: olay kaynağı** ve yukarıdaki Event Hubs bilgilerinizi seçin. Ayrıca, yeni bir Event Hubs Tüketici grubu oluşturmanız gerekir.
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="Uçtan uca bir senaryoda Azure hizmetlerinin görünümü, vurgulama Time Series Insights":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="Time Series Insights ortamı olay kaynağı için oluşturma portalı UX. Yukarıdaki olay hub 'ı bilgileriyle bir olay kaynağı oluşturuyorsunuz. Ayrıca yeni bir tüketici grubu oluşturuyorsunuz." lightbox="media/how-to-integrate-time-series-insights/event-source-twins.png":::
 
 ## <a name="begin-sending-iot-data-to-azure-digital-twins"></a>Azure dijital TWINS 'e IoT verileri göndermeye başlama
 
@@ -223,19 +179,19 @@ Uçtan uca öğreticiyi kullanıyorsanız ([*öğretici: uçtan uca çözümü b
 
 1. Time Series Insights örneğinizi [Azure Portal](https://portal.azure.com) açın (portal arama çubuğunda örneğinizin adını arayabilirsiniz). Örneğe genel bakış bölümünde gösterilen *Time Series Insights gezgin URL 'sini* ziyaret edin.
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="Uçtan uca bir senaryoda Azure hizmetlerinin görünümü, vurgulama Time Series Insights":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="Time Series Insights ortamınızın Genel Bakış sekmesinde Time Series Insights Explorer URL 'sini seçin":::
 
 2. Gezgin 'de, sol tarafta gösterilen Azure dijital TWINS 'den üç TWINS 'nizi görürsünüz. _**Thermostat67**_ öğesini seçin, **sıcaklık**' ı seçin ve **Ekle**' ye basın.
 
-    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="Uçtan uca bir senaryoda Azure hizmetlerinin görünümü, vurgulama Time Series Insights":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="* * Thermostat67 * * seçin, * * sıcaklık * * öğesini seçin ve * * Ekle * * ' ye basın":::
 
-3. Artık aşağıda gösterildiği gibi, termostat 'daki ilk sıcaklık ayarlarını görmeniz gerekir. *Room21* ve *Floor1*için aynı sıcaklık okuma güncellenir ve bu veri akışlarını kademeli olarak görselleştirebilirsiniz.
+3. Artık aşağıda gösterildiği gibi, termostat 'daki ilk sıcaklık ayarlarını görmeniz gerekir. *Room21* ve *Floor1* için aynı sıcaklık okuma güncellenir ve bu veri akışlarını kademeli olarak görselleştirebilirsiniz.
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="Uçtan uca bir senaryoda Azure hizmetlerinin görünümü, vurgulama Time Series Insights":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="İlk sıcaklık verileri, TSI Gezgininde grafiği oluşturulur. 68 ile 85 arasındaki rastgele değerlerin bir satırdır":::
 
 4. Simülasyonun çok daha uzun süre çalışmasına izin verirseniz görselleştirmeniz şuna benzer şekilde görünür:
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="Uçtan uca bir senaryoda Azure hizmetlerinin görünümü, vurgulama Time Series Insights":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="Her bir ikizi için sıcaklık verileri, farklı renklerin üç paralel satırı halinde grafiği oluşturulur.":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 01/07/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 260df85f3e380e40d153fc17ce77bd56ca068982
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: c5f070f59df69bb186041af450e6ca922469d960
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532831"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98043753"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Azure Bilişsel Arama .NET SDK sürüm 11 ' e yükseltme
 
@@ -30,8 +30,7 @@ Yeni sürümde fark ettiğiniz bazı önemli farklılıklar şunlardır:
 + İki yerine üç istemci: `SearchClient` , `SearchIndexClient` , `SearchIndexerClient`
 + Bazı görevleri basitleştirecek bir dizi API ve küçük yapısal farklılık içindeki adlandırma farklılıkları
 
-> [!NOTE]
-> .NET SDK sürüm 11 ' de listelenen değişikliklerin listesi için [**değişiklik günlüğünü**](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md) gözden geçirin.
+Bu makaleye ek olarak, .NET SDK sürüm 11 ' de listelenen değişiklik listesi için [değişiklik günlüğünü](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md) gözden geçirebilirsiniz.
 
 ## <a name="package-and-library-consolidation"></a>Paket ve kitaplık birleştirme
 
@@ -109,6 +108,41 @@ Alan tanımları basitleştirilmiştir: [Searchablefield](/dotnet/api/azure.sear
 | [DocumentSearchResult](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1) | Sonucun tek bir belge veya birden çok olmasına bağlı olarak [SearchResult](/dotnet/api/azure.search.documents.models.searchresult-1) veya [SearchResults](/dotnet/api/azure.search.documents.models.searchresults-1). |
 | [DocumentSuggestResult](/dotnet/api/microsoft.azure.search.models.documentsuggestresult-1) | [SuggestResults](/dotnet/api/azure.search.documents.models.suggestresults-1) |
 | [Kullanılması](/dotnet/api/microsoft.azure.search.models.searchparameters) |  [SearchOptions](/dotnet/api/azure.search.documents.searchoptions)  |
+
+### <a name="json-serialization"></a>JSON seri hale getirme
+
+Varsayılan olarak, Azure SDK 'Sı, bu API 'lerin özelliklerine bağlı olarak, yerel bir [SerializePropertyNamesAsCamelCaseAttribute](/dotnet/api/microsoft.azure.search.models.serializepropertynamesascamelcaseattribute) sınıfı aracılığıyla uygulanan ve yeni kitaplıkta karşılığı olmayan metin dönüştürmelerini işlemek üzere, JSON serileştirme için [üzerindeSystem.Text.Js](/dotnet/api/system.text.json) kullanır.
+
+Özellik adlarını camelCase olarak seri hale getirmek için, [Jsonpropertynameattribute](/dotnet/api/system.text.json.serialization.jsonpropertynameattribute) ( [Bu örneğe](https://github.com/Azure/azure-sdk-for-net/tree/d263f23aa3a28ff4fc4366b8dee144d4c0c3ab10/sdk/search/Azure.Search.Documents#use-c-types-for-search-results)benzer şekilde) kullanabilirsiniz.
+
+Alternatif olarak, [Jsonserializeroptions](/dotnet/api/system.text.json.jsonserializeroptions)içinde sağlanmış bir [Jsonnamingpolicy](/dotnet/api/system.text.json.jsonnamingpolicy) belirleyebilirsiniz. [Microsoft. Azure. Core. uzamsal Benioku](https://github.com/Azure/azure-sdk-for-net/blob/259df3985d9710507e2454e1591811f8b3a7ad5d/sdk/core/Microsoft.Azure.Core.Spatial/README.md#deserializing-documents) dosyasından alınan aşağıdaki kod örneği System.Text.Js, her özelliğe özniteliğe gerek kalmadan camelCase 'in kullanımını gösterir:
+
+```csharp
+// Get the Azure Cognitive Search endpoint and read-only API key.
+Uri endpoint = new Uri(Environment.GetEnvironmentVariable("SEARCH_ENDPOINT"));
+AzureKeyCredential credential = new AzureKeyCredential(Environment.GetEnvironmentVariable("SEARCH_API_KEY"));
+
+// Create serializer options with our converter to deserialize geographic points.
+JsonSerializerOptions serializerOptions = new JsonSerializerOptions
+{
+    Converters =
+    {
+        new MicrosoftSpatialGeoJsonConverter()
+    },
+    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+};
+
+SearchClientOptions clientOptions = new SearchClientOptions
+{
+    Serializer = new JsonObjectSerializer(serializerOptions)
+};
+
+SearchClient client = new SearchClient(endpoint, "mountains", credential, clientOptions);
+Response<SearchResults<Mountain>> results = client.Search<Mountain>("Rainier");
+```
+
+JSON serileştirme için Newtonsoft.Jskullanıyorsanız, benzer öznitelikleri kullanarak veya [Jsonserializersettings](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonSerializerSettings.htm)üzerindeki özellikleri kullanarak genel adlandırma ilkelerini geçirebilirsiniz. Yukarıdaki bir örneğe eşdeğer bir örnek için, Benioku dosyasında Newtonsoft.Js[belgeleri serisini kaldırma örneğine](https://github.com/Azure/azure-sdk-for-net/blob/259df3985d9710507e2454e1591811f8b3a7ad5d/sdk/core/Microsoft.Azure.Core.Spatial.NewtonsoftJson/README.md) bakın.
+
 
 <a name="WhatsNew"></a>
 
@@ -202,7 +236,7 @@ Aşağıdaki adımlar, özellikle de istemci başvurularıyla ilgili olarak, ger
 
 <a name="ListOfChanges"></a>
 
-## <a name="breaking-changes-in-version-11"></a>Sürüm 11 ' deki Son değişiklikler
+## <a name="breaking-changes"></a>Yeni değişiklikler
 
 Kitaplıklarda ve API 'Lerde yapılan değişiklikler verildiğinde, sürüm 11 ' e yükseltme önemsiz değildir ve kodunuzun artık sürüm 10 ve öncesiyle geriye dönük olarak uyumlu olmaması açısından önemli bir değişiklik oluşturur. Farkları kapsamlı bir şekilde gözden geçirmek için bkz. için [değişiklik günlüğü](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md) `Azure.Search.Documents` .
 

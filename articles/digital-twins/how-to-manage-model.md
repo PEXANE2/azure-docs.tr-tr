@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ca56c285baff9982ff465b0d4115d15eadedb8c9
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: a8b2fdf99b33df3322748b7e073cc4ab18957c84
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534764"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045249"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure dijital TWINS modellerini yönetme
 
@@ -20,7 +20,7 @@ Azure Digital TWINS örneğinizin, [**Digitaltwinmodeller API 'leri**](/rest/api
 
 Yönetim işlemlerine, modellerin karşıya yüklenmesi, doğrulanması, alınması ve silinmesi dahildir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
@@ -36,40 +36,12 @@ Bir hastanın odalarını dijital olarak göstermek istediği örneği göz ön�
 
 Çözüme doğru ilk adım, hastanın yönlerini temsil eden modeller oluşturmaktır. Bu senaryodaki bir hasta odası şöyle açıklanabilir:
 
-```json
-{
-  "@id": "dtmi:com:contoso:PatientRoom;1",
-  "@type": "Interface",
-  "@context": "dtmi:dtdl:context;2",
-  "displayName": "Patient Room",
-  "contents": [
-    {
-      "@type": "Property",
-      "name": "visitorCount",
-      "schema": "double"
-    },
-    {
-      "@type": "Property",
-      "name": "handWashCount",
-      "schema": "double"
-    },
-    {
-      "@type": "Property",
-      "name": "handWashPercentage",
-      "schema": "double"
-    },
-    {
-      "@type": "Relationship",
-      "name": "hasDevices"
-    }
-  ]
-}
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/PatientRoom.json":::
 
 > [!NOTE]
 > Bu, bir modelin bir istemci projesinin parçası olarak yüklenmesi ve kaydedildiği bir. JSON dosyası için örnek gövdedir. Diğer taraftan REST API çağrısı, yukarıdaki gibi bir model tanımları dizisi alır ( `IEnumerable<string>` .NET SDK içinde bir ile eşleştirilir). Bu modeli REST API doğrudan kullanabilmek için köşeli ayraç ile çevreleyin.
 
-Bu model, hasta odası için bir ad ve benzersiz KIMLIĞI ve ziyaretçi sayısını ve el-yıkama durumunu temsil edecek özellikleri tanımlar (Bu sayaçlar hareket sensörleri ve akıllı SOAP dağıtıcılarından güncelleştirilir ve bir *handyıkama yüzdesi* özelliği hesaplamak için birlikte kullanılır). Model Ayrıca, bu *Oda* modeline bağlı olarak herhangi bir [dijital TWINS](concepts-twins-graph.md) 'i gerçek cihazlara bağlamak için kullanılacak olan bir ilişki *hasdevices* 'i tanımlar.
+Bu model, hasta odası için bir ad ve benzersiz KIMLIĞI ve ziyaretçi sayısını ve el-yıkama durumunu temsil edecek özellikleri tanımlar (Bu sayaçlar hareket sensörleri ve akıllı SOAP dağıtıcılarından güncelleştirilir ve bir *handyıkama yüzdesi* özelliği hesaplamak için birlikte kullanılır). Model Ayrıca, bu *Oda* modeline bağlı olarak herhangi bir [dijital TWINS](concepts-twins-graph.md) 'i gerçek cihazlara bağlamak için kullanılacak olan bir ilişki *hasdevices*'i tanımlar.
 
 Bu yöntemi izleyerek, hospstanonun için modeller, bölgeler veya hastanın kendisi için modeller tanımlama bölümüne geçebilirsiniz.
 
@@ -86,48 +58,16 @@ Modeller oluşturulduktan sonra Azure dijital TWINS örneğine yükleyebilirsini
 
 Bir modeli karşıya yüklemeye hazırsanız, aşağıdaki kod parçacığını kullanabilirsiniz:
 
-```csharp
-// 'client' is an instance of DigitalTwinsClient
-// Read model file into string (not part of SDK)
-StreamReader r = new StreamReader("MyModelFile.json");
-string dtdl = r.ReadToEnd(); r.Close();
-string[] dtdls = new string[] { dtdl };
-client.CreateModels(dtdls);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="CreateModel":::
 
 `CreateModels`Yöntemin tek bir işlemde birden çok dosya kabul ettiğini gözlemleyin. Şunları gösteren bir örnek aşağıda verilmiştir:
 
-```csharp
-var dtdlFiles = Directory.EnumerateFiles(sourceDirectory, "*.json");
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="CreateModels_multi":::
 
-List<string> dtdlStrings = new List<string>();
-foreach (string fileName in dtdlFiles)
-{
-    // Read model file into string (not part of SDK)
-    StreamReader r = new StreamReader(fileName);
-    string dtdl = r.ReadToEnd(); r.Close();
-    dtdlStrings.Add(dtdl);
-}
-client.CreateModels(dtdlStrings);
-```
+Model dosyaları tek bir modelden daha fazla bulunabilir. Bu durumda, modellerin bir JSON dizisine yerleştirilmesi gerekir. Örneğin:
 
-Model dosyaları tek bir modelden daha fazla bulunabilir. Bu durumda, modellerin bir JSON dizisine yerleştirilmesi gerekir. Örnek:
+:::code language="json" source="~/digital-twins-docs-samples/models/Planet-Moon.json":::
 
-```json
-[
-  {
-    "@id": "dtmi:com:contoso:Planet",
-    "@type": "Interface",
-    //...
-  },
-  {
-    "@id": "dtmi:com:contoso:Moon",
-    "@type": "Interface",
-    //...
-  }
-]
-```
- 
 Karşıya yükleme sırasında model dosyaları hizmet tarafından onaylanır.
 
 ## <a name="retrieve-models"></a>Modelleri al
@@ -141,18 +81,7 @@ Seçenekleriniz şunlardır:
 
 Aşağıda bazı örnek çağrılar verilmiştir:
 
-```csharp
-// 'client' is a valid DigitalTwinsClient object
-
-// Get a single model, metadata and data
-DigitalTwinsModelData md1 = client.GetModel(id);
-
-// Get a list of the metadata of all available models
-Pageable<DigitalTwinsModelData> pmd2 = client.GetModels();
-
-// Get models and metadata for a model ID, including all dependencies (models that it inherits from, components it references)
-Pageable<DigitalTwinsModelData> pmd3 = client.GetModels(new GetModelsOptions { IncludeModelDefinition = true });
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="GetModels":::
 
 API 'leri, tüm dönüş nesnelerini almak için çağırır `DigitalTwinsModelData` . `DigitalTwinsModelData` Azure dijital TWINS örneğinde depolanan model hakkında ad, DTMı ve model oluşturma tarihi gibi meta verileri içerir. `DigitalTwinsModelData`Nesne Ayrıca, isteğe bağlı olarak modelin kendisini de içerir. Parametrelere bağlı olarak, yalnızca meta verileri almak için alma çağrılarını kullanabilirsiniz (örneğin, kullanılabilir araçların Kullanıcı arabirimi listesini göstermek istediğiniz senaryolarda faydalıdır) veya modelin tamamı.
 
@@ -208,12 +137,7 @@ Bunlar ayrı özelliklerdir ve bir modeli kademeli olarak kaldırmak için birli
 
 Bir modelin yetkisini alma kodu aşağıda verilmiştir:
 
-```csharp
-// 'client' is a valid DigitalTwinsClient  
-client.DecommissionModel(dtmiOfPlanetInterface);
-// Write some code that deletes or transitions digital twins
-//...
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="DecommissionModel":::
 
 Modelin yetki alma durumu, `ModelData` model alma API 'leri tarafından döndürülen kayıtlara dahildir.
 
@@ -244,10 +168,8 @@ Bir model hemen silme gereksinimlerini karşılasa bile, arka planda kalan TWINS
 6. Modeli Sil 
 
 Bir modeli silmek için şu çağrıyı kullanın:
-```csharp
-// 'client' is a valid DigitalTwinsClient
-await client.DeleteModelAsync(IDToDelete);
-```
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="DeleteModel":::
 
 #### <a name="after-deletion-twins-without-models"></a>Silinmeden sonra: modeller olmadan TWINS
 

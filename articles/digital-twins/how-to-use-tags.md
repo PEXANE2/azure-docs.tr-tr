@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c2620b52c426871b0ec85e3db237be2d373d42f1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9a1a55bdf21b74116450ca32f66d891f1aa206d3
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458694"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045419"
 ---
 # <a name="add-tags-to-digital-twins"></a>Dijital TWINS 'e etiket ekleme 
 
@@ -32,23 +32,7 @@ Etiketler ilk olarak, bir dijital ikizi tanımlayan [model](concepts-models.md) 
 
 Bir ikizi modelinden, bir işaretçi etiketini özellik olarak uygulayan bir alıntı aşağıda verilmiştir:
 
-```json
-{
-  "@type": "Property",
-  "name": "tags",
-  "schema": {
-    "@type": "Map",
-    "mapKey": {
-      "name": "tagName",
-      "schema": "string"
-    },
-    "mapValue": {
-      "name": "tagValue",
-      "schema": "boolean"
-    }
-  }
-}
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/tags.json" range="2-16":::
 
 ### <a name="add-marker-tags-to-digital-twins"></a>Dijital TWINS 'e işaret etiketleri ekleme
 
@@ -56,11 +40,7 @@ Bir ikizi modelinden, bir işaretçi etiketini özellik olarak uygulayan bir al�
 
 Üç TWINS için işaretçiyi dolduran bir örnek aşağıda verilmiştir `tags` :
 
-```csharp
-entity-01: "tags": { "red": true, "round": true } 
-entity-02: "tags": { "blue": true, "round": true } 
-entity-03: "tags": { "red": true, "large": true } 
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="TagPropertiesMarker":::
 
 ### <a name="query-with-marker-tags"></a>İşaret etiketleriyle sorgu
 
@@ -68,15 +48,11 @@ Etiketler dijital TWINS 'e eklendikten sonra, sorgular içindeki TWINS 'leri fil
 
 "Red" olarak etiketlenen tüm TWINS 'leri almak için bir sorgu aşağıda verilmiştir: 
 
-```sql
-SELECT * FROM digitaltwins WHERE is_defined(tags.red) 
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags1":::
 
 Ayrıca, daha karmaşık sorgular için etiketleri birleştirebilirsiniz. Kırmızı değil, yuvarlatılmış olan tüm TWINS 'leri almak için bir sorgu aşağıda verilmiştir: 
 
-```sql
-SELECT * FROM digitaltwins WHERE NOT is_defined(tags.red) AND is_defined(tags.round) 
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags2":::
 
 ## <a name="value-tags"></a>Değer etiketleri 
 
@@ -88,23 +64,7 @@ Değer etiketleri, öğesinden öğesine [Dtdl](https://github.com/Azure/opendig
 
 Bir ikizi modelinden, özellik olarak bir değer etiketi uygulayan bir alıntıdır:
 
-```json
-{
-  "@type": "Property",
-  "name": "tags",
-  "schema": {
-    "@type": "Map",
-    "mapKey": {
-      "name": "tagName",
-      "schema": "string"
-    },
-    "mapValue": {
-      "name": "tagValue",
-      "schema": "string"
-    }
-  }
-} 
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/tags.json" range="17-31":::
 
 ### <a name="add-value-tags-to-digital-twins"></a>Dijital TWINS 'e değer etiketleri ekleme
 
@@ -112,11 +72,7 @@ Bir ikizi modelinden, özellik olarak bir değer etiketi uygulayan bir alıntıd
 
 Üç TWINS için değeri dolduran bir örnek aşağıda verilmiştir `tags` :
 
-```csharp
-entity-01: "tags": { "red": "", "size": "large" } 
-entity-02: "tags": { "purple": "", "size": "small" } 
-entity-03: "tags": { "red": "", "size": "small" } 
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="TagPropertiesValue":::
 
 `red` `purple` Bu örnekte işaret etiketleri olarak kullanıldığını unutmayın.
 
@@ -124,17 +80,13 @@ entity-03: "tags": { "red": "", "size": "small" }
 
 İşaretçi etiketlerinde olduğu gibi, sorgularda bulunan TWINS 'leri filtrelemek için değer etiketlerini de kullanabilirsiniz. Değer etiketlerini ve işaret etiketlerini birlikte de kullanabilirsiniz.
 
-Yukarıdaki örnekte, `red` işaret etiketi olarak kullanılıyor. "Red" olarak etiketlenen tüm TWINS 'leri almak için bir sorgu aşağıda verilmiştir: 
+Yukarıdaki örnekte, `red` işaret etiketi olarak kullanılıyor. Bu, "Red" olarak etiketlenen tüm TWINS 'leri almak için bir sorgu olduğunu unutmayın: 
 
-```sql
-SELECT * FROM digitaltwins WHERE is_defined(tags.red) 
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags1":::
 
 Küçük (değer etiketi) ve kırmızı olmayan tüm varlıkları almak için bir sorgu aşağıda verilmiştir: 
 
-```sql
-SELECT * FROM digitaltwins WHERE NOT is_defined(tags.red) AND tags.size = 'small' 
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerValueTags":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

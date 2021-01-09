@@ -2,20 +2,21 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 11/20/2020
+ms.date: 01/08/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: dc4ec31a307d559fad84392522e6847aab1e3873
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 3b537ad0100e285fe02f557b92d67e09ae615def
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94986989"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98046460"
 ---
 |Ad |Açıklama |İlkeler |Sürüm |
 |---|---|---|---|
 |[ISM İLE KORUNAN Avustralya Kamu](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/IRAP_Audit.json) |Bu girişim, Avustralya devlet bilgi güvenliği El Ile (ıSM) denetimlerinin bir alt kümesini ele alan denetim ve sanal makine uzantısı dağıtım ilkelerini içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/AustralianGovernmentISM-blueprint](https://aka.ms/AustralianGovernmentISM-blueprint) . |62 |3.0.0-Önizleme |
-|[Azure Güvenlik Karşılaştırması](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_audit.json) |Bu girişim, Azure Güvenlik kıyaslama önerilerinin bir alt kümesini ele alan denetim ve sanal makine uzantısı dağıtım ilkelerini içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/azsecbm](https://aka.ms/azsecbm) . |136 |6.1.0-Önizleme |
+|[Azure Güvenlik kıyaslaması v1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_audit.json) |Bu girişim, Azure Security kıyaslama v1 önerilerinin bir alt kümesini ele alan denetim ve sanal makine uzantısı dağıtım ilkelerini içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/azsecbm](https://aka.ms/azsecbm) . |136 |6.1.1-Önizleme |
+|[Azure Güvenlik kıyaslaması v2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_v2.json) |Bu girişim, Azure Security kıyaslama v2 önerilerinin bir alt kümesini ele alan ilkeleri içerir. Gelecek sürümlerde ek ilkeler eklenebilir. Daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/azsecbm](https://aka.ms/azsecbm) . |181 |1.0.0-Önizleme |
 |[Kanada Federal PBMM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CanadaFederalPBMM_audit.json) |Bu girişim, Kanada Federal PBMM denetimlerinin bir alt kümesini ele alan denetim ve sanal makine uzantısı dağıtım ilkelerini içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/canadafederalpbmm-blueprint](https://aka.ms/canadafederalpbmm-blueprint) . |60 |3.0.0 |
 |[CIS Microsoft Azure Foundations Benchmark 1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0_audit.json) |Bu girişim, bir CIS alt kümesini ele alan, kıyaslama önerilerini Microsoft Azure olan denetim ilkelerini içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/cisazure-blueprint](https://aka.ms/cisazure-blueprint) . |87 |7.1.0 |
 |[FedRAMP High](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_H_audit.json) |Bu girişim, Fedrampa H denetimlerinin bir alt kümesini ele alan denetim ve sanal makine uzantısı dağıtım ilkelerini içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/fedramph-blueprint](https://aka.ms/fedramph-blueprint) . |72 |3.0.1 |

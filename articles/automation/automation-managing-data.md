@@ -3,14 +3,14 @@ title: Azure Otomasyonu veri güvenliği
 description: Bu makale, Azure Otomasyonu 'nun gizliliğinizi nasıl koruduğunu ve verilerinizin güvenliğini nasıl sağladığını öğrenmenize yardımcı olur.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 07/20/2020
+ms.date: 01/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 610c2050150a533e246bc74ed7750ce87f7cf617
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40405607e7f7198f190f621121022537ac3b3171
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87004656"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98046048"
 ---
 # <a name="management-of-azure-automation-data"></a>Azure Otomasyonu verilerinin yönetilmesi
 
@@ -26,11 +26,9 @@ Azure Otomasyonu 'na geçişte verilerin güvenliğini sağlamak için, Aktarım
 
 * DSC düğümleri
 
-TLS/Güvenli Yuva Katmanı (SSL) uygulamasının güvenlik açığı olduğu ve geriye dönük uyumlulukla hala çalışmaya devam eden daha eski sürümlerinin **kullanılması önerilmez**. 2020 Eylül 'den başlayarak şifreleme protokolünün TLS 1,2 ve sonraki sürümlerini zorlamaya başlayacağız.
+TLS/Güvenli Yuva Katmanı (SSL) uygulamasının güvenlik açığı olduğu ve geriye dönük uyumlulukla hala çalışmaya devam eden daha eski sürümlerinin **kullanılması önerilmez**. Yalnızca, TLS 1,3 gibi daha yeni güvenli protokollerden otomatik olarak algılama ve bu özelliklerden faydalanmanıza olanak tanıyan platform düzeyi güvenlik özelliklerini bozabileceği için, yalnızca kesinlikle gerekli olmadığı sürece, aracılarınızın yalnızca TLS 1,2 kullanmasını öneririz.
 
-Yalnızca, TLS 1,3 gibi daha yeni güvenli protokollerden otomatik olarak algılama ve bu özelliklerden faydalanmanıza olanak tanıyan platform düzeyi güvenlik özelliklerini bozabileceği için, yalnızca kesinlikle gerekli olmadığı sürece, aracılarınızın yalnızca TLS 1,2 kullanmasını öneririz.
-
-Karma Runbook Worker rolüne yönelik bir bağımlılık olan Windows ve Linux için Log Analytics aracısıyla TLS 1,2 desteği hakkında bilgi için bkz. [Log Analytics Agent genel bakış-TLS 1,2](..//azure-monitor/platform/log-analytics-agent.md#tls-12-protocol). 
+Karma Runbook Worker rolüne yönelik bir bağımlılık olan Windows ve Linux için Log Analytics aracısıyla TLS 1,2 desteği hakkında bilgi için bkz. [Log Analytics Agent genel bakış-TLS 1,2](..//azure-monitor/platform/log-analytics-agent.md#tls-12-protocol).
 
 ### <a name="platform-specific-guidance"></a>Platforma özgü kılavuz
 
@@ -51,9 +49,9 @@ Aşağıdaki tabloda, farklı kaynaklar için bekletme ilkesi özetlenmektedir.
 |:--- |:--- |
 | Hesaplar |Bir hesap, bir kullanıcı tarafından silindikten sonra 30 gün sonra kalıcı olarak kaldırılır. |
 | Varlıklar |Bir varlık, bir Kullanıcı onu sildikten 30 gün sonra veya bir kullanıcı varlığı tutan bir hesabı sildikten sonra 30 gün sonra kalıcı olarak kaldırılır. Varlıklar arasında değişkenler, zamanlamalar, kimlik bilgileri, sertifikalar, Python 2 paketleri ve bağlantılar bulunur. |
-| DSC düğümleri |DSC düğümü, Windows PowerShell 'de Azure portal veya [Unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) cmdlet 'ini kullanarak bir Otomasyon hesabından silinen 30 gün sonra kalıcı olarak kaldırılır. Düğüm, düğüm tutan hesabı sildikten sonra 30 gün sonra da kalıcı olarak kaldırılır. |
+| DSC düğümleri |DSC düğümü, Windows PowerShell 'de Azure portal veya [Unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode) cmdlet 'ini kullanarak bir Otomasyon hesabından silinen 30 gün sonra kalıcı olarak kaldırılır. Düğüm, düğüm tutan hesabı sildikten sonra 30 gün sonra da kalıcı olarak kaldırılır. |
 | İşler |Bir iş silinir ve değişiklik sonrasında 30 gün sonra kalıcı olarak kaldırılır. Örneğin, iş tamamlandıktan sonra, durdurulur veya askıya alınır. |
-| Modül |Bir modül, bir Kullanıcı onu sildikten 30 gün sonra veya bir kullanıcı modülü tutan hesabı sildikten sonra 30 gün sonra kalıcı olarak kaldırılır. |
+| Modüller |Bir modül, bir Kullanıcı onu sildikten 30 gün sonra veya bir kullanıcı modülü tutan hesabı sildikten sonra 30 gün sonra kalıcı olarak kaldırılır. |
 | Düğüm konfigürasyonları/MOF dosyaları |Yeni bir düğüm yapılandırması oluşturulduktan sonra, eski bir düğüm yapılandırması 30 gün sonra kalıcı olarak kaldırılır. |
 | Düğüm raporları |Düğüm raporu, bu düğüm için yeni rapor oluşturulduktan 90 gün sonra kalıcı olarak kaldırılır. |
 | Runbook'lar |Bir runbook, bir Kullanıcı kaynağı sildikten 30 gün sonra veya bir Kullanıcı kaynağı tutan hesabı sildikten sonra 30 gün sonra kalıcı olarak kaldırılır. |
@@ -80,7 +78,7 @@ Cmdlet 'leri kullanarak, şifrelenmiş değişkenlerin veya kimlik bilgilerinin 
 
 ### <a name="dsc-configurations"></a>DSC yapılandırması
 
-Windows PowerShell 'de Azure portal veya [Export-AzAutomationDscConfiguration](/powershell/module/az.automation/export-azautomationdscconfiguration?view=azps-3.7.0) cmdlet 'INI kullanarak DSC yapılandırmalarını betik dosyalarına aktarabilirsiniz. Bu konfigürasyonları başka bir Otomasyon hesabında içeri aktarabilir ve kullanabilirsiniz.
+Windows PowerShell 'de Azure portal veya [Export-AzAutomationDscConfiguration](/powershell/module/az.automation/export-azautomationdscconfiguration) cmdlet 'INI kullanarak DSC yapılandırmalarını betik dosyalarına aktarabilirsiniz. Bu konfigürasyonları başka bir Otomasyon hesabında içeri aktarabilir ve kullanabilirsiniz.
 
 ## <a name="geo-replication-in-azure-automation"></a>Azure Otomasyonu 'nda coğrafi çoğaltma
 

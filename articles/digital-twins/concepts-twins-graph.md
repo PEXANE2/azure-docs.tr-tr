@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: a1fc5be93e2b9729838aa9fb3a777936003c5f45
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: d9a6eb572b1ab870fdb848f8b0989f88e6dbc3c0
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356400"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045963"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Dijital TWINS ve ikizi graflarını anlayın
 
@@ -25,7 +25,7 @@ Bir Azure dijital TWINS çözümünde ortamınızdaki varlıklar Azure **dijital
 
 Azure dijital TWINS Örneğinizde dijital bir ikizi oluşturabilmeniz için önce hizmete bir *modelin* yüklenmiş olması gerekir. Model, diğer şeyler arasında belirli bir ikizi sahip olduğu özellikler, telemetri iletileri ve ilişkiler kümesini açıklar. Bir modelde tanımlanan bilgi türleri için bkz. [*Kavramlar: özel modeller*](concepts-models.md).
 
-Bir modeli oluşturup karşıya yükledikten sonra, istemci uygulamanız türün bir örneğini oluşturabilir; Bu bir dijital ikizi. Örneğin, bir *kat* modeli oluşturduktan sonra bu türü kullanan bir veya birkaç dijital TWINS oluşturabilirsiniz ( *Groundfloor* adlı bir *taban* -tür ikizi gibi, başka bir *Floor2* vb.). 
+Bir modeli oluşturup karşıya yükledikten sonra, istemci uygulamanız türün bir örneğini oluşturabilir; Bu bir dijital ikizi. Örneğin, bir *kat* modeli oluşturduktan sonra bu türü kullanan bir veya birkaç dijital TWINS oluşturabilirsiniz ( *Groundfloor* adlı bir *taban*-tür ikizi gibi, başka bir *Floor2* vb.). 
 
 ## <a name="relationships-a-graph-of-digital-twins"></a>İlişkiler: dijital TWINS 'in bir grafiği
 
@@ -47,7 +47,7 @@ Aşağıda, *Oda* türünde bir ikizi örneği oluşturmak Için [Digitaltwins A
 
 Oluşturulduğunda bir ikizi özelliklerini başlatabilir veya daha sonra ayarlayabilirsiniz. Başlatılmış özelliklerle bir ikizi oluşturmak için, gerekli başlatma değerlerini sağlayan bir JSON belgesi oluşturun.
 
-[!INCLUDE [Azure Digital Twins code: create twin](../../includes/digital-twins-code-create-twin.md)]
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="CreateTwin_noHelper":::
 
 Bir `BasicDigitalTwin` "ikizi" nesnesindeki Özellik alanlarını doğrudan bir sözlük kullanımına alternatif olarak depolamak için adlı bir yardımcı sınıfı da kullanabilirsiniz. Yardımcı sınıfı ve kullanım örnekleri hakkında daha fazla bilgi için *nasıl yapılır: dijital TWINS yönetme* konusunun [*dijital ikizi oluşturma*](how-to-manage-twin.md#create-a-digital-twin) bölümüne bakın.
 
@@ -56,27 +56,9 @@ Bir `BasicDigitalTwin` "ikizi" nesnesindeki Özellik alanlarını doğrudan bir 
 
 ### <a name="create-relationships"></a>İlişki oluştur
 
-Burada, *Groundfloor* adlı bir *taban* -tür dijital ikizi ve *Cafe* adlı bir *Oda* türü dijital Ikizi arasında bir ilişki oluşturmak için [digitaltwins API 'lerini](/rest/api/digital-twins/dataplane/twins) kullanan bazı örnek istemci kodları verilmiştir.
+Burada, *Groundfloor* adlı bir *taban*-tür dijital ikizi ve *Cafe* adlı bir *Oda* türü dijital Ikizi arasında bir ilişki oluşturmak için [digitaltwins API 'lerini](/rest/api/digital-twins/dataplane/twins) kullanan bazı örnek istemci kodları verilmiştir.
 
-```csharp
-// Create Twins, using functions similar to the previous sample
-await CreateRoom("Cafe", 70, 66);
-await CreateFloor("GroundFloor", averageTemperature=70);
-// Create relationships
-var relationship = new BasicRelationship
-{
-    TargetId = "Cafe",
-    Name = "contains"
-};
-try
-{
-    string relId = $"GroundFloor-contains-Cafe";
-    await client.CreateOrReplaceRelationshipAsync<BasicRelationship>("GroundFloor", relId, relationship);
-} catch(ErrorResponseException e)
-{
-    Console.WriteLine($"*** Error creating relationship: {e.Response.StatusCode}");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="CreateRelationship_3":::
 
 ## <a name="json-representations-of-graph-elements"></a>Grafik öğelerinin JSON gösterimleri
 
@@ -90,7 +72,7 @@ JSON nesnesi olarak temsil edildiğinde, dijital bir ikizi aşağıdaki alanlar�
 | --- | --- |
 | `$dtId` | Dijital ikizi KIMLIĞINI temsil eden kullanıcı tarafından sağlanmış dize |
 | `$etag` | Web sunucusu tarafından atanan standart HTTP alanı |
-| `$conformance` | Bu dijital ikizi uygunluk durumunu içeren bir sabit listesi ( *uyumlu* , *uyumlu değil* , *bilinmiyor* ) |
+| `$conformance` | Bu dijital ikizi uygunluk durumunu içeren bir sabit listesi (*uyumlu*, *uyumlu değil*, *bilinmiyor*) |
 | `{propertyName}` | JSON ( `string` , sayı türü veya nesne) içindeki bir özelliğin değeri |
 | `$relationships` | İlişki koleksiyonu yolunun URL 'SI. Bu alan, dijital ikizi giden ilişki kenarları yoksa yok olur. |
 | `$metadata.$model` | Seçim Bu dijital ikizi karakterleştirir model arabiriminin KIMLIĞI |

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bf7b829d70af27850affe619d47ed4a4f5ec1bea
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 2502fdd14acae206b8440fe602639aa49be55f4e
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279920"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045929"
 ---
 # <a name="write-client-app-authentication-code"></a>İstemci uygulaması kimlik doğrulama kodunu yaz
 
@@ -53,10 +53,7 @@ Bu bölümde, kimlik doğrulama kodunu yazmak için sunulan .NET SDK 'sını kul
 
 Ayrıca, aşağıdaki using deyimlerini proje kodunuza eklemeniz gerekir:
 
-```csharp
-using Azure.Identity;
-using Azure.DigitalTwins.Core;
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/authentication.cs" id="Azure_Digital_Twins_dependencies":::
 
 Daha sonra, içindeki yöntemlerden birini kullanarak kimlik bilgilerini almak için kod ekleyin `Azure.Identity` .
 
@@ -68,23 +65,7 @@ Varsayılan Azure kimlik bilgilerini kullanmak için Azure Digital TWINS örneğ
 
 Projenize bir eklemek için bir kod örneği aşağıda verilmiştir `DefaultAzureCredential` :
 
-```csharp
-// The URL of your instance, starting with the protocol (https://)
-private static string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-URL>";
-
-//...
-
-DigitalTwinsClient client;
-try
-{
-    var credential = new DefaultAzureCredential();
-    client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
-} catch(Exception e)
-{
-    Console.WriteLine($"Authentication or client creation error: {e.Message}");
-    Environment.Exit(0);
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/authentication.cs" id="DefaultAzureCredential_full":::
 
 #### <a name="set-up-local-azure-credentials"></a>Yerel Azure kimlik bilgilerini ayarlama
 
@@ -100,45 +81,20 @@ Varsayılan Azure kimlik bilgilerini kullanmak için Azure Digital TWINS örneğ
 
 Bir Azure işlevinde, aşağıdaki gibi yönetilen kimlik bilgilerini kullanabilirsiniz:
 
-```csharp
-ManagedIdentityCredential cred = new ManagedIdentityCredential(adtAppId);
-DigitalTwinsClientOptions opts = 
-    new DigitalTwinsClientOptions { Transport = new HttpClientTransport(httpClient) });
-client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, opts);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/authentication.cs" id="ManagedIdentityCredential":::
 
 ### <a name="interactivebrowsercredential-method"></a>Interactivebrowsercredential yöntemi
 
 [Interactivebrowsercredential](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet) yöntemi etkileşimli uygulamalara yöneliktir ve kimlik doğrulaması için bir Web tarayıcısı getirir. Bunu, `DefaultAzureCredential` etkileşimli kimlik doğrulaması gerektiren durumlarda kullanabilirsiniz.
 
 Etkileşimli tarayıcı kimlik bilgilerini kullanmak için Azure dijital TWINS API 'Leri için izinlere sahip bir **uygulama kaydına** ihtiyacınız olacaktır. Bu uygulama kaydını ayarlama adımları için bkz. [*nasıl yapılır: uygulama kaydı oluşturma*](how-to-create-app-registration.md). Uygulama kaydı kurulduktan sonra...
-* Uygulama kaydının *uygulama (istemci) kimliği* ( [bulunacak yönergeler](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
-* Uygulama kaydının *Dizin (kiracı) kimliği* ( [bulunacak yönergeler](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
+* Uygulama kaydının *uygulama (istemci) kimliği* ([bulunacak yönergeler](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
+* Uygulama kaydının *Dizin (kiracı) kimliği* ([bulunacak yönergeler](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
 * Azure dijital TWINS örneğinin URL 'SI ([bulunacak yönergeler](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
 
 Kullanılarak kimliği doğrulanmış SDK istemcisi oluşturma kodu örneği aşağıda verilmiştir `InteractiveBrowserCredential` .
 
-```csharp
-// Your client / app registration ID
-private static string clientId = "<your-client-ID>"; 
-// Your tenant / directory ID
-private static string tenantId = "<your-tenant-ID>";
-// The URL of your instance, starting with the protocol (https://)
-private static string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-URL>";
-
-//...
-
-DigitalTwinsClient client;
-try
-{
-    var credential = new InteractiveBrowserCredential(tenantId, clientId);
-    client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
-} catch(Exception e)
-{
-    Console.WriteLine($"Authentication or client creation error: {e.Message}");
-    Environment.Exit(0);
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/authentication.cs" id="InteractiveBrowserCredential":::
 
 >[!NOTE]
 > İstemci KIMLIĞI, kiracı KIMLIĞI ve örnek URL 'sini yukarıda gösterildiği gibi doğrudan koda yerleştirebileceğiniz sürece, kodunuzun bu değerleri bir yapılandırma dosyası veya ortam değişkeniyle alması iyi bir fikirdir.

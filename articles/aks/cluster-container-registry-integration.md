@@ -4,19 +4,22 @@ description: Azure Kubernetes Service 'i (AKS) Azure Container Registry (ACR) il
 services: container-service
 manager: gwallace
 ms.topic: article
-ms.date: 02/25/2020
-ms.openlocfilehash: 4338f4ce1fe60a3a9002be93feab134dd2601720
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/08/2021
+ms.openlocfilehash: 4157195260e5c685faaddeaca87db81d199ffb23
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87406512"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98043855"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Azure Kubernetes Service'ten Azure Container Registry ile Kimlik Doğrulaması Yapma
 
 Azure Kubernetes Service (AKS) ile Azure Container Registry (ACR) kullanırken, bir kimlik doğrulama mekanizmasının kurulması gerekir. Bu işlem, ACR 'nize gerekli izinler verilerek CLı ve Portal deneyiminin bir parçası olarak uygulanır. Bu makalede, bu iki Azure hizmeti arasında kimlik doğrulaması yapılandırmak için örnekler sağlanmaktadır. 
 
 Azure CLı ile birkaç basit komutlarda ACR tümleştirmesi için AKS tümleştirmesini ayarlayabilirsiniz. Bu tümleştirme, AKS kümesiyle ilişkili hizmet sorumlusuna AcrPull rolünü atar.
+
+> [!NOTE]
+> Bu makale, AKS ve ACR arasındaki otomatik kimlik doğrulamasını içerir. Özel bir dış kayıt defterinden görüntü çekmeniz gerekiyorsa, bir [resim çekme gizli anahtarı][Image Pull Secret]kullanın.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -100,7 +103,7 @@ Uygun AKS kimlik bilgilerine sahip olduğunuzdan emin olun
 az aks get-credentials -g myResourceGroup -n myAKSCluster
 ```
 
-Aşağıdakileri içeren **ACR-NGINX. YAML** adlı bir dosya oluşturun. **ACR-Name**için kayıt defterinizin kaynak adını değiştirin. Örnek: *Mycontainerregistry*.
+Aşağıdakileri içeren **ACR-NGINX. YAML** adlı bir dosya oluşturun. **ACR-Name** için kayıt defterinizin kaynak adını değiştirin. Örnek: *Mycontainerregistry*.
 
 ```yaml
 apiVersion: apps/v1
@@ -152,3 +155,4 @@ nginx0-deployment-669dfc4d4b-xdpd6   1/1     Running   0          20s
 
 <!-- LINKS - external -->
 [AKS AKS CLI]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
+[Image Pull secret]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/

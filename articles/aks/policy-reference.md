@@ -1,15 +1,15 @@
 ---
 title: Azure Kubernetes hizmeti için yerleşik ilke tanımları
 description: Azure Kubernetes hizmeti için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 11/20/2020
+ms.date: 01/08/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 29f5d2a3a6824730a5a1c96f3a6247867bdb43ee
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: c754e394b8f59be750d5cadf7dd358ad455b2ce5
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94989722"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045451"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-kubernetes-service"></a>Azure Policy Azure Kubernetes hizmeti için yerleşik tanımlar
 
@@ -21,7 +21,7 @@ Her yerleşik ilke tanımının adı Azure portal ilke tanımına bağlanır. Ka
 
 [!INCLUDE [azure-policy-reference-rp-aks-containerservice](../../includes/policy/reference/byrp/microsoft.containerservice.md)]
 
-## <a name="aks-engine"></a>AKS altyapısı
+## <a name="aks-engine"></a>AKS Engine
 
 [!INCLUDE [azure-policy-reference-rp-aks-aksengine](../../includes/policy/reference/byrp/aks-engine.md)]
 

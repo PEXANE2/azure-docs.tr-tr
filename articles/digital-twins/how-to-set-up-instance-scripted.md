@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5806ea094abd3431cd7e22064c6acd8ad150726a
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 1667c21b9a35b8e93feffb8cf1b37d4409da73c3
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495017"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044317"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Azure dijital TWINS örneği ve kimlik doğrulaması (komut dosyası) ayarlama
 
 [!INCLUDE [digital-twins-setup-selector.md](../../includes/digital-twins-setup-selector.md)]
 
-Bu makalede, örneği oluşturma ve kimlik doğrulamasını ayarlama dahil olmak üzere **Yeni bir Azure dijital TWINS örneği ayarlama**adımları ele alınmaktadır. Bu makaleyi tamamladıktan sonra, programlamaya başlamak için kullanabileceğiniz bir Azure dijital TWINS örneğine sahip olursunuz.
+Bu makalede, örneği oluşturma ve kimlik doğrulamasını ayarlama dahil olmak üzere **Yeni bir Azure dijital TWINS örneği ayarlama** adımları ele alınmaktadır. Bu makaleyi tamamladıktan sonra, programlamaya başlamak için kullanabileceğiniz bir Azure dijital TWINS örneğine sahip olursunuz.
 
 Bu makalenin bu sürümü, işlemi kolaylaştıran [ **otomatikleştirilmiş bir dağıtım betiği** örneği](/samples/azure-samples/digital-twins-samples/digital-twins-samples/) çalıştırarak bu adımları tamamlar. 
 * Betiğin arka planda çalıştığı el ile CLı adımlarını görüntülemek için, bu makalenin CLı sürümüne bakın: [*nasıl yapılır: bir örnek ve kimlik doğrulaması (CLI) ayarlama*](how-to-set-up-instance-cli.md).
@@ -33,7 +33,7 @@ Bu makalenin bu sürümü, işlemi kolaylaştıran [ **otomatikleştirilmiş bir
 
 Bu işlem, örnek projeyi _**Azure_Digital_Twins_end_to_end_samples.zip**_ olarak makinenize indirir. Makinenizde bulunan klasöre gidin ve dosyaları ayıklamak için dosyayı ayıklayın.
 
-Sıkıştırılmış klasörde, dağıtım betiği _Azure_Digital_Twins_end_to_end_samples > betiklerinin > **deploy.ps1** _bulunur.
+Sıkıştırılmış klasörde, dağıtım betiği _Azure_Digital_Twins_end_to_end_samples > betiklerinin > **deploy.ps1**_ bulunur.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -50,13 +50,13 @@ Dağıtım betiğini Cloud Shell ' de çalıştırma adımları aşağıda veril
  
 2. Cloud Shell simge çubuğunda, Cloud Shell PowerShell sürümünü çalıştıracak şekilde ayarlandığından emin olun.
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-powershell.png" alt-text="PowerShell sürümünün seçimini gösteren pencere Cloud Shell&quot;:::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-powershell.png" alt-text="PowerShell sürümünün seçimini gösteren pencere Cloud Shell":::
 
-1. &quot;Dosyaları karşıya yükle/Indir&quot; simgesini seçin ve &quot;karşıya yükle" yi seçin.
+1. "Dosyaları karşıya yükle/Indir" simgesini seçin ve "karşıya yükle" yi seçin.
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="PowerShell sürümünün seçimini gösteren pencere Cloud Shell&quot;:::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Karşıya yükleme simgesinin seçimini gösteren Cloud Shell pencere":::
 
-1. &quot;Dosyaları karşıya yükle/Indir&quot; simgesini seçin ve &quot;karşıya yükle" düğmesine basın. Bu işlem, dosyayı Cloud Shell penceresinde çalıştırabilmeniz için Cloud Shell dosyasına yükler.
+    Makinenizde _**deploy.ps1**_ dosyasına gidin ( _Azure_Digital_Twins_end_to_end_samples > betikler > **deploy.ps1**_) ve "Aç" düğmesine basın. Bu işlem, dosyayı Cloud Shell penceresinde çalıştırabilmeniz için Cloud Shell dosyasına yükler.
 
 4. Komutu Cloud Shell penceresine göndererek betiği çalıştırın `./deploy.ps1` . Aşağıdaki komutu kopyalayabilir (Cloud Shell yapıştırmak için çağırır, Windows ve Linux 'ta **CTRL + SHIFT + v** ' i veya MacOS 'ta **cmd + SHIFT + v** ' yi kullanabilirsiniz. Sağ tıklama menüsünü de kullanabilirsiniz.
 
@@ -70,13 +70,11 @@ Dağıtım betiğini Cloud Shell ' de çalıştırma adımları aşağıda veril
     * Örnek için: kullanılacak Azure aboneliğinizin *ABONELIK kimliği*
     * Örnek için: örneği dağıtmak istediğiniz *konum* . Azure dijital TWINS 'i destekleyen bölgeleri görmek için [*bölgeye göre kullanılabilen Azure ürünlerini*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)ziyaret edin.
     * Örnek için: bir *kaynak grubu* adı. Var olan bir kaynak grubunu kullanabilir veya oluşturmak için yeni bir ad girebilirsiniz.
-    * Örnek için: Azure dijital TWINS örneğiniz için bir *ad* . Yeni örneğin adı, aboneliğinizin bölgesi içinde benzersiz olmalıdır (yani, aboneliğiniz seçtiğiniz adı kullanan bölgede başka bir Azure dijital TWINS örneğine sahipse, farklı bir ad seçmeniz istenir).
+    * Örnek için: Azure dijital TWINS örneğiniz için bir *ad* . Aboneliğiniz zaten belirtilen adı kullanan bölgede başka bir Azure dijital TWINS örneğine sahipse, farklı bir ad seçmeniz istenir.
 
 Betikten çıktı günlüğü alıntısı aşağıda verilmiştir:
 
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="PowerShell sürümünün seçimini gösteren pencere Cloud Shell&quot;:::
-
-1. &quot;Dosyaları karşıya yükle/Indir&quot; simgesini seçin ve &quot;karşıya yükle" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="Dağıtım betiği çalıştırıldığında giriş ve çıkış günlüğünü gösteren Cloud Shell pencere" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
 
 Betik başarılı bir şekilde tamamlanırsa, nihai çıktıyı görürsünüz `Deployment completed successfully` . Aksi takdirde, hata iletisini adreslayın ve betiği yeniden çalıştırın. Bu işlem, önceden tamamladığınız adımları atlar ve kaldığınız yerden yeniden giriş istemeye başlar.
 
@@ -84,7 +82,7 @@ Betik başarılı bir şekilde tamamlanırsa, nihai çıktıyı görürsünüz `
 > Betik şu anda Azure dijital TWINS (*Azure dijital TWINS veri sahibi*) içindeki gerekli yönetim rolünü, Cloud Shell betiği çalıştıran kullanıcıya atar. Bu rolü örneği yöneten başka birine atamanız gerekiyorsa, bunu şimdi Azure portal ([yönergeler](how-to-set-up-instance-portal.md#set-up-user-access-permissions)) veya CLI ([yönergeler](how-to-set-up-instance-cli.md#set-up-user-access-permissions)) yoluyla yapabilirsiniz.
 
 >[!NOTE]
->Şu anda, bazı kullanıcıların (özellikle kişisel [Microsoft hesaplarındaki kullanıcılar (MSAs)](https://account.microsoft.com/account)) ** _Azure dijital TWINS_ 'in rol atamasını**bulabileceği, betikleştirilmiş kurulum ile ilgili **bilinen bir sorun** vardır.
+>Şu anda, bazı kullanıcıların (özellikle kişisel [Microsoft hesaplarındaki kullanıcılar (MSAs)](https://account.microsoft.com/account)) **_Azure dijital TWINS_ 'in rol atamasını** bulabileceği, betikleştirilmiş kurulum ile ilgili **bilinen bir sorun** vardır.
 >
 >Rol atamasını, bu makalenin ilerleyen kısımlarında bulunan [*Kullanıcı rolü atamasını doğrula*](#verify-user-role-assignment) bölümü ile doğrulayabilirsiniz ve gerekirse, [Azure Portal](how-to-set-up-instance-portal.md#set-up-user-access-permissions) veya [CLI](how-to-set-up-instance-cli.md#set-up-user-access-permissions)kullanarak rol atamasını el ile ayarlayabilirsiniz.
 >
@@ -106,11 +104,9 @@ Doğrulama başarısız olduysa, [Portal](how-to-set-up-instance-portal.md#creat
 
 ### <a name="collect-instance-values"></a>Örnek değerlerini topla
 
-[Azure dijital TWINS sayfasında](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances) örneğinizin adını seçerek örneğin *genel bakış* sayfasını açın. *Adına*, *kaynak grubuna*ve *ana bilgisayar adına göz önünde barının*. Daha sonra örneğinizi belirleyip daha sonra bu örneğe bağlanmanız gerekebilir.
+[Azure dijital TWINS sayfasında](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances) örneğinizin adını seçerek örneğin *genel bakış* sayfasını açın. *Adına*, *kaynak grubuna* ve *ana bilgisayar adına göz önünde barının*. Daha sonra örneğinizi belirleyip daha sonra bu örneğe bağlanmanız gerekebilir.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="PowerShell sürümünün seçimini gösteren pencere Cloud Shell&quot;:::
-
-1. &quot;Dosyaları karşıya yükle/Indir&quot; simgesini seçin ve &quot;karşıya yükle":::
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Örneğin genel bakış sayfasından önemli değerleri vurgulama":::
 
 ### <a name="verify-user-role-assignment"></a>Kullanıcı rolü atamasını doğrula
 

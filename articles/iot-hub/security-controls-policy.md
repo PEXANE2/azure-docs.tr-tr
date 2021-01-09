@@ -1,18 +1,18 @@
 ---
 title: Azure IoT Hub için Azure Ilke mevzuat uyumluluk denetimleri
 description: Azure IoT Hub için kullanılabilen Azure Ilke mevzuat uyumluluk denetimlerini listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızın uyumluluğunu yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 11/20/2020
+ms.date: 01/08/2021
 ms.topic: sample
 author: robinsh
 ms.author: robinsh
 ms.service: iot-hub
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: a0f2e67b6f571e791b81195fab153280affe9f8b
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 1d721b483dcff96fdd09489198f305eca97e2aad
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985892"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044978"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-iot-hub"></a>Azure IoT Hub için Azure Ilke mevzuat uyumluluk denetimleri
 
