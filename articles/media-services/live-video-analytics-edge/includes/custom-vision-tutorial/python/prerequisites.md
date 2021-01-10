@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 10/05/2020
 ms.author: russellcooks
-ms.openlocfilehash: 8d0a40d9dc02e3e3720faf22652ed15c31e39ee7
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 2e8f61582a664287b094c24c71e92a678c821e5e
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358308"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060511"
 ---
 Bu öğreticinin önkoşulları şunlardır:
 
@@ -21,5 +21,7 @@ Bu öğreticinin önkoşulları şunlardır:
 * Sahip olduğunuzdan emin olun:
     
     * [Azure kaynaklarını ayarlama](../../../detect-motion-emit-events-quickstart.md#set-up-azure-resources)
-    * [Geliştirme ortamınızı ayarlama](../../../detect-motion-emit-events-quickstart.md#set-up-your-development-environment)
+    * [Geliştirme ortamınızı kurma](../../../detect-motion-emit-events-quickstart.md#set-up-your-development-environment)
 
+> [!TIP]
+> Oluşturulan Azure kaynaklarıyla ilgili sorunlar yaşıyorsanız, bazı sık karşılaşılan sorunları çözmek için lütfen **[sorun giderme kılavuzumuzu](../../../troubleshoot-how-to.md#common-error-resolutions)** görüntüleyin.

@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 5fa8377b3cdddb2818c04c5a75e347ff73dc07d8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 40d2f957ce115b43a1dcc138b86e05ec9cc47384
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96509453"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060624"
 ---
 Bu öğreticide aşağıdaki Azure kaynakları gereklidir:
 
@@ -26,12 +26,15 @@ Bu hızlı başlangıç için, Azure aboneliğinizde gerekli kaynakları dağıt
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
-    Betik başarıyla tamamlanerdiğinde, aboneliğinizdeki tüm gerekli kaynakları görmeniz gerekir.
+    Betiği başarıyla tamamladıktan sonra aboneliğinizdeki tüm gerekli kaynakları görmeniz gerekir.
 1. Betik tamamlandıktan sonra, klasör yapısını göstermek için süslü ayraçları seçin. *~/CloudDrive/LVA-Sample* dizininde birkaç dosya görürsünüz. Bu hızlı başlangıçta ilgilendiğiniz:
 
      * ***~/CloudDrive/LVA-Sample/Edge-Deployment/.exe**-bu dosya Visual Studio Code bir uç cihaza modül dağıtmak için kullandığı özellikleri içerir.
-     _ ***~/CloudDrive/LVA-Sample/appsetting.json*** -Visual Studio Code, örnek kodu çalıştırmak için bu dosyayı kullanır.
+     _ ***~/CloudDrive/LVA-Sample/appsetting.json** _-Visual Studio Code, örnek kodu çalıştırmak için bu dosyayı kullanır.
      
     Bir sonraki bölümde Visual Studio Code ' de geliştirme ortamınızı ayarlarken bu dosyalar gerekir. Bunları şimdilik yerel bir dosyaya kopyalamak isteyebilirsiniz.
     
     ![Uygulama ayarları](../../../media/quickstarts/clouddrive.png)
+
+> [!TIP]
+> Oluşturulan Azure kaynaklarıyla ilgili sorunlar yaşıyorsanız, bazı sık karşılaşılan sorunları çözmek için lütfen _ *[sorun giderme kılavuzumuzu](../../../troubleshoot-how-to.md#common-error-resolutions)* görüntüleyin.

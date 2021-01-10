@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: 31cf89cb66dfbc404d65f8fc09b96c03e1be2f8f
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: d49f048df7a624dc490acf7cb4c8e5f33aa5f1c6
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401315"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060240"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>IoT Edge 'da canlı video analizi sorunlarını giderme
 
@@ -65,6 +65,8 @@ Doğrudan yöntemler kullanarak medya grafiğinin bir tanılamasını çalışt�
     * 406-IoT Edge cihaz çevrimdışı veya durum raporları göndermiyor.
     * 500-IoT Edge çalışma zamanında bir hata oluştu.
 
+    > [!TIP]
+    > Ortamınızda Azure IoT Edge modüller çalıştıran sorunlarla karşılaşırsanız, sorun giderme ve Tanılama için kılavuz olarak **[Azure IoT Edge standart tanılama adımlarını](https://docs.microsoft.com/azure/iot-edge/troubleshoot?view=iotedge-2018-06&preserve-view=true)** kullanın.
 ### <a name="post-deployment-direct-method-error-code"></a>Dağıtım sonrası: doğrudan yöntem hata kodu
 1. Bir durum alırsanız `501 code` doğrudan yöntem adının doğru olduğundan emin olun. Yöntem adı ve istek yükü doğru ise, başarılı kod = 200 ile birlikte sonuçları almalısınız. 
 1. İstek yükü doğru değilse, `400 code` doğrudan yöntem çağrla ilgili sorunu tanılamanıza yardımcı olması gereken hata kodunu ve iletiyi gösteren bir durum ve yanıt yükü alacaksınız.
@@ -93,6 +95,8 @@ Canlı video analizi, IoT Edge cihazında bir IoT Edge modülü olarak dağıtı
 * [Canlı video analizi veya başka bir özel IoT Edge modülü, 404 hatası ile uç hub 'ına ileti gönderemediğinde](../../iot-edge/troubleshoot-common-errors.md#iot-edge-module-fails-to-send-a-message-to-edgehub-with-404-error).
 * [IoT Edge modülü başarıyla dağıtıldı ve sonra cihazdan kayboluyor](../../iot-edge/troubleshoot-common-errors.md#iot-edge-module-deploys-successfully-then-disappears-from-device).
 
+    > [!TIP]
+    > Ortamınızda Azure IoT Edge modüller çalıştıran sorunlarla karşılaşırsanız, sorun giderme ve Tanılama için kılavuz olarak **[Azure IoT Edge standart tanılama adımlarını](https://docs.microsoft.com/azure/iot-edge/troubleshoot?view=iotedge-2018-06&preserve-view=true)** kullanın.
 ### <a name="live-video-analytics-working-with-external-modules"></a>Canlı video analizi dış modüllerle çalışıyor
 
 Medya grafiği uzantısı işlemcileri ile canlı video analizi, medya grafiğinin HTTP veya gRPC protokollerini kullanarak diğer IoT Edge modüllerden veri göndermesini ve almasını sağlayabilir. Belirli bir [örnek](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension)olarak, bu medya grafiği, video çerçevelerini Yolo v3 gibi bir dış çıkarım MODÜLÜNE ve http protokolünü kullanarak JSON tabanlı analiz sonuçları almaya gönderebilir. Böyle bir topolojide, olayların hedefi çoğunlukla IoT Hub 'idir. Hub 'da çıkarım olaylarını görmeme durumlarında, aşağıdakileri denetleyin:

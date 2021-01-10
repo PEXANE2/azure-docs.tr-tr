@@ -1,6 +1,6 @@
 ---
 title: 'Hızlı başlangıç: Spark ile çözümlemeye başlama'
-description: Bu öğreticide, Apache Spark ile verileri çözümlemeyi öğreneceksiniz
+description: Bu öğreticide, Apache Spark ile verileri çözümlemeyi öğreneceksiniz.
 services: synapse-analytics
 author: saveenr
 ms.author: saveenr
@@ -10,46 +10,49 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: ee4dc945f63180fd06f13287b22949d0ac1e3873
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 2c526d25fed169f702a3786a17717de3cf4dc6af
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862029"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059033"
 ---
 # <a name="analyze-with-apache-spark"></a>Apache Spark ile Çözümle
 
-## <a name="analyze-nyc-taxi-data-in-blob-storage-using-spark"></a>Spark kullanarak, blob depolamada NYC TAXI verilerini çözümleme
-
 Bu öğreticide, Azure SYNAPSE için Apache Spark verileri yüklemek ve analiz etmek için temel adımları öğreneceksiniz.
 
-1. **Veri** hub 'ında **Yeni Kaynak Ekle**' ye tıklayın (Ayrıca, **bağlı** düğme)  >> **Galeriye** tıklayın. 
-1. **NYC taxı & Limousine Komisyonu bulun-sarı TAXI seyahat kayıtları** bulun ve üzerine tıklayın. 
-1. Sayfanın alt kısmındaki **devam** ' a ve ardından **veri kümesi Ekle**' ye basın. 
-1. Artık **veri** hub 'ında **bağlı** sağ ' ye tıklayın **>> örnek veri kümeleri >> nyc_tlc_yellow** ve **Yeni Not defteri** ' ni seçin.
-1. Bu, aşağıdaki kod ile yeni bir not defteri oluşturur:
-    ```
+## <a name="analyze-nyc-taxi-data-in-blob-storage-using-spark"></a>Spark kullanarak, blob depolamada NYC TAXI verilerini çözümleme
+
+1. **Veri** hub 'ında, **Galeriye**> **Yeni Kaynak Ekle** (Ayrıca, **bağlı** düğme) öğesini seçin.
+1. **NYC taxı & Limousine Commission-sarı TAXI seyahat kayıtları**' nı seçin.
+1. Sayfanın alt kısmında,   >  **veri kümesi Ekle** devam ' ı seçin.
+1. **Bağlı** altındaki **veri** hub 'ında **Azure Blob depolama**' yı sağ tıklatın ve ardından **örnek veri kümeleri**  >  **nyc_tlc_yellow** seçin.
+1. Aşağıdaki kodla yeni bir not defteri oluşturmak için **Yeni Not defteri** ' ni seçin:
+
+    ```py
     from azureml.opendatasets import NycTlcYellow
 
     data = NycTlcYellow()
     data_df = data.to_spark_dataframe()
     display(data_df.limit(10))
     ```
-1. Not defterinde, **Ekle** menüsünde sunucusuz Spark havuzu seçin
-1. Hücrede **Çalıştır** 'ı seçin
+
+1. Not defterindeki **Ekle** menüsünde sunucusuz Spark havuzu ' nu seçin.
+1. Hücrede **Çalıştır** ' ı seçin.
 1. Yalnızca veri çerçevesinin şemasını görmek istiyorsanız aşağıdaki kodla bir hücre çalıştırın:
-    ```
+
+    ```py
     data_df.printSchema()
     ```
 
 ## <a name="load-the-nyc-taxi-data-into-the-spark-nyctaxi-database"></a>NYC TAXI verilerini Spark nyctaxi veritabanına yükleme
 
-**SQLPOOL1**' deki bir tabloda veri mevcuttur. **Nyctaxi** adlı bir Spark veritabanına yükleyin.
+Veriler, **SQLPOOL1** içindeki bir tabloda kullanılabilir. **Nyctaxi** adlı bir Spark veritabanına yükleyin.
 
 1. SYNAPSE Studio 'da **geliştirme** merkezine gidin.
 1. **+**  >  **Not defteri** seçin.
 1. Not defterinin en üstünde, **Attach** değerini **Spark1** olarak ayarlayın.
-1. Bir not defteri kod hücresi eklemek için **Kod Ekle** ' yi seçin ve ardından şu metni yapıştırın:
+1. **Kod Ekle** ' yi seçerek bir not defteri kod hücresi ekleyin ve ardından şu metni girin:
 
     ```scala
     %%spark
@@ -58,7 +61,7 @@ Bu öğreticide, Azure SYNAPSE için Apache Spark verileri yüklemek ve analiz e
     df.write.mode("overwrite").saveAsTable("nyctaxi.trip")
     ```
 
-1. **Veri** merkezine gidin, **veritabanları**' na sağ tıklayın ve ardından **Yenile**' yi seçin. Şu veritabanlarını görmeniz gerekir:
+1. **Veri** hub 'ında **veritabanları**' na sağ tıklayın ve ardından **Yenile**' yi seçin. Şu veritabanlarını görmeniz gerekir:
 
     - **SQLPOOL1 (SQL)**
     - **nyctaxi (Spark)**
@@ -66,7 +69,7 @@ Bu öğreticide, Azure SYNAPSE için Apache Spark verileri yüklemek ve analiz e
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>Spark ve not defterlerini kullanarak NYC TAXI verilerini çözümleme
 
 1. Not defterinize geri dönün.
-1. Yeni bir kod hücresi oluşturun ve aşağıdaki metni girin. Ardından, **nyctaxi** Spark veritabanına YÜKLEDIĞIMIZ NYC TAXI verilerini göstermek için hücreyi çalıştırın.
+1. Yeni bir kod hücresi oluşturun ve aşağıdaki metni girin.
 
    ```py
    %%pyspark
@@ -74,7 +77,8 @@ Bu öğreticide, Azure SYNAPSE için Apache Spark verileri yüklemek ve analiz e
    display(df)
    ```
 
-1. Daha önce adanmış SQL havuzu **SQLPOOL1** ile yaptığımız analizi yapmak için aşağıdaki kodu çalıştırın. Bu kod, çözümlemenin sonuçlarını **nyctaxi. passengercountstats** adlı bir tabloya kaydeder ve sonuçları görselleştirir.
+1. **Nyctaxi** Spark veritabanına yüklediğiniz NYC TAXI verilerini göstermek için hücreyi çalıştırın.
+1. Daha önce adanmış SQL havuzu **SQLPOOL1** ile yaptığınız aynı analizi yapmak için aşağıdaki kodu çalıştırın. Bu kod, çözümlemenin sonuçlarını **nyctaxi. passengercountstats** adlı bir tabloya kaydeder ve görüntüler.
 
    ```py
    %%pyspark
@@ -93,13 +97,9 @@ Bu öğreticide, Azure SYNAPSE için Apache Spark verileri yüklemek ve analiz e
 
 1. Hücre sonuçlarında, görselleştirilen verileri görmek için **grafik** ' i seçin.
 
-
-
-
-
 ## <a name="load-data-from-a-spark-table-into-a-dedicated-sql-pool-table"></a>Spark tablosundan adanmış bir SQL havuzu tablosuna veri yükleme
 
-Daha önce, **SQLPOOL1. dbo. yolculuğa** YÖNELIK adanmış SQL havuzu tablosundan veri kopyaladık **nyctaxi. seyahat**. Daha sonra Spark kullanarak, verileri Spark tablosuna **nyctaxi. passengercountstats** olarak toplandık. Artık **nyctaxi. passengercountstats** Içindeki verileri **SQLPOOL1. dbo. passengercountstats** adlı adanmış bir SQL havuzu tablosuna kopyalayacağız.
+Daha önce, **SQLPOOL1. dbo. yolculuğa** YÖNELIK adanmış SQL havuzu tablosundan verileri Spark tablosu **nyctaxi. seyahat** içine kopyaladınız. Daha sonra verileri Spark tablosu **nyctaxi. passengercountstats** içine yığıldıktan sonra. Artık **nyctaxi. passengercountstats** Içindeki verileri **SQLPOOL1. dbo. passengercountstats** adlı özel bir SQL havuzu tablosuna kopyalayacaksınız.
 
 Not defterinizde aşağıdaki hücreyi çalıştırın. Toplu Spark tablosunu adanmış SQL havuzu tablosuna kopyalar.
 
@@ -113,5 +113,3 @@ df.write.sqlanalytics("SQLPOOL1.dbo.PassengerCountStats", Constants.INTERNAL )
 
 > [!div class="nextstepaction"]
 > [Sunucusuz SQL havuzu ile verileri analiz etme](get-started-analyze-sql-on-demand.md)
-
-

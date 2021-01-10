@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 14195ad4638c724cf0c8dd46945a0da79ec0e4ec
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 08b08e3e799ff7b579889a62ecec70677a3cbce9
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509709"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059067"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde kendi kendine onaylanan teknik profil tanımlama
 
@@ -201,14 +201,14 @@ Ayrıca kurumsal iş kolu uygulamasıyla daha fazla tümleştirme yaparak iş ma
 | --------- | -------- | ----------- |
 | ayarlanıyor. operatingMode <sup>1</sup>| Hayır | Oturum açma sayfası için bu özellik, giriş doğrulaması ve hata iletileri gibi Kullanıcı adı alanının davranışını denetler. Beklenen değerler: `Username` veya `Email` .  |
 | AllowGenerationOfClaimsWithNullValues| Hayır| Null değerli bir talep oluşturmaya izin verin. Örneğin, bir durumda Kullanıcı bir onay kutusu seçmez.|
-| Contentdefinitionreferenceıd | Yes | Bu teknik profille ilişkili [içerik tanımının](contentdefinitions.md) tanımlayıcısı. |
+| Contentdefinitionreferenceıd | Evet | Bu teknik profille ilişkili [içerik tanımının](contentdefinitions.md) tanımlayıcısı. |
 | Enforceemaildoğrulaması | Hayır | Kaydolma veya profil düzenleme için, e-posta doğrulamasını uygular. Olası değerler: `true` (varsayılan) veya `false` . |
 | . retryLimit ayarlanıyor | Hayır | Bir kullanıcının bir doğrulama teknik profiline karşı denetlenen verileri sağlamaya kaç kez denendiğini denetler. Örneğin, bir kullanıcı zaten var olan bir hesapla kaydolmaya çalışır ve sınıra ulaşılana kadar denemeye devam eder.
 | SignUpTarget <sup>1</sup>| Hayır | Kaydolma hedefi değişim tanımlayıcısı. Kullanıcı kaydolma düğmesine tıkladığında, Azure AD B2C belirtilen Exchange tanımlayıcısını yürütür. |
 | Setting. showCancelButton | Hayır | İptal düğmesini görüntüler. Olası değerler: `true` (varsayılan) veya `false` |
 | Setting. Showdevam düğmesi | Hayır | Devam düğmesini görüntüler. Olası değerler: `true` (varsayılan) veya `false` |
 | Setting. Showsignyukarı <sup>2</sup>| Hayır | Kaydolma düğmesini görüntüler. Olası değerler: `true` (varsayılan) veya `false` |
-| ayar. forgotPasswordLinkLocation <sup>2</sup>| Hayır| Parolayı unuttum bağlantısını görüntüler. Olası değerler: `AfterInput` (varsayılan) bağlantı sayfanın alt kısmında görüntülenir veya `None` parolayı unutma bağlantısını kaldırır.|
+| ayar. forgotPasswordLinkLocation <sup>2</sup>| Hayır| Parolayı unuttum bağlantısını görüntüler. Olası değerler: `AfterLabel` (varsayılan) etiket olmadığında etiketi veya parola girişi alanından sonra bağlantıyı görüntüler,  `AfterInput` parola girişi alanından sonra bağlantıyı görüntüler, `AfterButtons` düğmelerden sonra formun alt kısmındaki bağlantıyı görüntüler veya `None` parolayı unuttum bağlantısını kaldırır.|
 | ayarlanıyor. enableRememberMe <sup>2</sup>| Hayır| Oturumumu [açık tut](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) onay kutusunu görüntüler. Olası değerler: `true` , veya `false` (varsayılan). |
 | Setting. ınputdoğrulamaları ıationdelaytimeınmilliseconds <sup>3</sup>| Hayır| Kullanıcının yazmayı durdurmasını bekleyip değeri doğrulamak için Kullanıcı deneyimini geliştirir. Varsayılan değer 2000 milisaniyedir. |
 | IncludeClaimResolvingInClaimsHandling  | Hayır | Giriş ve çıkış talepleri için, [talep çözümlemenin](claim-resolver-overview.md) teknik profile dahil edilip edilmeyeceğini belirtir. Olası değerler: `true` , veya `false` (varsayılan). Teknik profilde bir talep çözümleyici kullanmak istiyorsanız, bunu olarak ayarlayın `true` . |

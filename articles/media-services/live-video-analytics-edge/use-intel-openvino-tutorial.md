@@ -4,12 +4,12 @@ description: Bu öğreticide, (benzetimli) bir IP kamerasından canlı video ak�
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: 82906111e64bd278d4371d1c3497fefc4510bbbd
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 9fb2f533d433c89d13ee0c29058f87aab3521a78
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401223"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060206"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Öğretici: OpenVINO™ model sunucusunu kullanarak canlı videoyu çözümleyin – Intel 'ten AI uzantısı 
 
@@ -38,12 +38,14 @@ Azure kaynaklarını ayarlarken, bir park lotunun kısa bir videosu, Azure 'da I
 
 [VLC medya oynatıcı](https://www.videolan.org/vlc/)gibi bir uygulama açın. CTRL + N ' ı seçin ve ardından kayıttan yürütmeyi başlatmak için [videoya](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) bir bağlantı yapıştırın. Her bir park partisi, bunların Park yeri ve tek bir hareket halinde araçlar görürsünüz.
 
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LUbN]
+
 Bu hızlı başlangıçta, IoT Edge üzerinde canlı video analizlerini kullanarak, araçlar gibi nesneleri tespit etmek ya da bunları sınıflandırmak için, Intel 'den OpenVINO™ model sunucusu – AI uzantısı ' nı kullanacaksınız. Ortaya çıkan çıkarım olaylarını IoT Edge hub 'a yayımlayacaksınız.
 
 ## <a name="overview"></a>Genel Bakış
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/use-intel-openvino-tutorial/http-extension-with-vino.svg" alt-text="Genel Bakış":::
+> :::image type="content" source="./media/use-intel-openvino-tutorial/http-extension-with-vino.svg" alt-text="Genel bakış":::
 
 Bu diyagramda, sinyallerin bu hızlı başlangıçta nasıl akagösterdiği gösterilmektedir. [Edge modülü](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) , Real-Time Akış Protokolü (RTSP) sunucusunu BARıNDıRAN bir IP kamerasına benzetir. Bir [RTSP kaynak](media-graph-concept.md#rtsp-source) düğümü, bu sunucudan video akışını çeker ve [http uzantısı işlemci](media-graph-concept.md#http-extension-processor) düğümüne video çerçeveleri gönderir. 
 
@@ -97,7 +99,7 @@ Bu çıkarım sunucusunun ilk sürümünde aşağıdaki [modellere](https://gith
 1. Dosyadaki *operations.js* düzenleyin:
     * Grafik topolojisine olan bağlantıyı değiştirin:
 
-        `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtensionOpenVINO/topology.json"`
+        `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtensionOpenVINO/2.0/topology.json"`
 
     * Altında `GraphInstanceSet` , grafik topolojisinin adını önceki bağlantıdaki değerle eşleşecek şekilde düzenleyin:
 
@@ -160,7 +162,7 @@ Bu öğreticinin [grafik topolojisini](https://raw.githubusercontent.com/Azure/l
 
          ```
          {
-           "@apiVersion": "1.0",
+           "@apiVersion": "2.0",
            "name": "Sample-Graph-1",
            "properties": {
              "topologyName": "InferencingWithOpenVINO",
@@ -203,7 +205,7 @@ Aşağıdaki iletilerde, canlı video analizi modülü, uygulama özelliklerini 
 
 ### <a name="mediasessionestablished-event"></a>Mediasessionkurulduğu olayı
 
-Bir medya grafiği oluşturulduğunda, RTSP kaynak düğümü, rtspsim-live555 kapsayıcısında çalışan RTSP sunucusuna bağlanmaya çalışır. Bağlantı başarılı olursa, aşağıdaki olay yazdırılır. Olay türü `Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished` .
+Bir medya grafiği oluşturulduğunda, RTSP kaynak düğümü, rtspsim-live555 kapsayıcısında çalışan RTSP sunucusuna bağlanmaya çalışır. Bağlantı başarılı olursa, aşağıdaki olay yazdırılır. Olay türü **Microsoft. Media. MediaGraph. Diagnostics. Mediasessionsetup**' tur.
 
 ```
 [IoTHubMonitor] [9:42:18 AM] Message received from [lvaedgesample/lvaEdge]:

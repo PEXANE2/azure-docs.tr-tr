@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 8c989e426faa77025a84515fe0a19424cb6bfa89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fad6e27c4ee7e8c10237cb3face5cfab9329b2ed
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826622"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059730"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Otomatik ölçeklendirme ve Alanlar arası yedekli Application Gateway v2 
 
@@ -101,7 +101,7 @@ Bu bölümde v1 SKU 'sundan farklı v2 SKU 'sunun özellikleri ve sınırlamalar
 |Kimlik doğrulama sertifikası|Desteklenmez.<br>Daha fazla bilgi için bkz. [Application Gateway ile uçtan uca TLS 'ye genel bakış](ssl-overview.md#end-to-end-tls-with-the-v2-sku).|
 |Aynı alt ağda Standard_v2 ve standart Application Gateway karıştırma|Desteklenmez|
 |Application Gateway alt ağda User-Defined Route (UDR)|Desteklenir (belirli senaryolar). Önizleme aşamasında.<br> Desteklenen senaryolar hakkında daha fazla bilgi için bkz. [Application Gateway yapılandırmasına genel bakış](configuration-infrastructure.md#supported-user-defined-routes).|
-|Gelen bağlantı noktası aralığı için NSG| Standard_v2 SKU için-65200-65535<br>Standart SKU için-65503-65534 arası.<br>Daha fazla bilgi için bkz. [SSS](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
+|Gelen bağlantı noktası aralığı için NSG| Standard_v2 SKU için-65200-65535<br>Standart SKU için-65503-65534 arası.<br>Daha fazla bilgi için bkz. [SSS](application-gateway-faq.yml#are-network-security-groups-supported-on-the-application-gateway-subnet).|
 |Azure tanılama 'da performans günlükleri|Desteklenmez.<br>Azure ölçümleri kullanılmalıdır.|
 |Faturalandırma|Faturalama 1 Temmuz 2019 tarihinde başlayacak şekilde zamanlandı.|
 |FIPS modu|Bunlar şu anda desteklenmiyor.|

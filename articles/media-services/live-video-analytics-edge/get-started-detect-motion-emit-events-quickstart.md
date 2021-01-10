@@ -3,12 +3,12 @@ title: IoT Edge Azure 'da canlı video analiziyle çalışmaya başlama
 description: Bu hızlı başlangıçta IoT Edge 'da canlı video analiziyle çalışmaya başlama gösterilmektedir. Canlı video akışında hareket algılamayı öğrenin.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 8ccf2665f19b66959ce259088d0b322aec7b59f4
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 276c2ceaa9e0bef254c70f91541a3a3db7c02d47
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028718"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060410"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Hızlı başlangıç: IoT Edge kullanmaya başlama-canlı video analizi
 
@@ -21,7 +21,7 @@ Kurulum adımlarını tamamladıktan sonra, bu akıştaki tüm hareketleri algı
 
 IoT Edge ' de canlı video analiziyle çalışmaya başlama hakkında ayrıntılı adımlar içeren aşağıdaki videoyu görüntüleyebilirsiniz:
 
-<iframe src="https://www.microsoft.com/en-us/videoplayer/embed/RE4Hcax" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Hcax]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -55,9 +55,13 @@ Bu hızlı başlangıç için, Azure aboneliğinizde gerekli kaynakları dağıt
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
-Betik başarıyla tamamlanerdiğinde, aboneliğinizdeki tüm gerekli kaynakları görmeniz gerekir. Betik çıktısında, kaynak tablosu IoT Hub adını listeler. Kaynak türünü bulun `Microsoft.Devices/IotHubs` ve adı aklınızda yazın. Sonraki adımda bu ada ihtiyacınız olacaktır. 
+Betiği başarıyla tamamladıktan sonra aboneliğinizdeki tüm gerekli kaynakları görmeniz gerekir. Betik çıktısında, kaynak tablosu IoT Hub adını listeler. Kaynak türünü bulun **`Microsoft.Devices/IotHubs`** ve adı aklınızda yazın. Sonraki adımda bu ada ihtiyacınız olacaktır.  
 
-Betik, *~/CloudDrive/LVA-Sample/* dizininde birkaç yapılandırma dosyası da oluşturur. Bu dosyalar hızlı başlangıçta daha sonra gerekecektir.
+> [!NOTE]
+> Betik Ayrıca **_~/CloudDrive/LVA-Sample/_* _ dizininde birkaç yapılandırma dosyası oluşturur. Bu dosyalar hızlı başlangıçta daha sonra gerekecektir.
+
+> [!TIP]
+> Oluşturulan Azure kaynaklarıyla ilgili sorunlar yaşıyorsanız, bazı sık karşılaşılan sorunları çözmek için lütfen _ *[sorun giderme kılavuzumuzu](troubleshoot-how-to.md#common-error-resolutions)* görüntüleyin.
 
 ## <a name="deploy-modules-on-your-edge-device"></a>Sınır cihazınızda modüller dağıtma
 
@@ -417,8 +421,8 @@ Yanıt yükünde, bu ayrıntılara dikkat edin:
 Bu yükün şu olduğuna dikkat edin:
 
 * Örneğin oluşturulması gereken topoloji adını ( `MotionDetection` ) belirtir.
-* `rtspUrl`Grafik topolojisi yükünde varsayılan bir değere sahip olmayan için bir parametre değeri içerir.
-
+* `rtspUrl`Grafik topolojisi yükünde varsayılan bir değere sahip olmayan için bir parametre değeri içerir. Bu değer aşağıdaki örnek videonun bir bağlantı örneğidir:
+    > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LTY4]
 Birkaç saniye içinde **Çıkış** penceresinde aşağıdaki yanıtı görürsünüz:
 
 ```

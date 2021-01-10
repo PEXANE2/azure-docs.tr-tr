@@ -1,15 +1,15 @@
 ---
 title: Azure Kubernetes hizmetinde hiper muhasebe doku Consortium dağıtma
 description: Azure Kubernetes hizmetinde bir hiper muhasebe doku Consortium ağını dağıtma ve yapılandırma
-ms.date: 08/06/2020
+ms.date: 01/08/2021
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 081c7a10ee091f573e8f999c94588ef85c784f74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ab5b9fadfbb0f1c9c1cdf25ee319c7775a593ed
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651570"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060325"
 ---
 # <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>Azure Kubernetes hizmetinde hiper muhasebe doku Consortium dağıtma
 
@@ -66,7 +66,7 @@ Başlamak için birkaç sanal makine ve standart depolama hesabı dağıtımı d
 
 Hiper muhasebe doku ağ bileşenlerinin dağıtımına başlamak için [Azure Portal](https://portal.azure.com)gidin.
 
-1. **Kaynak**  >  **blok zinciri**oluştur ' u seçin ve ardından **Azure Kubernetes hizmeti (Önizleme) ' de hiper muhasebe dokusunu**arayın.
+1. **Kaynak**  >  **blok zinciri** oluştur ' u seçin ve ardından **Azure Kubernetes hizmeti (Önizleme) ' de hiper muhasebe dokusunu** arayın.
 
 2. **Temel bilgiler** sekmesinde proje ayrıntılarını girin.
 
@@ -106,7 +106,7 @@ Hiper muhasebe doku ağ bileşenlerinin dağıtımına başlamak için [Azure Po
     - **DNS ön eki**: aks kümesi Için bir etki alanı adı SISTEMI (DNS) ad öneki girin. Kümeyi oluşturduktan sonra kapsayıcıları yönetirken Kubernetes API 'sine bağlanmak için DNS kullanırsınız.
     - **Düğüm boyutu**: Kubernetes düğümünün boyutu için Azure 'DA bulunan VM stok tutma birimleri (SKU 'lar) listesinden seçim yapabilirsiniz. En iyi performansı elde etmek için standart DS3 v2 önerilir.
     - **Düğüm sayısı**: kümede dağıtılacak Kubernetes düğümlerinin sayısını girin. Bu düğüm sayısının **doku ayarları** sekmesinde belirtilen hiper muhasebe doku düğümlerinin sayısına eşit veya daha fazla tutulması önerilir.
-    - **Hizmet sorumlusu ISTEMCI kimliği**: var olan bir hizmet SORUMLUSUNUN istemci kimliğini girin veya yeni bir tane oluşturun. AKS kimlik doğrulaması için bir hizmet sorumlusu gereklidir. [Hizmet sorumlusu oluşturma adımlarına](/powershell/azure/create-azure-service-principal-azureps?view=azps-3.2.0#create-a-service-principal)bakın.
+    - **Hizmet sorumlusu ISTEMCI kimliği**: var olan bir hizmet SORUMLUSUNUN istemci kimliğini girin veya yeni bir tane oluşturun. AKS kimlik doğrulaması için bir hizmet sorumlusu gereklidir. [Hizmet sorumlusu oluşturma adımlarına](/powershell/azure/create-azure-service-principal-azureps#create-a-service-principal)bakın.
     - **Hizmet sorumlusu istemci parolası**: hizmet sorumlusu IÇIN İstemci kimliğinde belirtilen hizmet sorumlusunun istemci gizli anahtarını girin.
     - **İstemci parolasını onaylayın**: hizmet sorumlusu için istemci parolasını onaylayın.
     - **Kapsayıcı Izlemeyi etkinleştir**: aks izlemesini etkinleştirmek için seçin. Bu, aks günlüklerinin belirtilen Log Analytics çalışma alanına gönderim yapmasını sağlar.
@@ -334,7 +334,7 @@ Eş kuruluşa chaincode 'u yüklemek için aşağıdaki komutu çalıştırın.
 ```
 Komut, ortam değişkeninde ayarlanan eşdüzey kuruluşun tüm eşdüzey düğümlerine chaincode yükler `ORGNAME` . Kanalınıza iki veya daha fazla eş kurum varsa ve bunların tümüne chaincode yüklemek istiyorsanız, her eş kuruluş için bu komutu ayrı olarak çalıştırın.  
 
-Şu adımları izleyin:  
+Şu adımları uygulayın:  
 
 1.  `ORGNAME`' İ ayarlayın ve `USER_IDENTITY` `peerOrg1` komutuna göre `./azhlf chaincode install` komutunu çalıştırın.  
 2.  `ORGNAME`' İ ayarlayın ve `USER_IDENTITY` `peerOrg2` komutuna göre `./azhlf chaincode install` komutunu çalıştırın.  
@@ -393,23 +393,35 @@ Sorgu işlevi adı ve bağımsız değişkenlerin boşluk listesini,  `<queryF
 
 ## <a name="troubleshoot"></a>Sorun giderme
 
-Şablon dağıtımınızın sürümünü bulmak için aşağıdaki komutları çalıştırın.
+### <a name="find-deployed-version"></a>Dağıtılan sürümü bul
 
-Ortam değişkenlerini, şablonun dağıtıldığı kaynak grubuna göre ayarlayın.
-
-```bash
-
-SWITCH_TO_AKS_CLUSTER() { az aks get-credentials --resource-group $1 --name $2 --subscription $3; }
-AKS_CLUSTER_SUBSCRIPTION=<AKSClusterSubscriptionID>
-AKS_CLUSTER_RESOURCE_GROUP=<AKSClusterResourceGroup>
-AKS_CLUSTER_NAME=<AKSClusterName>
-```
-Şablon sürümünü yazdırmak için aşağıdaki komutu çalıştırın.
+Şablon dağıtımınızın sürümünü bulmak için aşağıdaki komutları çalıştırın. Ortam değişkenlerini, şablonun dağıtıldığı kaynak grubuna göre ayarlayın.
 
 ```bash
 SWITCH_TO_AKS_CLUSTER $AKS_CLUSTER_RESOURCE_GROUP $AKS_CLUSTER_NAME $AKS_CLUSTER_SUBSCRIPTION
 kubectl describe pod fabric-tools -n tools | grep "Image:" | cut -d ":" -f 3
+```
 
+### <a name="patch-previous-version"></a>Önceki sürüme yama
+
+Sanal 3.0.0 ' nin altındaki şablon sürümünün herhangi bir dağıtımında, chaincode 'u çalıştırmaya yönelik sorunlarla karşılaşırsanız, bir düzeltme ile eşdüzey düğümlerinizi düzeltme eki uygulamak için aşağıdaki adımları izleyin.
+
+Eş dağıtım betiğini indirin.
+
+```bash
+curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/scripts/patchPeerDeployment.sh -o patchPeerDeployment.sh; chmod 777 patchPeerDeployment.sh
+```
+
+Eşdeğerinizle ilgili parametreleri değiştirerek aşağıdaki komutu kullanarak betiği çalıştırın.
+
+```bash
+source patchPeerDeployment.sh <peerOrgSubscription> <peerOrgResourceGroup> <peerOrgAKSClusterName>
+```
+
+Tüm eşdüzey düğümlerinizin düzeltme eki almasını bekleyin. Aşağıdaki komutu kullanarak eş düğümlerinizin durumunu, kabuğun farklı bir örneğine her zaman kontrol edebilirsiniz.
+
+```bash
+kubectl get pods -n hlf
 ```
 
 ## <a name="support-and-feedback"></a>Destek ve geri bildirim

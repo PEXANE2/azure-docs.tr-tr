@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 520b2eff91faf2e333ab0a5df7bcc85e6a47c80a
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 4a789574b736eb22bd8d13fcf1a9facec5e241c9
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585199"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98058676"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Azure Active Directory B2C Kullanıcı arabirimini özelleştirme
 
@@ -59,7 +59,7 @@ Azure AD B2C, [çıkış noktaları arası kaynak paylaşımı (CORS)](https://w
 
 Aşağıdaki tabloda, Azure AD B2C tarafından sunulan varsayılan sayfa içeriği listelenmektedir. Dosyaları indirin ve kendi özel sayfalarınızı oluşturmak için bir başlangıç noktası olarak kullanın.
 
-| Varsayılan sayfa | Description | İçerik tanımı KIMLIĞI<br/>(yalnızca özel ilke) |
+| Varsayılan sayfa | Açıklama | İçerik tanımı KIMLIĞI<br/>(yalnızca özel ilke) |
 |:-----------------------|:--------|-------------|
 | [exception.html](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Hata sayfası**. Bu sayfa bir özel durum veya hata ile karşılaşıldığında görüntülenir. | *api. Error* |
 | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) |  **Otomatik olarak onaylanan sayfa**. Bu dosyayı bir sosyal hesap kaydolma sayfası, yerel hesap kaydolma sayfası, yerel hesap oturum açma sayfası, parola sıfırlama ve daha fazlası için özel bir sayfa içeriği olarak kullanın. Form, metin girişi kutusu, parola girişi kutusu, radyo düğmesi, tek seçim açılan kutuları ve çoklu seçim onay kutuları gibi çeşitli giriş denetimleri içerebilir. | *api. localaccountsignın*, *api. localaccountsignup*, *API. localaccountpasswordreset*, *API. selfasted* |
@@ -74,7 +74,7 @@ Kullanıcı arabirimini özelleştirmek için kendi HTML ve CSS dosyalarınızı
 ## <a name="guidelines-for-using-custom-page-content"></a>Özel sayfa içeriğini kullanma yönergeleri
 
 - HTML dosyanıza medya, CSS ve JavaScript dosyaları gibi dış kaynakları dahil ettiğinizde mutlak bir URL kullanın.
-- [Sayfa düzeni](page-layout.md) 1.2.0 ve üstünü kullanarak, `data-preload="true"` CSS ve JavaScript 'in yükleme sırasını denetlemek için özniteliğini HTML etiketinize ekleyebilirsiniz. İle `data-preload=true` , sayfa kullanıcıya gösterilmeden önce oluşturulur. Bu öznitelik, Kullanıcı tarafından gösterilen stilsiz HTML olmadan CSS dosyasını önceden yükleyerek sayfanın "titreşme" olmasını önlemeye yardımcı olur. Aşağıdaki HTML kod parçacığı etiketinin kullanımını gösterir `data-preload` .
+- [Sayfa düzeni](page-layout.md) 1.2.0 ve üstünü kullanarak, `data-preload="true"` CSS ve JavaScript 'in yükleme sırasını denetlemek için özniteliğini HTML etiketinize ekleyebilirsiniz. İle `data-preload="true"` , sayfa kullanıcıya gösterilmeden önce oluşturulur. Bu öznitelik, Kullanıcı tarafından gösterilen stilsiz HTML olmadan CSS dosyasını önceden yükleyerek sayfanın "titreşme" olmasını önlemeye yardımcı olur. Aşağıdaki HTML kod parçacığı etiketinin kullanımını gösterir `data-preload` .
   ```HTML
   <link href="https://path-to-your-file/sample.css" rel="stylesheet" type="text/css" data-preload="true"/>
   ```
@@ -116,7 +116,7 @@ https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 1. Web uygulamanız için çıkış noktaları arası kaynak paylaşımı (CORS) ayarlayın.
 1. İlkenize özel ilke içerik URI 'sine işaret edin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -175,7 +175,7 @@ Bu makalede, içeriğimizi barındırmak için Azure Blob depolamayı kullanır�
 
 Blob depolamada HTML içeriğinizi barındırmak için aşağıdaki adımları gerçekleştirin:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. **Hub** menüsünde, **Yeni**  >  **depolama**  >  **depolama hesabı**' nı seçin.
 1. Depolama hesabınız için bir **abonelik** seçin.
 1. Bir **kaynak grubu** oluşturun veya var olan bir grubu seçin.
@@ -374,7 +374,7 @@ Bu proje aşağıdaki şablonları içerir:
 
 1. Yerel makinenizde depoyu kopyalayın. Bir şablon klasörü `/ocean_blue` veya seçin `/slate_gray` .
 1. Şablon klasörü ve klasörü altındaki tüm dosyaları `/assets` , önceki bölümlerde açıklandığı gibi BLOB depolama alanına yükleyin.
-1. Ardından, her `\*.html` bir dosyayı veya kökündeki her birini açın `/ocean_blue` `/slate_gray` , göreli URL 'lerin tüm örneklerini adım 2 ' de karşıya yüklediğiniz CSS, resim ve yazı tipi dosyalarının URL 'leriyle değiştirin. Örnek:
+1. Ardından, her `\*.html` bir dosyayı veya kökündeki her birini açın `/ocean_blue` `/slate_gray` , göreli URL 'lerin tüm örneklerini adım 2 ' de karşıya yüklediğiniz CSS, resim ve yazı tipi dosyalarının URL 'leriyle değiştirin. Örneğin:
     ```html
     <link href="./css/assets.css" rel="stylesheet" type="text/css" />
     ```

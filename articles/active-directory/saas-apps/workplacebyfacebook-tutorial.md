@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 28a1e5e7361f1f5333d9679262abfa1fd31bd32f
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 3ac81e89aaea5bc37297d2f83dce9e2158ae28d8
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97967523"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060665"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Öğretici: Facebook tarafından çalışma alanı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -83,11 +83,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<instancename>.facebook.com`
+    a. **Oturum açma URL 'si** (çalışma alanında alıcı URL 'si olarak bulunur) metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://.workplace.com/work/saml.php`
 
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://www.facebook.com/company/<instanceID>`
+    b. **Tanımlayıcıda (VARLıK kimliği)** (Iş yerinde izleyici URL 'si olarak bulunur) metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://www.workplace.com/company/`
 
-    c. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://www.facebook.com/company/<instanceID>`
+    c. **Yanıt URL 'si** (çalışma alanında onaylama tüketici hizmeti olarak bulunur) metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://.workplace.com/work/saml.php`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek Sign-On URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Çalışma alanı Community 'nizin kimlik doğrulama sayfasına bakın. Bu, bu öğreticide daha sonra açıklanmaktadır.

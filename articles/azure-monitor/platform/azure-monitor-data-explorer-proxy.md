@@ -1,18 +1,18 @@
 ---
 title: Azure Izleyici kullanarak Azure Veri Gezgini çapraz kaynak sorgulama
 description: Azure izleyici 'de Azure Veri Gezgini, Log Analytics çalışma alanları ve klasik Application Insights uygulamaları arasında çapraz ürün sorguları gerçekleştirmek için Azure Izleyici 'yi kullanın.
-author: orens
+author: osalzberg
 ms.author: bwren
 ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: cb586d15e762f88620fe0c91152af41b3f607d74
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 1a35b80ceec12b378a01555f42b7a0500b8f6229
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674438"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060461"
 ---
 # <a name="cross-resource-query-azure-data-explorer-by-using-azure-monitor"></a>Azure Izleyici kullanarak Azure Veri Gezgini çapraz kaynak sorgulama
 Azure Izleyici, Azure Veri Gezgini, [Application Insights](/azure/azure-monitor/app/app-insights-overview)ve [Log Analytics](/azure/azure-monitor/platform/data-platform-logs)arasında çapraz hizmet sorgularını destekler. Daha sonra, Log Analytics/Application Insights araçlarını kullanarak Azure Veri Gezgini kümenizi sorgulayabilir ve bir çapraz hizmet sorgusunda buna başvurabilirsiniz. Makalesinde, bir çapraz hizmet sorgusunun nasıl yapılacağı gösterilir.
@@ -22,7 +22,7 @@ Aşağıdaki diyagramda Azure Izleyici çapraz hizmet akışı gösterilmektedir
 :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-monitor-data-explorer-flow.png" alt-text="Bir Kullanıcı, Azure Izleyici, proxy ve Azure Veri Gezgini arasındaki sorguların akışını gösteren diyagram.":::
 
 >[!NOTE]
-> Azure Izleyici çapraz hizmet sorgusu özel önizlemede. Allowlist gereklidir. Herhangi bir soru ile [hizmet ekibine](mailto:ADXProxy@microsoft.com) başvurun.
+> Azure Izleyici çapraz hizmet sorgusu genel önizlemede. Herhangi bir soru ile [hizmet ekibine](mailto:ADXProxy@microsoft.com) başvurun.
 
 ## <a name="cross-query-your-log-analytics-or-application-insights-resources-and-azure-data-explorer"></a>Log Analytics veya Application Insights kaynaklarınızı ve Azure Veri Gezgini çapraz sorgulama
 

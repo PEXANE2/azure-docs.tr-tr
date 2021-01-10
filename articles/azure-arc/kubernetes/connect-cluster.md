@@ -1,5 +1,5 @@
 ---
-title: Azure Arc etkin bir Kubernetes kümesine bağlanma (Önizleme)
+title: Azure Arc özellikli Kubernetes kümesini (Önizleme) bağlama
 services: azure-arc
 ms.service: azure-arc
 ms.date: 05/19/2020
@@ -9,14 +9,14 @@ ms.author: mlearned
 description: Azure Arc ile Azure Arc etkin bir Kubernetes kümesi bağlama
 keywords: Kubernetes, yay, Azure, K8s, kapsayıcılar
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 7f402d86ac1287753bc2deab53b24bb796644992
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 8155ed709045626dee44fb499304ff5244a61b54
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97583941"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060257"
 ---
-# <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Azure Arc etkin bir Kubernetes kümesine bağlanma (Önizleme)
+# <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Azure Arc özellikli Kubernetes kümesini (Önizleme) bağlama
 
 Bu belge, Azure 'da AKS-Engine, Azure Stack hub 'ı üzerindeki aks-Engine, GKE, EKS ve VMware vSphere kümesi gibi bulut Yerel Bilgi Işlem altyapısı (CNCF) sertifikalı Kubernetes kümesini Azure yaya bağlama sürecini ele almaktadır.
 
@@ -30,7 +30,7 @@ Aşağıdaki gereksinimlerin hazırlanaldığını doğrulayın:
 * Yay etkinleştirilmiş Kubernetes aracılarının dağıtımı için kümedeki kümeye ve Küme Yöneticisi rolüne erişmeniz için bir kubeconfig dosyası gerekir.
 * Ve komutlarıyla kullanılan Kullanıcı veya hizmet sorumlusu `az login` `az connectedk8s connect` ' Microsoft. Kubernetes/connectedkümeler ' kaynak türü üzerinde ' Read ' ve ' Write ' izinlerine sahip olmalıdır. "Kubernetes kümesi-Azure yay ekleme" rolü bu izinlere sahiptir ve Kullanıcı veya hizmet sorumlusu üzerinde rol atamaları için kullanılabilir.
 * Connectedk8s uzantısını kullanarak kümeyi ekleme için Held 3 gereklidir. Bu gereksinimi karşılamak için [Held 3 ' ün en son sürümünü yükler](https://helm.sh/docs/intro/install) .
-* Azure Arc etkin Kubernetes CLı uzantılarını yüklemek için Azure CLı sürüm 2.3 + gereklidir. Azure CLI sürüm 2.3 + sürümüne sahip olduğunuzdan emin olmak için [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) 'yı veya güncelleştirme 'yi en son sürüme güncelleştirin.
+* Azure Arc 'ın etkinleştirilmiş Kubernetes CLı uzantılarını yüklemek için Azure CLı sürüm 2.15 + gereklidir. Azure CLI sürümü 2.15 + kullandığınızdan emin olmak için [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) 'yi veya en son sürüme güncelleştirin.
 * Yay etkin Kubernetes CLı uzantılarını yükler:
   
   `connectedk8s`Kubernetes kümelerini Azure 'a bağlamanıza yardımcı olan uzantıyı yükleyebilirsiniz:
@@ -64,7 +64,7 @@ Azure Arc aracıları için aşağıdaki protokollerin/bağlantı noktalarının
 * 443 numaralı bağlantı noktasında TCP--> `https://:443`
 * 9418 numaralı bağlantı noktasında TCP--> `git://:9418`
 
-| Uç nokta (DNS)                                                                                               | Description                                                                                                                 |
+| Uç nokta (DNS)                                                                                               | Açıklama                                                                                                                 |
 | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
 | `https://management.azure.com`                                                                                 | Aracının Azure 'a bağlanması ve kümeyi kaydetmesi için gereklidir                                                        |
 | `https://eastus.dp.kubernetesconfiguration.azure.com`, `https://westeurope.dp.kubernetesconfiguration.azure.com` | Aracının durum ve getirme yapılandırma bilgilerini itilmesi için veri düzlemi uç noktası                                      |

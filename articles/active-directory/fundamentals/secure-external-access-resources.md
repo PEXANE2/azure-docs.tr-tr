@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 'de kaynaklara dış erişimin güvenliğini sağlama
+title: Azure Active Directory dış işbirliğini güvenli hale getirme
 description: Dış kaynaklara dışarıdan erişimin güvenliğini sağlamaya yönelik mimarlar ve BT yöneticileri için kılavuz
 services: active-directory
 author: BarbaraSelden
@@ -13,14 +13,14 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39300c887245a99dce2913661f6492c85a1e6722
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 7f09d2050617cbda539eee9fcda1ecfb204a015a
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97744094"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059288"
 ---
-# <a name="securing-external-access-to-resources"></a>Kaynaklara dış erişimin güvenliğini sağlama
+# <a name="securing-external-collaboration-in-azure-active-directory-and-microsoft-365"></a>Azure Active Directory ve Microsoft 365 dış işbirliğinin güvenliğini sağlama
 
 Dış iş ortaklarıyla güvenli işbirliği, doğru dış iş ortaklarının, doğru sürede iç kaynaklara uygun şekilde erişmesini sağlar. Bir bütünsel idare yaklaşımı aracılığıyla güvenlik risklerini azaltabilir, uyumluluk hedeflerini karşılayabilir ve kimlerin erişimi olduğunu bildiğinizi sağlayabilirsiniz.
 
@@ -43,7 +43,7 @@ Bu belge kümesi, geçici veya gevşek yönetilen dış işbirliğini daha güve
 Kaynaklara dışarıdan erişimi güvenli hale getirmek için aşağıdaki makalelere bakın. Eylemleri listelenen sırayla yapmanızı öneririz.
 
 
-1. [Dış erişim için istediğiniz güvenlik duruşunuzu belirleme](1-secure-access-posture.md)
+1. [Dış erişim için güvenlik durunuzu belirleme](1-secure-access-posture.md)
 
 2. [Geçerli durumlarınızı bulma](2-secure-access-current-state.md)
 

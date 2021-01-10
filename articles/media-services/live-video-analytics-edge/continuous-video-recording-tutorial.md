@@ -3,12 +3,12 @@ title: Bulut öğreticiden buluta sürekli video kaydı ve kayıttan yürütme �
 description: Bu öğreticide, Azure IoT Edge üzerinde Azure Live video analizi 'ni kullanarak buluta sürekli olarak video kaydetme ve Azure Media Services kullanarak bu videonun herhangi bir bölümünü akışa alma hakkında bilgi edineceksiniz.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: c38ab1f32d1ef4e54cd8568ff17d325fabdefc31
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8fa2b65416499e58235fa312ffdcd2d71c3cfb39
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498379"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060172"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Öğretici: buluta sürekli video kaydetme ve buluttan kayıttan yürütme
 
@@ -51,6 +51,9 @@ Bu adımların sonunda, Azure aboneliğinizde ilgili Azure kaynaklarınızın da
 * Azure Media Services hesabı
 * Azure 'da [IoT Edge çalışma zamanı](../../iot-edge/how-to-install-iot-edge.md) yüklü olan Linux VM
 
+> [!TIP]
+> Oluşturulan Azure kaynaklarıyla ilgili sorunlar yaşıyorsanız, bazı sık karşılaşılan sorunları çözmek için lütfen **[sorun giderme kılavuzumuzu](troubleshoot-how-to.md#common-error-resolutions)** görüntüleyin.
+
 ## <a name="concepts"></a>Kavramlar
 
 Medya [grafiği kavram](media-graph-concept.md) makalesinde açıklandığı gibi bir medya grafiği şunları tanımlamanızı sağlar:
@@ -64,9 +67,11 @@ Medya [grafiği kavram](media-graph-concept.md) makalesinde açıklandığı gib
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/continuous-video-recording-tutorial/continuous-video-recording-overview.svg" alt-text="Medya grafiği":::
 
-Bu öğreticide, bir RTSP kamerasının benzetimini yapmak için [Live555 Media Server](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) kullanılarak oluşturulan bir kenar modülünü kullanacaksınız. Medya grafiğinde, bir [RTSP kaynak](media-graph-concept.md#rtsp-source) düğümü kullanarak canlı akışı alabilir ve videoyu bir varlığa kaydeden [varlık havuzu düğümüne](media-graph-concept.md#asset-sink)gönderebilirsiniz.
+Bu öğreticide, bir RTSP kamerasının benzetimini yapmak için [Live555 Media Server](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) kullanılarak oluşturulan bir kenar modülünü kullanacaksınız. Medya grafiğinde, bir [RTSP kaynak](media-graph-concept.md#rtsp-source) düğümü kullanarak canlı akışı alabilir ve videoyu bir varlığa kaydeden [varlık havuzu düğümüne](media-graph-concept.md#asset-sink)gönderebilirsiniz. Bu öğreticide kullanılacak video, üst [yönlü bir kesişim örneğidir](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv).
+<iframe src="https://www.microsoft.com/en-us/videoplayer/embed/RE4LTY4" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LTY4]
 
-## <a name="set-up-your-development-environment"></a>Geliştirme ortamınızı ayarlama
+## <a name="set-up-your-development-environment"></a>Geliştirme ortamınızı kurma
 
 Başlamadan önce, [önkoşullardan](#prerequisites)üçüncü madde işaretini tamamladığınızdan emin olun. Kaynak kurulum betiği bittikten sonra, klasör yapısını göstermek için süslü ayraçları seçin. ~/CloudDrive/LVA-Sample dizininde oluşturulmuş birkaç dosya görürsünüz.
 
@@ -169,14 +174,14 @@ Canlı video akışını kaydetmek için IoT Edge modülünde canlı video anali
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Ayrıntılı Iletiyi göster":::
-1. <!--In Visual Studio Code, go-->Src/buluttan cihaza-Console-App/operations.js' a gidin.
+1. Src/buluttan cihaza-Console-App/operations.js' a gidin.
 1. **Graphtopologyset** düğümü altında aşağıdakileri düzenleyin:
 
     `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json" `
 1. Ardından, **Graphınstanceset** ve **Graphtopologydelete** düğümlerinin altında, **topologyname** değerinin önceki grafik topolojisinde **Name** özelliğinin değeriyle eşleştiğinden emin olun:
 
     `"topologyName" : "CVRToAMSAsset"`  
-1. [Topolojiyi](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json) bir tarayıcıda açın ve assetNamePattern bölümüne bakın. Benzersiz bir ada sahip bir varlığınızın olduğundan emin olmak için dosyadaki operations.jsgrafik örneği adını (örnek grafik-1 ' in varsayılan değerinden) değiştirmek isteyebilirsiniz.
+1. [Topolojiyi](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/2.0/topology.json) bir tarayıcıda açın ve assetNamePattern bölümüne bakın. Benzersiz bir ada sahip bir varlığınızın olduğundan emin olmak için dosyadaki operations.jsgrafik örneği adını (örnek grafik-1 ' in varsayılan değerinden) değiştirmek isteyebilirsiniz.
 
     `"assetNamePattern": "sampleAsset-${System.GraphTopologyName}-${System.GraphInstanceName}"`    
 1. F5 ' i seçerek bir hata ayıklama oturumu başlatın. **TERMINAL** penceresinde yazdırılmış bazı iletiler görürsünüz.
@@ -187,7 +192,7 @@ Canlı video akışını kaydetmek için IoT Edge modülünde canlı video anali
     Executing operation GraphTopologyList
     -----------------------  Request: GraphTopologyList  --------------------------------------------------
     {
-      "@apiVersion": "1.0"
+      "@apiVersion": "2.0"
     }
     ---------------  Response: GraphTopologyList - Status: 200  ---------------
     {
@@ -204,7 +209,7 @@ Canlı video akışını kaydetmek için IoT Edge modülünde canlı video anali
      
      ```
      {
-       "@apiVersion": "1.0",
+       "@apiVersion": "2.0",
        "name": "Sample-Graph-1",
        "properties": {
          "topologyName": "CVRToAMSAsset",
@@ -277,7 +282,7 @@ Grafik örneği etkinleştirildiğinde, RTSP kaynak düğümü rtspsım modülü
 
 ### <a name="recordingstarted-event"></a>RecordingStarted olayı
 
-Varlık havuzu düğümü video kaydetmeye başladığında, Microsoft. Media. Graph. Işletimsel. RecordingStarted türünde bu olayı yayar:
+Varlık havuzu düğümü video kaydetmeye başladığında, **Microsoft. Media. Graph. işletimsel. RecordingStarted** türünde bu olayı yayar:
 
 ```
 [IoTHubMonitor] [9:42:38 AM] Message received from [lva-sample-device/lvaEdge]:
@@ -302,7 +307,7 @@ Gövde bölümü, çıkış konumuyla ilgili bilgiler içerir. Bu durumda, Video
 
 ### <a name="recordingavailable-event"></a>RecordingAvailable olayı
 
-Adından da anlaşılacağı gibi, kayıt başladığında RecordingStarted olayı gönderilir, ancak video verileri henüz varlığa yüklenmemiş olabilir. Varlık havuzu düğümü, varlığa video verisi yüklemiştir, Microsoft. Media. Graph. Işletimsel. RecordingAvailable türünde bu olayı yayar:
+Adından da anlaşılacağı gibi, kayıt başladığında RecordingStarted olayı gönderilir, ancak video verileri henüz varlığa yüklenmemiş olabilir. Varlık havuzu düğümü, varlığa video verisi yüklemiştir, **Microsoft. Media. Graph. işletimsel. RecordingAvailable** türünde bu olayı yayar:
 
 ```
 [IoTHubMonitor] [[9:43:38 AM] Message received from [lva-sample-device/lvaEdge]:
@@ -329,7 +334,7 @@ Gövde bölümü, çıkış konumuyla ilgili bilgiler içerir. Bu durumda, Video
 
 ### <a name="recordingstopped-event"></a>Recordingdurdurulan olay
 
-Grafik örneğini devre dışı bıraktıktan sonra, varlık havuzu düğümü video kaydını kıymete bırakır. Microsoft. Media. Graph. Operational. Recordingdurdurulan türünde bu olayı yayar:
+Grafik örneğini devre dışı bıraktıktan sonra, varlık havuzu düğümü video kaydını kıymete bırakır. **Microsoft. Media. Graph. Operational. Recordingdurdurulan** türünde bu olayı yayar:
 
 ```
 [IoTHubMonitor] [11:33:31 PM] Message received from [lva-sample-device/lvaEdge]:

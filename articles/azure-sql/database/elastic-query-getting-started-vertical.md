@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: dd8a30c60c81ef2761d5dc051d2dfeb300e1bac4
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 90f89e72193c26b71859076b99c448a6e2d4c4c6
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792132"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060138"
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>Veritabanları arası sorguları kullanmaya başlama (dikey bölümlendirme) (Önizleme)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,7 +27,7 @@ Azure SQL veritabanı için elastik veritabanı sorgusu (Önizleme), tek bir ba�
 
 Elastik veritabanı sorgusu özelliği hakkında daha fazla bilgi için bkz.  [Azure SQL veritabanı elastik veritabanı sorgusuna genel bakış](elastic-query-overview.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Herhangi bir dış VERI kaynağı iznini DEĞIŞTIR gereklidir. Bu izin ALTER DATABASE iznine dahildir. Temel alınan veri kaynağına başvurmak için herhangi bir dış VERI kaynağı izinlerini DEĞIŞTIRME gerekir.
 
@@ -77,6 +77,7 @@ INSERT INTO [dbo].[CustomerInformation] ([CustomerID], [CustomerName], [Company]
     SECRET = '<password>';  
     ```
 
+    "Master_key_password", bağlantı kimlik bilgilerini şifrelemek için kullanılan seçin güçlü bir parolasıdır. 
     "Kullanıcı adı" ve "parola", müşteriler veritabanında oturum açmak için kullanılan Kullanıcı adı ve parola olmalıdır.
     Elastik sorgularla Azure Active Directory kullanan kimlik doğrulaması şu anda desteklenmiyor.
 

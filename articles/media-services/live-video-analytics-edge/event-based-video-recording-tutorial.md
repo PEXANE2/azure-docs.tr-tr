@@ -3,12 +3,12 @@ title: Bulut öğreticiden buluta ve kayıttan yürütmeye yönelik olay tabanl�
 description: Bu öğreticide, bulutta olay tabanlı bir video kaydı kaydetmek ve buluttan kayıttan yürütmek için Azure Live video analizinin Azure IoT Edge nasıl kullanılacağını öğreneceksiniz.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 8f3ecdf7e4260d700f31663852abbb39474cd474
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: cfb4648d991565470133d603194c07b797f89311
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401683"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060444"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Öğretici: buluta yönelik olay tabanlı video kaydı ve buluttan kayıttan yürütme
 
@@ -53,6 +53,9 @@ Bu adımların sonunda, Azure aboneliğinizde ilgili Azure kaynaklarınızın da
 * Azure Storage hesabı
 * Azure Media Services hesabı
 * Azure 'da [IoT Edge çalışma zamanı](../../iot-edge/how-to-install-iot-edge.md) yüklü olan Linux VM
+
+> [!TIP]
+> Oluşturulan Azure kaynaklarıyla ilgili sorunlar yaşıyorsanız, bazı sık karşılaşılan sorunları çözmek için lütfen **[sorun giderme kılavuzumuzu](troubleshoot-how-to.md#common-error-resolutions)** görüntüleyin.
 
 ## <a name="concepts"></a>Kavramlar
 
@@ -230,7 +233,7 @@ ObjectCounter modülünün ve IoT Edge modülündeki canlı video analizinden ol
      
         ```
         {
-          "@apiVersion": "1.0",
+          "@apiVersion": "2.0",
           "name": "Sample-Graph-1",
           "properties": {
             "topologyName": "EVRtoAssetsOnObjDetect",
@@ -277,7 +280,7 @@ Aşağıdaki iletilerde, uygulama özellikleri ve gövdenin içeriği canlı vid
 
 ### <a name="mediasessionestablished-event"></a>Mediasessionkurulduğu olayı 
 
-Bir medya grafiği oluşturulduğunda, RTSP kaynak düğümü RTSP simülatör kapsayıcısı üzerinde çalışan RTSP sunucusuna bağlanmaya çalışır. Başarılı olursa, bu olay yazdırılır. Olay türü Microsoft. Media. MediaGraph. Diagnostics. Mediasessionsetup ' tur.
+Bir medya grafiği oluşturulduğunda, RTSP kaynak düğümü RTSP simülatör kapsayıcısı üzerinde çalışan RTSP sunucusuna bağlanmaya çalışır. Başarılı olursa, bu olay yazdırılır. Olay türü **Microsoft. Media. MediaGraph. Diagnostics. Mediasessionsetup**' tur.
 
 ```
 [IoTHubMonitor] [5:53:17 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -325,7 +328,7 @@ Videoda diğer structuralks algılandığında bu olaylardan daha fazla bilgi g�
 
 ### <a name="recordingstarted-event"></a>RecordingStarted olayı
 
-Nesne sayacı olayı gönderdikten hemen hemen sonra, Microsoft. Media. Graph. Işletimsel. RecordingStarted türünde bir olay görürsünüz:
+Nesne sayacı olayı gönderdikten hemen hemen sonra, **Microsoft. Media. Graph. işletimsel. RecordingStarted** türünde bir olay görürsünüz:
 
 ```
 [IoTHubMonitor] [5:53:46 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -348,7 +351,7 @@ ApplicationProperties 'teki konu bölümü, bu iletiyi oluşturan grafikteki var
 
 ### <a name="recordingavailable-event"></a>RecordingAvailable olayı
 
-Varlık havuzu düğümü, varlığa video yüklediğini, Microsoft. Media. Graph. Işletimsel. RecordingAvailable türünde bu olayı yayar:
+Varlık havuzu düğümü, varlığa video yüklediğini, **Microsoft. Media. Graph. işletimsel. RecordingAvailable** türünde bu olayı yayar:
 
 ```
 [IoTHubMonitor] [5:54:15 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -371,7 +374,7 @@ Bu olay, oyuncuların veya istemcilerin videonun kayıttan yürütmesini başlat
 
 ### <a name="recordingstopped-event"></a>Recordingdurdurulan olay
 
-[Topolojide](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json)sinyal kapısı işlemci düğümü için etkinleştirme ayarlarını (maximumActivationTime) incelerseniz, bu ağ geçidinin, üzerinden 30 saniyelik video gönderildikten sonra kapatılacak şekilde ayarlandığını görürsünüz. Her ne kadar 30 saniye sonra, RecordingStarted olayından sonra, Microsoft. Media. Graph. Operational. Recordingdurduruldu türünde bir olay görmeniz gerekir. Bu olay, varlık havuzu düğümünün varlık için video kaydını durdurduğunu gösterir.
+[Topolojide](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json)sinyal kapısı işlemci düğümü için etkinleştirme ayarlarını (maximumActivationTime) incelerseniz, bu ağ geçidinin, üzerinden 30 saniyelik video gönderildikten sonra kapatılacak şekilde ayarlandığını görürsünüz. Her ne kadar 30 saniye sonra, RecordingStarted olayından sonra, **Microsoft. Media. Graph. Operational. Recordingdurduruldu** türünde bir olay görmeniz gerekir. Bu olay, varlık havuzu düğümünün varlık için video kaydını durdurduğunu gösterir.
 
 ```
 [IoTHubMonitor] [5:54:15 PM] Message received from [lva-sample-device/lvaEdge]:

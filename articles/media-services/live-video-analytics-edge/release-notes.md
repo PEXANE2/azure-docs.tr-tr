@@ -3,12 +3,12 @@ title: IoT Edge sürüm notlarında canlı video analizi-Azure
 description: Bu konu, IoT Edge sürümler, geliştirmeler, hata düzeltmeleri ve bilinen sorunlar üzerine canlı video analizinin sürüm notlarını sağlar.
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 2800d41340e45867ea4126733cdb5968cf8b91c5
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 7761fee8f23b5be259f9a5c278f761fa4ce92fbf
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400854"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059987"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>IoT Edge sürüm notlarında canlı video analizi
 
@@ -33,7 +33,7 @@ Bu sürüm, IoT Edge üzerindeki canlı video analizinin genel önizleme sürüm
 * Grafik topolojisi başına birden fazla HTTP uzantı işlemcisi ve gRPC uzantı işlemcisi kullanımı için destek eklendi.
 * Havuz düğümleri için disk alanı yönetimine yönelik destek eklendi.
 * `MediaGraphGrpcExtension` düğüm artık tek bir gRPC sunucusu içinde birden çok AI modeli kullanmak için [Extensionconfiguration](grpc-extension-protocol.md) özelliğini destekliyor.
-* [Prometheus biçiminde](https://prometheus.io/docs/practices/naming/) canlı video analizi modülü ölçümleri toplama desteği eklendi 
+* [Prometheus biçiminde](https://prometheus.io/docs/practices/naming/)canlı video analizi modülü ölçümleri toplama desteği eklendi. [Azure izleyici 'de ölçümleri ve görünümü toplama](monitoring-logging.md#azure-monitor-collection-via-telegraf) hakkında daha fazla bilgi edinin. 
 * Çerçeve hızı filtre işlemcisi **kullanım dışıdır**.  
     * Çerçeve hızı yönetimi artık grafik uzantısı işlemci düğümlerinin içinde kullanılabilir.
 
@@ -132,4 +132,4 @@ Bu sürüm, IoT Edge üzerindeki canlı video analizinin ilk genel önizleme sü
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Genel Bakış](overview.md)
+[Genel bakış](overview.md)

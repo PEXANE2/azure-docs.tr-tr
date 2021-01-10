@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 370b84f451e22c20c798018951a7a801e0bba826
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 9763835142e66bbbce51cd5c863dff87f261c270
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763953"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060170"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows 'da düğüm uygulamaları için en iyi uygulamalar ve sorun giderme kılavuzu
 
@@ -245,9 +245,8 @@ Uygulamanız yakalanamayan özel durumlar üretiliyor – `d:\\home\\LogFiles\\A
 Uzun uygulama başlangıç sürelerinin yaygın nedeni, düğüm modüllerinde çok sayıda dosya olabilir \_ . Uygulama, başlatıldığında bu dosyaların çoğunu yüklemeye çalışır. Varsayılan olarak, dosyalarınız Azure App Service ağ paylaşımında depolandığından, çok sayıda dosyanın yüklenmesi zaman alabilir.
 Bu işlemi daha hızlı hale getirmek için bazı çözümler şunlardır:
 
-1. Modüllerinizi yüklemek için npm3 kullanarak düz bağımlılık yapısına sahip olduğunuzdan ve yinelenen bağımlılıklara sahip olduğunuzdan emin olun.
-2. Düğüm modüllerinizi geç yüklemeyi deneyin \_ ve uygulamanın başlangıcında tüm modülleri yüklemez. Yavaş yükleme modülleri için, modül kodunun ilk yürütmeden önce işlev içinde modüle ihtiyacınız olduğunda, gerekli (' Module ') çağrısı yapılmalıdır.
-3. Azure App Service, yerel önbellek adlı bir özellik sunar. Bu özellik, içeriğinizi ağ paylaşımından VM 'deki yerel diske kopyalar. Dosyalar yerel olduğundan, düğüm modüllerinin yükleme süresi \_ çok daha hızlıdır.
+1. Düğüm modüllerinizi geç yüklemeyi deneyin \_ ve uygulamanın başlangıcında tüm modülleri yüklemez. Yavaş yükleme modülleri için, modül kodunun ilk yürütmeden önce işlev içinde modüle ihtiyacınız olduğunda, gerekli (' Module ') çağrısı yapılmalıdır.
+2. Azure App Service, yerel önbellek adlı bir özellik sunar. Bu özellik, içeriğinizi ağ paylaşımından VM 'deki yerel diske kopyalar. Dosyalar yerel olduğundan, düğüm modüllerinin yükleme süresi \_ çok daha hızlıdır.
 
 ## <a name="iisnode-http-status-and-substatus"></a>IıSNODE http durumu ve alt durumu
 

@@ -1,22 +1,22 @@
 ---
-title: MongoDB için Azure Cosmos DB API 'sinde Dizin oluşturmayı yönetme
+title: MongoDB için Azure Cosmos DB API’sinde dizin oluşturmayı yönetme
 description: Bu makalede, MongoDB için Azure Cosmos DB API 'SI kullanılarak Azure Cosmos DB Dizin oluşturma özelliklerine genel bir bakış sunulmaktadır
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 11/06/2020
+ms.date: 01/08/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: e920af85c511387e66bcafcb6a140844d25f204c
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 34caca47746814046a894494ec43d9b5c977389a
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369299"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060097"
 ---
-# <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API 'sinde Dizin oluşturmayı yönetme
+# <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API’sinde dizin oluşturmayı yönetme
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 MongoDB için Azure Cosmos DB API 'SI, Azure Cosmos DB temel dizin yönetimi olanaklarından yararlanır. Bu makalede, MongoDB için Azure Cosmos DB API 'sini kullanarak dizin ekleme konusu ele alınmaktadır. Ayrıca, tüm API 'lerde ilgili olan [Azure Cosmos DB Dizin oluşturma hakkında genel bir bakış](index-overview.md) da okuyabilirsiniz.
@@ -29,6 +29,16 @@ Ek alanları dizinlemek için MongoDB dizin yönetimi komutlarını uygularsın�
 
 Bir sorguya sıralama uygulamak için sıralama işleminde kullanılan alanlarda bir dizin oluşturmanız gerekir.
 
+### <a name="editing-indexing-policy"></a>Dizin oluşturma ilkesini Düzenle
+
+Azure portal içindeki Veri Gezgini dizin oluşturma ilkenizi düzenlemenizi öneririz.
+. Veri Gezgini dizin oluşturma ilkesi düzenleyicisinden tek bir alan ve joker dizinler ekleyebilirsiniz:
+
+:::image type="content" source="./media/mongodb-indexing/indexing-policy-editor.png" alt-text="Dizin oluşturma ilkesi Düzenleyicisi":::
+
+> [!NOTE]
+> Veri Gezgini dizin oluşturma ilkesi düzenleyicisini kullanarak Bileşik dizinler oluşturamazsınız.
+
 ## <a name="index-types"></a>Dizin türleri
 
 ### <a name="single-field"></a>Tek alan
@@ -36,6 +46,10 @@ Bir sorguya sıralama uygulamak için sıralama işleminde kullanılan alanlarda
 Tek bir alanda dizinler oluşturabilirsiniz. Tek alan dizininin sıralama düzeni önemi değildir. Aşağıdaki komut, alanında bir dizin oluşturur `name` :
 
 `db.coll.createIndex({name:1})`
+
+Azure portal ' de aynı tek alan dizinini oluşturabilirsiniz `name` :
+
+:::image type="content" source="./media/mongodb-indexing/add-index.png" alt-text="Dizin oluşturma ilkesi Düzenleyicisi 'nde ad dizini ekleme":::
 
 Bir sorgu, kullanılabilir yerlerde birden çok tek alan dizini kullanır. Kapsayıcı başına en çok 500 tek alan dizini oluşturabilirsiniz.
 
@@ -135,6 +149,10 @@ Tüm alanlarda joker karakter oluşturmak için aşağıdaki adımları uygulay�
 
 `db.coll.createIndex( { "$**" : 1 } )`
 
+Ayrıca, Azure portal Veri Gezgini kullanarak joker dizinler oluşturabilirsiniz:
+
+:::image type="content" source="./media/mongodb-indexing/add-wildcard-index.png" alt-text="Dizin oluşturma ilkesi Düzenleyicisi 'nde joker karakter dizini ekleme":::
+
 > [!NOTE]
 > Geliştirmeye yeni başladıysanız, tüm alanlarda bir joker karakter dizini ile başlamasını **kesinlikle** öneririz. Bu, geliştirmeyi kolaylaştırabilir ve sorguları iyileştirmeyi kolaylaştırabilir.
 
@@ -144,13 +162,13 @@ Birçok alan içeren belgeler, yazma ve güncelleştirme işlemleri için yükse
 
 Joker dizinler aşağıdaki dizin türlerinden veya özelliklerden hiçbirini desteklemez:
 
-- İstekteki
+- Bileşik
 - TTL
 - Benzersiz
 
-**MongoDB 'Nin aksine** , mongodb için Azure Cosmos DB API 'sindeki farklı Joker **dizinleri kullanamazsınız:**
+**MongoDB 'Nin aksine**, mongodb için Azure Cosmos DB API 'sindeki farklı Joker **dizinleri kullanamazsınız:**
 
-- Birden çok özel alan içeren bir joker karakter dizini oluşturma
+- Belirli birden çok alanın dahil edildiği bir joker dizin oluşturma
 
 `db.coll.createIndex(
     { "$**" : 1 },
@@ -162,7 +180,7 @@ Joker dizinler aşağıdaki dizin türlerinden veya özelliklerden hiçbirini de
     }
 )`
 
-- Birden çok belirli alanı dışlayan bir joker karakter dizini oluşturma
+- Belirli birden çok alanın hariç tutulduğu bir joker dizin oluşturma
 
 `db.coll.createIndex(
     { "$**" : 1 },
@@ -174,7 +192,7 @@ Joker dizinler aşağıdaki dizin türlerinden veya özelliklerden hiçbirini de
     }
 )`
 
-Alternatif olarak, birden çok joker dizin oluşturabilirsiniz.
+Alternatif olarak birden çok joker dizin oluşturabilirsiniz.
 
 ## <a name="index-properties"></a>Dizin Özellikleri
 

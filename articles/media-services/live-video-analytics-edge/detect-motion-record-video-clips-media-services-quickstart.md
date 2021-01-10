@@ -3,12 +3,12 @@ title: Hareket algılama, video Azure Media Services kaydetme
 description: Bu hızlı başlangıçta canlı video analizinin IoT Edge, canlı video akışındaki hareketleri tespit etmek ve video kliplerini Azure Media Services kaydetmek için nasıl kullanılacağı gösterilmektedir.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 8872c9aefa0ed748cbed93d0f7376586859be9df
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 33deabf27fe9b74fd01dba5d6fbe3883b54dda63
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511901"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060427"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Hızlı başlangıç: hareketi algılama, videoyu Media Services kaydetme
 
@@ -24,12 +24,14 @@ Bu makalede [Başlarken hızlı](get-started-detect-motion-emit-events-quickstar
     * [Azure kaynakları ayarlama](get-started-detect-motion-emit-events-quickstart.md#set-up-azure-resources)
     * [Modülleri dağıtma](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
     * [Visual Studio Code’u yapılandırma](get-started-detect-motion-emit-events-quickstart.md#configure-the-azure-iot-tools-extension)
-
+    > [!TIP]
+    > Oluşturulan Azure kaynaklarıyla ilgili sorunlar yaşıyorsanız, bazı sık karşılaşılan sorunları çözmek için lütfen **[sorun giderme kılavuzumuzu](troubleshoot-how-to.md#common-error-resolutions)** görüntüleyin.
 ## <a name="review-the-sample-video"></a>Örnek videoyu gözden geçirin
 
 Azure kaynaklarını kurmak için yukarıdaki adımların bir parçası olarak, bir park lotunun (kısa) bir videosu IoT Edge cihaz olarak kullanılan Azure 'daki Linux VM 'sine kopyalanacaktır. Bu video dosyası, bu öğretici için canlı bir akışın benzetimini yapmak üzere kullanılacaktır.
 
 [VLC oynatıcı](https://www.videolan.org/vlc/)gibi bir uygulamayı kullanabilir, başlatabilir, başlatabilir `Ctrl+N` ve [Park lotu video örneği](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) bağlantısını yapıştırarak kayıttan yürütmeyi başlatabilirsiniz. 5 saniyelik işaret hakkında bir beyaz araba, Park partisi üzerinden geçer.
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LUbN]
 
 Aşağıdaki adımları tamamladığınızda, arabasının bu hareketini saptamak için IoT Edge üzerinde canlı video analizi kullandınız ve 5 saniyelik bir işaret üzerinden başlayarak bir video klibini kaydedecaksınız. Aşağıdaki diyagram, genel akışın görsel gösterimidir.
 
@@ -194,7 +196,7 @@ Graphtopologyılist ' i çağırmak için özetlenen adımlarla aynı adımları
 
 Yukarıdaki JSON yükü, beş parametre (dördü varsayılan değere sahip) tanımlayan bir grafik topolojisi oluşturulmasına neden olur. Topolojide bir kaynak düğümü ([RTSP kaynağı](media-graph-concept.md#rtsp-source)), iki işlemci düğümü ([hareket algılama işlemcisi](media-graph-concept.md#motion-detection-processor) ve [sinyal kapısı işlemcisi](media-graph-concept.md#signal-gate-processor)ve iki havuz düğümü vardır (IoT Hub havuz ve [varlık havuzu](media-graph-concept.md#asset-sink)). Topolojinin görsel temsili yukarıda gösterilmektedir.
 
-Birkaç saniye içinde çıkış penceresinde aşağıdaki yanıtı görürsünüz.
+Birkaç saniye içinde **Çıkış** penceresinde aşağıdaki yanıtı görürsünüz.
 
 ```
 [DirectMethod] Invoking Direct Method [GraphTopologySet] to [lva-sample-device/lvaEdge] ...

@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 11a45adfda306b2ab843725b6aaa28a5e6c026a6
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: f9748d0d278375029fc9875f5b36674d19ad871a
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614260"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98058982"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Azure Active Directory B2C parolalar için karmaşıklık gereksinimlerini yapılandırın
 
@@ -26,7 +26,7 @@ ms.locfileid: "97614260"
 
 Azure Active Directory B2C (Azure AD B2C) bir hesap oluştururken Son Kullanıcı tarafından sağlanan parolaların karmaşıklık gereksinimlerinin değiştirilmesini destekler. Varsayılan olarak, Azure AD B2C **güçlü** parolalar kullanır. Azure AD B2C Ayrıca, müşterilerin kullanabileceği parolaların karmaşıklığını denetlemek için yapılandırma seçeneklerini destekler.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -47,7 +47,7 @@ Parola karmaşıklığı aşağıdaki Kullanıcı akışları türlerinde yapıl
 
 ## <a name="configure-password-complexity"></a>Parola karmaşıklığını yapılandırma
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 3. Azure portal, araması yapın ve **Azure AD B2C** seçin.
 4. **Kullanıcı akışları ' nı** seçin.
@@ -56,7 +56,7 @@ Parola karmaşıklığı aşağıdaki Kullanıcı akışları türlerinde yapıl
 
 ### <a name="comparison-chart"></a>Karşılaştırma grafiği
 
-| Karmaşıklık | Description |
+| Karmaşıklık | Açıklama |
 | --- | --- |
 | Basit | En az 8 ile 64 karakter uzunluğunda bir parola. |
 | Güçlü | En az 8 ile 64 karakter uzunluğunda bir parola. 3/4 küçük harf, büyük harf, sayı veya sembol gerektirir. |
@@ -76,7 +76,7 @@ Yalnızca rakamları (PIN) veya tam karakter kümesini kabul etmenizi sağlar.
 Parolanın uzunluk gereksinimlerini denetlemenize olanak tanır.
 
 - **Minimum uzunluk** en az 4 olmalıdır.
-- **Maksimum uzunluk** en düşük uzunluğa eşit veya daha büyük olmalı ve en fazla 64 karakter olabilir.
+- **Maksimum uzunluk** en düşük uzunluğa eşit veya daha büyük olmalı ve en fazla 256 karakter olabilir.
 
 ### <a name="character-classes"></a>Karakter sınıfları
 
@@ -201,7 +201,7 @@ Aşağıdaki teknik profiller, Azure Active Directory verileri okuyan ve yazan [
 
 ### <a name="upload-the-files"></a>Dosyaları karşıya yükleme
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. **Kimlik deneyimi çerçevesini** seçin.

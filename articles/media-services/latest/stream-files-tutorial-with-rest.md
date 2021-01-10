@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/12/2020
 ms.author: inhenkel
-ms.openlocfilehash: 023c4d685804b2c6c201f44ab672139d56338cdb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c1798ca74493ba22d29cd9ce819d469c29cd5ec3
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979122"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059594"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Öğretici: Uzak dosya tabanlı URL kodlama ve video akışı yapma - REST
 
@@ -42,7 +42,7 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Media Services hesabı oluşturun](./create-account-howto.md).
 
@@ -170,10 +170,17 @@ Akışı etkinleştirmek için öncelikle videoyu akışını istediğiniz [akı
         {
         "properties": {
             "description": "My Asset",
-            "alternateId" : "some GUID"
+            "alternateId" : "some GUID",
+            "storageAccountName": "<replace from environment file>",
+            "container": "<supply any valid container name of your choosing>"
          }
         }
         ```
+
+> [!NOTE]
+> Depolama hesabı ve kapsayıcı adlarını ortam dosyasındaki olanlarla değiştirdiğinizden emin olun ya da kendinizinkini sağlayın.
+>
+> Bu makalenin geri kalanında açıklanan adımları tamamladıktan sonra, istek gövdelerinde geçerli parametreler girdiğinizden emin olun.
 
 ### <a name="create-a-transform"></a>Dönüşüm oluşturma
 
@@ -355,8 +362,9 @@ Bu bölümde HLS akış URL'sini derleyeceğiz. URL'ler aşağıdaki değerlerde
     Ana bilgisayar adını almak için aşağıdaki GET işlemini kullanabilirsiniz:
     
     ```
-    https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amsaccount/streamingEndpoints/default?api-version={{api-version}}
+    https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaservices/:accountName/streamingEndpoints/default?api-version={{api-version}}
     ```
+    ve `resourceGroupName` `accountName` parametrelerini ortam dosyası ile eşleşecek şekilde ayarladığınızdan emin olun. 
     
 3. Önceki bölümde (Yolları listeleme) aldığınız yol.  
 
@@ -382,7 +390,7 @@ Azure Media Player, test için kullanılabilir, ancak üretim ortamında kullan�
 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>Media Services hesabınızdaki kaynakları temizleme
 
-Genellikle, yeniden kullanmayı planladığınız nesneler hariç her şeyi temizlemeniz gerekir (genellikle **dönüşümleri**yeniden kullanacaksınız ve **akış bulleyicileri**, vb.). Deneme sonrasında hesabınızın temiz olmasını istiyorsanız, yeniden kullanmayı planlamadığınız kaynakları silmeniz gerekir.  
+Genellikle, yeniden kullanmayı planladığınız nesneler hariç her şeyi temizlemeniz gerekir (genellikle **dönüşümleri** yeniden kullanacaksınız ve **akış bulleyicileri**, vb.). Deneme sonrasında hesabınızın temiz olmasını istiyorsanız, yeniden kullanmayı planlamadığınız kaynakları silmeniz gerekir.  
 
 Bir kaynağı silmek için, silmek istediğiniz kaynağın altından "Sil ..." işlemini seçin.
 

@@ -3,12 +3,12 @@ title: Kimlik doğrulaması ve yetkilendirme Azure Service Bus | Microsoft Docs
 description: Paylaşılan erişim Imzası (SAS) kimlik doğrulamasıyla Service Bus için uygulamaların kimliğini doğrulayın.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: a71cef6aad973f3c39ef61a8dbab313ebfca44ef
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7b287b209fbcd5bc2782505095aeae4390107803
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517289"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060223"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Service Bus kimlik doğrulaması ve yetkilendirme
 Azure Service Bus kaynaklarına erişimin kimliğini doğrulamak ve bunlara yetki vermek için iki yol vardır: Azure etkinlik dizini (Azure AD) ve paylaşılan erişim Imzaları (SAS). Bu makale, bu iki tür güvenlik mekanizmasını kullanma hakkında ayrıntılı bilgi sağlar. 
@@ -25,7 +25,7 @@ Azure AD ile kimlik doğrulama hakkında daha fazla bilgi için aşağıdaki mak
 > [Service Bus REST API](/rest/api/servicebus/) , OAuth kimlik DOĞRULAMASıNı Azure AD ile destekler.
 
 > [!IMPORTANT]
-> Azure AD tarafından döndürülen OAuth 2,0 belirtecini kullanarak kullanıcıları veya uygulamaları yetkilendirmek, paylaşılan erişim imzaları (SAS) üzerinde üstün güvenlik ve kullanım kolaylığı sağlar. Azure AD ile, belirteçlerin kodunuzda depolanması ve olası güvenlik açıklarına karşı risk altında olması gerekmez. Mümkün olduğunda Azure AD 'yi Azure Service Bus uygulamalarınızla kullanmanızı öneririz. 
+> Azure AD tarafından döndürülen OAuth 2,0 belirtecini kullanarak kullanıcıları veya uygulamaları yetkilendirmek, paylaşılan erişim imzaları (SAS) üzerinde üstün güvenlik ve kullanım kolaylığı sağlar. Azure AD ile, belirteçlerin kodunuzda depolanması ve olası güvenlik açıklarına karşı risk altında olması gerekmez. Mümkünse Azure Service Bus uygulamalarınızla Azure AD kullanmanızı öneririz. 
 
 ## <a name="shared-access-signature"></a>Paylaşılan erişim imzası
 [SAS kimlik doğrulaması](service-bus-sas.md) , bir kullanıcıya belirli haklara sahip Service Bus kaynaklarına erişim izni vermenizi sağlar. Service Bus SAS kimlik doğrulaması, bir Service Bus kaynağında ilişkili haklara sahip bir şifreleme anahtarı yapılandırmasını içerir. İstemciler, erişilmekte olan kaynak URI 'sinden ve yapılandırılan anahtarla imzalanmış bir süre sonu olan bir SAS belirteci sunarak bu kaynağa erişim elde edebilir.
@@ -37,7 +37,7 @@ SAS 'yi kullanmak için bir ad alanı, kuyruk veya konu üzerinde bir [Sharedacc
 * *KeyName*: kuralı tanımlar.
 * *PrimaryKey*: SAS belirteçlerini imzalamak/doğrulamak için kullanılan bir şifreleme anahtarı.
 * *Secondarykey*: SAS belirteçlerini imzalamak/doğrulamak için kullanılan bir şifreleme anahtarı.
-* *Haklar*: sağlanan **dinleme**, **gönderme**veya **yönetme** haklarını temsil eder.
+* *Haklar*: sağlanan **dinleme**, **gönderme** veya **yönetme** haklarını temsil eder.
 
 Ad alanı düzeyinde yapılandırılan yetkilendirme kuralları, ilgili anahtar kullanılarak imzalanmış belirteçleri olan istemciler için bir ad alanındaki tüm varlıklara erişim verebilir. Bir Service Bus ad alanı, kuyruk veya konu başlığı altında en fazla 12 ' ye kadar yetkilendirme kuralı yapılandırabilirsiniz. Varsayılan olarak, tüm haklara sahip bir [Sharedaccessauthorizationrule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) , ilk sağlandığı sırada her ad alanı için yapılandırılır.
 

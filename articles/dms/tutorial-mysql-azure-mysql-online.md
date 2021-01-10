@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: 41c0bd23bbd2d69506a979c5a36ac40f73258f2c
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: ab03e0bdf7761e45a134ec90685955403fbc433b
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605522"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060393"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Öğretici: DMS hizmetini kullanarak çevrimiçi ortamda MySQL'i MySQL için Azure Veritabanı'na geçirme
 
@@ -45,7 +45,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 >
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
@@ -100,7 +100,7 @@ MySQL **çalışanlarının** şirket içi sistemde örnek veritabanı olduğunu
 mysqldump -h [servername] -u [username] -p[password] --databases [db name] --no-data > [schema file path]
 ```
 
-Örnek:
+Örneğin:
 
 ```
 mysqldump -h 10.10.123.123 -u root -p --databases employees --no-data > d:\employees.sql
@@ -112,7 +112,7 @@ mysqldump -h 10.10.123.123 -u root -p --databases employees --no-data > d:\emplo
 mysql.exe -h [servername] -u [username] -p[password] [database]< [schema file path]
  ```
 
-Örnek:
+Örneğin:
 
 ```
 mysql.exe -h shausample.mysql.database.azure.com -u dms@shausample -p employees < d:\employees.sql
@@ -237,7 +237,7 @@ Hizmet oluşturulduktan sonra Azure portaldan bulun, açın ve yeni bir geçiş 
 
     ![Hedef veritabanlarıyla eşleyin](media/tutorial-mysql-to-azure-mysql-online/dms-map-target-details.png)
    > [!NOTE] 
-   > Bu adımda birden çok veritabanı seçebilirsiniz; ancak her bir Azure veritabanı geçiş hizmeti örneği, eşzamanlı geçiş için en fazla dört veritabanını destekler. Ayrıca, bir abonelikte her bölge için Azure veritabanı geçiş hizmeti 'nin iki örneğinin bir sınırı vardır. Örneğin, geçirilecek 40 veritabanlarına sahipseniz, yalnızca sekiz tane aynı anda ve yalnızca iki Azure veritabanı geçiş hizmeti örneği oluşturduysanız.
+   > Bu adımda birden çok veritabanı seçebilirsiniz, ancak her bir Azure veritabanı geçiş hizmeti örneği, eşzamanlı geçiş için en fazla 4 veritabanını destekler. Ayrıca, her bölge için abonelik başına Azure veritabanı geçiş hizmeti 'nin 10 örnek sınırı vardır. Örneğin, geçirilecek 80 veritabanlarına sahipseniz, aynı bölgeye 40 ' i aynı bölgeye geçirebilirsiniz, ancak yalnızca Azure veritabanı geçiş hizmeti 'nin 10 örneğini oluşturduysanız.
 
 3. **Kaydet**'i seçin, **Geçiş özeti** ekranındaki **Etkinlik adı** metin kutusunda geçiş etkinliği için bir ad belirtin ve ardından, kaynak ve hedef ayrıntılarının önceden belirttiğiniz ayrıntılarla eşleştiğinden emin olmak üzere özeti gözden geçirin.
 

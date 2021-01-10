@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 11/06/2020
 ms.author: derekol
-ms.openlocfilehash: c2c16e6b5be4e187a776f75454ecf9377da911e3
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: da6c53675378fcf9d395debe750bb97738763a09
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763188"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059526"
 ---
 # <a name="peering-service-partners"></a>Eşleme hizmeti iş ortakları
 
@@ -44,6 +44,8 @@ Bu makaledeki tabloda, eşleme hizmeti bağlantı ortakları ve bunlarla ilişki
 | [Matel](https://www.singtel.com/business/campaign/singnet-cloud-connect-microsoft-direct) |Asya |
 | [NAP Afrika](https://www.napafrica.net/technical/microsoft-azure-peering-service/) |Afrika|
 | [Swisscom](https://www.swisscom.ch/en/business/enterprise/offer/wireline/ip-plus.html) |Avrupa|
+| [CMC ağları](https://www.cmcnetworks.net/products/microsoft-azure-peering-services.html) |Afrika|
+| [MainOne](https://www.mainone.net/connectivity-services/microsoft-azure-peering-service/) |Afrika|
 
 > [!NOTE]
 >Eşleme hizmeti Iş ortağı programı ile ilgili daha fazla bilgi için, hizmetine ulaşın peeringservice@microsoft.com .

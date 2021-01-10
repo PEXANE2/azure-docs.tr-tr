@@ -3,12 +3,12 @@ title: Uzamsal analiz için Görüntü İşleme ile canlı videoyu çözümleme-
 description: Bu öğreticide, canlı video analizinin Azure bilişsel hizmetler 'deki Görüntü İşleme uzamsal analiz AI özelliği ile birlikte nasıl kullanılacağı gösterilmektedir. Bu, (benzetimli) bir IP kamerasından canlı video akışını analiz edebilir.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 5cebedec11b91f5b0b94df25a860da3d517bb997
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 5b979bfeb6961b285cfeb2287888d8f157608d96
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400543"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060189"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Uzamsal analizler için Görüntü İşleme ile canlı videoyu çözümleme (Önizleme)
 
@@ -166,7 +166,7 @@ Dağıtım bildirimi, bir sınır cihazına hangi modüllerin dağıtıldığın
 Şablon dosyasından bildirim oluşturmak ve ardından Edge cihazına dağıtmak için bu adımları izleyin.
 
 1. Visual Studio Code’u açın.
-1. AZURE ıOT HUB bölmesinin yanındaki IoT Hub bağlantı dizesini ayarlamak için diğer Eylemler simgesini seçin. Dizeyi src/buluttan cihazdan-Console-App/appsettings.jsdosyasından kopyalayabilirsiniz.
+1. AZURE ıOT HUB bölmesinin yanındaki IoT Hub bağlantı dizesini ayarlamak için diğer Eylemler simgesini seçin. Dizeyi `src/cloud-to-device-console-app/appsettings.json` dosyadan kopyalayabilirsiniz.
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/spatial-analysis-tutorial/connection-string.png" alt-text="Uzamsal analiz: bağlantı dizesi":::
@@ -222,13 +222,13 @@ Src/buluttan cihaza-Console-App/operations.jsüzerindeki doğrudan yöntemleri �
 
 operations.js:
 
-* Topolojiyi şu şekilde ayarlayın (yerel topoloji için topologyFile, çevrimiçi topoloji için topologyUrl):
+* Topolojiyi şunun gibi ayarlayın:
 
 ```json
 {
     "opName": "GraphTopologySet",
     "opParams": {
-        "topologyFile": "../edge/spatialAnalysisTopology.json"
+        "topologyUrl": "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/lva-spatial-analysis/2.0/topology.json"
     }
 },
 ```
@@ -261,17 +261,6 @@ operations.js:
     }
 },
 ```
-* Grafik topolojisine olan bağlantıyı değiştirin:
-
-`topologyUrl` : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/lva-spatial-analysis/topology.json"
-
-**Graphınstanceset** altında, grafik topolojisinin adını önceki bağlantıdaki değerle eşleşecek şekilde düzenleyin:
-
-`topologyName` : Inıngencingwithcvextension
-
-**Graphtopologydelete** altında adı düzenleyin:
-
-`name`: Inıngencingwithcvextension
 
 >[!Note]
 Uzamsal analiz modülüyle bağlantı kurmak için MediaGraphRealTimeComputerVisionExtension kullanımını inceleyin. $ {Grpkıvrık} öğesini **TCP://spatialAnalysis: <PORT_NUMBER>** olarak ayarlayın, ör. TCP://spatialAnalysis:50051
@@ -281,40 +270,51 @@ Uzamsal analiz modülüyle bağlantı kurmak için MediaGraphRealTimeComputerVis
     "@type": "#Microsoft.Media.MediaGraphCognitiveServicesVisionExtension",
     "name": "computerVisionExtension",
     "endpoint": {
-    "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
-    "url": "${grpcUrl}",
-    "credentials": {
-        "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
-        "username": "${spatialanalysisusername}",
-        "password": "${spatialanalysispassword}"
-    }
+        "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
+        "url": "${grpcUrl}",
+        "credentials": {
+            "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
+            "username": "${spatialanalysisusername}",
+            "password": "${spatialanalysispassword}"
+        }
     },
     "image": {
-    "scale": {
-        "mode": "pad",
-        "width": "1408",
-        "height": "786"
+        "scale": {
+            "mode": "pad",
+            "width": "1408",
+            "height": "786"
+        },
+        "format": {
+            "@type": "#Microsoft.Media.MediaGraphImageFormatRaw",
+            "pixelFormat": "bgr24"
+        }
     },
-    "format": {
-        "@type": "#Microsoft.Media.MediaGraphImageFormatRaw",
-        "pixelFormat": "bgr24"
-    }
+    "samplingOptions": {
+        "skipSamplesWithoutAnnotation": "false",
+        "maximumSamplesPerSecond": "20"
     },
     "inputs": [
-    {
-        "nodeName": "frameRateFilter"
-    }
+        {
+            "nodeName": "rtspSource",
+            "outputSelectors": [
+                {
+                    "property": "mediaType",
+                    "operator": "is",
+                    "value": "video"
+                }
+            ]
+        }
     ]
 }
 ```
 
-Bir hata ayıklama oturumu çalıştırın ve TERMINAL yönergelerini izleyin, topoloji ayarlar, grafik örneğini ayarlar, grafik örneğini etkinleştirir ve son olarak kaynakları siler.
+Bir hata ayıklama oturumu çalıştırın ve **TERMINAL** yönergelerini izleyin, topoloji ayarlar, grafik örneğini ayarlar, grafik örneğini etkinleştirir ve son olarak kaynakları siler.
 
 ## <a name="interpret-results"></a>Sonuçları yorumlama
 
 Bir medya grafiği örneği oluşturulduğunda, "Mediasessionkurulduğu" olayını, burada bir [örnek Mediasessionkurulu olayını](detect-motion-emit-events-quickstart.md#mediasessionestablished-event)görmeniz gerekir.
 
-Uzamsal analiz modülü Ayrıca, canlı video analizlerine AI Insight olayları gönderir ve ardından ıothub ' e, çıktıda da gösterilir. VARLıK, algılama nesneleri ve olay spaceanalytics olaylardır. Bu çıktı, canlı video analizine geçirilecek.
+Uzamsal analiz modülü Ayrıca, canlı video analizlerine AI Insight olayları gönderir ve ardından ıothub ' e, **çıktıda** da gösterilir. VARLıK, algılama nesneleri ve olay spaceanalytics olaylardır. Bu çıktı, canlı video analizine geçirilecek.
 
 PersonZoneEvent için örnek çıkış (biliveservices. Vision. spatialanalysis-personcrossingçokgen. livevideoanalytics işlemi):
 
