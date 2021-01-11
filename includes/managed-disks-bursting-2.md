@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 1a51cd242eb26709464aa502938cd04807aea721
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 28c92004fe67de35e5776cd7dc24cf534ec6f8f3
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97805624"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98061095"
 ---
 ## <a name="common-scenarios"></a>Genel senaryolar
 Aşağıdaki senaryolar büyük ölçüde patlanabilir:
@@ -28,7 +28,7 @@ Gereksiz kredi sistemi, hem sanal makine düzeyinde hem de disk düzeyinde aynı
 
 ![Patlama demeti diyagramı](media/managed-disks-bursting/bucket-diagram.jpg)
 
-En fazla 30 dakikalık bir kaç dakika kullanmak istediğinize kadar. Bunu günde 30 dakika boyunca art arda veya sporda kullanabilirsiniz. Ürün dağıtıldığında, tam kredilerle kullanıma sunulur ve kredilerin tam olarak tamamen stoklanması için bir günden daha az zaman alır. Ani kredilerini biriktiribilmeniz ve harcamanız ve 30 dakikalık demet 'in, veri bloğu için yeniden tam olarak tam olması gerekmez. Veri bloğu birikmesi konusunda bir şey, kullanılmayan ıOPS 'yi temel alan ve performans tutarlarının altındaki MB/s değerlerini temel aldığı için her kaynak için farklı olmasıdır. Bu, daha yüksek temel performans ürünlerinin, en düşük temel performanslı ürünlerden daha hızlı bir şekilde patlama miktarlarını tahakkuk alabileceği anlamına gelir. Örneğin, hiçbir etkinlik olmadan bir P1 disk kimliği, bir P20 disk 2.300 tahakkuk ederken saniyede 120 ıOPS tahakkuk eder.
+Bu, 30 dakikalık bir burtayı nasıl kullanmak istediğinize bağlıdır. Bunu günde 30 dakika boyunca art arda veya sporda kullanabilirsiniz. Ürün dağıtıldığında, tam kredilerle kullanıma sunulur ve kredilerin tam olarak tamamen stoklanması için bir günden daha az zaman alır. Ani kredilerini biriktiribilmeniz ve harcamanız ve 30 dakikalık demet 'in, veri bloğu için yeniden tam olarak tam olması gerekmez. Veri bloğu birikmesi konusunda bir şey, kullanılmayan ıOPS 'yi temel alan ve performans tutarlarının altındaki MB/s değerlerini temel aldığı için her kaynak için farklı olmasıdır. Bu, daha yüksek temel performans ürünlerinin, en düşük temel performanslı ürünlerden daha hızlı bir şekilde patlama miktarlarını tahakkuk alabileceği anlamına gelir. Örneğin, hiçbir etkinlik olmadan bir P1 disk kimliği, bir P20 disk 2.300 tahakkuk ederken saniyede 120 ıOPS tahakkuk eder.
 
 ## <a name="bursting-states"></a>Gereksiz durumlar
 Kaynağınız, yazılabilir özelliği etkin olan üç durum vardır:
