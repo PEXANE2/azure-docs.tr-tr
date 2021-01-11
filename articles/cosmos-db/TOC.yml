@@ -966,6 +966,10 @@
               href: cassandra-migrate-cosmos-db-blitzz.md
             - name: Geçirme - Databricks kullanarak Apache Cassandra'dan Cassandra API'ye
               href: cassandra-migrate-cosmos-db-databricks.md
+            - name: Geçirme - Databricks kullanarak Apache Cassandra'dan Cassandra API'ye
+              href: cassandra-migrate-cosmos-db-databricks.md
+            - name: Geçirme - Apache Kafka kullanarak PostgreSQL’den Cassandra API’ye
+              href: postgres-migrate-cosmos-db-kafka.md
         - name: Akışı değiştirme
           href: cassandra-change-feed.md
         - name: Kapsayıcı oluşturma - Cassandra API

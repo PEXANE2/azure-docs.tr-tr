@@ -146,11 +146,15 @@
       items:
         - name: Azure Load Balancer sorunlarını giderme
           href: load-balancer-troubleshoot.md
-        - name: Sık karşılaşılan dağıtım hatalarını giderme
+        - name: Sistem Durumu Yoklama durumu
+          href: load-balancer-troubleshoot-health-probe-status.md
+        - name: Arka uç havuzu (VM) trafiği
+          href: load-balancer-troubleshoot-backend-traffic.md
+        - name: Sık karşılaşılan dağıtım hataları
           href: load-balancer-common-deployment-errors.md
-        - name: Yaygın giden bağlantı sorunlarını giderme
+        - name: Yaygın giden bağlantı sorunları
           href: troubleshoot-outbound-connection.md
-        - name: Kaynak durumu ve gelen bağlantı kullanılabilirlik sorunlarını giderme
+        - name: Kaynak durumu ve gelen bağlantı kullanılabilirlik sorunları
           href: troubleshoot-rhc.md
 - name: Başvuru
   items:

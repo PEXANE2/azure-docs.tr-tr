@@ -54,7 +54,7 @@
           href: enable-dynamic-configuration-java-spring-app.md
     - name: Özellik bayraklarını kullanma
       items:
-        - name: .NET Core
+        - name: ASP.NET Çekirdeği
           href: use-feature-flags-dotnet-core.md
         - name: Spring Boot
           href: use-feature-flags-spring-boot.md
@@ -110,7 +110,7 @@
           href: concept-disaster-recovery.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Bir özelliği belirli bir orandaki kullanıcılar için etkinleştirme
+    - name: Koşullu özellik bayraklarını kullanma
       href: howto-feature-filters-aspnet-core.md
     - name: Bir özelliği belirli kullanıcılar/gruplar için etkinleştirme
       href: howto-targetingfilter-aspnet-core.md

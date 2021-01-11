@@ -49,6 +49,8 @@
               href: how-to-set-up-instance-portal.md
             - name: CLI sürümü
               href: how-to-set-up-instance-cli.md
+            - name: PowerShell sürümü
+              href: how-to-set-up-instance-powershell.md
             - name: Betikleştirilmiş sürüm
               href: how-to-set-up-instance-scripted.md
         - name: Uygulama kimlik doğrulaması kodu yazma
