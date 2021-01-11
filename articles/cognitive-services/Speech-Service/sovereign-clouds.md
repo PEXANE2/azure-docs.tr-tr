@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 01/07/2021
 ms.author: alexeyo
-ms.openlocfilehash: 539ea6f80604eabdbbe56a3280cf5ddb367c0439
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: f30b1f0f14bba54b8b4fcd7c5190f3c533f199a6
+ms.sourcegitcommit: 63caac7871df9d999ca5a5f1b8c036ae7014231c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97966792"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98061761"
 ---
 # <a name="speech-services-in-sovereign-clouds"></a>Sogeign bulutlarında konuşma Hizmetleri
 
@@ -36,9 +36,10 @@ Yalnızca ABD kamu varlıkları ve iş ortakları tarafından kullanılabilir. [
     - Özel konuşma (akustik model (Har) ve dil modeli (LM) uyarlama)
       - [Speech Studio](https://speech.azure.us/)
   - Metin okuma
+    - Standart ses
+    - Sinir sesi
   - Konuşma Çeviricisi
 - **Desteklenmeyen özellikler:**
-  - Sinir sesi
   - Özel ses
 - **Desteklenen Diller:**
   - Desteklenen dillerin listesini [burada](language-support.md) görebilirsiniz
@@ -105,20 +106,13 @@ BT, Çin 'de iş varlığına sahip kuruluşlar tarafından kullanılabilir. Azu
     - Özel konuşma (akustik model (Har) ve dil modeli (LM) uyarlama)
       - [Speech Studio](https://speech.azure.cn/)
   - Metin okuma
+    - Standart ses
+    - Sinir sesi
   - Konuşma Çeviricisi
 - **Desteklenmeyen özellikler:**
-  - Sinir sesi
   - Özel ses
 - **Desteklenen Diller:**
-  - Arapça (ar-*)
-  - Çince (zh-*)
-  - İngilizce (en-*)
-  - Fransızca (fr-*)
-  - Almanca (de-*)
-  - Hintçe (Hi-ın)
-  - Korece (ko-KR)
-  - Rusça (ru-RU)
-  - İspanyolca (es-*)
+  - Desteklenen dillerin listesini [burada](language-support.md) görebilirsiniz
 
 ### <a name="endpoint-information"></a>Uç nokta bilgileri
 
