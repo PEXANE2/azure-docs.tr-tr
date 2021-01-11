@@ -13,12 +13,12 @@ ms.date: 04/25/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 9c3292a31e5f750c16933acf94509e0ad226080a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ef29f6fe3403809d01fcea382474c514319b7c0
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81534321"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063765"
 ---
 # <a name="public-client-and-confidential-client-applications"></a>Ortak istemci ve gizli istemci uygulamaları
 Microsoft kimlik doğrulama kitaplığı (MSAL) iki tür istemci tanımlar: genel istemciler ve gizli istemciler. İki istemci türü, yetkilendirme sunucusuyla güvenli kimlik doğrulaması yapma ve istemci kimlik bilgilerinin gizliliğini koruma özelliklerine göre ayırt edilir. Buna karşılık, Azure AD kimlik doğrulama kitaplığı (ADAL), *kimlik doğrulama bağlamını* (Azure AD ile bağlantı olan) kullanır.
@@ -43,7 +43,7 @@ Ortak istemci ve gizli istemci uygulamaları arasında bazı benzerlikler ve far
 - Her iki uygulama türü de Kullanıcı hesabını yönetir ve kullanıcı belirteci önbelleğinden bir hesap alabilir, tanımlayıcısından bir hesap alabilir veya bir hesabı kaldırabilir.
 - Ortak istemci uygulamalarında bir belirteç edinmenin dört yolu vardır (dört kimlik doğrulama akışı). Gizli istemci uygulamalarında belirteç edinmenin üç yolu vardır (ve kimlik sağlayıcısı yetkilendirme uç noktası URL 'sini hesaplamak için bir yol). Daha fazla bilgi için bkz. [belirteçleri](msal-acquire-cache-tokens.md)alma.
 
-ADAL kullandıysanız, ADAL 'nin kimlik doğrulama bağlamından farklı olarak, MSAL ' de istemci KIMLIĞI ( *uygulama kimliği* veya uygulama *kimliği*olarak da bilinir) uygulamanın oluşturulmasından bir kez geçirildiğine dikkat edin. Uygulama bir belirteç aldığında yeniden geçirilmesi gerekmez. Bu, hem genel hem de gizli istemci uygulamaları için geçerlidir. Gizli istemci uygulamalarının oluşturucuları, istemci kimlik bilgileri: kimlik sağlayıcısıyla paylaştığı gizli dizi.
+ADAL kullandıysanız, ADAL 'nin kimlik doğrulama bağlamından farklı olarak, MSAL ' de istemci KIMLIĞI ( *uygulama kimliği* veya uygulama *kimliği* olarak da bilinir) uygulamanın oluşturulmasından bir kez geçirildiğine dikkat edin. Uygulama bir belirteç aldığında yeniden geçirilmesi gerekmez. Bu, hem genel hem de gizli istemci uygulamaları için geçerlidir. Gizli istemci uygulamalarının oluşturucuları, istemci kimlik bilgileri: kimlik sağlayıcısıyla paylaştığı gizli dizi.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Şunları öğrenin:

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 1e8c7805cf9804e8380f8638781f9634d2d3d081
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 63d56d8afc584a760f4b31c6021d4c764afd52b3
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011518"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064428"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Öğretici: Evrensel Windows Platformu (UWP) uygulamasından Microsoft Graph API 'sini çağırma
 
@@ -50,7 +50,7 @@ Bu kılavuz aşağıdaki NuGet paketini kullanır:
 
 |Kitaplık|Açıklama|
 |---|---|
-|[Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library|
+|[Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)| Microsoft Authentication Library|
 |[Microsoft. Graph](https://www.nuget.org/packages/Microsoft.Graph)|Microsoft Graph Istemci kitaplığı|
 
 ## <a name="set-up-your-project"></a>Projenizi ayarlama
@@ -71,7 +71,7 @@ Bu kılavuz, Microsoft Graph API 'sini sorgulayan ve oturumu kapatmak için bir 
 
    ![En düşük ve hedef sürümler](./media/tutorial-v2-windows-uwp/select-uwp-target-minimum.png)
 
-### <a name="add-microsoft-authentication-library-to-your-project"></a>Projenize Microsoft kimlik doğrulama Kitaplığı ekleyin
+### <a name="add-the-microsoft-authentication-library-to-your-project"></a>Projenize Microsoft kimlik doğrulama kitaplığı ekleme
 
 1. Visual Studio 'da **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu**' nu seçin.
 1. Aşağıdaki komutları Kopyala ve **Paket Yöneticisi konsol** penceresinde Yapıştır:
@@ -82,7 +82,7 @@ Bu kılavuz, Microsoft Graph API 'sini sorgulayan ve oturumu kapatmak için bir 
     ```
 
    > [!NOTE]
-   > İlk komut [Microsoft kimlik doğrulama kitaplığı 'nı (msal.net)](https://aka.ms/msal-net)yüklüyor. MSAL.NET Microsoft Identity platformu tarafından korunan API 'Lere erişen Kullanıcı belirteçlerini alır, önbelleğe alır ve yeniler. İkinci komut, Microsoft Graph istekleri doğrulamak ve hizmete çağrı yapmak için [Microsoft Graph .net Istemci kitaplığı](https://github.com/microsoftgraph/msgraph-sdk-dotnet) 'nı kurar.
+   > İlk komut, [Microsoft kimlik doğrulama kitaplığı 'nı (msal.net)](https://aka.ms/msal-net)yüklüyor. MSAL.NET Microsoft Identity platformu tarafından korunan API 'Lere erişen Kullanıcı belirteçlerini alır, önbelleğe alır ve yeniler. İkinci komut, Microsoft Graph istekleri doğrulamak ve hizmete çağrı yapmak için [Microsoft Graph .net Istemci kitaplığı](https://github.com/microsoftgraph/msgraph-sdk-dotnet) 'nı kurar.
 
 ### <a name="create-your-applications-ui"></a>Uygulamanızın Kullanıcı arabirimini oluşturma
 
@@ -103,7 +103,7 @@ Visual Studio, proje şablonunuzun bir parçası olarak *MainPage. xaml* oluştu
 </Grid>
 ```
 
-### <a name="use-microsoft-authentication-library-to-get-a-token-for-the-microsoft-graph-api"></a>Microsoft Graph API 'sinin bir belirtecini almak için Microsoft kimlik doğrulama kitaplığı 'nı kullanma
+### <a name="use-the-microsoft-authentication-library-to-get-a-token-for-the-microsoft-graph-api"></a>Microsoft Graph API 'sinin bir belirtecini almak için Microsoft kimlik doğrulama kitaplığı 'nı kullanın
 
 Bu bölümde, Microsoft Graph API 'sinin bir belirtecini almak için Microsoft kimlik doğrulama kitaplığı 'nın nasıl kullanılacağı gösterilmektedir. *MainPage.xaml.cs* dosyasında değişiklik yapın.
 
@@ -225,7 +225,7 @@ Bu bölümde, Microsoft Graph API 'sinin bir belirtecini almak için Microsoft k
 
 #### <a name="get-a-user-token-silently"></a>Kullanıcı belirtecini sessizce alma
 
-`AcquireTokenSilent`Yöntemi, Kullanıcı etkileşimi olmadan belirteç alma ve yenileme işlemleri gerçekleştirir. `AcquireTokenInteractive`İlk kez çalıştıktan sonra kullanıcıdan kimlik bilgilerini girmesini isterse, `AcquireTokenSilent` daha sonra çağrılar için belirteçleri istemek üzere yöntemini kullanın. Bu yöntem belirteçleri sessizce devralır. Microsoft kimlik doğrulama kitaplığı belirteç önbelleğini ve yenilemeyi işler.
+`AcquireTokenSilent`Yöntemi, Kullanıcı etkileşimi olmadan belirteç alma ve yenileme işlemleri gerçekleştirir. `AcquireTokenInteractive`İlk kez çalıştıktan sonra kullanıcıdan kimlik bilgilerini girmesini isterse, `AcquireTokenSilent` daha sonra çağrılar için belirteçleri istemek üzere yöntemini kullanın. Bu yöntem belirteçleri sessizce devralır. Microsoft kimlik doğrulama kitaplığı, belirteç önbelleğini ve yenilemeyi işler.
 
 Sonuç olarak, `AcquireTokenSilent` Yöntem başarısız olur. Hatanın nedeni, başka bir cihazda parolasını imzalayan veya değiştiren bir Kullanıcı içerir. Microsoft kimlik doğrulama kitaplığı, sorunun etkileşimli bir eylem gerektirdiğini algıladığında, bir `MsalUiRequiredException` özel durum oluşturur. Uygulamanız bu özel durumu iki şekilde işleyebilir:
 

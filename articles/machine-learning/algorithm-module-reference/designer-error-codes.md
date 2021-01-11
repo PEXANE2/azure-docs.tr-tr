@@ -10,12 +10,12 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 11/25/2020
-ms.openlocfilehash: 846c5519dced06ed16f5a0d12b0bb25443961f93
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: b917e3fc93c59de85c5236c18e31d7bbc9d891f0
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753918"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065482"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>Tasarımcı için özel durumlar ve hata kodları
 
@@ -69,7 +69,7 @@ Tasarımcı 'daki modül hata kodları aşağıda verilmiştir.
 
  Bu hatayı, bir modüle yönelik herhangi bir giriş veya parametre null ya da boş olduğunda Azure Machine Learning alırsınız.  Bu hata, örneğin, bir parametre için herhangi bir değer yazmadınız meydana gelebilir. Ayrıca, eksik değerlere veya boş bir veri kümesine sahip bir veri kümesi seçerseniz da bu durum oluşabilir.  
 
-**Çözünürlüğüne**
+**Çözüm:**
 
 + Özel durumu üreten modülü açın ve tüm girişlerin belirtildiğini doğrulayın. Tüm gerekli girişlerin belirtildiğinden emin olun. 
 + Azure depolama 'dan yüklenen verilerin erişilebilir olduğundan ve hesap adının veya anahtarın değişmediğinden emin olun.  
@@ -132,7 +132,7 @@ Tasarımcı 'daki modül hata kodları aşağıda verilmiştir.
 
  Bu hatayı, bir şekilde eşleşmesi gereken iki veri kümesi belirtiyorsanız de görebilirsiniz. Örneğin, sütunları yeniden adlandırıyorsanız ve sütunları dizine göre belirtirseniz, sağladığınız adların sayısı sütun dizini sayısıyla eşleşmelidir. Diğer bir örnek, iki sütun kullanan bir matematik işlemi olabilir, burada sütunlar aynı sayıda satıra sahip olmalıdır. 
 
-**Çözünürlüğüne**
+**Çözüm:**
 
  + Söz konusu modülü açın ve tüm sayısal özellik ayarlarını gözden geçirin.
  + Herhangi bir parametre değerinin, bu özellik için desteklenen değer aralığı içinde olduğundan emin olun.
@@ -179,7 +179,7 @@ Bu hata, bir Azure depolama hesabının parametrelerini belirttiğinizde, ancak 
  + Dosya yolunu (Blobun yolu) tam olarak belirtmediniz
    
 
-**Çözünürlüğüne**
+**Çözüm:**
 
 Bu tür sorunlar genellikle hesap adını, parolayı veya kapsayıcı yolunu el ile girmeye çalıştığınızda oluşur. [Veri Içeri aktarma](import-data.md) modülü için yeni Sihirbazı kullanmanızı öneririz. Bu, adları bulmanıza ve denetlemeye yardımcı olur.
 
@@ -246,7 +246,7 @@ Bir Blobun yolun tamamı belirtilmişse, yolun **kapsayıcı/blobname** olarak b
 
  Eğitilen bir model bağlı Puanlama modülüyle uyumsuz olduğunda bu hata oluşur. <!--For example, connecting the output of [Train Matchbox Recommender](train-matchbox-recommender.md) to [Score Model](score-model.md) (instead of [Score Matchbox Recommender](score-matchbox-recommender.md)) will generate this error when the pipeline is run.  -->
 
-**Çözünürlüğüne**
+**Çözüm:**
 
 Eğitim modülü tarafından üretilen öğrenici türünü ve öğrenici için uygun Puanlama modülünü saptayın. 
 
@@ -286,7 +286,7 @@ Aşağıdaki koşulların **her ikisi de** varsa, benzersiz değerlerin hatası 
 - Bir sütunun %97 ' inden fazlası benzersiz değerlerdir, bu da neredeyse tüm kategorilerin birbirinden farklı olduğu anlamına gelir.
 - Bir sütunda 1000 ' den fazla benzersiz değer vardır.
 
-**Çözünürlüğüne**
+**Çözüm:**
 
 Hatayı oluşturan modülü açın ve giriş olarak kullanılan sütunları tespit edin. Bazı modüller için, veri kümesi girişine sağ tıklayıp, benzersiz değer sayısı ve bunların dağılımı dahil olmak üzere tek tek sütunlarda istatistik almak için **Görselleştir** ' i seçebilirsiniz.
 
@@ -342,7 +342,7 @@ Metin sütunlarında, metin sütunlarını önceden işlemek için [özellik kar
 
  Örneğin, sütun seçiminiz, bir Math işleminin dize sütunu veya bir categorik özellik sütununun gerekli olduğu bir puan sütunu gibi, modül tarafından işlenemediği bir veri türüne sahip bir sütun içeriyorsa Azure Machine Learning bu hatayı alabilirsiniz.  
 
-**Çözünürlüğüne**
+**Çözüm:**
  1. Sorun olan sütunu belirler.
  2. Modülün gereksinimlerini gözden geçirin.
  3. Bir sütunu gereksinimlere uygun hale getirmek için değiştirin. Bir sütuna ve denediğiniz dönüştürmeye bağlı olarak, değişiklikler yapmak için aşağıdaki modüllerden birkaçını kullanmanız gerekebilir:
@@ -366,7 +366,7 @@ Metin sütunlarında, metin sütunlarını önceden işlemek için [özellik kar
 ## <a name="error-0018"></a>Hata 0018  
  Giriş veri kümesi geçerli değilse özel durum oluşur.  
 
-**Çözüm:** Azure Machine Learning bu hata birçok bağlamda görünebilir, bu nedenle tek bir çözüm yoktur. Genellikle hata, bir modüle giriş olarak girilen verilerin yanlış sayıda sütuna sahip olduğunu veya veri türünün modül gereksinimleriyle eşleşmediğinden emin olduğunu gösterir. Örnek:  
+**Çözüm:** Azure Machine Learning bu hata birçok bağlamda görünebilir, bu nedenle tek bir çözüm yoktur. Genellikle hata, bir modüle giriş olarak girilen verilerin yanlış sayıda sütuna sahip olduğunu veya veri türünün modül gereksinimleriyle eşleşmediğinden emin olduğunu gösterir. Örneğin:  
 
 -   Modül bir etiket sütunu gerektiriyor, ancak hiçbir sütun etiket olarak işaretlenmemiş veya henüz bir etiket sütunu seçmediniz.  
   
@@ -428,7 +428,7 @@ Metin sütunlarında, metin sütunlarını önceden işlemek için [özellik kar
 
  Bu hata, veri kümesinde belirtilen işlemi gerçekleştirmek için yeterli miktarda satır olmadığında Azure Machine Learning görülür. Örneğin, giriş veri kümesi boşsa veya en az sayıda satırın geçerli olması gereken bir işlem gerçekleştirmeye çalışıyorsanız bu hatayı görebilirsiniz. Bu gibi işlemler, istatistiksel yöntemlere, belirli bir tür bindürme ve saymayla öğrenlerine göre gruplandırma veya sınıflandırmayı içerebilir (ancak bunlarla sınırlı değildir).  
 
-**Çözünürlüğüne**
+**Çözüm:**
 
  + Hatayı döndüren modülü açın ve giriş veri kümesini ve modül özelliklerini denetleyin. 
  + Giriş veri kümesinin boş olmadığını ve modül yardımı 'nda açıklanan gereksinimleri karşılayacak yeterli veri satırı olduğunu doğrulayın.  
@@ -448,7 +448,7 @@ Metin sütunlarında, metin sütunlarını önceden işlemek için [özellik kar
 ## <a name="error-0022"></a>Hata 0022  
  Giriş veri kümesindeki Seçili sütunların sayısı beklenen sayıya eşit değilse özel durum oluşur.  
 
- Azure Machine Learning içinde bu hata, aşağı akış modülü veya işlemi belirli sayıda sütun veya giriş gerektirdiğinde ve çok az veya çok fazla sayıda sütun veya giriş sağladıysanız oluşabilir. Örnek:  
+ Azure Machine Learning içinde bu hata, aşağı akış modülü veya işlemi belirli sayıda sütun veya giriş gerektirdiğinde ve çok az veya çok fazla sayıda sütun veya giriş sağladıysanız oluşabilir. Örneğin:  
 
 -   Tek etiketli bir sütun veya anahtar sütunu ve yanlışlıkla birden çok sütun seçtiniz.  
   
@@ -498,12 +498,12 @@ DataSet bir etiket sütunu içermiyorsa özel durum oluşur.
 
 Ayrıca, bir etiket sütununun veri kümesinde mevcut olması, ancak Azure Machine Learning tarafından doğru algılanmadığını da ortaya çıkabilir.
 
-**Çözünürlüğüne**
+**Çözüm:**
 
 + Hatayı oluşturan modülü açın ve bir etiket sütununun mevcut olup olmadığını saptayın. Sütunun adı veya veri türü, tahmin etmeye çalıştığınız tek bir sonuç (veya bağımlı değişken) içerdiği sürece önemi yoktur. Hangi sütunun etikete sahip olduğundan emin değilseniz,  *Class* veya *target* gibi genel bir adı arayın. 
 +  Veri kümesi bir etiket sütunu içermiyorsa, etiket sütununun açık olarak veya yanlışlıkla yukarı akış kaldırılmış olması mümkündür. Ayrıca, veri kümesi bir yukarı akış Puanlama modülünün çıkışı değildir.
 + Sütunu etiket sütunu olarak açıkça işaretlemek için, [meta veri düzenleme](edit-metadata.md) modülünü ekleyin ve veri kümesini bağlayın. Yalnızca etiket sütununu seçin ve **alanlar** açılan listesinden **etiket** ' i seçin. 
-+ Etiket olarak yanlış sütun seçilirse, sütundaki meta verileri düzeltebilmeniz için alanlardan **etiketi temizle** ' yi **Fields** seçebilirsiniz. 
++ Etiket olarak yanlış sütun seçilirse, sütundaki meta verileri düzeltebilmeniz için alanlardan **etiketi temizle** ' yi  seçebilirsiniz. 
   
 |Özel durum Iletileri|
 |------------------------|
@@ -668,7 +668,7 @@ Ayrıca, bir etiket sütununun veri kümesinde mevcut olması, ancak Azure Machi
 
  Azure Machine Learning bu hata, Puanlama için bir öneri modeli kullanmaya çalışıyordum, ancak özellik vektörü bulunamıyor.  
 
-**Çözünürlüğüne**
+**Çözüm:**
 
 Matchbox öneren, öğe özellikleri veya Kullanıcı özellikleri kullanılırken karşılanması gereken belirli gereksinimlere sahiptir.  Bu hata, giriş olarak verdiğiniz bir kullanıcı veya öğe için bir özellik vektörünün eksik olduğunu gösterir. Her Kullanıcı veya öğe için verilerde bir özellik vektörünün kullanılabildiğinden emin olun.  
 
@@ -740,7 +740,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 Diğer bir nedenden dolayı, kayan noktalı sayılar veya çok sayıda benzersiz değer içeren bir sütunu kategorik bir sütun olarak kullanmayı denerseniz bu hatayı alabilirsiniz. 
 
-**Çözünürlüğüne**
+**Çözüm:**
 
 + Hatayı oluşturan modülün yardım sayfasını açın ve veri türü gereksinimlerini doğrulayın.
 + Giriş veri kümesindeki sütunların veri türlerini gözden geçirin.
@@ -901,7 +901,7 @@ Diğer bir nedenden dolayı, kayan noktalı sayılar veya çok sayıda benzersiz
 
   <!--For example, the [Convert to Indicator Values](convert-to-indicator-values.md) module requires that columns be categorical, and will raise this error if you select a feature column or label column.  -->
 
-**Çözünürlüğüne**
+**Çözüm:**
 
 1.  Şu anda seçili olan sütunların veri türünü gözden geçirin. 
 
@@ -922,7 +922,7 @@ Diğer bir nedenden dolayı, kayan noktalı sayılar veya çok sayıda benzersiz
 
  Bu özel durum, Azure Blob depolama alanına Azure Machine Learning bir işlem hattının sonuçlarını kaydetmek için [verileri dışarı aktar](export-data.md) modülünü veya başka bir modülü kullandığınızda oluşur, ancak zaten var olan bir dosya ya da blob oluşturmayı deneyin.   
 
-**Çözünürlüğüne**
+**Çözüm:**
 
  Bu hatayı yalnızca, daha önce **Azure Blob depolama yazma modu** özelliğini **hata** olarak ayarlarsanız alırsınız. Tasarıma göre, zaten var olan bir bloba veri kümesi yazmayı denerseniz, bu modül bir hata oluşturur.
 
@@ -1080,7 +1080,7 @@ Diğer bir nedenden dolayı, kayan noktalı sayılar veya çok sayıda benzersiz
 
  Azure Machine Learning içindeki bu hata, Hive QL betiğinde sözdizimi hataları varsa veya Hive yorumlayıcı sorgu veya betiği yürütürken bir hatayla karşılaştığında oluşur.  
 
-**Çözünürlüğüne**
+**Çözüm:**
 
 Hive 'den alınan hata iletisi normalde hata günlüğünde geri bildirilir, böylece belirli hataya göre işlem gerçekleştirebilirsiniz. 
 
@@ -1169,7 +1169,7 @@ Bir veri kümesini satışlama sırasında geçersiz bir binme işlevi kullanıl
 
 Azure Machine Learning içinde bu hata, desteklenmeyen bir yöntemi kullanarak verileri bölmeye çalışırken veya parametre birleşimleri geçersiz olduğunda oluşur.  
 
-**Çözünürlüğüne**
+**Çözüm:**
 
 Bu olay için hata işleme, daha fazla sayıda daha fazla özelleştirme yönteminin özelleştirilmesine izin veren Azure Machine Learning önceki bir sürümünde kullanıma sunulmuştur. Şu anda tüm binme yöntemleri, bir açılan listeden seçim üzerine dayalıdır, bu nedenle Teknik olarak bu hatayı almak için artık mümkün olmayacaktır.
 
@@ -1276,7 +1276,7 @@ Bu olay için hata işleme, daha fazla sayıda daha fazla özelleştirme yöntem
 
  Azure Machine Learning içinde bu hata, puanları içeren bir R betiğinin çıkışıyla bir modeli değerlendirmek için modüllerden birini kullanmayı denerseniz oluşur.  
 
-**Çözünürlüğüne**
+**Çözüm:**
 
 |Özel durum Iletileri|
 |------------------------|
@@ -1355,7 +1355,7 @@ Bu olay için hata işleme, daha fazla sayıda daha fazla özelleştirme yöntem
 ## <a name="error-0125"></a>Hata 0125  
  Birden çok veri kümesi için şema eşleşmediği zaman oluşturulur.  
 
-**Çözünürlüğüne**
+**Çözüm:**
 
 |Özel durum Iletileri|
 |------------------------|
@@ -1383,7 +1383,7 @@ Bu olay için hata işleme, daha fazla sayıda daha fazla özelleştirme yöntem
 ## <a name="error-0128"></a>Hata 0128  
  Kategorik sütunlar için koşullu olasılıkların sayısı sınırı aşıyor.  
 
-**Çözünürlüğüne**
+**Çözüm:**
 
 |Özel durum Iletileri|
 |------------------------|
@@ -1394,7 +1394,7 @@ Bu olay için hata işleme, daha fazla sayıda daha fazla özelleştirme yöntem
 ## <a name="error-0129"></a>Hata 0129  
  Veri kümesindeki sütun sayısı izin verilen sınırı aşıyor.  
 
-**Çözünürlüğüne**
+**Çözüm:**
 
 |Özel durum Iletileri|
 |------------------------|
@@ -1532,3 +1532,8 @@ Daha fazla yardım almak için, hataya eşlik eden ayrıntılı iletiyi, giriş 
 |Kitaplık özel durumu.|
 |Kitaplık özel durumu: {Exception}.|
 |Bilinmeyen kitaplık özel durumu: {Exception}. {customer_support_guidance}.|
+
+
+## <a name="execute-python-script-module"></a>Python betik modülünü Yürüt
+
+**Python betik modülünü yürütme** **70_driver_logs** **azureml_main** arama yapın ve hangi satır hatası oluştuğunu bulabilirsiniz. Örneğin, "dosya"/tmp/tmp01_ID/user_script. Kopyala ", satır 17, azureml_main",, Python betiğinizin 17. satırında hata oluştuğunu gösterir.

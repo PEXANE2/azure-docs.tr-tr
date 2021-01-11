@@ -1,18 +1,18 @@
 ---
 title: Azure Izleyici ile Azure Veri Gezgini arasında çapraz hizmet sorgusu (Önizleme)
 description: Tüm verilerinizi tek bir yerde birleştirmek ve analiz etmek için Azure Log Analytics araçları aracılığıyla Azure Veri Gezgini verilerini sorgulayın.
-author: orens
+author: osalzberg
 ms.author: bwren
 ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: 0af9111223bb16f1c5843223e7fe1661ce99c623
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 5aadd9d96f538f92e1b9e0100b2c1055ee0b0633
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96749254"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065278"
 ---
 # <a name="cross-service-query---azure-monitor-and-azure-data-explorer-preview"></a>Çapraz hizmet sorgusu-Azure Izleyici ve Azure Veri Gezgini (Önizleme)
 [Azure Veri Gezgini](https://docs.microsoft.com/azure/data-explorer/), [Application Insights](/azure/azure-monitor/app/app-insights-overview)ve [Log Analytics](/azure/azure-monitor/platform/data-platform-logs)arasında çapraz hizmet sorguları oluşturun.

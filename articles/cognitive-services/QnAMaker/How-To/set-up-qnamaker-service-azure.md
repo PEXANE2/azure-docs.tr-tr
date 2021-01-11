@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 83917214705546b21553e997ccab11a7511f77fd
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 5af4eb931015e386e35470f2b36341e15f76150f
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353315"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065414"
 ---
 # <a name="manage-qna-maker-resources"></a>Soru-Cevap Oluşturma kaynaklarını yönetme
 
@@ -128,12 +128,18 @@ Tahmin uç noktası uygulamasının trafik olmadığında bile yüklenmesini sa�
 App Service [genel ayarlarını](../../../app-service/configure-common.md#configure-general-settings)yapılandırma hakkında daha fazla bilgi edinin.
 
 ### <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>App Service Ortamı Soru-Cevap Oluşturma barındırmak için yapılandırın App Service
-App Service Ortamı, Soru-Cevap Oluşturma App Service 'i barındırmak için kullanılabilir. App Service Ortamı iç ise aşağıdaki adımları izlemeniz gerekir:
-1. Bir App Service ve bir Azure Search hizmeti oluşturun.
-2. App Service 'i kullanıma sunun ve kullanılabilirlik Soru-Cevap Oluşturma izin ver:
-    * Herkese açık-varsayılan
-    * DNS hizmeti etiketi: `CognitiveServicesManagement`
-3. Azure Resource Manager kullanarak Soru-Cevap Oluşturma bilişsel hizmet örneği (Microsoft. Biliveservices/hesaplar) oluşturun; burada Soru-Cevap Oluşturma uç nokta App Service Ortamı olarak ayarlanmalıdır.
+App Service Ortamı (Ao), Soru-Cevap Oluşturma App Service 'i barındırmak için kullanılabilir. Lütfen aşağıdaki adımları izleyin:
+
+1. Bir App Service Ortamı oluşturun ve "dış" olarak işaretleyin. Yönergeler için lütfen [öğreticiyi](https://docs.microsoft.com/azure/app-service/environment/create-external-ase) izleyin.
+2.  App Service Ortamı içinde bir App Service oluşturun.
+    * App Service 'in yapılandırmasını denetleyin ve bir uygulama ayarı olarak ' BID Yendpointkey ' ekleyin. ' BID Yendpointkey ' değeri "-BID \<app-name\> yendpointkey" olarak ayarlanmalıdır. Uygulama adı App Service URL 'sinde tanımlanmıştır. Örneğin, uygulama hizmeti URL 'SI "mywebsite.myase.p.azurewebsite.net" ise, uygulama adı "mywebsite" olur. Bu durumda, ' bıı Yendpointkey ' değeri "mywebsite-bıı Yendpointkey" olarak ayarlanmalıdır.
+    * Azure Search hizmeti oluşturun.
+    * Azure Search ve uygulama ayarlarının uygun şekilde yapılandırıldığından emin olun. 
+      Lütfen bu [öğreticiyi](https://docs.microsoft.com/azure/cognitiveservices/qnamaker/reference-app-service#app-service)izleyin.
+3.  App Service Ortamı ilişkili ağ güvenlik grubunu güncelleştirin
+    * Gereksinimlerinize göre önceden oluşturulmuş gelen güvenlik kurallarını güncelleştirin.
+    * ' Hizmet etiketi ' ve kaynak hizmet etiketi ' Biliveservicesmanagement ' olarak kaynağa sahip yeni bir gelen güvenlik kuralı ekleyin.
+4.  Azure Resource Manager kullanarak Soru-Cevap Oluşturma bilişsel hizmet örneği (Microsoft. Biliveservices/hesaplar) oluşturun; burada Soru-Cevap Oluşturma uç noktası yukarıda oluşturulan App Service uç noktaya ayarlanır (https://mywebsite.myase.p.azurewebsite.net).
 
 ### <a name="network-isolation-for-app-service"></a>App Service için ağ yalıtımı
 
@@ -254,7 +260,7 @@ Bilgi tabanınız tarafından kullanılan kaynakları nasıl yükselteceğinizi 
 
 # <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
 
-Birçok bilgi tabanınız varsa, Azure Bilişsel Arama Service fiyatlandırma katmanınızı yükseltin.
+Birden fazla bilgi bankanız olmasını planlıyorsanız Azure Bilişsel Arama hizmeti fiyatlandırma katmanınızı yükseltin.
 
 Şu anda Azure Search SKU 'sunun yerinde yükseltmesini gerçekleştiremezsiniz. Ancak, istenen SKU ile yeni bir Azure Search kaynağı oluşturabilir, verileri yeni kaynağa geri yükleyebilir ve sonra Soru-Cevap Oluşturma yığınına bağlayabilirsiniz. Bunu yapmak için şu adımları uygulayın:
 
@@ -262,7 +268,7 @@ Birçok bilgi tabanınız varsa, Azure Bilişsel Arama Service fiyatlandırma ka
 
     ![Azure Search kaynağı Soru-Cevap Oluşturma](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-new.png)
 
-1. Dizinleri özgün Azure Search kaynağından yeni bir kaynağa geri yükleyin. Bkz. [yedekleme geri yükleme örnek kodu](https://github.com/pchoudhari/QnAMakerBackupRestore).
+1. Dizinleri özgün Azure Search kaynağından yeni bir kaynağa geri yükleyin. [Yedekleme geri yükleme örnek kodu](https://github.com/pchoudhari/QnAMakerBackupRestore) konusuna bakın.
 
 1. Veriler geri yüklendikten sonra, yeni Azure Arama kaynağınız ' ne gidin, **anahtarlar**' ı seçin ve **adı** ve **yönetici anahtarını** yazın:
 
@@ -272,7 +278,7 @@ Birçok bilgi tabanınız varsa, Azure Bilişsel Arama Service fiyatlandırma ka
 
     ![Soru-Cevap Oluşturma App Service örneği](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource-list-appservice.png)
 
-1. **Uygulama ayarları** ' nı seçin ve 3. adımdaki **AzureSearchName** ve **AzureSearchAdminKey** alanlarındaki ayarları değiştirin.
+1. **Uygulama ayarları**'nı seçin, ardından 3. adımdaki **AzureSearchName** ve **AzureSearchAdminKey** alanlarındaki ayarları değiştirin.
 
     ![Soru-Cevap Oluşturma App Service ayarı](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-settings.png)
 
@@ -343,7 +349,7 @@ Bir QnA Oluşturucu kaynağı kullanmıyorsanız, tüm kaynakları kaldırmalıs
 
 # <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
 
-Birçok bilgi tabanınız varsa, Azure Bilişsel Arama Service fiyatlandırma katmanınızı yükseltin.
+Birden fazla bilgi bankanız olmasını planlıyorsanız Azure Bilişsel Arama hizmeti fiyatlandırma katmanınızı yükseltin.
 
 Şu anda Azure Search SKU 'sunun yerinde yükseltmesini gerçekleştiremezsiniz. Ancak, istenen SKU ile yeni bir Azure Search kaynağı oluşturabilir, verileri yeni kaynağa geri yükleyebilir ve sonra Soru-Cevap Oluşturma yığınına bağlayabilirsiniz. Bunu yapmak için şu adımları uygulayın:
 
@@ -351,7 +357,7 @@ Birçok bilgi tabanınız varsa, Azure Bilişsel Arama Service fiyatlandırma ka
 
     ![Azure Search kaynağı Soru-Cevap Oluşturma](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-new.png)
 
-1. Dizinleri özgün Azure Search kaynağından yeni bir kaynağa geri yükleyin. Bkz. [yedekleme geri yükleme örnek kodu](https://github.com/pchoudhari/QnAMakerBackupRestore).
+1. Dizinleri özgün Azure Search kaynağından yeni bir kaynağa geri yükleyin. [Yedekleme geri yükleme örnek kodu](https://github.com/pchoudhari/QnAMakerBackupRestore) konusuna bakın.
 
 1. Yeni Azure Search kaynağını Soru-Cevap Oluşturma yönetilen (Önizleme) hizmetine bağlamak için aşağıdaki konuya bakın.
 

@@ -13,16 +13,16 @@ ms.date: 07/17/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 6b5093c5a1a45aed3493fabd7a362b0579998171
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e12beafc81cbc41ea070fbdda1d68990f6f3fcda
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96343595"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063697"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>MSAL.js kullanarak istemci uygulamalarını başlatma
 
-Bu makalede, Kullanıcı Aracısı uygulamasının bir örneğiyle JavaScript (MSAL.js) için Microsoft kimlik doğrulama Kitaplığı başlatma açıklanmaktadır.
+Bu makalede, bir Kullanıcı Aracısı uygulamasının örneğiyle JavaScript (MSAL.js) için Microsoft kimlik doğrulama Kitaplığı başlatma açıklanmaktadır.
 
 Kullanıcı Aracısı uygulaması, istemci kodunun web tarayıcısı gibi bir Kullanıcı aracısında yürütüldüğü bir ortak istemci uygulaması biçimidir. Tarayıcı bağlamı düzgün şekilde erişilebilir olduğundan bu tür istemciler gizli dizileri depolamaz.
 
@@ -37,9 +37,9 @@ Uygulamanızı kaydettikten sonra, Azure portal bulunan aşağıdaki değerlerin
 | Değer | Gerekli | Açıklama |
 |:----- | :------: | :---------- |
 | Uygulama (istemci) kimliği | Gerekli | Uygulamanızı Microsoft Identity platform içinde benzersiz bir şekilde tanımlayan GUID. |
-| Yetkili | İsteğe Bağlı | Uygulamanız için kimlik sağlayıcısı URL 'SI ( *örnek*) ve *oturum açma hedef kitlesi* . Örnek ve oturum açma hedef kitlesi, birleştirilmiş olduğunda *yetkiyi* yapar. |
-| Dizin (kiracı) kimliği | İsteğe Bağlı | Yalnızca kuruluşunuz için bir iş kolu uygulaması oluşturuyorsanız, genellikle *tek kiracılı uygulama* olarak adlandırılan bunu belirtin. |
-| Yeniden Yönlendirme URI'si | İsteğe Bağlı | Bir Web uygulaması oluşturuyorsanız, `redirectUri` kimlik sağlayıcısının (Microsoft Identity Platform) verdiği güvenlik belirteçlerini döndürmesi gerektiğini belirtir. |
+| Yetkili | İsteğe bağlı | Uygulamanız için kimlik sağlayıcısı URL 'SI ( *örnek*) ve *oturum açma hedef kitlesi* . Örnek ve oturum açma hedef kitlesi, birleştirilmiş olduğunda *yetkiyi* yapar. |
+| Dizin (kiracı) kimliği | İsteğe bağlı | Yalnızca kuruluşunuz için bir iş kolu uygulaması oluşturuyorsanız, genellikle *tek kiracılı uygulama* olarak adlandırılan bunu belirtin. |
+| Yeniden Yönlendirme URI'si | İsteğe bağlı | Bir Web uygulaması oluşturuyorsanız, `redirectUri` kimlik sağlayıcısının (Microsoft Identity Platform) verdiği güvenlik belirteçlerini döndürmesi gerektiğini belirtir. |
 
 ## <a name="initialize-msaljs-2x-apps"></a>MSAL.js 2. x uygulamalarını başlatın
 

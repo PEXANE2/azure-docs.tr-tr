@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: kenwith
 ms.reviewer: paulgarn
-ms.openlocfilehash: 5841af4225f88b36fe727b60a597af208ac830f5
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: 92d0dad86b3f048eb96dd7b17ed09f6e20d7cde2
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827181"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063306"
 ---
 # <a name="microsoft-identity-platform-token-exchange-scenarios-with-saml-and-oidcoauth"></a>SAML ve OıDC/OAuth ile Microsoft Identity platform belirteci değişim senaryoları
 
@@ -30,7 +30,7 @@ SAML ile birçok uygulama uygulanır. Ancak, Graph API OıDC/OAuth protokollerin
 Genel strateji, OıDC/OAuth yığınını uygulamanıza eklemektir. Her iki standardı da uygulayan bir oturum tanımlama bilgisi kullanabilirsiniz. Belirteci açıkça hiç değiş tokuş değilsiniz. Bir oturum tanımlama bilgisi üreten SAML ile ' de bir Kullanıcı oturum açtınız. Graph API bir OAuth akışını istediğinde, kimlik doğrulaması için oturum tanımlama bilgisini kullanırsınız. Bu strateji koşullu erişim denetimlerinin başarılı olduğunu ve kullanıcının yetkilendirildiğini varsayar.
 
 > [!NOTE]
-> OıDC/OAuth davranışı eklemek için önerilen kitaplık, Microsoft kimlik doğrulama Kitaplığı ' dır (MSAL). MSAL hakkında daha fazla bilgi için bkz. [Microsoft kimlik doğrulama kitaplığı 'Na genel bakış (msal)](msal-overview.md). Önceki kitaplığa Active Directory Authentication Library (ADAL) çağrılmıştı, ancak MSAL bunun yerine kullanılması önerilmez.
+> OıDC/OAuth davranışı eklemek için önerilen kitaplık, Microsoft kimlik doğrulama Kitaplığı ' dır (MSAL). MSAL hakkında daha fazla bilgi edinmek için bkz. [Microsoft kimlik doğrulama kitaplığı 'Na genel bakış (msal)](msal-overview.md). Önceki kitaplığa Active Directory Authentication Library (ADAL) çağrılmıştı, ancak MSAL bunun yerine kullanılması önerilmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Kimlik doğrulama akışları ve uygulama senaryoları](authentication-flows-app-scenarios.md)

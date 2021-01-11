@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 01e492072bd75af9f80656b71d2cc1c473d64263
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: cea4503c4e3b9dd58cc475aaec355a2bb2e0bd29
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803808"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065231"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>ITSM Bağlayıcısındaki sorunları giderme
 
@@ -23,13 +23,38 @@ ITSM, uyarıları ServiceNow gibi dış bilet oluşturma sistemine gönderme se�
 
 ## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>Olay ve değişiklik isteği verilerini görselleştirin ve çözümleyin
 
-Bir bağlantı ayarlarken yapılandırmanıza bağlı olarak, ıSMC, 120 güne kadar olay ve değişiklik isteği verilerini eşitleyebilir. Bu veriler için günlük kaydı şeması, bu makalenin [ek bilgiler bölümünde](./itsmc-overview.md) verilmiştir.
+Bir bağlantı ayarlarken yapılandırmanıza bağlı olarak, ıSMC, 120 güne kadar olay ve değişiklik isteği verilerini eşitleyebilir. Bu veriler için günlük kaydı şeması, bu makalenin [ek bilgiler bölümünde](./itsmc-synced-data.md) verilmiştir.
 
 ISMC panosunu kullanarak olay ve değişiklik isteği verilerini görselleştirebilirsiniz:
 
 ![ISMC panosunu gösteren ekran görüntüsü.](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
 
 Pano, bağlantı sorunlarını analiz etmek için bir başlangıç noktası olarak kullanabileceğiniz bağlayıcı durumu hakkında bilgi de sağlar.
+
+### <a name="error-investigation-using-the-dashboard"></a>Panoyu kullanarak araştırma hatası
+
+Panodaki hataları görüntülemek için sonraki adımları izlemeniz gerekir:
+
+1. **Tüm kaynaklarda**, **ServiceDesk 'yi arayın (*çalışma alanınızın adı*)**:
+
+   ![Azure portal son kaynakları gösteren ekran görüntüsü.](media/itsmc-definition/create-new-connection-from-resource.png)
+
+2. Sol bölmedeki **çalışma alanı veri kaynakları** altında **ITSM bağlantıları**' nı seçin:
+
+   ![ITSM bağlantıları menü öğesini gösteren ekran görüntüsü.](media/itsmc-overview/add-new-itsm-connection.png)
+
+3. Sol taraftaki kutuda **BT hizmet yönetimi Bağlayıcısı** **Özet altında,** **Özeti görüntüle**' yi seçin:
+
+    ![Görünüm özetini gösteren ekran görüntüsü.](media/itsmc-resync-servicenow/dashboard-view-summary.png)
+
+4. Sol taraftaki kutudaki **BT hizmet yönetimi Bağlayıcısı** **Özet** altında, grafiğe tıklayın:
+
+    ![Graph tıklamesinin gösterildiği ekran görüntüsü.](media/itsmc-resync-servicenow/dashboard-graph-click.png)
+
+5. Bu Panoyu kullanarak, bağlayıcıdaki durum ve hataları inceleyebilirsiniz.
+    ![Bağlayıcı durumunu gösteren ekran görüntüsü.](media/itsmc-resync-servicenow/connector-dashboard.png)
+
+### <a name="service-map"></a>Hizmet eşlemesi
 
 Ayrıca, Hizmet Eşlemesi etkilenen bilgisayarlara karşı eşitlenen olayları da görselleştirebilirsiniz.
 

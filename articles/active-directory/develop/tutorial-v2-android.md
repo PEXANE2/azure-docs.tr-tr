@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 746d4ac2d346d67b5ca796c19c799f654715acc4
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 1282c27378e6a088a600a3ab3105f3f548984d03
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013592"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063153"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>Öğretici: kullanıcılarda oturum açın ve Android uygulamasından Microsoft Graph API 'sini çağırın
 
@@ -71,7 +71,7 @@ Henüz bir Android uygulamanız yoksa, yeni bir proje ayarlamak için aşağıda
 6. **En düşük API düzeyini** **api 19** veya üzeri olarak ayarlayın ve **son**' a tıklayın.
 7. Proje görünümünde, açılan listeden **Proje** ' yi seçerek kaynak ve kaynak olmayan proje dosyalarını görüntüleyin, **App/Build. Gradle** dosyasını açın ve `targetSdkVersion` olarak ayarlayın `28` .
 
-## <a name="integrate-with-microsoft-authentication-library"></a>Microsoft kimlik doğrulama kitaplığıyla tümleştirin
+## <a name="integrate-with-the-microsoft-authentication-library"></a>Microsoft kimlik doğrulama kitaplığıyla tümleştirin
 
 ### <a name="register-your-application"></a>Uygulamanızı kaydetme
 
@@ -90,7 +90,7 @@ Henüz bir Android uygulamanız yoksa, yeni bir proje ayarlamak için aşağıda
 
 1. KeyTool tarafından oluşturulan **imza karmasını** girin.
 1. Uygulamanızı daha sonra yapılandırırken girebilmeniz için **Android yapılandırma** sayfasında görünen **msal yapılandırmasını** **Yapılandır** ve Kaydet ' i seçin.  
-1. **Bitti**’yi seçin.
+1. **Bitti** seçeneğini belirleyin.
 
 ### <a name="configure-your-application"></a>Uygulamanızı yapılandırma
 

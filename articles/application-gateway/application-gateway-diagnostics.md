@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: 9d2fba48762e11a92f6f3925c969b01aebbe3630
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: e18267d5a810826e41e05eb3dde3cd82a8eb9197
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347600"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065329"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway için arka uç sistem durumu ve tanılama günlükleri
 
@@ -222,7 +222,7 @@ Erişim günlüğü, yalnızca, önceki adımlarda açıklandığı şekilde, he
 |Sunucu yönlendirmeli| Application Gateway 'in isteği yönlendiren arka uç sunucusu.|
 |serverStatus| Arka uç sunucusunun HTTP durum kodu.|
 |serverResponseLatency| Arka uç sunucusundan gelen yanıtın gecikmesi.|
-|konak| İsteğin ana bilgisayar üstbilgisinde listelenen adres. Yeniden yazan, bu alan güncelleştirilmiş ana bilgisayar adını içerir|
+|konak| İsteğin ana bilgisayar üstbilgisinde listelenen adres. Üstbilgi yeniden yazma kullanılarak yeniden yazan bu alan güncelleştirilmiş ana bilgisayar adını içerir|
 |originalRequestUriWithArgs| Bu alan, özgün istek URL 'sini içerir |
 |requestUri| Bu alan, Application Gateway yeniden yazma işleminden sonraki URL 'YI içerir |
 |originalHost| Bu alan, özgün istek ana bilgisayar adını içerir

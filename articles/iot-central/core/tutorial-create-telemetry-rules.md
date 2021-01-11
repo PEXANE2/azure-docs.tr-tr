@@ -7,12 +7,12 @@ ms.date: 01/08/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a1991860e1599020c5a91c09dfb30a96ed442ff7
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 6be49ec3777b4bcaa033a60546e95711090662a4
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033855"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065295"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Öğretici: Azure IoT Central uygulamanızda kural oluşturma ve bildirimleri ayarlama
 
@@ -24,7 +24,7 @@ Cihazlar, cihazdan sayısal veri göndermek için telemetri kullanır. Seçilen 
 
 Bu öğreticide, sanal bir algılayıcı cihazındaki sıcaklık 70 F 'yi aştığında bir e-posta göndermek için bir kural oluşturacaksınız &deg; .
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -118,4 +118,4 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 Eşik tabanlı bir kural tanımladığınıza göre, önerilen sonraki adım şunları yapmayı öğrenmektedir:
 
 > [!div class="nextstepaction"]
-> [Sürekli veri vermeyi yapılandırma](./howto-export-data.md).
+> [Kurallar üzerinde Web kancaları oluşturun](./howto-create-webhooks.md).

@@ -13,15 +13,15 @@ ms.date: 05/29/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 5eb30f7dcf4b459b0af0bd8de965971fbbe44863
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c96d161e55261af1bbe04eae6ead1d245158d02
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85477660"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064836"
 ---
 # <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>MSAL.js kullanarak belirteçleri sessizce alırken sayfa yeniden yüklemeden kaçının
-JavaScript (MSAL.js) için Microsoft kimlik doğrulama Kitaplığı `iframe` , arka planda belirteçleri sessizce almak ve yenilemek için gizli öğeleri kullanır. Azure AD belirteci, belirteç isteğinde belirtilen kayıtlı redirect_uri geri döndürür (varsayılan olarak uygulamanın kök sayfasıdır). Yanıt bir 302 olduğundan, ' de yüklenen almaya karşılık gelen HTML ile sonuçlanır `redirect_uri` `iframe` . Genellikle uygulama `redirect_uri` kök sayfasıdır ve bu, yeniden yüklenmesine neden olur.
+JavaScript (MSAL.js) için Microsoft kimlik doğrulama kitaplığı, `iframe` arka planda belirteçleri sessizce almak ve yenilemek için gizli öğeleri kullanır. Azure AD belirteci, belirteç isteğinde belirtilen kayıtlı redirect_uri geri döndürür (varsayılan olarak uygulamanın kök sayfasıdır). Yanıt bir 302 olduğundan, ' de yüklenen almaya karşılık gelen HTML ile sonuçlanır `redirect_uri` `iframe` . Genellikle uygulama `redirect_uri` kök sayfasıdır ve bu, yeniden yüklenmesine neden olur.
 
 Diğer durumlarda, uygulamanın kök sayfasına gidildiğinde kimlik doğrulaması yapılması gerekiyorsa, iç içe geçmiş `iframe` öğelere veya hataya yol açabilir `X-Frame-Options: deny` .
 

@@ -1,7 +1,7 @@
 ---
 title: Xamarin Android kod yapılandırması ve sorun giderme (MSAL.NET) | Mavisi
 titleSuffix: Microsoft identity platform
-description: .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ile Xamarin Android kullanma hakkında konular hakkında bilgi edinin.
+description: .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ile Xamarin Android kullanımıyla ilgili önemli noktalar hakkında bilgi edinin.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,16 +13,16 @@ ms.date: 08/28/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 320d48535c4792a4d610888c6a7030568ccf16bc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 34f2b146dda6e739f977c4894b5ec333c79d74d4
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995191"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063442"
 ---
 # <a name="configuration-requirements-and-troubleshooting-tips-for-xamarin-android-with-msalnet"></a>MSAL.NET ile Xamarin Android için yapılandırma gereksinimleri ve sorun giderme ipuçları
 
-.NET için Microsoft kimlik doğrulama kitaplığı ile Xamarin Android kullanırken kodunuzda yapmanız gereken birkaç yapılandırma değişikliği vardır (MSAL.NET). Aşağıdaki bölümlerde, en yaygın sorunlardan bazılarını önlemenize yardımcı olmak üzere, gerekli değişiklikler ve bir [sorun giderme](#troubleshooting) bölümü gelmelidir.
+.NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ile Xamarin Android kullanırken kodunuzda yapmanız gereken birkaç yapılandırma değişikliği vardır. Aşağıdaki bölümlerde, en yaygın sorunlardan bazılarını önlemenize yardımcı olmak üzere, gerekli değişiklikler ve bir [sorun giderme](#troubleshooting) bölümü gelmelidir.
 
 ## <a name="set-the-parent-activity"></a>Üst etkinliği ayarla
 
@@ -160,7 +160,7 @@ Bu örnek, doğru bir dosya yolu içerir:
 
 Daha fazla bilgi için [Microsoft Identity platform kullanan bir Xamarin mobil uygulaması](https://github.com/azure-samples/active-directory-xamarin-native-v2#android-specific-considerations)örneğine bakın. Aşağıdaki tabloda README dosyasındaki ilgili bilgiler özetlenmektedir.
 
-| Örnek | Platform | Description |
+| Örnek | Platform | Açıklama |
 | ------ | -------- | ----------- |
 |[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin. iOS, Android, UWP | Azure AD 2,0 uç noktası aracılığıyla Microsoft kişisel hesaplarının ve Azure AD kimlik doğrulaması için MSAL kullanmayı gösteren basit bir Xamarin. Forms uygulaması. Uygulama ayrıca Microsoft Graph nasıl erişebileceğini ve elde edilen belirtecin nasıl gösterileceğini gösterir. <br>![Kimlik doğrulama akışı diyagramı](media/msal-net-xamarin-android-considerations/topology.png) |
 

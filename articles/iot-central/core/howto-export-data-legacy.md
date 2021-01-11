@@ -7,19 +7,19 @@ ms.author: viviali
 ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 9e5f4fd14f56f0a2dff45dd2650ea552b07fecd7
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: d4c099d29a843b4c354ffb218887dc7ffab51771
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987363"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065448"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-legacy"></a>Veri dışa aktarma kullanarak IoT verilerini bulut hedeflerine dışa aktarma (eski)
 
 > [!Note]
 > Bu makalede IoT Central ' deki eski veri dışa aktarma özellikleri açıklanmaktadır.
 >
-> - Yeni Önizleme verileri dışarı aktarma özellikleri hakkında daha fazla bilgi için bkz. [veri dışa aktarma kullanarak IoT verilerini bulut hedeflerine dışa aktarma](./howto-export-data.md).
+> - En son veri dışa aktarma özellikleri hakkında daha fazla bilgi için bkz. [veri dışarı aktarma kullanarak IoT verilerini bulut hedeflerine dışa aktarma](./howto-export-data.md).
 > - Önizleme verileri dışarı aktarma ve eski verileri dışarı aktarma özellikleri arasındaki farklar hakkında bilgi edinmek için [karşılaştırma tablosuna](./howto-export-data.md#comparison-of-legacy-data-export-and-data-export)bakın.
 
 Bu makalede, Azure IoT Central 'da veri dışarı aktarma özelliğinin nasıl kullanılacağı açıklanır. Bu özellik verilerinizi **azure Event Hubs**, **Azure Service Bus** veya **Azure Blob Storage** örneklerine sürekli olarak dışa aktarmanıza olanak tanır. Veri dışa aktarma JSON biçimini kullanır ve Telemetriyi, cihaz bilgilerini ve cihaz şablonu bilgilerini içerebilir. İçin, bu verileri kullan:

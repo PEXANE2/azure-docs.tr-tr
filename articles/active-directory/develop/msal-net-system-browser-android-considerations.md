@@ -13,16 +13,16 @@ ms.date: 10/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 8f755b42249a88a2d37117003d561f79aea6b170
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4230a194fb18587a209c100a39b0924e6170502d
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88166000"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063476"
 ---
 #  <a name="xamarin-android-system-browser-considerations-for-using-msalnet"></a>MSAL.NET kullanmaya yönelik Xamarin Android Sistem tarayıcısı konuları
 
-Bu makalede, .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ile Xamarin Android 'de sistem tarayıcısını kullandığınızda göz önünde bulundurmanız gerekenler açıklanmaktadır.
+Bu makalede, .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ile Xamarin Android üzerinde sistem tarayıcısını kullandığınızda göz önünde bulundurmanız gerekenler açıklanmaktadır.
 
 MSAL.NET 2.4.0 Preview sürümünden itibaren, MSAL.NET Chrome dışındaki tarayıcıları destekler. Artık, kimlik doğrulaması için Android cihazında Chrome 'un yüklü olmasını gerektirmez.
 
@@ -44,16 +44,16 @@ Aşağıdaki tabloda, kimlik doğrulama uyumluluğu için test edilmiş cihazlar
 
 | Cihaz | Tarayıcı     |  Sonuç  | 
 | ------------- |:-------------:|:-----:|
-| Huawei/One + | Chrome\* | Aktar|
-| Huawei/One + | Edge\* | Aktar|
-| Huawei/One + | Firefox\* | Aktar|
-| Huawei/One + | Brave\* | Aktar|
-| Tek + | Eko\* | Aktar|
-| Tek + | Kivi\* | Aktar|
-| Huawei/One + | Opera | Aktar|
-| Huawei | İşletimsel mini | Aktar|
-| Huawei/One + | InBrowser | Aktar|
-| Tek + | Maxthon | Aktar|
+| Huawei/One + | Chrome\* | Başarılı|
+| Huawei/One + | Edge\* | Başarılı|
+| Huawei/One + | Firefox\* | Başarılı|
+| Huawei/One + | Brave\* | Başarılı|
+| Tek + | Eko\* | Başarılı|
+| Tek + | Kivi\* | Başarılı|
+| Huawei/One + | Opera | Başarılı|
+| Huawei | İşletimsel mini | Başarılı|
+| Huawei/One + | InBrowser | Başarılı|
+| Tek + | Maxthon | Başarılı|
 | Huawei/One + | DuckDuckGo | Kullanıcı kimlik doğrulamasını iptal etti|
 | Huawei/One + | UC tarayıcısı | Kullanıcı kimlik doğrulamasını iptal etti|
 | Tek + | Dolphin | Kullanıcı kimlik doğrulamasını iptal etti|

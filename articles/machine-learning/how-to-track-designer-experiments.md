@@ -8,15 +8,15 @@ ms.author: keli19
 ms.reviewer: peterlu
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 11/25/2020
+ms.date: 01/11/2021
 ms.topic: conceptual
 ms.custom: designer
-ms.openlocfilehash: 29d83f4acddfce6294457f87519d62e35f52bf15
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: b940f5c9bd14bcec404827daaef666da802d969b
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709427"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065261"
 ---
 # <a name="enable-logging-in-azure-machine-learning-designer-pipelines"></a>Azure Machine Learning tasarımcı işlem hatları 'nda günlüğü etkinleştir
 
@@ -27,7 +27,7 @@ SDK yazma deneyimini kullanarak ölçümleri günlüğe kaydetme hakkında daha 
 
 ## <a name="enable-logging-with-execute-python-script"></a>Python betiği yürütme ile günlüğe kaydetmeyi etkinleştirme
 
-Tasarımcı işlem hatlarında günlüğe kaydetmeyi etkinleştirmek için __Python betiği yürütme__ modülünü kullanın. Bu iş akışı ile herhangi bir değer günlüğe kaydedebilir, ancak çalışma sırasında model performansını izlemek için __model değerlendir__ modülünden ölçümleri günlüğe kaydetmek yararlı olur.
+Tasarımcı işlem hatlarında günlüğe kaydetmeyi etkinleştirmek için [Python betiği yürütme](./algorithm-module-reference/execute-python-script.md) modülünü kullanın. Bu iş akışı ile herhangi bir değer günlüğe kaydedebilir, ancak çalışma sırasında model performansını izlemek için __model değerlendir__ modülünden ölçümleri günlüğe kaydetmek yararlı olur.
 
 Aşağıdaki örnek, modeli değerlendir ve Python betik modüllerini Yürüt ile iki eğitilen modelin ortalama kare içine nasıl ekleneceğini gösterir.
 
@@ -53,7 +53,7 @@ Aşağıdaki örnek, modeli değerlendir ve Python betik modüllerini Yürüt il
         
         # Log left output port result of Evaluate Model. This also works when evaluate only 1 model.
         parent_run.log(name='Mean_Absolute_Error (left port)', value=dataframe1['Mean_Absolute_Error'][0])
-        # Log right output port result of Evaluate Model.
+        # Log right output port result of Evaluate Model. The following line should be deleted if you only connect one Score Module to the` left port of Evaluate Model module.
         parent_run.log(name='Mean_Absolute_Error (right port)', value=dataframe1['Mean_Absolute_Error'][1])
 
         return dataframe1,
@@ -81,3 +81,4 @@ Bu makalede, tasarımcıda günlükleri nasıl kullanacağınızı öğrendiniz.
 
 * Tasarımcı işlem hatlarında sorun gidermeyi öğrenin, bkz. ML işlem hatları [sorunlarını giderme &](how-to-debug-pipelines.md#azure-machine-learning-designer).
 * SDK yazma deneyiminde ölçümleri günlüğe kaydetmek için Python SDK 'yı nasıl kullanacağınızı öğrenin. bkz. [Azure ML eğitim çalıştırmaları 'nda günlüğü etkinleştirme](how-to-track-experiments.md).
+* Tasarımcıda [Python betiğini yürütme](./algorithm-module-reference/execute-python-script.md) kullanmayı öğrenin.

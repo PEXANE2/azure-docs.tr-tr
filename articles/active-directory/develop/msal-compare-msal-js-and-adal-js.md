@@ -13,16 +13,16 @@ ms.date: 04/10/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 5d91514af9aea3dd7ea13b94681fbb27c53772fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6894d84f489d3719f1106ba4de79cb85fa45c5ed
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88120907"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064959"
 ---
-# <a name="differences-between-msal-js-and-adal-js"></a>MSAL JS ve ADAL JS arasındaki farklar
+# <a name="differences-between-msaljs-and-adaljs"></a>MSAL.js ve ADAL.js arasındaki farklar
 
-JavaScript (MSAL.js) için Microsoft kimlik doğrulama kitaplığı ve JavaScript (ADAL.js) için Azure AD kimlik doğrulaması kitaplığı, Azure AD varlıklarının kimliğini doğrulamak ve Azure AD 'de belirteçleri istemek için kullanılır. Bu aşamada, çoğu geliştirici, ADAL kullanarak belirteçleri isteyerek Azure AD kimliklerinin (iş ve okul hesapları) kimliğini doğrulamak üzere geliştiriciler için Azure AD (v 1.0) ile çalıştık. Artık MSAL.js kullanarak Microsoft Identity platform (v 2.0) aracılığıyla daha geniş bir Microsoft kimliği kümesinin (Azure AD kimlikleri ve Microsoft hesapları ve sosyal ve yerel hesaplar Azure AD B2C aracılığıyla) kimlik doğrulaması yapabilirsiniz.
+JavaScript için Microsoft kimlik doğrulama kitaplığı (MSAL.js) ve JavaScript (ADAL.js) için Azure AD kimlik doğrulama kitaplığı, Azure AD varlıklarının kimliğini doğrulamak ve Azure AD 'de belirteçleri istemek için kullanılır. Bu aşamada, çoğu geliştirici, ADAL kullanarak belirteçleri isteyerek Azure AD kimliklerinin (iş ve okul hesapları) kimliğini doğrulamak üzere geliştiriciler için Azure AD (v 1.0) ile çalıştık. Artık MSAL.js kullanarak Microsoft Identity platform (v 2.0) aracılığıyla daha geniş bir Microsoft kimliği kümesinin (Azure AD kimlikleri ve Microsoft hesapları ve sosyal ve yerel hesaplar Azure AD B2C aracılığıyla) kimlik doğrulaması yapabilirsiniz.
 
 Bu makalede JavaScript (MSAL.js) için Microsoft kimlik doğrulama kitaplığı ve JavaScript (ADAL.js) için Azure AD kimlik doğrulama kitaplığı arasından seçim yapabileceğiniz ve iki kitaplığı karşılaştıran açıklanır.
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 59924c1f876d08aa504f19c5d6c86dca32fbd1e2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 9c53ea5bad88eb79940274c409218045c06d7981
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173473"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064977"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>Geliştirdiğiniz mobil uygulamalarda çoklu oturum açma ve uygulama koruma ilkelerini destekleme
 
@@ -36,7 +36,7 @@ Ayrıca, uygulamanızda çoklu oturum açmayı etkinleştirmek, modern kimlik do
 
 Uygulamanızın çoklu oturum açma özelliğinden yararlanmasını sağlamak için aşağıdakiler önerilir.
 
-### <a name="use-microsoft-authentication-library-msal"></a>Microsoft kimlik doğrulama kitaplığı (MSAL) kullanma
+### <a name="use-the-microsoft-authentication-library-msal"></a>Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanma
 
 Uygulamanızda çoklu oturum açmayı uygulamak için en iyi seçenek, [Microsoft kimlik doğrulama kitaplığı 'nı (msal)](msal-overview.md)kullanmaktır. MSAL kullanarak, en az kod ve API çağrılarında uygulamanıza kimlik doğrulaması ekleyebilir, [Microsoft Identity platformunun](./index.yml)tüm özelliklerini alabilir ve Microsoft 'un güvenli bir kimlik doğrulama çözümünün bakımını gerçekleştirmesini sağlayabilirsiniz. Varsayılan olarak, MSAL, uygulamanız için SSO desteği ekler. Ayrıca, uygulama koruma ilkelerini uygulamayı da planlamanız planlanmanız durumunda MSAL kullanılması da bir gereksinimdir.
 

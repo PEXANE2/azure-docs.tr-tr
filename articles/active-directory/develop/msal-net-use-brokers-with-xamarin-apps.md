@@ -1,7 +1,7 @@
 ---
 title: Xamarin iOS & Android ile aracıları kullanma | Mavisi
 titleSuffix: Microsoft identity platform
-description: .NET için Microsoft Authenticator ve Microsoft kimlik doğrulama kitaplığı 'nı (MSAL.NET) kullanan Xamarin iOS uygulamalarını ayarlamayı öğrenin. Ayrıca .NET için Azure AD kimlik doğrulama kitaplığı 'ndan (ADAL.NET) .NET için Microsoft kimlik doğrulama Kitaplığı ' na (MSAL.NET) geçiş yapmayı öğrenin.
+description: .NET için Microsoft Authenticator ve Microsoft kimlik doğrulama kitaplığı 'nı (MSAL.NET) kullanan Xamarin iOS uygulamalarını ayarlamayı öğrenin. Ayrıca, .NET için Azure AD kimlik doğrulama kitaplığı 'ndan (ADAL.NET) .NET için Microsoft kimlik doğrulama kitaplığı 'na (MSAL.NET) geçiş yapmayı öğrenin.
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 10fb55cc133d5d6b39ca2809474ff20dfe500708
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 73fbda9a3356e2877617391430a7f2b555b1a0e5
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017808"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063493"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Xamarin uygulamalarında Microsoft Authenticator veya Intune Şirket Portalı kullanma
 
@@ -171,7 +171,7 @@ Aracıyı kullandığınızda, yeniden yönlendirme URI 'nizin ek bir gereksinim
 $"msauth.{BundleId}://auth"
 ```
 
-İşte bir örnek:
+Aşağıda bir örnek verilmiştir:
 
 ```csharp
 public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth";
