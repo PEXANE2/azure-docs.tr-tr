@@ -109,7 +109,7 @@
     - name: Fiyatlandırmayı anlama
       href: understanding-pricing.md
     - name: SSS
-      href: application-gateway-faq.md
+      href: application-gateway-faq.yml
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Tek bir site barındırma
@@ -120,7 +120,7 @@
           href: tutorial-manage-web-traffic-cli.md
     - name: İç yük dengeleyicisi yapılandırma
       items:
-        - name: Azure portalı
+        - name: Azure portal
           href: configure-application-gateway-with-private-frontend-ip.md
         - name: Azure PowerShell
           href: application-gateway-ilb-arm.md
