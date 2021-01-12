@@ -14,14 +14,14 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6da053bb04e5ee3f2b2b307c382f2695663669e5
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 568584b849b2c5977d4bbb6216697dce3c498cfd
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020664"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107931"
 ---
-# <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'deki yönetici rolü izinleri
+# <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'de yönetici rolü izinleri
 
 Azure Active Directory (Azure AD) kullanarak, daha az ayrıcalıklı rollerdeki kimlik görevlerini yönetmek için sınırlı yöneticiler atayabilirsiniz. Yöneticiler, Kullanıcı ekleme veya değiştirme, yönetici rolleri atama, Kullanıcı parolalarını sıfırlama, kullanıcı lisanslarını yönetme ve etki alanı adlarını yönetme gibi amaçlar için atanabilir. [Varsayılan Kullanıcı izinleri](../fundamentals/users-default-permissions.md) yalnızca Azure AD 'deki Kullanıcı ayarları ' nda değiştirilebilir.
 
@@ -770,6 +770,7 @@ Azure AD 'de cihazları yönetmek için tam erişim.
 | Microsoft. Directory/directoryRoles/allProperties/allTasks | DirectoryRoles oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
 | Microsoft. Directory/directoryRoleTemplates/allProperties/allTasks | DirectoryRoleTemplates oluşturup silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
 | Microsoft. Directory/Domains/allProperties/allTasks | Etki alanlarını oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
+| Microsoft. Directory/entitlementManagement/allProperties/allTasks | Kaynakları oluşturup silin ve Azure AD Yetkilendirme Yönetimi 'nde tüm özellikleri okuyun ve güncelleştirin. |
 | Microsoft. Directory/Groups/allProperties/allTasks | Grupları oluşturun ve silin ve Azure Active Directory tüm özellikleri okuyun ve güncelleştirin. |
 | Microsoft. Directory/Groupsastifbletoroles/allProperties/Update | Azure Active Directory, ısastifbletorole özelliği true olarak ayarlanan grupları güncelleştirin. |
 | Microsoft. Directory/Groupsastifbletoroles/Create | Azure Active Directory ' de ısastifbletorole özelliği true olarak ayarlanan gruplar oluşturun. |
@@ -831,6 +832,7 @@ Azure AD 'de cihazları yönetmek için tam erişim.
 | --- | --- |
 | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
 | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
+| Microsoft. Directory/entitlementManagement/allProperties/Read | Azure AD Yetkilendirme Yönetimi 'ndeki tüm özellikleri okuyun. |
 | Microsoft. office365. Karmaşıssuancemanager/allEntities/allTasks | Office 365 uyumluluk Yöneticisi 'nin tüm yönlerini yönetme |
 | Microsoft. office365. serviceHealth/allEntities/allTasks | Microsoft 365 hizmeti durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
@@ -1133,6 +1135,7 @@ Genel yöneticinin yapabileceği her şeyi okuyabilir, ancak düzenleyemez.
 | Microsoft. Directory/directoryRoles/eli, Lemembers/Read    | Azure Active Directory directoryRoles. Eli, Lemembers özelliğini okuyun. |
 | Microsoft. Directory/directoryRoles/Members/Read    | Azure Active Directory içindeki directoryRoles. Members özelliğini okuyun. |
 | Microsoft. Directory/Domains/Basic/Read    | Azure Active Directory etki alanlarında temel özellikleri okuyun. |
+| Microsoft. Directory/entitlementManagement/allProperties/Read | Azure AD Yetkilendirme Yönetimi 'ndeki tüm özellikleri okuyun. |
 | Microsoft. Directory/Groups/Approtaatamalar/Read    | Azure Active Directory groups. Approtaatamalar özelliğini okuyun. |
 | Microsoft. Directory/Groups/Basic/Read    | Azure Active Directory gruplardaki temel özellikleri okuyun. |
 | Microsoft. Directory/Groups/hiddenMembers/Read    | Azure Active Directory gruplar. hiddenMembers özelliğini okuyun. |
@@ -1231,7 +1234,7 @@ Genel yöneticinin yapabileceği her şeyi okuyabilir, ancak düzenleyemez.
 
 ### <a name="hybrid-identity-administrator-permissions"></a>Karma kimlik Yöneticisi izinleri
 
-Bulut sağlama ve kimlik doğrulama hizmetlerini etkinleştirin, dağıtın, yapılandırın, yönetin, izleyin ve sorunlarını giderin. 
+AD 'yi Azure AD bulut sağlamasını ve Federasyon ayarlarını yönetebilir. 
 
 | **Eylemler** | **Açıklama** |
 | --- | --- |
@@ -1249,8 +1252,10 @@ Bulut sağlama ve kimlik doğrulama hizmetlerini etkinleştirin, dağıtın, yap
 | Microsoft. Directory/applicationTemplates/örnek oluştur | Uygulama şablonlarından Galeri uygulamaları oluşturun. |
 | Microsoft. Directory/auditLogs/allProperties/Read | Azure Active Directory içindeki auditLogs 'ta tüm özellikleri (ayrıcalıklı özellikler dahil) okuyun. |
 | Microsoft. Directory/Cloudsağlamasını/allProperties/allTasks | Azure AD bulut sağlama hizmeti 'nin tüm özelliklerini okuyun ve yapılandırın. |
-| Microsoft. Directory/Federatedaduthentication/allProperties/allTasks | Azure AD 'de Active Directory Federasyon Hizmetleri (ADFS) veya üçüncü taraf Federasyon sağlayıcısı 'nın tüm yönlerini yönetin. |
+| Microsoft. Directory/Domains/allProperties/Read | Etki alanlarının tüm özelliklerini okuyun. |
+| Microsoft. Directory/Domains/Federation/Update | Etki alanlarının Federasyon özelliğini güncelleştirin. |
 | Microsoft. Directory/kuruluş/dirSync/Update | Azure Active Directory içinde Organization. dirSync özelliğini güncelleştirin. |
+| Microsoft. Directory/provisioningLogs/allProperties/Read | Sağlama günlüklerinin tüm özelliklerini okuyun. |
 | Microsoft. Directory/Servicesorumlularını/hedef kitle/güncelleştirme | Azure Active Directory Servicesorumlularını. Audience özelliğini güncelleştirin. |
 | Microsoft. Directory/Servicesorumlularını/kimlik doğrulaması/güncelleştirme | Azure Active Directory Servicesorumlularını. Authentication özelliğini güncelleştirin. |
 | Microsoft. Directory/Servicesorumlularını/temel/güncelleştirme | Azure Active Directory içindeki Servicesorumlularını temel özelliklerini güncelleştirin. |
@@ -1708,9 +1713,10 @@ Güvenlik bilgilerini ve raporlarını okuyabilir ve Azure AD 'de yapılandırma
 | --- | --- |
 | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
 | Microsoft. Azure. Supportbilet/allEntities/allTasks | Dizin düzeyinde hizmetler için Azure destek biletleri oluşturun ve yönetin. |
-| Microsoft. Directory/bitlockerKeys/Key/Read | Azure Active Directory içindeki BitLocker anahtar nesnelerini ve özelliklerini (kurtarma anahtarı dahil) okuyun. |
 | Microsoft. Directory/uygulamalar/ilkeler/güncelleştirme | Azure Active Directory içindeki Applications. Policies özelliğini güncelleştirin. |
 | Microsoft. Directory/auditLogs/allProperties/Read | Azure Active Directory içindeki auditLogs 'ta tüm özellikleri (ayrıcalıklı özellikler dahil) okuyun. |
+| Microsoft. Directory/bitlockerKeys/Key/Read | Azure Active Directory içindeki BitLocker anahtar nesnelerini ve özelliklerini (kurtarma anahtarı dahil) okuyun. |
+| Microsoft. Directory/entitlementManagement/allProperties/Read | Azure AD Yetkilendirme Yönetimi 'ndeki tüm özellikleri okuyun. |
 | Microsoft. Directory/ıdentityprotection/allProperties/Read | Microsoft. AAD. ıdentityprotection içindeki tüm kaynakları okuyun. |
 | Microsoft. Directory/ıdentityprotection/allProperties/Update | Microsoft. AAD. ıdentityprotection içindeki tüm kaynakları güncelleştirin. |
 | Microsoft. Directory/policies/Basic/Update | Azure Active Directory ilkelerde temel özellikleri güncelleştirin. |
@@ -1761,6 +1767,7 @@ Güvenlik olaylarını oluşturur ve yönetir.
 | --- | --- |
 | Microsoft. Directory/auditLogs/allProperties/Read | Azure Active Directory içindeki auditLogs 'ta tüm özellikleri (ayrıcalıklı özellikler dahil) okuyun. |
 | Microsoft. Directory/bitlockerKeys/Key/Read | Azure Active Directory içindeki BitLocker anahtar nesnelerini ve özelliklerini (kurtarma anahtarı dahil) okuyun. |
+| Microsoft. Directory/entitlementManagement/allProperties/Read | Azure AD Yetkilendirme Yönetimi 'ndeki tüm özellikleri okuyun. |
 | Microsoft. Directory/policies/conditionalAccess/temel/okuma | Azure Active Directory içindeki policies. conditionalAccess özelliğini okuyun. |
 | Microsoft. Directory/Signınreports/allProperties/Read | Azure Active Directory içindeki Signınreports 'ta tüm özellikleri (ayrıcalıklı özellikler dahil) okuyun. |
 | Microsoft. AAD. ıdentityprotection/Allentitıes/Read | Microsoft. AAD. ıdentityprotection içindeki tüm kaynakları okuyun. |
@@ -1926,6 +1933,7 @@ Ekip sertifikalı cihazlarda yönetim ile ilgili görevler gerçekleştirebilir.
 | Microsoft. Directory/Contacts/Basic/Update | Azure Active Directory kişilerdeki temel özellikleri güncelleştirin. |
 | Microsoft. Directory/kişiler/oluştur | Azure Active Directory kişiler oluşturun. |
 | Microsoft. Directory/Contacts/Delete | Azure Active Directory kişileri silin. |
+| Microsoft. Directory/entitlementManagement/allProperties/allTasks | Kaynakları oluşturup silin ve Azure AD Yetkilendirme Yönetimi 'nde tüm özellikleri okuyun ve güncelleştirin. |
 | Microsoft. Directory/Groups/Approtaatamalar/güncelleştirme | Azure Active Directory groups. Approtaatamalar özelliğini güncelleştirin. |
 | Microsoft. Directory/Groups/Basic/Update | Azure Active Directory gruplardaki temel özellikleri güncelleştirin. |
 | Microsoft. Directory/gruplar/oluştur | Azure Active Directory grupları oluşturun. |

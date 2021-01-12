@@ -9,14 +9,14 @@ author: stevestein
 ms.custom: sqldbrb=2
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 07/16/2019
+ms.date: 01/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 7dc6cd580687544226b61a29ca9ccf2d1b8dff42
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: f874803e0ae361255754477ca68184255f35b91f
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92671530"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107387"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>BACPAC dosyasına aktarma-Azure SQL veritabanı ve Azure SQL yönetilen örneği
 
@@ -30,6 +30,7 @@ Arşivleme için bir veritabanını dışarı veya başka bir platforma taşıma
 - Blob depolamaya veriyorsanız, BACPAC dosyasının en büyük boyutu 200 GB 'tır. Daha büyük bir BACPAC dosyasını arşivlemek için yerel depolama alanına dışarı aktarın.
 - Bu makalede ele alınan yöntemleri kullanarak BACPAC dosyasını Azure Premium Depolama 'ya aktarmak desteklenmez.
 - Bir güvenlik duvarının arkasındaki depolama Şu anda desteklenmiyor.
+- StorageURI için depolama dosya adı veya giriş değeri 128 karakterden az olmalıdır ve '. ' ile bitemez ve boşluk karakteri veya ' <, >, *,%, &,:, \, /,? ' gibi özel karakterler içeremez. 
 - Dışarı aktarma işlemi 20 saati aşarsa, iptal edilebilir. Dışarı aktarma sırasında performansı artırmak için şunları yapabilirsiniz:
 
   - İşlem boyutunuzu geçici olarak artırın.
@@ -54,9 +55,9 @@ Arşivleme için bir veritabanını dışarı veya başka bir platforma taşıma
 
     ![Veritabanı dışarı aktarma](./media/database-export/database-export2.png)
 
-3. **Tamam** ’a tıklayın.
+3. **Tamam**'a tıklayın.
 
-4. Dışarı aktarma işleminin ilerlemesini izlemek için, dışarı aktarılmakta olan veritabanını içeren sunucu sayfasını açın. **Ayarlar** ' ın altında, **Içeri/dışarı aktarma geçmişi** ' ne tıklayın.
+4. Dışarı aktarma işleminin ilerlemesini izlemek için, dışarı aktarılmakta olan veritabanını içeren sunucu sayfasını açın. **Ayarlar** ' ın altında, **Içeri/dışarı aktarma geçmişi**' ne tıklayın.
 
    ![dışarı aktarma geçmişi](./media/database-export/export-history.png)
 

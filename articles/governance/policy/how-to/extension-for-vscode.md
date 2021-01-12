@@ -1,22 +1,22 @@
 ---
 title: Visual Studio Code için Azure Ilke uzantısı
 description: Visual Studio Code için Azure Ilke uzantısı 'nı kullanarak Azure Resource Manager diğer adları arama hakkında bilgi edinin.
-ms.date: 10/20/2020
+ms.date: 01/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 8c7357d70323fa74ec77cf43bd11f149a2f99154
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 4c4ba0eeb0506179ff92ead0ee86f048600d157e
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906310"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107948"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Visual Studio Code için Azure Ilke uzantısı 'nı kullanın
 
-> Azure Ilke uzantısı sürüm **0.1.0** ve üzeri için geçerlidir
+> Azure Ilke uzantısı sürüm **0.1.1** ve üzeri için geçerlidir
 
 [Diğer adları](../concepts/definition-structure.md#aliases)aramak, kaynakları ve ilkeleri gözden geçirmek, nesneleri dışarı aktarmak ve ilke tanımlarını değerlendirmek için Visual Studio Code Için Azure ilke uzantısı 'nı kullanmayı öğrenin. İlk olarak, Visual Studio Code Azure Ilke uzantısının nasıl yükleneceğini açıklayacağız. Daha sonra diğer adların nasıl arandığını adım adım inceleyeceğiz.
 
-Visual Studio Code için Azure Ilke uzantısı, Visual Studio Code tarafından desteklenen tüm platformlara yüklenebilir. Bu destek, Windows, Linux ve macOS içerir.
+Visual Studio Code için Azure Ilke uzantısı Windows 'a yüklenebilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -29,8 +29,8 @@ Bu makaledeki adımları tamamlamak için aşağıdaki öğeler gereklidir:
 
 Önkoşulları karşıladıktan sonra, aşağıdaki adımları izleyerek Visual Studio Code için Azure Ilke uzantısı 'nı yükleyebilirsiniz:
 
-1. Visual Studio Code'u açın.
-1. Menü çubuğunda, uzantıları **görüntüle**' ye gidin  >  **Extensions**.
+1. Visual Studio Code’u açın.
+1. Menü çubuğunda, uzantıları **görüntüle**' ye gidin  >  .
 1. Arama kutusuna **Azure ilkesi**' ni girin.
 1. Arama sonuçlarından **Azure ilkesi** ' ni seçin ve ardından **Install**' ı seçin.
 1. Gerektiğinde **yeniden yükle** ' yi seçin.
@@ -93,7 +93,7 @@ Azure Ilke uzantısı kaynak sağlayıcısına göre seçilen aboneliklerdeki ka
 - **Kaynak grupları**
   - Kaynak grubuna göre tüm kaynaklar
 
-Varsayılan olarak, uzantı ' kaynak sağlayıcısı ' bölümünü, ilke diğer adlarına sahip mevcut kaynak ve kaynaklarla filtreler. **Settings**  >  **Extensions**  >  Tüm kaynak sağlayıcılarını filtrelemeden görmek için ayarlar uzantıları **Azure ilkesi** ' nde bu davranışı değiştirin.
+Varsayılan olarak, uzantı ' kaynak sağlayıcısı ' bölümünü, ilke diğer adlarına sahip mevcut kaynak ve kaynaklarla filtreler.   >    >  Tüm kaynak sağlayıcılarını filtrelemeden görmek için ayarlar uzantıları **Azure ilkesi** ' nde bu davranışı değiştirin.
 
 Tek bir abonelikte yüzlerce veya binlerce kaynağa sahip müşteriler, kaynaklarını bulmaya yönelik aranabilir bir yol gerektirebilir. Azure Ilke uzantısı, aşağıdaki adımlarla belirli bir kaynağı aramanızı mümkün kılar:
 

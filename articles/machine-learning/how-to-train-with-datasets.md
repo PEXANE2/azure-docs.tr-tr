@@ -12,19 +12,21 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 8b95c5a45992c895713e0be056856172b14b830d
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 52b52c4c19b22fb1afd76d1e8dfa4163326c0244
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740683"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108600"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Azure Machine Learning veri kümeleriyle eğitme
 
 
-Bu makalede, eğitim denemeleri [Azure Machine Learning veri kümeleriyle](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py) nasıl çalışacağınızı öğreneceksiniz.  Bağlantı dizeleri veya veri yolları hakkında endişelenmeden, yerel veya uzaktan işlem Hedefinizdeki veri kümelerini kullanabilirsiniz.
+Bu makalede makine öğrenimi modellerini eğitmek için [Azure Machine Learning veri kümeleriyle](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py) nasıl çalışacağınızı öğreneceksiniz.  Bağlantı dizeleri veya veri yolları hakkında endişelenmeden, yerel veya uzaktan işlem Hedefinizdeki veri kümelerini kullanabilirsiniz. 
 
 Azure Machine Learning veri kümeleri, [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py), [hyperdrive](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py) ve [Azure Machine Learning işlem hatları](how-to-create-your-first-pipeline.md)gibi Azure Machine Learning eğitim işlevleriyle sorunsuz bir tümleştirme sağlar.
+
+Verilerinizi model eğitimi için kullanılabilir hale getirmek için hazır değilseniz, ancak verilerinizi veri araştırması için Not defterinize yüklemek istiyorsanız, bkz. veri [kümenizdeki verileri keşfetme](how-to-create-register-datasets.md#explore-data). 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -34,7 +36,7 @@ Veri kümeleri oluşturup eğitmeniz için şunlar gerekir:
 
 * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md).
 
-* Azureml [için Azure Machine Learning SDK 'sı yüklendi](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.13.0), bu da azureml-veri kümesi paketini içerir.
+* Paketi içeren [Python için Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.13.0) `azureml-datasets` .
 
 > [!Note]
 > Bazı veri kümesi sınıflarının [azureml-dataprep](/python/api/azureml-dataprep/?preserve-view=true&view=azure-ml-py) paketine bağımlılıkları vardır. Linux kullanıcıları için, bu sınıflar yalnızca şu dağıtımlarda desteklenir: Red Hat Enterprise Linux, Ubuntu, Fedora ve CentOS.
@@ -65,7 +67,7 @@ Aşağıdaki kod, eğitim çalıştırmanızı yapılandırırken belirlediğini
 > [!Note]
 > Özgün veri kaynağınız NaN, boş dizeler veya boş değerler içeriyorsa, kullandığınızda `to_pandas_dataframe()` Bu değerler *null* değer olarak değişir.
 
-Hazırlanan verileri, bellek içi Pandas dataframe 'ten yeni bir veri kümesine yüklemeniz gerekiyorsa, verileri bir Parquet gibi yerel bir dosyaya yazın ve bu dosyadan yeni bir veri kümesi oluşturun. Ayrıca, yerel dosyalardan veya veri depolarındaki yollardan veri kümeleri oluşturabilirsiniz. [Veri kümeleri oluşturma](how-to-create-register-datasets.md)hakkında daha fazla bilgi edinin.
+Hazırlanan verileri, bellek içi Pandas dataframe 'ten yeni bir veri kümesine yüklemeniz gerekiyorsa, verileri bir Parquet gibi yerel bir dosyaya yazın ve bu dosyadan yeni bir veri kümesi oluşturun. [Veri kümeleri oluşturma](how-to-create-register-datasets.md)hakkında daha fazla bilgi edinin.
 
 ```Python
 %%writefile $script_folder/train_titanic.py

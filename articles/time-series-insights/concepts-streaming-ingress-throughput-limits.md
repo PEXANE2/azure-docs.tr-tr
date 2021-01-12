@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/26/2020
 ms.custom: seodec18
-ms.openlocfilehash: c8be18049e6ae74a198f5885a46b70df581e0cd7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7496a7a40df49fa1b9f8410526cb9ec00c10478b
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187468"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108781"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>Akış alma performansı sınırları
 
@@ -34,7 +34,7 @@ Varsayılan olarak, Azure Time Series Insights Gen2, gelen verileri **Azure Time
 
 > [!TIP]
 >
-> * 8 MBps 'ye kadar hızlara kadar olan ortam desteği istek tarafından sağlanarak temin edilebilir.
+> * 2 MBps 'ye kadar hızlara kadar olan ortam desteği istek tarafından sağlanarak temin edilebilir.
 > * Azure portal aracılığıyla bir destek bileti göndererek daha yüksek aktarım hızı gerekiyorsa bizimle iletişim kurun.
 
 * **Örnek 1:**
@@ -47,10 +47,10 @@ Varsayılan olarak, Azure Time Series Insights Gen2, gelen verileri **Azure Time
 
 * **Örnek 2:**
 
-    Contoso Fleet Analytics, her saniye bir olay sunan 40.000 cihaza sahiptir. Bunlar, Azure Time Series Insights Gen2 olay kaynağı olarak 2 bölüm sayısıyla bir olay hub 'ı kullanıyor. Bir olayın boyutu 200 bayttır.
+    Contoso Fleet Analytics, her saniye bir olay sunan 10.000 cihaza sahiptir. Bunlar, Azure Time Series Insights Gen2 olay kaynağı olarak 2 bölüm sayısıyla bir olay hub 'ı kullanıyor. Bir olayın boyutu 200 bayttır.
 
-  * Ortam alma hızı şu şekilde olacaktır: **40.000 cihaz * 200 bayt/olay * 1 olay/sn = 8 Mbps**.
-    * Dengeli bölümler varsayıldığında, bölüm başına hız 4 MBps olur.
+  * Ortam alma hızı şu şekilde olacaktır: **10.000 cihaz * 200 bayt/olay * 1 olay/sn = 2 Mbps**.
+    * Dengeli bölümler varsayıldığında, bölüm başına hız 1 MB/sn olur.
     * Contoso Fleet Analizi ' alım oranı, ortam ve bölüm sınırlarının üzerinde. Gen2 Azure portal aracılığıyla, ortamları için alma hızını artırmak için Azure Time Series Insights bir istek gönderebilir ve sınırlar dahilinde daha fazla bölüm içeren bir olay hub 'ı oluşturabilir.
 
 ## <a name="hub-partitions-and-per-partition-limits"></a>Merkez bölümleri ve bölüm sınırları başına

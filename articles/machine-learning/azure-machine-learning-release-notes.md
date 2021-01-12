@@ -9,16 +9,36 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 1cc6c8cd49a2388ad66a276f4a1667b4c3ee3826
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 0ecf47ecdc66c0005f0d793d91a67af102fb1c76
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070329"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107914"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
 Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK başvuru içeriği için Azure Machine Learning [**Python başvurusu için ana SDK**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) sayfasına gidin.
+
+
+ ## <a name="2021-01-11"></a>2021-01-11
+
+### <a name="azure-machine-learning-sdk-for-python-v1200"></a>Python v 1.20.0 için SDK Azure Machine Learning
++ **Hata düzeltmeleri ve geliştirmeleri**
+  + **Azure-CLI-ml**
+    + framework_version OptimizationConfig 'e eklendi. Model çerçeve çoklu ile kaydedildiğinde kullanılacaktır.
+  + **azureml-automl-runtime**
+    + Bu güncelleştirmede, oto ml SDK 'sının tahmin araç kutusu 'na Holt ile üstel yumuşatma ekledik. Bir zaman serisi verildiğinde, en iyi model [AICC (düzeltilen Akaike 'ın bilgi ölçütü)](https://otexts.com/fpp3/selecting-predictors.html#selecting-predictors) tarafından seçilir ve döndürülür.
+  + **azureml-contrib-iyileştirmesi**
+    + framework_version OptimizationConfig 'e eklendi. Model çerçeve çoklu ile kaydedildiğinde kullanılacaktır.
+  + **azureml-pipeline-steps**
+    + Komut işlemek için gereken CommandStep 'e giriş. Komut yürütülebilir dosyaları, kabuk komutlarını, betikleri, vb. içerebilir.
+  + **azureml-core**
+    + Çalışma alanı oluşturma kullanıcı tarafından atanan kimliği destekler. SDK/CLı 'den UAI desteğini ekleme
+    + Service. Reload () üzerindeki sorunu, yerel dağıtımda score.py üzerinde değişiklik çekmek için düzeltildi.
+    + `run.get_details()` , bu çalıştırma için yazarın adını görüntüleyen "submittedBy" adlı ek bir alana sahiptir.
+    + Model düzenlendi. modelin doğrudan çalıştırılmanızı nasıl kaydedeceğinizi bahsetmek için yöntem belgelerini kaydedin
+   
 
 ## <a name="2020-12-31"></a>2020-12-31
 ### <a name="azure-machine-learning-studio-notebooks-experience-december-update"></a>Azure Machine Learning Studio Not defteri deneyimi (Aralık güncelleştirmesi)
@@ -31,6 +51,7 @@ Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK 
   + Geliştirilmiş sayfa yükleme süreleri
   + Geliştirilmiş performans 
   + Gelişmiş hız ve çekirdek güvenilirliği
+
   
 ## <a name="2020-12-07"></a>2020-12-07
 

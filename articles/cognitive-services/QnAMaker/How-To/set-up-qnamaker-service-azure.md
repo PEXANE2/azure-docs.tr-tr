@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 5af4eb931015e386e35470f2b36341e15f76150f
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: af9087f0dd45212ec88b620dcd965c895b86bbce
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065414"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108201"
 ---
 # <a name="manage-qna-maker-resources"></a>Soru-Cevap Oluşturma kaynaklarını yönetme
 
@@ -135,7 +135,7 @@ App Service Ortamı (Ao), Soru-Cevap Oluşturma App Service 'i barındırmak iç
     * App Service 'in yapılandırmasını denetleyin ve bir uygulama ayarı olarak ' BID Yendpointkey ' ekleyin. ' BID Yendpointkey ' değeri "-BID \<app-name\> yendpointkey" olarak ayarlanmalıdır. Uygulama adı App Service URL 'sinde tanımlanmıştır. Örneğin, uygulama hizmeti URL 'SI "mywebsite.myase.p.azurewebsite.net" ise, uygulama adı "mywebsite" olur. Bu durumda, ' bıı Yendpointkey ' değeri "mywebsite-bıı Yendpointkey" olarak ayarlanmalıdır.
     * Azure Search hizmeti oluşturun.
     * Azure Search ve uygulama ayarlarının uygun şekilde yapılandırıldığından emin olun. 
-      Lütfen bu [öğreticiyi](https://docs.microsoft.com/azure/cognitiveservices/qnamaker/reference-app-service#app-service)izleyin.
+      Lütfen bu [öğreticiyi](https://docs.microsoft.com/azure/cognitive-services/qnamaker/reference-app-service?tabs=v1#app-service)izleyin.
 3.  App Service Ortamı ilişkili ağ güvenlik grubunu güncelleştirin
     * Gereksinimlerinize göre önceden oluşturulmuş gelen güvenlik kurallarını güncelleştirin.
     * ' Hizmet etiketi ' ve kaynak hizmet etiketi ' Biliveservicesmanagement ' olarak kaynağa sahip yeni bir gelen güvenlik kuralı ekleyin.

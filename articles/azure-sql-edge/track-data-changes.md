@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 86e84c60aec99246f58b5dc9d67584b23a3969f3
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: dddaad3e171c757b353deb81ffcb77cfbe706340
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394942"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108271"
 ---
 # <a name="track-data-changes-in-azure-sql-edge"></a>Azure SQL Edge 'de veri değişikliklerini izleme
 
@@ -35,6 +35,9 @@ Bu özelliğin nasıl etkinleştirileceğini veya devre dışı bırakılacağı
 Bu özelliği yönetmek ve izlemek için bkz. [değişiklik verilerini yakalamayı yönetme ve izleme](/sql/relational-databases/track-changes/administer-and-monitor-change-data-capture-sql-server).
 
 Değişen verilerle sorgulama ve çalışmayı anlamak için bkz. [değişiklik verileriyle çalışma](/sql/relational-databases/track-changes/work-with-change-data-sql-server).
+
+> [!NOTE]
+> CLR 'ye bağımlı olan değişiklik verileri yakalama işlevleri Azure SQL Edge 'de desteklenmez.
 
 ## <a name="change-tracking"></a>Change tracking
 

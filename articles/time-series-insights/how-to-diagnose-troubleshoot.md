@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: eca2009ee0470dec9c9ce60d8754f8f7a71619d3
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: d9dd07e3a35d83ff6bd9c7c493768d1197667c39
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740547"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108798"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>Azure Time Series Insights Gen2 ortamını tanılama ve sorun giderme
 
@@ -71,7 +71,7 @@ Zaman serisi KIMLIĞI olmadan veri gönderiyor olabilirsiniz.
 - Bu sorun, ortamınız kısıtlanmakta olduğu için meydana gelebilir.
 
     > [!NOTE]
-    > Time Series Insights, en fazla 6 Mbps alma oranını destekler.
+    > Time Series Insights, en fazla 1 MB/sn alma oranını destekler.
 
 ## <a name="problem-data-was-showing-but-now-ingestion-has-stopped"></a>Sorun: veriler gösteriliyor, ancak şimdi alındı
 

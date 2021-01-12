@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: 1f6757a9f78e3c400d92fd65a0795ceae7570c99
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: f043f7ed63353dcb9cf9fd26690da97b902f32a6
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347583"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108628"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Öğretici: Yönetilen kimlik kullanarak App Service’tan Azure SQL Veritabanı bağlantısını güvenli hale getirme
 
@@ -229,6 +229,9 @@ Cloud Shell istemine geri dönmek için `EXIT` yazın.
 > [!NOTE]
 > Yönetilen kimliklerin arka uç Hizmetleri, bir hedef kaynağın belirtecini yalnızca süresi dolarsa güncelleştiren [bir belirteç önbelleği de sağlar](overview-managed-identity.md#obtain-tokens-for-azure-resources) . SQL veritabanı izinlerinizi yapılandırırken bir hata yaparsanız ve uygulamanızla belirteç almaya *çalıştıktan sonra* izinleri değiştirmeye çalışırsanız, önbelleğe alınan belirtecin süresi dolana kadar güncelleştirilmiş izinlerle yeni bir belirteç alınmaz.
 
+> [!NOTE]
+> AAD, şirket içi SQL Server için desteklenmez ve bu, Mssıs 'yi içerir. 
+
 ### <a name="modify-connection-string"></a>Bağlantı dizesini değiştirme
 
 *Web.config* veya *appsettings.jsüzerinde* yaptığınız değişikliklerin yönetilen kimlikle birlikte çalışıp çalışmadığını unutmayın. bu nedenle, tek şey, Visual Studio 'nun uygulamanızı ilk kez dağıttığı App Service var olan bağlantı dizesini kaldırmaktan emin olur. Aşağıdaki komutu kullanın, ancak *\<app-name>* uygulamanızın adıyla değiştirin.
@@ -251,7 +254,7 @@ Yayımlama sayfasında **Yayımla**'ya tıklayın.
 
 ```bash
 git commit -am "configure managed identity"
-git push azure master
+git push azure main
 ```
 
 Yeni web sayfası yapılacaklar listenizi gösterdiğinde uygulamanızın yönetilen kimliğini kullanarak veritabanına bağlanmakta olduğu anlamına gelir.

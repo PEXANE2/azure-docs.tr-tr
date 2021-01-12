@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/11/2018
 ms.author: kenwith
-ms.openlocfilehash: 714cbb06506cc3e0dffe74007712d9cbad072284
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: f873608d07785e6b99bd8e0fcdadf64a8899d490
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655077"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108424"
 ---
 # <a name="troubleshoot-common-problem-adding-or-removing-an-application-to-azure-active-directory"></a>Azure Active Directory bir uygulamayı ekleme veya kaldırma hakkında yaygın sorun giderme
 Bu makale, Azure Active Directory bir uygulama eklerken veya kaldırırken insanların karşılaştığı yaygın sorunları anlamanıza yardımcı olur.
@@ -43,7 +43,7 @@ Sil düğmesi aşağıdaki senaryolarda devre dışı bırakılır:
 
 - Microsoft uygulaması için, rolünüze bakılmaksızın onları kullanıcı arabiriminden silmeniz mümkün olmayacaktır.
 
-- Yönetilen bir kimliğe karşılık gelen hizmet sorumluları için. Yönetilen kimlikler hizmet sorumluları, kurumsal uygulamalar dikey penceresinde silinemez. Bunu yönetmek için Azure kaynağına gitmeniz gerekir. [Yönetilen kimlik](../managed-identities-azure-resources/overview.md) hakkında daha fazlasını temizle
+- Yönetilen bir kimliğe karşılık gelen hizmet sorumluları için. Yönetilen kimlikler hizmet sorumluları, kurumsal uygulamalar dikey penceresinde silinemez. Bunu yönetmek için Azure kaynağına gitmeniz gerekir. [Yönetilen kimlik](../managed-identities-azure-resources/overview.md) hakkında daha fazla bilgi edinin
 
 ## <a name="how-to-see-the-details-of-a-portal-notification"></a>Portal bildiriminin ayrıntılarını görme
 Aşağıdaki adımları izleyerek, herhangi bir portal bildiriminin ayrıntılarını görebilirsiniz:

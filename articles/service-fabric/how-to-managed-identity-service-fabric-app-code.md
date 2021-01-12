@@ -3,22 +3,75 @@ title: Yönetilen kimliği bir uygulamayla kullanma
 description: Azure hizmetlerine erişmek için Azure Service Fabric uygulama kodunda yönetilen kimlikler kullanma.
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: 07f960c01367ab42a434a8c2e1e276d9c5f7bd11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c89f7bd064e643b978253f2e083c449d904d2cad
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86253652"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108526"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>Azure hizmetlerine erişmek için Service Fabric uygulamasının yönetilen kimliğinden yararlanma
 
 Service Fabric uygulamalar, Azure Active Directory tabanlı kimlik doğrulamasını destekleyen diğer Azure kaynaklarına erişmek için yönetilen kimliklerden yararlanabilir. Bir uygulama, kimliğini temsil eden, sistem tarafından atanan veya Kullanıcı tarafından atanan bir [erişim belirteci](../active-directory/develop/developer-glossary.md#access-token) alabilir ve kendisini, [korunan kaynak sunucu](../active-directory/develop/developer-glossary.md#resource-server)olarak da bilinen başka bir hizmete doğrulamak için bir ' taşıyıcı ' belirteci olarak kullanabilir. Belirteç Service Fabric uygulamasına atanan kimliği temsil eder ve yalnızca bu kimliği paylaşan Azure kaynaklarına (SF uygulamaları dahil) verilmeyecektir. Yönetilen kimliklerin ayrıntılı bir açıklaması ve sistem tarafından atanan ve Kullanıcı tarafından atanan kimlikler arasındaki ayrım için [yönetilen kimliğe genel bakış](../active-directory/managed-identities-azure-resources/overview.md) belgelerine bakın. Bu makalede, yönetilen kimlik özellikli bir Service Fabric uygulamasına [istemci uygulaması](../active-directory/develop/developer-glossary.md#client-application) olarak başvuracağız.
+
+Sistem tarafından atanan ve Kullanıcı tarafından atanan [Service Fabric uygulama tarafından yönetilen](https://github.com/Azure-Samples/service-fabric-managed-identity) ve Reliable Services ve kapsayıcılarla kapsayıcı kullanımını gösteren bir yardımcı örnek uygulama görüntüleyin.
 
 > [!IMPORTANT]
 > Yönetilen bir kimlik, kaynağı içeren abonelikle ilişkili olan ilgili Azure AD kiracısında bir Azure kaynağı ile hizmet sorumlusu arasındaki ilişkiyi temsil eder. Bu nedenle, Service Fabric bağlamında yönetilen kimlikler yalnızca Azure kaynakları olarak dağıtılan uygulamalar için desteklenir. 
 
 > [!IMPORTANT]
 > Service Fabric uygulamasının yönetilen kimliğini kullanmadan önce, istemci uygulamasına korunan kaynağa erişim verilmesi gerekir. Lütfen desteği denetlemek için [Azure AD kimlik doğrulamasını destekleyen Azure hizmetleri](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) listesine ve ardından ilgili hizmetin ilgilendiğiniz kaynaklara yönelik bir kimlik erişimi sağlamak için ilgili hizmetin belgelerine bakın. 
+ 
+
+## <a name="leverage-a-managed-identity-using-azureidentity"></a>Azure. Identity kullanarak yönetilen bir kimlikle yararlanın
+
+Azure Identity SDK artık Service Fabric desteklemektedir. Azure. Identity, belirteçleri, önbelleğe alma belirteçlerini ve sunucu kimlik doğrulamasını işletiğinden, uygulama tarafından yönetilen kimlikler Service Fabric kullanmak için kod yazmayı kolaylaştırır. Birçok Azure kaynağına erişirken, belirteç kavramı gizlenir.
+
+Service Fabric desteği, bu diller için aşağıdaki sürümlerde sunulmaktadır: 
+- [1.3.0 sürümündeki C#](https://www.nuget.org/packages/Azure.Identity). Bkz. [C# örneği](https://github.com/Azure-Samples/service-fabric-managed-identity).
+- [Sürüm 1.5.0 Içinde Python](https://pypi.org/project/azure-identity/). Bkz. bir [Python örneği](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/identity/azure-identity/tests/managed-identity-live/service-fabric/service_fabric.md).
+- [1.2.0 sürümündeki Java](https://docs.microsoft.com/java/api/overview/azure/identity-readme?view=azure-java-stable).
+
+Azure Key Vault bir gizli anahtar getirmek için kimlik bilgilerini kullanan C# örneği:
+
+```csharp
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+
+namespace MyMIService
+{
+    internal sealed class MyMIService : StatelessService
+    {
+        protected override async Task RunAsync(CancellationToken cancellationToken)
+        {
+            try
+            {
+                // Load the service fabric application managed identity assigned to the service
+                ManagedIdentityCredential creds = new ManagedIdentityCredential();
+
+                // Create a client to keyvault using that identity
+                SecretClient client = new SecretClient(new Uri("https://mykv.vault.azure.net/"), creds);
+
+                // Fetch a secret
+                KeyVaultSecret secret = (await client.GetSecretAsync("mysecret", cancellationToken: cancellationToken)).Value;
+            }
+            catch (CredentialUnavailableException e)
+            {
+                // Handle errors with loading the Managed Identity
+            }
+            catch (RequestFailedException)
+            {
+                // Handle errors with fetching the secret
+            }
+            catch (Exception e)
+            {
+                // Handle generic errors
+            }
+        }
+    }
+}
+
+```
 
 ## <a name="acquiring-an-access-token-using-rest-api"></a>REST API kullanarak erişim belirteci edinme
 Yönetilen kimlik için etkinleştirilmiş kümeler ' de Service Fabric çalışma zamanı, uygulamaların erişim belirteçlerini almak için kullanabileceği bir localhost uç noktasını kullanıma sunar. Uç nokta, kümenin her düğümünde kullanılabilir ve bu düğümdeki tüm varlıklar için erişilebilir. Yetkili çağıranlar, bu uç noktayı çağırarak ve bir kimlik doğrulama kodu sunarak erişim belirteçleri elde edebilir. kod, her ayrı hizmet kodu paketi etkinleştirmesi için Service Fabric çalışma zamanı tarafından oluşturulur ve bu hizmet kodu paketini barındıran işlemin ömrüne bağlanır.
@@ -377,3 +430,4 @@ Bkz. Azure AD [kimlik doğrulamasını](../active-directory/managed-identities-a
 * [Sistem tarafından atanan yönetilen kimlik ile Azure Service Fabric uygulaması dağıtma](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [Kullanıcı tarafından atanan yönetilen kimlik ile bir Azure Service Fabric uygulaması dağıtma](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [Azure Service Fabric uygulamasına diğer Azure kaynaklarına erişim izni verme](./how-to-grant-access-other-resources.md)
+* [Service Fabric yönetilen kimlik kullanarak örnek bir uygulamayı keşfet](https://github.com/Azure-Samples/service-fabric-managed-identity)

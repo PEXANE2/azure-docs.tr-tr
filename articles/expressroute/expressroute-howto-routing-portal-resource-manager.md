@@ -5,21 +5,21 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: tutorial
-ms.date: 01/07/2021
+ms.date: 01/11/2021
 ms.author: duau
-ms.openlocfilehash: 3e106bc313d6189b2fae8cf6a4dd7ce862294b8f
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: f780c8c2f932b612ee42e13906f72983b324eefd
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019287"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108543"
 ---
 # <a name="tutorial-create-and-modify-peering-for-an-expressroute-circuit-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak bir ExpressRoute bağlantı hattı için eşleme oluşturma ve değiştirme
 
 Bu öğreticide, Azure portal kullanarak Azure Resource Manager ExpressRoute bağlantı hattı için Yönlendirme yapılandırması oluşturma ve yönetme işlemlerinin nasıl yapılacağı gösterilir. Ayrıca, bir ExpressRoute bağlantı hattı için durum, güncelleştirme veya silme ve yinelenenleri kaldırma ve sağlama ayarlarını da denetleyebilirsiniz. Devrenize çalışmak için farklı bir yöntem kullanmak istiyorsanız, aşağıdaki listeden bir makale seçin:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
+> * [Azure portalı](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
 > * [Ortak eşleme](about-public-peering.md)
@@ -30,7 +30,7 @@ Bu öğreticide, Azure portal kullanarak Azure Resource Manager ExpressRoute ba�
 
 ExpressRoute bağlantı hattı için özel eşleme ve Microsoft eşlemesi yapılandırabilirsiniz (Azure genel eşleme yeni devreler için kullanım dışıdır). Eşlemeler, seçtiğiniz herhangi bir sırada yapılandırılabilir. Ancak, her eşlemenin yapılandırmasını birer birer tamamladığınızdan emin olmanız gerekir. Yönlendirme etki alanları ve eşlemeler hakkında daha fazla bilgi için bkz. [ExpressRoute yönlendirme etki alanları](expressroute-circuit-peerings.md). Ortak eşleme hakkında daha fazla bilgi için bkz. [ExpressRoute genel eşleme](about-public-peering.md).
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > - Devre için Microsoft eşlemesini yapılandırma, güncelleştirme ve silme
 > - Devre için Azure özel eşlemesini yapılandırma, güncelleştirme ve silme
@@ -136,7 +136,7 @@ Bu bölüm, bir ExpressRoute bağlantı hattı için Azure özel eşleme yapıla
 
 2. Bağlantı hattı için Azure özel eşlemesini yapılandırın. Sonraki adımlarla devam etmeden önce aşağıdaki öğelere sahip olduğunuzdan emin olun:
 
-   * Size ait olan ve bir RıR/IÇ_VERIM_ORANı 'ye kayıtlı bir çift/30 alt ağı. Birincil bağlantı için bir alt ağ kullanılır, diğeri ise ikincil bağlantı için kullanılır. Bu alt ağların her birinde, Microsoft 'un yönlendiricisi için kullanılabilen ikinci IP 'yi kullandığından, ilk kullanılabilir IP adresini yönlendiricinize atayacaksınız. Bu alt ağ çifti için üç seçeneğiniz vardır:
+   * Size ait bir/30 alt ağı çifti. Birincil bağlantı için bir alt ağ kullanılır, diğeri ise ikincil bağlantı için kullanılır. Bu alt ağların her birinde, Microsoft 'un yönlendiricisi için kullanılabilen ikinci IP 'yi kullandığından, ilk kullanılabilir IP adresini yönlendiricinize atayacaksınız.
    * Bu eşlemenin kurulacağı geçerli bir VLAN kimliği. Bağlantı hattındaki başka bir eşlemenin aynı VLAN kimliğini kullanmadığından emin olun. Birincil ve Ikincil bağlantılar aynı VLAN KIMLIĞINI kullanmanız gerekir.
    * Eşleme için AS numarası. 2 bayt ve 4 bayt AS numaralarını kullanabilirsiniz. 65515 ile 65520 arasında (ikisi de dahil olmak üzere), bu eşleme için özel bir AS numarası kullanabilirsiniz.
    * Özel eşlemeyi yapılandırırken şirket içi kenar yönlendiricinizin yollarını BGP aracılığıyla Azure 'a duyurmanız gerekir.

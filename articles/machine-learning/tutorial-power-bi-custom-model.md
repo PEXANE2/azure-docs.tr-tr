@@ -1,7 +1,7 @@
 ---
-title: 'Öğretici: bir not defteri kullanarak tahmine dayalı model oluşturma (Bölüm 1/2)'
+title: 'Öğretici: bir not defteri ile tahmine dayalı model oluşturma (Bölüm 1/2)'
 titleSuffix: Azure Machine Learning
-description: Jupyter Notebook kod kullanarak makine öğrenimi modeli oluşturmayı ve dağıtmayı öğrenin. Microsoft Power BI sonuçları tahmin etmek için modeli kullanabilirsiniz.
+description: Jupyter Notebook kod kullanarak makine öğrenimi modeli oluşturmayı ve dağıtmayı öğrenin. Ayrıca, Microsoft Power BI 'e kolay tümleştirme için giriş ve çıktıyı tanımlayan bir Puanlama betiği oluşturun.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: samkemp
 author: samuel100
 ms.reviewer: sdgilley
 ms.date: 12/11/2020
-ms.openlocfilehash: 1dfee56f90011d3c532767e136b383e4eb95c234
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 29b340448f3ce3e18a649065bdcd0b335bab8b73
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814780"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108254"
 ---
-# <a name="tutorial-power-bi-integration---create-the-predictive-model-by-using-a-jupyter-notebook-part-1-of-2"></a>Öğretici: Power BI tümleştirme-Jupyter Notebook kullanarak tahmine dayalı model oluşturma (Bölüm 1/2)
+# <a name="tutorial-power-bi-integration---create-the-predictive-model-with-a-jupyter-notebook-part-1-of-2"></a>Öğretici: Power BI tümleştirme-tahmine dayalı modeli bir Jupyter Notebook oluşturun (Bölüm 1/2)
 
-Bu öğreticinin 1. bölümünde, tahmine dayalı bir makine öğrenimi modelini bir Jupyter Notebook kod kullanarak eğitecaksınız ve dağıtırsınız. 2. bölümde, Microsoft Power BI sonuçları tahmin etmek için modeli kullanacaksınız.
+Bu öğreticinin 1. bölümünde, tahmine dayalı bir makine öğrenimi modelini bir Jupyter Notebook kod kullanarak eğitecaksınız ve dağıtırsınız. Ayrıca, Power BI tümleştirme için modelin giriş ve çıkış şemasını tanımlamak üzere bir Puanlama betiği oluşturacaksınız.  2. bölümde, Microsoft Power BI sonuçları tahmin etmek için modeli kullanacaksınız.
 
 Bu öğreticide şunları yaptınız:
 
@@ -27,6 +27,7 @@ Bu öğreticide şunları yaptınız:
 > * Jupyter Notebook oluşturma.
 > * Azure Machine Learning işlem örneği oluşturun.
 > * Scikit-öğrenme kullanarak regresyon modeli eğitme.
+> * Microsoft Power BI 'e kolay tümleştirme için giriş ve çıktıyı tanımlayan bir Puanlama betiği yazın.
 > * Modeli gerçek zamanlı bir Puanlama uç noktasına dağıtın.
 
 Power BI ' de kullanacağınız modeli oluşturmanın ve dağıtmanın üç yolu vardır.  Bu makalede "seçenek A:" not defterlerini kullanarak modelleri eğitme ve dağıtma "konuları ele alınmaktadır.  Bu seçenek, kod ilk yazma deneyimidir. Azure Machine Learning Studio barındırılan JUPITER not defterlerini kullanır. 
@@ -157,7 +158,7 @@ Ayrıca modeli Azure Machine Learning Studio de görüntüleyebilirsiniz. Soldak
 
 :::image type="content" source="media/tutorial-power-bi/model.png" alt-text="Bir modelin nasıl görüntüleneceğini gösteren ekran görüntüsü.":::
 
-### <a name="define-the-scoring-script"></a>Puanlama betiğini tanımlama
+## <a name="define-the-scoring-script"></a>Puanlama betiğini tanımlama
 
 Power BI ile tümleştirilebilen bir model dağıttığınızda, bir Python *Puanlama betiği* ve özel ortam tanımlamanız gerekir. Puanlama betiği iki işlev içerir:
 
@@ -165,7 +166,7 @@ Power BI ile tümleştirilebilen bir model dağıttığınızda, bir Python *Pua
 - `run(data)`İşlevi, hizmet çağrısı puanlanması gereken giriş verilerini içerdiğinde çalışır. 
 
 >[!NOTE]
-> Bu makale, giriş ve çıkış verilerinin şemasını tanımlamak için Python dekoratlarını kullanır. Bu kurulum Power BI tümleştirme için önemlidir.
+> Aşağıdaki kodda bulunan Python Dekoratörleri, Power BI tümleştirme açısından önemli olan giriş ve çıkış verilerinin şemasını tanımlar.
 
 Aşağıdaki kodu kopyalayın ve Not defterinize yeni bir *kod hücresine* yapıştırın. Aşağıdaki kod parçacığında, kodu *Score.py* adlı bir dosyaya yazan bir hücre Magic vardır.
 

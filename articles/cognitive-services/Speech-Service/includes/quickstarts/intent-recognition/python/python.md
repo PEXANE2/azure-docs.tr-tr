@@ -6,12 +6,12 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 8eada631b7e1f632148993e586c70b6811cf9ac9
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 0cb27a8dc5685ce295c2ce30820734c4301e9dc6
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98052721"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98109426"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -72,8 +72,9 @@ Buraya bu kodu ekleyin `IntentRecognizer` . `"YourLanguageUnderstandingAppId"`Lu
 Bu örnek, `add_intents()` açıkça tanımlanmış bir amaç listesi eklemek için işlevini kullanır. Bir modelden tüm amaçları eklemek istiyorsanız `add_all_intents(model)` modeli kullanın ve geçirin.
 
 > [!NOTE]
-> FromEndpoint yöntemine bir uç nokta URL 'SI geçirerek bir LanguageUnderstandingModel oluşturabilirsiniz.
-> Konuşma SDK 'Sı yalnızca LUSıS v 2.0 uç noktalarını destekler ve LUıN v 2.0 uç noktaları şu iki desenden birini her zaman izler:
+> Konuşma SDK 'Sı yalnızca LUG v 2.0 uç noktalarını destekler.
+> Bir v 2.0 URL 'SI deseninin kullanılması için örnek sorgu alanında bulunan v 3.0 uç nokta URL 'sini el ile değiştirmeniz gerekir.
+> LUSıS v 2.0 uç noktaları şu iki desenden birini her zaman izler:
 > * `https://{AzureResourceName}.cognitiveservices.azure.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
 > * `https://{Region}.api.cognitive.microsoft.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
 

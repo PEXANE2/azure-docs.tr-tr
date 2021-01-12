@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 01/11/2021
 ms.author: victorh
-ms.openlocfilehash: 43755b312a64c429b38a07c8c4fad8c85b08342a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51af9ff4972f5edef02426a6e81e8582123c9a7a
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89437862"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107863"
 ---
 # <a name="use-azure-firewall-to-protect-azure-kubernetes-service-aks-deployments"></a>Azure Kubernetes Service (AKS) Dağıtımlarını korumak için Azure Güvenlik Duvarı'nı kullanın
 
@@ -24,7 +24,7 @@ Yönetim ve operasyonel amaçlar için, bir AKS kümesindeki düğümlerin belir
 
 Azure Güvenlik Duvarı 'nı kullanarak Azure Kubernetes kümeniz için ek koruma sağlamak üzere bu makaledeki yönergeleri izleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Çalışan uygulamayla dağıtılan bir Azure Kubernetes kümesi.
 
@@ -37,7 +37,7 @@ Azure Güvenlik Duvarı, yapılandırmayı basitleştirmek için bir AKS FQDN et
 
 - Giden trafiği kısıtlamak ve tüm giden trafiği yönlendirmek üzere Kullanıcı tanımlı yol (UDR) oluşturmak için Azure Güvenlik Duvarı 'nı kullandığınızda, gelen trafiğe doğru şekilde izin vermek için güvenlik duvarında uygun bir DNAT kuralı oluşturduğunuzdan emin olun. 
 
-   Azure Güvenlik Duvarı 'nı bir UDR ile kullanmak, asimetrik yönlendirme nedeniyle gelen kurulumu keser. Bu sorun, AKS alt ağının güvenlik duvarının özel IP adresine giden bir varsayılan yolu varsa, ancak bir genel yük dengeleyici kullanıyorsanız oluşur. Örneğin, *LoadBalancer*türünde gelen veya Kubernetes hizmeti.
+   Azure Güvenlik Duvarı 'nı bir UDR ile kullanmak, asimetrik yönlendirme nedeniyle gelen kurulumu keser. Bu sorun, AKS alt ağının güvenlik duvarının özel IP adresine giden bir varsayılan yolu varsa, ancak bir genel yük dengeleyici kullanıyorsanız oluşur. Örneğin, *LoadBalancer* türünde gelen veya Kubernetes hizmeti.
 
    Bu durumda, gelen yük dengeleyici trafiği genel IP adresi aracılığıyla alınır, ancak döndürülen yol güvenlik duvarının özel IP adresinden geçer. Güvenlik duvarı durum bilgisi olduğundan, güvenlik duvarı kurulu bir oturumun farkında olmadığından döndürülen paketi bırakır. Azure Güvenlik duvarını giriş veya hizmet yük dengeleyicinizle tümleştirmeyi öğrenmek için bkz. Azure [güvenlik duvarını azure standart Load Balancer tümleştirme](integrate-lb.md).
 - Bir uygulama kuralı koleksiyonu oluşturun ve *AzureKubernetesService* FQDN etiketini etkinleştirmek için bir kural ekleyin. Kaynak IP adresi aralığı konak havuzunun sanal ağı, protokol https ve hedef ise AzureKubernetesService.
@@ -47,7 +47,7 @@ Azure Güvenlik Duvarı, yapılandırmayı basitleştirmek için bir AKS FQDN et
    - API sunucusuyla iletişim kurmayı gerektiren bir uygulamanız varsa TCP [*ıpaddrofyourapiserver*]: 443 gereklidir. Bu değişiklik küme oluşturulduktan sonra ayarlanabilir.
    - TCP bağlantı noktası 9000 ve tünel ön pod için, API sunucusundaki tünel sonuyla iletişim kurmak üzere UDP bağlantı noktası 1194.
 
-      Daha belirgin olması için bkz. **. HCP. <location> . azmk8s.io* ve aşağıdaki tablodaki adresler:
+      Daha belirgin olması için aşağıdaki tablodaki adreslere bakın:
 
    | Hedef uç nokta                                                             | Protokol | Bağlantı noktası    | Kullanın  |
    |----------------------------------------------------------------------------------|----------|---------|------|

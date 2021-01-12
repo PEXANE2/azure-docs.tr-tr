@@ -5,21 +5,18 @@ services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/12/2019
 ms.author: cynthn
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 456c42dc0b25e168744ce283cddbd63b877813ab
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ebff49db895468549a7abd420e7b74292b742eab
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747156"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108645"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Öğretici - Azure’da ilk önyüklemede bir Linux sanal makinesini özelleştirmek için cloud-init kullanma
 
@@ -39,17 +36,7 @@ CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için A
 
 Cloud-init, dağıtımlar arasında da çalışır. Örneğin, bir paket yüklemek için **apt-get install** veya **yum install** kullanmazsınız. Bunun yerine, yüklenecek paketlerin listesini tanımlayabilirsiniz. Cloud-init, seçtiğiniz dağıtım için yerel paket yönetim aracını otomatik olarak kullanır.
 
-Azure’a sağladıkları görüntülere cloud-init’in dahil edilmesini ve bu görüntülerde çalışmasını sağlamak için iş ortaklarımızla çalışıyoruz. Aşağıdaki tabloda, Azure platform görüntülerindeki geçerli cloud-init kullanılabilirliği açıklanmaktadır:
-
-| Publisher | Sunduğu | SKU | Sürüm | Cloud-init Ready |
-|:--- |:--- |:--- |:--- |:--- |
-|Canonical |UbuntuServer |18,04-LTS |en son |yes | 
-|Canonical |UbuntuServer |16.04-LTS |en son |yes | 
-|Canonical |UbuntuServer |14.04.5-LTS |en son |yes |
-|CoreOS |CoreOS |Dengeli |en son |yes |
-|OpenLogic 7,6 |CentOS |7-CI |en son |preview |
-|RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |yes |
-|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 |preview |
+Azure’a sağladıkları görüntülere cloud-init’in dahil edilmesini ve bu görüntülerde çalışmasını sağlamak için iş ortaklarımızla çalışıyoruz. Her dağıtım için Cloud-init desteği hakkında ayrıntılı bilgi için bkz. [Azure 'Da VM 'ler Için Cloud-init desteği](using-cloud-init.md).
 
 
 ## <a name="create-cloud-init-config-file"></a>cloud-init yapılandırma dosyası oluşturma
@@ -147,7 +134,7 @@ Aşağıdaki adımlar şunları nasıl yapabileceğinizi gösterir:
 - VM oluşturma ve sertifika ekleme
 
 ### <a name="create-an-azure-key-vault"></a>Azure Key Vault oluşturma
-İlk olarak [az keyvault create](/cli/azure/keyvault#az-keyvault-create) ile bir Key Vault oluşturun ve bu anahtarın VM dağıtırken kullanılmasını etkinleştirin. Her Key Vault benzersiz bir ad gerektirir ve küçük harflerle yazılmalıdır. Aşağıdaki örnekte yer alan *mykeyvault* değerini, kendi benzersiz Key Vault adınızla değiştirin:
+İlk olarak [az keyvault create](/cli/azure/keyvault#az-keyvault-create) ile bir Key Vault oluşturun ve bu anahtarın VM dağıtırken kullanılmasını etkinleştirin. Her Key Vault benzersiz bir ad gerektirir ve küçük harflerle yazılmalıdır. Aşağıdaki örnekte yer alan `mykeyvault` değerini, kendi benzersiz Key Vault adınızla değiştirin:
 
 ```azurecli-interactive
 keyvault_name=mykeyvault

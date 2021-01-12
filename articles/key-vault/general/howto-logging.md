@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5e0007f3b0dad8a68e9d81cebbe9fe24b5a7db3c
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 0e1ce841f6da8f15bd977437bca6b835a7b0d745
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285646"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108747"
 ---
 # <a name="how-to-enable-key-vault-logging"></a>Key Vault günlüğü etkinleştirme
 
@@ -25,20 +25,10 @@ Bir veya daha fazla Anahtar Kasası oluşturduktan sonra muhtemelen anahtar kasa
 Bu öğreticiyi tamamlamak için aşağıdakilere sahip olmanız gerekir:
 
 * Kullanmakta olduğunuz var olan bir anahtar kasası.  
-* Azure CLı veya Azure PowerShell.
+* [Azure Cloud Shell](https://shell.azure.com) -Bash ortamı
 * Anahtar Kasası günlükleriniz için Azure'da yeterli depolama.
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz, Azure CLı sürüm 2.0.4 veya daha yeni bir sürüme ihtiyacınız olacaktır. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli). CLı kullanarak Azure 'da oturum açmak için şunu yazabilirsiniz:
-
-```azurecli-interactive
-az login
-```
-
-PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz, Azure PowerShell Module sürümü 1.0.0 veya sonraki bir sürüme ihtiyaç duyarsınız. `$PSVersionTable.PSVersion`Sürümü bulmak için yazın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
-
-```powershell-interactive
-Connect-AzAccount
-```
+Bu kılavuz komutları, Bash ile [Cloud Shell](https://shell.azure.com) için bir ortam olarak biçimlendirilir.
 
 ## <a name="connect-to-your-key-vault-subscription"></a>Key Vault aboneliğinize bağlanma
 
@@ -162,7 +152,7 @@ az storage blob list --account-name "<your-unique-storage-account-name>" --conta
 Azure PowerShell ile, bu kapsayıcıdaki tüm Blobları [Get-AzStorageBlob](/powershell/module/az.storage/get-azstorageblob?view=azps-4.7.0) listesini kullanın, şunu girin:
 
 ```powershell
-Get-AzStorageBlob -Container $container -Context $sa.Context
+Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context
 ```
 
 Azure CLı komutunun veya Azure PowerShell cmdlet 'inin çıktısından göreceğiniz gibi, Blobların adı biçimindedir `resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json` . Tarih ve saat değerleri UTC'yi kullanır.
@@ -178,7 +168,7 @@ az storage blob download --container-name "insights-logs-auditevent" --file <pat
 Azure PowerShell, [gt-azstorageblobu](/powershell/module/az.storage/get-azstorageblob?view=azps-4.7.0) cmdlet 'ini kullanarak Blobların bir listesini alın ve ardından günlükleri seçtiğiniz yola Indirmek için [Get-AzStorageBlobContent](/powershell/module/az.storage/get-azstorageblobcontent?view=azps-4.7.0) cmdlet 'ine yöneltin.
 
 ```powershell-interactive
-$blobs = Get-AzStorageBlob -Container $container -Context $sa.Context | Get-AzStorageBlobContent -Destination "<path-to-file>"
+$blobs = Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context | Get-AzStorageBlobContent -Destination "<path-to-file>"
 ```
 
 Bu ikinci cmdlet 'i PowerShell 'de çalıştırdığınızda, **/** BLOB adlarındaki sınırlayıcı hedef klasör altında tam bir klasör yapısı oluşturur. Bu yapıyı blob 'ları dosya olarak indirmek ve depolamak için kullanacaksınız.
@@ -188,19 +178,19 @@ Blobları seçmeli olarak indirmek için jokerleri kullanın. Örneğin:
 * Birden çok anahtar kasanız varsa ve yalnızca CONTOSOKEYVAULT3 adlı bir anahtar kasası için günlük indirmek isterseniz:
 
   ```powershell
-  Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
+  Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
   ```
 
 * Birden çok kaynak grubunuz varsa ve yalnızca bir kaynak grubu için günlük indirmek isterseniz `-Blob '*/RESOURCEGROUPS/<resource group name>/*'` kullanın:
 
   ```powershell
-  Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
+  Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
   ```
 
 * 2019 Ocak ayının tüm günlüklerini indirmek istiyorsanız şunu kullanın `-Blob '*/year=2019/m=01/*'` :
 
   ```powershell
-  Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
+  Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context -Blob '*/year=2016/m=01/*'
   ```
 
 Artık günlüklerin içinde neler olduğuna bakmaya başlamak için hazırsınız. Ancak, bu konuda geçiş yapmadan önce, daha fazla iki komut bilmeniz gerekir:

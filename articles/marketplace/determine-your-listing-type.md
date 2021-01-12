@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 11/16/2020
-ms.openlocfilehash: aaf0374bcafdb91f316b7133de1c2d019b12b285
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.date: 12/18/2020
+ms.openlocfilehash: 091af70383eb3cab32a0453d7f7542d8a4395d0b
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302869"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107404"
 ---
 # <a name="introduction-to-listing-options"></a>Listeleme seçeneklerine giriş
 
@@ -26,21 +26,23 @@ Bir teklif türü oluşturduğunuzda bir veya daha fazla listeleme seçeneği be
 
 Bu tabloda, her teklif türü için hangi liste seçeneklerinin kullanılabildiği gösterilmektedir.
 
-| Teklif türü | Ücretsiz Deneme | Test Sürüşü | Benimle iletişim kurun | Şimdi al (transactable) |
+| Teklif türü | Ücretsiz Deneme | Test Sürüşü | Benimle iletişim kurun | Hemen alın `*` |
 | ------------ | ------------- | ------------- | ------------- | ------------- |
 | Azure uygulaması (yönetilen uygulama) |   | &#10004; |   | &#10004; |
-| Azure uygulaması (çözüm şablonu) |  |  |  |  |
+| Azure uygulaması (çözüm şablonu) |  |  |  | &#10004; |
 | Danışmanlık hizmeti |  |  | &#10004; |  |
-| Azure kapsayıcısı |  |  |  |  |
-| Dynamics 365 İş Merkezi | &#10004; | &#10004; | &#10004; |  |
-| Dynamics 365 müşteri katılımı & PowerApps | &#10004; | &#10004; | &#10004; |  |
-| İşlemler için Dynamics 365 | &#10004; | &#10004; | &#10004; |  |
-| IoT Edge modülü |  |  |  |  |
-| Yönetilen hizmet |  |  |  |  |
-| Power BI App |  |  |  |  |
+| Azure kapsayıcısı |  |  |  | &#10004; |
+| Dynamics 365 İş Merkezi | &#10004; | &#10004; | &#10004; | &#10004; |
+| Dynamics 365 müşteri katılımı & PowerApps | &#10004; | &#10004; | &#10004; | &#10004; |
+| İşlemler için Dynamics 365 | &#10004; | &#10004; | &#10004; | &#10004; |
+| IoT Edge modülü |  |  |  | &#10004; |
+| Yönetilen hizmet |  |  |  | &#10004; |
+| Power BI App |  |  |  | &#10004; |
 | Azure Sanal Makinesi | &#10004; | &#10004; |  | &#10004; |
 | Hizmet olarak yazılım | &#10004; | &#10004; | &#10004; | &#10004; |
 ||||||
+
+`*` Şimdi al listeleme seçeneği, şimdi al (ücretsiz), kendi lisansını getir (KLG), abonelik ve kullanım tabanlı fiyatlandırmaya dahildir. Ayrıntılar için bkz. [Şimdi alın](#get-it-now).
 
 ### <a name="free-trial"></a>Ücretsiz Deneme
 

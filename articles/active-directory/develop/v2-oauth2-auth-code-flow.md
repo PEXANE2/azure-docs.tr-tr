@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/14/2020
+ms.date: 01/11/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6648cfb717ade4b842e8ff470a46bf744b630363
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 580ec0761c997a0ee7611f7104aa48650c8573e7
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88612325"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107421"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity platform ve OAuth 2,0 yetkilendirme kodu akışı
 
@@ -58,7 +58,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_type=code
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &response_mode=query
-&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
+&scope=https%3A%2F%2Fgraph.microsoft.com%2Fmail.read%20api%3A%2F%2F
 &state=12345
 &code_challenge=YTFjNjI1OWYzMzA3MTI4ZDY2Njg5M2RkNmVjNDE5YmEyZGRhOGYyM2IzNjdmZWFhMTQ1ODg3NDcxY2Nl
 &code_challenge_method=S256
@@ -72,16 +72,16 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 |--------------|-------------|--------------|
 | `tenant`    | gerekli    | `{tenant}`İsteğin yolundaki değeri, uygulamada kimlerin oturum açmasını denetlemek için kullanılabilir. İzin verilen değerler, `common` , `organizations` `consumers` ve kiracı tanımlayıcılarıdır. Daha fazla ayrıntı için bkz. [protokol temelleri](active-directory-v2-protocols.md#endpoints).  |
 | `client_id`   | gerekli    | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminin uygulamanıza atandığı **uygulama (istemci) kimliği** .  |
-| `response_type` | gerekli    | `code`, Yetkilendirme kodu akışı için içermelidir.       |
+| `response_type` | gerekli    | `code`, Yetkilendirme kodu akışı için içermelidir. `id_token` `token` [Karma Flow](#request-an-id-token-as-well-hybrid-flow)da dahil olabilir. |
 | `redirect_uri`  | gerekli | Uygulamanızın, kimlik doğrulama yanıtlarının sizin uygulamanız tarafından gönderilebileceği ve alınabileceği redirect_uri. Portalın, URL kodlamalı olması dışında, portalda kaydettiğiniz redirect_uris biriyle tam olarak eşleşmesi gerekir. Yerel & mobil uygulamalar için varsayılan değerini kullanmanız gerekir `https://login.microsoftonline.com/common/oauth2/nativeclient` .   |
 | `scope`  | gerekli    | Kullanıcının onay vermesini istediğiniz [kapsamların](v2-permissions-and-consent.md) , boşlukla ayrılmış bir listesi.  `/authorize`İsteğin bacağı, bu birden fazla kaynağı kapsayabilir ve uygulamanızın çağırmak istediğiniz birden çok Web API 'si için onay almasını sağlar. |
-| `response_mode`   | Önerilen | Elde edilen belirteci uygulamanıza geri göndermek için kullanılması gereken yöntemi belirtir. Aşağıdakilerden biri olabilir:<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` kodu, yeniden yönlendirme URI 'niz üzerinde bir sorgu dizesi parametresi olarak sağlar. Örtük akışı kullanarak bir KIMLIK belirteci isteğinde bulunduğsanız, `query` [OpenID belirtiminde](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)belirtilen şekilde kullanamazsınız. Yalnızca kod isteğinde bulunduğsanız, `query` `fragment` veya kullanabilirsiniz `form_post` . `form_post` yeniden yönlendirme URI 'nize kod içeren bir GÖNDERI yürütür. Daha fazla bilgi için bkz. [OpenID Connect Protocol](../azuread-dev/v1-protocols-openid-connect-code.md).  |
+| `response_mode`   | Önerilen | Elde edilen belirteci uygulamanıza geri göndermek için kullanılması gereken yöntemi belirtir. Aşağıdakilerden biri olabilir:<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` kodu, yeniden yönlendirme URI 'niz üzerinde bir sorgu dizesi parametresi olarak sağlar. Örtük akışı kullanarak bir KIMLIK belirteci isteğinde bulunduğsanız, `query` [OpenID belirtiminde](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)belirtilen şekilde kullanamazsınız. Yalnızca kod isteğinde bulunduğsanız, `query` `fragment` veya kullanabilirsiniz `form_post` . `form_post` yeniden yönlendirme URI 'nize kod içeren bir GÖNDERI yürütür. |
 | `state`                 | Önerilen | İsteğin belirteç yanıtında de döndürülecek bir değer. Bu, istediğiniz herhangi bir içerik dizesi olabilir. Rastgele oluşturulan benzersiz bir değer genellikle [siteler arası istek sahteciliği saldırılarını önlemek](https://tools.ietf.org/html/rfc6749#section-10.12)için kullanılır. Bu değer Ayrıca, kullanıcının uygulamadaki durumuyla ilgili bilgileri, kimlik doğrulama isteği gerçekleştirilmeden önce (örneğin, bulunan sayfa veya Görünüm) kodlayabilir. |
 | `prompt`  | isteğe bağlı    | Gerekli kullanıcı etkileşiminin türünü gösterir. Şu anda yalnızca geçerli değerler `login` , ve ' dir `none` `consent` .<br/><br/>- `prompt=login` , kullanıcıyı bu istek üzerine kimlik bilgilerini girmeye zorlar ve çoklu oturum açma 'yı yok eder.<br/>- `prompt=none` Bunun tersi, kullanıcının herhangi bir etkileşimli istem ile sunulmayacağını garanti eder. İstek, tek oturum açma yoluyla sessizce tamamlanamayacak, Microsoft Identity platform uç noktası bir `interaction_required` hata döndürür.<br/>- `prompt=consent` Kullanıcı oturum açtıktan sonra OAuth onay iletişim kutusunu tetikler, böylece kullanıcıdan uygulamaya izin vermesini istenir.<br/>- `prompt=select_account` , oturum veya herhangi bir anımsanan hesap ya da başka bir hesap kullanmayı tamamen seçmek için bir seçenek veya herhangi bir hatırlanan hesap seçim deneyimi sunan çoklu oturum açmayı kesintiye uğratacaktır.<br/> |
 | `login_hint`  | isteğe bağlı    | Kullanıcı adının bir süre önce bilinerek Kullanıcı için oturum açma sayfasının Kullanıcı adı/e-posta adresi alanını önceden doldurmanız için kullanılabilir. Genellikle uygulamalar bu parametreyi yeniden kimlik doğrulama sırasında kullanır ve Kullanıcı adını, talebi kullanarak önceki bir oturum açma işleminden zaten ayıklamış olur `preferred_username` .   |
 | `domain_hint`  | isteğe bağlı    | Dahil edilmesi durumunda, kullanıcının oturum açma sayfasında yer aldığı e-posta tabanlı bulma işlemini atlar; Örneğin, bunları federe kimlik sağlayıcısına gönderebilirsiniz. Genellikle uygulamalar, `tid` önceki bir oturum açma işleminden çıkartarak bu parametreyi yeniden kimlik doğrulama sırasında kullanacaktır. `tid`Talep değeri ise `9188040d-6c67-4c5b-b112-36a304b66dad` , kullanmanız gerekir `domain_hint=consumers` . Aksi takdirde, kullanın `domain_hint=organizations` .  |
 | `code_challenge`  | Önerilen/gerekli | Kod değişimi (PKCE) için kanıt anahtarı aracılığıyla yetkilendirme kodu yetkisini güvenli hale getirmek için kullanılır. Dahil ise gereklidir `code_challenge_method` . Daha fazla bilgi için bkz. [Pkce RFC](https://tools.ietf.org/html/rfc7636). Bu artık, Web Apps gibi tüm uygulama türleri için yerel uygulamalar, maça 'Lar ve gizli istemciler için önerilir. |
-| `code_challenge_method` | Önerilen/gerekli | Parametresi için öğesini kodlamak için kullanılan yöntem `code_verifier` `code_challenge` . Bu *SHOULD* olmalıdır `S256` , ancak `plain` BIR nedenden dolayı istemcinin SHA256 destekleyememelidir. <br/><br/>Dışlanmazsa, varsa `code_challenge` düz metin olarak kabul edilir `code_challenge` . Microsoft Identity platform hem hem de destekler `plain` `S256` . Daha fazla bilgi için bkz. [Pkce RFC](https://tools.ietf.org/html/rfc7636). Bu [, yetkilendirme kodu akışını kullanan tek sayfalı uygulamalar](reference-third-party-cookies-spas.md)için gereklidir.|
+| `code_challenge_method` | Önerilen/gerekli | Parametresi için öğesini kodlamak için kullanılan yöntem `code_verifier` `code_challenge` . Bu  olmalıdır `S256` , ancak `plain` BIR nedenden dolayı istemcinin SHA256 destekleyememelidir. <br/><br/>Dışlanmazsa, varsa `code_challenge` düz metin olarak kabul edilir `code_challenge` . Microsoft Identity platform hem hem de destekler `plain` `S256` . Daha fazla bilgi için bkz. [Pkce RFC](https://tools.ietf.org/html/rfc7636). Bu [, yetkilendirme kodu akışını kullanan tek sayfalı uygulamalar](reference-third-party-cookies-spas.md)için gereklidir.|
 
 
 Bu noktada, kullanıcıdan kimlik bilgilerini girmesi ve kimlik doğrulamasını tamamlaması istenir. Microsoft Identity platform uç noktası ayrıca kullanıcının sorgu parametresinde belirtilen izinlere onay aldığından emin olur `scope` . Kullanıcı bu izinlerden herhangi birine onay vermediyseniz, kullanıcıdan gerekli izinleri onaylaması istenir. [İzinlerin, izin ve çok kiracılı uygulamaların ayrıntıları burada verilmiştir](v2-permissions-and-consent.md).
@@ -103,7 +103,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 | `code` | Uygulamanın istediği authorization_code. Uygulama, hedef kaynak için bir erişim belirteci istemek üzere yetkilendirme kodunu kullanabilir. Authorization_codes kısa süreli, genellikle yaklaşık 10 dakika sonra süresi dolacak. |
 | `state` | İsteğe bir durum parametresi dahil edilir, yanıtta aynı değer görünmelidir. Uygulama, istek ve yanıtta durum değerlerinin özdeş olduğunu doğrulamalıdır. |
 
-Ayrıca, bir erişim belirteci ve KIMLIK belirteci, bir tane istemeniz durumunda ve örtülü izni uygulama kaydlarınızın etkin olması durumunda da alabilirsiniz.  Bu bazen "hibrit Flow" olarak adlandırılır ve ASP.NET gibi çerçeveler tarafından kullanılır.
+Ayrıca, istek yaptıysanız bir KIMLIK belirteci alabilir ve uygulama kaydnda örtülü izni etkinleştirebilirsiniz.  Bu bazen ["hibrit Flow"](#request-an-id-token-as-well-hybrid-flow)olarak adlandırılır ve ASP.NET gibi çerçeveler tarafından kullanılır.
 
 #### <a name="error-response"></a>Hata yanıtı
 
@@ -129,12 +129,59 @@ Aşağıdaki tabloda, hata yanıtının parametresinde döndürülebilecek çeş
 | `invalid_request` | Eksik gerekli bir parametre gibi protokol hatası. | İsteği onarın ve yeniden gönderin. Bu, genellikle ilk sınama sırasında yakalanan bir geliştirme hatasıdır. |
 | `unauthorized_client` | İstemci uygulamasının bir yetkilendirme kodu istemesine izin verilmez. | Bu hata genellikle istemci uygulaması Azure AD 'de kayıtlı olmadığında veya kullanıcının Azure AD kiracısına eklenmediğinde oluşur. Uygulama kullanıcıya uygulamayı yükleme ve Azure AD 'ye ekleme yönergesini isteyebilir. |
 | `access_denied`  | Kaynak sahibi reddedildi onayı  | İstemci uygulaması, kullanıcıya Kullanıcı tarafından bağlanmadığı takdirde devam edemediği konusunda bildirimde bulunabilir. |
-| `unsupported_response_type` | Yetkilendirme sunucusu istekteki yanıt türünü desteklemiyor. | İsteği onarın ve yeniden gönderin. Bu, genellikle ilk sınama sırasında yakalanan bir geliştirme hatasıdır.  |
+| `unsupported_response_type` | Yetkilendirme sunucusu istekteki yanıt türünü desteklemiyor. | İsteği onarın ve yeniden gönderin. Bu, genellikle ilk sınama sırasında yakalanan bir geliştirme hatasıdır. [Karma akışta](#request-an-id-token-as-well-hybrid-flow)görüldüğünde, istemci uygulama kaydında kimlik belirteci örtük izin verme ayarını etkinleştirmeniz gerektiğini bildirir. |
 | `server_error`  | Sunucu beklenmeyen bir hatayla karşılaştı.| İsteği yeniden deneyin. Bu hatalar geçici koşullardan kaynaklanabilir. İstemci uygulaması, yanıtı geçici bir hataya geciktiğinde kullanıcıya açıklayabilir. |
 | `temporarily_unavailable`   | Sunucu, isteği işlemek için geçici olarak çok meşgul. | İsteği yeniden deneyin. İstemci uygulaması, geçici bir durum nedeniyle yanıtı geciktirildiği kullanıcıya açıklanmayabilir. |
 | `invalid_resource`  | Hedef kaynak geçersiz, çünkü mevcut değil, Azure AD bu dosyayı bulamıyor veya doğru şekilde yapılandırılmamış. | Bu hata, varsa kaynağın kiracıda yapılandırılmamış olduğunu gösterir. Uygulama kullanıcıya uygulamayı yükleme ve Azure AD 'ye ekleme yönergesini isteyebilir. |
 | `login_required` | Çok fazla veya hiç Kullanıcı bulunamadı | İstemci sessiz kimlik doğrulaması ( `prompt=none` ) istedi, ancak tek bir Kullanıcı bulunamadı. Bu, oturumda etkin olan veya Kullanıcı olmayan birden çok kullanıcı olduğu anlamına gelebilir. Bu, kiracının seçtiği hesabı alır (örneğin, iki Azure AD hesabı etkin ve bir Microsoft hesabı ve `consumers` seçilirse, sessiz kimlik doğrulama çalışır). |
 | `interaction_required` | İstek, Kullanıcı etkileşimi gerektirir. | Ek bir kimlik doğrulama adımı veya onayı gerekir. İsteği olmadan yeniden deneyin `prompt=none` . |
+
+### <a name="request-an-id-token-as-well-hybrid-flow"></a>KIMLIK belirteci iste (karma akış)
+
+Kullanıcının bir yetkilendirme kodunu benimsemeden önce ne olduğunu öğrenmek için, uygulamaların yetkilendirme kodu istediklerinde bir KIMLIK belirteci istemesi yaygındır. Bu, *karma akış* olarak adlandırılır çünkü bu, yetkilendirme kodu akışına örtük izni karıştırmaktadır. Hibrit Flow genellikle, bir kullanıcı için bir sayfayı kod satın alma, özellikle de [ASP.net](quickstart-v2-aspnet-core-webapp.md)üzerinde engellenmeksizin işlemek isteyen Web uygulamalarında kullanılır. Hem tek sayfalı uygulamalar hem de geleneksel Web Apps, bu modeldeki gecikme süresinden daha fazla avantaj elde ediyor.
+
+Karma akış, daha önce açıklanan yetkilendirme kodu akışıyla aynıdır, ancak bunların tümü bir KIMLIK belirteci istemek için gereklidir: yeni kapsamlar, yeni bir response_type ve yeni bir `nonce` sorgu parametresi.
+
+```
+// Line breaks for legibility only
+
+https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
+client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+&response_type=code%20id_token
+&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
+&response_mode=fragment
+&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
+&state=12345
+&nonce=abcde
+&code_challenge=YTFjNjI1OWYzMzA3MTI4ZDY2Njg5M2RkNmVjNDE5YmEyZGRhOGYyM2IzNjdmZWFhMTQ1ODg3NDcxY2Nl
+&code_challenge_method=S256
+```
+
+| Güncelleştirilmiş parametre | Gerekli/isteğe bağlı | Açıklama |
+|---------------|-------------|--------------|
+|`response_type`| Gerekli | Eklenmesi, `id_token` uygulamanın uç noktadan yanıtta BIR kimlik belirteci benzediğini sunucuya gösterir `/authorize` .  |
+|`scope`| Gerekli | KIMLIK belirteçleri için, KIMLIK belirteci kapsamlarını ( `openid` ve isteğe bağlı olarak ve) içerecek şekilde güncelleştirilmeleri `profile` gerekir `email` . |
+|`nonce`| Gerekli|     Uygulama tarafından oluşturulan, sonuçta elde edilen id_token talep olarak dahil edilecek bir değer. Daha sonra uygulama, belirteç yeniden yürütme saldırılarını azaltmak için bu değeri doğrulayabilirler. Değer genellikle, isteğin kaynağını belirlemek için kullanılabilecek rastgele, benzersiz bir dizedir. |
+|`response_mode`| Önerilen | Elde edilen belirteci uygulamanıza geri göndermek için kullanılması gereken yöntemi belirtir. `query`Yalnızca bir yetkilendirme kodu için varsayılandır, ancak `fragment` istek bir id_token içeriyorsa `response_type` .|
+
+`fragment`Yanıt modu olarak kullanılması, tarayıcılar parçayı Web sunucusuna geçirmediğinden, kodu yeniden yönlendirten okuyan Web Apps 'e yönelik sorunlara neden olabilir.  Bu durumlarda, uygulamaların `form_post` tüm verilerin sunucuya gönderildiğinden emin olmak için yanıt modunu kullanması önerilir. 
+
+#### <a name="successful-response"></a>Başarılı yanıt
+
+Kullanarak başarılı bir yanıt `response_mode=fragment` şöyle görünür:
+
+```HTTP
+GET https://login.microsoftonline.com/common/oauth2/nativeclient#
+code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
+&id_token=eYj...
+&state=12345
+```
+
+| Parametre | Açıklama  |
+|-----------|--------------|
+| `code` | Uygulamanın istediği yetkilendirme kodu. Uygulama, hedef kaynak için bir erişim belirteci istemek üzere yetkilendirme kodunu kullanabilir. Yetkilendirme kodları kısa süreli olduğundan genellikle yaklaşık 10 dakika sonra dolar. |
+| `id_token` | *Örtük izin* aracılığıyla verilen Kullanıcı IÇIN bir kimlik belirteci. `c_hash`Aynı istekte öğesinin karması olan özel bir talep içerir `code` . |
+| `state` | İsteğe bir durum parametresi dahil edilir, yanıtta aynı değer görünmelidir. Uygulama, istek ve yanıtta durum değerlerinin özdeş olduğunu doğrulamalıdır. |
 
 ## <a name="request-an-access-token"></a>Erişim belirteci isteme
 
@@ -167,7 +214,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `scope`      | isteğe bağlı   | Kapsamların boşlukla ayrılmış listesi. Kapsamların tümü tek bir kaynaktan olmalıdır ve OıDC kapsamları ( `profile` , `openid` ,) ile birlikte `email` . Kapsamların daha ayrıntılı bir açıklaması için [izinler, onay ve kapsamlar](v2-permissions-and-consent.md)' a bakın. Bu, yetkilendirme kodu akışına yönelik bir Microsoft uzantısıdır. Bu, uygulamaların belirteç satın alma sırasında belirtecin istedikleri kaynağı bildirmesine izin vermeyi amaçlar.|
 | `code`          | gerekli  | Akışın ilk Bata elde ettiğiniz authorization_code. |
 | `redirect_uri`  | gerekli  | Authorization_code elde etmek için kullanılan aynı redirect_uri değeri. |
-| `client_secret` | gizli Web uygulamaları için gerekli | Uygulamanız için uygulama kayıt portalında oluşturduğunuz uygulama gizli anahtarı. Client_secrets cihazlarda veya Web sayfalarında güvenilir bir şekilde depolanamadığından, uygulama gizli anahtarını yerel bir uygulamada veya tek sayfalı uygulamada kullanmamanız gerekir. Client_secret sunucu tarafında güvenli bir şekilde depolayabilme özelliğine sahip Web uygulamaları ve Web API 'Leri için gereklidir.  İstemci parolası gönderilmeden önce URL kodlamalı olmalıdır. URI kodlaması hakkında daha fazla bilgi için bkz. [URI genel sözdizimi belirtimi](https://tools.ietf.org/html/rfc3986#page-12). |
+| `client_secret` | gizli Web uygulamaları için gerekli | Uygulamanız için uygulama kayıt portalında oluşturduğunuz uygulama gizli anahtarı. Client_secrets cihazlarda veya Web sayfalarında güvenilir bir şekilde depolanamadığından, uygulama gizli anahtarını yerel bir uygulamada veya tek sayfalı uygulamada kullanmamanız gerekir. Client_secret sunucu tarafında güvenli bir şekilde depolayabilme özelliğine sahip Web uygulamaları ve Web API 'Leri için gereklidir.  Burada açıklanan tüm parametreler gibi, istemci sırrı gönderilmeden önce, genellikle SDK tarafından gerçekleştirilen bir adım olmak üzere URL kodlu olmalıdır. URI kodlaması hakkında daha fazla bilgi için bkz. [URI genel sözdizimi belirtimi](https://tools.ietf.org/html/rfc3986#page-12). |
 | `code_verifier` | Önerilen  | Authorization_code elde etmek için kullanılan aynı code_verifier. Yetkilendirme kodu verme isteğinde PKCE kullanılmışsa gereklidir. Daha fazla bilgi için bkz. [Pkce RFC](https://tools.ietf.org/html/rfc7636). |
 
 ### <a name="successful-response"></a>Başarılı yanıt

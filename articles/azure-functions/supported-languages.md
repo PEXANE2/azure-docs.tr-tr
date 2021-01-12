@@ -3,12 +3,12 @@ title: Azure Işlevlerinde desteklenen diller
 description: Hangi dillerin desteklendiğini (GA) ve önizleme aşamasında olduğunu ve Işlevleri diğer dillere genişletmeyi sağlayan yolları öğrenin.
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: 91a6ea886c3828678771b24d69bb7987af1fb105
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da3100521faae61e9803aaa82dbf91045a7ecbc9
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83994910"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108560"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Azure Işlevlerinde desteklenen diller
 
@@ -27,9 +27,9 @@ Bu makalede, Azure Işlevleri ile kullanabileceğiniz diller için sunulan deste
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
-## <a name="custom-handlers-preview"></a>Özel işleyiciler (Önizleme) 
+## <a name="custom-handlers"></a>Özel işleyiciler
 
-Özel işleyiciler, Azure Işlevleri ana bilgisayarındaki olayları alan hafif Web sunucularıdır. HTTP temel öğelerini destekleyen herhangi bir dil, özel bir işleyici uygulayabilir. Bu, Özel işleyicilerin resmi olarak desteklenmeyen dillerde işlevler oluşturmak için kullanabileceği anlamına gelir. Daha fazla bilgi için bkz. [Azure işlevleri özel işleyiciler (Önizleme)](functions-custom-handlers.md).
+Özel işleyiciler, Azure Işlevleri ana bilgisayarındaki olayları alan hafif Web sunucularıdır. HTTP temel öğelerini destekleyen herhangi bir dil, özel bir işleyici uygulayabilir. Bu, Özel işleyicilerin resmi olarak desteklenmeyen dillerde işlevler oluşturmak için kullanılabileceği anlamına gelir. Daha fazla bilgi için bkz. [Azure işlevleri özel işleyiciler](functions-custom-handlers.md).
 
 ## <a name="language-extensibility"></a>Dil genişletilebilirliği
 

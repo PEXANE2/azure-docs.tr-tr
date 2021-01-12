@@ -4,12 +4,12 @@ description: Bu makalede, Azure .NET SDK kullanarak Azure Event Hubs için kod y
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 17bec931f79a6dbb3d98270ab0ff6e2d1d4c6541
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f95abe3668bb400d84e354c3bca9eac289c5795
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89013920"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108696"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Azure Event Hubs için .NET Programlama Kılavuzu (eski Microsoft. Azure. EventHubs paketi)
 Bu makalede, Azure Event Hubs kullanarak kod yazma konusunda bazı yaygın senaryolar ele alınmaktadır. Burada Event Hubs’ın önceden bilindiği varsayılır. Event Hubs’a kavramsal genel bakış için bkz. [Event Hubs’a genel bakış](./event-hubs-about.md).
@@ -144,7 +144,6 @@ Olay Işleyicisi ana bilgisayarının gelişmiş çalışma zamanı özellikleri
 > [!NOTE]
 > Şu anda, bu özelliği yalnızca REST API destekler ([Yayımcı iptali](/rest/api/eventhub/revoke-publisher)).
 
-Yayımcı iptali ve yayımcı olarak Event Hubs’a gönderme hakkında daha fazla bilgi için [Event Hubs Büyük Ölçekli Güvenli Yayımlama](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab) örneğine bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

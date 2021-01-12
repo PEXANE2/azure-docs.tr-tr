@@ -9,12 +9,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: diviso
 ms.custom: include file
-ms.openlocfilehash: e7b5dfe9380612d56e591c3f619dfcb8582f8dee
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 016ad0e11f3378dba887e0a235f235fa91e3aa03
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95560030"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98109475"
 ---
 ### <a name="property-limits"></a>Özellik sınırları
 
@@ -32,7 +32,7 @@ Azure Time Series Insights Özellik sınırları, ısınma depolama için 1.000 
 
 * Olay kaynakları için en iyi uygulamalar ve genel rehberlik [burada](../articles/time-series-insights/concepts-streaming-ingestion-event-sources.md#streaming-ingestion-best-practices) bulunabilir
 
-* Varsayılan olarak, Azure Time Series Insights Gen2, gelen verileri **Azure Time Series Insights Gen2 ortamı başına saniyede 1 megabayta (Mbps) kadar** bir hızda alabilir. [Hub bölümü başına](../articles/time-series-insights/concepts-streaming-ingress-throughput-limits.md#hub-partitions-and-per-partition-limits)ek sınırlamalar vardır. 8 MB/sn 'ye kadar olan ücretler Azure portal aracılığıyla bir destek bileti gönderilerek sağlayabilirsiniz. Daha fazla bilgi edinmek için [akış alma performansı sınırlarını](../articles/time-series-insights/concepts-streaming-ingress-throughput-limits.md)okuyun.
+* Varsayılan olarak, Azure Time Series Insights Gen2, gelen verileri **Azure Time Series Insights Gen2 ortamı başına saniyede 1 megabayta (Mbps) kadar** bir hızda alabilir. [Hub bölümü başına](../articles/time-series-insights/concepts-streaming-ingress-throughput-limits.md#hub-partitions-and-per-partition-limits)ek sınırlamalar vardır. 2 MBps 'e kadar olan ücretler, Azure portal aracılığıyla bir destek bileti gönderilerek temin edilebilir. Daha fazla bilgi edinmek için [akış alma performansı sınırlarını](../articles/time-series-insights/concepts-streaming-ingress-throughput-limits.md)okuyun.
 
 ### <a name="api-limits"></a>API sınırları
 

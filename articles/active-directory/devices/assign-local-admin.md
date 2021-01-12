@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfd7b5ac981fcb87d0fc929d944205dec9432b74
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: d482f21955b76e6b90523afe3b4933378c91d36e
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575831"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107370"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Azure AD 'ye katılmış cihazlarda yerel Yöneticiler grubunu yönetme
 
@@ -32,8 +32,7 @@ Azure AD JOIN kullanarak bir Windows cihazını Azure AD 'ye bağladığınızda
 - Azure AD Cihaz Yöneticisi rolü 
 - Azure AD JOIN 'i gerçekleştiren Kullanıcı   
 
-Yerel Yöneticiler grubuna Azure AD rolleri ekleyerek, cihazdaki herhangi bir şeyi değiştirmeden bir cihazı Azure AD 'de yönetebileceğini kullanıcıları güncelleştirebilirsiniz. Şu anda, bir yönetici rolüne gruplar atayamazsınız.
-Azure AD, en az ayrıcalık (PoLP) ilkesini desteklemek için Azure AD cihaz yöneticisi rolünü yerel Yöneticiler grubuna da ekler. Genel yöneticilere ek olarak, bir cihazı yönetmek için *yalnızca* cihaz yöneticisi rolüne atanan kullanıcılara da izin verebilirsiniz. 
+Yerel Yöneticiler grubuna Azure AD rolleri ekleyerek, cihazdaki herhangi bir şeyi değiştirmeden bir cihazı Azure AD 'de yönetebileceğini kullanıcıları güncelleştirebilirsiniz. Azure AD, en az ayrıcalık (PoLP) ilkesini desteklemek için Azure AD cihaz yöneticisi rolünü yerel Yöneticiler grubuna da ekler. Genel yöneticilere ek olarak, bir cihazı yönetmek için *yalnızca* cihaz yöneticisi rolüne atanan kullanıcılara da izin verebilirsiniz. 
 
 ## <a name="manage-the-global-administrators-role"></a>Genel Yöneticiler rolünü yönetme
 

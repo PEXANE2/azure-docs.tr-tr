@@ -3,12 +3,12 @@ title: Sık sorulan sorular
 description: Azure VMware çözümüyle ilgili bazı yaygın soruların yanıtlarını sağlar.
 ms.topic: conceptual
 ms.date: 1/4/2020
-ms.openlocfilehash: d0228739a6ee4eac20d2fa04e47cf86b6fddb84e
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 1420fba40492e1a5f45f4ad5e58da2caa29ae7e7
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881234"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107965"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware çözümü hakkında sık sorulan sorular
 
@@ -29,6 +29,10 @@ Hizmet yeni bölgelere sürekli ekleniyor, bu nedenle daha fazla ayrıntı için
 #### <a name="can-workloads-running-in-an-azure-vmware-solution-instance-consume-or-integrate-with-azure-services"></a>Azure VMware Çözüm örneğinde çalışan iş yükleri Azure hizmetleriyle tüketiliyor veya tümleştirilmesine neden olabilir?
 
 Tüm Azure hizmetleri Azure VMware Çözüm müşterileri tarafından kullanılabilir. Belirli hizmetler için performans ve kullanılabilirlik sınırlamaları, büyük/küçük harfe göre değinilmesi gerekecektir.
+
+#### <a name="what-guest-operating-systems-are-compatible-with-azure-vmware-solution"></a>Azure VMware çözümüyle hangi Konuk işletim sistemleri uyumlu?
+
+[VMware Uyumluluk Kılavuzu ' nu](https://www.vmware.com/resources/compatibility/search.php?deviceCategory=software&details=1&releases=485&page=1&display_interval=10&sortColumn=Partner&sortOrder=Asc&testConfig=16)kullanarak, vSphere ile Konuk işletim sistemi uyumluluğu hakkında bilgi bulabilirsiniz.  Azure VMware çözümünde çalışan vSphere sürümünü belirlemek için bkz. [VMware yazılım sürümleri](concepts-private-clouds-clusters.md#vmware-software-versions).
 
 #### <a name="do-i-use-the-same-tools-that-i-use-now-to-manage-private-cloud-resources"></a>Özel bulut kaynaklarını yönetmek için şu anda kullandığım araçları kullanıyorum?
 

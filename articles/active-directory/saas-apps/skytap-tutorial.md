@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/13/2020
 ms.author: jeedes
-ms.openlocfilehash: b2a6b902f1c6b7e06b1a72b183007fbb9fe05c3c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 5577b0cb480b372b64a9cb25f52617edfca3f2e0
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515959"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108203"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-single-sign-on-for-skytap"></a>Öğretici: ufuk dokunma için çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -55,7 +55,7 @@ Azure AD 'ye ufuk için çoklu oturum açma tümleştirmesini yapılandırmak i�
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-single-sign-on-for-skytap"></a>Azure AD çoklu oturum açmayı, tek oturum açma için, ufuk dokunma için yapılandırın ve test edin
 
-**B. Simon**adlı bir test kullanıcısı kullanarak, ufuk Için çoklu oturum açma Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında ufuk dokunma için çoklu oturum açma içinde bağlantılı bir ilişki kurun.
+**B. Simon** adlı bir test kullanıcısı kullanarak, ufuk Için çoklu oturum açma Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında ufuk dokunma için çoklu oturum açma içinde bağlantılı bir ilişki kurun.
 
 Azure AD SSO 'yu, ufuk dokunma için çoklu oturum açma ile yapılandırmak ve test etmek için genel adımlar şunlardır:
 
@@ -73,7 +73,7 @@ Azure AD SSO 'yu, ufuk dokunma için çoklu oturum açma ile yapılandırmak ve 
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **ufuk Için çoklu oturum açma** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun. **Çoklu oturum açma**seçeneğini belirleyin.
+1. [Azure Portal](https://portal.azure.com/), **ufuk Için çoklu oturum açma** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun. **Çoklu oturum açma** seçeneğini belirleyin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesini seçin.
 
@@ -85,7 +85,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanan bir URL yazın:`https://sso.connect.pingidentity.com/sso/sp/ACS.saml2`
 
-1. **Ek URL 'Ler ayarla**' yı seçin ve uygulamayı **SP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları gerçekleştirin:
+1. İsteğe bağlı olarak **ek URL 'Ler ayarla**' yı seçebilir ve uygulamayı **SP** tarafından başlatılan modda yapılandırmak için aşağıdaki adımları uygulayabilirsiniz:
 
     a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanan bir URL yazın:`https://sso.connect.pingidentity.com/sso/sp/initsso?saasid=<saasid>&idpid=<idpid>`
 
@@ -107,7 +107,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure Portal sol bölmeden, kullanıcılar **Azure Active Directory**  >  **Users**  >  **tüm kullanıcılar**' ı seçin.
+1. Azure Portal sol bölmeden, kullanıcılar **Azure Active Directory**  >    >  **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
@@ -120,7 +120,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 Bu bölümde, ufuk dokunma için çoklu oturum açma erişimine izin vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirin.
 
 1. Azure Portal **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde, **ufuk dokunma Için çoklu oturum açma**seçeneğini belirleyin.
+1. Uygulamalar listesinde, **ufuk dokunma Için çoklu oturum açma** seçeneğini belirleyin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    ![Kullanıcılar ve gruplar vurgulanmış şekilde Yönet bölümünün ekran görüntüsü](common/users-groups-blade.png)

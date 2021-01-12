@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/14/2019
 ms.author: apimpm
-ms.openlocfilehash: f8c6fce5b22d67dd1022fbaac763ea5df3b0930f
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 293a47bc3e8499d7eda4e64bb68bc95eb4c85ab0
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505384"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108407"
 ---
 # <a name="use-azure-api-management-with-microservices-deployed-in-azure-kubernetes-service"></a>Azure Kubernetes hizmetinde dağıtılan mikro hizmetlerle Azure API Management kullanma
 
 Mikro hizmetler, API 'Leri oluşturmak için mükemmeldir. [Azure Kubernetes hizmeti](https://azure.microsoft.com/services/kubernetes-service/) (aks) sayesinde, bulutta [mikro hizmet tabanlı bir mimariyi](/azure/architecture/guide/architecture-styles/microservices) hızlıca dağıtabilir ve çalıştırabilirsiniz. Daha sonra, mikro hizmetlerinizi iç ve dış tüketim için API olarak yayımlamak üzere [Azure API Management](https://aka.ms/apimrocks) (API Management) özelliğinden yararlanabilirsiniz. Bu makalede, AKS ile API Management dağıtma seçenekleri açıklanmaktadır. Kubernetes, API Management ve Azure ağı hakkında temel bilgileri varsayar. 
 
-## <a name="background"></a>Arka plan
+## <a name="background"></a>Arka Plan
 
 Mikro Hizmetleri tüketim için API 'Ler olarak yayımlarken, mikro hizmetler ve bunları kullanan istemciler arasındaki iletişimin yönetilmesi zor olabilir. Kimlik doğrulama, yetkilendirme, azaltma, önbelleğe alma, dönüştürme ve izleme gibi çok sayıda çapraz kesme sorunu vardır. Bu sorunlar, mikro hizmetlerin iç veya dış istemcilere sunulmadığına bakılmaksızın geçerlidir. 
 

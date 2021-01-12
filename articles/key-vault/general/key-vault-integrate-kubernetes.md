@@ -1,18 +1,18 @@
 ---
 title: Azure Key Vault’u Kubernetes ile tümleştirme
 description: Bu öğreticide, Kubernetes pods 'ye bağlamak için gizli dizi kapsayıcısı depolama arabirimi (CSı) sürücüsünü kullanarak Azure anahtar kasanızdan gizli dizi ve gizli dizileri alırsınız.
-author: ShaneBala-keyvault
-ms.author: sudbalas
+author: msmbaldwin
+ms.author: mbaldwin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: 2645842130b83fe7b4cfb33b9389b19a1306506d
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 6952d239c9dc5c52c0057a6ee1a3b10b30ed9b00
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97756033"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108764"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Öğretici: Kubernetes 'te gizli dizi için Azure Key Vault sağlayıcıyı yapılandırma ve çalıştırma
 
@@ -24,12 +24,11 @@ Bu öğreticide, gizli dizileri Kubernetes pods 'ye bağlamak için gizli dizi k
 Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Hizmet sorumlusu oluşturun veya yönetilen kimlikleri kullanın.
+> * Yönetilen kimlikleri kullanın.
 > * Azure CLı kullanarak bir Azure Kubernetes hizmeti (AKS) kümesi dağıtın.
 > * Held ve gizlilikler deposunun CSı sürücüsünü yükler.
 > * Azure Anahtar Kasası oluşturun ve gizli dizilerinizi ayarlayın.
 > * Kendi SecretProviderClass nesneniz oluşturun.
-> * Hizmet sorumlunuzu atayın veya yönetilen kimlikler kullanın.
 > * Ana kasanızdan bağlı gizli dizileri kullanarak Pod 'nizi dağıtın.
 
 ## <a name="prerequisites"></a>Ön koşullar
@@ -38,22 +37,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 * Bu öğreticiye başlamadan önce [Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest)'yı yükleyebilirsiniz.
 
-## <a name="create-a-service-principal-or-use-managed-identities"></a>Hizmet sorumlusu oluşturma veya yönetilen kimlikleri kullanma
-
-Yönetilen kimlikler kullanmayı planlıyorsanız bir sonraki bölüme geçebilirsiniz.
-
-Azure anahtar kasanızdan hangi kaynaklara erişilebileceklerini denetlemek için bir hizmet sorumlusu oluşturun. Bu hizmet sorumlusunun erişimi, kendisine atanmış rollerle kısıtlıdır. Bu özellik, hizmet sorumlusunun sırlarınızı nasıl yönetebileceğini denetlemenizi sağlar. Aşağıdaki örnekte, hizmet sorumlusunun adı *Contososerviceprincipal*' dır.
-
-```azurecli
-az ad sp create-for-rbac --name contosoServicePrincipal --skip-assignment
-```
-Bu işlem bir dizi anahtar/değer çiftini döndürür:
-
-![ContosoServicePrincipal için AppID ve parolayı gösteren ekran görüntüsü](../media/kubernetes-key-vault-1.png)
-
-**AppID** ve **parola** kimlik bilgilerini daha sonra kullanmak üzere kopyalayın.
-
-## <a name="flow-for-using-managed-identity"></a>Yönetilen kimlik kullanımı için akış
+## <a name="use-managed-identities"></a>Yönetilen kimlikleri kullanma
 
 Bu diyagramda, yönetilen kimlik için AKS – Key Vault tümleştirme akışı gösterilmektedir:
 
@@ -66,7 +50,7 @@ Azure Cloud Shell kullanmanız gerekmez. Azure CLı yüklü olan komut isteminiz
 [Azure CLI kullanarak bir Azure Kubernetes hizmet kümesi dağıtma](../../aks/kubernetes-walkthrough.md)bölümünde "kaynak grubu oluşturma", "aks kümesi oluşturma" ve "kümeye bağlanma" bölümlerine gidin. 
 
 > [!NOTE] 
-> Hizmet sorumlusu yerine Pod kimliği kullanmayı planlıyorsanız, aşağıdaki komutta gösterildiği gibi Kubernetes kümesini oluştururken etkinleştirin:
+> Pod kimliği kullanmayı planlıyorsanız, aşağıdaki komutta gösterildiği gibi Kubernetes kümesini oluştururken etkinleştirin:
 >
 > ```azurecli
 > az aks create -n contosoAKSCluster -g contosoResourceGroup --kubernetes-version 1.16.9 --node-count 1 --enable-managed-identity
@@ -121,7 +105,7 @@ Kendi anahtar kasanızı oluşturmak ve sırlarınızı ayarlamak için [Azure C
 
 Örnek SecretProviderClass YAML dosyasında eksik parametreleri girin. Aşağıdaki parametreler gereklidir:
 
-* **Useratandıdentityıd**: # [gerekli] bir hizmet sorumlusu kullanıyorsanız, kullanılacak kullanıcı tarafından atanan yönetilen kimliği belirtmek IÇIN istemci kimliğini kullanın. VM 'nin yönetilen kimliği olarak Kullanıcı tarafından atanan bir kimlik kullanıyorsanız, kimliğin istemci KIMLIĞINI belirtin. Değer boşsa, varsayılan olarak VM 'de sistem tarafından atanan kimliği kullanır 
+* **Useratandıdentityıd**: # [gerekli] değer boşsa, varsayılan olarak VM 'de sistem tarafından atanan kimliği kullanır 
 * **Keyvaultname**: anahtar kasanızın adı
 * **nesneler**: bağlamak istediğiniz tüm gizli içerik için kapsayıcı
     * **ObjectName**: gizli içeriğin adı
@@ -147,9 +131,8 @@ spec:
   parameters:
     usePodIdentity: "false"                   # [REQUIRED] Set to "true" if using managed identities
     useVMManagedIdentity: "false"             # [OPTIONAL] if not provided, will default to "false"
-    userAssignedIdentityID: "servicePrincipalClientID"       # [REQUIRED] If you're using a service principal, use the client id to specify which user-assigned managed identity to use. If you're using a user-assigned identity as the VM's managed identity, specify the identity's client id. If the value is empty, it defaults to use the system-assigned identity on the VM
-                                                             #     az ad sp show --id http://contosoServicePrincipal --query appId -o tsv
-                                                             #     the preceding command will return the client ID of your service principal
+    userAssignedIdentityID: "servicePrincipalClientID"       # [REQUIRED]  If you're using a user-assigned identity as the VM's managed identity, specify the identity's client id. If the value is empty, it defaults to use the system-assigned identity on the VM
+                                                         
     keyvaultName: "contosoKeyVault5"          # [REQUIRED] the name of the key vault
                                               #     az keyvault show --name contosoKeyVault5
                                               #     the preceding command will display the key vault metadata, which includes the subscription ID, resource group name, key vault 
@@ -174,58 +157,18 @@ Aşağıdaki görüntüde, **az keykasa Show--Name contosoKeyVault5** for the il
 
 !["Az keykasa Show--Name contosoKeyVault5" için konsol çıktısını gösteren ekran görüntüsü](../media/kubernetes-key-vault-4.png)
 
-## <a name="assign-your-service-principal-or-use-managed-identities"></a>Hizmet sorumlunuzu atayın veya yönetilen kimlikler kullanın
+## <a name="assign-managed-identity"></a>Yönetilen kimlik ata
 
-### <a name="assign-a-service-principal"></a>Hizmet sorumlusu atama
-
-Hizmet sorumlusu kullanıyorsanız, anahtar kasanıza erişmek ve gizli dizileri almak için izin verin. Aşağıdaki komutu gerçekleştirerek *okuyucu* rolünü atayın ve anahtar kasaınızdan gizli dizileri *almak* için hizmet sorumlusu izinleri verin:
-
-1. Hizmet sorumlunuzu mevcut anahtar kasanıza atayın. **$AZURE _CLIENT_ID** parametresi, hizmet sorumlunuzu oluşturduktan sonra kopyaladığınız **AppID** 'dir.
-    ```azurecli
-    az role assignment create --role Reader --assignee $AZURE_CLIENT_ID --scope /subscriptions/$SUBID/resourcegroups/$KEYVAULT_RESOURCE_GROUP/providers/Microsoft.KeyVault/vaults/$KEYVAULT_NAME
-    ```
-
-    Komutun çıktısı aşağıdaki görüntüde gösterilmiştir: 
-
-    ![PrincipalId değerini gösteren ekran görüntüsü](../media/kubernetes-key-vault-5.png)
-
-1. Gizli dizileri almak için hizmet sorumlusu izinleri verin:
-    ```azurecli
-    az keyvault set-policy -n $KEYVAULT_NAME --secret-permissions get --spn $AZURE_CLIENT_ID
-    az keyvault set-policy -n $KEYVAULT_NAME --key-permissions get --spn $AZURE_CLIENT_ID
-    ```
-
-1. Artık hizmet sorumlunuzu anahtar kasaınızdan gizli dizileri okuma izinleriyle yapılandırdık. **$AZURE _CLIENT_SECRET** , hizmet sorumlunun parolasıdır. Bir Kubernetes gizli anahtarı olarak, hizmet sorumlusu kimlik bilgilerinizi gizli dizi olarak ekleyin:
-    ```azurecli
-    kubectl create secret generic secrets-store-creds --from-literal clientid=$AZURE_CLIENT_ID --from-literal clientsecret=$AZURE_CLIENT_SECRET
-    ```
-
-> [!NOTE] 
-> Kubernetes Pod 'u dağıtıyorsanız ve geçersiz bir Istemci gizli KIMLIĞI hakkında hata alırsanız, zaman aşımına uğradı veya sıfırlanarak daha eski bir Istemci gizli KIMLIĞINIZ olabilir. Bu sorunu çözmek için, gizli dizi *-kimlik bilgileri* gizli anahtarını silin ve geçerli ISTEMCI parolası kimliğiyle yeni bir tane oluşturun. Gizli dizileri silme *-Mağaza-kimlik bilgileri*, aşağıdaki komutu çalıştırın:
->
-> ```azurecli
-> kubectl delete secrets secrets-store-creds
-> ```
-
-Hizmet sorumlusunun Istemci gizli KIMLIĞINI unuttuysanız, aşağıdaki komutu kullanarak sıfırlayabilirsiniz:
-
-```azurecli
-az ad sp credential reset --name contosoServicePrincipal --credential-description "APClientSecret" --query password -o tsv
-```
-
-### <a name="use-managed-identities"></a>Yönetilen kimlikleri kullanma
-
-Yönetilen kimlikler kullanıyorsanız, oluşturduğunuz AKS kümesine belirli roller atayın. 
+Oluşturduğunuz AKS kümesine belirli roller atayın. 
 
 1. Kullanıcı tarafından atanan yönetilen kimlik oluşturmak, listelemek veya okumak için, AKS kümenizin [yönetilen kimlik operatörü](../../role-based-access-control/built-in-roles.md#managed-identity-operator) rolüne atanması gerekir. **$ClientID** Kubernetes kümesinin ClientID 'si olduğundan emin olun. Kapsam için, bu, özellikle AKS kümesi oluşturulduğunda yapılmış olan düğüm kaynak grubu Azure abonelik hizmetiniz altında olacaktır. Bu kapsam, aşağıda atanan rollerden yalnızca o gruptaki kaynakların etkilendiğinden emin olur. 
 
     ```azurecli
     RESOURCE_GROUP=contosoResourceGroup
-    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$RESOURCE_GROUP
     
-    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
+    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/<SUBID>/resourcegroups/$RESOURCE_GROUP
     
-    az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
+    az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/<SUBID>/resourcegroups/$RESOURCE_GROUP
     ```
 
 1. Azure Active Directory (Azure AD) kimliğini AKS 'e yükler.
@@ -242,7 +185,7 @@ Yönetilen kimlikler kullanıyorsanız, oluşturduğunuz AKS kümesine belirli r
 
 1. Anahtar kasanızın önceki adımında oluşturduğunuz Azure AD kimliğine *okuyucu* rolünü atayın ve sonra anahtar kasaınızdan gizli dizileri almak için kimlik izinlerini verin. Azure AD kimliğinden **ClientID** ve **PrincipalId** ' i kullanın.
     ```azurecli
-    az role assignment create --role "Reader" --assignee $principalId --scope /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/contosoResourceGroup/providers/Microsoft.KeyVault/vaults/contosoKeyVault5
+    az role assignment create --role "Reader" --assignee $principalId --scope /subscriptions/<SUBID>/resourceGroups/contosoResourceGroup/providers/Microsoft.KeyVault/vaults/contosoKeyVault5
 
     az keyvault set-policy -n contosoKeyVault5 --secret-permissions get --spn $clientId
     az keyvault set-policy -n contosoKeyVault5 --key-permissions get --spn $clientId
@@ -253,16 +196,6 @@ Yönetilen kimlikler kullanıyorsanız, oluşturduğunuz AKS kümesine belirli r
 SecretProviderClass nesneniz yapılandırmak için aşağıdaki komutu çalıştırın:
 ```azurecli
 kubectl apply -f secretProviderClass.yaml
-```
-
-### <a name="use-a-service-principal"></a>Hizmet sorumlusu kullanma
-
-Hizmet sorumlusu kullanıyorsanız, Kubernetes yığınlarınızı SecretProviderClass ve daha önce yapılandırdığınız gizli dizileri-Store-creds ile dağıtmak için aşağıdaki komutu kullanın. Dağıtım şablonları aşağıda verilmiştir:
-* [Linux](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/nginx-pod-inline-volume-service-principal.yaml) için
-* [Windows](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/windows-pod-secrets-store-inline-volume-secret-providerclass.yaml) için
-
-```azurecli
-kubectl apply -f updateDeployment.yaml
 ```
 
 ### <a name="use-managed-identities"></a>Yönetilen kimlikleri kullanma
@@ -318,8 +251,6 @@ spec:
         readOnly: true
         volumeAttributes:
           secretProviderClass: azure-kvname
-        nodePublishSecretRef:           # Only required when using service principal mode
-          name: secrets-store-creds     # Only required when using service principal mode
 ```
 
 Pod 'nizi dağıtmak için aşağıdaki komutu çalıştırın:

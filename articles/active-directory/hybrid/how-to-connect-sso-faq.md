@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a3e2dd1ac58c89060fc3e09e97617cb2a68d8ac
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 2dac4b461d4506015f0ef374eae37f67c445791d
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094582"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107880"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Kesintisiz çoklu oturum açma Azure Active Directory: sık sorulan sorular
 
@@ -54,7 +54,7 @@ Ayrıca, bir uygulama Azure AD uç noktalarına kiracı olarak ayarlanan bir otu
 | Uygulama adı | Kullanılacak uygulama URL 'SI |
 | -- | -- |
 | SharePoint Online | https: \/ /contoso.SharePoint.com |
-| Azure portal | https: \/ /Portal.Azure.com/contoso.com |
+| Azure portalı | https: \/ /Portal.Azure.com/contoso.com |
 
 Yukarıdaki tablolarda, kiracınızın doğru uygulama URL 'Lerine ulaşmak için "contoso.com" yerine etki alanı adınızı koyun.
 
@@ -85,6 +85,7 @@ Azure AD Connect çalıştırdığınız şirket içi sunucuda bu adımları izl
 
    > [!NOTE]
    >Aşağıdaki adımlar için hem etki alanı yöneticisi hem de genel yönetici kimlik bilgilerine ihtiyacınız olacaktır.
+   >Bir etki alanı yöneticisi değilseniz ve etki alanı yöneticisi tarafından izinler atadıysanız, `Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount`
 
    **1. adım. Sorunsuz SSO 'nun etkinleştirildiği AD ormanları listesini alın**
 
@@ -105,9 +106,6 @@ Azure AD Connect çalıştırdığınız şirket içi sunucuda bu adımları izl
    >Kullanılan etki alanı yönetici hesabı, protected Users grubunun bir üyesi olmamalıdır. Öyleyse, işlem başarısız olur.
 
    2. Çağrısı yapın `Update-AzureADSSOForest -OnPremCredentials $creds` . Bu komut, `AZUREADSSO` Bu belırlı ad ormanındaki bilgisayar hesabının Kerberos şifre çözme anahtarını güncelleştirir ve Azure AD 'de güncelleştirir.
-   
-   >[!NOTE]
-   >Bir etki alanı yöneticisi değilseniz ve etki alanı yöneticisi tarafından izinler atadıysanız, `Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount`
    
    3. Özelliği ayarladığınız her AD Ormanı için önceki adımları tekrarlayın.
    

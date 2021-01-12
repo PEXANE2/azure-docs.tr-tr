@@ -12,13 +12,13 @@ ms.custom: mvc, seodec18, devx-track-azurepowershell
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/14/2020
-ms.author: johndaw
-ms.openlocfilehash: ee431df89128a516e3a1cabeb43b5cbe9e356dae
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.author: mbaldwin
+ms.openlocfilehash: 52b62e463edc51b3d93d7af69623a88abd9cc6be
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927864"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108611"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Öğretici: PowerShell kullanarak var olan bir sanal ağa HSM 'leri dağıtma
 
@@ -259,7 +259,7 @@ Remove-AzResource -Resourceid /subscriptions/$subId/resourceGroups/$resourceGrou
 
 Öğreticideki adımları tamamladıktan sonra, adanmış HSM kaynakları sanal ağınızda sağlanır ve kullanılabilir. Artık bu dağıtımı tercih ettiğiniz dağıtım mimariniz için gereken diğer kaynaklarla karmaşıklama eden bir pozisyonda olursunuz. Dağıtımınızı planlamaya yardımcı olma hakkında daha fazla bilgi için bkz. kavramlar belgeleri. Birincil bölgedeki iki HSM 'yi raf düzeyinde adresleyen ve bir ikincil bölgedeki iki HSM 'nin bölgesel kullanılabilirliği ele aldığı bir tasarımın olması önerilir. Bu öğreticide kullanılan şablon dosyası, iki HSM dağıtımı için temel olarak kolayca kullanılabilir, ancak parametrelerinizi karşılamak için parametrelerinin değiştirilmesini gerektirir.
 
-* [Yüksek Kullanılabilirlik](high-availability.md)
+* [Yüksek kullanılabilirlik](high-availability.md)
 * [Fiziksel Güvenlik](physical-security.md)
 * [Ağ](networking.md)
 * [İzleme](monitoring.md)
