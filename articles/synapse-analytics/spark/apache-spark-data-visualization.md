@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 09/13/2020
-ms.openlocfilehash: 73b18d15ad054f1c485d6f61cdefe54993148bc4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f11693b34048b11c02668e086561b9a6521a5213
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450547"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121535"
 ---
 # <a name="visualize-data"></a>Verileri görselleştirme
 Azure SYNAPSE, veri ambarlarında ve büyük veri analizi sistemlerinde fikir süresini hızlandıran tümleşik bir analiz hizmetidir. Veri görselleştirme, verilerinize ilişkin Öngörüler elde edebilmekte olan bir temel bileşendir. İnsanların anlaşılması büyük ve küçük verilerin daha kolay olmasına yardımcı olur. Ayrıca, veri gruplarındaki desenleri, eğilimleri ve aykırı değerleri algılamayı kolaylaştırır. 
@@ -227,7 +227,7 @@ Kullanılabilir kitaplıklar ve sürümlerle ilgili en güncel bilgiler için Az
 ## <a name="connect-to-power-bi-using-apache-spark--sql-on-demand"></a>Isteğe bağlı SQL Apache Spark & kullanarak Power BI bağlanma
 Azure SYNAPSE Analytics, veri mühendislerinin analiz çözümleri oluşturmasına olanak tanıyan Power BI ile tümleşir.
 
-Azure SYNAPSE Analytics, farklı çalışma alanı hesaplama altyapılarının Spark havuzları ve sunucusuz SQL havuzu arasında veritabanlarını ve tabloları paylaşmasına izin verir. [Paylaşılan meta veri modelini](https://docs.microsoft.com/azure/synapse-analytics/metadata/overview)kullanarak, Apache Spark tablolarınızı SQL isteğe bağlı olarak sorgulama yapabilirsiniz. İşiniz bittiğinde, eşitlenmiş Spark tablolarınızı kolayca sorgulamak için SQL isteğe bağlı uç noktanıza Power BI bağlayabilirsiniz.
+Azure SYNAPSE Analytics, farklı çalışma alanı hesaplama altyapılarının Spark havuzları ve sunucusuz SQL havuzu arasında veritabanlarını ve tabloları paylaşmasına izin verir. [Paylaşılan meta veri modelini](../metadata/overview.md)kullanarak, Apache Spark tablolarınızı SQL isteğe bağlı olarak sorgulama yapabilirsiniz. İşiniz bittiğinde, eşitlenmiş Spark tablolarınızı kolayca sorgulamak için SQL isteğe bağlı uç noktanıza Power BI bağlayabilirsiniz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

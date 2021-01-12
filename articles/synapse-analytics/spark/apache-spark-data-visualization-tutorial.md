@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 10/20/2020
 ms.author: midesa
-ms.openlocfilehash: 8735514b639cb0322a83ffb19d661027327c0f73
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8768b8f8c7bf70b184971abc6ce27e2193823dea
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458767"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121558"
 ---
 # <a name="analyze-data-with-apache-spark"></a>Apache Spark ile verileri analiz etme
 
@@ -25,7 +25,7 @@ Bu öğreticide, Azure açık veri kümelerini kullanarak keşif verileri analiz
 - [Apache Spark Havuzu Oluşturma öğreticisini](../articles/../quickstart-create-apache-spark-pool-studio.md) Izleyerek Apache Spark havuzu oluşturma 
 
 ## <a name="download-and-prepare-the-data"></a>Verileri indirin ve hazırlayın
-1. PySpark çekirdeğini kullanarak bir not defteri oluşturun. Yönergeler için bkz. [Not defteri oluşturma](https://docs.microsoft.com/azure/synapse-analytics/quickstart-apache-spark-notebook#create-a-notebook). 
+1. PySpark çekirdeğini kullanarak bir not defteri oluşturun. Yönergeler için bkz. [Not defteri oluşturma](../quickstart-apache-spark-notebook.md#create-a-notebook). 
    
 > [!Note]
 > 
@@ -92,7 +92,7 @@ GROUP BY day_of_month
 ORDER BY day_of_month ASC
 ```
 
-2. Sorgu çalışmayı bitirdikten sonra **grafik görünümüne** geçerek sonuçları görselleştirebiliriz. Bu örnekte, **line chart** ```day_of_month``` alanı **anahtar** olarak ve ```avgTipAmount``` **değer** olarak belirterek bir çizgi grafik oluşturacağız. Seçimleri yaptıktan sonra, grafiğinizi yenilemek için **Uygula** ' ya tıklayın. 
+2. Sorgu çalışmayı bitirdikten sonra **grafik görünümüne** geçerek sonuçları görselleştirebiliriz. Bu örnekte,  ```day_of_month``` alanı **anahtar** olarak ve ```avgTipAmount``` **değer** olarak belirterek bir çizgi grafik oluşturacağız. Seçimleri yaptıktan sonra, grafiğinizi yenilemek için **Uygula** ' ya tıklayın. 
    
 ## <a name="visualize-data"></a>Verileri görselleştirme
 Yerleşik Not defteri grafik seçeneklerine ek olarak, kendi görselleştirmelerinizi oluşturmak için popüler açık kaynaklı kitaplıkları da kullanabilirsiniz. Aşağıdaki örneklerde, veri görselleştirme için yaygın olarak kullanılan Python kitaplıkları olan Seaborn ve Matplotlib kullanacağız. 
@@ -180,5 +180,5 @@ Uygulamayı çalıştırmayı bitirdikten sonra, sekmeyi kapatarak veya Not deft
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
+- [Azure Synapse Analytics](../index.yml)
 - [Resmi belgeleri Apache Spark](https://spark.apache.org/docs/latest/)
