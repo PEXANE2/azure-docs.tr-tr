@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: c2daef64b110e59da76d8342508c19c7f1b3cd08
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 02194bd6122cc97ac9dfd6887c6ae2161182c13a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452781"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120436"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>SYNAPSE SQL ile dış tabloları kullanma
 
@@ -31,7 +31,7 @@ Adanmış SQL havuzunda, bir dış tablo kullanarak şunları yapabilirsiniz:
 
 [Create Table Select](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ifadesiyle birlikte kullanıldığında, dış tablo ' ın seçilmesi, verileri SQL havuzundaki bir tabloya aktarır. [Copy ifadesine](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)ek olarak, dış tablolar verileri yüklemek için faydalıdır. 
 
-Yükleme öğreticisi için bkz. [Azure Blob depolamadan veri yüklemek Için PolyBase kullanma](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Yükleme öğreticisi için bkz. [Azure Blob depolamadan veri yüklemek Için PolyBase kullanma](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json).
 
 ### <a name="serverless-sql-pool"></a>[Sunucusuz SQL havuzu](#tab/sql-on-demand)
 
@@ -383,7 +383,7 @@ SELECT TOP 1 * FROM census_external_table
 
 Data Lake keşif yeteneklerini kullanarak artık özel SQL havuzunu veya sunucusuz SQL havuzunu kullanarak bir dış tablo oluşturabilir ve sorgulayabilirsiniz ve bu dosya üzerinde basit bir sağ tıklamayı kullanabilirsiniz.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 - ADLS 2. hesaba en azından Depolama Blobu veri katılımcısı ARM erişim rolüyle çalışma alanına erişiminizin olması gerekir
 

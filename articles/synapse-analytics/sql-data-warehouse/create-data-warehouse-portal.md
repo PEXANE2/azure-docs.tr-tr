@@ -11,18 +11,18 @@ ms.date: 05/28/2019
 ms.author: pimorano
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 78a0982081b8e34461fb2910cc7ce21be622cb6a
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 4da99200079557ab9d1674635c0df26c9e62d488
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922882"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120283"
 ---
 # <a name="quickstart-create-and-query-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Azure SYNAPSE Analytics 'te adanmış bir SQL Havuzu (eski adıyla SQL DW) oluşturun ve sorgulayın
 
 Azure portal kullanarak, Azure SYNAPSE Analytics 'te adanmış bir SQL havuzunu (eski adıyla SQL DW) hızlıca oluşturun ve sorgulayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 1. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -153,7 +153,7 @@ Bu bölüm, sunucunuza bağlantı kurmak için [SQL Server Management Studio](/s
 
 ## <a name="run-some-queries"></a>Sorgular çalıştırma
 
-[Sınırlı bir kaynak sınıfı](resource-classes-for-workload-management.md)kullandığından, sunucu yöneticisi olarak günlüğe yazılırken büyük sorguların çalıştırılması önerilmez. Bunun yerine [, öğreticilerde gösterildiği](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/load-data-wideworldimportersdw#create-a-user-for-loading-data)gibi [iş yükü yalıtımını](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-tsql) yapılandırın.
+[Sınırlı bir kaynak sınıfı](resource-classes-for-workload-management.md)kullandığından, sunucu yöneticisi olarak günlüğe yazılırken büyük sorguların çalıştırılması önerilmez. Bunun yerine [, öğreticilerde gösterildiği](./load-data-wideworldimportersdw.md#create-a-user-for-loading-data)gibi [iş yükü yalıtımını](./quickstart-configure-workload-isolation-tsql.md) yapılandırın.
 
 Azure SYNAPSE Analytics, sorgu dili olarak T-SQL kullanır. Bir sorgu penceresi açıp T-SQL sorguları çalıştırmak için, aşağıdaki adımları kullanın:
 

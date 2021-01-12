@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 01/06/2021
 ms.author: juliako
-ms.openlocfilehash: 3552d55d995608dd0d471c84cd5e9f9988ebe2c0
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: b6e18e077b717da65ca8d70b9bda6a133dba1f5c
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028650"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120096"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer sürüm notları
 
@@ -44,7 +44,7 @@ Video Indexer, bilişsel hizmetler özel Vision ile tümleştirme yoluyla animas
 
 ### <a name="planned-video-indexer-website-authenticatication-changes"></a>Planlı Video Indexer Web sitesi kimlik doğrulama değişiklikleri
 
-1 Mart 2021 ' den itibaren, artık Facebook veya LinkedIn kullanarak [video Indexer](https://www.videoindexer.ai/) Web sitesinde oturum açabilmeyeceksiniz.
+1 Mart 2021 ' den itibaren, artık Facebook veya LinkedIn kullanarak [video Indexer Web sitesi](https://www.videoindexer.ai/) [Geliştirici Portalında](video-indexer-use-apis.md) oturum açabiliyor ve oturum açamazsınız.
 
 Şu sağlayıcılardan birini kullanarak kaydolabilir ve oturum açabilirsiniz: Azure AD, Microsoft ve Google.
 

@@ -9,20 +9,20 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: e547d047e8d736acbd1cdda5ffe3a78dbe8259f7
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 2594e25bff3ca949b329f8b66f4427eb1f6950b0
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901071"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118719"
 ---
 # <a name="tutorial-train-a-model-in-python-with-automated-machine-learning"></a>Öğretici: otomatik makine öğrenimi ile Python 'da model eğitme
 
 Azure Machine Learning, makine öğrenimi modellerini eğmenize, dağıtmanıza, otomatikleştirmenize, yönetmenize ve izlemenize olanak tanıyan bulut tabanlı bir ortamdır. 
 
-Bu öğreticide, TAXI tarifeli havayolu fiyatlarını tahmin etmek üzere bir gerileme modeli oluşturmak için Azure Machine Learning ' de [otomatik makine öğrenimini](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) kullanırsınız. Bu işlem, eğitim verilerini ve yapılandırma ayarlarını kabul ederek ve farklı yöntemlerin, modellerin ve hiper parametre ayarlarının birleşimlerinde otomatik olarak yinelenerek en iyi modele ulaşır.
+Bu öğreticide, TAXI tarifeli havayolu fiyatlarını tahmin etmek üzere bir gerileme modeli oluşturmak için Azure Machine Learning ' de [otomatik makine öğrenimini](../../machine-learning/concept-automated-ml.md) kullanırsınız. Bu işlem, eğitim verilerini ve yapılandırma ayarlarını kabul ederek ve farklı yöntemlerin, modellerin ve hiper parametre ayarlarının birleşimlerinde otomatik olarak yinelenerek en iyi modele ulaşır.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 - Apache Spark ve Azure açık veri kümelerini kullanarak verileri indirin.
 - Apache Spark dataframe kullanarak verileri dönüştürün ve temizleyin.
 - Otomatik makine öğrenimi regresyon modelini eğitme.
@@ -31,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 - [Sunucusuz Apache Spark havuzu oluşturma hızlı](../quickstart-create-apache-spark-pool-studio.md)başlangıcı ' nı izleyerek sunucusuz Apache Spark havuzu oluşturun.
-- Mevcut bir Azure Machine Learning çalışma alanınız yoksa [Azure Machine Learning çalışma alanı kurulum öğreticisini](https://docs.microsoft.com/azure/machine-learning/tutorial-1st-experiment-sdk-setup) doldurun. 
+- Mevcut bir Azure Machine Learning çalışma alanınız yoksa [Azure Machine Learning çalışma alanı kurulum öğreticisini](../../machine-learning/tutorial-1st-experiment-sdk-setup.md) doldurun. 
 
 ## <a name="understand-regression-models"></a>Gerileme modellerini anlama
 
@@ -48,7 +48,7 @@ Bu örnekte, New York şehrinden (NYC) TAXI Seyahat ipucu verileri hakkında baz
 
 Aşağıdaki adımları uygulayın:
 
-1. PySpark çekirdeğini kullanarak bir not defteri oluşturun. Yönergeler için bkz. [Not defteri oluşturma](https://docs.microsoft.com/azure/synapse-analytics/quickstart-apache-spark-notebook#create-a-notebook).
+1. PySpark çekirdeğini kullanarak bir not defteri oluşturun. Yönergeler için bkz. [Not defteri oluşturma](../quickstart-apache-spark-notebook.md#create-a-notebook).
    
     > [!Note]
     > PySpark çekirdeği nedeniyle, açıkça herhangi bir bağlam oluşturmanız gerekmez. İlk kod hücresini çalıştırdığınızda Spark bağlamı sizin için otomatik olarak oluşturulur.
@@ -144,7 +144,7 @@ ws = Workspace(workspace_name = workspace_name,
 ```
 
 ## <a name="convert-a-dataframe-to-an-azure-machine-learning-dataset"></a>Bir veri çerçevesini Azure Machine Learning veri kümesine dönüştürme
-Uzak bir deneme göndermek için veri kümenizi bir Azure Machine Learning dönüştürün ```TabularDatset``` . [Tabulardataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) , belirtilen dosyaları ayrıştırarak verileri tablolu biçimde temsil eder.
+Uzak bir deneme göndermek için veri kümenizi bir Azure Machine Learning dönüştürün ```TabularDatset``` . [Tabulardataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) , belirtilen dosyaları ayrıştırarak verileri tablolu biçimde temsil eder.
 
 Aşağıdaki kod, mevcut çalışma alanını ve varsayılan Azure Machine Learning varsayılan veri deposunu alır. Daha sonra yeni bir oluşturmak için veri deposu ve dosya konumlarını yol parametresine geçirir ```TabularDataset``` . 
 
@@ -170,7 +170,7 @@ dataset_training = Dataset.Tabular.from_delimited_files(path = [(datastore, 'tra
 Aşağıdaki bölümler otomatik makine öğrenimi denemesi gönderme sürecinde size yol gösterir.
 
 ### <a name="define-training-settings"></a>Eğitim ayarlarını tanımlama
-1. Bir deneme göndermek için, eğitim için deneme parametresi ve model ayarlarını tanımlamanız gerekir. Ayarların tam listesi için bkz. [Python 'da otomatik makine öğrenimi denemeleri yapılandırma](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train).
+1. Bir deneme göndermek için, eğitim için deneme parametresi ve model ayarlarını tanımlamanız gerekir. Ayarların tam listesi için bkz. [Python 'da otomatik makine öğrenimi denemeleri yapılandırma](../../machine-learning/how-to-configure-auto-train.md).
 
    ```python
    import logging
@@ -338,5 +338,5 @@ Son olarak, Azure Machine Learning çalışma alanınızdaki deneye giderek yine
 ![Azure Machine Learning çalışma alanının ekran görüntüsü.](./media/azure-machine-learning-spark-notebook/azure-machine-learning-workspace.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
+- [Azure Synapse Analytics](../index.yml)
 - [Öğretici: Apache Spark MLlib ve Azure SYNAPSE Analytics ile Machine Learning uygulaması derleme](./apache-spark-machine-learning-mllib-notebook.md)

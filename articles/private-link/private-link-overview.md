@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: adc08e978be699ea6ea3dd00beae1762d48644c0
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 3c03a207e91ae969836e208f4e6bf4ea32086c7d
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96781071"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121336"
 ---
 # <a name="what-is-azure-private-link"></a>Azure Özel Bağlantı nedir? 
 Azure özel bağlantısı, Azure PaaS hizmetlerine (örneğin, Azure depolama ve SQL veritabanı) ve Azure 'da barındırılan, müşteriye ait/iş ortağı hizmetlerine sanal ağınızdaki özel bir [uç nokta](private-endpoint-overview.md) üzerinden erişmenizi sağlar.
@@ -22,6 +22,8 @@ Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağını de dola�
 
 > [!IMPORTANT]
 > Azure özel bağlantısı artık genel kullanıma sunulmuştur. Hem özel uç nokta hem de özel bağlantı hizmeti (Standart yük dengeleyicinin arkasındaki hizmet) genel kullanıma sunulmuştur. Farklı zamanlamalarda Azure özel bağlantısına farklı Azure PaaS da eklenecektir. Özel bağlantıdaki Azure PaaS 'nin doğru durumu için bu makaledeki [kullanılabilirliği](#availability) denetle bölümüne bakın. Bilinen sınırlamalar için bkz. [Özel uç nokta](private-endpoint-overview.md#limitations) ve [özel bağlantı hizmeti](private-link-service-overview.md#limitations). 
+
+:::image type="content" source="./media/private-link-overview/private-link-center.png" alt-text="Azure özel bağlantı merkezi Azure portal" border="false":::
 
 ## <a name="key-benefits"></a>Önemli avantajlar
 Azure özel bağlantısı aşağıdaki avantajları sağlar:  

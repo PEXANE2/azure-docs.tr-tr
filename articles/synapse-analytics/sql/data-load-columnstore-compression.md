@@ -11,12 +11,12 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e4656531f1424c3414ab00afbbe241a532738400
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4f98d00477b7dc8fbbbe7d17705e398a708ce2af
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462263"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120946"
 ---
 # <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>Columnstore dizini performansı için satır grubu kalitesini en üst düzeye çıkarın
 
@@ -142,6 +142,5 @@ DWU boyutu ve Kullanıcı kaynak sınıfı, bir Kullanıcı sorgusu için kullan
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-SYNAPSE SQL 'de performansı artırmanın daha fazla yolunu öğrenmek için bkz. [performansa genel bakış](../overview-cheat-sheet.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+SYNAPSE SQL 'de performansı artırmanın daha fazla yolunu öğrenmek için bkz. [performansa genel bakış](../overview-terminology.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json).
 
- 

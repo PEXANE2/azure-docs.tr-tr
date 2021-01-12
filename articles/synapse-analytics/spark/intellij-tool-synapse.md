@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: 75cc23df41741a95e87ad64d168aea4fa4f45733
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 39f39b6f53944510b5f3692bb8b3fdd472004454
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451052"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121235"
 ---
 # <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>Öğretici: SYNAPSE çalışma alanı kullanarak IntelliJ ile Apache Spark uygulaması oluşturma
 
@@ -24,19 +24,19 @@ Bu öğreticide, Azure Toolkit for IntelliJ eklentisinin [Scala](https://www.sca
 - Spark havuzlarınızın kaynaklarına erişin.
 - Yerel olarak bir Scala Spark uygulaması geliştirin ve çalıştırın.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 >
 > - Azure Toolkit for IntelliJ eklentisini kullanma
 > - Apache Spark uygulamaları geliştirme
 > - Uygulamayı Spark havuzlarına gönder
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [IntelliJ fikir topluluk sürümü](https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows&code=IIC).
 - Azure araç seti eklentisi 3.27.0-2019.2 – [IntelliJ eklenti deposundan](/java/azure/intellij/azure-toolkit-for-intellij-installation?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) Install
 - [JDK (sürüm 1,8)](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
-- Scala eklentisi – [IntelliJ eklenti deposundan](/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#install-scala-plugin-for-intellij-idea)Install.
+- Scala eklentisi – [IntelliJ eklenti deposundan](../../hdinsight/spark/apache-spark-intellij-tool-plugin.md#install-scala-plugin-for-intellij-idea)Install.
 - Aşağıdaki önkoşul yalnızca Windows kullanıcılarına yöneliktir:
 
   Yerel Spark Scala uygulamasını bir Windows bilgisayarında çalıştırırken [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356)' de açıklandığı gibi bir özel durum alabilirsiniz. Windows 'da WinUtils.exe eksik olduğu için özel durum oluşur.
@@ -78,7 +78,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
     ![İletişim kutusunda yapıt bilgisi](./media/intellij-tool-synapse/default-artifact-dialog.png)
 
-9. **LogQuery** **MyApp**  >  **src**  >  **Main**  >  **Scala** >  **örnek** >  **logquery**'den logquery bulun. Bu öğretici, çalıştırmak için **Logquery** kullanır.
+9.  **MyApp**  >  **src**  >  **Main**  >  **Scala** >  **örnek** >  **logquery**'den logquery bulun. Bu öğretici, çalıştırmak için **Logquery** kullanır.
 
    ![Projeden bir Scala sınıfı oluşturma komutları](./media/intellij-tool-synapse/select-run-file.png)
 

@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 03a536e16a6ba12611ed704b404c1bd411f0c4c8
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 242e5d042aa14e3b7bd92ebb37ae1be61b1b2c8f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322694"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120980"
 ---
 # <a name="best-practices-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzları için en iyi uygulamalar
 
@@ -61,7 +61,7 @@ Gzip metin dosyalarını kullanırken üretilen işi en üst düzeye çıkarmak 
 
 - [Veri yükleme](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [PolyBase’i kullanma kılavuzu](data-loading-best-practices.md)
-- [Azure SQL havuzu yükleme desenleri ve stratejileri](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/)
+- [Azure SQL havuzu yükleme desenleri ve stratejileri](/archive/blogs/sqlcat/azure-sql-data-warehouse-loading-patterns-and-strategies)
 - [Azure Data Factory ile veri yükleme](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Azure Data Factory ile veri taşıma](../../data-factory/transform-data-using-machine-learning.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
@@ -88,7 +88,7 @@ Aşağıda sunulan makale bağlantıları, bir dağıtım sütunu seçerek perfo
 
 - [Tabloya genel bakış](develop-tables-overview.md)
 - [Tablo dağıtımı](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [Tablo dağıtımı seçme](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/)
+- [Tablo dağıtımı seçme](/archive/blogs/sqlcat/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service)
 - [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 - [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 
@@ -193,7 +193,7 @@ SQL havuzlarının sorgu yürütmeyi izlemek için kullanılabilecek çeşitli D
 
 Ayrıca yaygın sorunlar ve çözümleri için [sorun giderme](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) makalesine bakın.
 
-Bu makalede sağlanmış bilgilere ihtiyacınız varsa, [Azure SYNAPSE Için Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) , diğer KULLANıCıLARA ve SQL havuzu ürün grubuna yönelik sorular oluşturabilmeniz için bir sorun olup olmadığını arayın.  
+Bu makalede sağlanmış bilgilere ihtiyacınız varsa, [Azure SYNAPSE Için Microsoft Q&soru sayfasında](/answers/topics/azure-synapse-analytics.html) , diğer KULLANıCıLARA ve SQL havuzu ürün grubuna yönelik sorular oluşturabilmeniz için bir sorun olup olmadığını arayın.  
 
 Sorularınızın diğer kullanıcılar veya ekibimiz tarafından yanıtlandığından emin olmak için bu forumu sürekli takip ediyoruz.  Stack Overflow sorularınızı sormayı tercih ediyorsanız [Azure SQL havuzu Stack Overflow forumumuz](https://stackoverflow.com/questions/tagged/azure-sqldw)de vardır.
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6b45bad7c439fb98737f0caee08b2996323fbd3b
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 8dd3edd25d21bfcd0fde1bc8b5f103877d968c8a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602708"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119994"
 ---
 # <a name="tutorial-use-serverless-sql-pool-with-power-bi-desktop--create-a-report"></a>Öğretici: Power BI Desktop & bir rapor oluşturmak için sunucusuz SQL havuzu kullanma
 
@@ -27,12 +27,12 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > - Power BI Desktop sunucusuz SQL havuzuna bağlama
 > - Görünümü temel alan rapor oluştur
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdaki önkoşulları karşılamanız gerekir:
 
 - [Power BI Desktop](https://powerbi.microsoft.com/downloads/) -verileri görselleştirmek ve rapor oluşturmak için gereklidir.
-- [Azure SYNAPSE çalışma alanı](https://docs.microsoft.com/azure/synapse-analytics/quickstart-synapse-studio) -veritabanı, dış veri kaynağı ve görünüm oluşturmak için gereklidir.
+- [Azure SYNAPSE çalışma alanı](../get-started-create-workspace.md) -veritabanı, dış veri kaynağı ve görünüm oluşturmak için gereklidir.
 
 İsteğe bağlı:
 
@@ -100,7 +100,7 @@ Demo verileri aşağıdaki veri kümelerini içerir:
 
 2000 ve 2010 ' den kaynaklanan her bir ABD İlçesi için cinsiyet ve yarış tarafından popülasyon, Parquet biçiminde ABD 'de Cennial
 
-| Klasör yolu                                                  | Açıklama                                                  |
+| Klasör yolu                                                  | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | /Release                                                    | Tanıtım depolama hesabındaki veriler için üst klasör               |
 | /Release/us_population_county/                               | Veri dosyalarını, Hive/Hadoop bölümlendirme şeması kullanılarak yıla göre bölümlenen Parquet biçiminde doldurma. |

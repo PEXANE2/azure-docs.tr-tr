@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: edb1d419900147b586ba1ff257d4307b237be537
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
-ms.translationtype: HT
+ms.openlocfilehash: e693bd15e5255fda135a7a1dc416dd67f24f7f25
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746737"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120419"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu için depolama hesabı erişimini denetleme
 
@@ -63,7 +63,7 @@ Verilere erişmeden önce Azure depolama yöneticisinin verilere erişim için y
 
 ### <a name="anonymous-access"></a>[Anonim erişim](#tab/public-access)
 
-[Anonim erişime izin](/azure/storage/blobs/storage-manage-access-to-resources)veren Azure depolama hesaplarına yerleştirilmiş genel kullanıma açık dosyalara erişebilirsiniz.
+[Anonim erişime izin](../../storage/blobs/anonymous-read-access-configure.md)veren Azure depolama hesaplarına yerleştirilmiş genel kullanıma açık dosyalara erişebilirsiniz.
 
 ---
 
@@ -90,7 +90,7 @@ Aşağıdaki yetkilendirme ve Azure Depolama türleri birleşimlerini kullanabil
 \* SAS belirteci ve Azure AD kimliği, güvenlik duvarıyla korunmayan depolamaya erişmek için kullanılabilir.
 
 
-### <a name="querying-firewall-protected-storage"></a>Güvenlik Duvarı korumalı depolamayı sorgulama
+### <a name="querying-firewall-protected-storage"></a>Güvenlik duvarı korumalı depolamayı sorgulama
 
 Güvenlik duvarıyla korunan depolamaya erişirken **Kullanıcı kimliğini** veya **yönetilen kimlik**' i kullanabilirsiniz.
 
@@ -101,7 +101,7 @@ Kullanıcı kimliği aracılığıyla güvenlik duvarıyla korunan depolamaya er
 
 Depolama hesabı güvenlik duvarını yapılandırmak ve SYNAPSE çalışma alanı için bir özel durum eklemek için aşağıdaki adımları izleyin.
 
-1. PowerShell 'i açın veya [PowerShell 'i yükleyip](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7.1&preserve-view=true )
+1. PowerShell 'i açın veya [PowerShell 'i yükleyip](/powershell/scripting/install/installing-powershell-core-on-windows?preserve-view=true&view=powershell-7.1)
 2. Güncelleştirilmiş az. Depolama modülü: 
     ```powershell
     Install-Module -Name Az.Storage -RequiredVersion 3.0.1-preview -AllowPrerelease
@@ -187,7 +187,7 @@ Sunucu düzeyi KIMLIK BILGISI adı, depolama hesabının (ve isteğe bağlı ola
 | Dış veri kaynağı       | Ön ek | Depolama hesabı yolu                                |
 | -------------------------- | ------ | --------------------------------------------------- |
 | Azure Blob Depolama         | https  | <storage_account>. blob.core.windows.net             |
-| Azure Data Lake Storage Gen1 | https  | <storage_account>. azuredatalakestore.net/webhdfs/v1 |
+| Azure Data Lake Storage 1. Nesil | https  | <storage_account>. azuredatalakestore.net/webhdfs/v1 |
 | Azure Data Lake Storage Gen2 | https  | <storage_account>. dfs.core.windows.net              |
 
 Sunucu kapsamlı kimlik bilgileri, aşağıdaki kimlik doğrulama türlerini kullanarak Azure depolama 'ya erişim sağlar:

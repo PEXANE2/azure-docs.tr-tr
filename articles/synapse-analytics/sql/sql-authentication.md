@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: efa160eb422658aeeb2eea3ad3c1d305b4b9f8be
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 1217cf74ab36a8fe865e47009616b1ccb240df67
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462399"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119892"
 ---
 # <a name="sql-authentication"></a>SQL Kimlik Doğrulaması
 
@@ -46,7 +46,7 @@ Yönetici işlevlerine sahip iki yönetici hesabı (**Sunucu yöneticisi** ve **
 - Yalnızca sunucudaki herhangi bir SQL veritabanına otomatik olarak bağlanabilecek hesaplardır. (Diğer hesapların, bir kullanıcı veritabanına bağlanabilmek için veritabanının sahibi olmaları veya kullanıcı veritabanında kullanıcı hesabına sahip olmaları gerekir.)
 - Bu hesaplar kullanıcı veritabanlarına `dbo` kullanıcısı olarak girer ve kullanıcı veritabanlarında tüm izinlere sahip olur. (Kullanıcı veritabanının sahibi de veritabanına `dbo` kullanıcısı olarak girer.)
 - `master`Veritabanını Kullanıcı olarak girmeyin `dbo` ve ana üzerinde sınırlı izinlere sahip olmanız gerekir.
-- **not** `sysadmin` , SQL veritabanında kullanılamayan standart SQL Server sabit sunucu rolünün üyesi değildir.  
+-  `sysadmin` , SQL veritabanında kullanılamayan standart SQL Server sabit sunucu rolünün üyesi değildir.  
 - Veritabanları, oturum açmalar, ana öğe ve sunucu düzeyinde IP güvenlik duvarı kuralları oluşturabilir, değiştirebilir ve bırakabilir.
 - , Ve rollerine üye ekleyebilir veya kaldırabilir `dbmanager` `loginmanager` .
 - , `sys.sql_logins` Sistem tablosunu görüntüleyebilir.
@@ -111,7 +111,7 @@ Bir veritabanı oluşturmak için Kullanıcı, veritabanında bir SQL Server otu
    CREATE USER Mary FROM LOGIN Mary;  -- To create a SQL Server user based on a SQL Server authentication login
    ```
 
-4. Yeni kullanıcıyı, sp_addrolemember yordamını kullanarak içindeki **DBManager** veritabanı rolüne ekleyin `master` (SQL [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=azure-sqldw-latest) sağlanan SQL 'de [alter role](/sql/t-sql/statements/alter-role-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) ifadesinin desteklenmediğini unutmayın). Örnek deyimler:
+4. Yeni kullanıcıyı, sp_addrolemember yordamını kullanarak içindeki **DBManager** veritabanı rolüne ekleyin `master` (SQL [](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=azure-sqldw-latest) sağlanan SQL 'de [alter role](/sql/t-sql/statements/alter-role-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) ifadesinin desteklenmediğini unutmayın). Örnek deyimler:
 
    ```sql
    EXEC sp_addrolemember 'dbmanager', 'Mary'; 
@@ -133,7 +133,7 @@ Diğer yönetim rolü ise oturum açma yöneticisi rolüdür. Bu rolün üyeleri
 
 ## <a name="non-administrator-users"></a>Yönetici olmayan kullanıcılar
 
-Genellikle, yönetici olmayan hesapların ana veritabanına erişmesi gerekmez. [CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx) deyimini kullanarak veritabanı düzeyinde bağımsız veritabanı kullanıcıları oluşturun. 
+Genellikle, yönetici olmayan hesapların ana veritabanına erişmesi gerekmez. [CREATE USER (Transact-SQL)](/sql/t-sql/statements/create-user-transact-sql) deyimini kullanarak veritabanı düzeyinde bağımsız veritabanı kullanıcıları oluşturun. 
 
 Kullanıcı Azure Active Directory kimlik doğrulaması bağımsız veritabanı kullanıcısı (ortamınızı Azure AD kimlik doğrulaması için yapılandırdıysanız) veya SQL Server kimlik doğrulaması bağımsız veritabanı kullanıcısı ya da SQL Server kimlik doğrulaması oturum açma bilgilerini kullanan SQL Server kimlik doğrulaması kullanıcısı (önceki adımda oluşturulan) olabilir.  
 
@@ -191,7 +191,7 @@ Veritabanı rolleri **db_owner**, **db_ddladmin**, **db_datawriter**, **db_datar
 
 Örneğin **db_datareader** sabit veritabanı rolü, veritabanındaki tüm tablolara okuma izni verir ve bu durum genelde ihtiyaç duyulandan fazlasıdır. 
 
-Kullanıcı tanımlı veritabanı rollerinizi oluşturmak ve her role iş ihtiyacı için gereken en az izni vermek için [Create role](https://msdn.microsoft.com/library/ms187936.aspx) ifadesini kullanmak çok daha iyidir. Birden fazla rolün üyesi olan kullanıcılar, tüm rollerin izinlerine sahip olur.
+Kullanıcı tanımlı veritabanı rollerinizi oluşturmak ve her role iş ihtiyacı için gereken en az izni vermek için [Create role](/sql/t-sql/statements/create-role-transact-sql) ifadesini kullanmak çok daha iyidir. Birden fazla rolün üyesi olan kullanıcılar, tüm rollerin izinlerine sahip olur.
 
 ## <a name="permissions"></a>İzinler
 
@@ -199,7 +199,7 @@ SQL Veritabanında ayrı ayrı verilebilen veya reddedilebilen 100'den fazla izi
 
 İç içe geçmiş yapısı ve izin sayısı nedeniyle, veritabanınızı doğru şekilde korumak için uygun bir izin sistemi tasarlamak uzun ve dikkatli bir çalışma gerektirebilir. 
 
-[İzinler (Veritabanı Altyapısı)](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) ile başlayın ve izinlerin [poster boyutundaki tablosunu](https://docs.microsoft.com/sql/relational-databases/security/media/database-engine-permissions.png) inceleyin.
+[İzinler (Veritabanı Altyapısı)](/sql/relational-databases/security/permissions-database-engine) ile başlayın ve izinlerin [poster boyutundaki tablosunu](/sql/relational-databases/security/media/database-engine-permissions.png) inceleyin.
 
 ### <a name="considerations-and-restrictions"></a>Dikkat edilmesi gerekenler ve kısıtlamalar
 
@@ -236,5 +236,4 @@ SQL veritabanında oturum açma işlemlerini ve kullanıcıları yönetirken aş
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için bkz. [Bağımsız Veritabanı Kullanıcıları - Veritabanınızı Taşınabilir Hale Getirme](https://msdn.microsoft.com/library/ff929188.aspx).
- 
+Daha fazla bilgi için bkz. [Bağımsız Veritabanı Kullanıcıları - Veritabanınızı Taşınabilir Hale Getirme](/sql/relational-databases/security/contained-database-users-making-your-database-portable).

@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: a75e1fb5b250be1004195d3a77301c73eac94b02
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: cc54ae66cda6bf8ecde07d1830448ec39a15cc29
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98043566"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120232"
 ---
 # <a name="cheat-sheet-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytic"></a>Azure SYNAPSE analitik 'da adanmış SQL Havuzu (eski adıyla SQL DW) için bir sayfa sayfası
 
@@ -46,7 +46,7 @@ Veri ambarınızda çalıştırılacak birincil işlemleri ve sorguları öncede
 | Bölümleme | Yok |
 | Kaynak Sınıfı | largerc veya xlargerc |
 
-[Veri geçişi](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/), [veri yükleme](design-elt-data-loading.md) ve [Ayıklama, Yükleme ve Dönüştürme (ELT) işlemi](design-elt-data-loading.md) hakkında daha fazla bilgi edinin.
+[Veri geçişi](/archive/blogs/sqlcat/migrating-data-to-azure-sql-data-warehouse-in-practice), [veri yükleme](design-elt-data-loading.md) ve [Ayıklama, Yükleme ve Dönüştürme (ELT) işlemi](design-elt-data-loading.md) hakkında daha fazla bilgi edinin.
 
 ## <a name="distributed-or-replicated-tables"></a>Dağıtılmış veya çoğaltılmış tablolar
 
@@ -137,7 +137,7 @@ Azure İşlevleri ile istediğiniz anda otomatik ölçeklendirme yapın:
 
 Hub ve bağlı bileşen mimarisindeki SQL Database ve Azure Analysis Services’in dikkate alınmasını öneririz. Bu çözüm, bir yandan SQL Database ve Azure Analysis Services’teki gelişmiş güvenlik özelliklerini kullanırken diğer yandan farklı kullanıcı grupları arasında iş yükü yalıtımı sağlayabilir. Bu, kullanıcılarınıza sınırsız eşzamanlılık sağlamanın da bir yoludur.
 
-[Azure SYNAPSE Analytics 'te ADANMıŞ SQL havuzundan (eski ADıYLA SQL DW) faydalanan tipik mimariler](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/)hakkında daha fazla bilgi edinin.
+[Azure SYNAPSE Analytics 'te ADANMıŞ SQL havuzundan (eski ADıYLA SQL DW) faydalanan tipik mimariler](/archive/blogs/sqlcat/common-isv-application-patterns-using-azure-sql-data-warehouse)hakkında daha fazla bilgi edinin.
 
 Adanmış SQL havuzundan (eski adıyla SQL DW) SQL veritabanlarındaki bağlı uçlarınıza tek bir tıklama ile dağıtın:
 

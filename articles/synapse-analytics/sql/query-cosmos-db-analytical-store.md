@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 12/04/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 22103ad580fa474f44eaf42c696d19bbbd137c8e
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: a0458264b6ea0c741244531fc104a7637108b06e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095109"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121354"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>Azure SYNAPSE link Preview 'da sunucusuz SQL havuzu ile verileri Azure Cosmos DB sorgulama
 
@@ -222,7 +222,7 @@ FROM OPENROWSET(
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
 
-`OPENROWSET`Performansınızı etkileyebileceğinden, açıkça tanımlanmış şema olmadan kullanmayın. Sütunlarınız için mümkün olan en küçük boyutları (örneğin, VARCHAR (100) varsayılan VARCHAR (8000) yerine) kullandığınızdan emin olun. UTF [-8 dönüştürme sorununu](/azure/synapse-analytics/troubleshoot/reading-utf8-text)önlemek için, bazı UTF-8 harmanlamasını varsayılan veritabanı harmanlaması olarak veya açık sütun harmanlama olarak ayarlamanız gerekir. Harmanlama `Latin1_General_100_BIN2_UTF8` , bazı dize sütunlarını kullanarak verileri filtreleyerek en iyi performansı sağlar.
+`OPENROWSET`Performansınızı etkileyebileceğinden, açıkça tanımlanmış şema olmadan kullanmayın. Sütunlarınız için mümkün olan en küçük boyutları (örneğin, VARCHAR (100) varsayılan VARCHAR (8000) yerine) kullandığınızdan emin olun. UTF [-8 dönüştürme sorununu](../troubleshoot/reading-utf8-text.md)önlemek için, bazı UTF-8 harmanlamasını varsayılan veritabanı harmanlaması olarak veya açık sütun harmanlama olarak ayarlamanız gerekir. Harmanlama `Latin1_General_100_BIN2_UTF8` , bazı dize sütunlarını kullanarak verileri filtreleyerek en iyi performansı sağlar.
 
 ## <a name="query-nested-objects-and-arrays"></a>İç içe nesneleri ve dizileri sorgulama
 
@@ -268,8 +268,8 @@ Bu sorgunun sonucu aşağıdaki tablo gibi görünebilir:
 [Azure SYNAPSE bağlantısı 'nda karmaşık veri türlerini](../how-to-analyze-complex-schema.md) çözümleme ve [SUNUCUSUZ bir SQL havuzundaki iç içe yapılar](query-parquet-nested-types.md)hakkında daha fazla bilgi edinin.
 
 > [!IMPORTANT]
-> Metinde yerine beklenmedik karakterler görürseniz `MÃƒÂ©lade` `Mélade` , veritabanı harmanlamalarınız [UTF-8](https://docs.microsoft.com/sql/relational-databases/collations/collation-and-unicode-support#utf8) harmanlamasına ayarlı değildir.
-> Gibi bir SQL ifadesini kullanarak [veritabanının HARMANLAMASıNı](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation) UTF-8 harmanlamasına çevirin `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8` .
+> Metinde yerine beklenmedik karakterler görürseniz `MÃƒÂ©lade` `Mélade` , veritabanı harmanlamalarınız [UTF-8](/sql/relational-databases/collations/collation-and-unicode-support#utf8) harmanlamasına ayarlı değildir.
+> Gibi bir SQL ifadesini kullanarak [veritabanının HARMANLAMASıNı](/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation) UTF-8 harmanlamasına çevirin `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8` .
 
 ## <a name="flatten-nested-arrays"></a>İç içe dizileri Düzleştir
 
@@ -325,7 +325,7 @@ Tamamlayıcı bilgiler ekonomik-epidemi... | `[{"first":"Nicolas","last":"4#","s
 | Tamamlayıcı bilgiler ekonomik-epidemi... |   `[{"first":"Olivier","last":"Flores","suffix":"","affiliation":{"laboratory":"UMR C53 CIRAD, …` | Zeytin yeşili | Flores |`{"laboratory":"UMR C53 CIRAD, …` |     
 
 > [!IMPORTANT]
-> Metinde yerine beklenmedik karakterler görürseniz `MÃƒÂ©lade` `Mélade` , veritabanı harmanlamalarınız [UTF-8](https://docs.microsoft.com/sql/relational-databases/collations/collation-and-unicode-support#utf8) harmanlamasına ayarlı değildir. Gibi bir SQL ifadesini kullanarak [veritabanının HARMANLAMASıNı](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation) UTF-8 harmanlamasına çevirin `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8` .
+> Metinde yerine beklenmedik karakterler görürseniz `MÃƒÂ©lade` `Mélade` , veritabanı harmanlamalarınız [UTF-8](/sql/relational-databases/collations/collation-and-unicode-support#utf8) harmanlamasına ayarlı değildir. Gibi bir SQL ifadesini kullanarak [veritabanının HARMANLAMASıNı](/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation) UTF-8 harmanlamasına çevirin `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8` .
 
 ## <a name="azure-cosmos-db-to-sql-type-mappings"></a>SQL tür eşlemelerine Azure Cosmos DB
 

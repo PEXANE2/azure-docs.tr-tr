@@ -9,16 +9,16 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: de446209104c113b10346645f79b461239c3efab
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 25c692ea9a2dce4723472f6812ac46d82b2b318d
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96901288"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120997"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>SYNAPSE SQL kullanarak güvenli bir şekilde veri yükleme
 
-Bu makalede, [Copy ifadesiyle](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)ilgili güvenli kimlik doğrulama mekanizmalarına örnekler verilmektedir. COPY yöntemi, SYNAPSE SQL 'de verileri toplu yüklemenin en esnek ve güvenli yoludur.
+Bu makalede, [Copy ifadesiyle](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)ilgili güvenli kimlik doğrulama mekanizmalarına örnekler verilmektedir. COPY yöntemi, SYNAPSE SQL 'de verileri toplu yüklemenin en esnek ve güvenli yoludur.
 ## <a name="supported-authentication-mechanisms"></a>Desteklenen kimlik doğrulama mekanizmaları
 
 Aşağıdaki matris, her dosya türü ve depolama hesabı için desteklenen kimlik doğrulama yöntemlerini açıklar. Bu, kaynak depolama konumu ve hata dosyası konumu için geçerlidir.
@@ -72,7 +72,7 @@ WITH (
 
 Depolama Hesabınız VNet 'e eklendiğinde yönetilen kimlik kimlik doğrulaması gerekir. 
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 1. Bu [kılavuzu](/powershell/azure/install-az-ps?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) kullanarak Azure PowerShell'i yükleyin.
 2. Genel amaçlı v1 veya blob depolama hesabınız varsa öncelikle bu [kılavuzda](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) yer alan adımları izleyerek genel amaçlı v2 sürümüne yükseltmeniz gerekir.
@@ -136,7 +136,7 @@ Depolama Hesabınız VNet 'e eklendiğinde yönetilen kimlik kimlik doğrulamas�
 
     ![Azure RBAC iznini yükleme için verme](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
-2. Aşağıdaki [belgelere](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#create-an-azure-ad-administrator-for-azure-sql-server)gıderek Azure AD kimlik doğrulamasını yapılandırın. 
+2. Aşağıdaki [belgelere](../../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell)gıderek Azure AD kimlik doğrulamasını yapılandırın. 
 
 3. Artık herhangi bir kimlik bilgisi belirtmeden COPY ifadesini çalıştırabileceğiniz Active Directory kullanarak SQL havuzunuza bağlanın:
 
@@ -152,11 +152,11 @@ Depolama Hesabınız VNet 'e eklendiğinde yönetilen kimlik kimlik doğrulamas�
 ## <a name="e-service-principal-authentication"></a>E. Hizmet Sorumlusu Kimlik Doğrulaması
 #### <a name="steps"></a>Adımlar
 
-1. [Azure Active Directory uygulaması oluşturma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)
-2. [Uygulama KIMLIĞINI al](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)
-3. [Kimlik doğrulama anahtarını al](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret)
-4. [V1 OAuth 2,0 belirteç uç noktasını alın](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications)
-5. Depolama hesabınızdaki [Azure AD uygulamanıza okuma, yazma ve yürütme Izinleri atama](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder)
+1. [Azure Active Directory uygulaması oluşturma](../..//active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)
+2. [Uygulama KIMLIĞINI al](../..//active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)
+3. [Kimlik doğrulama anahtarını al](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)
+4. [V1 OAuth 2,0 belirteç uç noktasını alın](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications)
+5. Depolama hesabınızdaki [Azure AD uygulamanıza okuma, yazma ve yürütme Izinleri atama](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder)
 6. Şimdi COPY ifadesini çalıştırabilirsiniz:
 
     ```sql
@@ -176,5 +176,5 @@ Depolama Hesabınız VNet 'e eklendiğinde yönetilen kimlik kimlik doğrulamas�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Ayrıntılı sözdizimi için [kopyalama ekstresi makale](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax) makalesini denetleyin
-- En iyi yöntemleri yüklemek için [veri yüklemeye genel bakış](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/design-elt-data-loading#what-is-elt) makalesini denetleyin
+- Ayrıntılı sözdizimi için [kopyalama ekstresi makale](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax) makalesini denetleyin
+- En iyi yöntemleri yüklemek için [veri yüklemeye genel bakış](./design-elt-data-loading.md#what-is-elt) makalesini denetleyin

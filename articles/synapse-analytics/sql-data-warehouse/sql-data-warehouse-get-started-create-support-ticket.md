@@ -10,12 +10,12 @@ author: kevinvngo
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: de45e338b0b863dc2364af399a6991f56658b0e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6042b5be48144ce6730a9bf4f342d7735a262643
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85212284"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118073"
 ---
 # <a name="request-quota-increases-and-get-support-for-azure-synapse-analytics"></a>İstek kotası artar ve Azure SYNAPSE Analytics desteği alınır
 
@@ -30,7 +30,7 @@ Azure SYNAPSE Analytics için Azure portal yeni bir destek isteği oluşturmak i
    ![Yardım + destek bağlantısı](./media/sql-data-warehouse-get-started-create-support-ticket/help-plus-support.png)
 
 
-1. **Yardım + Destek**bölümünde **Yeni destek isteği**' ni seçin.
+1. **Yardım + Destek** bölümünde **Yeni destek isteği**' ni seçin.
 
     ![Yeni bir destek isteği oluşturun](./media/sql-data-warehouse-get-started-create-support-ticket/new-support-request.png)
 
@@ -42,14 +42,14 @@ Azure SYNAPSE Analytics için Azure portal yeni bir destek isteği oluşturmak i
 
    Premier Destek planınız varsa, [Microsoft Premier çevrimiçi portalındaki](https://premier.microsoft.com/)Azure SYNAPSE Analytics sorunlarını da bildirebilirsiniz. Kapsam, yanıt süreleri, fiyatlandırma vb. dahil olmak üzere çeşitli destek planları hakkında daha fazla bilgi edinmek için bkz. [Azure destek planları](https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/) .  Azure desteği hakkında sık sorulan sorular için bkz. [Azure desteği SSS](https://azure.microsoft.com/support/faq/).
 
-1. **Sorun türü**için uygun sorun türünü seçin. Onarım sorunları için **Teknik**' i seçin. Kota artışı istekleri için **hizmet ve abonelik sınırları (kotalar)** öğesini seçin.
+1. **Sorun türü** için uygun sorun türünü seçin. Onarım sorunları için **Teknik**' i seçin. Kota artışı istekleri için **hizmet ve abonelik sınırları (kotalar)** öğesini seçin.
 
    ![Sorun türü seçin](./media/sql-data-warehouse-get-started-create-support-ticket/select-quota-issue-type.png)  
 
    > [!NOTE]
    > Bu makalenin geri kalanı, kota artışı istekleri üzerine odaklandırırsınız. Ancak sorun çözümü destek istekleri için burada **Teknik** ' i de seçebilirsiniz. **Teknik**' i seçerseniz, bir Özet girmeniz ve ardından **sorun türünü seç**' i seçerek bir sorun türü belirlemeniz istenir. Sorununuzu gidermeye yardımcı olabilecek çözümler görebilirsiniz. Sunulan çözümler sorununuzu gidermezse, **İleri** ' yi seçin ve destek bileti göndermek için formu doldurun.
 
-1. Kota artışı istekleri için **Kota türü**Için **Azure SYNAPSE Analytics** ' i seçin. Ardından Ileri ' yi seçin **: çözümler >>**.
+1. Kota artışı istekleri için **Kota türü** Için **Azure SYNAPSE Analytics** ' i seçin. Ardından Ileri ' yi seçin **: çözümler >>**.
 
    ![Kota türü seçin](./media/sql-data-warehouse-get-started-create-support-ticket/select-quota-type.png)
 
@@ -106,7 +106,7 @@ Bir abonelik için bölge erişimini etkinleştirmek üzere aşağıdaki adımla
 
 1. DWU performansı gereksinimini **DWU gerekli** bölümünde belirtin.
 
-1. **İş gereksinimlerinin açıklamasını**girin. 
+1. **İş gereksinimlerinin açıklamasını** girin. 
 
 1. **Kaydet ve devam et**’i seçin.
 
@@ -137,5 +137,4 @@ Destek isteğini gönderdikten sonra, Azure destek ekibi sizinle iletişim kurac
 
 ## <a name="other-resources"></a>Diğer kaynaklar
 
-Azure SYNAPSE Analytics Community ile [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) veya [Azure SYNAPSE Analytics için Microsoft Q&soru sayfası](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)aracılığıyla da bağlanabilirsiniz.
-
+Azure SYNAPSE Analytics Community ile [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) veya [Azure SYNAPSE Analytics için Microsoft Q&soru sayfası](/answers/topics/azure-synapse-analytics.html)aracılığıyla da bağlanabilirsiniz.

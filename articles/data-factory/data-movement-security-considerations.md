@@ -1,5 +1,5 @@
 ---
-title: Güvenlikle ilgili dikkat edilmesi gerekenler
+title: Güvenlik konuları
 description: Verilerinizin güvenliğini sağlamaya yardımcı olmak için Azure Data Factory veri taşıma hizmetlerinin kullandığı temel güvenlik altyapısını açıklar.
 services: data-factory
 ms.author: abnarain
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
-ms.openlocfilehash: 5a666d265550de6e24d791db6daa954d50ddde38
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: cefbdce88d49598998e8f985821088778eee3ae8
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094191"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117665"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure Data Factory veri hareketine yönelik güvenlik konuları
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -32,9 +32,9 @@ Bir Data Factory çözümünde bir veya daha fazla [işlem hattı](concepts-pipe
 
 Data Factory yalnızca birkaç bölgede kullanılabilir olsa da, veri taşıma hizmeti, veri uyumluluğu, verimlilik ve azaltılmış ağ çıkış maliyetlerini sağlamak için [genel olarak kullanılabilir](concepts-integration-runtime.md#integration-runtime-location) . 
 
-Integration Runtime dahil Azure Data Factory, sertifikalar kullanılarak şifrelenen bulut veri depoları için bağlı hizmet kimlik bilgileri dışında hiçbir veri depolamaz. Data Factory, verileri [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats)arasında düzenlemek için veri odaklı iş akışları oluşturun ve diğer bölgelerde veya şirket içi bir ortamda [işlem hizmetlerini](compute-linked-services.md) kullanarak verileri işleme. Ayrıca, SDK 'Ları ve Azure Izleyici 'yi kullanarak iş akışlarını izleyebilir ve yönetebilirsiniz.
+Azure Integration Runtime ve şirket içinde barındırılan Integration Runtime dahil Azure Data Factory, sertifikaları kullanarak şifrelenen bulut veri depoları için bağlı hizmet kimlik bilgileri hariç, geçici verileri, önbellek verilerini veya günlükleri depolamaz. Data Factory, verileri [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats)arasında düzenlemek için veri odaklı iş akışları oluşturun ve diğer bölgelerde veya şirket içi bir ortamda [işlem hizmetlerini](compute-linked-services.md) kullanarak verileri işleme. Ayrıca, SDK 'Ları ve Azure Izleyici 'yi kullanarak iş akışlarını izleyebilir ve yönetebilirsiniz.
 
-Data Factory için sertifikalıdır:
+Data Factory için sertifikalıdır: 
 
 | **[CSA STAR sertifikası](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)** |
 | :----------------------------------------------------------- |

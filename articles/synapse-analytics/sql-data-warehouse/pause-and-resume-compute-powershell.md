@@ -11,12 +11,12 @@ ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse, devx-track-azurepowershell
-ms.openlocfilehash: 08ddb6077887043d798af9790a7b66f1b8ebb95c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6022974b80a7f691edc9b9a11b972035b203187c
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91570691"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121048"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-with-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell ile SYNAPSE SQL havuzunda işlem duraklatma ve devam ettirme
 
@@ -27,7 +27,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Bu hızlı başlangıçta duraklatıp devam ettirebildiğiniz bir SQL havuzu zaten var. Bir tane oluşturmanız gerekiyorsa, **Mysampledatawarehouse**ADLı bir SQL havuzu oluşturmak için [Create and Connect-Portal](create-data-warehouse-portal.md) ' ı kullanabilirsiniz.
+Bu hızlı başlangıçta duraklatıp devam ettirebildiğiniz bir SQL havuzu zaten var. Bir tane oluşturmanız gerekiyorsa, **Mysampledatawarehouse** ADLı bir SQL havuzu oluşturmak için [Create and Connect-Portal](create-data-warehouse-portal.md) ' ı kullanabilirsiniz.
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
 
@@ -71,7 +71,7 @@ Maliyetleri kaydetmek için, talep üzerine işlem kaynaklarını duraklatabilir
 >[!NOTE]
 >Veritabanı duraklatıldığında işlem kaynakları için ücret alınmaz. Ancak, depolama alanı için ücretlendirilmeye devam edersiniz.
 
-Bir veritabanını duraklatmak için, [askıya al-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) cmdlet 'ini kullanın. Aşağıdaki örnek, **sqlpoolservername**adlı bir sunucuda barındırılan **MYSAMPLEDATAWAREHOUSE** adlı bir SQL havuzunu duraklatır. Sunucu, **Myresourcegroup**adlı bir Azure Kaynak grubunda bulunur.
+Bir veritabanını duraklatmak için, [askıya al-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) cmdlet 'ini kullanın. Aşağıdaki örnek, **sqlpoolservername** adlı bir sunucuda barındırılan **MYSAMPLEDATAWAREHOUSE** adlı bir SQL havuzunu duraklatır. Sunucu, **Myresourcegroup** adlı bir Azure Kaynak grubunda bulunur.
 
 ```Powershell
 Suspend-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
@@ -89,7 +89,7 @@ $resultDatabase
 
 ## <a name="resume-compute"></a>İşlem işlemine geri dön
 
-Bir veritabanını başlatmak için, [özgeçmişi-AzSqlDatabase](/powershell/module/az.sql/resume-azsqldatabase?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) cmdlet 'ini kullanın. Aşağıdaki örnek, **sqlpoolservername**adlı bir sunucuda barındırılan **mysampledatawarehouse** adlı bir veritabanını başlatır. Sunucu, **Myresourcegroup**adlı bir Azure Kaynak grubunda bulunur.
+Bir veritabanını başlatmak için, [özgeçmişi-AzSqlDatabase](/powershell/module/az.sql/resume-azsqldatabase?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) cmdlet 'ini kullanın. Aşağıdaki örnek, **sqlpoolservername** adlı bir sunucuda barındırılan **mysampledatawarehouse** adlı bir veritabanını başlatır. Sunucu, **Myresourcegroup** adlı bir Azure Kaynak grubunda bulunur.
 
 ```Powershell
 Resume-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
@@ -130,10 +130,10 @@ Kaynakları istediğiniz gibi temizlemek için bu adımları izleyin.
 
 3. İşlem veya depolama için ücretlendirilmemek üzere SQL havuzunu kaldırmak için **Sil**' e tıklayın.
 
-4. Oluşturduğunuz SQL Server 'ı kaldırmak için **sqlpoolservername.Database.Windows.net**ve ardından **Sil**' e tıklayın.  Sunucuyu silmek sunucuyla ilişkili tüm veritabanlarını da sileceğinden bu silme işlemini gerçekleştirirken dikkatli olun.
+4. Oluşturduğunuz SQL Server 'ı kaldırmak için **sqlpoolservername.Database.Windows.net** ve ardından **Sil**' e tıklayın.  Sunucuyu silmek sunucuyla ilişkili tüm veritabanlarını da sileceğinden bu silme işlemini gerçekleştirirken dikkatli olun.
 
 5. Kaynak grubunu kaldırmak için, **myResourceGroup**’a tıklayıp daha sonra **Kaynak grubunu sil**’e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-SQL havuzu hakkında daha fazla bilgi edinmek için [VERILERI SQL havuzu 'Na yükleme](load-data-from-azure-blob-storage-using-polybase.md) makalesine ilerleyin. İşlem yeteneklerini yönetme hakkında daha fazla bilgi için bkz. [işlem yönetimine genel bakış](sql-data-warehouse-manage-compute-overview.md) makalesi.
+SQL havuzu hakkında daha fazla bilgi edinmek için [VERILERI SQL havuzu 'Na yükleme](./load-data-from-azure-blob-storage-using-copy.md) makalesine ilerleyin. İşlem yeteneklerini yönetme hakkında daha fazla bilgi için bkz. [işlem yönetimine genel bakış](sql-data-warehouse-manage-compute-overview.md) makalesi.

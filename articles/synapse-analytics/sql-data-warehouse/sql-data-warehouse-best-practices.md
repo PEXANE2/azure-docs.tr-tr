@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 9802e6553d553aae4f13194dc9951d1a17af6f66
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b17e47463ef3fe9a2cc959364825451468266f0e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462889"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120028"
 ---
 # <a name="best-practices-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL Havuzu (eski adıyla SQL DW) için en iyi uygulamalar
 
@@ -74,7 +74,7 @@ Azure Data Factory, PolyBase yüklerini da destekler ve CTAS olarak benzer perfo
 > [!NOTE]
 > Gzip metin dosyalarını kullanırken üretilen işi en üst düzeye çıkarmak için, yüklerinizin paralelliğini en üst düzeye çıkarmak üzere dosyaları 60 veya daha fazla dosyaya bölün.  Toplam hızı artırmak için verilerinizi aynı anda yükleyin.
 
-Ayrıca bkz. [veri yükleme](design-elt-data-loading.md), [PolyBase kullanma kılavuzu](guidance-for-loading-data.md), [adanmış SQL havuzu yükleme desenleri ve stratejileri](https://blogs.msdn.microsoft.com/sqlcat/20../../), [Azure Data Factory ile veri yükleme]( ../../data-factory/load-azure-sql-data-warehouse.md), [verileri Azure Data Factory ile taşıma](../../data-factory/transform-data-using-machine-learning.md), [dış dosya biçimi oluşturma](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)ve [Create Table as Select (CTAS)](sql-data-warehouse-develop-ctas.md).
+Ayrıca bkz. [veri yükleme](design-elt-data-loading.md), [PolyBase kullanma kılavuzu](guidance-for-loading-data.md), [adanmış SQL havuzu yükleme desenleri ve stratejileri](/archive/blogs/sqlcat/), [Azure Data Factory ile veri yükleme]( ../../data-factory/load-azure-sql-data-warehouse.md), [verileri Azure Data Factory ile taşıma](../../data-factory/transform-data-using-machine-learning.md), [dış dosya biçimi oluşturma](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)ve [Create Table as Select (CTAS)](sql-data-warehouse-develop-ctas.md).
 
 ## <a name="load-then-query-external-tables"></a>Dış tabloları önce yükleyip sonra sorgu çalıştırın
 
@@ -97,7 +97,7 @@ Sütuna göre dağıtılmış bir tablonun Hepsini Bir Kez Deneme tablosundan da
 
 Dağıtım sütununun nasıl seçileceği hakkında daha fazla bilgi için aşağıdaki bağlantılara bakın ve CREATE TABLE deyimlerinizin WıTH yan tümcesinde dağıtılmış bir tablo tanımlayabilirsiniz.
 
-Ayrıca bkz. [tabloya genel bakış](sql-data-warehouse-tables-overview.md), [tablo dağıtımı](sql-data-warehouse-tables-distribute.md), [tablo DAĞıTıMı seçme](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/), [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [Create Table seçme](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Ayrıca bkz. [tabloya genel bakış](sql-data-warehouse-tables-overview.md), [tablo dağıtımı](sql-data-warehouse-tables-distribute.md), [tablo DAĞıTıMı seçme](/archive/blogs/sqlcat/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service), [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [Create Table seçme](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="do-not-over-partition"></a>Aşırı bölümleme yapmayın
 
@@ -180,7 +180,7 @@ Ayrıca bkz. [iş yükü yönetimi Için kaynak sınıfları](resource-classes-f
 
 Genel sorunlar ve çözümleri için [Sorun giderme](sql-data-warehouse-troubleshoot.md) makalemizi de inceleyin.
 
-Bu makalede aradığınızı bulamazsanız, tüm Azure SYNAPSE belgelerini aramak için bu sayfanın sol tarafındaki "belgeleri ara" seçeneğini kullanmayı deneyin.  [Azure SYNAPSE Için Microsoft Q&soru sayfası](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) , diğer kullanıcılara ve Azure SYNAPSE ürün grubuna soru göndermek için kullanabileceğiniz bir yerdir. Sorularınızın diğer kullanıcılar veya ekibimiz tarafından yanıtlandığından emin olmak için bu forumu sürekli takip ediyoruz.  
+Bu makalede aradığınızı bulamazsanız, tüm Azure SYNAPSE belgelerini aramak için bu sayfanın sol tarafındaki "belgeleri ara" seçeneğini kullanmayı deneyin.  [Azure SYNAPSE Için Microsoft Q&soru sayfası](/answers/topics/azure-synapse-analytics.html) , diğer kullanıcılara ve Azure SYNAPSE ürün grubuna soru göndermek için kullanabileceğiniz bir yerdir. Sorularınızın diğer kullanıcılar veya ekibimiz tarafından yanıtlandığından emin olmak için bu forumu sürekli takip ediyoruz.  
 
 Stack Overflow sorularınızı sormak isterseniz, [Azure Synapse Stack Overflow Forumumuzu](https://stackoverflow.com/questions/tagged/azure-sqldw)da sunuyoruz.
 

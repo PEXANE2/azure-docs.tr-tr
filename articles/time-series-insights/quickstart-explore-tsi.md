@@ -9,13 +9,13 @@ manager: diviso
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 10/02/2020
-ms.openlocfilehash: 3956f8d91793367f7200d2f349a8713aff3d2f59
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 01/11/2021
+ms.openlocfilehash: cb5bac06ab6eeaa00e72ba6068328a972b8ac37b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016233"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119370"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-gen2-demo-environment"></a>Hızlı başlangıç: Azure Time Series Insights Gen2 demo ortamını keşfet
 
@@ -38,12 +38,27 @@ Azure Time Series Insights Gen2 Explorer geçmiş verileri ve kök neden analizi
 
 ## <a name="work-with-historical-data"></a>Geçmiş verilerle çalışma
 
-1. **Contoso bitki 1**' de rüzgar türbin **W7** bölümüne bakın.  
+1. **Contoso WINI grup hiyerarşisi**' ni seçin.
+
+   [![Contoso Wınbir grup hiyerarşisi](media/quickstart-explore/quick-start-contoso-1.png)](media/quickstart-explore/quick-start-contoso-1.png#lightbox)
+
+1. **Contoso bitki 1**' de rüzgar türbin **W7** bölümüne bakın.
+
+   [![Contoso tesis 1 ' de W7](media/quickstart-explore/quick-start-contoso-2.png)](media/quickstart-explore/quick-start-contoso-2.png#lightbox)
 
    1. Görünüm aralığını **1/1/17 20:00:00.00 olarak 3/10/17 20:00:00.00 (UTC)** olarak değiştirin.
+
+      [![Aralık görünümü](media/quickstart-explore/range-setting-1.png)](media/quickstart-explore/range-setting-1.png#lightbox)
+
+      [![Aralık görünümü ayarı](media/quickstart-explore/range-setting-2.png)](media/quickstart-explore/range-setting-2.png#lightbox)
+
+   1. Ölçeği Yakınlaştır **(+)** ve out **(-)** ile ve slayt çubuğunu taşıyarak Aralık görünümünü ayarlayın.
+
+      [![Aralık görünümünü ayarla](media/quickstart-explore/view-range-setting.png)](media/quickstart-explore/view-range-setting.png#lightbox)
+
    1. Bir algılayıcı seçmek için **contoso bitki 1**  >  **W7**  >  **Generator sistem**  >  **generatorspeed**' i seçin. Ardından, gösterilen değerleri gözden geçirin.
 
-      [![Contoso tesis 1 ' de W7](media/v2-update-quickstart/quick-start-generator-speed.png)](media/v2-update-quickstart/quick-start-generator-speed.png#lightbox)
+      [![Üretici hızı](media/quickstart-explore/quick-start-generator-speed-1.png)](media/quickstart-explore/quick-start-generator-speed-1.png#lightbox)
 
 1. Contoso, Rüzgar Turbin **W7** içinde bir yangın buldu. Opın ons, yangın ne olduğuna ilişkin farklılık gösterir. Azure Time Series Insights Gen2 ' de, yangın sırasında etkinleştirilen yangın uyarı algılayıcısı görüntülenir.
 

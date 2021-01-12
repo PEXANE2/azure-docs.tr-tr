@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: ae8fd7f405beb20d516835ccb80b86e769fd0393
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 47e9b80bb25b7ff14695cc67682265fe338ff76f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697093"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119110"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir dizini yeniden oluşturma
 
@@ -91,7 +91,7 @@ Dizini yüklediğinizde, her alanın ters çevrilmiş dizini her belgedeki benze
 
 İlk belge yüklendikten hemen sonra bir dizini sorgulamaya başlayabilirsiniz. Bir belgenin KIMLIĞINI biliyorsanız, [Arama belgesi REST API](/rest/api/searchservice/lookup-document) belirli belgeyi döndürür. Daha geniş bir test için, Dizin tam olarak yüklenene kadar beklemeniz gerekir ve ardından görmek istediğiniz bağlamı doğrulamak için sorguları kullanabilirsiniz.
 
-Güncelleştirilmiş içeriği denetlemek için, [Arama Gezgini](search-explorer.md) 'Ni veya [postman veya Visual Studio Code](search-get-started-rest.md) gibi bir Web Testi aracını kullanabilirsiniz.
+Güncelleştirilmiş içeriği denetlemek için, [Arama Gezgini](search-explorer.md) 'Ni veya [postman](search-get-started-rest.md) veya [Visual Studio Code](search-get-started-vs-code.md) gibi bir Web Testi aracını kullanabilirsiniz.
 
 Bir alanı eklediyseniz veya yeniden adlandırdıysanız, bu alanı döndürmek için [$Select](search-query-odata-select.md) kullanın: `search=*&$select=document-id,my-new-field,some-old-field&$count=true`
 

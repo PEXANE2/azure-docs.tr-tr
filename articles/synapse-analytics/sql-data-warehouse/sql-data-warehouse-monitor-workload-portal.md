@@ -10,21 +10,21 @@ ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 53c68f44273b14658bd4d95ce7cf3cf847c077d0
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: f780d5404d99435a61c4e3f9e90b1acbd9539af9
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93025961"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118447"
 ---
 # <a name="monitor-workload---azure-portal"></a>İş yükünü izleme-Azure portal
 
 Bu makalede, iş yükünüzü izlemek için Azure portal nasıl kullanılacağı açıklanır. Bu, [SYNAPSE SQL](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/)için Log Analytics kullanarak sorgu yürütmeyi ve iş yükü eğilimlerini araştırmak üzere Azure izleyici günlüklerini ayarlamayı içerir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği: bir Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
-- SQL havuzu: bir SQL havuzu için günlükleri toplayacağız. Sağlanmış bir SQL havuzu yoksa, [SQL havuzu oluşturma](load-data-from-azure-blob-storage-using-polybase.md)' daki yönergelere bakın.
+- SQL havuzu: bir SQL havuzu için günlükleri toplayacağız. Sağlanmış bir SQL havuzu yoksa, [SQL havuzu oluşturma](./load-data-from-azure-blob-storage-using-copy.md)' daki yönergelere bakın.
 
 ## <a name="create-a-log-analytics-workspace"></a>Log Analytics çalışma alanı oluşturma
 
@@ -63,7 +63,7 @@ Log Analytics çalışma alanınıza giderek şunları yapabilirsiniz:
 - Günlük uyarıları oluşturma
 - Sorgu sonuçlarını panoya sabitleme
 
-Günlük sorgularının özellikleri hakkında ayrıntılı bilgi için aşağıdaki [belgeleri](../../azure-monitor/log-query/query-language.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)ziyaret edin.
+Günlük sorgularının özellikleri hakkında ayrıntılı bilgi için aşağıdaki [belgeleri](/azure/data-explorer/kusto/query/?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json)ziyaret edin.
 
 ![Log Analytics çalışma alanı Düzenleyicisi](./media/sql-data-warehouse-monitor-workload-portal/log_analytics_workspace_editor.png)
 

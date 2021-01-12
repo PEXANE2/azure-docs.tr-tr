@@ -5,12 +5,12 @@ author: naiteeks
 ms.topic: how-to
 ms.author: naiteeks
 ms.date: 12/14/2020
-ms.openlocfilehash: 9621f0a933c6102309286505f2c551c5256c5506
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: aa8657550c6475afd9f893acf8985c50cec0f199
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901564"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119467"
 ---
 # <a name="upgrading-live-video-analytics-on-iot-edge-from-10-to-20"></a>1,0 ' den 2,0 ' e IoT Edge canlı video analizlerini yükseltme
 
@@ -19,9 +19,9 @@ Bu makalede, Azure IoT Edge modülündeki canlı video analizi (LVA) yükseltili
 ## <a name="change-list"></a>Değişiklik listesi
 
 > [!div class="mx-tdCol4BreakAll"]
-> |Title|Canlı video analizi 1,0|Canlı video analizi 2,0|Açıklama|
+> |Başlık|Canlı video analizi 1,0|Canlı video analizi 2,0|Description|
 > |-------------|----------|---------|---------|
-> |Kapsayıcı görüntüsü|mcr.microsoft.com/media/live-video-analytics:1.0.0|mcr.microsoft.com/media/live-video-analytics:2.0.0|Azure IoT Edge üzerinde canlı video analizi için Microsoft tarafından yayınlanan Docker görüntüleri|
+> |Kapsayıcı görüntüsü|mcr.microsoft.com/media/live-video-analytics:1|mcr.microsoft.com/media/live-video-analytics:2|Azure IoT Edge üzerinde canlı video analizi için Microsoft tarafından yayınlanan Docker görüntüleri|
 > |**MediaGraph düğümleri** |    |   |   |
 > |Kaynaklar|:::image type="icon" source="./././media/upgrading-lva/check.png"::: RTSP kaynağı </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: IoT Hub Ileti kaynağı |:::image type="icon" source="./././media/upgrading-lva/check.png"::: RTSP kaynağı </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: IoT Hub Ileti kaynağı | Medya alımı ve iletileri için kaynak olarak davranan MediaGraph düğümleri.|
 > |İşlemciler|:::image type="icon" source="./././media/upgrading-lva/check.png"::: Hareket algılama işlemcisi </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Çerçeve hızı filtre işlemcisi </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Http uzantısı işlemcisi </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: GRPC uzantı işlemcisi </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Sinyal kapısı işlemcisi |:::image type="icon" source="./././media/upgrading-lva/check.png"::: Hareket algılama işlemcisi </br>:::image type="icon" source="./././media/upgrading-lva/remove.png":::**Çerçeve hızı filtre işlemcisi**</br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Http uzantısı işlemcisi </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: GRPC uzantı işlemcisi </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Sinyal kapısı işlemcisi | AI çıkarımı sunucularına göndermeden önce medyayı biçimlendirmeniz sağlayan MediaGraph düğümleri.|

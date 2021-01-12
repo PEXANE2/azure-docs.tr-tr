@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 91f612ba7f19deb739dbb6004e275ea044a5a3d3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 45e1ae5b8a1084334b7596f62c272e16294c4c14
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462552"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118770"
 ---
 # <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu kullanarak Parquet ve JSON dosyalarındaki iç içe türleri sorgulama
 
@@ -24,7 +24,7 @@ Bu makalede, Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu kullanarak bir sor
 - Karmaşık bir JSON belgesini tek bir sütun olarak okuyabileceğiniz hiyerarşik [JSON dosyaları](query-json-files.md).
 - Her belge karmaşık iç içe Özellikler içerebilen Koleksiyonlar (Şu anda geçitli genel önizleme kapsamında) Azure Cosmos DB.
 
-Sunucusuz SQL havuzu tüm iç içe geçmiş türleri JSON nesneleri ve diziler olarak biçimlendirir. Bu nedenle, [JSON işlevleri kullanarak karmaşık nesneleri ayıklayabilir veya değiştirebilir](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) veya [OPENJSON işlevini kullanarak JSON verilerini ayrıştırtırabilirsiniz](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server). 
+Sunucusuz SQL havuzu tüm iç içe geçmiş türleri JSON nesneleri ve diziler olarak biçimlendirir. Bu nedenle, [JSON işlevleri kullanarak karmaşık nesneleri ayıklayabilir veya değiştirebilir](/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) veya [OPENJSON işlevini kullanarak JSON verilerini ayrıştırtırabilirsiniz](/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server). 
 
 Aşağıda, iç içe geçmiş nesneler içeren [Covı-19 açık araştırma veri kümesi](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) JSON dosyasındaki skaler ve nesne değerlerini ayıklayan bir sorgu örneği verilmiştir: 
 
@@ -47,7 +47,7 @@ FROM
 > [!IMPORTANT]
 > Bu örnek COVıD-19 açık araştırma veri kümesinden bir dosya kullanır. Bu [verilerin yapısına ve yapısına bakın](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 İlk adım, DataSource 'un oluşturulacağı bir veritabanı oluşturmaktır. Ardından, veritabanında bir [kurulum betiği](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) çalıştırarak nesneleri başlatacaksınız. Kurulum betiği, örneklerde kullanılan veri kaynaklarını, veritabanı kapsamlı kimlik bilgilerini ve harici dosya biçimlerini oluşturacaktır.
 
@@ -121,7 +121,7 @@ Sonuç aşağıdaki tabloda gösterilmiştir:
 | --- | --- | --- | --- |
 | Tamamlayıcı bilgiler bir ekonomik-epidemıolo... | Julien   | -Şekil S1: Phylogeny... | `{    "paper_id": "000b7d1517ceebb34e1e3e817695b6de03e2fa78",    "metadata": {        "title": "Supplementary Information An eco-epidemiological study of Morbilli-related paramyxovirus infection in Madagascar bats reveals host-switching as the dominant macro-evolutionary mechanism",        "authors": [            {                "first": "Julien"` |
 
-Çoğu durumda karmaşık bir JSON nesnesi içeren tek bir sütun döndüren JSON dosyalarından farklı olarak, Parquet dosyalarında birden çok karmaşık sütun bulunabilir. Her sütunda işlevini kullanarak iç içe sütunların özelliklerini okuyabilirsiniz `JSON_VALUE` . `OPENROWSET` bir yan tümce içinde iç içe özelliklerin yollarını doğrudan belirtmenizi sağlar `WITH` . Yolları bir sütunun adı olarak ayarlayabilir veya sütun türünden sonra bir [JSON yolu ifadesi](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server) ekleyebilirsiniz.
+Çoğu durumda karmaşık bir JSON nesnesi içeren tek bir sütun döndüren JSON dosyalarından farklı olarak, Parquet dosyalarında birden çok karmaşık sütun bulunabilir. Her sütunda işlevini kullanarak iç içe sütunların özelliklerini okuyabilirsiniz `JSON_VALUE` . `OPENROWSET` bir yan tümce içinde iç içe özelliklerin yollarını doğrudan belirtmenizi sağlar `WITH` . Yolları bir sütunun adı olarak ayarlayabilir veya sütun türünden sonra bir [JSON yolu ifadesi](/sql/relational-databases/json/json-path-expressions-sql-server) ekleyebilirsiniz.
 
 Aşağıdaki sorgu, Structexörnek. Parquet dosyasını okur ve iç içe geçmiş bir sütunun yüzey öğelerinin nasıl gösterileceğini gösterir. İç içe bir değere başvurmak için iki yol vardır:
 - Tür belirtiminden sonra iç içe değer yol ifadesini belirterek.

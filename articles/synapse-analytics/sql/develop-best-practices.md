@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a5e514602668c96d63562e45fb114cf9770a54a9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 1fd7649cac6b636873ca529fe9780429d86697c6
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321492"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120912"
 ---
 # <a name="development-best-practices-for-synapse-sql"></a>SYNAPSE SQL için geliştirme en iyi yöntemleri
 
@@ -53,7 +53,7 @@ Bu, veri taşıma işlemlerini ortadan kaldırdığımız anlamına gelir.  Adı
 
 Dağıtım sütununun nasıl seçileceği hakkında daha fazla bilgi için aşağıdaki bağlantılara bakın ve CREATE TABLES deyiminiz WıTH yan tümcesinde dağıtılmış bir tablo tanımlayabilirsiniz.
 
-Ayrıca bkz. [tabloya genel bakış](develop-tables-overview.md), [tablo dağıtımı](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), [tablo dağıtımı](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/), [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)ve [Create Table](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)seçme.
+Ayrıca bkz. [tabloya genel bakış](develop-tables-overview.md), [tablo dağıtımı](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), [tablo dağıtımı](/archive/blogs/sqlcat/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service), [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)ve [Create Table](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)seçme.
 
 ### <a name="do-not-over-partition"></a>Aşırı bölümleme yapmayın
 Verilerin bölümlenmesi, bölüm değiştirme veya taramayı en iyi duruma getirme ile, bölüm ile verileri korumak için etkili olsa da, çok fazla bölüm olması sorgularınızı yavaşlatabilir.  Genellikle SQL Server en iyi şekilde çalışan yüksek düzeyde parçalı bölümleme stratejisi, adanmış SQL havuzunda iyi çalışmayabilir.  
@@ -147,7 +147,7 @@ Mümkünse, daha iyi performans için dosyaları hazırlayacaksınız:
 - Tek bir OPENROWSET yolu veya dış tablo konumu için eşit boyutlu dosyalar olması tercih edilir.
 - Bölümleri farklı klasörlere veya dosya adlarına depolayarak verilerinizi bölümleyin; [belirli bölümleri hedeflemek için dosya adı ve FilePath işlevlerini kullanın](#use-fileinfo-and-filepath-functions-to-target-specific-partitions).
 
-### <a name="use-fileinfo-and-filepath-functions-to-target-specific-partitions"></a>Belirli bölümleri hedeflemek için FileInfo ve FilePath işlevlerini kullanın
+### <a name="use-fileinfo-and-filepath-functions-to-target-specific-partitions"></a>Belirli bölümleri hedeflemek için fileinfo ve filepath işlevlerini kullanın
 
 Veriler genellikle bölümler halinde düzenlenir. Belirli klasörleri ve dosyaları sorgulamak için sunucusuz SQL havuzu söyleyebilirsiniz. Bunun yapılması sorgunun okuması ve işlemesi gereken dosya sayısını ve veri miktarını azaltır. 
 
@@ -167,7 +167,6 @@ CETAS, Parquet dosyalarını oluşturduğunda, ilk sorgu bu dış tabloyu hedefl
 
 ### <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede sağlanmayan bilgilere ihtiyacınız varsa, tüm SQL havuzu belgelerini aramak için bu sayfanın sol tarafındaki **Belge ara** işlevini kullanın.  [Azure SYNAPSE Analytics Için Microsoft Q&soru sayfası](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) , diğer kullanıcılara ve Azure SYNAPSE Analytics ürün grubuna yönelik sorular oluşturabilmeniz için bir yerdir. Sorularınızın diğer kullanıcılar veya ekibimiz tarafından yanıtlandığından emin olmak için bu forumu sürekli takip ediyoruz.  
+Bu makalede sağlanmayan bilgilere ihtiyacınız varsa, tüm SQL havuzu belgelerini aramak için bu sayfanın sol tarafındaki **Belge ara** işlevini kullanın.  [Azure SYNAPSE Analytics Için Microsoft Q&soru sayfası](/answers/topics/azure-synapse-analytics.html) , diğer kullanıcılara ve Azure SYNAPSE Analytics ürün grubuna yönelik sorular oluşturabilmeniz için bir yerdir. Sorularınızın diğer kullanıcılar veya ekibimiz tarafından yanıtlandığından emin olmak için bu forumu sürekli takip ediyoruz.  
 
 Stack Overflow sorularınızı sormak isterseniz, [Azure SYNAPSE Analytics Stack Overflow Forumumuzu](https://stackoverflow.com/questions/tagged/azure-sqldw)da sunuyoruz.
- 

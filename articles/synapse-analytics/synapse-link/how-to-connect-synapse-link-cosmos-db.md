@@ -9,23 +9,23 @@ ms.subservice: synapse-link
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0e4bcc13a2eaddbf394d8468b29eeff475119e2d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5316f74ee38f597592ae4582aef31837f0f05fda
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96459015"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119841"
 ---
-# <a name="connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure SYNAPSE bağlantısına bağlanma
+# <a name="connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Synapse Link’e bağlanma
 
 Bu makalede Azure SYNAPSE bağlantısıyla Azure SYNAPSE Analytics Studio 'dan bir Azure Cosmos DB veritabanına nasıl erişebileceğiniz açıklanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Cosmos DB bir veritabanını çalışma alanınıza bağlanmadan önce şunları yapmanız gerekir:
 
-* Mevcut Azure Cosmos DB veritabanı veya [hızlı başlangıç: bir Azure Cosmos DB hesabını yönetme](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-database-account)bölümündeki adımları izleyerek yeni bir hesap oluşturun.
-* Mevcut Azure SYNAPSE çalışma alanı veya [hızlı başlangıç: SYNAPSE çalışma alanı oluşturma](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace)bölümündeki adımları izleyerek yeni bir çalışma alanı oluşturun.
+* Mevcut Azure Cosmos DB veritabanı veya [hızlı başlangıç: bir Azure Cosmos DB hesabını yönetme](../../cosmos-db/how-to-manage-database-account.md)bölümündeki adımları izleyerek yeni bir hesap oluşturun.
+* Mevcut Azure SYNAPSE çalışma alanı veya [hızlı başlangıç: SYNAPSE çalışma alanı oluşturma](../quickstart-create-workspace.md)bölümündeki adımları izleyerek yeni bir çalışma alanı oluşturun.
 
 > [!IMPORTANT]
 > Azure Cosmos DB için Azure SYNAPSE bağlantısı şu anda yönetilen bir sanal ağı etkinleştirilmemiş olan çalışma alanlarında destekleniyor.

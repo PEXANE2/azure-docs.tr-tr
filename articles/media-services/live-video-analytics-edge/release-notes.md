@@ -3,12 +3,12 @@ title: IoT Edge sürüm notlarında canlı video analizi-Azure
 description: Bu konu, IoT Edge sürümler, geliştirmeler, hata düzeltmeleri ve bilinen sorunlar üzerine canlı video analizinin sürüm notlarını sağlar.
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 7761fee8f23b5be259f9a5c278f761fa4ce92fbf
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 7f8957d1ec93259cf6defe7980f19298f782ea5e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059987"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121252"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>IoT Edge sürüm notlarında canlı video analizi
 
@@ -20,6 +20,23 @@ Bu makalede hakkında bilgi verilmektedir:
 * Bilinen sorunlar
 * Hata düzeltmeleri
 * Kullanım dışı işlevsellik
+
+<hr width=100%>
+
+## <a name="january-12-2021"></a>12 Ocak 2021
+
+Bu yayın etiketi, modülün Ocak 2021 yenilemesi için kullanılır:
+
+```
+mcr.microsoft.com/media/live-video-analytics:2.0.1
+```
+
+> [!NOTE]
+> Hızlı başlangıç ve öğreticiler bölümünde, dağıtım bildirimleri 2 (canlı-video-analiz: 2) etiketini kullanır. Bu nedenle, bu tür bildirimleri yeniden dağıtmak Edge > cihazlarınızda modülü güncellemelidir.
+### <a name="bug-fixes"></a>Hata düzeltmeleri 
+
+* Alanlar `ActivationSignalOffset` `MinimumActivationTime` ve `MaximumActivationTime` sinyal kapısı işlemcilerinde gereken özellikler yanlış ayarlandı. Artık **isteğe bağlı** özelliklerdir.
+* IoT Edge modülündeki canlı video analizlerinin belirli bölgelerde dağıtıldığında kilitlenmesine neden olan bir kullanım hatası düzeltildi.
 
 <hr width=100%>
 

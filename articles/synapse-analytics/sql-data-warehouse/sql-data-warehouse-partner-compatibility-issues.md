@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 11/18/2020
 ms.author: procha
 ms.reviewer: jrasnick
-ms.openlocfilehash: 861b963922d64926266b42a23f85e9dc30fda7a3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a1031656eaa5125d07ae078773379270b26625e7
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95903993"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121388"
 ---
 # <a name="compatibility-issues-with-third-party-applications-and-azure-synapse-analytics"></a>Üçüncü taraf uygulamalarla uyumluluk sorunları ve Azure SYNAPSE Analytics
 
@@ -55,5 +55,5 @@ TDC dosyalarını kullanma hakkında daha fazla bilgi için Tableau desteğe ba�
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Azure SYNAPSE Analytics 'te adanmış SQL havuzu için T-SQL dil öğeleri.](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-reference-tsql-language-elements?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-* [T-SQL deyimleri, Azure SYNAPSE Analytics 'te adanmış SQL havuzu için desteklenir.](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-reference-tsql-statements)
+* [Azure SYNAPSE Analytics 'te adanmış SQL havuzu için T-SQL dil öğeleri.](./sql-data-warehouse-reference-tsql-language-elements.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)
+* [T-SQL deyimleri, Azure SYNAPSE Analytics 'te adanmış SQL havuzu için desteklenir.](./sql-data-warehouse-reference-tsql-statements.md)

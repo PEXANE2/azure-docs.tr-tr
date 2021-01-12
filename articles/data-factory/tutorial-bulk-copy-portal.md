@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 12/09/2020
-ms.openlocfilehash: 16b924f486215d972477e93c4e199e7076a0a531
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.date: 01/12/2021
+ms.openlocfilehash: 2fcb8f6d22e93f3a95be26b7bc61f3b5226ba090
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508892"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117138"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Azure portal Azure Data Factory kullanarak birden çok tabloyu toplu olarak kopyalama
 
@@ -51,20 +51,8 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="prerequisites"></a>Önkoşullar
 * **Azure depolama hesabı**. Azure Depolama hesabı, toplu kopyalama işleminde hazırlama blob depolama alanı olarak kullanılır. 
-* **Azure SQL veritabanı**. Bu veritabanı, kaynak verileri içerir. 
-* **Azure SYNAPSE Analytics**. Bu veri ambarı, SQL Veritabanından kopyalanan verileri tutar. 
-
-### <a name="prepare-sql-database-and-azure-synapse-analytics"></a>SQL Database ve Azure SYNAPSE Analytics 'i hazırlama 
-
-**Kaynak Azure SQL Veritabanı’nı hazırlama**:
-
-SQL veritabanı 'nda Adventure Works LT örnek verileriyle bir veritabanı oluşturun ve [Azure SQL veritabanı 'nda veritabanı oluşturun](../azure-sql/database/single-database-create-quickstart.md) makalesini takip edin. Bu öğretici bu örnek veritabanındaki tüm tabloları bir Azure SYNAPSE analiziyle kopyalar.
-
-**Azure SYNAPSE Analytics 'ı hazırlama**:
-
-1. Bir Azure SYNAPSE Analytics çalışma alanınız yoksa, oluşturma adımları için [Azure SYNAPSE Analytics ile çalışmaya başlama](..\synapse-analytics\get-started.md) makalesini inceleyin.
-
-1. Azure SYNAPSE Analytics 'te ilgili tablo şemaları oluşturun. Daha sonraki bir adımda verileri geçirmek/kopyalamak için Azure Data Factory’yi kullanın.
+* **Azure SQL veritabanı**. Bu veritabanı, kaynak verileri içerir. SQL veritabanı 'nda Adventure Works LT örnek verileriyle bir veritabanı oluşturun ve [Azure SQL veritabanı 'nda veritabanı oluşturun](../azure-sql/database/single-database-create-quickstart.md) makalesini takip edin. Bu öğretici bu örnek veritabanındaki tüm tabloları bir Azure SYNAPSE analiziyle kopyalar.
+* **Azure SYNAPSE Analytics**. Bu veri ambarı, SQL Veritabanından kopyalanan verileri tutar. Bir Azure SYNAPSE Analytics çalışma alanınız yoksa, oluşturma adımları için [Azure SYNAPSE Analytics ile çalışmaya başlama](..\synapse-analytics\get-started.md) makalesini inceleyin.
 
 ## <a name="azure-services-to-access-sql-server"></a>SQL sunucusuna erişime yönelik Azure hizmetleri
 
@@ -241,6 +229,7 @@ Bu öğreticide, iki işlem hattı oluşturursunuz: **IterateAndCopySQLTables** 
     ![Foreach parametresi derleyici](./media/tutorial-bulk-copy-portal/for-each-parameter-builder.png)
     
     d. **Etkinlikler** sekmesine geçin, **foreach** etkinliğine bir alt etkinlik eklemek için **kurşun kalem simgesine** tıklayın.
+    
     ![ForEach etkinlik Oluşturucusu](./media/tutorial-bulk-copy-portal/for-each-activity-builder.png)
 
 1. **Etkinlikler** araç kutusunda **Taşı & aktar**' ı genişletin ve **veri kopyalama** etkinliğini ardışık düzen Tasarımcısı yüzeyine sürükleyin. En üstteki içerik haritası menüsüne dikkat edin. **Iterateandcopysqltable** , işlem hattı adıdır ve **ıteratesqltables** , ForEach etkinlik adıdır. Tasarımcı, etkinlik kapsamdadır. ForEach düzenleyicisinden işlem hattı düzenleyicisine geri dönmek için, içerik haritası menüsündeki bağlantıya tıklayabilirsiniz. 
@@ -257,7 +246,6 @@ Bu öğreticide, iki işlem hattı oluşturursunuz: **IterateAndCopySQLTables** 
         SELECT * FROM [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]
         ``` 
 
-
 1. **Havuz** sekmesine geçin ve aşağıdaki adımları izleyin: 
 
     1. **Havuz Veri Kümesi** olarak **AzureSqlDWDataset** seçin.
@@ -265,6 +253,7 @@ Bu öğreticide, iki işlem hattı oluşturursunuz: **IterateAndCopySQLTables** 
     1. DWSchema parametresinin DEĞERI için giriş kutusuna tıklayın-> aşağıdan **dinamik Içerik Ekle** ' yi seçin, `@item().TABLE_SCHEMA` komut dosyası olarak ifade girin,-> **son**' u seçin.
     1. Copy yöntemi için **PolyBase**' i seçin. 
     1. **Varsayılan tür kullan** seçeneğini temizleyin. 
+    1. Tablo seçeneği için varsayılan ayar "none" dır. Azure SYNAPSE Analytics havuzu 'nda önceden oluşturulmuş tablolar yoksa, **Otomatik tablo oluştur** seçeneğini etkinleştirin, kopyalama etkinliği, kaynak verilere göre sizin için otomatik olarak tablo oluşturur. Ayrıntılar için [Otomatik havuz tabloları oluşturma](copy-activity-overview.md#auto-create-sink-tables)bölümüne bakın. 
     1. **Betiği kopyala** giriş kutusuna tıklayın -> aşağıdaki **Dinamik içerik ekle**'yi seçin -> betik için aşağıdaki ifadeyi girin -> **Son**'u seçin. 
 
         ```sql
@@ -272,6 +261,8 @@ Bu öğreticide, iki işlem hattı oluşturursunuz: **IterateAndCopySQLTables** 
         ```
 
         ![Kopyalama havuz ayarları](./media/tutorial-bulk-copy-portal/copy-sink-settings.png)
+
+
 1. **Ayarlar** sekmesine geçin ve aşağıdaki adımları uygulayın: 
 
     1. **Hazırlamayı etkinleştir** onay kutusunu seçin.

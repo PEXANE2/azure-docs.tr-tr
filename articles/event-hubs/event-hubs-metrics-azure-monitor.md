@@ -3,12 +3,12 @@ title: Azure Izleyici 'de ölçümler-Azure Event Hubs | Microsoft Docs
 description: Bu makalede Azure Event Hubs izlemek için Azure Izleme 'nin nasıl kullanılacağı hakkında bilgi verilmektedir.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 7ad570a41fd9dfff01e3a1da6b2d309a7a8464cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b055c02783c40d844d1c6306bbb71cb23d602f2
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88931157"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118804"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure İzleyici'deki Azure Event Hubs ölçümleri
 
@@ -35,7 +35,7 @@ Boyutları destekleyen ölçümler için, aşağıdaki örnekte gösterildiği g
 
 ![Boyut değeriyle filtrele][2]
 
-## <a name="billing"></a>Faturalandırma
+## <a name="billing"></a>Faturalama
 
 Azure Izleyici 'de ölçümlerin kullanılması şu anda ücretsizdir. Ancak, ölçüm verilerini alan ek çözümler kullanıyorsanız, bu çözümler tarafından faturalandırılabiliriz. Örneğin, ölçüm verilerini bir Azure depolama hesabına arşivlerseniz Azure Storage tarafından faturalandırılırsınız. Ayrıca, ölçüm verilerini gelişmiş analizler için Azure Izleyici günlüklerine akıdıysanız Azure tarafından da faturalandırılırsınız.
 
@@ -46,58 +46,8 @@ Aşağıdaki ölçümler, hizmetinizin sistem durumuna ilişkin bir genel bakı�
 
 Tüm ölçüm değerleri her dakika Azure Izleyici 'ye gönderilir. Zaman ayrıntı düzeyi, ölçüm değerlerinin sunulduğu zaman aralığını tanımlar. Tüm Event Hubs ölçümleri için desteklenen zaman aralığı 1 dakikadır.
 
-## <a name="request-metrics"></a>İstek ölçümleri
-
-Veri ve yönetim işlemleri isteklerinin sayısını sayar.
-
-| Ölçüm Adı | Açıklama |
-| ------------------- | ----------------- |
-| Gelen İstekler  | Belirli bir süre boyunca Azure Event Hubs hizmetine yapılan isteklerin sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName |
-| Başarılı İstekler    | Azure Event Hubs hizmetine belirli bir süre boyunca yapılan başarılı istek sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName |
-| Sunucu hataları  | Belirli bir süre boyunca Azure Event Hubs hizmetindeki bir hata nedeniyle işlenmemiş istek sayısı. <br/><br/>Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName |
-|Kullanıcı hataları |Belirtilen bir süre içinde Kullanıcı hataları nedeniyle işlenmeyen isteklerin sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
-|Kotanın sayısı aşıldı |İstek sayısı, kullanılabilir kotayı aştı. Event Hubs kotaları hakkında daha fazla bilgi için [Bu makaleye](event-hubs-quotas.md) bakın.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
-
-## <a name="throughput-metrics"></a>Verimlilik ölçümleri
-
-| Ölçüm Adı | Açıklama |
-| ------------------- | ----------------- |
-|Kısıtlanmış Istekler |İşleme birimi kullanımı aşıldığı için daraltılmış olan istek sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
-
-## <a name="message-metrics"></a>İleti ölçümleri
-
-| Ölçüm Adı | Açıklama |
-| ------------------- | ----------------- |
-|Gelen İletiler |Belirli bir süre boyunca Event Hubs gönderilen olay veya ileti sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
-|Giden İletiler |Belirli bir süre içinde Event Hubs alınan olay veya ileti sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
-|Gelen bayt sayısı |Belirli bir süre boyunca Azure Event Hubs hizmetine gönderilen bayt sayısı.<br/><br/> Birim: bayt <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
-|Giden Bayt Miktarı |Belirli bir süre içinde Azure Event Hubs hizmetinden alınan baytların sayısı.<br/><br/> Birim: bayt <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
-
-## <a name="connection-metrics"></a>Bağlantı ölçümleri
-
-| Ölçüm Adı | Açıklama |
-| ------------------- | ----------------- |
-|ActiveConnections |Bir ad alanındaki etkin bağlantıların yanı sıra bir varlık.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
-|Açılan bağlantılar |Açık bağlantı sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
-|Kapalı bağlantılar |Kapalı bağlantı sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
-
-## <a name="event-hubs-capture-metrics"></a>Event Hubs yakalama ölçümleri
-
-Olay Hub 'larınız için yakalama özelliğini etkinleştirdiğinizde, Event Hubs yakalama ölçümlerini izleyebilirsiniz. Aşağıdaki ölçümler yakalama etkinken neleri izleyebileceğinize ilişkin öğeleri anlatmaktadır.
-
-| Ölçüm Adı | Açıklama |
-| ------------------- | ----------------- |
-|Yakalama Biriktirme Listesi |Seçilen hedefe henüz yakalanamayan bayt sayısı.<br/><br/> Birim: bayt <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
-|Yakalanan İletiler |Belirli bir süre içinde seçilen hedefe yakalanan ileti veya olay sayısı.<br/><br/> Birim: sayım <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
-|Yakalanan Bayt Miktarı |Seçilen hedefe belirtilen bir süre içinde yakalanan bayt sayısı.<br/><br/> Birim: bayt <br/> Toplama türü: Toplam <br/> Boyut: EntityName|
-
-## <a name="metrics-dimensions"></a>Ölçüm boyutları
-
-Azure Event Hubs, Azure Izleyici 'de ölçümler için aşağıdaki boyutları destekler. Ölçümlere boyutlar eklemek isteğe bağlıdır. Boyut eklemeyin, ölçümler ad alanı düzeyinde belirtilir. 
-
-| Ölçüm Adı | Açıklama |
-| ------------------- | ----------------- |
-|EntityName| Event Hubs ad alanı altında Olay Hub 'ı varlıklarını destekler.|
+## <a name="azure-event-hubs-metrics"></a>Azure Event Hubs ölçümleri
+Hizmet tarafından desteklenen ölçümlerin bir listesi için bkz. [Azure Event Hubs](../azure-monitor/platform/metrics-supported.md#microsofteventhubnamespaces)
 
 ## <a name="azure-monitor-integration-with-siem-tools"></a>SıEM araçlarıyla Azure Izleyici tümleştirmesi
 İzleme verilerinizi (etkinlik günlükleri, tanılama günlükleri vb.) Azure Izleyici ile bir olay hub 'ına yönlendirmek, güvenlik bilgileri ve olay yönetimi (SıEM) araçlarıyla kolayca tümleştirmenize olanak sağlar. Daha fazla bilgi için aşağıdaki makalelere/blog postalarına bakın:
@@ -108,8 +58,8 @@ Azure Event Hubs, Azure Izleyici 'de ölçümler için aşağıdaki boyutları d
 
 Bir SıEM aracının bir olay hub 'ından günlük verilerini tükettiği senaryoda, hiçbir gelen ileti görmüyorsanız veya ölçüm grafiğinde giden iletiler görmüyorsanız, şu adımları izleyin:
 
-- **Gelen ileti**yoksa, Azure izleyici hizmetinin denetim/tanılama günlüklerini Olay Hub 'ına taşımayacağı anlamına gelir. Bu senaryoda Azure Izleyici ekibi ile bir destek bileti açın. 
-- gelen iletiler varsa, ancak **giden iletiler yoksa**SIEM uygulamasının iletileri okumamasından dolayı olur. Olay Hub 'ının yapılandırmasının doğru olup olmadığını öğrenmek için SıEM sağlayıcısına başvurun.
+- **Gelen ileti** yoksa, Azure izleyici hizmetinin denetim/tanılama günlüklerini Olay Hub 'ına taşımayacağı anlamına gelir. Bu senaryoda Azure Izleyici ekibi ile bir destek bileti açın. 
+- gelen iletiler varsa, ancak **giden iletiler yoksa** SIEM uygulamasının iletileri okumamasından dolayı olur. Olay Hub 'ının yapılandırmasının doğru olup olmadığını öğrenmek için SıEM sağlayıcısına başvurun.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

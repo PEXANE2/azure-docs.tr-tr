@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, devx-track-azurecli
-ms.openlocfilehash: bc62590b9517b2c6d16fdf2637990b845248d2ec
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 74d77d8c81455116cec861bf6704c6cb96526561
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932362"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121099"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Öğretici: IoT Edge cihaz yapılandırma
 
@@ -30,7 +30,7 @@ Bu makaledeki adımlar genellikle bir bulut geliştiricisi tarafından gerçekle
 > * IoT Edge bir cihaz oluşturun.
 > * IoT Edge cihazınızın benzetimini yapmak için bir Azure sanal makinesi oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makale, IoT Edge Azure Machine Learning kullanımı hakkında öğretici için bir serinin bir parçasıdır. Serideki her makale, önceki makaledeki iş üzerinde oluşturulur. Bu makaleye doğrudan ulaşdıysanız, serideki [ilk makaleyi](tutorial-machine-learning-edge-01-intro.md) ziyaret edin.
 
@@ -81,7 +81,7 @@ Bu bölümde, oluşturup çalıştırdığımız bir Docker görüntüsü kullan
 
 ## <a name="upload-certificates-to-azure-key-vault"></a>Sertifikaları Azure Key Vault yükleme
 
-Sertifikalarımızı güvenli bir şekilde depolamak ve bunları birden fazla cihazdan erişilebilir hale getirmek için, sertifikaları Azure Key Vault içine yükleyeceğiz. Yukarıdaki listeden görebileceğiniz gibi iki tür sertifika dosyası vardır: PFX ve ped. PFX 'yi, Key Vault yüklenecek Key Vault sertifikaları olarak değerlendireceğiz. PEK dosyaları düz metinlerdir ve bunları Key Vault gizli dizileri olarak değerlendireceğiz. [Azure Notebooks](tutorial-machine-learning-edge-04-train-model.md#run-azure-notebooks)çalıştırarak oluşturduğumuz Azure Machine Learning çalışma alanıyla ilişkili Key Vault kullanacağız.
+Sertifikalarımızı güvenli bir şekilde depolamak ve bunları birden fazla cihazdan erişilebilir hale getirmek için, sertifikaları Azure Key Vault içine yükleyeceğiz. Yukarıdaki listeden görebileceğiniz gibi iki tür sertifika dosyası vardır: PFX ve ped. PFX 'yi, Key Vault yüklenecek Key Vault sertifikaları olarak değerlendireceğiz. PEK dosyaları düz metinlerdir ve bunları Key Vault gizli dizileri olarak değerlendireceğiz. [Jupyıter not defterlerini](tutorial-machine-learning-edge-04-train-model.md#run-jupyter-notebooks)çalıştırarak oluşturduğumuz Azure Machine Learning çalışma alanıyla ilişkili Key Vault kullanacağız.
 
 1. [Azure Portal](https://portal.azure.com), Azure Machine Learning çalışma alanınıza gidin.
 

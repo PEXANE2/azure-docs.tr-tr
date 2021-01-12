@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 14d15f54befba162b071b40e06e589f980708fd3
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 74ddaaf7a2d279439c0cd27ba0840f02f297877b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740496"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119569"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Python 'da (Önizleme), ML modellerini & öngörülerini açıklamak için yorumlamalar paketini kullanın
 
@@ -340,7 +340,7 @@ Genel model tahminlerinizi etkileyen (genel açıklama olarak da bilinir) en ön
 
 Açıklama sekmesinin dördüncü sekmesi, bireysel bir DataPoint ve bireysel özellikler için detaya gitmenizi sağlar. Ana dağılım çiziminde her bir veri noktasına tıklayarak veya sağdaki panel sihirbazında belirli bir DataPoint seçerek herhangi bir veri noktası için bireysel Özellik önem çizimi ' ni yükleyebilirsiniz.
 
-|ZF|Açıklama|
+|ZF|Description|
 |----|-----------|
 |Bireysel Özellik önemi|Tek bir tahmine yönelik üst k önemli özellikleri gösterir. Belirli bir veri noktasındaki temeldeki modelin yerel davranışını göstermeye yardımcı olur.|
 |What-If Analizi|Seçili gerçek veri noktasının özellik değerlerinde değişikliklere izin verir ve yeni özellik değerleriyle kuramsal bir DataPoint oluşturarak tahmin değerindeki sonuç değişikliklerini gözlemleyin.|
@@ -491,7 +491,7 @@ Açıklama 'yi özgün modelle birlikte dağıtabilir ve tüm yeni DataPoint iç
 
          # WARNING: to install this, g++ needs to be available on the Docker image and is not by default (look at the next cell)
 
-         azureml_pip_packages = ['azureml-defaults', 'azureml-contrib-interpret', 'azureml-core', 'azureml-telemetry', 'azureml-interpret']
+         azureml_pip_packages = ['azureml-defaults', 'azureml-core', 'azureml-telemetry', 'azureml-interpret']
  
 
          # specify CondaDependencies obj

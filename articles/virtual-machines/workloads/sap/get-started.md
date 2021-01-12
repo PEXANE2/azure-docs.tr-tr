@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 01/05/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f74e6435af9084b0c8f222c33dc922fe678bc4c7
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: e3a4c367bbe0770495a63c00ca33861ac815460f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914528"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121014"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -83,6 +83,7 @@ Bu bölümde, Microsoft Power BI tümleştirme hakkındaki belgeleri SAP veri ka
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
 
+- 01/11/2021: [RHEL for SAP Applications üzerinde Azure sanal](./high-availability-guide-rhel.md)makinelerinde SAP NW için ha 'da küçük değişiklikler, RHEL [çok düzeyli](./high-availability-guide-rhel-multi-sid.md) Azure VM ['lerinde RHEL](./high-availability-guide-rhel-netapp-files.md) 'de SAP NW IÇIN ve RHEL8 ve RHEL7, ENSA1 ve ENSA2 için çalışır.
 - 01/05/2021: [SLES 'de ANF Ile Azure VM](./sap-hana-scale-out-standby-netapp-files-suse.md) 'lerinde yer alan ve Azure VM 'lerinde yer alan SAP HANA ve [RHEL 'de ANF üzerinde](./sap-hana-scale-out-standby-netapp-files-rhel.md)yer alan Azure sanal makinelerinde bekleyen bir düğüm ile ölçek GENIŞLETME SAP HANA değişiklik, SAP konak aracısının yerel bağlantı noktası aralığını yönetmesine izin vermek için önerilen yapılandırmayı yeniden gözden geçirme  
 - 01/04/2021: Azure 'da SAP HANA, HLI tarafından desteklenen yeni Azure bölgelerini ekleme [(büyük örnekler)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
 - 12/29/2020: [Azure kullanılabilirlik alanları Ile SAP iş yükü yapılandırmalarında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones) belirli Azure bölgeleri için mimari önerileri ekleyin

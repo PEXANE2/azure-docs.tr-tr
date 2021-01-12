@@ -12,12 +12,12 @@ ms.topic: article
 ms.subservice: sql-dw
 ms.date: 01/21/2020
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 512775369bd7787c6228c6d452be0e236ddf5cc2
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0ce07ff3ca5fbcc9776792129d3bfb4ef54efe7d
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456332"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120130"
 ---
 # <a name="upgrade-your-dedicated-sql-pool-formerly-sql-dw-to-gen2"></a>Adanmış SQL havuzunuzu (eski adıyla SQL DW) Gen2 'e yükseltin
 
@@ -133,4 +133,4 @@ Daha fazla bilgi için bkz. [Gen2 sürümüne yükseltme](upgrade-to-latest-gene
 - [Bir geri yükleme noktasından yerinde yükseltme ve yükseltme](upgrade-to-latest-generation.md)
 - [Kullanıcı tanımlı geri yükleme noktası oluşturma](sql-data-warehouse-restore-points.md)
 - [Gen2 'e geri yüklemeyi öğrenin](sql-data-warehouse-restore-active-paused-dw.md)
-- [Bir Azure SYNAPSE Analytics destek isteği açın](https://go.microsoft.com/fwlink/?linkid=857950)
+- [Bir Azure SYNAPSE Analytics destek isteği açın](./sql-data-warehouse-get-started-create-support-ticket.md)

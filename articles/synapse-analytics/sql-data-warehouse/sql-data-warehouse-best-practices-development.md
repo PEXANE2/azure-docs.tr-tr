@@ -11,12 +11,12 @@ ms.date: 09/04/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f8db19b209ddefebd4a297f18fb9b178fcf40f21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8826dff6d347f78625272a5620a1f168b8804db
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89457915"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120045"
 ---
 # <a name="development-best-practices-for-synapse-sql-pool"></a>SYNAPSE SQL havuzu için geliştirme en iyi yöntemleri
 
@@ -55,7 +55,7 @@ Hepsini Bir Kez Deneme tabloları, belirli iş yükleri için yeterli performans
 
 Dağıtılmış bir tablo yüklenirken, yükleme işleminin yavaşlamaması için gelen verilerinizin dağıtım anahtarına göre sıralanmamış olduğundan emin olun.  Aşağıdaki makaleler, bir dağıtım sütunu seçerek ve CREATE TABLES deyiminiz WıTH yan tümcesinde dağıtılmış bir tablo tanımlama hakkında daha fazla ayrıntı sağlar.
 
-Ayrıca bkz. [tabloya genel bakış](sql-data-warehouse-tables-overview.md), [tablo dağıtımı](sql-data-warehouse-tables-distribute.md), [tablo dağıtımı](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/), [Create Table](sql-data-warehouse-tables-overview.md)ve [Create Table](sql-data-warehouse-develop-ctas.md) seçme
+Ayrıca bkz. [tabloya genel bakış](sql-data-warehouse-tables-overview.md), [tablo dağıtımı](sql-data-warehouse-tables-distribute.md), [tablo dağıtımı](/archive/blogs/sqlcat/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service), [Create Table](sql-data-warehouse-tables-overview.md)ve [Create Table](sql-data-warehouse-develop-ctas.md) seçme
 
 ## <a name="do-not-over-partition"></a>Aşırı bölümleme yapmayın
 
@@ -120,7 +120,7 @@ Ayrıca bkz. [tablo dizinleri](sql-data-warehouse-tables-index.md), [columnstore
 
 Bu makalede aradığınızı bulamazsanız, tüm Azure SYNAPSE belgelerini aramak için bu sayfanın sol tarafındaki "belgeleri ara" seçeneğini kullanmayı deneyin.  
 
-[Azure SYNAPSE Için Microsoft Q&soru sayfası](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) , diğer kullanıcılara ve Azure SYNAPSE ürün grubuna soru göndermek için kullanabileceğiniz bir yerdir.  Sorularınızın diğer kullanıcılar veya ekibimiz tarafından yanıtlandığından emin olmak için bu forumu sürekli takip ediyoruz.  
+[Azure SYNAPSE Için Microsoft Q&soru sayfası](/answers/topics/azure-synapse-analytics.html) , diğer kullanıcılara ve Azure SYNAPSE ürün grubuna soru göndermek için kullanabileceğiniz bir yerdir.  Sorularınızın diğer kullanıcılar veya ekibimiz tarafından yanıtlandığından emin olmak için bu forumu sürekli takip ediyoruz.  
 
 Stack Overflow sorularınızı sormak isterseniz, [Azure SYNAPSE Analytics Stack Overflow Forumumuzu](https://stackoverflow.com/questions/tagged/azure-sqldw)da sunuyoruz.
 

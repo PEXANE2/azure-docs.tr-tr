@@ -11,12 +11,12 @@ ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: f66efb9112a9342122f5b56ab11b862ce3c7c61b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 75c0058f2d4878016281656935cbd82f79b859fd
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314432"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120011"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te kaynak kullanımını ve sorgu etkinliğini izleme
 
@@ -24,18 +24,18 @@ Azure SYNAPSE Analytics, veri ambarı iş yükünüz ile ilgili öngörülere y�
 
 ## <a name="resource-utilization"></a>Kaynak kullanımı
 
-Aşağıdaki ölçümler, SYNAPSE SQL için Azure portal kullanılabilir. Bu ölçümler [Azure izleyici](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics)aracılığıyla ortaya çıkmış.
+Aşağıdaki ölçümler, SYNAPSE SQL için Azure portal kullanılabilir. Bu ölçümler [Azure izleyici](../../azure-monitor/platform/data-platform.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#metrics)aracılığıyla ortaya çıkmış.
 
-| Ölçüm Adı             | Açıklama                                                  | Toplama Türü |
+| Ölçüm Adı             | Description                                                  | Toplama Türü |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
 | CPU yüzdesi          | Veri ambarı için tüm düğümlerde CPU kullanımı      | Ortalama, en düşük, en fazla    |
 | Veri G/Ç yüzdesi      | Veri ambarı için tüm düğümlerde GÇ kullanımı       | Ortalama, en düşük, en fazla    |
 | Bellek yüzdesi       | Veri ambarı için tüm düğümlerde bellek kullanımı (SQL Server) | Ortalama, en düşük, en fazla   |
-| Etkin sorgular          | Sistemde yürütülen etkin sorguların sayısı             | Toplam              |
-| Kuyruğa alınmış sorgular          | Yürütülmeye başlamak için bekleyen sıraya alınmış sorgu sayısı          | Toplam              |
+| Etkin sorgular          | Sistemde yürütülen etkin sorguların sayısı             | Sum              |
+| Kuyruğa alınmış sorgular          | Yürütülmeye başlamak için bekleyen sıraya alınmış sorgu sayısı          | Sum              |
 | Başarılı bağlantılar  | Veritabanına yönelik başarılı bağlantı sayısı (oturum açma) | Toplam, sayı       |
 | Başarısız Bağlantılar      | Veritabanına karşı başarısız bağlantı sayısı (oturum açma) | Toplam, sayı       |
-| Güvenlik duvarı tarafından engellendi     | Engellenen veri ambarına ait oturum açma sayısı     | Toplam, sayı       |
+| Güvenlik Duvarı Tarafından Engellendi     | Engellenen veri ambarına ait oturum açma sayısı     | Toplam, sayı       |
 | DWU sınırı               | Veri ambarının hizmet düzeyi hedefi                | Ortalama, en düşük, en fazla    |
 | DWU yüzdesi          | CPU yüzdesi ile veri GÇ yüzdesi arasındaki en fazla        | Ortalama, en düşük, en fazla    |
 | Kullanılan DWU                | DWU sınırı * DWU yüzdesi                                   | Ortalama, en düşük, en fazla    |
@@ -57,7 +57,7 @@ SYNAPSE SQL 'e uygulanan DMVs listesini görüntülemek için bu [belgeye](../sq
 
 ## <a name="metrics-and-diagnostics-logging"></a>Ölçümler ve tanılama günlükleri 
 
-Hem ölçümler hem de Günlükler Azure izleyici 'ye, özellikle de [Azure izleyici günlükleri](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) bileşenine aktarılabilir ve [günlük sorgularıyla](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)programlı olarak erişilebilir. SYNAPSE SQL için günlük gecikme süresi yaklaşık 10-15 dakikadır. Gecikme süresini etkileyen faktörler hakkında daha fazla bilgi için aşağıdaki belgeleri ziyaret edin.
+Hem ölçümler hem de Günlükler Azure izleyici 'ye, özellikle de [Azure izleyici günlükleri](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) bileşenine aktarılabilir ve [günlük sorgularıyla](../../azure-monitor/log-query/log-analytics-tutorial.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json)programlı olarak erişilebilir. SYNAPSE SQL için günlük gecikme süresi yaklaşık 10-15 dakikadır. Gecikme süresini etkileyen faktörler hakkında daha fazla bilgi için aşağıdaki belgeleri ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

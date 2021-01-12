@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 11/16/2020
-ms.openlocfilehash: 791cab369dcbf9cab8d1256377cfee4a433c21b9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 53fb256d3a0fba1cc10cafb239ff7f7bb21ac4eb
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450893"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121082"
 ---
 # <a name="tutorial-create-a-power-bi-report-using-apache-spark-and-azure-synapse-analytics"></a>Öğretici: Apache Spark ve Azure SYNAPSE Analytics kullanarak Power BI raporu oluşturma
 
@@ -22,7 +22,7 @@ Kuruluşlar, önemli iş hissedarlarına hizmet vermeden önce büyük hacimleri
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 - Varsayılan depolama alanı olarak yapılandırılmış bir ADLS 2. depolama hesabıyla [Azure SYNAPSE Analytics çalışma alanı](../quickstart-create-workspace.md) . 
-- Power BI çalışma alanı ve Power BI Desktop verileri görselleştirilecek. Ayrıntılar için bkz. [Power BI çalışma alanı oluşturma](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces) ve [Power BI masaüstünü yüklemeye](https://powerbi.microsoft.com/downloads/)
+- Power BI çalışma alanı ve Power BI Desktop verileri görselleştirilecek. Ayrıntılar için bkz. [Power BI çalışma alanı oluşturma](/power-bi/service-create-the-new-workspaces) ve [Power BI masaüstünü yüklemeye](https://powerbi.microsoft.com/downloads/)
 - Azure SYNAPSE analizlerinizi ve Power BI çalışma alanlarını bağlamak için bağlı hizmet. Ayrıntılar için bkz. [Power BI çalışma alanına bağlama](../quickstart-power-bi.md)
 - SYNAPSE Analytics çalışma alanınızda sunucusuz Apache Spark Havuzu. Ayrıntılar için bkz. [sunucusuz Apache Spark havuzu oluşturma](../quickstart-create-apache-spark-pool-studio.md)
   
@@ -89,7 +89,7 @@ Sunucusuz SQL havuzunuzu kullanarak Apache Spark tablonuzu sorgulamak için:
 Daha sonra, sunucusuz SQL havuzumuzu Power BI çalışma alanına bağlayacağız. Çalışma alanınızı bağladıktan sonra, hem doğrudan Azure SYNAPSE Analytics 'ten hem de Power BI masaüstünden Power BI raporlar oluşturabilirsiniz.
 
 >[!Note]
-> Başlamadan önce, [Power BI çalışma alanınıza](../quickstart-power-bi.md) bağlı bir hizmet ayarlamanız ve [Power BI masaüstünü](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces)indirmeniz gerekir.  
+> Başlamadan önce, [Power BI çalışma alanınıza](../quickstart-power-bi.md) bağlı bir hizmet ayarlamanız ve [Power BI masaüstünü](/power-bi/service-create-the-new-workspaces)indirmeniz gerekir.  
 
 Sunucusuz SQL havuzumuzu Power BI çalışma alanım 'a bağlamak için:
 

@@ -8,80 +8,79 @@ ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 757e34fd45b7d3d9703aa09daa7f040c5f605637
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 2cc96db88d9a2aec02de5e2fc4ed18b445972e7b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932396"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121165"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Öğretici: Azure Machine Learning modeli eğitme ve dağıtma
 
 Bu makalede, aşağıdaki görevleri yaptık:
 
-* Machine Learning modelini eğitmek için Azure Notebooks kullanın.
+* Machine Learning modelini eğitmek için Azure Machine Learning Studio kullanın.
 * Eğitilen modeli kapsayıcı görüntüsü olarak paketleyin.
 * Kapsayıcı görüntüsünü Azure IoT Edge modülü olarak dağıtın.
 
-Azure Notebooks, makine öğrenimi modellerini denemek, eğmek ve dağıtmak için kullanılan temel bir blok olan Azure Machine Learning çalışma alanından faydalanır.
+Azure Machine Learning Studio, makine öğrenimi modellerini denemek, eğmek ve dağıtmak için kullanılan temel bir bloğudur.
 
 Bu makaledeki adımlar genellikle veri bilimcileri tarafından gerçekleştirilmiş olabilir.
 
 Öğreticinin bu bölümünde şunları yapmayı öğreneceksiniz:
 
 > [!div class="checklist"]
->
-> * Machine Learning modelini eğitmek için Azure Notebooks projesi oluşturun.
+> * Makine öğrenimi modelini eğitmek için Azure Machine Learning Çalışma Alanı bir jupi Not defteri oluşturun.
 > * Eğitilen makine öğrenme modelini kapsayıcıya geçirin.
 > * Kapsayıcılı makine öğrenimi modelinden bir Azure IoT Edge modülü oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makale, IoT Edge Azure Machine Learning kullanımı hakkında öğretici için bir serinin bir parçasıdır. Serideki her makale, önceki makaledeki iş üzerinde oluşturulur. Bu makaleye doğrudan ulaşdıysanız, serideki [ilk makaleyi](tutorial-machine-learning-edge-01-intro.md) ziyaret edin.
 
-## <a name="set-up-azure-notebooks"></a>Azure Notebooks ayarlama
+## <a name="set-up-azure-machine-learning"></a>Azure Machine Learning ayarlama 
 
-İki jupi Not defterini ve destekleyici dosyaları barındırmak için Azure Notebooks kullanırız. Burada bir Azure Notebooks projesi oluşturacağız ve yapılandıracağız. Jupyter ve/veya Azure Notebooks kullanmadıysanız, bir dizi giriş belgesi aşağıda verilmiştir:
+İki jupi Not defterini ve destekleyici dosyaları barındırmak için Azure Machine Learning Studio kullanırız. Burada bir Azure Machine Learning projesi oluşturacağız ve yapılandıracağız. Jupyter ve/veya Azure Machine Learning Studio kullanmadıysanız, bir dizi giriş belgesi aşağıda verilmiştir:
 
-* **Hızlı başlangıç:** [Not defteri oluşturma ve paylaşma](../notebooks/quickstart-create-share-jupyter-notebook.md)
-* **Öğretici:** [Python Ile Jupyter Not defteri oluşturma ve çalıştırma](../notebooks/tutorial-create-run-jupyter-notebook.md)
+* **Jupyter Not defterleri:** [Visual Studio Code 'Da Jupyter Not defterleri ile çalışma](https://code.visualstudio.com/docs/python/jupyter-support)
+* **Azure Machine Learning:** [Jupyter not defterlerinde Azure Machine Learning kullanmaya başlama](../machine-learning/tutorial-1st-experiment-sdk-setup.md)
 
-Azure Notebooks kullanmak, alıştırma için tutarlı bir ortam sağlar.
 
 > [!NOTE]
-> Ayarladıktan sonra, Azure Notebooks hizmetine herhangi bir makineden erişilebilir. Kurulum sırasında, ihtiyacınız olacak tüm dosyaları içeren geliştirme sanal makinesini kullanmanız gerekir.
+> Ayarladıktan sonra, Azure Machine Learning hizmetine herhangi bir makineden erişilebilir. Kurulum sırasında, ihtiyacınız olacak tüm dosyaları içeren geliştirme sanal makinesini kullanmanız gerekir.
 
-### <a name="create-an-azure-notebooks-account"></a>Azure Notebooks hesabı oluşturma
+### <a name="install-azure-machine-learning-visual-studio-code-extension"></a>Azure Machine Learning Visual Studio Code uzantısını yükler
+Geliştirme sanal makinesinde VS Code Bu uzantının yüklü olması gerekir. Farklı bir örnek üzerinde çalıştırıyorsanız, lütfen uzantıyı burada açıklandığı gibi yeniden yükleyin [.](../machine-learning/tutorial-setup-vscode-extension.md)
 
-Azure Notebooks kullanmak için bir hesap oluşturmanız gerekir. Azure Not defteri hesapları Azure aboneliklerinden bağımsızdır.
+### <a name="create-an-azure-machine-learning-account"></a>Azure Machine Learning hesabı oluşturma  
+Azure 'da kaynak sağlamak ve iş yüklerini çalıştırmak için Azure hesabı kimlik bilgilerinizle oturum açmanız gerekir.
 
-1. [Azure Notebooks](https://notebooks.azure.com)gidin.
+1. Visual Studio Code menüsünde, menü çubuğundan komut paleti **görüntüle**' yi seçerek komut paleti ' ni açın  >   . 
 
-1. Sayfanın sağ üst köşesinde **bulunan oturum aç** ' a tıklayın.
+1. `Azure: Sign In`Oturum açma işlemini başlatmak için komut paletine komutu girin. Oturum açmayı tamamlamaya yönelik yönergeleri izleyin. 
 
-1. İş veya okul hesabınızla (Azure Active Directory) ya da kişisel hesabınızla (Microsoft hesabı) oturum açın.
+1. İş yükünüzü çalıştırmak için bir Azure ML İşlem örneği oluşturun. Komut paleti kullanma komutunu girin `Azure ML: Create Compute` . 
+1. Azure Aboneliğinizi seçin
+1. **+ Yeni Azure ML çalışma alanı oluştur** ' u seçin ve ad girin `turbofandemo` .
+1. Bu demo için kullandığınız kaynak grubunu seçin.
+1. VS Code pencerenizin sağ alt köşesinde çalışma alanı oluşturma işleminin ilerlemesini görebilmeniz gerekir: **çalışma alanı oluşturuluyor: turobofandemo** (Bu, bir dakika veya iki sürebilir). 
+1. Lütfen çalışma alanının başarıyla oluşturulmasını bekleyin. **Azure ML çalışma alanı turbofandemo 'nin oluşturulmasını** söylemelidir.
 
-1. Daha önce Azure Notebooks kullanmadıysanız, Azure Notebooks uygulamasına erişim vermeniz istenir.
 
-1. Azure Notebooks için bir kullanıcı KIMLIĞI oluşturun.
+### <a name="upload-jupyter-notebook-files"></a>Jupyter Notebook dosyalarını karşıya yükle
 
-### <a name="upload-jupyter-notebook-files"></a>Jupyter Not defteri dosyalarını karşıya yükle
+Örnek Not defteri dosyalarını yeni bir Azure ML çalışma alanına yükleyeceğiz.
 
-Örnek Not defteri dosyalarını yeni bir Azure Notebooks projesine yükleyeceğiz.
+1. Ml.azure.com adresine gidin ve oturum açın.
+1. Microsoft dizininizi, Azure aboneliğinizi ve yeni oluşturulan Azure ML çalışma alanını seçin.
 
-1. Yeni hesabınızın kullanıcı sayfasında, üst menü çubuğundan **Projelerim** ' ı seçin.
+    :::image type="content" source="media/tutorial-machine-learning-edge-04-train-model/select-studio-workspace.png" alt-text="Azure ML çalışma alanınızı seçin." :::
 
-1. Düğmeyi seçerek yeni bir proje ekleyin **+** .
+1. Azure ML çalışma alanınızda oturum açtıktan sonra, sol taraftaki menüyü kullanarak **Not defterleri** bölümüne gidin.
+1. **My Files** sekmesini seçin.
 
-1. **Yeni proje oluştur** iletişim kutusunda bir **Proje adı** girin. 
+1. **Karşıya yükle** ' yi seçin (yukarı ok simgesi) 
 
-1. Projenin public olması veya bir Benioku dosyası olması gerektiği için **Public** ve **README** işaretini kaldırın.
-
-1. **Oluştur**’u seçin.
-
-1. **Karşıya yükle** ' yi (yukarı ok simgesi) seçin ve **bilgisayardan** öğesini seçin.
-
-1. **Dosya Seç**' i seçin.
 
 1. **C:\source\ıotedgeandmlsample\azurenotebooks** dizinine gidin. Listedeki tüm dosyaları seçin ve **Aç**' a tıklayın.
 
@@ -89,9 +88,9 @@ Azure Notebooks kullanmak için bir hesap oluşturmanız gerekir. Azure Not deft
 
 1. Karşıya yüklemeye başlamak için **karşıya yükle** ' yi seçin ve sonra işlem tamamlandıktan sonra **bitti** ' yi seçin.
 
-### <a name="azure-notebook-files"></a>Azure Not defteri dosyaları
+### <a name="jupyter-notebook-files"></a>Jupyter Notebook dosyaları
 
-Azure Notebooks projenize yüklediğiniz dosyaları gözden geçirelim. Öğreticinin bu bölümündeki etkinlikler, birkaç destekleyici dosya kullanan iki Not Defteri dosyasında yayılamaz.
+Azure ML çalışma alanınıza yüklediğiniz dosyaları gözden geçirelim. Öğreticinin bu bölümündeki etkinlikler, birkaç destekleyici dosya kullanan iki Not Defteri dosyasında yayılamaz.
 
 * **01-turbofan \_ regresyon. ipynb:** bu not defteri, Machine Learning denemesi oluşturmak ve çalıştırmak için Machine Learning hizmeti çalışma alanını kullanır. Genel olarak, Not defteri aşağıdaki adımları yapar:
 
@@ -115,13 +114,13 @@ Azure Notebooks projenize yüklediğiniz dosyaları gözden geçirelim. Öğreti
 
 * **README.MD:** Not defterlerinin kullanımını açıklayan Benioku dosyası.  
 
-## <a name="run-azure-notebooks"></a>Azure Notebooks Çalıştır
+## <a name="run-jupyter-notebooks"></a>Jupyter Notebooks’u çalıştırma
 
-Artık proje oluşturulduğuna göre, not defterlerini çalıştırabilirsiniz. 
+Çalışma alanı oluşturuldığına göre, artık not defterlerini çalıştırabilirsiniz. 
 
-1. Proje sayfanıza **01-turbofan \_ regresyon. ipynb** öğesini seçin.
+1. **My Files** sayfasında, **01-turbofan \_ regresyon. ipynb**' yi seçin.
 
-    ![Çalıştırılacak ilk not defterini seçin](media/tutorial-machine-learning-edge-04-train-model/select-turbofan-regression-notebook.png)
+    :::image type="content" source="media/tutorial-machine-learning-edge-04-train-model/select-turbofan-notebook.png" alt-text="Çalıştırmak için ilk not defteri ' ni seçin. ":::
 
 1. Not defteri **güvenilir değil** olarak listeleniyorsa, Not defterinin sağ üst köşesindeki **güvenilir değil** pencere öğesine tıklayın. İletişim kutusu geldiğinde **güven**' i seçin.
 
@@ -162,11 +161,11 @@ Artık proje oluşturulduğuna göre, not defterlerini çalıştırabilirsiniz.
 
 Not defterlerinin başarıyla tamamlandığını doğrulamak için, birkaç öğenin oluşturulduğunu doğrulayın.
 
-1. Azure Notebooks projesi sayfanızda, bir noktayla başlayan öğe adlarının görünmesi için **gizli öğeleri göster** ' i seçin.
+1. Azure ML Not defterleri **My Files** sekmesinde **Yenile**' yi seçin.
 
 1. Aşağıdaki dosyaların oluşturulduğunu doğrulayın:
 
-    | Dosya | Açıklama |
+    | Dosya | Description |
     | --- | --- |
     | ./aml_config/.azureml/config.js | Azure Machine Learning Çalışma Alanı oluşturmak için kullanılan yapılandırma dosyası. |
     | ./aml_config/model_config.jsaçık | Modeli Azure 'daki **Turbofandemo** Machine Learning çalışma alanına dağıtmak için gereken yapılandırma dosyası. |
@@ -194,7 +193,7 @@ Bu öğretici, her bir makalenin bir önceki bölümde gerçekleştirilen iş ü
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, geriye kalan bir kullanım ömrü (RUL) sınıflandırıcısını eğitmek, bir kapsayıcı görüntüsü oluşturmak ve görüntüyü bir Web hizmeti olarak dağıtmak ve test etmek için turbofa cihazlarındaki verileri kullanmak üzere Azure Notebooks çalıştıran iki JUPITER Not defteri kullandık.
+Bu makalede, turbofa cihazlarındaki verileri kullanarak geriye kalan bir kullanım ömrü (RUL) sınıflandırıcısını eğitmek, bir kapsayıcı görüntüsü oluşturmak ve görüntüyü bir Web hizmeti olarak dağıtmak ve test etmek için Azure ML Studio 'da çalışan iki jupi Not defteri kullandık.
 
 IoT Edge bir cihaz oluşturmak için sonraki makaleye devam edin.
 

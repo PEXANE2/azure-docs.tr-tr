@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 97ee6c17d62a924686e3e4f4717d7bb7f4375988
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7e7dce7ec4b8d4d55e734487595bb330e97ab18b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446680"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120453"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu kullanarak OPENROWSET kullanma
 
@@ -171,7 +171,7 @@ WITH (
 )
 ```
 
-json_path = sütuna veya iç içe özelliğe [JSON yol ifadesi](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15) . Varsayılan [yol modu](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15#PATHMODE) LAX 'tir.
+json_path = sütuna veya iç içe özelliğe [JSON yol ifadesi](/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15) . Varsayılan [yol modu](/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15#PATHMODE) LAX 'tir.
 
 > [!NOTE]
 > Belirtilen yol yoksa, katı modda sorgu hata vererek başarısız olur. LAX modunda sorgu başarılı olur ve JSON yolu ifadesi NULL olarak değerlendirilir.
@@ -371,7 +371,7 @@ WITH (
 
 ### <a name="specify-columns-using-json-paths"></a>JSON yollarını kullanarak sütunları belirtme
 
-Aşağıdaki örnek, WıTH yan tümcesinde [JSON yol ifadelerini](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15) nasıl kullanabileceğinizi gösterir ve katı ve LAX yol modları arasındaki farkı gösterir: 
+Aşağıdaki örnek, WıTH yan tümcesinde [JSON yol ifadelerini](/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15) nasıl kullanabileceğinizi gösterir ve katı ve LAX yol modları arasındaki farkı gösterir: 
 
 ```sql
 SELECT 
@@ -397,4 +397,4 @@ AS [r]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla örnek için bkz [query data storage quickstart](query-data-storage.md) `OPENROWSET` . [CSV](query-single-csv-file.md), [Parquet](query-parquet-files.md)ve [JSON](query-json-files.md) dosya biçimlerini okumak için nasıl kullanacağınızı öğrenmek için Query Data Storage hızlı başlangıcı. En iyi performansı elde etmek için [en iyi uygulamaları](best-practices-sql-on-demand.md) denetleyin. Ayrıca, [Cetas](develop-tables-cetas.md)kullanarak sorgunuzun sonuçlarını Azure depolama 'ya kaydetmeyi de öğrenebilirsiniz.
+Daha fazla örnek için bkz [](query-data-storage.md) `OPENROWSET` . [CSV](query-single-csv-file.md), [Parquet](query-parquet-files.md)ve [JSON](query-json-files.md) dosya biçimlerini okumak için nasıl kullanacağınızı öğrenmek için Query Data Storage hızlı başlangıcı. En iyi performansı elde etmek için [en iyi uygulamaları](best-practices-sql-on-demand.md) denetleyin. Ayrıca, [Cetas](develop-tables-cetas.md)kullanarak sorgunuzun sonuçlarını Azure depolama 'ya kaydetmeyi de öğrenebilirsiniz.

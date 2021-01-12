@@ -1,17 +1,17 @@
 ---
 title: Azure İzleyici müşteri tarafından yönetilen anahtar
-description: Azure Key Vault anahtarı kullanarak Log Analytics çalışma alanlarınızdaki verileri şifrelemek için Customer-Managed anahtarı yapılandırmaya yönelik bilgiler ve adımlar.
+description: Azure Key Vault bir anahtar kullanarak Log Analytics çalışma alanlarınızdaki verileri şifrelemek üzere müşteri tarafından yönetilen anahtarı yapılandırmaya yönelik bilgiler ve adımlar.
 ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 66a3276863b05cb2fe0dd80a2195f7fd2af1443c
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 07562167131d1839bc0827c74fae09c683302c08
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071944"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118617"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure İzleyici müşteri tarafından yönetilen anahtar 
 
@@ -25,25 +25,25 @@ Yapılandırmadan önce aşağıdaki [sınırlamaları ve kısıtlamaları](#lim
 
 Azure Izleyici, tüm veri ve kaydedilmiş sorguların Microsoft tarafından yönetilen anahtarlar (MMK) kullanılarak Rest 'te şifrelenmesini sağlar. Azure Izleyici Ayrıca, [Azure Key Vault](../../key-vault/general/overview.md)depolanan kendi anahtarınızı kullanarak şifreleme için bir seçenek sunar. Bu, size istediğiniz zaman verilerinize erişimi iptal etmeye yönelik bir denetim sağlar. Azure Izleyici şifreleme kullanımı, [Azure depolama şifrelemesiyle](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption) aynı şekilde çalışır.
 
-Customer-Managed anahtar, daha yüksek koruma düzeyi ve denetimi sağlayan [adanmış kümeler](../log-query/logs-dedicated-clusters.md) üzerine dağıtılır. Adanmış kümelere alınan veriler iki kez şifrelenir: Microsoft tarafından yönetilen anahtarlar veya müşteri tarafından yönetilen anahtarlar kullanılarak hizmet düzeyinde bir kez ve altyapı düzeyinde iki farklı şifreleme algoritması ve iki farklı anahtar kullanan bir kez. [Çift şifreleme](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) , şifreleme algoritmalarından veya anahtarlardan birinin tehlikeye girdiği bir senaryoya karşı koruma sağlar. Bu durumda, ek şifreleme katmanı verilerinizi korumaya devam eder. Adanmış küme ayrıca verilerinizi [kasa](#customer-lockbox-preview) denetimiyle korumanıza olanak sağlar.
+Müşteri tarafından yönetilen anahtar, daha yüksek koruma düzeyi ve denetimi sağlayan [adanmış kümeler](../log-query/logs-dedicated-clusters.md) üzerine dağıtılır. Adanmış kümelere alınan veriler iki kez şifrelenir: Microsoft tarafından yönetilen anahtarlar veya müşteri tarafından yönetilen anahtarlar kullanılarak hizmet düzeyinde bir kez ve altyapı düzeyinde iki farklı şifreleme algoritması ve iki farklı anahtar kullanan bir kez. [Çift şifreleme](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) , şifreleme algoritmalarından veya anahtarlardan birinin tehlikeye girdiği bir senaryoya karşı koruma sağlar. Bu durumda, ek şifreleme katmanı verilerinizi korumaya devam eder. Adanmış küme ayrıca verilerinizi [kasa](#customer-lockbox-preview) denetimiyle korumanıza olanak sağlar.
 
-Son 14 gün içinde alınan veriler, verimli sorgu altyapısı işlemi için etkin-önbellek (SSD-desteklenen) olarak da tutulur. Bu veriler, müşteri tarafından yönetilen anahtar yapılandırmasına bakılmaksızın Microsoft anahtarlarıyla şifreli olarak kalır, ancak SSD verileri üzerindeki denetiminiz [anahtar iptalinde](#key-revocation)kalır. SSD verilerinin 2021 birinci yarısında Customer-Managed anahtarla şifrelenmesini sağlamak için çalışıyoruz.
+Son 14 gün içinde alınan veriler, verimli sorgu altyapısı işlemi için etkin-önbellek (SSD-desteklenen) olarak da tutulur. Bu veriler, müşteri tarafından yönetilen anahtar yapılandırmasına bakılmaksızın Microsoft anahtarlarıyla şifreli olarak kalır, ancak SSD verileri üzerindeki denetiminiz [anahtar iptalinde](#key-revocation)kalır. 2021 ilk yarısında, SSD verilerinin müşteri tarafından yönetilen anahtarla şifrelenmesini sağlamak için çalışıyoruz.
 
 Log Analytics adanmış kümeler 1000 GB/gün üzerinden başlayan bir kapasite ayırma [fiyatlandırma modeli](../log-query/logs-dedicated-clusters.md#cluster-pricing-model) kullanır.
 
 > [!IMPORTANT]
 > Geçici kapasite kısıtlamaları nedeniyle, bir küme oluşturmadan önce ' a ön kayıt yapmanız gerekir. Kişilerinizi Microsoft 'a kullanın veya abonelik kimliklerinizi kaydetmek için destek isteği ' ni açın.
 
-## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Customer-Managed anahtarı Azure Izleyici 'de nasıl kullanılır
+## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Azure Izleyici 'de müşteri tarafından yönetilen anahtarın nasıl çalıştığı
 
-Azure Izleyici Azure Key Vault erişim sağlamak için yönetilen kimlik kullanır. Log Analytics kümesinin kimliği, küme düzeyinde desteklenir. Birden çok çalışma alanı üzerinde Customer-Managed anahtar korumasına izin vermek için, yeni bir Log Analytics *küme* kaynağı Key Vault ve Log Analytics çalışma alanlarınız arasında ara kimlik bağlantısı olarak gerçekleştirilir. Kümenin depolaması, \' Azure Active Directory üzerinden Azure Key Vault kimlik doğrulaması yapmak Için *küme* kaynağıyla ilişkili yönetilen kimliği kullanır. 
+Azure Izleyici Azure Key Vault erişim sağlamak için yönetilen kimlik kullanır. Log Analytics kümesinin kimliği, küme düzeyinde desteklenir. Birden çok çalışma alanı üzerinde müşteri tarafından yönetilen anahtar korumasına izin vermek için yeni bir Log Analytics *küme* kaynağı, Key Vault ve Log Analytics çalışma alanlarınız arasında ara kimlik bağlantısı olarak gerçekleştirilir. Kümenin depolaması, \' Azure Active Directory üzerinden Azure Key Vault kimlik doğrulaması yapmak Için *küme* kaynağıyla ilişkili yönetilen kimliği kullanır. 
 
 Müşteri tarafından yönetilen anahtar yapılandırmasından sonra adanmış kümenize bağlı olan çalışma alanlarına yeni alınan veriler anahtarınızla şifrelenir. Her zaman çalışma alanlarının kümeden bağlantısını kaldırabilirsiniz. Yeni veriler daha sonra, yeni ve eski verilerinizi sorunsuz bir şekilde sorgulayabilmeniz için Log Analytics depolama ve Microsoft anahtarıyla şifrelenmiş olarak alınır.
 
 > [!IMPORTANT]
-> Customer-Managed anahtar özelliği bölgesel. Azure Key Vault, kümeniz ve bağlı Log Analytics çalışma alanlarınızın aynı bölgede olması gerekir, ancak bunlar farklı aboneliklerde olabilir.
+> Müşteri tarafından yönetilen anahtar özelliği bölgesel olarak belirlenir. Azure Key Vault, kümeniz ve bağlı Log Analytics çalışma alanlarınızın aynı bölgede olması gerekir, ancak bunlar farklı aboneliklerde olabilir.
 
-![Customer-Managed anahtara genel bakış](media/customer-managed-keys/cmk-overview.png)
+![Müşteri tarafından yönetilen anahtara genel bakış](media/customer-managed-keys/cmk-overview.png)
 
 1. Key Vault
 2. Log Analytics *küme* kaynağı, Key Vault izinleri olan yönetilen kimliğe sahip--kimlik, adanmış Log Analytics küme depolamasına yayılmıştır
@@ -54,7 +54,7 @@ Müşteri tarafından yönetilen anahtar yapılandırmasından sonra adanmış k
 
 Depolama veri şifrelemesi ile ilgili 3 tür anahtar vardır:
 
-- **Kek** -anahtar şifreleme anahtarı (Customer-Managed anahtarınız)
+- **Kek** anahtar şifreleme anahtarı (müşteri tarafından yönetilen anahtarınız)
 - **AEK** hesabı şifreleme anahtarı
 - **Dek** -veri şifreleme anahtarı
 
@@ -75,7 +75,7 @@ Aşağıdaki kurallar geçerlidir:
 1. Anahtar tanımlayıcı ayrıntıları ile küme güncelleştiriliyor
 1. Log Analytics çalışma alanlarını bağlama
 
-Customer-Managed anahtar yapılandırması şu anda Azure portal desteklenmez ve sağlama [PowerShell](/powershell/module/az.operationalinsights/), [CLI](/cli/azure/monitor/log-analytics) veya [rest](/rest/api/loganalytics/) istekleri aracılığıyla gerçekleştirilebilir.
+Müşteri tarafından yönetilen anahtar yapılandırması şu anda Azure portal desteklenmez ve sağlama [PowerShell](/powershell/module/az.operationalinsights/), [CLI](/cli/azure/monitor/log-analytics) veya [rest](/rest/api/loganalytics/) istekleri aracılığıyla gerçekleştirilebilir.
 
 ### <a name="asynchronous-operations-and-status-check"></a>Zaman uyumsuz işlemler ve durum denetimi
 
@@ -125,7 +125,8 @@ Bu ayarlar, CLı ve PowerShell aracılığıyla Key Vault güncelleştirilebilen
 
 ## <a name="create-cluster"></a>Küme oluşturma
 
-> [! BILGI] kümeler iki [yönetilen kimlik türünü](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)destekler. Kimlik türü girdiğinizde, kümeyle sistem tarafından atanan yönetilen kimlik oluşturulur `SystemAssigned` ve bu, daha sonra Key Vault erişim izni vermek için kullanılabilir. Oluşturma sırasında müşteri tarafından yönetilen anahtar için yapılandırılmış bir küme oluşturmak isterseniz, kümeyi, Key Vault verilen kullanıcı tarafından atanan yönetilen kimlik ile oluşturun--kümeyi `UserAssigned` kimlik türüyle güncelleştirin, kimliğin ' deki kaynak kimliği ve ' deki `UserAssignedIdentities` temel ayrıntılarınızı sağlayın `keyVaultProperties` .
+> [!NOTE]
+> Kümeler, senaryonuza göre kullanılabilecek, sistem tarafından atanan ve Kullanıcı tarafından atanan iki [yönetilen kimlik türünü](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)destekler. Kimliği olarak ayarladığınızda, sistem tarafından atanan yönetilen kimlik daha basit ve küme oluşturma ile otomatik olarak oluşturulur `type` `SystemAssigned` . bu kimlik daha sonra Key Vault erişim izni vermek için kullanılabilir. Oluşturma sırasında müşteri tarafından yönetilen anahtar yapılandırmasına sahip bir küme oluşturmanız gerekiyorsa, önceden Key Vault bir anahtar tanımlı ve Kullanıcı tarafından atanan bir kimliğiniz olmalıdır ve sonra kimliği kimlik `type` `UserAssigned` `UserAssignedIdentities` ve anahtar ayrıntıları kaynak kimliğiyle oluşturun `keyVaultProperties` .
 
 > [!IMPORTANT]
 > Şu anda Key Vault Private-Link (vNet) içinde yer alıyorsa, Kullanıcı tarafından yönetilen anahtarı Kullanıcı tarafından atanan yönetilen kimlikle tanımladınız. Bu sınırlama, sistem tarafından atanan yönetilen kimliğe uygulanmaz.
@@ -254,20 +255,20 @@ Küme depolama, şifreleme anahtarını sarmalamadan ve erişildikten sonra 30 d
 
 ## <a name="key-rotation"></a>Anahtar döndürme
 
-Customer-Managed anahtar döndürme, Azure Key Vault yeni anahtar sürümü ile kümeye açık bir güncelleştirme gerektirir. [Anahtar tanımlayıcı ayrıntıları ile kümeyi güncelleştirin](#update-cluster-with-key-identifier-details). Kümedeki yeni anahtar sürümünü güncelleştirmemeniz durumunda Log Analytics küme depolaması şifreleme için önceki anahtarınızı kullanmaya devam edecektir. Kümedeki yeni anahtarı güncelleştirmeden önce eski anahtarınızı devre dışı bırakır veya silerseniz, [anahtar iptal](#key-revocation) durumuna sahip olursunuz.
+Müşteri tarafından yönetilen anahtar döndürme, Azure Key Vault yeni anahtar sürümü ile kümeye açık bir güncelleştirme yapılmasını gerektirir. [Anahtar tanımlayıcı ayrıntıları ile kümeyi güncelleştirin](#update-cluster-with-key-identifier-details). Kümedeki yeni anahtar sürümünü güncelleştirmemeniz durumunda Log Analytics küme depolaması şifreleme için önceki anahtarınızı kullanmaya devam edecektir. Kümedeki yeni anahtarı güncelleştirmeden önce eski anahtarınızı devre dışı bırakır veya silerseniz, [anahtar iptal](#key-revocation) durumuna sahip olursunuz.
 
 Verilerin her zaman Key Vault ' de yeni anahtar şifreleme anahtarı (KEK) ile şifrelenmesi sırasında, veriler her zaman hesap şifreleme anahtarıyla (AEK) şifrelendiğinden, tüm verileriniz anahtar döndürme işleminden sonra erişilebilir durumda kalır.
 
-## <a name="customer-managed-key-for-queries"></a>Sorgular için Customer-Managed anahtarı
+## <a name="customer-managed-key-for-queries"></a>Sorgular için müşteri tarafından yönetilen anahtar
 
-Log Analytics ' de kullanılan sorgu dili ifade edilebilir ve sorgulara eklediğiniz açıklamalarda veya sorgu söz diziminde gizli bilgiler içerebilir. Bazı kuruluşlar, bu tür bilgilerin Customer-Managed anahtar ilkesi altında korunmasını gerektirir ve sorgularınızı anahtarınızla şifreli olarak kaydetmeniz gerekir. Azure Izleyici, çalışma alanınıza bağlıyken kendi depolama hesabınızda anahtarınızla şifrelenen *kayıtlı aramaları* ve *günlük uyarıları* sorgularını depolamanıza olanak sağlar. 
+Log Analytics ' de kullanılan sorgu dili ifade edilebilir ve sorgulara eklediğiniz açıklamalarda veya sorgu söz diziminde gizli bilgiler içerebilir. Bazı kuruluşlar, bu tür bilgilerin müşteri tarafından yönetilen anahtar ilkesi altında korunmasını gerektirir ve sorgularınızı anahtarınızla şifreli olarak kaydetmeniz gerekir. Azure Izleyici, çalışma alanınıza bağlıyken kendi depolama hesabınızda anahtarınızla şifrelenen *kayıtlı aramaları* ve *günlük uyarıları* sorgularını depolamanıza olanak sağlar. 
 
 > [!NOTE]
-> Log Analytics sorguları, kullanılan senaryoya bağlı olarak çeşitli depolarda kaydedilebilir. Sorgular, Azure Izleyici 'deki çalışma kitapları, Azure panoları, Azure mantıksal uygulaması, Azure Notebooks ve Otomasyon Runbook 'Ları Customer-Managed bağımsız olarak, aşağıdaki senaryolarda Microsoft anahtar (MMK) ile şifreli olarak kalır.
+> Log Analytics sorguları, kullanılan senaryoya bağlı olarak çeşitli depolarda kaydedilebilir. Müşteri tarafından yönetilen anahtar yapılandırmasına bakılmaksızın sorgular Microsoft anahtarı (MMK) ile şifrelenmeye devam eder: Azure Izleyici, Azure panoları, Azure mantıksal uygulaması, Azure Notebooks ve Otomasyon Runbook 'larındaki çalışma kitapları.
 
 Kendi depolama alanınızı (BYOS) getirip çalışma alanınıza bağladığınızda, hizmet *kayıtlı aramaları* ve *günlük uyarıları* sorgularını depolama hesabınıza yükler. Diğer bir deyişle, Log Analytics kümesindeki verileri şifrelemek için kullandığınız anahtarı veya farklı bir anahtarı kullanarak depolama hesabını ve [geri kalan şifreleme ilkesini](../../storage/common/customer-managed-keys-overview.md) denetlersiniz. Bununla birlikte, bu depolama hesabıyla ilişkili maliyetlerden de sorumlu olursunuz. 
 
-**Sorgular için Customer-Managed anahtarı ayarlamadan önce dikkat edilecek noktalar**
+**Sorgular için müşteri tarafından yönetilen anahtarı ayarlamadan önce dikkat edilecek noktalar**
 * Hem çalışma alanınız hem de depolama hesabınızda ' Write ' izinlerine sahip olmanız gerekir
 * Log Analytics çalışma alanınız bulunduğundan, depolama hesabınızı aynı bölgede oluşturduğunuzdan emin olun
 * Depolamadaki *aramalar* , hizmet yapıtları olarak değerlendirilir ve bunların biçimi değişebilir
@@ -385,7 +386,7 @@ Customer-Managed anahtar adanmış kümede verilmiştir ve bu işlemlere [adanm�
 
 ## <a name="limitations-and-constraints"></a>Sınırlamalar ve kısıtlamalar
 
-- Customer-Managed anahtar, adanmış Log Analytics kümesinde desteklenir ve günde 1 GB ya da daha fazlasını gönderen müşteriler için uygundur.
+- Müşteri tarafından yönetilen anahtar adanmış Log Analytics kümesinde desteklenir ve günde 1 GB veya daha fazlasını gönderen müşteriler için uygundur.
 
 - Bölge başına en fazla küme sayısı ve abonelik 2 ' dir
 
@@ -395,7 +396,7 @@ Customer-Managed anahtar adanmış kümede verilmiştir ve bu işlemlere [adanm�
 
 - Kümeye çalışma alanı bağlantısı yalnızca Log Analytics kümesi sağlama tamamlandığını doğruladıktan sonra taşınmalıdır. Tamamlanmadan önce çalışma alanınıza gönderilen veriler bırakılır ve geri alınamaz.
 
-- Customer-Managed anahtar şifrelemesi, yapılandırma zamanından sonra yeni alınan veriler için geçerlidir. Yapılandırmadan önce alınan veriler, Microsoft anahtarıyla şifreli olarak kalır. Customer-Managed anahtar yapılandırmasından önce ve sonra gelen verileri sorunsuz bir şekilde sorgulayabilirsiniz.
+- Müşteri tarafından yönetilen anahtar şifrelemesi, yapılandırma zamanından sonra yeni alınan veriler için geçerlidir. Yapılandırmadan önce alınan veriler, Microsoft anahtarıyla şifreli olarak kalır. Müşteri tarafından yönetilen anahtar yapılandırmasından önce ve sonra gelen verileri sorunsuz bir şekilde sorgulayabilirsiniz.
 
 - Azure Key Vault kurtarılabilir olarak yapılandırılmalıdır. Bu özellikler varsayılan olarak etkinleştirilmemiştir ve CLı veya PowerShell kullanılarak yapılandırılmalıdır:<br>
   - [Geçici Silme](../../key-vault/general/soft-delete-overview.md)
@@ -424,7 +425,7 @@ Customer-Managed anahtar adanmış kümede verilmiştir ve bu işlemlere [adanm�
     
   - Geçici bağlantı hataları--depolama, anahtarların kısa bir süre boyunca önbellekte kalmasına izin vererek geçici hataları (zaman aşımları, bağlantı hataları, DNS sorunları) işler ve bu da tüm küçük sinyalleri 'leri kullanılabilirliğinden fazla. Sorgu ve alma özellikleri kesinti olmadan devam eder.
     
-  - Canlı site--yaklaşık 30 dakikalık bir işlem, depolama hesabının kullanılamaz hale gelmesine neden olur. Sorgu özelliği kullanılamaz ve veri kaybını önlemek için Microsoft anahtar kullanarak birkaç saat boyunca önbelleğe alınır. Key Vault erişimi geri yüklendiğinde, sorgu kullanılabilir hale gelir ve geçici önbelleğe alınmış veriler veri deposuna alınır ve Customer-Managed anahtarıyla şifrelenir.
+  - Canlı site--yaklaşık 30 dakikalık bir işlem, depolama hesabının kullanılamaz hale gelmesine neden olur. Sorgu özelliği kullanılamaz ve veri kaybını önlemek için Microsoft anahtar kullanarak birkaç saat boyunca önbelleğe alınır. Key Vault erişimi geri yüklendiğinde, sorgu kullanılabilir hale gelir ve geçici önbelleğe alınmış veriler veri deposuna alınır ve müşterinin yönettiği anahtarla şifrelenir.
 
   - Key Vault erişim oranı--Azure Izleyici depolaması 'nın sarmalama ve sarmalama işlemleri için Key Vault, 6 ila 60 saniye arasındadır.
 

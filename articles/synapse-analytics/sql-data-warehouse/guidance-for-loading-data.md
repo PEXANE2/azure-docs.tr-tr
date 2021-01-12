@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 60a995f78b9b696197d9bd45e04becb19e4129f0
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: c91310d9d1e67dd77098ee13a87190ee6d411607
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653070"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120113"
 ---
 # <a name="best-practices-for-loading-data-using-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzları kullanarak veri yüklemeye yönelik en iyi uygulamalar
 
@@ -47,7 +47,7 @@ Bu örnek, belirli bir iş yükü grubuna sınıflandırılmış bir yükleme ku
    CREATE LOGIN loader WITH PASSWORD = 'a123STRONGpassword!';
 ```
 
-Adanmış SQL havuzuna bağlanın ve bir kullanıcı oluşturun. Aşağıdaki kod, mySampleDataWarehouse adlı veritabanına bağlı olduğunuzu varsayar. Yükleyici adlı bir kullanıcının nasıl oluşturulacağını gösterir ve [Copy ifadesini](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)kullanarak tablo oluşturma ve yükleme izinleri verir. Daha sonra kullanıcıyı en fazla kaynakla birlikte DataLoads iş yükü grubuna sınıflandırır. 
+Adanmış SQL havuzuna bağlanın ve bir kullanıcı oluşturun. Aşağıdaki kod, mySampleDataWarehouse adlı veritabanına bağlı olduğunuzu varsayar. Yükleyici adlı bir kullanıcının nasıl oluşturulacağını gösterir ve [Copy ifadesini](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)kullanarak tablo oluşturma ve yükleme izinleri verir. Daha sonra kullanıcıyı en fazla kaynakla birlikte DataLoads iş yükü grubuna sınıflandırır. 
 
 ```sql
    -- Connect to the dedicated SQL pool
@@ -179,5 +179,5 @@ Temel dış veri kaynaklarında başka bir değişiklik yapılması gerekmez.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Ayıklama, yükleme ve dönüştürme (ELT) işlemi tasarlarken COPY veya PolyBase hakkında daha fazla bilgi edinmek için bkz. [Azure SYNAPSE Analytics Için TASARıM ELT](design-elt-data-loading.md).
-- Yükleme öğreticisi için, [Azure Blob depolama 'Dan SYNAPSE SQL 'e veri yüklemek üzere Copy Ifadesini kullanın](load-data-from-azure-blob-storage-using-polybase.md).
+- Yükleme öğreticisi için, [Azure Blob depolama 'Dan SYNAPSE SQL 'e veri yüklemek üzere Copy Ifadesini kullanın](./load-data-from-azure-blob-storage-using-copy.md).
 - Veri yüklerini izlemek için bkz. [DMV’leri kullanarak iş yükünüzü izleme](sql-data-warehouse-manage-monitor.md).

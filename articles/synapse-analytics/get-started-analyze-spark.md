@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 2c526d25fed169f702a3786a17717de3cf4dc6af
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 3b5f5d64498922e9fc35942ff4570d801aa6c516
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059033"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118889"
 ---
 # <a name="analyze-with-apache-spark"></a>Apache Spark ile Çözümle
 
@@ -61,6 +61,7 @@ Veriler, **SQLPOOL1** içindeki bir tabloda kullanılabilir. **Nyctaxi** adlı b
     df.write.mode("overwrite").saveAsTable("nyctaxi.trip")
     ```
 
+1. Hücrede **Çalıştır** ' ı seçin.
 1. **Veri** hub 'ında **veritabanları**' na sağ tıklayın ve ardından **Yenile**' yi seçin. Şu veritabanlarını görmeniz gerekir:
 
     - **SQLPOOL1 (SQL)**

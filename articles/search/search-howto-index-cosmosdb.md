@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: be7c6ec9dbc577143e6c7219580f42c876f536bc
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 563edae0292062e1ed7f216c69aeeb84ef0fa7a8
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499977"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119484"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Azure Bilişsel Arama'da dizin oluşturucu kullanarak Cosmos DB verilerinden dizin oluşturma 
 
@@ -137,7 +137,7 @@ Bu makalenin önceki kısımlarında [Azure Cosmos DB Dizin oluşturma](../cosmo
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1-istek için girişleri birleştirin
 
-Her istek için, Azure Bilişsel Arama için hizmet adı ve yönetici anahtarı (posta üst bilgisinde) ve BLOB depolama için depolama hesabı adı ve anahtarı sağlamalısınız. HTTP isteklerini Azure Bilişsel Arama göndermek için [Postman veya Visual Studio Code](search-get-started-rest.md) kullanabilirsiniz.
+Her istek için, Azure Bilişsel Arama için hizmet adı ve yönetici anahtarı (posta üst bilgisinde) ve BLOB depolama için depolama hesabı adı ve anahtarı sağlamalısınız. HTTP isteklerini Azure Bilişsel Arama göndermek için [Postman](search-get-started-rest.md) veya [Visual Studio Code](search-get-started-vs-code.md) kullanabilirsiniz.
 
 Aşağıdaki dört değeri not defteri 'ne kopyalayın, böylece bunları bir isteğe yapıştırabilirsiniz:
 
@@ -186,7 +186,7 @@ Bir veri kaynağı oluşturmak için bir POST isteğini formüle koyun:
 | **ada** | Gereklidir. Veri kaynağı nesnenizin temsil edilebilmesi için herhangi bir ad seçin. |
 |**türüyle**| Gereklidir. Olmalıdır `cosmosdb` . |
 |**Credentials** | Gereklidir. Cosmos DB bağlantı dizesi biçimi veya yönetilen kimlik bağlantı dizesi biçimi gelmelidir.<br/><br/>**SQL koleksiyonları** için, bağlantı dizeleri aşağıdaki biçimlerden birini izleyebilir: <li>`AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<li>Şu biçimdeki bir hesap anahtarı içermeyen bir yönetilen kimlik bağlantı dizesi: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;` . Bu bağlantı dizesi biçimini kullanmak için, [yönetilen kimlik kullanarak bir Cosmos db veritabanına Dizin Oluşturucu bağlantısı ayarlamaya](search-howto-managed-identities-cosmos-db.md)yönelik yönergeleri izleyin.<br/><br/>Sürüm 3,2 ve sürüm 3,6 **MongoDB koleksiyonları** için bağlantı dizesi için aşağıdaki biçimlerden birini kullanın: <li>`AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<li>Şu biçimdeki bir hesap anahtarı içermeyen bir yönetilen kimlik bağlantı dizesi: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;ApiKind=MongoDb;` . Bu bağlantı dizesi biçimini kullanmak için, [yönetilen kimlik kullanarak bir Cosmos db veritabanına Dizin Oluşturucu bağlantısı ayarlamaya](search-howto-managed-identities-cosmos-db.md)yönelik yönergeleri izleyin.<br/><br/>**Gremlin grafikleri ve Cassandra tablolarında**, önizlemeye erişim sağlamak için [geçitli Dizin Oluşturucu önizlemesine](https://aka.ms/azure-cognitive-search/indexer-preview) kaydolun ve kimlik bilgilerini biçimlendirme hakkında bilgi alın.<br/><br/>Uç nokta URL 'sindeki bağlantı noktası numaralarını önleyin. Bağlantı noktası numarasını eklerseniz, Azure Bilişsel Arama Azure Cosmos DB veritabanınızın dizinini oluşturamıyor.|
-| **container (kapsayıcı)**  | Aşağıdaki öğeleri içerir: <br/>**ad**: gerekli. Endekslenecek veritabanı koleksiyonunun KIMLIĞINI belirtin.<br/>**sorgu**: isteğe bağlı. Rastgele bir JSON belgesini, Azure Bilişsel Arama 'in dizinetarafından kullanılabilecek düz bir şemaya düzleştirmek için bir sorgu belirtebilirsiniz.<br/>MongoDB API 'SI, Gremlin API ve Cassandra API için sorgular desteklenmez. |
+| **kapsayıcı** | Aşağıdaki öğeleri içerir: <br/>**ad**: gerekli. Endekslenecek veritabanı koleksiyonunun KIMLIĞINI belirtin.<br/>**sorgu**: isteğe bağlı. Rastgele bir JSON belgesini, Azure Bilişsel Arama 'in dizinetarafından kullanılabilecek düz bir şemaya düzleştirmek için bir sorgu belirtebilirsiniz.<br/>MongoDB API 'SI, Gremlin API ve Cassandra API için sorgular desteklenmez. |
 | **dataChangeDetectionPolicy** | Önerilen. Bkz. [Dizin oluşturma değiştirilen belgeler](#DataChangeDetectionPolicy) bölümü.|
 |**dataDeletionDetectionPolicy** | İsteğe bağlı. Bkz. [Dizin oluşturma silinen belgeler](#DataDeletionDetectionPolicy) bölümü.|
 

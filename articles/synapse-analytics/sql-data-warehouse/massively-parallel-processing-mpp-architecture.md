@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 45c7f89f773095a102429c07f7441223de3c2dec
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c537d3109f770c1ce77be6495bdacd24270dad5f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448265"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119603"
 ---
 # <a name="dedicated-sql-pool-formerly-sql-dw-architecture-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL Havuzu (eski adıyla SQL DW) mimarisi
 
@@ -47,7 +47,7 @@ Ayrılmış depolama ve işlem ile ayrılmış bir SQL Havuzu (eski adıyla SQL 
 
 ### <a name="azure-storage"></a>Azure Depolama
 
-Adanmış SQL havuzu SQL (eski adıyla SQL DW), kullanıcı verilerinizi güvende tutmak için Azure depolama özelliğinden yararlanır.  Verileriniz Azure depolama tarafından depolandığından ve yönetildiğinden, depolama tüketiminize yönelik ayrı bir ücret alınır. Veriler, sistem performansını iyileştirmek için **dağıtımlarla** birleştirilir. Tabloyu tanımlarken verileri dağıtmak için kullanılacak parçalama düzeninin arasından seçim yapabilirsiniz. Bu parçalı desenler desteklenir:
+Adanmış SQL havuzu SQL (eski adıyla SQL DW), kullanıcı verilerinizi güvende tutmak için Azure depolama özelliğinden yararlanır.  Verileriniz Azure depolama tarafından depolandığından ve yönetildiğinden, depolama tüketiminize yönelik ayrı bir ücret alınır. Veriler, sistem performansını iyileştirmek için **dağıtımlarla** birleştirilir. Tabloyu tanımlarken verileri dağıtmak için hangi parçalama deseninin kullanılacağını seçebilirsiniz. Bu parçalı desenler desteklenir:
 
 - Karma
 - Hepsini Bir Kez Deneme
@@ -107,13 +107,13 @@ Aşağıdaki diyagramda, her işlem düğümündeki ilk dağıtım üzerinde ön
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık Azure SYNAPSE hakkında bir bit öğrenmiş olduğunuza göre, [Özel BIR SQL havuzunun (eski ADıYLA SQL DW)](create-data-warehouse-portal.md) nasıl hızlı bir şekilde oluşturulduğunu ve [örnek verileri yüklemeyi](load-data-from-azure-blob-storage-using-polybase.md)öğrenin. Azure’da yeniyseniz yeni terimlerle karşılaşabileceğinizi için [Azure sözlüğünü](../../azure-glossary-cloud-terminology.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) yararlı bulabilirsiniz. Ya da diğer Azure SYNAPSE kaynaklarından bazılarına bakın.  
+Artık Azure SYNAPSE hakkında bir bit öğrenmiş olduğunuza göre, [Özel BIR SQL havuzunun (eski ADıYLA SQL DW)](create-data-warehouse-portal.md) nasıl hızlı bir şekilde oluşturulduğunu ve [örnek verileri yüklemeyi](./load-data-from-azure-blob-storage-using-copy.md)öğrenin. Azure’da yeniyseniz yeni terimlerle karşılaşabileceğinizi için [Azure sözlüğünü](../../azure-glossary-cloud-terminology.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) yararlı bulabilirsiniz. Ya da diğer Azure SYNAPSE kaynaklarından bazılarına bakın.  
 
 - [Başarı hikayeleri](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
 - [Bloglar](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
 - [Özellik istekleri](https://feedback.azure.com/forums/307516-sql-data-warehouse)
 - [Videolar](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 - [Destek bileti oluşturun](sql-data-warehouse-get-started-create-support-ticket.md)
-- [Soru sayfası Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)
+- [Soru sayfası Microsoft Q&](/answers/topics/azure-synapse-analytics.html)
 - [Stack Overflow Forumu](https://stackoverflow.com/questions/tagged/azure-sqldw)
 - [Twitter](https://twitter.com/hashtag/SQLDW)

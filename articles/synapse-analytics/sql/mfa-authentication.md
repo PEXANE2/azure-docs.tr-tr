@@ -10,12 +10,12 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
 ms.custom: has-adal-ref
-ms.openlocfilehash: fb8aad52eeaef2366afe28aa71059b7f8f780501
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 511d5841652b1f7b6487a42341ec392cb86d2b3a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843307"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120385"
 ---
 # <a name="use-multi-factor-aad-authentication-with-synapse-sql-ssms-support-for-mfa"></a>Multi-Factor AAD kimlik doğrulamasını SYNAPSE SQL ile kullanma (MFA için SSMS desteği)
 
@@ -44,7 +44,7 @@ Etkileşimli Yöntem ayrıca Azure AD Multi-Factor Authentication (MFA) de deste
 
 - `Active Directory - Universal with MFA`
 
-Azure AD MFA, kullanıcıların basit bir oturum açma işlemi taleplerini karşılarken, verilere ve uygulamalara erişimi korumaya yardımcı olur. Kolay doğrulama seçenekleriyle (telefon araması, SMS mesajı, PIN ile akıllı kartlar veya mobil uygulama bildirimi), kullanıcıların tercih ettikleri yöntemi seçebilmesine olanak tanıyan güçlü kimlik doğrulaması sağlar. Azure AD ile etkileşimli MFA, doğrulama için bir açılır iletişim kutusu ile sonuçlanabilir.
+Azure AD MFA, kullanıcıların oturum açmaya yönelik basit işlem taleplerini karşılarken, verilere ve uygulamalara erişimi korumaya da yardımcı olur. Kolay doğrulama seçenekleriyle (telefon araması, SMS mesajı, PIN ile akıllı kartlar veya mobil uygulama bildirimi), kullanıcıların tercih ettikleri yöntemi seçebilmesine olanak tanıyan güçlü kimlik doğrulaması sağlar. Azure AD ile etkileşimli MFA, doğrulama için bir açılır iletişim kutusu ile sonuçlanabilir.
 
 Multi-Factor Authentication açıklaması için bkz. [Multi-Factor Authentication](../../active-directory/authentication//concept-mfa-howitworks.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
@@ -71,7 +71,7 @@ SSMS 18. x veya üzeri bir sürümü çalıştırıyorsanız, bu durumda 18. x v
    ![MFA-kiracı-SSMS](./media/mfa-authentication/mfa-no-tenant-ssms.png)
 
 ### <a name="azure-ad-business-to-business-support"></a>Azure AD iş 'e iş desteği   
-Azure AD B2B senaryolarında Konuk Kullanıcı olarak desteklenen Azure AD kullanıcıları (bkz. [Azure B2B Işbirliği nedir,](../../active-directory/b2b/what-is-b2b.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) GEÇERLI Azure AD 'de oluşturulan bir grubun üyelerinin parçası olarak yalnızca SYNAPSE SQL 'e bağlanabilir ve `CREATE USER` belirli bir VERITABANıNDAKI Transact-SQL ifadesiyle el ile eşleştirilir. 
+Azure AD B2B senaryolarında Konuk Kullanıcı olarak desteklenen Azure AD kullanıcıları (bkz. [Azure B2B Işbirliği nedir,](../../active-directory/external-identities/what-is-b2b.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) GEÇERLI Azure AD 'de oluşturulan bir grubun üyelerinin parçası olarak yalnızca SYNAPSE SQL 'e bağlanabilir ve `CREATE USER` belirli bir VERITABANıNDAKI Transact-SQL ifadesiyle el ile eşleştirilir. 
 
 Örneğin, Azure AD `steve@gmail.com` 'ye `contosotest` (Azure AD etki alanı ile) davet edildiyseniz, `contosotest.onmicrosoft.com` `usergroup` üyeyi içeren Azure AD 'de, gibi bir Azure AD grubunun oluşturulması gerekir `steve@gmail.com` . Ardından, bir Transact-SQL ekstresi yürüterek, bu grup Azure AD SQL Yöneticisi veya Azure AD DBO tarafından belirli bir veritabanı (yani, MyDatabase) için oluşturulmalıdır `CREATE USER [usergroup] FROM EXTERNAL PROVIDER` . 
 
@@ -92,5 +92,4 @@ Konuk Kullanıcı olarak, `steve@gmail.com` kutuyu işaretleyip `contosotest.onm
 - Evrensel kimlik doğrulaması için Active Directory Authentication Library (ADAL) sürümü en son ADAL.dll kullanılabilir yayımlanmış sürüme güncelleştirildi. Bkz. [Active Directory Authentication Library 3.14.1](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).  
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Daha fazla bilgi için bkz. [SYNAPSE SQL Ile bağlanma SQL Server Management Studio](get-started-ssms.md) makalesi. 
-
+Daha fazla bilgi için bkz. [SYNAPSE SQL Ile bağlanma SQL Server Management Studio](get-started-ssms.md) makalesi.

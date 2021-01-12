@@ -9,12 +9,12 @@ ms.subservice: sql-dw
 ms.date: 11/20/2020
 ms.author: Kevin
 ms.custom: azure-synapse
-ms.openlocfilehash: 59195bba69bb343e55cfcb7342400d93dcce60c0
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 2920c96d6a2e505347edb51780101327cb884e08
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920757"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120181"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile SYNAPSE SQL havuzu oluşturma
 
@@ -22,7 +22,7 @@ Azure CLı kullanarak Azure SYNAPSE Analytics 'te bir Synapse SQL Havuzu (veri a
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 Azure 'da oturum açmak ve bir kaynak grubu ayarlamak için bu komutları kullanın.
 
@@ -134,4 +134,4 @@ az group delete --ResourceGroupName MyResourceGroup
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık bir SQL havuzu oluşturdunuz, bir güvenlik duvarı kuralı oluşturdunuz ve SQL havuzunuza bağladınız. Daha fazla bilgi edinmek için [VERILERI SQL havuzu 'Na yükleme](load-data-from-azure-blob-storage-using-polybase.md) makalesine ilerleyin.
+Artık bir SQL havuzu oluşturdunuz, bir güvenlik duvarı kuralı oluşturdunuz ve SQL havuzunuza bağladınız. Daha fazla bilgi edinmek için [VERILERI SQL havuzu 'Na yükleme](./load-data-from-azure-blob-storage-using-copy.md) makalesine ilerleyin.

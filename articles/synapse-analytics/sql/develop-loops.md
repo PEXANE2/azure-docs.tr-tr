@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 99ee41de7ffd66191ff712a5ffbda65f3233196f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 0d83e1305a851bf6bafb6c4c79f5caf73f8e44b6
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324439"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120895"
 ---
 # <a name="use-t-sql-loops-with-synapse-sql-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SYNAPSE SQL ile T-SQL döngüleri kullanma
 
@@ -23,7 +23,7 @@ Bu makalede T-SQL döngülerini kullanma, imleçler değiştirme ve SYNAPSE SQL 
 
 ## <a name="purpose-of-while-loops"></a>WHILE döngülerinin amacı
 
-SYNAPSE SQL, sürekli olarak ekstre blokları yürütmeye yönelik [while](https://docs.microsoft.com/sql/t-sql/language-elements/while-transact-sql?view=sql-server-ver15&preserve-view=true) döngüsünü destekler. Bu WHILE döngüsü, belirtilen koşullar doğru olduğu sürece veya kod BREAK anahtar sözcüğünü kullanarak döngüyü özel olarak sonlandırana kadar devam eder. 
+SYNAPSE SQL, sürekli olarak ekstre blokları yürütmeye yönelik [while](/sql/t-sql/language-elements/while-transact-sql?preserve-view=true&view=sql-server-ver15) döngüsünü destekler. Bu WHILE döngüsü, belirtilen koşullar doğru olduğu sürece veya kod BREAK anahtar sözcüğünü kullanarak döngüyü özel olarak sonlandırana kadar devam eder. 
 
 SYNAPSE SQL içindeki döngüler, SQL kodunda tanımlanan imleçleri değiştirmek için kullanışlıdır. Neyse ki SQL Code 'da yazılan neredeyse tüm imleçler hızlı ileri, salt okunurdur. Bu nedenle, döngüler değiştirmek için harika bir alternatiftir.
 

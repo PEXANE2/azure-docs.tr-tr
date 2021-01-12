@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 12/17/2020
-ms.openlocfilehash: 5d291ad745122d929c4b664e9da5e4649e463529
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: bdd7fd8e19bf2de6d0b3c6b2edd4515771fae237
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679109"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119040"
 ---
 # <a name="execute-r-script-module"></a>R betik modülünü Yürüt
 
@@ -49,10 +49,12 @@ azureml_main <- function(dataframe1, dataframe2){
 Ek R paketleri yüklemek için `install.packages()` yöntemini kullanın. Paketler, her bir R betiği yürütme modülü için yüklenir. Diğer yürütülen R betiği modülleri arasında paylaşılmaz.
 
 > [!NOTE]
+> Betik paketinden R paketi **yüklenmesi önerilmez.** Paketlerin doğrudan betik Düzenleyicisi 'ne yüklenmesi önerilir.
 > Paketleri yüklerken CRAN deposunu belirtin, örneğin `install.packages("zoo",repos = "http://cran.us.r-project.org")` .
 
 > [!WARNING]
 > Excute R betik modülü, `qdap` C++ GEREKTIREN Java ve paket gerektiren paket gibi yerel derleme gerektiren paketlerin yüklenmesini desteklemez `drc` . Bunun nedeni, Bu modülün yönetici olmayan izne sahip önceden yüklenmiş bir ortamda yürütülmesi olur.
+> Tasarımcı modülleri Ubuntu üzerinde çalıştığından, Windows üzerinde/için önceden derlenmiş paketleri yüklemeyin. Bir paketin Windows üzerinde önceden oluşturulup oluşturulmayacağını denetlemek için, [Cran](https://cran.r-project.org/) ' a gidebilir ve paketinizi arayabılır, işletim sisteminize göre bir ikili dosya Indirebilir ve **Açıklama** dosyasındaki **yerleşik:** bölümünü kontrol edebilirsiniz. Aşağıda bir örnek verilmiştir: :::image type="content" source="media/module/r-package-description.png" alt-text="R paketi açıklaması" lightbox="media/module/r-package-page.png":::
 
 Bu örnek, Zoo 'nin nasıl yükleneceğini göstermektedir:
 ```R

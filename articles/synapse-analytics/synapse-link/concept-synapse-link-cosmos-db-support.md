@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3d12e60e2aeee667b89d56589870d53366772014
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b58474758ac4d26b347dc72d84be401d15a3846b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96459038"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119824"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-supported-features"></a>Azure Cosmos DB için Azure Synapse Link'in desteklenen özellikleri
 
@@ -31,20 +31,20 @@ Azure Cosmos DB iki tür kapsayıcı vardır:
 
 SYNAPSE bağlantısını etkinleştirmeden bir Azure Cosmos DB kapsayıcısına bağlanabilirsiniz. Bu senaryoda, yalnızca işlem deposuna okuma/yazma yapabilirsiniz. Aşağıda, Azure Cosmos DB için SYNAPSE link içindeki şu anda desteklenen özelliklerin bir listesi verilmiştir. 
 
-| Kategori              | Açıklama |[Apache Spark havuzu](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) | [Sunucusuz SQL havuzu](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) |
+| Kategori              | Açıklama |[Apache Spark havuzu](../sql/on-demand-workspace-overview.md) | [Sunucusuz SQL havuzu](../sql/on-demand-workspace-overview.md) |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- | ----------------------------------------------------------- |
 | **Çalışma zamanı desteği** |Azure Cosmos DB erişmek için desteklenen Azure SYNAPSE çalışma zamanı| ✓ | Önizleme |
 | **Azure Cosmos DB API desteği** | Desteklenen Azure Cosmos DB API türü | SQL/MongoDB | SQL/MongoDB |
 | **Nesne**  |Oluşturulabilen ve Azure Cosmos DB kapsayıcıya işaret eden bir tablo gibi nesneler| Veri çerçevesi, görünüm, tablo | Görünüm |
 | **Okuyamaz**    | Okunabilecek Azure Cosmos DB kapsayıcısı türü | OLTP/HTAP | HTAP  |
-| **Yazarken**   | Azure Cosmos DB kapsayıcısına veri yazmak için Azure SYNAPSE çalışma zamanı kullanılabilir | Evet | Hayır |
+| **Yazarken**   | Azure Cosmos DB kapsayıcısına veri yazmak için Azure SYNAPSE çalışma zamanı kullanılabilir | Yes | Hayır |
 
 * Spark 'tan bir Azure Cosmos DB kapsayıcısına veri yazarsanız, bu işlem Azure Cosmos DB işlem deposu üzerinden gerçekleşir. Istek birimlerini tüketerek Azure Cosmos DB işlem performansını etkiler.
 * Dış tablolar aracılığıyla adanmış SQL havuzu tümleştirmesi Şu anda desteklenmiyor.
  
 ## <a name="supported-code-generated-actions-for-spark"></a>Spark için desteklenen kod tarafından oluşturulan eylemler
 
-| Hareket              | Açıklama |OLTP |HTAP  |
+| Hareket              | Description |OLTP |HTAP  |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- |----------------------------------------------------------- |
 | **DataFrame 'e yükle** |Spark DataFrame 'e veri yükleme ve verileri okuma |✓| ✓ |
 | **Spark tablosu oluşturma** |Azure Cosmos DB kapsayıcısına işaret eden tablo oluşturma|✓| ✓ |
@@ -55,7 +55,7 @@ SYNAPSE bağlantısını etkinleştirmeden bir Azure Cosmos DB kapsayıcısına 
 
 ## <a name="supported-code-generated-actions-for-serverless-sql-pool"></a>Sunucusuz SQL havuzu için desteklenen kod tarafından oluşturulan eylemler
 
-| Hareket              | Açıklama |OLTP |HTAP |
+| Hareket              | Description |OLTP |HTAP |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- |----------------------------------------------------------- |
 | **Verileri inceleme** |Tanıdık T-SQL söz dizimi ve otomatik Şema çıkarımı ile bir kapsayıcıdaki verileri araştırma|X| ✓ |
 | **Görünümler oluşturma ve bı raporları oluşturma** |Sunucusuz SQL havuzu aracılığıyla bı için bir kapsayıcıya doğrudan erişim sağlamak üzere bir SQL görünümü oluşturun |X| ✓ |

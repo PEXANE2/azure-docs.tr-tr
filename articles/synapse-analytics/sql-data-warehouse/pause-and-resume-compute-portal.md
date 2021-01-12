@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 7d258243dae06461d21e9b5f0346e419f034eea9
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 567d5ae8b9d480003486362a7aa0ef69f9740d52
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109716"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120300"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-via-the-azure-portal"></a>Hızlı başlangıç: Azure portal aracılığıyla adanmış SQL havuzunda işlemi duraklatma ve devam ettirme
 
@@ -98,5 +98,4 @@ Kaynakları istediğiniz gibi temizlemek için bu adımları izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık adanmış SQL havuzunuz için işlemi duraklatmış ve devam ettiriyorsunuz. [Özel BIR SQL havuzuna veri yükleme](load-data-from-azure-blob-storage-using-polybase.md)hakkında daha fazla bilgi edinmek için sonraki makaleye geçin. İşlem yeteneklerini yönetme hakkında daha fazla bilgi için bkz. [işlem yönetimine genel bakış](sql-data-warehouse-manage-compute-overview.md) makalesi. 
-
+Artık adanmış SQL havuzunuz için işlemi duraklatmış ve devam ettiriyorsunuz. [Özel BIR SQL havuzuna veri yükleme](./load-data-from-azure-blob-storage-using-copy.md)hakkında daha fazla bilgi edinmek için sonraki makaleye geçin. İşlem yeteneklerini yönetme hakkında daha fazla bilgi için bkz. [işlem yönetimine genel bakış](sql-data-warehouse-manage-compute-overview.md) makalesi.

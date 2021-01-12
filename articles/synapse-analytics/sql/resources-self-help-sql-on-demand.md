@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 12ff369cb931eb36014b7c9598b036afdc158750
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4c3b5095da4e55dc8f881a610f80f1150422e739
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457190"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119926"
 ---
 # <a name="self-help-for-serverless-sql-pool"></a>Sunucusuz SQL havuzu için kendi kendine yardım
 
@@ -25,7 +25,7 @@ Bu makale, Azure SYNAPSE Analytics 'te sunucusuz SQL havuzunda en sık karşıla
 SYNAPSE Studio sunucusuz SQL havuzuyla bağlantı kuramazsa, sunucusuz SQL havuzunun gri olduğunu veya "çevrimdışı" durumunu gösterdiğini fark edeceksiniz. Genellikle, bu sorun aşağıdaki durumlardan biri gerçekleştiğinde oluşur:
 
 1) Ağınız Azure SYNAPSE arka ucu iletişimini engelliyor. En sık karşılaşılan durum 1443 numaralı bağlantı noktasının engellenmesidir. Sunucusuz SQL havuzunun çalışmasını sağlamak için bu bağlantı noktasının engelini kaldırın. Diğer sorunlar sunucusuz SQL havuzunun de çalışmasını engelleyebilir, [daha fazla bilgi için tam sorun giderme kılavuzu ' nu ziyaret edin](../troubleshoot/troubleshoot-synapse-studio.md).
-2) Sunucusuz SQL havuzunda oturum açma izniniz yok. Erişim elde etmeniz için, Azure Synapse çalışma alanı yöneticilerinden birinin sizi çalışma alanı yöneticisi veya SQL yöneticisi rolüne eklemesi gerekir. [Daha fazla bilgi için erişim denetimiyle ilgili kılavuzun tamamını ziyaret edin](access-control.md).
+2) Sunucusuz SQL havuzunda oturum açma izniniz yok. Erişim elde etmeniz için, Azure Synapse çalışma alanı yöneticilerinden birinin sizi çalışma alanı yöneticisi veya SQL yöneticisi rolüne eklemesi gerekir. [Daha fazla bilgi için erişim denetimiyle ilgili kılavuzun tamamını ziyaret edin](../security/synapse-workspace-access-control-overview.md).
 
 ## <a name="query-fails-because-file-cannot-be-opened"></a>Dosya açılamadığından sorgu başarısız oluyor
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2020
 ms.author: memildin
-ms.openlocfilehash: 99f47df86d89e9daf2bc8878b868b04b7038ffd5
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: ce95106c56e919fa0fcc7d7553a3f0cc0dc77f98
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071213"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121303"
 ---
 # <a name="pricing-of-azure-security-center"></a>Azure Güvenlik Merkezi fiyatlandırması
 Azure Güvenlik Merkezi, Azure’da, şirket içinde ve diğer bulutlarda çalışan iş yükleri için birleşik güvenlik yönetimi ve gelişmiş tehdit koruması sağlar. Karma bulut iş yükleri, tehditlere maruz kalma olasılığını azaltan etkin savunmaları ve hızlı gelişen siber risklerle hızlanmanıza yardımcı olacak akıllı algılama üzerinde görünürlük ve denetim sağlar.
@@ -98,7 +98,7 @@ Güvenlik Merkezi 'nin iki teklifi vardır:
 ### <a name="how-do-i-enable-azure-defender-for-my-subscription"></a>Aboneliğim için Azure Defender'ı nasıl etkinleştirebilirim? 
 Aboneliğiniz için Azure Defender 'ı etkinleştirmek üzere aşağıdaki yolların herhangi birini kullanabilirsiniz: 
 
-|Metot  |Yönergeler  |
+|Yöntem  |Yönergeler  |
 |---------|---------|
 |Azure portal Azure Güvenlik Merkezi sayfaları|[Azure Defender’ı etkinleştirme](#enable-azure-defender)|
 |REST API'si|[Prmerler API 'SI](/rest/api/securitycenter/pricings)|
@@ -115,7 +115,7 @@ Diğer bir seçenek de Log Analytics çalışma alanı düzeyinde sunucular içi
 ### <a name="if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender"></a>Uç nokta için bir Microsoft Defender lisansınız zaten varsa Azure Defender için bir indirim alabilir miyim?
 Uç nokta için bir Microsoft Defender lisansınız zaten varsa, Azure Defender lisansınızın bu bölümü için ödeme yapmak zorunda kalmazsınız.
 
-İndirimi onaylamak için, güvenlik merkezi 'nin destek ekibine başvurun ve ilgili çalışma alanı KIMLIĞI, bölgesi ve lisans bilgilerini belirtin.
+İndirimi onaylamak için, güvenlik merkezi 'nin destek ekibine başvurun ve ilgili her lisans için ilgili çalışma alanı KIMLIĞI, bölge ve lisans bilgilerini belirtin.
 
 ### <a name="my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers"></a>Aboneliğimin etkinleştirilmiş sunucular için Azure Defender 'ı var, çalışan olmayan sunucular için ücret ödersiniz mi? 
 Hayır. Azure Defender 'ı bir abonelik üzerinde [sunucular için](defender-for-servers-introduction.md) etkinleştirdiğinizde, yalnızca sunucuları çalıştırmak için saatlik olarak faturalandırılırsınız. Kapalı olduğu süre boyunca kapalı olan herhangi bir sunucu için ücret ödersiniz. 

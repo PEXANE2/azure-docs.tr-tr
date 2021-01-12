@@ -11,12 +11,12 @@ ms.date: 06/26/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 667629b7f613b11f40528b039c7525339b7a62d0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: bd32b9690f8a9aef92eb1f2fbcc4ec926a65584e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462860"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121201"
 ---
 # <a name="azure-advisor-recommendations-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu için Azure Advisor önerileri
 
@@ -65,12 +65,12 @@ Aşağıdaki bölümde, her bir çoğaltılan tablo önerisi için Azure portal 
 
 
 ## <a name="adaptive-gen2-cache-utilization"></a>Uyarlamalı (Gen2) önbellek kullanımı
-Büyük bir çalışma kümesine sahipseniz, düşük bir önbellek isabet yüzdesi ve yüksek önbellek kullanımı yaşayabilirsiniz. Bu senaryoda, önbellek kapasitesini artırmak ve iş yükünüzü yeniden çalıştırmak için ölçeği ölçeklendirmelisiniz. Daha fazla bilgi için aşağıdaki [belgeleri](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-how-to-monitor-cache)ziyaret edin. 
+Büyük bir çalışma kümesine sahipseniz, düşük bir önbellek isabet yüzdesi ve yüksek önbellek kullanımı yaşayabilirsiniz. Bu senaryoda, önbellek kapasitesini artırmak ve iş yükünüzü yeniden çalıştırmak için ölçeği ölçeklendirmelisiniz. Daha fazla bilgi için aşağıdaki [belgeleri](./sql-data-warehouse-how-to-monitor-cache.md)ziyaret edin. 
 
 ## <a name="tempdb-contention"></a>Tempdb çekişmesi
 
-Yüksek tempdb Çekişmesi olduğunda sorgu performansı düşebilir.  Tempdb çekişmesi, Kullanıcı tanımlı geçici tablolar aracılığıyla veya büyük miktarda veri hareketi olduğunda meydana gelebilir. Bu senaryoda, daha fazla tempdb ayırması için ölçeklendirebilir ve sorgularınızı daha fazla bellek sağlamak üzere [kaynak sınıflarını ve iş yükü yönetimini yapılandırabilirsiniz](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-management) . 
+Yüksek tempdb Çekişmesi olduğunda sorgu performansı düşebilir.  Tempdb çekişmesi, Kullanıcı tanımlı geçici tablolar aracılığıyla veya büyük miktarda veri hareketi olduğunda meydana gelebilir. Bu senaryoda, daha fazla tempdb ayırması için ölçeklendirebilir ve sorgularınızı daha fazla bellek sağlamak üzere [kaynak sınıflarını ve iş yükü yönetimini yapılandırabilirsiniz](./sql-data-warehouse-workload-management.md) . 
 
 ## <a name="data-loading-misconfiguration"></a>Veri yükleme yanlış yapılandırma
 
-Gecikmeyi en aza indirmek için, her zaman ayrılmış SQL havuzunuz ile aynı bölgedeki bir depolama hesabındaki verileri yüklemeniz gerekir. [Yüksek aktarım hızı verileri alımı Için kopyalama ifadesini](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) kullanın ve üretilen dosyalarınızı depolama hesabınızda bölerek üretilen iş üretimini en üst düzeye çıkarın. COPY ifadesini kullanamıyoruz, daha iyi aktarım hızı için SqlBulkCopy API veya bcp 'yi yüksek bir toplu iş boyutuyla birlikte kullanabilirsiniz. Ek veri yükleme kılavuzu için aşağıdaki [belgeleri](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data)ziyaret edin. 
+Gecikmeyi en aza indirmek için, her zaman ayrılmış SQL havuzunuz ile aynı bölgedeki bir depolama hesabındaki verileri yüklemeniz gerekir. [Yüksek aktarım hızı verileri alımı Için kopyalama ifadesini](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) kullanın ve üretilen dosyalarınızı depolama hesabınızda bölerek üretilen iş üretimini en üst düzeye çıkarın. COPY ifadesini kullanamıyoruz, daha iyi aktarım hızı için SqlBulkCopy API veya bcp 'yi yüksek bir toplu iş boyutuyla birlikte kullanabilirsiniz. Ek veri yükleme kılavuzu için aşağıdaki [belgeleri](./guidance-for-loading-data.md)ziyaret edin.

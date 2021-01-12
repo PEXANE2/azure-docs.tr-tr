@@ -11,18 +11,18 @@ ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse    , devx-track-azurepowershell
-ms.openlocfilehash: 0ce94b62d67048896cdf7355043ec2dde7f2df79
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 18fba46e4e8de14d9b3ec43455ba2abcc4218dc1
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456584"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120198"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell ile adanmış bir SQL Havuzu (eski adıyla SQL DW) oluşturma
 
 Azure PowerShell kullanarak Azure SYNAPSE Analytics 'te adanmış bir SQL Havuzu (eski adıyla SQL DW) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -151,4 +151,4 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık adanmış bir SQL Havuzu (eski adıyla SQL DW) oluşturdunuz, bir güvenlik duvarı kuralı oluşturdunuz ve adanmış SQL havuzunuza bağlı. Daha fazla bilgi edinmek için [verileri özel BIR SQL havuzunda yükleme](load-data-from-azure-blob-storage-using-polybase.md) makalesine geçin.
+Artık adanmış bir SQL Havuzu (eski adıyla SQL DW) oluşturdunuz, bir güvenlik duvarı kuralı oluşturdunuz ve adanmış SQL havuzunuza bağlı. Daha fazla bilgi edinmek için [verileri özel BIR SQL havuzunda yükleme](./load-data-from-azure-blob-storage-using-copy.md) makalesine geçin.
