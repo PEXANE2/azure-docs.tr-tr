@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: df511e79b73256833ec54c5906bb6acbc852bc46
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: d2c0003058c2271e46a352567a14e1b01dfabdbf
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739629"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071111"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>Öğretici: ilk makine öğrenimi modelinizi eğitme (Bölüm 3/4)
 
@@ -41,9 +41,6 @@ Bu öğreticide şunları yaptınız:
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Serinin [2. bölümünü](tutorial-1st-experiment-hello-world.md) tamamlama.
-* Python dili ve makine öğrenimi iş akışlarının giriş bilgisi.
-* Visual Studio Code, Jupyıter veya Pydüğme gibi yerel geliştirme ortamı.
-* Python (sürüm 3,5 ile 3,7 arasında).
 
 ## <a name="create-training-scripts"></a>Eğitim betikleri oluşturma
 
@@ -77,9 +74,7 @@ tutorial
 > [!div class="nextstepaction"]
 > [Bir sorunla karşılaşdığım](https://www.research.net/r/7CTJQQN?issue=create-scripts) [eğitim betiklerini oluşturdum](?success=create-scripts#environment)
 
-## <a name="create-a-python-environment"></a><a name="environment"></a> Python ortamı oluşturma
-
-Tanıtım amacıyla, Conda ortamını kullanacağız. (Bir PIP sanal ortamının adımları neredeyse aynıdır.)
+## <a name="create-a-new-python-environment"></a><a name="environment"></a> Yeni bir Python ortamı oluştur
 
 Gizli dizinde adlı bir dosya oluşturun `pytorch-env.yml` `.azureml` :
 
@@ -92,18 +87,19 @@ Bu ortam, modelinize ve eğitim betiğinizin gerektirdiği tüm bağımlılıkla
 
 ## <a name="test-locally"></a><a name="test-local"></a> Yerel olarak test etme
 
-Komut dosyanızı bu ortamda yerel olarak test etmek için aşağıdaki kodu kullanın:
+Komut dosyanızı yeni ortamda yerel olarak test etmek için aşağıdaki kodu kullanın.  
 
 ```bash
-conda env create -f .azureml/pytorch-env.yml    # create conda environment
-conda activate pytorch-env                      # activate conda environment
+conda deactivate                                # If you are still using the tutorial environment, exit it
+conda env create -f .azureml/pytorch-env.yml    # create the new Conda environment
+conda activate pytorch-env                      # activate new Conda environment
 python src/train.py                             # train model
 ```
 
 Bu betiği çalıştırdıktan sonra adlı bir dizine indirilen verileri görürsünüz `tutorial/data` .
 
 > [!div class="nextstepaction"]
-> [Bir sorunla karşılaşdığım](https://www.research.net/r/7CTJQQN?issue=test-local) [ortam dosyasını oluşturdum](?success=test-local#create-local)
+> [Yerel olarak](?success=test-local#create-local) [bir sorunla karşılaşdığım](https://www.research.net/r/7CTJQQN?issue=test-local) kodu çalıştırdım
 
 ## <a name="create-the-control-script"></a><a name="create-local"></a> Denetim betiğini oluşturma
 
@@ -163,11 +159,11 @@ if __name__ == "__main__":
 
 ## <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit"></a> Çalıştırmayı Azure Machine Learning gönder
 
-Yerel ortamları geçtiyseniz, Python için Azure Machine Learning SDK 'Sı yüklü olan bir ortama geri doğru geçdiğinizden emin olun.
-
-Ardından şunu çalıştırın:
+Python için Azure Machine Learning SDK 'Sı yüklü olan *öğretici* ortamına geri dönün. Eğitim kodu bilgisayarınızda çalışmadığından, PyTorch ' ın yüklü olması gerekmez.  Ancak, `azureml-sdk` *öğretici* ortamında olan öğesine ihtiyacınız vardır.
 
 ```bash
+conda deactivate
+conda activate tutorial
 python 04-run-pytorch.py
 ```
 

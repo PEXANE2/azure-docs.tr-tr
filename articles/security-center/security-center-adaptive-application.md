@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: 95c3ad6f689893195e0e5c17c59ab31143cf238d
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 473353c3f61d1096beb11c521c08ac723d54b780
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346528"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071615"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Makinelerinizin saldırı yüzeylerini azaltmak için uyarlamalı uygulama denetimleri kullanma
 
@@ -65,7 +65,7 @@ Güvenlik Merkezi, aboneliklerinizde düzenli olarak benzer bir uygulama kümesi
 
 Öneriyi seçin ya da Uyarlamalı uygulama denetimleri sayfasını açarak önerilen bilinen güvenli uygulamalar ve makine gruplarının listesini görüntüleyin.
 
-1. Azure Defender panosunu açın ve gelişmiş koruma alanından **Uyarlamalı uygulama denetimleri** ' ni seçin.
+1. Azure Defender panosunu açın ve gelişmiş koruma alanından **Uyarlamalı uygulama denetimleri**' ni seçin.
 
     :::image type="content" source="./media/security-center-adaptive-application/opening-adaptive-application-control.png" alt-text="Azure panosundan Uyarlamalı uygulama denetimleri açma" lightbox="./media/security-center-adaptive-application/opening-adaptive-application-control.png":::
 
@@ -112,7 +112,7 @@ Güvenlik Merkezi, aboneliklerinizde düzenli olarak benzer bir uygulama kümesi
       > 
       > Uygulamalar yayımcıları tarafından tanımlanmıştır, bir uygulamanın yayımcı bilgileri yoksa (imzasız), belirli bir uygulamanın tam yolu için bir yol kuralı oluşturulur.
 
-   1. Kuralı uygulamak için **Denetim** ' i seçin. 
+   1. Kuralı uygulamak için **Denetim**' i seçin. 
 
 
 
@@ -123,7 +123,7 @@ Kuruluşunuzdaki bilinen değişiklikler nedeniyle bir makine grubu için izin v
 
 Bir makine grubunun kurallarını düzenlemek için:
 
-1. Azure Defender panosunu açın ve gelişmiş koruma alanından **Uyarlamalı uygulama denetimleri** ' ni seçin.
+1. Azure Defender panosunu açın ve gelişmiş koruma alanından **Uyarlamalı uygulama denetimleri**' ni seçin.
 
 1. **Yapılandırılan** sekmesinden, düzenlemek istediğiniz kurala sahip grubu seçin.
 
@@ -131,7 +131,7 @@ Bir makine grubunun kurallarını düzenlemek için:
 
 1. İsteğe bağlı olarak, bir veya daha fazla özel kural ekleyin:
 
-   1. **Kural Ekle** ' yi seçin.
+   1. **Kural Ekle**' yi seçin.
 
       ![Özel kural ekle](./media/security-center-adaptive-application/adaptive-application-add-custom-rule.png)
 
@@ -145,9 +145,9 @@ Bir makine grubunun kurallarını düzenlemek için:
   
    1. İzin verilen kullanıcıları ve korumalı dosya türlerini tanımlayın.
 
-   1. Kuralı tanımlamayı bitirdiğinizde **Ekle** ' yi seçin.
+   1. Kuralı tanımlamayı bitirdiğinizde **Ekle**' yi seçin.
 
-1. Değişiklikleri uygulamak için **Kaydet** ' i seçin.
+1. Değişiklikleri uygulamak için **Kaydet**' i seçin.
 
 
 ## <a name="review-and-edit-a-groups-settings"></a>Grubun ayarlarını gözden geçirme ve düzenleme
@@ -158,14 +158,9 @@ Bir makine grubunun kurallarını düzenlemek için:
 
     :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="Uyarlamalı uygulama denetimleri için Grup ayarları sayfası" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
 
-    > [!IMPORTANT]
-    > Dosya türü koruma modu ayarlarındaki **zorla** seçeneği **Tüm** senaryolarda gri değildir. Şu anda hiçbir zorlama seçeneği yok. 
-    >
-    > :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-modes.png" alt-text="Dosya koruması için zorla modu, kalıcı olarak gri renkte bulunur. Kullanılabilir zorlama seçeneği yok.":::
-
 1. İsteğe bağlı olarak, grubun adını veya dosya türü koruma modlarını değiştirin.
 
-1. **Uygula** ve **Kaydet** ' i seçin.
+1. **Uygula** ve **Kaydet**' i seçin.
 
 
 
@@ -181,14 +176,14 @@ Sorunları düzeltmek için:
 
 1. [Bir makine grubunda Uyarlamalı uygulama denetimlerini etkinleştirme](#enable-application-controls-on-a-group-of-machines)bölümünde açıklandığı gibi **uygulama denetim kurallarını Yapılandır** sayfasının çeşitli bölümlerini gözden geçirin.
 
-1. Değişiklikleri uygulamak için **Denetim** ' i seçin.
+1. Değişiklikleri uygulamak için **Denetim**' i seçin.
 
 
 
 
 ## <a name="audit-alerts-and-violations"></a>Denetim uyarıları ve ihlalleri
 
-1. Azure Defender panosunu açın ve gelişmiş koruma alanından **Uyarlamalı uygulama denetimleri** ' ni seçin.
+1. Azure Defender panosunu açın ve gelişmiş koruma alanından **Uyarlamalı uygulama denetimleri**' ni seçin.
 
 1. Son uyarıları olan makineleri içeren grupları görmek için, **yapılandırılan** sekmede listelenen grupları gözden geçirin.
 
@@ -204,17 +199,17 @@ Sorunları düzeltmek için:
 
 Bir makineyi bir gruptan diğerine taşıdığınızda, uygulanan uygulama denetim ilkesi, onu taşıdığınız grubun ayarlarına değişir. Ayrıca, bir makineyi yapılandırılmış bir gruptan yapılandırılmamış bir gruba taşıyabilirsiniz, böylece makineye uygulanan uygulama denetim kuralları da kaldırılır.
 
-1. Azure Defender panosunu açın ve gelişmiş koruma alanından **Uyarlamalı uygulama denetimleri** ' ni seçin.
+1. Azure Defender panosunu açın ve gelişmiş koruma alanından **Uyarlamalı uygulama denetimleri**' ni seçin.
 
 1. **Uyarlamalı uygulama denetimleri** sayfasında, **yapılandırılan** sekmesinden, taşınacak makineyi içeren grubu seçin.
 
 1. **Yapılandırılmış makinelerin** listesini açın.
 
-1. Satırın sonundaki üç noktadan makinenin menüsünü açın ve **Taşı** ' yı seçin. **Makineyi farklı bir grup bölmesine taşı** açılır.
+1. Satırın sonundaki üç noktadan makinenin menüsünü açın ve **Taşı**' yı seçin. **Makineyi farklı bir grup bölmesine taşı** açılır.
 
-1. Hedef grubunu seçin ve **makineyi taşı** ' yı seçin.
+1. Hedef grubunu seçin ve **makineyi taşı**' yı seçin.
 
-1. Değişikliklerinizi kaydetmek için **Kaydet** ' i seçin.
+1. Değişikliklerinizi kaydetmek için **Kaydet**' i seçin.
 
 
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/08/2020
+ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4592742b99d7c3e915c31ca5a202355d32e76d68
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 15b4b61fd250dfb7d68c563f9f42c7d288a0019c
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356132"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070873"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV iş ortakları
 
@@ -54,7 +54,7 @@ MFA ve passwordless kimlik doğrulaması için aşağıdaki ISV 'Ler ile Microso
 | ![Nevis logosunun ekran görüntüsü](./media/partner-gallery/nevis-logo.png) | [Nevis](./partner-nevis.md) , passwordless kimlik doğrulamasını sağlar ve güçlü müşteri kimlik doğrulaması IÇIN ve PSD2 işlem gereksinimleriyle uyum sağlamak üzere Nevis Access uygulamasıyla mobil ve tamamen markalı Son Kullanıcı deneyimi sağlar. |
 | ![Trusona logosunun ekran görüntüsü](./media/partner-gallery/trusona-logo.png) | [Truslonıntegration](./partner-trusona.md) , güvenli bir şekilde oturum açmanıza ve passwordless kimlik doğrulaması, MFA ve dijital lisans taramasını başlatmanıza yardımcı olur. |
 | ![Bir Twilio logosunun ekran görüntüsü.](./media/partner-gallery/twilio-logo.png) | [Twilio Verify App](./partner-twilio.md) , SMS tek seferlik parola (OTP), zaman tabanlı bir kerelik parola (TOTP) ve anında iletme BILDIRIMLERI aracılığıyla MFA 'yı ETKINLEŞTIRMEK ve PSD2 için SCA gereksinimleriyle uyum sağlamak için birden çok çözüm sağlar. |
-| ![TypingDNA logosunun ekran görüntüsü](./media/partner-gallery/typingdna-logo.png) | [Typingdna](./partner-twilio.md) , bir kullanıcının yazma modelini çözümleyerek güçlü müşteri kimlik doğrulamasını mümkün bir şekilde sunar. Şirketlerin sessiz MFA 'yı etkinleştirmesine ve PSD2 için SCA gereksinimleriyle uyumlu hale belirlemesine yardımcı olur. |
+| ![TypingDNA logosunun ekran görüntüsü](./media/partner-gallery/typingdna-logo.png) | [Typingdna](./partner-typingdna.md) , bir kullanıcının yazma modelini çözümleyerek güçlü müşteri kimlik doğrulamasını mümkün bir şekilde sunar. Şirketlerin sessiz MFA 'yı etkinleştirmesine ve PSD2 için SCA gereksinimleriyle uyumlu hale belirlemesine yardımcı olur. |
 | ![Whoıam logosunun ekran görüntüsü](./media/partner-gallery/whoiam-logo.png) | [Whoıam](./partner-whoiam.md) , kuruluşların Kullanıcı temelini seslı, SMS ve e-posta ile doğrulamasını sağlayan bir markalı kimlik yönetimi SISTEMI (brims) uygulamasıdır. |
 
 ## <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi 

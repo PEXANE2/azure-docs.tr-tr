@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9ce2044f3ee0bff3335f46d8cf712e64394af2d3
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: f0dcd763240205bd396fc8cd0301c2046098473b
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628875"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070142"
 ---
 # <a name="what-is-azure-files"></a>Azure Dosyalar nedir?
 Azure dosyaları, bulutta sektör standart [sunucu Ileti bloğu (SMB) protokolü](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) veya [ağ dosya sistemi (NFS) protokolü](https://en.wikipedia.org/wiki/Network_File_System)aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Azure dosya paylaşımları, bulut veya şirket içi dağıtımlar tarafından eşzamanlı olarak bağlanabilir. Azure dosyaları SMB dosya paylaşımlarına Windows, Linux ve macOS istemcilerinden erişilebilir. Azure dosyaları NFS dosya paylaşımlarına Linux veya macOS istemcilerinden erişilebilir. Ayrıca, Azure dosyaları SMB dosya paylaşımları, verilerin kullanıldığı yerden neredeyse hızlı erişim için Azure Dosya Eşitleme ile Windows sunucularında önbelleğe alınabilir.
@@ -29,29 +29,29 @@ Azure dosyalarının genel kullanım durumlarında bazı videolar aşağıda ver
 ## <a name="why-azure-files-is-useful"></a>Azure Dosyaları neden faydalıdır?
 Azure dosya paylaşımları şunları yapmak için kullanılabilir:
 
-* **Şirket içi dosya sunucularını değiştirme veya destekleme** :  
+* **Şirket içi dosya sunucularını değiştirme veya destekleme**:  
     Azure Dosyaları geleneksel şirket içi dosya sunucularını veya NAS cihazlarını tamamen değiştirmek veya desteklemek için kullanılabilir. Windows, macOS ve Linux gibi yaygın işletim sistemleri, dünyanın neresinde olursa olsun Azure dosya paylaşımlarına doğrudan bağlanabilir. Azure dosya SMB dosya paylaşımları ayrıca, kullanıldığı verilerin performansı ve dağıtılmış önbelleği için şirket içinde veya bulutta Azure Dosya Eşitleme Windows Server 'Lar ile de çoğaltılabilir. Azure dosya SMB dosya paylaşımları en son sürümü [sayesinde, erişim](storage-files-active-directory-overview.md)denetimi için şirket IÇINDE barındırılan ad ile çalışmaya devam edebilir. 
 
-* **"Kaldırma ve kaydırma" uygulamaları** :  
+* **"Kaldırma ve kaydırma" uygulamaları**:  
     Azure Dosyaları dosya uygulamasını veya kullanıcı verilerini saklamak için bir dosya paylaşımı gerektiren uygulamaların buluta taşınmasını kolaylaştırır. Azure Dosyaları, uygulamanın ve verilerinin Azure'a taşındığı "klasik" taşıma senaryosunun yanı sıra uygulama verilerinin Azure Dosyaları'na taşındığı ve uygulamanın şirket içi ortamda çalışmaya devam ettiği "hibrit" taşıma senaryosunu destekler. 
 
-* **Bulut geliştirmeyi basitleştirme** :  
-    Azure Dosyaları ayrıca yeni bulut geliştirme projelerini kolaylaştırma amacıyla farklı şekillerde kullanılabilir. Örnek:
-    * **Paylaşılan uygulama ayarları** :  
+* **Bulut geliştirmeyi basitleştirme**:  
+    Azure Dosyaları ayrıca yeni bulut geliştirme projelerini kolaylaştırma amacıyla farklı şekillerde kullanılabilir. Örneğin:
+    * **Paylaşılan uygulama ayarları**:  
         Dağıtılmış uygulamalar için yaygın bir düzen, yapılandırma dosyalarının birçok uygulama örneğinin erişebildiği merkezi bir konumda tutulmasıdır. Uygulama örnekleri yapılandırmalarını Dosya REST API'si üzerinden yükleyebilir ve kullanıcılar bu verilere SMB paylaşımını yerel ortama bağlayarak erişebilir.
 
-    * **Tanılama paylaşma** :  
+    * **Tanılama paylaşma**:  
         Azure dosya paylaşımı, bulut uygulamalarının günlük, ölçüm ve kilitlenme bilgi dökümünü yazmaları için kullanışlı bir yerdir. Günlükler uygulama örnekleri tarafından Dosya REST API'si aracılığıyla yazılabilir ve geliştiriciler dosya paylaşımını yerel makinelerine bağlayarak bu verilere erişebilir. Bu durum geliştiricilerin bildikleri ve sevdikleri araçları bırakmak zorunda kalmadan bulut geliştirmeye geçmelerini sağladığından önemli bir esneklik sunar.
 
-    * **Geliştirme/Test/Hata Ayıklama** :  
+    * **Geliştirme/Test/Hata Ayıklama**:  
         Geliştiriciler veya yöneticiler bulutta sanal makinelerle çalışırken, sıklıkla bir dizi araca veya yardımcı programa ihtiyaçları olur. Bu tür yardımcı programları ve araçları tüm sanal makineleri kopyalamak uzun zaman alabilir. Bir Azure dosya paylaşımını sanal makinelere yerel olarak bağlayan geliştirici ve yöneticiler kopyalamaya gerek duymadan araçlarına ve yardımcı programlarına erişebilirler.
-* **Kapsayıcılama** :  
+* **Kapsayıcılama**:  
     Azure dosya paylaşımları, durum bilgisi olmayan kapsayıcılar için kalıcı birimler olarak kullanılabilir. Kapsayıcılar, geliştiricilerin yeniliklerini hızlandırmasını sağlayan "bir kez derleyin, her yerde Çalıştır" özellikleri sunar. Her başlangıçta ham verilere erişen kapsayıcılar için, bu kapsayıcıların hangi örneği çalıştırdıklarından bağımsız olarak dosya sistemine erişmesine izin vermek üzere paylaşılan bir dosya sistemi gerekir.
 
 ## <a name="key-benefits"></a>Önemli avantajlar
 * **Paylaşılan erişim**. Azure dosya paylaşımları, sektör standardı SMB ve NFS protokollerini destekler, yani şirket içi dosya paylaşımlarınızı uygulama uyumluluğuna endişelenmeden Azure dosya paylaşımlarıyla sorunsuz bir şekilde değiştirebilirsiniz. Dosya sistemini birden çok makine, uygulama/örnek arasında paylaşabilmek, paylaşılabilirlik gerektiren uygulamalarda Azure Dosyaları'nın önemli bir avantaj olmasını sağlar. 
 * **Tam olarak yönetilir**. Azure dosya paylaşımları donanım veya işletim sistemi yönetmeye gerek kalmadan oluşturulabilir. Bu, sunucu işletim sistemine kritik güvenlik yükseltmeleri için yama eklemekle veya arızalı sabit diskleri değiştirmekle uğraşmanız gerekmediği anlamına gelir.
-* **Betik oluşturma ve araç**. Azure uygulamalarının yönetimi kapsamında Azure dosya paylaşımlarını oluşturmak, bağlamak ve yönetmek için PowerShell cmdlet'leri ve Azure CLI kullanılabilir. Azure portalını ve Azure Depolama Gezgini'ni kullanarak Azure dosya paylaşımlarını oluşturabilir ve yönetebilirsiniz. 
+* **Betik oluşturma ve araç**. PowerShell cmdlet 'leri ve Azure CLı, Azure uygulamalarının yönetiminin bir parçası olarak Azure dosya paylaşımlarını oluşturmak, bağlamak ve yönetmek için kullanılabilir. Azure portal ve Azure Depolama Gezgini kullanarak Azure dosya paylaşımlarını oluşturabilir ve yönetebilirsiniz. 
 * **Dayanıklılık**. Azure Dosyaları, baştan sonra her zaman kullanılabilir olacak şekilde hazırlanmıştır. Şirket içi dosya paylaşımlarını Azure Dosyaları ile değiştirmek, artık kalkıp bölgesel elektrik kesintileriyle veya ağ sorunlarıyla uğraşmak zorunda kalmayacağınız anlamına gelir. 
 * **Tanıdık programlama**. Azure’da çalışan uygulamalar paylaşımdaki verilere [dosya sistemi G/Ç API’leri](/dotnet/api/system.io.file) yoluyla erişebilir. Böylece geliştiriciler mevcut uygulamalarını taşımak üzere kullandıkları kodlar ve yeteneklerden yararlanabilir. Sistem G/Ç API’lerine ek olarak, [Azure Depolama İstemcisi Kitaplıkları](/previous-versions/azure/dn261237(v=azure.100)) veya [Azure Depolama REST API’si](/rest/api/storageservices/file-service-rest-api) de kullanılabilir.
 

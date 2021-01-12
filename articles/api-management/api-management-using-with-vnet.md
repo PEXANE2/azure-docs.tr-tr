@@ -7,18 +7,17 @@ author: vladvino
 manager: erikre
 editor: ''
 ms.service: api-management
-ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/10/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: e36f7c6085908630d5e7aa2593fe4d57202d6ee7
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: d0d5434de747b48464df1c07f8c7b6a7e785c858
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107660"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070992"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Sanal ağlar ile Azure API Management’ı kullanma
 Azure Sanal Ağları (VNET’ler) Azure kaynaklarınızdan herhangi birini, erişimini denetlediğiniz İnternet tabanlı olmayan ve yönlendirilebilir bir ağa yerleştirmenizi sağlar. Bu ağlar daha sonra, çeşitli VPN teknolojileri kullanılarak şirket içi ağlarınıza bağlanabilir. Azure sanal ağları hakkında daha fazla bilgi edinmek için buradaki bilgilerle başlayın: [Azure sanal ağına genel bakış](../virtual-network/virtual-networks-overview.md).
@@ -113,20 +112,20 @@ Aşağıda, API Management hizmeti bir sanal ağa dağıttığınızda oluşabil
 
 | Kaynak/hedef bağlantı noktaları | Yön          | Aktarım Protokolü |   [Hizmet etiketleri](../virtual-network/network-security-groups-overview.md#service-tags) <br> Kaynak/hedef   | Amaç ( \* )                                                 | Sanal ağ türü |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
-| */[80], 443                  | Inbound            | TCP                | ıNTERNET/VIRTUAL_NETWORK            | API Management istemci iletişimi                      | Dış             |
-| */3443                     | Inbound            | TCP                | Apimanaya/VIRTUAL_NETWORK       | Azure portal ve PowerShell için yönetim uç noktası         | Dış & Iç  |
-| */443                  | Outbound           | TCP                | VIRTUAL_NETWORK/depolama             | **Azure Storage bağımlılığı**                             | Dış & Iç  |
-| */443                  | Outbound           | TCP                | VIRTUAL_NETWORK/AzureActiveDirectory | [Azure Active Directory](api-management-howto-aad.md) ve Azure keykasası bağımlılığı                  | Dış & Iç  |
-| */1433                     | Outbound           | TCP                | VIRTUAL_NETWORK/SQL                 | **Azure SQL uç noktalarına erişim**                           | Dış & Iç  |
-| */433                     | Outbound           | TCP                | VIRTUAL_NETWORK/AzureKeyVault                 | **Azure Keykasasına erişim**                           | Dış & Iç  |
-| */5671, 5672, 443          | Outbound           | TCP                | VIRTUAL_NETWORK/EventHub            | [Olay Hub 'ı ilkesine](api-management-howto-log-event-hubs.md) ve Izleme aracısına günlük bağımlılığı | Dış & Iç  |
-| */445                      | Outbound           | TCP                | VIRTUAL_NETWORK/depolama             | [GIT](api-management-configuration-repository-git.md) Için Azure dosya paylaşımında bağımlılık                      | Dış & Iç  |
-| */443, 12000                     | Outbound           | TCP                | VIRTUAL_NETWORK/Azurecyüksek            | Durum ve Izleme uzantısı         | Dış & Iç  |
-| */1886, 443                     | Outbound           | TCP                | VIRTUAL_NETWORK/AzureMonitor         | [Tanılama günlüklerini ve ölçümlerini](api-management-howto-use-azure-monitor.md)yayımlayın, [kaynak durumu](../service-health/resource-health-overview.md) ve [Application Insights](api-management-howto-app-insights.md)                   | Dış & Iç  |
-| */25, 587, 25028                       | Outbound           | TCP                | VIRTUAL_NETWORK/INTERNET            | E-posta göndermek için SMTP geçişine Bağlan                    | Dış & Iç  |
+| */[80], 443                  | Gelen            | TCP                | ıNTERNET/VIRTUAL_NETWORK            | API Management istemci iletişimi                      | Dış             |
+| */3443                     | Gelen            | TCP                | Apimanaya/VIRTUAL_NETWORK       | Azure portal ve PowerShell için yönetim uç noktası         | Dış & Iç  |
+| */443                  | Giden           | TCP                | VIRTUAL_NETWORK/depolama             | **Azure Storage bağımlılığı**                             | Dış & Iç  |
+| */443                  | Giden           | TCP                | VIRTUAL_NETWORK/AzureActiveDirectory | [Azure Active Directory](api-management-howto-aad.md) ve Azure keykasası bağımlılığı                  | Dış & Iç  |
+| */1433                     | Giden           | TCP                | VIRTUAL_NETWORK/SQL                 | **Azure SQL uç noktalarına erişim**                           | Dış & Iç  |
+| */433                     | Giden           | TCP                | VIRTUAL_NETWORK/AzureKeyVault                 | **Azure Keykasasına erişim**                           | Dış & Iç  |
+| */5671, 5672, 443          | Giden           | TCP                | VIRTUAL_NETWORK/EventHub            | [Olay Hub 'ı ilkesine](api-management-howto-log-event-hubs.md) ve Izleme aracısına günlük bağımlılığı | Dış & Iç  |
+| */445                      | Giden           | TCP                | VIRTUAL_NETWORK/depolama             | [GIT](api-management-configuration-repository-git.md) Için Azure dosya paylaşımında bağımlılık                      | Dış & Iç  |
+| */443, 12000                     | Giden           | TCP                | VIRTUAL_NETWORK/Azurecyüksek            | Durum ve Izleme uzantısı         | Dış & Iç  |
+| */1886, 443                     | Giden           | TCP                | VIRTUAL_NETWORK/AzureMonitor         | [Tanılama günlüklerini ve ölçümlerini](api-management-howto-use-azure-monitor.md)yayımlayın, [kaynak durumu](../service-health/resource-health-overview.md) ve [Application Insights](api-management-howto-app-insights.md)                   | Dış & Iç  |
+| */25, 587, 25028                       | Giden           | TCP                | VIRTUAL_NETWORK/INTERNET            | E-posta göndermek için SMTP geçişine Bağlan                    | Dış & Iç  |
 | */6381-6383              | Gelen & giden | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Makineler arasındaki [önbellek](api-management-caching-policies.md) Ilkeleri için Redsıs hizmetine erişme         | Dış & Iç  |
 | */4290              | Gelen & giden | UDP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Makineler arasındaki [hız limiti](api-management-access-restriction-policies.md#LimitCallRateByKey) ilkeleri Için eşitleme sayaçları         | Dış & Iç  |
-| * / *                        | Inbound            | TCP                | AZURE_LOAD_BALANCER/VIRTUAL_NETWORK | Azure altyapı Load Balancer                          | Dış & Iç  |
+| * / *                        | Gelen            | TCP                | AZURE_LOAD_BALANCER/VIRTUAL_NETWORK | Azure altyapı Load Balancer                          | Dış & Iç  |
 
 >[!IMPORTANT]
 > API Management hizmetin başarıyla dağıtılması için  , amacının **kalın** olduğu bağlantı noktaları gereklidir. Diğer bağlantı noktalarını engellemek, **çalışan hizmeti kullanma ve izleme ve taahhüt EDILEN SLA sağlama** yeteneğinin **azalmasına** neden olur.
@@ -147,6 +146,9 @@ Aşağıda, API Management hizmeti bir sanal ağa dağıttığınızda oluşabil
   > DNS bölgesi **. nsatc.net** to **. microsoftmetrics.com** ile yukarıdaki kümelerin DEĞIŞIKLIĞI, genellikle bir DNS değişiklidir. Kümenin IP adresi değişmeyecektir.
 
 + **Bölgesel hizmet etiketleri**: bir depolama, SQL ve Event Hubs hizmet etiketlerine giden bağlantıya izin veren NSG kuralları, API Management örneğini içeren bölgeye karşılık gelen etiketlerin bölgesel sürümlerini kullanabilir (örneğin, Batı ABD bölgesindeki bir API Management örneği için Storage. WestUS). Çok bölgeli dağıtımlarda, her bölgedeki NSG bu bölge ve birincil bölge için hizmet etiketlerine giden trafiğe izin verilmelidir.
+
+    > [!IMPORTANT]
+    > Bir sanal ağdaki API Management bir örnek için [Geliştirici Portalını](api-management-howto-developer-portal.md) yayımlamayı etkinleştirmek üzere, Batı ABD bölgesinde blob depolamaya giden bağlantıya da izin verildiğinden emin olun. Örneğin, NSG kuralında **Storage. WestUS** hizmet etiketini kullanın. Batı ABD bölgesindeki blob depolamaya bağlantı, herhangi bir API Management örneği için geliştirici portalını yayımlamak üzere gereklidir.
 
 + **SMTP geçişi**: konak `smtpi-co1.msn.com` , `smtpi-ch1.msn.com` , `smtpi-db3.msn.com` `smtpi-sin.msn.com` ve altında çözümlenen SMTP geçişi için giden ağ bağlantısı `ies.global.microsoft.com`
 

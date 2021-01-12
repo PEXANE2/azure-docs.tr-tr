@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
-ms.author: jmartens
-author: j-martens
+ms.author: luquinta
+author: luisquintanilla
 ms.date: 11/16/2020
-ms.openlocfilehash: 0afbf32f80a3d19f6db457f398a213a634cfa3d4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3f3794ed4748eda44e863ff4627dedc0a34691af
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447054"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070108"
 ---
 # <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>Visual Studio Code bir Azure Machine Learning işlem örneğine bağlanma (Önizleme)
 
@@ -132,10 +132,10 @@ Burada, alanlarla ilgili bazı ayrıntılar verilmiştir:
 
 |Alan|Açıklama|
 |----|---------|
-|Ana bilgisayar|İşlem örneği için istediğiniz toplu şeyi kullanın |
+|Konak|İşlem örneği için istediğiniz toplu şeyi kullanın |
 |HostName|Bu, işlem örneğinin IP adresidir |
 |Bağlantı noktası|Bu, yukarıdaki SSH iletişim kutusunda gösterilen bağlantı noktasıdır |
-|User|Bunun olması gerekir `azureuser` |
+|Kullanıcı|Bunun olması gerekir `azureuser` |
 |Identityfile|Özel anahtarı kaydettiğiniz dosyaya işaret etmelidir |
 
 Şimdi, yukarıda kullandığınız toplu işlemi kullanarak işlem örneğinizi SSH ile sağlayabilmelisiniz `ssh azmlci1` .

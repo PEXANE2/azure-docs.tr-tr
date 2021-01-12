@@ -3,12 +3,12 @@ title: Azure Site Recovery 'de yük devretme ve yeniden çalışma hakkında
 description: Azure Site Recovery yük devretme ve failable hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 12/24/2019
-ms.openlocfilehash: 3617683200aa3ffba08061b70993613fd0cc7241
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b900655d6fdf1143d430ac842bfd84eb1dfdf34c
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369888"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070754"
 ---
 # <a name="about-on-premises-disaster-recovery-failoverfailback"></a>Şirket içi olağanüstü durum kurtarma yük devretme/yeniden çalışma hakkında
 
@@ -45,7 +45,7 @@ RDP/SSH kullanılarak yük devretmeden sonra oluşturulan Azure VM 'lerine bağl
 
 **Yük devretme** | **Konum** | **Eylemler**
 --- | --- | ---
-**Azure VM (Windows (** | Yük devretmeden önce şirket içi makinede | **İnternet üzerinden erişim**: RDP 'yi etkinleştirin. TCP ve UDP kurallarının **genel**için eklendiğinden ve **Windows Güvenlik Duvarı**  >  **izin verilen uygulamalar**'daki tüm profiller için RDP 'ye izin verildiğinden emin olun.<br/><br/> **Siteden sıteye VPN üzerinden erişim**: makinede RDP 'yi etkinleştirin. **Windows Firewall**  ->  **Etki alanı ve özel** ağlar için Windows Güvenlik Duvarı**izin verilen uygulamalar ve Özellikler**'de RDP 'ye izin verildiğinden emin olun.<br/><br/>  İşletim sistemi SAN ilkesinin **OnlineAll**olarak ayarlandığından emin olun. [Daha fazla bilgi edinin](https://support.microsoft.com/kb/3031135).<br/><br/> Yük devretme tetiklemeniz sırasında VM 'de bekleyen bir Windows güncelleştirmesi olmadığından emin olun. Yük devretmek Windows Update başlayabilir ve güncelleştirmeler tamamlanana kadar VM 'de oturum açamazsınız.
+**Windows çalıştıran Azure VM** | Yük devretmeden önce şirket içi makinede | **İnternet üzerinden erişim**: RDP 'yi etkinleştirin. TCP ve UDP kurallarının **genel** için eklendiğinden ve **Windows Güvenlik Duvarı**  >  **izin verilen uygulamalar**'daki tüm profiller için RDP 'ye izin verildiğinden emin olun.<br/><br/> **Siteden sıteye VPN üzerinden erişim**: makinede RDP 'yi etkinleştirin.   ->  **Etki alanı ve özel** ağlar için Windows Güvenlik Duvarı **izin verilen uygulamalar ve Özellikler**'de RDP 'ye izin verildiğinden emin olun.<br/><br/>  İşletim sistemi SAN ilkesinin **OnlineAll** olarak ayarlandığından emin olun. [Daha fazla bilgi edinin](https://support.microsoft.com/kb/3031135).<br/><br/> Yük devretme tetiklemeniz sırasında VM 'de bekleyen bir Windows güncelleştirmesi olmadığından emin olun. Yük devretmek Windows Update başlayabilir ve güncelleştirmeler tamamlanana kadar VM 'de oturum açamazsınız.
 **Windows çalıştıran Azure VM** | Yük devretmeden sonra Azure VM 'de |  VM için bir [ortak IP adresi ekleyin](/archive/blogs/srinathv/how-to-add-a-public-ip-address-to-azure-vm-for-vm-failed-over-using-asr).<br/><br/> Yük devredilen VM 'deki (ve bağlı olduğu Azure alt ağı) ağ güvenlik grubu kuralları, RDP bağlantı noktasına gelen bağlantılara izin vermelidir.<br/><br/> VM 'nin ekran görüntüsünü doğrulamak için **önyükleme tanılamalarını** denetleyin. Bağlanamıyorsanız, sanal makinenin çalışıp çalışmadığını denetleyin ve [sorun giderme ipuçları](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)' nı gözden geçirin.
 **Linux çalıştıran Azure VM** | Yük devretmeden önce şirket içi makinede | VM 'deki Secure Shell hizmetinin sistem önyüklemesi üzerinde otomatik olarak başlayacak şekilde ayarlandığından emin olun.<br/><br/> Güvenlik duvarı kurallarının gerçekleştirilecek SSH bağlantısına izin verdiğinden emin olun.
 **Linux çalıştıran Azure VM** | Yük devretmeden sonra Azure VM 'de | Yük devredilen VM 'deki (ve bağlı olduğu Azure alt ağı) ağ güvenlik grubu kurallarının SSH bağlantı noktasına gelen bağlantılara izin vermeniz gerekir.<br/><br/> VM için bir [ortak IP adresi ekleyin](/archive/blogs/srinathv/how-to-add-a-public-ip-address-to-azure-vm-for-vm-failed-over-using-asr).<br/><br/> VM 'nin ekran görüntüsü için **önyükleme tanılamayı** denetleyin.<br/><br/>

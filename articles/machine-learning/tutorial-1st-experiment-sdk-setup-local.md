@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 5df8b478c550522d4602398afd208c1e001c96a2
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: fae9a4b1b82a1fe23e8882b45880a6ba0081f580
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883308"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071139"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>Öğretici: geliştirme ortamınızda Azure Machine Learning kullanmaya başlayın (Bölüm 1/4)
 
@@ -32,30 +32,47 @@ Bu öğretici serisinin 1. bölümünde şunları yapmanız gerekir:
 > * Bir işlem kümesi ayarlayın.
 
 > [!NOTE]
-> Bu öğretici serisi, işlem yoğunluklu ve/veya reproducibility gerektiren Python *işleri tabanlı* makine öğrenimi görevlerine uygun Azure Machine Learning kavramlara odaklanır. Araştırmacı iş akışıyla daha fazla ilgileniyorsanız, bunun yerine [Azure Machine Learning işlem örneği üzerinde jupi veya RStudio](tutorial-1st-experiment-sdk-setup.md)kullanabilirsiniz.
+> Bu öğretici serisi **toplu işleri** göndermek için gereken Azure Machine Learning kavramlara odaklanır. Bu, kodun buluta gönderildiği ve herhangi bir kullanıcı etkileşimi olmadan arka planda çalışacağı yerdir. Bu, tekrar tekrar çalıştırmak istediğiniz tamamlanmış betikler veya kodlar için ya da işlem yoğunluklu makine öğrenimi görevleri için yararlıdır. Araştırmacı iş akışıyla daha fazla ilgileniyorsanız, bunun yerine [Azure Machine Learning işlem örneği üzerinde jupi veya RStudio](tutorial-1st-experiment-sdk-setup.md)kullanabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning](https://aka.ms/AMLFree)deneyin.
-- Python ve [Machine Learning kavramlarıyla](concept-azure-machine-learning-architecture.md)benzerlik. Ortamları, eğitimi ve Puanlama örnekleri içerir.
-- Visual Studio Code, Jupyıter veya Pydüğme gibi yerel geliştirme ortamı.
-- Python (sürüm 3,5 ile 3,7 arasında).
-
+- Python sanal ortamlarını yönetmek ve paketleri yüklemek için [Anaconda](https://www.anaconda.com/download/) veya [miniconda](https://www.anaconda.com/download/) .
 
 ## <a name="install-the-azure-machine-learning-sdk"></a>Azure Machine Learning SDK 'sını yükler
 
-Bu öğreticide, Python için Azure Machine Learning SDK 'sını kullanırız.
+Bu öğreticide, Python için Azure Machine Learning SDK kullanacaksınız. Python bağımlılığı sorunlarını önlemek için yalıtılmış bir ortam oluşturacaksınız. Bu öğretici serisi, bu ortamı oluşturmak için Conda kullanır. , Veya Docker gibi diğer çözümleri kullanmayı tercih ediyorsanız `venv` , `virtualenv` >= 3,5 ve 3,9 < bir Python sürümü kullandığınızdan emin olun.
 
-Bu öğreticide kullanmak üzere bir Python ortamı ayarlamak için en tanıdık araçları (örneğin, Conda ve PIP) kullanabilirsiniz. PIP kullanarak Python için Azure Machine Learning SDK 'sını Python ortamınıza yüklemeyin:
+Sisteminizde Conda 'nın yüklü olup olmadığını denetleyin:
+    
+```bash
+conda --version
+```
+    
+Bu komut bir hata döndürürse `conda not found` , [Miniconda indirin ve yükleyin](https://docs.conda.io/en/latest/miniconda.html). 
+
+Conda 'yı yükledikten sonra, yeni bir ortam oluşturmak için bir Terminal veya Anaconda Istemi penceresi kullanın:
 
 ```bash
+conda create -n tutorial python=3.7
+```
+
+Sonra, Azure Machine Learning SDK 'sını oluşturduğunuz Conda ortamına yükleyebilirsiniz:
+
+```bash
+conda activate tutorial
 pip install azureml-sdk
 ```
+    
+> [!NOTE]
+> Azure Machine Learning SDK yüklemesinin tamamlanabilmesi yaklaşık 5 dakika sürer.
+
 
 > [!div class="nextstepaction"]
 > [Bir sorunla karşılaşdığım](https://www.research.net/r/7C8Z3DN?issue=install-sdk) [SDK 'yı yükledim](?success=install-sdk#dir)
 
 ## <a name="create-a-directory-structure-for-code"></a><a name="dir"></a>Kod için dizin yapısı oluşturma
+
 Bu öğretici için aşağıdaki basit dizin yapısını ayarlamanızı öneririz:
 
 ```markdown
@@ -68,8 +85,9 @@ tutorial
 
 > [!TIP]
 > Gizli. azureml alt dizinini bir Terminal penceresinde oluşturabilirsiniz.  Veya aşağıdakileri kullanın:
+>
 > * Mac Finder penceresinde, **Command + SHIFT + kullanın.** bir noktayla başlayan dizinleri görme ve oluşturma özelliğini değiştirmek için.  
-> * Windows 10 ' da bkz. [Gizli dosya ve klasörleri görüntüleme](https://support.microsoft.com/en-us/windows/view-hidden-files-and-folders-in-windows-10-97fbc472-c603-9d90-91d0-1166d1d9f4b5). 
+> * Bir Windows 10 Dosya Gezgininde bkz. [Gizli dosya ve klasörleri görüntüleme](https://support.microsoft.com/en-us/windows/view-hidden-files-and-folders-in-windows-10-97fbc472-c603-9d90-91d0-1166d1d9f4b5). 
 > * Linux grafik arabiriminde, **CTRL + h** veya **Görünüm** menüsünü kullanın ve **gizli dosyaları göstermek** için kutuyu işaretleyin.
 
 > [!div class="nextstepaction"]
@@ -104,7 +122,7 @@ ws = Workspace.create(name='<my_workspace_name>', # provide a name for your work
 ws.write_config(path='.azureml')
 ```
 
-Bu kodu `tutorial` dizinden çalıştırın:
+Etkinleştirilen *Tutorial1* Conda ortamı olan pencerede, bu kodu `tutorial` dizinden çalıştırın.
 
 ```bash
 cd <path/to/tutorial>
@@ -163,7 +181,7 @@ except ComputeTargetException:
 cpu_cluster.wait_for_completion(show_output=True)
 ```
 
-Python dosyasını çalıştırın:
+Etkinleştirilen *Tutorial1* Conda ortamını içeren pencerede, Python dosyasını çalıştırın:
 
 ```bash
 python ./02-create-compute.py
@@ -185,6 +203,19 @@ tutorial
 
 > [!div class="nextstepaction"]
 > [Bir sorunla karşılaşdığım](https://www.research.net/r/7C8Z3DN?issue=create-compute-cluster) [bir işlem kümesi](?success=create-compute-cluster#next-steps) oluşturdum
+
+## <a name="view-in-the-studio"></a>Studio 'da görüntüle
+
+Oluşturduğunuz çalışma alanını ve işlem örneğini görüntülemek için [Azure Machine Learning Studio](https://ml.azure.com) 'da oturum açın.
+
+1. Çalışma alanını oluşturmak için kullandığınız **aboneliği** seçin.
+1. Oluşturduğunuz **Machine Learning çalışma alanını** , *öğretici-WS*' ı seçin.
+1. Çalışma alanı yüklendiğinde, sol taraftaki **işlem**' i seçin.
+1. En üstte, **işlem kümeleri** sekmesini seçin.
+
+:::image type="content" source="media/tutorial-1st-experiment-sdk-local/compute-instance-in-studio.png" alt-text="Ekran görüntüsü: çalışma alanınızdaki işlem örneğini görüntüleyin.":::
+
+Bu görünümde, sağlanan işlem kümesi, boştaki düğüm sayısı, meşgul düğüm ve sağlaması kaldırılan düğümler ile birlikte gösterilir.  Kümeyi henüz kullanmadıysanız, tüm düğümlerin Şu anda sağlaması kaldırılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

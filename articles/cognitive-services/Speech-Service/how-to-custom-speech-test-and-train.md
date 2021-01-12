@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: af5ed0296ce99a4450fffec6b047285307ed0ff2
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: d24565522a75427be04cacfdc20347056a515847
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709308"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070771"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Özel Konuşma için verileri hazırlama
 
@@ -46,11 +46,11 @@ Bu tabloda, kabul edilen veri türleri, her veri türü ne zaman kullanılmalı 
 
 | Veri türü | Test için kullanılan | Önerilen miktar | Eğitim için kullanılır | Önerilen miktar |
 |-----------|-----------------|----------|-------------------|----------|
-| [Ses](#audio-data-for-testing) | Yes<br>Görsel inceleme için kullanılır | 5 + ses dosyası | Hayır | Yok |
-| [Ses + ınsan etiketli yazılı betikler](#audio--human-labeled-transcript-data-for-testingtraining) | Yes<br>Doğruluğu değerlendirmek için kullanılır | 0,5-5 saat ses | Yes | 1-20 saat ses |
-| [İlgili metin](#related-text-data-for-training) | Hayır | Yok | Yes | 1-200 MB ilgili metin |
+| [Ses](#audio-data-for-testing) | Evet<br>Görsel inceleme için kullanılır | 5 + ses dosyası | Hayır | Yok |
+| [Ses + ınsan etiketli yazılı betikler](#audio--human-labeled-transcript-data-for-testingtraining) | Evet<br>Doğruluğu değerlendirmek için kullanılır | 0,5-5 saat ses | Evet | 1-20 saat ses |
+| [İlgili metin](#related-text-data-for-training) | Hayır | Yok | Evet | 1-200 MB ilgili metin |
 
-Yeni bir modeli eğitedığınızda [ilgili metinle](#related-text-data-for-training)başlayın. Bu veriler, özel hüküm ve tümceciklerin tanınmasını zaten iyileştirir.
+Yeni bir modeli eğitedığınızda [ilgili metinle](#related-text-data-for-training)başlayın. Bu veriler, özel hüküm ve tümceciklerin tanınmasını zaten iyileştirir. Metinli eğitim, ses (dakika veya gün) ile eğitimlerden çok daha hızlıdır.
 
 Dosyalar bir veri kümesine türlerine göre gruplanmalı ve bir. zip dosyası olarak karşıya yüklenir. Her veri kümesi yalnızca tek bir veri türü içerebilir.
 
@@ -121,7 +121,7 @@ Ses dosyaları, kaydın başlangıcında ve sonunda sessizlik alabilir. Mümkün
 
 Sözcük silme veya değiştirme gibi sorunları gidermek için, tanımayı geliştirmek için önemli miktarda veri gerekir. Genellikle, kabaca 10 ila 20 saatlik ses için Word sözcük dökümü sağlamanız önerilir. Tüm WAV dosyalarının transkripsiyonları tek bir düz metin dosyasına yerleştirilmelidir. Transkripsiyon dosyasının her satırında ses dosyalarından birinin adı ve transkripsiyon bulunmalıdır. Dosya adı ve transkripsiyon sekme (\t) ile ayrılmalıdır.
 
-  Örnek:
+  Örneğin:
 ```
   speech01.wav  speech recognition is awesome
   speech02.wav  the quick brown fox jumped all over the place
@@ -138,7 +138,9 @@ Ses dosyalarınızı ve bunlara karşılık gelen kayıtları topladıktan sonra
 > [!div class="mx-imgBorder"]
 > ![Konuşma portalından ses seçme](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
 
-Konuşma hizmeti abonelikleriniz için önerilen bölgelerin listesi için bkz. [Azure hesabınızı ayarlama](custom-speech-overview.md#set-up-your-azure-account) . Bu bölgelerden birinde konuşma aboneliklerinin kurulması, modeli eğitmek için gereken süreyi azaltacaktır.
+Konuşma hizmeti abonelikleriniz için önerilen bölgelerin listesi için bkz. [Azure hesabınızı ayarlama](custom-speech-overview.md#set-up-your-azure-account) . Bu bölgelerden birinde konuşma aboneliklerinin kurulması, modeli eğitmek için gereken süreyi azaltacaktır. Bu bölgelerde, eğitim, günde yaklaşık 10 saatlik ses ile diğer bölgelerde günde yalnızca 1 saat arasında işlem yapabilir. Model eğitimi bir hafta içinde tamamlanamaz, model başarısız olarak işaretlenir.
+
+Tüm temel modeller ses verileriyle eğitimi desteklemez. Temel model bunu desteklemiyorsa, hizmet sesi yoksayacak ve yalnızca döküm metniyle eğitecektir. Bu durumda, eğitim, ilgili metin ile eğitimle aynı olacaktır.
 
 ## <a name="related-text-data-for-training"></a>Eğitim için ilgili metin verileri
 
@@ -150,6 +152,8 @@ Konuşma hizmeti abonelikleriniz için önerilen bölgelerin listesi için bkz. 
 | Söylenişler | Tanımsız söylenlerdeki yaygın olmayan terimlerin, kısaltmalardan veya diğer sözcüklerin okunuşunu geliştirir. |
 
 Cümleler, tek bir metin dosyası veya birden çok metin dosyası olarak bulunabilir. Doğruluğu artırmak için, beklenen söyleye daha yakın olan metin verilerini kullanın. Söylenişler tek bir metin dosyası olarak sağlanmalıdır. Her şey tek bir zip dosyası olarak paketlenebilir ve <a href="https://speech.microsoft.com/customspeech" target="_blank">özel konuşma tanıma portalına <span class="docon docon-navigate-external x-hidden-focus"></span> </a>yüklenebilir.
+
+İlgili metinle eğitim genellikle birkaç dakika içinde tamamlanır.
 
 ### <a name="guidelines-to-create-a-sentences-file"></a>Cümleler dosyası oluşturma yönergeleri
 

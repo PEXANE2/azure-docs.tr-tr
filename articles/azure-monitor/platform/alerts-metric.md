@@ -4,14 +4,14 @@ description: Azure portal veya CLı kullanarak ölçüm uyarı kuralları oluşt
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 08/11/2020
+ms.date: 01/11/2021
 ms.subservice: alerts
-ms.openlocfilehash: 8b1015573e4c01f01d82c7c152b66db80bef0aee
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 0518d3a2e1b67b33b9cb6bceb9754df302710f70
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342170"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071043"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Azure İzleyici'yi kullanarak ölçüm uyarıları oluşturma, görüntüleme ve yönetme
 
@@ -28,7 +28,7 @@ Aşağıdaki yordamda Azure portal bir ölçüm uyarısı kuralının nasıl olu
 2. **Uyarılar** ' a ve ardından **+ Yeni uyarı kuralı**' na tıklayın.
 
     > [!TIP]
-    > Çoğu kaynak dikey penceresinde, **izleme**altındaki kaynak menüsünde **da uyarılar bulunur** . Ayrıca, burada da uyarı oluşturabilirsiniz.
+    > Çoğu kaynak dikey penceresinde, **izleme** altındaki kaynak menüsünde **da uyarılar bulunur** . Ayrıca, burada da uyarı oluşturabilirsiniz.
 
 3. **Hedef Seç**' e tıklayın, yüklenen bağlam bölmesinde, uyarmak istediğiniz hedef kaynağı seçin. İzlemek istediğiniz kaynağı bulmak için **abonelik** ve **kaynak türü** açılan listelerini kullanın. Kaynağı bulmak için arama çubuğunu da kullanabilirsiniz.
 
@@ -41,23 +41,23 @@ Aşağıdaki yordamda Azure portal bir ölçüm uyarısı kuralının nasıl olu
 7. En son altı saat için ölçüm için bir grafik görürsünüz. Ölçüm için daha uzun geçmişi görmeyi seçmek için **grafik dönemi** açılan listesini kullanın.
 
 8. Ölçümün boyutları varsa, bir Boyutlar tablosu görürsünüz. Her boyut için bir veya daha fazla değer seçin.
-    - Görüntülenen boyut değerleri, son üç gündeki ölçüm verilerini temel alır.
-    - Aradığınız boyut değeri görüntülenmiyorsa, özel bir değer eklemek için "+" düğmesine tıklayın.
-    - Boyutlardan herhangi biri için ** \* öğesini de seçebilirsiniz. * _*Seç \* *_ seçimi dinamik olarak bir boyut için geçerli ve gelecekteki değerlere ölçeklendirecektir.
+    - Görüntülenen boyut değerleri, son gündeki ölçüm verilerini temel alır.
+    - Aradığınız boyut değeri görüntülenmiyorsa, özel bir boyut değeri eklemek için "özel değer Ekle" ye tıklayın.
+    - Boyutların herhangi biri için **geçerli ve gelecekteki tüm değerleri de seçebilirsiniz** . Bu, seçimi dinamik olarak bir boyut için geçerli ve gelecekteki tüm değerlerle ölçeklendirecektir.
 
     Ölçüm uyarısı kuralı, seçilen tüm değer birleşimlerinin koşulunu değerlendirir. [Çok boyutlu ölçümlerde uyarı oluşturma hakkında daha fazla bilgi edinin](alerts-metric-overview.md).
 
-9. _*Threshold** tür, **işleç**ve **toplama türünü**seçin. Bu, ölçüm uyarı kuralının değerlendileceğini belirten mantığı belirleyecek.
-    - **Statik** eşik kullanıyorsanız, bir **eşik değeri**tanımlamaya devam edin. Ölçüm grafiği ne kadar makul bir eşik olabileceğini belirlemenize yardımcı olabilir.
-    - **Dinamik** eşik kullanıyorsanız, **eşik duyarlılığını**tanımlamaya devam edin. Ölçüm grafiği, hesaplanan eşikleri son verilere göre görüntüler. [Dinamik eşikler durum türü ve duyarlılık seçenekleri hakkında daha fazla bilgi edinin](alerts-dynamic-thresholds.md).
+9. **Eşik** türü, **işleç** ve **toplama türünü** seçin. Bu, ölçüm uyarı kuralının değerlendileceğini belirten mantığı belirleyecek.
+    - **Statik** eşik kullanıyorsanız, bir **eşik değeri** tanımlamaya devam edin. Ölçüm grafiği ne kadar makul bir eşik olabileceğini belirlemenize yardımcı olabilir.
+    - **Dinamik** eşik kullanıyorsanız, **eşik duyarlılığını** tanımlamaya devam edin. Ölçüm grafiği, hesaplanan eşikleri son verilere göre görüntüler. [Dinamik eşikler durum türü ve duyarlılık seçenekleri hakkında daha fazla bilgi edinin](alerts-dynamic-thresholds.md).
 
-10. İsteğe bağlı olarak, **toplama ayrıntı** düzeyini ve **değerlendirme sıklığını**ayarlayarak koşulu daraltın. 
+10. İsteğe bağlı olarak, **toplama ayrıntı** düzeyini ve **değerlendirme sıklığını** ayarlayarak koşulu daraltın. 
 
 11. **Bitti**’ye tıklayın.
 
 12. İsteğe bağlı olarak, karmaşık bir uyarı kuralını izlemek istiyorsanız başka ölçütler ekleyin. Şu anda kullanıcılar, dinamik eşik ölçütlerine sahip uyarı kurallarına tek bir ölçüt olarak sahip olabilir.
 
-13. **Uyarı kuralı adı**, **açıklaması**ve **önem derecesi**gibi **uyarı ayrıntılarını** girin.
+13. **Uyarı kuralı adı**, **açıklaması** ve **önem derecesi** gibi **uyarı ayrıntılarını** girin.
 
 14. Var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir eylem grubu ekleyin.
 
@@ -74,7 +74,7 @@ Uyarılar altındaki kuralları Yönet dikey penceresini kullanarak ölçüm uya
 
 2. **Uyarılar** ' a tıklayın ve **kuralları yönetin**
 
-3. **Kuralları Yönet** dikey penceresinde tüm uyarı kurallarınızı abonelikler arasında görüntüleyebilirsiniz. **Kaynak grubu**, **kaynak türü**ve **kaynak**kullanarak kuralları daha fazla filtreleyebilirsiniz. Yalnızca ölçüm uyarılarını görmek istiyorsanız, ölçüm olarak **sinyal türü** ' nü seçin.
+3. **Kuralları Yönet** dikey penceresinde tüm uyarı kurallarınızı abonelikler arasında görüntüleyebilirsiniz. **Kaynak grubu**, **kaynak türü** ve **kaynak** kullanarak kuralları daha fazla filtreleyebilirsiniz. Yalnızca ölçüm uyarılarını görmek istiyorsanız, ölçüm olarak **sinyal türü** ' nü seçin.
 
     > [!TIP]
     > **Kuralları Yönet** dikey penceresinde birden çok uyarı kuralı seçebilir ve bunları etkinleştirebilir/devre dışı bırakabilirsiniz. Bu, belirli hedef kaynakların bakım altına konulma ihtiyacı olduğunda yararlı olabilir

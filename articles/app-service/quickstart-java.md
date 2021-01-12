@@ -11,12 +11,12 @@ ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
 adobe-target: true
-ms.openlocfilehash: b54df350e3f59720a92d7c1e74e28d9fcafddf94
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 32d7dc913ae19353574e91837b4ea009d9f797c6
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802499"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071825"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Hızlı başlangıç: Azure App Service Java uygulaması oluşturma
 
@@ -218,7 +218,7 @@ Gerekirse, App Service yapılandırmasını doğrudan ' de değiştirebilirsiniz
 `<subscriptionId>` | yanlış | Abonelik kimliğini belirtin. | 0.1.0 +
 `<resourceGroup>` | true | Web uygulamanız için Azure Kaynak grubu. | 0.1.0 +
 `<appName>` | true | Web uygulamanızın adı. | 0.1.0 +
-`<region>` | true | Web uygulamanızın barındırılacak bölgeyi belirtir; Varsayılan değer **westeurope**' dir. [Desteklenen bölgelerde](https://github.com/microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md) tüm geçerli bölgeler bölümü. | 0.1.0 +
+`<region>` | true | Web uygulamanızın barındırılacak bölgeyi belirtir; Varsayılan değer **westeurope**' dir. [Desteklenen bölgelerde](https://azure.microsoft.com/global-infrastructure/services/?products=app-service) tüm geçerli bölgeler bölümü. | 0.1.0 +
 `<pricingTier>` | yanlış | Web uygulamanız için fiyatlandırma katmanı. Varsayılan değer, üretim iş yükü için **P1V2** , **B2** ise Java geliştirme ve test için önerilen en düşük gereksinimdir. [Daha fazla bilgi](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0 +
 `<runtime>` | true | Çalışma zamanı ortamı yapılandırması, [burada](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)ayrıntıları görebilirsiniz. | 0.1.0 +
 `<deployment>` | true | Dağıtım yapılandırması, ayrıntıları [burada](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)görebilirsiniz. | 0.1.0 +

@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: damendo
 ms.reviewer: vinigam
 ms.custom: references_regions
-ms.openlocfilehash: 8b1eedc47d2a89b9552c22b3ae770f655f926945
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 6cd1965ab51e7a7bbcc65836383000f0773b9b82
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898785"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070969"
 ---
 # <a name="traffic-analytics"></a>Trafik Analizi
 
@@ -269,7 +269,7 @@ Trafik Analizi tam olarak yapılandırıldıktan sonra kazanmak isteyebileceğin
 - Engellenen trafik istatistikleri.
     - Neden bir ana bilgisayar, büyük bir zararsız trafik birimini engelliyor? Bu davranış daha fazla araştırma ve büyük olasılıkla yapılandırma iyileştirmesi gerektirir
 - Kötü amaçlı izin verilen/engellenen trafik istatistikleri
-  - Bir ana bilgisayar neden kötü amaçlı trafik alıyor ve kötü amaçlı kaynaklardan akışa neden izin veriliyor? Bu davranış daha fazla araştırma ve büyük olasılıkla yapılandırma iyileştirmesi gerektirir.
+  - Bir konak kötü amaçlı trafik alıyor ve neden kötü amaçlı kaynaklardan akışa izin veriliyor? Bu davranış daha fazla araştırma ve büyük olasılıkla yapılandırma iyileştirmesi gerektirir.
 
     Aşağıdaki resimde gösterildiği gibi, **ana bilgisayar** altında **Tümünü göster**' i seçin:
 

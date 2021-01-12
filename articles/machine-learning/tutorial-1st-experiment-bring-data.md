@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: de89f9d87b010dc3710e7d82f4d846de12303905
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: ab497dee35afdd60247d156d0f30bbf003ea1210
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739442"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072165"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>Öğretici: kendi verilerinizi kullanın (4. bölüm)
 
@@ -40,9 +40,6 @@ Bu öğreticide şunları yaptınız:
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Serinin [3. kısmını](tutorial-1st-experiment-sdk-train.md) tamamlama.
-* Python dili ve makine öğrenimi iş akışlarının giriş bilgisi.
-* Visual Studio Code, Jupyıter veya Pydüğme gibi yerel geliştirme ortamı.
-* Python (sürüm 3,5 ile 3,7 arasında).
 
 ## <a name="adjust-the-training-script"></a>Eğitim betiğini ayarlama
 
@@ -130,7 +127,7 @@ Dizininde adlı yeni bir Python denetim betiği oluşturun `05-upload-data.py` `
 >[!TIP] 
 > Verileri karşıya yüklemek için Azure Machine Learning kullanırken, geçici dosyaları karşıya yüklemek için [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) kullanabilirsiniz. Bir ETL aracına ihtiyacınız varsa, verilerinizi Azure 'a almak için [Azure Data Factory](../data-factory/introduction.md) kullanabilirsiniz.
 
-Verileri karşıya yüklemek için Python dosyasını çalıştırın. (Karşıya yükleme, 60 saniyeden kısa bir sürede hızlı olmalıdır.)
+Etkinleştirilen *Tutorial1* Conda ortamı olan pencerede, verileri karşıya yüklemek için Python dosyasını çalıştırın. (Karşıya yükleme, 60 saniyeden kısa bir sürede hızlı olmalıdır.)
 
 ```bash
 python 05-upload-data.py

@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 408ba76c44d1161a4b91ccc037721796c7b94661
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 3ae300ca2746ab9e3478d3fe14fd6fc49c95a93d
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500759"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071740"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure önyükleme tanılaması
 
@@ -21,10 +21,14 @@ ms.locfileid: "96500759"
 ## <a name="boot-diagnostics-storage-account"></a>Önyükleme tanılama depolama hesabı
 Azure portal içinde bir sanal makine oluştururken, önyükleme tanılaması varsayılan olarak etkindir. Önerilen önyükleme tanılama deneyimi, bir Azure VM oluşturma zamanında önemli performans geliştirmeleri elde eden bir yönetilen depolama hesabı kullanmaktır. Bunun nedeni, bir Azure yönetilen depolama hesabının kullanılması, önyükleme tanılama verilerini depolamak için yeni bir kullanıcı depolama hesabı oluşturmak için gereken süreyi ortadan kaldırır.
 
-Alternatif bir önyükleme tanılaması deneyimi, Kullanıcı tarafından yönetilen bir depolama hesabı kullanmaktır. Bir Kullanıcı yeni bir depolama hesabı oluşturabilir ya da var olan bir depolama hesabı kullanabilir. 
-
 > [!IMPORTANT]
 > Önyükleme tanılaması veri Blobları (günlüklerin ve anlık görüntü görüntülerinin bulunduğu) yönetilen bir depolama hesabında depolanır. Müşteriler, diskin sağlanan boyutunda değil, Bloblar tarafından yalnızca kullanılan GiBs üzerinden ücretlendirilecektir. Anlık görüntü ölçümleri yönetilen depolama hesabının faturalandırılması için kullanılacaktır. Yönetilen hesaplar standart LRS veya standart ZRS üzerinde oluşturulduğundan, müşteriler yalnızca tanılama veri Blobları için aylık olarak $0,$ GB üzerinden ücretlendirilir. Bu fiyatlandırma hakkında daha fazla bilgi için bkz. [yönetilen diskler fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks/). Müşteriler bu ücreti VM Kaynak URI 'sine bağlı olarak görür. 
+
+Alternatif bir önyükleme tanılama deneyimi, Kullanıcı tarafından yönetilen bir depolama hesabı kullanmaktır. Bir Kullanıcı yeni bir depolama hesabı oluşturabilir ya da var olan bir depolama hesabı kullanabilir.
+> [!NOTE]
+> Önyükleme tanılamaları ile ilişkili kullanıcı tarafından yönetilen depolama hesapları, depolama hesabının ve ilişkili sanal makinelerin aynı abonelikte bulunmasını gerektirir. 
+
+
 
 ## <a name="boot-diagnostics-view"></a>Önyükleme tanılaması görünümü
 Sanal makine dikey penceresinde bulunan önyükleme tanılama seçeneği Azure portal *destek ve sorun giderme* bölümünün altındadır. Önyükleme tanılaması seçildiğinde, bir ekran görüntüsü ve seri günlüğü bilgileri görüntülenir. Seri günlüğü çekirdek mesajlaşma içerir ve ekran görüntüsü, VM 'Lerin geçerli durumunun bir anlık görüntüsüdür. VM 'nin çalışıyor olması veya Linux 'un, beklenen ekran görüntüsünün nasıl görüneceğini belirler. Windows için, kullanıcılar bir masaüstü arka planı ve Linux için, kullanıcılar bir oturum açma istemi görür.

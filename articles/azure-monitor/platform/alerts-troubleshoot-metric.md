@@ -4,14 +4,14 @@ description: Azure Izleyici ölçüm uyarıları ve olası çözümlerle ilgili 
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 01/03/2021
+ms.date: 01/11/2021
 ms.subservice: alerts
-ms.openlocfilehash: 9a05fe509e032681a0bf5ed989595a25f66d33c6
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: e4e876b58c82605df0c005b225dcf2cdbcda1b34
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857350"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070753"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure İzleyici ölçüm uyarılarındaki sorunları giderme 
 
@@ -91,9 +91,9 @@ Uyarı kuralı oluştururken belirli bir ölçümle ilgili uyarıyı arıyorsan�
 [Bir ölçümün belirli boyut değerlerini](./alerts-metric-overview.md#using-dimensions)uyarmak istiyorsanız ancak bu değerleri bulamazsanız, aşağıdakilere göz önünde bulunur:
 
 1. Boyut değerlerinin **Boyut değerleri** listesinde görünmesi birkaç dakika sürebilir
-1. Görüntülenen boyut değerleri son üç günde toplanan ölçüm verilerini temel alır
-1. Boyut değeri henüz yayınlanmazsa, özel değer eklemek için ' + ' işaretine tıklayın
-1. Bir boyutun tüm olası değerlerini (gelecekteki değerler dahil) uyarmak isterseniz, ' Seç * ' onay kutusunu işaretleyin
+1. Görüntülenen boyut değerleri, son gün içinde toplanan ölçüm verilerine dayalıdır
+1. Boyut değeri henüz yayınlanmazsa veya gösterilmemişse, özel bir boyut değeri eklemek için ' özel değer Ekle ' seçeneğini kullanabilirsiniz
+1. Bir boyutun tüm olası değerlerini (gelecekteki değerler dahil) uyarmak isterseniz, ' tüm geçerli ve gelecekteki değerleri Seç ' seçeneğini belirleyin.
 
 ## <a name="metric-alert-rules-still-defined-on-a-deleted-resource"></a>Ölçüm uyarı kuralları silinen bir kaynakta hala tanımlı 
 
@@ -187,7 +187,7 @@ Kaynak Yöneticisi şablonları, REST API, PowerShell veya Azure komut satırı 
 - [Yaygın Azure dağıtım hataları](../../azure-resource-manager/templates/common-deployment-errors.md) listesini gözden geçirin ve ilgili sorun giderme adımlarını izleyin
 - Tüm parametreleri doğru şekilde geçirdiğinizden emin olmak için [ölçüm uyarıları Azure Resource Manager şablon örneklerine](./alerts-metric-create-templates.md) bakın
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>REST API'si
 
 Tüm parametreleri doğru şekilde geçirdiğinizi doğrulamak için [REST API kılavuzunu](/rest/api/monitor/metricalerts/) gözden geçirin
 
@@ -252,7 +252,7 @@ Birden çok koşul içeren bir uyarı kuralında boyutları kullanırken aşağ�
 - Her bir koşul içinde yalnızca boyut başına bir değer seçebilirsiniz.
 - "Tüm geçerli ve gelecekteki değerleri Seç" seçeneğini (Select \* ) kullanamazsınız.
 - Farklı koşullarda yapılandırılan ölçümler aynı boyutu destekledikleri zaman, yapılandırılmış bir boyut değerinin tüm bu ölçümler için (ilgili koşullarda) aynı şekilde ayarlanması gerekir.
-Örnek:
+Örneğin:
     - Bir depolama hesabında tanımlanan ölçüm uyarısı kuralını düşünün ve iki koşulu izler:
         * Toplam **işlem** sayısı > 5
         * Ortalama **SuccessE2ELatency** > 250 MS

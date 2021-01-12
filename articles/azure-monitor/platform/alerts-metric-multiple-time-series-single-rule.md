@@ -4,14 +4,14 @@ description: Birden çok zaman serisi için tek bir uyarı kuralı kullanarak ö
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 11/12/2020
+ms.date: 01/11/2021
 ms.subservice: alerts
-ms.openlocfilehash: 66987a28acc8a2c9ae71d89ff5760fa508e32963
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 47a2fb9240f6826ed862f7a857264c09b79de9bc
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566512"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071094"
 ---
 # <a name="monitor-multiple-time-series-in-a-single-metric-alert-rule"></a>Tek bir ölçüm uyarı kuralında birden çok zaman serisini izleme
 
@@ -21,7 +21,7 @@ Tek bir ölçüm uyarısı kuralı, bir veya daha fazla ölçüm zaman serisini 
 
 Ölçüm zaman serisi, bir süre içinde yakalanan bir dizi ölçümdür (veya "ölçüm değerleri"). 
 
-Örnek:
+Örneğin:
 
 - Bir sanal makinenin CPU kullanımı
 - Bir depolama hesabına gelen baytlar (giriş)
@@ -43,7 +43,7 @@ Böyle bir uyarı kuralına örnek (yalnızca gösterilen ilgili özelliklerle b
 
 
 Bu uyarı kuralı için tek bir ölçüm zaman serisi izlenir:
--   *Kaynak* = ' myVM1 ' (%70) > CPU yüzdesi
+-   *Kaynak*= ' myVM1 ' (%70) > CPU yüzdesi
 
 ![Tek bir zaman serisi üzerinde bir uyarı kuralı](media/alerts-metric-multiple-time-series-single-rule/simple-alert-rule.png)
 
@@ -65,8 +65,8 @@ Böyle bir uyarı kuralına örnek:
 -   Eşik: *70*
 
 Bu uyarı kuralı için iki ölçüm zaman serisi ayrı olarak izlenir:
--   *Kaynak* = ' myVM1 ' (%70) > CPU yüzdesi
--   *Kaynak* = ' myVM2 ' (%70) > CPU yüzdesi
+-   *Kaynak*= ' myVM1 ' (%70) > CPU yüzdesi
+-   *Kaynak*= ' myVM2 ' (%70) > CPU yüzdesi
 
 ![Çoklu kaynak uyarı kuralı](media/alerts-metric-multiple-time-series-single-rule/multi-resource-alert-rule.png)
  
@@ -87,7 +87,7 @@ Bu özellik için desteklenen çoklu kaynak uyarı kuralları ve kaynak türleri
 
 Tek bir ölçüm uyarı kuralı, uyarı kuralı başına en fazla beş koşul da izleyebilir. 
 
-Örnek:
+Örneğin:
 
 - Hedef kaynak: *myVM1*
 - Condition1
@@ -101,8 +101,8 @@ Tek bir ölçüm uyarı kuralı, uyarı kuralı başına en fazla beş koşul da
 
 Bu uyarı kuralı için iki ölçüm zaman serisi izleniyor:
 
-- *Kaynak* = ' myVM1 ' (%70) > CPU yüzdesi
-- Toplam *kaynak* = ' myVM1 ' > 20 MB
+- *Kaynak*= ' myVM1 ' (%70) > CPU yüzdesi
+- Toplam *kaynak*= ' myVM1 ' > 20 MB
 
 ![Çok durumlu bir uyarı kuralı](media/alerts-metric-multiple-time-series-single-rule/multi-condition-alert-rule.png)
  
@@ -129,9 +129,9 @@ Birden çok boyutu izleyen bir uyarı kuralı örneği şunlardır:
 
 Bu uyarı kuralı için üç ölçüm zaman serisi izleniyor:
 
-- *Resource* = ' myStorage1 ' ve *API Name* = ' GetBlob ' adlı işlemler > 70
-- *Resource* = ' myStorage1 ' ve *API Name* = ' DeleteBlob ' olan işlemler > 70
-- *Resource* = ' myStorage1 ' ve *API Name* = ' putpage ' adlı işlemler > 70
+- *Resource*= ' myStorage1 ' ve *API Name*= ' GetBlob ' adlı işlemler > 70
+- *Resource*= ' myStorage1 ' ve *API Name*= ' DeleteBlob ' olan işlemler > 70
+- *Resource*= ' myStorage1 ' ve *API Name*= ' putpage ' adlı işlemler > 70
 
 ![Bir boyuttan değerleri olan çok boyutlu bir uyarı kuralı](media/alerts-metric-multiple-time-series-single-rule/multi-dimension-1.png)
 
@@ -149,12 +149,12 @@ Bu tür bir uyarı kuralına örnek:
 
 Bu uyarı kuralı için, altı ölçüm zaman serisi ayrı olarak izlenir:
 
-- *Resource* = ' myStorage1 ' ve *API Name* = ' GetBlob ' ve *Authentication* = ' SAS ' olan işlemler > 70
-- *Resource* = ' myStorage1 ' ve *API Name* = ' GetBlob ' ve *Authentication* = ' accountkey ' olan işlemler > 70
-- *Resource* = ' myStorage1 ' ve *API Name* = ' DeleteBlob ' ve *Authentication* = ' SAS ' olan işlemler 70 >
-- *Resource* = ' myStorage1 ' ve *API Name* = ' DeleteBlob ' ve *Authentication* = ' accountkey ' olan işlemler > 70
-- *Resource* = ' myStorage1 ' ve *API Name* = ' Putpage ' ve *Authentication* = ' SAS ' olan işlemler 70 >
-- *Resource* = ' myStorage1 ' ve *API Name* = ' Putpage ' ve *Authentication* = ' accountkey ' olan işlemler 70 >
+- *Resource*= ' myStorage1 ' ve *API Name*= ' GetBlob ' ve *Authentication*= ' SAS ' olan işlemler > 70
+- *Resource*= ' myStorage1 ' ve *API Name*= ' GetBlob ' ve *Authentication*= ' accountkey ' olan işlemler > 70
+- *Resource*= ' myStorage1 ' ve *API Name*= ' DeleteBlob ' ve *Authentication*= ' SAS ' olan işlemler 70 >
+- *Resource*= ' myStorage1 ' ve *API Name*= ' DeleteBlob ' ve *Authentication*= ' accountkey ' olan işlemler > 70
+- *Resource*= ' myStorage1 ' ve *API Name*= ' Putpage ' ve *Authentication*= ' SAS ' olan işlemler 70 >
+- *Resource*= ' myStorage1 ' ve *API Name*= ' Putpage ' ve *Authentication*= ' accountkey ' olan işlemler 70 >
 
 ![Birden çok boyuttan değerleri olan çok boyutlu bir uyarı kuralı](media/alerts-metric-multiple-time-series-single-rule/multi-dimension-2.png)
  
@@ -162,7 +162,7 @@ Bu uyarı kuralı için, altı ölçüm zaman serisi ayrı olarak izlenir:
 
 1.  **Tüm geçerli ve gelecekteki boyutları seçme** – gelecekteki değerler de dahil olmak üzere bir boyutun tüm olası değerlerini izlemeyi tercih edebilirsiniz. Bu tür bir uyarı kuralı, her bir boyut değeri eklendiğinde veya kaldırıldığında uyarı kuralını değiştirmenize gerek kalmadan, boyutun tüm değerlerini izlemek için otomatik olarak ölçeklendirilir.
 2.  **Boyutları hariç tutma** : bir boyut değeri için ' ≠ ' (hariç tutma) işlecini seçmek, gelecekteki değerler dahil olmak üzere bu boyutun diğer tüm değerlerini seçmeye eşdeğerdir.
-3.  **Yeni ve özel boyutlar** : Azure Portal görüntülenen boyut değerleri, son üç gün içinde toplanan ölçüm verilerine dayalıdır. Aradığınız boyut değeri henüz yayılmazsa, özel bir boyut değeri ekleyebilirsiniz.
+3.  **Yeni ve özel boyutlar** : Azure Portal görüntülenen boyut değerleri, son gün içinde toplanan ölçüm verilerini temel alır. Aradığınız boyut değeri henüz yayılmazsa, özel bir boyut değeri ekleyebilirsiniz.
 4. **Bir ön ek Ile eşleşen boyutlar** -' ile başlar ' işlecini seçerek ve özel bir ön ek girerek belirli bir Düzenle başlayan tüm boyut değerlerini izlemeyi tercih edebilirsiniz.
 
 ![Gelişmiş çok boyutlu Özellikler](media/alerts-metric-multiple-time-series-single-rule/advanced-features.png)

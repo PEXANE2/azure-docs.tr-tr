@@ -6,17 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 10/27/2020
 ms.custom: automl
-ms.openlocfilehash: 2d759a8ed58d5b323f9894a5127c222ce1f75c52
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: ee9267637c5e3250bfcd543ca46c39d513725819
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97345985"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072233"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Otomatik makine öğrenimi (Otomatikml) nedir?
 
@@ -173,7 +172,7 @@ Yerel ve uzak kullanımını seçerken bu uzmanları ve dezavantajları göz ön
 
  Aşağıdaki tabloda gösterildiği gibi uzak işlem kullandığınızda daha fazla özellik mevcuttur. 
 
-| Özellik                                                    | Uzak | Yerel | 
+| Öne çıkan özelliği                                                    | Uzak | Yerel | 
 |------------------------------------------------------------|--------|-------|
 | Veri akışı (büyük veri desteği, 100 GB 'a kadar)          | ✓      |       | 
 | DNN-BERT tabanlı metin korleştirme ve eğitim             | ✓      |       |
@@ -224,7 +223,7 @@ Aşağıdaki ayarlar otomatik ML denemenizi yapılandırmanıza olanak tanır.
 |**Tahmin ufku, hedef lags & sıralı pencereyi yapılandırma**|✓|✓
 |**Çıkış ölçütünü ayarla** |✓|✓ 
 |**Eşzamanlı yinelemeleri ayarla**| ✓|✓
-|**Bırakma sütunları**| ✓|✓
+|**Sütunları bırakma**| ✓|✓
 |**Blok algoritmaları**|✓|✓
 |**Çapraz doğrulama** |✓|✓
 |**Azure Databricks kümelerinde eğitimi destekler**| ✓|

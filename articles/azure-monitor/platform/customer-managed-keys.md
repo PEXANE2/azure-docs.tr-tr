@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 11/18/2020
-ms.openlocfilehash: 6037b372f73bcf3554120e305f4b3031b26e97d4
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.date: 01/10/2021
+ms.openlocfilehash: 66a3276863b05cb2fe0dd80a2195f7fd2af1443c
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831661"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071944"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure İzleyici müşteri tarafından yönetilen anahtar 
 
@@ -36,7 +36,7 @@ Log Analytics adanmış kümeler 1000 GB/gün üzerinden başlayan bir kapasite 
 
 ## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Customer-Managed anahtarı Azure Izleyici 'de nasıl kullanılır
 
-Azure Izleyici, Azure Key Vault erişim sağlamak için sistem tarafından atanan yönetilen kimlik kullanır. Log Analytics kümesinin kimliği, küme düzeyinde desteklenir ve birden çok çalışma alanı üzerinde Customer-Managed anahtara izin vererek yeni bir Log Analytics *küme* kaynağı, Key Vault ve Log Analytics çalışma alanlarınız arasında ara kimlik bağlantısı olarak gerçekleştirilir. Log Analytics küme depolaması, \' Azure Active Directory aracılığıyla Azure Key Vault kimlik doğrulaması yapmak Için *küme* kaynağıyla ilişkili yönetilen kimliği kullanır. 
+Azure Izleyici Azure Key Vault erişim sağlamak için yönetilen kimlik kullanır. Log Analytics kümesinin kimliği, küme düzeyinde desteklenir. Birden çok çalışma alanı üzerinde Customer-Managed anahtar korumasına izin vermek için, yeni bir Log Analytics *küme* kaynağı Key Vault ve Log Analytics çalışma alanlarınız arasında ara kimlik bağlantısı olarak gerçekleştirilir. Kümenin depolaması, \' Azure Active Directory üzerinden Azure Key Vault kimlik doğrulaması yapmak Için *küme* kaynağıyla ilişkili yönetilen kimliği kullanır. 
 
 Müşteri tarafından yönetilen anahtar yapılandırmasından sonra adanmış kümenize bağlı olan çalışma alanlarına yeni alınan veriler anahtarınızla şifrelenir. Her zaman çalışma alanlarının kümeden bağlantısını kaldırabilirsiniz. Yeni veriler daha sonra, yeni ve eski verilerinizi sorunsuz bir şekilde sorgulayabilmeniz için Log Analytics depolama ve Microsoft anahtarıyla şifrelenmiş olarak alınır.
 
@@ -81,7 +81,7 @@ Customer-Managed anahtar yapılandırması şu anda Azure portal desteklenmez ve
 
 Yapılandırma adımlarının bazıları hızla tamamlanamadığından zaman uyumsuz olarak çalışır. `status`In yanıtı, şu hata kodu ile birlikte ' InProgress ', ' Updating ', ' siliyor ', ' SUCCEEDED veya ' Failed ' gibi bir durumda olabilir.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
 Yok
 
@@ -125,6 +125,11 @@ Bu ayarlar, CLı ve PowerShell aracılığıyla Key Vault güncelleştirilebilen
 
 ## <a name="create-cluster"></a>Küme oluşturma
 
+> [! BILGI] kümeler iki [yönetilen kimlik türünü](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)destekler. Kimlik türü girdiğinizde, kümeyle sistem tarafından atanan yönetilen kimlik oluşturulur `SystemAssigned` ve bu, daha sonra Key Vault erişim izni vermek için kullanılabilir. Oluşturma sırasında müşteri tarafından yönetilen anahtar için yapılandırılmış bir küme oluşturmak isterseniz, kümeyi, Key Vault verilen kullanıcı tarafından atanan yönetilen kimlik ile oluşturun--kümeyi `UserAssigned` kimlik türüyle güncelleştirin, kimliğin ' deki kaynak kimliği ve ' deki `UserAssignedIdentities` temel ayrıntılarınızı sağlayın `keyVaultProperties` .
+
+> [!IMPORTANT]
+> Şu anda Key Vault Private-Link (vNet) içinde yer alıyorsa, Kullanıcı tarafından yönetilen anahtarı Kullanıcı tarafından atanan yönetilen kimlikle tanımladınız. Bu sınırlama, sistem tarafından atanan yönetilen kimliğe uygulanmaz.
+
 [Adanmış kümeler](../log-query/logs-dedicated-clusters.md#creating-a-cluster)makalesinde gösterilen yordamı izleyin. 
 
 ## <a name="grant-key-vault-permissions"></a>Key Vault izinleri verme
@@ -132,7 +137,7 @@ Bu ayarlar, CLı ve PowerShell aracılığıyla Key Vault güncelleştirilebilen
 Kümenize izin vermek için Key Vault erişim ilkesi oluşturun. Bu izinler, Azure Izleyici depolaması 'nın temelini oluşturmak tarafından kullanılır. Key Vault Azure portal açın ve bu ayarlarla bir ilke oluşturmak için *"erişim ilkeleri"* ve *"+ Erişim İlkesi Ekle"* seçeneğine tıklayın:
 
 - Anahtar izinleri: *' Al '*, *' Wrap Key '* ve *' Wrap Key '* seçeneğini belirleyin.
-- Sorumlu seçin: küme adını veya asıl kimliği girin.
+- Asıl öğe seçin: kümede kullanılan kimlik türüne (sistem veya Kullanıcı tarafından atanan yönetilen kimlik) bağlı olarak, sistem tarafından atanan yönetilen kimlik veya Kullanıcı tarafından yönetilen kimlik adı için küme adı ya da küme asıl KIMLIĞI girin.
 
 ![Key Vault izinleri verme](media/customer-managed-keys/grant-key-vault-permissions-8bit.png)
 
@@ -152,7 +157,7 @@ Anahtar tanımlayıcı ayrıntıları ile kümedeki KeyVaultProperties 'i günce
 
 İşlem zaman uyumsuzdur ve tamamlanması biraz zaman alabilir.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
 Yok
 
@@ -237,11 +242,15 @@ Ve dahil olmak üzere bu işlemi gerçekleştirmek için hem çalışma alanın�
 
 ## <a name="key-revocation"></a>Anahtar iptali
 
-Anahtarınızı devre dışı bırakarak veya Key Vault kümenin erişim ilkesini silerek verilere erişimi iptal edebilirsiniz. Log Analytics küme depolaması, her zaman bir saat veya daha kısa bir süre içinde anahtar izinlerinde yapılan değişikliklere uyar ve depolama alanı kullanılamaz hale gelir. Kümenizle bağlantılı çalışma alanlarına alınan yeni veriler bırakılır ve geri alınamaz, verilere erişilemez ve bu çalışma alanlarına yönelik sorgular başarısız olur. Önceden alınan veriler, kümeniz ve çalışma alanlarınız silinmediği sürece depolamada kalır. Erişilemeyen veriler veri bekletme ilkesine tabidir ve bekletmeye ulaşıldığında temizlenir. 
+Anahtarınızı devre dışı bırakarak veya Key Vault kümenin erişim ilkesini silerek verilere erişimi iptal edebilirsiniz. 
 
-Son 14 gün içinde alınan veriler, verimli sorgu altyapısı işlemi için etkin-önbellek (SSD-desteklenen) olarak da tutulur. Bu, anahtar iptali işleminde silinir ve erişilmez hale gelir.
+> [!IMPORTANT]
+> - Kümeniz Kullanıcı tarafından atanan yönetilen kimlik ile ayarlandıysa, `UserAssignedIdentities` ile ayarı `None` kümeyi askıya alır ve verilerinize erişimi önler, ancak iptali iptal edin ve destek isteği açılmadan kümeyi etkinleştirin. Bu sınırlama, sistem tarafından atanan yönetilen kimliğe uygulanmaz.
+> - Önerilen anahtar iptali eylemi, Key Vault anahtarınızı devre dışı bırakarak yapılır.
 
-Depolama, şifreleme anahtarını sarmalamadan ve erişildikten sonra 30 dakika içinde veri alımı ve sorgu sürdürülmeye çalışmak için Key Vault düzenli olarak yoklar.
+Küme depolama, her zaman bir saat veya daha kısa bir süre içinde anahtar izinlerinde yapılacak değişikliklere göre değişir ve depolama alanı kullanılamaz hale gelir. Kümenizle bağlantılı çalışma alanlarına alınan yeni veriler bırakılır ve geri alınamaz, verilerin erişilemez hale gelir ve bu çalışma alanlarındaki sorgular başarısız olur. Önceden alınan veriler, kümeniz ve çalışma alanlarınız silinmediği sürece depolamada kalır. Erişilemeyen veriler veri bekletme ilkesine tabidir ve bekletmeye ulaşıldığında temizlenir. Son 14 gün içinde alınan veriler, verimli sorgu altyapısı işlemi için etkin-önbellek (SSD-desteklenen) olarak da tutulur. Bu, anahtar iptali işleminde silinir ve erişilmez hale gelir.
+
+Küme depolama, şifreleme anahtarını sarmalamadan ve erişildikten sonra 30 dakika içinde veri alımı ve sorgu sürdürülmeye çalışmak için Key Vault düzenli olarak yoklar.
 
 ## <a name="key-rotation"></a>Anahtar döndürme
 
@@ -271,7 +280,7 @@ Kendi depolama alanınızı (BYOS) getirip çalışma alanınıza bağladığın
 
 Çalışma alanınıza *sorgu* için bir depolama hesabı bağlayın-- *kayıtlı aramalar* sorguları depolama hesabınıza kaydedilir. 
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
 Yok
 
@@ -315,7 +324,7 @@ Yapılandırmadan sonra, yeni *Kaydedilmiş arama* sorgusu, depolama alanına ka
 
 Çalışma alanınıza *Uyarılar* için bir depolama hesabı bağlayın-- *log-Alerts* sorguları depolama hesabınıza kaydedilir. 
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
 Yok
 
@@ -404,6 +413,37 @@ Customer-Managed anahtar adanmış kümede verilmiştir ve bu işlemlere [adanm�
   - Bir küme oluşturur ve "<Region-adı> kümeler için çift şifrelemeyi desteklemez.", kümeyi yine de çift şifreleme olmadan oluşturabilirsiniz. `"properties": {"isDoubleEncryptionEnabled": false}`Rest istek gövdesine özellik ekleyin.
   - Küme oluşturulduktan sonra çift şifreleme ayarı değiştirilemez.
 
+  - Kümeniz Kullanıcı tarafından atanan yönetilen kimlik ile ayarlandıysa, `UserAssignedIdentities` ile ayarı `None` kümeyi askıya alır ve verilerinize erişimi önler, ancak iptali iptal edin ve destek isteği açılmadan kümeyi etkinleştirin. Bu sınırlama, sistem tarafından atanan yönetilen kimliğe uygulandı.
+
+  - Şu anda Key Vault Private-Link (vNet) içinde yer alıyorsa, Kullanıcı tarafından yönetilen anahtarı Kullanıcı tarafından atanan yönetilen kimlikle tanımladınız. Bu sınırlama, sistem tarafından atanan yönetilen kimliğe uygulanmaz.
+
+## <a name="troubleshooting"></a>Sorun giderme
+
+- Key Vault kullanılabilirliği ile davranış
+  - Normal işlemde--depolama, kısa süreler için AEK önbelleğe alınır ve düzenli aralıklarla sarmalaması için Key Vault geri gider.
+    
+  - Geçici bağlantı hataları--depolama, anahtarların kısa bir süre boyunca önbellekte kalmasına izin vererek geçici hataları (zaman aşımları, bağlantı hataları, DNS sorunları) işler ve bu da tüm küçük sinyalleri 'leri kullanılabilirliğinden fazla. Sorgu ve alma özellikleri kesinti olmadan devam eder.
+    
+  - Canlı site--yaklaşık 30 dakikalık bir işlem, depolama hesabının kullanılamaz hale gelmesine neden olur. Sorgu özelliği kullanılamaz ve veri kaybını önlemek için Microsoft anahtar kullanarak birkaç saat boyunca önbelleğe alınır. Key Vault erişimi geri yüklendiğinde, sorgu kullanılabilir hale gelir ve geçici önbelleğe alınmış veriler veri deposuna alınır ve Customer-Managed anahtarıyla şifrelenir.
+
+  - Key Vault erişim oranı--Azure Izleyici depolaması 'nın sarmalama ve sarmalama işlemleri için Key Vault, 6 ila 60 saniye arasındadır.
+
+- Bir küme oluşturur ve KeyVaultProperties 'i hemen belirtirseniz, sistem kimliği kümeye atanana kadar erişim ilkesi tanımlanmadığından işlem başarısız olabilir.
+
+- Mevcut kümeyi KeyVaultProperties ile güncelleştirirseniz ve ' Get ' anahtar erişimi Ilkesi Key Vault eksikse, işlem başarısız olur.
+
+- Bir küme oluştururken çakışma hatası alırsanız, kümenizi son 14 gün içinde silmiş ve bu da geçici silme döneminde olabilir. Küme adı, geçici silme döneminde ayrılmış kalır ve bu adla yeni bir küme oluşturamazsınız. Bu ad, küme kalıcı olarak silindiğinde geçici silme süresinden sonra serbest bırakılır.
+
+- Bir işlem devam ederken kümenizi güncelleştirirseniz işlem başarısız olur.
+
+- Kümenizin dağıtımı başarısız olursa, Azure Key Vault, kümenizin ve bağlı Log Analytics çalışma alanlarınızın aynı bölgede olduğunu doğrulayın. Farklı aboneliklerde olabilir.
+
+- Anahtar sürümünüzü Key Vault güncelleştirir ve kümedeki yeni anahtar tanımlayıcı ayrıntılarını güncelleştirmemeniz durumunda, Log Analytics kümesi önceki anahtarınızı kullanmaya devam eder ve verileriniz erişilemez hale gelir. Veri alımı ve veri sorgulama yeteneği sağlamak için kümedeki yeni anahtar tanımlayıcı ayrıntılarını güncelleştirin.
+
+- Bazı işlemler uzun sürer ve işlemin tamamlanması biraz zaman alabilir; bunlar küme oluşturma, küme anahtarı güncelleştirme ve küme silme işlemlerini gerçekleştirebilir. İşlem durumunu iki şekilde denetleyebilirsiniz:
+  1. REST kullanırken, Azure-AsyncOperation URL değerini yanıttan kopyalayın ve [zaman uyumsuz işlemler durum denetimini](#asynchronous-operations-and-status-check)izleyin.
+  2. Kümeye veya çalışma alanına GET isteği gönderin ve yanıtı gözlemleyin. Örneğin, bağlantısız çalışma alanının *Özellikler* bölümünde *kümeresourceıd* yok.
+
 - Hata iletileri
   
   **Küme oluşturma**
@@ -441,34 +481,6 @@ Customer-Managed anahtar adanmış kümede verilmiştir ve bu işlemlere [adanm�
   **Çalışma alanına bağlantıyı kaldır**
   -  404--çalışma alanı bulunamadı. Belirttiğiniz çalışma alanı yok veya silinmiş.
   -  409--işlemdeki çalışma alanı bağlantısı veya bağlantıyı kaldırma işlemi.
-
-## <a name="troubleshooting"></a>Sorun giderme
-
-- Key Vault kullanılabilirliği ile davranış
-  - Normal işlemde--depolama, kısa süreler için AEK önbelleğe alınır ve düzenli aralıklarla sarmalaması için Key Vault geri gider.
-    
-  - Geçici bağlantı hataları--depolama, anahtarların kısa bir süre boyunca önbellekte kalmasına izin vererek geçici hataları (zaman aşımları, bağlantı hataları, DNS sorunları) işler ve bu da tüm küçük sinyalleri 'leri kullanılabilirliğinden fazla. Sorgu ve alma özellikleri kesinti olmadan devam eder.
-    
-  - Canlı site--yaklaşık 30 dakikalık bir işlem, depolama hesabının kullanılamaz hale gelmesine neden olur. Sorgu özelliği kullanılamaz ve veri kaybını önlemek için Microsoft anahtar kullanarak birkaç saat boyunca önbelleğe alınır. Key Vault erişimi geri yüklendiğinde, sorgu kullanılabilir hale gelir ve geçici önbelleğe alınmış veriler veri deposuna alınır ve Customer-Managed anahtarıyla şifrelenir.
-
-  - Key Vault erişim oranı--Azure Izleyici depolaması 'nın sarmalama ve sarmalama işlemleri için Key Vault, 6 ila 60 saniye arasındadır.
-
-- Bir küme oluşturur ve KeyVaultProperties 'i hemen belirtirseniz, sistem kimliği kümeye atanana kadar erişim ilkesi tanımlanmadığından işlem başarısız olabilir.
-
-- Mevcut kümeyi KeyVaultProperties ile güncelleştirirseniz ve ' Get ' anahtar erişimi Ilkesi Key Vault eksikse, işlem başarısız olur.
-
-- Bir küme oluştururken çakışma hatası alırsanız, kümenizi son 14 gün içinde silmiş ve bu da geçici silme döneminde olabilir. Küme adı, geçici silme döneminde ayrılmış kalır ve bu adla yeni bir küme oluşturamazsınız. Bu ad, küme kalıcı olarak silindiğinde geçici silme süresinden sonra serbest bırakılır.
-
-- Bir işlem devam ederken kümenizi güncelleştirirseniz işlem başarısız olur.
-
-- Kümenizin dağıtımı başarısız olursa, Azure Key Vault, kümenizin ve bağlı Log Analytics çalışma alanlarınızın aynı bölgede olduğunu doğrulayın. Farklı aboneliklerde olabilir.
-
-- Anahtar sürümünüzü Key Vault güncelleştirir ve kümedeki yeni anahtar tanımlayıcı ayrıntılarını güncelleştirmemeniz durumunda, Log Analytics kümesi önceki anahtarınızı kullanmaya devam eder ve verileriniz erişilemez hale gelir. Veri alımı ve veri sorgulama yeteneği sağlamak için kümedeki yeni anahtar tanımlayıcı ayrıntılarını güncelleştirin.
-
-- Bazı işlemler uzun sürer ve işlemin tamamlanması biraz zaman alabilir; bunlar küme oluşturma, küme anahtarı güncelleştirme ve küme silme işlemlerini gerçekleştirebilir. İşlem durumunu iki şekilde denetleyebilirsiniz:
-  1. REST kullanırken, Azure-AsyncOperation URL değerini yanıttan kopyalayın ve [zaman uyumsuz işlemler durum denetimini](#asynchronous-operations-and-status-check)izleyin.
-  2. Kümeye veya çalışma alanına GET isteği gönderin ve yanıtı gözlemleyin. Örneğin, bağlantısız çalışma alanının *Özellikler* bölümünde *kümeresourceıd* yok.
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Log Analytics adanmış küme faturalaması](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) hakkında bilgi edinin

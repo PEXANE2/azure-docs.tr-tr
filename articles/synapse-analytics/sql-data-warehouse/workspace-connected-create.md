@@ -10,18 +10,18 @@ ms.subservice: sql-dw
 ms.date: 11/25/2020
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: a1fbc6eede6c82020b765185602c672c1162fdf8
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 769ca4cf0ecbdba5fd80d977eb69c8a4f58df55f
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548197"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071196"
 ---
 # <a name="enabling-synapse-workspace-features-for-a-dedicated-sql-pool-formerly-sql-dw"></a>Adanmış bir SQL havuzu için SYNAPSE çalışma alanı özelliklerini etkinleştirme (eski adıyla SQL DW)
 
 Tüm SQL veri ambarı kullanıcıları artık SYNAPSE Studio ve çalışma alanı aracılığıyla mevcut bir adanmış SQL havuzuna (eski adıyla SQL DW) erişebilir ve bunları kullanabilir. Kullanıcılar Otomasyon, bağlantı veya araç araçlarını etkilemeden SYNAPSE Studio ve çalışma alanını kullanabilir. Bu makalede mevcut bir Azure SYNAPSE Analytics kullanıcısının, var olan ayrılmış bir SQL Havuzu (eski adıyla SQL DW) için SYNAPSE çalışma alanı özelliklerini nasıl etkinleştirebileceği açıklanmaktadır. Kullanıcı, artık SYNAPSE çalışma alanı ve Studio aracılığıyla kullanılabilen yeni özellik zengin özelliklerinden yararlanarak mevcut analiz çözümünü genişletebilir.   
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Veri Ambarınızda SYNAPSE çalışma alanı özelliklerini etkinleştirmeden önce, aşağıdakileri kullandığınızdan emin olmalısınız
 - SQL mantıksal sunucusunda barındırılan SQL kaynaklarını oluşturma ve yönetme hakları.
 - Azure SYNAPSE kaynakları oluşturma hakkı.
@@ -57,6 +57,9 @@ Mevcut adanmış SQL Havuzu (eski adıyla SQL DW) örneklerine SYNAPSE Studio ar
 4. Mantıksal sunucuda barındırılan adanmış SQL Havuzu (eski adıyla SQL DW) örneklerinden birini seçin. Genel Bakış sayfasında, **SYNAPSE Studio 'Yu Başlat** ' ı seçin veya [SYNAPSE Studio 'da oturum açın](https://web.azuresynapse.net) ve çalışma alanınızda oturum açın.
 
 5. **Veri merkezini açın ve veri** Ambarınızı sorgulayabilir ve sorgulayabilmeniz için nesne GEZGININDE adanmış SQL havuzunu genişletin.
+
+    > [!NOTE] 
+    > Bağlı bir çalışma alanı dilediğiniz zaman silinebilir. Çalışma alanının silinmesi, bağlı adanmış SQL havuzunu (eski adıyla SQL DW) silmez. Çalışma alanı özelliği, silme işlemi tamamlandığında adanmış SQL havuzunda (eski adıyla SQL DW) yeniden etkinleştirilebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [SYNAPSE Workspace ve Studio](../get-started.md)ile çalışmaya başlama.

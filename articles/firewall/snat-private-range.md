@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 01/11/2021
 ms.author: victorh
-ms.openlocfilehash: c5613dda7adbbc47f989bc2a772777e716620b3c
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 0df91680dadbc4ac19299a4df48a585a11f044e8
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97348042"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072250"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>Azure Güvenlik Duvarı SNAT özel IP adresi aralıkları
 
@@ -25,6 +25,9 @@ Kuruluşunuz özel ağlar için genel bir IP adresi aralığı kullanıyorsa, Az
 - Azure Güvenlik duvarını hedef IP adresinden bağımsız olarak **hiçbir şekilde hiçbir şekilde hiçbir şekilde hiçbir** şekilde SNAT olarak yapılandırmak için, özel IP adresi aralığınız olarak **0.0.0.0/0** kullanın Bu yapılandırmayla, Azure Güvenlik Duvarı trafiği hiçbir şekilde doğrudan Internet 'e yönlendirmez. 
 
 - Güvenlik duvarını, hedef adresten bağımsız olarak **her zaman** SNAT olarak yapılandırmak için, özel IP adresi aralığınızdan **255.255.255.255/32** kullanın.
+
+> [!IMPORTANT]
+> Belirttiğiniz özel adres aralığı yalnızca ağ kuralları için geçerlidir. Şu anda uygulama kuralları her zaman SNAT.
 
 > [!IMPORTANT]
 > Kendi özel IP adresi aralıklarını belirtmek ve varsayılan ıANA RFC 1918 adres aralıklarını korumak istiyorsanız, özel listenizin ıANA RFC 1918 aralığını hala içerdiğinden emin olun. 

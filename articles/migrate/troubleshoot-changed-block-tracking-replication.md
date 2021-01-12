@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: e19c5064dd69538dfc025b0d244baf4fa74706b2
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 33e2bf641b75a5dd360498478f1ea70c7614fb38
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753544"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071383"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Aracısız VMware VM geçişinde çoğaltma sorunlarını giderme
 
@@ -297,6 +297,24 @@ Bu, anlık görüntü tarafından belirtilen disk boyutunun sıfır olduğu bili
 ### <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>Hata Iletisi: bir iç hata oluştu. [Bellek ayırma başarısız oldu. Bellek yetersiz.]
 
 Bu, NFC ana bilgisayar arabelleğinin belleği tükendiğinde gerçekleşir. Bu sorunu çözmek için VM 'yi (COMPUTE vMotion), ücretsiz kaynakları olan farklı bir konağa taşımanız gerekir.
+
+## <a name="replication-cycle-failed"></a>Çoğaltma çevrimi başarısız oldu
+
+**Hata kimliği:** 181008
+
+**Hata iletisi:** VM: ' VMName '. Hata: Snapshot ID: ' Snapshot TID ' olan anlık görüntü çoğaltması için disksnapshots bulunamadı.
+
+**Olası nedenler:**
+
+Olası nedenler şunlardır:
+1. Bir veya daha fazla dahil edilen diskin yolu, depolama VMotion nedeniyle değişti.
+2. Dahil edilen bir veya daha fazla disk artık VM 'ye bağlı değil.
+      
+**Önerilen**
+
+Aşağıdaki öneriler verilmiştir
+1. Dahil edilen diskleri, Depolama vMotion kullanarak özgün yola geri yükleyin ve ardından Depolama vMotion 'ı devre dışı bırakın.
+2. Depolama VMotion 'ı devre dışı bırakın, etkinleştirilirse sanal makinede çoğaltmayı durdurun ve sanal makineyi yeniden çoğaltın. Sorun devam ederse, destek ekibine başvurun.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 971bac8a0b0951d4e07e139aea6c465a9159b8db
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 43a483f49a9e9004a4f487e82195198f2600a919
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96570969"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071162"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>Öğretici: "Hello World!" Çalıştır Python betiği (Bölüm 2/4)
 
@@ -36,9 +36,6 @@ Bu öğreticide şunları yapacaksınız:
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Zaten bir Azure Machine Learning çalışma alanınız yoksa [Bölüm 1](tutorial-1st-experiment-sdk-setup-local.md) ' in tamamlanması.
-- Python dili ve makine öğrenimi iş akışlarının giriş bilgisi.
-- Visual Studio Code, Jupyıter veya Pydüğme gibi yerel geliştirme ortamı.
-- Python (sürüm 3,5 ile 3,7 arasında).
 
 ## <a name="create-and-run-a-python-script-locally"></a>Yerel olarak bir Python betiği oluşturma ve çalıştırma
 
@@ -64,7 +61,7 @@ tutorial
 
 ### <a name="test-your-script-locally"></a><a name="test"></a>Betiğinizi yerel olarak test etme
 
-Kodunuzu, en sevdiğiniz IDE 'yi veya bir terminali kullanarak yerel olarak çalıştırabilirsiniz. Kodu yerel olarak çalıştırmak kodun etkileşimli hata ayıklamasının avantajına sahiptir.
+Kodunuzu, en sevdiğiniz IDE 'yi veya bir terminali kullanarak yerel olarak çalıştırabilirsiniz. Kodu yerel olarak çalıştırmak kodun etkileşimli hata ayıklamasının avantajına sahiptir.  Etkinleştirilen *Tutorial1* Conda ortamını içeren pencerede, Python dosyasını çalıştırın:
 
 ```bash
 cd <path/to/tutorial>
@@ -93,8 +90,6 @@ run = experiment.submit(config)
 aml_url = run.get_portal_url()
 print(aml_url)
 ```
-
-
 
 ### <a name="understand-the-code"></a>Kodu anlama
 
@@ -148,13 +143,6 @@ Denetim betiğinin nasıl çalıştığına ilişkin bir açıklama aşağıda v
 
 Denetim betiğinizi çalıştırın, bu, `hello.py` [Kurulum öğreticisinde](tutorial-1st-experiment-sdk-setup-local.md)oluşturduğunuz işlem kümesinde sırayla çalışır.
 
-İlk çalıştırmanın tamamlanması 5-10 dakika sürer. Bunun nedeni aşağıdakiler olur:
-
-* Bir Docker görüntüsü bulutta yerleşiktir
-* İşlem kümesi 0 ' dan 1 düğümden yeniden boyutlandırılır
-* Docker görüntüsü, işlem için indirilir. 
-
-Sonraki çalıştırmalar, Docker görüntüsü işlem üzerinde önbelleğe alındığı için çok daha hızlıdır (~ 15 saniye), ilk çalıştırma tamamlandıktan sonra kodu aşağıdaki kodu yeniden göndererek test edebilirsiniz.
 
 ```bash
 python 03-run-hello.py
@@ -168,9 +156,17 @@ python 03-run-hello.py
 
 ## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a><a name="monitor"></a>Studio 'yu kullanarak kodunuzu bulutta izleyin
 
-Çıktı, aşağıdaki gibi görünen bir Studio bağlantısı içerir: `https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>` .
+Betiğinizdeki çıktı, aşağıdaki gibi görünen bir Studio bağlantısı içerir: `https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>` .
 
-Bağlantıyı izleyin ve **çıktılar + Günlükler** sekmesine gidin. Aşağıdakine benzer bir dosya görebilirsiniz `70_driver_log.txt` :
+Bağlantıyı izleyin.  İlk olarak, **hazırlama** durumunu görürsünüz.  İlk çalıştırmanın tamamlanması 5-10 dakika sürer. Bunun nedeni aşağıdakiler olur:
+
+* Bir Docker görüntüsü bulutta yerleşiktir
+* İşlem kümesi 0 ' dan 1 düğümden yeniden boyutlandırılır
+* Docker görüntüsü, işlem için indirilir. 
+
+Sonraki çalıştırmalar, Docker görüntüsü işlem üzerinde önbelleğe alındığı için çok daha hızlıdır (~ 15 saniye). İlk çalıştırma tamamlandıktan sonra kodu aşağıdaki kodu yeniden göndererek test edebilirsiniz.
+
+İş tamamlandıktan sonra **çıktılar + Günlükler** sekmesine gidin. Aşağıdakine benzer bir dosya görebilirsiniz `70_driver_log.txt` :
 
 ```txt
  1: [2020-08-04T22:15:44.407305] Entering context manager injector.
