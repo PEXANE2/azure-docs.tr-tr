@@ -15,6 +15,8 @@
   items:
     - name: Kanıtlama ilkesini yazma
       href: author-sign-policy.md
+    - name: Özel Uç Nokta oluşturma - PowerShell
+      href: private-endpoint-powershell.md
     - name: SGX kanıtlama kodu örnekleri
       href: /samples/browse/?expanded=azure&terms=attestation
 - name: Örnekler
