@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 466af29a3f073f73d4a0fc62d74709cd59f82425
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: bd36434bbfe435a53567c46728610627f99f987f
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183796"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127796"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Azure API Management örneğini yükseltme ve ölçeklendirme  
 
@@ -88,4 +88,5 @@ Güvenlik gereksinimleriniz [işlem yalıtımı](../azure-government/azure-secur
 
 - [Bir Azure API Management hizmeti örneğini birden fazla Azure bölgesine dağıtma](api-management-howto-deploy-multi-region.md)
 - [Azure API Management hizmet örneğini otomatik olarak ölçeklendirme](api-management-howto-autoscale.md)
-- [Bulut harcamalarınızı iyileştirin ve kaydedin](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+- [API Management maliyetlerini planlayın ve yönetin](plan-manage-costs.md)
+- [API Management sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md#api-management-limits)

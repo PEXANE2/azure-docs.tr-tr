@@ -1,20 +1,20 @@
 ---
 title: Yüksek kullanılabilirlik için bölge yedekli kayıt defteri
-description: Bir Azure kullanılabilirlik bölgesinde kapsayıcı kayıt defteri veya çoğaltma oluşturarak Azure Container Registry bölgede yedekliliği etkinleştirme hakkında bilgi edinin. Bölge artıklığı Premium hizmet katmanının bir özelliğidir.
+description: Azure Container Registry bölgede yedekliliği etkinleştirme hakkında bilgi edinin. Bir Azure kullanılabilirlik bölgesinde kapsayıcı kayıt defteri veya çoğaltma oluşturun. Bölge artıklığı Premium hizmet katmanının bir özelliğidir.
 ms.topic: article
-ms.date: 12/11/2020
-ms.openlocfilehash: 1553beef47a3d493f066e47cd39751093d83fc24
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.date: 01/07/2021
+ms.openlocfilehash: 8c03b2bb093f8d0fa70ff5132f7448ce86e8779d
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803519"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127370"
 ---
 # <a name="enable-zone-redundancy-in-azure-container-registry-for-resiliency-and-high-availability"></a>Dayanıklılık ve yüksek kullanılabilirlik için Azure Container Registry bölgede yedekliliği etkinleştirin
 
 [Coğrafi çoğaltmanın](container-registry-geo-replication.md)yanı sıra, kullanılabilirlik sağlamak ve bölgesel işlemlere yönelik gecikme süresini azaltmak üzere bir veya daha fazla Azure bölgesinde kayıt defteri verilerini çoğaltan Azure Container Registry, isteğe bağlı *bölge yedekliliği* destekler. [Bölge artıklığı](../availability-zones/az-overview.md#availability-zones) , belirli bir bölgedeki bir kayıt defterine veya çoğaltma kaynağına (çoğaltmaya) dayanıklılık ve yüksek kullanılabilirlik sağlar.
 
-Bu makalede, Azure portal veya Azure Resource Manager şablonunu kullanarak, bölgesel olarak yedekli kapsayıcı kayıt defterinin veya bölge yedekli çoğaltmanın nasıl ayarlanacağı gösterilmektedir. 
+Bu makalede, Azure CLı, Azure portal veya Azure Resource Manager şablonunu kullanarak, bölgesel olarak yedekli kapsayıcı kayıt defterinin veya çoğaltmanın nasıl ayarlanacağı gösterilmektedir. 
 
 Bölge artıklığı, Premium kapsayıcı kayıt defteri hizmet katmanının bir **Önizleme** özelliğidir. Kayıt defteri hizmeti katmanları ve limitleri hakkında bilgi için bkz. [Azure Container Registry hizmet katmanları](container-registry-skus.md).
 
@@ -24,7 +24,6 @@ Bölge artıklığı, Premium kapsayıcı kayıt defteri hizmet katmanının bir
 * Kullanılabilirlik bölgelerine bölge dönüştürmeleri Şu anda desteklenmemektedir. Bir bölgede kullanılabilirlik alanı desteğini etkinleştirmek için, kayıt defterinin istenen bölgede oluşturulması gerekir, kullanılabilirlik alanı desteği etkinleştirilmiştir veya bir çoğaltılan bölge, kullanılabilirlik alanı desteğinin etkin olması gerekir.
 * Bölge artıklığı bir bölgede devre dışı bırakılamaz.
 * [ACR görevleri](container-registry-tasks-overview.md) henüz kullanılabilirlik bölgelerini desteklemez.
-* Şu anda Azure Resource Manager şablonlar veya Azure portal aracılığıyla destekleniyor. Azure CLı desteği gelecek bir sürümde etkinleştirilecek.
 
 ## <a name="about-zone-redundancy"></a>Bölge artıklığı hakkında
 
@@ -33,6 +32,61 @@ Azure bölgesel [bölgelerini](../availability-zones/az-overview.md) kullanarak 
 Azure Container Registry Ayrıca, aynı zamanda hizmeti birden çok bölgede çoğaltan [Coğrafi çoğaltmayı](container-registry-geo-replication.md)da destekler, böylece diğer konumlardaki kaynakları hesaplamak için yedeklilik ve konum sağlar. Bölge içindeki artıklık için kullanılabilirlik bölgelerinin birleşimi ve birden çok bölgede coğrafi çoğaltma, bir kayıt defterinin güvenilirliğini ve performansını geliştirir.
 
 Kullanılabilirlik alanları, bir Azure bölgesi içinde benzersiz fiziksel konumlardır. Dayanıklılığı güvence altına almak için etkinleştirilmiş tüm bölgelerde en az üç ayrı alan vardır. Her bölgede, bağımsız güç, soğutma ve ağ ile donatılmış bir veya daha fazla veri merkezi bulunur. Bölge artıklığı için yapılandırıldığında, bir kayıt defteri (veya farklı bir bölgedeki kayıt defteri çoğaltması) bölgedeki tüm kullanılabilirlik bölgelerinde çoğaltılır ve bu da veri merkezi hatalarının olması durumunda kullanılabilir durumda tutulmalıdır.
+
+## <a name="create-a-zone-redundant-registry---cli"></a>Bölgesel olarak yedekli kayıt defteri oluşturma-CLı
+
+Bölge yedekliliği sağlamak için Azure CLı 'yı kullanmak için Azure CLı sürüm 2.17.0 veya üzeri ya da Azure Cloud Shell gerekir. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
+
+### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
+
+Gerekirse, kayıt defteri için bir kaynak grubu oluşturmak için [az Group Create](/cli/az/group#az_group_create) komutunu çalıştırın.
+
+```azurecli
+az group create --name <resource-group-name> --location <location>
+```
+
+### <a name="create-zone-enabled-registry"></a>Bölge özellikli kayıt defteri oluşturma
+
+Premium hizmet katmanında bölge yedekli bir kayıt defteri oluşturmak için [az ACR Create](/cli/az/acr#az_acr_create) komutunu çalıştırın. Azure Container Registry için [kullanılabilirlik bölgelerini destekleyen](../availability-zones/az-region.md) bir bölge seçin. Aşağıdaki örnekte, *eastus* bölgesinde bölge artıklığı etkinleştirilmiştir. `az acr create`Daha fazla kayıt defteri seçeneği için komut yardımına bakın.
+
+```azurecli
+az acr create \
+  --resource-group <resource-group-name> \
+  --name <container-registry-name> \
+  --location eastus \
+  --zone-redundancy enabled \
+  --sku Premium
+```
+
+Komut çıkışında, `zoneRedundancy` kayıt defteri için özelliği aklınızda. Etkinleştirildiğinde, kayıt defteri bölge yedekli olur:
+
+```JSON
+{
+ [...]
+"zoneRedundancy": "Enabled",
+}
+```
+
+### <a name="create-zone-redundant-replication"></a>Bölge yedekli çoğaltma oluşturma
+
+*Westus2* gibi Azure Container Registry [kullanılabilirlik bölgelerini destekleyen](../availability-zones/az-region.md) bir bölgede bölgesel olarak yedekli bir kayıt defteri çoğaltması oluşturmak için [az ACR Replication Create](/cli/az/acr/replication#az_acr_replication_create) komutunu çalıştırın. 
+
+```azurecli
+az acr replication create \
+  --location westus2 \
+  --resource-group <resource-group-name> \
+  --registry <container-registry-name> \
+  --zone-redundancy enabled
+```
+ 
+Komut çıkışında, `zoneRedundancy` çoğaltma için özelliği aklınızda. Etkinleştirildiğinde, çoğaltma bölge yedekli olur:
+
+```JSON
+{
+ [...]
+"zoneRedundancy": "Enabled",
+}
+```
 
 ## <a name="create-a-zone-redundant-registry---portal"></a>Bölgesel olarak yedekli kayıt defteri oluşturma-Portal
 
@@ -50,22 +104,24 @@ Kullanılabilirlik alanları, bir Azure bölgesi içinde benzersiz fiziksel konu
 Bölgesel olarak yedekli bir çoğaltma oluşturmak için:
 
 1. Premium katman kapsayıcısı Kayıt defterinize gidin ve **çoğaltmalar**' ı seçin.
-1. Görüntülenen haritada, **Batı ABD 2** gibi Azure Container Registry için bölge yedekliliği destekleyen bir bölgede yeşil altıon seçin. Ardından **Oluştur**’u seçin.
-1. **Çoğaltma oluştur** penceresinde, **kullanılabilirlik alanları**' nda, **etkin**' i seçin ve ardından **Oluştur**' u seçin.
+1. Görüntülenen haritada, **Batı ABD 2** gibi Azure Container Registry için bölge yedekliliği destekleyen bir bölgede yeşil altıon seçin. Veya **+ Ekle**' yi seçin.
+1. **Çoğaltma oluştur** penceresinde, **konumu** onaylayın. **Kullanılabilirlik alanları**' nda, **etkin**' i seçin ve ardından **Oluştur**' u seçin.
+
+    :::image type="content" source="media/zone-redundancy/enable-availability-zones-replication-portal.png" alt-text="Azure portal bölgede yedekli çoğaltmayı etkinleştirme":::
 
 ## <a name="create-a-zone-redundant-registry---template"></a>Bölgesel olarak yedekli kayıt defteri oluşturma-şablon
 
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Gerekirse, *eastus* gibi Azure Container Registry [kullanılabilirlik bölgelerini destekleyen](../availability-zones/az-region.md) bir bölgede kayıt defteri için bir kaynak grubu oluşturmak için [az Group Create](/cli/azure/group) komutunu çalıştırın.
+Gerekirse, *eastus* gibi Azure Container Registry [kullanılabilirlik bölgelerini destekleyen](../availability-zones/az-region.md) bir bölgede kayıt defteri için bir kaynak grubu oluşturmak için [az Group Create](/cli/az/group#az_group_create) komutunu çalıştırın. Bu bölge, şablon tarafından kayıt defteri konumunu ayarlamak için kullanılır.
 
 ```azurecli
-az group create --name <resource-group-name> --location <location>
+az group create --name <resource-group-name> --location eastus
 ```
 
 ### <a name="deploy-the-template"></a>Şablonu dağıtma 
 
-Bölgesel olarak yedekli, coğrafi olarak çoğaltılan bir kayıt defteri oluşturmak için aşağıdaki Kaynak Yöneticisi şablonunu kullanabilirsiniz. Şablon varsayılan olarak kayıt defterinde bölge yedekliliği ve ek bir bölgesel çoğaltma imkanı sunar. 
+Bölgesel olarak yedekli, coğrafi olarak çoğaltılan bir kayıt defteri oluşturmak için aşağıdaki Kaynak Yöneticisi şablonunu kullanabilirsiniz. Şablon varsayılan olarak kayıt defterinde ve bölgesel çoğaltmada bölge yedekliliği sunar. 
 
 Aşağıdaki içerikleri yeni bir dosyaya kopyalayın ve gibi bir dosya adı kullanarak kaydedin `registryZone.json` .
 
@@ -163,7 +219,7 @@ Aşağıdaki içerikleri yeni bir dosyaya kopyalayın ve gibi bir dosya adı kul
   }
 ```
 
-Önceki şablon dosyasını kullanarak kayıt defterini oluşturmak için aşağıdaki [az Deployment Group Create](/cli/azure/deployment?view=azure-cli-latest) komutunu çalıştırın. Belirtilen yerlerde şunları sağlayın:
+Önceki şablon dosyasını kullanarak kayıt defterini oluşturmak için aşağıdaki [az Deployment Group Create](/cli/az/deployment#az_group_deployment_create) komutunu çalıştırın. Belirtilen yerlerde şunları sağlayın:
 
 * benzersiz bir kayıt defteri adı veya şablonu parametre olmadan dağıtın ve sizin için benzersiz bir ad oluşturur
 * çoğaltma için *westus2* gibi kullanılabilirlik bölgelerini destekleyen bir konum

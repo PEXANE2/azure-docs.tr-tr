@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: bb90c5776e67c1ba8fecdbf394a8098e96ca0652
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: a2c26c3e41f64a1593a2d3386c76427c0b9682e9
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96022386"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127490"
 ---
 # <a name="soft-delete-for-blobs"></a>Bloblar için geçici silme
 
@@ -79,23 +79,23 @@ Bir anlık görüntüde **silme blobu** çağrıldığında, bu anlık görünt�
 > [!NOTE]  
 > Geçici olarak silinen bir Blobun üzerine yazıldığında, yazma işleminden önce blob 'un durumunun geçici olarak silinmiş bir anlık görüntüsü otomatik olarak oluşturulur. Yeni blob, üzerine yazılan Blobun katmanını devralır.
 
-Geçici silme, verileri kapsayıcı veya hesap silme durumlarında veya blob meta verilerinin ve BLOB özelliklerinin üzerine yazıldığında kaydetmez. Bir depolama hesabını hatalı silinmeye karşı korumak için Azure Resource Manager kullanarak bir kilit yapılandırabilirsiniz. Daha fazla bilgi için, [beklenmeyen değişiklikleri engellemek üzere kaynakları kilitleme](../../azure-resource-manager/management/lock-resources.md)Azure Resource Manager makalesine bakın.
+Geçici silme, verilerinizi kapsayıcı veya hesap silme durumlarında veya blob meta verileri ile blob özelliklerinin üzerine yazıldığında kaydetmez. Bir depolama hesabını silinmeye karşı korumak için Azure Resource Manager kullanarak bir kilit yapılandırabilirsiniz. Daha fazla bilgi için, [beklenmeyen değişiklikleri engellemek üzere kaynakları kilitleme](../../azure-resource-manager/management/lock-resources.md)Azure Resource Manager makalesine bakın.
 
 Aşağıdaki tabloda, geçici silme açıkken beklenen davranışın ayrıntıları verilmiştir:
 
 | REST API işlemi | Kaynak türü | Description | Davranış değişikliği |
 |--------------------|---------------|-------------|--------------------|
-| [Silme](/rest/api/storagerp/StorageAccounts/Delete) | Hesap | İçerdiği tüm kapsayıcılar ve BLOB 'lar dahil olmak üzere depolama hesabını siler.                           | Değişiklik yok. Silinen hesaptaki kapsayıcılar ve Bloblar kurtarılamaz. |
-| [Kapsayıcıyı Silme](/rest/api/storageservices/delete-container) | Kapsayıcı | Kapsayıcı, içerdiği tüm Bloblar dahil olmak üzere siler. | Değişiklik yok. Silinen kapsayıcıdaki Bloblar kurtarılamaz. |
+| [Silme](/rest/api/storagerp/StorageAccounts/Delete) | Hesap | İçerdiği tüm kapsayıcılar ve BLOB 'lar dahil olmak üzere depolama hesabını siler.                           | Bir değişiklik olmadı. Silinen hesaptaki kapsayıcılar ve Bloblar kurtarılamaz. |
+| [Kapsayıcıyı Silme](/rest/api/storageservices/delete-container) | Kapsayıcı | Kapsayıcı, içerdiği tüm Bloblar dahil olmak üzere siler. | Bir değişiklik olmadı. Silinen kapsayıcıdaki Bloblar kurtarılamaz. |
 | [İkili Büyük Nesne Koyma](/rest/api/storageservices/put-blob) | Blok, ekleme ve sayfa Blobları | Yeni bir blob oluşturur veya bir kapsayıcı içinde var olan bir blobu değiştirir | Var olan bir Blobun değiştirmek için kullanılırsa, çağrıdan önce blob 'un durumunun bir anlık görüntüsü otomatik olarak oluşturulur. Bu, daha önce ve yalnızca aynı türdeki bir blob (blok, ekleme veya sayfa) ile değiştiriliyorsa, daha önce geçici olarak silinen bir blob için de geçerlidir. Farklı türdeki bir Blobun değiştirildiyse, var olan tüm geçici silinen verilerin geçerliliği kalıcı olarak dolacak. |
 | [İkili Büyük Nesneyi Silme](/rest/api/storageservices/delete-blob) | Blok, ekleme ve sayfa Blobları | Silinmek üzere bir blob veya blob anlık görüntüsü işaretler. Çöp toplama sırasında blob veya anlık görüntü daha sonra silinir | Blob anlık görüntüsünü silmek için kullanılırsa, bu anlık görüntü geçici olarak silinmiş olarak işaretlenir. Bir blobu silmek için kullanılırsa, bu blob geçici olarak silindi olarak işaretlenir. |
 | [İkili Büyük Nesneyi Kopyalama](/rest/api/storageservices/copy-blob) | Blok, ekleme ve sayfa Blobları | Kaynak blobu, aynı depolama hesabındaki veya başka bir depolama hesabındaki bir hedef bloba kopyalar. | Var olan bir Blobun değiştirmek için kullanılırsa, çağrıdan önce blob 'un durumunun bir anlık görüntüsü otomatik olarak oluşturulur. Bu, daha önce ve yalnızca aynı türdeki bir blob (blok, ekleme veya sayfa) ile değiştiriliyorsa, daha önce geçici olarak silinen bir blob için de geçerlidir. Farklı türdeki bir Blobun değiştirildiyse, var olan tüm geçici silinen verilerin geçerliliği kalıcı olarak dolacak. |
 | [Yerleştirme bloğu](/rest/api/storageservices/put-block) | Blok blobları | Bir blok blobunun parçası olarak kaydedilecek yeni bir blok oluşturur. | Etkin olan bir Blobun blok yürütmek için kullanılırsa değişiklik yapılmaz. Geçici olarak silinen bir Blobun blok yürütmek için kullanılırsa, yeni bir blob oluşturulur ve geçici olarak silinen Blobun durumunu yakalamak için bir anlık görüntü oluşturulur. |
 | [Öbek listesini yerleştirme](/rest/api/storageservices/put-block-list) | Blok blobları | Blok Blobu oluşturan blok kimlikleri kümesini belirterek bir blobu kaydeder. | Var olan bir Blobun değiştirmek için kullanılırsa, çağrıdan önce blob 'un durumunun bir anlık görüntüsü otomatik olarak oluşturulur. Bu, daha önce ve yalnızca Blok Blobu ise, daha önce geçici olarak silinmiş bir blob için de geçerlidir. Farklı türdeki bir Blobun değiştirildiyse, var olan tüm geçici silinen verilerin geçerliliği kalıcı olarak dolacak. |
-| [Yerleştirme sayfası](/rest/api/storageservices/put-page) | Sayfa blobları | Sayfa blobuna bir sayfa aralığı yazar. | Değişiklik yok. Bu işlem kullanılarak üzerine yazılan veya temizlenmemiş Sayfa Blobu verileri kaydedilmez ve kurtarılamaz. |
-| [Ekleme bloğu](/rest/api/storageservices/append-block) | Ekleme Blobları | Bir ekleme blobunun sonuna bir veri bloğu Yazar | Değişiklik yok. |
-| [Blob özelliklerini ayarla](/rest/api/storageservices/set-blob-properties) | Blok, ekleme ve sayfa Blobları | Blob için tanımlanan sistem özellikleri için değerleri ayarlar. | Değişiklik yok. Üzerine yazılan blob özellikleri kurtarılabilir değil. |
-| [Blob meta verilerini ayarla](/rest/api/storageservices/set-blob-metadata) | Blok, ekleme ve sayfa Blobları | Belirtilen blob için Kullanıcı tanımlı meta verileri bir veya daha fazla ad-değer çifti olarak ayarlar. | Değişiklik yok. Üzerine yazılan blob meta verileri kurtarılamaz. |
+| [Yerleştirme sayfası](/rest/api/storageservices/put-page) | Sayfa blobları | Sayfa blobuna bir sayfa aralığı yazar. | Bir değişiklik olmadı. Bu işlem kullanılarak üzerine yazılan veya temizlenmemiş Sayfa Blobu verileri kaydedilmez ve kurtarılamaz. |
+| [Ekleme bloğu](/rest/api/storageservices/append-block) | Ekleme Blobları | Bir ekleme blobunun sonuna bir veri bloğu Yazar | Bir değişiklik olmadı. |
+| [Blob özelliklerini ayarla](/rest/api/storageservices/set-blob-properties) | Blok, ekleme ve sayfa Blobları | Blob için tanımlanan sistem özellikleri için değerleri ayarlar. | Bir değişiklik olmadı. Üzerine yazılan blob özellikleri kurtarılabilir değil. |
+| [Blob meta verilerini ayarla](/rest/api/storageservices/set-blob-metadata) | Blok, ekleme ve sayfa Blobları | Belirtilen blob için Kullanıcı tanımlı meta verileri bir veya daha fazla ad-değer çifti olarak ayarlar. | Bir değişiklik olmadı. Üzerine yazılan blob meta verileri kurtarılamaz. |
 
 Sayfa Blobu aralıklarının üzerine yazmak veya onları temizlemek için **PUT sayfasının** çağrılması, otomatik olarak anlık görüntü oluşturmaz. Sanal makine diskleri sayfa Blobları tarafından desteklenir ve veri yazmak için **PUT sayfasını** kullanır.
 
@@ -171,7 +171,7 @@ Hayır, geçici olarak silinen anlık görüntüler bu sınıra doğru sayılmaz
 
 ### <a name="if-i-delete-an-entire-account-or-container-with-soft-delete-turned-on-will-all-associated-blobs-be-saved"></a>Geçici silme özelliği açık olan bir hesabın tamamını veya kapsayıcıyı silersem, ilişkili tüm Bloblar kaydedilecek mi?
 
-Hayır, tüm bir hesabı veya kapsayıcıyı silerseniz, ilişkili tüm Bloblar kalıcı olarak silinir. Bir depolama hesabını yanlışlıkla silmelerden koruma hakkında daha fazla bilgi için bkz. [kaynakları kilitleme, beklenmeyen değişiklikleri önleme](../../azure-resource-manager/management/lock-resources.md).
+Hayır, tüm bir hesabı veya kapsayıcıyı silerseniz, ilişkili tüm Bloblar kalıcı olarak silinir. Depolama hesabının yanlışlıkla silinmesini koruma hakkında daha fazla bilgi için, bkz. [kaynakları kilitle, beklenmeyen değişiklikleri önler](../../azure-resource-manager/management/lock-resources.md).
 
 ### <a name="can-i-view-capacity-metrics-for-deleted-data"></a>Silinen veriler için kapasite ölçümlerini görüntüleyebilir miyim?
 

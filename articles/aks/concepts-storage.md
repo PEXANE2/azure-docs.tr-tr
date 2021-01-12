@@ -4,12 +4,12 @@ description: Azure Kubernetes Service 'teki (AKS) birimler, kalıcı birimler, d
 services: container-service
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 0ed38625703397c9ba5021e84cd3118f30fa83c7
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: bf910c66694a62505f259c0a95a88f7dfed05d19
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900935"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127966"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki uygulamalar için depolama seçenekleri
 
@@ -19,7 +19,7 @@ Azure Kubernetes Service (AKS) içinde çalışan uygulamaların veri depolamas�
 
 Bu makalede AKS 'de uygulamalarınıza depolama sağlayan temel kavramlar tanıtılmaktadır:
 
-- [Dörtten](#volumes)
+- [Birimler](#volumes)
 - [Kalıcı birimler](#persistent-volumes)
 - [Depolama sınıfları](#storage-classes)
 - [Kalıcı birim talepleri](#persistent-volume-claims)
@@ -36,7 +36,7 @@ Verileri depolamak ve almak için geleneksel birimler, Azure depolama tarafında
 Kubernetes 'te birimler, bilgilerin saklanabileceği ve alınabileceği yalnızca geleneksel bir diskten fazlasını temsil edebilir. Kubernetes birimleri, kapsayıcılar tarafından kullanılmak üzere bir pod 'a veri eklemenin bir yolu olarak da kullanılabilir. Kubernetes 'te ortak ek birim türleri şunlardır:
 
 - *Emptydir* -bu birim genellikle pod için geçici alan olarak kullanılır. Pod içindeki tüm kapsayıcılar birimdeki verilere erişebilir. Bu birim türüne yazılan veriler yalnızca Pod 'un kullanım ömrü boyunca devam ettirir-Pod silindiğinde birim silinir. Bu birim genellikle temel alınan yerel düğüm Disk depolamayı kullanır, ancak yalnızca düğümün belleğinde de bulunabilir.
-- *gizli* -bu birim parola gibi önemli verileri pods 'ye eklemek için kullanılır. İlk olarak Kubernetes API 'sini kullanarak bir gizli dizi oluşturursunuz. Pod veya dağıtımınızı tanımladığınızda, belirli bir gizli dizi istenebilir. Gizli diziler yalnızca, bir zamanlanmış Pod içeren düğümlere sağlanır ve gizli dizi diske yazılmadı ve *tmpfs* 'de depolanır. Gizli anahtar gerektiren bir düğümdeki son Pod silindiğinde, parola, düğümün tmpfs 'den silinir. Gizli diziler belirli bir ad alanı içinde depolanır ve yalnızca aynı ad alanında yer alan Pod tarafından erişilebilir.
+- *gizli* -bu birim parola gibi önemli verileri pods 'ye eklemek için kullanılır. İlk olarak Kubernetes API 'sini kullanarak bir gizli dizi oluşturursunuz. Pod veya dağıtımınızı tanımladığınızda, belirli bir gizli dizi istenebilir. Gizli diziler yalnızca, bir zamanlanmış Pod içeren düğümlere sağlanır ve gizli dizi diske yazılmadı ve *tmpfs*'de depolanır. Gizli anahtar gerektiren bir düğümdeki son Pod silindiğinde, parola, düğümün tmpfs 'den silinir. Gizli diziler belirli bir ad alanı içinde depolanır ve yalnızca aynı ad alanında yer alan Pod tarafından erişilebilir.
 - *Configmap* -bu birim türü, anahtar-değer çifti özelliklerini pods 'ye eklemek için kullanılır (örneğin, uygulama yapılandırma bilgileri). Bir kapsayıcı görüntüsü içinde uygulama yapılandırma bilgilerini tanımlamak yerine, bu dosyayı kolayca güncelleştirilebileceği ve dağıtıldığı için yeni düğüm örneklerine uygulanabilecek bir Kubernetes kaynağı olarak tanımlayabilirsiniz. Gizli anahtar kullanma gibi, ilk olarak Kubernetes API 'sini kullanarak bir ConfigMap oluşturursunuz. Bu ConfigMap, daha sonra bir pod veya dağıtım tanımladığınızda istenebilir. Configmaps, belirli bir ad alanı içinde depolanır ve yalnızca aynı ad alanında yer alan Pod tarafından erişilebilir.
 
 ## <a name="persistent-volumes"></a>Kalıcı birimler
@@ -107,7 +107,7 @@ spec:
       storage: 5Gi
 ```
 
-Pod tanımı oluşturduğunuzda, kalıcı birim talebi istenen depolamayı istemek için belirtilir. Ayrıca, veri okumak ve yazmak için uygulamalarınız için *Volumemount* öğesini de belirtirsiniz. Aşağıdaki örnek YAML bildirimi, önceki kalıcı birim talebinin, */mnt/Azure* ' da bir birimi bağlamak için nasıl kullanılabileceğini gösterir:
+Pod tanımı oluşturduğunuzda, kalıcı birim talebi istenen depolamayı istemek için belirtilir. Ayrıca, veri okumak ve yazmak için uygulamalarınız için *Volumemount* öğesini de belirtirsiniz. Aşağıdaki örnek YAML bildirimi, önceki kalıcı birim talebinin, */mnt/Azure*' da bir birimi bağlamak için nasıl kullanılabileceğini gösterir:
 
 ```yaml
 kind: Pod
@@ -125,6 +125,18 @@ spec:
     - name: volume
       persistentVolumeClaim:
         claimName: azure-managed-disk
+```
+
+Bir Windows kapsayıcısında bir birimi bağlamak için, sürücü harfini ve yolunu belirtin. Örnek:
+
+```yaml
+...      
+       volumeMounts:
+        - mountPath: "d:"
+          name: volume
+        - mountPath: "c:\k"
+          name: k-dir
+...
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

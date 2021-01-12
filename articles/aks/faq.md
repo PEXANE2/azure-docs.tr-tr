@@ -3,12 +3,12 @@ title: Azure Kubernetes hizmeti (AKS) için sık sorulan sorular
 description: Azure Kubernetes hizmeti (AKS) ile ilgili bazı yaygın soruların yanıtlarını bulun.
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 94cbaf417413b3e11071fb8c7237cbb3ac7b9a37
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 7fc348ae7b3edb79e75aa1acd08941fec447da6f
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780357"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127643"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) hakkında sık sorulan sorular
 
@@ -146,7 +146,7 @@ AKS kümenizi kiracılar arasında taşımak Şu anda desteklenmiyor.
 
 Abonelikler arasında küme hareketi şu anda desteklenmiyor.
 
-## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>AKS kümelerimi geçerli Azure aboneliğinden diğerine taşıyabilir miyim? 
+## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>AKS kümelerimi geçerli Azure aboneliğinden diğerine taşıyabilir miyim?
 
 AKS kümenizi ve ilişkili kaynaklarını Azure abonelikleri arasında taşıma desteklenmez.
 
@@ -154,7 +154,7 @@ AKS kümenizi ve ilişkili kaynaklarını Azure abonelikleri arasında taşıma 
 
 AKS kümenizi ve ilişkili kaynaklarını taşıma veya yeniden adlandırma desteklenmez.
 
-## <a name="why-is-my-cluster-delete-taking-so-long"></a>Kümemin neden bu kadar uzun sürüyor? 
+## <a name="why-is-my-cluster-delete-taking-so-long"></a>Kümemin neden bu kadar uzun sürüyor?
 
 Çoğu küme Kullanıcı isteğiyle silinir; Bazı durumlarda, özellikle de müşteriler kendi kaynak grubunu getiriyor ya da faaliyetsiz görevler silme işlemleri ek zaman alabilir veya başarısız olabilir. Silme işlemiyle ilgili bir sorununuz varsa, RG üzerinde kilit olmadığından, RG 'nin her türlü kaynağın bir RG ile ilişkisi olduğunu ve bu şekilde devam edip etmez.
 
@@ -166,7 +166,7 @@ Ancak, bu, AKS bunun için önerilmez. Kümenin durumu bilindiğinde ve sağlık
 
 Hayır, başarısız durumundaki düğümleri silin veya yükseltmeden önce kümeden kaldırın.
 
-## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Bir küme silme çalıştırdım, ancak hataya bakın `[Errno 11001] getaddrinfo failed` 
+## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Bir küme silme çalıştırdım, ancak hataya bakın `[Errno 11001] getaddrinfo failed`
 
 En yaygın olarak, bunun nedeni bir veya daha fazla ağ güvenlik grubu (NSG) hala kullanımda ve kümeyle ilişkili olan kullanıcılardır.  Bunları kaldırın ve silmeyi yeniden deneyin.
 
@@ -174,7 +174,7 @@ En yaygın olarak, bunun nedeni bir veya daha fazla ağ güvenlik grubu (NSG) ha
 
 Hizmet sorumlunun süresinin dolmadığından emin olun.  Bkz: [aks hizmet sorumlusu](./kubernetes-service-principal.md) ve [aks güncelleştirme kimlik bilgileri](./update-credentials.md).
 
-## <a name="my-cluster-was-working-but-suddenly-cant-provision-loadbalancers-mount-pvcs-etc"></a>Kümem çalışıyor, ancak aniden LoadBalancers, bağlama PVC 'leri vb. sağlayamaz. 
+## <a name="my-cluster-was-working-but-suddenly-cant-provision-loadbalancers-mount-pvcs-etc"></a>Kümem çalışıyor, ancak aniden LoadBalancers, bağlama PVC 'leri vb. sağlayamaz.
 
 Hizmet sorumlunun süresinin dolmadığından emin olun.  Bkz: [aks hizmet sorumlusu](./kubernetes-service-principal.md)  ve [aks güncelleştirme kimlik bilgileri](./update-credentials.md).
 
@@ -254,6 +254,25 @@ Aşağıda, saydam moddan oluşan örnek bir IP yolu kurulumu verilmiştir. her 
 - Köprü modundaki köşe çalışmalarından biri, Azure CNı 'nin kullanıcıların VNET veya NIC 'ye ekleyen özel DNS sunucusu listelerini güncellemesidir. Bu, CNı 'nin yalnızca DNS sunucusu listesinin yalnızca ilk örneğini çekilmesine neden olur. CNı, eth0 özelliklerini değiştirmediğinden saydam modda çözüldü. Daha fazla bilgi için [buraya](https://github.com/Azure/azure-container-networking/issues/713)bakın.
 - ARP zaman aşımına uğrarsa UDP trafiğinin daha iyi işlenmesini ve UDP taşma süresini hafifletme sağlar. Köprü oluşturma modunda, köprü, VM 'de Pod-Pod arası iletişimde bir MAC adresi bilmez, tasarıma göre, bu, paketin tüm bağlantı noktalarına fırtınası ile sonuçlanır. Yolda L2 cihaz olmadığından, saydam modda çözüldü. Daha fazla bilgi için [buraya](https://github.com/Azure/azure-container-networking/issues/704)bakın.
 - Saydam modu, köprü oluşturma modu ile karşılaştırıldığında aktarım hızı ve gecikme süresi bakımından sanal makine Pod-Pod iletişimi için daha iyi performans sağlar.
+
+## <a name="how-to-avoid-permission-ownership-setting-slow-issues-when-the-volume-has-a-lot-of-files"></a>Birimde çok fazla dosya olduğunda izin sahipliğine engel olma sorunu ortadan kaldırılsın mı?
+
+Geleneksel olarak, Pod 'niz kök olmayan bir Kullanıcı (yapmanız gerekir) olarak çalışıyorsa, `fsGroup` birimin Pod tarafından okunabilir ve yazılabilir olması için pod 'ın güvenlik bağlamı içinde bir belirtmeniz gerekir. Bu gereksinim, [burada](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)daha ayrıntılı bir şekilde ele alınmıştır.
+
+Ancak, tek bir yan etkisi, `fsGroup` bir birimin her takılışında Kubernetes 'in, `chown()` `chmod()` aşağıda belirtilen birkaç özel durum ile birim içindeki dosya ve dizinlerin her zaman özyinelemeli ve tüm dosyalar ve dizinler olması gerekir. Bu durum, birimin Grup sahipliği zaten istenen ile uyuşsa `fsGroup` ve çok sayıda küçük dosya içeren daha büyük birimler için oldukça pahalı olabildiğinde, Pod başlatmasının uzun sürmesine neden olabilir. Bu senaryoda, v 1,20 'den önce bilinen bir sorun oluştu ve geçici çözüm Pod farklı çalıştır kökünü ayarmıştır:
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-context-demo
+spec:
+  securityContext:
+    runAsUser: 0
+    fsGroup: 0
+```
+
+Sorun Kubernetes v 1,20 tarafından çözümlendi, daha fazla ayrıntı için [kubernetes 1,20: birim Izin değişikliklerinin ayrıntılı denetimi](https://kubernetes.io/blog/2020/12/14/kubernetes-release-1.20-fsgroupchangepolicy-fsgrouppolicy/) bölümüne bakın.
 
 
 <!-- LINKS - internal -->

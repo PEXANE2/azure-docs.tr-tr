@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/03/2020
+ms.date: 01/11/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 296679135063e2c7e1b7f0e3ffd193c8f18c3acf
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 5038bde01a6b183a25a47f3b4e206c1ce80e6b6d
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576273"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127847"
 ---
 # <a name="user-management-enhancements-preview-in-azure-active-directory"></a>Azure Active Directory 'de Kullanıcı yönetimi geliştirmeleri (Önizleme)
 
@@ -60,6 +60,9 @@ Aşağıda, **tüm kullanıcılar** sayfasında görüntülenen kullanıcı öze
 - Ad: kullanıcının görünen adı.
 - Kullanıcı asıl adı: kullanıcının Kullanıcı asıl adı (UPN).
 - Kullanıcı türü: üye, Konuk, yok.
+- Oluşturma saati: kullanıcının oluşturulduğu tarih ve saat.
+- İş unvanı: kullanıcının iş unvanı.
+- Departman: kullanıcının içinde çalışması Için departman.
 - Eşitlenen Dizin: kullanıcının şirket içi dizinden eşitlenip eşitlenmediğini belirtir.
 - Kimlik veren: bir kullanıcı hesabında oturum açmak için kullanılan kimlik verenler.
 - Nesne KIMLIĞI: kullanıcının nesne KIMLIĞI.
@@ -76,7 +79,8 @@ Aşağıda, **tüm kullanıcılar** sayfasında görüntülenen kullanıcı öze
 **Silinen kullanıcılar** sayfası, **tüm kullanıcılar** sayfasında kullanılabilir olan tüm sütunları ve bazı ek sütunları içerir, yani:
 
 - Silme tarihi: kullanıcının kuruluştan ilk silindiği tarih (Kullanıcı yeniden geri alındı).
-- Kalıcı silme tarihi: kullanıcının kuruluştan kalıcı olarak silinme işleminin otomatik olarak başladığı tarih. 
+- Kalıcı silme tarihi: kullanıcının kuruluştan kalıcı olarak silinme işleminin otomatik olarak başladığı tarih.
+- Özgün Kullanıcı asıl adı: nesne KIMLIKLERI, silinen UPN 'lerine önek olarak eklenmeden önce kullanıcının özgün UPN 'si.
 
 > [!NOTE]
 > Silme tarihleri Eşgüdümlü Evrensel Saat (UTC) biçiminde görüntülenir.
@@ -105,6 +109,10 @@ Aşağıda, **tüm kullanıcılar** sayfasında filtrelenebilir Özellikler veri
 - Kullanıcı türü: üye, Konuk, yok
 - Dizin eşitleme durumu: Evet, Hayır
 - Oluşturma türü: davet, e-posta doğrulandı, yerel hesap
+- Oluşturma zamanı: son 7, 14, 30, 90, 360 veya >360 gün önce
+- İş unvanı: iş unvanı girin
+- Departman: bir departman adı girin
+- Grup: bir grup arayın
 - Davet durumu – kabul bekleniyor, kabul edildi
 - Etki alanı adı: bir etki alanı adı girin
 - Şirket adı: bir şirket adı girin
@@ -117,6 +125,9 @@ Aşağıda, **tüm kullanıcılar** sayfasında filtrelenebilir Özellikler veri
 - Kullanıcı türü: üye, Konuk, yok
 - Dizin eşitleme durumu: Evet, Hayır
 - Oluşturma türü: davet, e-posta doğrulandı, yerel hesap
+- Oluşturma zamanı: son 7, 14, 30, 90, 360 veya > 360 gün önce
+- İş unvanı: iş unvanı girin
+- Departman: bir departman adı girin
 - Davet durumu: kabul bekleniyor, kabul edildi
 - Silme tarihi: son 7, 14 veya 30 gün
 - Etki alanı adı: bir etki alanı adı girin

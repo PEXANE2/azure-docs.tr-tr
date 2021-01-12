@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 0ecf47ecdc66c0005f0d793d91a67af102fb1c76
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 4ba06af98714004e4429fe802a206acdfa8fb148
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98107914"
+ms.locfileid: "98127626"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
@@ -27,8 +27,6 @@ Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK 
 + **Hata düzeltmeleri ve geliştirmeleri**
   + **Azure-CLI-ml**
     + framework_version OptimizationConfig 'e eklendi. Model çerçeve çoklu ile kaydedildiğinde kullanılacaktır.
-  + **azureml-automl-runtime**
-    + Bu güncelleştirmede, oto ml SDK 'sının tahmin araç kutusu 'na Holt ile üstel yumuşatma ekledik. Bir zaman serisi verildiğinde, en iyi model [AICC (düzeltilen Akaike 'ın bilgi ölçütü)](https://otexts.com/fpp3/selecting-predictors.html#selecting-predictors) tarafından seçilir ve döndürülür.
   + **azureml-contrib-iyileştirmesi**
     + framework_version OptimizationConfig 'e eklendi. Model çerçeve çoklu ile kaydedildiğinde kullanılacaktır.
   + **azureml-pipeline-steps**
@@ -150,7 +148,7 @@ Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK 
     + `OutputDatasetConfig.register_on_complete`Adı zaten mevcut olduğunda ne olacağı hakkında davranışı eklemek için geliştirilmiş belgeler.
     + Ortak ortam değişkenleriyle çakışabilecek potansiyel veri kümesi girişi ve çıkış adlarını belirtme, şimdi bir uyarı oluşmasına neden olur
     + `grant_workspace_access`Veri depoları kaydedilirken yeniden parametre yeniden `True`Machine Learning Studio sanal ağın arkasındaki verilere erişecek şekilde ayarlayın.
-      [Daha fazla bilgi](./how-to-enable-studio-virtual-network.md)
+      [Daha fazla bilgi edinin](./how-to-enable-studio-virtual-network.md)
     + Bağlı hizmet API 'SI iyileştiriliyor. Kaynak kimliği sağlamak yerine, yapılandırmada tanımlı 3 ayrı parametre sub_id, RG ve adı vardır.
     + Müşterilerin belirteç bozulması sorunlarını kendi kendine çözümlemesine olanak tanımak için, çalışma alanı belirteci eşitlemesini ortak bir yöntem olacak şekilde etkinleştirin.
     + Bu değişiklik, boş bir dizenin bir script_param değer olarak kullanılmasına izin verir
@@ -897,7 +895,7 @@ Artık Azure Machine Learning doğrudan stüdyo Web deneyiminin içinde Machine 
 
 Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
     
-| Web tabanlı araç  |     Açıklama  |
+| Web tabanlı araç  |     Description  |
 |---|---|
 | Azure ML Studio Not defterleri   |     Not defteri dosyaları için birinci sınıf yazma ve Azure ML Python SDK 'da bulunan tüm işlemleri destekleme. | 
 
@@ -1409,7 +1407,7 @@ Studio 'dan veri kümeleri, işlem hatları, modeller, uç noktaları ve daha fa
 
 Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
 
-| Web tabanlı araç | Açıklama | 
+| Web tabanlı araç | Description | 
 |-|-|-|
 | Not defteri VM (Önizleme) | Tam olarak yönetilen bulut tabanlı iş istasyonu | 
 | [Otomatik makine öğrenimi](tutorial-first-experiment-automated-ml.md) (Önizleme) | Machine Learning modeli geliştirmeyi otomatikleştirmek için kod deneyimi yok | 
@@ -1936,7 +1934,7 @@ Bu sürümün sırasında, aşağıdaki tarayıcılar desteklenir: Chrome, Firef
   + , `read_parquet` Spark 'ta çalışırken performansı geliştirilmiştir.
   + `column_type_builder`Belirsiz tarih biçimleri içeren tek bir sütun olması durumunda başarısız olan bir sorun düzeltildi.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 + **Önizleme özelliği**
   + Günlük ve çıkış dosyası akışı artık çalışma ayrıntıları sayfaları için kullanılabilir. Dosyalar, önizleme geçişi açık olduğunda güncelleştirmeleri gerçek zamanlı olarak akışa alır.
   + Çalışma alanı düzeyinde kota ayarlama özelliği önizleme aşamasında serbest bırakılır. AmlCompute kotaları abonelik düzeyinde ayrılır, ancak artık bu kotayı çalışma alanları arasında dağıtmanıza ve bunları dengeli paylaşım ve idare için ayırmaya izin veririz. Çalışma alanınızın sol gezinti çubuğunda **kullanımlar + kotalar** dikey penceresine ve **kotaları Yapılandır** sekmesini seçmeniz yeterlidir. Bu bir çoklu çalışma alanı işlemi olduğundan, çalışma alanı düzeyinde kotalar ayarlayabilmek için bir abonelik yöneticisi olmanız gerekir.
@@ -2215,7 +2213,7 @@ Python v 1.0.30 için SDK Azure Machine Learning.
 
 ## <a name="2019-04-15"></a>2019-04-15
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
   + Artık var olan bir uzak işlem kümesinde çalışan bir betiği yeniden gönderebilirsiniz.
   + Artık, işlem hatları sekmesinde yeni parametrelerle yayınlanmış bir işlem hattı çalıştırabilirsiniz.
   + Çalışma ayrıntıları artık yeni bir Snapshot dosya görüntüleyicisini destekliyor. Belirli bir çalıştırma gönderdiğinizde dizinin anlık görüntüsünü görüntüleyebilirsiniz. Çalıştırmaya başlamak için gönderilen Not defterini de indirebilirsiniz.
@@ -2273,7 +2271,7 @@ Python v 1.0.30 için SDK Azure Machine Learning.
 + **Hata düzeltmeleri ve geliştirmeleri**
   + Source_directory_data_store özelliğini, [PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?preserve-view=true&view=azure-ml-py)Için sağlanan [runconfigurations](/python/api/azureml-core/azureml.core.runconfig.runconfiguration?preserve-view=true&view=azure-ml-py) 'lar üzerinde istenen veri deposuna (BLOB depolama gibi) ayarlamaya yönelik Azure Machine Learning işlem hatlarında destek ekledik. Varsayılan olarak, çok sayıda adım eşzamanlı olarak yürütüldüğünde sorunları azaltma sorunlarını ortadan kaldırarak Azure dosya deposunu, yedekleme veri deposu olarak kullanır.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 + **Yeni özellikler**
   + Raporlar için yeni Sürükle ve bırak tablosu Düzenleyicisi deneyimi. Kullanıcılar bir sütunu, tablonun önizlemesinin görüntüleneceği tablo alanına kadar iyi sürükleyebilirsiniz. Sütunlar yeniden düzenlenebilir.

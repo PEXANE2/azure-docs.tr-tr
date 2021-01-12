@@ -7,12 +7,12 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 12/29/2020
-ms.openlocfilehash: 816cdddc1f3d0a9bc9ebc3f277bc223a688cba31
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: b3d1ad2d327da60874d2d07ba697b8f5ab815189
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98067374"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127099"
 ---
 # <a name="azure-monitor-troubleshooting-logs-preview"></a>Azure Izleyici sorun giderme günlükleri (Önizleme)
 Azure Izleyici 'yi kullanarak sorunları hızlı ve/veya düzenli aralıklarla araştırın, kod veya yapılandırma sorunlarını giderin veya destek çalışmalarını, genellikle belirli Öngörüler için yüksek hacimlere yönelik olarak arayarak yararlanır.
@@ -48,7 +48,7 @@ Response:
         },
         "id": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}",
         "name": "{tableName}"
-      }
+}
 ```
 ## <a name="check-if-the-troubleshooting-logs-feature-is-enabled-for-a-given-table"></a>Belirli bir tablo için sorun giderme günlükleri özelliğinin etkinleştirilip etkinleştirilmediğini denetle
 Belirli bir tablo için sorun giderme günlüğünün etkinleştirilip etkinleştirilmediğini denetlemek için aşağıdaki API çağrısını kullanabilirsiniz.
@@ -65,6 +65,7 @@ Response:
         },
         "id": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.operationalinsights/workspaces/{workspaceName}/tables/{tableName}",
         "name": " {tableName}"
+                }
 
 ```
 ## <a name="check-if-the-troubleshooting-logs-feature-is-enabled-for-all-of-the-tables-in-a-workspace"></a>Çalışma alanındaki tüm tablolar için sorun giderme günlükleri özelliğinin etkinleştirilip etkinleştirilmediğini denetleyin
@@ -83,7 +84,7 @@ Response:
           },
           "id": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.operationalinsights/workspaces/{workspaceName}/tables/table1",
           "name": "table1"
-        },
+ },
         {
           "properties": {
             "retentionInDays": 7,
@@ -119,7 +120,7 @@ Response:
         },
         "id": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}",
         "name": "{tableName}"
-      }
+}
 ```
 >[!TIP]
 >* Komutları çalıştırmak için herhangi bir REST API aracı kullanabilirsiniz. [Daha fazla bilgi](https://docs.microsoft.com/rest/api/azure/)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 07562167131d1839bc0827c74fae09c683302c08
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 6c1f323828eb48b61b38370bc2fe56d4c93bf036
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118617"
+ms.locfileid: "98127218"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure İzleyici müşteri tarafından yönetilen anahtar 
 
@@ -126,10 +126,10 @@ Bu ayarlar, CLı ve PowerShell aracılığıyla Key Vault güncelleştirilebilen
 ## <a name="create-cluster"></a>Küme oluşturma
 
 > [!NOTE]
-> Kümeler, senaryonuza göre kullanılabilecek, sistem tarafından atanan ve Kullanıcı tarafından atanan iki [yönetilen kimlik türünü](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)destekler. Kimliği olarak ayarladığınızda, sistem tarafından atanan yönetilen kimlik daha basit ve küme oluşturma ile otomatik olarak oluşturulur `type` `SystemAssigned` . bu kimlik daha sonra Key Vault erişim izni vermek için kullanılabilir. Oluşturma sırasında müşteri tarafından yönetilen anahtar yapılandırmasına sahip bir küme oluşturmanız gerekiyorsa, önceden Key Vault bir anahtar tanımlı ve Kullanıcı tarafından atanan bir kimliğiniz olmalıdır ve sonra kimliği kimlik `type` `UserAssigned` `UserAssignedIdentities` ve anahtar ayrıntıları kaynak kimliğiyle oluşturun `keyVaultProperties` .
+> Kümeler iki [yönetilen kimlik türünü](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)destekler: sistem tarafından atanan ve Kullanıcı tarafından atanan ve her biri senaryonuz temelinde olabilir. Sistem tarafından atanan yönetilen kimlik daha basittir ve kimlik `type` "*Systemassigned*" olarak ayarlandığında küme oluşturma ile otomatik olarak oluşturulur. bu kimlik daha sonra Key Vault kümeye erişim vermek için kullanılabilir. Küme oluşturma zamanında müşteri tarafından yönetilen anahtar tanımlandığında bir küme oluşturmak istiyorsanız, önceden Key Vault bir anahtar tanımlı ve Kullanıcı tarafından atanan bir kimliğiniz olmalıdır ve sonra bu ayarlarla kümeyi oluşturmanız gerekir: kimlik, `type`  `UserAssignedIdentities` kimliğin kaynak kimliği ve `keyVaultProperties` anahtar ayrıntıları ile.
 
 > [!IMPORTANT]
-> Şu anda Key Vault Private-Link (vNet) içinde yer alıyorsa, Kullanıcı tarafından yönetilen anahtarı Kullanıcı tarafından atanan yönetilen kimlikle tanımladınız. Bu sınırlama, sistem tarafından atanan yönetilen kimliğe uygulanmaz.
+> Şu anda Key Vault Private-Link (vNet) içinde yer alıyorsa ve bu durumda sistem tarafından atanan yönetilen kimlik ile müşteri tarafından yönetilen anahtar tanımlanamıyor.
 
 [Adanmış kümeler](../log-query/logs-dedicated-clusters.md#creating-a-cluster)makalesinde gösterilen yordamı izleyin. 
 
@@ -416,7 +416,7 @@ Customer-Managed anahtar adanmış kümede verilmiştir ve bu işlemlere [adanm�
 
   - Kümeniz Kullanıcı tarafından atanan yönetilen kimlik ile ayarlandıysa, `UserAssignedIdentities` ile ayarı `None` kümeyi askıya alır ve verilerinize erişimi önler, ancak iptali iptal edin ve destek isteği açılmadan kümeyi etkinleştirin. Bu sınırlama, sistem tarafından atanan yönetilen kimliğe uygulandı.
 
-  - Şu anda Key Vault Private-Link (vNet) içinde yer alıyorsa, Kullanıcı tarafından yönetilen anahtarı Kullanıcı tarafından atanan yönetilen kimlikle tanımladınız. Bu sınırlama, sistem tarafından atanan yönetilen kimliğe uygulanmaz.
+  - Şu anda Key Vault Private-Link (vNet) içinde yer alıyorsa ve bu durumda sistem tarafından atanan yönetilen kimlik ile müşteri tarafından yönetilen anahtar tanımlanamıyor.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 

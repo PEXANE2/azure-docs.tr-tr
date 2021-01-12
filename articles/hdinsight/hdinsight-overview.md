@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: contperf-fy21q1
 ms.date: 08/21/2020
-ms.openlocfilehash: 7f4d820b33f36c295c294000d33a0ca5177fc4d1
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: a1ef441943ec3c29770e0964b3c1132f86239b42
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028079"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127422"
 ---
 # <a name="what-is-azure-hdinsight"></a>Azure HDInsight nedir?
 
@@ -53,7 +53,7 @@ Ayıklama, dönüştürme ve yükleme (ETL), heterojen veri kaynaklarından yap�
 
 ### <a name="data-warehousing"></a>Veri ambarlama
 
-Herhangi bir biçimdeki yapılandırılmış veya yapılandırılmamış veriler üzerinde petabayt ölçeğinde etkileşimli sorgular gerçekleştirmek için HDInsight kullanabilirsiniz. Ayrıca bunları BI araçlarına bağlayan modeller de oluşturabilirsiniz. Daha fazla bilgi için, [bu müşteri başarı öyküsünü okuyun](https://customers.microsoft.com/story/milliman).
+Herhangi bir biçimdeki yapılandırılmış veya yapılandırılmamış veriler üzerinde petabayt ölçeğinde etkileşimli sorgular gerçekleştirmek için HDInsight kullanabilirsiniz. Ayrıca bunları BI araçlarına bağlayan modeller de oluşturabilirsiniz.
 
 ![HDInsight mimarisi: Veri ambarlama](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-data-warehouse.png "HDInsight veri ambarı mimarisi")
 

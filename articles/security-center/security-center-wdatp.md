@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 34d8881eb072c4c723bf68b7c6ccfd24ab19cd3c
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 553151aebeadf4ad4764e747b1bf6dcd8c552721
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116288"
+ms.locfileid: "98126861"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Güvenlik Merkezi 'nin tümleşik EDR çözümü ile uç noktalarınızı koruyun: uç nokta için Microsoft Defender
 
@@ -71,7 +71,7 @@ Defender for Endpoint for Security Center ile tümleştirerek aşağıdaki ek ye
 
 Sunucularınızı izlemek için Azure Güvenlik Merkezi 'ni kullandığınızda, bir uç nokta kiracısı için Microsoft Defender otomatik olarak oluşturulur. Endpoint için Defender tarafından toplanan veriler, sağlama sırasında tanımlandığı şekilde kiracının coğrafi konumunda depolanır. Müşteri verileri-sahte bir biçimde, Birleşik Devletler merkezi depolama ve işleme sistemlerinde de depolanabilir. 
 
-Konumu yapılandırdıktan sonra değiştiremezsiniz. Verilerinizi başka bir konuma taşımanız gerekiyorsa, kiracıyı sıfırlamak için Microsoft Desteği başvurun.
+Konumu yapılandırdıktan sonra değiştiremezsiniz. Uç nokta için Microsoft Defender lisansınız varsa ve verilerinizi başka bir konuma taşımanız gerekiyorsa, kiracıyı sıfırlamak için Microsoft Desteği başvurun.
 
 
 ## <a name="enabling-the-microsoft-defender-for-endpoint-integration"></a>Endpoint Integration için Microsoft Defender 'ı etkinleştirme

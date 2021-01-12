@@ -9,12 +9,12 @@ ms.author: larryfr
 author: BlackMist
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 5b460a3f4aeb26eaacca56be30674cf0df011e7e
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 9b4cb3117464bfd32e17df4a1dbfdf7efd4ecbe6
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072318"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127779"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning nedir?
 
@@ -47,7 +47,7 @@ Azure Machine Learning, aşağıdakiler dahil olmak üzere makine öğrenimi iş
 
 + Kendi kodunuzu yazmak için <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">r Için SDK 'yı</a> kullandığınız r betikleri veya Not defterleri veya tasarımcıda r modüllerini kullanın.
 
-+ + [Birçok model Çözüm Hızlandırıcısı](https://aka.ms/many-models) (önizleme) Azure Machine Learning oluşturur ve yüzlerce veya hatta binlerce makine öğrenimi modelini eğitmenize, çalıştırmanıza ve yönetmenize olanak sağlar.
++ [Birçok model Çözüm Hızlandırıcısı](https://aka.ms/many-models) (önizleme) Azure Machine Learning oluşturur ve yüzlerce veya hatta binlerce makine öğrenimi modelini eğitmenize, çalıştırmanıza ve yönetmenize olanak sağlar.
 
 + [Visual Studio Code kullanıcıları için makine öğrenimi uzantısı](tutorial-setup-vscode-extension.md)
 

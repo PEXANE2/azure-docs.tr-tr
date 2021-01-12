@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: a5764a9f230540d58edf71e8c00781e86589aa9a
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: ec4917aa378f746eb2caac6a7b4ce99d1c44db90
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070176"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127660"
 ---
 # <a name="configure-and-submit-training-runs"></a>Eğitim çalıştırmalarını yapılandırma ve gönderme
 
@@ -26,7 +26,7 @@ Eğitim sırasında, yerel bilgisayarınızda başlamak ve daha sonra bulut taba
 
 Yapmanız gereken tek şey, bir **komut dosyası çalıştırma yapılandırması** içindeki her bir işlem hedefi için ortamı tanımlamaktır.  Daha sonra eğitim denemenizi farklı bir işlem hedefinde çalıştırmak istediğinizde, bu işlem için çalıştırma yapılandırmasını belirtin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin
 * [Python için Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.13.0)
@@ -175,6 +175,19 @@ Kaynak dizinin yerel bir git deposu olduğu bir eğitim çalıştırması başla
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
+* **Çalıştırma başarısız `jwt.exceptions.DecodeError`**: tam hata iletisi: `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()` . 
+    
+    En son azureml-Core sürümüne yükseltmeyi göz önünde bulundurun: `pip install -U azureml-core` .
+    
+    Bu sorunu yerel çalıştırmalar için çalıştırıyorsanız, ortamınızda çalıştırmalarının çalıştırıldığı PyJWT sürümünün sürümünü denetleyin. PyJWT 'nin desteklenen sürümleri < 2.0.0. Sürüm >= 2.0.0 olduğunda PyJWT öğesini ortamdan kaldırın. PyJWT sürümünü denetleyebilir, doğru sürümü aşağıdaki şekilde kaldırıp yükleyebilirsiniz:
+    1. Bir komut kabuğu başlatın, azureml, azureml 'nın yüklü olduğu Conda ortamını etkinleştirin.
+    2. `pip freeze` `PyJWT` Bulunursa, listelenen sürümün < 2.0.0 olması gerektiğini belirtin
+    3. Listelenen sürüm desteklenen bir sürüm değilse, `pip uninstall PyJWT` komut kabuğu 'nda, onay için y girin.
+    4. `pip install 'PyJWT<2.0.0'` kullanarak yükleme
+    
+    Çalıştırılmasıyla birlikte Kullanıcı tarafından oluşturulan bir ortam gönderiyorsanız, bu ortamda en son azureml-çekirdek sürümünü kullanmayı düşünün. Sürümler >= 1.18.0 of azureml-Core zaten pin PyJWT < 2.0.0. Gönderdiğiniz ortamda bir azureml-Core < 1.18.0 sürümü kullanmanız gerekiyorsa, PIP bağımlılıklarınız içinde PyJWT < 2.0.0 belirttiğinizden emin olun.
+
+
  * **Moduleerrors (modül adı yok)**: Azure ML 'de denemeleri gönderirken moduleerrors içinde çalıştırıyorsanız, eğitim betiği bir paketin yüklenmesini bekliyor ancak bu, eklenmez. Paket adı ' nı sağladığınızda, Azure ML paketi eğitim çalıştırınızdan kullanılan ortama yüklenir.
 
     Denemeleri göndermek için estimators kullanıyorsanız, paketi `pip_packages` `conda_packages` yüklemek istediğiniz kaynağı temel alarak tahmin aracı 'da veya parametresi aracılığıyla bir paket adı belirtebilirsiniz. Ayrıca, tüm bağımlılıklarınızı kullanarak bir de bir de belirtebilirsiniz `conda_dependencies_file` veya parametresini kullanarak bir txt dosyasındaki tüm PIP gereksinimlerinizi listeleyin `pip_requirements_file` . Tahmin aracı tarafından kullanılan varsayılan görüntüyü geçersiz kılmak istediğiniz bir Azure ML ortamı nesneniz varsa, bu ortamı `environment` tahmin aracı oluşturucusunun parametresi aracılığıyla belirtebilirsiniz.
@@ -204,18 +217,6 @@ Kaynak dizinin yerel bir git deposu olduğu bir eğitim çalıştırması başla
     ```
 
     Azure ML dahili olarak aynı ölçüm adına sahip blokları bitişik bir listede birleştirir.
-
-* **Çalıştırma başarısız `jwt.exceptions.DecodeError`**: tam hata iletisi: `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()` . 
-    
-    En son azureml-Core sürümüne yükseltmeyi göz önünde bulundurun: `pip install -U azureml-core` .
-    
-    Bu sorunu yerel çalıştırmalar için çalıştırıyorsanız, ortamınızda çalıştırmalarının çalıştırıldığı PyJWT sürümünün sürümünü denetleyin. PyJWT 'nin desteklenen sürümleri < 2.0.0. Sürüm >= 2.0.0 olduğunda PyJWT öğesini ortamdan kaldırın. PyJWT sürümünü denetleyebilir, doğru sürümü aşağıdaki şekilde kaldırıp yükleyebilirsiniz:
-    1. Bir komut kabuğu başlatın, azureml, azureml 'nın yüklü olduğu Conda ortamını etkinleştirin.
-    2. `pip freeze` `PyJWT` Bulunursa, listelenen sürümün < 2.0.0 olması gerektiğini belirtin
-    3. Listelenen sürüm desteklenen bir sürüm değilse, `pip uninstall PyJWT` komut kabuğu 'nda, onay için y girin.
-    4. `pip install 'PyJWT<2.0.0'` kullanarak yükleme
-    
-    Çalıştırılmasıyla birlikte Kullanıcı tarafından oluşturulan bir ortam gönderiyorsanız, bu ortamda en son azureml-çekirdek sürümünü kullanmayı düşünün. Sürümler >= 1.18.0 of azureml-Core zaten pin PyJWT < 2.0.0. Gönderdiğiniz ortamda bir azureml-Core < 1.18.0 sürümü kullanmanız gerekiyorsa, PIP bağımlılıklarınız içinde PyJWT < 2.0.0 belirttiğinizden emin olun.
 
 * **İşlem hedefinin başlaması uzun sürüyor**: işlem hedeflerine yönelik Docker görüntüleri Azure Container Registry (ACR) ' den yüklenir. Varsayılan olarak, Azure Machine Learning *temel* hizmet katmanını kullanan bir ACR oluşturur. Çalışma alanınızın ACR 'sini standart veya Premium katmana değiştirmek, görüntüleri oluşturmak ve yüklemek için geçen süreyi azaltabilir. Daha fazla bilgi için bkz. [Azure Container Registry hizmet katmanları](../container-registry/container-registry-skus.md).
 

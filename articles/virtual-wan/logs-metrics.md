@@ -8,18 +8,24 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 53b8d74d6eb35347d6ac5b27d12fa5b5eaed2582
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 62979a2cbe2a5912476ca65327a06eef9c36c1cb
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566376"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127898"
 ---
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Azure sanal WAN günlükleri ve ölçümleri
 
-Azure Izleyici 'yi kullanarak Azure sanal WAN izleyebilirsiniz. Sanal WAN, tek bir işlemsel arabirim sağlamak için birçok ağ, güvenlik ve yönlendirme işlevlerini birlikte getiren bir ağ hizmetidir. Sanal WAN VPN Gateway 'leri, ExpressRoute ağ geçitleri ve Azure Güvenlik Duvarı, Azure Izleyici aracılığıyla günlüğe kaydetme ve ölçümlere sahiptir. Azure Güvenlik duvarı bilgileri için bkz. [Azure Güvenlik Duvarı günlükleri ve ölçümleri](../firewall/logs-and-metrics.md).
+Azure Izleyici 'yi kullanarak Azure sanal WAN izleyebilirsiniz. Sanal WAN, tek bir işlemsel arabirim sağlamak için birçok ağ, güvenlik ve yönlendirme işlevlerini birlikte getiren bir ağ hizmetidir. Sanal WAN VPN Gateway 'leri, ExpressRoute ağ geçitleri ve Azure Güvenlik Duvarı, Azure Izleyici aracılığıyla günlüğe kaydetme ve ölçümlere sahiptir.
 
 Bu makalede Portal aracılığıyla kullanılabilen ölçümler ve Tanılamalar ele alınmaktadır. Ölçümler hafif ve neredeyse gerçek zamanlı senaryoların yanı sıra uyarı ve hızlı sorun algılama için yararlı hale getirebilirsiniz.
+
+## <a name="monitoring-secured-hub-azure-firewall"></a>Güvenli hub 'ı izleme (Azure Güvenlik Duvarı) 
+
+Azure Güvenlik Duvarı günlüklerini kullanarak güvenli hub 'ı izleyebilirsiniz. Ayrıca etkinlik günlüklerini kullanarak Azure Güvenlik Duvarı kaynaklarıyla ilgili işlemleri denetleyebilirsiniz.
+
+Azure Güvenlik Duvarı 'nı kullanarak sanal hub 'ınızı güvenli hale getirme seçeneğini belirlediyseniz, ilgili günlüklere ve ölçümlere buradan ulaşabilirsiniz: [Azure Güvenlik Duvarı günlükleri ve ölçümleri](../firewall/logs-and-metrics.md).
 
 ## <a name="metrics"></a>Ölçümler
 
@@ -60,7 +66,7 @@ Aşağıdaki adımlar ölçümleri bulmanıza ve görüntülemenize yardımcı o
 
 2. Siteden siteye ağ geçidini bulmak için ExpressRoute, bir ExpressRoute ağ geçidini bulmak için **ExpressRoute** veya bir noktadan siteye ağ geçidini bulmak IÇIN **Kullanıcı VPN (siteye işaret)** **seçeneğini belirleyin.** Sayfasında, ağ geçidi bilgilerini görebilirsiniz. Bu bilgileri kopyalayın. Daha sonra, Azure Izleyici 'yi kullanarak tanılamayı görüntülemek için kullanacaksınız.
 
-3. **Ölçümler** ’i seçin.
+3. **Ölçümler**’i seçin.
 
    :::image type="content" source="./media/logs-metrics/metrics.png" alt-text="Ekran görüntüsünde, Azure Izleyici 'de Görünüm ' ün bulunduğu siteden siteye V P N bölmesi görüntülenir.":::
 
@@ -87,7 +93,7 @@ Azure Noktadan siteye VPN ağ geçitleri için aşağıdaki Tanılamalar mevcutt
 * **Ike tanılama günlükleri** – IPSec bağlantıları için IKE 'ye özgü Tanılamalar.
 * **P2S tanılama günlükleri** – Bunlar, kullanıcı VPN (noktadan sıteye) P2S yapılandırma ve istemci olaylardır. Bunlara istemci bağlantısı/bağlantıyı kes, VPN istemci adresi ayırma ve diğer Tanılamalar de dahildir.
 
-### <a name="view-diagnostic-logs"></a><a name="diagnostic-steps"></a>Tanılama günlüklerini görüntüle
+### <a name="view-diagnostic-logs"></a><a name="diagnostic-steps"></a>Tanılama günlüklerini görüntüleme
 
 Aşağıdaki adımlar tanılamayı bulmanıza ve görüntülemenize yardımcı olur:
 
@@ -95,11 +101,11 @@ Aşağıdaki adımlar tanılamayı bulmanıza ve görüntülemenize yardımcı o
 
    :::image type="content" source="./media/logs-metrics/3.png" alt-text="' Kopyala ' düğmesine işaret eden bir ok ile ' genel bakış ' bölümünü gösteren ekran görüntüsü.":::
 
-2. Izleme bölümünde kaynak grubuna gidin. **Tanılama ayarları** ' nı seçin ve kaynak bilgilerini girin. Bu makalenin önceki bölümlerinde yer alan [ağ geçidi ölçümlerini görüntüle](#metrics-steps) bölümünde 2. adımda kopyaladığınız kaynak bilgileri.
+2. Izleme bölümünde kaynak grubuna gidin. **Tanılama ayarları**' nı seçin ve kaynak bilgilerini girin. Bu makalenin önceki bölümlerinde yer alan [ağ geçidi ölçümlerini görüntüle](#metrics-steps) bölümünde 2. adımda kopyaladığınız kaynak bilgileri.
 
    :::image type="content" source="./media/logs-metrics/4.png" alt-text="' Kaynak ' açılan simgesine işaret eden bir ok ile ' Izleme ' bölümünü gösteren ekran görüntüsü.":::
 
-3. Sonuçlar sayfasında **+ Tanılama ayarı Ekle** ' yi seçin ve ardından bir seçenek belirleyin. Log Analytics, bir olay hub 'ına ya da yalnızca bir depolama hesabına arşivleme ' ye gönderme seçeneğini belirleyebilirsiniz.
+3. Sonuçlar sayfasında **+ Tanılama ayarı Ekle**' yi seçin ve ardından bir seçenek belirleyin. Log Analytics, bir olay hub 'ına ya da yalnızca bir depolama hesabına arşivleme ' ye gönderme seçeneğini belirleyebilirsiniz.
 
    :::image type="content" source="./media/logs-metrics/5.png" alt-text="ölçümler sayfası":::
 

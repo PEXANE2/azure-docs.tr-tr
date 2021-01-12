@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 87fb7f0eb4017a39aca081f73de543a67400d4b5
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 5a9f6fa79da59425e4972dddd21ffdea15af73e7
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97969070"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127915"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Telemetri, özellik ve komut yükleri
 
@@ -187,6 +187,9 @@ Bir cihaz modelinden aşağıdaki kod parçacığında `geopoint` telemetri tür
   "schema": "geopoint"
 }
 ```
+
+> [!NOTE]
+> **Geopoint** şema türü, [dijital TWINS tanım dili belirtiminin](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)bir parçası değil. IoT Central Şu anda **geopoint** şema türünü ve geriye doğru uyumluluk için **konum** anlam türünü desteklemektedir.
 
 Bir cihaz istemcisi, aşağıdaki örneğe benzer şekilde Telemetriyi JSON olarak göndermelidir. IoT Central, değeri bir haritada PIN olarak görüntüler:
 
@@ -576,6 +579,9 @@ Bir cihaz modelinden aşağıdaki kod parçacığında bir `geopoint` özellik t
 }
 ```
 
+> [!NOTE]
+> **Geopoint** şema türü, [dijital TWINS tanım dili belirtiminin](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)bir parçası değil. IoT Central Şu anda **geopoint** şema türünü ve geriye doğru uyumluluk için **konum** anlam türünü desteklemektedir.
+
 Bir cihaz istemcisi, cihaz ikizi bildirilen bir özellik gibi aşağıdaki örnek gibi görünen bir JSON yükü göndermelidir:
 
 ```json
@@ -717,7 +723,7 @@ IoT Central cihazdan yazılabilir Özellik güncelleştirmelerine yanıt bekliyo
 
 `ac` , aşağıdaki tablodaki değerleri kullanan sayısal bir alandır:
 
-| Değer | Etiketle | Açıklama |
+| Değer | Etiketle | Description |
 | ----- | ----- | ----------- |
 | `'ac': 200` | Tamamlandı | Özellik değiştirme işlemi başarıyla tamamlandı. |
 | `'ac': 202`  veya `'ac': 201` | Beklemede | Özellik değiştirme işlemi bekliyor veya devam ediyor |

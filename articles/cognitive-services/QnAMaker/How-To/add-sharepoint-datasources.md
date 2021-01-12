@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: c231ac95841043e5576f064e683dd86d9695b108
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: d6e52da7fce39a259107fe60a21fb5ead7b18709
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353196"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127830"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Bilgi tabanınız için güvenli bir SharePoint veri kaynağı ekleme
 
@@ -20,7 +20,7 @@ Bilgi tabanınızı Soru-Cevap Oluşturma Yöneticisi olarak güvenli bir ShareP
 
 Soru-Cevap Oluşturma Bilgi Bankası Yöneticisi Active Directory yöneticisi değilse, bu işlemi tamamlaması için Active Directory Manager ile iletişim kurması gerekir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bulut tabanlı SharePoint-Soru-Cevap Oluşturma izinler için Microsoft Graph kullanır. SharePoint şirket içi ise, Microsoft Graph izinleri belirleyemeyeceği için SharePoint 'ten ayıklanamaz.
 * URL biçimi-Soru-Cevap Oluşturma yalnızca paylaşım için oluşturulan ve biçimdeki SharePoint URL 'lerini destekler `https://\*.sharepoint.com`
@@ -127,12 +127,16 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 
 
 
+
+## <a name="add-sharepoint-data-source-with-apis"></a>API 'lerle SharePoint veri kaynağı ekleme
+
+Azure Blob depolamayı kullanarak API aracılığıyla en son SharePoint içeriğini eklemeye yönelik bir geçici çözüm vardır: 
+1.  SharePoint dosyalarını yerel olarak indirin. API 'yi çağıran kullanıcının SharePoint 'e erişimi olması gerekir. 
+1.  Azure Blob stoarge 'ye yükleyin. Bu, [SAS belirtecini kullanarak](https://docs.microsoft.com/azure/storage/common/storage-sas-overview#how-a-shared-access-signature-works) güvenli bir paylaşılan erişim oluşturur. 
+1. SAS belirteci ile oluşturulan blob URL 'sini Soru-Cevap Oluşturma API'si geçirin. Dosyadaki soru cevaplarını ayıklamadan, Soru-Cevap Oluşturma API'si geçirmeden önce URL 'nin sonuna ' &ext = PDF ' veya ' &ext = Doc ' olarak sonek dosya türünü eklemeniz gerekir>  
+
+
 <!--
-
-## Add SharePoint data source with APIs
-
-You need to get the SharePoint file's URI before adding it to QnA Maker.
-
 ## Get SharePoint File URI
 
 Use the following steps to transform the SharePoint URL into a sharing token.

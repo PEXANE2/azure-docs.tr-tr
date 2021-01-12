@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 01/07/2021
-ms.openlocfilehash: 4ff91949c42b9a0e33999b7d0dc21fd24da7cdd9
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 0ceb9095f15009c150690b67271f4a654cd6110f
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120351"
+ms.locfileid: "98127762"
 ---
 # <a name="enroll-or-renew-an-azure-dev-tools-for-teaching-subscription"></a>Eğitim aboneliği için Azure dev araçlarını kaydetme veya yenileme
 
@@ -34,7 +34,7 @@ Bu makalede, eğitim ve abonelik oluşturma için Azure dev araçları 'na kaydo
 1. İlk kez kayıt yapıyorsanız **kurumunuzun bilgilerini** doldurun. Yenilendiğinde, bu bilgiler otomatik olarak doldurulur.
 
     :::image type="content" source="media/enroll-renew-subscription/application-institution-information.png" alt-text="Kurum bilgilerini girin." border="false":::
-        
+
 1. **Abonelik planı** ' nı seçin ve aboneliğin **abonelik yöneticisini** onaylayın. Abonelik yöneticisinin e-posta etki alanı, yazılım avantajlarını indirmek üzere kolay erişim sağlamak için aynı etki alanındaki öğrencileri etkinleştirecektir.
 
     :::image type="content" source="media/enroll-renew-subscription/application-select-subscription-plan.png" alt-text="Abonelik planı ' nı seçin." border="false":::

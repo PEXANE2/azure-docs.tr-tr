@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/08/2020
 ms.author: jeedes
-ms.openlocfilehash: 237ed71f058ae099f19924481eb4dbeb2e2aba05
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 3db6fd2e6df96590d7d405157cbb33900c7d8531
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589449"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127813"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Öğretici: Amazon Web Services (AWS) ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -113,7 +113,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. AWS uygulaması, yukarıdakine ek olarak, aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
-    | Name  | Kaynak özniteliği  | Ad Alanı |
+    | Ad  | Kaynak özniteliği  | Ad Alanı |
     | --------------- | --------------- | --------------- |
     | Roleoturumadı | User. UserPrincipalName | `https://aws.amazon.com/SAML/Attributes` |
     | Rol | Kullanıcı. atandroles |  `https://aws.amazon.com/SAML/Attributes` |
@@ -388,7 +388,11 @@ Uygulamayı dilediğiniz modda test etmek için Microsoft Access panel ' i de ku
 * Rollerin AWS 'den Azure AD 'ye aktarılmak için aşağıdaki gereksinimleri karşılaması gerekir:
 
   * Roller tam olarak bir SAML sağlayıcısına sahip olmalıdır ve AWS 'de tanımlı
-  * Rol için ARN (Amazon kaynak adı) ve ilişkili SAML-Provider için ARN 'ın Birleşik uzunluğu 120 karakterden az olmalıdır
+  * Rol için ARN (Amazon kaynak adı) ve ilişkili SAML-Provider için ARN 'ın Birleşik uzunluğu 240 karakterden az olmalıdır.
+
+## <a name="change-log"></a>Değişiklik günlüğü
+
+* 01/12/2020-119 karakterden daha fazla 239 karakter uzunluğundaki rol uzunluğu sınırı. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

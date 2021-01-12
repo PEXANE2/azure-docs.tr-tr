@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: bca826cda8dfe47c341886faaf4a0d66f09d37d2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b8b7a03d5176f5dbd8500b5ff9044c2f22ecbfc0
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966352"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127150"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Azure Windows VM Uzantısı hatalarında sorun giderme
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -85,19 +85,23 @@ Bu sertifika, sanal makinenin içinden Windows Konuk Aracısı yeniden başlatı
 - Sağ tıklayın ve "Görevi Sonlandır" seçeneğini belirleyin. İşlem otomatik olarak yeniden başlatılacak
 
 
-Ayrıca, "boş güncelleştirme" yürüterek VM 'ye yeni bir GoalState tetikleyebilirsiniz:
+Ayrıca, bir "VM yeniden uygula" yürüterek sanal makineye yeni bir GoalState tetikleyebilirsiniz. VM yeniden [uygulama](https://docs.microsoft.com/rest/api/compute/virtualmachines/reapply) , bir VM 'nin durumunu yeniden uygulamak için 2020 ' de TANıTıLAN bir API 'dir. Kısa bir VM kapalı kalma süresini kabul edebilmeniz için bunu tek seferde yapmanızı öneririz. Yeniden Uygula işlemi, VM 'nin yeniden başlatılmasına neden olmaz ve yeniden uygula 'yı çağırmanın büyük çoğunluğu sanal makineyi yeniden başlatmaz, VM modeline yönelik başka bir bekleyen güncelleştirme, yeni bir hedef durumu tetikler ve diğer değişikliğin yeniden başlatma gerektirebilecekleri çok küçük bir risk vardır. 
 
-Azure PowerShell:
+Azure portal:
+
+Portalda VM ' yi seçin ve sol bölmedeki **destek + sorun giderme**' yi seçin, yeniden **Dağıt**' ı ve ardından **Yeniden Uygula ' yı seçin.**
+
+
+Azure PowerShell *(RG adı ve VM adını değerlerinizle değiştirin)*:
 
 ```azurepowershell
-$vm = Get-AzureRMVM -ResourceGroupName <RGName> -Name <VMName>  
-Update-AzureRmVM -ResourceGroupName <RGName> -VM $vm  
+Set-AzVM -ResourceGroupName <RG Name> -Name <VM Name> -Reapply
 ```
 
-Azure CLı:
+Azure CLı *(RG adı ve VM adını değerlerinizle değiştirin)*:
 
 ```azurecli
-az vm update -g <rgname> -n <vmname>
+az vm reapply -g <RG Name> -n <VM Name>
 ```
 
-"Boş güncelleştirme" işe yaramazsa, Azure Yönetim Portalı sanal makinesine yeni bir boş veri diski ekleyebilir ve daha sonra sertifika yeniden eklendikten sonra kaldırabilirsiniz.
+Bir "sanal makine yeniden uygula" işlemi işe yaramazsa, Azure Yönetim Portalı sanal makinesine yeni bir boş veri diski ekleyebilir ve ardından sertifika geri eklendikten sonra bunu kaldırabilirsiniz.

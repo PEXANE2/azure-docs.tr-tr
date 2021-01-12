@@ -10,18 +10,21 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 4516bbddd3fda593021288a440e1b354d4d7f1e3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: cc373a67ee0f4ed2e900e7b41cbcb96d31d67b34
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340246"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98126895"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>İnsan etiketlendirmeleri oluşturma
 
 Tanıma doğruluğunu artırmak istiyorsanız, özellikle sözcüklerin silindiği veya yanlış kullanıldığı durumlarda oluşan sorunlar, insan etiketli dökümlerini ses verilerinize birlikte kullanmak isteyeceksiniz. İnsan etiketli döküm nedir? Bu çok kolay bir deyişle, bir ses dosyasının sözcük sözcük, tam olarak yazılı olduğu bir işlemdir.
 
-Tanımayı geliştirmek için büyük bir döküm verileri örneği gerekir, bu da 10 ila 1.000 saatlik Döküm verileri sağlamayı öneririz. Bu sayfada, yüksek kaliteli dökümler oluşturmanıza yardımcı olmak için tasarlanan yönergeleri inceleyeceğiz. Bu kılavuz, ABD Ingilizcesi, MANDARIN Çince ve Almanca bölümleri ile yerel ayar tarafından bölünmüştür.
+Tanımayı geliştirmek için büyük bir döküm verileri örneği gerekir, 10 ila 20 saatlik Döküm verileri sağlamayı öneririz. Bu sayfada, yüksek kaliteli dökümler oluşturmanıza yardımcı olmak için tasarlanan yönergeleri inceleyeceğiz. Bu kılavuz, ABD Ingilizcesi, MANDARIN Çince ve Almanca bölümleri ile yerel ayar tarafından bölünmüştür.
+
+> [!NOTE]
+> Tüm temel modeller, ses dosyalarıyla özelleştirmeyi desteklemez. Bir temel model bunu desteklemiyorsa, eğitim yalnızca ilgili metinle aynı şekilde döküm metinlerini kullanacaktır.
 
 ## <a name="us-english-en-us"></a>ABD Ingilizcesi (en-US)
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
-ms.openlocfilehash: 8ee6449f357a578b30809bb03723ac1556e4f459
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62c8240a4d2e50aa3b584f322baf7d2ee217c6d3
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816210"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127881"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>Mobility hizmeti anında yükleme sorunlarını giderme
 
@@ -51,7 +51,7 @@ Windows için (**hata 95107**), Kullanıcı hesabının kaynak bilgisayarda bir 
 Linux için (**hata 95108**), Mobility hizmeti aracısının başarıyla yüklenmesi için **kök** hesabı seçmeniz gerekir. Ayrıca, SSH Dosya Aktarım Protokolü (SFTP) hizmetlerinin çalışıyor olması gerekir. _Sshd_config_ dosyasında SFTP alt sistemi ve parola kimlik doğrulamasını etkinleştirmek için:
 
 1. **Kök** kullanıcı olarak oturum açın.
-1. _/Etc/ssh/sshd_config dosyasına_gidin, ile başlayan satırı bulun `PasswordAuthentication` .
+1. _/Etc/ssh/sshd_config dosyasına_ gidin, ile başlayan satırı bulun `PasswordAuthentication` .
 1. Satırın açıklamasını kaldırın ve değerini olarak değiştirin `yes` .
 1. İle başlayan satırı bulun `Subsystem` ve satırın açıklamasını kaldırın.
 1. Hizmeti yeniden başlatın `sshd` .
@@ -106,7 +106,22 @@ Yapılandırma sunucusu/genişleme işlem sunucusu, Mobility Aracısı 'nı yük
 
 Hatayı gidermek için:
 
+* Kullanıcı hesabının, kaynak bilgisayarda, yerel bir hesap veya etki alanı hesabıyla yönetim erişimi olduğunu doğrulayın. Bir etki alanı hesabı kullanmıyorsanız, yerel bilgisayarda Uzak Kullanıcı erişim denetimini devre dışı bırakmanız gerekir.
+  * Uzaktan Kullanıcı erişimi denetimini devre dışı bırakan bir kayıt defteri anahtarını el ile eklemek için:
+    * `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`
+    * Yeni bir Ekle `DWORD` : `LocalAccountTokenFilterPolicy`
+    * Değeri olarak ayarlayın `1`
+  * Kayıt defteri anahtarını eklemek için, bir komut isteminden aşağıdaki komutu çalıştırın:
+
+    `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
+
 * Kaynak makinenize yapılandırma sunucusundan ping atabiliyor olduğunuzdan emin olun. Çoğaltmayı etkinleştir sırasında genişleme işlem sunucusu ' nu seçtiyseniz, kaynak makinenize işlem sunucusundan ping atadığınızı doğrulayın.
+
+* Sanal makinenizde dosya ve yazıcı paylaşım hizmeti 'nin etkinleştirildiğinden emin olun. [Buradaki](vmware-azure-troubleshoot-push-install.md#file-and-printer-sharing-services-check-errorid-95105--95106)adımları kontrol edin.
+
+* Sanal makinenizde WMI hizmetinin etkinleştirildiğinden emin olun. [Buradaki](vmware-azure-troubleshoot-push-install.md#windows-management-instrumentation-wmi-configuration-check-error-code-95103)adımları kontrol edin.
+
+* Sanal makinenizde bulunan ağ paylaşılan klasörlerinin işlem sunucusundan erişilebilir olduğundan emin olun. [Buradaki](vmware-azure-troubleshoot-push-install.md#check-access-for-network-shared-folders-on-source-machine-errorid-9510595523)adımları kontrol edin.
 
 * Aşağıdaki komutta gösterildiği gibi, kaynak sunucu makinesi komut satırından, `Telnet` HTTPS bağlantı noktası 135 üzerinde yapılandırma sunucusuna veya genişleme işlem sunucusuna ping çekmek için öğesini kullanın. Bu komut, ağ bağlantısı sorunları veya güvenlik duvarı bağlantı noktası engelleme sorunları olup olmadığını denetler.
 
@@ -156,7 +171,7 @@ Bağlantı başarısız olursa, lütfen tüm önkoşulların karşılanıp karş
 
 Bir bağlantı denetiminden sonra, sanal makinenizde dosya ve yazıcı paylaşım hizmetinin etkin olduğunu doğrulayın. Bu ayarlar, Mobility aracısını kaynak makineye kopyalamak için gereklidir.
 
-**Windows 2008 R2 ve önceki sürümler**için:
+**Windows 2008 R2 ve önceki sürümler** için:
 
 * Windows Güvenlik Duvarı aracılığıyla dosya ve yazdırma paylaşımını etkinleştirmek için
   1. **Denetim Masası**  >  **sistem ve güvenlik**  >  **Windows Güvenlik Duvarı**'nı açın. Sol bölmede, konsol ağacındaki **Gelişmiş ayarlar**  >  **gelen kuralları** ' nı seçin.
@@ -165,7 +180,7 @@ Bir bağlantı denetiminden sonra, sanal makinenizde dosya ve yazıcı paylaşı
 
 * Grup ilkesi ile dosya paylaşımını etkinleştirmek için:
   1. **Başlat**' a gidin, yazın `gpmc.msc` ve arama yapın.
-  1. Gezinti bölmesinde, aşağıdaki klasörleri açın: **Local Computer Policy**  >  **User Configuration**  >  **Administrative Templates**  >  **Windows bileşenleri**  >  **ağ paylaşımı**Yönetim Şablonları yerel bilgisayar ilkesi Kullanıcı Yapılandırması.
+  1. Gezinti bölmesinde, aşağıdaki klasörleri açın:   >    >    >  **Windows bileşenleri**  >  **ağ paylaşımı** Yönetim Şablonları yerel bilgisayar ilkesi Kullanıcı Yapılandırması.
   1. Ayrıntılar bölmesinde, **kullanıcıların profilleri içinde dosya paylaşmasını engelle**' ye çift tıklayın.
 
      Grup ilkesi ayarı devre dışı bırakmak ve kullanıcının dosya paylaşma özelliğini etkinleştirmek için **devre dışı**' yı seçin.
@@ -224,9 +239,9 @@ Birden çok önyükleme diskine sahip bir sanal makine [desteklenen bir yapılan
 
 ### <a name="possible-cause"></a>Olası nedeni
 
-Genel Birleşik önyükleme yükleyicisi (GRUB) yapılandırma dosyaları (_/boot/grub/menu.lst_, _/boot/grub/grub.cfg_, _/Boot/GRUB2/grub.cfg_veya _/etc/default/grub_), parametre **kökünün** değerini içerebilir ve evrensel benzersiz tanımlayıcı (UUID) yerine gerçek cihaz adları olarak **sürdürülür** . VM 'nin yeniden başlatılması sırasında cihaz adlarının değiştirebilmeleri için UUID 'nin yaklaşımını Site Recovery. Örneğin, VM, yük devretme sırasında aynı ada sahip ve sorunlara neden olan bir ad ile çevrimiçi olamıyor olabilir.
+Genel Birleşik önyükleme yükleyicisi (GRUB) yapılandırma dosyaları (_/boot/grub/menu.lst_, _/boot/grub/grub.cfg_, _/Boot/GRUB2/grub.cfg_ veya _/etc/default/grub_), parametre **kökünün** değerini içerebilir ve evrensel benzersiz tanımlayıcı (UUID) yerine gerçek cihaz adları olarak **sürdürülür** . VM 'nin yeniden başlatılması sırasında cihaz adlarının değiştirebilmeleri için UUID 'nin yaklaşımını Site Recovery. Örneğin, VM, yük devretme sırasında aynı ada sahip ve sorunlara neden olan bir ad ile çevrimiçi olamıyor olabilir.
 
-Örneğin:
+Örnek:
 
 - Aşağıdaki satır, GRUB dosyası _/Boot/GRUB2/grub.cfg_:
 
@@ -245,7 +260,7 @@ Cihaz adları karşılık gelen UUID ile değiştirilmelidir.
 
 1. Komutu yürüterek cihazın UUID 'sini bulun `blkid \<device name>` .
 
-   Örneğin:
+   Örnek:
 
    ```shell
    blkid /dev/sda1
@@ -254,7 +269,7 @@ Cihaz adları karşılık gelen UUID ile değiştirilmelidir.
    /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3"
    ```
 
-1. Şimdi, cihaz adını, benzer biçimde UUID ile değiştirin `root=UUID=\<UUID>` . Örneğin, _/Boot/GRUB2/grub.cfg_, _/Boot/GRUB2/grub.cfg_veya _/etc/default/grub_ dosyalarında belirtilen kök ve yenıden başlatma parametresi için cihaz adlarını UUID ile değiştirmek, dosyalardaki satırlar aşağıdaki satıra benzer şekilde görünür:
+1. Şimdi, cihaz adını, benzer biçimde UUID ile değiştirin `root=UUID=\<UUID>` . Örneğin, _/Boot/GRUB2/grub.cfg_, _/Boot/GRUB2/grub.cfg_ veya _/etc/default/grub_ dosyalarında belirtilen kök ve yenıden başlatma parametresi için cihaz adlarını UUID ile değiştirmek, dosyalardaki satırlar aşağıdaki satıra benzer şekilde görünür:
 
    `kernel /boot/vmlinuz-3.0.101-63-default root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4 resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b splash=silent crashkernel=256M-:128M showopts vga=0x314`
 
@@ -286,7 +301,7 @@ Bu sorun için görülen olası hata kimlikleri 95572 ve 95573 ' dir. Bu sorun, 
 
 ## <a name="vss-installation-failures"></a>VSS yükleme sorunları
 
-Birim gölge kopyası hizmeti (VSS) yüklemesi, Mobility Aracısı yüklemesinin bir parçasıdır. Bu hizmet, uygulamayla tutarlı kurtarma noktaları oluşturmak için sürecinde kullanılır. VSS yüklemesi sırasında oluşan başarısızlıklar, birden çok nedenden dolayı oluşabilir. Hataları tam olarak belirlemek için _C:\programdata\asrsetuplogs\asrunifiedagentınstaller.log_dosyasına bakın. Yaygın hatalardan bazıları ve çözüm adımları aşağıdaki bölümde vurgulanır.
+Birim gölge kopyası hizmeti (VSS) yüklemesi, Mobility Aracısı yüklemesinin bir parçasıdır. Bu hizmet, uygulamayla tutarlı kurtarma noktaları oluşturmak için sürecinde kullanılır. VSS yüklemesi sırasında oluşan başarısızlıklar, birden çok nedenden dolayı oluşabilir. Hataları tam olarak belirlemek için _C:\programdata\asrsetuplogs\asrunifiedagentınstaller.log_ dosyasına bakın. Yaygın hatalardan bazıları ve çözüm adımları aşağıdaki bölümde vurgulanır.
 
 ### <a name="vss-error--2147023170-0x800706be---exit-code-511"></a>VSS hatası-2147023170 [0X800706in]-çıkış kodu 511
 
@@ -333,7 +348,7 @@ Hatanın nedenini öğrenmek için aşağıdaki yordamı kullanın.
 
 ### <a name="examine-the-installation-logs"></a>Yükleme günlüklerini inceleyin
 
-1. _C:\programdata\asrsetuplogs\asrunifiedagentınstaller.log_konumunda bulunan yükleme günlüğünü açın.
+1. _C:\programdata\asrsetuplogs\asrunifiedagentınstaller.log_ konumunda bulunan yükleme günlüğünü açın.
 2. Aşağıdaki hatanın varlığı bu sorunu gösterir:
 
     ```Output
@@ -359,7 +374,7 @@ Olağanüstü durum kurtarma gereksinimleriniz için uygulama tutarlılığı ö
 
 Azure Site Recovery VSS sağlayıcısı yüklemesini atlamak ve Azure Site Recovery VSS sağlayıcısı yükleme sonrası yüklemeyi el ile yüklemek için:
 
-1. Mobility hizmetini yükler. Yükleme adım: **yükleme sonrası yapılandırma**sırasında başarısız olur.
+1. Mobility hizmetini yükler. Yükleme adım: **yükleme sonrası yapılandırma** sırasında başarısız olur.
 1. VSS yüklemesini atlamak için:
    1. Şu adreste bulunan Azure Site Recovery Mobility hizmeti yükleme dizinini açın:
 

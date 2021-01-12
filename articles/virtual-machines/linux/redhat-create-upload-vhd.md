@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: danis
-ms.openlocfilehash: 065b4348675fcd48088fd26db0e0293eb2d7a387
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 751d447c164c602b9b1524d4945d61556bf71932
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97896473"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127303"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Azure'da Red Hat tabanlı bir sanal makine hazırlama
 Bu makalede, Azure 'da kullanmak üzere bir Red Hat Enterprise Linux (RHEL) sanal makinesinin nasıl hazırlanacağını öğreneceksiniz. Bu makalede ele alınan RHEL 'nin sürümleri 6.7 + ve 7.1 + ' dir. Bu makalede ele alınan hazırlıklar için hiper yönetici, Hyper-V, çekirdek tabanlı sanal makine (KVM) ve VMware ' dir. Red Hat 'in bulut erişim programına katılma uygunluk gereksinimleri hakkında daha fazla bilgi için bkz. [Red Hat 'In bulut erişimi Web sitesi](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) ve [Azure 'da RHEL çalıştırma](https://access.redhat.com/ecosystem/ccsp/microsoft-azure). RHEL görüntülerini oluşturmayı otomatikleştirebileceğiniz yollar için bkz. [Azure görüntü Oluşturucu](./image-builder-overview.md).
@@ -22,7 +22,7 @@ Bu makalede, Azure 'da kullanmak üzere bir Red Hat Enterprise Linux (RHEL) sana
 
 Bu bölüm, Hyper-V Yöneticisi 'Ni kullanarak bir [RHEL 6](#rhel-6-using-hyper-v-manager) veya [RHEL 7](#rhel-7-using-hyper-v-manager) sanal makinesinin nasıl hazırlanacağını gösterir.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL görüntüsünü bir sanal sabit diske (VHD) yüklediğinizi varsaymış olursunuz. Hyper-V Yöneticisi 'Ni bir işletim sistemi görüntüsü yüklemek için kullanma hakkında daha fazla ayrıntı için bkz. [Hyper-v rolünü yüklemek ve bir sanal makineyi yapılandırmak](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11)).
 
 **RHEL yükleme notları**
@@ -198,13 +198,16 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
     # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
     ```
 
-1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bu değişikliği yapmak için, `/etc/default/grub` bir metin düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin. Örneğin:
+1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bu değişikliği yapmak için, `/etc/default/grub` bir metin düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin. Örnek:
 
+    
     ```config-grub
-    GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
+    GRUB_CMDLINE_LINUX="rootdelay=300 console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 earlyprintk=ttyS0 net.ifnames=0"
+    GRUB_TERMINAL_OUTPUT="serial console"
+    GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1
     ```
    
-   Bu, tüm konsol iletilerinin ilk seri bağlantı noktasına gönderilmesini de sağlar ve bu da hata ayıklama sorunlarını gidermek için Azure desteğine yardımcı olabilir. Bu yapılandırma, NIC 'ler için yeni RHEL 7 adlandırma kurallarını da kapatır. Ayrıca, aşağıdaki parametreleri kaldırmanızı öneririz:
+    Bu, tüm konsol iletilerinin ilk seri bağlantı noktasına gönderilmesini ve seri konsol ile etkileşime olanak sağlar ve bu da hata ayıklama sorunlarını gidermek için Azure desteğine yardımcı olabilir. Bu yapılandırma, NIC 'ler için yeni RHEL 7 adlandırma kurallarını da kapatır.
 
     ```config
     rhgb quiet crashkernel=auto
@@ -217,6 +220,8 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
     ```console
     # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
     ```
+    > [!NOTE]
+    > UEFı etkin bir VM 'yi karşıya yüklüyorsanız, grub 'yi güncelleştirme komutu olur `grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg` .
 
 1. SSH sunucusunun yüklü olduğundan ve önyükleme zamanında başlayacak şekilde yapılandırıldığından emin olun, genellikle varsayılan değer olan. `/etc/ssh/sshd_config`Aşağıdaki satırı içerecek şekilde değiştirin:
 
@@ -230,31 +235,40 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
     # subscription-manager repos --enable=rhel-7-server-extras-rpms
     ```
 
-1. Aşağıdaki komutu çalıştırarak Azure Linux aracısını yükler:
+1. Aşağıdaki komutu çalıştırarak Azure Linux Aracısı, Cloud-init ve diğer gerekli yardımcı programları yükler:
 
     ```console
-    # sudo yum install WALinuxAgent
+    # sudo yum install -y WALinuxAgent cloud-init cloud-utils-growpart gdisk hyperv-daemons
 
     # sudo systemctl enable waagent.service
+    # sudo systemctl enable cloud-init.service
     ```
 
-1. Sağlamayı işlemek için Cloud-init ' i yüklemek
+1. Sağlamayı işleyecek Cloud-init ' i yapılandırın:
+
+    1. Cloud-init için waagent 'ı yapılandırma:
 
     ```console
-    yum install -y cloud-init cloud-utils-growpart gdisk hyperv-daemons
-
-    # Configure waagent for cloud-init
-    sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
-    sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
+    sed -i 's/Provisioning.Agent=auto/Provisioning.Agent=cloud-init/g' /etc/waagent.conf
     sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
     sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
+    ```
+    > [!NOTE]
+    > Belirli bir sanal makineyi geçiriyorsanız ve genelleştirilmiş bir görüntü oluşturmak istemiyorsanız, `Provisioning.Agent=disabled` config üzerinde ayarlayın `/etc/waagent.conf` .
+    
+    1. Takmaları Yapılandır:
 
+    ```console
     echo "Adding mounts and disk_setup to init stage"
     sed -i '/ - mounts/d' /etc/cloud/cloud.cfg
     sed -i '/ - disk_setup/d' /etc/cloud/cloud.cfg
     sed -i '/cloud_init_modules/a\\ - mounts' /etc/cloud/cloud.cfg
     sed -i '/cloud_init_modules/a\\ - disk_setup' /etc/cloud/cloud.cfg
+    ```
+    
+    1. Azure veri kaynağını yapılandırın:
 
+    ```console
     echo "Allow only Azure datasource, disable fetching network setting via IMDS"
     cat > /etc/cloud/cloud.cfg.d/91-azure_datasource.cfg <<EOF
     datasource_list: [ Azure ]
@@ -262,13 +276,206 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
     Azure:
         apply_network_config: False
     EOF
+    ```
 
+    1. Yapılandırıldıysa, var olan Swapfile ' ı kaldırın:
+
+    ```console
     if [[ -f /mnt/resource/swapfile ]]; then
-    echo Removing swapfile - RHEL uses a swapfile by default
+    echo "Removing swapfile" #RHEL uses a swapfile by defaul
     swapoff /mnt/resource/swapfile
     rm /mnt/resource/swapfile -f
     fi
+    ```
+    1. Cloud-init günlüğünü yapılandırma:
+    ```console
+    echo "Add console log file"
+    cat >> /etc/cloud/cloud.cfg.d/05_logging.cfg <<EOF
 
+    # This tells cloud-init to redirect its stdout and stderr to
+    # 'tee -a /var/log/cloud-init-output.log' so the user can see output
+    # there without needing to look on the console.
+    output: {all: '| tee -a /var/log/cloud-init-output.log'}
+    EOF
+
+    ```
+
+1. Değiştirme yapılandırması, işletim sistemi diskinde takas alanı oluşturmaz.
+
+    Daha önce Azure Linux Aracısı, sanal makine Azure 'da sağlandıktan sonra sanal makineye bağlı yerel kaynak diskini kullanarak takas alanını otomatik olarak yapılandırmıştı. Ancak bu artık Cloud-init tarafından işlenirse, kaynak diski biçimlendirmek için Linux Aracısı 'nı kullanmanız **gerekir** . değiştirme dosyasını oluşturmak için aşağıdaki parametreleri `/etc/waagent.conf` uygun şekilde değiştirin:
+
+    ```console
+    ResourceDisk.Format=n
+    ResourceDisk.EnableSwap=n
+    ```
+
+    Bağlama, biçimlendirme ve değiştirme oluşturmak istiyorsanız şunlardan birini yapabilirsiniz:
+    * VM 'yi her oluşturduğunuzda bunu Cloud-init yapılandırması olarak geçirin
+    * Bir Cloud-init yönergesini, sanal makine her oluşturulduğunda bunu yapan görüntüye bir kez kullanın:
+
+        ```console
+        cat > /etc/cloud/cloud.cfg.d/00-azure-swap.cfg << EOF
+        #cloud-config
+        # Generated by Azure cloud image build
+        disk_setup:
+          ephemeral0:
+            table_type: mbr
+            layout: [66, [33, 82]]
+            overwrite: True
+        fs_setup:
+          - device: ephemeral0.1
+            filesystem: ext4
+          - device: ephemeral0.2
+            filesystem: swap
+        mounts:
+          - ["ephemeral0.1", "/mnt"]
+          - ["ephemeral0.2", "none", "swap", "sw", "0", "0"]
+        EOF
+        ```
+1. Aboneliğin kaydını silmek istiyorsanız aşağıdaki komutu çalıştırın:
+
+    ```console
+    # sudo subscription-manager unregister
+    ```
+
+1. Sağlamayı kaldırma
+
+    Sanal makinenin sağlamasını kaldırmak ve Azure 'da sağlamak üzere hazırlamak için aşağıdaki komutları çalıştırın:
+
+    > [!CAUTION]
+    > Belirli bir sanal makineyi geçiriyorsanız ve genelleştirilmiş bir görüntü oluşturmak istemiyorsanız, sağlamayı kaldırma adımını atlayın. Komutu çalıştırmak `waagent -force -deprovision` kaynak makinenin kullanılamamasına neden olur, bu adım yalnızca genelleştirilmiş bir görüntü oluşturmak için tasarlanmıştır.
+    ```console
+    # sudo waagent -force -deprovision
+
+    # export HISTSIZE=0
+
+    # logout
+    ```
+    
+
+1.   >  Hyper-V Yöneticisi 'nde eylem **Kapat** ' a tıklayın. Linux VHD 'niz artık Azure 'a yüklenmeye hazırdır.
+
+### <a name="rhel-8-using-hyper-v-manager"></a>Hyper-V Yöneticisi 'Ni kullanarak RHEL 8
+
+1. Hyper-V Yöneticisi 'nde sanal makineyi seçin.
+
+1. **Bağlan** ' a tıklayarak sanal makine için bir konsol penceresi açın.
+
+1. Aşağıdaki komutu çalıştırarak Ağ Yöneticisi hizmetinin önyükleme zamanında başlamasını sağlayın:
+
+    ```console
+    # sudo systemctl enable NetworkManager.service
+    ```
+
+1. Ağ arabirimini önyüklemede otomatik olarak başlayacak ve DHCP kullanacak şekilde yapılandırın:
+
+    ```console
+    # nmcli con mod eth0 connection.autoconnect yes ipv4.method auto
+    ```
+
+
+1. Aşağıdaki komutu çalıştırarak, RHEL deposundan paketlerin yüklenmesini etkinleştirmek için Red Hat aboneliğinizi kaydedin:
+
+    ```console
+    # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
+    ```
+
+1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin ve seri konsolu etkinleştirin. 
+
+    1. Geçerli GRUB parametrelerini kaldır:
+    ```console
+    # grub2-editenv - unset kernelopts
+    ```
+
+    1. `/etc/default/grub`Bir metin düzenleyicisinde düzenleyin ve aşağıdaki parametre ekleyin:
+
+    ```config-grub
+    GRUB_CMDLINE_LINUX="rootdelay=300 console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 earlyprintk=ttyS0 net.ifnames=0"
+    GRUB_TERMINAL_OUTPUT="serial console"
+    GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
+    ```
+   
+   Bu, tüm konsol iletilerinin ilk seri bağlantı noktasına gönderilmesini ve seri konsol ile etkileşime olanak sağlar ve bu da hata ayıklama sorunlarını gidermek için Azure desteğine yardımcı olabilir. Bu yapılandırma, NIC 'ler için yeni RHEL 7 adlandırma kurallarını da kapatır.
+   
+   1. Ayrıca, aşağıdaki parametreleri kaldırmanızı öneririz:
+
+    ```config
+    rhgb quiet crashkernel=auto
+    ```
+   
+    Grafik ve sessiz önyükleme, tüm günlüklerin seri bağlantı noktasına gönderilmesini istiyoruz bir bulut ortamında yararlı değildir. İsterseniz, `crashkernel` seçeneğini yapılandırılmış olarak bırakabilirsiniz. Bu parametrenin, sanal makinedeki kullanılabilir bellek miktarını 128 MB veya daha fazla azalttığını ve bu, daha küçük sanal makine boyutlarında sorunlu olabileceğini unutmayın.
+
+1. Düzenlemesini tamamladıktan sonra `/etc/default/grub` , grub yapılandırmasını yeniden derlemek için aşağıdaki komutu çalıştırın:
+
+    ```console
+    # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    ```
+    Ve UEFı etkin bir VM için aşağıdaki komutu çalıştırın:
+
+    ```console
+    # sudo grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
+    ```
+
+1. SSH sunucusunun yüklü olduğundan ve önyükleme zamanında başlayacak şekilde yapılandırıldığından emin olun, genellikle varsayılan değer olan. `/etc/ssh/sshd_config`Aşağıdaki satırı içerecek şekilde değiştirin:
+
+    ```config
+    ClientAliveInterval 180
+    ```
+
+1. Aşağıdaki komutu çalıştırarak Azure Linux Aracısı, Cloud-init ve diğer gerekli yardımcı programları yükler:
+
+    ```console
+    # sudo yum install -y WALinuxAgent cloud-init cloud-utils-growpart gdisk hyperv-daemons
+
+    # sudo systemctl enable waagent.service
+    # sudo systemctl enable cloud-init.service
+    ```
+
+1. Sağlamayı işleyecek Cloud-init ' i yapılandırın:
+
+    1. Cloud-init için waagent 'ı yapılandırma:
+
+    ```console
+    sed -i 's/Provisioning.Agent=auto/Provisioning.Agent=cloud-init/g' /etc/waagent.conf
+    sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
+    sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
+    ```
+    > [!NOTE]
+    > Belirli bir sanal makineyi geçiriyorsanız ve genelleştirilmiş bir görüntü oluşturmak istemiyorsanız, `Provisioning.Agent=disabled` config üzerinde ayarlayın `/etc/waagent.conf` .
+    
+    1. Takmaları Yapılandır:
+
+    ```console
+    echo "Adding mounts and disk_setup to init stage"
+    sed -i '/ - mounts/d' /etc/cloud/cloud.cfg
+    sed -i '/ - disk_setup/d' /etc/cloud/cloud.cfg
+    sed -i '/cloud_init_modules/a\\ - mounts' /etc/cloud/cloud.cfg
+    sed -i '/cloud_init_modules/a\\ - disk_setup' /etc/cloud/cloud.cfg
+    ```
+    
+    1. Azure veri kaynağını yapılandırın:
+
+    ```console
+    echo "Allow only Azure datasource, disable fetching network setting via IMDS"
+    cat > /etc/cloud/cloud.cfg.d/91-azure_datasource.cfg <<EOF
+    datasource_list: [ Azure ]
+    datasource:
+    Azure:
+        apply_network_config: False
+    EOF
+    ```
+
+    1. Yapılandırıldıysa, var olan Swapfile ' ı kaldırın:
+
+    ```console
+    if [[ -f /mnt/resource/swapfile ]]; then
+    echo "Removing swapfile" #RHEL uses a swapfile by defaul
+    swapoff /mnt/resource/swapfile
+    rm /mnt/resource/swapfile -f
+    fi
+    ```
+    1. Cloud-init günlüğünü yapılandırma:
+    ```console
     echo "Add console log file"
     cat >> /etc/cloud/cloud.cfg.d/05_logging.cfg <<EOF
 
@@ -323,14 +530,15 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
     Sanal makinenin sağlamasını kaldırmak ve Azure 'da sağlamak üzere hazırlamak için aşağıdaki komutları çalıştırın:
 
     ```console
-    # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
-    # skip the deprovision step
     # sudo waagent -force -deprovision
 
     # export HISTSIZE=0
 
     # logout
     ```
+    > [!CAUTION]
+    > Belirli bir sanal makineyi geçiriyorsanız ve genelleştirilmiş bir görüntü oluşturmak istemiyorsanız, sağlamayı kaldırma adımını atlayın. Komutu çalıştırmak `waagent -force -deprovision` kaynak makinenin kullanılamamasına neden olur, bu adım yalnızca genelleştirilmiş bir görüntü oluşturmak için tasarlanmıştır.
+
 
 1.   >  Hyper-V Yöneticisi 'nde eylem **Kapat** ' a tıklayın. Linux VHD 'niz artık Azure 'a yüklenmeye hazırdır.
 
@@ -600,7 +808,7 @@ Bu bölümde, Azure 'a karşıya yüklemek üzere bir [RHEL 6](#rhel-6-using-kvm
     # subscription-manager register --auto-attach --username=XXX --password=XXX
     ```
 
-1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bu yapılandırmayı yapmak için `/etc/default/grub` bir metin düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin. Örneğin:
+1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bu yapılandırmayı yapmak için `/etc/default/grub` bir metin düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin. Örnek:
 
     ```config-grub
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
@@ -731,7 +939,7 @@ Bu bölümde, Azure 'a karşıya yüklemek üzere bir [RHEL 6](#rhel-6-using-kvm
 
 Bu bölümde, VMware 'den bir [RHEL 6](#rhel-6-using-vmware) veya [RHEL 7](#rhel-6-using-vmware)  oluşturmayı nasıl hazırlayacağınız gösterilmektedir.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 Bu bölümde, VMware 'de zaten bir RHEL sanal makinesini yüklemiş olduğunuz varsayılmaktadır. VMware 'de bir işletim sisteminin nasıl yükleneceğine ilişkin ayrıntılar için bkz. [VMware Konuk Işletim sistemi yükleme kılavuzu](https://partnerweb.vmware.com/GOSIG/home.html).
 
 * Linux işletim sistemini yüklediğinizde, genellikle çoğu yükleme için varsayılan olan LVM yerine standart bölümler kullanmanızı öneririz. Bu, özellikle de bir işletim sistemi diskinin sorun gidermeye yönelik başka bir sanal makineye eklenmesi gerekiyorsa, kopyalanmış sanal makineyle LVM adı çakışmalarını önler. Tercih edilen durumlarda LVM veya RAID, veri disklerinde kullanılabilir.
@@ -790,7 +998,7 @@ Bu bölümde, VMware 'de zaten bir RHEL sanal makinesini yüklemiş olduğunuz v
     # subscription-manager repos --enable=rhel-6-server-extras-rpms
     ```
 
-1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bunu yapmak için `/etc/default/grub` bir metin düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin. Örneğin:
+1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bunu yapmak için `/etc/default/grub` bir metin düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin. Örnek:
 
     ```config-grub
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
@@ -936,7 +1144,7 @@ Bu bölümde, VMware 'de zaten bir RHEL sanal makinesini yüklemiş olduğunuz v
     # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
     ```
 
-1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bu değişikliği yapmak için, `/etc/default/grub` bir metin düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin. Örneğin:
+1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bu değişikliği yapmak için, `/etc/default/grub` bir metin düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin. Örnek:
 
     ```config-grub
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"

@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 22ee57592af838a236d75fa7f56a0c8e1ed89403
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: f776482c684004c8d661f69d8158ba9597c923b2
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98046540"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127048"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Azure dijital TWINS 'i Azure Time Series Insights ile tümleştirme
 
@@ -20,7 +20,7 @@ Bu makalede, Azure dijital TWINS 'i [Azure Time Series Insights (TSI)](../time-s
 
 Bu makalede açıklanan çözüm, IoT çözümünüz hakkında geçmiş verileri toplayıp analiz etmenize olanak sağlayacak. Azure dijital TWINS, verileri Time Series Insights, birden çok veri akışı ile ilişkilendirmenize ve bilgilerinizi Time Series Insights göndermeden önce standartlaştırmasını sağlayan harika bir şekilde bir uyum sağlar. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Time Series Insights bir ilişki ayarlayabilmeniz için önce bir **Azure dijital TWINS örneğine** sahip olmanız gerekir. Bu örnek, verileri temel alarak dijital ikizi bilgilerini güncelleştirme özelliği ile ayarlanmalıdır, çünkü bu verileri Time Series Insights ' de izlenen şekilde görmek için ikizi bilgilerini birkaç kez güncelleştirmeniz gerekir. 
 
@@ -84,13 +84,13 @@ Azure dijital TWINS [*öğreticisi: uçtan uca bir çözümü bağlama*](./tutor
 
 Üzerinde geçiş yapmadan önce, bu makalenin ilerleyen kısımlarında daha sonra başka bir olay hub 'ı oluşturmak üzere kullanacağınız için, *Event Hubs ad alanı* ve *kaynak grubunuzu* göz atın.
 
-## <a name="create-an-azure-function"></a>Azure işlevi oluşturma 
+## <a name="create-a-function-in-azure"></a>Azure’da işlev oluşturma
 
-Sonra, bir işlev uygulaması içinde Event Hubs tetiklenen bir işlev oluşturacaksınız. Uçtan uca öğreticide oluşturulan işlev uygulamasını kullanabilirsiniz ([*öğretici: uçtan uca bir çözümü bağlama*](./tutorial-end-to-end.md)) veya kendi kendinize. 
+Ardından, bir işlev uygulaması içinde Event Hubs tetiklenen bir işlev oluşturmak için Azure Işlevleri 'ni kullanacaksınız. Uçtan uca öğreticide oluşturulan işlev uygulamasını kullanabilirsiniz ([*öğretici: uçtan uca bir çözümü bağlama*](./tutorial-end-to-end.md)) veya kendi kendinize. 
 
 Bu işlev, bu ikizi Update olaylarını kendi özgün formdan JSON yaması belgeleri olarak JSON nesnelerine dönüştürür. Bu, yalnızca, TWINS 'inizden yalnızca güncelleştirilmiş ve eklenen değerleri içerir.
 
-Azure işlevleri ile Event Hubs kullanma hakkında daha fazla bilgi için bkz. Azure [*için azure Event Hubs tetikleyicisi işlevleri*](../azure-functions/functions-bindings-event-hubs-trigger.md).
+Azure Işlevleri ile Event Hubs kullanma hakkında daha fazla bilgi için bkz. Azure [*için azure Event Hubs tetikleyicisi işlevleri*](../azure-functions/functions-bindings-event-hubs-trigger.md).
 
 Yayınlanan işlev uygulamanızın içinde, işlev kodunu aşağıdaki kodla değiştirin.
 
