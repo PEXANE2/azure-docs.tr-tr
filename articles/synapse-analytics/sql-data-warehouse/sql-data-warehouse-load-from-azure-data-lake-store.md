@@ -11,16 +11,16 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4886cf6c24e7e96676b9ca5e74b431685cd5a8bb
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4f881dcc0d26589c4029246019119fa0555dcd5d
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452867"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117784"
 ---
 # <a name="load-data-from-azure-data-lake-storage-into-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure Data Lake Storage verileri Azure SYNAPSE Analytics 'te adanmış SQL havuzlarına yükleme
 
-Bu kılavuzda, Azure Data Lake Storage verileri yüklemek için [Copy ifadesinin](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) nasıl kullanılacağı özetlenmektedir. Tüm kimlik doğrulama yöntemlerinde COPY ifadesini kullanmayla ilgili hızlı örnekler için aşağıdaki belgeleri ziyaret edin: [ADANMıŞ SQL havuzlarını kullanarak verileri güvenli bir şekilde yükleyin](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples).
+Bu kılavuzda, Azure Data Lake Storage verileri yüklemek için [Copy ifadesinin](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) nasıl kullanılacağı özetlenmektedir. Tüm kimlik doğrulama yöntemlerinde COPY ifadesini kullanmayla ilgili hızlı örnekler için aşağıdaki belgeleri ziyaret edin: [ADANMıŞ SQL havuzlarını kullanarak verileri güvenli bir şekilde yükleyin](./quickstart-bulk-load-copy-tsql-examples.md).
 
 > [!NOTE]  
 > COPY ifadesinde geri bildirim veya rapor sorunları sağlamak için şu dağıtım listesine bir e-posta gönderin: sqldwcopypreview@service.microsoft.com .
@@ -65,7 +65,7 @@ WITH
 
 ## <a name="create-the-copy-statement"></a>COPY ifadesini oluşturma
 
-SQL adanmış havuzunuza bağlanın ve COPY ifadesini çalıştırın. Örneklerin tamamen listesi için aşağıdaki belgeleri ziyaret edin: [ADANMıŞ SQL havuzlarını kullanarak verileri güvenli bir şekilde yükleyin](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples).
+SQL adanmış havuzunuza bağlanın ve COPY ifadesini çalıştırın. Örneklerin tamamen listesi için aşağıdaki belgeleri ziyaret edin: [ADANMıŞ SQL havuzlarını kullanarak verileri güvenli bir şekilde yükleyin](./quickstart-bulk-load-copy-tsql-examples.md).
 
 ```sql
 -- B: Create and execute the COPY statement
@@ -118,7 +118,7 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 
 Bir yükden hemen sonra tek sütunlu istatistikler oluşturmak en iyisidir. İstatistikler için bazı seçimler vardır. Örneğin, her sütunda tek sütunlu istatistikler oluşturursanız tüm istatistiklerin yeniden oluşturulması uzun sürebilir. Bazı sütunların sorgu koşullarına sahip olmadığını biliyorsanız, bu sütunlarda istatistik oluşturmayı atlayabilirsiniz.
 
-Her tablonun her sütununda tek sütunlu istatistikler oluşturmaya karar verirseniz, istatistik makalesindeki saklı yordam kodu örneğini kullanabilirsiniz `prc_sqldw_create_stats` . [statistics](sql-data-warehouse-tables-statistics.md)
+Her tablonun her sütununda tek sütunlu istatistikler oluşturmaya karar verirseniz, istatistik makalesindeki saklı yordam kodu örneğini kullanabilirsiniz `prc_sqldw_create_stats` . [](sql-data-warehouse-tables-statistics.md)
 
 Aşağıdaki örnek, istatistik oluşturmak için iyi bir başlangıç noktasıdır. Boyut tablosundaki her bir sütunda ve olgu tablolarındaki her bir birleştirme sütununda tek sütunlu istatistikler oluşturur. Daha sonra, daha sonra diğer olgu tablosu sütunlarına tek veya çok sütunlu istatistikler ekleyebilirsiniz.
 
@@ -133,6 +133,6 @@ Verilerin yüklenmesi, Azure SYNAPSE Analytics kullanılarak veri ambarı çöz�
 > [Veri depolama için tablo geliştirmeyi öğrenin](sql-data-warehouse-tables-overview.md)
 
 Daha fazla örnek ve başvuru yüklemek için aşağıdaki belgeleri görüntüleyin:
-- [Deyimdeki başvuru belgelerini Kopyala](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
-- [Her kimlik doğrulama yöntemi için örnekleri KOPYALAYıN](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples)
-- [Tek bir tablo için hızlı başlangıç kopyalama](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql)
+- [Deyimdeki başvuru belgelerini Kopyala](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
+- [Her kimlik doğrulama yöntemi için örnekleri KOPYALAYıN](./quickstart-bulk-load-copy-tsql-examples.md)
+- [Tek bir tablo için hızlı başlangıç kopyalama](./quickstart-bulk-load-copy-tsql.md)

@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 862fa839c56746042c072ae3100832fb2b78451a
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 56b417c65eae0df9b073cf72fe87ce0002fc2ba0
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296938"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115846"
 ---
 # <a name="source-control-integration-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu için kaynak denetimi tümleştirmesi
 
@@ -51,7 +51,7 @@ Bu öğreticide, SQL Server Veri Araçları (SSDT) veritabanı projenizi kaynak 
 
    ![Depoyu Kopyala](./media/sql-data-warehouse-source-control-integration/4-clone-repo.png "Depoyu Kopyala")
 
-Visual Studio kullanarak projeleri bağlama hakkında daha fazla bilgi için [Takım Gezgini içindeki projelere bağlanma](https://docs.microsoft.com/visualstudio/ide/connect-team-project?view=vs-2019)bölümüne bakın. Visual Studio kullanarak bir depoyu kopyalamaya yönelik yönergeler için, [Çıkış deposunu Kopyala](https://docs.microsoft.com/azure/devops/repos/git/clone?view=azure-devops&tabs=visual-studio) makalesini inceleyin. 
+Visual Studio kullanarak projeleri bağlama hakkında daha fazla bilgi için [Takım Gezgini içindeki projelere bağlanma](/visualstudio/ide/connect-team-project?view=vs-2019)bölümüne bakın. Visual Studio kullanarak bir depoyu kopyalamaya yönelik yönergeler için, [Çıkış deposunu Kopyala](/azure/devops/repos/git/clone?tabs=visual-studio&view=azure-devops) makalesini inceleyin. 
 
 ## <a name="create-and-connect-your-project"></a>Projenizi oluşturun ve bağlayın
 

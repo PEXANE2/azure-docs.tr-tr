@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: c452d51018ef3f204cd7281971c07fb6337d39bf
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3b61df954e913671eafff4b739e0f53a4d420c28
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449699"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117308"
 ---
 # <a name="guidance-for-designing-distributed-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu kullanarak dağıtılmış tablo tasarlama Kılavuzu
 
@@ -68,7 +68,7 @@ Aşağıdaki senaryolarda tablonuz için hepsini bir kez deneme dağılımı kul
 - Birleştirme, sorgudaki diğer birleşimlerden daha az önemse
 - Tablo geçici bir hazırlama tablosu olduğunda
 
-[Yeni York taksi verileri](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) için öğretici yükleme, hepsini bir kez deneme için bir hazırlama tablosuna veri yükleme örneği sağlar.
+[Yeni York taksi verileri](./load-data-from-azure-blob-storage-using-copy.md#load-the-data-into-your-data-warehouse) için öğretici yükleme, hepsini bir kez deneme için bir hazırlama tablosuna veri yükleme örneği sağlar.
 
 ## <a name="choosing-a-distribution-column"></a>Dağıtım sütunu seçme
 
@@ -118,7 +118,7 @@ Doğru sorgu sonucu sorgularının elde etmek için verileri bir Işlem düğüm
 Veri hareketini en aza indirmek için şu şekilde bir dağıtım sütunu seçin:
 
 - ,,, `JOIN` `GROUP BY` `DISTINCT` `OVER` Ve `HAVING` yan tümcelerinde kullanılır. İki büyük olgu tablosunun sık birleşme durumunda, her iki tabloyu da birleştirme sütunlarından birine dağıttığınızda sorgu performansı artar.  Bir tablo birleşimlerde kullanılmazsa, tabloyu yan tümcesindeki sık kullanılan bir sütuna dağıtmayı düşünün `GROUP BY` .
-- *not* `WHERE` Yan tümcelerde kullanılmaz. Bu, sorguyu tüm dağıtımların çalıştırılmadığından daraltabilirdi.
+-  `WHERE` Yan tümcelerde kullanılmaz. Bu, sorguyu tüm dağıtımların çalıştırılmadığından daraltabilirdi.
 - Bir tarih sütunu *değil* . WHERE yan tümceleri genellikle tarihe göre filtreleyerek.  Bu durumda, tüm işleme yalnızca birkaç dağıtımda çalıştırılabilir.
 
 ### <a name="what-to-do-when-none-of-the-columns-are-a-good-distribution-column"></a>Sütunlardan hiçbiri iyi bir dağıtım sütunu olmadığında yapmanız gerekenler

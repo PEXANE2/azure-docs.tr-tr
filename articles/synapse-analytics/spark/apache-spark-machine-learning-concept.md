@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 11/13/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: ca55186a53b228aa97cc82d33a09aa3ffe455eee
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 0485f697b9360b0f2dfe94fdf07629978b5127c1
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092015"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116934"
 ---
 # <a name="machine-learning-with-apache-spark"></a>Apache Spark ile makine öğrenimi
 
@@ -44,7 +44,7 @@ Azure SYNAPSE Analytics 'te Azure Spark kullanarak makine öğrenimi modellerini
 Spark 'ın bellek içi dağıtılmış hesaplama özellikleri, makine öğrenimi ve grafik hesaplamaları 'nda kullanılan yinelemeli algoritmalar için iyi bir seçenek yapar. ```spark.ml``` , kullanıcıların makine öğrenimi işlem hatlarını oluşturmasına ve ayarlamaya yardımcı olan Tekdüzen bir üst düzey API kümesi sağlar. Hakkında daha fazla bilgi edinmek için ```spark.ml``` [Apache Spark ml programlama kılavuzunu](https://spark.apache.org/docs/1.2.2/ml-guide.html)ziyaret edebilirsiniz.
 
 ### <a name="azure-machine-learning-automated-ml"></a>Azure Machine Learning otomatikleştirilen ML
-[Azure Machine Learning OTOMATIKLEŞTIRILEN ml](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) (otomatik makine öğrenimi), makine öğrenimi modellerini geliştirme sürecini otomatikleştirmenize yardımcı olur. Veri bilimcilerinin, analistlerin ve geliştiricilerin, model kalitesini sürdürüp yüksek ölçekli, verimlilik ve üretkenlik özelliklerine sahip ML modelleri oluşturmalarına olanak tanır. Otomatikleştirilmiş ML SDK Azure Machine Learning çalıştırmak için bileşenler doğrudan SYNAPSE çalışma zamanına yerleştirilmiştir.
+[Azure Machine Learning OTOMATIKLEŞTIRILEN ml](../../machine-learning/concept-automated-ml.md) (otomatik makine öğrenimi), makine öğrenimi modellerini geliştirme sürecini otomatikleştirmenize yardımcı olur. Veri bilimcilerinin, analistlerin ve geliştiricilerin, model kalitesini sürdürüp yüksek ölçekli, verimlilik ve üretkenlik özelliklerine sahip ML modelleri oluşturmalarına olanak tanır. Otomatikleştirilmiş ML SDK Azure Machine Learning çalıştırmak için bileşenler doğrudan SYNAPSE çalışma zamanına yerleştirilmiştir.
 
 ### <a name="open-source-libraries"></a>Açık kaynak kitaplıkları
 Azure SYNAPSE Analytics 'teki tüm Apache Spark havuzları, önceden yüklenmiş ve popüler makine öğrenimi kitaplıkları kümesiyle birlikte gelir.  Varsayılan olarak eklenen ilgili makine öğrenimi kitaplıklarının bazıları şunlardır:
@@ -56,13 +56,13 @@ Azure SYNAPSE Analytics 'teki tüm Apache Spark havuzları, önceden yüklenmiş
 - [Pytorch](https://pytorch.org/)  &  [TensorFlow](https://www.tensorflow.org/) , güçlü Python derin öğrenme kitaplıklarıdır. Azure SYNAPSE Analytics 'teki bir Apache Spark havuzunda, havuzunuzdaki yürüticilerinin sayısını sıfıra ayarlayarak tek makineli modeller oluşturmak için bu kitaplıkları kullanabilirsiniz. Bu yapılandırmada Apache Spark çalışmayabilse de, tek makineli modeller oluşturmanın basit ve ekonomik bir yoludur.
 
 ## <a name="track-model-development"></a>Model geliştirmeyi izleme
-[Mlflow](https://www.mlflow.org/) , Machine Learning denemeleri 'in yaşam döngüsünü yönetmeye yönelik açık kaynaklı bir kitaplıktır. MLFlow Izlemesi, öğreticinizi günlüğe kaydeden ve izleyen bir MLflow bileşenidir. Azure SYNAPSE Analytics ve Azure Machine Learning aracılığıyla MLFlow Izlemeyi nasıl kullanabileceğiniz hakkında daha fazla bilgi edinmek için, [mlflow kullanma](https://docs.microsoft.com/azure/machine-learning/how-to-use-mlflow)hakkında bu öğreticiyi ziyaret edin.
+[Mlflow](https://www.mlflow.org/) , Machine Learning denemeleri 'in yaşam döngüsünü yönetmeye yönelik açık kaynaklı bir kitaplıktır. MLFlow Izlemesi, öğreticinizi günlüğe kaydeden ve izleyen bir MLflow bileşenidir. Azure SYNAPSE Analytics ve Azure Machine Learning aracılığıyla MLFlow Izlemeyi nasıl kullanabileceğiniz hakkında daha fazla bilgi edinmek için, [mlflow kullanma](../../machine-learning/how-to-use-mlflow.md)hakkında bu öğreticiyi ziyaret edin.
 
 ## <a name="model-scoring"></a>Model Puanlama
 Model Puanlama veya ınvanı, tahmine dayalı hale getirmek için bir modelin kullanıldığı aşamadır. Mini veri çerçevesinde doğrudan bir Spark XML veya MLLib ile model Puanlama için yerel Spark yöntemlerinden yararlanabilirsiniz. Diğer açık kaynak kitaplıkları ve model türleri için, büyük veri kümelerinde çıkarımı ölçeklendirmek üzere bir Spark UDF de oluşturabilirsiniz. Daha küçük veri kümeleri için, kitaplık tarafından sunulan yerel model çıkarım yöntemlerini de kullanabilirsiniz.
 
 ## <a name="register-and-serve-models"></a>Modelleri kaydetme ve sunma
-Bir modeli kaydetmek, çalışma alanınızdaki modeller hakkında meta verileri depolamanıza, sürümüne ve izlemenize olanak sağlar. Modelinize eğitim tamamladıktan sonra modelinizi [Azure Machine Learning modeli kayıt defterine](https://docs.microsoft.com/azure/machine-learning/concept-model-management-and-deployment#register-package-and-deploy-models-from-anywhere)kaydedebilirsiniz. Kaydolduktan sonra ONNX modelleri adanmış SQL havuzlarında depolanan [verileri](../machine-learning/tutorial-sql-pool-model-scoring-wizard.md) zenginleştirmek için de kullanılabilir.
+Bir modeli kaydetmek, çalışma alanınızdaki modeller hakkında meta verileri depolamanıza, sürümüne ve izlemenize olanak sağlar. Modelinize eğitim tamamladıktan sonra modelinizi [Azure Machine Learning modeli kayıt defterine](../../machine-learning/concept-model-management-and-deployment.md#register-package-and-deploy-models-from-anywhere)kaydedebilirsiniz. Kaydolduktan sonra ONNX modelleri adanmış SQL havuzlarında depolanan [verileri](../machine-learning/tutorial-sql-pool-model-scoring-wizard.md) zenginleştirmek için de kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure SYNAPSE Analytics 'te Machine Learning 'i kullanmaya başlamak için aşağıdaki öğreticilere göz atın:
@@ -71,4 +71,3 @@ Azure SYNAPSE Analytics 'te Machine Learning 'i kullanmaya başlamak için aşa�
 - [Otomatik ML ile makine öğrenimi modelini eğitme](../spark/apache-spark-azure-machine-learning-tutorial.md)
 
 - [Machine Learning modelini Apache Spark MLlib ile eğitme](../spark/apache-spark-machine-learning-mllib-notebook.md)
-  

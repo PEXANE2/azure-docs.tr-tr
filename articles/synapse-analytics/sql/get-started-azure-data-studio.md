@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 580dfe779ff0f550524781076d3e27805ffd6689
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ff7b07cb1a4f480907bb51e741a05deeaae8e66b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451657"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116492"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio"></a>Azure Data Studio ile SYNAPSE SQL 'e bağlanma
 
@@ -95,4 +95,4 @@ SYNAPSE SQL 'e bağlanmanın diğer yollarını keşfet:
 - [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [sqlcmd](get-started-connect-sqlcmd.md)
 
-Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics 'te adanmış BIR SQL havuzunu kullanarak bağlanmak ve verileri sorgulamak için Azure Data Studio kullanın](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-dw). 
+Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics 'te adanmış BIR SQL havuzunu kullanarak bağlanmak ve verileri sorgulamak için Azure Data Studio kullanın](/sql/azure-data-studio/quickstart-sql-dw).

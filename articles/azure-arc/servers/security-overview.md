@@ -3,12 +3,12 @@ title: Güvenliğe genel bakış
 description: Azure Arc etkin sunucularla ilgili güvenlik bilgileri.
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: be79be3030af76425b54fd683784d0e216ac2cf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa8653b783e7eb3e211b7514831604dd5642cfbe
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329049"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117036"
 ---
 # <a name="azure-arc-for-servers-security-overview"></a>Sunucular için Azure Arc güvenliğine genel bakış
 
@@ -16,7 +16,7 @@ Bu makalede, kuruluşunuzda Azure Arc etkin sunucuları dağıtılmadan önce de
 
 ## <a name="identity-and-access-control"></a>Kimlik ve erişim denetimi
 
-Her Azure Arc etkin sunucusunda, bir Azure aboneliğinin içindeki bir kaynak grubunun parçası olarak yönetilen bir kimlik bulunur. bu kimlik, şirket içi veya başka bir bulut ortamı çalıştıran sunucuyu temsil eder. Bu kaynağa erişim, standart [Azure rol tabanlı erişim denetimi](../../role-based-access-control/overview.md)tarafından denetlenir. Azure portal [**Access Control (IAM)**](../../role-based-access-control/role-assignments-portal.md#access-control-iam) sayfasından, Azure Arc etkin sunucunuza kimlerin erişebileceğini doğrulayabilirsiniz.
+Her Azure Arc etkin sunucusunda, bir Azure aboneliğinin içindeki bir kaynak grubunun parçası olarak yönetilen bir kimlik bulunur. bu kimlik, şirket içi veya başka bir bulut ortamı çalıştıran sunucuyu temsil eder. Bu kaynağa erişim, standart [Azure rol tabanlı erişim denetimi](../../role-based-access-control/overview.md)tarafından denetlenir. Azure portal [**Access Control (IAM)**](../../role-based-access-control/role-assignments-portal.md) sayfasından, Azure Arc etkin sunucunuza kimlerin erişebileceğini doğrulayabilirsiniz.
 
 :::image type="content" source="./media/security-overview/access-control-page.png" alt-text="Azure Arc etkin sunucu erişim denetimi" border="false" lightbox="./media/security-overview/access-control-page.png":::
 

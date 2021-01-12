@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2afc274bf7c040eca6a83abbab24c41767f16482
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3e55ef054d5c305937f88d6ec5b2b4453cac6792
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453669"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117767"
 ---
 # <a name="integrate-other-services-with-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Diğer hizmetleri Azure SYNAPSE Analytics 'te adanmış bir SQL Havuzu (eski adıyla SQL DW) ile tümleştirin.
 
@@ -36,7 +36,7 @@ Power BI tümleştirme, bir veri ambarının işlem gücünü Power BI dinamik r
 * **Doğrudan Bağlan**: adanmış SQL Havuzu (eskı ADıYLA SQL DW) kullanılarak sağlanan bir veri ambarına karşı mantıksal olarak aşağı doğru bir şekilde daha gelişmiş bir bağlantı. İtme, geniş ölçekli analiz işlemlerinin daha hızlı tamamlanmasını sağlar.
 * **Power BI açın**: ' Power BI aç ' düğmesi, bağlanmak için basitleştirilmiş bir yöntem için örnek bilgilerini Power BI geçirir.
 
-Daha fazla bilgi için bkz. [Power BI Ile tümleştirme](sql-data-warehouse-get-started-visualize-with-power-bi.md)veya [Power BI belgeleri](https://powerbi.microsoft.com/blog/exploring-azure-sql-data-warehouse-with-power-bi/).
+Daha fazla bilgi için bkz. [Power BI Ile tümleştirme](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect)veya [Power BI belgeleri](https://powerbi.microsoft.com/blog/exploring-azure-sql-data-warehouse-with-power-bi/).
 
 ## <a name="azure-data-factory"></a>Azure Data Factory
 

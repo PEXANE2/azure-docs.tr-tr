@@ -11,12 +11,12 @@ ms.date: 04/28/2020
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: b8a39220bda788cf6dac0be5151c2cdf5385e342
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 26a8a865a787a9c9b17031f94456272c93380704
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91570271"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117053"
 ---
 # <a name="quickstart-scale-compute-for-synapse-sql-pool-with-the-azure-portal"></a>Hızlı başlangıç: Azure portal ile SYNAPSE SQL havuzu için işlem ölçekleme
 
@@ -30,7 +30,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Zaten sahip olduğunuz bir SQL havuzunu ölçeklendirebilir veya [hızlı başlangıç: oluşturma ve bağlanma-Portal](create-data-warehouse-portal.md) ' a, **mysampledatawarehouse**adlı bir SQL havuzu oluşturabilirsiniz. Bu hızlı başlangıç, **mySampleDataWarehouse** öğesini ölçeklendirir.
+Zaten sahip olduğunuz bir SQL havuzunu ölçeklendirebilir veya [hızlı başlangıç: oluşturma ve bağlanma-Portal](create-data-warehouse-portal.md) ' a, **mysampledatawarehouse** adlı bir SQL havuzu oluşturabilirsiniz. Bu hızlı başlangıç, **mySampleDataWarehouse** öğesini ölçeklendirir.
 
 >[!IMPORTANT] 
 >Ölçeklendirilmesi için SQL havuzunuzun çevrimiçi olması gerekir. 
@@ -52,4 +52,4 @@ Veri ambarı birimlerini değiştirmek için:
     ![Kaydırıcıyı Taşıyın](./media/quickstart-scale-compute-portal/scale-dwu.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-SQL havuzu hakkında daha fazla bilgi edinmek için [VERILERI SQL havuzu](load-data-from-azure-blob-storage-using-polybase.md) öğreticisine yüklemeye devam edin. 
+SQL havuzu hakkında daha fazla bilgi edinmek için [VERILERI SQL havuzu](./load-data-from-azure-blob-storage-using-copy.md) öğreticisine yüklemeye devam edin.

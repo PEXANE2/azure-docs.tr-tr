@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/15/2020
-ms.openlocfilehash: aa7c06c3bad59bad11fa288631042cca86109706
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3d5663177bb087e936a49dd7289659b684d85860
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701142"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116203"
 ---
 # <a name="create-a-basic-search-index-in-azure-cognitive-search"></a>Azure Bilişsel Arama temel arama dizini oluşturma
 
@@ -70,7 +70,7 @@ Son dizin tasarımına ulaşan yinelemeli bir işlemdir. İlk dizini oluşturmak
 Geliştirme sırasında, sık sık yeniden deryi planlayın. Hizmette fiziksel yapılar oluşturulduğundan, var olan bir alan tanımında çoğu değişiklik için [dizinleri bırakma ve](search-howto-reindex.md) yeniden oluşturma gereklidir. Yeniden oluşturma işlemini daha hızlı hale getirmek için verilerinizin bir alt kümesiyle çalışmayı düşünebilirsiniz. 
 
 > [!Tip]
-> Portal yaklaşımı yerine kod, dizin tasarımı ve veri içeri aktarma ile aynı anda çalışmak için önerilir. Alternatif olarak, [Postman ve Visual Studio Code](search-get-started-rest.md) gibi araçlar, geliştirme projeleri hala erken aşamalarındayken kavram kanıtı testi için yararlıdır. Bir istek gövdesinde Dizin tanımında artımlı değişiklikler yapabilir ve sonra güncelleştirilmiş bir şemayı kullanarak bir dizini yeniden oluşturmak için isteği hizmetinize gönderebilirsiniz.
+> Portal yaklaşımı yerine kod, dizin tasarımı ve veri içeri aktarma ile aynı anda çalışmak için önerilir. Alternatif olarak, [Postman](search-get-started-rest.md) veya [Visual Studio Code](search-get-started-vs-code.md) gibi araçlar, geliştirme projeleri hala erken aşamalarındayken kavram kanıtı testi için yararlıdır. Bir istek gövdesinde Dizin tanımında artımlı değişiklikler yapabilir ve sonra güncelleştirilmiş bir şemayı kullanarak bir dizini yeniden oluşturmak için isteği hizmetinize gönderebilirsiniz.
 
 ## <a name="index-schema"></a>Dizin şeması
 

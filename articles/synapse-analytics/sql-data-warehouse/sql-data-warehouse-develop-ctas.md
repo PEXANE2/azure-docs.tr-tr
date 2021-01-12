@@ -11,12 +11,12 @@ ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019, azure-synapse
-ms.openlocfilehash: 3d9a842af5e1d3fac73515d96644bef250d7d0c4
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 95158193a978702392106c8aa3347de211fd1a3e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93334578"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115455"
 ---
 # <a name="create-table-as-select-ctas"></a>SELECT OLARAK CREATE TABLE (CTAS)
 
@@ -208,7 +208,7 @@ DROP TABLE CTAS_acs;
 
 ## <a name="ansi-join-replacement-for-merge"></a>BIRLEŞTIRME için ANSI birleştirme değişikliği 
 
-Azure SYNAPSE Analytics 'te hedefle EŞLEŞTIRILDIĞI [birleştirme](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=sql-server-ver15) (Önizleme), hedefin karma dağıtılmış bir tablo olmasını gerektirir.  Kullanıcılar, başka bir tabloyla birleşmeden sonuca göre hedef tablo verilerini değiştirmek için geçici çözüm olarak [Update](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql?view=sql-server-ver15) veya [Delete](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql?view=sql-server-ver15) ile ANSI JOIN 'i kullanabilir.  Aşağıda bir örnek verilmiştir.
+Azure SYNAPSE Analytics 'te hedefle EŞLEŞTIRILDIĞI [birleştirme](/sql/t-sql/statements/merge-transact-sql?view=sql-server-ver15) (Önizleme), hedefin karma dağıtılmış bir tablo olmasını gerektirir.  Kullanıcılar, başka bir tabloyla birleşmeden sonuca göre hedef tablo verilerini değiştirmek için geçici çözüm olarak [Update](/sql/t-sql/queries/update-transact-sql?view=sql-server-ver15) veya [Delete](/sql/t-sql/statements/delete-transact-sql?view=sql-server-ver15) ile ANSI JOIN 'i kullanabilir.  Aşağıda bir örnek verilmiştir.
 
 ```sql
 CREATE TABLE dbo.Table1   

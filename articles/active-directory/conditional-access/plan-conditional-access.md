@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a43200985820779c56983f09b81a86989261c36f
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 13756be041f88883d84f9558308c7fe5c9be2d0e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935011"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116016"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Koşullu Erişim dağıtımını planlama
 
@@ -134,7 +134,7 @@ Derlemeden önce her ilke için soruların yanıtlarını belgeleyin.
 
 #### <a name="common-questions-about-assignments"></a>Atamalar hakkında sık sorulan sorular
 
-[Kullanıcılar ve gruplar](concept-conditional-access-users-groups.md)
+[Kullanıcılar ve Gruplar](concept-conditional-access-users-groups.md)
 
 * İlkeye hangi kullanıcılar ve gruplar dahil edilecek veya ilkeden hariç tutulacak?
 
@@ -223,14 +223,6 @@ Her uygulama için bir ilke oluşturulması verimli değildir ve zor yönetime y
 Bir ilkeyi yanlış yapılandırırsanız, kuruluşları Azure portal dışına kilitleyebilir. Kuruluşunuzda iki veya daha fazla [acil durum erişim hesabı](../roles/security-emergency-access.md) oluşturarak yanlışlıkla yöneticinin kilitlenmesinden kaynaklanan etkileri azaltabilirsiniz.
 
 * İlke yönetimine adanmış ve tüm ilkelerinizden çıkarılan bir kullanıcı hesabı oluşturun.
-
-* Karma ortamlar için kesme camı senaryosu:
-
-  * Şirket içi bir güvenlik grubu oluşturun ve Azure AD ile eşitleyin. Güvenlik grubu, adanmış ilke yönetimi hesabınızı içermelidir. 
-
-   * Bu güvenlik grubunu tüm koşullu erişim ilkelerini DıŞARıDA tut.
-
-   * Bir hizmet kesintisi oluştuğunda, diğer yöneticilerinizi şirket içi gruba uygun şekilde ekleyin ve eşitlemeye zorlayın. Bu, kendi muafiyetini koşullu erişim ilkelerine hareketlendirir.
 
 ### <a name="set-up-report-only-mode"></a>Yalnızca rapor modunu ayarlama
 
@@ -493,4 +485,4 @@ Bilgileri topladıktan sonra, aşağıdaki kaynaklara bakın:
 
 [Kimlik koruması hakkında daha fazla bilgi](../identity-protection/overview-identity-protection.md)
 
-[Koşullu erişim ilkelerini Microsoft Graph API ile yönetme](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)
+[Koşullu erişim ilkelerini Microsoft Graph API ile yönetme](https://docs.microsoft.com/graph/api/resources/conditionalaccesspolicy)

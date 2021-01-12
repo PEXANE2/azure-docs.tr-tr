@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 2f9ab6dacde0259905368d8a0cb788dde77bbfb2
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b8738b46359287ce1d4e410292cdce213ab80999
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453620"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115829"
 ---
 # <a name="what-is-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL Havuzu (eski adıyla SQL DW) nedir?
 
@@ -51,7 +51,7 @@ Analiz sonuçları dünya çapındaki raporlama veritabanlarına veya uygulamala
 
 - [Azure SYNAPSE mimarisini](massively-parallel-processing-mpp-architecture.md) keşfet
 - [Adanmış BIR SQL havuzu hızlı bir şekilde oluşturun](create-data-warehouse-portal.md)
-- [Örnek verileri yükleyin](load-data-from-azure-blob-storage-using-polybase.md).
+- [Örnek verileri yükleyin](./load-data-from-azure-blob-storage-using-copy.md).
 - [Videoları](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse) keşfet
 
 Ya da diğer Azure SYNAPSE kaynaklarından bazılarına bakın.
@@ -59,5 +59,5 @@ Ya da diğer Azure SYNAPSE kaynaklarından bazılarına bakın.
 - [Bloglarda](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/) ara
 - [Özellik istekleri](https://feedback.azure.com/forums/307516-sql-data-warehouse) gönderme
 - [Destek bileti oluşturma](sql-data-warehouse-get-started-create-support-ticket.md)
-- [Soru sayfasında Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) arama
+- [Soru sayfasında Microsoft Q&](/answers/topics/azure-synapse-analytics.html) arama
 - [Stack Overflow Forumu](https://stackoverflow.com/questions/tagged/azure-sqldw) ara

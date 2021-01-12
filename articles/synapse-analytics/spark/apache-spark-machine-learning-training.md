@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 09/13/2020
-ms.openlocfilehash: 242ff1d7c16ca952b19f44fb139f8fae7562524a
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 56b9a98eb72b375aacfeb7cb147997028d3d9ba7
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98048326"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116815"
 ---
 # <a name="train-machine-learning-models"></a>Makine öğrenimi modellerini eğitme
 Azure SYNAPSE Analytics 'teki Apache Spark, büyük miktarlarda yapılandırılmış, yapılandırılmamış ve hızlı hareketli verilerden değerli Öngörüler elde etme olanağı sunan büyük verilerle makine öğrenmesini sağlar. Azure SYNAPSE Analytics 'te Azure Spark kullanarak makine öğrenimi modellerini eğitmek için çeşitli seçenekler vardır: Apache Spark MLlib, Azure Machine Learning ve diğer diğer açık kaynak kitaplıkları. 
@@ -53,7 +53,7 @@ Azure SYNAPSE Analytics içinde otomatik ML kullanırken, kimlik doğrulama & mo
 > Bu [öğreticiyi](./spark/../apache-spark-azure-machine-learning-tutorial.md)izleyerek Azure MACHINE LEARNING otomatikleştirilmiş ml denemesi oluşturma hakkında daha fazla bilgi edinebilirsiniz.
 
 ## <a name="azure-cognitive-services"></a>Azure Bilişsel Hizmetler
-[Azure](https://docs.microsoft.com/azure/cognitive-services/what-are-cognitive-services) bilişsel hizmetler, nesnelerin veya yüzlerin tanınması için metin analizi veya görüntüleri analiz etme gibi genel sorunları çözümlemek için makine öğrenimi özellikleri sağlar. Bu hizmetleri kullanmak için makine öğrenmesi veya veri bilimi alanında bilgi sahibi olmanıza gerek yoktur. Bilişsel hizmet, bir makine öğrenimi çözümünde bileşenlerin bir kısmını veya tümünü sağlar: veri, algoritma ve eğitilen model. Bu hizmetler, makine öğrenimi veya veri bilimi konusunda deneyim sahibi olmadan verileriniz hakkında genel bilgi gerektirmek üzere tasarlanmıştır. Bu önceden eğitilen hizmetlerden Azure SYNAPSE Analytics içinde otomatik olarak yararlanabilirsiniz.
+[Azure](../../cognitive-services/what-are-cognitive-services.md) bilişsel hizmetler, nesnelerin veya yüzlerin tanınması için metin analizi veya görüntüleri analiz etme gibi genel sorunları çözümlemek için makine öğrenimi özellikleri sağlar. Bu hizmetleri kullanmak için makine öğrenmesi veya veri bilimi alanında bilgi sahibi olmanıza gerek yoktur. Bilişsel hizmet, bir makine öğrenimi çözümünde bileşenlerin bir kısmını veya tümünü sağlar: veri, algoritma ve eğitilen model. Bu hizmetler, makine öğrenimi veya veri bilimi konusunda deneyim sahibi olmadan verileriniz hakkında genel bilgi gerektirmek üzere tasarlanmıştır. Bu önceden eğitilen hizmetlerden Azure SYNAPSE Analytics içinde otomatik olarak yararlanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu makalede, Azure SYNAPSE Analytics 'teki Apache Spark havuzlarında makine öğrenimi modellerini eğitmek için çeşitli seçeneklere genel bakış sunulmaktadır. Aşağıdaki öğreticiyi izleyerek model eğitimi hakkında daha fazla bilgi edinebilirsiniz:

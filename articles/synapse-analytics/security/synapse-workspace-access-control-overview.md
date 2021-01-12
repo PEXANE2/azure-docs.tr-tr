@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 256fec97819cde0f6f62d59b34416c92e1edfd20
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 71a83a8d119e5fd8c18b7b21abe4a0a07ba9c67a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109615"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116560"
 ---
 # <a name="synapse-access-control"></a>SYNAPSE Access Control 
 
@@ -48,7 +48,7 @@ Bu kaynakları *oluşturmak* için kaynak grubunda bir Azure sahibi veya katkıd
 SYNAPSE iki geliştirme modelini destekler.
 
 - **SYNAPSE canlı geliştirme**.  SYNAPSE Studio 'da kod geliştirip hata ayıklayın ve ardından kaydetmek ve yürütmek üzere **yayımlayın** .  SYNAPSE hizmeti, kod düzenlemesi ve yürütülmesi için Truth kaynağıdır.  SYNAPSE Studio 'Yu kapattığınızda yayımdan kaldırılan tüm işler kaybolur.  
-- **Git etkin geliştirme**. SYNAPSE Studio 'da kod geliştirin ve hata ayıklayın ve değişiklikleri git deposunun çalışma dalına **işleyin** . Bir veya daha fazla daldan iş, hizmette **yayımladığınızda** bir işbirliği dalında tümleşiktir.  Git deposu, kod düzenlemesi için Truth kaynağıdır, ancak hizmet, yürütme için Truth kaynağıdır. Değişiklikler SYNAPSE Studio 'Yu kapatmadan önce git deposuna kaydedilmiş veya hizmette yayımlanacak olmalıdır. Git ile SYNAPSE Analytics kullanma hakkında [daha fazla bilgi edinin](https://go.microsoft.com/fwlink/?linkid=2150100) .
+- **Git etkin geliştirme**. SYNAPSE Studio 'da kod geliştirin ve hata ayıklayın ve değişiklikleri git deposunun çalışma dalına **işleyin** . Bir veya daha fazla daldan iş, hizmette **yayımladığınızda** bir işbirliği dalında tümleşiktir.  Git deposu, kod düzenlemesi için Truth kaynağıdır, ancak hizmet, yürütme için Truth kaynağıdır. Değişiklikler SYNAPSE Studio 'Yu kapatmadan önce git deposuna kaydedilmiş veya hizmette yayımlanacak olmalıdır. Git ile SYNAPSE Analytics kullanma hakkında [daha fazla bilgi edinin](../cicd/continuous-integration-deployment.md) .
 
 Her iki geliştirme modelinde da, SYNAPSE Studio 'ya erişimi olan tüm kullanıcılar kod yapıtları oluşturabilir.  Ancak, hizmet için yapıtları yayımlamak, yayımlanan yapıtları okumak, git 'e yapılan değişiklikleri kaydetmek ve kimlik bilgileriyle korunan bağlantılı verilere erişmek için ek izinlere sahip olmanız gerekir.
 

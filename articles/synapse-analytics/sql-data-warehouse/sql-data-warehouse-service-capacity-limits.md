@@ -11,12 +11,12 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e3daf89b80daf47049150b05ca392eede360bd3e
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: d778844fee8cad9359532ffa23e177bf7b13c4b8
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673425"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117699"
 ---
 # <a name="capacity-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu için kapasite sınırları
 
@@ -43,7 +43,7 @@ Azure SYNAPSE Analytics 'te adanmış SQL havuzunun çeşitli bileşenleri için
 | Tablo |Veritabanı başına tablo | 100.000 |
 | Tablo |Tablo başına sütun |1024 sütun |
 | Tablo |Sütun başına bayt |Sütun [veri türüne](sql-data-warehouse-tables-data-types.md)bağımlıdır. Sınır, karakter veri türleri için 8000, nvarchar için 4000 veya en fazla veri türü için 2 GB 'dir. |
-| Tablo |Satır başına bayt, tanımlı boyut |8060 bayt<br/><br/>Satır başına bayt sayısı, sayfa sıkıştırması ile SQL Server için olduğu şekilde hesaplanır. SQL Server gibi, satır taşma alanı desteklenir ve bu da **değişken uzunluklu sütunların** satır dışı gönderilmesine olanak sağlar. Değişken uzunluk satırları satır dışı gönderildiğinde, ana kayıtta yalnızca 24 baytlık kök depolanır. Daha fazla bilgi için bkz. [8 KB 'ı aşan satır taşma verileri](https://msdn.microsoft.com/library/ms186981.aspx). |
+| Tablo |Satır başına bayt, tanımlı boyut |8060 bayt<br/><br/>Satır başına bayt sayısı, sayfa sıkıştırması ile SQL Server için olduğu şekilde hesaplanır. SQL Server gibi, satır taşma alanı desteklenir ve bu da **değişken uzunluklu sütunların** satır dışı gönderilmesine olanak sağlar. Değişken uzunluk satırları satır dışı gönderildiğinde, ana kayıtta yalnızca 24 baytlık kök depolanır. Daha fazla bilgi için bkz. [8 KB 'ı aşan satır taşma verileri](/previous-versions/sql/sql-server-2008-r2/ms186981(v=sql.105)). |
 | Tablo |Tablo başına bölüm sayısı |15.000<br/><br/>Yüksek performans için, hala iş gereksinimlerinizi desteklerken ihtiyacınız olan bölüm sayısını en aza indirmenizi öneririz. Bölüm sayısı arttıkça, veri tanımlama dili (DDL) ve veri Işleme dili (DML) işlemleri için ek yükün büyümesi ve performansının yavaşlamasına neden olur. |
 | Tablo |Bölüm sınırı değeri başına karakter. |4000 |
 | Dizin oluşturma |Tablo başına kümelenmemiş dizinler. |50<br/><br/>Yalnızca rowstore tabloları için geçerlidir. |
@@ -54,7 +54,7 @@ Azure SYNAPSE Analytics 'te adanmış SQL havuzunun çeşitli bileşenleri için
 | İstatistikler |İstatistik nesnesi başına sütun. |32 |
 | İstatistikler |Tablo başına sütunlarda oluşturulan istatistikler. |30.000 |
 | Saklı Yordamlar |En fazla iç içe geçme düzeyi. |8 |
-| Görüntüle |Görünüm başına sütun |1.024 |
+| Görünüm |Görünüm başına sütun |1.024 |
 ||||
 
 ## <a name="loads"></a>Sayfam

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
-ms.openlocfilehash: 565b84603a14452dd2ec49f8cf61da128503bc03
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: e746c7d09bb568d457ab1037b56c7c2973b29ad7
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964261"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117257"
 ---
 # <a name="steps-to-add-a-role-assignment"></a>Rol ataması ekleme adımları
 
@@ -31,7 +31,7 @@ ms.locfileid: "97964261"
 - Hizmet sorumlusu: Uygulamalar veya hizmetler tarafından belirli Azure kaynaklarına erişmek için kullanılan güvenlik kimliğidir. Bunu bir uygulamanın *kullanıcı kimliği* (kullanıcı adı ve parola veya sertifika) olarak düşünebilirsiniz.
 - Yönetilen kimlik-Azure tarafından otomatik olarak yönetilen Azure Active Directory bir kimlik. Azure hizmetlerinde kimlik doğrulaması için kimlik bilgilerini yönetmek üzere bulut uygulamaları geliştirirken genellikle [Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md) kullanırsınız.
 
-## <a name="step-2-find-the-appropriate-role"></a>2. Adım: uygun rolü bulun
+## <a name="step-2-select-the-appropriate-role"></a>2. Adım: uygun rolü seçin
 
 İzinler bir *rol tanımında* birlikte gruplandırılır. Genellikle bir *rol* olarak adlandırılır. Birkaç yerleşik rol listesinden seçim yapabilirsiniz. Yerleşik roller kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa kendi özel rollerinizi oluşturabilirsiniz.
 
@@ -62,7 +62,7 @@ Yerleşik rollerin diğerleri belirli Azure kaynakları için yönetim özellikl
 
 ![Rol ataması kapsamı](./media/shared/rbac-scope.png)
 
-Bir üst kapsamda bir rol atadığınızda, bu izinler alt kapsamlarına devralınır. Örneğin:
+Bir üst kapsamda bir rol atadığınızda, bu izinler alt kapsamlarına devralınır. Örnek:
 
 - [Okuyucu](built-in-roles.md#reader) rolünü yönetim grubu kapsamındaki bir kullanıcıya atarsanız, bu kullanıcı yönetim grubundaki tüm aboneliklerdeki her şeyi okuyabilir.
 - [Faturalandırma okuyucusu](built-in-roles.md#billing-reader) rolünü abonelik kapsamındaki bir gruba atarsanız, o grubun üyeleri abonelikteki her kaynak grubu ve kaynak için faturalandırma verilerini okuyabilir.

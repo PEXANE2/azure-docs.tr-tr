@@ -11,16 +11,16 @@ ms.date: 07/21/2020
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: b1a2e802f66132a88060fb74831781055897b077
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 9e7d45a588e60cd082f1eef43d1d1b6681b9e912
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093664"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117750"
 ---
 # <a name="score-machine-learning-models-with-predict"></a>TAHMIN eden makine öğrenimi modellerini puan edin
 
-Adanmış SQL havuzu, tanıdık T-SQL dilini kullanarak makine öğrenimi modellerini skor yeteneği sağlar. T-SQL ' i [tahmin](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true)etmek için, mevcut makine öğrenimi modellerinizi geçmiş verilerle eğitimli hale getirebilir ve veri ambarınızın güvenli sınırları dahilinde puan verebilirsiniz. TAHMIN işlevi bir [Onnx (Open sinir Network Exchange)](https://onnx.ai/) modeli ve verileri giriş olarak alır. Bu özellik, değerli verileri Puanlama için veri ambarının dışına taşıma adımını ortadan kaldırır. Veri uzmanlarının, kendi görevleri için doğru çatı ile çalışan veri bilimcilerine sorunsuz işbirliği yapmasına olanak tanıyan T-SQL arabirimiyle makine öğrenimi modellerini kolay bir şekilde dağıtmak için amaçlar.
+Adanmış SQL havuzu, tanıdık T-SQL dilini kullanarak makine öğrenimi modellerini skor yeteneği sağlar. T-SQL ' i [tahmin](/sql/t-sql/queries/predict-transact-sql?preserve-view=true&view=azure-sqldw-latest)etmek için, mevcut makine öğrenimi modellerinizi geçmiş verilerle eğitimli hale getirebilir ve veri ambarınızın güvenli sınırları dahilinde puan verebilirsiniz. TAHMIN işlevi bir [Onnx (Open sinir Network Exchange)](https://onnx.ai/) modeli ve verileri giriş olarak alır. Bu özellik, değerli verileri Puanlama için veri ambarının dışına taşıma adımını ortadan kaldırır. Veri uzmanlarının, kendi görevleri için doğru çatı ile çalışan veri bilimcilerine sorunsuz işbirliği yapmasına olanak tanıyan T-SQL arabirimiyle makine öğrenimi modellerini kolay bir şekilde dağıtmak için amaçlar.
 
 > [!NOTE]
 > Bu işlevsellik şu anda sunucusuz SQL havuzunda desteklenmez.
@@ -35,7 +35,7 @@ Adanmış SQL havuzu, önceden eğitilen bir model bekliyor. Adanmış SQL havuz
 
 - Adanmış SQL havuzu yalnızca ONNX biçim modellerini destekler. ONNX, birlikte çalışabilirliği etkinleştirmek için çeşitli çerçeveler arasında modeller alışverişi yapmanıza olanak sağlayan açık kaynaklı bir model biçimidir. Mevcut modellerinizi, yerel olarak destekleyen veya kullanılabilir paketleri dönüştüren çerçeveleri kullanarak ONNX biçimine dönüştürebilirsiniz. Örneğin, [sköğren-onnx](https://github.com/onnx/sklearn-onnx) paketi scikit-geçiş modellerini onnx 'e dönüştürün. [Onnx GitHub deposu](https://github.com/onnx/tutorials#converting-to-onnx-format) desteklenen çerçeveler ve örneklerin bir listesini sağlar.
 
-   Eğitim için [OTOMATIK ml](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) kullanıyorsanız, BIR onnx biçim modeli oluşturmak için *enable_onnx_compatible_models* parametresini true olarak ayarladığınızdan emin olun. [Otomatik Machine Learning Not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) , otomatik ml 'nın onnx biçiminde bir makine öğrenimi modeli oluşturmak için nasıl kullanılacağına ilişkin bir örnek gösterir.
+   Eğitim için [OTOMATIK ml](../../machine-learning/concept-automated-ml.md) kullanıyorsanız, BIR onnx biçim modeli oluşturmak için *enable_onnx_compatible_models* parametresini true olarak ayarladığınızdan emin olun. [Otomatik Machine Learning Not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) , otomatik ml 'nın onnx biçiminde bir makine öğrenimi modeli oluşturmak için nasıl kullanılacağına ilişkin bir örnek gösterir.
 
 - Giriş verileri için aşağıdaki veri türleri desteklenir:
     - int, bigint, Real, float
@@ -66,7 +66,7 @@ GO
 
 ```
 
-Model bir onaltılık dizeye ve belirtilen tablo tanımına dönüştürüldükten sonra, modeli adanmış SQL havuzu tablosuna yüklemek için [copy komutunu](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) veya PolyBase 'i kullanın. Aşağıdaki kod örneği, modeli yüklemek için Copy komutunu kullanır.
+Model bir onaltılık dizeye ve belirtilen tablo tanımına dönüştürüldükten sonra, modeli adanmış SQL havuzu tablosuna yüklemek için [copy komutunu](/sql/t-sql/statements/copy-into-transact-sql?preserve-view=true&view=azure-sqldw-latest) veya PolyBase 'i kullanın. Aşağıdaki kod örneği, modeli yüklemek için Copy komutunu kullanır.
 
 ```sql
 -- Copy command to load hexadecimal string of the model from Azure Data Lake storage location
@@ -80,9 +80,9 @@ WITH (
 
 ## <a name="scoring-the-model"></a>Modeli Puanlama
 
-Model ve veriler veri ambarına yüklendikten sonra, modele puan vermek için **T-SQL tahmin** etme işlevini kullanın. Yeni giriş verilerinin, modeli oluşturmak için kullanılan eğitim verileriyle aynı biçimde olduğundan emin olun. T-SQL tahmın etme iki giriş alır: model ve yeni Puanlama girişi verileri ve çıktı için yeni sütunlar oluşturur. Model bir değişken, değişmez değer veya skaler sub_query olarak belirtilebilir. Veri parametresi için adlandırılmış bir sonuç kümesi belirtmek üzere [common_table_expression ile](https://docs.microsoft.com/sql/t-sql/queries/with-common-table-expression-transact-sql?view=azure-sqldw-latest&preserve-view=true) kullanın.
+Model ve veriler veri ambarına yüklendikten sonra, modele puan vermek için **T-SQL tahmin** etme işlevini kullanın. Yeni giriş verilerinin, modeli oluşturmak için kullanılan eğitim verileriyle aynı biçimde olduğundan emin olun. T-SQL tahmın etme iki giriş alır: model ve yeni Puanlama girişi verileri ve çıktı için yeni sütunlar oluşturur. Model bir değişken, değişmez değer veya skaler sub_query olarak belirtilebilir. Veri parametresi için adlandırılmış bir sonuç kümesi belirtmek üzere [common_table_expression ile](/sql/t-sql/queries/with-common-table-expression-transact-sql?preserve-view=true&view=azure-sqldw-latest) kullanın.
 
-Aşağıdaki örnekte, tahmin işlevi kullanan örnek bir sorgu gösterilmektedir. Tahmin sonuçlarını içeren ad *puanı* ve *float* veri türü içeren ek bir sütun oluşturulur. Tüm giriş verisi sütunlarının yanı sıra, select ifadesiyle birlikte görüntülenecek çıkış tahmin sütunları vardır. Daha ayrıntılı bilgi için bkz. [tahmin (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true).
+Aşağıdaki örnekte, tahmin işlevi kullanan örnek bir sorgu gösterilmektedir. Tahmin sonuçlarını içeren ad *puanı* ve *float* veri türü içeren ek bir sütun oluşturulur. Tüm giriş verisi sütunlarının yanı sıra, select ifadesiyle birlikte görüntülenecek çıkış tahmin sütunları vardır. Daha ayrıntılı bilgi için bkz. [tahmin (Transact-SQL)](/sql/t-sql/queries/predict-transact-sql?preserve-view=true&view=azure-sqldw-latest).
 
 ```sql
 -- Query for ML predictions
@@ -93,4 +93,4 @@ DATA = dbo.mytable AS d, RUNTIME = ONNX) WITH (Score float) AS p;
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-TAHMIN işlevi hakkında daha fazla bilgi edinmek için bkz. [tahmin (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true).
+TAHMIN işlevi hakkında daha fazla bilgi edinmek için bkz. [tahmin (Transact-SQL)](/sql/t-sql/queries/predict-transact-sql?preserve-view=true&view=azure-sqldw-latest).

@@ -7,19 +7,17 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: 5aadd9d96f538f92e1b9e0100b2c1055ee0b0633
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: e60f77495cdb822a0c50be936c2b0d3ac31348f3
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065278"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116718"
 ---
 # <a name="cross-service-query---azure-monitor-and-azure-data-explorer-preview"></a>Çapraz hizmet sorgusu-Azure Izleyici ve Azure Veri Gezgini (Önizleme)
 [Azure Veri Gezgini](https://docs.microsoft.com/azure/data-explorer/), [Application Insights](/azure/azure-monitor/app/app-insights-overview)ve [Log Analytics](/azure/azure-monitor/platform/data-platform-logs)arasında çapraz hizmet sorguları oluşturun.
 ## <a name="azure-monitor-and-azure-data-explorer-cross-service-querying"></a>Azure Izleyici ve Azure Veri Gezgini çapraz hizmet sorgulama
 Bu deneyim, Azure [Veri Gezgini Ile Azure izleyici arasında çapraz hizmet sorguları oluşturmanızı](https://docs.microsoft.com/azure/data-explorer/query-monitor-data) ve [Azure izleyici ile Azure Veri Gezgini arasında çapraz hizmet sorguları oluşturmanızı](https://docs.microsoft.com/azure/azure-monitor/platform/azure-monitor-data-explorer-proxy)sağlar.
-
-:::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-data-explorer-monitor-flow.png" alt-text="Azure Veri Gezgini proxy akışı.":::
 
 Örneğin, (Log Analytics Azure Veri Gezgini sorgulama):
 ```kusto
