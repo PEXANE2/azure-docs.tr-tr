@@ -17,15 +17,15 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 915b56e9a9340920e99f4d3d4de6da4c39233eab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 713ec3a4020434fa73aad2e04676129cf43853be
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90014812"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165850"
 ---
 # <a name="upgrade-windows-azure-active-directory-sync-and-azure-active-directory-sync"></a>Windows Azure Active Directory Eşitleme’yi ve Azure Active Directory Eşitleme’yi yükseltme
-Azure AD Connect, şirket içi dizininizi Azure AD ve Microsoft 365 bağlamak için en iyi yoldur. Bu araçlar artık kullanım dışı olduğundan ve 13 Nisan 2017 itibariyle artık desteklenmediğinden, Windows Azure Active Directory Sync (DirSync) veya Azure AD Eşitleme Azure AD Connect yükseltmek için harika bir süredir.
+Azure AD Connect, şirket içi dizininizi Azure AD ve Microsoft 365 bağlamak için en iyi yoldur. Bu araçlar artık kullanım dışı olduğundan ve 13 Nisan 2017 itibariyle artık desteklenmediğinden, Windows Azure Active Directory Sync (DirSync) veya Azure AD Eşitleme (AADSync) Azure AD Connect yükseltmek için harika bir süredir.
 
 Kullanım dışı bırakılan iki kimlik eşitleme aracı, tek orman müşterileri (DirSync) ve çok ormanlı ve diğer gelişmiş müşteriler (Azure AD Eşitleme) için sunulmuştur. Bu eski araçlar, tüm senaryolar için kullanılabilen tek bir çözümle değiştirilmiştir: Azure AD Connect. Yeni senaryolar, özellik geliştirmeleri ve yeni senaryolar için destek sunar. Şirket içi kimlik verilerinizi Azure AD ve Microsoft 365 eşitlemeye devam edebilmek için, Azure AD Connect yükseltmeniz önemle önerilir. Microsoft bu eski sürümlerin 31 Aralık 2017 ' den sonra çalışmasını garanti etmez.
 
@@ -66,7 +66,7 @@ DirSync/Azure AD Eşitleme, 13 Nisan 2017 ' de çalışmaya devam edecektir.  An
 Kullanılmakta olan herhangi bir DirSync sürümünden yükseltme desteklenir. 
 
 **S: FIM/MıM için Azure AD Bağlayıcısı hakkında ne olacak?**  
-FIM/MıM için Azure AD Bağlayıcısı kullanım dışı olarak **duyurulmadı.** **Özellik dondurma**aşamasında. Yeni bir işlev eklenmez ve hata düzeltmeleri almaz. Microsoft, bu uygulamayı kullanarak bu müşterilerin Azure AD Connect 'e geçme planlaması gerçekleştirmesini önerir. Bunu kullanarak yeni dağıtımlar başlatmamak kesinlikle önerilir. Bu bağlayıcı gelecekte kullanımdan kaldırılmıştır duyurulacaktır.
+FIM/MıM için Azure AD Bağlayıcısı kullanım dışı olarak **duyurulmadı.** **Özellik dondurma** aşamasında. Yeni bir işlev eklenmez ve hata düzeltmeleri almaz. Microsoft, bu uygulamayı kullanarak bu müşterilerin Azure AD Connect 'e geçme planlaması gerçekleştirmesini önerir. Bunu kullanarak yeni dağıtımlar başlatmamak kesinlikle önerilir. Bu bağlayıcı gelecekte kullanımdan kaldırılmıştır duyurulacaktır.
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 * [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md)

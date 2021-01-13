@@ -3,15 +3,15 @@ title: Azure Izleyici 'de kapsayıcı Izleme çözümü | Microsoft Docs
 description: Azure Izleyici 'de kapsayıcı Izleme çözümü, Docker ve Windows kapsayıcı konaklarınızı tek bir konumda görüntülemenize ve yönetmenize yardımcı olur.
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 07/06/2020
-ms.openlocfilehash: a02ea022bedd92e9deaa0730cc1be051a9d20c88
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 483113fc508800eb126ee39f146c1fa34e5dba5e
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145693"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165714"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Azure Izleyici 'de kapsayıcı Izleme çözümü
 
@@ -45,7 +45,7 @@ Başlamadan önce, önkoşulları karşıladığınızdan emin olmak için aşa�
 
 Aşağıdaki tabloda, Azure Izleyici ile kapsayıcı envanteri, performansı ve günlükleri için Docker düzenleme ve işletim sistemi izleme desteği özetlenmektedir.   
 
-|Docker düzenleme | ACS | Linux | Windows | Kapsayıcı<br>Envanter | Görüntü<br>Envanter | Node<br>Envanter | Kapsayıcı<br>Performans | Kapsayıcı<br>Olay | Olay<br>Günlük | Kapsayıcı<br>Günlük |
+|Docker düzenleme | ACS | Linux | Windows | Kapsayıcı<br>Envanter | Görüntü<br>Envanter | Düğüm<br>Envanter | Kapsayıcı<br>Performans | Kapsayıcı<br>Olay | Olay<br>Günlük | Kapsayıcı<br>Günlük |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 | Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
@@ -116,7 +116,7 @@ Windows çalıştıran bilgisayarlarda Docker altyapılarını yüklemek ve yap�
 
 ### <a name="install-and-configure-linux-container-hosts"></a>Linux kapsayıcı Konakları yükleyip yapılandırma
 
-Docker 'ı yükledikten sonra, aracıyı Docker ile kullanılmak üzere yapılandırmak için kapsayıcı ana bilgisayarınız için aşağıdaki ayarları kullanın. İlk olarak, Azure portal bulabileceğiniz Log Analytics çalışma alanı KIMLIĞINIZ ve anahtarınız olmalıdır. Çalışma alanınızda, **Quick Start**  >  **çalışma alanı kimliğinizi** ve **birincil anahtarınızı** görüntülemek için hızlı başlangıç **bilgisayarlar** ' a tıklayın.  Her ikisini de kopyalayıp sık kullandığınız bir düzenleyiciye yapıştırın.
+Docker 'ı yükledikten sonra, aracıyı Docker ile kullanılmak üzere yapılandırmak için kapsayıcı ana bilgisayarınız için aşağıdaki ayarları kullanın. İlk olarak, Azure portal bulabileceğiniz Log Analytics çalışma alanı KIMLIĞINIZ ve anahtarınız olmalıdır. Çalışma alanınızda,   >  **çalışma alanı kimliğinizi** ve **birincil anahtarınızı** görüntülemek için hızlı başlangıç **bilgisayarlar** ' a tıklayın.  Her ikisini de kopyalayıp sık kullandığınız bir düzenleyiciye yapıştırın.
 
 **CoreOS hariç tüm Linux kapsayıcı konakları için:**
 

@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 7/1/2020
-ms.openlocfilehash: 8dc70eaeb9e2c2f5d4cdfef37619e4b04217782e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 1/12/2021
+ms.openlocfilehash: 48537483501165d4a978afdbd05560613170d187
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85964524"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165620"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-configuration-options"></a>PostgreSQL için Azure veritabanı – Hyperscale (Citus) yapılandırma seçenekleri
 
@@ -118,6 +118,10 @@ Düzenleyici ve çalışan düğümlerinde depolamanın ölçeği ölçeklendiri
 ### <a name="storage-size"></a>Depolama boyutu
 
 Koordinatör ve çalışan düğümlerinde en fazla 2 TiB depolama desteklenir. Düğüm ve küme boyutları için [Yukarıdaki](#compute-and-storage) kullanılabilir depolama SEÇENEKLERINE ve IOPS hesaplamasına bakın.
+
+### <a name="database-creation"></a>Veritabanı oluşturma
+
+Azure portal, hiper ölçek (Citus) sunucu grubu başına tam olarak bir veritabanına bağlanmak için kimlik bilgileri sağlar `citus` . Şu anda başka bir veritabanı oluşturulmasına izin verilmez ve CREATE DATABASE komutu bir hata vererek başarısız olur.
 
 ## <a name="pricing"></a>Fiyatlandırma
 En güncel fiyatlandırma bilgileri için bkz. hizmet [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/postgresql/).

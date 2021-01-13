@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8086bd2a193ac52e76bf8da245063163ab2ea2f9
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: a2d4cec57eb6ac23c191e504c305c2c6d11268ac
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591064"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165011"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Azure AD Uygulama Ara Sunucusu bağlayıcılarını anlama
 
@@ -25,7 +25,7 @@ Bağlayıcılar Azure AD Uygulama Ara Sunucusu mümkün hale getirir. Bunlar bas
 
 ## <a name="what-is-an-application-proxy-connector"></a>Uygulama proxy Bağlayıcısı nedir?
 
-Bağlayıcılar şirket içinde oturlan ve uygulama ara sunucusu hizmetine giden bağlantıyı kolaylaştıran hafif aracılardır. Bağlayıcıların, arka uç uygulamasına erişimi olan bir Windows Server 'a yüklenmesi gerekir. Bağlayıcıları bağlayıcı grupları halinde düzenleyerek, her grup belirli bir uygulama için trafiği idare edebilirsiniz.
+Bağlayıcılar şirket içinde oturlan ve uygulama ara sunucusu hizmetine giden bağlantıyı kolaylaştıran hafif aracılardır. Bağlayıcıların, arka uç uygulamasına erişimi olan bir Windows Server 'a yüklenmesi gerekir. Bağlayıcıları bağlayıcı grupları halinde düzenleyerek, her grup belirli bir uygulama için trafiği idare edebilirsiniz. Uygulama ara sunucusu üzerinde daha fazla bilgi ve uygulama proxy mimarisinin diagrammatik gösterimi için bkz. [uzak kullanıcılar için şirket içi uygulamalar yayımlamak üzere Azure AD uygulama ara sunucusu kullanma](what-is-application-proxy.md#application-proxy-connectors)
 
 ## <a name="requirements-and-deployment"></a>Gereksinimler ve dağıtım
 

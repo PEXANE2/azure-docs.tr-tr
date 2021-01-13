@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 12/14/2020
-ms.openlocfilehash: 9ee7440b10bc348d3ba87a4779208791a7b0e9ac
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: b5a30846a6e2aaf85ded2e55641aa5fba9507a29
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97512037"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165782"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-service-tiers"></a>Azure SQL veritabanı ve Azure SQL yönetilen örnek hizmeti katmanları
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -55,7 +55,7 @@ Aşağıdaki tabloda, en son nesil (5. nesil) için hizmet katmanları arasında
 | | SQL Yönetilen Örnek | [Sanal çekirdek başına 3 MB/s (en fazla 22 MB/sn)](../managed-instance/resource-limits.md#service-tier-characteristics) | Yok | [sanal çekirdek başına 4 MB/s (en fazla 48 MB/sn)](../managed-instance/resource-limits.md#service-tier-characteristics) |
 |**Kullanılabilirlik**|Tümü| %99,99 |  [bir ikincil çoğaltmayla% 99,95, daha fazla çoğaltmayla% 99,99](service-tier-hyperscale-frequently-asked-questions-faq.md#what-slas-are-provided-for-a-hyperscale-database) | %99,99 <br/> [bölge yedekli tek veritabanı ile% 99,995](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
 |**Yedeklemeler**|Tümü|RA-GRS, 7-35 gün (varsayılan olarak 7 gün). Temel katman için maksimum bekletme 7 gündür. | RA-GRS, 7 gün, sabit zaman zaman aşımı kurtarma (sür) | RA-GRS, 7-35 gün (varsayılan olarak 7 gün) |
-|**Bellek İçi OLTP** | | Yok | Yok | Kullanılabilir |
+|**Bellek içi OLTP** | | Yok | Yok | Kullanılabilir |
 |**Salt okuma çoğaltmaları**| | 0 yerleşik <br> [Coğrafi çoğaltmayı](active-geo-replication-overview.md) kullanarak 0-4 | 0-4 yerleşik | 1 yerleşik, fiyata dahildir <br> [Coğrafi çoğaltmayı](active-geo-replication-overview.md) kullanarak 0-4 |
 |**Fiyatlandırma/faturalandırma** | SQL Veritabanı | [sanal çekirdek, ayrılmış depolama ve yedekleme depolaması](https://azure.microsoft.com/pricing/details/sql-database/single/) ücretlendirilir. <br/>IOPS ücretlendirilmez. | [her çoğaltma Için sanal çekirdek ve kullanılan depolama alanı](https://azure.microsoft.com/pricing/details/sql-database/single/) ücretlendirilir. <br/>IOPS henüz ücretlendirilmedi. | [sanal çekirdek, ayrılmış depolama ve yedekleme depolaması](https://azure.microsoft.com/pricing/details/sql-database/single/) ücretlendirilir. <br/>IOPS ücretlendirilmez. |
 || SQL Yönetilen Örnek | [sanal çekirdek, ayrılmış depolama ve yedekleme depolama](https://azure.microsoft.com/pricing/details/sql-database/managed/) alanı ücretlendirilir. <br/>IOPS ücretlendirimedi| Yok | [sanal çekirdek, ayrılmış depolama ve yedekleme depolama](https://azure.microsoft.com/pricing/details/sql-database/managed/) alanı ücretlendirilir. <br/>IOPS ücretlendirilmez.| 
@@ -78,6 +78,7 @@ Aşağıdaki faktörler, veri ve günlük dosyaları için kullanılan depolama 
   - Premium veya iş açısından kritik hizmet katmanlarında depolama için boyutu 250 GB 'lik artışlarla artırın veya azaltın.
 - Genel amaçlı hizmet katmanında, `tempdb` bağlı BIR SSD kullanır ve bu depolama maliyeti sanal çekirdek fiyatına dahildir.
 - İş açısından kritik hizmet katmanında, `tempdb` eklenen SSD 'YI MDF ve LDF dosyalarıyla paylaşır ve `tempdb` depolama maliyeti sanal çekirdek fiyatına dahildir.
+- DTU Premium hizmet katmanında, `tempdb` eklenen SSD 'YI MDF ve LDF dosyalarıyla paylaşır.
 - SQL yönetilen örneği için depolama boyutu 32 GB 'ın katları olarak belirtilmelidir.
 
 

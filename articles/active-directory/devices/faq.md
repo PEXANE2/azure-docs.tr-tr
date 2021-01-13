@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd438a09b929274808984322981f6d21da0bf68f
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 73946eea846b06b28d0a0f017ea1317c8cc7326d
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860958"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165153"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory cihaz yönetimi SSS
 
@@ -142,6 +142,12 @@ Y **:** İptal etme işlemi, Azure AD cihazının devre dışı olarak işaretle
 >* Bir cihaz Azure AD Connect bir eşitleme kapsamından kaldırılırsa ve geri eklendiyse.
 >
 >Her iki durumda da, bu cihazların her birinde cihazı el ile yeniden kaydetmeniz gerekir. Cihazın daha önce kayıtlı olup olmadığını gözden geçirmek için, [dsregcmd komutunu kullanarak cihazlarda sorun giderme](troubleshoot-device-dsregcmd.md)yapabilirsiniz.
+
+---
+
+### <a name="q-i-cannot-add-more-than-3-azure-ad-user-accounts-under-the-same-user-session-on-a-windows-10-device-why"></a>S: Windows 10 cihazında aynı kullanıcı oturumu altında 3 ' ten fazla Azure AD Kullanıcı hesabı ekleyemiyorum, neden?
+
+Y **: Azure** ad, Windows 10 1803 sürümünde birden çok Azure AD hesabı için destek eklendi. Ancak, Windows 10, belirteç isteklerinin boyutunu sınırlandırmak ve güvenilir çoklu oturum açmayı (SSO) etkinleştirmek için bir cihazdaki Azure AD hesabı sayısını 3 olarak kısıtlar. 3 hesap eklendikten sonra, kullanıcılar sonraki hesaplar için bir hata görür. Hata ekranındaki ek sorun bilgileri, "hesap ekleme işlemi, accout sınırına ulaşıldığı için engellendi" nedenini belirten aşağıdaki iletiyi sağlar. 
 
 ---
 ## <a name="azure-ad-join-faq"></a>Azure AD 'ye ekleme hakkında SSS

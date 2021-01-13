@@ -12,21 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 3eb456dad2836bed55c45e7be9e898fdf72ac4d2
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 59e266274d6b65182ad63513ecf9bf3b5ab95490
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017944"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98164847"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Ağ Performansı İzleyicisi bağlantı Izleyicisi 'ne geçir
 
 Ağ Performansı İzleyicisi (NPM) ' den yeni, iyileştirilmiş bağlantı Izleyicisine, tek tıklamayla ve sıfır kapalı kalma süresine sahip testleri geçirebilirsiniz. Avantajlar hakkında daha fazla bilgi edinmek için bkz. [Bağlantı İzleyicisi](./connection-monitor-overview.md).
 
-
->[!NOTE]
-> Yalnızca hizmet bağlantı Izleyicisi 'ndeki testler bağlantı Izleyicisine geçirilebilir.
->
 
 ## <a name="key-points-to-note"></a>Önemli noktaları göz önünde
 
@@ -39,7 +35,7 @@ Geçiş, aşağıdaki sonuçları üretmenize yardımcı olur:
    * **Log Analytics verileri**: geçişten önce, veriler NPM 'Nin networkmonitoring tablosunda yapılandırıldığı çalışma alanında kalır. Geçişten sonra, veriler NetworkMonitoring tablosuna ve aynı çalışma alanındaki ConnectionMonitor_CL tablosuna gider. Test NPM 'de devre dışı bırakıldıktan sonra, veriler yalnızca ConnectionMonitor_CL tablosunda depolanır.
    * **Günlük tabanlı uyarılar, panolar ve tümleştirmeler**: yeni ConnectionMonitor_CL tablosuna göre sorguları el ile düzenlemeniz gerekir. Uyarıları ölçümlerde yeniden oluşturmak için, bkz. [Bağlantı İzleyicisi Ile ağ bağlantısı izleme](./connection-monitor-overview.md#metrics-in-azure-monitor).
     
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Aboneliğinizde ve Log Analytics çalışma alanının bölgesinde ağ izleyicisinin etkinleştirildiğinden emin olun.
 * Log Analytics aracıları yüklü Azure sanal makineleri, ağ Izleyicisi uzantısıyla etkinleştirilmelidir.
@@ -52,7 +48,7 @@ Testleri Ağ Performansı İzleyicisi bağlantı Izleyicisine geçirmek için a�
 
     :::image type="content" source="./media/connection-monitor-2-preview/migrate-npm-to-cm-preview.png" alt-text="Ağ Performansı İzleyicisi testleri bağlantı Izleyicisine geçirme" lightbox="./media/connection-monitor-2-preview/migrate-npm-to-cm-preview.png":::
     
-1. Aşağı açılan listelerde, aboneliğinizi ve çalışma alanınızı seçin ve ardından geçirmek istediğiniz NPM özelliğini seçin. Şu anda yalnızca hizmet bağlantı Izleyiciden testleri geçirebilirsiniz.  
+1. Aşağı açılan listelerde, aboneliğinizi ve çalışma alanınızı seçin ve ardından geçirmek istediğiniz NPM özelliğini seçin. 
 1. Testleri geçirmek için **Içeri aktar** ' ı seçin.
 
 Geçiş başladıktan sonra aşağıdaki değişiklikler gerçekleşir: 
@@ -74,5 +70,5 @@ Geçişten sonra şunları yaptığınızdan emin olun:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bağlantı Izleyicisi hakkında daha fazla bilgi edinmek için bkz.:
-* [Bağlantı izleyiciden bağlantı Izleyicisi 'ne geçiş](./migrate-to-connection-monitor-from-connection-monitor-classic.md)
+* [Bağlantı Izleyicisi 'nden (klasik) bağlantı Izleyicisi 'ne geçiş](./migrate-to-connection-monitor-from-connection-monitor-classic.md)
 * [Azure portal kullanarak bağlantı Izleyicisi oluşturma](./connection-monitor-create-using-portal.md)

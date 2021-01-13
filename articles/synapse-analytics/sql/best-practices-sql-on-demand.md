@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: b8b93471b6d7f2555cfd71e524718ed0ea1ee191
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 93ac8cd3e462c244840a5ed569d685a9d67fa6c2
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457894"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165884"
 ---
 # <a name="best-practices-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu için en iyi yöntemler
 
@@ -25,9 +25,9 @@ Bu makalede sunucusuz SQL havuzu kullanmak için en iyi yöntemler koleksiyonunu
 
 Sunucusuz SQL havuzu, Azure depolama hesaplarınızdaki dosyaları sorgulamanızı sağlar. Yerel depolama veya alma özelliklerine sahip değildir. Bu nedenle, sorgunun hedeflediği tüm dosyalar sunucusuz SQL havuzu dışında. Depolama alanından dosyaların okunmayla ilgili her şey, sorgu performansının üzerinde bir etkiye sahip olabilir.
 
-## <a name="colocate-your-azure-storage-account-and-serverless-sql-pool"></a>Azure depolama hesabınızı ve sunucusuz SQL havuzunu birlikte bulundurma
+## <a name="colocate-your-storage-and-serverless-sql-pool"></a>Depolama ve sunucusuz SQL havuzunuzu birlikte bulundurma
 
-Gecikme süresini en aza indirmek için, Azure depolama hesabınızı ve sunucusuz SQL havuzu uç noktanızı birlikte bulundurma. Çalışma alanı oluşturma sırasında sağlanan depolama hesapları ve uç noktaları aynı bölgede bulunur.
+Gecikme süresini en aza indirmek için, Azure Storage hesabınızı veya CosmosDB analitik depolama alanınızı ve sunucusuz SQL havuzu uç noktanızı birlikte bulundurma. Çalışma alanı oluşturma sırasında sağlanan depolama hesapları ve uç noktaları aynı bölgede bulunur.
 
 En iyi performans için, sunucusuz SQL havuzu ile diğer depolama hesaplarına eriştiğinizde aynı bölgede olduklarından emin olun. Aynı bölgede yoksa, uzak bölge ve uç noktanın bölgesi arasındaki ağ aktarımı için gecikme süresi artacaktır.
 
@@ -44,9 +44,9 @@ Daraltma algılandığında sunucusuz SQL havuzu bunu çözmek için yerleşik i
 
 Mümkünse, daha iyi performans için dosyaları hazırlayacaksınız:
 
-- CSV ve JSON 'ı Parquet 'e dönüştürün. Parquet, sütunlu bir biçimdir. Sıkıştırılmış olduğundan, dosya boyutları CSV 'den veya aynı verileri içeren JSON dosyalarından daha küçüktür. Sunucusuz SQL havuzu, okumak için daha az zaman ve daha az depolama isteğinde olmalıdır.
+- Büyük CSV ve JSON 'ı Parquet 'e dönüştürün. Parquet, sütunlu bir biçimdir. Sıkıştırılmış olduğundan, dosya boyutları CSV 'den veya aynı verileri içeren JSON dosyalarından daha küçüktür. Parquet dosyalarını okuyorsanız, sunucusuz SQL havuzu sorgu için gerekli olmayan sütunları ve satırları atlayabilir. Sunucusuz SQL havuzu, okumak için daha az zaman ve daha az depolama isteğinde olmalıdır.
 - Bir sorgu tek bir büyük dosyayı hedefliyorsa, onu birden çok daha küçük dosyaya bölmeyi avantajdan yararlanabilirsiniz.
-- CSV dosyanızın boyutunu 10 GB 'tan daha düşük tutmaya çalışın.
+- CSV dosyanızın boyutunu 100 MB ile 10 GB arasında tutmaya çalışın.
 - Tek bir OPENROWSET yolu veya dış tablo konumu için eşit boyutlu dosyalar olması daha iyidir.
 - Bölümleri farklı klasörlere veya dosya adlarına depolayarak verilerinizi bölümleyin. Bkz. [belirli bölümleri hedeflemek için filename ve FilePath Işlevlerini kullanma](#use-filename-and-filepath-functions-to-target-specific-partitions).
 

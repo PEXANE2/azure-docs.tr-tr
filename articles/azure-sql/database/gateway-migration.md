@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 7fadbecc2c00a739afb2f94dd1d049805915cfa5
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 0542d7e0ea204d1e9279e89c9f36b9bc6c6c88fa
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427102"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165867"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL veritabanı trafiğini daha yeni ağ geçitlerine geçirme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,6 +27,25 @@ Müşteriler, e-posta ile ve her bölgede kullanılabilir olan ağ geçitlerinde
 ## <a name="status-updates"></a>Durum güncelleştirmeleri
 
 # <a name="in-progress"></a>[Sürüyor](#tab/in-progress-ip)
+## <a name="january-2021"></a>Ocak 2021
+Yeni SQL ağ geçitleri aşağıdaki bölgelere ekleniyor:
+
+- Avustralya Orta: 20.36.104.6, 20.36.104.7 
+- Avustralya Orta 2:20.36.112.6 
+- Brezilya Güney: 191.234.144.16, 191.234.152.3 
+- Kanada Doğu: 40.69.105.9, 40.69.105.10
+- Hindistan Orta: 104.211.86.30, 104.211.86.31 
+- Doğu Asya: 13.75.32.14 
+- Fransa Orta: 40.79.137.8, 40.79.145.12 
+- Fransa Güney: 40.79.177.10, 40.79.177.12
+- Kore Orta: 52.231.17.22, 52.231.17.23
+- Hindistan Batı: 104.211.144.4
+
+Bu SQL ağ geçitleri, 31 Ocak 2021 tarihinde müşteri trafiğini kabul etmeye başlayacaktır
+
+# <a name="completed"></a>[Tamamlandı](#tab/completed-ip)
+Aşağıdaki ağ geçidi geçişleri tamamlanmıştır: 
+
 ### <a name="october-2020"></a>Ekim 2020
 
 Yeni SQL ağ geçitleri aşağıdaki bölgelere ekleniyor:
@@ -70,9 +89,6 @@ Yeni SQL ağ geçitleri aşağıdaki bölgelere ekleniyor. Bu SQL ağ geçitleri
 Mevcut SQL ağ geçitleri aşağıdaki bölgelerde trafiği kabul etmeye başlayacaktır. Bu SQL ağ geçitleri, **1 eylül 2020** ' de müşteri trafiğini kabul etmeye başlayacaktır:
 - Japonya Doğu: 40.79.184.8, 40.79.192.5
 
-# <a name="completed"></a>[Tamamlandı](#tab/completed-ip)
-
-Aşağıdaki ağ geçidi geçişleri tamamlanmıştır: 
 
 ### <a name="august-2020"></a>Ağustos 2020
 

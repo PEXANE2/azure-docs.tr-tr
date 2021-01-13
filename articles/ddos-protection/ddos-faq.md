@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: yitoh
-ms.openlocfilehash: c09f8c5ae4a742e6caa489ee29043f500617bb24
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 4196515463611f51dddb79438b1d4e827f1b32c2
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746497"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165408"
 ---
 # <a name="azure-ddos-protection-standard-frequent-asked-questions"></a>Azure DDoS koruması standart sık sorulan sorular
 
@@ -27,6 +27,11 @@ Dağıtılmış hizmet reddi veya DDoS, bir saldırganın uygulamanın işleme y
 
 ## <a name="what-is-azure-ddos-protection-standard-service"></a>Azure DDoS koruması standart hizmeti nedir?
 Azure DDoS koruma standardı, uygulama tasarımı en iyi uygulamaları ile birlikte, DDoS saldırılarına karşı savunmak için gelişmiş DDoS azaltma özellikleri sağlar. Bir sanal ağdaki belirli Azure kaynaklarınızı korumaya yardımcı olmak üzere otomatik olarak ayarlanır. Korumanın, yeni veya mevcut bir sanal ağda etkinleştirilmesi basittir ve uygulama veya kaynak değişikliği gerektirmez. Günlük, uyarı ve telemetri dahil olmak üzere temel hizmet üzerinde çeşitli avantajları vardır. Daha fazla bilgi için bkz. [Azure DDoS koruması standardına genel bakış](ddos-protection-overview.md) . 
+
+## <a name="how-does-pricing-work"></a>Fiyatlandırma nasıl çalışır?
+DDoS koruma planları, en fazla 100 genel IP adresini kapsayan ayda aylık $2.944 sabit ücretine sahiptir. Ek kaynaklara yönelik koruma, kaynak başına aylık olarak ek $30 ücret alınacaktır. 
+
+Bir kiracı altında, tek bir DDoS koruma planı birden çok abonelik genelinde kullanılabilir, bu nedenle birden fazla DDoS koruma planı oluşturmaya gerek yoktur.
 
 ## <a name="what-about-protection-at-the-service-layer-layer-7"></a>Hizmet katmanında (katman 7) koruma hakkında ne olacak?
 Müşteriler, hem Ağ katmanında (katman 3 ve 4, Azure DDoS koruma standardı tarafından sunulan) hem de uygulama katmanında (bir WAF tarafından sunulan) koruma için Web uygulaması güvenlik duvarı (WAF) ile birlikte Azure DDoS koruma hizmeti 'ni kullanabilir. WAF teklifleri Azure [Application Gateway WAF SKU 'su](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ve [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall)'nde bulunan üçüncü taraf Web uygulaması güvenlik duvarı tekliflerini içerir.

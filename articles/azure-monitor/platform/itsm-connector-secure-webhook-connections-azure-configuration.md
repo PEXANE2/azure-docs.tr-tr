@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/03/2021
-ms.openlocfilehash: 5eb58c48acc7974a4379cf1993a73228c99f5e6d
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: 03a16bfbcb3a8d46a6cb4faa03aa6b6e96cf3db3
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857582"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165969"
 ---
 # <a name="configure-azure-to-connect-itsm-tools-using-secure-export"></a>Güvenli dışarı aktarma kullanarak ıTSM araçlarına bağlanmak için Azure 'ı yapılandırma
 
@@ -39,9 +39,9 @@ Uygulamayı Azure AD 'ye kaydetmek için şu adımları izleyin:
 
 ## <a name="define-service-principal"></a>Hizmet sorumlusunu tanımlama
 
-Hizmet ile kimlik doğrulaması yapmak için, eylem grup hizmeti 'nin AAD uygulamanızdan kimlik doğrulama belirteçleri alma izni olması gerekir. Bu izinleri vermek için kiracınızdaki eylem grubu hizmeti için bir hizmet sorumlusu oluşturmanız gerekir.
-Bu amaçla, bu [PowerShell komutlarını](./action-groups.md#secure-webhook-powershell-script) kullanabilirsiniz. (Kiracı yönetici ayrıcalıkları gerektirir).
-İsteğe bağlı bir adım olarak, oluşturulan uygulama bildiriminde uygulama rolünü tanımlayabilir ve bu, erişimi daha da belirli bir role sahip olan belirli uygulamaların ileti gönderebileceği şekilde kısıtlayabilir. Bu rolün daha sonra eylem grubu hizmet sorumlusuna atanması gerekmez. \
+Eylem grubu hizmeti ilk taraf bir uygulamadır, bu nedenle hizmet ile kimlik doğrulaması yapmak için AAD uygulamanızdan kimlik doğrulama belirteçleri alma iznine sahiptir.
+İsteğe bağlı bir adım olarak, oluşturulan uygulama bildiriminde uygulama rolünü tanımlayabilir ve bu, erişimi daha da belirli bir role sahip olan belirli uygulamaların ileti gönderebileceği şekilde kısıtlayabilir. Bu rolün daha sonra eylem grubu hizmet sorumlusuna atanması gerekir (kiracı yönetici ayrıcalıkları gerektirir).
+
 Bu adım aynı [PowerShell komutları](./action-groups.md#secure-webhook-powershell-script)aracılığıyla yapılabilir.
 
 ## <a name="create-a-secure-webhook-action-group"></a>Güvenli Web kancası eylem grubu oluşturma

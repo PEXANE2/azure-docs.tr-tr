@@ -5,15 +5,15 @@ author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: security
-ms.date: 10/16/2020
+ms.date: 01/12/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7eff63b36eb09036b188ac756ec55a5b1bf63718
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 2d2b65261e09d056ec76b25d6fcb6627bc54770b
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116526"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165731"
 ---
 # <a name="synapse-managed-private-endpoints"></a>SYNAPSE yönetilen özel uç noktalar
 
@@ -21,13 +21,9 @@ Bu makalede, Azure SYNAPSE Analytics 'te yönetilen özel uç noktalar açıklan
 
 ## <a name="managed-private-endpoints"></a>Yönetilen özel uç noktalar
 
-Yönetilen özel uç noktalar, Azure kaynaklarına özel bir bağlantı kurmak Microsoft Azure Sanal Ağ yönetilen çalışma alanında oluşturulan özel uç noktalardır. Azure SYNAPSE, bu özel uç noktaları sizin adınıza yönetir.
+Yönetilen özel uç noktalar, Azure SYNAPSE çalışma alanınız ile ilişkili bir yönetilen sanal ağda oluşturulan özel uç noktalardır. Yönetilen özel uç noktalar Azure kaynaklarına özel bir bağlantı kurar. Azure SYNAPSE, bu özel uç noktaları sizin adınıza yönetir. Azure hizmetlerine (Azure depolama veya Azure Cosmos DB) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine erişmek için Azure SYNAPSE çalışma alanınızdan yönetilen özel uç noktalar oluşturabilirsiniz.
 
-Azure SYNAPSE özel bağlantıları destekler. Özel bağlantı, Azure hizmetlerine (Azure depolama ve Azure Cosmos DB gibi) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine Azure sanal ağınızdan güvenli bir şekilde erişmenizi sağlar.
-
-Özel bir bağlantı kullandığınızda, sanal ağınız ile çalışma alanınız arasındaki trafik tamamen Microsoft omurga ağı üzerinden geçer. Özel bağlantı, veri savunma risklerine karşı koruma sağlar. Özel bir uç nokta oluşturarak kaynağa özel bir bağlantı kurarsınız.
-
-Özel uç nokta, hizmeti sanal ağınıza etkin bir şekilde taşımak için sanal ağınızdan özel bir IP adresi kullanır. Özel uç noktalar Azure 'daki belirli bir kaynakla eşlenir ve hizmetin tamamı değildir. Müşteriler, şirket tarafından onaylanan belirli bir kaynakla bağlantıyı sınırlayabilir. 
+Özel uç noktaları, Azure SYNAPSE çalışma alanınız ve diğer Azure kaynakları arasındaki trafik, tamamen Microsoft omurga ağı üzerinden çapraz geçiş yapar. Yönetilen özel uç noktalar veri taşmalarına karşı koruma altına alınmıştır. Yönetilen bir özel uç nokta, Azure hizmeti 'nin sanal ağınızla iletişim kurduğu Azure hizmetini etkin bir şekilde getirmek için yönetilen sanal ağınızdan özel IP adresi kullanır. Yönetilen özel uç noktalar, Azure 'daki belirli bir kaynakla eşlenir ve hizmetin tamamı değildir. Müşteriler, şirket tarafından onaylanan belirli bir kaynakla bağlantıyı sınırlayabilir. 
 
 [Özel bağlantılar ve özel uç noktalar](../../private-link/index.yml)hakkında daha fazla bilgi edinin.
 
@@ -35,13 +31,10 @@ Azure SYNAPSE özel bağlantıları destekler. Özel bağlantı, Azure hizmetler
 >Yönetilen özel uç noktalar yalnızca yönetilen çalışma alanı sanal ağı olan Azure SYNAPSE çalışma alanlarında desteklenir.
 
 >[!NOTE]
->Yönetilen özel uç noktaları hariç yönetilen çalışma alanı sanal ağından gelen tüm giden trafik gelecekte engellenir. Çalışma alanı dışındaki tüm Azure veri kaynaklarınıza bağlanmak için yönetilen özel uç noktalar oluşturmanız önerilir. 
+>Bir Azure SYNAPSE çalışma alanı oluştururken, yönetilen bir sanal ağı onunla ilişkilendirmeyi seçebilirsiniz. Çalışma alanınız ile ilişkili bir yönetilen sanal ağ olmasını seçerseniz, çalışma alanınızdan giden trafiği yalnızca onaylanan hedeflere sınırlamayı tercih edebilirsiniz. Bu hedeflere yönetilen özel uç noktalar oluşturmanız gerekir. 
 
-Azure SYNAPSE 'de yönetilen özel uç nokta oluşturduğunuzda bir "bekleyen" durumunda özel bir uç nokta bağlantısı oluşturulur. Bir onay iş akışı başlatılır. Özel bağlantı kaynağı sahibi bağlantıyı onaylaması veya reddetmekten sorumludur.
 
-Sahip bağlantıyı onayladığında, özel bağlantı oluşturulur. Ancak, sahip bağlantıyı onaylamazsa özel bağlantı kurulamayacaktır. Her iki durumda da, yönetilen özel uç nokta bağlantının durumuyla güncelleştirilir.
-
-Yalnızca onaylanan bir durumdaki yönetilen özel uç nokta, belirli bir özel bağlantı kaynağına trafik gönderebilir.
+Azure SYNAPSE 'de yönetilen özel uç nokta oluşturduğunuzda bir "bekleyen" durumunda özel bir uç nokta bağlantısı oluşturulur. Bir onay iş akışı başlatılır. Özel bağlantı kaynağı sahibi bağlantıyı onaylaması veya reddetmekten sorumludur. Sahip bağlantıyı onayladığında, özel bağlantı oluşturulur. Ancak, sahip bağlantıyı onaylamazsa özel bağlantı kurulamayacaktır. Her iki durumda da, yönetilen özel uç nokta bağlantının durumuyla güncelleştirilir. Yönetilen özel uç noktaya bağlı özel bağlantı kaynağına trafik göndermek için yalnızca onaylanan durumda olan yönetilen özel bir uç nokta kullanılabilir.
 
 ## <a name="managed-private-endpoints-for-dedicated-sql-pool-and-serverless-sql-pool"></a>Adanmış SQL havuzu ve sunucusuz SQL havuzu için yönetilen özel uç noktalar
 

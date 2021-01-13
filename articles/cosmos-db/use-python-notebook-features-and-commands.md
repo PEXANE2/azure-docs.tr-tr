@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: 381aa88326440aba91e02393cfe2bdb1e2c38097
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b89fcf32ed033f359b4db601e36cc69bb899944d
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340422"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165833"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-python-notebooks-preview"></a>Azure Cosmos DB Python not defterlerinde yerleşik Not defteri komutlarını ve özelliklerini kullanma (Önizleme)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -44,7 +44,7 @@ Bu paket, Azure Cosmos hesap çalışma alanındaki herhangi bir not defterinden
 - ``{database_id}``Ve ' i, ``{container_id}`` Cosmos hesabınızdaki veritabanı ve kapsayıcının adıyla değiştirin. ``--database``Ve ``--container`` bağımsız değişkenleri sağlanmazsa, sorgu [varsayılan veritabanı ve kapsayıcıda](#set-default-database-for-queries)yürütülür.
 - Azure Cosmos DB için geçerli olan herhangi bir SQL sorgusunu çalıştırabilirsiniz. Sorgu metni yeni bir satırda olmalıdır.
 
-Örneğin: 
+Örnek: 
 ```python
 %%sql --database RetailDemo --container WebsiteData
 SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c
@@ -63,7 +63,7 @@ Bir ``%%sql`` sorgunun sonuçlarını bir [Pandas dataframe](https://pandas.pyda
 - ``{outputDataFrameVar}``Sonuçları Içerecek DataFrame değişkeninin adıyla değiştirin.
 - Azure Cosmos DB için geçerli olan herhangi bir SQL sorgusunu çalıştırabilirsiniz. Sorgu metni yeni bir satırda olmalıdır. 
 
-Örneğin:
+Örnek:
 
 ```python
 %%sql --database RetailDemo --container WebsiteData --output df_cosmos
@@ -110,7 +110,7 @@ df_cosmos.head(10)
 - ``{database_id}``Ve ' i ``{container_id}`` Azure Cosmos hesabınızdaki veritabanı ve kapsayıcının adıyla değiştirin. ``--database``Ve ``--container`` bağımsız değişkenleri sağlanmazsa, sorgu [varsayılan veritabanı ve kapsayıcıda](#set-default-database-for-queries)yürütülür.
 - ``{url_location_of_file}``JSON dosyanızın konumuyla değiştirin. Dosya geçerli bir JSON nesneleri dizisi olmalıdır ve bu, genel Internet üzerinden erişilebilir olmalıdır.
 
-Örneğin:
+Örnek:
 
 ```python
 %%upload --database databaseName --container containerName --url 
@@ -123,6 +123,8 @@ Total time taken : 00:00:38.1228087 hours
 Total RUs consumed : 25022.58
 ```
 Çıkış istatistikleriyle, öğeleri karşıya yüklemek için kullanılan geçerli RU/s 'yi hesaplayabilirsiniz. Örneğin, 38 saniyenin üzerinde 25.000 ru kullanılıyorsa, geçerli RU/s, 25.000 ru/38 saniye = 658 RU/s olur.
+
+Dosyaları (CSV veya JSON dosyaları gibi) yerel Not defteri çalışma alanına kaydedebilirsiniz. Dosyaları kaydetmek için Not defterinize bir hücre eklemenizi öneririz. Bu dosyaları, Not defteri ortamındaki tümleşik terminalden görüntüleyebilirsiniz. Kaydedilen dosyaları görüntülemek için "ls" komutunu kullanabilirsiniz. Ancak, çalışma alanını sıfırlarsanız bu dosyalar kaldırılır. Bu nedenle, yerel çalışma alanı yerine GitHub veya bir depolama hesabı gibi kalıcı depolama kullanmak en iyisidir.
 
 ## <a name="run-another-notebook-in-current-notebook"></a>Geçerli not defterinde başka bir not defteri Çalıştır 
 ``%%run``Geçerli not defterinizdeki çalışma alanınızda başka bir not defteri çalıştırmak için Magic komutunu kullanabilirsiniz. Sözdizimini kullanın:
@@ -149,7 +151,7 @@ df_cosmos.groupby("Item").size()
 
 ``cosmos_client``Herhangi BIR SDK işlemini çalıştırmak için yerleşik örneği kullanın. 
 
-Örneğin:
+Örnek:
 
 ```python
 ## Import modules as needed

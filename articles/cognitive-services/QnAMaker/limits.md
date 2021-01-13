@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: b3dca3617e2fb7ccdff870041374e9158498c9d1
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: 1e57ae537c271e61f0b2d37f5320cb177b04802b
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97708949"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98164881"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Bilgi tabanı sınırlarını ve sınırlarını Soru-Cevap Oluşturma
 
@@ -99,6 +99,7 @@ Bunlar her bir bilgi tabanı oluşturma eyleminin sınırlarını temsil eder; d
 * Yanıt başına önerilen en fazla farklı soru sayısı: 300
 * En fazla URL sayısı: 10
 * En fazla dosya sayısı: 10
+* Çağrı başına izin verilen en fazla QnAs sayısı: 1000
 
 ## <a name="update-knowledge-base-call-limits"></a>Bilgi Bankası çağrı sınırlarını güncelleştirme
 Bunlar her bir güncelleştirme eyleminin sınırlarını temsil eder; diğer bir deyişle, *kayıt ve eğitim* ' i ve sonra UPDATEıNFO API 'sini çağırır.
@@ -106,6 +107,7 @@ Bunlar her bir güncelleştirme eyleminin sınırlarını temsil eder; diğer bi
 * Önerilen en fazla sayıda alternatif soru eklendi veya silindi: 300
 * Eklenen veya silinen en fazla meta veri alanı sayısı: 10
 * Yenilenebilir en fazla URL sayısı: 5
+* Çağrı başına izin verilen en fazla QnAs sayısı: 1000
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

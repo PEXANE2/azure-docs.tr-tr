@@ -6,12 +6,12 @@ ms.date: 10/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: ba4e6b8b5e9db494ab4c0c372c2086087a2d58cb
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 39897e490e4653fbaad7a64ecc0b33f161d1264b
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133183"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165799"
 ---
 # <a name="telemetry-processors-preview---azure-monitor-application-insights-for-java"></a>Telemetri işlemcileri (Önizleme)-Java için Azure Izleyici Application Insights
 
@@ -23,58 +23,48 @@ Application Insights için Java 3,0 Aracısı artık veriler verilene kadar tele
 Telemetri işlemcilerin bazı kullanım durumları aşağıda verilmiştir:
  * Hassas verileri maskeleme
  * Koşullu özel boyutlar ekleyin
- * Toplama ve görüntüleme için kullanılan telemetri adını güncelleştirme
- * Alma maliyetini denetlemek için span özniteliklerini bırakma veya filtreleme
+ * Toplama için kullanılan adı güncelleştirme Azure portal ve görüntüleme
+ * Alım maliyetini denetlemek için span özniteliklerini bırakın
 
 ## <a name="terminology"></a>Terminoloji
 
-Telemetri işlemcilere atlamadan önce, izlemeleri ve yayılmaları ne olduğunu anlamak önemlidir.
+Telemetri işlemcilere atlamadan önce, dönemin ne olduğunu anlamak önemlidir.
 
-### <a name="traces"></a>İzlemeler
+Bir yayılma, bu üç şeyin herhangi biri için genel bir terimdir:
 
-İzlemeler, bir `trace` uygulamayı oluşturan hizmetler tarafından işlendiği için, olarak adlandırılan tek bir isteğin ilerlemesini izler. İstek bir kullanıcı veya uygulama tarafından başlatılabilir. İçindeki her iş birimi `trace` , olarak adlandırılır `span` ; bir `trace` yayılma ağacıdır. , `trace` Tek köklü yayılımın ve herhangi bir alt yayılma alanının oluşur.
+* Gelen istek
+* Giden bağımlılığı (örn. başka bir hizmete uzaktan çağrı)
+* İşlem içi bağımlılık (örneğin, hizmetin alt bileşenleri tarafından gerçekleştirilen iş)
 
-### <a name="span"></a>Kapsamı
+Telemetri işlemcilerin amacı doğrultusunda bir yayılma alanının önemli bileşenleri şunlardır:
 
-Yayılmalar, bir sistem üzerinden akan bir istekte bulunan bireysel hizmetler veya bileşenler tarafından gerçekleştirilen işi temsil eden nesnelerdir. `span` `span context` , Her bir yayılma alanının parçası olduğu benzersiz isteği temsil eden bir genel benzersiz tanımlayıcı kümesi olan bir içerir. 
+* Ad
+* Öznitelikler
 
-Yayılmalar:
+Yayılma adı, Azure portal istekler ve Bağımlılıklar için kullanılan birincil görüntüdir.
 
-* Yayılma adı
-* `SpanContext`Yayılımı benzersiz bir şekilde tanımlayan bir sabit
-* `Span`, `SpanContext` , Veya null biçimindeki bir üst Aralık
-* `SpanKind`
-* Başlangıç zaman damgası
-* Bitiş zaman damgası
-* [`Attributes`](#attributes)
-* Zaman damgası alınan olayların listesi
-* Bir `Status`.
+Span öznitelikleri, belirli bir isteğin veya bağımlılığın hem standart hem de özel özelliklerini temsil eder.
 
-Genellikle, bir yayılımın yaşam döngüsü aşağıdakine benzer:
+## <a name="telemetry-processor-types"></a>Telemetri işlemcisi türleri
 
-* Bir hizmet tarafından bir istek alındı. Aralık bağlamı, varsa istek başlıklarından ayıklanır.
-* Ayıklanan span bağlamının alt öğesi olarak yeni bir span oluşturulur; hiçbiri yoksa, yeni bir kök yayılım oluşturulur.
-* Hizmet, isteği işler. Ek öznitelikler ve olaylar, isteği işleyen makinenin ana bilgisayar adı veya müşteri tanımlayıcıları gibi, isteğin bağlamını anlamak için yararlı olan yayılmasına eklenir.
-* Hizmetin alt bileşenleri tarafından gerçekleştirilen işi temsil eden yeni yayılma alanları oluşturulabilir.
-* Hizmet başka bir hizmete uzak bir çağrı yaptığında, geçerli yayılmış bağlam serileştirilir ve üst bilgi veya mesaj zarfına ekleme tarafından bir sonraki hizmete iletilir.
-* Hizmet tarafından gerçekleştirilen iş başarılı bir şekilde tamamlanır. Yayılma durumu uygun şekilde ayarlanır ve yayılma tamamlandı olarak işaretlenir.
+Şu anda iki tür telemetri işlemcisi vardır.
 
-### <a name="attributes"></a>Öznitelikler
+#### <a name="attribute-processor"></a>Öznitelik işlemcisi
 
-`Attributes` , içinde kapsüllenmiş sıfır veya daha fazla anahtar-değer çifti listesidir `span` . Bir öznitelik aşağıdaki özelliklere sahip OLMALıDıR:
+Öznitelik işlemcisi, öznitelikleri ekleme, güncelleştirme, silme veya sağlama yeteneğine sahiptir.
+Ayrıca, varolan bir öznitelikten bir veya daha fazla yeni öznitelik çıkarabilir (normal bir ifade aracılığıyla).
 
-Null olmayan ve boş olmayan bir dize olması gereken öznitelik anahtarı.
-Öznitelik değeri:
-* İlkel tür: dize, Boole, çift duyarlıklı kayan nokta (IEEE 754-1985) veya imzalı 64 bit tamsayı.
-* İlkel tür değerlerinin dizisi. Dizi homojen olmalıdır, yani farklı türlerin değerlerini içermemelidir. Yerel olarak dizi değerlerini desteklemeyen protokoller için, bu değerler JSON dizeleri olarak temsil edılmelıdır.
+#### <a name="span-processor"></a>Yayılma işlemcisi
 
-## <a name="supported-processors"></a>Desteklenen İşlemciler:
- * Öznitelik Işlemcisi
- * Yayılma Işlemcisi
+Bir yayılma işlemcisi telemetri adını güncelleştirebilir.
+Ayrıca, yayılma adından bir veya daha fazla yeni öznitelik çıkarabilir (normal bir ifade aracılığıyla).
 
-## <a name="to-get-started"></a>Başlamak için
+> [!NOTE]
+> Şu anda telemetri işlemcilerin yalnızca dize türündeki öznitelikleri işleyeceğini ve Boole veya sayı türündeki öznitelikleri işlemediğini unutmayın.
 
-Adlı bir yapılandırma dosyası oluşturun `applicationinsights.json` ve `applicationinsights-agent-***.jar` aşağıdaki şablonla ile aynı dizine yerleştirin.
+## <a name="getting-started"></a>Başlarken
+
+Adlı bir yapılandırma dosyası oluşturun `applicationinsights.json` ve `applicationinsights-agent-*.jar` aşağıdaki şablonla ile aynı dizine yerleştirin.
 
 ```json
 {
@@ -98,9 +88,14 @@ Adlı bir yapılandırma dosyası oluşturun `applicationinsights.json` ve `appl
 }
 ```
 
-## <a name="includeexclude-spans"></a>Yayılmaları ekle/çıkar
+## <a name="includeexclude-criteria"></a>Dahil etme/hariç tutma ölçütleri
 
-Öznitelik işlemcisi ve yayma işlemcisi, yayılma alanının telemetri işlemcisine dahil edilip edilmeyeceğini veya dışlanmayacağını öğrenmek için, bir yayılımın eşleşme özelliklerinin bir kümesini sağlama seçeneğini sunar. Bu seçeneği, `include` ve/veya `exclude` en az bir ile, ya da ' nin altında yapılandırmak için `matchType` `spanNames` `attributes` gereklidir. Dahil etme/hariç tutma yapılandırması, belirtilen birden fazla koşula sahip olmak için desteklenir. Bir eşleşmenin gerçekleşmesi için belirtilen koşulların tümü doğru olarak değerlendirilmelidir. 
+Her iki öznitelik işlemcisi ve span işlemcisi isteğe bağlı `include` ve `exclude` ölçütleri destekler.
+Bir işlemci yalnızca ölçütleriyle eşleşen (sağlanmışsa) bu yayılanlara uygulanır `include` _ve_ `exclude` (sağlanmışsa) ölçütleriyle eşleşmez.
+
+Bu seçeneği, `include` ve/veya `exclude` en az bir ile, ya da ' nin altında yapılandırmak için `matchType` `spanNames` `attributes` gereklidir.
+Dahil etme/hariç tutma yapılandırması, belirtilen birden fazla koşula sahip olmak için desteklenir.
+Bir eşleşmenin gerçekleşmesi için belirtilen koşulların tümü doğru olarak değerlendirilmelidir. 
 
 **Gerekli alan**: 
 * `matchType` içindeki öğelerin `spanNames` ve dizilerin nasıl `attributes` yorumlandığını denetler. Olası değerler: `regexp` veya `strict`. 
@@ -150,7 +145,7 @@ Adlı bir yapılandırma dosyası oluşturun `applicationinsights.json` ve `appl
 ```
 Daha fazla bilgi edinmek için [telemetri işlemcisi örnekleri](./java-standalone-telemetry-processors-examples.md) belgelerini inceleyin.
 
-## <a name="attribute-processor"></a>Öznitelik işlemcisi 
+## <a name="attribute-processor"></a>Öznitelik işlemcisi
 
 Öznitelikler işlemcisi bir yayılımın özniteliklerini değiştirir. Bu, isteğe bağlı olarak yayılmaları dahil etme/hariç tutma özelliğini destekler. Yapılandırma dosyasında belirtilen sırada gerçekleştirilen eylemlerin bir listesini alır. Desteklenen eylemler şunlardır:
 
@@ -167,7 +162,7 @@ Yayılmalar içinde, anahtarın zaten mevcut olmadığı yeni bir öznitelik ekl
         "key": "attribute1",
         "value": "value1",
         "action": "insert"
-      },
+      }
     ]
   }
 ]
@@ -190,7 +185,7 @@ Anahtar var olduğunda yayılmakta olan bir özniteliği güncelleştirir
         "key": "attribute1",
         "value": "newValue",
         "action": "update"
-      },
+      }
     ]
   }
 ]
@@ -213,7 +208,7 @@ Yayılma alanından bir özniteliği siler
       {
         "key": "attribute1",
         "action": "delete"
-      },
+      }
     ]
   }
 ]
@@ -234,7 +229,7 @@ Karmalar (SHA1) var olan bir öznitelik değeri
       {
         "key": "attribute1",
         "action": "hash"
-      },
+      }
     ]
   }
 ]
@@ -259,7 +254,7 @@ Kural içinde belirtilen hedef anahtarlara giriş anahtarından bir normal ifade
         "key": "attribute1",
         "pattern": "<regular pattern with named matchers>",
         "action": "extract"
-      },
+      }
     ]
   }
 ]
@@ -271,7 +266,7 @@ Eylem için `extract` aşağıdakiler gereklidir
 
 Daha fazla bilgi edinmek için [telemetri işlemcisi örnekleri](./java-standalone-telemetry-processors-examples.md) belgelerini inceleyin.
 
-## <a name="span-processors"></a>Yayılma işlemcileri
+## <a name="span-processor"></a>Yayılma işlemcisi
 
 Yayılma işlemcisi, span adına göre bir yayılma alanının yayılma adını veya özniteliklerini değiştirir. Bu, isteğe bağlı olarak yayılmaları dahil etme/hariç tutma özelliğini destekler.
 

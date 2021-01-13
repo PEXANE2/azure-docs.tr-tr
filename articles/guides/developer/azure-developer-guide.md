@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 8694c403b14234a70b0a67f9f4defb7817ba3ae3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9999b2fa116a2336f8e50fb166e5d870ae4b5a5f
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005393"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165068"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure geliştiricileri için başlangıç kılavuzu
 
@@ -105,6 +105,21 @@ Service Fabric, .NET için açık Web arabirimi (OWıN) ve ASP.NET Core ile WebA
 > **Ne zaman kullanılır:** Service Fabric, bir uygulama oluştururken veya bir mikro hizmet mimarisini kullanmak için mevcut bir uygulamayı yeniden yazarken iyi bir seçenektir. Üzerinde daha fazla denetime ihtiyacınız olduğunda veya temel alınan altyapıya doğrudan erişim için Service Fabric kullanın.
 >
 > **Kullanmaya başlayın:** [İlk Azure Service Fabric uygulamanızı oluşturun](../../service-fabric/service-fabric-tutorial-create-dotnet-app.md).
+
+#### <a name="azure-spring-cloud"></a>Azure Spring Cloud
+
+Azure Spring Cloud, uygulamalarınızı bulutta oluşturmanıza, dağıtmanıza, ölçeklendirmenize ve izlemenize olanak tanıyan bir sunucusuz mikro hizmetler platformudur. Modern mikro hizmet desenlerini ön yükleme uygulamalarına getirmek için yay bulutu 'nı kullanın, sağlam Java uygulamalarını hızlıca oluşturmak için ortak kodu ortadan kaldırın.
+
+- Bu kritik bileşenlerin en iyi koşullarda çalıştığından emin olmak için, Spring Cloud Service Discovery ve config Server 'ın yönetilen sürümlerinden yararlanın.
+- İş mantığınızı oluşturmaya odaklanarak, güvenlik düzeltme ekleri, uyumluluk standartları ve yüksek kullanılabilirliğe sahip hizmet çalışma zamanından faydalanacağız.
+- Azure Kubernetes hizmeti 'nin en üstünde uygulama yaşam döngüsünü (ör. dağıtma, başlatma, durdurma, ölçeklendirme) yönetin.
+- Uygulamalarınız için Azure veritabanı ve Redsıs için Azure önbelleği gibi uygulamalarınız ve Azure hizmetleri arasında bağlantıları kolayca bağlayın.
+- Uygulama bağımlılıkları ve operasyonel telemetri hakkında derin Öngörüler sunan kurumsal sınıf Birleşik izleme araçlarını kullanarak mikro hizmetleri ve uygulamaları izleyin ve sorun giderin.
+
+> **Ne zaman kullanılır:** Tam olarak yönetilen bir hizmet olarak Azure yay bulutu, Azure 'da yay önyükleme/yay bulut tabanlı mikro Hizmetleri çalıştıran işlem maliyetini en aza indirmenizde iyi bir seçenektir. 
+>
+> **Kullanmaya başlayın:** [Ilk Azure Spring Cloud uygulamanızı dağıtın](../../spring-cloud/spring-cloud-quickstart.md).
+
 
 ### <a name="enhance-your-applications-with-azure-services"></a>Azure hizmetleriyle uygulamalarınızı geliştirin
 
@@ -313,9 +328,9 @@ Azure Resource Manager, tek tek kaynaklara özel Etiketler atamanıza olanak tan
 
 * Portalda
 * Azure Resource Manager şablonunda
-* REST API’sini kullanma
+* REST API’yi kullanma
 * Azure CLI'yı kullanma
-* PowerShell'i kullanma
+* PowerShell’i kullanma
 
 Her kaynağa birden çok etiket atayabilirsiniz. Daha fazla bilgi edinmek için bkz. [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](../../azure-resource-manager/management/tag-resources.md).
 

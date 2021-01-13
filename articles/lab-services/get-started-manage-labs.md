@@ -3,12 +3,12 @@ title: Azure Lab Services kullanmaya başlayın
 description: Bu makalede Azure Lab Services ile çalışmaya başlama açıklanmaktadır.
 ms.topic: article
 ms.date: 11/18/2020
-ms.openlocfilehash: 44afe13fb6f555b12dfce939ce8e88e3af8dc7ef
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: d260ace7d7819c3ca2db96d6c4984bf834e170da
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602674"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165051"
 ---
 # <a name="get-started-with-lab-services"></a>Laboratuvar Hizmetleri 'ni kullanmaya başlama 
 
@@ -109,56 +109,7 @@ Bir öğrenciye sanal makineye bağlanma sorunları yaşanıyorsa veya başka bi
 
 ## <a name="manage-users-in-a-lab"></a>Laboratuvardaki kullanıcıları yönetme
 
-Öğretmenler bir laboratuvara öğrenci kullanıcıları ekleyebilir ve saat kotalarını izleyebilir. 
-
-### <a name="add-users-by-email-address"></a>E-posta adresine göre Kullanıcı ekleme
-
-1. [Azure Laboratuvar Hizmetleri Web sitesinden](https://labs.azure.com/) pencerenin sol tarafındaki **Kullanıcılar** ' a tıklayın.
-1. Pencerenin üst kısmında, **Kullanıcı Ekle** ' ye tıklayın ve **e-posta adresine göre Ekle**' yi seçin. 
-1. Sağ tarafta görünen **kullanıcıları Ekle** bölmesinde, öğrenciler için e-posta adreslerini ayrı satırlara veya noktalı virgülle ayırarak tek bir satıra girin.
-1. **Kaydet**’e tıklayın.
-1. Kullanıcı listeniz artık e-postalar, durum, davet ve kota saatleriyle güncelleştirilecektir.
-
-    Öğrenciler bir laboratuvar için kaydedildikten sonra, Azure Active Directory adları ilk ve son adlarla güncelleştirilir.
-
-    > [!NOTE]
-    > Erişimi kısıtla seçeneğinin etkin tutulması kullanıcılar için açıktır. Bu, yalnızca listenizdeki kullanıcıların, göndereceğiniz kayıt bağlantısını kullanarak laboratuvara kaydedebileceği anlamına gelir.
-
-### <a name="add-users-using-a-spreadsheet"></a>Elektronik tablo kullanarak Kullanıcı ekleme 
-
-Ayrıca, e-posta adreslerini içeren bir CSV dosyasını karşıya yükleyerek da kullanıcı ekleyebilirsiniz.
-
-1. Microsoft Excel 'de öğrencilerin e-posta adreslerini tek bir sütunda listeleyen bir CSV dosyası oluşturun.
-1. [Azure Lab Services Web sitesinden](https://labs.azure.com/), **Kullanıcılar** sayfasının en üstündeki **Kullanıcı Ekle** düğmesine tıklayın.
-1. **CSV 'Yi karşıya yükle** seçeneğini belirleyin.
-1. Öğrencilerin e-posta adreslerini içeren CSV dosyasını seçin ve **Aç**' a tıklayın.
-
-    :::image type="content" source="./media/get-started-manage-labs/add-users-spreadsheet.png" alt-text="Elektronik tablo kullanarak Kullanıcı ekleme":::
-1. E-postalar artık sağdaki pencerede görüntülenir. **Kaydet**’e tıklayın.
-
-    :::image type="content" source="./media/get-started-manage-labs/register-users.png" alt-text="Kullanıcıları kaydet":::
-
-### <a name="register-users"></a>Kullanıcıları kaydet
-
-Kullanıcılar laboratuvara eklendikten sonra, sanal makinelere erişmek için kaydolmaları gerekir. Bu işlem, portaldan Kullanıcı davet eden bir e-posta gönderecek şekilde, portaldan Kullanıcı davet ederek yapılabilir. Ya da kayıt bağlantısını kopyalayıp bir e-postaya ya da öğrencilerle başka bir iletişim biçimine kopyalayarak veya yapıştırarak.
-
-1. **Kullanıcılar** sayfasında, listeden bir öğrenci veya birden çok öğrenci seçin.
-
-    Seçtiğiniz öğrencinin satırındaki listede bulunan zarf simgesini seçin veya ekranın üst kısmındaki **davet** ' i tıklatın.
-
-    :::image type="content" source="./media/get-started-manage-labs/send-invitation.png" alt-text="Davet gönderme":::
-    
-    E-posta ile **davet gönder** penceresinde, öğrenciler için isteğe bağlı bir ileti (Kullanıcı adı ve parola gibi) girin ve ardından **Gönder**' e tıklayın. 
-    
-    :::image type="content" source="./media/get-started-manage-labs/send-invitation-mail.png" alt-text="E-posta ile davet gönder":::
-
-    Alternatif olarak, aynı **Kullanıcılar** sayfasından ekranın üst kısmında bulunan **kayıt bağlantısı** düğmesine tıklayabilirsiniz. 
-
-    :::image type="content" source="./media/get-started-manage-labs/registration-link.png" alt-text="Kullanıcı kaydı bağlantısı":::
-    
-    Metin alanından kayıt bağlantısını kopyalayın ve e-postaya veya tercih ettiğiniz güvenli mesajlaşma aracınızdan yapıştırın.  
-    
-    :::image type="content" source="./media/get-started-manage-labs/user-registration.png" alt-text="Kullanıcı kaydı gönder":::
+Öğretmenler bir laboratuvara öğrenci kullanıcıları ekleyebilir ve saat kotalarını izleyebilir. E-posta adresine göre veya bir elektronik tablo listesi kullanarak veya kullanıcıları kaydeden Kullanıcı ekleme hakkında ayrıntılı bilgi için bkz. [Laboratuvar kullanıcıları ekleme ve yönetme](how-to-configure-student-usage.md).
 
 Kullanıcıları davet ettikten veya bağlantıyı paylaştırdıktan sonra, **durum** sütunundaki **Kullanıcılar** sayfasında başarıyla kaydolan kullanıcıları izleyebileceksiniz. 
 

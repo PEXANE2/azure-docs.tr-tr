@@ -11,16 +11,18 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 9c53ea5bad88eb79940274c409218045c06d7981
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 4f0588667df6acb11a43e8c3469c67f65ed3cdd9
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064977"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165187"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>Geliştirdiğiniz mobil uygulamalarda çoklu oturum açma ve uygulama koruma ilkelerini destekleme
 
 Çoklu oturum açma (SSO), uygulamanızın kullanıcıları için kolay ve güvenli oturum açmaları sağlayan Microsoft Identity platform ve Azure Active Directory temel bir tekliftir. Ayrıca, uygulama koruma ilkeleri (uygulama), kullanıcılarınızın verilerini güvende tutan anahtar güvenlik ilkelerinin desteğini etkinleştirir. Birlikte, bu özellikler, uygulamanızın verilerinin güvenli kullanıcı oturumlarını ve yönetimini etkinleştirir.
+
+> [!VIDEO https://www.youtube.com/embed/JpeMeTjQJ04]
 
 Bu makalede, SSO ve UYGULAMANıN neden önemli olduğunu ve bu özellikleri destekleyen mobil uygulamalar oluşturmaya yönelik üst düzey kılavuz sağladığını açıklamaktadır. Bu, hem telefon hem de tablet uygulamaları için geçerlidir. Kuruluşunuzun Azure Active Directory kiracısında SSO dağıtmak isteyen bir BT yöneticisiyseniz, [Çoklu oturum açma dağıtımı planlama yönergemizi](../manage-apps/plan-sso-deployment.md) inceleyin
 
