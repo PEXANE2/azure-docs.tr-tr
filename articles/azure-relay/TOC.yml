@@ -67,7 +67,7 @@
       items:
         - name: IP güvenlik duvarını yapılandırma (önizleme)
           href: ip-firewall-virtual-networks.md
-        - name: Özel uç noktaları yapılandırma (önizleme)
+        - name: Özel uç noktaları yapılandırma
           href: private-link-service.md
     - name: Yönetme ve izleme
       items:
