@@ -85,8 +85,14 @@
       items:
         - name: Cihaz şablonu ayarlama
           href: howto-set-up-template.md
+        - name: Cihazları IoT’ye taşıma
+          href: how-to-move-device-to-iot.md
         - name: Özellikleri kullanma
           href: howto-use-properties.md
+        - name: Komutları kullanma
+          href: howto-use-commands.md
+        - name: Konum verilerini kullanma
+          href: howto-use-location-data.md
         - name: Azure Sphere DevKit'i hazırlama ve bağlama
           href: howto-connect-sphere.md
         - name: RuuviTag cihazını hazırlama ve bağlama

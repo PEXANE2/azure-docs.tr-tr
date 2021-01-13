@@ -29,6 +29,8 @@
           href: cache-nodejs-get-started.md
         - name: Python uygulaması
           href: cache-python-get-started.md
+        - name: Go uygulaması
+          href: cache-go-get-started.md
 - name: Öğreticiler
   items:
     - name: ASP.NET

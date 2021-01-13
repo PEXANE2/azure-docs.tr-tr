@@ -37,6 +37,8 @@
       href: azure-netapp-files-cost-model.md
     - name: Azure NetApp Files ağ planlaması yönergeleri
       href: azure-netapp-files-network-topologies.md
+    - name: Azure NetApp Files anlık görüntülerinin işleyiş biçimi
+      href: snapshots-introduction.md
     - name: El ile QoS kapasite havuzu
       href: manual-qos-capacity-pool-introduction.md
     - name: Bölgeler arası çoğaltma
