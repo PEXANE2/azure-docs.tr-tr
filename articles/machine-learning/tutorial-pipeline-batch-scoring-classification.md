@@ -11,16 +11,14 @@ ms.author: laobri
 ms.reviewer: laobri
 ms.date: 10/13/2020
 ms.custom: contperf-fy20q4, devx-track-python
-ms.openlocfilehash: b0b415cce37e464abcba9fab5ad4c1196b1b2e1b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 916064742e69b7d355a0c7e541d4f2270e8854f4
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033485"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134458"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Öğretici: toplu Puanlama için Azure Machine Learning işlem hattı oluşturma
-
-
 
 Bu gelişmiş öğreticide, Batch Puanlama işi çalıştırmak için [Azure Machine Learning işlem hattı](concept-ml-pipelines.md) oluşturmayı öğreneceksiniz. Makine öğrenimi ardışık düzenleri, iş akışınızı hız, taşınabilirlik ve yeniden kullanım açısından iyileştirerek altyapı ve otomasyon yerine makine öğrenimine odaklanmanıza olanak sağlayabilir. Bir işlem hattı derleyip yayımladıktan sonra, işlem hattını herhangi bir platformda herhangi bir HTTP kitaplığından tetiklemek için kullanabileceğiniz bir REST uç noktası yapılandırırsınız. 
 
@@ -40,7 +38,7 @@ Bu öğreticide, aşağıdaki görevleri tamamlayacaksınız:
 
 Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Zaten bir Azure Machine Learning çalışma alanınız veya Not defteri sanal makineniz yoksa, [Kurulum öğreticisinin 1. kısmını](tutorial-1st-experiment-sdk-setup.md)doldurun.
 * Kurulum öğreticisini tamamladığınızda, *öğreticiler/Machine-Learning-Pipelines-Advanced/tutorial-Pipeline-Batch-Scoring-Classification. ipynb* Not defterini açmak için aynı not defteri sunucusunu kullanın.
@@ -79,26 +77,24 @@ def_data_store = ws.get_default_datastore()
 
 ## <a name="create-dataset-objects"></a>Veri kümesi nesneleri oluşturma
 
-İşlem hatları oluştururken, `Dataset` nesneler çalışma alanı veri depolarından verileri okumak için kullanılır ve `PipelineData` nesneler işlem hattı adımları arasında ara verileri aktarmak için kullanılır.
+İşlem hatları oluştururken, `Dataset` nesneler çalışma alanı veri depolarından verileri okumak için kullanılır ve `OutputFileDatasetConfig` nesneler işlem hattı adımları arasında ara verileri aktarmak için kullanılır.
 
 > [!Important]
 > Bu öğreticideki toplu işlem Puanlama örneği yalnızca bir ardışık düzen adımını kullanır. Birden çok adımı olan kullanım durumlarında, tipik akış şu adımları içerir:
 >
-> 1. `Dataset`Ham verileri getirmek, bazı dönüşümleriniz gerçekleştirmek ve ardından bir nesneyi *çıkarmak* için nesneleri *giriş* olarak kullanın `PipelineData` .
+> 1. `Dataset`Ham verileri getirmek, bazı dönüştürme gerçekleştirmek ve sonra bir nesneyle *Çıkış* yapmak için nesneleri *giriş* olarak kullanın `OutputFileDatasetConfig` .
 >
-> 2. `PipelineData`Önceki adımda bir *giriş nesnesi* olarak *Çıkış nesnesini* kullanın. Sonraki adımlar için tekrarlayın.
+> 2. `OutputFileDatasetConfig`Önceki adımda bir *giriş nesnesi* olarak *Çıkış nesnesini* kullanın. Sonraki adımlar için tekrarlayın.
 
-Bu senaryoda, `Dataset` hem giriş görüntüleri hem de sınıflandırma etiketleri (y-test değerleri) için veri deposu dizinlerine karşılık gelen nesneler oluşturursunuz. `PipelineData`Toplu Puanlama çıkış verileri için de bir nesne oluşturun.
+Bu senaryoda, `Dataset` hem giriş görüntüleri hem de sınıflandırma etiketleri (y-test değerleri) için veri deposu dizinlerine karşılık gelen nesneler oluşturursunuz. `OutputFileDatasetConfig`Toplu Puanlama çıkış verileri için de bir nesne oluşturun.
 
 ```python
 from azureml.core.dataset import Dataset
-from azureml.pipeline.core import PipelineData
+from azureml.data import OutputFileDatasetConfig
 
 input_images = Dataset.File.from_files((batchscore_blob, "batchscoring/images/"))
 label_ds = Dataset.File.from_files((batchscore_blob, "batchscoring/labels/"))
-output_dir = PipelineData(name="scores", 
-                          datastore=def_data_store, 
-                          output_path_on_compute="batchscoring/results")
+output_dir = OutputFileDatasetConfig(name="scores")
 ```
 
 Daha sonra yeniden kullanmak istiyorsanız veri kümelerini çalışma alanına kaydedin. Bu adım isteğe bağlıdır.

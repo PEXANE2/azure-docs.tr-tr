@@ -9,12 +9,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–377467–A/B– Quickstarts/Python App–12.11
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-python-1
-ms.openlocfilehash: 058d64d8b34a47101517273ebd17a09d9ca51197
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: f60534f7d319bfe0b9e8e7bd4447770bcd6d45e3
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936201"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134441"
 ---
 # <a name="quickstart-create-a-python-app-using-azure-app-service-on-linux"></a>Hızlı başlangıç: Linux üzerinde Azure App Service kullanarak bir Python uygulaması oluşturma
 
@@ -158,13 +158,13 @@ Sorun mu yaşıyorsunuz? [Bize bilgi verin](https://aka.ms/FlaskCLIQuickstartHel
 Şu komutu kullanarak kodu yerel klasörünüzde (*Python-docs-Hello-World*) dağıtın `az webapp up` :
 
 ```azurecli
-az webapp up --sku F1 --name <app-name>
+az webapp up --sku B1 --name <app-name>
 ```
 
 - `az`Komut tanınmazsa, [Ilk ortamınızı ayarlama](#set-up-your-initial-environment)bölümünde AÇıKLANDıĞı gibi Azure CLI 'nin yüklü olduğundan emin olun.
 - `webapp`Azure CLI sürümünüz 2.0.80 veya üzeri olduğundan, komut tanınmazsa. Aksi takdirde, [en son sürümü yükler](/cli/azure/install-azure-cli).
 - `<app_name>`Tüm Azure genelinde benzersiz olan bir adla değiştirin (*geçerli karakterler `a-z` , `0-9` ve `-`*). İyi bir model, şirketinizin adının ve uygulama tanımlayıcısının bir birleşimini kullanmaktır.
-- `--sku F1`Bağımsız değişkeni, ücretsiz fiyatlandırma katmanında Web uygulaması oluşturur. Saatlik maliyet içeren daha hızlı bir Premium katmanı kullanmak için bu bağımsız değişkeni atlayın.
+- `--sku B1`Bağımsız değişkeni, Web uygulamasını temel fiyatlandırma katmanında oluşturur ve bu da kısa bir saatlik maliyet doğurur. Daha hızlı bir Premium katmanı kullanmak için bu bağımsız değişkeni atlayın.
 - İsteğe bağlı olarak `--location <location-name>` `<location_name>` , kullanılabilir bir Azure bölgesi olan bağımsız değişkeni ekleyebilirsiniz. Komutunu çalıştırarak, Azure hesabınız için izin verilen bölgelerin bir listesini alabilirsiniz [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations) .
 - "Uygulamanızın çalışma zamanı yığınını otomatik olarak algılamamız" hatasını görürseniz, bu komutu *requirements.txt* dosyasını içeren *Python-docs-Hello-World* klasöründe (Flask) veya *Python-docs-Hello-Docgo* klasöründe (docgo) çalıştırdığınızdan emin olun. (Bkz. [az WebApp up (GitHub) ile otomatik algılama sorunlarını giderme](https://github.com/Azure/app-service-linux-docs/blob/master/AzWebAppUP/runtime_detection.md) .)
 
@@ -268,7 +268,7 @@ Sorun mu yaşıyorsunuz? İlk olarak [sorun giderme kılavuzuna](configure-langu
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Önceki adımlarda, bir kaynak grubunda Azure kaynakları oluşturdunuz. Kaynak grubu, konumunuza bağlı olarak "appsvc_rg_Linux_CentralUS" gibi bir ada sahiptir. Ücretsiz F1 katmanından farklı bir App Service SKU 'SU kullanıyorsanız, bu kaynaklar devam eden maliyetlere (bkz. [App Service fiyatlandırması](https://azure.microsoft.com/pricing/details/app-service/linux/)) sahiptir.
+Önceki adımlarda, bir kaynak grubunda Azure kaynakları oluşturdunuz. Kaynak grubu, konumunuza bağlı olarak "appsvc_rg_Linux_CentralUS" gibi bir ada sahiptir. Web uygulamasını çalışır durumda tutarsanız, bazı devam eden maliyetlere (bkz. [App Service fiyatlandırması](https://azure.microsoft.com/pricing/details/app-service/linux/)) tabi olursunuz.
 
 Gelecekte bu kaynakların gerekli olmasını istemiyorsanız, aşağıdaki komutu çalıştırarak kaynak grubunu silin:
 

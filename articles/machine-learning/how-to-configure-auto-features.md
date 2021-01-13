@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to,automl,contperf-fy21q2
 ms.date: 12/18/2020
-ms.openlocfilehash: b26b0d9086f464556cbca2c70773374c3cccbd52
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 5fcb57d1ef909d7c15e21b34c3f584c6615a6a44
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915870"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134424"
 ---
 # <a name="data-featurization-in-automated-machine-learning"></a>Otomatik makine öğreniminde veri korleştirme
 
@@ -46,7 +46,7 @@ Python SDK ile yapılandırdığınız denemeleri için, korleştirme ayarını 
 
 Aşağıdaki tabloda, `featurization` [oto mlconfig sınıfında](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)için kabul edilen ayarlar gösterilmektedir:
 
-|Korleştirme yapılandırması | Açıklama|
+|Korleştirme yapılandırması | Description|
 ------------- | ------------- |
 |`"featurization": 'auto'`| Ön işleme kapsamında, [veri guardı](#data-guardrails) ve [korleştirme adımlarının](#featurization) otomatik olarak yapılacağını belirtir. Bu varsayılan ayardır.|
 |`"featurization": 'off'`| Korturlama adımlarının otomatik olarak yapılmadığından emin olun.|
@@ -61,7 +61,7 @@ Aşağıdaki tabloda verilerinize otomatik olarak uygulanan teknikler özetlenme
 > [!NOTE]
 > Bir [onnx modeline](concept-onnx.md), oto tarafından oluşturulan bir modellerinizi dışarı aktarmayı planlıyorsanız, onnx biçiminde yalnızca bir yıldız işareti ("*") ile gösterilen fealeştirme seçenekleri desteklenir. [Modelleri ONNX 'e dönüştürme](concept-automated-ml.md#use-with-onnx)hakkında daha fazla bilgi edinin.
 
-|Korturlama &nbsp; adımları| Açıklama |
+|Korturlama &nbsp; adımları| Description |
 | ------------- | ------------- |
 |**Yüksek kardinalite bırakma veya varyans özellikleri yok** _ |Bu özellikleri eğitim ve doğrulama kümelerinden bırakın. Tüm satırlarda veya yüksek kardinalite (örneğin, karmaları, kimlikler veya GUID 'Ler) ile aynı değere sahip tüm değerleri eksik olan özellikler için geçerlidir.|
 |_*Impute eksik değerler**_ |Sayısal özellikler için, sütundaki değerlerin ortalaması ile ımpute.<br/><br/>Kategorik özellikler için en sık kullanılan değer ile ımpute.|
@@ -122,6 +122,9 @@ Desteklenen özelleştirmeler şunlardır:
 |**Transformatör parametresi güncelleştirmesi** |Belirtilen transformatör için parametreleri güncelleştirin. Şu anda *ımputer* (ortalama, en sık ve ortanca) ve *Hashonehotencoder*'ı desteklemektedir.|
 |**Sütunları bırakma** |Bir şekilde bırakılacak sütunları belirler.|
 |**Blok dönüştürücüler**| Korleştirme işleminde kullanılacak blok dönüştürücüler belirtir.|
+
+>[!NOTE]
+> **Bırakma sütunları** işlevselliği SDK 1,19 sürümünden itibaren kullanımdan kaldırılmıştır. Veri kümenizdeki sütunları, otomatik ML denemesinizde kullanmadan önce veri temizleme 'nin bir parçası olarak bırakın. 
 
 `FeaturizationConfig`API çağrılarını kullanarak nesneyi oluşturun:
 

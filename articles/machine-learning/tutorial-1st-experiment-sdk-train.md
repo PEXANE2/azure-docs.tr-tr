@@ -12,10 +12,10 @@ ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: d2c0003058c2271e46a352567a14e1b01dfabdbf
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
+ms.lasthandoff: 01/13/2021
 ms.locfileid: "98071111"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>Öğretici: ilk makine öğrenimi modelinizi eğitme (Bölüm 3/4)
@@ -38,7 +38,7 @@ Bu öğreticide şunları yaptınız:
 > * Azure Machine Learning için günlük ölçümleri.
 > * Ölçümünüzü bulutta görüntüleyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Serinin [2. bölümünü](tutorial-1st-experiment-hello-world.md) tamamlama.
 

@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 10/02/2020
 ms.author: aahi
-ms.openlocfilehash: 308b2a9cb00f44f0e330d4fef5592d8855ee3394
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 00c1c8ddab9214bf7698c21b05c24afa36ec20d9
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553139"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98147333"
 ---
 ## <a name="text-analytics-for-health-categories-entities-and-attributes"></a>Sistem durumu kategorileri, varlıklar ve öznitelikler için Metin Analizi
 
@@ -23,15 +23,15 @@ ms.locfileid: "94553139"
 
 | Kategori  | Açıklama  |
 |---------|---------|
-| ANATOMISI | gövde ve anamemik sistemleri, siteleri, konumları veya bölgeleri hakkında bilgi yakalayan kavramlar. |
- | DEMOGRAFIK BILGILERE | cinsiyet ve yaş hakkındaki bilgileri yakalayan kavramlar. |
- | INCELEMESI | tanılama yordamları ve testler hakkında bilgi yakalayan kavramlar. |
- | GENOMIKS | genes ve varyantlar hakkındaki bilgileri yakalayan kavramlar. |
- | SAĞLıK | yönetim olayları, ortamlar ve sağlık hizmetleri ile ilgili bilgileri yakalayan kavramlar. |
- | TıBBI KOŞUL | tanılar, belirtiler veya imzalar hakkındaki bilgileri yakalayan kavramlar. |
- | YOLLARA | yollara adlarını, sınıfları, dozu ve yönetim yolunu içeren yollara hakkındaki bilgileri yakalayan kavramlar. |
- | Ağ | aile ilişkisi gibi medically ilgili sosyal yönleri hakkında bilgi yakalayan kavramlar. |
- | Düzeltme | karşılayan yordamlar hakkında bilgi yakalayan kavramlar. |
+| [ANATOMISI](#anatomy) | gövde ve anamemik sistemleri, siteleri, konumları veya bölgeleri hakkında bilgi yakalayan kavramlar. |
+ | [DEMOGRAFIK BILGILERE](#demographics) | cinsiyet ve yaş hakkındaki bilgileri yakalayan kavramlar. |
+ | [INCELEMESI](#examinations) | tanılama yordamları ve testler hakkında bilgi yakalayan kavramlar. |
+ | [GENOMIKS](#genomics) | genes ve varyantlar hakkındaki bilgileri yakalayan kavramlar. |
+ | [SAĞLıK](#healthcare) | yönetim olayları, ortamlar ve sağlık hizmetleri ile ilgili bilgileri yakalayan kavramlar. |
+ | [TıBBI KOŞUL](#medical-condition) | tanılar, belirtiler veya imzalar hakkındaki bilgileri yakalayan kavramlar. |
+ | [YOLLARA](#medication) | yollara adlarını, sınıfları, dozu ve yönetim yolunu içeren yollara hakkındaki bilgileri yakalayan kavramlar. |
+ | [Ağ](#social) | aile ilişkisi gibi medically ilgili sosyal yönleri hakkında bilgi yakalayan kavramlar. |
+ | [Düzeltme](#treatment) | karşılayan yordamlar hakkında bilgi yakalayan kavramlar. |
   
 Her kategori iki kavram grubu içerebilir:
 
@@ -98,11 +98,11 @@ Gövde yapısını oluşturan, sol, yan yana, üst, posterior gibi **Yön** yön
 
 :::image type="content" source="../../media/ta-for-health/exam-direction-attribute.png" alt-text="İnceleme adı varlığına sahip bir Direction özniteliği örneği.":::
 
-**MEASUREMENT_UNIT** – inceleme birimi. Örneğin, *hemoglobin > 9,5 g/dl* , *g/dl* dönemi *hemoglobin* testinin birimidir.
+**MEASUREMENT_UNIT** – inceleme birimi. Örneğin, *hemoglobin > 9,5 g/dl*, *g/dl* dönemi *hemoglobin* testinin birimidir.
 
 :::image type="content" source="../../media/ta-for-health/exam-unit-attribute.png" alt-text="Bir inceleme adı varlığına sahip ölçü birimi özniteliği örneği.":::
 
-**MEASUREMENT_VALUE** : İnceleme değeri. Örneğin, *hemoglobin > 9,5 g/dl* ' de, *9,5* terimi *hemoglobin* testinin değeridir.
+**MEASUREMENT_VALUE** : İnceleme değeri. Örneğin, *hemoglobin > 9,5 g/dl*' de, *9,5* terimi *hemoglobin* testinin değeridir.
 
 :::image type="content" source="../../media/ta-for-health/exam-value-attribute.png" alt-text="Bir inceleme adı varlığına sahip ölçüm değeri özniteliği örneği.":::
 
@@ -236,7 +236,7 @@ Tıbbi koşulun başlangıcı ve/veya uzunluğu (süresi) ile ilgili **zamana** 
 
 ### <a name="attributes"></a>Öznitelikler
 
-**Dozu** -sıralanan yollara miktarı. Örneğin, Kordium Chlorıde çözümü *1000 ml* 'yi kullanın.
+**Dozu** -sıralanan yollara miktarı. Örneğin, Kordium Chlorıde çözümü *1000 ml*'yi kullanın.
 
 :::image type="content" source="../../media/ta-for-health/medication-dosage.png" alt-text="Bir yollara dozu özniteliği örneği.":::
 
@@ -267,7 +267,15 @@ Tıbbi koşulun başlangıcı ve/veya uzunluğu (süresi) ile ilgili **zamana** 
 +   **FREQUENCY_OF_MEDICATION**
 +   **ROUTE_OF_MEDICATION**
 +   **TIME_OF_MEDICATION**
-  
+
+## <a name="social"></a>Sosyal
+
+### <a name="entities"></a>Varlıklar
+
+**FAMILY_RELATION** – ilgilinin aile akrabalarının bahsetme. Örneğin, Baba, kız, eşdüzey öğeler, ebeveynler.
+
+:::image type="content" source="../../media/ta-for-health/family-relation.png" alt-text="Ekran görüntüsü bir işleme süresi özniteliğinin başka bir örneğini gösterir.":::
+
 ## <a name="treatment"></a>Düzeltme
 
 ### <a name="entities"></a>Varlıklar
@@ -294,17 +302,8 @@ Bir işleme ilişkin başlangıç ve/veya Uzunluk (süre) ile ilgili **zamana** 
 
 :::image type="content" source="../../media/ta-for-health/treatment-time.png" alt-text="Ekran görüntüsünde bir işleme süresi özniteliği örneği gösterilmektedir.":::
 
-
 ### <a name="supported-relations"></a>Desteklenen ilişkiler
 
 + **DIRECTION_OF_TREATMENT**
 +   **TIME_OF_TREATMENT**
 +   **FREQUENCY_OF_TREATMENT**
-
-## <a name="social"></a>Sosyal
-
-### <a name="entities"></a>Varlıklar
-
-**FAMILY_RELATION** – ilgilinin aile akrabalarının bahsetme. Örneğin, Baba, kız, eşdüzey öğeler, ebeveynler.
-
-:::image type="content" source="../../media/ta-for-health/family-relation.png" alt-text="Ekran görüntüsü bir işleme süresi özniteliğinin başka bir örneğini gösterir.":::

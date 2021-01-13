@@ -3,18 +3,18 @@ title: Azure Relay için ağ güvenliği
 description: Bu makalede IP Güvenlik Duvarı kurallarının ve özel uç noktaların Azure Relay ile nasıl kullanılacağı açıklanır.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 3aa3ffd119f65ec5181b0c382472cc4ef3c8bac4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 608224f42fac8cd2d8ff06ab84989b1f675d418c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263734"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134475"
 ---
 # <a name="network-security-for-azure-relay"></a>Azure Relay için ağ güvenliği 
 Bu makalede, Azure Relay ile aşağıdaki güvenlik özelliklerinin nasıl kullanılacağı açıklanmaktadır: 
 
 - IP güvenlik duvarı kuralları (Önizleme)
-- Özel uç noktalar (Önizleme)
+- Özel uç noktalar 
 
 > [!NOTE]
 > Azure Relay, ağ hizmeti uç noktalarını desteklemez. 
@@ -29,14 +29,14 @@ IP güvenlik duvarı kuralları, geçiş ad alanı düzeyinde uygulanır. Bu ned
 
 Daha fazla bilgi için bkz. [bir geçiş ad alanı IÇIN IP güvenlik duvarını yapılandırma](ip-firewall-virtual-networks.md)
 
+> [!NOTE]
+> Bu özellik şu anda **Önizleme** aşamasındadır. 
+
 ## <a name="private-endpoints"></a>Özel uç noktalar
 
-Azure **özel bağlantı hizmeti** , Azure hizmetlerine (örneğin, Azure Relay, Azure Service Bus, Azure Event Hubs, Azure depolama ve Azure Cosmos DB) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki özel bir uç nokta üzerinden erişmenizi sağlar. Daha fazla bilgi için bkz. [Azure özel bağlantısı (Önizleme) nedir?](../private-link/private-link-overview.md)
+Azure **özel bağlantı hizmeti** , Azure hizmetlerine (örneğin, Azure Relay, Azure Service Bus, Azure Event Hubs, Azure depolama ve Azure Cosmos DB) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki özel bir uç nokta üzerinden erişmenizi sağlar. Daha fazla bilgi için bkz. [Azure özel bağlantısı nedir?](../private-link/private-link-overview.md)
 
 **Özel uç nokta** , bir sanal ağda çalışan iş yüklerinizin **özel bir bağlantı kaynağına** (örneğin, bir geçiş ad alanı) sahip olan bir hizmete özel ve güvenli bir şekilde bağlanmasına olanak tanıyan bir ağ arabirimidir. Özel uç nokta, sanal ağınızdan bir özel IP adresi kullanarak hizmeti sanal ağınıza etkin bir şekilde getiriyor. Hizmete giden tüm trafik özel uç nokta aracılığıyla yönlendirilebilir, bu nedenle ağ geçitleri, NAT cihazları, ExpressRoute, VPN bağlantıları veya genel IP adresleri gerekmez. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden, genel Internet 'ten etkilenme olasılığını ortadan kaldırır. Belirli Azure Relay ad alanlarına bağlantılara izin vererek, erişim denetiminde ayrıntı düzeyi düzeyi sağlayabilirsiniz.
-
-> [!NOTE]
-> Bu özellik şu anda **Önizleme**aşamasındadır. 
 
 Daha fazla bilgi için bkz. [Özel uç noktaları yapılandırma](private-link-service.md)
 
