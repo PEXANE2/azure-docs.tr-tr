@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: b36f52fd97a9f7ff294f14ec394ff9a9f607b5b0
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3c0dd2b4e7e48eeb76d82c26eb52b89b61e9f668
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187162"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134118"
 ---
 # <a name="monitor-identity-and-access"></a>Kimlik ve erişimi izleme
 
@@ -44,7 +44,7 @@ Güvenlik Merkezi 'nin **öneriler** sayfasında bu iki denetim içinde görebil
 - Kullanım dışı bırakılan hesaplar aboneliğinizden çıkarılmalıdır (kullanım dışı hesaplar artık gerekli olmayan ve Azure Active Directory tarafından oturum açması engellenen hesaplardır)
 
 > [!TIP]
-> Bu öneriler ve bu denetimlerde görebileceğiniz diğerleri hakkında daha fazla bilgi için bkz. [kimlik ve erişim önerileri](recommendations-reference.md#recs-identity).
+> Bu öneriler ve bu denetimlerde görebileceğiniz diğerleri hakkında daha fazla bilgi için bkz. [kimlik ve erişim önerileri](recommendations-reference.md#recs-identityandaccess).
 
 ### <a name="limitations"></a>Sınırlamalar
 

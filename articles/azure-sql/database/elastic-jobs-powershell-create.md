@@ -11,12 +11,12 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 10/21/2020
-ms.openlocfilehash: 27cd35eba7320022ea9b137a7b8bb079a1226751
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1fc5653f08f8fc7916257dfdba570f451c0afa75
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427296"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131942"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell-preview"></a>PowerShell kullanarak elastik Iş Aracısı oluşturma (Önizleme)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -123,19 +123,11 @@ $db2 = New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $targ
 $db2
 ```
 
-## <a name="use-elastic-jobs"></a>Elastik Işler kullanma
-
-Elastik Işleri kullanmak için, aşağıdaki komutu çalıştırarak özelliği Azure aboneliğinize kaydedin. Elastik Iş aracısını sağlamayı planladığınız abonelik için bu komutu bir kez çalıştırın. Yalnızca iş hedefleri olan veritabanları içeren aboneliklerin kaydedilmesi gerekmez.
-
-```powershell
-Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Microsoft.Sql
-```
-
 ### <a name="create-the-elastic-job-agent"></a>Elastik İş aracısını oluşturma
 
 Elastik İş aracısı; işlerin oluşturulması, çalıştırılması ve yönetilmesi için kullanılan bir Azure kaynağıdır. Aracı işleri belirli bir plana göre veya tek seferlik iş olarak yürütür.
 
-**New-Azsqtalakjobagent** cmdlet 'ı, Azure SQL veritabanında zaten var olan bir veritabanı gerektirir, bu nedenle *resourcegroupname*, *ServerName*ve *DatabaseName* parametrelerinin hepsi mevcut kaynaklara işaret etmelidir.
+**New-Azsqtalakjobagent** cmdlet 'ı, Azure SQL veritabanında zaten var olan bir veritabanı gerektirir, bu nedenle *resourcegroupname*, *ServerName* ve *DatabaseName* parametrelerinin hepsi mevcut kaynaklara işaret etmelidir.
 
 ```powershell
 Write-Output "Creating job agent..."
@@ -205,7 +197,7 @@ $jobCred = $jobAgent | New-AzSqlElasticJobCredential -Name "jobuser" -Credential
 
 [Hedef grup](job-automation-overview.md#target-group), işin üzerinde çalışacağı veritabanı bir veya daha fazla veritabanından oluşan kümeyi tanımlar.
 
-Aşağıdaki kod parçacığı iki hedef grubu oluşturur: *ServerGroup*ve *serverGroupExcludingDb2*. *ServerGroup* , yürütme sırasında sunucuda var olan tüm veritabanlarını hedefler ve *serverGroupExcludingDb2* , *targetDb2*dışında, sunucudaki tüm veritabanlarını hedefler.
+Aşağıdaki kod parçacığı iki hedef grubu oluşturur: *ServerGroup* ve *serverGroupExcludingDb2*. *ServerGroup* , yürütme sırasında sunucuda var olan tüm veritabanlarını hedefler ve *serverGroupExcludingDb2* , *targetDb2* dışında, sunucudaki tüm veritabanlarını hedefler.
 
 ```powershell
 Write-Output "Creating test target groups..."

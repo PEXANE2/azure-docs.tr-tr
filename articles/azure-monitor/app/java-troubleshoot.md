@@ -6,12 +6,12 @@ ms.date: 03/14/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 6b578cd03daa6e996a69c03afd327097d6123045
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 3144633f76d1c4738f2323f1e047d6f32329909f
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607907"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133251"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>Java SDK için sorun giderme ve soru-cevap Application Insights
 
@@ -23,7 +23,7 @@ ms.locfileid: "97607907"
 ## <a name="build-errors"></a>Derleme hataları
 **Çakışan Küreler veya IntelliJ fikri içinde, Maven veya Gradle aracılığıyla Application Insights SDK 'Sı eklerken derleme veya sağlama toplamı doğrulama hataları alıyorum.**
 
-* Dependency `<version>` öğesi joker karakter (ör. (Maven) `<version>[2.0,)</version>` veya (Gradle)) içeren bir model kullanıyorsa `version:'2.0.+'` , gibi belirli bir sürüm belirtmeyi deneyin `2.0.1` . En son sürüm için [sürüm notlarına](https://github.com/Microsoft/ApplicationInsights-Java/releases) bakın.
+* Dependency `<version>` öğesi joker karakter (ör. (Maven) `<version>[2.0,)</version>` veya (Gradle)) içeren bir model kullanıyorsa `version:'2.+'` , gibi belirli bir sürüm belirtmeyi deneyin `2.6.2` .
 
 ## <a name="no-data"></a>Veri yok
 **Başarıyla Application Insights ekledim ve uygulamamı çalıştırdım, ancak portalda hiç veri gördüm.**
@@ -36,7 +36,7 @@ ms.locfileid: "97607907"
 * [](#debug-data-from-the-sdk) `<SDKLogger />` ApplicationInsights.xml dosyasındaki kök düğümün altına bir öğe ekleyerek günlüğü açın (Projenizdeki kaynaklar klasöründe) ve tüm şüpheli Günlükler için, AI: Info/warn/Error ' a ait olan girişleri kontrol edin. 
 * Doğru ApplicationInsights.xml dosyanın Java SDK 'Sı tarafından başarılı bir şekilde yüklendiğinden emin olun. Bu, konsolun "yapılandırma dosyası başarıyla bulundu" bildiriminin çıkış iletilerine bakar.
 * Yapılandırma dosyası bulunamazsa, yapılandırma dosyasının nerede arandığını görmek için çıkış iletilerini denetleyin ve ApplicationInsights.xml bu arama konumlarından birinde bulunduğundan emin olun. Thumb kuralı olarak, yapılandırma dosyasını Application Insights SDK JARs yakınına yerleştirebilirsiniz. Örneğin: Tomcat 'te bu, WEB-INF/Classes klasörü anlamına gelir. Geliştirme sırasında, ApplicationInsights.xml Web projenizin Resources klasörüne yerleştirebilirsiniz.
-* Ayrıca, SDK ile ilgili bilinen sorunlar için [GitHub sorunları sayfasına](https://github.com/Microsoft/ApplicationInsights-Java/issues) bakın.
+* Ayrıca, SDK ile ilgili bilinen sorunlar için [GitHub sorunları sayfasına](https://github.com/microsoft/ApplicationInsights-Java/issues) bakın.
 * Sürüm Çakışma sorunlarından kaçınmak için lütfen Application Insights Core, Web, aracı ve günlüğe kaydetme uygulamalarına ait aynı sürümü kullandığınızdan emin olun.
 
 #### <a name="i-used-to-see-data-but-it-has-stopped"></a>Verileri görmek için kullandım, ancak durdu
@@ -194,7 +194,7 @@ Application Insights kullanır `org.apache.http` . Bu, ad alanı altındaki Appl
 
 ## <a name="get-help"></a>Yardım alın
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
-* [GitHub 'da sorun dosya](https://github.com/Microsoft/ApplicationInsights-Java/issues)
+* [GitHub 'da sorun dosya](https://github.com/microsoft/ApplicationInsights-Java/issues)
 
 <!--Link references-->
 

@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 8c51450fb6ce5c381784e6aaf9b1a66c3c4ff153
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 771cf97a5c938fb987c66555c92c23f42b302a10
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188556"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134237"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API'si tarafından desteklenen Apache Cassandra özellikleri 
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -45,33 +45,33 @@ Azure Cosmos DB Cassandra API'si aşağıdaki CQL veri türlerini destekler:
 
 |Komut  |Desteklenir |
 |---------|---------|
-| ascii  | Evet |
-| bigint  | Evet |
-| blob  | Evet |
-| boolean  | Evet |
-| counter  | Evet |
-| date  | Evet |
-| decimal  | Evet |
-| double  | Evet |
-| float  | Evet |
-| frozen  | Evet |
-| inet  | Evet |
-| int  | Evet |
-| list  | Evet |
-| set  | Evet |
-| smallint  | Evet |
-| metin  | Evet |
-| time  | Evet |
-| timestamp  | Evet |
-| timeuuid  | Evet |
-| tinyint  | Evet |
-| tuple  | Evet |
-| uuid  | Evet |
-| varchar  | Evet |
-| varint  | Evet |
-| tuples | Evet | 
-| udts  | Evet |
-| map | Evet |
+| ascii  | Yes |
+| bigint  | Yes |
+| blob  | Yes |
+| boolean  | Yes |
+| counter  | Yes |
+| date  | Yes |
+| decimal  | Yes |
+| double  | Yes |
+| float  | Yes |
+| frozen  | Yes |
+| inet  | Yes |
+| int  | Yes |
+| list  | Yes |
+| set  | Yes |
+| smallint  | Yes |
+| metin  | Yes |
+| time  | Yes |
+| timestamp  | Yes |
+| timeuuid  | Yes |
+| tinyint  | Yes |
+| tuple  | Yes |
+| uuid  | Yes |
+| varchar  | Yes |
+| varint  | Yes |
+| tuples | Yes | 
+| udts  | Yes |
+| map | Yes |
 
 Statik, veri türü bildirimi için desteklenir.
 
@@ -81,13 +81,14 @@ Azure Cosmos DB Cassandra API'si aşağıdaki CQL işlevlerini destekler:
 
 |Komut  |Desteklenir |
 |---------|---------|
-| Simgesinde | Evet |
-| ttl | Evet |
-| WriteTime | Evet |
-| atama | Hayır |
+| Simgesinde | Yes |
+| ttl | Yes |
+| WriteTime | Yes |
+| cast * * | Yes |
 
-> [!NOTE]
-> \* Cassandra API, belirteci bir izdüşüm/seçici olarak destekler ve yalnızca bir where yan tümcesinin sol tarafında belirtece (PK) izin verir. Örneğin, `WHERE token(pk) > 1024` desteklenir, ancak `WHERE token(pk) > token(100)` desteklenmez. **not**
+> [!NOTE] 
+> \* Cassandra API, belirteci bir izdüşüm/seçici olarak destekler ve yalnızca bir where yan tümcesinin sol tarafında belirtece (PK) izin verir. Örneğin, `WHERE token(pk) > 1024` desteklenir, ancak `WHERE token(pk) > token(100)` desteklenmez.   
+> \*\*`cast()`İşlev Cassandra API içinde kalıcı değil. Örneğin, `SELECT cast(count as double) FROM myTable` desteklenir, ancak `SELECT avg(cast(count as double)) FROM myTable` desteklenmez. 
 
 
 
@@ -95,11 +96,11 @@ Toplama işlevleri:
 
 |Komut  |Desteklenir |
 |---------|---------|
-| cin | Evet |
-| count | Evet |
-| dk | Evet |
-| max | Evet |
-| TOPLA | Evet |
+| cin | Yes |
+| count | Yes |
+| dk | Yes |
+| max | Yes |
+| TOPLA | Yes |
 
 > [!NOTE]
 > Toplama işlevleri normal sütunlarda çalışır, ancak kümeleme sütunlarındaki **toplamalar desteklenmez.**
@@ -109,25 +110,25 @@ Blob dönüştürme işlevleri:
  
 |Komut  |Desteklenir |
 |---------|---------|
-| typeAsBlob(value)   | Evet |
-| blobAsType(value) | Evet |
+| typeAsBlob(value)   | Yes |
+| blobAsType(value) | Yes |
 
 
 UUID ve timeuuıd işlevleri:
  
 |Komut  |Desteklenir |
 |---------|---------|
-| dateOf()  | Evet |
-| now()  | Evet |
-| minTimeuuid()  | Evet |
-| unixTimestampOf()  | Evet |
-| toDate(timeuuid)  | Evet |
-| toTimestamp(timeuuid)  | Evet |
-| toUnixTimestamp(timeuuid)  | Evet |
-| toDate(timestamp)  | Evet |
-| toUnixTimestamp(timestamp)  | Evet |
-| toTimestamp(date)  | Evet |
-| toUnixTimestamp(date) | Evet |
+| dateOf()  | Yes |
+| now()  | Yes |
+| minTimeuuid()  | Yes |
+| unixTimestampOf()  | Yes |
+| toDate(timeuuid)  | Yes |
+| toTimestamp(timeuuid)  | Yes |
+| toUnixTimestamp(timeuuid)  | Yes |
+| toDate(timestamp)  | Yes |
+| toUnixTimestamp(timestamp)  | Yes |
+| toTimestamp(date)  | Yes |
+| toUnixTimestamp(date) | Yes |
 
 
   
@@ -137,60 +138,84 @@ Azure Cosmos DB, Cassandra API'si hesaplarında aşağıdaki veritabanı komutla
 
 |Komut  |Desteklenir |
 |---------|---------|
-| FILTRELEMEYE IZIN VER | Evet |
+| FILTRELEMEYE IZIN VER | Yes |
 | ANAHTAR ALANıNı DEĞIŞTIR | Yok (PaaS hizmeti, çoğaltma dahili olarak yönetilen)|
-| GERÇEKLEŞTIRILMIŞ GÖRÜNÜMÜ DEĞIŞTIR | Hayır |
-| ROLÜ DEĞIŞTIR | Hayır |
-| ALTER TABLE | Evet |
-| DEĞIŞTIRME TÜRÜ | Hayır |
-| KULLANıCı DEĞIŞTIR | Hayır |
+| GERÇEKLEŞTIRILMIŞ GÖRÜNÜMÜ DEĞIŞTIR | No |
+| ROLÜ DEĞIŞTIR | No |
+| ALTER TABLE | Yes |
+| DEĞIŞTIRME TÜRÜ | No |
+| KULLANıCı DEĞIŞTIR | No |
 | IŞLEMINI | Evet (yalnızca günlüğe kaydedilen Batch)|
 | COMPACT STORAGE | Yok (PaaS hizmeti) |
-| TOPLAMA OLUŞTUR | Hayır | 
-| ÖZEL DIZIN OLUŞTURMA (SASı) | Hayır |
+| TOPLAMA OLUŞTUR | No | 
+| ÖZEL DIZIN OLUŞTURMA (SASı) | No |
 | CREATE INDEX | Evet ( [Dizin adı belirtmeden](cassandra-secondary-index.md), kümeleme anahtarlarındaki dizinler veya tam dondurulmuş koleksiyon desteklenmez) |
-| CREATE FUNCTION | Hayır |
-| ANAHTAR alanı oluştur (çoğaltma ayarları yoksayıldı) | Evet |
-| GERÇEKLEŞTIRILMIŞ GÖRÜNÜM OLUŞTUR | Hayır |
-| CREATE TABLE | Evet |
-| TETIKLEYICI OLUŞTUR | Hayır |
-| OLUŞTURMA TÜRÜ | Evet |
-| ROL OLUŞTUR | Hayır |
-| Kullanıcı oluştur (yerel Apache Cassandra 'da kullanım dışı) | Hayır |
-| DELETE | Evet |
-| SIL (IF KOŞULUNDA hafif işlemler)| Evet |
-| DISTINCT | Hayır |
-| BıRAKMA TOPLAMı | Hayır |
-| DROP FUNCTION | Hayır |
-| DROP INDEX | Evet |
-| ANAHTAR UZAYıNı BıRAK | Evet |
-| GERÇEKLEŞTIRILMIŞ GÖRÜNÜMÜ BıRAK | Hayır |
-| ROLÜ BıRAK | Hayır |
-| DROP TABLE | Evet |
-| TETIKLEYICIYI BıRAK | Hayır | 
-| BıRAKMA TÜRÜ | Evet |
-| KULLANıCıYı bırak (yerel Apache Cassandra 'da kullanım dışı) | Hayır |
-| GRANT | Hayır |
-| INSERT | Evet |
-| Ekle (If koşulu ile hafif işlemler)| Evet |
-| IZINLERI LISTELE | Hayır |
-| ROLLERI LISTELE | Hayır |
-| KULLANıCıLARı LISTELEME (yerel Apache Cassandra 'da kullanım dışı) | Hayır |
-| REVOKE | Hayır |
-| SELECT | Evet |
-| Seç (IF KOŞULUNDA hafif işlemler)| Hayır |
-| UPDATE | Evet |
-| GÜNCELLEŞTIR (If koşulu ile hafif işlemler)| Hayır |
-| KESILEMEDI | Hayır |
-| USE | Evet |
+| CREATE FUNCTION | No |
+| ANAHTAR alanı oluştur (çoğaltma ayarları yoksayıldı) | Yes |
+| GERÇEKLEŞTIRILMIŞ GÖRÜNÜM OLUŞTUR | No |
+| CREATE TABLE | Yes |
+| TETIKLEYICI OLUŞTUR | No |
+| OLUŞTURMA TÜRÜ | Yes |
+| ROL OLUŞTUR | No |
+| Kullanıcı oluştur (yerel Apache Cassandra 'da kullanım dışı) | No |
+| DELETE | Yes |
+| SIL (IF KOŞULUNDA hafif işlemler)| Yes |
+| DISTINCT | No |
+| BıRAKMA TOPLAMı | No |
+| DROP FUNCTION | No |
+| DROP INDEX | Yes |
+| ANAHTAR UZAYıNı BıRAK | Yes |
+| GERÇEKLEŞTIRILMIŞ GÖRÜNÜMÜ BıRAK | No |
+| ROLÜ BıRAK | No |
+| DROP TABLE | Yes |
+| TETIKLEYICIYI BıRAK | No | 
+| BıRAKMA TÜRÜ | Yes |
+| KULLANıCıYı bırak (yerel Apache Cassandra 'da kullanım dışı) | No |
+| GRANT | No |
+| INSERT | Yes |
+| Ekle (If koşulu ile hafif işlemler)| Yes |
+| IZINLERI LISTELE | No |
+| ROLLERI LISTELE | No |
+| KULLANıCıLARı LISTELEME (yerel Apache Cassandra 'da kullanım dışı) | No |
+| REVOKE | No |
+| SELECT | Yes |
+| Seç (IF KOŞULUNDA hafif işlemler)| No |
+| UPDATE | Yes |
+| GÜNCELLEŞTIR (If koşulu ile hafif işlemler)| No |
+| KESILEMEDI | No |
+| USE | Yes |
+
+## <a name="cql-shell-commands"></a>CQL kabuğu komutları
+
+Azure Cosmos DB, Cassandra API'si hesaplarında aşağıdaki veritabanı komutlarını destekler.
+
+|Komut  |Desteklenir |
+|---------|---------|
+| LAMANıZ | Yes |
+| LEDIĞINIZ | Yes |
+| DENETLEME | Yok |
+| KOPYA | No |
+| AÇıKLAR | Yes |
+| Csqlshexpand | No |
+| ÇıKıP | Yes |
+| LOGıN | Yok (CQL işlevi `USER` desteklenmiyor, bu nedenle `LOGIN` gereksiz) |
+| SAYFALAMAYı | Yes |
+| SERI TUTARLıLıĞı * | Yok |
+| GÖSTER | Yes |
+| KAYNAK | Yes |
+| IZLENIYOR | Yok (Cassandra API Azure Cosmos DB tarafından desteklenir-sorun giderme için [Tanılama günlüğünü](cosmosdb-monitor-resource-logs.md) kullanın) |
+
+> [!NOTE] 
+> \* Tutarlılık Azure Cosmos DB farklı çalışır, daha fazla bilgi için [buraya](cassandra-consistency.md) bakın.  
+
 
 ## <a name="json-support"></a>JSON desteği
 |Komut  |Desteklenir |
 |---------|---------|
-| JSON SEÇIN | Evet |
-| JSON EKLE | Evet |
-| fromJson () | Hayır |
-| toJson () | Hayır |
+| JSON SEÇIN | Yes |
+| JSON EKLE | Yes |
+| fromJson () | No |
+| toJson () | No |
 
 
 ## <a name="cassandra-api-limits"></a>Cassandra API limitleri

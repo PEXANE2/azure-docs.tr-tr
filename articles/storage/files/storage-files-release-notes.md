@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 739e59ea8e5737abbc6f0f0799129be5f59fb9b0
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 3bf3ecefb17f4c9fda6405da7fb2bdc2650f5324
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674506"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131483"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure Dosya Eşitleme aracısı sürüm notları
 Azure Dosya Eşitleme aracısı şirket içi dosya sunucularının sağladığı esneklik, performans ve uyumluluk özelliklerinden vazgeçmeden kuruluşunuzun dosya paylaşımlarını Azure Dosyaları'nda toplamanızı sağlar. Windows Server yüklemeleriniz, Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürülür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünya çapında istediğiniz sayıda önbellek oluşturabilirsiniz.
@@ -236,14 +236,14 @@ Aşağıdaki sürüm notları Azure Dosya Eşitleme aracısına ait sürüm 9.0.
 ### <a name="improvements-and-issues-that-are-fixed"></a>Düzeltilen geliştirmeler ve sorunlar
 
 - Self Servis geri yükleme desteği
-    - Kullanıcılar artık önceki sürüm özelliğini kullanarak dosyalarını geri yükleyebilir. V9 sürümünden önce, bulut katmanlaması etkinleştirilmiş birimlerde önceki sürüm özelliği destekleniyordu. Bu özellik, bulut katmanlaması etkin olan bir uç noktanın bulunduğu her birim için ayrı olarak etkinleştirilmelidir. Daha fazla bilgi için bkz.  
+    - Kullanıcılar artık, birim üzerinde Self Servis geri yükleme özelliği etkinleştirildikten sonra oluşturulan VSS anlık görüntülerinin önceki sürüm özelliğini kullanarak katmanlı dosyaları da (disk üzerindeki dosyalarla birlikte) geri yükleyebilir. V9 sürümünden önce, katmanlı dosyalar için önceki sürüm özelliği destekleniyordu. Bu özellik, bulut katmanlaması etkin olan bir uç noktanın bulunduğu her birim için ayrı olarak etkinleştirilmelidir. Daha fazla bilgi için bkz.  
 [Önceki sürümler ve VSS (birim gölge kopyası hizmeti) üzerinden self servis geri yükleme](./storage-sync-files-deployment-guide.md#self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service). 
  
 - Daha büyük dosya paylaşma boyutları için destek 
     - Azure Dosya Eşitleme artık tek bir eşitleme ad alanında 64TiB ve 100.000.000 dosyalarını desteklemektedir.  
  
 - Sunucu 2019 üzerinde yinelenen verileri kaldırma desteği 
-    - Yinelenen verileri kaldırma, Windows Server 2019 ' de etkinleştirilen bulut katmanlaması ile desteklenmektedir. Bulut katmanlaması olan birimlerde yinelenen verileri kaldırmayı desteklemek için Windows Update [KB4520062](https://support.microsoft.com/help/4520062) yüklenmelidir. 
+    - Yinelenen verileri kaldırma özelliği artık desteklenir (Windows Server 2016 ve Windows Server 2019 ' de bulut katmanlaması, birimdeki bir veya daha fazla sunucu uç noktasında etkin veya devre dışı bırakılmış olsun). Sunucu 2019 üzerinde bulut katmanlaması olan birimlerde yinelenen verileri kaldırmayı desteklemek için Windows Update [KB4520062](https://support.microsoft.com/help/4520062) yüklenmelidir. 
  
 - Bir dosya katmanında en düşük dosya boyutu geliştirildi 
     - Bir dosya için en küçük dosya boyutu, artık dosya sistemi kümesi boyutuna (çift dosya sistemi kümesi boyutu) göre belirlenir. Örneğin, varsayılan olarak, NTFS dosya sistemi küme boyutu 4KB 'tır, bir dosya için en düşük dosya boyutu 8 KB 'tır. 

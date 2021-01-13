@@ -1,16 +1,16 @@
 ---
 title: Öğretici-yerel bir Azure Resource Manager şablonu dağıtma
 description: Yerel bilgisayarınızdan bir Azure Resource Manager şablonu (ARM şablonu) dağıtmayı öğrenin
-ms.date: 05/20/2020
+ms.date: 01/12/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 640d314711e34119dac5e1c5bf9fa245685b6f38
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 3b2368f5adcfa4b7140c4ec00243ca2cba5c566a
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368146"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134135"
 ---
 # <a name="tutorial-deploy-a-local-arm-template"></a>Öğretici: yerel bir ARM şablonu dağıtma
 
@@ -26,7 +26,7 @@ Bu öğretici bir serinin birincisidir. Seriler aracılığıyla ilerleyerek, ba
 
 Şablonu dağıtmak için Azure PowerShell ya da Azure CLı gerekir. Yükleme yönergeleri için bkz.:
 
-- [Azure PowerShell yüklensin](/powershell/azure/install-az-ps)
+- [Azure PowerShell’i yükleme](/powershell/azure/install-az-ps)
 - [Windows'da Azure CLI'yi yükleme](/cli/azure/install-azure-cli-windows)
 - [Linux 'ta Azure CLı 'yı yükler](/cli/azure/install-azure-cli-linux)
 - [macOS’ta Azure CLI'yi yükleme](/cli/azure/install-azure-cli-macos)

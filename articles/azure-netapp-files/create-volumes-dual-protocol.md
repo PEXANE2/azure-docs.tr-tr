@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/05/2020
+ms.date: 01/12/2020
 ms.author: b-juche
-ms.openlocfilehash: d296f80d85bb5081c466b27e6a8624e8b3f2c924
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: c914ab007f482e4d2b560b1cb461e27d4f4442ec
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915018"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133166"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files için bir çift protokol (NFSv3 ve SMB) birimi oluşturun
 
@@ -39,7 +39,6 @@ Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMB3 veya Dual Protocol kullanarak 
 * DNS sunucusunda bir geriye doğru arama bölgesi oluşturun ve ardından bu geriye doğru arama bölgesine AD ana makinesi için bir işaretçi (PTR) kaydı ekleyin. Aksi halde, çift protokol birimi oluşturma işlemi başarısız olur.
 * NFS istemcisinin güncel olduğundan ve işletim sistemi için en son güncelleştirmeleri çalıştırdığından emin olun.
 * AD üzerinde Active Directory (AD) LDAP sunucusunun açık ve çalışıyor olduğundan emin olun. Bunu, AD makinesine [Active Directory Basit Dizin Hizmetleri (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) rolünü yükleyip yapılandırarak yapabilirsiniz.
-* Otomatik olarak imzalanan kök CA sertifikasını oluşturmak ve dışarı aktarmak için [Active Directory Sertifika Hizmetleri (AD CS)](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) rolünü kullanarak ad için bir sertifika YETKILISININ (CA) oluşturulduğundan emin olun.   
 * Çift protokol birimleri Şu anda Azure Active Directory Domain Services desteklemez (AEKLEMELERI).  
 * Bir çift protokol birimi tarafından kullanılan NFS sürümü NFSv3 ' dir. Bu nedenle, aşağıdaki önemli noktalar geçerlidir:
     * İkili protokol, NFS istemcilerinden gelen Windows ACL genişletilmiş özniteliklerini desteklemez `set/get` .
@@ -105,9 +104,6 @@ Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMB3 veya Dual Protocol kullanarak 
 3. **Protokol**' e tıklayın ve ardından aşağıdaki eylemleri tamamlamayı seçin:  
     * Birimin protokol türü olarak **çift protokol (NFSv3 ve SMB)** seçeneğini belirleyin.   
 
-    * Açılan listeden **Active Directory** bağlantıyı seçin.  
-    Kullandığınız Active Directory bir sunucu kök CA sertifikasına sahip olmalıdır. 
-
     * Birimin **birim yolunu** belirtin.   
     Bu birim yolu, Paylaşılan birimin adıdır. Ad alfabetik bir karakterle başlamalıdır ve her abonelik ve her bölge içinde benzersiz olmalıdır.  
 
@@ -122,32 +118,6 @@ Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMB3 veya Dual Protocol kullanarak 
     Oluşturduğunuz birim birimler sayfasında görünür. 
  
     Birim, kapasite havuzundan aboneliği, kaynak grubunu ve konum özniteliklerini devralır. Birimin dağıtım durumunu izlemek için Bildirimler sekmesini kullanabilirsiniz.
-
-## <a name="upload-active-directory-certificate-authority-public-root-certificate"></a>Active Directory Sertifika yetkilisi ortak kök sertifikası yükleme  
-
-1.  Sertifika yetkilisini yüklemek ve yapılandırmak için [sertifika yetkilisini yüklemeyi](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) izleyin. 
-
-2.  MMC ek bileşenini ve Sertifika Yöneticisi aracını kullanmak için [MMC ek bileşeni ile sertifikaları görüntüleyin](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) ' i izleyin.  
-    Yerel cihaz için kök veya veren sertifikayı bulmak için Sertifika Yöneticisi ek bileşenini kullanın. Sertifika Yönetimi ek bileşeni komutlarını aşağıdaki ayarlardan birinden çalıştırmalısınız:  
-    * Etki alanına katılmış ve kök sertifikası yüklü olan Windows tabanlı bir istemci 
-    * Kök sertifikayı içeren etki alanındaki başka bir makine  
-
-3. Kök CA sertifikasını dışarı aktarın.  
-    Kök CA sertifikaları, aşağıdaki örneklerde gösterildiği gibi kişisel veya güvenilen kök sertifika yetkilileri dizininden verilebilir:   
-    ![kişisel sertifikaları gösteren ekran görüntüsü](../media/azure-netapp-files/personal-certificates.png)   
-    ![Güvenilen kök sertifika yetkililerini gösteren ekran görüntüsü](../media/azure-netapp-files/trusted-root-certification-authorities.png)    
-
-    Sertifikanın Base-64 ile kodlanmış X. 509.440 (. CER) biçimi: 
-
-    ![Sertifika Dışarı Aktarma Sihirbazı](../media/azure-netapp-files/certificate-export-wizard.png)
-
-4. Çift protokol biriminin NetApp hesabına gidin, **Active Directory bağlantılar**' a tıklayın ve **Active Directory Birleştir** penceresini kullanarak kök CA sertifikasını karşıya yükleyin:  
-
-    ![Sunucu kök CA sertifikası](../media/azure-netapp-files/server-root-ca-certificate.png)
-
-    Sertifika yetkilisi adının DNS tarafından çözümlenebildiğinden emin olun. Bu ad, sertifikadaki "çıkarılan" veya "veren" alanıdır:  
-
-    ![Sertifika bilgileri](../media/azure-netapp-files/certificate-information.png)
 
 ## <a name="manage-ldap-posix-attributes"></a>LDAP POSIX özniteliklerini yönetme
 

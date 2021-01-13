@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
-ms.date: 10/01/2020
+ms.date: 01/12/2020
 ms.author: mbaldwin
-ms.openlocfilehash: dbbde397ab235068ea90280da721e3e3dc38866a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ef2c42ae76dc5e1511494635904228a8b574d483
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792370"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132197"
 ---
 # <a name="whats-new-for-azure-key-vault"></a>Azure Key Vault yenilikler
 
@@ -37,7 +37,7 @@ Azure Key Vault yenilikleri aşağıda verilmiştir. [Azure updates Key Vault ka
 
 ### <a name="soft-delete-on-by-default"></a>Varsayılan olarak geçici silme
 
-2020 sonuna kadar, geçici silme, hem yeni hem de önceden mevcut olan **tüm anahtar kasaları için varsayılan olarak açık olacaktır** . Bu potansiyel değişiklik hakkında tam ayrıntılar ve etkilenen anahtar kasalarını bulma ve önceden güncelleştirme adımları için, [tüm anahtar kasalarında geçici silme](soft-delete-change.md)makalesine bakın.
+Hem yeni hem de önceden mevcut olan **tüm anahtar kasaları Için geçici silme özelliğinin etkinleştirilmesi gerekir**. Sonraki birkaç ayda, geçici silme işlemini devre dışı bırakma özelliği kullanım dışı olacaktır. Bu potansiyel değişiklik hakkında tam ayrıntılar ve etkilenen anahtar kasalarını bulma ve önceden güncelleştirme adımları için, [tüm anahtar kasalarında geçici silme](soft-delete-change.md)makalesine bakın.
 
 ### <a name="azure-tls-certificate-changes"></a>Azure TLS sertifikası değişiklikleri
 

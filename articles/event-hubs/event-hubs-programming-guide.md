@@ -4,12 +4,12 @@ description: Bu makalede, Azure .NET SDK kullanarak Azure Event Hubs için kod y
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4f95abe3668bb400d84e354c3bca9eac289c5795
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 46bd0c3c1488d6dd7afbae5e88e0b83f56654bb8
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108696"
+ms.locfileid: "98131245"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Azure Event Hubs için .NET Programlama Kılavuzu (eski Microsoft. Azure. EventHubs paketi)
 Bu makalede, Azure Event Hubs kullanarak kod yazma konusunda bazı yaygın senaryolar ele alınmaktadır. Burada Event Hubs’ın önceden bilindiği varsayılır. Event Hubs’a kavramsal genel bakış için bkz. [Event Hubs’a genel bakış](./event-hubs-about.md).
@@ -57,7 +57,7 @@ Bir [Eventhubclient][] örneği oluşturarak ve [sendadsync](/dotnet/api/microso
 
 ## <a name="event-serialization"></a>Olayı seri hale getirme
 
-[Eventdata][] sınıfında, olay veri yükünü temsil eden çeşitli parametreleri, baytları veya bayt dizisini alan [iki aşırı yüklenmiş Oluşturucu](/dotnet/api/microsoft.azure.eventhubs.eventdata.-ctor) vardır. JSON’u [EventData][] ile kullanırken JSON ile kodlanmış bir dize için bayt dizisini almak üzere **Encoding.UTF8.GetBytes()** kullanabilirsiniz. Örneğin:
+[Eventdata][] sınıfında, olay veri yükünü temsil eden çeşitli parametreleri, baytları veya bayt dizisini alan [iki aşırı yüklenmiş Oluşturucu](/dotnet/api/microsoft.azure.eventhubs.eventdata.-ctor) vardır. JSON’u [EventData][] ile kullanırken JSON ile kodlanmış bir dize için bayt dizisini almak üzere **Encoding.UTF8.GetBytes()** kullanabilirsiniz. Örnek:
 
 ```csharp
 for (var i = 0; i < numMessagesToSend; i++)
@@ -77,7 +77,7 @@ Olay verilerini gönderirken, Bölüm ataması oluşturmak için karma hale geti
 
 ### <a name="availability-considerations"></a>Kullanılabilirlik konusunda dikkat edilmesi gerekenler
 
-Bölüm anahtarı kullanmak isteğe bağlıdır ve bir tane kullanıp kullanmayacağınızı dikkatle düşünün. Bir olayı yayımlarken bölüm anahtarı belirtmezseniz hepsini bir kez deneme ataması kullanılır. Çoğu durumda, olay sıralaması önemliyse, Bölüm anahtarının kullanılması iyi bir seçimdir. Bir bölüm anahtarı kullandığınızda, bu bölümler tek bir düğümde kullanılabilirlik gerektirir ve zaman içinde kesintiler meydana gelebilir; Örneğin, işlem düğümleri yeniden başlatıldığında ve düzeltme ekiyle. Bu nedenle, bir bölüm KIMLIĞI ayarlarsanız ve bu bölüm bazı nedenlerle kullanılamaz hale gelirse, bu bölümdeki verilere erişme girişimi başarısız olur. Yüksek kullanılabilirlik en önemse, bölüm anahtarı belirtmeyin; Bu durumda olaylar, daha önce açıklanan hepsini bir kez deneme modeli kullanılarak bölümlere gönderilir. Bu senaryoda, kullanılabilirlik (bölüm KIMLIĞI yok) ve tutarlılık (olayları bir bölüm KIMLIĞINE sabitleme) arasında açık bir seçim yapabilirsiniz.
+Bölüm anahtarı kullanmak isteğe bağlıdır ve bir tane kullanıp kullanmayacağınızı dikkatle düşünün. Bir olayı yayımlarken bölüm anahtarı belirtmezseniz Event Hubs, yükü bölümler arasında dengeler. Çoğu durumda, olay sıralaması önemliyse, Bölüm anahtarının kullanılması iyi bir seçimdir. Bir bölüm anahtarı kullandığınızda, bu bölümler tek bir düğümde kullanılabilirlik gerektirir ve zaman içinde kesintiler meydana gelebilir; Örneğin, işlem düğümleri yeniden başlatıldığında ve düzeltme ekiyle. Bu nedenle, bir bölüm KIMLIĞI ayarlarsanız ve bu bölüm bazı nedenlerle kullanılamaz hale gelirse, bu bölümdeki verilere erişme girişimi başarısız olur. Yüksek kullanılabilirlik en önemse, bölüm anahtarı belirtmeyin. Bu durumda, olaylar iç yük dengeleme algoritması kullanılarak bölümlere gönderilir. Bu senaryoda, kullanılabilirlik (bölüm KIMLIĞI yok) ve tutarlılık (olayları bir bölüm KIMLIĞINE sabitleme) arasında açık bir seçim yapabilirsiniz.
 
 Diğer bir nokta, olayları işlerken gecikmelerin işlenmesine neden olur. Bazı durumlarda, verileri bırakıp işleme devam etmek denenmeye çalışmak daha iyi olabilir ve bu da daha fazla aşağı akış işleme gecikmesine neden olabilir. Örneğin, bir stok şeridi sayesinde, güncel verilerin tamamlanmasını beklemek daha iyidir, ancak canlı sohbet veya VOıP senaryosunda, tamamlanmamış olsa bile verilere hızlıca sahip olmanız önerilir.
 
@@ -109,7 +109,7 @@ Olayları bir olay hub 'ına zaman uyumsuz olarak gönderirsiniz. Zaman uyumsuz 
 * [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync)
 * [ProcessErrorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processerrorasync)
 
-Olay işlemeyi başlatmak için, Olay Hub 'ınız için uygun parametreleri sağlayan [Eventprocessorhost][]örneğini oluşturun. Örneğin:
+Olay işlemeyi başlatmak için, Olay Hub 'ınız için uygun parametreleri sağlayan [Eventprocessorhost][]örneğini oluşturun. Örnek:
 
 > [!NOTE]
 > EventProcessorHost ve ilgili sınıfları **Microsoft. Azure. EventHubs. Processor** paketinde sunulmaktadır. [Bu makaledeki](event-hubs-dotnet-framework-getstarted-send.md#add-the-event-hubs-nuget-package) yönergeleri Izleyerek veya [Paket Yöneticisi konsolu](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) penceresinde aşağıdaki komutu vererek, paketi Visual Studio projenize ekleyin: `Install-Package Microsoft.Azure.EventHubs.Processor` .

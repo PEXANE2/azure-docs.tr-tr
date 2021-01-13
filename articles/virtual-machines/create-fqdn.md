@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: networking
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 11/03/2020
+ms.date: 1/12/2020
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 08d5e20bf0755a71e70a0e446cf96d33bb42ad59
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: aadf4000da4ab88a3c3b4dee37d2179eb49d39d7
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93351931"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132073"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>Linux VM için Azure portal tam etki alanı adı oluşturma
 
@@ -24,16 +24,14 @@ ms.locfileid: "93351931"
 Bu makalede, zaten bir VM oluşturmuş olduğunuz varsayılmaktadır. Gerekirse, portalda bir [Linux](./linux/quick-create-portal.md) veya [Windows](./windows/quick-create-portal.md) VM oluşturabilirsiniz. VM 'niz çalışır duruma getirildikten sonra aşağıdaki adımları izleyin:
 
 
-1. Portalda VM 'nizi seçin. **DNS adı** altında **Yapılandır** ' ı seçin.
-2. DNS adını girip sayfanın en üstünde bulunan **Kaydet** ' i seçin.
-3. VM 'ye genel bakış dikey penceresine dönmek için sağ üst köşedeki **X** ' i seçerek **yapılandırma** dikey penceresini kapatın. 
-4. *DNS adının* artık doğru gösterildiğini doğrulayın.
-   
-
-
+1. Portalda VM 'nizi seçin. 
+1. Sol menüde **yapılandırma** ' yı seçin.
+1. **DNS adı etiketi** altında kullanmak istediğiniz ön eki girin.
+1. Sayfanın üst kısmındaki **Kaydet** ' i seçin.
+1. Sol menüdeki **genel bakış** ' ı seçerek VM 'ye genel bakış dikey penceresine dönün. 
+1. *DNS adının* doğru göründüğünü doğrulayın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Artık VM 'nizin genel IP ve DNS adı olduğuna göre, NGINX, MongoDB ve Docker gibi ortak uygulama çerçevelerini veya hizmetlerini dağıtabilirsiniz.
 
-Ayrıca, Azure dağıtımlarınızı oluşturmaya yönelik ipuçları için [Kaynak Yöneticisi kullanma](../azure-resource-manager/management/overview.md) hakkında daha fazla bilgi edinebilirsiniz.
+Ayrıca, [Azure DNS bölgelerini](../dns/dns-getstarted-portal.md)kullanarak DNS yönetebilirsiniz.
 

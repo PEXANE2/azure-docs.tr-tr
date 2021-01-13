@@ -9,12 +9,12 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.author: ambapat
-ms.openlocfilehash: b483ffc480f9ad750f8d9901d6bec382db2378c2
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 675c4f04ece322000ae0ebb44d6291c455db9397
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368928"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133285"
 ---
 # <a name="key-types-algorithms-and-operations"></a>Anahtar türleri, algoritmalar ve işlemler
 
@@ -26,7 +26,7 @@ Aşağıdaki tabloda, anahtar türlerinin ve desteklenen algoritmaların özeti 
 | --- | --- | --- |
 |EC-P256, EC-P256K, EC-P384, EC-521|NA|ES256<br>ES256K<br>ES384<br>ES512|
 |RSA 2K, 3K, 4K| RSA1_5<br>RSA-OAEP<br>RSA-OAEP-256|PS256<br>PS384<br>PS512<br>RS256<br>RS384<br>RS512<br>RSNULL| 
-|AES 128 bit, 256 bit| AES-KW<br>AES-GCM<br>AES-CBC| NA| 
+|AES 128 bit, 256 bit <br/>(Yalnızca yönetilen HSM)| AES-KW<br>AES-GCM<br>AES-CBC| NA| 
 |||
 
 ##  <a name="ec-algorithms"></a>EC algoritmaları
@@ -65,7 +65,7 @@ Aşağıdaki tabloda, anahtar türlerinin ve desteklenen algoritmaların özeti 
 -   **RS512** -RSASSA-PKCS-v1_5 SHA-512 kullanılarak. Uygulamanın sağladığı Özet değeri SHA-512 kullanılarak hesaplanmalıdır ve 64 bayt uzunluğunda olmalıdır.  
 -   **Rsnull** -belirli TLS senaryolarını etkinleştirmek için özel bir kullanım örneği olan [RFC2437](https://tools.ietf.org/html/rfc2437)bakın.  
 
-##  <a name="symmetric-key-algorithms"></a>Simetrik anahtar algoritmaları
+##  <a name="symmetric-key-algorithms-managed-hsm-only"></a>Simetrik anahtar algoritmaları (yalnızca yönetilen HSM)
 - **AES-kW** -AES anahtar sarması ([RFC3394](https://tools.ietf.org/html/rfc3394)).
 - Galol sayaç modunda **AES-GCM** -AES şifrelemesi ([NIST SP 800-38d](https://csrc.nist.gov/publications/sp800))
 - **AES-CBC** -AES şifrelemesi, Şifre blok zincirleme modunda ([NIST SP 800-38A](https://csrc.nist.gov/publications/sp800))

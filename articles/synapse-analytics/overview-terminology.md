@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 11/18/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7f0ca83c194aae6f4a8d04d70c2d4f3746ad2ca5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 828f37030ae567cacbaad25849b7ba24c561c20c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446715"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132775"
 ---
 # <a name="azure-synapse-analytics-terminology"></a>Azure SYNAPSE Analytics terminolojisi
 
@@ -38,7 +38,7 @@ SYNAPSE Studio içinde **SQL komut dosyaları** OLUŞTURUP çalıştırarak SQL 
 
 ## <a name="apache-spark-for-synapse"></a>SYNAPSE için Apache Spark
 
-Spark Analytics 'i kullanmak için SYNAPSE çalışma alanınızda **sunucusuz Apache Spark havuzları** oluşturun ve kullanın. Spark havuzunu kullanmaya başladığınızda, çalışma alanları bu oturumla ilişkilendirilen kaynakları işlemek için bir **Spark oturumu** oluşturur. 
+Spark Analytics 'i kullanmak için SYNAPSE çalışma alanınızda **sunucusuz Apache Spark havuzları** oluşturun ve kullanın. Spark havuzunu kullanmaya başladığınızda, çalışma alanları bu oturumla ilişkili kaynakları işlemek için bir **Spark oturumu** oluşturur. 
 
 SYNAPSE içinde Spark kullanmanın iki yolu vardır:
 * Veri veri bilimi ve Mühendisliği yapmak için **Spark Not defterleri** Scala, Pyspark, C# ve mini kullanılan SQL
@@ -56,7 +56,7 @@ SYNAPSE içinde Spark kullanmanın iki yolu vardır:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure SYNAPSE Analytics 'i kullanmaya başlama](get-started.md)
+* [Azure Synapse Analytics ile çalışmaya başlama](get-started.md)
 * [Çalışma alanı oluşturma](quickstart-create-workspace.md)
 * [Sunucusuz SQL havuzu kullanma](quickstart-sql-on-demand.md)
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/11/2021
+ms.date: 01/12/2021
 ms.author: b-juche
-ms.openlocfilehash: 4d21f7c4e74a87e409a73b22fc6b316e97e24a4e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: beadd250ec4472b894f0f474b1057ad44cf474ed
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122606"
+ms.locfileid: "98133523"
 ---
 # <a name="how-azure-netapp-files-snapshots-work"></a>Azure NetApp Files anlık görüntüleri nasıl çalışır?
 
@@ -37,11 +37,11 @@ Aşağıdaki diyagramlarda kavramlar gösterilmektedir:
 
 ![Anlık görüntülerin temel kavramlarını gösteren diyagramlar](../media/azure-netapp-files/snapshot-concepts.png)
 
-Yukarıdaki diyagramlarda, Şekil 1a 'da anlık görüntü alınır. Şekil 1B, değiştirilen veriler *Yeni bir bloğa* yazılır ve işaretçi güncellenir. Ancak anlık görüntü işaretçisi, verilerin canlı ve geçmiş bir görünümünü sunarak *daha önce yazılmış bloğa* işaret eder. Şekil 1C ' da başka bir anlık görüntü alınır. Artık üç tam kopyanın gerektirdiği birim alanını oluşturmadan üç veri kuşakına (canlı veriler, anlık görüntü 2 ve Snapshot 1) erişebilirsiniz. 
+Diyagramlarda Şekil 1a 'da bir anlık görüntü alınır. Şekil 1B, değiştirilen veriler *Yeni bir bloğa* yazılır ve işaretçi güncellenir. Ancak anlık görüntü işaretçisi, verilerin canlı ve geçmiş bir görünümünü sunarak *daha önce yazılmış bloğa* işaret eder. Şekil 1C ' da başka bir anlık görüntü alınır. Artık üç tam kopyanın gerektirdiği birim alanını oluşturmadan üç veri kuşakına (canlı veriler, anlık görüntü 2 ve Snapshot 1) erişebilirsiniz. 
 
 Anlık görüntü yalnızca birim meta verilerinin bir kopyasını alır (*INode tablosu*). Birim boyutundan, kullanılan kapasiteye veya birimdeki etkinlik düzeyine bakılmaksızın oluşturulması yalnızca birkaç saniye sürer. Bu nedenle, bir 100-TiB biriminin anlık görüntüsünü almak, 100-GiB biriminin anlık görüntüsünü alırken aynı zamanda (sıfır ' dan sonra) daha fazla sürer. Bir anlık görüntü oluşturulduktan sonra, veri dosyalarındaki değişiklikler normal olarak dosyaların etkin sürümünde yansıtılır.
 
-Bu arada, bir anlık görüntüden işaret eden veri blokları kararlı ve sabit kalır. Azure NetApp Files anlık görüntülerinin "yazma sırasında yeniden yönlendir" yapısı nedeniyle, bir anlık görüntü hiçbir boşluk tüketmez. Her bir anlık görüntü arasındaki değiştirilen blokların sayısı kadar az kapasite tüketen, her zaman içinde birim başına en fazla 255 anlık görüntü saklayabilirsiniz. Değiştirilen bloklar etkin birimde depolanır. Anlık görüntülerde işaret edilen bloklar, yalnızca tüm anlık görüntüler (işaretçiler) temizlenme amacıyla, safekeeping için birimde tutulur (salt okunurdur). Bu nedenle, toplu kullanım zaman içinde, yeni veri blokları veya (değiştirilen) anlık görüntülerde tutulan veri blokları tarafından artacaktır.
+Bu arada, bir anlık görüntüden işaret eden veri blokları kararlı ve sabit kalır. Azure NetApp Files birimlerinin "yazma sırasında yeniden yönlendir" yapısı nedeniyle, bir anlık görüntü hiçbir boşluk tüketmez. Her bir anlık görüntü arasındaki değiştirilen blokların sayısı kadar az kapasite tüketen, her zaman içinde birim başına en fazla 255 anlık görüntü saklayabilirsiniz. Değiştirilen bloklar etkin birimde depolanır. Anlık görüntülerde işaret edilen bloklar, yalnızca tüm işaretçiler (etkin birim ve anlık görüntüler) temizlenme amacıyla, safekeeping için birimde (salt okuma olarak) tutulur. Bu nedenle, toplu kullanım zaman içinde, yeni veri blokları veya (değiştirilen) anlık görüntülerde tutulan veri blokları tarafından artacaktır.
 
  Aşağıdaki diyagramda bir birimin anlık görüntüleri ve zaman içinde kullanılan alan gösterilmektedir: 
 
@@ -56,7 +56,7 @@ Bir birim anlık görüntüsü yalnızca en son anlık görüntüden bu yana yal
     Birim boyutu ve etkinlik düzeyinden bağımsız olarak bir anlık görüntü oluşturmak, çoğaltmak, geri yüklemek veya klonlamak yalnızca birkaç saniye sürer. [İsteğe bağlı](azure-netapp-files-manage-snapshots.md#create-an-on-demand-snapshot-for-a-volume)bir birim anlık görüntüsü oluşturabilirsiniz. Ayrıca, Azure NetApp Files otomatik olarak bir anlık görüntü oluşturmak ve bir birim için kaç anlık görüntü tutması gerektiğini belirtmek için [anlık görüntü ilkelerini](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies) de kullanabilirsiniz.  Uygulama tutarlılığı, örneğin SAP HANA için [Azacsnap aracını](azacsnap-introduction.md) kullanarak, uygulama katmanıyla birlikte anlık görüntüler elde edilebilir.
 
 _ Anlık görüntülerinin Volume ***Performance** _ üzerinde hiçbir etkisi yoktur.   
-    Düşük düzenleme teknolojisinin "yazma sırasında yeniden yönlendir" yapısı nedeniyle Azure NetApp Files anlık görüntülerinin depolanması veya saklanması, yoğun veri etkinliğiyle birlikte performans etkisine sahip değildir. Bir anlık görüntünün silinmesi birçok durumda bir performans etkisi içermez. 
+    Düşük düzenleme teknolojisinin "yazma sırasında yeniden yönlendir" yapısı nedeniyle Azure NetApp Files anlık görüntülerinin depolanması veya saklanması, yoğun veri etkinliğiyle birlikte performans etkisine sahip değildir. Bir anlık görüntüyü silmenin çoğu durumda bir performans etkisi de daha azdır. 
 
 _ Anlık görüntüleri sık oluşturulabildiğinden ve birçok Korunabileceğinden, ***ölçeklenebilirlik** _ sağlar.   
     Azure NetApp Files birimler 255 adede kadar anlık görüntüyü destekler. Çok sayıda düşük etki, sık oluşturulan anlık görüntü depolama özelliği, istenen veri sürümünün başarıyla kurtarılma olasılığını artırır.
@@ -66,7 +66,7 @@ Azure NetApp Files anlık görüntü teknolojisinin yüksek performans, ölçekl
 
 ## <a name="ways-to-create-snapshots"></a>Anlık görüntü oluşturma yolları   
 
-Azure NetApp Files anlık görüntüleri kullanımı çok yönlüdür. Bu nedenle, anlık görüntü oluşturup sürdürmek için birden çok yöntem mevcuttur:
+Anlık görüntü oluşturmak ve sürdürmek için çeşitli yöntemler kullanabilirsiniz:
 
 _ El ile (isteğe bağlı), kullanarak:   
     * [Azure Portal](azure-netapp-files-manage-snapshots.md#create-an-on-demand-snapshot-for-a-volume), [REST API](/rest/api/netapp/snapshots), [Azure CLI](/cli/azure/netappfiles/snapshot)veya [PowerShell](/powershell/module/az.netappfiles/new-aznetappfilessnapshot) araçları
@@ -78,7 +78,7 @@ _ El ile (isteğe bağlı), kullanarak:
 
 ## <a name="how-volumes-and-snapshots-are-replicated-cross-region-for-dr"></a>Birimler ve anlık görüntülerin DR için çapraz bölge olarak nasıl çoğaltılacağı  
 
-Azure NetApp Files olağanüstü durum kurtarma (DR) amaçları için [bölgeler arası çoğaltmayı](cross-region-replication-introduction.md) destekler. Azure NetApp Files çapraz bölge çoğaltma, anlık görüntü teknolojisini kullanır. Yalnızca değiştirilen bloklar ağ üzerinden sıkıştırılmış, etkin bir biçimde gönderilir. Birimler arasında bir çapraz bölge çoğaltması başlatıldıktan sonra, tüm birim içerikleri (yani, gerçek depolanmış veri blokları) yalnızca bir kez aktarılır. Bu işleme, *temel aktarma* denir. İlk aktarımdan sonra, yalnızca değiştirilen bloklar (anlık görüntülerle yakalanan olarak) aktarılır. Kaynak birimin zaman uyumsuz 1:1 çoğaltması oluşturulur (tüm anlık görüntüler dahil).  Bu davranış, tam ve artımlı süresiz bir çoğaltma mekanizmasını izler. Bu özel teknoloji, bölgeler genelinde çoğaltmak için gereken veri miktarını en aza indirir, bu nedenle veri aktarımı maliyetleri kaydediliyor. Ayrıca çoğaltma süresini kısaltır. Daha küçük bir kurtarma noktası hedefi (RPO) elde edebilirsiniz, çünkü daha fazla anlık görüntü oluşturulabilir ve sınırlı veri aktarımlarıyla daha sık aktarılabilir.
+Azure NetApp Files olağanüstü durum kurtarma (DR) amaçları için [bölgeler arası çoğaltmayı](cross-region-replication-introduction.md) destekler. Azure NetApp Files çapraz bölge çoğaltma, anlık görüntü teknolojisini kullanır. Yalnızca değiştirilen bloklar ağ üzerinden sıkıştırılmış, etkin bir biçimde gönderilir. Birimler arasında bir çapraz bölge çoğaltması başlatıldıktan sonra, tüm birim içerikleri (yani, gerçek depolanmış veri blokları) yalnızca bir kez aktarılır. Bu işleme, *temel aktarma* denir. İlk aktarımdan sonra, yalnızca değiştirilen bloklar (anlık görüntülerle yakalanan olarak) aktarılır. Sonuç olarak, tüm anlık görüntüler dahil olmak üzere kaynak birimin zaman uyumsuz 1:1 bir çoğaltmasıdır. Bu davranış, tam ve artımlı süresiz bir çoğaltma mekanizmasını izler. Bu teknoloji, bölgeler genelinde çoğaltmak için gereken veri miktarını en aza indirir, bu nedenle veri aktarımı maliyetleri kaydediliyor. Ayrıca çoğaltma süresini kısaltır. Daha küçük bir kurtarma noktası hedefi (RPO) elde edebilirsiniz, çünkü daha fazla anlık görüntü oluşturulabilir ve sınırlı veri aktarımlarıyla daha sık aktarılabilir. Ayrıca, ana bilgisayar tabanlı çoğaltma mekanizmaları gereksinimini ortadan kaldırmak, sanal makine ve yazılım lisansı maliyetinden kaçınmayı önler.
 
 Aşağıdaki diyagramda, çapraz bölge çoğaltma senaryolarında anlık görüntü trafiği gösterilmektedir: 
 
@@ -90,7 +90,7 @@ Azure NetApp Files anlık görüntü teknolojisi, yedeklemelerin sıklığını 
 
 ### <a name="restoring-files-or-directories-from-snapshots"></a>Anlık görüntülerden dosya veya dizinleri geri yükleme 
 
-[Anlık görüntü yolu görünürlüğü](azure-netapp-files-manage-snapshots.md#edit-the-hide-snapshot-path-option) gizli değilse, kullanıcılar anlık görüntülere yanlışlıkla silme, bozulmaları veya verilerinin değiştirilmesini kurtarmak üzere doğrudan erişebilir. Dosya ve dizinlerin güvenliği anlık görüntüde tutulur ve anlık görüntüler tasarım tarafından salt okunurdur. Bu nedenle, geri yükleme güvenli ve kolaydır. 
+[Anlık görüntü yolu görünürlüğü](azure-netapp-files-manage-snapshots.md#edit-the-hide-snapshot-path-option) olarak ayarlanmamışsa `hidden` , kullanıcılar, verilerin yanlışlıkla silinmesini, bozulmasını veya değiştirilmesini kurtarmak için anlık görüntülere doğrudan erişebilir. Dosya ve dizinlerin güvenliği anlık görüntüde tutulur ve anlık görüntüler tasarım tarafından salt okunurdur. Bu nedenle, geri yükleme güvenli ve kolaydır. 
 
 Aşağıdaki diyagramda bir anlık görüntüye dosya veya dizin erişimi gösterilmektedir: 
 
@@ -108,7 +108,7 @@ Anlık görüntülerden tek tek dosyaları veya dizinleri geri yükleme hakkınd
 
 ### <a name="restoring-cloning-a-snapshot-to-a-new-volume"></a>Bir anlık görüntüyü yeni bir birime geri yükleme (kopyalama)
 
-Azure NetApp Files anlık görüntüler ayrı, bağımsız bir birime geri yüklenebilir. Bu işlem, birim boyutundan ve tüketilen kapasiteden bağımsız olarak neredeyse yakın bir işlemdir. Yeni oluşturulan birim, gerçek birim ve anlık görüntü veri blokları üzerine kopyalanırken neredeyse hemen erişim için kullanılabilir. Birim boyutuna ve kapasiteye bağlı olarak, bu işlem üst birimin ve anlık görüntünün silinebileceği zaman alabilir. Ancak, birim ilk oluşturulduktan sonra zaten erişilebilir, ancak kopyalama işlemi arka planda devam ediyor. Bu özellik, test ve geliştirme için veri kurtarma veya birim kopyalama için hızlı birim oluşturmayı mümkün bir şekilde sunar. Veri kopyalama işleminin doğası gereği, geri yükleme tamamlandığında depolama kapasitesi havuzu tüketimi Double olur ve yeni birim orijinal anlık görüntünün tüm etkin kapasitesini gösterir. Bu işlem tamamlandıktan sonra, birim özgün birimle bağımsız olur ve kaynak birimler ve anlık görüntü, yeni birimden bağımsız olarak yönetilebilir veya kaldırılabilir.
+Azure NetApp Files anlık görüntülerini ayrı, bağımsız bir birime geri yükleyebilirsiniz. Bu işlem, birim boyutundan ve tüketilen kapasiteden bağımsız olarak neredeyse yakın bir işlemdir. Yeni oluşturulan birim, gerçek birim ve anlık görüntü veri blokları üzerine kopyalanırken neredeyse hemen erişim için kullanılabilir. Birim boyutuna ve kapasiteye bağlı olarak, bu işlem üst birimin ve anlık görüntünün silinebileceği zaman alabilir. Ancak, birim ilk oluşturulduktan sonra zaten erişilebilir, ancak kopyalama işlemi arka planda devam ediyor. Bu özellik, test ve geliştirme için veri kurtarma veya birim kopyalama için hızlı birim oluşturmayı mümkün bir şekilde sunar. Veri kopyalama işleminin doğası gereği, geri yükleme tamamlandığında depolama kapasitesi havuzu tüketimi Double olur ve yeni birim orijinal anlık görüntünün tüm etkin kapasitesini gösterir. Bu işlem tamamlandıktan sonra, birim özgün birimle bağımsız olur ve kaynak birimler ve anlık görüntü, yeni birimden bağımsız olarak yönetilebilir veya kaldırılabilir.
 
 Aşağıdaki diyagramda bir anlık görüntüyü geri yükleyerek (kopyalayarak) oluşturulan yeni bir birim gösterilmektedir:   
 
@@ -124,7 +124,7 @@ Bkz. toplu geri yükleme işlemleri hakkında [Yeni bir birime anlık görüntü
 
 ### <a name="restoring-reverting-a-snapshot-in-place"></a>Bir anlık görüntüyü yerinde geri yükleme (geri alma)
 
-Bazı durumlarda, yeni birim depolama kapasitesini tükettiğinden, bir anlık görüntüden yeni bir birim oluşturmak gerekmeyebilir veya uygun olmayabilir. Veri bozulmasını (örneğin, veritabanı bozukluklarının veya fidye saldırılarına karşı) hızla kurtarmak için birimin içinde bir anlık görüntüyü geri yüklemek daha uygun olabilir. Bu işlem, Azure NetApp Files anlık görüntü alma işlevselliği kullanılarak yapılabilir. Bu işlevsellik, belirli bir anlık görüntü alındığı sırada bir birimi hızlı bir şekilde bir duruma döndürmenizi sağlar. Çoğu durumda, bir birimin geri döndürülmesi, tek tek dosyaları bir anlık görüntüden etkin dosya sistemine geri yüklemeden çok daha hızlıdır, özellikle de büyük, çok TiB birimlerde. 
+Bazı durumlarda, yeni birim depolama kapasitesini tükettiğinden, bir anlık görüntüden yeni bir birim oluşturmak gerekmeyebilir veya uygun olmayabilir. Veri bozulmasını hızla kurtarmak için (örneğin, veritabanı bozulmaları veya fidye saldırılarına karşı), bir anlık görüntüyü birimin içinde geri yüklemek daha uygun olabilir. Bu işlem, Azure NetApp Files anlık görüntü alma işlevselliği kullanılarak yapılabilir. Bu işlevsellik, belirli bir anlık görüntü alındığı sırada bir birimi hızlı bir şekilde bir duruma döndürmenizi sağlar. Çoğu durumda, bir birimin geri döndürülmesi, tek tek dosyaları bir anlık görüntüden etkin dosya sistemine geri yüklemeden çok daha hızlıdır, özellikle de büyük, çok TiB birimlerde. 
 
 Bir birim anlık görüntüsünün geri döndürülmesi, en büyük birimler için bile neredeyse birkaç saniye sürer. Etkin birim meta verileri (*INode tablosu*), anlık görüntü oluşturma zamanından itibaren anlık görüntü meta verileriyle değiştirilmiştir, bu nedenle birimi o zaman belirli bir noktaya geri döndürülüyor. Dönüşün etkili olabilmesi için hiçbir veri bloğu kopyalanması gerekmez. Bu nedenle, bir anlık görüntüyü yeni bir birime geri yüklemeden daha verimli bir alandır. 
 
@@ -142,11 +142,11 @@ Bu özelliğin nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [an
 Anlık görüntüler, depolama kapasitesini kullanır. Bu nedenle, genellikle süresiz olarak tutulmazlar. Veri koruma, bekletme ve kurtarılabilirlik için, bir dizi anlık görüntü (zaman içinde çeşitli noktalarda oluşturulur), RPO, RTO ve bekletme SLA gereksinimlerine bağlı olarak belirli bir süre için genellikle çevrimiçi tutulur. Ancak, daha eski anlık görüntülerin depolama hizmetinde tutulması gerekmez ve alan boşaltmak için silinmesi gerekebilir. Herhangi bir zamanda yönetici tarafından herhangi bir anlık görüntü (oluşturma sırasında olması gerekmez) silinebilir. 
 
 > [!IMPORTANT]
-> Anlık görüntü silme işlemi geri alınamaz. 
+> Anlık görüntü silme işlemi geri alınamaz. Veri koruma ve bekletme amaçları için birimin çevrimdışı kopyalarını tutmanız gerekir. 
 
 Anlık görüntü silindiğinde, bu anlık görüntüden varolan veri bloklarına kadar olan tüm işaretçiler kaldırılır. Bir veri bloğunun kendisine işaret eden işaretçileri olmadığında (etkin birim veya birimdeki diğer anlık görüntülerle), veri bloğu ileride kullanılmak üzere birim boş alanına döndürülür. Bu nedenle, anlık görüntülerin kaldırılması genellikle bir birimde etkin birimden verileri silmekten daha fazla kapasite bırakır çünkü veri blokları genellikle önceden oluşturulmuş anlık görüntülerle yakalanır. 
 
-Aşağıdaki diyagramda bir birim için anlık görüntü silmenin depolama tüketimine etkisi gösterilmektedir:  
+Aşağıdaki diyagramda, bir birimden Snapshot 3 silme işleminin depolama tüketimine etkisi gösterilmektedir:  
 
 ![Anlık görüntü silmenin depolama tüketimi efektini gösteren diyagram](../media/azure-netapp-files/snapshot-delete-storage-consumption.png)
 

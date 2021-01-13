@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 71a83a8d119e5fd8c18b7b21abe4a0a07ba9c67a
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 30cc917e2db3a7c4c6d5d6ebd5a8a47afff5d505
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116560"
+ms.locfileid: "98133149"
 ---
 # <a name="synapse-access-control"></a>SYNAPSE Access Control 
 
@@ -30,7 +30,7 @@ SYNAPSE, aşağıdakileri tümleştiren kapsamlı ve ayrıntılı bir erişim de
 
 SYNAPSE rolleri, farklı kapsamlara uygulanabilen izinler kümesi sağlar. Bu ayrıntı düzeyi, kaynakları ve verileri hesaplamak için Yöneticiler, geliştiriciler, güvenlik personeli ve operatörlere uygun erişim vermeyi kolaylaştırır.
 
-Erişim denetimi, kişilerin iş rolleriyle hizalanmış güvenlik grupları kullanılarak basitleştirilebilir.  Erişimi yönetmek için yalnızca uygun güvenlik gruplarından Kullanıcı ekleyip kaldırmanız gerekir.
+Erişim denetimi, kişilerin iş rolleriyle hizalanmış güvenlik grupları kullanılarak basitleştirilebilir. Erişimi yönetmek için yalnızca uygun güvenlik gruplarından Kullanıcı ekleyip kaldırmanız gerekir.
 
 ## <a name="access-control-elements"></a>Erişim denetimi öğeleri
 
@@ -41,16 +41,16 @@ Azure rolleri şu yönetimi denetlemek için kullanılır:
 - Apache Spark havuzları ve 
 - Tümleştirme çalışma zamanları. 
 
-Bu kaynakları *oluşturmak* için kaynak grubunda bir Azure sahibi veya katkıda bulunan olması gerekir.  Bunları bir kez oluşturduktan sonra *yönetmek* için kaynak grubunda veya tek tek kaynaklarda bir Azure sahibi veya katkıda bulunan olması gerekir. 
+Bu kaynakları *oluşturmak* için kaynak grubunda bir Azure sahibi veya katkıda bulunan olması gerekir. Bunları bir kez oluşturduktan sonra *yönetmek* için kaynak grubunda veya tek tek kaynaklarda bir Azure sahibi veya katkıda bulunan olması gerekir. 
 
 ### <a name="developing-and-executing-code-in-synapse"></a>SYNAPSE 'de kod geliştirme ve yürütme 
 
 SYNAPSE iki geliştirme modelini destekler.
 
-- **SYNAPSE canlı geliştirme**.  SYNAPSE Studio 'da kod geliştirip hata ayıklayın ve ardından kaydetmek ve yürütmek üzere **yayımlayın** .  SYNAPSE hizmeti, kod düzenlemesi ve yürütülmesi için Truth kaynağıdır.  SYNAPSE Studio 'Yu kapattığınızda yayımdan kaldırılan tüm işler kaybolur.  
-- **Git etkin geliştirme**. SYNAPSE Studio 'da kod geliştirin ve hata ayıklayın ve değişiklikleri git deposunun çalışma dalına **işleyin** . Bir veya daha fazla daldan iş, hizmette **yayımladığınızda** bir işbirliği dalında tümleşiktir.  Git deposu, kod düzenlemesi için Truth kaynağıdır, ancak hizmet, yürütme için Truth kaynağıdır. Değişiklikler SYNAPSE Studio 'Yu kapatmadan önce git deposuna kaydedilmiş veya hizmette yayımlanacak olmalıdır. Git ile SYNAPSE Analytics kullanma hakkında [daha fazla bilgi edinin](../cicd/continuous-integration-deployment.md) .
+- **SYNAPSE canlı geliştirme**. SYNAPSE Studio 'da kod geliştirip hata ayıklayın ve ardından kaydetmek ve yürütmek üzere **yayımlayın** .  SYNAPSE hizmeti, kod düzenlemesi ve yürütülmesi için Truth kaynağıdır.  SYNAPSE Studio 'Yu kapattığınızda yayımdan kaldırılan tüm işler kaybolur.  
+- **Git etkin geliştirme**. SYNAPSE Studio 'da kod geliştirin ve hata ayıklayın ve değişiklikleri git deposunun çalışma dalına **işleyin** . Bir veya daha fazla daldan iş, hizmette **yayımladığınızda** bir işbirliği dalında tümleşiktir. Git deposu, kod düzenlemesi için Truth kaynağıdır, ancak hizmet, yürütme için Truth kaynağıdır. Değişiklikler SYNAPSE Studio 'Yu kapatmadan önce git deposuna kaydedilmiş veya hizmette yayımlanacak olmalıdır. Git ile SYNAPSE Analytics kullanma hakkında [daha fazla bilgi edinin](../cicd/continuous-integration-deployment.md) .
 
-Her iki geliştirme modelinde da, SYNAPSE Studio 'ya erişimi olan tüm kullanıcılar kod yapıtları oluşturabilir.  Ancak, hizmet için yapıtları yayımlamak, yayımlanan yapıtları okumak, git 'e yapılan değişiklikleri kaydetmek ve kimlik bilgileriyle korunan bağlantılı verilere erişmek için ek izinlere sahip olmanız gerekir.
+Her iki geliştirme modelinde da, SYNAPSE Studio 'ya erişimi olan tüm kullanıcılar kod yapıtları oluşturabilir. Ancak, hizmet için yapıtları yayımlamak, yayımlanan yapıtları okumak, git 'e yapılan değişiklikleri kaydetmek ve kimlik bilgileriyle korunan bağlantılı verilere erişmek için ek izinlere sahip olmanız gerekir.
 
 ### <a name="synapse-roles"></a>SYNAPSE rolleri
 
@@ -72,7 +72,7 @@ Git modunda git etkin geliştirme kullanırken, git izinleriniz, bağlantılı h
 
 Adanmış ve sunucusuz SQL havuzlarıyla çalışırken, veri düzlemi erişimi SQL izinleri kullanılarak denetlenir. 
 
-Çalışma alanının Oluşturucusu, çalışma alanında Active Directory yöneticisi olarak atanır.  Oluşturulduktan sonra, bu rol farklı bir kullanıcıya veya Azure portal bir güvenlik grubuna atanabilir.
+Çalışma alanının Oluşturucusu, çalışma alanında Active Directory yöneticisi olarak atanır. Oluşturulduktan sonra, bu rol farklı bir kullanıcıya veya Azure portal bir güvenlik grubuna atanabilir.
 
 **SUNUCUSUZ SQL havuzları**: SYNAPSE yöneticilerine `db_owner` `DBO` , ' YERLEŞIK ' sunucusuz SQL havuzunda izin verilir (). Diğer kullanıcılara sunucusuz SQL havuzlarının erişimini sağlamak için, SYNAPSE yöneticilerinin her bir sunucusuz havuzda SQL betikleri çalıştırması gerekir.  
 
@@ -82,7 +82,7 @@ SQL havuzlarında SQL izinleri vermek için SQL komut dosyaları örnekleri içi
 
  ### <a name="accessing-system-managed-data-in-storage"></a>Depolamadaki sistem tarafından yönetilen verilere erişme
 
-Sunucusuz SQL havuzları ve Apache Spark tabloları, verilerini, Kullanıcı tarafından yüklenen Apache Spark kitaplıkları aynı depolama hesabında da yönetilen bir ADLS 2. kapsayıcısında depolar.  Bu kullanım örneklerini etkinleştirmek için, kullanıcılara ve bu çalışma alanı MSI **Depolama Blobu veri katılımcısı** , depolama kapsayıcısı ADLS 2. bu çalışma alanına erişimine sahip olmalıdır.  
+Sunucusuz SQL havuzları ve Apache Spark tabloları, verilerini çalışma alanıyla ilişkili bir ADLS 2. kapsayıcısında depolar. Kullanıcı tarafından yüklenen Apache Spark kitaplıkları aynı depolama hesabında da yönetilir. Bu kullanım örneklerini etkinleştirmek için, kullanıcılara ve bu çalışma alanı MSI **Depolama Blobu veri katılımcısı** , depolama kapsayıcısı ADLS 2. bu çalışma alanına erişimine sahip olmalıdır.  
 
 ## <a name="using-security-groups-as-a-best-practice"></a>En iyi uygulama olarak güvenlik gruplarını kullanma
 
@@ -97,9 +97,9 @@ SYNAPSE Studio, izinleriniz ve geçerli moda göre farklı davranır:
 - **SYNAPSE canlı modu:** SYNAPSE Studio, yayımlanan içeriği görmenizi, içerik yayımlamayı veya gerekli izniniz yoksa başka eylemler yapılmasını engeller.  Bazı durumlarda, kullanamadığı veya kaydedebir kod yapıtları oluşturmanız engellenir. 
 - **Git modu:** Geçerli dalda değişiklikleri yürütmenizi sağlayan git izinleriniz varsa, canlı hizmette değişiklik yayımlama izniniz olmasa bile işleme eylemine izin verilir.  
 
-Bazı durumlarda, yayımlama veya işlemeye izin vermeden bile kod yapıtları oluşturma izni verilir.  Bu, kodu yürütmeniz (gerekli yürütme izinleriyle birlikte) sağlar. Ortak görevler için gereken roller hakkında [daha fazla bilgi edinin](./synapse-workspace-understand-what-role-you-need.md) . 
+Bazı durumlarda, yayımlama veya işlemeye izin vermeden bile kod yapıtları oluşturma izni verilir. Bu, kodu yürütmeniz (gerekli yürütme izinleriyle birlikte) sağlar. Ortak görevler için gereken roller hakkında [daha fazla bilgi edinin](./synapse-workspace-understand-what-role-you-need.md) . 
 
-SYNAPSE Studio 'da bir özellik devre dışıysa, bir araç ipucu gerekli izni gösterir.  Eksik izni sağlamak için hangi rolün gerekli olduğunu aramak için [SYNAPSE RBAC rolleri kılavuzunu](./synapse-workspace-synapse-rbac-roles.md#synapse-rbac-actions-and-the-roles-that-permit-them) kullanın.
+SYNAPSE Studio 'da bir özellik devre dışıysa, bir araç ipucu gerekli izni gösterir. Eksik izni sağlamak için hangi rolün gerekli olduğunu aramak için [SYNAPSE RBAC rolleri kılavuzunu](./synapse-workspace-synapse-rbac-roles.md#synapse-rbac-actions-and-the-roles-that-permit-them) kullanın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -3,12 +3,12 @@ title: Azure Relay SSS | Microsoft Docs
 description: Bu makalede Azure Relay hizmetiyle ilgili sık sorulan soruların bazılarına yanıtlar verilmektedir.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 9d967d926c6ab59e027fe4d4cf98e8418a8ff9bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77d3122942289654c0f651f9f648307123b23546
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89299295"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131857"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay SSS
 
@@ -50,7 +50,6 @@ Karma Bağlantılar için üç örnek faturalandırma senaryosu aşağıda veril
     *   Ayda 6 GB veri gönderebilirsiniz.
     *   Toplam ücretiniz $10,50 ' dir. Bu, bağlantı B + $0,50 için bir + $5 bağlantısı için $5 (B bağlantısı üzerindeki altıncı gigabayt için).
 
-Örneklerde kullanılan fiyatların yalnızca Karma Bağlantılar önizleme döneminde geçerli olduğunu unutmayın. Fiyatlar, Karma Bağlantılar genel kullanıma sunulmasıyla ilgili olarak değişebilir.
 
 ### <a name="how-are-hours-calculated-for-relay"></a>Geçiş için saatler nasıl hesaplanır?
 

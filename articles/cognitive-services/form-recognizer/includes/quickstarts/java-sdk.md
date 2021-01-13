@@ -10,19 +10,19 @@ ms.topic: include
 ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 6768f46f39920c975e7eccef72563fc0bb7e5180
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: 93552d203508fb893bd2e85d27a3a991fc539472
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808598"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132349"
 ---
 > [!IMPORTANT]
 > Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır.
 
 [Başvuru belgeleri](/java/api/overview/azure/ai-formrecognizer-readme?view=azure-java-preview)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src)  |  [Paket (Maven)](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * [Java Development Kit 'in (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html) geçerli sürümü
@@ -156,8 +156,8 @@ Form tanıyıcı ile iki farklı istemci türü oluşturabilirsiniz. Birincisi, 
 `FormRecognizerClient` için işlem sağlar:
 
 - Özel formlarınızı tanımak için eğitilen özel modeller kullanarak form alanlarını ve içeriği tanıyor.  Bu değerler bir nesne koleksiyonunda döndürülür `RecognizedForm` . Bkz. [özel formları çözümleme](#analyze-forms-with-a-custom-model).
-- Bir modeli eğitme gerekmeden tablolar, satırlar ve sözcükler dahil form içeriğini tanıma.  Form içeriği bir nesne koleksiyonunda döndürülür `FormPage` . Bkz. örnek [formu Içeriğini tanıma](#recognize-form-content).
-- Form tanıyıcı hizmetinde önceden eğitilen bir makbuz modeli kullanarak ABD makbuzlarından ortak alanları tanıma.  Bu alanlar ve meta veriler bir nesne koleksiyonunda döndürülür `RecognizedForm` . Bkz. örnek [tanıma alındıları](#recognize-receipts).
+- Bir modeli eğitme gerekmeden tablolar, satırlar ve sözcükler dahil form içeriğini tanıma.  Form içeriği bir nesne koleksiyonunda döndürülür `FormPage` . Bkz. örnek [Çözümleme düzeni](#analyze-layout).
+- Form tanıyıcı hizmetinde önceden eğitilen bir makbuz modeli kullanarak ABD makbuzlarından ortak alanları tanıma.  Bu alanlar ve meta veriler bir nesne koleksiyonunda döndürülür `RecognizedForm` . Bkz. örnekleri [analiz alındıları](#analyze-receipts).
 
 ### <a name="formtrainingclient"></a>Formtraıningclient
 
@@ -177,17 +177,17 @@ Bu kod parçacıkları, Java için form tanıyıcı istemci kitaplığı ile aş
 
 #### <a name="version-20"></a>[sürüm 2,0](#tab/ga)
 * [İstemcinin kimliğini doğrulama](#authenticate-the-client)
-* [Form içeriğini tanı](#recognize-form-content)
-* [Alındıları tanı](#recognize-receipts)
+* [Düzeni çözümle](#analyze-layout)
+* [Alındıları analiz etme](#analyze-receipts)
 * [Özel bir modeli eğitme](#train-a-custom-model)
 * [Formları özel bir model ile analiz etme](#analyze-forms-with-a-custom-model)
 * [Özel modellerinizi yönetin](#manage-your-custom-models)
 #### <a name="version-21-preview"></a>[sürüm 2,1 Önizleme](#tab/preview)
 * [İstemcinin kimliğini doğrulama](#authenticate-the-client)
-* [Form içeriğini tanı](#recognize-form-content)
-* [Alındıları tanı](#recognize-receipts)
-* [İş kartlarını tanıma](#recognize-business-cards)
-* [Faturaları tanıma](#recognize-invoices)
+* [Düzeni çözümle](#analyze-layout)
+* [Alındıları analiz etme](#analyze-receipts)
+* [İş kartlarını çözümle](#analyze-business-cards)
+* [Faturaları analiz etme](#analyze-invoices)
 * [Özel bir modeli eğitme](#train-a-custom-model)
 * [Formları özel bir model ile analiz etme](#analyze-forms-with-a-custom-model)
 * [Özel modellerinizi yönetin](#manage-your-custom-models)
@@ -200,7 +200,7 @@ Bu kod parçacıkları, Java için form tanıyıcı istemci kitaplığı ile aş
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_auth)]
 
-## <a name="recognize-form-content"></a>Form içeriğini tanı
+## <a name="analyze-layout"></a>Düzeni çözümle
 
 Bir modeli eğmenize gerek kalmadan belgeler içindeki tabloları, çizgileri ve sözcükleri tanımak için form tanıyıcıyı kullanabilirsiniz.
 
@@ -233,7 +233,7 @@ Cell has text $89,024.34.
 Cell has text ET.
 ```
 
-## <a name="recognize-receipts"></a>Alındıları tanı
+## <a name="analyze-receipts"></a>Alındıları analiz etme
 
 Bu bölümde, önceden eğitilen bir makbuz modeli kullanılarak ABD makbuzlarından ortak alanların nasıl tanınıp ayıklanacağı gösterilmektedir.
 
@@ -269,7 +269,7 @@ Quantity: null, confidence: 0.927s]
 Total Price: null, confidence: 0.93
 ```
 
-## <a name="recognize-business-cards"></a>İş kartlarını tanıma
+## <a name="analyze-business-cards"></a>İş kartlarını çözümle
 
 #### <a name="version-20"></a>[sürüm 2,0](#tab/ga)
 
@@ -293,7 +293,7 @@ Döndürülen değer, **Recognizedform** nesnelerinin bir koleksiyonudur: belged
 
 ---
 
-## <a name="recognize-invoices"></a>Faturaları tanıma
+## <a name="analyze-invoices"></a>Faturaları analiz etme
 
 #### <a name="version-20"></a>[sürüm 2,0](#tab/ga)
 

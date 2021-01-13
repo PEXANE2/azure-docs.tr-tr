@@ -7,12 +7,12 @@ ms.date: 01/07/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: dd05a4880bdf077f63dc58575828e6180e415260
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 52872175eb799785674c331ad4d687ff8ef427a4
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122598"
+ms.locfileid: "98134288"
 ---
 # <a name="how-to-use-commands-in-an-azure-iot-central-solution"></a>Azure IoT Central çözümünde komutları kullanma
 
@@ -219,10 +219,8 @@ Aşağıdaki ekran görüntüsünde, komutun tamamlandığını belirten özelli
 
 Bu bölümde, bir cihazın çevrimdışı bir komutu nasıl işlediği gösterilmektedir. Bir cihaz çevrimiçiyse, çevrimdışı komutu alındıkları anda işleyebilir. Bir cihaz çevrimdışı ise, bir sonraki IoT Central bağlandığı zaman çevrimdışı komutu işler. Cihazlar, bir çevrimdışı komuta yanıt olarak dönüş değeri gönderemez.
 
-Aşağıdaki kod parçacığı, bir cihazın nasıl çevrimdışı bir komut uygulayabileceğinizi göstermektedir:
-
 > [!NOTE]
-> Bu makale basitlik için Node.js kullanır. Diğer dil örnekleri için bkz. [Azure IoT Central uygulamanıza istemci uygulaması oluşturma ve bağlama](tutorial-connect-device.md) öğreticisine bakın.
+> Bu makale basitlik için Node.js kullanır.
 
 Aşağıdaki ekran görüntüsünde, **Generatediagnostics** adlı bir çevrimdışı komut gösterilmektedir. İstek parametresi, **StartTime** adlı bir DateTime özelliği ve **Bank** adlı bir tamsayı numaralandırma özelliği olan bir nesnedir:
 

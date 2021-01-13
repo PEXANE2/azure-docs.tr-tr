@@ -4,12 +4,12 @@ description: Özel bir Azure Kubernetes hizmeti (AKS) kümesi oluşturmayı öğ
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 696ba785abb317a29de38160440dc06487ff5bca
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 87966a9bd2f83916998a724fc6c1c26a91609665
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673894"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133404"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Özel bir Azure Kubernetes hizmet kümesi oluşturma
 
@@ -24,7 +24,7 @@ Denetim düzlemi veya API sunucusu, Azure Kubernetes hizmeti (AKS) tarafından y
 > [!NOTE]
 > Azure Kamu siteleri desteklenir, ancak eksik özel bağlantı desteği nedeniyle US Gov Teksas Şu anda desteklenmiyor.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure CLı sürüm 2.2.0 veya üzeri
 * Özel bağlantı hizmeti yalnızca standart Azure Load Balancer desteklenir. Temel Azure Load Balancer desteklenmez.  
@@ -68,17 +68,21 @@ az aks create \
 
 ### <a name="configure-private-dns-zone"></a>Özel DNS bölgeyi yapılandırma
 
---Private-DNS-Zone bağımsız değişkeni atlanırsa varsayılan değer "sistem" dir. AKS, düğüm kaynak grubunda bir Özel DNS bölgesi oluşturur. "None" parametresinin geçirilmesi, AKS 'in bir Özel DNS bölgesi oluşturmayacağı anlamına gelir.  Bu, kendi DNS sunucunuzu getir ve özel FQDN için DNS çözümlemesi yapılandırmanızı temel alır.  DNS çözümlemesini yapılandırmazsanız DNS yalnızca aracı düğümleri içinde çözülebilir ve dağıtımdan sonra küme sorunlarına neden olur.
+Özel DNS bölgeyi yapılandırmak için aşağıdaki parametreler yararlanılabilir olabilir.
+
+1. "Sistem" varsayılan değerdir. --Private-DNS-Zone bağımsız değişkeni atlanırsa, AKS, düğüm kaynak grubunda bir Özel DNS bölgesi oluşturur.
+2. "None", AKS 'in bir Özel DNS bölgesi oluşturmayacağı anlamına gelir.  Bu, kendi DNS sunucunuzu yapmanızı ve özel FQDN için DNS çözümlemesini yapılandırmanızı gerektirir.  DNS çözümlemesini yapılandırmazsanız DNS yalnızca aracı düğümleri içinde çözülebilir ve dağıtımdan sonra küme sorunlarına neden olur.
+3. "Özel özel DNS bölge adı" Azure genel bulutu için bu biçimde olmalıdır: `privatelink.<region>.azmk8s.io` . Kullanıcıya atanan kimlik veya hizmet sorumlusu, `private dns zone contributor` özel özel DNS bölgesine en az rol verilmelidir.
 
 ## <a name="no-private-dns-zone-prerequisites"></a>Özel DNS bölgesi önkoşulları yok
-PrivateDNSZone yok
-* Azure CLı sürüm 0.4.67 veya üzeri
+
+* Azure CLı sürüm 0.4.71 veya üzeri
 * API sürüm 2020-11-01 veya üzeri
 
 ## <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>Özel DNS bölgesi ile özel bir AKS kümesi oluşturma
 
 ```azurecli-interactive
-az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --private-dns-zone [none|system]
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --private-dns-zone [none|system|custom private dns zone]
 ```
 ## <a name="options-for-connecting-to-the-private-cluster"></a>Özel kümeye bağlanma seçenekleri
 

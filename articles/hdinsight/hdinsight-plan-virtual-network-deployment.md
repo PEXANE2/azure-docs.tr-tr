@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 05/04/2020
-ms.openlocfilehash: 2d6d18cc73c02d3139074555fdd22a40c797ce40
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.date: 01/12/2021
+ms.openlocfilehash: 429f0b2ffe486279a1c429fc7a153e6528642f54
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825137"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131670"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Azure HDInsight için bir sanal ağ planlayın
 
@@ -51,7 +51,8 @@ Aşağıda, HDInsight 'ı bir sanal ağa yüklemeye planlarken yanıtlamanız ge
 Mevcut bir Azure sanal ağına nasıl yeni HDInsight ekleneceğini saptamak için bu bölümdeki adımları kullanın.
 
 > [!NOTE]  
-> Mevcut bir HDInsight kümesini sanal bir ağa ekleyemezsiniz.
+> - Mevcut bir HDInsight kümesini sanal bir ağa ekleyemezsiniz.
+> - Oluşturulan VNET ve küme aynı abonelikte olmalıdır.
 
 1. Sanal ağ için klasik veya Kaynak Yöneticisi dağıtım modeli mi kullanıyorsunuz?
 

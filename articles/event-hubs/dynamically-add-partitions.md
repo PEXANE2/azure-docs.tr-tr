@@ -3,12 +3,12 @@ title: Azure Event Hubs bir olay hub 'ına dinamik olarak bölüm ekleme
 description: Bu makalede, Azure Event Hubs 'te bir olay hub 'ına dinamik olarak bölüm ekleme konusu gösterilmektedir.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 4a729147eaa11497c66f82a9764dfee9492786b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ebe4491338c24a331812041f4d3e6d37b934117
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87002548"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132180"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>Azure Event Hubs bir olay hub 'ına (Apache Kafka konuya) dinamik olarak bölüm ekleme
 Event Hubs her bir tüketicinin ileti akışında yalnızca belirli bir alt küme ya da bölümü okuduğu bölünmüş bir tüketici modeli aracılığıyla ileti akışı sağlar. Bu model, olay işleme için yatay ölçek sağlar ve kuyruklar ile konularda kullanılamayan diğer akış odaklı özellikleri sunar. Bölüm bir olay hub'ında tutulan olayların sıralı dizisidir. Daha yeni olaylar geldikçe, bu sıranın sonuna eklenir. Genel olarak bölümler hakkında daha fazla bilgi için bkz. [bölümler](event-hubs-scalability.md#partitions)
@@ -19,7 +19,7 @@ Bir olay hub 'ı oluşturma sırasında bölüm sayısını belirtebilirsiniz. B
 > Bölümlerin dinamik eklemeleri yalnızca **adanmış** Event Hubs kümelerinde kullanılabilir.
 
 > [!NOTE]
-> Apache Kafka istemcileri için, bir **Olay Hub** 'ı bir **Kafka konusuyla**eşlenir. Azure Event Hubs ve Apache Kafka arasında daha fazla eşleme için bkz. [Kafka and Event Hubs kavramsal eşleme](event-hubs-for-kafka-ecosystem-overview.md#kafka-and-event-hub-conceptual-mapping)
+> Apache Kafka istemcileri için, bir **Olay Hub** 'ı bir **Kafka konusuyla** eşlenir. Azure Event Hubs ve Apache Kafka arasında daha fazla eşleme için bkz. [Kafka and Event Hubs kavramsal eşleme](event-hubs-for-kafka-ecosystem-overview.md#kafka-and-event-hub-conceptual-mapping)
 
 
 ## <a name="update-the-partition-count"></a>Bölüm sayısını güncelleştirme
@@ -71,7 +71,7 @@ Event Hubs üç gönderici seçeneği sağlar:
 
 - **Bölüm gönderici** – Bu senaryoda, istemciler olayları doğrudan bir bölüme gönderir. Bölümler tanımlanabilir ve olayları doğrudan bunlara gönderilebilse de, bu kalıbı önermiyoruz. Bölüm ekleme bu senaryoyu etkilemez. Yeni eklenen bölümleri algılayabilmeleri için uygulamaları yeniden başlatmanızı öneririz. 
 - **Bölüm anahtarı gönderici** – Bu senaryoda istemciler, bu anahtara ait tüm olayların aynı bölümde sona erdirmek için olayları bir anahtarla gönderir. Bu durumda hizmet, anahtarı ve yönlendirmeleri ilgili bölüme karma hale getirir. Bölüm sayısı güncelleştirmesi, karma değişikliği nedeniyle sıra dışı sorunlara neden olabilir. Bu nedenle, sıralama konusunda dikkat etmeniz durumunda, bölüm sayısını artırmadan önce uygulamanızın mevcut bölümlerdeki tüm olayları tükettiğini doğrulayın.
-- Hepsini bir **kez deneme gönderici (varsayılan)** – Bu senaryoda, Event Hubs hizmeti, olayları bölümler arasında bir arada yer olarak bölümlere kapın. Event Hubs hizmeti bölüm sayısı değişikliklerinin farkındadır ve bölüm sayısını değiştiren Saniyeler içinde yeni bölümlere gönderilir.
+- Hepsini bir **kez deneme gönderici (varsayılan)** – Bu senaryoda, Event Hubs hizmeti, olayları bölümler arasında ve ayrıca bir yük dengeleme algoritması kullanır. Event Hubs hizmeti bölüm sayısı değişikliklerinin farkındadır ve bölüm sayısını değiştiren Saniyeler içinde yeni bölümlere gönderilir.
 
 ### <a name="receiverconsumer-clients"></a>Alıcı/tüketici istemcileri
 Event Hubs doğrudan alıcılar ve [olay Işlemcisi Konağı (eskı SDK)](event-hubs-event-processor-host.md)  veya [olay IŞLEMCISI (yeni SDK)](event-processor-balance-partition-load.md)olarak adlandırılan kolay bir tüketici kitaplığı sağlar.
@@ -99,7 +99,7 @@ Bir tüketici grubu üyesi bir meta veri yenilemesi gerçekleştirdiğinde ve ye
     > [!IMPORTANT]
     > Mevcut veriler sıralamayı korur, ancak bölümlerin eklenmesi nedeniyle bölüm sayısı değiştirildikten sonra karma iletiler için bölüm karma değeri bozulur.
 - Mevcut bir konuya veya Olay Hub örneğine bölüm eklemek aşağıdaki durumlarda önerilir:
-    - Olayların gönderilmesi için hepsini bir kez deneme (varsayılan) yöntemini kullandığınızda
+    - Olayları göndermek için varsayılan yöntemi kullandığınızda
      - Kafka varsayılan bölümleme stratejileri, örnek: yapışkan Atamaveya strateji
 
 

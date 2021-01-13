@@ -3,12 +3,12 @@ title: Azure Service Fabric 'de desteklenen küme sürümleri
 description: Service Fabric ekibi blogundan en yeni sürümlere bağlantı dahil olmak üzere Azure Service Fabric 'deki küme sürümleri hakkında bilgi edinin.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 5770aa072666f89a574da9d1f2584ab33b612330
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: abf9900e9749a1b21d927e0315076b38848bea10
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862176"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132656"
 ---
 # <a name="supported-service-fabric-versions"></a>Desteklenen Service Fabric sürümleri
 
@@ -25,25 +25,57 @@ Kümenizin desteklenen bir Service Fabric sürümünü çalıştırmasını sağ
 ## <a name="unsupported-versions"></a>Desteklenmeyen sürümler
 
 ### <a name="upgrade-alert-for-versions-between-57-and-below-6363"></a>5,7 ve altındaki sürümler için yükseltme uyarısı 6.3.63. *
+Güvenliği ve kullanılabilirliği artırmak için Azure altyapısı, Service Fabric müşterileri etkileyebilecek bir değişiklik yapar. **Tüm Service Fabric kümeler 5,7 ' den 6,3 ' e kadar desteklenmeyen sürümlerde. etkilendi**. Değişikliğin ele alındığı Service Fabric çalışma zamanına yönelik bir güncelleştirme gerekir. Bu, tüm bölgelerde desteklenen tüm Service Fabric sürümleri için zaten kullanılabilir.
 
-***5,7 ' den 6.3.63 ' e kadar desteklenmeyen sürümlerde bulunan tüm kümeler Service Fabric.* , Azure 'da 7 Ocak 2021 * * * tarihinde kullanıma sunulacaktır.
- 
- Önemli hizmet kesintilerinin önüne geçmek için (bir süre sonra gelen kümeler dahil), kümelerinizi, güvenlik sorunu düzeltmesini içeren Service Fabric çalışma zamanının aşağıdaki desteklenen sürümlerinden birine en kısa sürede yükseltmeniz gerekir. Etkilenen müşterilere rehberlik ile eriştik. Destek planınız varsa ve teknik yardıma ihtiyacınız varsa, lütfen bir destek isteği açarak ve destek bileti ' nde bu bağlamdan bahsedin [Azure destek kanalları](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) aracılığıyla bize ulaşın. 
- 
-  #### <a name="supported-service-fabric-runtime-versions-including-the-fix-for-the-security-breaking-change"></a>Güvenlik son değişikliği için düzeltme de dahil olmak üzere desteklenen Service Fabric çalışma zamanı sürümleri 
-   Güvenlik kırmasından etkilenen, desteklenmeyen eski sürümlerde çalışan Service Fabric kümelerinizi aşağıdaki desteklenen sürümden birine yükseltin.
+Bir destek planınız varsa ve teknik yardıma ihtiyacınız varsa, Azure Service Fabric için bir destek isteği açıp destek bileti ' nde bu bağlamdan bahsedin **,** Azure destek kanalları üzerinden bizimle iletişime geçin ve bunu yapmanız önerilir.
 
+#### <a name="impact-if-not-upgraded-to-supported-versions"></a>Desteklenen sürümlere yükseltilmeyen etki
+
+**5,7 ' den 6.3.63 ' e kadar desteklenmeyen sürümlerde çalışan Azure Service Fabric kümeleri. \*** , 19 Ocak 2021 tarafından desteklenen sürümlerden birine yükseltmediyse, bu duruma gelmeyecektir.
+
+#### <a name="required-action"></a>Gerekli eylem
+Bu değişiklik ile ilgili kapalı kalma süresini veya işlevsellik kaybını engellemek için aşağıda listelenen Service Fabric desteklenen sürümlere yükseltin. Ortamınızdaki sorunları engellemek için lütfen kümelerinizin en az bu sürümde çalıştığından emin olun.
+
+  ###### <a name="supported-service-fabric-runtime-versions"></a>Desteklenen Service Fabric çalışma zamanı sürümleri
+   Service Fabric aşağıda listelenen desteklenen sürümler üzerinde değilseniz, lütfen küme kesintilerine engel olmak için gerekli değişiklikleri içeren bu sürümlerden birine yükseltin.  
+  
   | İşletim Sistemi | Kümedeki geçerli Service Fabric çalışma zamanı | CU/Patch yayını  | 
   | --- | --- |--- | 
   | Windows | 7,0. * | 7.0.478.9590 |
   | Windows | 7,1. * | 7.1.503.9590 |
   | Windows | 7,2. * | 7.2.445.9590 |
   | Ubuntu 16 | 7,0. * | 7.0.472.1  |
-  | Ubuntu 16 | 7,1. * | 7.1.455.1  |
-  | Ubuntu 1804 | 7,1. * | 7.1.455.1804 |
-  | Ubuntu 16 | 7,2. * | 7.2.447.1 |
-  | Ubuntu 1804 | 7,2. * | 7.2.447.1804 |
+  | Linux Ubuntu 16,04 | 7,1. * | 7.1.455.1  |
+  | Linux Ubuntu 18,04 | 7,1. * | 7.1.455.1804 |
+  | Linux Ubuntu 16,04 | 7,2. * | 7.2.447.1 |
+  | Linux Ubuntu 18,04 | 7,2. * | 7.2.447.1804 |
  
+### <a name="upgrade-alert-for-versions-greater-than-63"></a>6,3 'den büyük sürümler için yükseltme uyarısı 
+Güvenliği ve kullanılabilirliği artırmak için Azure altyapısı, Service Fabric müşterileri etkileyebilecek bir değişiklik yapar. **[Kapsayıcılar Için açık ağ özelliğini](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode)kullanan tüm Service Fabric kümeleri, desteklenmeyen sürümlerde 6,3 'den büyük ve 7,0 ' den büyük ve 7,0 ve sonraki sürümlerde Desteklenen sürümlerin etkilenmesidir**. Değişikliğin ele alındığı Service Fabric çalışma zamanına yönelik bir güncelleştirme gerekir. Bu, tüm bölgelerde desteklenen tüm Service Fabric sürümleri için zaten kullanılabilir.
+
+ #### <a name="impact-if-not-upgraded-to-supported-versions"></a>Desteklenen sürümlere yükseltilmeyen etki
+  Kapsayıcılar için **[açık ağ özelliği özelliğini](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) kullanan** Azure Service Fabric kümeleri **, 6,3 Ocak 2021** tarafından desteklenen sürümlerden birine yükseltilmeyen işlevler veya hizmet kesintilerinin kaybolması ile karşılaşacaktır.
+ 
+  - **6,3 ' den büyük bir Service Fabric çalıştıran kümeler Için açık ağ ÖZELLIĞINI kullanmayın**, ancak kapsayıcı kümeleri Için açık ağ özelliği çalışır durumda kalır, ancak iş yükleriniz için hizmet kesintilerine neden olabilir.
+
+ - **6,3 ' den büyük Service Fabric bir sürümünü çalıştıran kümeler ve [kapsayıcılar Için açık ağ özelliğini](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) kullanmak için** , küme çalışır durumda kalır, ancak iş yükleriniz için hizmet kesintilerine neden olabilecek çalışmayı durduracaktır.
+  
+#### <a name="required-action"></a>Gerekli eylem
+Bu değişiklik ile ilgili kapalı kalma süresini veya işlevsellik kaybını engellemek için aşağıda listelenen Service Fabric desteklenen sürümlere yükseltin. Ortamınızdaki sorunları engellemek için lütfen kümelerinizin en az bu sürümde çalıştığından emin olun. 
+ 
+ ###### <a name="supported-service-fabric-runtime-versions"></a>Desteklenen Service Fabric çalışma zamanı sürümleri
+ Service Fabric aşağıda listelenen desteklenen sürümler üzerinde değilseniz, lütfen işlev kaybını engellemek için gerekli değişiklikleri içeren bu sürümlerden birine yükseltin.  
+ 
+  | İşletim Sistemi | Kümedeki geçerli Service Fabric çalışma zamanı | CU/Patch yayını  | 
+  | --- | --- |--- | 
+  | Windows | 7,0. * | 7.0.478.9590 |
+  | Windows | 7,1. * | 7.1.503.9590 |
+  | Windows | 7,2. * | 7.2.445.9590 |
+  | Linux Ubuntu 16,04 | 7,0. * | 7.0.472.1  |
+  | Linux Ubuntu 16,04 | 7,1. * | 7.1.455.1  |
+  | Linux Ubuntu 18,04 | 7,1. * | 7.1.455.1804 |
+  | Linux Ubuntu 16,04 | 7,2. * | 7.2.447.1 |
+  | Linux Ubuntu 18,04 | 7,2. * | 7.2.447.1804 |
 
 ## <a name="supported-versions"></a>Desteklenen sürümler
 Aşağıdaki tabloda Service Fabric sürümleri ve destek bitiş tarihleri listelenmektedir.

@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 94db8ce46fc240a6c48c0919b6d2c2cd148522ac
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6e3333ac780cfca02a6ce4f28d2b0e312016f713
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976059"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131517"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Genelleştirilmiş bir VHD'yi karşıya yükleme ve Azure’da yeni VM’ler oluştururken kullanma
 
@@ -38,13 +38,15 @@ Makinede çalışan sunucu rollerinin Sysprep tarafından desteklendiğinden emi
 > 
 
 1. Windows sanal makinesinde oturum açın.
-2. Yönetici olarak Komut İstemi penceresini açın. Dizini%windir%\system32\sysprep olarak değiştirip komutunu çalıştırın `sysprep.exe` .
-3. **Sistem Hazırlama Aracı** iletişim kutusunda, **sistem kutudan çıkar deneyimi (OOBE)** seçeneğini belirleyin ve **Genelleştir** onay kutusunun etkinleştirildiğinden emin olun.
-4. **Kapalı seçenekleri**Için, **kapanıyor**' ı seçin.
-5. **Tamam**’ı seçin.
+1. Yönetici olarak Komut İstemi penceresini açın. 
+1. Panther dizinini (C:\Windows\Panther) silin.
+1. Dizini%windir%\system32\sysprep olarak değiştirip komutunu çalıştırın `sysprep.exe` .
+1. **Sistem Hazırlama Aracı** iletişim kutusunda, **sistem kutudan çıkar deneyimi (OOBE)** seçeneğini belirleyin ve **Genelleştir** onay kutusunun etkinleştirildiğinden emin olun.
+1. **Kapalı seçenekleri** Için, **kapanıyor**' ı seçin.
+1. **Tamam**’ı seçin.
    
     ![Sysprep 'ı Başlat](./media/upload-generalized-managed/sysprepgeneral.png)
-6. Sysprep tamamlandığında, sanal makineyi kapatır. VM'yi yeniden başlatmayın.
+1. Sysprep tamamlandığında, sanal makineyi kapatır. VM'yi yeniden başlatmayın.
 
 
 ## <a name="upload-the-vhd"></a>VHD 'YI karşıya yükleme 
@@ -93,7 +95,7 @@ $image = New-AzImage `
 
 ## <a name="create-the-vm"></a>Sanal makineyi oluşturma
 
-Artık bir görüntünüz olduğuna göre, görüntüden bir veya daha fazla yeni VM oluşturabilirsiniz. Bu örnek *Myresourcegroup*Içindeki *myvm* adlı bir *myImage*VM oluşturur.
+Artık bir görüntünüz olduğuna göre, görüntüden bir veya daha fazla yeni VM oluşturabilirsiniz. Bu örnek *Myresourcegroup* Içindeki *myvm* adlı bir VM oluşturur.
 
 
 ```powershell

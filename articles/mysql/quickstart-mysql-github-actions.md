@@ -7,16 +7,16 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 6e3dbb968d0dff8d8227518fe53d257bfc1fae4b
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: f62ca85bd4e027595103b738c23c9997a05cc85c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607975"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132826"
 ---
 # <a name="quickstart-use-github-actions-to-connect-to-azure-mysql"></a>Hızlı başlangıç: Azure MySQL 'e bağlanmak için GitHub eylemlerini kullanma
 
-**Uygulama hedefi**: :::image type="icon" source="./media/applies-to/yes.png" border="false"::: PostgreSQL için Azure veritabanı-tek sunuculu :::image type="icon" source="./media/applies-to/yes.png" border="false"::: PostgreSQL Için Azure veritabanı-esnek sunucu
+**Uygulama hedefi**: :::image type="icon" source="./media/applies-to/yes.png" border="false"::: MySQL için Azure veritabanı-tek sunucu :::image type="icon" source="./media/applies-to/yes.png" border="false"::: MySQL Için Azure veritabanı-esnek sunucu
 
 [MySQL Için Azure veritabanı](https://azure.microsoft.com/services/mysql/)'na veritabanı güncelleştirmelerini dağıtmak üzere bir iş akışı kullanarak [GitHub eylemleri](https://docs.github.com/en/free-pro-team@latest/actions) ile çalışmaya başlayın.
 

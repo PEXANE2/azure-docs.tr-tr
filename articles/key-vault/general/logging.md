@@ -10,21 +10,21 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d900659f3ca8a8688c1b1d3a66cd888f37521fc6
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 5fcb3226eebf39ab18fb3bb24f0521a0523748d4
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883393"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134186"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault günlüğü
 
 Bir veya daha fazla Anahtar Kasası oluşturduktan sonra muhtemelen anahtar kasalarınızın nasıl ve ne zaman erişildiğini ve kim tarafından yapılacağını izlemek isteyeceksiniz. Bu, bilgileri, sağladığınız bir Azure depolama hesabına kaydeden Azure Key Vault için günlüğe kaydetmeyi etkinleştirerek yapabilirsiniz. Bunu ayarlamaya yönelik adım adım yönergeler için bkz. [Key Vault günlüğü etkinleştirme](howto-logging.md).
 
-Kayıt bilgilerinizi 10 dakika (en çok) Anahtar Kasası işleminden sonra erişebilirsiniz. Çoğu durumda, bundan daha hızlı olacaktır.  Depolama hesabınızdaki günlüklerinizi yönetmek size bağlıdır:
+Kayıt bilgilerinizi 10 dakika (en çok) Anahtar Kasası işleminden sonra erişebilirsiniz. Çoğu durumda, bundan daha hızlı olacaktır.  Depolama hesabınızdaki günlükleri istediğiniz şekilde yönetebilirsiniz:
 
 * Günlüklere kimlerin erişebileceğini kısıtlayarak günlüklerinizi güvenli hale getirmek için depolama hesabınızda standart Azure erişim denetimi yöntemlerini kullanın.
-* Artık depolama hesabınızda tutmak istemediğiniz günlükleri silin.
+* Depolama hesabınızda tutmak istemediğiniz günlükleri silebilirsiniz.
 
 Key Vault hakkında genel bilgi için bkz. [Azure Key Vault nedir?](overview.md). Key Vault nerede kullanılabildiği hakkında daha fazla bilgi için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/key-vault/)bakın. [Key Vault Için Azure izleyici](../../azure-monitor/insights/key-vault-insights-overview.md)kullanma hakkında bilgi için.
 
@@ -182,6 +182,7 @@ Aşağıdaki tabloda, **OperationName** değerleri ve karşılık gelen REST API
 | **CertificatePendingDelete** |Bekleyen sertifikayı Sil |
 | **CertificateNearExpiryEventGridNotification** |Süre sonu olayı yayımlanan sertifika |
 | **CertificateExpiredEventGridNotification** |Sertifikanın zaman aşımına uğradığı olay yayımlandı |
+
 ---
 
 ## <a name="use-azure-monitor-logs"></a>Azure İzleyici günlüklerini kullanma

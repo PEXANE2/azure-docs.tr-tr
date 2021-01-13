@@ -3,12 +3,12 @@ title: Kaynak adlandırma kısıtlamaları
 description: Azure kaynaklarını adlandırmayla ilgili kuralları ve kısıtlamaları gösterir.
 ms.topic: conceptual
 ms.date: 12/29/2020
-ms.openlocfilehash: edcf3f09b57ed7628611c482effddb210ef8e456
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 59babd9298fdca96b450b2dc67832c86c043c49c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814389"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132758"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure kaynaklarına yönelik adlandırma kuralları ve kısıtlamaları
 
@@ -83,7 +83,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | kaynaktaki | atama kapsamı | 1-90 | Alfasayısal, nokta, alt çizgi, kısa çizgi ve parantez.<br><br>Süre içinde bitemez. |
-> | Poliyasatamaları | atama kapsamı | 1-128 görünen adı<br><br>1-64 kaynak adı | Görünen ad herhangi bir karakter içerebilir.<br><br>Kaynak adı `%` , nokta veya boşluk içeremez ve bitemez. |
+> | Poliyasatamaları | atama kapsamı | 1-128 görünen adı<br><br>1-64 kaynak adı<br><br>Yönetim grubu kapsamındaki 1-24 kaynak adı | Görünen ad herhangi bir karakter içerebilir.<br><br>Kaynak adı `%` , nokta veya boşluk içeremez ve bitemez. |
 > | policyDefinitions | Tanım kapsamı | 1-128 görünen adı<br><br>1-64 kaynak adı | Görünen ad herhangi bir karakter içerebilir.<br><br>Kaynak adı `%` , nokta veya boşluk içeremez ve bitemez. |
 > | policySetDefinitions | Tanım kapsamı | 1-128 görünen adı<br><br>1-64 kaynak adı<br><br>Yönetim grubu kapsamındaki 1-24 kaynak adı | Görünen ad herhangi bir karakter içerebilir.<br><br>Kaynak adı `%` , nokta veya boşluk içeremez ve bitemez.  |
 
@@ -655,7 +655,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | storageAccounts/managementPolicies | depolama hesabı |  | Olmalıdır `default` . |
 > | blob | kapsayıcı | 1-1024 | Herhangi bir URL karakteri, büyük/küçük harfe duyarlı |
 > | kuyruk | depolama hesabı | 3-63 | Küçük harfler, rakamlar ve kısa çizgiler.<br><br>Kısa çizgi ile başlayamaz veya bitemez. Ardışık tireler kullanılamaz. |
-> | table | depolama hesabı | 3-63 | Alfasayısal karakterler.<br><br>Mektup ile başlayın. |
+> | tablo | depolama hesabı | 3-63 | Alfasayısal karakterler.<br><br>Mektup ile başlayın. |
 
 ## <a name="microsoftstoragesync"></a>Microsoft. Storagessync
 

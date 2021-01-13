@@ -3,21 +3,21 @@ title: Tanılama günlüklerini ayarlama-Azure Olay Hub 'ı | Microsoft Docs
 description: Azure 'da Olay Hub 'ları için etkinlik günlüklerini ve tanılama günlüklerini ayarlamayı öğrenin.
 ms.topic: article
 ms.date: 10/27/2020
-ms.openlocfilehash: a7230746dc4225b04b0507c872416368aa14442b
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 015814b9a56ec963f5209f971f096ac6c173d7e1
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912608"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131993"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Azure olay hub'ı için tanılama günlüklerini ayarlama
 
 Azure Event Hubs için iki tür günlük görüntüleyebilirsiniz:
 
-* **[Etkinlik günlükleri](../azure-monitor/platform/platform-logs-overview.md)** : Bu günlüklerde, bir işte yapılan işlemlerle ilgili bilgiler vardır. Günlükler her zaman etkindir. Azure portal olay hub 'ı ad alanınız için sol bölmedeki **etkinlik günlüğü** ' ni seçerek etkinlik günlüğü girdilerini görebilirsiniz. Örneğin: "ad alanı oluştur veya güncelleştir", "Olay Hub 'ı oluştur veya güncelleştir".
+* **[Etkinlik günlükleri](../azure-monitor/platform/platform-logs-overview.md)**: Bu günlüklerde, bir işte yapılan işlemlerle ilgili bilgiler vardır. Günlükler her zaman etkindir. Azure portal olay hub 'ı ad alanınız için sol bölmedeki **etkinlik günlüğü** ' ni seçerek etkinlik günlüğü girdilerini görebilirsiniz. Örneğin: "ad alanı oluştur veya güncelleştir", "Olay Hub 'ı oluştur veya güncelleştir".
 
     ![Event Hubs ad alanı için etkinlik günlüğü](./media/event-hubs-diagnostic-logs/activity-log.png)
-* **[Tanılama günlükleri](../azure-monitor/platform/platform-logs-overview.md)** : Tanılama GÜNLÜKLERI, API kullanarak veya dil SDK 'sindeki yönetim istemcileri aracılığıyla ad alanı üzerinde yürütülen işlemler ve eylemler hakkında daha zengin bilgiler sağlar. 
+* **[Tanılama günlükleri](../azure-monitor/platform/platform-logs-overview.md)**: Tanılama GÜNLÜKLERI, API kullanarak veya dil SDK 'sindeki yönetim istemcileri aracılığıyla ad alanı üzerinde yürütülen işlemler ve eylemler hakkında daha zengin bilgiler sağlar. 
     
     Aşağıdaki bölümde bir Event Hubs ad alanı için tanılama günlüklerinin nasıl etkinleştirileceği gösterilmektedir.
 
@@ -25,7 +25,7 @@ Azure Event Hubs için iki tür günlük görüntüleyebilirsiniz:
 Tanılama günlükleri varsayılan olarak devre dışıdır. Tanılama günlüklerini etkinleştirmek için şu adımları izleyin:
 
 1.  [Azure Portal](https://portal.azure.com), Event Hubs ad alanına gidin. 
-2. Sol bölmede **izleme** altında **Tanılama ayarları** ' nı seçin ve **+ Tanılama ayarı Ekle** ' yi seçin. 
+2. Sol bölmede **izleme** altında **Tanılama ayarları** ' nı seçin ve **+ Tanılama ayarı Ekle**' yi seçin. 
 
     ![Tanılama ayarları sayfası-tanılama ayarı Ekle](./media/event-hubs-diagnostic-logs/diagnostic-settings-page.png)
 4. **Kategori ayrıntıları** bölümünde, etkinleştirmek istediğiniz **tanılama günlüğü türlerini** seçin. Bu kategorilerin ilerleyen kısımlarında bu kategorilerin ayrıntılarını bulabilirsiniz. 
@@ -70,7 +70,7 @@ Ad | Açıklama
 `archiveStep` | olası değerler: ArchiveFlushWriter, DestinationInit
 `startTime` | Hata başlangıç zamanı
 `failures` | Hatanın oluşma sayısı
-`durationInSeconds` | Başarısızlık süresi
+`durationInSeconds` | Hata süresi
 `message` | Hata iletisi
 `category` | ArchiveLogs
 
@@ -100,12 +100,12 @@ Aşağıdaki kod arşiv günlüğü JSON dizesinin bir örneğidir:
 Ad | Açıklama
 ------- | -------
 `ActivityId` | İzleme amacıyla kullanılan iç KIMLIK |
-`EventName` | İşlem adı |
+`EventName` | İşlem adı. Bu öğenin değerlerinin listesi için bkz. [olay adları](#event-names) |
 `resourceId` | Azure Resource Manager kaynak KIMLIĞI |
 `SubscriptionId` | Abonelik Kimliği |
 `EventTimeString` | İşlem süresi |
-`EventProperties` | İşlem özellikleri |
-`Status` | İşlem durumu |
+`EventProperties` |İşlemin özellikleri. Bu öğe, aşağıdaki örnekte gösterildiği gibi olay hakkında daha fazla bilgi sağlar. |
+`Status` | İşlem durumu. Değer **başarılı** ya da **başarısız** olabilir.  |
 `Caller` | İşlem (Azure portal veya yönetim istemcisi) çağıranı |
 `Category` | OperationalLogs |
 
@@ -125,6 +125,13 @@ Example:
    "category": "OperationalLogs"
 }
 ```
+
+### <a name="event-names"></a>Olay adları
+Olay adı, aşağıdaki Numaralandırmalardan işlem türü + kaynak türü olarak doldurulur. Örneğin,, `Create Queue` `Retrieve Event Hu` veya `Delete Rule` . 
+
+| İşlem türü | Kaynak türü | 
+| -------------- | ------------- | 
+| <ul><li>Oluştur</li><li>Güncelleştir</li><li>Sil</li><li>Almanın</li><li>Bilinmiyor</li></ul> | <ul><li>Ad Alanı</li><li>Kuyruk</li><li>Konu</li><li>Abonelik</li><li>EventHub</li><li>EventHubSubscription</li><li>NotificationHub</li><li>NotificationHubTier</li><li>SharedAccessPolicy</li><li>Usagecredıt</li><li>NamespacePnsCredentials</li>Kural</li>ConsumerGroup</li> |
 
 ## <a name="autoscale-logs-schema"></a>Otomatik ölçeklendirme günlüğü şeması
 Otomatik ölçeklendirme günlüğü JSON, aşağıdaki tabloda listelenen öğeleri içerir:
@@ -195,7 +202,7 @@ Event Hubs sanal ağ (VNet) bağlantı olayı JSON aşağıdaki tabloda listelen
 | `SubscriptionId` | Azure abonelik KIMLIĞI |
 | `NamespaceName` | Ad alanı adı |
 | `IPAddress` | Event Hubs hizmetine bağlanan bir istemcinin IP adresi |
-| `Action` | Bağlantı istekleri değerlendirilirken Event Hubs hizmeti tarafından gerçekleştirilen eylem. Desteklenen eylemler **bağlantı kabul eder** ve **bağlantıyı reddedebilir** . |
+| `Action` | Bağlantı istekleri değerlendirilirken Event Hubs hizmeti tarafından gerçekleştirilen eylem. Desteklenen eylemler **bağlantı kabul eder** ve **bağlantıyı reddedebilir**. |
 | `Reason` | Eylemin neden yapıldığını bir neden sağlar |
 | `Count` | Verilen eylem için oluşum sayısı |
 | `ResourceId` | Azure Resource Manager kaynak KIMLIĞI. |

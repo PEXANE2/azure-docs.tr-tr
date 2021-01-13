@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f39380e253d3fa9e86bfea3a8c436862738ff8e3
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 213b973bfc93cb2237473b6bc4c7f1e138457409
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359940"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131908"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Azure VM 'lerinde SQL Server her zaman kullanılabilirlik grubu
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -62,7 +62,7 @@ Başlamak için bkz. [Yük dengeleyiciyi yapılandırma](availability-group-vnn-
 
 ### <a name="dnn-listener"></a>DNN dinleyicisi
 
-SQL Server 2019 CU8, dağıtılmış ağ adı (DNN) dinleyicisi için destek sunar. DNN dinleyicisi, Azure ağındaki trafiği yönlendirmek için bir Azure yüksek dengeleyici gereksinimini ortadan kaldıran geleneksel kullanılabilirlik grubu dinleyicisinin yerini alır. 
+SQL Server 2019 CU8, dağıtılmış ağ adı (DNN) dinleyicisi için destek sunar. DNN dinleyicisi, Azure ağındaki trafiği yönlendirmek için bir Azure Load Balancer gereksinimini ortadan kaldıran geleneksel kullanılabilirlik grubu dinleyicisinin yerini alır. 
 
 DNN dinleyicisi, dağıtımı basitleşerek Azure 'da önerilen HADR bağlantı çözümüdür, bakım ve maliyeti azaltır ve hata durumunda yük devretme süresini azaltır. 
 
@@ -80,19 +80,19 @@ Aşağıdaki tabloda kullanılabilir seçeneklerin karşılaştırması verilmi�
 | | Azure portal | Azure CLı/PowerShell | Hızlı başlangıç şablonları | El ile |
 |---------|---------|---------|---------|---------|
 |**SQL Server sürümü** |2016 + |2016 +|2016 +|2012 +|
-|**SQL Server yayını** |Enterprise |Enterprise |Enterprise |Kurumsal, standart|
+|**SQL Server yayını** |Kurumsal |Kurumsal |Kurumsal |Kurumsal, standart|
 |**Windows Server sürümü**| 2016 + | 2016 + | 2016 + | Tümü|
-|**Sizin için kümeyi oluşturur**|Evet|Evet | Evet |Hayır|
-|**Sizin için kullanılabilirlik grubunu oluşturur** |Evet |Hayır|Hayır|Hayır|
-|**Bağımsız olarak dinleyici ve yük dengeleyici oluşturur** |Hayır|Hayır|Hayır|Evet|
-|**Bu yöntem kullanılarak DNN dinleyicisi oluşturulabilir mi?**|Hayır|Hayır|Hayır|Evet|
+|**Sizin için kümeyi oluşturur**|Yes|Yes | Yes |Hayır|
+|**Sizin için kullanılabilirlik grubunu oluşturur** |Yes |Hayır|Hayır|Hayır|
+|**Bağımsız olarak dinleyici ve yük dengeleyici oluşturur** |Hayır|Hayır|Hayır|Yes|
+|**Bu yöntem kullanılarak DNN dinleyicisi oluşturulabilir mi?**|Hayır|Hayır|Hayır|Yes|
 |**WSFC çekirdek yapılandırması**|Bulut tanığı|Bulut tanığı|Bulut tanığı|Tümü|
-|**Birden çok bölgeye sahip DR** |Hayır|Hayır|Hayır|Evet|
-|**Multisubnet desteği** |Evet|Evet|Evet|Evet|
-|**Mevcut bir AD için destek**|Evet|Evet|Evet|Evet|
-|**Aynı bölgede multizone ile DR**|Evet|Evet|Evet|Evet|
-|**AD olmadan dağıtılmış AG**|Hayır|Hayır|Hayır|Evet|
-|**Küme olmadan dağıtılmış AG** |Hayır|Hayır|Hayır|Evet|
+|**Birden çok bölgeye sahip DR** |Hayır|Hayır|Hayır|Yes|
+|**Multisubnet desteği** |Yes|Yes|Yes|Yes|
+|**Mevcut bir AD için destek**|Yes|Yes|Yes|Yes|
+|**Aynı bölgede multizone ile DR**|Yes|Yes|Yes|Yes|
+|**AD olmadan dağıtılmış AG**|Hayır|Hayır|Hayır|Yes|
+|**Küme olmadan dağıtılmış AG** |Hayır|Hayır|Hayır|Yes|
 
 Daha fazla bilgi için bkz. [Azure Portal](availability-group-azure-portal-configure.md), [Azure CLI/PowerShell](./availability-group-az-commandline-configure.md), [hızlı başlangıç şablonları](availability-group-quickstart-template-configure.md)ve [el ile](availability-group-manually-configure-prerequisites-tutorial.md).
 

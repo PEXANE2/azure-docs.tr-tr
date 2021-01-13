@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 8c9beaca0fb3ee7881559ffcc955f171bc2ddd7b
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 7eb8010853ba370f4502b6bc155c6a098e64965b
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886456"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133455"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Denemeleri içinde veri kümelerini sürüm ve izleme
 
@@ -166,9 +166,7 @@ Aşağıda, verilerinizin **giriş veri kümesi** olarak izlendiği senaryolar v
 Aşağıda, verilerinizin **Çıkış veri kümesi** olarak izlendiği senaryolar verilmiştir.  
 
 * `OutputFileDatasetConfig` `outputs` Deneme çalıştırması gönderirken bir nesneyi veya parametresi aracılığıyla geçirin `arguments` . `OutputFileDatasetConfig` nesneler, ardışık düzen adımları arasında veri kalıcı hale getirmek için de kullanılabilir. Bkz [. ml ardışık düzen adımları arasında verileri taşıma.](how-to-move-data-in-out-of-pipelines.md)
-    > [!TIP]
-    > [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) , herhangi bir zamanda değişebilir, [deneysel](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=truestable-vs-experimental) Önizleme özelliklerini içeren genel bir önizleme sınıfıdır.
-
+  
 * Betiğe bir veri kümesi kaydettirin. Bu senaryo için, çalışma alanına kaydettiğinizde veri kümesine atanan ad, görüntülenecek addır. Aşağıdaki örnekte, `training_ds` görüntülenecek addır.
 
     ```Python

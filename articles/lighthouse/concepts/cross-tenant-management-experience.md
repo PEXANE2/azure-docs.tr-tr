@@ -1,14 +1,14 @@
 ---
 title: Kiracılar arası yönetim deneyimleri
 description: Azure Temsilcili kaynak yönetimi, bir çapraz kiracı yönetim deneyimi sunar.
-ms.date: 12/16/2020
+ms.date: 01/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: b789f241fba4b77223272f81d1a69c8fcb050008
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: a550655b8076a1e3946ff015239715ddf0712236
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127167"
+ms.locfileid: "98131772"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
@@ -97,7 +97,7 @@ Birçok görev ve hizmet, yönetilen kiracılar genelinde Temsilcili kaynaklar �
 
 - Tüm aboneliklerdeki uyarıları görüntüleme ve yenileme özelliği sayesinde, temsilci olan abonelikler için uyarıları görüntüleme
 - Temsilcili abonelikler için etkinlik günlüğü ayrıntılarını görüntüleme
-- Log Analytics: birden çok Kiracıdaki uzak çalışma alanlarından verileri sorgulama
+- Log Analytics: birden çok Kiracıdaki uzak çalışma alanlarından verileri sorgulama (müşteri kiracılarındaki çalışma alanlarından veriye erişmek için kullanılan Otomasyon hesaplarının aynı kiracıda oluşturulması gerektiğini unutmayın)
 - Azure Otomasyonu runbook 'ları veya Azure Işlevleri gibi Otomasyonu tetikleyen müşteri kiracılarında, Web kancaları aracılığıyla kiracıyı yönetme bölümünde uyarı oluşturma
 - Yönetim kiracısındaki çalışma alanlarına kaynak günlükleri göndermek için müşteri kiracılarında [Tanılama ayarları](../..//azure-monitor/platform/diagnostic-settings.md) oluşturma
 - SAP iş yükleri için, [Müşteri kiracılar genelinde toplu bir görünüm Ile SAP Çözümleri ölçümlerini izleyin](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)

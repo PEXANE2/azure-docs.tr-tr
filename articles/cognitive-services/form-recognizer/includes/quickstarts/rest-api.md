@@ -9,17 +9,17 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: a677623c030ff26567f14a4526f6d07bc6631a37
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 31e1a0d912c6623f57d4ea256968102604ce42ff
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97853715"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132350"
 ---
 > [!NOTE]
 > Bu kılavuz REST API çağrılarını yürütmek için kıvrımlı kullanır. GitHub 'da REST API 'Lerinin nasıl çağrılacağını gösteren [örnek kod](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/FormRecognizer/rest) de vardır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [kıvrımlı](https://curl.haxx.se/windows/) yüklendi.
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
@@ -32,7 +32,7 @@ ms.locfileid: "97853715"
 * Bir faturanın görüntüsünün URL 'SI. Bu hızlı başlangıç için bir [örnek belge](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/forms/Invoice_1.pdf) kullanabilirsiniz.
 
 
-## <a name="recognize-form-content"></a>Form içeriğini tanı
+## <a name="analyze-layout"></a>Düzeni çözümle
 
 Bir modeli eğmenize gerek kalmadan, belgelerdeki tabloları, çizgileri ve sözcükleri tanımak ve ayıklamak için form tanıyıcı kullanabilirsiniz. Komutu çalıştırmadan önce Şu değişiklikleri yapın:
 
@@ -319,7 +319,7 @@ Aşağıdaki fatura görüntüsüne ve buna karşılık gelen JSON çıktısına
 
 ---
 
-## <a name="recognize-receipts"></a>Alındıları tanı
+## <a name="analyze-receipts"></a>Alındıları analiz etme
 
 Bir alındısı analizine başlamak için aşağıdaki kıvrımlı komutunu kullanarak, **[analiz alma](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeReceiptAsync)** API 'sini çağırın. Komutu çalıştırmadan önce Şu değişiklikleri yapın:
 
@@ -699,7 +699,7 @@ Aşağıdaki makbuz görüntüsüne ve buna karşılık gelen JSON çıktısına
 }
 ```
 
-## <a name="recognize-business-cards"></a>İş kartlarını tanıma
+## <a name="analyze-business-cards"></a>İş kartlarını çözümle
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)  
 
@@ -861,7 +861,7 @@ Betiği, **Iş kartını çözümle** işlemi tamamlanana kadar konsola gönderi
 
 ---
 
-## <a name="recognize-invoices"></a>Faturaları tanıma
+## <a name="analyze-invoices"></a>Faturaları analiz etme
 
 # <a name="version-20"></a>[sürüm 2,0](#tab/v2-0)
 

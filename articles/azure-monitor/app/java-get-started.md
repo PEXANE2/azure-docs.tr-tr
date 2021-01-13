@@ -6,12 +6,12 @@ ms.date: 11/22/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 6bdad71f0b36995abdeb3b1edb87cbef32df8b67
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 115e1ec347cdcd80904b47a0c8798206360d0dad
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96919423"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131789"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Hızlı Başlangıç: Java web projesinde Application Insights'ı kullanmaya başlama
 
@@ -23,7 +23,7 @@ Bu hızlı başlangıçta, isteği işaretlemek, bağımlılıkları izlemek ve 
 
 Application Insights, web geliştiricileri için canlı uygulamanızın performansını ve kullanımını anlamanıza yardımcı olan genişletilebilir bir analiz hizmetidir. Application Insights; Linux, Unix veya Windows üzerinde çalışan Java uygulamalarını destekler.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 * Çalışan bir Java uygulaması.
@@ -56,7 +56,7 @@ Daha sonra, proje bağımlılıklarını ikili dosyaları indirmek için yeniley
         <artifactId>applicationinsights-web-auto</artifactId>
         <!-- or applicationinsights-web for manual web filter registration -->
         <!-- or applicationinsights-core for bare API -->
-        <version>2.5.0</version>
+        <version>2.6.2</version>
       </dependency>
     </dependencies>
 ```
@@ -69,15 +69,11 @@ Daha sonra, proje bağımlılıklarını ikili dosyaları indirmek için yeniley
 
 ```gradle
     dependencies {
-      compile group: 'com.microsoft.azure', name: 'applicationinsights-web-auto', version: '2.5.0'
+      compile group: 'com.microsoft.azure', name: 'applicationinsights-web-auto', version: '2.6.2'
       // or applicationinsights-web for manual web filter registration
       // or applicationinsights-core for bare API
     }
 ```
-
-# <a name="other-types"></a>[Diğer türler](#tab/other)
-
-[En son sürümü](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) indirin ve önceki sürümleri değiştirerek gerekli dosyaları projenize kopyalayın.
 
 ---
 
@@ -88,10 +84,7 @@ Daha sonra, proje bağımlılıklarını ikili dosyaları indirmek için yeniley
   * `applicationinsights-core` , örneğin, uygulamanız servlet tabanlı değilse yalnızca tam API 'yi sağlar.
   
 * *SDK’yı en son sürüme nasıl güncelleştirmeliyim?*
-  * Gradle veya Maven kullanıyorsanız...
-    * En son sürümü belirtmek için derleme dosyanızı güncelleştirin.
-  * Bağımlılıkları el ile yönetiyorsanız...
-    * En son [Java için Application Insights SDK’si](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)’ni indirin ve eskilerle değiştirin. Değişiklikler [SDK sürüm notlarında](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) açıklanmıştır.
+  * 2020 Kasım itibariyle, Java uygulamalarını izlemek için Azure Izleyici Application Insights Java 3,0 Aracısı 'nı kullanarak otomatik izleme önerilir. Kullanmaya başlama hakkında daha fazla bilgi için bkz. [Application Insights Java 3,0 Aracısı](./java-in-process-agent.md).
 
 ## <a name="add-an-applicationinsightsxml-file"></a>*ApplicationInsights.xml* dosyası Ekle
 Projenizdeki Resources klasörüne *ApplicationInsights.xml* ekleyin veya projenizin dağıtım sınıfı yoluna eklendiğinden emin olun. Aşağıdaki XML dosyasını buraya kopyalayın.
@@ -168,10 +161,6 @@ HTTP isteklerine ilişkin veriler genel bakış dikey penceresinde görüntülen
 Daha ayrıntılı derlenmiş ölçümler görmek için herhangi bir grafiğe tıklayın.
 
 ![Grafiklerle Application Insights başarısızlık bölmesi](./media/java-get-started/006-barcharts.png)
-
-<!--
-[TODO update image with 2.5.0 operation naming provided by agent]
--->
 
 ### <a name="instance-data"></a>Örnek veriler
 Ayrı ayrı örnekleri görmek için belirli bir istek türüne tıklayın.

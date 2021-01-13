@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/05/2020
-ms.openlocfilehash: cfb83c4ec9972fda3813d414583bc73edeef3229
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.date: 01/12/2021
+ms.openlocfilehash: ff83e559919a836208faae4eae4a5f992534b6cb
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285979"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134169"
 ---
 # <a name="apache-ambari-usage-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache ambarı kullanımı
 
@@ -65,6 +65,15 @@ Küme oluştururken, çalışan düğüm sayısı 16 ' dan büyük herhangi bir 
 Bir sorunu geçici olarak çözmek için hizmeti yeniden başlatmaya çalışmadığınız müddetçe, ambarı-sunucu veya ambarı-Aracısı hizmetlerini hiçbir şekilde el ile başlatmayın/durdurmayın. Yük devretmeyi zorlamak için etkin yayın düğümünü yeniden başlatabilirsiniz.
 
 Herhangi bir küme düğümünde herhangi bir yapılandırma dosyasını hiçbir şekilde el ile değiştirmeyin, bu iş için ambarı Kullanıcı arabirimine izin verin.
+
+## <a name="property-values-in-esp-clusters"></a>ESP kümelerindeki özellik değerleri
+
+HDInsight 4,0 Kurumsal Güvenlik Paketi kümelerinde, `|` değişken sınırlayıcıları olarak virgüller yerine kanallar kullanın. Aşağıda bir örnek gösterilmiştir:
+
+```
+Property Key: hive.security.authorization.sqlstd.confwhitelist.append
+Property Value: environment|env|dl_data_dt
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

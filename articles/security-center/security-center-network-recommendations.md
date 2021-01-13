@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: 28d0d7b14c18a1d98be1872b1555930b2e1650c3
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 366a9a63e4577a9b8470faec68f8d4a25114dd48
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342459"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133710"
 ---
 # <a name="protect-your-network-resources"></a>Ağ kaynaklarınızı koruyun
 Azure Güvenlik Merkezi, ağ güvenliği en iyi uygulamaları için Azure kaynaklarınızın güvenlik durumunu sürekli olarak analiz eder. Güvenlik Merkezi olası güvenlik açıklarını belirlediğinde, kaynaklarınızı korumak ve korumak için gerekli denetimleri yapılandırma sürecinde size kılavuzluk eden öneriler oluşturur.
 
-Ağ önerilerinin tam listesi için bkz. [ağ önerileri](recommendations-reference.md#recs-network).
+Ağ önerilerinin tam listesi için bkz. [ağ önerileri](recommendations-reference.md#recs-networking).
 
 Bu makalede bir ağ güvenliği perspektifinden Azure kaynaklarınıza uygulanan öneriler ele alınmaktadır. Sonraki nesil güvenlik duvarları, ağ güvenlik grupları, JıT VM erişimi, aşırı izin veren gelen trafik kuralları ve daha fazlası etrafında ağ önerisi merkezi. Ağ önerileri ve düzeltme eylemlerinin bir listesi için bkz. [Azure Güvenlik Merkezi 'nde güvenlik önerilerini yönetme](security-center-recommendations.md).
 
@@ -48,7 +48,7 @@ Ağ haritasını açmak için:
 
 1. Güvenlik Merkezi 'nin menüsünde, Azure Defender panosunu açın ve **Ağ Haritası**' nı seçin.
 
-    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="Varlık envanteri ağ kaynağı türleri" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
+    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="Azure Defender panosundan ağ haritasını açma" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
 
 1. **Katmanlar** menüsünü seçin **topoloji**' yi seçin.
  

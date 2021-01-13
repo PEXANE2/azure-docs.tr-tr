@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: 08bcb74fd50be0eeb7a73c0743db2c4f3a57be32
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: dfa562be4561e8aaec66d4bff51aadeba77cf35f
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030858"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131347"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Kubernetes iş yüklerinizi koruma
 
@@ -27,7 +27,7 @@ Güvenlik Merkezi, Azure Defender 'ı etkinleştirirseniz daha fazla kapsayıcı
 - [Kubernetes Için Azure Defender](defender-for-kubernetes-introduction.md) K8s kümeleriniz için gerçek zamanlı tehdit algılama uyarıları alın
 
 > [!TIP]
-> Kubernetes kümeleri ve düğümleri için görünebilen *Tüm* güvenlik önerilerinin listesi için, öneriler başvuru tablosunun [kapsayıcı bölümüne](recommendations-reference.md#recs-containers) bakın.
+> Kubernetes kümeleri ve düğümleri için görünebilen *Tüm* güvenlik önerilerinin listesi için, öneriler başvuru tablosunun [işlem bölümüne](recommendations-reference.md#recs-compute) bakın.
 
 
 
@@ -102,7 +102,7 @@ Azure Güvenlik Merkezi, **Kubernetes Için Azure ilke eklentisini** yüklediği
     1. "ASC default" öğesini seçin.
     1. **Parametreler** sekmesini açın ve değerleri gerektiği gibi değiştirin.
     1. **Gözden geçir + kaydet**' i seçin.
-    1. **Kaydet**'i seçin.
+    1. **Kaydet**’i seçin.
 
 
 1. Önerilerden herhangi birini zorlamak için, 
@@ -251,6 +251,6 @@ Bu makalede, Kubernetes iş yükü korumasını nasıl yapılandıracağınızı
 
 Diğer ilgili malzemeler için aşağıdaki sayfalara bakın: 
 
-- [Kapsayıcılar için Güvenlik Merkezi önerileri](recommendations-reference.md#recs-containers)
+- [İşlem için Güvenlik Merkezi önerileri](recommendations-reference.md#recs-compute)
 - [AKS kümesi düzeyi için uyarılar](alerts-reference.md#alerts-akscluster)
 - [Kapsayıcı ana bilgisayar düzeyi uyarıları](alerts-reference.md#alerts-containerhost)

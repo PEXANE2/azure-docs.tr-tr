@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: d064eb0b748c361b76139b1a21d25cec8996e818
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 6db0c82c034aab97deee1be4aa8bdc54368521bc
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734785"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131534"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Azure Otomasyonu 'nda değişkenleri yönetme
 
@@ -26,7 +26,7 @@ Otomasyon değişkenleri aşağıdaki senaryolar için yararlıdır:
 
 Azure Otomasyonu değişkenleri sürdürür ve bir runbook ya da DSC yapılandırması başarısız olsa bile bunları kullanılabilir hale getirir. Bu davranış, bir runbook veya DSC yapılandırmasının, daha sonra başka bir runbook tarafından veya bir sonraki çalıştırılışında aynı runbook veya DSC yapılandırması tarafından kullanılan bir değer ayarlamasına olanak tanır.
 
-Azure Otomasyonu, her şifreli değişkeni güvenli bir şekilde depolar. Bir değişken oluşturduğunuzda, Azure Otomasyonu tarafından güvenli bir varlık olarak şifrelemeyi ve depolamayı belirtebilirsiniz. Değişkeni oluşturduktan sonra, değişkeni yeniden oluşturmadan şifreleme durumunu değiştiremezsiniz. Önceden şifrelenmeyen hassas verileri depolayan Otomasyon hesabı değişkenleri varsa, bunları silmeniz ve şifrelenmiş değişkenler olarak yeniden oluşturmanız gerekir. Azure Güvenlik Merkezi 'nin önerisi, [Otomasyon hesabı değişkenlerinde](../../security-center/recommendations-reference.md#recs-computeapp)açıklandığı şekilde tüm Azure Otomasyonu değişkenlerini şifreleyebilmelidir. Bu güvenlik önerilerinden hariç tutmak istediğiniz şifrelenmemiş değişkenlere sahipseniz, bkz. muafiyet kuralı oluşturmak için [öneriler ve güvenli puandan bir kaynağı muaf](../../security-center/exempt-resource.md) tutma.
+Azure Otomasyonu, her şifreli değişkeni güvenli bir şekilde depolar. Bir değişken oluşturduğunuzda, Azure Otomasyonu tarafından güvenli bir varlık olarak şifrelemeyi ve depolamayı belirtebilirsiniz. Değişkeni oluşturduktan sonra, değişkeni yeniden oluşturmadan şifreleme durumunu değiştiremezsiniz. Önceden şifrelenmeyen hassas verileri depolayan Otomasyon hesabı değişkenleri varsa, bunları silmeniz ve şifrelenmiş değişkenler olarak yeniden oluşturmanız gerekir. Azure Güvenlik Merkezi 'nin önerisi, [Otomasyon hesabı değişkenlerinde](../../security-center/recommendations-reference.md#recs-compute)açıklandığı şekilde tüm Azure Otomasyonu değişkenlerini şifreleyebilmelidir. Bu güvenlik önerilerinden hariç tutmak istediğiniz şifrelenmemiş değişkenlere sahipseniz, bkz. muafiyet kuralı oluşturmak için [öneriler ve güvenli puandan bir kaynağı muaf](../../security-center/exempt-resource.md) tutma.
 
 >[!NOTE]
 >Azure Otomasyonu 'nda güvenli varlıklar, kimlik bilgileri, sertifikalar, bağlantılar ve şifrelenmiş değişkenler içerir. Bu varlıklar, her Otomasyon hesabı için oluşturulan benzersiz bir anahtar kullanılarak Azure Otomasyonu 'nda şifrelenir ve depolanır. Azure Otomasyonu, anahtarı sistem tarafından yönetilen Key Vault depolar. Otomasyon, güvenli bir varlık depolamadan önce anahtarı Key Vault 'den yükler ve ardından varlığı şifrelemek için kullanır.
@@ -65,7 +65,7 @@ Aşağıdaki tablodaki cmdlet 'ler, PowerShell ile otomasyon değişkenleri olu�
 
 Aşağıdaki tablodaki iç cmdlet 'ler, runbook 'larınızda ve DSC yapılandırmalarında değişkenlere erişmek için kullanılır. Bu cmdlet 'ler genel modülle birlikte gelir `Orchestrator.AssetManagement.Cmdlets` . Daha fazla bilgi için bkz. [iç cmdlet 'ler](modules.md#internal-cmdlets).
 
-| İç cmdlet | Açıklama |
+| İç cmdlet | Description |
 |:---|:---|
 |`Get-AutomationVariable`|Mevcut bir değişkenin değerini alır.|
 |`Set-AutomationVariable`|Mevcut bir değişken için değeri ayarlar.|
@@ -84,7 +84,7 @@ Write-output "The encrypted value of the variable is: $mytestencryptvar"
 
 Aşağıdaki tablodaki işlevler, Python 2 ve 3 runbook 'ta değişkenlere erişmek için kullanılır. Python 3 runbook 'ları Şu anda önizleme aşamasındadır.
 
-|Python Işlevleri|Açıklama|
+|Python Işlevleri|Description|
 |:---|:---|
 |`automationassets.get_automation_variable`|Mevcut bir değişkenin değerini alır. |
 |`automationassets.set_automation_variable`|Mevcut bir değişken için değeri ayarlar. |

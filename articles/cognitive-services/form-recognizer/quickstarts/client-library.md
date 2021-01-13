@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: form tanıyıcı istemci kitaplığı'
+title: 'Hızlı başlangıç: form tanıyıcı istemci kitaplığı veya REST API'
 titleSuffix: Azure Cognitive Services
-description: Özel belgelerinizden anahtar/değer çiftlerini ve tablo verilerini çıkaran bir form işleme uygulaması oluşturmak için, form tanıyıcı istemci Kitaplığı ' nı kullanın.
+description: Özel belgelerinizden anahtar/değer çiftlerini ve tablo verilerini çıkaran bir form işleme uygulaması oluşturmak için, bir form tanıyıcı istemci kitaplığı veya REST API kullanın.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -13,23 +13,23 @@ ms.author: pafarley
 zone_pivot_groups: programming-languages-set-formre
 ms.custom: devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 keywords: Form işleme, otomatik veri işleme
-ms.openlocfilehash: d099feff76d74f358a7d7958fb10406a5b8dc188
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: c915e7753487eba284d89dbb480f9848e90c1ef1
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98029041"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132292"
 ---
-# <a name="quickstart-use-the-form-recognizer-client-library"></a>Hızlı başlangıç: form tanıyıcı istemci kitaplığını kullanma
+# <a name="quickstart-use-the-form-recognizer-client-library-or-rest-api"></a>Hızlı başlangıç: form tanıyıcı istemci kitaplığı veya REST API kullanın
 
-Seçtiğiniz dili kullanarak form tanıyıcısı ile çalışmaya başlayın. Azure form tanıyıcı, makine öğrenimi teknolojisini kullanarak otomatik veri işleme yazılımı oluşturmanıza imkan tanıyan bir bilişsel hizmettir. Formdan metin, anahtar/değer çiftleri ve tablo verilerini belirleyip ayıklayın &mdash; . hizmet, özgün dosyadaki ilişkileri içeren yapılandırılmış verileri çıktı olarak verir. SDK paketini yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. Form tanıyıcı istemci kitaplığı şu anda form tanıyıcı hizmeti 'nin v 2.0 'ı hedefliyor.
+Seçtiğiniz dili kullanarak form tanıyıcısı ile çalışmaya başlayın. Azure form tanıyıcı, makine öğrenimi teknolojisini kullanarak otomatik veri işleme yazılımı oluşturmanıza imkan tanıyan bir bilişsel hizmettir. Form belgelerinizden metin, anahtar/değer çiftleri, seçim işaretleri, tablo verileri ve daha fazlasını tanımlayıp ayıklayın &mdash; . hizmet, özgün dosyadaki ilişkileri içeren yapılandırılmış verileri çıktı olarak verir. Form tanıyıcıyı REST API veya SDK aracılığıyla kullanabilirsiniz. SDK paketini yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. 
 
-Form tanıyıcı istemci kitaplığını kullanarak şunları yapın:
+Form tanıyıcısını şu şekilde kullanın:
 
-* [Form içeriğini tanı](#recognize-form-content)
-* [Alındıları tanı](#recognize-receipts)
-* [İş kartlarını tanıma](#recognize-business-cards)
-* [Faturaları tanıma](#recognize-invoices)
+* [Düzeni çözümle](#analyze-layout)
+* [Alındıları analiz etme](#analyze-receipts)
+* [İş kartlarını çözümle](#analyze-business-cards)
+* [Faturaları analiz etme](#analyze-invoices)
 * [Özel bir modeli eğitme](#train-a-custom-model)
 * [Formları özel bir model ile analiz etme](#analyze-forms-with-a-custom-model)
 * [Özel modellerinizi yönetin](#manage-your-custom-models)

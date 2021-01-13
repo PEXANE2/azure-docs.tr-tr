@@ -3,15 +3,15 @@ title: Azure Relay Azure özel bağlantı hizmeti ile tümleştirme
 description: Azure Relay Azure özel bağlantı hizmeti ile tümleştirme hakkında bilgi edinin
 ms.date: 09/24/2020
 ms.topic: article
-ms.openlocfilehash: 10d82fe8e272ed18dcc339830dfef0f71d4b2ddb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13644082160704ba9918e6bd6257fa314bb463a6
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263878"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134390"
 ---
-# <a name="integrate-azure-relay-with-azure-private-link-preview"></a>Azure Relay Azure özel bağlantısıyla tümleştirin (Önizleme)
-Azure **özel bağlantı hizmeti** , Azure hizmetlerine (örneğin, Azure Relay, Azure Service Bus, Azure Event Hubs, Azure depolama ve Azure Cosmos DB) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki özel bir uç nokta üzerinden erişmenizi sağlar. Daha fazla bilgi için bkz. [Azure özel bağlantısı (Önizleme) nedir?](../private-link/private-link-overview.md)
+# <a name="integrate-azure-relay-with-azure-private-link"></a>Azure Relay Azure özel bağlantısıyla tümleştirin 
+Azure **özel bağlantı hizmeti** , Azure hizmetlerine (örneğin, Azure Relay, Azure Service Bus, Azure Event Hubs, Azure depolama ve Azure Cosmos DB) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki özel bir uç nokta üzerinden erişmenizi sağlar. Daha fazla bilgi için bkz. [Azure özel bağlantısı nedir?](../private-link/private-link-overview.md)
 
 **Özel uç nokta** , bir sanal ağda çalışan iş yüklerinizin **özel bir bağlantı kaynağına** (örneğin, bir geçiş ad alanı) sahip olan bir hizmete özel ve güvenli bir şekilde bağlanmasına olanak tanıyan bir ağ arabirimidir. Özel uç nokta, sanal ağınızdan bir özel IP adresi kullanarak hizmeti sanal ağınıza etkin bir şekilde getiriyor. Hizmete giden tüm trafik özel uç nokta aracılığıyla yönlendirilebilir, bu nedenle ağ geçitleri, NAT cihazları, ExpressRoute, VPN bağlantıları veya genel IP adresleri gerekmez. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden, genel Internet 'ten etkilenme olasılığını ortadan kaldırır. Belirli Azure Relay ad alanlarına bağlantılara izin vererek, erişim denetiminde ayrıntı düzeyi düzeyi sağlayabilirsiniz. 
 
@@ -19,7 +19,7 @@ Azure **özel bağlantı hizmeti** , Azure hizmetlerine (örneğin, Azure Relay,
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Azure portal kullanarak özel uç nokta ekleme
 
 ### <a name="prerequisites"></a>Ön koşullar
-Bir Azure Relay ad alanını Azure özel bağlantısı (Önizleme) ile bütünleştirmek için aşağıdaki varlıklara veya izinlere ihtiyacınız olacaktır:
+Bir Azure Relay ad alanını Azure özel bağlantısıyla bütünleştirmek için aşağıdaki varlıklara veya izinlere ihtiyacınız olacaktır:
 
 - Bir Azure Relay ad alanı.
 - Bir Azure sanal ağı.
@@ -36,8 +36,8 @@ Bir Azure Relay ad alanını Azure özel bağlantısı (Önizleme) ile bütünle
 1. [Azure portalında](https://portal.azure.com) oturum açın. 
 2. Arama çubuğuna **geçişler**' i yazın.
 3. Listeden özel uç nokta eklemek istediğiniz **ad alanını** seçin.
-4. **Ayarlar**altında **ağ** sekmesini seçin.
-5. Sayfanın üst kısmındaki **Özel uç nokta bağlantıları (Önizleme)** sekmesini seçin
+4. **Ayarlar** altında **ağ** sekmesini seçin.
+5. Sayfanın üst kısmındaki **Özel uç nokta bağlantıları** sekmesini seçin
 6. Sayfanın üst kısmındaki **+ Özel uç nokta** düğmesini seçin.
 
     ![Özel uç nokta Ekle düğmesi](./media/private-link-service/add-private-endpoint-button.png)
@@ -52,25 +52,25 @@ Bir Azure Relay ad alanını Azure özel bağlantısı (Önizleme) ile bütünle
 8. **Kaynak** sayfasında, aşağıdaki adımları izleyin:
     1. Bağlantı yöntemi için **dizinimde bir Azure kaynağına bağlan**' ı seçerseniz, ad alanına sahip veya katkıda bulunan erişimi vardır ve bu ad alanı özel uç noktayla aynı dizinde yer alıyorsa, şu adımları izleyin: 
         1. **Azure Relay ad alanının** bulunduğu **Azure aboneliğini** seçin. 
-        2. **Kaynak türü**Için, **kaynak türü**için **Microsoft. Relay/namespaces** ' i seçin.
-        3. **Kaynak**için, açılan listeden bir geçiş ad alanı seçin. 
-        4. **Hedef alt kaynağın** **ad alanı**olarak ayarlandığını onaylayın.
+        2. **Kaynak türü** Için, **kaynak türü** için **Microsoft. Relay/namespaces** ' i seçin.
+        3. **Kaynak** için, açılan listeden bir geçiş ad alanı seçin. 
+        4. **Hedef alt kaynağın** **ad alanı** olarak ayarlandığını onaylayın.
         5. Sayfanın alt kısmındaki **İleri: yapılandırma >** düğmesini seçin. 
         
             ![Özel uç nokta oluşturma-kaynak sayfası](./media/private-link-service/create-private-endpoint-resource-page.png)    
     2. Ad alanı özel uç noktayla aynı dizinde olmadığından, **kaynak kimliğiyle veya diğer adla Azure kaynağına bağlan** ' ı seçerseniz, aşağıdaki adımları izleyin:
-        1. **Kaynak kimliğini** veya **diğer adı**girin. Bu, birinin sizinle paylaştığı kaynak KIMLIĞI veya diğer ad olabilir. Kaynak KIMLIĞINI almanın en kolay yolu, Azure portal Azure Relay ad alanına gitmeniz ve URI 'nin ' den başlayarak olan kısmını kopyalamadır `/subscriptions/` . Örnek aşağıda verilmiştir: `/subscriptions/000000000-0000-0000-0000-000000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Relay/namespaces/myrelaynamespace.` 
-        2. **Hedef alt kaynak**için **ad alanı**girin. Bu, Özel uç noktanızın erişebileceği alt kaynağın türüdür.
-        3. seçim **İstek iletisi**girin. Kaynak sahibi, Özel uç nokta bağlantısını yönetirken bu iletiyi görür.
+        1. **Kaynak kimliğini** veya **diğer adı** girin. Bu, birinin sizinle paylaştığı kaynak KIMLIĞI veya diğer ad olabilir. Kaynak KIMLIĞINI almanın en kolay yolu, Azure portal Azure Relay ad alanına gitmeniz ve URI 'nin ' den başlayarak olan kısmını kopyalamadır `/subscriptions/` . Örnek aşağıda verilmiştir: `/subscriptions/000000000-0000-0000-0000-000000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Relay/namespaces/myrelaynamespace.` 
+        2. **Hedef alt kaynak** için **ad alanı** girin. Bu, Özel uç noktanızın erişebileceği alt kaynağın türüdür.
+        3. seçim **İstek iletisi** girin. Kaynak sahibi, Özel uç nokta bağlantısını yönetirken bu iletiyi görür.
         4. Ardından sayfanın alt kısmındaki **İleri: yapılandırma >** düğmesini seçin.
 
             ![Özel uç nokta oluşturma-kaynak KIMLIĞI kullanarak bağlanma](./media/private-link-service/connect-resource-id.png)
 9. **Yapılandırma** sayfasında, bir sanal ağda özel uç noktayı dağıtmak istediğiniz alt ağı seçersiniz. 
-    1. Bir **sanal ağ**seçin. Yalnızca şu anda seçili olan abonelikte ve konumda bulunan sanal ağlar açılan listede listelenir. 
+    1. Bir **sanal ağ** seçin. Yalnızca şu anda seçili olan abonelikte ve konumda bulunan sanal ağlar açılan listede listelenir. 
     2. Seçtiğiniz sanal ağda bir **alt ağ** seçin. 
     3. Özel uç noktanızı özel bir DNS bölgesiyle bütünleştirmek istiyorsanız **özel DNS bölgesi Ile tümleştirmeyi** etkinleştirin. 
     
-        Özel uç noktanıza özel olarak bağlanmak için bir DNS kaydına ihtiyacınız vardır. Özel uç noktanızı **Özel BIR DNS bölgesiyle**tümleştirmenizi öneririz. Ayrıca, kendi DNS sunucularınızı kullanabilir veya sanal makinelerinizdeki konak dosyalarını kullanarak DNS kayıtları oluşturabilirsiniz. Daha fazla bilgi için bkz. [Azure özel uç nokta DNS yapılandırması](../private-link/private-endpoint-dns.md). Bu örnekte, **özel DNS bölgesiyle tümleştirin** seçeneği seçilidir ve sizin için özel bir DNS bölgesi oluşturulur. 
+        Özel uç noktanıza özel olarak bağlanmak için bir DNS kaydına ihtiyacınız vardır. Özel uç noktanızı **Özel BIR DNS bölgesiyle** tümleştirmenizi öneririz. Ayrıca, kendi DNS sunucularınızı kullanabilir veya sanal makinelerinizdeki konak dosyalarını kullanarak DNS kayıtları oluşturabilirsiniz. Daha fazla bilgi için bkz. [Azure özel uç nokta DNS yapılandırması](../private-link/private-endpoint-dns.md). Bu örnekte, **özel DNS bölgesiyle tümleştirin** seçeneği seçilidir ve sizin için özel bir DNS bölgesi oluşturulur. 
     3. Sayfanın alt kısmındaki **İleri: etiketler >** düğmesini seçin. 
 
         ![Özel uç nokta oluşturma-yapılandırma sayfası](./media/private-link-service/create-private-endpoint-configuration-page.png)
@@ -78,10 +78,10 @@ Bir Azure Relay ad alanını Azure özel bağlantısı (Önizleme) ile bütünle
 11. **Gözden geçir + oluştur**' da, tüm ayarları gözden geçirin ve **Oluştur** ' u seçerek özel uç noktasını oluşturun.
     
     ![Özel uç nokta oluşturma-sayfa Inceleme ve oluşturma](./media/private-link-service/create-private-endpoint-review-create-page.png)
-12. **Özel uç nokta** sayfasında, Özel uç nokta bağlantısının durumunu görebilirsiniz. Geçiş ad alanının sahibiyseniz veya bağlantıyı Yönet ' e sahipseniz ve **bağlantı yöntemi**için **Dizinimde bir Azure kaynağına bağlan** seçeneğini belirlediyseniz, uç nokta bağlantısının **otomatik olarak onaylanması**gerekir. **Bekleme** durumundaysa, [Azure Portal kullanarak özel uç noktaları yönetme](#manage-private-endpoints-using-azure-portal) bölümüne bakın.
+12. **Özel uç nokta** sayfasında, Özel uç nokta bağlantısının durumunu görebilirsiniz. Geçiş ad alanının sahibiyseniz veya bağlantıyı Yönet ' e sahipseniz ve **bağlantı yöntemi** için **Dizinimde bir Azure kaynağına bağlan** seçeneğini belirlediyseniz, uç nokta bağlantısının **otomatik olarak onaylanması** gerekir. **Bekleme** durumundaysa, [Azure Portal kullanarak özel uç noktaları yönetme](#manage-private-endpoints-using-azure-portal) bölümüne bakın.
 
     ![Özel uç nokta sayfası](./media/private-link-service/private-endpoint-page.png)
-13. **Ad alanının** **ağ** sayfasına geri gidin ve **Özel uç nokta bağlantıları (Önizleme)** sekmesine geçin. Oluşturduğunuz özel uç noktayı görmeniz gerekir. 
+13. **Ad alanının** **ağ** sayfasına geri gidin ve **Özel uç nokta bağlantıları** sekmesine geçin. Oluşturduğunuz özel uç noktayı görmeniz gerekir. 
 
     ![Özel uç nokta oluşturuldu](./media/private-link-service/private-endpoint-created.png)
 
@@ -162,7 +162,7 @@ Dört sağlama durumu vardır:
 ###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Özel bir uç nokta bağlantısını onaylama, reddetme veya kaldırma
 
 1. Azure Portal’da oturum açın.
-1. Arama çubuğuna **geçiş**yazın.
+1. Arama çubuğuna **geçiş** yazın.
 1. Yönetmek istediğiniz **ad alanını** seçin.
 1. **Ağ** sekmesini seçin.
 5. Şunları yapmak istediğiniz işleme göre aşağıdaki ilgili bölüme gidin: onaylama, reddetme veya kaldırma. 
@@ -174,10 +174,10 @@ Dört sağlama durumu vardır:
 3. **Onayla** düğmesini seçin.
 
     ![Özel uç noktayı Onayla](./media/private-link-service/private-endpoint-approve.png)
-4. **Bağlantıyı Onayla** sayfasında, isteğe bağlı bir **Açıklama**girin ve **Evet**' i seçin. **Hayır**' ı seçerseniz, hiçbir şey olmaz. 
+4. **Bağlantıyı Onayla** sayfasında, isteğe bağlı bir **Açıklama** girin ve **Evet**' i seçin. **Hayır**' ı seçerseniz, hiçbir şey olmaz. 
 
     ![Bağlantı sayfasını Onayla](./media/private-link-service/approve-connection-page.png)
-5. Listede, **Onaylandı**olarak değiştirilen bağlantının durumunu görmeniz gerekir.
+5. Listede, **Onaylandı** olarak değiştirilen bağlantının durumunu görmeniz gerekir.
 
 ### <a name="reject-a-private-endpoint-connection"></a>Özel bir uç nokta bağlantısını reddetme
 
@@ -187,7 +187,7 @@ Dört sağlama durumu vardır:
 2. **Bağlantıyı Reddet** sayfasında, isteğe bağlı bir açıklama girin ve **Evet**' i seçin. **Hayır**' ı seçerseniz, hiçbir şey olmaz. 
 
     ![Bağlantıyı Reddet sayfası](./media/private-link-service/reject-connection-page.png)
-3. **Reddedilen**değiştirilen listede bağlantının durumunu görmeniz gerekir.
+3. **Reddedilen** değiştirilen listede bağlantının durumunu görmeniz gerekir.
 
 
 ### <a name="remove-a-private-endpoint-connection"></a>Özel uç nokta bağlantısını kaldırma
@@ -198,7 +198,7 @@ Dört sağlama durumu vardır:
 2. **Bağlantıyı Sil** sayfasında, Özel uç noktasının silinmesini onaylamak için **Evet** ' i seçin. **Hayır**' ı seçerseniz, hiçbir şey olmaz. 
 
     ![Bağlantı sayfasını Sil](./media/private-link-service/delete-connection-page.png)
-3. Durumu **bağlı değil**olarak değiştirildiğini görmeniz gerekir. Ardından, uç noktanın listeden kaybolduğunu görürsünüz. 
+3. Durumu **bağlı değil** olarak değiştirildiğini görmeniz gerekir. Ardından, uç noktanın listeden kaybolduğunu görürsünüz. 
 
 ## <a name="validate-that-the-private-link-connection-works"></a>Özel bağlantı bağlantısının çalışıp çalışmadığını doğrulama
 Özel uç noktanın sanal ağı içindeki kaynakların, kendi özel IP adresi üzerinden Azure Relay ad alanına bağlandığını doğrulamanız gerekir.
@@ -207,10 +207,10 @@ Bu test için [Azure Portal Windows sanal makinesi oluşturma](../virtual-machin
 
 **Ağ** sekmesinde: 
 
-1. **Sanal ağ** ve **alt ağ**belirtin. Özel uç noktasını dağıttığınız sanal ağı seçmeniz gerekir.
+1. **Sanal ağ** ve **alt ağ** belirtin. Özel uç noktasını dağıttığınız sanal ağı seçmeniz gerekir.
 2. Genel bir **IP** kaynağı belirtin.
-3. **NIC ağ güvenlik grubu**için **hiçbiri**' ni seçin.
-4. **Yük Dengeleme**için **Hayır**' ı seçin.
+3. **NIC ağ güvenlik grubu** için **hiçbiri**' ni seçin.
+4. **Yük Dengeleme** için **Hayır**' ı seçin.
 
 VM 'ye bağlanın ve komut satırını açın ve şu komutu çalıştırın:
 
@@ -230,8 +230,7 @@ Aliases:  <namespace-name>.servicebus.windows.net
 ## <a name="limitations-and-design-considerations"></a>Sınırlamalar ve tasarım konuları
 
 ### <a name="design-considerations"></a>Tasarım konusunda dikkat edilmesi gerekenler
-- Azure Relay için özel uç nokta **genel önizlemede**. 
-- Fiyatlandırma bilgileri için bkz. [Azure özel bağlantı (Önizleme) fiyatlandırması](https://azure.microsoft.com/pricing/details/private-link/).
+- Fiyatlandırma bilgileri için bkz. [Azure özel bağlantı fiyatlandırması](https://azure.microsoft.com/pricing/details/private-link/).
 
 ### <a name="limitations"></a>Sınırlamalar 
 - Azure Relay ad alanı başına en fazla özel uç nokta sayısı: 64.
@@ -240,5 +239,5 @@ Aliases:  <namespace-name>.servicebus.windows.net
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-- Azure özel bağlantısı hakkında daha fazla bilgi edinin [(Önizleme)](../private-link/private-link-service-overview.md)
+- [Azure özel bağlantısı](../private-link/private-link-service-overview.md) hakkında daha fazla bilgi edinin
 - [Azure Relay](relay-what-is-it.md) hakkında daha fazla bilgi edinin

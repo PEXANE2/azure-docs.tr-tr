@@ -10,39 +10,43 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: ed57c496443c9d1541bfa9933e7718213da116d7
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 1fd4279cd35e54e2e04f88973c4a825218a75142
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845614"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131143"
 ---
-# <a name="business-card-concepts"></a>Kartvizit kavramları
+# <a name="form-recognizer-prebuilt-business-cards-model"></a>Form tanıyıcı önceden oluşturulmuş iş kartları modeli 
 
-Azure form tanıyıcı, önceden oluşturulmuş modellerinden birini kullanarak iş kartlarından iletişim bilgilerini çözümleyebilir ve ayıklayabilir. İş kartı API 'SI, önemli bilgileri Ingilizce olarak iş kartlarımızdan ayıklamak için Iş kartımızda güçlü optik karakter tanıma (OCR) yeteneklerini birleştirir. Kişisel iletişim bilgilerini, şirket adını, iş başlığını ve daha fazlasını ayıklar. Önceden oluşturulmuş Iş kartı API 'SI, tanıyıcı v 2.1 Preview biçiminde herkese açık bir şekilde sunulmaktadır. 
+Azure form tanıyıcı, önceden oluşturulmuş iş kartları modelini kullanarak iş kartlarından iletişim bilgilerini çözümleyebilir ve ayıklayabilir. Güçlü optik karakter tanıma (OCR) yeteneklerini iş kartlarımızla, Ingilizce 'deki iş kartlarında önemli bilgileri ayıklamak için modelleme modeliyle birleştirir. Kişisel iletişim bilgilerini, şirket adını, iş başlığını ve daha fazlasını ayıklar. Önceden oluşturulmuş Iş kartı API 'SI, tanıyıcı v 2.1 Preview biçiminde herkese açık bir şekilde sunulmaktadır. 
 
-## <a name="what-does-the-business-card-api-do"></a>Iş kartı API 'SI ne yapar?
+## <a name="what-does-the-business-card-service-do"></a>Iş kartı hizmeti ne yapar?
 
-Iş kartı API 'SI, iş kartlarından önemli alanları ayıklar ve bunları düzenlenmiş bir JSON yanıtında döndürür.
+Önceden oluşturulmuş Iş kartı API 'SI, iş kartlarından anahtar alanları ayıklar ve bunları düzenlenmiş bir JSON yanıtında döndürür.
 
-![Contoso FOTT + JSON çıktısından resim dökümü](./media/business-card-english.jpg)
+![Contoso FOTT + JSON çıktısından resim dökümü](./media/business-card-example.jpg)
+
+
 
 ### <a name="fields-extracted"></a>Ayıklanan alanlar:
 
-* Kişi adları 
-  * İlk adlar
-  * Son adlar
-* Şirket adları 
-* Departmanlar 
-* İş başlıkları 
-* E-postalar 
-* Web Siteleri 
-* Adresler 
-* Telefon numaraları 
-  * Cep telefonları 
-  * Yazdırılacağı 
-  * İş telefonları 
-  * Diğer telefonlar 
+|Ad| Tür | Description | Metin | 
+|:-----|:----|:----|:----|
+| ContactNames | nesne dizisi | İş kartından ayıklanan kişi adı | [{"FirstName": "John", "LastName": "tikan"}] |
+| FirstName | string | İlk (verilen) kişi adı | \ | 
+| LastName | string | Kişinin son (aile) adı |   In | 
+| CompanyNames | dize dizisi | Şirket adı, iş kartından ayıklandı | ["Contoso"] | 
+| Departmanlar | dize dizisi | Kişinin Departmanı veya kuruluşu | ["R&D"] | 
+| İş başlıkları | dize dizisi | İlgili kişinin Iş unvanı | ["Yazılım mühendisi"] | 
+| E-postalar | dize dizisi | İş kartından ayıklanan iletişim e-postası | ["johndoe@contoso.com"] | 
+| Web Siteleri | dize dizisi | Web sitesi, iş kartından ayıklandı | ["https://www.contoso.com"] | 
+| Adresler | dize dizisi | İş kartından ayıklanan adres | ["123 Main Street, Redmond, WA 98052"] | 
+| Mobiletelefonlar | telefon numaraları dizisi | İş kartından ayıklanan cep telefonu numarası | ["+ 19876543210"] |
+| Yazdırılacağı | telefon numaraları dizisi | İş kartından ayıklanan Faks telefon numarası | ["+ 19876543211"] |
+| Iş telefonları | telefon numaraları dizisi | İş kartından ayıklanan iş telefonu numarası | ["+ 19876543231"] |
+| Diğer telefonlar    | telefon numaraları dizisi | İş kartından ayıklanan diğer telefon numarası | ["+ 19876543233"] |
+
 
 Iş kartı API 'SI Ayrıca, Iş kartından tanınan tüm metinleri de döndürebilir. Bu OCR çıkışı JSON yanıtına dahildir.  
 

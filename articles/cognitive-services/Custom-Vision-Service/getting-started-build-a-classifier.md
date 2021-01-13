@@ -12,12 +12,12 @@ ms.date: 09/29/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: görüntü tanıma, görüntü tanıma uygulaması, Özel Vizyon
-ms.openlocfilehash: b57720b9d8fb05a605b9eace279b70b060c18450
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d644c323cb60e5ef9a89670cd9b828e3e9676299
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91596867"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131704"
 ---
 # <a name="quickstart-build-a-classifier-with-the-custom-vision-website"></a>Hızlı başlangıç: Özel Görüntü İşleme Web sitesiyle bir sınıflandırıcı oluşturma
 
@@ -33,7 +33,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [create-resources](includes/create-resources.md)]
 
-## <a name="create-a-new-project"></a>Yeni bir proje oluşturma
+## <a name="create-a-new-project"></a>Yeni proje oluşturma
 
 Web tarayıcınızda [özel görüntü işleme Web sayfasına](https://customvision.ai) gidin ve __oturum aç '__ ı seçin. Azure portal oturum açmak için kullandığınız hesapla oturum açın.
 
@@ -49,7 +49,7 @@ Web tarayıcınızda [özel görüntü işleme Web sayfasına](https://customvis
    > [!NOTE]
    > Kullanılabilir kaynak grubu yoksa, lütfen [Azure Portal](https://portal.azure.com/)oturum açmak için kullandığınız hesapla [customvision.ai](https://customvision.ai) oturum açtığınızdan emin olun. Ayrıca, lütfen Özel Görüntü İşleme kaynaklarınızın bulunduğu Azure portal dizin olarak Özel Görüntü İşleme Web sitesinde aynı "Dizin" i seçtiğinizi onaylayın. Her iki sitede, ekranın sağ üst köşesindeki açılan hesap menüsünden dizininizi seçebilirsiniz. 
 
-1. __Proje türleri__altında __Sınıflandırmayı__ seçin. Daha sonra, __sınıflandırma türleri__altında, kullanım durumunuza bağlı olarak **MultiLabel** veya **birden çok sınıf**seçeneklerinden birini belirleyin. Çok etiketli sınıflandırma bir görüntüye (sıfır veya daha fazla) etiket uygular, ancak birden çok Lass sınıflandırması görüntüleri tek kategorilere göre sıralar (gönderdiğiniz her görüntü, en olası etiket ile sıralanır). İsterseniz sınıflandırma türünü daha sonra değiştirebileceksiniz.
+1. __Proje türleri__ altında __Sınıflandırmayı__ seçin. Daha sonra, __sınıflandırma türleri__ altında, kullanım durumunuza bağlı olarak **MultiLabel** veya **birden çok sınıf** seçeneklerinden birini belirleyin. Çok etiketli sınıflandırma bir görüntüye (sıfır veya daha fazla) etiket uygular, ancak birden çok Lass sınıflandırması görüntüleri tek kategorilere göre sıralar (gönderdiğiniz her görüntü, en olası etiket ile sıralanır). İsterseniz sınıflandırma türünü daha sonra değiştirebileceksiniz.
 
 1. Sonra, kullanılabilir etki alanlarından birini seçin. Her etki alanı, aşağıdaki tabloda açıklandığı gibi belirli görüntü türleri için sınıflandırıcıyı iyileştirir. İsterseniz, etki alanını daha sonra değiştirebileceksiniz.
 
@@ -105,7 +105,7 @@ Eğitim tamamlandıktan sonra, modelin performansı tahmini ve görüntülenir. 
 
 ![Eğitim sonuçları, sınıflandırıcının her bir etiketi için genel duyarlık ve geri çekmeyi ve duyarlık ve geri çekmeyi gösterir.](./media/getting-started-build-a-classifier/train03.png)
 
-### <a name="probability-threshold"></a>Olasılık Eşiği
+### <a name="probability-threshold"></a>Olasılık eşiği
 
 [!INCLUDE [probability threshold](includes/probability-threshold.md)]
 

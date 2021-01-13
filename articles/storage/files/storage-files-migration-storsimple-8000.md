@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 1e45c39a8f562ca6264ab631dfadc84315b58030
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 08ed07adbfe0fc4b22d8a3d0afcfc9ab1312dba4
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97723987"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134356"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 ve 8600 Azure Dosya Eşitleme 'e geçiş
 
@@ -441,6 +441,9 @@ Bu noktada, şirket içi Windows Server Örneğiniz ve StorSimple 8100 ya da 860
 1. Bazı dosyalar, geçersiz karakterler nedeniyle veri dönüştürme işi 'nin arkasında bırakılmış olabilir. Varsa, bunları Azure Dosya Eşitleme özellikli Windows Server örneğine kopyalayın. Daha sonra, bunları eşitlebilmeleri için ayarlayabilirsiniz. Belirli bir paylaşıma yönelik Azure Dosya Eşitleme kullanmıyorsanız, StorSimple biriminde geçersiz karakterlerle dosyaları yeniden adlandırmayı daha iyi bir hale getiriyorsunuz. Ardından, RoboCopy doğrudan Azure dosya paylaşımında çalıştırın.
 
 > [!WARNING]
+> Windows Server 2019 ' de Robocopy Şu anda, hedef sunucudaki Azure Dosya Eşitleme katmanlı dosyaların kaynaktan yeniden kopyalanmasını ve Robocopy 'nin/MıR işlevi kullanılırken Azure 'a yeniden yüklenmesini sağlayan bir sorunla karşılaşır. Robocopy 'nin 2019 dışında bir Windows Server üzerinde kullanılması zorunludur. Tercih edilen bir seçenek Windows Server 2016 ' dir. Bu notta, sorun Windows Update aracılığıyla çözümlenmelidir.
+
+> [!WARNING]
 > Sunucuda, tam olarak indirilen bir Azure dosya paylaşımının ad alanına sahip olması için RoboCopy *başlatmamalıdır* . Daha fazla bilgi için bkz. [ad alanınız sunucunuza tam olarak indirilne zaman belirlenir](#determine-when-your-namespace-has-fully-synced-to-your-server).
 
  Yalnızca geçiş işinin en son çalıştırıldıktan sonra değiştirilen dosyaları ve bu işlerden önce taşınmayan dosyaları kopyalamak istersiniz. Bu sorunu, geçiş işlemi tamamlandıktan sonra sunucuda daha sonra ilerlemeyen bir şekilde çözebilirsiniz. Daha fazla bilgi için bkz. [Azure dosya eşitleme sorun giderme](storage-sync-files-troubleshoot.md#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing).
@@ -448,7 +451,7 @@ Bu noktada, şirket içi Windows Server Örneğiniz ve StorSimple 8100 ya da 860
 RoboCopy 'nin çeşitli parametreleri vardır. Aşağıdaki örnek, tamamlanmış bir komutu ve bu parametreleri seçme nedenlerinin bir listesini gösterir.
 
 ```console
-Robocopy /MT:16 /UNILOG:<file name> /TEE /NP /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
+Robocopy /MT:16 /UNILOG:<file name> /TEE /NP /B /MIR /IT /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
 ```
 
 Arka plan
@@ -499,6 +502,14 @@ Arka plan
    :::column-end:::
    :::column span="1":::
       Robocopy 'nin yalnızca kaynak (StorSimple gereci) ve hedef (Windows Server dizini) arasında değişimleri 'yi kabul etmesine izin verir.
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      /IT
+   :::column-end:::
+   :::column span="1":::
+      Belirli yansıtma senaryolarında uygunluk korunmasını sağlar.</br>Örnek: iki Robocopy arasında çalışan bir dosya, bir ACL değişikliği ve bir öznitelik güncelleştirmesi deneyiminden sonra da *gizli* olarak işaretlenir. /IT olmadan ACL değişikliği Robocopy tarafından kaçırılarak hedef konuma aktarılmaz.
    :::column-end:::
 :::row-end:::
 :::row:::

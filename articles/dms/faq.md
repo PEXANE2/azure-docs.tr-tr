@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 200753c6458698d515b02252933e4fdf6d88df55
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 460380d9435528dcd8cbb3f877c8034fdc34f50c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019100"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134160"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti 'ni kullanma hakkında SSS
 
@@ -109,7 +109,7 @@ Genellikle basit bir veritabanı geçişi sırasında şunları yapabilirsiniz:
 ## <a name="troubleshooting-and-optimization"></a>Sorun giderme ve iyileştirme
 
 **Ç. DMS 'de bir geçiş projesi ayarlıyorum ve kaynak veritabanıma bağlanırken zorluk yaşıyorum. Ne yapmam gerekir?**
-Geçiş üzerinde çalışırken kaynak veritabanı sisteminize bağlantı sorunu yaşıyorsanız, sanal ağda DMS örneğinizi ayarladığınız bir sanal makine oluşturun. Sanal makinede, MongoDB bağlantılarını test etmek için SQL Server bir bağlantıyı test etmek ya da Robo 3T 'yi indirmek üzere bir UDL dosyası kullanma gibi bir bağlantı testini çalıştırabilmelisiniz. Bağlantı testi başarılı olursa, kaynak veritabanınıza bağlanmada bir sorun olması gerekmez. Bağlantı testi başarılı olmazsa, ağ yöneticinize başvurun.
+Geçiş üzerinde çalışırken kaynak veritabanı sisteminize bağlantı sorunu yaşıyorsanız, DMS örneğinizi ayarladığınız sanal ağın aynı alt ağında bir sanal makine oluşturun. Sanal makinede, MongoDB bağlantılarını test etmek için SQL Server bir bağlantıyı test etmek ya da Robo 3T 'yi indirmek üzere bir UDL dosyası kullanma gibi bir bağlantı testini çalıştırabilmelisiniz. Bağlantı testi başarılı olursa, kaynak veritabanınıza bağlanmada bir sorun olması gerekmez. Bağlantı testi başarılı olmazsa, ağ yöneticinize başvurun.
 
 **Ç. Azure veritabanı geçiş hizmetim neden kullanılamıyor veya durdurulmuş?**
 Kullanıcı Azure veritabanı geçiş hizmeti 'ni (DMS) açıkça durduruyor veya hizmet 24 saat boyunca etkin değilse, hizmet durdurulmuş veya otomatik olarak duraklatılmış durumda olur. Her durumda, hizmet kullanılamaz ve durdurulmuş durumda olur.  Etkin geçişleri duraklatmak için hizmeti yeniden başlatın.

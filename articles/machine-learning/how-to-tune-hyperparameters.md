@@ -1,7 +1,7 @@
 ---
-title: Modelinize yönelik hiper parametreleri ayarlama
+title: Bir model için hyperparameter ayarlama
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning kullanarak, derin öğrenme ve makine öğrenimi modelleri için hiper parametreleri verimli bir şekilde ayarlayın.
+description: Azure Machine Learning kullanarak, derin öğrenme ve makine öğrenimi modelleri için hiper parametre ayarlamayı otomatikleştirin.
 ms.author: swatig
 author: swatig007
 ms.reviewer: sgilley
@@ -11,14 +11,14 @@ ms.subservice: core
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: a1a0b89dee5a6d57e6f317c5f6c8b61ffeda3c33
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e9f9f73a8e0dbc851efdba07bf1e103f58ae9e75
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029082"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133870"
 ---
-# <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>Azure Machine Learning modelinize ait hiper parametreleri ayarlama
+# <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>Azure Machine Learning olan bir modeli hiper parametre olarak ayarlama
 
 
 Azure Machine Learning [Hyperdrive paketini](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py)kullanarak verimli hiper parametre ayarlamayı otomatikleştirin. [Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py)ile hiper parametreleri ayarlamak için gereken adımları tamamlamayı öğrenin:
@@ -31,11 +31,11 @@ Azure Machine Learning [Hyperdrive paketini](/python/api/azureml-train-core/azur
 1. Eğitim çalıştırmalarını görselleştirin
 1. Modeliniz için en iyi yapılandırmayı seçin
 
-## <a name="what-are-hyperparameters"></a>Hiper parametreler nelerdir?
+## <a name="what-is-hyperparameter-tuning"></a>Hyperparameter ayarlama nedir?
 
 **Hiper parametreler** , model eğitimi sürecini denetlemenize olanak tanıyan ayarlanabilir parametrelerdir. Örneğin, sinir Networks ile gizli katmanların sayısına ve her katmandaki düğüm sayısına karar verirsiniz. Model performansı, hiper parametrelere göre büyük ölçüde farklılık gösterir.
 
- **Hyperparameter ayarlaması** , en iyi performansa neden olan hiper parametrelerin yapılandırmasını bulma işlemidir. İşlem genellikle hesaplama açısından pahalı ve el ile yapılır.
+ Hiper parametre **iyileştirmesi** olarak da bilinen hiper **parametre ayarlama**, en iyi performansa neden olan hiper parametrelerin yapılandırmasını bulma işlemidir. İşlem genellikle hesaplama açısından pahalı ve el ile yapılır.
 
 Azure Machine Learning hiper parametreleri verimli bir şekilde iyileştirmek için hiper parametre ayarlamayı otomatikleştirmenizi ve paralel olarak denemeleri çalıştırmanızı sağlar.
 
@@ -46,7 +46,7 @@ Her hiper parametre için tanımlanan değer aralığını inceleyerek hiper par
 
 Hiper parametreler ayrık veya sürekli olabilir ve bir [parametre ifadesi](/python/api/azureml-train-core/azureml.train.hyperdrive.parameter_expressions?preserve-view=true&view=azure-ml-py)tarafından tanımlanan değerlerin bir dağıtımına sahiptir.
 
-### <a name="discrete-hyperparameters"></a>Ayrık hiper parametreler 
+### <a name="discrete-hyperparameters"></a>Ayrık hiper parametreler
 
 Ayrık hiper parametreler, `choice` ayrık değerler arasında bir olarak belirtilir. `choice` şunları yapabilirsiniz:
 
@@ -296,7 +296,7 @@ max_concurrent_runs=4
 
 Bu kod, tek seferde dört yapılandırmayı çalıştıran en fazla 20 toplam çalıştırma kullanmak için hyperparameter ayarlama denemesini yapılandırır.
 
-## <a name="configure-experiment"></a>Deneme yapılandırma
+## <a name="configure-hyperparameter-tuning-experiment"></a>Hyperparameter ayarlama denemesini yapılandırma
 
 [Hyperparameter ayarlama denemeniz yapılandırmak](/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?preserve-view=true&view=azure-ml-py) için aşağıdakileri sağlayın:
 * Tanımlı hiper parametre arama alanı
@@ -323,7 +323,7 @@ hd_config = HyperDriveConfig(run_config=src,
                              max_concurrent_runs=4)
 ```
 
-## <a name="submit-experiment"></a>Deneme gönder
+## <a name="submit-hyperparameter-tuning-experiment"></a>Hyperparameter ayarlama denemesi gönder
 
 Hyperparameter ayarlama yapılandırmanızı tanımladıktan sonra, denemeyi [iletin](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truesubmit-config--tags-none----kwargs-):
 
@@ -333,7 +333,7 @@ experiment = Experiment(workspace, experiment_name)
 hyperdrive_run = experiment.submit(hd_config)
 ```
 
-## <a name="warm-start-your-hyperparameter-tuning-experiment-optional"></a>Hyperparameter ayarlama denemenize sıcak bir başlangıç yapın (isteğe bağlı)
+## <a name="warm-start-hyperparameter-tuning-optional"></a>Isınma hiper parametre ayarlamayı başlatma (isteğe bağlı)
 
 Modeliniz için en iyi hiper parametre değerlerini bulma işlemi yinelemeli bir işlem olabilir. Hiper parametre ayarlamayı hızlandırmak için önceki beş çalıştırmaların bilgisini yeniden kullanabilirsiniz.
 
@@ -380,7 +380,7 @@ hd_config = HyperDriveConfig(run_config=src,
                              max_concurrent_runs=4)
 ```
 
-## <a name="visualize-experiment"></a>Denemeyi görselleştirin
+## <a name="visualize-hyperparameter-tuning-runs"></a>Hyperparameter ayarlama çalıştırmalarını görselleştirin
 
 Eğitim çalışmalarınızın ilerlemesini görselleştirmek için [Not defteri pencere öğesini](/python/api/azureml-widgets/azureml.widgets.rundetails?preserve-view=true&view=azure-ml-py) kullanın. Aşağıdaki kod parçacığı, bir Jupyter not defterinde tek bir yerde çalışan tüm hiperparameter ayarlamayı görselleştirir:
 
@@ -391,15 +391,15 @@ RunDetails(hyperdrive_run).show()
 
 Bu kod, hiper parametre yapılandırmalarının her biri için eğitim çalıştırmaları hakkındaki ayrıntıları içeren bir tablo görüntüler.
 
-![Hiper parametre ayarlama tablosu](./media/how-to-tune-hyperparameters/HyperparameterTuningTable.png)
+![Hiper parametre ayarlama tablosu](./media/how-to-tune-hyperparameters/hyperparameter-tuning-table.png)
 
 Her çalıştırmaların performansını eğitim ilerledikçe da görselleştirebilirsiniz. 
 
-![Hiper parametre ayarlama çizimi](./media/how-to-tune-hyperparameters/HyperparameterTuningPlot.png)
+![Hiper parametre ayarlama çizimi](./media/how-to-tune-hyperparameters/hyperparameter-tuning-plot.png)
 
 Bir paralel koordinat çizimi kullanarak ayrı ayrı hiper parametrelerin performansı ve değerleri arasındaki bağıntıyı görsel olarak belirleyebilirsiniz. 
 
-[![Hiper parametre ayarlama paralel koordinatları](./media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
+[![Hiper parametre ayarlama paralel koordinatları](./media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
 
 Azure Web portalındaki tüm hiperparametre ayarlama çalışmalarınızı da görselleştirebilirsiniz. Portalda bir deneme görüntüleme hakkında daha fazla bilgi için bkz. [denemeleri Track](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal).
 
@@ -420,6 +420,7 @@ print('\n batch size:',parameter_values[7])
 ```
 
 ## <a name="sample-notebook"></a>Örnek Not defteri
+
 Bu klasördeki tren-hyperparameter-* Not defterleri bölümüne bakın:
 * [nasıl kullanılır-azureml/ml-çerçeveleri](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks)
 

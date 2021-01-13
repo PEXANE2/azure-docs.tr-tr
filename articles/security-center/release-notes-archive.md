@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/07/2020
 ms.author: memildin
-ms.openlocfilehash: 7325ba1a8a90fec90182f9780c1fb18d29d3c0f1
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 835950cc68ca22ea3958d614d669d7a105fefe62
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955272"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132928"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler için Arşiv mi var?
 
@@ -110,7 +110,7 @@ Aşağıdaki makalelerde Güvenlik Merkezi 'nin kapsayıcı güvenliği hakkınd
 - [Kayıt defterlerine nasıl tarama yapılır ve Docker konaklarınızı sağlamlaştırın](container-security.md)
 - [Azure Kubernetes hizmet kümeleri için tehdit koruması özelliklerinden güvenlik uyarıları](alerts-reference.md#alerts-akscluster)
 - [Azure Kubernetes hizmet konakları için tehdit koruması özelliklerinden güvenlik uyarıları](alerts-reference.md#alerts-containerhost)
-- [Kapsayıcılar için güvenlik önerileri](recommendations-reference.md#recs-containers)
+- [Kapsayıcılar için güvenlik önerileri](recommendations-reference.md#recs-compute)
 
 
 
@@ -195,7 +195,7 @@ Bu yeni öneriler, var olan (ilgili) öneriyle aynı dört güvenlik denetiminde
 
 Öneriler Ayrıca dağıtım sürecini hızlandırmaya yardımcı olmak için hızlı düzelme özelliğini de içerir. 
 
-[İşlem ve uygulama önerileri](recommendations-reference.md#recs-computeapp) tablosunda bu iki yeni öneri hakkında daha fazla bilgi edinin.
+[İşlem ve uygulama önerileri](recommendations-reference.md#recs-compute) tablosunda bu iki yeni öneri hakkında daha fazla bilgi edinin.
 
 Azure Güvenlik Merkezi ['nin aracıyı Log Analytics aracı nedir?](faq-data-collection-agents.md#what-is-the-log-analytics-agent)bölümünde nasıl kullandığı hakkında daha fazla bilgi edinin.
 
@@ -232,7 +232,7 @@ Otomasyon yapılandırmalarınızı kuruluşunuz genelinde dağıtmak için bu y
 
 İnternet 'e yönelik sanal makineler, internet 'e yönelik ve internet 'e yönelik olmayan VM 'Ler arasında ayrım yapmadığından, var olan bir önerinin **ağ güvenlik gruplarıyla korunması gerekir**. Her iki için de bir VM bir ağ güvenlik grubuna atanmamışsa yüksek öneme sahip bir öneri oluşturulmuştur. Bu yeni öneri, internet 'e yönelik olmayan makineleri, yanlış pozitif sonuçları azaltmak ve gereksiz yüksek önem derecesine karşı önlemek için ayırır.
 
-[Ağ önerileri](recommendations-reference.md#recs-network) tablosunda daha fazla bilgi edinin.
+[Ağ önerileri](recommendations-reference.md#recs-networking) tablosunda daha fazla bilgi edinin.
 
 
 
@@ -432,7 +432,7 @@ Kimlik ve erişim önerilerine örnek olarak şunlar verilebilir:
 
 Ücretsiz fiyatlandırma katmanında abonelikleriniz varsa, bu değişiklik, kimlik ve erişim güvenliği için hiçbir şekilde değerlendirilmediğinden, bu değişiklikten etkilenmez.
 
-[Kimlik ve erişim önerileri](recommendations-reference.md#recs-identity)hakkında daha fazla bilgi edinin.
+[Kimlik ve erişim önerileri](recommendations-reference.md#recs-identityandaccess)hakkında daha fazla bilgi edinin.
 
 [Kimlik ve erişim izleme](security-center-identity-access.md)hakkında daha fazla bilgi edinin.
 
@@ -737,7 +737,7 @@ Güvenlik Merkezi artık Azure açık Thouse 'ın bir parçası olarak platforml
 
 Azure Güvenlik Merkezi (ASC) yeni ağ önerilerini başlattı ve bazı mevcut olanları iyileştirmiştir. Artık, güvenlik merkezi 'nin kullanılması kaynaklarınız için daha fazla ağ koruması sağlar. 
 
-[Ağ önerileri hakkında daha fazla bilgi edinin](recommendations-reference.md#recs-network).
+[Ağ önerileri hakkında daha fazla bilgi edinin](recommendations-reference.md#recs-networking).
 
 
 ## <a name="june-2019"></a>Haziran 2019

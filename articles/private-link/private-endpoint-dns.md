@@ -5,14 +5,14 @@ services: private-link
 author: mblanco77
 ms.service: private-link
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 01/12/2021
 ms.author: allensu
-ms.openlocfilehash: 1c296b157fbac1e4c8d3fefb2b8cc09ff2ccc7a8
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 859768345c2b88e38e09d897391ac8a3501fd901
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620605"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134084"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure Özel Uç Nokta DNS yapılandırması
 
@@ -68,7 +68,7 @@ Azure hizmetleri için aşağıdaki tabloda açıklandığı gibi önerilen böl
 | Azure Backup (Microsoft. RecoveryServices/Vaults)/kasa | Privatelink. {Region}. yedekleme. windowsazure. com | {Region}. yedekleme. windowsazure. com |
 | Azure Event Hubs (Microsoft. EventHub/namespaces)/ad alanı | privatelink.servicebus.windows.net | servicebus.windows.net |
 | Azure Service Bus (Microsoft. ServiceBus/namespaces)/ad alanı | privatelink.servicebus.windows.net | servicebus.windows.net |
-| Azure IoT Hub (Microsoft. Devices/ıothubs)/ıothub | privatelink.azure-devices.net | azure-devices.net |
+| Azure IoT Hub (Microsoft. Devices/ıothubs)/ıothub | privatelink.azure-devices.net<br/>privatelink.servicebus.windows.net<sup>1</sup> | azure-devices.net<br/>servicebus.windows.net |
 | Azure Relay (Microsoft. Relay/namespaces)/ad alanı | privatelink.servicebus.windows.net | servicebus.windows.net |
 | Azure Event Grid (Microsoft. EventGrid/konular)/konu başlığı | privatelink.eventgrid.azure.net | eventgrid.azure.net |
 | Azure Event Grid (Microsoft. EventGrid/Domains)/etki alanı | privatelink.eventgrid.azure.net | eventgrid.azure.net |
@@ -83,6 +83,7 @@ Azure hizmetleri için aşağıdaki tabloda açıklandığı gibi önerilen böl
 | Azure Data Factory (Microsoft. DataFactory/Factory)/Portal |  privatelink.azure.com  |  azure.com  |
 | Redin (Microsoft. Cache/Redsıs)/redisCache için Azure önbelleği | privatelink.redis.cache.windows.net | redis.cache.windows.net |
 
+<sup>1</sup> IoT Hub yerleşik Olay Hub 'ı ile uyumlu uç nokta ile kullanmak için. Daha fazla bilgi edinmek için bkz. [IoT Hub yerleşik uç noktası için özel bağlantı desteği](../iot-hub/virtual-network-support.md#built-in-event-hub-compatible-endpoint)
  
 ## <a name="dns-configuration-scenarios"></a>DNS yapılandırma senaryoları
 

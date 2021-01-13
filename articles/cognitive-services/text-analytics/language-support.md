@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: 180de56e3c158802460d2ff995041e8572d4dcd7
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: a0cd968c90a27d6f1ae79d08fb2bd027169233db
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97844959"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133795"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Metin Analizi API'si v3 dil desteği 
 
@@ -86,11 +86,9 @@ ms.locfileid: "97844959"
 
 #### <a name="key-phrase-extraction"></a>[Anahtar tümceciği ayıklama](#tab/key-phrase-extraction)
 
-> [!NOTE]
-> 2020-07-01 ' den önceki Anahtar İfade Ayıklama model sürümlerinin 64 karakter sınırı vardır. Bu sınır sonraki model sürümlerinde yok.
-
 | Dil              | Dil kodu | v2 desteği | v3 desteği | V3 model sürümü ile başlayarak kullanılabilir: |       Notlar        |
 |:----------------------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:------------------:|
+| Danca                |     `da`      |     ✓      |      ✓     |                2019-10-01                 |                    |
 | Felemenkçe                 |     `nl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | İngilizce               |     `en`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Fince               |     `fi`      |     ✓      |     ✓      |                2019-10-01                 |                    |

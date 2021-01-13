@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: d4f5d4b7fed8f14f048794616ee272342d1e8343
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 23b7a66afcc91cf1cf4a5dd9f720aad24ad40071
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915564"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133999"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Azure Bastion sorunlarını giderme
 
@@ -22,11 +22,7 @@ Bu makalede, Azure savunma sorunlarını giderme işlemi gösterilmektedir.
 
 **S:** Azure savunma alt ağında bir NSG oluşturmayı denediğimde şu hatayı alıyorum: *' ağ güvenlik grubu, <NSG name> Azure savunma alt ağı için gerekli kurallara sahip değil AzureBastionSubnet "*.
 
-Y **:** *AzureBastionSubnet*'e BIR NSG oluşturup uygularsanız, NSG 'nize aşağıdaki kuralları eklediğinizden emin olun. Bu kuralları eklemedikçe NSG oluşturma/güncelleştirme başarısız olur.
-
-1. Denetim düzlemi bağlantısı – GatewayManager 'dan 443 tarihinde gelen
-2. Tanılama günlüğü ve diğerleri: 443 ' de Azurecyüksek 'ya giden trafik (Bu hizmet etiketi içindeki bölgesel Etiketler henüz desteklenmiyor.)
-3. Hedef VM – 3389 için giden ve 22-VirtualNetwork
+Y **:** *AzureBastionSubnet*'e BIR NSG oluşturup uygularsanız, NSG 'ye gerekli kuralları eklediğinizden emin olun. Gerekli kuralların listesi için bkz. [NSG erişimiyle çalışma ve Azure](./bastion-nsg.md)savunma. Bu kuralları eklemedikçe NSG oluşturma/güncelleştirme başarısız olur.
 
 NSG kurallarına bir örnek [hızlı başlangıç şablonunda](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg)başvuru için kullanılabilir.
 Daha fazla bilgi için bkz. [Azure Için NSG Kılavuzu](bastion-nsg.md).

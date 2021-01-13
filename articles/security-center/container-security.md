@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 7265195f9614928a2150a56a780ea7b36bc2e266
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: ea66bb5bcdd6132809804632919a120f5c93353f
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030875"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132727"
 ---
 # <a name="container-security-in-security-center"></a>Güvenlik Merkezi’nde kapsayıcı güvenliği
 
@@ -48,7 +48,7 @@ Aşağıdaki ekran görüntüsünde, varlık Envanteri sayfası ve Güvenlik Mer
 
 Azure Resource Manager tabanlı Azure Container kayıt defterlerinden görüntüleri izlemek için, [kapsayıcı kayıt defterleri Için Azure Defender](defender-for-container-registries-introduction.md)'ı etkinleştirin. Güvenlik Merkezi, son 30 gün içinde çekilen, Kayıt defterinize gönderilen veya içeri aktardığınız tüm görüntüleri tarar. Tümleşik tarayıcı, sektörde önde gelen güvenlik açığı tarama satıcısı, Qualys tarafından sağlanır.
 
-Sorunlar bulunduğunda, Qualys veya Güvenlik Merkezi tarafından – [Azure Defender panosunda](azure-defender-dashboard.md)bildirim alırsınız. Güvenlik Merkezi her güvenlik açığı için, eyleme dönüştürülebilir öneriler, bir önem sınıflandırması ve sorunun nasıl düzeltileceği ile ilgili rehberlik sağlar. Güvenlik Merkezi 'nin kapsayıcılar için önerilerin ayrıntıları için bkz. [önerilerin başvuru listesi](recommendations-reference.md#recs-containers).
+Sorunlar bulunduğunda, Qualys veya Güvenlik Merkezi tarafından – [Azure Defender panosunda](azure-defender-dashboard.md)bildirim alırsınız. Güvenlik Merkezi her güvenlik açığı için, eyleme dönüştürülebilir öneriler, bir önem sınıflandırması ve sorunun nasıl düzeltileceği ile ilgili rehberlik sağlar. Güvenlik Merkezi 'nin kapsayıcılar için önerilerin ayrıntıları için bkz. [önerilerin başvuru listesi](recommendations-reference.md#recs-compute).
 
 Güvenlik Merkezi, tarayıcıdan bulguları filtreler ve sınıflandırır. Bir görüntü sağlıklı olduğunda, güvenlik merkezi bunu bu şekilde işaretler. Güvenlik Merkezi yalnızca çözümleme sorunları olan görüntüler için güvenlik önerileri oluşturur. Güvenlik Merkezi, yalnızca sorun olduğunda bilgilendirerek istenmeyen bilgi uyarıları için potansiyelini azaltır.
 
@@ -60,7 +60,7 @@ Azure Güvenlik Merkezi, IaaS Linux VM 'lerinde barındırılan yönetilmeyen ka
 
 Güvenlik Merkezi, CIS Docker kıyaslaması 'nın kural kümesinin tamamını içerir ve kapsayıcılarınız denetimlerden herhangi birini karşılamadığı takdirde sizi uyarır. Güvenlik Merkezi, yanlış yapılandırma bulduğunda güvenlik önerileri oluşturur. Önerileri görüntülemek ve sorunları düzeltmek için Güvenlik Merkezi 'nin **öneriler sayfasını** kullanın. CIS kıyaslama denetimleri, AKS tarafından yönetilen örneklerde veya Databricks tarafından yönetilen VM 'lerde çalıştırılmayın.
 
-Bu özellik için görünebilen ilgili güvenlik merkezi önerilerinin ayrıntıları için, öneriler başvuru tablosunun [kapsayıcı bölümüne](recommendations-reference.md#recs-containers) bakın.
+Bu özellik için görünebilen ilgili güvenlik merkezi önerilerinin ayrıntıları için, öneriler başvuru tablosunun [işlem bölümüne](recommendations-reference.md#recs-compute) bakın.
 
 Bir VM 'nin güvenlik sorunlarını araştırırken, güvenlik merkezi makinedeki kapsayıcılar hakkında ek bilgiler sağlar. Bu tür bilgiler, Docker sürümünü ve konakta çalışan görüntü sayısını içerir. 
 
@@ -74,7 +74,7 @@ AKS, kümelerinizin güvenlik duruşuna güvenlik denetimleri ve görünürlük 
 * AKS kümelerinizin yapılandırmasını sürekli izleyin
 * Endüstri standartlarına göre hizalanmış güvenlik önerileri oluşturun
 
-Bu özellik için görünebilen ilgili güvenlik merkezi önerilerinin ayrıntıları için, öneriler başvuru tablosunun [kapsayıcı bölümüne](recommendations-reference.md#recs-containers) bakın.
+Bu özellik için görünebilen ilgili güvenlik merkezi önerilerinin ayrıntıları için, öneriler başvuru tablosunun [işlem bölümüne](recommendations-reference.md#recs-compute) bakın.
 
 ###  <a name="workload-protection-best-practices-using-kubernetes-admission-control"></a>İş yükü koruma en iyi-Kubernetes giriş denetimi kullanan uygulamalar
 

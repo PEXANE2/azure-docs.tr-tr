@@ -4,12 +4,12 @@ description: Azure Izleyici için Java aracısında sorun gidermeyi öğrenin Ap
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 14644f76b7de53b2b6ee3f04131daaf59267a5ff
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 54bf2440dff20fc757f37e3f31a53c57ebd59120
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507651"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133200"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Sorun giderme kılavuzu: Java için Azure Izleyici Application Insights
 
@@ -20,6 +20,10 @@ Bu makalede, Application Insights için Java aracısını kullanarak bir Java uy
 Varsayılan olarak, Application Insights için Java 3,0 Aracısı, `applicationinsights.log` dosyayı tutan aynı dizinde adlı bir günlük dosyası üretir `applicationinsights-agent-3.0.0.jar` .
 
 Bu günlük dosyası, karşılaşmanız gerekebilecek herhangi bir sorunun ipuçlarını denetlemek için ilk yerdir.
+
+## <a name="jvm-fails-to-start"></a>JVM başlatılamıyor
+
+JVM "ZIP dosyası açma veya JAR bildirimi eksik" hatası ile başlayamazsa, dosya aktarımı sırasında bozulmuş olabileceğinden, aracı jar dosyasını yeniden indirmeyi deneyin.
 
 ## <a name="upgrade-from-the-application-insights-java-2x-sdk"></a>Java 2. x SDK Application Insights yükseltme
 

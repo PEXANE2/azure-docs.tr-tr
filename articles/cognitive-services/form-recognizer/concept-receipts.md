@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 82f6c5989149b50a1ef5e6c6fb5350d474476436
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 43eae43d11a48ee6c395e4a86b8e8c1353843991
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845483"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131466"
 ---
-# <a name="receipt-concepts"></a>Makbuz kavramları
+# <a name="form-recognizer-prebuilt-receipt-model"></a>Form tanıyıcı önceden oluşturulmuş makbuz modeli
 
-Azure form tanıyıcı, önceden oluşturulmuş modellerinden birini kullanarak alındıları analiz edebilir. Makbuz API 'SI, satış makbuzlarından ana bilgileri ticari ad, işlem tarihi, işlem toplamı, satır öğeleri ve daha fazlası gibi Ingilizce olarak ayıklar. 
+Azure form tanıyıcı, önceden oluşturulmuş giriş modelini kullanarak satış makbuzlarından bilgi çözümleyebilir ve ayıklayabilir. Güçlü [optik karakter tanıma (OCR)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) olanaklarımızı, giriş bilgilerini İngilizce olarak Makbuzlardan ayıklamak için derin öğrenme modellerini anlama ile birleştirir. Makbuz API 'SI, satış makbuzlarından ana bilgileri ticari ad, işlem tarihi, işlem toplamı, satır öğeleri ve daha fazlası gibi Ingilizce olarak ayıklar. 
 
 ## <a name="understanding-receipts"></a>Alındıları anlama 
 
@@ -27,32 +27,39 @@ Birçok işletme ve bireyler, iş giderleri raporları, reimbursements, denetim,
 
 Bu Alındılardan verilerin otomatik olarak ayıklanması karmaşık olabilir. Alındılar kaba olabilir ve zor bir şekilde okunabilir, yazdırılabilir veya el ile alınabilir parçalar ve akıllı telefonların görüntüleri düşük kalite olabilir. Ayrıca, makbuz şablonları ve alanları Pazar, bölge ve satıcı tarafından büyük ölçüde farklılık gösterebilir. Hem veri ayıklama hem de alan algılamasında bu zorluk, girişin benzersiz bir sorunu işlemesini getirir.  
 
-Giriş API 'SI, optik karakter tanıma (OCR) ve önceden oluşturulmuş alış irsaliyesi modelimizi kullanarak bu makbuz işleme senaryolarına izin verebilir ve girişler, örneğin satıcı adı, ipucu, toplam, satır öğeleri ve daha fazlasını ayıklar. Bu API ile, bir modeli eğitmeniz gerekmez ve bu da yalnızca kaynağı analiz etme API 'sine gönderir ve veriler ayıklanır.
+Giriş API 'SI, optik karakter tanıma (OCR) ve önceden oluşturulmuş alış irsaliyesi modelimizi kullanarak bu makbuz işleme senaryolarına izin verebilir ve girişler, örneğin satıcı adı, ipucu, toplam, satır öğeleri ve daha fazlasını ayıklar. Bu API ile bir modeli eğitmeniz gerekmez, makbuz görüntüsünü analiz alma API 'sine göndermeniz yeterlidir ve veriler ayıklanır.
 
-![örnek alındısı](./media/contoso-receipt-small.png)
+![örnek alındısı](./media/receipts-example.jpg)
 
-## <a name="what-does-the-receipt-api-do"></a>Makbuz API 'SI ne yapar? 
 
-Önceden oluşturulan makbuz API 'SI, satış girişlerinin içeriğini &mdash; bir restoran, satıcı veya Market mağazasında sıkça alacağınız alış irsaliyesinin türü olarak ayıklar.
+## <a name="what-does-the-receipt-service-do"></a>Giriş hizmeti ne yapar? 
+
+Önceden oluşturulmuş alış Irsaliyesi hizmeti, satış girişlerinin içeriğini &mdash; bir restoran, satıcı veya Market mağazasında sıkça alacağınız alış irsaliyesinin türü olarak ayıklar.
 
 ### <a name="fields-extracted"></a>Ayıklanan alanlar
 
-* Satıcı adı 
-* Ticari adres 
-* Ticari telefon numarası 
-* İşlem tarihi 
-* İşlem saati 
-* Ara toplam 
-* Vergi 
-* Toplam 
-* İpucu 
-* Satır öğesi ayıklama (örneğin, öğe miktarı, öğe fiyatı, öğe adı)
+|Ad| Tür | Description | Metin | Değer (standartlaştırılmış çıkış) |
+|:-----|:----|:----|:----| :----|
+| Pottype | string | Satış alındısı türü | 'Nün |  |
+| MerchantName | string | Okundu bilgisini veren satıcı adı | Contoso |  |
+| MerchantPhoneNumber | phoneNumber | Belirtilen ticari telefon numarası | 987-654-3210 | + 19876543210 |
+| MerchantAddress | string | Belirtilen satıcı adresi | 123 Main St Redmond WA 98052 |  |
+| TransactionDate | date | Makbuzun verildiği tarih | 06 Haziran 2019 | 2019-06-26  |
+| Işlem zamanı | time | Girişin verildiği zaman | 4:49 PM | 16:49:00  |
+| Toplam | sayı | Tam işlem alındısı toplamı | $14,34 | 14,34 |
+| Ara toplam | sayı | Genellikle vergi uygulanmadan önce, girişin ara toplamı | $12,34 | 12.34 |
+| Vergi | sayı | Makbuzdaki vergi, genellikle satış vergisi veya eşdeğer | 2,00 USD | 2,00 |
+| İpucu | sayı | Alıcı tarafından dahil edilen İpucu | $1,00 | 1,00 |
+| Öğeler | nesne dizisi | Ad, miktar, birim fiyat ve ayıklanan Toplam fiyattan oluşan satır öğeleri ayıklandı | |
+| Ad | string | Öğe adı | Surface Pro 6 | |
+| Miktar | sayı | Her öğenin miktarı | 1 | |
+| Fiyat | sayı | Her öğe biriminin ayrı fiyatı | $999,00 | 999,00 |
+| Toplam Fiyat | sayı | Satır öğesinin toplam fiyatı | $999,00 | 999,00 |
 
 ### <a name="additional-features"></a>Ek özellikler
 
 Makbuz API 'SI aşağıdaki bilgileri de döndürür:
 
-* Makbuz türü (örneğin, başlık, kredi kartı vb.)
 * Alan güven düzeyi (her alan ilişkili bir güven değeri döndürür)
 * OCR ham metni (tüm alındı için OCR ayıklanan metin çıktısı)
 * Her bir değer, çizgi ve sözcük için sınırlayıcı kutu

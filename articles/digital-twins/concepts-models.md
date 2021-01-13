@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: dfea6d531dfb87a5344c5d8e53570b6e1ae8e598
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 599bb93e747acf504a4ebf43aaea771ed5064886
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049329"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131398"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Azure dijital TWINS 'de ikizi modellerini anlama
 
@@ -140,7 +140,7 @@ Ortamınızdaki varlıkları yansıtmak için modeller tasarlarken, geleceğe ba
 
 Endüstri standartlarına dayalı modelleri kullanma veya RDF veya OWL gibi standart ontology temsili kullanma, Azure dijital TWINS modellerinizi tasarlarken zengin bir başlangıç noktası sağlar. Endüstri modellerini kullanmak, standartlaştırma ve bilgi paylaşımıyla de yardımcı olur.
 
-Azure dijital TWINS ile kullanılmak üzere, JSON-LD tabanlı [**dijital TWINS tanım dili (DTDL)**](concepts-models.md)içinde bir model temsil etmelidir. Bu nedenle, bu makalede, Azure Digital TWINS 'in kullanabilmesi için, mevcut sektör kavramlarını dtdl semantiğinin tümleştirilmesine yönelik DTDL 'de sektör standardı modellerinizi nasıl temsil ettiğini açıklanmaktadır. DTDL modeli daha sonra Azure dijital TWINS içindeki modelin gerçeği kaynağı olarak görev yapar.
+Azure dijital TWINS ile kullanılmak üzere, JSON-LD tabanlı [**dijital TWINS tanım dili (DTDL)**](concepts-models.md)içinde bir model temsil etmelidir. Bu nedenle, sektör standardı bir model kullanmak için, Azure Digital TWINS 'in kullanabilmesi için önce bunu DTDL 'e dönüştürmeniz gerekir. DTDL modeli daha sonra Azure dijital TWINS içindeki modelin gerçeği kaynağı olarak görev yapar.
 
 Koşulunuza bağlı olarak, sektör standardı modellerini DTDL ile tümleştirmenin iki ana yolu vardır:
 * Modellerinizi henüz oluşturmanız gerekiyorsa, bunları sektörünüz için özel dil içeren **mevcut Başlatıcı DTDL ontolozeri** etrafında tasarlayabilirsiniz.

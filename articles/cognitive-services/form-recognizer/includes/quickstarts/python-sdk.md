@@ -9,19 +9,19 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 9762ca79f73b3333045d1c11376ab315aac2d55e
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: fb9d74da6030c430cce4a2a3c4c5e4299183ca15
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808666"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132314"
 ---
 > [!IMPORTANT]
 > * Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır. Aşağıdaki başvuru belgelerine bakın. 
 
 [Başvuru belgeleri](/python/api/azure-ai-formrecognizer)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer)  |  [Paket (Pypı)](https://pypi.org/project/azure-ai-formrecognizer/)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * [Python 3.x](https://www.python.org/)
@@ -100,8 +100,8 @@ Bu kod parçacıkları, Python için form tanıyıcı istemci kitaplığı ile a
 #### <a name="version-20"></a>[sürüm 2,0](#tab/ga)
 
 * [İstemcinin kimliğini doğrulama](#authenticate-the-client)
-* [Form içeriğini tanı](#recognize-form-content)
-* [Alındıları tanı](#recognize-receipts)
+* [Düzeni çözümle](#analyze-layout)
+* [Alındıları analiz etme](#analyze-receipts)
 * [Özel bir modeli eğitme](#train-a-custom-model)
 * [Formları özel bir model ile analiz etme](#analyze-forms-with-a-custom-model)
 * [Özel modellerinizi yönetin](#manage-your-custom-models)
@@ -109,10 +109,10 @@ Bu kod parçacıkları, Python için form tanıyıcı istemci kitaplığı ile a
 #### <a name="version-21-preview"></a>[sürüm 2,1 Önizleme](#tab/preview)
 
 * [İstemcinin kimliğini doğrulama](#authenticate-the-client)
-* [Form içeriğini tanı](#recognize-form-content)
-* [Alındıları tanı](#recognize-receipts)
-* [İş kartlarını tanıma](#recognize-business-cards)
-* [Faturaları tanıma](#recognize-invoices)
+* [Düzeni çözümle](#analyze-layout)
+* [Alındıları analiz etme](#analyze-receipts)
+* [İş kartlarını çözümle](#analyze-business-cards)
+* [Faturaları analiz etme](#analyze-invoices)
 * [Özel bir modeli eğitme](#train-a-custom-model)
 * [Formları özel bir model ile analiz etme](#analyze-forms-with-a-custom-model)
 * [Özel modellerinizi yönetin](#manage-your-custom-models)
@@ -137,7 +137,7 @@ Eğitim ve test verileriniz için URL 'lere başvuru eklemeniz gerekir.
 > [!NOTE]
 > Bu kılavuzdaki kod parçacıkları, URL 'Ler tarafından erişilen uzak formları kullanır. Bunun yerine yerel form belgelerini işlemek istiyorsanız, [başvuru belgelerindeki](/python/api/azure-ai-formrecognizer) ilgili yöntemlere ve [örneklere](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)bakın.
 
-## <a name="recognize-form-content"></a>Form içeriğini tanı
+## <a name="analyze-layout"></a>Düzeni çözümle
 
 Bir modeli eğmenize gerek kalmadan belgeler içindeki tabloları, çizgileri ve sözcükleri tanımak için form tanıyıcıyı kullanabilirsiniz.
 
@@ -171,7 +171,7 @@ Confidence score: 1.0
 
 ```
 
-## <a name="recognize-receipts"></a>Alındıları tanı
+## <a name="analyze-receipts"></a>Alındıları analiz etme
 
 Bu bölümde, önceden eğitilen bir makbuz modeli kullanılarak ABD makbuzlarından ortak alanların nasıl tanınıp ayıklanacağı gösterilmektedir. Bir URL 'den alındıları tanımak için `begin_recognize_receipts_from_url` yöntemini kullanın. 
 
@@ -203,7 +203,7 @@ Total: 1203.39 has confidence 0.774
 ```
 
 
-## <a name="recognize-business-cards"></a>İş kartlarını tanıma
+## <a name="analyze-business-cards"></a>İş kartlarını çözümle
 
 #### <a name="version-20"></a>[sürüm 2,0](#tab/ga)
 
@@ -221,7 +221,7 @@ Bu bölümde, önceden eğitilen bir model kullanarak Ingilizce iş kartlarında
 
 ---
 
-## <a name="recognize-invoices"></a>Faturaları tanıma
+## <a name="analyze-invoices"></a>Faturaları analiz etme
 
 #### <a name="version-20"></a>[sürüm 2,0](#tab/ga)
 
@@ -454,7 +454,7 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 
 Form tanıyıcı istemci kitaplığı, [Azure Core](https://aka.ms/azsdk-python-azure-core)'da tanımlanan özel durumları yükseltir.
 
-### <a name="logging"></a>Günlüğe kaydetme
+### <a name="logging"></a>Günlüğe Kaydetme
 
 Bu kitaplık günlüğe kaydetmek için [Standart günlük kitaplığını](https://docs.python.org/3/library/logging.html) kullanır. HTTP oturumları (URL 'Ler, üstbilgiler vb.) hakkındaki temel bilgiler BILGI düzeyinde günlüğe kaydedilir.
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 1593c47b7a6cf3b861f3e1af148b7a5fbfae9a19
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 55c4fa00cfd20a83e65a3d57c6020991734f9d9f
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127388"
+ms.locfileid: "98132491"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>BLOB depolama için güvenlik önerileri
 
@@ -31,8 +31,8 @@ Azure Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için Azure 
 |-|----|--|
 | Azure Resource Manager dağıtım modelini kullanma | Azure Resource Manager dağıtım modelini kullanarak, üstün Azure rol tabanlı erişim denetimi (Azure RBAC) ve denetim, Kaynak Yöneticisi tabanlı dağıtım ve idare, yönetilen kimliklere erişim, gizli dizi Azure Key Vault erişimi, Azure depolama verilerine ve kaynaklarına erişim için Azure AD tabanlı kimlik doğrulaması ve yetkilendirme gibi önemli güvenlik geliştirmeleri için yeni depolama hesapları oluşturun. Mümkünse, Azure Resource Manager kullanmak için klasik dağıtım modelini kullanan mevcut depolama hesaplarını geçirin. Azure Resource Manager hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](../../azure-resource-manager/management/overview.md). | - |
 | Tüm depolama hesaplarınız için Azure Defender 'ı etkinleştirin | Azure depolama için Azure Defender, depolama hesaplarına yönelik olağan dışı ve zararlı olabilecek girişimleri algılayan ek bir güvenlik zekası katmanı sağlar. Güvenlik uyarıları, etkinlik gerçekleştiğinde Azure Güvenlik Merkezi 'nde tetiklenir ve ayrıca, şüpheli etkinliklerin ayrıntıları ve tehditleri araştırıp düzeltilmesi ile ilgili öneriler ile abonelik yöneticilerine e-posta aracılığıyla gönderilir. Daha fazla bilgi için bkz. Azure [Defender for Azure Storage 'ı yapılandırma](../common/azure-defender-storage-configure.md). | [Evet](../../security-center/security-center-sql-service-recommendations.md) |
-| Blob 'lar için geçici silmeyi aç | Geçici silme, blob verilerini sildikten sonra kurtarmanızı sağlar. Geçici silme hakkında daha fazla bilgi için bkz. [Azure depolama Blobları Için geçici silme](./soft-delete-blob-overview.md). | - |
-| Kapsayıcılar için geçici silmeyi aç | ???. | - |
+| Blob 'lar için geçici silmeyi aç | Bloblar için geçici silme, blob verilerini silindikten sonra kurtarmanıza olanak sağlar. Bloblar için geçici silme hakkında daha fazla bilgi için bkz. [Azure Storage Blobları Için geçici silme](./soft-delete-blob-overview.md). | - |
+| Kapsayıcılar için geçici silmeyi aç | Kapsayıcılar için geçici silme, bir kapsayıcıyı silindikten sonra kurtarmanızı sağlar. Kapsayıcılar için geçici silme hakkında daha fazla bilgi için bkz. [kapsayıcılar Için geçici silme (Önizleme)](./soft-delete-container-overview.md). | - |
 | Yanlışlıkla hesap silmeyi engellemek için depolama hesabını kilitle | Kuruluşunuzdaki diğer kullanıcıların yanlışlıkla silmesini veya değiştirmesini engellemek için bir abonelik, kaynak grubu veya depolama hesabı gibi Azure Resource Manager kaynaklarını kilitleyemezsiniz. Bir depolama hesabının kilitlenmesi, bu hesabın içindeki verilerin silinmesini engellemez. Yalnızca hesabın silinmesini engeller. Daha fazla bilgi için bkz. [beklenmeyen değişiklikleri engellemek için kaynakları kilitleme](../../azure-resource-manager/management/lock-resources.md).
 | İş açısından kritik verileri sabit bloblarda depolayın | Blob verilerini bir solucan içinde depolamak için yasal ayrı tutma ve zaman tabanlı bekletme ilkeleri yapılandırın (bir kez yaz, çok oku) durumu. Imune sürekliliği bulunan Bloblar okunabilir, ancak saklama aralığı süresince değiştirilemez veya silinemez. Daha fazla bilgi için bkz. [sabit depolamayla iş açısından kritik blob verilerini depolama](storage-blob-immutable-storage.md). | - |
 | Depolama hesabına güvenli aktarım (HTTPS) gerektir | ??? | - |
