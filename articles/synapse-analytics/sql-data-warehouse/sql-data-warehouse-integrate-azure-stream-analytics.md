@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: 8fbe546beb1004214e544f8eb160884c0f64ef9e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 01/13/2021
 ms.locfileid: "96458231"
 ---
 # <a name="use-azure-stream-analytics-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu ile Azure Stream Analytics kullanma
@@ -24,7 +24,7 @@ Azure Stream Analytics, bulutta akış verileri üzerinde düşük gecikmeli, y�
 
 Bu makalede, Azure Stream Analytics işlerle yüksek aktarım hızı verileri alımı için adanmış SQL havuzunuzu bir çıkış havuzu olarak kullanmayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure Stream Analytics Iş-Azure Stream Analytics bir iş oluşturmak Için, Azure Stream Analytics öğreticisini [kullanmaya başlamak](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) için şu adımları izleyin:  
 
