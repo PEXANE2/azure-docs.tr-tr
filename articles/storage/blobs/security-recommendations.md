@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.date: 01/12/2021
+ms.date: 01/13/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 55c4fa00cfd20a83e65a3d57c6020991734f9d9f
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: e3cfede444b65ee6990afd006d3b174d65f9cfad
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132491"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179172"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>BLOB depolama için güvenlik önerileri
 
@@ -35,7 +35,7 @@ Azure Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için Azure 
 | Kapsayıcılar için geçici silmeyi aç | Kapsayıcılar için geçici silme, bir kapsayıcıyı silindikten sonra kurtarmanızı sağlar. Kapsayıcılar için geçici silme hakkında daha fazla bilgi için bkz. [kapsayıcılar Için geçici silme (Önizleme)](./soft-delete-container-overview.md). | - |
 | Yanlışlıkla hesap silmeyi engellemek için depolama hesabını kilitle | Kuruluşunuzdaki diğer kullanıcıların yanlışlıkla silmesini veya değiştirmesini engellemek için bir abonelik, kaynak grubu veya depolama hesabı gibi Azure Resource Manager kaynaklarını kilitleyemezsiniz. Bir depolama hesabının kilitlenmesi, bu hesabın içindeki verilerin silinmesini engellemez. Yalnızca hesabın silinmesini engeller. Daha fazla bilgi için bkz. [beklenmeyen değişiklikleri engellemek için kaynakları kilitleme](../../azure-resource-manager/management/lock-resources.md).
 | İş açısından kritik verileri sabit bloblarda depolayın | Blob verilerini bir solucan içinde depolamak için yasal ayrı tutma ve zaman tabanlı bekletme ilkeleri yapılandırın (bir kez yaz, çok oku) durumu. Imune sürekliliği bulunan Bloblar okunabilir, ancak saklama aralığı süresince değiştirilemez veya silinemez. Daha fazla bilgi için bkz. [sabit depolamayla iş açısından kritik blob verilerini depolama](storage-blob-immutable-storage.md). | - |
-| Depolama hesabına güvenli aktarım (HTTPS) gerektir | ??? | - |
+| Depolama hesabına güvenli aktarım (HTTPS) gerektir | Bir depolama hesabı için güvenli aktarım gerektiğinde, depolama hesabına yönelik tüm isteklerin HTTPS üzerinden yapılması gerekir. HTTP üzerinden yapılan tüm istekler reddedilir. Microsoft, tüm depolama hesaplarınız için her zaman güvenli aktarım gerektirmenizi önerir. Daha fazla bilgi için bkz. [Güvenli aktarım gerektir](../common/storage-require-secure-transfer.md). | - |
 | Paylaşılan erişim imzası (SAS) belirteçlerini yalnızca HTTPS bağlantılarıyla sınırla | İstemci blob verilerine erişmek için SAS belirteci kullandığında HTTPS gerektirme, gizlice dinleme riskini en aza indirmenize yardımcı olur. Daha fazla bilgi için bkz. [paylaşılan erişim imzaları (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme](../common/storage-sas-overview.md). | - |
 
 ## <a name="identity-and-access-management"></a>Kimlik ve erişim yönetimi

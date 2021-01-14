@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 43e6495c0231d5b14d27eabc3b9b82ba791d7108
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 241e5abf8377bd2e2207d140e291b18592651ea6
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97365084"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179597"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kfadvance"></a>Öğretici: KFAdvance ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,7 +26,7 @@ Bu öğreticide, KFAdvance Azure Active Directory (Azure AD) ile tümleştirmeyi
 * Kullanıcılarınızın Azure AD hesaplarıyla KFPK için otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -76,13 +76,13 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
 
-    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://api.kfadvance-<ENVIRONMENT>.com/<PARTNER_ID>`
+    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://api.kfadvance.com/<PARTNER_ID>`
 
-    b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://api.kfadvance-<ENVIRONMENT>.com/vn/account/partnerssocallback?partnerKey=<PARTNER_ID>`
+    b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://api.kfadvance-<ENVIRONMENT>.com/v1/account/partnerssocallback?partnerKey=<PARTNER_ID>`
 
 1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://api.kfadvance-<ENVIRONMENT>.com/vn/account/partnerssologin?partnerKey=<PARTNER_ID>`
+    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://api.kfadvance.com/v1/account/partnerssologin?partnerKey=<PARTNER_ID>`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [Kfadvance istemci destek ekibine](mailto:support@kornferry.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.

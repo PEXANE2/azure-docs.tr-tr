@@ -4,13 +4,13 @@ description: Bu makale, Azure bilişsel hizmetler Language Understanding API hak
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 01/05/2021
-ms.openlocfilehash: 4591bc26c848032d1c0f8b96720c4ec66b9b064d
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.date: 01/12/2021
+ms.openlocfilehash: 4bcd25e96aba1ca103737679540cb9ff67674914
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916363"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179138"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding yenilikleri
 
@@ -18,10 +18,14 @@ Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler sürüm notlarını, Vide
 
 ## <a name="release-notes"></a>Sürüm notları
 
+### <a name="january-2021"></a>Ocak 2021
+
+* V3 tahmin API 'si artık [Bing yazım denetımı API](luis-how-to-publish-app.md#spelling-correction)'sini destekliyor.
+
 ### <a name="december-2020"></a>Aralık 2020
 
 * [Lusıs yazma kaynağına geçiş](luis-migration-authoring.md) yapmak IÇIN tüm luya kullanıcıları gereklidir
-* REST API bir toplu işlem testi göndermenize ve amaç ve varlıklarınız için doğruluk sonuçları elde etmeniz için yeni [değerlendirme uç noktaları](luis-how-to-batch-test.md#batch-testing-using-the-rest-api) . V 3.0-Preview LUSıS uç noktasından başlayarak kullanılabilir.
+* REST API kullanarak toplu testler göndermenize ve amaç ve varlıklarınız için doğruluk sonuçları elde etmeniz için yeni [değerlendirme uç noktaları](luis-how-to-batch-test.md#batch-testing-using-the-rest-api) . V 3.0-Preview LUSıS uç noktasından başlayarak kullanılabilir.
 
 ### <a name="june-2020"></a>Haziran 2020
 

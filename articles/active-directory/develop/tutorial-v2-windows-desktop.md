@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 8909c684187aee2abc0915bad74853e4de9706a4
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 0d759b3af097067ba0c9215b65b212d50474d571
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063272"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178356"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Öğretici: Windows masaüstü uygulamasından Microsoft Graph API 'sini çağırma
 
@@ -57,7 +57,7 @@ MSAL, uygulamanızın ihtiyaç duymaması için, erişim belirteçlerini önbell
 
 Bu kılavuzda aşağıdaki NuGet paketleri kullanılmaktadır:
 
-|Kitaplık|Açıklama|
+|Kitaplık|Description|
 |---|---|
 |[Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft kimlik doğrulama kitaplığı (MSAL.NET)|
 
@@ -97,7 +97,7 @@ Uygulamanızı iki şekilde kaydedebilirsiniz.
 ### <a name="option-1-express-mode"></a>Seçenek 1: hızlı mod
 
 Aşağıdakileri yaparak uygulamanızı hızlı bir şekilde kaydedebilirsiniz:
-1. [Azure Portal-uygulama kaydına](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs)gidin.
+1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs" target="_blank">Azure portal uygulama kayıtları <span class="docon docon-navigate-external x-hidden-focus"></span> </a> hızlı başlangıç deneyimine gidin.
 1. Uygulamanız için bir ad girin ve **Kaydet**'i seçin.
 1. Yönergeleri izleyerek yeni uygulamanızı yalnızca tek tıklamayla indirin ve otomatik olarak yapılandırın.
 

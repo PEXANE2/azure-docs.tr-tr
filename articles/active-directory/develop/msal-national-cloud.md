@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 22b3ea9eb0e4c3379438b6c3fb58ccfb13b4ed32
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 5a032f45027cc4bffc7f2bc46c6ea1a69a1b83e4
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064802"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178628"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>Ulusal bir bulut ortamında MSAL kullanma
 
@@ -34,7 +34,7 @@ Genel bulut dahil, Azure Active Directory (Azure AD) aşağıdaki Ulusal bulutla
 
 Bu kılavuzda, iş ve okul hesaplarında oturum açma, erişim belirteci alma ve [Azure Kamu bulut](https://azure.microsoft.com/global-infrastructure/government/) ORTAMıNDA Microsoft Graph API 'sini çağırma işlemlerinin nasıl yapılacağı gösterilmiştir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, bu önkoşulları karşıladığınızdan emin olun.
 
@@ -70,19 +70,21 @@ Bağımsız bulutları için MSAL.js uygulamanızı etkinleştirmek için:
 
 ### <a name="step-1-register-your-application"></a>1. Adım: Uygulamanızı kaydetme
 
-1. [Azure portalında](https://portal.azure.us/) oturum açın.
+1. <a href="https://portal.azure.us/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
 
    Diğer ulusal bulutlar için Azure portal uç noktaları bulmak için bkz. [uygulama kayıt uç noktaları](authentication-national-cloud.md#app-registration-endpoints).
 
-1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst köşede hesabınızı seçin ve Portal oturumunuzu istenen Azure AD kiracısı olarak ayarlayın.
-1. Geliştiriciler için Microsoft Identity platformunda [uygulama kayıtları](https://aka.ms/ra/ff) sayfasına gidin.
-1. **Uygulamayı kaydet** sayfası görüntülendiğinde, uygulamanız için ad girin.
+1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
+1. **Azure Active Directory**'yi bulun ve seçin.
+1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
+1. Uygulamanız için bir **ad** girin. Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
 1. **Desteklenen hesap türleri** altında, **herhangi bir kuruluş dizininde hesaplar**' ı seçin.
 1. **Yeniden yönlendirme URI 'si** bölümünde **Web** platformu ' nu seçin ve değeri Web sunucunuza göre uygulamanın URL 'si olarak ayarlayın. Visual Studio ve Node 'da yeniden yönlendirme URL 'sini ayarlama ve alma hakkında yönergeler için sonraki bölümlere bakın.
 1. **Kaydet**’i seçin.
-1. Uygulamaya **genel bakış** sayfasında, **uygulama (istemci) kimliği** değerini aklınızda edin.
-1. Bu öğretici, [örtük izin akışını](v2-oauth2-implicit-grant-flow.md)etkinleştirmenizi gerektirir. Kayıtlı uygulamanın sol bölmesinde **kimlik doğrulaması**' nı seçin.
-1. **Gelişmiş ayarlar**' da, **örtük izin**' ın altında, **Kimlik belirteçleri** ve **erişim belirteçleri** onay kutularını seçin. KIMLIK belirteçleri ve erişim belirteçleri gereklidir çünkü bu uygulamanın kullanıcıları oturum açması ve bir API çağırması gerekir.
+1. **Genel bakış** sayfasında, daha sonra kullanmak üzere **uygulama (istemci) kimliği** değerini aklınızda edin.
+    Bu öğretici, [örtük izin akışını](v2-oauth2-implicit-grant-flow.md)etkinleştirmenizi gerektirir. 
+1. **Yönet** altında **kimlik doğrulaması**' nı seçin.
+1. **Örtük izin**' ın altında **Kimlik belirteçleri** ve **erişim belirteçleri**' ni seçin. KIMLIK belirteçleri ve erişim belirteçleri gereklidir çünkü bu uygulamanın kullanıcıları oturum açması ve bir API çağırması gerekir.
 1. **Kaydet**’i seçin.
 
 ### <a name="step-2--set-up-your-web-server-or-project"></a>2. Adım: Web sunucunuzu veya projenizi ayarlama

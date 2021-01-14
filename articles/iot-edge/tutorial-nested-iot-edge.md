@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: c1dba383f259e35b143688b2db68f05f1a67def6
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: a9591a394d80e7b4c60f28fda6c0a425ba3d0a4f
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938228"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180073"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Öğretici: IoT Edge cihazları hiyerarşisi oluşturma (Önizleme)
 
@@ -27,7 +27,7 @@ Yalnızca en üst katmanın buluta bağlantısı olması için bir cihaz hiyerar
 
 Bu öğreticinin amacı, bir üretim ortamına benzetim yapan bir IoT Edge cihazları hiyerarşisi oluşturmaktır. Sonunda, kapsayıcı görüntülerini hiyerarşi aracılığıyla indirerek internet erişimi olmadan daha düşük bir katman cihazına [sanal sıcaklık algılayıcısı modülünü](https://azuremarketplace.microsoft.com/marketplace/apps/azure-iot.simulated-temperature-sensor) dağıtacaksınız.
 
-Bu öğreticiyi başarmak için, bu öğreticide IoT Edge cihaz hiyerarşisi oluşturma, cihazlarınıza IoT Edge çalışma zamanı kapsayıcıları dağıtma ve cihazlarınızı yerel olarak yapılandırma işlemleri adım adım açıklanmıştır. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticiyi başarmak için, bu öğreticide IoT Edge cihaz hiyerarşisi oluşturma, cihazlarınıza IoT Edge çalışma zamanı kapsayıcıları dağıtma ve cihazlarınızı yerel olarak yapılandırma işlemleri adım adım açıklanmıştır. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -45,7 +45,7 @@ Bu öğreticide, aşağıdaki ağ katmanları tanımlanmıştır:
 
 Bu öğreticide kolaylık sağlamak için iki cihaz hiyerarşisi kullanılmaktadır. Bir cihaz, **topLayerDevice**, hiyerarşinin en üst katmanında, doğrudan buluta bağlanabilecek bir cihazı temsil eder. Bu cihaza **ana cihaz** da denir. Diğer cihaz, küçük **harf Layerdevice**, hiyerarşinin alt katmanında doğrudan buluta bağlanamaz bir cihazı temsil eder. Bu cihaza **alt cihaz** da denir. Üretim ortamınızı temsil etmek için ek alt katman cihazları ekleyebilirsiniz. Diğer tüm ek katman cihazlarının yapılandırması, küçük **Layerdevice**'ın yapılandırmasını izler.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 IoT Edge cihazlarının bir hiyerarşisini oluşturmak için şunlar gerekir:
 
@@ -63,6 +63,13 @@ IoT Edge cihazlarının bir hiyerarşisini oluşturmak için şunlar gerekir:
     --admin-username azureuser \
     --admin-password <REPLACE_WITH_PASSWORD>
    ```
+
+* Aşağıdaki bağlantı noktalarının açık olduğundan emin olun: 8000, 443, 5671, 8883:
+  * 8000: API proxy 'si aracılığıyla Docker kapsayıcı görüntülerini çekmek için kullanılır.
+  * 443: REST API çağrıları için üst ve alt sınır hub 'ları arasında kullanılır.
+  * 5671, 8883: AMQP ve MQTT için kullanılır.
+
+  Daha fazla bilgi için bkz. [Azure portalıyla bir sanal makineye bağlantı noktaları açma](../virtual-machines/windows/nsg-quickstart-portal.md).
 
 Ayrıca, bir fabrika ortamının benzetimini yapmak için Azure sanal makinelerini önceden yapılandırılmış cihazlar olarak dağıtan [endüstriyel IoT örneği için](https://aka.ms/iotedge-nested-sample)komut dosyalı Azure IoT Edge ' yi izleyerek bu senaryoyu deneyebilirsiniz.
 
@@ -182,6 +189,39 @@ Her cihazın kök CA sertifikasının bir kopyasına ve kendi cihaz CA sertifika
 
 Her iki cihazda da bu adımları izleyerek IoT Edge 'yi yükler.
 
+1. Cihaz işletim sisteminizle eşleşen depo yapılandırmasını yükler.
+
+   * **Ubuntu Server 16,04**:
+
+     ```bash
+     curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
+     ```
+
+   * **Ubuntu Server 18,04**:
+
+     ```bash
+     curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
+     ```
+
+   * **Raspberry PI OS Esnetme**:
+
+     ```bash
+     curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list
+     ```
+
+1. Oluşturulan listeyi sources. List. d dizinine kopyalayın.
+
+   ```bash
+   sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
+   ```
+
+1. Microsoft GPG ortak anahtarını yükler.
+
+   ```bash
+   curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+   sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
+   ```
+   
 1. Cihazınızdaki paket listelerini güncelleştirin.
 
    ```bash
@@ -197,7 +237,7 @@ Her iki cihazda da bu adımları izleyerek IoT Edge 'yi yükler.
 1. Hsmlib ve IoT Edge Daemon 'ı yükler. Diğer Linux dağıtımlarına yönelik varlıkları görmek için [GitHub sürümünü ziyaret edin](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc1). <!-- Update with proper image links on release -->
 
    ```bash
-   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/libiothsm-std_1.2.0.rc1-1-1_debian9_amd64.deb -o libiothsm-std.deb
+   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/libiothsm-std_1.2.0_rc1-1-1_debian9_amd64.deb -o libiothsm-std.deb
    curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/iotedge_1.2.0_rc1-1_debian9_amd64.deb -o iotedge.deb
    sudo dpkg -i ./libiothsm-std.deb
    sudo dpkg -i ./iotedge.deb
@@ -594,13 +634,35 @@ Notice that the image URI that we used for the simulated temperature sensor modu
 
 On the device details page for your lower layer IoT Edge device, you should now see the temperature sensor module listed along the system modules as **Specified in deployment**. It may take a few minutes for the device to receive its new deployment, request the container image, and start the module. Refresh the page until you see the temperature sensor module listed as **Reported by device**.
 
-## View generated data
+## IotEdge check
 
-The **Simulated Temperature Sensor** module that you pushed generates sample environment data. It sends messages that include ambient temperature and humidity, machine temperature and pressure, and a timestamp.
+Run the `iotedge check` command to verify the configuration and to troubleshoot errors.
 
-You can watch the messages arrive at your IoT hub by using the [Azure IoT Hub extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
+You can run `iotedge check` in a nested hierarchy, even if the child machines don't have direct internet access.
 
-You can also view these messages through the [Azure Cloud Shell](https://shell.azure.com/):
+When you run `iotedge check` from the lower layer, the program tries to pull the image from the parent through port 443.
+
+In this tutorial, we use port 8000, so we need to specify it:
+
+```bash
+sudo iotedge check --diagnostics-image-name <parent_device_fqdn_or_ip>:8000/azureiotedge-diagnostics:1.2.0-rc2
+```
+   
+`azureiotedge-diagnostics`Değer, kayıt defteri modülüyle bağlantılı kapsayıcı kayıt defterinden çekilir. Bu öğretici, varsayılan olarak şu şekilde ayarlanmıştır https://mcr.microsoft.com:
+
+| Ad | Değer |
+| - | - |
+| `REGISTRY_PROXY_REMOTEURL` | `https://mcr.microsoft.com` |
+
+Özel bir kapsayıcı kayıt defteri kullanıyorsanız, tüm görüntülerin (örneğin, ıotedgeapiproxy, edgeAgent, edgeHub ve Tanılamalar) kapsayıcı kayıt defterinde bulunduğundan emin olun.    
+    
+## <a name="view-generated-data"></a>Oluşturulan verileri görüntüleme
+
+Gönderdiğiniz **sanal sıcaklık algılayıcı** modülü örnek ortam verileri oluşturur. Çevresel sıcaklık ve nem, makine sıcaklığı ve basınç ve zaman damgası içeren iletileri gönderir.
+
+[Visual Studio Code Için Azure IoT Hub uzantısını](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)kullanarak IoT Hub 'ınıza gelen iletileri izleyebilirsiniz.
+
+Bu iletileri ayrıca [Azure Cloud Shell](https://shell.azure.com/)aracılığıyla da görüntüleyebilirsiniz:
 
    ```azurecli-interactive
    az iot hub monitor-events -n <iothub_name> -d <lower-layer-device-name>

@@ -6,13 +6,13 @@ ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
-ms.author: xujing
-ms.openlocfilehash: 101f2cfe57624502764d145351a6343cfdd2a334
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.author: mimckitt
+ms.openlocfilehash: 9f45b0a9454176f53413940d3c310e0499b43d3c
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572873"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180124"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Azure 'da çok kiracılı barındırma haklarıyla Windows 10 ' un dağıtımı 
 Windows 10 Enterprise E3/E5 veya Kullanıcı başına Windows sanal masaüstü erişimi (Kullanıcı aboneliği lisansları veya eklenti Kullanıcı aboneliği lisansları) olan müşteriler için, Windows 10 için çok kiracılı barındırma hakları, Windows 10 lisanslarınızı buluta getirmenize ve Azure 'da Windows 10 sanal makinelerini başka bir lisans ödemeksizin çalıştırmanıza olanak sağlar. Daha fazla bilgi için lütfen bkz. [Windows 10 Için çok kiracılı barındırma](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).

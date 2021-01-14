@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: ejarvi
-ms.openlocfilehash: e5a0069e02c5285a950d23abc0ec4bee6e9e467b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 361751107212d556aaee6886902d2798c014ff39
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968392"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180192"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Windows için Azure disk şifrelemesi (Microsoft. Azure. Security. AzureDiskEncryption)
 
@@ -140,16 +140,16 @@ V 2.2 şeması tüm yeni VM 'Lerde önerilir ve Azure Active Directory özellik 
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Name | Değer/örnek | Veri Türü |
+| Ad | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
-| apiVersion | 2019-07-01 | tarih |
+| apiVersion | 2019-07-01 | date |
 | yayımcı | Microsoft. Azure. Security | string |
 | tür | AzureDiskEncryption | string |
 | typeHandlerVersion | 2,2, 1,1 | string |
 | (1,1 şeması) Aadclientıd | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
 | (1,1 şeması) AADClientSecret | password | string |
 | (1,1 şeması) AADClientCertificate | #c0 | string |
-| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
+| EncryptionOperation | EnableEncryption | string | 
 | (isteğe bağlı-varsayılan RSA-OAEP) KeyEncryptionAlgorithm | ' RSA-OAEP ', ' RSA-OAEP-256 ', ' RSA1_5 ' | string |
 | KeyVaultURL | url | string |
 | Keyvaultresourceıd | url | string |

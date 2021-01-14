@@ -1,19 +1,19 @@
 ---
 title: Azure Haritalar ile tümleştirme
 titleSuffix: Azure Digital Twins
-description: Azure haritalar ınkapısı haritasını güncelleştirmek için ikizi grafiğini ve Azure dijital TWINS bildirimlerini kullanan bir Azure işlevi oluşturma bölümüne bakın.
+description: Azure Maps ınkapısı haritasını güncelleştirmek için ikizi grafiğini ve Azure dijital TWINS bildirimlerini kullanabileceğiniz bir işlev oluşturmak için bkz. Azure Işlevleri 'ni kullanma.
 author: alexkarcher-msft
 ms.author: alkarche
 ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 7b2039f8b1aebef65112067e4fd9184777192015
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: e582415d9a83dc506b77d506f3e0803002129a07
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051590"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180056"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure haritalar ınkapısının haritasını güncelleştirmek için Azure dijital TWINS kullanma
 
@@ -22,10 +22,10 @@ Bu makalede, Azure [Maps](../azure-maps/about-azure-maps.md)kullanarak bir *ınk
 Bu şekilde nasıl ele alınacaktır:
 
 1. Azure Digital TWINS örneğinizi, ikizi Update olaylarını [Azure işlevleri](../azure-functions/functions-overview.md)'ndeki bir işleve göndermek için yapılandırma.
-2. Azure Maps ınkapılı haritalar Özellik stateset 'i güncelleştirmek için bir Azure işlevi oluşturma.
+2. Azure haritalar ınkapısı haritaları Özellik stateset 'i güncelleştirmek için bir işlev oluşturma.
 3. Haritalar KIMLIĞINIZI ve özellik stateset KIMLIĞINIZI Azure dijital TWINS grafiğinde depolama.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 * Azure dijital TWINS [*öğreticisini izleyin: uçtan uca çözümü bağlama*](./tutorial-end-to-end.md).
     * Bu ikizi ek bir uç nokta ve rotayla genişletiyorsunuz. Ayrıca, bu öğreticiden işlev uygulamanıza başka bir işlev da eklersiniz. 
@@ -41,7 +41,7 @@ Aşağıdaki görüntüde, bu öğreticideki ınkapımaps tümleştirme öğeler
 
 ## <a name="create-a-function-to-update-a-map-when-twins-update"></a>TWINS güncelleştirme sırasında Haritayı güncelleştirmek için bir işlev oluşturma
 
-İlk olarak, tüm ikizi Update olaylarını bir olay kılavuzu konusuna iletmek için Azure dijital TWINS 'te bir yol oluşturacaksınız. Daha sonra, bu güncelleştirme iletilerini okumak ve Azure Maps 'ta bir özellik stateset 'i güncelleştirmek için bir Azure işlevi kullanacaksınız. 
+İlk olarak, tüm ikizi Update olaylarını bir olay kılavuzu konusuna iletmek için Azure dijital TWINS 'te bir yol oluşturacaksınız. Ardından, bu güncelleştirme iletilerini okumak ve Azure Maps 'ta bir özellik stateset 'i güncelleştirmek için bir işlev kullanacaksınız. 
 
 ## <a name="create-a-route-and-filter-to-twin-update-notifications"></a>Bir yol oluşturun ve ikizi Update bildirimlerine filtre uygulayın
 
@@ -70,7 +70,7 @@ Bu kalıp, IoT cihazı yerine doğrudan ikizi 'dan, eşleme mantığınızı gü
     az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
     ```
 
-## <a name="create-an-azure-function-to-update-maps"></a>Haritaları güncelleştirmek için bir Azure işlevi oluşturma
+## <a name="create-a-function-to-update-maps"></a>Haritaları güncelleştirmek için bir işlev oluşturma
 
 Uçtan uca öğreticiden işlev uygulamanız içinde Event Grid tetiklenen bir işlev oluşturacağız ([*öğretici: uçtan uca bir çözümü bağlama*](./tutorial-end-to-end.md)). Bu işlev, bir odanın sıcaklığını güncelleştirmek için bu bildirimleri paketten çıkarın ve Azure Maps özelliği stateset 'e güncelleştirmeler gönderir. 
 

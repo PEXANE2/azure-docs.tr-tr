@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/07/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: 0257f4d97e0f6f7cef4907276423d9513568e027
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 4610d4d677d2d340340aab5edcddb658ac32e5e4
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011719"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178220"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Hızlı Başlangıç: Evrensel Windows Platformu (UWP) uygulamasından Microsoft Graph API'sini çağırma
 
@@ -26,7 +26,7 @@ Bu hızlı başlangıçta, bir Evrensel Windows Platformu (UWP) uygulamasının 
 Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.
 
 > [!div renderon="docs"]
-> ## <a name="prerequisites"></a>Önkoşullar
+> ## <a name="prerequisites"></a>Ön koşullar
 >
 > * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
@@ -39,7 +39,7 @@ Bu hızlı başlangıçta, bir Evrensel Windows Platformu (UWP) uygulamasının 
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1. Seçenek: Uygulamanızı otomatik olarak kaydedip yapılandırın ve ardından kod örneğinizi indirin
 >
-> 1. Yeni [Azure Portal-uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/UwpQuickstartPage/sourceType/docs) bölmesine gidin.
+> 1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/UwpQuickstartPage/sourceType/docs" target="_blank">Azure portal uygulama kayıtları <span class="docon docon-navigate-external x-hidden-focus"></span> </a> hızlı başlangıç deneyimine gidin.
 > 1. Uygulamanız için bir ad girin ve **Kaydet**'i seçin.
 > 1. Yönergeleri izleyerek yeni uygulamanızı tek tıkla indirin ve otomatik olarak yapılandırın.
 >

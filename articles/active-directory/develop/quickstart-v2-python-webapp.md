@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 4b6da5fce9c4ebac671b90a91b39053fcc4c4d2c
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 3c3eaddf1767a3fa4a2ba73ae7a27f1f7df13990
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017315"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178219"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Hızlı başlangıç: Microsoft 'a Python web uygulamasına oturum açma ekleme
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, bir Python web uygulamasının kullanıcılara nasıl
 
 Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Python 2.7 +](https://www.python.org/downloads/release/python-2713) veya [Python 3 +](https://www.python.org/downloads/release/python-364/)
@@ -40,7 +40,7 @@ Bu hızlı başlangıçta, bir Python web uygulamasının kullanıcılara nasıl
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1. Seçenek: Uygulamanızı otomatik olarak kaydedip yapılandırın ve ardından kod örneğinizi indirin
 >
-> 1. [Azure portal uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/PythonQuickstartPage/sourceType/docs)gidin.
+> 1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/PythonQuickstartPage/sourceType/docs" target="_blank">Azure portal uygulama kayıtları <span class="docon docon-navigate-external x-hidden-focus"></span> </a> hızlı başlangıç deneyimine gidin.
 > 1. Uygulamanız için bir ad girin ve **Kaydet**'i seçin.
 > 1. Yeni uygulamanızı indirip otomatik olarak yapılandırmak için yönergeleri izleyin.
 >
@@ -110,7 +110,7 @@ Bu hızlı başlangıçta, bir Python web uygulamasının kullanıcılara nasıl
 > CLIENT_SECRET = "Enter_the_Client_Secret_Here"
 > AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
 > ```
-> Konum:
+> Burada:
 >
 > - `Enter_the_Application_Id_here` - Kaydettiğiniz uygulamanın Uygulama Kimliği değeridir.
 > - `Enter_the_Client_Secret_Here` -Sertifikalar 'da oluşturduğunuz **Istemci gizli anahtarı** , kaydettiğiniz uygulamanın **gizli dizileri &**  .

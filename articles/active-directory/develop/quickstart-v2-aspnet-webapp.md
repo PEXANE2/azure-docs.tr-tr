@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
-ms.openlocfilehash: 11c479c6cc8f330a2b3b1edd25bad39321d6ed1c
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: dbddf35b0aa1494ef719803fa84cafae04f3ec50
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017553"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178594"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Hızlı başlangıç: ASP.NET Web uygulamasına Microsoft Identity platformu oturum açma ekleme
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, bir ASP.NET Web uygulamasının kullanıcılara herha
 
 Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.
 > [!div renderon="docs"]
-> ## <a name="prerequisites"></a>Önkoşullar
+> ## <a name="prerequisites"></a>Ön koşullar
 >
 > * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
@@ -38,7 +38,7 @@ Bu hızlı başlangıçta, bir ASP.NET Web uygulamasının kullanıcılara herha
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1. Seçenek: Uygulamanızı otomatik olarak kaydedip yapılandırın ve ardından kod örneğinizi indirin
 >
-> 1. Yeni  [Azure Portal-uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) bölmesine gidin.
+> 1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs" target="_blank">Azure portal uygulama kayıtları <span class="docon docon-navigate-external x-hidden-focus"></span> </a> hızlı başlangıç deneyimine gidin.
 > 1. Uygulamanız için bir ad girin ve **Kaydet**'i seçin.
 > 1. Yönergeleri izleyerek yeni uygulamanızı tek tıkla indirin ve otomatik olarak yapılandırın.
 >
@@ -53,7 +53,7 @@ Bu hızlı başlangıçta, bir ASP.NET Web uygulamasının kullanıcılara herha
 > 1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
 > 1. Uygulamanız için bir **ad** girin (örneğin,) `ASPNET-Quickstart` . Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
 > 1. `https://localhost:44368/` **Yeniden yönlendirme URI 'si** ekleyin ve **Kaydet**' i seçin.
-> 1. Yönet bölümünün altındaki sol gezinti bölmesinden **kimlik doğrulaması** ' nı seçin.
+> 1. **Yönet** altında **kimlik doğrulaması**' nı seçin.
 > 1. **Örtük Izin ver** alt bölümünde **Kimlik belirteçleri**' ni seçin.
 > 1. **Kaydet**’i seçin.
 
@@ -94,7 +94,7 @@ Bu hızlı başlangıçta, bir ASP.NET Web uygulamasının kullanıcılara herha
 >    <add key="ClientId" value="Enter_the_Application_Id_here" />
 >    <add key="Tenant" value="Enter_the_Tenant_Info_Here" />
 >    ```
->    Konum:
+>    Burada:
 > - `Enter_the_Application_Id_here` - Kaydettiğiniz uygulamanın Uygulama Kimliği değeridir.
 > - `Enter_the_Tenant_Info_Here` - Aşağıdaki seçeneklerden biridir:
 >   - Uygulamanız **yalnızca Kuruluşumu** destekliyorsa, bu değeri **Kiracı kimliği** veya **kiracı adıyla** değiştirin (örneğin, contoso.onmicrosoft.com)
@@ -165,7 +165,7 @@ public void Configuration(IAppBuilder app)
 }
 ```
 
-> |Konum  | Açıklama |
+> |Konum  | Description |
 > |---------|---------|
 > | `ClientId`     | Azure portalına kaydedilen uygulamaya ait Uygulama Kimliği |
 > | `Authority`    | Kimlik doğrulaması yapılacak kullanıcı için STS uç noktası. Çoğunlukla, genel bulut için `https://login.microsoftonline.com/{tenant}/v2.0`; burada {tenant}, kiracınızın adı, kiracınızın kimliği veya ortak uç noktaya başvuru olarak *common* değeridir (çok kiracılı uygulamalarda kullanılır) |

@@ -2,21 +2,24 @@
 title: Uzantı kaynak türlerindeki kapsam
 description: Uzantı kaynak türleri dağıtımında kapsam özelliğinin nasıl kullanılacağını açıklar.
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: bd468d31454c38bd314269243702d7df4f279a5e
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 01/13/2021
+ms.openlocfilehash: 75c2c8b8409cc9f8e7a8e71965589ece6660607a
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681704"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179988"
 ---
 # <a name="setting-scope-for-extension-resources-in-arm-templates"></a>ARM şablonlarındaki uzantı kaynakları için kapsam ayarlama
 
-Uzantı kaynağı, başka bir kaynağı değiştiren bir kaynaktır. Örneğin, erişimi sınırlandırmak için bir kaynağa bir rol atayabilirsiniz. Rol ataması, bir uzantı kaynak türüdür.
+Uzantı kaynağı, başka bir kaynağı değiştiren bir kaynaktır. Örneğin, bir kaynağa bir rol atayabilirsiniz. Rol ataması, bir uzantı kaynak türüdür.
 
 Uzantı kaynak türlerinin tam listesi için bkz. [diğer kaynakların özelliklerini genişleten kaynak türleri](../management/extension-resource-types.md).
 
 Bu makalede, bir Azure Resource Manager şablonuyla (ARM şablonu) dağıtıldığında bir uzantı kaynak türü kapsamının nasıl ayarlanacağı gösterilmektedir. Bir kaynağa uygulanırken uzantı kaynakları için kullanılabilir kapsam özelliğini açıklar.
+
+> [!NOTE]
+> Scope özelliği yalnızca uzantı kaynak türlerinde kullanılabilir. Uzantı türü olmayan bir kaynak türü için farklı bir kapsam belirtmek üzere, iç içe veya bağlı bir dağıtım kullanın. Daha fazla bilgi için bkz. [kaynak grubu dağıtımları](deploy-to-resource-group.md), [abonelik dağıtımları](deploy-to-subscription.md), [Yönetim grubu dağıtımları](deploy-to-management-group.md)ve [kiracı dağıtımları](deploy-to-tenant.md).
 
 ## <a name="apply-at-deployment-scope"></a>Dağıtım kapsamına Uygula
 

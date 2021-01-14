@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/03/2020
+ms.date: 01/13/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6abc3316e18fc70a2969bc220fd75e10e10f0e6e
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ff3cd858de86d21637f4a7a9ab9d9a83c7022f5a
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507787"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178883"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Microsoft Graph ile Azure AD B2C Kullanıcı hesaplarını yönetme
 
@@ -43,85 +43,6 @@ Yönetim uygulamanızın kullanabileceği bir uygulama kaydı oluşturmak için 
 - [Kullanıcı güncelleştirme](/graph/api/user-update)
 - [Kullanıcı silme](/graph/api/user-delete)
 
-## <a name="user-properties"></a>Kullanıcı özellikleri
-
-### <a name="display-name-property"></a>Görünen ad özelliği
-
-, `displayName` Kullanıcı için Azure Portal Kullanıcı yönetiminde görüntülenecek addır ve erişim belirteci Azure AD B2C uygulamaya geri döner. Bu özellik gereklidir.
-
-### <a name="identities-property"></a>Kimlikler özelliği
-
-Bir tüketici, iş ortağı veya vatandaşlık olabilecek bir müşteri hesabı şu kimlik türleriyle ilişkilendirilebilir:
-
-- **Yerel** kimlik-Kullanıcı adı ve parola Azure AD B2C dizininde yerel olarak depolanır. Genellikle bu kimliklere "yerel hesaplar" olarak başvurduk.
-- **Federasyon** kimliği- *sosyal* veya *Kurumsal* hesaplar olarak da bilinen kullanıcı KIMLIĞI, Facebook, Microsoft, ADFS veya Salesforce gibi bir federal kimlik sağlayıcısı tarafından yönetilir.
-
-Müşteri hesabı olan bir Kullanıcı birden çok kimlik ile oturum açabilir. Örneğin, Kullanıcı adı, e-posta, çalışan KIMLIĞI, kamu KIMLIĞI ve diğerleri. Tek bir hesabın aynı parolayla hem yerel hem de sosyal birden çok kimliği olabilir.
-
-Microsoft Graph API 'sinde, hem yerel hem de Federasyon kimlikleri, `identities` [Objectıdentity][graph-objectIdentity]türünde olan User özniteliğinde depolanır. `identities`Koleksiyon, bir kullanıcı hesabında oturum açmak için kullanılan bir kimlik kümesini temsil eder. Bu koleksiyon, kullanıcının Kullanıcı hesabında ilişkili kimliklerinden herhangi biriyle oturum açmasını sağlar.
-
-| Özellik   | Tür |Açıklama|
-|:---------------|:--------|:----------|
-|Signıntype|string| Dizininizdeki Kullanıcı oturum açma türlerini belirtir. Yerel hesap için:,,,,  `emailAddress` `emailAddress1` `emailAddress2` `emailAddress3`  `userName` veya istediğiniz diğer herhangi bir tür. Sosyal hesabın olarak ayarlanması gerekir  `federated` .|
-|yayınlayan|string|Kimliğin verenini belirtir. Yerel hesaplar için ( **Signıntype** değil `federated` ), bu özellik yerel B2C kiracısı varsayılan etki alanı adıdır (örneğin,) `contoso.onmicrosoft.com` . Sosyal kimlik (burada **Signıntype** ) için  `federated` değer verenin adıdır, örneğin `facebook.com`|
-|ıssueratandıd|string|Kullanıcıya veren tarafından atanan benzersiz tanımlayıcıyı belirtir. **Issuer** ve **ıssueratanmadı** birleşimi kiracınız dahilinde benzersiz olmalıdır. Yerel hesap için, **Signıntype** veya olarak ayarlandığında `emailAddress` `userName` , Kullanıcı için oturum açma adını temsil eder.<br>**Signıntype** şu şekilde ayarlandığında: <ul><li>`emailAddress` (veya `emailAddress` benzer şekilde başlıyor `emailAddress1` ) **ıssueratandıd** geçerli bir e-posta adresi olmalıdır</li><li>`userName`(veya başka bir değer), **ıssueratandıd** [bir e-posta adresinin geçerli bir yerel parçası](https://tools.ietf.org/html/rfc3696#section-3) olmalıdır</li><li>`federated`, **ıssueratanmadı** Federal hesap benzersiz tanımlayıcısını temsil ediyor</li></ul>|
-
-Aşağıdaki **kimlikler** özelliği, oturum açma adı ile yerel hesap kimliği, oturum açma olarak bir e-posta adresi ve sosyal kimlik ile birlikte. 
-
- ```json
- "identities": [
-     {
-       "signInType": "userName",
-       "issuer": "contoso.onmicrosoft.com",
-       "issuerAssignedId": "johnsmith"
-     },
-     {
-       "signInType": "emailAddress",
-       "issuer": "contoso.onmicrosoft.com",
-       "issuerAssignedId": "jsmith@yahoo.com"
-     },
-     {
-       "signInType": "federated",
-       "issuer": "facebook.com",
-       "issuerAssignedId": "5eecb0cd"
-     }
-   ]
- ```
-
-Federal kimlikler için, kimlik sağlayıcısına bağlı olarak, **ıssueratandıd** , uygulama veya geliştirme hesabı başına belirli bir kullanıcı için benzersiz bir değerdir. Azure AD B2C ilkesini, daha önce sosyal sağlayıcı veya aynı geliştirme hesabı içindeki başka bir uygulama tarafından atanan aynı uygulama KIMLIĞIYLE yapılandırın.
-
-### <a name="password-profile-property"></a>Parola profili özelliği
-
-Yerel bir kimlik için **Passwordprofile** özelliği gereklidir ve kullanıcının parolasını içerir. `forceChangePasswordNextSignIn`Özelliği olarak ayarlanmalıdır `false` .
-
-Bir federal (sosyal) kimlik için **Passwordprofile** özelliği gerekli değildir.
-
-```json
-"passwordProfile" : {
-    "password": "password-value",
-    "forceChangePasswordNextSignIn": false
-  }
-```
-
-### <a name="password-policy-property"></a>Parola İlkesi özelliği
-
-Azure AD B2C parola ilkesi (yerel hesaplar için) Azure Active Directory [güçlü parola gücü](../active-directory/authentication/concept-sspr-policy.md) ilkesini temel alır. Azure AD B2C kaydolma veya oturum açma ve parola sıfırlama ilkeleri için bu güçlü parola gücü gerekir ve parolaların süreleri dolmaz.
-
-Kullanıcı geçişi senaryolarında, geçirmek istediğiniz hesapların Azure AD B2C tarafından zorlanan [güçlü parola kuvvetinden](../active-directory/authentication/concept-sspr-policy.md) daha zayıf olması halinde güçlü parola gereksinimini devre dışı bırakabilirsiniz. Varsayılan parola ilkesini değiştirmek için `passwordPolicies` özelliğini olarak ayarlayın `DisableStrongPassword` . Örneğin, kullanıcı oluştur isteğini aşağıdaki şekilde değiştirebilirsiniz:
-
-```json
-"passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"
-```
-
-### <a name="extension-properties"></a>Uzantı özellikleri
-
-Müşterilere yönelik her uygulamanın, toplanacak bilgiler için benzersiz gereksinimleri vardır. Azure AD B2C kiracınız, belirtilen ad, soyadı, şehir ve posta kodu gibi özelliklerde depolanan yerleşik bir bilgi kümesiyle gelir. Azure AD B2C, her müşteri hesabında depolanan özellikler kümesini genişletebilirsiniz. Özel öznitelikler tanımlama hakkında daha fazla bilgi için bkz. [özel öznitelikler](user-flow-custom-attributes.md).
-
-Microsoft Graph API, uzantı öznitelikleri olan bir kullanıcının oluşturulmasını ve güncelleştirilmesini destekler. Graph API uzantı öznitelikleri, yöntemi kullanılarak adlandırılır `extension_ApplicationClientID_attributename` ; burada, `ApplicationClientID` uygulamanın uygulamanın **(istemci) kimliğidir** `b2c-extensions-app` (   >  Azure Portal **tüm uygulamalarda** uygulama kayıtları bulunur). Uzantı öznitelik adında temsil edilen **uygulama (istemci) kimliğinin** hiçbir tire içerdiğini unutmayın. Örnek:
-
-```json
-"extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
-```
 
 ## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>Kod örneği: program aracılığıyla Kullanıcı hesaplarını yönetme
 

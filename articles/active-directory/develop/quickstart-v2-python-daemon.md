@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: fb26acedc4a043ab84d02c142ecaa1dcfa94fd07
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 47aaf67c9ae2402e0445de60de439b77242bd87d
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011756"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178237"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Hızlı başlangıç: uygulama kimliğini kullanarak bir Python konsol uygulamasından belirteç alma ve Microsoft Graph API çağırma
 
@@ -26,7 +26,7 @@ Bu hızlı başlangıçta, bir Python uygulamasının Microsoft Graph API 'sini 
 > [!div renderon="docs"]
 > ![Bu hızlı başlangıç tarafından oluşturulan örnek uygulamanın nasıl çalıştığını gösterir](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.svg)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu örneği çalıştırmak için şunlar gerekir:
 
@@ -42,7 +42,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1. Seçenek: Uygulamanızı otomatik olarak kaydedip yapılandırın ve ardından kod örneğinizi indirin
 >
-> 1. Yeni [Azure Portal-uygulama kayıtları](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/PythonDaemonQuickstartPage/sourceType/docs) bölmesine gidin.
+> 1. <a href="https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/PythonDaemonQuickstartPage/sourceType/docs" target="_blank">Azure portal uygulama kayıtları <span class="docon docon-navigate-external x-hidden-focus"></span> </a> hızlı başlangıç deneyimine gidin.
 > 1. Uygulamanız için bir ad girin ve **Kaydet**'i seçin.
 > 1. Yönergeleri izleyerek yeni uygulamanızı yalnızca tek tıklamayla indirin ve otomatik olarak yapılandırın.
 >
@@ -100,7 +100,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
 >    "client_id": "Enter_the_Application_Id_Here",
 >    "secret": "Enter_the_Client_Secret_Here"
 >    ```
->    Konum:
+>    Burada:
 >    - `Enter_the_Application_Id_Here` - kaydettiğiniz uygulamanın **Uygulama (istemci) Kimliği** değeridir.
 >    - `Enter_the_Tenant_Id_Here` -Bu değeri **Kiracı kimliği** veya **kiracı adıyla** değiştirin (örneğin, contoso.Microsoft.com)
 >    - `Enter_the_Client_Secret_Here` -Bu değeri, 1. adımda oluşturulan istemci gizli anahtarı ile değiştirin.
@@ -135,7 +135,7 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 ```
 
 > [!div renderon="docs"]
->> Konum:
+>> Burada:
 >> * `Enter_the_Tenant_Id_Here` -Bu değeri **Kiracı kimliği** veya **kiracı adıyla** değiştirin (örneğin, contoso.Microsoft.com)
 >> * `Enter_the_Application_Id_Here` - kaydettiğiniz uygulamanın **Uygulama (istemci) Kimliği** değeridir.
 
@@ -190,7 +190,7 @@ app = msal.ConfidentialClientApplication(
     client_credential=config["secret"])
 ```
 
-> | Konum: |Açıklama |
+> | Burada: |Description |
 > |---------|---------|
 > | `config["secret"]` | Azure portalında uygulama için istemci gizli dizisi oluşturulmuştur. |
 > | `config["client_id"]` | **Uygulama (istemci) Kimliği**, Azure portalda kayıtlı uygulamadır. Bu değeri Azure portalda uygulamanın **Genel bakış** sayfasında bulabilirsiniz. |
@@ -211,7 +211,7 @@ if not result:
     result = app.acquire_token_for_client(scopes=config["scope"])
 ```
 
-> |Konum:| Açıklama |
+> |Burada:| Description |
 > |---------|---------|
 > | `config["scope"]` | İstenen kapsamları içerir. Gizli istemciler için, `{Application ID URI}/.default` istenen kapsamların Azure portalında ayarlanmış uygulama nesnesi içinde statik olarak tanımlanmış olduğunu göstermek için şuna benzer biçimi kullanmalıdır (Microsoft Graph için, `{Application ID URI}` işaret eder `https://graph.microsoft.com` ). Özel Web API 'Leri için, `{Application ID URI}` Azure portalının uygulama kaydı 'nda (Önizleme) **bir API 'yi kullanıma** sunma bölümünde tanımlanmıştır. |
 

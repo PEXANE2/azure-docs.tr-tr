@@ -1,15 +1,15 @@
 ---
 title: Ölçüm uyarılarının Azure Izleyici 'de nasıl çalıştığını anlayın.
 description: Ölçüm uyarıları ile yapabileceklerinize ve bunların Azure Izleyici 'de nasıl çalışabileceklerini bir genel bakış alın.
-ms.date: 01/11/2021
+ms.date: 01/13/2021
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 424cc9db01f1eb6300c2915795f3e2c37b34449f
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: d8e0621f88455a68ad0ee1b236f6b423c9d54b52
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071060"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179903"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure İzleyici'de ölçüm uyarılarının nasıl çalıştığını anlama
 
@@ -64,6 +64,10 @@ Yukarıdaki uyarı kuralları tetikme örnekleri, **tüm uyarılar** dikey pence
 Bir süre sonra, "myVM" üzerindeki kullanım normal duruma gelir (eşiğin altına gider). Uyarı kuralı, çözümlenmiş bir bildirim göndermek için koşulu iki kez daha izler. Uyarı kuralı, kapatma koşulları durumunda paraziti azaltmak için uyarı koşulu üç ardışık dönem için karşılanmazsa çözümlenmiş/devre dışı bırakılmış bir ileti gönderir.
 
 Çözümlenen bildirim Web kancaları veya e-posta aracılığıyla gönderildiği için, Azure portal içindeki uyarı örneğinin durumu (izleyici durumu olarak adlandırılır) de çözüldü olarak ayarlanır.
+
+> [!NOTE]
+>
+> Bir uyarı kuralı birden çok koşulu izlerken, koşullardan en az biri artık üç ardışık dönem için karşılanmazsa tetiklenen bir uyarı çözümlenir.
 
 ### <a name="using-dimensions"></a>Boyutları kullanma
 
@@ -135,9 +139,9 @@ Geri arama sürelerini ve ihlallerin sayısını artırmak, uyarıların yalnız
 
 Bu özellik şu anda aşağıdaki Azure bulutlarında aşağıdaki hizmetler için platform ölçümleri (özel ölçümler değil) için desteklenir:
 
-| Hizmet | Genel Azure | Kamu | Çin |
+| Hizmet | Genel Azure | Devlet | Çin |
 |:--------|:--------|:--------|:--------|
-| Sanal makineler<sup>1</sup>  | **Evet** | **Evet** | Hayır |
+| Sanal makineler<sup>1</sup>  | **Evet** | **Evet** | No |
 | SQL Server veritabanları | **Evet** | **Evet** | **Evet** |
 | SQL Server elastik havuzlar | **Evet** | **Evet** | **Evet** |
 | NetApp dosyaları kapasite havuzları | **Evet** | **Evet** | **Evet** |

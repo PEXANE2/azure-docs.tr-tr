@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 3ee9e165ce9c24968b072d19367e0285f5438259
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 5ce5f5cea5d689720455dd8d60f6fff4692a9d3d
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938809"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179308"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Sanal Ağ hakkında sık sorulan sorular (SSS)
 
@@ -392,6 +392,9 @@ Sanal ağ hizmeti uç noktaları etkinleştirildiğinde, sanal ağınızın alt 
 
 ### <a name="does-the-service-endpoint-route-always-take-precedence"></a>Hizmet uç noktası rotası her zaman önceliklidir mi?
 Hizmet uç noktaları, BGP rotalarında önceliğe sahip olan ve hizmet uç noktası trafiği için en iyi yönlendirmeyi sağlayan bir sistem yolu ekler. Hizmet uç noktaları, her zaman hizmet trafiğini doğrudan sanal ağınızdan Microsoft Azure omurga ağındaki hizmete götürür. Azure 'un bir yolu nasıl seçtiği hakkında daha fazla bilgi için bkz. [Azure sanal ağ trafiği yönlendirme](virtual-networks-udr-overview.md).
+
+### <a name="do-service-endpoints-work-with-icmp"></a>Hizmet uç noktaları ıCMP ile çalışır mı?
+Hayır, hizmet uç noktaları etkin olan bir alt ağdan kaynaksız ıCMP trafiği, istenen uç noktaya hizmet tüneli yolunu almaz. Hizmet uç noktaları yalnızca TCP trafiğini işler. Diğer bir deyişle, hizmet uç noktaları aracılığıyla bir uç noktaya gecikme veya bağlantı test etmek isterseniz, ping ve tracert gibi araçlar alt ağdaki kaynakların vereceği doğru yolu göstermez.
  
 ### <a name="how-does-nsg-on-a-subnet-work-with-service-endpoints"></a>Alt ağdaki NSG, hizmet uç noktaları ile nasıl çalışır?
 Azure hizmetine ulaşmak için NSG 'lerin giden bağlantılara izin verihtiyacı vardır. NSG 'larınız tüm Internet giden trafiği için açılırsa, hizmet uç noktası trafiğinin çalışması gerekir. Ayrıca, hizmet etiketlerini kullanarak giden trafiği yalnızca hizmet IP 'Leri ile sınırlayabilirsiniz.  

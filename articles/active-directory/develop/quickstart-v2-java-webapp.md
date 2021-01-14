@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: efd9730123f7427e97d5494d9790bff2a26c4c4e
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 91aa6c96c714bff26ea7e0df5b2b6971c68edec0
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011858"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178582"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Hızlı başlangıç: Microsoft 'a Java Web uygulamasına oturum açma ekleme
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, Java Web uygulamasının kullanıcılara nasıl oturu
 
  Genel bakış için bkz. Örneğin [nasıl çalıştığına ilişkin diyagram](#how-the-sample-works).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu örneği çalıştırmak için şunlar gerekir:
 
@@ -38,7 +38,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
 >
 > ### <a name="option-1-register-and-automatically-configure-your-app-and-then-download-the-code-sample"></a>1. seçenek: uygulamanızı kaydedin ve otomatik olarak yapılandırın ve ardından kod örneğini indirin
 >
-> 1. Uygulamanın hızlı başlangıç deneyimini [Azure portal > **kayıt**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavaQuickstartPage/sourceType/docs) bölümüne gidin.
+> 1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavaQuickstartPage/sourceType/docs" target="_blank">Azure portal uygulama kayıtları <span class="docon docon-navigate-external x-hidden-focus"></span> </a> hızlı başlangıç deneyimine gidin.
 > 1. Uygulamanız için bir ad girin ve ardından **Kaydet**' i seçin.
 > 1. Otomatik olarak yapılandırılan uygulama kodunu indirmek için portalın hızlı başlangıç deneyimindeki yönergeleri izleyin.
 >
@@ -87,7 +87,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
 >
 > HTTPS 'yi localhost ile kullanmak için, `server.ssl.key` özellikleri sağlayın. Kendinden imzalı bir sertifika oluşturmak için, Keytool yardımcı programını (JRE 'de bulunur) kullanın.
 >
-> İşte bir örnek:
+> Aşağıda bir örnek verilmiştir:
 >  ```
 >   keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
 >
@@ -126,7 +126,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
 >    - `Enter_the_Tenant_Info_Here` , kaydettiğiniz uygulamanın **Dizin (kiracı) kimlik** değeridir.
 > 1. HTTPS 'yi localhost ile kullanmak için, `server.ssl.key` özellikleri sağlayın. Kendinden imzalı bir sertifika oluşturmak için, Keytool yardımcı programını (JRE 'de bulunur) kullanın.
 >
->    İşte bir örnek:
+>    Aşağıda bir örnek verilmiştir:
 >
 >     ```
 >      keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password

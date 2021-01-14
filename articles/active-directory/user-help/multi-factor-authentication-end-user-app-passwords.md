@@ -13,16 +13,16 @@ ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: c9d8bb85aac87503ca641f6633668a6dc582882f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07303a0b0b3007ade9adb90af7397855a5014cc0
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056090"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179431"
 ---
-# <a name="manage-app-passwords-for-two-step-verification"></a>İki adımlı doğrulama için uygulama parolalarını yönetme
+# <a name="manage-app-passwords-for-two-step-verification"></a>İki aşamalı doğrulama için uygulama parolalarını yönetme
 
->[!Important]
+> [!Important]
 >Yöneticiniz uygulama parolalarını kullanmanıza izin vermeyebilir. **Uygulama parolalarını** bir seçenek olarak görmüyorsanız, kuruluşunuzda mevcut değildir.
 
 Uygulama parolalarını kullanırken, dikkat edilmesi önemlidir:
@@ -66,7 +66,7 @@ Uygulama parolalarını kullanırken, dikkat edilmesi önemlidir:
 
 4. **Uygulama parolaları** sayfasında, uygulamanızın listelendiğinden emin olun.
 
-     ![Listede yeni uygulamayla gösterilen uygulama parolaları sayfası](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-with-new-password.png)  
+    ![Listede yeni uygulamayla gösterilen uygulama parolaları sayfası](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-with-new-password.png)  
 
 5. Uygulama parolasını oluşturduğunuz uygulamayı (örneğin, Outlook 2010) açın ve istendiğinde uygulama parolasını yapıştırın. Bunu uygulama başına yalnızca bir kez yapmanız gerekir.
 
@@ -74,7 +74,7 @@ Uygulama parolalarını kullanırken, dikkat edilmesi önemlidir:
 
 1. **Uygulama parolaları** sayfasında, silmek istediğiniz uygulama parolasının yanındaki **Sil** ' i seçin.
 
-   ![Uygulama parolasını silme](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-delete.png)
+   ![Uygulama parolaları sayfasında uygulama parolasının silinmesini gösteren ekran görüntüsü](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-delete.png)
 
 2. Parolayı silmek istediğinizi onaylamak için **Evet** ' i seçin ve ardından **Kapat**' ı seçin.
 
@@ -86,35 +86,35 @@ Uygulama parolalarını kullanırken, dikkat edilmesi önemlidir:
 
 ### <a name="to-create-app-passwords-using-the-office-365-portal"></a>Office 365 portalını kullanarak uygulama parolaları oluşturmak için
 
-1. İş veya okul hesabınızda oturum açın, [Hesabım sayfasına](https://portal.office.com)gidin, **güvenlik & gizlilik**' i seçin ve ardından **ek güvenlik doğrulaması**' nı genişletin.
+1. İş veya okul hesabınızda oturum açın, [Hesabım sayfasına](https://myaccount.microsoft.com)gidin ve **güvenlik bilgileri**' ni seçin.
 
-    ![Genişletilmiş ek güvenlik doğrulama alanını gösteren Office portalı](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-o365-my-account-page.png)
+    ![Güvenlik bilgisi sekmesini gösteren Office portalı](media/multi-factor-authentication-end-user-app-passwords/mfa-security-info.png)
 
-2. Uygulama **Parolaları** sayfasını açmak için **Uygulama parolaları oluştur ve Yönet** ' in bulunduğu metni seçin.
+2. **Yöntem Ekle**' yi seçin, açılan listeden **uygulama parolası** ' nı seçin ve ardından **Ekle**' ye tıklayın.
 
-    ![Uygulama parolaları sayfası, uygulama parolaları sekmesi vurgulanmış şekilde](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page.png)
+    ![Güvenlik bilgileri sayfası, yöntem ekleme drowplist ile](media/multi-factor-authentication-end-user-app-passwords/mfa-add-method.png)
 
-3. **Oluştur**' u seçin, uygulama parolasını gerektiren uygulamanın adını yazın ve ardından **İleri**' yi seçin.
+3. Uygulama parolası için bir ad girin ve ardından **İleri**' yi seçin.
 
-    ![Parola gerektiren uygulama adı ile uygulama parolaları Oluştur sayfası](media/multi-factor-authentication-end-user-app-passwords/mfa-create-app-password-page.png)
+    ![Uygulama parolasının adı ile uygulama parolaları Oluştur sayfası](media/multi-factor-authentication-end-user-app-passwords/mfa-enter-app-password-name.png)
 
-4. **Uygulama parolası** sayfasından parolayı kopyalayın ve ardından **Kapat**' ı seçin.
+4. **Uygulama parolası** sayfasından parolayı kopyalayın ve ardından **bitti**' yi seçin.
 
-    ![Belirtilen uygulamanızın parolasıyla birlikte uygulama parolası sayfanız](media/multi-factor-authentication-end-user-app-passwords/mfa-your-app-password-page.png)
+    ![Yeni uygulama parolasıyla oluşturduğunuz uygulama parolası sayfası](media/multi-factor-authentication-end-user-app-passwords/mfa-copy-app-password.png)
 
-5. **Uygulama parolaları** sayfasında, uygulamanızın listelendiğinden emin olun.
+5. **Güvenlik bilgileri** sayfasında, uygulama parolanızın listelendiğinden emin olun.
 
-     ![Listede yeni uygulamayla gösterilen uygulama parolaları sayfası](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-with-new-password.png)  
+    ![Güvenlik bilgileri sayfası, yeni uygulama parolasıyla listede gösteriliyor](media/multi-factor-authentication-end-user-app-passwords/mfa-verify-app-password.png)  
 
-6. Uygulama parolasını oluşturduğunuz uygulamayı (örneğin, Outlook 2010) açın ve istendiğinde uygulama parolasını yapıştırın. Bunu uygulama başına yalnızca bir kez yapmanız gerekir.
+6. Uygulama parolasını oluşturduğunuz uygulamayı (örneğin, Outlook 2016) açın ve istendiğinde uygulama parolasını yapıştırın. Bunu uygulama başına yalnızca bir kez yapmanız gerekir.
 
-### <a name="to-delete-app-passwords-using-the-app-passwords-page"></a>Uygulama parolaları sayfasını kullanarak uygulama parolalarını silme
+### <a name="to-delete-app-passwords-using-the-security-info-page"></a>Güvenlik bilgileri sayfasını kullanarak uygulama parolalarını silmek için
 
-1. **Uygulama parolaları** sayfasında, silmek istediğiniz uygulama parolasının yanındaki **Sil** ' i seçin.
+1. **Güvenlik bilgileri** sayfasında, silmek istediğiniz uygulama parolasının yanındaki **Sil** ' i seçin.
 
-   ![Uygulama parolasını silme](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-delete.png)
+   ![Güvenlik bilgileri sayfasında uygulama parolasının silinmesini gösteren ekran görüntüsü](media/multi-factor-authentication-end-user-app-passwords/mfa-delete-app-password.png)
 
-2. Onay kutusunda **Evet** ' i seçin ve ardından **Kapat**' ı seçin.
+2. Onay kutusunda **Tamam ' ı** seçin.
 
     Uygulama parolası başarıyla silindi.
 

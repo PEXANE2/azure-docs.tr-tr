@@ -12,12 +12,12 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: 14b6d6ecc6523199102fd3ef9370fe901c4ff51d
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: d3edadd4878dbd6e06648f7fb67a0c3e111665d1
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355707"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178135"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft kimlik platformu uç noktasında izinler ve onay
 
@@ -166,10 +166,11 @@ Uygulamalar, uygulama kayıt portalı 'nda hangi izinleri (hem temsilci olarak h
 
 #### <a name="to-configure-the-list-of-statically-requested-permissions-for-an-application"></a>Bir uygulama için statik olarak istenen izinlerin listesini yapılandırmak için
 
-1. [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminde uygulamanıza gidin veya henüz yapmadıysanız [bir uygulama oluşturun](quickstart-register-app.md) .
-2. **API izinleri** bölümünü bulun ve API izinleri Içinde izin Ekle ' ye tıklayın.
-3. Kullanılabilir API 'Ler listesinden **Microsoft Graph** ' yi seçin ve ardından uygulamanızın gerektirdiği izinleri ekleyin.
-3. Uygulama kaydını **kaydedin** .
+1. <a href="https://go.microsoft.com/fwlink/?linkid=2083908" target="_blank">Azure portal uygulama kayıtları <span class="docon docon-navigate-external x-hidden-focus"></span> </a> hızlı başlangıç deneyiminde uygulamanıza gidin.
+1. Bir uygulama seçin veya henüz yapmadıysanız bir uygulama [oluşturun](quickstart-register-app.md) .
+1. Uygulamanın **genel bakış** sayfasında, **Yönet** altında, **API izinleri**  >  **izin Ekle**' yi seçin.
+1. Kullanılabilir API 'Ler listesinden **Microsoft Graph** ' yi seçin ve ardından uygulamanızın gerektirdiği izinleri ekleyin.
+1. **Izin Ekle**' yi seçin.
 
 ### <a name="recommended-sign-the-user-into-your-app"></a>Önerilir: Kullanıcı uygulamanızda Imzalanın
 

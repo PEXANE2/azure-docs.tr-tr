@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: f0620c4d373ee96c87b575ae7eb173b2f16eecb2
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: dcb8675350442274418920bb9439b65643f1b046
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013660"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178254"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Öğretici: Microsoft 'a bir ASP.NET Web uygulamasına oturum açma ekleme
 
@@ -34,7 +34,7 @@ Bu öğreticide:
 > * Uygulamayı Azure portal kaydetme
 > * Uygulamayı test etme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * **ASP.net ve Web geliştirme** iş yükü yüklü [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
 
@@ -48,7 +48,7 @@ Oluşturduğunuz örnek uygulama, kullanıcının oturum açma düğmesiyle kiml
 
 Bu kılavuz aşağıdaki kitaplıkları kullanır:
 
-|Kitaplık|Açıklama|
+|Kitaplık|Description|
 |---|---|
 |[Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/)|Uygulamanın kimlik doğrulaması için OpenIdConnect kullanmasını sağlayan ara yazılım|
 |[Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies)|Bir uygulamanın tanımlama bilgilerini kullanarak bir Kullanıcı oturumu korumasına olanak tanıyan ara yazılım|
@@ -361,7 +361,7 @@ Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze ekleme
 
 Uygulamanızı hızlı bir şekilde kaydetmek için şu adımları izleyin:
 
-1. Yeni  [Azure Portal-uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) bölmesine gidin.
+1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs" target="_blank">Azure portal uygulama kayıtları <span class="docon docon-navigate-external x-hidden-focus"></span> </a> hızlı başlangıç deneyimine gidin.  
 1. Uygulamanız için bir ad girin ve **Kaydet**'i seçin.
 1. Yeni uygulamanızı tek bir tıklama ile indirip otomatik olarak yapılandırmak için yönergeleri izleyin.
 

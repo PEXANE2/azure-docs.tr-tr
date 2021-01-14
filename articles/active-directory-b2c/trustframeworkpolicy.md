@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 354c6f9710b7cbd70e0631bc973b2482ea8d8bb3
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: a87b4c6b845006a9f9f3cf82815277c67c09bef0
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97386893"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178849"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -41,12 +41,12 @@ ms.locfileid: "97386893"
 | Öznitelik | Gerekli | Açıklama |
 |---------- | -------- | ----------- |
 | PolicySchemaVersion | Yes | İlkeyi yürütmek için kullanılacak şema sürümü. Değer şu şekilde olmalıdır `0.3.0.0` |
-| Tenantobjectıd | Hayır | Azure Active Directory B2C (Azure AD B2C) kiracının benzersiz nesne tanımlayıcısı. |
+| Tenantobjectıd | No | Azure Active Directory B2C (Azure AD B2C) kiracının benzersiz nesne tanımlayıcısı. |
 | TenantId | Yes | Bu ilkenin ait olduğu kiracının benzersiz tanımlayıcısı. |
 | PolicyId | Yes | İlke için benzersiz tanımlayıcı. Bu tanımlayıcının önüne *B2C_1A_* gelmelidir |
 | PublicPolicyUri | Yes | İlke için kiracı KIMLIĞI ve ilke KIMLIĞI birleşimi olan URI. |
-| DeploymentMode | Hayır | Olası değerler: `Production` , veya `Development` . `Production` varsayılan değerdir. İlkenizde hata ayıklamak için bu özelliği kullanın. Daha fazla bilgi için bkz. [günlükleri toplama](troubleshoot-with-application-insights.md). |
-| Kullanıcıbağlantısı Neyırecorderendpoint | Hayır | **DeploymentMode** olarak ayarlandığında kullanılan uç nokta `Development` . Değer olmalıdır `urn:journeyrecorder:applicationinsights` . Daha fazla bilgi için bkz. [günlükleri toplama](troubleshoot-with-application-insights.md). |
+| DeploymentMode | No | Olası değerler: `Production` , veya `Development` . `Production` varsayılan değerdir. İlkenizde hata ayıklamak için bu özelliği kullanın. Daha fazla bilgi için bkz. [günlükleri toplama](troubleshoot-with-application-insights.md). |
+| Kullanıcıbağlantısı Neyırecorderendpoint | No | Günlüğe kaydetme için kullanılan uç nokta. Öznitelik varsa değeri olarak ayarlanmalıdır `urn:journeyrecorder:applicationinsights` . Daha fazla bilgi için bkz. [günlükleri toplama](troubleshoot-with-application-insights.md). |
 
 
 Aşağıdaki örnek, **TrustFrameworkPolicy** öğesinin nasıl kullanılacağını gösterir:
@@ -64,7 +64,7 @@ Aşağıdaki örnek, **TrustFrameworkPolicy** öğesinin nasıl kullanılacağı
 
 **TrustFrameworkPolicy** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | BasePolicy| 0:1| Temel bir ilkenin tanımlayıcısı. |
 | [BuildingBlocks](buildingblocks.md) | 0:1 | İlkenizin yapı taşları. |
@@ -76,7 +76,7 @@ Bir ilkeyi başka bir ilkeden devralması için bir **Basepolicy** öğesi, Ilke
 
 **Basepolicy** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | --------|
 | TenantId | 1:1 | Azure AD B2C kiracınızın tanımlayıcısı. |
 | PolicyId | 1:1 | Üst ilke tanımlayıcısı. |

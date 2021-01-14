@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 8eaadc031039b22e209db1023c65da39e1e096b1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9afce964652d2bedbe105a8a750a93d2f37eef85
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483292"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179040"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>Azure depolama şifrelemesi için müşteri tarafından yönetilen anahtarlar
 
@@ -78,7 +78,7 @@ Anahtar kasasının veya yönetilen HSM 'nin kullanılması, ilişkili maliyetle
 
     Anahtar sürümü açıkça belirtildiğinde, yeni bir sürüm oluşturulduğunda depolama hesabını yeni anahtar sürümü URI 'sini kullanacak şekilde el ile güncelleştirmeniz gerekir. Depolama hesabını anahtarın yeni bir sürümünü kullanacak şekilde güncelleştirme hakkında bilgi edinmek için bkz. [Azure Key Vault depolanan müşteri tarafından yönetilen anahtarlarla şifrelemeyi yapılandırma](customer-managed-keys-configure-key-vault.md) veya [Azure Key Vault yönetilen HSM 'de (Önizleme) depolanan müşteri tarafından yönetilen anahtarlarla şifrelemeyi](customer-managed-keys-configure-key-vault-hsm.md)yapılandırma.
 
-Müşteri tarafından yönetilen bir anahtarın anahtar sürümünü güncelleştirmek, depolama hesabındaki verilerin yeniden şifrelenmesini tetiklemez. Kullanıcıdan başka bir eylem gerekli değildir.
+Anahtar sürümünü güncelleştirdiğinizde, kök şifreleme anahtarının korunması değişir, ancak Azure Depolama hesabınızdaki veriler yeniden şifrelenmez. Kullanıcıdan başka bir eylem gerekli değildir.
 
 > [!NOTE]
 > Bir anahtarı döndürmek için, uyumluluk ilkelerinize göre anahtar kasasında veya yönetilen HSM 'de anahtarın yeni bir sürümünü oluşturun. Anahtarınızı el ile döndürebilir veya bir zamanlamaya göre döndürmek için bir işlev oluşturabilirsiniz.

@@ -3,18 +3,20 @@ title: App-LUSıS Yayımla
 titleSuffix: Azure Cognitive Services
 description: Etkin LUSıS uygulamanızı oluşturma ve test etmeyi bitirdiğinizde, uç noktada yayımlayarak istemci uygulamanız için kullanılabilir hale getirin.
 services: cognitive-services
+author: aahill
 manager: nitinme
+ms.author: aahi
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 05/17/2020
-ms.openlocfilehash: b72f1fd64cca0fa77ebc486670a512c5228e1146
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/12/2021
+ms.openlocfilehash: 8db0f5fa39c7f489db0e30e98ee2684c74eee7e8
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541484"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180039"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Etkin, eğitilen uygulamanızı bir hazırlama veya üretim uç noktasına yayımlayın
 
@@ -42,9 +44,9 @@ Bu, yayımlama yuvalarını iki farklı uç noktada veya aynı sürüme sahip ol
 
 ### <a name="publishing-regions"></a>Yayımlama bölgeleri
 
-Uygulama, **Manage**  ->  **[Azure kaynaklarını](luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** Yönet sayfasından halsıs portalında eklenen Lue tahmin uç noktası kaynaklarıyla ilişkili tüm bölgelerde yayımlanır.
+Uygulama,   ->  **[Azure kaynaklarını](luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** Yönet sayfasından halsıs portalında eklenen Lue tahmin uç noktası kaynaklarıyla ilişkili tüm bölgelerde yayımlanır.
 
-Örneğin, [www.Luis.ai](https://www.luis.ai)üzerinde oluşturulan bir uygulama için, iki bölgede bir Luo kaynağı oluşturursanız, **westus** ve **eastus**ve bunları uygulamaya kaynak olarak eklerseniz, uygulama her iki bölgede da yayımlanır. LUO bölgeleri hakkında daha fazla bilgi için bkz. [bölgeler](luis-reference-regions.md).
+Örneğin, [www.Luis.ai](https://www.luis.ai)üzerinde oluşturulan bir uygulama için, iki bölgede bir Luo kaynağı oluşturursanız, **westus** ve **eastus** ve bunları uygulamaya kaynak olarak eklerseniz, uygulama her iki bölgede da yayımlanır. LUO bölgeleri hakkında daha fazla bilgi için bkz. [bölgeler](luis-reference-regions.md).
 
 > [!TIP]
 > 3 yazma bölgesi vardır. Yayımlamak istediğiniz bölgede yazmanız gerekir. Tüm bölgelerde yayımlamanız gerekiyorsa, yazma işleminizi ve elde edilen eğitilen modeli tüm 3 yazma bölgelerinde yönetmeniz gerekir.
@@ -55,7 +57,7 @@ Uygulama, **Manage**  ->  **[Azure kaynaklarını](luis-how-to-azure-subscriptio
 Yuvayı seçtikten sonra, yayımlama ayarlarını şu şekilde yapılandırın:
 
 * Yaklaşım analizi
-* [Yazım denetimi](luis-tutorial-bing-spellcheck.md) -yalnızca v2 tahmin uç noktası
+* [Yazım denetimi düzeltmesi](luis-tutorial-bing-spellcheck.md)
 * Konuşma primi
 
 Yayımladıktan sonra bu ayarlar, bölümün **Yayımlama ayarlarını** **Yönet** sayfasından gözden geçirilmek üzere kullanılabilir. Ayarları her Yayımla ile değiştirebilirsiniz. Bir yayımlamayı iptal ederseniz, yayımlama sırasında yaptığınız tüm değişiklikler de iptal edilir.
@@ -80,7 +82,32 @@ Yaklaşım analizine sahip JSON uç noktası yanıtı hakkında daha fazla bilgi
 
 ## <a name="spelling-correction"></a>Yazım denetimi düzeltmesi
 
-[!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
+V3 tahmin API 'si artık Bing yazım denetimi API 'sini destekliyor. İsteklerinizin üst bilgisinde Bing arama kaynağına anahtar ekleyerek uygulamanıza yazım denetimi ekleyebilirsiniz. Zaten bir tane varsa var olan bir Bing kaynağını kullanabilir veya bu özelliği kullanmak için [Yeni bir tane oluşturabilirsiniz](https://portal.azure.com/#create/Microsoft.BingSearch) . 
+
+|Üst bilgi anahtarı|Üst bilgi değeri|
+|--|--|
+|`mkt-bing-spell-check-key`|Kaynağınızın **anahtarlar ve uç nokta** dikey penceresinde bulunan anahtarlar|
+
+Yanlış yazılmış bir sorgu için tahmin çıkış örneği:
+
+```json
+{
+  "query": "bouk me a fliht to kayro",
+  "prediction": {
+    "alteredQuery": "book me a flight to cairo",
+    "topIntent": "book a flight",
+    "intents": {
+      "book a flight": {
+        "score": 0.9480589
+      }
+      "None": {
+        "score": 0.0332136229
+      }
+    },
+    "entities": {}
+  }
+}
+```
 
 , Azın Kullanıcı söylenişi tahminiyle önce yazım için düzeltmeler yapılır. Yanıtta yazım denetimi de dahil olmak üzere, özgün yazıdaki tüm değişiklikleri görebilirsiniz.
 

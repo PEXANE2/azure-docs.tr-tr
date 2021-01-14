@@ -2,13 +2,13 @@
 title: Kaynakları aboneliğe dağıtma
 description: Azure Resource Manager şablonunda bir kaynak grubu oluşturmayı açıklar. Ayrıca Azure abonelik kapsamındaki kaynakların nasıl dağıtılacağını gösterir.
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: 2d4bd0db32a4bf0224b9da3af6e03ca86d7b496e
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.date: 01/13/2021
+ms.openlocfilehash: ba055970a8fac71b798fca9d3c76550cb7d482a7
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95807702"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179002"
 ---
 # <a name="subscription-deployments-with-arm-templates"></a>ARM şablonlarıyla abonelik dağıtımları
 
@@ -142,7 +142,8 @@ Bir aboneliğe dağıtırken, kaynakların dağıtımını yapabilirsiniz:
 * Kiracıdaki tüm abonelikler
 * abonelik veya diğer abonelikler içindeki kaynak grupları
 * abonelik için kiracı
-* [uzantı kaynakları](scope-extension-resources.md) , kaynaklara uygulanabilir
+
+[Uzantı kaynağı](scope-extension-resources.md) , dağıtım hedefinden farklı bir hedef kapsamına eklenebilir.
 
 Şablonu dağıtan kullanıcının belirtilen kapsama erişimi olmalıdır.
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: a084fd4c06dec61ee62df4f950cc6317f717d591
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 532fcc7db849af192ceddb1c239e99f31a2a3088
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011824"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178475"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Hızlı başlangıç: bir JavaScript SPA 'da Kullanıcı oturumu açma ve erişim belirteci edinme
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, JavaScript tek sayfalı uygulamanın (SPA) kullanıc�
 
 Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Node.js](https://nodejs.org/en/download/)
@@ -37,9 +37,7 @@ Bu hızlı başlangıçta, JavaScript tek sayfalı uygulamanın (SPA) kullanıc�
 >
 > ### <a name="option-1-express-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Seçenek 1 (Express): uygulamanızı kaydedin ve otomatik olarak yapılandırın ve ardından kod örneğinizi indirin
 >
-> 1. Bir iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a> oturum açın.
-> 1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst kısımdaki hesabı seçin ve ardından Portal oturumunuzu kullanmak istediğiniz Azure Active Directory (Azure AD) kiracısına ayarlayın.
-> 1. Yeni [Azure Portal-uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) bölmesine gidin.
+> 1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Azure portal uygulama kayıtları <span class="docon docon-navigate-external x-hidden-focus"></span> </a> hızlı başlangıç deneyimine gidin.
 > 1. Uygulamanız için bir ad girin.
 > 1. **Desteklenen hesap türleri** altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
 > 1. **Kaydet**’i seçin.
@@ -109,7 +107,7 @@ Bu hızlı başlangıçta, JavaScript tek sayfalı uygulamanın (SPA) kullanıc�
 
 > [!div renderon="docs"]
 >
-> Konum:
+> Burada:
 > - *\<Enter_the_Application_Id_Here>* , kaydettiğiniz uygulamanın **uygulama (istemci) kimliğidir** .
 > - *\<Enter_the_Cloud_Instance_Id_Here>* , Azure bulutu örneğidir. Ana veya küresel Azure bulutu için yalnızca girmeniz yeterlidir *https://login.microsoftonline.com* . **Ulusal** bulutlar (örneğin, Çin) için bkz. [Ulusal bulutlar](./authentication-national-cloud.md).
 > - *\<Enter_the_Tenant_info_here>* Aşağıdaki seçeneklerden birine ayarlanır:
@@ -143,7 +141,7 @@ Bu hızlı başlangıçta, JavaScript tek sayfalı uygulamanın (SPA) kullanıc�
 
 > [!div renderon="docs"]
 >
-> Konum:
+> Burada:
 > - *\<Enter_the_Graph_Endpoint_Here>* , API çağrılarının üzerinde hale getirilme bitiş noktasıdır. Ana veya küresel Microsoft Graph API hizmeti için yalnızca girmeniz yeterlidir `https://graph.microsoft.com` . Daha fazla bilgi için bkz. [Ulusal bulut dağıtımı](/graph/deployments)
 >
 > #### <a name="step-4-run-the-project"></a>4. Adım: projeyi çalıştırma
@@ -204,7 +202,7 @@ Hızlı başlangıç kodu ayrıca MSAL kitaplığının nasıl başlatılacağı
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
 
-> |Konum  | Açıklama |
+> |Konum  | Description |
 > |---------|---------|
 > |`clientId`     | Azure portal kayıtlı uygulamanın uygulama KIMLIĞI.|
 > |`authority`    | Seçim Daha önce yapılandırma bölümünde açıklandığı gibi, hesap türlerini destekleyen yetkili URL 'SI. Varsayılan yetkili `https://login.microsoftonline.com/common` . |
@@ -232,7 +230,7 @@ myMSALObj.loginPopup(loginRequest)
 });
 ```
 
-> |Konum  | Açıklama |
+> |Konum  | Description |
 > |---------|---------|
 > | `scopes`   | Seçim Oturum açma sırasında kullanıcı onayı için istenen kapsamları içerir. Örneğin, `[ "user.read" ]` Microsoft Graph veya `[ "<Application ID URL>/scope" ]` özel Web API 'leri için (yani, `api://<Application ID>/access_as_user` ). |
 
@@ -262,13 +260,13 @@ myMSALObj.acquireTokenSilent(tokenRequest)
     });
 ```
 
-> |Konum  | Açıklama |
+> |Konum  | Description |
 > |---------|---------|
 > | `scopes`   | API için erişim belirtecine döndürülmek istenen kapsamları içerir. Örneğin, `[ "mail.read" ]` Microsoft Graph veya `[ "<Application ID URL>/scope" ]` özel Web API 'leri için (yani, `api://<Application ID>/access_as_user` ).|
 
 #### <a name="get-a-user-token-interactively"></a>Etkileşimli olarak kullanıcı belirteci alma
 
-Kullanıcıları Microsoft Identity platform uç noktasıyla etkileşimde bulunmak için zorlamanız gereken durumlar vardır. Örneğin:
+Kullanıcıları Microsoft Identity platform uç noktasıyla etkileşimde bulunmak için zorlamanız gereken durumlar vardır. Örnek:
 * Parolasının süresi sona erdiği için kullanıcıların kimlik bilgilerini yeniden girmesi gerekebilir.
 * Uygulamanız, kullanıcının onaylaması gereken ek kaynak kapsamlarına erişim istiyor.
 * İki öğeli kimlik doğrulaması gereklidir.

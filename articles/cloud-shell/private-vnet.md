@@ -14,16 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: damaerte
-ms.openlocfilehash: 722d935c242a51ddfc01377676f026b71a8951b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a820fb4ec5d6c2053b1104b68dbda0ae70f624c0
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89468547"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179206"
 ---
 # <a name="deploy-cloud-shell-into-an-azure-virtual-network"></a>Azure sanal ağına Cloud Shell dağıtma
-> [!NOTE]
-> Bu işlevsellik genel önizlemede.
 
 Düzenli bir Cloud Shell oturumu, Microsoft ağındaki bir kapsayıcıda kaynaklarınızdan ayrı çalışır. Bu, kapsayıcının içinde çalışan komutların yalnızca belirli bir sanal ağdan erişilebilen kaynaklara erişemeyeceği anlamına gelir. Örneğin, Cloud Shell 'dan yalnızca özel bir IP adresine sahip bir sanal makineye bağlanmak için SSH kullanamaz veya bir kubectl kullanarak erişimi kilitleyen bir Kubernetes kümesine bağlanabilirsiniz. 
 
@@ -64,7 +62,7 @@ Standart Cloud Shell itibariyle, bir sanal ağda Cloud Shell kullanılırken bir
 ## <a name="virtual-network-deployment-limitations"></a>Sanal ağ dağıtım sınırlamaları
 * Dahil edilen ek ağ kaynakları nedeniyle, bir sanal ağdaki Cloud Shell başlatmak genellikle standart bir Cloud Shell oturumundan daha yavaştır.
 
-* Önizleme sırasında, bir sanal ağda Cloud Shell için daha az bölge desteklenir. Bu şu anda şu şekilde sınırlıdır: WestUS ve WestCentralUS.
+* Orta Hindistan dışında tüm Cloud Shell bölgeleri Şu anda destekleniyor. 
 
 * [Azure Relay](../azure-relay/relay-what-is-it.md) ücretsiz bir hizmet değil, lütfen [fiyatlandırmasını](https://azure.microsoft.com/pricing/details/service-bus/)görüntüleyin. Cloud Shell senaryosunda, her yönetici için Cloud Shell kullanılırken bir karma bağlantı kullanılır. Cloud Shell oturumu tamamlandıktan sonra bağlantı otomatik olarak kapatılacak.
 

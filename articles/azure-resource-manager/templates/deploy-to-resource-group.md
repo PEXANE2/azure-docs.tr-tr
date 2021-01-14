@@ -2,13 +2,13 @@
 title: Kaynakları kaynak gruplarına dağıtma
 description: Azure Resource Manager şablonunda kaynakların nasıl dağıtılacağını açıklar. Birden fazla kaynak grubunun nasıl hedeflenecek gösterilmektedir.
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: 9d0bec51fa55ee377eb647a11fb554ec3b81e9eb
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.date: 01/13/2021
+ms.openlocfilehash: 8fe503cc95d71772c07427438b17e2ff0d4620a7
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95807718"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178900"
 ---
 # <a name="resource-group-deployments-with-arm-templates"></a>ARM şablonlarıyla kaynak grubu dağıtımları
 
@@ -85,7 +85,8 @@ Bir kaynak grubuna dağıtırken, kaynakların dağıtımını yapabilirsiniz:
 * aynı abonelikte veya diğer aboneliklerdeki diğer kaynak grupları
 * Kiracıdaki tüm abonelikler
 * kaynak grubu için kiracı
-* [uzantı kaynakları](scope-extension-resources.md) , kaynaklara uygulanabilir
+
+[Uzantı kaynağı](scope-extension-resources.md) , dağıtım hedefinden farklı bir hedef kapsamına eklenebilir.
 
 Şablonu dağıtan kullanıcının belirtilen kapsama erişimi olmalıdır.
 

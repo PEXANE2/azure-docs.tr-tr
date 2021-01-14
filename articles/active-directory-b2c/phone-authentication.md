@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9d4fa80f669493e4dc47a9ad0f9bfe9390d4ab24
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 8d41f8959d0a1ec0d6e48cf2fa4711a8ef8d8ae5
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953585"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178951"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>Azure AD B2C özel ilkelerle telefon kayıt ve oturum açma ayarlama
 
@@ -39,7 +39,7 @@ Telefon kayıt ve oturum açma ile Kullanıcı, birincil tanımlayıcıları ola
 >
 > *&lt;Ekle: Gizlilik Bildiriinize bir bağlantı&gt;*<br/>*&lt;Ekle: hizmet koşullarınıza bir bağlantı&gt;*
 
-Kendi onay bilgilerinizi eklemek için aşağıdaki örneği özelleştirin ve görüntüleme denetimiyle birlikte kendi kendini onaylanan sayfa tarafından kullanılan ContentDefinition için LocalizedResources öğesine ekleyin (telefon kayıt & oturum açma paketinin Phone-Email-Base.xml dosyası):
+Kendi onay bilgilerinizi eklemek için aşağıdaki örneği özelleştirin ve görüntüleme denetimiyle ( [Telefon kayıt ve oturum açma başlangıç paketindeki][starter-pack-phone] *Phone_Email_Base.xml* dosyası), kendi kendini onaylanan sayfa tarafından kullanılan ContentDefinition için localizedresources içine dahil edin:
 
 ```xml
 <LocalizedResources Id="phoneSignUp.en">        

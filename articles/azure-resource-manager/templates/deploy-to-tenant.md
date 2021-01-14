@@ -2,13 +2,13 @@
 title: Kaynakları kiracıya dağıtma
 description: Azure Resource Manager şablonundaki kiracı kapsamındaki kaynakların nasıl dağıtılacağını açıklar.
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: 5733c5d6eb6cbd86207589244c22badc17fe7073
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.date: 01/13/2021
+ms.openlocfilehash: a397678488921744f076d93235304c8d217d961f
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95807644"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178968"
 ---
 # <a name="tenant-deployments-with-arm-templates"></a>ARM şablonlarıyla kiracı dağıtımları
 
@@ -145,7 +145,8 @@ Bir kiracıya dağıtırken kaynakların dağıtımını yapabilirsiniz:
 * kiracının içindeki yönetim grupları
 * Aboneliklerin
 * kaynak grupları
-* [uzantı kaynakları](scope-extension-resources.md) , kaynaklara uygulanabilir
+
+[Uzantı kaynağı](scope-extension-resources.md) , dağıtım hedefinden farklı bir hedef kapsamına eklenebilir.
 
 Şablonu dağıtan kullanıcının belirtilen kapsama erişimi olmalıdır.
 

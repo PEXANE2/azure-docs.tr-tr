@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/13/2020
+ms.date: 01/13/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 47a2aae39be93361e1e0e581efb56cc678b444cd
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: ff2408e35d76a6ea0d5221e04c7a41ed6cde7ac9
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549098"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178985"
 ---
 # <a name="object-replication-for-block-blobs"></a>Blok Blobları için nesne çoğaltma
 
@@ -89,6 +89,16 @@ Bir çoğaltma kuralı oluşturduğunuzda, varsayılan olarak yalnızca kaynak k
 Ayrıca, blok bloblarını ön eke göre filtrelemek için bir çoğaltma kuralının bir parçası olarak bir veya daha fazla filtre belirtebilirsiniz. Bir ön ek belirttiğinizde, yalnızca kaynak kapsayıcıda bu önekle eşleşen Bloblar hedef kapsayıcıya kopyalanacaktır.
 
 Kaynak ve hedef kapsayıcıların her ikisi de bir kuralda belirtmeleri için mevcut olmalıdır. Çoğaltma ilkesini oluşturduktan sonra hedef kapsayıcı salt okunur duruma gelir. Hedef kapsayıcıya yazma girişimleri hata kodu 409 (Çakışma) vererek başarısız olur. Ancak, [BLOB katmanını ayarla](/rest/api/storageservices/set-blob-tier) işlemini arşiv katmanına taşımak için hedef kapsayıcıdaki bir blob üzerinde çağırabilirsiniz. Arşiv katmanı hakkında daha fazla bilgi için bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](storage-blob-storage-tiers.md#archive-access-tier).
+
+## <a name="replication-status"></a>Çoğaltma durumu
+
+Kaynak hesaptaki bir Blobun çoğaltma durumunu kontrol edebilirsiniz. Daha fazla bilgi için bkz. [bir Blobun çoğaltma durumunu denetleme](object-replication-configure.md#check-the-replication-status-of-a-blob).
+
+Kaynak hesaptaki bir Blobun çoğaltma durumu hata gösteriyorsa, aşağıdaki olası nedenleri araştırın:
+
+- Hedef hesapta nesne çoğaltma ilkesinin yapılandırıldığından emin olun.
+- Hedef kapsayıcının hala mevcut olduğunu doğrulayın.
+- Kaynak blobu, yazma işleminin bir parçası olarak müşteri tarafından sağlanmış bir anahtarla şifrelendiyse, nesne çoğaltma başarısız olur. Müşteri tarafından sunulan anahtarlar hakkında daha fazla bilgi için bkz. [BLOB depolama için istekte bir şifreleme anahtarı sağlama](encryption-customer-provided-keys.md).
 
 ## <a name="billing"></a>Faturalandırma
 

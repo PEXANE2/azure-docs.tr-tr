@@ -13,12 +13,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 766035490c96d42de33d0b27d976b8e56ba50993
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 2fbff2abeb454fe02aa4bd50615033b9a0b7f27b
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017502"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178611"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Hızlı başlangıç: Kullanıcı oturum açma ve iOS veya macOS uygulamasından Microsoft Graph API 'sini çağırma
 
@@ -26,7 +26,7 @@ Bu hızlı başlangıçta, yerel bir iOS veya macOS uygulamasının kullanıcıl
 
 Hızlı başlangıç, hem iOS hem de macOS uygulamaları için geçerlidir. Bazı adımlar yalnızca iOS uygulamaları için gereklidir ve bu şekilde belirtilecektir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * XCode 10 +
@@ -46,7 +46,7 @@ Hızlı başlangıç, hem iOS hem de macOS uygulamaları için geçerlidir. Baz�
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-the-code-sample"></a>1. seçenek: uygulamanızı kaydedin ve otomatik olarak yapılandırın ve ardından kod örneğini indirin
 > #### <a name="step-1-register-your-application"></a>1. Adım: Uygulamanızı kaydetme
 > Uygulamanızı kaydetmek için
-> 1. Yeni [Azure Portal-uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/IosQuickstartPage/sourceType/docs) bölmesine gidin.
+> 1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/IosQuickstartPage/sourceType/docs" target="_blank">Azure portal uygulama kayıtları <span class="docon docon-navigate-external x-hidden-focus"></span> </a> hızlı başlangıç deneyimine gidin.
 > 1. Uygulamanız için bir ad girin ve **Kaydet**'i seçin.
 > 1. Yönergeleri izleyerek yeni uygulamanızı yalnızca tek tıklamayla indirin ve otomatik olarak yapılandırın.
 >
@@ -64,7 +64,7 @@ Hızlı başlangıç, hem iOS hem de macOS uygulamaları için geçerlidir. Baz�
 > 1. **Yönet**' in altında **kimlik doğrulama**  >  **platformu Ekle**  >  **iOS**' u seçin.
 > 1. Uygulamanız için **paket kimliğini** girin. Paket tanıtıcısı, uygulamanızı benzersiz bir şekilde tanımlayan benzersiz bir dizedir (örneğin,) `com.<yourname>.identitysample.MSALMacOS` . Kullandığınız değeri bir yere getirin. İOS yapılandırmasının macOS uygulamaları için de geçerli olduğunu unutmayın.
 > 1. Bu hızlı başlangıçta yapılandırma ve **msal yapılandırma** ayrıntılarını Kaydet ' **i seçin.**
-> 1. **Bitti**’yi seçin.
+> 1. **Bitti** seçeneğini belirleyin.
 
 > [!div renderon="portal" class="sxs-lookup"]
 >
@@ -178,7 +178,7 @@ let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID, r
 self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
 ```
 
-> |Konum: | Açıklama |
+> |Burada: | Description |
 > |---------|---------|
 > | `clientId` | _Portal. Azure. com * ' de kayıtlı uygulamadan uygulama KIMLIĞI |
 > | `authority` | Microsoft Identity platform uç noktası. Çoğu durumda bu durum `https://login.microsoftonline.com/common` |
@@ -242,7 +242,7 @@ let parameters = MSALInteractiveTokenParameters(scopes: kScopes, webviewParamete
 self.applicationContext!.acquireToken(with: parameters) { (result, error) in /* Add your handling logic */}
 ```
 
-> |Konum:| Açıklama |
+> |Burada:| Description |
 > |---------|---------|
 > | `scopes` | İstenen kapsamları içerir (yani `[ "user.read" ]` Microsoft Graph veya `[ "<Application ID URL>/scope" ]` özel Web API 'leri için ( `api://<Application ID>/access_as_user` ) |
 
@@ -262,7 +262,7 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 }
 ```
 
-> |Konum: | Açıklama |
+> |Burada: | Description |
 > |---------|---------|
 > | `scopes` | İstenen kapsamları içerir (yani `[ "user.read" ]` Microsoft Graph veya `[ "<Application ID URL>/scope" ]` özel Web API 'leri için ( `api://<Application ID>/access_as_user` ) |
 > | `account` | Belirtecin istendiği hesap. Bu hızlı başlangıç, tek bir hesap uygulaması hakkında. Çok sunuculu bir uygulama oluşturmak istiyorsanız, kullanarak belirteç istekleri için hangi hesabın kullanılacağını belirlemek `accountsFromDeviceForParameters:completionBlock:` ve doğru geçirme yapmak için Logic tanımlamanız gerekir `accountIdentifier` |

@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/20/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 448f2b3e42e98d78652a005f5d1c11f55acdebb3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f0d912d5b14932c43d109f8f955d5f16381cf773
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021193"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180107"
 ---
 # <a name="quickstart-create-a-search-index-using-the-azuresearchdocuments-client-library"></a>Hızlı başlangıç: Azure.Search.Documstalar istemci kitaplığını kullanarak arama dizini oluşturma
 
@@ -26,7 +26,7 @@ Tamamlanmış bir projeden başlamak için [kaynak kodu indirebilir](https://git
 > [!NOTE]
 > Daha önceki bir sürüm mi arıyorsunuz? Bunun yerine [Microsoft. Azure. Search ile v10 arasındaki kullanarak arama dizini oluşturma](search-get-started-dotnet-v10.md) konusuna bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, aşağıdaki araçlara ve hizmetlere sahip olursunuz:
 
@@ -396,9 +396,9 @@ Bu bölüm iki işlev parçasını ekler: Sorgu mantığı ve sonuçları. Sorgu
 
         response = srchclient.Search<Hotel>("*", options);
         WriteDocuments(response);
-        ```
+    ```
 
-1. In the second query, search on a term, add a filter that selects documents where Rating is greater than 4, and then sort by Rating in descending order. Filter is a boolean expression that is evaluated over [IsFilterable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable) fields in an index. Filter queries either include or exclude values. As such, there is no relevance score associated with a filter query. 
+1. İkinci sorguda bir dönemde arama yapın, derecelendirmenin 4 ' ten büyük olduğu belgeleri seçen bir filtre ekleyin ve sonra derecelendirmeye göre azalan sırada sıralayın. Filtre, bir dizindeki [ısfilterable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable) alanları üzerinde değerlendirilen bir Boole deyimidir. Filtre sorguları, değerleri dahil etme veya hariç tutma. Bu nedenle, bir filtre sorgusuyla ilişkili bir ilgi puanı yoktur. 
 
     ```csharp
     Console.WriteLine("Query #2: Search on 'hotels', filter on 'Rating gt 4', sort by Rating in descending order...\n");

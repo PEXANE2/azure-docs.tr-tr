@@ -6,15 +6,15 @@ ms.service: storage
 ms.topic: how-to
 ms.author: jukullam
 ms.reviewer: dineshm
-ms.date: 09/11/2020
+ms.date: 01/11/2021
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 544b22e3395cacf0cc2e7a21e4b86325a8f4d236
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: d8727bd747ef6d035cabbccf2ad42b80937a06a8
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605267"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180219"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>Azure Storage 'da statik Web sitenizi dağıtmak için bir GitHub eylemleri iş akışı ayarlama
 
@@ -90,10 +90,10 @@ Yukarıdaki örnekte yer tutucuları abonelik KIMLIĞINIZ ve kaynak grubu adıyl
     name: CI
 
     on:
-    push:
-        branches: [ master ]
-    pull_request:
-        branches: [ master ]
+        push:
+            branches: [ master ]
+        pull_request:
+            branches: [ master ]
     ```
 
 1. İş akışınızı yeniden adlandırın `Blob storage website CI` ve kullanıma alma ve oturum açma eylemlerini ekleyin. Bu eylemler, site kodunuzu kullanıma alacak ve `AZURE_CREDENTIALS` daha önce oluşturduğunuz GitHub gizliliğini kullanarak Azure ile kimlik doğrulamasından acaktır. 
@@ -102,10 +102,10 @@ Yukarıdaki örnekte yer tutucuları abonelik KIMLIĞINIZ ve kaynak grubu adıyl
     name: Blob storage website CI
 
     on:
-    push:
-        branches: [ master ]
-    pull_request:
-        branches: [ master ]
+        push:
+            branches: [ master ]
+        pull_request:
+            branches: [ master ]
 
     jobs:
       build:
@@ -114,21 +114,21 @@ Yukarıdaki örnekte yer tutucuları abonelik KIMLIĞINIZ ve kaynak grubu adıyl
         - uses: actions/checkout@v2
         - uses: azure/login@v1
           with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+              creds: ${{ secrets.AZURE_CREDENTIALS }}
     ```
 
 1. Kodunuzu blob depolamaya yüklemek ve CDN uç noktanızı temizlemek için Azure CLı eylemini kullanın. İçin `az storage blob upload-batch` , yer tutucusunu depolama hesabınızın adıyla değiştirin. Betik `$web` kapsayıcıya yükleyecek. İçin `az cdn endpoint purge` , yer TUTUCULARı CDN profil adınız, CDN uç noktası adı ve kaynak grubuyla değiştirin.
 
     ```yaml
         - name: Upload to blob storage
-        uses: azure/CLI@v1
-        with:
+          uses: azure/CLI@v1
+          with:
             azcliversion: 2.0.72
             inlineScript: |
                 az storage blob upload-batch --account-name <STORAGE_ACCOUNT_NAME> -d '$web' -s .
         - name: Purge CDN endpoint
-        uses: azure/CLI@v1
-        with:
+          uses: azure/CLI@v1
+          with:
             azcliversion: 2.0.72
             inlineScript: |
             az cdn endpoint purge --content-paths  "/*" --profile-name "CDN_PROFILE_NAME" --name "CDN_ENDPOINT" --resource-group "RESOURCE_GROUP"
@@ -137,36 +137,37 @@ Yukarıdaki örnekte yer tutucuları abonelik KIMLIĞINIZ ve kaynak grubu adıyl
 1. Azure oturumunu kapatmak için bir eylem ekleyerek iş akışınızı doldurun. Tamamlanan iş akışı aşağıda verilmiştir. Dosya, `.github/workflows` deponuzdaki klasörde görüntülenir.
 
     ```yaml
-   name: Blob storage website CI
+    name: Blob storage website CI
 
     on:
-    push:
-        branches: [ master ]
-    pull_request:
-        branches: [ master ]
+        push:
+            branches: [ master ]
+        pull_request:
+            branches: [ master ]
 
     jobs:
-    build:
+      build:
         runs-on: ubuntu-latest
-        steps:
+        steps:            
         - uses: actions/checkout@v2
-        - name: Azure Login
-        uses: azure/login@v1
-        with:
-            creds: ${{ secrets.AZURE_CREDENTIALS }}    
-        - name: Azure CLI script
-        uses: azure/CLI@v1
-        with:
+        - uses: azure/login@v1
+          with:
+              creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+        - name: Upload to blob storage
+          uses: azure/CLI@v1
+          with:
             azcliversion: 2.0.72
             inlineScript: |
                 az storage blob upload-batch --account-name <STORAGE_ACCOUNT_NAME> -d '$web' -s .
-        - name: Azure CLI script
-        uses: azure/CLI@v1
-        with:
+        - name: Purge CDN endpoint
+          uses: azure/CLI@v1
+          with:
             azcliversion: 2.0.72
             inlineScript: |
             az cdn endpoint purge --content-paths  "/*" --profile-name "CDN_PROFILE_NAME" --name "CDN_ENDPOINT" --resource-group "RESOURCE_GROUP"
-            # Azure logout 
+      
+      # Azure logout 
         - name: logout
           run: |
                 az logout

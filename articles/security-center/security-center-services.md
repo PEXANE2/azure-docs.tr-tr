@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: f5d6d6255b48192a5943159599531fac18ebeb26
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: f3d1918eafe8d61d9c5a7db3f29b83b5412914c0
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797001"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179568"
 ---
 # <a name="feature-coverage-for-machines"></a>Makineler için özellik kapsamı
 
@@ -45,9 +45,9 @@ Aşağıdaki iki sekmede, Azure Güvenlik Merkezi 'nin Windows ve Linux sanal ma
 |Eksik işletim sistemi düzeltme ekleri değerlendirmesi|✔|✔|✔|Azure: Hayır<br><br>Yay etkin: Evet|
 |Güvenlik yapılandırması hataları değerlendirmesi|✔|✔|✔|Azure: Hayır<br><br>Yay etkin: Evet|
 |[Endpoint Protection değerlendirmesi](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: Hayır<br><br>Yay etkin: Evet|
-|Disk şifrelemesi değerlendirmesi|✔</br>( [desteklenen senaryolar](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)için)|✔|-|Hayır|
-|Üçüncü taraf güvenlik açığı değerlendirmesi|✔|-|✔|Hayır|
-|[Ağ güvenlik değerlendirmesi](security-center-network-recommendations.md)|✔|✔|-|Hayır|
+|Disk şifrelemesi değerlendirmesi|✔</br>( [desteklenen senaryolar](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)için)|✔|-|No|
+|Üçüncü taraf güvenlik açığı değerlendirmesi|✔|-|✔|No|
+|[Ağ güvenlik değerlendirmesi](security-center-network-recommendations.md)|✔|✔|-|No|
 
 
 ### <a name="linux-machines"></a>[**Linux makineleri**](#tab/features-linux)
@@ -68,10 +68,10 @@ Aşağıdaki iki sekmede, Azure Güvenlik Merkezi 'nin Windows ve Linux sanal ma
 |Docker ile barındırılan IaaS kapsayıcıları üzerinde öneriler ve tehdit koruması|✔|✔|✔|Yes|
 |Eksik işletim sistemi düzeltme ekleri değerlendirmesi|✔|✔|✔|Azure: Hayır<br><br>Yay etkin: Evet|
 |Güvenlik yapılandırması hataları değerlendirmesi|✔|✔|✔|Azure: Hayır<br><br>Yay etkin: Evet|
-|[Endpoint Protection değerlendirmesi](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Hayır|
-|Disk şifrelemesi değerlendirmesi|✔</br>( [desteklenen senaryolar](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)için)|✔|-|Hayır|
-|Üçüncü taraf güvenlik açığı değerlendirmesi|✔|-|✔|Hayır|
-|[Ağ güvenlik değerlendirmesi](security-center-network-recommendations.md)|✔|✔|-|Hayır|
+|[Endpoint Protection değerlendirmesi](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|No|
+|Disk şifrelemesi değerlendirmesi|✔</br>( [desteklenen senaryolar](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)için)|✔|-|No|
+|Üçüncü taraf güvenlik açığı değerlendirmesi|✔|-|✔|No|
+|[Ağ güvenlik değerlendirmesi](security-center-network-recommendations.md)|✔|✔|-|No|
 
 --- 
 
@@ -96,8 +96,8 @@ Bu korumaların her biri için önerilerin ne zaman oluşturulduğu hakkında bi
 | Trend Micro – derin güvenlik | Windows Server Ailesi  | Hayır | Yes |
 | Symantec v12.1.1100+| Windows Server Ailesi  | Hayır | Yes |
 | McAfee v10+ | Windows Server Ailesi  | Hayır | Yes |
-| McAfee v10+ | Linux sunucu ailesi  | Hayır | Evet * *\** _ |
-| Sophos v9 +| Linux sunucu ailesi  | Hayır | Yes  _*\**_  |
+| McAfee v10+ | Linux sunucu ailesi  | No | Evet * *\** _ |
+| Sophos v9 +| Linux sunucu ailesi  | No | Yes  _*\**_  |
 
  _*\**_ Kapsam durumu ve destekleyici veriler şu anda yalnızca korunan aboneliklerinizle ilişkili olan Log Analytics çalışma alanında kullanılabilir. Azure Güvenlik Merkezi portalında yansıtılmaz.
 
@@ -132,7 +132,7 @@ Bu korumaların her biri için önerilerin ne zaman oluşturulduğu hakkında bi
 |[Resource Manager için Azure Defender](defender-for-resource-manager-introduction.md)|-|-|
 |[DNS için Azure Defender](defender-for-dns-introduction.md)|-|-|
 |[Kubernetes için Azure Defender](defender-for-kubernetes-introduction.md)|✔|✔|
-|[Kapsayıcı kayıt defterleri için Azure Defender](defender-for-container-registries-introduction.md)|✔ (2)|-|
+|[Kapsayıcı kayıt defterleri için Azure Defender](defender-for-container-registries-introduction.md)|✔ (2)|✔ (2)|
 |||
 
 (1)*sunucular için _ Azure Defender* gerektirir*

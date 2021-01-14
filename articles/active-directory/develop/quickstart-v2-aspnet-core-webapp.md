@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 34af3a7b6c3dd9420c07b6b29ff114b8139fea39
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 293a8d8b8add37f78e5a900b093ec89e95851aec
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011977"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178645"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Hızlı başlangıç: Microsoft 'a ASP.NET Core Web uygulamasına oturum açma ekleme
 
@@ -26,7 +26,7 @@ Bu hızlı başlangıçta, bir ASP.NET Core Web uygulamasının kullanıcılara 
 Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.
 
 > [!div renderon="docs"]
-> ## <a name="prerequisites"></a>Önkoşullar
+> ## <a name="prerequisites"></a>Ön koşullar
 >
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) veya [Visual Studio Code](https://code.visualstudio.com/)
 > * [.NET Core SDK 3.1 +](https://dotnet.microsoft.com/download)
@@ -38,7 +38,7 @@ Bu hızlı başlangıçta, bir ASP.NET Core Web uygulamasının kullanıcılara 
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1. Seçenek: Uygulamanızı otomatik olarak kaydedip yapılandırın ve ardından kod örneğinizi indirin
 >
-> 1. [Azure portal uygulama kayıtları](https://aka.ms/aspnetcore2-1-aad-quickstart-v2)gidin.
+> 1. <a href="https://aka.ms/aspnetcore2-1-aad-quickstart-v2/" target="_blank">Azure portal uygulama kayıtları <span class="docon docon-navigate-external x-hidden-focus"></span> </a> hızlı başlangıç deneyimine gidin.
 > 1. Uygulamanız için bir ad girin ve **Kaydet**'i seçin.
 > 1. Yönergeleri izleyerek yeni uygulamanızı tek tıkla indirin ve otomatik olarak yapılandırın.
 >
@@ -52,11 +52,11 @@ Bu hızlı başlangıçta, bir ASP.NET Core Web uygulamasının kullanıcılara 
 > 1. **Azure Active Directory**'yi bulun ve seçin.
 > 1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
 > 1. Uygulamanız için bir **ad** girin (örneğin,) `AspNetCore-Quickstart` . Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
-> 1. **Yeniden yönlendirme URI 'si** girin`https://localhost:44321/`
+> 1. **Yeniden yönlendirme URI 'si** girin `https://localhost:44321/` .
 > 1. **Kaydet**’i seçin.
 > 1. **Yönet** altında **kimlik doğrulaması**' nı seçin.
-> 1. **Yeniden yönlendirme URI 'leri** altında **URI Ekle**' yi seçin ve ardından şunu girin`https://localhost:44321/signin-oidc`
-> 1. **Oturum kapatma URL 'si** girin`https://localhost:44321/signout-oidc`
+> 1. **Yeniden yönlendirme URI 'leri** altında **URI Ekle**' yi seçin ve ardından girin `https://localhost:44321/signin-oidc` .
+> 1. Bir **oturum kapatma URL 'si** girin `https://localhost:44321/signout-oidc` .
 > 1. **Örtük onay**'ın altında **Kimlik belirteçleri**'ni seçin.
 > 1. **Kaydet**’i seçin.
 
@@ -150,7 +150,7 @@ Bu bölüm, kullanıcıların oturum açması için gereken koda genel bir bakı
 
 İçeren çizgi, `.AddMicrosoftIdentityWebApp` uygulamanıza Microsoft Identity platform kimlik doğrulaması ekler. Daha sonra `AzureAD` , yapılandırma dosyası *appsettings.js* bölümündeki bilgileri temel alarak Microsoft Identity platform uç noktasını kullanarak oturum açmak için yapılandırılır:
 
-| *appsettings.js* anahtarda | Açıklama                                                                                                                                                          |
+| *appsettings.js* anahtarda | Description                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `ClientId`             | Azure portal kayıtlı uygulamanın **uygulama (istemci) kimliği** .                                                                                       |
 | `Instance`             | Kullanıcının kimlik doğrulaması için güvenlik belirteci hizmeti (STS) uç noktası. Bu değer genellikle `https://login.microsoftonline.com/` Azure genel bulutu 'nı gösterir. |

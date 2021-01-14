@@ -2,13 +2,13 @@
 title: Kaynakları yönetim grubuna dağıtma
 description: Azure Resource Manager şablonundaki yönetim grubu kapsamındaki kaynakların nasıl dağıtılacağını açıklar.
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: 79cdb35de40501dfc0794155dcf807cced94bfa7
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.date: 01/13/2021
+ms.openlocfilehash: f847e481670d7f9afd4b40cfb8fcbec65d1e28c8
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95798601"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178934"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>ARM şablonlarıyla yönetim grubu dağıtımları
 
@@ -123,7 +123,8 @@ Bir yönetim grubuna dağıtırken, kaynakların dağıtımını yapabilirsiniz:
 * Yönetim grubundaki abonelikler
 * Yönetim grubundaki kaynak grupları
 * kaynak grubu için kiracı
-* [uzantı kaynakları](scope-extension-resources.md) , kaynaklara uygulanabilir
+
+[Uzantı kaynağı](scope-extension-resources.md) , dağıtım hedefinden farklı bir hedef kapsamına eklenebilir.
 
 Şablonu dağıtan kullanıcının belirtilen kapsama erişimi olmalıdır.
 

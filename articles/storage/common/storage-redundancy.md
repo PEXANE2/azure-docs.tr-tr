@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/08/2021
+ms.date: 01/13/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 60ae6eb3142f8898f760027d37881ded8261f571
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 3c0b466a7db688ed3e24441f652f6a1ef1a88ee1
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108101"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180090"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Depolama yedekliliği
 
@@ -155,7 +155,7 @@ Aşağıdaki tabloda her artıklık seçeneği için anahtar parametreleri açı
 | Belirli bir yıl boyunca nesnelerin yüzde dayanıklılığı | en az% 99,999999999 (11 9) | en az% 99,9999999999 (12 9) | en az% 99.99999999999999 (16 9) | en az% 99.99999999999999 (16 9) |
 | Okuma istekleri için kullanılabilirlik | En az% 99,9 (Seyrek Erişimli Katman için %99) | En az% 99,9 (Seyrek Erişimli Katman için %99) | GRS için en az% 99,9 (Seyrek Erişimli Katman için %99)<br /><br />RA-GRS için en az% 99,99 (Seyrek Erişimli Katman için% 99,9) | GZRS için en az% 99,9 (Seyrek Erişimli Katman için %99)<br /><br />RA-GZRS için en az% 99,99 (Seyrek Erişimli Katman için% 99,9) |
 | Yazma istekleri için kullanılabilirlik | En az% 99,9 (Seyrek Erişimli Katman için %99) | En az% 99,9 (Seyrek Erişimli Katman için %99) | En az% 99,9 (Seyrek Erişimli Katman için %99) | En az% 99,9 (Seyrek Erişimli Katman için %99) |
-| Ayrı düğümlerde tutulan veri kopyası sayısı.                             | 3   | 3   | 6   | 6      |
+| Ayrı düğümlerde tutulan verilerin kopyalarının sayısı | Tek bir bölge içinde üç kopya | Tek bir bölgedeki ayrı kullanılabilirlik alanları genelinde üç kopya | Birincil bölgede üç kopya ve ikincil bölgede üç kopya | Birincil bölgedeki ayrı kullanılabilirlik alanları genelinde üç kopya ve ikincil bölgede yerel olarak yedekli kopya sayısı dahildir. |
 
 ### <a name="durability-and-availability-by-outage-scenario"></a>Kesinti senaryosuna göre dayanıklılık ve kullanılabilirlik
 
@@ -163,8 +163,8 @@ Aşağıdaki tabloda, depolama hesabınız için hangi artıklık türünün ge�
 
 | Kesinti senaryosu | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
 |:-|:-|:-|:-|:-|
-| Veri Merkezi içindeki bir düğüm kullanılamaz duruma gelir | Evet | Evet | Evet | Evet |
-| Tüm veri merkezi (zonal veya ZGen olmayan) kullanılamaz hale gelir | Hayır | Evet | Evet<sup>1</sup> | Evet |
+| Veri Merkezi içindeki bir düğüm kullanılamaz duruma gelir | Yes | Yes | Yes | Yes |
+| Tüm veri merkezi (zonal veya ZGen olmayan) kullanılamaz hale gelir | Hayır | Yes | Evet<sup>1</sup> | Yes |
 | Birincil bölgede bölge genelinde bir kesinti meydana gelir | Hayır | Hayır | Evet<sup>1</sup> | Evet<sup>1</sup> |
 | Birincil bölge kullanılamaz hale gelirse ikincil bölgeye okuma erişimi kullanılabilir | Hayır | Hayır | Evet (RA-GRS ile) | Evet (RA-GZRS ile) |
 

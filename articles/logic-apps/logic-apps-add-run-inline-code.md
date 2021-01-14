@@ -7,12 +7,12 @@ ms.reviewer: deli, logicappspm
 ms.topic: article
 ms.date: 12/07/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 1736a1d22ccfb0f00061534d1c733ab72da4c7b0
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 3f88fa38d62778bc3c4c1e29571d1d0ae4eeb5ff
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922498"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179614"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Azure Logic Apps içinde satır içi kod kullanarak kod parçacıkları ekleme ve çalıştırma
 
@@ -31,7 +31,7 @@ Mantıksal uygulamanızın içinde kod parçası çalıştırmak istediğinizde,
   > [!NOTE]
   > `require()`İşlev, JavaScript çalıştırmak Için satır Içi kod eylemi tarafından desteklenmiyor.
 
-Bu eylem kod parçacığını çalıştırır ve bu kod parçacığındaki çıktıyı adlı bir belirteç olarak döndürür `Result` . Bu belirteci, mantıksal uygulamanızın iş akışındaki sonraki eylemlerle birlikte kullanabilirsiniz. Kodunuz için bir işlev oluşturmak istediğiniz diğer senaryolar için mantıksal uygulamanızda [bunun yerine bir Azure işlevi oluşturmayı ve çağırmayı](../logic-apps/logic-apps-azure-functions.md) deneyin.
+Bu eylem kod parçacığını çalıştırır ve bu kod parçacığındaki çıktıyı adlı bir belirteç olarak döndürür `Result` . Bu belirteci, mantıksal uygulamanızın iş akışındaki sonraki eylemlerle birlikte kullanabilirsiniz. Kodunuz için bir işlev oluşturmak istediğiniz diğer senaryolar için mantıksal uygulamanızda [değil, Azure işlevleri aracılığıyla bir işlev oluşturmayı ve çağırmayı](../logic-apps/logic-apps-azure-functions.md) deneyin.
 
 Bu makalede, örnek mantıksal uygulama bir iş veya okul hesabına yeni bir e-posta geldiğinde tetiklenir. Kod parçacığı, e-posta gövdesinde görünen tüm e-posta adreslerini ayıklar ve döndürür.
 
@@ -147,7 +147,7 @@ Nesnesi,, `workflowContext` ve alt özellikleri içeren bu yapıya `actions` sah
 
 Bu tablo, bu alt özellikler hakkında daha fazla bilgi içerir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 |----------|------|-------|
 | `actions` | Nesne koleksiyonu | Kod parçacığınızdan önce çalışan eylemlerden elde edilen sonuç nesneleri. Her bir nesne, anahtarın bir eylemin adı olduğu ve değeri ile [eylem () işlevinin](../logic-apps/workflow-definition-language-functions-reference.md#actions) çağrılmasının eşdeğeri olan *anahtar-değer* çiftine sahiptir `@actions('<action-name>')` . Eylemin adı, temel alınan iş akışı tanımında kullanılan aynı eylem adını kullanır. Bu, eylem adındaki boşluklar ("") alt çizgi (_) ile değiştirir. Bu nesne, geçerli iş akışı örneğinden çalıştırılan eylem özelliği değerlerine erişim sağlar. |
 | `trigger` | Nesne | Tetikleyiciden elde edilen sonuç nesnesi ve [Trigger () işlevini](../logic-apps/workflow-definition-language-functions-reference.md#trigger)çağırma ile eşdeğerdir. Bu nesne, geçerli iş akışı örneği çalıştırağından tetikleme özelliği değerlerine erişim sağlar. |

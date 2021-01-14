@@ -8,69 +8,52 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 11/19/2019
-ms.openlocfilehash: 9d2a1702ea131e9b1b4bf5e586f4290db3aff7ff
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 01/12/2021
+ms.openlocfilehash: f416fe8ef4f6e89d07e6065d4c9435642d9bacb9
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018778"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179648"
 ---
-# <a name="correct-misspelled-words-with-bing-spell-check"></a>Yanlış yazılmış kelimeleri Bing Yazım Denetimi düzeltin
+# <a name="correct-misspelled-words-with-bing-search-resource"></a>Hatalı yazılan kelimeleri Bing Arama kaynakla düzeltin
 
-Luve 'nın, utterlik 'in Puanını ve varlıklarını tahmin edebilmesi için söyleştirilen yanlış yazılan sözcükleri düzeltmek üzere [Bing yazım denetimi API'si v7](https://azure.microsoft.com/services/cognitive-services/spell-check/) ile bir tümleştirme yapabilirsiniz.
-
-[!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
+Luve 'nın, utterlik 'in Puanını ve varlıklarını tahmin edebilmesi için söyleştirilen yanlış yazılan sözcükleri düzeltmek üzere [Bing arama](https://ms.portal.azure.com/#create/Microsoft.BingSearch) ile lusıs uygulamanızı tümleştirebilirsiniz.
 
 ## <a name="create-endpoint-key"></a>Uç nokta anahtarı oluştur
 
-Azure portal Bing Yazım Denetimi Kaynak oluşturmak için aşağıdaki yönergeleri izleyin:
+Azure portal Bing Arama kaynak oluşturmak için aşağıdaki yönergeleri izleyin:
 
 1. [Azure Portal](https://portal.azure.com)oturum açın.
 
 2. Sol üst köşedeki **kaynak oluştur** ' u seçin.
 
-3. Arama kutusuna `Bing Spell Check API V7` yazın.
+3. Arama kutusuna `Bing Search V7` hizmeti girin ve hizmeti seçin.
 
-    ![Bing Yazım Denetimi API'si v7 arayın](./media/luis-tutorial-bing-spellcheck/portal-search.png)
+4. Yasal bildirim dahil olmak üzere bilgiler içeren bir bilgi paneli görüntülenir. Abonelik oluşturma işlemini başlatmak için **Oluştur** ' u seçin.
 
-4. Hizmeti seçin.
+    :::image type="content" source="./media/luis-tutorial-bing-spellcheck/bing-search-resource-portal.png" alt-text="Bing Yazım Denetimi API'si v7 kaynağı":::
 
-5. Yasal bildirim dahil olmak üzere bilgiler içeren bir bilgi paneli görüntülenir. Abonelik oluşturma işlemini başlatmak için **Oluştur** ' u seçin.
+5. Sonraki panelde hizmet ayarlarınızı girin. Hizmet oluşturma işleminin bitmesini bekleyin.
 
-6. Sonraki panelde hizmet ayarlarınızı girin. Hizmet oluşturma işleminin bitmesini bekleyin.
+6. Kaynak oluşturulduktan sonra, sol taraftaki **anahtarlar ve uç nokta** dikey penceresine gidin. 
 
-    ![Hizmet ayarlarını girin](./media/luis-tutorial-bing-spellcheck/subscription-settings.png)
+7. Tahmin isteğiniz üstbilgisine eklenecek anahtarlardan birini kopyalayın. Yalnızca iki anahtardan birine ihtiyacınız olacak.
 
-7. Sol taraftaki gezinmede **Sık Kullanılanlar** başlığı altındaki **tüm kaynaklar** ' ı seçin.
-
-8. Yeni hizmeti seçin. Türü bilişsel **Hizmetler** ve konum **geneldir**.
-
-9. Yeni anahtarlarınızı görmek için ana bölmede **anahtarlar** ' ı seçin.
-
-    ![Anahtarları al](./media/luis-tutorial-bing-spellcheck/grab-keys.png)
-
-10. İlk anahtarı kopyalayın. Yalnızca iki anahtardan birine ihtiyacınız vardır.
+8. Anahtarı `mkt-bing-spell-check-key` tahmin isteği üst bilgisinde ekleyin.
 
 <!--
 ## Using the key in LUIS test panel
 There are two places in LUIS to use the key. The first is in the [test panel](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). The key isn't saved into LUIS but instead is a session variable. You need to set the key every time you want the test panel to apply the Bing Spell Check API v7 service to the utterance. See [instructions](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel) in the test panel for setting the key.
 -->
 ## <a name="adding-the-key-to-the-endpoint-url"></a>Uç nokta URL 'sine anahtar ekleniyor
-Uç nokta sorgusu, yazım denetimi uygulamak istediğiniz her sorgu için sorgu dizesi parametrelerinde geçirilen anahtara sahip olmalıdır. Luya çağıran bir sohbet botu olabilir veya doğrudan LUO Endpoint API 'sini çağırabilirsiniz. Uç noktanın nasıl çağrıldığına bakılmaksızın her bir çağrı, yazım düzeltmelerinin düzgün çalışması için gerekli bilgileri içermelidir.
+Yazım denetimi uygulamak istediğiniz her sorgu için, uç nokta sorgusunun sorgu üst bilgisi parametresinde bulunan Bing yazım denetimi kaynak anahtarına ihtiyacı vardır. Luya çağıran bir sohbet botu olabilir veya doğrudan LUO Endpoint API 'sini çağırabilirsiniz. Uç noktanın nasıl çağrıldığına bakılmaksızın, her bir çağrı, yazım düzeltmelerinin düzgün şekilde çalışması için üstbilginin isteğine gerekli bilgileri içermelidir. Değeri, **Mkt-Bing-yazım denetimi-anahtarı** ile anahtar değerine ayarlamanız gerekir.
 
-Uç nokta URL 'sinin doğru geçirilmesi gereken birkaç değeri vardır. Bing Yazım Denetimi API'si v7 anahtarı, bunlardan yalnızca başka biridir. **SpellCheck** parametresini true olarak ayarlamanız gerekir ve **Bing-yazım denetimi-abonelik-anahtarının** değerini anahtar değere ayarlamanız gerekir:
-
-`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appID}?subscription-key={luisKey}&spellCheck=true&bing-spell-check-subscription-key={bingKey}&verbose=true&timezoneOffset=0&q={utterance}`
 
 ## <a name="send-misspelled-utterance-to-luis"></a>Yanlış yazılmış söylenişi 'i lusıs 'e gönder
-1. Bir Web tarayıcısında, önceki dizeyi kopyalayın ve,,, `region` `appId` `luisKey` ve `bingKey` değerlerini kendi değerlerinizle değiştirin. Yayımlama [bölgeinizden](luis-reference-regions.md)farklıysa, uç nokta bölgesini kullandığınızdan emin olun.
+1. Tahmin sorgusunda, "dağın ne kadar uzakta?" gibi gönderilecek bir söylenişi ekleyin. Ingilizce olarak,, `mountain` ile `n` doğru bir yazıdır.
 
-2. "DAĞINCI nedir?" gibi yanlış yazılmış bir söylenişi ekleyin. Ingilizce olarak,, `mountain` ile `n` doğru bir yazıdır.
-
-3. Sorguyu LUSıS 'e göndermek için ENTER ' u seçin.
-
-4. Lua, için bir JSON sonucuyla yanıt verir `How far is the mountain?` . Bing Yazım Denetimi API'si v7 yanlış bir sorun algılarsa, `query` lusıs UYGULAMASıNıN JSON yanıtında bulunan alan özgün sorguyu içerir ve `alteredQuery` alan, Luo 'ya gönderilen düzeltilen sorguyu içerir.
+2. Lua, için bir JSON sonucuyla yanıt verir `How far is the mountain?` . Bing Yazım Denetimi API'si v7 yanlış bir sorun algılarsa, `query` lusıs UYGULAMASıNıN JSON yanıtında bulunan alan özgün sorguyu içerir ve `alteredQuery` alan, Luo 'ya gönderilen düzeltilen sorguyu içerir.
 
 ```json
 {
@@ -86,15 +69,13 @@ Uç nokta URL 'sinin doğru geçirilmesi gereken birkaç değeri vardır. Bing Y
 
 ## <a name="ignore-spelling-mistakes"></a>Yazım hatalarını yoksay
 
-Bing Yazım Denetimi API'si v7 hizmetini kullanmak istemiyorsanız, doğru ve yanlış yazım denetimi eklemeniz gerekir.
+Bing Arama API v7 hizmetini kullanmak istemiyorsanız doğru ve yanlış yazım denetimi eklemeniz gerekir.
 
 İki çözüm vardır:
 
 * Her türlü farklı yazımlar içeren, LUTO 'ın doğru yazım ve yazım hataları öğrenmeleri için etiketlenmesi gereken her türlü etiket örneği. Bu seçenek, yazım denetleyicisi kullanmaktan daha fazla etiketleme çabası gerektirir.
 * Sözcüğün tüm çeşitlemelerine sahip bir tümcecik listesi oluşturun. Bu çözümle, örnek çeşitlerdeki sözcük çeşitlemelerini etiketlemenize gerek yoktur.
 
-## <a name="publishing-page"></a>Yayımlama sayfası
-[Yayımlama](luis-how-to-publish-app.md) sayfasında **Bing yazım denetimcisini etkinleştir** onay kutusu bulunur. Bu, anahtarı oluşturmak ve uç nokta URL 'sinin nasıl değiştirileceğini anlamak için kolaylık sağlar. Her bir yazımla ilgili yazım düzeltilmesi için doğru uç nokta parametrelerini yine de kullanmanız gerekir.
 
 > [!div class="nextstepaction"]
 > [Örnek araslar hakkında daha fazla bilgi edinin](./luis-how-to-add-entities.md)
