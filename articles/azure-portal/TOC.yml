@@ -70,8 +70,6 @@
       items:
         - name: Silinen bir panoyu kurtarma
           href: recover-shared-deleted-dashboard.md
-        - name: Bölge veya SKU abonelik sorunlarını giderme
-          href: supportability/sku-series-unavailable.md
         - name: Sorun giderme için bir tarayıcı izlemesi yakalama
           href: capture-browser-trace.md
 - name: Başvuru
