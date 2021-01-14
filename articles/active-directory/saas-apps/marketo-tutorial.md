@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/04/2020
+ms.date: 01/13/2021
 ms.author: jeedes
-ms.openlocfilehash: bd62855aef59439ed476a13770f79ce6d3cf68f8
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d4f8e71a0afbb1b00313d5e100ba8b3fd2b4e2ce
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180807"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185759"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-marketo"></a>Öğretici: Marketo ile tümleştirme Azure Active Directory
 
@@ -40,6 +40,9 @@ Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandı
 
 * Marketo, **IDP** tarafından başlatılan SSO 'yu destekler
 
+> [!NOTE]
+> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
+
 ## <a name="adding-marketo-from-the-gallery"></a>Galeriden Marketo ekleme
 
 Marketo 'nın Azure AD 'ye tümleştirilmesini yapılandırmak için, galerisindeki Marketo 'yı yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
@@ -51,7 +54,7 @@ Marketo 'nın Azure AD 'ye tümleştirilmesini yapılandırmak için, galerisind
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Marketo** yazın.
 1. Sonuçlar panelinden **Marketo** ' yı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-marketo"></a>Marketo için Azure AD SSO 'yu yapılandırma ve test etme
 
 Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına bağlı olan Marketo ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Marketo 'daki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
@@ -59,10 +62,10 @@ Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test k
 Azure AD çoklu oturum açmayı Marketo ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    * Azure AD SSO 'yu, Britta Simon ile test etmek için Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** .
-    * Azure AD **[Test kullanıcısına,](#assign-the-azure-ad-test-user)** Azure AD SSO 'yu kullanmak Için Britta Simon 'u etkinleştirmek üzere atayın.
+    1. Azure AD SSO 'yu, Britta Simon ile test etmek için Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** .
+    1. Azure AD **[Test kullanıcısına,](#assign-the-azure-ad-test-user)** Azure AD SSO 'yu kullanmak Için Britta Simon 'u etkinleştirmek üzere atayın.
 2. Uygulama tarafında SSO ayarlarını yapılandırmak için **[MARKETO SSO 'Yu yapılandırın](#configure-marketo-sso)** .
-    * Kullanıcının Azure AD gösterimine bağlı olan Marketo 'da Britta Simon 'a sahip olmak için **[Marketo test kullanıcısı oluşturun](#create-marketo-test-user)** .
+    1. Kullanıcının Azure AD gösterimine bağlı olan Marketo 'da Britta Simon 'a sahip olmak için **[Marketo test kullanıcısı oluşturun](#create-marketo-test-user)** .
 3. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
@@ -71,20 +74,20 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Azure portal, **Marketo** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
 1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
-    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://saml.marketo.com/sp`
+    a. **Tanımlayıcı** metin kutusuna URL 'yi yazın:`https://saml.marketo.com/sp`
 
     b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://login.marketo.com/saml/assertion/\<munchkinid\>`
 
     c. **Geçiş durumu** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<munchkinid>.marketo.com/`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve geçiş durumu ile güncelleştirin. Bu değerleri almak için [Marketo istemci desteği ekibine](https://investors.marketo.com/contactus.cfm) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek yanıt URL 'SI ve geçiş durumuyla güncelleştirin. Bu değerleri almak için [Marketo istemci desteği ekibine](https://investors.marketo.com/contactus.cfm) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
@@ -104,7 +107,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -120,7 +123,17 @@ Bu bölümde, Marketo 'ya erişim vererek Azure çoklu oturum açma özelliğini
 
 ## <a name="configure-marketo-sso"></a>Marketo SSO 'yu yapılandırma
 
-1. Uygulamanızın daha hızlı bir KIMLIK almasını sağlamak için yönetici kimlik bilgilerini kullanarak Marketo 'da oturum açın ve aşağıdaki işlemleri gerçekleştirin:
+1. Marketo 'daki yapılandırmayı otomatik hale getirmek için, **uzantıyı yüklemek** üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+
+2. Tarayıcıya Uzantı eklendikten sonra, **set up Marketo** 'ya tıkladığınızda, sizi Marketo uygulamasına yönlendirirsiniz. Buradan, Marketo 'da oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-6 adımlarını otomatikleştirecektir.
+
+    ![Kurulum yapılandırması](common/setup-sso.png)
+
+3. Marketo 'yı el ile ayarlamak istiyorsanız, farklı bir Web tarayıcısı penceresinde, Marketo şirket sitenizde yönetici olarak oturum açın.
+
+1. Uygulamanızın daha hızlı bir KIMLIK almasını sağlamak için aşağıdaki eylemleri gerçekleştirin:
    
     a. Yönetici kimlik bilgilerini kullanarak Marketo uygulamasında oturum açın.
    
@@ -233,13 +246,13 @@ Bu bölümde, Marketo 'da Britta Simon adlı bir Kullanıcı oluşturacaksınız
 
 8. Kullanıcı e-posta bildirimini alır ve hesabı etkinleştirmek için bağlantıyı tıklamak ve parolayı değiştirmeli. 
 
-### <a name="test-sso"></a>Test SSO 'SU 
+### <a name="test-sso"></a>Test SSO 'SU
 
 Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz.
 
-1. Azure portal bu uygulamayı test et ' e tıklayın ve SSO 'yu ayarladığınız Marketo 'da otomatik olarak oturum açmış olmanız gerekir
+* Azure portal bu uygulamayı test et ' e tıklayın ve SSO 'yu ayarladığınız Marketo 'da otomatik olarak oturum açmış olmanız gerekir
 
-1. Microsoft Access panel ' i kullanabilirsiniz. Erişim panelinde Marketo kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Marketo 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım kutucuğunda tıklattığınızda, SSO 'yu ayarladığınız Marketo 'da otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

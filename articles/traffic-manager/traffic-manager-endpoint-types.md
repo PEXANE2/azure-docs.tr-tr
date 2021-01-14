@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: duau
-ms.openlocfilehash: 692c63849bc9e92ded43db3bf22ce14384f2b68d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e55c2115edef684f38aa53172596beffd101ef59
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401291"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184399"
 ---
 # <a name="traffic-manager-endpoints"></a>Traffic Manager uç noktaları
 
@@ -92,15 +92,15 @@ Bir profildeki tüm uç noktalar devre dışıysa veya profil devre dışıysa, 
 
 ## <a name="faqs"></a>SSS
 
-* [Birden çok abonelikteki uç noktalarla Traffic Manager kullanabilir miyim?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-endpoints-from-multiple-subscriptions)
+* [Birden çok abonelikteki uç noktalarla Traffic Manager kullanabilir miyim?](./traffic-manager-faqs.md#can-i-use-traffic-manager-with-endpoints-from-multiple-subscriptions)
 
-* [Bulut hizmeti ' hazırlama ' yuvaları ile Traffic Manager kullanabilir miyim?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-cloud-service-staging-slots)
+* [Bulut hizmeti ' hazırlama ' yuvaları ile Traffic Manager kullanabilir miyim?](./traffic-manager-faqs.md#can-i-use-traffic-manager-with-cloud-service-staging-slots)
 
-* [Traffic Manager IPv6 uç noktalarını destekliyor mu?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-support-ipv6-endpoints)
+* [Traffic Manager IPv6 uç noktalarını destekliyor mu?](./traffic-manager-faqs.md#does-traffic-manager-support-ipv6-endpoints)
 
-* [Aynı bölgede birden fazla Web uygulamasıyla Traffic Manager kullanabilir miyim?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region)
+* [Aynı bölgede birden fazla Web uygulamasıyla Traffic Manager kullanabilir miyim?](./traffic-manager-faqs.md#can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region)
 
-* [Traffic Manager profillerinin Azure uç noktalarını farklı bir kaynak grubuna taşımak Nasıl yaparım??](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group-or-subscription)
+* [Traffic Manager profillerinin Azure uç noktalarını farklı bir kaynak grubuna taşımak Nasıl yaparım??](./traffic-manager-faqs.md#how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group-or-subscription)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

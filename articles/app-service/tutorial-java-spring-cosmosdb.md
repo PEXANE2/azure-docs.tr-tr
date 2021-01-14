@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 7e63f770763d1960148dfdfa184d0b4e2b76754c
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 2c4fbefc1bb801ab4a9387054ac91e5fca14ec18
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427083"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185606"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Öğretici: Linux ve Azure Cosmos DB üzerinde Azure App Service bir Java Spring Boot Web uygulaması oluşturun
 
@@ -20,7 +20,7 @@ Bu öğretici, Azure 'da Java Web uygulamaları oluşturma, yapılandırma, dağ
 
 ![Yay önyükleme uygulaması Azure Cosmos DB verileri depolama](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Cosmos DB veritabanı oluşturun.
@@ -55,23 +55,23 @@ yes | cp -rf .prep/* .
 
 Aboneliğinizde bir Azure Cosmos DB veritabanı oluşturmak için aşağıdaki adımları izleyin. YAPıLACAKLAR listesi uygulaması bu veritabanına bağlanır ve çalışırken verisini depolar, uygulamayı çalıştırdığınız yere bakılmaksızın uygulama durumunu kalıcı hale getirmeyi sağlar.
 
-1. Azure CLı 'nizi oturum açın ve oturum açma kimlik bilgilerinizle birden fazla bağlantı varsa aboneliğinizi isteğe bağlı olarak ayarlayın.
+1. Azure CLı 'niz üzerinde oturum açın ve oturum açma kimlik bilgilerinizle birden fazla bağlantı varsa aboneliğinizi isteğe bağlı olarak ayarlayın.
 
-    ```bash
+    ```azurecli
     az login
     az account set -s <your-subscription-id>
     ```   
 
 2. Kaynak grubu adını belirterek bir Azure Kaynak grubu oluşturun.
 
-    ```bash
+    ```azurecli
     az group create -n <your-azure-group-name> \
         -l <your-resource-group-region>
     ```
 
 3. Tür ile Azure Cosmos DB oluşturun `GlobalDocumentDB` . Cosmos DB adı yalnızca küçük harf kullanımı kullanmalıdır. `documentEndpoint`Komuttan gelen yanıttaki alanı aşağı göz önünde edin.
 
-    ```bash
+    ```azurecli
     az cosmosdb create --kind GlobalDocumentDB \
         -g <your-azure-group-name> \
         -n <your-azure-COSMOS-DB-name-in-lower-case-letters>
@@ -79,7 +79,7 @@ Aboneliğinizde bir Azure Cosmos DB veritabanı oluşturmak için aşağıdaki a
 
 4. Uygulamaya bağlanmak için Azure Cosmos DB anahtarınızı alın. Bir `primaryMasterKey` `documentEndpoint` sonraki adımda ihtiyacınız olacak şekilde yakınınızda saklayın.
 
-    ```bash
+    ```azurecli
     az cosmosdb list-keys -g <your-azure-group-name> -n <your-azure-COSMOSDB-name>
     ```
 
@@ -146,7 +146,7 @@ mvn package spring-boot:run
 
 Çıktı aşağıdaki gibi görünmelidir.
 
-```bash
+```output
 bash-3.2$ mvn package spring-boot:run
 [INFO] Scanning for projects...
 [INFO] 
@@ -291,7 +291,7 @@ Adres çubuğunda uzak URL ile çalışan uygulamayı görmeniz gerekir:
 
 Başka bir çalışan ekleyerek uygulamayı ölçeklendirin:
 
-```bash
+```azurecli
 az appservice plan update --number-of-workers 2 \
    --name ${WEBAPP_PLAN_NAME} \
    --resource-group <your-azure-group-name>
@@ -301,7 +301,7 @@ az appservice plan update --number-of-workers 2 \
 
 Bu kaynaklara başka bir öğretici (bkz. [Sonraki adımlar](#next)) için gereksinim duymuyorsanız, Cloud Shell'de aşağıdaki komutu çalıştırarak bu kaynakları silebilirsiniz: 
   
-```bash
+```azurecli
 az group delete --name <your-azure-group-name>
 ```
 

@@ -6,14 +6,14 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d8ed429003a9da7ae93fb93f4218cd66767dcd7b
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 34bcef24d5e7fbda53984f14a2307859c9210262
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562285"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185963"
 ---
-# <a name="set-up-msix-app-attach-with-the-azure-portal"></a>Azure portal ile birlikte MSIX uygulama eklemeyi ayarlama
+# <a name="set-up-msix-app-attach-with-the-azure-portal"></a>Azure portalla MSIX uygulama iliştirmeyi ayarlama
 
 > [!IMPORTANT]
 > MSIX uygulama iliştirme Şu anda genel önizlemededir.
@@ -54,19 +54,10 @@ reg add HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager /v
 
 reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Debug /v ContentDeliveryAllowedOverride /t REG_DWORD /d 0x2 /f
 
-rem Disable Windows Update:
-
-sc config wuauserv start=disabled
-```
-
-Otomatik güncelleştirmeleri devre dışı bırakıldıktan sonra Hyper-V ' ı etkinleştirmeniz gerekir, çünkü bu `Mount-VHD` komutu hazırlamak ve ve çıkarmak IÇIN VHD 'yi, önbellekten çıkarmak için kullanacaksınız.
-
-```powershell
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 ```
 
 >[!NOTE]
->Bu değişiklik, sanal makineyi yeniden başlatmanızı gerektirir.
+>Hyper-V ' i etkinleştirdikten sonra sanal makineyi yeniden başlatmanızı öneririz.
 
 ## <a name="configure-the-msix-app-attach-management-interface"></a>MSIX uygulama iliştirme yönetim arabirimini yapılandırma
 

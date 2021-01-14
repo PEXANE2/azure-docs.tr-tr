@@ -7,12 +7,13 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a8b2fdf99b33df3322748b7e073cc4ab18957c84
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 00e6802f37ec60467edbea98038dd23fcba1239a
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045249"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185504"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure dijital TWINS modellerini yönetme
 
@@ -20,7 +21,7 @@ Azure Digital TWINS örneğinizin, [**Digitaltwinmodeller API 'leri**](/rest/api
 
 Yönetim işlemlerine, modellerin karşıya yüklenmesi, doğrulanması, alınması ve silinmesi dahildir. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
@@ -53,9 +54,6 @@ Bu yöntemi izleyerek, hospstanonun için modeller, bölgeler veya hastanın ken
 
 Modeller oluşturulduktan sonra Azure dijital TWINS örneğine yükleyebilirsiniz.
 
-> [!TIP]
-> Azure dijital TWINS örneğinizi karşıya yüklemeden önce modellerinizi çevrimdışı doğrulamanız önerilir. [Modeldl istemci tarafı ayrıştırıcı kitaplığı](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) ve nasıl yapılır: modellerinizi hizmete yüklemeden önce bunları denetlemek için [*modelleri denetlemek için modeller ve doğrulama*](how-to-parse-models.md) bölümünde açıklanan [dtdl doğrulayıcısı örneğini](/samples/azure-samples/dtdl-validator/dtdl-validator) kullanabilirsiniz.
-
 Bir modeli karşıya yüklemeye hazırsanız, aşağıdaki kod parçacığını kullanabilirsiniz:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="CreateModel":::
@@ -64,7 +62,7 @@ Bir modeli karşıya yüklemeye hazırsanız, aşağıdaki kod parçacığını 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="CreateModels_multi":::
 
-Model dosyaları tek bir modelden daha fazla bulunabilir. Bu durumda, modellerin bir JSON dizisine yerleştirilmesi gerekir. Örneğin:
+Model dosyaları tek bir modelden daha fazla bulunabilir. Bu durumda, modellerin bir JSON dizisine yerleştirilmesi gerekir. Örnek:
 
 :::code language="json" source="~/digital-twins-docs-samples/models/Planet-Moon.json":::
 

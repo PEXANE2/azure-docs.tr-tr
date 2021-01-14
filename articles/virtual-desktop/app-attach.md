@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f625b7dd68d4b5a5e1af68aeb53dac453ff8cbfd
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 5e45c51735e0b7ab4b263d3f3047b5848c82439d
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400837"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185776"
 ---
 # <a name="create-powershell-scripts-for-msix-app-attach-preview"></a>MSIX uygulama iliştirme (Önizleme) için PowerShell betikleri oluşturma
 
@@ -39,6 +39,17 @@ Uygulamanız ortak güvenilir olmayan ya da kendinden imzalı bir sertifika kull
 6. **Tüm sertifikaları aşağıdaki depolama alanına yerleştir**' i seçin ve ardından da **Araştır**' ı seçin.
 7. Sertifika deposu Seç penceresi göründüğünde, **Güvenilen Kişiler**' i seçin ve ardından **Tamam**' ı seçin.
 8. **İleri** ve **son**' u seçin.
+
+## <a name="enable-microsoft-hyper-v"></a>Microsoft Hyper-V etkinleştir
+
+Microsoft Hyper-V etkinleştirilmesi gerekir, çünkü komut için gereklidir `Mount-VHD` ve `Dismount-VHD` taşıma için gereklidir.
+
+```powershell
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+```
+
+>[!NOTE]
+>Bu değişiklik, sanal makineyi yeniden başlatmanızı gerektirir.
 
 ## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>MSIX uygulama iliştirme için PowerShell betikleri hazırlama
 

@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) kümesinde otomatik TLS sertifikası
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 88e2bdc1b516e55fb630b2fd31ff6a2977d57bfe
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 3cf7b069d6f010a4461b22c5326589ad3ec31204
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607917"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186269"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) üzerinde bir HTTPS giriş denetleyicisi oluşturma
 
@@ -67,7 +67,7 @@ Yükleme sırasında, giriş denetleyicisi için bir Azure genel IP adresi oluş
 
 Genel IP adresini almak için `kubectl get service` komutunu kullanın. IP adresinin hizmete atanması birkaç dakika sürer.
 
-```
+```console
 $ kubectl --namespace ingress-basic get services -o wide -w nginx-ingress-ingress-nginx-controller
 
 NAME                                     TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)                      AGE   SELECTOR
@@ -91,7 +91,7 @@ az network dns record-set a add-record \
 > [!NOTE]
 > İsteğe bağlı olarak, özel bir etki alanı yerine giriş denetleyicisi IP adresi için bir FQDN yapılandırabilirsiniz. Bu örneğin bir bash kabuğu için olduğunu unutmayın.
 > 
-> ```azurecli-interactive
+> ```bash
 > # Public IP address of your ingress controller
 > IP="MY_EXTERNAL_IP"
 > 
@@ -337,7 +337,7 @@ Daha sonra, bir sertifika kaynağı oluşturulmalıdır. Sertifika kaynağı ist
 
 Sertifikanın başarıyla oluşturulduğunu doğrulamak için `kubectl get certificate --namespace ingress-basic` komutunu kullanın ve *hazırlanın* seçeneğinin *doğru* olduğunu doğrulayın. Bu işlem birkaç dakika sürebilir.
 
-```
+```console
 $ kubectl get certificate --namespace ingress-basic
 
 NAME         READY   SECRET       AGE
@@ -370,7 +370,7 @@ kubectl delete -f cluster-issuer.yaml --namespace ingress-basic
 
 Komut ile Held sürümlerini listeleyin `helm list` . Aşağıdaki örnek çıktıda gösterildiği gibi *NGINX* ve *CERT-Manager* adlı grafikleri arayın:
 
-```
+```console
 $ helm list --namespace ingress-basic
 
 NAME                    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                   APP VERSION
@@ -380,7 +380,7 @@ nginx                   ingress-basic   1               2020-01-15 10:09:45.9826
 
 Komutuyla yayınları kaldırın `helm uninstall` . Aşağıdaki örnek NGıNX giriş ve CERT Manager dağıtımlarını kaldırır.
 
-```
+```console
 $ helm uninstall cert-manager nginx --namespace ingress-basic
 
 release "cert-manager" uninstalled
@@ -423,7 +423,7 @@ Aşağıdakileri de yapabilirsiniz:
 - [Statik bir genel IP adresi ile otomatik olarak TLS sertifikaları oluşturmak için şifrelemeyi kullanan bir giriş denetleyicisi oluşturun][aks-ingress-static-tls]
 
 <!-- LINKS - external -->
-[az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/a?view=azure-cli-latest#az-network-dns-record-set-a-add-record
+[az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/#az-network-dns-record-set-a-add-record
 [custom-domain]: ../app-service/manage-custom-dns-buy-domain.md#buy-an-app-service-domain
 [dns-zone]: ../dns/dns-getstarted-cli.md
 [helm]: https://helm.sh/

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/22/2018
 ms.author: duau
-ms.openlocfilehash: d96cd9b3c83357c2591edf4bbb09a82b897c6a24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f2aa3d05d349880b5eb2d35a2c58af0741b9855
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826039"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185589"
 ---
 # <a name="nested-traffic-manager-profiles"></a>İç İçe Traffic Manager profilleri
 
@@ -97,23 +97,23 @@ Bir Traffic Manager profilindeki izleme ayarları, tek bir profildeki tüm uç n
 
 ## <a name="faqs"></a>SSS
 
-* [İç içe geçmiş profilleri yapılandırmak Nasıl yaparım??](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#traffic-manager-nested-profiles)
+* [İç içe geçmiş profilleri yapılandırmak Nasıl yaparım??](./traffic-manager-faqs.md#traffic-manager-nested-profiles)
 
-* [Trafik Yöneticisi kaç tane iç içe geçme katmansın destekler?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-layers-of-nesting-does-traffic-manger-support)
+* [Trafik Yöneticisi kaç tane iç içe geçme katmansın destekler?](./traffic-manager-faqs.md#how-many-layers-of-nesting-does-traffic-manger-support)
 
-* [Aynı Traffic Manager profilinde, iç içe geçmiş alt profillerle diğer uç nokta türlerini karışık yapabilir miyim?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile)
+* [Aynı Traffic Manager profilinde, iç içe geçmiş alt profillerle diğer uç nokta türlerini karışık yapabilir miyim?](./traffic-manager-faqs.md#can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile)
 
-* [Fatura modeli, Iç Içe geçmiş profiller için nasıl uygulanır?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-the-billing-model-apply-for-nested-profiles)
+* [Fatura modeli, Iç Içe geçmiş profiller için nasıl uygulanır?](./traffic-manager-faqs.md#how-does-the-billing-model-apply-for-nested-profiles)
 
-* [İç içe geçmiş profiller için bir performans etkisi var mı?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-there-a-performance-impact-for-nested-profiles)
+* [İç içe geçmiş profiller için bir performans etkisi var mı?](./traffic-manager-faqs.md#is-there-a-performance-impact-for-nested-profiles)
 
-* [Traffic Manager bir üst profilde iç içe geçmiş bir uç noktanın durumunu nasıl hesaplamıştır?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile)
+* [Traffic Manager bir üst profilde iç içe geçmiş bir uç noktanın durumunu nasıl hesaplamıştır?](./traffic-manager-faqs.md#how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Traffic Manager profilleri](traffic-manager-overview.md) hakkında daha fazla bilgi edinin
 
-[Traffic Manager profili oluşturmayı](traffic-manager-create-profile.md) öğrenin
+[Traffic Manager profili oluşturmayı](./quickstart-create-traffic-manager-profile.md) öğrenin
 
 <!--Image references-->
 [1]: ./media/traffic-manager-nested-profiles/figure-1.png

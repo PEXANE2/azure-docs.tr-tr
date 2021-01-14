@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: 5e633b5e4b2ff2ce884bfaf99e3730968150cbed
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: e76086db36642664ca15acee26f4e0aca85ff272
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746380"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184473"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Koruması Standardı’na genel bakış
 
@@ -45,6 +45,10 @@ Azure DDoS koruması, müşteri verilerini depolamaz.
 - **Maliyet garantisi:** Veri aktarımı ve uygulama genişleme hizmeti kredisi, belgelenen DDoS saldırıları sonucunda oluşan kaynak maliyetleri için alma.
 
 ## <a name="pricing"></a>Fiyatlandırma
+
+DDoS koruma planları, en fazla 100 genel IP adresini kapsayan ayda aylık $2.944 sabit ücretine sahiptir. Ek kaynaklara yönelik koruma, kaynak başına aylık olarak ek $30 ücret alınacaktır.
+
+Bir kiracı altında, tek bir DDoS koruma planı birden çok abonelik genelinde kullanılabilir, bu nedenle birden fazla DDoS koruma planı oluşturmaya gerek yoktur.
 
 Azure DDoS koruması standart fiyatlandırması hakkında bilgi edinmek için bkz. [Azure DDoS koruması standart fiyatlandırması](https://azure.microsoft.com/pricing/details/ddos-protection/).
 

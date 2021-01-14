@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/11/2020
+ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 8e951e6cb18596b19f49bf42179297f656e3fa5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 849afe54125588cb7664ee221e4f229e83be8f96
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91304312"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185487"
 ---
 # <a name="camera-placement-guide"></a>Kamera Yerleştirme Kılavuzu
 
@@ -52,7 +52,7 @@ Aşağıdaki çizimde, kişi yürüme yönü için yükseltme görünümü göst
 
 ## <a name="camera-height"></a>Kamera yüksekliği
 
-Genellikle, kameraların temelden 12-14 fit 'e bağlanması gerekir. Kameranın bu aralıkta bağlanmasını planlarken, kamera görünümünü etkileyebilecek engelleri (örneğin, Rafa kaldırma, asılı ışıklar, asılı imza ve ekran) göz önünde bulundurun ve sonra yüksekliği gerektiği gibi ayarlayabilirsiniz.
+Genellikle, kameraların temelden 12-14 fit 'e bağlanması gerekir. Yüz maskesini algılama için, kameraların temelden 8-12 metreye bağlanmasını öneririz. Kameranın bu aralıkta bağlanmasını planlarken, kamera görünümünü etkileyebilecek engelleri (örneğin, Rafa kaldırma, asılı ışıklar, asılı imza ve ekran) göz önünde bulundurun ve sonra yüksekliği gerektiği gibi ayarlayabilirsiniz.
 
 ## <a name="camera-to-focal-point-distance"></a>Kamera-odak noktası uzaklığı
 
@@ -68,7 +68,7 @@ Yukarıdaki, şu şekilde görünür:
 
 ![Kameradan odak noktası uzaklığı, yukarıdakilerden nasıl ölçülür](./media/spatial-analysis/camera-focal-point-above.png)
 
-Kameranın, belirli bağlama yükseklikleri temelinde odak noktasından uzaklığını öğrenmek için aşağıdaki tabloyu kullanın. Bu uzaklıklar en iyi yerleştirme içindir. Tablo, bazı ceiller yüksekliği sınırlayabileceğinizden bu yana 12 '-14 ' önerinin altında rehberlik sağladığını unutmayın.
+Kameranın, belirli bağlama yükseklikleri temelinde odak noktasından uzaklığını öğrenmek için aşağıdaki tabloyu kullanın. Bu uzaklıklar en iyi yerleştirme içindir. Tablo, bazı ceiller yüksekliği sınırlayabileceğinizden bu yana 12 '-14 ' önerinin altında rehberlik sağladığını unutmayın. Yüz maskesi algılama için önerilen kamera-odak noktası uzaklığı (min/max), 8 ' ila 12 ' arasında kamera yüksekliği için 4 '-10 ' ' dur.
 
 | Kamera yüksekliği | Kamera-odak noktası uzaklığı (min/max) |  
 | ------------- | ---------------------------------------- |  
@@ -91,7 +91,7 @@ Bu bölümde, kabul edilebilir kamera açısı bağlama aralıkları açıklanma
 
 ### <a name="line-configuration"></a>Satır yapılandırma
 
-Aşağıdaki tabloda, **biliveservices. Vision. spatialanalysis-personcrossingline** işlemi için yapılandırılmış kameralara yönelik öneriler gösterilmektedir. 
+Aşağıdaki tabloda, **biliveservices. Vision. spatialanalysis-personcrossingline** işlemi için yapılandırılmış kameralara yönelik öneriler gösterilmektedir. Yüz maskesi algılama için +/-30 derece, kamera yüksekliği için 8 ' ila 12 ' arasındaki en iyi kamera bağlama açısıdır.
 
 | Kamera yüksekliği | Kamera-odak noktası uzaklığı | En uygun kamera bağlama açısı (en az/en fazla) |  
 | ------------- | ------------------------------ | ------------------------------------------ |  
@@ -127,7 +127,7 @@ Aşağıdaki çizimde, bir rafa ait bir alanın sol ve sağ kamera görünümler
 
 #### <a name="queues"></a>Kuyruklar
 
-Biliveservices. **Vision. spatialanalysis-PersonCount**, **biliveservices. Vision. spatialanalysis-persondistance**ve **biliveservices. Vision. spatialanalysis-personcrossingçokgen** becerileri, kuyrukları izlemek için kullanılabilir. En iyi kuyruk veri kalitesi için, sıradaki kişilerin kullanımını en aza indirmek ve kuyruklar konumunun zaman içinde tutarlı olduğundan emin olmak için Retractable bant engelleri tercih edilir.
+Biliveservices. **Vision. spatialanalysis-PersonCount**, **biliveservices. Vision. spatialanalysis-persondistance** ve **biliveservices. Vision. spatialanalysis-personcrossingçokgen** becerileri, kuyrukları izlemek için kullanılabilir. En iyi kuyruk veri kalitesi için, sıradaki kişilerin kullanımını en aza indirmek ve kuyruklar konumunun zaman içinde tutarlı olduğundan emin olmak için Retractable bant engelleri tercih edilir.
 
 ![Retractable bant kuyruğu](./media/spatial-analysis/retractable-belt-queue.png)
 

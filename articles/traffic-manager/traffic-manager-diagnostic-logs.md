@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: duau
-ms.openlocfilehash: 25c0b18da1690557f11e36dd11dda693ddddb838
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f24a4a0d982ff78ca4d6726e950825ed2c784e67
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401325"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184569"
 ---
 # <a name="enable-resource-logging-in-azure-traffic-manager"></a>Azure Traffic Manager kaynak günlüğünü etkinleştirme
 
@@ -39,14 +39,14 @@ Azure Traffic Manager kaynak günlükleri, Traffic Manager profili kaynağının
 
 2. **Traffic Manager profili için kaynak günlüğünü etkinleştirin:**
 
-    Önceki adımda [set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting?view=latest)ile elde edilen kimliği kullanarak Traffic Manager profili için kaynak günlüğünü etkinleştirin. Aşağıdaki komut Traffic Manager profili için ayrıntılı günlükleri belirtilen Azure depolama hesabına depolar. 
+    Önceki adımda [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=latest)ile elde edilen kimliği kullanarak Traffic Manager profili için kaynak günlüğünü etkinleştirin. Aşağıdaki komut Traffic Manager profili için ayrıntılı günlükleri belirtilen Azure depolama hesabına depolar. 
 
       ```azurepowershell-interactive
     Set-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId> -StorageAccountId <storageAccountId> -Enabled $true
       ``` 
 3. **Tanılama ayarlarını doğrulayın:**
 
-      [Get-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/get-azdiagnosticsetting?view=latest)kullanarak Traffic Manager profili için tanılama ayarlarını doğrulayın. Aşağıdaki komut, bir kaynak için günlüğe kaydedilen kategorileri görüntüler.
+      [Get-AzDiagnosticSetting](/powershell/module/az.monitor/get-azdiagnosticsetting?view=latest)kullanarak Traffic Manager profili için tanılama ayarlarını doğrulayın. Aşağıdaki komut, bir kaynak için günlüğe kaydedilen kategorileri görüntüler.
 
      ```azurepowershell-interactive
      Get-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId>
@@ -57,24 +57,23 @@ Azure Traffic Manager kaynak günlükleri, Traffic Manager profili kaynağının
 1. [Azure portalında](https://portal.azure.com) oturum açın. 
 1. Portalda Azure depolama hesabınıza gidin.
 2. Azure depolama hesabınızın **genel bakış** sayfasında, **Hizmetler** ' in altında **Bloblar**' ı seçin.
-3. **Kapsayıcılar**için, **Öngörüler-logs-probehealthkara sevents**' i seçin ve dosyadaki PT1H.jsaşağı gidin ve bu günlük dosyasının bir kopyasını indirip kaydetmek için **İndir** ' e tıklayın.
+3. **Kapsayıcılar** için, **Öngörüler-logs-probehealthkara sevents**' i seçin ve dosyadaki PT1H.jsaşağı gidin ve bu günlük dosyasının bir kopyasını indirip kaydetmek için **İndir** ' e tıklayın.
 
     ![Traffic Manager profilinizin günlük dosyalarına blob depolamadan erişin](./media/traffic-manager-logs/traffic-manager-logs.png)
 
 
 ## <a name="traffic-manager-log-schema"></a>Traffic Manager log şeması
 
-Azure Izleyici aracılığıyla kullanılabilen tüm kaynak günlükleri, her bir hizmetin kendi olayları için benzersiz özellikler yaymasını sağlayan ortak bir üst düzey şemayı paylaşır. Üst düzey kaynak günlükleri şeması için bkz. [Azure Kaynak günlükleri Için desteklenen hizmetler, şemalar ve Kategoriler](../azure-monitor/platform/tutorial-dashboards.md).
+Azure Izleyici aracılığıyla kullanılabilen tüm kaynak günlükleri, her bir hizmetin kendi olayları için benzersiz özellikler yaymasını sağlayan ortak bir üst düzey şemayı paylaşır. Üst düzey kaynak günlükleri şeması için bkz. [Azure Kaynak günlükleri Için desteklenen hizmetler, şemalar ve Kategoriler](../azure-monitor/platform/resource-logs-schema.md).
 
 Aşağıdaki tabloda, Azure Traffic Manager profili kaynağına özgü Günlükler şeması yer almaktadır.
 
 |Alan Adı|Alan Türü|Tanım|Örnek|
 |----|----|---|---|
 |Uçnoktaadı|Dize|Sistem durumu kaydedilirken Traffic Manager uç noktasının adı.|*myPrimaryEndpoint*|
-|Durum|Dize|Araştırılan Traffic Manager uç noktasının sistem durumu. Durum **yukarı** veya **aşağı**olabilir.|**Yukarı**|
+|Durum|Dize|Araştırılan Traffic Manager uç noktasının sistem durumu. Durum **yukarı** veya **aşağı** olabilir.|**Yukarı**|
 |||||
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Traffic Manager izleme](traffic-manager-monitoring.md) hakkında daha fazla bilgi edinin
-

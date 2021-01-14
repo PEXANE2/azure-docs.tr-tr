@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 04/24/2020
 ms.author: jehollan, glenga
 ms.custom: include file
-ms.openlocfilehash: 4eaea46044f0da4766fda051655d57caee9d98b6
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: cdeba09c91bee72508632b8468126150017df7cd
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937028"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98187345"
 ---
-1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur** seçeneğini belirleyin.
+1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**'u seçin.
 
 1. **Yeni** sayfasında, **işlem**  >  **işlev uygulaması**' yi seçin.
 
@@ -27,28 +27,22 @@ ms.locfileid: "97937028"
     | **[Kaynak grubu](../articles/azure-resource-manager/management/overview.md)** |  *myResourceGroup* | İşlev uygulamanızın oluşturulacağı yeni kaynak grubunun adı. |
     | **İşlev Uygulamasının adı** | Genel olarak benzersiz bir ad | Yeni işlev uygulamanızı tanımlayan ad. Geçerli karakterler şunlardır: `a-z` (büyük/küçük harf duyarsız), `0-9` ve `-`.  |
     |**Yayımla**| Kod | Kod dosyalarını veya Docker kapsayıcısını yayımlama seçeneği. |
-    | **Çalışma zamanı yığını** | Tercih edilen dil | Tercih ettiğiniz işlev programlama dilini destekleyen bir çalışma zamanı seçin. C# ve F# için **.NET** işlevlerini seçin. |
+    | **Çalışma zamanı yığını** | Tercih edilen dil | Tercih ettiğiniz işlev programlama dilini destekleyen bir çalışma zamanı seçin. Portal içi düzenlemesi Şu anda [Python geliştirmesi](../articles/azure-functions/functions-reference-python.md)için desteklenmiyor.|
     |**Bölge**| Tercih edilen bölge | Size yakın bir bölge seçin ve işlevlerinizin erişebileceği diğer hizmetlere yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. |
-
-    ![Temel bilgiler sayfası](./media/functions-premium-create/function-app-create-basics.png)
 
 1. Ileri 'yi seçin **: barındırma**. **Barındırma** sayfasında, aşağıdaki ayarları girin:
 
     | Ayar      | Önerilen değer  | Açıklama |
     | ------------ | ---------------- | ----------- |
     | **[Depolama hesabı](../articles/storage/common/storage-account-create.md)** |  Genel olarak benzersiz bir ad |  İşlev uygulamanız tarafından kullanılan bir depolama hesabı oluşturun. Depolama hesabı adları 3 ile 24 karakter arasında olmalı ve yalnızca sayıyla küçük harf içermelidir. Ayrıca, [depolama hesabı gereksinimlerini](../articles/azure-functions/storage-considerations.md#storage-account-requirements)karşılaması gereken mevcut bir hesabı da kullanabilirsiniz. |
-    |**İşletim sistemi**| Tercih edilen işletim sistemi | Çalışma zamanı yığını seçiminize göre sizin için bir işletim sistemi önceden seçilmiştir, ancak gerekirse ayarı değiştirebilirsiniz. Python yalnızca Linux üzerinde desteklenir. |
+    |**İşletim sistemi**| Tercih edilen işletim sistemi | Çalışma zamanı yığını seçiminize göre sizin için bir işletim sistemi önceden seçilmiştir, ancak gerekirse ayarı değiştirebilirsiniz. Python yalnızca Linux üzerinde desteklenir. Portal içi düzenlemesi yalnızca Windows 'da desteklenir.|
     | **[Planlama](../articles/azure-functions/functions-scale.md)** | Premium | Kaynakların işlev uygulamanıza nasıl ayrılacağını tanımlayan barındırma planı. **Premium**' u seçin. Varsayılan olarak, yeni bir App Service planı oluşturulur. Varsayılan **SKU ve boyut** **EP1**, burada EP, _elastik Premium_ için temsil eder. Daha fazla bilgi edinmek için [Premium SKU 'ların listesine](../articles/azure-functions/functions-premium-plan.md#available-instance-skus)bakın.<br/>Premium bir planda JavaScript işlevlerini çalıştırırken, daha az vCPU içeren bir örnek seçmeniz gerekir. Daha fazla bilgi için bkz. [tek çekirdekli Premium planları seçme](../articles/azure-functions/functions-reference-node.md#considerations-for-javascript-functions).  |
-
-    ![Barındırma sayfası](./media/functions-premium-create/function-app-premium-create-hosting.png)
 
 1. **İleri: izleme** öğesini seçin. **İzleme** sayfasında, aşağıdaki ayarları girin:
 
     | Ayar      | Önerilen değer  | Açıklama |
     | ------------ | ---------------- | ----------- |
     | **[Application Insights](../articles/azure-functions/functions-monitoring.md)** | Varsayılan | En yakın desteklenen bölgede aynı *uygulama adının* Application Insights kaynağını oluşturur. Bu ayarı genişleterek, verilerinizi depolamak için **Yeni kaynak adını** değiştirebilir veya [Azure Coğrafya](https://azure.microsoft.com/global-infrastructure/geographies/) 'da farklı bir **konum** seçebilirsiniz. |
-
-    ![İzleme sayfası](./media/functions-create-function-app-portal/function-app-create-monitoring.png)
 
 1. Uygulama yapılandırma seçimlerini gözden geçirmek için **gözden geçir + oluştur** ' u seçin.
 

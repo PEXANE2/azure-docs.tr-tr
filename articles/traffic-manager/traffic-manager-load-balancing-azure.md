@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: duau
-ms.openlocfilehash: 431eaff9da95063648d3e80acb54be9cc5c25bc5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: eaf50f3bdacaf5680bc5ecb1379faff20133b5ce
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021699"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184382"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Azure’daki yük dengeleme hizmetlerini kullanma
 
@@ -88,15 +88,15 @@ Aşağıdaki diyagramda bu senaryonun mimarisi gösterilmektedir:
    * **Örnek sayısı**: 2 ile 10 arasında bir değer olan örnek sayısı.
    * **Kaynak grubu**: Application Gateway 'i tutan kaynak grubu. Mevcut bir kaynak grubu veya yeni bir kaynak olabilir.
    * **Konum**: kaynak grubuyla aynı konum olan uygulama ağ geçidinin bölgesi. Sanal ağ ve genel IP ağ geçidiyle aynı konumda olması gerektiğinden konum önemlidir.
-3. **Tamam** düğmesine tıklayın.
+3. **Tamam**'a tıklayın.
 4. Uygulama ağ geçidi için sanal ağ, alt ağ, ön uç IP ve dinleyici yapılandırmasını tanımlayın. Bu senaryoda, ön uç IP adresi **genel** hale gelir ve bu, daha sonra Traffic Manager profiline bir uç nokta olarak eklenmesine izin verir.
 5. Dinleyiciyi aşağıdaki seçeneklerden biriyle yapılandırın:
-    * HTTP kullanıyorsanız, yapılandırılacak bir şey yoktur. **Tamam** düğmesine tıklayın.
-    * HTTPS kullanıyorsanız, daha fazla yapılandırma gerekir. Adım 9 ' dan başlayarak [uygulama ağ geçidi oluşturma](../application-gateway/application-gateway-create-gateway-portal.md)bölümüne bakın. Yapılandırmayı tamamladığınızda **Tamam**' a tıklayın.
+    * HTTP kullanıyorsanız, yapılandırılacak bir şey yoktur. **Tamam**'a tıklayın.
+    * HTTPS kullanıyorsanız, daha fazla yapılandırma gerekir. Adım 9 ' dan başlayarak [uygulama ağ geçidi oluşturma](../application-gateway/quick-create-portal.md)bölümüne bakın. Yapılandırmayı tamamladığınızda **Tamam**' a tıklayın.
 
 #### <a name="configure-url-routing-for-application-gateways"></a>Uygulama ağ geçitleri için URL yönlendirmeyi yapılandırma
 
-Bir arka uç havuzu seçtiğinizde, yol tabanlı bir kuralla yapılandırılmış bir uygulama ağ geçidi, hepsini bir kez deneme dağıtımına ek olarak istek URL 'sinin yol modelini alır. Bu senaryoda, "/images/" ile herhangi bir URL 'YI görüntü sunucusu havuzuna yönlendirmek için yol tabanlı bir kural ekliyoruz \* . Uygulama ağ geçidi için URL yolu tabanlı yönlendirmeyi yapılandırma hakkında daha fazla bilgi için, bkz. [uygulama ağ geçidi için yol tabanlı bir kural oluşturma](../application-gateway/application-gateway-create-url-route-portal.md).
+Bir arka uç havuzu seçtiğinizde, yol tabanlı bir kuralla yapılandırılmış bir uygulama ağ geçidi, hepsini bir kez deneme dağıtımına ek olarak istek URL 'sinin yol modelini alır. Bu senaryoda, "/images/" ile herhangi bir URL 'YI görüntü sunucusu havuzuna yönlendirmek için yol tabanlı bir kural ekliyoruz \* . Uygulama ağ geçidi için URL yolu tabanlı yönlendirmeyi yapılandırma hakkında daha fazla bilgi için, bkz. [uygulama ağ geçidi için yol tabanlı bir kural oluşturma](../application-gateway/create-url-route-portal.md).
 
 ![Application Gateway Web katmanı diyagramı](./media/traffic-manager-load-balancing-azure/web-tier-diagram.png)
 
@@ -156,7 +156,7 @@ Bu senaryoda, Load Balancer Web katmanından yüksek kullanılabilirlik kümesi 
 
 Yüksek kullanılabilirlik veritabanı kümeniz SQL Server AlwaysOn kullanıyorsa, adım adım yönergeler için [bir veya daha fazla Always on kullanılabilirlik grubu dinleyicilerini yapılandırma](../azure-sql/virtual-machines/windows/availability-group-listener-powershell-configure.md) bölümüne bakın.
 
-İç yük dengeleyiciyi yapılandırma hakkında daha fazla bilgi için, [Azure Portal iç yük dengeleyici oluşturma](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)bölümüne bakın.
+İç yük dengeleyiciyi yapılandırma hakkında daha fazla bilgi için, [Azure Portal iç yük dengeleyici oluşturma](../load-balancer/quickstart-load-balancer-standard-internal-portal.md)bölümüne bakın.
 
 1. Azure Portal, sol bölmedeki **kaynak**  >  **ağ**  >  **yükü dengeleyici** oluştur ' a tıklayın.
 2. Yük dengeleyiciniz için bir ad seçin.
@@ -210,5 +210,5 @@ Artık, herhangi bir veritabanı bağlantısı için Web katmanı sanal makinele
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Traffic Manager'a Genel Bakış](traffic-manager-overview.md)
-* [Application Gateway’e genel bakış](../application-gateway/application-gateway-introduction.md)
+* [Application Gateway’e genel bakış](../application-gateway/overview.md)
 * [Azure Load Balancer’a genel bakış](../load-balancer/load-balancer-overview.md)

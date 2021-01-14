@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 2418a8813e7b9de603b7e7cdc11fc756d73ac2a4
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2a1455c5956297a19d640146879f93b61d035139
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350764"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185912"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. 'de erişim denetim listeleri (ACL 'Ler)
 
@@ -60,7 +60,7 @@ Erişim ACL 'Leri ve varsayılan ACL 'Ler aynı yapıya sahiptir.
 
 ## <a name="levels-of-permission"></a>İzin düzeyleri
 
-Bir kapsayıcı nesnesindeki izinler **okuma**, **yazma** ve **yürütme**, aşağıdaki tabloda gösterildiği gibi dosyalar ve dizinler üzerinde de kullanılabilir:
+Bir kapsayıcıdaki dizinler ve dosyalar üzerindeki izinler **okuma**, **yazma** ve **yürütme**, aşağıdaki tabloda gösterildiği gibi dosyalar ve dizinler üzerinde de kullanılabilir:
 
 |            |    Dosya     |   Dizin |
 |------------|-------------|----------|
@@ -69,7 +69,7 @@ Bir kapsayıcı nesnesindeki izinler **okuma**, **yazma** ve **yürütme**, aşa
 | **Yürütme (X)** | Data Lake Storage 2. bağlamında hiçbir şey anlamına gelmez | Bir dizinin alt öğelerinin çapraz geçişini yapmak için gereklidir |
 
 > [!NOTE]
-> Yalnızca ACL 'Leri kullanarak (Azure RBAC olmadan) izin veriyorsanız, bir güvenlik sorumlusu için bir dosyaya okuma veya yazma erişimi vermek istiyorsanız, kapsayıcıya güvenlik sorumlusu **yürütme** izinleri vermeniz ve dosyaya yol açabilecek klasörler hiyerarşisindeki her bir klasöre erişmeniz gerekir.
+> Yalnızca ACL 'Leri kullanarak (Azure RBAC olmadan) izin veriyorsanız, bir güvenlik sorumlusu için bir dosyaya okuma veya yazma erişimi vermek istiyorsanız, kapsayıcının kök klasörüne ve dosyaya yol açabilecek klasörlerin hiyerarşisindeki her klasöre güvenlik sorumlusu **yürütme** izinleri vermeniz gerekir.
 
 ### <a name="short-forms-for-permissions"></a>İzinlerin kısaltmaları
 
@@ -198,7 +198,7 @@ def access_check( user, desired_perms, path ) :
 
 Erişim denetimi algoritmasında gösterildiği gibi, maske adlandırılmış kullanıcılar, sahip olan grup ve adlandırılmış gruplar için erişimi sınırlandırır.  
 
-Yeni bir Data Lake Storage 2. kapsayıcısı için, kök dizinin ("/") erişim ACL 'SI için maske, dizinler için 750, dosyalar için **640** olarak varsayılan olarak **750** . Aşağıdaki tabloda bu izin düzeylerinin sembolik gösterimi gösterilmektedir.
+Yeni bir Data Lake Storage 2. kapsayıcısı için, kök dizinin ("/") erişim ACL 'SI için maske, dizinler için 750, dosyalar için **640** olarak varsayılan olarak  . Aşağıdaki tabloda bu izin düzeylerinin sembolik gösterimi gösterilmektedir.
 
 |Varlık|Dizinler|Dosyalar|
 |--|--|--|

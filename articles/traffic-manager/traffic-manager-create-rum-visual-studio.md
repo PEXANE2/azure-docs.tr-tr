@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: duau
 ms.custom: devx-track-js
-ms.openlocfilehash: c49672ad38ac8cf80214d03870b5876d741e76ec
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f9e8cdd3eb5c9f441444683fb5efaccc880b2757
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994885"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184620"
 ---
 # <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Visual Studio Mobile Center ile Traffic Manager Gerçek Kullanıcı Ölçümleri gönderme
 
@@ -52,7 +52,7 @@ Aşağıdaki yordamı kullanarak Azure portal kullanarak RUM anahtarını elde e
 
 ## <a name="step-2-instrument-your-app-with-the-rum-package-of-mobile-center-sdk"></a>2. Adım: uygulamanızı Mobile Center SDK 'nın RUM paketiyle birlikte Işaretleme
 
-Visual Studio Mobile Center 'a yeni başladıysanız, [Web sitesini](https://mobile.azure.com)ziyaret edin. SDK tümleştirmesi hakkında ayrıntılı yönergeler için bkz. [Android SDK kullanmaya](https://docs.microsoft.com/mobile-center/sdk/getting-started/Android)başlama.
+Visual Studio Mobile Center 'a yeni başladıysanız, [Web sitesini](https://mobile.azure.com)ziyaret edin. SDK tümleştirmesi hakkında ayrıntılı yönergeler için bkz. [Android SDK kullanmaya](/mobile-center/sdk/getting-started/Android)başlama.
 
 Gerçek Kullanıcı Ölçümleri kullanmak için aşağıdaki yordamı izleyin:
 
@@ -98,8 +98,7 @@ Gerçek Kullanıcı Ölçümleri kullanmak için aşağıdaki yordamı izleyin:
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Gerçek Kullanıcı ölçümleri](traffic-manager-rum-overview.md) hakkında daha fazla bilgi edinin
 - [Traffic Manager nasıl çalıştığını](traffic-manager-overview.md) öğrenin
-- [Mobile Center](https://docs.microsoft.com/mobile-center/) hakkında daha fazla bilgi edinin
+- [Mobile Center](/mobile-center/) hakkında daha fazla bilgi edinin
 - Mobile Center 'a [kaydolun](https://mobile.azure.com)
 - Traffic Manager tarafından desteklenen [trafik yönlendirme yöntemleri](traffic-manager-routing-methods.md) hakkında daha fazla bilgi edinin
-- [Traffic Manager profili oluşturmayı](traffic-manager-create-profile.md) öğrenin
-
+- [Traffic Manager profili oluşturmayı](./quickstart-create-traffic-manager-profile.md) öğrenin

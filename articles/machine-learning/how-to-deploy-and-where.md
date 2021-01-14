@@ -1,26 +1,26 @@
 ---
-title: Modellerin nasıl ve nereye dağıtılacağı
+title: Makine öğrenimi modellerini dağıtma
 titleSuffix: Azure Machine Learning
-description: Azure Container Instances, Azure Kubernetes hizmeti, Azure IoT Edge ve FPGA dahil olmak üzere Azure Machine Learning modellerinizi nasıl ve nereye dağıtacağınızı öğrenin.
+description: Makine öğrenimi modellerinin nasıl ve nereye dağıtılacağını öğrenin. Azure Container Instances, Azure Kubernetes hizmeti, Azure IoT Edge ve FPGA 'e dağıtın.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: gopalv
 author: gvashishtha
 ms.reviewer: larryfr
-ms.date: 12/11/2020
+ms.date: 01/13/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 195f1c527185fbd55450b6151f26525074db75f7
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: e9c691485eb0ec1a0b3c0564f9a8f9a5d2aa255d
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070431"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185810"
 ---
-# <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning ile modelleri dağıtma
+# <a name="deploy-machine-learning-models-to-azure"></a>Makine öğrenimi modellerini Azure 'a dağıtma
 
-Machine Learning modelinizi bir Web hizmeti olarak Azure bulutu 'nda veya Azure IoT Edge cihazlarda dağıtmayı öğrenin.
+Machine Learning veya derin öğrenme modelinizi Azure bulutu 'nda bir Web hizmeti olarak dağıtmayı öğrenin. Ayrıca, Azure IoT Edge cihazlara dağıtabilirsiniz.
 
 Modeli nerede dağıtırsanız dağıtın benzer bir iş akışı kullanılır:
 
@@ -31,7 +31,7 @@ Modeli nerede dağıtırsanız dağıtın benzer bir iş akışı kullanılır:
 1. Modeli işlem hedefine dağıtın.
 1. Elde edilen Web hizmetini test edin.
 
-Dağıtım iş akışında yer alan kavramlar hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri yönetme, dağıtma ve izleme](concept-model-management-and-deployment.md).
+Machine Learning dağıtım iş akışında yer alan kavramlar hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri yönetme, dağıtma ve izleme](concept-model-management-and-deployment.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -197,7 +197,7 @@ En az bir çıkarım yapılandırması şöyle yazılabilir:
 }
 ```
 
-Bu, dağıtımın `score.py` `./working_dir` gelen istekleri işlemek için dizindeki dosyayı kullanacağı belirtir.
+Bu, Machine Learning dağıtımının `score.py` `./working_dir` gelen istekleri işlemek için dizindeki dosyayı kullanacağı belirtir.
 
 Çıkarım yapılandırmalarının daha kapsamlı bir açıklaması için [Bu makaleye bakın](./reference-azure-machine-learning-cli.md#inference-configuration-schema) . 
 
@@ -269,7 +269,7 @@ from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservic
 
 ---
 
-## <a name="deploy-your-model"></a>Modelinizi dağıtın
+## <a name="deploy-your-machine-learning-model"></a>Machine Learning modelinizi dağıtma
 
 Artık modelinizi dağıtmaya hazırsınız. 
 
@@ -314,13 +314,13 @@ Model dağıtımı sırasında hizmet durumu değişikliğini tam olarak dağıt
 
 Aşağıdaki tabloda farklı hizmet durumları açıklanmaktadır:
 
-| Web hizmeti durumu | Açıklama | Son durum?
+| Web hizmeti durumu | Description | Son durum?
 | ----- | ----- | ----- |
-| Kta | Hizmet, dağıtım sürecinde. | Hayır |
-| Uygun Değil | Hizmet dağıtıldı, ancak şu anda ulaşılamaz durumda.  | Hayır |
-| Unschedulable | Kaynak eksikliği nedeniyle hizmet şu anda dağıtılamıyor. | Hayır |
-| Başarısız | Hizmet bir hata veya kilitlenme nedeniyle dağıtılamadı. | Evet |
-| Sağlam | Hizmet sağlıklı ve uç nokta kullanılabilir. | Evet |
+| Kta | Hizmet, dağıtım sürecinde. | No |
+| Uygun Değil | Hizmet dağıtıldı, ancak şu anda ulaşılamaz durumda.  | No |
+| Unschedulable | Kaynak eksikliği nedeniyle hizmet şu anda dağıtılamıyor. | No |
+| Başarısız | Hizmet bir hata veya kilitlenme nedeniyle dağıtılamadı. | Yes |
+| Sağlam | Hizmet sağlıklı ve uç nokta kullanılabilir. | Yes |
 
 > [!TIP]
 > Dağıtım sırasında, işlem hedefleri için Docker görüntüleri Azure Container Registry (ACR) ile oluşturulur ve yüklenir. Varsayılan olarak, Azure Machine Learning *temel* hizmet katmanını kullanan bir ACR oluşturur. Çalışma alanınızın ACR 'sini standart veya Premium katmana değiştirmek, görüntü oluşturma ve işlem hedeflerinize dağıtmak için geçen süreyi azaltabilir. Daha fazla bilgi için bkz. [Azure Container Registry hizmet katmanları](../container-registry/container-registry-skus.md).

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: duau
-ms.openlocfilehash: 471895f1a615770521584a627e6bca850b87d0ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1e1bd107e8b3b9209f99d1abfc4d7e391c3c4a6
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462641"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184348"
 ---
 # <a name="how-traffic-manager-works"></a>Traffic Manager nasıl kullanılır?
 
@@ -30,7 +30,7 @@ Traffic Manager iki temel avantaj sağlar:
 
 İstemcinin bir hizmete bağlanabilmesi için önce o hizmetin DNS adını bir IP adresine çözümlemesi gerekir. İstemci bu işlemin ardından ilgili IP adresine bağlanarak hizmete erişebilir.
 
-**Anlamanız gereken en önemli nokta, Traffic Manager DNS düzeyinde çalışmaktadır.**  Traffic Manager, istemcileri trafik yönlendirme yönteminin kurallarına göre belirli hizmet uç noktalarına yönlendirmek için DNS kullanır. İstemciler seçili uç noktaya **doğrudan**bağlanır. Traffic Manager bir proxy veya ağ geçidi değil. Traffic Manager istemci ile hizmet arasında geçen trafiği görmez.
+**Anlamanız gereken en önemli nokta, Traffic Manager DNS düzeyinde çalışmaktadır.**  Traffic Manager, istemcileri trafik yönlendirme yönteminin kurallarına göre belirli hizmet uç noktalarına yönlendirmek için DNS kullanır. İstemciler seçili uç noktaya **doğrudan** bağlanır. Traffic Manager bir proxy veya ağ geçidi değil. Traffic Manager istemci ile hizmet arasında geçen trafiği görmez.
 
 ## <a name="traffic-manager-example"></a>Traffic Manager örneği
 
@@ -71,27 +71,27 @@ Bu yapılandırmayı başarmak için aşağıdaki adımları tamamlarlar:
 
 ## <a name="faqs"></a>SSS
 
-* [Traffic Manager hangi IP adresi kullanır?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-ip-address-does-traffic-manager-use)
+* [Traffic Manager hangi IP adresi kullanır?](./traffic-manager-faqs.md#what-ip-address-does-traffic-manager-use)
 
-* [Traffic Manager kullanılarak hangi türde trafik yönlendirilebilir?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-types-of-traffic-can-be-routed-using-traffic-manager)
+* [Traffic Manager kullanılarak hangi türde trafik yönlendirilebilir?](./traffic-manager-faqs.md#what-types-of-traffic-can-be-routed-using-traffic-manager)
 
-* ["Sticky" oturumlarını Traffic Manager destekler mi?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-support-sticky-sessions)
+* ["Sticky" oturumlarını Traffic Manager destekler mi?](./traffic-manager-faqs.md#does-traffic-manager-support-sticky-sessions)
 
-* [Traffic Manager kullanırken neden HTTP hatası görüyorum?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-am-i-seeing-an-http-error-when-using-traffic-manager)
+* [Traffic Manager kullanırken neden HTTP hatası görüyorum?](./traffic-manager-faqs.md#why-am-i-seeing-an-http-error-when-using-traffic-manager)
 
-* [Traffic Manager kullanmanın performans etkisi nedir?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-is-the-performance-impact-of-using-traffic-manager)
+* [Traffic Manager kullanmanın performans etkisi nedir?](./traffic-manager-faqs.md#what-is-the-performance-impact-of-using-traffic-manager)
 
-* [Traffic Manager ile hangi uygulama protokollerini kullanabilirim?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-application-protocols-can-i-use-with-traffic-manager)
+* [Traffic Manager ile hangi uygulama protokollerini kullanabilirim?](./traffic-manager-faqs.md#what-application-protocols-can-i-use-with-traffic-manager)
 
-* [Traffic Manager, "Naked" etki alanı adıyla kullanabilir miyim?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-a-naked-domain-name)
+* [Traffic Manager, "Naked" etki alanı adıyla kullanabilir miyim?](./traffic-manager-faqs.md#can-i-use-traffic-manager-with-a-naked-domain-name)
 
-* [DNS sorgularını işlerken istemci alt ağ adresini göz önüne Traffic Manager mı?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries)
+* [DNS sorgularını işlerken istemci alt ağ adresini göz önüne Traffic Manager mı?](./traffic-manager-faqs.md#does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries)
 
-* [DNS TTL nedir ve Kullanıcılarımı nasıl etkiler?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-is-dns-ttl-and-how-does-it-impact-my-users)
+* [DNS TTL nedir ve Kullanıcılarımı nasıl etkiler?](./traffic-manager-faqs.md#what-is-dns-ttl-and-how-does-it-impact-my-users)
 
-* [Traffic Manager yanıtları için TTL 'yi ne kadar yüksek veya düşük bir şekilde ayarlayabilirim?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-high-or-low-can-i-set-the-ttl-for-traffic-manager-responses)
+* [Traffic Manager yanıtları için TTL 'yi ne kadar yüksek veya düşük bir şekilde ayarlayabilirim?](./traffic-manager-faqs.md#how-high-or-low-can-i-set-the-ttl-for-traffic-manager-responses)
 
-* [Profilim 'e gelen sorguların hacmini nasıl anlayabilirim?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-understand-the-volume-of-queries-coming-to-my-profile)
+* [Profilim 'e gelen sorguların hacmini nasıl anlayabilirim?](./traffic-manager-faqs.md#how-can-i-understand-the-volume-of-queries-coming-to-my-profile)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -102,4 +102,3 @@ Traffic Manager [trafik yönlendirme yöntemleri](traffic-manager-routing-method
 <!--Image references-->
 [1]: ./media/traffic-manager-how-traffic-manager-works/dns-configuration.png
 [2]: ./media/traffic-manager-how-traffic-manager-works/flow.png
-

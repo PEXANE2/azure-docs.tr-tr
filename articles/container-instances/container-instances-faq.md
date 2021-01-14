@@ -5,12 +5,12 @@ author: macolso
 ms.author: macolso
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: e4760463a4d71e4c097b082aa6b93d8b339f94ca
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 5de1188ee018e796f918d7559c0e2c24c77834f4
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516979"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186201"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Azure Container Instances hakkında sık sorulan sorular
 
@@ -54,6 +54,10 @@ Kapsayıcı başlatma süresini azaltmak için daha [ayrıntılı rehberlik](con
 ### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>Kapsayıcımda hangi .NET veya .NET Core görüntü katmanını kullanmalıyım? 
 
 Gereksinimlerinizi karşılayan en küçük görüntüyü kullanın. Linux için .NET Core 2,1 sürümünden bu yana desteklenen bir *Runtime-alçam* .NET Core görüntüsü kullanabilirsiniz. Windows için, tam .NET Framework kullanıyorsanız, bir Windows Server çekirdek görüntüsü (yalnızca çalışma zamanı görüntüsü, örneğin  *4.7.2-windowsservercore-ltsc2016*) kullanmanız gerekir. Yalnızca çalışma zamanı görüntüleri küçüktür, ancak .NET SDK gerektiren iş yüklerini desteklemez.
+
+### <a name="what-types-of-container-registries-are-compatible-with-aci"></a>Ne tür kapsayıcı kayıt defterleri ACI ile uyumludur?
+
+ACR 'den ve DockerHub gibi diğer üçüncü taraf kapsayıcı kayıt defterlerinden görüntü çekini destekler. ACı Ayrıca, OCR uyumlu oldukları ve internet 'e açık bir uç noktaya sahip olduğu sürece Şirket içi kayıt defterlerinden görüntü çekmeleri de destekler.
 
 ## <a name="availability-and-quotas"></a>Kullanılabilirlik ve Kotalar
 

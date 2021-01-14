@@ -3,12 +3,12 @@ title: DevTest Labs 'de ortam oluşturmak için Azure yönetilen kimliklerini ku
 description: Azure DevTest Labs 'de laboratuarda ortamları dağıtmak için Azure 'da Yönetilen kimlikler kullanmayı öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: e5bac4210afee6db1c7617dac1cd6d2ff9149439
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f3e4b4d7030eb26c25b291e03caaa430d1979c4
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88719000"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185793"
 ---
 # <a name="use-azure-managed-identities-to-deploy-environments-in-a-lab"></a>Laboratuvar ortamında ortamları dağıtmak için Azure yönetilen kimliklerini kullanma 
 
@@ -17,7 +17,7 @@ Laboratuvar sahibi olarak, bir laboratuvarda ortamları dağıtmak için yöneti
 > [!NOTE]
 > Şu anda, laboratuvar başına tek bir kullanıcı tarafından atanan kimlik desteklenir. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Azure Portal kullanarak, Kullanıcı tarafından atanan yönetilen kimlik için rol oluşturma, listeleme, silme veya atama](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). 
     
@@ -27,8 +27,8 @@ Laboratuvar sahibi olarak, bir laboratuvarda ortamları dağıtmak için yöneti
 
 Bu bölümde, laboratuvar sahibi olarak, laboratuvara Kullanıcı tarafından yönetilen bir kimlik eklemek için Azure portal kullanın. 
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-1. **DevTest Labs**için arama yapın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. **DevTest Labs** için arama yapın.
 1. Laboratuvarlar listesinden istediğiniz Laboratuvarı seçin.
 1. **Yapılandırma ve ilke**  ->  **kimliği (Önizleme)** öğesini seçin. 
 1. Kullanıcı tarafından atanan bir kimlik eklemek için **Kullanıcı atandı** sekmesini seçin.

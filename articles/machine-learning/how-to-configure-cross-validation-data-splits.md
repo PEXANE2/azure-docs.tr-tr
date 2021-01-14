@@ -1,7 +1,7 @@
 ---
-title: Otomatik makine öğrenimi 'nde çapraz doğrulamayı ve veri bölmelerini yapılandırma denemeleri
+title: Otomatik makine öğreniminde veri ayırır ve çapraz doğrulama
 titleSuffix: Azure Machine Learning
-description: Otomatik makine öğrenimi için çapraz doğrulamayı ve veri kümesi bölmelerini nasıl yapılandıracağınızı öğrenin denemeleri
+description: Otomatik makine öğrenimi için veri kümesi bölmelerini ve çapraz doğrulamayı yapılandırma hakkında bilgi edinin denemeleri
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,27 +11,27 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: c29c8ab31507c0ec904a7534e50ef6523e1aab96
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 2e26bfa484d573c0158e518b31087fb10bdcdfb9
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360114"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185691"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>Otomatik makine öğrenmesinde veri bölmelerini ve çapraz doğrulamayı yapılandırma
 
-Bu makalede, otomatik makine öğrenimi, otomatik ml, denemeleri için eğitim/doğrulama veri bölmelerini ve çapraz doğrulamayı yapılandırmaya yönelik farklı seçenekler öğreneceksiniz.
+Bu makalede, otomatik makine öğrenimi, otomatik ML, denemeleri için eğitim/doğrulama veri bölmelerini ve çapraz doğrulamayı yapılandırmaya yönelik farklı seçenekler öğreneceksiniz.
 
-Azure Machine Learning ' de, birden çok ML modeli oluşturmak için, oto ml 'yi kullandığınızda, bu modelin doğruluk veya AUC ağırlıklı gibi kalite ölçümlerini hesaplayarak her bir alt çalıştırmanın ilgili modeli doğrulaması gerekir. Bu ölçümler, her bir modelle yapılan tahminlerin, doğrulama verilerinde geçmiş gözlemlerden gerçek etiketlerle karşılaştırılmasıyla hesaplanır. 
+Azure Machine Learning ' de, otomatik ML 'yi birden çok ML modeli oluşturmak için kullandığınızda, her bir alt çalıştırmanın, bu modelin doğruluk veya AUC ağırlıklı gibi kalite ölçümlerini hesaplayarak ilgili modeli doğrulaması gerekir. Bu ölçümler, her bir modelle yapılan tahminlerin, doğrulama verilerinde geçmiş gözlemlerden gerçek etiketlerle karşılaştırılmasıyla hesaplanır. 
 
-Otomatik ml denemeleri model doğrulamasını otomatik olarak gerçekleştirir. Aşağıdaki bölümlerde, [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py)ile doğrulama ayarlarını nasıl daha da özelleştireceğiniz açıklanır. 
+Otomatik ML denemeleri otomatik olarak model doğrulaması gerçekleştirir. Aşağıdaki bölümlerde, [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py)ile doğrulama ayarlarını nasıl daha da özelleştireceğiniz açıklanır. 
 
 Düşük kod veya kod içermeyen bir deneyim için [Azure Machine Learning Studio 'da otomatik makine öğrenimi denemeleri oluşturma](how-to-use-automated-ml-for-ml-models.md)makalesine bakın. 
 
 > [!NOTE]
 > Studio şu anda eğitim/doğrulama veri bölmelerini ve çapraz doğrulama seçeneklerini desteklemektedir, ancak doğrulama kümesi için bireysel veri dosyalarının belirtilmesini desteklemez. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 İhtiyacınız olan bu makalede,
 
@@ -39,13 +39,13 @@ Düşük kod veya kod içermeyen bir deneyim için [Azure Machine Learning Studi
 
 * Azure Machine Learning SDK ile bir otomatik makine öğrenimi oluşturma denemesinde deneyim elde edin. Temel otomatik makine öğrenimi tasarım düzenlerini görmek için [öğreticiyi](tutorial-auto-train-models.md) izleyin veya [nasıl yapılır?](how-to-configure-auto-train.md)
 
-* Çapraz doğrulama ve tren/doğrulama verilerinin anlaşılmasının, ML kavramları olarak bölündüğünü. Üst düzey bir açıklama için
+* Eğitim/doğrulama verilerinin ve çapraz doğrulamanın makine öğrenimi kavramları olarak anlaşılmasının bir açıklaması. Üst düzey bir açıklama için
 
     * [Machine Learning eğitim, doğrulama ve test kümeleri hakkında](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
 
-    * [Çapraz doğrulamayı anlama](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd)
+    * [Makine öğreniminde çapraz doğrulamayı anlama](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd)
 
-## <a name="default--data-splits-and-cross-validation"></a>Varsayılan veri ayırır ve çapraz doğrulama
+## <a name="default-data-splits-and-cross-validation"></a>Varsayılan veri ayırır ve çapraz doğrulama
 
 Deneme ve eğitim ayarlarınızı tanımlamak için, [oto Mlconfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) nesnesini kullanın. Aşağıdaki kod parçacığında, veya için parametreler olan `n_cross_validation` veya `validation_ data` dahil **olmayan** yalnızca gerekli parametrelerin tanımlandığından emin olun.
 
@@ -67,7 +67,7 @@ Açıkça bir `validation_data` veya `n_cross_validation` parametresi belirtmezs
 |Eğitim &nbsp; veri &nbsp; boyutu| Doğrulama tekniği |
 |---|-----|
 |**&nbsp; &nbsp; 20.000 &nbsp; satırdan büyük**| Eğitme/doğrulama verileri bölünmesi uygulandı. Varsayılan değer, doğrulama kümesi olarak ilk eğitim verileri kümesinin %10 ' un sürme sayısıdır. Buna karşılık, bu doğrulama kümesi ölçüm hesaplamaları için kullanılır.
-|**&nbsp; &nbsp; 20.000 &nbsp; satırdan küçük**| Çapraz doğrulama yaklaşımı uygulanır. Varsayılan katların sayısı satır sayısına bağlıdır. <br> **Veri kümesi 1.000 satırdan azsa** , 10 katlar kullanılır. <br> **Satırlar 1.000 ve 20.000 arasındaysa** , üç katlar kullanılır.
+|**&nbsp; &nbsp; 20.000 &nbsp; satırdan küçük**| Çapraz doğrulama yaklaşımı uygulanır. Varsayılan katların sayısı satır sayısına bağlıdır. <br> **Veri kümesi 1.000 satırdan azsa**, 10 katlar kullanılır. <br> **Satırlar 1.000 ve 20.000 arasındaysa**, üç katlar kullanılır.
 
 ## <a name="provide-validation-data"></a>Doğrulama verisi sağlama
 
@@ -93,7 +93,7 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 
 ## <a name="provide-validation-set-size"></a>Doğrulama kümesi boyutu sağla
 
-Bu durumda, deneme için yalnızca tek bir veri kümesi sağlanır. Diğer bir deyişle, `validation_data` parametresi belirtilmez **not** ve belirtilen veri kümesi `training_data` parametreye atanır.  `AutoMLConfig`Nesneniz `validation_size` için, parametresini, doğrulama için eğitim verilerinin bir kısmını tutacak şekilde ayarlayabilirsiniz. Bu, doğrulama kümesinin başlangıçtaki ilk olarak, oto ml tarafından bölüneceği anlamına gelir `training_data` . Bu değer 0,0 ile 1,0 arasında olmalıdır (örneğin, 0,2 doğrulama verileri için verilerin %20 ' si tutulur).
+Bu durumda, deneme için yalnızca tek bir veri kümesi sağlanır. Diğer bir deyişle, `validation_data` parametresi belirtilmez  ve belirtilen veri kümesi `training_data` parametreye atanır.  `AutoMLConfig`Nesneniz `validation_size` için, parametresini, doğrulama için eğitim verilerinin bir kısmını tutacak şekilde ayarlayabilirsiniz. Bu, doğrulama kümesinin başlangıçtaki ilk olarak, oto ml tarafından bölüneceği anlamına gelir `training_data` . Bu değer 0,0 ile 1,0 arasında olmalıdır (örneğin, 0,2 doğrulama verileri için verilerin %20 ' si tutulur).
 
 Aşağıdaki kod örneğine bakın:
 
@@ -117,7 +117,7 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 
 Aşağıdaki kodda, çapraz doğrulama için beş katların tanımlanması gerekir. Bu nedenle, beş farklı seyahat, veri 4/5 kullanan her eğitim ve her bir doğrulama, her seferinde farklı bir gizleme katlamalı şekilde verilerin 1/5 ' i kullanıyor.
 
-Sonuç olarak, ölçümler 5 doğrulama ölçümlerinin ortalaması ile hesaplanır.
+Sonuç olarak, ölçümler, beş doğrulama ölçümlerinin ortalaması ile hesaplanır.
 
 ```python
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"

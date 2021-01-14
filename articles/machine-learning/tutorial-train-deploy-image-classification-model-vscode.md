@@ -10,12 +10,12 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 07/09/2020
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 9ad96bdb632e134cf3e3a0f82bb97f88c87e72e9
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 937b5ebb13bfbf27ff04b6944f2de7e32e7e656c
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033451"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185861"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension-preview"></a>Azure Machine Learning Visual Studio Code uzantısı (Önizleme) kullanarak görüntü sınıflandırması TensorFlow modelini eğitme ve dağıtma
 
@@ -33,7 +33,7 @@ Bu öğreticide, aşağıdaki görevleri öğreneceksiniz:
 > * Bir modeli kaydetme
 > * Model dağıtma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği. Bir hesabınız yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)denemek için kaydolun.
 - Hafif, platformlar arası bir kod Düzenleyicisi [Visual Studio Code](https://code.visualstudio.com/docs/setup/setup-overview)yükler.
@@ -78,7 +78,7 @@ Tek tek model eğitimi çalıştırmalarını izlemek ve analiz etmek için, ça
     > [!div class="mx-imgBorder"]
     > ![Deneme oluşturma](./media/tutorial-train-deploy-image-classification-model-vscode/create-experiment.png)
 
-1. Denemenizi "MNIST" olarak adlandırın ve yeni denemeyi oluşturmak için **ENTER** 'a basın. 
+1. Deneme adınızı "öğretici-VSCode-MNIST" olarak adlandırın ve yeni bir deneme oluşturmak için **ENTER** tuşuna basın. 
 
 Çalışma alanları gibi, belirtilen yapılandırmalara sahip bir deneme oluşturmak için Azure 'a bir istek gönderilir. Birkaç dakika sonra, yeni deneme, çalışma alanınızın *denemeleri* düğümünde görünür. 
 

@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Azure Arc ile Azure Arc etkin bir Kubernetes kümesi bağlama
 keywords: Kubernetes, yay, Azure, K8s, kapsayıcılar
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 8155ed709045626dee44fb499304ff5244a61b54
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 131ec014c9ac016a682bc4928f74910a3405a5da
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060257"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186014"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Azure Arc özellikli Kubernetes kümesini (Önizleme) bağlama
 
@@ -35,19 +35,19 @@ Aşağıdaki gereksinimlerin hazırlanaldığını doğrulayın:
   
   `connectedk8s`Kubernetes kümelerini Azure 'a bağlamanıza yardımcı olan uzantıyı yükleyebilirsiniz:
   
-  ```console
+  ```azurecli
   az extension add --name connectedk8s
   ```
   
   Uzantıyı yükler `k8sconfiguration` :
   
-  ```console
+  ```azurecli
   az extension add --name k8sconfiguration
   ```
   
   Bu uzantıları daha sonra güncelleştirmek istiyorsanız aşağıdaki komutları çalıştırın:
   
-  ```console
+  ```azurecli
   az extension update --name connectedk8s
   az extension update --name k8sconfiguration
   ```
@@ -64,7 +64,7 @@ Azure Arc aracıları için aşağıdaki protokollerin/bağlantı noktalarının
 * 443 numaralı bağlantı noktasında TCP--> `https://:443`
 * 9418 numaralı bağlantı noktasında TCP--> `git://:9418`
 
-| Uç nokta (DNS)                                                                                               | Açıklama                                                                                                                 |
+| Uç nokta (DNS)                                                                                               | Description                                                                                                                 |
 | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
 | `https://management.azure.com`                                                                                 | Aracının Azure 'a bağlanması ve kümeyi kaydetmesi için gereklidir                                                        |
 | `https://eastus.dp.kubernetesconfiguration.azure.com`, `https://westeurope.dp.kubernetesconfiguration.azure.com` | Aracının durum ve getirme yapılandırma bilgilerini itilmesi için veri düzlemi uç noktası                                      |

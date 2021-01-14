@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/02/2020
 ms.author: mnayak
-ms.openlocfilehash: 656f8a0e0530a20807fc8fddd4cd96d1d955c8ac
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: fa83c51469636eb269aa5dc3192ff7e65b53ce89
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912708"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186150"
 ---
 # <a name="what-is-routing-preference-preview"></a>Yönlendirme tercihi nedir (Önizleme)?
 
@@ -74,7 +74,7 @@ Her iki seçenek arasındaki fiyat farkı, Internet çıkış veri aktarımı fi
 
 ## <a name="limitations"></a>Sınırlamalar
 
-* Yönlendirme tercihi yalnızca standart genel IP adresi SKU 'SU ile uyumludur. Temel genel IP adresi SKU 'SU desteklenmiyor.
+* Yönlendirme tercihi yalnızca bölge yedekli standart IP adresi SKU 'SU ile uyumludur. Temel genel IP adresi SKU 'SU desteklenmiyor.
 * Yönlendirme tercihi şu anda yalnızca IPv4 Genel IP adreslerini desteklemektedir. IPv6 genel IP adresleri desteklenmez.
 * Birden çok NIC içeren sanal makineler yalnızca bir yönlendirme tercihi türüne sahip olabilir.
 

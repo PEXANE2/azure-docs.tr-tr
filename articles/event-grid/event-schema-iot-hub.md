@@ -2,13 +2,13 @@
 title: Azure IoT Hub Event Grid kaynak olarak
 description: Bu makalede, Azure IoT Hub olayları için özellikler ve şema sağlanmaktadır. Kullanılabilir olay türlerini, örnek bir olayı ve olay özelliklerini listeler.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 02ecf8d4df55aa6b4319e40892778f85f94e29a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/13/2021
+ms.openlocfilehash: 7e1c480bd2a662a2ee3418b35dc9c3b50d412a60
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86113658"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185844"
 ---
 # <a name="azure-iot-hub-as-an-event-grid-source"></a>Azure IoT Hub Event Grid kaynak olarak
 Bu makalede, Azure IoT Hub olayları için özellikler ve şema sağlanmaktadır. Olay şemalarına giriş için bkz. [Azure Event Grid olay şeması](event-schema.md). 
@@ -26,8 +26,6 @@ Azure IoT Hub aşağıdaki olay türlerini yayar:
 | Microsoft.Devices.DeviceConnected | Bir cihaz IoT Hub 'ına bağlandığında yayımlandı. |
 | Microsoft.Devices.DeviceDisconnected | Bir cihazın IoT Hub 'ından bağlantısı kesildiğinde yayımlandı. | 
 | Microsoft.Devices.DeviceTelemetry | Bir IoT Hub 'ına telemetri iletisi gönderildiğinde yayımlandı. |
-
-Cihaz telemetri olayları dışındaki tüm cihaz olayları, Event Grid tarafından desteklenen tüm bölgelerde genel kullanıma sunulmuştur. Cihaz telemetri olayı genel önizlemede bulunur ve Doğu ABD, Batı ABD, Batı Avrupa, [Azure Kamu](../azure-government/documentation-government-welcome.md), [Azure Çin 21Vianet](/azure/china/china-welcome)ve [Azure Almanya](https://azure.microsoft.com/global-infrastructure/germany/)dışındaki tüm bölgelerde kullanılabilir.
 
 ### <a name="example-event"></a>Örnek olay
 
@@ -140,7 +138,7 @@ DeviceCreated ve DeviceDeleted olaylarının şeması aynı yapıya sahiptir. Bu
 
 Tüm olaylar, en üst düzey verileri içerir: 
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | kimlik | string | Etkinliğin benzersiz tanımlayıcısı. |
 | konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
@@ -153,7 +151,7 @@ Tüm olaylar, en üst düzey verileri içerir:
 
 Tüm IoT Hub olayları için veri nesnesi aşağıdaki özellikleri içerir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | hubName | string | Cihazın oluşturulduğu veya silindiği IoT Hub adı. |
 | deviceId | string | Cihazın benzersiz tanımlayıcısı. Bu büyük/küçük harf duyarlı dize en fazla 128 karakter uzunluğunda olabilir ve ASCII 7 bit alfasayısal karakterlerini ve şu özel karakterleri destekler: `- : . + % _ # * ? ! ( ) , = @ ; $ '` . |
@@ -162,7 +160,7 @@ Veri nesnesinin içeriği her bir olay yayımcısı için farklıdır.
 
 **Cihaz bağlı** ve **cihaz bağlantısı kesik** IoT Hub olayları için veri nesnesi aşağıdaki özellikleri içerir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | Modül kimliği | string | Modülün benzersiz tanımlayıcısı. Bu alan yalnızca modül cihazları için çıktıdır. Bu büyük/küçük harf duyarlı dize en fazla 128 karakter uzunluğunda olabilir ve ASCII 7 bit alfasayısal karakterlerini ve şu özel karakterleri destekler: `- : . + % _ # * ? ! ( ) , = @ ; $ '` . |
 | Deviceconnectionstateeventınfo | object | Cihaz bağlantısı durumu olay bilgileri
@@ -170,7 +168,7 @@ Veri nesnesinin içeriği her bir olay yayımcısı için farklıdır.
 
 **Cihaz telemetri** IoT Hub olayında veri nesnesi, [IoT Hub ileti biçiminde](../iot-hub/iot-hub-devguide-messages-construct.md) cihazdan buluta ileti içerir ve aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | body | string | Cihazdaki iletinin içeriği. |
 | properties | string | Uygulama özellikleri, iletiye eklenebilen Kullanıcı tanımlı dizelerdir. Bu alanlar isteğe bağlıdır. |
@@ -178,7 +176,7 @@ Veri nesnesinin içeriği her bir olay yayımcısı için farklıdır.
 
 **Oluşturulan cihaz** ve **cihaz IoT Hub silinen** olaylar için, veri nesnesi aşağıdaki özellikleri içerir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | ikizi | object | Uygulama aygıtı meta verilerinin bulut temsili olan cihaz ikizi hakkında bilgiler. | 
 | DeviceID | string | Cihazın benzersiz tanımlayıcısı ikizi. | 

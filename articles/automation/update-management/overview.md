@@ -3,14 +3,14 @@ title: Azure Otomasyonu Güncelleştirme Yönetimi Genel Bakış
 description: Bu makalede, Windows ve Linux makineleriniz için güncelleştirmeleri uygulayan Güncelleştirme Yönetimi özelliğine bir genel bakış sunulmaktadır.
 services: automation
 ms.subservice: update-management
-ms.date: 12/09/2020
+ms.date: 01/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 4b557c9772e76b6b61cdf01799ee30ba6bc11807
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: d66d4d32c788317d8b0781f9f24120fbce2f6f8f
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928435"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185623"
 ---
 # <a name="update-management-overview"></a>Güncelleştirme Yönetimi’ne genel bakış
 
@@ -65,16 +65,16 @@ Birden fazla Log Analytics çalışma alanında (aynı zamanda çoklu kayıt ola
 
 ## <a name="clients"></a>İstemciler
 
-### <a name="supported-client-types"></a>Desteklenen istemci türleri
+### <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
-Aşağıdaki tabloda güncelleştirme değerlendirmeleri ve düzeltme eki uygulama için desteklenen işletim sistemleri listelenmektedir. Düzeltme eki uygulama, Güncelleştirme Yönetimi tarafından yönetim için sanal makineyi veya sunucuyu etkinleştirdiğinizde otomatik olarak yüklenen karma Runbook Worker gerektirir. Karma Runbook Worker sistem gereksinimleri hakkında bilgi için bkz. [Windows karma Runbook Worker dağıtma](../automation-windows-hrw-install.md) ve [Linux karma Runbook Worker](../automation-linux-hrw-install.md)dağıtımı.
+Aşağıdaki tabloda güncelleştirme değerlendirmeleri ve düzeltme eki uygulama için desteklenen işletim sistemleri listelenmektedir. Düzeltme eki uygulama, Güncelleştirme Yönetimi tarafından yönetim için sanal makineyi veya sunucuyu etkinleştirdiğinizde otomatik olarak yüklenen bir sistem karma Runbook Worker gerektirir. Karma Runbook Worker sistem gereksinimleri hakkında bilgi için bkz. [Windows karma Runbook Worker dağıtma](../automation-windows-hrw-install.md) ve [Linux karma Runbook Worker](../automation-linux-hrw-install.md)dağıtımı.
 
 > [!NOTE]
 > Linux makinelerin güncelleştirme değerlendirmesi yalnızca Otomasyon hesabı ve Log Analytics çalışma alanı [eşlemeleri tablosunda](../how-to/region-mappings.md#supported-mappings)listelenen belirli bölgelerde desteklenir.
 
 |İşletim sistemi  |Notlar  |
 |---------|---------|
-|Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2 (Datacenter/Standard)<br><br>Windows Server 2012 ||
+|Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br>Windows Server 2012 R2 (Datacenter/Standard)<br>Windows Server 2012 |
 |Windows Server 2008 R2 (RTM ve SP1 standart)| Güncelleştirme Yönetimi, bu işletim sistemi için değerlendirmeleri ve düzeltme eki uygulamayı destekler. [Karma Runbook Worker](../automation-windows-hrw-install.md) , Windows Server 2008 R2 için desteklenir. |
 |CentOS 6 ve 7 (x64)      | Linux aracılarının bir güncelleştirme deposuna erişmesi gerekir. Sınıflandırma tabanlı düzeltme eki `yum` , CentOS 'ıN RTM sürümlerindeki güvenlik verilerini döndürmesini gerektirir. CentOS üzerinde sınıflandırma tabanlı düzeltme eki uygulama hakkında daha fazla bilgi için bkz. [Linux üzerinde sınıflandırmaları güncelleştirme](view-update-assessments.md#linux).          |
 |Red Hat Enterprise 6 ve 7 (x64)     | Linux aracılarının bir güncelleştirme deposuna erişmesi gerekir.        |
@@ -84,9 +84,9 @@ Aşağıdaki tabloda güncelleştirme değerlendirmeleri ve düzeltme eki uygula
 > [!NOTE]
 > Azure sanal makine ölçek kümeleri, Güncelleştirme Yönetimi aracılığıyla yönetilebilir. Güncelleştirme Yönetimi, temel görüntüde değil örneklerin kendileri üzerinde işe yarar. Tüm sanal makine örneklerinin aynı anda güncelleştirilebilmesi için güncelleştirmeleri artımlı bir şekilde zamanlamanız gerekir. [Değişiklik izleme ve stoğa Azure dışı bir makine ekleme](../automation-tutorial-installed-software.md#add-a-non-azure-machine-to-change-tracking-and-inventory)altındaki adımları izleyerek sanal makine ölçek kümeleri için düğüm ekleyebilirsiniz.
 
-### <a name="unsupported-client-types"></a>Desteklenmeyen istemci türleri
+### <a name="unsupported-operating-systems"></a>Desteklenmeyen işletim sistemleri
 
-Aşağıdaki tabloda desteklenmeyen işletim sistemleri listelenmektedir:
+Aşağıdaki tabloda Güncelleştirme Yönetimi tarafından desteklenmeyen işletim sistemleri listelenmektedir:
 
 |İşletim sistemi  |Notlar  |
 |---------|---------|
@@ -94,15 +94,20 @@ Aşağıdaki tabloda desteklenmeyen işletim sistemleri listelenmektedir:
 |Windows Server 2016 Nano Server     | Desteklenmez.       |
 |Azure Kubernetes hizmet düğümleri | Desteklenmez. [Azure Kubernetes Service (AKS) Içindeki Linux düğümlerine güvenlik ve çekirdek güncelleştirmelerini uygulama](../../aks/node-updates-kured.md) bölümünde açıklanan düzeltme eki uygulama sürecini kullanın|
 
-### <a name="client-requirements"></a>İstemci gereksinimleri
+### <a name="system-requirements"></a>Sistem Gereksinimleri
 
-Aşağıdaki bilgiler işletim sistemine özgü istemci gereksinimlerini açıklamaktadır. Ek rehberlik için bkz. [ağ planlaması](#ports). TLS 1,2 için istemci gereksinimlerini anlamak üzere bkz. [Azure Otomasyonu Için tls 1,2 zorlaması](../automation-managing-data.md#tls-12-enforcement-for-azure-automation).
+Aşağıdaki bilgiler işletim sistemine özgü gereksinimleri açıklar. Ek rehberlik için bkz. [ağ planlaması](#ports). TLS 1,2 gereksinimlerini anlamak için bkz. [Azure Otomasyonu Için tls 1,2 zorlaması](../automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
 #### <a name="windows"></a>Windows
 
+Yazılım gereksinimleri:
+
+- .NET Framework 4,6 veya üzeri gereklidir. ([.NET Framework indirin](/dotnet/framework/install/guide-for-developers).
+- Windows PowerShell 5,1 gereklidir ([Windows Management Framework 5,1](https://www.microsoft.com/download/details.aspx?id=54616)' i indirin.)
+
 Windows aracılarının bir WSUS sunucusuyla iletişim kuracak şekilde yapılandırılması veya Microsoft Update erişmesi gerekir. Karma makinelerde, önce makinenizi [Azure Arc etkin sunucularına](../../azure-arc/servers/overview.md)bağlayarak windows için Log Analytics aracısını yüklemenizi ve ardından Azure ilkesi 'ni kullanarak [Log Analytics aracısını Windows Azure Arc machines](../../governance/policy/samples/built-in-policies.md#monitoring) yerleşik ilkesine atamanız önerilir. Alternatif olarak, makineleri VM'ler için Azure İzleyici ile izlemeyi planlıyorsanız, bunun yerine [Enable VM'ler için Azure izleyici](../../governance/policy/samples/built-in-initiatives.md#monitoring) girişimi kullanın.
 
-Güncelleştirme Yönetimi, Microsoft uç nokta Configuration Manager ile kullanabilirsiniz. Tümleştirme senaryoları hakkında daha fazla bilgi için bkz. [Windows uç nokta Configuration Manager ile güncelleştirme yönetimi tümleştirme](mecmintegration.md). [Windows için Log Analytics Aracısı](../../azure-monitor/platform/agent-windows.md) , Configuration Manager ortamınızdaki siteler tarafından yönetilen Windows sunucuları için gereklidir. 
+Güncelleştirme Yönetimi, Microsoft uç nokta Configuration Manager ile kullanabilirsiniz. Tümleştirme senaryoları hakkında daha fazla bilgi için bkz. [Windows uç nokta Configuration Manager ile güncelleştirme yönetimi tümleştirme](mecmintegration.md). [Windows için Log Analytics Aracısı](../../azure-monitor/platform/agent-windows.md) , Configuration Manager ortamınızdaki siteler tarafından yönetilen Windows sunucuları için gereklidir.
 
 Varsayılan olarak, Azure Marketi 'nden dağıtılan Windows VM 'Leri Windows Update hizmetinden otomatik güncelleştirmeleri alacak şekilde ayarlanır. Bu davranış, çalışma alanınıza Windows VM 'Leri eklediğinizde değişmez. Güncelleştirme Yönetimi kullanarak güncelleştirmeleri etkin bir şekilde yönetmezseniz, varsayılan davranış (güncelleştirmeleri otomatik olarak uygulamak için) geçerlidir.
 
@@ -111,7 +116,11 @@ Varsayılan olarak, Azure Marketi 'nden dağıtılan Windows VM 'Leri Windows Up
 
 #### <a name="linux"></a>Linux
 
-Linux için makinenin, özel veya genel olarak bir güncelleştirme deposuna erişmesi gerekir. Güncelleştirme Yönetimi etkileşimde bulunmak için TLS 1,1 veya TLS 1,2 gereklidir. Güncelleştirme Yönetimi, Linux için birden fazla Log Analytics çalışma alanına raporlamak üzere yapılandırılmış Log Analytics aracısını desteklemez. Makinede Python 2. x de yüklü olmalıdır.
+Yazılım gereksinimleri:
+
+- Makinenin, özel veya ortak bir güncelleştirme deposuna erişmesi gerekir.
+- Güncelleştirme Yönetimi etkileşimde bulunmak için TLS 1,1 veya TLS 1,2 gereklidir.
+- Python 2. x yüklendi.
 
 > [!NOTE]
 > Linux makinelerin güncelleştirme değerlendirmesi yalnızca belirli bölgelerde desteklenir. Otomasyon hesabı ve Log Analytics çalışma alanı [eşlemeleri tablosuna](../how-to/region-mappings.md#supported-mappings)bakın.
@@ -130,11 +139,11 @@ Güncelleştirme Yönetimi, bu bölümde açıklanan kaynakları kullanır. Gün
 
 ### <a name="hybrid-runbook-worker-groups"></a>Karma runbook çalışanı grupları
 
-Güncelleştirme Yönetimi etkinleştirdikten sonra, Log Analytics çalışma alanınıza doğrudan bağlı tüm Windows makineleri, Güncelleştirme Yönetimi destekleyen runbook 'ları destekleyecek şekilde otomatik olarak karma Runbook Worker olarak yapılandırılır.
+Güncelleştirme Yönetimi etkinleştirdikten sonra, Log Analytics çalışma alanınıza doğrudan bağlı tüm Windows makineleri, Güncelleştirme Yönetimi destekleyen runbook 'ları destekleyecek bir sistem karma Runbook Worker olarak otomatik olarak yapılandırılır.
 
 Güncelleştirme Yönetimi tarafından yönetilen her bir Windows makinesi, Otomasyon hesabı için bir sistem karma çalışanı grubu olarak karma çalışan grupları bölmesinde listelenir. Gruplar, `Hostname FQDN_GUID` adlandırma kuralını kullanır. Bu grupları hesabınızdaki runbook 'lar ile hedefleyebilirsiniz. Denerseniz, deneme başarısız olur. Bu gruplar yalnızca Güncelleştirme Yönetimi desteklemeye yöneliktir. Karma Runbook Worker olarak yapılandırılmış Windows makinelerin listesini görüntüleme hakkında daha fazla bilgi edinmek için bkz. [karma runbook çalışanlarını görüntüleme](../automation-hybrid-runbook-worker.md#view-system-hybrid-runbook-workers).
 
-Güncelleştirme Yönetimi ve karma runbook çalışanı grup üyeliği için aynı hesabı kullanırsanız Otomasyon Runbook 'larını desteklemek için Otomasyon hesabınızdaki karma Runbook Worker grubuna Windows makinesini ekleyebilirsiniz. Bu işlev, karma Runbook Worker 'ın 7.2.12024.0 sürümüne eklenmiştir.
+Güncelleştirme Yönetimi ve karma runbook çalışanı grup üyeliği için aynı hesabı kullanırsanız Otomasyon Runbook 'larını desteklemek için Otomasyon hesabınızdaki bir Kullanıcı karma Runbook Worker grubuna Windows makinesini ekleyebilirsiniz. Bu işlev, karma Runbook Worker 'ın 7.2.12024.0 sürümüne eklenmiştir.
 
 ### <a name="management-packs"></a>Yönetim paketleri
 
@@ -158,11 +167,11 @@ Yönetim paketlerine yönelik güncelleştirmeler hakkında daha fazla bilgi iç
 
 Aşağıdaki tabloda Güncelleştirme Yönetimi tarafından desteklenen bağlı kaynaklar açıklanmaktadır:
 
-| Bağlı kaynak | Desteklenir | Açıklama |
+| Bağlı kaynak | Desteklenir | Description |
 | --- | --- | --- |
-| Windows aracıları |Evet |Güncelleştirme Yönetimi, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
-| Linux aracıları |Evet |Güncelleştirme Yönetimi, Linux aracılarından sistem güncelleştirmeleriyle ilgili bilgileri toplar ve ardından desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |
-| Operations Manager yönetim grubu |Evet |Güncelleştirme Yönetimi bağlı bir yönetim grubundaki aracılardan sistem güncelleştirmeleri hakkında bilgi toplar.<br/><br/>Operations Manager aracısından Azure Izleyici günlüklerine doğrudan bağlantı gerekli değildir. Veriler, yönetim grubundan Log Analytics çalışma alanına iletilir. |
+| Windows aracıları |Yes |Güncelleştirme Yönetimi, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
+| Linux aracıları |Yes |Güncelleştirme Yönetimi, Linux aracılarından sistem güncelleştirmeleriyle ilgili bilgileri toplar ve ardından desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |
+| Operations Manager yönetim grubu |Yes |Güncelleştirme Yönetimi bağlı bir yönetim grubundaki aracılardan sistem güncelleştirmeleri hakkında bilgi toplar.<br/><br/>Operations Manager aracısından Azure Izleyici günlüklerine doğrudan bağlantı gerekli değildir. Veriler, yönetim grubundan Log Analytics çalışma alanına iletilir. |
 
 ### <a name="collection-frequency"></a>Toplama sıklığı
 

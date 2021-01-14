@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/06/2020
+ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: f41e513ee0f2755c446a9cb95465c1f636fe5a7a
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: bb40586a93a40c2aaa3f0f884a0e747f168c324b
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606275"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186112"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Uzamsal analiz kapsayıcısını (Önizleme) yükleyip çalıştırın
 
@@ -24,7 +24,7 @@ Uzamsal analiz kapsayıcısı, kişiler, taşınanlar ve fiziksel ortamlardaki n
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
-* Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir görüntü işleme kaynağı oluşturun görüntü işleme bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
+* Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal Standart S1 katmanı için bir görüntü işleme kaynağı oluşturun görüntü işleme bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
     * Uzamsal analiz kapsayıcısını çalıştırmak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra kullanacaksınız.
 
 
@@ -61,6 +61,9 @@ Bu makalede, aşağıdaki yazılım paketlerini indirip yükleyeceksiniz. Ana bi
 * [Docker CE](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-engine---community-1) ve [NVIDIA-Docker2](https://github.com/NVIDIA/nvidia-docker) 
 * [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) çalışma zamanı.
 
+#### <a name="azure-vm-with-gpu"></a>[GPU ile Azure VM](#tab/virtual-machine)
+Bizim örneğimizde, bir K80 GPU 'SU olan bir [NC serisi sanal makinesi](https://docs.microsoft.com/azure/virtual-machines/nc-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) kullanacağız.
+
 ---
 
 | Gereksinim | Açıklama |
@@ -85,7 +88,7 @@ Azure aboneliğiniz onaylanmamışsa kapsayıcıyı çalıştıramayacağız.
 
 ## <a name="set-up-the-host-computer"></a>Ana bilgisayarı ayarlama
 
-Ana bilgisayarınız için bir Azure Stack Edge cihazı kullanmanız önerilir. Farklı bir cihaz yapılandırıyorsanız **Masaüstü makine** ' ye tıklayın.
+Ana bilgisayarınız için bir Azure Stack Edge cihazı kullanmanız önerilir. Farklı bir cihaz yapılandırıyorsanız **Masaüstü makinesi** ' ne veya bir VM kullanıyorsanız **sanal makine** ' ye tıklayın.
 
 #### <a name="azure-stack-edge-device"></a>[Azure Stack Edge cihazı](#tab/azure-stack-edge)
 
@@ -252,13 +255,13 @@ Azure IoT Hub 'nin bir örneğini oluşturmak için Azure CLı 'yi kullanın. Pa
 
 ```bash
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-az login
-az account set --subscription <name or ID of Azure Subscription>
-az group create --name "test-resource-group" --location "WestUS"
+sudo az login
+sudo az account set --subscription <name or ID of Azure Subscription>
+sudo az group create --name "test-resource-group" --location "WestUS"
 
-az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-resource-group"
+sudo az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-resource-group"
 
-az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
+sudo az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
 ```
 
 Ana bilgisayar Azure Stack Edge aygıtı değilse, [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) sürüm 1.0.9 yüklemeniz gerekir. Doğru sürümü indirmek için şu adımları izleyin:
@@ -297,7 +300,7 @@ Sonra, bir [bağlantı dizesi](../../iot-edge/how-to-manual-provision-symmetric-
 IoT Edge cihazını Azure IoT Hub bağlamanız gerekir. Bağlantı dizesini daha önce oluşturduğunuz IoT Edge cihazdan kopyalamanız gerekir. Alternatif olarak, Azure CLı 'de aşağıdaki komutu çalıştırabilirsiniz.
 
 ```bash
-az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
+sudo az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
 ```
 
 Ana bilgisayarda  `/etc/iotedge/config.yaml` düzenlenmek üzere açın. `ADD DEVICE CONNECTION STRING HERE`Bağlantı dizesiyle değiştirin. Dosyayı kaydedin ve kapatın. Ana bilgisayarda IoT Edge hizmetini yeniden başlatmak için bu komutu çalıştırın.
@@ -306,15 +309,100 @@ Ana bilgisayarda  `/etc/iotedge/config.yaml` düzenlenmek üzere açın. `ADD DE
 sudo systemctl restart iotedge
 ```
 
-Uzamsal analiz kapsayıcısını, [Azure Portal](../../iot-edge/how-to-deploy-modules-portal.md) veya [Azure CLI](../../iot-edge/how-to-deploy-modules-cli.md)'Dan ana bilgisayar üzerinde IoT modülü olarak dağıtın. Portalı kullanıyorsanız, görüntü URI 'sini Azure Container Registry konumuna ayarlayın. 
+Uzamsal analiz kapsayıcısını, [Azure Portal](../../iot-edge/how-to-deploy-modules-portal.md) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows)'Dan ana bilgisayar üzerinde IoT modülü olarak dağıtın. Portalı kullanıyorsanız, görüntü URI 'sini Azure Container Registry konumuna ayarlayın. 
 
 Azure CLı kullanarak kapsayıcıyı dağıtmak için aşağıdaki adımları kullanın.
+
+#### <a name="azure-vm-with-gpu"></a>[GPU ile Azure VM](#tab/virtual-machine)
+
+GPU içeren bir Azure sanal makinesi, uzamsal analizler çalıştırmak için de kullanılabilir. Aşağıdaki örnekte, bir K80 GPU 'SU olan bir [NC serisi](https://docs.microsoft.com/azure/virtual-machines/nc-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) VM kullanılır.
+
+#### <a name="create-the-vm"></a>Sanal makineyi oluşturma
+
+Azure portal [sanal makine oluşturma](https://ms.portal.azure.com/#create/Microsoft.VirtualMachine) Sihirbazı 'nı açın.
+
+VM 'nize bir ad verin ve (US) Batı ABD 2 bölgeyi seçin. `Availability Options`"Altyapı yedekliliği gerekli değil" olarak ayarladığınızdan emin olun. Doğru VM boyutunu bulmaya yardımcı olması için, tüm yapılandırma ve sonraki adım için aşağıdaki şekle bakın. 
+
+:::image type="content" source="media/spatial-analysis/virtual-machine-instance-details.png" alt-text="Sanal makine yapılandırma ayrıntıları." lightbox="media/spatial-analysis/virtual-machine-instance-details.png":::
+
+VM boyutunu bulmak için "tüm boyutları gör" seçeneğini belirleyin ve ardından aşağıda gösterildiği gibi "Premium olmayan depolama VM boyutları" listesini görüntüleyin.
+
+:::image type="content" source="media/spatial-analysis/virtual-machine-sizes.png" alt-text="Sanal makine boyutları." lightbox="media/spatial-analysis/virtual-machine-sizes.png":::
+
+Ardından, **Nc6** veya **NC6_Promo** seçin.
+
+:::image type="content" source="media/spatial-analysis/promotional-selection.png" alt-text="Promosyon seçimi" lightbox="media/spatial-analysis/promotional-selection.png":::
+
+Sonra, VM 'yi oluşturun. Oluşturulduktan sonra, Azure portal VM kaynağına gidin ve `Extensions` sol bölmeden öğesini seçin. Uzantılar penceresi kullanılabilir tüm uzantılara sahip olacak şekilde görünür. Seç `NVIDIA GPU Driver Extension` ' e tıklayın, Oluştur ' a tıklayın ve Sihirbazı doldurun.
+
+Uzantı başarıyla uygulandıktan sonra, Azure portal VM ana sayfasına gidin ve ' a tıklayın `Connect` . SANAL makineye SSH ya da RDP aracılığıyla erişilebilir. Bu işlem, görselleştiricisi penceresinin (daha sonra açıklanacak) görüntülenmesini sağlayacak şekilde yararlı olacaktır. RDP erişimini, [Bu adımları](https://docs.microsoft.com/azure/virtual-machines/linux/use-remote-desktop) IZLEYEREK ve sanal makineye Uzak Masaüstü bağlantısı açarak yapılandırın.
+
+### <a name="verify-graphics-drivers-are-installed"></a>Grafik sürücülerinin yüklü olduğunu doğrulama
+
+Grafik sürücülerinin başarıyla yüklendiğini doğrulamak için aşağıdaki komutu çalıştırın. 
+
+```bash
+nvidia-smi
+```
+
+Aşağıdaki çıkışı görmelisiniz.
+
+![NVıDıA sürücü çıkışı](media/spatial-analysis/nvidia-driver-output.png)
+
+### <a name="install-docker-ce-and-nvidia-docker2-on-the-vm"></a>SANAL makineye Docker CE ve NVIDIA-docker2 'yi yükler
+
+SANAL makineye Docker CE ve NVIDIA-docker2 yüklemek için aşağıdaki komutları tek seferde çalıştırın.
+
+Ana bilgisayara Docker CE 'yi yükler.
+
+```bash
+sudo apt-get update
+```
+```bash
+sudo apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+```
+```bash
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+```
+```bash
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+```
+```bash
+sudo apt-get update
+```
+```bash
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+```
+
+
+*NVIDIA-Docker-2* yazılım paketini yükler.
+
+```bash
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+```
+```bash
+curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
+```
+```bash
+curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+```
+```bash
+sudo apt-get update
+```
+```bash
+sudo apt-get install -y docker-ce nvidia-docker2
+```
+```bash
+sudo systemctl restart docker
+```
+
+VM 'nizi ayarlayıp yapılandırdığınıza göre, uzamsal analiz kapsayıcısını dağıtmak için aşağıdaki adımları izleyin. 
 
 ---
 
 ### <a name="iot-deployment-manifest"></a>IoT dağıtım bildirimi
 
-Birden çok konak bilgisayarında kapsayıcı dağıtımını kolaylaştırmak için, kapsayıcı oluşturma seçeneklerini ve ortam değişkenlerini belirtmek üzere bir dağıtım bildirim dosyası oluşturabilirsiniz. [Azure Stack Edge](https://go.microsoft.com/fwlink/?linkid=2142179) ve [diğer masaüstü makineler](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) için GitHub üzerinde bir dağıtım bildirimi örneği bulabilirsiniz.
+Birden çok konak bilgisayarında kapsayıcı dağıtımını kolaylaştırmak için, kapsayıcı oluşturma seçeneklerini ve ortam değişkenlerini belirtmek üzere bir dağıtım bildirim dosyası oluşturabilirsiniz. [Azure Stack Edge](https://go.microsoft.com/fwlink/?linkid=2142179), [diğer masaüstü MAKINELERI](https://go.microsoft.com/fwlink/?linkid=2152270)ve Azure VM IÇIN, GitHub 'da [GPU içeren](https://go.microsoft.com/fwlink/?linkid=2152189) bir dağıtım bildirimi örneği bulabilirsiniz.
 
 Aşağıdaki tabloda IoT Edge modülü tarafından kullanılan çeşitli ortam değişkenleri gösterilmektedir. Ayrıca, içindeki özniteliğini kullanarak bunları yukarıda bağlı dağıtım bildiriminde da ayarlayabilirsiniz `env` `spatialanalysis` :
 
@@ -326,21 +414,24 @@ Aşağıdaki tabloda IoT Edge modülü tarafından kullanılan çeşitli ortam d
 | ARCHON_NODES_LOG_LEVEL | Bilgisine Seçeneini | Günlüğe kaydetme düzeyi, iki değerden birini seçin|
 | OMP_WAIT_POLICY | ETKIN | Değiştirme|
 | QT_X11_NO_MITSHM | 1 | Değiştirme|
-| API_KEY | API anahtarınız| Bu değeri Görüntü İşleme kaynağınızın Azure portal toplayın. Bunu, kaynağınız için **anahtar ve uç nokta** bölümünde bulabilirsiniz. |
-| BILLING_ENDPOINT | Uç nokta URI 'niz| Bu değeri Görüntü İşleme kaynağınızın Azure portal toplayın. Bunu, kaynağınız için **anahtar ve uç nokta** bölümünde bulabilirsiniz.|
+| APIKEY | API anahtarınız| Bu değeri Görüntü İşleme kaynağınızın Azure portal toplayın. Bunu, kaynağınız için **anahtar ve uç nokta** bölümünde bulabilirsiniz. |
+| FATURALAMA | Uç nokta URI 'niz| Bu değeri Görüntü İşleme kaynağınızın Azure portal toplayın. Bunu, kaynağınız için **anahtar ve uç nokta** bölümünde bulabilirsiniz.|
 | SÖZLEŞMESI | ettiğinizde | Kapsayıcının çalışması için bu değerin *kabul edileceği* şekilde ayarlanması gerekir |
 | GÖRÜNTÜLENME | : 1 | Bu değerin, ana bilgisayardaki çıkışıyla aynı olması gerekir `echo $DISPLAY` . Azure Stack Edge cihazlarının bir ekranı yoktur. Bu ayar geçerli değil|
-
+| ARCHON_GRAPH_READY_TIMEOUT | 600 | GPU, T4 veya NVıDıA 2080 TI **değilse** bu ortam değişkenini ekleyin|
+| ORT_TENSORRT_ENGINE_CACHE_ENABLE | 0 | GPU, T4 veya NVıDıA 2080 TI **değilse** bu ortam değişkenini ekleyin|
+| KEY_ENV | ATıCı şifreleme anahtarı | Video_URL karıştırılmış bir dizeyse bu ortam değişkenini ekleyin |
+| IV_ENV | Başlatma vektörü | Video_URL karıştırılmış bir dizeyse bu ortam değişkenini ekleyin|
 
 > [!IMPORTANT]
 > `Eula` `Billing` `ApiKey` Kapsayıcıyı çalıştırmak için, ve seçenekleri belirtilmelidir; Aksi takdirde kapsayıcı başlatılmaz.  Daha fazla bilgi için bkz. [faturalandırma](#billing).
 
-[Azure Stack Edge cihazları](https://go.microsoft.com/fwlink/?linkid=2142179) için dağıtım bildirimini veya kendi ayarlarınızı ve işlem seçiminizi içeren [bir masaüstü makinesini](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) güncelleştirdiğinizde, kapsayıcıyı bir IoT Edge modülü olarak ana bilgisayara DAĞıTMAK için aşağıdaki [Azure CLI](../../iot-edge/how-to-deploy-modules-cli.md) komutunu kullanabilirsiniz.
+[Azure Stack Edge cihazları](https://go.microsoft.com/fwlink/?linkid=2142179), [bir masaüstü MAKINESI](https://go.microsoft.com/fwlink/?linkid=2152270) veya Azure VM için dağıtım bildirimini, kendi ayarlarınıza ve işlem seçiminize sahip [GPU ile](https://go.microsoft.com/fwlink/?linkid=2152189) güncelleştirdiğinizde, kapsayıcıyı ana bilgisayarda bir IoT Edge modülü olarak dağıtmak için aşağıdaki [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows) komutunu kullanabilirsiniz.
 
 ```azurecli
-az login
-az extension add --name azure-iot
-az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json --subscription "<subscriptionId>"
+sudo az login
+sudo az extension add --name azure-iot
+sudo az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json --subscription "<subscriptionId>"
 ```
 
 |Parametre  |Açıklama  |
@@ -366,7 +457,7 @@ Kapsayıcıyı bağlı kameraları kullanacak şekilde yapılandırmak, işlemle
 
 ## <a name="redeploy-or-delete-the-deployment"></a>Dağıtımı yeniden dağıtma veya silme
 
-Dağıtımı güncelleştirmeniz gerekiyorsa, önceki dağıtımlarınızın başarılı bir şekilde dağıtıldığından emin olun veya tamamlanmamış IoT Edge cihaz dağıtımlarını silmeniz gerekir. Aksi takdirde, bu dağıtımlar devam eder ve sistem hatalı durumda bırakılır. Azure portal veya [Azure CLI](/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment)'yi kullanabilirsiniz.
+Dağıtımı güncelleştirmeniz gerekiyorsa, önceki dağıtımlarınızın başarılı bir şekilde dağıtıldığından emin olun veya tamamlanmamış IoT Edge cihaz dağıtımlarını silmeniz gerekir. Aksi takdirde, bu dağıtımlar devam eder ve sistem hatalı durumda bırakılır. Azure portal veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows)'yi kullanabilirsiniz.
 
 ## <a name="use-the-output-generated-by-the-container"></a>Kapsayıcı tarafından oluşturulan çıktıyı kullanın
 
@@ -385,25 +476,25 @@ Hem kayıtlı hem de canlı video ile uzamsal analizler kullanabilirsiniz. Kayı
 
 **SAS belirteci oluştur ve URL** 'yi tıklatın ve BLOB SAS URL 'sini kopyalayın. Başlangıcını `https` `http` ve video oynatmayı destekleyen bir tarayıcıda URL 'yi test etme ve test etme ile değiştirin.
 
-`VIDEO_URL` [Azure Stack Edge cihazınız](https://go.microsoft.com/fwlink/?linkid=2142179) veya başka bir [Masaüstü makinenizin](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) dağıtım bildiriminde, tüm grafikler için oluşturduğunuz URL ile değiştirin. `VIDEO_IS_LIVE`Olarak ayarlayın `false` ve ardından, güncelleştirilmiş bildirimle uzamsal analiz kapsayıcısını yeniden dağıtın. Aşağıdaki örneğe bakın.
+`VIDEO_URL` [Azure Stack Edge cihazınız](https://go.microsoft.com/fwlink/?linkid=2142179), [Masaüstü makineniz](https://go.microsoft.com/fwlink/?linkid=2152270)veya Azure VM 'nizin dağıtım bildiriminde, tüm GRAFIKLER için oluşturduğunuz URL ile [GPU ile](https://go.microsoft.com/fwlink/?linkid=2152189) değiştirin. `VIDEO_IS_LIVE`Olarak ayarlayın `false` ve ardından, güncelleştirilmiş bildirimle uzamsal analiz kapsayıcısını yeniden dağıtın. Aşağıdaki örneğe bakın.
 
 Uzamsal analiz modülü video dosyasını tüketmeye başlayacak ve sürekli olarak otomatik olarak yeniden oynacaktır.
 
 
 ```json
 "zonecrossing": {
-  "operationId" : "cognitiveservices.vision.spatialanalysis-personcrossingpolygon",
-  "version": 1,
-  "enabled": true,
-  "parameters": {
-      "VIDEO_URL": "Replace http url here",
-      "VIDEO_SOURCE_ID": "personcountgraph",
-      "VIDEO_IS_LIVE": false,
-        "VIDEO_DECODE_GPU_INDEX": 0,
-      "DETECTOR_NODE_CONFIG": "{ \"gpu_index\": 0 }",
-      "SPACEANALYTICS_CONFIG": "{\"zones\":[{\"name\":\"queue\",\"polygon\":[[0.3,0.3],[0.3,0.9],[0.6,0.9],[0.6,0.3],[0.3,0.3]], \"threshold\":35.0}]}"
+    "operationId" : "cognitiveservices.vision.spatialanalysis-personcrossingpolygon",
+    "version": 1,
+    "enabled": true,
+    "parameters": {
+        "VIDEO_URL": "Replace http url here",
+        "VIDEO_SOURCE_ID": "personcountgraph",
+        "VIDEO_IS_LIVE": false,
+      "VIDEO_DECODE_GPU_INDEX": 0,
+        "DETECTOR_NODE_CONFIG": "{ \"gpu_index\": 0, \"do_calibration\": true }",
+        "SPACEANALYTICS_CONFIG": "{\"zones\":[{\"name\":\"queue\",\"polygon\":[[0.3,0.3],[0.3,0.9],[0.6,0.9],[0.6,0.3],[0.3,0.3]], \"events\": [{\"type\": \"zonecrossing\", \"config\": {\"threshold\": 16.0, \"focus\": \"footprint\"}}]}]}"
     }
-  },
+   },
 
 ```
 

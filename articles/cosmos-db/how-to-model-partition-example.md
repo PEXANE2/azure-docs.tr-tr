@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: c3cdc0a9fb9fa236fae37a52194f446278a42f72
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: d2f35ae7a6110acb2ca89bdaeb487eddabf84923
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616255"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185827"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Gerçek dünyadan bir örnek kullanarak Azure Cosmos DB'de verileri modelleme ve bölümleme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -60,7 +60,7 @@ Platformumuzu göstermek için gereken isteklerin listesi aşağıda verilmişti
 
 Bu aşamada, her bir varlığın (Kullanıcı, gönderi vs.) içereceği ayrıntıları düşünmemiş. Bu adım genellikle, bu varlıkların tablolar, sütunlar, yabancı anahtarlar vb. açısından nasıl çevrileceğini anlamak zorunda olduğumuz için, ilişkisel bir mağazaya göre tasarlanırken ilk olarak, bir ilişkisel depoya göre tasarlanırken ilk olanların arasındadır. Yazma sırasında hiçbir şemayı zorlayameyen bir belge veritabanı ile ilgili bir kaygıdan çok daha azdır.
 
-Başlangıçtan itibaren erişim modellerimizi belirlemek için önemli olmasının önemi, çünkü bu istek listesi test paketimize gidiyor. Veri modelimizi her tekrarlıyoruz, her bir isteği ele alacak ve performansını ve ölçeklenebilirliğini denetlemeye devam edeceğiz.
+Başlangıçtan itibaren erişim modellerimizi belirlemek için önemli olmasının önemi, çünkü bu istek listesi test paketimize gidiyor. Veri modelimizi her tekrarlıyoruz, her bir isteği ele alacak ve performansını ve ölçeklenebilirliğini denetlemeye devam edeceğiz. Her modelde tüketilen istek birimlerini hesaplar ve bunları iyileştirir. Tüm bu modeller varsayılan dizin oluşturma ilkesini kullanır ve belirli özellikleri dizinleyerek geçersiz kılabilir, bu da RU tüketimini ve gecikmesini daha da iyileştirebilir.
 
 ## <a name="v1-a-first-version"></a>V1: ilk sürüm
 
@@ -295,7 +295,7 @@ Ayrıca, açıklamaları ve bunları oluşturan kullanıcının Kullanıcı adı
 
 Her ne zaman bir yorum veya benzer bir şekilde bir açıklama eklediğimiz, `commentCount` ilgili postadaki veya öğesini de arttık `likeCount` . `posts`Kapsayıcımız tarafından bölümlendiğimiz `postId` için, yeni öğe (açıklama veya benzer) ve karşılık gelen gönderi aynı mantıksal bölümde yer. Sonuç olarak, bu işlemi gerçekleştirmek için bir [saklı yordam](stored-procedures-triggers-udfs.md) kullanabiliriz.
 
-Artık bir yorum ( **[C3]** ) oluştururken, kapsayıcıda yalnızca yeni bir öğe eklemek yerine, `posts` Bu kapsayıcıda aşağıdaki saklı yordamı çağırdık:
+Artık bir yorum (**[C3]**) oluştururken, kapsayıcıda yalnızca yeni bir öğe eklemek yerine, `posts` Bu kapsayıcıda aşağıdaki saklı yordamı çağırdık:
 
 ```javascript
 function createComment(postId, comment) {
@@ -421,7 +421,7 @@ Ancak kalan sorgu hala kapsayıcının bölüm anahtarında filtrelenemiyor `pos
 
 Bu durumu göz önünde bulundurmanız, aslında basittir:
 
-1. *has* `userId` Belirli bir kullanıcı için tüm gönderileri getirmek istiyoruz, bu isteğin üzerine filtre uygulamak istiyor
+1.  `userId` Belirli bir kullanıcı için tüm gönderileri getirmek istiyoruz, bu isteğin üzerine filtre uygulamak istiyor
 1. `posts`Şu şekilde bölümlenmemiş çünkü kapsayıcıya göre bölümlenmemiş`userId`
 1. Belirgin *bir şekilde,* bu isteği tarafından bölümlenen bir kapsayıcıya karşı yürüterek performans sorunumuzu çözeceğiz. `userId`
 1. Zaten bu tür bir kapsayıcınıza sahip olduğumuz `users` bir kapsayıcıdır.

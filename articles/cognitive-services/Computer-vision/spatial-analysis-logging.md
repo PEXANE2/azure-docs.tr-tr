@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/11/2020
+ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: dd1b6d216f6225a13d86aa2435b5b1c807547ec3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: dda3ece27fd2c687647e0aa289bd1596a87b274f
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014586"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186031"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetri ve sorun giderme
 
@@ -68,7 +68,7 @@ az iot hub list
 az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principal name>" --scopes="<resource ID of IoT Hub>"
 ```
 
-[Azure Stack Edge cihazınızın](https://go.microsoft.com/fwlink/?linkid=2142179) veya diğer [Masaüstü makinenizin](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)dağıtım bildiriminde, *telegraf* modülünü arayın ve aşağıdaki değerleri önceki adımda bulunan hizmet sorumlusu bilgileriyle değiştirin ve yeniden dağıtın.
+[Azure Stack Edge cihazınız](https://go.microsoft.com/fwlink/?linkid=2142179), [Masaüstü makineniz](https://go.microsoft.com/fwlink/?linkid=2152270)veya [GPU ile Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189)'nizin dağıtım bildiriminde, *telegraf* modülünü arayın ve aşağıdaki değerleri önceki adımda bulunan hizmet sorumlusu bilgileriyle değiştirin ve yeniden dağıtın.
 
 ```json
 
@@ -129,7 +129,7 @@ Telegraf modülü dağıtıldıktan sonra, bildirilen ölçümlere Azure Izleyic
 
 ## <a name="collect-log-files-with-the-diagnostics-container"></a>Tanılama kapsayıcısı ile günlük dosyalarını toplama
 
-Uzamsal analiz, çalışma zamanı sorunlarını tanılamak için kullanabileceğiniz veya destek biletlerinin dahil olduğu Docker hata ayıklama günlüklerini oluşturur. Uzamsal analiz tanılama modülü, Microsoft Container Registry indirileceği için kullanılabilir. [Azure Stack Edge cihazınızın](https://go.microsoft.com/fwlink/?linkid=2142179) veya diğer [Masaüstü makinenizin](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)bildirim dağıtım dosyasında *Tanılama* modülünü arayın.
+Uzamsal analiz, çalışma zamanı sorunlarını tanılamak için kullanabileceğiniz veya destek biletlerinin dahil olduğu Docker hata ayıklama günlüklerini oluşturur. Uzamsal analiz tanılama modülü, Microsoft Container Registry indirileceği için kullanılabilir. [Azure Stack Edge cihazınız](https://go.microsoft.com/fwlink/?linkid=2142179), [Masaüstü makineniz](https://go.microsoft.com/fwlink/?linkid=2152270)veya [GPU ile Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189) için bildirim dağıtım dosyasında, *Tanılama* modülünü bulun.
 
 "Env" bölümünde aşağıdaki yapılandırmayı ekleyin:
 
@@ -188,13 +188,13 @@ Ayrıca, tüm dağıtılan yetenekler için IoT Edge modülü Ikizi belgesi arac
 > `diagnostics`Modül, günlüğe kaydetme içeriğini etkilemez, yalnızca mevcut günlükleri toplama, filtreleme ve karşıya yükleme konusunda yardımcı olur.
 > Bu modülü kullanmak için Docker API sürüm 1,40 veya sonraki bir sürüme sahip olmanız gerekir.
 
-[Azure Stack Edge cihazınız](https://go.microsoft.com/fwlink/?linkid=2142179) veya diğer [Masaüstü makinenizin](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) örnek dağıtım bildirim dosyası, `diagnostics` günlükleri toplayan ve yükleyen adlı bir modül içerir. Bu modül varsayılan olarak devre dışıdır ve günlüklere erişmeniz gerektiğinde IoT Edge modülü yapılandırması aracılığıyla etkinleştirilmelidir. 
+[Azure Stack Edge cihazınız](https://go.microsoft.com/fwlink/?linkid=2142179), [Masaüstü makineniz](https://go.microsoft.com/fwlink/?linkid=2152270)veya [GPU ile Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189) 'niz için örnek dağıtım bildirim dosyası, `diagnostics` günlükleri toplayıp karşıya yükleyen adlı bir modül içerir. Bu modül varsayılan olarak devre dışıdır ve günlüklere erişmeniz gerektiğinde IoT Edge modülü yapılandırması aracılığıyla etkinleştirilmelidir. 
 
 `diagnostics`Koleksiyon isteğe bağlıdır ve bir IoT Edge doğrudan yöntemi aracılığıyla denetlenir ve Azure Blob depolama alanına Günlükler gönderebilir.
 
 ### <a name="configure-diagnostics-upload-targets"></a>Tanılama karşıya yükleme hedeflerini yapılandırma
 
-IoT Edge portalından cihazınızı ve ardından **Tanılama** modülünü seçin. [Azure Stack Edge cihazınız](https://go.microsoft.com/fwlink/?linkid=2142179) veya diğer [Masaüstü makineleriniz](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)için örnek dağıtım bildirim dosyasında, adlı Tanılamalar için **ortam değişkenleri** bölümüne bakın `env` ve aşağıdaki bilgileri ekleyin:
+IoT Edge portalından cihazınızı ve ardından **Tanılama** modülünü seçin. [Azure Stack Edge cihazınız](https://go.microsoft.com/fwlink/?linkid=2142179), [Masaüstü makineleri](https://go.microsoft.com/fwlink/?linkid=2152270)veya [GPU ile Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189) 'niz için örnek dağıtım bildirim dosyasında, adlı Tanılamalar için **ortam değişkenleri** bölümüne bakın `env` ve aşağıdaki bilgileri ekleyin:
 
 **Azure Blob depolamaya yükleme yapılandırma**
 
@@ -298,7 +298,7 @@ Aşağıdaki tabloda sorgu yanıtında öznitelikler listelenmiştir.
 }
 ```
 
-Bu ayarların daha iyi görünmesi ve günlükleri aynı filtreye sahip günlüklere itmesi için, bu ayarların ' ı ' ye doğru görünmesi durumunda getirme günlüğü satırları, zamanları ve boyutları ' nı işaretleyin _*_DoPost_*_ `true` . 
+Bu ayarların daha iyi görünmesi ve günlükleri aynı filtreye sahip günlüklere itmesi için, bu ayarların ' ı ' ye doğru görünmesi durumunda getirme günlüğü satırları, zamanları ve boyutları ' nı işaretleyin _**_ `true` . 
 
 Sorunları giderirken Azure Blob depolamadan günlükleri dışarı aktarabilirsiniz. 
 

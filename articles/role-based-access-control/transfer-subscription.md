@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 12/10/2020
 ms.author: rolyon
-ms.openlocfilehash: 92b27690ab1f2ca8d98eb2231c5a27bc508613f8
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 81224b5e16f3bca5da641bbb2e9c82dd59000e79
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095432"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185895"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Azure aboneliğini farklı bir Azure AD dizinine aktarma
 
@@ -88,7 +88,7 @@ Birkaç Azure kaynağı bir aboneliğe veya dizine bağımlılığı vardır. Du
 > [!WARNING]
 > Aktarılmakta olan abonelikte aynı abonelikte **olmayan** bir anahtar kasasına bağımlılığı olan bir depolama HESABı veya SQL veritabanı gibi bir kaynak için geri kalan şifrelemeyi kullanıyorsanız kurtarılamaz bir senaryoya yol açabilir. Bu durumda, başka bir anahtar kasası kullanmak veya bu kurtarılamaz senaryoyu önlemek için müşteri tarafından yönetilen anahtarları geçici olarak devre dışı bırakmak için gerekli adımları uygulamanız gerekir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu adımları tamamlayabilmeniz için şunlar gerekir:
 

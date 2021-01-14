@@ -3,12 +3,12 @@ title: Kaynakları kiracıya dağıtma
 description: Azure Resource Manager şablonundaki kiracı kapsamındaki kaynakların nasıl dağıtılacağını açıklar.
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: a397678488921744f076d93235304c8d217d961f
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 0b3ddc63e49b272c93349ada91e9a1599ea4be4f
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178968"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186218"
 ---
 # <a name="tenant-deployments-with-arm-templates"></a>ARM şablonlarıyla kiracı dağıtımları
 
@@ -185,6 +185,8 @@ Kiracının içindeki bir kaynak grubunu hedeflemek için, iç içe geçmiş bir
 Aşağıdaki şablon bir yönetim grubu oluşturur.
 
 :::code language="json" source="~/quickstart-templates/tenant-deployments/new-mg/azuredeploy.json":::
+
+Hesabınızın kiracıya dağıtma izni yoksa başka bir kapsama dağıtarak yönetim grupları oluşturabilirsiniz. Daha fazla bilgi için bkz. [Yönetim grubu](deploy-to-management-group.md#management-group).
 
 ## <a name="assign-role"></a>Rol atama
 

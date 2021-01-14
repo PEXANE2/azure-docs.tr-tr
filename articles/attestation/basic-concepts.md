@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 8ae5bcf103bbb2d2b952fa647ba591e49002f2ff
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 51c22346ee89150194fb1dc83752e2ba2a2e0cf0
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921626"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185453"
 ---
 # <a name="basic-concepts"></a>Temel Kavramlar
 
@@ -38,11 +38,16 @@ Azure kanıtlama, her bölgede varsayılan bir sağlayıcı sağlar. Müşterile
 
 | Bölge | Attest Uri 'Si | 
 |--|--|
+| Doğu ABD | `https://sharedeus.eus.attest.azure.net` | 
+| Batı ABD | `https://sharedwus.wus.attest.azure.net` | 
 | Güney Birleşik Krallık | `https://shareduks.uks.attest.azure.net` | 
+| Batı Birleşik Krallık| `https://sharedukw.ukw.attest.azure.net  ` | 
+| Doğu Kanada | `https://sharedcae.cae.attest.azure.net` | 
+| Orta Kanada | `https://sharedcac.cac.attest.azure.net` | 
+| Kuzey Avrupa | `https://sharedneu.neu.attest.azure.net` | 
+| West Europe| `https://sharedweu.weu.attest.azure.net` | 
 | ABD Doğu 2 | `https://sharedeus2.eus2.attest.azure.net` | 
 | Central US | `https://sharedcus.cus.attest.azure.net` | 
-| Doğu ABD| `https://sharedeus.eus.attest.azure.net` | 
-| Orta Kanada | `https://sharedcac.cac.attest.azure.net` | 
 
 ## <a name="attestation-request"></a>Kanıtlama isteği
 

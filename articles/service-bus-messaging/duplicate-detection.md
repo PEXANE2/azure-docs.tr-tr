@@ -2,13 +2,13 @@
 title: Yinelenen ileti algılamayı Azure Service Bus | Microsoft Docs
 description: Bu makalede Azure Service Bus iletilerinde yinelenenleri nasıl Algılayabileceğiniz açıklanır. Yinelenen ileti yoksayılabilir ve bırakılabilir.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: dbca1b4b4f894d35835e7d37e0b4e742a2d3b917
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/13/2021
+ms.openlocfilehash: 29972f756c66f524cc2e4684fcb7afd1ca628820
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87083897"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184688"
 ---
 # <a name="duplicate-detection"></a>Yineleme algılama
 
@@ -18,16 +18,21 @@ Ayrıca, istemci veya ağ düzeyindeki bir hata daha önce gerçekleşmesi ve g�
 
 Yinelenen algılama, gönderenin aynı iletiyi yeniden göndermesini sağlayarak bu durumlardan yararlanır ve kuyruk veya konu, yinelenen kopyaları atar.
 
+## <a name="how-it-works"></a>Nasıl çalışıyor? 
 Yinelenen saptamayı etkinleştirmek, belirli bir zaman penceresi sırasında bir sıraya veya konuya gönderilen tüm iletilerin uygulama denetimli *MessageID* ' i izlemeye devam eder. Zaman penceresi sırasında günlüğe kaydedilen *MessageID* ile yeni bir ileti gönderilirse, ileti kabul edildi olarak bildirilir (gönderme işlemi başarılı olur), ancak yeni gönderilen ileti anında yoksayılır ve bırakılır. İletinin *MessageID* dışında başka hiçbir bölümü göz önünde bulundurulmamasıdır.
 
 Yalnızca *uygulamanın, bir* hata oluştuğunda öngörülebilir olarak yeniden oluşturulduğu bir iş süreci bağlamına erişmesini sağladığından, tanımlayıcının uygulama denetimi gereklidir.
 
-Bazı uygulama bağlamını işleme sürecinde birden fazla iletinin gönderildiği bir iş süreci için, *MessageID* , bir satın alma siparişi numarası gibi uygulama düzeyi bağlam tanımlayıcısının bir bileşimi olabilir ve örneğin, **12345.2017/ödeme**gibi ileti konusu olabilir.
+Bazı uygulama bağlamını işleme sürecinde birden fazla iletinin gönderildiği bir iş süreci için, *MessageID* , bir satın alma siparişi numarası gibi uygulama düzeyi bağlam tanımlayıcısının bir bileşimi olabilir ve örneğin, **12345.2017/ödeme** gibi ileti konusu olabilir.
 
-*MessageID* her zaman bir GUID olabilir, ancak tanımlayıcıyı iş işlemine tutturma, yinelenen algılama özelliğini etkin bir şekilde kullanmak için istenen tahmin edilebilir yinelenebilirlik verir.
+*MessageID* her zaman bir GUID olabilir, ancak tanımlayıcıyı iş işlemine sabitleme, yinelenen algılama özelliğinin etkin bir şekilde kullanılması için istenen tahmin edilebilir yinelenebilirlik verir.
 
-> [!NOTE]
-> Yinelenen algılama etkinse ve oturum KIMLIĞI ya da bölüm anahtarı ayarlanmamışsa, bölüm anahtarı olarak ileti KIMLIĞI kullanılır. İleti KIMLIĞI de ayarlanmamışsa, .NET ve AMQP kitaplıkları ileti için otomatik olarak bir ileti KIMLIĞI oluşturur. Daha fazla bilgi için bkz. [bölüm anahtarlarının kullanımı](service-bus-partitioning.md#use-of-partition-keys).
+> [!IMPORTANT]
+>- **Bölümlendirme** **etkin** olduğunda, `MessageId+PartitionKey` benzersizliği belirlemede kullanılır. Oturumlar etkinleştirildiğinde, bölüm anahtarı ve oturum KIMLIĞI aynı olmalıdır. 
+>- **Bölümlendirme** **devre dışı** bırakıldığında (varsayılan), yalnızca `MessageId` benzersizliği belirlemede kullanılır.
+>- SessionID, PartitionKey ve MessageID hakkında daha fazla bilgi için bkz. [bölüm anahtarlarının kullanımı](service-bus-partitioning.md#use-of-partition-keys).
+>- [Premier katmanı](service-bus-premium-messaging.md) bölümlemeyi desteklemez, bu nedenle uygulamalarınızda benzersiz ileti kimlikleri kullanmanızı ve yinelenen algılama için bölüm anahtarlarına güvenmenizi öneririz. 
+
 
 ## <a name="enable-duplicate-detection"></a>Yinelenen algılamayı etkinleştir
 
@@ -58,7 +63,7 @@ Service Bus mesajlaşma hakkında daha fazla bilgi edinmek için aşağıdaki ko
 * [Service Bus kuyrukları ile çalışmaya başlama](service-bus-dotnet-get-started-with-queues.md)
 * [Service Bus konu başlıklarını ve aboneliklerini kullanma](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 
-İstemci kodunun daha önceki bir *MessageID* ile bir iletiyi yeniden gönderemediği senaryolarda, güvenli bir şekilde işlenebilen iletiler tasarlamak önemlidir. [Eşkuvvetlilik hakkında bu blog gönderisi](https://particular.net/blog/what-does-idempotent-mean) , bunun nasıl yapılacağı hakkında çeşitli teknikler açıklamaktadır.
+İstemci kodunun daha önceki bir *MessageID* ile bir iletiyi yeniden gönderemediği senaryolarda, güvenli bir şekilde işlenebilecekleri iletiler tasarlamak önemlidir. [Eşkuvvetlilik hakkında bu blog gönderisi](https://particular.net/blog/what-does-idempotent-mean) , bunun nasıl yapılacağı hakkında çeşitli teknikler açıklamaktadır.
 
 [1]: ./media/duplicate-detection/create-queue.png
 [2]: ./media/duplicate-detection/queue-prop.png

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: duau
-ms.openlocfilehash: 86758c355566fb67ebd8a606068e2044e0b8bd64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17ccfeb709c530a868a75ecd87052618aaea4846
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400186"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184586"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager sık sorulan sorular (SSS)
 
@@ -96,7 +96,7 @@ Bu iki popüler yönlendirme yöntemi arasındaki önemli fark, birincil hedefin
 
 ### <a name="what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing"></a>Coğrafi yönlendirme için Traffic Manager tarafından desteklenen bölgeler nelerdir?
 
-Traffic Manager tarafından kullanılan ülke/bölge hiyerarşisi [burada](traffic-manager-geographic-regions.md)bulunabilir. Bu sayfa herhangi bir değişiklikle güncel tutulurken, aynı bilgileri [Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/)kullanarak program aracılığıyla da alabilirsiniz. 
+Traffic Manager tarafından kullanılan ülke/bölge hiyerarşisi [burada](traffic-manager-geographic-regions.md)bulunabilir. Bu sayfa herhangi bir değişiklikle güncel tutulurken, aynı bilgileri [Azure Traffic Manager REST API](/rest/api/trafficmanager/)kullanarak program aracılığıyla da alabilirsiniz. 
 
 ### <a name="how-does-traffic-manager-determine-where-a-user-is-querying-from"></a>Traffic Manager bir kullanıcının sorgu nerede olduğunu nasıl belirleyebilir?
 
@@ -116,11 +116,11 @@ Hayır, uç noktanın konumu, hangi bölgelere eşleştirilebileceği konusunda 
 
 ### <a name="can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing"></a>Coğrafi yönlendirme yapmak üzere yapılandırılmamış bir profildeki uç noktalara coğrafi bölgeler atayabilir miyim?
 
-Evet, bir profilin yönlendirme yöntemi coğrafi değilse, bu profildeki uç noktalara coğrafi bölgeler atamak için [Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/) kullanabilirsiniz. Coğrafi olmayan yönlendirme türü profilleri söz konusu olduğunda bu yapılandırma yok sayılır. Bu tür bir profili daha sonra coğrafi yönlendirme türüne değiştirirseniz Traffic Manager bu eşlemeleri kullanabilir.
+Evet, bir profilin yönlendirme yöntemi coğrafi değilse, bu profildeki uç noktalara coğrafi bölgeler atamak için [Azure Traffic Manager REST API](/rest/api/trafficmanager/) kullanabilirsiniz. Coğrafi olmayan yönlendirme türü profilleri söz konusu olduğunda bu yapılandırma yok sayılır. Bu tür bir profili daha sonra coğrafi yönlendirme türüne değiştirirseniz Traffic Manager bu eşlemeleri kullanabilir.
 
 ### <a name="why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic"></a>Mevcut bir profilin yönlendirme yöntemini coğrafi olarak değiştirmeyi denediğimde neden hata alıyorum?
 
-Coğrafi yönlendirmeye sahip bir profil altındaki tüm uç noktalara en az bir bölge eşlenmiş olması gerekir. Var olan bir profili coğrafi yönlendirme türüne dönüştürmek için, ilk olarak coğrafi bölgeleri [Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/) kullanarak tüm uç noktalarına ilişkilendirmeniz gerekir. Bu, yönlendirme türünü coğrafi olarak değiştirmeden önce. Portalı kullanıyorsanız, önce uç noktaları silin, profilin yönlendirme yöntemini coğrafi olarak değiştirin ve sonra uç noktaları, coğrafi bölge eşlemeleriyle birlikte ekleyin.
+Coğrafi yönlendirmeye sahip bir profil altındaki tüm uç noktalara en az bir bölge eşlenmiş olması gerekir. Var olan bir profili coğrafi yönlendirme türüne dönüştürmek için, ilk olarak coğrafi bölgeleri [Azure Traffic Manager REST API](/rest/api/trafficmanager/) kullanarak tüm uç noktalarına ilişkilendirmeniz gerekir. Bu, yönlendirme türünü coğrafi olarak değiştirmeden önce. Portalı kullanıyorsanız, önce uç noktaları silin, profilin yönlendirme yöntemini coğrafi olarak değiştirin ve sonra uç noktaları, coğrafi bölge eşlemeleriyle birlikte ekleyin.
 
 ### <a name="why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled"></a>Müşterilerin coğrafi yönlendirmeyi etkin bir profil altında olan uç noktalar yerine iç içe geçmiş profiller oluşturması kesinlikle önerilir mi?
 
@@ -306,7 +306,7 @@ Trafik Görünümü fiyatlandırması, çıktıyı oluşturmak için kullanılan
 
 Azure Web Apps ile birden çok abonelikteki uç noktaların kullanılması mümkün değildir. Azure Web Apps, Web Apps birlikte kullanılan herhangi bir özel etki alanı adının yalnızca tek bir abonelik içinde kullanılmasını gerektirir. Aynı etki alanı adına sahip birden çok abonelikten Web Apps kullanmak mümkün değildir.
 
-Diğer uç nokta türleri için birden fazla abonelikteki uç noktalarla Traffic Manager kullanmak mümkündür. Kaynak Yöneticisi, Traffic Manager profilini yapılandıran kişinin uç noktaya okuma erişimi olduğu sürece herhangi bir abonelikteki uç noktalar Traffic Manager eklenebilir. Bu izinler, [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/role-assignments-portal.md)kullanılarak verilebilir. Diğer aboneliklerden gelen uç noktalar, [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) veya [Azure CLI](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create)kullanılarak eklenebilir.
+Diğer uç nokta türleri için birden fazla abonelikteki uç noktalarla Traffic Manager kullanmak mümkündür. Kaynak Yöneticisi, Traffic Manager profilini yapılandıran kişinin uç noktaya okuma erişimi olduğu sürece herhangi bir abonelikteki uç noktalar Traffic Manager eklenebilir. Bu izinler, [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/role-assignments-portal.md)kullanılarak verilebilir. Diğer aboneliklerden gelen uç noktalar, [Azure PowerShell](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) veya [Azure CLI](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create)kullanılarak eklenebilir.
 
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>Bulut hizmeti ' hazırlama ' yuvaları ile Traffic Manager kullanabilir miyim?
 
@@ -345,9 +345,9 @@ Azure Resource Manager, tüm kaynak gruplarının bu kaynak grubunda dağıtıla
 
 ### <a name="how-do-i-determine-the-current-health-of-each-endpoint"></a>Nasıl yaparım? her uç noktanın geçerli sistem durumunu mı belirlemelisiniz?
 
-Her uç noktanın geçerli izleme durumu, genel profilin yanı sıra Azure portal görüntülenir. Bu bilgiler ayrıca trafik Izleyicisi [REST API](https://msdn.microsoft.com/library/azure/mt163667.aspx), [PowerShell cmdlet 'leri](https://docs.microsoft.com/powershell/module/az.trafficmanager)ve [platformlar arası Azure CLI](../cli-install-nodejs.md)aracılığıyla da kullanılabilir.
+Her uç noktanın geçerli izleme durumu, genel profilin yanı sıra Azure portal görüntülenir. Bu bilgiler ayrıca trafik Izleyicisi [REST API](/rest/api/trafficmanager/), [PowerShell cmdlet 'leri](/powershell/module/az.trafficmanager)ve [platformlar arası Azure CLI](/cli/azure/install-classic-cli)aracılığıyla da kullanılabilir.
 
-Azure Izleyici 'yi, uç noktalarınızın durumunu izlemek ve bunların görsel bir gösterimini görmek için de kullanabilirsiniz. Azure Izleyici 'yi kullanma hakkında daha fazla bilgi için bkz. [Azure izleme belgeleri](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics).
+Azure Izleyici 'yi, uç noktalarınızın durumunu izlemek ve bunların görsel bir gösterimini görmek için de kullanabilirsiniz. Azure Izleyici 'yi kullanma hakkında daha fazla bilgi için bkz. [Azure izleme belgeleri](../azure-monitor/platform/data-platform.md).
 
 ### <a name="can-i-monitor-https-endpoints"></a>HTTPS uç noktalarını izleyebilir miyim?
 
@@ -361,7 +361,7 @@ Traffic Manager aşağıdakiler dahil olmak üzere herhangi bir sertifika doğru
 
 ### <a name="do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint"></a>Uç nokta eklerken bir IP adresi veya DNS adı kullanıyorum mi?
 
-Traffic Manager, bir DNS adı olarak bir IPv4 adresi ve bir IPv6 adresi olarak başvurmak için üç yol kullanarak uç noktaların eklenmesini destekler. Uç nokta bir IPv4 veya IPv6 adresi olarak eklenirse, sorgu yanıtı sırasıyla A veya AAAA kayıt türü olacaktır. Uç nokta bir DNS adı olarak eklendiyse, sorgu yanıtı CNAME kayıt türü olacaktır. Uç noktaların IPv4 veya IPv6 adresi olarak eklenmesine yalnızca uç nokta **External**türünde olduğunda izin verilir.
+Traffic Manager, bir DNS adı olarak bir IPv4 adresi ve bir IPv6 adresi olarak başvurmak için üç yol kullanarak uç noktaların eklenmesini destekler. Uç nokta bir IPv4 veya IPv6 adresi olarak eklenirse, sorgu yanıtı sırasıyla A veya AAAA kayıt türü olacaktır. Uç nokta bir DNS adı olarak eklendiyse, sorgu yanıtı CNAME kayıt türü olacaktır. Uç noktaların IPv4 veya IPv6 adresi olarak eklenmesine yalnızca uç nokta **External** türünde olduğunda izin verilir.
 Tüm yönlendirme yöntemleri ve izleme ayarları, üç uç nokta adresleme türü tarafından desteklenir.
 
 ### <a name="what-types-of-ip-addresses-can-i-use-when-adding-an-endpoint"></a>Uç nokta eklerken ne tür IP adresleri kullanabilirim?
@@ -458,7 +458,7 @@ Uç noktanıza ulaşan Traffic Manager durum denetimi sayısı aşağıdakilere 
 
 ### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>Uç noktalarımı bir veya daha fazla kaldığında nasıl bildirim alabilirim?
 
-Traffic Manager tarafından belirtilen ölçülerden biri, bir profildeki uç noktaların sistem durumudur. Bunu bir profil içindeki tüm uç noktaların toplamı olarak görebilirsiniz (örneğin, uç noktalarınızın %75 ' u) veya her bir uç nokta düzeyinde. Traffic Manager ölçümler Azure Izleyici aracılığıyla sunulur ve uç noktanızın sistem durumunda bir değişiklik olduğunda bildirimleri almak için [uyarı yeteneklerini](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) kullanabilirsiniz. Daha ayrıntılı bilgi için bkz. [Traffic Manager ölçümleri ve uyarıları](traffic-manager-metrics-alerts.md).  
+Traffic Manager tarafından belirtilen ölçülerden biri, bir profildeki uç noktaların sistem durumudur. Bunu bir profil içindeki tüm uç noktaların toplamı olarak görebilirsiniz (örneğin, uç noktalarınızın %75 ' u) veya her bir uç nokta düzeyinde. Traffic Manager ölçümler Azure Izleyici aracılığıyla sunulur ve uç noktanızın sistem durumunda bir değişiklik olduğunda bildirimleri almak için [uyarı yeteneklerini](../azure-monitor/platform/alerts-metric.md) kullanabilirsiniz. Daha ayrıntılı bilgi için bkz. [Traffic Manager ölçümleri ve uyarıları](traffic-manager-metrics-alerts.md).  
 
 ## <a name="traffic-manager-nested-profiles"></a>İç içe geçmiş profiller Traffic Manager
 
@@ -502,7 +502,7 @@ Aşağıdaki tabloda, iç içe geçmiş bir uç nokta için Traffic Manager sist
 | Devre dışı. Alt profil devre dışı bırakıldı. |Durduruldu |Üst uç nokta durumu durduruldu, devre dışı değil. Devre dışı durumu, üst profildeki uç noktayı devre dışı bırakmış olduğunu belirtecek şekilde ayrılmıştır. |
 | Düzey. En az bir alt profil uç noktası düşürülmüş bir durumda. |Çevrimiçi: alt profildeki çevrimiçi uç noktaların sayısı en az MinChildEndpoints değeridir.<BR>CheckingEndpoint: alt profildeki çevrimiçi ve CheckingEndpoint uç noktalarının sayısı en az MinChildEndpoints değeridir.<BR>Düşürülmüş: Aksi durumda. |Trafik, bir durum CheckingEndpoint uç noktasına yönlendirilir. MinChildEndpoints çok yüksek ayarlandıysa, uç nokta her zaman düşürülmüş olur. |
 | Çevrimiçi. En az bir alt profil uç noktası çevrimiçi bir durumdur. Düşürülmüş durumunda uç nokta yok. |Yukarıdaki bölümüne bakın. | |
-| CheckingEndpoints. En az bir alt profil uç noktası ' CheckingEndpoint '. Uç nokta ' çevrimiçi ' veya ' düşürülmüş ' yok |Yukarıdaki gibi. | |
+| CheckingEndpoints. En az bir alt profil uç noktası ' CheckingEndpoint '. Uç nokta ' çevrimiçi ' veya ' düşürülmüş ' yok |Yukarıdakiyle aynıdır. | |
 | Olmadan. Tüm alt profil uç noktaları devre dışı veya durdurulmuş ya da bu profilde uç nokta yok. |Durduruldu | |
 
 ## <a name="next-steps"></a>Sonraki adımlar:

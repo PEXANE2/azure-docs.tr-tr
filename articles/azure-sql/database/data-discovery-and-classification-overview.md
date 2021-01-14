@@ -13,17 +13,17 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 12/01/2020
 tags: azure-synapse
-ms.openlocfilehash: ece76f0017a72484f5c4e66b2ab8c7e71d32f1a7
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 41ad711de81f075727e4c177c318054677cb0ece
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132095"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185368"
 ---
 # <a name="data-discovery--classification"></a>Veri Bulma ve Sınıflandırma
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Veri bulma & sınıflandırması Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE Analytics 'te yerleşiktir. Veritabanınızdaki hassas verileri bulmak, sınıflandırmak, etiketlemek ve raporlamak için gelişmiş yetenekler sağlar.
+Veri bulma & sınıflandırması Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE Analytics 'te yerleşiktir. Veritabanlarınızdaki hassas verileri bulmak, sınıflandırmak, etiketlemek ve raporlamak için temel yetenekler sağlar.
 
 En hassas verileriniz arasında işletme, finans, sağlık hizmetleri veya kişisel bilgiler bulunabilir. Bu verileri bulmak ve sınıflandırmak, kuruluşunuzun bilgi koruma yaklaşımında bir özetleme rolü oynayabilir. Şunlara altyapı sağlayabilir:
 
@@ -36,11 +36,11 @@ En hassas verileriniz arasında işletme, finans, sağlık hizmetleri veya kişi
 
 ## <a name="what-is-data-discovery--classification"></a><a id="what-is-dc"></a>Veri bulma & sınıflandırması nedir?
 
-Veri bulma & sınıflandırması, Azure 'da bir dizi gelişmiş hizmet ve yeni özelliği kullanıma sunuyor. Yalnızca veritabanını değil, verileri korumayı hedefleyen SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE için yeni bir bilgi koruma paradigması oluşturur. Paradigma şunları içerir:
+Veri bulma & sınıflandırması, Azure 'daki bir dizi temel hizmeti ve yeni özellikleri tanıtır. Yalnızca veritabanını değil, verileri korumayı hedefleyen SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE için yeni bir bilgi koruma paradigması oluşturur. Paradigma şunları içerir:
 
 - **Bulma ve öneriler:** Sınıflandırma Altyapısı, veritabanınızı tarar ve potansiyel olarak hassas veriler içeren sütunları tanımlar. Daha sonra, Azure portal aracılığıyla önerilen sınıflandırmayı gözden geçirmek ve uygulamak için kolay bir yol sağlar.
 
-- **Etiketleme:** SQL Server veritabanı altyapısına eklenmiş olan yeni meta veri özniteliklerini kullanarak, duyarlılık sınıflandırma etiketlerini kalıcı olarak sütunlara uygulayabilirsiniz. Bu meta veriler daha sonra Gelişmiş, duyarlılık tabanlı denetim ve koruma senaryoları için kullanılabilir.
+- **Etiketleme:** SQL Server veritabanı altyapısına eklenmiş olan yeni meta veri özniteliklerini kullanarak, duyarlılık sınıflandırma etiketlerini kalıcı olarak sütunlara uygulayabilirsiniz. Bu meta veriler, daha sonra duyarlılık tabanlı denetim ve koruma senaryoları için kullanılabilir.
 
 - **Sorgu sonucu-ayarlanan duyarlılık:** Sorgu sonuç kümesinin duyarlılığı, denetim amaçlarıyla gerçek zamanlı olarak hesaplanır.
 

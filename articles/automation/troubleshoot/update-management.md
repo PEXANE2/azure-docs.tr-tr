@@ -5,12 +5,12 @@ services: automation
 ms.date: 12/04/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: c6d0f38eaa25f2fe033a5e2cf48ee6daa51fcbe6
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: f00002c7374e0c35c7bb91c28b2dd87ad71e3350
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929285"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184926"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Güncelleştirme Yönetimi sorunlarını giderme
 
@@ -425,7 +425,7 @@ Bu hatanın oluşmasının nedeni aşağıdakilerden biri olabilir:
 
 Uygun olduğunda, güncelleştirme dağıtımlarınız için [dinamik grupları](../update-management/configure-groups.md) kullanın. Ayrıca, aşağıdaki adımları gerçekleştirebilirsiniz.
 
-1. Makinenizin veya sunucunuzun [gereksinimleri](../update-management/overview.md#client-requirements)karşıladığını doğrulayın.
+1. Makinenizin veya sunucunuzun [gereksinimleri](../update-management/overview.md#system-requirements)karşıladığını doğrulayın.
 2. Karma Runbook Worker Aracısı sorun gidericisini kullanarak karma Runbook Worker bağlantısını doğrulayın. Sorun giderici hakkında daha fazla bilgi için bkz. [Güncelleştirme Aracısı sorunlarını giderme](update-agent-issues.md).
 
 ## <a name="scenario-updates-are-installed-without-a-deployment"></a><a name="updates-nodeployment"></a>Senaryo: güncelleştirmeler dağıtım olmadan yüklenir

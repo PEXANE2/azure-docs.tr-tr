@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 11/19/2020
 ms.author: alkohli
-ms.openlocfilehash: db97a34a79ac45525177a79a59a17426003aeab0
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: aad6a3ef754b5ba2c65a9b93fbdfcfdc26348487
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302633"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186167"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Öğretici: Azure Data Box sipariş etme
 
@@ -57,7 +57,7 @@ Başlamadan önce aşağıdakilerden emin olun:
 
 * [Azure CLI](/cli/azure/install-azure-cli) sürüm 2.0.67 veya üstünü yükler. Alternatif olarak, [MSI kullanarak yükleyebilirsiniz](https://aka.ms/installazurecliwindows).
 
-**Azure 'da oturum açın**
+**Azure'da oturum açma**
 
 Bir Windows PowerShell komut penceresi açın ve [az Login](/cli/azure/reference-index#az-login) komutuyla Azure 'da oturum açın:
 
@@ -409,7 +409,7 @@ Bir cihaz sıralamak için Azure CLı kullanarak aşağıdaki adımları uygulay
 
 1. Data Box siparişiniz için ayarlarınızı yazın. Bu ayarlar kişisel/iş bilgilerinizi, abonelik adınızı, cihaz bilgilerini ve gönderi bilgilerini içerir. Data Box sırasını oluşturmak için CLı komutunu çalıştırırken bu ayarları parametre olarak kullanmanız gerekir. Aşağıdaki tabloda, için kullanılan parametre ayarları gösterilmektedir `az databox job create` :
 
-   | Ayar (parametre) | Açıklama |  Örnek değer |
+   | Ayar (parametre) | Description |  Örnek değer |
    |---|---|---|
    |resource-group| Var olan bir taneyi kullanın veya yenisini oluşturun. Kaynak grubu, birlikte yönetilebilen ve ya dağıtılabilen kaynaklardan oluşan mantıksal kapsayıcıdır. | myresourcegroup|
    |name| Oluşturmakta olduğunuz siparişin adı. | "mydataboxorder"|
@@ -528,7 +528,7 @@ Bir cihazı sıralamak için Azure PowerShell kullanarak aşağıdaki adımları
 
 2. Data Box siparişiniz için ayarlarınızı yazın. Bu ayarlar kişisel/iş bilgilerinizi, abonelik adınızı, cihaz bilgilerini ve gönderi bilgilerini içerir. Data Box sırasını oluşturmak için PowerShell komutunu çalıştırırken bu ayarları parametre olarak kullanmanız gerekir. Aşağıdaki tabloda [New-AzDataBoxJob](/powershell/module/az.databox/New-AzDataBoxJob)için kullanılan parametre ayarları gösterilmektedir.
 
-    | Ayar (parametre) | Açıklama |  Örnek değer |
+    | Ayar (parametre) | Description |  Örnek değer |
     |---|---|---|
     |ResourceGroupName [gerekli]| Mevcut bir kaynak grubunu kullanın. Kaynak grubu, birlikte yönetilebilen ve ya dağıtılabilen kaynaklardan oluşan mantıksal kapsayıcıdır. | myresourcegroup|
     |Ad [gerekli]| Oluşturmakta olduğunuz siparişin adı. | "mydataboxorder"|
@@ -774,7 +774,7 @@ Azure Data Box sırayı iptal etmek için [az databox Job Cancel](/cli/azure/ext
    |kaynak grubu [gerekli]| Silinecek siparişle ilişkili kaynak grubunun adı. Kaynak grubu, birlikte yönetilebilen ve ya dağıtılabilen kaynaklardan oluşan mantıksal kapsayıcıdır. | myresourcegroup|
    |ad [gerekli]| Silinecek siparişin adı. | "mydataboxorder"|
    |Neden [gerekli]| Siparişi iptal etme nedeni. | "Hatalı bilgiler girdim ve siparişi iptal etmek için gerekli." |
-   |yes| Onay sorma. | --Evet (-y)| --Evet-y |
+   |evet| Onay sorma. | --Evet (-y)| --Evet-y |
    |hata ayıklama| Ayrıntılı günlüğe hata ayıklama bilgilerini dahil et | --Hata Ayıkla |
    |Yardım| Bu komutla ilgili yardım bilgilerini görüntüleyin. | --Yardım-h |
    |yalnızca-hataları göster| Yalnızca hataları göster, uyarıları gizleme. | --yalnızca-show-Errors |
@@ -811,7 +811,7 @@ Azure Data Box sırayı iptal ediyorsanız, siparişi silmek için [az databox J
    |kaynak grubu [gerekli]| Silinecek siparişle ilişkili kaynak grubunun adı. Kaynak grubu, birlikte yönetilebilen ve ya dağıtılabilen kaynaklardan oluşan mantıksal kapsayıcıdır. | myresourcegroup|
    |ad [gerekli]| Silinecek siparişin adı. | "mydataboxorder"|
    |aboneliği| Azure aboneliğinizin adı veya KIMLIĞI (GUID). | "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" |
-   |yes| Onay sorma. | --Evet (-y)| --Evet-y |
+   |evet| Onay sorma. | --Evet (-y)| --Evet-y |
    |hata ayıklama| Ayrıntılı günlüğe hata ayıklama bilgilerini dahil et | --Hata Ayıkla |
    |Yardım| Bu komutla ilgili yardım bilgilerini görüntüleyin. | --Yardım-h |
    |yalnızca-hataları göster| Yalnızca hataları göster, uyarıları gizleme. | --yalnızca-show-Errors |
