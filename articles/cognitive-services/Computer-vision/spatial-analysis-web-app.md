@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/06/2020
+ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 9b9390b498f28fc8f9029f1c11805b970aaca73d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: de011fb0f827ea90efe33e237bbf1c5100dc76a7
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014569"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183481"
 ---
 # <a name="how-to-deploy-a-people-counting-web-application"></a>Nasıl yapılır: Web uygulaması sayma bir kişi dağıtma
 
@@ -28,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 * IoT Hub bağlantısını Web uygulamasında yapılandırma
 * Web uygulamasını dağıtma ve test etme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * Azure IoT Edge dağıtım yapılandırmalarının ve [Azure IoT Hub](../../iot-hub/index.yml) hakkında temel bilgiler
@@ -63,12 +63,12 @@ az iot hub device-identity create --hub-name "<IoT Hub Name>" --device-id "<Edge
 
 ### <a name="deploy-the-container-on-azure-iot-edge-on-the-host-computer"></a>Kapsayıcıyı konak bilgisayardaki Azure IoT Edge dağıtma
 
-Azure CLı kullanarak, uzamsal analiz kapsayıcısını ana bilgisayarda IoT modülü olarak dağıtın. Dağıtım işlemi, dağıtımınız için gerekli kapsayıcıları, değişkenleri ve konfigürasyonları özetleyen bir dağıtım bildirim dosyası gerektirir. Örnek [Azure Stack Edge 'e özgü bir dağıtım bildirimi](https://github.com/Azure-Samples/cognitive-services-rest-api-samples/) ve ayrıca, GitHub üzerinde [Azure Stack olmayan bir kenara özgü dağıtım bildirimi](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) ve bu da, *uzamsal analiz* kapsayıcısı için temel bir dağıtım yapılandırması içerir. 
+Azure CLı kullanarak, uzamsal analiz kapsayıcısını ana bilgisayarda IoT modülü olarak dağıtın. Dağıtım işlemi, dağıtımınız için gerekli kapsayıcıları, değişkenleri ve konfigürasyonları özetleyen bir dağıtım bildirim dosyası gerektirir. Örnek Azure Stack Edge 'e özgü [dağıtım bildirimi](https://go.microsoft.com/fwlink/?linkid=2142179), [Azure Stack olmayan uçtan](https://go.microsoft.com/fwlink/?linkid=2152189)uca DAĞıTıM bildirimi ve Azure VM 'yi GitHub 'da, *uzamsal analiz* kapsayıcısına yönelik temel bir DAĞıTıM yapılandırması içeren, GitHub üzerinde [GPU 'ya özgü dağıtım](https://go.microsoft.com/fwlink/?linkid=2152189) bildirimiyle bulabilirsiniz. 
 
 Alternatif olarak, IoT Hub 'ınız ile işlemler gerçekleştirmek için Visual Studio Code için Azure IoT uzantılarını kullanabilirsiniz. Daha fazla bilgi edinmek için [Visual Studio Code Azure IoT Edge modüllerini dağıtma](../../iot-edge/how-to-deploy-modules-vscode.md) bölümüne gidin.
 
 > [!NOTE] 
-> *Uzamsal-analiz-telegraf* ve *uzamsal analiz-tanılama* kapsayıcıları isteğe bağlıdır. Bunları dosyadaki *DeploymentManifest.js* kaldırmaya karar verebilirsiniz. Daha fazla bilgi için bkz. [telemetri ve sorun giderme](./spatial-analysis-logging.md) makalesi. [Azure Stack Edge cihazları](https://go.microsoft.com/fwlink/?linkid=2142179) veya başka bir [Masaüstü makinesi](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) için GitHub 'daki dosyalarda iki örnek *DeploymentManifest.js* bulabilirsiniz
+> *Uzamsal-analiz-telegraf* ve *uzamsal analiz-tanılama* kapsayıcıları isteğe bağlıdır. Bunları dosyadaki *DeploymentManifest.js* kaldırmaya karar verebilirsiniz. Daha fazla bilgi için bkz. [telemetri ve sorun giderme](./spatial-analysis-logging.md) makalesi. GitHub 'daki dosyalar üzerinde üç örnek *DeploymentManifest.js* bulabilirsiniz, [Azure Stack Edge cihazları](https://go.microsoft.com/fwlink/?linkid=2142179), [Masaüstü MAKINESI](https://go.microsoft.com/fwlink/?linkid=2152189)veya [GPU ile Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189)
 
 ### <a name="set-environment-variables"></a>Ortam değişkenlerini belirleme
 
@@ -185,7 +185,7 @@ Kurulumun tamamlanmasını bekleyin ve Azure portal kaynak sayfasına gidin. **Y
 * `EventHubConsumerGroup` – Azure IoT Hub tüketici grubunun dize adı, IoT Hub yeni bir tüketici grubu oluşturabilir veya varsayılan grubu kullanabilirsiniz. 
 * `IotHubConnectionString` – Azure IoT Hub bağlantı dizesi, bu, Azure IoT Hub kaynağınızın anahtarlar bölümünden alınabilir ![ parametreleri yapılandırma](./media/spatial-analysis/solution-app-config-page.png)
 
-Bu 2 ayar eklendikten sonra **Kaydet**' e tıklayın. Ardından sol gezinti menüsünde **kimlik doğrulama/yetkilendirme** ' ye tıklayın ve istediğiniz kimlik doğrulaması düzeyiyle güncelleştirin. Azure Active Director (Azure AD) Express önerilir. 
+Bu 2 ayar eklendikten sonra **Kaydet**' e tıklayın. Ardından sol gezinti menüsünde **kimlik doğrulama/yetkilendirme** ' ye tıklayın ve istediğiniz kimlik doğrulaması düzeyiyle güncelleştirin. Azure Active Directory (Azure AD) Express önerilir. 
 
 ### <a name="test-the-app"></a>Uygulamayı test etme
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: duau
-ms.openlocfilehash: 7bb5559f21289a40b6c75a3481680ab5b2c1c269
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a39120b1305022739aaef3407aa6c2621a97e842
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89392893"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184162"
 ---
 # <a name="manage-an-azure-traffic-manager-profile"></a>Bir Azure Traffic Manager profilini yönetme
 
@@ -30,7 +30,7 @@ Azure portalını kullanarak bir Traffic Manager profili oluşturabilirsiniz. Pr
 ### <a name="to-create-a-traffic-manager-profile"></a>Traffic Manager profili oluşturma
 
 1. Bir tarayıcıdan [Azure portalında](https://portal.azure.com) oturum açın. Henüz bir hesabınız yoksa, [bir aylık ücretsiz denemeye](https://azure.microsoft.com/free/) kaydolabilirsiniz. 
-2. **Create a resource**  >  **Networking**  >  **Profil**  >  **Oluştur**Traffic Manager kaynak ağı oluştur ' a tıklayın.
+2.   >    >  **Profil**  >  **Oluştur** Traffic Manager kaynak ağı oluştur ' a tıklayın.
 4. **Traffic Manager profili oluştur** dikey penceresini aşağıdaki gibi doldurun:
     1. **Ad** alanında profiliniz için bir ad belirtin. Bu adın trafficmanager.net bölgesinde benzersiz olması ve Traffic Manager profilinize erişmek için kullanılan `<name>`, trafficmanager.net DNS adı ile sonuçlanması gerekir.
     2. **Yönlendirme yöntemi** alanında **Öncelik** yönlendirme yöntemini seçin.
@@ -50,7 +50,7 @@ Mevcut bir profili devre dışı bırakarak Traffic Manager’ın kullanıcı is
 2. Traffic Manager profil ayarları aracılığıyla trafiğin uç noktalara yönlendirilmesi durdurulur.
 3. Bir tarayıcıdan [Azure portalında](https://portal.azure.com) oturum açın.
 2. Portalın arama çubuğunda, değiştirmek istediğiniz **Traffic Manager profili** adını arayın ve ardından gösterilen sonuçlardaki Traffic Manager profiline tıklayın.
-3. **Genel bakış**  >  **devre dışı**seçeneğine tıklayın.
+3. **Genel bakış**  >  **devre dışı** seçeneğine tıklayın.
 4. Traffic Manager profilini devre dışı bırakmak için onaylayın.
 
 ### <a name="to-enable-a-profile"></a>Bir profili etkinleştirme
@@ -70,7 +70,7 @@ Mevcut bir profili devre dışı bırakarak Traffic Manager’ın kullanıcı is
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Bir uç nokta ekleme](traffic-manager-endpoints.md)
+* [Bir uç nokta ekleme](./traffic-manager-manage-endpoints.md)
 * [Öncelik yönlendirme yöntemini yapılandırma](traffic-manager-configure-priority-routing-method.md)
 * [Coğrafi yönlendirme yöntemini yapılandırma](traffic-manager-configure-geographic-routing-method.md) 
 * [Ağırlıklı yönlendirme yöntemini yapılandırma](traffic-manager-configure-weighted-routing-method.md)

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: traffic-manager
 ms.date: 09/18/2019
 ms.author: duau
-ms.openlocfilehash: 01bd3b1e945ee7c9ac16af7048536c0a9e2d731a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 502533b69058eacd4ad18a3b29a33fbc4a3715a5
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401597"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183804"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-powershell"></a>Azure PowerShell kullanarak alt ağ geçersiz kılma Traffic Manager
 
@@ -43,7 +43,7 @@ Bir Traffic Manager alt ağ geçersiz kılma oluşturmak için Azure PowerShell 
 
 1. **Traffic Manager uç noktasını alın:**
 
-    Alt ağ geçersiz kılmayı etkinleştirmek için, geçersiz kılmayı eklemek istediğiniz uç noktayı [alın ve Get-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0)kullanarak bir değişkende depolayın.
+    Alt ağ geçersiz kılmayı etkinleştirmek için, geçersiz kılmayı eklemek istediğiniz uç noktayı [alın ve Get-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0)kullanarak bir değişkende depolayın.
 
     Name, ProfileName ve ResourceGroupName değerlerini değiştirmekte olduğunuz uç noktanın değerleriyle değiştirin.
 
@@ -54,7 +54,7 @@ Bir Traffic Manager alt ağ geçersiz kılma oluşturmak için Azure PowerShell 
     ```
 2. **IP adresi aralığını uç noktaya ekleyin:**
     
-    IP adresi aralığını uç noktaya eklemek için [Add-AzTrafficManagerIpAddressRange](https://docs.microsoft.com/powershell/module/az.trafficmanager/add-aztrafficmanageripaddressrange?view=azps-2.5.0&viewFallbackFrom=azps-2.4.0) kullanarak aralığı ekleyebilirsiniz.
+    IP adresi aralığını uç noktaya eklemek için [Add-AzTrafficManagerIpAddressRange](/powershell/module/az.trafficmanager/add-aztrafficmanageripaddressrange?view=azps-2.5.0&viewFallbackFrom=azps-2.4.0) kullanarak aralığı ekleyebilirsiniz.
 
     ```powershell
 
@@ -68,18 +68,18 @@ Bir Traffic Manager alt ağ geçersiz kılma oluşturmak için Azure PowerShell 
     Add-AzTrafficManagerIPAddressRange -TrafficManagerEndpoint $TrafficManagerEndpoint -First "12.13.14.0" -Last "12.13.14.31" -Scope 27
  
     ```
-    Aralıklar eklendikten sonra, uç noktayı güncelleştirmek için [set-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) kullanın.
+    Aralıklar eklendikten sonra, uç noktayı güncelleştirmek için [set-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) kullanın.
 
     ```powershell
 
     Set-AzTrafficManagerEndpoint -TrafficManagerEndpoint $TrafficManagerEndpoint
 
     ```
-IP adresi aralığını kaldırma, [Remove-AzTrafficManagerIpAddressRange](https://docs.microsoft.com/powershell/module/az.trafficmanager/remove-aztrafficmanageripaddressrange?view=azps-2.5.0)kullanılarak tamamlanabilir.
+IP adresi aralığını kaldırma, [Remove-AzTrafficManagerIpAddressRange](/powershell/module/az.trafficmanager/remove-aztrafficmanageripaddressrange?view=azps-2.5.0)kullanılarak tamamlanabilir.
 
 1.  **Traffic Manager uç noktasını alın:**
 
-    Alt ağ geçersiz kılmayı etkinleştirmek için, geçersiz kılmayı eklemek istediğiniz uç noktayı [alın ve Get-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0)kullanarak bir değişkende depolayın.
+    Alt ağ geçersiz kılmayı etkinleştirmek için, geçersiz kılmayı eklemek istediğiniz uç noktayı [alın ve Get-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0)kullanarak bir değişkende depolayın.
 
     Name, ProfileName ve ResourceGroupName değerlerini değiştirmekte olduğunuz uç noktanın değerleriyle değiştirin.
 
@@ -102,7 +102,7 @@ IP adresi aralığını kaldırma, [Remove-AzTrafficManagerIpAddressRange](https
     Remove-AzTrafficManagerIpAddressRange -TrafficManagerEndpoint $TrafficManagerEndpoint -First "12.13.14.0" -Last "12.13.14.31" -Scope 27
 
     ```
-     Aralıklar kaldırıldıktan sonra, uç noktayı güncelleştirmek için [set-AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) kullanın.
+     Aralıklar kaldırıldıktan sonra, uç noktayı güncelleştirmek için [set-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) kullanın.
 
     ```powershell
 
@@ -113,4 +113,4 @@ IP adresi aralığını kaldırma, [Remove-AzTrafficManagerIpAddressRange](https
 ## <a name="next-steps"></a>Sonraki adımlar
 Traffic Manager [trafik yönlendirme yöntemleri](traffic-manager-routing-methods.md)hakkında daha fazla bilgi edinin.
 
-[Alt ağ trafiği-yönlendirme yöntemi](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#subnet-traffic-routing-method) hakkında bilgi edinin
+[Alt ağ trafiği-yönlendirme yöntemi](./traffic-manager-routing-methods.md#subnet-traffic-routing-method) hakkında bilgi edinin

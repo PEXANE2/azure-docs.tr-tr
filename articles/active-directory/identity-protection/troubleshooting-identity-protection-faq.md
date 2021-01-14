@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d80b8f41e11f2fffa86dc7597fdf44dd27825fc
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: c169847c96d10d1c9fb47b210bc85a15e0690e32
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028905"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183124"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Azure Active Directory 'de sık sorulan sorular kimlik koruması
 
@@ -31,7 +31,7 @@ Kullanıcı riski geri ayırma akışında gecikmeye neden olan geçerli bir bil
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
-### <a name="why-is-a-user-is-at-risk"></a>Kullanıcı neden risk altında?
+### <a name="why-is-a-user-at-risk"></a>Kullanıcı neden risk altında?
 
 Azure AD Kimlik Koruması müşteriyseniz, [riskli kullanıcılar](howto-identity-protection-investigate-risk.md#risky-users) görünümüne gidin ve risk altındaki kullanıcıya tıklayın. Alttaki çekmecede, ' risk geçmişi ' sekmesi, bir Kullanıcı riski değişikliğine yol açan tüm olayları gösterecektir. Kullanıcının tüm riskli oturum açma işlemlerini görmek için, ' kullanıcının riskli oturum açma işlemleri ' ne tıklayın. Bu kullanıcıya yönelik tüm risk algılamalarını görmek için, ' kullanıcının risk algılamaları ' seçeneğine tıklayın.
 

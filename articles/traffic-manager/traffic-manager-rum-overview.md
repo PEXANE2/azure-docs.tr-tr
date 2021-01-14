@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: duau
 ms.custom: ''
-ms.openlocfilehash: 45c889ef8d67570fb075ec710616f20d110b7f50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 618f8fff532da0f6ae315ad9e4cda35a289949d1
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401614"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183719"
 ---
 # <a name="traffic-manager-real-user-measurements-overview"></a>Traffic Manager Gerçek Kullanıcı Ölçümleri’ne genel bakış
 
@@ -37,48 +37,47 @@ Gerçek Kullanıcı Ölçümleri kullandığınızda, Traffic Manager gönderile
 
 ## <a name="faqs"></a>SSS
 
-* [Gerçek Kullanıcı Ölçümleri kullanmanın avantajları nelerdir?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-the-benefits-of-using-real-user-measurements)
+* [Gerçek Kullanıcı Ölçümleri kullanmanın avantajları nelerdir?](./traffic-manager-faqs.md#what-are-the-benefits-of-using-real-user-measurements)
 
-* [Azure olmayan bölgelerle Gerçek Kullanıcı Ölçümleri kullanabilir miyim?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-real-user-measurements-with-non-azure-regions)
+* [Azure olmayan bölgelerle Gerçek Kullanıcı Ölçümleri kullanabilir miyim?](./traffic-manager-faqs.md#can-i-use-real-user-measurements-with-non-azure-regions)
 
-* [Gerçek Kullanıcı Ölçümleri hangi yönlendirme yöntemi avantajları?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#which-routing-method-benefits-from-real-user-measurements)
+* [Gerçek Kullanıcı Ölçümleri hangi yönlendirme yöntemi avantajları?](./traffic-manager-faqs.md#which-routing-method-benefits-from-real-user-measurements)
 
-* [Her profili ayrı Gerçek Kullanıcı Ölçümleri etkinleştirmem gerekir mi?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-enable-real-user-measurements-each-profile-separately)
+* [Her profili ayrı Gerçek Kullanıcı Ölçümleri etkinleştirmem gerekir mi?](./traffic-manager-faqs.md#do-i-need-to-enable-real-user-measurements-each-profile-separately)
 
-* [Nasıl yaparım? Aboneliğim için Gerçek Kullanıcı Ölçümleri devre dışı bırakmak istiyor musunuz?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-turn-off-real-user-measurements-for-my-subscription)
+* [Nasıl yaparım? Aboneliğim için Gerçek Kullanıcı Ölçümleri devre dışı bırakmak istiyor musunuz?](./traffic-manager-faqs.md#how-do-i-turn-off-real-user-measurements-for-my-subscription)
 
-* [Gerçek Kullanıcı Ölçümleri Web sayfaları dışındaki istemci uygulamalarla kullanabilir miyim?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-real-user-measurements-with-client-applications-other-than-web-pages)
+* [Gerçek Kullanıcı Ölçümleri Web sayfaları dışındaki istemci uygulamalarla kullanabilir miyim?](./traffic-manager-faqs.md#can-i-use-real-user-measurements-with-client-applications-other-than-web-pages)
 
-* [Gerçek Kullanıcı Ölçümleri etkinleştirilmiş Web sayfası her işlendiğinde kaç ölçüm yapıldı?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-measurements-are-made-each-time-my-real-user-measurements-enabled-web-page-is-rendered)
+* [Gerçek Kullanıcı Ölçümleri etkinleştirilmiş Web sayfası her işlendiğinde kaç ölçüm yapıldı?](./traffic-manager-faqs.md#how-many-measurements-are-made-each-time-my-real-user-measurements-enabled-web-page-is-rendered)
 
-* [Web sayfamda Gerçek Kullanıcı Ölçümleri betiği çalışmadan önce bir gecikme var mı?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-there-a-delay-before-real-user-measurements-script-runs-in-my-webpage)
+* [Web sayfamda Gerçek Kullanıcı Ölçümleri betiği çalışmadan önce bir gecikme var mı?](./traffic-manager-faqs.md#is-there-a-delay-before-real-user-measurements-script-runs-in-my-webpage)
 
-* [Gerçek Kullanıcı Ölçümleri yalnızca ölçmek istediğim Azure bölgeleriyle kullanabilir miyim?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-real-user-measurements-with-only-the-azure-regions-i-want-to-measure)
+* [Gerçek Kullanıcı Ölçümleri yalnızca ölçmek istediğim Azure bölgeleriyle kullanabilir miyim?](./traffic-manager-faqs.md#can-i-use-real-user-measurements-with-only-the-azure-regions-i-want-to-measure)
 
-* [Belirli bir numaraya yapılan ölçümlerin sayısını sınırlayabilir miyim?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-limit-the-number-of-measurements-made-to-a-specific-number)
+* [Belirli bir numaraya yapılan ölçümlerin sayısını sınırlayabilir miyim?](./traffic-manager-faqs.md#can-i-limit-the-number-of-measurements-made-to-a-specific-number)
 
-* [İstemci uygulamamın Gerçek Kullanıcı Ölçümleri bir parçası olarak alınan ölçümleri görebilir miyim?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-see-the-measurements-taken-by-my-client-application-as-part-of-real-user-measurements)
+* [İstemci uygulamamın Gerçek Kullanıcı Ölçümleri bir parçası olarak alınan ölçümleri görebilir miyim?](./traffic-manager-faqs.md#can-i-see-the-measurements-taken-by-my-client-application-as-part-of-real-user-measurements)
 
-* [Traffic Manager tarafından sunulan ölçüm betiğini değiştirebilir miyim?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-modify-the-measurement-script-provided-by-traffic-manager)
+* [Traffic Manager tarafından sunulan ölçüm betiğini değiştirebilir miyim?](./traffic-manager-faqs.md#can-i-modify-the-measurement-script-provided-by-traffic-manager)
 
-* [Başkalarının Gerçek Kullanıcı Ölçümleri ile kullandığım anahtarı görmesi mümkün olacaktır mi?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#will-it-be-possible-for-others-to-see-the-key-i-use-with-real-user-measurements)
+* [Başkalarının Gerçek Kullanıcı Ölçümleri ile kullandığım anahtarı görmesi mümkün olacaktır mi?](./traffic-manager-faqs.md#will-it-be-possible-for-others-to-see-the-key-i-use-with-real-user-measurements)
 
-* [Diğerleri RUM anahtarımı kötüye kullanabilir mi?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-others-abuse-my-rum-key)
+* [Diğerleri RUM anahtarımı kötüye kullanabilir mi?](./traffic-manager-faqs.md#can-others-abuse-my-rum-key)
 
-* [Ölçüm JavaScript 'ı tüm Web sayfalarıma yerleştirmem gerekir mi?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-put-the-measurement-javascript-in-all-my-web-pages)
+* [Ölçüm JavaScript 'ı tüm Web sayfalarıma yerleştirmem gerekir mi?](./traffic-manager-faqs.md#do-i-need-to-put-the-measurement-javascript-in-all-my-web-pages)
 
-* [Gerçek Kullanıcı Ölçümleri kullanırsam son kullanıcılarım hakkındaki bilgiler Traffic Manager tarafından tanımlanabilir mi?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-information-about-my-end-users-be-identified-by-traffic-manager-if-i-use-real-user-measurements)
+* [Gerçek Kullanıcı Ölçümleri kullanırsam son kullanıcılarım hakkındaki bilgiler Traffic Manager tarafından tanımlanabilir mi?](./traffic-manager-faqs.md#can-information-about-my-end-users-be-identified-by-traffic-manager-if-i-use-real-user-measurements)
 
-* [Gerçek Kullanıcı Ölçümleri Web sayfasının yönlendirme için Traffic Manager kullanıyor olması gerekiyor mu?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-the-webpage-measuring-real-user-measurements-need-to-be-using-traffic-manager-for-routing)
+* [Gerçek Kullanıcı Ölçümleri Web sayfasının yönlendirme için Traffic Manager kullanıyor olması gerekiyor mu?](./traffic-manager-faqs.md#does-the-webpage-measuring-real-user-measurements-need-to-be-using-traffic-manager-for-routing)
 
-* [Azure bölgelerinde Gerçek Kullanıcı Ölçümleri kullanmak için herhangi bir hizmeti barındırmalıyım miyim?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-host-any-service-on-azure-regions-to-use-with-real-user-measurements)
+* [Azure bölgelerinde Gerçek Kullanıcı Ölçümleri kullanmak için herhangi bir hizmeti barındırmalıyım miyim?](./traffic-manager-faqs.md#do-i-need-to-host-any-service-on-azure-regions-to-use-with-real-user-measurements)
 
-* [Gerçek Kullanıcı Ölçümleri kullandığım zaman Azure bant genişliği kullanımı artar mi?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements)
+* [Gerçek Kullanıcı Ölçümleri kullandığım zaman Azure bant genişliği kullanımı artar mi?](./traffic-manager-faqs.md#will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Gerçek Kullanıcı ölçümleri Web sayfalarıyla](traffic-manager-create-rum-web-pages.md) kullanmayı öğrenin
 - [Traffic Manager nasıl çalıştığını](traffic-manager-overview.md) öğrenin
-- [Mobile Center](https://docs.microsoft.com/mobile-center/) hakkında daha fazla bilgi edinin
+- [Mobile Center](/mobile-center/) hakkında daha fazla bilgi edinin
 - Traffic Manager tarafından desteklenen [trafik yönlendirme yöntemleri](traffic-manager-routing-methods.md) hakkında daha fazla bilgi edinin
-- [Traffic Manager profili oluşturmayı](traffic-manager-create-profile.md) öğrenin
-
+- [Traffic Manager profili oluşturmayı](./quickstart-create-traffic-manager-profile.md) öğrenin

@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: d2c0003058c2271e46a352567a14e1b01dfabdbf
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: b1fa4d3e6c017232922e500352558e34726b90cc
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98071111"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183090"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>Öğretici: ilk makine öğrenimi modelinizi eğitme (Bölüm 3/4)
 
@@ -40,7 +40,8 @@ Bu öğreticide şunları yaptınız:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Serinin [2. bölümünü](tutorial-1st-experiment-hello-world.md) tamamlama.
+- Python sanal ortamlarını yönetmek ve paketleri yüklemek için [Anaconda](https://www.anaconda.com/download/) veya [miniconda](https://www.anaconda.com/download/) .
+- Serinin [part1](tutorial-1st-experiment-sdk-setup-local.md) ve [Bölüm 2](tutorial-1st-experiment-hello-world.md) ' nin tamamlanması.
 
 ## <a name="create-training-scripts"></a>Eğitim betikleri oluşturma
 
@@ -87,7 +88,7 @@ Bu ortam, modelinize ve eğitim betiğinizin gerektirdiği tüm bağımlılıkla
 
 ## <a name="test-locally"></a><a name="test-local"></a> Yerel olarak test etme
 
-Komut dosyanızı yeni ortamda yerel olarak test etmek için aşağıdaki kodu kullanın.  
+Bir Terminal veya Anaconda Istem penceresinde, komut dosyanızı yeni ortamda yerel olarak test etmek için aşağıdaki kodu kullanın.  
 
 ```bash
 conda deactivate                                # If you are still using the tutorial environment, exit it

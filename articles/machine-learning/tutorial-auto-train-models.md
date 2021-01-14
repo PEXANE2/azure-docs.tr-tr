@@ -11,12 +11,12 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: e1a5370501fe73fb783db9a039d9f060acdb0a35
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: f4d26ba6bec8f3e63ba89ed9abae789704a0828b
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511041"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184110"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Öğretici: Taksi ücretlerini tahmin etmek için otomatik makine öğrenmesini kullanma
 
@@ -34,7 +34,7 @@ Bu öğreticide aşağıdaki görevleri öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. Azure Machine Learning [ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Zaten bir Azure Machine Learning çalışma alanınız veya Not defteri sanal makineniz yoksa [Kurulum öğreticisini](tutorial-1st-experiment-sdk-setup.md) doldurun.
 * Kurulum öğreticisini tamamladıktan sonra, aynı not defteri sunucusunu kullanarak *öğreticiler/Regression-automl-NYC-Taxi-Data/Regression-Automated-ml. ipynb* Not defterini açın.
@@ -208,7 +208,7 @@ Bir modeli otomatik olarak eğitmek için aşağıdaki adımları uygulayın:
 
 Eğitim için deneme parametresi ve model ayarlarını tanımlayın. [Ayarların](how-to-configure-auto-train.md)tam listesini görüntüleyin. Denemeyi bu varsayılan ayarlarla göndermek yaklaşık 5-20 dakika sürer, ancak daha kısa bir çalışma süresi istiyorsanız `experiment_timeout_hours` parametreyi küçültün.
 
-|Özellik| Bu öğreticideki değer |Açıklama|
+|Özellik| Bu öğreticideki değer |Description|
 |----|----|---|
 |**iteration_timeout_minutes**|10|Her yineleme için dakika cinsinden zaman sınırı. Her yineleme için daha fazla zaman gerektiren daha büyük veri kümeleri için bu değeri arttırın.|
 |**experiment_timeout_hours**|0.3|Deneme sona ermeden önce tüm yinelemelerin birleştirilebilmesi için en fazla saat cinsinden süre.|
@@ -255,7 +255,7 @@ Denemeyi başlattıktan sonra, bu gösterilen çıkış, deney olarak canlı gü
 
 ```python
 from azureml.core.experiment import Experiment
-experiment = Experiment(ws, "taxi-experiment")
+experiment = Experiment(ws, "Tutorial-NYCTaxi")
 local_run = experiment.submit(automl_config, show_output=True)
 ```
 

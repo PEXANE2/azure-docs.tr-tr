@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 09/28/2020
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: d1dbe51dd095290c296699bbb4bc6bd3a8caf7bf
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 6aa39709a82b01367463f0128af4223446710a1c
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862437"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183651"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>Öğretici: veri ve scikit ile görüntü sınıflandırma modellerini eğitme-öğrenme 
 
@@ -39,7 +39,7 @@ Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azu
 >[!NOTE]
 > Bu makaledeki kod, [Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) sürümü 1.13.0 ile test edilmiştir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Öğreticiyi doldurun: Ilk Azure ML denemenizi oluşturmaya başlama](tutorial-1st-experiment-sdk-setup.md) :
     * Çalışma alanı oluşturma
@@ -57,7 +57,7 @@ Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azu
 > Kodu çalıştırırken okumak istiyorsanız şimdi Jupyter Notebook geçin. 
 > Bir not defterinde tek bir kod hücresini çalıştırmak için, kod hücresine tıklayın ve **SHIFT + enter** tuşuna basın. Ya da tüm not defteri ' ni üstteki araç çubuğundan **Çalıştır** ' ı seçerek çalıştırın.
 
-## <a name="set-up-your-development-environment"></a><a name="start"></a>Geliştirme ortamınızı ayarlama
+## <a name="set-up-your-development-environment"></a><a name="start"></a>Geliştirme ortamınızı kurma
 
 Geliştirme çalışmanızdaki tüm kurulum bir Python not defterinde gerçekleştirilebilir. Kurulum aşağıdaki eylemleri içerir:
 
@@ -98,7 +98,7 @@ print(ws.name, ws.location, ws.resource_group, sep='\t')
 
 ```python
 from azureml.core import Experiment
-experiment_name = 'sklearn-mnist'
+experiment_name = 'Tutorial-sklearn-mnist'
 
 exp = Experiment(workspace=ws, name=experiment_name)
 ```

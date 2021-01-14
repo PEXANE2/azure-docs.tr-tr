@@ -3,12 +3,12 @@ title: Kaynakları yönetim grubuna dağıtma
 description: Azure Resource Manager şablonundaki yönetim grubu kapsamındaki kaynakların nasıl dağıtılacağını açıklar.
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: f847e481670d7f9afd4b40cfb8fcbec65d1e28c8
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: d6c6b925ad1533fc1f3bf490a9b996280164bd57
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178934"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184025"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>ARM şablonlarıyla yönetim grubu dağıtımları
 
@@ -44,6 +44,8 @@ Abonelikler veya kaynak gruplarına dağıtan iç içe şablonlar için şunu ku
 Kaynaklarınızı yönetmek için şunu kullanın:
 
 * [lerimi](/azure/templates/microsoft.resources/tags)
+
+Yönetim grupları, kiracı düzeyi kaynaklarıdır. Bununla birlikte, yeni yönetim grubunun kapsamını kiracıya ayarlayarak bir yönetim grubu dağıtımında yönetim grupları oluşturabilirsiniz. Bkz. [Yönetim grubu](#management-group).
 
 ## <a name="schema"></a>Şema
 
@@ -168,9 +170,55 @@ Ve kümesi ile iç içe bir dağıtım `scope` kullanabilirsiniz `location` .
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/management-group-to-tenant.json" highlight="9,10,14":::
 
-Ya da kapsamını `/` Yönetim grupları gibi bazı kaynak türleri için olarak ayarlayabilirsiniz.
+Ya da kapsamını `/` Yönetim grupları gibi bazı kaynak türleri için olarak ayarlayabilirsiniz. Yeni bir yönetim grubu oluşturmak, sonraki bölümde açıklanmaktadır.
+
+## <a name="management-group"></a>Yönetim grubu
+
+Yönetim grubu dağıtımında bir yönetim grubu oluşturmak için, kapsamı `/` Yönetim grubu için olarak ayarlamanız gerekir.
+
+Aşağıdaki örnek, kök yönetim grubunda yeni bir yönetim grubu oluşturur.
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/management-group-create-mg.json" highlight="12,15":::
+
+Sonraki örnek, üst öğe olarak belirtilen yönetim grubunda yeni bir yönetim grubu oluşturur. Kapsamın olarak ayarlandığından emin olun `/` .
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "mgName": {
+            "type": "string",
+            "defaultValue": "[concat('mg-', uniqueString(newGuid()))]"
+        },
+        "parentMG": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "name": "[parameters('mgName')]",
+            "type": "Microsoft.Management/managementGroups",
+            "apiVersion": "2020-05-01",
+            "scope": "/",
+            "location": "eastus",
+            "properties": {
+                "details": {
+                    "parent": {
+                        "id": "[tenantResourceId('Microsoft.Management/managementGroups', parameters('parentMG'))]"
+                    }
+                }
+            }
+        }
+    ],
+    "outputs": {
+        "output": {
+            "type": "string",
+            "value": "[parameters('mgName')]"
+        }
+    }
+}
+```
 
 ## <a name="azure-policy"></a>Azure İlkesi
 

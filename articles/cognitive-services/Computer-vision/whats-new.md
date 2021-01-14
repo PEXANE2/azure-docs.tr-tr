@@ -8,18 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 12/15/2020
+ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 98b8cca95b8815b32fb5de6567adcf4f150551eb
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 33987be39258adc74cf4f88dbb0544f7026f6086
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561979"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183362"
 ---
 # <a name="whats-new-in-computer-vision"></a>Görüntü İşleme yenilikleri
 
 Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler sürüm notları, videolar, blog gönderileri ve diğer bilgi türleri olabilir. Hizmette güncel kalmak için bu sayfaya yer işareti ekleyin.
+
+## <a name="january-2021"></a>Ocak 2021
+
+### <a name="spatial-analysis-container-update"></a>Uzamsal analiz kapsayıcısı güncelleştirmesi
+
+Yeni bir özellik kümesiyle, [uzamsal analiz kapsayıcısının](spatial-analysis-container.md) yeni bir sürümü yayınlandı. Bu Docker kapsayıcısı, fiziksel ortamlar aracılığıyla insanlar ile hareketleri arasındaki uzamsal ilişkileri anlamak için gerçek zamanlı akış videosunu analiz etmenizi sağlar. 
+
+* [Uzamsal analiz işlemleri](spatial-analysis-operations.md) , bir kişinin maske gibi bir koruyucu yüzeyi takmakta olup olmadığını algılamak için yapılandırılabilir. 
+    * `personcount` `personcrossingline` `personcrossingpolygon` Parametresi yapılandırılarak, ve işlemleri için bir maske Sınıflandırıcısı etkinleştirilebilir `ENABLE_FACE_MASK_CLASSIFIER` .
+    * Bu öznitelikler `face_mask` ve `face_noMask` video akışında algılanan her bir kişi için güvenirlik puanı olan meta veriler olarak döndürülecek
+
 
 ## <a name="october-2020"></a>Ekim 2020
 

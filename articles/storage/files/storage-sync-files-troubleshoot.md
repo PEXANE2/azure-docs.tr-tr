@@ -4,15 +4,15 @@ description: Windows Server 'ı Azure dosya paylaşımınızın hızlı önbelle
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 6/12/2020
+ms.date: 1/13/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: c7405ada800bd5fb9161e9d96bd4c8b0484be620
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b84256188cf5df3ddf389f763e669a2b2ca00852
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005359"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183345"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure Dosya Eşitleme ile ilgili sorunları giderme
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -199,10 +199,27 @@ Portalda "çevrimdışı görünüyor" olarak gösterilen sunucuda, sunucunun ne
 - **Getnextjob şu durumla tamamlanırsa: 0** günlüğe kaydedilir, sunucu Azure dosya eşitleme hizmetiyle iletişim kurabilir. 
     - Sunucuda Görev Yöneticisi'ni açın ve Depolama Eşitleme İzleyicisi (AzureStorageSyncMonitor.exe) işleminin çalıştığından emin olun. İşlem çalışmıyorsa önce sunucuyu yeniden başlatmayı deneyin. Sunucunun yeniden başlatılması sorunu çözmezse en son Azure Dosya Eşitleme [aracısı sürümüne](./storage-files-release-notes.md) yükseltin. 
 
-- **Getnextjob şu durumla tamamlanırsa:-2134347756** günlüğe kaydedilir, sunucu bir güvenlik duvarı veya proxy nedeniyle Azure dosya eşitleme hizmetiyle iletişim kuramaz. 
+- **Getnextjob şu durum ile tamamlanırsa:-2134347756** günlüğe kaydedilir, bir güvenlik duvarı, proxy veya TLS şifre paketi sırası yapılandırması nedeniyle sunucu Azure dosya eşitleme hizmetiyle iletişim kuramaz. 
     - Sunucu bir güvenlik duvarının arkasındaysa 443 numaralı bağlantı noktası üzerinden giden bağlantılara izin verildiğinden emin olun. Güvenlik Duvarı trafiği belirli etki alanlarıyla kısıtlarsa, güvenlik duvarı [belgelerinde](./storage-sync-files-firewall-and-proxy.md#firewall) listelenen etki alanlarının erişilebilir olduğunu doğrulayın.
     - Sunucu bir proxy 'nin arkasındaysa, proxy [belgelerindeki](./storage-sync-files-firewall-and-proxy.md#proxy)adımları izleyerek makine genelinde veya uygulamaya özel proxy ayarlarını yapılandırın.
     - Hizmet uç noktalarına ağ bağlantısını denetlemek için Test-StorageSyncNetworkConnectivity cmdlet 'ini kullanın. Daha fazla bilgi için bkz. [hizmet uç noktalarına ağ bağlantısını test](./storage-sync-files-firewall-and-proxy.md#test-network-connectivity-to-service-endpoints)etme.
+    - Sunucuya şifre paketleri eklemek için Grup İlkesi veya TLS cmdlet 'lerini kullanın:
+        - Grup İlkesi 'ni kullanmak için, bkz. [Grup İlkesi kullanarak TLS şifre paketi sırasını yapılandırma](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-group-policy).
+        - TLS cmdlet 'lerini kullanmak için TLS [PowerShell cmdlet 'lerini kullanarak TLS şifre paketi sırasını yapılandırma](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-tls-powershell-cmdlets)konusuna bakın.
+    
+        Azure Dosya Eşitleme Şu anda TLS 1,2 Protokolü için aşağıdaki şifre paketlerini desteklemektedir:  
+        - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P384  
+        - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256  
+        - TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384_P384  
+        - TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P256  
+        - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256  
+        - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256  
+        - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256  
+        - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256  
+        - TLS_RSA_WITH_AES_256_GCM_SHA384  
+        - TLS_RSA_WITH_AES_128_GCM_SHA256  
+        - TLS_RSA_WITH_AES_256_CBC_SHA256  
+        - TLS_RSA_WITH_AES_128_CBC_SHA256  
 
 - **Getnextjob şu durumla tamamlanırsa:-2134347764** günlüğe kaydedilir, sunucu, süresi dolan veya silinen bir sertifika nedeniyle Azure dosya eşitleme hizmetiyle iletişim kuramaz.  
     - Kimlik doğrulama için kullanılan sertifikayı sıfırlamak için sunucuda aşağıdaki PowerShell komutunu çalıştırın:

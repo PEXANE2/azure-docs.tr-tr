@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: duau
-ms.openlocfilehash: 78a1681c743f65081b30657f4fd747ff8aaef5f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31048a0abd939c81b64e87b4a146ae3b6934803f
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89392842"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183918"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager uç nokta izleme
 
@@ -40,7 +40,7 @@ Uç nokta izlemeyi yapılandırmak için Traffic Manager profilinizde aşağıda
 
 ## <a name="how-endpoint-monitoring-works"></a>Uç nokta izlemenin çalışması
 
-İzleme Protokolü HTTP veya HTTPS olarak ayarlandıysa, Traffic Manager araştırma Aracısı, verilen protokol, bağlantı noktası ve göreli yolu kullanarak uç noktaya bir GET isteği yapar. 200-OK yanıtını veya **beklenen durum kodu \* aralıklarında**yapılandırılan yanıtlardan herhangi birini geri alırsa, bu uç nokta sağlıklı olarak değerlendirilir. Yanıt farklı bir değer ise veya belirtilen zaman aşımı süresi içinde herhangi bir yanıt alınmıyorsa, Traffic Manager yoklama Aracısı, toleranslı başarısızlık sayısına göre yeniden dener (Bu ayar 0 ise, yeniden deneme yapılmaz). Ardışık hataların sayısı, toleranslı başarısızlık sayısı ayarından yüksekse, bu uç nokta sağlıksız olarak işaretlenir. 
+İzleme Protokolü HTTP veya HTTPS olarak ayarlandıysa, Traffic Manager araştırma Aracısı, verilen protokol, bağlantı noktası ve göreli yolu kullanarak uç noktaya bir GET isteği yapar. 200-OK yanıtını veya **beklenen durum kodu \* aralıklarında** yapılandırılan yanıtlardan herhangi birini geri alırsa, bu uç nokta sağlıklı olarak değerlendirilir. Yanıt farklı bir değer ise veya belirtilen zaman aşımı süresi içinde herhangi bir yanıt alınmıyorsa, Traffic Manager yoklama Aracısı, toleranslı başarısızlık sayısına göre yeniden dener (Bu ayar 0 ise, yeniden deneme yapılmaz). Ardışık hataların sayısı, toleranslı başarısızlık sayısı ayarından yüksekse, bu uç nokta sağlıksız olarak işaretlenir. 
 
 İzleme protokolü TCP ise, Traffic Manager araştırma Aracısı belirtilen bağlantı noktasını kullanarak bir TCP bağlantı isteği başlatır. Uç nokta, bağlantıyı kurmak için bir Yanıt ile isteğe yanıt verirse, bu sistem durumu denetimi başarılı olarak işaretlenir ve Traffic Manager araştırma Aracısı TCP bağlantısını sıfırlar. Yanıt farklı bir değer ise veya belirtilen zaman aşımı süresi içinde herhangi bir yanıt alınmıyorsa, Traffic Manager yoklama Aracısı, toleranslı başarısızlık sayısına göre yeniden dener (Bu ayar 0 ise, yeniden deneme yapılmaz). Ardışık hataların sayısı, toleranslı başarısızlık sayısı ayarından yüksekse, bu uç nokta sağlıksız olarak işaretlenir.
 
@@ -79,7 +79,7 @@ Uç nokta izleyici durumu, uç noktanın durumunu gösteren Traffic Manager tara
 Uç nokta İzleyici durumunun iç içe geçmiş uç noktalar için nasıl hesaplandığı hakkında ayrıntılar için bkz. [iç içe Traffic Manager profilleri](traffic-manager-nested-profiles.md).
 
 >[!NOTE]
-> Web uygulamanız Standart katmanda veya yukarıda çalışmıyorsa, App Service durdurulmuş bir uç nokta izleyici durumu oluşabilir. Daha fazla bilgi için bkz. [App Service tümleştirmesi Traffic Manager](/azure/app-service/web-sites-traffic-manager).
+> Web uygulamanız Standart katmanda veya yukarıda çalışmıyorsa, App Service durdurulmuş bir uç nokta izleyici durumu oluşabilir. Daha fazla bilgi için bkz. [App Service tümleştirmesi Traffic Manager](../app-service/web-sites-traffic-manager.md).
 
 ### <a name="profile-monitor-status"></a>Profil izleyici durumu
 
@@ -137,7 +137,7 @@ Bir uç noktanın durumu düşürülmüş olduğunda, artık DNS sorgularına ya
 * **Performans**. Son kullanıcıya en yakın uç nokta döndürülür. Uç nokta kullanılamıyorsa Traffic Manager trafiği sonraki en yakın Azure bölgesindeki uç noktalara taşıdır. [İç içe Traffic Manager profillerini](traffic-manager-nested-profiles.md#example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region)kullanarak performans trafiği yönlendirmesi için alternatif yük devretme planları yapılandırabilirsiniz.
 * **Coğrafi**. Sorgu isteği IP 'si temelinde coğrafi konuma hizmeti sunacak şekilde eşlenen uç nokta döndürülür. Bu uç nokta kullanılamıyorsa, bir coğrafi konum yalnızca bir profildeki bir uç noktaya eşlenildiği için başka bir uç nokta ' e yük devretme için seçilmeyecektir (daha fazla ayrıntı [SSS](traffic-manager-FAQs.md#traffic-manager-geographic-traffic-routing-method)içinde bulunur). En iyi uygulama olarak, coğrafi yönlendirme kullanılırken, müşterilerin profil uç noktaları olarak birden fazla uç nokta ile iç içe Traffic Manager profillerini kullanmalarını öneririz.
 * **Çoklu değer** IPv4/IPv6 adresleriyle eşlenmiş birden fazla uç nokta döndürülür. Bu profil için bir sorgu alındığında sağlıklı uç noktalar, belirttiğiniz **Yanıt değerindeki en fazla kayıt sayısına** göre döndürülür. Varsayılan yanıt sayısı iki uç nokta olur.
-* **Alt ağ** Bir IP adresi aralığı kümesiyle eşlenen uç nokta döndürülür. Bu IP adresinden bir istek alındığında döndürülen uç nokta bu IP adresi için eşlenmiş bir noktadır. 
+* **Alt ağ** Bir IP adresi aralığı kümesiyle eşlenen uç nokta döndürülür. Bu IP adresinden bir istek alındığında döndürülen uç nokta bu IP adresi için eşlenmiş bir noktadır. 
 
 Daha fazla bilgi için bkz. [Traffic Manager trafik-yönlendirme yöntemleri](traffic-manager-routing-methods.md).
 
@@ -155,43 +155,43 @@ Başarısız durum denetimlerinde sorun giderme hakkında daha fazla bilgi için
 
 ## <a name="faqs"></a>SSS
 
-* [Azure bölge hatalarıyla Traffic Manager dayanıklı mi?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-traffic-manager-resilient-to-azure-region-failures)
+* [Azure bölge hatalarıyla Traffic Manager dayanıklı mi?](./traffic-manager-faqs.md#is-traffic-manager-resilient-to-azure-region-failures)
 
-* [Kaynak grubu konumu seçimi Traffic Manager nasıl etkiler?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-the-choice-of-resource-group-location-affect-traffic-manager)
+* [Kaynak grubu konumu seçimi Traffic Manager nasıl etkiler?](./traffic-manager-faqs.md#how-does-the-choice-of-resource-group-location-affect-traffic-manager)
 
-* [Nasıl yaparım? her uç noktanın geçerli sistem durumunu mı belirlemelisiniz?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-determine-the-current-health-of-each-endpoint)
+* [Nasıl yaparım? her uç noktanın geçerli sistem durumunu mı belirlemelisiniz?](./traffic-manager-faqs.md#how-do-i-determine-the-current-health-of-each-endpoint)
 
-* [HTTPS uç noktalarını izleyebilir miyim?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-monitor-https-endpoints)
+* [HTTPS uç noktalarını izleyebilir miyim?](./traffic-manager-faqs.md#can-i-monitor-https-endpoints)
 
-* [Uç nokta eklerken bir IP adresi veya DNS adı kullanıyorum mi?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint)
+* [Uç nokta eklerken bir IP adresi veya DNS adı kullanıyorum mi?](./traffic-manager-faqs.md#do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint)
 
-* [Uç nokta eklerken ne tür IP adresleri kullanabilirim?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-types-of-ip-addresses-can-i-use-when-adding-an-endpoint)
+* [Uç nokta eklerken ne tür IP adresleri kullanabilirim?](./traffic-manager-faqs.md#what-types-of-ip-addresses-can-i-use-when-adding-an-endpoint)
 
-* [Tek bir profil içinde farklı uç nokta adresleme türlerini kullanabilir miyim?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-different-endpoint-addressing-types-within-a-single-profile)
+* [Tek bir profil içinde farklı uç nokta adresleme türlerini kullanabilir miyim?](./traffic-manager-faqs.md#can-i-use-different-endpoint-addressing-types-within-a-single-profile)
 
-* [Gelen sorgunun kayıt türü, uç noktaların adresleme türüyle ilişkili kayıt türünden farklı olduğunda ne olur?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-happens-when-an-incoming-querys-record-type-is-different-from-the-record-type-associated-with-the-addressing-type-of-the-endpoints)
+* [Gelen sorgunun kayıt türü, uç noktaların adresleme türüyle ilişkili kayıt türünden farklı olduğunda ne olur?](./traffic-manager-faqs.md#what-happens-when-an-incoming-querys-record-type-is-different-from-the-record-type-associated-with-the-addressing-type-of-the-endpoints)
 
-* [Bir profili, iç içe geçmiş bir profilde IPv4/IPv6 ile ilgili belirtilen uç noktalarla kullanabilir miyim?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile)
+* [Bir profili, iç içe geçmiş bir profilde IPv4/IPv6 ile ilgili belirtilen uç noktalarla kullanabilir miyim?](./traffic-manager-faqs.md#can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile)
 
-* [Traffic Manager profilimde bir Web uygulaması uç noktasını durdurdum, ancak yeniden başlattıktan sonra bile hiç trafik almadım. Bunu nasıl giderebilirim?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#i-stopped-an-web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this)
+* [Traffic Manager profilimde bir Web uygulaması uç noktasını durdurdum, ancak yeniden başlattıktan sonra bile hiç trafik almadım. Bunu nasıl giderebilirim?](./traffic-manager-faqs.md#i-stopped-an-web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this)
 
-* [Uygulamamın HTTP veya HTTPS desteği olmasa bile Traffic Manager kullanabilir miyim?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-even-if-my-application-does-not-have-support-for-http-or-https)
+* [Uygulamamın HTTP veya HTTPS desteği olmasa bile Traffic Manager kullanabilir miyim?](./traffic-manager-faqs.md#can-i-use-traffic-manager-even-if-my-application-does-not-have-support-for-http-or-https)
 
-* [TCP izlemesi kullanılırken uç noktadan hangi belirli yanıtlar gerekir?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring)
+* [TCP izlemesi kullanılırken uç noktadan hangi belirli yanıtlar gerekir?](./traffic-manager-faqs.md#what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring)
 
-* [Kullanıcılarınızın sağlıksız bir uç noktadan uzakta mi ne kadar hızlı hareket Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-fast-does-traffic-manager-move-my-users-away-from-an-unhealthy-endpoint)
+* [Kullanıcılarınızın sağlıksız bir uç noktadan uzakta mi ne kadar hızlı hareket Traffic Manager?](./traffic-manager-faqs.md#how-fast-does-traffic-manager-move-my-users-away-from-an-unhealthy-endpoint)
 
-* [Bir profildeki farklı uç noktalar için farklı izleme ayarlarını nasıl belirtirim?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-different-monitoring-settings-for-different-endpoints-in-a-profile)
+* [Bir profildeki farklı uç noktalar için farklı izleme ayarlarını nasıl belirtirim?](./traffic-manager-faqs.md#how-can-i-specify-different-monitoring-settings-for-different-endpoints-in-a-profile)
 
-* [Uç noktalarıma Traffic Manager sistem durumu denetimlerine HTTP üstbilgileri nasıl atayabilirim?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-assign-http-headers-to-the-traffic-manager-health-checks-to-my-endpoints)
+* [Uç noktalarıma Traffic Manager sistem durumu denetimlerine HTTP üstbilgileri nasıl atayabilirim?](./traffic-manager-faqs.md#how-can-i-assign-http-headers-to-the-traffic-manager-health-checks-to-my-endpoints)
 
-* [Uç nokta sistem durumu denetimleri hangi konak üstbilgisini kullanır?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-host-header-do-endpoint-health-checks-use)
+* [Uç nokta sistem durumu denetimleri hangi konak üstbilgisini kullanır?](./traffic-manager-faqs.md#what-host-header-do-endpoint-health-checks-use)
 
-* [Sistem durumu denetimlerinin kaynağı olan IP adresleri nelerdir?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-the-ip-addresses-from-which-the-health-checks-originate)
+* [Sistem durumu denetimlerinin kaynağı olan IP adresleri nelerdir?](./traffic-manager-faqs.md#what-are-the-ip-addresses-from-which-the-health-checks-originate)
 
-* [Uç noktadan kaç tane sistem durumu denetlemesi Traffic Manager bekleyebilir?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-health-checks-to-my-endpoint-can-i-expect-from-traffic-manager)
+* [Uç noktadan kaç tane sistem durumu denetlemesi Traffic Manager bekleyebilir?](./traffic-manager-faqs.md#how-many-health-checks-to-my-endpoint-can-i-expect-from-traffic-manager)
 
-* [Uç noktalarımı bir veya daha fazla kaldığında nasıl bildirim alabilirim?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-get-notified-if-one-of-my-endpoints-goes-down)
+* [Uç noktalarımı bir veya daha fazla kaldığında nasıl bildirim alabilirim?](./traffic-manager-faqs.md#how-can-i-get-notified-if-one-of-my-endpoints-goes-down)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

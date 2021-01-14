@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: duau
 ms.custom: ''
-ms.openlocfilehash: f1a3cc5ccb326d6a198895f9f459e661f7805b1e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b20357413c62460aba55a2d354b90995a2aa4815
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003846"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183702"
 ---
 # <a name="traffic-manager-traffic-view"></a>Traffic Manager Trafik Görünümü
 
@@ -72,29 +72,29 @@ Trafik Görünümü kullandığınızda, sunulan öngörüleri oluşturmak için
 
 ## <a name="faqs"></a>SSS
 
-* [Trafik Görünümü ne yapar?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-does-traffic-view-do)
+* [Trafik Görünümü ne yapar?](./traffic-manager-faqs.md#what-does-traffic-view-do)
 
-* [Trafik Görünümü kullanmanın avantajlarından faydalanabilirsiniz.](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-benefit-from-using-traffic-view)
+* [Trafik Görünümü kullanmanın avantajlarından faydalanabilirsiniz.](./traffic-manager-faqs.md#how-can-i-benefit-from-using-traffic-view)
 
-* [Azure izleyici aracılığıyla kullanılabilen Traffic Manager ölçümlerinden farklı Trafik Görünümü nedir?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-is-traffic-view-different-from-the-traffic-manager-metrics-available-through-azure-monitor)
+* [Azure izleyici aracılığıyla kullanılabilen Traffic Manager ölçümlerinden farklı Trafik Görünümü nedir?](./traffic-manager-faqs.md#how-is-traffic-view-different-from-the-traffic-manager-metrics-available-through-azure-monitor)
 
-* [Trafik Görünümü EDNS Istemci alt ağ bilgilerini kullanır mi?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-view-use-edns-client-subnet-information)
+* [Trafik Görünümü EDNS Istemci alt ağ bilgilerini kullanır mi?](./traffic-manager-faqs.md#does-traffic-view-use-edns-client-subnet-information)
 
-* [Kaç gün veri Trafik Görünümü kullanır?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-days-of-data-does-traffic-view-use)
+* [Kaç gün veri Trafik Görünümü kullanır?](./traffic-manager-faqs.md#how-many-days-of-data-does-traffic-view-use)
 
-* [Trafik Görünümü dış uç noktaları nasıl işler?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-view-handle-external-endpoints)
+* [Trafik Görünümü dış uç noktaları nasıl işler?](./traffic-manager-faqs.md#how-does-traffic-view-handle-external-endpoints)
 
-* [Aboneliğimde her profil için Trafik Görünümü etkinleştirmem gerekir mi?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription)
+* [Aboneliğimde her profil için Trafik Görünümü etkinleştirmem gerekir mi?](./traffic-manager-faqs.md#do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription)
 
-* [Trafik Görünümü nasıl kapatırım?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-turn-off-traffic-view)
+* [Trafik Görünümü nasıl kapatırım?](./traffic-manager-faqs.md#how-can-i-turn-off-traffic-view)
 
-* [Trafik Görünümü Faturalandırma nasıl çalışır?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-view-billing-work)
+* [Trafik Görünümü Faturalandırma nasıl çalışır?](./traffic-manager-faqs.md#how-does-traffic-view-billing-work)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Traffic Manager nasıl çalıştığını](traffic-manager-overview.md) öğrenin
 - Traffic Manager tarafından desteklenen [trafik yönlendirme yöntemleri](traffic-manager-routing-methods.md) hakkında daha fazla bilgi edinin
-- [Traffic Manager profili oluşturmayı](traffic-manager-create-profile.md) öğrenin
+- [Traffic Manager profili oluşturmayı](./quickstart-create-traffic-manager-profile.md) öğrenin
 
 <!--Image references-->
 [1]: ./media/traffic-manager-traffic-view-overview/trafficview.png

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: e822a2be200f701d65ab2080804d252f99589680
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: ac86dfba02b54730773a1d243981e85d563517e7
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680797"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183839"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box"></a>Öğretici: Azure Data Box için dışarı aktarma siparişi oluşturma
 
@@ -330,7 +330,7 @@ XML dosyalarına göre bazı önemli noktaları:
 
 Aşağıdaki tabloda geçerli blob yollarının örnekleri gösterilmektedir:
 
-   | Seçici | Blob yolu | Açıklama |
+   | Seçici | Blob yolu | Description |
    | --- | --- | --- |
    | İle başlar |/ |Depolama hesabındaki tüm Blobları dışa aktarır |
    | İle başlar |/$root/ |Kök kapsayıcıdaki tüm Blobları dışa aktarır |

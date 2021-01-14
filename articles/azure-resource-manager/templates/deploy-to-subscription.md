@@ -3,12 +3,12 @@ title: Kaynakları aboneliğe dağıtma
 description: Azure Resource Manager şablonunda bir kaynak grubu oluşturmayı açıklar. Ayrıca Azure abonelik kapsamındaki kaynakların nasıl dağıtılacağını gösterir.
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: ba055970a8fac71b798fca9d3c76550cb7d482a7
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 1daf95945f619d0e904880d8a8a778810a685d9a
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179002"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183991"
 ---
 # <a name="subscription-deployments-with-arm-templates"></a>ARM şablonlarıyla abonelik dağıtımları
 
@@ -182,6 +182,8 @@ Ve kümesi ile iç içe bir dağıtım `scope` kullanabilirsiniz `location` .
 Ya da kapsamını `/` Yönetim grupları gibi bazı kaynak türleri için olarak ayarlayabilirsiniz.
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/subscription-create-mg.json" highlight="12,15":::
+
+Daha fazla bilgi için bkz. [Yönetim grubu](deploy-to-management-group.md#management-group).
 
 ## <a name="resource-groups"></a>Kaynak grupları
 

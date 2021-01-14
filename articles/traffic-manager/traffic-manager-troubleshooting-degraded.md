@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: duau
-ms.openlocfilehash: 83dc432a1f88b443d500bf9a977abfed69211156
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b76eab5771d724e4f0ec56b7d5acd5cf5f91edc0
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003863"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183464"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Azure Traffic Manager’da düşürülmüş durum için sorun giderme
 
-Bu makalede, düzeyi düşürülmüş bir durumu gösteren bir Azure Traffic Manager profilinde nasıl sorun giderileceği açıklanır. Azure Traffic Manager 'in düşürülmüş durumunun giderilmesi için ilk bir adım olarak günlüğe kaydetme etkinleştirilir.  Daha fazla bilgi için [kaynak günlüklerini etkinleştirme](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs) bölümüne bakın. Bu senaryo için cloudapp.net tarafından barındırılan hizmetlerden bazılarını işaret eden bir Traffic Manager profili yapılandırdığınıza dikkat edin. Traffic Manager sistem durumu **düşürülmüş** bir durum görüntülüyorsa, bir veya daha fazla uç noktanın durumu **azaltılabilir** olabilir:
+Bu makalede, düzeyi düşürülmüş bir durumu gösteren bir Azure Traffic Manager profilinde nasıl sorun giderileceği açıklanır. Azure Traffic Manager 'in düşürülmüş durumunun giderilmesi için ilk bir adım olarak günlüğe kaydetme etkinleştirilir.  Daha fazla bilgi için [kaynak günlüklerini etkinleştirme](./traffic-manager-diagnostic-logs.md) bölümüne bakın. Bu senaryo için cloudapp.net tarafından barındırılan hizmetlerden bazılarını işaret eden bir Traffic Manager profili yapılandırdığınıza dikkat edin. Traffic Manager sistem durumu **düşürülmüş** bir durum görüntülüyorsa, bir veya daha fazla uç noktanın durumu **azaltılabilir** olabilir:
 
 ![düşürülmüş uç nokta durumu](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
 
@@ -31,8 +31,8 @@ Traffic Manager sistem durumu **etkin olmayan** bir durum görüntülüyorsa, he
 
 ## <a name="understanding-traffic-manager-probes"></a>Traffic Manager araştırmalarını anlama
 
-* Traffic Manager, yalnızca araştırma bir HTTP 200 yanıtını araştırma yolundan geri aldığında bir uç noktanın ÇEVRIMIÇI olduğunu varsayar. Uygulamanız başka bir HTTP yanıt kodu döndürürse, bu yanıt kodunu Traffic Manager profilinizin [beklenen durum kodu aralıklarına](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) eklemeniz gerekir.
-* Bu işlemi Traffic Manager profilinizin [beklenen durum kodu aralıklarında](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) geçerli bir yanıt kodu olarak belirtmediğiniz sürece, 30 kata yeniden yönlendirme yanıtı hata olarak değerlendirilir. Traffic Manager yeniden yönlendirme hedefini araştırmaz.
+* Traffic Manager, yalnızca araştırma bir HTTP 200 yanıtını araştırma yolundan geri aldığında bir uç noktanın ÇEVRIMIÇI olduğunu varsayar. Uygulamanız başka bir HTTP yanıt kodu döndürürse, bu yanıt kodunu Traffic Manager profilinizin [beklenen durum kodu aralıklarına](./traffic-manager-monitoring.md#configure-endpoint-monitoring) eklemeniz gerekir.
+* Bu işlemi Traffic Manager profilinizin [beklenen durum kodu aralıklarında](./traffic-manager-monitoring.md#configure-endpoint-monitoring) geçerli bir yanıt kodu olarak belirtmediğiniz sürece, 30 kata yeniden yönlendirme yanıtı hata olarak değerlendirilir. Traffic Manager yeniden yönlendirme hedefini araştırmaz.
 * HTTPs araştırmaları için Sertifika hataları yok sayılır.
 * Bir 200 döndürüldüğünde, araştırma yolunun gerçek içeriği ne kadar büyük değildir. "/Ayrıcalıklı icon.exe" gibi bazı statik içeriklere bir URL 'YI yoklama yaygın bir tekniktir. ASP sayfaları gibi dinamik içerik, uygulama sağlıklı olsa bile her zaman 200 döndürmeyebilir.
 * En iyi uygulama, araştırma yolunu, sitenin yukarı veya aşağı olduğunu anlamak için yeterli mantığa sahip bir şeye ayarlamaya yönelik bir uygulamadır. Önceki örnekte, yolu "/ayrıcalıklı icon.exe" olarak ayarlayarak yalnızca w3wp.exe yanıt verdiğini test edersiniz. Bu araştırma Web uygulamanızın sağlıklı olduğunu göstermeyebilir. Daha iyi bir seçenek, sitenin sistem durumunu belirleme mantığı olan "/Probe.aspx" gibi bir şey için bir yol ayarlamak olacaktır. Örneğin, performans sayaçlarını CPU kullanımı için kullanabilir veya başarısız isteklerin sayısını ölçebilir. Ya da Web uygulamasının çalıştığından emin olmak için veritabanı kaynaklarına veya oturum durumuna erişmeyi deneyebilirsiniz.
@@ -87,12 +87,12 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
 [Traffic Manager nedir?](traffic-manager-overview.md)
 
-[Bulut Hizmetleri](https://go.microsoft.com/fwlink/?LinkId=314074)
+[Bulut Hizmetleri](/previous-versions/azure/jj155995(v=azure.100))
 
 [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/web/)
 
-[Traffic Manager üzerindeki işlemler (REST API Başvurusu)](https://go.microsoft.com/fwlink/?LinkId=313584)
+[Traffic Manager üzerindeki işlemler (REST API Başvurusu)](/previous-versions/azure/reference/hh758255(v=azure.100))
 
 [Azure Traffic Manager cmdlet 'Leri][1]
 
-[1]: https://docs.microsoft.com/powershell/module/az.trafficmanager
+[1]: /powershell/module/az.trafficmanager

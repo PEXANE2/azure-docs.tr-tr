@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: jeedes
-ms.openlocfilehash: a4bfe2b87f3f2242189a78d9a31a89d82720fd37
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 31392c1fa3d14d6f1e01a8b302575e9b592e42cd
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862080"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183158"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-with-maverics-identity-orchestrator-saml-connector"></a>Öğretici: Azure AD çoklu oturum açmayı Maverics Identity Orchestrator SAML Bağlayıcısı ile tümleştirme
 
@@ -38,7 +38,7 @@ Bu öğreticide, kimlik doğrulama ve erişim denetimi için Azure AD kullanmak 
 
 Ek yükleme ve yapılandırma yönergeleri için [Strata Web sitesine](https://www.strata.io)gidin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
 - Maverics Identity Orchestrator SAML Bağlayıcısı SSO özellikli aboneliği. Maverics yazılımını edinmek için [Strata satışları](mailto:sales@strata.io)ile görüşün.
@@ -47,7 +47,7 @@ Ek yükleme ve yapılandırma yönergeleri için [Strata Web sitesine](https://w
 
 Maverics kimlik Orchestrator yüklemesini kullanmaya başlamak için bkz. [yükleme yönergeleri](https://www.strata.io).
 
-### <a name="system-requirements"></a>Sistem gereksinimleri
+### <a name="system-requirements"></a>Sistem Gereksinimleri
 * Desteklenen işletim sistemleri
   * RHEL 7+
   * CentOS 7+
@@ -157,43 +157,43 @@ secrets:
 Azure portal veya Azure CLı kullanarak bir Azure Anahtar Kasası ayarlayabilirsiniz.
 
 **Azure portalını kullanma**
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. [Yeni bir Anahtar Kasası oluşturun](../../key-vault/general/quick-create-portal.md).
 1. [Gizli dizileri anahtar kasasına ekleyin](../../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault).
 1. [Bir uygulamayı Azure AD 'ye kaydedin](../develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal).
 1. [Bir uygulamayı gizli anahtar kullanması Için yetkilendirin](../../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault).
 
-**Azure CLI'yi kullanma**
+**Azure CLI kullanma**
 
 1. [Azure CLI](/cli/azure/install-azure-cli)'yi açın ve aşağıdaki komutu girin:
 
-    ```shell
+    ```azurecli
     az login
     ```
 
 1. Aşağıdaki komutu çalıştırarak yeni bir Anahtar Kasası oluşturun:
-    ```shell
+    ```azurecli
     az keyvault create --name "[VAULT_NAME]" --resource-group "[RESOURCE_GROUP]" --location "[REGION]"
     ```
 
 1. Aşağıdaki komutu çalıştırarak gizli dizileri anahtar kasasına ekleyin:
-    ```shell
+    ```azurecli
     az keyvault secret set --vault-name "[VAULT_NAME]" --name "[SECRET_NAME]" --value "[SECRET_VALUE]"
     ```
 
 1. Aşağıdaki komutu çalıştırarak bir uygulamayı Azure AD 'ye kaydedin:
-    ```shell
+    ```azurecli
     az ad sp create-for-rbac -n "MavericsKeyVault" --skip-assignment > azure-credentials.json
     ```
 
 1. Aşağıdaki komutu çalıştırarak bir uygulamayı gizli dizi kullanacak şekilde yetkilendirin:
-    ```shell
+    ```azurecli
     az keyvault set-policy --name "[VAULT_NAME]" --spn [APPID] --secret-permissions list get
     #APPID can be found in the azure-credentials.json
     generated in the previous step
     ```
 
-1. Azure anahtar kasaınızdan gizli dizileri yüklemek için,/etc/Maverics/Maverics.env dosyasındaki ortam değişkenini `MAVERICS_SECRET_PROVIDER` aşağıdaki biçimde */etc/maverics/maverics.env* *azure-credentials.js* dosyasında bulunan kimlik bilgilerini kullanarak ayarlayın:
+1. Azure anahtar kasaınızdan gizli dizileri yüklemek için,/etc/Maverics/Maverics.env dosyasındaki ortam değişkenini `MAVERICS_SECRET_PROVIDER` aşağıdaki biçimde  *azure-credentials.js* dosyasında bulunan kimlik bilgilerini kullanarak ayarlayın:
  
    `MAVERICS_SECRET_PROVIDER='azurekeyvault://<KEYVAULT NAME>.vault.azure.net?clientID=<APPID>&clientSecret=<PASSWORD>&tenantID=<TENANT>'`
 
@@ -239,7 +239,7 @@ Maverics kimlik Orchestrator Azure AD Bağlayıcısı, OpenID Connect ve SAML Co
 
 1. [OpenSSL aracını](https://www.openssl.org/source/)kullanarak Maverics kimlik Orchestrator oturum bilgilerini korumak için kullanılan bir JSON Web token (JWT) imzalama anahtarı oluşturun:
 
-    ```shell 
+    ```console 
     openssl rand 64 | base64
     ```
 1. Yanıtı `jwtSigningKey` yapılandırma özelliğine kopyalayın: `jwtSigningKey: TBHPvTtu6NUqU84H3Q45grcv9WDJLHgTioqRhB8QGiVzghKlu1mHgP1QHVTAZZjzLlTBmQwgsSoWxGHRcT4Bcw==` .

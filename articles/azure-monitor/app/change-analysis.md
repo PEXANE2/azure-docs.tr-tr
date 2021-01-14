@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 50e199d2d56016086bb409f8690e9828f1d19984
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 0cdb82bbf38244bc91ed54ffb7d7d734cefe9dd2
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881518"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183328"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Azure Izleyici 'de uygulama değişikliği analizini (Önizleme) kullanma
 
@@ -194,6 +194,27 @@ Uygulama değişikliği analizi ile tümleştirmesinden sonra değişiklik geçm
 ### <a name="azure-lighthouse-subscription-is-not-supported"></a>Azure Aydınlathouse aboneliği desteklenmiyor
 
 - **Microsoft. ChangeAnalysis kaynak sağlayıcısı ile sorgulama başarısız oldu** *, Azure Use aboneliği desteklenmiyor, değişiklikler yalnızca aboneliğin ana kiracısında kullanılabilir*. Değişiklik Analizi kaynak sağlayıcısı 'nın, ev kiracısında olmayan kullanıcılar için Azure ışıklı kullanım aboneliği aracılığıyla kaydedilmesi için bir sınırlama vardır. Yakın gelecekte bu sınırlamanın giderilmesi beklenir. Sizin için bir engelleyici sorun varsa, hizmet sorumlusu oluşturmayı ve erişime izin vermek üzere rolü açıkça atamayı içeren bir geçici çözüm vardır.  changeanalysishelp@microsoft.comHakkında daha fazla bilgi edinmek için iletişim kurun.
+
+### <a name="an-error-occurred-while-getting-changes-please-refresh-this-page-or-come-back-later-to-view-changes"></a>Değişiklikler alınırken bir hata oluştu. Lütfen bu sayfayı yenileyin veya daha sonra değişiklikleri görüntülemek için geri dönün
+
+Bu, değişiklikler yüklenemediği zaman uygulama değişiklik Analizi hizmeti tarafından sunulan genel hata iletisidir. Bilinen bazı nedenler şunlardır:
+- İstemci cihazından Internet bağlantısı hatası
+- Değişiklik Analizi hizmeti, birkaç dakika sonra bu sorunu düzelttiğinde geçici olarak devre dışı bırakılıyor. Hata devam ederse, iletişime geçin changeanalysishelp@micorosoft.com
+
+### <a name="you-dont-have-enough-permissions-to-view-some-changes-contact-your-azure-subscription-administrator"></a>Bazı değişiklikleri görüntülemek için yeterli izniniz yok. Azure abonelik yöneticinize başvurun
+
+Bu, geçerli kullanıcının değişikliği görüntülemek için yeterli izinlere sahip olmadığı belirten genel yetkisiz hata iletisidir. Azure Kaynak Grafiği tarafından döndürülen altyapı değişikliklerini görüntülemek için kaynak üzerinde en az okuyucu erişimi gerekir ve Azure Resource Manager. Web uygulamasının Konuk dosya değişiklikleri ve yapılandırma değişiklikleri için en az katkıda bulunan rolü gereklidir.
+
+### <a name="failed-to-register-microsoftchangeanalysis-resource-provider"></a>Microsoft. ChangeAnalysis kaynak sağlayıcısı kaydettirilemedi
+ 
+**Microsoft. ChangeAnalysis kaynak sağlayıcısını kaydetmek için yeterli izniniz yok. Azure abonelik yöneticinizle görüşün.** Bu hata iletisi, geçerli abonelikteki rolünüzün onunla ilişkili **Microsoft. support/Register/Action** kapsamına sahip olmadığı anlamına gelir. Bu, aboneliğin sahibi değilseniz ve bir iş arkadaşıyla paylaşılan erişim izinlerine sahip değilseniz meydana gelebilir. Yani, bir kaynak grubuna erişimi görüntüleme. Bunu yapmak için, **Microsoft. ChangeAnalysis** kaynak sağlayıcısı 'nı kaydetmek üzere aboneliğinizin sahibine başvurabilirsiniz. Bu, abonelikler üzerinden Azure portal yapılabilir **| Kaynak sağlayıcıları** ve ```Microsoft.ChangeAnalysis``` Kullanıcı arabiriminde arama yapın, veya Azure PowerShell ya da Azure CLI aracılığıyla kaydolun.
+
+Kaynak sağlayıcısını PowerShell aracılığıyla Kaydet: 
+
+```PowerShell
+# Register resource provider
+Register-AzResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis"
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
