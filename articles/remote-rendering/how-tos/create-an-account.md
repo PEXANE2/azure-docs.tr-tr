@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 8169b277dfae918e86ac493259325ff84d0b6a4e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 83bd4a7ae0082d24f7ac617719e628f4db4baeb9
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998541"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197650"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Azure Remote Rendering hesabı oluşturma
 
@@ -71,35 +71,26 @@ Değeri, **`arrAccountKey`** birincil veya ikincil anahtar olabilir.
 
 Bu paragraf, depolama hesaplarını uzaktan Işleme hesabınıza bağlamayı açıklar. Bir depolama hesabı bağlandığında, hesabınızdaki verilerle etkileşim kurmak istediğiniz her seferinde bir SAS URI 'SI oluşturmak gerekli değildir. Örneğin, bir model yüklenirken. Bunun yerine, [bir model yükleme bölümünde](../concepts/models.md#loading-models)açıklandığı gibi, depolama hesabı adlarını doğrudan kullanabilirsiniz.
 
-Bu paragraftaki adımların, bu alternatif erişim yöntemini kullanması gereken her depolama hesabı için gerçekleştirilmesi gerekir. Henüz depolama hesapları oluşturmadıysanız, [oluşturma hızlı başlangıcı için modeli dönüştürme](../quickstarts/convert-model.md#storage-account-creation)bölümünde ilgili adımı izleyebilirsiniz.
+Bu paragraftaki adımların, bu erişim yöntemini kullanması gereken her depolama hesabı için gerçekleştirilmesi gerekir. Henüz depolama hesapları oluşturmadıysanız, [oluşturma hızlı başlangıcı için modeli dönüştürme](../quickstarts/convert-model.md#storage-account-creation)bölümünde ilgili adımı izleyebilirsiniz.
 
 Artık bir depolama hesabınız olduğunu varsaymıştır. Portalda depolama hesabına gidin ve bu depolama hesabı için **Access Control (IAM)** sekmesine gidin:
 
 ![Depolama hesabı ıAM](./media/azure-storage-account.png)
 
- Rol atamaları ekleyebilmeniz için bu depolama hesabı üzerinde sahip izinlerinizin olduğundan emin olun. Erişiminiz yoksa, **Rol Ekleme atama** seçeneği devre dışı bırakılır.
+Rol atamaları ekleyebilmeniz için bu depolama hesabı üzerinde sahip izinlerinizin olduğundan emin olun. Erişiminiz yoksa, **Rol Ekleme atama** seçeneği devre dışı bırakılır.
 
- Sonraki adımlarda açıklandığı gibi üç farklı rol eklemeniz gerekir. Üç erişim düzeyini sağlamazsanız, depolama hesabına erişmeye çalışırken izin sorunları olur.
-
- İlk rolü eklemek için "rol ataması Ekle" kutucuğunda **Ekle** düğmesine tıklayın:
+Rolü eklemek için "rol ataması Ekle" kutucuğunda **Ekle** düğmesine tıklayın.
 
 ![Depolama hesabı ıAM rol ataması Ekle](./media/azure-add-role-assignment.png)
 
-* Atanacak ilk rol, yukarıdaki ekran görüntüsünde gösterildiği gibi **sahibidir** .
-* **Uzaktan Işleme hesabı** ' na **erişimi ata** açılan listesinden seçin.
+* Yukarıdaki ekran görüntüsünde gösterildiği gibi **Depolama Blobu veri katılımcısı** rolü atayın.
+* **Uzaktan Işleme hesabı** sistem atanmış yönetilen kimlik ' i seçerek açılan listeye **erişim ata** ' yı seçin.
 * Son açılan kutudan aboneliğinizi ve uzaktan Işleme hesabınızı seçin.
+* Değişikliklerinizi kaydetmek için "Kaydet" e tıklayın.
 
 > [!WARNING]
 > Uzaktan Işleme hesabınız listede yoksa, bu [sorun giderme bölümüne](../resources/troubleshoot.md#cant-link-storage-account-to-arr-account)bakın.
 
-**Rol** açılan listesinden ilgili seçimler için yeni roller eklemeyi iki kez daha yineleyin:
-
-* **Depolama Hesabı Katılımcısı**
-* **Depolama Blob Verileri Katkıda Bulunanı**
-
-Diğer açılan listeleri ilk adımda olarak seçilidir.
-
-Üç rolü de eklediyseniz, Azure uzaktan Işleme hesabınız, sistem tarafından atanan yönetilen hizmet kimliklerini kullanarak depolama hesabınıza erişebilir.
 > [!IMPORTANT]
 > Azure rol atamaları Azure depolama tarafından önbelleğe alınır, bu nedenle uzaktan işleme hesabınıza erişim verme ve depolama hesabınıza erişmek için kullanılabileceği zaman arasında 30 dakikalık bir gecikme olabilir. Ayrıntılar için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC) belgeleri](../../role-based-access-control/troubleshooting.md#role-assignment-changes-are-not-being-detected) .
 

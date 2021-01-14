@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: a3016900b6265bfd56ad1a5a71f70efc01181af5
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 43447454b82b74c10b1d53c41c7883b0b9bef242
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499263"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196512"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Azure görüntü Oluşturucu hizmeti DevOps görevi
 
@@ -154,7 +154,7 @@ Aşağıdaki örnek bunun nasıl çalıştığını açıklar:
     & 'c:\buildArtifacts\webapp\webconfig.ps1'
     ```
 
-* Linux-Linux sistemlerinde derleme yapıtları `/tmp` dizine konur. Ancak, birçok Linux OSs 'de, bir yeniden başlatma işlemi için/tmp dizin içeriği silinir. Yapıtların görüntüde mevcut olmasını istiyorsanız, başka bir dizin oluşturmanız ve bunları üzerine kopyalamanız gerekir.  Örnek:
+* Linux-Linux sistemlerinde derleme yapıtları `/tmp` dizine konur. Ancak, birçok Linux OSs 'de, bir yeniden başlatma işlemi için/tmp dizin içeriği silinir. Yapıtların görüntüde mevcut olmasını istiyorsanız, başka bir dizin oluşturmanız ve bunları üzerine kopyalamanız gerekir.  Örneğin:
 
     ```bash
     sudo mkdir /lib/buildArtifacts
@@ -176,7 +176,7 @@ Aşağıdaki örnek bunun nasıl çalıştığını açıklar:
 > Image Builder, derleme yapıtlarını otomatik olarak kaldırmaz, derleme yapıtlarını kaldırmak için her zaman kodunuzun olması önemle önerilir.
 > 
 
-* Windows-Image Builder dosyaları `c:\buildArtifacts` dizine dağıtır. Dizin kalıcı olduğundan dizini kaldırmanız gerekir. Bunu, yürüttiğiniz betikte kaldırabilirsiniz. Örnek:
+* Windows-Image Builder dosyaları `c:\buildArtifacts` dizine dağıtır. Dizin kalıcı olduğundan dizini kaldırmanız gerekir. Bunu, yürüttiğiniz betikte kaldırabilirsiniz. Örneğin:
 
     ```PowerShell
     # Clean up buildArtifacts directory
@@ -186,7 +186,7 @@ Aşağıdaki örnek bunun nasıl çalıştığını açıklar:
     Remove-Item -Path "C:\buildArtifacts" -Force 
     ```
     
-* Linux-derleme yapıtları `/tmp` dizine konur. Ancak, birçok Linux OSs 'de, bir yeniden başlatma işlemi, `/tmp` Dizin içerikleri silinir. İçeriği kaldırmak için işletim sistemine bağlı olmayan ve içeriği kaldırmak için kodunuzun olması önerilir. Örnek:
+* Linux-derleme yapıtları `/tmp` dizine konur. Ancak, birçok Linux OSs 'de, bir yeniden başlatma işlemi, `/tmp` Dizin içerikleri silinir. İçeriği kaldırmak için işletim sistemine bağlı olmayan ve içeriği kaldırmak için kodunuzun olması önerilir. Örneğin:
 
     ```bash
     sudo rm -R "/tmp/AppsAndImageBuilderLinux"
@@ -194,7 +194,7 @@ Aşağıdaki örnek bunun nasıl çalıştığını açıklar:
     
 #### <a name="total-length-of-image-build"></a>Görüntü derlemesinin toplam uzunluğu
 
-Henüz DevOps ardışık düzen görevinde Toplam uzunluk değiştirilemez. Varsayılan değer olan 240 dakika kullanılır. [Buildtimeoutınminutes](./image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#properties-buildtimeoutinminutes)değerini artırmak Istiyorsanız, sürüm ARDıŞıK DÜZENINDE az CLI görevi kullanabilirsiniz. Görevi bir şablonu kopyalamak ve gönderecek şekilde yapılandırın. Bir örnek için, bu [çözüme](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder)bakın veya az PowerShell kullanın.
+Henüz DevOps ardışık düzen görevinde Toplam uzunluk değiştirilemez. Varsayılan değer olan 240 dakika kullanılır. [Buildtimeoutınminutes](./image-builder-json.md#properties-buildtimeoutinminutes)değerini artırmak Istiyorsanız, sürüm ARDıŞıK DÜZENINDE az CLI görevi kullanabilirsiniz. Görevi bir şablonu kopyalamak ve gönderecek şekilde yapılandırın. Bir örnek için, bu [çözüme](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder)bakın veya az PowerShell kullanın.
 
 
 #### <a name="storage-account"></a>Depolama Hesabı
@@ -233,7 +233,7 @@ Paylaşılan görüntü Galerisi zaten var **olmalıdır** .
 
 #### <a name="vhd"></a>VHD
 
-Bu değere bir değer geçiremezsiniz, görüntü Oluşturucu VHD 'yi VHD kapsayıcısında geçici görüntü Oluşturucu kaynak grubuna yayar `IT_<DestinationResourceGroup>_<TemplateName>` . *vhds* Yayın derlemesini başlattığınızda, görüntü Oluşturucu günlükleri yayar. İşlem tamamlandığında, VHD URL 'sini yayacaktır.
+Bu değere bir değer geçiremezsiniz, görüntü Oluşturucu VHD 'yi VHD kapsayıcısında geçici görüntü Oluşturucu kaynak grubuna yayar `IT_<DestinationResourceGroup>_<TemplateName>` .  Yayın derlemesini başlattığınızda, görüntü Oluşturucu günlükleri yayar. İşlem tamamlandığında, VHD URL 'sini yayacaktır.
 
 ### <a name="optional-settings"></a>İsteğe bağlı ayarlar
 
@@ -312,7 +312,7 @@ Hayır. Benzersiz bir şablon adı kullanılır ve sonra silinir.
 
 Bir yapı hatası varsa, DevOps görevi hazırlama kaynak grubunu silmez. Yapı özelleştirme günlüğünü içeren hazırlama kaynak grubuna erişebilirsiniz.
 
-Sanal makine görüntüsü Oluşturucu görevi için DevOps günlüğünde bir hata görürsünüz ve özelleştirme. log konumunu görürsünüz. Örnek:
+Sanal makine görüntüsü Oluşturucu görevi için DevOps günlüğünde bir hata görürsünüz ve özelleştirme. log konumunu görürsünüz. Örneğin:
 
 :::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="Hata gösteren örnek DevOps görev hatası.":::
 

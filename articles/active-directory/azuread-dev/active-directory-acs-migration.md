@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: eda648a4d00a0ab4a51c66510060ce16421972ff
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 4f6b2b1c0f584e092c9e8f7d330a94b0b54fd6f2
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020019"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197430"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Nasıl yapılır: Azure Access Control Service geçirme
 
@@ -287,7 +287,7 @@ Bu durumlarda, Web uygulamanızı başka bir bulut kimlik doğrulama hizmetine g
 
 ![Bu görüntüde ping kimlik logosu gösterilmektedir](./media/active-directory-acs-migration/rsz-ping.png)
 
-[Ping kimliği](https://www.pingidentity.com) , ACS 'ye benzer iki çözüm sunar. PingOne, ACS ile aynı özelliklerin birçoğunu destekleyen bir bulut kimlik hizmetidir ve PingFederate, daha fazla esneklik sağlayan benzer bir şirket içi kimlik ürünüdür. Bu ürünleri kullanma hakkında daha fazla bilgi için [ping 'un ACS kullanımdan kaldırma kılavuzuna](https://www.pingidentity.com/en/company/blog/posts/2017/migrating-from-microsoft-acs-to-ping-identity.html) bakın.
+[Ping kimliği](https://www.pingidentity.com) , ACS 'ye benzer iki çözüm sunar. PingOne, ACS ile aynı özelliklerin birçoğunu destekleyen bir bulut kimlik hizmetidir ve PingFederate, daha fazla esneklik sağlayan benzer bir şirket içi kimlik ürünüdür. Bu ürünleri kullanma hakkında daha fazla bilgi için ping 'un ACS kullanımdan kaldırma kılavuzuna bakın.
 
 Ping kimliği ve Auth0 ile çalışmamız, tüm Access Control müşterilerinin uygulama ve hizmetleri için Access Control geçiş için gereken iş miktarını en aza indiren bir geçiş yoluna sahip olmasını sağlamaktır.
 
@@ -351,7 +351,7 @@ Bu durumlarda, Web uygulamanızı başka bir bulut kimlik doğrulama hizmetine g
 [Auth0](https://auth0.com/acs) , [Access Control müşterileri için üst düzey geçiş kılavuzu](https://auth0.com/acs)oluşturmuş ve ACS 'nin oluşturduğu neredeyse her özelliği desteklediği esnek bir bulut kimlik hizmetidir.
 
 ![Bu görüntüde ping kimlik logosu ](./media/active-directory-acs-migration/rsz-ping.png)
- [ping KIMLIĞI](https://www.pingidentity.com) , ACS 'ye benzer iki çözüm sunar. PingOne, ACS ile aynı özelliklerin birçoğunu destekleyen bir bulut kimlik hizmetidir ve PingFederate, daha fazla esneklik sağlayan benzer bir şirket içi kimlik ürünüdür. Bu ürünleri kullanma hakkında daha fazla bilgi için [ping 'un ACS kullanımdan kaldırma kılavuzuna](https://www.pingidentity.com/en/company/blog/posts/2017/migrating-from-microsoft-acs-to-ping-identity.html) bakın.
+ [ping KIMLIĞI](https://www.pingidentity.com) , ACS 'ye benzer iki çözüm sunar. PingOne, ACS ile aynı özelliklerin birçoğunu destekleyen bir bulut kimlik hizmetidir ve PingFederate, daha fazla esneklik sağlayan benzer bir şirket içi kimlik ürünüdür. Bu ürünleri kullanma hakkında daha fazla bilgi için ping 'un ACS kullanımdan kaldırma kılavuzuna bakın.
 
 Ping kimliği ve Auth0 ile çalışmamız, tüm Access Control müşterilerinin uygulama ve hizmetleri için Access Control geçiş için gereken iş miktarını en aza indiren bir geçiş yoluna sahip olmasını sağlamaktır.
 

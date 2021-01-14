@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 29e72f8358591614489be2731d16e89428ef388b
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: f6825fee4cfb78ab54d782cd4d942bb994bedae9
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301374"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98195730"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure depolama için Azure Güvenlik temeli
 
@@ -62,13 +62,13 @@ Depolama hesabınıza bağlı özel uç noktalarınız varsa, alt ağlar için a
 
 **Rehberlik**: uygulanamaz; öneri, Azure App Service veya işlem kaynaklarında çalışan Web uygulamalarına yöneliktir.
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: Müşteri
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: bilinen kötü amaçlı IP adresleriyle Iletişimleri reddetme
 
-**Kılavuz**: Azure depolama hesabınız Için Gelişmiş tehdit koruması 'nı etkinleştirin. Azure depolama için Gelişmiş tehdit koruması, depolama hesaplarına yönelik olağan dışı ve potansiyel olarak zararlı girişimleri algılayan ek bir güvenlik zekası katmanı sağlar. Azure Güvenlik Merkezi tümleşik uyarıları, ağ iletişiminin başarıyla çözümlenen bir IP adresiyle ilişkilendirildiği etkinliklere, IP adresinin bilinen riskli IP adresi (örneğin, bilinen bir cryptominer) veya daha önce riskli olarak tanınmamış bir IP adresi olup olmadığına bağlıdır. Güvenlik uyarıları, etkinlik durumunda olan bozukluklar gerçekleştiğinde tetiklenir. 
+**Kılavuz**: Azure depolama hesabınız Için Gelişmiş tehdit koruması 'nı etkinleştirin. Azure depolama için Gelişmiş tehdit koruması, depolama hesaplarına yönelik olağan dışı ve potansiyel olarak zararlı girişimleri algılayan ek bir güvenlik zekası katmanı sağlar. Azure Güvenlik Merkezi tümleşik uyarıları, ağ iletişiminin başarıyla çözümlenen bir IP adresiyle ilişkilendirildiği etkinliklere, IP adresinin bilinen riskli IP adresi (örneğin, bilinen bir cryptominer) veya daha önce riskli olarak tanınmamış bir IP adresi olup olmadığına bağlıdır. Etkinlikte anomali oluştuğunda güvenlik uyarıları tetiklenir. 
 
 - [Gelişmiş tehdit korumasını etkinleştirme](./azure-defender-storage-configure.md?tabs=azure-portal)
 
@@ -90,7 +90,7 @@ Depolama hesabınıza bağlı özel uç noktalarınız varsa, alt ağlar için a
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems"></a>1,6: ağ tabanlı yetkisiz giriş algılama/yetkisiz erişim önleme sistemlerini dağıtma
 
-**Rehberlik**: Azure depolama için Gelişmiş tehdit koruması, depolama hesaplarına yönelik olağan dışı ve potansiyel olarak zararlı girişimleri algılayan ek bir güvenlik zekası katmanı sağlar. Güvenlik uyarıları, etkinlik durumunda olan bozukluklar gerçekleştiğinde tetiklenir. Bu güvenlik uyarıları Azure Güvenlik Merkezi ile tümleşiktir ve ayrıca, şüpheli etkinliklerin ayrıntıları ve tehditleri İnceleme ve düzeltme önerileri ile abonelik yöneticilerine e-posta yoluyla da gönderilir. 
+**Rehberlik**: Azure depolama için Gelişmiş tehdit koruması, depolama hesaplarına yönelik olağan dışı ve potansiyel olarak zararlı girişimleri algılayan ek bir güvenlik zekası katmanı sağlar. Etkinlikte anomali oluştuğunda güvenlik uyarıları tetiklenir. Azure Güvenlik Merkezi ile tümleşik olan bu güvenlik uyarıları şüpheli etkinliğin ayrıntılarının yanı sıra tehditlerin incelenmesine ve ortadan kaldırılmasına yönelik önerilerle birlikte abonelik yöneticilerine e-posta yoluyla da gönderilir. 
 
 - [Azure depolama için Gelişmiş tehdit koruması yapılandırma](./azure-defender-storage-configure.md)
 
@@ -102,7 +102,7 @@ Depolama hesabınıza bağlı özel uç noktalarınız varsa, alt ağlar için a
 
 **Rehberlik**: uygulanamaz; öneri, Azure App Service veya işlem kaynaklarında çalışan Web uygulamalarına yöneliktir.
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: Müşteri
 
@@ -126,7 +126,7 @@ Ağ erişiminin belirli depolama hesaplarına kapsama alınması gerektiğinde, 
 
 Depolama hesabı ile ilgili yerleşik ilke tanımlarından da yararlanabilirsiniz, örneğin: depolama hesapları bir sanal ağ hizmeti uç noktası kullanmalıdır 
 
-- [Azure Ilkesini yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
+- [Azure İlkesi'ni yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Depolama için Azure Ilke örnekleri](../../governance/policy/samples/built-in-policies.md#storage)
 
@@ -134,7 +134,7 @@ Depolama hesabı ile ilgili yerleşik ilke tanımlarından da yararlanabilirsini
 
 - [Azure Blueprint oluşturma](../../governance/blueprints/create-blueprint-portal.md)
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: Müşteri
 
@@ -156,7 +156,7 @@ Depolama hesabı ile ilgili yerleşik ilke tanımlarından da yararlanabilirsini
 
 **Rehberlik**: ağ kaynakları için yapılandırma değişikliklerini günlüğe kaydetmek üzere Azure ilkesini kullanın. Kritik ağ kaynaklarında yapılan değişiklikler yürürlüğe girdiğinde tetiklenecek Azure Izleyici içinde uyarılar oluşturun. 
 
-- [Azure Ilkesini yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
+- [Azure İlkesi'ni yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Azure Izleyici 'de uyarı oluşturma](../../azure-monitor/platform/alerts-activity-log.md)
 
@@ -172,7 +172,7 @@ Depolama hesabı ile ilgili yerleşik ilke tanımlarından da yararlanabilirsini
 
 **Rehberlik**: uygulanamaz; Microsoft, Azure depolama hesapları için zaman kaynaklarını korur.
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: Microsoft
 
@@ -200,7 +200,7 @@ Depolama hesabı ile ilgili yerleşik ilke tanımlarından da yararlanabilirsini
 
 **Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -220,7 +220,7 @@ Depolama hesabı ile ilgili yerleşik ilke tanımlarından da yararlanabilirsini
 
 **Kılavuz**: Azure depolama günlüklerini gözden geçirmek için, Log Analytics teklifiyle sorgu gibi olağan seçenekler ve günlük dosyalarını doğrudan görüntülemenin benzersiz bir seçeneği vardır. Azure depolama 'da Günlükler doğrudan erişilmesi gereken bloblarda depolanır `http://accountname.blob.core.windows.net/$logs` (günlük klasörü varsayılan olarak gizlidir, bu nedenle doğrudan gitmeniz gerekir. Liste komutlarında görüntülenmez) 
 
-Ayrıca, Azure depolama hesabınız için Gelişmiş tehdit koruması 'nı etkinleştirin. Azure depolama için Gelişmiş tehdit koruması, depolama hesaplarına yönelik olağan dışı ve potansiyel olarak zararlı girişimleri algılayan ek bir güvenlik zekası katmanı sağlar. Güvenlik uyarıları, etkinlik durumunda olan bozukluklar gerçekleştiğinde tetiklenir. Bu güvenlik uyarıları Azure Güvenlik Merkezi ile tümleşiktir ve ayrıca, şüpheli etkinliklerin ayrıntıları ve tehditleri İnceleme ve düzeltme önerileri ile abonelik yöneticilerine e-posta yoluyla da gönderilir. 
+Ayrıca, Azure depolama hesabınız için Gelişmiş tehdit koruması 'nı etkinleştirin. Azure depolama için Gelişmiş tehdit koruması, depolama hesaplarına yönelik olağan dışı ve potansiyel olarak zararlı girişimleri algılayan ek bir güvenlik zekası katmanı sağlar. Etkinlikte anomali oluştuğunda güvenlik uyarıları tetiklenir. Azure Güvenlik Merkezi ile tümleşik olan bu güvenlik uyarıları şüpheli etkinliğin ayrıntılarının yanı sıra tehditlerin incelenmesine ve ortadan kaldırılmasına yönelik önerilerle birlikte abonelik yöneticilerine e-posta yoluyla da gönderilir. 
 
 - [Verileri günlüğe kaydetme ve gözden geçirme](./storage-analytics-logging.md#how-logs-are-stored)
 
@@ -252,7 +252,7 @@ Ayrıca, Azure depolama hesabınız için Gelişmiş tehdit koruması 'nı etkin
 
 - [Azure depolama için Gelişmiş tehdit koruması yapılandırma](./azure-defender-storage-configure.md?tabs=azure-portal)
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: Müşteri
 
@@ -270,7 +270,7 @@ Ayrıca, Azure depolama hesabınız için Gelişmiş tehdit koruması 'nı etkin
 
 **Rehberlik**: uygulanamaz; Kıyaslama işlem kaynaklarına yöneliktir.
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -298,7 +298,7 @@ Ayrıca, Azure depolama hesabınız için Gelişmiş tehdit koruması 'nı etkin
 
 - [Azure depolama hesabı için güvenlik sorumlularını ve erişim denetimini anlama](./storage-introduction.md)
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: Müşteri
 
@@ -334,7 +334,7 @@ Ayrıca, Microsoft Hizmetleri ve Azure ARM için Azure AD Privileged Identity Ma
 
 **Rehberlik**: depolama hesabı kaynaklarınızı korumaya yardımcı olmak Için Azure Active Directory çok faktörlü kimlik doğrulamasını etkinleştirin ve Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini izleyin. 
 
-- [Azure’da MFA’yı etkinleştirme](../../active-directory/authentication/howto-mfa-getstarted.md)
+- [Azure'da çok faktörlü kimlik doğrulamasını etkinleştirme](../../active-directory/authentication/howto-mfa-getstarted.md)
 
 - [Azure Güvenlik Merkezi 'nde kimliği ve erişimi izleme](../../security-center/security-center-identity-access.md)
 
@@ -346,11 +346,11 @@ Ayrıca, Microsoft Hizmetleri ve Azure ARM için Azure AD Privileged Identity Ma
 
 **Rehberlik**: depolama hesabı kaynaklarını açmak ve YAPıLANDıRMAK için MFA Ile Paws (ayrıcalıklı erişim iş istasyonları) kullanın. 
 
-- [Ayrıcalıklı erişim Iş Istasyonları hakkında bilgi edinin](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [Ayrıcalıklı erişim Iş Istasyonları hakkında bilgi edinin](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [Azure’da MFA’yı etkinleştirme](../../active-directory/authentication/howto-mfa-getstarted.md)
+- [Azure'da çok faktörlü kimlik doğrulamasını etkinleştirme](../../active-directory/authentication/howto-mfa-getstarted.md)
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: Müşteri
 
@@ -458,7 +458,7 @@ Azure Active Directory Kullanıcı hesapları için Tanılama ayarları oluştur
 
 - [Müşteri Kasası anlayın](../../security/fundamentals/customer-lockbox-overview.md)
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: Müşteri
 
@@ -490,7 +490,7 @@ Azure Active Directory Kullanıcı hesapları için Tanılama ayarları oluştur
 
 - [Sanal ağ hizmeti uç noktaları](../../virtual-network/virtual-network-service-endpoints-overview.md)
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: Müşteri
 
@@ -520,7 +520,7 @@ Ayrıca, çıkış sanal ağ trafiğini hizmet uç noktası üzerinden Azure dep
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
-**Sorumluluk**: Paylaşımlı
+**Sorumluluk**: Paylaşılan
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: hassas verileri belirlemek için etkin bir keşif aracı kullanın
 
@@ -554,7 +554,7 @@ Ayrıca, çıkış sanal ağ trafiğini hizmet uç noktası üzerinden Azure dep
 
 **Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -564,7 +564,7 @@ Ayrıca, çıkış sanal ağ trafiğini hizmet uç noktası üzerinden Azure dep
 
 - [Rest 'de Azure depolama şifrelemesini anlama](./storage-service-encryption.md)
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: Müşteri
 
@@ -592,7 +592,7 @@ Ayrıca, çıkış sanal ağ trafiğini hizmet uç noktası üzerinden Azure dep
 
 - [Güvenlik önerileri - başvuru kılavuzu](../../security-center/recommendations-reference.md)
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: Müşteri
 
@@ -600,7 +600,7 @@ Ayrıca, çıkış sanal ağ trafiğini hizmet uç noktası üzerinden Azure dep
 
 **Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -608,7 +608,7 @@ Ayrıca, çıkış sanal ağ trafiğini hizmet uç noktası üzerinden Azure dep
 
 **Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -616,7 +616,7 @@ Ayrıca, çıkış sanal ağ trafiğini hizmet uç noktası üzerinden Azure dep
 
 **Rehberlik**: uygulanamaz; Microsoft, depolama hesaplarını destekleyen temel sistemler üzerinde güvenlik açığı yönetimi gerçekleştirir.
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: Müşteri
 
@@ -626,7 +626,7 @@ Ayrıca, çıkış sanal ağ trafiğini hizmet uç noktası üzerinden Azure dep
 
 - [Azure Güvenlik Merkezi güvenli Puanını anlama](../../security-center/secure-score-security-controls.md)
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: Müşteri
 
@@ -672,7 +672,7 @@ Ayrıca, yetkisiz Azure kaynaklarını algılamak için Azure depolama için Gel
 
 - [Azure depolama için Gelişmiş tehdit koruması yapılandırma](./azure-defender-storage-configure.md?tabs=azure-portal)
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: Müşteri
 
@@ -681,7 +681,7 @@ Ayrıca, yetkisiz Azure kaynaklarını algılamak için Azure depolama için Gel
 **Rehberlik**: Kurumsal gereksinimlerinize göre onaylanan Azure kaynakları envanterini oluşturmanız gerekecektir. 
 
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: Müşteri
 
@@ -694,11 +694,11 @@ Ayrıca, yetkisiz Azure kaynaklarını algılamak için Azure depolama için Gel
 
 Ayrıca, Azure Kaynak grafiğini kullanarak abonelikler içindeki kaynakları sorgular/bulur. Bu, depolama hesapları gibi yüksek güvenlik tabanlı ortamlarda yardımcı olabilir. 
 
-- [Azure Ilkesini yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
+- [Azure İlkesi'ni yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Azure Graph ile sorgu oluşturma](../../governance/resource-graph/first-query-portal.md)
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: Müşteri
 
@@ -706,7 +706,7 @@ Ayrıca, Azure Kaynak grafiğini kullanarak abonelikler içindeki kaynakları so
 
 **Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -714,9 +714,9 @@ Ayrıca, Azure Kaynak grafiğini kullanarak abonelikler içindeki kaynakları so
 
 **Rehberlik**: müşteri, Azure ilkesiyle müşterinin Şirket ilkelerinin gerektirdiği şekilde kaynak oluşturulmasını veya kullanımını engelleyebilir. 
 
-- [Azure Ilkesini yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
+- [Azure İlkesi'ni yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: Müşteri
 
@@ -724,7 +724,7 @@ Ayrıca, Azure Kaynak grafiğini kullanarak abonelikler içindeki kaynakları so
 
 **Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -735,11 +735,11 @@ Ayrıca, Azure Kaynak grafiğini kullanarak abonelikler içindeki kaynakları so
 - İzin verilmeyen kaynak türleri 
 - İzin verilen kaynak türleri 
 
-- [Azure Ilkesini yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
+- [Azure İlkesi'ni yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Azure Ilkesiyle belirli bir kaynak türünü reddetme](../../governance/policy/samples/index.md)
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: Müşteri
 
@@ -747,7 +747,7 @@ Ayrıca, Azure Kaynak grafiğini kullanarak abonelikler içindeki kaynakları so
 
 **Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -757,7 +757,7 @@ Ayrıca, Azure Kaynak grafiğini kullanarak abonelikler içindeki kaynakları so
 
 - [ARM 'e erişimi engellemek için koşullu erişimi yapılandırma](../../role-based-access-control/conditional-access-azure-management.md)
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: Müşteri
 
@@ -765,7 +765,7 @@ Ayrıca, Azure Kaynak grafiğini kullanarak abonelikler içindeki kaynakları so
 
 **Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -773,7 +773,7 @@ Ayrıca, Azure Kaynak grafiğini kullanarak abonelikler içindeki kaynakları so
 
 **Rehberlik**: uygulanamaz; Bu öneri, Azure App Service veya işlem kaynaklarında çalışan Web uygulamalarına yöneliktir.
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -794,7 +794,7 @@ Azure Güvenlik Merkezi 'nden, depolama hesaplarınız için güvenli bir yapıl
 
 - [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](/powershell/module/az.resources/get-azpolicyalias)
 
-- [Azure Ilkesini yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
+- [Azure İlkesi'ni yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -804,7 +804,7 @@ Azure Güvenlik Merkezi 'nden, depolama hesaplarınız için güvenli bir yapıl
 
 **Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -812,11 +812,11 @@ Azure Güvenlik Merkezi 'nden, depolama hesaplarınız için güvenli bir yapıl
 
 **Rehberlik**: depolama hesabı kaynaklarınız genelinde güvenli ayarları zorlamak Için Azure ilkesi [reddetme] ve [dağıtım yok] kullanın. 
 
-- [Azure Ilkesini yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
+- [Azure İlkesi'ni yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Azure Ilke efektlerini anlama](../../governance/policy/concepts/effects.md)
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: Müşteri
 
@@ -824,7 +824,7 @@ Azure Güvenlik Merkezi 'nden, depolama hesaplarınız için güvenli bir yapıl
 
 **Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -836,7 +836,7 @@ Azure Güvenlik Merkezi 'nden, depolama hesaplarınız için güvenli bir yapıl
 
 - [Azure DevOps 'da izinler ve gruplar hakkında](/azure/devops/organizations/security/about-permissions)
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: Müşteri
 
@@ -844,7 +844,7 @@ Azure Güvenlik Merkezi 'nden, depolama hesaplarınız için güvenli bir yapıl
 
 **Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -852,9 +852,9 @@ Azure Güvenlik Merkezi 'nden, depolama hesaplarınız için güvenli bir yapıl
 
 **Rehberlik**: depolama hesabı için sistem yapılandırmasını uyarmak, denetlemek ve zorlamak Için Azure ilkesinden yararlanın. Ayrıca, ilke özel durumlarını yönetmek için bir işlem ve işlem hattı geliştirin. 
 
-- [Azure Ilkesini yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
+- [Azure İlkesi'ni yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: Müşteri
 
@@ -862,7 +862,7 @@ Azure Güvenlik Merkezi 'nden, depolama hesaplarınız için güvenli bir yapıl
 
 **Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -880,7 +880,7 @@ Azure Güvenlik Merkezi 'nden, depolama hesaplarınız için güvenli bir yapıl
 
 **Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -910,11 +910,11 @@ Ayrıca, depolama hesabı anahtarlarının kaybının veya açıklanmasının et
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: istenmeyen kimlik bilgisi pozlamasını ortadan kaldırın
 
-**Rehberlik**: kod içinde kimlik bilgilerini tanımlamak Için kimlik bilgisi tarayıcısı uygulayın. Kimlik bilgisi tarayıcısı, bulunan kimlik bilgilerini Azure Key Vault gibi daha güvenli konumlara taşımayı de teşvik eder. 
+**Rehberlik**: kod içinde kimlik bilgilerini tanımlamak Için kimlik bilgisi tarayıcısı uygulayın. Kimlik Bilgisi Tarayıcısı ayrıca bulunan kimlik bilgilerinin Azure Key Vault gibi daha güvenlik konumlara aktarılmasını sağlar. 
 
 - [Kimlik bilgisi tarayıcısı kurulumu](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: Müşteri
 
@@ -926,7 +926,7 @@ Ayrıca, depolama hesabı anahtarlarının kaybının veya açıklanmasının et
 
 **Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir. Microsoft, temel alınan platform için kötü amaçlı yazılımdan koruma uygular.
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -938,7 +938,7 @@ Ayrıca, App Service, Data Lake Storage, BLOB depolama gibi işlem dışı Azure
 
 - [Azure depolama için Gelişmiş tehdit koruması yapılandırma](./azure-defender-storage-configure.md?tabs=azure-portal)
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: Müşteri
 
@@ -946,7 +946,7 @@ Ayrıca, App Service, Data Lake Storage, BLOB depolama gibi işlem dışı Azure
 
 **Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir. Microsoft, temel alınan platform için kötü amaçlı yazılımdan koruma uygular.
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -1005,7 +1005,7 @@ Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedSto
 Note: Azure Tablo depolama hizmetinize veri kopyalamak istiyorsanız, AzCopy sürüm 7,3 ' yi de yükleyebilirsiniz.
 
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: Müşteri
 
@@ -1017,7 +1017,7 @@ Note: Azure Tablo depolama hizmetinize veri kopyalamak istiyorsanız, AzCopy sü
 
 - [Azure Depolama blobları için geçici silme](../blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-- [Sabit depolamayla iş açısından kritik blob verilerini depolayın](../blobs/storage-blob-immutable-storage.md)
+- [İş açısından kritik blob verilerini sabit depolama alanıyla depolama](../blobs/storage-blob-immutable-storage.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -1029,7 +1029,7 @@ Note: Azure Tablo depolama hizmetinize veri kopyalamak istiyorsanız, AzCopy sü
 
 ### <a name="101-create-incident-response-guide"></a>10,1: olay yanıtı oluştur Kılavuzu
 
-**Rehberlik**: kuruluşunuz için bir olay yanıtı Kılavuzu oluşturun. Tüm personel rollerinin yanı sıra olay işleme/yönetim 'in algılanmasından olay sonrası gözden geçirme aşamalarını tanımlayan, yazılı olay yanıt planları bulunduğundan emin olun.
+**Rehberlik**: Kuruluşunuz için bir olay yanıt kılavuzu oluşturun. Tüm personelin rollerine ek olarak algılama aşamasından olay sonrası gözden geçirme aşamasına kadar tüm olay işleme/yönetim aşamalarını tanımlayan yazılı olay yanıt planları bulunduğundan emin olun.
 
 - [Kendi güvenlik olay yanıtı işleminizi oluşturma kılavuzu](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -1037,7 +1037,7 @@ Note: Azure Tablo depolama hizmetinize veri kopyalamak istiyorsanız, AzCopy sü
 
 - [Müşteri, kendi olay yanıt planının oluşturulmasına yardımcı olması için NıST 'nin bilgisayar güvenliği olay Işleme kılavuzunu da kullanabilir](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: Müşteri
 
@@ -1057,11 +1057,11 @@ Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) et
 
 ### <a name="103-test-security-response-procedures"></a>10,3: test Güvenliği Yanıt yordamları
 
-**Rehberlik**: Azure kaynaklarınızın korunmasına yardımcı olmak için, sistem olay yanıt yeteneklerini düzenli bir temposunda test etmek için alıştırmaları gerçekleştirin. Zayıf noktaları ve boşlukları belirleyip planı gerektiği şekilde gözden geçirin.
+**Rehberlik**: Azure kaynaklarınızın korunmasına yardımcı olmak için, sistem olay yanıt yeteneklerini düzenli bir temposunda test etmek için alıştırmaları gerçekleştirin. Zayıf noktaları ve açıkları belirleyip planı gerektiği şekilde gözden geçirin.
 
 - [NıST 'nin Yayımlama Kılavuzu, BT planları ve becerileri için programları test etme, eğitim ve alıştırma Kılavuzu](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
 **Sorumluluk**: Müşteri
 
@@ -1105,13 +1105,13 @@ Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) et
 
 **Rehberlik**: sızma testlerinizin Microsoft ilkelerini ihlal etmediğinden emin olmak Için Microsoft katılım kurallarını izleyin. Microsoft 'un, Microsoft tarafından yönetilen bulut altyapısına, hizmetlerine ve uygulamalarına karşı kırmızı ekip oluşturma ve canlı site sızma testi stratejisini kullanın.
 
-- [Sızma Testi Angajman Kuralları](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
+- [Sızma Testi Etkileşim Kuralları](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-- [Microsoft Cloud Kırmızı Ekibi](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+- [Microsoft Bulut ile Kırmızı Takım Oluşturma](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
-**Sorumluluk**: Paylaşımlı
+**Sorumluluk**: Paylaşılan
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

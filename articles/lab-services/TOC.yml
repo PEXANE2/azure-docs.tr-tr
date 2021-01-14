@@ -63,19 +63,8 @@
         - name: Teams içinde Azure Lab Services'i kullanma
           items:
             - name: Genel Bakış
+              displayName: labs within Teams
               href: lab-services-within-teams-overview.md
-            - name: Teams'den laboratuvar oluşturma
-              href: how-to-get-started-create-lab-within-teams.md
-            - name: Kullanıcı listelerini yönetme
-              href: how-to-manage-user-lists-within-teams.md
-            - name: VM havuzunu yönetme
-              href: how-to-manage-vm-pool-within-teams.md
-            - name: Laboratuvarları silme
-              href: how-to-delete-lab-within-teams.md
-            - name: Zamanlamalar ve ayarlar
-              href: how-to-create-schedules-within-teams.md
-            - name: VM'ye erişme (öğrenci görünümü)
-              href: how-to-access-vm-for-students-within-teams.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Yönetici kılavuzu
@@ -164,6 +153,20 @@
           href: how-to-set-virtual-machine-passwords-student.md
         - name: Destek bilgilerini görüntüleme (öğrenci)
           href: lab-user-support-information.md
+    - name: Teams’de laboratuvarları kullanma
+      items:
+        - name: Teams'den laboratuvar oluşturma
+          href: how-to-get-started-create-lab-within-teams.md
+        - name: Kullanıcı listelerini yönetme
+          href: how-to-manage-user-lists-within-teams.md
+        - name: VM havuzunu yönetme
+          href: how-to-manage-vm-pool-within-teams.md
+        - name: Laboratuvarları silme
+          href: how-to-delete-lab-within-teams.md
+        - name: Zamanlamalar ve ayarlar
+          href: how-to-create-schedules-within-teams.md
+        - name: VM'ye erişme (öğrenci görünümü)
+          href: how-to-access-vm-for-students-within-teams.md
 - name: Başvuru
   items:
     - name: REST API

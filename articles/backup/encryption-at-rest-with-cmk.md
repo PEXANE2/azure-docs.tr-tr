@@ -3,12 +3,12 @@ title: Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verile
 description: Azure Backup, müşteri tarafından yönetilen anahtarları (CMK) kullanarak yedekleme verilerinizi şifrelemenize nasıl olanak sağladığını öğrenin.
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 6e3eea4b5f44203b68c1263c0fb3ae843cabbe72
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: cc6ad2f67b84bcd62bcc18566a4ac5d159ea32c4
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895996"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197787"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verilerinin şifrelenmesi
 
@@ -66,7 +66,7 @@ Azure Backup, Azure Key Vault depolanan şifreleme anahtarlarına erişmek üzer
 
     ![Kimlik ayarları](./media/encryption-at-rest-with-cmk/managed-identity.png)
 
-1. **Durumu** **Açık** olarak değiştirin ve **Kaydet** ' i seçin.
+1. **Durumu** **Açık** olarak değiştirin ve **Kaydet**' i seçin.
 
 1. Kasadaki sistem tarafından atanan yönetilen kimlik olan bir nesne KIMLIĞI oluşturulur.
 
@@ -74,11 +74,11 @@ Azure Backup, Azure Key Vault depolanan şifreleme anahtarlarına erişmek üzer
 
 Artık kurtarma hizmetleri kasasının şifreleme anahtarını içeren Azure Key Vault erişmesine izin vermeniz gerekir. Bu, kurtarma hizmetleri kasasının yönetilen kimliğinin Key Vault erişmesine izin verilerek yapılır.
 
-1. Azure Key Vault > **erişim ilkelerine** gidin. **+ Erişim Ilkeleri Ekle** ' ye geçin.
+1. Azure Key Vault > **erişim ilkelerine** gidin. **+ Erişim Ilkeleri Ekle**' ye geçin.
 
     ![Erişim Ilkeleri ekleme](./media/encryption-at-rest-with-cmk/access-policies.png)
 
-1. **Anahtar izinleri** altında **Al** , **Listele** , **anahtar kaydırmayı kaldır** ve **anahtarı sarmalama** işlemlerini seçin. Bu, anahtardaki, izin verilecek eylemleri belirtir.
+1. **Anahtar izinleri** altında **Al**, **Listele**, **anahtar kaydırmayı kaldır** ve **anahtarı sarmalama** işlemlerini seçin. Bu, anahtardaki, izin verilecek eylemleri belirtir.
 
     ![Anahtar izinleri atama](./media/encryption-at-rest-with-cmk/key-permissions.png)
 
@@ -154,22 +154,30 @@ Anahtarı atamak için:
 
     1. Bu kurtarma hizmetleri kasasındaki verileri şifrelemek istediğiniz **anahtar URI** 'sini girin. Ayrıca, Azure Key Vault (Bu anahtarı içeren) olduğu aboneliği de belirtmeniz gerekir. Bu anahtar URI, Azure Key Vault ilgili anahtardan elde edilebilir. Anahtar URI 'sinin doğru şekilde kopyalandığından emin olun. Anahtar tanımlayıcısıyla birlikte sunulan **Panoya Kopyala** düğmesini kullanmanız önerilir.
 
+        >[!NOTE]
+        >Anahtar URI 'sini kullanarak şifreleme anahtarını belirtirken, anahtar otomatik olarak döndürülmeyecektir. Bu nedenle, gerekli olduğunda yeni anahtar belirtilerek önemli güncelleştirmelerin el ile yapılması gerekir.
+
         ![Anahtar URI 'SI girin](./media/encryption-at-rest-with-cmk/key-uri.png)
 
     1. Anahtar Seçicisi bölmesindeki Key Vault tuşuna gidip seçin.
 
+        >[!NOTE]
+        >Anahtar Seçicisi bölmesini kullanarak şifreleme anahtarını belirtirken, anahtar için her yeni sürüm etkinleştirildiğinde anahtar otomatik olarak döndürülür.
+
         ![Anahtar kasasından anahtar seçin](./media/encryption-at-rest-with-cmk/key-vault.png)
 
-1. **Kaydet** ’i seçin.
+1. **Kaydet**’i seçin.
 
-1. **Şifreleme anahtarı güncelleştirmesinin Ilerlemesi izleniyor:** Kurtarma Hizmetleri kasasındaki **etkinlik günlüğünü** kullanarak anahtar atamasının ilerlemesini izleyebilirsiniz. Durum yakında **başarılı** olarak değişmelidir. Artık kasanız, belirtilen anahtara sahip tüm verileri KEK olarak şifreler.
+1. **Şifreleme anahtarı güncelleştirmesinin ilerlemesini ve durumunu izleme**: sol gezinti çubuğundaki **yedekleme işleri** görünümünü kullanarak şifreleme anahtarı atamasının ilerlemesini ve durumunu izleyebilirsiniz. Durum yakında **tamamlandı** olarak değişir. Artık kasanız, belirtilen anahtara sahip tüm verileri KEK olarak şifreler.
 
-    ![Etkinlik günlüğü ile ilerlemeyi izleme](./media/encryption-at-rest-with-cmk/activity-log.png)
+    ![Durum tamamlandı](./media/encryption-at-rest-with-cmk/status-succeeded.png)
 
-    ![Durum başarılı](./media/encryption-at-rest-with-cmk/status-succeeded.png)
+    Şifreleme anahtarı güncelleştirmeleri kasanın etkinlik günlüğüne de kaydedilir.
+
+    ![Etkinlik günlüğü](./media/encryption-at-rest-with-cmk/activity-log.png)
 
 >[!NOTE]
-> Bu işlem, şifreleme anahtarını güncelleştirmek/değiştirmek istediğinizde aynı kalır. Başka bir Key Vault (kullanılmakta olan birinden farklı) bir anahtar güncelleştirmek ve kullanmak istiyorsanız şunlardan emin olun:
+> Bu işlem, şifreleme anahtarını güncelleştirmek veya değiştirmek istediğinizde aynı kalır. Başka bir Key Vault (kullanılmakta olan birinden farklı) bir anahtar güncelleştirmek ve kullanmak istiyorsanız şunlardan emin olun:
 >
 > - Key Vault, kurtarma hizmetleri kasasıyla aynı bölgede bulunur
 >
@@ -214,7 +222,7 @@ Geri yükleme işlemi tamamlandıktan sonra geri yüklenen diski/VM 'yi, geri y�
 
 Disk şifreleme kümesi, aşağıda gösterildiği gibi geri yükleme bölmesindeki şifreleme ayarları altında belirtilir:
 
-1. **Anahtarınızı kullanarak disk (ler) i şifreleyin** , **Evet** ' i seçin.
+1. **Anahtarınızı kullanarak disk (ler) i şifreleyin**, **Evet**' i seçin.
 
 1. Açılan menüden, geri yüklenen diskler için kullanmak istediğiniz DES ' i seçin. **DES 'e erişiminizin olduğundan emin olun.**
 

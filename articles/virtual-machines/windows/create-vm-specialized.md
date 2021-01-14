@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: cddc7f4f453f22b0cb36b1d3a1e9c2fba2dcabaf
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 577b8527d95a6410deca8002cddfaae31be1fc97
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455091"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197498"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>PowerShell kullanarak özelleştirilmiş bir diskten Windows VM oluşturma
 
@@ -54,7 +54,7 @@ VHD 'yi Hyper-V gibi şirket içi bir sanallaştırma aracıyla oluşturulan öz
 ### <a name="prepare-the-vm"></a>VM’yi hazırlama
 Yeni bir VM oluşturmak için VHD 'YI olduğu gibi kullanın. 
   
-  * [Bir WINDOWS VHD 'Yi Azure 'a yüklemek Için hazırlayın](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Sysprep 'ı kullanarak VM 'yi **genelleştirmeyin** .
+  * [Bir WINDOWS VHD 'Yi Azure 'a yüklemek Için hazırlayın](prepare-for-upload-vhd-image.md). Sysprep 'ı kullanarak VM 'yi **genelleştirmeyin** .
   * VM 'de yüklü olan tüm konuk sanallaştırma araçlarını ve aracılarını (VMware araçları gibi) kaldırın.
   * VM 'nin DHCP 'den IP adresi ve DNS ayarlarını almak için yapılandırıldığından emin olun. Bu, sunucunun başladığında sanal ağ içinde bir IP adresi almasını sağlar. 
 
@@ -193,7 +193,7 @@ $nsg = New-AzNetworkSecurityGroup `
     
 ```
 
-Uç noktalar ve NSG kuralları hakkında daha fazla bilgi için bkz. [PowerShell kullanarak Azure 'DA VM 'ye bağlantı noktalarını açma](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Uç noktalar ve NSG kuralları hakkında daha fazla bilgi için bkz. [PowerShell kullanarak Azure 'DA VM 'ye bağlantı noktalarını açma](nsg-quickstart-powershell.md).
 
 ### <a name="create-a-public-ip-address-and-nic"></a>Genel IP adresi ve NIC oluşturma
 Sanal ağdaki sanal makineyle iletişimi etkinleştirmek için [Genel BIR IP adresi](../../virtual-network/public-ip-addresses.md) ve ağ arabirimi gerekir.
@@ -264,7 +264,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>VM 'nin oluşturulduğunu doğrulama
-Yeni oluşturulan VM 'yi, sanal makinelere **gözatada** [Azure Portal](https://portal.azure.com)  >  **Virtual machines** veya aşağıdaki PowerShell komutlarını kullanarak görmeniz gerekir.
+Yeni oluşturulan VM 'yi, sanal makinelere **gözatada** [Azure Portal](https://portal.azure.com)  >  veya aşağıdaki PowerShell komutlarını kullanarak görmeniz gerekir.
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $destinationResourceGroup

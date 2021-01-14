@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: genli
-ms.openlocfilehash: bc796b4d9708c18f4d0612e6f3ebde9b2485d2f7
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 70855f7956e42d815e0b8135ccfe6e374853d8aa
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093149"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197532"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>Azure CLı ile işletim sistemi diskini bir kurtarma sanal makinesine ekleyerek bir Linux sanal makinesi sorunlarını giderme
 Linux sanal makineniz (VM) bir önyükleme veya disk hatasıyla karşılaşırsa, sanal sabit diskin kendisi üzerinde sorun giderme adımları gerçekleştirmeniz gerekebilir. Ortak bir örnek `/etc/fstab` , VM 'nin başarıyla önyükleme yapabilmesini engelleyen ' de geçersiz bir giriş olabilir. Bu makalede, herhangi bir hatayı onarmak üzere sanal sabit diskinizi başka bir Linux VM 'sine bağlamak için Azure CLı 'nın nasıl kullanılacağı açıklanır ve ardından özgün VM 'nizi yeniden oluşturabilirsiniz. 
@@ -36,7 +36,7 @@ Sorun giderme işlemi aşağıdaki gibidir:
 
 Bu sorun giderme adımlarını gerçekleştirmek için, [az Login](/cli/azure/reference-index)kullanılarak en son [Azure CLI](/cli/azure/install-az-cli2) 'Nın yüklü ve bir Azure hesabında oturum açmış olmanız gerekir.
 
-VM onarım komutlarını, 1, 2, 3, 4, 6 ve 7. adımları otomatik hale getirmek için kullanabilirsiniz. Daha fazla belge ve yönergeler için bkz. [Azure sanal makine onarım komutlarını kullanarak bir LINUX VM 'Sini onarma](repair-linux-vm-using-azure-virtual-machine-repair-commands.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+VM onarım komutlarını, 1, 2, 3, 4, 6 ve 7. adımları otomatik hale getirmek için kullanabilirsiniz. Daha fazla belge ve yönergeler için bkz. [Azure sanal makine onarım komutlarını kullanarak bir LINUX VM 'Sini onarma](repair-linux-vm-using-azure-virtual-machine-repair-commands.md).
 
 > [!Important]
 > Bu makaledeki betikler yalnızca [yönetilen disk](../managed-disks-overview.md)kullanan VM 'ler için geçerlidir. 

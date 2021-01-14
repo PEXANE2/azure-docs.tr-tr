@@ -1,7 +1,7 @@
 ---
-title: Konuşma hizmeti ile özel uç noktaları kullanma
+title: Konuşma hizmetleriyle özel uç noktaları kullanma
 titleSuffix: Azure Cognitive Services
-description: Azure özel bağlantı tarafından sunulan özel uç noktalarla konuşma hizmetini nasıl kullanacağınızı öğrenin
+description: Azure özel bağlantı tarafından sunulan özel uç noktalarla konuşma hizmetlerini nasıl kullanacağınızı öğrenin
 services: cognitive-services
 author: alexeyo26
 manager: nitinme
@@ -10,96 +10,89 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: alexeyo
-ms.openlocfilehash: d5822b6eeecfc61a5092519618ddfcaf88a625ae
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 61be4b45df94c902c0473b94a6dd83237c72da3c
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98018539"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196137"
 ---
-# <a name="use-speech-service-through-a-private-endpoint"></a>Konuşma hizmetini özel bir uç nokta aracılığıyla kullanma
+# <a name="use-speech-services-through-a-private-endpoint"></a>Özel bir uç nokta aracılığıyla konuşma hizmetlerini kullanma
 
-[Azure özel bağlantısı](../../private-link/private-link-overview.md) , [özel bir uç nokta](../../private-link/private-endpoint-overview.md)kullanarak Azure 'daki hizmetlere bağlanmanızı sağlar.
-Özel uç nokta yalnızca belirli bir [sanal ağ](../../virtual-network/virtual-networks-overview.md) ve alt ağ içinden erişilebilen özel bir IP adresidir.
+[Azure özel bağlantısı](../../private-link/private-link-overview.md) , [özel bir uç nokta](../../private-link/private-endpoint-overview.md)kullanarak Azure 'daki hizmetlere bağlanmanızı sağlar. Özel uç nokta, yalnızca belirli bir [sanal ağ](../../virtual-network/virtual-networks-overview.md) ve alt ağ içinde erişilebilen özel bir IP adresidir.
 
-Bu makalede, Azure bilişsel konuşma Hizmetleri ile özel bağlantı ve özel uç noktaların nasıl ayarlanacağı ve kullanılacağı açıklanmaktadır.
+Bu makalede, Azure bilişsel hizmetler 'de konuşma hizmetleriyle özel bağlantı ve özel uç noktaların nasıl ayarlanacağı ve kullanılacağı açıklanmaktadır.
 
 > [!NOTE]
-> Bu makalede, Azure bilişsel konuşma Hizmetleri ile özel bağlantı ayarlama ve kullanma özellikleri açıklanmaktadır. Devam etmeden önce bilişsel [Hizmetler ile sanal ağları nasıl kullanacağınızı](../cognitive-services-virtual-networks.md)inceleyin.
+> Devam etmeden önce bilişsel [Hizmetler ile sanal ağların nasıl kullanılacağını](../cognitive-services-virtual-networks.md)inceleyin.
 
-Bir konuşma hizmetini özel bir uç nokta aracılığıyla kullanmak için aşağıdaki görevleri gerçekleştirin:
-
-1. [Konuşma kaynağı özel etki alanı adı oluştur](#create-a-custom-domain-name)
-2. [Özel uç nokta (ler) oluştur ve Yapılandır](#enable-private-endpoints)
-3. [Mevcut uygulamaları ve çözümleri ayarla](#use-speech-resource-with-custom-domain-name-and-private-endpoint-enabled)
-
-Özel uç noktaları daha sonra kaldırmak, ancak konuşma kaynağını kullanmaya devam etmek için, [Bu bölümde](#use-speech-resource-with-custom-domain-name-without-private-endpoints)bulunan görevleri gerçekleştirirsiniz.
+Bu makalede ayrıca [, Özel uç noktaların daha sonra nasıl kaldırılacağı açıklanır, ancak konuşma kaynağını kullanmaya devam edebilirsiniz](#use-a-speech-resource-with-a-custom-domain-name-and-without-private-endpoints).
 
 ## <a name="create-a-custom-domain-name"></a>Özel etki alanı adı oluşturma
 
-Özel uç noktalar bilişsel [Hizmetler özel alt etki alanı adı](../cognitive-services-custom-subdomains.md)gerektirir. Konuşma kaynağınız için bir tane oluşturmak için aşağıdaki yönergeleri izleyin.
+Özel uç noktalar bilişsel [Hizmetler için özel bir alt etki alanı adı](../cognitive-services-custom-subdomains.md)gerektirir. Konuşma kaynağınız için bir tane oluşturmak üzere aşağıdaki yönergeleri kullanın.
 
 > [!WARNING]
-> Özel etki alanı adı etkinleştirilmiş bir konuşma kaynağı, konuşma hizmetiyle etkileşim kurmak için farklı bir yol kullanır.
-> Büyük olasılıkla, özel [  uç nokta etkin](#use-speech-resource-with-custom-domain-name-without-private-endpoints) senaryolar için uygulama kodunuzu her iki [Özel uç nokta etkin](#use-speech-resource-with-custom-domain-name-and-private-endpoint-enabled) olacak şekilde ayarlamanız gerekir.
+> Özel etki alanı adı etkinleştirilmiş bir konuşma kaynağı, konuşma hizmetleriyle etkileşim kurmak için farklı bir yol kullanır. Bu senaryoların her ikisi için de uygulama kodunuzu ayarlamanız gerekebilir: [özel](#use-a-speech-resource-with-a-custom-domain-name-and-a-private-endpoint-enabled) uç nokta etkin ve [Özel uç nokta etkin *değil*](#use-a-speech-resource-with-a-custom-domain-name-and-without-private-endpoints).
 >
-> Özel bir etki alanı adını etkinleştirdiğinizde, işlem geri [**alınamaz**](../cognitive-services-custom-subdomains.md#can-i-change-a-custom-domain-name). [Bölgesel ada](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) geri dönmenin tek yolu yeni bir konuşma kaynağı oluşturmaktır.
+> Özel bir etki alanı adını etkinleştirdiğinizde, işlem geri [alınamaz](../cognitive-services-custom-subdomains.md#can-i-change-a-custom-domain-name). [Bölgesel ada](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) geri dönmenin tek yolu yeni bir konuşma kaynağı oluşturmaktır.
 >
-> Konuşma kaynağınız çok sayıda ilişkili özel model ve proje içeriyorsa, [konuşma Studio](https://speech.microsoft.com/) aracılığıyla oluşturulan kaynağı değiştirmeden önce yapılandırmayı bir test kaynağıyla denemeyi **önemle** öneririz.
+> Konuşma kaynağınız, [konuşma Studio](https://speech.microsoft.com/)ile oluşturulmuş çok sayıda ilişkili özel model ve proje içeriyorsa, üretimde kullanılan kaynağı değiştirmeden önce yapılandırmayı bir test kaynağıyla denemeyi kesinlikle öneririz.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
 Azure portal kullanarak özel bir etki alanı adı oluşturmak için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com/) gidin ve Azure hesabınızda oturum açın.
+1. [Azure portalına](https://portal.azure.com/) gidin ve Azure hesabınızla oturum açın.
 1. Gerekli konuşma kaynağını seçin.
-1. Sol gezinti bölmesindeki **kaynak yönetimi** grubunda, **ağ**' a tıklayın.
-1. **Güvenlik duvarları ve sanal ağlar** sekmesinde **özel etki alanı adı oluştur**' a tıklayın. Kaynağınız için benzersiz bir özel alt etki alanı oluşturma yönergeleriyle birlikte yeni bir sağ panel görüntülenir.
-1. Özel etki alanı adı Oluştur panelinde, özel bir etki alanı adı bölümü girin. Tam özel etki alanınız şöyle görünür: `https://{your custom name}.cognitiveservices.azure.com` . 
-    **Özel bir etki alanı adı oluşturduktan sonra _, değiştirilemez!_ Yukarıdaki uyarı uyarısını yeniden okuyun.** Özel etki alanı adınızı girdikten sonra **Kaydet**' e tıklayın.
-1. İşlem tamamlandıktan sonra, **kaynak yönetimi** grubunda **anahtarlar ve uç nokta**' ı tıklatın. Kaynağınızın yeni uç nokta adının bu şekilde başlatıldığını onaylayın:
-
-    `https://{your custom name}.cognitiveservices.azure.com`
+1. Sol bölmedeki **kaynak yönetimi** grubunda **ağ**' ı seçin.
+1. **Güvenlik duvarları ve sanal ağlar** sekmesinde **özel etki alanı adı oluştur**' u seçin. Kaynağınız için benzersiz bir özel alt etki alanı oluşturma yönergeleriyle birlikte yeni bir sağ panel görüntülenir.
+1. **Özel etki alanı adı oluştur** panelinde, özel bir etki alanı adı girin. Tam özel etki alanınız şöyle görünür: `https://{your custom name}.cognitiveservices.azure.com` . 
+    
+    Özel bir etki alanı adı oluşturduktan sonra _, bunun değiştirilemeyeceğini_ unutmayın.
+    
+    Özel etki alanı adınızı girdikten sonra **Kaydet**' i seçin.
+1. İşlem bittikten sonra, **kaynak yönetimi** grubunda **anahtarlar ve uç nokta**' ı seçin. Kaynağınızın yeni uç nokta adının bu şekilde başlatıldığını onaylayın: `https://{your custom name}.cognitiveservices.azure.com` .
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 PowerShell kullanarak özel bir etki alanı adı oluşturmak için, bilgisayarınızda Azure PowerShell Module Version 5.1.0 veya üzeri ile PowerShell sürüm 7. x veya üzeri olduğunu doğrulayın. Bu araçların sürümlerini görmek için şu adımları izleyin:
 
-1. Bir PowerShell penceresinde, şunu yazın:
+1. Bir PowerShell penceresinde şunu girin:
 
     `$PSVersionTable`
 
-    PSVersion değerinin 7. x değerinden büyük olduğunu onaylayın. PowerShell 'i yükseltmek için, yükseltmek üzere [çeşitli PowerShell sürümlerini yükleme](/powershell/scripting/install/installing-powershell) konusundaki yönergeleri izleyin.
+    `PSVersion`Değerin 7. x veya üzeri olduğunu doğrulayın. PowerShell 'i yükseltmek için, [çeşitli PowerShell sürümlerini yükleme](/powershell/scripting/install/installing-powershell)bölümündeki yönergeleri izleyin.
 
-1. Bir PowerShell penceresinde, şunu yazın:
+1. Bir PowerShell penceresinde şunu girin:
 
     `Get-Module -ListAvailable Az`
 
-    Hiçbir şey yoksa veya Azure PowerShell modül sürümü 5.1.0 ' den düşükse, yükseltmek için [Azure PowerShell modülünü Install](/powershell/azure/install-Az-ps) bölümündeki yönergeleri izleyin.
+    Hiçbir şey görünürse veya Azure PowerShell modülünün bu sürümü 5.1.0 ' den daha eski ise, yükseltmek için [Azure PowerShell modülünü Install](/powershell/azure/install-Az-ps) bölümündeki yönergeleri izleyin.
 
 Devam etmeden önce, `Connect-AzAccount` Azure ile bağlantı oluşturmak için öğesini çalıştırın.
 
-## <a name="verify-custom-domain-name-is-available"></a>Özel etki alanı adının kullanılabilir olduğunu doğrulayın
+## <a name="verify-that-a-custom-domain-name-is-available"></a>Özel bir etki alanı adının kullanılabilir olduğunu doğrulama
 
-Kullanmak istediğiniz özel etki alanının kullanılabilir olup olmadığını denetleyin. Bilişsel hizmetler REST API [etki alanı kullanılabilirliğini denetle](/rest/api/cognitiveservices/accountmanagement/checkdomainavailability/checkdomainavailability) işlemini kullanarak etki alanının kullanılabilir olduğunu doğrulamak için aşağıdaki adımları izleyin.
+Kullanmak istediğiniz özel etki alanının kullanılabilir olup olmadığını denetleyin. Aşağıdaki kod, bilişsel hizmetler REST API [etki alanı kullanılabilirliğini denetle](/rest/api/cognitiveservices/accountmanagement/checkdomainavailability/checkdomainavailability) işlemini kullanarak etki alanının kullanılabildiğini onaylar.
 
 > [!TIP]
-> Aşağıdaki kod Azure Cloud Shell içinde **çalışmaz.**
+> Aşağıdaki kod *Azure Cloud Shell çalışmaz.*
 
 ```azurepowershell
 $subId = "Your Azure subscription Id"
 $subdomainName = "custom domain name"
 
-# Select the Azure subscription that contains Speech resource.
+# Select the Azure subscription that contains the Speech resource.
 # You can skip this step if your Azure account has only one active subscription.
 Set-AzContext -SubscriptionId $subId
 
-# Prepare OAuth token to use in request to Cognitive Services REST API.
+# Prepare the OAuth token to use in the request to the Cognitive Services REST API.
 $Context = Get-AzContext
 $AccessToken = (Get-AzAccessToken -TenantId $Context.Tenant.Id).Token
 $token = ConvertTo-SecureString -String $AccessToken -AsPlainText -Force
 
-# Prepare and send the request to Cognitive Services REST API.
+# Prepare and send the request to the Cognitive Services REST API.
 $uri = "https://management.azure.com/subscriptions/" + $subId + `
     "/providers/Microsoft.CognitiveServices/checkDomainAvailability?api-version=2017-04-18"
 $body = @{
@@ -126,18 +119,17 @@ subdomainName        : my-custom-name
 ```
 ## <a name="create-your-custom-domain-name"></a>Özel etki alanı adınızı oluşturma
 
-Seçili konuşma kaynağı için özel etki alanı adını etkinleştirmek üzere [set-azbiliveservicesaccount](/powershell/module/az.cognitiveservices/set-azcognitiveservicesaccount) cmdlet 'ini kullanırız.
+Seçili konuşma kaynağı için özel bir etki alanı adı etkinleştirmek üzere [set-Azbiliveservicesaccount](/powershell/module/az.cognitiveservices/set-azcognitiveservicesaccount) cmdlet 'ini kullanın.
 
 > [!WARNING]
-> Aşağıdaki kod başarıyla çalıştıktan sonra, konuşma kaynağınız için özel bir etki alanı adı oluşturacaksınız.
-> Bu ad **değiştirilemez** . Yukarıdaki **Uyarı** uyarısında daha fazla bilgi görüntüleyin.
+> Aşağıdaki kod başarıyla çalıştıktan sonra, konuşma kaynağınız için özel bir etki alanı adı oluşturacaksınız. Bu *adın değiştirilemeyeceğini* unutmayın.
 
 ```azurepowershell
 $resourceGroup = "Resource group name where Speech resource is located"
 $speechResourceName = "Your Speech resource name"
 $subdomainName = "custom domain name"
 
-# Select the Azure subscription that contains Speech resource.
+# Select the Azure subscription that contains the Speech resource.
 # You can skip this step if your Azure account has only one active subscription.
 $subId = "Your Azure subscription Id"
 Set-AzContext -SubscriptionId $subId
@@ -152,11 +144,11 @@ Set-AzCognitiveServicesAccount -ResourceGroupName $resourceGroup `
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-- Bu bölüm, Azure CLı 'nın en son sürümünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
+Bu bölüm, Azure CLı 'nın en son sürümünü gerektirir. Azure Cloud Shell kullanıyorsanız, en son sürüm zaten yüklüdür.
 
-## <a name="verify-the-custom-domain-name-is-available"></a>Özel etki alanı adının kullanılabilir olduğunu doğrulayın
+## <a name="verify-that-the-custom-domain-name-is-available"></a>Özel etki alanı adının kullanılabilir olduğunu doğrulama
 
-Kullanmak istediğiniz özel etki alanının serbest olup olmadığını denetleyin. Bilişsel hizmetler REST API, [etki alanı kullanılabilirliği yöntemini denetle](/rest/api/cognitiveservices/accountmanagement/checkdomainavailability/checkdomainavailability) 'yi kullanacağız.
+Kullanmak istediğiniz özel etki alanının serbest olup olmadığını denetleyin. Bilişsel hizmetler REST API [etki alanı kullanılabilirliğini denetle](/rest/api/cognitiveservices/accountmanagement/checkdomainavailability/checkdomainavailability) yöntemini kullanın.
 
 Aşağıdaki kod bloğunu kopyalayın, tercih ettiğiniz özel etki alanı adınızı ekleyin ve dosyaya kaydedin `subdomain.json` .
 
@@ -167,7 +159,7 @@ Aşağıdaki kod bloğunu kopyalayın, tercih ettiğiniz özel etki alanı adın
 }
 ```
 
-Dosyayı geçerli klasörünüze kopyalayın veya Azure Cloud Shell karşıya yükleyin ve aşağıdaki komutu çalıştırın. ( `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` Azure ABONELIK Kimliğinizle değiştirin).
+Dosyayı geçerli klasörünüze kopyalayın veya Azure Cloud Shell karşıya yükleyin ve aşağıdaki komutu çalıştırın. `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` öğesini Azure abonelik kimliğinizle değiştirin.
 
 ```azurecli-interactive
 az rest --method post --url "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.CognitiveServices/checkDomainAvailability?api-version=2017-04-18" --body @subdomain.json
@@ -191,30 +183,38 @@ Ad zaten alınmış ise, aşağıdaki yanıtı görürsünüz:
   "type": null
 }
 ```
-## <a name="enable-custom-domain-name"></a>Özel etki alanı adını etkinleştir
+## <a name="enable-a-custom-domain-name"></a>Özel bir etki alanı adı etkinleştir
 
-Seçili konuşma kaynağı için özel etki alanı adını etkinleştirmek üzere [az biliveservices hesabı Güncelleştir](/cli/azure/cognitiveservices/account#az_cognitiveservices_account_update) komutunu kullanırız.
+Seçili konuşma kaynağı için özel bir etki alanı adı etkinleştirmek üzere [az biliveservices hesabı Güncelleştir](/cli/azure/cognitiveservices/account#az_cognitiveservices_account_update) komutunu kullanın.
 
-Konuşma kaynağını içeren Azure aboneliğini seçin. Azure hesabınızda yalnızca bir etkin abonelik varsa, bu adımı atlayabilirsiniz. ( `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` Azure ABONELIK Kimliğinizle değiştirin).
+Konuşma kaynağını içeren Azure aboneliğini seçin. Azure hesabınızda yalnızca bir etkin abonelik varsa, bu adımı atlayabilirsiniz. `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` öğesini Azure abonelik kimliğinizle değiştirin.
 ```azurecli-interactive
 az account set --subscription xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 Özel etki alanı adını seçili kaynak olarak ayarlayın. Örnek parametre değerlerini gerçek olanlarla değiştirin ve aşağıdaki komutu çalıştırın.
 
 > [!WARNING]
-> Aşağıdaki komutu başarıyla yürütmeden sonra, konuşma kaynağınız için özel bir etki alanı adı oluşturacaksınız. Bu ad **değiştirilemez** . Yukarıdaki uyarı uyarısıyla daha fazla bilgi görüntüleyin.
+> Aşağıdaki komutun başarılı bir şekilde yürütülmesinden sonra, konuşma kaynağınız için özel bir etki alanı adı oluşturacaksınız. Bu *adın değiştirilemeyeceğini* unutmayın.
 
 ```azurecli
 az cognitiveservices account update --name my-speech-resource-name --resource-group my-resource-group-name --custom-domain my-custom-name
 ```
 
-**_
+***
 
 ## <a name="enable-private-endpoints"></a>Özel uç noktaları etkinleştir
 
-Özel uç noktalar için gerekli güncelleştirmelerle sanal ağa bağlı [özel DNS bölgesini](../../dns/private-dns-overview.md) kullanmanızı öneririz. Bu işlem, sağlama işlemi sırasında varsayılan olarak oluşturulur. Ancak, kendi DNS sunucunuzu kullanıyorsanız, aşağıdaki _Özel uç noktalar Için DNS_' de GÖSTERILDIĞI gibi DNS yapılandırmanızı de değiştirmeniz gerekebilir. , Özellikle kendi DNS sunucunuzu kullanıyorsanız, bir üretim konuşma kaynağı *için * özel* uç nokta (ler) sağlama ve DNS değişikliklerinizi test etme konusunda, DNS stratejisi _ ' i belirleyin.
+Sanal ağa bağlı [özel DNS bölgesinin](../../dns/private-dns-overview.md) özel uç noktalar için gerekli güncelleştirmelerle kullanılması önerilir. Hazırlama işlemi sırasında varsayılan olarak özel bir DNS bölgesi oluşturursunuz. Kendi DNS sunucunuzu kullanıyorsanız, DNS yapılandırmanızı de değiştirmeniz gerekebilir. 
 
-Özel uç noktaları oluşturmak için aşağıdaki makalelerden birini kullanın. Makaleler, Özel uç noktalarla olanak tanımak için bir Web uygulamasını örnek kaynak olarak kullanır. Bu parametreleri makalesindeki parametreler yerine kullanacaksınız:
+Bir üretim konuşma kaynağı için özel uç noktalar sağlamadan *önce* DNS stratejisine karar verin. Ve, özellikle kendi DNS sunucunuzu kullanıyorsanız, DNS değişikliklerinizi test edin.
+
+Özel uç noktalar oluşturmak için aşağıdaki makalelerden birini kullanın. Bu makaleler, Özel uç noktalarla olanak tanımak için bir Web uygulamasını örnek kaynak olarak kullanır.
+
+- [Azure portal kullanarak özel uç nokta oluşturma](../../private-link/create-private-endpoint-portal.md)
+- [Azure PowerShell kullanarak özel uç nokta oluşturma](../../private-link/create-private-endpoint-powershell.md)
+- [Azure CLı kullanarak özel uç nokta oluşturma](../../private-link/create-private-endpoint-cli.md)
+
+Seçtiğiniz makaledeki parametreler yerine bu parametreleri kullanın:
 
 | Ayar             | Değer                                    |
 |---------------------|------------------------------------------|
@@ -222,53 +222,51 @@ az cognitiveservices account update --name my-speech-resource-name --resource-gr
 | Kaynak            | **\<your-speech-resource-name>**         |
 | Hedef alt kaynak | **açın**                              |
 
-- [Azure portalını kullanarak Özel Uç Nokta oluşturma](../../private-link/create-private-endpoint-portal.md)
-- [Azure PowerShell kullanarak özel uç nokta oluşturma](../../private-link/create-private-endpoint-powershell.md)
-- [Azure CLı kullanarak özel uç nokta oluşturma](../../private-link/create-private-endpoint-cli.md)
-
-**Özel uç noktalar Için DNS:** Bilişsel [Hizmetler kaynaklarındaki özel uç noktalar Için DNS](../cognitive-services-virtual-networks.md#dns-changes-for-private-endpoints)genel ilkelerini gözden geçirin. Ardından, bu denetimleri gerçekleştirerek DNS yapılandırmanızın düzgün çalıştığını doğrulayın:
+**Özel uç noktalar Için DNS:** Bilişsel [Hizmetler kaynaklarındaki özel uç noktalar Için DNS](../cognitive-services-virtual-networks.md#dns-changes-for-private-endpoints)genel ilkelerini gözden geçirin. Ardından, aşağıdaki bölümlerde açıklanan denetimleri gerçekleştirerek DNS yapılandırmanızın doğru çalıştığını onaylayın.
 
 ### <a name="resolve-dns-from-the-virtual-network"></a>DNS 'i sanal ağdan çözümle
 
-Bu denetim **gereklidir**.
+Bu denetim *gereklidir*.
 
-Özel DNS girişini sanal ağınızdan test etmek için aşağıdaki adımları izleyin.
+Sanal ağınızdan özel DNS girişini sınamak için aşağıdaki adımları izleyin:
 
-1. Özel uç noktanıza eklediğiniz sanal ağda bulunan bir sanal makinede oturum açın. 
-1. Windows komut Istemi veya bash kabuğu 'nu açın, çalıştırın `nslookup` ve kaynak özel etki alanı adınızı başarıyla çözümleyip onaylayın.
+1. Özel uç noktanızı eklediğiniz sanal ağda bulunan bir sanal makinede oturum açın. 
+1. Bir Windows komut istemi veya bash kabuğu açın, çalıştırın `nslookup` ve kaynağınızın özel etki alanı adını başarıyla çözümlediği onaylayın.
 
-```dos
-C:\>nslookup my-private-link-speech.cognitiveservices.azure.com
-Server:  UnKnown
-Address:  168.63.129.16
+   ```dos
+   C:\>nslookup my-private-link-speech.cognitiveservices.azure.com
+   Server:  UnKnown
+   Address:  168.63.129.16
 
-Non-authoritative answer:
-Name:    my-private-link-speech.privatelink.cognitiveservices.azure.com
-Address:  172.28.0.10
-Aliases:  my-private-link-speech.cognitiveservices.azure.com
-```
+   Non-authoritative answer:
+   Name:    my-private-link-speech.privatelink.cognitiveservices.azure.com
+   Address:  172.28.0.10
+   Aliases:  my-private-link-speech.cognitiveservices.azure.com
+   ```
 
-3. IP adresinin özel uç noktanızın IP adresiyle eşleştiğinden emin olun.
+1. IP adresinin özel uç noktanızın IP adresiyle eşleştiğinden emin olun.
 
 ### <a name="resolve-dns-from-other-networks"></a>Diğer ağlardan DNS 'i çözümleme
 
-Bu denetimi yalnızca, kaynağınızın **ağ** bölümünde **tüm ağlar** veya **Seçili ağlar ve özel uç noktalar** erişim seçeneğini etkinleştirdiğiniz "karma" modda özel uç nokta etkin konuşma kaynağını kullanmayı planlıyorsanız gerçekleştirin. Kaynağa yalnızca özel bir uç nokta kullanarak erişmeyi planlıyorsanız, bu bölümü atlayabilirsiniz.
+Bu denetimi yalnızca kaynağınızın **ağ** bölümünde **tüm ağlar** seçeneğini veya **Seçili ağlar ve özel uç noktalar** erişim seçeneğini etkinleştirdiyseniz gerçekleştirin. 
 
-1. Kaynağa erişim izni verilen bir ağa bağlı bir bilgisayarda oturum açın.
-2. Windows komut Istemi veya bash kabuğu 'nu açın, çalıştırın `nslookup` ve kaynak özel etki alanı adınızı başarıyla çözümleyip onaylayın.
+Kaynağa yalnızca özel bir uç nokta kullanarak erişmeyi planlıyorsanız, bu bölümü atlayabilirsiniz.
 
-```dos
-C:\>nslookup my-private-link-speech.cognitiveservices.azure.com
-Server:  UnKnown
-Address:  fe80::1
+1. Kaynağa erişimine izin verilen bir ağa bağlı bir bilgisayarda oturum açın.
+2. Bir Windows komut istemi veya bash kabuğu açın, çalıştırın `nslookup` ve kaynağınızın özel etki alanı adını başarıyla çözümlediği onaylayın.
 
-Non-authoritative answer:
-Name:    vnetproxyv1-weu-prod.westeurope.cloudapp.azure.com
-Address:  13.69.67.71
-Aliases:  my-private-link-speech.cognitiveservices.azure.com
-          my-private-link-speech.privatelink.cognitiveservices.azure.com
-          westeurope.prod.vnet.cog.trafficmanager.net
-```
+   ```dos
+   C:\>nslookup my-private-link-speech.cognitiveservices.azure.com
+   Server:  UnKnown
+   Address:  fe80::1
+
+   Non-authoritative answer:
+   Name:    vnetproxyv1-weu-prod.westeurope.cloudapp.azure.com
+   Address:  13.69.67.71
+   Aliases:  my-private-link-speech.cognitiveservices.azure.com
+             my-private-link-speech.privatelink.cognitiveservices.azure.com
+             westeurope.prod.vnet.cog.trafficmanager.net
+   ```
 
 3. IP adresinin özel uç noktanızın IP adresiyle eşleştiğinden emin olun.
 
@@ -277,141 +275,144 @@ Aliases:  my-private-link-speech.cognitiveservices.azure.com
 
 ## <a name="adjust-existing-applications-and-solutions"></a>Mevcut uygulamaları ve çözümleri ayarla
 
-Özel etki alanı etkinleştirilmiş bir konuşma kaynağı, konuşma hizmetleriyle etkileşim kurmak için farklı bir yol kullanır. Bu, özel bir etki alanı etkin konuşma kaynağı için, hem hem de özel uç noktaları olmadan geçerlidir. Bu bölümdeki bilgiler her iki senaryo için de geçerlidir.
+Özel etki alanı etkinleştirilmiş bir konuşma kaynağı, konuşma hizmetleriyle etkileşim kurmak için farklı bir yol kullanır. Bu, Özel uç noktaları ile ve olmayan özel etki alanı etkin bir konuşma kaynağı için geçerlidir. Bu bölümdeki bilgiler her iki senaryo için de geçerlidir.
 
-### <a name="use-speech-resource-with-custom-domain-name-and-private-endpoint-enabled"></a>Özel etki alanı adı ve özel uç nokta etkinken konuşma kaynağını kullanma
+### <a name="use-a-speech-resource-with-a-custom-domain-name-and-a-private-endpoint-enabled"></a>Özel bir etki alanı adı ve özel uç nokta etkin bir konuşma kaynağı kullanma
 
-Özel etki alanı adı ve özel uç noktası etkin bir konuşma kaynağı, konuşma hizmetleriyle etkileşmek için farklı bir yol kullanır. Bu bölümde, söz konusu kaynağın konuşma Hizmetleri REST API ve [konuşma SDK 'sı](speech-sdk.md)ile nasıl kullanılacağı açıklanmaktadır.
+Özel bir etki alanı adı ve özel uç noktası etkin bir konuşma kaynağı, konuşma hizmetleriyle etkileşim kurmak için farklı bir yol kullanır. Bu bölümde, bu tür bir kaynağın konuşma Hizmetleri REST API 'Leri ve [konuşma SDK 'sı](speech-sdk.md)ile nasıl kullanılacağı açıklanmaktadır.
 
 > [!NOTE]
-> Özel uç noktaları olmayan ancak **özel etki alanı adı** etkinleştirilmiş bir konuşma kaynağının, konuşma hizmetleriyle birlikte etkileşimde bulunmak için özel bir yöntemi olduğunu lütfen unutmayın, ancak bu yöntem özel bir uç nokta etkin konuşma kaynağının senaryosundan farklıdır. Bu kaynakta (örneğin, Özel uç noktaları olan bir kaynağınız vardı, ancak bunları kaldırmaya karar verdiyseniz), ilgili [bölümü](#use-speech-resource-with-custom-domain-name-without-private-endpoints)öğrendiğinizden emin olun.
+> Özel uç noktaları olmayan, ancak etkin bir etki alanı adı olan bir konuşma kaynağı, konuşma hizmetleriyle etkileşimde bulunmak için özel bir yol da içerir. Bu yöntem, Özel uç nokta özellikli bir konuşma kaynağının senaryosundan farklıdır. Bu kaynakta (örneğin, Özel uç noktaları olan bir kaynağınız vardı, ancak kaldırmaya karar verdiyseniz), [özel bir etki alanı adı ve özel uç noktaları olmadan bir konuşma kaynağı kullanma](#use-a-speech-resource-with-a-custom-domain-name-and-without-private-endpoints)bölümüne bakın.
 
-#### <a name="speech-resource-with-custom-domain-name-and-private-endpoint-usage-with-rest-api"></a>Özel etki alanı adı ve özel uç nokta içeren konuşma kaynağı. REST API kullanımı
+#### <a name="speech-resource-with-a-custom-domain-name-and-a-private-endpoint-usage-with-the-rest-apis"></a>Özel etki alanı adı ve özel uç nokta içeren konuşma kaynağı: REST API 'lerle kullanım
 
 `my-private-link-speech.cognitiveservices.azure.com`Bu bölüm için örnek bir konuşma kaynağı DNS adı (özel etki alanı) olarak kullanacağız.
 
-##### <a name="note-on-speech-services-rest-api"></a>Konuşma hizmetlerinde REST API
+Konuşma Hizmetleri, [konuşmadan metne](rest-speech-to-text.md) ve [METINDEN konuşmaya](rest-text-to-speech.md)kadar REST API 'lerine sahiptir. Özel uç nokta etkin senaryosu için aşağıdaki bilgileri göz önünde bulundurun.
 
-Konuşma Hizmetleri, [konuşmadan metne](rest-speech-to-text.md) ve [metinden konuşmaya](rest-text-to-speech.md)yönelik REST API sahiptir. Özel uç nokta etkin senaryosu için aşağıdakiler göz önünde bulundurulmalıdır.
-
-Konuşmadan metne iki farklı REST API 'si vardır. Her API farklı bir amaca hizmet eder, farklı uç noktalar kullanır ve özel uç nokta etkin senaryosunda kullanıldığında farklı bir yaklaşım gerektirir.
+Konuşmadan metne iki REST API 'si vardır. Her API farklı bir amaca hizmet eder, farklı uç noktalar kullanır ve bunu özel uç nokta etkin senaryosunda kullandığınızda farklı bir yaklaşım gerektirir.
 
 Konuşmadan metne REST API 'Leri şunlardır:
-- [Okuma-metin REST API v 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) , [toplu iş dökümü](batch-transcription.md) ve [özel konuşma tanıma](custom-speech-overview.md)için kullanılır. v 3.0, [v 2.0 'ın bir ardıldır](/azure/cognitive-services/speech-service/migrate-v2-to-v3).
-- [Kısa seste konuşmadan metne REST API](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) çevrimiçi döküm için kullanılır. 
+- [Toplu iş dökümü](batch-transcription.md) ve [özel konuşma tanıma](custom-speech-overview.md)için kullanılan [konuşmayı metne REST API v 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30). v 3.0, [v 2.0 'ın bir ardıldır](/azure/cognitive-services/speech-service/migrate-v2-to-v3)
+- Çevrimiçi döküm için kullanılan [kısa ses Için konuşmaya metne REST API](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) 
 
-Özel uç nokta senaryosunda, kısa ses ve metinden konuşmaya REST API için konuşmadan metne REST API kullanımı, bu makalenin ilerleyen kısımlarında açıklanan [konuşma SDK 'nın büyük ve küçük harfe](#speech-resource-with-custom-domain-name-and-private-endpoint-usage-with-speech-sdk) eşittir. 
+Kısa ses için konuşmadan metne REST API kullanımı ve özel uç nokta senaryosunda metinden konuşmaya REST API aynı. Bu makalenin ilerleyen kısımlarında açıklanan [konuşma SDK 'nın büyük](#speech-resource-with-a-custom-domain-name-and-a-private-endpoint-usage-with-the-speech-sdk) bölümüne eşdeğerdir. 
 
-Konuşmadan metne REST API v 3.0, farklı bir uç nokta kümesi kullanıyor ve bu nedenle özel uç nokta etkin senaryosu için farklı bir yaklaşım gerektirir.
+Konuşmadan metne REST API v 3.0 farklı bir uç nokta kümesi kullanır, bu nedenle özel uç nokta etkin senaryosu için farklı bir yaklaşım gerektirir.
 
-Her iki durum da sonraki alt bölümlerde açıklanmıştır.
-
+Sonraki alt bölümlerde her iki durum da açıklanır.
 
 ##### <a name="speech-to-text-rest-api-v30"></a>Konuşmayı metne REST API v 3.0
 
-Genellikle konuşma kaynakları, [konuşmadan metne REST API v 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30)ile iletişim kurmak için bilişsel [Hizmetler bölgesel uç noktaları](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) kullanır. Bu kaynaklar aşağıdaki adlandırma biçimine sahiptir: <p/>`{region}.api.cognitive.microsoft.com`
+Genellikle, konuşma kaynakları, [konuşmadan metne REST API v 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30)ile iletişim kurmak için bilişsel [Hizmetler bölgesel uç noktaları](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) kullanır. Bu kaynaklar aşağıdaki adlandırma biçimine sahiptir: <p/>`{region}.api.cognitive.microsoft.com`.
 
 Bu bir örnek istek URL 'sidir:
 
 ```http
 https://westeurope.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions
 ```
-Bir konuşma kaynağı için özel etki alanını etkinleştirdikten sonra (Özel uç noktalar için gereklidir), bu kaynak, temel REST API uç noktası için aşağıdaki DNS ad modelini kullanır: <p/>`{your custom name}.cognitiveservices.azure.com`
+Bir konuşma kaynağı için özel bir etki alanını etkinleştirdikten sonra (Özel uç noktalar için gereklidir), bu kaynak temel REST API uç noktası için aşağıdaki DNS ad modelini kullanacaktır: <p/>`{your custom name}.cognitiveservices.azure.com`.
 
-Bu, örneğimizde REST API uç nokta adı olacaktır. <p/>`my-private-link-speech.cognitiveservices.azure.com`
+Bu, örneğimizde REST API uç noktası adının olacağı anlamına gelir: <p/>`my-private-link-speech.cognitiveservices.azure.com`.
 
-Ve yukarıdaki örnek istek URL 'sinin dönüştürülmesi gerekir:
+Ve örnek istek URL 'sinin dönüştürülmesi gerekir:
 ```http
 https://my-private-link-speech.cognitiveservices.azure.com/speechtotext/v3.0/transcriptions
 ```
-Bu URL 'ye, Özel uç nokta eklenmiş olan sanal ağdan ulaşılamamalıdır ( [doğru DNS çözümlemesi](#resolve-dns-from-the virtual-network)sağlanmış).
+Bu URL 'ye, Özel uç nokta eklenmiş olan sanal ağdan ulaşılamamalıdır ( [doğru DNS çözümlemesi](#resolve-dns-from-the-virtual-network)sağlanmış).
 
-Genellikle, bir konuşma kaynağı için özel etki alanı adı etkinleştirildikten sonra, tüm istek URL 'Lerinde ana bilgisayar adını yeni özel etki alanı ana bilgisayar adı ile değiştirirsiniz. İsteğin diğer tüm bölümleri ( `/speechtotext/v3.0/transcriptions` Yukarıdaki örnekteki yol gibi) aynı kalır.
+Bir konuşma kaynağı için özel bir etki alanı adı etkinleştirdikten sonra, genellikle tüm istek URL 'Lerinde ana bilgisayar adını yeni özel etki alanı ana bilgisayar adıyla değiştirirsiniz. İsteğin diğer tüm bölümleri ( `/speechtotext/v3.0/transcriptions` önceki örnekteki yol gibi) aynı kalır.
 
 > [!TIP]
-> Bazı müşteriler bölgesel uç nokta DNS adının bölge kısmını kullanan uygulamalar geliştirmiş (örneğin, isteği belirli bir Azure bölgesinde dağıtılan konuşma kaynağına göndermek için).
+> Bazı müşteriler bölgesel bitiş noktasının DNS adının bölge kısmını kullanan uygulamalar geliştirmektedir (örneğin, isteği belirli bir Azure bölgesinde dağıtılan konuşma kaynağına göndermek için).
 >
-> Konuşma kaynağı özel etki alanı adı, kaynağın dağıtıldığı bölge hakkında bilgi **içermez** . **Bu nedenle, yukarıda** açıklanan uygulama mantığı çalışmayacak ve değiştirilmesi gerekiyor.
+> Bir konuşma kaynağı için özel bir etki alanı, kaynağın dağıtıldığı bölge *hakkında bilgi içermez* . *Bu nedenle, daha* önce açıklanan uygulama mantığı çalışmayacak ve değiştirilmesi gerekiyor.
 
 ##### <a name="speech-to-text-rest-api-for-short-audio-and-text-to-speech-rest-api"></a>Kısa ses ve metinden konuşmaya REST API için konuşmadan metne REST API
 
-Kısa ses ve [metinden konuşmaya REST API](rest-text-to-speech.md) [için konuşmadan metne REST API](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) iki uç nokta türünü kullanır:
+[Kısa ses Için konuşmadan metne REST API](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) ve [metinden konuşmaya REST API](rest-text-to-speech.md) iki uç nokta türünü kullanır:
 - Bilişsel hizmetler, bir yetkilendirme belirteci almak için bilişsel hizmetler REST API iletişim için [Bölgesel uç noktalar](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints)
 - Diğer tüm işlemler için özel uç noktalar
 
-Özel bitiş noktalarının ayrıntılı açıklaması ve özel bir uç nokta etkin konuşma kaynağı için URL 'nin nasıl dönüştürülmesi gerektiği, aşağıdaki "konuşma SDK 'Sı ile kullanım" bölümünde bulunan [Bu alt](#general-principle) bölümde verilmiştir. SDK için açıklanan ilke, konuşmadan metne v 1.0 ve metinden konuşmaya REST API için geçerlidir.
+Özel uç noktaların ayrıntılı açıklaması ve bir özel uç nokta etkin konuşma kaynağı için URL 'nin nasıl dönüştürülmesi gerektiği, [Bu alt bölümde](#general-principles) konuşma SDK 'sı ile kullanım hakkında bilgi sağlanır. SDK için açıklanan ilke, konuşmadan metne REST API v 1.0 ve metinden konuşmaya REST API için de geçerlidir.
 
-Önceki paragrafta bahsedilen alt bölümünde bulunan malzemeyi öğrenin ve aşağıdaki örneğe bakın. (Örneğin, metin okuma REST API, kısa ses için konuşmadan metne REST API kullanımı tamamen eşdeğerdir)
+Önceki paragrafta bahsedilen alt bölümünde bulunan malzemeyi öğrenin ve aşağıdaki örneğe bakın. Örnekte, metinden konuşmaya REST API açıklanmaktadır. Kısa ses için konuşmadan metne REST API kullanımı tamamen eşdeğerdir.
 
 > [!NOTE]
-> Özel uç nokta senaryolarında **kısa ses için konuşmayı metne REST API** kullanırken, üst bilgiyle [geçirilmiş](rest-speech-to-text.md#request-headers) bir yetkilendirme belirteci kullanın `Authorization` [](rest-speech-to-text.md#request-headers). Üstbilgi aracılığıyla özel uç noktaya konuşma abonelik anahtarı geçirilmeyecektir `Ocp-Apim-Subscription-Key` ve  401 hatası oluşturacaktır.
+> Özel uç nokta senaryolarında kısa ses için konuşmayı metne REST API kullanırken, üst bilgiyle [geçirilen](rest-speech-to-text.md#request-headers) bir yetkilendirme belirteci kullanın `Authorization` [](rest-speech-to-text.md#request-headers). Üstbilgi aracılığıyla özel uç noktaya konuşma abonelik anahtarı geçirilmeyecektir `Ocp-Apim-Subscription-Key` ve 401 hatası  oluşturacaktır.
 
-**Metin okuma REST API kullanım örneği.**
+**Metin okuma REST API kullanım örneği**
 
-Batı Avrupa, örnek bir Azure bölgesi olarak ve `my-private-link-speech.cognitiveservices.azure.com` örnek bir konuşma kaynağı DNS adı (özel etki alanı) olarak kullanacağız. Örneğimizde özel etki alanı adı `my-private-link-speech.cognitiveservices.azure.com` , Batı Avrupa bölgesinde oluşturulan konuşma kaynağına aittir.
+Batı Avrupa örnek bir Azure bölgesi olarak ve `my-private-link-speech.cognitiveservices.azure.com` örnek bir konuşma kaynağı DNS adı (özel etki alanı) olarak kullanacağız. Örneğimizde özel etki alanı adı, `my-private-link-speech.cognitiveservices.azure.com` Batı Avrupa bölgesinde oluşturulan konuşma kaynağına aittir.
 
-Tek bir bölgede desteklenen seslerin listesini almak için aşağıdaki iki işlemi yapmanız gerekir:
+Bölgede desteklenen seslerin listesini almak için aşağıdaki iki işlemi yapın:
 
-- Yetkilendirme belirteci al:
-```http
-https://westeurope.api.cognitive.microsoft.com/sts/v1.0/issuetoken
-```
+- Yetkilendirme belirteci alın:
+  ```http
+  https://westeurope.api.cognitive.microsoft.com/sts/v1.0/issuetoken
+  ```
 - Belirteci kullanarak, seslerin listesini alın:
-```http
-https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list
-```
-(Yukarıdaki adımlar hakkında daha fazla bilgi için bkz. [metin okuma REST API belgeleri](rest-text-to-speech.md))
+  ```http
+  https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list
+  ```
+[Metin okuma REST API belgelerindeki](rest-text-to-speech.md)önceki adımlarla ilgili daha fazla ayrıntı için bkz..
 
-Özel uç nokta etkin konuşma kaynağı için aynı işlem sırası için uç nokta URL 'Lerinin değiştirilmesi gerekir. Aynı sıra şöyle görünür:
-- Aracılığıyla yetkilendirme belirteci al
-```http
-https://my-private-link-speech.cognitiveservices.azure.com/v1.0/issuetoken
-```
-(Yukarıdaki [konuşmayı metne REST API v 3.0](#speech-to-text-rest-api-v30) alt bölümünde ayrıntılı açıklama bölümüne bakın)
-- Alınan belirteci kullanma ile seslerinin listesini alın
-```http
-https://my-private-link-speech.cognitiveservices.azure.com/tts/cognitiveservices/voices/list
-```
-(aşağıdaki "konuşma SDK 'Sı ile kullanım" başlıklı [genel ilke](#general-principle) alt bölümünde ayrıntılı açıklama bölümüne bakın)
+Özel uç nokta özellikli konuşma kaynağı için, aynı işlem sırası için uç nokta URL 'Lerinin değiştirilmesi gerekir. Aynı sıra şöyle görünür:
 
-#### <a name="speech-resource-with-custom-domain-name-and-private-endpoint-usage-with-speech-sdk"></a>Özel etki alanı adı ve özel uç nokta içeren konuşma kaynağı. Konuşma SDK 'Sı ile kullanım
+- Yetkilendirme belirteci alın:
+  ```http
+  https://my-private-link-speech.cognitiveservices.azure.com/v1.0/issuetoken
+  ```
+  Daha önceki [konuşmadan metne REST API v 3.0](#speech-to-text-rest-api-v30) alt bölümünde ayrıntılı açıklama bölümüne bakın.
 
-Özel etki alanı adı ve özel uç nokta etkin konuşma kaynaklarıyla konuşma SDK 'sının kullanılması, uygulama kodunuzun gözden geçirilmesi ve olası değişiklikleri gerektirir.
+- Alınan belirteci kullanarak, seslerin listesini alın:
+  ```http
+  https://my-private-link-speech.cognitiveservices.azure.com/tts/cognitiveservices/voices/list
+  ```
+  Konuşma SDK 'Sı için [genel ilkeler](#general-principles) alt bölümünde ayrıntılı bir açıklama bölümüne bakın.
+
+#### <a name="speech-resource-with-a-custom-domain-name-and-a-private-endpoint-usage-with-the-speech-sdk"></a>Özel etki alanı adı ve özel uç nokta içeren konuşma kaynağı: konuşma SDK 'Sı ile kullanım
+
+Konuşma SDK 'sını özel bir etki alanı adı ve özel uç nokta özellikli konuşma kaynaklarıyla kullanmak, uygulama kodunuzu incelemenizi ve büyük olasılıkla değiştirmenizi gerektirir.
 
 `my-private-link-speech.cognitiveservices.azure.com`Bu bölüm için örnek bir konuşma kaynağı DNS adı (özel etki alanı) olarak kullanacağız.
 
-##### <a name="general-principle"></a>Genel ilke
+##### <a name="general-principles"></a>Genel ilkeler
 
-Genellikle SDK senaryolarında (Ayrıca, metin okuma REST API senaryolarında) konuşma kaynakları, farklı hizmet teklifleri için adanmış bölgesel uç noktaları kullanır. Bu uç noktaların DNS ad biçimi: </p>`{region}.{speech service offering}.speech.microsoft.com`
+Genellikle SDK senaryolarında (ve metin okuma REST API senaryolarındaki), konuşma kaynakları farklı hizmet teklifleri için adanmış bölgesel uç noktaları kullanır. Bu uç noktaların DNS ad biçimi:
 
-Örnek: </p>`westeurope.stt.speech.microsoft.com`
+`{region}.{speech service offering}.speech.microsoft.com`
 
-Bölgenin tüm olası değerleri (DNS adının ilk öğesi) [burada](regions.md) listelenen bu tabloda, konuşma Hizmetleri sunumu için olası değer (DNS adının ikinci öğesi) gösterilmektedir:
+Örnek bir DNS adı:
 
-| DNS adı değeri | Konuşma Hizmetleri teklifi                                    |
+`westeurope.stt.speech.microsoft.com`
+
+Bölgenin tüm olası değerleri (DNS adının ilk öğesi) [konuşma hizmeti tarafından desteklenen bölgelerde](regions.md)listelenmiştir. Aşağıdaki tabloda, konuşma Hizmetleri Sunumu (DNS adının ikinci öğesi) için olası değerler sunulmaktadır:
+
+| DNS adı değeri | Konuşma hizmeti teklifi                                    |
 |----------------|-------------------------------------------------------------|
 | `commands`     | [Özel Komutlar](custom-commands.md)                       |
 | `convai`       | [Konuşma dökümü](conversation-transcription.md) |
 | `s2s`          | [Konuşma Çevirisi](speech-translation.md)                 |
 | `stt`          | [Konuşmayı metne dönüştürme](speech-to-text.md)                         |
-| `tts`          | [Metin okuma](text-to-speech.md)                         |
+| `tts`          | [Metin Okuma](text-to-speech.md)                         |
 | `voice`        | [Özel ses](how-to-custom-voice.md)                      |
 
-Bu nedenle, yukarıdaki örnek ( `westeurope.stt.speech.microsoft.com` ) Batı Avrupa Içinde konuşmaya metin uç noktası için temsil eder.
+Bu nedenle, önceki örnek ( `westeurope.stt.speech.microsoft.com` ) Batı Avrupa içindeki bir konuşmaya metin uç noktası için temsil eder.
 
-Özel uç nokta etkin uç noktalar, özel bir ara sunucu aracılığıyla konuşma hizmetleriyle iletişim kurar ve **uç nokta bağlantı URL 'lerini değiştirmeniz gerekir**. 
+Özel uç nokta etkin uç noktalar, konuşma hizmetleriyle özel bir ara sunucu aracılığıyla iletişim kurar. Bu nedenle, *uç nokta bağlantı URL 'lerini değiştirmeniz gerekir*. 
 
 "Standart" uç nokta URL 'SI şöyle görünür: <p/>`{region}.{speech service offering}.speech.microsoft.com/{URL path}`
 
 Özel bir uç nokta URL 'SI şöyle görünür: <p/>`{your custom name}.cognitiveservices.azure.com/{speech service offering}/{URL path}`
 
-**Örnek 1.** Uygulama aşağıdaki URL 'YI kullanarak iletişim kuruyor (Batı Avrupa için ABD Ingilizcesi için temel modeli kullanan konuşma tanıma):
+**Örnek 1.** Bir uygulama aşağıdaki URL 'YI kullanarak iletişim kuruyor (Batı Avrupa için ABD Ingilizcesi için temel modeli kullanarak konuşma tanıma):
 
 ```
 wss://westeurope.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US
 ```
 
-Konuşma kaynağının özel etki alanı adı olduğunda bunu özel uç nokta etkin senaryosunda kullanmak için `my-private-link-speech.cognitiveservices.azure.com` URL 'yi şöyle değiştirmeniz gerekir:
+Konuşma kaynağının özel etki alanı adı olduğunda bunu özel uç nokta etkin senaryosunda kullanmak için `my-private-link-speech.cognitiveservices.azure.com` URL 'yi şöyle değiştirmelisiniz:
 
 ```
 wss://my-private-link-speech.cognitiveservices.azure.com/stt/speech/recognition/conversation/cognitiveservices/v1?language=en-US
@@ -420,93 +421,95 @@ wss://my-private-link-speech.cognitiveservices.azure.com/stt/speech/recognition/
 Ayrıntılara dikkat edin:
 
 - Ana bilgisayar adı, `westeurope.stt.speech.microsoft.com` özel etki alanı ana bilgisayar adı ile değiştirilmiştir `my-private-link-speech.cognitiveservices.azure.com` .
-- Özgün DNS adının ikinci öğesi (), `stt` URL yolunun ilk öğesi olur ve özgün yoldan önce gelir. Yani özgün URL `/speech/recognition/conversation/cognitiveservices/v1?language=en-US` olur `/stt/speech/recognition/conversation/cognitiveservices/v1?language=en-US` .
+- Özgün DNS adının () ikinci öğesi, `stt` URL yolunun ilk öğesi olur ve özgün yoldan önce gelir. Yani özgün URL `/speech/recognition/conversation/cognitiveservices/v1?language=en-US` olur `/stt/speech/recognition/conversation/cognitiveservices/v1?language=en-US` .
 
-**Örnek 2.** Uygulama, Batı Avrupa özel bir ses modeli kullanarak konuşmayı sentezleştirmek için aşağıdaki URL 'YI kullanır):
+**Örnek 2.** Bir uygulama, özel bir ses modeli kullanarak Batı Avrupa konuşmayı sentezleştirmek için aşağıdaki URL 'YI kullanır:
 ```http
 https://westeurope.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId=974481cc-b769-4b29-af70-2fb557b897c4
 ```
 
-Aşağıda, konuşma kaynağının özel etki alanı adının kullanıldığı özel bir uç nokta kullanan eşdeğer bir URL verilmiştir `my-private-link-speech.cognitiveservices.azure.com` :
+Aşağıdaki eşdeğer URL, konuşma kaynağının özel etki alanı adının olduğu, etkin olan özel bir uç nokta kullanır `my-private-link-speech.cognitiveservices.azure.com` :
 
 ```http
 https://my-private-link-speech.cognitiveservices.azure.com/voice/cognitiveservices/v1?deploymentId=974481cc-b769-4b29-af70-2fb557b897c4
 ```
 
-Örnek 1 ' deki aynı ilke uygulanır, ancak bu zaman anahtar öğesi `voice` .
+Örnek 1 ' de aynı ilke uygulanır, ancak bu zaman anahtar öğesi `voice` .
 
-##### <a name="modify-applications"></a>Uygulamaları değiştirme
+##### <a name="modifying-applications"></a>Uygulamaları değiştirme
 
 Kodunuzu değiştirmek için şu adımları izleyin:
 
-**1. uygulama uç noktası URL 'sini belirleme**
+1. Uygulama uç noktası URL 'sini belirleme:
 
-- [Uygulamanız için günlüğe kaydetmeyi etkinleştirin](how-to-use-logging.md) ve günlüğe kaydetmek için çalıştırın.
-- Günlük dosyasında, araması yapın `SPEECH-ConnectionUrl` . Eşleşen satırlarda `value` parametresi, uygulamanızın konuşma hizmetine erişmek için kullandığı tam URL 'yi içerir.
+   - [Uygulamanız için günlüğe kaydetmeyi etkinleştirin](how-to-use-logging.md) ve günlüğe kaydetmek için çalıştırın.
+   - Günlük dosyasında, araması yapın `SPEECH-ConnectionUrl` . Eşleşen satırlarda `value` parametresi, uygulamanızın konuşma hizmetlerine erişmek için kullandığı tam URL 'yi içerir.
 
-Örnek:
+   Örnek:
 
-```
-(114917): 41ms SPX_DBG_TRACE_VERBOSE:  property_bag_impl.cpp:138 ISpxPropertyBagImpl::LogPropertyAndValue: this=0x0000028FE4809D78; name='SPEECH-ConnectionUrl'; value='wss://westeurope.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?traffictype=spx&language=en-US'
-```
+   ```
+   (114917): 41ms SPX_DBG_TRACE_VERBOSE:  property_bag_impl.cpp:138 ISpxPropertyBagImpl::LogPropertyAndValue: this=0x0000028FE4809D78; name='SPEECH-ConnectionUrl'; value='wss://westeurope.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?traffictype=spx&language=en-US'
+   ```
 
-Bu nedenle, uygulama tarafından kullanılan URL Bu örnekteki:
+   Bu nedenle, uygulamanın bu örnekte kullanılan URL 'SI:
 
-```
-wss://westeurope.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US
-```
+   ```
+   wss://westeurope.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US
+   ```
 
-**2. `SpeechConfig` tam uç nokta URL 'sini kullanarak örnek oluşturun**
+2. `SpeechConfig`Tam uç nokta URL 'si kullanarak bir örnek oluşturun:
 
-Yukarıdaki [genel prensibi](#general-principle) bölümünde açıklandığı gibi, önceki bölümde belirlediğiniz uç noktayı değiştirin.
+   1. Yeni belirlediğiniz uç noktayı, önceki [genel ilkeler](#general-principles) bölümünde açıklandığı gibi değiştirin.
 
-Şimdi örneğini oluşturma şeklini değiştirin `SpeechConfig` . Bugünün uygulamanız şuna benzer olabilir:
-```csharp
-var config = SpeechConfig.FromSubscription(subscriptionKey, azureRegion);
-```
-Bu, önceki bölümlerde açıklandığımız ana bilgisayar adı ve URL değişikliklerinden dolayı özel uç nokta özellikli konuşma kaynağı için çalışmayacaktır. Mevcut uygulamanızı özel bir uç noktası etkin bir kaynağın anahtarını kullanarak herhangi bir değişiklik yapmadan çalıştırmaya çalışırsanız, kimlik doğrulama hatası alırsınız (401).
+   1. Örneğini oluşturma şeklini değiştirin `SpeechConfig` . Büyük olasılıkla uygulamanız şuna benzer bir şey kullanıyor:
+      ```csharp
+      var config = SpeechConfig.FromSubscription(subscriptionKey, azureRegion);
+      ```
+      Bu, önceki bölümlerde açıklandığımız ana bilgisayar adı ve URL değişikliklerinden dolayı özel uç nokta özellikli bir konuşma kaynağı için çalışmaz. Var olan uygulamanızı özel uç nokta etkin bir kaynağın anahtarını kullanarak herhangi bir değişiklik yapmadan çalıştırmaya çalışırsanız, bir kimlik doğrulama hatası alırsınız (401).
 
-Bu işlemi gerçekleştirmek için, sınıfın örneğini oluşturma ve "bitiş noktası" ve " `SpeechConfig` bitiş noktası" başlatmasının nasıl kullanılacağı ile değiştirin. Aşağıdaki iki değişkenin tanımlı olduğunu varsayalım:
-- `subscriptionKey` Özel uç nokta etkin konuşma kaynağının anahtarını içeren
-- `endPoint` Tam **değiştirilen** uç nokta URL 'sini (karşılık gelenprogramlama dili için gereken türü kullanarak) içerir. Örneğimizde bu değişkenin şunu içermesi gerekir
-```
-wss://my-private-link-speech.cognitiveservices.azure.com/stt/speech/recognition/conversation/cognitiveservices/v1?language=en-US
-```
+      Bu işlemi gerçekleştirmek için, sınıfın örneğini oluşturma ve "bitiş noktası" ve `SpeechConfig` "bitiş noktası" başlatmasının nasıl kullanılacağı ile değiştirin. Aşağıdaki iki değişkenin tanımlı olduğunu varsayalım:
+      - `subscriptionKey` Özel uç nokta özellikli konuşma kaynağının anahtarını içerir.
+      - `endPoint` Tam *değiştirilen* uç nokta URL 'sini (karşılık gelen programlama dili için gereken türü kullanarak) içerir. Örneğimizde, bu değişken şunları içermelidir:
+        ```
+        wss://my-private-link-speech.cognitiveservices.azure.com/stt/speech/recognition/conversation/cognitiveservices/v1?language=en-US
+        ```
 
-Sonra bir örnek oluşturun `SpeechConfig` :
-```csharp
-var config = SpeechConfig.FromEndpoint(endPoint, subscriptionKey);
-```
-```cpp
-auto config = SpeechConfig::FromEndpoint(endPoint, subscriptionKey);
-```
-```java
-SpeechConfig config = SpeechConfig.fromEndpoint(endPoint, subscriptionKey);
-```
-```python
-import azure.cognitiveservices.speech as speechsdk
-speech_config = speechsdk.SpeechConfig(endpoint=endPoint, subscription=subscriptionKey)
-```
-```objectivec
-SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithEndpoint:endPoint subscription:subscriptionKey];
-```
+      Örnek oluşturun `SpeechConfig` :
+      ```csharp
+      var config = SpeechConfig.FromEndpoint(endPoint, subscriptionKey);
+      ```
+      ```cpp
+      auto config = SpeechConfig::FromEndpoint(endPoint, subscriptionKey);
+      ```
+      ```java
+      SpeechConfig config = SpeechConfig.fromEndpoint(endPoint, subscriptionKey);
+      ```
+      ```python
+      import azure.cognitiveservices.speech as speechsdk
+      speech_config = speechsdk.SpeechConfig(endpoint=endPoint, subscription=subscriptionKey)
+      ```
+      ```objectivec
+      SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithEndpoint:endPoint subscription:subscriptionKey];
+      ```
 
 > [!TIP]
-> Uç nokta URI 'sinde belirtilen sorgu parametreleri diğer API 'Ler tarafından ayarlansalar bile değiştirilmez. Örneğin, tanıma dili URI 'de "Language = en-US" sorgu parametresi olarak tanımlandıysa ve aynı zamanda ilgili özelliği aracılığıyla "ru-RU" olarak ayarlanırsa, URI 'deki dil ayarı kullanılır ve geçerli dil "en-US" dir. Uç nokta URI 'sinde ayarlanan parametreler her zaman ön tanımlayıcı alır. Yalnızca uç nokta URI 'sinde belirtilmeyen parametreler diğer API 'Ler tarafından geçersiz kılınabilir.
+> Uç nokta URI 'sinde belirtilen sorgu parametreleri, diğer API 'Ler tarafından ayarlansalar bile değiştirilmez. Örneğin, tanıma dili URI 'de sorgu parametresi olarak tanımlanırsa `language=en-US` ve ayrıca `ru-RU` karşılık gelen özelliği aracılığıyla olarak AYARLANDıYSA, URI 'deki dil ayarı kullanılır. Geçerli dil daha sonra `en-US` .
+>
+> Uç nokta URI 'sinde ayarlanan parametreler her zaman öncelik kazanır. Diğer API 'Ler yalnızca uç nokta URI 'sinde belirtilmeyen parametreleri geçersiz kılabilir.
 
-Bu değişiklikten sonra uygulamanızın özel özellikli konuşma kaynaklarıyla çalışması gerekir. Özel uç nokta senaryosuna yönelik daha sorunsuz destek üzerinde çalışıyoruz.
+Bu değişiklikten sonra uygulamanızın özel uç nokta özellikli konuşma kaynaklarıyla çalışması gerekir. Özel uç nokta senaryolarından daha sorunsuz destek üzerinde çalışıyoruz.
 
-### <a name="use-speech-resource-with-custom-domain-name-without-private-endpoints"></a>Özel uç noktaları olmadan özel etki alanı adıyla konuşma kaynağını kullanma
+### <a name="use-a-speech-resource-with-a-custom-domain-name-and-without-private-endpoints"></a>Özel bir etki alanı adı ve özel uç noktaları olmadan bir konuşma kaynağı kullanma
 
-Bu makalede, bir konuşma kaynağı için özel etki alanını etkinleştiren geri **alınamaz** ve söz konusu kaynak, konuşma hizmetleriyle iletişim kurarak "olağan dışı" ( [Bölgesel uç noktası adlarını](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints)kullanan) ile karşılaştırıldığında farklı bir iletişim yöntemi kullanacaktır.
+Bu makalede, bir konuşma kaynağı için özel bir etki alanı etkinleştirmenin geri *döndürülemez* bir kaç kez kullanıma sunuyoruz. Bu tür bir kaynak, [Bölgesel bitiş noktası adlarını](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints)kullanan kişilerle karşılaştırıldığında, konuşma hizmetleriyle iletişim kurmanın farklı bir yolunu kullanacaktır.
 
-Bu bölümde, bir konuşma kaynağının özel etki alanı adı ve konuşma Hizmetleri REST API ve [konuşma SDK 'sı](speech-sdk.md)ile özel uç noktaları **olmadan** nasıl kullanılacağı açıklanmaktadır. Bu, bir özel uç nokta senaryosunda kullanılan, ancak özel uç noktaları silinen bir kaynak olabilir.
+Bu bölümde, konuşma Hizmetleri REST API 'Leri ve [konuşma SDK 'sı](speech-sdk.md)ile özel uç noktaları *olmadan* , bir konuşma kaynağının etkin bir özel etki alanı adı ile nasıl kullanılacağı açıklanmaktadır. Bu, özel bir uç nokta senaryosunda kullanılan, ancak özel uç noktaları silinen bir kaynak olabilir.
 
 #### <a name="dns-configuration"></a>DNS yapılandırması
 
-Özel uç nokta etkin konuşma kaynağının özel etki alanı DNS adının [Ortak ağlardan nasıl çözümlendiğini](#resolve-dns-from-other-networks)unutmayın. Bu durumda IP adresi, ağ trafiğini özel uç nokta etkin bilişsel hizmetler kaynağına dağıtırken kullanılan bir VNet proxy uç noktasına işaret eder.
+Özel uç nokta etkin konuşma kaynağının özel etki alanı DNS adının [Ortak ağlardan nasıl çözümlendiğini](#resolve-dns-from-other-networks)unutmayın. Bu durumda, çözümlenen IP adresi bir sanal ağ için bir proxy uç noktasına işaret eder. Bu uç nokta, ağ trafiğini özel uç nokta etkin bilişsel hizmetler kaynağına dağıtırken kullanılır.
 
-Ancak, **Tüm** kaynak özel uç noktaları kaldırıldığında (veya özel etki alanı adı etkinleştirildikten sonra sağ), konuşma kaynağının CNAME kaydı yeniden sağlandıysa ve şimdi uygun bilişsel [Hizmetler bölgesel uç noktasının](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints)IP adresine işaret ediyorsa.
+Ancak, *Tüm* kaynak özel uç noktaları kaldırıldığında (veya özel etki alanı adının etkinleştirilmesiyle hemen sonra), konuşma kaynağının CNAME kaydı yeniden sağlanır. Artık ilgili bilişsel [Hizmetler bölgesel uç NOKTASıNıN](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints)IP adresine işaret eder.
 
 Bu nedenle komutun çıktısı şöyle görünür `nslookup` :
 ```dos
@@ -526,84 +529,78 @@ Aliases:  my-private-link-speech.cognitiveservices.azure.com
 ```
 [Bu bölümün](#resolve-dns-from-other-networks)çıkışıyla karşılaştırın.
 
-#### <a name="speech-resource-with-custom-domain-name-without-private-endpoints-usage-with-rest-api"></a>Özel uç noktaları olmadan özel etki alanı adına sahip konuşma kaynağı. REST API kullanımı
+#### <a name="speech-resource-with-a-custom-domain-name-and-without-private-endpoints-usage-with-the-rest-apis"></a>Özel bir etki alanı adına sahip ve özel uç noktaları olmayan konuşma kaynağı: REST API 'lerle kullanım
 
 ##### <a name="speech-to-text-rest-api-v30"></a>Konuşmayı metne REST API v 3.0
 
-Konuşmadan metne REST API v 3.0 kullanımı, [Özel uç nokta özellikli konuşma kaynakları](#speech-to-text-rest-api-v30)için tam olarak eşdeğerdir.
+Konuşmadan metne REST API v 3.0 kullanımı, [Özel uç nokta özellikli konuşma kaynakları](#speech-to-text-rest-api-v30)ile tamamen eşdeğerdir.
 
 ##### <a name="speech-to-text-rest-api-for-short-audio-and-text-to-speech-rest-api"></a>Kısa ses ve metinden konuşmaya REST API için konuşmadan metne REST API
 
-Bu durumda, kısa ses ve metinden konuşmaya REST API kullanım için konuşmadan metne REST API, kısa bir ses için konuşmaya metin REST API için tek bir özel durum ile genel durumda bir farklılık yoktur (aşağıdaki nota bakın). Her iki API de, kısa ses ve [metinden konuşmaya REST API](rest-text-to-speech.md) belgeleri [için konuşmadan metne REST API](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) açıklandığı gibi kullanılmalıdır.
+Bu durumda, kısa ses ve metinden konuşmaya REST API kullanımı için konuşmadan metne REST API kullanımı, kısa bir süre için konuşma-metin REST API için bir özel durum ile genel durumdan herhangi bir farklılık içermez. (Aşağıdaki nota bakın.) Kısa ses ve [metinden konuşmaya REST API](rest-text-to-speech.md) belgeleri [için konuşmadan metne REST API](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) , her iki API 'yi de kullanmanız gerekir.
 
 > [!NOTE]
-> Özel etki alanı senaryolarında **kısa ses için konuşmayı metne REST API** kullanırken, üst bilgiyle [geçirilmiş](rest-speech-to-text.md#request-headers) bir yetkilendirme belirteci kullanın `Authorization` [](rest-speech-to-text.md#request-headers). Üstbilgi aracılığıyla özel uç noktaya konuşma abonelik anahtarı geçirilmeyecektir `Ocp-Apim-Subscription-Key` ve  401 hatası oluşturacaktır.
+> Özel etki alanı senaryolarında kısa ses için konuşmayı metne REST API kullanırken, bir üst bilgiyle [geçirilen](rest-speech-to-text.md#request-headers) bir yetkilendirme belirteci kullanın `Authorization` [](rest-speech-to-text.md#request-headers). Üstbilgi aracılığıyla özel uç noktaya konuşma abonelik anahtarı geçirilmeyecektir `Ocp-Apim-Subscription-Key` ve 401 hatası  oluşturacaktır.
 
-#### <a name="speech-resource-with-custom-domain-name-without-private-endpoints-usage-with-speech-sdk"></a>Özel uç noktaları olmadan özel etki alanı adına sahip konuşma kaynağı. Konuşma SDK 'Sı ile kullanım
+#### <a name="speech-resource-with-a-custom-domain-name-and-without-private-endpoints-usage-with-the-speech-sdk"></a>Özel bir etki alanı adına sahip ve özel uç noktaları olmayan konuşma kaynağı: konuşma SDK 'Sı ile kullanım
 
-Özel etki uç noktaları **olmadan** konuşma SDK 'sını etkin bir şekilde kullanmak, uygulama kodunuzun gözden geçirilmesi ve olası değişiklikleri gerektirir. Bu değişikliklerin [özel bir uç nokta etkin konuşma kaynağı](#speech-resource-with-custom-domain-name-and-private-endpoint-usage-with-speech-sdk)ile karşılaştırıldığında **farklı** olduğunu unutmayın. Özel uç nokta/özel etki alanı senaryosuna yönelik daha sorunsuz destek üzerinde çalışıyoruz.
+Özel uç noktaları *olmadan* , özel etki alanı etkinleştirilmiş konuşma kaynaklarıyla konuşma SDK 'sını kullanmak, uygulama kodunuzun gözden geçirilmesini ve büyük olasılıkla değişiklikler yapılmasını gerektirir. Bu değişikliklerin [Özel uç nokta özellikli bir konuşma kaynağı](#speech-resource-with-a-custom-domain-name-and-a-private-endpoint-usage-with-the-speech-sdk)durumundan farklı olduğunu unutmayın. Özel uç nokta ve özel etki alanı senaryolarından daha sorunsuz destek üzerinde çalışıyoruz.
 
 `my-private-link-speech.cognitiveservices.azure.com`Bu bölüm için örnek bir konuşma kaynağı DNS adı (özel etki alanı) olarak kullanacağız.
 
-[Özel uç nokta etkin konuşma kaynağı](#speech-resource-with-custom-domain-name-and-private-endpoint-usage-with-speech-sdk) bölümünde, kullanılan uç nokta URL 'sini nasıl belirleyebiliyoruz, bunu değiştirip "/" uç noktasından "/" bir sınıf örneği başlatmasıyla çalışmasını nasıl yapacağız anlatılmıştır `SpeechConfig` .
+[Özel uç nokta özellikli konuşma kaynaklarında](#speech-resource-with-a-custom-domain-name-and-a-private-endpoint-usage-with-the-speech-sdk)bulunan bölümünde, uç nokta URL 'sini belirlemeyi, değiştirmeyi ve sınıf örneğinin "uç noktasından" bir "başlatmasıyla nasıl çalışacağını açıklıyoruz `SpeechConfig` .
 
-Ancak, tüm özel uç noktaları kaldırıldıktan sonra aynı uygulamayı çalıştırmayı denerseniz (bir süre DNS kaydı yeniden sağlanmasına izin vermek), Iç hizmet hatası alırsınız (404). Bunun nedeni, artık VNet proxy 'si yerine bölgesel bilişsel hizmetler uç noktasını işaret eden [DNS kaydıdır](#dns-configuration) ve gibi URL yolları `/stt/speech/recognition/conversation/cognitiveservices/v1?language=en-US` burada bulunamacaktır, bu nedenle "bulunamadı" hatası (404).
+Ancak, tüm özel uç noktaları kaldırıldıktan sonra aynı uygulamayı çalıştırmayı denerseniz (buna karşılık gelen DNS kaydı yeniden sağlanması için bir süre sağlar), bir iç hizmet hatası alırsınız (404). Bunun nedeni, [DNS kaydının](#dns-configuration) artık sanal ağ proxy 'si yerine bölgesel bilişsel hizmetler uç noktasını işaret ettiğini ve gibi URL yollarının `/stt/speech/recognition/conversation/cognitiveservices/v1?language=en-US` burada bulunamayadır.
 
-Uygulamanızı "standart" örneklemesini "geri alma" `SpeechConfig`
+Uygulamanızı aşağıdaki kodun stilinde standart örneklemesine geri alırsanız `SpeechConfig` , uygulamanız kimlik doğrulama hatasıyla sonlandırılır (401):
+
 ```csharp
 var config = SpeechConfig.FromSubscription(subscriptionKey, azureRegion);
 ```
-Uygulamanız, kimlik doğrulama hatasıyla (401) sona erecek.
 
 ##### <a name="modifying-applications"></a>Uygulamaları değiştirme
 
 Uygulamanızın özel bir etki alanı adı ve özel uç noktaları olmadan bir konuşma kaynağı kullanmasına izin vermek için aşağıdaki adımları izleyin:
 
-**1. bilişsel hizmetlerden kimlik doğrulama belirteci iste REST API**
+1. Bilişsel hizmetler REST API bir yetkilendirme belirteci isteyin. [Bu makale](../authentication.md#authenticate-with-an-authentication-token) , belirtecin nasıl alınacağını gösterir.
 
-[Bu makalede](../authentication.md#authenticate-with-an-authentication-token) bilişsel hizmetler REST API kullanarak belirtecin nasıl alınacağı gösterilmektedir.
+   Uç nokta URL 'sindeki özel etki alanı adınızı kullanın. Örneğimizde bu URL:
+   ```http
+   https://my-private-link-speech.cognitiveservices.azure.com/sts/v1.0/issueToken
+   ```
+   > [!TIP]
+   > Bu URL 'YI Azure portal bulabilirsiniz. Konuşma kaynağı sayfanızda, **kaynak yönetimi** grubu altında **anahtarlar ve uç nokta**' ı seçin.
 
-Uç nokta URL 'sindeki özel etki alanı adınızı kullanın, bizim örneğimizde bu URL şu şekilde olur:
-```http
-https://my-private-link-speech.cognitiveservices.azure.com/sts/v1.0/issueToken
-```
-> [!TIP]
-> Bu URL 'YI Azure portal bulabilirsiniz. Konuşma kaynağı sayfanızda, **kaynak yönetimi** grubunun altında **anahtarlar ve uç nokta**' ı seçin.
+1. `SpeechConfig`Önceki bölümde edindiğiniz yetkilendirme belirtecini kullanarak bir örnek oluşturun. Aşağıdaki değişkenlerin tanımlı olduğunu varsayalım:
 
-**2. "yetkilendirme belirtecinden" `SpeechConfig` /"yetkilendirme belirteci ile" kullanarak bir örnek oluşturun.**
+   - `token`: önceki bölümde edinilen yetkilendirme belirteci
+   - `azureRegion`: konuşma kaynak [bölgesinin](regions.md) adı (örnek: `westeurope` )
+   - `outError`: (yalnızca [Amaç C](/objectivec/cognitive-services/speech/spxspeechconfiguration#initwithauthorizationtokenregionerror) durumu için)
 
-`SpeechConfig`Önceki bölümde edindiğiniz yetkilendirme belirtecini kullanarak bir örnek oluşturun. Aşağıdaki değişkenlerin tanımlı olduğunu varsayalım:
+   Şöyle bir `SpeechConfig` örnek oluşturun:
 
-- `token`: önceki bölümde edinilen yetkilendirme belirteci
-- `azureRegion`: konuşma kaynak [bölgesinin](regions.md) adı (örnek: `westeurope` )
-- `outError`: (yalnızca [Amaç C](/objectivec/cognitive-services/speech/spxspeechconfiguration#initwithauthorizationtokenregionerror) Case için)
-
-Sonra bir örnek oluşturun `SpeechConfig` :
-
-```csharp
-var config = SpeechConfig.FromAuthorizationToken(token, azureRegion);
-```
-```cpp
-auto config = SpeechConfig::FromAuthorizationToken(token, azureRegion);
-```
-```java
-SpeechConfig config = SpeechConfig.fromAuthorizationToken(token, azureRegion);
-```
-```python
-import azure.cognitiveservices.speech as speechsdk
-speech_config = speechsdk.SpeechConfig(auth_token=token, region=azureRegion)
-```
-```objectivec
-SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithAuthorizationToken:token region:azureRegion error:outError];
-```
+   ```csharp
+   var config = SpeechConfig.FromAuthorizationToken(token, azureRegion);
+   ```
+   ```cpp
+   auto config = SpeechConfig::FromAuthorizationToken(token, azureRegion);
+   ```
+   ```java
+   SpeechConfig config = SpeechConfig.fromAuthorizationToken(token, azureRegion);
+   ```
+   ```python
+   import azure.cognitiveservices.speech as speechsdk
+   speech_config = speechsdk.SpeechConfig(auth_token=token, region=azureRegion)
+   ```
+   ```objectivec
+   SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithAuthorizationToken:token region:azureRegion error:outError];
+   ```
 > [!NOTE]
-> Çağıranın, yetkilendirme belirtecinin geçerli olduğundan emin olması gerekir.
-> Yetkilendirme belirtecinin süresi dolmadan önce, çağıranın bu ayarlayıcısı yeni bir geçerli belirteçle çağırarak yenilemesi gerekir.
-> Yeni bir tanıyıcı veya birleştirici oluştururken yapılandırma değerleri kopyalanırken, yeni belirteç değeri zaten oluşturulmuş Tanıyıcılar veya birleştiriciler için uygulanmaz.
-> Bunlar için, belirteci yenilemek üzere ilgili tanıyıcı veya birleştirici 'nin yetkilendirme belirtecini ayarlayın.
-> Belirteci yenilemezseniz tanıyıcı veya birleştirici çalışırken hatalarla karşılaşacaktır.
+> Çağıranın, yetkilendirme belirtecinin geçerli olduğundan emin olması gerekir. Yetkilendirme belirtecinin süresi dolmadan önce, çağıranın bu ayarlayıcısı yeni bir geçerli belirteçle çağırarak yenilemesi gerekir. Yeni bir tanıyıcı veya birleştirici oluştururken yapılandırma değerleri kopyalandığından, yeni belirteç değeri zaten oluşturulmuş Tanıyıcılar veya birleştiriciler için uygulanmaz.
+>
+> Bunlar için, belirteci yenilemek üzere ilgili tanıyıcı veya birleştirici 'nin yetkilendirme belirtecini ayarlayın. Belirteci yenilemezseniz tanıyıcı veya birleştirici çalışırken hatalarla karşılaşacaktır.
 
-Bu değişiklikten sonra, uygulamanızın özel uç noktaları olmadan özel bir etki alanı adı kullanan konuşma kaynaklarıyla çalışması gerekir.
+Bu değişiklikten sonra uygulamanız özel uç noktaları olmadan özel bir etki alanı adı kullanan konuşma kaynaklarıyla çalışmalıdır.
 
 ## <a name="pricing"></a>Fiyatlandırma
 
@@ -613,5 +610,5 @@ Fiyatlandırma ayrıntıları için bkz. [Azure özel bağlantı fiyatlandırmas
 
 * [Azure Özel Bağlantı](../../private-link/private-link-overview.md)
 * [Konuşma SDK'sı](speech-sdk.md)
-* [Konuşmayı metne dönüştürme REST API'si](rest-speech-to-text.md)
-* [Metin okuma REST API'si](rest-text-to-speech.md)
+* [Konuşmayı metne REST API](rest-speech-to-text.md)
+* [Metin okuma REST API](rest-text-to-speech.md)

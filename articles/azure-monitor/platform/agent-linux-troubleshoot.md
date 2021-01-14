@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 2b811b1ace646cc4e0a93b937fbb90cfbf7aec0f
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 26fb70592a75910ae21d327e53569eda12dfea97
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704903"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197379"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux için Log Analytics aracısıyla ilgili sorunları giderme 
 
@@ -96,6 +96,7 @@ Aracının temiz bir şekilde yeniden yüklemesinin çoğu sorunu gidereceğini 
 | 5 | Kabuk paketi kök olarak yürütülmelidir veya ekleme sırasında 403 hatası döndürüldü. Komutunu kullanarak komutunu çalıştırın `sudo` . |
 | 6 | Geçersiz Paket mimarisi veya ekleme sırasında 200 hatası döndürüldü. omsagent-*x64.sh paketleri yalnızca 64 bitlik sistemlere yüklenebilir ve omsagent-* x86.sh paketleri yalnızca 32 bit sistemlere yüklenebilir. [En son sürümden](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest)mimariniz için doğru paketi indirin. |
 | 17 | OMS paketi yüklemesi başarısız oldu. Kök hatası için komut çıktısına bakın. |
+| 18 | Omsmsconfig paketi yüklemesi başarısız oldu. Kök hatası için komut çıktısına bakın. |
 | 19 | OMı paketi yüklemesi başarısız oldu. Kök hatası için komut çıktısına bakın. |
 | 20 | SCX paketinin yüklemesi başarısız oldu. Kök hatası için komut çıktısına bakın. |
 | 21 | Sağlayıcı setlerinin yüklemesi başarısız oldu. Kök hatası için komut çıktısına bakın. |

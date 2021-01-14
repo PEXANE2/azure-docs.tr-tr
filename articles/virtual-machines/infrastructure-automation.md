@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: dfa0efaa49fbca0b927bfd32511348f3ded7e6c7
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 96c68850cfd8b03f7d1457eb0f1ca9ce5880c926
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302810"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198008"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Azure 'daki sanal makinelerle altyapı Otomasyonu araçlarını kullanma
 
@@ -88,7 +88,7 @@ Betikler, Azure Storage 'dan veya GitHub deposu gibi genel bir konumdan indirile
 Şunları nasıl yapacağınızı öğrenin:
 
 - [Azure CLI ile bir LINUX VM oluşturun ve özel Betik uzantısı 'nı kullanın](./scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md?toc=%2fcli%2fazure%2ftoc.json).
-- [Azure PowerShell ile bir Windows sanal makinesi oluşturun ve özel betik uzantısını kullanın](./scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md?toc=%2fpowershell%2fmodule%2ftoc.json).
+- [Azure PowerShell ile bir Windows sanal makinesi oluşturun ve özel betik uzantısını kullanın](./scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md).
 
 
 ## <a name="packer"></a>Packer

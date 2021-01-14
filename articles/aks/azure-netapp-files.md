@@ -4,12 +4,12 @@ description: Azure NetApp Files Azure Kubernetes hizmeti ile tümleştirme hakk�
 services: container-service
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: bc65c3dfad4c27c1650054c6836fbbbf07a7dbf2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 19727d3c3322b05f340463d94a2bc3884e5d9d93
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126262"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196019"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Azure NetApp Files Azure Kubernetes hizmeti ile tümleştirme
 
@@ -28,14 +28,14 @@ Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış ol
 Azure NetApp Files kullandığınızda aşağıdaki sınırlamalar geçerlidir:
 
 * Azure NetApp Files yalnızca [Seçili Azure bölgelerinde][anf-regions]kullanılabilir.
-* Azure NetApp Files kullanabilmeniz için, Azure NetApp Files hizmetine erişim verilmesi gerekir. Erişim için uygulamak üzere [Azure NetApp Files eklenebileceğinizi gönderim formunu][anf-waitlist]kullanabilirsiniz. Azure NetApp Files ekibinden resmi onay e-postasını yapana kadar Azure NetApp Files hizmetine erişemezsiniz.
+* Azure NetApp Files kullanabilmeniz için, Azure NetApp Files hizmetine erişim verilmesi gerekir. Erişim için uygulamak üzere [Azure NetApp Files eklenebileceğinizi gönderim formunu][anf-waitlist] kullanabilir veya adresine gidebilirsiniz https://azure.microsoft.com/services/netapp/#getting-started . Azure NetApp Files ekibinden resmi onay e-postasını yapana kadar Azure NetApp Files hizmetine erişemezsiniz.
 * Bir AKS kümesinin ilk dağıtımından sonra, yalnızca Azure NetApp Files statik sağlama desteklenir.
 * Azure NetApp Files ile dinamik sağlamayı kullanmak için [NetApp Trident](https://netapp-trident.readthedocs.io/) sürüm 19,07 veya üstünü yükleyip yapılandırın.
 
 ## <a name="configure-azure-netapp-files"></a>Azure NetApp Files Yapılandır
 
 > [!IMPORTANT]
-> *Microsoft. NetApp* kaynak sağlayıcısını kaydedebilmeniz için, aboneliğiniz için [Azure NetApp Files eklenebileceğinizi gönderim formunu][anf-waitlist] doldurmanız gerekir. Azure NetApp Files ekibinden resmi onay e-postasını yapana kadar kaynağı kaydedemezsiniz.
+> *Microsoft. NetApp* kaynak sağlayıcısını kaydedebilmek için [Azure NetApp Files eklenebileceğinizi gönderim formunu][anf-waitlist] doldurmanız veya aboneliğiniz için adresine gitmeniz gerekir https://azure.microsoft.com/services/netapp/#getting-started . Azure NetApp Files ekibinden resmi onay e-postasını yapana kadar kaynağı kaydedemezsiniz.
 
 *Microsoft. NetApp* kaynak sağlayıcısını kaydedin:
 
@@ -158,6 +158,8 @@ spec:
     storage: 100Gi
   accessModes:
     - ReadWriteMany
+  mountOptions:
+    - vers=3
   nfs:
     server: 10.0.0.4
     path: /myfilepath2

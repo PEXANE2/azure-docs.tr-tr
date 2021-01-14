@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: 3c1c7ac8fe8b7adf287bcde30a054df5ebaa63d7
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 2b6ea68d069b90293ab35024bebf3fbdc8acb592
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337449"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197685"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight 'a üçüncü taraf Apache Hadoop uygulamaları yüklemeyin
 
@@ -37,7 +37,7 @@ Aşağıdaki listede yayımlanan uygulamalar gösterilmektedir:
 |[Yıldız yağmuru Azure HDInsight için](https://azuremarketplace.microsoft.com/marketplace/apps/starburstdatainc1579800938563.starburst-presto?tab=Overview) |Hadoop |Presto, hızlı ve ölçeklenebilir bir dağıtılmış SQL sorgu altyapısıdır. Depolama ve işlem ayrımı için tasarlanmış, Presto, Azure Data Lake Storage, Azure Blob Storage, SQL ve NoSQL veritabanları ve diğer veri kaynaklarında veri sorgulamak için mükemmeldir. |
 |[HDInsight bulutu için StreamSets veri toplayıcısı](https://azuremarketplace.microsoft.com/marketplace/apps/streamsets.streamsets-data-collector-hdinsight) |Hadoop, HBase, Spark, Kafka |StreamSets veri toplayıcısı, verileri gerçek zamanlı olarak akıp basit ve güçlü bir altyapıdır. Veri akışlarındaki verileri yönlendirmek ve işlemek için veri toplayıcıyı kullanın. 30 günlük deneme lisansı ile birlikte gelir. |
 |[Trifacta Wrangler kurumsal](https://azuremarketplace.microsoft.com/marketplace/apps/trifacta.trifacta-db?tab=Overview) |Hadoop, Spark, HBase |HDInsight için trifacta Wrangler Enterprise, herhangi bir veri ölçeği için kurumsal çapta veri wrangini destekler. Azure üzerinde Trifacta çalıştırmanın maliyeti, üç aylık abonelik maliyetlerinin yanı sıra sanal makineler için Azure altyapı maliyetlerinin bir birleşimidir. |
-|[Sınıfı olmayan veri platformu](https://unifisoftware.com/platform/) |Hadoop, HBase, fırtınası, Spark |Sınıfı olmayan veri platformu, iş kullanıcısına artımlı gelir sağlayan veri zorluklarını ortadan kaldırmak, maliyetleri azaltmak veya işlemsel karmaşıklığı düşürmek için tasarlanan, sorunsuz bir şekilde tümleştirilmiş self servis veri araçları paketidir. |
+|[Sınıfı olmayan veri platformu](https://www.crunchbase.com/organization/unifi-software) |Hadoop, HBase, fırtınası, Spark |Sınıfı olmayan veri platformu, iş kullanıcısına artımlı gelir sağlayan veri zorluklarını ortadan kaldırmak, maliyetleri azaltmak veya işlemsel karmaşıklığı düşürmek için tasarlanan, sorunsuz bir şekilde tümleştirilmiş self servis veri araçları paketidir. |
 |[Unkıveldata APM](https://azuremarketplace.microsoft.com/marketplace/apps/unravel-data.unravel-app) |Spark |HDInsight Spark kümesi için veri uygulamasını kaldırma. |
 |[Su hattı AI-Driven Veri Kataloğu](https://azuremarketplace.microsoft.com/marketplace/apps/waterline_data.waterline_data) |Spark |İş terimleriyle verileri otomatik olarak etiketlemek için AI kullanarak verileri düzenler, düzenler ve yönetir. Sulu boya iş literı kataloğu, self servis analiz, uyumluluk ve idare ve BT yönetimi girişimleri için kritik, başarılı bir bileşendir. |
 
@@ -51,10 +51,10 @@ Aşağıdaki yordamda var olan bir HDInsight kümesine HDInsight uygulamaların�
 
 **HDInsight uygulaması yüklemesi**
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Sol menüden **Tüm Service**  >  **Analytics**  >  **HDInsight kümelerine** gidin.
 3. Listeden bir HDInsight kümesi seçin.  Henüz yoksa öncelikle bir tane oluşturmanız gerekir.  bkz. [Küme oluşturma](hadoop/apache-hadoop-linux-tutorial-get-started.md).
-4. **Ayarlar** kategorisi altında **uygulamalar** ' ı seçin. Ana pencerede yüklü uygulamaların bir listesini görebilirsiniz. 
+4. **Ayarlar** kategorisi altında **uygulamalar**' ı seçin. Ana pencerede yüklü uygulamaların bir listesini görebilirsiniz. 
    
     ![HDInsight uygulamaları portal menüsü](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)
 5. Menüden **+ Ekle** ' yi seçin. Kullanılabilir uygulamaların bir listesini görebilirsiniz.  **+ Ekle** gri ise bu, HDInsight kümesinin bu sürümü için bir uygulama olmadığı anlamına gelir.
@@ -66,7 +66,7 @@ Yükleme durumunu Portal bildirimlerinden görebilirsiniz (portalın üst kısm�
 
 ## <a name="install-applications-during-cluster-creation"></a>Küme oluşturma sırasında uygulama yükleme
 
-Bir küme oluştururken HDInsight uygulamaları yükleme seçeneğine sahipsiniz. İşlem sırasında, küme oluşturulup çalışır duruma geldikten sonra HDInsight uygulamaları yüklenir. Azure portal kullanarak küme oluşturma sırasında uygulamaları yüklemek için **yapılandırma + fiyatlandırma** sekmesinden **+ Uygulama Ekle** ' yi seçin.
+Bir küme oluştururken HDInsight uygulamaları yükleme seçeneğine sahipsiniz. İşlem sırasında, küme oluşturulup çalışır duruma geldikten sonra HDInsight uygulamaları yüklenir. Azure portal kullanarak küme oluşturma sırasında uygulamaları yüklemek için **yapılandırma + fiyatlandırma** sekmesinden **+ Uygulama Ekle**' yi seçin.
 
 ![Azure portal kümesi yapılandırma uygulamaları](./media/hdinsight-apps-install-applications/azure-portal-cluster-configuration-applications.png)
 
@@ -75,10 +75,10 @@ Portal bir küme için yüklü HDInsight uygulamalarının listesini ve yüklü 
 
 **HDInsight uygulamasını listeleme ve özellikleri görüntüleme**
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Sol menüden **Tüm Service**  >  **Analytics**  >  **HDInsight kümelerine** gidin.
 3. Listeden bir HDInsight kümesi seçin.
-4. **Ayarlar** kategorisi altında **uygulamalar** ' ı seçin. Ana pencerede yüklü uygulamaların bir listesini görebilirsiniz. 
+4. **Ayarlar** kategorisi altında **uygulamalar**' ı seçin. Ana pencerede yüklü uygulamaların bir listesini görebilirsiniz. 
    
     ![HDInsight uygulamaları yüklü uygulamalar](./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps-with-apps.png)
 5. Özelliği göstermek için yüklü uygulamalardan birini seçin. Özellik listeleri:

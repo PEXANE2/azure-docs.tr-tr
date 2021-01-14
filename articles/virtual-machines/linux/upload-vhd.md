@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: df2b58e0067932edd9dfa21ee1a6fbb2a5c1fdf7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 941be52f25b08589134f693b9c0fe17a8a87ff28
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87289761"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196410"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Azure CLı ile özel diskten bir Linux VM oluşturma
 
@@ -38,12 +38,12 @@ Bu makalede, özelleştirilmiş bir sanal sabit diskin (VHD) nasıl karşıya y�
 Aşağıdaki adımları tamamlayabilmeniz için şunlar gerekir:
 
 - Azure 'da kullanılmak üzere hazırlanan bir Linux sanal makinesi. Bu makalenin [VM 'Yi hazırla](#prepare-the-vm) bölümünde, SSH Ile bir VM 'ye bağlanmanız Için gereken Azure Linux Aracısı 'nı (waagent) yükleme konusunda nasıl özel bilgiler bulacağınızı ele alınmaktadır.
-- Mevcut bir [Azure tarafından onaylanan Linux dağılımınızdan](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) VHD dosyası (veya [onaylı olmayan dağıtımlar için BILGILERE](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)bakın) VHD biçimindeki bir sanal diske. VM ve VHD oluşturmak için birden çok araç mevcuttur:
-  - Kemu veya [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) [KVM](https://www.linux-kvm.org/page/RunningKVM)'yi yükleyip yapılandırarak, görüntü biçimi olarak VHD 'yi kullanmaya özen gösterin. Gerekirse, [bir görüntüyü ile dönüştürebilirsiniz](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) `qemu-img convert` .
+- Mevcut bir [Azure tarafından onaylanan Linux dağılımınızdan](endorsed-distros.md) VHD dosyası (veya [onaylı olmayan dağıtımlar için BILGILERE](create-upload-generic.md)bakın) VHD biçimindeki bir sanal diske. VM ve VHD oluşturmak için birden çok araç mevcuttur:
+  - Kemu veya [](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) [KVM](https://www.linux-kvm.org/page/RunningKVM)'yi yükleyip yapılandırarak, görüntü biçimi olarak VHD 'yi kullanmaya özen gösterin. Gerekirse, [bir görüntüyü ile dönüştürebilirsiniz](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) `qemu-img convert` .
   - Hyper-V ' d i [Windows 10](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) veya [Windows Server 2012/2012 R2](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))üzerinde de kullanabilirsiniz.
 
 > [!NOTE]
-> Yeni VHDX biçimi Azure 'da desteklenmez. Bir VM oluşturduğunuzda, VHD 'yi biçim olarak belirtin. Gerekirse, [QEMU-img Convert](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) veya [Convert-VHD](/powershell/module/hyper-v/convert-vhd?view=win10-ps) POWERSHELL cmdlet 'INI kullanarak VHDX disklerini VHD 'ye dönüştürebilirsiniz. Azure, Dinamik VHD 'leri karşıya yüklemeyi desteklemez, bu nedenle karşıya yüklemeden önce bu diskleri statik VHD 'lere dönüştürmeniz gerekir. [Go Için Azure VHD yardımcı programları](https://github.com/Microsoft/azure-vhd-utils-for-go) gibi araçları, Azure 'a yükleme işlemi sırasında dinamik diskleri dönüştürmek için kullanabilirsiniz.
+> Yeni VHDX biçimi Azure 'da desteklenmez. Bir VM oluşturduğunuzda, VHD 'yi biçim olarak belirtin. Gerekirse, [QEMU-img Convert](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) veya [Convert-VHD](/powershell/module/hyper-v/convert-vhd) POWERSHELL cmdlet 'INI kullanarak VHDX disklerini VHD 'ye dönüştürebilirsiniz. Azure, Dinamik VHD 'leri karşıya yüklemeyi desteklemez, bu nedenle karşıya yüklemeden önce bu diskleri statik VHD 'lere dönüştürmeniz gerekir. [Go Için Azure VHD yardımcı programları](https://github.com/Microsoft/azure-vhd-utils-for-go) gibi araçları, Azure 'a yükleme işlemi sırasında dinamik diskleri dönüştürmek için kullanabilirsiniz.
 > 
 > 
 
@@ -56,20 +56,20 @@ Aşağıdaki örneklerde,, ve gibi örnek parametre adlarını kendi değerlerin
 
 ## <a name="prepare-the-vm"></a>VM’yi hazırlama
 
-Azure çeşitli Linux dağıtımlarını destekler (bkz. [onaylı dağıtımlar](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). Aşağıdaki makalelerde, Azure 'da desteklenen çeşitli Linux dağıtımlarını hazırlama anlatılmaktadır:
+Azure çeşitli Linux dağıtımlarını destekler (bkz. [onaylı dağıtımlar](endorsed-distros.md)). Aşağıdaki makalelerde, Azure 'da desteklenen çeşitli Linux dağıtımlarını hazırlama anlatılmaktadır:
 
-* [CentOS Tabanlı Dağıtımlar](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [SLES ve openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Diğerleri: onaylı olmayan dağıtımlar](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [CentOS Tabanlı Dağıtımlar](create-upload-centos.md)
+* [Debian Linux](debian-create-upload-vhd.md)
+* [Oracle Linux](oracle-create-upload-vhd.md)
+* [Red Hat Enterprise Linux](redhat-create-upload-vhd.md)
+* [SLES ve openSUSE](suse-create-upload-vhd.md)
+* [Ubuntu](create-upload-ubuntu.md)
+* [Diğerleri: onaylı olmayan dağıtımlar](create-upload-generic.md)
 
 Ayrıca, Linux görüntülerini Azure için hazırlama hakkında daha genel ipuçları için bkz. [Linux yükleme notları](create-upload-generic.md#general-linux-installation-notes) .
 
 > [!NOTE]
-> [Azure platformu SLA 'sı](https://azure.microsoft.com/support/legal/sla/virtual-machines/) yalnızca, bir onaylama dağıtımlarından biri, [Azure-Endorsed dağıtımlarında Linux](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)'ta "Desteklenen sürümler" altında belirtildiği gibi yapılandırma ayrıntıları Ile kullanıldığında Linux çalıştıran VM 'ler için geçerlidir.
+> [Azure platformu SLA 'sı](https://azure.microsoft.com/support/legal/sla/virtual-machines/) yalnızca, bir onaylama dağıtımlarından biri, [Azure-Endorsed dağıtımlarında Linux](endorsed-distros.md)'ta "Desteklenen sürümler" altında belirtildiği gibi yapılandırma ayrıntıları Ile kullanıldığında Linux çalıştıran VM 'ler için geçerlidir.
 > 
 > 
 
@@ -87,7 +87,7 @@ Aksi takdirde, VM 'nin bir anlık görüntüsünü alıp anlık görüntüden ye
 
 ### <a name="create-a-snapshot"></a>Anlık görüntü oluşturma
 
-Bu örnek, *Myresourcegroup* kaynak grubu Içinde *MYVM* adlı bir VM 'nin anlık görüntüsünü oluşturur ve *osdisksnapshot*adlı bir anlık görüntü oluşturur.
+Bu örnek, *Myresourcegroup* kaynak grubu Içinde *MYVM* adlı bir VM 'nin anlık görüntüsünü oluşturur ve *osdisksnapshot* adlı bir anlık görüntü oluşturur.
 
 ```azurecli
 osDiskId=$(az vm show -g myResourceGroup -n myVM --query "storageProfile.osDisk.managedDisk.id" -o tsv)
@@ -133,4 +133,4 @@ az vm create \
 Kaynak VM 'deki kimlik bilgileriyle VM 'de SSH oluşturmanız gerekir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Özel sanal diskinizi hazırladıktan ve karşıya yükledikten sonra, [Kaynak Yöneticisi ve şablonları kullanma](../../azure-resource-manager/management/overview.md)hakkında daha fazla bilgi edinebilirsiniz. Ayrıca, yeni sanal makinelerinize [bir veri diski eklemek](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) isteyebilirsiniz. Sanal makinelerinize erişmeniz gereken uygulamalarınız varsa, [bağlantı noktalarını ve uç noktaları açmayı](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)unutmayın.
+Özel sanal diskinizi hazırladıktan ve karşıya yükledikten sonra, [Kaynak Yöneticisi ve şablonları kullanma](../../azure-resource-manager/management/overview.md)hakkında daha fazla bilgi edinebilirsiniz. Ayrıca, yeni sanal makinelerinize [bir veri diski eklemek](add-disk.md) isteyebilirsiniz. Sanal makinelerinize erişmeniz gereken uygulamalarınız varsa, [bağlantı noktalarını ve uç noktaları açmayı](nsg-quickstart.md)unutmayın.

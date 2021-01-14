@@ -14,18 +14,18 @@ ms.workload: infrastructure
 ms.date: 06/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9254b3d19bd840b62d2f5f7023eba9a91e605d1e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2729369347de92153e9e8b84e008e5e22e732081
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967525"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197447"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>SAP HANA (büyük örnekler) depolama mimarisi
 
 Azure 'da SAP HANA için depolama düzeni (büyük örnekler), SAP tarafından önerilen yönergeler başına klasik dağıtım modelinde SAP HANA tarafından yapılandırılır. Yönergeler [SAP HANA depolama gereksinimleri](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) teknik incelemesi bölümünde belgelenmiştir.
 
-T türü sınıfının HANA büyük örneği, bellek hacminin depolama birimi olarak dört kat gelir. HANA büyük örnek birimlerinin tür II sınıfı için, depolama dört kat daha fazla değildir. Birimler, HANA işlem günlüğü yedeklemelerini depolamak için tasarlanan bir birimle gelir. Daha fazla bilgi için bkz. [Azure 'da SAP HANA (büyük örnekler) yükleyip yapılandırma](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+T türü sınıfının HANA büyük örneği, bellek hacminin depolama birimi olarak dört kat gelir. HANA büyük örnek birimlerinin tür II sınıfı için, depolama dört kat daha fazla değildir. Birimler, HANA işlem günlüğü yedeklemelerini depolamak için tasarlanan bir birimle gelir. Daha fazla bilgi için bkz. [Azure 'da SAP HANA (büyük örnekler) yükleyip yapılandırma](hana-installation.md).
 
 Depolama alanı ayırma açısından aşağıdaki tabloya bakın. Tablo, farklı HANA büyük örnek birimleri ile sunulan farklı birimler için kaba kapasiteyi listeler.
 
@@ -94,7 +94,7 @@ Bu boyutlar, dağıtıma ve birimlere bakmak için kullanılan araçlara göre d
 
 Daha fazla depolama alanı gerekebilir. Ek depolamayı 1 TB 'lik birimlerde satın alarak depolama alanı ekleyebilirsiniz. Bu ek depolama alanı, ek birim olarak eklenebilir. Ayrıca, mevcut birimlerden bir veya daha fazlasını genişletmek için de kullanılabilir. Birim boyutları, ilk dağıtıldığı ve genellikle önceki tablolar tarafından belgelendiği için azalabilir. Ayrıca, birimlerin adlarını veya takma adlarını değiştirmek mümkün değildir. Daha önce açıklanan depolama birimleri, NFS4 birimleri olarak HANA büyük örnek birimlerine eklenir.
 
-Yedekleme ve geri yükleme ve olağanüstü durum kurtarma amacıyla depolama anlık görüntülerini kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure 'da SAP HANA (büyük örnekler) yüksek kullanılabilirlik ve olağanüstü durum kurtarma](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Yedekleme ve geri yükleme ve olağanüstü durum kurtarma amacıyla depolama anlık görüntülerini kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure 'da SAP HANA (büyük örnekler) yüksek kullanılabilirlik ve olağanüstü durum kurtarma](hana-overview-high-availability-disaster-recovery.md).
 
 Senaryonuza yönelik depolama düzeni ayrıntıları için [HLI desteklenen senaryolar](hana-supported-scenario.md) bölümüne bakın.
 

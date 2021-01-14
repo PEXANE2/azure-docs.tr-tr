@@ -5,13 +5,13 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
-ms.date: 10/1/2020
-ms.openlocfilehash: 2e934ede193d6efb9cc795c6b63cb485b88f792e
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 01/13/2021
+ms.openlocfilehash: de4e7959a5778c7275427450ead876338f052882
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541428"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196784"
 ---
 # <a name="create-databases-and-users-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda veritabanları ve kullanıcılar oluşturma
 
@@ -20,25 +20,23 @@ ms.locfileid: "94541428"
 Bu makalede, MySQL için Azure veritabanı 'nda kullanıcıların nasıl oluşturulacağı açıklanır.
 
 > [!NOTE]
-> **Sapma ücretsiz iletişim**
+> Sapma ücretsiz iletişim
 >
-> Microsoft, farklı ve üçlü ortamları destekler. Bu makale, *İkincil* sözcüğe başvurular içerir. Kullanım açısından [ücretsiz iletişim Için Microsoft Stil Kılavuzu](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) bunu bir exclusionword olarak tanır. Bu makalede, şu anda yazılımda görünen sözcük olduğundan, bu makale tutarlılık için kullanılır. Yazılım, sözcüğü kaldıracak şekilde güncelleniyorsa, bu makale hizalamayla olacak şekilde güncelleştirilir.
+> Microsoft, farklı ve üçlü ortamları destekler. Bu makale _ana_ ve _bağımlı_ sözcüklere başvurular içerir. Kullanım açısından [ücretsiz iletişim Için Microsoft Stil Kılavuzu](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) , bu sözcükleri exclusionary kelimeleri olarak tanır. Bu makalede, şu anda yazılımda görüntülenen sözcükler olduklarından, bu makale tutarlılık için kullanılır. Yazılım, kelimeleri kaldırmak üzere güncelleniyorsa, bu makale hizalamayla olacak şekilde güncelleştirilir.
 >
 
 MySQL Server için Azure veritabanınızı ilk oluşturduğunuzda, bir sunucu yöneticisi Kullanıcı adı ve parolası sağladınız. Daha fazla bilgi için bu [hızlı](quickstart-create-mysql-server-database-using-azure-portal.md)başlangıca bakın. Sunucu Yöneticisi Kullanıcı adınızı Azure portal belirleyebilirsiniz.
 
-Sunucu Yöneticisi kullanıcısının şu ayrıcalıkları vardır: 
+Sunucu Yöneticisi kullanıcısının şu ayrıcalıkları vardır:
 
    SEÇME, EKLEME, GÜNCELLEŞTIRME, SILME, OLUŞTURMA, BıRAKMA, YENIDEN YÜKLEME, IŞLEME, BAŞVURULARı, DIZIN, DEĞIŞTIRME, VERITABANLARıNı GÖSTERME, GEÇICI TABLOLAR OLUŞTURMA, TABLOLARı KILITLEME, YÜRÜTME, ÇOĞALTMA BAĞıMLı, ÇOĞALTMA ISTEMCISI, GÖRÜNÜM OLUŞTURMA, GÖRÜNÜMÜ GÖSTERME, RUTIN OLUŞTURMA, RUTIN YORDAM, KULLANıCı OLUŞTURMA, OLAY, TETIKLEYICI
 
-
-MySQL için Azure veritabanı sunucusu oluşturduktan sonra, daha fazla kullanıcı oluşturmak ve bunlara yönetici erişimi sağlamak için ilk sunucu yöneticisi hesabını kullanabilirsiniz. Tek tek veritabanı şemalarına erişimi olan daha az ayrıcalıklı kullanıcılar oluşturmak için de sunucu yöneticisi hesabını kullanabilirsiniz.
+MySQL için Azure veritabanı sunucusu oluşturduktan sonra, daha fazla kullanıcı oluşturmak ve bunlara yönetici erişimi vermek için ilk sunucu yöneticisi hesabını kullanabilirsiniz. Tek tek veritabanı şemalarına erişimi olan daha az ayrıcalıklı kullanıcılar oluşturmak için de sunucu yöneticisi hesabını kullanabilirsiniz.
 
 > [!NOTE]
 > Süper ayrıcalık ve DBA rolü desteklenmez. Hizmette Nelerin desteklenmediğini anlamak için sınırlamalar makalesindeki [ayrıcalıkları](concepts-limits.md#privileges--data-manipulation-support) gözden geçirin.
 >
 > Ve gibi parola `validate_password` eklentileri `caching_sha2_password` hizmeti tarafından desteklenmez.
-
 
 ## <a name="to-create-a-database-with-a-non-admin-user-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda yönetici olmayan bir kullanıcıyla veritabanı oluşturmak için
 
@@ -46,7 +44,7 @@ MySQL için Azure veritabanı sunucusu oluşturduktan sonra, daha fazla kullanı
    Veritabanı sunucusuna bağlanmak için tam sunucu adı ve yönetici oturum açma kimlik bilgileri gerekir. Sunucu adını ve oturum açma bilgilerini sunucuya **genel bakış** sayfasında veya Azure Portal **Özellikler** sayfasında kolayca bulabilirsiniz.
 
 2. Veritabanı sunucunuza bağlanmak için yönetici hesabı ve parolasını kullanın. MySQL çalışma ekranı, mysql.exe veya HeidiSQL gibi tercih ettiğiniz istemci aracını kullanın.
-   
+
    Nasıl bağlanadığınızdan emin değilseniz, bkz. [tek sunucu için verileri bağlama ve sorgulama](./connect-workbench.md) veya [esnek sunucu için verileri bağlama ve sorgulama](./flexible-server/connect-workbench.md).
 
 3. Aşağıdaki SQL kodunu düzenleyin ve çalıştırın. Yer tutucu değerini `db_user` amaçlanan Yeni Kullanıcı adınızla değiştirin. Yer tutucu değerini `testdb` veritabanı adınızla değiştirin.
@@ -73,28 +71,29 @@ MySQL için Azure veritabanı sunucusu oluşturduktan sonra, daha fazla kullanı
 
 5. Sunucuda, belirlenen veritabanını belirterek ve Yeni Kullanıcı adı ve parolayı kullanarak oturum açın. Bu örnekte MySQL komut satırı gösterilmektedir. Bu komutu kullandığınızda Kullanıcı parolasını girmeniz istenir. Kendi sunucu adı, veritabanı adı ve Kullanıcı adınızı kullanın.
 
-   # <a name="single-server"></a>[Tek sunucu](#tab/single-server)
+   ### <a name="single-server"></a>[Tek sunucu](#tab/single-server)
 
    ```azurecli-interactive
    mysql --host mydemoserver.mysql.database.azure.com --database testdb --user db_user@mydemoserver -p
    ```
-   # <a name="flexible-server"></a>[Esnek sunucu](#tab/flexible-server)
+
+   ### <a name="flexible-server"></a>[Esnek sunucu](#tab/flexible-server)
 
    ```azurecli-interactive
    mysql --host mydemoserver.mysql.database.azure.com --database testdb --user db_user -p
    ```
  ---
 
-## <a name="to-create-additional-admin-users-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda ek yönetici kullanıcılar oluşturmak için
+## <a name="to-create-more-admin-users-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda daha fazla yönetici kullanıcı oluşturmak için
 
 1. Bağlantı bilgilerini ve yönetici kullanıcı adını alın.
    Veritabanı sunucusuna bağlanmak için tam sunucu adı ve yönetici oturum açma kimlik bilgileri gerekir. Sunucu adını ve oturum açma bilgilerini sunucuya **genel bakış** sayfasında veya Azure Portal **Özellikler** sayfasında kolayca bulabilirsiniz.
 
 2. Veritabanı sunucunuza bağlanmak için yönetici hesabı ve parolasını kullanın. MySQL çalışma ekranı, mysql.exe veya HeidiSQL gibi tercih ettiğiniz istemci aracını kullanın.
-   
+
    Nasıl bağlanadığınızdan emin değilseniz, bkz. [bağlanmak ve veri sorgulamak Için MySQL çalışma ekranı kullanma](./connect-workbench.md).
 
-3. Aşağıdaki SQL kodunu düzenleyin ve çalıştırın. Yer tutucu değerini `new_master_user` Yeni Kullanıcı adınızla değiştirin. Bu söz dizimi, kullanıcıya tüm veritabanı şemaları ( *.* ) üzerinde listelenen ayrıcalıkları verir ( `new_master_user` Bu örnekte).
+3. Aşağıdaki SQL kodunu düzenleyin ve çalıştırın. Yer tutucu değerini `new_master_user` Yeni Kullanıcı adınızla değiştirin. Bu söz dizimi, kullanıcıya tüm veritabanı şemaları (*.*) üzerinde listelenen ayrıcalıkları verir ( `new_master_user` Bu örnekte).
 
    ```sql
    CREATE USER 'new_master_user'@'%' IDENTIFIED BY 'StrongPassword!';
@@ -119,7 +118,8 @@ MySQL için Azure veritabanı sunucuları, "azure_superuser" adlı bir kullanıc
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bağlantı kurmasını sağlamak için yeni kullanıcıların makinelerinin IP adresleri için güvenlik duvarını açın:
-- [Tek bir sunucuda güvenlik duvarı kuralları oluşturma ve yönetme](howto-manage-firewall-using-portal.md) 
-- [ Esnek sunucuda güvenlik duvarı kuralları oluşturma ve yönetme](flexible-server/how-to-connect-tls-ssl.md)
+
+* [Tek bir sunucuda güvenlik duvarı kuralları oluşturma ve yönetme](howto-manage-firewall-using-portal.md)
+* [Esnek sunucuda güvenlik duvarı kuralları oluşturma ve yönetme](flexible-server/how-to-connect-tls-ssl.md)
 
 Kullanıcı hesabı yönetimi hakkında daha fazla bilgi için, [Kullanıcı hesabı yönetimi](https://dev.mysql.com/doc/refman/5.7/en/access-control.html), [sözdizimi verme](https://dev.mysql.com/doc/refman/5.7/en/grant.html)ve [ayrıcalıklar](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html)için MySQL ürün belgelerine bakın.

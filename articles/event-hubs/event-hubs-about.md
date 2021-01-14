@@ -2,13 +2,13 @@
 title: Azure Event Hubs nedir? -Büyük veri alma hizmeti | Microsoft Docs
 description: Saniyede milyonlarca olayın eklenmesini sağlayan bir Büyük Veri akış hizmeti olan Azure Event Hubs hakkında daha fazla bilgi edinin.
 ms.topic: overview
-ms.date: 06/23/2020
-ms.openlocfilehash: b0124f023eab6638c986beb2305b1c4c375b47ee
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.date: 01/13/2021
+ms.openlocfilehash: 36eeb38d9ed1696c9524ae9b346065756ce49c46
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954354"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98195780"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs — büyük bir veri akışı platformu ve olay alma hizmeti
 Azure Event Hubs, büyük bir veri akışı platformu ve olay alma hizmetidir. Saniyede milyonlarca olayı alabilir ve işleyebilir. Bir olay hub’ına gönderilen veriler, herhangi bir gerçek zamanlı analiz sağlayıcısı ve işlem grubu oluşturma/depolama bağdaştırıcıları kullanılarak dönüştürülüp depolanabilir.
@@ -66,7 +66,7 @@ Event Hubs şu [temel bileşenleri](event-hubs-features.md) içerir:
 
 Aşağıdaki şekilde Event Hubs akış işleme mimarisi gösterilmektedir:
 
-![Event Hubs](./media/event-hubs-about/event_hubs_architecture.png)
+![Event Hubs](./media/event-hubs-about/event_hubs_architecture.svg)
 
 ## <a name="event-hubs-on-azure-stack-hub"></a>Azure Stack Hub üzerinde Event Hubs
 Azure Stack hub 'ında Event Hubs, karma bulut senaryolarına olanak tanır. Hem şirket içi hem de Azure bulut işlemleri için akış ve olay tabanlı çözümler desteklenir. Senaryonuz karma (bağlı) veya bağlantısı kesik olsun, çözümünüz olayları/akışları büyük ölçekte işlemeyi destekleyebilir. Senaryonuz yalnızca gereksinimlerinize göre sağlayabileceğiniz Event Hubs kümesi boyutu ile ilişkilidir. 

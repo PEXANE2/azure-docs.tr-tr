@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: bf593eab54233ab65435585485dd8e3940f5addb
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d2abc357a5a636aa15909a3645e284c978fb903f
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489828"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197600"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure kimlik yönetimi ve erişim denetimi en iyi güvenlik uygulamaları
 
@@ -275,7 +275,7 @@ Azure AD yönetici rollerine bir veya daha fazla kalıcı olarak atanan her bire
 **Ayrıntı**: yönetici iş istasyonu kullanın. Bir iş istasyonu güvenliği düzeyi seçin:
 
 - Son derece güvenli üretkenlik cihazları, gözatma ve diğer üretkenlik görevlerine yönelik gelişmiş güvenlik sağlar.
-- [Ayrıcalıklı erişim Iş istasyonları (Paw 'lar)](/windows-server/identity/securing-privileged-access/privileged-access-workstations) , hassas görevler için internet saldırılarına ve tehdit vektörlerinden korunan adanmış bir işletim sistemi sağlar.
+- [Ayrıcalıklı erişim Iş istasyonları (Paw 'lar)](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) , hassas görevler için internet saldırılarına ve tehdit vektörlerinden korunan adanmış bir işletim sistemi sağlar.
 
 **En iyi yöntem**: Çalışanlar kuruluştan ayrıldığında yönetici hesaplarının sağlamasını kaldırma.
 **Ayrıntı**: Çalışanlar kuruluştan ayrıldığında yönetici hesaplarını devre dışı bırakan veya silen bir işlem yapın.

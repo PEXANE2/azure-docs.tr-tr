@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: c824e0abea7320a20441e51caa2a05d534ff61b3
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 003a71f962652b1a1436f5d9875835534090a77a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092695"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196597"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Verilerinizi Azure purview 'da otomatik olarak etiketleme
 
@@ -33,8 +33,9 @@ Purview 'da, sınıflandırmalar konu etiketlerine benzerdir ve tarama sırasın
 Takip, Microsoft 365 olarak gizli bilgi türleri olarak da bilinen aynı sınıflandırmaları kullanır.  MıP duyarlılık etiketleri Microsoft 365 güvenlik ve Uyumluluk Merkezi 'nde (SCC) oluşturulur. Bu, mevcut duyarlılık etiketlerinizi Azure purview varlıklarınız genelinde genişletmenizi sağlar.
 
 > [!NOTE]
-> Sınıflandırmalar doğrudan eşleştirirken (sosyal güvenlik numarası bir **sosyal güvenlik numarası** sınıflandırmasına sahiptir), bir veya daha fazla sınıflandırma ve senaryo birlikte bulunduğunda duyarlık etiketleri uygulanır. 
-> 
+> Sınıflandırmalar, **sosyal güvenlik numarası** sınıflandırmasına sahip olan sosyal güvenlik numarası gibi doğrudan eşleştirilir. 
+>
+> Buna karşılık, bir veya daha fazla sınıflandırma ve koşul birlikte bulunduğunda duyarlık etiketleri uygulanır. Bu bağlamda [koşullar](/microsoft-365/compliance/apply-sensitivity-label-automatically) , **başka bir sınıflandırmaya yakınlık** ve **% güvenirlik** gibi yapılandırılmamış veriler için tanımlayabileceğiniz tüm parametrelere başvurur. 
 
 Azure purview içindeki duyarlılık etiketleri, dosyalara ve veritabanı sütunlarına otomatik olarak Etiketler uygulamak için kullanılabilir.
 
@@ -91,11 +92,6 @@ Kuruluşlar, MıP 'nin duyarlılık etiketlerini Azure purview ile genişleterek
 > Microsoft 365 ve Azure purview ayrı hizmetler olduğundan, farklı bölgelerde dağıtılabilecek bir olasılık vardır. Etiket adları ve özel hassas bilgi türü adları müşteri verileri olarak kabul edilir ve verilerinizin duyarlılığını korumak ve GDPR yasaları önlemek için varsayılan olarak aynı COĞRAFI konum içinde tutulur.
 >
 > Bu nedenle, Etiketler ve özel hassas bilgi türleri varsayılan olarak Azure purview ile paylaşılmaz ve bunları Azure purview ' de kullanmak için onay gerektirir.
-
-> [!IMPORTANT]
-> İzniniz, Microsoft 'un etiket adını ve özel hassas bilgi türü adını hem Azure purview hem *de* Azure Güvenlik MERKEZI (ASC) ile paylaşmasını sağlar. Microsoft, önerilerinizi ve uyarılarınızı ASC ile zenginleştirmek için Azure purview 'daki etiket bilgilerini kullanır. 
->
-> Microsoft 365 Uyumluluk Merkezi 'nde bu verileri her iki hizmet ile paylaşmak için geçerlidir. Şu anda etiketleme bilgilerini yalnızca Azure purview ile paylaşma seçeneği yoktur.
 
 **Duyarlılık etiketlerini takip görünümüne genişletmek için:**
 

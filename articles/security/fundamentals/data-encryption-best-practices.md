@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: c88a2cf33cf1149a17af4a82dcf2858822f0c6d4
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3808da24c1baf6dd6e3332d4bd26fd176b761c65
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696158"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196087"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure veri güvenliği ve şifreleme için en iyi yöntemler
 Bu makalede veri güvenliği ve şifreleme için en iyi uygulamalar açıklanmaktadır.
@@ -74,7 +74,7 @@ Kullanıcıların ne erişimi olduğunu denetlemek için Azure RBAC kullanın. �
 Saldırıların büyük çoğunluğunun son kullanıcıyı hedeflemesini sağladığından, uç nokta birincil saldırı noktalarından biri haline gelir. Uç noktayı kapatan bir saldırgan, kullanıcının kimlik bilgilerini kullanarak kuruluşun verilerine erişim elde edebilir. Çoğu uç nokta saldırısı, kullanıcıların kendi yerel iş istasyonlarında yönetici oldukları gerçeden yararlanır.
 
 **En iyi yöntem**: hassas hesapları, görevleri ve verileri korumak için güvenli bir yönetim iş istasyonu kullanın.   
-**Ayrıntı**: İş istasyonlarındaki saldırı yüzeyini azaltmak için [ayrıcalıklı erişim iş istasyonu](/windows-server/identity/securing-privileged-access/privileged-access-workstations) kullanın. Bu güvenli yönetim iş istasyonları, bu saldırıların bazılarını azaltmanıza ve verilerinizin daha güvenli olmasını sağlamanıza yardımcı olabilir.
+**Ayrıntı**: İş istasyonlarındaki saldırı yüzeyini azaltmak için [ayrıcalıklı erişim iş istasyonu](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) kullanın. Bu güvenli yönetim iş istasyonları, bu saldırıların bazılarını azaltmanıza ve verilerinizin daha güvenli olmasını sağlamanıza yardımcı olabilir.
 
 **En iyi yöntem**: Endpoint Protection 'ı doğrulayın.   
 **Ayrıntı**: veri konumundan (bulut veya şirket içi) bağımsız olarak verileri tüketmek için kullanılan tüm cihazlarda güvenlik ilkelerini zorunlu tutun.

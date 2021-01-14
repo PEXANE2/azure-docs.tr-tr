@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f3e4c411223a3e8fc0602602cd941a00f7a19cca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 808443cb805b2dee2426198f9cd4f7ba502d8999
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87028252"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197515"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Azure’da Windows VM’si için belirli RDP hata iletileri sorunları giderme
 Azure 'da bir Windows sanal makinesine (VM) Uzak Masaüstü bağlantısı kullanırken, belirli bir hata iletisi alabilirsiniz. Bu makalede, karşılaşılan daha yaygın hata iletilerinin bazıları ve bunları çözmek için sorun giderme adımlarıyla birlikte ayrıntılar verilmektedir. VM 'nize RDP kullanarak bağlanma sorunları yaşıyorsanız ancak belirli bir hata iletisiyle karşılaşmayın, [Uzak Masaüstü için sorun giderme kılavuzuna](troubleshoot-rdp-connection.md)bakın.
@@ -109,7 +109,7 @@ Her Windows bilgisayarında, uzaktan oturum açabilirler hesapları ve grupları
 Bağlanırken kullandığınız hesabın uzak masaüstü oturum açma haklarına sahip olduğundan emin olun. Geçici bir çözüm olarak, Uzak Masaüstü üzerinden bağlanmak için bir etki alanı veya yerel yönetici hesabı kullanın. İstenen hesabı uzak masaüstü kullanıcıları yerel grubuna eklemek için, Microsoft Yönetim Konsolu ek bileşenini (**sistem araçları > yerel kullanıcılar ve gruplar > gruplar > uzak masaüstü kullanıcıları**) kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu hatalardan hiçbiri oluştuysa ve RDP kullanarak bağlanma ile ilgili bilinmeyen bir sorununuz varsa, [Uzak Masaüstü için sorun giderme kılavuzuna](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)bakın.
+Bu hatalardan hiçbiri oluştuysa ve RDP kullanarak bağlanma ile ilgili bilinmeyen bir sorununuz varsa, [Uzak Masaüstü için sorun giderme kılavuzuna](troubleshoot-rdp-connection.md)bakın.
 
 * Bir VM üzerinde çalışan uygulamalara erişme sorunlarını giderme adımları için bkz. [Azure VM 'de çalışan bir uygulamaya erişim sorunlarını giderme](./troubleshoot-app-connection.md?toc=/azure/virtual-machines/linux/toc.json).
 * Azure 'da bir Linux VM 'sine bağlanmak üzere Secure Shell (SSH) kullanarak sorun yaşıyorsanız, bkz. [Azure 'Da LINUX VM Ile SSH bağlantılarında sorun giderme](./troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json).

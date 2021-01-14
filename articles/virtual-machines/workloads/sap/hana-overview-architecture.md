@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 01/04/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c06988bf9c3558f5ef82862bdbcd821dc42ca28a
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 5ec3500c124d3e4f8cb1b46445c28c6a64c93526
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97880996"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98195458"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>Azure üzerinde SAP HANA (Büyük Örnekler) nedir?
 
@@ -52,11 +52,11 @@ Bu belge, Azure 'daki SAP HANA (büyük örnekler) kapsayan çeşitli belgelerde
 
 HANA büyük örnek kılavuzunun farklı belgeleri aşağıdaki alanlara sahiptir:
 
-- [Azure 'da SAP HANA (büyük örnekler) genel bakış ve mimari](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Azure 'da SAP HANA (büyük örnekler) altyapı ve bağlantı](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Azure 'da SAP HANA (büyük örnekler) yükleyip yapılandırma](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Azure 'da yüksek kullanılabilirlik ve olağanüstü durum kurtarma SAP HANA (büyük örnekler)](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Azure 'da sorun giderme ve izleme SAP HANA (büyük örnekler)](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Azure 'da SAP HANA (büyük örnekler) genel bakış ve mimari](hana-overview-architecture.md)
+- [Azure 'da SAP HANA (büyük örnekler) altyapı ve bağlantı](hana-overview-infrastructure-connectivity.md)
+- [Azure 'da SAP HANA (büyük örnekler) yükleyip yapılandırma](hana-installation.md)
+- [Azure 'da yüksek kullanılabilirlik ve olağanüstü durum kurtarma SAP HANA (büyük örnekler)](hana-overview-high-availability-disaster-recovery.md)
+- [Azure 'da sorun giderme ve izleme SAP HANA (büyük örnekler)](troubleshooting-monitoring.md)
 - [STONITH kullanarak SUSE 'de yüksek kullanılabilirlik kurulumu](./ha-setup-with-stonith.md)
 - [Düzeltme 3 damgalarının tür II SKU 'Ları için işletim sistemi yedekleme ve geri yükleme](./os-backup-type-ii-skus.md)
 - [Azure rezervasyonuyla SAP HANA Büyük Örnekleri’nden tasarruf etme](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md)

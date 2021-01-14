@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: daberry
-ms.openlocfilehash: f48963a4d18e80cb67bfbbdc532d34f89b8b5d8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d94f7389ce96c2e3bda35413cbcc7b1e8a992683
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87028456"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197549"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Azure 'da yeni bir Linux sanal makinesi oluşturma konusunda Kaynak Yöneticisi dağıtım sorunlarını giderme
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -46,23 +46,23 @@ Sorun gidermeye başlamak için, sorunla ilişkili hatayı belirlemek üzere etk
 
 **Karşıya yükleme hataları:**
 
-**N<sup>1</sup>:** İşletim sistemi Linux genelleştirilir ve özelleştirilmiş olarak karşıya yüklenirse, VM sağlama aşamasında takılı olduğundan bir sağlama zaman aşımı hatası alırsınız.
+**N <sup>1</sup>:** İşletim sistemi Linux genelleştirilir ve özelleştirilmiş olarak karşıya yüklenirse, VM sağlama aşamasında takılı olduğundan bir sağlama zaman aşımı hatası alırsınız.
 
-**N<sup>2</sup>:** İşletim sistemi Linux özelleşmiş ise ve genelleştirilmiş olarak yüklenirse, yeni VM özgün bilgisayar adı, Kullanıcı adı ve parola ile çalıştığı için bir sağlama hatası hatası alırsınız.
+**N <sup>2</sup>:** İşletim sistemi Linux özelleşmiş ise ve genelleştirilmiş olarak yüklenirse, yeni VM özgün bilgisayar adı, Kullanıcı adı ve parola ile çalıştığı için bir sağlama hatası hatası alırsınız.
 
-**Çözünürlüğüne**
+**Çözüm:**
 
 Bu hataları gidermek için, şirket içinde bulunan özgün VHD 'yi, işletim sistemi (Genelleştirilmiş/özelleştirilmiş) ile aynı ayarla birlikte karşıya yükleyin. Genelleştirilmiş olarak karşıya yüklemek için önce çalıştırmayı unutmayın.
 
 **Yakalama hataları:**
 
-**N<sup>3</sup>:** İşletim sistemi Linux genelleştirilir ve özel olarak yakalandıysa, orijinal VM Genelleştirilmiş olarak işaretlendiğinden kullanılabilir olmadığı için bir sağlama zaman aşımı hatası alırsınız.
+**N <sup>3</sup>:** İşletim sistemi Linux genelleştirilir ve özel olarak yakalandıysa, orijinal VM Genelleştirilmiş olarak işaretlendiğinden kullanılabilir olmadığı için bir sağlama zaman aşımı hatası alırsınız.
 
-**N<sup>4</sup>:** İşletim sistemi Linux özelleşmiş ise ve genelleştirilmiş olarak yakalandıysa, yeni VM özgün bilgisayar adı, Kullanıcı adı ve parolasıyla çalıştığı için bir sağlama hatası hatası alırsınız. Ayrıca, özgün VM özelleştirilmiş olarak işaretlendiğinden kullanılabilir değildir.
+**N <sup>4</sup>:** İşletim sistemi Linux özelleşmiş ise ve genelleştirilmiş olarak yakalandıysa, yeni VM özgün bilgisayar adı, Kullanıcı adı ve parolasıyla çalıştığı için bir sağlama hatası hatası alırsınız. Ayrıca, özgün VM özelleştirilmiş olarak işaretlendiğinden kullanılabilir değildir.
 
-**Çözünürlüğüne**
+**Çözüm:**
 
-Bu hataları gidermek için, portaldan geçerli görüntüyü silin ve [geçerli VHD 'lerden](../linux/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , işletim sistemi (Genelleştirilmiş/özelleştirilmiş) ile aynı ayarı kullanarak yeniden yakalayın.
+Bu hataları gidermek için, portaldan geçerli görüntüyü silin ve [geçerli VHD 'lerden](../linux/capture-image.md) , işletim sistemi (Genelleştirilmiş/özelleştirilmiş) ile aynı ayarı kullanarak yeniden yakalayın.
 
 ## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>Sorun: özel/galeri/Market görüntüsü; ayırma hatası
 Bu hata, yeni VM isteği istenen VM boyutunu destekleyebilen bir kümeye sabitlendiğinde veya isteğe uygun boş alana sahip olmadığında ortaya çıkar.
@@ -74,7 +74,7 @@ Bu hata, yeni VM isteği istenen VM boyutunu destekleyebilen bir kümeye sabitle
 * Daha küçük bir VM boyutu kullanarak isteği yeniden deneyin.
 * İstenen VM 'nin boyutu değiştirilenemez:
   * Kullanılabilirlik kümesindeki tüm VM 'Leri durdurun.
-    Kaynak **grupları**' na tıklayın  >  *your resource group*  >  **Resources**  >  *kullanılabilirlik kümesi*sanal  >  **makinelerinizi**  >  *sanal makinenizin*  >  **durulacağı**kaynak grubu
+    Kaynak **grupları**' na tıklayın  >    >    >  *kullanılabilirlik kümesi* sanal  >  **makinelerinizi**  >  *sanal makinenizin*  >  **durulacağı** kaynak grubu
   * Tüm VM 'Ler durduktan sonra, istenen boyutta yeni VM 'yi oluşturun.
   * Önce yeni VM 'yi başlatın ve sonra durdurulan sanal makinelerin her birini seçip **Başlat**' a tıklayın.
 

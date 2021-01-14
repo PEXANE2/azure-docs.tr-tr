@@ -3,12 +3,12 @@ title: Özelliklere genel bakış-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, Azure Event Hubs özellikleri ve terminolojisi hakkında ayrıntılar sağlanmaktadır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 0730a5fa3abbc6b27cb96431125564a2475a90d1
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 60dc964d1b827eec75ee4f65a5776710e57fd6eb
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955663"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98195798"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure Event Hubs'ın özellikleri ve terminolojisi
 
@@ -104,7 +104,7 @@ Aşağıdaki örneklerde, Tüketici grubu URI kuralı gösterilmektedir:
 
 Aşağıdaki şekilde Event Hubs akış işleme mimarisi gösterilmektedir:
 
-![Event Hubs mimarisi](./media/event-hubs-features/event_hubs_architecture.png)
+![Event Hubs mimarisi](./media/event-hubs-about/event_hubs_architecture.svg)
 
 ### <a name="stream-offsets"></a>Akış uzaklıkları
 

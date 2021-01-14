@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 860bc9440547a4c62336ccc573859ec56b3400b5
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: c3e2245ae47504e058921c532ed40a220e95423d
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533868"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197583"
 ---
 # <a name="azure-security-baseline-for-site-recovery"></a>Site Recovery için Azure Güvenlik temeli
 
@@ -222,9 +222,9 @@ Yönetim hesapları için kimlik ve erişim denetimini izlemek ve düzenli aral�
 
 **Rehberlik**: yönetim görevleri için Azure çok faktörlü kimlik doğrulaması ile güvenli, Azure tarafından yönetilen bir iş istasyonu (bir ayrıcalıklı erişim iş istasyonu (Paw) olarak da bilinir) kullanın ve Site Recovery kaynaklarda ayrıcalıklı eylemler gerçekleştirin.
 
-- [Ayrıcalıklı Erişim İş İstasyonları](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [Ayrıcalıklı Erişim İş İstasyonları](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [Bulut tabanlı bir Azure AD Multi-Factor Authentication dağıtımı planlama](../active-directory/authentication/howto-mfa-getstarted.md)
+- [Bulut tabanlı Azure AD Multi-Factor Authentication dağıtımı planlama](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 

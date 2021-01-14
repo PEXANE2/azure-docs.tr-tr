@@ -1,18 +1,18 @@
 ---
-title: Purview öngörülerini kullanarak verilerinizde sınıflandırma raporlaması (Önizleme)
-description: Bu nasıl yapılır kılavuzunda, verileriniz üzerinde purview Insights sınıflandırma raporlama 'nın nasıl görüntüleneceği ve kullanılacağı açıklanmaktadır.
+title: Purview öngörülerini kullanarak Azure Takiview 'ta verileriniz üzerinde sınıflandırma raporlaması
+description: Bu nasıl yapılır kılavuzunda, verileriniz üzerinde purview sınıflandırma raporlamasının nasıl görüntüleneceği ve kullanılacağı açıklanmaktadır.
 author: batamig
 ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: bb3c7cc3f51eae90c5b712d224407e639b232fbc
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: a0eed27636a3f65d68489d1f2249db784ba1d722
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938894"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196546"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>Azure purview 'daki verilerinize ilişkin öngörüleri sınıflandırma
 
@@ -33,7 +33,9 @@ Purview Insights 'ı kullanmaya başlamadan önce aşağıdaki adımları tamaml
 
 - Azure kaynaklarınızı ayarlayın ve test verileriyle ilgili hesapları doldurulmuştur
 
-- Her veri kaynağındaki test verilerini ayarlama ve bir taramayı tamamlanan 
+- Her veri kaynağındaki test verilerini ayarlama ve bir taramayı tamamlanan
+
+- Bir [veri okuyucu veya veri seçkin rolü](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)ile birlikte bir hesapla oturum açıldı.
 
 Daha fazla bilgi için bkz. [Azure purview 'ta veri kaynaklarını yönetme (Önizleme)](manage-data-sources.md).
 
@@ -60,7 +62,7 @@ Purview, Microsoft 365 ile aynı hassas bilgi türlerini kullanır ve bu, mevcut
 
    Ana **Sınıflandırma öngörüleri** sayfasında aşağıdaki bölgeler görüntülenir:
 
-   |Alan  |Açıklama  |
+   |Alan  |Description  |
    |---------|---------|
    |**Sınıflandırmalarla kaynaklara genel bakış**     |Şunları sağlayan kutucukları görüntüler: <br>-Verilerinizde bulunan aboneliklerin sayısı <br>-Verilerinizde bulunan benzersiz sınıflandırmaların sayısı <br>-Bulunan sınıflandırılmış kaynakların sayısı <br>-Bulunan sınıflandırılmış dosya sayısı <br>-Bulunan sınıflandırılmış tablo sayısı         |
    |**Sınıflandırılmış verileri olan en popüler kaynaklar (son 30 gün)**     |Sınıflandırılmış verilerle bulunan kaynak sayısının son 30 günü boyunca eğilimi gösterir.            |
@@ -79,7 +81,7 @@ Aşağıdaki **Sınıflandırma öngörülerinin** hiçbirinde daha fazla ayrın
 - **Tablolar için üst sınıflandırmalar**
 - **Sınıflandırma verileri > sınıflandırma etkinliği**
 
-Örnek:
+Örneğin:
 
 :::image type="content" source="media/insights/view-classifications-small.png" alt-text="Tüm sınıflandırmaları görüntüle" lightbox="media/insights/view-classifications.png":::
 
