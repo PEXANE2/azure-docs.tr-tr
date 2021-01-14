@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: mimckitt
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 181f226a4d7aa37ffd8c667db4736a96450e2be5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a91e21994dda126e14c100bcf1d2a69c36b13e1e
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955965"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202173"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Windows VM ve Azure Resource Manager şablonlarıyla izleme ve tanılama kullanma
 Azure Tanılama uzantısı, Windows tabanlı bir Azure sanal makinesinde izleme ve tanılama özellikleri sağlar. Uzantıyı Azure Resource Manager şablonun bir parçası olarak ekleyerek sanal makinede bu özellikleri etkinleştirebilirsiniz. Bir sanal makine şablonunun parçası olarak herhangi bir uzantı ekleme hakkında daha fazla bilgi için bkz. [VM uzantılarına sahip Azure Resource Manager şablonları yazma](../windows/template-description.md#extensions) . Bu makalede, Azure Tanılama uzantısını bir Windows sanal makine şablonuna nasıl ekleyebileceğiniz açıklanır.  
@@ -63,7 +63,7 @@ Basit Kaynak Yöneticisi tabanlı bir sanal makine için uzantı yapılandırmas
 ]
 ```
 
-Diğer bir yaygın kural, uzantı yapılandırmasını, sanal makinenin kaynaklar düğümü altında tanımlamak yerine şablonun kök kaynakları düğümüne eklemektir. Bu yaklaşımda, uzantı ile sanal makine arasında *ad* ve *tür* değerleriyle açık bir şekilde hiyerarşik ilişki belirtmeniz gerekir. Örnek: 
+Diğer bir yaygın kural, uzantı yapılandırmasını, sanal makinenin kaynaklar düğümü altında tanımlamak yerine şablonun kök kaynakları düğümüne eklemektir. Bu yaklaşımda, uzantı ile sanal makine arasında *ad* ve *tür* değerleriyle açık bir şekilde hiyerarşik ilişki belirtmeniz gerekir. Örneğin: 
 
 ```json
 "name": "[concat(variables('vmName'),'Microsoft.Insights.VMDiagnosticsSettings')]",
@@ -179,5 +179,5 @@ Her Wadölçümler tablosu şu sütunları içerir:
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 * Tanılama uzantısına sahip bir Windows sanal makinesinin tam örnek şablonu için bkz. [201-VM-Monitoring-Diagnostics-Extension](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-monitoring-diagnostics-extension)   
-* [Azure PowerShell](../windows/ps-template.md) veya [Azure komut satırı](../linux/create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) kullanarak Azure Resource Manager şablonu dağıtma
+* [Azure PowerShell](../windows/ps-template.md) veya [Azure komut satırı](../linux/create-ssh-secured-vm-from-template.md) kullanarak Azure Resource Manager şablonu dağıtma
 * [Azure Resource Manager şablonları yazma](../../azure-resource-manager/templates/template-syntax.md) hakkında daha fazla bilgi edinin

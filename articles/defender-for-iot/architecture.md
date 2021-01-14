@@ -11,20 +11,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/02/2020
+ms.date: 1/13/2021
 ms.author: shhazam
-ms.openlocfilehash: 3b5a586b5db4fb15a32090e601bac5610ece1427
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: f3239434a7ba737bc9323bc4f383afd794800db1
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832583"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201493"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>IoT mimarisi için Azure Defender
 
-Bu makalede, IoT için Defender çözümünün işlevsel sistem mimarisi açıklanmaktadır.
+Bu makalede, IoT için Defender çözümünün işlevsel sistem mimarisi açıklanmaktadır. IoT için Azure Defender, ortamınızın ihtiyaçlarını, kuruluşların aracısız çözümünü ve cihaz oluşturucuları için aracı tabanlı çözümü sunan iki özellik kümesi sunar.
 
-## <a name="defender-for-iot-components"></a>IoT bileşenleri için Defender
+## <a name="agentless-solution-for-organizations"></a>Kuruluşlar için aracısız çözüm
+### <a name="defender-for-iot-components"></a>IoT bileşenleri için Defender
 
 IoT için Defender, hem Azure bulutuna hem de şirket içi bileşenlere bağlanır. Çözüm, birden fazla uzak konum içeren büyük ve coğrafi olarak dağıtılmış ortamlarda ölçeklenebilirlik için tasarlanmıştır. Bu çözüm, ülke, bölge, iş birimi veya bölgeye göre çok katmanlı bir dağıtılmış mimariye izin vermez. 
 
@@ -79,12 +80,12 @@ Karma ortamlarda IoT için Azure Defender 'ın yönetilmesi iki yönetim portal�
 - Şirket içi yönetim konsolu
 - Azure portal
 
-#### <a name="sensor-console"></a>Algılayıcı konsolu
+### <a name="sensor-console"></a>Algılayıcı konsolu
 Algılayıcı algılamaları, bir ağ eşlemesinde, varlık envanterinde ve çok çeşitli raporlarda, örneğin risk değerlendirmesi raporları, veri araştırma sorguları ve saldırı vektörleri gibi görüntülenebileceği, araştırılabilecek ve çözümlenebilecekleri algılayıcı konsolunda görüntülenir. Ayrıca, algılayıcı motorları tarafından algılanan tehditleri görüntüleyip işlemek, bilgileri iş ortağı sistemlerine iletmek, kullanıcıları yönetmek ve daha fazlasını yapmak için konsolunu da kullanabilirsiniz.
 
 :::image type="content" source="./media/architecture/sensor-console-v2.png" alt-text="IoT algılayıcı konsolu için Defender":::
 
-#### <a name="on-premises-management-console"></a>Şirket içi yönetim konsolu
+### <a name="on-premises-management-console"></a>Şirket içi yönetim konsolu
 Şirket içi yönetim konsolu, güvenlik işlemleri Merkezi (SOC) işleçlerinin birden çok sensörden tek bir panoda toplanan uyarıları yönetmesine ve analiz etmesine olanak sağlar ve bu da OT ağlarının sistem durumunun genel bir görünümünü sağlar.
 
 Bu mimari, bir SOC düzeyinde ağın kapsamlı bir görünümünü, iyileştirilmiş uyarı işlemeyi ve işlemsel ağ güvenliğinin denetimini sunarak karar verme ve risk yönetiminin flavasız kalmasını sağlar.
@@ -103,20 +104,23 @@ SOC iş akışlarınızla sıkı bir şekilde tümleştirilmiş ve Kitaplar çal
 
    :::image type="content" source="media/updates/alerts-and-site-management-v2.png" alt-text="Tüm uyarılarınızı ve bilgilerinizi yönetin.":::
 
-#### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Azure 'daki IoT portalı için Defender, size yardımcı olmak için kullanılır:
 
 - Çözüm gereçlerini satın alma
+
 - Yazılım yükleyip güncelleştirme
 - Azure 'a sensörlerden katılın
 - Tehdit zekası paketlerini güncelleştirme
 
-## <a name="embedded-security-agent-built-in-mode"></a>Katıştırılmış Güvenlik Aracısı: yerleşik mod
+## <a name="agent-based-solution-for-device-builders"></a>Cihaz oluşturucular için aracı tabanlı çözüm
+
+### <a name="embedded-security-agent-built-in-mode"></a>Katıştırılmış Güvenlik Aracısı: yerleşik mod
 
 **Yerleşik** modda IoT Hub 'ınızdaki **güvenlik** seçeneğini açmayı seçtiğinizde IoT için Defender etkinleştirilir. Gerçek zamanlı izleme, öneriler ve uyarılar sunma, yerleşik mod, tek adımlı cihaz görünürlüğü ve eşleşmeyen güvenlik sunar. Derleme modu, herhangi bir cihazda aracı yüklemesi gerektirmez ve alan cihazınızı ve IoT Hub 'ınızı çözümlemek ve korumak için günlüğe kaydedilen etkinliklerde gelişmiş çözümlemeler kullanır.
 
-## <a name="embedded-security-agent-enhanced-mode"></a>Katıştırılmış Güvenlik Aracısı: Gelişmiş mod
+### <a name="embedded-security-agent-enhanced-mode"></a>Katıştırılmış Güvenlik Aracısı: Gelişmiş mod
 
 **Gelişmiş** modda, IoT Hub 'ınızdaki **güvenlik** seçeneğini açıp ve cihazlarınızda IoT cihaz aracıları için Defender 'ı yükledikten sonra aracılar cihazlarınızdan ham güvenlik olaylarını toplar, toplar ve analiz eder. Ham güvenlik olayları, IP bağlantıları, işlem oluşturma, Kullanıcı oturum açmaları ve güvenlikle ilgili diğer bilgileri içerebilir. IoT cihaz aracıları için Defender, yüksek ağ aktarım hızını önlemeye yardımcı olmak için olay toplamayı da işler. Aracılar yüksek düzeyde özelleştirilebilir ve en hızlı SLA 'da yalnızca önemli bilgileri göndermek ya da kapsamlı güvenlik bilgilerini ve bağlamı daha büyük kesimlerde toplamak, daha yüksek hizmet maliyetlerine izin vermek gibi belirli görevler için bunları kullanmanıza olanak sağlar.
 
@@ -129,6 +133,8 @@ IoT Analytics işlem hattı için Defender, Microsoft ve Microsoft iş ortaklar�
 IoT için Defender, analiz işlem hattını kullanarak, eyleme dönüştürülebilir öneriler ve uyarılar oluşturmak için tüm bilgi akışlarını birleştirir. İşlem hattı, güvenlik araştırmacıları ve uzmanlar tarafından oluşturulan özel kuralların yanı sıra standart cihaz davranışından ve risk analizinden sapma arayan makine öğrenimi modellerini içerir.
 
 Her müşterinin Log Analytics çalışma alanına IoT önerileri ve uyarıları için Defender (analiz işlem hattı çıkışı) yazılır. Çalışma alanındaki ham olayların yanı sıra uyarı ve öneriler de dahil olmak üzere, algılanan şüpheli etkinliklerin tam ayrıntılarını kullanarak derinlemesine araştırma ve sorgular sunar.
+
+:::image type="content" source="media/architecture/micro-agent-architecture.png" alt-text="Mikro aracı mimarisi.":::
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

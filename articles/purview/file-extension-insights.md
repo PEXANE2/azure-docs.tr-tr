@@ -1,18 +1,18 @@
 ---
-title: Purview öngörülerini kullanarak verilerinizde dosya uzantısı raporlama
-description: Bu nasıl yapılır kılavuzunda, verileriniz üzerinde purview Insights dosya uzantısının nasıl görüntüleneceği ve kullanılacağı açıklanmaktadır.
+title: Azure Takiview 'ta verileriniz üzerinde rapor oluşturma öngörülerini kullanarak dosya uzantısı
+description: Bu nasıl yapılır kılavuzunda, verileriniz üzerinde takip etme dosya uzantısının nasıl görüntüleneceği ve kullanılacağı açıklanmaktadır.
 author: batamig
 ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: 222106f5838a1eb237987afaa93924f1efe4a1f4
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 246a9dcfa35498d99fd403f10e5c17d7707efe84
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746293"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202632"
 ---
 # <a name="file-extension-insights-about-your-data-from-azure-purview"></a>Azure purview 'daki verilerinize ilişkin dosya uzantısı öngörüleri 
 
@@ -34,6 +34,9 @@ Purview Insights 'ı kullanmaya başlamadan önce aşağıdaki adımları tamaml
 
 - Her veri kaynağındaki test verilerini ayarlama ve bir taramayı tamamlanan
 
+- Bir [veri okuyucu veya veri seçkin rolü](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)ile birlikte bir hesapla oturum açıldı.
+
+
 Daha fazla bilgi için bkz. [Azure purview 'ta veri kaynaklarını yönetme (Önizleme)](manage-data-sources.md).
 
 ## <a name="use-purview-file-extension-insights"></a>Purview dosya uzantısı öngörülerini kullanma
@@ -49,7 +52,7 @@ Varlıklarınızı tararken Azure purview, verilerinizde bulunan dosya türlerin
 
 1. **Genel bakış** sayfasında, **Başlarken** bölümünde, **purview hesabını Başlat** kutucuğunu seçin.
 
-1. Takip görünümü ' nde, **Insights** :::image type="icon" source="media/insights/ico-insights.png" border="false"::: **Öngörüler** alanına erişmek için soldaki Öngörüler menü öğesini seçin.
+1. Takip görünümü ' nde,  :::image type="icon" source="media/insights/ico-insights.png" border="false"::: **Öngörüler** alanına erişmek için soldaki Öngörüler menü öğesini seçin.
     
 1. **Öngörüler** içinde **Dosya uzantıları** sekmesini seçin.
 
@@ -67,7 +70,7 @@ Varlıklarınızı tararken Azure purview, verilerinizde bulunan dosya türlerin
 
 Verilerinizde bulunan dosya türleriyle ilgili üst düzey bilgileri görüntüledikten sonra, bulundukları konum hakkında daha fazla ayrıntı ve gizli veriler için taranıp taranamayacağını öğrenmek için detaya gidin.
 
-Örnek:
+Örneğin:
 
 :::image type="content" source="media/file-extension-insights/file-extension-drilldown-small.png" alt-text="Dosya Uzantısı raporu-ayrıntıya git" lightbox="media/file-extension-insights/file-extension-drilldown.png":::
 
@@ -87,7 +90,7 @@ Gösterilen verileri filtrelemek için kılavuzun üzerindeki filtreleri kullan�
 |**Anahtar sözcüğe göre filtrele**     |    Dosya türlerinizi ada göre filtrelemek için **anahtar sözcüğe göre filtrele**  kutusuna metin girin. Örneğin, yalnızca PDF 'Leri görüntülemek için girin `PDF` .     |
 |**Saat**        | Verilerinizin oluşturulduğu zamana ait belirli bir zaman aralığına göre filtrelemek için seçin. <br>**Varsayılan:** 30 gün  |
 |**Dosya Uzantısı**     |Kılavuza bir veya daha fazla dosya türüne göre filtre uygulamak için seçin.        |
-|**Ğına**    |Kılavuza belirli veri kaynaklarına göre filtre uygulamak için seçin. |
+|**Kaynaklar**    |Kılavuza belirli veri kaynaklarına göre filtre uygulamak için seçin. |
 |**İçerik tarama**     |Yalnızca hassas veriler için daha fazla taranabilecek dosya türlerini veya **. CERT** veya **. jpg** dosyaları gibi taranmayan verileri göstermek için **desteklenen** veya **Desteklenmeyen**' ı seçin. |
 | | |
 

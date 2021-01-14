@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/13/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 263c038cf5003d950cf500ccc13cf562ac71db0c
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 8843bc803cdad07d8b66f9aeb87688c816158200
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185051"
+ms.locfileid: "98202292"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ticari Market avantajlarınız
 
@@ -65,7 +65,7 @@ Kavram, uygulama veya atölyenin deneme sürümünü veya danışmanlığını y
 
 Aşağıdaki tabloda liste, deneme ve danışmanlık teklifleri için uygunluk gereksinimleri özetlenmektedir:
 
-![Go-to-market avantajları](./media/marketplace-publishers-guide/gtm-eligibility-requirements.png)
+![Go-to-market avantajları](./media/marketplace-publishers-guide/go-to-market-gtm-eligibility-requirements.png)
 
 Tüm bu avantajlara yönelik ayrıntılı açıklamalar [Market 'Teki releye program destesi](https://aka.ms/marketplacerewards)' nde bulunabilir.
 

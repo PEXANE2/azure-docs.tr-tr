@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a92802f0b121a332afccf7f6c12e876b3263bd82
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 3ffd5dc1caef6bd2a77ca7902a117ad2446c0265
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96343952"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202326"
 ---
 # <a name="azure-security-baseline-for-expressroute"></a>ExpressRoute için Azure Güvenlik temeli
 
@@ -301,9 +301,9 @@ Ayrıca, özel yönetim hesaplarını izlemenize yardımcı olmak için Azure G�
 
 **Kılavuz**: azure ad MULTI-Factor AUTHENTICATION (MFA) Ile bir ayrıcalıklı erişim iş istasyonu (Paw) kullanarak Azure Sentinel ile ilgili kaynaklarınızı açın ve yapılandırın.
 
-* [Ayrıcalıklı Erişim İş İstasyonları](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Ayrıcalıklı Erişim İş İstasyonları](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-* [Bulut tabanlı bir Azure AD Multi-Factor Authentication dağıtımı planlama](../active-directory/authentication/howto-mfa-getstarted.md)
+* [Bulut tabanlı Azure AD Multi-Factor Authentication dağıtımı planlama](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 

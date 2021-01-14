@@ -5,13 +5,14 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/26/2020
-ms.openlocfilehash: 730b634f23599c5eef8c4c6c988820ae5e4fa9c8
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 01/13/2021
+ms.custom: references_regions
+ms.openlocfilehash: f4a97f5534e4fd3847bf1cce6874de0f006cce38
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535121"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201017"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı’nda okuma amaçlı çoğaltmalar
 
@@ -24,20 +25,21 @@ MySQL çoğaltma özellikleri ve sorunları hakkında daha fazla bilgi edinmek i
 > [!NOTE]
 > Sapma ücretsiz iletişim
 >
-> Microsoft, farklı ve üçlü ortamları destekler. Bu makale, _İkincil_ sözcüğe başvurular içerir. Kullanım açısından [ücretsiz iletişim Için Microsoft Stil Kılavuzu](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) bunu bir exclusionword olarak tanır. Bu makalede, şu anda yazılımda görüntülenen sözcük olduğundan, bu makalede tutarlılık için kullanılır. Yazılım, sözcüğü kaldıracak şekilde güncelleniyorsa, bu makale hizalamayla olacak şekilde güncelleştirilir.
+> Microsoft, farklı ve üçlü ortamları destekler. Bu makale _ana_ ve _bağımlı_ sözcüklere başvurular içerir. Kullanım açısından [ücretsiz iletişim Için Microsoft Stil Kılavuzu](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) , bu sözcükleri exclusionary kelimeleri olarak tanır. Bu makalede, şu anda yazılımda görüntülenen sözcükler olduklarından, bu makale tutarlılık için kullanılır. Yazılım, kelimeleri kaldırmak üzere güncelleniyorsa, bu makale hizalamayla olacak şekilde güncelleştirilir.
 >
 
 ## <a name="when-to-use-a-read-replica"></a>Okuma çoğaltması ne zaman kullanılır?
 
-Okuma çoğaltması özelliği, okuma yoğunluklu iş yüklerinin performansını ve ölçeğini artırmaya yardımcı olur. Okuma iş yükleri çoğaltmalara, yazma iş yükleri ise ana sunucuya yönlendirilebilir.
+Okuma çoğaltması özelliği, okuma yoğunluklu iş yüklerinin performansını ve ölçeğini artırmaya yardımcı olur. Okuma iş yükleri çoğaltmalar için yalıtılabilir, yazma iş yükleri kaynağa yönlendirilebilir.
 
 Yaygın bir senaryo, bı ve analitik iş yüklerinin raporlama için veri kaynağı olarak okuma çoğaltmasını kullanmasını sağlar.
 
-Çoğaltmalar salt okunurdur, ana bilgisayardaki yazma kapasitesini doğrudan azaltmazlar. Bu özellik, yazma açısından yoğun iş yükleri için uygun değildir.
+Çoğaltmalar salt okunurdur, kaynak üzerindeki yazma kapasitesini doğrudan azaltmazlar. Bu özellik, yazma açısından yoğun iş yükleri için uygun değildir.
 
-Okuma çoğaltması özelliği MySQL zaman uyumsuz çoğaltma kullanır. Özelliği, zaman uyumlu çoğaltma senaryolarına yönelik değildir. Kaynak ve çoğaltma arasında ölçülebilir bir gecikme olacaktır. Çoğaltılan veriler, sonunda, ana sunucudaki verilerle tutarlı hale gelir. Bu gecikmeyi barındırabilecek iş yükleri için bu özelliği kullanın.
+Okuma çoğaltması özelliği MySQL zaman uyumsuz çoğaltma kullanır. Özelliği, zaman uyumlu çoğaltma senaryolarına yönelik değildir. Kaynak ve çoğaltma arasında ölçülebilir bir gecikme olacaktır. Çoğaltılan veriler, sonunda kaynaktaki verilerle tutarlı hale gelir. Bu gecikmeyi barındırabilecek iş yükleri için bu özelliği kullanın.
 
 ## <a name="cross-region-replication"></a>Bölgeler arası çoğaltma
+
 Kaynak sunucunuzdaki farklı bir bölgede bir okuma çoğaltması oluşturabilirsiniz. Çapraz bölge çoğaltma, olağanüstü durum kurtarma planlaması veya kullanıcılarınıza daha yakın veri getirme gibi senaryolar için yararlı olabilir.
 
 [MySQL Için Azure veritabanı bölgesinde](https://azure.microsoft.com/global-infrastructure/services/?products=mysql)bir kaynak sunucusuna sahip olabilirsiniz.  Kaynak sunucu, eşleştirilmiş bölgede veya evrensel çoğaltma bölgelerinde bir çoğaltmaya sahip olabilir. Aşağıdaki resimde, kaynak bölgenize göre hangi çoğaltma bölgelerinin kullanılabildiği gösterilmektedir.
@@ -45,11 +47,13 @@ Kaynak sunucunuzdaki farklı bir bölgede bir okuma çoğaltması oluşturabilir
 [:::image type="content" source="media/concepts-read-replica/read-replica-regions.png" alt-text="Çoğaltma bölgelerini oku":::](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>Evrensel çoğaltma bölgeleri
+
 Kaynak sunucunuzun bulunduğu yere bakılmaksızın, aşağıdaki bölgelerin herhangi birinde bir okuma çoğaltması oluşturabilirsiniz. Desteklenen evrensel çoğaltma bölgeleri şunları içerir:
 
 Avustralya Doğu, Avustralya Güneydoğu, Brezilya Güney, Kanada Orta, Kanada Doğu, Orta ABD, Doğu Asya, Doğu ABD, Doğu ABD 2, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Orta Kuzey ABD, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, UK Güney, UK Batı, Batı Avrupa, Batı ABD, Batı ABD 2, Orta Batı ABD.
 
 ### <a name="paired-regions"></a>Eşleştirilmiş bölgeler
+
 Evrensel çoğaltma bölgelerine ek olarak, kaynak sunucunuzun Azure eşlenmiş bölgesinde bir okuma çoğaltması oluşturabilirsiniz. Bölgenizin çiftini bilmiyorsanız [Azure eşlenmiş bölgeler makalesinden](../best-practices-availability-paired-regions.md)daha fazla bilgi edinebilirsiniz.
 
 Olağanüstü durum kurtarma planlaması için çapraz bölge çoğaltmaları kullanıyorsanız, çoğaltmayı diğer bölgelerden biri yerine eşleştirilmiş bölgede oluşturmanızı öneririz. Eşleştirilmiş bölgeler eşzamanlı güncelleştirmeleri önleyin ve fiziksel yalıtımın ve veri fazlalığını önceliklendirir.  
@@ -57,8 +61,8 @@ Olağanüstü durum kurtarma planlaması için çapraz bölge çoğaltmaları ku
 Ancak göz önünde bulundurulması gereken sınırlamalar vardır: 
 
 * Bölgesel kullanılabilirlik: MySQL için Azure veritabanı Fransa Orta, BAE Kuzey ve Almanya Orta sunulmaktadır. Ancak, eşleştirilmiş bölgeleri kullanılamaz.
-    
-* Tek yönlü çiftler: bazı Azure bölgeleri yalnızca bir yönde eşleştirilmelidir. Bu bölgeler Batı Hindistan, Brezilya Güney ve US Gov Virginia içerir. 
+
+* Tek yönlü çiftler: bazı Azure bölgeleri yalnızca bir yönde eşleştirilmelidir. Bu bölgeler Batı Hindistan, Brezilya Güney ve US Gov Virginia içerir.
    Bu, Batı Hindistan içindeki bir kaynak sunucunun Güney Hindistan bir çoğaltma oluşturmasıdır. Ancak, Güney Hindistan bir kaynak sunucu Batı Hindistan bir çoğaltma oluşturamaz. Bunun nedeni, Batı Hindistan ikincil bölgesinin Güney Hindistan, ancak Güney Hindistan ikincil bölgesi Batı Hindistan değildir.
 
 ## <a name="create-a-replica"></a>Çoğaltma oluşturma
@@ -108,22 +112,22 @@ Kaynak ve çoğaltma arasında çoğaltmayı durdurabilirsiniz. Kaynak sunucu ve
 
 ## <a name="failover"></a>Yük devretme
 
-Kaynak ve çoğaltma sunucuları arasında otomatik yük devretme yoktur. 
+Kaynak ve çoğaltma sunucuları arasında otomatik yük devretme yoktur.
 
-Çoğaltma zaman uyumsuz olduğundan, kaynak ve çoğaltma arasında bir gecikme vardır. Gecikme miktarı, kaynak sunucuda çalışan iş yükünün ne kadar ağır ve veri merkezleri arasındaki gecikme süresi gibi bir dizi faktörden etkilenebilir. Çoğu durumda, çoğaltma gecikmesi birkaç saniyeyle birkaç dakika arasında değişir. Her bir çoğaltma için kullanılabilen ölçüm *çoğaltması* gecikmesini kullanarak gerçek çoğaltma gecikmelerinizi izleyebilirsiniz. Bu ölçüm, son yeniden yürütülmüş işlemden bu yana geçen süreyi gösterir. Yineleme gecikmesini bir süre içinde gözlemleyerek ortalama gecikmenizin ne olduğunu tanımlamanızı öneririz. Çoğaltma gecikmesi üzerinde bir uyarı ayarlayabilirsiniz, böylece beklenen aralığın dışında olursa işlem yapabilirsiniz.
+Çoğaltma zaman uyumsuz olduğundan, kaynak ve çoğaltma arasında bir gecikme olur. Gecikme miktarı, kaynak sunucuda çalışan iş yükünün ne kadar ağır ve veri merkezleri arasındaki gecikme süresi gibi birçok faktörden etkilenebilir. Çoğu durumda, çoğaltma gecikmesi birkaç saniyeyle birkaç dakika arasında değişir. Her bir çoğaltma için kullanılabilen ölçüm *çoğaltması* gecikmesini kullanarak gerçek çoğaltma gecikmelerinizi izleyebilirsiniz. Bu ölçüm, son yeniden yürütülmüş işlemden bu yana geçen süreyi gösterir. Yineleme gecikmesini bir süre içinde gözlemleyerek ortalama gecikmenizin ne olduğunu tanımlamanızı öneririz. Çoğaltma gecikmesi üzerinde bir uyarı ayarlayabilirsiniz, böylece beklenen aralığın dışında olursa işlem yapabilirsiniz.
 
 > [!Tip]
 > Çoğaltmaya yük devretmek, çoğaltmayı kaynaktan geri bağladığınızda oluşan gecikme süresi, ne kadar veri kaybı olduğunu gösterir.
 
-Bir çoğaltmaya yük devretmek istediğinizde, 
+Bir çoğaltmaya yük devretmeye karar verdikten sonra:
 
 1. Çoğaltmaya çoğaltmayı durdur<br/>
-   Bu adım, çoğaltma sunucusunun yazmaları kabul edebilmesini sağlamak için gereklidir. Bu işlemin bir parçası olarak, çoğaltma sunucusu ana sunucudan kaldırılacak. Çoğaltmayı Durdur ' u başlattığınızda, arka uç işleminin genellikle yaklaşık 2 dakika sürer. Bu eylemin etkilerini anlamak için bu makalenin [çoğaltmayı durdur](#stop-replication) bölümüne bakın.
-    
+   Bu adım, çoğaltma sunucusunun yazmaları kabul edebilmesini sağlamak için gereklidir. Bu işlemin bir parçası olarak, çoğaltma sunucusu kaynaktan kaldırılacak. Çoğaltmayı durdur işlemini başlattıktan sonra, arka uç işleminin genellikle yaklaşık 2 dakika sürer. Bu eylemin etkilerini anlamak için bu makalenin [çoğaltmayı durdur](#stop-replication) bölümüne bakın.
+
 2. Uygulamanızı (eski) çoğaltmaya işaret edin<br/>
-   Her sunucunun benzersiz bir bağlantı dizesi vardır. Uygulamanızı ana şablon yerine (eski) çoğaltmaya işaret etmek üzere güncelleştirin.
-    
-Uygulamanız okuma ve yazma işlemlerini başarıyla tamamladıktan sonra, yük devretmeyi tamamladınız. Bir sorunu saptadığınızda ve yukarıdaki 1. ve 2. adımları tamamladıktan sonra uygulama deneyimlerinizin ne kadar süre açık olacağını gösterir.
+   Her sunucunun benzersiz bir bağlantı dizesi vardır. Uygulamanızı kaynak yerine (eski) çoğaltmaya işaret etmek üzere güncelleştirin.
+
+Uygulamanız okuma ve yazma işlemlerini başarıyla tamamladıktan sonra, yük devretmeyi tamamladınız. Bir sorunu saptadığınızda ve daha önce listelenen 1. ve 2. adımları tamamladıktan sonra, uygulama deneyimlerinizin ne kadar süre içinde olduğuna bağlı olacaktır.
 
 ## <a name="global-transaction-identifier-gtid"></a>Genel işlem tanımlayıcısı (GTıD)
 
@@ -143,7 +147,7 @@ Aşağıdaki sunucu parametreleri GTıD 'yi yapılandırmak için kullanılabili
 
 GTıD 'yi etkinleştirmek ve tutarlılık davranışını yapılandırmak için `gtid_mode` `enforce_gtid_consistency` [Azure Portal](howto-server-parameters.md), [Azure CLI](howto-configure-server-parameters-using-cli.md)veya [PowerShell](howto-configure-server-parameters-using-powershell.md)'i kullanarak ve sunucu parametrelerini güncelleştirin.
 
-Bir kaynak sunucuda (= on) GTıD etkinse `gtid_mode` , yeni oluşturulan çoğaltmalarda de gtıd etkinleştirilir ve gtıd çoğaltmasını kullanılır. Çoğaltmanın tutarlı kalmasını sağlamak için `gtid_mode` kaynak veya çoğaltma sunucuları üzerinde güncelleştirme yapılamaz.
+Bir kaynak sunucuda (= on) GTıD etkinse `gtid_mode` , yeni oluşturulan çoğaltmalarda de gtıd etkinleştirilir ve gtıd çoğaltmasını kullanılır. Çoğaltmanın tutarlılığını sağlamak için `gtid_mode` kaynak veya Çoğaltma sunucusunda güncelleştiremezsiniz.
 
 ## <a name="considerations-and-limitations"></a>Önemli noktalar ve sınırlamalar
 
@@ -164,10 +168,10 @@ Bir okuma çoğaltması, MySQL için yeni bir Azure veritabanı sunucusu olarak 
 
 ### <a name="replica-configuration"></a>Çoğaltma yapılandırması
 
-Bir çoğaltma, ana öğe ile aynı sunucu yapılandırması kullanılarak oluşturulur. Bir çoğaltma oluşturulduktan sonra, kaynak sunucudan bağımsız olarak çeşitli ayarlar değiştirilebilir: işlem oluşturma, sanal çekirdek, depolama ve yedekleme saklama süresi. Fiyatlandırma Katmanı, temel katmandan veya dışında bağımsız olarak da değiştirilebilir.
+Bir çoğaltma, kaynakla aynı sunucu yapılandırması kullanılarak oluşturulur. Bir çoğaltma oluşturulduktan sonra, kaynak sunucudan bağımsız olarak çeşitli ayarlar değiştirilebilir: işlem oluşturma, sanal çekirdek, depolama ve yedekleme saklama süresi. Fiyatlandırma Katmanı, temel katmandan veya dışında bağımsız olarak da değiştirilebilir.
 
 > [!IMPORTANT]
-> Kaynak sunucu yapılandırması yeni değerlere güncelleştirilmeden önce, çoğaltma yapılandırmasını eşit veya daha büyük değerlerle güncelleştirin. Bu eylem, çoğaltmanın ana kopya üzerinde yapılan değişiklikleri yansıtmasını sağlar.
+> Kaynak sunucu yapılandırması yeni değerlere güncelleştirilmeden önce, çoğaltma yapılandırmasını eşit veya daha büyük değerlerle güncelleştirin. Bu eylem, çoğaltmanın kaynak kopya üzerinde yapılan değişiklikleri yansıtmasını sağlar.
 
 Çoğaltma oluşturulduğunda, güvenlik duvarı kuralları ve parametre ayarları kaynak sunucudan çoğaltmaya devralınır. Daha sonra, çoğaltmanın kuralları bağımsızdır.
 
@@ -188,31 +192,33 @@ Kaynak sunucudaki kullanıcılar okuma çoğaltmalarına çoğaltılır. Bir oku
 Verilerin eşitlenmemiş duruma gelmesini ve olası veri kaybını önlemek için, okuma amaçlı çoğaltmaları kullanırken bazı sunucu parametreleri güncelleştirmeye karşı kilitlenir.
 
 Aşağıdaki sunucu parametreleri hem kaynak hem de çoğaltma sunucularında kilitlidir:
-- [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) 
-- [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators)
 
-[`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler)Parametresi, çoğaltma sunucularında kilitlidir. 
+* [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) 
+* [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators)
 
-Kaynak sunucuda yukarıdaki parametrelerden birini güncelleştirmek için lütfen çoğaltma sunucularını silin, ana bilgisayardaki parametre değerini güncelleştirin ve çoğaltmaları yeniden oluşturun.
+[`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler)Parametresi, çoğaltma sunucularında kilitlidir.
+
+Kaynak sunucuda yukarıdaki parametrelerden birini güncelleştirmek için, çoğaltma sunucularını silin, kaynaktaki parametre değerini güncelleştirin ve çoğaltmaları yeniden oluşturun.
 
 ### <a name="gtid"></a>GTıD
 
 GTıD desteklenir:
-- MySQL sürümleri 5,7 ve 8,0 
-- 16 TB 'a kadar depolamayı destekleyen sunucular. 16 TB depolamayı destekleyen bölgelerin tam listesi için [fiyatlandırma katmanı](concepts-pricing-tiers.md#storage) makalesine başvurun. 
 
-GTıD varsayılan olarak KAPALıDıR. GTıD etkinleştirildikten sonra, yeniden kapatamaz. GTıD 'yi kapatmanız gerekiyorsa lütfen desteğe başvurun. 
+* MySQL sürüm 5,7 ve 8,0.
+* 16 TB 'a kadar depolamayı destekleyen sunucular. 16 TB depolamayı destekleyen bölgelerin tam listesi için [fiyatlandırma katmanı](concepts-pricing-tiers.md#storage) makalesine başvurun.
 
-Bir kaynak sunucuda GTıD etkinse, yeni oluşturulan çoğaltmalarda de GTıD etkinleştirilir ve GTıD çoğaltmasını kullanacaktır. Çoğaltmanın tutarlı kalmasını sağlamak için `gtid_mode` kaynak veya çoğaltma sunucuları üzerinde güncelleştirme yapılamaz.
+GTıD varsayılan olarak KAPALıDıR. GTıD etkinleştirildikten sonra, yeniden açamazsınız. GTıD 'yi kapatmanız gerekirse desteğe başvurun.
+
+Bir kaynak sunucuda GTıD etkinse, yeni oluşturulan çoğaltmalarda de GTıD etkinleştirilir ve GTıD çoğaltmasını kullanacaktır. Çoğaltmanın tutarlılığını sağlamak için `gtid_mode` kaynak veya Çoğaltma sunucusunda güncelleştiremezsiniz.
 
 ### <a name="other"></a>Diğer
 
-- Bir çoğaltmanın çoğaltmasını oluşturma desteklenmiyor.
-- Bellek içi tablolar çoğaltmaların eşitlenmemiş hale gelmesine neden olabilir. Bu, MySQL Çoğaltma teknolojisinin bir sınırlamasıdır. Daha fazla bilgi için [MySQL Reference belgelerindeki](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) daha fazla bilgi edinin.
-- Kaynak sunucu tablolarının birincil anahtarlara sahip olduğundan emin olun. Birincil anahtarların olmaması, kaynak ve çoğaltmalar arasında çoğaltma gecikmesine neden olabilir.
-- [MySQL belgelerindeki](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) MySQL Çoğaltma sınırlamalarının tam listesini gözden geçirin
+* Bir çoğaltmanın çoğaltmasını oluşturma desteklenmez.
+* Bellek içi tablolar çoğaltmaların eşitlenmemiş hale gelmesine neden olabilir. Bu, MySQL Çoğaltma teknolojisinin bir sınırlamasıdır. Daha fazla bilgi için [MySQL Reference belgelerindeki](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) daha fazla bilgi edinin.
+* Kaynak sunucu tablolarının birincil anahtarlara sahip olduğundan emin olun. Birincil anahtarların olmaması, kaynak ve çoğaltmalar arasında çoğaltma gecikmesine neden olabilir.
+* [MySQL belgelerindeki](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) MySQL Çoğaltma sınırlamalarının tam listesini gözden geçirin
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Portal kullanarak okuma çoğaltmaları oluşturmayı ve yönetmeyi](howto-read-replicas-portal.md) öğrenin
-- [Azure CLI ve REST API kullanarak okuma çoğaltmaları oluşturma ve yönetme](howto-read-replicas-cli.md) hakkında bilgi edinin
+* [Azure Portal kullanarak okuma çoğaltmaları oluşturmayı ve yönetmeyi](howto-read-replicas-portal.md) öğrenin
+* [Azure CLI ve REST API kullanarak okuma çoğaltmaları oluşturma ve yönetme](howto-read-replicas-cli.md) hakkında bilgi edinin

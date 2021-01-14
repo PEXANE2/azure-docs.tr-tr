@@ -8,12 +8,12 @@ author: AlexandraKemperMS
 ms.author: alkemper
 ms.topic: conceptual
 ms.date: 3/9/2020
-ms.openlocfilehash: 9a6ae1581b3958495010b032980b0de2e267088b
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 13857580d434736fbf0b12f52d39537ca864a497
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931886"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203157"
 ---
 # <a name="use-feature-filters-to-enable-conditional-feature-flags"></a>Koşullu Özellik bayraklarını etkinleştirmek için özellik filtrelerini kullanın
 
@@ -56,19 +56,19 @@ Bu ayarları, Azure Uygulama yapılandırmasında tanımlanan özellik bayraklar
     > [!div class="mx-imgBorder"]
     > ![Beta Özellik bayrağını Düzenle](./media/edit-beta-feature-flag.png)
 
-1. **Düzenleme** **ekranında, zaten seçili değilse radyo düğmesini** seçin. Sonra **Filtre Ekle** düğmesine tıklayın. (Radyo **düğmesinin** etiketi, **koşullu** okunacak şekilde değiştirilir.)
+1. **Düzenleme** ekranında, henüz seçili değilse **özellik bayrağını etkinleştir** düğmesini seçin. Sonra **özellik filtresini kullan** düğmesine tıklayın ve **özel**' i seçin. 
 
 1. **Anahtar** alanına *Microsoft. Percentage* yazın.
 
     > [!div class="mx-imgBorder"]
     > ![Özellik filtresi ekle](./media/feature-flag-add-filter.png)
 
-1. Özellik filtresi anahtarının yanındaki bağlam menüsüne tıklayın. **Parametreleri Düzenle**' ye tıklayın.
+1. Özellik filtresi anahtarının yanındaki bağlam menüsüne tıklayın. **Filtre parametrelerini düzenle**' ye tıklayın.
 
     > [!div class="mx-imgBorder"]
-    > ![Özellik filtresi parametrelerini Düzenle](./media/feature-flag-edit-filter-parameters.png)
+    > ![Özellik filtresi parametrelerini Düzenle](./media/feature-flags-edit-filter-parameters.png)
 
-1. Metin kutularının kılavuzda görünmesi için **ad** üstbilgisinin altına gelin. Bir değer **adı** ve  50 **değeri** girin. **Değer** alanı, özellik filtresi etkinleştirilecek isteklerin yüzdesini gösterir.
+1. Bir değer **adı** ve  50 **değeri** girin. **Değer** alanı, özellik filtresi etkinleştirilecek isteklerin yüzdesini gösterir.
 
     > [!div class="mx-imgBorder"]
     > ![Özellik filtresi parametrelerini ayarla](./media/feature-flag-set-filter-parameters.png)

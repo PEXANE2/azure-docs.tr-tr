@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71d64552520db28b3fe38cc354a30ee5470ee091
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 97893dece068dfdde85159f734095401288231d2
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060759"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201357"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>Şirket içi saldırılardan Microsoft 365 koruma
 
@@ -131,7 +131,7 @@ Sağlama, uygulama veya kimlik sağlayıcılarındaki Kullanıcı hesaplarının
 
    *  Konuk erişimini gözatma gruplarına ve dizindeki diğer özelliklere sınırlayın. Konuk, üye olmadıkları grupları okuyabilme yeteneğini kısıtlamak için dış işbirliği ayarlarını kullanın. 
 
-    *   Azure portal erişimini engelleyin. Nadir olarak gereken özel durumları yapabilirsiniz.  Tüm konukları ve dış kullanıcıları içeren bir koşullu erişim ilkesi oluşturun ve ardından [erişimi engellemek için bir ilke uygulayın](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management.md). 
+    *   Azure portal erişimini engelleyin. Nadir olarak gereken özel durumları yapabilirsiniz.  Tüm konukları ve dış kullanıcıları içeren bir koşullu erişim ilkesi oluşturun ve ardından [erişimi engellemek için bir ilke uygulayın](/azure/role-based-access-control/conditional-access-azure-management). 
 
 * **Bağlantısı kesilen ormanlar:** [Azure AD bulut sağlamasını](../cloud-provisioning/what-is-cloud-provisioning.md)kullanın. Bu, bağlantısı kesilen ormanlara bağlanmanızı, ormanlar arası bağlantı veya güvenler oluşturma gereğini ortadan kaldırarak şirket içi ihlalin etkisini genişletmenizi sağlar. * 
  

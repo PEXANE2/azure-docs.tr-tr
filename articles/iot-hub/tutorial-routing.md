@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 892dad3963e9da3560acc2c782c3d14db246ea78
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13130a7ea473b260ddc4f0ebca2ef5b496b34c66
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500598"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203021"
 ---
 # <a name="tutorial-use-the-azure-cli-and-azure-portal-to-configure-iot-hub-message-routing"></a>Öğretici: IoT Hub ileti yönlendirmeyi yapılandırmak için Azure CLı ve Azure portal kullanma
 
@@ -32,7 +32,7 @@ Bu öğretici, temel kaynakları oluşturmak için Azure CLı 'yi kullanır, ard
 
 Aşağıdaki betiği kopyalayıp Cloud Shell yapıştırın ve ENTER tuşuna basın. Betiği tek seferde bir satır çalıştırır. Bu işlem, depolama hesabı, IoT Hub, Service Bus ad alanı ve Service Bus kuyruğu dahil olmak üzere Bu öğreticinin temel kaynaklarını oluşturur.
 
-IoT Hub adı ve depolama hesabı adı gibi genel olarak benzersiz olması gereken birkaç kaynak adı vardır. Bunun daha kolay olması için, bu kaynak adlarına *rasgelevalue*adlı rastgele bir alfasayısal değer eklenir. Rasgeledeğeri, komut dosyasının en üstünde bir kez oluşturulur ve komut dosyası boyunca gerektiğinde kaynak adlarına eklenir. Rastgele olmasını istemiyorsanız, bunu boş bir dizeye veya belirli bir değere ayarlayabilirsiniz.
+IoT Hub adı ve depolama hesabı adı gibi genel olarak benzersiz olması gereken birkaç kaynak adı vardır. Bunun daha kolay olması için, bu kaynak adlarına *rasgelevalue* adlı rastgele bir alfasayısal değer eklenir. Rasgeledeğeri, komut dosyasının en üstünde bir kez oluşturulur ve komut dosyası boyunca gerektiğinde kaynak adlarına eklenir. Rastgele olmasını istemiyorsanız, bunu boş bir dizeye veya belirli bir değere ayarlayabilirsiniz.
 
 > [!TIP]
 > Hata ayıklama hakkında ipucu: Bu betik, `\` betiği daha okunabilir hale getirmek için devamlılık simgesini (ters eğik çizgi) kullanır. Betiği çalıştırırken bir sorun yaşıyorsanız Cloud Shell oturumunuzun çalıştığından `bash` ve ters eğik çizgi dışında boşluk olmadığından emin olun.
@@ -140,15 +140,15 @@ Temel kaynaklar ayarlandığına göre, [Azure Portal](https://portal.azure.com)
 
 2. Kaynak listesinin altındaki IoT Hub 'ını seçin. Bu öğreticide **ContosoTestHub** kullanılır.
 
-3. **Ileti yönlendirmeyi**seçin. **Ileti yönlendirme** bölmesinde +**Ekle**' yi seçin. **Yol Ekle** bölmesinde, aşağıdaki resimde gösterildiği gibi desteklenen uç noktaları göstermek Için uç nokta alanının yanındaki +**Ekle** ' yi seçin:
+3. **Ileti yönlendirmeyi** seçin. **Ileti yönlendirme** bölmesinde +**Ekle**' yi seçin. **Yol Ekle** bölmesinde, aşağıdaki resimde gösterildiği gibi desteklenen uç noktaları göstermek Için uç nokta alanının yanındaki +**uç nokta Ekle** ' yi seçin:
 
-   ![Bir yol için uç nokta eklemeye başlayın](./media/tutorial-routing/message-routing-add-a-route-w-storage-ep.png)
+   ![Bir yol için uç nokta eklemeye başlayın](./media/tutorial-routing/message-routing-add-a-route-with-storage-endpoint-ver2.png)
 
-4. **Blob depolama**'yı seçin. **Depolama uç noktası Ekle** bölmesini görürsünüz.
+4. **Depolama**’yı seçin. **Depolama uç noktası Ekle** bölmesini görürsünüz.
 
-   ![Uç nokta ekleme](./media/tutorial-routing/message-routing-add-storage-ep.png)
+   ![Uç nokta ekleme](./media/tutorial-routing/message-routing-add-storage-endpoint-ver2.png)
 
-5. Uç nokta için bir ad girin. Bu öğretici **Contosostorageendpoint**kullanır.
+5. Uç nokta için bir ad girin. Bu öğretici **Contosostorageendpoint** kullanır.
 
 6. **Kapsayıcı Seç**' i seçin. Bu sizi depolama hesaplarınızın listesine götürür. Hazırlık adımlarında ayarladığınız hesabı seçin. Bu öğreticide **contosostorage** kullanılır. Söz konusu depolama hesabının içindeki kapsayıcıların listesi gösterilir. Hazırlık adımlarında ayarladığınız kapsayıcıyı **seçin** . Bu öğreticide **contosoresults** kullanılır. **Depolama uç noktası Ekle** bölmesine dönüp yaptığınız seçimleri görürsünüz.
 
@@ -166,7 +166,7 @@ Temel kaynaklar ayarlandığına göre, [Azure Portal](https://portal.azure.com)
 
 9. Şimdi yönlendirme sorgusu bilgilerinin kalan kısmını tamamlayın. Bu sorgu, az önce uç nokta olarak eklediğiniz depolama kapsayıcısına ileti gönderme ölçütlerini belirtir. Ekrandaki alanları doldurun.
 
-   **Ad**: Yönlendirme sorgunuz için bir ad girin. Bu öğretici **Contosostorageroute**kullanır.
+   **Ad**: Yönlendirme sorgunuz için bir ad girin. Bu öğretici **Contosostorageroute** kullanır.
 
    **Uç nokta**: Az önce ayarladığınız uç noktayı gösterir.
 
@@ -194,7 +194,7 @@ Temel kaynaklar ayarlandığına göre, [Azure Portal](https://portal.azure.com)
 
 4. Şu alanları doldurun:
 
-   **Uç Nokta Adı**: Uç nokta için bir ad girin. Bu öğretici **Contososbqueueendpoint**kullanır.
+   **Uç Nokta Adı**: Uç nokta için bir ad girin. Bu öğretici **Contososbqueueendpoint** kullanır.
    
    **Service Bus ad alanı**: hazırlama adımlarında ayarladığınız Service Bus ad alanını seçmek için açılan listeyi kullanın. Bu öğreticide **ContosoSBNamespace** kullanılır.
 
@@ -204,7 +204,7 @@ Temel kaynaklar ayarlandığına göre, [Azure Portal](https://portal.azure.com)
 
 6. Şimdi yönlendirme sorgusu bilgilerinin kalan kısmını tamamlarsınız. Bu sorgu, az önce uç nokta olarak eklediğiniz Service Bus kuyruğuna ileti gönderme ölçütlerini belirtir. Ekrandaki alanları doldurun. 
 
-   **Ad**: Yönlendirme sorgunuz için bir ad girin. Bu öğretici **Contososbqueueroute**kullanır. 
+   **Ad**: Yönlendirme sorgunuz için bir ad girin. Bu öğretici **Contososbqueueroute** kullanır. 
 
    **Uç nokta**: Az önce ayarladığınız uç noktayı gösterir.
 

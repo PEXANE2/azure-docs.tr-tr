@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: c0fddca70ca09f0a3abb3c84672e20a42551ecd5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 255b34fc683628846d2776d9db7a0fbe8fe32a45
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014321"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202088"
 ---
 # <a name="create-a-snapshot-using-the-portal-or-powershell"></a>Portal veya PowerShell kullanarak anlık görüntü oluşturma
 
@@ -22,7 +22,7 @@ Anlık görüntü, bir sanal sabit sürücünün (VHD) tam, salt okunurdur bir k
 
 Yeni bir VM oluşturmak için anlık görüntüyü kullanacaksanız, devam eden işlemlerin tümünü temizlemek için anlık görüntüyü almadan önce VM 'yi düzgün bir şekilde kapatmanız önerilir.
 
-## <a name="use-the-azure-portal"></a>Azure portalı kullanma 
+## <a name="use-the-azure-portal"></a>Azure portalını kullanma 
 
 Anlık görüntü oluşturmak için aşağıdaki adımları izleyin: 
 1.  [Azure Portal](https://portal.azure.com) **kaynak oluştur**' u seçin.
@@ -82,4 +82,4 @@ Aşağıdaki adımlarda, VHD diskinin nasıl kopyalanacağı ve anlık görünt�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir anlık görüntüden yönetilen disk oluşturarak ve ardından yeni yönetilen diski işletim sistemi diski olarak ekleyerek bir anlık görüntüden sanal makine oluşturun. Daha fazla bilgi için, [PowerShell ile anlık GÖRÜNTÜDEN VM oluşturma](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json)' daki örneğe bakın.
+Bir anlık görüntüden yönetilen disk oluşturarak ve ardından yeni yönetilen diski işletim sistemi diski olarak ekleyerek bir anlık görüntüden sanal makine oluşturun. Daha fazla bilgi için, [PowerShell ile anlık GÖRÜNTÜDEN VM oluşturma](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md)' daki örneğe bakın.

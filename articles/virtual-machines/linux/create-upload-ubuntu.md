@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 06/06/2020
 ms.author: danis
-ms.openlocfilehash: d3bdc3d0705bd8edc70f55b8372818e60859eedd
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ca1aae3e819d58ea32453f2549d162bbfc9c91ae
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500572"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203227"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Azure’da Ubuntu sanal makinesi hazırlama
 
@@ -28,7 +28,7 @@ Bu makalede bir Ubuntu Linux işletim sistemini zaten bir sanal sabit diske yük
 
 * Lütfen Azure için Linux hazırlama hakkında daha fazla ipucu için bkz. [Genel Linux yükleme notları](create-upload-generic.md#general-linux-installation-notes) .
 * VHDX biçimi Azure 'da desteklenmiyor, yalnızca **sabıt VHD**.  Hyper-V Yöneticisi 'Ni veya cmdlet 'ini kullanarak diski VHD biçimine dönüştürebilirsiniz `Convert-VHD` .
-* Linux sistemini yüklerken, LVM yerine standart bölümler kullanmanız önerilir (genellikle çoğu yükleme için varsayılan değer). Bu, özellikle de bir işletim sistemi diskinin sorun gidermeye yönelik başka bir VM 'ye bağlanması gerekiyorsa, kopyalanmış VM 'lerle LVM adı çakışmalarını önler. Tercih edilen durumlarda [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) veya [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , veri disklerinde kullanılabilir.
+* Linux sistemini yüklerken, LVM yerine standart bölümler kullanmanız önerilir (genellikle çoğu yükleme için varsayılan değer). Bu, özellikle de bir işletim sistemi diskinin sorun gidermeye yönelik başka bir VM 'ye bağlanması gerekiyorsa, kopyalanmış VM 'lerle LVM adı çakışmalarını önler. Tercih edilen durumlarda [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm) veya [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid) , veri disklerinde kullanılabilir.
 * İşletim sistemi diskinde bir takas bölümü veya Swapfile yapılandırmayın. Cloud-init sağlama Aracısı, geçici kaynak diskinde bir takas dosyası veya takas bölümü oluşturacak şekilde yapılandırılabilir. Bunun hakkında daha fazla bilgiyi aşağıdaki adımlarda bulabilirsiniz.
 * Azure 'daki tüm VHD 'ler, 1 MB 'a hizalanmış bir sanal boyuta sahip olmalıdır. Bir ham diskten VHD 'ye dönüştürme yaparken,, dönüştürmeden önce ham disk boyutunun 1 MB 'ın katı olduğundan emin olmanız gerekir. Daha fazla bilgi için bkz. [Linux yükleme notları](create-upload-generic.md#general-linux-installation-notes) .
 
@@ -176,7 +176,7 @@ Bu makalede bir Ubuntu Linux işletim sistemini zaten bir sanal sabit diske yük
 
 13. Hyper-V Yöneticisi 'nde **eylem-> kapat** ' a tıklayın.
 
-14. Azure yalnızca sabit boyutlu VHD 'leri kabul eder. VM 'nin işletim sistemi diski sabit boyutlu bir VHD değilse, `Convert-VHD` PowerShell cmdlet 'ini kullanın ve `-VHDType Fixed` seçeneğini belirtin. Lütfen şu belgelere bakın `Convert-VHD` : [Convert-VHD](/powershell/module/hyper-v/convert-vhd?view=win10-ps).
+14. Azure yalnızca sabit boyutlu VHD 'leri kabul eder. VM 'nin işletim sistemi diski sabit boyutlu bir VHD değilse, `Convert-VHD` PowerShell cmdlet 'ini kullanın ve `-VHDType Fixed` seçeneğini belirtin. Lütfen şu belgelere bakın `Convert-VHD` : [Convert-VHD](/powershell/module/hyper-v/convert-vhd).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

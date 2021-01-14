@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: akjosh
-ms.openlocfilehash: ba6dda86475456b6797d27e11727d70261be2e1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66e4ea622f546981d1f0651b20368590e59056d3
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440003"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201629"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Azure sanal makinesine yönelik uzak masaüstü bağlantılarında sorun giderme
 Windows tabanlı Azure sanal makinenize (VM) olan Uzak Masaüstü Protokolü (RDP) bağlantısı çeşitli sebeplerle başarısız olabilir ve VM'nize erişememenize yol açabilir. Bu sorun VM'deki Uzak Masaüstü hizmetinden, ağ bağlantısından veya ana bilgisayarınızdaki Uzak Masaüstü istemcisinden kaynaklanabilir. Bu makale RDP bağlantı sorunlarını çözmeye yönelik en yaygın yöntemlerin bazılarında size yol gösterir. 
@@ -76,7 +76,7 @@ Her bir sorun giderme adımından sonra, sanal makinenize yeniden bağlanmayı d
 4. **VM için NIC 'ı sıfırlayın**. Daha fazla bilgi için bkz. [Azure WINDOWS VM IÇIN NIC sıfırlama](./reset-network-interface.md).
 5. **VM kaynak durumu denetleyin**. Bu sorun giderme adımı, Azure platformunda VM bağlantısını etkileyebilecek bilinen bir sorun olmadığını doğrular.
    
-    Azure portal VM 'nizi seçin. Ayarlar bölmesini listenin en altında bulunan **destek + sorun giderme** bölümüne kaydırın. **Kaynak durumu** düğmesine tıklayın. Sağlıklı bir VM 'nin **kullanılabilir**olduğu şekilde raporları:
+    Azure portal VM 'nizi seçin. Ayarlar bölmesini listenin en altında bulunan **destek + sorun giderme** bölümüne kaydırın. **Kaynak durumu** düğmesine tıklayın. Sağlıklı bir VM 'nin **kullanılabilir** olduğu şekilde raporları:
    
     ![Azure portal V d kaynak durumunu denetleyin.](./media/troubleshoot-rdp-connection/check-resource-health.png)
 6. **Kullanıcı kimlik bilgilerini sıfırlayın**. Bu sorun giderme adımı, bir yerel yönetici hesabındaki parolayı, kimlik bilgilerini bilmiyorsanız veya unuttuyordu.  VM 'de oturum açtıktan sonra, bu kullanıcının parolasını sıfırlamalısınız.
@@ -101,7 +101,7 @@ Her bir sorun giderme adımından sonra, sanal makinenize yeniden bağlanmayı d
 
 10. Bilgisayarınızda herhangi bir şirket içi güvenlik duvarının veya güvenlik duvarının Azure 'a giden TCP 3389 trafiğine izin verdiğinden emin olun.
 
-Hala RDP sorunlarıyla karşılaşdıysanız [bir destek isteği açabilir](https://azure.microsoft.com/support/options/) veya [daha ayrıntılı RDP sorun giderme kavramlarını ve adımlarını](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)okuyabilirsiniz.
+Hala RDP sorunlarıyla karşılaşdıysanız [bir destek isteği açabilir](https://azure.microsoft.com/support/options/) veya [daha ayrıntılı RDP sorun giderme kavramlarını ve adımlarını](detailed-troubleshoot-rdp.md)okuyabilirsiniz.
 
 ## <a name="troubleshoot-using-azure-powershell"></a>Azure PowerShell'i kullanarak sorun giderme
 Henüz yapmadıysanız, [en son Azure PowerShell yükleyip yapılandırın](/powershell/azure/).
@@ -154,7 +154,7 @@ Her bir sorun giderme adımından sonra, sanal makinenize yeniden bağlanmayı d
     Direction                : Inbound
     ```
    
-    RDP trafiğine izin veren bir kuralınız yoksa [bir ağ güvenlik grubu kuralı oluşturun](../windows/nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). TCP bağlantı noktası 3389 ' ye izin verin.
+    RDP trafiğine izin veren bir kuralınız yoksa [bir ağ güvenlik grubu kuralı oluşturun](../windows/nsg-quickstart-powershell.md). TCP bağlantı noktası 3389 ' ye izin verin.
 3. **Kullanıcı kimlik bilgilerini sıfırlayın**. Bu sorun giderme adımı, kimlik bilgilerini bilmiyorsanız veya unutdığınızda belirttiğiniz yerel yönetici hesabındaki parolayı sıfırlar.
    
     İlk olarak, aşağıdaki gibi, değişkenine kimlik bilgileri atayarak Kullanıcı adını ve yeni bir parolayı belirtin `$cred` :
@@ -190,7 +190,7 @@ Her bir sorun giderme adımından sonra, sanal makinenize yeniden bağlanmayı d
 
 7. Bilgisayarınızda herhangi bir şirket içi güvenlik duvarının veya güvenlik duvarının Azure 'a giden TCP 3389 trafiğine izin verdiğinden emin olun.
 
-Hala RDP sorunlarıyla karşılaşdıysanız [bir destek isteği açabilir](https://azure.microsoft.com/support/options/) veya [daha ayrıntılı RDP sorun giderme kavramlarını ve adımlarını](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)okuyabilirsiniz.
+Hala RDP sorunlarıyla karşılaşdıysanız [bir destek isteği açabilir](https://azure.microsoft.com/support/options/) veya [daha ayrıntılı RDP sorun giderme kavramlarını ve adımlarını](detailed-troubleshoot-rdp.md)okuyabilirsiniz.
 
 ## <a name="troubleshoot-vms-created-using-the-classic-deployment-model"></a>Klasik dağıtım modeli kullanılarak oluşturulan sanal makinelerin sorunlarını giderme
 
@@ -218,7 +218,7 @@ Her bir sorun giderme adımından sonra sanal makineye yeniden bağlanmayı dene
     Belirli sorun giderme adımları Bu makalenin kapsamı dışındadır, ancak RDP bağlantısını etkileyen daha geniş bir sorun olduğunu gösteriyor olabilir. Konsol günlüklerini ve VM ekran görüntüsünü İnceleme hakkında daha fazla bilgi için bkz. [VM 'ler Için önyükleme tanılaması](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/).
 4. **VM kaynak durumu denetleyin**. Bu sorun giderme adımı, Azure platformunda VM bağlantısını etkileyebilecek bilinen bir sorun olmadığını doğrular.
    
-    Azure portal VM 'nizi seçin. Ayarlar bölmesini listenin en altında bulunan **destek + sorun giderme** bölümüne kaydırın. **Kaynak durumu** düğmesine tıklayın. Sağlıklı bir VM 'nin **kullanılabilir**olduğu şekilde raporları:
+    Azure portal VM 'nizi seçin. Ayarlar bölmesini listenin en altında bulunan **destek + sorun giderme** bölümüne kaydırın. **Kaynak durumu** düğmesine tıklayın. Sağlıklı bir VM 'nin **kullanılabilir** olduğu şekilde raporları:
    
     ![Klasik dağıtım modelini kullanarak V için Azure portal V d kaynak durumunu denetleyin.](./media/troubleshoot-rdp-connection/classic-check-resource-health.png)
 5. **Kullanıcı kimlik bilgilerini sıfırlayın**. Bu sorun giderme adımı, kimlik bilgilerini bilmiyorsanız veya unuttuysanız, belirttiğiniz yerel yönetici hesabındaki parolayı sıfırlar.  VM 'de oturum açtıktan sonra, bu kullanıcının parolasını sıfırlamalısınız.
@@ -234,7 +234,7 @@ Her bir sorun giderme adımından sonra sanal makineye yeniden bağlanmayı dene
 
 7. Bilgisayarınızda herhangi bir şirket içi güvenlik duvarının veya güvenlik duvarının Azure 'a giden TCP 3389 trafiğine izin verdiğinden emin olun.
 
-Hala RDP sorunlarıyla karşılaşdıysanız [bir destek isteği açabilir](https://azure.microsoft.com/support/options/) veya [daha ayrıntılı RDP sorun giderme kavramlarını ve adımlarını](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)okuyabilirsiniz.
+Hala RDP sorunlarıyla karşılaşdıysanız [bir destek isteği açabilir](https://azure.microsoft.com/support/options/) veya [daha ayrıntılı RDP sorun giderme kavramlarını ve adımlarını](detailed-troubleshoot-rdp.md)okuyabilirsiniz.
 
 ## <a name="troubleshoot-specific-rdp-errors"></a>Belirli RDP hatalarında sorun giderme
 VM 'nize RDP aracılığıyla bağlanmaya çalışırken belirli bir hata iletisiyle karşılaşabilirsiniz. En yaygın hata iletileri aşağıda verilmiştir:
@@ -246,6 +246,6 @@ VM 'nize RDP aracılığıyla bağlanmaya çalışırken belirli bir hata iletis
 * [Bu bilgisayar uzak bilgisayara bağlanamıyor](troubleshoot-specific-rdp-errors.md#rdpconnect).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
-Bu hatalardan hiçbiri gerçekleşemiyorsa ve Uzak Masaüstü aracılığıyla sanal makineye bağlanamıyorsanız, [Uzak Masaüstü için ayrıntılı sorun giderme kılavuzunu](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)okuyun.
+Bu hatalardan hiçbiri gerçekleşemiyorsa ve Uzak Masaüstü aracılığıyla sanal makineye bağlanamıyorsanız, [Uzak Masaüstü için ayrıntılı sorun giderme kılavuzunu](detailed-troubleshoot-rdp.md)okuyun.
 * Bir VM üzerinde çalışan uygulamalara erişme sorunlarını giderme adımları için bkz. [Azure VM 'de çalışan bir uygulamaya erişim sorunlarını giderme](./troubleshoot-app-connection.md?toc=/azure/virtual-machines/linux/toc.json).
 * Azure 'da bir Linux VM 'sine bağlanmak üzere Secure Shell (SSH) kullanarak sorun yaşıyorsanız, bkz. [Azure 'Da LINUX VM Ile SSH bağlantılarında sorun giderme](./troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json).

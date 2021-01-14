@@ -7,20 +7,20 @@ ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
-ms.openlocfilehash: f92f286fc9d9438331617cb567272a331834af42
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7f9ac0ab9eacb90bde70c85ea06bc19a18aa0c05
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735392"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201153"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Azure CLı ve yönetilen diskleri kullanarak bir Linux VM 'nin kopyasını oluşturma
 
 Bu makalede, Azure CLı kullanarak Linux çalıştıran Azure sanal makinenizin (VM) bir kopyasının nasıl oluşturulacağı gösterilmektedir. VM görüntülerini kopyalamak, oluşturmak, depolamak ve ölçeklendirmek için bkz. [paylaşılan görüntü galerileri](../shared-images-cli.md).
 
-Ayrıca, bir [VHD 'den BIR VM 'yi karşıya yükleyebilir ve oluşturabilirsiniz](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Ayrıca, bir [VHD 'den BIR VM 'yi karşıya yükleyebilir ve oluşturabilirsiniz](upload-vhd.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 -   [Azure CLI](/cli/azure/install-az-cli2)'yı yükler.
 
@@ -93,7 +93,7 @@ Kopyalanmış VM 'niz için bir sanal ağ altyapısı oluşturmak istiyorsanız,
         --subnet-prefix 192.168.1.0/24
     ```
 
-1.  [Az Network public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create)kullanarak genel IP oluşturun. Aşağıdaki örnek, mypublicdns DNS adıyla *Mypublicıp* adlı BIR genel *mypublicdns* IP oluşturur. (DNS adı benzersiz olmalıdır, benzersiz bir ad sağlayın.)
+1.  [Az Network public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create)kullanarak genel IP oluşturun. Aşağıdaki örnek, mypublicdns DNS adıyla *Mypublicıp* adlı BIR genel IP oluşturur. (DNS adı benzersiz olmalıdır, benzersiz bir ad sağlayın.)
 
     ```azurecli
     az network public-ip create --resource-group myResourceGroup \
@@ -111,7 +111,7 @@ Kopyalanmış VM 'niz için bir sanal ağ altyapısı oluşturmak istiyorsanız,
         --public-ip-address myPublicIP
     ```
 
-## <a name="create-a-vm"></a>VM oluştur
+## <a name="create-a-vm"></a>VM oluşturma
 
 [Az VM Create](/cli/azure/vm#az-vm-create)kullanarak bir VM oluşturun.
 

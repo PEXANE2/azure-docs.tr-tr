@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/8/2020
-ms.openlocfilehash: bea618b34809544308caba46a0ffbdecee91d69f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 199810f835924ccbb51948169244622a19c5e8ed
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541819"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201442"
 ---
 # <a name="connect-to-azure-database-for-mysql-with-redirection"></a>Yeniden yönlendirme ile MySQL için Azure Veritabanı'na bağlanma
 
@@ -21,6 +21,9 @@ Bu konuda, MySQL için Azure veritabanı sunucusuna yeniden yönlendirme moduyla
 [Azure portalında](https://portal.azure.com) oturum açın. Altyapı sürümü 5,6, 5,7 veya 8,0 olan MySQL için Azure veritabanı sunucusu oluşturun. 
 
 Ayrıntılar için [Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md) veya [Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md)kullanarak MySQL için Azure veritabanı sunucusu oluşturma bölümüne bakın.
+
+> [!IMPORTANT]
+> Yönlendirme şu anda [MySQL Için Azure veritabanı özel bağlantısı](concepts-data-access-security-private-link.md)ile desteklenmiyor.
 
 ## <a name="enable-redirection"></a>Yeniden yönlendirmeyi etkinleştir
 
@@ -54,7 +57,7 @@ Belgenin sonraki bölümlerinde, `mysqlnd_azure` Bu parametrenin değerini nası
 
 ### <a name="ubuntu-linux"></a>Ubuntu Linux
 
-#### <a name="prerequisites"></a>Ön koşullar 
+#### <a name="prerequisites"></a>Önkoşullar 
 - PHP sürümleri 7.2.15 + ve 7.3.2 +
 - PHP PEAR 
 - PHP-MySQL
@@ -93,7 +96,7 @@ Belgenin sonraki bölümlerinde, `mysqlnd_azure` Bu parametrenin değerini nası
 
 ### <a name="windows"></a>Windows
 
-#### <a name="prerequisites"></a>Ön koşullar 
+#### <a name="prerequisites"></a>Önkoşullar 
 - PHP sürümleri 7.2.15 + ve 7.3.2 +
 - PHP-MySQL
 - MySQL için Azure veritabanı sunucusu

@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 06/22/2017
 ms.author: cynthn
 ms.custom: devx-track-python
-ms.openlocfilehash: a7117d30eb1774753f21e82ad5f812a7309d8386
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 15714405c683889c0f783359011a0f0f5f9f3f43
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483105"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201799"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Python kullanarak Azure 'da Windows VM 'Leri oluşturma ve yönetme
 
-[Azure sanal makinesi](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) birkaç destekleyici Azure kaynağı gerektirir. Bu makalede, Python kullanarak VM kaynaklarını oluşturma, yönetme ve silme konuları ele alınmaktadır. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
+[Azure sanal makinesi](overview.md) (VM) birkaç destekleyici Azure kaynağı gerektirir. Bu makalede, Python kullanarak VM kaynaklarını oluşturma, yönetme ve silme konuları ele alınmaktadır. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Visual Studio projesi oluşturma
@@ -342,7 +342,7 @@ Tüm destekleyici kaynakları oluşturduğunuza göre, bir sanal makine oluştur
     ```
 
     > [!NOTE]
-    > Bu öğretici, Windows Server işletim sisteminin bir sürümünü çalıştıran bir sanal makine oluşturur. Diğer görüntüleri seçme hakkında daha fazla bilgi edinmek için bkz. [Windows PowerShell ve Azure CLI Ile Azure sanal makine görüntülerini gezinme ve seçme](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+    > Bu öğretici, Windows Server işletim sisteminin bir sürümünü çalıştıran bir sanal makine oluşturur. Diğer görüntüleri seçme hakkında daha fazla bilgi edinmek için bkz. [Windows PowerShell ve Azure CLI Ile Azure sanal makine görüntülerini gezinme ve seçme](../linux/cli-ps-findimage.md).
     > 
     > 
 
@@ -492,7 +492,7 @@ Dağıtımın birçok yönü, sanal makineniz için bir boyuta karar verirken g�
 
 ### <a name="add-a-data-disk-to-the-vm"></a>VM’ye veri diski ekleme
 
-Sanal makinelerde VHD olarak depolanan bir veya daha fazla [veri diski](../managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) olabilir.
+Sanal makinelerde VHD olarak depolanan bir veya daha fazla [veri diski](../managed-disks-overview.md) olabilir.
 
 1. Sanal makineye bir veri diski eklemek için,. Kopyala dosyasındaki değişkenlerden sonra bu işlevi ekleyin: 
 

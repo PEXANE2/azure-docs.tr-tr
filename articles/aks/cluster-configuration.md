@@ -3,15 +3,15 @@ title: Azure Kubernetes hizmetlerindeki küme yapılandırması (AKS)
 description: Azure Kubernetes hizmeti 'nde (AKS) bir kümeyi yapılandırmayı öğrenin
 services: container-service
 ms.topic: article
-ms.date: 09/21/2020
+ms.date: 01/13/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: ab9e2a5483f0699ad7bfca991539025adff34b11
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: eacca50e00dfe8625d86362c444544e2fd5d5511
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606921"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201119"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS kümesini yapılandırma
 
@@ -21,10 +21,52 @@ AKS kümesi oluşturmanın bir parçası olarak, Küme yapılandırmanızı gere
 
 AKS artık, Kubernetes sürümlerindeki 1.18.8 'den yüksek olan kümeler için genel kullanıma yönelik düğüm işletim sistemi (OS) olarak Ubuntu 18,04 ' i desteklemektedir. 1.18. x altındaki sürümler için AKS Ubuntu 16,04, hala varsayılan temel görüntüdür. Kubernetes v 1.18. x ve Onward 'den, varsayılan temel AKS Ubuntu 18,04 ' dir.
 
-> [!IMPORTANT]
-> Düğüm, Kubernetes v 1.18 üzerinde oluşturulan düğüm havuzları veya düğüm görüntüsünde daha fazla varsayılan `AKS Ubuntu 18.04` . Desteklenen bir Kubernetes sürümündeki düğüm havuzları, `AKS Ubuntu 16.04` düğüm görüntüsü olarak 1,18 'den azdır, ancak `AKS Ubuntu 18.04` düğüm havuzu Kubernetes sürümü v 1.18 veya üzeri olarak güncelleştirildikten sonra olarak güncelleştirilecektir.
-> 
-> 1,18 veya üzeri kümeler kullanılmadan önce AKS Ubuntu 18,04 düğüm havuzlarındaki iş yüklerinizi test etmek önemle önerilir. [Ubuntu 18,04 düğüm havuzlarını test](#use-aks-ubuntu-1804-existing-clusters-preview)etme hakkında bilgi edinin.
+### <a name="use-aks-ubuntu-1804-generally-available-on-new-clusters"></a>Yeni kümelerde AKS Ubuntu 18,04 genel kullanıma sunuldu
+
+Kubernetes v 1.18 üzerinde oluşturulan kümeler veya düğüm görüntüsünde daha fazla varsayılan `AKS Ubuntu 18.04` . Desteklenen bir Kubernetes sürümünün 1,18 ' den küçük olan düğüm havuzları yine de `AKS Ubuntu 16.04` düğüm görüntüsü olarak alınır, ancak `AKS Ubuntu 18.04` küme veya düğüm havuzunun Kubernetes sürümü v 1.18 veya üzeri olarak güncelleştirildikten sonra olarak güncelleştirilir.
+
+1,18 veya üzeri kümeler kullanılmadan önce AKS Ubuntu 18,04 düğüm havuzlarındaki iş yüklerinizi test etmek önemle önerilir. [Ubuntu 18,04 düğüm havuzlarını test](#test-aks-ubuntu-1804-generally-available-on-existing-clusters)etme hakkında bilgi edinin.
+
+Düğüm görüntüsünü kullanarak bir küme oluşturmak için `AKS Ubuntu 18.04` , aşağıda gösterildiği gibi yalnızca Kubernetes v 1.18 veya üstünü çalıştıran bir küme oluşturun
+
+```azurecli
+az aks create --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
+```
+
+### <a name="use-aks-ubuntu-1804-generally-available-on-existing-clusters"></a>Mevcut kümelerde AKS Ubuntu 18,04 genel kullanıma sunuldu
+
+Kubernetes v 1.18 üzerinde oluşturulan kümeler veya düğüm görüntüsünde daha fazla varsayılan `AKS Ubuntu 18.04` . Desteklenen bir Kubernetes sürümünün 1,18 ' den küçük olan düğüm havuzları yine de `AKS Ubuntu 16.04` düğüm görüntüsü olarak alınır, ancak `AKS Ubuntu 18.04` küme veya düğüm havuzunun Kubernetes sürümü v 1.18 veya üzeri olarak güncelleştirildikten sonra olarak güncelleştirilir.
+
+1,18 veya üzeri kümeler kullanılmadan önce AKS Ubuntu 18,04 düğüm havuzlarındaki iş yüklerinizi test etmek önemle önerilir. [Ubuntu 18,04 düğüm havuzlarını test](#test-aks-ubuntu-1804-generally-available-on-existing-clusters)etme hakkında bilgi edinin.
+
+Kümeleriniz veya düğüm havuzlarınız `AKS Ubuntu 18.04` düğüm görüntüsüne uygunsa, bunları aşağıda gösterildiği gibi bir v 1.18 veya daha yüksek sürüme de yükseltmeniz yeterlidir.
+
+```azurecli
+az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
+```
+
+Yalnızca bir düğüm havuzunu yükseltmek istiyorsanız:
+
+```azurecli
+az aks nodepool upgrade -name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
+```
+
+### <a name="test-aks-ubuntu-1804-generally-available-on-existing-clusters"></a>Test AKS Ubuntu 18,04, mevcut kümelerde genel kullanıma sunuldu
+
+Düğüm, Kubernetes v 1.18 üzerinde oluşturulan düğüm havuzları veya düğüm görüntüsünde daha fazla varsayılan `AKS Ubuntu 18.04` . Desteklenen bir Kubernetes sürümünün 1,18 ' den küçük olan düğüm havuzları yine de `AKS Ubuntu 16.04` düğüm görüntüsü olarak alınır, ancak `AKS Ubuntu 18.04` düğüm havuzu Kubernetes sürümü v 1.18 veya üzeri olarak güncelleştirildikten sonra olarak güncelleştirilir.
+
+Üretim düğüm havuzlarınızı yükseltmeden önce AKS Ubuntu 18,04 düğüm havuzlarındaki iş yüklerinizi test etmek önemle önerilir.
+
+Düğüm görüntüsünü kullanarak bir düğüm havuzu oluşturmak için `AKS Ubuntu 18.04` , yalnızca Kubernetes v 1.18 veya üstünü çalıştıran bir düğüm havuzu oluşturun. Küme denetim düzlemi 'nin en az v 1.18 veya daha büyük olması gerekir, ancak diğer düğüm havuzlarınız daha eski bir Kubernetes sürümünde kalabilirler.
+Aşağıda, ilk olarak denetim düzlemi 'ni yükseltiyoruz ve yeni düğüm görüntüsü işletim sistemi sürümünü alacak v 1.18 ile yeni bir düğüm havuzu oluşturuluyor.
+
+```azurecli
+az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14 --control-plane-only
+
+az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
+```
+
+### <a name="use-aks-ubuntu-1804-on-new-clusters-preview"></a>Yeni kümeler üzerinde AKS Ubuntu 18,04 kullanma (Önizleme)
 
 Aşağıdaki bölümde, henüz bir Kubernetes sürümü 1.18. x veya üzeri kullanmadığınız ya da bu özelliğin genel kullanıma sunulmadan önce, işletim sistemi yapılandırması önizlemesi kullanılarak oluşturulan kümeler üzerinde AKS Ubuntu 18,04 ' ı nasıl kullandığınız ve test ettiğiniz açıklanmaktadır.
 
@@ -57,8 +99,6 @@ Durum kayıtlı olarak görünüyorsa, `Microsoft.ContainerService` [az Provider
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
 ```
-
-### <a name="use-aks-ubuntu-1804-on-new-clusters-preview"></a>Yeni kümeler üzerinde AKS Ubuntu 18,04 kullanma (Önizleme)
 
 Kümeyi, küme oluşturulduğunda Ubuntu 18,04 kullanacak şekilde yapılandırın. `--aks-custom-headers`Ubuntu 18,04 ' i varsayılan işletim sistemi olarak ayarlamak için bayrağını kullanın.
 

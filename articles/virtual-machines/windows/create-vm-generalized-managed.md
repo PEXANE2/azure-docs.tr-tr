@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 2be48025bcf2be8cec63e2a251f034e72c803e88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cefe427a7a6f7a46c838147f3d699423c9f19c7b
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87289658"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201901"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Yönetilen bir görüntüden VM oluşturma
 
@@ -24,13 +24,13 @@ Bir yönetilen görüntü, en fazla 20 eşzamanlı dağıtımı destekler. Aynı
 
 ## <a name="use-the-portal"></a>Portalı kullanma
 
-1. Yönetilen bir görüntü bulmak için [Azure Portal](https://portal.azure.com) gidin. **Görüntüleri**arayın ve seçin.
+1. Yönetilen bir görüntü bulmak için [Azure Portal](https://portal.azure.com) gidin. **Görüntüleri** arayın ve seçin.
 3. Listeden kullanmak istediğiniz görüntüyü seçin. Görüntüye **genel bakış** sayfası açılır.
 4. Menüden **VM oluştur** ' u seçin.
 5. Sanal makine bilgilerini girin. Buraya girilen Kullanıcı adı ve parola, sanal makinede oturum açmak için kullanılacaktır. Tamamlandığında **Tamam**' ı seçin. Yeni VM 'yi mevcut bir kaynak grubunda oluşturabilir veya yeni **Oluştur** ' u seçerek VM 'yi depolayacak yeni bir kaynak grubu oluşturabilirsiniz.
 6. VM için bir boyut seçin. Daha fazla boyut görmek için **Tümünü görüntüle** ' yi seçin veya **Desteklenen disk türü** filtresini değiştirin. 
 7. **Ayarlar**' ın altında, gerekli değişiklikleri yapın ve **Tamam**' ı seçin. 
-8. Özet sayfasında, görüntü adınızın **özel bir görüntü**olarak listelendiğini görmeniz gerekir. Sanal makine dağıtımını başlatmak için **Tamam ' ı** seçin.
+8. Özet sayfasında, görüntü adınızın **özel bir görüntü** olarak listelendiğini görmeniz gerekir. Sanal makine dağıtımını başlatmak için **Tamam ' ı** seçin.
 
 
 ## <a name="use-powershell"></a>PowerShell kullanma
@@ -41,7 +41,7 @@ Bir yönetilen görüntü, en fazla 20 eşzamanlı dağıtımı destekler. Aynı
 
 [New-AzVm](/powershell/module/az.compute/new-azvm) için ayarlanan Basitleştirilmiş parametre yalnızca BIR görüntüden VM oluşturmak için bir ad, kaynak grubu ve görüntü adı sağlamanızı gerektirir. New-AzVm, **-Name** parametresinin değerini otomatik olarak oluşturduğu tüm kaynakların adı olarak kullanacaktır. Bu örnekte, her bir kaynak için daha ayrıntılı adlar sağlıyoruz, ancak cmdlet 'in onları otomatik olarak oluşturmasına izin veririz. Ayrıca, daha önce sanal ağ gibi kaynaklar oluşturabilir ve kaynak adını cmdlet 'e geçirebilirsiniz. New-AzVm, adları adlarıyla bulabilmeleri durumunda mevcut kaynakları kullanacaktır.
 
-Aşağıdaki örnek, *Myresourcegroup* kaynak grubunda, *MyImage*adlı görüntüden *myvmfromımage*adlı bir VM oluşturur. 
+Aşağıdaki örnek, *Myresourcegroup* kaynak grubunda, *MyImage* adlı görüntüden *myvmfromımage* adlı bir VM oluşturur. 
 
 
 ```azurepowershell-interactive
@@ -60,4 +60,4 @@ New-AzVm `
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure PowerShell modülü ile Windows VM 'Leri oluşturma ve yönetme](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[Azure PowerShell modülü ile Windows VM 'Leri oluşturma ve yönetme](tutorial-manage-vm.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: acdddcd95883d13393838a47281fb888ac2f9274
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 26ef07269c9451c2e9d05d42e2247fbfcdae4844
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500402"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201969"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Depolama: yüksek performans için tasarım
 
@@ -119,7 +119,7 @@ Uygulamanızın performans gereksinimlerini ölçmenin en iyi yolu, sunucusunun 
 
 PerfMon sayaçları işlemci, bellek ve sunucunuzdaki her mantıksal disk ve fiziksel disk için kullanılabilir. Premium Depolama disklerini bir VM ile kullandığınızda, her bir Premium Depolama diski için fiziksel disk sayaçları ve Premium Depolama disklerinde oluşturulan her birim için mantıksal disk sayaçları bulunur. Uygulama iş yükünüzü barındıran disklerin değerlerini yakalamalısınız. Mantıksal ve fiziksel diskler arasında bire bir eşleme varsa, fiziksel disk sayaçlarına başvurabilirsiniz; Aksi takdirde mantıksal disk sayaçlarına bakın. Linux 'ta, Iostat komutu bir CPU ve disk kullanımı raporu oluşturur. Disk kullanımı raporu, fiziksel cihaz veya bölüm başına istatistikler sağlar. Verileri ve günlükleri ayrı disklerde içeren bir veritabanı sunucusuna sahipseniz, bu verileri her iki disk için de toplayın. Aşağıdaki tabloda diskler, işlemciler ve Bellek sayaçlarını açıklanmaktadır:
 
-| Sayaç | Açıklama | Sin | Iostat |
+| Sayaç | Description | Sin | Iostat |
 | --- | --- | --- | --- |
 | **IOPS veya saniye başına Işlem** |Depolama diskine saniye başına verilen g/ç isteği sayısı. |Disk Okuma/sn <br> Disk yazma/sn |TPS <br> r/s <br> w/s |
 | **Disk okuma ve yazma Işlemleri** |disk üzerinde gerçekleştirilen okuma ve yazma işlemlerinin yüzdesi. |% Disk okuma zamanı <br> % Disk yazma zamanı |r/s <br> w/s |
@@ -230,7 +230,7 @@ Aşağıdaki tablo, standart ve Premium Depolama için bu senaryonun maliyet dö
 
 *Linux distros*  
 
-Azure Premium Depolama ile Windows ve Linux çalıştıran VM 'Ler için aynı performans düzeyine sahip olursunuz. Linux kaldırmalarının pek çok türünü destekliyoruz ve listenin tamamını [burada](linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)görebilirsiniz. Farklı iş yüklerinin farklı türleri için daha uygun olduğunu unutmamak önemlidir. İş yükünüzün üzerinde çalıştığı bir değere göre farklı düzeylerde performans göreceksiniz. Linux Distro 'lara 'yi uygulamanızla test edin ve en iyi şekilde çalışacak olanı seçin.
+Azure Premium Depolama ile Windows ve Linux çalıştıran VM 'Ler için aynı performans düzeyine sahip olursunuz. Linux kaldırmalarının pek çok türünü destekliyoruz ve listenin tamamını [burada](linux/endorsed-distros.md)görebilirsiniz. Farklı iş yüklerinin farklı türleri için daha uygun olduğunu unutmamak önemlidir. İş yükünüzün üzerinde çalıştığı bir değere göre farklı düzeylerde performans göreceksiniz. Linux Distro 'lara 'yi uygulamanızla test edin ve en iyi şekilde çalışacak olanı seçin.
 
 Linux 'u Premium Depolama ile çalıştırırken, yüksek performans sağlamak için gerekli sürücülerle ilgili en son güncelleştirmeleri denetleyin.
 

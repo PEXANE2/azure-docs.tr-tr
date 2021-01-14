@@ -7,12 +7,12 @@ ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 96603d27f53161c72c9e81bb7b84fdc6ab5d1ca2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6699db280c4d82867d5559255eab08fd6b55b65a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320073"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201527"
 ---
 # <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Önizleme: bir Windows görüntüsü oluşturun ve paylaşılan bir görüntü galerisine dağıtın 
 
@@ -20,7 +20,7 @@ Bu makale, Azure görüntü Oluşturucu 'Yu nasıl kullanabileceğinizi ve Azure
 
 Görüntüyü yapılandırmak için bir. JSON şablonu kullanacağız. Kullandığımız. JSON dosyası şurada: [armTemplateWinSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json). Şablonun yerel bir sürümünü indirip düzenlemenizi sağlayacak ve bu makalede yerel PowerShell oturumu kullanılarak yazılmıştır.
 
-Görüntüyü paylaşılan bir görüntü galerisine dağıtmak için şablon, şablon bölümünün [değeri olarak parçalama](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) `distribute` .
+Görüntüyü paylaşılan bir görüntü galerisine dağıtmak için şablon, şablon bölümünün [değeri olarak parçalama](../linux/image-builder-json.md#distribute-sharedimage) `distribute` .
 
 Azure görüntü Oluşturucu görüntüyü genelleştirmek için otomatik olarak Sysprep çalıştırır, bu, gerekirse [geçersiz kılabileceğiniz](../linux/image-builder-troubleshoot.md#vms-created-from-aib-images-do-not-create-successfully) genel bir Sysprep komutu. 
 
@@ -28,7 +28,7 @@ Azure görüntü Oluşturucu görüntüyü genelleştirmek için otomatik olarak
 
 > [!IMPORTANT]
 > Azure görüntü Oluşturucu Şu anda genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="register-the-features"></a>Özellikleri kaydetme
 Önizleme sırasında Azure Image Builder 'ı kullanmak için yeni özelliği kaydetmeniz gerekir.

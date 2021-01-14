@@ -6,23 +6,23 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: guybo
-ms.openlocfilehash: ef4175d24cfd02bb5cb6470b6334fea190b5bec2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9888cde8bca9fb0646dbdc8bb601b0887908ad1d
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500606"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203244"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Onaylı olmayan dağıtımlar için bilgi
 
-Azure platformu SLA 'Sı, yalnızca bir [onaylama dağılımından](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) biri kullanıldığında Linux işletim sistemini çalıştıran sanal makinelere uygulanır. Bu onaylı dağıtımlar için, önceden yapılandırılmış Linux görüntüleri Azure Marketi 'nde sunulmaktadır.
+Azure platformu SLA 'Sı, yalnızca bir [onaylama dağılımından](endorsed-distros.md) biri kullanıldığında Linux işletim sistemini çalıştıran sanal makinelere uygulanır. Bu onaylı dağıtımlar için, önceden yapılandırılmış Linux görüntüleri Azure Marketi 'nde sunulmaktadır.
 
-* [Azure tarafından onaylanan dağıtımlara Linux](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure tarafından onaylanan dağıtımlara Linux](endorsed-distros.md)
 * [Microsoft Azure Linux görüntüleri için destek](https://support.microsoft.com/kb/2941892)
 
 Azure üzerinde çalışan tüm dağıtımların sayıda önkoşulları vardır. Her dağıtım farklı olduğu için bu makale kapsamlı olamaz. Aşağıdaki tüm kriterleri karşılasanız bile, Linux sisteminizin düzgün şekilde çalışması için önemli ölçüde ince ayar gerekebilir.
 
-Azure tarafından onaylanan [dağıtımlarla bir Linux](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)ile başlamasını öneririz. Aşağıdaki makalelerde, Azure 'da desteklenen çeşitli desteklenen Linux dağıtımlarını nasıl hazırlayacağınız gösterilmektedir:
+Azure tarafından onaylanan [dağıtımlarla bir Linux](endorsed-distros.md)ile başlamasını öneririz. Aşağıdaki makalelerde, Azure 'da desteklenen çeşitli desteklenen Linux dağıtımlarını nasıl hazırlayacağınız gösterilmektedir:
 
 - [CentOS Tabanlı Dağıtımlar](create-upload-centos.md)
 - [Debian Linux](debian-create-upload-vhd.md)
@@ -38,7 +38,7 @@ Bu makalede, Azure 'da Linux dağıtımınızı çalıştırmaya yönelik genel 
 * Hyper-V sanal sabit disk (VHDX) biçimi Azure 'da desteklenmiyor, yalnızca *sabıt VHD*.  Hyper-V Yöneticisi 'Ni veya [Convert-VHD](/powershell/module/hyper-v/convert-vhd) cmdlet 'ini kullanarak diski vhd biçimine dönüştürebilirsiniz. VirtualBox kullanıyorsanız, disk oluştururken varsayılan (dinamik olarak ayrılan) yerine **sabit boyut** ' u seçin.
 * Azure, Gen1 (BIOS önyükleme) & Gen2 (UEFı önyüklemesi) sanal makinelerini destekler.
 * VHD için izin verilen en büyük boyut 1.023 GB 'dir.
-* Linux sistemini yüklerken, çoğu yükleme için varsayılan olan mantıksal birim Yöneticisi (LVM) yerine standart bölümleri kullanmanızı öneririz. Standart bölümlerin kullanılması, özellikle de sorun giderme için bir işletim sistemi diski başka bir özdeş VM 'ye iliştirilmişse, kopyalanmış VM 'lerle LVM adı çakışmalarını önler. [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) veya [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) veri disklerinde kullanılıyor olabilir.
+* Linux sistemini yüklerken, çoğu yükleme için varsayılan olan mantıksal birim Yöneticisi (LVM) yerine standart bölümleri kullanmanızı öneririz. Standart bölümlerin kullanılması, özellikle de sorun giderme için bir işletim sistemi diski başka bir özdeş VM 'ye iliştirilmişse, kopyalanmış VM 'lerle LVM adı çakışmalarını önler. [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm) veya [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid) veri disklerinde kullanılıyor olabilir.
 * UDF dosya sistemlerini bağlamak için çekirdek desteği gereklidir. Azure 'da ilk önyüklemede sağlama yapılandırması, konuğa bağlı olan UDF biçimli medya kullanılarak Linux VM 'ye geçirilir. Azure Linux Aracısı, yapılandırmasını okumak ve VM 'yi sağlamak için UDF dosya sistemini takmalıdır.
 * 2.6.37 ' den önceki Linux çekirdek sürümleri, Hyper-V üzerinde NUMA 'yı daha büyük VM boyutları ile desteklemez. Bu sorun öncelikle yukarı akış Red Hat 2.6.32 çekirdeğini kullanarak eski dağıtımları etkiler ve Red Hat Enterprise Linux (RHEL) 6,6 (Kernel-2.6.32-504) içinde düzeltilmiştir. 2.6.37 'den eski olan özel çekirdekler çalıştıran sistemler veya 2.6.32-504 ' den daha eski RHEL tabanlı çekirdekler, `numa=off` grub. conf içindeki çekirdek komut satırında önyükleme parametresini ayarlamış olmalıdır. Daha fazla bilgi için bkz. [Red Hat KB 436883](https://access.redhat.com/solutions/436883).
 * İşletim sistemi diski üzerinde takas bölümü yapılandırmayın. Linux Aracısı, aşağıdaki adımlarda açıklandığı gibi geçici kaynak diskinde bir takas dosyası oluşturmak için yapılandırılabilir.
@@ -67,7 +67,7 @@ Azure üzerinde VHD görüntülerinin 1 MB 'a hizalanmış bir sanal boyutu olma
 
 * VHD http: \/ / \<mystorageaccount> . blob.Core.Windows.net/VHDs/MyLinuxVM.vhd desteklenmeyen bir 21475270656 baytlık sanal boyuta sahiptir. Boyut bir tam sayı olmalıdır (MB cinsinden).
 
-Bu durumda, Hyper-V Yöneticisi konsolunu veya [Resize-VHD](/powershell/module/hyper-v/resize-vhd?view=win10-ps) PowerShell cmdlet 'ini kullanarak VM 'yi yeniden boyutlandırın.  Bir Windows ortamında çalıştırmıyorsanız, `qemu-img` (gerekirse) dönüştürmek ve VHD 'yi yeniden boyutlandırmak için kullanmanızı öneririz.
+Bu durumda, Hyper-V Yöneticisi konsolunu veya [Resize-VHD](/powershell/module/hyper-v/resize-vhd) PowerShell cmdlet 'ini kullanarak VM 'yi yeniden boyutlandırın.  Bir Windows ortamında çalıştırmıyorsanız, `qemu-img` (gerekirse) dönüştürmek ve VHD 'yi yeniden boyutlandırmak için kullanmanızı öneririz.
 
 > [!NOTE]
 > [QEMU-img sürümlerindeki bilinen bir hata](https://bugs.launchpad.net/qemu/+bug/1490611) vardır >= 2.2.1, hatalı BIÇIMLI bir VHD ile sonuçlanır. Bu sorun QEMU 2,6 ' de düzeltildi. `qemu-img`2.2.0 veya daha düşük ya da 2,6 ya da daha yüksek bir sürümü kullanmanızı öneririz.
@@ -114,7 +114,7 @@ Bu durumda, Hyper-V Yöneticisi konsolunu veya [Resize-VHD](/powershell/module/h
 
 ## <a name="linux-kernel-requirements"></a>Linux çekirdek gereksinimleri
 
-Hyper-V ve Azure için Linux Integration Services (LIS) sürücüleri doğrudan yukarı akış Linux çekirdeğine katkıda bulunur. Son Linux çekirdek sürümü (3. x gibi) içeren birçok dağıtım, bu sürücülere zaten erişilebilir veya bu sürücülerin kernels ile birlikte karşılanamayan sürümlerini sağlar.  Bu sürücüler, yeni düzeltmeler ve özelliklerle yukarı akış çekirdeğinden sürekli olarak güncelleştirilir. bu nedenle, bu düzeltmeler ve güncelleştirmeler içeren bir [onaylı dağıtım](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) çalıştırmak tavsiye ederiz.
+Hyper-V ve Azure için Linux Integration Services (LIS) sürücüleri doğrudan yukarı akış Linux çekirdeğine katkıda bulunur. Son Linux çekirdek sürümü (3. x gibi) içeren birçok dağıtım, bu sürücülere zaten erişilebilir veya bu sürücülerin kernels ile birlikte karşılanamayan sürümlerini sağlar.  Bu sürücüler, yeni düzeltmeler ve özelliklerle yukarı akış çekirdeğinden sürekli olarak güncelleştirilir. bu nedenle, bu düzeltmeler ve güncelleştirmeler içeren bir [onaylı dağıtım](endorsed-distros.md) çalıştırmak tavsiye ederiz.
 
 6,0 sürümünü 6,3 ' de bir Red Hat Enterprise Linux değişken çalıştırıyorsanız, [Hyper-V için en son LIS sürücülerini](https://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409)yüklemeniz gerekir. RHEL 6.4 + (ve türetmeleri) ile başlayarak, LIS sürücüleri zaten çekirdeğe dahil edilmiştir ve ek yükleme paketlerine gerek yoktur.
 

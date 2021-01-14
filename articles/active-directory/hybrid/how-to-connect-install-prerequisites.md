@@ -16,12 +16,12 @@ ms.date: 11/05/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: edace0298514d1fc3cfd3afcff73fa0d29e18f0c
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 73376994e01ed89891726a8f6e1b727f89dab2fb
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96858782"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201731"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect Önkoşulları
 Bu makalede Azure Active Directory (Azure AD) Connect için Önkoşullar ve donanım gereksinimleri açıklanmaktadır.
@@ -72,7 +72,7 @@ Active Directory ortamınızı güvenli hale getirmek hakkında daha fazla bilgi
     - AD FS veya Web uygulaması proxy 'Sinin yüklü olduğu sunucular Windows Server 2012 R2 veya üzeri olmalıdır. Uzaktan Yükleme için bu sunucularda Windows Uzaktan Yönetimi etkinleştirilmelidir. 
     - TLS/SSL sertifikalarını yapılandırmanız gerekir. Daha fazla bilgi için bkz. AD FS SSL [/TLS protokollerini ve şifre paketlerini yönetme](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) ve [ssl sertifikalarını yönetme](/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap)AD FS.
     - Ad çözümlemesi yapılandırmanız gerekir. 
-- Genel yöneticileriniz MFA etkinleştirilmişse, URL https://secure.aadcdn.microsoftonline-p.com *must* güvenilen siteler listesinde olmalıdır. MFA sınaması istendiğinde bu siteyi Güvenilen siteler listesine eklemeniz istenir ve daha önce eklenmemiştir. Internet Explorer 'ı, güvenilen sitelerinize eklemek için kullanabilirsiniz.
+- Genel yöneticileriniz MFA etkinleştirilmişse, URL https://secure.aadcdn.microsoftonline-p.com  güvenilen siteler listesinde olmalıdır. MFA sınaması istendiğinde bu siteyi Güvenilen siteler listesine eklemeniz istenir ve daha önce eklenmemiştir. Internet Explorer 'ı, güvenilen sitelerinize eklemek için kullanabilirsiniz.
 
 #### <a name="harden-your-azure-ad-connect-server"></a>Azure AD Connect sunucunuzu Harden 
 BT ortamınızın bu kritik bileşeninin güvenlik saldırısı yüzeyini azaltmak için Azure AD Connect sunucunuzu çok fazla kullanmanızı öneririz. Bu önerilerin ardından, kuruluşunuzun bazı güvenlik risklerini azaltmaya yardımcı olur.
@@ -83,7 +83,7 @@ BT ortamınızın bu kritik bileşeninin güvenlik saldırısı yüzeyini azaltm
 - [Ayrıcalıklı erişimin güvenliğini sağlama](/windows-server/identity/securing-privileged-access/securing-privileged-access)bölümünde sunulan yönergeleri izleyin. 
 - AADConnect sunucusu ile NTLM kimlik doğrulamasının kullanımını reddetme. Bunu yapmak için bazı yollar şunlardır: [AADConnect sunucusunda NTLM 'Yi kısıtlama](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-outgoing-ntlm-traffic-to-remote-servers) ve [BIR etki alanında NTLM 'yi kısıtlama](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-ntlm-authentication-in-this-domain)
 - Her makinenin benzersiz bir yerel yönetici parolası olduğundan emin olun. Daha fazla bilgi için, bkz. [yerel yönetici parolası çözümü (LAPS)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) , her iş istasyonunda benzersiz rastgele parolalar yapılandırabilir ve bir ACL tarafından korunan Active Directory sunucuda depolar. Yalnızca uygun yetkili kullanıcılar bu yerel yönetici hesabı parolalarını sıfırlayabilir veya sıfırlamayı isteyebilir. [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=46899)' nden iş istasyonlarında ve sunucularda kullanım için laps 'leri edinebilirsiniz. LAPS ve ayrıcalıklı erişim iş istasyonları (Paw 'lar) içeren bir ortamı çalıştırmak için ek yönergeler, [Temizleme kaynak ilkesine dayalı işlem standartları](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle)içinde bulunabilir. 
-- Kuruluşunuzun bilgi sistemlerine ayrıcalıklı erişimi olan tüm personel için adanmış [ayrıcalıklı erişim iş istasyonları](/windows-server/identity/securing-privileged-access/privileged-access-workstations) uygulayın. 
+- Kuruluşunuzun bilgi sistemlerine ayrıcalıklı erişimi olan tüm personel için adanmış [ayrıcalıklı erişim iş istasyonları](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) uygulayın. 
 - Active Directory ortamınızın saldırı yüzeyini azaltmak için bu [ek yönergeleri](/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface) izleyin.
 
 

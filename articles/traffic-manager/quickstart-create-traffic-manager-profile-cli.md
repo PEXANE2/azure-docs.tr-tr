@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/09/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7dabf94c711972f9fe543edac0d7b95469fc2d35
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 07fadd7b3129b3ca3351e0416c8aa6f49de82212
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94661112"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201238"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak yüksek oranda kullanılabilir bir Web uygulaması için Traffic Manager profili oluşturma
 
@@ -33,7 +33,7 @@ Bu hızlı başlangıçta, bir Web uygulamasının iki örneğini oluşturacaks�
 - Bu makale, Azure CLı 'nin sürüm 2.0.28 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
-[az group create](https://docs.microsoft.com/cli/azure/group) ile bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
+[az group create](/cli/azure/group) ile bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
 Aşağıdaki örnek *eastus* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur:
 
@@ -47,7 +47,7 @@ Aşağıdaki örnek *eastus* konumunda *myresourcegroup* adlı bir kaynak grubu 
 
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager profili oluşturma
 
-Kullanıcı trafiğini uç nokta önceliğine göre yönlendiren [az Network Traffic-Manager profili oluşturma](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile?view=azure-cli-latest#az-network-traffic-manager-profile-create) ' yı kullanarak bir Traffic Manager profili oluşturun.
+Kullanıcı trafiğini uç nokta önceliğine göre yönlendiren [az Network Traffic-Manager profili oluşturma](/cli/azure/network/traffic-manager/profile?view=azure-cli-latest#az-network-traffic-manager-profile-create) ' yı kullanarak bir Traffic Manager profili oluşturun.
 
 Aşağıdaki örnekte, **<profile_name>** benzersiz bir Traffic Manager profili adıyla değiştirin.
 
@@ -70,7 +70,7 @@ az network traffic-manager profile create \
 Bu hızlı başlangıçta iki farklı Azure bölgesinde (*Doğu ABD* ve *Batı Avrupa*) dağıtılan bir Web uygulamasının iki örneğine ihtiyacınız olacaktır. Her biri, Traffic Manager için birincil ve yük devretme uç noktaları olarak görev yapar.
 
 ### <a name="create-web-app-service-plans"></a>Web App Service planları oluşturma
-İki farklı Azure bölgesinde dağıtacağınız Web uygulamasının iki örneği için [az appservice plan Create](https://docs.microsoft.com/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) komutunu kullanarak Web App Service planları oluşturun.
+İki farklı Azure bölgesinde dağıtacağınız Web uygulamasının iki örneği için [az appservice plan Create](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) komutunu kullanarak Web App Service planları oluşturun.
 
 Aşağıdaki örnekte, **<appspname_eastus>** ve **<appspname_westeurope>** benzersiz bir App Service plan adıyla değiştirin
 
@@ -91,7 +91,7 @@ az appservice plan create \
 ```
 
 ### <a name="create-a-web-app-in-the-app-service-plan"></a>App Service planında bir Web uygulaması oluşturma
-*Doğu ABD* ve Azure bölgelerindeki *Batı Avrupa* App Service planlarında [az WebApp Create](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) kullanarak Web uygulaması için iki örnek oluşturun.
+*Doğu ABD* ve Azure bölgelerindeki *Batı Avrupa* App Service planlarında [az WebApp Create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) kullanarak Web uygulaması için iki örnek oluşturun.
 
 Aşağıdaki örnekte, **<app1name_eastus>** ve **<app2name_westeurope**>benzersiz bir uygulama adıyla değiştirin ve **<** appspname_eastus>ve **<** appspname_westeurope>, önceki bölümde App Service planlarını oluşturmak için kullanılan adla değiştirin.
 
@@ -110,7 +110,7 @@ az webapp create \
 ```
 
 ## <a name="add-traffic-manager-endpoints"></a>Traffic Manager uç noktalarını ekleme
-Aşağıdaki şekilde, [az Network Traffic-Manager uç noktası oluştur ' a](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create) Traffic Manager profile kullanarak iki Web Apps uç nokta Traffic Manager olarak ekleyin:
+Aşağıdaki şekilde, [az Network Traffic-Manager uç noktası oluştur ' a](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create) Traffic Manager profile kullanarak iki Web Apps uç nokta Traffic Manager olarak ekleyin:
 
 - Web uygulaması KIMLIĞINI belirleme ve *Doğu ABD* Azure bölgesinde bulunan Web uygulamasını, tüm Kullanıcı trafiğini yönlendirmek için birincil uç nokta olarak ekleyin. 
 - Web uygulaması KIMLIĞINI belirleme ve *Batı Avrupa* Azure bölgesinde bulunan Web uygulamasını yük devretme uç noktası olarak ekleme. 
@@ -178,7 +178,7 @@ Aşağıdaki örnekte, **<app1name_eastus>** ve **<app2name_westeurope>** öncek
 
 ### <a name="determine-the-dns-name"></a>DNS adını belirleme
 
-[Az Network Traffic-Manager profile Show](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile?view=azure-cli-latest#az-network-traffic-manager-profile-show)kullanılarak TRAFFIC Manager profilinin DNS adını saptayın.
+[Az Network Traffic-Manager profile Show](/cli/azure/network/traffic-manager/profile?view=azure-cli-latest#az-network-traffic-manager-profile-show)kullanılarak TRAFFIC Manager profilinin DNS adını saptayın.
 
 ```azurecli-interactive
 
@@ -196,7 +196,7 @@ az network traffic-manager profile show \
 
     > [!NOTE]
     > Bu hızlı başlangıç senaryosunda, tüm istekler birincil uç noktaya yönlendirir. **Öncelik 1** olarak ayarlanır.
-2. Traffic Manager yük devretmeyi eylemde görüntülemek için [az Network Traffic-Manager Endpoint Update](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update)kullanarak birincil sitenizi devre dışı bırakın.
+2. Traffic Manager yük devretmeyi eylemde görüntülemek için [az Network Traffic-Manager Endpoint Update](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update)kullanarak birincil sitenizi devre dışı bırakın.
 
    ```azurecli-interactive
 
@@ -214,7 +214,7 @@ az network traffic-manager profile show \
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-İşiniz bittiğinde, [az Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete)kullanarak kaynak gruplarını, Web uygulamalarını ve tüm ilgili kaynakları silin.
+İşiniz bittiğinde, [az Group Delete](/cli/azure/group?view=azure-cli-latest#az-group-delete)kullanarak kaynak gruplarını, Web uygulamalarını ve tüm ilgili kaynakları silin.
 
 ```azurecli-interactive
 

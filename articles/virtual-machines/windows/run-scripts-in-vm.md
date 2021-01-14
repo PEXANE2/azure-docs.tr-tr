@@ -8,12 +8,12 @@ ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: c2999d5bd6d780d5815f22d18e6e8cdd580987af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23abc86e26686d9a23ed94d0311a44ffe3012657
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87020177"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201782"
 ---
 # <a name="run-scripts-in-your-windows-vm"></a>Windows sanal makinenizde betikleri çalıştırma
 
@@ -34,7 +34,7 @@ Görevleri otomatikleştirmek veya sorunları gidermek için, bir VM 'de komutla
 [Çalıştır komutu](run-command.md) özelliği, sanal makine ve uygulama yönetimini ve betikleri kullanarak sorun gidermeyi ve makinenin ulaşılamaz olduğu durumlarda bile kullanılabilir. Örneğin, Konuk GÜVENLIK duvarında RDP veya SSH bağlantı noktası açık olmaz.
 
 * Azure sanal makinelerinde betikleri çalıştırın.
-* [Azure Portal](run-command.md), [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke)veya [PowerShell](/powershell/module/az.compute/invoke-azvmruncommand) kullanarak çalıştırılabilir
+* [Azure Portal](run-command.md), [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [Azure CLI](/cli/azure/vm/run-command#az-vm-run-command-invoke)veya [PowerShell](/powershell/module/az.compute/invoke-azvmruncommand) kullanarak çalıştırılabilir
 * Azure portal hızlıca bir betiği çalıştırın ve çıktıyı görüntüleyin ve gerektiğinde tekrarlayın.
 * Betik doğrudan yazılabilir veya yerleşik betiklerin birini çalıştırabilirsiniz.
 * Linux makinelerde Windows makinelerinde ve Bash betikte PowerShell betiğini çalıştırın.

@@ -1,19 +1,19 @@
 ---
-title: Azure Izleyici 'de müşteri tarafından yönetilen depolama hesaplarını kullanma Log Analytics
+title: Using Azure İzleyici Log Analytics'te müşteri tarafından yönetilen depolama hesaplarını kullanma
 description: Log Analytics senaryolar için kendi depolama hesabınızı kullanın
 ms.subservice: logs
 ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: bb5c6439f2e0b919e422c7a72f98468f0efc01f1
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 706392d95e371fe303bb9f2c18f59e4a224d83c0
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901323"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201068"
 ---
-# <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Azure Izleyici 'de müşteri tarafından yönetilen depolama hesaplarını kullanma Log Analytics
+# <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Using Azure İzleyici Log Analytics'te müşteri tarafından yönetilen depolama hesaplarını kullanma
 
 Log Analytics çeşitli senaryolarda Azure Storage 'ı kullanır. Bu kullanım genellikle otomatik olarak yönetilir. Ancak, bazı durumlar, müşteri tarafından yönetilen depolama hesabı olarak da adlandırılan kendi depolama hesabınızı sağlamanızı ve yönetmenizi gerektirir. Bu belgede WAD/LAD günlükleri, özel bağlantı ve müşteri tarafından yönetilen anahtar (CMK) şifrelemesi için müşteri tarafından yönetilen depolamanın kullanımı ele alınmaktadır. 
 
@@ -23,7 +23,7 @@ Log Analytics çeşitli senaryolarda Azure Storage 'ı kullanır. Bu kullanım g
 ## <a name="ingesting-azure-diagnostics-extension-logs-wadlad"></a>Azure Tanılama uzantısı günlüklerini geri yükleme (WAD/LAD)
 Azure Tanılama uzantısı aracıları (sırasıyla, Windows ve Linux aracıları için WAD ve LAD olarak da bilinir), çeşitli işletim sistemi günlükleri toplar ve bunları müşteri tarafından yönetilen bir depolama hesabında depolar. Daha sonra bu günlükleri gözden geçirmek ve analiz etmek için Log Analytics kullanabilirsiniz.
 ### <a name="how-to-collect-azure-diagnostics-extension-logs-from-your-storage-account"></a>Depolama hesabınızdan Azure Tanılama uzantısı günlüklerini toplama
-Depolama hesabını, [Azure Portal](./diagnostics-extension-logs.md#collect-logs-from-azure-storage) kullanarak veya [Storage Insights apı](/rest/api/loganalytics/connectedsources/storage%20insights/createorupdate)'sini çağırarak Log Analytics çalışma alanınıza depolama veri kaynağı olarak bağlayın.
+Depolama hesabını, [Azure Portal](./diagnostics-extension-logs.md#collect-logs-from-azure-storage) kullanarak veya [Storage Insights apı](/rest/api/loganalytics/storage%20insights/createorupdate)'sini çağırarak Log Analytics çalışma alanınıza depolama veri kaynağı olarak bağlayın.
 
 Desteklenen veri türleri:
 * Syslog

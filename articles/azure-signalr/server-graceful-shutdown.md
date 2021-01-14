@@ -6,12 +6,12 @@ ms.author: tefa
 ms.date: 11/12/2020
 ms.service: signalr
 ms.topic: conceptual
-ms.openlocfilehash: 06aa91ff414e5575f7b1a743d2cc17765437ef72
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: d9dd7ce9cf321628598a7bb866c5d1b1a6fb0e1e
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797574"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201680"
 ---
 # <a name="server-graceful-shutdown"></a>Sunucu düzgün kapanma
 Microsoft Azure SignalR hizmeti, sunucuyu düzgün bir şekilde kapatmak için iki mod sağlar. 
@@ -43,7 +43,7 @@ Genel olarak, düzgün kapanma sürecinde dört aşama olacaktır:
 
     Tüm istemcilere bir kapanış iletisi yayınla gibi bir yol tasarlamanızı ve sonra istemcilerinizin ne zaman kapatılıp yeniden bağlanacağına karar vermesini sağlayabilirsiniz.
 
-    Örnek kullanım için [ChatSample](https://github.com/Azure/azure-signalr/tree/dev/samples/ChatSample/ChatSample) okuyun ve bu, kapatma kancası 'nda istemci kapanışını tetiklemek için bir ' çıkış ' iletisi yayınlarız.
+    Örnek kullanım için [ChatSample](https://github.com/Azure/azure-signalr/tree/dev/samples/ChatSample) okuyun ve bu, kapatma kancası 'nda istemci kapanışını tetiklemek için bir ' çıkış ' iletisi yayınlarız.
 
     **Mod MigrateClients olarak ayarlandı**
 

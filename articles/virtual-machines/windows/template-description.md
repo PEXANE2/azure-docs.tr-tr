@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: 228814db76ea14fa8b74c0c5d634e5afd6d54ac6
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 2726ba3b337dc785de58b06fb5e8372058f71879
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483054"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202105"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager şablonundaki sanal makineler
 
@@ -282,7 +282,7 @@ Bir sanal makine kaynağı tanımlarken çeşitli profil öğeleri kullanılır.
 
 ## <a name="disks-and-images"></a>Diskler ve görüntüler
    
-Azure 'da, VHD dosyaları [diskleri veya görüntüleri](../managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)temsil edebilir. Bir VHD dosyasındaki işletim sistemi belirli bir sanal makine olmak üzere özelleştirildiğinde, disk olarak adlandırılır. Bir VHD dosyasındaki işletim sistemi çok sayıda VM oluşturmak için genelleştirildiğinde, görüntü olarak adlandırılır.   
+Azure 'da, VHD dosyaları [diskleri veya görüntüleri](../managed-disks-overview.md)temsil edebilir. Bir VHD dosyasındaki işletim sistemi belirli bir sanal makine olmak üzere özelleştirildiğinde, disk olarak adlandırılır. Bir VHD dosyasındaki işletim sistemi çok sayıda VM oluşturmak için genelleştirildiğinde, görüntü olarak adlandırılır.   
     
 ### <a name="create-new-virtual-machines-and-new-disks-from-a-platform-image"></a>Yeni sanal makineler ve bir platform görüntüsünden yeni diskler oluşturma
 
@@ -367,7 +367,7 @@ Yönetilen görüntüden bir sanal makine oluşturmak istiyorsanız, ImageRefere
 ],
 ```
 
-## <a name="extensions"></a>Uzantılar
+## <a name="extensions"></a>Uzantıları
 
 [Uzantılar](../extensions/features-windows.md) ayrı bir kaynak olmakla birlikte, sanal makinelere yakın bir şekilde bağlanır. Uzantılar, VM 'nin alt kaynağı veya ayrı bir kaynak olarak eklenebilir. Örnek, VM 'lere eklenen [Tanılama uzantısını](../extensions/diagnostics-template.md) gösterir:
 
@@ -453,5 +453,5 @@ Kaynak oluşturmak veya mevcut kaynakları güncelleştirmek için aynı şablon
 
 - [Azure Resource Manager şablonları yazma](../../azure-resource-manager/templates/template-syntax.md)kullanarak kendi şablonunuzu oluşturun.
 - Bir [Kaynak Yöneticisi şablonuyla Windows sanal makinesi oluşturma](ps-template.md)kullanarak oluşturduğunuz şablonu dağıtın.
-- [Azure PowerShell modülü Ile Windows VM 'Leri oluşturma ve yönetme](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)konusunu Inceleyerek oluşturduğunuz VM 'leri yönetmeyi öğrenin.
+- [Azure PowerShell modülü Ile Windows VM 'Leri oluşturma ve yönetme](tutorial-manage-vm.md)konusunu Inceleyerek oluşturduğunuz VM 'leri yönetmeyi öğrenin.
 - Şablonlarda kaynak türlerinin JSON sözdizimi ve özellikleri için bkz. [Azure Resource Manager şablonu başvurusu](/azure/templates/).

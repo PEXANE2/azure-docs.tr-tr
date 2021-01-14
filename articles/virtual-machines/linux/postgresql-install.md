@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: fdde7613627c9fec0694f3985f78cf10e52f59c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4052a9c8614a17c3b5cdd871ad78be8cc3258c5a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397105"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202598"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>Azure 'da PostgreSQL yükleme ve yapılandırma
 PostgreSQL, Oracle ve DB2 ile benzer gelişmiş bir açık kaynaklı veritabanıdır. Tam ACID uyumluluğu, güvenilir işlem işleme ve çok sürümlü eşzamanlılık denetimi gibi kurumsal özellikli özellikler içerir. Ayrıca, ANSI SQL ve SQL/MED gibi standartları destekler (Oracle, MySQL, MongoDB için yabancı veri sarmalayıcıları dahil) ve diğer birçok kişi). 12 yordamsal diller, GıN ve GiST dizinleri, uzamsal veri desteği ve JSON ya da anahtar-değer tabanlı uygulamalar için birden çok NoSQL benzeri Özellik desteğiyle yüksek düzeyde genişletilebilir.
@@ -24,13 +24,13 @@ Bu makalede, Linux çalıştıran bir Azure sanal makinesine PostgreSQL yükleme
 
 ## <a name="install-postgresql"></a>PostgreSQL yükleme
 > [!NOTE]
-> Bu öğreticiyi tamamlayabilmeniz için zaten Linux çalıştıran bir Azure sanal makineniz olmalıdır. Devam etmeden önce bir Linux VM oluşturmak ve ayarlamak için bkz. [Azure LINUX VM öğreticisi](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> Bu öğreticiyi tamamlayabilmeniz için zaten Linux çalıştıran bir Azure sanal makineniz olmalıdır. Devam etmeden önce bir Linux VM oluşturmak ve ayarlamak için bkz. [Azure LINUX VM öğreticisi](quick-create-cli.md).
 > 
 > 
 
 Bu durumda, PostgreSQL bağlantı noktası olarak 1999 numaralı bağlantı noktasını kullanın.  
 
-PuTTY aracılığıyla oluşturduğunuz Linux sanal makinesine bağlanın. Azure Linux VM 'yi ilk kez kullanıyorsanız, bir Linux sanal makinesine bağlanmak için PuTTY 'yi nasıl kullanacağınızı öğrenmek için bkz. [Azure 'Da Linux Ile SSH kullanma](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
+PuTTY aracılığıyla oluşturduğunuz Linux sanal makinesine bağlanın. Azure Linux VM 'yi ilk kez kullanıyorsanız, bir Linux sanal makinesine bağlanmak için PuTTY 'yi nasıl kullanacağınızı öğrenmek için bkz. [Azure 'Da Linux Ile SSH kullanma](mac-create-ssh-keys.md) .
 
 1. Köke (yönetici) geçiş yapmak için aşağıdaki komutu çalıştırın:
 
@@ -177,7 +177,7 @@ Aşağıdaki komutları çalıştırın:
 # cp linux /etc/init.d/postgresql
 ```
 
-/Etc/ınitve d/PostgreSQL dosyasındaki iki değişkeni değiştirin. Ön ek PostgreSQL yükleme yoluna ayarlanır: **/seçenek/pgsql**. PGDATA, PostgreSQL: **/seçenek/pgsql_data**veri depolama yoluna ayarlanır.
+/Etc/ınitve d/PostgreSQL dosyasındaki iki değişkeni değiştirin. Ön ek PostgreSQL yükleme yoluna ayarlanır: **/seçenek/pgsql**. PGDATA, PostgreSQL: **/seçenek/pgsql_data** veri depolama yoluna ayarlanır.
 
 ```config
 # sed -i '32s#usr/local#opt#' /etc/init.d/postgresql

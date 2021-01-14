@@ -7,18 +7,18 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/03/2020
-ms.openlocfilehash: 06f738ea88093ea8de45efebea983fd7fa13216e
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: fcc3e487d949a9450f792a6cc230b64e7dbe950a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387828"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202955"
 ---
 # <a name="tutorial-use-the-rest-apis"></a>Öğretici: REST API 'Lerini kullanma
 
 Bu öğreticide, Azure purview REST API 'Lerini nasıl kullanacağınızı öğreneceksiniz. Azure purview kataloğuna veri göndermek isteyen herkes, kataloğu otomatik bir işlemin parçası olarak dahil eder veya katalog üzerinde kendi kullanıcı deneyimlerini oluşturmak için REST API 'Lerini kullanabilir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -31,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Başlamak için, mevcut bir Azure purview hesabına sahip olmanız gerekir. Bir kataloğunuz yoksa, [Azure purview hesabı oluşturmaya yönelik hızlı başlangıç](create-catalog-portal.md)bölümüne bakın.
 
@@ -39,7 +39,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure portalda](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="create-a-service-principal-application"></a>Hizmet sorumlusu oluşturma (uygulama)
 
@@ -142,7 +142,7 @@ Aşağıdaki değerleri bulun ve kaydedin:
 
 
 
-1. [Node.js'ı yükler ](https://github.com/Azure/autorest/blob/master/docs/installing-autorest.md).
+1. [Node.js'ı yükler ](https://github.com/Azure/autorest/blob/v2/docs/installing-autorest.md).
 1. PowerShell’i açın ve aşağıdaki komutu çalıştırın:
 
    ```powershell
@@ -173,7 +173,7 @@ Aşağıdaki değerleri bulun ve kaydedin:
 1. Sürümün en az 2.3.21 olduğundan emin olun ve ardından **Install**' ı seçin.
 1. Uygulamayı derleyin ve çalıştırın.
 
-Örnek kod, katalogda kaç tane tür tanımları öğesinin olduğunu döndürür ve rol atamalarının nasıl işleneceğini gösterir. Ayrıntılar için bkz `DoRoleAssignmentOperations()` . örnek kodda. Proje hakkında daha fazla bilgi için bkz. [Proje kurulumu](https://github.com/Azure/autorest/blob/master/docs/client/proj-setup.md).
+Örnek kod, katalogda kaç tane tür tanımları öğesinin olduğunu döndürür ve rol atamalarının nasıl işleneceğini gösterir. Ayrıntılar için bkz `DoRoleAssignmentOperations()` . örnek kodda. Proje hakkında daha fazla bilgi için bkz. [Proje kurulumu](https://github.com/Azure/autorest/blob/v2/docs/client/proj-setup.md).
 
 ### <a name="sample-code-for-the-console-application"></a>Konsol uygulaması için örnek kod
 

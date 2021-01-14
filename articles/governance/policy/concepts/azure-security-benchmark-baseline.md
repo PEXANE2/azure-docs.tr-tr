@@ -7,20 +7,20 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 8b18da5e41e235b560918ad26117a0162078862c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8915e1c15972341befd176b412925f4e87c94f6
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540991"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201459"
 ---
 # <a name="azure-policy-security-baseline-for-azure-security-benchmark"></a>Azure Güvenlik kıyaslaması için Azure Ilkesi güvenlik temeli
 
-Bu güvenlik temeli [Azure Güvenlik kıyaslayıcılarından](../../../security/benchmarks/overview.md) Azure ilkesine kılavuzluk uygular. Azure Güvenlik kıyaslaması, bulut Çözümlerinizi Azure 'da nasıl güvence altına almak için öneriler sağlar. İçerik, Azure Güvenlik kıyaslaması tarafından tanımlanan **Uyumluluk etki alanları** ve **güvenlik denetimlerine** ve Azure ilkesi için geçerli olan ilgili kılavuza göre gruplandırılır. Azure Ilkesi için geçerli olmayan **denetimler** dışlandı. Azure Ilkesinin Azure Güvenlik kıyaslaması ile tamamen nasıl eşlendiğini görmek için, [tam Azure ilkesi güvenlik temeli eşleme dosyasına](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)bakın.
+Bu güvenlik temeli [Azure Güvenlik kıyaslayıcılarından](../../../security/benchmarks/overview.md) Azure ilkesine kılavuzluk uygular. Azure Güvenlik Karşılaştırması, Azure üzerindeki bulut çözümlerinizin güvenliğini sağlamaya yönelik öneriler sunar. İçerik, Azure Güvenlik kıyaslaması tarafından tanımlanan **Uyumluluk etki alanları** ve **güvenlik denetimlerine** ve Azure ilkesi için geçerli olan ilgili kılavuza göre gruplandırılır. Azure Ilkesi için geçerli olmayan **denetimler** dışlandı. Azure Ilkesinin Azure Güvenlik kıyaslaması ile tamamen nasıl eşlendiğini görmek için, [tam Azure ilkesi güvenlik temeli eşleme dosyasına](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)bakın.
 
 Azure Güvenlik kıyaslama denetimlerinin yerleşik girişim aracılığıyla yerleşik ilke tanımlarına eşlenmesi için bkz. [mevzuat uyumluluğu: Azure Güvenlik kıyaslaması](../samples/azure-security-benchmark.md).
 
-Azure Ilkesi _sorumluluk_yerine terim _sahipliğini_ kullanır. _Sahiplik_hakkında daha fazla bilgi için bkz. bulutta [Azure ilke Ilke tanımları](./definition-structure.md#type) ve [paylaşılan sorumluluk](../../../security/fundamentals/shared-responsibility.md).
+Azure Ilkesi _sorumluluk_ yerine terim _sahipliğini_ kullanır. _Sahiplik_ hakkında daha fazla bilgi için bkz. bulutta [Azure ilke Ilke tanımları](./definition-structure.md#type) ve [paylaşılan sorumluluk](../../../security/fundamentals/shared-responsibility.md).
 
 
 ## <a name="logging-and-monitoring"></a>Günlüğe kaydetme ve izleme
@@ -36,9 +36,9 @@ Azure Ilkesi _sorumluluk_yerine terim _sahipliğini_ kullanır. _Sahiplik_hakkı
 * [Azure 'da günlüğe kaydetme ve farklı günlük türlerini anlama](../../../azure-monitor/platform/platform-logs-overview.md)
 
 
-**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ## <a name="identity-and-access-control"></a>Kimlik ve erişim denetimi
 
@@ -51,22 +51,22 @@ Azure Ilkesi _sorumluluk_yerine terim _sahipliğini_ kullanır. _Sahiplik_hakkı
 Ayrıca, [Azure AD Privileged Identity Management](../../../active-directory/privileged-identity-management/pim-configure.md) ayrıcalıklı rolleri veya [Azure Resource Manager](../../../azure-resource-manager/management/overview.md)kullanarak tam zamanında/tam erişim çözümünü de etkinleştirebilirsiniz.
 
 
-**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: tüm yönetim görevleri için adanmış makineler (ayrıcalıklı erişim Iş Istasyonları) kullanın
 
 **Kılavuz**: Azure kaynaklarını açmak ve YAPıLANDıRMAK için MFA Ile Paws (ayrıcalıklı erişim iş istasyonları) kullanın.
 
-* [Ayrıcalıklı erişim Iş Istasyonları hakkında bilgi edinin](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Ayrıcalıklı erişim Iş Istasyonları hakkında bilgi edinin](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-* [Azure 'da MFA 'yı etkinleştirme](../../../active-directory/authentication/howto-mfa-getstarted.md)
+* [Azure'da çok faktörlü kimlik doğrulamasını etkinleştirme](../../../active-directory/authentication/howto-mfa-getstarted.md)
 
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ## <a name="data-protection"></a>Veri koruma
 
@@ -81,9 +81,9 @@ Ayrıca, [Azure AD Privileged Identity Management](../../../active-directory/pri
 * [Azure RBAC 'yi yapılandırma](../../../role-based-access-control/role-assignments-portal.md)
 
 
-**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: kritik Azure kaynaklarında yapılan değişikliklerle ilgili günlük ve uyarı
 
@@ -92,9 +92,9 @@ Ayrıca, [Azure AD Privileged Identity Management](../../../active-directory/pri
 * [Azure etkinlik günlüğü olayları için uyarı oluşturma](../../../azure-monitor/platform/alerts-activity-log.md)
 
 
-**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ## <a name="inventory-and-asset-management"></a>Envanter ve varlık yönetimi
 
@@ -109,28 +109,28 @@ Ayrıca, [Azure AD Privileged Identity Management](../../../active-directory/pri
 * [Öğretici: etiket yönetimini yönetme](../tutorials/govern-tags.md)
 
 
-**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6,4: onaylanan Azure kaynakları envanterini tanımlama ve sürdürme
 
 **Rehberlik**: Kurumsal gereksinimlerinize göre onaylanan ilke tanımlarının ve ilke atamalarının envanterini oluşturun.
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: onaylanmamış Azure kaynakları için izleyici
 
 **Rehberlik**: aboneliklerinizde oluşturulabilecek kaynak türlerine kısıtlamalar koymak Için Azure ilkesini kullanın.
 
-* [Azure Ilkesini yapılandırma ve yönetme](../tutorials/create-and-manage.md)
+* [Azure İlkesi'ni yapılandırma ve yönetme](../tutorials/create-and-manage.md)
 
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

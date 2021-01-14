@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: cynthn
-ms.openlocfilehash: 897cae53e589f4058e5499c0e6e941d4f1d9bb2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0c5e51665b4b1d31e7d2b3e25e7be31b481d0d9
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87761083"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203176"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Azure 'dan bir Linux VHD indirin
 
@@ -42,11 +42,11 @@ VHD dosyasını indirmek için, [paylaşılan erişim imzası (SAS)](../../stora
 
 1.  Oluşturulan URL altında **VHD dosyasını indir**' i seçin.
 
-    :::image type="content" source="./media/download-vhd/export-download.PNG" alt-text="VM 'yi durdurmak için menü düğmesini gösterir.":::
+    :::image type="content" source="./media/download-vhd/export-download.PNG" alt-text="VHD 'YI indirmek için düğmeyi gösterir.":::
 
 2.  İndirmeyi başlatmak için tarayıcıda **Kaydet** ' i seçmeniz gerekebilir. VHD dosyasının varsayılan adı *abcd*' dir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure CLI ile özel diskten bir LINUX VM 'yi karşıya yükleme ve oluşturma](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)hakkında bilgi edinin. 
-- Azure [disklerini Azure CLI Ile yönetin](tutorial-manage-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+- [Azure CLI ile özel diskten bir LINUX VM 'yi karşıya yükleme ve oluşturma](upload-vhd.md)hakkında bilgi edinin. 
+- Azure [disklerini Azure CLI Ile yönetin](tutorial-manage-disks.md).

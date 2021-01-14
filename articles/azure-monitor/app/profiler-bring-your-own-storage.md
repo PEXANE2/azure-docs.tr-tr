@@ -4,14 +4,14 @@ description: Profil Oluşturucu & için KCG 'LERI (kendi depolama alanınızı g
 ms.topic: conceptual
 author: renatosalas
 ms.author: regutier
-ms.date: 04/14/2020
+ms.date: 01/14/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 719f0cfa0a1f80568acf3231ce3ffab441e5f6b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f82432c1dd8c66e8ce845831ff35d534a34e3e04
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87117393"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202547"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>Application Insights Profiler ve Snapshot Debugger için kendi depolama alanınızı getir (BYOS) yapılandırma
 
@@ -53,11 +53,11 @@ Adımlar:
 1. Arama & "Tanılama Hizmetleri güvenilen depolama erişimi" uygulamasını seçin 
 1. Değişiklikleri kaydetme
 
-_ ![ Şekil 1,0](media/profiler-bring-your-own-storage/figure-10.png)_ 
+_![ Şekil 1,0](media/profiler-bring-your-own-storage/figure-10.png)_ 
  _Şekil 1,0_ 
 
 Rolü ekledikten sonra, aşağıdaki Şekil 1,1 gibi "rol atamaları" bölümünün altında görüntülenir. 
-_ ![ Şekil 1,1](media/profiler-bring-your-own-storage/figure-11.png)_ 
+_![ Şekil 1,1](media/profiler-bring-your-own-storage/figure-11.png)_ 
  _Şekil 1,1_ 
 
 Ayrıca özel bağlantı kullanıyorsanız, sanal ağınızdan güvenilir Microsoft hizmetimize bağlantı sağlamak için bir ek yapılandırma gerekir. [Depolama ağı güvenliği belgelerine](../../storage/common/storage-network-security.md#trusted-microsoft-services)bakın.
@@ -91,7 +91,7 @@ KCG 'yi kod düzeyi tanılama (Profiler/Debugger) için yapılandırmak için ü
 
     Kalıp
     ```powershell
-    $appInsights = Get-AzApplicationInsights -ResourceGroupName "{resource_group_name}" -Name "{storage_account_name}"
+    $appInsights = Get-AzApplicationInsights -ResourceGroupName "{resource_group_name}" -Name "{application_insights_name}"
     Remove-AzApplicationInsightsLinkedStorageAccount -ResourceId $appInsights.Id
     ```
 
@@ -226,7 +226,7 @@ KCG 'yi kod düzeyi tanılama (Profiler/Debugger) için yapılandırmak için ü
     DeploymentDebugLogLevel :
     ```
 
-1. Azure portal aracılığıyla ilgilendiğiniz iş yükünde kod düzeyi tanılamayı (Profiler/Debugger) etkinleştirin. (App Service > Application Insights) _ ![ Şekil 2,0](media/profiler-bring-your-own-storage/figure-20.png)_ 
+1. Azure portal aracılığıyla ilgilendiğiniz iş yükünde kod düzeyi tanılamayı (Profiler/Debugger) etkinleştirin. (App Service > Application Insights) _![ Şekil 2,0](media/profiler-bring-your-own-storage/figure-20.png)_ 
  _Şekil 2,0_
 
 ## <a name="troubleshooting"></a>Sorun giderme

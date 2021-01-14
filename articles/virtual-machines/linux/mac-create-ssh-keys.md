@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 33ba816227db4cf958fd30c9dac1a0745505c504
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a6971bce2ba4cb3e18455aad34e2d10b73dc066
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87513698"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203431"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Hızlı adımlar: Azure 'da Linux VM 'Ler için SSH genel-özel anahtar çifti oluşturma ve kullanma
 
@@ -47,9 +47,9 @@ az vm create --name VMname --resource-group RGname --image UbuntuLTS --generate-
 
 Kimlik doğrulaması için SSH anahtarları kullanan bir Linux sanal makinesi oluşturmak için Azure portal, Azure CLı, Azure Resource Manager şablonları veya diğer yöntemleri kullanarak VM oluştururken SSH ortak anahtarınızı belirtin:
 
-* [Azure portalı ile Linux sanal makinesi oluşturma](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Azure CLI ile Linux sanal makinesi oluşturma](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Bir Azure şablonu kullanarak bir Linux VM oluşturma](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure portalı ile Linux sanal makinesi oluşturma](quick-create-portal.md)
+* [Azure CLI ile Linux sanal makinesi oluşturma](quick-create-cli.md)
+* [Bir Azure şablonu kullanarak bir Linux VM oluşturma](create-ssh-secured-vm-from-template.md)
 
 SSH ortak anahtarının biçimiyle ilgili bilgi sahibi değilseniz, ortak anahtarınızı aşağıdaki komutla görüntüleyebilirsiniz ve `cat` `~/.ssh/id_rsa.pub` gerekirse kendi ortak anahtar dosyanızın yolu ve dosya adı ile değiştirin:
 
@@ -65,7 +65,7 @@ ssh-rsa AAAAB3NzaC1yc2EAABADAQABAAACAQC1/KanayNr+Q7ogR5mKnGpKWRBQU7F3Jjhn7utdf7Z
 
 Azure portal veya Kaynak Yöneticisi şablonunda kullanmak üzere ortak anahtar dosyasının içeriğini kopyalayıp yapıştırırsanız, sondaki boşluğu kopyalamadığınızdan emin olun. MacOS 'ta ortak anahtar kopyalamak için ortak anahtar dosyasını ' a kanal oluşturarak aktarabilirsiniz `pbcopy` . Linux 'ta benzer şekilde, ortak anahtar dosyasını gibi programlara kanal oluşturarak aktarabilirsiniz `xclip` .
 
-Azure 'daki Linux sanal makinenize yerleştirdiğiniz ortak anahtar, anahtar çiftini oluştururken farklı bir konum belirtmediğiniz müddetçe varsayılan olarak ~/. ssh/id_rsa. pub ' da depolanır. VM 'nizi var olan bir ortak anahtarla oluşturmak için [Azure clı 2,0](/cli/azure) 'yi kullanmak için, seçeneği ile [az VM Create](/cli/azure/vm#az-vm-create) komutunu kullanarak bu ortak anahtarın değerini ve isteğe bağlı olarak konumunu belirtin `--ssh-key-values` . Aşağıdaki komutta *Myvm*, *myresourcegroup*, *ubuntults*, *azureuser*ve *hayal shkey. pub* değerlerini kendi değerlerinizle değiştirin:
+Azure 'daki Linux sanal makinenize yerleştirdiğiniz ortak anahtar, anahtar çiftini oluştururken farklı bir konum belirtmediğiniz müddetçe varsayılan olarak ~/. ssh/id_rsa. pub ' da depolanır. VM 'nizi var olan bir ortak anahtarla oluşturmak için [Azure clı 2,0](/cli/azure) 'yi kullanmak için, seçeneği ile [az VM Create](/cli/azure/vm#az-vm-create) komutunu kullanarak bu ortak anahtarın değerini ve isteğe bağlı olarak konumunu belirtin `--ssh-key-values` . Aşağıdaki komutta *Myvm*, *myresourcegroup*, *ubuntults*, *azureuser* ve *hayal shkey. pub* değerlerini kendi değerlerinizle değiştirin:
 
 
 ```azurecli

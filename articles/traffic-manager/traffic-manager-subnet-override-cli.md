@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: traffic-manager
 ms.date: 09/18/2019
 ms.author: duau
-ms.openlocfilehash: 984cdfb3e60717f7632ea1fdcd05a4681dd6a1fd
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 7a448afb85a35674921ce74a25eaf2a97430dc61
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517946"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201425"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-cli"></a>Azure CLı kullanarak alt ağ geçersiz kılma Traffic Manager
 
@@ -39,7 +39,7 @@ Bir Traffic Manager alt ağ geçersiz kılma oluşturmak için Azure CLı kullan
 - Bu makale, Azure CLı 'nin sürüm 2.0.28 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
 
 ## <a name="update-the-traffic-manager-endpoint-with-subnet-override"></a>Traffic Manager uç noktasını alt ağ geçersiz kılma ile güncelleştirin.
-[Az Network Traffic-Manager Endpoint Update](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update)ile uç noktanızı güncelleştirmek IÇIN Azure CLI 'yi kullanın.
+[Az Network Traffic-Manager Endpoint Update](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update)ile uç noktanızı güncelleştirmek IÇIN Azure CLI 'yi kullanın.
 
 ```azurecli-interactive
 ### Add a range of IPs ###
@@ -59,7 +59,7 @@ az network traffic-manager endpoint update \
     --type AzureEndpoints
 ```
 
-IP adresi aralıklarını, [az Network Traffic-Manager uç noktası güncelleştirmesini](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) **--Remove** seçeneğiyle çalıştırarak kaldırabilirsiniz.
+IP adresi aralıklarını, [az Network Traffic-Manager uç noktası güncelleştirmesini](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) **--Remove** seçeneğiyle çalıştırarak kaldırabilirsiniz.
 
 ```azurecli-interactive
 az network traffic-manager endpoint update \
@@ -74,4 +74,4 @@ az network traffic-manager endpoint update \
 
 Traffic Manager [trafik yönlendirme yöntemleri](traffic-manager-routing-methods.md)hakkında daha fazla bilgi edinin.
 
-[Alt ağ trafiği-yönlendirme yöntemi](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#subnet-traffic-routing-method) hakkında bilgi edinin
+[Alt ağ trafiği-yönlendirme yöntemi](./traffic-manager-routing-methods.md#subnet-traffic-routing-method) hakkında bilgi edinin

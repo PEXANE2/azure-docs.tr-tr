@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - contperf-fy21q1
 - device-developer
-ms.openlocfilehash: 9e5e96d97494f4ba9aa28e84b046cd057fe8eba7
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 236acc2ded3fcb651295e0342ab4e1e88174be46
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033417"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202972"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Azure IoT Central uygulamanızda yeni bir cihaz türü tanımlama
 
@@ -42,8 +42,16 @@ Bir IoT Central uygulamasında cihaz şablonu, bir cihazın yeteneklerini betiml
 
 - IoT Central cihaz şablonunu tasarlayın ve cihaz [kodunuzda cihaz modelini uygulayın](concepts-telemetry-properties-commands.md).
 - [IoT cihaz kataloğu Için Azure Sertifikalı](https://aka.ms/iotdevcat)bir cihaz şablonu içeri aktarın. Cihaz şablonunu IoT Central gereksinimlerinize göre özelleştirin.
+> [!NOTE]
+> IoT Central, model deposundan bir modeli içeri aktardığınızda tam sürümü almak için "genişletilmiş" anahtar sözcüğünü kullanarak tam modeli aynı dosyada bulunan tüm başvurulan arabirimlere gerektirir.
+Örneğin. https://devicemodels.azure.com/dtmi/com/example/thermostat-1.expanded.json
+
 - [Dijital TWINS tanım dili (DTDL)-sürüm 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)kullanarak bir cihaz modeli yazar. Visual Studio Code, DTDL modellerini yazmayı destekleyen bir uzantıya sahiptir. Daha fazla bilgi için bkz. [DTDL yazma araçlarını yüklemek ve kullanmak](../../iot-pnp/howto-use-dtdl-authoring-tools.md). Ardından modeli ortak model deposuna yayımlayın. Daha fazla bilgi için bkz. [cihaz modeli deposu](../../iot-pnp/concepts-model-repository.md). Modelden cihaz kodunuzu uygulayın ve gerçek cihazınızı IoT Central uygulamanıza bağlayın. IoT Central, cihaz modelini sizin için ortak depodan bulur ve içeri aktarır ve bir cihaz şablonu oluşturur. Daha sonra IoT Central uygulamanızın ihtiyaç duyacağı tüm bulut özelliklerini, özelleştirmeleri ve panoları cihaz şablonuna ekleyebilirsiniz.
 - DTDL 'yi kullanarak bir cihaz modeli yazar. Modelden cihaz kodunuzu uygulayın. Cihaz modelini IoT Central uygulamanıza el ile içeri aktarın ve ardından IoT Central uygulamanızın ihtiyaç duyacağı tüm bulut özelliklerini, özelleştirmeleri ve panoları ekleyin.
+
+> [!TIP]
+> IoT Central, tüm başvurulan arabirimlerin aynı dosyada tam model olmasını gerektirir. Model deposundan bir modeli içeri aktardığınızda, tam sürümü almak için *genişletilmiş* anahtar sözcüğünü kullanın.
+> Örneğin, [https://devicemodels.azure.com/dtmi/com/example/thermostat-1.expanded.json](https://devicemodels.azure.com/dtmi/com/example/thermostat-1.expanded.json).
 
 Ayrıca, [REST API](/learn/modules/manage-iot-central-apps-with-rest-api/) veya [clı](howto-manage-iot-central-from-cli.md)kullanarak bir IoT Central uygulamasına cihaz şablonları ekleyebilirsiniz.
 
