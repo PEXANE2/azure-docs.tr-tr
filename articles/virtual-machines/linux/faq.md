@@ -7,28 +7,28 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 84cb9860f247610621bff130aff155abf222f3c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f55b5d9093e2e8e78d3841c332d67f26e5106d38
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274903"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200830"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Linux Sanal Makineleri hakkında sık sorulan sorular
-Bu makalede, Azure 'da Kaynak Yöneticisi dağıtım modeli kullanılarak oluşturulan Linux sanal makineleri hakkında bazı yaygın soruların ele alınmaktadır. Bu konunun Windows sürümü için bkz. [hakkında sık sorulan sorular Windows sanal makineleri](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+Bu makalede, Azure 'da Kaynak Yöneticisi dağıtım modeli kullanılarak oluşturulan Linux sanal makineleri hakkında bazı yaygın soruların ele alınmaktadır. Bu konunun Windows sürümü için bkz. [hakkında sık sorulan sorular Windows sanal makineleri](../windows/faq.md)
 
 ## <a name="what-can-i-run-on-an-azure-vm"></a>Azure sanal makinesinde ne çalıştırabilirim?
-Tüm aboneler bir Azure sanal makinesinde sunucu yazılımı çalıştırabilir. Daha fazla bilgi için bkz. [Azure-Endorsed dağıtımlarında Linux](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+Tüm aboneler bir Azure sanal makinesinde sunucu yazılımı çalıştırabilir. Daha fazla bilgi için bkz. [Azure-Endorsed dağıtımlarında Linux](endorsed-distros.md)
 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>Bir sanal makineyle birlikte ne kadar depolama alanı kullanabilirim?
-Her veri diski 32.767 GiB 'a kadar olabilir. Kullanabileceğiniz veri diski sayısı, sanal makinenin boyutuna bağlıdır. Ayrıntılar için bkz. [Virtual Machines boyutları](../sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Her veri diski 32.767 GiB 'a kadar olabilir. Kullanabileceğiniz veri diski sayısı, sanal makinenin boyutuna bağlıdır. Ayrıntılar için bkz. [Virtual Machines boyutları](../sizes.md).
 
 Azure yönetilen diskler, verilerin kalıcı olarak depolanması için Azure sanal makineler ile kullanılmak üzere önerilen disk depolama tekliflerdir. Her bir sanal makine ile birden fazla yönetilen disk kullanabilirsiniz. Yönetilen diskler iki tür dayanıklı depolama seçeneği sunar: Premium ve standart yönetilen diskler. Fiyatlandırma bilgileri için bkz. [yönetilen diskler fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks).
 
 Azure depolama hesapları, işletim sistemi diski ve tüm veri diskleri için depolama alanı da sağlayabilir. Her disk bir sayfa blobu olarak depolanan bir .vhd dosyasıdır. Fiyatlandırma ayrıntıları için bkz. [Depolama Fiyatlandırma Ayrıntıları](https://azure.microsoft.com/pricing/details/storage/).
 
 ## <a name="how-can-i-access-my-virtual-machine"></a>Sanal makinime nasıl erişebilirim?
-Secure Shell (SSH) kullanarak sanal makinede oturum açmak için bir uzak bağlantı kurun. [Windows 'dan](ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) veya [Linux ve Mac 'ten](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)nasıl bağlanacağınız hakkında yönergeler için bkz.. Varsayılan olarak, SSH en fazla 10 eş zamanlı bağlantıya izin verir. Yapılandırma dosyasını düzenleyerek bu sayıyı artırabilirsiniz.
+Secure Shell (SSH) kullanarak sanal makinede oturum açmak için bir uzak bağlantı kurun. [Windows 'dan](ssh-from-windows.md) veya [Linux ve Mac 'ten](mac-create-ssh-keys.md)nasıl bağlanacağınız hakkında yönergeler için bkz.. Varsayılan olarak, SSH en fazla 10 eş zamanlı bağlantıya izin verir. Yapılandırma dosyasını düzenleyerek bu sayıyı artırabilirsiniz.
 
 Sorun yaşıyorsanız [Secure Shell (SSH) bağlantılarında sorun giderme](../troubleshooting/troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json)' yi inceleyin.
 
@@ -36,7 +36,7 @@ Sorun yaşıyorsanız [Secure Shell (SSH) bağlantılarında sorun giderme](../t
 Verileri depolamak için geçici diski (/dev/sdb1) kullanmayın. Yalnızca geçici depolama alanı için geçerlidir. Kurtarılamamış verileri kaybetme riskini alırsınız.
 
 ## <a name="can-i-copy-or-clone-an-existing-azure-vm"></a>Mevcut bir Azure VM 'yi kopyalayabilir veya kopyalayabilir miyim?
-Evet. Yönergeler için, bkz. [Kaynak Yöneticisi dağıtım modelinde Linux sanal makinesinin kopyasını oluşturma](copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Evet. Yönergeler için, bkz. [Kaynak Yöneticisi dağıtım modelinde Linux sanal makinesinin kopyasını oluşturma](copy-vm.md).
 
 ## <a name="why-am-i-not-seeing-canada-central-and-canada-east-regions-through-azure-resource-manager"></a>Neden Kanada Orta ve Kanada Doğu bölgelerini Azure Resource Manager göremiyorum?
 Kanada Orta ve Kanada Doğu iki yeni bölgesi, mevcut Azure abonelikleri için sanal makine oluşturma için otomatik olarak kaydedilmemiş. Bu kayıt, bir sanal makine Azure Resource Manager kullanılarak başka bir bölgeye Azure portal aracılığıyla dağıtıldığında otomatik olarak yapılır. Bir sanal makine başka bir Azure bölgesine dağıtıldıktan sonra, yeni bölgeler sonraki sanal makineler için kullanılabilir olmalıdır.

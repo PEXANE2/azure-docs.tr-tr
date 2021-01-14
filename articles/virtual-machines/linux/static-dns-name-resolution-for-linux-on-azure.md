@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/16/2017
 ms.author: cynthn
-ms.openlocfilehash: 38f231e63ad4974a23a1201aad4d290685860b50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d68ac7aa9927e62011c58b17139d7232ce4a10c
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292152"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200762"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>Azure 'da sanal ağ arabirim kartları oluşturma ve VM ad çözümlemesi için dahili DNS kullanma
 
@@ -22,7 +22,7 @@ Bu makalede, Azure CLı ile sanal ağ arabirim kartları (vNIC 'Ler) ve DNS etik
 Gereksinimler şunlardır:
 
 * [bir Azure hesabı](https://azure.microsoft.com/pricing/free-trial/)
-* [SSH ortak ve özel anahtar dosyaları](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [SSH ortak ve özel anahtar dosyaları](mac-create-ssh-keys.md)
 
 ## <a name="quick-commands"></a>Hızlı komutlar
 Görevi hızlı bir şekilde gerçekleştirmeniz gerekirse, aşağıdaki bölümde gereken komutların ayrıntıları verilmiştir. Her adım için daha ayrıntılı bilgi ve bağlam, belgenin geri kalanında [buradan başlayarak](#detailed-walkthrough)bulunabilir. Bu adımları gerçekleştirmek için, en son [Azure CLI](/cli/azure/install-az-cli2) 'nın yüklü olması ve [az oturum açma](/cli/azure/reference-index)kullanarak bir Azure hesabında oturum açmış olması gerekir.
@@ -71,7 +71,7 @@ az group create --name myResourceGroup --location westus
 
 ## <a name="create-the-virtual-network"></a>Sanal ağı oluşturma
 
-Sonraki adım, VM 'Leri başlatmak için bir sanal ağ oluşturmak için kullanılır. Sanal ağ Bu izlenecek yol için bir alt ağ içerir. Azure sanal ağları hakkında daha fazla bilgi için bkz. [sanal ağ oluşturma](../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network). 
+Sonraki adım, VM 'Leri başlatmak için bir sanal ağ oluşturmak için kullanılır. Sanal ağ Bu izlenecek yol için bir alt ağ içerir. Azure sanal ağları hakkında daha fazla bilgi için bkz. [sanal ağ oluşturma](../../virtual-network/manage-virtual-network.md#create-a-virtual-network). 
 
 [Az Network VNET Create](/cli/azure/network/vnet)ile sanal ağ oluşturun. Aşağıdaki örnek adlı bir sanal ağ ve adlı `myVnet` alt ağ oluşturur `mySubnet` :
 
@@ -85,7 +85,7 @@ az network vnet create \
 ```
 
 ## <a name="create-the-network-security-group"></a>Ağ güvenlik grubunu oluşturma
-Azure ağ güvenlik grupları, ağ katmanındaki bir güvenlik duvarıyla eşdeğerdir. Ağ güvenlik grupları hakkında daha fazla bilgi için bkz. [Azure CLI 'de NSG oluşturma](../../virtual-network/tutorial-filter-network-traffic-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+Azure ağ güvenlik grupları, ağ katmanındaki bir güvenlik duvarıyla eşdeğerdir. Ağ güvenlik grupları hakkında daha fazla bilgi için bkz. [Azure CLI 'de NSG oluşturma](../../virtual-network/tutorial-filter-network-traffic-cli.md). 
 
 [Az Network NSG Create](/cli/azure/network/nsg)komutuyla ağ güvenlik grubunu oluşturun. Aşağıdaki örnek adlı bir ağ güvenlik grubu oluşturur `myNetworkSecurityGroup` :
 
@@ -157,5 +157,5 @@ az vm create \
 Mevcut kaynakları çağırmak için CLı bayraklarını kullanarak, Azure 'un VM 'yi mevcut ağ içinde dağıtmasını sağlıyoruz. Yeniden yinelemek için, bir sanal ağ ve alt ağ dağıtıldıktan sonra, Azure bölgeniz içinde statik veya kalıcı kaynaklar olarak bırakılabilir.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure CLı komutlarını doğrudan kullanarak bir Linux VM için kendi özel ortamınızı oluşturma](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Şablonları kullanarak Azure 'da bir Linux VM oluşturma](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure CLı komutlarını doğrudan kullanarak bir Linux VM için kendi özel ortamınızı oluşturma](create-cli-complete.md)
+* [Şablonları kullanarak Azure 'da bir Linux VM oluşturma](create-ssh-secured-vm-from-template.md)

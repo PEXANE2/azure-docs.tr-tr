@@ -3,14 +3,14 @@ title: Bir RESTful uç noktası yazma
 description: Bu öğreticide, özel sağlayıcılar için bir yeniden deneme uç noktasının nasıl yazılacağı gösterilmektedir. Desteklenen yeniden deneme HTTP yöntemlerine yönelik isteklerin ve yanıtların nasıl işleneceğini ayrıntılarıyla açıklamaktadır.
 author: jjbfour
 ms.topic: tutorial
-ms.date: 06/19/2019
+ms.date: 01/13/2021
 ms.author: jobreen
-ms.openlocfilehash: d7f6c51211ce0572797ade659b9316003502da1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54d0df287865d5d92403bf68227a2d4c5faa8bb4
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75650026"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200218"
 ---
 # <a name="author-a-restful-endpoint-for-custom-providers"></a>Özel sağlayıcılar için yeniden bir uç nokta yazar
 
@@ -43,7 +43,7 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 
 Örneğin `x-ms-customproviders-requestpath` başlığına bağlı olarak, aşağıdaki tabloda gösterildiği gibi, depolama Için *partitionkey* ve *rowkey* parametrelerini oluşturabilirsiniz:
 
-Parametre | Şablon | Açıklama
+Parametre | Şablon | Description
 ---|---|---
 *partitionKey* | `{subscriptionId}:{resourceGroupName}:{resourceProviderName}` | *Partitionkey* parametresi, verilerin nasıl bölümlenmiş olduğunu belirtir. Genellikle veriler özel sağlayıcı örneği tarafından bölümlenir.
 *rowKey* | `{myResourceType}:{myResourceName}` | *Rowkey* parametresi, veriler için bireysel tanımlayıcıyı belirtir. Genellikle tanımlayıcı, kaynağın adıdır.
@@ -57,7 +57,7 @@ public class CustomResource : TableEntity
     public string Data { get; set; }
 }
 ```
-**Customresource** , herhangi bir giriş verisini kabul eden basit, genel bir sınıftır. Veri depolamak için kullanılan **Tableentity**tabanlıdır. **Customresource** sınıfı **tableentity**: **partitionkey** ve **rowkey**öğesinden iki özelliği devralır.
+**Customresource** , herhangi bir giriş verisini kabul eden basit, genel bir sınıftır. Veri depolamak için kullanılan **Tableentity** tabanlıdır. **Customresource** sınıfı **tableentity**: **partitionkey** ve **rowkey** öğesinden iki özelliği devralır.
 
 ## <a name="support-custom-provider-restful-methods"></a>Özel sağlayıcı yeniden deneme yöntemlerini destekleme
 
@@ -132,9 +132,9 @@ public static async Task<HttpResponseMessage> CreateCustomResource(HttpRequestMe
 }
 ```
 
-**Createcustomresource** yöntemi, gelen isteği Azure 'a özgü alanların **kimliğini**, **adını**ve **türünü**içerecek şekilde güncelleştirir. Bu alanlar, Azure genelinde Hizmetler tarafından kullanılan en üst düzey özelliklerdir. Özel sağlayıcının Azure Ilkesi, Azure Resource Manager şablonları ve Azure etkinlik günlüğü gibi diğer hizmetlerle birlikte kullanmasına izin verir.
+**Createcustomresource** yöntemi, gelen isteği Azure 'a özgü alanların **kimliğini**, **adını** ve **türünü** içerecek şekilde güncelleştirir. Bu alanlar, Azure genelinde Hizmetler tarafından kullanılan en üst düzey özelliklerdir. Özel sağlayıcının Azure Ilkesi, Azure Resource Manager şablonları ve Azure etkinlik günlüğü gibi diğer hizmetlerle birlikte kullanmasına izin verir.
 
-Özellik | Örnek | Açıklama
+Özellik | Örnek | Description
 ---|---|---
 **ada** | {myCustomResourceName} | Özel kaynağın adı
 **türüyle** | Microsoft. CustomProviders/resourceProviders/{resourceTypeName} | Kaynak türü ad alanı
@@ -347,7 +347,7 @@ Yöntemleri ve sınıfları ekledikten sonra, işlev uygulaması için **using**
 ```csharp
 #r "Newtonsoft.Json"
 #r "Microsoft.WindowsAzure.Storage"
-#r "../bin/Microsoft.Azure.Management.ResourceManager.Fluent.dll"
+#r "../bin/Microsoft.Azure.Management.ResourceManager.Fluent"
 
 using System;
 using System.Net;

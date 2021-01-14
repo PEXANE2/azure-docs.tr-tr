@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 038d19270fbdb672d397eb2bd56bd27e17ea7af9
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: f407f9ee2ea0ca73b29e4fde9d542c005f78a929
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929098"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200456"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Azure Uygulama yapılandırması en iyi uygulamaları
 
@@ -89,6 +89,10 @@ Uygulama yapılandırması, Azure portal veya CLı kullanarak geçerli yapıland
 ## <a name="multi-region-deployment-in-app-configuration"></a>Uygulama yapılandırmasında çok bölgeli dağıtım
 
 Uygulama yapılandırması bölgesel bir hizmettir. Bölge başına farklı yapılandırmalara sahip uygulamalar için, bu yapılandırmaların tek bir örnekte depolanması tek bir hata noktası oluşturabilir. Birden çok bölgede bölge başına bir uygulama yapılandırma örneği dağıtmak daha iyi bir seçenek olabilir. Bölgesel olağanüstü durum kurtarma, performans ve güvenlik siloing yardımcı olabilir. Bölgeye göre yapılandırma ayrıca gecikmeyi artırır ve daraltma, örnek başına olduğundan, ayrılmış azaltma kotaları kullanır. Olağanüstü durum kurtarma hafifletme uygulamak için [birden çok yapılandırma deposu](./concept-disaster-recovery.md)kullanabilirsiniz. 
+
+## <a name="client-applications-in-app-configuration"></a>Uygulama yapılandırmasındaki istemci uygulamaları 
+
+Uygulama yapılandırmasına yönelik aşırı istek, azaltma veya fazla kullanım ücretlerine neden olabilir. Uygulamalar, gönderdikleri isteklerin sayısını iyileştirmek için şu anda önbelleğe alma ve akıllı yenileme avantajlarından yararlanır. Bu işlem, yapılandırma deposuna doğrudan bağlantıları önleyerek, yüksek hacimli istemci uygulamalarında yansıtılmalıdır. Bunun yerine, istemci uygulamaları özel bir hizmete bağlanır ve bu hizmet yapılandırma deposuyla iletişim kurar. Bu proxy çözümü, istemci uygulamalarının yapılandırma deposundaki azaltma sınırına yaklaşımadığından emin olabilir. Daraltma hakkında daha fazla bilgi için bkz. [SSS](https://docs.microsoft.com/azure/azure-app-configuration/faq#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration).  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

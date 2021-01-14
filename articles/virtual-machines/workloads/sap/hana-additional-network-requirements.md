@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 44e9712466734c0e42fd2bea05c5110cbff6924b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 308d30118349e020d3b407243f106d9ad8368118
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964805"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198994"
 ---
 # <a name="additional-network-requirements-for-large-instances"></a>Büyük örnekler için ek ağ gereksinimleri
 
@@ -31,7 +31,7 @@ Daha fazla IP adresi veya alt ağ eklerken Azure portal, PowerShell veya Azure C
 
 Yeni IP adresi aralığını yeni bir toplu Aralık oluşturmak yerine, sanal ağ adres alanına yeni bir Aralık olarak ekleyin. Bu değişikliği Microsoft 'a gönder. Bu, bu yeni IP adresi aralığından, istemcinizdeki HANA büyük örnek birimlerine bağlanmanızı sağlar. Yeni sanal ağ adresi alanının eklenmesini sağlamak için bir Azure destek isteği açabilirsiniz. Onay aldıktan sonra sonraki adımları gerçekleştirin.
 
-Azure portal ek bir alt ağ oluşturmak için, bkz. [Azure Portal kullanarak sanal ağ oluşturma](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network). PowerShell 'den bir tane oluşturmak için bkz. [PowerShell kullanarak sanal ağ oluşturma](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network).
+Azure portal ek bir alt ağ oluşturmak için, bkz. [Azure Portal kullanarak sanal ağ oluşturma](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network). PowerShell 'den bir tane oluşturmak için bkz. [PowerShell kullanarak sanal ağ oluşturma](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network).
 
 ## <a name="add-virtual-networks"></a>Sanal ağ ekle
 
@@ -51,11 +51,11 @@ Yeni devre oluşturulduğunda ve Microsoft hizmet yönetimi yapılandırmasında
 
 Bir sanal ağ alt ağını kaldırmak için Azure portal, PowerShell veya Azure CLı kullanabilirsiniz. Azure sanal ağ IP adresi aralığınızı veya adres alanınızı toplanmış bir Aralık ise, Microsoft ile ilgili bir izleme yoktur. (Ancak, sanal ağın Silinen alt ağı içeren BGP yönlendirme adres alanını yaymakta olduğunu unutmayın.) Azure sanal ağ adresi aralığını veya adres alanını, Silinen alt ağınıza atanmış birden çok IP adresi aralığı olarak tanımlamış olabilirsiniz. Bunu sanal ağ adres alanınızda sildiğinizden emin olun. Daha sonra, Azure 'daki SAP HANA (büyük örnekler) ile iletişim kurmasına izin verilen aralıklardan kaldırmak için Microsoft hizmet yönetimi 'nde SAP HANA bilgilendirin.
 
-Daha fazla bilgi için bkz. [bir alt ağı silme](../../../virtual-network/virtual-network-manage-subnet.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-subnet).
+Daha fazla bilgi için bkz. [bir alt ağı silme](../../../virtual-network/virtual-network-manage-subnet.md#delete-a-subnet).
 
 ## <a name="delete-a-virtual-network"></a>Sanal ağı silme
 
-Bilgi için bkz. [sanal ağı silme](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-virtual-network).
+Bilgi için bkz. [sanal ağı silme](../../../virtual-network/manage-virtual-network.md#delete-a-virtual-network).
 
 Microsoft hizmet yönetimi SAP HANA, Azure 'daki SAP HANA (büyük örnekler) ExpressRoute bağlantı hattının mevcut yetkilendirmelerini kaldırır. Ayrıca, HANA büyük örneklerle iletişim için Azure sanal ağ IP adresi aralığını veya adres alanını da kaldırır.
 

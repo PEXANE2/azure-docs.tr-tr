@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 11/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7777888bd27325e9094032458922969494a9a64e
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: c1e4e223e7932f7fc8699c04a94b079b7f16e3d5
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984966"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198909"
 ---
 # <a name="know-the-terms"></a>Terimleri öğrenme
 
@@ -36,7 +36,7 @@ ms.locfileid: "94984966"
 - **Azure 'da SAP HANA (büyük örnekler):** Azure 'daki teklifin, farklı Azure bölgelerinde büyük örnek Damgalarında dağıtılan SAP HANA TDı sertifikalı donanımlarda HANA örnekleri çalıştırmasına yönelik resmi ad. İlgili *Hana büyük örnek* terimi, *Azure 'Daki SAP HANA (büyük örnekler)* için kısaysa ve bu teknik dağıtım kılavuzunda yaygın olarak kullanılır.
 - **Şirketler arası**: VM 'lerin şirket içi veri merkezleri ile Azure arasında siteden siteye, çok siteli veya Azure ExpressRoute bağlantısı olan bir Azure aboneliğine dağıtıldığı bir senaryoyu açıklar. Yaygın Azure belgelerinde, bu tür dağıtımlar şirketler arası senaryolar olarak da açıklanmaktadır. Bağlantının nedeni şirket içi etki alanlarını, şirket içi Azure Active Directory/OpenLDAP ve şirket içi DNS 'yi Azure 'a genişletmenin nedenidir. Şirket içi yatay, Azure aboneliklerinin Azure varlıklarına genişletilir. Bu uzantıyla birlikte VM 'Ler, şirket içi etki alanının bir parçası olabilir. 
 
-   Şirket içi etki alanının etki alanı kullanıcıları sunuculara erişebilir ve bu VM 'lerde (DBMS hizmetleri gibi) Hizmetleri çalıştırabilir. Şirket içinde dağıtılan ve Azure tarafından dağıtılan VM 'Ler arasındaki iletişim ve ad çözümlemesi mümkündür. Bu senaryo, çoğu SAP varlıklarının dağıtılmasının tipik bir yoludur. Daha fazla bilgi için, bkz. [Azure VPN Gateway](../../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ve [Azure Portal kullanarak siteden siteye bağlantı Ile sanal ağ oluşturma](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+   Şirket içi etki alanının etki alanı kullanıcıları sunuculara erişebilir ve bu VM 'lerde (DBMS hizmetleri gibi) Hizmetleri çalıştırabilir. Şirket içinde dağıtılan ve Azure tarafından dağıtılan VM 'Ler arasındaki iletişim ve ad çözümlemesi mümkündür. Bu senaryo, çoğu SAP varlıklarının dağıtılmasının tipik bir yoludur. Daha fazla bilgi için, bkz. [Azure VPN Gateway](../../../vpn-gateway/vpn-gateway-about-vpngateways.md) ve [Azure Portal kullanarak siteden siteye bağlantı Ile sanal ağ oluşturma](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
 - **Kiracı**: Hana büyük örnek damgasında dağıtılan bir müşteri bir *kiracıya yalıtılmış.* Bir kiracı, diğer kiracılardan ağ, depolama ve işlem katmanında yalıtılmıştır. Farklı kiracılara atanan depolama ve işlem birimleri, her bir diğerini göremez veya HANA büyük örnek damgası düzeyinde birbirleriyle iletişim kurabilir. Müşteri, farklı kiracılarda dağıtımları olmasını seçebilir. Daha sonra bile, HANA büyük örnek damgası düzeyinde kiracılar arasında iletişim yoktur.
 - **SKU kategorisi**: Hana büyük örneği için aşağıdaki iki SKU kategorisi sunulur:
     - **Tür ı sınıfı**: s72, S72m, S96, S144, S144m, S192, S192m, S192xm, S224 ve S224m
@@ -47,7 +47,7 @@ ms.locfileid: "94984966"
     - "Düzeltme 4" (Rev 4): Azure sanal makine konaklarına daha yakından yakınlık sağlayabilen ve Azure VM 'Leri ile HANA büyük örnek birimleri arasında daha düşük ağ gecikmesi sunan yeni bir tasarımdır 
     - "Düzeltme 4,2" (Rev 4,2): mevcut düzeltme 4 DC 'lerde, kaynaklar BareMetal altyapısına yeniden eklenir.  Müşteriler, kaynaklarına Azure portal BareMetal örnekleri olarak erişebilir. 
 
-Bulutta SAP iş yükünün nasıl dağıtılacağı konusunda çeşitli ek kaynaklar mevcuttur. SAP HANA dağıtımını Azure 'da yürütmeyi planlıyorsanız Azure IaaS ilkelerine ve Azure IaaS 'de SAP iş yüklerinin dağıtımına sahip olmanız ve bunların farkında olmanız gerekir. Devam etmeden önce daha fazla bilgi için bkz. [Azure sanal makineler 'de SAP çözümlerini kullanma](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) . 
+Bulutta SAP iş yükünün nasıl dağıtılacağı konusunda çeşitli ek kaynaklar mevcuttur. SAP HANA dağıtımını Azure 'da yürütmeyi planlıyorsanız Azure IaaS ilkelerine ve Azure IaaS 'de SAP iş yüklerinin dağıtımına sahip olmanız ve bunların farkında olmanız gerekir. Devam etmeden önce daha fazla bilgi için bkz. [Azure sanal makineler 'de SAP çözümlerini kullanma](get-started.md) . 
 
 **Sonraki adımlar**
 - [HLi sertifikasyon](hana-certification.md) 'ye başvurun

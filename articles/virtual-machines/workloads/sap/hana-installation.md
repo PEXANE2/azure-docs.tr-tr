@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a1430b32c0e74be7a0e50fa4c5c183018b2b55e0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 81d44dae0fed45d4a4df76973c7e233fd71baff1
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006311"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198977"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Azure 'da SAP HANA (büyük örnekler) yüklemek ve yapılandırmak
 
@@ -129,7 +129,7 @@ Sonuç olarak, Azure VM 'lerde çalışan SAP uygulama sunucuları tarafından v
 Aşağıdaki belgelerde açıklandığı gibi, Azure sanal ağlarınızı tasarlama ve bu sanal ağları HANA büyük örneklerine bağlama bölümündeki önerileri izletireceğiz varsayılmaktadır:
 
 - [Azure 'da SAP HANA (büyük örnek) genel bakış ve mimari](./hana-overview-architecture.md)
-- [Azure 'da SAP HANA (büyük örnekler) altyapı ve bağlantı](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Azure 'da SAP HANA (büyük örnekler) altyapı ve bağlantı](hana-overview-infrastructure-connectivity.md)
 
 Tek birimlerin ağıyla ilgili bazı ayrıntılar vardır. Her HANA büyük örnek birimi iki veya üç NIC bağlantı noktasına atanan iki veya üç IP adresiyle birlikte gelir. HANA genişleme yapılandırmalarında ve HANA sistem çoğaltma senaryosunda üç IP adresi kullanılır. Birimin NIC 'sine atanan IP adreslerinden biri, [Azure 'daki SAP HANA (büyük örnekler) genel bakış ve mimaride](./hana-overview-architecture.md)AÇıKLANAN sunucu IP havuzunun dışındadır.
 
@@ -139,7 +139,7 @@ Mimarinizin Ethernet ayrıntıları hakkında daha fazla bilgi için bkz. [HLI d
 
 Azure 'da SAP HANA için depolama düzeni (büyük örnekler), `service management` SAP tarafından önerilen yönergeler aracılığıyla Azure 'da SAP HANA tarafından yapılandırılır. Bu yönergeler [SAP HANA depolama gereksinimleri](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) teknik incelemesi bölümünde belgelenmiştir. 
 
-Farklı HANA büyük örnekler SKU 'Larının bulunduğu farklı birimlerin kaba boyutları, [Azure 'daki SAP HANA (büyük örnekler) genel bakış ve mimaride](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)açıklanmaktadır.
+Farklı HANA büyük örnekler SKU 'Larının bulunduğu farklı birimlerin kaba boyutları, [Azure 'daki SAP HANA (büyük örnekler) genel bakış ve mimaride](hana-overview-architecture.md)açıklanmaktadır.
 
 Depolama birimlerinin adlandırma kuralları aşağıdaki tabloda listelenmiştir:
 
@@ -161,7 +161,7 @@ Genişleme ortamları, veri, günlük ve günlük yedekleme birimleri, genişlem
 
 Bir HANA büyük örnek birimine baktığınızda, birimlerin HANA/veriler için genel disk hacminde ve bir birim HANA/günlük/yedekleme olduğunu fark etmiş olursunuz. HANA/verileri çok büyük hale yaptığımız nedeni, size müşteri olarak sunduğumuz depolama anlık görüntülerinin aynı disk birimini kullanıyor olması nedenidir. Gerçekleştirdiğiniz daha fazla depolama anlık görüntüsü, atanan depolama birimlerinizde anlık görüntüler tarafından daha fazla alan tüketilecektir. 
 
-HANA/günlük/yedekleme biriminin veritabanı yedeklemeleri için birim olmaması gerekir. HANA işlem günlüğü yedeklemeleri için yedekleme birimi olarak kullanılacak şekilde boyutlandırılır. Daha fazla bilgi için bkz. [Azure 'da SAP HANA (büyük örnekler) yüksek kullanılabilirlik ve olağanüstü durum kurtarma](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+HANA/günlük/yedekleme biriminin veritabanı yedeklemeleri için birim olmaması gerekir. HANA işlem günlüğü yedeklemeleri için yedekleme birimi olarak kullanılacak şekilde boyutlandırılır. Daha fazla bilgi için bkz. [Azure 'da SAP HANA (büyük örnekler) yüksek kullanılabilirlik ve olağanüstü durum kurtarma](hana-overview-high-availability-disaster-recovery.md). 
 
 Sağlanmış depolama alanının yanı sıra, 1 TB 'lik artışlarla ek depolama kapasitesi satın alabilirsiniz. Bu ek depolama alanı, bir HANA büyük örneğine yeni birimler olarak eklenebilir.
 

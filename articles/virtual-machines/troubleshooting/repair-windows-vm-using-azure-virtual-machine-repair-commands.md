@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: 82bebcbda3110d51ae72df1fb4b18fedaa6c2f4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7763c1d856a09acf2523a7073c3d300be6b70b37
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597711"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200711"
 ---
 # <a name="repair-a-windows-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Azure Sanal Makine onarım komutlarını kullanarak Windows VM'sini onarma
 
@@ -60,7 +60,7 @@ Ek belgeler ve yönergeler için bkz. [az VM Repair](/cli/azure/ext/vm-repair/vm
 
    CLI'yi yerel olarak yükleyip kullanmayı tercih ediyorsanız bu hızlı başlangıç için Azure CLI 2.0.30 veya sonraki bir sürümü gerekir. Sürümü bulmak için ``az --version`` komutunu çalıştırın. Azure CLı 'nizi yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli).
    
-   Şu anda Azure portal oturum açtığınızdan farklı bir hesapla Cloud Shell oturum açmanız gerekiyorsa ``az login`` [az Login Reference](/cli/azure/reference-index?view=azure-cli-latest#az-login&preserve-view=true)kullanabilirsiniz.  Hesabınızla ilişkili abonelikler arasında geçiş yapmak için ``az account set --subscription`` [az Account set Reference](/cli/azure/account?view=azure-cli-latest#az-account-set&preserve-view=true)kullanabilirsiniz.
+   Şu anda Azure portal oturum açtığınızdan farklı bir hesapla Cloud Shell oturum açmanız gerekiyorsa ``az login`` [az Login Reference](/cli/azure/reference-index#az-login&preserve-view=true)kullanabilirsiniz.  Hesabınızla ilişkili abonelikler arasında geçiş yapmak için ``az account set --subscription`` [az Account set Reference](/cli/azure/account#az-account-set&preserve-view=true)kullanabilirsiniz.
 
 2. Komutları ilk kez kullandıysanız `az vm repair` VM-REPAIR CLI uzantısını ekleyin.
 
@@ -74,13 +74,13 @@ Ek belgeler ve yönergeler için bkz. [az VM Repair](/cli/azure/ext/vm-repair/vm
    az extension update -n vm-repair
    ```
 
-3. `az vm repair create` komutunu çalıştırın. Bu komut, işlevsel olmayan VM için işletim sistemi diskinin bir kopyasını oluşturacak, yeni bir kaynak grubunda bir onarım VM 'si oluşturacak ve işletim sistemi diski kopyasını ekleyecek.  Onarım sanal makinesi, belirtilen işlev olmayan VM ile aynı boyutta ve bölgeye sahip olacaktır. Tüm adımlarda kullanılan kaynak grubu ve VM adı, işlevsel olmayan VM için olacaktır. VM 'niz Azure disk şifrelemesi kullanıyorsa, komut, onarım VM 'sine eklendiğinde erişilebilir olması için şifrelenmiş diskin kilidini açmayı dener.
+3. `az vm repair create` öğesini çalıştırın. Bu komut, işlevsel olmayan VM için işletim sistemi diskinin bir kopyasını oluşturacak, yeni bir kaynak grubunda bir onarım VM 'si oluşturacak ve işletim sistemi diski kopyasını ekleyecek.  Onarım sanal makinesi, belirtilen işlev olmayan VM ile aynı boyutta ve bölgeye sahip olacaktır. Tüm adımlarda kullanılan kaynak grubu ve VM adı, işlevsel olmayan VM için olacaktır. VM 'niz Azure disk şifrelemesi kullanıyorsa, komut, onarım VM 'sine eklendiğinde erişilebilir olması için şifrelenmiş diskin kilidini açmayı dener.
 
    ```azurecli-interactive
    az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password 'password!234' --verbose
    ```
 
-4. `az vm repair run` komutunu çalıştırın. Bu komut, belirtilen onarım betiğini, sanal makine onarım aracılığıyla bağlı diskte çalıştırır. Kullanmakta olduğunuz sorun giderme kılavuzu bir çalıştırma kimliği belirtse, lütfen burada kullanın, aksi takdirde `az vm repair list-scripts` kullanılabilir onarım betiklerini görmek için kullanabilirsiniz. Burada kullanılan kaynak grubu ve VM adı, adım 3 ' te kullanılan işlevsel olmayan VM içindir. Onarım betikleri hakkında ek bilgiler [onarım betiği kitaplığı](https://github.com/Azure/repair-script-library)'nda bulunabilir.
+4. `az vm repair run` öğesini çalıştırın. Bu komut, belirtilen onarım betiğini, sanal makine onarım aracılığıyla bağlı diskte çalıştırır. Kullanmakta olduğunuz sorun giderme kılavuzu bir çalıştırma kimliği belirtse, lütfen burada kullanın, aksi takdirde `az vm repair list-scripts` kullanılabilir onarım betiklerini görmek için kullanabilirsiniz. Burada kullanılan kaynak grubu ve VM adı, adım 3 ' te kullanılan işlevsel olmayan VM içindir. Onarım betikleri hakkında ek bilgiler [onarım betiği kitaplığı](https://github.com/Azure/repair-script-library)'nda bulunabilir.
 
    ```azurecli-interactive
    az vm repair run -g MyResourceGroup -n MyVM --run-on-repair --run-id win-hello-world --verbose
@@ -88,7 +88,7 @@ Ek belgeler ve yönergeler için bkz. [az VM Repair](/cli/azure/ext/vm-repair/vm
    
    İsteğe bağlı olarak, onarım sanal makinesini kullanarak gereken el ile azaltma adımlarını gerçekleştirebilir, ardından 5. adıma geçebilirsiniz.
 
-5. `az vm repair restore` komutunu çalıştırın. Bu komut, onarılan işletim sistemi diskini VM 'nin orijinal işletim sistemi diskiyle takas eder. Burada kullanılan kaynak grubu ve VM adı, adım 3 ' te kullanılan işlevsel olmayan VM içindir.
+5. `az vm repair restore` öğesini çalıştırın. Bu komut, onarılan işletim sistemi diskini VM 'nin orijinal işletim sistemi diskiyle takas eder. Burada kullanılan kaynak grubu ve VM adı, adım 3 ' te kullanılan işlevsel olmayan VM içindir.
 
    ```azurecli-interactive
    az vm repair restore -g MyResourceGroup -n MyVM --verbose

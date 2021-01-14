@@ -5,13 +5,13 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
-ms.date: 9/29/2020
-ms.openlocfilehash: b7f1f16b5182658f42ad6594aace22fb5a1a80fc
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 01/13/2021
+ms.openlocfilehash: f7103a83d115f30367cc07ff4e1ea64a9cc617b9
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541411"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98199555"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>MySQL için Azure veritabanı 'nı yapılandırma Gelen Verileri Çoğaltma
 
@@ -20,7 +20,7 @@ Bu makalede, kaynak ve çoğaltma sunucularını yapılandırarak MySQL için Az
 > [!NOTE]
 > Sapma ücretsiz iletişim
 >
-> Microsoft, farklı ve üçlü ortamları destekler. Bu makale, _İkincil_ sözcüğe başvurular içerir. Kullanım açısından [ücretsiz iletişim Için Microsoft Stil Kılavuzu](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) bunu bir exclusionword olarak tanır. Bu makalede, şu anda yazılımda görüntülenen sözcük olduğundan, bu makalede tutarlılık için kullanılır. Yazılım, sözcüğü kaldıracak şekilde güncelleniyorsa, bu makale hizalamayla olacak şekilde güncelleştirilir.
+> Microsoft, farklı ve üçlü ortamları destekler. Bu makale _ana_ ve _bağımlı_ sözcüklere başvurular içerir. Kullanım açısından [ücretsiz iletişim Için Microsoft Stil Kılavuzu](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) , bu sözcükleri exclusionary kelimeleri olarak tanır. Bu makalede, şu anda yazılımda görüntülenen sözcükler olduklarından, bu makale tutarlılık için kullanılır. Yazılım, kelimeleri kaldırmak üzere güncelleniyorsa, bu makale hizalamayla olacak şekilde güncelleştirilir.
 >
 
 MySQL için Azure veritabanı hizmetinde bir çoğaltma oluşturmak için, [gelen verileri çoğaltma](concepts-data-in-replication.md)  verileri Şirket içindeki bir kaynak MySQL sunucusundan, sanal makinelerde (VM) veya bulut veritabanı hizmetlerinde eşitler. Gelen Verileri Çoğaltma, MySQL’de yerel olan ikili günlük (binlog) dosya konumuna dayalı çoğaltmayı temel alır. Binlog çoğaltma hakkında daha fazla bilgi edinmek için [MySQL binlog çoğaltmasına genel bakış](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)bölümüne bakın.
@@ -35,48 +35,56 @@ Bu makaledeki adımları gerçekleştirmeden önce, verileri çoğaltmanın [sı
 
    > [!IMPORTANT]
    > MySQL için Azure veritabanı sunucusunun Genel Amaçlı veya bellek için Iyileştirilmiş fiyatlandırma katmanlarında oluşturulması gerekir.
-   > 
+   >
 
-1. Aynı kullanıcı hesaplarını ve ilgili ayrıcalıkları oluşturma
+2. Aynı kullanıcı hesaplarını ve ilgili ayrıcalıkları oluşturma
 
-   Kullanıcı hesapları, kaynak sunucudan Çoğaltma sunucusuna çoğaltılmaz. Kullanıcılara Çoğaltma sunucusuna erişimi sağlamayı planlıyorsanız, yeni oluşturulan MySQL için Azure veritabanı sunucusunda tüm hesapları ve ilgili ayrıcalıkları el ile oluşturmanız gerekir.
+   Kullanıcı hesapları, kaynak sunucudan Çoğaltma sunucusuna çoğaltılmaz. Kullanıcılara Çoğaltma sunucusuna erişimi sağlamayı planlıyorsanız, bu yeni oluşturulan MySQL sunucusu için Azure veritabanı 'nda tüm hesapları ve ilgili ayrıcalıkları el ile oluşturmanız gerekir.
 
-1. Kaynak sunucunun IP adresini çoğaltmanın güvenlik duvarı kurallarına ekleyin. 
+3. Kaynak sunucunun IP adresini çoğaltmanın güvenlik duvarı kurallarına ekleyin.
 
    [Azure portalını](howto-manage-firewall-using-portal.md) veya [Azure CLI](howto-manage-firewall-using-cli.md)’yı kullanarak güvenlik duvarı kurallarını güncelleştirin.
 
 ## <a name="configure-the-source-server"></a>Kaynak sunucuyu yapılandırma
-Aşağıdaki adımlar, şirket içinde barındırılan MySQL sunucusunu, bir sanal makinede veya Gelen Verileri Çoğaltma için diğer bulut sağlayıcıları tarafından barındırılan veritabanı hizmetinde hazırlar ve yapılandırır. Bu sunucu, veri içindeki çoğaltmada "ana" dır.
 
+Aşağıdaki adımlar, şirket içinde barındırılan MySQL sunucusunu, bir sanal makinede veya Gelen Verileri Çoğaltma için diğer bulut sağlayıcıları tarafından barındırılan veritabanı hizmetinde hazırlar ve yapılandırır. Bu sunucu, veri içindeki çoğaltmada "kaynak" dır.
 
-1. Devam etmeden önce [ana sunucu gereksinimlerini](concepts-data-in-replication.md#requirements) gözden geçirin. 
+1. Devam etmeden önce [kaynak sunucu gereksinimlerini](concepts-data-in-replication.md#requirements) gözden geçirin.
 
-2. Kaynak sunucunun bağlantı noktası 3306 ' de gelen ve giden trafiğe izin verdiğinden ve kaynak sunucunun **ortak BIR IP adresi** olduğundan, DNS genel olarak erişilebilir olduğundan veya tam etki alanı adı (FQDN) olduğundan emin olun. 
-   
-   Başka bir makinede barındırılan MySQL komut satırı veya Azure portal kullanılabilir [Azure Cloud Shell](../cloud-shell/overview.md) gibi bir araçtan bağlanmayı deneyerek kaynak sunucuya bağlantıyı test edin.
+2. Kaynak sunucunun bağlantı noktası 3306 ' de gelen ve giden trafiğe izin verdiğinden ve **Genel BIR IP adresine** sahip olduğundan, DNS 'nin genel olarak erişilebilir olduğundan veya tam etki alanı adı (FQDN) olduğundan emin olun.
 
-   Kuruluşunuz sıkı güvenlik ilkelerine sahipse ve kaynak sunucudaki tüm IP adreslerinin Azure 'dan kaynak sunucunuza yönelik iletişimi etkinleştirmesine izin vermeyecektir, MySQL sunucunuzun IP adresini belirleyebilmek için aşağıdaki komutu kullanabilirsiniz.
+   Başka bir makinede barındırılan MySQL komut satırı veya Azure portal kullanılabilir [Azure Cloud Shell](../cloud-shell/overview.md) gibi bir araçtan bağlantı kurmaya çalışırken kaynak sunucuyla bağlantıyı test edin.
+
+   Kuruluşunuz sıkı güvenlik ilkelerine sahipse ve kaynak sunucudaki tüm IP adreslerinin Azure 'dan kaynak sunucunuza iletişim kurmasını engellemesine izin vermedikçe, MySQL sunucunuzun IP adresini belirleyebilmek için aşağıdaki komutu kullanabilirsiniz.
 
    1. MySQL komut satırı gibi bir araç kullanarak MySQL için Azure veritabanı 'nda oturum açın.
+
    2. Aşağıdaki sorguyu yürütün.
+
       ```bash
       mysql> SELECT @@global.redirect_server_host;
       ```
+
       Aşağıda örnek bir çıktı verilmiştir:
-      ```bash 
+
+      ```bash
       +-----------------------------------------------------------+
       | @@global.redirect_server_host                             |
       +-----------------------------------------------------------+
       | e299ae56f000.tr1830.westus1-a.worker.database.windows.net |
        +-----------------------------------------------------------+
       ```
-   3. MySQL komut satırından çıkış.
+
+   3. MySQL komut satırından çıkın.
    4. IP adresini almak için ping yardımcı programında aşağıdaki komutu yürütün.
+
       ```bash
       ping <output of step 2b>
-      ``` 
-      Örnek: 
-      ```bash      
+      ```
+
+      Örneğin:
+
+      ```bash
       C:\Users\testuser> ping e299ae56f000.tr1830.westus1-a.worker.database.windows.net
       Pinging tr1830.westus1-a.worker.database.windows.net (**11.11.111.111**) 56(84) bytes of data.
       ```
@@ -85,8 +93,8 @@ Aşağıdaki adımlar, şirket içinde barındırılan MySQL sunucusunu, bir san
 
    > [!NOTE]
    > Bu IP adresi, bakım/dağıtım işlemleri nedeniyle değişebilir. Bu bağlantı yöntemi yalnızca 3306 bağlantı noktasındaki tüm IP adreslerine izin veren müşteriler içindir.
-   
-1. İkili günlüğü aç
+  
+3. İkili günlüğü aç
 
    Aşağıdaki komutu çalıştırarak, kaynak üzerinde ikili günlük özelliğinin etkinleştirilip etkinleştirilmediğini denetleyin: 
 
@@ -94,29 +102,29 @@ Aşağıdaki adımlar, şirket içinde barındırılan MySQL sunucusunu, bir san
    SHOW VARIABLES LIKE 'log_bin';
    ```
 
-   Değişken [`log_bin`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin) "on" değeriyle döndürülürse, sunucunuzda ikili günlük etkin olur. 
+   Değişken [`log_bin`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin) "on" değeriyle döndürülürse, sunucunuzda ikili günlük etkin olur.
 
    `log_bin`"Off" değeri ile döndürülürse, My. CNF Dosyanızı düzenleyerek ikili günlüğü açın `log_bin=ON` ve değişikliğin etkili olması için sunucunuzu yeniden başlatın.
 
-1. Kaynak sunucu ayarları
+4. Kaynak sunucu ayarları
 
-   Gelen Verileri Çoğaltma, parametrenin `lower_case_table_names` kaynak ve çoğaltma sunucuları arasında tutarlı olmasını gerektirir. Bu parametre, MySQL için Azure veritabanı 'nda varsayılan olarak 1 ' dir. 
+   Gelen Verileri Çoğaltma, parametrenin `lower_case_table_names` kaynak ve çoğaltma sunucuları arasında tutarlı olmasını gerektirir. Bu parametre, MySQL için Azure veritabanı 'nda varsayılan olarak 1 ' dir.
 
    ```sql
    SET GLOBAL lower_case_table_names = 1;
    ```
 
-1. Yeni bir çoğaltma rolü oluşturma ve izin ayarlama
+5. Yeni bir çoğaltma rolü oluşturma ve izin ayarlama
 
-   Kaynak sunucuda, çoğaltma ayrıcalıklarıyla yapılandırılmış bir kullanıcı hesabı oluşturun. Bu, SQL komutları veya MySQL çalışma ekranı gibi bir araç aracılığıyla yapılabilir. Kullanıcı oluştururken belirtilmesi gereken SSL ile çoğaltmayı planlayıp planladığınızı düşünün. Kaynak sunucunuza [Kullanıcı hesaplarının nasıl ekleneceğini](https://dev.mysql.com/doc/refman/5.7/en/user-names.html) anlamak için MySQL belgelerine bakın. 
+   Kaynak sunucuda, çoğaltma ayrıcalıklarıyla yapılandırılmış bir kullanıcı hesabı oluşturun. Bu, SQL komutları veya MySQL çalışma ekranı gibi bir araç aracılığıyla yapılabilir. Kullanıcı oluştururken belirtilmesi gereken SSL ile çoğaltmayı planlayıp planladığınızı düşünün. Kaynak sunucunuza [Kullanıcı hesaplarının nasıl ekleneceğini](https://dev.mysql.com/doc/refman/5.7/en/user-names.html) anlamak için MySQL belgelerine bakın.
 
-   Aşağıdaki komutlarda, oluşturulan yeni çoğaltma rolü yalnızca kaynağın kendisini barındıran makineden değil herhangi bir makineden kaynağa erişebilir. Bu işlem, kullanıcı oluştur komutunda "syncuser@ '% '" belirtilerek yapılır. [Hesap adlarını belirtme](https://dev.mysql.com/doc/refman/5.7/en/account-names.html)hakkında daha fazla bilgi edinmek için MySQL belgelerine bakın.
+   Aşağıdaki komutlarda oluşturulan yeni çoğaltma rolü yalnızca kaynağın kendisini barındıran makineden değil herhangi bir makineden kaynağa erişebilir. Bu işlem, kullanıcı oluştur komutunda "syncuser@ '% '" belirtilerek yapılır. [Hesap adlarını belirtme](https://dev.mysql.com/doc/refman/5.7/en/account-names.html)hakkında daha fazla bilgi edinmek için MySQL belgelerine bakın.
 
    **SQL komutu**
 
    *SSL ile çoğaltma*
 
-   Tüm kullanıcı bağlantıları için SSL istemek üzere, bir kullanıcı oluşturmak için aşağıdaki komutu kullanın: 
+   Tüm kullanıcı bağlantıları için SSL istemek üzere, bir kullanıcı oluşturmak için aşağıdaki komutu kullanın:
 
    ```sql
    CREATE USER 'syncuser'@'%' IDENTIFIED BY 'yourpassword';
@@ -134,19 +142,19 @@ Aşağıdaki adımlar, şirket içinde barındırılan MySQL sunucusunu, bir san
 
    **MySQL Workbench**
 
-   MySQL çalışma ekranı 'nda çoğaltma rolünü oluşturmak için, **Yönetim** panelinden **Kullanıcılar ve ayrıcalıklar** panelini açın. Ardından **Hesap Ekle** ' ye tıklayın. 
- 
+   MySQL çalışma ekranı 'nda çoğaltma rolünü oluşturmak için, **Yönetim** panelinden **Kullanıcılar ve ayrıcalıklar** panelini açın ve **Hesap Ekle**' yi seçin.
+
    :::image type="content" source="./media/howto-data-in-replication/users_privileges.png" alt-text="Kullanıcılar ve ayrıcalıklar":::
 
-   Kullanıcı **adını oturum açma adı** alanına yazın. 
+   Kullanıcı **adını oturum açma adı** alanına yazın.
 
    :::image type="content" source="./media/howto-data-in-replication/syncuser.png" alt-text="Kullanıcıyı Eşitle":::
- 
-   **Yönetim rolleri** paneline tıklayın ve sonra **genel ayrıcalıklar** listesinden **çoğaltma bağımlı** öğesini seçin. Ardından, çoğaltma rolünü oluşturmak için **Uygula** ' ya tıklayın.
+
+   **Yönetim rolleri** panelini seçin ve ardından **genel ayrıcalıklar** listesinden **çoğaltma bağımlı** öğesini seçin. Ardından, çoğaltma rolünü oluşturmak için **Uygula** ' yı seçin.
 
    :::image type="content" source="./media/howto-data-in-replication/replicationslave.png" alt-text="Çoğaltma bağımlı":::
 
-1. Kaynak sunucuyu salt okunurdur moduna ayarlama
+6. Kaynak sunucuyu salt okunurdur moduna ayarlama
 
    Veritabanının dökümünü başlatmadan önce, sunucunun salt okunurdur modunda yerleştirilmesi gerekir. Salt okuma modundayken, kaynak herhangi bir yazma işlemini işleyemeyecektir. İşletmenizin etkisini değerlendirin ve gerekirse, salt okuma penceresini yoğun olmayan bir zamanda zamanlayın.
 
@@ -155,41 +163,42 @@ Aşağıdaki adımlar, şirket içinde barındırılan MySQL sunucusunu, bir san
    SET GLOBAL read_only = ON;
    ```
 
-1. İkili günlük dosyası adı ve sapmasını al
+7. İkili günlük dosyası adı ve sapmasını al
 
    [`show master status`](https://dev.mysql.com/doc/refman/5.7/en/show-master-status.html)Geçerli ikili günlük dosyası adını ve sapmasını öğrenmek için komutunu çalıştırın.
-    
+
    ```sql
     show master status;
    ```
-   Sonuçlar aşağıdaki gibi olmalıdır. Sonraki adımlarda kullanılacak ikili dosya adını unutmayın.
+
+   Sonuçlar aşağıdakine benzer görünmelidir. Daha sonraki adımlarda kullanılacak şekilde, ikili dosya adını mutlaka unutmayın.
 
    :::image type="content" source="./media/howto-data-in-replication/masterstatus.png" alt-text="Ana durum sonuçları":::
- 
+
 ## <a name="dump-and-restore-source-server"></a>Kaynak sunucu dökümünü al ve geri yükle
 
 1. MySQL için Azure veritabanı 'na çoğaltmak istediğiniz veritabanlarını ve tabloları belirleme ve kaynak sunucudan döküm gerçekleştirme.
- 
+
     Yöneticinizdeki veritabanlarının dökümünü yapmak için mysqldump kullanabilirsiniz. Ayrıntılar için, [döküm & geri yükleme](concepts-migrate-dump-restore.md)bölümüne bakın. MySQL kitaplığı ve test kitaplığının dökümünü almak gereksizdir.
 
-1. Kaynak sunucuyu okuma/yazma moduna ayarla
+2. Kaynak sunucuyu okuma/yazma moduna ayarlayın.
 
-   Veritabanı kaydedildikten sonra kaynak MySQL sunucusunu okuma/yazma moduna geri çevirin.
+   Veritabanı oluşturulduktan sonra kaynak MySQL sunucusunu okuma/yazma moduna geri çevirin.
 
    ```sql
    SET GLOBAL read_only = OFF;
    UNLOCK TABLES;
    ```
 
-1. Döküm dosyasını yeni sunucuya geri yükle
+3. Döküm dosyasını yeni sunucuya geri yükle.
 
    Döküm dosyasını MySQL için Azure veritabanı hizmetinde oluşturulan sunucuya geri yükleyin. Bir MySQL sunucusuna bir döküm dosyası geri yüklemek için [döküm & geri yükleme](concepts-migrate-dump-restore.md) bölümüne bakın. Döküm dosyası büyükse, Çoğaltma sunucunuz ile aynı bölgedeki Azure 'daki bir sanal makineye yükleyin. Sanal makineden MySQL için Azure veritabanı sunucusuna geri yükleyin.
 
 ## <a name="link-source-and-replica-servers-to-start-data-in-replication"></a>Kaynak ve çoğaltma sunucularını başlangıç olarak bağlama Gelen Verileri Çoğaltma
 
-1. Kaynak sunucu ayarla
+1. Kaynak sunucuyu ayarlayın.
 
-   Tüm Gelen Verileri Çoğaltma işlevleri saklı yordamlar tarafından yapılır. Tüm yordamları [gelen verileri çoğaltma saklı yordamlar](./reference-stored-procedures.md)' da bulabilirsiniz. Saklı yordamlar MySQL kabuğu veya MySQL çalışma ekranı 'nda çalıştırılabilir. 
+   Tüm Gelen Verileri Çoğaltma işlevleri saklı yordamlar tarafından yapılır. Tüm yordamları [gelen verileri çoğaltma saklı yordamlar](./reference-stored-procedures.md)' da bulabilirsiniz. Saklı yordamlar MySQL kabuğu veya MySQL çalışma ekranı 'nda çalıştırılabilir.
 
    İki sunucuyu bağlamak ve çoğaltmaya başlamak için MySQL için Azure DB hizmetinde hedef çoğaltma sunucusunda oturum açın ve dış örneği kaynak sunucu olarak ayarlayın. Bu işlem, `mysql.az_replication_change_master` MySQL Için Azure DB sunucusunda saklı yordam kullanılarak yapılır.
 
@@ -203,61 +212,63 @@ Aşağıdaki adımlar, şirket içinde barındırılan MySQL sunucusunu, bir san
    - master_log_file: çalışan ikili günlük dosyası adı `show master status`
    - master_log_pos: sıfırdan ikili günlük konumu `show master status`
    - master_ssl_ca: CA sertifikasının bağlamı. SSL kullanmıyorsanız, boş bir dize geçirin.
-       - Bu parametrenin bir değişken olarak iletilmesi önerilir. Daha fazla bilgi için aşağıdaki örneklere bakın.
+
+     Bu parametreyi bir değişken olarak geçirmeniz önerilir. Daha fazla bilgi için aşağıdaki örneklere bakın.
 
    > [!NOTE]
-   > Kaynak sunucu bir Azure VM 'de barındırılıyorsa, kaynak ve çoğaltma sunucularının birbirleriyle iletişim kurmasına izin vermek için "Azure hizmetlerine erişime Izin ver" seçeneğini "açık" olarak ayarlayın. Bu ayar, **bağlantı güvenliği** seçeneklerinden değiştirilebilir. Daha fazla bilgi için [Portal kullanarak güvenlik duvarı kurallarını yönetme](howto-manage-firewall-using-portal.md) bölümüne bakın.
-      
+   > Kaynak sunucu bir Azure VM 'de barındırılıyorsa, kaynak ve çoğaltma sunucularının birbirleriyle iletişim kurmasına izin vermek için "Azure hizmetlerine erişime Izin ver" seçeneğini "açık" olarak ayarlayın. Bu ayar, **bağlantı güvenliği** seçeneklerinden değiştirilebilir. Daha fazla bilgi için bkz. [portalı kullanarak güvenlik duvarı kurallarını yönetme](howto-manage-firewall-using-portal.md) .
+
    **Örnekler**
-   
+
    *SSL ile çoğaltma*
-   
-   Değişkeni `@cert` aşağıdaki MySQL komutları çalıştırılarak oluşturulur: 
-   
+
+   Değişkeni `@cert` aşağıdaki MySQL komutları çalıştırılarak oluşturulur:
+
       ```sql
       SET @cert = '-----BEGIN CERTIFICATE-----
       PLACE YOUR PUBLIC KEY CERTIFICATE'`S CONTEXT HERE
       -----END CERTIFICATE-----'
       ```
-   
-   SSL ile çoğaltma, "companya.com" etki alanında barındırılan bir kaynak sunucu ve MySQL için Azure veritabanı 'nda barındırılan bir çoğaltma sunucusu arasında ayarlanır. Bu saklı yordam, çoğaltma üzerinde çalıştırılır. 
-   
+
+   SSL ile çoğaltma, "companya.com" etki alanında barındırılan bir kaynak sunucu ve MySQL için Azure veritabanı 'nda barındırılan bir çoğaltma sunucusu arasında ayarlanır. Bu saklı yordam, çoğaltma üzerinde çalıştırılır.
+
       ```sql
       CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, @cert);
       ```
+
    *SSL olmadan çoğaltma*
-   
+
    SSL olmadan çoğaltma, "companya.com" etki alanında barındırılan bir kaynak sunucu ve MySQL için Azure veritabanı 'nda barındırılan bir çoğaltma sunucusu arasında ayarlanır. Bu saklı yordam, çoğaltma üzerinde çalıştırılır.
-   
+
       ```sql
       CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, '');
       ```
 
-1. Filtreleme 
- 
+2. Menin.
+
    Ana bilgisayarınızdan bazı tabloların çoğaltılmasını atlamak istiyorsanız, `replicate_wild_ignore_table` çoğaltma sunucunuzdaki sunucu parametresini güncelleştirin. Virgülle ayrılmış bir liste kullanarak birden fazla tablo kalıbı sağlayabilirsiniz.
 
-   Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table) gözden geçirin. 
-    
+   Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table) gözden geçirin.
+
    Parametreyi güncelleştirmek için [Azure Portal](howto-server-parameters.md) veya [Azure CLI](howto-configure-server-parameters-using-cli.md)kullanabilirsiniz.
 
-1. Çoğaltmayı Başlat
+3. Çoğaltmayı başlatın.
 
-   `mysql.az_replication_start`Çoğaltmayı başlatmak için saklı yordamı çağırın.
+   `mysql.az_replication_start`Çoğaltmaya başlamak için saklı yordamı çağırın.
 
    ```sql
    CALL mysql.az_replication_start;
    ```
 
-1. Çoğaltma durumunu denetleme
+4. Çoğaltma durumunu denetleyin.
 
    [`show slave status`](https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html)Çoğaltma durumunu görüntülemek için Çoğaltma sunucusunda komutunu çağırın.
-    
+
    ```sql
    show slave status;
    ```
 
-   `Slave_IO_Running`Ve durumu `Slave_SQL_Running` "Yes" ise ve değeri `Seconds_Behind_Master` "0" ise, çoğaltma iyi çalışır. `Seconds_Behind_Master` çoğaltmanın ne kadar geç olduğunu gösterir. Değer "0" değilse, çoğaltmanın güncelleştirmeleri işlemesi anlamına gelir. 
+   `Slave_IO_Running`Ve durumu `Slave_SQL_Running` "Yes" ise ve değeri `Seconds_Behind_Master` "0" ise, çoğaltma iyi çalışır. `Seconds_Behind_Master` çoğaltmanın ne kadar geç olduğunu gösterir. Değer "0" değilse, çoğaltmanın güncelleştirmeleri işlemesi anlamına gelir.
 
 ## <a name="other-stored-procedures"></a>Diğer saklı yordamlar
 
@@ -279,11 +290,12 @@ CALL mysql.az_replication_remove_master;
 
 ### <a name="skip-replication-error"></a>Çoğaltma atlama hatası
 
-Çoğaltma hatasını atlamak ve çoğaltmanın devam etmesini sağlamak için aşağıdaki saklı yordamı kullanın:
-    
+Çoğaltma hatasını atlamak ve çoğaltmanın devam etmesine izin vermek için aşağıdaki saklı yordamı kullanın:
+
 ```sql
 CALL mysql.az_replication_skip_counter;
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 - MySQL için Azure veritabanı [gelen verileri çoğaltma](concepts-data-in-replication.md) hakkında daha fazla bilgi edinin.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d8893daaf73a15cdc0baf8eeb339e794f6f1da64
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: f0ae4ac4cf50eb6e54d41ff25e1cc671e76819ee
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913456"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200813"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>Linux Sanal Makineleri için Azure Güvenlik temeli
 
@@ -398,7 +398,7 @@ Alternatif olarak, anormal etkinliklere yönelik uyarıları ayarlamak için Azu
 
 **Kılavuz**: Azure kaynaklarını açmak ve YAPıLANDıRMAK için MFA Ile Paws (ayrıcalıklı erişim iş istasyonları) kullanın.
 
-* [Ayrıcalıklı erişim Iş Istasyonları hakkında bilgi edinin](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Ayrıcalıklı erişim Iş Istasyonları hakkında bilgi edinin](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [Azure'da çok faktörlü kimlik doğrulamasını etkinleştirme](../../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -602,7 +602,7 @@ Microsoft, bulut hizmetleri ve müşteriler arasında seyahat edildiğinde veril
 
 * [Azure etkinlik günlüğü olayları için uyarı oluşturma](../../azure-monitor/platform/alerts-activity-log.md)
 
-* [Azure Depolama analizi günlüğü](../../storage/common/storage-analytics-logging.md)
+* [Azure Depolama analizini günlüğe kaydetme](../../storage/common/storage-analytics-logging.md)
 
 **Azure Güvenlik Merkezi izleme**: kullanılamıyor
 

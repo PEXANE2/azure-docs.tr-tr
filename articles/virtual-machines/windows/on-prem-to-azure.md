@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 32cbfbcc8feeff66101ab5e2c95f476a4a4215e9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 55f7c68df1e339f0f9eda809bbb0acbb2e9131b5
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973912"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200898"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Azure 'da Amazon Web Services (AWS) ve diğer platformlardan yönetilen disklere geçirme
 
@@ -26,7 +26,7 @@ Genelleştirilmiş ve özelleştirilmiş VHD 'leri karşıya yükleyebilirsiniz.
 - **ÖZELLEŞTIRILMIŞ VHD** -özgün VM 'nizden Kullanıcı hesaplarını, uygulamaları ve diğer durum verilerini tutar. 
 
 > [!IMPORTANT]
-> Herhangi bir VHD 'yi Azure 'a yüklemeden önce, [Azure 'a yüklemek için bir WINDOWS VHD veya vhdx hazırlamanızı](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) izlemeniz gerekir
+> Herhangi bir VHD 'yi Azure 'a yüklemeden önce, [Azure 'a yüklemek için bir WINDOWS VHD veya vhdx hazırlamanızı](prepare-for-upload-vhd-image.md) izlemeniz gerekir
 >
 >
 
@@ -64,20 +64,20 @@ Premium depolamayla çalışan sanal makinelerin performans özelliklerini gözd
 
 VM 'niz ile kullanılabilecek yedi tür Premium yönetilen disk vardır ve her biri belirli IOPS ve aktarım hızı sınırlarına sahiptir. Kapasite, performans, ölçeklenebilirlik ve en yoğun yük bakımından uygulamanızın gereksinimlerine bağlı olarak, VM 'niz için Premium disk türünü seçerken bu limitleri dikkate alın.
 
-| Premium diskler türü  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | 
+| Premium diskler türü  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | 
 |---------------------|-------|-------|-------|-------|-------|-------|-------|-------|
-| Disk boyutu           | 32 GB| 64 GB| 128 GB| 256 GB|512 GB | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
-| Disk başına IOPS       | 120   | 240   | 500   | 1100  |2300              | 5000              | 7.500              | 7.500              | 
-| Disk başına aktarım hızı | saniyede 25 MB  | saniyede 50 MB  | Saniyede 100 MB | saniyede 125 MB |saniyede 150 MB | saniyede 200 MB | saniyede 250 MB | saniyede 250 MB |
+| Disk boyutu           | 32 GB| 64 GB| 128 GB| 256 GB|512 GB | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
+| Disk başına IOPS       | 120   | 240   | 500   | 1100  |2300              | 5000              | 7.500              | 7.500              | 
+| Disk başına aktarım hızı | saniyede 25 MB  | saniyede 50 MB  | Saniyede 100 MB | saniyede 125 MB |saniyede 150 MB | saniyede 200 MB | saniyede 250 MB | saniyede 250 MB |
 
 **Standart yönetilen diskler**
 
 VM 'niz ile kullanılabilecek yedi tür Standart yönetilen disk vardır. Her birinin farklı kapasitesi vardır ancak aynı ıOPS ve aktarım hızı limitlerini vardır. Uygulamanızın kapasite ihtiyaçlarına bağlı olarak standart yönetilen disklerin türünü seçin.
 
-| Standart Disk Türü  | S4               | S6               | S10              | S15              | S20              | S30              | S40              | S50              | 
+| Standart Disk Türü  | S4               | S6               | S10              | S15              | S20              | S30              | S40              | S50              | 
 |---------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------| 
-| Disk boyutu           | 30 GB            | 64 GB            | 128 GB           | 256 GB           |512 GB           | 1024 GB (1 TB)   | 2048 GB (2TB)    | 4095 GB (4 TB)   | 
-| Disk başına IOPS       | 500              | 500              | 500              | 500              |500              | 500              | 500             | 500              | 
+| Disk boyutu           | 30 GB            | 64 GB            | 128 GB           | 256 GB           |512 GB           | 1024 GB (1 TB)   | 2048 GB (2TB)    | 4095 GB (4 TB)   | 
+| Disk başına IOPS       | 500              | 500              | 500              | 500              |500              | 500              | 500             | 500              | 
 | Disk başına aktarım hızı | saniyede 60 MB | saniyede 60 MB | saniyede 60 MB | saniyede 60 MB |saniyede 60 MB | saniyede 60 MB | saniyede 60 MB | saniyede 60 MB | 
 
 ### <a name="disk-caching-policy"></a>Disk önbelleğe alma ilkesi 
@@ -93,4 +93,4 @@ Varsayılan olarak, disk önbelleğe alma ilkesi tüm Premium veri diskleri içi
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-- Herhangi bir VHD 'yi Azure 'a yüklemeden önce, [Azure 'a yüklemek için bir WINDOWS VHD veya vhdx hazırlamanızı](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) izlemeniz gerekir
+- Herhangi bir VHD 'yi Azure 'a yüklemeden önce, [Azure 'a yüklemek için bir WINDOWS VHD veya vhdx hazırlamanızı](prepare-for-upload-vhd-image.md) izlemeniz gerekir

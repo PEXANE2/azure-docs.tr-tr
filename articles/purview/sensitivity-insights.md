@@ -1,18 +1,18 @@
 ---
-title: Azure Blob depolama alanındaki verilerinizde duyarlılık etiketi raporlaması
-description: Bu nasıl yapılır kılavuzunda, Azure Blob depolamada verileriniz üzerinde Guview duyarlılık etiketi raporlama 'nın nasıl görüntüleneceği ve kullanılacağı açıklanmaktadır.
+title: Azure Takiview 'ta verileriniz üzerinde Öngörüview Insights kullanarak duyarlılık etiketi raporlama
+description: Bu nasıl yapılır kılavuzunda, verilerinizde purview duyarlılık etiketi raporlama 'nın nasıl görüntüleneceği ve kullanılacağı açıklanmaktadır.
 author: batamig
 ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: e6a92282d2bcd316a771742048dacd9a7181de4f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: dffecb48a8faa869cb3df450cc220e86195bbc87
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746191"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98199385"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>Azure purview 'daki verileriniz hakkında duyarlılık etiketi öngörüleri
 
@@ -27,6 +27,11 @@ Bu nasıl yapılır kılavuzunda şunları yapmayı öğreneceksiniz:
 > - Verilerinize ilişkin duyarlılık etiketleme öngörülerini görüntüleme
 > - Verileriniz hakkında daha fazla duyarlılık etiketleme ayrıntısı için detaya gidin
 
+> [!NOTE]
+> Purview tarafından taranan [Power BI varlıklarda](register-scan-power-bi-tenant.md) bulunan duyarlılık etiketleri, şu anda duyarlılık etiketleme öngörüleri raporunda gösterilmemektedir. 
+>
+> Power BI varlıklarından duyarlılık etiketlerini görüntülemek için, [takip veri kataloğunda](how-to-search-catalog.md)varlığı görüntüleyin.
+> 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Purview Insights 'ı kullanmaya başlamadan önce aşağıdaki adımları tamamladığınızdan emin olun:
@@ -37,6 +42,8 @@ Purview Insights 'ı kullanmaya başlamadan önce aşağıdaki adımları tamaml
 
 - Her veri kaynağındaki test verilerini ayarlama ve bir taramayı tamamlanan
 
+- Bir [veri okuyucu veya veri seçkin rolü](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)ile birlikte bir hesapla oturum açıldı.
+
 Daha fazla bilgi için bkz. [Azure purview 'ta veri kaynaklarını yönetme (Önizleme)](manage-data-sources.md) ve [verilerinizi otomatik olarak etiketleme](create-sensitivity-label.md).
 
 ## <a name="use-purview-sensitivity-labeling-insights"></a>Purview duyarlılığı etiketleme öngörülerini kullanma
@@ -45,9 +52,11 @@ Purview 'da, sınıflandırmalar konu etiketlerine benzerdir ve tarama sırasın
 
 Duyarlılık etiketleri, belirli verilerin kuruluşunuzda ne kadar hassas olduğunu size sağlar. Örneğin, belirli bir proje adı kuruluşunuzda çok gizli olabilir, ancak aynı terim diğer kuruluşlara gizli değildir. 
 
-Sınıflandırmalar doğrudan eşleştirirken (sosyal güvenlik numarası bir **sosyal güvenlik numarası** sınıflandırmasına sahiptir), bir veya daha fazla sınıflandırma ve senaryo birlikte bulunduğunda duyarlık etiketleri uygulanır. 
+Sınıflandırmalar, **sosyal güvenlik numarası** sınıflandırmasına sahip olan sosyal güvenlik numarası gibi doğrudan eşleştirilir. 
 
-Takip, Microsoft 365 olarak gizli bilgi türleri olarak da bilinen aynı sınıflandırmaları kullanır. Bu, mevcut duyarlılık etiketlerinizi Azure purview varlıklarınız genelinde genişletmenizi sağlar.
+Buna karşılık, bir veya daha fazla sınıflandırma ve koşul birlikte bulunduğunda duyarlık etiketleri uygulanır. Bu bağlamda [koşullar](/microsoft-365/compliance/apply-sensitivity-label-automatically) , **başka bir sınıflandırmaya yakınlık** ve **% güvenirlik** gibi yapılandırılmamış veriler için tanımlayabileceğiniz tüm parametrelere başvurur. 
+
+Takip, Microsoft 365 olarak [gizli bilgi türleri](/microsoft-365/compliance/sensitive-information-type-entity-definitions)olarak da bilinen aynı sınıflandırmaları kullanır. Bu, mevcut duyarlılık etiketlerinizi Azure purview varlıklarınız genelinde genişletmenizi sağlar.
 
 > [!NOTE]
 > Kaynak türlerinizi taradıktan sonra, yeni varlıkları yansıtmak için **duyarlık etiketleme** öngörülerini birkaç saat daha verin.
@@ -58,7 +67,7 @@ Takip, Microsoft 365 olarak gizli bilgi türleri olarak da bilinen aynı sınıf
 
 1. **Genel bakış** sayfasında, **Başlarken** bölümünde, **purview hesabını Başlat** kutucuğunu seçin.
 
-1. Takip görünümü ' nde, **Insights** :::image type="icon" source="media/insights/ico-insights.png" border="false"::: **Öngörüler** alanına erişmek için soldaki Öngörüler menü öğesini seçin.
+1. Takip görünümü ' nde,  :::image type="icon" source="media/insights/ico-insights.png" border="false"::: **Öngörüler** alanına erişmek için soldaki Öngörüler menü öğesini seçin.
 
 1. **Öngörüler** :::image type="icon" source="media/insights/ico-insights.png" border="false"::: alanında **duyarlık etiketleri** ' ni seçerek purview **duyarlılık etiketleme öngörüleri** raporunu görüntüleyin.
 
@@ -69,7 +78,7 @@ Takip, Microsoft 365 olarak gizli bilgi türleri olarak da bilinen aynı sınıf
 
    Ana **duyarlılık etiketleme öngörüleri** sayfasında aşağıdaki bölgeler görüntülenir:
 
-   |Alan  |Açıklama  |
+   |Alan  |Description  |
    |---------|---------|
    |**Duyarlılık etiketleriyle kaynaklara genel bakış**     |Şunları sağlayan kutucukları görüntüler: <br>-Verilerinizde bulunan aboneliklerin sayısı. <br>-Verilerinize uygulanan benzersiz duyarlılık etiketi sayısı <br>-Duyarlılık etiketleri uygulanmış kaynak sayısı <br>-Duyarlılık etiketleri uygulanmış olarak bulunan dosya ve tablo sayısı|
    |**Etiketli verileri olan en popüler kaynaklar (son 30 gün)**     | Duyarlılık etiketi uygulanmış kaynak sayısının son 30 günü boyunca eğilimi gösterir.       |
@@ -88,7 +97,7 @@ Aşağıdaki **duyarlık grafiklerini etiketleyerek** , daha fazla ayrıntı iç
 - **Tablolara uygulanan üst Etiketler**
 - **Etiketlendirilmiş verileri > etiketleme**
 
-Örnek:
+Örneğin:
 
 :::image type="content" source="media/insights/sensitivity-label-drilldown-small.png" alt-text="Duyarlılık etiketi detaya gitme" lightbox="media/insights/sensitivity-label-drilldown.png":::
 

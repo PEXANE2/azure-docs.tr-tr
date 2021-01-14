@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 1/13/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: b84256188cf5df3ddf389f763e669a2b2ca00852
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: e2f0d62ae6882229cee3ee32e3b362f2b6593da7
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183345"
+ms.locfileid: "98199244"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure Dosya Eşitleme ile ilgili sorunları giderme
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -52,9 +52,11 @@ Bu sorunu çözmek için [KB2919355](https://support.microsoft.com/help/2919355/
 <a id="server-registration-missing-subscriptions"></a>**Sunucu kaydı tüm Azure aboneliklerini listelemez**  
 ServerRegistration.exe kullanarak bir sunucuyu kaydederken, Azure aboneliği açılır listesini tıklattığınızda abonelikler eksiktir.
 
-Bu sorun, ServerRegistration.exe Şu anda çok kiracılı ortamları desteklemediğinden oluşur. Bu sorun gelecekte Azure Dosya Eşitleme Aracı güncelleştirmesinde düzeltilecektir.
+Bu sorun, ServerRegistration.exe yalnızca ilk 5 Azure AD kiracısından abonelik alacağından oluşur. 
 
-Bu soruna geçici bir çözüm olarak, sunucuyu kaydetmek için aşağıdaki PowerShell komutlarını kullanın:
+Sunucuda sunucu kaydı kiracı sınırını artırmak için, 5 ' ten büyük bir değer ile HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync altında ServerRegistrationTenantLimit adlı bir DWORD değeri oluşturun.
+
+Ayrıca, sunucuyu kaydetmek için aşağıdaki PowerShell komutlarını kullanarak bu sorunu geçici olarak bulabilirsiniz:
 
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"

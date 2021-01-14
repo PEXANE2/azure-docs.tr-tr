@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: 751fa9f9fe2ba17a982b71a6332be302804f0dcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d06dc03a016f057a9a3407a82a114f8df6757599
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89047301"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200694"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Azure’da genelleştirilmiş bir VM’nin yönetilen görüntüsünü oluşturma
 
@@ -33,7 +33,7 @@ Makinede çalışan sunucu rollerinin Sysprep tarafından desteklendiğinden emi
 >
 >Sysprep, sürücülerin tam olarak şifresinin çözülmesi gerekir. VM 'niz üzerinde şifrelemeyi etkinleştirdiyseniz, Sysprep 'ı çalıştırmadan önce şifrelemeyi devre dışı bırakın.
 >
-> Sanal sabit diskinizi (VHD) Azure 'a ilk kez yüklemeden önce Sysprep 'i çalıştırmayı planlıyorsanız, [VM 'nizi hazırladığınızdan](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)emin olun.  
+> Sanal sabit diskinizi (VHD) Azure 'a ilk kez yüklemeden önce Sysprep 'i çalıştırmayı planlıyorsanız, [VM 'nizi hazırladığınızdan](prepare-for-upload-vhd-image.md)emin olun.  
 > 
 > 
 
@@ -47,7 +47,7 @@ Windows VM 'nizi genelleştirmek için aşağıdaki adımları izleyin:
    
 4. **Sistem Hazırlama Aracı** iletişim kutusunda, **sistem kutudan çıkar deneyimini (OOBE) girin** ve **generalize** onay kutusunu seçin.
    
-5. **Kapalı seçenekleri**Için, **kapanıyor**' ı seçin.
+5. **Kapalı seçenekleri** Için, **kapanıyor**' ı seçin.
    
 6. **Tamam**’ı seçin.
    
@@ -69,7 +69,7 @@ Windows VM 'nizi genelleştirmek için aşağıdaki adımları izleyin:
 
 ## <a name="create-a-managed-image-in-the-portal"></a>Portalda yönetilen bir görüntü oluşturma 
 
-1. VM görüntüsünü yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Sanal makineleri**arayın ve seçin.
+1. VM görüntüsünü yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Sanal makineleri** arayın ve seçin.
 
 2. Listeden VM 'nizi seçin.
 
@@ -77,13 +77,13 @@ Windows VM 'nizi genelleştirmek için aşağıdaki adımları izleyin:
 
    **Görüntü oluştur** sayfası görüntülenir.
 
-4. **Ad**için önceden doldurulmuş adı kabul edin ya da görüntü için kullanmak istediğiniz bir ad girin.
+4. **Ad** için önceden doldurulmuş adı kabul edin ya da görüntü için kullanmak istediğiniz bir ad girin.
 
-5. **Kaynak grubu**için, **Yeni oluştur** ' u seçin ve bir ad girin veya açılan listeden kullanılacak bir kaynak grubu seçin.
+5. **Kaynak grubu** için, **Yeni oluştur** ' u seçin ve bir ad girin veya açılan listeden kullanılacak bir kaynak grubu seçin.
 
 6. Görüntü oluşturulduktan sonra kaynak VM 'yi silmek istiyorsanız, **görüntüyü oluşturduktan sonra bu sanal makineyi otomatik olarak sil**' i seçin.
 
-7. Görüntüyü herhangi bir [kullanılabilirlik](../../availability-zones/az-overview.md)alanında kullanmak istiyorsanız **bölge dayanıklılığı**için **Açık** ' ı seçin.
+7. Görüntüyü herhangi bir [kullanılabilirlik](../../availability-zones/az-overview.md)alanında kullanmak istiyorsanız **bölge dayanıklılığı** için **Açık** ' ı seçin.
 
 8. Görüntüyü oluşturmak için **Oluştur**’u seçin.
 
@@ -119,7 +119,7 @@ Bir VM görüntüsü oluşturmak için aşağıdaki adımları izleyin:
     Stop-AzVM -ResourceGroupName $rgName -Name $vmName -Force
     ```
     
-3. Sanal makinenin durumunu **Genelleştirilmiş**olarak ayarlayın. 
+3. Sanal makinenin durumunu **Genelleştirilmiş** olarak ayarlayın. 
    
     ```azurepowershell-interactive
     Set-AzVm -ResourceGroupName $rgName -Name $vmName -Generalized
@@ -217,7 +217,7 @@ Aşağıdaki adımları izleyerek genelleştirilmiş bir VM 'nin anlık görünt
 
 ## <a name="create-an-image-from-a-vm-that-uses-a-storage-account"></a>Depolama hesabı kullanan bir VM 'den görüntü oluşturma
 
-Yönetilen diskler kullanmayan bir VM 'den yönetilen bir görüntü oluşturmak için, depolama hesabındaki işletim sistemi VHD 'sinin URI 'sine şu biçimde ihtiyacınız vardır: https://*mystorageaccount*. blob.Core.Windows.net/*vhdcontainer* / *vhdfilename. vhd*. Bu örnekte, VHD, *vhdcontainer*adlı bir kapsayıcıda *mystorageaccount*içinde ve VHD dosya adı, *vhdfilename. vhd*' dir.
+Yönetilen diskler kullanmayan bir VM 'den yönetilen bir görüntü oluşturmak için, depolama hesabındaki işletim sistemi VHD 'sinin URI 'sine şu biçimde ihtiyacınız vardır: https://*mystorageaccount*. blob.Core.Windows.net/*vhdcontainer* / *vhdfilename. vhd*. Bu örnekte, VHD, *vhdcontainer* adlı bir kapsayıcıda *mystorageaccount* içinde ve VHD dosya adı, *vhdfilename. vhd*' dir.
 
 
 1.  Bazı değişkenler oluşturun.
@@ -250,4 +250,4 @@ Yönetilen diskler kullanmayan bir VM 'den yönetilen bir görüntü oluşturmak
 
     
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Yönetilen görüntüden BIR VM oluşturun](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).    
+- [Yönetilen görüntüden BIR VM oluşturun](create-vm-generalized-managed.md). 

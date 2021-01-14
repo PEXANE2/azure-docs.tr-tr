@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 01/13/2019
 ms.author: cynthn
-ms.openlocfilehash: 5c57ac0fb0ab377f00770e3c9c03a413dcb345bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e6f7b461d205478d6a3fe3eecbbb933d0533ec9
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87291034"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200524"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Azure 'dan bir Windows VHD indirin
 
@@ -27,7 +27,7 @@ VHD 'YI başka VM 'Ler oluşturmak için [görüntü](tutorial-custom-images.md)
 VHD 'yi başka VM 'Ler oluşturmak için görüntü olarak kullanmak için VM 'yi genelleştirin.
 
 1. Önceden yapmadıysanız, [Azure portal](https://portal.azure.com/)da oturum açın
-2. [VM 'ye bağlanın](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+2. [VM 'ye bağlanın](connect-logon.md). 
 3. VM 'de yönetici olarak komut Istemi penceresini açın.
 4. Dizini *%windir%\system32\sysprep* olarak değiştirin ve sysprep.exe çalıştırın.
 5. Sistem Hazırlama Aracı iletişim kutusunda, **sistem kutudan çıkar deneyimi (OOBE)** seçeneğini belirleyin ve **genelleştirilemedi** ' ın seçili olduğundan emin olun.
@@ -65,6 +65,6 @@ VHD dosyasını indirmek için, [paylaşılan erişim imzası (SAS)](../../stora
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [BIR VHD dosyasını Azure 'a yüklemeyi](upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)öğrenin. 
-- [Bir depolama hesabındaki yönetilmeyen disklerden yönetilen diskler oluşturun](attach-disk-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-- [Azure disklerini PowerShell Ile yönetin](tutorial-manage-data-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- [BIR VHD dosyasını Azure 'a yüklemeyi](upload-generalized-managed.md)öğrenin. 
+- [Bir depolama hesabındaki yönetilmeyen disklerden yönetilen diskler oluşturun](attach-disk-ps.md).
+- [Azure disklerini PowerShell Ile yönetin](tutorial-manage-data-disk.md).

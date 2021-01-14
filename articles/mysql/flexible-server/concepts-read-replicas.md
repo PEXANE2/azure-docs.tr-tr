@@ -5,13 +5,13 @@ author: ambhatna
 ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/26/2020
-ms.openlocfilehash: 3fe63deb8115c0043023301c6d0dc3731e97743f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 01/14/2021
+ms.openlocfilehash: ccae7b3f201e55af0e9e6b4ca9e7fd4ffb9c4897
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492634"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200983"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>MySQL için Azure veritabanı 'nda çoğaltmaları okuma-esnek sunucu
 
@@ -24,14 +24,14 @@ Uygulamalar tarafında, uygulama genellikle Java veya php 'de geliştirilmiştir
 
 Çoğaltma oku özelliği, MySQL için Azure veritabanı esnek sunucusu 'na ait verileri salt okunurdur bir sunucuya çoğaltmanıza olanak sağlar. Kaynak sunucudan **10** ' a kadar çoğaltma yapabilirsiniz. Çoğaltmalar, MySQL altyapısının yerel ikili günlük (binlog) dosya konumu tabanlı çoğaltma teknolojisini kullanılarak zaman uyumsuz olarak güncelleştirilir. Binlog çoğaltma hakkında daha fazla bilgi edinmek için [MySQL binlog çoğaltmasına genel bakış](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)bölümüne bakın.
 
-Çoğaltmalar, MySQL için kaynak Azure veritabanı esnek sunucuları ile benzer şekilde yönettiğiniz yeni sunuculardır. Sanal çekirdekler ve depolama biriminde GB/ay içinde sağlanan işlem temelinde her bir okuma çoğaltması için faturalandırma ücretlerine tabi olursunuz. Daha fazla bilgi için [fiyatlandırma](./concepts-compute-storage.md#pricing)bölümüne bakın.
+Çoğaltmalar, MySQL için kaynak Azure veritabanı esnek sunucuları ile benzer şekilde yönettiğiniz yeni sunuculardır. Sanal çekirdekler ve depolama biriminde GB/ay içinde sağlanan işlem temelinde her bir okuma çoğaltması için faturalandırma ücretlerine tabi olursunuz. Daha fazla bilgi için bkz. [Fiyatlandırma](./concepts-compute-storage.md#pricing).
 
 MySQL çoğaltma özellikleri ve sorunları hakkında daha fazla bilgi edinmek için [MySQL Çoğaltma belgelerine](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)bakın.
 
 > [!NOTE]
 > Sapma ücretsiz iletişim
 >
-> Microsoft, farklı ve üçlü ortamları destekler. Bu makale, _İkincil_ sözcüğe başvurular içerir. Kullanım açısından [ücretsiz iletişim Için Microsoft Stil Kılavuzu](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) bunu bir exclusionword olarak tanır. Bu makalede, şu anda yazılımda görüntülenen sözcük olduğundan, bu makalede tutarlılık için kullanılır. Yazılım, sözcüğü kaldıracak şekilde güncelleniyorsa, bu makale hizalamayla olacak şekilde güncelleştirilir.
+> Microsoft, farklı ve üçlü ortamları destekler. Bu makale _ana_ ve _bağımlı_ sözcüklere başvurular içerir. Kullanım açısından [ücretsiz iletişim Için Microsoft Stil Kılavuzu](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) , bu sözcükleri exclusionary kelimeleri olarak tanır. Bu makalede, şu anda yazılımda görüntülenen sözcükler olduklarından, bu makale tutarlılık için kullanılır. Yazılım, kelimeleri kaldırmak üzere güncelleniyorsa, bu makale hizalamayla olacak şekilde güncelleştirilir.
 >
 
 ## <a name="common-use-cases-for-read-replica"></a>Okuma çoğaltması için genel kullanım örnekleri
@@ -40,7 +40,7 @@ Okuma çoğaltması özelliği, okuma yoğunluklu iş yüklerinin performansın�
 
 Yaygın senaryolar şunlardır:
 
-* Uygulama aracılığıyla gelen okuma-iş yüklerini ölçeklendirin ve uygulama tarafından gelen okuma sorgularınızı, çoğaltmaları okumak üzere [bir şekilde genişletmek](https://aka.ms/ProxySQLLoadBalanceReplica) için mikro hizmetler tabanlı desenler kullanarak
+* Uygulamadan gelen okuma-iş yüklerini ölçeklendirin, uygulamalardan gelen okuma sorgularını okumak için [Proxysql](https://aka.ms/ProxySQLLoadBalanceReplica) gibi hafif bağlantı proxy 'sini kullanarak veya mikro hizmetler tabanlı desenler kullanarak uygulamadan geliyor
 * Bı veya analitik raporlama iş yükleri, raporlama için veri kaynağı olarak okuma çoğaltmalarını kullanabilir
 * Verilerin raporlanması için birden çok okuma yinelemesi kullanıldığı sırada telemetri bilgilerinin MySQL veritabanı altyapısına çalıştırıldığı IoT veya üretim senaryosunda
 
@@ -93,23 +93,23 @@ Kaynak ve çoğaltma arasında çoğaltmayı durdurabilirsiniz. Kaynak sunucu ve
 
 ## <a name="failover"></a>Yük devretme
 
-Kaynak ve çoğaltma sunucuları arasında otomatik yük devretme yoktur. 
+Kaynak ve çoğaltma sunucuları arasında otomatik yük devretme yoktur.
 
 Okuma çoğaltmaları, okuma yoğunluğu olan iş yüklerinin ölçeklendirilmesine yöneliktir ve bir sunucunun yüksek kullanılabilirlik gereksinimlerini karşılayacak şekilde tasarlanmamıştır. Kaynak ve çoğaltma sunucuları arasında otomatik yük devretme yoktur. Okuma yazma modunda çevrimiçi duruma getirmek için okuma çoğaltmasındaki çoğaltmayı durdurmak, bu el ile yük devretmenin gerçekleştirildiği anlamına gelir.
 
-Çoğaltma zaman uyumsuz olduğundan, kaynak ve çoğaltma arasında bir gecikme vardır. Gecikme miktarı, kaynak sunucuda çalışan iş yükünün ne kadar ağır ve veri merkezleri arasındaki gecikme süresi gibi bir dizi faktörden etkilenebilir. Çoğu durumda, çoğaltma gecikmesi birkaç saniyeyle birkaç dakika arasında değişir. Her bir çoğaltma için kullanılabilen ölçüm *çoğaltması* gecikmesini kullanarak gerçek çoğaltma gecikmelerinizi izleyebilirsiniz. Bu ölçüm, son yeniden yürütülmüş işlemden bu yana geçen süreyi gösterir. Yineleme gecikmesini bir süre içinde gözlemleyerek ortalama gecikmenizin ne olduğunu tanımlamanızı öneririz. Çoğaltma gecikmesi üzerinde bir uyarı ayarlayabilirsiniz, böylece beklenen aralığın dışında olursa işlem yapabilirsiniz.
+Çoğaltma zaman uyumsuz olduğundan, kaynak ve çoğaltma arasında bir gecikme vardır. Gecikme miktarı, kaynak sunucuda çalışan iş yükünün ne kadar ağır ve veri merkezleri arasındaki gecikme süresi gibi birçok faktörden etkilenebilir. Çoğu durumda, çoğaltma gecikmesi birkaç saniyeyle birkaç dakika arasında değişir. Her bir çoğaltma için kullanılabilen ölçüm *çoğaltması* gecikmesini kullanarak gerçek çoğaltma gecikmelerinizi izleyebilirsiniz. Bu ölçüm, son yeniden yürütülmüş işlemden bu yana geçen süreyi gösterir. Yineleme gecikmesini bir süre içinde gözlemleyerek ortalama gecikmenizin ne olduğunu tanımlamanızı öneririz. Çoğaltma gecikmesi üzerinde bir uyarı ayarlayabilirsiniz, böylece beklenen aralığın dışında olursa işlem yapabilirsiniz.
 
 > [!Tip]
 > Çoğaltmaya yük devretmek, çoğaltmayı kaynaktan geri bağladığınızda oluşan gecikme süresi, ne kadar veri kaybı olduğunu gösterir.
 
-Bir çoğaltmaya yük devretmek istediğinizde, 
+Bir çoğaltmaya nasıl yük devretmek istediğinize karar verdikten sonra:
 
 1. Çoğaltmaya çoğaltmayı durdur<br/>
-   Bu adım, çoğaltma sunucusunun yazmaları kabul edebilmesini sağlamak için gereklidir. Bu işlemin bir parçası olarak, çoğaltma sunucusu kaynaktan kaldırılacak. Çoğaltmayı Durdur ' u başlattığınızda, arka uç işleminin genellikle yaklaşık 2 dakika sürer. Bu eylemin etkilerini anlamak için bu makalenin [çoğaltmayı durdur](#stop-replication) bölümüne bakın.
-    
+   Bu adım, çoğaltma sunucusunun yazmaları kabul edebilmesini sağlamak için gereklidir. Bu işlemin bir parçası olarak, çoğaltma sunucusu kaynaktan kaldırılacak. Çoğaltmayı durdur işlemini başlattıktan sonra, arka uç işleminin genellikle yaklaşık 2 dakika sürer. Bu eylemin etkilerini anlamak için bu makalenin [çoğaltmayı durdur](#stop-replication) bölümüne bakın.
+
 2. Uygulamanızı (eski) çoğaltmaya işaret edin<br/>
    Her sunucunun benzersiz bir bağlantı dizesi vardır. Uygulamanızı kaynak yerine (eski) çoğaltmaya işaret etmek üzere güncelleştirin.
-    
+
 Uygulamanız okuma ve yazma işlemlerini başarıyla tamamladıktan sonra, yük devretmeyi tamamladınız. Bir sorunu saptadığınızda ve yukarıdaki 1. ve 2. adımları tamamladıktan sonra uygulama deneyimlerinizin ne kadar süre açık olacağını gösterir.
 
 ## <a name="considerations-and-limitations"></a>Önemli noktalar ve sınırlamalar
@@ -125,10 +125,10 @@ Uygulamanız okuma ve yazma işlemlerini başarıyla tamamladıktan sonra, yük 
 | Durdurulan çoğaltmalar | Kaynak sunucuyla bir okuma çoğaltması arasında çoğaltmayı durdurursanız, durdurulan çoğaltma hem okuma hem de yazma işlemlerini kabul eden tek başına bir sunucu haline gelir. Tek başına sunucu tekrar bir çoğaltmaya yapılamaz. |
 | Kaynak ve tek başına sunucular silindi | Bir kaynak sunucu silindiğinde, çoğaltma tüm okuma çoğaltmalarına durdurulur. Bu çoğaltmalar otomatik olarak tek başına sunucular olur ve hem okuma hem de yazma işlemlerini kabul edebilir. Kaynak sunucunun kendisi silinir. |
 | Kullanıcı hesapları | Kaynak sunucudaki kullanıcılar okuma çoğaltmalarına çoğaltılır. Bir okuma çoğaltmasına yalnızca kaynak sunucuda bulunan Kullanıcı hesaplarını kullanarak bağlanabilirsiniz. |
-| Sunucu parametreleri | Verilerin eşitlenmemiş duruma gelmesini ve olası veri kaybını önlemek için, okuma amaçlı çoğaltmaları kullanırken bazı sunucu parametreleri güncelleştirmeye karşı kilitlenir. <br> Aşağıdaki sunucu parametreleri hem kaynak hem de çoğaltma sunucularında kilitlidir:<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler)Parametresi, çoğaltma sunucularında kilitlidir. <br> Kaynak sunucuda yukarıdaki parametrelerden birini güncelleştirmek için lütfen çoğaltma sunucularını silin, kaynaktaki parametre değerini güncelleştirin ve çoğaltmaları yeniden oluşturun. |
+| Sunucu parametreleri | Verilerin eşitlenmemiş duruma gelmesini ve olası veri kaybını önlemek için, okuma amaçlı çoğaltmaları kullanırken bazı sunucu parametreleri güncelleştirmeye karşı kilitlenir. <br> Aşağıdaki sunucu parametreleri hem kaynak hem de çoğaltma sunucularında kilitlidir:<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler)Parametresi, çoğaltma sunucularında kilitlidir. <br> Kaynak sunucuda yukarıdaki parametrelerden birini güncelleştirmek için, çoğaltma sunucularını silin, kaynaktaki parametre değerini güncelleştirin ve çoğaltmaları yeniden oluşturun. |
 | Diğer | -Bir çoğaltmanın çoğaltmasını oluşturma desteklenmez. <br> Bellek içi tablolar çoğaltmaların eşitlenmemiş hale gelmesine neden olabilir. Bu, MySQL Çoğaltma teknolojisinin bir sınırlamasıdır. Daha fazla bilgi için [MySQL Reference belgelerindeki](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) daha fazla bilgi edinin. <br>-Kaynak sunucu tablolarının birincil anahtarlara sahip olduğundan emin olun. Birincil anahtarların olmaması, kaynak ve çoğaltmalar arasında çoğaltma gecikmesine neden olabilir.<br>- [MySQL belgelerindeki](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) MySQL Çoğaltma kısıtlamalarının tam listesini gözden geçirin |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Portal kullanarak okuma çoğaltmaları oluşturmayı ve yönetmeyi](how-to-read-replicas-portal.md) öğrenin
-- [Azure CLI kullanarak okuma çoğaltmaları oluşturma ve yönetme](how-to-read-replicas-cli.md) hakkında bilgi edinin
+* [Azure Portal kullanarak okuma çoğaltmaları oluşturmayı ve yönetmeyi](how-to-read-replicas-portal.md) öğrenin
+* [Azure CLI kullanarak okuma çoğaltmaları oluşturma ve yönetme](how-to-read-replicas-cli.md) hakkında bilgi edinin
