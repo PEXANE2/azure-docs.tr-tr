@@ -13,12 +13,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: eedc3dc1422d4eb6dcce80766077e8056f8509cf
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 7bd991bd709bb4be69325afe967d7e5600a9e1a4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678045"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222573"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Azure SQL Veritabanı'nda iş sürekliliğine genel bakış
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -65,13 +65,13 @@ Zaman içinde nokta geri yükleme (ıNR) için desteklenen en fazla yedekleme sa
 
 |                                              | Coğrafi çoğaltma | Yük devretme grupları  |
 |:---------------------------------------------| :-------------- | :----------------|
-| **Otomatik yük devretme**                          |     Hayır          |      Evet         |
-| **Aynı anda birden çok veritabanının yükünü devretme**  |     Hayır          |      Evet         |
-| **Kullanıcı, yük devretmeden sonra bağlantı dizesini güncelleştirmelidir**      |     Evet         |      Hayır          |
-| **SQL Yönetilen Örneği desteği**                   |     Hayır          |      Evet         |
-| **Birincil ile aynı bölgede olabilir**             |     Evet         |      Hayır          |
-| **Birden çok çoğaltma**                            |     Evet         |      Hayır          |
-| **Okuma ölçeğini destekler**                          |     Evet         |      Evet         |
+| **Otomatik yük devretme**                          |     Hayır          |      Yes         |
+| **Aynı anda birden çok veritabanının yükünü devretme**  |     Hayır          |      Yes         |
+| **Kullanıcı, yük devretmeden sonra bağlantı dizesini güncelleştirmelidir**      |     Yes         |      Hayır          |
+| **SQL Yönetilen Örneği desteği**                   |     Hayır          |      Yes         |
+| **Birincil ile aynı bölgede olabilir**             |     Yes         |      Hayır          |
+| **Birden çok çoğaltma**                            |     Yes         |      Hayır          |
+| **Okuma ölçeğini destekler**                          |     Yes         |      Yes         |
 
 
 ## <a name="recover-a-database-to-the-existing-server"></a>Bir veritabanını mevcut sunucuya kurtar

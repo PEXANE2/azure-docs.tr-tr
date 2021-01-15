@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 9685c1739a00788a974c200ddabb8cc975696b62
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75b62eb00b1a1a534be01f9f118b4d5066e44a37
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83587740"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222896"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Sanal ağ eşleme sorunlarını giderme
 
@@ -36,8 +36,8 @@ Sanal ağlar aynı abonelikte veya farklı aboneliklerde mı?
 
 Aynı abonelikte bulunan sanal ağların sanal ağ eşlemesini yapılandırmak için aşağıdaki makalelerdeki yöntemleri kullanın:
 
-* Sanal ağlar *aynı bölgedeyse*, bkz. [eşleme oluşturma](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#create-a-peering).
-* Sanal ağlar *farklı bölgelerde*ise, bkz. [sanal ağ eşlemesi](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview). 
+* Sanal ağlar *aynı bölgedeyse*, bkz. [eşleme oluşturma](./virtual-network-manage-peering.md#create-a-peering).
+* Sanal ağlar *farklı bölgelerde* ise, bkz. [sanal ağ eşlemesi](./virtual-network-peering-overview.md). 
 
 > [!Note]
 > Bağlantı, aşağıdaki kaynaklar için genel sanal ağ eşlemesi üzerinden çalışmaz: 
@@ -52,11 +52,11 @@ Aynı abonelikte bulunan sanal ağların sanal ağ eşlemesini yapılandırmak i
 > * Azure API Management (temel ıLB SKU 'SU kullanır)
 > * Azure Active Directory Domain Services (Azure AD DS) (temel ıLB SKU 'SU kullanır)
 
-Daha fazla bilgi için bkz. genel eşleme [gereksinimleri ve kısıtlamaları](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints) .
+Daha fazla bilgi için bkz. genel eşleme [gereksinimleri ve kısıtlamaları](./virtual-network-peering-overview.md#requirements-and-constraints) .
 
 ### <a name="the-virtual-networks-are-in-different-subscriptions-or-active-directory-tenants"></a>Sanal ağlar farklı aboneliklerde veya Active Directory kiracılardayken
 
-Farklı aboneliklerdeki veya Active Directory kiracılardaki sanal ağların sanal ağ eşlemesini yapılandırmak için bkz. [Azure CLI için farklı aboneliklerde eşleme oluşturma](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli).
+Farklı aboneliklerdeki veya Active Directory kiracılardaki sanal ağların sanal ağ eşlemesini yapılandırmak için bkz. [Azure CLI için farklı aboneliklerde eşleme oluşturma](./create-peering-different-subscriptions.md#cli).
 
 > [!Note]
 > Ağ eşlemesini yapılandırmak için her iki abonelik için de **ağ katılımcısı** izinlerinizin olması gerekir. Daha fazla bilgi için bkz. [eşleme izinleri](virtual-network-manage-peering.md#permissions).
@@ -67,11 +67,11 @@ Farklı aboneliklerdeki veya Active Directory kiracılardaki sanal ağların san
 
 ### <a name="for-a-site-to-site-connection-or-an-expressroute-connection"></a>Siteden siteye bağlantı veya ExpressRoute bağlantısı için
 
-İçindeki adımları izleyin: [sanal ağ eşlemesi IÇIN VPN ağ geçidi geçişi yapılandırma](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json).
+İçindeki adımları izleyin: [sanal ağ eşlemesi IÇIN VPN ağ geçidi geçişi yapılandırma](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ### <a name="for-point-to-site-connections"></a>Noktadan siteye bağlantılar için
 
-1. İçindeki adımları izleyin: [sanal ağ eşlemesi IÇIN VPN ağ geçidi geçişi yapılandırma](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json).
+1. İçindeki adımları izleyin: [sanal ağ eşlemesi IÇIN VPN ağ geçidi geçişi yapılandırma](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 2. Sanal ağ eşlemesi kurulduktan veya değiştirildikten sonra, Noktadan siteye istemcilerinin, bağlı olan sanal ağa güncelleştirilmiş yolları almasını sağlamak için Noktadan siteye paketini indirip yeniden yükleyin.
 
 ## <a name="configure-virtual-network-peering-with-hub-spoke-topology-virtual-network"></a>Hub-bağlı bileşen topolojisi sanal ağı ile sanal ağ eşlemesini yapılandırma
@@ -84,12 +84,12 @@ Farklı aboneliklerdeki veya Active Directory kiracılardaki sanal ağların san
 1. Hub sanal ağında bir ağ sanal gereci (NVA) yapılandırın.
 1. Bağlı olan sanal ağlarda, sonraki atlama türü "ağ sanal gereci" uygulanmış Kullanıcı tanımlı yollara sahip olacak.
 
-Daha fazla bilgi için bkz. [hizmet zincirleme](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#service-chaining).
+Daha fazla bilgi için bkz. [hizmet zincirleme](./virtual-network-peering-overview.md#service-chaining).
 
 > [!Note]
 > Bir NVA ayarlamak için yardıma ihtiyacınız varsa [NVA satıcısına başvurun](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
 
-NVA cihaz kurulumu ve yönlendirme sorunlarını gidermeye yönelik yardım için bkz. [Azure 'Da ağ sanal gereç sorunları](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-nva).
+NVA cihaz kurulumu ve yönlendirme sorunlarını gidermeye yönelik yardım için bkz. [Azure 'Da ağ sanal gereç sorunları](./virtual-network-troubleshoot-nva.md).
 
 ### <a name="the-virtual-networks-are-in-different-regions"></a>Sanal ağlar farklı bölgelerde
 
@@ -105,7 +105,7 @@ Genel sanal ağ eşlemesi üzerinden aktarım artık desteklenmektedir. Bağlant
 * API Management (Temel ILB SKU kullanır)
 * Azure AD DS (temel ıLB SKU 'SU kullanır)
 
-Genel eşleme gereksinimleri ve depoları hakkında daha fazla bilgi edinmek için bkz. [sanal ağ eşlemesi](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints).
+Genel eşleme gereksinimleri ve depoları hakkında daha fazla bilgi edinmek için bkz. [sanal ağ eşlemesi](./virtual-network-peering-overview.md#requirements-and-constraints).
 
 ## <a name="troubleshoot-a-connectivity-issue-between-two-peered-virtual-networks"></a>Eşlenen iki sanal ağ arasında bağlantı sorununu giderme
 
@@ -117,15 +117,15 @@ Bu sorunu gidermek için:
 
 1. Ağ trafiği akışlarını denetleyin:
 
-   Trafik akışlarında girişim hatasına neden olan bir NSG veya UDR olup olmadığını öğrenmek için [bağlantı sorunlarını giderme](https://docs.microsoft.com/azure/network-watcher/network-watcher-connectivity-overview) ve kaynak VM 'den hedef sanal makineye [IP akışı doğrulama](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview) ' yı kullanın.
+   Trafik akışlarında girişim hatasına neden olan bir NSG veya UDR olup olmadığını öğrenmek için [bağlantı sorunlarını giderme](../network-watcher/network-watcher-connectivity-overview.md) ve kaynak VM 'den hedef sanal makineye [IP akışı doğrulama](../network-watcher/network-watcher-ip-flow-verify-overview.md) ' yı kullanın.
 
    Bir güvenlik duvarı veya NVA kullanıyorsanız: 
    1. Bu adım tamamlandıktan sonra dosyaları geri yükleyebilmek için UDR parametrelerini belgeleyin.
-   2. Bir sonraki atlama olarak NVA 'ya işaret eden kaynak VM alt ağından veya NIC 'den UDR 'yi kaldırın. Kaynak VM 'den, NVA 'yi atlayarak hedefe doğrudan bağlantıyı doğrulayın. Bu adım işe yaramazsa, [NVA sorun gidericisine](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-nva)bakın.
+   2. Bir sonraki atlama olarak NVA 'ya işaret eden kaynak VM alt ağından veya NIC 'den UDR 'yi kaldırın. Kaynak VM 'den, NVA 'yi atlayarak hedefe doğrudan bağlantıyı doğrulayın. Bu adım işe yaramazsa, [NVA sorun gidericisine](./virtual-network-troubleshoot-nva.md)bakın.
 
 2. Ağ izlemesi yapın: 
-   1. Hedef VM 'de bir ağ izlemesi başlatın. Windows için **netsh**' i kullanabilirsiniz. Linux için **TCPDump**kullanın.
-   2. Kaynaktan hedef IP 'ye **Tcing veya Psping** çalıştırın. **TcpPing**
+   1. Hedef VM 'de bir ağ izlemesi başlatın. Windows için **netsh**' i kullanabilirsiniz. Linux için **TCPDump** kullanın.
+   2. Kaynaktan hedef IP 'ye **Tcing veya Psping** çalıştırın. 
 
       Bu, bir **tcma** komutunun örneğidir: `tcping64.exe -t <destination VM address> 3389`
 
@@ -145,7 +145,7 @@ Bu sorunu gidermek için:
    > * API Management (Temel ILB SKU kullanır)
    > * Azure AD DS (temel ıLB SKU 'SU kullanır)
 
-Daha fazla bilgi için bkz. genel eşleme [gereksinimleri ve kısıtlamaları](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints) .
+Daha fazla bilgi için bkz. genel eşleme [gereksinimleri ve kısıtlamaları](./virtual-network-peering-overview.md#requirements-and-constraints) .
 
 ### <a name="the-peering-status-is-disconnected"></a>Eşleme durumu "bağlantısı kesildi"
 
@@ -159,8 +159,8 @@ Ağınız bir üçüncü taraf NVA veya VPN Gateway kullanıyor mu?
 
 Üçüncü taraf bir NVA veya VPN ağ geçidini etkileyen bağlantı sorunlarını gidermek için aşağıdaki makalelere bakın:
 
-* [NVA sorun giderici](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-nva)
-* [Hizmet zinciri](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#service-chaining)
+* [NVA sorun giderici](./virtual-network-troubleshoot-nva.md)
+* [Hizmet zinciri](./virtual-network-peering-overview.md#service-chaining)
 
 ### <a name="my-network-does-not-use-a-third-party-nva-or-vpn-gateway"></a>Ağımdaki bir üçüncü taraf NVA veya VPN ağ geçidi kullanılmaz
 
@@ -190,7 +190,7 @@ Noktadan siteye bağlantılar için:
 
 Hub ağı bir NVA içermelidir. Bir sonraki atlama olarak ayarlanan bir NVA 'ya sahip olan ve hub sanal ağında **iletilen trafiğe Izin ver** ' i etkinleştirerek udrs 'yi yapılandırın.
 
-Daha fazla bilgi için bkz. [hizmet zincirleme](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#service-chaining)ve bu gereksinimleri tercih ettiğiniz [NVA satıcısı](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines) ile tartışın.
+Daha fazla bilgi için bkz. [hizmet zincirleme](./virtual-network-peering-overview.md#service-chaining)ve bu gereksinimleri tercih ettiğiniz [NVA satıcısı](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines) ile tartışın.
 
 ## <a name="troubleshoot-a-hub-spoke-network-connectivity-issue-between-spoke-virtual-networks-in-different-regions"></a>Farklı bölgelerde bağlı olan sanal ağlar arasında hub-bağlı ağ bağlantısı sorununu giderme
 
@@ -206,7 +206,7 @@ Genel sanal ağ eşlemesi üzerinden aktarım artık desteklenmektedir. Bağlant
 * API Management (Temel ILB SKU kullanır)
 * Azure AD DS (temel ıLB SKU 'SU kullanır)
 
-Daha fazla bilgi için bkz. genel eşleme ve [farklı VPN topolojileri](https://blogs.msdn.microsoft.com/igorpag/2016/02/11/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-v2/) [gereksinimleri ve kısıtlamaları](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints) .
+Daha fazla bilgi için bkz. genel eşleme ve [farklı VPN topolojileri](/archive/blogs/igorpag/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-v2) [gereksinimleri ve kısıtlamaları](./virtual-network-peering-overview.md#requirements-and-constraints) .
 
 ## <a name="troubleshoot-a-hub-spoke-network-connectivity-issue-between-a-web-app-and-the-spoke-virtual-network"></a>Bir Web uygulaması ve bağlı bileşen sanal ağı arasındaki hub-bağlı ağ bağlantısı sorununu giderme
 
@@ -216,16 +216,16 @@ Bu sorunu gidermek için:
 1. Web uygulamasında **ağ**' ı seçin ve ardından **VNET tümleştirmesi**' ni seçin.
 1. Uzak sanal ağı görüp görmeyeceğinizi denetleyin. Uzak sanal ağ adres alanını el ile girin (**ağa eşitleyin** ve **yollar ekleyin**).
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
-* [Uygulamanızı bir Azure sanal ağı ile tümleştirme](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
-* [Noktadan Siteye VPN yönlendirme hakkında](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-point-to-site-routing)
+* [Uygulamanızı bir Azure sanal ağı ile tümleştirme](../app-service/web-sites-integrate-with-vnet.md)
+* [Noktadan Siteye VPN yönlendirme hakkında](../vpn-gateway/vpn-gateway-about-point-to-site-routing.md)
 
 ## <a name="troubleshoot-a-virtual-network-peering-configuration-error-message"></a>Sanal ağ eşleme yapılandırmasında sorun giderme hata iletisi 
 
 ### <a name="current-tenant-tenant-id-isnt-authorized-to-access-linked-subscription"></a>Geçerli kiracının `<TENANT ID>` bağlantılı aboneliğe erişme yetkisi yok
 
-Bu sorunu çözmek için bkz. [eşleme oluşturma-Azure CLI](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli).
+Bu sorunu çözmek için bkz. [eşleme oluşturma-Azure CLI](./create-peering-different-subscriptions.md#cli).
 
 ### <a name="not-connected"></a>Bağlı değil
 
@@ -233,7 +233,7 @@ Bu sorunu çözmek için, her iki sanal ağdan eşlemeyi silin ve sonra yeniden 
 
 ### <a name="failed-to-peer-a-databricks-virtual-network"></a>Databricks sanal ağının eşi yapılamadı
 
-Bu sorunu çözmek için **Azure Databricks**altında sanal ağ eşlemesini yapılandırın ve ardından **kaynak kimliği**' ni kullanarak hedef sanal ağı belirtin. Daha fazla bilgi için bkz. [peer a Databricks sanal ağını uzak bir sanal ağa](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-peering.html#id2).
+Bu sorunu çözmek için **Azure Databricks** altında sanal ağ eşlemesini yapılandırın ve ardından **kaynak kimliği**' ni kullanarak hedef sanal ağı belirtin. Daha fazla bilgi için bkz. [peer a Databricks sanal ağını uzak bir sanal ağa](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-peering.html#id2).
 
 ### <a name="the-remote-virtual-network-lacks-a-gateway"></a>Uzak sanal ağda ağ geçidi eksik
 
@@ -246,4 +246,4 @@ Sorunu çözmek için iki yol vardır:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure VM’leri arasında bağlantı sorunlarını giderme](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-connectivity-problem-between-vms)
+* [Azure VM’leri arasında bağlantı sorunlarını giderme](./virtual-network-troubleshoot-connectivity-problem-between-vms.md)

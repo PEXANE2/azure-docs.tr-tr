@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/20/2020
 ms.author: allensu
-ms.openlocfilehash: 690543ebc91e346e77509fbf993493f6978374ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70410e58acb30c7694e6fe4a6dcaff57bee98607
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836114"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223440"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Azure sanal ağ NAT bağlantısı sorunlarını giderme
 
@@ -68,10 +68,10 @@ _**Çözüm:**_ Uygun desenleri ve en iyi uygulamaları kullanın
 SNAT tükenmesi Ayrıca, temel alınan uygulamadaki diğer kenar desenleriyle de dağıtılabilir. Hizmetinizin ölçeğini ve güvenilirliğini artırmak için bu ek desenleri ve en iyi uygulamaları gözden geçirin.
 
 - Daha önce SNAT bağlantı noktası envanterini boşaltmak için 4 dakikalık varsayılan boşta kalma zaman aşımı da dahil olmak üzere değerleri düşürmek için [TCP boşta kalma zaman aşımını](nat-gateway-resource.md#timers) azaltmanın etkisini keşfe
-- Diğer işlemlere yönelik bağlantı kaynaklarını boşaltmak için uzun süre çalışan işlemler için [zaman uyumsuz yoklama düzenlerini](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply) düşünün.
+- Diğer işlemlere yönelik bağlantı kaynaklarını boşaltmak için uzun süre çalışan işlemler için [zaman uyumsuz yoklama düzenlerini](/azure/architecture/patterns/async-request-reply) düşünün.
 - Uzun süreli akışlar (örneğin, yeniden kullanılan TCP bağlantıları), ara sistemlerin zaman aşımına uğramaması için TCP keepcanlı veya uygulama katmanı keepcanlı olarak kullanılmalıdır. Boşta kalma zaman aşımını artırmak son çare olur ve kök nedeni çözemeyebilir. Uzun zaman aşımı, zaman aşımı süresi dolduğunda düşük hız hatasına neden olabilir ve gecikme ve gereksiz arızalar ortaya çıkarabilir.
-- Geçici hata veya hata kurtarma sırasında agresif yeniden denemeler/bursts önlemek için düzgün [yeniden deneme desenleri](https://docs.microsoft.com/azure/architecture/patterns/retry) kullanılmalıdır.
-Her HTTP işlemi için yeni TCP bağlantısı oluşturma ("atomik bağlantılar" olarak da bilinir), bir anti-örünmedir.  Atomik bağlantılar, uygulamanızın iyi ve çöp kaynaklarını ölçeklendirmasını engeller.  Her zaman ardışık düzen birden çok işlem aynı bağlantıya sahiptir.  Uygulamanız işlem hızı ve kaynak maliyetlerinde yarar olacaktır.  Uygulamanız aktarım katmanı şifrelemesini (örneğin, TLS) kullandığında, yeni bağlantıların işlenmesiyle ilişkili önemli bir maliyet vardır.  Ek en iyi yöntem desenleri için [Azure bulut tasarım modellerini](https://docs.microsoft.com/azure/architecture/patterns/) gözden geçirin.
+- Geçici hata veya hata kurtarma sırasında agresif yeniden denemeler/bursts önlemek için düzgün [yeniden deneme desenleri](/azure/architecture/patterns/retry) kullanılmalıdır.
+Her HTTP işlemi için yeni TCP bağlantısı oluşturma ("atomik bağlantılar" olarak da bilinir), bir anti-örünmedir.  Atomik bağlantılar, uygulamanızın iyi ve çöp kaynaklarını ölçeklendirmasını engeller.  Her zaman ardışık düzen birden çok işlem aynı bağlantıya sahiptir.  Uygulamanız işlem hızı ve kaynak maliyetlerinde yarar olacaktır.  Uygulamanız aktarım katmanı şifrelemesini (örneğin, TLS) kullandığında, yeni bağlantıların işlenmesiyle ilişkili önemli bir maliyet vardır.  Ek en iyi yöntem desenleri için [Azure bulut tasarım modellerini](/azure/architecture/patterns/) gözden geçirin.
 
 #### <a name="additional-possible-mitigations"></a>Olası ek azaltmalar
 
@@ -96,7 +96,7 @@ Aşağıdaki tabloda, testleri başlatmak için kullanılacak araçlar için bir
 | İşletim sistemi | Genel TCP bağlantısı sınaması | TCP uygulama katmanı testi | UDP |
 |---|---|---|---|
 | Linux | NC (genel bağlantı testi) | kıvrımlı (TCP uygulama katmanı testi) | uygulamaya özgü |
-| Windows | [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) | PowerShell [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | uygulamaya özgü |
+| Windows | [PsPing](/sysinternals/downloads/psping) | PowerShell [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest) | uygulamaya özgü |
 
 ### <a name="connectivity-failures"></a>Bağlantı sorunları
 
@@ -113,7 +113,7 @@ Doğrulama bağlantısı için aşağıdaki gibi araçları kullanın. [ICMP pin
 | İşletim sistemi | Genel TCP bağlantısı sınaması | TCP uygulama katmanı testi | UDP |
 |---|---|---|---|
 | Linux | NC (genel bağlantı testi) | kıvrımlı (TCP uygulama katmanı testi) | uygulamaya özgü |
-| Windows | [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) | PowerShell [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | uygulamaya özgü |
+| Windows | [PsPing](/sysinternals/downloads/psping) | PowerShell [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest) | uygulamaya özgü |
 
 #### <a name="configuration"></a>Yapılandırma
 
@@ -202,4 +202,3 @@ Hala sorun yaşıyorsanız, daha fazla sorun giderme için bir destek talebi aç
 * [NAT ağ geçidi kaynağı](nat-gateway-resource.md) hakkında bilgi edinin
 * [NAT ağ geçidi kaynakları için ölçümler ve uyarılar](nat-metrics.md)hakkında bilgi edinin.
 * [UserVoice 'Ta sanal ağ NAT için bir sonraki derleme yapmanız gerektiğini bize söyleyin](https://aka.ms/natuservoice).
-

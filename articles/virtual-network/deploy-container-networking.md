@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 09a0574666441138c143932e843080e8745f1b40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b95b3cfdf8fea6e31015d945566803569b4ba064
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87289598"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222930"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>Azure Sanal Ağ kapsayıcı ağı arabirimi eklentisini dağıtma
 
-Azure Sanal Ağ kapsayıcı ağı arabirimi (CNI) eklentisi bir Azure sanal makinesi yükler ve Kubernetes podları ile Docker kapsayıcılarına sanal ağ özellikleri kazandırır. Eklenti hakkında daha fazla bilgi edinmek için bkz. [Kapsayıcıların Azure Sanal Ağ özelliklerini kullanmasını sağlama](container-networking-overview.md). Buna ek olarak eklenti, AKS kapsayıcılarını otomatik olarak bir sanal ağa ekleyen [Gelişmiş Ağ](../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) seçeneği sayesinde Azure Kubernetes Service (AKS) ile birlikte kullanılabilir.
+Azure Sanal Ağ kapsayıcı ağı arabirimi (CNI) eklentisi bir Azure sanal makinesi yükler ve Kubernetes podları ile Docker kapsayıcılarına sanal ağ özellikleri kazandırır. Eklenti hakkında daha fazla bilgi edinmek için bkz. [Kapsayıcıların Azure Sanal Ağ özelliklerini kullanmasını sağlama](container-networking-overview.md). Buna ek olarak eklenti, AKS kapsayıcılarını otomatik olarak bir sanal ağa ekleyen [Gelişmiş Ağ](../aks/configure-azure-cni.md?toc=%2fazure%2fvirtual-network%2ftoc.json) seçeneği sayesinde Azure Kubernetes Service (AKS) ile birlikte kullanılabilir.
 
 ## <a name="deploy-plug-in-for-acs-engine-kubernetes-cluster"></a>Eklentiyi ACS-Engine Kubernetes kümesi için dağıtma
 
@@ -95,10 +95,10 @@ Eklentiyi bir Kubernetes kümesindeki tüm Azure sanal makinelerine yüklemek i�
 1. [Eklentiyi indirin ve yükleyin](#download-and-install-the-plug-in).
 2. Her sanal makinede pod IP adreslerinin atanacağı sanal ağ IP adresi havuzunu önceden ayırın. Her Azure sanal makinesinin ağ arabirimlerinde birincil sanal ağ özel IP adresi bulunur. Podlar için IP adresi havuzu aşağıdaki seçeneklerden biri kullanılarak sanal makina ağ arabirimine ikincil adresler (*ipconfigs*) olarak eklenir:
 
-   - **CLI**: [Azure CLI kullanarak birden çok IP adresi atama](virtual-network-multiple-ip-addresses-cli.md)
-   - **PowerShell**: [PowerShell kullanarak birden çok IP adresi atama](virtual-network-multiple-ip-addresses-powershell.md)
-   - **Portal**: [Azure Portal kullanarak birden çok IP adresi atama](virtual-network-multiple-ip-addresses-portal.md)
-   - **Azure Resource Manager şablonu**: [şablonları kullanarak birden çok IP adresi atama](virtual-network-multiple-ip-addresses-template.md)
+   - **CLI**: [Azure CLI'yi kullanarak birden fazla IP adresi atama](virtual-network-multiple-ip-addresses-cli.md)
+   - **PowerShell**: [PowerShell kullanarak birden fazla IP adresi atama](virtual-network-multiple-ip-addresses-powershell.md)
+   - **Portal**: [Azure portalı kullanarak birden fazla IP adresi atama](virtual-network-multiple-ip-addresses-portal.md)
+   - **Azure Resource Manager şablonu**: [Şablon kullanarak birden fazla IP adresi atama](./template-samples.md)
 
    Sanal makinede kullanmayı beklediğiniz tüm podlar için yeterli IP adresi eklediğinizden emin olun.
 
@@ -106,7 +106,7 @@ Eklentiyi bir Kubernetes kümesindeki tüm Azure sanal makinelerine yüklemek i�
 4. Podlarınızın internete erişmesini istiyorsanız Linux sanal makinelerinizde kaynak-NAT internet trafiğine aşağıdaki *iptables* kuralını ekleyin. Aşağıdaki örnekte IP aralığı 10.0.0.0/8 olarak belirtilmiştir.
 
    ```bash
-   iptables -t nat -A POSTROUTING -m iprange ! --dst-range 168.63.129.16 -m
+   iptables -t nat -A POSTROUTING -m iprange ! --dst-range 168.63.129.16 -m
    addrtype ! --dst-type local ! -d 10.0.0.0/8 -j MASQUERADE
    ```
 
@@ -157,10 +157,10 @@ CLI ağ yapılandırma dosyası, JSON biçiminde ifade edilir. Varsayılan konum
 
 #### <a name="settings-explanation"></a>Ayarların açıklaması
 
-- **Cniversion**: Azure sanal ağ CNI eklentileri, [CNI belirtiminin](https://github.com/containernetworking/cni/blob/master/SPEC.md)0.3.0 ve 0.3.1 sürümlerini destekler.
+- **cniVersion**: Azure Sanal Ağ CNI eklentisi [CNI spec](https://github.com/containernetworking/cni/blob/master/SPEC.md) bileşeninin 0.3.0 ve 0.3.1 sürümlerini destekler.
 - **name**: Ağın adıdır. Bu özellik herhangi bir benzersiz değer olarak ayarlanabilir.
 - **type**: Ağ eklentisinin adıdır. *azure-vnet* olarak ayarlanmıştır.
-- **mode**: Çalıştırma modudur. Bu alan isteğe bağlıdır. Yalnızca "bridge" modu desteklenir. Daha fazla bilgi için bkz. [işletimsel modlar](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md).
+- **mode**: Çalıştırma modudur. Bu alan isteğe bağlıdır. Yalnızca "bridge" modu desteklenir. Daha fazla bilgi için bkz. [çalışma modları](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md).
 - **bridge**: Kapsayıcıları sanal ağa bağlamak için kullanılacak köprünün adıdır. Bu alan isteğe bağlıdır. Belirtilmezse eklenti otomatik olarak ana arabirim dizinine göre benzersiz bir ad belirler.
 - **ipam type**: IPAM eklentisinin adıdır. Her zaman *azure-vnet-ipam* olarak ayarlanır.
 

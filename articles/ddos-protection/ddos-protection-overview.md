@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: e76086db36642664ca15acee26f4e0aca85ff272
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 114c723b127a17ffdd9c7ed91c6e777838d68e8e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184473"
+ms.locfileid: "98223355"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Koruması Standardı’na genel bakış
 
@@ -36,7 +36,7 @@ Azure DDoS koruması, müşteri verilerini depolamaz.
 - **Anahtar koruma:** Basitleştirilmiş yapılandırma, DDoS koruma standardı etkin olduğu anda bir sanal ağ üzerindeki tüm kaynakları hemen korur. Müdahale veya Kullanıcı tanımı gerekli değildir. 
 - **Her zaman açık trafik izleme:** Uygulama trafik desenleriniz günde 24 saat, haftada 7 gün, DDoS saldırıları için göstergeler aranıyor. DDoS koruma standardı, algılandıktan sonra hızla ve otomatik olarak saldırıyı azaltır.
 - **Uyarlamalı ayarlama:** Akıllı trafik profili oluşturma, uygulamanızın zaman içindeki trafiğini öğrenir ve hizmetiniz için en uygun profili seçer ve güncelleştirir. Profil zaman içinde trafik değişikliği olarak ayarlanır.
-- **Çok katmanlı koruma:** Bir Web uygulaması güvenlik duvarı ile birlikte kullanıldığında, hem Ağ katmanında (katman 3 ve 4 ' te Azure DDoS koruma standardı tarafından sunulan) hem de uygulama katmanında (bir WAF tarafından sunulan) koruma sağlamak için tam Stack DDoS koruması sağlar. WAF teklifleri Azure [Application Gateway WAF SKU 'su](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ve [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall)'nde bulunan üçüncü taraf Web uygulaması güvenlik duvarı tekliflerini içerir.
+- **Çok katmanlı koruma:** Bir Web uygulaması güvenlik duvarı (WAF) ile birlikte dağıtıldığında, DDoS koruma standardı hem Ağ katmanında (katman 3 ve 4 ' te Azure DDoS koruma standardı tarafından sunulan) hem de uygulama katmanında (bir WAF tarafından sunulan) korunur. WAF teklifleri Azure [Application Gateway WAF SKU 'su](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ve [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall)'nde bulunan üçüncü taraf Web uygulaması güvenlik duvarı tekliflerini içerir.
 - **Kapsamlı risk azaltma ölçeği:** 60 üzerinde farklı saldırı türleri, en büyük bilinen DDoS saldırılarına karşı koruma sağlamak için küresel kapasiteyle birlikte azaltılabilir.
 - **Saldırı Analizi:** Saldırı sırasında beş dakikalık artışlarla ayrıntılı raporlar alın ve saldırı bittikten sonra tam bir Özet yapın. Bir saldırı sırasında neredeyse gerçek zamanlı izleme için [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md) 'e veya çevrimdışı güvenlik bilgilerine ve olay yönetimi (SIEM) sistemine yönelik günlük azaltma akışı.
 - **Saldırı ölçümleri:** Her bir saldırıya ait özetlenen ölçümler Azure Izleyici aracılığıyla erişilebilir.

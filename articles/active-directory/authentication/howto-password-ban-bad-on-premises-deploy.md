@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: deb1f74902fe28d53a5180e4f341547f339a83ac
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: d0a082149d85736000b5bb6a91e2fc7132205a88
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96742003"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220295"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Şirket içi Azure Active Directory parola korumasını planlayın ve dağıtın
 
@@ -99,7 +99,7 @@ Aşağıdaki temel gereksinimler geçerlidir:
 
 Azure AD parola koruması DC Aracısı için aşağıdaki gereksinimler geçerlidir:
 
-* Azure AD parola koruması DC Aracısı yazılımının yükleneceği tüm makineler Windows Server 2012 veya sonraki bir sürümünü çalıştırmalıdır.
+* Azure AD parola koruması DC Aracısı yazılımının yükleneceği tüm makineler Windows Server Core sürümleri dahil olmak üzere Windows Server 2012 veya üstünü çalıştırmalıdır.
     * Active Directory etki alanı veya ormanın Windows Server 2012 etki alanı işlev düzeyinde (DFL) veya orman işlev düzeyinde (FFL) olması gerekmez. [Tasarım ilkeleri](concept-password-ban-bad-on-premises.md#design-principles)bölümünde belirtildiği gıbı, DC Aracısı veya proxy yazılımının çalışması için gereken en az DFL veya FFL yoktur.
 * Azure AD parola koruması DC Aracısı 'nı çalıştıran tüm makinelerin .NET 4,5 yüklü olması gerekir.
 * Azure AD parola koruması DC Aracısı hizmetini çalıştıran tüm Active Directory etki alanı, SYSVOL çoğaltması için Dağıtılmış Dosya Sistemi Çoğaltma (DFSR) kullanmalıdır.
@@ -116,7 +116,7 @@ Azure AD parola koruması DC Aracısı için aşağıdaki gereksinimler geçerli
 
 Azure AD parola koruması proxy hizmeti için aşağıdaki gereksinimler geçerlidir:
 
-* Azure AD parola koruma proxy hizmeti 'nin yükleneceği tüm makineler Windows Server 2012 R2 veya sonraki bir sürümünü çalıştırmalıdır.
+* Azure AD parola koruma proxy hizmeti 'nin yükleneceği tüm makineler Windows Server Core sürümleri dahil olmak üzere Windows Server 2012 R2 veya sonraki bir sürümünü çalıştırmalıdır.
 
     > [!NOTE]
     > Azure AD parola koruma proxy hizmeti dağıtımı, etki alanı denetleyicisinin giden doğrudan internet bağlantısına sahip olmasına rağmen Azure AD parola koruması 'nı dağıtmaya yönelik zorunlu bir gereksinimdir.

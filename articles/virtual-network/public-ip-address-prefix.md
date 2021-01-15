@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/29/2020
 ms.author: allensu
-ms.openlocfilehash: 53dd6d2dda762b3cbf53f4aaec6cd3692a9656e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d98107075c215c0a00bc2035325a6ad8bf5bfc5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87432573"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222437"
 ---
 # <a name="public-ip-address-prefix"></a>Genel IP adresi ön eki
 
 Genel IP adresi ön eki, Azure 'da ayrılmış bir IP adresi aralığıdır. Azure, belirttiğiniz kadar, aboneliğinize göre aboneliğiniz için bitişik bir adres aralığı sağlar. 
 
-Ortak adreslere alışkın değilseniz bkz [. genel IP adresleri.](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
+Ortak adreslere alışkın değilseniz bkz [. genel IP adresleri.](./public-ip-addresses.md#public-ip-addresses)
 
 Genel IP adresleri, her bir Azure bölgesindeki bir adres havuzundan atanır. Her bölge için Azure tarafından kullanılan aralıkların listesini [indirebilirsiniz](https://www.microsoft.com/download/details.aspx?id=56519) . Örneğin, 40.121.0.0/16, Azure 'un Doğu ABD bölgesinde kullandığı 100 'ten biridir. Aralık, 40.121.0.1-40.121.255.254 öğesinin kullanılabilir adreslerini içerir.
 
@@ -46,7 +46,7 @@ Azure IP adresini atamaz kadar, tam IP 'yi bilemezsiniz. Bu işlem, belirli IP a
 
 Kaynaklarınıza genel IP adresi önekinden adres atadığınızda, güvenlik duvarı kuralı güncelleştirmeleri gerekli değildir. Tüm Aralık kurala eklenir.
 
-## <a name="benefits"></a>Yararları
+## <a name="benefits"></a>Avantajlar
 
 - Bilinen bir aralıktan ortak IP adresi kaynakları oluşturma.
 - Şu anda atadığınız genel IP adreslerini içeren aralıklardan güvenlik duvarı kuralı yapılandırması ve henüz atamamış olduğunuz adresler. Bu yapılandırma, yeni kaynaklara IP adresleri atarken güvenlik duvarı kurallarını değiştirme gereksinimini ortadan kaldırır.
@@ -68,9 +68,9 @@ Aşağıdaki kaynakları bir önekten statik bir genel IP adresi ile ilişkilend
 ## <a name="constraints"></a>Kısıtlamalar
 
 - Ön ek için IP adreslerini belirtemezsiniz. Azure, belirttiğiniz boyuta göre önek için IP adreslerini sağlar.
-- En fazla 16 IP adresi veya/28 varsayılan olarak bir ön ek oluşturabilirsiniz. [Ağ sınırlarını](https://docs.microsoft.com/azure/azure-portal/supportability/networking-quota-requests) gözden geçirin daha fazla bilgi için Istekleri ve [Azure sınırlarını](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) arttırın.
+- En fazla 16 IP adresi veya/28 varsayılan olarak bir ön ek oluşturabilirsiniz. [Ağ sınırlarını](../azure-portal/supportability/networking-quota-requests.md) gözden geçirin daha fazla bilgi için Istekleri ve [Azure sınırlarını](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) arttırın.
 - Öneki oluşturduktan sonra aralığı değiştiremezsiniz.
-- Ön ek aralığından yalnızca standart SKU ile oluşturulan statik genel IP adresleri atanabilir. Genel IP adresi SKU 'Ları hakkında daha fazla bilgi için bkz. [genel IP adresi](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses).
+- Ön ek aralığından yalnızca standart SKU ile oluşturulan statik genel IP adresleri atanabilir. Genel IP adresi SKU 'Ları hakkında daha fazla bilgi için bkz. [genel IP adresi](./public-ip-addresses.md#public-ip-addresses).
 - Aralıktaki adresler yalnızca Azure Resource Manager kaynaklarına atanabilir. Adresler, klasik dağıtım modelindeki kaynaklara atanamaz.
 - Önekten oluşturulan tüm genel IP adreslerinin, ön ek olarak aynı Azure bölgesinde ve abonelikte mevcut olması gerekir. Adreslerin aynı bölgedeki ve abonelikteki kaynaklara atanması gerekir.
 - İçindeki herhangi bir adres bir kaynakla ilişkili genel IP adresi kaynaklarına atanırsa bir ön eki silemezsiniz. İlk olarak, IP adreslerinin atandığı tüm genel IP adresi kaynaklarının ilişkisini kaldırın.

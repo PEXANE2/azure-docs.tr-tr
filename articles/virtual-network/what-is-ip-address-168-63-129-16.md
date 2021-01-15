@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/15/2019
 ms.author: genli
-ms.openlocfilehash: 03c1badf984fb150631c157f3fdc07856b60e965
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1e304bc30a48c92fdff576723dae6af1e26ef3da
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088906"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222590"
 ---
 # <a name="what-is-ip-address-1686312916"></a>IP adresi 168.63.129.16 nedir?
 
@@ -37,7 +37,7 @@ ms.locfileid: "93088906"
 
 ## <a name="scope-of-ip-address-1686312916"></a>IP adresi 168.63.129.16 kapsamı
 
-168.63.129.16 genel IP adresi tüm bölgelerde ve tüm ulusal bulutlarda kullanılır. Bu özel genel IP adresi Microsoft 'a aittir ve değişmeyecektir. Bu IP adresine herhangi bir yerel (VM) güvenlik duvarı ilkelerinde (giden yönü) izin vermeniz önerilir. Yalnızca iç Azure platformu bu IP adresinden bir ileti kaynağı olabileceğinden, bu özel IP adresi ve kaynakları arasındaki iletişim güvenlidir. Bu adres engellenirse, çeşitli senaryolarda beklenmeyen davranış oluşabilir. 168.63.129.16, [ana bilgisayar düğümünün sanal BIR IP](../virtual-network/security-overview.md#azure-platform-considerations) 'si ve bu nedenle Kullanıcı tanımlı yollara tabi değildir.
+168.63.129.16 genel IP adresi tüm bölgelerde ve tüm ulusal bulutlarda kullanılır. Bu özel genel IP adresi Microsoft 'a aittir ve değişmeyecektir. Bu IP adresine herhangi bir yerel (VM) güvenlik duvarı ilkelerinde (giden yönü) izin vermeniz önerilir. Yalnızca iç Azure platformu bu IP adresinden bir ileti kaynağı olabileceğinden, bu özel IP adresi ve kaynakları arasındaki iletişim güvenlidir. Bu adres engellenirse, çeşitli senaryolarda beklenmeyen davranış oluşabilir. 168.63.129.16, [ana bilgisayar düğümünün sanal BIR IP](./network-security-groups-overview.md#azure-platform-considerations) 'si ve bu nedenle Kullanıcı tanımlı yollara tabi değildir.
 
 - VM Aracısı, bağlantı noktaları 80/TCP ve 32526/TCP ile kablolu sunucu (168.63.129.16) üzerinden giden iletişim gerektirir. Bunlar VM 'deki yerel güvenlik duvarında açık olmalıdır. 168.63.129.16 ile bu bağlantı noktalarıyla iletişim, yapılandırılan ağ güvenlik gruplarına tabi değildir.
 
@@ -49,5 +49,5 @@ ms.locfileid: "93088906"
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Güvenlik grupları](security-overview.md)
+- [Güvenlik grupları](./network-security-groups-overview.md)
 - [Ağ güvenlik grubu oluşturma, değiştirme veya silme](manage-network-security-group.md)

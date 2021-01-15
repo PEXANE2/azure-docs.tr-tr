@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: 0b009b7c44084e76194c1447fefdb2ff59f8086a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a2f6750a4d0a48c6971f60241976fb55410b65c
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91812293"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221451"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>Bant genişliği/Işleme testi (NTTTCP)
 
@@ -26,7 +26,7 @@ Azure 'da ağ aktarım hızı performansını sınarken, sınama için ağı hed
 Aracı aynı boyuttaki iki Azure VM 'ye kopyalayın. Bir VM, gönderen ve diğeri alıcı olarak çalışır.
 
 #### <a name="deploying-vms-for-testing"></a>Test için VM dağıtma
-Bu testin amaçları doğrultusunda, iç IP 'lerini kullanabilmeniz ve yük dengeleyicileri testten hariç tutmak için iki sanal makine aynı [yakınlık yerleştirme grubunda](../virtual-machines/windows/co-location.md) veya aynı Kullanılabilirlik kümesinde olmalıdır. VIP ile test kurulabilir, ancak bu tür bir test bu belgenin kapsamı dışındadır.
+Bu testin amaçları doğrultusunda, iç IP 'lerini kullanabilmeniz ve yük dengeleyicileri testten hariç tutmak için iki sanal makine aynı [yakınlık yerleştirme grubunda](../virtual-machines/co-location.md) veya aynı Kullanılabilirlik kümesinde olmalıdır. VIP ile test kurulabilir, ancak bu tür bir test bu belgenin kapsamı dışındadır.
 
 ALıCıNıN IP adresini bir yere getirin. "A. b. c. r" IP 'si arayalım
 
@@ -65,7 +65,7 @@ Windows Güvenlik Duvarı üzerinden şu şekilde NTttcp 'ye izin ver:
 
 netsh advfirewall firewall add rule program = \<PATH\> \\ntttcp.exe Name = "NTttcp" protokol = any dır = in Action = Allow Enable = Yes PROFILE = any
 
-Örneğin, ntttcp.exe "c: \\ Tools" klasörüne kopyaladıysanız şu komut olacaktır: 
+Örneğin, ntttcp.exe "c: \\ Tools" klasörüne kopyaladıysanız şu komut olacaktır: 
 
 netsh advfirewall firewall add rule program = c: \\ araçlar \\ntttcp.exe Name = "NTttcp" protokol = any dir = in Action = Allow Enable = Yes PROFILE = any
 
@@ -82,7 +82,7 @@ NTttcp-r – m 8, \* , 10.0.0.4-t 300
 
 GÖNDERENDEN NTTTCP 'yi başlatın (PowerShell 'den değil,**cmd 'den çalıştırın**):
 
-NTttcp-s – a 8, \* , 10.0.0.4-t 300 
+NTttcp-s – a 8, \* , 10.0.0.4-t 300 
 
 Sonuçları bekle.
 
@@ -95,19 +95,19 @@ Linux VM 'lerinde (Gönderen ve alıcı), VM 'lerinize NTttcp-for-Linux hazırla
 
 CentOS-git 'i yükler:
 ``` bash
-  yum install gcc -y  
-  yum install git -y
+  yum install gcc -y  
+  yum install git -y
 ```
 Ubuntu-git 'i yükler:
 ``` bash
- apt-get -y install build-essential  
- apt-get -y install git
+ apt-get -y install build-essential  
+ apt-get -y install git
 ```
 Her ikisine de oluştur ve yüklensin:
 ``` bash
- git clone https://github.com/Microsoft/ntttcp-for-linux
- cd ntttcp-for-linux/src
- make && make install
+ git clone https://github.com/Microsoft/ntttcp-for-linux
+ cd ntttcp-for-linux/src
+ make && make install
 ```
 
 Windows örneğinde olduğu gibi, Linux alıcının IP 10.0.0.4 olduğunu varsaytık
@@ -123,7 +123,7 @@ GÖNDERENIN üzerinde şunu çalıştırın:
 ``` bash
 ntttcp -s10.0.0.4 -t 300
 ```
- 
+ 
 Zaman parametresi verilmezse test uzunluğu varsayılan olarak 60 saniyedir
 
 ## <a name="testing-between-vms-running-windows-and-linux"></a>Windows ve LINUX çalıştıran VM 'Ler arasında test:

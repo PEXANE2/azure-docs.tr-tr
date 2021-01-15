@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff656887081681a804285e9a96352feef15fc675
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 7557985b23991f1a53d45f6f2d2283500c0d73f3
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97744226"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222420"
 ---
 # <a name="discover-the-current-state-of-external-collaboration-in-your-organization"></a>Kuruluşunuzda dış işbirliğinin geçerli durumunu bulma 
 
@@ -46,9 +46,9 @@ Dış kuruluşlar, dış kullanıcı e-posta adreslerinin etki alanı adlarıyla
 
 ### <a name="use-allow-or-deny-lists"></a>İzin verme veya reddetme listelerini kullan
 
-Şu anda sizinle birlikte çalıştığınız kişileri keşfetmenin bir başka yolu, [izin verme veya reddetme listelerine](../external-identities/allow-deny-list.md)herhangi bir kuruluş eklemişseniz.
+Kuruluşunuzun yalnızca belirli kuruluşlara işbirliğine izin vermek isteyip istemediğini göz önünde bulundurun. Alternatif olarak, kuruluşunuzun belirli kuruluşlara işbirliğini engellemek isteyip istemediğini göz önünde bulundurun.  Kiracı düzeyinde, kaynak (örn. takımlar, SharePoint ve Azure Portal) ne olursa olsun, genel B2B davetlerini ve kampanyaya denetlemek için kullanılabilen bir [izin verme veya reddetme listesi](../external-identities/allow-deny-list.md)bulunur.
+Yetkilendirme Yönetimi kullanıyorsanız, aşağıda gösterildiği gibi belirli bağlı kuruluşlar ayarını kullanarak, erişim paketlerini iş ortaklarınızın bir alt kümesine de atayabilirsiniz.
 
-Kuruluşunuzun yalnızca belirli kuruluşlarla işbirliği yapmasına izin vermek isteyip istemediğini göz önünde bulundurun. Ayrıca, kuruluşunuzun belirli kuruluşlara işbirliğini engellemek isteyip istemediğini de göz önünde bulundurun. Bu ayarlar, genel B2B teminat veya yalnızca belirli bir erişim paketi için uygulanabilir.
 
 ![Yeni bir erişim paketi oluştururken reddetme listesine izin ver ekranının ekran görüntüsü.](media/secure-external-access/2-new-access-package.png)
 

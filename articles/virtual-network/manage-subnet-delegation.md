@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
-ms.openlocfilehash: 4e4f002d038820edf128e3fefb229a0918a8ac55
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: bc43dc7afb234d410eb17d20beb13cd5cb44bb18
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433520"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222539"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>Alt ağ temsili ekleme veya kaldırma
 
@@ -79,7 +79,7 @@ Ortamınızı Azure CLı için hazırlayın.
 - Bu makale, Azure CLı 'nin sürüm 2.0.28 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
 
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
-[az group create](https://docs.microsoft.com/cli/azure/group) ile bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
+[az group create](/cli/azure/group) ile bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
 Aşağıdaki örnek **eastus** konumunda **myresourcegroup** adlı bir kaynak grubu oluşturur:
 
@@ -92,7 +92,7 @@ Aşağıdaki örnek **eastus** konumunda **myresourcegroup** adlı bir kaynak gr
 ```
 
 ### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
-[az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) komutunu kullanarak **myResourceGroup** içinde **mySubnet** adlı bir alt ağ ile **myVnet** adlı bir sanal ağ oluşturun.
+[az network vnet create](/cli/azure/network/vnet) komutunu kullanarak **myResourceGroup** içinde **mySubnet** adlı bir alt ağ ile **myVnet** adlı bir sanal ağ oluşturun.
 
 ```azurecli-interactive
   az network vnet create \
@@ -113,7 +113,7 @@ Yerleşik [ağ katılımcısı](../role-based-access-control/built-in-roles.md?t
 
 Bu bölümde, önceki bölümde oluşturduğunuz alt ağı bir Azure hizmetine devredebilirsiniz. 
 
-**Mysubnet** adlı alt ağı bir Azure hizmetine temsilciyle güncelleştirmek için [az Network VNET subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) kullanın.  Bu örnekte, örnek temsili için **Microsoft. DBforPostgreSQL/serversv2** kullanılmıştır:
+**Mysubnet** adlı alt ağı bir Azure hizmetine temsilciyle güncelleştirmek için [az Network VNET subnet Update](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) kullanın.  Bu örnekte, örnek temsili için **Microsoft. DBforPostgreSQL/serversv2** kullanılmıştır:
 
 ```azurecli-interactive
   az network vnet subnet update \
@@ -123,7 +123,7 @@ Bu bölümde, önceki bölümde oluşturduğunuz alt ağı bir Azure hizmetine d
   --delegations Microsoft.DBforPostgreSQL/serversv2
 ```
 
-Temsilinin uygulandığını doğrulamak için [az Network VNET subnet Show](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show)kullanın. Hizmetin, **HizmetAdı** özelliği altındaki alt ağa atanmış olduğunu doğrulayın:
+Temsilinin uygulandığını doğrulamak için [az Network VNET subnet Show](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show)kullanın. Hizmetin, **HizmetAdı** özelliği altındaki alt ağa atanmış olduğunu doğrulayın:
 
 ```azurecli-interactive
   az network vnet subnet show \
@@ -152,7 +152,7 @@ Temsilinin uygulandığını doğrulamak için [az Network VNET subnet Show](htt
 
 ### <a name="remove-subnet-delegation-from-an-azure-service"></a>Azure hizmetinden alt ağ temsilcisini kaldırma
 
-**Mysubnet** adlı alt ağdan temsilciyi kaldırmak için [az Network VNET subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) kullanın:
+**Mysubnet** adlı alt ağdan temsilciyi kaldırmak için [az Network VNET subnet Update](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) kullanın:
 
 ```azurecli-interactive
   az network vnet subnet update \
@@ -161,7 +161,7 @@ Temsilinin uygulandığını doğrulamak için [az Network VNET subnet Show](htt
   --vnet-name myVnet \
   --remove delegations
 ```
-Temsilinin kaldırıldığını doğrulamak için [az Network VNET subnet Show](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show)kullanın. Hizmetin **ServiceName** özelliği altındaki alt ağdan kaldırıldığını doğrulayın:
+Temsilinin kaldırıldığını doğrulamak için [az Network VNET subnet Show](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show)kullanın. Hizmetin **ServiceName** özelliği altındaki alt ağdan kaldırıldığını doğrulayın:
 
 ```azurecli-interactive
   az network vnet subnet show \
@@ -186,7 +186,7 @@ Komutun çıktısı boş bir köşeli ayracdır:
 ```
 
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
-[New-AzResourceGroup](https://docs.microsoft.com/cli/azure/group)ile bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
+[New-AzResourceGroup](/cli/azure/group)ile bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
 Aşağıdaki örnek *eastus* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur:
 
@@ -195,7 +195,7 @@ Aşağıdaki örnek *eastus* konumunda *myresourcegroup* adlı bir kaynak grubu 
 ```
 ### <a name="create-virtual-network"></a>Sanal ağ oluşturma
 
-Myresourcegroup **adlı bir** alt ağ Ile **myvnet** adlı bir alt ağ ile **myresourcegroup** [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork?view=latest) [kullanan bir](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) sanal ağ oluşturun. Sanal ağın IP adresi alanı **10.0.0.0/16**' dır. Sanal ağ içindeki alt ağ **10.0.0.0/24**' dir.  
+Myresourcegroup **adlı bir** alt ağ Ile **myvnet** adlı bir alt ağ ile **myresourcegroup** [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork?view=latest) [kullanan bir](/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) sanal ağ oluşturun. Sanal ağın IP adresi alanı **10.0.0.0/16**' dır. Sanal ağ içindeki alt ağ **10.0.0.0/24**' dir.  
 
 ```azurepowershell-interactive
   $subnet = New-AzVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix "10.0.0.0/24"
@@ -212,7 +212,7 @@ Yerleşik [ağ katılımcısı](../role-based-access-control/built-in-roles.md?t
 
 Bu bölümde, önceki bölümde oluşturduğunuz alt ağı bir Azure hizmetine devredebilirsiniz. 
 
-**Mysubnet** adlı alt ağı bir Azure hizmetine **mytemsilciliğini** taşıyan bir temsilciyle güncelleştirmek Için [Add-aztemsilcisini](https://docs.microsoft.com/powershell/module/az.network/add-azdelegation?view=latest) kullanın.  Bu örnekte, örnek temsili için **Microsoft. DBforPostgreSQL/serversv2** kullanılmıştır:
+**Mysubnet** adlı alt ağı bir Azure hizmetine **mytemsilciliğini** taşıyan bir temsilciyle güncelleştirmek Için [Add-aztemsilcisini](/powershell/module/az.network/add-azdelegation?view=latest) kullanın.  Bu örnekte, örnek temsili için **Microsoft. DBforPostgreSQL/serversv2** kullanılmıştır:
 
 ```azurepowershell-interactive
   $vnet = Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup"
@@ -220,7 +220,7 @@ Bu bölümde, önceki bölümde oluşturduğunuz alt ağı bir Azure hizmetine d
   $subnet = Add-AzDelegation -Name "myDelegation" -ServiceName "Microsoft.DBforPostgreSQL/serversv2" -Subnet $subnet
   Set-AzVirtualNetwork -VirtualNetwork $vnet
 ```
-Temsilciyi doğrulamak için [Get-Aztemsilciyi](https://docs.microsoft.com/powershell/module/az.network/get-azdelegation?view=latest) kullanın:
+Temsilciyi doğrulamak için [Get-Aztemsilciyi](/powershell/module/az.network/get-azdelegation?view=latest) kullanın:
 
 ```azurepowershell-interactive
   $subnet = Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup" | Get-AzVirtualNetworkSubnetConfig -Name "mySubnet"
@@ -236,7 +236,7 @@ Temsilciyi doğrulamak için [Get-Aztemsilciyi](https://docs.microsoft.com/power
 ```
 ### <a name="remove-subnet-delegation-from-an-azure-service"></a>Azure hizmetinden alt ağ temsilcisini kaldırma
 
-**Mysubnet** adlı alt ağdan temsilciyi kaldırmak için [Remove-aztemsilciyi](https://docs.microsoft.com/powershell/module/az.network/remove-azdelegation?view=latest) kullanın:
+**Mysubnet** adlı alt ağdan temsilciyi kaldırmak için [Remove-aztemsilciyi](/powershell/module/az.network/remove-azdelegation?view=latest) kullanın:
 
 ```azurepowershell-interactive
   $vnet = Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup"
@@ -244,7 +244,7 @@ Temsilciyi doğrulamak için [Get-Aztemsilciyi](https://docs.microsoft.com/power
   $subnet = Remove-AzDelegation -Name "myDelegation" -Subnet $subnet
   Set-AzVirtualNetwork -VirtualNetwork $vnet
 ```
-Temsilcinin kaldırıldığını doğrulamak için [Get-Aztemsilciyi](https://docs.microsoft.com/powershell/module/az.network/get-azdelegation?view=latest) kullanın:
+Temsilcinin kaldırıldığını doğrulamak için [Get-Aztemsilciyi](/powershell/module/az.network/get-azdelegation?view=latest) kullanın:
 
 ```azurepowershell-interactive
   $subnet = Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup" | Get-AzVirtualNetworkSubnetConfig -Name "mySubnet"

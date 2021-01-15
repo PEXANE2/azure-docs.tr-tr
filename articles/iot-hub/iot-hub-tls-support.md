@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 11/25/2020
+ms.date: 01/14/2020
 ms.author: jlian
-ms.openlocfilehash: f4438aebcb81d665a19a595ac7ade4fea27fc43f
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: e569cbe9030b2ac5a42bd99233b4fefc925a5662
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621017"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220324"
 ---
 # <a name="transport-layer-security-tls-support-in-iot-hub"></a>IoT Hub 'de Aktarım Katmanı Güvenliği (TLS) desteği
 
@@ -46,9 +46,16 @@ Ek güvenlik için, IoT Hub 'larınızı *yalnızca* TLS sürüm 1,2 kullanan is
 * Orta Güney ABD
 * Batı ABD 2
 * US Gov Arizona
-* US Gov Virginia
+* US Gov Virginia (TLS 1.0/1.1 desteği bu bölgede kullanılamıyor-TLS 1,2 zorlamasının etkinleştirilmesi veya IoT Hub 'ın oluşturulması başarısız olması gerekir)
 
-Bu amaçla, desteklenen bölgelerin herhangi birinde yeni bir IoT Hub sağlayın ve `minTlsVersion` özelliğini `1.2` Azure Resource Manager şablonunuzun IoT Hub kaynak belirtiminde olarak ayarlayın:
+TLS 1,2 zorlamayı etkinleştirmek için, [Azure Portal Içinde IoT Hub oluşturma](/.iot-hub-create-through-portal.md)bölümündeki adımları izleyin, ancak
+
+- Yukarıdaki listeden bir **bölge** seçin.
+- **Yönetim > gelişmiş > Aktarım Katmanı Güvenliği (TLS)-> en düşük TLS sürümü**' nün altında **1,2**' u seçin. Bu ayar yalnızca desteklenen bölgede oluşturulan IoT Hub 'ı için görüntülenir.
+
+    :::image type="content" source="media/iot-hub-tls-12-enforcement.png" alt-text="IoT Hub 'ı oluşturma sırasında TLS 1,2 zorlaması 'nı nasıl kullanacağınızı gösteren ekran görüntüsü":::
+
+Oluşturma için ARM şablonunu kullanmak için, desteklenen bölgelerin herhangi birinde yeni bir IoT Hub sağlayın ve `minTlsVersion` özelliğini `1.2` kaynak belirtiminde olarak ayarlayın:
 
 ```json
 {

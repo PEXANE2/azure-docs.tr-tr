@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 340ca07ba605359f71c1dbf23ca38abd75d84416
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: bbaf2fb99f1268a752fab4322078b0566a054d30
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937058"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222862"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure sanal ağlarındaki kaynaklar için ad çözümlemesi
 
@@ -47,8 +47,8 @@ Kullandığınız ad çözümlemesi türü, kaynaklarınızın birbirleriyle nas
 | Bir sanal ağdaki App Service Web Apps farklı bir sanal ağdaki VM 'lere ad çözümleme. |Müşteri tarafından yönetilen DNS sunucuları, Azure tarafından çözümlenmek üzere sanal ağlar arasında sorguları ileten (DNS proxy). Bkz. [kendı DNS sunucunuzu kullanarak ad çözümlemesi](#name-resolution-that-uses-your-own-dns-server). |Yalnızca FQDN |
 | Şirket içi bilgisayar ve hizmet adları, VM 'lerden veya Azure 'daki rol örneklerinden çözümlenmektedir. |Müşteri tarafından yönetilen DNS sunucuları (Şirket içi etki alanı denetleyicisi, yerel salt okuma etki alanı denetleyicisi veya bölge aktarımları kullanılarak eşitlenmiş bir DNS ikincil sunucu). Bkz. [kendı DNS sunucunuzu kullanarak ad çözümlemesi](#name-resolution-that-uses-your-own-dns-server). |Yalnızca FQDN |
 | Şirket içi bilgisayarlardan Azure ana bilgisayar adları çözümlemesi. |Sorguları karşılık gelen sanal ağdaki müşteri tarafından yönetilen bir DNS proxy sunucusuna ilet, proxy sunucusu sorguları çözümlenmek üzere Azure 'a iletir. Bkz. [kendı DNS sunucunuzu kullanarak ad çözümlemesi](#name-resolution-that-uses-your-own-dns-server). |Yalnızca FQDN |
-| İç IP 'Ler için ters DNS. |[Kendı DNS sunucunuzu kullanarak](#name-resolution-that-uses-your-own-dns-server) [özel bölgeler](../dns/private-dns-overview.md) veya [Azure tarafından sağlanmış ad çözümlemesi](#azure-provided-name-resolution) veya ad çözümlemesi Azure DNS. |Geçerli değil |
-| Sanal bir ağda değil, farklı bulut hizmetlerinde bulunan VM 'Ler veya rol örnekleri arasında ad çözümlemesi. |Geçerli değildir. Farklı bulut hizmetlerindeki VM 'Ler ve rol örnekleri arasında bağlantı, sanal ağ dışında desteklenmez. |Geçerli değil|
+| İç IP 'Ler için ters DNS. |[Kendı DNS sunucunuzu kullanarak](#name-resolution-that-uses-your-own-dns-server) [özel bölgeler](../dns/private-dns-overview.md) veya [Azure tarafından sağlanmış ad çözümlemesi](#azure-provided-name-resolution) veya ad çözümlemesi Azure DNS. |Uygulanamaz |
+| Sanal bir ağda değil, farklı bulut hizmetlerinde bulunan VM 'Ler veya rol örnekleri arasında ad çözümlemesi. |Geçerli değildir. Farklı bulut hizmetlerindeki VM 'Ler ve rol örnekleri arasında bağlantı, sanal ağ dışında desteklenmez. |Uygulanamaz|
 
 ## <a name="azure-provided-name-resolution"></a>Azure tarafından sağlanmış ad çözümlemesi
 
@@ -57,7 +57,7 @@ Azure tarafından sağlanan ad çözümlemesi yalnızca temel yetkili DNS özell
 Azure, genel DNS adlarını çözümlemesiyle birlikte, aynı sanal ağ veya bulut hizmeti içinde bulunan VM 'Ler ve rol örnekleri için iç ad çözümlemesi sağlar. Bir bulut hizmetindeki sanal makineler ve örnekler aynı DNS sonekini paylaşır, bu nedenle ana bilgisayar adı tek başına yeterlidir. Ancak, klasik dağıtım modeli kullanılarak dağıtılan sanal ağlarda farklı bulut Hizmetleri farklı DNS soneklerine sahiptir. Bu durumda, farklı bulut hizmetleri arasındaki adları çözümlemek için FQDN 'ye ihtiyacınız vardır. Azure Resource Manager dağıtım modeli kullanılarak dağıtılan sanal ağlarda, DNS son eki bir sanal ağ içindeki tüm sanal makineler arasında tutarlıdır, bu nedenle FQDN gerekli değildir. DNS adları, hem VM 'lere hem de ağ arabirimlerine atanabilir. Azure tarafından sağlanmış ad çözümlemesi herhangi bir yapılandırma gerektirmese de, önceki tabloda açıklandığı gibi tüm dağıtım senaryolarında uygun seçim değildir.
 
 > [!NOTE]
-> Cloud Services Web ve çalışan rollerini kullanırken, Azure hizmet yönetimi REST API kullanarak rol örneklerinin iç IP adreslerine de erişebilirsiniz. Daha fazla bilgi için bkz. [hizmet yönetimi REST API başvurusu](https://msdn.microsoft.com/library/azure/ee460799.aspx). Adres, rol adı ve örnek numarasını temel alır. 
+> Cloud Services Web ve çalışan rollerini kullanırken, Azure hizmet yönetimi REST API kullanarak rol örneklerinin iç IP adreslerine de erişebilirsiniz. Daha fazla bilgi için bkz. [hizmet yönetimi REST API başvurusu](/previous-versions/azure/ee460799(v=azure.100)). Adres, rol adı ve örnek numarasını temel alır. 
 >
 
 ### <a name="features"></a>Özellikler
@@ -88,7 +88,7 @@ Ters DNS, tüm ARM tabanlı sanal ağlarda desteklenir. Sanal makinelerin IP adr
 * VMName. internal.cloudapp.net biçimindeki FQDN 'lerde ileriye doğru arama, \[ \] sanal MAKINEYE atanan IP adresine çözümlenir.
 * Sanal ağ, kayıt sanal ağı olarak bir [Azure DNS özel bölgesine](../dns/private-dns-overview.md) bağlanmışsa, ters DNS sorguları iki kayıt döndürür. Bir kayıt, VMName biçiminde olacaktır \[ \] . [ privatednszonename] ve diğeri \[ VMName \] . internal.cloudapp.net biçiminde olacaktır
 * Ters DNS arama, diğer sanal ağlara eşlense bile, belirli bir sanal ağın kapsamına alınır. Eşlenen sanal ağlarda bulunan sanal makinelerin IP adresleri için ters DNS sorguları (PTR sorguları) NXDOMAIN döndürür.
-* Bir sanal ağda ters DNS işlevini devre dışı bırakmak istiyorsanız, [Azure DNS özel bölgeler](../dns/private-dns-overview.md) ' i kullanarak bir geriye doğru arama bölgesi oluşturup bu bölgeyi sanal ağınızla bağlantılandırarak bunu yapabilirsiniz. Örneğin, sanal Ağınızın IP adresi alanı 10.20.0.0/16 ise boş bir özel DNS bölgesi 20.10.in-addr. arpa oluşturabilir ve bunu sanal ağa bağlayabilirsiniz. Bölgeyi sanal ağınıza bağlarken bağlantıda otomatik kaydı devre dışı bırakmanız gerekir. Bu bölge, sanal ağ için varsayılan geriye doğru arama bölgelerini geçersiz kılacak ve bu bölge boş olduğu için ters DNS sorgularınız için NXDOMAIN alacaksınız. Özel bir DNS bölgesi oluşturma ve bunu bir sanal ağa bağlama hakkındaki ayrıntılar için [hızlı başlangıç kılavuzumuza](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal) bakın.
+* Bir sanal ağda ters DNS işlevini devre dışı bırakmak istiyorsanız, [Azure DNS özel bölgeler](../dns/private-dns-overview.md) ' i kullanarak bir geriye doğru arama bölgesi oluşturup bu bölgeyi sanal ağınızla bağlantılandırarak bunu yapabilirsiniz. Örneğin, sanal Ağınızın IP adresi alanı 10.20.0.0/16 ise boş bir özel DNS bölgesi 20.10.in-addr. arpa oluşturabilir ve bunu sanal ağa bağlayabilirsiniz. Bölgeyi sanal ağınıza bağlarken bağlantıda otomatik kaydı devre dışı bırakmanız gerekir. Bu bölge, sanal ağ için varsayılan geriye doğru arama bölgelerini geçersiz kılacak ve bu bölge boş olduğu için ters DNS sorgularınız için NXDOMAIN alacaksınız. Özel bir DNS bölgesi oluşturma ve bunu bir sanal ağa bağlama hakkındaki ayrıntılar için [hızlı başlangıç kılavuzumuza](../dns/private-dns-getstarted-portal.md) bakın.
 
 > [!NOTE]
 > Ters DNS aramasının sanal ağ genelinde yayılmasını istiyorsanız, [özel bölgeler Azure DNS](../dns/private-dns-overview.md) bir geriye doğru arama bölgesi (In-addr. arpa) oluşturabilir ve bunu birden çok sanal ağa bağlayabilirsiniz. Ancak, sanal makineler için ters DNS kayıtlarını el ile yönetmeniz gerekir.
@@ -164,7 +164,7 @@ Bir sanal ağ içindeki DNS sunucuları DNS sorgularını Azure 'daki özyinelem
 DNS iletimi, sanal ağlar arasında DNS çözümlemesi de sağlar ve şirket içi makinelerinizin Azure tarafından belirtilen ana bilgisayar adlarını çözümlemesine olanak tanır. Bir VM 'nin ana bilgisayar adını çözümlemek için, DNS sunucusu sanal makinesi aynı sanal ağda bulunmalı ve ana bilgisayar adı sorgularını Azure 'a iletecek şekilde yapılandırılmalıdır. DNS son eki her bir sanal ağda farklı olduğundan, çözümleme için doğru sanal ağa DNS sorguları göndermek üzere koşullu iletme kurallarını kullanabilirsiniz. Aşağıdaki görüntüde, bu yöntemi kullanarak, sanal ağlar arasında DNS çözümlemesi yapan iki sanal ağ ve şirket içi ağ gösterilmektedir. [Azure hızlı başlangıç şablonları galerisinde](https://azure.microsoft.com/documentation/templates/301-dns-forwarder/) ve [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/301-dns-forwarder)'da örnek bir DNS ileticisi vardır.
 
 > [!NOTE]
-> Rol örneği aynı sanal ağ içinde VM 'lerin ad çözümlemesini gerçekleştirebilir. Bunu, VM 'nin ana bilgisayar adı ve **Internal.cloudapp.net** DNS SONEKINI içeren FQDN 'yi kullanarak yapar. Ancak, bu durumda, ad çözümlemesi yalnızca rol örneği [rol şemasında (. cscfg dosyası)](https://msdn.microsoft.com/library/azure/jj156212.aspx)tanımlanmış VM adına sahipse başarılı olur.
+> Rol örneği aynı sanal ağ içinde VM 'lerin ad çözümlemesini gerçekleştirebilir. Bunu, VM 'nin ana bilgisayar adı ve **Internal.cloudapp.net** DNS SONEKINI içeren FQDN 'yi kullanarak yapar. Ancak, bu durumda, ad çözümlemesi yalnızca rol örneği [rol şemasında (. cscfg dosyası)](/previous-versions/azure/reference/jj156212(v=azure.100))tanımlanmış VM adına sahipse başarılı olur.
 > `<Role name="<role-name>" vmName="<vm-name>">`
 >
 > Başka bir sanal ağdaki VM 'Lerde ad çözümlemesi gerçekleştirmesi gereken rol örnekleri ( **internal.cloudapp.net** SONEKI kullanılarak FQDN) Bu bölümde açıklanan yöntemi (iki sanal ağ arasında iletme) kullanarak bunu gerçekleştirmelidir.
@@ -176,8 +176,8 @@ Azure tarafından sağlanan ad çözümlemesi kullanırken, Azure dinamik ana bi
 
 Gerekirse, PowerShell veya API kullanarak iç DNS sonekini belirleyebilirsiniz:
 
-* Azure Resource Manager dağıtım modellerindeki sanal ağlar için, sonek [ağ arabirimi REST API](https://docs.microsoft.com/rest/api/virtualnetwork/networkinterfaces), [Get-aznetworkınterface](/powershell/module/az.network/get-aznetworkinterface) PowerShell cmdlet 'i ve [az Network Nic](/cli/azure/network/nic#az-network-nic-show) Azure CLI 'yi göster komutunu kullanarak kullanılabilir.
-* Klasik dağıtım modellerinde, son ek [dağıtım API 'si](https://msdn.microsoft.com/library/azure/ee460804.aspx) çağrısı veya [Get-AzureVM-Debug](/powershell/module/servicemanagement/azure.service/get-azurevm) cmdlet 'i aracılığıyla kullanılabilir.
+* Azure Resource Manager dağıtım modellerindeki sanal ağlar için, sonek [ağ arabirimi REST API](/rest/api/virtualnetwork/networkinterfaces), [Get-aznetworkınterface](/powershell/module/az.network/get-aznetworkinterface) PowerShell cmdlet 'i ve [az Network Nic](/cli/azure/network/nic#az-network-nic-show) Azure CLI 'yi göster komutunu kullanarak kullanılabilir.
+* Klasik dağıtım modellerinde, son ek [dağıtım API 'si](/previous-versions/azure/reference/ee460804(v=azure.100)) çağrısı veya [Get-AzureVM-Debug](/powershell/module/servicemanagement/azure.service/get-azurevm) cmdlet 'i aracılığıyla kullanılabilir.
 
 Sorguların Azure 'a iletilmesi gereksinimlerinize uygun değilse, kendi DNS çözümünüzü sağlamanız gerekir. DNS çözümünüzün şunları yapması gerekir:
 
@@ -215,7 +215,7 @@ Azure Resource Manager dağıtım modelini kullanırken, bir sanal ağ ve bir a�
 > [!NOTE]
 > Sanal ağınız için özel DNS sunucusu tercih ediyorsanız, en az bir DNS sunucusu IP adresi belirtmeniz gerekir; Aksi halde, sanal ağ yapılandırmayı yoksayar ve bunun yerine Azure tarafından belirtilen DNS 'yi kullanır.
 
-Klasik dağıtım modelini kullanırken, Azure portal veya [ağ yapılandırma dosyasında](https://msdn.microsoft.com/library/azure/jj157100)sanal ağ için DNS sunucuları belirtebilirsiniz. Bulut hizmetleri için, [hizmet yapılandırma dosyası](https://msdn.microsoft.com/library/azure/ee758710) aracılığıyla veya PowerShell kullanarak [New-AzureVM](/powershell/module/servicemanagement/azure.service/new-azurevm)ile DNS sunucuları belirtebilirsiniz.
+Klasik dağıtım modelini kullanırken, Azure portal veya [ağ yapılandırma dosyasında](/previous-versions/azure/reference/jj157100(v=azure.100))sanal ağ için DNS sunucuları belirtebilirsiniz. Bulut hizmetleri için, [hizmet yapılandırma dosyası](/previous-versions/azure/reference/ee758710(v=azure.100)) aracılığıyla veya PowerShell kullanarak [New-AzureVM](/powershell/module/servicemanagement/azure.service/new-azurevm)ile DNS sunucuları belirtebilirsiniz.
 
 > [!NOTE]
 > Zaten dağıtılmış bir sanal ağ veya sanal makine için DNS ayarlarını değiştirirseniz, yeni DNS ayarlarının etkili olabilmesi için, sanal ağdaki tüm etkilenen VM 'lerde bir DHCP kira yenilemesi gerçekleştirmeniz gerekir. Windows işletim sistemini çalıştıran VM 'Ler için, bunu doğrudan VM 'ye yazarak yapabilirsiniz `ipconfig /renew` . Adımlar, işletim sistemine bağlı olarak değişir. İşletim sistemi türü için ilgili belgelere bakın.
@@ -229,6 +229,6 @@ Azure Resource Manager dağıtım modeli:
 
 Klasik dağıtım modeli:
 
-* [Azure hizmeti yapılandırma şeması](https://msdn.microsoft.com/library/azure/ee758710)
-* [Sanal ağ yapılandırma şeması](https://msdn.microsoft.com/library/azure/jj157100)
-* [Ağ yapılandırma dosyası kullanarak bir sanal ağ yapılandırma](virtual-networks-using-network-configuration-file.md)
+* [Azure hizmeti yapılandırma şeması](/previous-versions/azure/reference/ee758710(v=azure.100))
+* [Sanal ağ yapılandırma şeması](/previous-versions/azure/reference/jj157100(v=azure.100))
+* [Ağ yapılandırma dosyası kullanarak bir sanal ağ yapılandırma](/previous-versions/azure/virtual-network/virtual-networks-using-network-configuration-file)

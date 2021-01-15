@@ -16,26 +16,26 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: bccbfed96dd6cd87bdfe986baf4b52817a160ac0
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 5b91d6e58f4ae93bbf020f202991f878e7773114
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95533370"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222964"
 ---
-# <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Azure CLı kullanarak hızlandırılmış ağ ile Linux sanal makinesi oluşturma
+# <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Azure CLI kullanarak Hızlandırılmış Ağ ile Linux sanal makinesi oluşturma
 
 Bu öğreticide, hızlandırılmış ağ ile bir Linux sanal makinesi (VM) oluşturmayı öğreneceksiniz. Hızlandırılmış ağ ile Windows VM oluşturmak için bkz. [hızlandırılmış ağ Ile WINDOWS VM oluşturma](create-vm-accelerated-networking-powershell.md). Hızlandırılmış ağ, bir VM 'ye tek köklü g/ç Sanallaştırması (SR-ıOV) sağlar ve ağ performansını büyük ölçüde geliştirir. Bu yüksek performanslı yol, desteklenen VM türlerinde en zorlu ağ iş yükleri ile kullanım için, gecikme süresi, değişim ve CPU kullanımını azaltan ana bilgisayarı veri yolundan atlar. Aşağıdaki resimde, hızlandırılmış ağ ile ve olmadan iki VM arasındaki iletişim gösterilmektedir:
 
 ![Karşılaştırma](./media/create-vm-accelerated-networking/accelerated-networking.png)
 
-Hızlandırılmış ağ olmadan, VM 'deki ve olmayan tüm ağ trafiği ana bilgisayar ve sanal anahtar arasında gezinmelidir. Sanal anahtar ağ güvenlik grupları, erişim denetim listeleri, yalıtım ve ağ trafiğine diğer ağ sanallaştırılmış hizmetler gibi tüm ilke zorlamasına olanak sağlar. Sanal anahtarlar hakkında daha fazla bilgi edinmek için [Hyper-V ağ sanallaştırma ve sanal anahtar](https://technet.microsoft.com/library/jj945275.aspx) makalesini okuyun.
+Hızlandırılmış ağ olmadan, VM 'deki ve olmayan tüm ağ trafiği ana bilgisayar ve sanal anahtar arasında gezinmelidir. Sanal anahtar ağ güvenlik grupları, erişim denetim listeleri, yalıtım ve ağ trafiğine diğer ağ sanallaştırılmış hizmetler gibi tüm ilke zorlamasına olanak sağlar. Sanal anahtarlar hakkında daha fazla bilgi edinmek için [Hyper-V ağ sanallaştırma ve sanal anahtar](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134230(v=ws.11)) makalesini okuyun.
 
 Hızlandırılmış ağ ile ağ trafiği, sanal makinenin ağ arabirimine (NIC) ulaşır ve ardından VM 'ye iletilir. Sanal anahtarın geçerli olduğu tüm ağ ilkeleri artık boşaltılmış ve donanımda uygulandı. İlkeyi donanıma uygulamak, NIC 'nin ağ trafiğini konak ve sanal anahtarı atlayarak, ana bilgisayara uyguladığı tüm ilkeyi koruyarak doğrudan VM 'ye iletmesini sağlar.
 
 Hızlandırılmış ağ avantajları yalnızca üzerinde etkin olduğu VM için geçerlidir. En iyi sonuçlar için, bu özelliğin aynı Azure sanal ağına (VNet) bağlı en az iki VM üzerinde etkinleştirilmesi idealdir. VNET 'lerde iletişim kurarken veya şirket içinde bağlantı kurarken, bu özelliğin genel gecikme süresine en az etkisi vardır.
 
-## <a name="benefits"></a>Yararları
+## <a name="benefits"></a>Avantajlar
 * **Saniye başına düşük gecikme süresi/daha yüksek paketler (PPS):** Sanal anahtarın veri yolundan kaldırılması, ilke işleme için konakta harcadıkları zaman paketlerini kaldırır ve sanal makıne içinde işlenebilecek paketlerin sayısını artırır.
 * **Azaltılan değişim:** Sanal anahtar işleme, uygulanması gereken ilke miktarına ve işleme yapan CPU 'nun iş yüküne bağlıdır. İlke zorlamayı donanıma devreetmek, paketleri doğrudan VM 'ye teslim ederek bu değişkenliği, Konağı VM iletişimine ve tüm yazılım kesintileri ve bağlam anahtarlarına kaldırarak bu değişkenliği kaldırır.
 * **AZALTıLMıŞ CPU kullanımı:** Konaktaki sanal anahtarı atlamak, ağ trafiğini işlemeye yönelik daha az CPU kullanımına neden oluyor.
@@ -60,7 +60,7 @@ Hızlandırılmış ağ, 2 veya daha fazla vCPU ile en genel amaçlı ve işlem 
 
 Hiper iş parçacığı destekleyen örneklerde, hızlandırılmış ağ, 4 veya daha fazla vCPU içeren VM örneklerinde desteklenir. Desteklenen seriler şunlardır: D/Dsv3, D/Dsv4, gg/Ddv4, da/Dasv4, E/Esv3, E/Esv4, Ed/Edsv4, EA/Easv4, Fsv2, Lsv2, MS/MMS ve MS/Mmsv2.
 
-VM örnekleri hakkında daha fazla bilgi için bkz. [LINUX VM boyutları](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+VM örnekleri hakkında daha fazla bilgi için bkz. [LINUX VM boyutları](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ### <a name="custom-images"></a>Özel Görüntüler
 Özel bir görüntü kullanıyorsanız ve görüntünüz hızlandırılmış ağı destekliyorsa, lütfen Azure 'da Mellanox ConnectX-3 ve ConnectX-4 LX NIC 'lerle çalışmak için gerekli sürücülere sahip olduğunuzdan emin olun.
@@ -173,7 +173,7 @@ az vm create \
     --nics myNic
 ```
 
-Tüm VM boyutlarının ve özelliklerinin bir listesi için bkz. [LINUX VM boyutları](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Tüm VM boyutlarının ve özelliklerinin bir listesi için bkz. [LINUX VM boyutları](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 VM oluşturulduktan sonra aşağıdaki örnek çıktıya benzer bir çıktı döndürülür. **publicIpAddress** değerini not alın. Bu adres, sonraki adımlarda sanal makineye erişmek için kullanılır.
 
@@ -310,5 +310,4 @@ Hızlandırılmış ağ özellikli bir VM, yeniden boyutlandırma işlemi kullan
 
 * VM 'yi durdurma/serbest bırakma veya bir kullanılabilirlik kümesinde/VMSS 'de, set/VMSS içindeki tüm VM 'Leri durdur/serbest bırak.
 * Hızlandırılmış ağ, VM 'nin NIC 'inde veya bir kullanılabilirlik kümesinde/VMSS 'de, küme/VMSS 'de bulunan tüm VM 'lerde devre dışı bırakılmalıdır.
-* Hızlandırılmış ağ devre dışı bırakıldığında, VM/kullanılabilirlik kümesi/VMSS, hızlandırılmış ağı desteklemeyen ve yeniden başlatılan yeni bir boyuta taşınabilir.  
-
+* Hızlandırılmış ağ devre dışı bırakıldığında, VM/kullanılabilirlik kümesi/VMSS, hızlandırılmış ağı desteklemeyen ve yeniden başlatılan yeni bir boyuta taşınabilir.

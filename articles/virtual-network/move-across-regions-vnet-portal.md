@@ -6,21 +6,21 @@ ms.service: virtual-network
 ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: ed3da649ba65484a79b42ba5bb45431839e123d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a80c731e4245b1a295364e5b8c87f90290f7f74
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84711451"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223317"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-the-azure-portal"></a>Azure portal kullanarak bir Azure sanal ağını başka bir bölgeye taşıma
 
 Mevcut bir Azure sanal ağını bir bölgeden diğerine taşımaya yönelik çeşitli senaryolar vardır. Örneğin, var olan sanal ağınız ile test ve kullanılabilirlik için aynı yapılandırmaya sahip bir sanal ağ oluşturmak isteyebilirsiniz. Ya da bir üretim sanal ağını olağanüstü durum kurtarma planlamanızın bir parçası olarak başka bir bölgeye taşımak isteyebilirsiniz.
 
-Sanal ağı başka bir bölgeye taşımayı gerçekleştirmek için bir Azure Resource Manager şablonu kullanabilirsiniz. Bunu, sanal ağı bir şablona vererek, parametreleri hedef bölgeyle eşleşecek şekilde değiştirerek ve sonra şablonu yeni bölgeye dağıtarak yapabilirsiniz. Kaynak Yöneticisi şablonları hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Azure Portal kullanarak Azure Resource Manager şablonları oluşturma ve dağıtma](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
+Sanal ağı başka bir bölgeye taşımayı gerçekleştirmek için bir Azure Resource Manager şablonu kullanabilirsiniz. Bunu, sanal ağı bir şablona vererek, parametreleri hedef bölgeyle eşleşecek şekilde değiştirerek ve sonra şablonu yeni bölgeye dağıtarak yapabilirsiniz. Kaynak Yöneticisi şablonları hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Azure Portal kullanarak Azure Resource Manager şablonları oluşturma ve dağıtma](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Sanal ağınızın, taşımak istediğiniz Azure bölgesinde olduğundan emin olun.
 
@@ -32,7 +32,7 @@ Sanal ağı başka bir bölgeye taşımayı gerçekleştirmek için bir Azure Re
 
 - Azure aboneliğinizin hedef bölgede sanal ağlar oluşturmanıza izin verdiğini doğrulayın. Gerekli kotayı etkinleştirmek için desteğe başvurun.
 
-- Aboneliğinizin bu işleme yönelik sanal ağların eklenmesini desteklemek için yeterli kaynağa sahip olduğundan emin olun. Daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
+- Aboneliğinizin bu işleme yönelik sanal ağların eklenmesini desteklemek için yeterli kaynağa sahip olduğundan emin olun. Daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
 
 
 ## <a name="prepare-for-the-move"></a>Taşıma için hazırlanma
@@ -45,7 +45,7 @@ Sanal ağı dışa aktarmak ve Azure portal kullanarak hedef sanal ağı dağıt
 1. **Ayarları**  >  **dışarı aktarma şablonu**' nu seçin.
 1. **Şablonu dışarı aktar** bölmesinde **Dağıt**' ı seçin.
 1. Çevrimiçi Düzenleyicinizde dosya *parameters.js* açmak için **şablon**  >  **düzenleme parametreleri**' ni seçin.
-1. Sanal ağ adının parametresini düzenlemek için, **Parametreler**altındaki **değer** özelliğini değiştirin:
+1. Sanal ağ adının parametresini düzenlemek için, **Parametreler** altındaki **değer** özelliğini değiştirin:
 
     ```json
     {
@@ -65,7 +65,7 @@ Sanal ağı dışa aktarmak ve Azure portal kullanarak hedef sanal ağı dağıt
 
 1. Çevrimiçi düzenleyicide dosya *template.js* açmak için **şablon**  >  **düzenleme şablonu**' nu seçin.
 
-1. Çevrimiçi düzenleyicide, sanal ağın taşınacağı hedef bölgeyi düzenlemek için **kaynaklar**altındaki **Location** özelliğini değiştirin:
+1. Çevrimiçi düzenleyicide, sanal ağın taşınacağı hedef bölgeyi düzenlemek için **kaynaklar** altındaki **Location** özelliğini değiştirin:
 
     ```json
     "resources": [
@@ -209,5 +209,5 @@ Değişiklikleri uygulamak ve sanal ağ taşımayı tamamlamak için kaynak sana
 Bu öğreticide, bir Azure sanal ağını Azure portal kullanarak bir bölgeden diğerine taşımış sonra gereksiz kaynak kaynaklarını temizlülüsiniz. Azure 'da bölgeler ve olağanüstü durum kurtarma arasında kaynakları taşıma hakkında daha fazla bilgi edinmek için bkz.:
 
 
-- [Kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [Azure sanal makinelerini başka bir bölgeye taşıma](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [Kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma](../azure-resource-manager/management/move-resource-group-and-subscription.md)
+- [Azure sanal makinelerini başka bir bölgeye taşıma](../site-recovery/azure-to-azure-tutorial-migrate.md)

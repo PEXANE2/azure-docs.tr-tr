@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: allensu
-ms.openlocfilehash: 62c1b323899f03a043904f4b10d5fe3bb551e0f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4ef8e6207d53a192b19f8343a60093e82368fa6
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441771"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223389"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>NAT ağ geçidi kaynaklarıyla sanal ağlar tasarlama
 
@@ -60,7 +60,7 @@ Aşağıdaki diyagramda farklı Azure Resource Manager kaynakları arasındaki y
 
 [Havuz tabanlı Load Balancer giden bağlantı](../load-balancer/load-balancer-outbound-connections.md)üzerinde belirli bir bağımlılığı yoksa, NAT çoğu iş yükü için önerilir.  
 
-[Giden kuralları](../load-balancer/load-balancer-outbound-rules-overview.md)da dahil olmak üzere standart yük dengeleyici SENARYOLARıNDAN NAT ağ geçidine geçiş yapabilirsiniz. Geçirmek için genel IP ve genel IP öneki kaynaklarını yük dengeleyici ön uçları ' ndan NAT ağ geçidine taşıyın. NAT Gateway için yeni IP adresleri gerekli değildir. Standart genel IP adresi kaynakları ve genel IP öneki kaynağı, toplam 16 IP adresini aşmadığı sürece yeniden kullanılabilir. Geçiş sırasında göz önünde bulundurarak hizmet kesintisini içeren geçiş planlayın.  İşlemi otomatikleştirerek kesintiye uğramasını küçültebilirsiniz. Geçişi önce hazırlama ortamında test edin.  Geçiş sırasında gelen kaynaklı akışlar etkilenmez.
+[Giden kuralları](../load-balancer/load-balancer-outbound-connections.md#outboundrules)da dahil olmak üzere standart yük dengeleyici SENARYOLARıNDAN NAT ağ geçidine geçiş yapabilirsiniz. Geçirmek için genel IP ve genel IP öneki kaynaklarını yük dengeleyici ön uçları ' ndan NAT ağ geçidine taşıyın. NAT Gateway için yeni IP adresleri gerekli değildir. Standart genel IP adresi kaynakları ve genel IP öneki kaynağı, toplam 16 IP adresini aşmadığı sürece yeniden kullanılabilir. Geçiş sırasında göz önünde bulundurarak hizmet kesintisini içeren geçiş planlayın.  İşlemi otomatikleştirerek kesintiye uğramasını küçültebilirsiniz. Geçişi önce hazırlama ortamında test edin.  Geçiş sırasında gelen kaynaklı akışlar etkilenmez.
 
 
 Aşağıdaki örnek, bir Azure Resource Manager şablonundan bir kod parçacığı örneğidir.  Bu şablon, bir NAT ağ geçidi dahil olmak üzere birkaç kaynak dağıtır.  Şablon Bu örnekte aşağıdaki parametrelere sahiptir:
@@ -135,8 +135,8 @@ NAT ağ geçidi tarafından sunulan yalnızca Internet giden senaryosu Internet 
 
 | Yön | Kaynak |
 |:---:|:---:|
-| Inbound | Örnek düzeyi genel IP 'si olan VM |
-| Outbound | NAT Gateway |
+| Gelen | Örnek düzeyi genel IP 'si olan VM |
+| Giden | NAT Gateway |
 
 VM, giden için NAT Gateway kullanır.  Gelen kaynaklı etkilenmemektedir.
 
@@ -150,8 +150,8 @@ VM, giden için NAT Gateway kullanır.  Gelen kaynaklı etkilenmemektedir.
 
 | Yön | Kaynak |
 |:---:|:---:|
-| Inbound | ortak Load Balancer |
-| Outbound | NAT Gateway |
+| Gelen | ortak Load Balancer |
+| Giden | NAT Gateway |
 
 Yük Dengeleme kuralı veya giden kuralların herhangi bir giden yapılandırmasının yerini NAT ağ geçidi almıştır.  Gelen kaynaklı etkilenmemektedir.
 
@@ -165,8 +165,8 @@ Yük Dengeleme kuralı veya giden kuralların herhangi bir giden yapılandırmas
 
 | Yön | Kaynak |
 |:---:|:---:|
-| Inbound | Örnek düzeyi genel IP ve genel Load Balancer VM |
-| Outbound | NAT Gateway |
+| Gelen | Örnek düzeyi genel IP ve genel Load Balancer VM |
+| Giden | NAT Gateway |
 
 Yük Dengeleme kuralı veya giden kuralların herhangi bir giden yapılandırmasının yerini NAT ağ geçidi almıştır.  VM, giden için NAT ağ geçidini de kullanacaktır.  Gelen kaynaklı etkilenmemektedir.
 
@@ -230,13 +230,13 @@ Senaryo çalışır durumda gözükirken, sistem durumu modeli ve hata modu, bir
 
 Her NAT ağ geçidi kaynağı 50 GB 'a kadar aktarım hızı sağlayabilir. Dağıtımlarınızı birden çok alt ağa bölebilir ve genişleme için bir NAT ağ geçidi olan her bir alt ağı veya alt ağ grubunu atayabilirsiniz.
 
-Her NAT ağ geçidi, atanan giden IP adresi başına sırasıyla TCP ve UDP için 64.000 akışı destekleyebilir.  Ayrıntılar ve belirli sorun çözümleme Kılavuzu için [sorun giderme makalesi](https://docs.microsoft.com/azure/virtual-network/troubleshoot-nat) Için kaynak ağ adresi ÇEVIRISI (SNAT) üzerinde aşağıdaki bölümü gözden geçirin.
+Her NAT ağ geçidi, atanan giden IP adresi başına sırasıyla TCP ve UDP için 64.000 akışı destekleyebilir.  Ayrıntılar ve belirli sorun çözümleme Kılavuzu için [sorun giderme makalesi](./troubleshoot-nat.md) Için kaynak ağ adresi ÇEVIRISI (SNAT) üzerinde aşağıdaki bölümü gözden geçirin.
 
 ## <a name="source-network-address-translation"></a>Kaynak ağ adresi çevirisi
 
 Kaynak ağ adresi çevirisi (SNAT), bir akışın kaynağını farklı bir IP adresinden kaynaklanan bir şekilde yeniden yazar.  NAT ağ geçidi kaynakları, bağlantı noktası adresi çevirisi (PAT) ile yaygın olarak anılan bir, SNAT değişkenini kullanır. PAT kaynak adresi ve kaynak bağlantı noktasını yeniden yazar. SNAT ile, özel adres sayısı ve bunların çevrilmiş ortak adresleri arasında sabit bir ilişki yoktur.  
 
-### <a name="fundamentals"></a>Temeller
+### <a name="fundamentals"></a>Temel Bilgiler
 
 Temel kavramı açıklamak için dört akışla bir örneğe bakalım.  NAT ağ geçidi, genel IP adresi kaynağı 65.52.1.1 kullanıyor ve VM, 65.52.0.1 ile bağlantı yapıyor.
 
@@ -264,7 +264,7 @@ NAT ağ geçitleri mümkün olduğunda yeniden kullanım kaynağı (SNAT) bağla
 |:---:|:---:|:---:|
 | 4 | 192.168.0.16:4285 | 65.52.0.2:80 |
 
-Bir NAT ağ geçidi muhtemelen Flow 4 ' ü diğer hedefler için de kullanılabilecek bir bağlantı noktasına çevireceği anlamına gelebilir.  IP adresi hazırlığını doğru şekilde boyutlandırma hakkında daha fazla tartışma için bkz. [ölçeklendirme](https://docs.microsoft.com/azure/virtual-network/nat-gateway-resource#scaling) .
+Bir NAT ağ geçidi muhtemelen Flow 4 ' ü diğer hedefler için de kullanılabilecek bir bağlantı noktasına çevireceği anlamına gelebilir.  IP adresi hazırlığını doğru şekilde boyutlandırma hakkında daha fazla tartışma için bkz. [ölçeklendirme](#scaling) .
 
 | Akış | Kaynak kayıt düzeni | Snattoed kaynak kayıt düzeni | Hedef kayıt düzeni | 
 |:---:|:---:|:---:|:---:|
@@ -307,7 +307,7 @@ NAT ağ geçidi kaynakları mümkün olduğunda yeniden kullanım kaynağı (SNA
 
 Farklı hedeflere yönelik SNAT bağlantı noktaları mümkün olduğunda yeniden kullanılabilir. SNAT bağlantı noktası tükenmesi yaklaşımının yanı sıra akışlar başarısız olabilir.  
 
-Örneğin bkz. [SNAT temelleri](https://docs.microsoft.com/azure/virtual-network/nat-gateway-resource#source-network-address-translation) .
+Örneğin bkz. [SNAT temelleri](#source-network-address-translation) .
 
 
 ### <a name="protocols"></a>Protokoller
@@ -359,10 +359,10 @@ Hizmeti nasıl geliştirebileceğimizi öğrenmek istiyoruz. Bir yetenek eksik m
   - [Portal](./quickstart-create-nat-gateway-portal.md)
   - [Şablon](./quickstart-create-nat-gateway-template.md)
 * NAT ağ geçidi kaynak API 'SI hakkında bilgi edinin
-  - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
-  - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway)
-  - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
+  - [REST API](/rest/api/virtualnetwork/natgateways)
+  - [Azure CLI](/cli/azure/network/nat/gateway)
+  - [PowerShell](/powershell/module/az.network/new-aznatgateway)
 * [Kullanılabilirlik alanları](../availability-zones/az-overview.md)hakkında bilgi edinin.
-* [Standart yük dengeleyici](../load-balancer/load-balancer-standard-overview.md)hakkında bilgi edinin.
+* [Standart yük dengeleyici](../load-balancer/load-balancer-overview.md)hakkında bilgi edinin.
 * [Kullanılabilirlik alanları ve standart yük dengeleyici](../load-balancer/load-balancer-standard-availability-zones.md)hakkında bilgi edinin.
 * [UserVoice 'Ta sanal ağ NAT için bir sonraki derleme yapmanız gerektiğini bize söyleyin](https://aka.ms/natuservoice).

@@ -9,16 +9,16 @@ ms.workload: infrastructure
 ms.date: 10/14/2020
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 4156308fa58ea1f02e6e3f2c5174839dc1cd381c
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 2731a7f263db223c258ddfc434bc84f59632d1f5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96841532"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223372"
 ---
 # <a name="shared-image-galleries-overview"></a>Paylaşılan görüntü galerilerine genel bakış
 
-Paylaşılan görüntü Galerisi, yansımalarınızın etrafında yapı ve kuruluş oluşturmanıza yardımcı olan bir hizmettir. Paylaşılan görüntü galerileri şunları sağlar:
+Paylaşılan Görüntü Galerisi, görüntüleriniz için bir yapı ve düzenleme oluşturmanıza yardımcı olan bir hizmettir. Paylaşılan görüntü galerileri şunları sağlar:
 
 - Görüntülerin genel çoğaltması.
 - Daha kolay yönetim için görüntülerin sürümü oluşturma ve gruplama.
@@ -157,7 +157,7 @@ En iyi deneyim için Galeri düzeyinde paylaşım yapmanızı öneririz. Ayrı g
 
 Görüntüler aynı zamanda çok kiracılı bir uygulama kaydı kullanan kiracılar arasında bile ölçeklenebilir şekilde paylaşılabilir. Kiracılar arasında görüntü paylaşma hakkında daha fazla bilgi için bkz. [Azure CLI](./linux/share-images-across-tenants.md) veya [PowerShell](./windows/share-images-across-tenants.md)kullanarak "Azure kiracılar genelinde Galeri VM görüntülerini paylaşma".
 
-## <a name="billing"></a>Faturalama
+## <a name="billing"></a>Faturalandırma
 Paylaşılan görüntü Galerisi hizmetinin kullanılması için ek ücret alınmaz. Aşağıdaki kaynaklar için ücretlendirilirsiniz:
 -   Her çoğaltmayı depolamanın depolama maliyeti. Depolama maliyeti bir anlık görüntü olarak ücretlendirilir ve görüntü sürümünün çok fazla boyutunu, görüntü sürümünün çoğaltmaların sayısını ve sürümün çoğaltılacağı bölge sayısını temel alır. 
 -   Kaynak bölgeden çoğaltılan bölgelere ilk görüntü sürümünün çoğaltılmasıyla ilgili ağ çıkış ücretleri. Sonraki çoğaltmalar bölge içinde işlenir, bu nedenle ek ücret alınmaz. 
@@ -170,12 +170,12 @@ Paylaşılan görüntü Galerisi hizmetinin kullanılması için ek ücret alın
 Oluşturulduktan sonra, görüntü Galerisi kaynaklarında bazı değişiklikler yapabilirsiniz. Bunlarla sınırlı:
  
 Paylaşılan görüntü Galerisi:
-- Açıklama
+- Description
 
 Görüntü tanımı:
 - Önerilen vCPU 'Lar
 - Önerilen bellek
-- Açıklama
+- Description
 - Yaşam tarihi sonu
 
 Görüntü sürümü:
@@ -316,6 +316,11 @@ Bir görüntü sürümü kullanan VM ve sanal makine ölçek kümesi dağıtıml
 ### <a name="can-i-update-my-virtual-machine-scale-set-created-using-managed-image-to-use-shared-image-gallery-images"></a>Paylaşılan görüntü Galerisi görüntülerini kullanmak için yönetilen görüntü kullanılarak oluşturulan sanal makine ölçek kümesini güncelleştirebilir miyim?
 
 Evet, işletim sistemi türü, Hyper-V üretimi ve görüntüler arasında eşleşen veri diski düzeni olduğu sürece, yönetilen bir görüntüden bir paylaşılan görüntü Galerisi görüntüsüne ölçek kümesi görüntü başvurusunu güncelleştirebilirsiniz.
+
+## <a name="troubleshoot-shared-image-gallery-issues"></a>Paylaşılan görüntü Galerisi sorunlarını giderme
+Paylaşılan görüntü Galerisi kaynakları üzerinde herhangi bir işlem gerçekleştirmeye yönelik sorunlarla karşılaşırsanız, [sorun giderme kılavuzundaki](troubleshooting-shared-images.md)yaygın hataların listesine bakın.
+
+Buna ek olarak, soru- `azure-virtual-machines-images` [cevap A&](/answers/topics/azure-virtual-machines-images.html), sorunuzu gönderebilirsiniz ve etiketleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

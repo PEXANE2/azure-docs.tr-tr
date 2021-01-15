@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 09/09/2020
-ms.openlocfilehash: 52b9a67ee8c11011ea04f7414a3d978f5860c0ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 698e65c4b982c5d639ffc666b394765fd04bd202
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708076"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222471"
 ---
 # <a name="commercial-marketplace-policies-and-terms"></a>Ticari market ilkeleri ve koşulları
 
@@ -27,9 +27,8 @@ Ticari Market 'teki teklifler, ilkeleriniz ve koşullarımızla uyumlu olmalıd�
 
 - [Ticari market sertifikasyon ilkeleri](/legal/marketplace/certification-policies?context=/azure/marketplace/context/context)
 - [Microsoft AppSource ve Azure Marketi İnceleme ilkeleri](/legal/marketplace/rating-review-policies?context=/azure/marketplace/context/context)
-- [Azure Market katılım ilkeleri](/legal/marketplace/participation-policy?context=/azure/marketplace/context/context)
 - [Azure Market koşulları](/legal/marketplace/terms?context=/azure/marketplace/context/context)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Microsoft ticari Market nedir?](overview.md)
+- [Microsoft ticari market nedir?](overview.md)

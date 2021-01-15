@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 57b2955f8cec059cd20d353eba31dc39ad992d50
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 3f9dd35959980eef4e1bec550bf7e9f583cf30d2
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97506317"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98225243"
 ---
 Bölgesel VNet tümleştirmesini kullanmak, uygulamanızın erişmesini sağlar:
 
@@ -48,7 +48,6 @@ Aynı bölgedeki sanal ağlar ile VNet tümleştirmesi kullanımıyla ilgili baz
 * Özelliği, bir Azure Resource Manager VNet 'te bir/28 veya daha büyük olan kullanılmayan bir alt ağ gerektirir.
 * Uygulama ve VNet aynı bölgede olmalıdır.
 * Tümleşik bir uygulamayla VNet 'i silemezsiniz. VNet 'i silmeden önce tümleştirmeyi kaldırın.
-* Yalnızca uygulama ile aynı abonelikte VNET 'ler ile tümleştirilebilir.
 * App Service planı başına yalnızca bir bölgesel VNet tümleştirmesi olabilir. Aynı App Service planındaki birden çok uygulama aynı VNet 'i kullanabilir.
 * Bölgesel VNet tümleştirmesi kullanan bir uygulama varken, bir uygulamanın veya planın aboneliğini değiştiremezsiniz.
 * Uygulamanız, yapılandırma değişiklikleri olmadan Azure DNS Özel Bölgeleri adresleri çözemez

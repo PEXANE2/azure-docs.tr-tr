@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: 1e46cf78c76e873bcb78af4942f42a5c4be45391
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: deb9f60cd3f75eacdf0adc06f6f7470819949555
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955595"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223236"
 ---
 # <a name="public-ip-addresses"></a>Genel IP adresleri
 
@@ -44,7 +44,7 @@ SKU yükseltmesi hakkında bilgi edinmek için [genel IP yükseltmesi](../virtua
 Genel IP adresleri aşağıdaki SKU'lardan biriyle oluşturulur:
 
 >[!IMPORTANT]
-> Yük dengeleyici ve genel IP kaynakları için eşleşen SKU 'Lar gereklidir. Temel SKU ve standart SKU kaynaklarını bir arada kullanamazsınız. Tek başına sanal makineleri, bir kullanılabilirlik kümesi kaynağındaki sanal makineleri veya sanal makine ölçek kümesi kaynaklarını aynı anda iki SKU’ya iliştiremezsiniz.  Yeni tasarımlarda standart SKU kaynakları kullanmayı düşünmelisiniz.  Lütfen ayrıntılar için [Standart Yük Dengeleyici](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)’yi inceleyin.
+> Yük dengeleyici ve genel IP kaynakları için eşleşen SKU 'Lar gereklidir. Temel SKU ve standart SKU kaynaklarını bir arada kullanamazsınız. Tek başına sanal makineleri, bir kullanılabilirlik kümesi kaynağındaki sanal makineleri veya sanal makine ölçek kümesi kaynaklarını aynı anda iki SKU’ya iliştiremezsiniz.  Yeni tasarımlarda standart SKU kaynakları kullanmayı düşünmelisiniz.  Lütfen ayrıntılar için [Standart Yük Dengeleyici](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)’yi inceleyin.
 
 ### <a name="standard"></a>Standart
 
@@ -52,13 +52,13 @@ Standart SKU genel IP adresleri:
 
 - Her zaman statik ayırma yöntemi kullanın.
 - 4-30 dakikalık, varsayılan 4 dakikalık, geçersiz giden kaynaklı Flow zaman aşımı süresi 4 dakikadan oluşan, ayarlanabilir bir gelen akış boşta kalma zaman aşımı süresi.
-- Varsayılan olarak güvenli hale getirin ve gelen trafiğe kapalıdır. [Ağ güvenlik grubuyla](security-overview.md#network-security-groups)gelen trafik listesine izin ver.
-- Ağ arabirimlerine, standart genel yük dengeleyicileri veya uygulama ağ geçitlerine atanır. Standart yük dengeleyici hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-- Bölgesel olarak yedekli (tüm 3 bölgeden reklam verebilir) ya da bölgesel (belirli bir kullanılabilirlik bölgesinde bir veya daha fazla garanti edilebilir) olabilir. Kullanılabilirlik alanları hakkında daha fazla bilgi için bkz. [Kullanılabilirlik alanlarına genel bakış](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ve [Standart Yük Dengeleyici ve Kullanılabilirlik Alanları](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json). **Bölgesel olarak yedekli IP 'Ler, yalnızca [3 kullanılabilirlik bölgesinin canlı olduğu bölgelerde](https://docs.microsoft.com/azure/availability-zones/az-region) oluşturulabilir.** Bölgeler etkin olmadan önce oluşturulan IP 'Ler bölge yedekli olmayacaktır.
-- [Bölgeler arası yük dengeleyiciler](https://docs.microsoft.com/azure/load-balancer/cross-region-overview) için her noktaya yayın ön uç IP 'si olarak kullanılabilir (Önizleme işlevselliği).
+- Varsayılan olarak güvenli hale getirin ve gelen trafiğe kapalıdır. [Ağ güvenlik grubuyla](./network-security-groups-overview.md#network-security-groups)gelen trafik listesine izin ver.
+- Ağ arabirimlerine, standart genel yük dengeleyicileri veya uygulama ağ geçitlerine atanır. Standart yük dengeleyici hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Bölgesel olarak yedekli (tüm 3 bölgeden reklam verebilir) ya da bölgesel (belirli bir kullanılabilirlik bölgesinde bir veya daha fazla garanti edilebilir) olabilir. Kullanılabilirlik alanları hakkında daha fazla bilgi için bkz. [Kullanılabilirlik alanlarına genel bakış](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ve [Standart Yük Dengeleyici ve Kullanılabilirlik Alanları](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json). **Bölgesel olarak yedekli IP 'Ler, yalnızca [3 kullanılabilirlik bölgesinin canlı olduğu bölgelerde](../availability-zones/az-region.md) oluşturulabilir.** Bölgeler etkin olmadan önce oluşturulan IP 'Ler bölge yedekli olmayacaktır.
+- [Bölgeler arası yük dengeleyiciler](../load-balancer/cross-region-overview.md) için her noktaya yayın ön uç IP 'si olarak kullanılabilir (Önizleme işlevselliği).
  
 > [!NOTE]
-> Standart SKU kaynağıyla gelen iletişim, bir [ağ güvenlik grubu](security-overview.md#network-security-groups) oluşturup ilişkilendirene ve istenen gelen trafiğe açıkça izin verene kadar başarısız olur.
+> Standart SKU kaynağıyla gelen iletişim, bir [ağ güvenlik grubu](./network-security-groups-overview.md#network-security-groups) oluşturup ilişkilendirene ve istenen gelen trafiğe açıkça izin verene kadar başarısız olur.
 
 > [!NOTE]
 > [Örnek meta veri hizmeti IDS](../virtual-machines/windows/instance-metadata-service.md)'leri kullanılırken yalnızca temel SKU 'Su olan genel IP adresleri kullanılabilir. Standart SKU desteklenmiyor.
@@ -150,7 +150,7 @@ Genel IP adresi için **dinamik** veya **statik** öğesini seçin. [IP adresler
 
 Bir yük dengeleyici ön ucuna dinamik veya statik bir genel IP adresi atayabilirsiniz. Yük dengeleyici ön ucuna birden çok genel IP adresi atayabilirsiniz. Bu yapılandırma, TLS tabanlı Web siteleriyle çok kiracılı bir ortam gibi [çok VIP](../load-balancer/load-balancer-multivip-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) senaryolarına izin vermez. 
 
-Azure yük dengeleyici SKU'ları hakkında daha fazla bilgi edinmek için bkz. [Azure yük dengeleyici standart SKU'su](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Azure yük dengeleyici SKU'ları hakkında daha fazla bilgi edinmek için bkz. [Azure yük dengeleyici standart SKU'su](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="vpn-gateways"></a>VPN ağ geçitleri
 
@@ -163,7 +163,7 @@ Uzak ağla iletişimi etkinleştirmek için VPN Gateway bir genel IP adresi atan
 
 ## <a name="application-gateways"></a>Uygulama ağ geçitleri
 
-Genel bir IP adresini bir Azure **Application Gateway**’in [ön uç](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) yapılandırmasına atayarak ağ geçidiyle ilişkilendirebilirsiniz. 
+Genel bir IP adresini bir Azure **Application Gateway**’in [ön uç](../application-gateway/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) yapılandırmasına atayarak ağ geçidiyle ilişkilendirebilirsiniz. 
 
 * Bir Application Gateway v1 ön uç yapılandırmasına **dinamik** temel genel IP atayın. 
 * Bir v2 ön uç yapılandırmasına **statik** standart SKU adresi atayın.
@@ -200,4 +200,3 @@ Genel IP adreslerinin nominal bir ücreti olabilir. Azure'da IP adresi fiyatland
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure 'Da özel IP adresleri](private-ip-addresses.md) hakkında bilgi edinin
 * [Azure portalını kullanarak statik genel IP ile VM dağıtma](virtual-network-deploy-static-pip-arm-portal.md)
-

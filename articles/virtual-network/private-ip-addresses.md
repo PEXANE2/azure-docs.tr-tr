@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: 13688b73c0cd73e13e407f1b75beb8dda61a754f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36db885cab734c037b0032c714de28b905595ef0
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84172378"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223270"
 ---
 # <a name="private-ip-addresses"></a>Özel IP adresleri
 Özel IP 'Ler, Azure 'daki kaynaklar arasında iletişime izin verir. 
@@ -62,7 +62,7 @@ Azure her alt ağ adres aralığında ilk dört adresi ayırır. Adresler kaynak
     
 ## <a name="virtual-machines"></a>Sanal makineler
 
-Bir veya daha fazla özel IP adresi bir veya daha fazla **ağ arabirimine**atandı. Ağ arabirimleri bir [Windows](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veya [Linux](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) sanal makinesine atanır. Her özel IP adresi için ayırma yöntemini dinamik veya statik olarak belirtebilirsiniz.
+Bir veya daha fazla özel IP adresi bir veya daha fazla **ağ arabirimine** atandı. Ağ arabirimleri bir [Windows](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veya [Linux](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) sanal makinesine atanır. Her özel IP adresi için ayırma yöntemini dinamik veya statik olarak belirtebilirsiniz.
 
 ### <a name="internal-dns-hostname-resolution-for-virtual-machines"></a>İç DNS ana bilgisayar adı çözümlemesi (sanal makineler için)
 
@@ -82,8 +82,8 @@ Azure tarafından yönetilen DNS ile yapılandırılmış VM 'Ler, aynı sanal a
 
 Bir için **ön uç** yapılandırmasına özel bir IP adresi atayabilirsiniz:
 
-* [Azure iç yük dengeleyici](../load-balancer/load-balancer-internal-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (ILB)
-* [Azure Application Gateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
+* [Azure iç yük dengeleyici](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (ILB)
+* [Azure Application Gateway](../application-gateway/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
 
 Bu özel IP adresi bir iç uç nokta olarak görev yapar. İç uç noktaya yalnızca kendi sanal ağı ve kendisine bağlı uzak ağlar içindeki kaynaklara erişilebilir. Dinamik veya statik bir IP atanabilir.
 
@@ -97,9 +97,9 @@ Kullanılabilecek olası ayırma yöntemleri de görüntülenir:
 
 | En üst düzey kaynak | IP adresi ilişkilendirme | Dinamik | Statik |
 | --- | --- | --- | --- |
-| Sanal makine |Ağ arabirimi |Evet |Evet |
-| Yük dengeleyici |Ön uç yapılandırması |Evet |Evet |
-| Uygulama ağ geçidi |Ön uç yapılandırması |Evet |Evet |
+| Sanal makine |Ağ arabirimi |Yes |Yes |
+| Yük dengeleyici |Ön uç yapılandırması |Yes |Yes |
+| Uygulama ağ geçidi |Ön uç yapılandırması |Yes |Yes |
 
 ## <a name="limits"></a>Sınırlar
 IP adresleme sınırları, Azure 'da [ağ için tüm sınırlar](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) kümesinde bulunur. Limitler bölge ve abonelik başınadır. Varsayılan limitleri iş ihtiyaçlarınıza göre maksimum sınırlara yükseltmek için [desteğe başvurun](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .

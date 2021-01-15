@@ -4,12 +4,12 @@ description: Bir Azure Kubernetes Service (AKS) kümesindeki uygulama taleplerin
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: e644a931152c83a5232c8233d519f7807ab708af
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5f0754638be1aa29672b6a59218a6c9d695261a5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542650"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223151"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ile bir kümeyi uygulama taleplerini karşılayacak şekilde otomatik olarak ölçeklendirme
 
@@ -130,14 +130,15 @@ Küme genelindeki otomatik Scaler profilindeki varsayılan değerleri değiştir
 | ölçeği azaltma-gereksiz-saat         | Düğüm ölçek azaltma için uygun hale gelmeden önce ne kadar süreyle gereksiz olması gerekir                  | 10 dakika    |
 | ölçeği daraltma-önceden hazırlanma-zaman          | Uygun olmayan bir düğümün ölçek azaltma için uygun olmadan önce ne kadar süreyle gereksiz olması gerekir         | 20 dakika    |
 | ölçeği azaltma-kullanım eşiği | Düğüm kullanım düzeyi, bir düğümün ölçek azaltma için kabul edileceği, kapasiteye göre bölünen istenen kaynakların toplamı olarak tanımlanır | 0,5 |
-| en yüksek-düzgün kapanma-sn     | Küme, bir düğümü ölçeklendirmeye çalışırken Pod sonlandırmasını bekleyen en fazla saniye sayısı. | 600 saniye   |
+| en yüksek-düzgün kapanma-sn     | Küme otomatik olarak bir düğümü ölçeklendirmeye çalışırken en fazla kaç saniye daha pod sonlandırmasını beklediği | 600 saniye   |
 | Bakiye-benzer düğüm grupları      | Benzer düğüm havuzlarını algılar ve aralarındaki düğüm sayısını dengeler                 | yanlış         |
-| iyi                         | Ölçeği artırma için kullanılacak düğüm havuzu [Genişleticisi](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) türü. Olası değerler: `most-pods` , `random` , `least-waste` | rastgele | 
+| iyi                         | Ölçeği artırma için kullanılacak düğüm havuzu [Genişleticisi](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) türü. Olası değerler: `most-pods` , `random` , `least-waste` , `priority` | rastgele | 
 | --Yerel depolama ile atla-düğümler    | True Cluster, otomatik olarak kümeleyici olan düğümleri yerel depolamayla hiçbir şekilde silmez, örneğin EmptyDir veya HostPath | true |
 | Atla-düğümler-sistem-pods      | True Cluster, otomatik olarak al, Kuto-System ' d e olan düğümleri hiçbir şekilde silmez (DaemonSet veya yansıtma Pod hariç) | true | 
-| maksimum-boş-toplu silme            | Aynı anda silinebilecek en fazla boş düğüm sayısı.                      | 10 düğüm      |
-| Yeni-Pod-ölçeği artırma gecikme           | CA 'nın Kubernetes Scheduler 'ın tüm yığınlarını zamanlamadan önce hareket etmesini istemediğiniz, veri bloğu/Batch ölçeği gibi senaryolar için, CA 'yı belirli bir yaş olmadan önce zamanlanmamış bods yok saymasını söyleyebilirsiniz.                                                                                                                | 10 saniye    |
-| en yüksek-toplam-önceden hazırlanmamış-yüzde     | Kümedeki izin verilen en fazla düğüm yüzdesi. Bu yüzde aşıldıktan sonra CA durdurma işlemleri | %45 | 
+| maksimum-boş-toplu silme            | Aynı anda silinebilecek en fazla boş düğüm sayısı                       | 10 düğüm      |
+| Yeni-Pod-ölçeği artırma gecikme           | CA 'nın, Kubernetes Scheduler 'ın tüm yığınlarını zamanlamadan önce hareket etmesini istemediğiniz, veri bloğu/Batch ölçeği gibi senaryolar için, CA 'nın belirli bir yaş olmadan önce zamanlanmamış Bob 'yi yoksaymasını söyleyebilirsiniz.                                                                                                                | 0 saniye    |
+| en yüksek-toplam-önceden hazırlanmamış-yüzde     | Kümedeki izin verilen en fazla düğüm yüzdesi. Bu yüzde aşıldıktan sonra CA durdurma işlemleri | %45 |
+| maksimum düğüm sağlama süresi          | Otomatik gizleme 'nin bir düğümün sağlanması için beklediği maksimum süre                           | 15 dakika    |   
 | Tamam-toplam-Ready-Count           | En yüksek toplam-hazırlanmamış-yüzdeden bağımsız olarak izin verilen, izin verilmeyen düğüm sayısı            | 3 düğüm       |
 
 > [!IMPORTANT]
@@ -249,7 +250,7 @@ Otomatik olarak kaydedilen öğeler hakkında daha fazla bilgi edinmek için [Ku
 
 Küme otomatik Scaler, [birden çok düğüm havuzu][aks-multiple-node-pools] etkin olarak birlikte kullanılabilir. Birden çok düğüm havuzunun nasıl etkinleştirileceğini ve var olan bir kümeye ek düğüm havuzları nasıl ekleneceğini öğrenmek için bu belgeyi izleyin. Her iki özelliği birlikte kullanırken kümedeki her bir düğüm havuzunda küme otomatik Scaler ' ı etkinleştirir ve her birine benzersiz otomatik ölçeklendirme kuralları geçirebilir.
 
-Aşağıdaki komut, bu belgede daha önce [ilk yönergeleri](#create-an-aks-cluster-and-enable-the-cluster-autoscaler) izlediğinizi ve mevcut düğüm havuzunun en büyük sayısını *3* ' ten *5* ' e kadar güncelleştirmek istediğinizi varsayar. Mevcut bir düğüm havuzunun ayarlarını güncelleştirmek için [az aks nodepool Update][az-aks-nodepool-update] komutunu kullanın.
+Aşağıdaki komut, bu belgede daha önce [ilk yönergeleri](#create-an-aks-cluster-and-enable-the-cluster-autoscaler) izlediğinizi ve mevcut düğüm havuzunun en büyük sayısını *3* ' ten *5*' e kadar güncelleştirmek istediğinizi varsayar. Mevcut bir düğüm havuzunun ayarlarını güncelleştirmek için [az aks nodepool Update][az-aks-nodepool-update] komutunu kullanın.
 
 ```azurecli-interactive
 az aks nodepool update \

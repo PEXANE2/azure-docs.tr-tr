@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: dd5197f99f7187e21eb466bfa213f68a7638e24d
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 54001cde76bd89305eb77544c6e6858defda6096
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045351"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222556"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>İlişkileri kullanarak dijital TWINS grafiğini yönetme
 
@@ -22,7 +22,7 @@ Azure dijital TWINS 'in kalbi, tüm ortamınızı temsil eden [ikizi grafiktir](
 
 Bu makale, ilişkilerin ve grafiğin tamamını yönetmeye odaklanır. tek tek dijital TWINS ile çalışmak için bkz. [*nasıl yapılır: dijital TWINS 'ı yönetme*](how-to-manage-twin.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
@@ -34,7 +34,7 @@ Ayrıca, Azure Digital TWINS (ADT) gezgin örneğini kullanarak grafiğinizde de
 
 [!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
-## <a name="create-relationships"></a>İlişki oluştur
+## <a name="create-relationships"></a>İlişki oluşturma
 
 İlişkiler, ikizi grafiğinin temelini oluşturan farklı dijital TWINS 'in birbirlerine nasıl bağlandığını tanımlar.
 
@@ -157,7 +157,7 @@ Yukarıdaki programın konsol çıktısı aşağıda verilmiştir:
 > [!TIP]
 > İkizi Graph, TWINS arasında ilişki oluşturma kavramıdır. İkizi grafiğinin görsel temsilini görüntülemek istiyorsanız, bu makalenin [*görselleştirme*](how-to-manage-graph.md#visualization) bölümüne bakın. 
 
-### <a name="create-a-twin-graph-from-a-csv-file"></a>CSV dosyasından bir ikizi grafiği oluşturma
+## <a name="create-graph-from-a-csv-file"></a>CSV dosyasından grafik oluşturma
 
 Pratik kullanım durumlarında, ikizi hiyerarşileri genellikle farklı bir veritabanında depolanan verilerden veya belki de bir elektronik tabloda veya CSV dosyasında oluşturulur. Bu bölümde, bir CSV dosyasından verileri okuma ve bunun dışında bir ikizi Graf oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir.
 

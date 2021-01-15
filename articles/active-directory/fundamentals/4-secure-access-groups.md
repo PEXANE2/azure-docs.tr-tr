@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e28714e2557027a3f8f5504f7052973a77720b6
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: f83e5584f8f9c6823e1259cb5e6034d8b13ae3a6
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97744264"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222386"
 ---
 # <a name="securing-external-access-with-groups"></a>Gruplarla dış erişimin güvenliğini sağlama 
 
@@ -26,7 +26,7 @@ Gruplar, herhangi bir erişim denetimi stratejisinin önemli bir parçasıdır. 
 
 Gruplar aşağıdaki erişim denetimi mekanizmalarının temeli olarak kullanılması için en iyi seçenektir:
 
-* Koşullu erişim ilkeleri
+* Koşullu Erişim ilkeleri
 
 * Yetkilendirme Yönetimi erişim paketleri 
 
@@ -86,7 +86,7 @@ Dinamik Gruplar hakkında daha fazla bilgi için, bkz [. Azure Active Directory 
 
 Güvenlik veya kaynak erişimi amacıyla grupları kullanırken, tek bir işleve sahip olmaları önemlidir. Kaynaklara erişim izni vermek için bir grup kullanılıyorsa, bu herhangi bir amaçla kullanılmamalıdır. Bir grup, konum veya takım üyeliğini tanımlamak gibi genel amaçlarla kullanılıyorsa, erişimin güvenliğini sağlamak için de kullanılmamalıdır. 
 
-Amacı açık hale getiren güvenlik grupları için bir adlandırma kuralı öneririz. Örnek:
+Amacı açık hale getiren güvenlik grupları için bir adlandırma kuralı öneririz. Örneğin:
 
 * *Secure_access_finance_apps*
 

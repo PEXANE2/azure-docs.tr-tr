@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: d38c57a8c8504e1e03406f7cd8a0b61725cb0511
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 7a665bf05167a6bdf20c7325c66a5d0e439aa7f1
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008099"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223695"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Azure SYNAPSE çalışma alanı için sürekli tümleştirme ve teslim
 
@@ -21,11 +21,11 @@ ms.locfileid: "97008099"
 
 Sürekli tümleştirme (CI), bir takım üyesinin sürüm denetimine değişiklik yaptığı her seferinde kodun derlemesini ve test edilmesini otomatikleştirme işlemidir. Sürekli dağıtım (CD), üretim ortamına birden çok test veya hazırlık ortamından derleme, test etme, yapılandırma ve dağıtma işlemidir.
 
-Azure SYNAPSE çalışma alanı için, sürekli tümleştirme ve teslim (CI/CD) tüm varlıkları bir ortamdan (geliştirme, test, üretim) diğerine taşır. Çalışma alanınızı başka bir çalışma alanına yükseltmek için iki bölüm vardır: çalışma alanı kaynakları oluşturmak veya güncelleştirmek için [Azure Resource Manager şablonları](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview) kullanın (havuzlar ve çalışma alanı); yapıtları (SQL betikleri, Not defteri, Spark iş tanımı, işlem hatları, veri kümeleri, veri akışları vb.) Azure DevOps 'daki SYNAPSE CI/CD araçlarıyla geçirin. 
+Azure SYNAPSE çalışma alanı için, sürekli tümleştirme ve teslim (CI/CD) tüm varlıkları bir ortamdan (geliştirme, test, üretim) diğerine taşır. Çalışma alanınızı başka bir çalışma alanına yükseltmek için iki bölüm vardır: çalışma alanı kaynakları oluşturmak veya güncelleştirmek için [Azure Resource Manager şablonları](../../azure-resource-manager/templates/overview.md) kullanın (havuzlar ve çalışma alanı); yapıtları (SQL betikleri, Not defteri, Spark iş tanımı, işlem hatları, veri kümeleri, veri akışları vb.) Azure DevOps 'daki SYNAPSE CI/CD araçlarıyla geçirin. 
 
 Bu makale, bir Synapse çalışma alanının birden çok ortama dağıtımını otomatik hale getirmek için Azure sürüm ardışık düzeni kullanılarak ana hatlarıyla sunulacaktır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 -   Geliştirme için kullanılan çalışma alanı Studio 'daki bir git deposu ile yapılandırılmış, bkz. [SYNAPSE Studio 'Da kaynak denetimi](source-control.md).
 -   Bir Azure DevOps projesi, yayın işlem hattını çalıştırmak için hazırlandı.
@@ -46,7 +46,7 @@ Bu makale, bir Synapse çalışma alanının birden çok ortama dağıtımını 
 
 1.  **Aşama adı** kutusuna ortamınızın adını girin.
 
-1.  **Yapıt Ekle**' yi seçin ve ardından geliştirme SYNAPSE Studio ile yapılandırılmış Git deposunu seçin. Havuzların ve çalışma alanının ARM şablonunu yönetmek için kullandığınız Git deposunu seçin. Kaynak olarak GitHub kullanıyorsanız, GitHub hesabınız ve çekme depolarınız için bir hizmet bağlantısı oluşturmanız gerekir. [Hizmet bağlantısı](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints) hakkında daha fazla bilgi için 
+1.  **Yapıt Ekle**' yi seçin ve ardından geliştirme SYNAPSE Studio ile yapılandırılmış Git deposunu seçin. Havuzların ve çalışma alanının ARM şablonunu yönetmek için kullandığınız Git deposunu seçin. Kaynak olarak GitHub kullanıyorsanız, GitHub hesabınız ve çekme depolarınız için bir hizmet bağlantısı oluşturmanız gerekir. [Hizmet bağlantısı](/azure/devops/pipelines/library/service-endpoints) hakkında daha fazla bilgi için 
 
     ![Yayın dalı Ekle](media/release-creation-github.png)
 
@@ -87,7 +87,7 @@ Bu makale, bir Synapse çalışma alanının birden çok ortama dağıtımını 
     ![izin ver](media/release-creation-grant-permission.png)
 
  > [!WARNING]
-> Tüm dağıtım modunda, kaynak grubunda bulunan ancak yeni Kaynak Yöneticisi şablonunda belirtilmeyen kaynaklar **silinir**. Daha fazla bilgi için lütfen [Azure Resource Manager dağıtım modlarına](https://docs.microsoft.com/azure/azure-resource-manager/templates/deployment-modes) başvurun
+> Tüm dağıtım modunda, kaynak grubunda bulunan ancak yeni Kaynak Yöneticisi şablonunda belirtilmeyen kaynaklar **silinir**. Daha fazla bilgi için lütfen [Azure Resource Manager dağıtım modlarına](../../azure-resource-manager/templates/deployment-modes.md) başvurun
 
 ## <a name="set-up-a-stage-task-for-artifacts-deployment"></a>Yapıt dağıtımı için bir aşama görevi ayarlama 
 
@@ -122,7 +122,7 @@ SYNAPSE çalışma alanı, SQL betiği, Not defteri, Spark iş tanımı, dataflo
 
 ## <a name="create-release-for-deployment"></a>Dağıtım için yayın oluştur 
 
-Tüm değişiklikleri kaydettikten sonra bir yayını el ile oluşturmak için **yayın oluştur** ' u seçebilirsiniz. Yayınların oluşturulmasını otomatikleştirmek için bkz. [Azure DevOps yayın Tetikleyicileri](https://docs.microsoft.com/azure/devops/pipelines/release/triggers)
+Tüm değişiklikleri kaydettikten sonra bir yayını el ile oluşturmak için **yayın oluştur** ' u seçebilirsiniz. Yayınların oluşturulmasını otomatikleştirmek için bkz. [Azure DevOps yayın Tetikleyicileri](/azure/devops/pipelines/release/triggers)
 
    ![Yayın oluştur ' u seçin](media/release-creation-manually.png)
 
@@ -133,6 +133,4 @@ SYNAPSE çalışma alanınız ile git tümleştirmesi kullanıyorsanız ve deği
 -   **Git tümleştirmesi**. Git tümleştirmesiyle yalnızca geliştirme SYNAPSE çalışma alanınızı yapılandırın. Test ve üretim çalışma alanlarındaki değişiklikler CI/CD aracılığıyla dağıtılır ve git tümleştirmesi gerekmez.
 -   **Yapıları yapıtları geçişten önce hazırlayın**. Geliştirme çalışma alanındaki havuzlara eklenmiş SQL betiği veya Not defteriniz varsa, farklı ortamlardaki havuzların adı da beklenmektedir. 
 -   **Kod olarak altyapı (IAC)**. Bir açıklayıcı modelde altyapının (ağlar, sanal makineler, yük dengeleyiciler ve bağlantı topolojisi) yönetimi, DevOps ekibinin kaynak kodu için kullandığı sürüm oluşturma 'yı kullanır. 
--   **Diğerleri**. Bkz. [ADF yapıtları için en iyi uygulamalar](/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)
-
-
+-   **Diğerleri**. Bkz. [ADF yapıtları için en iyi uygulamalar](../../data-factory/continuous-integration-deployment.md#best-practices-for-cicd)

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2020
 ms.author: blehr
 ms.custom: references_regions
-ms.openlocfilehash: 3e2905019244279129528c177a76291cb7d75e11
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: d6e8c4f4b6646254aeea12cf587f47047e661e3f
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825780"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222879"
 ---
 # <a name="upgrade-public-ip-addresses"></a>Genel IP adreslerini yükseltme
 
@@ -33,15 +33,15 @@ Bu makalede aşağıdaki senaryolar incelenmelidir:
 
 ## <a name="upgrade-public-ip-address-from-basic-to-standard-sku"></a>Genel IP adresini temel sunucudan standart SKU 'ya yükseltme
 
-Genel bir IP 'yi yükseltmek için, bu, herhangi bir kaynakla ilişkilendirilmemelidir (genel IP 'Lerin ilişkisini kaldırma hakkında daha fazla bilgi için [Bu sayfaya](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address) bakın).
+Genel bir IP 'yi yükseltmek için, bu, herhangi bir kaynakla ilişkilendirilmemelidir (genel IP 'Lerin ilişkisini kaldırma hakkında daha fazla bilgi için [Bu sayfaya](./virtual-network-public-ip-address.md#view-modify-settings-for-or-delete-a-public-ip-address) bakın).
 
 >[!IMPORTANT]
->Temel bilgisayarlardan standart SKU 'ya yükseltilen genel IP 'Ler, hiçbir [kullanılabilirlik](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones)alanına sahip olmaya devam eder.  Bu, bölgesel olarak yedekli olan veya bu, sunulan bölgelerde önceden belirtilmiş bir bölgeye bağlı bir Azure kaynağıyla ilişkilendirilemeyeceği anlamına gelir.
+>Temel bilgisayarlardan standart SKU 'ya yükseltilen genel IP 'Ler, hiçbir [kullanılabilirlik](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)alanına sahip olmaya devam eder.  Bu, bölgesel olarak yedekli olan veya bu, sunulan bölgelerde önceden belirtilmiş bir bölgeye bağlı bir Azure kaynağıyla ilişkilendirilemeyeceği anlamına gelir.
 
 ---
 # <a name="basic-to-standard---powershell"></a>[**Temel-standart-PowerShell**](#tab/option-upgrade-powershell)
 
-Aşağıdaki örnek, [Bu sayfada](https://docs.microsoft.com/azure/virtual-network/create-public-ip-powershell?tabs=option-create-public-ip-basic) , **myresourcegroup** Içinde temel genel IP **mybasicpublicıp** 'Si Ile verilen ÖRNEĞI kullanarak, temel SKU genel IP 'sini önceden oluşturmayı varsayar.
+Aşağıdaki örnek, [Bu sayfada](./create-public-ip-powershell.md?tabs=option-create-public-ip-basic) , **myresourcegroup** Içinde temel genel IP **mybasicpublicıp** 'Si Ile verilen ÖRNEĞI kullanarak, temel SKU genel IP 'sini önceden oluşturmayı varsayar.
 
 IP 'yi yükseltmek için PowerShell kullanarak aşağıdaki komutları yürütün.  Unutmayın IP adresi zaten statik olarak ayrılmışsa, bu bölüm atlanabilir.
 
@@ -63,7 +63,7 @@ Set-AzPublicIpAddress -PublicIpAddress $pubIP
 
 # <a name="basic-to-standard---cli"></a>[**Temel-standart-CLı**](#tab/option-upgrade-cli)
 
-Aşağıdaki örnek, [Bu sayfada](https://docs.microsoft.com/azure/virtual-network/create-public-ip-cli?tabs=option-create-public-ip-basic) , **myresourcegroup** Içinde temel genel IP **mybasicpublicıp** 'Si Ile verilen ÖRNEĞI kullanarak, temel SKU genel IP 'sini önceden oluşturmayı varsayar.
+Aşağıdaki örnek, [Bu sayfada](./create-public-ip-cli.md?tabs=option-create-public-ip-basic) , **myresourcegroup** Içinde temel genel IP **mybasicpublicıp** 'Si Ile verilen ÖRNEĞI kullanarak, temel SKU genel IP 'sini önceden oluşturmayı varsayar.
 
 IP 'yi yükseltmek için, yalnızca Azure CLı kullanarak aşağıdaki komutları yürütün.  Unutmayın IP adresi zaten statik olarak ayrılmışsa, bu bölüm atlanabilir.
 
@@ -95,7 +95,7 @@ Azure Resource Manager yeni becerilerinin avantajlarından yararlanmak için, ay
 
 # <a name="reserved-to-basic---powershell"></a>[**Temel-PowerShell 'e ayrılmıştır**](#tab/option-migrate-powershell)
 
-Aşağıdaki örnekte, **Myresourcegroup** içinde klasik bir Azure ayrılmış IP **myreservedip** 'nin önceki bir sürümünün oluşturulması varsayılmaktadır. Geçiş için başka bir önkoşul de Azure Resource Manager aboneliğin geçiş için kaydolmasında emin olunması sağlamaktır. Bu, [bu sayfanın](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-ps)3. ve 4. adımlarında ayrıntılı olarak ele alınmıştır.
+Aşağıdaki örnekte, **Myresourcegroup** içinde klasik bir Azure ayrılmış IP **myreservedip** 'nin önceki bir sürümünün oluşturulması varsayılmaktadır. Geçiş için başka bir önkoşul de Azure Resource Manager aboneliğin geçiş için kaydolmasında emin olunması sağlamaktır. Bu, [bu sayfanın](../virtual-machines/migration-classic-resource-manager-ps.md)3. ve 4. adımlarında ayrıntılı olarak ele alınmıştır.
 
 Ayrılmış IP geçirmek için PowerShell kullanarak aşağıdaki komutları yürütün.  Not IP adresi herhangi bir hizmetle ilişkili değilse (aşağıda **hizmetim** adlı bir hizmet varsa), bu adım atlanabilir.
 
@@ -119,7 +119,7 @@ Azure Resource Manager ' deki yeni bir kaynak grubu, geçirilen Ayrılmış IP a
 
 # <a name="reserved-to-basic---cli"></a>[**Temel CLı 'ye ayrılmıştır**](#tab/option-migrate-cli)
 
-Aşağıdaki örnekte, **Myresourcegroup** içinde klasik bir Azure ayrılmış IP **myreservedip** 'nin önceki bir sürümünün oluşturulması varsayılmaktadır. Geçiş için başka bir önkoşul de Azure Resource Manager aboneliğin geçiş için kaydolmasında emin olunması sağlamaktır. Bu, [bu sayfanın](https://docs.microsoft.com/azure/virtual-machines/linux/migration-classic-resource-manager-cli)3. ve 4. adımlarında ayrıntılı olarak ele alınmıştır.
+Aşağıdaki örnekte, **Myresourcegroup** içinde klasik bir Azure ayrılmış IP **myreservedip** 'nin önceki bir sürümünün oluşturulması varsayılmaktadır. Geçiş için başka bir önkoşul de Azure Resource Manager aboneliğin geçiş için kaydolmasında emin olunması sağlamaktır. Bu, [bu sayfanın](../virtual-machines/migration-classic-resource-manager-cli.md)3. ve 4. adımlarında ayrıntılı olarak ele alınmıştır.
 
 Ayrılmış IP geçirmek için, Azure CLı kullanarak aşağıdaki komutları yürütün.  Not IP adresi herhangi bir hizmetle ilişkili değilse (aşağıda **hizmetim** ve dağıtım **mydeployment** adlı bir hizmet varsa), bu adım atlanabilir.
 
@@ -145,12 +145,12 @@ Azure Resource Manager ' deki yeni bir kaynak grubu, geçirilen Ayrılmış IP a
 
 ## <a name="limitations"></a>Sınırlamalar
 
-* Temel bir genel IP 'yi yükseltmek için, herhangi bir Azure kaynağıyla ilişkilendirilemez.  Genel IP 'Lerin ilişkisini kaldırma hakkında daha fazla bilgi için lütfen [Bu sayfayı](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address) gözden geçirin.  Benzer şekilde, bir Ayrılmış IP geçirmek için herhangi bir bulut hizmeti ile ilişkilendirilemez.  Ayrılmış IP 'Lerin ilişkisini kaldırma hakkında daha fazla bilgi için lütfen [Bu sayfayı](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm) gözden geçirin.  
-* Temel ve standart SKU 'ya yükseltilen genel IP 'Ler, hiçbir [kullanılabilirlik](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones) alanına sahip olmaya devam eder ve bu nedenle bölge yedekli veya zonal olan bir Azure kaynağıyla ilişkilendirilemez.  Bu, yalnızca kullanılabilirlik alanları sunan bölgeler için geçerlidir.
+* Temel bir genel IP 'yi yükseltmek için, herhangi bir Azure kaynağıyla ilişkilendirilemez.  Genel IP 'Lerin ilişkisini kaldırma hakkında daha fazla bilgi için lütfen [Bu sayfayı](./virtual-network-public-ip-address.md#view-modify-settings-for-or-delete-a-public-ip-address) gözden geçirin.  Benzer şekilde, bir Ayrılmış IP geçirmek için herhangi bir bulut hizmeti ile ilişkilendirilemez.  Ayrılmış IP 'Lerin ilişkisini kaldırma hakkında daha fazla bilgi için lütfen [Bu sayfayı](./remove-public-ip-address-vm.md) gözden geçirin.  
+* Temel ve standart SKU 'ya yükseltilen genel IP 'Ler, hiçbir [kullanılabilirlik](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones) alanına sahip olmaya devam eder ve bu nedenle bölge yedekli veya zonal olan bir Azure kaynağıyla ilişkilendirilemez.  Bu, yalnızca kullanılabilirlik alanları sunan bölgeler için geçerlidir.
 * Standart 'dan temel 'e indirgeyemezsiniz.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-- Azure 'daki [genel IP adresleri](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) hakkında daha fazla bilgi edinmek IÇIN, SKU türleri arasındaki farkı ve [genel IP adresi ayarlarını](virtual-network-public-ip-address.md#create-a-public-ip-address)öğrenin.
-- [Azure genel yük dengeleyicilerini temel 'Ten standart sürümüne yükseltmeyi](https://docs.microsoft.com/azure/load-balancer/upgrade-basic-standard)öğrenin.
-- [Klasik Azure ayrılmış IP 'leri](https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) ve [Klasik kaynakların Azure Resource Manager geçişini](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview)anlayın.
+- Azure 'daki [genel IP adresleri](./public-ip-addresses.md#public-ip-addresses) hakkında daha fazla bilgi edinmek IÇIN, SKU türleri arasındaki farkı ve [genel IP adresi ayarlarını](virtual-network-public-ip-address.md#create-a-public-ip-address)öğrenin.
+- [Azure genel yük dengeleyicilerini temel 'Ten standart sürümüne yükseltmeyi](../load-balancer/upgrade-basic-standard.md)öğrenin.
+- [Klasik Azure ayrılmış IP 'leri](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) ve [Klasik kaynakların Azure Resource Manager geçişini](../virtual-machines/migration-classic-resource-manager-overview.md)anlayın.

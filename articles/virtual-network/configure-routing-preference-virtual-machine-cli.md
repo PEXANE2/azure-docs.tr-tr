@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: mnayak
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ccd04a43e6781e8d58234cc382b2739d800e5fe7
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: d375b860c6b23fd6033e985e23c6f12dfe9a3c68
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510684"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223576"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-azure-cli"></a>Azure CLı kullanarak bir VM için yönlendirme tercihini yapılandırma
 
@@ -58,7 +58,7 @@ Bir VM 'yi dağıtmadan önce, destekleyici ağ kaynakları (ağ güvenlik grubu
 
 ### <a name="create-a-network-security-group"></a>Ağ güvenlik grubu oluşturma
 
-[Az Network NSG Create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) ile VNET 'iniz içindeki gelen ve giden iletişimi yönetecek kurallar için bir ağ güvenlik grubu oluşturun
+[Az Network NSG Create](/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) ile VNET 'iniz içindeki gelen ve giden iletişimi yönetecek kurallar için bir ağ güvenlik grubu oluşturun
 
 ```azurecli
 az network nsg create \
@@ -69,7 +69,7 @@ az network nsg create \
 
 ### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
-[az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create) komutu ile bir sanal ağ oluşturun. Aşağıdaki örnek, alt ağ ile *Myvnet* adlı bir sanal ağ oluşturur *mysubnet*:
+[az network vnet create](/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create) komutu ile bir sanal ağ oluşturun. Aşağıdaki örnek, alt ağ ile *Myvnet* adlı bir sanal ağ oluşturur *mysubnet*:
 
 ```azurecli
 # Create a virtual network
@@ -89,7 +89,7 @@ az network vnet subnet create \
 
 ### <a name="create-a-nic"></a>NIC oluşturma
 
-[Az Network NIC Create](https://docs.microsoft.com/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create)komutuyla VM için BIR sanal NIC oluşturun. Aşağıdaki örnek, VM 'ye eklenecek bir sanal NIC oluşturur.
+[Az Network NIC Create](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create)komutuyla VM için BIR sanal NIC oluşturun. Aşağıdaki örnek, VM 'ye eklenecek bir sanal NIC oluşturur.
 
 ```azurecli-interactive
 # Create a NIC
@@ -105,7 +105,7 @@ az network nic create \
 
 ## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
-[az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) ile bir VM oluşturun. Aşağıdaki örnekte, zaten mevcut değilse, bir Windows Server 2019 VM ve gerekli sanal ağ bileşenleri oluşturulur.
+[az vm create](/cli/azure/vm?view=azure-cli-latest#az-vm-create) ile bir VM oluşturun. Aşağıdaki örnekte, zaten mevcut değilse, bir Windows Server 2019 VM ve gerekli sanal ağ bileşenleri oluşturulur.
 
 ```azurecli
 az vm create \
@@ -128,5 +128,5 @@ az group delete --name myResourceGroup --yes
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Genel IP adreslerinde yönlendirme tercihi](routing-preference-overview.md)hakkında daha fazla bilgi edinin.
-- Azure 'da [genel IP adresleri](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) hakkında daha fazla bilgi edinin.
+- Azure 'da [genel IP adresleri](./public-ip-addresses.md#public-ip-addresses) hakkında daha fazla bilgi edinin.
 - [Genel IP adresi ayarları](virtual-network-public-ip-address.md#create-a-public-ip-address)hakkında daha fazla bilgi edinin.

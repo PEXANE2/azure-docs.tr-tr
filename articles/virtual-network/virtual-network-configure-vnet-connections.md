@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: d6532747c50311ada4df6a0038bd0e05f4d9ce31
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: d9a87eca6a6c66d116817ced0f534a75033d48b9
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089703"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221485"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>Sanal ağ veya VPN bağlantılarını yapılandırma ve doğrulama
 
@@ -52,19 +52,19 @@ Azure sanal ağ eşlemesi 'ni uygulamaya ve yapılandırmaya başlamadan önce, 
 * Eşlenen sanal ağlarda çakışan IP adresi alanları olmalıdır.
 * Sanal ağ eşlemesi iki sanal ağ arasında gerçekleşir. Eşlemeler arasında türetilmiş geçişli ilişki yoktur. Örneğin, VNetA, VNetB ile eşlenirse ve VNetB VNetC ile eşlenirse VNetA, VNetC ile *eşlenmez* .
 
-Gereksinimleri karşıladığınızda, eşlemeyi oluşturmak ve yapılandırmak için [Azure Portal kullanarak sanal ağ eşlemesi ile sanal ağları bağlama öğreticisini](https://docs.microsoft.com/azure/virtual-network/virtual-network-create-peering) izleyebilirsiniz.
+Gereksinimleri karşıladığınızda, eşlemeyi oluşturmak ve yapılandırmak için [Azure Portal kullanarak sanal ağ eşlemesi ile sanal ağları bağlama öğreticisini](./tutorial-connect-virtual-networks-portal.md) izleyebilirsiniz.
 
 Eşleme yapılandırmasını denetlemek için aşağıdaki yöntemi kullanın:
 
 1. Gerekli [Roller ve izinlere](virtual-network-manage-peering.md#permissions)sahip bir hesap kullanarak [Azure Portal](https://portal.azure.com/) oturum açın.
-2. Portalın üst kısmındaki metin **arama kaynaklarını** içeren kutuda, **sanal ağlar**yazın. Arama sonuçlarında **sanal ağlar** göründüğünde, bunu seçin.
+2. Portalın üst kısmındaki metin **arama kaynaklarını** içeren kutuda, **sanal ağlar** yazın. Arama sonuçlarında **sanal ağlar** göründüğünde, bunu seçin.
 3. Görüntülenen **sanal ağlar** dikey penceresinde, eşleme oluşturmak istediğiniz sanal ağı seçin.
 4. Sanal ağ için görüntülenen bölmede, **Ayarlar** bölümünde **eşlemeler ' i seçin.**
 5. Bir eşleme seçin ve yapılandırma sonuçlarını görüntüleyin.
 
 ![Sanal ağ eşleme yapılandırmasını denetleme seçimleri](./media/virtual-network-configure-vnet-connections/4034496_en_1.png)
  
-Azure PowerShell için, sanal ağ eşlemesini almak üzere [Get-Azurermvirtualnetworkeşleme](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering?view=azurermps-4.1.0) komutunu çalıştırın. İşte bir örnek:
+Azure PowerShell için, sanal ağ eşlemesini almak üzere [Get-Azurermvirtualnetworkeşleme](/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering?view=azurermps-4.1.0) komutunu çalıştırın. Aşağıda bir örnek verilmiştir:
 
 ```
 PS C:\Users\User1> Get-AzureRmVirtualNetworkPeering -VirtualNetworkName Vnet10-01 -ResourceGroupName dev-vnets
@@ -93,12 +93,12 @@ Bir Kaynak Yöneticisi sanal ağdan, doğrudan başka bir Kaynak Yöneticisi san
 
 ### <a name="configure-a-vpn-connection-between-resource-manager-virtual-networks"></a>Kaynak Yöneticisi sanal ağlar arasında VPN bağlantısı yapılandırma
 
-Kaynak Yöneticisi sanal ağlar arasında IPSec olmadan bir bağlantı yapılandırmak için, bkz. [Azure Portal kullanarak ağdan ağa VPN Ağ Geçidi bağlantısı yapılandırma](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal).
+Kaynak Yöneticisi sanal ağlar arasında IPSec olmadan bir bağlantı yapılandırmak için, bkz. [Azure Portal kullanarak ağdan ağa VPN Ağ Geçidi bağlantısı yapılandırma](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md).
 
-İki Kaynak Yöneticisi sanal ağ arasında IPSec ile bir bağlantı yapılandırmak için, her bir sanal ağ için [Azure Portal bir siteden siteye bağlantı oluşturma](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal) bölümünde 1 ile 5 arasındaki adımları uygulayın.
+İki Kaynak Yöneticisi sanal ağ arasında IPSec ile bir bağlantı yapılandırmak için, her bir sanal ağ için [Azure Portal bir siteden siteye bağlantı oluşturma](../vpn-gateway/tutorial-site-to-site-portal.md) bölümünde 1 ile 5 arasındaki adımları uygulayın.
 
 > [!Note]
-> Bu adımlar yalnızca aynı abonelikteki sanal ağlarda çalışır. Sanal ağlarınız farklı aboneliklerdeyse, bağlantıyı kurmak için PowerShell kullanmanız gerekir. [PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps) makalesine bakın.
+> Bu adımlar yalnızca aynı abonelikteki sanal ağlarda çalışır. Sanal ağlarınız farklı aboneliklerdeyse, bağlantıyı kurmak için PowerShell kullanmanız gerekir. [PowerShell](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md) makalesine bakın.
 
 ### <a name="validate-the-vpn-connection-between-resource-manager-virtual-networks"></a>Kaynak Yöneticisi sanal ağlar arasındaki VPN bağlantısını doğrulama
 
@@ -120,7 +120,7 @@ VPN bağlantınızın doğru şekilde yapılandırıldığından emin olmak içi
 
 Farklı aboneliklerdeki ve farklı bölgelerdeki sanal ağlar arasında bir bağlantı oluşturabilirsiniz. Ağ Geçidi türünü rota tabanlı olarak yapılandırdığınız sürece, zaten şirket içi ağlarda bağlantıları olan sanal ağları da bağlayabilirsiniz.
 
-Klasik bir sanal ağ ile Kaynak Yöneticisi sanal ağ arasında bağlantı yapılandırmak için, bkz. [Azure Portal kullanarak farklı dağıtım modellerindeki sanal ağları bağlama](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-connect-different-deployment-models-portal).
+Klasik bir sanal ağ ile Kaynak Yöneticisi sanal ağ arasında bağlantı yapılandırmak için, bkz. [Azure Portal kullanarak farklı dağıtım modellerindeki sanal ağları bağlama](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md).
 
 ![Azure Resource Manager bir sanal ağa yönelik bir klasik sanal ağ bağlantısını gösteren diyagram.](./media/virtual-network-configure-vnet-connections/4034389_en_2.png)
 
@@ -148,27 +148,27 @@ Noktadan siteye VPN bağlantısı, yerel Windows VPN istemcisi aracılığıyla 
 
 Noktadan siteye bağlantılar için bir VPN cihazı gerekmez. VPN bağlantısını Güvenli Yuva Tünel Protokolü (SSTP) üzerinden oluşturur. Çeşitli dağıtım araçlarını ve dağıtım modellerini kullanarak bir sanal ağa Noktadan siteye bağlantı bağlayabilirsiniz:
 
-* [Azure portal kullanarak bir sanal ağa Noktadan siteye bağlantı yapılandırma](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal)
-* [Azure portal (klasik) kullanarak bir sanal ağa Noktadan siteye bağlantı yapılandırma](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal)
-* [PowerShell kullanarak bir sanal ağa Noktadan siteye bağlantı yapılandırma](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
+* [Azure portal kullanarak bir sanal ağa Noktadan siteye bağlantı yapılandırma](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)
+* [Azure portal (klasik) kullanarak bir sanal ağa Noktadan siteye bağlantı yapılandırma](../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md)
+* [PowerShell kullanarak bir sanal ağa Noktadan siteye bağlantı yapılandırma](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
 ### <a name="validate-your-point-to-site-connection"></a>Noktadan siteye bağlantınızı doğrulama
 
-[Sorun giderme makalesi: Azure Noktadan siteye bağlantı sorunları](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems) , Noktadan siteye bağlantılar ile ilgili yaygın sorunları açıklar.
+[Sorun giderme makalesi: Azure Noktadan siteye bağlantı sorunları](../vpn-gateway/vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md) , Noktadan siteye bağlantılar ile ilgili yaygın sorunları açıklar.
 
 ## <a name="create-a-multisite-vpn-connection"></a>Çoklu site VPN bağlantısı oluşturma
 
-Siteden siteye bağlantı, Noktadan siteye bağlantı veya ağdan ağa bağlantı içeren bir sanal ağa bağlantı sağlayan bir siteden siteye (Aşağıdaki diyagramda*S2S* ) ekleme yapabilirsiniz. Bu tür bir bağlantı genellikle *çok siteli* yapılandırma olarak adlandırılır. 
+Siteden siteye bağlantı, Noktadan siteye bağlantı veya ağdan ağa bağlantı içeren bir sanal ağa bağlantı sağlayan bir siteden siteye (Aşağıdaki diyagramda *S2S* ) ekleme yapabilirsiniz. Bu tür bir bağlantı genellikle *çok siteli* yapılandırma olarak adlandırılır. 
 
 ![Çoklu site bağlantısı](./media/virtual-network-configure-vnet-connections/4034497_en_2.png)
 
 Azure şu anda iki dağıtım modeliyle çalışır: Resource Manager ve klasik. İki model birbirleriyle tamamen uyumlu değildir. Farklı modellerle bir çoklu site bağlantısı yapılandırmak için aşağıdaki makalelere bakın:
 
-* [Mevcut bir VPN Ağ Geçidi bağlantısı ile bir sanal ağa siteden siteye bağlantı ekleme](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal)
-* [Mevcut bir VPN Ağ Geçidi bağlantısı ile bir sanal ağa siteden siteye bağlantı ekleme (klasik)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-multi-site)
+* [Mevcut bir VPN Ağ Geçidi bağlantısı ile bir sanal ağa siteden siteye bağlantı ekleme](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
+* [Mevcut bir VPN Ağ Geçidi bağlantısı ile bir sanal ağa siteden siteye bağlantı ekleme (klasik)](../vpn-gateway/vpn-gateway-multi-site.md)
 
 > [!Note]
-> Bu makalelerdeki adımlar Azure ExpressRoute ve siteden siteye birlikte var olan bağlantı yapılandırmalarına uygulanmaz. Daha fazla bilgi için bkz. [ExpressRoute ve siteden siteye birlikte var olan bağlantılar](https://docs.microsoft.com/azure/expressroute/expressroute-howto-coexist-resource-manager).
+> Bu makalelerdeki adımlar Azure ExpressRoute ve siteden siteye birlikte var olan bağlantı yapılandırmalarına uygulanmaz. Daha fazla bilgi için bkz. [ExpressRoute ve siteden siteye birlikte var olan bağlantılar](../expressroute/expressroute-howto-coexist-resource-manager.md).
 
 ## <a name="configure-transit-routing"></a>Geçiş yönlendirmeyi yapılandırma
 
@@ -178,20 +178,20 @@ Transit yönlendirme, zincirleme bir topolojide birden çok ağı bağladığın
 
 VNetA ve VNetB arasında siteden siteye VPN bağlantısı yapılandırmak istediğiniz senaryoyu düşünün. Ayrıca, istemcinin VNetA ağ geçidine bağlanması için Noktadan siteye VPN yapılandırmak isteyebilirsiniz. Ardından, Noktadan siteye istemcilerin VNetA aracılığıyla geçen VNetB 'ye bağlanması için geçiş yönlendirmeyi etkinleştirmek istersiniz. 
 
-Bu senaryo, VNetA ve VNetB arasındaki siteden siteye VPN üzerinde BGP etkinleştirildiğinde desteklenir. Daha fazla bilgi için bkz. [noktadan sıteye VPN yönlendirmesi hakkında](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-point-to-site-routing).
+Bu senaryo, VNetA ve VNetB arasındaki siteden siteye VPN üzerinde BGP etkinleştirildiğinde desteklenir. Daha fazla bilgi için bkz. [noktadan sıteye VPN yönlendirmesi hakkında](../vpn-gateway/vpn-gateway-about-point-to-site-routing.md).
 
 ### <a name="configure-transit-routing-in-an-expressroute-connection"></a>ExpressRoute bağlantısında geçiş yönlendirmeyi yapılandırma
 
-Azure ExpressRoute, bağlantı sağlayıcı tarafından kolaylaştırılan adanmış özel bağlantı üzerinden şirket içi ağlarınızı Microsoft bulutuna genişletmenizi sağlar. ExpressRoute'u kullanarak Microsoft Azure, Microsoft 365 ve Dynamics 365 gibi Microsoft bulut hizmetleriyle bağlantı kurabilirsiniz. Daha fazla bilgi için bkz. [ExpressRoute'a genel bakış](https://docs.microsoft.com/azure/expressroute/expressroute-introduction).
+Azure ExpressRoute, bağlantı sağlayıcı tarafından kolaylaştırılan adanmış özel bağlantı üzerinden şirket içi ağlarınızı Microsoft bulutuna genişletmenizi sağlar. ExpressRoute'u kullanarak Microsoft Azure, Microsoft 365 ve Dynamics 365 gibi Microsoft bulut hizmetleriyle bağlantı kurabilirsiniz. Daha fazla bilgi için bkz. [ExpressRoute'a genel bakış](../expressroute/expressroute-introduction.md).
 
 ![Azure sanal ağlarına ExpressRoute özel eşleme bağlantısı](./media/virtual-network-configure-vnet-connections/4034395_en_1.png)
 
 > [!Note]
-> VNetA ve VNetB 'nin aynı geopolitik bölgede olması durumunda, geçiş yönlendirmeyi yapılandırmak yerine [her iki sanal ağı ExpressRoute devresine bağlarsınız](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-arm) . Sanal ağlarınız farklı coğrafi bölge bölgeslarlardayken, [ExpressRoute Premium](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-premium)'a sahipseniz, bunları bağlantı hattına doğrudan da bağlayabilirsiniz. 
+> VNetA ve VNetB 'nin aynı geopolitik bölgede olması durumunda, geçiş yönlendirmeyi yapılandırmak yerine [her iki sanal ağı ExpressRoute devresine bağlarsınız](../expressroute/expressroute-howto-linkvnet-arm.md) . Sanal ağlarınız farklı coğrafi bölge bölgeslarlardayken, [ExpressRoute Premium](../expressroute/expressroute-faqs.md#expressroute-premium)'a sahipseniz, bunları bağlantı hattına doğrudan da bağlayabilirsiniz. 
 
-ExpressRoute ve siteden siteye birlikte bulunma varsa, geçiş yönlendirmesi desteklenmez. Daha fazla bilgi için bkz. [PowerShell kullanarak ExpressRoute ve siteden siteye yapılandırma](https://docs.microsoft.com/azure/expressroute/expressroute-howto-coexist-resource-manager).
+ExpressRoute ve siteden siteye birlikte bulunma varsa, geçiş yönlendirmesi desteklenmez. Daha fazla bilgi için bkz. [PowerShell kullanarak ExpressRoute ve siteden siteye yapılandırma](../expressroute/expressroute-howto-coexist-resource-manager.md).
 
-Yerel ağlarınızı bir Azure sanal ağına bağlamak için ExpressRoute 'u etkinleştirdiyseniz, geçiş yönlendirmesine sahip olmak istediğiniz sanal ağlar arasında eşlemeyi etkinleştirebilirsiniz. Yerel ağlarınızın uzak sanal ağa bağlanmasına izin vermek için [sanal ağ eşlemesini](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#gateways-and-on-premises-connectivity)yapılandırmanız gerekir. 
+Yerel ağlarınızı bir Azure sanal ağına bağlamak için ExpressRoute 'u etkinleştirdiyseniz, geçiş yönlendirmesine sahip olmak istediğiniz sanal ağlar arasında eşlemeyi etkinleştirebilirsiniz. Yerel ağlarınızın uzak sanal ağa bağlanmasına izin vermek için [sanal ağ eşlemesini](./virtual-network-peering-overview.md#gateways-and-on-premises-connectivity)yapılandırmanız gerekir. 
 
 > [!Note]
 > Sanal ağ eşlemesi yalnızca aynı bölgedeki sanal ağlarda kullanılabilir.
@@ -199,13 +199,13 @@ Yerel ağlarınızı bir Azure sanal ağına bağlamak için ExpressRoute 'u etk
 Sanal ağ eşlemesi için geçiş yönlendirmesi yapılandırılıp yapılandırılmadığını denetlemek için şu yönergeleri izleyin:
 
 1. Gerekli [Roller ve izinlere](virtual-network-manage-peering.md#permissions)sahip bir hesap kullanarak [Azure Portal](https://portal.azure.com/) oturum açın.
-2. Önceki diyagramda gösterildiği gibi [VNetA ve VNetB arasında bir eşleme oluşturun](https://docs.microsoft.com/azure/virtual-network/virtual-network-create-peering) . 
+2. Önceki diyagramda gösterildiği gibi [VNetA ve VNetB arasında bir eşleme oluşturun](./tutorial-connect-virtual-networks-portal.md) . 
 3. Sanal ağ için görüntülenen bölmede, **Ayarlar** bölümünde **eşlemeler ' i seçin.**
 4. Görüntülemek istediğiniz eşlemeyi seçin. Ardından, ExpressRoute bağlantı hattına bağlı VNetA ağında **ağ geçidi aktarımına Izin ver** ' i etkinleştirdiğini doğrulamak ve ExpressRoute bağlantı hattına bağlı olmayan uzak VNetB ağında **uzak ağ geçidini kullanmak** için **yapılandırma** ' yı seçin.
 
 ### <a name="configure-transit-routing-in-a-virtual-network-peering-connection"></a>Sanal ağ eşleme bağlantısında geçiş yönlendirmeyi yapılandırma
 
-Sanal ağlar eşlendiğinde, eşlenmiş sanal ağdaki ağ geçidini şirket içi bir ağa geçiş noktası olarak da yapılandırabilirsiniz. Sanal ağ eşağında bir geçiş yolu yapılandırmak için bkz. [ağdan ağa bağlantılar](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps?toc=/azure/virtual-network/toc.json).
+Sanal ağlar eşlendiğinde, eşlenmiş sanal ağdaki ağ geçidini şirket içi bir ağa geçiş noktası olarak da yapılandırabilirsiniz. Sanal ağ eşağında bir geçiş yolu yapılandırmak için bkz. [ağdan ağa bağlantılar](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 > [!Note]
 > Farklı dağıtım modelleriyle oluşturulan sanal ağlar arasındaki eşleme ilişkisinde ağ geçidi geçişi desteklenmez. Ağ Geçidi geçişinin çalışması için, eşleme ilişkisindeki her iki sanal ağın da Kaynak Yöneticisi kullanılarak oluşturulmuş olması gerekir.
@@ -213,52 +213,52 @@ Sanal ağlar eşlendiğinde, eşlenmiş sanal ağdaki ağ geçidini şirket içi
 Sanal ağ eşlemesi için bir geçiş yolu yapılandırılıp yapılandırılmadığını denetlemek için şu yönergeleri izleyin:
 
 1. Gerekli [Roller ve izinlere](virtual-network-manage-peering.md#permissions)sahip bir hesap kullanarak [Azure Portal](https://portal.azure.com/) oturum açın.
-2. Portalın üst kısmındaki metin **arama kaynaklarını** içeren kutuda, **sanal ağlar**yazın. Arama sonuçlarında **sanal ağlar** göründüğünde, bunu seçin.
+2. Portalın üst kısmındaki metin **arama kaynaklarını** içeren kutuda, **sanal ağlar** yazın. Arama sonuçlarında **sanal ağlar** göründüğünde, bunu seçin.
 3. Görüntülenen **sanal ağlar** dikey penceresinde, eşleme ayarını denetlemek istediğiniz sanal ağı seçin.
 4. Seçtiğiniz sanal ağ için görüntülenen bölmede, **Ayarlar** bölümünde **eşlemeler ' i seçin.**
-5. Görüntülemek istediğiniz eşlemeyi seçin. **Ağ geçidi aktarımına Izin ver** ' i etkinleştirdiğini ve **yapılandırma**altında **uzak ağ geçitlerini kullanacağınızı** doğrulayın.
+5. Görüntülemek istediğiniz eşlemeyi seçin. **Ağ geçidi aktarımına Izin ver** ' i etkinleştirdiğini ve **yapılandırma** altında **uzak ağ geçitlerini kullanacağınızı** doğrulayın.
 
 ![Sanal ağ eşlemesi için bir geçiş yolu yapılandırdığınıza yönelik seçimler](./media/virtual-network-configure-vnet-connections/4035414_en_1.png)
 
 ### <a name="configure-transit-routing-in-a-network-to-network-connection"></a>Ağdan ağa bağlantıda geçiş yönlendirmeyi yapılandırma
 
-Sanal ağlar arasında geçiş yönlendirmeyi yapılandırmak için, Kaynak Yöneticisi dağıtım modelini ve PowerShell 'i kullanarak tüm ara ağdan ağa bağlantılar üzerinde BGP 'yi etkinleştirmelisiniz. Yönergeler için bkz. [PowerShell kullanarak Azure VPN ağ geçitlerinde BGP yapılandırma](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-bgp-resource-manager-ps).
+Sanal ağlar arasında geçiş yönlendirmeyi yapılandırmak için, Kaynak Yöneticisi dağıtım modelini ve PowerShell 'i kullanarak tüm ara ağdan ağa bağlantılar üzerinde BGP 'yi etkinleştirmelisiniz. Yönergeler için bkz. [PowerShell kullanarak Azure VPN ağ geçitlerinde BGP yapılandırma](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md).
 
 Azure VPN ağ geçitleri aracılığıyla geçiş trafiği, klasik dağıtım modeli aracılığıyla yapılabilir, ancak ağ yapılandırma dosyasında statik olarak tanımlanan adres alanlarını kullanır. Azure sanal ağları ve VPN Gateway 'ler ile klasik dağıtım modeli üzerinden BGP henüz desteklenmiyor. BGP olmadan, transit adres alanlarını el ile tanımlamak hataya açıktır ve bunu önermiyoruz.
 
 > [!Note]
-> Klasik Azure portalını kullanarak veya klasik portalda bir ağ yapılandırma dosyası kullanarak, klasik ağdan ağa bağlantıları yapılandırırsınız. Azure Resource Manager dağıtım modeli veya Azure portal aracılığıyla klasik bir sanal ağ oluşturamaz veya değiştiremezsiniz. Klasik sanal ağlar için geçiş yönlendirme hakkında daha fazla bilgi için bkz. [Microsoft Developer blogu](https://blogs.msdn.microsoft.com/igorpag/2015/10/01/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-using-vpn-v1/).
+> Klasik Azure portalını kullanarak veya klasik portalda bir ağ yapılandırma dosyası kullanarak, klasik ağdan ağa bağlantıları yapılandırırsınız. Azure Resource Manager dağıtım modeli veya Azure portal aracılığıyla klasik bir sanal ağ oluşturamaz veya değiştiremezsiniz. Klasik sanal ağlar için geçiş yönlendirme hakkında daha fazla bilgi için bkz. [Microsoft Developer blogu](/archive/blogs/igorpag/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-using-vpn-v1).
 
 ### <a name="configure-transit-routing-in-a-site-to-site-connection"></a>Siteden siteye bağlantıda geçiş yönlendirmeyi yapılandırma
 
-Şirket içi ağınız ile siteden siteye bağlantısı olan bir sanal ağ arasında geçiş yönlendirmeyi yapılandırmak için, Kaynak Yöneticisi dağıtım modelini ve PowerShell 'i kullanarak tüm ara siteden siteye bağlantılar üzerinde BGP 'yi etkinleştirmelisiniz. Yönergeler için bkz. [PowerShell kullanarak Azure VPN ağ geçitlerinde BGP yapılandırma](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-bgp-resource-manager-ps) .
+Şirket içi ağınız ile siteden siteye bağlantısı olan bir sanal ağ arasında geçiş yönlendirmeyi yapılandırmak için, Kaynak Yöneticisi dağıtım modelini ve PowerShell 'i kullanarak tüm ara siteden siteye bağlantılar üzerinde BGP 'yi etkinleştirmelisiniz. Yönergeler için bkz. [PowerShell kullanarak Azure VPN ağ geçitlerinde BGP yapılandırma](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md) .
 
 Azure VPN ağ geçitleri aracılığıyla geçiş trafiği, klasik dağıtım modeli aracılığıyla yapılabilir, ancak ağ yapılandırma dosyasında statik olarak tanımlanan adres alanlarını kullanır. Azure sanal ağları ve VPN Gateway 'ler ile klasik dağıtım modeli üzerinden BGP henüz desteklenmiyor. BGP olmadan, transit adres alanlarını el ile tanımlamak hataya açıktır ve bunu önermiyoruz.
 
 > [!Note]
-> Klasik siteden siteye bağlantıları klasik Azure portalını kullanarak veya klasik portalda bir ağ yapılandırma dosyası kullanarak yapılandırırsınız. Azure Resource Manager dağıtım modeli veya Azure portal aracılığıyla klasik bir sanal ağ oluşturamaz veya değiştiremezsiniz. Klasik sanal ağlar için geçiş yönlendirme hakkında daha fazla bilgi için bkz. [Microsoft Developer blogu](https://blogs.msdn.microsoft.com/igorpag/2015/10/01/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-using-vpn-v1/).
+> Klasik siteden siteye bağlantıları klasik Azure portalını kullanarak veya klasik portalda bir ağ yapılandırma dosyası kullanarak yapılandırırsınız. Azure Resource Manager dağıtım modeli veya Azure portal aracılığıyla klasik bir sanal ağ oluşturamaz veya değiştiremezsiniz. Klasik sanal ağlar için geçiş yönlendirme hakkında daha fazla bilgi için bkz. [Microsoft Developer blogu](/archive/blogs/igorpag/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-using-vpn-v1).
 
 ## <a name="configure-bgp-for-a-vpn-gateway"></a>Bir VPN ağ geçidi için BGP yapılandırma
 
 BGP, iki veya daha fazla ağ arasında yönlendirme ve ulaşılabilirlik bilgilerini değiş tokuş etmek için internet 'te kullanılan standart yönlendirme protokolüdür. BGP, Azure sanal ağları bağlamında kullanıldığında, Azure VPN ağ geçitlerini ve BGP eşleri veya komşuları olarak bilinen şirket içi VPN cihazlarınızı sunar. Her iki ağ geçidini, bu öneklerdeki ağ geçitleri veya yönlendiriciler arasında gidip ulaşılabilmesi için kullanılabilirlik ve ulaşılabilirlik konusunda bilgilendiren "rotalar" şeklinde değiş tokuş ederler. 
 
-BGP, bir BGP ağ geçidinin bir BGP eşinden diğer tüm BGP eşlerine öğrenme yollarını yayarak birden çok ağ arasında geçiş yönlendirmeyi de etkinleştirebilir. Daha fazla bilgi için bkz. [Azure VPN Gateway Ile BGP 'ye genel bakış](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-bgp-overview).
+BGP, bir BGP ağ geçidinin bir BGP eşinden diğer tüm BGP eşlerine öğrenme yollarını yayarak birden çok ağ arasında geçiş yönlendirmeyi de etkinleştirebilir. Daha fazla bilgi için bkz. [Azure VPN Gateway Ile BGP 'ye genel bakış](../vpn-gateway/vpn-gateway-bgp-overview.md).
 
 ### <a name="configure-bgp-for-a-vpn-connection"></a>VPN bağlantısı için BGP 'yi yapılandırma
 
-BGP kullanan bir VPN bağlantısı yapılandırmak için bkz. [PowerShell kullanarak Azure VPN ağ geçitlerinde BGP yapılandırma](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-bgp-resource-manager-ps).
+BGP kullanan bir VPN bağlantısı yapılandırmak için bkz. [PowerShell kullanarak Azure VPN ağ geçitlerinde BGP yapılandırma](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md).
 
-Sanal ağ geçidinde BGP 'yi, için bir otonom sistem (AS) numarası oluşturarak etkinleştirin. Temel ağ geçitleri BGP 'yi desteklemez. Ağ geçidinin SKU 'sunu denetlemek için Azure portal **VPN Gateway** dikey penceresinin **genel bakış** bölümüne gidin. SKU 'nuzu **temel**Ise, SKU 'yu (bkz. [ağ geçidini yeniden boyutlandırma](https://docs.microsoft.com/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway?view=azurermps-4.1.0&viewFallbackFrom=azurermps-4.0.0)) **VpnGw1**olarak değiştirmeniz gerekir. 
+Sanal ağ geçidinde BGP 'yi, için bir otonom sistem (AS) numarası oluşturarak etkinleştirin. Temel ağ geçitleri BGP 'yi desteklemez. Ağ geçidinin SKU 'sunu denetlemek için Azure portal **VPN Gateway** dikey penceresinin **genel bakış** bölümüne gidin. SKU 'nuzu **temel** Ise, SKU 'yu (bkz. [ağ geçidini yeniden boyutlandırma](/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway?view=azurermps-4.1.0&viewFallbackFrom=azurermps-4.0.0)) **VpnGw1** olarak değiştirmeniz gerekir. 
 
-SKU 'nun denetlenmesi, 20 ila 30 dakika kapalı kalma süresine neden olur. Ağ geçidinin doğru SKU 'SU varsa, [set-AzureRmVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway?view=azurermps-3.8.0) PowerShell cmdlet 'INI kullanarak as numarasını ekleyebilirsiniz. AS numarasını yapılandırdıktan sonra, ağ geçidi için bir BGP eşi IP 'si otomatik olarak sunulacaktır.
+SKU 'nun denetlenmesi, 20 ila 30 dakika kapalı kalma süresine neden olur. Ağ geçidinin doğru SKU 'SU varsa, [set-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway?view=azurermps-3.8.0) PowerShell cmdlet 'INI kullanarak as numarasını ekleyebilirsiniz. AS numarasını yapılandırdıktan sonra, ağ geçidi için bir BGP eşi IP 'si otomatik olarak sunulacaktır.
 
-`LocalNetworkGateway`BIR as numarasıyla ve BGP eş adresiyle el ile sağlamanız gerekir. `ASN`Ve `-BgpPeeringAddress` değerlerini [New-azurermlocalnetworkgateway](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermlocalnetworkgateway?view=azurermps-4.1.0) veya [set-azurermlocalnetworkgateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermlocalnetworkgateway?view=azurermps-4.1.0) PowerShell komutlet kullanarak ayarlayabilirsiniz. Bazı AS numaraları Azure için ayrılmıştır ve [azure VPN Gateway Ile BGP hakkında](../vpn-gateway/vpn-gateway-bgp-overview.md#faq)bölümünde açıklandığı gibi bunları kullanamazsınız.
+`LocalNetworkGateway`BIR as numarasıyla ve BGP eş adresiyle el ile sağlamanız gerekir. `ASN`Ve `-BgpPeeringAddress` değerlerini [New-azurermlocalnetworkgateway](/powershell/module/azurerm.network/new-azurermlocalnetworkgateway?view=azurermps-4.1.0) veya [set-azurermlocalnetworkgateway](/powershell/module/azurerm.network/set-azurermlocalnetworkgateway?view=azurermps-4.1.0) PowerShell komutlet kullanarak ayarlayabilirsiniz. Bazı AS numaraları Azure için ayrılmıştır ve [azure VPN Gateway Ile BGP hakkında](../vpn-gateway/vpn-gateway-bgp-overview.md#faq)bölümünde açıklandığı gibi bunları kullanamazsınız.
 
-Bağlantı nesnesi BGP 'nin etkin olması gerekir. `-EnableBGP`Değeri `$True` [New-azurermvirtualnetworkgatewayconnection](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0) veya [set-azurermvirtualnetworkgatewayconnection](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0)aracılığıyla olarak ayarlayabilirsiniz.
+Bağlantı nesnesi BGP 'nin etkin olması gerekir. `-EnableBGP`Değeri `$True` [New-azurermvirtualnetworkgatewayconnection](/powershell/module/azurerm.network/new-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0) veya [set-azurermvirtualnetworkgatewayconnection](/powershell/module/azurerm.network/set-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0)aracılığıyla olarak ayarlayabilirsiniz.
 
 ### <a name="validate-the-bgp-configuration"></a>BGP yapılandırmasını doğrulama
 
-BGP 'nin doğru yapılandırılıp yapılandırılmadığını denetlemek için `get-AzureRmVirtualNetworkGateway` ve `get-AzureRmLocalNetworkGateway` cmdlet 'lerini çalıştırabilirsiniz. Daha sonra, bölümünde BGP ile ilgili çıkış olduğunu fark edeceksiniz `BgpSettingsText` . Örnek:
+BGP 'nin doğru yapılandırılıp yapılandırılmadığını denetlemek için `get-AzureRmVirtualNetworkGateway` ve `get-AzureRmLocalNetworkGateway` cmdlet 'lerini çalıştırabilirsiniz. Daha sonra, bölümünde BGP ile ilgili çıkış olduğunu fark edeceksiniz `BgpSettingsText` . Örneğin:
 
 ```
 {
@@ -278,11 +278,11 @@ Etkin/etkin ve etkin/hazır ağ geçitleri arasındaki temel farklılıklar şun
 
 * İki genel IP adresi ile iki ağ geçidi IP yapılandırması oluşturmanız gerekir.
 * **Enableactiveactivefeature** bayrağını ayarlamanız gerekir.
-* Ağ Geçidi SKU 'SU **VpnGw1**, **VpnGw2**veya **VpnGw3**olmalıdır.
+* Ağ Geçidi SKU 'SU **VpnGw1**, **VpnGw2** veya **VpnGw3** olmalıdır.
 
-Şirketler arası ve ağdan ağa bağlantı için yüksek kullanılabilirlik elde etmek için birden çok VPN ağ geçidi dağıtmanız ve ağlarınız ile Azure arasında birden çok paralel bağlantı oluşturmanız gerekir. Bağlantı seçeneklerine ve topolojisine genel bir bakış için bkz. [yüksek oranda kullanılabilir şirket içi ve ağdan ağa bağlantı](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-highlyavailable).
+Şirketler arası ve ağdan ağa bağlantı için yüksek kullanılabilirlik elde etmek için birden çok VPN ağ geçidi dağıtmanız ve ağlarınız ile Azure arasında birden çok paralel bağlantı oluşturmanız gerekir. Bağlantı seçeneklerine ve topolojisine genel bir bakış için bkz. [yüksek oranda kullanılabilir şirket içi ve ağdan ağa bağlantı](../vpn-gateway/vpn-gateway-highlyavailable.md).
 
-Etkin/etkin ormanlar arası ve ağdan ağa bağlantılar oluşturmak için, Azure [VPN ağ geçitleri ile etkin/ETKIN S2S VPN bağlantılarını yapılandırma](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-activeactive-rm-powershell) bölümündeki yönergeleri IZLEYEREK Azure VPN Gateway 'i etkin/etkin modda yapılandırın.
+Etkin/etkin ormanlar arası ve ağdan ağa bağlantılar oluşturmak için, Azure [VPN ağ geçitleri ile etkin/ETKIN S2S VPN bağlantılarını yapılandırma](../vpn-gateway/vpn-gateway-activeactive-rm-powershell.md) bölümündeki yönergeleri IZLEYEREK Azure VPN Gateway 'i etkin/etkin modda yapılandırın.
 
 > [!Note]  
 > * BGP özellikli etkin/etkin mod için yerel ağ geçidine adres eklediğinizde, *BGP eşlerinin yalnızca/32 adreslerini ekleyin*. Daha fazla adres eklerseniz, bu adresler statik yollar olarak değerlendirilir ve BGP rotalarıyla önceliklidir.
@@ -296,15 +296,14 @@ Bir ağ geçidini silmek ve oluşturmak için aşağıdaki adımları izleyin:
 
 1. Özgün ağ geçidiyle ilişkili tüm bağlantıları silin.
 2. Azure portal, PowerShell veya klasik PowerShell 'i kullanarak ağ geçidini silin: 
-   * [Azure portal kullanarak bir sanal ağ geçidini silme](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-delete-vnet-gateway-portal)
-   * [PowerShell kullanarak bir sanal ağ geçidini silme](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-delete-vnet-gateway-powershell)
-   * [PowerShell kullanarak bir sanal ağ geçidini silme (klasik)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-delete-vnet-gateway-classic-powershell)
-3. İstenen türde yeni ağ geçidini oluşturmak için [VPN ağ geçidini oluşturma](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway) bölümündeki adımları IZLEYIN ve VPN kurulumunu tamamlayın.
+   * [Azure portal kullanarak bir sanal ağ geçidini silme](../vpn-gateway/vpn-gateway-delete-vnet-gateway-portal.md)
+   * [PowerShell kullanarak bir sanal ağ geçidini silme](../vpn-gateway/vpn-gateway-delete-vnet-gateway-powershell.md)
+   * [PowerShell kullanarak bir sanal ağ geçidini silme (klasik)](../vpn-gateway/vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+3. İstenen türde yeni ağ geçidini oluşturmak için [VPN ağ geçidini oluşturma](../vpn-gateway/tutorial-site-to-site-portal.md#VNetGateway) bölümündeki adımları IZLEYIN ve VPN kurulumunu tamamlayın.
 
 > [!Note]
 > Bu işlem yaklaşık 60 dakika sürer.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure VM’leri arasında bağlantı sorunlarını giderme](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-connectivity-problem-between-vms)
-
+* [Azure VM’leri arasında bağlantı sorunlarını giderme](./virtual-network-troubleshoot-connectivity-problem-between-vms.md)

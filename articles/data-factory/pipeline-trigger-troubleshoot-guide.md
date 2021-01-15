@@ -7,46 +7,40 @@ ms.date: 12/15/2020
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: 0e67a316b012eda61607c84edfd8e10d6aa3318d
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 0ceee3c65e8c4df5d843bb441fb6426a0f4eb696
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589177"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220278"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>Azure Data Factory 'da işlem hattı düzenleme ve Tetikleyicileri sorunlarını giderme
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure Data Factory'de işlem hattı çalıştırması, bir işlem hattı yürütme örneğini tanımlar. Örneğin, 8:00, 9:00 ve 10:00 ' de yürütülen bir işlem hattına sahipsiniz. Bu durumda, işlem hattının veya işlem hattı çalıştırmalarının üç ayrı çalıştırması vardır. Her işlem hattı çalıştırması benzersiz bir işlem hattı çalıştırma kimliğine sahiptir. Çalıştırma KIMLIĞI, belirli bir işlem hattının çalıştırılacağını tanımlayan bir GUID (genel benzersiz tanımlayıcıdır).
+Azure Data Factory'de işlem hattı çalıştırması, bir işlem hattı yürütme örneğini tanımlar. Örneğin, 8:00, 9:00 ve 10:00 ' de çalışan bir işlem hattınızı varsayalım. Bu durumda, üç ayrı işlem hattı çalıştırması vardır. Her işlem hattı çalıştırması benzersiz bir işlem hattı çalıştırma kimliğine sahiptir. Çalıştırma KIMLIĞI, belirli bir işlem hattının çalıştırılacağını tanımlayan bir genel benzersiz tanımlayıcıdır (GUID).
 
-İşlem hattı çalıştırmaları örneği genelde bağımsız değişkenlerin işlem hatlarında tanımladığınız parametrelere iletilmesiyle oluşturulur. İşlem hattını el ile veya bir tetikleyici kullanarak çalıştırabilirsiniz. Ayrıntılar için [Azure Data Factory Işlem hattı yürütme ve tetikleyicilere](concepts-pipeline-execution-triggers.md) bakın.
+İşlem hattı çalıştırmaları örneği genelde bağımsız değişkenlerin işlem hatlarında tanımladığınız parametrelere iletilmesiyle oluşturulur. Bir işlem hattını el ile veya bir tetikleyici kullanarak çalıştırabilirsiniz. Ayrıntılar için bkz. işlem [hattı yürütme ve tetikleyiciler Azure Data Factory](concepts-pipeline-execution-triggers.md) .
 
 ## <a name="common-issues-causes-and-solutions"></a>Yaygın sorunlar, nedenler ve çözümler
 
-### <a name="pipeline-with-azure-function-throws-error-with-private-end-point-connectivity"></a>Azure Işlevi ile işlem hattı özel uç nokta bağlantısı ile hata oluşturuyor
+### <a name="an-azure-functions-app-pipeline-throws-an-error-with-private-endpoint-connectivity"></a>Azure Işlevleri uygulama işlem hattı, Özel uç nokta bağlantısı ile ilgili bir hata oluşturur
  
-#### <a name="issue"></a>Sorun
-Bazı bağlamda, özel bir uç nokta üzerinde çalışan Data Factory ve Azure İşlev Uygulaması sahip olursunuz. Azure İşlev Uygulaması çalışmak üzere etkileşim kuran bir işlem hattı almaya çalışıyorsunuz. Üç farklı yöntem denediniz, ancak bir hata döndürüyor `Bad Request` , diğer iki yöntem geri döndürüyor `103 Error Forbidden` .
+Data Factory ve özel bir uç noktada çalışan bir Azure işlev uygulamanız var. İşlev uygulamasıyla etkileşime giden bir işlem hattı çalıştırmaya çalışıyorsunuz. Üç farklı yöntem denediniz, ancak biri "Hatalı Istek" hatası döndürüyor ve diğer iki yöntem "103 hatası yasak" döndürüyor.
 
-#### <a name="cause"></a>Nedeni 
-Data Factory Şu anda Azure İşlev Uygulaması için özel bir uç nokta bağlayıcısını desteklemez. Bu nedenle, Azure İşlev Uygulaması, yalnızca özel bir bağlantıdan gelen bağlantılara izin verecek şekilde yapılandırıldığından çağrıları reddetme nedeni olmalıdır.
+**Neden**: Data Factory Şu anda işlev uygulamaları için özel bir uç nokta bağlayıcısını desteklememektedir. Azure Işlevleri yalnızca özel bir bağlantıdan gelen bağlantılara izin verecek şekilde yapılandırıldığından çağrıları reddeder.
 
-#### <a name="resolution"></a>Çözüm
-**Privatelinkservice** türünde özel bir uç nokta oluşturabilir ve Işlev uygulamanızın DNS 'sini sağlayabilirsiniz ve bağlantı çalışır.
+**Çözüm**: **privatelinkservice** uç noktası oluşturun ve işlev uygulamanızın DNS ' i belirtin.
 
-### <a name="pipeline-run-is-killed-but-the-monitor-still-shows-progress-status"></a>İşlem hattı çalıştırması sonlandırıldı, ancak izleyici hala ilerleme durumunu gösteriyor
+### <a name="a-pipeline-run-is-canceled-but-the-monitor-still-shows-progress-status"></a>İşlem hattı çalıştırması iptal edildi ancak izleyici hala ilerleme durumunu gösteriyor
 
-#### <a name="issue"></a>Sorun
-İşlem hattı çalıştırmasını genellikle sonlandırdığınızda, işlem hattı izleme hala ilerleme durumunu gösterir. Bu durum, tarayıcıda önbellek sorunu nedeniyle ve izleme için doğru filtreolmadığınızdan oluşur.
+İşlem hattı çalıştırmasını iptal ettiğinizde, ardışık düzen izlemesi genellikle ilerleme durumunu gösterir. Bu, bir tarayıcı önbelleği sorunu nedeniyle oluşur. Ayrıca, doğru izleme filtrelerine sahip olmayabilirsiniz.
 
-#### <a name="resolution"></a>Çözüm
-Tarayıcıyı yenileyin ve izleme için sağ filtreler uygulayın.
+**Çözüm**: Tarayıcıyı yenileyin ve doğru izleme filtrelerini uygulayın.
  
-### <a name="copy-pipeline-failure--found-more-columns-than-expected-column-count-delimitedtextmorecolumnsthandefined"></a>Kopyalama işlem hattı hatası – beklenen sütun sayısından daha fazla sütun bulundu (Delimitedtextmorecolumnsıısdefined tanımlandı)
-
-#### <a name="issue"></a>Sorun  
-Kopyaladığınız belirli bir klasördeki dosyalar, değişken sayısı, farklı sınırlayıcılar, quote char ayarları veya bazı veri sorunları gibi farklı şemalara sahip dosyalar içeriyorsa, Data Factory işlem hattı Bu hatada çalışmaya sona acaktır:
+### <a name="you-see-a-delimitedtextmorecolumnsthandefined-error-when-copying-a-pipeline"></a>İşlem hattını kopyalarken bir "Delimitedtextmorecolumnsıısdefined" hatası görürsünüz
+ 
+Kopyaladığınız bir klasör, değişken sayısı, farklı sınırlayıcılar, quote char ayarları veya bazı veri sorunları gibi farklı şemalarla dosya içeriyorsa Data Factory işlem hattı bu hatayı oluşturabilir:
 
 `
 Operation on target Copy_sks  failed: Failure happened on 'Sink' side.
@@ -56,51 +50,41 @@ Message=Error found when processing 'Csv/Tsv Format Text' source '0_2020_11_09_1
 Source=Microsoft.DataTransfer.Common,'
 `
 
-#### <a name="resolution"></a>Çözüm
-Veri Kopyalama etkinliğini oluştururken "Ikili kopya" seçeneğini belirleyin. Bu şekilde, toplu kopyalama veya verilerinizi bir Data Lake diğerine geçirme için, **ikili** seçeneğiyle, Data Factory şemayı okumak için dosyaları açmaz, ancak her dosyayı ikili olarak değerlendirir ve diğer konuma kopyalamanız yeterlidir.
+**Çözüm**: kopyalama etkinliğini oluştururken **ikili kopya** seçeneğini belirleyin. Bu şekilde, toplu kopyalar veya verilerinizi bir Data Lake 'ten diğerine geçirmek için Data Factory şemayı okumak için dosyaları açmaz. Bunun yerine, Data Factory her dosyayı ikili olarak değerlendirir ve diğer konuma kopyalar.
 
-### <a name="pipeline-run-fails-when-capacity-limit-of-integration-runtime-is-reached"></a>Tümleştirme çalışma zamanının kapasite sınırına ulaşıldığında işlem hattı çalıştırma başarısız olur
+### <a name="a-pipeline-run-fails-when-you-reach-the-capacity-limit-of-the-integration-runtime"></a>Tümleştirme çalışma zamanının kapasite sınırına ulaştığınızda işlem hattı çalıştırması başarısız olur
 
-#### <a name="issue"></a>Sorun
 Hata iletisi:
 
 `
 Type=Microsoft.DataTransfer.Execution.Core.ExecutionException,Message=There are substantial concurrent MappingDataflow executions which is causing failures due to throttling under Integration Runtime 'AutoResolveIntegrationRuntime'.
 `
 
-Hata, tümleştirme çalışma zamanı başına şu anda 50 olan sınırlamayı gösterir. Ayrıntılar için [sınırlara](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#version-2) bakın.
+**Neden**: Integration Runtime 'ın kapasite sınırına ulaştınız. Aynı tümleştirme çalışma zamanını aynı anda kullanarak büyük miktarda veri akışı çalıştırıyor olabilirsiniz. Ayrıntılar için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#version-2) .
 
-Aynı tümleştirme çalışma zamanını kullanarak büyük miktarda veri akışı çalıştırırsanız, bu tür bir hataya neden olabilir.
+**Çözüm**:
+ 
+- İşlem hatlarınızı farklı tetikleyici saatlerinde çalıştırın.
+- Yeni bir tümleştirme çalışma zamanı oluşturun ve işlem hatlarınızı birden çok tümleştirme çalışma zamanına ayırın.
 
-#### <a name="resolution"></a>Çözüm 
-- Bu işlem hatlarını farklı tetikleyici süresi için ayırın.
-- Yeni bir tümleştirme çalışma zamanı oluşturun ve bu işlem hatlarını birden çok tümleştirme çalışma zamanına ayırın.
+### <a name="you-have-activity-level-errors-and-failures-in-pipelines"></a>İşlem hatlarında etkinlik düzeyindeki hatalar ve hatalar var
 
-### <a name="how-to-monitor-pipeline-failures-on-regular-interval"></a>Düzenli aralıklarla işlem hattı başarısızlıklarını izleme
+Azure Data Factory düzenleme koşullu mantığa izin verir ve kullanıcıların önceki bir etkinliğin sonucuna göre farklı yollar almasına olanak tanır. Dört koşullu yol sağlar: **başarılı** olduğunda (varsayılan geçiş), **hatadan** sonra, **tamamlandığında ve atlamada**.  
 
-#### <a name="issue"></a>Sorun
-Genellikle Data Factory işlem hatlarını, 5 dakika olarak izlemeniz gerekir. Uç nokta kullanarak bir veri fabrikasında işlem hattı çalıştırmalarını sorgulayabilir ve filtreleyebilirsiniz. 
+Azure Data Factory tüm yaprak düzeyindeki etkinliklerin sonucunu değerlendirir. İşlem hattı sonuçları yalnızca tümü başarılı olursa başarılı olur. Bir yaprak etkinlik atlandıysa bunun yerine üst etkinliğini değerlendiririz. 
 
-#### <a name="recommendation"></a>Öneri
-1. Her 5 dakikada bir başarısız olan tüm işlem hatlarını sorgulamak için bir Azure mantıksal uygulaması ayarlayın.
-2. Daha sonra, olayları [Querybyfactory](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory)başına anahtar oluşturma sistemimize rapor edebilirsiniz.
+**Çözünürlük**
 
-#### <a name="reference"></a>Başvuru
-- [Data Factory 'den dış gönderme bildirimleri](https://www.mssqltips.com/sqlservertip/5962/send-notifications-from-an-azure-data-factory-pipeline--part-2/)
+1. İşlem [hattı hatalarının ve hatalarının nasıl işleneceğini](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459)izleyerek etkinlik düzeyi denetimleri uygulayın.
+1. İşlem hatlarını [fabrika tarafından sorgu](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory)izleyen düzenli aralıklarla izlemek için Azure Logic Apps kullanın.
 
-### <a name="how-to-handle-activity-level-errors-and-failures-in-pipelines"></a>İşlem hatlarında etkinlik düzeyindeki hataları ve hataları işleme
+## <a name="monitor-pipeline-failures-in-regular-intervals"></a>Düzenli aralıklarla işlem hattı başarısızlıklarını izleme
 
-#### <a name="issue"></a>Sorun
-Azure Data Factory düzenleme koşullu mantığa izin verir ve kullanıcının önceki bir etkinliğin sonuçlarını temel alarak farklı yollar almasına olanak tanır. Dört koşullu yola izin verir: "başarılı olduğunda (varsayılan geçiş)", "hatadan sonra", "tamamlandığında" ve "atlama sonrasında". Farklı yolların kullanılmasına izin verilir.
+Başarısız Data Factory işlem hatlarını dakikalar içinde izlemeniz, 5 dakika söylemeniz gerekebilir. Uç noktasını kullanarak bir veri fabrikasında işlem hattı çalıştırmalarını sorgulayabilir ve filtreleyebilirsiniz. 
 
-Azure Data Factory, işlem hattı çalıştırma başarısını ve başarısızlığını aşağıdaki şekilde tanımlar:
+[Fabrika tarafından sorgulama](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory)bölümünde açıklandığı gibi, tüm başarısız işlem hatlarını 5 dakikada bir sorgulamak Için bir Azure mantıksal uygulaması ayarlayın. Daha sonra, olayları, anahtar oluşturma sistemimize rapor edebilirsiniz.
 
-- Tüm yaprak düzeyindeki etkinliklerin sonucunu değerlendirin. Bir yaprak etkinlik atlandıysa bunun yerine üst etkinliğini değerlendiririz.
-- Yalnızca tümü başarılı olursa işlem hattı sonucu başarılı olur.
-
-#### <a name="recommendation"></a>Öneri
-- İşlem [hattı hatalarının ve hatalarının nasıl işleneceğini](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459)izleyerek etkinlik düzeyi denetimleri uygulayın.
-- Azure Logic App kullanarak, işlem hatlarını [DataFactory tarafından sorgu]( https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory)izleyen düzenli aralıklarda izleyin.
+Daha fazla bilgi için [Data Factory, Bölüm 2 ' den bildirim gönder '](https://www.mssqltips.com/sqlservertip/5962/send-notifications-from-an-azure-data-factory-pipeline--part-2/)e gidin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

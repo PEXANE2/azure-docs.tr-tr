@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 12/16/2020
-ms.openlocfilehash: d987d21700e5f19ad8228b08508e8da842cc39eb
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.date: 01/14/2020
+ms.openlocfilehash: 983e037376be48f497118b06cce8b23c430b1501
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914119"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223083"
 ---
 # <a name="open-source-integration-with-azure-machine-learning-projects"></a>Azure Machine Learning projelerle açık kaynaklı tümleştirme
 
@@ -42,11 +42,11 @@ Machine Learning 'in bir alt kümesi olan sinir Networks olarak bilinen açık k
 
 Açık kaynaklı derin öğrenme çerçeveleri ve nasıl yapılır kılavuzlarında şunlar vardır:
 
- *  [Pytorch](https://github.com/pytorch/pytorch): [pytorch 'de aktarma öğrenimini kullanarak derin bir öğrenme görüntü sınıflandırma modeli eğitme](how-to-train-pytorch.md) 
+ *  [Pytorch](https://github.com/pytorch/pytorch): [Aktarım öğrenimi kullanarak derin bir öğrenme görüntü sınıflandırma modeli eğitme](how-to-train-pytorch.md) 
  *  [TensorFlow](https://github.com/tensorflow/tensorflow): [TensorFlow kullanarak el ile yazılmış rakamları tanıma](how-to-train-tensorflow.md)
  *  [Keras](https://github.com/keras-team/keras): [keras kullanarak görüntüleri çözümlemek için sinir ağı oluşturma](how-to-train-keras.md)
 
-Derin bir öğrenme modelinin sıfırdan eğitimi, genellikle büyük miktarda zaman, veri ve işlem kaynağı gerektirir. Eğitim sürecini aktarma öğrenimini kullanarak kısayol oluşturabilirsiniz. Aktarım öğrenimi, bir problemi farklı ancak ilgili bir soruna çözmeyle elde edilen bilgileri uygulayan bir tekniktir. Bu, yeniden amaçlandırın var olan bir modeli götürebilmeniz anlamına gelir. Aktarım öğrenimi hakkında daha fazla bilgi edinmek için [derin öğrenme makalesine](concept-deep-learning-vs-machine-learning.md#transfer-learning) bakın.
+Derin bir öğrenme modelinin sıfırdan eğitimi, genellikle büyük miktarda zaman, veri ve işlem kaynağı gerektirir. Eğitim sürecini aktarma öğrenimini kullanarak kısayol oluşturabilirsiniz. Aktarım öğrenimi, bir problemi farklı ancak ilgili bir soruna çözmeyle elde edilen bilgileri uygulayan bir tekniktir. Bu, yeniden amaçlandırın var olan bir modeli götürebilmeniz anlamına gelir. Aktarım öğrenimi hakkında daha fazla bilgi edinmek için [derin öğrenme vs Machine Learning makalesine](concept-deep-learning-vs-machine-learning.md#what-is-transfer-learning) bakın.
 
 ### <a name="reinforcement-learning-ray-rllib"></a>Pekiştirmeye dayalı Learning: Ray RLLib
 

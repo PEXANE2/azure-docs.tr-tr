@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 52d6bc97245423a4add392ab05634d21bcf83a0d
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 1b8d88167dac6b2d0b1ba2afc90c443fd80b9e46
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358021"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223168"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>Bir FCı için sanal makineleri hazırlama (Azure VM 'lerinde SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,7 +27,7 @@ Bu makalede, Azure sanal makinelerinin (VM 'Ler) SQL Server yük devretme kümes
 
 Daha fazla bilgi edinmek için bkz. Azure VM 'lerde ve [küme en iyi uygulamalarında](hadr-cluster-best-practices.md) [SQL Server ile FCI](failover-cluster-instance-overview.md) 'ye genel bakış. 
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 - Microsoft Azure aboneliği. [Ücretsiz](https://azure.microsoft.com/free/)olarak kullanmaya başlayın. 
 - Azure sanal makinelerinde veya şirket içi bir veri merkezinde sanal ağ eşleştirmesine sahip Azure 'a genişletilmiş bir Windows etki alanı.
@@ -68,7 +68,7 @@ Bir Azure VM konuk yük devretme kümesinde, sunucu başına (küme düğümü) 
 Her iki sanal makineyi de Yerleştir:
 
 - Kullanılabilirlik kümeleri kullanıyorsanız, kullanılabilirlik kümesiyle aynı Azure Kaynak grubunda.
-- Etki alanı denetleyicinize göre aynı sanal ağda.
+- Etki alanı denetleyiciniz ile aynı sanal ağda veya etki alanı denetleyicinize uygun bağlantı sağlayan bir sanal ağ üzerinde.
 - Hem sanal makineler için yeterli IP adresi alanına sahip bir alt ağda hem de tüm FC, kümede kullanmaya devam edebilirsiniz.
 - Azure kullanılabilirlik kümesi veya kullanılabilirlik bölgesinde.
 
