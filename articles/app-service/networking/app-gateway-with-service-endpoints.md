@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 954e94063ec91cd2a6d67d154dfd7da553e0935a
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 58886a8f7dc505a7e68d69eb00b4a2ebd776dd5a
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94560902"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209870"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>Hizmet uç noktaları ile Application Gateway tümleştirme
 Azure Application Gateway tümleştirmesi için biraz farklı yapılandırma gerektiren App Service üç çeşidi vardır. Çeşitlemeler, çok kiracılı, Iç Load Balancer (ıLB) App Service Ortamı (Ao) ve dış Ao olarak da bilinen normal App Service içerir. Bu makalede, bunu App Service (çok kiracılı) ile yapılandırma ve ıLB ve dış Ao hakkındaki konuları tartışacak.
@@ -27,20 +27,20 @@ Azure Application Gateway tümleştirmesi için biraz farklı yapılandırma ger
 ## <a name="integration-with-app-service-multi-tenant"></a>App Service ile tümleştirme (çok kiracılı)
 App Service (çok kiracılı), herkese açık bir internet uç noktası içerir. [Hizmet uç noktalarını](../../virtual-network/virtual-network-service-endpoints-overview.md) kullanarak yalnızca bir Azure sanal ağı içindeki belirli bir alt ağdan gelen trafiğe izin verebilir ve diğer her şeyi engelleyebilirsiniz. Aşağıdaki senaryoda, bir App Service örneğinin yalnızca belirli bir Application Gateway örneğinden gelen trafiği alabilmesi için bu işlevi kullanacağız.
 
-![Diyagramda, bir Azure sanal ağındaki Application Gateway Internet akışını ve App Service içindeki uygulama örneklerine bir güvenlik duvarı simgesiyle bu şekilde akan.](./media/app-gateway-with-service-endpoints/service-endpoints-appgw.png)
+:::image type="content" source="./media/app-gateway-with-service-endpoints/service-endpoints-appgw.png" alt-text="Diyagramda, bir Azure sanal ağındaki Application Gateway Internet akışını ve App Service içindeki uygulama örneklerine bir güvenlik duvarı simgesiyle bu şekilde akan.":::
 
 App Service ve Application Gateway oluşturmanın yanı sıra bu yapılandırmanın iki bölümü vardır. İlk bölüm, Application Gateway dağıtıldığı sanal ağın alt ağında hizmet uç noktalarını etkinleştirir. Hizmet uç noktaları, tüm ağ trafiğinin App Service doğru kalmasını sağlamak için belirli alt ağ KIMLIĞIYLE etiketlenecek. İkinci bölüm, yalnızca bu belirli alt ağ KIMLIĞIYLE etiketlenmiş trafiğe izin verildiğinden emin olmak için belirli bir Web uygulamasına erişim kısıtlaması ayarlansağlamaktır. Tercihe bağlı olarak farklı araçlar kullanarak yapılandırabilirsiniz.
 
 ## <a name="using-azure-portal"></a>Azure portalını kullanma
 Azure portal, kurulumu sağlamak ve yapılandırmak için dört adımı takip edersiniz. Mevcut kaynaklarınız varsa, ilk adımları atlayabilirsiniz.
-1. App Service belgelerindeki hızlı başlangıçlardan birini kullanarak App Service oluşturun, örneğin [.NET Core hızlı başlangıç](../quickstart-dotnetcore.md)
+1. App Service belgelerindeki hızlı başlangıçlardan birini kullanarak App Service oluşturun, örneğin [.NET Core hızlı](../quickstart-dotnetcore.md) başlangıcı
 2. [Portal Hızlı](../../application-gateway/quick-create-portal.md)başlangıcını kullanarak bir Application Gateway oluşturun, ancak arka uç hedefleri ekle bölümünü atlayın.
 3. [App Service Application Gateway arka ucu olarak](../../application-gateway/configure-web-app-portal.md)yapılandırın, ancak erişimi kısıtla bölümünü atlayın.
-4. Son olarak, [hizmet uç noktalarını kullanarak erişim kısıtlaması](../../app-service/app-service-ip-restrictions.md#use-service-endpoints)oluşturun.
+4. Son olarak, [hizmet uç noktalarını kullanarak erişim kısıtlaması](../../app-service/app-service-ip-restrictions.md#set-a-service-endpoint-based-rule)oluşturun.
 
 Artık Application Gateway üzerinden App Service erişebilirsiniz ancak doğrudan App Service erişmeyi denerseniz, Web sitesinin durdurulduğunu belirten 403 HTTP hatası almalısınız.
 
-![Ekran görüntüsünde bir hata 403, bu Web uygulaması durdurulur.](./media/app-gateway-with-service-endpoints/web-site-stopped.png)
+![Ekran görüntüsünde bir hata 403-Yasak metni gösterilir.](./media/app-gateway-with-service-endpoints/website-403-forbidden.png)
 
 ## <a name="using-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanma
 [Kaynak Yöneticisi dağıtım şablonu][template-app-gateway-app-service-complete] , bir bütün senaryo sağlayacaktır. Senaryo, hizmet uç noktaları ve erişim kısıtlaması ile kilitlenmiş bir App Service örneğinden oluşur ve yalnızca Application Gateway trafiği alırlar. Şablon, çok sayıda akıllı varsayılan ve kaynak adlarına eklenen benzersiz postdüzeltmelerin yanı sıra basit hale gelir. Bunları geçersiz kılmak için depoyu kopyalamanız veya şablonu indirmeniz ve düzenlemeniz gerekir. 

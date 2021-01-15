@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: ce8c32b1afdf4178e3ffdc09e9c9176436fa771b
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: cfec5ec5f14afc8c4eba5c21c5904687c9b187cc
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605085"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209262"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Uygulamanızı FTP/S kullanarak Azure App Service dağıtma
 
@@ -111,7 +111,7 @@ Bir dağıtımı veya çalışma zamanı sorununu anlamak için bkz. [dağıtım
 ### <a name="im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue"></a>FTP kullanamıyorum ve kodumu yayımlayamıyorum. Sorunu nasıl çözebilirim?
 Doğru ana bilgisayar adını ve [kimlik bilgilerini](#open-ftp-dashboard)girdiğinizden emin olun. Ayrıca, makinenizde bulunan aşağıdaki FTP bağlantı noktalarının bir güvenlik duvarı tarafından engellenmediğinden emin olun:
 
-- FTP denetim bağlantı noktası: 21
+- FTP denetim bağlantı noktası: 21, 990
 - FTP veri bağlantısı bağlantı noktası: 989, 10001-10300
  
 ### <a name="how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode"></a>Pasif mod aracılığıyla Azure App Service FTP 'ye nasıl bağlanabilirim?

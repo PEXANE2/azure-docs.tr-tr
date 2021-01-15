@@ -7,16 +7,16 @@ ms.service: attestation
 ms.topic: quickstart
 ms.date: 11/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: fb8b0f12844ce1057bd3cfc4716a32ee64ec5586
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: df1064128d6a4eca8497ebf3ea0c6ae8cd42255c
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937228"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208446"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile Azure kanıtlama ayarlama
 
-Kanıtlama ayarlamak için Azure CLı kullanarak Azure kanıtlama ile çalışmaya başlayın.
+Azure [CLI kullanarak Azure kanıtlama](/cli/azure/ext/attestation/attestation?view=azure-cli-latest)ile çalışmaya başlayın.
 
 ## <a name="get-started"></a>başlarken
 
@@ -65,7 +65,7 @@ Kanıtlama ayarlamak için Azure CLı kullanarak Azure kanıtlama ile çalışma
 
 Kanıtlama sağlayıcısı oluşturmak ve yönetmek için kullanabileceğiniz komutlar şunlardır:
 
-1. Bir kanıtlama sağlayıcısı oluşturmak için [az kanıtlama Create](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_create) komutunu çalıştırın:
+1. İlke imzalama gereksinimi olmadan bir kanıtlama sağlayıcısı oluşturmak için [az kanıtlama Create](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_create) komutunu çalıştırın:
 
    ```azurecli
    az attestation create --name "myattestationprovider" --resource-group "MyResourceGroup" --location westus
@@ -128,7 +128,7 @@ Dosya yolunu kullanarak belirli bir kanıtlama türü türünün JWT biçiminde 
 
 ```azurecli
 az attestation policy set --name "myattestationprovider" --resource-group "MyResourceGroup" \
---attestation-type SGX-IntelSDK --new-attestation-policy-file "{file_path}" --policy-format JWT
+--attestation-type SGX-IntelSDK -f "{file_path}" --policy-format JWT
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
-ms.openlocfilehash: 805ab0e78f0679ce483af3a73203b41132be2a59
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: df2d74701e21c3773d96564f1b06d80ddb9fce9d
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022964"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209228"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>Toplu grupları oluşturmak ve yönetmek için StorSimple Snapshot Manager kullanma
 ## <a name="overview"></a>Genel Bakış
@@ -107,7 +107,7 @@ Bir birim grubunu düzenlemek için aşağıdaki yordamı kullanın.
 #### <a name="to-edit-a-volume-group"></a>Bir birim grubunu düzenlemek için
 1. StorSimple Snapshot Manager başlatmak için masaüstü simgesine tıklayın.
 2. **Kapsam** bölmesinde, **Birim grupları** düğümünü genişletin, bir birim grubu adına sağ tıklayın ve ardından **Düzenle**' ye tıklayın.
-3. * * Birim grubu oluştur * * iletişim kutusu görüntülenir. **Ad**, **uygulama** ve **birim** girdilerini değiştirebilirsiniz.
+3. **Birim grubu oluştur** iletişim kutusu görüntülenir. **Ad**, **uygulama** ve **birim** girdilerini değiştirebilirsiniz.
 4. Değişikliklerinizi kaydetmek için **Tamam**’a tıklayın.
 
 ## <a name="delete-a-volume-group"></a>Birim grubunu silme

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: mimckitt
-ms.openlocfilehash: 9f45b0a9454176f53413940d3c310e0499b43d3c
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 444c6a9c131916a2a07f41fd5c1ff38fc1e7bfb2
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180124"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210333"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Azure 'da çok kiracılı barındırma haklarıyla Windows 10 ' un dağıtımı 
 Windows 10 Enterprise E3/E5 veya Kullanıcı başına Windows sanal masaüstü erişimi (Kullanıcı aboneliği lisansları veya eklenti Kullanıcı aboneliği lisansları) olan müşteriler için, Windows 10 için çok kiracılı barındırma hakları, Windows 10 lisanslarınızı buluta getirmenize ve Azure 'da Windows 10 sanal makinelerini başka bir lisans ödemeksizin çalıştırmanıza olanak sağlar. Daha fazla bilgi için lütfen bkz. [Windows 10 Için çok kiracılı barındırma](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
@@ -24,14 +24,22 @@ Windows 10 Enterprise E3/E5 veya Kullanıcı başına Windows sanal masaüstü e
 >
 
 ## <a name="deploying-windows-10-image-from-azure-marketplace"></a>Azure Marketi 'nden Windows 10 görüntüsünü dağıtma 
-PowerShell, CLı ve Azure Resource Manager şablon dağıtımları için, Windows 10 görüntüsü aşağıdaki PublisherName, teklif, SKU ile bulunabilir.
+PowerShell, CLı ve Azure Resource Manager şablon dağıtımları için, ve kullanılarak Windows 10 görüntüleri bulunabilir `PublisherName: MicrosoftWindowsDesktop` `Offer: Windows-10` .
 
-| İşletim Sistemi  |      PublisherName      |  Sunduğu | Sku |
-|:----------|:-------------:|:------|:------|
-| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS2-Pro   |
-| Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS2-ProN  |
-| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS3-Pro   |
-| Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS3-ProN  |
+```powershell
+Get-AzVmImageSku -Location '$location' -PublisherName 'MicrosoftWindowsDesktop' -Offer 'Windows-10'
+
+Skus                        Offer      PublisherName           Location 
+----                        -----      -------------           -------- 
+rs4-pro                     Windows-10 MicrosoftWindowsDesktop eastus   
+rs4-pron                    Windows-10 MicrosoftWindowsDesktop eastus   
+rs5-enterprise              Windows-10 MicrosoftWindowsDesktop eastus   
+rs5-enterprisen             Windows-10 MicrosoftWindowsDesktop eastus   
+rs5-pro                     Windows-10 MicrosoftWindowsDesktop eastus   
+rs5-pron                    Windows-10 MicrosoftWindowsDesktop eastus  
+```
+
+Kullanılabilir görüntüler hakkında daha fazla bilgi için bkz. [Azure PowerShell Ile Azure MARKETI VM görüntülerini bulma ve kullanma](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage)
 
 ## <a name="qualify-for-multi-tenant-hosting-rights"></a>Çok kiracılı barındırma haklarına uygun hale getir 
 Çok kiracılı barındırma haklarını nitelemek ve Azure kullanıcıları üzerinde Windows 10 görüntülerini çalıştırmak için aşağıdaki aboneliklerden birine sahip olması gerekir: 

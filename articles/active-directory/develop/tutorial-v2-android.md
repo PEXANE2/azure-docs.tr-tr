@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1282c27378e6a088a600a3ab3105f3f548984d03
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 7bdb36566d7c501dc5ca5604f8c6963258aa951c
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063153"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208548"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>Öğretici: kullanıcılarda oturum açın ve Android uygulamasından Microsoft Graph API 'sini çağırın
 
@@ -35,7 +35,7 @@ Bu öğreticide:
 > * Microsoft Graph API 'sini çağırmak için kod ekleme
 > * Uygulamayı test etme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Android Studio 3.5 +
 
@@ -57,8 +57,7 @@ Bu örnek, kimlik doğrulamasını uygulamak için Android için Microsoft kimli
 
 MSAL, belirteçleri otomatik olarak yenileyecek, cihazdaki diğer uygulamalar arasında çoklu oturum açma (SSO) sunacaktır ve hesapları yönetir.
 
-> [!NOTE]
-> Bu öğreticide, Android için MSAL ile çalışmaya yönelik Basitleştirilmiş örnekler gösterilmektedir. Kolaylık olması için yalnızca tek hesap modunu kullanır. Daha karmaşık senaryoları araştırmak için GitHub 'da tamamlanan [çalışma kodu örneğine](https://github.com/Azure-Samples/ms-identity-android-java/) bakın.
+Bu öğreticide, Android için MSAL ile çalışmaya yönelik Basitleştirilmiş örnekler gösterilmektedir. Kolaylık olması için yalnızca tek hesap modunu kullanır. Daha karmaşık senaryoları araştırmak için GitHub 'da tamamlanan [çalışma kodu örneğine](https://github.com/Azure-Samples/ms-identity-android-java/) bakın.
 
 ## <a name="create-a-project"></a>Proje oluşturma
 Henüz bir Android uygulamanız yoksa, yeni bir proje ayarlamak için aşağıdaki adımları izleyin.
@@ -85,8 +84,8 @@ Henüz bir Android uygulamanız yoksa, yeni bir proje ayarlamak için aşağıda
 1. Projenizin paket adını girin. Kodu indirdiyseniz, bu değer olur `com.azuresamples.msalandroidapp` .
 1. **Android uygulamanızı yapılandırma** sayfanızın **imza karması** bölümünde, **bir geliştirme imza karması oluşturma** ' yı seçin. ve platformunuz için kullanmak üzere KeyTool komutunu kopyalayın.
 
-   > [!Note]
-   > KeyTool.exe, Java Development Kit 'in (JDK) bir parçası olarak yüklenir. Ayrıca, KeyTool komutunu yürütmek için OpenSSL aracını da yüklemelisiniz. Daha fazla bilgi için [bir anahtar oluşturma hakkındaki Android belgelerine](https://developer.android.com/studio/publish/app-signing#generate-key) bakın.
+
+     KeyTool.exe, Java Development Kit 'in (JDK) bir parçası olarak yüklenir. Ayrıca, KeyTool komutunu yürütmek için OpenSSL aracını da yüklemelisiniz. Daha fazla bilgi için [bir anahtar oluşturma hakkındaki Android belgelerine](https://developer.android.com/studio/publish/app-signing#generate-key) bakın.
 
 1. KeyTool tarafından oluşturulan **imza karmasını** girin.
 1. Uygulamanızı daha sonra yapılandırırken girebilmeniz için **Android yapılandırma** sayfasında görünen **msal yapılandırmasını** **Yapılandır** ve Kaydet ' i seçin.  
@@ -122,8 +121,7 @@ Henüz bir Android uygulamanız yoksa, yeni bir proje ayarlamak için aşağıda
     }
    ```
 
-   >[!NOTE]
-   >Bu öğretici yalnızca bir uygulamanın tek hesap modunda nasıl yapılandırılacağını gösterir. [Tek ve birden çok hesap modu](./single-multi-account.md) ve [uygulamanızı yapılandırma](./msal-configuration.md) hakkında daha fazla bilgi için belgeleri görüntüleyin
+     Bu öğretici yalnızca bir uygulamanın tek hesap modunda nasıl yapılandırılacağını gösterir. [Tek ve birden çok hesap modu](./single-multi-account.md) ve [uygulamanızı yapılandırma](./msal-configuration.md) hakkında daha fazla bilgi için belgeleri görüntüleyin
 
 4. **App**  >  **src**  >  **ana**  >  **AndroidManifest.xml**, `BrowserTabActivity` Aşağıdaki etkinliği uygulama gövdesine ekleyin. Bu giriş, Microsoft 'un, kimlik doğrulamasını tamamladıktan sonra uygulamanıza geri çağırmasını sağlar:
 
@@ -144,8 +142,11 @@ Henüz bir Android uygulamanız yoksa, yeni bir proje ayarlamak için aşağıda
 
     Değer için Azure portal kaydettiğiniz paket adını değiştirin `android:host=` .
     Değer için Azure portal kaydettiğiniz anahtar karmasını değiştirin `android:path=` . Imza karması URL kodlamalı **olmamalıdır.** Imza Karmalarınızın başlangıcında önde bir değer bulunduğundan emin olun `/` .
-    >[!NOTE]
-    >Değerin yerini alacak olan "paket adı" `android:host` şuna benzemelidir: "com. azuresamples. msalandroidapp" değerinizi değiştirecek olan "Imza karması" `android:path` Şuna benzer görünmelidir: "/1wIqXSqBj7w + h11ZifsnqwgyKrY =" Bu değerleri, uygulama Kaydlarınızın kimlik doğrulama dikey penceresinde de bulabilirsiniz. Yeniden yönlendirme URI 'nizin şuna benzer olacağını unutmayın: "msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D". Imza karması bu değerin sonunda URL 'YI kodlarken, Imza karması, değer içinde URL **kodlamalı olmamalıdır** `android:path` .
+    
+    Değerin yerini alacak olan "paket adı" `android:host` şuna benzemelidir: "com. azuresamples. msalandroıdapp".
+    Değerini ile değiştirecek "Imza karması" şuna benzemelidir `android:path` : "/1wIqXSqBj7w + h11ZifsnqwgyKrY =".
+    
+    Ayrıca, bu değerleri uygulama kaydlarınızın kimlik doğrulama dikey penceresinde bulabilirsiniz. Yeniden yönlendirme URI 'nizin şuna benzer olacağını unutmayın: "msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D". Imza karması bu değerin sonunda URL 'YI kodlarken, Imza karması, değer içinde URL **kodlamalı olmamalıdır** `android:path` .
 
 ## <a name="use-msal"></a>MSAL kullanma
 
@@ -479,7 +480,7 @@ private void performOperationOnSignOut() {
             .show();
 }
 ```
-### <a name="layout"></a>Düzen
+### <a name="layout"></a>Layout
 
 `activity_main.xml`Düğmeleri ve metin kutularını görüntüleyen örnek dosya.
 

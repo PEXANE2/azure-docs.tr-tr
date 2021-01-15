@@ -2,24 +2,24 @@
 title: Sipariş Azure Data Box öğretici | Microsoft Docs
 description: Bu öğreticide, şirket içi verileri Azure 'a aktarmanıza ve Azure Data Box nasıl sipariş alabileceğinizi sağlayan bir karma çözüm olan Azure Data Box hakkında bilgi edinin.
 services: databox
-author: alkohli
+author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 11/19/2020
+ms.date: 01/13/2021
 ms.author: alkohli
-ms.openlocfilehash: aad6a3ef754b5ba2c65a9b93fbdfcfdc26348487
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: fd165795be85c26cdfcaee3c4fd01427274a7316
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186167"
+ms.locfileid: "98210350"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Öğretici: Azure Data Box sipariş etme
 
-Azure Data Box, şirket içi verilerinizi Azure'a hızlı, kolay ve güvenilir bir şekilde aktarmanızı sağlayan bir hibrit çözümdür. Verilerinizi Microsoft tarafından sağlanan 80 TB (kullanılabilir kapasite) depolama cihazına aktarır ve sonra cihazı geri sevk edersiniz. Bu veriler daha sonra Azure'a yüklenir.
+Azure Data Box, şirket içi verilerinizi Azure'a hızlı, kolay ve güvenilir bir şekilde aktarmanızı sağlayan bir hibrit çözümdür. Verilerinizi Microsoft tarafından sağlanan bir 80-TB (kullanılabilir kapasite) depolama cihazına aktarır ve sonra cihazı geri sevk edersiniz. Bu veriler daha sonra Azure'a yüklenir.
 
-Bu öğreticide Azure Data Box sipariş etme adımları açıklanır. Bu öğreticide şunları öğrenirsiniz:
+Bu öğreticide Azure Data Box sipariş etme adımları açıklanır. Bu öğreticide şunları öğrenirsiniz:  
 
 > [!div class="checklist"]
 >
@@ -245,7 +245,7 @@ Bir cihazı sıralamak için Azure portal aşağıdaki adımları uygulayın.
     |Kaynak grubu    | Daha önce seçtiğiniz kaynak grubu. |
     |İçeri aktarma sırası adı | Siparişi takip etmek için kullanılacak kolay bir ad girin. <br> Ad harf, rakam ve tirelerden oluşan 3-24 karakter arası uzunlukta olabilir. <br> Ad bir harf veya sayıyla başlamalı ve bitmelidir.    |
 
-    ![Data Box içeri aktarma siparişi Sihirbazı, doğru bilgiler doldurulmuş temel bilgiler](media/data-box-deploy-ordered/select-data-box-import-06.png)<!--Generic subscription. Cut note. Box command.-->
+    ![Data Box içeri aktarma siparişi Sihirbazı, doğru bilgiler doldurulmuş temel bilgiler](media/data-box-deploy-ordered/select-data-box-import-06.png)
 
 7. **Veri hedefi** **ekranında, depolama** hesapları veya yönetilen diskler ' i seçin.
 
@@ -253,7 +253,11 @@ Bir cihazı sıralamak için Azure portal aşağıdaki adımları uygulayın.
 
     ![Depolama hesapları seçiliyken Data Box içeri aktarma Sihirbazı, veri hedefi ekranı](media/data-box-deploy-ordered/select-data-box-import-07.png)
 
-    Belirtilen Azure bölgesine göre filtrelenen listeden var olan bir veya daha fazla depolama hesabı seçin. Data Box en çok 10 depolama hesabına bağlanabilir. Dilerseniz yeni bir **Genel amaçlı v1**, **Genel amaçlı v2** veya **Blob depolama hesabı** da oluşturabilirsiniz.
+    Belirtilen Azure bölgesine bağlı olarak, mevcut depolama hesaplarının filtrelenmiş listesinden bir veya daha fazla depolama hesabı seçin. Data Box en çok 10 depolama hesabına bağlanabilir. Dilerseniz yeni bir **Genel amaçlı v1**, **Genel amaçlı v2** veya **Blob depolama hesabı** da oluşturabilirsiniz.
+
+   > [!NOTE]
+   > - Azure Premium FileStorage hesaplarını seçerseniz, depolama hesabı paylaşımındaki sağlanan kota, dosya paylaşımlarına Kopyalanmakta olan verilerin boyutuna göre artar. Kota arttırdıktan sonra, örneğin bazı nedenlerle Data Box verilerinizi kopyalayamazsa, bir daha ayarlanmaz.
+   > - Bu kota faturalandırma için kullanılır. Verileriniz veri merkezine yüklendikten sonra, kotayı gereksinimlerinize uyacak şekilde ayarlamanız gerekir. Daha fazla bilgi için bkz. [Faturalandırmayı anlama](../../articles/storage/files/understanding-billing.md).
 
     Sanal ağları olan depolama hesapları desteklenir. Data Box hizmetinin güvenli depolama hesaplarıyla çalışmasına izin vermek için, depolama hesabı ağ güvenlik duvarı ayarları içinden güvenilen hizmetleri etkinleştirin. Daha fazla bilgi için bkz. [Azure Data Box güvenilir hizmet olarak ekleme](../storage/common/storage-network-security.md#exceptions).
 
@@ -419,7 +423,7 @@ Bir cihaz sıralamak için Azure CLı kullanarak aşağıdaki adımları uygulay
    |isteyin| Sipariş ettiğiniz özel Data Box cihaz. Geçerli değerler şunlardır: "DataBox", "DataBoxDisk" ve "Databoxağır"| "DataBox" |
    |e-posta-Listele| Siparişle ilişkili e-posta adresleri.| "gusp@contoso.com" |
    |Cadde-Address1| Siparişin sevk edileceği sokak adresi. | "15700 NE 39th" |
-   |Cadde-Address2| Apartman numarası veya bina numarası gibi ikincil adres bilgileri. | "Bld 123" |
+   |Cadde-Address2| Apartman numarası veya bina numarası gibi ikincil adres bilgileri. | "Derleme 123" |
    |city| Cihazın sevk edileceği şehir. | Redmond |
    |Eyalet-or-il| Cihazın sevk edileceği durum.| HECESI |
    |ülke| Cihazın sevk edileceği ülke. | "Birleşik Devletler" |
@@ -538,7 +542,7 @@ Bir cihazı sıralamak için Azure PowerShell kullanarak aşağıdaki adımları
     |DataBoxType [gerekli]| Sipariş ettiğiniz özel Data Box cihaz. Geçerli değerler şunlardır: "DataBox", "DataBoxDisk" ve "Databoxağır"| "DataBox" |
     |Emailıd [gerekli]| Siparişle ilişkili e-posta adresleri.| "gusp@contoso.com" |
     |StreetAddress1 [gerekli]| Siparişin sevk edileceği sokak adresi. | "15700 NE 39th" |
-    |StreetAddress2| Apartman numarası veya bina numarası gibi ikincil adres bilgileri. | "Bld 123" |
+    |StreetAddress2| Apartman numarası veya bina numarası gibi ikincil adres bilgileri. | "Derleme 123" |
     |StreetAddress3| Üçüncül adres bilgileri. | |
     |Şehir [gerekli]| Cihazın sevk edileceği şehir. | Redmond |
     |StateOrProvinceCode [gerekli]| Cihazın sevk edileceği durum.| HECESI |
@@ -601,7 +605,7 @@ Microsoft ardından cihazınızı hazırlar ve bölgeye uygun gönderim şirketi
 
 ### <a name="track-a-single-order"></a>Tek bir siparişi izleyin
 
-Tek, mevcut bir Azure Data Box sıra hakkında izleme bilgileri almak için [az databox iş göster](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show&preserve-view=true)' i çalıştırın. Bu komut, şu sıralama hakkında bilgiler görüntüler: ad, kaynak grubu, izleme bilgileri, abonelik KIMLIĞI, iletişim bilgileri, sevkiyat türü ve cihaz SKU 'su.
+Tek, var olan bir Azure Data Box sıra hakkında izleme bilgileri almak için, öğesini çalıştırın [`az databox job show`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show&preserve-view=true) . Bu komut, şu sıralama hakkında bilgiler görüntüler: ad, kaynak grubu, izleme bilgileri, abonelik KIMLIĞI, iletişim bilgileri, sevkiyat türü ve cihaz SKU 'su.
 
    ```azurecli
    az databox job show --resource-group <resource-group> --name <order-name>
@@ -642,7 +646,7 @@ Tek, mevcut bir Azure Data Box sıra hakkında izleme bilgileri almak için [az 
 
 ### <a name="list-all-orders"></a>Tüm siparişleri Listele
 
-Birden çok cihaz sipariş ediyorsanız, tüm Azure Data Box siparişlerinizi görüntülemek için [az databox iş listesi](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list&preserve-view=true) ' ni çalıştırabilirsiniz. Komut, belirli bir kaynak grubuna ait olan tüm siparişleri listeler. Çıktıda da gösterildiği gibi: sipariş adı, Sevkiyat durumu, Azure bölgesi, teslim türü, sipariş durumu. İptal edilen siparişler listeye de dahildir.
+Birden çok cihaz siparişi aldıysanız, [`az databox job list`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list&preserve-view=true) tüm Azure Data Box siparişlerinizi görüntülemek için çalıştırabilirsiniz. Komut, belirli bir kaynak grubuna ait olan tüm siparişleri listeler. Çıktıda da gösterildiği gibi: sipariş adı, Sevkiyat durumu, Azure bölgesi, teslim türü, sipariş durumu. İptal edilen siparişler listeye de dahildir.
 Komut ayrıca her bir siparişin zaman damgalarını görüntüler.
 
 ```azurecli
@@ -718,7 +722,7 @@ Tek, var olan bir Azure Data Box sıra hakkında izleme bilgileri almak için [G
 
 ### <a name="list-all-orders"></a>Tüm siparişleri Listele
 
-Birden çok cihaz sipariş ediyorsanız, tüm Azure Data Box siparişlerinizi görüntülemek için [Get-AzDataBoxJob](/powershell/module/az.databox/Get-AzDataBoxJob) komutunu çalıştırabilirsiniz. Komut, belirli bir kaynak grubuna ait olan tüm siparişleri listeler. Çıktıda da gösterildiği gibi: sipariş adı, Sevkiyat durumu, Azure bölgesi, teslim türü, sipariş durumu. İptal edilen siparişler listeye de dahildir.
+Birden çok cihaz siparişi aldıysanız, [`Get-AzDataBoxJob`](/powershell/module/az.databox/Get-AzDataBoxJob) tüm Azure Data Box siparişlerinizi görüntülemek için çalıştırabilirsiniz. Komut, belirli bir kaynak grubuna ait olan tüm siparişleri listeler. Çıktıda da gösterildiği gibi: sipariş adı, Sevkiyat durumu, Azure bölgesi, teslim türü, sipariş durumu. İptal edilen siparişler listeye de dahildir.
 Komut ayrıca her bir siparişin zaman damgalarını görüntüler.
 
 ```azurepowershell
@@ -761,7 +765,7 @@ Sipariş verdikten sonra, sipariş durumu işlendi olmadan önce herhangi bir no
 
 ### <a name="cancel-an-order"></a>Siparişi iptal etme
 
-Azure Data Box sırayı iptal etmek için [az databox Job Cancel](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel&preserve-view=true)' ı çalıştırın. Siparişi iptal etme nedeninizi belirtmeniz gerekir.
+Azure Data Box sırayı iptal etmek için, öğesini çalıştırın [`az databox job cancel`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel&preserve-view=true) . Siparişi iptal etme nedeninizi belirtmeniz gerekir.
 
    ```azurecli
    az databox job cancel --resource-group <resource-group> --name <order-name> --reason <cancel-description>
@@ -798,7 +802,7 @@ Azure Data Box sırayı iptal etmek için [az databox Job Cancel](/cli/azure/ext
 
 ### <a name="delete-an-order"></a>Bir siparişi silme
 
-Azure Data Box sırayı iptal ediyorsanız, siparişi silmek için [az databox Job Delete](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete&preserve-view=true) ' i çalıştırabilirsiniz.
+Azure Data Box sırayı iptal etmiş olmanız durumunda [`az databox job delete`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete&preserve-view=true) siparişi silebilirsiniz.
 
    ```azurecli
    az databox job delete --name [-n] <order-name> --resource-group <resource-group> [--yes] [--verbose]
@@ -871,7 +875,7 @@ PS C:\WINDOWS\system32>
 
 ### <a name="delete-an-order"></a>Bir siparişi silme
 
-Azure Data Box sırayı iptal etmeniz durumunda, sırayı silmek için [Remove-AzDataBoxJob](/powershell/module/az.databox/remove-azdataboxjob) komutunu çalıştırabilirsiniz.
+Azure Data Box sırayı iptal etmiş olmanız durumunda [`Remove-AzDataBoxJob`](/powershell/module/az.databox/remove-azdataboxjob) siparişi silebilirsiniz.
 
 ```azurepowershell
 Remove-AzDataBoxJob -Name <String> -ResourceGroup <String>

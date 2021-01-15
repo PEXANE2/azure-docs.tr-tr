@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 07/20/2020
-ms.openlocfilehash: 4ca9ababbeb7843f1a014a4bd51a5e24a74acbae
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 12/31/2020
+ms.openlocfilehash: c9f8760bd1a7b5d3700f3fdf03331fe7013e116f
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322947"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209431"
 ---
 # <a name="analyze-data-with-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu ile verileri çözümleme
 
@@ -23,10 +23,11 @@ Bu öğreticide Spark veritabanlarında bulunan verileri kullanarak sunucusuz SQ
 
 ## <a name="analyze-nyc-taxi-data-in-blob-storage-using-serverless-sql-pool"></a>Sunucusuz SQL havuzu kullanarak blob depolamada NYC TAXI verilerini çözümleme
 
-1. **Bağlı** ' ın altındaki **veri** hub 'ında Azure Blob Storage ' a sağ tıklayıp **> örnek veri kümeleri > nyc_tlc_yellow** ve **en üstteki 100 satırı seç** ' i seçin
+1. **Bağlı** **veri** Merkezi ' nde, Azure Blob Storage ' a sağ tıklayın **> örnek VERI kümeleri nyc_tlc_yellow**, **yeni SQL betiği**> ve **en üstteki 100 satır Seç** ' i seçin
 1. Bu, aşağıdaki kodla yeni bir SQL betiği oluşturur:
 
     ```
+    -- This is auto-generated code
     SELECT
         TOP 100 *
     FROM
@@ -42,7 +43,7 @@ Bu öğreticide Spark veritabanlarında bulunan verileri kullanarak sunucusuz SQ
 Spark veritabanlarındaki tablolar otomatik olarak görünür ve sunucusuz SQL havuzu tarafından sorgulanabilir.
 
 1. SYNAPSE Studio 'da, **geliştirme** merkezine gidin ve yenı bir SQL betiği oluşturun.
-1. **Sunucusuz SQL havuzuna** **Connect** ' i ayarlayın.
+1. **Yerleşik** SUNUCUSUZ SQL havuzuna **bağlantı** ayarlayın.
 1. Aşağıdaki metni betiğe yapıştırın ve betiği çalıştırın.
 
     ```sql

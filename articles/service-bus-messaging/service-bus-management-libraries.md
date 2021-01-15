@@ -1,19 +1,18 @@
 ---
-title: Yönetim kitaplıklarını Azure Service Bus | Microsoft Docs
-description: Bu makalede, Service Bus ad alanlarını ve varlıklarını dinamik olarak sağlamak için Azure Service Bus yönetim kitaplıklarının nasıl kullanılacağı açıklanmaktadır.
+title: Program aracılığıyla Azure Service Bus varlıkları oluşturma | Microsoft Docs
+description: Bu makalede, Service Bus ad alanlarını ve varlıklarını dinamik olarak veya programlı bir şekilde sağlamayı açıklar.
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 01/13/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 915606bffc2037c8fcd1a7d33218143f40c78f2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97d89db17af9cde3afadee430b3d0c2a434e12c9
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89008055"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210146"
 ---
-# <a name="service-bus-management-libraries"></a>Service Bus yönetim kitaplıkları
-
+# <a name="dynamically-provision-service-bus-namespaces-and-entities"></a>Service Bus ad alanlarını ve varlıklarını dinamik olarak sağlama 
 Azure Service Bus yönetim kitaplıkları, Service Bus ad alanlarını ve varlıklarını dinamik olarak sağlayabilir. Bu, karmaşık dağıtımlar ve mesajlaşma senaryolarına olanak tanır ve hangi varlıkların sağlanacağı ile programlı bir şekilde belirlenmesini olanaklı kılar. Bu kitaplıklar Şu anda .NET için kullanılabilir.
 
 ## <a name="supported-functionality"></a>Desteklenen işlevsellik
@@ -23,9 +22,137 @@ Azure Service Bus yönetim kitaplıkları, Service Bus ad alanlarını ve varlı
 * Konu oluşturma, güncelleştirme, silme
 * Abonelik oluşturma, güncelleştirme, silme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="azuremessagingservicebusadministration-recommended"></a>Azure. Messaging. ServiceBus. Administration (önerilir)
+Ad alanlarını, kuyrukları, konuları ve abonelikleri yönetmek için [Azure. Messaging. ServiceBus. Administration](/dotnet/api/azure.messaging.servicebus.administration) ad alanındaki [Servicebusadministrationclient](/dotnet/api/azure.messaging.servicebus.administration.servicebusadministrationclient) sınıfını kullanabilirsiniz. Örnek kod aşağıda verilmiştir. Tüm bir örnek için bkz. [CRUD örneği](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/tests/Samples/Sample07_CrudOperations.cs).
 
-Service Bus yönetim kitaplıklarını kullanmaya başlamak için Azure Active Directory (Azure AD) hizmeti ile kimlik doğrulaması yapmanız gerekir. Azure AD, Azure kaynaklarınıza erişim sağlayan bir hizmet sorumlusu olarak kimlik doğrulaması yapmanızı gerektirir. Hizmet sorumlusu oluşturma hakkında daha fazla bilgi için şu makalelerden birine bakın:  
+```csharp
+using System;
+using System.Threading.Tasks;
+
+using Azure.Messaging.ServiceBus.Administration;
+
+namespace adminClientTrack2
+{
+    class Program
+    {
+        public static void Main()
+        {
+            MainAsync().GetAwaiter().GetResult();
+        }
+
+        private static async Task MainAsync()
+        {
+            string connectionString = "SERVICE BUS NAMESPACE CONNECTION STRING";
+            string QueueName = "QUEUE NAME";
+            string TopicName = "TOPIC NAME";
+            string SubscriptionName = "SUBSCRIPTION NAME";
+
+            var adminClient = new ServiceBusAdministrationClient(connectionString);
+            bool queueExists = await adminClient.QueueExistsAsync(QueueName);
+            if (!queueExists)
+            {
+                var options = new CreateQueueOptions(QueueName)
+                {
+                    MaxDeliveryCount = 3                    
+                };
+                await adminClient.CreateQueueAsync(options);
+            }
+
+
+            bool topicExists = await adminClient.TopicExistsAsync(TopicName);
+            if (!topicExists)
+            {
+                var options = new CreateTopicOptions(TopicName)
+                {
+                    MaxSizeInMegabytes = 1024
+                };
+                await adminClient.CreateTopicAsync(options);
+            }
+
+            bool subscriptionExists = await adminClient.SubscriptionExistsAsync(TopicName, SubscriptionName);
+            if (!subscriptionExists)
+            {
+                var options = new CreateSubscriptionOptions(TopicName, SubscriptionName)
+                {
+                    DefaultMessageTimeToLive = new TimeSpan(2, 0, 0, 0)
+                };
+                await adminClient.CreateSubscriptionAsync(options);
+            }
+        }
+    }
+}
+
+```
+
+
+## <a name="microsoftazureservicebusmanagement"></a>Microsoft. Azure. ServiceBus. Management 
+Ad alanlarını, kuyrukları, konuları ve abonelikleri yönetmek için [Microsoft. Azure. ServiceBus. Management](/dotnet/api/microsoft.azure.servicebus.management) ad alanındaki [managementclient](/dotnet/api/microsoft.azure.servicebus.management.managementclient) sınıfını kullanabilirsiniz. Örnek kod aşağıda verilmiştir: 
+
+> [!NOTE]
+> `ServiceBusAdministrationClient`Kitaplığındaki sınıfı, `Azure.Messaging.ServiceBus.Administration` en son SDK olan kitaplıktan kullanmanızı öneririz. Ayrıntılar için [ilk bölüme](#azuremessagingservicebusadministration-recommended)bakın. 
+
+```csharp
+using System;
+using System.Threading.Tasks;
+
+using Microsoft.Azure.ServiceBus.Management;
+
+namespace SBusManagementClient
+{
+    class Program
+    {
+        public static void Main()
+        {
+            MainAsync().GetAwaiter().GetResult();
+        }
+
+        private static async Task MainAsync()
+        {
+            string connectionString = "SERVICE BUS NAMESPACE CONNECTION STRING";
+            string QueueName = "QUEUE NAME";
+            string TopicName = "TOPIC NAME";
+            string SubscriptionName = "SUBSCRIPTION NAME";
+
+            var managementClient = new ManagementClient(connectionString);
+            bool queueExists = await managementClient.QueueExistsAsync(QueueName);
+            if (!queueExists)
+            {
+                QueueDescription qd = new QueueDescription(QueueName);
+                qd.MaxSizeInMB = 1024;
+                qd.MaxDeliveryCount = 3;
+                await managementClient.CreateQueueAsync(qd);
+            }
+
+
+            bool topicExists = await managementClient.TopicExistsAsync(TopicName);
+            if (!topicExists)
+            {
+                TopicDescription td = new TopicDescription(TopicName);
+                td.MaxSizeInMB = 1024;
+                td.DefaultMessageTimeToLive = new TimeSpan(2, 0, 0, 0);
+                await managementClient.CreateTopicAsync(td);
+            }
+
+            bool subscriptionExists = await managementClient.SubscriptionExistsAsync(TopicName, SubscriptionName);
+            if (!subscriptionExists)
+            {
+                SubscriptionDescription sd = new SubscriptionDescription(TopicName, SubscriptionName);
+                sd.DefaultMessageTimeToLive = new TimeSpan(2, 0, 0, 0);
+                sd.MaxDeliveryCount = 3;
+                await managementClient.CreateSubscriptionAsync(sd);
+            }
+        }
+    }
+}
+```
+
+
+## <a name="microsoftazuremanagementservicebus"></a>Microsoft.Azure.Management.ServiceBus 
+Bu kitaplık Azure Resource Manager tabanlı denetim düzlemi SDK 'sının bir parçasıdır. 
+
+### <a name="prerequisites"></a>Ön koşullar
+
+Bu kitaplığı kullanmaya başlamak için Azure Active Directory (Azure AD) hizmeti ile kimlik doğrulaması yapmanız gerekir. Azure AD, Azure kaynaklarınıza erişim sağlayan bir hizmet sorumlusu olarak kimlik doğrulaması yapmanızı gerektirir. Hizmet sorumlusu oluşturma hakkında daha fazla bilgi için şu makalelerden birine bakın:  
 
 * [Kaynaklara erişebilen Active Directory uygulama ve hizmet sorumlusu oluşturmak için Azure portal kullanın](../active-directory/develop/howto-create-service-principal-portal.md)
 * [Kaynaklara erişmek üzere hizmet sorumlusu oluşturmak için Azure PowerShell kullanma](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
@@ -33,7 +160,7 @@ Service Bus yönetim kitaplıklarını kullanmaya başlamak için Azure Active D
 
 Bu öğreticiler size, `AppId` `TenantId` `ClientSecret` Yönetim kitaplıkları tarafından kimlik doğrulaması için kullanılan BIR (istemci kimliği), ve (kimlik doğrulama anahtarı) sağlar. Çalıştırmak istediğiniz kaynak grubu için en az [**Azure Service Bus veri sahibi**](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner) veya [**katkıda bulunan**](../role-based-access-control/built-in-roles.md#contributor) izinlerinizin olması gerekir.
 
-## <a name="programming-pattern"></a>Programlama stili
+### <a name="programming-pattern"></a>Programlama stili
 
 Herhangi bir Service Bus kaynağını işlemek için kullanılan desenler ortak bir protokol izler:
 
@@ -67,8 +194,8 @@ Herhangi bir Service Bus kaynağını işlemek için kullanılan desenler ortak 
    await sbClient.Queues.CreateOrUpdateAsync(resourceGroupName, namespaceName, QueueName, queueParams);
    ```
 
-## <a name="complete-code-to-create-a-queue"></a>Kuyruk oluşturmak için kodu doldurun
-Service Bus kuyruğu oluşturmak için kodun tamamı aşağıda verilmiştir: 
+### <a name="complete-code-to-create-a-queue"></a>Kuyruk oluşturmak için kodu doldurun
+Service Bus kuyruğu oluşturmak için örnek kod aşağıda verilmiştir. Tüm örnek için [GitHub 'daki .NET Yönetim örneğine](https://github.com/Azure-Samples/service-bus-dotnet-management/)bakın. 
 
 ```csharp
 using System;
@@ -154,8 +281,13 @@ namespace SBusADApp
 }
 ```
 
-> [!IMPORTANT]
-> Tüm örnek için [GitHub 'daki .NET Yönetim örneğine](https://github.com/Azure-Samples/service-bus-dotnet-management/)bakın. 
+## <a name="fluent-library"></a>Floent kitaplığı
+Service Bus varlıklarını yönetmek için akıcı Kitaplığı kullanmanın bir örneği için, [Bu örneğe](https://github.com/Azure/azure-libraries-for-net/tree/master/Samples/ServiceBus)bakın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Microsoft. Azure. Management. ServiceBus API başvurusu](/dotnet/api/Microsoft.Azure.Management.ServiceBus)
+Aşağıdaki başvuru konularına bakın: 
+
+- [Azure. Messaging. ServiceBus. Administration](/dotnet/api/azure.messaging.servicebus.administration.servicebusadministrationclient)
+- [Microsoft. Azure. ServiceBus. Management](/dotnet/api/microsoft.azure.servicebus.management.managementclient)
+- [Microsoft.Azure.Management.ServiceBus](/dotnet/api/microsoft.azure.management.servicebus.servicebusmanagementclient)
+- [Fluent](/dotnet/api/microsoft.azure.management.servicebus.fluent)

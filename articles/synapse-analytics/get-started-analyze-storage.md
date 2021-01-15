@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
-ms.date: 07/20/2020
-ms.openlocfilehash: 5e3fbd1868cc1216cb7b9d02b2aa8e690af33952
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.date: 12/31/2020
+ms.openlocfilehash: ad16b63360364acd88ab12fb4715d1fd3115c0fb
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917690"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209381"
 ---
 # <a name="analyze-data-in-a-storage-account"></a>Depolama hesabındaki verileri analiz etme
 
@@ -30,7 +30,7 @@ Bu öğreticide, depolama hesabında bulunan verileri çözümlemeyi öğrenecek
 
 ### <a name="create-csv-and-parquet-files-in-your-storage-account"></a>Depolama hesabınızda CSV ve Parquet dosyaları oluşturma
 
-Aşağıdaki kodu bir not defterinde çalıştırın. Depolama hesabında bir CSV dosyası ve bir Parquet dosyası oluşturur.
+Aşağıdaki kodu yeni bir kod hücresindeki bir not defterinde çalıştırın. Depolama hesabında bir CSV dosyası ve bir Parquet dosyası oluşturur.
 
 ```py
 %%pyspark
@@ -48,26 +48,27 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats_parquetformat")
 1. **Depolama hesapları**  >  **MyWorkspace (birincil-contosolake)** sayfasına gidin.
 1. **Kullanıcıları (birincil)** seçin. **NYCTaxi** klasörünü görmeniz gerekir. İçinde **PassengerCountStats_csvformat** ve **PassengerCountStats_parquetformat** adlı iki klasör görmeniz gerekir.
 1. **PassengerCountStats_parquetformat** klasörünü açın. İçinde, benzer bir adı olan bir Parquet dosyası görürsünüz `part-00000-2638e00c-0790-496b-a523-578da9a15019-c000.snappy.parquet` .
-1. **. Parquet** öğesine sağ tıklayın ve ardından **Yeni Not defteri**' ni seçin. Şöyle bir hücre içeren bir not defteri oluşturur:
+1. **. Parquet** öğesine sağ tıklayın, ardından **Yeni Not defteri**' ni ve ardından **dataframe 'e yükle**' yi seçin. Aşağıdaki gibi bir hücreyle yeni bir not defteri oluşturulur:
 
     ```py
     %%pyspark
-    data_path = spark.read.load('abfss://users@contosolake.dfs.core.windows.net/NYCTaxi/PassengerCountStats.parquet/part-00000-1f251a58-d8ac-4972-9215-8d528d490690-c000.snappy.parquet', format='parquet')
-    data_path.show(100)
+    df = spark.read.load('abfss://users@contosolake.dfs.core.windows.net/NYCTaxi/PassengerCountStats.parquet/part-00000-1f251a58-d8ac-4972-9215-8d528d490690-c000.snappy.parquet', format='parquet')
+    display(df.limit(10))
     ```
 
-1. Hücreyi çalıştırın.
-1. İçindeki Parquet dosyasına sağ tıklayın ve ardından **Yeni SQL betiği**  >  **en üstteki 100 satırları** Seç ' i seçin. Şöyle bir SQL betiği oluşturur:
+1. **Spark1** adlı Spark havuzuna ekleyin. Hücreyi çalıştırın.
+1. **Kullanıcılar** klasörüne geri ' ye tıklayın. **. Parquet** dosyasına tekrar sağ tıklayın ve ardından **Yeni SQL betiği**  >  **en üstteki 100 satırları** Seç ' i seçin. Şöyle bir SQL betiği oluşturur:
 
     ```sql
-    SELECT TOP 100 *
+    SELECT 
+        TOP 100 *
     FROM OPENROWSET(
         BULK 'https://contosolake.dfs.core.windows.net/users/NYCTaxi/PassengerCountStats.parquet/part-00000-1f251a58-d8ac-4972-9215-8d528d490690-c000.snappy.parquet',
         FORMAT='PARQUET'
-    ) AS [r];
+    ) AS [result]
     ```
 
-    Betik penceresinde **Bağlan** alanı **sunucusuz SQL havuzu** olarak ayarlanır.
+    Betik penceresinde, **Bağlan** alanının **YERLEŞIK** sunucusuz SQL havuzu olarak ayarlandığından emin olun.
 
 1. Betiği çalıştırın.
 

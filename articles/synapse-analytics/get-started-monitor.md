@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: monitoring
 ms.topic: tutorial
-ms.date: 10/15/2020
-ms.openlocfilehash: c2260cc0d2c6b889b44c738576e33abceebe23f1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 12/31/2020
+ms.openlocfilehash: 8c0cdcad9a7803e0d8063362ca62887990045c86
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444406"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209823"
 ---
 # <a name="monitor-your-synapse-workspace"></a>SYNAPSE çalışma alanınızı izleme
 
@@ -25,7 +25,7 @@ Bu öğreticide, SYNAPSE çalışma alanınızdaki etkinlikleri izlemeyi öğren
 
 SYNAPSE Studio 'Yu açın ve **izleyici** hub 'ına gidin. Burada, çalışma alanında yer alan tüm etkinliklerin geçmişini görebilir ve bunların şimdi etkin olduğunu görebilirsiniz. 
 
-* **Tümleştirme** altında işlem hatlarını, Tetikleyicileri ve tümleştirme çalışma zamanlarını izleyebilirsiniz
+* **Tümleştirme** altında işlem hatlarını, Tetikleyicileri ve tümleştirme çalışma zamanlarını izleyebilirsiniz.
 * **Etkinlikler**' ın altında Spark ve SQL etkinliklerini izleyebilirsiniz. 
 
 ## <a name="integration"></a>Tümleştirme
@@ -36,15 +36,15 @@ SYNAPSE Studio 'Yu açın ve **izleyici** hub 'ına gidin. Burada, çalışma al
 
 ## <a name="apache-spark-activities"></a>Apache Spark etkinlikleri
 
-1. **Apache Spark uygulamalar > tümleştirme > etkinliklere** gidin. Artık çalışma alanınızda çalıştırılan veya çalıştırılan tüm Spark uygulamalarını görebilirsiniz.
+1. **Apache Spark uygulamalar > etkinliklere** gidin. Artık çalışma alanınızda çalıştırılan veya çalıştırılan tüm Spark uygulamalarını görebilirsiniz.
 1. Artık çalıştırmayan bir uygulama bulun ve **uygulamanın adına** tıklayın. Artık Spark uygulamasının ayrıntılarını görebilirsiniz.
 1. Apache Spark hakkında bilgi sahibiyseniz **Spark geçmiş sunucusuna** tıklayarak standart Apache Spark geçmiş sunucusu kullanıcı arabirimini bulabilirsiniz.
 
 ## <a name="sql-activities"></a>SQL etkinlikleri
 
-1. **SQL istekleri > tümleştirme > etkinliklere** gidin.
+1. **SQL istekleri > etkinliklere** gidin.
 1. Bu görünümde, SQL isteklerini görebilirsiniz.
-1. İzlenecek bir **Havuz** seçin. Artık, çalışmakta olan veya çalışma alanınızda çalıştırılmış olan tüm SQL isteklerini o havuzda görebilirsiniz.
+1. **Havuz** filtresinden Izlenecek bir **Havuz** seçin. Artık, çalışmakta olan veya çalışma alanınızda çalıştırılmış olan tüm SQL isteklerini o havuzda görebilirsiniz.
 1. Belirli bir SQL isteği bulun ve fareyi bu öğenin üzerine getirin. Üzerine geldiğinizde bir SQL komut dosyası simgesi görürsünüz.
 1. SQL isteğinin tam metnini görmek için SQL komut dosyası simgesine tıklayın.
 

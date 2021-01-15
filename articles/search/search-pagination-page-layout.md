@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/09/2020
-ms.openlocfilehash: 182ec758a8764a959b39296163e63e800cf5108c
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: a7171d656ec9f839aea4ae73763ec6ebd20c2bb3
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008495"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209840"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Azure Bilişsel Arama arama sonuçlarıyla çalışma
 
@@ -103,7 +103,7 @@ Arama puanları, aynı sonuç kümesindeki diğer belgelere göre eşleşme güc
 
 ### <a name="how-to-get-consistent-ordering"></a>Tutarlı sıralama nasıl alınır?
 
-Tutarlı sıralama bir uygulama **`$orderby`** gereksinimsiyse, bir alanda [] ifadesini (Query-OData-Filter-OrderBy-Syntax.MD) açık bir şekilde tanımlayabilirsiniz. Sonuçları sıralamak için, yalnızca olarak dizini oluşturulmuş alanlar **`sortable`** kullanılabilir. **`$orderby`** **`orderby`** Alan adlarını ve jeo-uzamsal değerler [**`geo.distance()` işlevine**](query-odata-filter-orderby-syntax.md) çağrıları dahil etmek için parametresinin değerini belirtirseniz, bir ekleme derecelendirmesi, tarih ve konum alanlarında yaygın olarak kullanılan alanlar.
+Tutarlı sıralama bir uygulama [ **`$orderby`** gereksinimsiyse](query-odata-filter-orderby-syntax.md) , bir alanda açıkça bir ifade tanımlayabilirsiniz. Sonuçları sıralamak için, yalnızca olarak dizini oluşturulmuş alanlar **`sortable`** kullanılabilir. **`$orderby`** **`orderby`** Alan adlarını ve jeo-uzamsal değerler [**`geo.distance()` işlevine**](query-odata-filter-orderby-syntax.md) çağrıları dahil etmek için parametresinin değerini belirtirseniz, bir ekleme derecelendirmesi, tarih ve konum alanlarında yaygın olarak kullanılan alanlar.
 
 Tutarlılığı etkileyen başka bir yaklaşım ise özel bir [Puanlama profili](index-add-scoring-profiles.md)kullanmaktır. Puanlama profilleri, belirli alanlarda bulunan eşleşmeleri artırma özelliği sayesinde, arama sonuçlarında öğelerin derecelendirmesi üzerinde daha fazla denetim sağlar. Ek Puanlama mantığı, her belge için arama puanları birbirinden farklı olduğundan çoğaltmalar arasındaki küçük farklılıkları geçersiz kılmaya yardımcı olabilir. Bu yaklaşım için [Derecelendirme algoritmasını](index-ranking-similarity.md) öneririz.
 

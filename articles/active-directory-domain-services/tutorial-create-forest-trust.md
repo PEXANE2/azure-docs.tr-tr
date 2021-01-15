@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: justinha
-ms.openlocfilehash: 0231689acef3345fb2b0f25170522d59552171ba
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: faa46178262777454d4d67d23bbd0bb013974ab5
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618340"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208497"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>Öğretici: Azure Active Directory Domain Services ' de şirket içi etki alanına giden bir orman güveni oluşturma
 
@@ -23,7 +23,7 @@ Parola karmalarını eşitleyemeyen ortamlarda veya parolasını bilmiyor olmala
 
 ![Azure AD DS şirket içi AD DS orman güveninin diyagramı](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure AD DS bağlantısını desteklemek için bir şirket içi AD DS ortamında DNS yapılandırma
@@ -33,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -73,8 +73,8 @@ Azure AD DS 'de bir orman güveni yapılandırmadan önce, Azure ile şirket iç
 
 Yönetilen etki alanını şirket içi ortamdan doğru bir şekilde çözümlemek için, mevcut DNS sunucularına ileticiler eklemeniz gerekebilir. Şirket içi ortamı yönetilen etki alanıyla iletişim kuracak şekilde yapılandırmadıysanız, şirket içi AD DS etki alanı için bir yönetim iş istasyonundan aşağıdaki adımları uygulayın:
 
-1. Başlat 'ı seçin **| Yönetim Araçları | DNS**
-1. *MyAD01* gibi DNS sunucusunu sağ seçin ve ardından **Özellikler** ' i seçin.
+1.   >  **Yönetim Araçları**  >  **DNS** Başlat ' ı seçin.
+1. *MyAD01* gibi DNS sunucusunu sağ seçin ve ardından **Özellikler**' i seçin.
 1. **İleticiler**' i seçin ve ardından başka ileticiler eklemek için **düzenleyin** .
 1. *10.0.2.4* ve *10.0.2.5* gıbı yönetilen etki alanının IP adreslerini ekleyin.
 
@@ -84,15 +84,15 @@ Yönetilen etki alanını şirket içi ortamdan doğru bir şekilde çözümleme
 
 Şirket içi AD DS etki alanında gelen güveni yapılandırmak için, şirket içi AD DS etki alanı için bir yönetim iş istasyonundan aşağıdaki adımları uygulayın:
 
-1. Başlat 'ı seçin **| Yönetim Araçları | Active Directory etki alanları ve Güvenleri**
-1. *OnPrem.contoso.com* gibi etki alanını sağ seçin ve ardından **Özellikler** ' i seçin.
-1. **Güvenler** sekmesini ve ardından **yeni güven** ' i seçin
-1. Azure AD DS etki alanı adı için bir ad girin (örneğin, *aaddscontoso.com*) ve sonra **İleri** ' yi seçin.
+1. Başlat 'ı seçin **| Yönetim Araçları | Etki alanları ve Güvenleri Active Directory**.
+1. *OnPrem.contoso.com* gibi etki alanını sağ seçin ve ardından **Özellikler**' i seçin.
+1. **Güvenler** sekmesini ve ardından **yeni güven**' i seçin.
+1. Azure AD DS etki alanı adı için *aaddscontoso.com* gibi bir ad girin ve ardından **İleri**' yi seçin.
 1. Bir **orman güveni** oluşturma, sonra bir **yol oluşturma: gelen** güven seçeneğini belirleyin.
 1. **Yalnızca bu etki alanı** için güven oluşturmayı seçin. Bir sonraki adımda, yönetilen etki alanı için Azure portal güveni oluşturursunuz.
 1. **Orman genelinde kimlik doğrulaması** kullanmayı seçin, ardından bir güven parolasını girip onaylayın. Aynı parola, sonraki bölümde Azure portal de girilir.
 1. Varsayılan seçeneklerde bir sonraki birkaç pencere arasında ilerleyin, ardından **Hayır, giden güveni onaylama** seçeneğini belirleyin.
-1. **Son** ' u seçin
+1. **Son**'u seçin.
 
 ## <a name="create-outbound-forest-trust-in-azure-ad-ds"></a>Azure AD DS giden orman güveni oluşturma
 
@@ -100,7 +100,7 @@ Yönetilen etki alanını çözümlemek için yapılandırılan şirket içi AD 
 
 Azure portal yönetilen etki alanı için giden güveni oluşturmak için aşağıdaki adımları izleyin:
 
-1. Azure portal, **Azure AD Domain Services** arayıp seçin, sonra yönetilen etki alanınızı seçin (örneğin, *aaddscontoso.com* ).
+1. Azure portal, **Azure AD Domain Services** arayıp seçin, sonra yönetilen etki alanınızı seçin (örneğin, *aaddscontoso.com*).
 1. Yönetilen etki alanının sol tarafındaki menüden **Güvenler**' ı seçin ve ardından güven **Ekle** ' yi seçin.
 
    > [!NOTE]
@@ -108,8 +108,8 @@ Azure portal yönetilen etki alanı için giden güveni oluşturmak için aşağ
 
 1. Güveninizi tanımlayan bir görünen ad girin, ardından *OnPrem.contoso.com* gibi şirket içi GÜVENILEN orman DNS adı.
 1. Önceki bölümde yer alan şirket içi AD DS etki alanı için gelen orman güvenini yapılandırırken kullanılan güven parolasını sağlayın.
-1. *10.1.1.4* ve *10.1.1.5* gibi şirket içi AD DS etki alanı IÇIN en az iki DNS sunucusu sağlayın
-1. Hazırsanız, giden orman güvenini **kaydedin**
+1. *10.1.1.4* ve *10.1.1.5* gibi şirket içi AD DS etki alanı IÇIN en az iki DNS sunucusu sağlayın.
+1. Hazırsanız, giden orman güvenini **kaydedin** .
 
     ![Azure portal giden orman güveni oluşturma](./media/tutorial-create-forest-trust/portal-create-outbound-trust.png)
 
@@ -181,7 +181,7 @@ Azure AD DS kaynak ormanına katılmış Windows Server VM 'sini kullanarak, kul
 1. *Çapraz Forestshare izinleri* Iletişim kutusunda **Ekle**' yi seçin.
 1. **Seçilecek nesne adlarını girin** alanına *fileserveraccess* yazın ve ardından **Tamam**' ı seçin.
 1. **Gruplar veya Kullanıcı adları** listesinden *fileserveraccess* ' i seçin. **FileServerAccess izinleri** listesinde, **değiştirme** ve **yazma** izinleri için *Izin ver* ' i seçin ve ardından **Tamam**' ı seçin.
-1. **Paylaşım** sekmesini seçin ve **Gelişmiş paylaşım...** seçeneğini belirleyin.
+1. **Paylaşım** sekmesini ve ardından **Gelişmiş paylaşım...** öğesini seçin.
 1. **Bu klasörü paylaşma**' yı seçin, sonra da *çapraz Forestshare* gibi **Share adında** dosya paylaşımının hatırlayabileceğiniz bir adını girin.
 1. **İzinler**'i seçin. **Herkes Için izinler** listesinde, **Değiştir** izni için **izin ver** ' i seçin.
 1. **Tamam** ' ı iki kez seçin ve ardından **kapatın**.

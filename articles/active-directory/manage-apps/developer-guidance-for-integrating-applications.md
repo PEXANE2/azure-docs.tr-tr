@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de16c947c59f5a0111b9325dbefe7daf1268fb40
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 006aaf7ca5066c552f9c0b797549d7e90ac9beb7
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649169"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208701"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Azure Active Directory için iş kolu uygulamaları geliştirin
 Bu kılavuz, Azure Active Directory (AD) için iş kolu (LoB) uygulamaları geliştirmeye genel bir bakış sağlar. Hedef kitle Active Directory/Microsoft 365 genel yöneticilerdir.
@@ -70,7 +70,7 @@ Varsayılan olarak, her kullanıcı oturum açmak için bir onay deneyiminden ge
 
 Güvendiğiniz uygulamalar için, kuruluşunuz adına uygulamaya yarışarak Kullanıcı deneyimini basitleştirebilirsiniz.
 
-Azure 'daki Kullanıcı onayı ve onay deneyimi hakkında daha fazla bilgi için bkz. [uygulamaları Azure Active Directory tümleştirme](../develop/quickstart-register-app.md).
+Azure 'daki Kullanıcı onayı ve onay deneyimi hakkında daha fazla bilgi için bkz. [Azure AD uygulama onayı deneyimlerini anlama](../develop/application-consent-experience.md).
 
 ## <a name="related-articles"></a>İlgili Makaleler
 * [Azure AD Uygulama Ara Sunucusu ile şirket içi uygulamalara güvenli uzaktan erişimi etkinleştirme](application-proxy.md)

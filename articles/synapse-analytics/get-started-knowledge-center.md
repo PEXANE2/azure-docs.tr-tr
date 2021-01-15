@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 11/16/2020
-ms.openlocfilehash: 611d2163e242d7851398821344c3ed595df364cb
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 59364a0a2c1d1e411f41dc35dee812c8e920b72d
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460260"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209211"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>SYNAPSE bilgi merkezini araştırma
 
@@ -26,7 +26,7 @@ Bu öğreticide, SYNAPSE Studio bilgi merkezini kullanmayı öğreneceksiniz.
 SYNAPSE Studio 'da bilgi merkezini bulmanın iki yolu vardır:
 
   1. Ana Hub 'da, sayfanın sağ üst kısmındaki **öğrenme**' ye tıklayın.
-  2. Üstteki menü çubuğunda, **?** ' e tıklayın. daha sonra  **Bilgi Merkezi**.
+  2. Üstteki menü çubuğunda, **?** ' e tıklayın. daha sonra **Bilgi Merkezi**.
 
 Herhangi bir yöntemi seçin ve **bilgi merkezini** açın.
 
@@ -39,28 +39,28 @@ Herhangi bir yöntemi seçin ve **bilgi merkezini** açın.
 
 ## <a name="exploring-blob-storage-with-serverless-sql-pool"></a>Sunucusuz SQL havuzuyla blob depolamayı keşfetme
 
-1. **Bilgi merkezine** gidin, **örnekleri hemen kullan** ' a tıklayın.
-1. **SQL Ile Sorgu verisi** seçme 
-1. **Örnekleri hemen kullan** ' a tıklayın
-1. Yeni bir SQL betiği oluşturacak.
-1. İlk sorguya kaydırın (28-32 satırları) ve sorgu metnini seçin
-1. Çalıştır'a tıklayın. Seçtiğiniz metni çalıştıracaktır.
+1. **Bilgi merkezine** gidin, **örnekleri hemen kullan**' a tıklayın.
+1. **SQL Ile sorgu verileri**' ni seçin.
+1. **Örnek kullan**' a tıklayın.
+1. Yeni bir örnek SQL betiği açılır.
+1. İlk sorguya kaydırın (28-32 satırları) ve sorgu metnini seçin.
+1. Çalıştır'a tıklayın. Yalnızca seçtiğiniz kodu çalıştırır.
 
 ## <a name="loading-more-nyc-taxi-data"></a>Daha fazla NYC TAXI verisi yükleniyor
-1. **Bilgi merkezine** gidin, **Galeriye** git 'e tıklayın 
-1. Üstteki **SQL betikleri** sekmesini seçin
-1. **New York Taxicab veri kümesini yükle** ' yi seçin
-1. **Girişler** altında, **var olan bir havuzu seçin** öğesini seçin ve **SQLDB1** seçin
-1. **Betiği aç** ' a tıklayın
-1. Yeni bir SQL betiği görüntülenir.
+1. **Bilgi merkezine** gidin, **Galeriye** git ' e tıklayın.
+1. Üstteki **SQL betikleri** sekmesini seçin.
+1. **New York Taxicab veri kümesi** veri alım örneğini Yükle ' yi seçin, **devam**' a tıklayın.
+1. **SQL havuzu** altında, **var olan bir havuzu seçin** ' i seçin ve **SQLPOOL1**' ı seçin ve daha önce oluşturduğunuz **SQLPOOL1** veritabanını seçin.
+1. **Betiği aç**' a tıklayın.
+1. Yeni bir örnek SQL betiği açılır.
 1. **Çalıştır** 'a tıklayın
-1. Bu, NYC TAXI verileri için birkaç tablo oluşturur ve T-SQL COPY komutunu kullanarak bunları yükler.
+1. Bu, NYC TAXI verileri için birkaç tablo oluşturur ve T-SQL COPY komutunu kullanarak bunları yükler. Önceki hızlı başlangıç adımlarında bu tabloları oluşturduysanız, mevcut olmayan tablolar için oluşturmak ve kopyalamak üzere yalnızca kodu seçin ve yürütün.
 
     > [!NOTE] 
     > Adanmış bir SQL Havuzu (eski adıyla SQL DW) içeren SQL betiği için örnek Galeri 'yi kullanırken, yalnızca var olan ayrılmış bir SQL havuzunu (eski adıyla SQL DW) kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure SYNAPSE Analytics 'i kullanmaya başlama](get-started.md)
+* [Azure Synapse Analytics ile çalışmaya başlama](get-started.md)
 * [Çalışma alanı oluşturma](quickstart-create-workspace.md)
 * [Sunucusuz SQL havuzu kullanma](quickstart-sql-on-demand.md)

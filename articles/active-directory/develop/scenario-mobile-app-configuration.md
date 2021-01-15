@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: a18a36b8583f8534b2a2e643e5c155dc7a2d65e2
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e2c632de3d602fe2d3e5bfa74f78e90f48412067
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444070"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208922"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Web API 'Lerini çağıran bir mobil uygulama yapılandırma
 
@@ -27,7 +27,7 @@ Uygulamanızı oluşturduktan sonra, uygulama kayıt parametrelerini kullanarak 
 
 Aşağıdaki Microsoft kimlik doğrulama kitaplığı (MSAL) türleri mobil uygulamaları destekler.
 
-MSAL | Açıklama
+MSAL | Description
 ------------ | ----------
 ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Taşınabilir uygulamalar geliştirmek için kullanılır. MSAL.NET, mobil uygulama oluşturmak için aşağıdaki platformları destekler: Evrensel Windows Platformu (UWP), Xamarin. iOS ve Xamarin. Android.
 ![MSAL. iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL. iOS | Hedef-C veya Swift kullanarak Yerel iOS uygulamaları geliştirmek için kullanılır.
@@ -148,9 +148,9 @@ Daha fazla bilgi için bkz. [msal.net Ile UWP 'e özgü hususlar](msal-net-uwp-c
 
 Android ve iOS 'ta aracılar şunları etkinleştirir:
 
-- **Çoklu oturum açma (SSO)** : Azure Active Directory (Azure AD) ile KAYıTLı cihazlarda SSO 'yu kullanabilirsiniz. SSO kullandığınızda kullanıcılarınızın her uygulamada oturum açması gerekmez.
-- **Cihaz kimliği** : Bu ayar, Azure AD cihazlarıyla ilgili koşullu erişim ilkelerini sağlar. Kimlik doğrulama işlemi, cihaz çalışma alanına katıldığında oluşturulan cihaz sertifikasını kullanır.
-- **Uygulama tanımlama doğrulaması** : bir uygulama aracıyı çağırdığında, yeniden yönlendirme URL 'sini geçirir. Sonra aracı tarafından doğrulanır.
+- **Çoklu oturum açma (SSO)**: Azure Active Directory (Azure AD) ile KAYıTLı cihazlarda SSO 'yu kullanabilirsiniz. SSO kullandığınızda kullanıcılarınızın her uygulamada oturum açması gerekmez.
+- **Cihaz kimliği**: Bu ayar, Azure AD cihazlarıyla ilgili koşullu erişim ilkelerini sağlar. Kimlik doğrulama işlemi, cihaz çalışma alanına katıldığında oluşturulan cihaz sertifikasını kullanır.
+- **Uygulama tanımlama doğrulaması**: bir uygulama aracıyı çağırdığında, yeniden yönlendirme URL 'sini geçirir. Sonra aracı tarafından doğrulanır.
 
 ### <a name="enable-the-broker-on-xamarin"></a>Xamarin üzerinde aracıyı etkinleştirme
 
@@ -249,8 +249,8 @@ Uygulamanızın URL şemasını kaydetmek için şu adımları izleyin:
 
    Burada, `BundleId` cihazınızı benzersiz olarak tanımlar. Örneğin, ise, `BundleId` `yourcompany.xforms` URL şemanızın olması gerekir `msauth.com.yourcompany.xforms` .
 
-   > [!NOTE]
-   > Bu URL şeması, aracının yanıtını aldığında uygulamanızı benzersiz bir şekilde tanımlayan yeniden yönlendirme URI 'sinin bir parçası olur.
+  
+      Bu URL şeması, aracının yanıtını aldığında uygulamanızı benzersiz bir şekilde tanımlayan yeniden yönlendirme URI 'sinin bir parçası olur.
 
    ```XML
     <key>CFBundleURLTypes</key>
@@ -310,10 +310,9 @@ Aracılı kimlik doğrulaması, varsayılan olarak Azure AD senaryolarında etki
     }
 ```
 
-> [!NOTE]
-> `UISceneDelegate`İOS 13 veya sonraki bir sürümünü benimsediğiniz takdirde, msal geri aramasını `scene:openURLContexts:` yerine öğesinin içine yerleştirin `UISceneDelegate` . MSAL `handleMSALResponse:sourceApplication:` her URL için yalnızca bir kez çağrılmalıdır.
->
-> Daha fazla bilgi için [Apple belgelerine](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)bakın.
+`UISceneDelegate`İOS 13 veya sonraki bir sürümünü benimsediğiniz takdirde, msal geri aramasını `scene:openURLContexts:` yerine öğesinin içine yerleştirin `UISceneDelegate` . MSAL `handleMSALResponse:sourceApplication:` her URL için yalnızca bir kez çağrılmalıdır.
+
+Daha fazla bilgi için [Apple belgelerine](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)bakın.
 
 #### <a name="step-2-register-a-url-scheme"></a>2. Adım: bir URL düzenini kaydetme
 
@@ -329,8 +328,7 @@ Uygulamanıza bir düzen kaydetmek için:
 
    Burada, `BundleId` cihazınızı benzersiz olarak tanımlar. Örneğin, ise, `BundleId` `yourcompany.xforms` URL şemanızın olması gerekir `msauth.com.yourcompany.xforms` .
 
-   > [!NOTE]
-   > Bu URL şeması, aracının yanıtını aldığında uygulamanızı benzersiz bir şekilde tanımlayan yeniden yönlendirme URI 'sinin bir parçası olur. Biçimdeki yeniden yönlendirme URI 'sinin `msauth.(BundleId)://auth` [Azure Portal](https://portal.azure.com)uygulamanız için kayıtlı olduğundan emin olun.
+    Bu URL şeması, aracının yanıtını aldığında uygulamanızı benzersiz bir şekilde tanımlayan yeniden yönlendirme URI 'sinin bir parçası olur. Biçimdeki yeniden yönlendirme URI 'sinin `msauth.(BundleId)://auth` [Azure Portal](https://portal.azure.com)uygulamanız için kayıtlı olduğundan emin olun.
 
    ```XML
    <key>CFBundleURLTypes</key>

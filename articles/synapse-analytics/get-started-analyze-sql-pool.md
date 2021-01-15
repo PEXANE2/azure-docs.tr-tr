@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 11/17/2020
-ms.openlocfilehash: 9014469ca063ca52be0965ecbd4e8b21709d10a0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 12/31/2020
+ms.openlocfilehash: 38332492ba9f20ea7c6682d8341ddf6b5f1f11dd
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455160"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209432"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Adanmış SQL havuzları ile verileri analiz etme
 
@@ -23,8 +23,8 @@ Azure SYNAPSE Analytics, özel bir SQL havuzu ile verileri analiz etme yeteneği
 
 ## <a name="load-the-nyc-taxi-data-into-sqlpool1"></a>NYC TAXI verilerini SQLPOOL1 'e yükleme
 
-1. SYNAPSE Studio 'da, **geliştirme** merkezine gidin ve yeni SQL betiği oluşturun
-1. Betiğin ' Bağlan ' bölümünde ' SQLPOOL1 ' havuzunu (Bu öğreticinin [1. adımında](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool) oluşturulan havuz) seçin.
+1. SYNAPSE Studio 'da **geliştirme** merkezine gidin, **+** Yeni kaynak eklemek için düğmeye tıklayın ve ardından yeni SQL betiği oluşturun.
+1. Betiğin üzerindeki ' Bağlan ' açılan listesinde ' SQLPOOL1 ' havuzunu (Bu öğreticinin [1. adımında](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool) oluşturulan havuz) seçin.
 1. Aşağıdaki kodu girin:
     ```
     CREATE TABLE [dbo].[Trip]
@@ -71,12 +71,13 @@ Azure SYNAPSE Analytics, özel bir SQL havuzu ile verileri analiz etme yeteneği
     )
     OPTION (LABEL = 'COPY : Load [dbo].[Trip] - Taxi dataset');
     ```
-1. Bu betik 60 saniye içinde sona acaktır. NYC TAXI verilerinin 2.000.000 satırlarını dbo adlı bir tabloya yükler **. Seyahat**
+1. Betiği yürütmek için Çalıştır düğmesine tıklayın.
+1. Bu betik 60 saniyeden daha az bir süre içinde sona acaktır. NYC TAXI verilerinin 2.000.000 satırlarını dbo adlı bir tabloya yükler **. Seyahat**.
 
 ## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>Özel SQL havuzundaki NYC TAXI verilerini keşfet
 
 1. SYNAPSE Studio 'da **veri** merkezine gidin.
-1. **SQLPOOL1**  >  **Tables** bölümüne gidin. Birkaç tablo yüklendiğini görürsünüz.
+1. **SQLPOOL1**  >  **Tables** bölümüne gidin. 
 1. Dbo öğesine sağ tıklayın **. Seyahat** tablosu ve **Yeni SQL betiği** Seç  >  **ilk 100 satır seçin**.
 1. Yeni bir SQL betiği oluşturulup çalışırken bekleyin.
 1. SQL **komut dosyasının en üstünde,** **SQLPOOL1** adlı SQL havuzuna otomatik olarak ayarlandığını unutmayın.
@@ -89,7 +90,7 @@ Azure SYNAPSE Analytics, özel bir SQL havuzu ile verileri analiz etme yeteneği
     FROM  dbo.Trip
     WHERE TripDistanceMiles > 0 AND PassengerCount > 0
     GROUP BY PassengerCount
-    ORDER BY PassengerCount
+    ORDER BY PassengerCount;
     ```
 
     Bu sorgu, toplam seyahat mesafeleri ve ortalama seyahat mesafesinin, pascların sayısıyla ilişkisini gösterir.

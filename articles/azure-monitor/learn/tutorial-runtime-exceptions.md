@@ -3,16 +3,16 @@ title: Azure Application Insights kullanarak çalışma zamanı özel durumları
 description: Azure Application Insights kullanarak uygulamanızdaki çalışma zamanı özel durumlarını bulma ve tanılama hakkındaki öğretici.
 ms.subservice: application-insights
 ms.topic: tutorial
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: 057b211179c6932d4214e6118e3fa97b95145ba0
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 98ccaef716ae2390dcbcfbc7c4a1916359115f93
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926640"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210163"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Azure Application Insights ile çalışma zamanı özel durumlarını bulma ve tanılama
 
@@ -27,7 +27,7 @@ Azure Application Insights, uygulamanızdan çalışma zamanı özel durumların
 > * Hatalı kodu düzeltmek için yeni iş öğesi oluşturma
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -46,8 +46,8 @@ Bu öğreticiyi tamamlamak için:
 ## <a name="analyze-failures"></a>Hataları analiz etme
 Application Insights, uygulamanızdaki tüm hataları toplar ve bunların farklı işlemlerdeki sıklığını görüntüleyerek etki düzeyi en yüksek olan hatalara odaklanmanıza yardımcı olur.  Daha sonra bu hataların ayrıntılarına inerek kök nedeni belirleyebilirsiniz.   
 
-1. **Application Insights** ’ı ve sonra aboneliğinizi seçin.  
-2. **Hatalar** panelini açmak için **Araştır** menüsü altından **Hatalar** ’ı seçin veya **Başarısız istekler** grafiğine tıklayın.
+1. **Application Insights**’ı ve sonra aboneliğinizi seçin.  
+2. **Hatalar** panelini açmak için **Araştır** menüsü altından **Hatalar**’ı seçin veya **Başarısız istekler** grafiğine tıklayın.
 
     ![Başarısız istekler](media/tutorial-runtime-exceptions/failed-requests.png)
 
@@ -74,7 +74,7 @@ Application Insights, uygulamanızdaki tüm hataları toplar ve bunların farkl�
 ## <a name="identify-failing-code"></a>Başarısız olan kodu belirleme
 Snapshot Debugger, uygulamanızda en sık karşılaşılan özel durumların anlık görüntülerini toplayarak üretimde sorunun kök nedenini tanılamanıza yardımcı olur.  Hata ayıklama anlık görüntülerini portalda görüntüleyerek çağrı yığınını görebilir ve her bir çağrı yığını çerçevesinde değişkenleri inceleyebilirsiniz. Daha sonra, anlık görüntüyü indirerek ve Visual Studio 2019 Enterprise 'ta açarak kaynak kodda hata ayıklama seçeneğiniz vardır.
 
-1. Özel durumun özelliklerinden **Hata ayıklama anlık görüntüsünü aç** ’a tıklayın.
+1. Özel durumun özelliklerinden **Hata ayıklama anlık görüntüsünü aç**’a tıklayın.
 2. İsteğe yönelik çağrı yığınıyla birlikte **Hata Ayıklama Anlık Görüntüsü** paneli açılır.  Tüm yerel değişkenlerin istek sırasında sahip olduğu değerleri görüntülemek için herhangi bir metoda tıklayın.  Başta bu örnekte en çok kullanılan metot olmak üzere değeri olmayan yerel değişkenleri görebiliriz.
 
     ![Hata ayıklama anlık görüntüsü](media/tutorial-runtime-exceptions/debug-snapshot-01.png)
@@ -83,7 +83,7 @@ Snapshot Debugger, uygulamanızda en sık karşılaşılan özel durumların anl
 
     ![Kodda düzeltilmesi gereken bir hata gösteren ekran görüntüsü.    ](media/tutorial-runtime-exceptions/debug-snapshot-02.png)
 
-4. Daha sonra, düzeltilmesi gereken gerçek kodu bulabilmemiz için bu anlık görüntüyü Visual Studio 'ya indirme seçeneğiniz vardır. Bunu yapmak için **anlık görüntüyü indir** ' e tıklayın.
+4. Daha sonra, düzeltilmesi gereken gerçek kodu bulabilmemiz için bu anlık görüntüyü Visual Studio 'ya indirme seçeneğiniz vardır. Bunu yapmak için **anlık görüntüyü indir**' e tıklayın.
 5. Anlık görüntü Visual Studio'ya yüklenir.
 6. Artık özel duruma neden olan kod satırını hızlıca tanımlayan Visual Studio Enterprise bir hata ayıklama oturumu çalıştırabilirsiniz.
 
@@ -97,13 +97,13 @@ Application Insights tarafından toplanan tüm veriler, bunları çeşitli yolla
 
     ![Kod](media/tutorial-runtime-exceptions/codelens.png)
 
-1. **Etkiyi çözümleyin** ’e tıklayarak Application Insights Analytics’i açın.  Analytics, başarısız isteklerle ilgili olarak etkilenen kullanıcılar, tarayıcılar ve bölgeler gibi ayrıntıları sağlayan çeşitli sorgularla doldurulur.<br><br>![Ekran görüntüsü, birkaç sorgu içeren Application Insights penceresini gösterir.](media/tutorial-runtime-exceptions/analytics.png)<br>
+1. **Etkiyi çözümleyin**’e tıklayarak Application Insights Analytics’i açın.  Analytics, başarısız isteklerle ilgili olarak etkilenen kullanıcılar, tarayıcılar ve bölgeler gibi ayrıntıları sağlayan çeşitli sorgularla doldurulur.<br><br>![Ekran görüntüsü, birkaç sorgu içeren Application Insights penceresini gösterir.](media/tutorial-runtime-exceptions/analytics.png)<br>
 
 ## <a name="add-work-item"></a>İş öğesi ekleme
 Application Insights’ı Azure DevOps veya GitHub gibi bir izleme sistemine bağlarsanız doğrudan Application Insights’tan bir iş öğesi oluşturabilirsiniz.
 
 1. Application Insights’taki **Özel Durum Özellikleri** paneline dönün.
-2. **Yeni İş Öğesi** ’ne tıklayın.
+2. **Yeni İş Öğesi**’ne tıklayın.
 3. Zaten doldurulan özel durumla ilgili ayrıntıları içeren **Yeni İş Öğesi** paneli açılır.  Bunu kaydetmeden önce dilediğiniz kadar ek bilgi ekleyebilirsiniz.
 
     ![Yeni İş Öğesi](media/tutorial-runtime-exceptions/new-work-item.png)

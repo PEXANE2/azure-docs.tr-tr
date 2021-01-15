@@ -2,15 +2,15 @@
 title: Redsıs için Azure önbelleği için Azure Izleyici | Microsoft Docs
 description: Bu makalede, performans ve kullanım sorunlarını hızlı bir şekilde anlamak için önbellek sahipleri sağlayan Azure Redis Cache özelliği için Azure Izleyicisi açıklanmaktadır.
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 09/10/2020
-ms.openlocfilehash: e7b8a8e131cf7e0aae051f42043abf0640c927e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35f575410caa7a8a8ffbda35bdfa876418db8945
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90887006"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210384"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis"></a>Redsıs için Azure önbelleği için Azure Izleyicisini keşfet
 
@@ -46,11 +46,11 @@ Tüm aboneliklerinizde depolama hesaplarınızın kullanımını ve performansı
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. **İzleyici**araması yapın ve **izleyici**' yi seçin.
+1. **İzleyici** araması yapın ve **izleyici**' yi seçin.
 
     !["Monitor" sözcüğünün ve hızölçer simgesiyle "Monitor" ifadesini gösteren Hizmetler Arama sonucuyla arama kutusu](./media/cosmosdb-insights-overview/search-monitor.png)
 
-1. **Redsıs Için Azure önbelleği**' ni seçin. Bu seçenek mevcut değilse **More**  >  **redsıs için diğer Azure önbelleği**' ni seçin.
+1. **Redsıs Için Azure önbelleği**' ni seçin. Bu seçenek mevcut değilse   >  **redsıs için diğer Azure önbelleği**' ni seçin.
 
 ### <a name="overview"></a>Genel Bakış
 
@@ -79,7 +79,7 @@ Mavi renkle vurgulanmış Redsıs kaynak adı için Azure önbelleğini seçtiğ
 - **İsabetsiz Önbellek Okuma Sayısı**
 - **Hata Sayısı (En Fazla)**
 
-### <a name="operations"></a>İşlemler
+### <a name="operations"></a>Operations
 
 Sayfanın üst kısmında **işlemler** ' i seçtiğinizde, çalışma kitabı şablonunun **işlemler** tablosu açılır. Şu sütunları gösterir:
 
@@ -87,7 +87,7 @@ Sayfanın üst kısmında **işlemler** ' i seçtiğinizde, çalışma kitabı �
 - **Toplam İşlem Sayısı Zaman Çizelgesi**
 - **Saniye Başına İşlem**
 - **Alınanlar**
-- **Kümeler**
+- **Ayarlar**
 
 ![İşletim deneyiminin ekran görüntüsü](./media/redis-cache-insights-overview/operations.png)
 
@@ -170,7 +170,7 @@ Verilerinizi bir Excel biçiminde dışarı aktarmak için raptiye simgesinin so
 
 ## <a name="customize-azure-monitor-for-azure-cache-for-redis"></a>Redsıs için Azure önbelleği için Azure Izleyicisini özelleştirme
 
-Bu deneyim, en üstteki Azure izleyici çalışma kitabı şablonları olduğundan, **Customize**  >  **Edit**  >  değiştirilmiş sürümünüzün bir kopyasını özel bir çalışma kitabına kaydetmek için**Kaydet** Düzenle 'yi Özelleştir ' i seçebilirsiniz.
+Bu deneyim, en üstteki Azure izleyici çalışma kitabı şablonları olduğundan,   >    >  değiştirilmiş sürümünüzün bir kopyasını özel bir çalışma kitabına kaydetmek için **Kaydet** Düzenle 'yi Özelleştir ' i seçebilirsiniz.
 
 ![Vurgulanmış özelleştirme içeren bir komut çubuğu](./media/cosmosdb-insights-overview/customize.png)
 

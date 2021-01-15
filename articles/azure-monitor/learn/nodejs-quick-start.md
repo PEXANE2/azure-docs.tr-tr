@@ -3,16 +3,16 @@ title: 'Hızlı başlangıç: Azure Izleyici ile Node.js Izleme Application Insi
 description: Azure Izleyici ile izleme için Node.js bir Web uygulamasını hızlıca ayarlamaya yönelik yönergeler sağlar Application Insights
 ms.subservice: application-insights
 ms.topic: quickstart
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 07/12/2019
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
-ms.openlocfilehash: 550097272f90a2f7fa06af7f06810fd3fa0ed94f
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: e5fc7c71c1ced4542f00fe862699442c6b43bc69
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173896"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210367"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Hızlı başlangıç: Node.js Web uygulamanızı Azure Application Insights izlemeye başlayın
 
@@ -31,7 +31,7 @@ Application Insights, şirket içinde veya bulutta çalışıp çalışmadığı
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
-2. **Kaynak oluştur**  >  **Geliştirici Araçları**  >  **Application Insights**seçin.
+2. **Kaynak oluştur**  >  **Geliştirici Araçları**  >  **Application Insights** seçin.
 
    ![Azure Application Insights kaynağı ekleme](./media/nodejs-quick-start/azure-app-insights-create-resource.png)
 
@@ -50,7 +50,7 @@ Application Insights, şirket içinde veya bulutta çalışıp çalışmadığı
 
 ## <a name="configure-appinsights-sdk"></a>Appınsights SDK 'sını yapılandırma
 
-1. **Genel bakış** ' ı seçin ve uygulamanızın **izleme anahtarını**kopyalayın.
+1. **Genel bakış** ' ı seçin ve uygulamanızın **izleme anahtarını** kopyalayın.
 
    ![Application Insights Izleme anahtarını görüntüleme](./media/nodejs-quick-start/azure-app-insights-instrumentation-key.png)
 
@@ -82,7 +82,7 @@ Application Insights, şirket içinde veya bulutta çalışıp çalışmadığı
 
    ![Uygulama haritasını Application Insights](./media/nodejs-quick-start/azure-app-insights-application-map.png)
 
-3. Analytics 'teki uygulama **Analizi** simgesi ![ uygulama Haritası simgesini seçin ](./media/nodejs-quick-start/azure-app-insights-analytics-icon.png) **View in Analytics**.  Bu eylem, Application Insights tarafından toplanan tüm verileri analiz etmek için zengin bir sorgu dili sağlayan **Application Insights Analytics**'i açar. Bu örnekte, istek sayısını grafik olarak işleyen bir sorgu oluşturulur. Diğer verileri çözümlemek için kendi sorgularınızı yazabilirsiniz.
+3. Analytics 'teki uygulama **Analizi** simgesi ![ uygulama Haritası simgesini seçin ](./media/nodejs-quick-start/azure-app-insights-analytics-icon.png) .  Bu eylem, Application Insights tarafından toplanan tüm verileri analiz etmek için zengin bir sorgu dili sağlayan **Application Insights Analytics**'i açar. Bu örnekte, istek sayısını grafik olarak işleyen bir sorgu oluşturulur. Diğer verileri çözümlemek için kendi sorgularınızı yazabilirsiniz.
 
    ![Application Insights Analytics grafikleri](./media/nodejs-quick-start/azure-app-insights-analytics-queries.png)
 

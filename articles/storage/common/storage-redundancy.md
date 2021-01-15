@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/13/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 3c0b466a7db688ed3e24441f652f6a1ef1a88ee1
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 5a09a2083c1258a3120f8696aa39a0252dbfcf2d
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180090"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209703"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Depolama yedekliliği
 
@@ -97,11 +97,19 @@ Coğrafi olarak yedekli depolama (GRS), LRS kullanarak verilerinizi birincil bö
 
 İlk olarak birincil konuma bir yazma işlemi kaydedilir ve LRS kullanılarak çoğaltılır. Güncelleştirme daha sonra ikincil bölgeye zaman uyumsuz olarak çoğaltılır. Veriler ikincil konuma yazıldığında, LRS kullanarak bu konumda da çoğaltılır.
 
+Aşağıdaki diyagramda, verileriniz GRS veya RA-GRS ile nasıl çoğaltılır gösterilmektedir:
+
+:::image type="content" source="media/storage-redundancy/geo-redundant-storage.png" alt-text="Verilerin GRS veya RA-GRS ile nasıl çoğaltılacağı gösteren diyagram":::
+
 ### <a name="geo-zone-redundant-storage"></a>Coğrafi alanlar arası yedekli depolama
 
 Coğrafi olarak yedekli depolama (GZRS), coğrafi çoğaltma tarafından sunulan bölgesel kesintilerden korunarak kullanılabilirlik alanları genelinde artıklık tarafından sağlanmış yüksek kullanılabilirliği birleştirir. Bir GZRS Storage hesabındaki veriler, birincil bölgedeki üç [Azure kullanılabilirlik bölgesine](../../availability-zones/az-overview.md) kopyalanır ve ayrıca bölgesel felaketlerden koruma için ikincil bir coğrafi bölgeye çoğaltılır. Microsoft, olağanüstü durum kurtarma için maksimum tutarlılık, dayanıklılık ve kullanılabilirlik, mükemmel performans ve esnekliği gerektiren uygulamalar için GZRS kullanılmasını önerir.
 
 Bir GZRS depolama hesabı ile bir kullanılabilirlik alanı kullanılamaz hale gelirse veya kurtarılamaz durumdaysa verileri okumaya ve yazmaya devam edebilirsiniz. Ayrıca, tüm bölgesel bir kesinti veya birincil bölgenin kurtarılamaz bir olağanüstü durum durumunda verileriniz de dayanıklı olur. GZRS belirli bir yıl boyunca nesnelerin en az% 99.99999999999999 (16 9) oranında dayanıklılığını sağlamak üzere tasarlanmıştır.
+
+Aşağıdaki diyagramda, verilerinizin GZRS veya RA-GZRS ile nasıl çoğaltılacağı gösterilmektedir:
+
+:::image type="content" source="media/storage-redundancy/geo-zone-redundant-storage.png" alt-text="GZRS veya RA-GZRS ile verilerin nasıl çoğaltılacağı gösteren diyagram":::
 
 GZRS ve RA-GZRS desteği yalnızca genel amaçlı v2 depolama hesaplarıdır. Depolama hesabı türleri hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](storage-account-overview.md). GZRS ve RA-GZRS desteği blok Blobları, sayfa Blobları (VHD diskleri hariç), dosyalar, tablolar ve kuyruklar.
 

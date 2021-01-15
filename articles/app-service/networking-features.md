@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5d950598e4a0af86ac37b53722e80eb4ef0a71a4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 53c0d37d4a25c2f2092a9e52bcae8ea494046bb0
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183065"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210027"
 ---
 # <a name="app-service-networking-features"></a>App Service ağ özellikleri
 
@@ -43,7 +43,7 @@ Not edilen özel durumlar dışında, bu özelliklerin tümünü birlikte kullan
 
 Belirli bir kullanım durumu için, sorunu çözmenin birkaç yolu olabilir. En iyi özelliğin seçilmesi, bazen kullanım durumunun ötesinde gelir. Aşağıdaki gelen kullanım örnekleri, uygulamanıza giden trafiği denetleme sorunlarını gidermek için App Service ağ özelliklerini kullanmayı önerir:
  
-| Gelen kullanım durumu | Özellik |
+| Gelen kullanım durumu | Öne çıkan özelliği |
 |---------------------|-------------------|
 | Uygulamanız için IP tabanlı SSL gereksinimlerini destekleme | Uygulama tarafından atanan adres |
 | Uygulamanız için paylaşılmayan adanmış gelen adresi destekleme | Uygulama tarafından atanan adres |
@@ -56,7 +56,7 @@ Belirli bir kullanım durumu için, sorunu çözmenin birkaç yolu olabilir. En 
 
 Aşağıdaki giden kullanım örnekleri, uygulamanız için giden erişim ihtiyaçlarını çözümlemek üzere App Service ağ özelliklerini kullanmayı önerir:
 
-| Giden kullanım durumu | Özellik |
+| Giden kullanım durumu | Öne çıkan özelliği |
 |---------------------|-------------------|
 | Aynı bölgedeki bir Azure sanal ağındaki kaynaklara erişme | Sanal Ağ Tümleştirmesi </br> ASE |
 | Farklı bir bölgedeki Azure sanal ağındaki kaynaklara erişme | Ağ Geçidi-gerekli VNet tümleştirmesi </br> ATıCı ve sanal ağ eşlemesi |
@@ -110,7 +110,7 @@ Bu özellik, öncelik sırasına göre değerlendirilen izin verme ve reddetme k
 
 IP tabanlı erişim kısıtlamaları özelliği, uygulamanıza ulaşmak için kullanılabilecek IP adreslerini kısıtlamak istediğinizde yardımcı olur. Hem IPv4, hem IPv6 desteklenir. Bu özellik için bazı kullanım örnekleri:
 * Uygulamanıza erişimi, iyi tanımlanmış bir adresler kümesinden kısıtlayın. 
-* Azure ön kapısı gibi bir yük dengeleme hizmetinden gelen trafiğe erişimi kısıtlayın. Gelen trafiğinizi Azure ön kapısına kilitlemek istiyorsanız 147.243.0.0/16 ' dan trafiğe izin veren kurallar oluşturun ve 2a01:111:2050::/44. 
+* Dış Yük Dengeleme hizmetinden veya bilinen çıkış IP adreslerine sahip diğer ağ gereçlerine gelen trafiğe erişimi kısıtlayın. 
 
 Bu özelliği nasıl etkinleştireceğinizi öğrenmek için bkz. [erişim kısıtlamalarını yapılandırma][iprestrictions].
 
@@ -126,7 +126,20 @@ Bu özellik için bazı kullanım örnekleri:
 ![Application Gateway ile hizmet uç noktalarının kullanımını gösteren diyagram.](media/networking-features/service-endpoints-appgw.png)
 
 Hizmet uç noktalarını uygulamanızla yapılandırma hakkında daha fazla bilgi için bkz. [Azure App Service erişim kısıtlamaları][serviceendpoints].
+#### <a name="access-restriction-rules-based-on-service-tags-preview"></a>Hizmet etiketlerine göre erişim kısıtlama kuralları (Önizleme)
+[Azure hizmet etiketleri][servicetags] , Azure HIZMETLERI için IP adreslerinin iyi tanımlanmış kümeleridir. Hizmet etiketleri, çeşitli Azure hizmetlerinde kullanılan IP aralıklarını gruplar ve genellikle belirli bölgelerin kapsamına alınır. Bu, belirli Azure hizmetlerinden *gelen* trafiği filtrelemenizi sağlar. 
 
+Etiketlerin tam listesi ve daha fazla bilgi için yukarıdaki hizmet etiketi bağlantısını ziyaret edin. Bu özelliği nasıl etkinleştireceğinizi öğrenmek için bkz. [erişim kısıtlamalarını yapılandırma][iprestrictions].
+#### <a name="http-header-filtering-for-access-restriction-rules-preview"></a>Erişim kısıtlama kuralları için http üst bilgisi filtrelemesi (Önizleme)
+Her erişim kısıtlama kuralı için, ek http üst bilgisi filtrelemesi ekleyebilirsiniz. Bu, gelen isteği ve belirli http üst bilgi değerlerine göre filtrelemenizi sağlar. Her üstbilginin kural başına en fazla 8 değeri olabilir. Aşağıdaki http üstbilgileri listesi şu anda desteklenmektedir: 
+* X-Iletilmiş-Için
+* X-Iletilen-konak
+* X-Azure-FDıD
+* X-FD-Healtharaştırması
+
+Http üst bilgisi filtrelemesinin bazı kullanım örnekleri şunlardır:
+* Ana bilgisayar adını ileten proxy sunucularından gelen trafiğe erişimi kısıtla
+* Belirli bir Azure ön kapısına erişimi bir hizmet etiketi kuralıyla ve X-Azure-FDıD üst bilgi kısıtlamasıyla kısıtla
 ### <a name="private-endpoint"></a>Özel Uç Nokta
 
 Özel uç nokta, Web uygulamanıza Azure özel bağlantısı tarafından özel olarak ve güvenli bir şekilde bağlanan bir ağ arabirimidir. Özel uç nokta, sanal ağınızdan, Web uygulamasını etkin bir şekilde sanal ağınıza getiren özel bir IP adresi kullanır. Bu özellik yalnızca Web uygulamanıza *gelen* akışlara yöneliktir.
@@ -299,3 +312,4 @@ App Service taradıysanız, gelen bağlantılar için sunulan birkaç bağlantı
 [networkinfo]: ./environment/network-info.md
 [appgwserviceendpoints]: ./networking/app-gateway-with-service-endpoints.md
 [privateendpoints]: ./networking/private-endpoint.md
+[servicetags]: ../virtual-network/service-tags-overview.md

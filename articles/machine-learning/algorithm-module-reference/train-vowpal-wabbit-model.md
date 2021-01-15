@@ -8,12 +8,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/02/2020
-ms.openlocfilehash: 6bc9f69440be772910ea8200b5ccf7d5a5122ae6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9894da7486ec3c0dfb92c94c7c7f4db2247ebeb7
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907809"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210214"
 ---
 # <a name="train-vowpal-wabbit-model"></a>Vowpal Wabbit Modelini Eğitme
 Bu makalede, Vowpal Wabbit kullanarak bir makine öğrenimi modeli oluşturmak için Azure Machine Learning tasarımcısında **Vowpal Wabbit modeli** modülünün nasıl kullanılacağı açıklanır.  
@@ -22,7 +22,7 @@ Machine Learning için Vowpal Wabbit kullanmak için, girişinizi Vowpal Wabbit 
 
 İşlem hattı çalıştırıldığında, bir Vowpal Wabbit örneği, belirtilen verilerle birlikte deneme çalışma zamanına yüklenir. Eğitim tamamlandığında, model çalışma alanına yeniden serileştirilir. Modeli veri puanlandırmaya hemen kullanabilirsiniz. 
 
-Mevcut bir modeli yeni verilerde artımlı olarak eğitebilmeniz için, kaydedilmiş bir modeli, **Vowpal Wabbit modeline eğitme**için **önceden eğitimli Vowpal Wabbit modeli** giriş bağlantı noktasına bağlayın ve yeni verileri diğer giriş bağlantı noktasına ekleyin.  
+Mevcut bir modeli yeni verilerde artımlı olarak eğitebilmeniz için, kaydedilmiş bir modeli, **Vowpal Wabbit modeline eğitme** için **önceden eğitimli Vowpal Wabbit modeli** giriş bağlantı noktasına bağlayın ve yeni verileri diğer giriş bağlantı noktasına ekleyin.  
 
 ## <a name="what-is-vowpal-wabbit"></a>Vowpal Wabbit nedir?  
 
@@ -54,7 +54,7 @@ Veriler iki tür veri kümesi, dosya veri kümesi veya tablo veri kümesi taraf�
 
 1. Denemeniz için **Vowpal Wabbit model** modülünü ekleyin. 
   
-2. Eğitim veri kümesini ekleyin ve **eğitim verilerine**bağlayın. Eğitim veri dosyası bir dizin ise, eğitim veri dosyasını içeren bir dizin ise eğitim veri dosyası adını **eğitim**veri dosyası adıyla belirtin. Eğitim veri kümesi tek bir dosya ise, **eğitim verileri dosyasının adını** boş bırakın.
+2. Eğitim veri kümesini ekleyin ve **eğitim verilerine** bağlayın. Eğitim veri dosyası bir dizin ise, eğitim veri dosyasını içeren bir dizin ise eğitim veri dosyası adını **eğitim** veri dosyası adıyla belirtin. Eğitim veri kümesi tek bir dosya ise, **eğitim verileri dosyasının adını** boş bırakın.
 
 3. **VW bağımsız değişkenleri** metin kutusunda Vowpal Wabbit yürütülebilir dosyası için komut satırı bağımsız değişkenlerini yazın.
 
@@ -86,8 +86,8 @@ Vowpal Wabbit, mevcut bir modele yeni veri ekleyerek artımlı eğitimi destekle
 1. İşlem hattınızı **Vowpal Wabbit model** modülünü ekleyin.  
 2. Önceden eğitilen modeli, modülün **önceden eğitilen Vowpal Wabbit modeli** giriş bağlantı noktasına bağlayın.
 3. Yeni eğitim verilerini modülün **eğitim verileri** giriş bağlantı noktasına bağlayın.
-4. **Vowpal Wabbit modelini eğitme**parametreleri bölmesinde, yeni eğitim verilerinin biçimini ve giriş veri kümesi bir dizin ise eğitim veri dosyası adını belirtin.
-5. Karşılık gelen dosyaların çalıştırma kayıtlarına kaydedilmesi gerekiyorsa, * * çıkış okunabilir model dosyası * * ve **ters çevrilmiş karma dosya** seçeneklerini belirleyin.
+4. **Vowpal Wabbit modelini eğitme** parametreleri bölmesinde, yeni eğitim verilerinin biçimini ve giriş veri kümesi bir dizin ise eğitim veri dosyası adını belirtin.
+5. Karşılık gelen dosyaların çalıştırma kayıtlarına kaydedilmesi gerekiyorsa **çıktıyı okunabilir model dosyası** ve **ters çevrilmiş karma dosya** seçeneklerini belirleyin.
 
 6. İşlem hattını gönderme.  
 7. Azure Machine Learning çalışma alanınızda güncelleştirilmiş modeli korumak için modülü seçin ve sağ bölmedeki **çıktılar + Günlükler** sekmesinde **veri kümesini kaydet** ' i seçin.  Yeni bir ad belirtmezseniz, güncelleştirilmiş model var olan kaydedilen modelin üzerine yazar.

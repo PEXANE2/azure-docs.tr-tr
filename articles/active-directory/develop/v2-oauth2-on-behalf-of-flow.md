@@ -13,12 +13,12 @@ ms.date: 08/7/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 018d67b3e4e730cd46eb524a8927b3a6d68d74e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c8167142876dfac0ae0aeff51e85b66c65c607b
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88958669"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208857"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity platform ve OAuth 2,0-adına akış
 
@@ -27,8 +27,8 @@ OAuth 2,0 on-of-the Flow (OBO), bir uygulamanın bir hizmet/Web API 'sini çağ�
 
 Bu makalede, uygulamanızdaki protokolde doğrudan programlanın nasıl yapılacağı açıklanır.  Mümkün olduğunda, [belirteçleri edinmek ve güvenli Web API 'lerini çağırmak](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)Için desteklenen Microsoft kimlik doğrulama KITAPLıKLARıNı (msal) kullanmanızı öneririz.  Ayrıca [, msal kullanan örnek uygulamalara](sample-v2-code.md)göz atın.
 
-> [!NOTE]
-> Mayıs 2018 itibariyle, bazı örtük akış türetilmiş `id_token` OBO akışı için kullanılamaz. Tek sayfalı uygulamalar (maça 'Lar), OBO akışlarını gerçekleştirmek için orta katmanlı gizli bir istemciye **erişim** belirteci iletmelidir. Hangi istemcilerin OBO çağrıları gerçekleştirebileceği hakkında daha fazla bilgi için bkz. [sınırlamalar](#client-limitations).
+
+Mayıs 2018 itibariyle, bazı örtük akış türetilmiş `id_token` OBO akışı için kullanılamaz. Tek sayfalı uygulamalar (maça 'Lar), OBO akışlarını gerçekleştirmek için orta katmanlı gizli bir istemciye **erişim** belirteci iletmelidir. Hangi istemcilerin OBO çağrıları gerçekleştirebileceği hakkında daha fazla bilgi için bkz. [sınırlamalar](#client-limitations).
 
 ## <a name="protocol-diagram"></a>Protokol diyagramı
 
@@ -42,10 +42,9 @@ Aşağıdaki adımlar, OBO akışını oluşturur ve aşağıdaki diyagramın ya
 1. API A, Microsoft Identity platform belirteci verme uç noktasında kimlik doğrular ve API B 'ye erişmek için bir belirteç ister.
 1. Microsoft Identity platform belirteci verme uç noktası, API A 'nın kimlik bilgilerini ve A belirtecini doğrular ve API B 'nin (belirteç B) erişim belirtecini API A 'ya yayınlar.
 1. Belirteç B, API B 'ye yönelik isteğin yetkilendirme üstbilgisindeki API A tarafından ayarlanır.
-1. Güvenli kaynaktaki veriler API B tarafından API A 'ya ve istemciye buradan döndürülür.
+1. Güvenli kaynaktaki veriler API B tarafından API A 'ya ve ardından istemciye döndürülür.
 
-> [!NOTE]
-> Bu senaryoda, orta katman hizmeti kullanıcının aşağı akış API 'sine erişim iznini almak için Kullanıcı etkileşimi yoktur. Bu nedenle, aşağı akış API 'sine erişim izni verme seçeneği, kimlik doğrulama sırasında izin adımının bir parçası olarak önde sunulur. Uygulamanızı için nasıl ayarlayacağınızı öğrenmek için bkz. [Orta katmanlı uygulama için izin](#gaining-consent-for-the-middle-tier-application)alma.
+Bu senaryoda, orta katman hizmetinin kullanıcının aşağı akış API 'sine erişme iznini alması için Kullanıcı etkileşimi yoktur. Bu nedenle, aşağı akış API 'sine erişim izni verme seçeneği, kimlik doğrulama sırasında izin adımının bir parçası olarak önde sunulur. Uygulamanızı için nasıl ayarlayacağınızı öğrenmek için bkz. [Orta katmanlı uygulama için izin](#gaining-consent-for-the-middle-tier-application)alma.
 
 ## <a name="middle-tier-access-token-request"></a>Orta katman erişim belirteci isteği
 
@@ -152,10 +151,9 @@ Aşağıdaki örnek, Web API 'SI için bir erişim belirteci isteğine yönelik 
 }
 ```
 
-> [!NOTE]
-> Yukarıdaki erişim belirteci, Microsoft Graph için v 1.0 biçimli bir belirteçtir. Bunun nedeni, belirteç biçiminin erişilmekte olan **kaynağı** temel aldığı ve bunu istemek için kullanılan uç noktalarla ilgisiz olmasından kaynaklanır. Microsoft Graph, v 1.0 belirteçlerini kabul edecek şekilde ayarlanır. bu nedenle, bir istemci Microsoft Graph belirteçleri istediğinde, Microsoft Identity platform v 1.0 erişim belirteçleri üretir. Diğer uygulamalar, v 2.0-biçim belirteçleri, v 1.0-biçim belirteçleri, hatta özel veya şifreli belirteç biçimleri istediğini gösterebilir.  Hem v 1.0 hem de v 2.0 uç noktaları, belirteç biçimi oluşturabilir. bu şekilde kaynak, belirtecin istemci tarafından nasıl veya nerede istendiğine bakılmaksızın her zaman doğru belirteç biçimini alabilir. 
->
-> Yalnızca uygulamalar erişim belirteçlerine bakmalıdır. İstemcilerin bunları incebir şekilde incelemesi **gerekir** . Kodunuzda diğer uygulamalar için erişim belirteçleri incelenirken, bu uygulama belirteçlerinin biçimini değiştirdiğinde veya şifrelemeyi başlattığında uygulamanızın beklenmedik bir şekilde bozmasına neden olur. 
+Yukarıdaki erişim belirteci, Microsoft Graph için v 1.0 biçimli bir belirteçtir. Bunun nedeni, belirteç biçiminin erişilmekte olan **kaynağı** temel aldığı ve bunu istemek için kullanılan uç noktalarla ilgisiz olmasından kaynaklanır. Microsoft Graph, v 1.0 belirteçlerini kabul edecek şekilde ayarlanır. bu nedenle, bir istemci Microsoft Graph belirteçleri istediğinde, Microsoft Identity platform v 1.0 erişim belirteçleri üretir. Diğer uygulamalar, v 2.0-biçim belirteçleri, v 1.0-biçim belirteçleri, hatta özel veya şifreli belirteç biçimleri istediğini gösterebilir.  Hem v 1.0 hem de v 2.0 uç noktaları, belirteç biçimi oluşturabilir. bu şekilde kaynak, belirtecin istemci tarafından nasıl veya nerede istendiğine bakılmaksızın her zaman doğru belirteç biçimini alabilir. 
+
+Yalnızca uygulamalar erişim belirteçlerine bakmalıdır. İstemcilerin bunları incebir şekilde incelemesi **gerekir** . Kodunuzda diğer uygulamalar için erişim belirteçleri incelenirken, bu uygulama belirteçlerinin biçimini değiştirdiğinde veya şifrelemeyi başlattığında uygulamanızın beklenmedik bir şekilde bozmasına neden olur. 
 
 ### <a name="error-response-example"></a>Hata yanıtı örneği
 
@@ -189,8 +187,7 @@ Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 
 Bazı OAuth tabanlı Web hizmetlerinin, etkileşimli olmayan akışlarda SAML onayları kabul eden diğer Web hizmeti API 'Lerine erişmesi gerekir. Azure Active Directory, SAML tabanlı bir Web hizmetini hedef kaynak olarak kullanan şirket adına bir akışa yanıt olarak bir SAML onayı sağlayabilir.
 
->[!NOTE]
->Bu, OAuth2 tabanlı bir uygulamanın SAML belirteçlerini kullanan Web hizmeti API uç noktalarına erişmesine olanak tanıyan, OAuth 2,0 için standart olmayan bir uzantıdır.
+Bu, OAuth2 tabanlı bir uygulamanın SAML belirteçlerini kullanan Web hizmeti API uç noktalarına erişmesine olanak tanıyan, OAuth 2,0 için standart olmayan bir uzantıdır.
 
 > [!TIP]
 > Bir ön uç Web uygulamasından SAML korumalı bir Web hizmeti çağırdığınızda, API 'yi çağırabilir ve kullanıcının mevcut oturumunda normal bir etkileşimli kimlik doğrulama akışı başlatabilirsiniz. Yalnızca bir hizmetten hizmete çağrı, Kullanıcı bağlamı sağlamak için bir SAML belirteci gerektirdiğinde bir OBO akışı kullanmanız gerekir.

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 1b92d1b5853d6b794ebdcf0e2052b8f15081d608
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 57f23f1fc0441ac50487cb3008c0b0f84f4b4e78
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507583"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209585"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Konuşma CLı 'nın temellerini öğrenin
 
@@ -173,11 +173,13 @@ Windows 'da, ses dosyasını girerek oynatabilirsiniz `start greetings.wav` .
 
 Batch metin okuma 'yı çalıştırmanın en kolay yolu, yeni bir `.tsv` (sekmeyle ayrılmış-değer) dosyası oluşturmak ve `--foreach` konuşma CLI 'de komuttan faydalanır. Aşağıdaki dosyayı göz önünde bulundurun `text_synthesis.tsv` :
 
-```output
+<!-- The following example contains tabs. Don't accidentally convert these into spaces. -->
+
+```input
 audio.output    text
-C:\batch_wav_output\wav_1.wav    Sample text to synthesize.
-C:\batch_wav_output\wav_2.wav    Using the Speech CLI to run batch-synthesis.
-C:\batch_wav_output\wav_3.wav    Some more text to test capabilities.
+C:\batch_wav_output\wav_1.wav   Sample text to synthesize.
+C:\batch_wav_output\wav_2.wav   Using the Speech CLI to run batch-synthesis.
+C:\batch_wav_output\wav_3.wav   Some more text to test capabilities.
 ```
 
  Ardından, öğesini işaret etmek için bir komut çalıştırırsınız `text_synthesis.tsv` , her bir alanda sen, `text` ve sonuç olarak karşılık gelen `audio.output` yola bir dosya olarak yazar `.wav` . 
@@ -194,11 +196,13 @@ Bu komut, `spx synthesize --text Sample text to synthesize --audio output C:\bat
 
 Ancak, `.tsv` Aşağıdaki örnekte olduğu gibi bir dosyanız varsa, komut satırı bağımsız değişkenleriyle **eşleşmeyen** sütun başlıkları vardır:
 
-```output
+<!-- The following example contains tabs. Don't accidentally convert these into spaces. -->
+
+```input
 wav_path    str_text
-C:\batch_wav_output\wav_1.wav    Sample text to synthesize.
-C:\batch_wav_output\wav_2.wav    Using the Speech CLI to run batch-synthesis.
-C:\batch_wav_output\wav_3.wav    Some more text to test capabilities.
+C:\batch_wav_output\wav_1.wav   Sample text to synthesize.
+C:\batch_wav_output\wav_2.wav   Using the Speech CLI to run batch-synthesis.
+C:\batch_wav_output\wav_3.wav   Some more text to test capabilities.
 ```
 
 Bu alan adlarını, çağrıda aşağıdaki sözdizimini kullanarak doğru bağımsız değişkenlere geçersiz kılabilirsiniz `--foreach` . Bu, yukarıdaki çağrıdır.

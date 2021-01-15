@@ -3,23 +3,23 @@ title: Azure Izleyici Application Insights mobil uygulamaları izleme
 description: Azure Izleyici Application Insights ve App Center izleme için bir mobil uygulamayı hızlı bir şekilde ayarlamaya yönelik yönergeler sağlar
 ms.subservice: application-insights
 ms.topic: quickstart
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
-ms.openlocfilehash: 27b74f99d926bf72bc22f153a8d76deb56646987
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 34c35baf1bd958058bec6642434464711f5e79f6
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993887"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210316"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Mobil uygulamanızı App Center ve Application Insights ile analiz etmeye başlama
 
 Bu hızlı başlangıç, uygulamanızın App Center örneğini Application Insights'a bağlama işleminde size yol gösterir. Application Insights ile, telemetrinizi App Center'ın [Analytics](/mobile-center/analytics/) hizmetinde sağlanandan daha güçlü araçlarla sorgulayabilir, segmentlere ayırabilir, filtreleyebilir ve analiz edebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlamak için aşağıdakilere ihtiyacınız vardır:
 
@@ -68,7 +68,7 @@ Diğer uygulama platformlarından özel olayları göndermek için, App Center S
 Uygulamanız özel olayları gönderdikten ve bunlar App Center tarafından alındıktan sonra, Azure Portal'da App Center türünde bir Application Insights kaynağı oluşturmalısınız:
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
-2. **Kaynak oluştur**  >  **Geliştirici Araçları**  >  **Application Insights**seçin.
+2. **Kaynak oluştur**  >  **Geliştirici Araçları**  >  **Application Insights** seçin.
 
     > [!NOTE]
     > İlk kez bir Application Insights kaynağı oluşturuyorsanız [Application Insights kaynak oluştur belge oluştur](../app/create-new-resource.md) ' a giderek daha fazla bilgi edinebilirsiniz.
@@ -81,7 +81,7 @@ Uygulamanız özel olayları gönderdikten ve bunlar App Center tarafından alı
      | **Kaynak Grubu**     | Yeni bir kaynak grubu veya menüde var olanlardan biri | İçinde yeni Application Insights kaynağının oluşturulacağı kaynak grubu |
    | **Konum** | Menüden bir konum | Yakınınızda bulunan veya uygulamanızın barındırıldığı konumun yakınında olan bir konum seçin |
 
-3. **Oluştur**'a tıklayın.
+3. **Oluştur**’a tıklayın.
 
 Uygulamanız birden çok platformu (iOS, Android, vb.) destekliyorsa, en iyisi her platform için ayrı bir Application Insights kaynağı oluşturmaktır.
 

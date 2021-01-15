@@ -6,23 +6,23 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 10/02/2020
+ms.date: 12/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 5f1623ef4dde59e816e3afe5a5f5894c49469580
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0190e295c2ab206242ab8a44a09ffb42746d75bd
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91767883"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209564"
 ---
 # <a name="azure-data-box-system-requirements"></a>Azure Data Box sistem gereksinimleri
 
-Bu makalede, Microsoft Azure Data Box ve Data Box bağlanan istemciler için önemli sistem gereksinimleri açıklanmaktadır. Data Box dağıtmadan önce bilgileri dikkatle incelemenizi ve dağıtım ve işlem sırasında gerektiği şekilde bu bilgilere başvurmalarını öneririz.
+Bu makalede, Microsoft Azure Data Box ve Data Box bağlanan istemciler için önemli sistem gereksinimleri açıklanmaktadır. Data Box dağıtmadan önce bilgileri dikkatlice incelemenizi ve dağıtım ve işlem sırasında ihtiyacınız olduğunda bu bilgilere başvurmanız önerilir.
 
 Sistem gereksinimleri şunları içerir:
 
 * **Yazılım gereksinimleri:** Data Box bağlanan konaklarda, yerel Web Kullanıcı arabirimi için desteklenen işletim sistemlerini, dosya aktarım protokollerini, depolama hesaplarını, depolama türlerini ve tarayıcıları açıklar.
-* **Ağ gereksinimleri:** Data Box için, Data Box en iyi işlem için ağ bağlantısı ve bağlantı noktası gereksinimleri açıklanmaktadır.
+* **Ağ gereksinimleri:** Data Box için, Data Box en iyi işlem için ağ bağlantıları ve bağlantı noktaları için gereksinimleri açıklar.
 
 
 ## <a name="software-requirements"></a>Yazılım gereksinimleri
@@ -55,11 +55,11 @@ Yazılım gereksinimleri, yerel Web Kullanıcı arabirimi için desteklenen işl
 
 ## <a name="networking-requirements"></a>Ağ gereksinimleri
 
-Veri merkezinizin yüksek hızlı ağı olmalıdır. En az bir adet 10 GbE bağlantınızın olması önemle tavsiye edilir. 10-GbE bağlantı kullanılamıyorsa, verileri kopyalamak için 1-GbE veri bağlantısı kullanılabilir ancak kopyalama hızları bundan etkilenir.
+Veri merkezinizin yüksek hızlı ağı olmalıdır. En az 1 10-GbE bağlantınızın olmasını önemle öneririz. 10-GbE bağlantı kullanılamıyorsa, verileri kopyalamak için 1-GbE veri bağlantısı kullanabilirsiniz, ancak kopyalama hızları bundan etkilenir.
 
 ### <a name="port-requirements"></a>Bağlantı noktası gereksinimleri
 
-Aşağıdaki tabloda SMB veya NFS trafiğine izin vermek için güvenlik duvarınızda açılması gereken bağlantı noktaları listelenmektedir. Bu tabloda, (*gelen* *), gelen* istemcinin cihazınıza erişim talep ettiği yöne başvurur. *Out* (veya *Outbound*), dağıtım ötesinde Data Box cihazınızın verileri dışarıdan gönderdiği yönü ifade eder. Örneğin, Internet 'e giden.
+Aşağıdaki tabloda SMB veya NFS trafiğine izin vermek için güvenlik duvarınızda açılması gereken bağlantı noktaları listelenmektedir. Bu tabloda, (*gelen* *), gelen* istemcinin cihazınıza erişim talep ettiği yöne başvurur. *Out* (veya *Outbound*), dağıtım ötesinde Data Box cihazınızın verileri dışarıdan gönderdiği yönü ifade eder. Örneğin, veriler Internet 'e giden bir durum olabilir.
 
 [!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
 

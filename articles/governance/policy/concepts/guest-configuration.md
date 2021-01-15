@@ -1,14 +1,14 @@
 ---
 title: Sanal makinelerin içeriğini denetleme hakkında bilgi edinin
 description: Azure Ilkesi 'nin sanal makineler içindeki ayarları denetlemek için konuk yapılandırma istemcisini nasıl kullandığını öğrenin.
-ms.date: 10/14/2020
+ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5ec43516c60d2fe5d923a7b87cddbea0ad640453
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: c141169545379f1ac0dd18a97e85652f97b90e6f
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071842"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210129"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure İlkesi’nin Konuk Yapılandırmasını anlama
 
@@ -101,11 +101,11 @@ Azure 'daki Konuk yapılandırma kaynak sağlayıcısıyla iletişim kurmak içi
 
 ## <a name="managed-identity-requirements"></a>Yönetilen kimlik gereksinimleri
 
-Girişim [dağıtımı önkoşulları sanal makinelerde Konuk yapılandırma ilkelerini etkinleştirmek için](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8) ilke tanımları, bir tane yoksa, sistem tarafından atanan bir yönetilen kimliği etkinleştirir. Girişimde kimlik oluşturmayı yöneten iki ilke tanımı vardır. İlke tanımlarındaki koşullar, Azure 'daki makine kaynağının geçerli durumuna bağlı olarak doğru davranışı güvence altına alır.
+Girişim _dağıtımı önkoşulları sanal makinelerde Konuk yapılandırma ilkelerini etkinleştirmek için_ ilke tanımları, bir tane yoksa, sistem tarafından atanan bir yönetilen kimliği etkinleştirir. Girişimde kimlik oluşturmayı yöneten iki ilke tanımı vardır. İlke tanımlarındaki koşullar, Azure 'daki makine kaynağının geçerli durumuna bağlı olarak doğru davranışı güvence altına alır.
 
-Makinenin Şu anda herhangi bir yönetilen kimliği yoksa, etkin ilke şu şekilde olacaktır: [ \[ Önizleme \] : kimliği olmayan sanal makinelerde Konuk yapılandırma atamalarını etkinleştirmek için sistem tarafından atanan yönetilen kimlik ekleme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e)
+Makinenin Şu anda herhangi bir yönetilen kimliği yoksa, etkin ilke şu şekilde olur: [kimliği olmayan sanal makinelerde Konuk yapılandırma atamalarını etkinleştirmek için sistem tarafından atanan yönetilen kimlik Ekle](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e)
 
-Makinenin Şu anda Kullanıcı tarafından atanan bir sistem kimliği varsa, etkin ilke şu şekilde olacaktır: [ \[ Önizleme \] : Kullanıcı tarafından atanan bir kimliğe sahip sanal makinelerde Konuk yapılandırma atamalarını etkinleştirmek için sistem tarafından atanan yönetilen kimlik ekleme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6)
+Makinenin Şu anda Kullanıcı tarafından atanan bir sistem kimliği varsa, etkin ilke şu şekilde olur: [Kullanıcı tarafından atanan bir kimliğe sahip VM 'Lerde Konuk yapılandırma atamalarını etkinleştirmek için sistem tarafından atanan yönetilen kimlik Ekle](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6)
 
 ## <a name="guest-configuration-definition-requirements"></a>Konuk yapılandırma tanımı gereksinimleri
 
@@ -120,7 +120,7 @@ Azure Ilkesi, **Uyumluluk** düğümündeki uyumluluğu raporlamak Için Konuk y
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Sektör temellerini izleyen işletim sistemi ayarlarını denetleme
 
-Azure Ilkesindeki bir girişim, "taban çizgisi" ile işletim sistemi ayarlarını denetleme olanağı sağlar. Tanım, _\[ Önizleme \] : Azure Güvenlik taban çizgisi ayarlarıyla eşleşmeyen Windows sanal makinelerini denetleme_ , Active Directory Grup İlkesi dayalı bir kurallar kümesi içerir.
+Azure Ilkesindeki bir girişim, işletim sistemi ayarlarını bir "taban çizgisi" izleyerek denetler. Tanım, _\[ Önizleme \] : Windows makineleri Azure Güvenlik temeli için gereksinimleri karşılamalıdır_ Active Directory Grup İlkesi dayalı bir kurallar kümesi içerir.
 
 Ayarların çoğu parametre olarak kullanılabilir. Parametreler, denetlendiğini özelleştirmenizi sağlar.
 İlkeyi gereksinimlerinize göre hizalayın veya ilkeyi sektör mevzuatı standartları gibi üçüncü taraf bilgilerle eşleyin.

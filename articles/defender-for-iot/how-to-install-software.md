@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/2/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 5e33a7adc7b529df8c7c821cbfdcb0ad5709803b
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 2bd994f14863715274e137bce2dd6873eeec1135
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97842091"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208769"
 ---
 # <a name="defender-for-iot-installation"></a>IoT yüklemesi için Defender
 
@@ -230,9 +230,9 @@ Bu makalede yapılandırma dosyası kullanılarak BIOS 'un nasıl yapılandırı
 
 4. Gereç kimlik bilgileri şunlardır:
 
-   - Kullanıcı adı: **Six**
+   - Kullanıcı adı: **XXX**
 
-   - Parola: **xhxvhttju, @4338**
+   - Parola: **XXX**
 
      Sunucu profilini içeri aktarma işlemi başlatıldı.
 
@@ -274,7 +274,7 @@ El ile yapılandırmak için:
 
    - Gereç, IoT gereci için bir Defender değilse, bir tarayıcı açın ve daha önce yapılandırılan IP adresine gidin. Dell varsayılan yönetici ayrıcalıklarıyla oturum açın. Parola için Kullanıcı adı ve **Calvin** **kökünü** kullanın.
 
-   - Gereç, IoT gereci için bir Defender ise, parola için Kullanıcı adı ve **@4338 xhxvhttju** kullanarak **Six** kullanarak oturum açın.
+   - Gereç, IoT gereci için bir Defender ise Kullanıcı adı için **XXX** ve parola için **XXX** kullanarak oturum açın.
 
 2. BIOS 'a erişduktan sonra **cihaz ayarları**' na gidin.
 
@@ -586,7 +586,7 @@ Aşağıdaki mimarilerde IoT için Defender algılayıcısı için sanal makiney
 | **Küçük Işletme** | CPU: 4 <br/>Bellek: 8G RAM<br/>HDD: 500 GB | Test veya küçük üretim ortamları | -  |
 | **Office** | CPU: 4<br/>Bellek: 8G RAM<br/>HDD: 100 GB | Küçük test ortamları | -  |
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Şirket içi yönetim konsolu hem VMware hem de Hyper-V dağıtım seçeneklerini destekler. Yüklemeye başlamadan önce aşağıdaki öğelere sahip olduğunuzdan emin olun:
 
@@ -717,7 +717,7 @@ Yüklemek için:
 | Kurumsal | CPU: 4 <br/> Bellek: 8G RAM<br/> HDD: 500 GB | Büyük üretim ortamları |
 | Kurumsal | CPU: 4 <br/>Bellek: 8G RAM <br/> HDD: 100 GB | Küçük test ortamları | 
    
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Şirket içi yönetim konsolu hem VMware hem de Hyper-V dağıtım seçeneklerini destekler. Yüklemeye başlamadan önce aşağıdakileri doğrulayın:
 

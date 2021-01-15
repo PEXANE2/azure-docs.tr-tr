@@ -3,15 +3,15 @@ title: Depolama için Azure Izleyici ile Azure depolama hizmetlerini izleme | Mi
 description: Bu makalede, Azure depolama hesaplarıyla ilgili performans ve kullanım sorunlarını hızlı bir şekilde anlamak için depolama yöneticileri sağlayan depolama için Azure Izleyici özelliği açıklanır.
 ms.subservice: ''
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 05/11/2020
-ms.openlocfilehash: 2538bc91be59ff12b39ee3f5f629e4c016480a97
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 47799898251923b327954c764dcccb8157ba5119
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296344"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208650"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Depolama hizmetinizi depolama için Azure Izleyici ile izleme
 
@@ -187,7 +187,7 @@ Bizim örneğimizde, nasıl yapılacağını göstermek için çoklu abonelik ve
 
     ![Sütun ayarlarını Düzenle](./media/storage-insights-overview/edit-capacity-workbook-resource-grid.png)
 
-5. **Sütun ayarlarını Düzenle** bölmesinde, **Columns** **Microsoft. Storage/Storageaccounts-Capacity-usedcapacity zaman çizelgesi $ | sütunları bölümünde öğesini seçin. Hesap kapasite zaman çizelgesi $** ve açılan liste **sütunu Işleyicisinin** altında **gizli** öğesini seçin.
+5. **Sütun ayarlarını Düzenle** bölmesinde,  **Microsoft. Storage/Storageaccounts-Capacity-usedcapacity zaman çizelgesi $ | sütunları bölümünde öğesini seçin. Hesap kapasite zaman çizelgesi $** ve açılan liste **sütunu Işleyicisinin** altında **gizli** öğesini seçin.
 
 6. Değişiklerinizi uygulamak için **Kaydet ve Kapat ' ı** seçin.
 

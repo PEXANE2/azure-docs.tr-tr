@@ -12,12 +12,12 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: d3edadd4878dbd6e06648f7fb67a0c3e111665d1
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: da432ee3877af4de931ee6d55860b647090d8e3d
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178135"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208786"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft kimlik platformu uç noktasında izinler ve onay
 
@@ -31,8 +31,7 @@ Microsoft Identity platformu, [OAuth 2,0](active-directory-v2-protocols.md) yetk
 * Microsoft 365 mail API 'SI: `https://outlook.office.com`
 * Azure Key Vault: `https://vault.azure.net`
 
-> [!NOTE]
-> Microsoft 365 mail API vb. yerine Microsoft Graph kullanmanızı kesinlikle öneririz.
+Microsoft 365 mail API vb. yerine Microsoft Graph kullanmanızı kesinlikle öneririz.
 
 Aynı değer, Microsoft Identity platformu ile tümleştirilmiş olan tüm üçüncü taraf kaynakları için de geçerlidir. Bu kaynakların herhangi biri aynı zamanda söz konusu kaynağın işlevselliğini daha küçük parçalara bölmek için kullanılabilecek bir izinler kümesi tanımlayabilir. Örnek olarak [Microsoft Graph](https://graph.microsoft.com) , diğerleri arasında aşağıdaki görevleri yapmak için tanımlı izinlere sahiptir:
 
@@ -115,8 +114,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 
 Kullanıcı kimlik bilgilerini girdikten sonra, Microsoft Identity platform Endpoint, eşleşen bir *Kullanıcı onayı* kaydı olup olmadığını denetler. Kullanıcı geçmişte istenen izinlerden herhangi birine onay vermezse veya bir yöneticiye tüm kuruluş adına bu izinlere onay verildiyse, Microsoft Identity platform uç noktası kullanıcıdan istenen izinleri vermesini ister.
 
-> [!NOTE]
->Şu anda, `offline_access` ("erişim vermiş olduğunuz verilere erişimi korur") ve `user.read` ("profilinizi oturum açma ve profilinizi okuma") izinleri, bir uygulamaya ilk onaylamada otomatik olarak eklenir.  Bu izinler genellikle uygun uygulama işlevleri için gereklidir `offline_access` . uygulama, yerel ve Web uygulamaları için kritik olan belirteçleri yenileme, isteğe erişim izni verirken `user.read` `sub` istemcinin veya uygulamanın zaman içinde kullanıcıyı doğru şekilde tanımlamasına ve ilkel Kullanıcı bilgilerine erişmesine izin verir.
+Şu anda, `offline_access` ("erişim vermiş olduğunuz verilere erişimi korur") ve `user.read` ("profilinizi oturum açma ve profilinizi okuma") izinleri, bir uygulamaya ilk onaylamada otomatik olarak eklenir.  Bu izinler genellikle uygun uygulama işlevleri için gereklidir `offline_access` . uygulama, yerel ve Web uygulamaları için kritik olan belirteçleri yenileme, isteğe erişim izni verirken `user.read` `sub` istemcinin veya uygulamanın zaman içinde kullanıcıyı doğru şekilde tanımlamasına ve ilkel Kullanıcı bilgilerine erişmesine izin verir.
 
 ![İş hesabı onayını gösteren örnek ekran görüntüsü](./media/v2-permissions-and-consent/work_account_consent.png)
 
@@ -148,8 +146,7 @@ Uygulama uygulama izinleri istiyorsa ve yönetici bu izinleri yönetici onay uç
 
 ## <a name="using-the-admin-consent-endpoint"></a>Yönetici onay uç noktasını kullanma
 
-> [!NOTE]
-> Yönetici onay uç noktası kullanılarak yönetici onayı verdikten sonra, yönetici onayı verilmesinin tamamlandığını ve kullanıcıların daha fazla ek eylem gerçekleştirmesine gerek olmadığını unutmayın. Yönetici onayı verildikten sonra, kullanıcılar tipik bir kimlik doğrulama akışı aracılığıyla erişim belirteci alabilir ve elde edilen erişim belirteci, onaylanan izinlere sahip olur.
+Yönetici onay uç noktasını kullanarak yönetici onayı verdikten sonra, yönetici onayı vermeyi tamamladınız ve kullanıcıların başka ek eylemler gerçekleştirmesi gerekmez. Yönetici onayı verildikten sonra, kullanıcılar tipik bir kimlik doğrulama akışı aracılığıyla erişim belirteci alabilir ve elde edilen erişim belirteci, onaylanan izinlere sahip olur.
 
 Bir şirket yöneticisi uygulamanızı kullandığında ve yetkilendirme uç noktasına yönlendirirse, Microsoft Identity platform kullanıcının rolünü algılar ve istediğiniz izinler için tüm kiracının adına onay vermek isteyip istemediğini sorar. Ancak, bir yöneticinin tüm kiracı adına izin vermesini sağlamak istiyorsanız kullanabileceğiniz bir adanmış yönetici onay uç noktası da vardır. Bu uç noktanın kullanılması, uygulama Izinleri istemek için de gereklidir (yetkilendirme uç noktası kullanılarak istenemez).
 
@@ -263,8 +260,7 @@ OAuth 2,0 protokolü ve erişim belirteçleri alma hakkında daha fazla bilgi i�
 
 /.Default kapsamı herhangi bir OAuth 2,0 akışında kullanılabilir, ancak uygulama izinleri istemek için v2 yönetici onay uç noktası kullanılırken ve [Şirket adına](v2-oauth2-on-behalf-of-flow.md) , [istemci kimlik bilgileri akışında](v2-oauth2-client-creds-grant-flow.md)gereklidir.
 
-> [!NOTE]
-> İstemciler statik ( `/.default` ) ve dinamik onayı tek bir istekte birleştiremez. Bu nedenle, `scope=https://graph.microsoft.com/.default+mail.read` kapsam türlerinin birleşimi nedeniyle hata oluşur.
+İstemciler statik ( `/.default` ) ve dinamik onayı tek bir istekte birleştiremez. Bu nedenle, `scope=https://graph.microsoft.com/.default+mail.read` kapsam türlerinin birleşimi nedeniyle hata oluşur.
 
 ### <a name="default-and-consent"></a>/.exe varsayılan ve onay
 

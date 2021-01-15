@@ -1,16 +1,16 @@
 ---
 title: Cosmos DB için Azure Izleyici ile Azure Cosmos DB izleme | Microsoft Docs
 description: Bu makalede, CosmosDB hesaplarıyla performans ve kullanım sorunlarını hızlı bir şekilde anlamak için Cosmos DB sahipler sağlayan Cosmos DB özelliği için Azure Izleyicisi açıklanmaktadır.
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 5e40f91945f83af7880f272f1578370f2ee1ec42
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 878ae21cfbe55565c4a20064d937d1447f96ce7a
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608502"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209908"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Izleyicisini keşfet
 
@@ -87,7 +87,7 @@ Sayfanın üst kısmındaki **kapasiteyi** seçin ve çalışma kitabı şablonu
 
 Genel Bakış çalışma kitabında olduğu gibi, **abonelik** sütunundaki bir Azure Cosmos DB kaynağının yanındaki açılan aşağı seçme, veritabanını oluşturan bağımsız kapsayıcıların bir dökümünü açığa çıkarır.
 
-### <a name="operations"></a>İşlemler 
+### <a name="operations"></a>Operations 
 
 Sayfanın üst kısmındaki **işlemler** ' i seçin ve çalışma kitabı şablonunun **işlemler** bölümü açılır. Bu, isteklerinizi yapılan istek türlerine göre kırarak görmenizi sağlar. 
 

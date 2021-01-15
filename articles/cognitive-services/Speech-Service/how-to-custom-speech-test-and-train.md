@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: d24565522a75427be04cacfdc20347056a515847
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: ed79d9fb3be192d300587eda5198d9b153109241
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070771"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209789"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Özel Konuşma için verileri hazırlama
 
@@ -46,9 +46,9 @@ Bu tabloda, kabul edilen veri türleri, her veri türü ne zaman kullanılmalı 
 
 | Veri türü | Test için kullanılan | Önerilen miktar | Eğitim için kullanılır | Önerilen miktar |
 |-----------|-----------------|----------|-------------------|----------|
-| [Ses](#audio-data-for-testing) | Evet<br>Görsel inceleme için kullanılır | 5 + ses dosyası | Hayır | Yok |
-| [Ses + ınsan etiketli yazılı betikler](#audio--human-labeled-transcript-data-for-testingtraining) | Evet<br>Doğruluğu değerlendirmek için kullanılır | 0,5-5 saat ses | Evet | 1-20 saat ses |
-| [İlgili metin](#related-text-data-for-training) | Hayır | Yok | Evet | 1-200 MB ilgili metin |
+| [Ses](#audio-data-for-testing) | Yes<br>Görsel inceleme için kullanılır | 5 + ses dosyası | No | Yok |
+| [Ses + ınsan etiketli yazılı betikler](#audio--human-labeled-transcript-data-for-testingtraining) | Yes<br>Doğruluğu değerlendirmek için kullanılır | 0,5-5 saat ses | Yes | 1-20 saat ses |
+| [İlgili metin](#related-text-data-for-training) | No | Yok | Yes | 1-200 MB ilgili metin |
 
 Yeni bir modeli eğitedığınızda [ilgili metinle](#related-text-data-for-training)başlayın. Bu veriler, özel hüküm ve tümceciklerin tanınmasını zaten iyileştirir. Metinli eğitim, ses (dakika veya gün) ile eğitimlerden çok daha hızlıdır.
 
@@ -93,7 +93,7 @@ Ses dosyalarınızın Özel Konuşma Tanıma ile kullanım için doğru biçimle
 
 Ses özelliklerini doğrulamak veya var olan sesleri uygun biçimlere dönüştürmek için <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">Sox <span class="docon docon-navigate-external x-hidden-focus"></span> </a> kullanın. Aşağıda, bu etkinliklerin her birinin SoX komut satırı aracılığıyla nasıl yapılabileceği hakkında bazı örnekler verilmiştir:
 
-| Etkinlik | Açıklama | SoX komutu |
+| Etkinlik | Description | SoX komutu |
 |----------|-------------|-------------|
 | Ses biçimini denetle | Denetlemek için bu komutu kullanın<br>ses dosyası biçimi. | `sox --i <filename>` |
 | Ses biçimini Dönüştür | Dönüştürmek için bu komutu kullanın<br>ses dosyasını tek kanala, 16 bit, 16 KHz. | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
@@ -121,11 +121,14 @@ Ses dosyaları, kaydın başlangıcında ve sonunda sessizlik alabilir. Mümkün
 
 Sözcük silme veya değiştirme gibi sorunları gidermek için, tanımayı geliştirmek için önemli miktarda veri gerekir. Genellikle, kabaca 10 ila 20 saatlik ses için Word sözcük dökümü sağlamanız önerilir. Tüm WAV dosyalarının transkripsiyonları tek bir düz metin dosyasına yerleştirilmelidir. Transkripsiyon dosyasının her satırında ses dosyalarından birinin adı ve transkripsiyon bulunmalıdır. Dosya adı ve transkripsiyon sekme (\t) ile ayrılmalıdır.
 
-  Örneğin:
-```
-  speech01.wav  speech recognition is awesome
-  speech02.wav  the quick brown fox jumped all over the place
-  speech03.wav  the lazy dog was not amused
+Örneğin:
+
+<!-- The following example contains tabs. Don't accidentally convert these into spaces. -->
+
+```input
+speech01.wav    speech recognition is awesome
+speech02.wav    the quick brown fox jumped all over the place
+speech03.wav    the lazy dog was not amused
 ```
 
 > [!IMPORTANT]

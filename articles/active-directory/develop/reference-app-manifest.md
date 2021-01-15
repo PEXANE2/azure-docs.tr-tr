@@ -13,12 +13,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: b29d8007ba7c6fb41209ad4f792069667416616b
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: d855e124c84dee8554073d05fa04fe078b92ddaa
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011552"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208898"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory uygulama bildirimi
 
@@ -115,17 +115,6 @@ Geri dönüş uygulama türünü belirtir. Azure AD, varsayılan olarak, bir uyg
     "allowPublicClient": false,
 ```
 
-### <a name="availabletoothertenants-attribute"></a>Availabletootherkiracılar özniteliği
-
-| Anahtar | Değer türü |
-| :--- | :--- |
-| Availabletootherkiracılar | Boole |
-
-Uygulama diğer kiracılar ile paylaşılmışsa, true olarak ayarlayın; Aksi takdirde, false.
-
-> [!NOTE]
-> Bu öznitelik yalnızca **uygulama kayıtları (eski)** deneyimde kullanılabilir. `signInAudience` [Uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyimiyle değiştirilmiştir.
-
 ### <a name="appid-attribute"></a>AppID özniteliği
 
 | Anahtar | Değer türü |
@@ -165,17 +154,6 @@ Bir uygulamanın bildirebilen rollerin koleksiyonunu belirtir. Bu roller kullan�
     ],
 ```
 
-### <a name="displayname-attribute"></a>displayName özniteliği
-
-| Anahtar | Değer türü |
-| :--- | :--- |
-| displayName | Dize |
-
-Uygulamanın görünen adı.
-
-> [!NOTE]
-> Bu öznitelik yalnızca **uygulama kayıtları (eski)** deneyimde kullanılabilir. `name` [Uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyimiyle değiştirilmiştir.
-
 ### <a name="errorurl-attribute"></a>errorUrl özniteliği
 
 | Anahtar | Değer türü |
@@ -203,33 +181,6 @@ Desteklenmez.
     "groupMembershipClaims": "SecurityGroup",
 ```
 
-### <a name="homepage-attribute"></a>giriş sayfası özniteliği
-
-| Anahtar | Değer türü |
-| :--- | :--- |
-| değiştirir |Dize |
-
-Uygulamanın giriş sayfasının URL 'SI.
-
-> [!NOTE]
-> Bu öznitelik yalnızca **uygulama kayıtları (eski)** deneyimde kullanılabilir. `signInUrl` [Uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyimiyle değiştirilmiştir.
-
-### <a name="objectid-attribute"></a>ObjectID özniteliği
-
-| Anahtar | Değer türü |
-| :--- | :--- |
-|objectId | Dize |
-
-Dizindeki uygulamanın benzersiz tanımlayıcısı.
-
-Bu yalnızca **uygulama kayıtları (eski)** deneyimde mevcuttur. `id` [Uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyimiyle değiştirilmiştir.
-
-Örnek:
-
-```json
-    "objectId": "f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd",
-```
-
 ### <a name="optionalclaims-attribute"></a>Optionalclaim özniteliği
 
 | Anahtar | Değer türü |
@@ -245,7 +196,6 @@ Bu belirli uygulama için güvenlik belirteci hizmeti tarafından belirteçte d�
 ```json
     "optionalClaims": null,
 ```
-
 
 
 ### <a name="identifieruris-attribute"></a>ıdentifieruris özniteliği
@@ -489,16 +439,6 @@ Kapalı onay için uygulamaları ve istenen izinleri listeler. Uygulamaya onay s
     ],
 ```
 
-### <a name="publicclient-attribute"></a>publicClient özniteliği
-
-| Anahtar | Değer türü |
-| :--- | :--- |
-| publicClient | Boole|
-
-Bu uygulamanın ortak bir istemci olup olmadığını belirtir (örneğin, bir mobil cihazda çalışan yüklü bir uygulama gibi).
-
-Bu özellik yalnızca **uygulama kayıtları (eski)** deneyimde kullanılabilir. `allowPublicClient` [Uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyimiyle değiştirilmiştir.
-
 ### <a name="publisherdomain-attribute"></a>publisherDomain özniteliği
 
 | Anahtar | Değer türü |
@@ -511,17 +451,7 @@ Uygulama için doğrulanmış yayımcı etki alanı. Salt okunur.
 
 ```json
     "publisherDomain": "https://www.contoso.com",
-````
-
-### <a name="replyurls-attribute"></a>replyUrls özniteliği
-
-| Anahtar | Değer türü |
-| :--- | :--- |
-| replyUrls | Dize dizisi |
-
-Bu çoklu değer özelliği, Azure AD 'nin belirteçleri döndürürken hedef olarak kabul edeceği kayıtlı redirect_uri değerlerinin listesini tutar.
-
-Bu özellik yalnızca **uygulama kayıtları (eski)** deneyimde kullanılabilir. `replyUrlsWithType` [Uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyimiyle değiştirilmiştir.
+```
 
 ### <a name="replyurlswithtype-attribute"></a>replyUrlsWithType özniteliği
 

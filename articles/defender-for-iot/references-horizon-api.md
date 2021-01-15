@@ -4,15 +4,15 @@ description: Bu kılavuzda, yaygın olarak kullanılan ufuk yöntemleri açıkla
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 1/7/2020
+ms.date: 1/5/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 6d2e3fccd6a61fe129050faa29cb7bb77674ccfe
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: 39770fe7aa7b11cae03304fda8901e81e0f1877a
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97976915"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208425"
 ---
 # <a name="horizon-api"></a>Ufuk API 'SI 
 
@@ -20,17 +20,19 @@ Bu kılavuzda, yaygın olarak kullanılan ufuk yöntemleri açıklanmaktadır.
 
 ### <a name="getting-more-information"></a>Daha fazla bilgi edinme
 
-Ufku ve Six platformu ile çalışma hakkında daha fazla bilgi için aşağıdakilere bakın:
+Ufku ve IoT Platformu için Defender ile çalışma hakkında daha fazla bilgi için aşağıdaki bilgilere bakın:
 
-- Ufuk açık geliştirme ortamı (Code) SDK 'Sı için Six temsilcinizle iletişim kurun.
+- Ufuk açık geliştirme ortamı (ODE) SDK 'Sı için, IoT temsilcisine yönelik Defender ile görüşün.
 - Destek ve sorun giderme bilgileri için, iletişim kurun <support@cyberx-labs.com> .
-- Six konsolundan Six Kullanıcı kılavuzuna erişmek için, :::image type="icon" source="media/references-horizon-api/profile-icon.png"::: **Kullanıcı kılavuzunu indir**' i seçin ve ardından seçin.
+
+- IoT için Defender konsolunda bulunan IoT için Defender Kullanıcı Kılavuzu ' na erişmek için, :::image type="icon" source="media/references-horizon-api/profile.png"::: **Kullanıcı kılavuzunu indir**' i seçin.
+
 
 ## `horizon::protocol::BaseParser`
 
 Tüm eklentiler için Özet. Bu iki yöntemden oluşur:
 
-- Yukarıda tanımlanan eklenti filtrelerini işlemek için. Bu şekilde, ayrıştırıcının nasıl iletişim kuracağını bilir
+- Yukarıda tanımlanan eklenti filtrelerini işlemek için. Bu şekilde, ayrıştırıcıyla nasıl iletişim kuracağını bilir.
 - Gerçek verileri işlemek için.
 
 ## `std::shared_ptr<horizon::protocol::BaseParser> create_parser()`
@@ -39,7 +41,7 @@ Eklenti için çağrılan ilk işlev, bir çözümleyici 'nin onu tanıması ve 
 
 ### <a name="parameters"></a>Parametreler 
 
-Hiçbiri
+Yok.
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -49,7 +51,7 @@ Ayrıştırıcı örneğinize shared_ptr.
 
 Bu işlev, yukarıda kayıtlı her eklenti için çağırılır. 
 
-Çoğu durumda bu, boştur. Ufkın hatalı olduğunu öğrenmesi için bir özel durum oluşturur.
+Çoğu durumda bu boş olur. Ufkın hatalı olduğunu öğrenmesi için bir özel durum oluşturur.
 
 ### <a name="parameters"></a>Parametreler 
 
@@ -69,12 +71,12 @@ Bu işlev farklı iş parçacıklarından çağrılabilmesi için, eklenti iş p
 
 ### <a name="parameters"></a>Parametreler
 
-- Verilerin depolanmasından ve ILayer, alanlar gibi SDK ile ilişkili nesnelerin oluşturulmasıyla ilgili SDK denetim birimi.
+- Verilerin depolanmasından ve ILayer ve alanlar gibi SDK ile ilgili nesnelerin oluşturulmasıyla ilgili SDK denetim birimi.
 - Ham paketin verilerini okumak için yardımcı. Üzerinde config.jstanımladığınız bayt sırasıyla zaten ayarlanmış.
 
 ### <a name="return-value"></a>Döndürülen değer 
 
-İşlemin sonucu. Bu, başarılı/hatalı biçimlendirilmiş/Sanity olabilir.
+İşlemin sonucu. Bu, *başarılı*, *Hatalı biçimlendirilmiş* ya da *Sanity* olabilir.
 
 ## `horizon::protocol::SanityFailureResult: public horizon::protocol::ParserResult`
 
@@ -90,7 +92,7 @@ Oluşturucu
 
 ## `horizon::protocol::MalformedResult: public horizon::protocol::ParserResult`
 
-Hatalı biçimlendirilmiş sonuç, paketi protokolizin olarak zaten tanıdık, ancak bazı doğrulamalar yanlış oldu (ayrılmış bitler açık, bazı alanlar eksik.)
+Hatalı biçimlendirilmiş sonuç, paketi protokolizin olarak zaten tanıdık, ancak bazı doğrulamalar yanlış oldu (ayrılmış bitler açık veya bir alan eksik).
 
 ## `horizon::protocol::MalformedResult::MalformedResult(uint64_t)`
 
@@ -102,7 +104,7 @@ Oluşturucu
 
 ## `horizon::protocol::SuccessResult: public horizon::protocol::ParserResult`
 
-Başarılı işleme işlemini bilgilendirir. Başarılı olduğunda, paket kabul edildi; veriler bize aittir ve tüm veriler ayıklandı.
+Başarılı işleme işlemini bilgilendirir. Başarılı olduğunda, paket kabul edildi, veriler bize aittir ve tüm veriler ayıklandı.
 
 ## `horizon::protocol::SuccessResult()`
 
@@ -110,24 +112,24 @@ Oluşturucu. Temel başarılı bir sonuç oluşturuldu. Bu, paket ile ilgili ola
 
 ## `horizon::protocol::SuccessResult(horizon::protocol::ParserResultDirection)`
 
-Oluşturucu
+Oluşturucu.
 
 ### <a name="parameters"></a>Parametreler 
 
-- Tanımlanmışsa paketin yönü. Değerler Istek, yanıt olabilir
+- Tanımlanmışsa paketin yönü. Değerler *istek* veya *Yanıt* olabilir.
 
 ## `horizon::protocol::SuccessResult(horizon::protocol::ParserResultDirection, const std::vector<uint64_t> &)`
 
-Oluşturucu
+Oluşturucu.
 
 ### <a name="parameters"></a>Parametreler
 
-- Paketin yönü, tanımlandığımızda Istek, yanıt verebilir
+- Paketin yönü, tanımlandığımızda *istek*, *Yanıt* olabilir.
 - Uyarılarına. Bu olaylar başarısız olmayacaktır, ancak ufku bildirilecek.
 
 ## `horizon::protocol::SuccessResult(const std::vector<uint64_t> &)`
 
-Oluşturucu
+Oluşturucu.
 
 ### <a name="parameters"></a>Parametreler 
 
@@ -135,11 +137,11 @@ Oluşturucu
 
 ## `HorizonID HORIZON_FIELD(const std::string_view &)`
 
-Dize tabanlı başvuruyu bir alan adına (örn. function_code) HorizonID 'ye dönüştürür
+Dize tabanlı başvuruyu bir alan adına dönüştürür (örneğin, function_code) HorizonID.
 
 ### <a name="parameters"></a>Parametreler 
 
-- Dönüştürülecek dize
+- Dönüştürülecek dize.
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -155,11 +157,11 @@ Oluşturulan katmana yönelik bir başvuru, bu sayede veri ekleyebilirsiniz.
 
 ## `horizon::protocol::management::IFieldManagement &horizon::protocol::management::IProcessingUtils::getFieldsManager()`
 
-Farklı nesnelerdeki alanları oluşturmaktan sorumlu olan alan yönetimi nesnesini alır, örneğin, ILayer
+Örneğin, ILayer gibi farklı nesnelerdeki alanları oluşturmaktan sorumlu alan yönetimi nesnesini alır.
 
 ### <a name="return-value"></a>Döndürülen değer
 
-Yöneticiye bir başvuru
+Yöneticiye bir başvuru.
 
 ## `void horizon::protocol::management::IFieldManagement::create(horizon::protocol::ILayer &, HorizonID, uint64_t)`
 
@@ -167,9 +169,9 @@ Yöneticiye bir başvuru
 
 ### <a name="parameters"></a>Parametreler 
 
-- Daha önce oluşturduğunuz katman
-- HORIZON_FIELD makro tarafından oluşturulan HorizonID
-- Depolamak istediğiniz ham değer
+- Daha önce oluşturduğunuz katman.
+- **HORIZON_FIELD** makro tarafından oluşturulan HorizonID.
+- Depolamak istediğiniz ham değer.
 
 ## `void horizon::protocol::management::IFieldManagement::create(horizon::protocol::ILayer &, HorizonID, std::string)`
 
@@ -177,19 +179,19 @@ Yöneticiye bir başvuru
 
 ### <a name="parameters"></a>Parametreler  
 
-- Daha önce oluşturduğunuz katman
-- HORIZON_FIELD makro tarafından oluşturulan HorizonID
-- Depolamak istediğiniz ham değer
+- Daha önce oluşturduğunuz katman.
+- **HORIZON_FIELD** makro tarafından oluşturulan HorizonID.
+- Depolamak istediğiniz ham değer.
 
 ## `void horizon::protocol::management::IFieldManagement::create(horizon::protocol::ILayer &, HorizonID, std::vector<char> &)`
 
-Katmanda, istenen KIMLIĞE sahip yeni bir ham değer (bayt dizisi) alanı oluşturur. Bellek taşınır, bu nedenle dikkatli olun, bu değeri yeniden kullanamazsınız
+Katmanda, istenen KIMLIĞE sahip yeni bir ham değer (bayt dizisi) alanı oluşturur. Bellek taşınır, bu nedenle dikkatli olun, bu değeri yeniden kullanamazsınız.
 
 ### <a name="parameters"></a>Parametreler
 
-- Daha önce oluşturduğunuz katman
-- HORIZON_FIELD makro tarafından oluşturulan HorizonID
-- Depolamak istediğiniz ham değer
+- Daha önce oluşturduğunuz katman.
+- **HORIZON_FIELD** makro tarafından oluşturulan HorizonID.
+- Depolamak istediğiniz ham değer.
 
 ## `horizon::protocol::IFieldValueArray &horizon::protocol::management::IFieldManagement::create(horizon::protocol::ILayer &, HorizonID, horizon::protocol::FieldValueType)`
 
@@ -197,40 +199,40 @@ Katmanda, istenen KIMLIĞE sahip yeni bir ham değer (bayt dizisi) alanı oluşt
 
 ### <a name="parameters"></a>Parametreler
 
-- Daha önce oluşturduğunuz katman
-- HORIZON_FIELD makro tarafından oluşturulan HorizonID
-- Dizi içinde depolanacak değerlerin türü
+- Daha önce oluşturduğunuz katman.
+- **HORIZON_FIELD** makro tarafından oluşturulan HorizonID.
+- Dizi içinde depolanacak değerlerin türü.
 
 ### <a name="return-value"></a>Döndürülen değer
 
-Değerlerin ekleneceği bir diziye başvuru
+Değerlerin ekleneceği bir diziye başvuru.
 
 ## `void horizon::protocol::management::IFieldManagement::create(horizon::protocol::IFieldValueArray &, uint64_t)`
 
-Daha önce oluşturulan diziye yeni bir tamsayı değeri ekler
+Daha önce oluşturulan diziye yeni bir tamsayı değeri ekler.
 
 ### <a name="parameters"></a>Parametreler
 
-- Daha önce oluşturulan dizi
-- Dizide depolanacak ham değer
+- Daha önce oluşturulan dizi.
+- Dizide depolanacak ham değer.
 
 ## `void horizon::protocol::management::IFieldManagement::create(horizon::protocol::IFieldValueArray &, std::string)`
 
-Daha önce oluşturulan diziye yeni bir dize değeri ekler. Bellek taşınır, bu nedenle dikkatli olun, bu değeri yeniden kullanamazsınız
+Daha önce oluşturulan diziye yeni bir dize değeri ekler. Bellek taşınır, bu nedenle dikkatli olun, bu değeri yeniden kullanamazsınız.
 
 ### <a name="parameters"></a>Parametreler
 
-- Daha önce oluşturulan dizi
-- Dizide depolanacak ham değer
+- Daha önce oluşturulan dizi.
+- Dizide depolanacak ham değer.
 
 ## `void horizon::protocol::management::IFieldManagement::create(horizon::protocol::IFieldValueArray &, std::vector<char> &)`
 
-Daha önce oluşturulan diziye yeni bir ham değer ekler. Bellek taşınır, bu nedenle dikkatli olun, bu değeri yeniden kullanamazsınız
+Daha önce oluşturulan diziye yeni bir ham değer ekler. Bellek taşınır, bu nedenle dikkatli olun, bu değeri yeniden kullanamazsınız.
 
 ### <a name="parameters"></a>Parametreler
 
-- Daha önce oluşturulan dizi
-- Dizide depolanacak ham değer
+- Daha önce oluşturulan dizi.
+- Dizide depolanacak ham değer.
 
 ## `bool horizon::general::IDataBuffer::validateRemainingSize(size_t)`
 
@@ -238,11 +240,11 @@ Arabelleğin en az X bayt içerdiğini denetler.
 
 ### <a name="parameters"></a>Parametreler
 
-Bayt sayısı var olmalıdır 
+Mevcut olması gereken bayt sayısı.
 
 ### <a name="return-value"></a>Döndürülen değer
 
-Arabellek en az X bayt içeriyorsa doğru. Aksi durumda false.
+Arabellek en az X bayt içeriyorsa doğru. Aksi takdirde, `False` .
 
 ## `uint8_t horizon::general::IDataBuffer::readUInt8()`
 
@@ -282,12 +284,12 @@ Arabellekten okunan değer.
 
 ### <a name="parameters"></a>Parametreler 
 
-- Verilerin kopyalanacağı bellek bölgesi
-- Bu parametre, bellek bölgesinin boyutu olarak kaç bayt kopyalanacağını de tanımladı
+- Verilerin kopyalanacağı bellek bölgesi.
+- Bu parametre, bellek bölgesinin boyutu için kaç bayt kopyalanacağını de tanımlamış.
 
 ## `std::string_view horizon::general::IDataBuffer::readString(size_t)`
 
-Arabellekteki bir dizeye okur
+Arabellekteki bir dizeye okur.
 
 ### <a name="parameters"></a>Parametreler 
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: cea4503c4e3b9dd58cc475aaec355a2bb2e0bd29
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 9a6e46c0b52c22df0682034deaebd58bbfeb34a7
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065231"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210102"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>ITSM Bağlayıcısındaki sorunları giderme
 
@@ -53,6 +53,25 @@ Panodaki hataları görüntülemek için sonraki adımları izlemeniz gerekir:
 
 5. Bu Panoyu kullanarak, bağlayıcıdaki durum ve hataları inceleyebilirsiniz.
     ![Bağlayıcı durumunu gösteren ekran görüntüsü.](media/itsmc-resync-servicenow/connector-dashboard.png)
+
+### <a name="dashboard-elements"></a>Pano öğeleri
+
+Pano, bu bağlayıcıyı kullanarak ıTSM aracına gönderilen uyarılarla ilgili bilgiler içerir.
+Pano 4 parçaya bölünür:
+
+1. Oluşturulan iş öğesi: grafik ve aşağıdaki tablo, tür başına iş öğesi sayısını içerir. Grafiğe veya tabloda tıkladığınızda, iş öğeleri hakkında daha fazla ayrıntı görebilirsiniz.
+    ![Oluşturulan iş öğesini gösteren ekran görüntüsü.](media/itsmc-resync-servicenow/itsm-dashboard-workitems.png)
+2. Etkilenen bilgisayarlar: tablolar, yapılandırma öğelerini oluşturan yapılandırma öğeleriyle ilgili ayrıntıları içerir.
+    Tablolardaki satırlara tıklayarak yapılandırma öğeleri hakkında daha fazla bilgi edinebilirsiniz.
+    Tablo sınırlı sayıda satır içerir. tüm listeyi görmek isterseniz "tümünü gör" düğmesine tıklayabilirsiniz.
+    ![Etkilenen bilgisayarları gösteren ekran görüntüsü.](media/itsmc-resync-servicenow/itsm-dashboard-impacted-comp.png)
+3. Bağlayıcı durumu: aşağıdaki grafik ve tablo, bağlayıcının durumu hakkındaki iletileri içerir. Tablodaki satırlardaki grafiğe tıklayarak bağlayıcı durumunun iletileri hakkında daha fazla bilgi edinebilirsiniz.
+    Tablo sınırlı sayıda satır içerir. tüm listeyi görmek isterseniz "tümünü gör" düğmesine tıklayabilirsiniz.
+    ![Bağlayıcı durumunu gösteren ekran görüntüsü.](media/itsmc-resync-servicenow/itsm-dashboard-connector-status.png)
+4. Uyarı kuralları: tablolar algılanan uyarı kuralları sayısı hakkındaki bilgileri içerir.
+    Tablolardaki satırlara tıklayarak, algılanan kurallara ilişkin daha fazla ayrıntı edinebilirsiniz.
+    Tablo sınırlı sayıda satır içerir. tüm listeyi görmek isterseniz "tümünü gör" düğmesine tıklayabilirsiniz.
+    ![Uyarı kurallarını gösteren ekran görüntüsü.](media/itsmc-resync-servicenow/itsm-dashboard-alert-rules.png)
 
 ### <a name="service-map"></a>Hizmet eşlemesi
 

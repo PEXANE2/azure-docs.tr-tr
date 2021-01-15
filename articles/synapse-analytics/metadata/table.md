@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9ee18edd563d94a85dedf48b7a4d6df394c09707
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b93addfe659847187dffe61f12f5a2bfac9dca21
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461380"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209636"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure SYNAPSE Analytics paylaşılan meta veri tabloları
 
@@ -32,7 +32,7 @@ Tablolar sunucusuz SQL havuzunun zaman uyumsuz olarak eşitlendiğinden, görün
 
 Spark tarafından oluşturulan veritabanlarını yönetmek için Spark 'ı kullanın. Örneğin, bir sunucusuz Apache Spark havuzu işi aracılığıyla silin ve Spark ' dan tablo oluşturun.
 
-Bu tür bir veritabanında sunucusuz SQL havuzundan nesne oluşturursanız veya veritabanını bırakmaya çalışırsanız, işlem başarılı olur ancak özgün Spark veritabanı değiştirilmez.
+Bu tür bir veritabanında sunucusuz SQL havuzundan nesne oluşturursanız veya veritabanını bırakmaya çalışırsanız, işlem başarısız olur. Özgün Spark veritabanı sunucusuz SQL havuzu aracılığıyla değiştirilemez.
 
 ## <a name="expose-a-spark-table-in-sql"></a>SQL 'de Spark tablosu kullanıma sunma
 

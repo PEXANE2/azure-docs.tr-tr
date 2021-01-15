@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 1b801bac28b131ff43c47024649bfe0986f768c7
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 81b7efdd6bca0471719c11d130be95405f4d54e1
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202904"
+ms.locfileid: "98210197"
 ---
 # <a name="support-for-32-bit-operating-systems-in-azure-virtual-machines"></a>Azure sanal makinelerinde 32 bit işletim sistemleri desteği
 
 Microsoft Azure artık kullanıcıların 32 bitlik Windows Işletim sistemlerini Azure 'a getirmelerini sağlar. Yalnızca özelleştirilmiş VHD 'ler desteklenir ve genelleştirilmiş görüntüler Azure 'da çalışmaz. Bu işletim sistemlerinden bazıları kendi yaşam süresi desteklenebilirliği anlaşmasıyla zaten ulaştığı için, Microsoft bu kullanıcılar için ek destek sunmayabilir. Ayrıca, Microsoft Azure bir sanal makinede (VM) çalışan Linux tabanlı veya Berkeley yazılım dağıtımı (BSD) tabanlı işletim sistemleri için de destek sunulmaz.
 
 > [!NOTE]
-> Azure platformunda VM 'de yalnızca 1 GB kullanılabilir bellek yapıldığında 32 bitlik işletim sistemlerini çalıştıran VM 'lerde uygulanan bir bellek adres alanı sınırlaması vardır ve VM 'nin geri kalanı Konuk VM içinde ayrılmış olarak görünür. Bu bilinen bir sorundur ve şu anda bir çözüm için bir ETA yok. Bit-bit işletim sistemi sürümlerine geçmeyi öneririz.
+> Azure platformunda VM 'de yalnızca 1 GB 'lık belleğin kullanılabildiği (*özellikle Win7 veya win10 gibi Istemci SKU 'larında*) ve VM 'nin geri KALANı Konuk VM içinde ayrılmış olarak gösterildiği 32 bitlik işletim sistemlerini çalıştıran VM 'lerde uygulanan bir bellek adres alanı sınırlaması vardır. Bu bilinen bir sorundur ve şu anda bir çözüm için bir ETA yok. Bit-bit işletim sistemi sürümlerine geçmeyi öneririz.
 > 
 
 ## <a name="more-information"></a>Daha fazla bilgi
