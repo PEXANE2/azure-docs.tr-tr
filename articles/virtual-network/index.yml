@@ -11,12 +11,12 @@ metadata:
   author: KumudD
   ms.author: kumud
   ms.date: 08/28/2019
-  ms.openlocfilehash: a6c0bee32fbeb50c1eef0a9625706bcee9e1ae17
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 7bf639fb7bc89ec218b280bcf7d02c76c7bde277
+  ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "82086479"
+  ms.lasthandoff: 01/14/2021
+  ms.locfileid: "98223610"
 landingContent:
 - title: Sanal Ağ hakkında
   linkLists:
@@ -45,9 +45,9 @@ landingContent:
   - linkListType: concept
     links:
     - text: Ağ güvenlik grupları
-      url: security-overview.md
+      url: ./network-security-groups-overview.md
     - text: Uygulama güvenliği grupları
-      url: security-overview.md#application-security-groups
+      url: ./network-security-groups-overview.md#application-security-groups
     - text: Sanal ağ hizmet uç noktaları
       url: virtual-network-service-endpoints-overview.md
     - text: Sanal ağ güvenliği hakkında SSS
@@ -63,7 +63,7 @@ landingContent:
   - linkListType: learn
     links:
     - text: Azure kaynaklarına erişimi güvenli hale getirme ve ayrı tutma
-      url: https://docs.microsoft.com/learn/modules/secure-and-isolate-with-nsg-and-service-endpoints
+      url: /learn/modules/secure-and-isolate-with-nsg-and-service-endpoints
   - linkListType: video
     links:
     - text: Azure Özel Bağlantı ile Azure PaaS kaynaklarınıza güvenli şekilde erişme
@@ -93,7 +93,7 @@ landingContent:
   - linkListType: learn
     links:
     - text: Eşleme ile sanal ağ genelinde iletişim kurma
-      url: https://docs.microsoft.com/learn/modules/integrate-vnets-with-vnet-peering
+      url: /learn/modules/integrate-vnets-with-vnet-peering
 - title: Ağ trafiğini yönlendirme
   linkLists:
   - linkListType: concept
@@ -109,7 +109,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: IP adresi türleri ve ayırma yöntemleri
-      url: virtual-network-ip-addresses-overview-arm.md
+      url: ./public-ip-addresses.md
   - linkListType: how-to-guide
     links:
     - text: Genel IP adresi oluşturma, değiştirme veya silme
@@ -151,7 +151,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: IP adresi türleri ve ayırma yöntemleri
-      url: virtual-network-ip-addresses-overview-arm.md
+      url: ./public-ip-addresses.md
     - text: Azure sanal ağı için IPv6 nedir?
       url: ipv6-overview.md
     - text: Genel IP adresi ön eki
@@ -168,7 +168,7 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: Azure CLI
+    - text: Azure CLI’si
       url: /cli/azure/network
     - text: Azure PowerShell
       url: /powershell/module/az.network

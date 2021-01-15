@@ -65,7 +65,7 @@
               href: relay-hybrid-connections-node-ws-api-overview.md
     - name: Güvenlik
       items:
-        - name: IP güvenlik duvarını yapılandırma (önizleme)
+        - name: IP güvenlik duvarını yapılandırma
           href: ip-firewall-virtual-networks.md
         - name: Özel uç noktaları yapılandırma
           href: private-link-service.md

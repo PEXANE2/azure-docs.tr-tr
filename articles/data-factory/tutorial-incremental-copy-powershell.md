@@ -1,6 +1,6 @@
 ---
 title: PowerShell kullanarak bir tabloyu artımlı olarak kopyalama
-description: Bu öğreticide, verileri bir Azure SQL veritabanından Azure Blob depolama alanına artımlı olarak kopyalayan bir Azure Data Factory işlem hattı oluşturacaksınız. '
+description: Bu öğreticide, verileri bir Azure SQL veritabanından Azure Blob depolama alanına artımlı olarak kopyalayan bir Azure Data Factory işlem hattı oluşturacaksınız.
 services: data-factory
 author: dearandyxu
 ms.author: yexu
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 65a2d06acc3461d881ad6f100f3720b217ef7634
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 50608870fa397ad5586c626f1d1fe5c9d893b4ca
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510218"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222828"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-powershell"></a>PowerShell kullanarak verileri Azure SQL veritabanından Azure Blob depolama alanına artımlı olarak yükleme
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Bu öğreticide, Azure SQL veritabanındaki bir tablodan Azure Blob depolama alanına Delta verileri yükleyen bir işlem hattı ile Azure Veri Fabrikası oluşturacaksınız.
+Bu öğreticide, Azure SQL veritabanındaki bir tablodan Azure Blob depolama alanına Delta verileri yükleyen bir işlem hattı oluşturmak için Azure Data Factory kullanırsınız.
 
 Bu öğreticide aşağıdaki adımları gerçekleştireceksiniz:
 
@@ -59,7 +59,7 @@ Bu çözümü oluşturmak için önemli adımlar şunlardır:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

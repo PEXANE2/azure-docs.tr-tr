@@ -1,14 +1,14 @@
 ---
 title: Azure İlkesine Genel Bakış
 description: Azure İlkesi, Azure ortamında ilke tanımlarınızı oluşturmak, atamak ve yönetmek için kullandığınız bir Azure hizmetidir.
-ms.date: 10/05/2020
+ms.date: 01/14/2021
 ms.topic: overview
-ms.openlocfilehash: 96fd29b5e3d24bc3e678461a95005e004a8a3a80
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: df430586af2e701ec2881f6ea760095fd2ca79d0
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803961"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220737"
 ---
 # <a name="what-is-azure-policy"></a>Azure İlkesi nedir?
 
@@ -57,7 +57,7 @@ Aşağıdaki Azure İlkesi genel bakış videosu Build 2018 etkinliğinde kayded
 
 > [!VIDEO https://www.youtube.com/embed/dxMaYF2GB7o]
 
-## <a name="getting-started"></a>Kullanmaya başlama
+## <a name="getting-started"></a>Başlarken
 
 ### <a name="azure-policy-and-azure-rbac"></a>Azure Ilkesi ve Azure RBAC
 
@@ -83,7 +83,7 @@ Yerleşik rollerin hiçbirinde gerekli izinler yoksa [özel rol](../../role-base
 
 ### <a name="resources-covered-by-azure-policy"></a>Azure Ilkesi kapsamındaki kaynaklar
 
-Azure Ilkesi, Azure ve yay etkin kaynaklardaki tüm kaynakları değerlendirir. [Konuk yapılandırması](./concepts/guest-configuration.md), [Azure Kubernetes hizmeti](../../aks/intro-kubernetes.md)ve [Azure Key Vault](../../key-vault/general/overview.md)gibi belirli kaynak sağlayıcıları için ayarları ve nesneleri yönetmeye yönelik daha derin bir tümleştirme vardır. Daha fazla bilgi edinmek için bkz. [kaynak sağlayıcısı modları](./concepts/definition-structure.md).
+Azure Ilkesi, yayın etkinleştirilmiş kaynaklar dahil olmak üzere, abonelik düzeyindeki veya altındaki tüm Azure kaynaklarını değerlendirir. [Konuk yapılandırması](./concepts/guest-configuration.md), [Azure Kubernetes hizmeti](../../aks/intro-kubernetes.md)ve [Azure Key Vault](../../key-vault/general/overview.md)gibi belirli kaynak sağlayıcıları için ayarları ve nesneleri yönetmeye yönelik daha derin bir tümleştirme vardır. Daha fazla bilgi edinmek için bkz. [kaynak sağlayıcısı modları](./concepts/definition-structure.md).
 
 ### <a name="recommendations-for-managing-policies"></a>İlkeleri yönetme ile ilgili öneriler
 
@@ -107,7 +107,7 @@ Göz önünde bulundurmanız gereken birkaç işaretçi ve ipucu aşağıda veri
 
 Azure İlkesi'nde bir ilke oluşturmak ve uygulamak için önce ilke tanımını oluşturmanız gerekir. Her ilke tanımında, bu ilkelerin uygulandığı koşullar bulunur. Ve koşullar karşılanıyorsa, tanımlanmış bir etkiye sahiptir.
 
-Azure Ilkesinde, varsayılan olarak kullanılabilen birkaç yerleşik ilke sunuyoruz. Örnek:
+Azure Ilkesinde, varsayılan olarak kullanılabilen birkaç yerleşik ilke sunuyoruz. Örneğin:
 
 - **Izin verilen depolama hesabı SKU 'ları** (reddetme): dağıtılmakta olan bir depolama HESABıNıN bir SKU boyutları kümesi içinde olup olmadığını belirler. Etkisi, tanımlı SKU boyutları kümesine bağlı olmayan tüm depolama hesaplarını reddetmektir.
 - **Izin verilen kaynak türü** (reddetme): dağıtabileceğiniz kaynak türlerini tanımlar. Etkisi, bu tanımlı listenin parçası olmayan tüm kaynakları reddetmektir.

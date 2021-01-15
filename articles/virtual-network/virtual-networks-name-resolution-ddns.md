@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: subsarma
-ms.openlocfilehash: 9f5b535a341956e5675ba96ba9570bd3f2ff3443
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad91eb94aedcdd0e4e715162e3ae064a1d2fb1ea
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84710958"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220431"
 ---
 # <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>Kendi DNS sunucunuzda ana bilgisayar adlarını kaydetmek için dinamik DNS kullanma
 
@@ -28,7 +28,7 @@ Azure, sanal makineler (VM) ve rol örnekleri için [ad çözümlemesi sağlar](
 Özel DNS sunucularınız Azure sanal makineleri olarak barındırılıyorsa, ana bilgisayar adlarını çözümlemek için aynı sanal ağa ait konak sorgularını Azure 'a iletebilirsiniz. Bu seçeneği kullanmak istemiyorsanız, sanal makine ana bilgisayar adlarını dinamik DNS (DDNS) kullanarak DNS sunucunuza kaydedebilirsiniz. Azure, DNS sunucularınızda kayıtları doğrudan oluşturmak için kimlik bilgilerine sahip değildir, bu nedenle diğer düzenlemeler genellikle gereklidir. Bazı yaygın senaryolar, alternatiflerle birlikte şunları izler:
 
 ## <a name="windows-clients"></a>Windows istemcileri
-Etki alanına katılmış olmayan Windows istemcileri, önyüklenirken veya IP adresleri değiştiğinde güvenli olmayan DDNS güncelleştirmelerini dener. DNS adı, ana bilgisayar adı artı birincil DNS son ekidir. Azure birincil DNS sonekini boş bırakır, ancak son eki [Kullanıcı arabirimi](https://technet.microsoft.com/library/cc794784.aspx) veya [PowerShell](/powershell/module/dnsclient/set-dnsclient)aracılığıyla sanal makinede ayarlayabilirsiniz.
+Etki alanına katılmış olmayan Windows istemcileri, önyüklenirken veya IP adresleri değiştiğinde güvenli olmayan DDNS güncelleştirmelerini dener. DNS adı, ana bilgisayar adı artı birincil DNS son ekidir. Azure birincil DNS sonekini boş bırakır, ancak son eki [Kullanıcı arabirimi](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc794784(v=ws.10)) veya [PowerShell](/powershell/module/dnsclient/set-dnsclient)aracılığıyla sanal makinede ayarlayabilirsiniz.
 
 Etki alanına katılmış Windows istemcileri, IP adreslerini güvenli DDNS kullanarak etki alanı denetleyicisi ile kaydeder. Etki alanına ekleme işlemi, istemcideki birincil DNS sonekini ayarlar ve güven ilişkisini oluşturur ve korur.
 

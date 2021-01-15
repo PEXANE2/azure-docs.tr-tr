@@ -182,7 +182,7 @@
             - name: VM'ler için ön ödeme yapma
               href: ../prepay-reserved-vm-instances.md
             - name: Ayrılmış Konaklar için önceden ödeme
-              href: ../prepay-dedicated-hosts-reserved-instances.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+              href: ../prepay-dedicated-hosts-reserved-instances.md
             - name: Azure ayırmaları nedir?
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md?toc=/azure/virtual-machines/windows/toc.json
             - name: Sanal makine örneği boyut esnekliği
@@ -226,7 +226,7 @@
         - name: Şifreleme
           href: ../disk-encryption.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Disk Depolama rezervasyonları
-          href: ../../cost-management-billing/reservations/understand-disk-reservations.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+          href: ../../cost-management-billing/reservations/understand-disk-reservations.md
         - name: Sanal makine ve disk performansı
           href: disk-performance-windows.md
         - name: Yüksek performansa uygun tasarım yapma
@@ -290,14 +290,14 @@
         - name: Spot VM’leri dağıtma
           items:
             - name: Portal
-              href: ../spot-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+              href: ../spot-portal.md
             - name: PowerShell
               href: spot-powershell.md
             - name: ARM şablonu
               displayName: Azure Resource Manager
-              href: ../linux/spot-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+              href: ../linux/spot-template.md
             - name: Hata kodları
-              href: ../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+              href: ../error-codes-spot.md
         - name: C# kullanma
           href: ../../azure-resource-manager/templates/deploy-rest.md
         - name: Özelleştirilmiş disk kullanma
@@ -478,7 +478,7 @@
             - name: Güçlendirilmiş erişim konağı oluşturma
               items:
                 - name: Portal
-                  href: ../../bastion/tutorial-create-host-portal.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+                  href: ../../bastion/tutorial-create-host-portal.md
                 - name: PowerShell
                   href: ../../bastion/bastion-create-host-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                 - name: CLI
@@ -654,7 +654,7 @@
                     - name: Sürüm geçmişi
                       href: ../../azure-monitor/platform/diagnostics-extension-versions.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                     - name: JSON Satırları kaynak günlüklerinin biçimi
-                      href: ../../azure-monitor/platform/resource-logs-blob-format.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+                      href: ../../azure-monitor/platform/resource-logs-blob-format.md
                     - name: Sorun giderme
                       href: ../../azure-monitor/platform/diagnostics-extension-troubleshooting.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Log Analytics aracısı
@@ -712,13 +712,13 @@
                 - name: İzlemeyi etkinleştirmeye genel bakış
                   href: ../../azure-monitor/insights/vminsights-enable-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                 - name: Tek bir Azure VM için etkinleştirme
-                  href: ../../azure-monitor/insights/vminsights-enable-portal.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-portal.md
                 - name: Azure İlkesi’ni kullanarak etkinleştirme
-                  href: ../../azure-monitor/insights/vminsights-enable-policy.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-policy.md
                 - name: Azure PowerShell kullanarak etkinleştirme
-                  href: ../../azure-monitor/insights/vminsights-enable-powershell.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-powershell.md
                 - name: Hibrit ortam için etkinleştirme
-                  href: ../../azure-monitor/insights/vminsights-enable-hybrid.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-hybrid.md
             - name: Bağımlılıkları eşleme
               href: ../../azure-monitor/insights/vminsights-maps.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Performansı izleme
@@ -974,7 +974,7 @@
   href: ../troubleshooting/index.yml
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/vm
     - name: Azure PowerShell
       href: /powershell/azure/
