@@ -3,12 +3,12 @@ title: 'Sorun giderme hatası: Azure İşlevleri Çalışma Zamanı ulaşılamı
 description: Geçersiz bir depolama hesabında sorun gidermeyi öğrenin.
 ms.topic: article
 ms.date: 09/05/2018
-ms.openlocfilehash: 0b6778a08bf04367f2a0ef10f7cd4fe29a52dd61
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 9f6592b6d5ef88127a9dfca1e868564be0aa4ed5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579020"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217303"
 ---
 # <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>Sorun giderme hatası: "Azure İşlevleri Çalışma Zamanı erişilebilir değil"
 
@@ -16,15 +16,15 @@ Bu makale, Azure portal görüntülenen aşağıdaki hata dizesinin sorunların�
 
 > "Hata: Azure İşlevleri Çalışma Zamanı ulaşılamaz. Depolama yapılandırmasıyla ilgili ayrıntılar için buraya tıklayın. "
 
-Azure İşlevleri Çalışma Zamanı başlayamediğinde bu sorun oluşur. Sorunun en yaygın nedeni, işlev uygulamasının depolama hesabına erişiminin kaybedilme nedenidir. Daha fazla bilgi için bkz. [depolama hesabı gereksinimleri](./functions-create-function-app-portal.md#storage-account-requirements).
+Bu sorun, Işlevler çalışma zamanının başlayamayacağı zaman oluşur. Bunun en yaygın nedeni, işlev uygulamasının depolama hesabına erişiminin kaybedilme nedenidir. Daha fazla bilgi için bkz. [depolama hesabı gereksinimleri](storage-considerations.md#storage-account-requirements).
 
-Bu makalenin geri kalanında, her bir durumu belirleme ve çözme dahil olmak üzere bu hatanın aşağıdaki nedenlerini gidermenize yardımcı olur.
+Bu makalenin geri kalanında, her bir durumu belirleme ve çözme dahil olmak üzere bu hatanın belirli nedenlerine ilişkin sorunları gidermenize yardımcı olur.
 
 ## <a name="storage-account-was-deleted"></a>Depolama hesabı silindi
 
-Her işlev uygulamasının çalışması için bir depolama hesabının olması gerekir. Bu hesap silinirse, işleviniz çalışmaz.
+Her işlev uygulamasının çalışması için bir depolama hesabının olması gerekir. Bu hesap silinirse, işlevleriniz çalışmaz.
 
-Uygulama ayarlarınızda depolama hesabı adınızı arayarak başlayın. `AzureWebJobsStorage`Ya da `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` bir bağlantı dizesinde sarmalanmış depolama hesabınızın adını içerir. Daha fazla bilgi için bkz. [Azure işlevleri Için uygulama ayarları başvurusu](./functions-app-settings.md#azurewebjobsstorage).
+Uygulama ayarlarınızda depolama hesabı adınızı arayarak başlayın. `AzureWebJobsStorage`Ya da `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` bir bağlantı dizesinin parçası olarak depolama hesabınızın adını içerir. Daha fazla bilgi için bkz. [Azure işlevleri Için uygulama ayarları başvurusu](./functions-app-settings.md#azurewebjobsstorage).
 
 Hala mevcut olup olmadığını görmek için Azure portal depolama hesabınızı arayın. Silinmişse, depolama hesabını yeniden oluşturun ve depolama bağlantı dizelerinizi değiştirin. İşlev kodunuz kaybolur ve yeniden dağıtmanız gerekir.
 
@@ -44,7 +44,7 @@ Daha fazla bilgi için bkz. [Azure işlevleri Için uygulama ayarları başvurus
 
 ### <a name="guidance"></a>Rehber
 
-* Bu ayarlardan herhangi biri için "yuva ayarı" ' nı denetmayın. Dağıtım yuvalarını takas ederseniz, işlev uygulaması kesilir.
+* Bu ayarlardan herhangi biri için **yuva ayarını** denetleme. Dağıtım yuvalarını takas ederseniz, işlev uygulaması kesilir.
 * Bu ayarları otomatik dağıtımların parçası olarak değiştirmeyin.
 * Bu ayarlar, oluşturma sırasında sağlanmalı ve geçerli olmalıdır. Bu ayarları içermeyen bir otomatik dağıtım, ayarlar daha sonra eklense bile çalıştırmayacak bir işlev uygulamasına neden olur.
 
@@ -56,7 +56,7 @@ Depolama anahtarlarını yeniden oluşturursanız, daha önce tartışılan depo
 
 İşlev uygulamanız depolama hesabına erişebilmelidir. Bir işlev uygulamasının bir depolama hesabına erişimini engelleyen yaygın sorunlar şunlardır:
 
-* İşlev uygulaması, depolama hesabından gelen ve giden trafiğe izin vermek için doğru ağ kuralları olmadan App Service Ortamı dağıtılır.
+* İşlev uygulaması, depolama hesabından gelen ve giden trafiğe izin vermek için doğru ağ kuralları olmadan App Service Ortamı (Ao) uygulamasına dağıtılır.
 
 * Depolama hesabı güvenlik duvarı etkinleştirilir ve işlevlere ve işlevlerine giden trafiğe izin verecek şekilde yapılandırılmamıştır. Daha fazla bilgi için bkz. [Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma](../storage/common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
@@ -72,7 +72,7 @@ Bu sorunu çözmek için günlük kotasını kaldırın veya arttırın ve sonra
 
 ## <a name="app-is-behind-a-firewall"></a>Uygulama bir güvenlik duvarının arkasında
 
-İşlev çalışma zamanı, aşağıdaki nedenlerden biri için ulaşılamaz olabilir:
+İşlev uygulamanıza aşağıdaki nedenlerden biri için ulaşılamıyor olabilir:
 
 * İşlev uygulamanız, [dahili olarak yük dengeli bir App Service ortamı](../app-service/environment/create-ilb-ase.md) barındırılır ve gelen internet trafiğini engelleyecek şekilde yapılandırılmıştır.
 
@@ -80,8 +80,8 @@ Bu sorunu çözmek için günlük kotasını kaldırın veya arttırın ve sonra
 
 Azure portal işlevler listesini getirmek için doğrudan çalışan uygulamaya çağrı yapar ve kudu uç noktasına HTTP çağrıları yapar. **Platform özellikleri** sekmesi altındaki platform düzeyi ayarları hala kullanılabilir.
 
-App Service Ortamı yapılandırmanızı doğrulamak için:
-1. App Service Ortamı bulunduğu alt ağın ağ güvenlik grubu 'na (NSG) gidin.
+ATıCı yapılandırmanızı doğrulamak için:
+1. ATıCı 'in bulunduğu alt ağın ağ güvenlik grubuna (NSG) gidin.
 1. Uygulamaya eriştiğiniz bilgisayarın genel IP 'sinden gelen trafiğe izin vermek için gelen kurallarını doğrulayın. 
    
 Portalı, uygulamanızı çalıştıran sanal ağa veya sanal ağınızda çalışan bir sanal makineye bağlı bir bilgisayardan da kullanabilirsiniz. 

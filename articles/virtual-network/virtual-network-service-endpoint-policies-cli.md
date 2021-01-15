@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
-ms.openlocfilehash: a080c3953c48227301052a0bb151c8cba96e515a
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 9ce1e320a93a834a938ce95f3931d885d2214faa
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94737396"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216878"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-the-azure-cli"></a>Azure CLı kullanarak sanal ağ hizmeti uç noktası ilkeleriyle Azure depolama hesaplarına veri alımını yönetme
 
@@ -114,7 +114,7 @@ az network nsg rule create \
   --destination-port-range "*"
 ```
 
-Her ağ güvenlik grubu, çeşitli [varsayılan güvenlik kuralları](security-overview.md#default-security-rules)içerir. Aşağıdaki kural, tüm genel IP adreslerine giden erişime izin veren bir varsayılan güvenlik kuralını geçersiz kılar. `destination-address-prefix "Internet"`Seçeneği tüm genel IP adreslerine giden erişimi reddeder. Önceki kural, Azure depolama 'nın genel IP adreslerine erişim sağlayan daha yüksek öncelikli bir nedenle bu kuralı geçersiz kılar.
+Her ağ güvenlik grubu, çeşitli [varsayılan güvenlik kuralları](./network-security-groups-overview.md#default-security-rules)içerir. Aşağıdaki kural, tüm genel IP adreslerine giden erişime izin veren bir varsayılan güvenlik kuralını geçersiz kılar. `destination-address-prefix "Internet"`Seçeneği tüm genel IP adreslerine giden erişimi reddeder. Önceki kural, Azure depolama 'nın genel IP adreslerine erişim sağlayan daha yüksek öncelikli bir nedenle bu kuralı geçersiz kılar.
 
 ```azurecli-interactive
 az network nsg rule create \

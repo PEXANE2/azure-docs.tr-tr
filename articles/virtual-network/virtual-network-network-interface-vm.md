@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: f7253be2844f40ca52df2f9b3bc9cbba552fea2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b45bd2e2b9ad971891cbcb944286f40b4f66883
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85480142"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216980"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>Sanal makinelerde ağ arabirimi ekleme veya kaldırma işlemlerini gerçekleştirme
 
@@ -59,9 +59,9 @@ VM oluşturmadan önce [bir ağ arabirimi oluşturun](virtual-network-network-in
 
 Sanal makinenize bir ağ arabirimi eklemek için:
 
-1. Var olan bir sanal makineyi bulmak için [Azure Portal](https://portal.azure.com) gidin. **Sanal makineleri**arayın ve seçin.
+1. Var olan bir sanal makineyi bulmak için [Azure Portal](https://portal.azure.com) gidin. **Sanal makineleri** arayın ve seçin.
 
-2. SANAL makinenizin adını seçin. VM, eklemek istediğiniz ağ arabirimlerinin sayısını desteklemelidir. Her VM boyutunun kaç ağ arabirimine desteklediğini öğrenmek için, [Linux VM 'leri](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veya [Windows VM 'leri](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)için Azure 'daki boyutlara bakın.
+2. SANAL makinenizin adını seçin. VM, eklemek istediğiniz ağ arabirimlerinin sayısını desteklemelidir. Her VM boyutunun kaç ağ arabirimine desteklediğini öğrenmek için, [Linux VM 'leri](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veya [Windows VM 'leri](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)için Azure 'daki boyutlara bakın.
 
 3. VM komut çubuğunda **Durdur**' u ve ardından onay Iletişim kutusunda **Tamam** ' ı seçin. Ardından, VM 'nin **durumu** **durduruldu (serbest bırakıldı)** olarak değişene kadar bekleyin.
 
@@ -72,7 +72,7 @@ Sanal makinenize bir ağ arabirimi eklemek için:
 
     Mevcut bir ağ arabiriminiz yoksa, önce bir tane oluşturmanız gerekir. Bunu yapmak için **ağ arabirimi oluştur**' u seçin. Ağ arabirimi oluşturma hakkında daha fazla bilgi edinmek için bkz. [ağ arabirimi oluşturma](virtual-network-network-interface.md#create-a-network-interface). Sanal makinelere ağ arabirimleri eklenirken ek kısıtlamalar hakkında daha fazla bilgi edinmek için bkz. [kısıtlamalar](#constraints).
 
-5. **Overview**  >  Sanal makineyi yeniden başlatmak için VM menü çubuğundan genel bakış**Başlat** ' ı seçin.
+5.   >  Sanal makineyi yeniden başlatmak için VM menü çubuğundan genel bakış **Başlat** ' ı seçin.
 
 Artık, sanal makine işletim sistemini birden çok ağ arabirimini düzgün şekilde kullanacak şekilde yapılandırabilirsiniz. [Linux](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) veya [Windows](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) 'u birden çok ağ arabirimi için yapılandırmayı öğrenin.
 
@@ -87,7 +87,7 @@ Artık, sanal makine işletim sistemini birden çok ağ arabirimini düzgün şe
 
 Her bir ağ arabiriminin yapılandırması ve her bir ağ arabirimine atanan IP adresleri hakkında bilgi edinmek için şu anda bir VM 'ye bağlı olan ağ arabirimlerini görüntüleyebilirsiniz. 
 
-1. Var olan bir sanal makineyi bulmak için [Azure Portal](https://portal.azure.com) gidin. **Sanal makineleri**arayın ve seçin.
+1. Var olan bir sanal makineyi bulmak için [Azure Portal](https://portal.azure.com) gidin. **Sanal makineleri** arayın ve seçin.
 
     >[!NOTE]
     >Aboneliğiniz için sahip, katkıda bulunan veya ağ katılımcısı rolüne atanan bir hesabı kullanarak oturum açın. Hesaplara rol atama hakkında daha fazla bilgi edinmek için bkz. [Azure rol tabanlı erişim denetimi Için yerleşik roller](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
@@ -107,7 +107,7 @@ Ağ arabirimi ayarları ve bunların nasıl değiştirileceği hakkında bilgi e
 
 ## <a name="remove-a-network-interface-from-a-vm"></a>Bir VM 'den ağ arabirimini kaldırma
 
-1. Var olan bir sanal makineyi bulmak için [Azure Portal](https://portal.azure.com) gidin. **Sanal makineleri**arayın ve seçin.
+1. Var olan bir sanal makineyi bulmak için [Azure Portal](https://portal.azure.com) gidin. **Sanal makineleri** arayın ve seçin.
 
 2. Bağlı ağ arabirimlerini görüntülemek istediğiniz VM 'nin adını seçin.
 
@@ -115,9 +115,9 @@ Ağ arabirimi ayarları ve bunların nasıl değiştirileceği hakkında bilgi e
 
 4. VM 'nin **durumu** **durduruldu (serbest bırakıldı)** olarak değişene kadar bekleyin.
 
-5. VM menü çubuğundan **Networking**  >  **ağ bağlantısını ayır**' ı seçin.
+5. VM menü çubuğundan   >  **ağ bağlantısını ayır**' ı seçin.
 
-6. **Ağ arabirimini ayır** iletişim kutusunda, ayırmak istediğiniz ağ arabirimini seçin. Ardından **Tamam**'ı seçin.
+6. **Ağ arabirimini ayır** iletişim kutusunda, ayırmak istediğiniz ağ arabirimini seçin. Ardından **Tamam**’ı seçin.
 
     >[!NOTE]
     >Yalnızca bir ağ arabirimi listeleniyorsa, bir sanal makineye bağlı en az bir ağ arabirimine sahip olması gerektiğinden, bunu ayırabilirsiniz.
@@ -133,7 +133,7 @@ Ağ arabirimi ayarları ve bunların nasıl değiştirileceği hakkında bilgi e
 
 - Bir VM 'ye iliştirilmiş en az bir ağ arabirimi olmalıdır.
 
-- VM 'nin desteklediği bir VM 'ye bağlı çok sayıda ağ arabirimi olabilir. Her VM boyutunun desteklediği ağ arabirimlerinin sayısı hakkında daha fazla bilgi edinmek için bkz. [Linux VM 'leri](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veya [Windows VM 'leri](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)için Azure 'da boyutlar. Tüm boyutlar en az iki ağ arabirimini destekler.
+- VM 'nin desteklediği bir VM 'ye bağlı çok sayıda ağ arabirimi olabilir. Her VM boyutunun desteklediği ağ arabirimlerinin sayısı hakkında daha fazla bilgi edinmek için bkz. [Linux VM 'leri](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veya [Windows VM 'leri](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)için Azure 'da boyutlar. Tüm boyutlar en az iki ağ arabirimini destekler.
 
 - Bir VM 'ye eklediğiniz ağ arabirimleri Şu anda başka bir VM 'ye iliştirilemiyor. Ağ arabirimleri oluşturma hakkında daha fazla bilgi edinmek için bkz. [ağ arabirimi oluşturma](virtual-network-network-interface.md#create-a-network-interface).
 
@@ -143,7 +143,7 @@ Ağ arabirimi ayarları ve bunların nasıl değiştirileceği hakkında bilgi e
 
 - Giden trafiği hangi ağ arabirimine göndereğinizi kontrol edebilirsiniz. Bununla birlikte, varsayılan olarak bir VM, tüm giden trafiği birincil ağ arabiriminin birincil IP yapılandırmasına atanan IP adresine gönderir.
 
-- Geçmişte, aynı Kullanılabilirlik kümesi içindeki tüm VM 'Lerin tek veya birden çok ağ arabirimine sahip olması gerekiyordu. Herhangi bir sayıda ağ arabirimine sahip VM 'Ler artık aynı Kullanılabilirlik kümesinde bulunabilir ve bu, VM boyutu tarafından desteklenen sayıya kadar olabilir. Bir VM 'yi yalnızca oluşturulduğu zaman bir kullanılabilirlik kümesine ekleyebilirsiniz. Kullanılabilirlik kümeleri hakkında daha fazla bilgi edinmek için bkz. [Azure 'Da VM 'lerin kullanılabilirliğini yönetme](../virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy).
+- Geçmişte, aynı Kullanılabilirlik kümesi içindeki tüm VM 'Lerin tek veya birden çok ağ arabirimine sahip olması gerekiyordu. Herhangi bir sayıda ağ arabirimine sahip VM 'Ler artık aynı Kullanılabilirlik kümesinde bulunabilir ve bu, VM boyutu tarafından desteklenen sayıya kadar olabilir. Bir VM 'yi yalnızca oluşturulduğu zaman bir kullanılabilirlik kümesine ekleyebilirsiniz. Kullanılabilirlik kümeleri hakkında daha fazla bilgi edinmek için bkz. [Azure 'Da VM 'lerin kullanılabilirliğini yönetme](../virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy).
 
 - Aynı VM 'deki ağ arabirimlerini bir sanal ağ içindeki farklı alt ağlara bağlayabilirsiniz. Ancak, ağ arabirimlerinin tümünün aynı sanal ağa bağlanması gerekir.
 

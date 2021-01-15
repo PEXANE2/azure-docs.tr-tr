@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 062bd41b0803cbb08f74fbcbcebb89bbddeb0d45
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 4c58968cb6a38a10433915ec8fa00336ccad301e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559812"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216419"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Azure Bilişsel Arama için bir fiyatlandırma katmanı seçin
 
@@ -50,7 +50,7 @@ Bazı katmanlar belirli iş türleri için iyileştirilmiştir. Örneğin, **Sta
 
 Birçok özellik, ücretsiz katman dahil olmak üzere tüm katmanlarda kullanılabilir. Birkaç durumda, seçtiğiniz katman bir özelliği uygulama yeteneğinizi etkiler. Aşağıdaki tabloda hizmet katmanıyla ilgili özellik kısıtlamaları açıklanmaktadır.
 
-| Özellik | Sınırlamalar |
+| Öne çıkan özelliği | Sınırlamalar |
 |---------|-------------|
 | [Dizinleyiciler](search-indexer-overview.md) | Dizin oluşturucular S3 HD üzerinde kullanılamaz.  |
 | [Yapay zeka zenginleştirme](search-security-manage-encryption-keys.md) | Ücretsiz katmanda çalışır, ancak önerilmez. |
@@ -88,21 +88,19 @@ Bir arama çözümünün maliyetini tahmin ediyorsanız, fiyatlandırma ve kapas
 
 ### <a name="bandwidth-charges"></a>Bant genişliği ücretleri
 
-Azure veri kaynağı Azure Bilişsel Arama farklı bir bölgedeyse, [Dizin oluşturucular](search-indexer-overview.md) kullanmak faturalandırmayı etkileyebilir. Bu senaryoda, giden verileri Azure veri kaynağından Azure Bilişsel Arama taşımaya yönelik bir maliyettir. 
+Azure veri kaynağı Azure Bilişsel Arama farklı bir bölgedeyse, [Dizin oluşturucular](search-indexer-overview.md) kullanmak faturalandırmayı etkileyebilir. Bu senaryoda, giden verileri Azure veri kaynağından Azure Bilişsel Arama taşıma maliyeti olabilir. Ayrıntılar için, söz konusu Azure veri platformunun fiyatlandırma sayfalarına bakın.
 
 Azure Bilişsel Arama hizmetini verileriniz ile aynı bölgede oluşturursanız, veri çıkış ücretlerini tamamen ortadan kaldırabilirsiniz. [Bant genişliği fiyatlandırma sayfasından](https://azure.microsoft.com/pricing/details/bandwidth/)bazı bilgiler aşağıda verilmiştir:
 
-+ Microsoft, tüm gelen verileri Azure üzerinde hiçbir hizmete ödemez.
-+ Azure Bilişsel Arama giden veri ücreti alınmaz. Örneğin, arama hizmetiniz Batı ABD ve bir Azure Web uygulaması Doğu ABD, Microsoft, Batı ABD kaynaklı sorgu yanıtı yüklerini ücretlendirmez.
-+ Çoklu hizmet çözümlerinde, tüm hizmetler aynı bölgedeyse, hatta geçen veriler ücretsizdir.
++ Gelen veriler: Microsoft, Azure 'daki herhangi bir hizmete gelen veriler için ücret ödemez. 
 
-Hizmetler farklı bölgelerde olduğunda, giden veriler için ücretler uygulanır. Bu ücretler aslında Azure Bilişsel Arama faturanızın bir parçası değildir. Farklı bölgelerdeki verileri çekmek için veri veya AI zenginleştirilmiş dizinleyiciler kullanıyorsanız, maliyetleri genel faturanızda görürsünüz.
++ Giden veriler: giden veriler sorgu sonuçlarına başvurur. Bilişsel Arama giden veriler için ücret alınmaz, ancak hizmetler farklı bölgelerde olduğunda Azure 'daki giden ücretler mümkündür. Bu ücretler aslında Azure Bilişsel Arama faturanızın bir parçası değildir. Bunlar burada bahsedildikleri için, diğer bölgelere veya Azure olmayan uygulamalara sonuç gönderiyorsanız, bu maliyetlerin genel faturanızda yansıtıldığını görebilirsiniz.
 
 ### <a name="ai-enrichment-with-cognitive-services"></a>Bilişsel hizmetler ile AI zenginleştirme
 
 [AI zenginleştirme](cognitive-search-concept-intro.md)için, Kullandıkça Öde Işleme için S0 fiyatlandırma katmanında Azure bilişsel arama ile aynı bölgede [faturalandırılabilir bir Azure bilişsel hizmetler kaynağı eklemeyi](cognitive-search-attach-cognitive-services.md)planlamalısınız. Bilişsel hizmetler ekleme ile ilişkili sabit bir maliyet yoktur. Yalnızca ihtiyacınız olan işleme için ödeme yaparsınız.
 
-| Çalışma | Faturalama etkisi |
+| İşlem | Faturalama etkisi |
 |-----------|----------------|
 | Belge çözme, metin ayıklama | Ücretsiz |
 | Belge çözme, görüntü ayıklama | Belgelerinizden ayıklanan görüntü sayısına göre faturalandırılır. Bir [Dizin Oluşturucu yapılandırmasında](/rest/api/searchservice/create-indexer#indexer-parameters) **ımageaction** , görüntü ayıklamayı tetikleyen parametredir. **Imageaction** "none" (varsayılan) olarak ayarlandıysa, görüntü ayıklama için ücretlendirilmezsiniz. Görüntü ayıklama oranı, Azure Bilişsel Arama için [fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/search/) sayfasında belgelenmiştir.|

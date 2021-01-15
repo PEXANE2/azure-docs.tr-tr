@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: alehall
 ms.reviewer: jrasnick
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 005e3a3b717d4b1b8e5eb02b77a1d228908f8707
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 0537d2353d6b372ed19127101c488b872bbc5224
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92210637"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218867"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell Azure SYNAPSE çalışma alanı oluşturma
 
@@ -25,14 +25,14 @@ Bu hızlı başlangıçta Azure PowerShell kullanarak bir Synapse çalışma ala
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Azure Data Lake Storage 2. depolama hesabı](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
     > [!IMPORTANT]
-    > Azure SYNAPSE çalışma alanının seçili ADLS 2. hesabını okuyup yazabilbilmesi gerekir. Birincil depolama hesabı olarak bağlanan herhangi bir depolama hesabı için, depolama hesabı [oluşturma](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-powershell#create-a-storage-account)bölümünde açıklandığı gibi depolama hesabı oluşturulurken **hiyerarşik ad alanını** etkinleştirmeniz gerekir.
+    > Azure SYNAPSE çalışma alanının seçili ADLS 2. hesabını okuyup yazabilbilmesi gerekir. Birincil depolama hesabı olarak bağlanan herhangi bir depolama hesabı için, depolama hesabı [oluşturma](../storage/common/storage-account-create.md?tabs=azure-powershell#create-a-storage-account)bölümünde açıklandığı gibi depolama hesabı oluşturulurken **hiyerarşik ad alanını** etkinleştirmeniz gerekir.
 
-Cloud Shell kullanmayı seçerseniz, daha fazla bilgi için bkz. [Azure Cloud Shell Genel Bakış](https://docs.microsoft.com/azure/cloud-shell/overview) .
+Cloud Shell kullanmayı seçerseniz, daha fazla bilgi için bkz. [Azure Cloud Shell Genel Bakış](../cloud-shell/overview.md) .
 
 ### <a name="install-the-azure-powershell-module-locally"></a>Azure PowerShell modülünü yerel olarak yükler
 
@@ -43,7 +43,7 @@ Azure PowerShell ile kimlik doğrulama hakkında daha fazla bilgi için bkz. [Az
 ### <a name="install-the-azure-synapse-powershell-module"></a>Azure SYNAPSE PowerShell modülünü yükler
 
 > [!IMPORTANT]
-> **Az. SYNAPSE** PowerShell modülü önizlemedeyken cmdlet 'ini kullanarak ayrı olarak yüklemelisiniz `Install-Module` . Bu PowerShell modülü genel kullanıma sunulduğunda, gelecekteki az PowerShell modülü sürümlerinin bir parçası olur ve Azure Cloud Shell içinden varsayılan olarak kullanılabilir.
+> **Az. SYNAPSE** PowerShell modülü önizlemedeyken cmdlet 'ini kullanarak ayrı olarak yüklemelisiniz `Install-Module` . Bu PowerShell modülü genel kullanıma sunulduktan sonra, gelecekteki Az PowerShell modülü sürümlerinin bir parçası haline gelecek ve Azure Cloud Shell içinden varsayılan olarak sağlanacaktır.
 
 ```azurepowershell-interactive
 Install-Module -Name Az.Synapse
@@ -53,7 +53,7 @@ Install-Module -Name Az.Synapse
 
 1. Azure SYNAPSE çalışma alanı için kaynak oluşturmak üzere gerekli ortam değişkenlerini tanımlayın.
 
-   |        Değişken adı        |                                                 Açıklama                                                 |
+   |        Değişken adı        |                                                 Description                                                 |
    | --------------------------- | ----------------------------------------------------------------------------------------------------------- |
    | StorageAccountName          | Mevcut ADLS 2. depolama hesabınızın adı.                                                           |
    | StorageAccountResourceGroup | Mevcut ADLS 2. depolama hesabı kaynak grubunuzun adı.                                             |

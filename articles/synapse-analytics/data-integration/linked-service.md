@@ -9,21 +9,21 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: fb3c7dd7b3d7e8e42e230eedcd0d1b43af104327
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: af6afa2b0285fe741241183ed99712a132953a30
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452536"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220125"
 ---
 # <a name="secure-a-linked-service-with-private-links"></a>Bağlı bir hizmetin özel bağlantılarla güvenliğini sağlama
 
 Bu makalede, SYNAPSE ' de bir özel uç nokta ile bağlı bir hizmetin nasıl güvenliğini sağlayacağınızı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
-* **Azure depolama hesabı**: Azure Data Lake Gen 2 ' nı *kaynak* veri deposu olarak kullanırsınız. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Azure depolama hesabı oluşturma](../../storage/blobs/data-lake-storage-quickstart-create-account.md) . Depolama hesabının buna erişmek için SYNAPSE Studio IP filtrelemesine sahip olduğundan ve yalnızca **Seçili ağların** depolama hesabına erişmesine izin verdiğinizden emin olun. Dikey pencere **güvenlik duvarları ve sanal ağlar** altındaki ayar aşağıdaki resim gibi görünmelidir.
+* **Azure depolama hesabı**: Azure Data Lake Gen 2 ' nı *kaynak* veri deposu olarak kullanırsınız. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Azure depolama hesabı oluşturma](../../storage/common/storage-account-create.md) . Depolama hesabının buna erişmek için SYNAPSE Studio IP filtrelemesine sahip olduğundan ve yalnızca **Seçili ağların** depolama hesabına erişmesine izin verdiğinizden emin olun. Dikey pencere **güvenlik duvarları ve sanal ağlar** altındaki ayar aşağıdaki resim gibi görünmelidir.
 
 ![Güvenli depolama hesabı](./media/secure-storage-account.png)
 

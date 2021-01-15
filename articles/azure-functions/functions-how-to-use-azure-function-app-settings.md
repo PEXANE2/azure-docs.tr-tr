@@ -5,12 +5,12 @@ ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: 2526fd60d6e07ecf43864945f2b05858b41ca567
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 70aecc2613fbe21d34e36f9487d7ba383e140bc8
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035215"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217371"
 ---
 # <a name="manage-your-function-app"></a>İşlev uygulamanızı yönetme 
 
@@ -19,11 +19,6 @@ Azure Işlevlerinde bir işlev uygulaması, bireysel işlevleriniz için yürüt
 Bir işlev uygulamasındaki tek işlevler birlikte dağıtılır ve birlikte ölçeklendirilir. İşlev uygulaması ölçeklenirken, aynı işlev uygulamasındaki tüm işlevler, örnek başına kaynakları paylaşır. 
 
 Bağlantı dizeleri, ortam değişkenleri ve diğer uygulama ayarları her bir işlev uygulaması için ayrı olarak tanımlanır. İşlev uygulamaları arasında paylaşılması gereken tüm veriler, kalıcı bir mağazada dışarıdan depolanmalıdır.
-
-Bu makalede, işlev uygulamalarınızın nasıl yapılandırılacağı ve yönetileceği açıklanmaktadır. 
-
-> [!TIP]  
-> Birçok yapılandırma seçeneği de [Azure CLI]kullanılarak yönetilebilir. 
 
 ## <a name="get-started-in-the-azure-portal"></a>Azure portalında kullanmaya başlama
 
@@ -37,15 +32,17 @@ Bu makalede, işlev uygulamalarınızın nasıl yapılandırılacağı ve yönet
 
 ## <a name="work-with-application-settings"></a><a name="settings"></a>Uygulama ayarlarıyla çalışma
 
-**Uygulama ayarları** sekmesi, işlev uygulamanız tarafından kullanılan ayarları korur. Bu ayarlar şifreli olarak depolanır ve portalda değerleri görmek için **değerleri göster** ' i seçmeniz gerekir. Ayrıca, Azure CLı kullanarak uygulama ayarlarına erişebilirsiniz.
+Uygulama ayarları [Azure Portal](functions-how-to-use-azure-function-app-settings.md?tabs=portal#settings) ve [Azure CLI](functions-how-to-use-azure-function-app-settings.md?tabs=azurecli#settings) ve [Azure PowerShell](functions-how-to-use-azure-function-app-settings.md?tabs=powershell#settings)kullanılarak yönetilebilir. Uygulama ayarlarını, [Visual Studio Code](functions-develop-vs-code.md#application-settings-in-azure) ve [Visual Studio](functions-develop-vs.md#function-app-settings)'dan da yönetebilirsiniz. 
 
-### <a name="portal"></a>Portal
+Bu ayarlar şifreli olarak depolanır. Daha fazla bilgi için bkz. [uygulama ayarları güvenliği](security-concepts.md#application-settings).
 
-Portalda bir ayar eklemek için **Yeni uygulama ayarı** ' nı seçin ve yeni anahtar-değer çiftini ekleyin.
+# <a name="portal"></a>[Portal](#tab/portal)
+
+**Uygulama ayarları** sekmesi, işlev uygulamanız tarafından kullanılan ayarları korur. Portalda değerleri görmek için **değerleri göster** ' i seçmelisiniz. Portalda bir ayar eklemek için **Yeni uygulama ayarı** ' nı seçin ve yeni anahtar-değer çiftini ekleyin.
 
 ![Azure portal işlev uygulaması ayarları.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
 
-### <a name="azure-cli"></a>Azure CLI
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
 [`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-list)Komut, aşağıdaki örnekte olduğu gibi var olan uygulama ayarlarını döndürür:
 
@@ -62,6 +59,22 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 --resource-group <RESOURCE_GROUP_NAME> \
 --settings CUSTOM_FUNCTION_APP_SETTING=12345
 ```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+[`Get-AzFunctionAppSetting`](/powershell/module/az.functions/get-azfunctionappsetting)Cmdlet 'i, aşağıdaki örnekte olduğu gibi var olan uygulama ayarlarını döndürür: 
+
+```azurepowershell-interactive
+Get-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOURCE_GROUP_NAME>
+```
+
+[`Update-AzFunctionAppSetting`](/powershell/module/az.functions/update-azfunctionappsetting)Komut bir uygulama ayarı ekler veya güncelleştirir. Aşağıdaki örnek, adında bir anahtar ve değeri olan bir ayar oluşturur `CUSTOM_FUNCTION_APP_SETTING` `12345` :
+
+```azurepowershell-interactive
+Update-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOURCE_GROUP_NAME> -AppSetting @{"CUSTOM_FUNCTION_APP_SETTING" = "12345"}
+```
+
+---
 
 ### <a name="use-application-settings"></a>Uygulama ayarlarını kullanma
 
@@ -199,4 +212,4 @@ az functionapp cors add --name <FUNCTION_APP_NAME> \
 + [Azure Işlevleri için sürekli dağıtım](functions-continuous-deployment.md)
 
 [Azure CLI]: /cli/azure/
-[Azure Portal]: https://portal.azure.com
+[Azure portalı]: https://portal.azure.com

@@ -8,20 +8,20 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 699a7321646167b0a9fb20a77a40999ec33b14f0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9782cce4165487b612c0295dc893d120ed043225
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461336"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218272"
 ---
 # <a name="connect-to-your-azure-synapse-workspace-using-private-links"></a>Özel bağlantıları kullanarak Azure Synapse çalışma alanınıza bağlanma
 
-Bu makale, Azure SYNAPSE çalışma alanınızda özel bir uç nokta oluşturmayı öğretir. Daha fazla bilgi için bkz. [özel bağlantılar ve özel uç noktalar](https://docs.microsoft.com/azure/private-link/) .
+Bu makale, Azure SYNAPSE çalışma alanınızda özel bir uç nokta oluşturmayı öğretir. Daha fazla bilgi için bkz. [özel bağlantılar ve özel uç noktalar](../../private-link/index.yml) .
 
 ## <a name="step-1-register-network-resource-provider"></a>1. Adım: ağ kaynak sağlayıcısını kaydetme
 
-Daha önce yapmadıysanız, ağ kaynak sağlayıcısını kaydedin. Kaynak sağlayıcısı kaydı, aboneliğinizi kaynak sağlayıcısıyla çalışacak şekilde yapılandırır. [Kayıt](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)sırasında kaynak sağlayıcıları listesinden *Microsoft. Network* ' ü seçin. Ağ kaynak sağlayıcısı zaten kaydedilmişse adım 2 ' ye ilerleyin.
+Daha önce yapmadıysanız, ağ kaynak sağlayıcısını kaydedin. Kaynak sağlayıcısı kaydı, aboneliğinizi kaynak sağlayıcısıyla çalışacak şekilde yapılandırır. [Kayıt](../../azure-resource-manager/management/resource-providers-and-types.md)sırasında kaynak sağlayıcıları listesinden *Microsoft. Network* ' ü seçin. Ağ kaynak sağlayıcısı zaten kaydedilmişse adım 2 ' ye ilerleyin.
 
 ## <a name="step-2-open-your-azure-synapse-workspace-in-azure-portal"></a>2. Adım: Azure SYNAPSE çalışma alanınızı Azure portal açın
 

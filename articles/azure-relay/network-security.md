@@ -3,17 +3,17 @@ title: Azure Relay için ağ güvenliği
 description: Bu makalede IP Güvenlik Duvarı kurallarının ve özel uç noktaların Azure Relay ile nasıl kullanılacağı açıklanır.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 608224f42fac8cd2d8ff06ab84989b1f675d418c
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 735a0b7dc303ad63cb301151e3e14e4488c856b1
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134475"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217252"
 ---
 # <a name="network-security-for-azure-relay"></a>Azure Relay için ağ güvenliği 
 Bu makalede, Azure Relay ile aşağıdaki güvenlik özelliklerinin nasıl kullanılacağı açıklanmaktadır: 
 
-- IP güvenlik duvarı kuralları (Önizleme)
+- IP güvenlik duvarı kuralları
 - Özel uç noktalar 
 
 > [!NOTE]
@@ -28,9 +28,6 @@ Bu özellik, Azure Relay yalnızca belirli bilinen sitelerden erişilebilir olma
 IP güvenlik duvarı kuralları, geçiş ad alanı düzeyinde uygulanır. Bu nedenle, kurallar desteklenen herhangi bir protokolü kullanarak istemcilerden gelen tüm bağlantılara uygulanır. Geçiş ad alanındaki izin verilen bir IP kuralıyla eşleşmeyen bir IP adresinden gelen bağlantı girişimleri yetkisiz olarak reddedilir. Yanıt, IP kuralından bahsetmiyor. IP filtresi kuralları sırasıyla uygulanır ve IP adresiyle eşleşen ilk kural kabul etme veya reddetme eylemini belirler.
 
 Daha fazla bilgi için bkz. [bir geçiş ad alanı IÇIN IP güvenlik duvarını yapılandırma](ip-firewall-virtual-networks.md)
-
-> [!NOTE]
-> Bu özellik şu anda **Önizleme** aşamasındadır. 
 
 ## <a name="private-endpoints"></a>Özel uç noktalar
 

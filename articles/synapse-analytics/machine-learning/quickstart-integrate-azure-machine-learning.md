@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: a5d84b936679cdd5ebd5bec4938d6db7fcb641e7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 800cbf9b7a7fa415452f29b253347188c8917c52
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455511"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219462"
 ---
 # <a name="quickstart-create-a-new-azure-machine-learning-linked-service-in-synapse"></a>Hızlı başlangıç: SYNAPSE 'de yeni Azure Machine Learning bağlantılı hizmet oluşturma
 
@@ -22,15 +22,15 @@ Bu hızlı başlangıçta, bir Azure SYNAPSE Analytics çalışma alanını Azur
 
 Örneğin, bu Azure Machine Learning çalışma alanına bağlama Bu deneyimlere olanak sağlar:
 
-- Azure Machine Learning işlem hatlarınızı SYNAPSE işlem hatlarınız içinde bir adım olarak çalıştırın. Daha fazla bilgi için bkz. [Azure Machine Learning işlem hatlarını yürütme](/azure/data-factory/transform-data-machine-learning-service).
+- Azure Machine Learning işlem hatlarınızı SYNAPSE işlem hatlarınız içinde bir adım olarak çalıştırın. Daha fazla bilgi için bkz. [Azure Machine Learning işlem hatlarını yürütme](../../data-factory/transform-data-machine-learning-service.md).
 
 - Azure Machine Learning modeli kayıt defterinden bir makine öğrenimi modeli gerçekleştirerek ve SYNAPSE SQL havuzlarında modeli puanlayarak tahminlerle verilerinizi zenginleştirin. Daha ayrıntılı bilgi için bkz. [öğretici: SYNAPSE SQL havuzları Için makine öğrenimi modeli Puanlama Sihirbazı](tutorial-sql-pool-model-scoring-wizard.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/).
 - Varsayılan depolama alanı olarak yapılandırılmış bir ADLS 2. depolama hesabıyla [SYNAPSE Analytics çalışma alanı](../get-started-create-workspace.md) . Birlikte çalıştığınız ADLS 2. FileSystem 'ın **Depolama Blobu veri katılımcısı** olması gerekir.
-- [Azure Machine Learning çalışma alanı](/azure/machine-learning/how-to-manage-workspace).
+- [Azure Machine Learning çalışma alanı](../../machine-learning/how-to-manage-workspace.md).
 - Bağlı hizmeti oluşturmak için kullanabileceğiniz, bir hizmet sorumlusu ve gizli dizi oluşturmak için izinlere (veya izinleri olan birisinden gelen istek) ihtiyacınız vardır. Bu hizmet sorumlusunun Azure Machine Learning Çalışma Alanı katkıda bulunan rolüne atanması gerektiğini unutmayın.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
@@ -46,7 +46,7 @@ Bu adım, yeni bir hizmet sorumlusu oluşturacak. Mevcut bir hizmet sorumlusunu 
 
 1. **Yeni kayıt**’a tıklayın. Ardından, yeni bir uygulama kaydetmek için Kullanıcı arabirimindeki yönergeleri izleyin.
 
-1. Uygulama kaydedildikten sonra. Uygulama için bir gizli dizi oluşturun. Gizli dizi **Your application**  ->  **& uygulama sertifikanıza** gidin. Gizli dizi oluşturmak için **istemci parolası Ekle** ' ye tıklayın. Gizli anahtarı güvende tutun ve daha sonra kullanılacaktır.
+1. Uygulama kaydedildikten sonra. Uygulama için bir gizli dizi oluşturun. Gizli dizi   ->  **& uygulama sertifikanıza** gidin. Gizli dizi oluşturmak için **istemci parolası Ekle** ' ye tıklayın. Gizli anahtarı güvende tutun ve daha sonra kullanılacaktır.
 
    ![Gizli dizi oluştur](media/quickstart-integrate-azure-machine-learning/quickstart-integrate-azure-machine-learning-createsp-00a.png)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 27372207df66b4198bd9c785ecc099fa88cbe548
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: b974af343907c98ebd7a318bc60a0e553a07a233
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335713"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219360"
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>Sorun giderme: Azure 'da bir sanal ağ silinemedi
 
@@ -64,15 +64,15 @@ Bir uygulama ağ geçidi varsa, sanal ağı silebilmeniz için önce onu kaldır
 ### <a name="check-whether-azure-container-instances-still-exist-in-the-virtual-network"></a>Azure Container Instances 'ın sanal ağda hala mevcut olup olmadığını denetleyin
 
 1. Azure portal, kaynak grubunun **genel bakış** sayfasına gidin.
-1. Kaynak grubunun kaynakları listesinin üst bilgisinde **gizli türleri göster** ' i seçin. Ağ profili türü, varsayılan olarak Azure portal gizlidir.
+1. Kaynak grubundaki kaynakların listesinin üst bilgisinde **Gizli türleri göster**’i seçin. Ağ profili türü, varsayılan olarak Azure portal gizlidir.
 1. Kapsayıcı gruplarıyla ilgili ağ profilini seçin.
-1. **Sil** ’i seçin.
+1. **Sil**’i seçin.
 
    ![Gizli ağ profillerinin listesinin ekran görüntüsü.](media/virtual-network-troubleshoot-cannot-delete-vnet/container-instances.png)
 
-1. Alt ağı veya sanal ağı yeniden silin.
+1. Alt ağı ve sanal ağı yeniden silin.
 
-Bu adımlar sorunu çözmezse, kaynakları temizlemek için bu [Azure CLI komutlarını](https://docs.microsoft.com/azure/container-instances/container-instances-vnet#clean-up-resources) kullanın. 
+Bu adımlar sorunu çözmezse, kaynakları temizlemek için bu [Azure CLI komutlarını](../container-instances/container-instances-vnet.md#clean-up-resources) kullanın. 
 
 ### <a name="check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network"></a>Sanal ağda Azure Active Directory etki alanı hizmetinin etkin olup olmadığını denetleyin
 
@@ -108,5 +108,5 @@ Move-AzureVirtualNetwork -VirtualNetworkName "Name" -Abort
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Sanal Ağ](virtual-networks-overview.md)
+- [Azure sanal ağı](virtual-networks-overview.md)
 - [Azure Sanal Ağ hakkında sık sorulan sorular (SSS)](virtual-networks-faq.md)

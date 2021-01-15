@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) kümesinde otomatik TLS sertifikası
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 3cf7b069d6f010a4461b22c5326589ad3ec31204
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 0b0e26262f75ba8030188a2bffbce8282b38bca8
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186269"
+ms.locfileid: "98219649"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) üzerinde bir HTTPS giriş denetleyicisi oluşturma
 
@@ -262,7 +262,7 @@ kubectl apply -f aks-helloworld-two.yaml --namespace ingress-basic
 
 Her iki uygulama da artık Kubernetes kümenizde çalışıyor. Ancak bunlar türünde bir hizmetle yapılandırılır `ClusterIP` ve internet 'ten erişilemez. Bunları herkese açık hale getirmek için bir Kubernetes giriş kaynağı oluşturun. Giriş kaynağı, trafiği iki uygulamadan birine yönlendiren kuralları yapılandırır.
 
-Aşağıdaki örnekte, *Hello-World-ınress adresine giden trafik. MY_CUSTOM_DOMAIN* *aks-HelloWorld* hizmetine yönlendirilir. *Hello-World-ınress adresine giden trafik. MY_CUSTOM_DOMAIN/Hello-World-Two* , *aks-HelloWorld-Two* Service 'e yönlendirilir. *Hello-World-ınress için trafik. MY_CUSTOM_DOMAIN/static* , statik varlıklar için *aks-HelloWorld* adlı hizmete yönlendirilir.
+Aşağıdaki örnekte, *Hello-World-ınress adresine giden trafik. MY_CUSTOM_DOMAIN* *aks-HelloWorld-One* hizmetine yönlendirilir. *Hello-World-ınress adresine giden trafik. MY_CUSTOM_DOMAIN/Hello-World-Two* , *aks-HelloWorld-Two* Service 'e yönlendirilir. *Hello-World-ınress için trafik. MY_CUSTOM_DOMAIN/static* , statik varlıklar için *aks-HelloWorld-One* adlı hizmete yönlendirilir.
 
 > [!NOTE]
 > Özel bir etki alanı yerine giriş denetleyicisi IP adresi için bir FQDN yapılandırdıysanız, *Hello-World-giriş yerine FQDN 'yi kullanın. MY_CUSTOM_DOMAIN*. Örneğin, FQDN 'niz *demo-aks-ingress.eastus.cloudapp.Azure.com* ise, *Hello-i-ınress ' ı değiştirin.* *Demo-aks-ingress.eastus.cloudapp.azure.com* ile MY_CUSTOM_DOMAIN `hello-world-ingress.yaml` .

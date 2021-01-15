@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 06/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 43e4027c9d88b209ed0606e045dd5b4d47d3ff6e
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: a35cdebe5ff4db562b19dc4ceed069a831af4305
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088525"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220006"
 ---
 # <a name="analyze-complex-data-types-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te karmaşık veri türlerini çözümleme
 
@@ -28,7 +28,7 @@ Veri mühendislerinin karmaşık veri türlerini verimli bir şekilde nasıl iş
 
 ## <a name="what-are-arrays-and-nested-structures"></a>Diziler ve iç içe yerleştirilmiş yapılar nelerdir?
 
-Aşağıdaki nesne [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)gelir. Bu nesnede, iç içe yapılar içeren iç içe yapılar ve diziler vardır.
+Aşağıdaki nesne [Application Insights](../azure-monitor/app/app-insights-overview.md)gelir. Bu nesnede, iç içe yapılar içeren iç içe yapılar ve diziler vardır.
 
 ```json
 {
@@ -68,7 +68,7 @@ Aşağıdaki nesne [Application Insights](https://docs.microsoft.com/azure/azure
 ```
 
 ### <a name="schema-example-of-arrays-and-nested-structures"></a>Diziler ve iç içe yapılar için şema örneği
-Komutuyla nesnenin veri çerçevesinin ( **df**olarak adlandırılır) şemasını yazdırırken `df.printschema` aşağıdaki gösterimi görürsünüz:
+Komutuyla nesnenin veri çerçevesinin ( **df** olarak adlandırılır) şemasını yazdırırken `df.printschema` aşağıdaki gösterimi görürsünüz:
 
 * Sarı iç içe yapıları temsil eder.
 * Yeşil iki öğe içeren bir diziyi temsil eder.
@@ -221,4 +221,4 @@ with ( ProfileType varchar(50) '$.customerInfo.ProfileType',
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Spark ile Azure Cosmos DB için SYNAPSE bağlantısını sorgulama hakkında bilgi edinin](./synapse-link/how-to-query-analytical-store-spark.md)
-* [Parquet iç içe türlerini sorgulama](./sql/query-parquet-nested-types.md) 
+* [Parquet iç içe türlerini sorgulama](./sql/query-parquet-nested-types.md)

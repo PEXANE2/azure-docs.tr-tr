@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 7d937542201792c0d1c0be69df9bd1c2b34edea3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 93feaef01b234eeb7ac363c18d8e9d8f52b009de
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004951"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216538"
 ---
 # <a name="virtual-network-service-endpoints"></a>Sanal Ağ hizmet uç noktaları
 
@@ -33,14 +33,14 @@ Bu özellik aşağıdaki Azure hizmetleri ve bölgeleri için kullanılabilir. *
 - **[Azure SYNAPSE Analytics](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): tüm Azure bölgelerinde genel kullanıma sunulmuştur.
 - **[PostgreSQL Için Azure veritabanı sunucusu](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): veritabanı hizmetinin kullanılabildiği Azure bölgelerinde genel kullanıma sunulmuştur.
 - **[MySQL Için Azure veritabanı sunucusu](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. SQL*): veritabanı hizmetinin kullanılabildiği Azure bölgelerinde genel kullanıma sunulmuştur.
-- **[MariaDB Için Azure veritabanı](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)** (*Microsoft. SQL*): veritabanı hizmetinin kullanılabildiği Azure bölgelerinde genel kullanıma sunulmuştur.
-- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. Azu, smosdb*): tüm Azure bölgelerinde genel olarak kullanılabilir.
+- **[MariaDB Için Azure veritabanı](../mariadb/concepts-data-access-security-vnet.md)** (*Microsoft. SQL*): veritabanı hizmetinin kullanılabildiği Azure bölgelerinde genel kullanıma sunulmuştur.
+- **[Azure Cosmos DB](../cosmos-db/how-to-configure-vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. Azu, smosdb*): tüm Azure bölgelerinde genel olarak kullanılabilir.
 - **[Azure Key Vault](../key-vault/general/overview-vnet-service-endpoints.md)** (*Microsoft. keykasası*): tüm Azure bölgelerinde genel kullanıma sunulmuştur.
 - **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. ServiceBus*): tüm Azure bölgelerinde genel olarak kullanılabilir.
 - **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. EventHub*): tüm Azure bölgelerinde genel olarak kullanılabilir.
 - **[Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft. AzureActiveDirectory*): tüm Azure bölgelerinde genel olarak kullanılabilir ADLS 1..
-- **[Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)** (*Microsoft. Web*): App Service 'in kullanılabildiği tüm Azure bölgelerinde genel kullanıma sunulmuştur.
-- **[Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)** bilişsel hizmetler (*Microsoft. Biliveservices*): bilişsel hizmetler 'in kullanılabildiği tüm Azure bölgelerinde genel kullanıma sunulmuştur.
+- **[Azure App Service](../app-service/app-service-ip-restrictions.md)** (*Microsoft. Web*): App Service 'in kullanılabildiği tüm Azure bölgelerinde genel kullanıma sunulmuştur.
+- **[Azure](../cognitive-services/cognitive-services-virtual-networks.md?tabs=portal)** bilişsel hizmetler (*Microsoft. Biliveservices*): bilişsel hizmetler 'in kullanılabildiği tüm Azure bölgelerinde genel kullanıma sunulmuştur.
 
 **Genel Önizleme**
 
@@ -98,7 +98,7 @@ Hizmet uç noktaları aşağıdaki avantajları sağlar:
 
 - Hizmet uç noktasına sahip ağ güvenlik grupları (NSG):
   - Varsayılan olarak, NSG 'ler giden internet trafiğine izin verir ve sanal ağınızdan Azure hizmetlerine giden trafiğe de izin verir. Bu trafik, hizmet uç noktaları olduğu gibi çalışmaya devam eder. 
-  - Tüm giden internet trafiğini reddetmek ve yalnızca belirli Azure hizmetlerine giden trafiğe izin vermek istiyorsanız, NSG 'lerinizin [hizmet etiketlerini](security-overview.md#service-tags) kullanarak bunu yapabilirsiniz. Desteklenen Azure hizmetlerini NSG kurallarınızın hedefi olarak belirtebilirsiniz ve Azure, her bir etiketin temelindeki IP adreslerinin bakımını de sağlar. Daha fazla bilgi için bkz. [NSG'ler için Azure Hizmet etiketleri.](security-overview.md#service-tags) 
+  - Tüm giden internet trafiğini reddetmek ve yalnızca belirli Azure hizmetlerine giden trafiğe izin vermek istiyorsanız, NSG 'lerinizin [hizmet etiketlerini](./network-security-groups-overview.md#service-tags) kullanarak bunu yapabilirsiniz. Desteklenen Azure hizmetlerini NSG kurallarınızın hedefi olarak belirtebilirsiniz ve Azure, her bir etiketin temelindeki IP adreslerinin bakımını de sağlar. Daha fazla bilgi için bkz. [NSG'ler için Azure Hizmet etiketleri.](./network-security-groups-overview.md#service-tags) 
 
 ### <a name="scenarios"></a>Senaryolar
 
@@ -138,11 +138,11 @@ Azure depolama hesapları gibi belirli Azure Hizmetleri, kaynağın güvenliğin
 
 ## <a name="vnet-service-endpoint-policies"></a>VNet hizmeti uç noktası ilkeleri 
 
-VNet hizmet uç noktası ilkeleri, sanal ağ trafiğini Azure hizmetlerine filtrelemenizi sağlar. Bu filtre, hizmet uç noktaları üzerinden yalnızca belirli Azure hizmet kaynaklarına izin verir. Hizmet uç noktası ilkeleri, Azure hizmetlerine yönelik sanal ağ trafiği için ayrıntılı erişim denetimi sağlar. Daha fazla bilgi için bkz. [sanal ağ hizmeti uç noktası ilkeleri](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview).
+VNet hizmet uç noktası ilkeleri, sanal ağ trafiğini Azure hizmetlerine filtrelemenizi sağlar. Bu filtre, hizmet uç noktaları üzerinden yalnızca belirli Azure hizmet kaynaklarına izin verir. Hizmet uç noktası ilkeleri, Azure hizmetlerine yönelik sanal ağ trafiği için ayrıntılı erişim denetimi sağlar. Daha fazla bilgi için bkz. [sanal ağ hizmeti uç noktası ilkeleri](./virtual-network-service-endpoint-policies-overview.md).
 
 ## <a name="faqs"></a>SSS
 
-SSS için bkz. [sanal ağ hizmeti uç noktası SSS](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#virtual-network-service-endpoints).
+SSS için bkz. [sanal ağ hizmeti uç noktası SSS](./virtual-networks-faq.md#virtual-network-service-endpoints).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -151,5 +151,5 @@ SSS için bkz. [sanal ağ hizmeti uç noktası SSS](https://docs.microsoft.com/a
 - [Azure SQL veritabanını bir sanal ağ ile güvenli hale getirme](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Bir Azure SYNAPSE analizinin bir sanal ağ ile güvenliğini sağlama](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
 - [Sanal ağlarda Azure hizmet tümleştirmesi](virtual-network-for-azure-services.md)
-- [Sanal ağ hizmeti uç noktası Ilkeleri](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
+- [Sanal ağ hizmeti uç noktası Ilkeleri](./virtual-network-service-endpoint-policies-overview.md)
 - [Azure Resource Manager şablonu](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)

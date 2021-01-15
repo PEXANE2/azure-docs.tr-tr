@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
-ms.openlocfilehash: 13535a82f8aca741a1e25755e5a2d971ce45514e
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 9766379807e6d2708fd6935dd2ffbd7660f9988f
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739306"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216657"
 ---
 # <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Azure Depolama için sanal ağ hizmet uç noktası ilkeleri
 
@@ -32,7 +32,7 @@ Sanal ağ hizmet uç noktası ilkeleri aşağıdaki avantajları sağlar:
 
 - __Azure depolama 'ya yönelik sanal ağ trafiğiniz için geliştirilmiş güvenlik__
 
-  [Ağ güvenlik grupları Için Azure hizmet etiketleri](https://aka.ms/servicetags) , sanal ağ giden trafiği belirli Azure depolama bölgeleriyle sınırlamanıza izin verir. Ancak, bu, seçili Azure depolama bölgesi içindeki herhangi bir hesaba giden trafiğe izin verir.
+  [Ağ güvenlik grupları Için Azure hizmet etiketleri](./network-security-groups-overview.md) , sanal ağ giden trafiği belirli Azure depolama bölgeleriyle sınırlamanıza izin verir. Ancak, bu, seçili Azure depolama bölgesi içindeki herhangi bir hesaba giden trafiğe izin verir.
   
   Uç nokta ilkeleri, sanal ağ giden erişimine izin verilen Azure depolama hesaplarını belirtmenizi sağlar ve diğer tüm depolama hesaplarına erişimi kısıtlar. Bu, sanal ağınızdan veri alımını korumak için çok daha ayrıntılı güvenlik denetimi sağlar.
 

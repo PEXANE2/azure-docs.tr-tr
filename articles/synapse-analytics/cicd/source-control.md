@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 2f1fe7c25327e8ecab9b450cab167391d8949b0a
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 1f1a74f3a26a079039e68eb8e59fac4c18ff0c32
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008173"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219751"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Azure SYNAPSE Studio 'da kaynak denetimi
 
@@ -77,7 +77,7 @@ Ayrıca, bağlanmak istediğiniz git deposuna hızlıca işaret etmek için depo
 
 ### <a name="use-a-different-azure-active-directory-tenant"></a>Farklı bir Azure Active Directory kiracı kullanın
 
-Azure Repos git deposu, farklı bir Azure Active Directory kiracısında olabilir. Farklı bir Azure AD kiracısı belirtmek için kullandığınız Azure aboneliğinde yönetici izinlerine sahip olmanız gerekir. Daha fazla bilgi için bkz. [abonelik yöneticisini değiştirme](https://docs.microsoft.com/azure/cost-management-billing/manage/add-change-subscription-administrator#assign-a-subscription-administrator)
+Azure Repos git deposu, farklı bir Azure Active Directory kiracısında olabilir. Farklı bir Azure AD kiracısı belirtmek için kullandığınız Azure aboneliğinde yönetici izinlerine sahip olmanız gerekir. Daha fazla bilgi için bkz. [abonelik yöneticisini değiştirme](../../cost-management-billing/manage/add-change-subscription-administrator.md#assign-a-subscription-administrator)
 
 > [!IMPORTANT]
 > Başka bir Azure Active Directory bağlanmak için, oturum açmış olan kullanıcının bu Active Directory 'nin bir parçası olması gerekir. 
@@ -86,7 +86,7 @@ Azure Repos git deposu, farklı bir Azure Active Directory kiracısında olabili
 
 Git tümleştirmesi için kişisel Microsoft hesabı kullanmak istiyorsanız, kişisel Azure deponuzu kuruluşunuzun Active Directory bağlayabilirsiniz.
 
-1. Kişisel Microsoft hesabı kuruluşunuzun Active Directory Konuk olarak ekleyin. Daha fazla bilgi için, bkz. [Azure portal Azure ACTIVE DIRECTORY B2B işbirliği kullanıcıları ekleme](https://docs.microsoft.com/azure/active-directory/external-identities/add-users-administrator).
+1. Kişisel Microsoft hesabı kuruluşunuzun Active Directory Konuk olarak ekleyin. Daha fazla bilgi için, bkz. [Azure portal Azure ACTIVE DIRECTORY B2B işbirliği kullanıcıları ekleme](../../active-directory/external-identities/add-users-administrator.md).
 
 2. Kişisel Microsoft hesabı Azure portal oturum açın. Sonra kuruluşunuzun Active Directory geçin.
 

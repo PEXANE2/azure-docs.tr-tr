@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 08/25/2020
 ms.author: alehall
 ms.reviewer: jrasnick
-ms.openlocfilehash: 46ab1df1b776bf8dc9d6d917e5394c3efeec0de4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 2658240e670e617f7296881f733ff369b9bf8f87
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659395"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219054"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile Azure SYNAPSE çalışma alanı oluşturma
 
@@ -24,13 +24,13 @@ Bu hızlı başlangıçta, Azure CLı kullanarak bir Synapse çalışma alanı o
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Hafif ve esnek bir komut satırı JSON işlemcisi olan [JQ](https://stedolan.github.io/jq/download/)'yi indirin ve yükleyin
 - [Azure Data Lake Storage 2. depolama hesabı](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
     > [!IMPORTANT]
-    > Azure SYNAPSE çalışma alanının seçili ADLS 2. hesabını okuyup yazabilbilmesi gerekir. Bunlara ek olarak, birincil depolama hesabı olarak bağlanan herhangi bir depolama hesabı için depolama hesabı [oluşturma](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal#create-a-storage-account) bölümünde açıklandığı gibi depolama hesabı oluşturulurken **hiyerarşik ad alanını** etkinleştirmiş olmanız gerekir. 
+    > Azure SYNAPSE çalışma alanının seçili ADLS 2. hesabını okuyup yazabilbilmesi gerekir. Bunlara ek olarak, birincil depolama hesabı olarak bağlanan herhangi bir depolama hesabı için depolama hesabı [oluşturma](../storage/common/storage-account-create.md?tabs=azure-portal#create-a-storage-account) bölümünde açıklandığı gibi depolama hesabı oluşturulurken **hiyerarşik ad alanını** etkinleştirmiş olmanız gerekir. 
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
@@ -38,13 +38,13 @@ Bu hızlı başlangıçta, Azure CLı kullanarak bir Synapse çalışma alanı o
 
 1. Azure SYNAPSE çalışma alanı için kaynak oluşturmak üzere gerekli ortam değişkenlerini tanımlayın.
 
-    | Ortam Değişkeni Adı | Açıklama |
+    | Ortam Değişkeni Adı | Description |
     |---|---|---|
     |StorageAccountName| Mevcut ADLS 2. depolama hesabınızın adı.|
     |StorageAccountResourceGroup| Mevcut ADLS 2. depolama hesabı kaynak grubunuzun adı. |
     |FileShareName| Mevcut depolama dosya sisteminizin adı.|
     |SynapseResourceGroup| Azure SYNAPSE kaynak grubunuz için yeni bir ad seçin. |
-    |Region| [Azure bölgelerinden](https://azure.microsoft.com/global-infrastructure/geographies/#overview)birini seçin. |
+    |Bölge| [Azure bölgelerinden](https://azure.microsoft.com/global-infrastructure/geographies/#overview)birini seçin. |
     |SynapseWorkspaceName| Yeni Azure SYNAPSE çalışma alanınız için benzersiz bir ad seçin. |
     |SqlUser| Yeni Kullanıcı adı için bir değer seçin.|
     |SQLPassword de belirtilmelidir| Güvenli bir parola seçin.|

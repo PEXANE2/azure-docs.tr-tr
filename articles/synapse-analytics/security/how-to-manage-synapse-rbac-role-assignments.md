@@ -8,16 +8,16 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: f26b54a18ff137575cac208d70e4693c0b9914a8
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: c88371eb450d5b0e2e8b821cdec0e87190e291f8
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572295"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218205"
 ---
 # <a name="how-to-manage-synapse-rbac-role-assignments-in-synapse-studio"></a>SYNAPSE Studio 'da SYNAPSE RBAC rol atamalarını yönetme
 
-SYNAPSE RBAC, SYNAPSE kaynaklarının ve kod yapılarının erişimini ve kullanımını sağlamak üzere kullanıcılara, gruplara ve diğer güvenlik sorumlularına izinler atamak için roller kullanır.  [Daha fazla bilgi](./synapse-workspace-synapse-rbac.md)
+SYNAPSE RBAC, SYNAPSE kaynaklarının ve kod yapılarının erişimini ve kullanımını sağlamak üzere kullanıcılara, gruplara ve diğer güvenlik sorumlularına izinler atamak için roller kullanır.  [Daha fazla bilgi edinin](./synapse-workspace-synapse-rbac.md)
 
 Bu makale, SYNAPSE RBAC rol atamalarının nasıl ekleneceğini ve silineceğini gösterir.
 
@@ -65,7 +65,7 @@ Daha ayrıntılı bir kapsamda rol atamak için, kapsam olarak **çalışma alan
 
 ![Çalışma alanı öğesi rolü ataması ekleme-öğe türünü seçme](./media/how-to-manage-synapse-rbac-role-assignments/access-control-add-workspace-item-assignment-select-item-type.png) 
 
-Kapsam olarak kullanılacak özel **öğeyi** seçin ve ardından açılır listeden atanacak **rolü** seçin.  Açılan listede yalnızca seçili öğe türü için geçerli olan roller listelenir. [Daha fazla bilgi edinin](https://go.microsoft.com/fwlink/?linkid=2148306).  
+Kapsam olarak kullanılacak özel **öğeyi** seçin ve ardından açılır listeden atanacak **rolü** seçin.  Açılan listede yalnızca seçili öğe türü için geçerli olan roller listelenir. [Daha fazla bilgi edinin](./synapse-workspace-synapse-rbac.md).  
 
 ![Çalışma alanı öğesi rolü ataması ekleme-rol seçme](./media/how-to-manage-synapse-rbac-role-assignments/access-control-add-workspace-item-assignment-select-role.png) 
  
@@ -81,4 +81,4 @@ Rol atamalarındaki değişikliklerin etkili olması için 2-5 dakika olacağın
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Ortak görevleri gerçekleştirmek için gereken SYNAPSE RBAC rollerini anlayın](./synapse-workspace-understand-what-role-you-need.md) 
+[Ortak görevleri gerçekleştirmek için gereken SYNAPSE RBAC rollerini anlayın](./synapse-workspace-understand-what-role-you-need.md)

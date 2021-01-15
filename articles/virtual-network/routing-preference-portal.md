@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/02/2020
 ms.author: mnayak
-ms.openlocfilehash: ef1e33a2e43f26dcaf794b2ed81f27d39639b52d
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 2c6295db96f951abd1fd069535b98639e723d93a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533987"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217575"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-the-azure-portal"></a>Azure portal kullanarak genel IP adresi için yönlendirme tercihini yapılandırın
 
-Bu makalede genel bir IP adresi için ISS ağı (**Internet** seçeneği) aracılığıyla [yönlendirme tercihini](https://docs.microsoft.com/azure/virtual-network/routing-preference-overview) yapılandırma gösterilmektedir. Genel IP adresini oluşturduktan sonra, internet 'e gelen ve giden trafik için aşağıdaki Azure kaynaklarıyla ilişkilendirebilirsiniz:
+Bu makalede genel bir IP adresi için ISS ağı (**Internet** seçeneği) aracılığıyla [yönlendirme tercihini](./routing-preference-overview.md) yapılandırma gösterilmektedir. Genel IP adresini oluşturduktan sonra, internet 'e gelen ve giden trafik için aşağıdaki Azure kaynaklarıyla ilişkilendirebilirsiniz:
 
 * Sanal makine
 * Sanal makine ölçek kümesi
@@ -56,5 +56,5 @@ Yukarıdaki oluşturulmuş genel IP adresini bir [Windows](../virtual-machines/w
 - [Yönlendirme tercihi ile genel IP](routing-preference-overview.md)hakkında daha fazla bilgi edinin.
 - [BIR VM için yönlendirme tercihini yapılandırın](tutorial-routing-preference-virtual-machine-portal.md).
 - [PowerShell kullanarak genel IP adresi için yönlendirme tercihini yapılandırın](routing-preference-powershell.md).
-- Azure 'da [genel IP adresleri](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) hakkında daha fazla bilgi edinin.
+- Azure 'da [genel IP adresleri](./public-ip-addresses.md#public-ip-addresses) hakkında daha fazla bilgi edinin.
 - Tüm [genel IP adresi ayarları](virtual-network-public-ip-address.md#create-a-public-ip-address)hakkında daha fazla bilgi edinin.

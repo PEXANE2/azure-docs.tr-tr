@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: kumud
-ms.openlocfilehash: 61617777efa8241c93b2b5ffe42fc1d914b6ebcf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: feea2d54edd8a93e6e0effbef03389ef895d5ffb
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004985"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216759"
 ---
 # <a name="virtual-network-peering"></a>Sanal ağ eşleme
 
@@ -48,7 +48,7 @@ Aynı bölgede yer alan eşlenmiş sanal ağlardaki sanal makineler arasındaki 
 Eşlenmiş sanal ağlarda bulunan sanal makineler arasındaki trafik bir ağ geçidi veya genel İnternet üzerinden değil, doğrudan Microsoft omurga altyapısı aracılığıyla yönlendirilir.
 
 Diğer sanal ağlara veya alt ağlara erişimi engellemek için, her iki sanal ağ üzerinde ağ güvenlik grupları uygulayabilirsiniz.
-Sanal Ağ eşlemesini yapılandırırken, sanal ağlar arasındaki ağ güvenlik grubu kurallarını açın veya kapatın. Eşlenen sanal ağlar arasında tam bağlantı açarsanız, belirli erişimi engellemek veya reddetmek için ağ güvenlik grupları uygulayabilirsiniz. Tam bağlantı varsayılan seçenektir. Ağ güvenlik grupları hakkında daha fazla bilgi edinmek için bkz. [güvenlik grupları](security-overview.md).
+Sanal Ağ eşlemesini yapılandırırken, sanal ağlar arasındaki ağ güvenlik grubu kurallarını açın veya kapatın. Eşlenen sanal ağlar arasında tam bağlantı açarsanız, belirli erişimi engellemek veya reddetmek için ağ güvenlik grupları uygulayabilirsiniz. Tam bağlantı varsayılan seçenektir. Ağ güvenlik grupları hakkında daha fazla bilgi edinmek için bkz. [güvenlik grupları](./network-security-groups-overview.md).
 
 ## <a name="service-chaining"></a>Hizmet zinciri
 

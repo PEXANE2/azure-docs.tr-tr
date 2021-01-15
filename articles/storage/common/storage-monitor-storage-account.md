@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: bfecae4775655f732df8fd6cffea613cd39fb828
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e5495b466bf9b16319b788ec32c7b3a03100f505
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782017"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218151"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Azure portalında depolama hesabını izleme
 
@@ -32,9 +32,11 @@ ms.locfileid: "92782017"
 > Azure depolama ile ilgili sorunları tanımlamak, tanılamak ve sorunlarını gidermek için Depolama Analizi ve diğer araçları kullanma hakkında ayrıntılı bir kılavuz için bkz. [izleme, tanılama ve sorun giderme Microsoft Azure depolama](storage-monitoring-diagnosing-troubleshooting.md).
 >
 
+<a id="modify-retention-policy"></a>
+
 ## <a name="configure-monitoring-for-a-storage-account"></a>Depolama hesabı için izlemeyi yapılandırma
 
-1. [Azure Portal](https://portal.azure.com), **depolama hesapları** ' nı ve ardından depolama hesabı adını seçerek hesap panosunu açın.
+1. [Azure Portal](https://portal.azure.com), **depolama hesapları**' nı ve ardından depolama hesabı adını seçerek hesap panosunu açın.
 1. Menü dikey penceresinin **izleme** bölümünde **Tanılama** ' yı seçin.
 
     ![Izleme (klasik) bölümünde Tanılama ayarları (klasik) seçeneğini vurgulayan ekran görüntüsü.](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
@@ -49,7 +51,7 @@ ms.locfileid: "92782017"
    > Ölçüm verilerini el ile sildiğinizde ücretlendirilirsiniz. Eski analiz verileri (bekletme ilkenizden daha eski veriler) sistem tarafından ücretsiz olarak silinir. Hesabınız için depolama analizi verilerini ne kadar süreyle saklamak istediğinize bağlı olarak bir bekletme ilkesi ayarlamayı öneririz. Daha fazla bilgi için bkz. [depolama ölçümlerinde faturalandırma](storage-analytics-metrics.md#billing-on-storage-metrics) .
    >
 
-1. İzleme yapılandırmasını tamamladığınızda **Kaydet** ' i seçin.
+1. İzleme yapılandırmasını tamamladığınızda **Kaydet**' i seçin.
 
 Varsayılan ölçüm kümesi, depolama hesabı dikey penceresindeki grafiklerde ve tek tek hizmet Blade (blob, kuyruk, tablo ve dosya) ile birlikte görüntülenir. Bir hizmet için ölçümleri etkinleştirdikten sonra, verilerin grafiklerde görünmesi bir saate kadar sürebilir. Grafikte hangi ölçümlerin görüntülendiğini yapılandırmak için herhangi bir ölçüm grafiğinde **Düzenle** seçeneğini belirleyebilirsiniz.
 
@@ -75,7 +77,7 @@ Varsayılan ölçüm kümesi, depolama hesabı dikey penceresindeki grafiklerde 
 
    ![Grafik düzenleme dikey penceresinde zaman aralığı ve hizmet seçimi](./media/storage-monitor-storage-account/storage-edit-metric-time-range.png)
 
-1. Grafikte görüntülenmesini istediğiniz bireysel **ölçümleri** seçin ve ardından **Tamam** ' a tıklayın.
+1. Grafikte görüntülenmesini istediğiniz bireysel **ölçümleri** seçin ve ardından **Tamam**' a tıklayın.
 
    ![Grafik düzenleme dikey penceresinde bireysel ölçüm seçimi](./media/storage-monitor-storage-account/storage-edit-metric-selections.png)
 
@@ -112,9 +114,9 @@ Depolama kaynağı ölçümleri için eşiklere ulaşıldığında sizi bilgilen
 Portal panonuza herhangi bir depolama hesabınız için Azure depolama ölçümleri grafikleri ekleyebilirsiniz.
 
 1. Panonuzu [Azure Portal](https://portal.azure.com)görüntülerken **panoyu Düzenle** ' yi seçin.
-1. **Kutucuk galerisinde** , türe **göre kutucukları bul** ' u seçin  >  **Type** .
-1. **Tür**  >  **depolama hesapları** ' nı seçin.
-1. **Kaynaklar** ' da, ölçümlerini panoya eklemek istediğiniz depolama hesabını seçin.
+1. **Kutucuk galerisinde**, türe **göre kutucukları bul**' u seçin  >  .
+1. **Tür**  >  **depolama hesapları**' nı seçin.
+1. **Kaynaklar**' da, ölçümlerini panoya eklemek istediğiniz depolama hesabını seçin.
 1. **Kategori**  >  **izlemeyi** seçin.
 1. Görüntülenmesini istediğiniz ölçüm için grafik kutucuğunu panonuza sürükleyip bırakın. Panoda görüntülenmesini istediğiniz tüm ölçümler için tekrarlayın. Aşağıdaki görüntüde, "blob 'Lar-toplam istek" grafiği bir örnek olarak vurgulanır, ancak tüm grafikler panonuza yerleştirme için kullanılabilir.
 
@@ -131,7 +133,7 @@ Blob, tablo ve kuyruk Hizmetleri için okuma, yazma ve silme istekleri için Azu
 > Azure dosyaları şu anda Depolama Analizi ölçümleri destekler, ancak günlüğe kaydetmeyi henüz desteklememektedir.
 >
 
-1. [Azure Portal](https://portal.azure.com)depolama **hesapları** ' nı seçin ve depolama hesabı dikey penceresini açmak için depolama hesabı adı ' nı seçin.
+1. [Azure Portal](https://portal.azure.com)depolama **hesapları**' nı seçin ve depolama hesabı dikey penceresini açmak için depolama hesabı adı ' nı seçin.
 1. Menü dikey penceresinin **izleme (klasik)** bölümünde **Tanılama ayarları (klasik)** seçeneğini belirleyin.
 
     ![Azure portal Izleme altındaki tanılama menü öğesi.](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
@@ -139,7 +141,7 @@ Blob, tablo ve kuyruk Hizmetleri için okuma, yazma ve silme istekleri için Azu
 1. **Durumun** **Açık** olarak ayarlandığından emin olun ve günlük kaydını etkinleştirmek istediğiniz **Hizmetleri** seçin.
 
     ![Azure portal günlüğe kaydetmeyi yapılandırın.](./media/storage-monitor-storage-account/enable-diagnostics.png)
-1. **Kaydet** ’e tıklayın.
+1. **Kaydet**’e tıklayın.
 
 Tanılama günlükleri, depolama hesabınızda *$logs* adlı bir blob kapsayıcısına kaydedilir. Günlük verilerini, [Microsoft Azure Depolama Gezgini](https://storageexplorer.com)gibi bir Depolama Gezgini kullanarak veya depolama istemci kitaplığı ya da PowerShell kullanarak program aracılığıyla görüntüleyebilirsiniz.
 

@@ -8,25 +8,25 @@ ms.subservice: core
 ms.author: minxia
 author: mx-iao
 ms.reviewer: peterlu
-ms.date: 12/10/2020
+ms.date: 01/14/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: e3bf77406df302c4ba83cb7a8f1a30fba9f6339e
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 962054943a68aa61ac681de97eeebc10fe3f2b0a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795946"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216640"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>PyTorch modellerini Azure Machine Learning ölçeklendirerek eğitme
 
 Bu makalede, Azure Machine Learning kullanarak [Pytorch](https://pytorch.org/) eğitim betiklerinizi kurumsal ölçekte çalıştırmayı öğrenin.
 
-Bu makaledeki örnek betikler,, PyTorch 'ın aktarım öğrenimi [öğreticisini](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)temel alan derin bir öğrenme sinir ağı (DNN) oluşturmak üzere tavuk ve Türkiye görüntülerini sınıflandırmak için kullanılır. Aktarım öğrenimi, bir problemi farklı ancak ilgili bir soruna çözmeyle elde edilen bilgileri uygulayan bir tekniktir. Bu işlem, sıfırdan daha az veri, saat ve işlem kaynağı isteyerek eğitim sürecini kısayollar.
+Bu makaledeki örnek betikler,, PyTorch 'ın aktarım öğrenimi [öğreticisini](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)temel alan derin bir öğrenme sinir ağı (DNN) oluşturmak üzere tavuk ve Türkiye görüntülerini sınıflandırmak için kullanılır. Aktarım öğrenimi, bir problemi farklı ancak ilgili bir soruna çözmeyle elde edilen bilgileri uygulayan bir tekniktir. Bu işlem, sıfırdan daha az veri, saat ve işlem kaynağı isteyerek eğitim sürecini kısayollar. Aktarım öğrenimi hakkında daha fazla bilgi edinmek için [derin öğrenme vs Machine Learning](./concept-deep-learning-vs-machine-learning.md#what-is-transfer-learning) makalesine bakın.
 
 Derin bir öğrenme PyTorch modelini baştan sona eğiyor veya mevcut bir modeli buluta çıkarksanız, elastik bulut işlem kaynakları kullanarak açık kaynaklı eğitim işlerini ölçeklendirmek için Azure Machine Learning kullanabilirsiniz. Azure Machine Learning ile üretim sınıfı modellerini oluşturabilir, dağıtabilir, sürüm ve izleyebilirsiniz. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu kodu şu ortamlardan birinde çalıştırın:
 

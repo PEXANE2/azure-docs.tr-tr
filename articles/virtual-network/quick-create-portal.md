@@ -11,18 +11,18 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/05/2020
 ms.author: kumud
-ms.openlocfilehash: dfeb9c6bc3dbe33881fc51ccb08a776b827dfe9c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: cc3ba3a0519400368e0cbfec7abe2d9bd1731b34
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86082446"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217643"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>Hızlı başlangıç: Azure portalını kullanarak bir sanal ağ oluşturma
 
 Bu hızlı başlangıçta, Azure portal kullanarak bir sanal ağ oluşturmayı öğreneceksiniz. İki sanal makine (VM) dağıtırsınız. Daha sonra, VM 'Ler arasında güvenli bir şekilde iletişim kurabilir ve internet 'ten VM 'lere bağlanırsınız. Bir sanal ağ, Azure 'daki özel ağınız için temel yapı taşdır. VM 'Ler gibi Azure kaynaklarının birbirleriyle ve internet ile güvenli bir şekilde iletişim kurmasına olanak sağlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
@@ -39,13 +39,13 @@ Bu hızlı başlangıçta, Azure portal kullanarak bir sanal ağ oluşturmayı �
     | Ayar | Değer |
     | ------- | ----- |
     | Abonelik | Aboneliğinizi seçin.|
-    | Kaynak grubu | **Yeni oluştur**' u seçin, *myresourcegroup*yazın ve ardından **Tamam**' ı seçin. |
-    | Name | *MyVirtualNetwork*girin. |
+    | Kaynak grubu | **Yeni oluştur**' u seçin, *myresourcegroup* yazın ve ardından **Tamam**' ı seçin. |
+    | Name | *MyVirtualNetwork* girin. |
     | Konum | **Doğu ABD**’yi seçin.|
 
-1. Ileri ' yi seçin **: IP adresleri**ve **IPv4 adres alanı**için *10.1.0.0/16*girin.
+1. Ileri ' yi seçin **: IP adresleri** ve **IPv4 adres alanı** için *10.1.0.0/16* girin.
 
-1. Alt ağ **Ekle**' yi seçin, ardından alt ağ **adı** için *myvirtualsubnet* ve **alt ağ adres aralığı**için *10.1.0.0/24* girin.
+1. Alt ağ **Ekle**' yi seçin, ardından alt ağ **adı** için *myvirtualsubnet* ve **alt ağ adres aralığı** için *10.1.0.0/24* girin.
 
 1. **Ekle**' yi ve ardından **gözden geçir + oluştur**' u seçin. Rest 'i varsayılan olarak bırakın ve **Oluştur**' u seçin.
 
@@ -61,7 +61,7 @@ Sanal ağ üzerinde iki sanal makine oluşturun:
 
 1. Azure Marketi 'nde **işlem**  >  **Windows Server 2019 Datacenter**' u seçin. **Oluştur**’u seçin.
 
-1. **Sanal makine oluşturma-temel bilgiler**bölümünde, bu bilgileri girin veya seçin:
+1. **Sanal makine oluşturma-temel bilgiler** bölümünde, bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
@@ -69,11 +69,11 @@ Sanal ağ üzerinde iki sanal makine oluşturun:
     | Abonelik | Aboneliğinizi seçin. |
     | Kaynak grubu | **myResourceGroup** öğesini seçin. Bu kaynak grubunu önceki bölümde oluşturdunuz. |
     | **Örnek ayrıntıları** |  |
-    | Sanal makine adı | *MyVm1*girin. |
-    | Region | **Doğu ABD**’yi seçin. |
-    | Kullanılabilirlik seçenekleri | **Altyapı yedekliliği**için varsayılan değer gerekmez. |
+    | Sanal makine adı | *MyVm1* girin. |
+    | Bölge | **Doğu ABD**’yi seçin. |
+    | Kullanılabilirlik seçenekleri | **Altyapı yedekliliği** için varsayılan değer gerekmez. |
     | Görüntü | Varsayılan olarak **Windows Server 2019 Datacenter**. |
-    | Boyut | **Standart DS1 v2**için varsayılan. |
+    | Boyut | **Standart DS1 v2** için varsayılan. |
     | **Yönetici hesabı** |  |
     | Kullanıcı adı | Seçmekten bir Kullanıcı adı girin. |
     | Parola | Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)karşılamalıdır.|
@@ -88,7 +88,7 @@ Sanal ağ üzerinde iki sanal makine oluşturun:
 
 1. **Sanal makine oluşturma-diskler**' de, Varsayılanları tutun ve Ileri ' **yi seçin: ağ**.
 
-1. **Sanal makine oluşturma-ağ oluşturma**bölümünde şu bilgileri seçin:
+1. **Sanal makine oluşturma-ağ oluşturma** bölümünde şu bilgileri seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
@@ -96,18 +96,18 @@ Sanal ağ üzerinde iki sanal makine oluşturun:
     | Alt ağ | Varsayılan olarak **Myvirtualsubnet (10.1.0.0/24)**. |
     | Genel IP | Varsayılan değer **(yeni) myVm-ip**. |
     | NIC ağ güvenlik grubu | Varsayılan olarak **temel**. |
-    | Genel gelen bağlantı noktaları | **Seçili bağlantı noktalarına izin**vermek için varsayılan. |
+    | Genel gelen bağlantı noktaları | **Seçili bağlantı noktalarına izin** vermek için varsayılan. |
     | Gelen bağlantı noktalarını seçin | Varsayılan olarak **http** ve **RDP**.
 
 1. Ileri 'yi seçin **: yönetim**.
 
-1. **Sanal makine yönetimi oluştur**bölümünde, **Tanılama depolama hesabı**için **Yeni oluştur**' u seçin.
+1. **Sanal makine yönetimi oluştur** bölümünde, **Tanılama depolama hesabı** için **Yeni oluştur**' u seçin.
 
 1. **Depolama hesabı oluştur**' da bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Ad | *Myvmstorageaccount*girin. Bu ad alındıysanız, benzersiz bir ad oluşturun.|
+    | Ad | *Myvmstorageaccount* girin. Bu ad alındıysanız, benzersiz bir ad oluşturun.|
     | Hesap türü | Varsayılan **depolama alanı (genel amaçlı v1)**. |
     | Performans | Varsayılan değer **Standart**. |
     | Çoğaltma | Varsayılan **olarak yerel olarak yedekli depolama (LRS)**. |
@@ -121,15 +121,15 @@ Sanal ağ üzerinde iki sanal makine oluşturun:
 Başka bir sanal makine oluşturmak için önceki bölümde bulunan yordamı tekrarlayın.
 
 > [!IMPORTANT]
-> **Sanal makine adı**için *myVm2*girin.
+> **Sanal makine adı** için *myVm2* girin.
 >
-> **Tanılama depolama hesabı**için, bir tane oluşturmak yerine **myvmstorageaccount**' ı seçtiğinizden emin olun.
+> **Tanılama depolama hesabı** için, bir tane oluşturmak yerine **myvmstorageaccount**' ı seçtiğinizden emin olun.
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>İnternet'ten bir sanal makineye bağlanma
 
-*MyVm1*oluşturduktan sonra internet 'e bağlanın.
+*MyVm1* oluşturduktan sonra internet 'e bağlanın.
 
-1. Azure portal için arama yapın ve *myVm1*seçin.
+1. Azure portal için arama yapın ve *myVm1* seçin.
 
 1. **Bağlan**' ı ve ardından **RDP**' yi seçin.
 
@@ -144,7 +144,7 @@ Başka bir sanal makine oluşturmak için önceki bölümde bulunan yordamı tek
 1. VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
 
     > [!NOTE]
-    > **More choices**  >  VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için**farklı bir hesap kullan**' ı seçmeniz gerekebilir.
+    >   >  VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için **farklı bir hesap kullan**' ı seçmeniz gerekebilir.
 
 1. **Tamam**’ı seçin.
 
@@ -154,7 +154,7 @@ Başka bir sanal makine oluşturmak için önceki bölümde bulunan yordamı tek
 
 ## <a name="communicate-between-vms"></a>Sanal makineler arasında iletişim
 
-1. *MyVm1*uzak masaüstünde PowerShell ' i açın.
+1. *MyVm1* uzak masaüstünde PowerShell ' i açın.
 
 1. `ping myVm2` yazın.
 
@@ -202,7 +202,7 @@ Başka bir sanal makine oluşturmak için önceki bölümde bulunan yordamı tek
         Minimum = 0ms, Maximum = 1ms, Average = 0ms
     ```
 
-    Adım 3 ' teki *myVm1* VM 'de Windows Güvenlik DUVARı üzerinden ICMP 'ye Izin verildiğinden *myVm1*adresinden yanıt alırsınız.
+    Adım 3 ' teki *myVm1* VM 'de Windows Güvenlik DUVARı üzerinden ICMP 'ye Izin verildiğinden *myVm1* adresinden yanıt alırsınız.
 
 1. *myVm2* ile uzak masaüstü bağlantısını kapatın.
 
@@ -212,7 +212,7 @@ Bu hızlı başlangıçta, varsayılan bir sanal ağ ve iki sanal makine oluştu
 
 Sanal ağ ve VM 'Leri kullanarak işiniz bittiğinde, kaynak grubunu ve içerdiği tüm kaynakları silin:
 
-1. *Myresourcegroup*öğesini arayın ve seçin.
+1. *Myresourcegroup* öğesini arayın ve seçin.
 
 1. **Kaynak grubunu sil**'i seçin.
 
@@ -225,4 +225,4 @@ Sanal ağ ayarları hakkında daha fazla bilgi edinmek için bkz. [sanal ağ olu
 Azure, varsayılan olarak VM 'Ler arasında güvenli iletişim sağlar. Azure, yalnızca Internet 'ten gelen Windows VM 'lerine gelen Uzak Masaüstü bağlantılarına izin verir. VM ağı iletişimleri türleri hakkında daha fazla bilgi edinmek için bkz. [ağ trafiğini filtreleme](tutorial-filter-network-traffic.md).
 
 > [!NOTE] 
-> Azure hizmetleri maliyet parayı. Azure maliyet yönetimi, bütçeleri ayarlamanıza ve denetim altına harcamalarını sağlamak için uyarıları yapılandırmanıza yardımcı olur. Maliyet yönetimi ile Azure maliyetlerinizi çözümleyin, yönetin ve iyileştirin. Daha fazla bilgi edinmek için [maliyetlerinizi çözümlemeye yönelik hızlı başlangıç](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)bölümüne bakın.
+> Azure hizmetleri maliyet parayı. Azure maliyet yönetimi, bütçeleri ayarlamanıza ve denetim altına harcamalarını sağlamak için uyarıları yapılandırmanıza yardımcı olur. Maliyet yönetimi ile Azure maliyetlerinizi çözümleyin, yönetin ve iyileştirin. Daha fazla bilgi edinmek için [maliyetlerinizi çözümlemeye yönelik hızlı başlangıç](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)bölümüne bakın.

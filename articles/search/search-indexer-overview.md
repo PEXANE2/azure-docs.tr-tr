@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 0405db2b68abefbfdc424def9e35e363e45043cd
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 5861e79054bed0d9d75258dfa9cb39b198f0f93d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180141"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216453"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure Bilişsel Arama'daki Dizin Oluşturucular
 
 Azure Bilişsel Arama 'de bir *Dizin Oluşturucu* , bir dış Azure veri kaynağından aranabilir verileri ve meta verileri çıkaran ve kaynak verilerle dizininizdeki alanları alan eşlemelerini kullanarak bir arama dizinini dolduran bir gezgin. Bu yaklaşım bazen ' çekme modeli ' olarak adlandırılır, çünkü hizmet verileri bir dizine ekleyen herhangi bir kod yazmak zorunda kalmadan içine veri çeker.
 
-Dizin oluşturucular, Azure SQL, Azure Cosmos DB, Azure Tablo depolama ve BLOB depolama için bireysel dizin oluşturucular ile yalnızca Azure ' dir. Bir Dizin Oluşturucu yapılandırdığınızda, bir veri kaynağı (Origin) ve bir dizin (hedef) belirtirsiniz. BLOB depolama Dizin oluşturucular gibi çeşitli veri kaynakları, bu içerik türüne özgü ek özelliklere sahiptir.
+Dizin oluşturucular, Azure [SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [Azure Cosmos DB](search-howto-index-cosmosdb.md), [Azure Tablo depolama](search-howto-indexing-azure-tables.md) ve [BLOB depolama](search-howto-indexing-azure-blob-storage.md)için bireysel dizin oluşturucular ile yalnızca Azure ' dir. Bir dizin oluşturucuyu yapılandırırken bir veri kaynağı (Origin) ve bir dizin (hedef) belirtirsiniz. BLOB depolama gibi birkaç kaynak, bu içerik türüne özgü ek yapılandırma özelliklerine sahiptir.
 
 Dizin oluşturucularını isteğe bağlı olarak veya her beş dakikada bir çalışan yinelenen bir veri yenileme zamanlaması üzerinde çalıştırabilirsiniz. Daha sık güncellemeler, hem Azure Bilişsel Arama hem de dış veri kaynağınızdaki verileri eşzamanlı olarak güncelleştiren bir anında iletme modeli gerektirir.
 
@@ -31,8 +31,8 @@ Bir dizin oluşturucuyu, veri alımı için tek bir yol olarak kullanabilir veya
 | Senaryo |Strateji |
 |----------|---------|
 | Tek kaynak | Bu model en basit: bir veri kaynağı, bir arama dizini için tek içerik sağlayıcıdır. Kaynaktan, arama dizininde belge anahtarı olarak kullanılacak benzersiz değerler içeren bir alan tanımlayacaksınız. Benzersiz değer bir tanımlayıcı olarak kullanılacaktır. Diğer tüm kaynak alanları, bir dizindeki ilgili alanlarla örtük olarak veya açıkça eşleştirilir. </br></br>Önemli bir kalkış, bir belge anahtarı değerinin kaynak verilerden kaynaklanabilme örneğidir. Arama hizmeti anahtar değerleri oluşturmaz. Sonraki çalışmalarda, yeni anahtarlara sahip gelen belgeler eklenir, ancak mevcut anahtarlara sahip gelen belgeler, Dizin alanlarının null ya da doldurulmuş olmasına bağlı olarak birleştirilir veya üzerine yazılır. |
-| Birden çok kaynak| Bir dizin, her çalıştırmanın farklı bir kaynaktan yeni içerik aldığı birden çok kaynaktan içerik kabul edebilir. </br></br>Tek bir sonuç, her bir Dizin Oluşturucu çalıştıktan sonra belge elde eden bir dizin olabilir ve tüm belgeler her kaynaktan tam olarak oluşturulur. Bu senaryonun çekişmesi, tüm gelen veriler için ve arama dizininde bulunan bir belge anahtarı için kullanılan bir dizin şeması tasarlamada yer alır. Örneğin, bir belgeyi benzersiz bir şekilde tanımlayan değerler bir blob kapsayıcısında ve bir SQL tablosundaki birincil anahtar metadata_storage_path, içerik kaynağından bağımsız olarak, bir veya iki kaynağın anahtar değerlerini ortak bir biçimde sağlamak üzere belirlenmesi gerektiğini düşünebilirsiniz. Bu senaryoda, verileri tek bir dizine çekilecek şekilde eklemek için bir miktar ön işleme düzeyi gerçekleştirmeyi beklemeniz gerekir.</br></br>Alternatif bir sonuç, ilk çalıştırmada kısmen doldurulmuş ve ardından sonraki çalışmalarla daha sonra diğer kaynaklardan değer getirmek için daha sonra doldurulmuş belgelerde arama yapmak olabilir. Bu düzenin çekişmesi, her bir dizinleme çalıştırmasının aynı belgeyi hedeflediğinden emin olmanızı sağlamak. Alanların mevcut bir belgede birleştirilmesi için belge anahtarında bir eşleşme olması gerekir. Bu senaryonun bir gösterimi için bkz. [öğretici: birden çok veri kaynağından Dizin](tutorial-multiple-data-sources.md). |
-| İçerik dönüştürme | Bilişsel Arama, yeni aranabilir içerik ve yapı oluşturmak için görüntü analizi ve doğal dil işleme ekleyen isteğe bağlı [AI zenginleştirme](cognitive-search-concept-intro.md) davranışlarını destekler. AI zenginleştirme bir dizin oluşturucuya iliştirilmiş bir [beceri](cognitive-search-working-with-skillsets.md)tarafından tanımlanır. AI zenginleştirme işlemini gerçekleştirmek için, dizin oluşturucunun yine bir dizin ve veri kaynağı olması gerekir, ancak bu senaryoda Dizin Oluşturucu yürütmeye beceri işlem ekler. |
+| Birden çok kaynak| Bir dizin, her çalıştırmanın farklı bir kaynaktan yeni içerik aldığı birden çok kaynaktan içerik kabul edebilir. </br></br>Tek bir sonuç, her bir Dizin Oluşturucu çalıştıktan sonra belge elde eden bir dizin olabilir ve tüm belgeler her kaynaktan tam olarak oluşturulur. Örneğin, belgeler 1-100, BLOB depolama 'dan, 101-200 belgelerinin Azure SQL 'den ve bu şekilde devam eder. Bu senaryonun çekişmesi, tüm gelen veriler için uygun bir dizin şeması ve arama dizininde tek biçimli bir belge anahtar yapısı tasarlamada yer alır. Yerel olarak, bir belgeyi benzersiz bir şekilde tanımlayan değerler bir blob kapsayıcısında ve bir SQL tablosundaki birincil anahtar metadata_storage_path. Bir veya iki kaynağın, içerik kaynağından bağımsız olarak ortak bir biçimde anahtar değerleri sağlaması için düzeltmeniz gerektiğini düşünün. Bu senaryoda, verileri tek bir dizine çekilecek şekilde eklemek için bir miktar ön işleme düzeyi gerçekleştirmeyi beklemeniz gerekir.</br></br>Alternatif bir sonuç, ilk çalıştırmada kısmen doldurulmuş ve ardından sonraki çalışmalarla daha sonra diğer kaynaklardan değer getirmek için daha sonra doldurulmuş belgelerde arama yapmak olabilir. Örneğin, 1-10 alanları BLOB depolama, Azure SQL 'den 11-20 ve benzeri. Bu düzenin çekişmesi, her bir dizinleme çalıştırmasının aynı belgeyi hedeflediğinden emin olmanızı sağlamak. Alanların mevcut bir belgede birleştirilmesi için belge anahtarında bir eşleşme olması gerekir. Bu senaryonun bir gösterimi için bkz. [öğretici: birden çok veri kaynağından Dizin](tutorial-multiple-data-sources.md). |
+| İçerik dönüştürme | Bilişsel Arama, yeni aranabilir içerik ve yapı oluşturmak için görüntü analizi ve doğal dil işleme ekleyen isteğe bağlı [AI zenginleştirme](cognitive-search-concept-intro.md) davranışlarını destekler. AI zenginleştirme, eklenen bir [beceri](cognitive-search-working-with-skillsets.md)aracılığıyla Dizin Oluşturucu temelli bir. AI zenginleştirme işlemini gerçekleştirmek için, dizin oluşturucunun yine bir dizin ve veri kaynağı olması gerekir, ancak bu senaryoda Dizin Oluşturucu yürütmeye beceri işlem ekler. |
 
 ## <a name="approaches-for-creating-and-managing-indexers"></a>Dizin oluşturucular oluşturma ve yönetme yaklaşımları
 
@@ -92,9 +92,9 @@ Beceri yürütme, yerleşik veya özel AI işlemesini çağıran isteğe bağlı
 
 ### <a name="stage-4-output-field-mappings"></a>4. Aşama: çıkış alanı eşlemeleri
 
-Bir beceri çıkışı aslında zenginleştirilmiş belge olarak adlandırılan bir bilgi ağacıdır. Çıkış alanı eşlemeleri, bu ağacın hangi bölümlerinin dizininizdeki alanlarla eşlendiğini seçmenizi sağlar. [Çıkış alanı eşlemelerini nasıl tanımlayacağınızı](cognitive-search-output-field-mapping.md)öğrenin.
+Bir beceri eklerseniz, büyük olasılıkla çıkış alanı eşlemelerini eklemeniz gerekir. Bir beceri çıkışı aslında zenginleştirilmiş belge olarak adlandırılan bir bilgi ağacıdır. Çıkış alanı eşlemeleri, bu ağacın hangi bölümlerinin dizininizdeki alanlarla eşlendiğini seçmenizi sağlar. [Çıkış alanı eşlemelerini nasıl tanımlayacağınızı](cognitive-search-output-field-mapping.md)öğrenin.
 
-Tam değerleri kaynaktan hedef alanlarla ilişkilendiren alan eşlemeleri gibi, çıkış alanı eşlemeleri, dizin oluşturucunun, zenginleştirilmiş belgedeki dönüştürülmüş değerleri dizindeki hedef alanlarla nasıl ilişkilendirileceğini söyler. İsteğe bağlı olarak kabul edilen alan eşlemelerinin aksine, her zaman bir dizinde bulunması gereken dönüştürülmüş içerikler için bir çıkış alanı eşlemesi tanımlamanız gerekir.
+Alan eşlemeleri, veri kaynağından tam değerleri hedef alanlarla ilişkilendirirken, çıkış alanı eşlemeleri Dizin oluşturucudaki dönüştürülmüş değerleri dizindeki hedef alanlarla nasıl ilişkilendirmiş olduğunu söyler. İsteğe bağlı olarak kabul edilen alan eşlemelerinin aksine, her zaman bir dizinde bulunması gereken dönüştürülmüş içerikler için bir çıkış alanı eşlemesi tanımlamanız gerekir.
 
 Sonraki görüntüde, Dizin Oluşturucu aşamaları için bir örnek Dizin Oluşturucu [hata ayıklama oturumu](cognitive-search-debug-session.md) temsili gösterilmektedir: belge çözme, alan eşlemeleri, Beceri yürütme ve çıkış alanı eşlemeleri.
 

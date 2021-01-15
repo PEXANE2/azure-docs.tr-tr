@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 352d5218f91fa55134a7515b6aeee49857847468
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 345cbe2efb644fe2b84d4a6021ff962337e29285
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173218"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219921"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Kuruluşunuzdaki kullanıcıların bir uygulamaya Konuk kullanıcıları davet edebilir
 
@@ -28,8 +28,8 @@ Bir Konuk Kullanıcı Azure AD 'de dizine eklendikten sonra, bir uygulama sahibi
  - Uygulamayı self servis için yapılandırma ve grubu uygulamaya atama
 
 > [!NOTE]
-> Bu makalede, Azure AD kiracınıza eklediğiniz Galeri ve SAML tabanlı uygulamalar için self servis yönetiminin nasıl ayarlanacağı açıklanır. Ayrıca, kullanıcılarınızın kendi Microsoft 365 gruplarına erişimi yönetebilmeleri için [self servis Microsoft 365 gruplarını da ayarlayabilirsiniz](../enterprise-users/groups-self-service-management.md) . Kullanıcıların Office dosyalarını ve uygulamalarını Konuk kullanıcılarla paylaşmasına yönelik daha fazla bilgi için bkz. [Microsoft 365 gruplardaki konuk erişimi](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) ve [SharePoint dosyalarını veya klasörlerini paylaşma](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c).
-
+> * Bu makalede, Azure AD kiracınıza eklediğiniz Galeri ve SAML tabanlı uygulamalar için self servis yönetiminin nasıl ayarlanacağı açıklanır. Ayrıca, kullanıcılarınızın kendi Microsoft 365 gruplarına erişimi yönetebilmeleri için [self servis Microsoft 365 gruplarını da ayarlayabilirsiniz](../enterprise-users/groups-self-service-management.md) . Kullanıcıların Office dosyalarını ve uygulamalarını Konuk kullanıcılarla paylaşmasına yönelik daha fazla bilgi için bkz. [Microsoft 365 gruplardaki konuk erişimi](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) ve [SharePoint dosyalarını veya klasörlerini paylaşma](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c).
+> * Kullanıcılar yalnızca **konuk davet** eden rolüne sahip olmaları durumunda konukları davet edebilir.
 ## <a name="invite-a-guest-user-to-an-app-from-the-access-panel"></a>Erişim panelinden bir uygulamaya Konuk Kullanıcı davet etme
 
 Bir uygulama self servis için yapılandırıldıktan sonra, uygulama sahipleri bir konuk kullanıcıyı paylaştırmak istedikleri uygulamaya davet etmek için kendi erişim panelini kullanabilir. Konuk kullanıcının Azure AD 'ye önceden eklenmiş olması gerekmez. 
@@ -98,7 +98,7 @@ Self Servis uygulama yönetimi, bir genel yönetici ve bir Azure AD yöneticisi 
 7. **Üyelik türü**' nün altında, **atandı**' ı seçin.
 8. **Oluştur**' u seçin ve **Grup** sayfasını kapatın.
 9. **Gruplar-tüm gruplar** sayfasında, grubu açın. 
-10. **Yönet** altında **sahipler** sahipler ' i seçin  >  **Add owners**. Uygulamaya erişimi yönetmesi gereken kullanıcıyı arayın. Kullanıcıyı seçin ve ardından **Seç**' e tıklayın.
+10. **Yönet** altında **sahipler** sahipler ' i seçin  >  . Uygulamaya erişimi yönetmesi gereken kullanıcıyı arayın. Kullanıcıyı seçin ve ardından **Seç**' e tıklayın.
 
 ### <a name="configure-the-app-for-self-service-and-assign-the-group-to-the-app"></a>Uygulamayı self servis için yapılandırma ve grubu uygulamaya atama
 1. [Azure Portal](https://portal.azure.com) Azure AD yöneticisi veya genel yönetici olarak oturum açın.

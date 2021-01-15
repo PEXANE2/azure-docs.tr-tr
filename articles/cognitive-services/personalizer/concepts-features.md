@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: edd1549ddabef0ae1ba37150ad75a371ac6e6d85
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 55d1b7171201c962278d7c526528b36848c19449
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94365525"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217898"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Özellikler, Eylemler ve bağlamla ilgili bilgiler
 
@@ -24,7 +24,7 @@ Kişiselleştirici, en iyi **eylemi** seçmek için **geçerli bağlamla** ilgil
 Örneğin, şu **özelliklere** sahip olabilirsiniz:
 
 * _Kullanıcı_ gibi `Sports_Shopper` . Bu, tek bir kullanıcı KIMLIĞI olmamalıdır. 
-* Bir _content_ video `Documentary` , bir `Movie` veya bir veya bir `TV Series` Perakende öğesinin mağaza 'da kullanılabilir olup olmadığı gibi içerikler.
+* Bir  video `Documentary` , bir `Movie` veya bir veya bir `TV Series` Perakende öğesinin mağaza 'da kullanılabilir olup olmadığı gibi içerikler.
 * Haftanın günün saati gibi _geçerli_ süre.
 
 Kişiselleştirici, Eylemler ve bağlam için göndereceğiniz özellikleri etkilemez, sınırlamaz veya düzelmez:
@@ -37,12 +37,12 @@ Kişiselleştirici, Eylemler ve bağlam için göndereceğiniz özellikleri etki
 
 ## <a name="supported-feature-types"></a>Desteklenen özellik türleri
 
-Kişiselleştirici dize, sayısal ve Boole türlerinin özelliklerini destekler.
+Kişiselleştirici dize, sayısal ve Boole türlerinin özelliklerini destekler. Uygulamanızın birkaç özel durum dışında genellikle dize özellikleri kullanması olasıdır.
 
 ### <a name="how-choice-of-feature-type-affects-machine-learning-in-personalizer"></a>Özellik türü seçimi, kişiselleştirici içinde Machine Learning nasıl etkiler
 
-* **Dizeler** : dize türleri için, her anahtar ve değerin birleşimi, kişiselleştirici makine öğrenimi modelinde yeni ağırlıklar oluşturur. 
-* **Sayısal** : sayı, kişiselleştirme sonucunu orantılı bir şekilde etkiliyorsa sayısal değerleri kullanmanız gerekir. Bu, çok senaryoya bağımlıdır. Basitleştirilmiş bir örnekte, örneğin, bir perakende deneyimini kişiselleştirmek için, 2 veya 3 pelleri olan kişilerin kişiselleştirme sonucunu iki kez etkilemesini veya 1 Evcil hayvan 'yı büyük ölçüde etkilemesini isteyebileceğiniz için sayısal olan bir özellik olabilir. Sayısal birimleri temel alan, ancak anlamı yaş, sıcaklık veya kişi yüksekliği gibi doğrusal olmayan, en iyi dize olarak kodlanan ve özellik kalitesi genellikle aralıklar kullanılarak iyileştirilen özelliklerdir. Örneğin, Yaş "Age" olarak kodlanıp: "0-5", "Age": "6-10", vb.
+* **Dizeler**: dize türleri için, her anahtar ve değerin birleşimi One-Hot özellik olarak değerlendirilir (örn. tarz: "bilimsel kurgu" ve tarz: "belgelenme" makine öğrenimi modeli için iki yeni giriş özelliği oluşturacaktır.
+* **Sayısal**: sayı, kişiselleştirme sonucunu orantılı olarak etkileyecek bir büyüklük olduğunda sayısal değerleri kullanmanız gerekir. Bu, çok senaryoya bağımlıdır. Basitleştirilmiş bir örnekte, örneğin, bir perakende deneyimini kişiselleştirmek için, 2 veya 3 pelleri olan kişilerin kişiselleştirme sonucunu iki kez etkilemesini veya 1 Evcil hayvan 'yı büyük ölçüde etkilemesini isteyebileceğiniz için sayısal olan bir özellik olabilir. Sayısal birimleri temel alan, ancak anlamı yaş, sıcaklık veya kişi yüksekliği gibi doğrusal olmayan özellikler en iyi dize olarak kodlanır. Örneğin DayOfMonth, "1", "2"... "31" içeren bir dize olabilir. Birçok kategoreniz varsa, özellik kalitesi genellikle aralıklar kullanılarak artırılabilir. Örneğin, Yaş "Age" olarak kodlanıp: "0-5", "Age": "6-10", vb.
 * "False" değeri ile gönderilen **Boole** değerleri, hiç gönderilmemiş gibi davranır.
 
 Mevcut olmayan özellikler istekten atlanmalıdır. Model eğitimi yaparken, bir null değeri olan ve bir "null" değeri ile işlenen özellikler göndermekten kaçının.
@@ -54,7 +54,7 @@ Kişiselleştirici, ad alanları halinde düzenlenmiş özellikleri alır. Uygul
 Uygulamalar tarafından kullanılan özellik ad alanı örnekleri aşağıda verilmiştir:
 
 * User_Profile_from_CRM
-* Zaman
+* Saat
 * Mobile_Device_Info
 * http_user_agent
 * VideoResolution
@@ -80,12 +80,14 @@ JSON nesneleri, iç içe geçmiş JSON nesnelerini ve basit özellik/değerleri 
         { 
             "user": {
                 "profileType":"AnonymousUser",
-                "latlong": [47.6, -122.1]
+                "latlong": ["47.6", "-122.1"]
             }
         },
         {
-            "state": {
-                "timeOfDay": "noon",
+            "environment": {
+                "dayOfMonth": "28",
+                "monthOfYear": "8",
+                "timeOfDay": "13:00",
                 "weather": "sunny"
             }
         },
@@ -93,6 +95,13 @@ JSON nesneleri, iç içe geçmiş JSON nesnelerini ve basit özellik/değerleri 
             "device": {
                 "mobile":true,
                 "Windows":true
+            }
+        },
+        {
+            "userActivity" : {
+                "itemsInCart": 3,
+                "cartValue": 250,
+                "appliedCoupon": true
             }
         }
     ]
@@ -112,6 +121,8 @@ Ad alanını adlandırırken kullandığınız dize bazı kısıtlamalara uymal�
 İyi bir özellik kümesi, kişiselleştirmenin, en yüksek ödül sağlayacak eylemi nasıl önleyeceğinizi öğrenmenize yardımcı olur. 
 
 Aşağıdaki önerileri takip eden, kişiselleştirici derecelendirme API 'sine Özellikler göndermeyi göz önünde bulundurun:
+
+* Büyüklük olmayan özellikler için kategorik ve dize türlerini kullanın. 
 
 * Sürücü kişiselleştirmesi için yeterli özellik vardır. İçeriğin daha kesin bir şekilde hedeflenmiş olması gerekir, daha fazla özellik gereklidir.
 
@@ -144,7 +155,7 @@ Yapay zeka ve çalıştırmaya hazırlanma bilişsel hizmetler, Kişiselleştiri
 
 Yapay zeka hizmetlerini kullanarak öğelerinizi ön işlemden yararlanarak, kişiselleştirmeyle ilgili olabilecek olası bilgileri otomatik olarak ayıklayabilirsiniz.
 
-Örnek:
+Örneğin:
 
 * Sahne öğelerini, metni, yaklaşımı ve diğer birçok özniteliği ayıklamak için [video Indexer](https://azure.microsoft.com/services/media-services/video-indexer/) aracılığıyla bir film dosyası çalıştırabilirsiniz. Bu öznitelikler daha sonra, özgün öğe meta verilerinde bulunmayan özellikleri yansıtacak şekilde daha yoğun hale getirilebilir. 
 * Görüntüler, nesne algılama, yaklaşım, yüz ve benzeri işlemler aracılığıyla çalıştırılabilir.

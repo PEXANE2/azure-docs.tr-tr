@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: steveesp
-ms.openlocfilehash: 77ea14097538f722569acb5a0371674776aac8e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8f167a7947c42ce837ec83b336ae636f593f2e4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84687812"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219267"
 ---
 # <a name="test-vm-network-latency"></a>VM ağ gecikmesini sınama
 
@@ -55,7 +55,7 @@ Bu araçları kullanarak, yalnızca TCP veya UDP yük teslim sürelerinin, uygul
 VM yapılandırmanızı oluşturduğunuzda aşağıdaki önerileri göz önünde bulundurun:
 - Windows veya Linux 'un en son sürümünü kullanın.
 - En iyi sonuçlar için hızlandırılmış ağı etkinleştirin.
-- Bir [Azure yakınlık yerleşimi grubuyla](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)VM 'leri dağıtın.
+- Bir [Azure yakınlık yerleşimi grubuyla](../virtual-machines/co-location.md)VM 'leri dağıtın.
 - Daha büyük VM 'ler genellikle daha küçük VM 'lerden daha iyi gerçekleştirilir.
 
 ### <a name="tips-for-analysis"></a>Analiz ipuçları
@@ -73,11 +73,11 @@ Test sonuçlarını analiz ettiğiniz için aşağıdaki önerileri göz önünd
 
 [En son latte.exesürümünü ](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)indirin.
 
-latte.exe, *c:\Tools*gibi ayrı bir klasöre yerleştirmeyi düşünün.
+latte.exe, *c:\Tools* gibi ayrı bir klasöre yerleştirmeyi düşünün.
 
 ### <a name="allow-latteexe-through-windows-defender-firewall"></a>Windows Defender güvenlik duvarı üzerinden latte.exe izin ver
 
-*Alıcı*üzerinde, latte.exe trafiğinin gelmesini sağlamak Için Windows Defender güvenlik duvarı 'Nda bir izin verme kuralı oluşturun. Gelen belirli TCP bağlantı noktalarına izin vermek yerine latte.exe programın tamamının ada göre izin vermek en kolay yoldur.
+*Alıcı* üzerinde, latte.exe trafiğinin gelmesini sağlamak Için Windows Defender güvenlik duvarı 'Nda bir izin verme kuralı oluşturun. Gelen belirli TCP bağlantı noktalarına izin vermek yerine latte.exe programın tamamının ada göre izin vermek en kolay yoldur.
 
 Aşağıdaki komutu çalıştırarak Windows Defender güvenlik duvarı üzerinden latte.exe izin verin:
 
@@ -91,7 +91,7 @@ netsh advfirewall firewall add rule program=<path>\latte.exe name="Latte" protoc
 
 ### <a name="run-latency-tests"></a>Gecikme testleri çalıştırma
 
-* *Alıcı*üzerinde latte.exe başlatın (PowerShell 'den DEĞIL, cmd penceresinden çalıştırın):
+* *Alıcı* üzerinde latte.exe başlatın (PowerShell 'den DEĞIL, cmd penceresinden çalıştırın):
 
     ```cmd
     latte -a <Receiver IP address>:<port> -i <iterations>
@@ -105,13 +105,13 @@ netsh advfirewall firewall add rule program=<path>\latte.exe name="Latte" protoc
 
     `latte -a 10.0.0.4:5005 -i 65100`
 
-* *Gönderenin*latte.exe başlatın (PowerShell 'den DEĞIL, cmd penceresinden çalıştırın):
+* *Gönderenin* latte.exe başlatın (PowerShell 'den DEĞIL, cmd penceresinden çalıştırın):
 
     ```cmd
     latte -c -a <Receiver IP address>:<port> -i <iterations>
     ```
 
-    Elde edilen komut, &nbsp; Bu *istemci*ya da *gönderici*olduğunu göstermek için *-c* ' nin eklenmesi dışında, alıcı ile aynıdır.
+    Elde edilen komut, &nbsp; Bu *istemci* ya da *gönderici* olduğunu göstermek için *-c* ' nin eklenmesi dışında, alıcı ile aynıdır.
 
     `latte -c -a 10.0.0.4:5005 -i 65100`
 
@@ -176,7 +176,7 @@ sudo make install
 
 SockPerf yüklemesi tamamlandıktan sonra, sanal makineler gecikme testlerini çalıştırmaya hazırdır. 
 
-İlk olarak, *alıcı*üzerinde SockPerf başlatın.
+İlk olarak, *alıcı* üzerinde SockPerf başlatın.
 
 Kullanılabilir herhangi bir bağlantı noktası numarası iyidir. Bu örnekte, 12345 numaralı bağlantı noktasını kullanacağız:
 
@@ -200,7 +200,7 @@ Bu SockPerf örneği, ortalama bir paket için tipik bir 350 baytlık ileti boyu
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Bir [Azure yakınlık yerleşimi grubuyla](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)gecikme süresini geliştirir.
+* Bir [Azure yakınlık yerleşimi grubuyla](../virtual-machines/co-location.md)gecikme süresini geliştirir.
 * Senaryonuza yönelik [VM 'lerin ağ iletişimini nasıl iyileştireceğinizi](../virtual-network/virtual-network-optimize-network-bandwidth.md) öğrenin.
 * [Bant genişliğinin sanal makinelere nasıl ayrıldığı](../virtual-network/virtual-machine-network-throughput.md)hakkında bilgi edinin.
 * Daha fazla bilgi için bkz. [Azure sanal ağ hakkında SSS](../virtual-network/virtual-networks-faq.md).

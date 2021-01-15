@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: allensu
-ms.openlocfilehash: 265ed0f4cb58a321bde78714f36123bf197d42f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fd0cfe644ad78059e25d5386cd1a01f56ad9fba
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84711009"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216997"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Azure ağ arabirimleri için IP adresi ekleme, değiştirme veya kaldırma
 
@@ -46,18 +46,18 @@ Oturum açarken veya Azure 'a bağlanırken kullandığınız hesap, [ağ katıl
 
 [Azure Limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) makalesinde listelenen limitlerin içinde, bir ağ arabirimine gereken sayıda [özel](#private) ve [genel](#public) [IPv4](#ipv4) adresi ekleyebilirsiniz. Var olan bir ağ arabirimi için bir [IKINCIL IP yapılandırmasına](#secondary) (var olan ikincil IP yapılandırmaları olmadığı sürece) özel bir IPv6 adresi ekleyebilirsiniz. Her ağ arabirimi en fazla bir IPv6 özel adresine sahip olabilir. İsteğe bağlı olarak bir IPv6 ağ arabirimi yapılandırmasına genel bir IPv6 adresi ekleyebilirsiniz. IPv6 adreslerini kullanma hakkında ayrıntılı bilgi için bkz. [IPv6](#ipv6) .
 
-1. Azure portal üst kısmında bulunan metin *arama kaynaklarını* içeren kutuya *ağ arabirimleri*yazın. Arama sonuçlarında **ağ arabirimleri** görüntülendiğinde, bunu seçin.
+1. Azure portal üst kısmında bulunan metin *arama kaynaklarını* içeren kutuya *ağ arabirimleri* yazın. Arama sonuçlarında **ağ arabirimleri** görüntülendiğinde, bunu seçin.
 2. Listeden bir IPv4 adresi eklemek istediğiniz ağ arabirimini seçin.
-3. **Ayarlar**altında **IP yapılandırması**' nı seçin.
-4. **IP yapılandırması**altında **+ Ekle**' yi seçin.
+3. **Ayarlar** altında **IP yapılandırması**' nı seçin.
+4. **IP yapılandırması** altında **+ Ekle**' yi seçin.
 5. Aşağıdakileri belirtip **Tamam**' ı seçin:
 
    |Ayar|Gerekli mi?|Ayrıntılar|
    |---|---|---|
-   |Name|Evet|Ağ arabirimi için benzersiz olmalıdır|
-   |Tür|Evet|Var olan bir ağ arabirimine bir IP yapılandırması ekliyorsanız ve her bir ağ arabiriminin bir [birincil](#primary) IP yapılandırması olması gerektiğinden, tek seçeneğiniz **ikincildir**.|
-   |Özel IP adresi atama yöntemi|Evet|[**Dinamik**](#dynamic): Azure, ağ arabiriminin dağıtıldığı alt ağ adres aralığı için bir sonraki kullanılabilir adresi atar. [**Statik**](#static): ağ arabiriminin dağıtıldığı alt ağ adres aralığı için kullanılmayan bir adres atarsınız.|
-   |Genel IP adresi|Hayır|**Devre dışı:** Şu anda IP yapılandırmasıyla ilişkili genel IP adresi kaynağı yok. **Etkin:** Mevcut bir IPv4 Genel IP adresi seçin veya yeni bir tane oluşturun. Genel IP adresi oluşturmayı öğrenmek için [genel IP adresleri](virtual-network-public-ip-address.md#create-a-public-ip-address) makalesini okuyun.|
+   |Name|Yes|Ağ arabirimi için benzersiz olmalıdır|
+   |Tür|Yes|Var olan bir ağ arabirimine bir IP yapılandırması ekliyorsanız ve her bir ağ arabiriminin bir [birincil](#primary) IP yapılandırması olması gerektiğinden, tek seçeneğiniz **ikincildir**.|
+   |Özel IP adresi atama yöntemi|Yes|[**Dinamik**](#dynamic): Azure, ağ arabiriminin dağıtıldığı alt ağ adres aralığı için bir sonraki kullanılabilir adresi atar. [**Statik**](#static): ağ arabiriminin dağıtıldığı alt ağ adres aralığı için kullanılmayan bir adres atarsınız.|
+   |Genel IP adresi|No|**Devre dışı:** Şu anda IP yapılandırmasıyla ilişkili genel IP adresi kaynağı yok. **Etkin:** Mevcut bir IPv4 Genel IP adresi seçin veya yeni bir tane oluşturun. Genel IP adresi oluşturmayı öğrenmek için [genel IP adresleri](virtual-network-public-ip-address.md#create-a-public-ip-address) makalesini okuyun.|
 6. Sanal makine işletim [sistemlerine birden çok IP adresi atama](virtual-network-multiple-ip-addresses-portal.md#os-config) makalesindeki yönergeleri tamamlayarak, IKINCIL özel IP adreslerini sanal makine işletim sistemine el ile ekleyin. IP adreslerini bir sanal makine işletim sistemine el ile eklemeden önce [, özel IP adreslerine göz atın.](#private) Sanal makine işletim sistemine genel IP adresleri eklemeyin.
 
 **Komutlar**
@@ -71,9 +71,9 @@ Oturum açarken veya Azure 'a bağlanırken kullandığınız hesap, [ağ katıl
 
 Bir IPv4 adresinin atama yöntemini değiştirmeniz, statik IPv4 adresini değiştirmeniz veya bir ağ arabirimine atanan genel IP adresini değiştirmeniz gerekebilir. Bir sanal makinede ikincil ağ arabirimiyle ilişkili ikincil bir IP yapılandırmasının özel IPv4 adresini değiştiriyorsanız ( [birincil ve ikincil ağ arabirimleri](virtual-network-network-interface-vm.md)hakkında daha fazla bilgi edinin), aşağıdaki adımları tamamlamadan önce sanal makineyi durdurulmuş (serbest bırakıldı) durumuna yerleştirin:
 
-1. Azure portal üst kısmında bulunan metin *arama kaynaklarını* içeren kutuya *ağ arabirimleri*yazın. Arama sonuçlarında **ağ arabirimleri** görüntülendiğinde, bunu seçin.
+1. Azure portal üst kısmında bulunan metin *arama kaynaklarını* içeren kutuya *ağ arabirimleri* yazın. Arama sonuçlarında **ağ arabirimleri** görüntülendiğinde, bunu seçin.
 2. Listeden için IP adresi ayarlarını görüntülemek veya değiştirmek istediğiniz ağ arabirimini seçin.
-3. **Ayarlar**altında **IP yapılandırması**' nı seçin.
+3. **Ayarlar** altında **IP yapılandırması**' nı seçin.
 4. Listeden değiştirmek istediğiniz IP yapılandırmasını seçin.
 5. [IP yapılandırması ekleme](#add-ip-addresses)' nin 5. adımında bulunan ayarlarla ilgili bilgileri kullanarak ayarları istediğiniz şekilde değiştirin.
 6. **Kaydet**’i seçin.
@@ -92,10 +92,10 @@ Bir IPv4 adresinin atama yöntemini değiştirmeniz, statik IPv4 adresini deği�
 
 [Özel](#private) ve [genel](#public) IP adreslerini bir ağ arabiriminden kaldırabilirsiniz, ancak bir ağ arabirimine, her zaman en az bir özel IPv4 adresi atanmış olmalıdır.
 
-1. Azure portal üst kısmında bulunan metin *arama kaynaklarını* içeren kutuya *ağ arabirimleri*yazın. Arama sonuçlarında **ağ arabirimleri** görüntülendiğinde, bunu seçin.
+1. Azure portal üst kısmında bulunan metin *arama kaynaklarını* içeren kutuya *ağ arabirimleri* yazın. Arama sonuçlarında **ağ arabirimleri** görüntülendiğinde, bunu seçin.
 2. Listeden IP adreslerini kaldırmak istediğiniz ağ arabirimini seçin.
-3. **Ayarlar**altında **IP yapılandırması**' nı seçin.
-4. [İkincil](#secondary) bir IP yapılandırması seçin ( [birincil](#primary) yapılandırmayı silemezsiniz), silmek **istediğiniz Sil ' i seçin ve**sonra silme işlemini onaylamak için **Evet**' i seçin. Yapılandırmaya ilişkili bir genel IP adresi kaynağı varsa, kaynağın IP yapılandırmasından ilişkisi kaldırılır, ancak kaynak silinmez.
+3. **Ayarlar** altında **IP yapılandırması**' nı seçin.
+4. [İkincil](#secondary) bir IP yapılandırması seçin ( [birincil](#primary) yapılandırmayı silemezsiniz), silmek **istediğiniz Sil ' i seçin ve** sonra silme işlemini onaylamak için **Evet**' i seçin. Yapılandırmaya ilişkili bir genel IP adresi kaynağı varsa, kaynağın IP yapılandırmasından ilişkisi kaldırılır, ancak kaynak silinmez.
 
 **Komutlar**
 
@@ -151,7 +151,7 @@ Sanal makinenin işletim sistemi içindeki bir ağ arabiriminin IP adresini el i
 
 Bir sanal makinenin aynı veya bağlı sanal ağlardaki diğer kaynaklarla iletişim kurmasına imkan tanıma ek olarak, bir özel IP adresi de bir sanal makinenin Internet 'e giden iletişim kurmasına olanak tanır. Giden bağlantılar, Azure tarafından öngörülemeyen bir genel IP adresine çevrilmiş kaynak ağ adresidir. Azure giden Internet bağlantısı hakkında daha fazla bilgi edinmek için, [Azure giden Internet bağlantısı](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) makalesini okuyun. Internet 'ten gelen bir sanal makinenin özel IP adresi ile iletişim kuramayamezsiniz. Giden bağlantılarınız tahmin edilebilir bir genel IP adresi gerektiriyorsa, genel IP adresi kaynağını bir ağ arabirimiyle ilişkilendirin.
 
-### <a name="public"></a>Ortak
+### <a name="public"></a>Genel
 
 Bir genel IP adresi kaynağı aracılığıyla atanan genel IP adresleri, bir sanal makineye Internet üzerinden gelen bağlantıyı etkinleştirir. Internet 'e giden bağlantılar, öngörülebilir bir IP adresi kullanır. Ayrıntılar için bkz. [Azure 'da giden bağlantıları anlama](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) . Bir IP yapılandırmasına genel bir IP adresi atayabilir, ancak bunu yapmanız gerekmez. Bir genel IP adresi kaynağını ilişkilendirerek bir sanal makineye genel IP adresi atamadıysanız, sanal makine yine de Internet ile giden iletişim kurabilir. Bu durumda, özel IP adresi Azure tarafından öngörülemeyen bir genel IP adresine çevrilmiş kaynak ağ adresidir. Genel IP adresi kaynakları hakkında daha fazla bilgi için bkz. [genel IP adresi kaynağı](virtual-network-public-ip-address.md).
 
@@ -200,7 +200,7 @@ Birincil veya ikincil IP yapılandırmasına ortak bir IPv6 adresi atayamazsın�
 Temel veya standart SKU ile genel bir IP adresi oluşturulur. SKU farklılıkları hakkında daha fazla bilgi için bkz. [genel IP adreslerini yönetme](virtual-network-public-ip-address.md).
 
 > [!NOTE]
-> Standart bir SKU genel IP adresini bir sanal makinenin ağ arabirimine atadığınızda amaçlanan trafiğe bir [ağ güvenlik grubuyla](security-overview.md#network-security-groups) açıkça izin vermeniz gerekir. Bir ağ güvenlik grubu oluşturup ilişkilendirene ve istenen trafiğe açıkça izin verene kadar kaynakla erişim kurma girişimleri başarısız olur.
+> Standart bir SKU genel IP adresini bir sanal makinenin ağ arabirimine atadığınızda amaçlanan trafiğe bir [ağ güvenlik grubuyla](./network-security-groups-overview.md#network-security-groups) açıkça izin vermeniz gerekir. Bir ağ güvenlik grubu oluşturup ilişkilendirene ve istenen trafiğe açıkça izin verene kadar kaynakla erişim kurma girişimleri başarısız olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Farklı IP yapılandırmalarına sahip bir sanal makine oluşturmak için aşağıdaki makaleleri okuyun:

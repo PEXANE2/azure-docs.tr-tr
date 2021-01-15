@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: a9db2bcc0b44dfb6146517de8a139f34cd8584af
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: bb9235f4d1190bf7f71ddc007f09c9666c353234
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654464"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216810"
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Azure sanal makineleri için ağ aktarım hızını iyileştirme
 
@@ -152,7 +152,7 @@ sudo ./install.sh #or upgrade.sh if prior LIS was previously installed
 [İndirme sayfasını](https://www.microsoft.com/download/details.aspx?id=55106)görüntüleyerek, Hyper-V Için Linux Tümleştirme hizmetleri sürüm 4,2 hakkında daha fazla bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Yakınlık yerleştirme grubuyla](../virtual-machines/windows/co-location.md) düşük gecikme süresi boyunca VM 'leri birbirlerine yakın bir şekilde dağıtın
+* [Yakınlık yerleştirme grubuyla](../virtual-machines/co-location.md) düşük gecikme süresi boyunca VM 'leri birbirlerine yakın bir şekilde dağıtın
 * Senaryolarınız için [Azure VM 'yi kullanarak bant genişliği/aktarım hızı](virtual-network-bandwidth-testing.md) ile iyileştirilmiş sonuca bakın.
 * [Bant genişliğinin sanal makinelere nasıl ayrıldığı](virtual-machine-network-throughput.md) hakkında bilgi edinin
 * [Azure sanal ağ hakkında sık sorulan sorular (SSS)](virtual-networks-faq.md) hakkında daha fazla bilgi edinin

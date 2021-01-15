@@ -6,17 +6,17 @@ ms.topic: how-to
 ms.date: 11/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 101b3a05591a7815ba28756bb5b07e855b64e769
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 85026092e513ecc9ec3c23e292a416297774a2e4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505555"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217847"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Microsoft ekiplerini Windows sanal masaüstü 'nde kullanma
 
 >[!IMPORTANT]
->Takımlar için medya iyileştirmesi Microsoft 365 Kamu (GCC) ortamları için desteklenir. Takımlar için medya iyileştirmesi GCC-High veya DoD için desteklenmez.
+>Takımlar için medya iyileştirmesi Microsoft 365 Kamu (GCC) ve GCC-High ortamları için desteklenir. Takımlar için medya iyileştirmesi GCC-High veya DoD için desteklenmez.
 
 >[!NOTE]
 >Microsoft ekipleri için medya iyileştirmesi yalnızca Windows 10 makinelerinde Windows Masaüstü istemcisi için kullanılabilir. Medya iyileştirmeleri Windows Masaüstü istemcisi sürümü 1.2.1026.0 veya üstünü gerektirir.
@@ -116,13 +116,13 @@ WebSocket hizmetini ve takımlar masaüstü uygulamasını yükledikten sonra, t
 
 1. Takımlar uygulamasından çıkıp yeniden başlatın.
 
-2. Kullanıcı profili görüntünüzü seçin ve ardından **hakkında** ' yı seçin.
+2. Kullanıcı profili görüntünüzü seçin ve ardından **hakkında**' yı seçin.
 
 3. **Sürüm** seçin.
 
       Medya iyileştirmesi yüklüyse, başlık, **WVD Media optimize edilmiş** olarak gösterilir. Başlıkta **WVD Media bağlı değil** görünüyorsa, takımlar uygulamasından çıkıp yeniden deneyin.
 
-4. Kullanıcı profili görüntünüzü seçin ve ardından **Ayarlar** ' ı seçin.
+4. Kullanıcı profili görüntünüzü seçin ve ardından **Ayarlar**' ı seçin.
 
       Medya iyileştirmesi yüklüyse, yerel olarak bulunan ses cihazları ve kameralar cihaz menüsünde numaralandırılır. Menü **uzak sesi** gösteriyorsa, takımlar uygulamasından çıkıp yeniden deneyin. Cihazlar hala menüde görünmüyorsa, yerel bilgisayarınızdaki gizlilik ayarlarını kontrol edin. **Ayarlar**  >  **Gizlilik**  >  **Uygulama izinleri** altındaki **uygulamaların mikrofona erişmesine izin ver** ayarının **Açık** olduğundan emin olun. Uzak oturumla bağlantıyı kesin, sonra yeniden bağlayın ve ses ve video cihazlarını tekrar denetleyin. Aramalara ve toplantılara video ile katılabilmek için, ayrıca uygulamaların kameranıza erişmesine izin vermeniz gerekir.
 
@@ -140,7 +140,7 @@ Sanallaştırılmış bir ortamda takımlar kullanmak, sanallaştırılmamış b
 
 ### <a name="calls-and-meetings"></a>Çağrılar ve toplantılar
 
-- Windows sanal masaüstü ortamlarında takımlar masaüstü istemcisi canlı olayları desteklemez. Şimdilik, uzak oturumunuzda [takımlar web istemcisinden](https://teams.microsoft.com) canlı olaylara katılmanız önerilir.
+- Windows sanal masaüstü ortamlarında takımlar masaüstü istemcisi canlı olay oluşturmayı desteklemez, ancak canlı olaylara katılabilirler. Şimdilik, bunun yerine uzak oturumunuzda [takımlar web istemcisinden](https://teams.microsoft.com) canlı olaylar oluşturmanızı öneririz.
 - Çağrılar veya toplantılar Şu anda uygulama paylaşımını desteklememektedir. Masaüstü oturumları masaüstü paylaşımını destekler.
 - Denetimi verme ve denetimi alma şu anda desteklenmiyor.
 - Windows sanal masaüstündeki takımlar tek seferde yalnızca bir gelen video girişini destekler. Diğer bir deyişle, her biri Ekranınızı paylaşmaya çalıştığında, Toplantı lideri ekranının yerine ekranın görünmesini sağlar.

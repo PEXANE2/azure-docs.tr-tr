@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: allensu
-ms.openlocfilehash: 8f3cdad8638f8a1f99942d03f3878d0626c3bdbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1d94166c6c56a3652dc0ad532bd481c6e792c52
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87281251"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217099"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Azure CLı kullanarak sanal makinelere birden çok IP adresi atama
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 
-Bu makalede, Azure CLı kullanarak Azure Resource Manager dağıtım modeli aracılığıyla bir sanal makinenin (VM) nasıl oluşturulacağı açıklanmaktadır. Klasik dağıtım modeliyle oluşturulan kaynaklara birden çok IP adresi atanamaz. Azure dağıtım modelleri hakkında daha fazla bilgi edinmek için [dağıtım modellerini anlama](../resource-manager-deployment-model.md) makalesini okuyun.
+Bu makalede, Azure CLı kullanarak Azure Resource Manager dağıtım modeli aracılığıyla bir sanal makinenin (VM) nasıl oluşturulacağı açıklanmaktadır. Klasik dağıtım modeliyle oluşturulan kaynaklara birden çok IP adresi atanamaz. Azure dağıtım modelleri hakkında daha fazla bilgi edinmek için [dağıtım modellerini anlama](../azure-resource-manager/management/deployment-models.md) makalesini okuyun.
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
@@ -246,7 +246,7 @@ Aşağıdaki adımları tamamlayarak mevcut bir Azure ağ arabirimine ek özel v
         --allocation-method Static
         ```
     
-        Genel IP adresi kaynağını *Ipconfig-3*ADLı mevcut IP yapılandırması ile ilişkilendirmek için aşağıdaki komutu girin:
+        Genel IP adresi kaynağını *Ipconfig-3* ADLı mevcut IP yapılandırması ile ilişkilendirmek için aşağıdaki komutu girin:
     
         ```azurecli
         az network nic ip-config update \

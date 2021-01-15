@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: c9e9ea2e59537a1c0c8e372a766fba3aa9a1b9a0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bc0ac1a6e882f4197828bf79c7989c16b2eb16f7
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88122189"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217677"
 ---
 # <a name="quickstart-create-a-virtual-network---resource-manager-template"></a>Hızlı başlangıç: sanal ağ Kaynak Yöneticisi şablonu oluşturma
 
@@ -36,8 +36,8 @@ Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablo
 :::code language="json" source="~/quickstart-templates/101-vnet-two-subnets/azuredeploy.json" range="001-96" highlight="56-92":::
 
 Şablonda aşağıdaki Azure kaynakları tanımlandı:
-- [**Microsoft. Network/virtualNetworks**](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks): bir Azure sanal ağı oluşturun.
--  [**Microsoft. Network/virtualNetworks/alt ağları**](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks/subnets) -bir alt ağ oluşturun.
+- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks): bir Azure sanal ağı oluşturun.
+-  [**Microsoft. Network/virtualNetworks/alt ağları**](/azure/templates/microsoft.network/virtualnetworks/subnets) -bir alt ağ oluşturun.
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
@@ -56,7 +56,7 @@ Kaynak Yöneticisi şablonu Azure 'a dağıtma:
 
 Sanal ağla oluşturulan kaynakları keşfedebilir.
 
-Bir şablondaki bir sanal ağın JSON sözdizimi ve özellikleri hakkında bilgi edinmek için bkz. [Microsoft. Network/virtualNetworks](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
+Bir şablondaki bir sanal ağın JSON sözdizimi ve özellikleri hakkında bilgi edinmek için bkz. [Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks).
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

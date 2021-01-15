@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: 3a8982b5626e3c19dbd49a3d2e20542d44b1a1da
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 18f2128b6869b4047cc6f35e1638aca81233a014
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368596"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219292"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Azure 'da ağ sanal gereç sorunları
 
@@ -89,7 +89,7 @@ PowerShell kullanma
 
 1. [Azure Portal](https://portal.azure.com), **Ağ İzleyicisi**'Ni açın, **sonraki atlama**' yi seçin.
 2. Trafiği NVA 'ya yönlendirmek üzere yapılandırılmış bir VM ve sonraki atlamanın görüntüleneceği bir hedef IP adresi belirtin. 
-3. NVA bir **sonraki atlama**olarak listelenmiyorsa Azure yol tablolarını denetleyin ve güncelleştirin.
+3. NVA bir **sonraki atlama** olarak listelenmiyorsa Azure yol tablolarını denetleyin ve güncelleştirin.
 
 **Trafiğin NVA 'ya erişip erişemeyeceğini denetleyin**
 
@@ -127,7 +127,7 @@ VM ağı artışlar kullanıyorsa veya yüksek kullanım dönemlerini gösteriyo
 ## <a name="advanced-network-administrator-troubleshooting"></a>Gelişmiş Ağ Yöneticisi sorun giderme
 
 ### <a name="capture-network-trace"></a>Ağ izlemesini yakala
-**[Psping](https://docs.microsoft.com/sysinternals/downloads/psping)** veya **Nmap**'i çalıştırırken kaynak VM 'de, NVA 'da ve hedef VM 'de eşzamanlı bir ağ izlemesi yakalayın ve ardından izlemeyi durdurun.
+**[Psping](/sysinternals/downloads/psping)** veya **Nmap**'i çalıştırırken kaynak VM 'de, NVA 'da ve hedef VM 'de eşzamanlı bir ağ izlemesi yakalayın ve ardından izlemeyi durdurun.
 
 1. Eşzamanlı bir ağ izlemesi yakalamak için aşağıdaki komutu çalıştırın:
 

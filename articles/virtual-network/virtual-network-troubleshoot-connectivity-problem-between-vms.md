@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: eb94b67b026ed108f31f6cd802010577665ec0d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ece3e639e0ef3516696e2a0bad7deeb833433a6
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87286096"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219207"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Azure VM’leri arasında bağlantı sorunlarını giderme
 
@@ -49,7 +49,7 @@ Sorunu gidermek için aşağıdaki adımları izleyin. Her adımı tamamladıkta
 
 ### <a name="step-1-check-whether-nic-is-misconfigured"></a>1. Adım: NIC 'in yanlış yapılandırılmış olup olmadığını denetleme
 
-[Azure WINDOWS VM için ağ arabirimini sıfırlama](../virtual-machines/windows/reset-network-interface.md)bölümündeki adımları izleyin. 
+[Azure WINDOWS VM için ağ arabirimini sıfırlama](../virtual-machines/troubleshooting/reset-network-interface.md)bölümündeki adımları izleyin. 
 
 Ağ arabirimini (NIC) değiştirdikten sonra sorun oluşursa, aşağıdaki adımları izleyin:
 
@@ -62,8 +62,8 @@ Daha fazla bilgi için bkz. [sanal makinelere ağ arabirimleri ekleme veya sanal
 
 **Tek NIC sanal makinesi** 
 
-- [Windows VM 'yi yeniden dağıtma](../virtual-machines/windows/redeploy-to-new-node.md)
-- [Linux VM 'yi yeniden dağıtma](../virtual-machines/linux/redeploy-to-new-node.md)
+- [Windows VM 'yi yeniden dağıtma](../virtual-machines/troubleshooting/redeploy-to-new-node-windows.md)
+- [Linux VM 'yi yeniden dağıtma](../virtual-machines/troubleshooting/redeploy-to-new-node-linux.md)
 
 ### <a name="step-2-check-whether-network-traffic-is-blocked-by-nsg-or-udr"></a>2. Adım: ağ trafiğinin NSG veya UDR tarafından engellenip engellenmeyeceğini denetleyin
 
@@ -103,7 +103,7 @@ Bir erişim denetim listesi (ACL), sanal makine uç noktası için trafiği seç
 
 ### <a name="step-7-check-whether-the-endpoint-is-created-for-the-classic-vm"></a>7. Adım: uç noktanın klasik VM için oluşturulup oluşturulmayacağını denetleme
 
-Klasik dağıtım modelini kullanarak Azure 'da oluşturduğunuz tüm VM 'Ler, aynı bulut hizmetindeki veya sanal ağdaki diğer sanal makinelerle özel bir ağ kanalı üzerinden otomatik olarak iletişim kurabilir. Ancak, diğer sanal ağlardaki bilgisayarların gelen ağ trafiğini bir sanal makineye yönlendirmek için uç noktalar gerekir. Daha fazla bilgi için bkz. [uç noktaları ayarlama](../virtual-machines/windows/classic/setup-endpoints.md).
+Klasik dağıtım modelini kullanarak Azure 'da oluşturduğunuz tüm VM 'Ler, aynı bulut hizmetindeki veya sanal ağdaki diğer sanal makinelerle özel bir ağ kanalı üzerinden otomatik olarak iletişim kurabilir. Ancak, diğer sanal ağlardaki bilgisayarların gelen ağ trafiğini bir sanal makineye yönlendirmek için uç noktalar gerekir. Daha fazla bilgi için bkz. [uç noktaları ayarlama](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints).
 
 ### <a name="step-8-try-to-connect-to-a-vm-network-share"></a>8. Adım: bir VM ağ paylaşımından bağlanmayı deneyin
 

@@ -11,18 +11,18 @@ ms.topic: how-to
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
-ms.date: 04/19/2020
-ms.openlocfilehash: 480e9f9031481621ac9d568a7bd97b942f47b947
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 1/14/2021
+ms.openlocfilehash: b87d0a2446eb2b65c20ae0bef408320686cb5165
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493653"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219141"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>Dinamik yönetim görünümlerini kullanarak Microsoft Azure SQL Veritabanı'nın ve Azure SQL Yönetilen Örneği'nin performansını izleme
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Microsoft Azure SQL Veritabanı ve Azure SQL yönetilen örneği, dinamik yönetim görünümlerinin bir alt kümesini, Engellenen veya uzun süreli sorgular, kaynak darboğazları, kötü sorgu planları vb. nedeniyle oluşan performans sorunlarını tanılamak için etkinleştirir. Bu konuda, dinamik yönetim görünümlerini kullanarak yaygın performans sorunlarının nasıl algılanabileceği hakkında bilgi verilmektedir.
+Microsoft Azure SQL Veritabanı ve Azure SQL yönetilen örneği, dinamik yönetim görünümlerinin bir alt kümesini, Engellenen veya uzun süreli sorgular, kaynak darboğazları, kötü sorgu planları vb. nedeniyle oluşan performans sorunlarını tanılamak için etkinleştirir. Bu makalede, dinamik yönetim görünümlerini kullanarak yaygın performans sorunlarının algılanması hakkında bilgi verilmektedir.
 
 Microsoft Azure SQL Veritabanı ve Azure SQL yönetilen örneği, dinamik yönetim görünümlerinin üç kategorisini kısmen destekler:
 
@@ -259,7 +259,7 @@ Tempdb çekişmesi için ortak bir yöntem, ' i temel alan uygulama kodunu azalt
 - Geçici tablolar
 - Tablo değişkenleri
 - Tablo değerli parametreler
-- Sürüm deposu kullanımı (özellikle uzun süre çalışan işlemlerle ilişkili)
+- Sürüm deposu kullanımı (uzun süren işlemlerle ilişkili)
 - Sıralama, karma ile birleştirme ve biriktirici kullanan sorgu planlarına sahip sorgular
 
 ### <a name="top-queries-that-use-table-variables-and-temporary-tables"></a>Tablo değişkenlerini ve geçici tabloları kullanan popüler sorgular
@@ -563,14 +563,14 @@ SELECT resource_name, AVG(avg_cpu_percent) AS Average_Compute_Utilization
 FROM sys.server_resource_stats
 WHERE start_time BETWEEN @s AND @e  
 GROUP BY resource_name  
-HAVING AVG(avg_cpu_percent) >= 80
+HAVING AVG(avg_cpu_percent) >= 80;
 ```
 
 ### <a name="sysresource_stats"></a>sys.resource_stats
 
 **Ana** veritabanındaki [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) görünümünde, veritabanınızın performansını belirli hizmet katmanında ve işlem boyutuyla izlemenize yardımcı olabilecek ek bilgiler bulunur. Veriler her 5 dakikada bir toplanır ve yaklaşık 14 gün boyunca korunur. Bu görünüm, veritabanınızın kaynakları nasıl kullandığına yönelik daha uzun vadeli geçmiş analizler için yararlıdır.
 
-Aşağıdaki grafikte, bir haftada her saat için P2 işlem boyutuyla bir Premium veritabanı için CPU kaynak kullanımı gösterilmektedir. Bu grafik Pazartesi günü başlar, 5 iş günü gösterir ve uygulamada çok daha az gerçekleştiğinde bir hafta sonu gösterir.
+Aşağıdaki grafikte, bir haftada her saat için P2 işlem boyutuyla bir Premium veritabanı için CPU kaynak kullanımı gösterilmektedir. Bu grafik Pazartesi günü başlar, beş iş günü gösterir ve uygulamada çok daha az gerçekleştiğinde bir hafta sonu gösterir.
 
 ![Veritabanı kaynak kullanımı](./media/monitoring-with-dmvs/sql_db_resource_utilization.png)
 
@@ -589,7 +589,7 @@ Bu örnek, bu görünümdeki verilerin nasıl sunulduğunu gösterir:
 SELECT TOP 10 *
 FROM sys.resource_stats
 WHERE database_name = 'resource1'
-ORDER BY start_time DESC
+ORDER BY start_time DESC;
 ```
 
 ![Sys.resource_stats Catalog görünümü](./media/monitoring-with-dmvs/sys_resource_stats.png)
@@ -699,7 +699,7 @@ Geçerli etkin oturumların sayısını görmek için, bu Transact-SQL sorgusunu
 
 ```sql
 SELECT COUNT(*) AS [Sessions]
-FROM sys.dm_exec_connections
+FROM sys.dm_exec_connections;
 ```
 
 Bir SQL Server iş yükünü analiz ediyorsanız, sorguyu belirli bir veritabanına odaklanmak üzere değiştirin. Bu sorgu, Azure 'a taşımayı düşünüyorsanız veritabanına yönelik olası oturum ihtiyaçlarını belirlemenize yardımcı olur.
@@ -709,7 +709,7 @@ SELECT COUNT(*) AS [Sessions]
 FROM sys.dm_exec_connections C
 INNER JOIN sys.dm_exec_sessions S ON (S.session_id = C.session_id)
 INNER JOIN sys.databases D ON (D.database_id = S.database_id)
-WHERE D.name = 'MyDatabase'
+WHERE D.name = 'MyDatabase';
 ```
 
 Yine, bu sorgular bir zaman noktası sayısı döndürür. Zaman içinde birden çok örnek topluyorsanız, oturum kullanımı en iyi şekilde öğrenirsiniz.
@@ -743,7 +743,7 @@ ORDER BY 2 DESC;
 
 ### <a name="monitoring-blocked-queries"></a>Engellenen sorguları izleme
 
-Yavaş veya uzun süre çalışan sorgular aşırı kaynak tüketimine katkıda bulunabilir ve engellenen sorguların sonucu olabilir. Engellemenin nedeni kötü uygulama tasarımı, hatalı sorgu planları, faydalı dizinlerin bulunmaması vb. olabilir. Veritabanındaki geçerli kilitleme etkinliği hakkında bilgi almak için sys.dm_tran_locks görünümünü kullanabilirsiniz. Örnek kod için bkz. [sys.dm_tran_locks (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql).
+Yavaş veya uzun süre çalışan sorgular aşırı kaynak tüketimine katkıda bulunabilir ve engellenen sorguların sonucu olabilir. Engellemenin nedeni kötü uygulama tasarımı, hatalı sorgu planları, faydalı dizinlerin bulunmaması vb. olabilir. Veritabanındaki geçerli kilitleme etkinliği hakkında bilgi almak için sys.dm_tran_locks görünümünü kullanabilirsiniz. Örnek kod için bkz. [sys.dm_tran_locks (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql). Engelleme sorunlarını giderme hakkında daha fazla bilgi için bkz. [Azure SQL engelleme sorunlarını anlama ve çözme](understand-resolve-blocking.md).
 
 ### <a name="monitoring-query-plans"></a>Sorgu planlarını izleme
 

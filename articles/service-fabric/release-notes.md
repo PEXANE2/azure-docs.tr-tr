@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 9960f15f2f91b51b73727ab421eb58dddc5bb2b3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: bb7708514de6a1d68ecad0c142d68c321293d728
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485578"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219632"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric yayınları
 
@@ -18,17 +18,16 @@ ms.locfileid: "96485578"
 - <a href="https://github.com/Azure/service-fabric-issues" target="blank">Sorun Izleme</a> 
 - <a href="/azure/service-fabric/service-fabric-support" target="blank">Destek Seçenekleri</a> 
 - <a href="/azure/service-fabric/service-fabric-versions" target="blank">Desteklenen sürümler</a> 
-- <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">Kod örnekleri</a>
+- <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">Kod Örnekleri</a>
 
 Bu makalede, Service Fabric çalışma zamanına ve SDK 'lara yönelik en son yayınlar ve güncelleştirmeler hakkında daha fazla bilgi sağlanmaktadır.
 
-## <a name="whats-new-in-service-fabric"></a>Service Fabric yenilikleri
+## <a name="service-fabric-72"></a>Service Fabric 7,2
 
-### <a name="service-fabric-72"></a>Service Fabric 7,2 
 Service Fabric çalışma zamanının 7,2 sürümünün araç ve SDK güncelleştirmeleriyle birlikte çeşitli Azure bölgelerine kullanıma sunulduğunu duyurmaktan mutluluk duyuyoruz. .NET SDK, Java SDK ve Service Fabric çalışma zamanına yönelik güncelleştirmeler Web Platformu Yükleyicisi, NuGet paketleri ve Maven depoları aracılığıyla kullanılabilir.
-## <a name="what-is-new-in-service-fabric-7"></a>Service Fabric 7 ' deki yenilikler nelerdir?
-Bu sürüm, temel özellikler ve geliştirmeler ile yüklenir. Önemli özelliklerden bazıları aşağıda vurgulanır:
-## <a name="key-announcements-in-72"></a>7,2 'deki önemli Duyurular
+
+### <a name="key-announcements"></a>Anahtar Duyurular
+
 - **Önizleme**: [**Service Fabric yönetilen kümeler**](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-managed-clusters-are-now-in-public-preview/ba-p/1721572) artık genel önizlemede. Service Fabric yönetilen kümeler, bir Service Fabric kümesini tek bir ARM kaynağına oluşturan temel kaynakları kapsülleyerek küme dağıtımını ve yönetimini basitleştirmeye yönelik olarak hedeflenir. Daha ayrıntılı bilgi için bkz. [Service Fabric yönetilen kümeye genel bakış](./overview-managed-cluster.md).
 - **Önizleme**: [**düğüm sayısından daha fazla sayıda örnek içeren, durum bilgisi olmayan hizmetleri destekleme**](./service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) artık genel önizlemeye sunuldu. Yerleştirme ilkesi, bir düğümde bir bölümün birden çok durum bilgisi olmayan örneğinin oluşturulmasına izin vermez.
 - [**Fabricobserver (FO) 3,0**](https://aka.ms/sf/fabricobserver) artık kullanılabilir.
@@ -37,7 +36,7 @@ Bu sürüm, temel özellikler ve geliştirmeler ile yüklenir. Önemli özellikl
     - Artık, uygulama parametreleri yükseltmesi aracılığıyla herhangi bir gözlemci ayarını değiştirebilirsiniz. Bu, belirli gözlemci ayarlarını değiştirmek için artık ıNFO yeniden dağıtmanız gerekmediği anlamına gelir. Lütfen [örneğe](https://github.com/microsoft/service-fabric-observer/blob/master/Documentation/Using.md#parameterUpdates)bakın.
 - [**Ubuntu 18,04 OneBox kapsayıcı görüntüleri Için destek**](https://hub.docker.com/_/microsoft-service-fabric-onebox).
 - **Önizleme**: [ **Service Fabric uygulamalar için Anahtar Kasası başvurusu **yalnızca sürümlenmiş gizli** dizileri destekler. Sürümler olmadan gizli dizileri desteklenmez.**](./service-fabric-keyvault-references.md)
-- SF SDK 'Sı, en son VS 2019 güncelleştirme 16.7.6 veya 16,8 Preview 4 ' ün yeni .NET Framework durum bilgisiz/durum bilgisi/aktör projelerini oluşturabilmesidir. En son VS güncelleştirmeniz yoksa, hizmet projesini oluşturduktan sonra, durum bilgisiz/durum bilgisi olan projeler için Microsoft. ServiceFabric. Services (sürüm 4.2. x) ve nuget.org ' den aktör projeleri için Microsoft. ServiceFabric. aktör (sürüm 4.2. x) yüklemek için Paket Yöneticisi 'ni kullanın.
+- SF SDK 'Sı, yeni .NET Framework durum bilgisiz/durum bilgisi/aktör projeleri oluşturmak için en son VS 2019 güncelleştirme 16.7.6 veya 16,8 Preview 4 ' ü gerektirir. En son VS güncelleştirmeniz yoksa, hizmet projesini oluşturduktan sonra, durum bilgisiz/durum bilgisi olan projeler için Microsoft. ServiceFabric. Services (sürüm 4.2. x) ve nuget.org ' den aktör projeleri için Microsoft. ServiceFabric. aktör (sürüm 4.2. x) yüklemek için Paket Yöneticisi 'ni kullanın.
 - **Runtocompletion**: Service Fabric, Konuk yürütülebilir dosyaları için çalıştırmanın tamamlanması kavramını destekler. Çoğaltma tamamlandığında bu güncelleştirme ile, bu çoğaltmaya ayrılan küme kaynakları serbest bırakılır.
 - [**Kaynak idare desteği geliştirildi**](./service-fabric-resource-governance.md): CPU ve bellek kaynakları için isteklere ve sınırlara izin verme.
 
@@ -45,8 +44,16 @@ Bu sürüm, temel özellikler ve geliştirmeler ile yüklenir. Önemli özellikl
 | Sürüm tarihi | Yayınla | Daha fazla bilgi |
 |---|---|---|
 | 21 Ekim 2020 | [Azure Service Fabric 7,2](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-2-release/ba-p/1805653)  | [Sürüm notları](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72-releasenotes.md)|
+| 9 Kasım 2020 | [Azure Service Fabric 7,2 Ikinci yenileme sürümü](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-2-second-refresh-release/ba-p/1874738) | [Sürüm notları](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU2-releasenotes.md) |
+| 10 Kasım 2020  | Azure Service Fabric 7,2 üçüncü yenileme sürümü | [Sürüm notları](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU3-releasenotes.md) |
+| 2 Aralık 2020 | [Azure Service Fabric 7,2 dördüncü yenileme sürümü](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-2-fourth-refresh-release/ba-p/1950584) | [Sürüm notları](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU4.md)
+
+
+
+## <a name="previous-versions"></a>Önceki sürümler
 
 ### <a name="service-fabric-71"></a>Service Fabric 7,1
+
 Geçerli COVı-19 çapraz olduğu ve müşterilerimizin karşılaştığı zorluk göz önünde bulundurarak 7,1 kullanılabilir hale getirdik, ancak Otomatik yükseltmeleri alacak şekilde kümeleri otomatik olarak yükseltmeyecektir. Müşterilerin, bu kullanıcılara en uygun olan yükseltmeleri uygulayabilmesi için, beklenmeyen kesintilere engel olmak üzere Otomatik yükseltmeleri durakladık.
 
 [Azure Portal](./service-fabric-cluster-upgrade-version-azure.md#upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-portal) aracılığıyla veya bir [Azure Resource Manager dağıtımı](./service-fabric-cluster-upgrade-version-azure.md#set-the-upgrade-mode-using-a-resource-manager-template)aracılığıyla 7,1 ' e güncelleştirebilirsiniz.
@@ -54,10 +61,9 @@ Geçerli COVı-19 çapraz olduğu ve müşterilerimizin karşılaştığı zorlu
 Otomatik yükseltmelere sahip Service Fabric kümeleri, standart dağıtım yordamını sürdürtikten sonra otomatik olarak 7,1 güncelleştirmesini almaya başlayacaktır. Standart dağıtım [Service Fabric Tech Community sitesinde](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)başlamadan önce başka bir duyuru sağlayacağız.
 Ayrıca, 7,1 6,5 ' den başlayan önemli yayınlar için destek tarihinin sonunda güncelleştirme yayımladık [.](./service-fabric-versions.md#supported-versions) 
 
-## <a name="what-is-new-in-service-fabric-71"></a>Service Fabric 7,1 ' deki yenilikler nelerdir?
-Service Fabric sonraki sürümünü duyurmaktan mutluluk duyuyoruz. Bu sürüm, temel özellikler ve geliştirmeler ile yüklenir. Önemli özelliklerden bazıları aşağıda vurgulanır:
-## <a name="key-announcements"></a>Anahtar Duyurular
-- **General Availability** [ **Service Fabric uygulamalar Için Service Fabric yönetilen kimliklerin** genel kullanılabilirliği](./concepts-managed-identity.md)
+#### <a name="key-announcements"></a>Anahtar Duyurular
+
+-  [ **Service Fabric uygulamalar Için Service Fabric yönetilen kimliklerin** genel kullanılabilirliği](./concepts-managed-identity.md)
 - [**Ubuntu 18,04 desteği**](./service-fabric-tutorial-create-vnet-and-linux-cluster.md)
  - [**Önizleme: sanal makine ölçek kümesi kısa ömürlü işletim sistemi disk desteği**](./service-fabric-cluster-azure-deployment-preparation.md#use-ephemeral-os-disks-for-virtual-machine-scale-sets)* *: kısa ömürlü işletim sistemi diskleri yerel sanal makinede oluşturulur ve uzak Azure depolama 'ya kaydedilmez. Geleneksel kalıcı işletim sistemi disklerine kıyasla, kısa ömürlü işletim sistemi disklerine kıyasla tüm Service Fabric düğüm türleri (birincil ve Ikincil) için önerilir:
       -  İşletim sistemi diskine okuma/yazma gecikmesini azaltma
@@ -70,7 +76,7 @@ Service Fabric sonraki sürümünü duyurmaktan mutluluk duyuyoruz. Bu sürüm, 
     - [**Fabricgözlemci (FO) 2,0**](https://github.com/microsoft/service-fabric-observer)-tüm düğümlerde çalışır, sistem durumu olayları oluşturur, Kullanıcı tarafından yapılandırılan kaynak kullanım eşiklerine ulaşıldığında Telemetriyi yayar. Bu sürüm, izleme, veri yönetimi, sağlık olayı ayrıntıları, yapılandırılmış telemetri genelinde çeşitli geliştirmeler içerir.
      - [**Clustergözlemci (Co) 1,1**](https://github.com/microsoft/service-fabric-observer/tree/master/ClusterObserver) -tek bir düğümde çalışır, küme düzeyi durum telemetrisi yakalar. Bu sürümde, Kümegözlemci Ayrıca düğüm durumunu izler ve düğüm devre dışı bırakıldığında ve Kullanıcı tarafından belirtilen süre boyunca devre dışı bırakıldığında Telemetriyi yayar.
 
-### <a name="improve-application-life-cycle-experience"></a>Uygulama yaşam döngüsü deneyimini geliştirme
+#### <a name="improve-application-life-cycle-experience"></a>Uygulama yaşam döngüsü deneyimini geliştirme
 
 - **[Önizleme: istek boşaltma](./service-fabric-application-upgrade-advanced.md#avoid-connection-drops-during-stateless-service-planned-downtime)**: hizmet yükseltmeleri veya düğüm devre dışı bırakma gibi planlı hizmet bakımı sırasında hizmetlerin bağlantıları düzgün bir şekilde boşaltmasını sağlamak istersiniz. Bu özellik, hizmet yapılandırmasında bir örnek kapatma gecikme süresi ekler. Planlanan işlemler sırasında, SF hizmetin adresini bulma işleminden kaldırır ve ardından hizmeti kapatmadan önce bu süreyi bekler.
 - **[Otomatik alt küme algılama ve dengeleme](./cluster-resource-manager-subclustering.md)**: farklı yerleştirme kısıtlamalarına sahip hizmetlerde ortak bir [yük ölçümü](./service-fabric-cluster-resource-manager-metrics.md)olduğunda, alt kümeleme gerçekleşir. Farklı düğüm kümelerindeki yükün önemli ölçüde farklı olduğu durumlarda Service Fabric kümesi, yerleştirme kısıtlamaları nedeniyle mümkün olan en iyi dengeyi sahip olsa bile kümenin imse olduğunu düşündü Kaynak Yöneticisi. Sonuç olarak, büyük olasılıkla gereksiz hizmet hareketlerine neden olan ("ımbilanço" önemli ölçüde iyileşebildiğinden) kümeyi yeniden dengelemeye çalışır. Bu sürümden itibaren, Küme Kaynak Yöneticisi artık bu yapılandırma türlerini otomatik olarak algılamaya çalışır ve ne zaman, önemli bir geliştirme yapamayacağı için bu tür yapılandırmayı otomatik olarak algılamaya ve ne zaman tek tek bırakması gerektiğine çalışacaktır.  
@@ -78,10 +84,10 @@ Service Fabric sonraki sürümünü duyurmaktan mutluluk duyuyoruz. Bu sürüm, 
 - Kapsayıcılı uygulamalar için etkin hale [**getirme araştırması**](./probes-codepackage.md) mekanizması. Lizur araştırması Kapsayıcılı uygulamanın tam olarak duyurulmasına ve zamanında yanıt vermediklerinde yeniden başlatmaya neden olur.
 - [**Hizmetler için tamamlama/bir kez çalıştırma**](./run-to-completion.md)**
 
-### <a name="image-store-improvements"></a>Görüntü Deposu iyileştirmeler
- - Service Fabric 7,1, **düğümler arasında dosya aktarımını varsayılan olarak güvenli hale getirmek için özel aktarım** kullanır. SMB dosya paylaşımındaki bağımlılık 7,1 sürümünden kaldırılmıştır. Güvenli SMB dosya paylaşımları, müşterinin varsayılan olarak devre dışı bırakmak ve eski sürüme yükseltmek için Görüntü Deposu hizmet çoğaltmasını içeren düğümlerde hala mevcut.
+#### <a name="image-store-improvements"></a>Görüntü Deposu iyileştirmeler
+ - Service Fabric 7,1, **düğümler arasında dosya aktarımını varsayılan olarak güvenli hale getirmek için özel aktarım** kullanır. SMB dosya paylaşımındaki bağımlılık 7,1 sürümünden kaldırılmıştır. Güvenli SMB dosya paylaşımları, müşterinin varsayılan olarak devre dışı bırakmak ve eski sürüme yükseltmek için Görüntü Deposu hizmet çoğaltması içeren düğümlerde hala mevcuttur.
        
- ### <a name="reliable-collections-improvements"></a>Güvenilir koleksiyonlar geliştirmeleri
+ #### <a name="reliable-collections-improvements"></a>Güvenilir koleksiyonlar geliştirmeleri
 
 - [**Bellekte yalnızca güvenilir koleksiyonlar kullanılarak durum bilgisi olan hizmetler için bir destek**](./service-fabric-work-with-reliable-collections.md#volatile-reliable-collections)sağlanır: geçici güvenilir koleksiyonlar, verilerin büyük ölçekli kesintilere karşı dayanıklılık açısından diskte kalıcı olmasını sağlar; örneğin, büyük ölçekte veri kaybı olduğu gibi, çoğaltılan önbellek gibi iş yükleri için de kullanılabilir. [Geçici güvenilir koleksiyonların sınırlamalarına ve kısıtlamalarına](./service-fabric-reliable-services-reliable-collections-guidelines.md#volatile-reliable-collections)bağlı olarak, çekirdek kaybının nadir olarak görülen hizmetler için bunu kalıcılığı gerektirmeyen iş yükleri için öneririz.
 - [**Önizleme: yedekleme gezgini Service Fabric**](https://github.com/microsoft/service-fabric-backup-explorer): Service Fabric durum bilgisi olan uygulamalar Için güvenilir koleksiyonlar yedeklemelerinin yönetimini kolaylaştırmak için, Service Fabric yedekleme Gezgini kullanıcıların
@@ -90,7 +96,7 @@ Service Fabric sonraki sürümünü duyurmaktan mutluluk duyuyoruz. Bu sürüm, 
     - Güvenilir koleksiyonların geçerli anlık görüntüsünün yedeklemesini oluştur
     - Veri bozulmasını çözme
                  
-### <a name="service-fabric-71-releases"></a>Service Fabric 7,1 yayınları
+#### <a name="service-fabric-71-releases"></a>Service Fabric 7,1 yayınları
 | Sürüm tarihi | Yayınla | Daha fazla bilgi |
 |---|---|---|
 | 20 Nisan 2020 | [Azure Service Fabric 7,1](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-1-release/ba-p/1311373)  | [Sürüm notları](https://github.com/microsoft/service-fabric/tree/master/release_notes/Service-Fabric-71-releasenotes.md)|
@@ -98,16 +104,17 @@ Service Fabric sonraki sürümünü duyurmaktan mutluluk duyuyoruz. Bu sürüm, 
 | 20 Temmuz 2020 | [Microsoft Azure Service Fabric 7,1 Ikinci yenileme](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-1-second-refresh-release/ba-p/1534246) | [Sürüm notları](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-71CU2-releasenotes.md)
 | 12 Ağustos 2020 | [Microsoft Azure Service Fabric 7,1 üçüncü yenileme](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-1-third-refresh-release/ba-p/1587586) | [Sürüm notları](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-71CU3-releasenotes.md)
 | 10 Eylül 2020 | [Microsoft Azure Service Fabric 7,1 dördüncü yenileme](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-1-fourth-refresh-release/ba-p/1653859)  | [Sürüm notları](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-71CU5-releasenotes.md)|
+| 7 Ekim 2020 | Microsoft Azure Service Fabric 7,1 altıncı yenileme | [Sürüm notları](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-71CU6-releasenotes.md)|
+| 23 Kasım 2020 | Microsoft Azure Service Fabric 7,1 sekizinci yenileme | [Sürüm notları](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-71CU8-releasenotes.md)|
+
 
 ### <a name="service-fabric-70"></a>Service Fabric 7,0
 
 Azure Service Fabric 7,0 artık kullanılabilir! Azure portal veya Azure Resource Manager dağıtımı aracılığıyla 7,0 ' e güncelleştirebilirsiniz. Tatil döneminde yer alan yayınlarda müşteri geri bildirimleri nedeniyle, kümeler otomatik olarak güncelleştirme için ayarlanan, Ocak tarihine kadar otomatik yükseltmeleri alacak şekilde başlamacağız.
 Ocak ayında, standart çıkış prosedürü ve otomatik yükseltmeler etkinleştirilmiş kümeler, 7,0 güncelleştirmesini otomatik olarak almaya başlayacaktır. Kullanıma alma başlamadan önce başka bir duyuru sağlayacağız.
 Ayrıca, bu ilkenin dikkate alınması gerektiğini göstermek için planlanmış yayın tarihlerimizi de güncelleştireceğiz. Gelecekteki [Sürüm zamanlamalarımızla](https://github.com/Microsoft/service-fabric/#service-fabric-release-schedule)ilgili güncelleştirmeler için buraya bakın.
- 
-Bu, Service Fabric en son sürümüdür ve temel özellikler ve geliştirmeler ile yüklenir.
 
-### <a name="key-announcements"></a>Anahtar Duyurular
+#### <a name="key-announcements"></a>Anahtar Duyurular
  - [**Uygulama gizli dizileri Için Keyvaultreference desteği (Önizleme)**](./service-fabric-keyvault-references.md): Service Fabric [yönetilen kimlikleri](./concepts-managed-identity.md) etkinleştirilmiş olan uygulamalar artık bir Key Vault gizli URL 'sine doğrudan bir ortam değişkeni, uygulama parametresi veya kapsayıcı deposu kimlik bilgileri olarak başvurabilir. Service Fabric, uygulamanın yönetilen kimliğini kullanarak gizli anahtarı otomatik olarak çözer. 
      
 - **Durum bilgisi olmayan hizmetler Için geliştirilmiş yükseltme güvenliği**: bir uygulama yükseltmesi sırasında kullanılabilirliği garantilemek için, [durum bilgisi olmayan hizmetler için en az sayıda örnek](/dotnet/api/system.fabric.description.statelessservicedescription?view=azure-dotnet) belirlemek için kullanılabilir kabul edilecek yeni yapılandırmaların tanıtıldık. Bu değer daha önce tüm hizmetler için 1 idi ve değiştirilemez. Bu yeni hizmet başına güvenlik denetimi sayesinde, hizmetlerinizin uygulama yükseltmeleri sırasında, küme yükseltmeleri sırasında ve Service Fabric sistem durumu ve güvenlik denetimlerine dayanan diğer bakımda en az sayıda örnek korumasını sağlayabilirsiniz.
@@ -126,7 +133,7 @@ Bu, Service Fabric en son sürümüdür ve temel özellikler ve geliştirmeler i
 
 Ayrıca, bu sürüm diğer yeni özellikler, hata düzeltmeleri ve desteklenebilirlik, güvenilirlik ve performans iyileştirmeleri içerir. Değişikliklerin tam listesi için lütfen [sürüm notlarına](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_70.md)bakın.
 
-### <a name="service-fabric-70-releases"></a>Service Fabric 7,0 yayınları
+#### <a name="service-fabric-70-releases"></a>Service Fabric 7,0 yayınları
 
 | Sürüm tarihi | Yayınla | Daha fazla bilgi |
 |---|---|---|
@@ -134,6 +141,8 @@ Ayrıca, bu sürüm diğer yeni özellikler, hata düzeltmeleri ve desteklenebil
 | 30 Ocak 2020 | [Azure Service Fabric 7,0 yenileme sürümü](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-0-second-refresh-release/ba-p/1137690)  | [Sürüm notları](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-70CU2-releasenotes.md)|
 | 6 Şubat 2020 | [Azure Service Fabric 7,0 yenileme sürümü](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-0-third-refresh-release/ba-p/1156508)  | [Sürüm notları](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-70CU3-releasenotes.md)|
 | 2 Mart 2020 | [Azure Service Fabric 7,0 yenileme sürümü](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-0-fourth-refresh-release/ba-p/1205414)  | [Sürüm notları](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-70CU4-releasenotes.md)
+| 6 Mayıs 2020 | [Azure Service Fabric 7,0 altıncı yenileme sürümü](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-0-sixth-refresh-release/ba-p/1365709) | [Sürüm notları](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-70CU6-releasenotes.md)|
+| 9 Ekim 2020 | Azure Service Fabric 7,0 dokuzuncu yenileme sürümü | [Sürüm notları](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-70CU9-releasenotes.md)|
 
 ### <a name="service-fabric-65"></a>Service Fabric 6,5
 
@@ -142,7 +151,7 @@ Bu sürüm, küme ve uygulama yaşam döngüsü yönetimini kolaylaştırmak iç
 > [!IMPORTANT]
 > Service Fabric 6,5, Visual Studio 2015 ' de Service Fabric araçları desteğiyle son sürümdür. Müşterilerin ileri giderek [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) ' e taşınması önerilir.
 
-Service Fabric 6,5 ' deki yenilikler aşağıda verilmiştir:
+Service Fabric 6,5 ' deki yenilikler:
 
 - Service Fabric Explorer, görüntü deposuna yüklediğiniz uygulamaları incelemek için bir [görüntü deposu Görüntüleyici](service-fabric-visualizing-your-cluster.md#image-store-viewer) içerir.
 
@@ -164,7 +173,7 @@ Service Fabric 6,5 ' deki yenilikler aşağıda verilmiştir:
 
 Daha fazla ayrıntı için [Service Fabric 6,5 sürüm notlarına](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65.pdf)bakın.
 
-### <a name="service-fabric-65-releases"></a>Service Fabric 6,5 yayınları
+#### <a name="service-fabric-65-releases"></a>Service Fabric 6,5 yayınları
 
 | Sürüm tarihi | Yayınla | Daha fazla bilgi |
 |---|---|---|
@@ -174,8 +183,6 @@ Daha fazla ayrıntı için [Service Fabric 6,5 sürüm notlarına](https://githu
 | 23 Ağu 2019 | [Azure Service Fabric 6,5 yenileme sürümü](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Third-Refresh-Release/ba-p/818599)  | [Sürüm notları](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU3.pdf)  |
 | 14 Eki, 2019 | [Azure Service Fabric 6,5 yenileme sürümü](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Fifth-Refresh-Release/ba-p/913296)  | [Sürüm notları] (https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU5.md  |
 
-
-## <a name="previous-versions"></a>Önceki sürümler
 
 ### <a name="service-fabric-64-releases"></a>Service Fabric 6,4 yayınları
 

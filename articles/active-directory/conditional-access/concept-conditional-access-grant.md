@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 536a9641b68ccd2510a7891b46483a322fb6ecb7
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 6c065b7a7269c8da42493ede50466f44f7dd2658
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900935"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219955"
 ---
 # <a name="conditional-access-grant"></a>Koşullu erişim: ver
 
@@ -139,7 +139,7 @@ Bu ayar, aşağıdaki istemci uygulamaları için geçerlidir:
 - Dokuz posta-e-posta & takvimi
 
 > [!NOTE]
-> Microsoft Kaizala, Microsoft Skype Kurumsal ve Microsoft Visio, **Uygulama koruma Ilkesi gerektir** iznini desteklemez. Bu uygulamaların çalışmasını gerektiriyorsa, lütfen **onaylanan uygulamaları gerektir** ' i kullanın. İki izin kümesi arasındaki OR yan tümcesinin kullanımı, bu üç uygulama için çalışmaz.
+> Microsoft Microsoft ekipleri, Microsoft Kaizala, Microsoft Skype Kurumsal ve Microsoft Visio, **Uygulama koruma Ilkesi gerektir** iznini desteklemez. Bu uygulamaların çalışmasını gerektiriyorsa, lütfen **onaylanan uygulamaları gerektir** ' i kullanın. İki izin kümesi arasındaki OR yan tümcesinin kullanımı, bu üç uygulama için çalışmaz.
 
 **Açıklamalar**
 

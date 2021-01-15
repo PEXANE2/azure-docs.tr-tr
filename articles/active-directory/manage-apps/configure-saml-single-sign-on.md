@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: ec020ecd4c2bcf6e9186afb3d2c4a79ef235c371
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 32e654f002e3ba0c8bf72fb781b32d9098d83c00
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658919"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219853"
 ---
 # <a name="understand-saml-based-single-sign-on"></a>SAML tabanlı çoklu oturum açmayı anlama
 
@@ -32,7 +32,7 @@ Azure AD 'nin kimlik sağlayıcısı (IDP) olarak kullanılması ve çoklu oturu
 > [!IMPORTANT] 
 > **Kurumsal uygulamalarda** bir uygulama Için gezintide **Çoklu oturum açma** seçeneğinin mevcut olmadığı bazı senaryolar vardır. 
 >
-> Uygulama **uygulama kayıtları** kullanılarak kaydedilmişse, çoklu oturum açma özelliği varsayılan olarak OIDC OAuth kullanacak şekilde yapılandırılır. Bu durumda, **Çoklu oturum açma** seçeneği, **Kurumsal uygulamalar** altındaki gezinmede gösterilmez. Özel uygulamanızı eklemek için **uygulama kayıtları** kullandığınızda, bildirim dosyasındaki seçenekleri yapılandırırsınız. Bildirim dosyası hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory uygulama bildirimi](../develop/reference-app-manifest.md). SSO standartları hakkında daha fazla bilgi edinmek için bkz. [Microsoft Identity platform kullanarak kimlik doğrulama ve yetkilendirme](../develop/authentication-vs-authorization.md#authentication-and-authorization-using-microsoft-identity-platform). 
+> Uygulama **uygulama kayıtları** kullanılarak kaydedilmişse, çoklu oturum açma özelliği varsayılan olarak OIDC OAuth kullanacak şekilde yapılandırılır. Bu durumda, **Çoklu oturum açma** seçeneği, **Kurumsal uygulamalar** altındaki gezinmede gösterilmez. Özel uygulamanızı eklemek için **uygulama kayıtları** kullandığınızda, bildirim dosyasındaki seçenekleri yapılandırırsınız. Bildirim dosyası hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory uygulama bildirimi](../develop/reference-app-manifest.md). SSO standartları hakkında daha fazla bilgi edinmek için bkz. [Microsoft Identity platform kullanarak kimlik doğrulama ve yetkilendirme](../develop/authentication-vs-authorization.md#authentication-and-authorization-using-the-microsoft-identity-platform). 
 >
 > Bir uygulamanın başka bir kiracıda barındırıldığı veya hesabınızın gerekli izinleri (genel yönetici, bulut uygulaması Yöneticisi, uygulama Yöneticisi veya hizmet sorumlusu sahibi) yoksa, **Çoklu oturum açma** 'nın gezinmede eksik olduğu diğer senaryolar. İzinler Ayrıca **Çoklu oturum** açmayı açabiliyor ancak kaydedemeyeceksiniz bir senaryoya neden olabilir. Azure AD Yönetim rolleri hakkında daha fazla bilgi için bkz https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) . (.
 
@@ -44,7 +44,7 @@ Uygulama satıcısından değerleri almalısınız. Değerleri el ile girebilir 
 > [!TIP]
 > Birçok uygulama zaten Azure AD ile çalışacak şekilde önceden yapılandırılmıştır. Bu uygulamalar, Azure AD kiracınıza bir uygulama eklerken gözatabilmeniz gereken uygulamalar galerisinde listelenmiştir. [Hızlı başlangıç serisi](add-application-portal-setup-sso.md) , süreç boyunca size yol gösterir. Galerideki uygulamalar için ayrıntılı, adım adım yönergeler bulacaksınız. Adımlara erişmek için, hızlı başlangıç serisinde açıklandığı şekilde uygulamanın SAML yapılandırması sayfasındaki bağlantıya tıklayabilir veya [SaaS uygulama yapılandırma öğreticilerinde](../saas-apps/tutorial-list.md)tüm uygulama yapılandırma öğreticilerinin listesine gidebilirsiniz.
 
-| Temel SAML yapılandırma ayarı | SP ile başlatılan | idP ile başlatılan | Açıklama |
+| Temel SAML yapılandırma ayarı | SP ile başlatılan | idP ile başlatılan | Description |
 |:--|:--|:--|:--|
 | **Tanımlayıcı (Varlık Kimliği)** | Bazı uygulamalar için gereklidir | Bazı uygulamalar için gereklidir | Uygulamayı benzersiz olarak tanımlar. Azure AD, kimliği, SAML belirtecinin hedef kitle parametresi olarak uygulamaya gönderir. Uygulamanın doğrulaması bekleniyordu. Bu değer ayrıca uygulama tarafından sağlanan SAML meta verilerinde Varlık Kimliği olarak da görünür. Şu kalıbı kullanan bir URL girin: ' https:// <subdomain> . contoso.com ' *Bu değeri, uygulama tarafından gönderilen **Authisteyner** (SAML isteği) içinde **veren** öğesi olarak bulabilirsiniz.* |
 | **Yanıt URL'si** | Gerekli | Gerekli | Uygulamanın SAML belirtecini almayı beklediği konumu belirtir. Yanıt URL'si, Onay Belgesi Tüketici Hizmeti (ACS) URL'si olarak da bilinir. Birden çok yanıt URL 'si belirtmek için ek yanıt URL 'si alanlarını kullanabilirsiniz. Örneğin, birden çok alt etki alanları için ek yanıt URL 'Leri gerekebilir. Ya da, sınama amaçları için aynı anda birden çok yanıt URL 'Si (yerel ana bilgisayar ve genel URL 'Ler) belirtebilirsiniz. |
@@ -136,4 +136,4 @@ Daha fazla bilgi için bkz. [Azure Active Directory içindeki uygulamalarda SAML
 - [Uygulama yönetiminde hızlı başlangıç serisi](view-applications-portal.md)
 - [Uygulamaya Kullanıcı veya Grup atama](./assign-user-or-group-access-portal.md)
 - [Otomatik Kullanıcı hesabı sağlamayı yapılandırma](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-- [Tek Sign-On SAML Protokolü](../develop/single-sign-on-saml-protocol.md)
+- [Çoklu Oturum Açma SAML protokolü](../develop/single-sign-on-saml-protocol.md)
