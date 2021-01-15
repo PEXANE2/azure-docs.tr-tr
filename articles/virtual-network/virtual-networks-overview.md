@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/03/2020
 ms.author: kumud
-ms.openlocfilehash: 11651b7a76ea0e61f78f3b2f305e39ed621df391
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: e1efd02d60ba874178f24da2b441fc122e4a1912
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109326"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218544"
 ---
 # <a name="what-is-azure-virtual-network"></a>Azure Sanal Ağı nedir?
 
@@ -31,7 +31,7 @@ Azure sanal ağ, Azure kaynaklarının birbirleriyle, internet ve şirket içi a
 Bir sanal ağ içindeki tüm kaynaklar varsayılan olarak Internet ile giden iletişim kurabilir. Bir kaynağa genel IP adresi veya genel Load Balancer atayarak o kaynağa gelen yönde iletişim kurabilirsiniz. Giden bağlantılarınızı yönetmek için genel IP adresi veya genel Load Balancer da kullanabilirsiniz.  Azure'daki giden bağlantılar hakkında daha fazla bilgi edinmek için bkz. [Giden bağlantılar](../load-balancer/load-balancer-outbound-connections.md), [Genel IP adresleri](virtual-network-public-ip-address.md) ve [Load Balancer](../load-balancer/load-balancer-overview.md).
 
 >[!NOTE]
->Yalnızca sistem içi [Standart Load Balancer](../load-balancer/load-balancer-standard-overview.md) kullanıldığında [giden bağlantıların](../load-balancer/load-balancer-outbound-connections.md) örnek düzeyinde genel IP veya genel Load Balancer ile nasıl çalışacağını tanımlamadığınız sürece giden bağlantı kullanılamaz.
+>Yalnızca sistem içi [Standart Load Balancer](../load-balancer/load-balancer-overview.md) kullanıldığında [giden bağlantıların](../load-balancer/load-balancer-outbound-connections.md) örnek düzeyinde genel IP veya genel Load Balancer ile nasıl çalışacağını tanımlamadığınız sürece giden bağlantı kullanılamaz.
 
 ### <a name="communicate-between-azure-resources"></a>Azure kaynakları arasında iletişim kurma
 
@@ -53,7 +53,7 @@ Aşağıdaki seçenekleri bir arada kullanarak şirket içi bilgisayarlarınız�
 
 Aşağıdaki seçeneklerden birini veya her ikisini de kullanarak alt ağlar arasındaki ağ trafiğini filtreleyebilirsiniz:
 
-- **Ağ güvenlik grupları:** Ağ güvenlik grupları ve uygulama güvenlik grupları, kaynak ve hedef IP adresi, bağlantı noktası ve protokole göre kaynaklardan gelen ve giden trafiği filtrelemenizi sağlayan birden çok gelen ve giden güvenlik kuralına sahip olabilir. Daha fazla bilgi için bkz. [ağ güvenlik grupları](security-overview.md#network-security-groups) veya [uygulama güvenlik grupları](security-overview.md#application-security-groups).
+- **Ağ güvenlik grupları:** Ağ güvenlik grupları ve uygulama güvenlik grupları, kaynak ve hedef IP adresi, bağlantı noktası ve protokole göre kaynaklardan gelen ve giden trafiği filtrelemenizi sağlayan birden çok gelen ve giden güvenlik kuralına sahip olabilir. Daha fazla bilgi için bkz. [ağ güvenlik grupları](./network-security-groups-overview.md#network-security-groups) veya [uygulama güvenlik grupları](./network-security-groups-overview.md#application-security-groups).
 - **Ağ sanal gereçleri:** Ağ sanal gereci; güvenlik duvarı, WAN iyileştirmesi veya diğer ağ işlevi gibi ağ işlevlerini gerçekleştiren bir sanal makinedir. Bir sanal ağda dağıtabileceğiniz kullanılabilir ağ sanal gereçleri listesini görüntülemek için bkz. [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances).
 
 ### <a name="route-network-traffic"></a>Ağ trafiğini yönlendirme

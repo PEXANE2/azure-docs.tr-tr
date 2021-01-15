@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 12/15/2020
+ms.date: 01/14/2020
 ms.custom: contperf-fy21q1,contperfq1
-ms.openlocfilehash: 17c5cc265b4199d745325bf2c9d9fbca24cc6506
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 61305e4f9ba45cb7c13a96bee9d1aab81108bb4d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617128"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220703"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Derin öğrenme ile Machine Learning Azure Machine Learning
 
@@ -57,7 +57,7 @@ Aşağıdaki tabloda, daha ayrıntılı olarak iki teknik karşılaştırılmakt
 |  **Yürütme süresi** | Birkaç saniye ile birkaç saat arasında uyum sağlamak için karşılaştırmayı daha az zaman alır. | Derin bir öğrenme algoritması birçok katman içerdiğinden, genellikle eğitmek uzun sürer. |
 |  **Çıktı** | Çıktı genellikle bir puan veya sınıflandırma gibi sayısal bir değerdir. | Çıktıda metin, puan veya ses gibi birden çok biçim olabilir. |
 
-## <a name="transfer-learning"></a>Öğrenmeyi aktarma
+## <a name="what-is-transfer-learning"></a>Aktarım öğrenimi nedir
 
 Derinlemesine öğrenme modellerini eğitmek için genellikle büyük miktarda eğitim verisi, yüksek kaliteli işlem kaynakları (GPU, TPU) ve daha uzun bir eğitim süresi gerekir. Bunlardan herhangi birine sahip olmadığınız senaryolarda, eğitim sürecini *Aktarım öğrenimi* olarak bilinen bir teknik kullanarak kısayol ile deneyebilirsiniz.
 
@@ -65,7 +65,7 @@ Aktarım öğrenimi, bir problemi farklı ancak ilgili bir soruna çözmeyle eld
 
 Sinir Networks yapısı nedeniyle, ilk katman kümesi genellikle alt düzey özellikler içerir, ancak son katman kümesi söz konusu etki alanına yakın olan daha yüksek düzeyde bir özelliği içerir. Son katmanları yeni bir etki alanında veya bir sorun ile kullanmak üzere yeniden seçerek, yeni modeli eğmek için gereken süre, veri ve işlem kaynaklarının sayısını önemli ölçüde azaltabilirsiniz. Örneğin, otomobilleri tanıyan bir modeliniz zaten varsa, bu modeli aktarım öğrenimi 'ni kullanarak yeniden amaçlandırın, Ayrıca, aynı zamanda structuralks, otodöngüleri ve diğer araçlar türlerini de tanımak için kullanabilirsiniz.
 
-Azure Machine Learning 'de açık kaynaklı bir çerçeve kullanarak görüntü sınıflandırması için aktarım öğrenimini nasıl uygulayacağınızı öğrenin: [bir Pytorch modeli kullanarak görüntüleri sınıflandırın](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri).
+Azure Machine Learning 'de açık kaynaklı bir çerçeve kullanarak görüntü sınıflandırması için aktarım öğrenimini nasıl uygulayacağınızı öğrenin: [Aktarım öğrenimi kullanarak derin bir öğrenme PyTorch modeli eğitme](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri).
 
 ## <a name="deep-learning-use-cases"></a>Derin öğrenme kullanım örnekleri
 

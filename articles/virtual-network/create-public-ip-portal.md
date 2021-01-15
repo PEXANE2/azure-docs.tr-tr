@@ -11,22 +11,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: bd35d3288591a01c14e306960601eef6dea7e761
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 02a6e934b517cdd118b6175d9cfef73bee4c996d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954150"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223015"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak genel IP adresi oluşturma
 
-Bu makalede, Azure portal kullanarak genel IP adresi kaynağı oluşturma gösterilmektedir. Bu kaynakların hangi kaynaklarla ilişkilendiribileceği hakkında daha fazla bilgi için, temel ve standart SKU arasındaki fark ve diğer ilgili bilgiler için bkz. [genel IP adresleri](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses).  Bu örnekte yalnızca IPv4 adreslerine odaklanacağız; IPv6 adresleri hakkında daha fazla bilgi için bkz. [Azure VNET Için IPv6](https://docs.microsoft.com/azure/virtual-network/ipv6-overview).
+Bu makalede, Azure portal kullanarak genel IP adresi kaynağı oluşturma gösterilmektedir. Bu kaynakların hangi kaynaklarla ilişkilendiribileceği hakkında daha fazla bilgi için, temel ve standart SKU arasındaki fark ve diğer ilgili bilgiler için bkz. [genel IP adresleri](./public-ip-addresses.md).  Bu örnekte yalnızca IPv4 adreslerine odaklanacağız; IPv6 adresleri hakkında daha fazla bilgi için bkz. [Azure VNET Için IPv6](./ipv6-overview.md).
 
 # <a name="standard-sku---using-zones"></a>[**Standart SKU-bölgeleri kullanma**](#tab/option-create-public-ip-standard-zones)
 
 **Mystandardzrpublicıp** adlı standart bölge-YEDEKLI genel IP adresi oluşturmak için aşağıdaki adımları kullanın.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. **Kaynak oluştur**’u seçin. 
 3. Arama kutusuna *genel IP adresi* yazın.
 4. Arama sonuçlarında **genel IP adresi**' ni seçin. Sonra, **genel IP adresi** sayfasında **Oluştur**' u seçin.
@@ -37,7 +37,7 @@ Bu makalede, Azure portal kullanarak genel IP adresi kaynağı oluşturma göste
     | IP sürümü              | IPv4 seçin                 |    
     | SKU                     | **Standart** seçin         |
     | Katman (gösteriliyorsa *)                  | **Bölgesel** seçme         |
-    | Ad                    | *Mystandardzrpublicıp* girin          |
+    | Name                    | *Mystandardzrpublicıp* girin          |
     | IP adresi ataması   | Bu, "static" olarak kilitlenecek                                        |
     | Boşta kalma zaman aşımı (dakika)  | Değeri 4 ' te bırakın        |
     | DNS ad etiketi          | Değeri boş bırakın    |
@@ -46,15 +46,15 @@ Bu makalede, Azure portal kullanarak genel IP adresi kaynağı oluşturma göste
     | Konum                | **Doğu ABD 2** seçin      |
     | Kullanılabilirlik Alanı       | **Bölge yedekli** seçeneğini belirleyin veya belirli bir bölgeyi seçin (aşağıdaki nota bakın) |
 
-Bunların [kullanılabilirlik alanları](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones)bölgelerde yalnızca geçerli seçimler olduğunu unutmayın.  (Bu bölgelerde belirli bir bölgeyi de seçebilirsiniz, ancak bu bölge, bir hataya dayanıklı olmayacaktır.)
+Bunların [kullanılabilirlik alanları](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)bölgelerde yalnızca geçerli seçimler olduğunu unutmayın.  (Bu bölgelerde belirli bir bölgeyi de seçebilirsiniz, ancak bu bölge, bir hataya dayanıklı olmayacaktır.)
 
-\* = Katman, şu anda önizleme aşamasında olan [çapraz bölge Load Balancer](https://docs.microsoft.com/azure/load-balancer/cross-region-overview) işlevleriyle ilgilidir.
+\* = Katman, şu anda önizleme aşamasında olan [çapraz bölge Load Balancer](../load-balancer/cross-region-overview.md) işlevleriyle ilgilidir.
 
 # <a name="basic-sku"></a>[**Temel SKU**](#tab/option-create-public-ip-basic)
 
 **Mybasicpublicıp** adlı temel bir STATIK genel IP adresi oluşturmak için aşağıdaki adımları kullanın.  Temel genel IP 'Lerde kullanılabilirlik alanları kavramı yoktur.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. **Kaynak oluştur**’u seçin. 
 3. Arama kutusuna *genel IP adresi* yazın.
 4. Arama sonuçlarında **genel IP adresi**' ni seçin. Sonra, **genel IP adresi** sayfasında **Oluştur**' u seçin.
@@ -64,7 +64,7 @@ Bunların [kullanılabilirlik alanları](https://docs.microsoft.com/azure/availa
     | ---                     | ---                         |
     | IP sürümü              | IPv4 seçin                 |    
     | SKU                     | **Standart** seçin         |
-    | Ad                    | *Mybasicpublicıp* girin          |
+    | Name                    | *Mybasicpublicıp* girin          |
     | IP adresi ataması   | **Statik** öğesini seçin (aşağıdaki nota bakın)                                     |
     | Boşta kalma zaman aşımı (dakika)  | Değeri 4 ' te bırakın        |
     | DNS ad etiketi          | Değeri boş bırakın    |
@@ -78,9 +78,9 @@ IP adresinin zaman içinde değiştirilmesi kabul edilebilir ise, **dinamik** IP
 
 ## <a name="additional-information"></a>Ek bilgiler 
 
-Yukarıda listelenen ayrı alanlarla ilgili daha fazla ayrıntı için lütfen bkz. [genel IP adreslerini yönetme](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#create-a-public-ip-address).
+Yukarıda listelenen ayrı alanlarla ilgili daha fazla ayrıntı için lütfen bkz. [genel IP adreslerini yönetme](./virtual-network-public-ip-address.md#create-a-public-ip-address).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Genel IP adresini bir sanal makineyle](https://docs.microsoft.com/azure/virtual-network/associate-public-ip-address-vm#azure-portal) ilişkilendir
-- Azure 'da [genel IP adresleri](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) hakkında daha fazla bilgi edinin.
+- [Genel IP adresini bir sanal makineyle](./associate-public-ip-address-vm.md#azure-portal) ilişkilendir
+- Azure 'da [genel IP adresleri](./public-ip-addresses.md#public-ip-addresses) hakkında daha fazla bilgi edinin.
 - Tüm [genel IP adresi ayarları](virtual-network-public-ip-address.md#create-a-public-ip-address)hakkında daha fazla bilgi edinin.

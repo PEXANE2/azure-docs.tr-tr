@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 16b37258d922db59f520d4e30c45773f6d1108cf
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 2f9fa6e7ef9a7ee8ea7dd2a09622f26f6fd9739e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341141"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223134"
 ---
 # <a name="use-synapse-studio-to-monitor-your-apache-spark-applications"></a>Apache Spark uygulamalarınızı izlemek için SYNAPSE Studio 'Yu kullanma
 
@@ -33,7 +33,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Bu öğreticiye başlamadan önce aşağıdaki gereksinimlerin karşılandığından emin olun:
 
-- Bir Synapse Studio çalışma alanı. Yönergeler için bkz. [SYNAPSE Studio çalışma alanı oluşturma](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace).
+- Bir Synapse Studio çalışma alanı. Yönergeler için bkz. [SYNAPSE Studio çalışma alanı oluşturma](../../machine-learning/how-to-manage-workspace.md#create-a-workspace).
 
 - Bir Apache Spark Havuzu.
 
@@ -43,23 +43,23 @@ Tüm Apache Spark uygulamalarını **izleyici**  ->  **Apache Spark uygulamalar�
 
 ## <a name="view-completed-apache-spark-application"></a>Tamamlanmış Apache Spark uygulamasını görüntüleme
 
-**İzleyiciyi** açın ve **Apache Spark uygulamalar** ' ı seçin. Tamamlanmış Apache Spark uygulamalarla ilgili ayrıntıları görüntülemek için Apache Spark uygulamasını seçin ve ayrıntıları görüntüleyin.
+**İzleyiciyi** açın ve **Apache Spark uygulamalar**' ı seçin. Tamamlanmış Apache Spark uygulamalarla ilgili ayrıntıları görüntülemek için Apache Spark uygulamasını seçin ve ayrıntıları görüntüleyin.
 
   ![tamamlanan işi seçin](./media/how-to-monitor-spark-applications/select-completed-job.png)
 
-1. **Tamamlanan görevleri** , **durumu** ve **toplam süreyi** denetleyin.
+1. **Tamamlanan görevleri**, **durumu** ve **toplam süreyi** denetleyin.
 
 2. Günlük sorgusunu yenileyin.
 
-3. **Spark geçmiş sunucusu** ' na tıklayarak Apache Spark geçmiş sunucu bağlantısını açın.
+3. **Spark geçmiş sunucusu**' na tıklayarak Apache Spark geçmiş sunucu bağlantısını açın.
 
 4. **Özet** bilgisini denetleyin.
 
-5. **Günlükleri** denetleyin. Açılan listeden farklı türde Günlükler seçebilirsiniz ve **günlükleri indir** ' e tıklayarak günlük bilgilerini indirebilir ve gereken hataları ve uyarıları filtrelemek için **hataları ve uyarıları filtrele** onay kutusunu işaretleyebilirsiniz.
+5. **Günlükleri** denetleyin. Açılan listeden farklı türde Günlükler seçebilirsiniz ve **günlükleri indir**' e tıklayarak günlük bilgilerini indirebilir ve gereken hataları ve uyarıları filtrelemek için **hataları ve uyarıları filtrele** onay kutusunu işaretleyebilirsiniz.
 
 6. Oluşturulan iş grafiğinde işinize bir genel bakış görebilirsiniz. Varsayılan olarak, grafik tüm işleri gösterir. Bu görünümü **Iş kimliğine** göre filtreleyebilirsiniz.
 
-7. Varsayılan olarak, **Ilerleme durumu** ekranı seçilidir. **Progress** / **Read** / **Written** / **Görüntüleme** açılır listesinde ilerleme okuma yazma **süresini** seçerek veri akışını kontrol edebilirsiniz.
+7. Varsayılan olarak, **Ilerleme durumu** ekranı seçilidir.  /  /  / **Görüntüleme** açılır listesinde ilerleme okuma yazma **süresini** seçerek veri akışını kontrol edebilirsiniz.
 
 8. İşi kayıttan yürütmek için, **kayıttan yürütme** düğmesine tıklayın. **Durdur düğmesine tıklayarak** istediğiniz zaman durdurabilirsiniz.
 
@@ -92,11 +92,11 @@ Tüm Apache Spark uygulamalarını **izleyici**  ->  **Apache Spark uygulamalar�
 
 ## <a name="monitor-running-apache-spark-application"></a>Apache Spark uygulamasını çalıştıran izleyici
 
-**İzleyiciyi** açın ve **Apache Spark uygulamalar** ' ı seçin. Çalıştıran Apache Spark uygulamalarla ilgili ayrıntıları görüntülemek için Apache Spark uygulamayı gönderme ve ayrıntıları görüntüleme seçeneğini belirleyin. Apache Spark uygulama hala çalışıyorsa, ilerlemeyi izleyebilirsiniz.
+**İzleyiciyi** açın ve **Apache Spark uygulamalar**' ı seçin. Çalıştıran Apache Spark uygulamalarla ilgili ayrıntıları görüntülemek için Apache Spark uygulamayı gönderme ve ayrıntıları görüntüleme seçeneğini belirleyin. Apache Spark uygulama hala çalışıyorsa, ilerlemeyi izleyebilirsiniz.
 
    ![çalışan işi seçin](./media/how-to-monitor-spark-applications/select-running-job.png)
 
-1. **Tamamlanan görevleri** , **durumu** ve **toplam süreyi** denetleyin.
+1. **Tamamlanan görevleri**, **durumu** ve **toplam süreyi** denetleyin.
 
 2. Apache Spark uygulamasını **Iptal edin** .
 
@@ -110,21 +110,21 @@ Tüm Apache Spark uygulamalarını **izleyici**  ->  **Apache Spark uygulamalar�
 
 7. **Tanılama** sekmesinde tanılamayı denetleyin.
 
-8. Bu sekmedeki **günlükleri** kontrol edin. Açılan listeden farklı türde Günlükler seçebilirsiniz ve **günlükleri indir** ' e tıklayarak günlük bilgilerini indirebilir ve gereken hataları ve uyarıları filtrelemek için **hataları ve uyarıları filtrele** onay kutusunu işaretleyebilirsiniz.
+8. Bu sekmedeki **günlükleri** kontrol edin. Açılan listeden farklı türde Günlükler seçebilirsiniz ve **günlükleri indir**' e tıklayarak günlük bilgilerini indirebilir ve gereken hataları ve uyarıları filtrelemek için **hataları ve uyarıları filtrele** onay kutusunu işaretleyebilirsiniz.
 
     ![çalışan işi görüntüle](./media/how-to-monitor-spark-applications/view-running-job.png)
 
 ## <a name="view-canceled-apache-spark-application"></a>İptal edilen Apache Spark uygulamasını görüntüle
 
-**İzleyiciyi** açın ve **Apache Spark uygulamalar** ' ı seçin. İptal edilen Apache Spark uygulamalarla ilgili ayrıntıları görüntülemek için Apache Spark uygulamayı seçin ve ayrıntıları görüntüleyin.
+**İzleyiciyi** açın ve **Apache Spark uygulamalar**' ı seçin. İptal edilen Apache Spark uygulamalarla ilgili ayrıntıları görüntülemek için Apache Spark uygulamayı seçin ve ayrıntıları görüntüleyin.
 
  ![iptal edilen işi seçin](./media/how-to-monitor-spark-applications/select-cancelled-job.png) 
 
-1. **Tamamlanan görevleri** , **durumu** ve **toplam süreyi** denetleyin.
+1. **Tamamlanan görevleri**, **durumu** ve **toplam süreyi** denetleyin.
 
 2. Günlük sorgusunu yenileyin.
 
-3. **Spark geçmiş sunucusu** ' na tıklayarak Apache geçmiş sunucusu bağlantısını açın.
+3. **Spark geçmiş sunucusu**' na tıklayarak Apache geçmiş sunucusu bağlantısını açın.
 
 4. Grafiği görüntüleyin. Oluşturulan iş grafiğinde işinize bir genel bakış görebilirsiniz. Adım 6, 7, 8, 9, [tamamlanmış Apache Spark uygulamasının](#view-completed-apache-spark-application)10. adımına bakın.
 
@@ -138,15 +138,15 @@ Tüm Apache Spark uygulamalarını **izleyici**  ->  **Apache Spark uygulamalar�
 
 ## <a name="debug-failed-apache-spark-application"></a>Apache Spark uygulamada hata ayıklama başarısız oldu
 
-**İzleyiciyi** açın ve **Apache Spark uygulamalar** ' ı seçin. Başarısız Apache Spark uygulamalarla ilgili ayrıntıları görüntülemek için Apache Spark uygulamayı seçip ayrıntıları görüntüleyin.
+**İzleyiciyi** açın ve **Apache Spark uygulamalar**' ı seçin. Başarısız Apache Spark uygulamalarla ilgili ayrıntıları görüntülemek için Apache Spark uygulamayı seçip ayrıntıları görüntüleyin.
 
 ![başarısız iş seçin](./media/how-to-monitor-spark-applications/select-failed-job.png)
 
-1. **Tamamlanan görevleri** , **durumu** ve **toplam süreyi** denetleyin.
+1. **Tamamlanan görevleri**, **durumu** ve **toplam süreyi** denetleyin.
 
 2. Günlük sorgusunu yenileyin.
 
-3. **Spark geçmiş sunucusu** ' na tıklayarak Apache Spark geçmiş sunucu bağlantısını açın.
+3. **Spark geçmiş sunucusu**' na tıklayarak Apache Spark geçmiş sunucu bağlantısını açın.
 
 4. Grafiği görüntüleyin. Oluşturulan iş grafiğinde işinize bir genel bakış görebilirsiniz. Adım 6, 7, 8, 9, [tamamlanan Apache Spark uygulamasının](#view-completed-apache-spark-application) 10. adımına bakın
 
@@ -158,4 +158,4 @@ Tüm Apache Spark uygulamalarını **izleyici**  ->  **Apache Spark uygulamalar�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İşlem hattı çalıştırmalarını izleme hakkında daha fazla bilgi için bkz. [SYNAPSE Studio kullanarak işlem hattı çalıştırmalarını izleme](how-to-monitor-pipeline-runs.md) .  
+İşlem hattı çalıştırmalarını izleme hakkında daha fazla bilgi için bkz. [SYNAPSE Studio kullanarak işlem hattı çalıştırmalarını izleme](how-to-monitor-pipeline-runs.md) .

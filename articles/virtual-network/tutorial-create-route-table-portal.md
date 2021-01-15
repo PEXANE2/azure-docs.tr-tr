@@ -13,16 +13,16 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: d630a41f9b83a852605ffad2a85ad6dd14bbac73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e047f46e110e1f7b1d544545c80bd1097ae65167
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86079658"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221927"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak bir yönlendirme tablosu ile ağ trafiğini yönlendirme
 
-Azure, varsayılan olarak bir sanal ağ içindeki tüm alt ağlar arasındaki trafiği yönlendirir. Azure’ın varsayılan yönlendirmesini geçersiz kılmak için kendi yönlendirmelerinizi oluşturabilirsiniz. Özel yollar, örneğin bir ağ sanal gereci (NVA) ile alt ağlar arasında trafiği yönlendirmek istediğinizde yararlıdır. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Azure, varsayılan olarak bir sanal ağ içindeki tüm alt ağlar arasındaki trafiği yönlendirir. Azure’ın varsayılan yönlendirmesini geçersiz kılmak için kendi yönlendirmelerinizi oluşturabilirsiniz. Özel yollar, örneğin bir ağ sanal gereci (NVA) ile alt ağlar arasında trafiği yönlendirmek istediğinizde yararlıdır. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Trafiği yönlendiren bir NVA oluşturma
@@ -38,7 +38,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="create-an-nva"></a>NVA oluşturma
 
-Ağ sanal gereçleri (NVA 'lar), Yönlendirme ve güvenlik duvarı iyileştirmesi gibi ağ işlevleriyle yardımcı olan sanal makinelerdir. Bu öğretici, **Windows Server 2016 Datacenter**kullandığınızı varsayar. İsterseniz farklı bir işletim sistemi seçebilirsiniz.
+Ağ sanal gereçleri (NVA 'lar), Yönlendirme ve güvenlik duvarı iyileştirmesi gibi ağ işlevleriyle yardımcı olan sanal makinelerdir. Bu öğretici, **Windows Server 2016 Datacenter** kullandığınızı varsayar. İsterseniz farklı bir işletim sistemi seçebilirsiniz.
 
 1. [Azure portalı](https://portal.azure.com) menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
 
@@ -46,13 +46,13 @@ Ağ sanal gereçleri (NVA 'lar), Yönlendirme ve güvenlik duvarı iyileştirmes
 
     ![Windows Server 2016 Datacenter, VM oluşturma, Azure portal](./media/tutorial-create-route-table-portal/vm-ws2016-datacenter.png)
 
-1. **Sanal makine oluştur** sayfasında, **temel**bilgiler altında bu bilgileri girin veya seçin:
+1. **Sanal makine oluştur** sayfasında, **temel** bilgiler altında bu bilgileri girin veya seçin:
 
     | Section | Ayar | Eylem |
     | ------- | ------- | ----- |
     | **Proje ayrıntıları** | Abonelik | Aboneliğinizi seçin. |
-    | | Kaynak grubu | **Yeni oluştur**' u seçin, *Myresourcegroup*girin ve **Tamam**' ı seçin. |
-    | **Örnek ayrıntıları** | Sanal makine adı | *Myvmnva*girin. |
+    | | Kaynak grubu | **Yeni oluştur**' u seçin, *Myresourcegroup* girin ve **Tamam**' ı seçin. |
+    | **Örnek ayrıntıları** | Sanal makine adı | *Myvmnva* girin. |
     | | Bölge | **Doğu ABD (ABD)** seçin. |
     | | Kullanılabilirlik seçenekleri | **Altyapı yedekliliği gerekli değil**' i seçin. |
     | | Görüntü | **Windows Server 2016 Datacenter**' ı seçin. |
@@ -60,29 +60,29 @@ Ağ sanal gereçleri (NVA 'lar), Yönlendirme ve güvenlik duvarı iyileştirmes
     | **Yönetici hesabı** | Kullanıcı adı | Seçtiğiniz bir kullanıcı adını girin. |
     | | Parola | Seçtiğiniz bir parolayı girin, en az 12 karakter uzunluğunda olmalıdır ve [tanımlanan karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)karşılayın. |
     | | Parolayı Onayla | Parolayı yeniden girin. |
-    | **Gelen bağlantı noktası kuralları** | Genel gelen bağlantı noktaları | **Hiçbiri**seçin. |
+    | **Gelen bağlantı noktası kuralları** | Genel gelen bağlantı noktaları | **Hiçbiri** seçin. |
     | **Tasarruf edin** | Zaten bir Windows Server lisansınız var mı? | Seçim **No**. |
 
     ![Temel bilgiler, sanal makine oluşturma Azure portal](./media/tutorial-create-route-table-portal/basics-create-virtual-machine.png)
 
     Ardından Ileri ' yi seçin **: diskler >**.
 
-1. **Diskler**bölümünde, gereksinimlerinize uygun olan ayarları seçin ve ardından İleri ' yi seçin **: ağ >**.
+1. **Diskler** bölümünde, gereksinimlerinize uygun olan ayarları seçin ve ardından İleri ' yi seçin **: ağ >**.
 
 1. **Ağ iletişimi**:
 
-    1. **Sanal ağ**Için **Yeni oluştur**' u seçin.
+    1. **Sanal ağ** Için **Yeni oluştur**' u seçin.
     
-    1. **Sanal ağ oluştur** iletişim kutusunda, **ad**' ın altında, *myVirtualNetwork*girin.
+    1. **Sanal ağ oluştur** iletişim kutusunda, **ad**' ın altında, *myVirtualNetwork* girin.
 
-    1. **Adres alanı**' nda, var olan adres aralığını *10.0.0.0/16*ile değiştirin.
+    1. **Adres alanı**' nda, var olan adres aralığını *10.0.0.0/16* ile değiştirin.
 
-    1. **Alt ağlarda**, mevcut alt ağı silmek için **Sil** simgesini seçin ve ardından aşağıdaki **alt ağ adı** ve **adres aralığı**birleşimlerini girin. Geçerli bir ad ve Aralık girildikten sonra, altında yeni bir boş satır görüntülenir.
+    1. **Alt ağlarda**, mevcut alt ağı silmek için **Sil** simgesini seçin ve ardından aşağıdaki **alt ağ adı** ve **adres aralığı** birleşimlerini girin. Geçerli bir ad ve Aralık girildikten sonra, altında yeni bir boş satır görüntülenir.
 
         | Alt ağ adı | Adres aralığı |
         | ----------- | ------------- |
-        | *Geneldir* | *10.0.0.0/24* |
-        | *Özelleştirme* | *10.0.1.0/24* |
+        | *Genel* | *10.0.0.0/24* |
+        | *Özel* | *10.0.1.0/24* |
         | *DMZ* | *10.0.2.0/24* |
 
     1. İletişim kutusundan çıkmak için **Tamam ' ı** seçin.
@@ -93,7 +93,7 @@ Ağ sanal gereçleri (NVA 'lar), Yönlendirme ve güvenlik duvarı iyileştirmes
 
     1. **İleri ' yi seçin: yönetim >**.
 
-1. **Yönetim**altında:
+1. **Yönetim** altında:
 
     1. **Tanılama depolama hesabı**' nda **Yeni oluştur**' u seçin.
     
@@ -101,7 +101,7 @@ Ağ sanal gereçleri (NVA 'lar), Yönlendirme ve güvenlik duvarı iyileştirmes
 
         | Ayar | Değer |
         | ------- | ----- |
-        | Adı | *mynvastorageaccount* |
+        | Ad | *mynvastorageaccount* |
         | Hesap türü | **Depolama (genel amaçlı v1)** |
         | Performans | **Standart** |
         | Çoğaltma | **Yerel olarak yedekli depolama (LRS)** |
@@ -120,7 +120,7 @@ Ağ sanal gereçleri (NVA 'lar), Yönlendirme ve güvenlik duvarı iyileştirmes
 
 1. [Azure portalı](https://portal.azure.com) menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
 
-2. Arama kutusuna *yol tablosu*girin. Arama sonuçlarında **yol tablosu** göründüğünde, bunu seçin.
+2. Arama kutusuna *yol tablosu* girin. Arama sonuçlarında **yol tablosu** göründüğünde, bunu seçin.
 
 3. **Yol tablosu** sayfasında **Oluştur**' u seçin.
 
@@ -128,7 +128,7 @@ Ağ sanal gereçleri (NVA 'lar), Yönlendirme ve güvenlik duvarı iyileştirmes
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Adı | *myRouteTablePublic* |
+    | Ad | *myRouteTablePublic* |
     | Abonelik | Aboneliğiniz |
     | Kaynak grubu | **myResourceGroup** |
     | Konum | **(ABD) Doğu ABD** |
@@ -140,7 +140,7 @@ Ağ sanal gereçleri (NVA 'lar), Yönlendirme ve güvenlik duvarı iyileştirmes
 
 ## <a name="create-a-route"></a>Yönlendirme oluşturma
 
-1. Yol tablonuzu yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Rota tablolarını**arayın ve seçin.
+1. Yol tablonuzu yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Rota tablolarını** arayın ve seçin.
 
 1. Yol tablonuzun adını (**Myroutetablepublic**) seçin.
 
@@ -161,7 +161,7 @@ Ağ sanal gereçleri (NVA 'lar), Yönlendirme ve güvenlik duvarı iyileştirmes
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Yönlendirme tablosunu bir alt ağ ile ilişkilendirme
 
-1. Sanal ağınızı yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Sanal ağları**arayın ve seçin.
+1. Sanal ağınızı yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Sanal ağları** arayın ve seçin.
 
 1. Sanal ağınızın adını (**myVirtualNetwork**) seçin.
 
@@ -175,21 +175,21 @@ Ağ sanal gereçleri (NVA 'lar), Yönlendirme ve güvenlik duvarı iyileştirmes
 
 ## <a name="turn-on-ip-forwarding"></a>IP iletmeyi aç
 
-Ardından, *Myvmnva adlı*yeni NVA sanal MAKINENIZ için IP iletmeyi açın. Azure, *Myvmnva*'ya ağ trafiği gönderdiğinde, trafik farklı bir IP adresine gidiyor Ise, IP iletimi trafiği doğru konuma gönderir.
+Ardından, *Myvmnva adlı* yeni NVA sanal MAKINENIZ için IP iletmeyi açın. Azure, *Myvmnva*'ya ağ trafiği gönderdiğinde, trafik farklı bir IP adresine gidiyor Ise, IP iletimi trafiği doğru konuma gönderir.
 
-1. VM 'nizi yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Sanal makineleri**arayın ve seçin.
+1. VM 'nizi yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Sanal makineleri** arayın ve seçin.
 
 1. VM 'nizin adını (**Myvmnva**) seçin.
 
 1. NVA sanal makinenizin menü çubuğunda **ağ iletişimi**' ni seçin.
 
-1. **Myvmnva123**öğesini seçin. Bu, VM 'niz için oluşturulan Azure ağ arabirimidir. Azure, benzersiz bir ad sağlamak için numaralar ekler.
+1. **Myvmnva123** öğesini seçin. Bu, VM 'niz için oluşturulan Azure ağ arabirimidir. Azure, benzersiz bir ad sağlamak için numaralar ekler.
 
     ![Ağ iletişimi, ağ sanal gereci (NVA) sanal makinesi (VM), Azure portal](./media/tutorial-create-route-table-portal/virtual-machine-networking.png)
 
 1. Ağ arabirimi menü çubuğunda **IP yapılandırması**' nı seçin.
 
-1. **IP yapılandırması** sayfasında, **IP iletmeyi** **etkin**olarak ayarlayın ve **Kaydet**' i seçin.
+1. **IP yapılandırması** sayfasında, **IP iletmeyi** **etkin** olarak ayarlayın ve **Kaydet**' i seçin.
 
     ![IP iletmeyi, IP yapılandırmasını, ağ arabirimini, ağ sanal gereç (NVA) sanal makinesini (VM), Azure portal etkinleştir](./media/tutorial-create-route-table-portal/enable-ip-forwarding.png)
 
@@ -205,7 +205,7 @@ Ortak veya özel VM oluşturmak için **Oluştur** ' u seçmeden önce, farklı 
 
 | Tab | Ayar | Değer |
 | --- | ------- | ----- |
-| Temel Bilgiler | Kaynak grubu | **myResourceGroup** |
+| Temel bilgiler | Kaynak grubu | **myResourceGroup** |
 | | Sanal makine adı | *myVmPublic* |
 | | Genel gelen bağlantı noktaları | **Seçili bağlantı noktalarına izin ver** |
 | | Gelen bağlantı noktalarını seçin | **RDP** |
@@ -218,7 +218,7 @@ Ortak veya özel VM oluşturmak için **Oluştur** ' u seçmeden önce, farklı 
 
 | Tab | Ayar | Değer |
 | --- | ------- | ----- |
-| Temel Bilgiler | Kaynak grubu | **myResourceGroup** |
+| Temel bilgiler | Kaynak grubu | **myResourceGroup** |
 | | Sanal makine adı | *myVmPrivate* |
 | | Genel gelen bağlantı noktaları | **Seçili bağlantı noktalarına izin ver** |
 | | Gelen bağlantı noktalarını seçin | **RDP** |
@@ -231,7 +231,7 @@ Ortak veya özel VM oluşturmak için **Oluştur** ' u seçmeden önce, farklı 
 
 ### <a name="sign-in-to-myvmprivate-over-remote-desktop"></a>Uzak Masaüstü üzerinden myVmPrivate 'de oturum açın
 
-1. Özel VM 'nizi yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Sanal makineleri**arayın ve seçin.
+1. Özel VM 'nizi yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Sanal makineleri** arayın ve seçin.
 
 1. Özel sanal makinenizin adını (**myVmPrivate**) seçin.
 
@@ -239,7 +239,7 @@ Ortak veya özel VM oluşturmak için **Oluştur** ' u seçmeden önce, farklı 
 
 1. **RDP Ile Bağlan** SAYFASıNDA, **RDP dosyasını indir**' i seçin. Azure bir Uzak Masaüstü Protokolü (*. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
 
-1. İndirilen *. rdp* dosyasını açın. İstendiğinde **Bağlan**’ı seçin. **Diğer seçimler**  >  ' i seçin,**farklı bir hesap kullanın**ve ardından özel VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
+1. İndirilen *. rdp* dosyasını açın. İstendiğinde **Bağlan**’ı seçin. **Diğer seçimler**  >  ' i seçin,**farklı bir hesap kullanın** ve ardından özel VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
 
 1. **Tamam**’ı seçin.
 
@@ -249,7 +249,7 @@ Ortak veya özel VM oluşturmak için **Oluştur** ' u seçmeden önce, farklı 
 
 Sonraki bir adımda, yönlendirmeyi test etmek için izleme yönlendirme aracını kullanacaksınız. İzleme yolu, Windows güvenlik duvarının varsayılan olarak engellediği Internet Denetim Iletisi Protokolü 'Nü (ıCMP) kullanır. Windows Güvenlik Duvarı üzerinden ıCMP 'yi etkinleştirin.
 
-1. *MyVmPrivate*uzak masaüstünde PowerShell ' i açın.
+1. *MyVmPrivate* uzak masaüstünde PowerShell ' i açın.
 
 1. Şu komutu girin:
 
@@ -284,7 +284,7 @@ Azure kullanarak VM 'nin ağ arabirimi için [IP iletmeyi açtınız](#turn-on-i
     ```cmd
     mstsc /v:myVmPublic
     ```
-1. *MyVmPublic*uzak masaüstünde PowerShell ' i açın.
+1. *MyVmPublic* uzak masaüstünde PowerShell ' i açın.
 
 1. Şu komutu girerek Windows Güvenlik Duvarı üzerinden ıCMP 'yi etkinleştirin:
 
@@ -343,13 +343,13 @@ Azure kullanarak VM 'nin ağ arabirimi için [IP iletmeyi açtınız](#turn-on-i
 
 Kaynak grubuna artık ihtiyaç duyulmadığında *Myresourcegroup* ve içerdiği tüm kaynakları silin:
 
-1. Kaynak grubunuzu yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Kaynak gruplarını**arayın ve seçin.
+1. Kaynak grubunuzu yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Kaynak gruplarını** arayın ve seçin.
 
 1. Kaynak grubunuzun adını (**Myresourcegroup**) seçin.
 
 1. **Kaynak grubunu sil**'i seçin.
 
-1. Onay iletişim kutusunda, **kaynak grubu adını yazmak**Için *myresourcegroup* yazın ve ardından **Sil**' i seçin. Azure, yol tablolarınız, depolama hesaplarınız, sanal ağlar, VM 'Ler, ağ arabirimleriniz ve genel IP adresleri dahil olmak üzere *Myresourcegroup* ve bu kaynak grubuna bağlı tüm kaynakları siler.
+1. Onay iletişim kutusunda, **kaynak grubu adını yazmak** Için *myresourcegroup* yazın ve ardından **Sil**' i seçin. Azure, yol tablolarınız, depolama hesaplarınız, sanal ağlar, VM 'Ler, ağ arabirimleriniz ve genel IP adresleri dahil olmak üzere *Myresourcegroup* ve bu kaynak grubuna bağlı tüm kaynakları siler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -361,4 +361,4 @@ Bir sanal ağ içinde birçok Azure kaynağı dağıtabilmeniz sırasında Azure
 > [PaaS kaynaklarına ağ erişimini kısıtlama](tutorial-restrict-network-access-to-resources.md)
 
 > [!NOTE] 
-> Azure hizmetleri maliyet parayı. Azure maliyet yönetimi, bütçeleri ayarlamanıza ve denetim altına harcamalarını sağlamak için uyarıları yapılandırmanıza yardımcı olur. Maliyet yönetimi ile Azure maliyetlerinizi çözümleyin, yönetin ve iyileştirin. Daha fazla bilgi edinmek için [maliyetlerinizi çözümlemeye yönelik hızlı başlangıç](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)bölümüne bakın.
+> Azure hizmetleri maliyet parayı. Azure maliyet yönetimi, bütçeleri ayarlamanıza ve denetim altına harcamalarını sağlamak için uyarıları yapılandırmanıza yardımcı olur. Maliyet yönetimi ile Azure maliyetlerinizi çözümleyin, yönetin ve iyileştirin. Daha fazla bilgi edinmek için [maliyetlerinizi çözümlemeye yönelik hızlı başlangıç](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)bölümüne bakın.

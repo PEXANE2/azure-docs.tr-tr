@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, responsible-ml
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
 ms.date: 12/21/2020
-ms.openlocfilehash: f004f0f052e466441999c1bfd511823edd6b907e
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: ebc14d6c9d0ebaa6e0258578f94771c9f286bdb4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722445"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221944"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>Azure Machine Learning 'de değişiklik gizliliğini kullanın (Önizleme)
 
@@ -25,7 +25,7 @@ Akıllı gürültü Python paketlerini kullanarak Azure Machine Learning modelle
 Değişiklik gizliliği, altın standart gizlilik tanımıdır. Bu Gizlilik tanımına bağlı olan sistemler, daha fazla veri yeniden oluşturma ve yeniden tanımlama saldırılarına karşı, yardımcı bilgilere sahip olan saldırgan saldırıları da dahil olmak üzere güçlü bir iş yelpazesi sunar. [Değişiklik gizliliği 'nin nasıl çalıştığı](./concept-differential-privacy.md)hakkında daha fazla bilgi edinin.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 - [Python 3 karşılaştırması](https://www.python.org/downloads/)

@@ -3,12 +3,12 @@ title: İlke tanımı yapısının ayrıntıları
 description: Kuruluşunuzda Azure kaynakları için kural oluşturmak üzere ilke tanımlarının nasıl kullanıldığını açıklar.
 ms.date: 10/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 52adaf9522e4690c4c44a72ed47592f5b1d6471e
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 6e04551a2ef2f890844693fec71d2d3232a456f2
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883257"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220822"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure İlkesi tanım yapısı
 
@@ -261,7 +261,7 @@ Mantıksal işleçleri iç içe geçirebilirsiniz. Aşağıdaki örnek, **allof*
 
 ### <a name="conditions"></a>Koşullar
 
-Bir koşul, bir **alanın** veya **değer** erişimcisinin belirli ölçütlere uyup uymadığını değerlendirir. Desteklenen koşullar şunlardır:
+Bir koşul, bir değerin belirli ölçütlere uyup uymadığını değerlendirir. Desteklenen koşullar şunlardır:
 
 - `"equals": "stringValue"`
 - `"notEquals": "stringValue"`
@@ -291,12 +291,9 @@ Değer birden fazla joker karakter içermelidir `*` .
 
 **Match** ve **notmatch** koşullarını kullanırken, bir `#` harf için, bir `?` harf için, herhangi bir karakterle eşleşecek `.` şekilde ve diğer karakteri bu gerçek karakterle eşleşecek şekilde eşleştirin. **Match** ve **notmatch** büyük/küçük harfe duyarlı olsa da, bir _StringValue_ 'yi değerlendiren diğer tüm koşullar büyük/küçük harfe duyarlıdır. Büyük/küçük harf duyarsız alternatifler **matchInsensitively** ve **notMatchInsensitively**' de mevcuttur.
 
-**\[ \* \] Diğer ad** dizi alanı değerinde dizideki her öğe mantıksal **ve** öğe arasında ayrı ayrı değerlendirilir. Daha fazla bilgi için bkz. [dizi kaynağı özelliklerine başvurma](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
-
 ### <a name="fields"></a>Alanlar
 
-Koşullar, alanları kullanılarak oluşturulur. Bir alan, kaynak isteği yükünde özelliklerle eşleşir ve kaynağın durumunu açıklar.
-
+Kaynak isteği yükünde özelliklerin değerlerinin belirli ölçütlere uyup uymadığını değerlendiren koşullar, bir **alan** ifadesi kullanılarak oluşturulabilir.
 Aşağıdaki alanlar desteklenir:
 
 - `name`
@@ -305,6 +302,7 @@ Aşağıdaki alanlar desteklenir:
 - `kind`
 - `type`
 - `location`
+  - Konum alanları, çeşitli biçimleri destekleyecek şekilde normalleştirilmelidir. Örneğin, `East US 2` Şuna eşit kabul edilir `eastus2` .
   - Konum belirsiz olan kaynaklar için **küresel** kullanın.
 - `id`
   - Değerlendirilmekte olan kaynağın kaynak KIMLIĞINI döndürür.
@@ -324,6 +322,10 @@ Aşağıdaki alanlar desteklenir:
 
 > [!NOTE]
 > `tags.<tagName>`, `tags[tagName]` ve, `tags[tag.with.dots]` bir Etiketler alanı bildirmek için kabul edilebilir yollar. Ancak, tercih edilen ifadeler yukarıda listelenmiş olanlardır.
+
+> [!NOTE]
+> **\[ \* \] Diğer ada** başvuran **alan** ifadelerinde dizideki her öğe mantıksal **ve** öğe arasında ayrı ayrı değerlendirilir.
+> Daha fazla bilgi için bkz. [dizi kaynağı özelliklerine başvurma](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
 
 #### <a name="use-tags-with-parameters"></a>Parametrelerle etiketleri kullanma
 
@@ -355,7 +357,7 @@ Aşağıdaki örnekte, `concat` **TagName** parametresinin değeri adlı etiket 
 
 ### <a name="value"></a>Değer
 
-Koşullar, **değer** kullanılarak da oluşturulabilir. **değer** [parametrelere](#parameters), [desteklenen şablon işlevlerine](#policy-functions)veya değişmez değerlere karşı koşulları denetler. **değer** , desteklenen herhangi bir [koşulla](#conditions)eşleştirildi.
+Bir değerin belirli ölçütlere uyup uymadığını değerlendiren koşullar bir **değer** ifadesi kullanılarak oluşturulabilir. Değerler değişmez değer, [parametre](#parameters)değerleri veya desteklenen herhangi bir [şablon işlevinin](#policy-functions)döndürülen değerleri olabilir.
 
 > [!WARNING]
 > Bir _şablon işlevinin_ sonucu bir hata ise, ilke değerlendirmesi başarısız olur. Başarısız bir değerlendirme örtük bir **reddetme**. Daha fazla bilgi için bkz. [şablon arızalarını önleme](#avoiding-template-failures). Yeni veya güncelleştirilmiş kaynaklarda, yeni bir ilke tanımını test etme ve doğrulama sırasında başarısız bir değerlendirmesinin etkisini engellemek için **Donotenzorlamalı** 'ın [Enforcementmode](./assignment-structure.md#enforcement-mode) kullanın.
@@ -440,9 +442,11 @@ Düzeltilen ilke kuralıyla, `if()` üç karakterden kısa bir değerde bir değ
 
 ### <a name="count"></a>Count
 
-Kaynak yükünde bir dizinin kaç üyesinin bir koşul ifadesini karşılayıp karşılamadığını sayan **sayı** ifadesi kullanılarak oluşturulabilir koşullar. Yaygın senaryolar ', ' ' veya ' hiçbiri ', ' tamamen ' veya ' hiçbiri ' ' veya ' hiçbiri ' olan dizi üyelerinin koşulu karşılayıp karşılamadığını kontrol etmekte. **Count** , bir koşul ifadesi için her bir [ \[ \* \] diğer ad](#understanding-the--alias) dizisi üyesini değerlendirir ve daha sonra ifade işleciyle karşılaştırılan _doğru_ sonuçları toplar. **Count** ifadeleri, tek bir **policyrule** tanımına en fazla üç kez eklenebilir.
+Bir dizinin kaç üyesinin belirli ölçütlere uyan bir **sayı** ifadesi kullanılarak oluşturulabilir koşullar. Yaygın senaryolar ', ' ' veya ' hiçbiri ', ' tamamen ' veya ' hiçbiri ' olan dizi üyelerinin bir koşula uygun olup olmadığını kontrol etmekte. **Count** , her dizi üyesini bir koşul ifadesi için değerlendirir ve daha sonra ifade işleciyle karşılaştırılan _Gerçek_ sonuçları toplar.
 
-**Count** ifadesinin yapısı:
+#### <a name="field-count"></a>Alan sayısı
+
+İstek yükünde bir dizinin kaç üyesinin bir koşul ifadesini karşılayıp karşılamadığını say. **Alan sayısı** ifadelerinin yapısı:
 
 ```json
 {
@@ -456,16 +460,62 @@ Kaynak yükünde bir dizinin kaç üyesinin bir koşul ifadesini karşılayıp k
 }
 ```
 
-Şu Özellikler **sayısıyla** kullanılır:
+Aşağıdaki özellikler **alan sayısıyla** kullanılır:
 
-- **Count. Field** (zorunlu): dizinin yolunu içerir ve bir dizi diğer adı olmalıdır. Dizi eksikse, ifade koşul ifadesi düşünülmeden _false_ olarak değerlendirilir.
-- **Count. where** (isteğe bağlı): **Count. Field** öğesinin her bir [ \[ \* \] diğer ad](#understanding-the--alias) dizisi üyesini ayrı ayrı değerlendirmek için koşul ifadesi. Bu özellik sağlanmazsa, ' Field ' yolunu taşıyan tüm dizi üyeleri _true_ olarak değerlendirilir. Herhangi bir [koşul](../concepts/definition-structure.md#conditions) , bu özelliğin içinde kullanılabilir.
+- **Count. Field** (zorunlu): dizinin yolunu içerir ve bir dizi diğer adı olmalıdır.
+- **Count. where** (isteğe bağlı): her bir [ \[ \* \] diğer ad](#understanding-the--alias) dizisi üyesi için tek tek değerlendirilecek koşul ifadesi `count.field` . Bu özellik sağlanmazsa, ' Field ' yolunu taşıyan tüm dizi üyeleri _true_ olarak değerlendirilir. Herhangi bir [koşul](../concepts/definition-structure.md#conditions) , bu özelliğin içinde kullanılabilir.
   [Mantıksal işleçler](#logical-operators) , bu özelliğin içinde karmaşık değerlendirme gereksinimleri oluşturmak için kullanılabilir.
 - **\<condition\>** (gerekli): değer **Count. where** koşul ifadesini karşılayan öğelerin sayısıyla karşılaştırılır. Sayısal bir [koşul](../concepts/definition-structure.md#conditions) kullanılmalıdır.
 
-Azure Ilkesinde dizi özellikleriyle çalışma hakkında daha fazla bilgi için, sayı ifadesinin nasıl değerlendirildiğinin ayrıntılı açıklaması dahil olmak üzere bkz. [dizi kaynağı özelliklerine başvurma](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
+**Alan sayısı** ifadeleri, tek bir **policyrule** tanımında aynı alan dizisini en fazla üç kez numaralandırabilirler.
 
-#### <a name="count-examples"></a>Sayı örnekleri
+Azure Ilkesinde dizi özellikleriyle çalışma hakkında daha fazla bilgi için, **alan sayısı** ifadesinin nasıl değerlendirildiğinin ayrıntılı açıklaması dahil olmak üzere bkz. [dizi kaynağı özelliklerine başvurma](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
+
+#### <a name="value-count"></a>Değer sayısı
+Bir dizinin kaç üyesinin bir koşulu karşılayıp karşılamadığını say. Dizi bir sabit dize veya [dizi parametresine bir başvuru](#using-a-parameter-value)olabilir. **Değer sayısı** ifadelerinin yapısı:
+
+```json
+{
+    "count": {
+        "value": "<literal array | array parameter reference>",
+        "name": "<index name>",
+        "where": {
+            /* condition expression */
+        }
+    },
+    "<condition>": "<compare the count of true condition expression array members to this value>"
+}
+```
+
+Aşağıdaki özellikler **değer sayısıyla** kullanılır:
+
+- **Count. Value** (zorunlu): değerlendirilecek dizi.
+- **Count.Name** (zorunlu): İngilizce harflerden ve rakamlardan oluşan dizin adı. Geçerli yinelemede değerlendirilen dizi üyesinin değeri için bir ad tanımlar. Ad, koşulun içindeki geçerli değere başvurmak için kullanılır `count.where` . **Count** ifadesi başka bir **Count** ifadesinin alt öğesinde olmadığında isteğe bağlıdır. Sağlanmazsa, dizin adı örtülü olarak olarak ayarlanır `"default"` .
+- **Count. where** (isteğe bağlı): her dizi üyesi için tek tek değerlendirilecek koşul ifadesi `count.value` . Bu özellik sağlanmazsa, tüm dizi üyeleri _true_ olarak değerlendirilir. Herhangi bir [koşul](../concepts/definition-structure.md#conditions) , bu özelliğin içinde kullanılabilir. [Mantıksal işleçler](#logical-operators) , bu özelliğin içinde karmaşık değerlendirme gereksinimleri oluşturmak için kullanılabilir. Şu anda numaralandırılmış dizi üyesinin değerine [geçerli](#the-current-function) işlev çağırarak erişilebilir.
+- **\<condition\>** (gerekli): değer, koşul ifadesini karşılayan öğe sayısıyla karşılaştırılır `count.where` . Sayısal bir [koşul](../concepts/definition-structure.md#conditions) kullanılmalıdır.
+
+Aşağıdaki sınırlar zorlanır:
+- En fazla 10 **değer sayısı** ifadesi tek bir **policyrule** tanımında kullanılabilir.
+- Her **değer sayısı** ifadesi en fazla 100 yineleme gerçekleştirebilir. Bu sayı, herhangi bir üst **değer sayısı** ifadesi tarafından gerçekleştirilen yineleme sayısını içerir.
+
+#### <a name="the-current-function"></a>Geçerli işlev
+
+`current()`İşlev yalnızca koşul içinde kullanılabilir `count.where` . **Count** ifadesi değerlendirmesi tarafından şu anda numaralandırılan dizi üyesinin değerini döndürür.
+
+**Değer sayısı kullanımı**
+
+- `current(<index name defined in count.name>)`. Örneğin: `current('arrayMember')`.
+- `current()`. Yalnızca **değer sayısı** ifadesi başka bir **sayı** ifadesinin alt öğesi olmadığında izin verilir. Yukarıdaki ile aynı değeri döndürür.
+
+Çağrı tarafından döndürülen değer bir nesnedir, özellik erişimcileri desteklenir. Örneğin: `current('objectArrayMember').property`.
+
+**Alan sayısı kullanımı**
+
+- `current(<the array alias defined in count.field>)`. Örneğin, `current('Microsoft.Test/resource/enumeratedArray[*]')`.
+- `current()`. Yalnızca **alan sayısı** ifadesi başka bir **sayı** ifadesinin alt öğesi olmadığında izin verilir. Yukarıdaki ile aynı değeri döndürür.
+- `current(<alias of a property of the array member>)`. Örneğin, `current('Microsoft.Test/resource/enumeratedArray[*].property')`.
+
+#### <a name="field-count-examples"></a>Alan sayısı örnekleri
 
 Örnek 1: bir dizinin boş olup olmadığını denetleyin
 
@@ -550,18 +600,162 @@ Azure Ilkesinde dizi özellikleriyle çalışma hakkında daha fazla bilgi için
 }
 ```
 
-Örnek 6: `field()` `where` Şu anda değerlendirilen dizi üyesinin sabit değerine erişmek için koşulların Içinde işlevini kullanın. Bu koşul, Çift sayılı bir _Öncelik_ değeri olan bir güvenlik kuralı olup olmadığını denetler.
+Örnek 6: `current()` `where` bir şablon işlevindeki Şu anda numaralandırılmış dizi üyesinin değerine erişmek için koşulların Içindeki işlevi kullanın. Bu koşul, bir sanal ağın 10.0.0.0/24 CıDR aralığında olmayan bir adres öneki içerip içermediğini denetler.
 
 ```json
 {
     "count": {
-        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "field": "Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]",
         "where": {
-          "value": "[mod(first(field('Microsoft.Network/networkSecurityGroups/securityRules[*].priority')), 2)]",
-          "equals": 0
+          "value": "[ipRangeContains('10.0.0.0/24', current('Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]'))]",
+          "equals": false
         }
     },
     "greater": 0
+}
+```
+
+Örnek 7: `field()` `where` Şu anda numaralandırılmış dizi üyesinin değerine erişmek için koşulların Içinde işlevini kullanın. Bu koşul, bir sanal ağın 10.0.0.0/24 CıDR aralığında olmayan bir adres öneki içerip içermediğini denetler.
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]",
+        "where": {
+          "value": "[ipRangeContains('10.0.0.0/24', first(field(('Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]')))]",
+          "equals": false
+        }
+    },
+    "greater": 0
+}
+```
+
+#### <a name="value-count-examples"></a>Değer sayısı örnekleri
+
+Örnek 1: kaynak adının verilen ad desenlerinden herhangi biriyle eşleşip eşleşmediğini denetleyin.
+
+```json
+{
+    "count": {
+        "value": [ "prefix1_*", "prefix2_*" ],
+        "name": "pattern",
+        "where": {
+            "field": "name",
+            "like": "[current('pattern')]"
+        }
+    },
+    "greater": 0
+}
+```
+
+Örnek 2: kaynak adının verilen ad desenlerinden herhangi biriyle eşleşip eşleşmediğini denetleyin. `current()`İşlev bir dizin adı belirtmiyor. Sonuç, önceki örnekte de aynıdır.
+
+```json
+{
+    "count": {
+        "value": [ "prefix1_*", "prefix2_*" ],
+        "where": {
+            "field": "name",
+            "like": "[current()]"
+        }
+    },
+    "greater": 0
+}
+```
+
+Örnek 3: kaynak adının bir dizi parametresi tarafından sağlanan verilen ad desenlerinden herhangi biriyle eşleşip eşleşmediğini denetleyin.
+
+```json
+{
+    "count": {
+        "value": "[parameters('namePatterns')]",
+        "name": "pattern",
+        "where": {
+            "field": "name",
+            "like": "[current('pattern')]"
+        }
+    },
+    "greater": 0
+}
+```
+
+Örnek 4: sanal ağ adresi öneklerinden herhangi birinin onaylanan ön ekler listesinin altında olup olmadığını denetleyin.
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]",
+        "where": {
+            "count": {
+                "value": "[parameters('approvedPrefixes')]",
+                "name": "approvedPrefix",
+                "where": {
+                    "value": "[ipRangeContains(current('approvedPrefix'), current('Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]'))]",
+                    "equals": true
+                },
+            },
+            "equals": 0
+        }
+    },
+    "greater": 0
+}
+```
+
+Örnek 5: tüm ayrılmış NSG kurallarının bir NSG 'de tanımlandığından emin olun. Ayrılmış NSG kurallarının özellikleri, nesneleri içeren bir dizi parametresinde tanımlanmıştır.
+
+Parametre değeri:
+
+```json
+[
+    {
+        "priority": 101,
+        "access": "deny",
+        "direction": "inbound",
+        "destinationPortRange": 22
+    },
+    {
+        "priority": 102,
+        "access": "deny",
+        "direction": "inbound",
+        "destinationPortRange": 3389
+    }
+]
+```
+
+İlkesinin
+```json
+{
+    "count": {
+        "value": "[parameters('reservedNsgRules')]",
+        "name": "reservedNsgRule",
+        "where": {
+            "count": {
+                "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+                "where": {
+                    "allOf": [
+                        {
+                            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].priority",
+                            "equals": "[current('reservedNsgRule').priority]"
+                        },
+                        {
+                            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].access",
+                            "equals": "[current('reservedNsgRule').access]"
+                        },
+                        {
+                            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].direction",
+                            "equals": "[current('reservedNsgRule').direction]"
+                        },
+                        {
+                            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].destinationPortRange",
+                            "equals": "[current('reservedNsgRule').destinationPortRange]"
+                        }
+                    ]
+                }
+            },
+            "equals": 1
+        }
+    },
+    "equals": "[length(parameters('reservedNsgRules'))]"
 }
 ```
 
@@ -627,7 +821,6 @@ Aşağıdaki işlevler yalnızca ilke kurallarında kullanılabilir:
   }
   ```
 
-
 - `ipRangeContains(range, targetRange)`
     - **Aralık**: [gerekli] dize-bir IP adresi aralığı belirten dize.
     - **targetRange**: [gerekli] dize-bir IP adresi aralığı belirten dize.
@@ -639,6 +832,8 @@ Aşağıdaki işlevler yalnızca ilke kurallarında kullanılabilir:
     - CıDR aralığı (örnekler: `10.0.0.0/24` , `2001:0DB8::/110` )
     - Başlangıç ve bitiş IP adresleri tarafından tanımlanan Aralık (örnekler: `192.168.0.1-192.168.0.9` , `2001:0DB8::-2001:0DB8::3:FFFF` )
 
+- `current(indexName)`
+    - Yalnızca [Count ifadelerinde](#count)kullanılabilecek özel işlev.
 
 #### <a name="policy-function-example"></a>İlke işlevi örneği
 
@@ -709,14 +904,14 @@ Diğer adların listesi her zaman büyüyordur. Şu anda Azure Ilkesi tarafında
 
 ### <a name="understanding-the--alias"></a>[*] Diğer adını anlama
 
-Kullanılabilir diğer adların birkaçı, ' normal ' ad olarak görünen bir sürüme ve ona eklenmiş bir sürümüne sahiptir **\[\*\]** . Örnek:
+Kullanılabilir diğer adların birkaçı, ' normal ' ad olarak görünen bir sürüme ve ona eklenmiş bir sürümüne sahiptir **\[\*\]** . Örneğin:
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
 
 ' Normal ' diğer ad, alanı tek bir değer olarak temsil eder. Bu alan, tüm değer kümesinin tam olarak tanımlanmış olması, daha fazla olmaması ve daha az olmaması durumunda tam eşleşme karşılaştırma senaryolarına yöneliktir.
 
-**\[\*\]** Diğer ad, bir Array Resource özelliğinin öğelerinden seçilen bir değer koleksiyonunu temsil eder. Örnek:
+**\[\*\]** Diğer ad, bir Array Resource özelliğinin öğelerinden seçilen bir değer koleksiyonunu temsil eder. Örneğin:
 
 | Diğer ad | Seçili değerler |
 |:---|:---|

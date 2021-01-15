@@ -9,16 +9,16 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 4052d6a0773aa27e0a378ee04975c7946f1ffbfe
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5e7b914d459d2452704f93987ce1bf91bfba988c
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468655"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222216"
 ---
 # <a name="tutorial-anomaly-detection-with-cognitive-services-preview"></a>Öğretici: bilişsel hizmetler ile anomali algılama (Önizleme)
 
-Bu öğreticide, bilişsel [Hizmetler](https://go.microsoft.com/fwlink/?linkid=2147492)Ile Azure SYNAPSE 'da verilerinizi kolayca zenginleştirme hakkında bilgi edineceksiniz. Anomali algılama işlemini gerçekleştirmek için [anomali algılayıcısının](https://go.microsoft.com/fwlink/?linkid=2147493) kullanılması gerekir. Azure SYNAPSE ' deki bir Kullanıcı, anomali algılama için zenginleştirmek üzere bir tablo seçebilir.
+Bu öğreticide, bilişsel [Hizmetler](../../cognitive-services/index.yml)Ile Azure SYNAPSE 'da verilerinizi kolayca zenginleştirme hakkında bilgi edineceksiniz. Anomali algılama işlemini gerçekleştirmek için [anomali algılayıcısının](../../cognitive-services/anomaly-detector/index.yml) kullanılması gerekir. Azure SYNAPSE ' deki bir Kullanıcı, anomali algılama için zenginleştirmek üzere bir tablo seçebilir.
 
 Bu öğreticinin içindekiler:
 
@@ -28,7 +28,7 @@ Bu öğreticinin içindekiler:
 
 Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Varsayılan depolama alanı olarak yapılandırılmış bir ADLS 2. depolama hesabıyla [Azure SYNAPSE Analytics çalışma alanı](../get-started-create-workspace.md) . Birlikte çalıştığınız ADLS 2. FileSystem 'ın **Depolama Blobu veri katılımcısı** olması gerekir.
 - Azure SYNAPSE Analytics çalışma alanınızdaki Spark Havuzu. Ayrıntılar için bkz. [Azure 'Da Spark havuzu oluşturma SYNAPSE](../quickstart-create-sql-pool-studio.md).
@@ -94,7 +94,7 @@ Az önce açtığınız Not defteri, bilişsel hizmetlere bağlanmak için [mmls
 
 Verdiğiniz Azure Key Vault ayrıntıları, bu deneyimden verilerinize güvenli bir şekilde başvurmanızı sağlar.
 
-Şimdi anomali algılama işlemini gerçekleştirmek için **tüm hücreleri çalıştırabilirsiniz** . Bilişsel [Hizmetler-anomali algılayıcısı](https://go.microsoft.com/fwlink/?linkid=2147493)hakkında daha fazla bilgi edinin.
+Şimdi anomali algılama işlemini gerçekleştirmek için **tüm hücreleri çalıştırabilirsiniz** . Bilişsel [Hizmetler-anomali algılayıcısı](../../cognitive-services/anomaly-detector/index.yml)hakkında daha fazla bilgi edinin.
 
 ![Anomali algılama çalıştırma](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-00f.png)
 

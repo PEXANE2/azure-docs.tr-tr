@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 906d3d28aabf8f6ecd6e04c38b4519937fa95c2b
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 68b113de63cfefde805c1c46e9303829c4eb33a7
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092168"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222148"
 ---
 # <a name="machine-learning-capabilities-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'teki Machine Learning özellikleri
 
@@ -40,7 +40,7 @@ Bu makalede, bir veri bilimi süreç perspektifinden farklı analiz altyapılar�
 
 #### <a name="data-source-and-pipelines"></a>Veri kaynağı ve işlem hatları
 
-Azure SYNAPSE 'in yerel olarak tümleşik bir parçası olan [Azure Data Factory](/azure/data-factory/introduction)için, veri alma ve veri düzenleme işlem hatları için kullanabileceğiniz güçlü bir araç kümesi vardır. Bu, verilere erişmek ve verileri makine öğrenimi için kullanılabilecek bir biçime dönüştürmek için kolayca veri işlem hatlarını oluşturmanızı sağlar. SYNAPSE ' de [veri işlem hatları hakkında daha fazla bilgi edinin](/azure/data-factory/concepts-pipelines-activities?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) . 
+Azure SYNAPSE 'in yerel olarak tümleşik bir parçası olan [Azure Data Factory](../../data-factory/introduction.md)için, veri alma ve veri düzenleme işlem hatları için kullanabileceğiniz güçlü bir araç kümesi vardır. Bu, verilere erişmek ve verileri makine öğrenimi için kullanılabilecek bir biçime dönüştürmek için kolayca veri işlem hatlarını oluşturmanızı sağlar. SYNAPSE ' de [veri işlem hatları hakkında daha fazla bilgi edinin](../../data-factory/concepts-pipelines-activities.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) . 
 
 #### <a name="data-preparation-and-explorationvisualization"></a>Veri hazırlama ve araştırma/görselleştirme
 
@@ -64,13 +64,13 @@ MLlib 'in yanı sıra, [Scikit öğreni](https://scikit-learn.org/stable/) gibi 
 
 #### <a name="train-models-with-azure-machine-learning-automated-ml"></a>Azure Machine Learning otomatikleştirilmiş ML ile modelleri eğitme
 
-Makine öğrenimi modellerini eğitmek için başka bir yöntem de, Machine Learning ile ilgili çok daha fazla bilgi gerektirmez. otomatik ML 'yi kullanmaktır. [OTOMATIK ml](/azure/machine-learning/concept-automated-ml) , bir makine öğrenimi modelleri kümesini otomatik olarak gösteren ve kullanıcının belirli ölçümleri temel alarak en iyi modeli seçmesini sağlayan bir özelliktir. Azure Machine Learning Azure SYNAPSE not defterlerinden sorunsuz bir tümleştirme sayesinde, kullanıcılar SYNAPSE 'de otomatik ML 'yi geçiş Azure Active Directory kimlik doğrulamasıyla kolayca kullanabilir.  Bu, yalnızca Azure Machine Learning çalışma alanınızı işaret etmeniz ve herhangi bir kimlik bilgisi girmeniz gerekmediği anlamına gelir. SYNAPSE Spark havuzlarında Azure Machine Learning otomatikleştirilmiş ML kullanarak modellerin nasıl eğleneceğini açıklayan [Otomatikleştirilmiş BIR ml öğreticisi](../spark/apache-spark-azure-machine-learning-tutorial.md) aşağıda verilmiştir.
+Makine öğrenimi modellerini eğitmek için başka bir yöntem de, Machine Learning ile ilgili çok daha fazla bilgi gerektirmez. otomatik ML 'yi kullanmaktır. [OTOMATIK ml](../../machine-learning/concept-automated-ml.md) , bir makine öğrenimi modelleri kümesini otomatik olarak gösteren ve kullanıcının belirli ölçümleri temel alarak en iyi modeli seçmesini sağlayan bir özelliktir. Azure Machine Learning Azure SYNAPSE not defterlerinden sorunsuz bir tümleştirme sayesinde, kullanıcılar SYNAPSE 'de otomatik ML 'yi geçiş Azure Active Directory kimlik doğrulamasıyla kolayca kullanabilir.  Bu, yalnızca Azure Machine Learning çalışma alanınızı işaret etmeniz ve herhangi bir kimlik bilgisi girmeniz gerekmediği anlamına gelir. SYNAPSE Spark havuzlarında Azure Machine Learning otomatikleştirilmiş ML kullanarak modellerin nasıl eğleneceğini açıklayan [Otomatikleştirilmiş BIR ml öğreticisi](../spark/apache-spark-azure-machine-learning-tutorial.md) aşağıda verilmiştir.
 
 ### <a name="model-deployment-and-scoring"></a>Model dağıtımı ve Puanlama
 
 Azure SYNAPSE ya da Azure SYNAPSE dışında eğitilen modeller toplu Puanlama için kolayca kullanılabilir. Şu anda SYNAPSE ' de, toplu Puanlama çalıştırmak için iki yol vardır.
 
-* Verilerinizin nerede yaşadığı tahminlerinizi çalıştırmak için SYNAPSE SQL havuzlarındaki [TSQL tahmin işlevini](../sql-data-warehouse/sql-data-warehouse-predict.md) kullanabilirsiniz. Bu güçlü ve ölçeklenebilir işlevi, veri ambarınızdaki verileri taşımadan verilerinizi zenginleştirmenize olanak tanır. [SYNAPSE Studio 'da yeni bir Kılavuzlu makine öğrenimi modeli deneyimi](https://aka.ms/synapse-ml-ui) , SYNAPSE SQL havuzlarındaki Azure Machine Learning modeli kayıt defterinden bir onnx MODELINI, tahmin kullanan toplu Puanlama için dağıtabilirsiniz.
+* Verilerinizin nerede yaşadığı tahminlerinizi çalıştırmak için SYNAPSE SQL havuzlarındaki [TSQL tahmin işlevini](../sql-data-warehouse/sql-data-warehouse-predict.md) kullanabilirsiniz. Bu güçlü ve ölçeklenebilir işlevi, veri ambarınızdaki verileri taşımadan verilerinizi zenginleştirmenize olanak tanır. [SYNAPSE Studio 'da yeni bir Kılavuzlu makine öğrenimi modeli deneyimi](./tutorial-sql-pool-model-scoring-wizard.md) , SYNAPSE SQL havuzlarındaki Azure Machine Learning modeli kayıt defterinden bir onnx MODELINI, tahmin kullanan toplu Puanlama için dağıtabilirsiniz.
 
 * Azure SYNAPSE 'deki toplu Puanlama makine öğrenimi modelleri için başka bir seçenek de Azure SYNAPSE için Apache Spark havuzlarından faydalanır. Modelleri eğitebilmeniz için kullanılan kitaplıklara bağlı olarak, Batch puanlamasını çalıştırmak için bir kod deneyimi kullanabilirsiniz.
 

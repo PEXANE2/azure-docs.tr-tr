@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: kumud
-ms.openlocfilehash: 664e3851370be812cd7a0e58cf9beb1fddb5d991
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8c38f4e84a6a653c3a4d887c82340409fc363af
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87291007"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220601"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Rota tablosu oluşturma, değiştirme veya silme
 
@@ -43,17 +43,17 @@ Azure konumu ve aboneliği başına oluşturabileceğiniz yol tablolarının say
 
 1. [Azure portalı](https://portal.azure.com) menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin.
 
-1. Arama kutusuna *yol tablosu*girin. Arama sonuçlarında **yol tablosu** göründüğünde, bunu seçin.
+1. Arama kutusuna *yol tablosu* girin. Arama sonuçlarında **yol tablosu** göründüğünde, bunu seçin.
 
 1. **Yol tablosu** sayfasında **Oluştur**' u seçin.
 
 1. **Yol tablosu oluştur** iletişim kutusunda:
 
     1. Yol tablosu için bir **ad** girin.
-    1. **Aboneliğinizi**seçin.
+    1. **Aboneliğinizi** seçin.
     1. Mevcut bir **kaynak grubu** seçin veya yeni bir kaynak grubu oluşturmak Için **Yeni oluştur** ' u seçin.
-    1. Bir **konum**seçin.
-    1. Yönlendirme tablosunu bir VPN ağ geçidi aracılığıyla şirket içi ağınıza bağlı bir sanal ağda bir alt ağla ilişkilendirmeyi planlıyorsanız ve şirket içi rotalarınızı alt ağdaki ağ arabirimlerine yaymak istemiyorsanız, **sanal ağ geçidi yol yaymayı** **devre dışı**olarak ayarlayın.
+    1. Bir **konum** seçin.
+    1. Yönlendirme tablosunu bir VPN ağ geçidi aracılığıyla şirket içi ağınıza bağlı bir sanal ağda bir alt ağla ilişkilendirmeyi planlıyorsanız ve şirket içi rotalarınızı alt ağdaki ağ arabirimlerine yaymak istemiyorsanız, **sanal ağ geçidi yol yaymayı** **devre dışı** olarak ayarlayın.
 
 1. Yeni yol tablonuzu oluşturmak için **Oluştur** ' u seçin.
 
@@ -66,7 +66,7 @@ Azure konumu ve aboneliği başına oluşturabileceğiniz yol tablolarının say
 
 ## <a name="view-route-tables"></a>Rota tablolarını görüntüleme
 
-Sanal ağınızı yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Rota tablolarını**arayın ve seçin. Aboneliğinizde mevcut olan yol tabloları listelenir.
+Sanal ağınızı yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Rota tablolarını** arayın ve seçin. Aboneliğinizde mevcut olan yol tabloları listelenir.
 
 ### <a name="view-route-table---commands"></a>Rota tablosunu görüntüleme-komutlar
 
@@ -77,7 +77,7 @@ Sanal ağınızı yönetmek için [Azure Portal](https://portal.azure.com) gidin
 
 ## <a name="view-details-of-a-route-table"></a>Rota tablosunun ayrıntılarını görüntüleme
 
-1. Sanal ağınızı yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Rota tablolarını**arayın ve seçin.
+1. Sanal ağınızı yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Rota tablolarını** arayın ve seçin.
 
 1. Yol tablosu listesinde, ayrıntılarını görüntülemek istediğiniz yol tablosunu seçin.
 
@@ -87,7 +87,7 @@ Ortak Azure ayarları hakkında daha fazla bilgi edinmek için aşağıdaki bilg
 
 - [Etkinlik günlüğü](../azure-monitor/platform/platform-logs-overview.md)
 - [Erişim denetimi (IAM)](../role-based-access-control/overview.md)
-- [Lerimi](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Etiketler](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Kilitler](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Otomasyon betiği](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -100,7 +100,7 @@ Ortak Azure ayarları hakkında daha fazla bilgi edinmek için aşağıdaki bilg
 
 ## <a name="change-a-route-table"></a>Yol tablosunu değiştirme
 
-1. Sanal ağınızı yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Rota tablolarını**arayın ve seçin.
+1. Sanal ağınızı yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Rota tablolarını** arayın ve seçin.
 
 1. Yol tablosu listesinde, değiştirmek istediğiniz yol tablosunu seçin.
 
@@ -117,7 +117,7 @@ En yaygın değişiklikler, rotalar [eklemek](#create-a-route) , yönlendirmeler
 
 İsteğe bağlı olarak bir rota tablosunu bir alt ağ ile ilişkilendirebilirsiniz. Bir yol tablosu, sıfır veya daha fazla alt ağ ile ilişkilendirilebilir. Yol tabloları sanal ağlarla ilişkili olmadığından, yol tablosunun ilişkilendirilmesini istediğiniz her alt ağ için bir rota tablosu ilişkilendirmeniz gerekir. Azure, sanal ağ bir Azure sanal ağ geçidine (ExpressRoute veya VPN) bağlıysa, rota tabloları, [varsayılan yollar](virtual-networks-udr-overview.md#default)ve şirket içi bir ağdan yayılan yollar temelinde alt ağdan çıkan tüm trafiği yönlendirir. Yönlendirme tablosu ile aynı Azure konumunda ve abonelikte bulunan sanal ağlardaki alt ağlarla yalnızca bir rota tablosu ilişkilendirebilirsiniz.
 
-1. Sanal ağınızı yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Sanal ağları**arayın ve seçin.
+1. Sanal ağınızı yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Sanal ağları** arayın ve seçin.
 
 1. Sanal ağ listesinde, bir yol tablosunu ilişkilendirmek istediğiniz alt ağı içeren sanal ağı seçin.
 
@@ -129,7 +129,7 @@ En yaygın değişiklikler, rotalar [eklemek](#create-a-route) , yönlendirmeler
 
 1. **Kaydet**’i seçin.
 
-Sanal ağınız bir Azure VPN Gateway 'e bağlıysa, bir yol tablosunu *0.0.0.0/0*hedefine sahip bir yol içeren [ağ geçidi alt ağıyla](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) ilişkilendirmeyin. Bunun yapılması, ağ geçidinin düzgün çalışmasını engelleyebilir. Bir rotada *0.0.0.0/0* kullanma hakkında daha fazla bilgi için bkz. [sanal ağ trafiği yönlendirme](virtual-networks-udr-overview.md#default-route).
+Sanal ağınız bir Azure VPN Gateway 'e bağlıysa, bir yol tablosunu *0.0.0.0/0* hedefine sahip bir yol içeren [ağ geçidi alt ağıyla](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) ilişkilendirmeyin. Bunun yapılması, ağ geçidinin düzgün çalışmasını engelleyebilir. Bir rotada *0.0.0.0/0* kullanma hakkında daha fazla bilgi için bkz. [sanal ağ trafiği yönlendirme](virtual-networks-udr-overview.md#default-route).
 
 ### <a name="associate-a-route-table---commands"></a>Rota tablosunu ilişkilendirme-komutlar
 
@@ -142,7 +142,7 @@ Sanal ağınız bir Azure VPN Gateway 'e bağlıysa, bir yol tablosunu *0.0.0.0/
 
 Bir alt ağdan yol tablosunun ilişkilendirmesini kaldırdığınızda, Azure trafiği [varsayılan yollarına](virtual-networks-udr-overview.md#default)göre yönlendirir.
 
-1. Sanal ağınızı yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Sanal ağları**arayın ve seçin.
+1. Sanal ağınızı yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Sanal ağları** arayın ve seçin.
 
 1. Sanal ağ listesinde, bir yol tablosunun ilişkilendirmesini kaldırmak istediğiniz alt ağı içeren sanal ağı seçin.
 
@@ -165,7 +165,7 @@ Bir alt ağdan yol tablosunun ilişkilendirmesini kaldırdığınızda, Azure tr
 
 Herhangi bir alt ağ ile ilişkili bir yol tablosunu silemezsiniz. Bir yol tablosunun silmeyi denemeden önce tüm alt ağlardan [ilişkilendirmesini](#dissociate-a-route-table-from-a-subnet) kaldırın.
 
-1. Yönlendirme tablolarınızı yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Rota tablolarını**arayın ve seçin.
+1. Yönlendirme tablolarınızı yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Rota tablolarını** arayın ve seçin.
 
 1. Yol tablosu listesinde, silmek istediğiniz yol tablosunu seçin.
 
@@ -182,7 +182,7 @@ Herhangi bir alt ağ ile ilişkili bir yol tablosunu silemezsiniz. Bir yol tablo
 
 Yol tablosu başına her bir Azure konumu ve aboneliği için kaç yol oluşturabileceğiniz bir sınır vardır. Ayrıntılar için bkz. [ağ limitleri-Azure Resource Manager](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-1. Yönlendirme tablolarınızı yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Rota tablolarını**arayın ve seçin.
+1. Yönlendirme tablolarınızı yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Rota tablolarını** arayın ve seçin.
 
 1. Yol tablosu listesinde, yol eklemek istediğiniz yol tablosunu seçin.
 
@@ -190,11 +190,11 @@ Yol tablosu başına her bir Azure konumu ve aboneliği için kaç yol oluştura
 
 1. Yol tablosu içindeki yol için benzersiz bir **yol adı** girin.
 
-1. Trafiği yönlendirmek istediğiniz, sınıfsız Inter-Domain yönlendirme (CıDR) gösteriminde **Adres önekini**girin. Ön ek, yol tablosu içinde birden fazla rotada çoğaltılamaz, ancak ön ek başka bir ön ek içinde olabilir. Örneğin, bir rotada önek olarak *10.0.0.0/16* tanımladıysanız, *10.0.0.0/22* adres ön ekine sahip başka bir yol tanımlayabilirsiniz. Azure, en uzun ön ek eşleşmesi temelinde trafik için bir yol seçer. Daha fazla bilgi için bkz. [Azure 'un bir yolu nasıl seçtiği](virtual-networks-udr-overview.md#how-azure-selects-a-route).
+1. Trafiği yönlendirmek istediğiniz, sınıfsız Inter-Domain yönlendirme (CıDR) gösteriminde **Adres önekini** girin. Ön ek, yol tablosu içinde birden fazla rotada çoğaltılamaz, ancak ön ek başka bir ön ek içinde olabilir. Örneğin, bir rotada önek olarak *10.0.0.0/16* tanımladıysanız, *10.0.0.0/22* adres ön ekine sahip başka bir yol tanımlayabilirsiniz. Azure, en uzun ön ek eşleşmesi temelinde trafik için bir yol seçer. Daha fazla bilgi için bkz. [Azure 'un bir yolu nasıl seçtiği](virtual-networks-udr-overview.md#how-azure-selects-a-route).
 
-1. **Sonraki atlama türünü**seçin. Sonraki atlama türleri hakkında daha fazla bilgi için bkz. [sanal ağ trafiği yönlendirme](virtual-networks-udr-overview.md).
+1. **Sonraki atlama türünü** seçin. Sonraki atlama türleri hakkında daha fazla bilgi için bkz. [sanal ağ trafiği yönlendirme](virtual-networks-udr-overview.md).
 
-1. **Sanal Gereç**bir **sonraki atlama türünü** seçerseniz, **sonrakı atlama adresi**için bir IP adresi girin.
+1. **Sanal Gereç** bir **sonraki atlama türünü** seçerseniz, **sonrakı atlama adresi** için bir IP adresi girin.
 
 1. **Tamam**’ı seçin.
 
@@ -209,7 +209,7 @@ Yol tablosu başına her bir Azure konumu ve aboneliği için kaç yol oluştura
 
 Bir yol tablosu sıfır veya daha fazla yol içeriyor. Yolları görüntülerken listelenen bilgiler hakkında daha fazla bilgi edinmek için bkz. [sanal ağ trafiği yönlendirme](virtual-networks-udr-overview.md).
 
-1. Yönlendirme tablolarınızı yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Rota tablolarını**arayın ve seçin.
+1. Yönlendirme tablolarınızı yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Rota tablolarını** arayın ve seçin.
 
 1. Yol tablosu listesinde, rotaları görüntülemek istediğiniz yol tablosunu seçin.
 
@@ -224,7 +224,7 @@ Bir yol tablosu sıfır veya daha fazla yol içeriyor. Yolları görüntülerken
 
 ## <a name="view-details-of-a-route"></a>Bir yolun ayrıntılarını görüntüleme
 
-1. Yönlendirme tablolarınızı yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Rota tablolarını**arayın ve seçin.
+1. Yönlendirme tablolarınızı yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Rota tablolarını** arayın ve seçin.
 
 1. Yol tablosu listesinde, ayrıntılarını görüntülemek istediğiniz yolu içeren yol tablosunu seçin.
 
@@ -241,7 +241,7 @@ Bir yol tablosu sıfır veya daha fazla yol içeriyor. Yolları görüntülerken
 
 ## <a name="change-a-route"></a>Rota değiştirme
 
-1. Yönlendirme tablolarınızı yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Rota tablolarını**arayın ve seçin.
+1. Yönlendirme tablolarınızı yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Rota tablolarını** arayın ve seçin.
 
 1. Yol tablosu listesinde, değiştirmek istediğiniz yolu içeren yol tablosunu seçin.
 
@@ -260,7 +260,7 @@ Bir yol tablosu sıfır veya daha fazla yol içeriyor. Yolları görüntülerken
 
 ## <a name="delete-a-route"></a>Bir yolu silme
 
-1. Yönlendirme tablolarınızı yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Rota tablolarını**arayın ve seçin.
+1. Yönlendirme tablolarınızı yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Rota tablolarını** arayın ve seçin.
 
 1. Yol tablosu listesinde, silmek istediğiniz yolu içeren yol tablosunu seçin.
 
@@ -281,7 +281,7 @@ Bir yol tablosu sıfır veya daha fazla yol içeriyor. Yolları görüntülerken
 
 VM 'ye bağlı her ağ arabirimine yönelik etkili rotalar, oluşturduğunuz yol tablolarının bir birleşimidir, Azure 'un varsayılan yolları ve şirket içi ağlardan bir Azure sanal ağ geçidi üzerinden Sınır Ağ Geçidi Protokolü (BGP) aracılığıyla yayılan yollar. Bir ağ arabirimine yönelik geçerli yolların anlaşılmasında, yönlendirme sorunlarını giderirken yararlı olur. Çalışan bir VM 'ye bağlı herhangi bir ağ arabirimi için geçerli yolları görüntüleyebilirsiniz.
 
-1. VM 'lerinizi yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Sanal makineleri**arayın ve seçin.
+1. VM 'lerinizi yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Sanal makineleri** arayın ve seçin.
 
 1. Sanal makine listesinde, için geçerli yolları görüntülemek istediğiniz VM 'yi seçin.
 
@@ -304,7 +304,7 @@ VM 'ye bağlı her ağ arabirimine yönelik etkili rotalar, oluşturduğunuz yol
 
 Bir sanal makine ile başka bir Azure kaynağının IP adresi, bir şirket içi kaynak veya Internet 'teki bir kaynak arasındaki sonraki atlama türünü belirleyebilirsiniz. Yönlendirme sorunlarını giderirken Azure 'un yönlendirmeyi belirleme yararlı olur. Bu görevi gerçekleştirmek için, var olan bir ağ izleyicisine sahip olmanız gerekir. Mevcut bir ağ izleyicisine sahip değilseniz, [bir Ağ İzleyicisi örneği oluşturma](../network-watcher/network-watcher-create.md?toc=%2fazure%2fvirtual-network%2ftoc.json)' daki adımları tamamlayarak bir tane oluşturun.
 
-1. Ağınızı izleyicileri yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Ağ Izleyicisi 'ni**arayıp seçin.
+1. Ağınızı izleyicileri yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Ağ Izleyicisi 'ni** arayıp seçin.
 
 1. Ağ İzleyicisi menü çubuğunda, **İleri atlama**' yi seçin.
 
@@ -333,7 +333,7 @@ Kısa bir bekleme sonrasında Azure, sonraki atlama türünü ve trafiği yönle
 
 Rota tablolarında ve rotalarındaki görevleri yapmak için, hesabınız [ağ katılımcısı rolüne](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) veya aşağıdaki tabloda listelenen uygun eylemlere atanmış özel bir [role](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) atanmalıdır:
 
-| Eylem                                                          |   Adı                                                  |
+| Eylem                                                          |   Name                                                  |
 |--------------------------------------------------------------   |   -------------------------------------------           |
 | Microsoft. Network/routeTables/Read                              |   Rota tablosu okuma                                    |
 | Microsoft. Network/routeTables/Write                             |   Rota tablosu oluşturma veya güncelleştirme                        |
@@ -348,4 +348,4 @@ Rota tablolarında ve rotalarındaki görevleri yapmak için, hesabınız [ağ k
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [PowerShell](powershell-samples.md) veya [Azure CLI](cli-samples.md) örnek betikleri veya Azure [Kaynak Yöneticisi şablonlarını](template-samples.md) kullanarak bir rota tablosu oluşturma
-- Sanal ağlar için [Azure ilke tanımları](policy-samples.md) oluşturma ve atama
+- Sanal ağlar için [Azure ilke tanımları](./policy-reference.md) oluşturma ve atama

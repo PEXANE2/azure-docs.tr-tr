@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: 2e559d574413b8eb0be2303798e0b16bfffad2cb
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: e9f46b11d9c0b5251ee4d52f64d657926f6f9c5e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695410"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222998"
 ---
 # <a name="load-balancer-frequently-asked-questions"></a>Load Balancer sık sorulan sorular
 
@@ -36,7 +36,7 @@ NAT kuralları, trafiğin yönlendirileceği bir arka uç kaynağını belirtmek
 ## <a name="what-is-ip-1686312916"></a>IP 168.63.129.16 nedir?
 Azure altyapısı olarak etiketlenen konağın sanal IP adresi, Azure sistem durumu araştırmalarının gerçekleştiği Load Balancer. Arka uç örnekleri yapılandırılırken, bu IP adresinden gelen trafiğin sistem durumu araştırmasına başarıyla yanıt vermesi gerekir. Bu kural Load Balancer ön uç 'nize erişimle etkileşime girmiyor. Azure Load Balancer kullanmıyorsanız, bu kuralı geçersiz kılabilirsiniz. [Burada](../virtual-network/service-tags-overview.md#available-service-tags)Service Tags hakkında daha fazla bilgi edinebilirsiniz.
 
-## <a name="can-i-use-global-vnet-peering-with-basic-load-balancer"></a>Temel Load Balancer genel VNET eşlemesini kullanabilir miyim?
+## <a name="can-i-use-global-vnet-peering-with-basic-load-balancer"></a>Temel Load Balancer genel VNet eşlemesini kullanabilir miyim?
 Hayır. Temel Load Balancer genel VNET eşlemesini desteklemez. Bunun yerine bir Standart Load Balancer kullanabilirsiniz. Sorunsuz yükseltme için [temel 'Ten standart sürümüne yükseltme](upgrade-basic-standard.md) makalesine bakın.
 
 ## <a name="how-can-i-discover-the-public-ip-that-an-azure-vm-uses"></a>Azure VM 'nin kullandığı genel IP 'yi nasıl keşfedebilirim?
@@ -45,6 +45,9 @@ Giden bir bağlantının genel kaynak IP adresini belirlemenin birçok yolu vard
 Nslookup komutunu kullanarak, myip.opendns.com adı için OpenDNS çözümleyiciye bir DNS sorgusu gönderebilirsiniz. Hizmet, sorguyu göndermek için kullanılan kaynak IP adresini döndürür. Aşağıdaki sorguyu sanal makinenizde çalıştırdığınızda, yanıt o VM için kullanılan genel IP 'dir:
 
  ```nslookup myip.opendns.com resolver1.opendns.com```
+ 
+## <a name="can-i-add-a-vm-from-the-same-availability-set-to-different-backend-pools-of-a-load-balancer"></a>Aynı Kullanılabilirlik kümesinden bir sanal makineyi Load Balancer farklı bir arka uç havuzuna ekleyebilir miyim?
+Hayır, bu mümkün değildir.
 
 ## <a name="how-do-connections-to-azure-storage-in-the-same-region-work"></a>Azure depolama ile aynı bölgedeki bağlantılar nasıl çalışır?
 Yukarıdaki senaryolar aracılığıyla giden bağlantıların olması, VM ile aynı bölgedeki depolamaya bağlanmak için gerekli değildir. Bunu istemiyorsanız, yukarıda açıklandığı gibi ağ güvenlik gruplarını (NSG 'ler) kullanın. Diğer bölgelerdeki depolama bağlantısı için giden bağlantı gereklidir. Lütfen aynı bölgedeki bir VM 'den depolamaya bağlanırken, depolama tanılama günlüklerindeki kaynak IP adresinin, sanal makinenizin genel IP adresi değil, iç sağlayıcı adresi olacağını unutmayın. Depolama hesabınıza erişimi aynı bölgedeki bir veya daha fazla sanal ağ alt ağında bulunan VM 'Lerle kısıtlamak istiyorsanız, depolama hesabı güvenlik duvarını yapılandırırken ortak IP adresinizi değil [sanal ağ hizmet uç noktalarını](../virtual-network/virtual-network-service-endpoints-overview.md) kullanın. Hizmet uç noktaları yapılandırıldıktan sonra, sanal ağ özel IP adresinizi, iç sağlayıcı adresinde değil, depolama tanılama günlüklerinizin içinde görürsünüz.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 5ce5f5cea5d689720455dd8d60f6fff4692a9d3d
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 2cf28565818f6de4d52b57040a80c21d0e03a76c
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179308"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218543"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Sanal Ağ hakkında sık sorulan sorular (SSS)
 
@@ -36,7 +36,7 @@ Sanal ağları şu şekilde kullanın:
 * Karma bulut senaryolarını etkinleştirin. VNET 'ler, bir dizi karma bulut senaryosunu destekleme esnekliği sağlar. Bulut tabanlı uygulamaları, ana bilgisayarlar ve UNIX sistemleri gibi herhangi bir şirket içi sistem türüne güvenli bir şekilde bağlayabilirsiniz.
 
 ### <a name="how-do-i-get-started"></a>Nasıl kullanmaya başlayabilirim?
-Başlamak için [sanal ağ belgelerini](https://docs.microsoft.com/azure/virtual-network/) ziyaret edin. Bu içerik, tüm VNet özellikleri için genel bakış ve dağıtım bilgileri sağlar.
+Başlamak için [sanal ağ belgelerini](./index.yml) ziyaret edin. Bu içerik, tüm VNet özellikleri için genel bakış ve dağıtım bilgileri sağlar.
 
 ### <a name="can-i-use-vnets-without-cross-premises-connectivity"></a>Şirket içi bağlantı olmadan VNET 'i kullanabilir miyim?
 Evet. Bir sanal ağı, şirket içine bağlanmadan kullanabilirsiniz. Örneğin, yalnızca bir Azure VNet 'te Microsoft Windows Server Active Directory etki alanı denetleyicileri ve SharePoint grupları çalıştırabilirsiniz.
@@ -52,7 +52,7 @@ VNet oluşturmak veya yapılandırmak için aşağıdaki araçları kullanabilir
 * Azure portal
 * PowerShell
 * Azure CLI
-* Ağ yapılandırma dosyası (yalnızca klasik sanal ağlar için netcfg). [Ağ yapılandırma dosyası kullanarak VNET yapılandırma](virtual-networks-using-network-configuration-file.md) makalesini inceleyin.
+* Ağ yapılandırma dosyası (yalnızca klasik sanal ağlar için netcfg). [Ağ yapılandırma dosyası kullanarak VNET yapılandırma](/previous-versions/azure/virtual-network/virtual-networks-using-network-configuration-file) makalesini inceleyin.
 
 ### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>VNET 'imde hangi adres aralıklarını kullanabilirim?
 [RFC 1918](https://tools.ietf.org/html/rfc1918)' de numaralandırılan adres aralıklarını kullanmanız önerilir ve bu, özel, yönlendirilemeyen adres ALANLARı için IETF tarafından ayrılmış olarak ayarlanmıştır:
@@ -162,7 +162,7 @@ Evet. Kaynak Yöneticisi dağıtım modeliyle dağıtılan bir VM 'ye bağlı t�
   - **Kaynak Yöneticisi**: dinamik veya statik yöntemle atanan özel IP adresi, kaynak silinene kadar bir sanal makineye (Kaynak Yöneticisi) atanmış olarak kalır. Fark, statik kullanırken atanacak adresi seçtiğinizde Azure 'un dinamik kullanılırken seçtiği bir adrestir. 
   - **Klasik**: sanal makine (klasık) VM durdurulmuş (serbest bırakıldı) durumda olduktan sonra yeniden başlatıldığında dinamik yöntemle atanan özel IP adresi değişebilir. Klasik dağıtım modeliyle dağıtılan bir kaynağın özel IP adresinin hiçbir şekilde değişmeyeceğinden emin olmanız gerekiyorsa, statik metoda sahip bir özel IP adresi atayın.
 
-* **Ortak:** İsteğe bağlı olarak, Azure Resource Manager dağıtım modeliyle dağıtılan VM 'lere bağlı NIC 'lere atanır. Adres, statik veya dinamik ayırma yöntemiyle atanabilir. Klasik dağıtım modeli aracılığıyla dağıtılan tüm VM 'Ler ve Cloud Services rol örnekleri, *dinamik*, genel sanal IP (VIP) adresi atanmış bir bulut hizmeti içinde bulunur. [Ayrılmış IP adresi](virtual-networks-reserved-public-ip.md)olarak adlandırılan genel *statik* IP adresı isteğe bağlı olarak VIP olarak atanabilir. Genel IP adreslerini tek tek VM 'lere atayabilir veya klasik dağıtım modeliyle dağıtılan rol örneklerine Cloud Services. Bu adreslere [örnek düzeyi genel IP (ıLPıP](virtual-networks-instance-level-public-ip.md) adresleri denir ve dinamik olarak atanabilir.
+* **Ortak:** İsteğe bağlı olarak, Azure Resource Manager dağıtım modeliyle dağıtılan VM 'lere bağlı NIC 'lere atanır. Adres, statik veya dinamik ayırma yöntemiyle atanabilir. Klasik dağıtım modeli aracılığıyla dağıtılan tüm VM 'Ler ve Cloud Services rol örnekleri, *dinamik*, genel sanal IP (VIP) adresi atanmış bir bulut hizmeti içinde bulunur. [Ayrılmış IP adresi](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip)olarak adlandırılan genel *statik* IP adresı isteğe bağlı olarak VIP olarak atanabilir. Genel IP adreslerini tek tek VM 'lere atayabilir veya klasik dağıtım modeliyle dağıtılan rol örneklerine Cloud Services. Bu adreslere [örnek düzeyi genel IP (ıLPıP](/previous-versions/azure/virtual-network/virtual-networks-instance-level-public-ip) adresleri denir ve dinamik olarak atanabilir.
 
 ### <a name="can-i-reserve-a-private-ip-address-for-a-vm-that-i-will-create-at-a-later-time"></a>Daha sonra oluşturacağınız bir VM için özel IP adresini ayırabilir miyim?
 Hayır. Özel bir IP adresi ayıramazsınız. Özel bir IP adresi varsa, DHCP sunucusu tarafından bir VM veya rol örneğine atanır. VM, özel IP adresinin atanmasını istediğiniz bir tane olabilir veya olmayabilir. Bununla birlikte, zaten oluşturulmuş bir VM 'nin özel IP adresini kullanılabilir bir özel IP adresine değiştirebilirsiniz.
@@ -177,7 +177,7 @@ Evet, ancak bir sanal makineye birden çok IP adresi atarken olduğu gibi gerekm
 Hiçbir şey. IP adresleri (genel VIP, genel ve özel), bulut hizmeti dağıtım yuvasına veya VM 'ye atanmaya devam eder.
 
 ### <a name="can-i-move-vms-from-one-subnet-to-another-subnet-in-a-vnet-without-redeploying"></a>VM 'Leri yeniden dağıtmaya gerek kalmadan bir alt ağdan başka bir alt ağa taşıyabilir miyim?
-Evet. [BIR VM veya rol örneğini farklı bir alt ağa taşıma hakkında](virtual-networks-move-vm-role-to-subnet.md) daha fazla bilgi edinebilirsiniz.
+Evet. [BIR VM veya rol örneğini farklı bir alt ağa taşıma hakkında](/previous-versions/azure/virtual-network/virtual-networks-move-vm-role-to-subnet) daha fazla bilgi edinebilirsiniz.
 
 ### <a name="can-i-configure-a-static-mac-address-for-my-vm"></a>VM 'im için statik bir MAC adresi yapılandırabilir miyim?
 Hayır. MAC adresi statik olarak yapılandırılamaz.
@@ -220,7 +220,7 @@ Hayır. Hizmetleri VNET 'lere ve dışına taşıyamazsınız. Kaynağı başka 
 Sanal ağlar birbirleriyle ve Azure altyapısında barındırılan diğer hizmetlerden yalıtılmıştır. VNet bir güven sınırındaki.
 
 ### <a name="can-i-restrict-inbound-or-outbound-traffic-flow-to-vnet-connected-resources"></a>Gelen veya giden trafik akışını VNet 'e bağlı kaynaklarla kısıtlayabilir miyim?
-Evet. [Ağ güvenlik gruplarını](security-overview.md) bir sanal ağ içindeki ayrı alt ağlara, VNET 'e bağlı NIC 'lere veya her ikisine birden uygulayabilirsiniz.
+Evet. [Ağ güvenlik gruplarını](./network-security-groups-overview.md) bir sanal ağ içindeki ayrı alt ağlara, VNET 'e bağlı NIC 'lere veya her ikisine birden uygulayabilirsiniz.
 
 ### <a name="can-i-implement-a-firewall-between-vnet-connected-resources"></a>VNet bağlantılı kaynaklar arasında bir güvenlik duvarı uygulayabilir miyim?
 Evet. Azure Marketi aracılığıyla birkaç satıcının [güvenlik duvarı ağ sanal](https://azure.microsoft.com/marketplace/?term=firewall) gerecini dağıtabilirsiniz.
@@ -234,13 +234,13 @@ Hayır. Sanal ağlar hiçbir müşteri verisini depolamaz.
 ## <a name="apis-schemas-and-tools"></a>API 'Ler, şemalar ve araçlar
 
 ### <a name="can-i-manage-vnets-from-code"></a>Koddan VNET 'leri yönetebilir miyim?
-Evet. [Azure Resource Manager](/rest/api/virtual-network) ve [Klasik](https://go.microsoft.com/fwlink/?LinkId=296833) dağıtım MODELLERINDE sanal ağlar için REST API 'lerini kullanabilirsiniz.
+Evet. [Azure Resource Manager](/rest/api/virtual-network) ve [Klasik](/previous-versions/azure/ee460799(v=azure.100)) dağıtım MODELLERINDE sanal ağlar için REST API 'lerini kullanabilirsiniz.
 
 ### <a name="is-there-tooling-support-for-vnets"></a>VNET 'ler için araç desteği var mı?
 Evet. Kullanma hakkında daha fazla bilgi edinin:
-- [Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network) ve [Klasik](virtual-networks-create-vnet-classic-pportal.md) dağıtım modelleriyle vnet 'leri dağıtmak için Azure Portal.
+- [Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network) ve [Klasik](/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-pportal) dağıtım modelleriyle vnet 'leri dağıtmak için Azure Portal.
 - [Kaynak Yöneticisi](/powershell/module/az.network) ve [Klasik](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0) dağıtım modelleriyle dağıtılan sanal ağları yönetmek için PowerShell.
-- [Kaynak Yöneticisi](/cli/azure/network/vnet) ve [Klasik](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-resources) dağıtım modelleri aracılığıyla dağıtılan VNET 'leri dağıtmak ve yönetmek için Azure komut satırı arabirimi (CLI).  
+- [Kaynak Yöneticisi](/cli/azure/network/vnet) ve [Klasik](/previous-versions/azure/virtual-machines/azure-cli-arm-commands?toc=%2fazure%2fvirtual-network%2ftoc.json#network-resources) dağıtım modelleri aracılığıyla dağıtılan VNET 'leri dağıtmak ve yönetmek için Azure komut satırı arabirimi (CLI).  
 
 ## <a name="vnet-peering"></a>VNet eşlemesi
 
@@ -289,7 +289,7 @@ Hayır. Sanal ağlardan birine bir eşleme üzerinde yalnızca ' uzak ağ geçid
 VNet eşleme bağlantısı oluşturmak için ücret alınmaz. Eşleme bağlantıları arasında veri aktarımı ücretlendirilir. [Buraya bakın](https://azure.microsoft.com/pricing/details/virtual-network/).
 
 ### <a name="is-vnet-peering-traffic-encrypted"></a>VNet eşleme trafiği şifrelendi mı?
-Azure trafiği, veri merkezleri arasında (Microsoft veya Microsoft tarafından denetlenmeden fiziksel sınırlar dışında) taşınırsa, arka plandaki Ağ donanımında [MACsec veri bağlantısı katmanı şifrelemesi](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit) kullanılır.  Bu, VNet eşleme trafiği için geçerlidir.
+Azure trafiği, veri merkezleri arasında (Microsoft veya Microsoft tarafından denetlenmeden fiziksel sınırlar dışında) taşınırsa, arka plandaki Ağ donanımında [MACsec veri bağlantısı katmanı şifrelemesi](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit) kullanılır.  Bu, VNet eşleme trafiği için geçerlidir.
 
 ### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>Neden eşleme bağlantıdır bağlantısı *kesik* durumda?
 VNET eşleme bağlantıları, bir VNet eşleme bağlantısı silindiğinde *bağlantısı kesik* duruma geçer. Başarılı bir eşleme bağlantısını yeniden kurmak için her iki bağlantıyı da silmelisiniz.
@@ -319,7 +319,7 @@ Evet. Aynı abonelikte veya farklı bir abonelikte eşlenmiş sanal ağlardaki i
 
 ### <a name="are-there-any-performance-considerations-on-production-traffic-if-i-enable-a-virtual-network-tap-configuration-on-a-network-interface"></a>Bir ağ arabirimindeki bir sanal ağ yapılandırmasına izin etkinleştirdiğimde üretim trafiği üzerinde herhangi bir performans konusunda dikkate alınması gereken noktalar var mı?
 
-Sanal ağ dokunma önizlemededir. Önizleme süresince hizmet düzeyi sözleşmesi yoktur. Yetenek, üretim iş yükleri için kullanılmamalıdır. Bir sanal makine ağ arabirimi bir dokunma yapılandırması ile etkinleştirildiğinde, Azure ana bilgisayarında üretim trafiğini göndermek için ayrılan kaynaklar, yansıtma işlevini gerçekleştirmek ve yansıtılan paketleri göndermek için kullanılır. Sanal makinenin üretim trafiğini ve yansıtmalı trafiği gönderebilmesi için yeterli kaynakların kullanılabilir olduğundan emin olmak için doğru [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veya [Windows](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) sanal makine boyutunu seçin.
+Sanal ağ dokunma önizlemededir. Önizleme süresince hizmet düzeyi sözleşmesi yoktur. Yetenek, üretim iş yükleri için kullanılmamalıdır. Bir sanal makine ağ arabirimi bir dokunma yapılandırması ile etkinleştirildiğinde, Azure ana bilgisayarında üretim trafiğini göndermek için ayrılan kaynaklar, yansıtma işlevini gerçekleştirmek ve yansıtılan paketleri göndermek için kullanılır. Sanal makinenin üretim trafiğini ve yansıtmalı trafiği gönderebilmesi için yeterli kaynakların kullanılabilir olduğundan emin olmak için doğru [Linux](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veya [Windows](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) sanal makine boyutunu seçin.
 
 ### <a name="is-accelerated-networking-for-linux-or-windows-supported-with-virtual-network-tap"></a>[Linux](create-vm-accelerated-networking-cli.md) veya [Windows](create-vm-accelerated-networking-powershell.md) IÇIN, sanal ağ dokunarak desteklenen hızlandırılmış ağ mı?
 
@@ -370,7 +370,7 @@ Varsayılan olarak sanal ağlara ayrılmış olan Azure hizmeti kaynaklarına ş
 Azure hizmetlerinin bir sanal ağ içindeki veya birden çok sanal ağ arasında birden çok alt ağa güvenliğini sağlamak için, alt ağların her birinde ağ tarafında bulunan hizmet uç noktalarını bağımsız olarak etkinleştirin ve ardından Azure hizmet tarafında uygun VNet ACL 'Leri ayarlayarak Azure hizmet kaynaklarını tüm alt ağlara koruyun.
  
 ### <a name="how-can-i-filter-outbound-traffic-from-a-virtual-network-to-azure-services-and-still-use-service-endpoints"></a>Bir sanal ağdan Azure hizmetlerine giden trafiği filtreleyip hizmet uç noktalarını kullanmaya devam edebilir miyim?
-Bir sanal ağdan bir Azure hizmetine giden trafiği incelemek veya filtrelemek istiyorsanız, sanal ağ içinde bir ağ sanal gereci dağıtabilirsiniz. Daha sonra, ağ sanal gerecinin dağıtıldığı alt ağa hizmet uç noktaları uygulayabilir ve Azure hizmet kaynaklarını yalnızca VNet ACL 'Leri üzerinden bu alt ağ için güvenli hale getirebilirsiniz. Bu senaryo Ayrıca, sanal ağınızdan gelen Azure hizmeti erişimini yalnızca ağ sanal gereç filtresi kullanarak belirli Azure kaynaklarına kısıtlamak istiyorsanız yararlı olabilir. Daha fazla bilgi için bkz. [Ağ sanal gereçleri ile çıkış](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha).
+Bir sanal ağdan bir Azure hizmetine giden trafiği incelemek veya filtrelemek istiyorsanız, sanal ağ içinde bir ağ sanal gereci dağıtabilirsiniz. Daha sonra, ağ sanal gerecinin dağıtıldığı alt ağa hizmet uç noktaları uygulayabilir ve Azure hizmet kaynaklarını yalnızca VNet ACL 'Leri üzerinden bu alt ağ için güvenli hale getirebilirsiniz. Bu senaryo Ayrıca, sanal ağınızdan gelen Azure hizmeti erişimini yalnızca ağ sanal gereç filtresi kullanarak belirli Azure kaynaklarına kısıtlamak istiyorsanız yararlı olabilir. Daha fazla bilgi için bkz. [Ağ sanal gereçleri ile çıkış](/azure/architecture/reference-architectures/dmz/nva-ha).
 
 ### <a name="what-happens-when-you-access-an-azure-service-account-that-has-a-virtual-network-access-control-list-acl-enabled-from-outside-the-vnet"></a>Sanal ağ erişim denetimi listesi (ACL) VNet dışından etkin olan bir Azure hizmet hesabına eriştiğinizde ne olur?
 HTTP 403 veya HTTP 404 hatası döndürüldü.
@@ -400,7 +400,7 @@ Hayır, hizmet uç noktaları etkin olan bir alt ağdan kaynaksız ıCMP trafiğ
 Azure hizmetine ulaşmak için NSG 'lerin giden bağlantılara izin verihtiyacı vardır. NSG 'larınız tüm Internet giden trafiği için açılırsa, hizmet uç noktası trafiğinin çalışması gerekir. Ayrıca, hizmet etiketlerini kullanarak giden trafiği yalnızca hizmet IP 'Leri ile sınırlayabilirsiniz.  
  
 ### <a name="what-permissions-do-i-need-to-set-up-service-endpoints"></a>Hizmet uç noktalarını ayarlamak için hangi izinlere ihtiyacım var?
-Hizmet uç noktaları, sanal ağa yazma erişimi olan bir kullanıcı tarafından bağımsız bir sanal ağ üzerinde yapılandırılabilir. Azure hizmet kaynaklarını bir sanal ağa güvenli hale getirmek için kullanıcının eklenmekte olan alt ağlar için **Microsoft. Network/virtualNetworks/alt ağları/Jodavetli Aserviceendpoint/Action** iznine sahip olması gerekir. Bu izin, varsayılan olarak yerleşik hizmet yöneticisi rolüne dahildir ve özel roller oluşturularak değiştirilebilir. Yerleşik roller ve [özel rollere](https://docs.microsoft.com/azure/role-based-access-control/custom-roles?toc=%2fazure%2fvirtual-network%2ftoc.json) belirli izinlerin atanması hakkında daha fazla bilgi edinin.
+Hizmet uç noktaları, sanal ağa yazma erişimi olan bir kullanıcı tarafından bağımsız bir sanal ağ üzerinde yapılandırılabilir. Azure hizmet kaynaklarını bir sanal ağa güvenli hale getirmek için kullanıcının eklenmekte olan alt ağlar için **Microsoft. Network/virtualNetworks/alt ağları/Jodavetli Aserviceendpoint/Action** iznine sahip olması gerekir. Bu izin, varsayılan olarak yerleşik hizmet yöneticisi rolüne dahildir ve özel roller oluşturularak değiştirilebilir. Yerleşik roller ve [özel rollere](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) belirli izinlerin atanması hakkında daha fazla bilgi edinin.
  
 
 ### <a name="can-i-filter-virtual-network-traffic-to-azure-services-allowing-only-specific-azure-service-resources-over-vnet-service-endpoints"></a>Sanal ağ trafiğini Azure hizmetlerine filtreleyip, VNet hizmet uç noktaları üzerinden yalnızca belirli Azure hizmet kaynaklarına izin verebilir miyim? 
@@ -409,7 +409,7 @@ Sanal ağ (VNet) hizmet uç noktası ilkeleri, Azure hizmetlerine sanal ağ traf
 
 ### <a name="does-azure-active-directory-azure-ad-support-vnet-service-endpoints"></a>Azure Active Directory (Azure AD) VNet hizmet uç noktalarını destekliyor mu?
 
-Azure Active Directory (Azure AD) yerel olarak hizmet uç noktalarını desteklemez. VNet hizmet uç noktalarını destekleyen Azure hizmetlerinin tüm listesi [burada](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)görülebilir. Hizmet uç noktalarını destekleme hizmetleri altında listelenen "Microsoft. AzureActiveDirectory" etiketinin, ADLS Gen 1 ' e hizmet uç noktalarını desteklemek için kullanıldığını unutmayın. ADLS Gen 1 için Azure Data Lake Storage 1. sanal ağ tümleştirmesi, sanal ağınız ile Azure Active Directory (Azure AD) arasındaki sanal ağ hizmeti uç noktası güvenliğini kullanarak erişim belirtecinde ek güvenlik talepleri oluşturur. Ardından bu talepler sanal ağınız için Data Lake Storage 1. Nesil hesabınızda kimlik doğrulaması gerçekleştirme ve erişim izni verme amacıyla kullanılır. [Azure Data Lake Store Gen 1 VNET tümleştirmesi](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json) hakkında daha fazla bilgi edinin
+Azure Active Directory (Azure AD) yerel olarak hizmet uç noktalarını desteklemez. VNet hizmet uç noktalarını destekleyen Azure hizmetlerinin tüm listesi [burada](./virtual-network-service-endpoints-overview.md)görülebilir. Hizmet uç noktalarını destekleme hizmetleri altında listelenen "Microsoft. AzureActiveDirectory" etiketinin, ADLS Gen 1 ' e hizmet uç noktalarını desteklemek için kullanıldığını unutmayın. ADLS Gen 1 için Azure Data Lake Storage 1. sanal ağ tümleştirmesi, sanal ağınız ile Azure Active Directory (Azure AD) arasındaki sanal ağ hizmeti uç noktası güvenliğini kullanarak erişim belirtecinde ek güvenlik talepleri oluşturur. Ardından bu talepler sanal ağınız için Data Lake Storage 1. Nesil hesabınızda kimlik doğrulaması gerçekleştirme ve erişim izni verme amacıyla kullanılır. [Azure Data Lake Store Gen 1 VNET tümleştirmesi](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json) hakkında daha fazla bilgi edinin
 
 ### <a name="are-there-any-limits-on-how-many-vnet-service-endpoints-i-can-set-up-from-my-vnet"></a>VNet 'imde kaç VNet hizmeti uç noktasına Ayarlanabileceğim üzerinde herhangi bir sınırlama var mı?
 Bir sanal ağdaki toplam VNet hizmeti uç noktası sayısı için bir sınır yoktur. Azure hizmet kaynağı (örneğin, Azure depolama hesabı) için hizmetler, kaynağın güvenliğini sağlamak için kullanılan alt ağ sayısı sınırlarını zorlayabilir. Aşağıdaki tabloda bazı örnek sınırları gösterilmektedir: 
@@ -428,10 +428,6 @@ Bir sanal ağdaki toplam VNet hizmeti uç noktası sayısı için bir sınır yo
 >[!NOTE]
 > Sınırlar, Azure hizmeti 'nin tabi değişikliklere karşı değişir. Hizmet ayrıntıları için ilgili hizmet belgelerine bakın. 
 
-
-
-
-  
 
 
 

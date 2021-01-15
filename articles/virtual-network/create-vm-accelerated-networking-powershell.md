@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 04/15/2020
 ms.author: gsilva
-ms.openlocfilehash: fd50af98fe0d7f20273c45e2b86c18215a3626f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3728a2b67529bab0900d42b3e39140d9329bc83
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87289617"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223644"
 ---
-# <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>Azure PowerShell kullanarak hızlandırılmış ağlarla bir Windows sanal makinesi oluşturma
+# <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>Azure PowerShell kullanarak hızlandırılmış ağ ile Windows sanal makinesi oluşturma
 
 Bu öğreticide, hızlandırılmış ağ ile bir Windows sanal makinesi (VM) oluşturmayı öğreneceksiniz.
 
@@ -41,7 +41,7 @@ Hızlandırılmış ağ ile ağ trafiği VM 'nin ağ arabirimine (NIC) ulaşır 
 
 Hızlandırılmış ağ avantajları yalnızca etkin olduğu VM için geçerlidir. En iyi sonuçlar için, bu özelliği aynı Azure sanal ağına bağlı en az iki VM üzerinde etkinleştirin. Sanal ağlar arasında iletişim kurarken veya şirket içinde bağlantı kurarken, bu özelliğin genel gecikme süresine en az etkisi vardır.
 
-## <a name="benefits"></a>Yararları
+## <a name="benefits"></a>Avantajlar
 
 - **Saniye başına düşük gecikme süresi/daha yüksek paketler (PPS)**: veri yolundan sanal anahtarı ortadan kaldırmak, ilke işleme için konakta harcadıkları zaman paketlerini kaldırır. Ayrıca sanal makine içinde işlenebilecek paketlerin sayısını artırır.
 
@@ -65,7 +65,7 @@ Hızlandırılmış ağ, iki veya daha fazla sanal CPU (vCPU) ile en genel amaç
 
 Hiper iş parçacığı destekleyen örneklerde, hızlandırılmış ağ, dört veya daha fazla vCPU içeren VM örneklerinde desteklenir. Desteklenen Seriler: D/Dsv3, D/Dsv4, da/Dasv4, E/Esv3, EA/Easv4, Fsv2, Lsv2, MS/MMS ve MS/Mmsv2.
 
-VM örnekleri hakkında daha fazla bilgi için bkz. [Azure 'Da Windows sanal makineleri Için boyutlar](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+VM örnekleri hakkında daha fazla bilgi için bkz. [Azure 'Da Windows sanal makineleri Için boyutlar](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ### <a name="custom-images"></a>Özel görüntüler
 
@@ -85,14 +85,14 @@ Sanal makineler (klasik) hızlandırılmış ağlarla dağıtılamaz.
 
 ## <a name="vm-creation-using-the-portal"></a>Portalı kullanarak VM oluşturma
 
-Bu makalede, Azure PowerShell kullanarak hızlandırılmış ağ içeren bir VM oluşturma adımları sunulmaktadır; ancak, hızlandırılmış ağ 'ı sağlayan [bir sanal makine oluşturmak için Azure Portal de kullanabilirsiniz](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) . Portalda bir VM oluşturduğunuzda, **sanal makine oluştur** sayfasında **ağ** sekmesini seçin. Bu sekmede **hızlandırılmış ağ**için bir seçenek bulunur. [Desteklenen bir işletim sistemi](#supported-operating-systems) ve [VM boyutu](#supported-vm-instances)seçtiyseniz, bu seçenek otomatik olarak **Açık**olarak ayarlanır. Aksi takdirde, seçenek **kapalı**olarak ayarlanır ve Azure 'un etkinleştirilmesinin nedenini görüntüler.
+Bu makalede, Azure PowerShell kullanarak hızlandırılmış ağ içeren bir VM oluşturma adımları sunulmaktadır; ancak, hızlandırılmış ağ 'ı sağlayan [bir sanal makine oluşturmak için Azure Portal de kullanabilirsiniz](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) . Portalda bir VM oluşturduğunuzda, **sanal makine oluştur** sayfasında **ağ** sekmesini seçin. Bu sekmede **hızlandırılmış ağ** için bir seçenek bulunur. [Desteklenen bir işletim sistemi](#supported-operating-systems) ve [VM boyutu](#supported-vm-instances)seçtiyseniz, bu seçenek otomatik olarak **Açık** olarak ayarlanır. Aksi takdirde, seçenek **kapalı** olarak ayarlanır ve Azure 'un etkinleştirilmesinin nedenini görüntüler.
 
 > [!NOTE]
 > Portal aracılığıyla yalnızca desteklenen işletim sistemleri etkinleştirilebilir. Özel bir görüntü kullanıyorsanız ve görüntünüz hızlandırılmış ağı destekliyorsa, lütfen CLı veya PowerShell kullanarak VM 'nizi oluşturun. 
 
 VM 'yi oluşturduktan sonra hızlandırılmış ağ oluşturma özelliğinin etkinleştirilip etkinleştirilmediğini doğrulayabilirsiniz. Aşağıdaki yönergeleri izleyin:
 
-1. VM 'lerinizi yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Sanal makineleri**arayın ve seçin.
+1. VM 'lerinizi yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Sanal makineleri** arayın ve seçin.
 
 2. Sanal makine listesinde yeni VM 'nizi seçin.
 
@@ -104,7 +104,7 @@ Ağ arabirimi bilgilerinde, **hızlandırılmış ağ** etiketinin yanındaki Po
 
 Devam etmeden önce [Azure PowerShell](/powershell/azure/install-az-ps) Version 1.0.0 veya üstünü yükleyebilirsiniz. Yüklü olan sürümünüzü bulmak için çalıştırın `Get-Module -ListAvailable Az` . Yüklemeniz veya yükseltmeniz gerekiyorsa, [PowerShell Galerisi](https://www.powershellgallery.com/packages/Az)az modülünün en son sürümünü yüklemeniz gerekir. PowerShell oturumunda, [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount)komutunu kullanarak bir Azure hesabında oturum açın.
 
-Aşağıdaki örneklerde, örnek parametre adlarını kendi değerlerinizle değiştirin. *Myresourcegroup*, *MYNIC*ve *myvm*dahil olmak üzere örnek parametre adları.
+Aşağıdaki örneklerde, örnek parametre adlarını kendi değerlerinizle değiştirin. *Myresourcegroup*, *MYNIC* ve *myvm* dahil olmak üzere örnek parametre adları.
 
 ### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
@@ -114,7 +114,7 @@ Aşağıdaki örneklerde, örnek parametre adlarını kendi değerlerinizle değ
     New-AzResourceGroup -Name "myResourceGroup" -Location "centralus"
     ```
 
-2. [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.Network/New-azVirtualNetworkSubnetConfig)ile bir alt ağ yapılandırması oluşturun. Aşağıdaki komut *Mysubnet*adlı bir alt ağ oluşturur:
+2. [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.Network/New-azVirtualNetworkSubnetConfig)ile bir alt ağ yapılandırması oluşturun. Aşağıdaki komut *Mysubnet* adlı bir alt ağ oluşturur:
 
     ```azurepowershell
     $subnet = New-AzVirtualNetworkSubnetConfig `
@@ -208,7 +208,7 @@ Aşağıdaki örneklerde, örnek parametre adlarını kendi değerlerinizle değ
     $vmConfig = New-AzVMConfig -VMName "myVm" -VMSize "Standard_DS4_v2"
     ```
 
-    Tüm VM boyutları ve özelliklerinin bir listesi için bkz. [WINDOWS VM boyutları](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    Tüm VM boyutları ve özelliklerinin bir listesi için bkz. [WINDOWS VM boyutları](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 3. [Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem) ve [set-Azvmsourceımage](/powershell/module/az.compute/set-azvmsourceimage)ile VM yapılandırmanızın geri kalanını oluşturun. Aşağıdaki komut bir Windows Server 2016 VM oluşturur:
 
@@ -242,13 +242,13 @@ Aşağıdaki örneklerde, örnek parametre adlarını kendi değerlerinizle değ
 
 VM 'yi Azure 'da oluşturduktan sonra VM 'ye bağlanın ve Ethernet denetleyicisinin Windows 'a yüklendiğini onaylayın.
 
-1. VM 'lerinizi yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Sanal makineleri**arayın ve seçin.
+1. VM 'lerinizi yönetmek için [Azure Portal](https://portal.azure.com) gidin. **Sanal makineleri** arayın ve seçin.
 
 2. Sanal makine listesinde yeni VM 'nizi seçin.
 
-3. VM 'ye Genel Bakış sayfasında, sanal makinenin **durumu** **oluşturma**olarak listeleniyorsa, Azure VM oluşturmayı bitirene kadar bekleyin. VM **Status** oluşturma işlemi tamamlandıktan sonra durum **çalışıyor** olarak değiştirilir.
+3. VM 'ye Genel Bakış sayfasında, sanal makinenin **durumu** **oluşturma** olarak listeleniyorsa, Azure VM oluşturmayı bitirene kadar bekleyin. VM  oluşturma işlemi tamamlandıktan sonra durum **çalışıyor** olarak değiştirilir.
 
-4. VM 'ye genel bakış araç çubuğundan **Bağlan**  >  **RDP**  >  **indirme RDP dosyasını**seçin.
+4. VM 'ye genel bakış araç çubuğundan **Bağlan**  >  **RDP**  >  **indirme RDP dosyasını** seçin.
 
 5. . Rdp dosyasını açın ve ardından VM 'de [sanal makine oluşturma ve ağ arabirimi iliştirme](#create-a-vm-and-attach-the-network-interface) bölümüne girdiğiniz kimlik bilgileriyle oturum açın. Azure 'da bir Windows sanal makinesine hiç bağlanmadıysanız, bkz. [sanal makineye bağlanma](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#connect-to-virtual-machine).
 

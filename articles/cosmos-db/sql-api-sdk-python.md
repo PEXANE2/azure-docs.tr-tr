@@ -9,14 +9,14 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-python
-ms.openlocfilehash: b69b3a3888b2d6e19b8eaa92ba9b2fedf0e15545
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 27bcb220c67392661cc1b2875823abdca4593bd4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091132"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220958"
 ---
-# <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Python SDK Azure Cosmos DB: sürüm notları ve kaynakları
+# <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Azure Cosmos DB Python SDK’sı: Sürüm notları ve kaynaklar
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
@@ -320,34 +320,34 @@ Sürüm 4.0.0 B1, Python dili en iyi uygulamalarına uygun bir Kullanıcı dostu
 Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için SDK 'nın devre dışı bırakılmasının ardından en az **12 ay** önce bildirim sağlar. Yeni özellikler, işlevler ve iyileştirmeler yalnızca geçerli SDK'ya eklendiğinden, her zaman mümkün olan en kısa zamanda, en son SDK sürümüne yükseltmeniz önerilir.
 
 > [!WARNING]
-> 31 Ağustos 2022 ' den sonra, Azure Cosmos DB artık hata düzeltmeleri yapamayacak, yeni özellikler ekleyecek ve SQL API için Azure Cosmos DB Python SDK 'sının 1. x veya 2. x sürümlerine destek sağlamacaktır. Yükseltmemeyi tercih ediyorsanız, SDK 'nın 1. x ve 2. x sürümünden gönderilen istekler Azure Cosmos DB hizmeti tarafından sunulmayı sürdürmeye devam edecektir.
+> 31 Ağustos 2022 ' den sonra Azure Cosmos DB artık hata düzeltmeleri yapmayacaktır ya da SQL API için Azure Cosmos DB Python SDK 'sının 1. x ve 2. x sürümlerini desteklemez. Yükseltmemeyi tercih ediyorsanız, SDK 'nın 1. x ve 2. x sürümünden gönderilen istekler Azure Cosmos DB hizmeti tarafından sunulmayı sürdürmeye devam edecektir.
 
 | Sürüm | Yayın Tarihi | Kullanımdan Kaldırma Tarihi |
 | --- | --- | --- |
 | [4.0.0](#400) |20 Mayıs 2020 |--- |
 | [3.0.2](#302) |15 Kasım 2018 |--- |
 | [3.0.1](#301) |Eki 04, 2018 |--- |
-| [2.3.3](#233) |08 Eyl, 2018 |30 Ağustos 2020 |
-| [2.3.2](#232) |08 Mayıs 2018 |30 Ağustos 2020 |
-| [2.3.1](#231) |21 Aralık 2017 |30 Ağustos 2020 |
-| [2.3.0](#230) |10 Kasım 2017 |30 Ağustos 2020 |
-| [2.2.1](#221) |29 Eyl, 2017 |30 Ağustos 2020 |
-| [2.2.0](#220) |10 Mayıs 2017 |30 Ağustos 2020 |
-| [2.1.0](#210) |01 Mayıs 2017 |30 Ağustos 2020 |
-| [2.0.1](#201) |30 Ekim 2016 |30 Ağustos 2020 |
-| [2.0.0](#200) |29 Eylül 2016 |30 Ağustos 2020 |
-| [1.9.0](#190) |07 Temmuz 2016 |30 Ağustos 2020 |
-| [1.8.0](#180) |14 Haziran 2016 |30 Ağustos 2020 |
-| [1.7.0](#170) |26 Nisan 2016 |30 Ağustos 2020 |
-| [1.6.1](#161) |08 Nisan 2016 |30 Ağustos 2020 |
-| [1.6.0](#160) |29 Mart 2016 |30 Ağustos 2020 |
-| [1.5.0](#150) |03 Ocak 2016 |30 Ağustos 2020 |
-| [1.4.2](#142) |06 Ekim 2015 |30 Ağustos 2020 |
-| 1.4.1 |06 Ekim 2015 |30 Ağustos 2020 |
-| [1.2.0](#120) |06 Ağustos 2015 |30 Ağustos 2020 |
-| [1.1.0](#110) |09 Temmuz 2015 |30 Ağustos 2020 |
-| [1.0.1](#101) |25 Mayıs 2015 |30 Ağustos 2020 |
-| 1.0.0 |07 Nisan 2015 |30 Ağustos 2020 |
+| [2.3.3](#233) |08 Eyl, 2018 |31 Ağustos 2022 |
+| [2.3.2](#232) |08 Mayıs 2018 |31 Ağustos 2022 |
+| [2.3.1](#231) |21 Aralık 2017 |31 Ağustos 2022 |
+| [2.3.0](#230) |10 Kasım 2017 |31 Ağustos 2022 |
+| [2.2.1](#221) |29 Eyl, 2017 |31 Ağustos 2022 |
+| [2.2.0](#220) |10 Mayıs 2017 |31 Ağustos 2022 |
+| [2.1.0](#210) |01 Mayıs 2017 |31 Ağustos 2022 |
+| [2.0.1](#201) |30 Ekim 2016 |31 Ağustos 2022 |
+| [2.0.0](#200) |29 Eylül 2016 |31 Ağustos 2022 |
+| [1.9.0](#190) |07 Temmuz 2016 |31 Ağustos 2022 |
+| [1.8.0](#180) |14 Haziran 2016 |31 Ağustos 2022 |
+| [1.7.0](#170) |26 Nisan 2016 |31 Ağustos 2022 |
+| [1.6.1](#161) |08 Nisan 2016 |31 Ağustos 2022 |
+| [1.6.0](#160) |29 Mart 2016 |31 Ağustos 2022 |
+| [1.5.0](#150) |03 Ocak 2016 |31 Ağustos 2022 |
+| [1.4.2](#142) |06 Ekim 2015 |31 Ağustos 2022 |
+| 1.4.1 |06 Ekim 2015 |31 Ağustos 2022 |
+| [1.2.0](#120) |06 Ağustos 2015 |31 Ağustos 2022 |
+| [1.1.0](#110) |09 Temmuz 2015 |31 Ağustos 2022 |
+| [1.0.1](#101) |25 Mayıs 2015 |31 Ağustos 2022 |
+| 1.0.0 |07 Nisan 2015 |31 Ağustos 2022 |
 | 0.9.4-ürününün |14 Ocak 2015 |29 Şubat 2016 |
 | 0.9.3-ürününün |09 Aralık 2014 |29 Şubat 2016 |
 | 0.9.2-ürününün |25 Kasım 2014 |29 Şubat 2016 |

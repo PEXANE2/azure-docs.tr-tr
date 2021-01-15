@@ -10,13 +10,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
-ms.date: 03/10/2020
-ms.openlocfilehash: a016781e5b05c8f43c043bf1f3368a58064e43ad
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 1/14/2021
+ms.openlocfilehash: db24f280f66e567572821297cfc9bb9b1e19743b
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501269"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222352"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Azure SQL veritabanı için Sorgu Performansı İçgörüleri
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -30,7 +30,7 @@ Sorgu Performansı İçgörüleri tek veritabanı ve havuza alınmış veritaban
 
 ![Sorgu Performansı İçgörüleri](./media/query-performance-insight-use/opening-title.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Sorgu Performansı İçgörüleri, veritabanınızda [sorgu deposunun](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) etkin olmasını gerektirir. Azure SQL veritabanı 'ndaki tüm veritabanları için varsayılan olarak otomatik olarak etkinleştirilir. Sorgu deposu çalışmıyorsa, Azure portal etkinleştirmek isteyip istemeyecektir.
 
@@ -155,7 +155,7 @@ Sorgu ayrıntılarını görüntülemek için:
 
 Sorgu Performansı İçgörüleri iki ölçüm olası performans sorunlarını bulmanıza yardımcı olabilir: süre ve yürütme sayısı.
 
-Uzun süre çalışan sorgular, kaynakları daha uzun süre kilitlemek, diğer kullanıcıları engellemek ve ölçeklenebilirliği kısıtlamak için en büyük olasılıklardır. En iyi duruma getirme için de en iyi adaylardır.
+Uzun süre çalışan sorgular, kaynakları daha uzun süre kilitlemek, diğer kullanıcıları engellemek ve ölçeklenebilirliği kısıtlamak için en büyük olasılıklardır. En iyi duruma getirme için de en iyi adaylardır. Daha fazla bilgi için bkz. [Azure SQL engelleme sorunlarını anlama ve çözme](understand-resolve-blocking.md).
 
 Uzun süre çalışan sorguları belirlemek için:
 

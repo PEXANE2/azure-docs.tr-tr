@@ -10,13 +10,13 @@ ms.topic: troubleshooting
 author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
-ms.date: 06/12/2020
-ms.openlocfilehash: c42db1445c939069f334d04ea26d54cdb843c336
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 1/14/2021
+ms.openlocfilehash: 3b57172daeffd1766da456e56cb5e445427a4858
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488842"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220397"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>Akıllı İçgörüler ile Azure SQL veritabanı ve Azure SQL yönetilen örnek performans sorunlarını giderme
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -128,7 +128,9 @@ Tanılama günlüğü, sorun giderme için temel olarak kullanabileceğiniz kili
 
 Sorunu azaltmanın en basit ve en güvenli yolu, işlem kısa tutulması ve en pahalı sorguların kilit parmak izini azaltmaktır. Büyük bir işlem toplu işlemini daha küçük işlemlere kesebilirsiniz. Sorgu kilit parmak izini mümkün olduğunca verimli hale getirerek iyi bir uygulamadır. Kilitlenme olasılığını artırdığından ve genel veritabanı performansını olumsuz yönde etkilediği için büyük taramalar sayısını azaltın. Kilitlemeye neden olan tanımlı sorgular için, tablo taramalarından kaçınmak üzere yeni dizinler oluşturabilir veya var olan dizine sütun ekleyebilirsiniz.
 
-Daha fazla öneri için, [SQL Server kilit yükseltme nedeniyle oluşan engelleme sorunlarını çözme](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in)konusuna bakın.
+Daha fazla öneri için bkz.:
+- [Azure SQL engelleme sorunlarını anlama ve çözme](understand-resolve-blocking.md)
+- [SQL Server ' de kilit yükseltme nedeniyle oluşan engelleme sorunlarını çözme](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in)
 
 ## <a name="increased-maxdop"></a>Artan MAXDOP
 

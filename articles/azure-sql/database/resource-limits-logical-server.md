@@ -10,13 +10,13 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
-ms.date: 09/15/2020
-ms.openlocfilehash: 9dfe70cf6c91a0c12604f91e583a9a4eb9b4e088
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 1/14/2021
+ms.openlocfilehash: e21a5a5be03ffa4ada362247c488ee7d12bd50f7
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308821"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222233"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics sunucuları için kaynak sınırları
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -80,7 +80,7 @@ Yüksek oturum veya çalışan kullanımı ile karşılaşıldığında, risk az
 - Veritabanı veya elastik havuzun hizmet katmanını veya işlem boyutunu artırma. Bkz. [tek veritabanı kaynaklarını ölçeklendirme](single-database-scale.md) ve [elastik havuz kaynaklarını ölçeklendirme](elastic-pool-scale.md).
 - Artan çalışan kullanımının nedeni, işlem kaynakları için çekişme nedeniyle, her bir sorgunun kaynak kullanımını azaltmak için sorguları en iyi duruma getirme. Daha fazla bilgi için bkz. [Sorgu Ayarlama/İpucu Sağlama](performance-guidance.md#query-tuning-and-hinting).
 - [MAXDOP](/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines) (en fazla paralellik derecesi) ayarı azaltıyor.
-- Yineleme sayısını ve sorgu engelleme süresini azaltmak için sorgu iş yükünü iyileştirme.
+- Yineleme sayısını ve sorgu engelleme süresini azaltmak için sorgu iş yükünü iyileştirme. Daha fazla bilgi için bkz. [Azure SQL engelleme sorunlarını anlama ve çözme](understand-resolve-blocking.md).
 
 ### <a name="memory"></a>Bellek
 
@@ -96,7 +96,7 @@ Yetersiz bellek hatalarıyla karşılaşdığınızda, risk azaltma seçenekleri
 - Veritabanı veya elastik havuzun hizmet katmanını veya işlem boyutunu artırma. Bkz. [tek veritabanı kaynaklarını ölçeklendirme](single-database-scale.md) ve [elastik havuz kaynaklarını ölçeklendirme](elastic-pool-scale.md).
 - Bellek kullanımını azaltmak için sorguları ve yapılandırmayı en iyi duruma getirme. Ortak çözümler aşağıdaki tabloda açıklanmıştır.
 
-|Çözüm|Açıklama|
+|Çözüm|Description|
 | :----- | :----- |
 |Bellek izin verdiği boyutu azaltma|Bellek onayları hakkında daha fazla bilgi için bkz. [SQL Server belleği vermeyi anlama](https://techcommunity.microsoft.com/t5/sql-server/understanding-sql-server-memory-grant/ba-p/383595) blog gönderisi. Aşırı büyük bellek onayları önlemeye yönelik yaygın bir çözüm, [İstatistikleri](/sql/relational-databases/statistics/statistics) güncel tutmaktan sorumludur. Bu, sorgu altyapısı tarafından bellek tüketiminin daha doğru tahminlerine neden olur, böylece gereksiz büyük bellek onayları önlenir.</br></br>Uyumluluk düzeyi 140 ve üzeri kullanan veritabanlarında veritabanı altyapısı, [toplu iş modu bellek verme geri bildirimi](/sql/relational-databases/performance/intelligent-query-processing#batch-mode-memory-grant-feedback)'ni kullanarak bellek verme boyutunu otomatik olarak ayarlayabilir. Uyumluluk düzeyi 150 ve üstünü kullanan veritabanlarında, veritabanı altyapısı benzer şekilde daha yaygın satır modu sorguları için [satır modu bellek verme geri bildirimi](/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)kullanır. Bu yerleşik işlevsellik, gereksiz büyük bellek izni nedeniyle yetersiz bellek hatalarından kaçınmaya yardımcı olur.|
 |Sorgu planı önbelleğinin boyutunu küçültün|Veritabanı altyapısı, her sorgu yürütmesi için bir sorgu planı derlenmesini önlemek üzere sorgu planlarını bellekte önbelleğe alır. Yalnızca bir kez kullanılan önbelleğe alma planlarını nedeniyle sorgu planı önbelleği blobunun neden olduğu bir engel olmak için, [veritabanı kapsamındaki OPTIMIZE_FOR_AD_HOC_WORKLOADS yapılandırmasını](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql)etkinleştirin.|
@@ -113,7 +113,7 @@ Kullanıcı iş yükleri ve iç işlemlere göre toplam CPU ve bellek tüketimi,
 
 Kullanıcı iş yükleri ve iç işlemlere göre son kaynak tüketiminin daha ayrıntılı bir dökümü [sys.dm_resource_governor_resource_pools_history_ex](/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-history-ex-azure-sql-database) ve [sys.dm_resource_governor_workload_groups_history_ex](/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-workload-groups-history-ex-azure-sql-database) görünümlerinde raporlanır. Bu görünümlerde başvurulan kaynak havuzlarıyla ve iş yükü gruplarıyla ilgili ayrıntılar için bkz. [Resource idare](#resource-governance). Bu görünümler, Kullanıcı iş yükleri ve ilişkili kaynak havuzları ve iş yükü gruplarındaki belirli iç süreçler tarafından kaynak kullanımını raporlar.
 
-Performans izleme ve sorun giderme bağlamında, Kullanıcı **user CPU consumption** `avg_cpu_percent` `cpu_percent` iş yükleri ve iç işlemlere (,) göre hem Kullanıcı CPU kullanımını (,) hem de **toplam CPU tüketimini** göz önünde bulundurmanız önemlidir `avg_instance_cpu_percent` `sqlserver_process_core_percent` .
+Performans izleme ve sorun giderme bağlamında, Kullanıcı  `avg_cpu_percent` `cpu_percent` iş yükleri ve iç işlemlere (,) göre hem Kullanıcı CPU kullanımını (,) hem de **toplam CPU tüketimini** göz önünde bulundurmanız önemlidir `avg_instance_cpu_percent` `sqlserver_process_core_percent` .
 
 **Kullanıcı CPU tüketimi** , her hizmet hedefi için Kullanıcı iş yükü sınırlarının yüzdesi olarak hesaplanır. %100 ' deki **Kullanıcı CPU kullanımı** , Kullanıcı iş yükünün hizmet hedefi sınırına ulaşmış olduğunu gösterir. Ancak, **toplam CPU tüketimi** % 70-100 aralığına ulaştığında, BILDIRILEN **Kullanıcı CPU tüketimi** %100 ' nin altında önemli olmaya devam ediyor olsa da, Kullanıcı iş yükü aktarım hızını genişletme ve sorgu gecikme süresinin artabilmesi mümkündür. Bu durum, yoğun bir işlem kaynakları ayırması ile daha küçük hizmet hedefleri kullanılırken oluşma olasılığını daha yüksektir, ancak [yoğun elastik havuzlarda](elastic-pool-resource-management.md)olduğu gibi nispeten daha yoğun Kullanıcı iş yükleri. Bu, örneğin, veritabanının yeni bir çoğaltmasını oluştururken, iç süreçler geçici olarak ek kaynaklar gerektirdiğinde daha küçük hizmet hedefleriyle da oluşabilir.
 

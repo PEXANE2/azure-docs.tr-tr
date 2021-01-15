@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
-ms.openlocfilehash: ec70f7820994898cb8e552dab66547cc9c9f10ec
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 73562d8d32f265fa43ca80d2f8d4f84b1b631ec6
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042866"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223678"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Bir sanal makine ağ trafiği Filtreleme sorununu Tanıla
 
 Bu makalede, bir sanal makine (VM) için geçerli olan ağ güvenlik grubu (NSG) güvenlik kurallarını görüntüleyerek bir ağ trafiği Filtreleme sorununu tanılamayı öğreneceksiniz.
 
-NSG 'ler, bir VM 'ye ve dışına akan trafik türlerini denetlemenizi sağlar. Bir NSG 'yi Azure sanal ağındaki bir alt ağla, bir VM 'ye bağlı bir ağ arabirimine veya her ikisine birden ilişkilendirebilirsiniz. Bir ağ arabirimine uygulanan etkin güvenlik kuralları, bir ağ arabirimiyle ilişkili NSG 'de bulunan kuralların toplamı ve ağ arabiriminin bulunduğu alt ağ. Farklı NSG 'lerdeki kurallar bazen birbirleriyle çakışabilir ve bir VM 'nin ağ bağlantısını etkileyebilir. Sanal makine ağ arabirimlerinizde uygulanan NSG 'lerdeki tüm etkin güvenlik kurallarını görüntüleyebilirsiniz. Sanal ağ, ağ arabirimi veya NSG kavramlarına alışkın değilseniz bkz. [sanal ağa genel bakış](virtual-networks-overview.md), [ağ arabirimi](virtual-network-network-interface.md)ve [ağ güvenlik gruplarına genel bakış](security-overview.md).
+NSG 'ler, bir VM 'ye ve dışına akan trafik türlerini denetlemenizi sağlar. Bir NSG 'yi Azure sanal ağındaki bir alt ağla, bir VM 'ye bağlı bir ağ arabirimine veya her ikisine birden ilişkilendirebilirsiniz. Bir ağ arabirimine uygulanan etkin güvenlik kuralları, bir ağ arabirimiyle ilişkili NSG 'de bulunan kuralların toplamı ve ağ arabiriminin bulunduğu alt ağ. Farklı NSG 'lerdeki kurallar bazen birbirleriyle çakışabilir ve bir VM 'nin ağ bağlantısını etkileyebilir. Sanal makine ağ arabirimlerinizde uygulanan NSG 'lerdeki tüm etkin güvenlik kurallarını görüntüleyebilirsiniz. Sanal ağ, ağ arabirimi veya NSG kavramlarına alışkın değilseniz bkz. [sanal ağa genel bakış](virtual-networks-overview.md), [ağ arabirimi](virtual-network-network-interface.md)ve [ağ güvenlik gruplarına genel bakış](./network-security-groups-overview.md).
 
 ## <a name="scenario"></a>Senaryo
 
@@ -38,24 +38,24 @@ Aşağıdaki adımlarda, için geçerli güvenlik kurallarını görüntülemek 
 
 1. [Gerekli izinlere](virtual-network-network-interface.md#permissions)sahip bir Azure hesabıyla Azure [portalında](https://portal.azure.com) oturum açın.
 2. Azure portal en üstünde, arama kutusuna VM 'nin adını girin. VM 'nin adı arama sonuçlarında göründüğünde, bunu seçin.
-3. **Ayarlar** altında, aşağıdaki resimde gösterildiği gibi **ağ** ' ı seçin:
+3. **Ayarlar** altında, aşağıdaki resimde gösterildiği gibi **ağ**' ı seçin:
 
    ![Ekran görüntüsünde, V M V M NIC 'lerimin ağ ayarlarına sahip Azure portal gösterilmektedir.](./media/diagnose-network-traffic-filter-problem/view-security-rules.png)
 
    Önceki resimde listelenen kurallar, **Myvmvmnıc** adlı bir ağ arabirimi içindir. Ağ arabirimi için iki farklı ağ güvenlik grubundan **gelen bağlantı noktası kuralları** olduğunu görürsünüz:
    
-   - **Mysubnetnsg** : ağ arabiriminin içinde bulunduğu alt ağ ile ilişkili.
-   - **Myvmnsg** : **Myvmvmnıc** adlı VM 'deki ağ arabirimiyle ilişkili.
+   - **Mysubnetnsg**: ağ arabiriminin içinde bulunduğu alt ağ ile ilişkili.
+   - **Myvmnsg**: **Myvmvmnıc** adlı VM 'deki ağ arabirimiyle ilişkili.
 
-   **Inyallinbound** adlı kural, [senaryoda](#scenario)açıklandığı gibi, 80 NUMARALı bağlantı noktası üzerinden VM 'ye gelen iletişimi önletedir. Kural, **kaynak** için *0.0.0.0/0* listeler ve bu da internet 'i içerir. Daha yüksek önceliğe (düşük sayı) sahip başka hiçbir kural, bağlantı noktası 80 ' ye izin verir. VM 'nin internet 'ten gelen bağlantı noktası 80 ' e izin vermek için bkz. [sorunu çözün](#resolve-a-problem). Güvenlik kuralları ve Azure 'un nasıl uygulandığı hakkında daha fazla bilgi edinmek için bkz. [ağ güvenlik grupları](security-overview.md).
+   **Inyallinbound** adlı kural, [senaryoda](#scenario)açıklandığı gibi, 80 NUMARALı bağlantı noktası üzerinden VM 'ye gelen iletişimi önletedir. Kural, **kaynak** için *0.0.0.0/0* listeler ve bu da internet 'i içerir. Daha yüksek önceliğe (düşük sayı) sahip başka hiçbir kural, bağlantı noktası 80 ' ye izin verir. VM 'nin internet 'ten gelen bağlantı noktası 80 ' e izin vermek için bkz. [sorunu çözün](#resolve-a-problem). Güvenlik kuralları ve Azure 'un nasıl uygulandığı hakkında daha fazla bilgi edinmek için bkz. [ağ güvenlik grupları](./network-security-groups-overview.md).
 
-   Resmin en altında **giden bağlantı noktası kurallarını** da görürsünüz. , Bu, ağ arabirimi için giden bağlantı noktası kuralları ' nda bulunur. Resimde her NSG için yalnızca dört gelen kural gösterilse de NSG 'lerinizin dörtten fazla kuralı olabilir. Resimde **kaynak ve** **hedef** altında **VirtualNetwork** ve **kaynak** altında **AzureLoadBalancer** görürsünüz. **VirtualNetwork** ve **AzureLoadBalancer** , [hizmet etiketlerdir](security-overview.md#service-tags). Hizmet etiketleri, güvenlik kuralı oluşturma karmaşıklığını en aza indirmeye yardımcı olmak için bir IP adresi önekleri grubunu temsil eder.
+   Resmin en altında **giden bağlantı noktası kurallarını** da görürsünüz. , Bu, ağ arabirimi için giden bağlantı noktası kuralları ' nda bulunur. Resimde her NSG için yalnızca dört gelen kural gösterilse de NSG 'lerinizin dörtten fazla kuralı olabilir. Resimde **kaynak ve** **hedef** altında **VirtualNetwork** ve **kaynak** altında **AzureLoadBalancer** görürsünüz. **VirtualNetwork** ve **AzureLoadBalancer** , [hizmet etiketlerdir](./network-security-groups-overview.md#service-tags). Hizmet etiketleri, güvenlik kuralı oluşturma karmaşıklığını en aza indirmeye yardımcı olmak için bir IP adresi önekleri grubunu temsil eder.
 
-4. VM 'nin çalışır durumda olduğundan emin olun ve ardından önceki resimde gösterildiği gibi, aşağıdaki resimde gösterilen etkin güvenlik kurallarını görmek için **geçerli güvenlik kuralları** ' nı seçin:
+4. VM 'nin çalışır durumda olduğundan emin olun ve ardından önceki resimde gösterildiği gibi, aşağıdaki resimde gösterilen etkin güvenlik kurallarını görmek için **geçerli güvenlik kuralları**' nı seçin:
 
    ![Ekran görüntüsünde, download seçili ve AllowAzureLoadBalancerInbound gelen kuralı seçiliyken etkin güvenlik kuralları bölmesi görüntülenir.](./media/diagnose-network-traffic-filter-problem/view-effective-security-rules.png)
 
-   Listelenen kurallar, 3. adımda gördüğünüz şekilde aynıdır, ancak ağ arabirimi ve alt ağ ile ilişkili NSG 'nin farklı sekmeleri vardır. Resimde görebileceğiniz gibi, yalnızca ilk 50 kural gösterilir. Tüm kuralları içeren bir. csv dosyasını indirmek için **İndir** ' i seçin.
+   Listelenen kurallar, 3. adımda gördüğünüz şekilde aynıdır, ancak ağ arabirimi ve alt ağ ile ilişkili NSG 'nin farklı sekmeleri vardır. Resimde görebileceğiniz gibi, yalnızca ilk 50 kural gösterilir. Tüm kuralları içeren bir. csv dosyasını indirmek için **İndir**' i seçin.
 
    Her bir hizmet etiketinin hangi önekleri temsil ettiğini görmek için, **AllowAzureLoadBalancerInbound** adlı kural gibi bir kural seçin. Aşağıdaki resimde **AzureLoadBalancer** Service etiketinin ön ekleri gösterilmektedir:
 
@@ -72,8 +72,8 @@ Aşağıdaki adımlarda, için geçerli güvenlik kurallarını görüntülemek 
    **Myvmvmnıc** ağ arabiriminden farklı olarak, **myVMVMNic2** ağ arabirimine ilişkili bir ağ güvenlik grubu yoktur. Her ağ arabirimi ve alt ağ ile ilişkili sıfır veya bir NSG olabilir. Her ağ arabirimiyle veya alt ağıyla ilişkili NSG aynı veya farklı olabilir. Aynı ağ güvenlik grubunu, seçtiğiniz kadar çok ağ arabirimi ve alt ağ ile ilişkilendirebilirsiniz.
 
 Etkin güvenlik kuralları VM aracılığıyla görüntülenmekle birlikte, geçerli güvenlik kurallarını bir bireysel aracılığıyla da görüntüleyebilirsiniz:
-- **Ağ arabirimi** : [bir ağ arabirimini görüntülemeyi](virtual-network-network-interface.md#view-network-interface-settings)öğrenin.
-- **NSG** : [bir NSG 'yi görüntülemeyi](manage-network-security-group.md#view-details-of-a-network-security-group)öğrenin.
+- **Ağ arabirimi**: [bir ağ arabirimini görüntülemeyi](virtual-network-network-interface.md#view-network-interface-settings)öğrenin.
+- **NSG**: [bir NSG 'yi görüntülemeyi](manage-network-security-group.md#view-details-of-a-network-security-group)öğrenin.
 
 ## <a name="diagnose-using-powershell"></a>PowerShell kullanarak tanılama
 
@@ -109,7 +109,7 @@ NetworkInterfaces
 {/subscriptions/<ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic
 ```
 
-Önceki çıktıda, ağ arabirimi adı *Myvmvmnic* ' dir.
+Önceki çıktıda, ağ arabirimi adı *Myvmvmnic*' dir.
 
 ## <a name="diagnose-using-azure-cli"></a>Azure CLı kullanarak tanılama
 
@@ -150,15 +150,15 @@ Döndürülen çıktı içinde, aşağıdaki örneğe benzer bilgiler görürsü
       },
 ```
 
-Önceki çıktıda, ağ arabirimi adı *Myvmvmnıc arabirimidir* .
+Önceki çıktıda, ağ arabirimi adı *Myvmvmnıc arabirimidir*.
 
 ## <a name="interpret-command-output"></a>Komut çıkışını yorumlama
 
 [PowerShell](#diagnose-using-powershell)'i veya sorunu tanılamak IÇIN [Azure CLI](#diagnose-using-azure-cli) 'yi kullanlemenizden bağımsız olarak, aşağıdaki bilgileri içeren çıktıyı alırsınız:
 
-- **Networksecuritygroup** : ağ GÜVENLIK grubunun kimliği.
-- **İlişkilendirme** : ağ güvenlik grubunun bir *NetworkInterface* veya *subnet* ile ilişkili olup olmadığı. Bir NSG ile ilişkili ise, her NSG için **Networksecuritygroup** , **Association** ve **securittivesecurityrules** ile çıkış döndürülür. Etkin güvenlik kurallarını görüntülemek için komut çalıştırılmadan önce NSG ilişkili veya ilişkisi varsa, değişikliğin komut çıktısında yansıtılması için birkaç saniye beklemeniz gerekebilir.
-- **Securittivesecurityrules** : [güvenlik kuralı oluşturma](manage-network-security-group.md#create-a-security-rule)bölümünde her bir özelliğin açıklaması ayrıntılı olarak açıklanmıştır. *Defaultsecurityrules/* ile önceden ortaya çıkacak kural adları, her NSG 'de mevcut olan varsayılan güvenlik kurallarıdır. Kural adları *SecurityRules/* ile önceden oluşturulmuş kurallardır. **Destinationaddresspredüzeltmesini** veya **Sourceaddresspredüzeltilme** özellikleri için **Internet** , **VirtualNetwork** ve **AzureLoadBalancer** gibi bir [hizmet etiketi](security-overview.md#service-tags)belirten kurallar, **expandeddestinationaddresspredüzeltmesini** özelliği için de değerler içermelidir. **Expandeddestinationaddresspredüzeltmesini** özelliği, hizmet etiketiyle temsil edilen tüm adres öneklerini listeler.
+- **Networksecuritygroup**: ağ GÜVENLIK grubunun kimliği.
+- **İlişkilendirme**: ağ güvenlik grubunun bir *NetworkInterface* veya *subnet* ile ilişkili olup olmadığı. Bir NSG ile ilişkili ise, her NSG için **Networksecuritygroup**, **Association** ve **securittivesecurityrules** ile çıkış döndürülür. Etkin güvenlik kurallarını görüntülemek için komut çalıştırılmadan önce NSG ilişkili veya ilişkisi varsa, değişikliğin komut çıktısında yansıtılması için birkaç saniye beklemeniz gerekebilir.
+- **Securittivesecurityrules**: [güvenlik kuralı oluşturma](manage-network-security-group.md#create-a-security-rule)bölümünde her bir özelliğin açıklaması ayrıntılı olarak açıklanmıştır. *Defaultsecurityrules/* ile önceden ortaya çıkacak kural adları, her NSG 'de mevcut olan varsayılan güvenlik kurallarıdır. Kural adları *SecurityRules/* ile önceden oluşturulmuş kurallardır. **Destinationaddresspredüzeltmesini** veya **Sourceaddresspredüzeltilme** özellikleri için **Internet**, **VirtualNetwork** ve **AzureLoadBalancer** gibi bir [hizmet etiketi](./network-security-groups-overview.md#service-tags)belirten kurallar, **expandeddestinationaddresspredüzeltmesini** özelliği için de değerler içermelidir. **Expandeddestinationaddresspredüzeltmesini** özelliği, hizmet etiketiyle temsil edilen tüm adres öneklerini listeler.
 
 Çıktıda yinelenen kuralların listelendiğini görürseniz, bunun nedeni, bir NSG 'nin hem ağ arabirimi hem de alt ağ ile ilişkilendirilmesi olabilir. Her iki NSG de aynı varsayılan kurallara sahiptir ve her iki NSG 'de aynı olan kendi kurallarınızı oluşturduysanız ek yinelenen kurallara sahip olabilir.
 
@@ -171,7 +171,7 @@ Bu makaledeki [senaryoda](#scenario) sunulan sorunu tanılamak için Azure [port
 | Özellik                | Değer                                                                              |
 |---------                |---------                                                                           |
 | Kaynak                  | Herhangi bir                                                                                |
-| Kaynak bağlantı noktası aralıkları      | Herhangi biri                                                                                |
+| Kaynak bağlantı noktası aralıkları      | Herhangi bir                                                                                |
 | Hedef             | VM 'nin IP adresi, bir IP adresi aralığı veya alt ağdaki tüm adresler. |
 | Hedef bağlantı noktası aralıkları | 80                                                                                 |
 | Protokol                | TCP                                                                                |
@@ -181,7 +181,7 @@ Bu makaledeki [senaryoda](#scenario) sunulan sorunu tanılamak için Azure [port
 
 Kuralı oluşturduktan sonra, bağlantı noktası 80 internet 'ten gelen trafiğe izin verilir, çünkü kuralın önceliği, trafiği reddeden *Denyallinbound* adlı varsayılan güvenlik kuralından daha yüksektir. [Bir güvenlik kuralı oluşturmayı](manage-network-security-group.md#create-a-security-rule)öğrenin. Farklı NSG 'ler hem ağ arabirimiyle hem de alt ağ ile ilişkiliyse, her iki NSG 'de de aynı kuralı oluşturmanız gerekir.
 
-Azure gelen trafiği işlediğinde, alt ağla ilişkili NSG 'deki kuralları işler (ilişkili bir NSG varsa) ve ardından ağ arabirimiyle ilişkili NSG 'deki kuralları işler. Ağ arabirimi ve alt ağ ile ilişkili bir NSG varsa, trafiğin VM 'ye ulaşması için bağlantı noktasının her iki NSG 'de açık olması gerekir. Yönetim ve iletişim sorunlarını kolaylaştırmak için, bir NSG 'yi tek bir ağ arabirimi yerine bir alt ağ ile ilişkilendirmenizi öneririz. Bir alt ağ içindeki VM 'Lerin farklı güvenlik kuralları olması gerekiyorsa, ağ arabirimlerini bir uygulama güvenlik grubunun (ASG) üyesi yapabilir ve bir güvenlik kuralının kaynağı ve hedefi olarak bir ASG belirtebilirsiniz. [Uygulama güvenlik grupları](security-overview.md#application-security-groups)hakkında daha fazla bilgi edinin.
+Azure gelen trafiği işlediğinde, alt ağla ilişkili NSG 'deki kuralları işler (ilişkili bir NSG varsa) ve ardından ağ arabirimiyle ilişkili NSG 'deki kuralları işler. Ağ arabirimi ve alt ağ ile ilişkili bir NSG varsa, trafiğin VM 'ye ulaşması için bağlantı noktasının her iki NSG 'de açık olması gerekir. Yönetim ve iletişim sorunlarını kolaylaştırmak için, bir NSG 'yi tek bir ağ arabirimi yerine bir alt ağ ile ilişkilendirmenizi öneririz. Bir alt ağ içindeki VM 'Lerin farklı güvenlik kuralları olması gerekiyorsa, ağ arabirimlerini bir uygulama güvenlik grubunun (ASG) üyesi yapabilir ve bir güvenlik kuralının kaynağı ve hedefi olarak bir ASG belirtebilirsiniz. [Uygulama güvenlik grupları](./network-security-groups-overview.md#application-security-groups)hakkında daha fazla bilgi edinin.
 
 Hala iletişim sorunlarınız varsa bkz. [hususlar](#considerations) ve ek tanılama.
 
@@ -189,8 +189,8 @@ Hala iletişim sorunlarınız varsa bkz. [hususlar](#considerations) ve ek tanı
 
 Bağlantı sorunlarını giderirken aşağıdaki noktaları göz önünde bulundurun:
 
-* Varsayılan güvenlik kuralları Internet 'ten gelen erişimi engeller ve yalnızca sanal ağdan gelen trafiğe izin verir. Internet 'ten gelen trafiğe izin vermek için, varsayılan kurallara göre daha yüksek önceliğe sahip güvenlik kuralları ekleyin. [Varsayılan güvenlik kuralları](security-overview.md#default-security-rules)veya [bir güvenlik kuralı ekleme](manage-network-security-group.md#create-a-security-rule)hakkında daha fazla bilgi edinin.
-* Eşlenmiş sanal ağlarınız varsa, varsayılan olarak **VIRTUAL_NETWORK** hizmet etiketi, eşlenmiş sanal ağların öneklerini içerecek şekilde otomatik olarak genişletilir. Sanal ağ eşlemesiyle ilgili sorunları gidermek için, **genişletmeleri Expandedadddresspredüzeltmesini** listesinde görebilirsiniz. [Sanal ağ eşlemesi](virtual-network-peering-overview.md) ve [hizmet etiketleri](security-overview.md#service-tags)hakkında daha fazla bilgi edinin.
+* Varsayılan güvenlik kuralları Internet 'ten gelen erişimi engeller ve yalnızca sanal ağdan gelen trafiğe izin verir. Internet 'ten gelen trafiğe izin vermek için, varsayılan kurallara göre daha yüksek önceliğe sahip güvenlik kuralları ekleyin. [Varsayılan güvenlik kuralları](./network-security-groups-overview.md#default-security-rules)veya [bir güvenlik kuralı ekleme](manage-network-security-group.md#create-a-security-rule)hakkında daha fazla bilgi edinin.
+* Eşlenmiş sanal ağlarınız varsa, varsayılan olarak **VIRTUAL_NETWORK** hizmet etiketi, eşlenmiş sanal ağların öneklerini içerecek şekilde otomatik olarak genişletilir. Sanal ağ eşlemesiyle ilgili sorunları gidermek için, **genişletmeleri Expandedadddresspredüzeltmesini** listesinde görebilirsiniz. [Sanal ağ eşlemesi](virtual-network-peering-overview.md) ve [hizmet etiketleri](./network-security-groups-overview.md#service-tags)hakkında daha fazla bilgi edinin.
 * Geçerli güvenlik kuralları yalnızca, VM 'nin ağ arabirimi ve veya alt ağı ile ilişkili bir NSG varsa ve VM çalışır durumdaysa bir ağ arabirimi için gösterilir.
 * Ağ arabirimi veya alt ağ ile ilişkili hiçbir NSG yoksa ve bir VM 'ye atanan bir [genel IP adresiniz](virtual-network-public-ip-address.md) varsa, tüm bağlantı noktaları, gelen erişim için ve herhangi bir yere giden erişim için açıktır. VM 'nin genel bir IP adresi varsa, ağ arabirimine alt ağa bir NSG uygulamanız önerilir.
 
@@ -204,4 +204,4 @@ Bağlantı sorunlarını giderirken aşağıdaki noktaları göz önünde bulund
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Bir [ağ güvenlik grubu](manage-network-security-group.md#work-with-network-security-groups) ve [güvenlik kuralları](manage-network-security-group.md#work-with-security-rules)için tüm görevler, Özellikler ve ayarlar hakkında bilgi edinin.
-- [Varsayılan güvenlik kuralları](security-overview.md#default-security-rules), [hizmet etiketleri](security-overview.md#service-tags)ve Azure 'un bir VM 'nin [gelen ve giden trafiği için güvenlik kurallarını nasıl işlediği](security-overview.md#network-security-groups) hakkında bilgi edinin.
+- [Varsayılan güvenlik kuralları](./network-security-groups-overview.md#default-security-rules), [hizmet etiketleri](./network-security-groups-overview.md#service-tags)ve Azure 'un bir VM 'nin [gelen ve giden trafiği için güvenlik kurallarını nasıl işlediği](./network-security-groups-overview.md#network-security-groups) hakkında bilgi edinin.

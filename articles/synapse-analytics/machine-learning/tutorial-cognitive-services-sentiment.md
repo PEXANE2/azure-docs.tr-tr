@@ -9,16 +9,16 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 1b407cbee5218149f794ab125ac058e32b422558
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6a4833cf0d73939e01fd3e3e7263c6cba3c0a28a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96469062"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222199"
 ---
 # <a name="tutorial-sentiment-analysis-with-cognitive-services-preview"></a>Öğretici: bilişsel hizmetler ile yaklaşım Analizi (Önizleme)
 
-Bu öğreticide, bilişsel [Hizmetler](https://go.microsoft.com/fwlink/?linkid=2147492)Ile Azure SYNAPSE 'da verilerinizi kolayca zenginleştirme hakkında bilgi edineceksiniz. Yaklaşım analizini gerçekleştirmek için [metin analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) yeteneklerini kullanacağız. Azure SYNAPSE ' deki bir Kullanıcı, yalnızca duygu ile zenginleştirmek üzere metin sütunu içeren bir tablo seçebilir. Bu yaklaşım pozitif, negatif, karışık veya nötr olabilir ve bir olasılık da döndürülür.
+Bu öğreticide, bilişsel [Hizmetler](../../cognitive-services/index.yml)Ile Azure SYNAPSE 'da verilerinizi kolayca zenginleştirme hakkında bilgi edineceksiniz. Yaklaşım analizini gerçekleştirmek için [metin analizi](../../cognitive-services/text-analytics/index.yml) yeteneklerini kullanacağız. Azure SYNAPSE ' deki bir Kullanıcı, yalnızca duygu ile zenginleştirmek üzere metin sütunu içeren bir tablo seçebilir. Bu yaklaşım pozitif, negatif, karışık veya nötr olabilir ve bir olasılık da döndürülür.
 
 Bu öğreticinin içindekiler:
 
@@ -28,7 +28,7 @@ Bu öğreticinin içindekiler:
 
 Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Varsayılan depolama alanı olarak yapılandırılmış bir ADLS 2. depolama hesabıyla [Azure SYNAPSE Analytics çalışma alanı](../get-started-create-workspace.md) . Birlikte çalıştığınız ADLS 2. FileSystem 'ın **Depolama Blobu veri katılımcısı** olması gerekir.
 - Azure SYNAPSE Analytics çalışma alanınızdaki Spark Havuzu. Ayrıntılar için bkz. [Azure 'Da Spark havuzu oluşturma SYNAPSE](../quickstart-create-sql-pool-studio.md).
@@ -98,7 +98,7 @@ Az önce açtığınız Not defteri, bilişsel hizmetlere bağlanmak için [mmls
 
 Verdiğiniz Azure Key Vault ayrıntıları, bu deneyimden verilerinize güvenli bir şekilde başvurmanızı sağlar.
 
-Artık tüm hücreleri **çalıştırarak** verilerinizi Sentiments ile zenginleştirebilirsiniz. Yaklaşımları pozitif/negatif/nötr/karışık olarak döndürülecek ve yaklaşım başına olasılıklara de sahip olacak. Bilişsel [Hizmetler](https://go.microsoft.com/fwlink/?linkid=2147792)hakkında daha fazla bilgi edinin-yaklaşım analizi.
+Artık tüm hücreleri **çalıştırarak** verilerinizi Sentiments ile zenginleştirebilirsiniz. Yaklaşımları pozitif/negatif/nötr/karışık olarak döndürülecek ve yaklaşım başına olasılıklara de sahip olacak. Bilişsel [Hizmetler](../../cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md)hakkında daha fazla bilgi edinin-yaklaşım analizi.
 
 ![Yaklaşım Analizi Çalıştır](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00h.png)
 

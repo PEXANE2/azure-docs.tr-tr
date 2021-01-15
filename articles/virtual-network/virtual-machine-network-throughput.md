@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: f0bad935c7c3d44f57dd171f714f31856bc2089c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b11bdf9b82352c15b7f7236168494f32fe4a4f9f
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361322"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221519"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Sanal makine ağ bant genişliği
 
@@ -32,11 +32,11 @@ Giriş doğrudan tarifeli değil veya sınırlı değil. Ancak, bir sanal makine
 
 Hızlandırılmış ağ, gecikme süresi, aktarım hızı ve CPU kullanımı dahil olmak üzere ağ performansını geliştirmek için tasarlanmış bir özelliktir. Hızlandırılmış ağ bir sanal makinenin aktarım hızını geliştirebileceğinden, bu işlem yalnızca sanal makinenin ayrılmış bant genişliğine kadar yapılabilir. Hızlandırılmış ağ hakkında daha fazla bilgi edinmek için bkz. [Windows](create-vm-accelerated-networking-powershell.md) veya [Linux](create-vm-accelerated-networking-cli.md) sanal makineleri için hızlandırılmış ağ.
  
-Azure sanal makinelerinin bir tane olması gerekir, ancak bunlara eklenmiş birkaç ağ arabirimi olabilir. Bir sanal makineye ayrılan bant genişliği, bir sanal makineye bağlı tüm ağ arabirimleri genelinde giden tüm trafiğin toplamıdır. Diğer bir deyişle, sanal makineye kaç ağ arabirimi iliştirildiğine bakılmaksızın, ayrılan bant genişliği sanal makine başına olur. Birçok ağ arabiriminin farklı Azure VM boyutlarını desteklediğini öğrenmek için bkz. Azure [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ve [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM boyutları. 
+Azure sanal makinelerinin bir tane olması gerekir, ancak bunlara eklenmiş birkaç ağ arabirimi olabilir. Bir sanal makineye ayrılan bant genişliği, bir sanal makineye bağlı tüm ağ arabirimleri genelinde giden tüm trafiğin toplamıdır. Diğer bir deyişle, sanal makineye kaç ağ arabirimi iliştirildiğine bakılmaksızın, ayrılan bant genişliği sanal makine başına olur. Birçok ağ arabiriminin farklı Azure VM boyutlarını desteklediğini öğrenmek için bkz. Azure [Windows](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ve [Linux](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM boyutları. 
 
 ## <a name="expected-network-throughput"></a>Ağ aktarım hızı bekleniyor
 
-Beklenen giden aktarım hızı ve her VM boyutu tarafından desteklenen ağ arabirimlerinin sayısı, Azure [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ve [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM boyutlarında ayrıntılıdır. Genel amaçlı gibi bir tür seçin ve sonuç sayfasında, Dv2-Series gibi bir boyut serisi seçin. Her serinin, **en fazla NIC/ağ performansı (MB/sn)** adlı son sütunda ağ özelliklerine sahip bir tablosu vardır. 
+Beklenen giden aktarım hızı ve her VM boyutu tarafından desteklenen ağ arabirimlerinin sayısı, Azure [Windows](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ve [Linux](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM boyutlarında ayrıntılıdır. Genel amaçlı gibi bir tür seçin ve sonuç sayfasında, Dv2-Series gibi bir boyut serisi seçin. Her serinin, **en fazla NIC/ağ performansı (MB/sn)** adlı son sütunda ağ özelliklerine sahip bir tablosu vardır. 
 
 Aktarım hızı sınırı, sanal makine için geçerlidir. Aktarım hızı aşağıdaki faktörlerden etkilenmez:
 - **Ağ arabirimi sayısı**: bant genişliği sınırı, sanal makineden giden tüm trafiğin birikimli bir sayıdır.

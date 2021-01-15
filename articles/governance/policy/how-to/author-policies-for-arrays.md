@@ -3,12 +3,12 @@ title: Kaynaklardaki dizi özellikleri için yazma ilkeleri
 description: Dizi parametreleri ve dizi dili ifadeleriyle çalışmayı öğrenin, [*] diğer adını değerlendirin ve Azure Ilke tanımı kuralları ile öğeleri ekleyin.
 ms.date: 10/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 60044d4a599c14088ea923a6a14cb46543646995
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 650b2ec6bc1bbd12cd10abb1917ef5ea2d6029e9
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920466"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220754"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Azure kaynaklarında dizi özellikleri için yazma ilkeleri
 
@@ -16,10 +16,8 @@ Azure Resource Manager özellikler genellikle dizeler ve Boole değerleri olarak
 
 - Birden çok seçenek sağlamak için bir [tanım parametresinin](../concepts/definition-structure.md#parameters)türü
 - **Ya da** **notın** koşullarını kullanan bir [ilke kuralının](../concepts/definition-structure.md#policy-rule) bir parçası
-- Değerlendirmek için [ \[ \* \] diğer adı](../concepts/definition-structure.md#understanding-the--alias) değerlendiren bir ilke kuralının parçası:
-  - **Hiçbiri**, **Any** veya **Tümü** gibi senaryolar
-  - **Count** ile karmaşık senaryolar
-- Var olan bir diziyi değiştirmek veya eklemek için [ekleme efekti](../concepts/effects.md#append)
+- Bir koşula uyan dizi üyesinin sayısını sayan bir ilke kuralının parçası
+- Var olan bir diziyi güncelleştirmek için [ekleme](../concepts/effects.md#append) ve [değiştirme](../concepts/effects.md#modify) efektlerinde
 
 Bu makalede Azure Ilkesi tarafından kullanılan her kullanım ele alınmaktadır ve birkaç örnek tanım sunulmaktadır.
 
@@ -99,48 +97,121 @@ Bu dizeyi her SDK ile kullanmak için aşağıdaki komutları kullanın:
 - Azure PowerShell: cmdlet [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) with Parameter **PolicyParameter**
 - REST API: _PUT_ [oluşturma](/rest/api/resources/policyassignments/create) işleminde, **Properties. Parameters** özelliğinin değeri olarak istek gövdesinin bir parçası olarak
 
-## <a name="array-conditions"></a>Dizi koşulları
+## <a name="using-arrays-in-conditions"></a>Koşullarda dizileri kullanma
 
-Parametresi _dizi_ [conditions](../concepts/definition-structure.md#conditions) 
- **türünün** birlikte kullanılabileceği ilke kuralı koşulları ve ile sınırlıdır `in` `notIn` . Aşağıdaki ilke tanımını `equals` bir örnek olarak koşulla gerçekleştirin:
+### <a name="in-and-notin"></a>`In` ve `notIn`
+
+`in`Ve `notIn` Koşulları yalnızca dizi değerleriyle çalışır. Bir dizideki değerin varlığını kontrol ederler. Dizi, sabit bir JSON dizisi ya da bir dizi parametresine başvuru olabilir. Örneğin:
 
 ```json
 {
-  "policyRule": {
-    "if": {
-      "not": {
-        "field": "location",
-        "equals": "[parameters('allowedLocations')]"
-      }
-    },
-    "then": {
-      "effect": "audit"
-    }
-  },
-  "parameters": {
-    "allowedLocations": {
-      "type": "Array",
-      "metadata": {
-        "description": "The list of allowed locations for resources.",
-        "displayName": "Allowed locations",
-        "strongType": "location"
-      }
-    }
-  }
+      "field": "tags.environment",
+      "in": [ "dev", "test" ]
 }
 ```
 
-Azure portal aracılığıyla bu ilke tanımını oluşturmaya çalışmak, bu hata iletisi gibi bir hataya yol açar:
+```json
+{
+      "field": "location",
+      "notIn": "[parameters('allowedLocations')]"
+}
+```
 
-- "' {GUID} ' ilkesi doğrulama hataları nedeniyle parametreleştirimedi. İlke parametrelerinin doğru tanımlanıp tanımlanmadığından emin olun. ' [Parameters (' allowedLocations ')] ' dil ifadesinin değerlendirme sonucu, ' Array ' türü, beklenen tür ' String '. '. "
+### <a name="value-count"></a>Değer sayısı
 
-Beklenen koşul **türü** `equals` _dize_. **Allowedlocations** **türü** _dizi_ olarak tanımlandığından, ilke altyapısı dil ifadesini değerlendirir ve hata oluşturur. `in`Ve `notIn` koşuluyla, ilke altyapısı dil ifadesinde **tür** _dizisini_ bekler. Bu hata iletisini çözümlemek için ya `equals` da ' ya geçin `in` `notIn` .
+[Değer sayısı](../concepts/definition-structure.md#value-count) ifadesi bir koşula göre kaç dizi üyesinin olduğunu sayar. Her yinelemede farklı değerler kullanarak aynı koşulu birden çok kez değerlendirmek için bir yol sağlar. Örneğin, aşağıdaki koşul, kaynak adının bir desen dizisinden herhangi bir desenle eşleşip eşleşmediğini denetler:
+
+```json
+{
+    "count": {
+        "value": [ "test*", "dev*", "prod*" ],
+        "name": "pattern",
+        "where": {
+            "field": "name",
+            "like": "[current('pattern')]"
+        }
+    },
+    "greater": 0
+}
+```
+
+İfadeyi değerlendirmek için Azure Ilkesi, `where` her üye için bir kez koşulu 3 kez değerlendirir `[ "test*", "dev*", "prod*" ]` ve kaç kez değerlendirildiğini Sayın `true` . Her yinelemede, geçerli dizi üyesinin değeri `pattern` tarafından tanımlanan dizin adıyla eşleştirilmiş `count.name` . Bu değere daha sonra, `where` özel bir şablon işlevi çağırarak koşulun içinde başvurulabilir: `current('pattern')` .
+
+| Yineleme | `current('pattern')` döndürülen değer |
+|:---|:---|
+| 1 | `"test*"` |
+| 2 | `"dev*"` |
+| 3 | `"prod*"` |
+
+Koşul yalnızca, sonuçlanmış count 0 ' dan büyük olduğunda geçerlidir.
+
+Koşulu daha genel hale getirmek için, sabit bir dizi yerine parametre başvurusunu kullanın:
+
+ ```json
+{
+    "count": {
+        "value": "[parameters('patterns')]",
+        "name": "pattern",
+        "where": {
+            "field": "name",
+            "like": "[current('pattern')]"
+        }
+    },
+    "greater": 0
+}
+```
+
+**Değer sayısı** ifadesi herhangi bir diğer **sayı** ifadesi altında olmadığında, `count.name` isteğe bağlıdır ve `current()` işlev herhangi bir bağımsız değişken olmadan kullanılabilir:
+
+```json
+{
+    "count": {
+        "value": "[parameters('patterns')]",
+        "where": {
+            "field": "name",
+            "like": "[current()]"
+        }
+    },
+    "greater": 0
+}
+```
+
+**Değer sayısı** Ayrıca karmaşık nesne dizilerini destekler, daha karmaşık koşullara izin verir. Örneğin, aşağıdaki koşul her bir ad deseninin istenen etiket değerini tanımlar ve kaynak adının düzeniyle eşleşip eşleşmediğini denetler, ancak gerekli etiket değerine sahip olup olmadığını denetler:
+
+```json
+{
+    "count": {
+        "value": [
+            { "pattern": "test*", "envTag": "dev" },
+            { "pattern": "dev*", "envTag": "dev" },
+            { "pattern": "prod*", "envTag": "prod" },
+        ],
+        "name": "namePatternRequiredTag",
+        "where": {
+            "allOf": [
+                {
+                    "field": "name",
+                    "like": "[current('namePatternRequiredTag').pattern]"
+                },
+                {
+                    "field": "tags.env",
+                    "notEquals": "[current('namePatternRequiredTag').envTag]"
+                }
+            ]
+        }
+    },
+    "greater": 0
+}
+```
+
+Faydalı örnekler için bkz. [değer sayısı örnekleri](../concepts/definition-structure.md#value-count-examples).
 
 ## <a name="referencing-array-resource-properties"></a>Başvuru dizisi kaynak özellikleri
 
 Birçok kullanım çalışması, değerlendirilen kaynaktaki dizi özellikleriyle çalışmayı gerektirir. Bazı senaryolar bir dizinin tamamına başvurulmayı gerektirir (örneğin, uzunluğunun denetlenmesi). Diğerleri her bir dizi üyesine bir koşul uygulanmasını gerektirir (örneğin, tüm güvenlik duvarı kuralının internet 'ten erişimi engellemediğinden emin olun). Azure Ilkesinin kaynak özelliklerine başvurabileceği farklı yolları ve bu başvuruların dizi özelliklerine başvurduklarında nasıl davranacağını anlamak, bu senaryoları kapsayan koşullar yazmak için kullanılan anahtardır.
 
 ### <a name="referencing-resource-properties"></a>Kaynak özelliklerine başvurma
+
 Kaynak özelliklerine [diğer adlar](../concepts/definition-structure.md#aliases) kullanılarak Azure ilkesi tarafından başvurulabilir. Azure Policy içindeki bir kaynak özelliğinin değerlerine başvurmak için iki yol vardır:
 
 - **Tüm** seçili kaynak özelliklerinin bir koşula uyup uymadığını denetlemek için [alan](../concepts/definition-structure.md#fields) koşulunu kullanın. Örnek:
@@ -172,7 +243,7 @@ Dizi kaynağı özellikleri genellikle iki farklı diğer ad türü tarafından 
 
 #### <a name="referencing-the-array"></a>Diziye başvurma
 
-İlk diğer ad, istek içeriğinden özelliğin değerini tek bir değer temsil eder `stringArray` . Bu özelliğin değeri bir dizi olduğundan, ilke koşullarında çok yararlı değildir. Örnek:
+İlk diğer ad, istek içeriğinden özelliğin değerini tek bir değer temsil eder `stringArray` . Bu özelliğin değeri bir dizi olduğundan, ilke koşullarında çok yararlı değildir. Örneğin:
 
 ```json
 {
@@ -219,9 +290,9 @@ Dizi nesneler içeriyorsa, `[*]` her bir dizi üyesinden belirli bir özelliğin
 }
 ```
 
-`property`İçindeki tüm özelliklerin değerleri değerine eşitse bu koşul doğrudur `objectArray` `"value"` .
+`property`İçindeki tüm özelliklerin değerleri değerine eşitse bu koşul doğrudur `objectArray` `"value"` . Daha fazla örnek için bkz. diğer [ \[ \* \] diğer ad örnekleri](#appendix--additional--alias-examples).
 
-`field()`Bir dizi diğer adına başvurmak için işlevini kullanırken, döndürülen değer seçilen tüm değerlerin bir dizisidir. Bu davranış, işlevin ortak kullanım durumunun `field()` , kaynak özelliği değerlerine şablon işlevleri uygulayabilme özelliğinin çok sınırlı olduğunu gösterir. Bu durumda kullanılabilen tek şablon işlevleri, dizi bağımsız değişkenlerini kabul eden bir durumdur. Örneğin, ile dizi uzunluğunu almak mümkündür `[length(field('Microsoft.Test/resourceType/objectArray[*].property'))]` . Ancak, her dizi üyesine şablon işlevi uygulamak ve bunu istenen değerle karşılaştırmak gibi daha karmaşık senaryolar yalnızca ifade kullanılırken mümkündür `count` . Daha fazla bilgi için bkz. [Count ifadesi](#count-expressions).
+`field()`Bir dizi diğer adına başvurmak için işlevini kullanırken, döndürülen değer seçilen tüm değerlerin bir dizisidir. Bu davranış, işlevin ortak kullanım durumunun `field()` , kaynak özelliği değerlerine şablon işlevleri uygulayabilme özelliğinin çok sınırlı olduğunu gösterir. Bu durumda kullanılabilen tek şablon işlevleri, dizi bağımsız değişkenlerini kabul eden bir durumdur. Örneğin, ile dizi uzunluğunu almak mümkündür `[length(field('Microsoft.Test/resourceType/objectArray[*].property'))]` . Ancak, her dizi üyesine şablon işlevi uygulamak ve bunu istenen değerle karşılaştırmak gibi daha karmaşık senaryolar yalnızca ifade kullanılırken mümkündür `count` . Daha fazla bilgi için bkz. [alan sayısı ifadesi](#field-count-expressions).
 
 Özetlemek gerekirse, aşağıdaki örnek kaynak içeriğine ve çeşitli diğer adlarla döndürülen seçili değerlere bakın:
 
@@ -275,9 +346,9 @@ Dizi nesneler içeriyorsa, `[*]` her bir dizi üyesinden belirli bir özelliğin
 | `[field('Microsoft.Test/resourceType/objectArray[*].nestedArray')]` | `[[ 1, 2 ], [ 3, 4 ]]` |
 | `[field('Microsoft.Test/resourceType/objectArray[*].nestedArray[*]')]` | `[1, 2, 3, 4]` |
 
-## <a name="count-expressions"></a>Sayı ifadeleri
+### <a name="field-count-expressions"></a>Alan sayısı ifadeleri
 
-[Count](../concepts/definition-structure.md#count) ifadeleri, kaç dizi üyesinin bir koşula uymasını ve sayıyı bir hedef değerle karşılaştırmasını sayar. `Count` koşullara kıyasla dizileri değerlendirmek için daha sezgisel ve çok yönlüdür `field` . Söz dizimi aşağıdaki gibidir:
+[Alan sayısı](../concepts/definition-structure.md#field-count) ifadeleri, kaç dizi üyesinin bir koşula uymasını ve sayıyı bir hedef değerle karşılaştırmasını sayar. `Count` koşullara kıyasla dizileri değerlendirmek için daha sezgisel ve çok yönlüdür `field` . Söz dizimi aşağıdaki gibidir:
 
 ```json
 {
@@ -289,7 +360,7 @@ Dizi nesneler içeriyorsa, `[*]` her bir dizi üyesinden belirli bir özelliğin
 }
 ```
 
-' WHERE ' koşulu olmadan kullanıldığında, `count` yalnızca bir dizinin uzunluğunu döndürür. Önceki bölümde bulunan örnek kaynak içeriğiyle, `count` `true` bu yana aşağıdaki ifade `stringArray` üç üyeye sahiptir:
+Koşul olmadan kullanıldığında `where` , `count` yalnızca bir dizinin uzunluğunu döndürür. Önceki bölümde bulunan örnek kaynak içeriğiyle, `count` `true` bu yana aşağıdaki ifade `stringArray` üç üyeye sahiptir:
 
 ```json
 {
@@ -314,6 +385,7 @@ Bu davranış, iç içe diziler ile de kullanılabilir. Örneğin, `count` `true
 Öğesinin gücü `count` `where` koşulnda. Belirtildiğinde, Azure Ilkesi dizi üyelerini numaralandırır ve her bir koşula göre değerlendirilen dizi üyelerinin sayısını sayarak değerlendirir `true` . Özellikle, koşul değerlendirmesinin her yinelemesinde `where` , Azure ilkesi tek bir dizi üyesi ***i** _ seçer ve kaynak içeriğini * `where` i array_ 'nin tek üyesi * _*_i_*_ . Her yinelemede yalnızca bir dizi üyesinin kullanılabilir olması, her bir dizi üyesine karmaşık koşullar uygulamak için bir yol sağlar.
 
 Örnek:
+
 ```json
 {
   "count": {
@@ -326,7 +398,7 @@ Bu davranış, iç içe diziler ile de kullanılabilir. Örneğin, `count` `true
   "equals": 1
 }
 ```
-İfadeyi değerlendirmek için `count` Azure ilkesi, `where` her üye için bir kez koşulu 3 kez değerlendirir `stringArray` ve kaç kez değerlendirildiğini Sayın `true` . `where`Koşul `Microsoft.Test/resourceType/stringArray[*]` dizi üyelerini başvurduğunda, öğesinin tüm üyelerini seçmek yerine `stringArray` yalnızca tek bir dizi üyesini her seferinde seçer:
+İfadeyi değerlendirmek için `count` Azure ilkesi, `where` her üye için bir kez koşulu 3 kez değerlendirir `stringArray` ve kaç kez değerlendirildiğini Sayın `true` . `where`Koşul `Microsoft.Test/resourceType/stringArray[*]` dizi üyelerine başvurduğunda, tüm üyelerini seçmek yerine `stringArray` yalnızca tek bir dizi üyesini her seferinde seçer:
 
 | Yineleme | Seçili `Microsoft.Test/resourceType/stringArray[*]` değerler | `where` Değerlendirme sonucu |
 |:---|:---|:---|
@@ -337,6 +409,7 @@ Bu davranış, iç içe diziler ile de kullanılabilir. Örneğin, `count` `true
 Ve bu nedenle `count` döndürülür `1` .
 
 Daha karmaşık bir ifade aşağıda verilmiştir:
+
 ```json
 {
   "count": {
@@ -366,6 +439,7 @@ Daha karmaşık bir ifade aşağıda verilmiştir:
 Ve bu nedenle `count` döndürülür `1` .
 
 `where`İfadenin **Tüm** istek içeriğine karşı değerlendirilme (yalnızca şu anda numaralandırılmakta olan dizi üyesine yapılan değişikliklerle), `where` koşulun dizi dışındaki alanlara de başvurabileceği anlamına gelir:
+
 ```json
 {
   "count": {
@@ -384,6 +458,7 @@ Ve bu nedenle `count` döndürülür `1` .
 | 2 | `tags.env` => `"prod"` | `true` |
 
 İç içe geçmiş sayısı ifadelerine da izin verilir:
+
 ```json
 {
   "count": {
@@ -417,9 +492,33 @@ Ve bu nedenle `count` döndürülür `1` .
 | 2 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value2`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3` |
 | 2 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value2`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `4` |
 
-### <a name="the-field-function-inside-where-conditions"></a>`field()`Koşul içindeki işlev `where`
+#### <a name="accessing-current-array-member-with-template-functions"></a>Geçerli dizi üyesine şablon işlevleriyle erişme
 
-`field()`Bir koşulun içindeyken işlevlerin davranış şekli `where` aşağıdaki kavramları temel alır:
+Şablon işlevlerini kullanırken, `current()` geçerli dizi üyesinin değerine veya özelliklerinden herhangi birinin değerlerine erişmek için işlevini kullanın. Geçerli dizi üyesinin değerine erişmek için, içinde tanımlanan diğer adı `count.field` veya alt diğer adlarını işlevine bağımsız değişken olarak geçirin `current()` . Örneğin:
+
+```json
+{
+  "count": {
+    "field": "Microsoft.Test/resourceType/objectArray[*]",
+    "where": {
+        "value": "[current('Microsoft.Test/resourceType/objectArray[*].property')]",
+        "like": "value*"
+    }
+  },
+  "equals": 2
+}
+
+```
+
+| Yineleme | `current()` döndürülen değer | `where` Değerlendirme sonucu |
+|:---|:---|:---|
+| 1 | `property`Öğesinin ilk üyesinin değeri `objectArray[*]` :`value1` | `true` |
+| 2 | `property`Öğesinin ilk üyesinin değeri `objectArray[*]` :`value2` | `true` |
+
+#### <a name="the-field-function-inside-where-conditions"></a>Koşul içinde alan işlevi
+
+Bu `field()` işlev, **sayı** ifadesi bir **varlık koşulunun** içinde olmadığı sürece geçerli dizi üyesinin değerine erişmek için de kullanılabilir ( `field()` işlev her zaman koşulda değerlendirilen kaynağı ifade eder). 
+`field()`Değerlendirilen diziye başvuru yaparken, aşağıdaki kavramlara göre belirlenir:
 1. Dizi diğer adları, tüm dizi üyelerinden seçilen bir değer koleksiyonuna çözümlenir.
 1. `field()` dizi diğer adlarına başvuran işlevler, seçili değerlere sahip bir dizi döndürür.
 1. Koşul içinde sayılan dizi diğer adına başvurmak, `where` geçerli yinelemede değerlendirilen dizi üyesinden tek bir değer seçilmiş bir koleksiyon döndürür.
@@ -465,7 +564,7 @@ Bu nedenle, sayılan dizi diğer adının değerine bir işlevle erişmeniz gere
 | 2 | `Microsoft.Test/resourceType/stringArray[*]` => `"b"` </br>  `[first(field('Microsoft.Test/resourceType/stringArray[*]'))]` => `"b"` | `true` |
 | 3 | `Microsoft.Test/resourceType/stringArray[*]` => `"c"` </br>  `[first(field('Microsoft.Test/resourceType/stringArray[*]'))]` => `"c"` | `true` |
 
-Faydalı örnekler için bkz. [Count örnekleri](../concepts/definition-structure.md#count-examples).
+Faydalı örnekler için bkz. [alan sayısı örnekleri](../concepts/definition-structure.md#field-count-examples).
 
 ## <a name="modifying-arrays"></a>Dizileri değiştirme
 
@@ -487,6 +586,59 @@ Oluşturma veya güncelleştirme sırasında bir kaynaktaki [değiştirme ve](..
 | `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `modify``addOrReplace`işlem ile | Azure Ilkesi, her dizi üyesinin var olan özelliğini ekler veya değiştirir `action` . |
 
 Daha fazla bilgi için bkz. [append örnekleri](../concepts/effects.md#append-examples).
+
+## <a name="appendix--additional--alias-examples"></a>Ek-ek [*] diğer ad örnekleri
+
+İstek içeriğindeki bir dizinin üyelerinin ' All ' veya ' any ' öğesinin bir koşula uyup uymadığını denetlemek için [alan sayısı ifadelerinin](#field-count-expressions) kullanılması önerilir. Ancak bazı basit koşullarda, bir alan erişimcisi ile bir dizi diğer adı ( [dizi üyeleri koleksiyonuna başvurma](#referencing-the-array-members-collection)bölümünde açıklandığı gibi) kullanılarak aynı sonuca ulaşmak mümkündür. Bu, izin verilen **sayı** ifadesi sınırını aşan ilke kurallarında yararlı olabilir. Yaygın kullanım örnekleri için örnekler aşağıda verilmiştir:
+
+Aşağıdaki senaryo tablosu için örnek ilke kuralı:
+
+```json
+"policyRule": {
+    "if": {
+        "allOf": [
+            {
+                "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
+                "exists": "true"
+            },
+            <-- Condition (see table below) -->
+        ]
+    },
+    "then": {
+        "effect": "[parameters('effectType')]"
+    }
+}
+```
+
+**Iprules** dizisi aşağıdaki senaryo tablosu için aşağıdaki gibidir:
+
+```json
+"ipRules": [
+    {
+        "value": "127.0.0.1",
+        "action": "Allow"
+    },
+    {
+        "value": "192.168.1.1",
+        "action": "Allow"
+    }
+]
+```
+
+Aşağıdaki her koşul örneği için ile değiştirin `<field>` `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"` .
+
+Aşağıdaki sonuçlar, koşulun birleşiminin ve yukarıdaki mevcut değerlerden oluşan örnek ilke kuralının sonucudur:
+
+|Koşul |Sonuç | Senaryo |Açıklama |
+|-|-|-|-|
+|`{<field>,"notEquals":"127.0.0.1"}` |Nothing |Hiçbiri eşleşmiyor |Tek bir dizi öğesi yanlış (127.0.0.1! = 127.0.0.1) ve diğeri doğru (127.0.0.1! = 192.168.1.1) olarak değerlendirilir, bu nedenle **Not alalals** koşulu _false_ olur ve etki tetiklenmez. |
+|`{<field>,"notEquals":"10.0.4.1"}` |İlke etkisi |Hiçbiri eşleşmiyor |Her iki dizi öğesi de true olarak değerlendirilir (10.0.4.1! = 127.0.0.1 ve 10.0.4.1! = 192.168.1.1), bu nedenle **Not al** koşulu _true_ ve etki tetiklenir. |
+|`"not":{<field>,"notEquals":"127.0.0.1" }` |İlke etkisi |Bir veya daha fazla eşleşme |Tek bir dizi öğesi yanlış (127.0.0.1! = 127.0.0.1) ve diğeri doğru (127.0.0.1! = 192.168.1.1) olarak değerlendirilir ve bu nedenle **Not al** koşulu _false_ olur. Mantıksal işleç doğru olarak değerlendirilir (false **değil** ), bu nedenle etki tetiklenir. |
+|`"not":{<field>,"notEquals":"10.0.4.1"}` |Nothing |Bir veya daha fazla eşleşme |Her iki dizi öğesi de true olarak değerlendirilir (10.0.4.1! = 127.0.0.1 ve 10.0.4.1! = 192.168.1.1), bu nedenle **Not al** koşulu _doğrudur_. Mantıksal işleç yanlış olarak değerlendirilir ( _true_ değil), bu nedenle etki **tetiklenmez** . |
+|`"not":{<field>,"Equals":"127.0.0.1"}` |İlke etkisi |Tüm eşleşme değil |Bir Array öğesi true (127.0.0.1 = = 127.0.0.1) ve diğeri false (127.0.0.1 = = 192.168.1.1) olarak değerlendirilir ve bu nedenle **eşittir** koşulu _false_ olur. Mantıksal işleç doğru olarak değerlendirilir (false **değil** ), bu nedenle etki tetiklenir. |
+|`"not":{<field>,"Equals":"10.0.4.1"}` |İlke etkisi |Tüm eşleşme değil |Her iki dizi öğesi de false olarak değerlendirilir (10.0.4.1 = = 127.0.0.1 ve 10.0.4.1 = = 192.168.1.1), bu nedenle **eşittir** koşulu _false_ olur. Mantıksal işleç doğru olarak değerlendirilir (false **değil** ), bu nedenle etki tetiklenir. |
+|`{<field>,"Equals":"127.0.0.1"}` |Nothing |Tüm eşleşme |Bir Array öğesi true (127.0.0.1 = = 127.0.0.1) ve diğeri false (127.0.0.1 = = 192.168.1.1) olarak değerlendirilir; bu nedenle **eşittir** koşulu _false_ olur ve etki tetiklenmez. |
+|`{<field>,"Equals":"10.0.4.1"}` |Nothing |Tüm eşleşme |Her iki dizi öğesi de false olarak değerlendirilir (10.0.4.1 = = 127.0.0.1 ve 10.0.4.1 = = 192.168.1.1), bu nedenle **eşittir** koşulu _false_ olur ve etki tetiklenmez. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

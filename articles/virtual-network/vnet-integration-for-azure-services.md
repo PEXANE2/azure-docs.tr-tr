@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: kumud
-ms.openlocfilehash: a25d6d0d1990682287b5962a7bd93a0c525db133
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: a29454f09268406511730c63dcc3bc3063b909c6
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882373"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218663"
 ---
 # <a name="integrate-azure-services-with-virtual-networks-for-network-isolation"></a>Azure hizmetlerini ağ yalıtımı için sanal ağlarla tümleştirme
 
@@ -66,7 +66,7 @@ Daha fazla bilgi için bkz. [sanal ağ hizmeti uç noktaları](virtual-network-s
 
 ## <a name="service-tags"></a>Hizmet etiketleri
 
-Hizmet etiketi, belirli bir Azure hizmetinden bir IP adresi önekleri grubunu temsil eder. Hizmet etiketlerini kullanarak ağ [güvenlik grupları](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) veya [Azure Güvenlik Duvarı](https://docs.microsoft.com/azure/firewall/service-tags)'nda ağ erişim denetimleri tanımlayabilirsiniz. Bir kuralın uygun kaynak veya hedef alanındaki hizmet etiketi adını (örneğin, AzureEventGrid) belirterek, karşılık gelen hizmet için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz.
+Hizmet etiketi, belirli bir Azure hizmetinden bir IP adresi önekleri grubunu temsil eder. Hizmet etiketlerini kullanarak ağ [güvenlik grupları](./network-security-groups-overview.md#security-rules) veya [Azure Güvenlik Duvarı](../firewall/service-tags.md)'nda ağ erişim denetimleri tanımlayabilirsiniz. Bir kuralın uygun kaynak veya hedef alanındaki hizmet etiketi adını (örneğin, AzureEventGrid) belirterek, karşılık gelen hizmet için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz.
 
 ![Hizmet etiketleri kullanarak trafiğe izin ver veya Reddet](./media/network-isolation/service-tags.png)
 
@@ -78,4 +78,4 @@ Hizmet etiketleri ve bunları destekleyen Azure hizmetleri hakkında daha fazla 
 
 - [Uygulamanızı bir Azure ağı ile tümleştirmeyi](../app-service/web-sites-integrate-with-vnet.md)öğrenin.
 - [Hizmet etiketlerini kullanarak kaynaklara erişimi nasıl kısıtlayacağınızı](tutorial-restrict-network-access-to-resources.md)öğrenin.
-- [Azure özel bağlantısını kullanarak bir Azure Cosmos hesabına özel olarak nasıl bağlanacağınızı](../private-link/create-private-endpoint-cosmosdb-portal.md)öğrenin.
+- [Azure özel bağlantısını kullanarak bir Azure Cosmos hesabına özel olarak nasıl bağlanacağınızı](../private-link/tutorial-private-endpoint-cosmosdb-portal.md)öğrenin.

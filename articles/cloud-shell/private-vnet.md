@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: damaerte
-ms.openlocfilehash: a820fb4ec5d6c2053b1104b68dbda0ae70f624c0
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 58f6c7a3b5d68d2825cead545ba1b683d1faf1af
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179206"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222811"
 ---
 # <a name="deploy-cloud-shell-into-an-azure-virtual-network"></a>Azure sanal ağına Cloud Shell dağıtma
 
@@ -87,9 +87,6 @@ ResourceTypes                             RegistrationState
 Bağlanmak istediğiniz bir VNET zaten varsa, bu bölümü atlayın.
 
 Azure portal veya Azure CLı, Azure PowerShell vb. kullanarak yeni kaynak grubunda bir kaynak grubu ve sanal ağ oluşturun, **kaynak grubunun ve sanal ağın aynı bölgede olması gerekir**.
-
-> [!NOTE]
-> Genel önizlemede, kaynak grubu ve sanal ağ WestCentralUS veya WestUS ' de bulunmalıdır.
 
 ### <a name="arm-templates"></a>ARM şablonları
 Bir sanal ağda Cloud Shell kaynak oluşturmak için [Azure hızlı başlangıç şablonunu](https://aka.ms/cloudshell/docs/vnet/template) ve gerekli depolama alanı oluşturmak Için [Azure hızlı başlangıç şablonunu](https://aka.ms/cloudshell/docs/vnet/template/storage) kullanın. Kaynak adlarınızı ve öncelikle dosya paylaşımınızın adını göz önünde atın.

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 12/04/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: a0458264b6ea0c741244531fc104a7637108b06e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 4681039f60154b95eeb7e40196ca33055a192c74
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121354"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222114"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>Azure SYNAPSE link Preview 'da sunucusuz SQL havuzu ile verileri Azure Cosmos DB sorgulama
 
@@ -205,6 +205,8 @@ Bu sorgunun sonucu aşağıdaki tablo gibi görünebilir:
 Azure Cosmos DB değerleri için kullanılması gereken SQL türleri hakkında daha fazla bilgi için makalenin sonundaki [SQL tür eşlemeleri kuralları](#azure-cosmos-db-to-sql-type-mappings) bölümüne bakın.
 
 ## <a name="create-view"></a>Görünüm Oluştur
+
+Ana veya varsayılan veritabanlarında görünümlerin oluşturulması önerilmez veya desteklenmez. Bu nedenle, Görünümleriniz için bir kullanıcı veritabanı oluşturmanız gerekir.
 
 Şemayı tanımladıktan sonra, Azure Cosmos DB verilerinizin üzerine bir görünüm hazırlayabilirsiniz. Azure Cosmos DB hesap anahtarınızı ayrı bir kimlik bilgisine yerleştirmeniz ve bu kimlik bilgisine işlevle başvurmalısınız `OPENROWSET` . Hesap anahtarınızı görünüm tanımında değiştirmeyin.
 

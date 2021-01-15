@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: aldomel
-ms.openlocfilehash: ca6460497fa026feca503df741ad6811a95fb9e3
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 512694d75bace40f33e346d28289f62e2adb04b8
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936939"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221026"
 ---
 # <a name="virtual-network-traffic-routing"></a>Sanal ağ trafiğini yönlendirme
 
@@ -80,12 +80,12 @@ Kullanıcı tanımlı bir yol oluştururken belirtebileceğiniz sonraki atlama t
 
 * **Sanal gereç**: Sanal gereç genellikle güvenlik duvarı gibi bir ağ uygulaması çalıştıran sanal makinedir. Bir sanal ağa dağıtabileceğiniz önceden yapılandırılmış çeşitli ağ sanal gereçleri hakkında bilgi edinmek için [Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances)’e bakın. **Sanal gereç** atlama türü ile bir rota oluşturduğunuzda, sonraki atlama IP adresi de belirtirsiniz. IP adresi şu özelliklerde olabilir:
 
-    * Bir sanal makineye bağlı ağ arabiriminin [özel IP adresi](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses). Ağ trafiğini kendi adresi dışında bir adrese ileten bir sanal makineye bağlı olan tüm ağ arabirimlerinde *IP iletimini etkinleştir* seçeneği açık olmalıdır. Ayar, bir ağ arabirimi için Azure’ın kaynak ve hedef denetimini devre dışı bırakır. [Bir ağ arabirimi için IP iletimini etkinleştirme](virtual-network-network-interface.md#enable-or-disable-ip-forwarding) hakkında daha fazla bilgi edinin. *IP iletimini etkinleştir* seçeneği bir Azure ayarı olmasına rağmen, cihazın Azure ağ arabirimlerine atanmış özel IP adresleri arasındaki trafiği iletmesi için sanal makinenin işletim sistemi içinde IP iletimini etkinleştirmeniz de gerekebilir. Cihazın trafiği bir genel IP adresine yönlendirmesi gerekirse, trafiği ara sunucuyla yönlendirmelidir veya ağ adresi kaynağın özel IP adresini kendi özel IP adresine çevirmelidir (ardından, trafiği İnternet'e göndermeden önce Azure'da ağ adresi genel IP adresine çevrilir). Sanal makine içindeki gerekli ayarları belirlemek için işletim sisteminize veya ağ uygulamanıza ait belgelere bakın. Azure'da giden bağlantıları anlamak için, bkz. [Giden bağlantıları anlama](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json).<br>
+    * Bir sanal makineye bağlı ağ arabiriminin [özel IP adresi](./private-ip-addresses.md). Ağ trafiğini kendi adresi dışında bir adrese ileten bir sanal makineye bağlı olan tüm ağ arabirimlerinde *IP iletimini etkinleştir* seçeneği açık olmalıdır. Ayar, bir ağ arabirimi için Azure’ın kaynak ve hedef denetimini devre dışı bırakır. [Bir ağ arabirimi için IP iletimini etkinleştirme](virtual-network-network-interface.md#enable-or-disable-ip-forwarding) hakkında daha fazla bilgi edinin. *IP iletimini etkinleştir* seçeneği bir Azure ayarı olmasına rağmen, cihazın Azure ağ arabirimlerine atanmış özel IP adresleri arasındaki trafiği iletmesi için sanal makinenin işletim sistemi içinde IP iletimini etkinleştirmeniz de gerekebilir. Cihazın trafiği bir genel IP adresine yönlendirmesi gerekirse, trafiği ara sunucuyla yönlendirmelidir veya ağ adresi kaynağın özel IP adresini kendi özel IP adresine çevirmelidir (ardından, trafiği İnternet'e göndermeden önce Azure'da ağ adresi genel IP adresine çevrilir). Sanal makine içindeki gerekli ayarları belirlemek için işletim sisteminize veya ağ uygulamanıza ait belgelere bakın. Azure'da giden bağlantıları anlamak için, bkz. [Giden bağlantıları anlama](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json).<br>
 
         > [!NOTE]
         > Sanal gereci, sanal gereçten yönlendirilen kaynakların dağıtıldığı alt ağdan farklı bir alt ağa yönlendirin. Sanal gerecin aynı alt ağa dağıtılması ve sonra sanal gereçten trafiği yönlendiren alt ağa bir yol tablosunun uygulanması, trafiğin alt ağdan asla ayrılmadığı yönlendirme döngüleri ile sonuçlanabilir.
 
-    * Bir Azure [iç yük dengeleyicisinin](../load-balancer/load-balancer-get-started-ilb-arm-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) özel IP adresi. İç yük dengeleyici genellikle [ağ sanal gereçleri için yüksek kullanılabilirlik stratejisinin](/azure/architecture/reference-architectures/dmz/nva-ha?toc=%2fazure%2fvirtual-network%2ftoc.json) bir parçasıdır.
+    * Bir Azure [iç yük dengeleyicisinin](../load-balancer/quickstart-load-balancer-standard-internal-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) özel IP adresi. İç yük dengeleyici genellikle [ağ sanal gereçleri için yüksek kullanılabilirlik stratejisinin](/azure/architecture/reference-architectures/dmz/nva-ha?toc=%2fazure%2fvirtual-network%2ftoc.json) bir parçasıdır.
 
     Adres ön eki 0.0.0.0/0 ve sonraki atlama türü sanal gereç olan bir yol tanımlayabilir ve gerecin trafiği inceleyip trafiği ileteceğini veya bırakacağını belirlemesini sağlayabilirsiniz. 0.0.0.0/0 adres ön ekini içeren kullanıcı tanımlı bir ol oluşturmak isterseniz öncelikle [0.0.0.0/0 adres ön eki](#default-route) bölümünü okuyun.
 
@@ -107,8 +107,8 @@ Sonraki atlama türleri için gösterilen ve başvurulan ad, Azure portalı ile 
 |İnternet                        |İnternet                                        |İnternet (asm modunda klasik CLI’de kullanılamaz)|
 |Sanal gereç               |VirtualAppliance                                |VirtualAppliance|
 |Yok                            |Yok                                            |Null (asm modunda klasik CLI’de kullanılamaz)|
-|Sanal ağ eşleme         |VNet eşlemesi                                    |Geçerli değil|
-|Sanal ağ hizmet uç noktası|VirtualNetworkServiceEndpoint                   |Geçerli değil|
+|Sanal ağ eşleme         |VNet eşlemesi                                    |Uygulanamaz|
+|Sanal ağ hizmet uç noktası|VirtualNetworkServiceEndpoint                   |Uygulanamaz|
 
 ### <a name="border-gateway-protocol"></a>Sınır ağ geçidi protokolü
 

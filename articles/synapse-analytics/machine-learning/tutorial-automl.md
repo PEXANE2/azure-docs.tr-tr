@@ -9,16 +9,16 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: e219531a88787f19197a2e8c2a80040497c6dc1e
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: f3b0c5f1487951d05bc83973e5b4b9f3634a694b
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901428"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222267"
 ---
 # <a name="tutorial-train-a-machine-learning-model-without-code"></a>Öğretici: kod olmadan makine öğrenimi modelini eğitme
 
-Spark tablolarında verilerinizi, [otomatik makine öğrenimini](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml)kullanarak eğitediğiniz yeni makine öğrenimi modelleriyle zenginleştirebilirsiniz. Azure SYNAPSE Analytics 'te, makine öğrenimi modelleri oluşturmak için eğitim veri kümesi olarak kullanmak üzere çalışma alanında Spark tablosu seçebilir ve bunu bir kod ücretsiz deneyimde yapabilirsiniz.
+Spark tablolarında verilerinizi, [otomatik makine öğrenimini](../../machine-learning/concept-automated-ml.md)kullanarak eğitediğiniz yeni makine öğrenimi modelleriyle zenginleştirebilirsiniz. Azure SYNAPSE Analytics 'te, makine öğrenimi modelleri oluşturmak için eğitim veri kümesi olarak kullanmak üzere çalışma alanında Spark tablosu seçebilir ve bunu bir kod ücretsiz deneyimde yapabilirsiniz.
 
 Bu öğreticide, Azure SYNAPSE Analytics Studio 'da bir kod ücretsiz deneyim kullanarak makine öğrenimi modellerini eğitme hakkında bilgi edineceksiniz. Deneyimi el ile kodlamak yerine Azure Machine Learning otomatik makine öğrenimini kullanırsınız. Eğeceğiniz modelin türü, çözmeye çalıştığınız soruna bağlıdır.
 
@@ -32,7 +32,7 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 ## <a name="create-a-spark-table-for-training-dataset"></a>Eğitim veri kümesi için Spark tablosu oluşturma
 

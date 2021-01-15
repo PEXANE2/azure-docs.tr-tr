@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/03/2020
 ms.author: kumud
-ms.openlocfilehash: d279516c1c9c08512c850a0f70eb84c0c1f63166
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 0a9945a58aa6ec49ad58f3a0a0d03ea75e30f6d8
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97111346"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223627"
 ---
 # <a name="azure-virtual-network-concepts-and-best-practices"></a>Azure sanal ağ kavramları ve en iyi uygulamalar
 
@@ -25,7 +25,7 @@ Bu makalede, Azure sanal ağ (VNet) için temel kavramlar ve en iyi uygulamalar 
 ## <a name="vnet-concepts"></a>VNet kavramları
 
 - **Adres alanı:** VNet oluştururken, genel ve özel (RFC 1918) adreslerini kullanarak özel bir özel IP adresi alanı belirtmeniz gerekir. Azure, bir sanal ağdaki kaynaklara, atadığınız adres alanından özel bir IP adresi atar. Örneğin, adres alanı 10.0.0.0/16 olan VNet 'te bir VM dağıtırsanız, VM 'de 10.0.0.4 gibi özel bir IP atanır.
-- **Alt ağlar:** Alt ağlar, sanal ağı bir veya daha fazla alt ağa segmentetmenize ve sanal ağın adres alanının bir bölümünü her alt ağa ayırmayı sağlar. Ardından, belirli bir alt ağda Azure kaynaklarını dağıtabilirsiniz. Geleneksel ağlarda olduğu gibi, alt ağlar, VNet adres alanınızı kuruluşun iç ağı için uygun parçalara ayırmanıza olanak tanır. Bu ayrıca adres ayırma verimliliğini de artırır. Ağ güvenlik gruplarını kullanarak alt ağlar içindeki kaynakların güvenliğini sağlayabilirsiniz. Daha fazla bilgi için bkz. [ağ güvenlik grupları](security-overview.md).
+- **Alt ağlar:** Alt ağlar, sanal ağı bir veya daha fazla alt ağa segmentetmenize ve sanal ağın adres alanının bir bölümünü her alt ağa ayırmayı sağlar. Ardından, belirli bir alt ağda Azure kaynaklarını dağıtabilirsiniz. Geleneksel ağlarda olduğu gibi, alt ağlar, VNet adres alanınızı kuruluşun iç ağı için uygun parçalara ayırmanıza olanak tanır. Bu ayrıca adres ayırma verimliliğini de artırır. Ağ güvenlik gruplarını kullanarak alt ağlar içindeki kaynakların güvenliğini sağlayabilirsiniz. Daha fazla bilgi için bkz. [ağ güvenlik grupları](./network-security-groups-overview.md).
 - **Bölgeler**: VNET tek bir bölgeye/konuma göre kapsamlandırılır; Ancak, farklı bölgelerdeki birden fazla sanal ağ, sanal ağ eşlemesi kullanılarak birbirine bağlanabilir.
 - **Abonelik:** VNet, bir aboneliğe göre kapsamlandırılır. Her Azure [aboneliğinde](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) ve Azure [bölgesinde](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region) birden çok sanal ağ uygulayabilirsiniz.
 
