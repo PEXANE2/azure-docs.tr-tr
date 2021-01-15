@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2019
-ms.openlocfilehash: 53277f64c3d1b03572732157756da1fececbcd43
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 69f00416f180f83c761be5ed444e80903e9fcbb6
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184578"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234452"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Azure Izleyici günlük verilerini Power BI içine aktarın
 
@@ -28,6 +28,9 @@ Azure Izleyici 'deki bir [Log Analytics çalışma alanındaki](manage-access.md
 ## <a name="export-query"></a>Sorguyu dışarı aktar
 Power BI veri kümesini doldurmak istediğiniz verileri döndüren bir [günlük sorgusu](../log-query/log-query-overview.md) oluşturarak başlayın.  Daha sonra bu sorguyu, Power BI Desktop tarafından kullanılabilecek [Power Query (e) dile](/powerquery-m/power-query-m-language-specification) dışarı aktarabilirsiniz.
 
+> [!WARNING]
+> Sorgunuzu, çalışması uzun sürmemesi veya zaman aşımına uğramaması için [En iyileştirmeden](../log-query/query-optimization.md) emin olun. Sorgunun alınacağı verilerin TimeSpan değerini tanımlayan, dışarıya aktarılmış sorgudaki **TimeSpan** değerini unutmayın. Sorgunun döndürdüğü veri miktarını sınırlandırmak için ihtiyaç duyduğunuz en küçük TimeSpan değerini kullanın.
+
 1. Veri kümenizin verilerini ayıklamak için [Log Analytics günlük sorgusu oluşturun](../log-query/log-analytics-tutorial.md) .
 2. **Dışarı aktarma**  >  **Power BI sorgusunu (d)** seçin.  Bu, sorguyu **PowerBIQuery.txt** adlı bir metin dosyasına dışarı aktarır. 
 
@@ -39,7 +42,7 @@ Power BI veri kümesini doldurmak istediğiniz verileri döndüren bir [günlük
 Power BI Desktop, Power BI yayımlanmakta olabilecek veri kümeleri ve raporlar oluşturmanıza olanak sağlayan bir masaüstü uygulamasıdır.  Azure Izleyici 'den aktarılmış Power Query dilini kullanarak bir sorgu oluşturmak için de kullanabilirsiniz. 
 
 1. Henüz yoksa [Power BI Desktop](https://powerbi.microsoft.com/desktop/) yükleyip uygulamayı açın.
-2. **Get Data**  >  Yeni bir sorgu açmak için veri al **boş sorgusu ' nu** seçin.  Sonra **Gelişmiş Düzenleyici** ' yi seçin ve ardından dosyaya aktarılmış dosyanın içeriğini sorguya yapıştırın. **Bitti**’ye tıklayın.
+2.   >  Yeni bir sorgu açmak için veri al **boş sorgusu ' nu** seçin.  Sonra **Gelişmiş Düzenleyici** ' yi seçin ve ardından dosyaya aktarılmış dosyanın içeriğini sorguya yapıştırın. **Bitti**’ye tıklayın.
 
     ![Power BI Desktop sorgu](media/powerbi/desktop-new-query.png)
 

@@ -3,14 +3,14 @@ title: Uygulamaları işleme
 description: Azure Batch ile herhangi bir işleme uygulaması kullanmak mümkündür. Ancak, Azure Market VM görüntüleri önceden yüklenmiş ortak uygulamalar ile kullanılabilir.
 ms.date: 09/19/2019
 ms.topic: how-to
-ms.openlocfilehash: f876671c6ac16137c2c1cf8d40bd70860c06975b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4eefa287575d68acccb2697e1d262c7e48dab62
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85960495"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234418"
 ---
-# <a name="pre-installed-applications-on-rendering-vm-images"></a>VM görüntülerini işlemeye önceden yüklenmiş uygulamalar
+# <a name="pre-installed-applications-on-batch-rendering-vm-images"></a>Toplu işleme VM görüntülerinde önceden yüklenmiş uygulamalar
 
 Azure Batch ile herhangi bir işleme uygulaması kullanmak mümkündür. Ancak, Azure Market VM görüntüleri önceden yüklenmiş ortak uygulamalar ile kullanılabilir.
 
@@ -87,4 +87,4 @@ Aşağıdaki liste Windows Server 2016, sürüm 1.3.7 işleme görüntüleri iç
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Oluşturma VM görüntülerini kullanmak için bir havuz oluşturulduğunda havuz yapılandırmasında belirtilmesi gerekir; [işleme Için Batch havuzu özelliklerine](./batch-rendering-functionality.md#batch-pools)bakın.
+Oluşturma VM görüntülerini kullanmak için bir havuz oluşturulduğunda havuz yapılandırmasında belirtilmesi gerekir; [işleme Için Batch havuzu özelliklerine](./batch-rendering-functionality.md)bakın.
