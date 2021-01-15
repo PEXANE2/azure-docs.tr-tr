@@ -4,12 +4,12 @@ description: Kullanımı izlemek ve sorunları tanılamak için cihazınıza vey
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: ae64888669fb9a3c053802ee4f7ad7db6316265d
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: d553c192d62baedb93c7f8270c56526fbf8edb62
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780510"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233755"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Özel olaylar ve ölçümler için Application Insights API
 
@@ -57,7 +57,7 @@ Application Insights SDK 'da henüz bir başvurunuz yoksa:
 
 Bir örneğini al `TelemetryClient` (Web sayfalarındaki JavaScript hariç):
 
-[.Net/.NET Core uygulamaları için ASP.NET Core uygulamalar ve http olmayan/çalışan](worker-service.md#how-can-i-track-telemetry-thats-not-automatically-collected) için, [ASP.NET Core](asp-net-core.md#how-can-i-track-telemetry-thats-not-automatically-collected) `TelemetryClient` ilgili belgelerde açıklandığı gibi bağımlılık ekleme kapsayıcısından bir örnek almanız önerilir.
+[.Net/.NET Core uygulamaları için ASP.NET Core uygulamalar ve http olmayan/çalışan](worker-service.md#how-can-i-track-telemetry-thats-not-automatically-collected) için, [](asp-net-core.md#how-can-i-track-telemetry-thats-not-automatically-collected) `TelemetryClient` ilgili belgelerde açıklandığı gibi bağımlılık ekleme kapsayıcısından bir örnek almanız önerilir.
 
 AzureFunctions v2 + veya Azure WebJobs v3 + kullanıyorsanız, bu belgeyi izleyin: https://docs.microsoft.com/azure/azure-functions/functions-monitoring#version-2x-and-higher
 
@@ -146,7 +146,9 @@ telemetry.trackEvent({name: "WinGame"});
 
 ### <a name="custom-events-in-analytics"></a>Analytics 'te özel olaylar
 
-Telemetri, `customEvents` [Application Insights Analytics](../log-query/log-query-overview.md)'teki tabloda kullanılabilir. Her satır uygulamanızdaki bir çağrıyı temsil eder `trackEvent(..)` .
+Telemetri `customEvents` [Application Insights Günlükler sekmesi](../log-query/log-query-overview.md) veya [kullanım deneyimi](usage-overview.md)' nde tabloda bulunur. Olaylar ' dan gelebilir `trackEvent(..)` veya [analiz otomatik koleksiyon eklentisi '](javascript-click-analytics-plugin.md)ne tıklayabilir.
+
+ 
 
 [Örnekleme](./sampling.md) işlemi içinde Ise, ItemCount özelliği 1 ' den büyük bir değeri gösterir. Örneğin ItemCount = = 10, trackEvent () için 10 çağrının (), örnekleme işleminin yalnızca birini aktardığı anlamına gelir. Özel olayların doğru sayısını almak için, bu nedenle gibi bir kod kullanmanız gerekir `customEvents | summarize sum(itemCount)` .
 
@@ -437,7 +439,7 @@ exceptions
 | summarize sum(itemCount) by type
 ```
 
-Önemli yığın bilgilerinin çoğu farklı değişkenlere zaten ayıklandı, ancak `details` daha fazla bilgi edinmek için yapıyı ayırabilirsiniz. Bu yapı dinamik olduğundan, sonucu istediğiniz türe atamalısınız. Örnek:
+Önemli yığın bilgilerinin çoğu farklı değişkenlere zaten ayıklandı, ancak `details` daha fazla bilgi edinmek için yapıyı ayırabilirsiniz. Bu yapı dinamik olduğundan, sonucu istediğiniz türe atamalısınız. Örneğin:
 
 ```kusto
 exceptions
@@ -500,7 +502,7 @@ Yöntemi girme veya bir yönteme ayrılma gibi bir tanılama olayını günlüğ
 Boyut sınırı, `message` özellikleri sınırından çok daha yüksek.
 TrackTrace 'in avantajı, oldukça uzun verileri iletiye koyacağınızdır. Örneğin, veri Gönder ' i burada bulabilirsiniz.  
 
-Ayrıca, iletinize önem düzeyi ekleyebilirsiniz. Diğer telemetri gibi, farklı izleme kümelerini filtrelemenize veya aramanıza yardımcı olacak özellik değerleri ekleyebilirsiniz. Örnek:
+Ayrıca, iletinize önem düzeyi ekleyebilirsiniz. Diğer telemetri gibi, farklı izleme kümelerini filtrelemenize veya aramanıza yardımcı olacak özellik değerleri ekleyebilirsiniz. Örneğin:
 
 *C#*
 
@@ -1066,7 +1068,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="telemetrycontext"></a>TelemetryContext
 
-TelemetryClient, tüm telemetri verileriyle birlikte gönderilen değerleri içeren bir Context özelliğine sahiptir. Bunlar normalde standart telemetri modülleri tarafından ayarlanır, ancak bunları kendiniz de ayarlayabilirsiniz. Örnek:
+TelemetryClient, tüm telemetri verileriyle birlikte gönderilen değerleri içeren bir Context özelliğine sahiptir. Bunlar normalde standart telemetri modülleri tarafından ayarlanır, ancak bunları kendiniz de ayarlayabilirsiniz. Örneğin:
 
 ```csharp
 telemetry.Context.Operation.Name = "MyOperationName";
@@ -1122,4 +1124,3 @@ Verilerin ne kadar süreyle tutulacağını öğrenmek için bkz. [veri saklama 
 
 * [Olayları ve günlükleri ara](./diagnostic-search.md)
 * [Sorun giderme](../faq.md)
-

@@ -12,12 +12,12 @@ ms.date: 1/06/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 1debeab6e420d9021ebba1cecb2d551cf21c9fe2
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 6b5c328503a28c6eb92c2c20ca54d4d3d80c9a15
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028480"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232480"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Nasıl yapılır: uygulamanıza isteğe bağlı talepler sağlama
 
@@ -45,7 +45,7 @@ Standart talepler listesi için bkz. [erişim belirteci](access-tokens.md) ve [i
 Varsayılan olarak, uygulamaların kullanması için kullanılabilen isteğe bağlı talepler kümesi aşağıda listelenmiştir. Uygulamanıza yönelik özel isteğe bağlı talepler eklemek için aşağıdaki [Dizin uzantıları](#configuring-directory-extension-optional-claims)bölümüne bakın. **Erişim belirtecine** talepler eklenirken, talepler uygulama *tarafından* istenen talepler değil, uygulama (bir Web API) *için* istenen erişim belirteçlerine uygulanır. İstemci, API 'nize nasıl eriştiğine bakılmaksızın, API 'niz üzerinde kimlik doğrulaması yapmak için kullanılan erişim belirtecinde doğru veriler vardır.
 
 > [!NOTE]
-> Bu taleplerin çoğu, v 1.0 ve v 2.0 belirteçleri için JWTs 'ye dahil edilebilir, ancak belirteç türü sütununda belirtilenler dışında SAML belirteçleri olamaz. Tüketici hesapları, bu taleplerin bir alt kümesini destekler ve "Kullanıcı türü" sütununda işaretlenir.  Listelenen taleplerin birçoğu tüketici kullanıcılarına uygulanmaz (hiçbir kiracı yoktur, bu nedenle bir `tenant_ctry` değer yoktur).
+>Bu taleplerin çoğu, v 1.0 ve v 2.0 belirteçleri için JWTs 'ye dahil edilebilir, ancak belirteç türü sütununda belirtilenler dışında SAML belirteçleri olamaz. Tüketici hesapları, bu taleplerin bir alt kümesini destekler ve "Kullanıcı türü" sütununda işaretlenir.  Listelenen taleplerin birçoğu tüketici kullanıcılarına uygulanmaz (hiçbir kiracı yoktur, bu nedenle bir `tenant_ctry` değer yoktur).
 
 **Tablo 2: v 1.0 ve v 2.0 isteğe bağlı talep kümesi**
 
@@ -105,7 +105,7 @@ V2 belirteç biçimi geliştirmelerinden bazıları, güvenlik ve güvenilirliğ
 
 **Tablo 4: isteğe bağlı talepler yapılandırma değerleri**
 
-| Özellik adı  | Ek özellik adı | Açıklama |
+| Özellik adı  | Ek özellik adı | Description |
 |----------------|--------------------------|-------------|
 | `upn`          |                          | Hem SAML hem de JWT yanıtları için ve v 1.0 ve v 2.0 belirteçleri için kullanılabilir. |
 |                | `include_externally_authenticated_upn`  | , Kaynak kiracısında depolanan Konuk UPN 'sini içerir. Örneğin, `foo_hometenant.com#EXT#@resourcetenant.com` |
@@ -148,13 +148,13 @@ Kullanıcı arabirimi veya uygulama bildirimi aracılığıyla uygulamanız içi
 [![Kullanıcı arabiriminde isteğe bağlı talepler yapılandırma](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
 
 1. **Yönet** altında **belirteç yapılandırması**' nı seçin.
+   - UI seçeneği **belirteci yapılandırma** dikey penceresi, uygulama bildirimi değiştirilerek yapılandırılabilen bir Azure AD B2C kiracısında kayıtlı uygulamalar için kullanılamaz. Daha fazla bilgi için bkz.  [Azure Active Directory B2C talepler ekleme ve Kullanıcı girişini özelleştirme, özel ilkeleri kullanma](../../active-directory-b2c/configure-user-input.md)  
+
 1. **İsteğe bağlı talep Ekle**' yi seçin.
 1. Yapılandırmak istediğiniz belirteç türünü seçin.
 1. Eklenecek isteğe bağlı talepler ' i seçin.
 1. **Ekle**’yi seçin.
 
-> [!NOTE]
-> UI seçeneği **belirteci yapılandırma** dikey penceresi, şu anda Azure AD B2C kiracısında kayıtlı olan uygulamalar için kullanılamaz. B2C kiracısında kayıtlı olan uygulamalar için, isteğe bağlı talepler uygulama bildirimi değiştirilerek yapılandırılabilir. Daha fazla bilgi için bkz. [Azure Active Directory B2C talepler ekleme ve Kullanıcı girişini özelleştirme, özel ilkeleri kullanma](../../active-directory-b2c/configure-user-input.md) 
 
 **Uygulama bildirimi aracılığıyla isteğe bağlı talepler Yapılandırılıyor:**
 
@@ -201,7 +201,7 @@ Bir uygulama tarafından istenen isteğe bağlı talepleri bildirir. Bir uygulam
 
 **Tablo 5: Optionalclaim türü özellikleri**
 
-| Ad          | Tür                       | Açıklama                                           |
+| Ad          | Tür                       | Description                                           |
 |---------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Koleksiyon (OptionalClaim) | JWT KIMLIK belirtecinde döndürülen isteğe bağlı talepler.     |
 | `accessToken` | Koleksiyon (OptionalClaim) | JWT erişim belirtecinde döndürülen isteğe bağlı talepler. |
@@ -214,7 +214,7 @@ Belirli bir talep tarafından destekleniyorsa, Additionalclaim 'nin davranışı
 
 **Tablo 6: OptionalClaim türü özellikleri**
 
-| Ad                   | Tür                    | Açıklama                                                                                                                                                                                                                                                                                                   |
+| Ad                   | Tür                    | Description                                                                                                                                                                                                                                                                                                   |
 |------------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | İsteğe bağlı talebin adı.                                                                                                                                                                                                                                                                               |
 | `source`               | Edm.String              | Talebin kaynağı (Dizin nesnesi). Uzantı özelliklerinden önceden tanımlı talepler ve Kullanıcı tanımlı talepler vardır. Kaynak değeri null ise, talep önceden tanımlanmış isteğe bağlı bir talep olur. Kaynak değeri kullanıcı ise, ad özelliğindeki değer kullanıcı nesnesinden uzantı özelliğidir. |
@@ -227,8 +227,7 @@ Standart isteğe bağlı talepler kümesine ek olarak, belirteçleri uzantılar�
 
 Şema ve açık uzantılar isteğe bağlı talepler tarafından desteklenmez; yalnızca AAD-Graph Style Dizin uzantıları. Bu özellik, uygulamanızın kullanabileceği ek kullanıcı bilgilerini eklemek için yararlıdır; Örneğin, kullanıcının ayarlamış olduğu ek bir tanımlayıcı veya önemli bir yapılandırma seçeneği. Bir örnek için bu sayfanın en altına bakın.
 
-> [!NOTE]
-> Dizin şeması uzantıları yalnızca Azure AD özellikli bir özelliktir. Uygulama bildiriminiz bir özel uzantı isterse ve bir MSA kullanıcısı uygulamanızda oturum açarsa, bu uzantılar döndürülmez.
+Dizin şeması uzantıları yalnızca Azure AD özellikli bir özelliktir. Uygulama bildiriminiz bir özel uzantı isterse ve bir MSA kullanıcısı uygulamanızda oturum açarsa, bu uzantılar döndürülmez.
 
 ### <a name="directory-extension-formatting"></a>Dizin uzantısı biçimlendirmesi
 
@@ -290,8 +289,7 @@ Bu bölüm, Grup taleplerinde kullanılan grup özniteliklerinin, şirket içi W
    - OAuth erişim belirteci için accessToken
    - SAML belirteçleri için Saml2Token.
 
-   > [!NOTE]
-   > Saml2Token türü, SAML 1.1 ve SAML 2.0 biçim belirteçleri için geçerlidir.
+   Saml2Token türü, SAML 1.1 ve SAML 2.0 biçim belirteçleri için geçerlidir.
 
    Her ilgili belirteç türü için, gruplar talebini, bildirimdeki Optionalclaim bölümünü kullanacak şekilde değiştirin. Optionalclaim şeması aşağıdaki gibidir:
 
@@ -315,8 +313,7 @@ Bu bölüm, Grup taleplerinde kullanılan grup özniteliklerinin, şirket içi W
 
    Bazı uygulamalar, rol talebinde Kullanıcı hakkında grup bilgileri gerektirir.  Talep türünü bir grup talebine rol talebine değiştirmek için, ek özelliklere "emit_as_roles" ekleyin.  Grup değerleri rol talebinde yayınlanacaktır.
 
-   > [!NOTE]
-   > "Emit_as_roles" kullanılırsa, kullanıcının atandığı tüm uygulama rolleri rol talebinde görünmez.
+   "Emit_as_roles" kullanılırsa, kullanıcının atandığı tüm uygulama rolleri rol talebinde görünmez.
 
 **Örnekler:**
 

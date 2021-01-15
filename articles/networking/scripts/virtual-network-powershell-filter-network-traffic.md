@@ -12,18 +12,18 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/16/2017
 ms.author: kumud
-ms.openlocfilehash: c49d46118523b6a6a81c75be541215a2b09f566b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 269a0683ff2b8decfab8ab816c388e16633776ca
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87030394"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98231901"
 ---
 # <a name="filter-inbound-and-outbound-vm-network-traffic"></a>Gelen ve giden sanal makine ağ trafiğini filtreleme
 
 Bu betik örneği, ön uç ve arka uç alt ağları ile sanal ağ oluşturur. Ön uç alt ağına gelen ağ trafiği, HTTP ve HTTPS ile sınırlıdır ve arka uç alt ağından Internet 'e giden trafiğe izin verilmez. Betiği çalıştırdıktan sonra iki NIC içeren bir sanal makineniz olacaktır. Her NIC, farklı bir alt ağa bağlanır.
 
-Gerekirse, [Azure PowerShell kılavuzunda](https://docs.microsoft.com/powershell/azure/)bulunan yönergeyi kullanarak Azure PowerShell yükleyip `Connect-AzAccount` Azure ile bağlantı oluşturmak için öğesini çalıştırın.
+Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/)bulunan yönergeyi kullanarak Azure PowerShell yükleyip `Connect-AzAccount` Azure ile bağlantı oluşturmak için öğesini çalıştırın.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -61,6 +61,6 @@ Bu betik, bir kaynak grubu, sanal ağ ve ağ güvenliği grupları oluşturmak i
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/azure/).
+Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/).
 
 Ek ağ PowerShell betiği örnekleri, [Azure Ağına Genel Bakış belgeleri](../powershell-samples.md?toc=%2fazure%2fnetworking%2ftoc.json) içinde bulunabilir.

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, sstein
-ms.date: 03/12/2019
-ms.openlocfilehash: 3a46e47d6e12d52113bf63342c84a58ca98743d0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 12/22/2020
+ms.openlocfilehash: 08cab806d6ad8b75821a92994dde0fa07db8b960
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789616"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233602"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>Azure SQL veritabanında veritabanları için dosya alanını yönetme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -84,7 +84,7 @@ Kullanılan veritabanı veri alanı miktarını döndürmek için aşağıdaki s
 SELECT TOP 1 storage_in_megabytes AS DatabaseDataSpaceUsedInMB
 FROM sys.resource_stats
 WHERE database_name = 'db1'
-ORDER BY end_time DESC
+ORDER BY end_time DESC;
 ```
 
 ### <a name="database-data-space-allocated-and-unused-allocated-space"></a>Ayrılan ve kullanılmayan ayrılan alan veritabanı veri alanı
@@ -98,7 +98,7 @@ SELECT SUM(size/128.0) AS DatabaseDataSpaceAllocatedInMB,
 SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS int)/128.0) AS DatabaseDataSpaceAllocatedUnusedInMB
 FROM sys.database_files
 GROUP BY type_desc
-HAVING type_desc = 'ROWS'
+HAVING type_desc = 'ROWS';
 ```
 
 ### <a name="database-data-max-size"></a>Veritabanı verileri en büyük boyutu
@@ -108,7 +108,7 @@ Veritabanı verilerinin en büyük boyutunu döndürmek için aşağıdaki sorgu
 ```sql
 -- Connect to database
 -- Database data max size in bytes
-SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes
+SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes;
 ```
 
 ## <a name="understanding-types-of-storage-space-for-an-elastic-pool"></a>Elastik havuz için depolama alanı türlerini anlama
@@ -121,6 +121,9 @@ Aşağıdaki depolama alanı miktarlarını anlamak, elastik havuzun dosya alan�
 |**Ayrılan veri alanı**|Elastik havuzdaki tüm veritabanları tarafından ayrılan veri alanı toplamı.||
 |**Ayrılan ancak kullanılmayan veri alanı**|Elastik havuzdaki tüm veritabanları tarafından kullanılan veri alanı miktarı ve veri alanı arasındaki fark.|Bu miktar, veritabanı veri dosyalarını küçülterek geri kazanılabilen elastik havuz için ayrılan en fazla alan miktarını temsil eder.|
 |**Maksimum veri boyutu**|Tüm veritabanları için elastik havuz tarafından kullanılabilecek maksimum veri alanı miktarı.|Elastik havuz için ayrılan alan, esnek havuz en büyük boyutunu aşmamalıdır.  Bu durum oluşursa, kullanılmayan alana ayrılan alan, veritabanı veri dosyaları küçültülebileceğinden geri kazanılır.|
+
+> [!NOTE]
+> "Elastik havuz, depolama sınırına ulaştı" hata iletisiyle, veritabanı nesnelerinde elastik havuz depolama sınırını karşılamak için yeterli alan ayrıldığını, ancak veri alanı ayırmada kullanılmamış alan olabileceğini gösterir. Esnek havuzun depolama sınırını artırmayı veya kısa süreli bir çözüm olarak, aşağıda [**kullanılmayan ayrılmış alanı geri kazan**](#reclaim-unused-allocated-space) bölümünü kullanarak veri alanı boşaltmayı düşünün. Ayrıca, veritabanı dosyalarının daraltılması için olası olumsuz performans etkisini de bilmelisiniz, bkz. [**dizinleri yeniden oluştur**](#rebuild-indexes) bölümü.
 
 ## <a name="query-an-elastic-pool-for-storage-space-information"></a>Depolama alanı bilgileri için elastik havuz sorgulama
 
@@ -136,7 +139,7 @@ Kullanılan elastik havuz veri alanı miktarını döndürmek için aşağıdaki
 SELECT TOP 1 avg_storage_percent / 100.0 * elastic_pool_storage_limit_mb AS ElasticPoolDataSpaceUsedInMB
 FROM sys.elastic_pool_resource_stats
 WHERE elastic_pool_name = 'ep1'
-ORDER BY end_time DESC
+ORDER BY end_time DESC;
 ```
 
 ### <a name="elastic-pool-data-space-allocated-and-unused-allocated-space"></a>Elastik havuz veri alanı ayrılmış ve kullanılmayan ayrılan alan
@@ -187,7 +190,7 @@ Aşağıdaki ekran görüntüsü, betiğin çıkışının bir örneğidir:
 
 ### <a name="elastic-pool-data-max-size"></a>Elastik havuz verileri en büyük boyutu
 
-Aşağıdaki T-SQL sorgusunu, elastik havuz verilerinin en büyük boyutunu döndürecek şekilde değiştirin.  Sorgu sonucunun birimleri MB 'tır.
+Son kaydedilen elastik havuz verilerinin en büyük boyutunu döndürmek için aşağıdaki T-SQL sorgusunu değiştirin.  Sorgu sonucunun birimleri MB 'tır.
 
 ```sql
 -- Connect to master
@@ -195,13 +198,13 @@ Aşağıdaki T-SQL sorgusunu, elastik havuz verilerinin en büyük boyutunu dön
 SELECT TOP 1 elastic_pool_storage_limit_mb AS ElasticPoolMaxSizeInMB
 FROM sys.elastic_pool_resource_stats
 WHERE elastic_pool_name = 'ep1'
-ORDER BY end_time DESC
+ORDER BY end_time DESC;
 ```
 
 ## <a name="reclaim-unused-allocated-space"></a>Kullanılmayan ayrılmış alanı geri kazan
 
 > [!NOTE]
-> Bu komut, çalışırken veritabanı performansını etkileyebilir ve mümkünse düşük kullanım dönemlerinde çalıştırılmalıdır.
+> Küçültme komutları çalışırken veritabanı performansını etkiler ve mümkünse düşük kullanım dönemlerinde çalıştırılmalıdır.
 
 ### <a name="dbcc-shrink"></a>DBCC küçültme
 
@@ -209,24 +212,28 @@ Kullanılmayan geri kazanma ayrılmış alanı için veritabanları tanımlandı
 
 ```sql
 -- Shrink database data space allocated.
-DBCC SHRINKDATABASE (N'db1')
+DBCC SHRINKDATABASE (N'db1');
 ```
 
-Bu komut, çalışırken veritabanı performansını etkileyebilir ve mümkünse düşük kullanım dönemlerinde çalıştırılmalıdır.  
+Küçültme komutları çalışırken veritabanı performansını etkiler ve mümkünse düşük kullanım dönemlerinde çalıştırılmalıdır.  
 
-Bu komut hakkında daha fazla bilgi için bkz. [SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql).
+Ayrıca, veritabanı dosyalarının daraltılması için olası olumsuz performans etkisini de bilmelisiniz, bkz. [**dizinleri yeniden oluştur**](#rebuild-indexes) bölümü.
+
+Bu komut hakkında daha fazla bilgi için bkz. [SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql.md).
 
 ### <a name="auto-shrink"></a>Otomatik küçültme
 
 Alternatif olarak, Otomatik küçültme bir veritabanı için etkinleştirilebilir.  Otomatik küçültme, dosya yönetimi karmaşıklığını azaltır ve veritabanı performansına göre daha az etkili olur `SHRINKDATABASE` `SHRINKFILE` .  Otomatik küçültme özellikle birçok veritabanı ile elastik havuzların yönetilmesi için yararlı olabilir.  Ancak Otomatik küçültme, geri kazanma dosya alanında ve ' den daha az etkili `SHRINKDATABASE` olabilir `SHRINKFILE` .
+Varsayılan olarak, çoğu veritabanı için Önerilen Otomatik küçültme devre dışıdır. Daha fazla bilgi için bkz. [AUTO_SHRINK konuları](/troubleshoot/sql/admin/considerations-autogrow-autoshrink#considerations-for-auto_shrink).
+
 Otomatik küçültmeyi etkinleştirmek için aşağıdaki komutta veritabanının adını değiştirin.
 
 ```sql
 -- Enable auto-shrink for the database.
-ALTER DATABASE [db1] SET AUTO_SHRINK ON
+ALTER DATABASE [db1] SET AUTO_SHRINK ON;
 ```
 
-Bu komut hakkında daha fazla bilgi için bkz. [VERITABANı kümesi](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) seçenekleri.
+Bu komut hakkında daha fazla bilgi için bkz. [VERITABANı kümesi](/sql/t-sql/statements/alter-database-transact-sql-set-options) seçenekleri.
 
 ### <a name="rebuild-indexes"></a>Dizinleri yeniden oluştur
 

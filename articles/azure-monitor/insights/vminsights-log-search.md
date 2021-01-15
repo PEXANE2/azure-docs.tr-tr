@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 118bdcb6929abfc162ff05e91f1621f087b6c50c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ae0bc6ea35d5c6e3ebe0cd7f232e5c8b1e637d9d
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186737"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234061"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici günlüklerini sorgulama
 
@@ -92,7 +92,7 @@ Göz önünde bulundurmanız gereken bazı önemli noktaları aşağıda bulabil
 
 #### <a name="naming-and-classification"></a>Adlandırma ve sınıflandırma
 
-Kolaylık olması için, bir bağlantının uzak ucunun IP adresi Remoteıp özelliğinde yer alır. Gelen bağlantılarda, Remoteıp, SourceIP ile aynıdır, ancak giden bağlantılar için de Destinationıp ile aynıdır. RemoteDnsCanonicalNames özelliği, Remoteıp için makine tarafından raporlanan DNS kurallı adlarını temsil eder. Remotednssorular ve RemoteClassification özellikleri ileride kullanılmak üzere ayrılmıştır. 
+Kolaylık olması için, bir bağlantının uzak ucunun IP adresi Remoteıp özelliğinde yer alır. Gelen bağlantılarda, Remoteıp, SourceIP ile aynıdır, ancak giden bağlantılar için de Destinationıp ile aynıdır. RemoteDnsCanonicalNames özelliği, Remoteıp için makine tarafından raporlanan DNS kurallı adlarını temsil eder. Remotednssoruların özelliği, Remoteıp için makine tarafından bildirilen DNS sorularını temsil eder. Removeclassıfst özelliği gelecekte kullanılmak üzere ayrılmıştır. 
 
 #### <a name="geolocation"></a>Coğrafi Konum
 
@@ -112,7 +112,7 @@ Kolaylık olması için, bir bağlantının uzak ucunun IP adresi Remoteıp öze
 |:--|:--|
 |MaliciousIp |Remoteıp adresi |
 |Indicatorthreadtype |Algılanan tehdit göstergesi, *botnet*, *C2*, *cryptoaraştırma*, *koyu ağ*, *DDoS*, *MaliciousUrl*, *kötü amaçlı yazılım*, *kimlik avı*, *proxy*, *Pua*, *listem* değerlerinden biridir.   |
-|Açıklama |Gözlemlenen tehdit açıklaması. |
+|Description |Gözlemlenen tehdit açıklaması. |
 |TLPLevel |Trafik ışığı Protokolü (TLP) düzeyi, tanımlı değerlerden biridir, *beyaz*, *yeşil* *,,* ve *kırmızı*. |
 |Güvenilirlik |Değerler *0 – 100*' dir. |
 |Önem derecesi |Değerler *0 – 5*' dir; burada *5* en önemdir ve *0* , hiç önemli değildir. Varsayılan değer *3*' dir.  |
@@ -233,7 +233,7 @@ Bir *Vmprocess* türüne sahip kayıtlar, bağımlılık aracısına sahıp sunu
 |Grup | İşlem grubu adı. Aynı gruptaki süreçler mantıksal olarak ilişkilidir, ör. aynı ürün veya sistem bileşeninin bir parçasıdır. |
 |StartTime | İşlem havuzu başlangıç zamanı |
 |FirstPid | İşlem havuzundaki ilk PID |
-|Açıklama | İşlem açıklaması |
+|Description | İşlem açıklaması |
 |CompanyName | Şirketin adı |
 |InternalName | İç ad |
 |ProductName | Ürünün adı |
@@ -442,7 +442,7 @@ Bir *ınsightsmetrik* türü olan kayıtlar, sanal makinenin Konuk işletim sist
 |Bilgisayar | Bilgisayar FQDN 'SI | 
 |Kaynak | *vm.azm.ms* |
 |Ad Alanı | Performans sayacının kategorisi | 
-|Adı | Performans sayacının adı |
+|Name | Performans sayacının adı |
 |Val | Toplanan değer | 
 |Etiketler | Kayıtla ilgili ayrıntılar. Farklı kayıt türleriyle kullanılan etiketler için aşağıdaki tabloya bakın.  |
 |AgentId | Her bilgisayar aracısının benzersiz tanımlayıcısı |
@@ -451,7 +451,7 @@ Bir *ınsightsmetrik* türü olan kayıtlar, sanal makinenin Konuk işletim sist
 
 Aşağıdaki tabloda, şu anda *ınsightsölçümlerini* tablosunda toplanan performans sayaçları listelenmiştir:
 
-| Ad Alanı | Adı | Açıklama | Birim | Etiketler |
+| Ad Alanı | Ad | Açıklama | Birim | Etiketler |
 |:---|:---|:---|:---|:---|
 | Bilgisayar    | Sinyal             | Bilgisayar sinyali                        | | |
 | Bellek      | AvailableMB           | Kullanılabilir bellek baytları                    | TI      | memorySizeMB-toplam bellek boyutu|

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: troubleshooting
 ms.date: 11/09/2020
-ms.openlocfilehash: e8b1d985fcb2852df52382e005ec0f0266e23d9d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: aea205bee41aed232b8453417dca521d2dfc83ab
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345653"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233789"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Soru-Cevap Oluşturma için sorun giderme
 
@@ -323,6 +323,29 @@ Birden çok dilde içeriğiniz varsa, her dil için ayrı bir hizmet oluşturmay
 
 1. App Service 'i başlatın.
 1. Şimdi çalıştığını doğrulamak için bilgi bankaıza erişin.
+
+</details>
+<details>
+<summary><b>Application Insights neden çalışmıyor?</b></summary>
+
+**Cevap**: sorunu gidermeye yönelik lütfen çapraz denetim yapın ve aşağıdaki adımları güncelleştirin:
+
+1. App Service-> ayarları grubu-> yapılandırma bölümünde-> uygulama ayarları-> Name "Userappınsightskey" parametreleri düzgün şekilde yapılandırılır ve ilgili Application Insights Genel Bakış sekmesi ("Izleme anahtarı") GUID 'Ine ayarlanır. 
+
+1. App Service-> ayarları grubu-> "Application Insights" bölümünde > App Insights 'ın etkinleştirildiğinden ve ilgili Application Insights kaynağına bağlı olduğundan emin olun.
+
+</details>
+
+<details>
+<summary><b>Application Insights etkin ancak neden düzgün çalışmıyor?</b></summary>
+
+**Cevap**: lütfen verilen adımları izleyin: 
+
+1.  Zaten bir değer varsa, ' "APPINSIGHTS_INSTRUMENTATIONKEY" Name "değerini ' Userappınsightskey ' adına kopyalayın. 
+
+1.  Uygulama ayarlarında ' Userappınsightskey ' anahtarı yoksa, lütfen bu ada sahip yeni bir anahtar ekleyin ve değeri kopyalayın.
+
+1.  Bunu kaydederek App Service otomatik olarak yeniden başlatılır. Bu, sorunu çözmelidir. 
 
 </details>
 

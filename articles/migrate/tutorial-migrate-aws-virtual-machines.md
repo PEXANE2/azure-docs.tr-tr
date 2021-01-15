@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 10b5f84677deb221bf763870b188ef30ee87e9c2
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: cab7bc7f79cccb1704d7046f79a2000028ffb729
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752864"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233262"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services (AWS) sanal makinelerini bulma, değerlendirme ve Azure’a geçirme
 
@@ -64,7 +64,7 @@ Bir değerlendirmeyi denemenizi öneririz, ancak değerlendirme gerçekleştirme
 
 
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 - Geçirmek istediğiniz AWS VM 'lerinin desteklenen bir işletim sistemi sürümünü çalıştırdığından emin olun. AWS VM 'Leri, geçiş amacıyla fiziksel makineler gibi değerlendirilir. Fiziksel sunucu geçişi iş akışı için [desteklenen işletim sistemlerini ve çekirdek sürümlerini](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) gözden geçirin. Linux sanal makinelerinize yönelik işletim sistemi ve çekirdek sürümlerini denetlemek için *hostnamectl* veya *uname-a* gibi standart komutları kullanabilirsiniz.  Gerçek geçişe devam etmeden önce VM 'nin beklendiği gibi çalışıp çalışmadığını doğrulamak için bir test geçişi (yük devretme testi) gerçekleştirmenizi öneririz.
 - AWS sanal makinelerinizin Azure 'a geçiş için [desteklenen yapılandırmalara](./migrate-support-matrix-physical-migration.md#physical-server-requirements) uyduğundan emin olun.
@@ -249,13 +249,23 @@ Geçirilecek kaynak AWS VM 'lerine Mobility hizmeti aracısının yüklü olmas�
     -  Bölge içindeki belirli bir kullanılabilirlik bölgesine geçirilen makineyi sabitlemek için kullanılabilirlik alanı. Kullanılabilirlik Alanları arasında çok düğümlü bir uygulama katmanı oluşturan sunucuları dağıtmak için bu seçeneği kullanın. Bu seçeneği belirlerseniz, Işlem sekmesinde seçilen makinenin her biri için kullanılacak kullanılabilirlik alanını belirtmeniz gerekir. Bu seçenek yalnızca geçiş için seçilen hedef bölge Kullanılabilirlik Alanları destekliyorsa kullanılabilir
     -  Geçirilen makinenin bir kullanılabilirlik kümesine yerleştirileceği kullanılabilirlik kümesi. Bu seçeneği kullanabilmek için seçilen hedef kaynak grubunun bir veya daha fazla kullanılabilirlik kümesi olmalıdır.
     - Geçirilen makineler için bu kullanılabilirlik yapılandırmalarının herhangi birine ihtiyacınız yoksa, altyapı artıklığı gerekli değildir.
-11. **Azure Hibrit Avantajı**’nda:
+    
+11. **Disk şifreleme türü**' nde şunları seçin:
+    - Platform tarafından yönetilen anahtar ile bekleyen şifreleme
+    - Müşteri tarafından yönetilen anahtarla bekleyen şifreleme
+    - Platform tarafından yönetilen ve müşteri tarafından yönetilen anahtarlarla Çift şifreleme
+
+   > [!NOTE]
+   > VM 'Leri CMK ile çoğaltmak için hedef kaynak grubu altında [bir disk şifreleme kümesi oluşturmanız](https://go.microsoft.com/fwlink/?linkid=2151800) gerekir. Bir disk şifreleme kümesi nesnesi yönetilen diskleri, SSE için kullanılacak CMK 'yi içeren bir Key Vault eşler.
+  
+12. **Azure Hibrit Avantajı**’nda:
+
     - Azure Hibrit Avantajı’nı uygulamak istemiyorsanız **Hayır**’ı seçin. Ardından **İleri**'ye tıklayın.
     - Etkin Yazılım Güvencesi veya Windows Server abonelikleri kapsamında olan Windows Server makineleriniz varsa ve avantajı geçirdiğiniz makinelere uygulamak istiyorsanız **Evet**’i seçin. Ardından **İleri**'ye tıklayın.
 
-    ![Hedef ayarları](./media/tutorial-migrate-physical-virtual-machines/target-settings.png)
+    ![Hedef ayarları](./media/tutorial-migrate-vmware/target-settings.png)
 
-12. **İşlem** bölümünde VM adı, boyutu, işletim sistemi disk türü ve kullanılabilirlik yapılandırmasını (önceki adımda seçildiyse) gözden geçirin. VM’ler [Azure gereksinimleriyle](migrate-support-matrix-physical-migration.md#azure-vm-requirements)uyumlu olmalıdır.
+13. **İşlem** bölümünde VM adı, boyutu, işletim sistemi disk türü ve kullanılabilirlik yapılandırmasını (önceki adımda seçildiyse) gözden geçirin. VM’ler [Azure gereksinimleriyle](migrate-support-matrix-physical-migration.md#azure-vm-requirements)uyumlu olmalıdır.
 
     - **VM boyutu**: değerlendirme önerilerini KULLANıYORSANıZ, VM boyutu açılan listesi önerilen boyutu gösterir. Aksi takdirde Azure Geçişi, Azure aboneliğindeki en yakın eşleşmeye göre bir boyut seçer. Alternatif olarak **Azure VM boyutu**’nda el ile bir boyut seçin.
     - **Işletim sistemi diski**: VM için işletim sistemi (önyükleme) diskini belirtin. İşletim Sistemi diski, işletim sistemi önyükleyiciye ve yükleyiciye sahip disktir.
@@ -264,16 +274,16 @@ Geçirilecek kaynak AWS VM 'lerine Mobility hizmeti aracısının yüklü olmas�
 
 ![İşlem ayarları](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
 
-13. **Diskler**' de, VM disklerinin Azure 'da çoğaltılıp çoğaltılmayacağını belirtin ve Azure 'da disk türünü (Standart SSD/HDD veya Premium yönetilen diskler) seçin. Ardından **İleri**'ye tıklayın.
+14. **Diskler**' de, VM disklerinin Azure 'da çoğaltılıp çoğaltılmayacağını belirtin ve Azure 'da disk türünü (Standart SSD/HDD veya Premium yönetilen diskler) seçin. Ardından **İleri**'ye tıklayın.
     - Diskleri çoğaltmadan çıkarabilirsiniz.
     - Diskleri çıkarırsanız bu diskler geçişten sonra Azure VM’de bulunmaz. 
 
     ![Disk ayarları](./media/tutorial-migrate-physical-virtual-machines/disks.png)
 
-14. **Çoğaltmayı gözden geçir ve başlat** bölümünde ayarları gözden geçirin ve sunuculara yönelik ilk çoğaltmayı başlatmak için **Çoğalt** üzerine tıklayın.
+15. **Çoğaltmayı gözden geçir ve başlat** bölümünde ayarları gözden geçirin ve sunuculara yönelik ilk çoğaltmayı başlatmak için **Çoğalt** üzerine tıklayın.
 
 > [!NOTE]
-> Çoğaltma ayarlarını, çoğaltma başlamadan önce dilediğiniz zaman güncelleştirebilirsiniz, **Manage**  >  **çoğaltılan makineleri** yönetin. Çoğaltma başladıktan sonra ayarlar değiştirilemez.
+> Çoğaltma ayarlarını, çoğaltma başlamadan önce dilediğiniz zaman güncelleştirebilirsiniz,   >  **çoğaltılan makineleri** yönetin. Çoğaltma başladıktan sonra ayarlar değiştirilemez.
 
 ## <a name="track-and-monitor-replication-status"></a>Çoğaltma durumunu izleme ve izleme
 
@@ -322,7 +332,7 @@ Test geçişinin beklendiği gibi çalışıp çalışmadığını doğruladıkt
     ![Sunucuları çoğaltma](./media/tutorial-migrate-physical-virtual-machines/replicate-servers.png)
 
 2. **Makineleri çoğaltma** bölümünde VM > **Geçir** üzerine sağ tıklayın.
-3. **Migrate**  >  **Sanal makineleri Kapat ' a geçiş yapın ve veri kaybı olmadan planlı bir geçiş gerçekleştirin**, **Evet**  >  **Tamam**' ı seçin.
+3.   >  **Sanal makineleri Kapat ' a geçiş yapın ve veri kaybı olmadan planlı bir geçiş gerçekleştirin**, **Evet**  >  **Tamam**' ı seçin.
     - VM 'yi kapatmak istemiyorsanız **Hayır**' ı seçin.
 4. VM için bir geçiş işlemi başlar. Portalın sağ üst köşesindeki bildirim zil simgesine tıklayarak veya sunucu geçiş aracının işler sayfasına giderek (araç kutucu> ğunda genel bakış ' a tıklayarak (sol menüden Işler ' i seçerek) iş durumunu görüntüleyebilirsiniz.
 5. İşlem bittikten sonra Sanal Makineler sayfasında VM’yi görüntüleyebilir ve yönetebilirsiniz.

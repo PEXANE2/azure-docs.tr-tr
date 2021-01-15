@@ -10,17 +10,17 @@ author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: sstein,vanto
 ms.date: 01/14/2021
-ms.openlocfilehash: 7c797c7e002f40a28e4be674c125c6ea5d60a13f
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: ec61f2c67576d6e144d8d4bb7e8ecaaa157db0a9
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219071"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233381"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği ile bağlantı sorunlarını ve diğer hataları giderme
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Azure SQL veritabanı veya Azure SQL yönetilen örneği bağlantısı başarısız olduğunda hata iletileri alırsınız. Bu bağlantı sorunlarına yeniden yapılandırma, güvenlik duvarı ayarları, bir bağlantı zaman aşımı, yanlış oturum açma bilgileri veya [uygulama tasarım](develop-overview.md) sürecinde en iyi yöntemler ve tasarım yönergeleri uygulama hatası oluşabilir. Ayrıca, bazı Azure SQL veritabanı veya SQL yönetilen örnek kaynaklarında maksimum sınıra ulaşıldığında artık bağlanamazsınız.
+Azure SQL veritabanı veya Azure SQL yönetilen örneği bağlantısı başarısız olduğunda hata iletileri alırsınız. Bu bağlantı sorunlarına yeniden yapılandırma, güvenlik duvarı ayarları, bir bağlantı zaman aşımı, yanlış oturum açma bilgileri veya [uygulama tasarım](develop-overview.md) sürecinde en iyi yöntemler ve tasarım kılavuzları uygulanamaması neden olabilir. Ayrıca, bazı Azure SQL veritabanı veya SQL yönetilen örnek kaynaklarında maksimum sınıra ulaşıldığında artık bağlanamazsınız.
 
 ## <a name="transient-fault-error-messages-40197-40613-and-others"></a>Geçici hata hata iletileri (40197, 40613 ve diğerleri)
 
@@ -42,13 +42,13 @@ Azure altyapısının SQL Veritabanı hizmetinde ağır iş yükleri ortaya çı
 ### <a name="steps-to-resolve-transient-connectivity-issues"></a>Geçici bağlantı sorunlarını giderme adımları
 
 1. Uygulama tarafından hataların bildirildiği süre boyunca oluşan bilinen kesintiler için [Microsoft Azure hizmet panosunu](https://azure.microsoft.com/status) denetleyin.
-2. Azure SQL veritabanı gibi bir bulut hizmetine bağlanan uygulamalar, düzenli olarak yeniden yapılandırma olaylarını beklemeli ve bu hataları, kullanıcılara uygulama hataları olarak ortaya çıkacak şekilde işlemek için yeniden deneme mantığı uygulamalıdır.
+2. Azure SQL veritabanı gibi bir bulut hizmetine bağlanan uygulamalar, düzenli olarak yeniden yapılandırma olayları ve kullanıcılara açık uygulama hataları yerine bu hataları işlemek için yeniden deneme mantığı uygulamalıdır.
 3. Bir veritabanı kaynak sınırlarına yaklaşıyorsa, geçici bir bağlantı sorunu olabilir. Bkz. [kaynak sınırları](resource-limits-logical-server.md#what-happens-when-database-resource-limits-are-reached).
 4. Bağlantı sorunları devam ederse veya uygulamanızın hatayla karşılaştığı süre 60 saniye değerini aşarsa veya hatanın belirli bir gün içinde birden çok kez yinelendiğini görürseniz, [Azure](https://azure.microsoft.com/support/options) destek sitesinde **Destek Al** ' ı seçerek bir Azure destek isteği dosyası sağlayın.
 
 #### <a name="implementing-retry-logic"></a>Yeniden deneme mantığını uygulama
 
-İstemci programınızın kendisini düzeltmek için geçici hata süresi verdikten sonra bir bağlantıyı yeniden oluşturabilmesi için yeniden deneme mantığı olması önemle önerilir.  İlk yeniden denemeden önce 5 saniye gecikme yapmanızı öneririz. 5 saniyelik riskden daha kısa bir gecikme sonrasında bulut hizmeti 'nin yeniden denenmesi. Sonraki her yeniden deneme için gecikme, en fazla 60 saniyeye kadar üstel olarak artar.
+İstemci programınızın kendisini düzeltmek için geçici hata süresi verdikten sonra bir bağlantıyı yeniden oluşturabilmesi için yeniden deneme mantığı olması önemle önerilir.  İlk yeniden denemeden önce 5 saniye gecikme yapmanızı öneririz. 5 saniyelik risklerden daha kısa bir gecikme sonrasında bulut hizmeti 'nin yeniden denenmesi. Sonraki her yeniden deneme için gecikme, en fazla 60 saniyeye kadar üstel olarak artar.
 
 Yeniden deneme mantığına ait kod örnekleri için bkz.:
 
@@ -104,49 +104,46 @@ Bu sorunu çözmek için, geçerli bir Kullanıcı adı ve parola sağlamak üze
 Genellikle, hizmet Yöneticisi oturum açma kimlik bilgilerini eklemek için aşağıdaki adımları kullanabilir:
 
 1. SQL Server Management Studio (SSMS) kullanarak sunucuda oturum açın.
-2. Oturum açma adının devre dışı olup olmadığını denetlemek için aşağıdaki SQL sorgusunu çalıştırın:
+2. Oturum açma adının devre dışı olup olmadığını denetlemek için ana veritabanında aşağıdaki SQL sorgusunu çalıştırın:
 
    ```sql
-   SELECT name, is_disabled FROM sys.sql_logins
+   SELECT name, is_disabled FROM sys.sql_logins;
    ```
 
 3. Karşılık gelen ad devre dışıysa, aşağıdaki deyimi kullanarak etkinleştirin:
 
    ```sql
-   Alter login <User name> enable
+   ALTER LOGIN <User name> ENABLE;
    ```
 
-4. SQL oturum açma Kullanıcı adı yoksa, aşağıdaki adımları izleyerek oluşturun:
-
-   1. SSMS 'de **güvenlik** ' e çift tıklayarak genişletin.
-   2. **Oturum açmalar**' a sağ tıklayın ve ardından **yeni oturum açma**' yı seçin.
-   3. Oluşturulan betikte yer tutucuları olan aşağıdaki SQL sorgusunu düzenleyin ve çalıştırın:
+4. SQL oturum açma Kullanıcı adı yoksa, yeni bir SQL oturumu oluşturmak için aşağıdaki SQL sorgusunu düzenleyin ve çalıştırın:
 
    ```sql
    CREATE LOGIN <SQL_login_name, sysname, login_name>
-   WITH PASSWORD = '<password, sysname, Change_Password>'
+   WITH PASSWORD = '<password, sysname, Change_Password>';
    GO
    ```
 
-5. **Veritabanı**' na çift tıklayın.
+5. SSMS Nesne Gezgini 'de **veritabanları**' nı genişletin.
 6. Kullanıcı iznini vermek istediğiniz veritabanını seçin.
-7. **Güvenlik**' e çift tıklayın.
-8. **Kullanıcılar**' a sağ tıklayın ve ardından **Yeni Kullanıcı**' yı seçin.
-9. Oluşturulan betikte yer tutucuları olan aşağıdaki SQL sorgusunu düzenleyin ve çalıştırın:
+7. **Güvenlik**' e sağ tıklayın ve ardından **Yeni**, **Kullanıcı**' yı seçin.
+8. Oluşturulan betikte yer tutucuları olan aşağıdaki SQL sorgusunu düzenleyin ve çalıştırın:
 
    ```sql
    CREATE USER <user_name, sysname, user_name>
    FOR LOGIN <login_name, sysname, login_name>
-   WITH DEFAULT_SCHEMA = <default_schema, sysname, dbo>
+   WITH DEFAULT_SCHEMA = <default_schema, sysname, dbo>;
    GO
-   -- Add user to the database owner role
 
-   EXEC sp_addrolemember N'db_owner', N'<user_name, sysname, user_name>'
+   -- Add user to the database owner role
+   EXEC sp_addrolemember N'db_owner', N'<user_name, sysname, user_name>';
    GO
    ```
 
+   Belirli `sp_addrolemember` kullanıcıları belirli veritabanı rollerine eşlemek için de kullanabilirsiniz.
+
    > [!NOTE]
-   > Belirli `sp_addrolemember` kullanıcıları belirli veritabanı rollerine eşlemek için de kullanabilirsiniz.
+   > Azure SQL veritabanı 'nda, veritabanı rolü üyeliğini yönetmek için daha yeni [alter role](/sql/t-sql/statements/alter-role-transact-sql) sözdizimini göz önünde bulundurun.  
 
 Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda veritabanlarını ve oturum açma Işlemlerini yönetme](./logins-create-manage.md).
 
@@ -183,7 +180,7 @@ Bu sorunu geçici olarak çözmek için aşağıdaki yöntemlerden birini deneyi
 - Uzun süre çalışan sorgular olup olmadığını doğrulayın.
 
   > [!NOTE]
-  > Bu, sorunu çözemeyebilir bir en az aList yaklaşımdır. Sorgu engelleme sorunlarını giderme hakkında ayrıntılı bilgi için bkz. [Azure SQL engelleme sorunlarını anlama ve çözme](understand-resolve-blocking.md).
+  > Bu, sorunu çözemeyebilir bir en az aList yaklaşımdır. Uzun süre çalışan veya engelleyen sorguları giderme hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı engelleme sorunlarını anlama ve çözme](understand-resolve-blocking.md).
 
 1. Tüm engelleyici istekleri görmek için [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) görünümünü denetlemek üzere aşağıdaki SQL sorgusunu çalıştırın:
 
@@ -191,12 +188,15 @@ Bu sorunu geçici olarak çözmek için aşağıdaki yöntemlerden birini deneyi
    SELECT * FROM sys.dm_exec_requests;
    ```
 
-2. Baş engelleyicisinin **giriş arabelleğini** belirleme.
-3. Baş engelleyici sorgusunu ayarlayın.
+1. [Sys.dm_exec_input_buffer](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-input-buffer-transact-sql) dinamik yönetim işlevini ve soruna neden olan sorgunun session_id kullanarak baş engelleyicisini yönelik **giriş arabelleğini** belirleme, örneğin:
 
-   Derinlemesine bir sorun giderme yordamı için bkz. [My Query, bulutta güzel çalışıyor mu?](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud). 
+   ```sql 
+   SELECT * FROM sys.dm_exec_input_buffer (100,0);
+   ```
 
-Veritabanı, adresleme ve uzun süre çalışan sorgulara rağmen sürekli olarak sınırına ulaşırsa, daha fazla kaynak [sürümü](https://azure.microsoft.com/pricing/details/sql-database/)olan bir sürüme yükseltmeyi göz önünde bulundurun.
+1. Baş engelleyici sorgusunu ayarlayın.
+
+Veritabanı, adresleme engellenme ve uzun süre çalışan sorgulara rağmen sürekli olarak sınırına ulaşırsa, daha fazla kaynak [sürümü](https://azure.microsoft.com/pricing/details/sql-database/)olan bir sürüme yükseltmeyi göz önünde bulundurun.
 
 Veritabanı limitleri hakkında daha fazla bilgi için bkz.  [sunucular Için SQL veritabanı kaynak sınırları](./resource-limits-logical-server.md).
 
@@ -254,12 +254,18 @@ Bu hatayla sürekli olarak karşılaşırsanız, bu adımları izleyerek sorunu 
    SELECT * FROM sys.dm_exec_requests;
    ```
 
-2. Uzun süre çalışan sorgunun giriş arabelleğini belirleme.
+2. [Sys.dm_exec_input_buffer](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-input-buffer-transact-sql) dinamik yönetim işlevini ve soruna neden olan sorgunun session_id kullanarak baş engelleyicisini yönelik **giriş arabelleğini** belirleme, örneğin:
+
+   ```sql 
+   SELECT * FROM sys.dm_exec_input_buffer (100,0);
+   ```
+
 3. Sorguyu ayarlayın.
 
-Ayrıca, sorgularınızı toplu olarak da düşünün. Toplu işleme hakkında bilgi için bkz. [SQL veritabanı uygulama performansını artırmak için toplu işlem kullanma](../performance-improve-use-batching.md).
+    > [!Note]
+    > Azure SQL veritabanı 'nda engelleme sorunlarını giderme hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı engelleme sorunlarını anlama ve çözme](understand-resolve-blocking.md).
 
-Derinlemesine bir sorun giderme yordamı için bkz. [My Query, bulutta güzel çalışıyor mu?](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
+Ayrıca, sorgularınızı toplu olarak da düşünün. Toplu işleme hakkında bilgi için bkz. [SQL veritabanı uygulama performansını artırmak için toplu işlem kullanma](../performance-improve-use-batching.md).
 
 ### <a name="error-40551-the-session-has-been-terminated-because-of-excessive-tempdb-usage"></a>Hata 40551: çok sayıda TEMPDB kullanımı nedeniyle oturum sonlandırıldı
 
@@ -297,7 +303,7 @@ Derinlemesine bir sorun giderme yordamı için bkz. [My Query, bulutta güzel ç
 | Hata kodu | Önem Derecesi | Açıklama |
 | ---:| ---:|:--- |
 | 10928 |20 |Kaynak KIMLIĞI:% d. Veritabanı için% s sınırı% d ve bu sınıra ulaşıldı. Daha fazla bilgi için bkz. [tek ve havuza alınmış veritabanları Için SQL veritabanı kaynak sınırları](resource-limits-logical-server.md).<br/><br/>Kaynak KIMLIĞI, sınıra ulaşan kaynağı gösterir. Çalışan iş parçacıkları için kaynak KIMLIĞI = 1. Oturumlar için kaynak KIMLIĞI = 2.<br/><br/>Bu hata ve nasıl çözüleceği hakkında daha fazla bilgi için bkz.: <br/>&bull;&nbsp; [Mantıksal SQL Server Kaynak sınırları](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Tek veritabanları için DTU tabanlı sınırlar](service-tiers-dtu.md)<br/>&bull;&nbsp; [Elastik havuzlar için DTU tabanlı sınırlar](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [tek veritabanları için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [elastik havuzlar için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Azure SQL yönetilen örnek kaynak sınırları](../managed-instance/resource-limits.md). |
-| 10929 |20 |Kaynak KIMLIĞI:% d. % S en düşük garanti% d, maksimum sınır% d ve veritabanı için geçerli kullanım% d. Ancak, sunucu şu anda bu veritabanı için% d değerinden büyük istekleri desteklemeye yönelik çok meşgul. Kaynak KIMLIĞI, sınıra ulaşan kaynağı gösterir. Çalışan iş parçacıkları için kaynak KIMLIĞI = 1. Oturumlar için kaynak KIMLIĞI = 2. Daha fazla bilgi için bkz: <br/>&bull;&nbsp; [Mantıksal SQL Server Kaynak sınırları](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Tek veritabanları için DTU tabanlı sınırlar](service-tiers-dtu.md)<br/>&bull;&nbsp; [Elastik havuzlar için DTU tabanlı sınırlar](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [tek veritabanları için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [elastik havuzlar için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Azure SQL yönetilen örnek kaynak sınırları](../managed-instance/resource-limits.md). <br/>Aksi takdirde, lütfen daha sonra yeniden deneyin. |
+| 10929 |20 |Kaynak KIMLIĞI:% d. % S en düşük garanti% d, maksimum sınır% d ve veritabanı için geçerli kullanım% d. Ancak, sunucu şu anda bu veritabanı için% d değerinden büyük istekleri desteklemeye yönelik çok meşgul. Kaynak KIMLIĞI, sınıra ulaşan kaynağı gösterir. Çalışan iş parçacıkları için kaynak KIMLIĞI = 1. Oturumlar için kaynak KIMLIĞI = 2. Daha fazla bilgi için bkz: <br/>&bull;&nbsp; [Mantıksal SQL Server Kaynak sınırları](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Tek veritabanları için DTU tabanlı sınırlar](service-tiers-dtu.md)<br/>&bull;&nbsp; [Elastik havuzlar için DTU tabanlı sınırlar](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [tek veritabanları için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [elastik havuzlar için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Azure SQL yönetilen örnek kaynak sınırları](../managed-instance/resource-limits.md). <br/>Aksi takdirde, daha sonra yeniden deneyin. |
 | 40544 |20 |Veritabanı boyut kotasına ulaştı. Verileri bölümleyin veya silin, dizinleri bırakın veya olası çözümler için belgelere başvurun. Veritabanı Ölçeklendirme için bkz. [tek veritabanı kaynaklarını ölçeklendirme](single-database-scale.md) ve [elastik havuz kaynaklarını ölçeklendirme](elastic-pool-scale.md).|
 | 40549 |16 |Uzun süre çalışan bir işlem olduğu için oturum sonlandırıldı. İşleminizi kısaltmayı deneyin. Toplu işleme hakkında bilgi için bkz. [SQL veritabanı uygulama performansını artırmak için toplu işlem kullanma](../performance-improve-use-batching.md).|
 | 40550 |16 |Oturum çok fazla kilit elde ettiğinden sonlandırıldı. Tek bir işlemde daha az sayıda satır okumayı veya değiştirmeyi deneyin. Toplu işleme hakkında bilgi için bkz. [SQL veritabanı uygulama performansını artırmak için toplu işlem kullanma](../performance-improve-use-batching.md).|
@@ -311,8 +317,8 @@ Aşağıdaki hatalar elastik havuzlar oluşturma ve kullanmayla ilgilidir:
 
 | Hata kodu | Önem Derecesi | Açıklama | Düzeltici eylem |
 |:--- |:--- |:--- |:--- |
-| 1132 | 17 |Elastik havuz, depolama sınırına ulaştı. Elastik havuzun depolama alanı kullanımı (% d) MB/s değerini aşamaz. Elastik havuzun depolama sınırına ulaşıldığında veritabanına veri yazmaya çalışılıyor. Kaynak limitleri hakkında bilgi için bkz.: <br/>&bull;&nbsp; [Elastik havuzlar için DTU tabanlı sınırlar](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [elastik havuzlar için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-elastic-pools.md). <br/> |Depolama sınırını artırmak, elastik havuzdaki ayrı veritabanları tarafından kullanılan depolamayı azaltmak veya elastik havuzdan veritabanlarını kaldırmak için mümkünse, depolama alanı sayısını ve/veya depolama alanını esnek havuza eklemeyi düşünün. Elastik havuz ölçekleme için bkz. [elastik havuz kaynaklarını ölçeklendirme](elastic-pool-scale.md).|
-| 10929 | 16 |% S en düşük garanti% d, maksimum sınır% d ve veritabanı için geçerli kullanım% d. Ancak, sunucu şu anda bu veritabanı için% d değerinden büyük istekleri desteklemeye yönelik çok meşgul. Kaynak limitleri hakkında bilgi için bkz.: <br/>&bull;&nbsp; [Elastik havuzlar için DTU tabanlı sınırlar](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [elastik havuzlar için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-elastic-pools.md). <br/> Aksi takdirde, lütfen daha sonra yeniden deneyin. Veritabanı başına DTU/sanal çekirdek en az; Veritabanı başına DTU/sanal çekirdek maks. Elastik havuzdaki tüm veritabanları genelinde eş zamanlı çalışan (istek) toplam sayısı havuz sınırını aşmaya çalıştı. |Çalışan sınırını artırmak veya elastik havuzdan veritabanlarını kaldırmak için mümkünse, elastik havuzun DTU 'ları veya sanal çekirdekleri artırmayı düşünün. |
+| 1132 | 17 |Elastik havuz, depolama sınırına ulaştı. Elastik havuzun depolama alanı kullanımı (% d) MB/s değerini aşamaz. Elastik havuzun depolama sınırına ulaşıldığında veritabanına veri yazmaya çalışılıyor. Kaynak limitleri hakkında bilgi için bkz.: <br/>&bull;&nbsp; [Elastik havuzlar için DTU tabanlı sınırlar](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [elastik havuzlar için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-elastic-pools.md). <br/> |Depolama sınırını artırmak, elastik havuzdaki ayrı veritabanları tarafından kullanılan depolamayı azaltmak veya elastik havuzdan veritabanlarını kaldırmak için mümkünse, depolama alanı sayısını ve/veya depolama alanını esnek havuza eklemeyi düşünün. Elastik havuz ölçekleme için bkz. [elastik havuz kaynaklarını ölçeklendirme](elastic-pool-scale.md). Kullanılmayan alanı veritabanlarından kaldırma hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda veritabanları için dosya alanını yönetme](file-space-manage.md).|
+| 10929 | 16 |% S en düşük garanti% d, maksimum sınır% d ve veritabanı için geçerli kullanım% d. Ancak, sunucu şu anda bu veritabanı için% d değerinden büyük istekleri desteklemeye yönelik çok meşgul. Kaynak limitleri hakkında bilgi için bkz.: <br/>&bull;&nbsp; [Elastik havuzlar için DTU tabanlı sınırlar](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [elastik havuzlar için sanal çekirdek tabanlı sınırlar](resource-limits-vcore-elastic-pools.md). <br/> Aksi takdirde, daha sonra yeniden deneyin. Veritabanı başına DTU/sanal çekirdek en az; Veritabanı başına DTU/sanal çekirdek maks. Elastik havuzdaki tüm veritabanları genelinde eş zamanlı çalışan (istek) toplam sayısı havuz sınırını aşmaya çalıştı. |Çalışan sınırını artırmak veya elastik havuzdan veritabanlarını kaldırmak için mümkünse, elastik havuzun DTU 'ları veya sanal çekirdekleri artırmayı düşünün. |
 | 40844 | 16 |'% Ls ' sunucusundaki '% ls ' veritabanı, elastik havuzdaki bir '% ls ' sürüm veritabanıdır ve sürekli bir kopyalama ilişkisine sahip olamaz.  |Yok |
 | 40857 | 16 |Sunucu: '% ls ', elastik havuz adı: '% ls ' için elastik havuz bulunamadı. Belirtilen elastik havuz belirtilen sunucuda yok. | Geçerli bir elastik havuz adı sağlayın. |
 | 40858 | 16 |'% Ls ' esnek havuzu sunucuda zaten var: '% ls '. Belirtilen elastik havuz belirtilen sunucuda zaten var. | Yeni elastik havuz adı sağlayın. |

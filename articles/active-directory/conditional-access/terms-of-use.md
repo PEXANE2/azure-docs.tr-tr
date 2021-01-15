@@ -11,50 +11,50 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 399cbef4de91623ada1c38de7c6148d22fde94c7
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: f3e64b0af455ab1f84653093b26654530ee3dfab
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672409"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232786"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Kullanım koşulları Azure Active Directory
 
-Azure AD kullanım koşulları, kuruluşların son kullanıcılara bilgi sunmak için kullanabileceği basit bir yöntem sağlar. Bu sunum, kullanıcıların yasal gereksinimler veya uyumluluk gereksinimleriyle ilgili bildirimleri görmesi sağlar. Bu makalede kullanım koşulları (ToU) ile çalışmaya başlama açıklanmaktadır.
+Azure AD kullanım koşulları ilkeleri, kuruluşların son kullanıcılara bilgi sunmak için kullanabileceği basit bir yöntem sağlar. Bu sunum, kullanıcıların yasal gereksinimler veya uyumluluk gereksinimleriyle ilgili bildirimleri görmesi sağlar. Bu makalede, kullanım koşulları (ToU) ilkeleri ile çalışmaya başlama işlemi açıklanır.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="overview-videos"></a>Genel Bakış videoları
 
-Aşağıdaki videoda kullanım koşullarına hızlı bir genel bakış sunulmaktadır.
+Aşağıdaki videoda kullanım koşulları ilkelerine ilişkin hızlı bir genel bakış sunulmaktadır.
 
 >[!VIDEO https://www.youtube.com/embed/tj-LK0abNao]
 
 Daha fazla video için bkz.:
-- [Azure Active Directory kullanım koşullarını dağıtma](https://www.youtube.com/embed/N4vgqHO2tgY)
-- [Azure Active Directory kullanım koşullarını alma](https://www.youtube.com/embed/t_hA4y9luCY)
+- [Azure Active Directory bir kullanım koşulları İlkesi dağıtma](https://www.youtube.com/embed/N4vgqHO2tgY)
+- [Azure Active Directory bir kullanım koşulları ilkesini kullanıma alma](https://www.youtube.com/embed/t_hA4y9luCY)
 
 ## <a name="what-can-i-do-with-terms-of-use"></a>Kullanım koşulları ile ne yapabilirim?
 
-Azure AD kullanım koşulları aşağıdaki yeteneklere sahiptir:
+Azure AD kullanım koşulları ilkeleri aşağıdaki yeteneklere sahiptir:
 
-- Çalışanların veya konukların erişim koşullarına girmeden önce kullanım koşullarınızı kabul etmesini gerektir.
+- Çalışanların veya konukların erişim almadan önce kullanım koşullarınızı kabul etmesini gerektir.
 - Çalışanların veya konukların erişim almadan önce her cihazda kullanım koşullarınızı kabul etmesini gerektir.
-- Çalışanların veya konukların yinelenen bir zamanlamaya göre kullanım koşullarınızı kabul etmesini gerektir.
-- Çalışanların veya konukların Azure AD Multi-Factor Authentication (MFA) ile güvenlik bilgilerini kaydetmeden önce kullanım koşullarınızı kabul etmesini gerektir.
+- Çalışanların veya konukların kullanım koşullarınızı yinelenen bir zamanlamaya göre kabul etmesini gerektir.
+- Azure AD Multi-Factor Authentication (MFA) ' de güvenlik bilgilerini kaydetmeden önce çalışanların veya konukların kullanım koşullarınızı kabul etmesini gerektir.
 - Çalışanların Azure AD self servis parola sıfırlama (SSPR) içinde güvenlik bilgilerini kaydetmeden önce kullanım koşullarınızı kabul etmesini gerektir.
-- Kuruluşunuzdaki tüm kullanıcılar için genel kullanım koşullarını sunun.
-- Kullanıcı özniteliklerine (örn.) göre belirli kullanım koşulları sunun. doktorlarla hemşirelere ya da yurtiçi ve uluslararası çalışanlara, [dinamik grupları](../enterprise-users/groups-dynamic-membership.md) kullanarak) sunun.
-- Salesforce gibi yüksek iş etkisi uygulamalarına erişirken belirli kullanım koşullarını sunun.
-- Farklı dillerdeki kullanım koşullarını sunun.
-- Kullanım koşullarınızı kimlerin sahip olduğunu veya kabul etmemiş listesini listeleyin.
+- Kuruluşunuzdaki tüm kullanıcılar için genel kullanım koşulları ilkesi sunun.
+- Kullanıcı özniteliklerine (örn.) göre belirli kullanım koşulları kuralları sunma. doktorlarla hemşirelere ya da yurtiçi ve uluslararası çalışanlara, [dinamik grupları](../enterprise-users/groups-dynamic-membership.md) kullanarak) sunun.
+- Salesforce gibi yüksek iş etkisi uygulamalarına erişirken belirli kullanım koşulları ilkelerini sunun.
+- Farklı dillerdeki kullanım koşulları ilkelerini sunun.
+- Kullanım koşullarınıza sahip olan veya kabul edilmeyen liste.
 - Toplantı gizlilik düzenlemelerine yardımcı olun.
-- Uyumluluk ve denetim için kullanım koşulları etkinlik günlüğünü görüntüleyin.
-- [Microsoft Graph API 'leri](/graph/api/resources/agreement?view=graph-rest-beta) kullanarak kullanım koşulları oluşturun ve yönetin (Şu anda önizleme aşamasındadır).
+- Uyumluluk ve denetim için kullanım koşulları ilke etkinliği günlüğünü görüntüleyin.
+- [Microsoft Graph API 'leri](/graph/api/resources/agreement?view=graph-rest-beta) kullanarak kullanım koşulları ilkeleri oluşturun ve yönetin (Şu anda önizleme aşamasındadır).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD kullanım koşulları 'nı kullanmak ve yapılandırmak için şunları yapmanız gerekir:
+Azure AD kullanım koşulları ilkelerini kullanmak ve yapılandırmak için, şunları yapmanız gerekir:
 
 - Azure AD Premium P1, P2, EMS E3 veya EMS E5 aboneliği.
    - Bu aboneliklerden birine sahip değilseniz [Azure AD Premium'u alabilir](../fundamentals/active-directory-get-started-premium.md) veya [Azure AD Premium deneme sürümünü etkinleştirebilirsiniz](https://azure.microsoft.com/trial/get-started-active-directory/).
@@ -65,11 +65,11 @@ Azure AD kullanım koşulları 'nı kullanmak ve yapılandırmak için şunları
 
 ## <a name="terms-of-use-document"></a>Kullanım koşulları belgesi
 
-Azure AD kullanım koşulları, içerik sunmak için PDF biçimini kullanır. Bu PDF dosyası, kullanıcıların oturum açtığı sırada son kullanıcı sözleşmelerini toplamanıza olanak sağlayan herhangi bir içerik (örneğin mevcut sözleşme belgeleri) olabilir. Mobil cihazlardaki kullanıcıları desteklemek için, PDF 'de önerilen yazı tipi boyutu 24 noktasıdır.
+Azure AD kullanım koşulları ilkeleri, içerik sunmak için PDF biçimini kullanır. Bu PDF dosyası, kullanıcıların oturum açtığı sırada son kullanıcı sözleşmelerini toplamanıza olanak sağlayan herhangi bir içerik (örneğin mevcut sözleşme belgeleri) olabilir. Mobil cihazlardaki kullanıcıları desteklemek için, PDF 'de önerilen yazı tipi boyutu 24 noktasıdır.
 
 ## <a name="add-terms-of-use"></a>Kullanım koşulları ekleme
 
-Kullanım koşullarınızı bir kez daha doldurduktan sonra eklemek için aşağıdaki yordamı kullanın.
+Kullanım koşullarınızı ilke belgesi ile sonuçladıktan sonra, eklemek için aşağıdaki yordamı kullanın.
 
 1. Azure 'da genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
 1. **Kullanım Koşulları**'na erişmek için [https://aka.ms/catou](https://aka.ms/catou) sayfasına gidin.
@@ -80,22 +80,22 @@ Kullanım koşullarınızı bir kez daha doldurduktan sonra eklemek için aşağ
 
     ![Kullanım koşullarınızın ayarlarını belirtmek için yeni kullanım şartı bölmesi](./media/terms-of-use/new-tou.png)
 
-1. **Ad** kutusuna, Azure Portal kullanılacak kullanım koşulları için bir ad girin.
+1. **Ad** kutusuna, Azure Portal kullanılacak kullanım koşulları ilkesi için bir ad girin.
 1. **Görünen ad** kutusuna kullanıcıların oturum açtıklarında göreceği bir başlık girin.
-1. **Kullanım koşulları belge** için, son kullanılan kullanım koşullarınıza gidin ve bu PDF 'yi seçin.
-1. Kullanım koşullarınızın belgesi için dili seçin. Dil seçeneğini kullanarak her biri farklı dilde olan birden fazla kullanım koşulunu karşıya yükleyebilirsiniz. Bir son kullanıcının göreceği kullanım koşulları sürümü, kullanıcının tarayıcı tercihlerine bağlıdır.
+1. **Kullanım koşulları belge** için, son kullanılan kullanım koşulları ilke PDF 'nize gidin ve bunu seçin.
+1. Kullanım koşullarınızın ilke belgesi için dili seçin. Dil seçeneği, her biri farklı bir dile sahip birden çok kullanım koşulları 'nı karşıya yüklemenize olanak sağlar. Son kullanıcının göreceği kullanım koşulları İlkesi sürümü, tarayıcı tercihlerine göre yapılır.
 1. Son kullanıcıların, kabul etmeden önce kullanım koşullarını görüntülemesini gerektirmek için **kullanıcıların kullanım koşullarını genişletmesini iste** **seçeneğini belirleyin.**
 1. Son kullanıcıların, eriştiği her cihazda kullanım koşullarınızı kabul etmesini gerektirmek için, **kullanıcıların her cihazda** **üzerinde** onay vermesini iste seçeneğini belirleyin. Bu seçenek etkinleştirilirse kullanıcıların ek uygulamalar yüklemesi gerekebilir. Daha fazla bilgi için bkz. [cihaz başına kullanım koşulları](#per-device-terms-of-use).
-1. Kullanım koşullarını bir zamanlamaya göre sona erdirmek istiyorsanız, kullanım **süreleri sona erme** süresini **Açık** olarak ayarlayın. Açık olarak ayarlandığında, iki ek zamanlama ayarı görüntülenir.
+1. Kullanım koşulları ilke onayları bir zamanlamaya göre sona ermek istiyorsanız, **süre sonu onayları** 'yi **Açık** olarak ayarlayın. Açık olarak ayarlandığında, iki ek zamanlama ayarı görüntülenir.
 
     ![Başlangıç tarihi, sıklığı ve süreyi ayarlamak için onayları ayarlarının süresi doluyor](./media/terms-of-use/expire-consents.png)
 
-1. Kullanım son tarihleri için zamanlamayı belirtmek üzere başlangıç ve **Sıklık** ayarlarını **sona erdir** ' i kullanın. Aşağıdaki tabloda, birkaç örnek ayar için sonuç gösterilmektedir:
+1. Kullanım süresi sonu süre sonu ayarlarını belirtmek için **Başlangıç tarihi** ve **sıklığı** ayarlarını kullanın. Aşağıdaki tabloda, birkaç örnek ayar için sonuç gösterilmektedir:
 
    | Başlangıç tarihi | Sıklık | Sonuç |
    | --- | --- | --- |
-   | Bugünün tarihi  | Aylık | Bugünden itibaren, kullanıcılar kullanım koşullarını kabul etmeli ve sonra her ay yeniden kabul etmelidir. |
-   | Gelecekteki Tarih  | Aylık | Bugünden itibaren, kullanıcıların kullanım koşullarını kabul etmesi gerekir. Gelecek tarih gerçekleştiğinde, yarışma süreleri sona erer ve kullanıcılar her ay yeniden kabul etmelidir.  |
+   | Bugünün tarihi  | Aylık | Bugünden itibaren, kullanıcıların kullanım koşullarını kabul etmesi ve her ay yeniden kabul etmesi gerekir. |
+   | Gelecekteki Tarih  | Aylık | Bugünden itibaren, kullanıcılar kullanım koşulları ilkesini kabul etmelidir. Gelecek tarih gerçekleştiğinde, yarışma süreleri sona erer ve kullanıcılar her ay yeniden kabul etmelidir.  |
 
    Örneğin, tarihinden itibaren süre sonu ' nu **1 Ocak** ve sıklık olarak **ayda** bir olarak ayarlarsanız, iki kullanıcı için süre sonu oluşma sıklığı aşağıda verilmiştir:
 
@@ -104,7 +104,7 @@ Kullanım koşullarınızı bir kez daha doldurduktan sonra eklemek için aşağ
    | 'Ndaki | 1 Oca | 1 Şub | 1. Mar | 1 Nis |
    | Bob | 15 Oca | 1 Şub | 1. Mar | 1 Nis |
 
-1. Kullanıcı kullanım koşullarını yeniden kabul etmeden önce geçmesi gereken gün sayısını belirtmek için **yeniden kabul gerektiren süre (gün)** ayarını kullanın. Bu, kullanıcıların kendi zamanlamalarını izlemesini sağlar. Örneğin, süreyi **30** gün olarak ayarlarsanız, iki kullanıcı için süre sonu oluşma sıklığı aşağıda verilmiştir:
+1. Kullanıcı kullanım koşulları ilkesini yeniden kabul etmeden önce geçmesi gereken gün sayısını belirtmek için **yeniden kabul gerektiren süre (gün)** ayarını kullanın. Bu, kullanıcıların kendi zamanlamalarını izlemesini sağlar. Örneğin, süreyi **30** gün olarak ayarlarsanız, iki kullanıcı için süre sonu oluşma sıklığı aşağıda verilmiştir:
 
    | Kullanıcı | İlk kabul tarihi | İlk sona erme tarihi | İkinci sona erme tarihi | Üçüncü sona erme tarihi |
    | --- | --- | --- | --- | --- |
@@ -113,7 +113,7 @@ Kullanım koşullarınızı bir kez daha doldurduktan sonra eklemek için aşağ
 
    **Yeniden kabul etmeden önce** , **zaman süresi** ve süre sonu (gün) ayarlarını kullanmak mümkündür, ancak genellikle bir veya diğerini kullanırsınız.
 
-1. **Koşullu erişim** altında, Kullanım Koşullarını zorlayacağı şablonu seçmek Için **koşullu erişim ilkesi şablonunu Uygula** listesini kullanın.
+1. **Koşullu erişim** altında, kullanım koşulları ilkesini zorlamak için şablonu seçmek üzere **koşullu erişim ilkesi şablonunu Uygula** listesini kullanın.
 
     ![İlke şablonu seçmek için koşullu erişim açılan listesi](./media/terms-of-use/conditional-access-templates.png)
 
@@ -121,13 +121,13 @@ Kullanım koşullarınızı bir kez daha doldurduktan sonra eklemek için aşağ
    | --- | --- |
    | **Tüm konuklar için bulut uygulamalarına erişim** | Tüm konuklar ve tüm bulut uygulamaları için bir koşullu erişim ilkesi oluşturulacaktır. Bu ilke Azure portal etkiler. Bu oluşturulduktan sonra oturumunuzu kapatıp açmanız gerekebilir. |
    | **Tüm kullanıcılar için bulut uygulamalarına erişim** | Tüm kullanıcılar ve tüm bulut uygulamaları için bir koşullu erişim ilkesi oluşturulacaktır. Bu ilke Azure portal etkiler. Bu oluşturulduktan sonra oturumunuzu kapatıp açmanız gerekecektir. |
-   | **Özel ilke** | Bu kullanım koşullarının uygulanacağı kullanıcıları, grupları ve uygulamaları seçin. |
-   | **Koşullu erişim ilkesini daha sonra Oluştur** | Bu kullanım koşulları, koşullu erişim ilkesi oluştururken izin verme denetim listesinde görünür. |
+   | **Özel ilke** | Bu kullanım koşulları ilkesinin uygulanacağı kullanıcıları, grupları ve uygulamaları seçin. |
+   | **Koşullu erişim ilkesini daha sonra Oluştur** | Bu kullanım koşulları ilkesi, koşullu erişim ilkesi oluştururken izin verme denetim listesinde görünür. |
 
    >[!IMPORTANT]
-   >Koşullu Erişim İlkesi denetimleri (kullanım koşulları dahil) hizmet hesaplarında zorlamayı desteklemez. Tüm hizmet hesaplarının koşullu erişim ilkesinden dışlanmasını öneririz.
+   >Koşullu Erişim İlkesi denetimleri (kullanım koşulları dahil olmak üzere) hizmet hesaplarında zorlamayı desteklemez. Tüm hizmet hesaplarının koşullu erişim ilkesinden dışlanmasını öneririz.
 
-    Özel koşullu erişim ilkeleri, belirli bir bulut uygulamasına veya kullanıcı grubuna göre ayrıntılı kullanım koşullarını sağlar. Daha fazla bilgi için bkz. [hızlı başlangıç: bulut uygulamalarına erişmeden önce kabul edilmesi gereken kullanım koşulları](require-tou.md).
+    Özel koşullu erişim ilkeleri, belirli bir bulut uygulamasına veya kullanıcı grubuna göre ayrıntılı kullanım ilkeleri sağlar. Daha fazla bilgi için bkz. [hızlı başlangıç: bulut uygulamalarına erişmeden önce kabul edilmesi gereken kullanım koşulları](require-tou.md).
 
 1. **Oluştur**’a tıklayın.
 
@@ -135,19 +135,19 @@ Kullanım koşullarınızı bir kez daha doldurduktan sonra eklemek için aşağ
 
    ![Özel koşullu erişim ilkesi şablonunu seçtiyseniz yeni koşullu erişim bölmesi](./media/terms-of-use/custom-policy.png)
 
-   Şimdi yeni kullanım koşullarınızı görmeniz gerekir.
+   Şimdi yeni kullanım koşulları koşullarınızı görmeniz gerekir.
 
    ![Kullanım koşulları dikey penceresinde listelenen yeni kullanım koşulları](./media/terms-of-use/create-tou.png)
 
 ## <a name="view-report-of-who-has-accepted-and-declined"></a>Kimlerin kabul edildiğini ve reddedildiğini görüntüleyen rapor
 
-Kullanım Koşulları dikey penceresinin kabul eden ve reddeden kullanıcı sayısını gösterdiğini fark edeceksiniz. Bu sayımlar ve kabul edilen/reddedilen, kullanım koşullarının ömrü boyunca depolanır.
+Kullanım Koşulları dikey penceresinin kabul eden ve reddeden kullanıcı sayısını gösterdiğini fark edeceksiniz. Bu sayımlar ve kabul edilen/reddedilen, kullanım koşulları ilkesinin ömrü boyunca depolanır.
 
 1. Azure'da oturum açın ve **Kullanım Koşulları**'na erişmek için [https://aka.ms/catou](https://aka.ms/catou) sayfasına gidin.
 
     ![Kullanıcı sayısını gösteren Kullanım koşulları dikey pencere sayısı kabul edildi ve reddedildi](./media/terms-of-use/view-tou.png)
 
-1. Kullanım koşulları için, kullanıcıların geçerli durumunu görüntülemek için **kabul edilen** veya **Reddedilen** sayılara tıklayın.
+1. Kullanım koşulları ilkesi için, kullanıcıların geçerli durumunu görüntülemek için **kabul edilen** veya **Reddedilen** sayılara tıklayın.
 
     ![Kabul etmiş olan kullanıcıları listelemek kullanım koşulları onayları bölmesi](./media/terms-of-use/accepted-tou.png)
 
@@ -161,12 +161,12 @@ Kullanım Koşulları dikey penceresinin kabul eden ve reddeden kullanıcı say�
 
 ## <a name="view-azure-ad-audit-logs"></a>Azure AD denetim günlüklerini görüntüleme
 
-Ek etkinlikleri görüntülemek istiyorsanız, Azure AD kullanım koşulları denetim günlüklerini içerir. Her kullanıcı onayı, **30 gün** boyunca depolanan denetim günlüklerinde bir olayı tetikler. Bu günlükleri portalda görüntüleyebilir veya .csv dosyası olarak indirebilirsiniz.
+Ek etkinlikleri görüntülemek istiyorsanız, Azure AD kullanım koşulları ilkeleri denetim günlüklerini içerir. Her kullanıcı onayı, **30 gün** boyunca depolanan denetim günlüklerinde bir olayı tetikler. Bu günlükleri portalda görüntüleyebilir veya .csv dosyası olarak indirebilirsiniz.
 
 Azure AD denetim günlükleri 'ni kullanmaya başlamak için aşağıdaki yordamı kullanın:
 
 1. Azure'da oturum açın ve **Kullanım Koşulları**'na erişmek için [https://aka.ms/catou](https://aka.ms/catou) sayfasına gidin.
-1. Kullanım koşullarını seçin.
+1. Kullanım koşulları ilkesi seçin.
 1. **Denetim günlüklerini görüntüle**' ye tıklayın.
 
     ![Denetim günlüklerini görüntüle seçeneğinin vurgulandığı dikey pencere Kullanım koşulları](./media/terms-of-use/audit-tou.png)
@@ -183,7 +183,7 @@ Azure AD denetim günlükleri 'ni kullanmaya başlamak için aşağıdaki yordam
 
 ## <a name="what-terms-of-use-looks-like-for-users"></a>Kullanıcılar için hangi kullanım koşulları gibi görünüyor
 
-Kullanım koşulları oluşturulduktan ve zorlandıktan sonra, Kullanıcı oturum açma işlemi sırasında aşağıdaki ekranı görür.
+Kullanım koşulları ilkesi oluşturulup zorlandıktan sonra, kapsamdaki kullanıcılar, oturum açma işlemi sırasında aşağıdaki ekranı görür.
 
 ![Kullanıcı oturum açtığında görüntülenen örnek kullanım koşulları](./media/terms-of-use/user-tou.png)
 
@@ -195,11 +195,11 @@ Aşağıdaki ekranda, kullanım koşullarının mobil cihazlarda nasıl göründ
 
 ![Kullanıcı bir mobil cihazda oturum açtığında görüntülenen örnek kullanım koşulları](./media/terms-of-use/mobile-tou.png)
 
-Kullanıcılar yalnızca bir kez kullanım koşullarını kabul etmek için gereklidir ve sonraki oturum açma işlemleri üzerinde yeniden kullanım koşulları 'nı görmez.
+Kullanıcılar yalnızca kullanım koşulları ilkesini bir kez kabul etmek için gereklidir ve sonraki oturum açma işlemleri sırasında kullanım koşulları ilkesini tekrar görmez.
 
 ### <a name="how-users-can-review-their-terms-of-use"></a>Kullanıcıların kullanım koşullarını nasıl gözden geçirebilmeleri
 
-Kullanıcılar, aşağıdaki yordamı kullanarak kabul ettikleri kullanım koşullarını gözden geçirebilir ve görebilirler.
+Kullanıcılar, aşağıdaki yordamı kullanarak kabul ettikleri ilke kullanım koşullarını gözden geçirebilir ve görebilirler.
 
 1. [https://myapps.microsoft.com](https://myapps.microsoft.com) adresinde oturum açın.
 1. Sağ üst köşedeki ad ' a tıklayın ve **profil**' i seçin.
@@ -214,19 +214,19 @@ Kullanıcılar, aşağıdaki yordamı kullanarak kabul ettikleri kullanım koşu
 
 ## <a name="edit-terms-of-use-details"></a>Kullanım koşullarını düzenleme ayrıntıları
 
-Kullanım koşulları 'nın bazı ayrıntılarını düzenleyebilir, ancak var olan bir belgeyi değiştiremezsiniz. Aşağıdaki yordamda ayrıntıların nasıl düzenleneceği açıklanmaktadır.
+Kullanım koşullarının bazı ayrıntılarını düzenleyebilirsiniz, ancak var olan bir belgeyi değiştiremezsiniz. Aşağıdaki yordamda ayrıntıların nasıl düzenleneceği açıklanmaktadır.
 
 1. Azure'da oturum açın ve **Kullanım Koşulları**'na erişmek için [https://aka.ms/catou](https://aka.ms/catou) sayfasına gidin.
-1. Düzenlemek istediğiniz kullanım koşullarını seçin.
+1. Düzenlemek istediğiniz kullanım koşulları ilkesini seçin.
 1. **Terimleri Düzenle**' ye tıklayın.
 1. Kullanım koşullarını Düzenle bölmesinde, aşağıdakileri değiştirebilirsiniz:
     - **Ad** : Bu, son kullanıcılarla paylaşılmayan ToU 'ın iç adıdır
     - **Görünen ad** – bu, son kullanıcıların ToU 'yi görüntülerken görebilmesini sağlayan addır
-    - **Kullanıcıların kullanım koşullarını genişletmesini gerektir** – bunu **Açık** olarak ayarlamak, son kullanımı, kabul etmeden önce belge kullanım koşullarını genişletmeye zorlar.
+    - **Kullanıcıların kullanım koşullarını genişletmesini gerektir** – bunu **Açık** olarak ayarlamak, son kullanımı, kabul etmeden önce ilke belgesi kullanım koşullarını genişletmeye zorlar.
     - Önizle **Mevcut bir kullanım koşulları belgesini güncelleştirebilirsiniz**
     - Mevcut bir ToU 'ya bir dil ekleyebilirsiniz
 
-   PDF belgesi gibi değiştirmek istediğiniz başka ayarlar varsa, kullanıcıların her cihazda onay vermesini, consents 'nin süresini, yeniden kabul etmeden önce süreyi veya koşullu erişim ilkesini, yeni bir kullanım koşulları oluşturmanız gerekir.
+   PDF belgesi gibi değiştirmek istediğiniz başka ayarlar varsa, kullanıcıların her cihazda onay vermesini, consents 'nin süresini, yeniden kabul etmeden önceki süreyi veya koşullu erişim ilkesini, yeni bir kullanım koşulları ilkesi oluşturmanız gerekir.
 
     ![Farklı dil seçeneklerini göstermeyi Düzenle ](./media/terms-of-use/edit-terms-use.png)
 
@@ -235,7 +235,7 @@ Kullanım koşulları 'nın bazı ayrıntılarını düzenleyebilir, ancak var o
 ## <a name="update-the-version-or-pdf-of-an-existing-terms-of-use"></a>Mevcut kullanım koşullarının sürümünü veya PDF 'yi güncelleştirme
 
 1.  Azure 'da oturum açın ve [kullanım koşulları](https://aka.ms/catou) gidin
-2.  Düzenlemek istediğiniz kullanım koşullarını seçin.
+2.  Düzenlemek istediğiniz kullanım koşulları ilkesini seçin.
 3.  **Terimleri Düzenle**' ye tıklayın.
 4.  Yeni bir sürümü güncelleştirmek istediğiniz dil için eylem sütununun altındaki **Güncelleştir** ' e tıklayın.
 
@@ -252,7 +252,7 @@ Kullanım koşulları 'nın bazı ayrıntılarını düzenleyebilir, ancak var o
 ## <a name="view-previous-versions-of-a-terms-of-use"></a>Kullanım koşullarının önceki sürümlerini görüntüleme
 
 1.  Azure'da oturum açın ve **Kullanım Koşulları**'na erişmek için https://aka.ms/catou sayfasına gidin.
-2.  Sürüm geçmişini görüntülemek istediğiniz kullanım koşullarını seçin.
+2.  Sürüm geçmişini görüntülemek istediğiniz kullanım koşulları ilke koşullarını seçin.
 3.  **Diller ve sürüm geçmişine** tıklayın
 4.  **Önceki sürümleri gör** ' e tıklayın.
 
@@ -274,7 +274,7 @@ Kullanım koşulları 'nın bazı ayrıntılarını düzenleyebilir, ancak var o
 Aşağıdaki yordamda bir kullanım koşulları dilinin nasıl ekleneceği açıklanmaktadır.
 
 1. Azure'da oturum açın ve **Kullanım Koşulları**'na erişmek için [https://aka.ms/catou](https://aka.ms/catou) sayfasına gidin.
-1. Düzenlemek istediğiniz kullanım koşullarını seçin.
+1. Düzenlemek istediğiniz kullanım koşulları ilkesini seçin.
 1. **Terimleri Düzenle** öğesine tıklayın
 1. Sayfanın alt kısmındaki **Dil ekle** ' ye tıklayın.
 1. Kullanım koşulları Ekle dil bölmesinde yerelleştirilmiş PDF 'nizi karşıya yükleyin ve dili seçin.
@@ -288,7 +288,7 @@ Aşağıdaki yordamda bir kullanım koşulları dilinin nasıl ekleneceği açı
 
 ## <a name="per-device-terms-of-use"></a>Cihaz başına kullanım koşulları
 
-**Her cihaz için kullanıcıların onay vermesini iste** ayarı, son kullanıcıların, eriştiği her cihazda kullanım koşullarınızı kabul etmesini zorunlu kılmanıza olanak sağlar. Son kullanıcının, cihazlarını Azure AD 'ye kaydetmesi gerekecektir. Cihaz kaydedildiğinde, her cihazda kullanım koşullarını zorlamak için cihaz KIMLIĞI kullanılır.
+**Her cihaz için kullanıcıların onay vermesini iste** ayarı, son kullanıcıların, eriştiği her cihazda kullanım koşullarınızı kabul etmesini zorunlu kılmanıza olanak sağlar. Son kullanıcının, cihazlarını Azure AD 'ye kaydetmesi gerekecektir. Cihaz kaydedildiğinde, cihaz KIMLIĞI her cihazda kullanım koşullarını zorlamak için kullanılır.
 
 Desteklenen platformların ve yazılımların listesi aşağıda verilmiştir.
 
@@ -304,7 +304,7 @@ Cihaz başına kullanım koşulları aşağıdaki kısıtlamalara sahiptir:
 
 - Bir cihaz yalnızca bir kiracıya eklenebilir.
 - Bir kullanıcının cihazına katılması için izinleri olması gerekir.
-- Intune kayıt uygulaması desteklenmez. Kullanım koşulları gerektiren tüm koşullu erişim ilkelerinin dışlandığından emin olun.
+- Intune kayıt uygulaması desteklenmez. Kullanım koşulları gerektiren herhangi bir koşullu erişim ilkesinden dışlandığından emin olun.
 - Azure AD B2B kullanıcıları desteklenmez.
 
 Kullanıcının cihazı birleştirilmemişse, cihazlarına katılması gereken bir ileti alırlar. Bu deneyim, platforma ve yazılıma bağımlıdır.
@@ -333,20 +333,20 @@ Kullanıcı, desteklenmeyen bir tarayıcı kullanıyorsa, farklı bir tarayıcı
 
 ## <a name="delete-terms-of-use"></a>Kullanım koşullarını Sil
 
-Aşağıdaki yordamı kullanarak eski kullanım koşullarını silebilirsiniz.
+Aşağıdaki yordamı kullanarak eski kullanım koşulları ilkelerini silebilirsiniz.
 
 1. Azure'da oturum açın ve **Kullanım Koşulları**'na erişmek için [https://aka.ms/catou](https://aka.ms/catou) sayfasına gidin.
-1. Kaldırmak istediğiniz kullanım koşullarını seçin.
+1. Kaldırmak istediğiniz kullanım koşulları ilkesini seçin.
 1. **Koşulları sil**'e tıklayın.
 1. Devam etmek isteyip istemediğinizi soran iletide **Evet**'e tıklayın.
 
     ![Kullanım koşullarını silme onayı isteyen ileti](./media/terms-of-use/delete-tou.png)
 
-   Artık kullanım koşullarınızı görmemelisiniz.
+   Kullanım koşullarınızı artık göremezsiniz.
 
 ## <a name="deleted-users-and-active-terms-of-use"></a>Silinen kullanıcılar ve etkin kullanım koşulları
 
-Varsayılan olarak, silinmiş bir kullanıcı Azure AD'de 30 gün boyunca silinmiş durumda kalır ve bu süre boyunca gerekirse bir yönetici tarafından geri alınabilir. 30 gün sonra bu kullanıcı kalıcı olarak silinir. Ayrıca, bir Genel Yönetici bu süreye ulaşılmadan önce Azure Active Directory portalını kullanarak [kısa süre önce silinmiş bir kullanıcıyı kalıcı olarak silebilir](../fundamentals/active-directory-users-restore.md). Bir Kullanıcı kalıcı olarak silindi, bu kullanıcı hakkındaki sonraki veriler etkin kullanım koşullarından kaldırılacaktır. Silinmiş kullanıcılara ilişkin denetim bilgileri, denetim günlüğünde kalır.
+Varsayılan olarak, silinmiş bir kullanıcı Azure AD'de 30 gün boyunca silinmiş durumda kalır ve bu süre boyunca gerekirse bir yönetici tarafından geri alınabilir. 30 gün sonra bu kullanıcı kalıcı olarak silinir. Ayrıca, bir Genel Yönetici bu süreye ulaşılmadan önce Azure Active Directory portalını kullanarak [kısa süre önce silinmiş bir kullanıcıyı kalıcı olarak silebilir](../fundamentals/active-directory-users-restore.md). Bir Kullanıcı kalıcı olarak silindi, bu kullanıcı hakkındaki sonraki veriler, etkin kullanım koşulları ilkesinden kaldırılacak. Silinmiş kullanıcılara ilişkin denetim bilgileri, denetim günlüğünde kalır.
 
 ## <a name="policy-changes"></a>İlke değişiklikleri
 
@@ -355,30 +355,30 @@ Koşullu erişim ilkeleri hemen etkili olur. Bu durumda, yönetici "üzgün bulu
 > [!IMPORTANT]
 > Aşağıdaki durumlarda kapsam dahilindeki kullanıcıların yeni bir ilkeyi karşılamak için oturumu kapatıp yeniden oturum açmaları gerekir:
 >
-> - Koşullu erişim ilkesi kullanım koşulları üzerinde etkinleştirilir
-> - veya ikinci bir kullanım koşulları belgesi oluşturulduğunda
+> - bir kullanım koşulları ilkesinde koşullu erişim ilkesi etkinleştirilir
+> - veya ikinci bir kullanım koşulları ilkesi oluşturulur
 
 ## <a name="b2b-guests"></a>B2B konukları
 
-Çoğu kuruluşta, çalışanları kuruluşun kullanım koşulları ve gizlilik bildirimleri onayı için bir işlem yapılır. Ancak SharePoint veya takımlar aracılığıyla eklendiklerinde Azure AD işletmeden işletmeye (B2B) konuklarına yönelik aynı yarışmaları nasıl zorunlu kılabilirsiniz? Koşullu erişimi ve kullanım koşullarını kullanarak, bir ilkeyi doğrudan B2B Konuk kullanıcıları doğrultusunda zorlayabilirsiniz. Davet teminat akışı sırasında, kullanıcıya kullanım koşulları sunulur. Bu destek şu anda önizlemededir.
+Çoğu kuruluş, çalışanlarının kuruluşun kullanım koşulları ilkesini ve gizlilik bildirimlerini kabul etmek için bir işlem sağlar. Ancak SharePoint veya takımlar aracılığıyla eklendiklerinde Azure AD işletmeden işletmeye (B2B) konuklarına yönelik aynı yarışmaları nasıl zorunlu kılabilirsiniz? Koşullu erişim ve kullanım koşulları ilkelerini kullanarak, bir ilkeyi doğrudan B2B Konuk kullanıcıları doğrultusunda zorlayabilirsiniz. Davet teminat akışı sırasında, kullanıcıya kullanım koşulları ilkesi sunulur. Bu destek şu anda önizlemededir.
 
-Kullanım koşulları, yalnızca kullanıcının Azure AD 'de bir Konuk hesabı olduğunda görüntülenir. SharePoint Online Şu anda bir belge veya kullanıcının bir Konuk hesabına sahip olmasını gerektirmeyen bir klasörü paylaşmak için geçici bir [dış paylaşım alıcısı deneyimine](/sharepoint/what-s-new-in-sharing-in-targeted-release) sahiptir. Bu durumda, kullanım koşulları görüntülenmez.
+Kullanım koşulları ilkeler yalnızca kullanıcının Azure AD 'de bir Konuk hesabı olduğunda görüntülenir. SharePoint Online Şu anda bir belge veya kullanıcının bir Konuk hesabına sahip olmasını gerektirmeyen bir klasörü paylaşmak için geçici bir [dış paylaşım alıcısı deneyimine](/sharepoint/what-s-new-in-sharing-in-targeted-release) sahiptir. Bu durumda, kullanım koşulları ilkesi gösterilmez.
 
 ![Kullanıcılar ve gruplar bölmesi-tüm konuk kullanıcılar seçeneği işaretli sekmesini dahil et](./media/terms-of-use/b2b-guests.png)
 
 ## <a name="support-for-cloud-apps"></a>Bulut uygulamaları için destek
 
-Kullanım koşulları, Azure Information Protection ve Microsoft Intune gibi farklı bulut uygulamaları için kullanılabilir. Bu destek şu anda önizlemededir.
+Kullanım koşulları ilkeleri Azure Information Protection ve Microsoft Intune gibi farklı bulut uygulamaları için kullanılabilir. Bu destek şu anda önizlemededir.
 
 ### <a name="azure-information-protection"></a>Azure Information Protection
 
-Azure Information Protection uygulaması için bir koşullu erişim ilkesi yapılandırabilir ve Kullanıcı korumalı bir belgeye eriştiğinde kullanım koşulları isteyebilirsiniz. Bu, bir kullanıcının korumalı bir belgeye ilk kez erişmeden önce kullanım koşullarını tetikler.
+Azure Information Protection uygulaması için bir koşullu erişim ilkesi yapılandırabilir ve Kullanıcı korumalı bir belgeye eriştiğinde bir kullanım koşulları ilkesi gerekir. Bu işlem, korunan bir belgeye ilk kez erişmeden önce bir kullanım koşulları ilkesi tetikler.
 
 ![Microsoft Azure Information Protection App ile bulut uygulamaları bölmesi seçildi](./media/terms-of-use/cloud-app-info-protection.png)
 
 ### <a name="microsoft-intune-enrollment"></a>Kayıt Microsoft Intune
 
-Microsoft Intune kayıt uygulaması için bir koşullu erişim ilkesi yapılandırabilir ve Intune 'da cihaz kaydı öncesinde bir kullanım koşulları isteyebilirsiniz. Daha fazla bilgi için bkz. [Kuruluşunuz için doğru terimleri seçme çözümü](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409)okuma.
+Microsoft Intune kayıt uygulaması için bir koşullu erişim ilkesi yapılandırabilir ve Intune 'da cihaz kaydı öncesinde bir kullanım koşulları ilkesi gerekir. Daha fazla bilgi için bkz. [Kuruluşunuz için doğru terimleri seçme çözümü](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409)okuma.
 
 ![Microsoft Intune App ile bulut uygulamaları bölmesi seçildi](./media/terms-of-use/cloud-app-intune.png)
 
@@ -387,6 +387,9 @@ Microsoft Intune kayıt uygulaması için bir koşullu erişim ilkesi yapıland�
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
+**S: kullanım koşulları etkinleştirildiğinde PowerShell 'i kullanarak oturum açamıyorum.**<br />
+Y: Kullanım koşulları yalnızca etkileşimli olarak kimlik doğrulanırken kabul edilebilir.
+
 **S: Kullanıcının kullanım koşullarını kabul edip etmediğini veya ne zaman kabul ettiğini nasıl görebilirim?**<br />
 Y: Kullanım koşulları dikey penceresinde **kabul edilen** sayıya tıklayın. Ayrıca, kabul etme etkinliğini Azure AD denetim günlüklerinde görüntüleyebilir veya arayabilirsiniz. Daha fazla bilgi için bkz. kimlerin kabul edildiğini ve reddettiğini görüntüleyen rapor görüntüleme ve [Azure AD denetim günlüklerini görüntüleme](#view-azure-ad-audit-logs).
 
@@ -394,34 +397,34 @@ Y: Kullanım koşulları dikey penceresinde **kabul edilen** sayıya tıklayın.
 Y: Kullanıcı kullanım koşulları raporunda sayılır ve kabul edilen/reddedilmiş olan kullanım koşullarının ömrü boyunca depolanır. Azure AD denetim günlükleri 30 gün boyunca depolanır.
 
 **S: kullanım koşullarında neden farklı sayıda onay görüyorum? Azure AD denetim günlükleri?**<br />
-Y: kullanım koşulları raporu, bu kullanım koşullarının kullanım ömrü boyunca depolanır, ancak Azure AD denetim günlükleri 30 gün boyunca depolanır. Ayrıca, kullanım koşulları raporu yalnızca kullanıcının geçerli onay durumunu görüntüler. Örneğin, bir Kullanıcı reddederse ve kabul ediyorsa, kullanım koşulları raporu yalnızca kullanıcının kabul ettiği süreyi gösterir. Geçmişi görmeniz gerekirse, Azure AD denetim günlükleri ' ni kullanabilirsiniz.
+Y: kullanım koşulları raporu, bu kullanım koşulları ilkesinin kullanım ömrü boyunca depolanır, ancak Azure AD denetim günlükleri 30 gün boyunca depolanır. Ayrıca, kullanım koşulları raporu yalnızca kullanıcının geçerli onay durumunu görüntüler. Örneğin, bir Kullanıcı reddederse ve kabul ediyorsa, kullanım koşulları raporu yalnızca kullanıcının kabul ettiği süreyi gösterir. Geçmişi görmeniz gerekirse, Azure AD denetim günlükleri ' ni kullanabilirsiniz.
 
-**S: kullanım koşulları 'nın ayrıntılarını düzenleyediğimde, kullanıcıların yeniden kabul etmesini ister misiniz?**<br />
-Y: Hayır, yönetici bir kullanım koşulları (ad, görünen ad, kullanıcıların genişletmesini veya bir dil eklemesini iste) ayrıntılarını düzenlerse, kullanıcıların yeni koşulları yeniden kabul etmesini gerektirmez.
+**S: kullanım koşulları ilkesinin ayrıntılarını düzenleyediğimde, kullanıcıların yeniden kabul etmesini ister misiniz?**<br />
+Y: Hayır, bir yönetici bir kullanım koşulları ilkesi (ad, görünen ad, kullanıcıların genişletmesini veya bir dil eklemesini iste) ayrıntılarını düzenlerse, kullanıcıların yeni koşulları yeniden kabul etmesini gerektirmez.
 
-**S: mevcut bir kullanım koşulları belgesi güncelleştirebilir miyim?**<br />
-Y: Şu anda mevcut bir kullanım koşulları belgesini güncelleştiremezsiniz. Kullanım koşullarını belge olarak değiştirmek için yeni bir kullanım koşulları örneği oluşturmanız gerekir.
+**S: mevcut bir kullanım koşulları ilke belgesini güncelleştirebilir miyim?**<br />
+Y: Şu anda, mevcut bir kullanım koşulları ilke belgesi güncelleştiremezsiniz. Kullanım koşullarını ilke belgesi olarak değiştirmek için yeni bir kullanım koşulları ilke örneği oluşturmanız gerekir.
 
-**S: köprüler PDF belgesi kullanım koşullarınızda yer alıyorsa, son kullanıcılar bunlara tıklamaları gerekir mi?**<br />
-Y: Evet, son kullanıcılar ek sayfalara köprüler seçebiliyor, ancak belge içindeki bölümlerin bağlantıları desteklenmez. Ayrıca, Azure AD Uygulamaps/MyAccount portalından erişildiğinde PDF kullanım terimleri içindeki köprüler çalışmaz.
+**S: köprüler kullanım koşulları ilke PDF belgesi içinde yer alıyorsa son kullanıcılar bu kullanıcılara tıklayabilir mi?**<br />
+Y: Evet, son kullanıcılar ek sayfalara köprüler seçebiliyor, ancak belge içindeki bölümlerin bağlantıları desteklenmez. Ayrıca, Azure AD Uygulamaps/MyAccount portalından erişildiğinde, kullanılan ilke PDF 'Lerinde köprüler çalışmaz.
 
-**S: Bir kullanım koşulları belgesi birden çok dili destekleyebilir mi?**<br />
-C: Evet. Şu anda bir yöneticinin tek bir kullanım koşulları için yapılandırabilirler 108 farklı dil vardır. Bir yönetici birden çok PDF belgesini karşıya yükleyebilir ve ilgili bir dille (108 kadar) bu belgeleri etiketleyebilir. Son kullanıcılar oturum açtığında, tarayıcı dili tercihini inceliyoruz ve eşleşen belgeyi görüntüyoruz. Eşleşme yoksa, karşıya yüklenen ilk belge olan varsayılan belgeyi görüntüleriz.
+**S: kullanım koşulları, birden çok dili destekleyebilir mi?**<br />
+C: Evet. Şu anda bir yöneticinin tek bir kullanım koşulları ilkesi için yapılandırabilirler 108 farklı dil vardır. Bir yönetici birden çok PDF belgesini karşıya yükleyebilir ve ilgili bir dille (108 kadar) bu belgeleri etiketleyebilir. Son kullanıcılar oturum açtığında, tarayıcı dili tercihini inceliyoruz ve eşleşen belgeyi görüntüyoruz. Eşleşme yoksa, karşıya yüklenen ilk belge olan varsayılan belgeyi görüntüleriz.
 
-**S: Kullanım koşulları ne zaman tetiklenir?**<br />
-C: Kullanım koşulları oturum açma deneyimi sırasında tetiklenir.
+**S: kullanım koşulları ilkesi ne zaman tetiklenir?**<br />
+Y: kullanım koşulları ilkesi, oturum açma deneyimi sırasında tetiklenir.
 
-**S: Kullanım koşullarını hangi uygulamalara hedefleyebilirim?**<br />
+**S: kullanım koşulları ilkesini hangi uygulamalara hedefleyebilirsiniz?**<br />
 Y: Modern kimlik doğrulaması kullanarak kurumsal uygulamalarda koşullu erişim ilkesi oluşturabilirsiniz. Daha fazla bilgi için bkz. [Kurumsal uygulamalar](./../manage-apps/view-applications-portal.md).
 
-**S: Belirli bir kullanıcı veya uygulamaya birden çok kullanım koşulları belgesi ekleyebilir miyim?**<br />
-A: Evet, bu grupları veya uygulamaları hedefleyen birden fazla koşullu erişim ilkesi oluşturarak. Bir Kullanıcı birden çok kullanım koşulları kapsamında kalırsa, tek seferde bir kullanım koşulları kabul eder.
+**S: belirli bir kullanıcı veya uygulamaya birden çok kullanım koşulları ilkesi ekleyebilir miyim?**<br />
+A: Evet, bu grupları veya uygulamaları hedefleyen birden fazla koşullu erişim ilkesi oluşturarak. Bir Kullanıcı birden çok kullanım koşulları ilkesinin kapsamında kalırsa, tek seferde bir kullanım koşulları ilkesi kabul eder.
 
-**S: Bir kullanıcı kullanım koşullarını reddederse ne olur?**<br />
+**S: Kullanıcı kullanım koşulları ilkesini reddederse ne olur?**<br />
 C: Kullanıcının uygulamaya erişimi engellenir. Kullanıcının erişim sağlamak için yeniden oturum açması ve koşulları kabul etmesi gerekir.
 
-**S: daha önce kabul edilen kullanım koşullarını kabul etmek mümkün mü?**<br />
-Y: [önceden kabul edilen kullanım koşullarını gözden](#how-users-can-review-their-terms-of-use)geçirebilirsiniz, ancak şu anda kabul etmenin bir yolu yoktur.
+**S: daha önce kabul edilen bir kullanım koşulları ilkesi kabul edilemez mi?**<br />
+Y: [önceden kabul edilen kullanım koşullarını gözden](#how-users-can-review-their-terms-of-use)geçirebilirsiniz, ancak şu anda kabul edilmeden önce bir yol yoktur.
 
 **S: Intune hüküm ve koşullarını de kullanıyorsam ne olur?**<br />
 Y: Azure AD kullanım koşulları 'nı ve [Intune hüküm ve koşullarını](/intune/terms-and-conditions-create)yapılandırdıysanız, kullanıcının her ikisini de kabul etmesi gerekecektir. Daha fazla bilgi için bkz. [Kuruluşunuz için doğru terimler çözümü seçme blog gönderisi](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409).

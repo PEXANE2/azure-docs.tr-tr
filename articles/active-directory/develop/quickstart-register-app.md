@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: cc0d908f479fe5bdf14abb2ace0e6c046fd6d7d5
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 45280ec41a9fd9423e4184b2e1ce593720ab6488
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011958"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232361"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Hızlı başlangıç: Microsoft Identity platformu ile uygulama kaydetme
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, Microsoft kimlik platformunun uygulamanız ve kullan�
 
 Microsoft Identity platformunun kimlik ve erişim yönetimi (ıAM) gerçekleştirmesini istediğiniz her uygulama için gereklidir. Bir Web veya mobil uygulama gibi bir istemci uygulaması ya da bir istemci uygulamasını yedekleyen bir Web API 'SI olup olmadığı, kaydetme, uygulamanız ile kimlik sağlayıcısı arasında bir güven ilişkisi oluşturur, Microsoft Identity platform.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Etkin aboneliği olan bir Azure hesabı- [ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Hızlı başlangıç tamamlama: kiracı ayarlama](quickstart-create-new-tenant.md)
@@ -43,7 +43,7 @@ Uygulama kaydını oluşturmak için aşağıdaki adımları izleyin:
 1. Uygulamanız için bir **ad** girin. Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
 1. Bazen *oturum açma hedef kitlesi* olarak adlandırılan, uygulamayı kimlerin kullanacağınızı belirtin.
 
-    | Desteklenen hesap türleri | Açıklama |
+    | Desteklenen hesap türleri | Description |
     |-------------------------|-------------|
     | **Yalnızca bu kuruluş dizinindeki hesaplar** | *Kiracınızda* yalnızca kullanıcılar (veya konuklar) tarafından kullanılacak bir uygulama oluşturuyorsanız bu seçeneği belirleyin.<br><br>Genellikle, *iş kolu* (LOB) uygulaması olarak adlandırılan bu, Microsoft Identity platformunda **tek kiracılı** bir uygulamadır. |
     | **Herhangi bir kuruluş dizinindeki hesaplar** | *Herhangi bir* Azure AD kiracısındaki kullanıcıların uygulamanızı kullanabilmemizi istiyorsanız bu seçeneği belirleyin. Örneğin, birden çok kuruluşa sağlamak istediğiniz bir hizmet olarak yazılım (SaaS) uygulaması oluşturuyorsanız, bu seçenek uygundur.<br><br>Bu, Microsoft Identity platformunda **çok kiracılı** bir uygulama olarak bilinir. |
@@ -97,7 +97,7 @@ Uygulama kaydına eklediğiniz yeniden yönlendirme URI 'Leri biçiminde bazı k
 
 ## <a name="add-credentials"></a>Kimlik bilgileri ekle
 
-Kimlik bilgileri, bir Web API 'sine erişen gizli istemci uygulamaları tarafından kullanılır. Gizli istemci örnekleri Web Apps, diğer Web API 'Leri veya hizmet ve Daemon türünde uygulamalardır. Kimlik bilgileri, uygulamanızın çalışma zamanında Kullanıcı etkileşimi gerektirmeksizin kendisi olarak kimlik doğrulaması yapmasına olanak sağlar.
+Kimlik bilgileri, bir Web API 'sine erişen [Gizli istemci uygulamaları](msal-client-applications.md) tarafından kullanılır. Gizli istemci örnekleri [Web Apps](scenario-web-app-call-api-overview.md), diğer [Web API 'leri](scenario-protected-web-api-overview.md)veya [hizmet ve Daemon türünde uygulamalardır](scenario-daemon-overview.md). Kimlik bilgileri, uygulamanızın çalışma zamanında Kullanıcı etkileşimi gerektirmeksizin kendisi olarak kimlik doğrulaması yapmasına olanak sağlar. 
 
 Gizli istemci uygulaması kaydınız için kimlik bilgileri olarak hem sertifikaları hem de istemci gizli dizilerini (bir dize) ekleyebilirsiniz.
 
@@ -105,7 +105,7 @@ Gizli istemci uygulaması kaydınız için kimlik bilgileri olarak hem sertifika
 
 ### <a name="add-a-certificate"></a>Sertifika ekle
 
-Bazen *ortak anahtar* olarak da bilinen sertifikalar, istemci gizliliğine göre daha yüksek bir güvence düzeyi sağladıkları için önerilen kimlik bilgisi türüdür.
+Bazen *ortak anahtar* olarak da bilinen sertifikalar, istemci gizliliğine göre daha yüksek bir güvence düzeyi sağladıkları için önerilen kimlik bilgisi türüdür. Uygulamanızda kimlik doğrulama yöntemi olarak sertifika kullanma hakkında daha fazla bilgi için bkz. [Microsoft Identity Platform uygulaması kimlik doğrulama sertifikası kimlik bilgileri](active-directory-certificate-credentials.md)
 
 1. Azure portal **uygulama kayıtları** uygulamanızdaki uygulamanızı seçin.
 1. **Sertifikalar & parolaları**  >  **karşıya yükleme sertifikası**' nı seçin.
@@ -114,7 +114,7 @@ Bazen *ortak anahtar* olarak da bilinen sertifikalar, istemci gizliliğine göre
 
 ### <a name="add-a-client-secret"></a>İstemci parolası ekleme
 
-*Uygulama parolası* olarak da bilinen istemci parolası, uygulamanızın kimliğini kimlik için bir sertifika yerine kullanabileceği bir dize değeridir. Bu iki kimlik bilgisi türünün kullanılması kolaylaşır ve genellikle geliştirme sırasında kullanılır, ancak bir sertifikadan daha az güvenli olarak değerlendirilir. Üretimde çalışan uygulamalarınızda sertifikalar kullanmanız gerekir.
+*Uygulama parolası* olarak da bilinen istemci parolası, uygulamanızın kimliğini kimlik için bir sertifika yerine kullanabileceği bir dize değeridir. Bu iki kimlik bilgisi türünün kullanılması kolaylaşır ve genellikle geliştirme sırasında kullanılır, ancak bir sertifikadan daha az güvenli olarak değerlendirilir. Üretimde çalışan uygulamalarınızda sertifikalar kullanmanız gerekir. Uygulama güvenliği önerileri hakkında daha fazla bilgi için lütfen bkz. [Microsoft Identity platform en iyi uygulamaları ve önerileri](identity-platform-integration-checklist.md#security)
 
 1. Azure portal **uygulama kayıtları** uygulamanızdaki uygulamanızı seçin.
 1. **Sertifikalar & parolaları** seçin  >   **yeni istemci gizli anahtarı**.
@@ -122,6 +122,8 @@ Bazen *ortak anahtar* olarak da bilinen sertifikalar, istemci gizliliğine göre
 1. Bir süre seçin.
 1. **Ekle**’yi seçin.
 1. **Gizli anahtarı** istemci uygulama kodunuzda kullanım için kaydedin-bu sayfadan ayrıldıktan sonra *hiç bir daha gösterilmez* .
+
+**Note:** Gizli dizinin değeri ile birlikte oluşturulan KIMLIK, uygulama KIMLIĞINDEN farklı olan gizli dizi KIMLIĞIDIR.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

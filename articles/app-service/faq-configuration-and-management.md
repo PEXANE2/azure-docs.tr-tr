@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: fb193637525722bf227241a614cd977fbf70c9ac
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: df4bd0ae0884feae8bd21e33f4d27b6ceb207337
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074191"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234010"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure 'da Web Apps için yapılandırma ve yönetim SSS
 
@@ -60,10 +60,10 @@ Daha fazla bilgi için bkz. [App Service sınırlamaları](../azure-resource-man
 Web uygulamanız için sunucu saat dilimini ayarlamak için:
 
 1. Azure portal, App Service aboneliğinizdeki **uygulama ayarları** menüsüne gidin.
-2. **Uygulama ayarları** ' nın altında şu ayarı ekleyin:
+2. **Uygulama ayarları**' nın altında şu ayarı ekleyin:
     * Anahtar = WEBSITE_TIME_ZONE
     * Değer = *istediğiniz saat dilimi*
-3. **Kaydet** ’i seçin.
+3. **Kaydet**’i seçin.
 
 Windows üzerinde çalışan uygulama hizmetleri için bkz `tzutil /L` . Windows komutundan çıkış. Her girdinin ikinci satırındaki değerini kullanın. Örneğin: "Tonga standart saati". Bu değerlerden bazıları Ayrıca [varsayılan saat dilimlerindeki](/windows-hardware/manufacture/desktop/default-time-zones) **saat dilimi** sütununda listelenir.
 
@@ -71,7 +71,7 @@ Linux üzerinde çalışan uygulama hizmetleri için, [ıANA TZ veritabanından]
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>Sürekli Web Işleriniz neden bazen başarısız oluyor?
 
-Varsayılan olarak, Web Apps, belirlenen süre boyunca boşta kalırsa kaldırılır. Bu, sistemin kaynakları tasarruf etmenizi sağlar. Temel ve standart planlarda, Web uygulamasının her zaman yüklenmesini sağlamak için **her zaman açık** ayarını açabilirsiniz. Web uygulamanız sürekli Web Işleri çalıştırıyorsa, **her zaman açık** ' i açmanız gerekir, aksi takdirde Web işleri güvenilir bir şekilde çalışmayabilir. Daha fazla bilgi için bkz. [sürekli çalışan bir WebJob oluşturma](webjobs-create.md#CreateContinuous).
+Varsayılan olarak, Web Apps, belirlenen süre boyunca boşta kalırsa kaldırılır. Bu, sistemin kaynakları tasarruf etmenizi sağlar. Temel ve standart planlarda, Web uygulamasının her zaman yüklenmesini sağlamak için **her zaman açık** ayarını açabilirsiniz. Web uygulamanız sürekli Web Işleri çalıştırıyorsa, **her zaman açık**' i açmanız gerekir, aksi takdirde Web işleri güvenilir bir şekilde çalışmayabilir. Daha fazla bilgi için bkz. [sürekli çalışan bir WebJob oluşturma](webjobs-create.md#CreateContinuous).
 
 ## <a name="how-do-i-get-the-outbound-ip-address-for-my-web-app"></a>Web uygulamamın giden IP adresini almak Nasıl yaparım? mı?
 
@@ -131,7 +131,7 @@ WebJob günlüklerini gözden geçirmek için:
 2. WebJob 'u seçin.
 3. **Çıkışı geç** düğmesini seçin.
 4. Çıkış dosyasını indirmek için **indirme** bağlantısını seçin.
-5. Bireysel çalıştırmalar için **tek tek Invoke** ' ı seçin.
+5. Bireysel çalıştırmalar için **tek tek Invoke**' ı seçin.
 6. **Çıkışı geç** düğmesini seçin.
 7. İndirme bağlantısını seçin.
 
@@ -185,8 +185,8 @@ Bir F12 izlemeyi yakalamak için iki seçeneğiniz vardır:
 ### <a name="f12-console-output"></a>F12 konsol çıkışı
 
 1. **Konsol** sekmesini seçin.
-2. Sıfırdan fazla öğe içeren her sekme için sekmeyi ( **hata** , **Uyarı** veya **bilgi** ) seçin. Sekme seçili değilse, imleci konumundan uzağa taşıdığınızda sekme simgesi gri veya siyah olur.
-3. Bölmenin ileti alanına sağ tıklayın ve ardından **Tümünü Kopyala** ' yı seçin.
+2. Sıfırdan fazla öğe içeren her sekme için sekmeyi (**hata**, **Uyarı** veya **bilgi**) seçin. Sekme seçili değilse, imleci konumundan uzağa taşıdığınızda sekme simgesi gri veya siyah olur.
+3. Bölmenin ileti alanına sağ tıklayın ve ardından **Tümünü Kopyala**' yı seçin.
 4. Kopyalanmış metni bir dosyaya yapıştırın ve dosyayı kaydedin.
 
 Bir HAR dosyasını görüntülemek için, [har görüntüleyicisini](http://www.softwareishard.com/har/viewer/)kullanabilirsiniz.
@@ -284,7 +284,7 @@ App Service kimlik doğrulaması ve yetkilendirmeyle ilgili ayrıntılı belgele
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>Nasıl yaparım? varsayılan *. azurewebsites.net etki alanını Azure Web uygulamamın özel etki alanına yeniden yönlendir mi?
 
-Azure 'da Web Apps kullanarak yeni bir Web sitesi oluşturduğunuzda, sitenize varsayılan bir *SiteName* . azurewebsites.net etki alanı atanır. Sitenize özel bir ana bilgisayar adı ekler ve kullanıcıların varsayılan *. azurewebsites.net etki alanına erişmesini istemiyorsanız varsayılan URL 'YI yeniden yönlendirebilirsiniz. Web sitenizin varsayılan etki alanındaki tüm trafiği özel etki alanına yeniden yönlendirmeyi öğrenmek için bkz. [varsayılan etki alanını Azure Web Apps 'te özel etki alanına yönlendirme](https://zainrizvi.io/blog/block-default-azure-websites-domain/).
+Azure 'da Web Apps kullanarak yeni bir Web sitesi oluşturduğunuzda, sitenize varsayılan bir *SiteName*. azurewebsites.net etki alanı atanır. Sitenize özel bir ana bilgisayar adı ekler ve kullanıcıların varsayılan *. azurewebsites.net etki alanına erişmesini istemiyorsanız varsayılan URL 'YI yeniden yönlendirebilirsiniz. Web sitenizin varsayılan etki alanındaki tüm trafiği özel etki alanına yeniden yönlendirmeyi öğrenmek için bkz. [varsayılan etki alanını Azure Web Apps 'te özel etki alanına yönlendirme](https://zainrizvi.io/blog/block-default-azure-websites-domain/).
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>App Service hangi .NET sürümü sürümünün yüklendiğini Nasıl yaparım?.
 
@@ -317,3 +317,8 @@ Sıkıştırmak istediğiniz belirli dinamik ve statik MIME türlerini de belirt
 ## <a name="how-do-i-migrate-from-an-on-premises-environment-to-app-service"></a>Şirket içi ortamdan App Service geçiş Nasıl yaparım? istiyor musunuz?
 
 Siteleri Windows ve Linux Web sunucularından App Service geçirmek için, Azure App Service Geçiş Yardımcısı ' nı kullanabilirsiniz. Geçiş Aracı gerektiğinde Azure 'da Web uygulamaları ve veritabanları oluşturur ve sonra içeriği yayımlar. Daha fazla bilgi için bkz. [Azure App Service Geçiş Yardımcısı](https://appmigration.microsoft.com/).
+
+## <a name="why-is-my-certificate-issued-for-11-months-and-not-for-a-full-year"></a>Sertifikam neden tam bir yıllık değil de 11 aylık verildi?
+
+1/9/2020'den sonra verilen tüm sertifikalar için şimdi en uzun süre 397 gündür. 1/9/2020'den önce verilen sertifikaların yenilenene, yeniden anahtar istenene kadar en çok 825 gün geçerliliği vardır. 1/9/2020'den sonra yenilenmiş tüm sertifikalar bu değişiklikten etkilenir ve kullanıcılar yenilenen sertifikalarının daha kısa süre geçerli kaldığını fark edebilir.
+GoDaddy hem yeni gereksinimleri karşılayan hem de mevcut müşteri sertifikalarına uyan bir abonelik hizmeti gerçekleştirdi. Yeni verilen sertifikaların son kullanma tarihinden otuz gün önce hizmet otomatik olarak ilk son kullanma tarihinin süresini uzatan ikinci bir sertifika veriyor. App Service bu değişikliği işlemek ve müşterilerimizin sertifikalarının süresini tam olarak kullanabildiğinden emin olmak için GoDaddy ile birlikte çalışıyor.

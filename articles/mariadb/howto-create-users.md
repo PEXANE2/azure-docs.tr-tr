@@ -5,41 +5,43 @@ author: savjani
 ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
-ms.date: 10/1/2020
-ms.openlocfilehash: 882c8365bda87e97bfbc3bee9bdd320b312b4114
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 01/15/2021
+ms.openlocfilehash: 62aadb366fd216cb6dcefff6cdde24dc21b8483a
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542720"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98231919"
 ---
-# <a name="create-users-in-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanı’nda kullanıcı oluşturma 
+# <a name="create-users-in-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanı’nda kullanıcı oluşturma
+
 Bu makalede, MariaDB için Azure veritabanı 'nda nasıl Kullanıcı oluşturabileceğiniz açıklanır.
 
 > [!NOTE]
 > Sapma ücretsiz iletişim
 >
-> Microsoft, farklı ve üçlü ortamları destekler. Bu makale, _İkincil_ sözcüğe başvurular içerir. Kullanım açısından [ücretsiz iletişim Için Microsoft Stil Kılavuzu](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) bunu bir exclusionword olarak tanır. Bu makalede, şu anda yazılımda görüntülenen sözcük olduğundan, bu makalede tutarlılık için kullanılır. Yazılım, sözcüğü kaldıracak şekilde güncelleniyorsa, bu makale hizalamayla olacak şekilde güncelleştirilir.
+> Microsoft, farklı ve üçlü ortamları destekler. Bu makale _ana_ ve _bağımlı_ sözcüklere başvurular içerir. Kullanım açısından [ücretsiz iletişim Için Microsoft Stil Kılavuzu](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) , bu sözcükleri exclusionary kelimeleri olarak tanır. Bu makalede, şu anda yazılımda görüntülenen sözcükler olduklarından, bu makale tutarlılık için kullanılır. Yazılım, kelimeleri kaldırmak üzere güncelleniyorsa, bu makale hizalamayla olacak şekilde güncelleştirilir.
 >
 
 MariaDB için Azure veritabanınızı ilk oluşturduğunuzda, Sunucu Yöneticisi oturum açma Kullanıcı adı ve parolası sağladınız. Daha fazla bilgi için [hızlı](quickstart-create-mariadb-server-database-using-azure-portal.md)başlangıcı izleyebilirsiniz. Sunucu Yöneticisi oturum açma kullanıcı adınızı Azure portal bulabilirsiniz.
 
 Sunucu Yöneticisi kullanıcısı, sunucunuzda listelenen belirli ayrıcalıkları alır: seçme, ekleme, GÜNCELLEŞTIRME, SILME, oluşturma, BıRAKMA, yeniden yükleme, Işleme, BAŞVURULARı, DIZIN, DEĞIŞTIRME, VERITABANLARıNı gösterme, GEÇICI tablolar oluşturma, TABLOLARı KILITLEME, yürütme, çoğaltma BAĞıMLı, çoğaltma ISTEMCISI, görünüm oluşturma, görünümü gösterme, rutın oluşturma, yordamı DEĞIŞTIRME, Kullanıcı, olay, TETIKLEYICI oluşturma
 
-MariaDB sunucusu için Azure veritabanı oluşturulduktan sonra, ek kullanıcılar oluşturmak ve bunlara yönetici erişimi vermek için ilk sunucu yöneticisi Kullanıcı hesabını kullanabilirsiniz. Ayrıca, sunucu yöneticisi hesabı ayrı veritabanı şemalarına erişimi olan daha az ayrıcalıklı kullanıcı oluşturmak için kullanılabilir.
+MariaDB sunucusu için Azure veritabanı oluşturulduktan sonra, daha fazla kullanıcı oluşturmak ve bunlara yönetici erişimi vermek için ilk sunucu yöneticisi Kullanıcı hesabını kullanabilirsiniz. Ayrıca, sunucu yöneticisi hesabı ayrı veritabanı şemalarına erişimi olan daha az ayrıcalıklı kullanıcı oluşturmak için kullanılabilir.
 
 > [!NOTE]
 > Süper ayrıcalık ve DBA rolü desteklenmez. Hizmette Nelerin desteklenmediğini anlamak için sınırlamalar makalesindeki [ayrıcalıkları](concepts-limits.md#privileges--data-manipulation-support) gözden geçirin.<br><br>
 > "Validate_password" ve "caching_sha2_password" gibi parola eklentileri hizmet tarafından desteklenmez.
 
-## <a name="create-additional-admin-users"></a>Ek yönetici kullanıcılar oluşturma
-1. Bağlantı bilgilerini ve yönetici kullanıcı adını alın.
-   Veritabanı sunucusuna bağlanmak için tam sunucu adı ve yönetici oturum açma kimlik bilgileri gerekir. Sunucu adını ve oturum açma bilgilerini sunucuya **genel bakış** sayfasından veya Azure Portal **Özellikler** sayfasından kolayca bulabilirsiniz. 
+## <a name="create-more-admin-users"></a>Daha fazla yönetici kullanıcı oluşturma
 
-2. Veritabanı sunucunuza bağlanmak için yönetici hesabı ve parolasını kullanın. MySQL çalışma ekranı, mysql.exe, HeidiSQL veya diğerleri gibi tercih ettiğiniz istemci aracını kullanın. 
+1. Bağlantı bilgilerini ve yönetici kullanıcı adını alın.
+   Veritabanı sunucusuna bağlanmak için tam sunucu adı ve yönetici oturum açma kimlik bilgileri gerekir. Sunucu adını ve oturum açma bilgilerini sunucuya **genel bakış** sayfasından veya Azure Portal **Özellikler** sayfasından kolayca bulabilirsiniz.
+
+2. Veritabanı sunucunuza bağlanmak için yönetici hesabı ve parolasını kullanın. MySQL çalışma ekranı, mysql.exe, HeidiSQL veya diğerleri gibi tercih ettiğiniz istemci aracını kullanın.
    Nasıl bağlanacağınızdan emin değilseniz, bkz. [bağlanmak ve veri sorgulamak Için MySQL çalışma ekranı kullanma](./connect-workbench.md)
 
-3. Aşağıdaki SQL kodunu düzenleyin ve çalıştırın. Yeni Kullanıcı adınızı yer tutucu değeri için değiştirin `new_master_user` . Bu sözdizimi, tüm veritabanı şemalarında ( *.* ) listelenen ayrıcalıkları Kullanıcı adına (bu örnekte new_master_user) verir. 
+3. Aşağıdaki SQL kodunu düzenleyin ve çalıştırın. Yeni Kullanıcı adınızı yer tutucu değeri için değiştirin `new_master_user` . Bu sözdizimi, tüm veritabanı şemalarında (*.*) listelenen ayrıcalıkları Kullanıcı adına (bu örnekte new_master_user) verir. 
 
    ```sql
    CREATE USER 'new_master_user'@'%' IDENTIFIED BY 'StrongPassword!';
@@ -49,7 +51,8 @@ MariaDB sunucusu için Azure veritabanı oluşturulduktan sonra, ek kullanıcıl
    FLUSH PRIVILEGES;
    ```
 
-4. İzni doğrula 
+4. İzin verdiğini doğrulayın.
+
    ```sql
    USE sys;
    
@@ -79,17 +82,19 @@ MariaDB sunucusu için Azure veritabanı oluşturulduktan sonra, ek kullanıcıl
    ```
 
 4. Veritabanının içindeki izni doğrulayın.
+
    ```sql
    USE testdb;
    
    SHOW GRANTS FOR 'db_user'@'%';
    ```
 
-5. Yeni Kullanıcı adı ve parolayı kullanarak, belirlenen veritabanını belirterek sunucuda oturum açın. Bu örnekte MySQL komut satırı gösterilmektedir. Bu komutla Kullanıcı adı için parola istenir. Kendi sunucu adı, veritabanı adı ve Kullanıcı adınızı değiştirin.
+5. Yeni Kullanıcı adı ve parolasını kullanarak belirlenmiş veritabanını belirterek sunucuda oturum açın. Bu örnekte MySQL komut satırı gösterilmektedir. Bu komutla Kullanıcı adı için parola girmeniz istenir. Kendi sunucu adı, veritabanı adı ve Kullanıcı adınızı değiştirin.
 
    ```bash
    mysql --host mydemoserver.mariadb.database.azure.com --database testdb --user db_user@mydemoserver -p
    ```
+
    Kullanıcı hesabı yönetimi hakkında daha fazla bilgi için bkz. [Kullanıcı hesabı yönetimi](https://mariadb.com/kb/en/library/user-account-management/)Için MariaDB belgeleri, [sözdizimi verme](https://mariadb.com/kb/en/library/grant/)ve [ayrıcalıklar](https://mariadb.com/kb/en/library/grant/#privilege-levels).
 
 ## <a name="azure_superuser"></a>azure_superuser
@@ -97,6 +102,7 @@ MariaDB sunucusu için Azure veritabanı oluşturulduktan sonra, ek kullanıcıl
 MySQL için Azure veritabanı sunucuları, "azure_superuser" adlı bir kullanıcıyla oluşturulur. Bu, Microsoft tarafından, izleme, yedeklemeler ve diğer normal bakım işlemlerini gerçekleştirmek üzere sunucuyu yönetmek için oluşturulan bir sistem hesabıdır. Çağrı tabanlı mühendisler Ayrıca, sertifika kimlik doğrulamasıyla bir olay sırasında sunucuya erişmek için bu hesabı kullanabilir ve tam zamanında (JıT) süreçler kullanarak erişim istemesi gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Bağlantı kurmasını sağlamak için yeni kullanıcıların makinelerinin IP adresleri için güvenlik duvarını açın: [Azure Portal kullanarak MariaDB Için Azure veritabanı güvenlik duvarı kuralları oluşturma ve yönetme](howto-manage-firewall-portal.md)  
 
 <!--or [Azure CLI](howto-manage-firewall-using-cli.md).-->

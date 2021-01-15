@@ -12,6 +12,9 @@
       href: manage-ddos-protection-powershell.md
     - name: DDoS koruma planı oluşturma - CLI
       href: manage-ddos-protection-cli.md
+    - name: DDoS koruma planı oluşturma - ARM şablonu
+      displayName: Resource Manager
+      href: manage-ddos-protection-template.md
 - name: Öğreticiler
   items:
     - name: DDoS konuma telemetrisini görüntüleme ve yapılandırma
@@ -46,7 +49,7 @@
       href: ddos-protection-partner-onboarding.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/network/ddos-protection?view=azure-cli-latest
     - name: Azure PowerShell
       href: /powershell/module/Az.Network/New-AzDdosProtectionPlan?view=azps-2.8.0

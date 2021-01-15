@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: rambala
-ms.openlocfilehash: e0e5806ec59cd2d75111db213d8511488d043eec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 835be5b867826d75732c9482743ad6a4ca2900e7
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80982863"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98231851"
 ---
 # <a name="working-remotely-using-azure-networking-services"></a>Azure ağ hizmetleri 'ni kullanarak uzaktan çalışma
 
@@ -86,15 +86,15 @@ Aşağıdaki makalelerde, farklı Azure ağ özelliklerinin, kullanıcıları uz
 | [Ev gereksinimlerden işe yaramaz mi? Burada Azure sanal WAN ' ın yardım edebilir](../virtual-wan/work-remotely-support.md) | Kuruluşunuzun uzak bağlantı ihtiyaçlarını karşılamak için Azure sanal WAN 'ı kullanın.|
 | [Application Gateway yüksek trafik desteği](../application-gateway/high-traffic-support.md) | Web uygulamalarınıza yönelik trafiği yönetmenin ölçeklenebilir ve güvenli bir yolu için Web uygulaması güvenlik duvarı (WAF) ile Application Gateway kullanın. |
 | [Uzaktan çalışma için ağ sanal gereci (NVA) konuları](../vpn-gateway/nva-work-remotely-support.md)|Uzaktan erişim çözümleri sağlamak için Azure 'da NVA 'lar kullanma hakkındaki kılavuzu inceleyin. |
-| [SSTP 'den OpenVPN protokolüne veya Ikev2 'e geçiş](https://go.microsoft.com/fwlink/?linkid=2124112) | OpenVPN protokolüne veya Ikev2 'e geçiş yaparak SSTP 'nin 128 eşzamanlı bağlantı sınırı aşılır.|
+| [SSTP 'den OpenVPN protokolüne veya Ikev2 'e geçiş](../vpn-gateway/ikev2-openvpn-from-sstp.md) | OpenVPN protokolüne veya Ikev2 'e geçiş yaparak SSTP 'nin 128 eşzamanlı bağlantı sınırı aşılır.|
 | [Azure savunma kullanarak uzaktan çalışma](../bastion/work-remotely-support.md) | Genel bir IP adresi kullanmadan doğrudan Azure portal Azure sanal ağı içindeki sanal makinelere güvenli ve sorunsuz RDP/SSH bağlantısı sağlayın. |
 | [Uzak kullanıcıları desteklemek üzere karma bağlantı oluşturmak için Azure ExpressRoute kullanma](../expressroute/work-remotely-support.md) | Kuruluşunuzdaki kullanıcıların uzaktan çalışmasını sağlamak için karma bağlantı için ExpressRoute kullanın.|
 | [Azure Güvenlik Duvarı Uzaktan çalışma desteği](../firewall/remote-work-support.md)|Azure Güvenlik Duvarı 'nı kullanarak Azure sanal ağ kaynaklarınızı koruyun. |
 
 <!--Link References-->
-[VNet-peer]: https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview
-[S2S]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal
-[ExR]: https://docs.microsoft.com/azure/expressroute/expressroute-introduction
-[ExR-eco]: https://docs.microsoft.com/azure/expressroute/expressroute-locations
-[ExR-D]: https://docs.microsoft.com/azure/expressroute/expressroute-erdirect-about
-[Az-OCI]: https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-azure-oci-networking
+[VNet-peer]: ../virtual-network/virtual-network-peering-overview.md
+[S2S]: ../vpn-gateway/tutorial-site-to-site-portal.md
+[ExR]: ../expressroute/expressroute-introduction.md
+[ExR-eco]: ../expressroute/expressroute-locations.md
+[ExR-D]: ../expressroute/expressroute-erdirect-about.md
+[Az-OCI]: ../virtual-machines/workloads/oracle/configure-azure-oci-networking.md

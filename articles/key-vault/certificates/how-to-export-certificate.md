@@ -10,16 +10,16 @@ ms.topic: how-to
 ms.custom: mvc
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: 0925b51ed960b8007d2df86115ea7e5cf627fe7e
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: b3c917c9652954783fcddd92b9a7370c358ab3cc
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97826132"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233653"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>Sertifikaları Azure Key Vault dışarı aktarma
 
-Azure Key Vault sertifikaların nasıl dışarı aktarılacağını öğrenin. Sertifikaları Azure CLı, Azure PowerShell veya Azure portal kullanarak dışarı aktarabilirsiniz. Azure App Service sertifikalarını dışarı aktarmak için Azure portal de kullanabilirsiniz.
+Azure Key Vault sertifikaların nasıl dışarı aktarılacağını öğrenin. Sertifikaları Azure CLı, Azure PowerShell veya Azure portal kullanarak dışarı aktarabilirsiniz. 
 
 ## <a name="about-azure-key-vault-certificates"></a>Azure Key Vault sertifikaları hakkında
 
@@ -114,7 +114,7 @@ Sertifikayı indirmek için, **cer biçiminde indir** veya **PFX/ped biçiminde 
 
 **Azure App Service sertifikalarını dışarı aktarma**
 
-Azure App Service sertifikalar, SSL sertifikaları satın almanın kolay bir yoludur. Bunları portalın içinden Azure uygulamalarına atayabilirsiniz. Ayrıca bu sertifikaları portaldan başka bir yerde kullanılacak PFX dosyaları olarak dışarı aktarabilirsiniz. İçeri aktardıktan sonra App Service sertifikaları **gizli** dizileri altında bulunur.
+Azure App Service sertifikalar, SSL sertifikaları satın almanın kolay bir yoludur. Bunları portalın içinden Azure uygulamalarına atayabilirsiniz. İçeri aktardıktan sonra App Service sertifikaları **gizli** dizileri altında bulunur.
 
 Daha fazla bilgi için [Azure App Service sertifikaları dışarı aktarma](https://social.technet.microsoft.com/wiki/contents/articles/37431.exporting-azure-app-service-certificates.aspx)adımlarına bakın.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 06/26/2018
 ms.author: allensu
-ms.openlocfilehash: 2a083520a0da324d7033d4597a6b734b43c025b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7103b11b7ee268acbddd8b402e1be1d44074f54d
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74049267"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234078"
 ---
 # <a name="route-traffic-for-high-availability-of-applications---azure-cli"></a>Yüksek uygulamaların kullanılabilirliği için trafiği yönlendirme-Azure CLı
 
@@ -47,14 +47,14 @@ Bu betik bir kaynak grubu, web uygulaması, traffic manager profili ve tüm ilgi
 
 | Komut | Notlar |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
-| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan) | App Service planı oluşturur. Bu, Azure Web uygulamanız için bir sunucu grubu gibidir. |
-| [az webapp create](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | App Service planı içinde bir Azure Web uygulaması oluşturur. |
-| [az Network Traffic-Manager profili oluşturma](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile) | Bir Azure Traffic Manager profili oluşturur. |
-| [az Network Traffic-Manager uç noktası oluştur](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint) | Azure Traffic Manager profiline bir uç nokta ekler. |
+| [az group create](/cli/azure/group) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
+| [az appservice plan create](/cli/azure/appservice/plan) | App Service planı oluşturur. Bu, Azure Web uygulamanız için bir sunucu grubu gibidir. |
+| [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | App Service planı içinde bir Azure Web uygulaması oluşturur. |
+| [az Network Traffic-Manager profili oluşturma](/cli/azure/network/traffic-manager/profile) | Bir Azure Traffic Manager profili oluşturur. |
+| [az Network Traffic-Manager uç noktası oluştur](/cli/azure/network/traffic-manager/endpoint) | Azure Traffic Manager profiline bir uç nokta ekler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](https://docs.microsoft.com/cli/azure).
+Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure).
 
 Ek App Service CLı betiği örnekleri, [Azure ağ belgelerinde](../cli-samples.md)bulunabilir.

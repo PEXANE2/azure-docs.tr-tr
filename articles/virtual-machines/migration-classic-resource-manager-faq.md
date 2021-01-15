@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 24e52f517f46de06fef8aa52e889185826c20d44
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: abf4e4621a7e42829032923a67d21c5322f432ec
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498404"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232735"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>Klasik modelden Azure Resource Manager’a geçişle ilgili sık sorulan sorular
 
@@ -82,11 +82,11 @@ Geçiş sırasında kaynaklar klasikten Resource Manager’a dönüşür. Bu ned
 
 Bir VM 'yi klasik moddan Kaynak Yöneticisi moduna taşıdığınızda, geçişten önce alınan yedeklemeler, yeni geçirilen Kaynak Yöneticisi sanal makinesine geçirilmez. Ancak, klasik sanal makinelerinize ait yedeklemelerinizi korumak istiyorsanız geçişten önce bu adımları izleyin. 
 
-1. Kurtarma Hizmetleri kasasında **korunan öğeler** sekmesine gidin ve VM 'yi seçin. 
-2. Korumayı Durdur’a tıklayın. *İlişkili yedekleme verilerini sil* seçeneğini **işaretlenmemiş** olarak bırakın.
+1. Kurtarma Hizmetleri kasasında **yedekleme öğeleri** dikey penceresine gidin ve VM 'yi seçin. 
+2. Yedeklemeyi Durdur ' a tıklayın. Açılan menüden "yedekleme verilerini sakla" seçeneğini belirleyin.
 
 > [!NOTE]
-> Veri tutana kadar yedek örnek maliyeti ücretlendirilecektir. Yedekleme kopyaları, bekletme aralığına göre ayıklanacaktır. Ancak, yedekleme verilerini açıkça silinceye kadar son yedekleme kopyası her zaman tutulur. Bekletme aralığı bittikten sonra, sanal makinenin bekletme aralığınızı denetlemeniz ve kasadaki Korunan öğede "yedekleme verilerini silme" tetiklenmesi önerilir. 
+> Bu seçenek, gelecekteki tüm yedekleme işlerinin VM 'nizi korumasını durduracak. Ancak, Azure Backup hizmet yedeklenen kurtarma noktalarını korur.  Kurtarma noktalarını kasada tutmak için ödeme yapmanız gerekir (Ayrıntılar için [Azure Backup fiyatlandırmasına](https://azure.microsoft.com/pricing/details/backup/) bakın). Gerekirse VM 'yi geri yükleyebileceksiniz. VM korumasını sürdürmeye karar verirseniz, *yedeklemeyi yeniden başlatma* seçeneğini kullanabilirsiniz.
 >
 >
 

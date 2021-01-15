@@ -3,12 +3,12 @@ title: Azure Application Insights Kullanım Analizi | Microsoft docs
 description: Kullanıcılarınıza ve uygulamalarınızla neler olduğunu anlayın.
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 4f4954451bfa195b07c580ffa451b8cb333eb32c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 633d35ec16f5eb9de664421c38cd4c824dc240cf
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532112"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233857"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights ile kullanım analizi
 
@@ -65,7 +65,7 @@ Veri kümesindeki ilginç desenler hakkında bilgi edinin.
 
 ## <a name="retention---how-many-users-come-back"></a>Bekletme-kaç Kullanıcı geri geliyor?
 
-Saklama, kullanıcılarınızın, belirli bir zaman aralığı boyunca bazı iş eylemlerini gerçekleştiren kullanıcıların, uygulamalarını kullanmak için ne sıklıkta geri dönebileceğini anlamanıza yardımcı olur. 
+Saklama, kullanıcılarınızın, belirli bir zaman aralığı boyunca bazı iş eylemlerini gerçekleştiren kullanıcıların, uygulamalarını kullanmak için ne sıklıkta geri dönebileceğini anlamanıza yardımcı olur. 
 
 - Kullanıcıların diğerlerinden daha fazla geri dönmesine neden olan belirli özellikleri anlayın 
 - Gerçek kullanıcı verilerine göre hipotezleri formu 
@@ -79,7 +79,9 @@ En üstteki bekletme denetimleri, saklama süresini hesaplamak için belirli ola
 
 ## <a name="custom-business-events"></a>Özel iş olayları
 
-Uygulamanızdaki kullanıcıların neler yaptığını net bir şekilde anlamak için, özel olayları günlüğe kaydetmek üzere kod satırları eklemek yararlıdır. Bu olaylar, belirli düğmeleri tıklatmak gibi ayrıntılı Kullanıcı eylemlerinden herhangi bir şeyi izleyerek satın alma veya oyun kazanma gibi daha önemli iş olaylarına sahip olabilir. 
+Uygulamanızdaki kullanıcıların neler yaptığını net bir şekilde anlamak için, özel olayları günlüğe kaydetmek üzere kod satırları eklemek yararlıdır. Bu olaylar, belirli düğmeleri tıklatmak gibi ayrıntılı Kullanıcı eylemlerinden herhangi bir şeyi izleyerek satın alma veya oyun kazanma gibi daha önemli iş olaylarına sahip olabilir.
+
+Özel olayları toplamak için [analiz otomatik toplama eklentisi ' ni](javascript-click-analytics-plugin.md) de kullanabilirsiniz.
 
 Bazı durumlarda, sayfa görünümleri faydalı olayları temsil edebilir, ancak genel olarak doğru değildir. Bir Kullanıcı ürünü satın almadan bir ürün sayfasını açabilir. 
 

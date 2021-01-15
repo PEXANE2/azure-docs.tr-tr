@@ -3,12 +3,12 @@ title: Batch havuzu yapılandırmasını Cloud Services sanal makinelere geçir
 description: Havuz yapılandırmanızı en son ve önerilen yapılandırmaya güncelleştirme hakkında bilgi edinin
 ms.topic: how-to
 ms.date: 1/6/2021
-ms.openlocfilehash: b6f4184f7c4f133f74cb3157638b1621dad25fda
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: d987a185efb6593fd541dd14fa74b6c4d3ca41be
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97969036"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234316"
 ---
 # <a name="migrate-batch-pool-configuration-from-cloud-services-to-virtual-machines"></a>Batch havuzu yapılandırmasını Cloud Services sanal makinelere geçir
 
@@ -22,7 +22,7 @@ Bu makalede ' virtualMachineConfiguration ' öğesine nasıl geçiş yapılacağ
 
 Mevcut etkin havuzlar ' cloudServiceConfiguration ' iken ' virtualMachineConfiguration ' olarak güncelleştirilemez, yeni havuzlar oluşturulmalıdır. ' VirtualMachineConfiguration ' kullanarak havuz oluşturma, tüm Batch API 'Leri, komut satırı araçları, Azure portal ve Batch Explorer kullanıcı arabirimi tarafından desteklenir.
 
-[.Net](tutorial-parallel-dotnet.md) ve [Python](tutorial-parallel-python.md) öğreticileri, ' virtualmachineconfiguration ' kullanarak havuz oluşturma örneklerini sağlar.
+**[.Net](tutorial-parallel-dotnet.md) ve [Python](tutorial-parallel-python.md) öğreticileri, ' virtualmachineconfiguration ' kullanarak havuz oluşturma örneklerini sağlar.**
 
 ## <a name="pool-configuration-differences"></a>Havuz yapılandırma farkları
 

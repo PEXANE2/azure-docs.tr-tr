@@ -3,18 +3,18 @@ title: Azure Maliyet Yönetimi verilerini anlama
 description: Bu makale Azure Maliyet Yönetimi verilerini daha iyi anlamanıza ve işlenme, toplanma, gösterilme ve kapatılma sıklığı hakkında bilgi edinmenize yardımcı olur.
 author: bandersmsft
 ms.author: banders
-ms.date: 10/26/2020
+ms.date: 01/06/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 97ae2ba26818bbc306da71af814d9b4f95858b6a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e6096c259ec1870a711a515bf02d5d00b4f75345
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032584"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964159"
 ---
 # <a name="understand-cost-management-data"></a>Maliyet Yönetimi verilerini anlama
 
@@ -101,7 +101,7 @@ Aşağıdaki tablolarda Maliyet Yönetimi'ne dahil olan ve olmayan veriler göst
 
 _<sup>**5**</sup> Azure hizmeti kullanımı, rezervasyona ve anlaşma fiyatlarına göre belirlenir._
 
-_<sup>**6**</sup> Market satın alma işlemleri şu an için MSDN ve Visual Studio teklifleri için geçerli değildir._
+_<sup>**6**</sup> Şu anda MSDN ve Visual Studio için Market satın almaları sağlanmamaktadır._
 
 _<sup>**7**</sup> Rezervasyon satın alma işlemleri şu an için yalnızca Kurumsal Anlaşma (EA) ve Microsoft Müşteri Sözleşmesi hesapları için kullanılabilir._
 
@@ -114,15 +114,15 @@ Azure Maliyet Yönetimi, ayrı hizmetler tarafından gönderilen kullanım kayı
 - Dağıtılan kaynakların bazıları etiket desteği sunmayabilir veya kullanım verilerine etiket eklemeyebilir.
 - Kaynak etiketleri yalnızca etiketin uygulanmış olduğu kullanım verilerine dahil edilir. Etiketler, verilere geçmişe dönük olarak uygulanmaz.
 - Kaynak etiketleri Maliyet Yönetimi'nde yalnızca veriler yenilendikten sonra kullanılabilir.
-- Kaynak etiketleri Maliyet Yönetimi'nde yalnızca kaynak etkin/çalışır durumda olduğunda ve kullanım kaydı oluşturduğunda kullanılabilir (örneğin, VM'nin serbest bırakılmış olduğu durumlarda kullanılamaz).
+- Kaynak etiketleri Maliyet Yönetimi'nde yalnızca kaynak etkin/çalışır durumda olduğunda ve kullanım kaydı oluşturduğunda kullanılabilir. Örneğin VM'nin serbest bırakılmış olduğu durumlarda kullanılır.
 - Etiketlerin yönetilmesi için her bir kaynakta katkıda bulunan erişimi gerekir.
 - Etiket ilkelerinin yönetilmesi için yönetim grubu, abonelik veya kaynak grubu düzeyinde sahip veya ilke katkıda bulunanı erişimi gerekir.
     
-Maliyet Yönetimi'nde belirli bir etiketi göremiyorsanız şu durumları değerlendirin:
+Maliyet Yönetimi'nde belirli bir etiketi göremiyorsanız şu soruları göz önünde bulundurun:
 
 - Etiket doğrudan kaynağa mı uygulandı?
 - Etiketin uygulanmasının üzerinden 24 saat geçti mi?
-- Kaynak türü etiketleri destekliyor mu? Aşağıdaki kaynak türleri 1 Aralık 2019 tarihinden itibaren kullanım verilerinde etiketleri desteklememektedir. Desteklenen türlerin tam listesi için bkz. [Azure kaynakları için etiket desteği](../../azure-resource-manager/management/tag-support.md).
+- Kaynak türü etiketleri destekliyor mu? Aşağıdaki kaynak türleri 1 Aralık 2019’dan itibaren kullanım verilerinde etiketleri desteklememektedir. Desteklenen türlerin tam listesi için bkz. [Azure kaynakları için etiket desteği](../../azure-resource-manager/management/tag-support.md).
     - Azure Active Directory B2C Dizinleri
     - Azure Bastion
     - Azure Güvenlik Duvarları
@@ -139,8 +139,7 @@ Aşağıda, etiketlerle çalışma konusunda birkaç ipucu verilmiştir:
 
 - Uzun vadeli planlar yapın ve maliyetleri kuruluş, uygulama ve ortam gibi kaynaklara göre ayırmanızı mümkün kılacak bir etiketleme stratejisi tanımlayın.
 - Azure İlkesi'ni kullanarak kaynak grubu etiketlerini kaynaklara kopyalayın ve etiketleme stratejinizi uygulayın.
-- Geçerli etiketlere göre maliyetlere ulaşmak için Query veya UsageDetails ile birlikte Tags API'yi kullanın.
-
+- Geçerli etiketlere göre maliyetlere ulaşmak için Query veya UsageDetails ile Tags API'sini kullanın.
 
 ## <a name="cost-and-usage-data-updates-and-retention"></a>Maliyet ile kullanım verilerinin güncelleştirilmesi ve saklama
 
@@ -151,17 +150,18 @@ Maliyet ve kullanım verileri genellikle 8 ila 24 saat arasında, Azure portalı
 - Geçerli faturalama dönemine ait tahmini ücretler, kullanım arttıkça değişebilir.
 - Güncelleştirmeler birikmelidir ve her biri, bir önceki güncelleştirmede bulunan satır öğelerinin ve bilgilerinin tamamını içerir.
 - Azure, faturalama dönemi sona erdikten 72 saat (üç takvim günü) sonra geçerli faturalama dönemini sonlandırır veya _kapatır_.
+- Açık ay (faturalanmamış) döneminde maliyet yönetimi verileri yalnızca tahmin olarak düşünülmelidir. Bazı durumlarda kullanım gerçekleştikten sonra ücretlerin sisteme ulaşmasında gecikme olabilir.
 
 Aşağıdaki örnekte faturalama döneminin nasıl bitebileceği gösterilmiştir:
 
 * Kurumsal Anlaşma (EA) abonelikleri: Faturalama ayının 31 Mart tarihinde sona ermesi halinde tahmini ücretler 72 saat sonrasına kadar güncelleştirilir. Bu örnekte 4 Nisan gece yarısı (UTC).
 * Kullandıkça öde abonelikleri: Faturalama ayının 15 Mart tarihinde sona ermesi halinde tahmini ücretler 72 saat sonrasına kadar güncelleştirilebilir. Bu örnekte 19 Mayıs gece yarısı (UTC).
 
-Maliyet ve kullanım verileri Maliyet Yönetimi ve Faturalama bölümünde yer alır ve en az 7 yıl boyunca saklanır.
+Maliyet ve kullanım verileri Maliyet Yönetimi ve Faturalama bölümünde yer alır ve en az yedi yıl boyunca saklanır.
 
 ### <a name="rerated-data"></a>Yeniden ücretlendirilen veriler
 
-Verileri almak için Maliyet Yönetimi API'lerini, Power BI'ı veya Azure portalını kullandığınızda fatura kapatılana kadar geçerli faturalama dönemine ait ücretler yeniden ücretlendirilebilir ve bunun sonucunda değişebilir.
+Verileri almak için Maliyet Yönetimi API'lerini, Power BI'ı veya Azure portalı kullandığınızda fatura kapatılana kadar geçerli faturalama dönemine ait ücretler yeniden fiyatlandırılıp değişebilir.
 
 ## <a name="cost-rounding"></a>Maliyet yuvarlama
 
@@ -184,6 +184,6 @@ Kredi tabanlı ve önceden öde teklifleri için geçmişe dönük veriler fatur
 - MSDN (MS-AZR-0062P)
 - Visual Studio (MS-AZR-0029P, MS-AZR-0059P, MS-AZR-0060P, MS-AZR-0063P, MS-AZR-0064P)
 
-## <a name="see-also"></a>Ayrıca bkz.
+## <a name="next-steps"></a>Sonraki adımlar
 
 - Maliyet Yönetimi için ilk hızlı başlangıcı önceden tamamlamadıysanız, [Maliyetleri analiz etmeye başlama](./quick-acm-cost-analysis.md) bölümünden bilgi edinin.

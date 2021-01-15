@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 01/02/2021
 ms.custom: MVC
-ms.openlocfilehash: bd560a6ef4a3b4ab5eb4632e7741c764f6e314e1
-ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
+ms.openlocfilehash: aac949de0b0ae1f085187c1b5e1f3b64d8edad03
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854936"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233823"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Makineleri fiziksel sunucu olarak Azure 'a geçirme
 
@@ -230,38 +230,41 @@ Geçirmek istediğiniz makinelerde, Mobility hizmeti aracısını yüklemeniz ge
     -  Bölge içindeki belirli bir kullanılabilirlik bölgesine geçirilen makineyi sabitlemek için kullanılabilirlik alanı. Kullanılabilirlik Alanları arasında çok düğümlü bir uygulama katmanı oluşturan sunucuları dağıtmak için bu seçeneği kullanın. Bu seçeneği belirlerseniz, Işlem sekmesinde seçilen makinenin her biri için kullanılacak kullanılabilirlik alanını belirtmeniz gerekir. Bu seçenek yalnızca geçiş için seçilen hedef bölge Kullanılabilirlik Alanları destekliyorsa kullanılabilir
     -  Geçirilen makinenin bir kullanılabilirlik kümesine yerleştirileceği kullanılabilirlik kümesi. Bu seçeneği kullanabilmek için seçilen hedef kaynak grubunun bir veya daha fazla kullanılabilirlik kümesi olmalıdır.
     - Geçirilen makineler için bu kullanılabilirlik yapılandırmalarının herhangi birine ihtiyacınız yoksa, altyapı artıklığı gerekli değildir.
-12. **Azure Hibrit Avantajı**’nda:
+    
+12. **Disk şifreleme türü**' nde şunları seçin:
+    - Platform tarafından yönetilen anahtar ile bekleyen şifreleme
+    - Müşteri tarafından yönetilen anahtarla bekleyen şifreleme
+    - Platform tarafından yönetilen ve müşteri tarafından yönetilen anahtarlarla Çift şifreleme
+
+   > [!NOTE]
+   > VM 'Leri CMK ile çoğaltmak için hedef kaynak grubu altında [bir disk şifreleme kümesi oluşturmanız](https://go.microsoft.com/fwlink/?linkid=2151800) gerekir. Bir disk şifreleme kümesi nesnesi yönetilen diskleri, SSE için kullanılacak CMK 'yi içeren bir Key Vault eşler.
+  
+13. **Azure Hibrit Avantajı**’nda:
 
     - Azure Hibrit Avantajı’nı uygulamak istemiyorsanız **Hayır**’ı seçin. Ardından **İleri**'ye tıklayın.
     - Etkin Yazılım Güvencesi veya Windows Server abonelikleri kapsamında olan Windows Server makineleriniz varsa ve avantajı geçirdiğiniz makinelere uygulamak istiyorsanız **Evet**’i seçin. Ardından **İleri**'ye tıklayın.
 
-    ![Hedef ayarları](./media/tutorial-migrate-physical-virtual-machines/target-settings.png)
+    ![Hedef ayarları](./media/tutorial-migrate-vmware/target-settings.png)
 
-13. **İşlem** bölümünde VM adı, boyutu, işletim sistemi disk türü ve kullanılabilirlik yapılandırmasını (önceki adımda seçildiyse) gözden geçirin. VM’ler [Azure gereksinimleriyle](migrate-support-matrix-physical-migration.md#azure-vm-requirements)uyumlu olmalıdır.
+14. **İşlem** bölümünde VM adı, boyutu, işletim sistemi disk türü ve kullanılabilirlik yapılandırmasını (önceki adımda seçildiyse) gözden geçirin. VM’ler [Azure gereksinimleriyle](migrate-support-matrix-physical-migration.md#azure-vm-requirements)uyumlu olmalıdır.
 
     - **VM boyutu**: değerlendirme önerilerini KULLANıYORSANıZ, VM boyutu açılan listesi önerilen boyutu gösterir. Aksi takdirde Azure Geçişi, Azure aboneliğindeki en yakın eşleşmeye göre bir boyut seçer. Alternatif olarak **Azure VM boyutu**’nda el ile bir boyut seçin.
     - **Işletim sistemi diski**: VM için işletim sistemi (önyükleme) diskini belirtin. İşletim Sistemi diski, işletim sistemi önyükleyiciye ve yükleyiciye sahip disktir.
     - **Kullanılabilirlik alanı**: kullanılacak kullanılabilirlik bölgesini belirtin.
     - **Kullanılabilirlik kümesi**: kullanılacak kullanılabilirlik kümesini belirtin.
 
-> [!NOTE]
-> Bir sanal makine kümesi için farklı bir kullanılabilirlik seçeneği seçmek istiyorsanız 1. adıma gidin ve tek bir sanal makine kümesi için çoğaltma başlattıktan sonra farklı kullanılabilirlik seçeneklerini belirleyerek adımları yineleyin.
+![İşlem ayarları](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
 
-   ![İşlem ayarları](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
-
-13. **Diskler**' de, VM disklerinin Azure 'da çoğaltılıp çoğaltılmayacağını belirtin ve Azure 'da disk türünü (Standart SSD/HDD veya Premium yönetilen diskler) seçin. Ardından **İleri**'ye tıklayın.
+15. **Diskler**' de, VM disklerinin Azure 'da çoğaltılıp çoğaltılmayacağını belirtin ve Azure 'da disk türünü (Standart SSD/HDD veya Premium yönetilen diskler) seçin. Ardından **İleri**'ye tıklayın.
     - Diskleri çoğaltmadan çıkarabilirsiniz.
     - Diskleri çıkarırsanız bu diskler geçişten sonra Azure VM’de bulunmaz. 
 
     ![Disk ayarları](./media/tutorial-migrate-physical-virtual-machines/disks.png)
 
-
-14. **Çoğaltmayı gözden geçir ve başlat** bölümünde ayarları gözden geçirin ve sunuculara yönelik ilk çoğaltmayı başlatmak için **Çoğalt** üzerine tıklayın.
+16. **Çoğaltmayı gözden geçir ve başlat** bölümünde ayarları gözden geçirin ve sunuculara yönelik ilk çoğaltmayı başlatmak için **Çoğalt** üzerine tıklayın.
 
 > [!NOTE]
 > Çoğaltma ayarlarını, çoğaltma başlamadan önce dilediğiniz zaman güncelleştirebilirsiniz,   >  **çoğaltılan makineleri** yönetin. Çoğaltma başladıktan sonra ayarlar değiştirilemez.
-
-
 
 ## <a name="track-and-monitor"></a>İzleme ve izleme
 

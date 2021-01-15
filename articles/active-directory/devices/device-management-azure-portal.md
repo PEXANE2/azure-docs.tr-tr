@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f142aa4ca203a65c45741f87853579ca60e1879
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 1a735817f59e43e1a9e5d2a513f1ad397f18aab8
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831763"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232327"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Azure portalını kullanarak cihaz kimliklerini yönetme
 
@@ -165,10 +165,10 @@ Azure portal cihaz ayarlarını görüntülemek veya yönetmek için aşağıdak
 
 - **Azure AD 'ye katılmış cihazlarda ek yerel Yöneticiler** -bir cihazda yerel yönetici hakları verilen kullanıcıları seçebilirsiniz. Bu kullanıcılar, Azure AD 'de *cihaz yöneticileri* rolüne eklenir. Azure AD ve cihaz sahiplerine Genel Yöneticiler varsayılan olarak yerel yönetici haklarına sahiptir. Bu seçenek, Azure AD Premium veya Enterprise Mobility Suite (EMS) gibi ürünlerle kullanılabilen bir Premium sürüm özelliğidir.
 - **Kullanıcılar cihazlarını Azure AD 'ye kaydedebileceği** için bu ayarı Windows 10 Personal, IOS, Android ve MacOS CIHAZLARıNıN Azure AD 'ye kaydolmalarına izin verecek şekilde yapılandırmanız gerekir. **Hiçbiri**' ni seçerseniz, CIHAZLARıN Azure AD 'ye kaydolmaya izin verilmez. Microsoft 365 için Microsoft Intune veya mobil cihaz yönetimi (MDM) kaydı için kayıt gereklidir. Bu hizmetlerden birini yapılandırdıysanız, **Tümü** seçilidir ve **hiçbiri** kullanılamaz.
-- **Cihazlara katılması gereken çok faktörlü kimlik doğrulaması gerektir** -kullanıcıların, CIHAZLARıNı Azure AD 'ye katmak veya kaydetmek için ek bir kimlik doğrulama faktörü sağlaması gerekip gerekmediğini seçebilirsiniz. Varsayılan değer **Hayır**' dır. Bir cihazı kaydederken veya katılırken çok faktörlü kimlik doğrulamasının gerekli olmasını öneririz. Bu hizmet için Multi-Factor Authentication 'ı etkinleştirmeden önce, cihazlarını kaydeden kullanıcılar için Multi-Factor Authentication ' ın yapılandırıldığından emin olmanız gerekir. Farklı Azure AD Multi-Factor Authentication hizmetleri hakkında daha fazla bilgi için bkz. [Azure ad Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)kullanmaya başlama. 
+- **Azure AD 'ye katılmış veya Azure ad kaydı Için cihazların Multi-Factor Authentication gerektir** -kullanıcıların, CIHAZLARıNı Azure AD 'ye katmak veya kaydetmek için ek bir kimlik doğrulama faktörü sağlaması gerekip gerekmediğini seçebilirsiniz. Varsayılan değer **Hayır**' dır. Bir cihazı kaydederken veya katılırken çok faktörlü kimlik doğrulamasının gerekli olmasını öneririz. Bu hizmet için Multi-Factor Authentication 'ı etkinleştirmeden önce, cihazlarını kaydeden kullanıcılar için Multi-Factor Authentication ' ın yapılandırıldığından emin olmanız gerekir. Farklı Azure AD Multi-Factor Authentication hizmetleri hakkında daha fazla bilgi için bkz. [Azure ad Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)kullanmaya başlama. 
 
 > [!NOTE]
-> **Cihazların katılmasını sağlamak Için Multi-Factor auth iste** ayarı, Azure AD 'ye katılmış olan (bazı özel durumlarla birlikte) veya Azure AD 'nin kayıtlı olduğu cihazlar için geçerlidir. Bu ayar, karma Azure AD 'ye katılmış cihazlara, Azure ['da Azure AD 'ye katılmış VM](/azure/active-directory/devices/howto-vm-sign-in-azure-ad-windows#enabling-azure-ad-login-in-for-windows-vm-in-azure) 'Lere ve [Windows Autopilot Self-Deployment modunu](/mem/autopilot/self-deploying)kullanarak Azure AD 'ye katılmış cihazlara uygulanmaz.
+> Azure AD **'ye katılmış veya Azure ad kaydı yapılacak cihazların** Azure AD 'ye katılmış (bazı özel durumlar ile) veya Azure AD 'nin kayıtlı olduğu cihazlar için geçerli Multi-Factor Authentication ayarı gereklidir. Bu ayar, karma Azure AD 'ye katılmış cihazlara, Azure ['da Azure AD 'ye katılmış VM](/azure/active-directory/devices/howto-vm-sign-in-azure-ad-windows#enabling-azure-ad-login-in-for-windows-vm-in-azure) 'Lere ve [Windows Autopilot Self-Deployment modunu](/mem/autopilot/self-deploying)kullanarak Azure AD 'ye katılmış cihazlara uygulanmaz.
 
 - **En fazla cihaz sayısı** -Bu ayar, bir kullanıcının Azure AD 'de sahip olduğu en fazla Azure AD 'ye katılmış veya Azure AD kayıtlı cihaz sayısını seçmenize olanak sağlar. Bir Kullanıcı bu kotaya ulaşırsa, mevcut cihazların bir veya daha fazlası kaldırılana kadar ek cihaz ekleyemeyecektir. Varsayılan değer **50**' dir.
 

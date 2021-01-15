@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 507e17b2edb0db2d21265f3e945745d97395e7c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 527a2e0dd5a807552aed8d6a833d513fa40c72e3
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503863"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234401"
 ---
 # <a name="use-an-azure-cli-sample-script-to-connect-two-virtual-networks"></a>İki sanal ağı bağlamak için bir Azure CLı örnek betiği kullanın
 
@@ -47,13 +47,13 @@ Bu betik, bir kaynak grubu, sanal makine ve tüm ilgili kaynakları oluşturmak 
 
 | Komut | Notlar |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
-| [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) | Bir Azure sanal ağı ve alt ağ oluşturur. |
-| [az network vnet peering create](https://docs.microsoft.com/cli/azure/network/vnet/peering) | İki sanal ağ arasında eşleme oluşturur.  |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
+| [az group create](/cli/azure/group) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
+| [az network vnet create](/cli/azure/network/vnet) | Bir Azure sanal ağı ve alt ağ oluşturur. |
+| [az network vnet peering create](/cli/azure/network/vnet/peering) | İki sanal ağ arasında eşleme oluşturur.  |
+| [az group delete](/cli/azure/vm/extension) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](https://docs.microsoft.com/cli/azure).
+Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure).
 
 Ek ağ CLI betiği örnekleri, [Azure Ağına Genel Bakış belgeleri](../cli-samples.md) içinde bulunabilir.

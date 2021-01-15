@@ -1,14 +1,14 @@
 ---
 title: Bir müşteriyi Azure Lighthouse’a ekleme
 description: Bir müşteriyi Azure Mathouse 'a eklemeyi öğrenin. böylece, kaynakları Azure tarafından atanan kaynak yönetimi kullanılarak kendi kiracınız aracılığıyla erişilebilir ve yönetilebilir.
-ms.date: 12/15/2020
+ms.date: 01/14/2021
 ms.topic: how-to
-ms.openlocfilehash: 023b44a77cb38a14df8aa6a885ff137c02942061
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 1a7c8fc85819b2c34b5c64dc83cb908b7bee3c41
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516139"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232684"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Bir müşteriyi Azure Lighthouse’a ekleme
 
@@ -36,7 +36,7 @@ Bir müşterinin kiracısını eklemek için etkin bir Azure aboneliğine sahip 
 
 Bu KIMLIK değerleri zaten yoksa, bunları aşağıdaki yollarla alabilirsiniz. Dağıtımınızda bu tam değerleri kullandığınızdan emin olun ve bunları kullanın.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 Kiracı KIMLIĞINIZ, Azure portal sağ üst tarafındaki hesap adınızın üzerine gelerek veya **Dizin Değiştir**' i seçerek görülebilir. Kiracı KIMLIĞINIZI seçmek ve kopyalamak için Portal içinden "Azure Active Directory" araması yapın, ardından **Özellikler** ' i seçin ve **dizin kimliği** alanında gösterilen değeri kopyalayın. Müşterinin kiracısında bir aboneliğin KIMLIĞINI bulmak için, "abonelikler" araması yapın ve ardından uygun abonelik KIMLIĞINI seçin.
 
@@ -62,14 +62,17 @@ az account show
 
 ## <a name="define-roles-and-permissions"></a>Rolleri ve izinleri tanımlama
 
-Hizmet sağlayıcı olarak, farklı kapsamlar için farklı erişim gerektiren tek bir müşteri için birden çok görev gerçekleştirmek isteyebilirsiniz. Kiracınızdaki kullanıcılara uygun [Azure yerleşik rollerini](../../role-based-access-control/built-in-roles.md) atamak için gereken sayıda Yetkilendirme tanımlayabilirsiniz.
+Hizmet sağlayıcı olarak, farklı kapsamlar için farklı erişim gerektiren tek bir müşteri için birden çok görev gerçekleştirmek isteyebilirsiniz. Uygun [Azure yerleşik rollerinin](../../role-based-access-control/built-in-roles.md)atanması için ihtiyacınız olan sayıda yetkilendirmeler tanımlayabilirsiniz. Her yetkilendirme, yönetim kiracısındaki bir Azure AD kullanıcısına, grubuna veya hizmet sorumlusuna başvuran bir **PrincipalId** içerir.
 
-Yönetimi kolaylaştırmak için, her rol için Azure AD Kullanıcı gruplarını kullanmanızı öneririz. Bu sayede, Kullanıcı değişikliği yapmak için ekleme işlemini tekrarlamanız gerekmiyorsa, erişimi olan gruba bireysel kullanıcı ekleme veya kaldırma esnekliği sağlar. Bir hizmet sorumlusuna roller atayabilirsiniz, bu da otomasyon senaryoları için yararlı olabilir.
+> [!NOTE]
+> Açıkça belirtilmedikçe, Azure Mathouse belgelerindeki bir "kullanıcıya" başvurular bir Azure AD kullanıcısına, grubuna veya hizmet sorumlusuna bir yetkilendirmede uygulanabilir.
+
+Yönetimi kolaylaştırmak için, bireysel kullanıcılar yerine her bir rol için Azure AD Kullanıcı gruplarını kullanmanızı öneririz. Bu sayede, Kullanıcı değişikliği yapmak için ekleme işlemini tekrarlamanız gerekmiyorsa, erişimi olan gruba bireysel kullanıcı ekleme veya kaldırma esnekliği sağlar. Ayrıca, Otomasyon senaryolarında yararlı olabilecek bir hizmet sorumlusuna roller atayabilirsiniz.
 
 > [!IMPORTANT]
 > Bir Azure AD grubu için izinler eklemek üzere, **Grup türü** **güvenlik** olarak ayarlanmalıdır. Grup oluşturulduğunda bu seçenek seçilidir. Daha fazla bilgi için bkz. [temel Grup oluşturma ve Azure Active Directory kullanarak üye ekleme](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-Yetkilendirmeleri tanımlarken, kullanıcıların yalnızca işlerini tamamlaması için gerekli izinlere sahip olması için en az ayrıcalık ilkesini izlediğinizden emin olun. Desteklenen roller hakkında yönergeler ve bilgiler için bkz. [Azure açık bir senaryolarda kiracılar, kullanıcılar ve roller](../concepts/tenants-users-roles.md).
+Yetkilendirmeleri tanımlarken, kullanıcıların yalnızca işlerini tamamlaması için gerekli izinlere sahip olması için en az ayrıcalık ilkesini izlediğinizden emin olun. Desteklenen roller ve en iyi uygulamalar hakkında daha fazla bilgi için bkz. [Azure 'Da kiracılar, kullanıcılar ve roller](../concepts/tenants-users-roles.md).
 
 Yetkilendirmeleri tanımlamak için, erişim vermek istediğiniz hizmet sağlayıcı kiracısında her bir Kullanıcı, Kullanıcı grubu veya hizmet sorumlusu için KIMLIK değerlerini bilmeniz gerekir. Ayrıca, atamak istediğiniz her bir yerleşik rol için rol tanımı KIMLIĞI gerekir. Daha önceden sahip değilseniz, hizmet sağlayıcı kiracısı içinden aşağıdaki komutları çalıştırarak bunları alabilirsiniz.
 
@@ -195,7 +198,7 @@ Aşağıdaki örnek, bir aboneliği eklemek için kullanılabilecek **delegatedR
 }
 ```
 
-Yukarıdaki örnekteki en son yetkilendirme, Kullanıcı erişimi yönetici rolü (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9) ile bir **PrincipalId** ekliyor. Bu rolü atarken, **Delegatedrotadefinitionıds** özelliğini ve bir veya daha fazla yerleşik rolü de eklemeniz gerekir. Bu yetkilendirmede oluşturulan kullanıcı, bu yerleşik rolleri, [düzeltilen ilkeleri dağıtmak](deploy-policy-remediation.md)için gerekli olan müşteri kiracısında [yönetilen kimliklere](../../active-directory/managed-identities-azure-resources/overview.md) atayabilecektir.  Kullanıcı da destek olayları oluşturabilir.  Normalde Kullanıcı erişimi Yöneticisi rolüyle ilişkili başka hiçbir izin bu kullanıcı için uygulanacaktır.
+Yukarıdaki örnekteki en son yetkilendirme, Kullanıcı erişimi yönetici rolü (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9) ile bir **PrincipalId** ekliyor. Bu rolü atarken, **Delegatedrotadefinitionıds** özelliğini ve desteklenen bir veya daha fazla Azure yerleşik rolünü eklemeniz gerekir. Bu yetkilendirmede oluşturulan kullanıcı, bu rolleri, [düzeltilen ilkeleri dağıtmak](deploy-policy-remediation.md)için gerekli olan müşteri kiracısında [yönetilen kimliklere](../../active-directory/managed-identities-azure-resources/overview.md) atayabilecektir.  Kullanıcı da destek olayları oluşturabilir. Normalde Kullanıcı erişimi Yöneticisi rolüyle ilişkili başka hiçbir izin bu **PrincipalId** için geçerlidir.
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarını dağıtma
 
@@ -208,7 +211,7 @@ Parametre dosyanızı güncelleştirdikten sonra, müşterinin kiracısındaki b
 
 Dağıtım Azure portal, PowerShell kullanılarak veya aşağıda gösterildiği gibi Azure CLı kullanılarak yapılabilir.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 1. [GitHub](https://github.com/Azure/Azure-Lighthouse-samples/)deponuzda, kullanmak istediğiniz şablonun yanında gösterilen **Azure 'a dağıt** düğmesini seçin. Şablon Azure portalda açılır.
 1. **MSP teklif adı**, **MSP teklif açıklaması**, **Kiracı kimliği tarafından yönetilen** ve **yetkilendirmeler** için değerlerinizi girin. İsterseniz **parametreleri Düzenle** ' yi seçerek `mspOfferName` parametre dosyasında,,, `mspOfferDescription` `managedbyTenantId` ve doğrudan değerlerini girebilirsiniz `authorizations` . Şablondaki varsayılan değerleri kullanmak yerine bu değerleri güncelleştirdiğinizden emin olun.
@@ -260,7 +263,7 @@ az deployment sub create --name <deploymentName> \
 
 Bir müşteri aboneliğinin Azure Mathouse 'a başarıyla eklendi, hizmet sağlayıcının kiracısındaki kullanıcılar aboneliği ve kaynaklarını görebilir (tek tek veya bir Azure AD grubunun bir üyesi olarak, uygun izinlere sahip bir Azure AD grubuna erişim izni verildiyse). Bunu onaylamak için, aboneliğin aşağıdaki yollarla göründüğünden emin olun.  
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 Hizmet sağlayıcısının kiracısında:
 
@@ -278,7 +281,7 @@ Müşterinin kiracısında:
 3. Kaynak Yöneticisi şablonunda verdiğiniz teklif adı ile abonelik (ler) i görmek istediğinizi onaylayın.
 
 > [!NOTE]
-> Güncelleştirmeler Azure portal yansıtılmadan önce dağıtımınızın tamamlanması birkaç dakika sürebilir.
+> Güncelleştirmeler Azure portal yansıtılmadan önce dağıtımınızın tamamlanması 15 dakika kadar sürebilir. Tarayıcıyı yenileyerek, oturum açıp kapatarak veya yeni bir belirteç isteyerek Azure Resource Manager belirtecinizi güncelleştirirseniz güncelleştirmeleri daha çabuk görebilirsiniz.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -312,6 +315,7 @@ Müşterinizin başarıyla sunulabileceği takdirde veya kullanıcılarınız Te
 - Atanmış abonelik için **Microsoft. ManagedServices** kaynak sağlayıcısının kayıtlı olması gerekir. Bu, dağıtım sırasında otomatik olarak gerçekleşmelidir, ancak yoksa [el ile kaydedebilirsiniz](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
 - Yetkilendirmeler, [sahip](../../role-based-access-control/built-in-roles.md#owner) yerleşik rolüne sahip herhangi bir kullanıcı veya [dataactions](../../role-based-access-control/role-definitions.md#dataactions)içeren yerleşik roller içermemelidir.
 - Gruplar, **Microsoft 365** değil, [**Grup türü**](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md#group-types) **güvenlik** olarak ayarlanmış olmalıdır.
+- [İç içe gruplar](../..//active-directory/fundamentals/active-directory-groups-membership-azure-portal.md)için erişim etkinleştirilmeden önce ek bir gecikme olabilir.
 - Azure portal kaynakları görüntülemesi gereken kullanıcıların [okuyucu](../../role-based-access-control/built-in-roles.md#reader) rolüne (veya okuyucu erişimi de içeren başka bir yerleşik Role) sahip olması gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar

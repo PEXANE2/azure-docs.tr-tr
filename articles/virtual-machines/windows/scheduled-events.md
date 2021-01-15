@@ -9,12 +9,12 @@ ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviwer: mimckitt
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8a0dd7f020c9a8e720aacf34b1719ee2094fa223
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e4b5248ecb47c9456836aa9c4d7ebb2ad122c1dd
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92788817"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98231880"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Windows VM 'Leri için Zamanlanan Olaylar
 
@@ -55,6 +55,7 @@ Zamanlanan olaylar şu şekilde dağıtılır:
 - Tek başına sanal makineler.
 - Bir bulut hizmetindeki tüm VM 'Ler.
 - Bir kullanılabilirlik kümesindeki tüm VM 'Ler.
+- Bir kullanılabilirlik bölgesindeki tüm VM 'Ler.
 - Ölçek kümesi yerleştirme grubundaki tüm VM 'Ler. 
 
 > [!NOTE]
@@ -137,7 +138,7 @@ Zamanlanan olayların olduğu durumlarda, yanıt bir olay dizisi içerir.
 | Kaynaklar| Bu olayın etkilediği kaynakların listesi. Listenin, en çok bir [güncelleştirme etki](../manage-availability.md)alanından makineler içermesi garanti edilir, ancak bu, ud 'deki tüm makineleri içermeyebilir. <br><br> Örnek: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | Bu olayın durumu. <br><br> Değerler: <ul><li>`Scheduled`: Bu olay, özellikte belirtilen süreden sonra başlayacak şekilde zamanlandı `NotBefore` .<li>`Started`: Bu olay başlatıldı.</ul> Hiç `Completed` veya benzer bir durum sağlanmamıştır. Olay tamamlandığında olay artık döndürülmez.
 | NotBefore| Bu olayın başlayabileceği zaman. <br><br> Örnek: <br><ul><li> Mon, 19 Eyl 2016 18:29:47 GMT  |
-| Açıklama | Bu olayın açıklaması. <br><br> Örnek: <br><ul><li> Ana bilgisayar sunucusu bakımda. |
+| Description | Bu olayın açıklaması. <br><br> Örnek: <br><ul><li> Ana bilgisayar sunucusu bakımda. |
 | EventSource | Olayın Başlatıcısı. <br><br> Örnek: <br><ul><li> `Platform`: Bu olay platform tarafından başlatılır. <li>`User`: Bu olay kullanıcı tarafından başlatılır. |
 
 ### <a name="event-scheduling"></a>Olay zamanlaması

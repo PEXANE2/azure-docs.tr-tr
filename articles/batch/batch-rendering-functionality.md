@@ -3,14 +3,14 @@ title: İşleme özellikleri
 description: Standart Azure Batch özellikleri, işleme iş yüklerini ve uygulamaları çalıştırmak için kullanılır. Batch, iş yüklerini işlemeyi desteklemek için belirli özellikler içerir.
 author: mscurrell
 ms.author: markscu
-ms.date: 08/02/2018
+ms.date: 01/14/2021
 ms.topic: how-to
-ms.openlocfilehash: 77a6ec54495b394c597f6d6b4ddb5f5fe3285550
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: d9d196897800467fd02397bb774af0bbb9ebabf0
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107479"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234282"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch işleme özellikleri
 
@@ -18,7 +18,15 @@ Standart Azure Batch özellikleri, işleme iş yüklerini ve uygulamaları çal�
 
 Havuzlar, işler ve görevler dahil toplu Iş kavramlarına genel bir bakış için [Bu makaleye](./batch-service-workflow-features.md)bakın.
 
-## <a name="batch-pools"></a>Toplu işlem havuzları
+## <a name="batch-pools-using-custom-vm-images-and-standard-application-licensing"></a>Özel VM görüntülerini ve standart uygulama lisansını kullanan Batch havuzları
+
+Diğer iş yükleri ve uygulama türlerinde olduğu gibi, gerekli işleme uygulamaları ve eklentileri ile özel bir VM görüntüsü oluşturulabilir. Özel VM görüntüsü [paylaşılan görüntü galerisine](../virtual-machines/shared-image-galleries.md) yerleştirilir ve [toplu işlem havuzları oluşturmak için kullanılabilir](batch-sig-images.md).
+
+Görev komut satırı dizelerinin, özel VM görüntüsü oluşturulurken kullanılan uygulamalara ve yollara başvurması gerekir.
+
+Çoğu işleme uygulaması, lisans sunucusundan alınan lisanslar gerektirir. Mevcut bir şirket içi lisans sunucusu varsa, hem havuz hem de lisans sunucusunun aynı [sanal ağ](../virtual-network/virtual-networks-overview.md)üzerinde olması gerekir. Ayrıca, Batch havuzu ve lisans sunucusu VM 'si aynı sanal ağ üzerinde olan bir Azure VM 'de bir lisans sunucusu çalıştırmak mümkündür.
+
+## <a name="batch-pools-using-rendering-vm-images"></a>VM görüntülerini işleme kullanan Batch havuzları
 
 ### <a name="rendering-application-installation"></a>Uygulama yükleme işleme
 
@@ -71,13 +79,13 @@ Arnold 2017 komut satırı|kick.exe|ARNOLD_2017_EXEC|
 |Arnold 2018 komut satırı|kick.exe|ARNOLD_2018_EXEC|
 |Blender|blender.exe|BLENDER_2018_EXEC|
 
-### <a name="azure-vm-families"></a>Azure VM aileleri
+## <a name="azure-vm-families"></a>Azure VM aileleri
 
 Diğer iş yüklerinde olduğu gibi, uygulama sistemi gereksinimlerinin işlenmesi farklılık gösterir ve performans gereksinimleri işler ve projeler için farklılık gösterir.  Gereksinimlerinize bağlı olarak, Azure 'da çok çeşitli VM aileleri mevcuttur: en düşük maliyet, en iyi fiyat/performans, en iyi performans ve benzeri.
 Arnold gibi bazı işleme uygulamaları CPU tabanlıdır; V-Ray ve Blender döngüleri gibi diğerleri, CPU ve/veya GPU 'Ları kullanabilir.
 Kullanılabilir VM aileleri ve VM boyutlarının açıklaması için [bkz. VM türleri ve boyutları](../virtual-machines/sizes.md).
 
-### <a name="low-priority-vms"></a>Düşük öncelikli sanal makineler
+## <a name="low-priority-vms"></a>Düşük öncelikli sanal makineler
 
 Diğer iş yüklerinde olduğu gibi, düşük öncelikli VM 'Ler işleme için Batch havuzlarında kullanılabilir.  Düşük öncelikli VM 'Ler, normal adanmış VM 'Lerle aynı şekilde gerçekleştirilir, ancak daha fazla Azure kapasitesi kullanır ve büyük bir indirimle kullanılabilir.  Düşük öncelikli VM 'Lerin kullanılması için zorunluluğunu getirir, kullanılabilir kapasiteye bağlı olarak, bu VM 'Lerin ayrılmayabilir veya herhangi bir zamanda yok edilebilir hale gelebilir. Bu nedenle, düşük öncelikli VM 'Ler tüm işleme işleri için uygun olmaz. Örneğin, görüntülerin işlenmesi çok saat sürebileceğinden, bu görüntülerin işlenmesi, süresi dolan VM 'Lerin kabul edilebilir olması nedeniyle kesintiye uğratılmasına ve yeniden başlatılmasına neden olur.
 

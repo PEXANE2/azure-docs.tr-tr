@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: f0699ed065da4c63bc88945d75a866abcfbb9053
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: f4981036ca92f6efe2d3e23ea1f507a3a1f3c70a
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121371"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234265"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Öğretici: Kubernetes 'te gizli dizi için Azure Key Vault sağlayıcıyı yapılandırma ve çalıştırma
 
@@ -37,6 +37,8 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 * Bu öğreticiye başlamadan önce [Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest)'yı yükleyebilirsiniz.
+
+Bu öğreticide, Linux düğümlerinde Azure Kubernetes hizmetini çalıştırdığınız varsayılmaktadır.
 
 ## <a name="use-managed-identities"></a>Yönetilen kimlikleri kullanma
 
@@ -77,6 +79,8 @@ Azure Cloud Shell kullanmanız gerekmez. Azure CLı yüklü olan komut isteminiz
     ![Azure CLı 'nin PrincipalId ve ClientID değerleri ile ekran görüntüsü, ](../media/kubernetes-key-vault-2.png) ![ SubscriptionID ve nodeResourceGroup değerleriyle vurgulanan Azure CLI ekran görüntüsü](../media/kubernetes-key-vault-3.png)
     
 ## <a name="install-helm-and-the-secrets-store-csi-driver"></a>Held ve gizlilikler deposunun CSı sürücüsünü yükleyip
+> [!NOTE]
+> Aşağıdaki yükleme yalnızca Linux üzerinde AKS üzerinde çalışmaktadır. Gizli dizileri depolama CSı sürücü yüklemesi hakkında daha fazla bilgi için bkz. [Azure Key Vault Provider for gizlilikler Store CSI Driver](https://github.com/Azure/secrets-store-csi-driver-provider-azure) 
 
 Gizli anahtar deposu CSı sürücüsünü yüklemek için öncelikle [Held](https://helm.sh/docs/intro/install/)'yi yüklemeniz gerekir.
 

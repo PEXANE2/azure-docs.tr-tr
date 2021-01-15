@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 12/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: ce90ab160696e2c38d917a391eecb0d51a31282f
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 655a146ccde9c75629d0a991a6a3aafa91f40764
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740598"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233976"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>VM'ler için Azure İzleyici genel bakış 'ı etkinleştir
 
@@ -42,15 +42,18 @@ VM'ler için Azure İzleyici aşağıdaki makineleri destekler:
 ## <a name="supported-azure-arc-machines"></a>Desteklenen Azure yay makineleri
 VM'ler için Azure İzleyici, Arc uzantı hizmetinin kullanılabildiği bölgelerde Azure Arc etkin sunucuları için kullanılabilir. Arc aracısının 0,9 veya sonraki bir sürümünü çalıştırıyor olmanız gerekir.
 
-| Bağlı kaynak | Desteklenir | Açıklama |
+| Bağlı kaynak | Desteklenir | Description |
 |:--|:--|:--|
 | Windows aracıları | Yes | [Windows aracıların Log Analytics aracı](../platform/log-analytics-agent.md)Ile birlikte bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](../platform/agents-overview.md#supported-operating-systems). |
 | Linux aracıları | Yes | Linux aracısının [Log Analytics aracısıyla](../platform/log-analytics-agent.md)birlikte, Linux aracılarının bağımlılık aracısına ihtiyacı vardır. Daha fazla bilgi için bkz. [desteklenen işletim sistemleri](#supported-operating-systems). |
-| System Center Operations Manager yönetim grubu | Hayır | |
+| System Center Operations Manager yönetim grubu | No | |
 
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
 VM'ler için Azure İzleyici, Log Analytics Aracısı ve bağımlılık aracısını destekleyen tüm işletim sistemlerini destekler. Tüm liste için bkz. [Azure izleyici aracılarına genel bakış ](../platform/agents-overview.md#supported-operating-systems) .
+
+> [!IMPORTANT]
+> VM'ler için Azure İzleyici Konuk sistem durumu özelliği, genel önizlemede olduğu sürece daha sınırlı işletim sistemi desteğine sahiptir. Ayrıntılı bir liste için bkz. [VM'ler için Azure izleyici Konuk sistem durumunu etkinleştirme (Önizleme)](vminsights-health-enable.md) .
 
 VM'ler için Azure İzleyici destekleyen bağımlılık aracısının Linux desteği hakkında aşağıdaki noktalara göz atın:
 
@@ -63,7 +66,7 @@ VM'ler için Azure İzleyici destekleyen bağımlılık aracısının Linux dest
 ## <a name="log-analytics-workspace"></a>Log Analytics çalışma alanı
 VM'ler için Azure İzleyici, Log Analytics bir çalışma alanı gerektirir. Bu çalışma alanının ayrıntıları ve gereksinimleri için bkz. [VM'ler için Azure İzleyici Log Analytics çalışma alanını yapılandırma](vminsights-configure-workspace.md) .
 ## <a name="agents"></a>Aracılar
-VM'ler için Azure İzleyici, her bir sanal makinede veya sanal makine ölçek kümesi 'nin izlenmesi için aşağıdaki iki aracısının yüklü olmasını gerektirir. Bu aracıları yüklemek ve bu aracıları çalışma alanına bağlamak, kaynağı eklemek için tek gereksinimdir.
+VM'ler için Azure İzleyici, her bir sanal makinede veya sanal makine ölçek kümesi 'nin izlenmesi için aşağıdaki iki aracısının yüklü olmasını gerektirir. Kaynağı eklemek için, bu aracıları yükleyip çalışma alanına bağlayın.  Bu aracıların ağ gereksinimleri için [ağ gereksinimlerine](../platform/log-analytics-agent.md#network-requirements) bakın.
 
 - [Log Analytics Aracısı](../platform/log-analytics-agent.md). Sanal makineden veya sanal makine ölçek kümesinden olayları ve performans verilerini toplar ve Log Analytics çalışma alanına gönderir. Azure kaynaklarında Log Analytics aracısına yönelik dağıtım yöntemleri [Windows](../../virtual-machines/extensions/oms-windows.md) ve [Linux](../../virtual-machines/extensions/oms-linux.md)için VM uzantısını kullanır.
 - Bağımlılık Aracısı. Sanal makinede çalışan işlemler ve [VM'ler için Azure izleyici Içindeki eşleme özelliği](vminsights-maps.md)tarafından kullanılan dış işlem bağımlılıkları hakkında bulunan verileri toplar. Bağımlılık Aracısı, verilerini Azure Izleyici 'ye teslim etmek için Log Analytics aracısına bağımlıdır. Azure kaynaklarında bağımlılık aracısına yönelik dağıtım yöntemleri [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) ve [Linux](../../virtual-machines/extensions/agent-dependency-linux.md)için VM uzantısını kullanır.
@@ -75,7 +78,7 @@ Aşağıda, bu aracıları dağıtmaya yönelik birden çok yöntem verilmiştir
 
 | Yöntem | Açıklama |
 |:---|:---|
-| [Azure Portal](./vminsights-enable-portal.md) | Her iki aracıyı tek bir sanal makineye, sanal makine ölçek kümesine veya Azure Arc ile bağlantılı karma sanal makinelere kurun. |
+| [Azure portalı](./vminsights-enable-portal.md) | Her iki aracıyı tek bir sanal makineye, sanal makine ölçek kümesine veya Azure Arc ile bağlantılı karma sanal makinelere kurun. |
 | [Resource Manager şablonları](vminsights-enable-resource-manager.md) | CLı ve PowerShell dahil Kaynak Yöneticisi şablonu dağıtmak için desteklenen yöntemlerden herhangi birini kullanarak her iki aracıyı de yükler. |
 | [Azure İlkesi](./vminsights-enable-policy.md) | Bir sanal makine veya sanal makine ölçek kümesi oluşturulduğunda aracıları otomatik olarak yüklemek için Azure Ilke girişimi atayın. |
 | [El ile yüklemesi](./vminsights-enable-hybrid.md) | Veri merkezinize veya diğer bulut ortamlarınıza dahil olmak üzere Azure dışında barındırılan bilgisayarlarda, aracıları Konuk işletim sistemine yükler. |

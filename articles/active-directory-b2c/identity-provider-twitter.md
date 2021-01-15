@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 7779730b98630d08af046e7cb402caca1d0c2fe6
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: a0f209e0ac17c62378d279a32f4a27f48a9f74bd
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653665"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232701"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir Twitter hesabıyla kaydolma ve oturum açma ayarlama
 
@@ -29,22 +29,27 @@ ms.locfileid: "97653665"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-an-application"></a>Uygulama oluşturma
 
-Twitter 'ı Azure AD B2C bir kimlik sağlayıcısı olarak kullanmak için, bir Twitter uygulaması oluşturmanız gerekir. Henüz bir Twitter hesabınız yoksa kaydolabilirsiniz [https://twitter.com/signup](https://twitter.com/signup) .
+Azure Active Directory B2C (Azure AD B2C) ' de Twitter hesabı olan kullanıcılar için oturum açmayı etkinleştirmek üzere Twitter uygulaması oluşturmanız gerekir. Henüz bir Twitter hesabınız yoksa kaydolabilirsiniz [https://twitter.com/signup](https://twitter.com/signup) . [Geliştirici hesabı için de uygulamanız](https://developer.twitter.com/en/apply/user.html)gerekir. Daha fazla bilgi için bkz. [erişim Için uygulama](https://developer.twitter.com/en/apply-for-access).
 
-1. Twitter hesabı kimlik bilgilerinizle [Twitter geliştiricileri](https://developer.twitter.com/en/apps) Web sitesinde oturum açın.
-1. **Uygulama oluştur**' u seçin.
-1. Uygulama **adı** ve **uygulama açıklaması** girin.
-1. **Web sitesi URL 'si**' nde, girin `https://your-tenant.b2clogin.com` . `your-tenant`Kiracınızın adıyla değiştirin. Örneğin, `https://contosob2c.b2clogin.com`.
-1. **Geri çağırma URL 'si** için girin `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` . Öğesini `your-tenant` kiracı adınızın adıyla ve `your-user-flow-Id` Kullanıcı akışınız tanımlayıcısıyla değiştirin. Örneğin, `b2c_1A_signup_signin_twitter`. Azure AD B2C büyük harfle tanımlansalar bile kiracı adınızı ve Kullanıcı akış kimliğinizi girerken tüm küçük harfleri kullanmanız gerekir.
-1. Sayfanın alt kısmındaki koşulları okuyup kabul edin ve **Oluştur**' u seçin.
-1. **Uygulama ayrıntıları** sayfasında **Düzenle > Ayrıntıları Düzenle**' yi seçin, **Twitter ile oturum açmayı etkinleştir** onay kutusunu işaretleyin ve ardından **Kaydet**' i seçin.
-1. **Anahtarlar ve belirteçler** seçin, daha sonra kullanılacak **Tüketici API anahtarını** ve **Tüketici API 'sinin gizli anahtar** değerlerini kaydedin.
+1. Twitter hesabı kimlik bilgilerinizle [Twitter Geliştirici Portalında](https://developer.twitter.com/portal/projects-and-apps) oturum açın.
+1. **Tek başına uygulamalar** altında **+ uygulama oluştur**' u seçin.
+1. Bir **uygulama adı** girin ve ardından **Tamam**' ı seçin.
+1. **Uygulama anahtarı** ve **API anahtar gizli** anahtarı değerlerini kopyalayın.  Her ikisini de, kiracınızda bir kimlik sağlayıcısı olarak Twitter yapılandırmak için kullanabilirsiniz. 
+1. **Uygulamanızı ayarlama** bölümünde **uygulama ayarları**' nı seçin.
+1. **Kimlik doğrulama ayarları** altında **Düzenle** ' yi seçin.
+    1. **3-lelenmiş OAuth** onay kutusunu Etkinleştir ' i seçin.
+    1. **Kullanıcılardan e-posta adresini iste** onay kutusunu seçin.
+    1. **Geri çağırma URL 'leri** için girin `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` . Öğesini `your-tenant` kiracı adınızın adıyla ve `your-user-flow-Id` Kullanıcı akışınız tanımlayıcısıyla değiştirin. Örneğin, `b2c_1A_signup_signin_twitter`. Azure AD B2C büyük harfle tanımlansalar bile kiracı adınızı ve Kullanıcı akış kimliğinizi girerken tüm küçük harfleri kullanmanız gerekir.
+    1. **Web sitesi URL 'si** için girin `https://your-tenant.b2clogin.com` . `your-tenant`Kiracınızın adıyla değiştirin. Örneğin, `https://contosob2c.b2clogin.com`.
+    1. **Hizmet koşulları** IÇIN bir URL girin (örneğin,) `http://www.contoso.com/tos` . İlke URL 'SI, uygulamanız için hüküm ve koşullar sağlamak üzere tuttuğunuz bir sayfasıdır.
+    1. **Gizlilik ilkesi** IÇIN bir URL girin, örneğin `http://www.contoso.com/privacy` . İlke URL 'SI, uygulamanız için gizlilik bilgilerini sağlamak üzere tuttuğunuz bir sayfasıdır.
+    1. **Kaydet**’i seçin.
 
 ::: zone pivot="b2c-user-flow"
 
@@ -55,9 +60,19 @@ Twitter 'ı Azure AD B2C bir kimlik sağlayıcısı olarak kullanmak için, bir 
 1. Azure portalın sol üst köşesinde **Tüm hizmetler**’i seçin ve **Azure AD B2C**’yi arayıp seçin.
 1. **Kimlik sağlayıcıları**' nı ve ardından **Twitter**' ı seçin.
 1. Bir **ad** girin. Örneğin, *Twitter*.
-1. **ISTEMCI kimliği** için, daha önce oluşturduğunuz Twitter UYGULAMASıNıN tüketici API anahtarını girin.
-1. **İstemci parolası** için, kaydettiğiniz tüketici API 'si gizli anahtarını girin.
+1. **ISTEMCI kimliği** için, daha önce oluşturduğunuz Twitter uygulamasının *API anahtarını* girin.
+1. **İstemci parolası** için, kaydettiğiniz *API anahtarı gizli anahtarını* girin.
 1. **Kaydet**’i seçin.
+
+## <a name="add-twitter-identity-provider-to-a-user-flow"></a>Kullanıcı akışına Twitter kimlik sağlayıcısı ekleme 
+
+1. Azure AD B2C kiracınızda **Kullanıcı akışları**' nı seçin.
+1. Twitter kimlik sağlayıcısını eklemek istediğiniz kullanıcı akışını seçin.
+1. **Sosyal kimlik sağlayıcıları** altında **Twitter**' ı seçin.
+1. **Kaydet**’i seçin.
+1. İlkenizi test etmek için **Kullanıcı akışını Çalıştır**' ı seçin.
+1. **Uygulama** için, daha önce kaydettiğiniz *testapp1* adlı Web uygulamasını seçin. **Yanıt URL 'si** gösterilmesi gerekir `https://jwt.ms` .
+1. **Kullanıcı akışını Çalıştır** 'a tıklayın
 
 ::: zone-end
 
@@ -103,7 +118,7 @@ Bir Twitter hesabını, ilkenizin uzantı dosyasındaki **Claimsproviders** öğ
             <Item Key="request_token_endpoint">https://api.twitter.com/oauth/request_token</Item>
             <Item Key="ClaimsEndpoint">https://api.twitter.com/1.1/account/verify_credentials.json?include_email=true</Item>
             <Item Key="ClaimsResponseFormat">json</Item>
-            <Item Key="client_id">Your Twitter application consumer key</Item>
+            <Item Key="client_id">Your Twitter application API key</Item>
           </Metadata>
           <CryptographicKeys>
             <Key Id="client_secret" StorageReferenceId="B2C_1A_TwitterSecret" />
@@ -127,7 +142,7 @@ Bir Twitter hesabını, ilkenizin uzantı dosyasındaki **Claimsproviders** öğ
     </ClaimsProvider>
     ```
 
-4. **Client_id** değerini, daha önce kaydettiğiniz tüketici anahtarıyla değiştirin.
+4. **Client_id** değerini, daha önce kaydettiğiniz *API anahtarı sırrı* ile değiştirin.
 5. Dosyayı kaydedin.
 
 ### <a name="upload-the-extension-file-for-verification"></a>Uzantı dosyasını doğrulama için karşıya yükle
@@ -173,24 +188,6 @@ Artık bir düğmeye sahip olduğunuza göre, bunu bir eyleme bağlamanız gerek
     **TechnicalProfileReferenceId** değerini daha önce oluşturduğunuz teknık profilin kimliğiyle güncelleştirin. Örneğin, `Twitter-OAUTH1`.
 
 3. *TrustFrameworkExtensions.xml* dosyasını kaydedin ve doğrulama için yeniden yükleyin.
-
-::: zone-end
-
-::: zone pivot="b2c-user-flow"
-
-## <a name="add-twitter-identity-provider-to-a-user-flow"></a>Kullanıcı akışına Twitter kimlik sağlayıcısı ekleme 
-
-1. Azure AD B2C kiracınızda **Kullanıcı akışları**' nı seçin.
-1. Twitter kimlik sağlayıcısına istediğiniz kullanıcı akışına tıklayın.
-1. **Sosyal kimlik sağlayıcıları** altında **Twitter**' ı seçin.
-1. **Kaydet**’i seçin.
-1. İlkenizi test etmek için **Kullanıcı akışını Çalıştır**' ı seçin.
-1. **Uygulama** için, daha önce kaydettiğiniz *testapp1* adlı Web uygulamasını seçin. **Yanıt URL 'si** gösterilmesi gerekir `https://jwt.ms` .
-1. **Kullanıcı akışını Çalıştır** 'a tıklayın
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
 
 ## <a name="update-and-test-the-relying-party-file"></a>Bağlı olan taraf dosyasını güncelleştirme ve test etme
 

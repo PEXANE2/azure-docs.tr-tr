@@ -201,6 +201,10 @@
       items:
         - name: IoT API’leri için Defender ile çalışma
           href: references-work-with-defender-for-iot-apis.md
+        - name: Horizon API’si
+          href: references-horizon-api.md
+        - name: Horizon SDK’sı
+          href: references-horizon-sdk.md
         - name: IoT CLI komutları için Defender ile çalışma
           href: references-work-with-defender-for-iot-cli-commands.md
         - name: Özel protokolleri yönetme (Horizon)

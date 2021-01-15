@@ -3,16 +3,19 @@ title: .NET ve AMQP 1,0 ile Azure Service Bus | Microsoft Docs
 description: Bu makalede, AMQP (gelişmiş mesajlaşma sıraya alma Protokolü) kullanarak bir .NET uygulamasından Azure Service Bus nasıl kullanılacağı açıklanır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 7a67ab74efc700e16f5b1689e9cc1f459ecf14bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d6d7d01a56d2e7068f9c4ccb8ec505914a31ecf
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88067112"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233942"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>AMQP 1,0 ile .NET 'ten Service Bus kullanma
 
 AMQP 1,0 desteği Service Bus paketi sürümü 2,1 veya sonraki bir sürümünde kullanılabilir. Service Bus bitlerini [NuGet][NuGet]'den indirerek en son sürüme sahip olduğunuzdan emin olabilirsiniz.
+
+> [!NOTE]
+> Service Bus için .NET kitaplığı ile Gelişmiş İleti Sıraya Alma Protokolü (AMQP) veya Service Bus mesajlaşma protokolünü (SBMP) kullanabilirsiniz. AMQP, .NET kitaplığı tarafından kullanılan varsayılan protokoldür. AMQP protokolünü (varsayılan olan) kullanmanızı ve geçersiz kılmayacağını öneririz. 
 
 ## <a name="configure-net-applications-to-use-amqp-10"></a>.NET uygulamalarını AMQP 1,0 kullanacak şekilde yapılandırma
 
@@ -41,6 +44,14 @@ Ayarın değeri, `Microsoft.ServiceBus.ConnectionString` Service Bus bağlantıs
 `namespace` `SAS key` Service Bus ad alanı oluşturduğunuz zaman ve [Azure Portal][Azure portal] alınır. Daha fazla bilgi için bkz. [Azure Portal kullanarak Service Bus ad alanı oluşturma][Create a Service Bus namespace using the Azure portal].
 
 AMQP kullanırken, bağlantı dizesini ile ekleyin `;TransportType=Amqp` . Bu gösterim, istemci kitaplığına AMQP 1,0 kullanarak Service Bus bağlantısını yapmasını söyler.
+
+### <a name="amqp-over-websockets"></a>WebSockets üzerinden AMQP
+WebSockets üzerinden AMQP 'yi kullanmak için `TransportType` bağlantı dizesinde olarak ayarlayın `AmqpWebSockets` . Örneğin: `Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=AmqpWebSockets`. 
+
+.NET Microsoft. Azure. ServiceBus kitaplığı kullanıyorsanız, [Servicebusconnection. TransportType](/dotnet/api/microsoft.azure.servicebus.servicebusconnection.transporttype) öğesini [TransportType numaralandırmasının](/dotnet/api/microsoft.azure.servicebus.transporttype)AmqpWebSockets olarak ayarlayın.
+
+.NET Azure. Messaging. ServiceBus kitaplığını kullanıyorsanız, [Servicebusclient. TransportType](/dotnet/api/azure.messaging.servicebus.servicebusclient.transporttype) öğesini [servicebustransporttype sabit](/dotnet/api/azure.messaging.servicebus.servicebustransporttype)listesinin AmqpWebSockets olarak ayarlayın.
+
 
 ## <a name="message-serialization"></a>İleti serileştirme
 

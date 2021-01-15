@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 1/13/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: e2f0d62ae6882229cee3ee32e3b362f2b6593da7
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: a262c2b4351c96217001ba42e8c745f7d71c7d45
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98199244"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233908"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure Dosya Eşitleme ile ilgili sorunları giderme
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -205,7 +205,7 @@ Portalda "çevrimdışı görünüyor" olarak gösterilen sunucuda, sunucunun ne
     - Sunucu bir güvenlik duvarının arkasındaysa 443 numaralı bağlantı noktası üzerinden giden bağlantılara izin verildiğinden emin olun. Güvenlik Duvarı trafiği belirli etki alanlarıyla kısıtlarsa, güvenlik duvarı [belgelerinde](./storage-sync-files-firewall-and-proxy.md#firewall) listelenen etki alanlarının erişilebilir olduğunu doğrulayın.
     - Sunucu bir proxy 'nin arkasındaysa, proxy [belgelerindeki](./storage-sync-files-firewall-and-proxy.md#proxy)adımları izleyerek makine genelinde veya uygulamaya özel proxy ayarlarını yapılandırın.
     - Hizmet uç noktalarına ağ bağlantısını denetlemek için Test-StorageSyncNetworkConnectivity cmdlet 'ini kullanın. Daha fazla bilgi için bkz. [hizmet uç noktalarına ağ bağlantısını test](./storage-sync-files-firewall-and-proxy.md#test-network-connectivity-to-service-endpoints)etme.
-    - Sunucuya şifre paketleri eklemek için Grup İlkesi veya TLS cmdlet 'lerini kullanın:
+    - Sunucuda TLS şifre paketi sırası yapılandırılmışsa, şifre paketleri eklemek için Grup İlkesi veya TLS cmdlet 'leri kullanabilirsiniz:
         - Grup İlkesi 'ni kullanmak için, bkz. [Grup İlkesi kullanarak TLS şifre paketi sırasını yapılandırma](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-group-policy).
         - TLS cmdlet 'lerini kullanmak için TLS [PowerShell cmdlet 'lerini kullanarak TLS şifre paketi sırasını yapılandırma](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-tls-powershell-cmdlets)konusuna bakın.
     

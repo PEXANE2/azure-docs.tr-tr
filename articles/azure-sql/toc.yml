@@ -179,6 +179,8 @@
               href: database/performance-guidance.md
             - name: Performansı izlemek için DMV’leri kullanma
               href: database/monitoring-with-dmvs.md
+            - name: Blokları anlama ve çözümleme
+              href: database/understand-resolve-blocking.md
             - name: Tanılama telemetrisini günlüğe kaydetme
               href: database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md
             - name: Bellek içi OLTP
@@ -641,7 +643,7 @@
                       href: database/saas-multitenantdb-tenant-analytics.md
     - name: Örnekler
       items:
-        - name: Azure CLI
+        - name: Azure CLI’si
           href: database/az-cli-script-samples-content-guide.md?tabs=single-database
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=single-database
@@ -966,7 +968,7 @@
           href: managed-instance/user-initiated-failover.md
     - name: Örnekler
       items:
-        - name: Azure CLI
+        - name: Azure CLI’si
           href: database/az-cli-script-samples-content-guide.md?tabs=managed-instance
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=managed-instance

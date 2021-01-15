@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
-ms.openlocfilehash: cffa5677c5531f3887639c049998523d7d07586a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c53eb65f31e32d3edebcbf31d48d166f5464a92
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79455571"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233364"
 ---
 # <a name="check-resource-usage-against-limits"></a>Sınırlara göre kaynak kullanımını denetleme
 
@@ -29,10 +29,10 @@ Bu makalede, aboneliğinizde dağıttığınız her bir ağ kaynağı türünün
 2. Azure portal sol üst köşesinde, **tüm hizmetler**' i seçin.
 3. **Filtre** kutusuna *abonelikleri* girin. Arama sonuçlarında **Abonelik** ifadesi göründüğünde bunu seçin.
 4. Kullanım bilgilerini görüntülemek istediğiniz aboneliğin adını seçin.
-5. **Ayarlar**altında **kullanım + kota**' i seçin.
+5. **Ayarlar** altında **kullanım + kota**' i seçin.
 6. Şu seçenekleri seçebilirsiniz:
    - **Kaynak türleri**: tüm kaynak türlerini seçebilir ya da görüntülemek istediğiniz belirli kaynak türlerini seçebilirsiniz.
-   - **Sağlayıcılar**: tüm kaynak sağlayıcılarını seçebilir veya **işlem**, **ağ**veya **depolama**' yı seçebilirsiniz.
+   - **Sağlayıcılar**: tüm kaynak sağlayıcılarını seçebilir veya **işlem**, **ağ** veya **depolama**' yı seçebilirsiniz.
    - **Konumlar**: tüm Azure konumlarını seçebilir veya belirli konumları seçebilirsiniz.
    - Tüm kaynakları veya yalnızca en az bir adet dağıtıldığı kaynakları göstermeyi seçebilirsiniz.
 
@@ -48,7 +48,7 @@ Bu makalede, aboneliğinizde dağıttığınız her bir ağ kaynağı türünün
 
 [Azure Cloud Shell](https://shell.azure.com/powershell)izleyen komutları veya bilgisayarınızdan PowerShell 'i çalıştırarak çalıştırabilirsiniz. Azure Cloud Shell, ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. PowerShell 'i bilgisayarınızdan çalıştırırsanız, Azure PowerShell Module, sürüm 1.0.0 veya sonraki bir sürümü gerekir. `Get-Module -ListAvailable Az`Yüklü sürümü bulmak için bilgisayarınızda çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız `Login-AzAccount` Azure 'da oturum açmak için de çalıştırmanız gerekir.
 
-[Get-AzNetworkUsage](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkusage)ile kullanım sınırlarına göre kullanımınızı görüntüleyin. Aşağıdaki örnek, Doğu ABD konumunda en az bir kaynağın dağıtıldığı kaynakların kullanımını alır:
+[Get-AzNetworkUsage](/powershell/module/az.network/get-aznetworkusage)ile kullanım sınırlarına göre kullanımınızı görüntüleyin. Aşağıdaki örnek, Doğu ABD konumunda en az bir kaynağın dağıtıldığı kaynakların kullanımını alır:
 
 ```azurepowershell-interactive
 Get-AzNetworkUsage `

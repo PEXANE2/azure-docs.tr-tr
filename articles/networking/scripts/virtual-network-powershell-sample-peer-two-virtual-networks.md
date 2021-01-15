@@ -13,18 +13,18 @@ ms.workload: infrastructure
 ms.date: 05/16/2017
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 55d034776c77b3e0156669ba8838dbff6b2869be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63fab50f991a15a38d18dead53d268abca79c811
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89074687"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98231902"
 ---
 # <a name="peer-two-virtual-networks"></a>İki sanal ağı eşleme
 
 Bu betik, Azure ağı aracılığıyla aynı bölgedeki iki sanal ağı oluşturur ve bağlar. Betiği çalıştırdıktan sonra iki sanal ağ arasında eşleme oluşturmuş olursunuz.
 
-Gerekirse, [Azure PowerShell kılavuzunda](https://docs.microsoft.com/powershell/azure/)bulunan yönergeyi kullanarak Azure PowerShell yükleyip `Connect-AzAccount` Azure ile bağlantı oluşturmak için öğesini çalıştırın.
+Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/)bulunan yönergeyi kullanarak Azure PowerShell yükleyip `Connect-AzAccount` Azure ile bağlantı oluşturmak için öğesini çalıştırın.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -55,6 +55,6 @@ Bu betik, bir kaynak grubu, sanal makine ve tüm ilgili kaynakları oluşturmak 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/azure/).
+Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](/powershell/azure/).
 
 Ek ağ PowerShell betiği örnekleri, [Azure Ağına Genel Bakış belgeleri](../powershell-samples.md?toc=%2fazure%2fnetworking%2ftoc.json) içinde bulunabilir.

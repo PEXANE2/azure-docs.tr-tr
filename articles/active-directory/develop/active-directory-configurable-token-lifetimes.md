@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 0b3c2f74edff661326e97da7b06860914468c43b
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: ec925ce165c1de98fe920381e1b51e3388c1e4ad
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059356"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232412"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft Identity platformunda yapılandırılabilir belirteç yaşam süreleri (Önizleme)
 
@@ -101,8 +101,7 @@ Gizli istemciler, bir istemci parolasını (gizli) güvenli bir şekilde depolay
 
 Ortak istemciler, bir istemci parolasını (gizli) güvenli bir şekilde depolayaamaz. Örneğin, bir iOS/Android uygulaması, kaynak sahibinden bir parolayı gizli hale getirebilir, bu yüzden ortak istemci olarak kabul edilir. Belirli bir süreden daha eski olan ortak istemcilerden gelen yenileme belirteçlerinin, yeni bir erişim/yenileme belirteci çifti almasını engellemek için kaynaklar üzerinde ilkeler ayarlayabilirsiniz. Bunu yapmak için, [yenileme belirteci en fazla etkin olmayan süre özelliğini](#refresh-token-max-inactive-time) ( `MaxInactiveTime` ) kullanın. Ayrıca, yenileme belirteçlerinin daha fazla kabul edilmeden önce bir süre ayarlamak için ilkeleri kullanabilirsiniz. Bunu yapmak için, [Tek Etmenli yenileme belirteci maksimum yaşı](#single-factor-session-token-max-age) veya [Multi-Factor Session Token Max Age](#multi-factor-refresh-token-max-age) özelliğini kullanın. Bir yenileme belirtecinin kullanım süresini, bir genel istemci uygulaması kullanılırken sessizce yeniden kimlik doğrulaması yapmak yerine, kullanıcının kimlik bilgilerini ne zaman ve ne sıklıkta yeniden girmesi gerektiğini denetlemek için ayarlayabilirsiniz.
 
-> [!NOTE]
-> Maksimum yaş özelliği, tek bir belirtecin kullanılabileceği sürenin uzunluğudur. 
+Maksimum yaş özelliği, tek bir belirtecin kullanılabileceği sürenin uzunluğudur. 
 
 ### <a name="single-sign-on-session-tokens"></a>Çoklu oturum açma oturum belirteçleri
 Bir Kullanıcı Microsoft Identity platformu ile kimlik doğruladığında, kullanıcının tarayıcısı ve Microsoft Identity platformu ile çoklu oturum açma oturumu (SSO) oluşturulur. Bir tanımlama bilgisi biçimindeki SSO belirteci bu oturumu temsil eder. SSO oturum belirteci belirli bir kaynak/istemci uygulamasına bağlanmamış. SSO oturum belirteçleri iptal edilebilir ve bunların geçerlilik süresi her kullanıldığında denetlenir.
@@ -127,7 +126,7 @@ Belirteç ömür ilkesi, belirteç ömrü kurallarını içeren bir ilke nesnesi
 
 * <sup>1</sup>365 gün, bu öznitelikler için ayarlanoluşturulabilecek maksimum açık uzunluktadır.
 
-#### <a name="exceptions"></a>Özel Durumlar
+#### <a name="exceptions"></a>Özel durumlar
 | Özellik | Ekranlarını | Varsayılan |
 | --- | --- | --- |
 | Yenileme belirteci maksimum yaşı (yetersiz iptal bilgileri<sup>1</sup>olan Federasyon kullanıcıları için verilir) |Belirteçleri Yenile (yetersiz iptal bilgileri<sup>1</sup>olan Federasyon kullanıcıları için verilir) |12 saat |

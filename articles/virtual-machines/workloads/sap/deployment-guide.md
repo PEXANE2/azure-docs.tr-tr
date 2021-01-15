@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: 2eb3564153734ff70b7df69da568966e29747863
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: c70de186468eb3efacc82c1d5c8802612475fd4d
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202445"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232803"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineler dağıtımı
 
@@ -325,7 +325,7 @@ Azure sanal makineleri, işlem ve depolama kaynakları, en kısa sürede ve uzun
 
 Bu makalede, farklı dağıtım seçenekleri ve sorun giderme dahil olmak üzere Azure 'daki sanal makinelerde (VM) SAP uygulamaları dağıtma adımları ele alınmaktadır. Bu makalede, [SAP NetWeaver için planlama ve uygulama Için Azure sanal makineler][planning-guide]'de bilgi oluşturulur. Ayrıca SAP yazılım yükleme ve dağıtmaya yönelik birincil kaynaklar olan SAP yükleme belgelerini ve SAP notlarını da tamamlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
@@ -912,8 +912,8 @@ Kullanıcı tanımlı rotalar hakkında daha fazla bilgi için bkz. [Kullanıcı
 ### <a name="configure-the-azure-extension-for-sap"></a><a name="d98edcd3-f2a1-49f7-b26a-07448ceb60ca"></a>SAP için Azure uzantısını yapılandırma
 
 > [!NOTE]
-> Genel destek beyanı: SAP için Azure uzantısı için desteğe ihtiyacınız varsa lütfen her zaman Windows için bileşen BC-OP-NT-AZR ' de bir olay açın veya BC-OP-LNX-AZR.
-> Ortak müşterilerimize yardımcı olmak üzere SAP destek sisteminde çalışan adanmış Microsoft destek mühendisleri vardır.
+> Genel destek ekstresi:  
+> SAP için Azure uzantısı desteği SAP destek kanalları aracılığıyla sağlanır. SAP için Azure Uzantısı ile ilgili yardıma ihtiyacınız varsa, lütfen [SAP desteğiyle](https://support.sap.com/)bir destek talebi açın. 
 
 VM 'yi [Azure 'DA SAP Için VM 'Lerin dağıtım senaryolarında][deployment-guide-3]açıklandığı şekilde hazırladığınızda, Azure VM Aracısı sanal makineye yüklenir. Sonraki adım, genel Azure veri merkezlerinde Azure uzantı deposunda bulunan SAP için Azure uzantısını dağıtmaktır. Daha fazla bilgi için bkz. [SAP NetWeaver Için Azure sanal makineleri planlama ve uygulama][planning-guide-9.1].
 

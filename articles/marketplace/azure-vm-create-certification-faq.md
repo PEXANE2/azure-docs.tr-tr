@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: bc1ae4bc2cf64c3e2f996709c086eb23cb8b8385
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 61bd23c74fd7960317dff17175b355b473cd6dc7
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602606"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233840"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Sanal makine sertifikası sorunlarını giderme
 
@@ -35,7 +35,7 @@ Bu sorunu onarmak için, görüntüyü Azure Marketi 'nden alın ve üzerinde de
 - [Windows görüntüleri](azure-vm-create-using-approved-base.md)
 
 > [!Note]
-> Azure Marketi 'nden alınmamış bir Linux temel görüntüsü kullanıyorsanız, ilk bölümü 2048 KB 'ye göre kaydırabilirsiniz. Bu, yeni faturalandırma bilgileri eklemek için biçimlendirilmemiş alanın kullanılmasına izin verir ve Azure 'un VM 'nizi Azure Market 'Te yayımlamaya devam etmesine olanak tanır.  
+> Azure Marketi 'nden alınmamış bir Linux temel görüntüsü kullanıyorsanız, Azure 'un VM 'nizi Azure Marketi 'ne yayımlamaya devam edebilmesi için, VHD 'de ilk 2048 kesimlerin (her bir kesim 512 bayt) boş olduğundan emin olun.  
 
 ## <a name="vm-extension-failure"></a>VM Uzantısı hatası
 
@@ -328,14 +328,14 @@ Paylaşılan erişim imzası (SAS) URL 'SI ile VM görüntüsünü indirdiğiniz
 |6|HTTP koşullu üstbilgisi|SAS URL 'SI geçersiz.|Doğru SAS URL 'sini alın.|
 |7|Geçersiz VHD adı|VHD adında, yüzde işareti veya tırnak işareti gibi özel karakterlerin mevcut olup olmadığını denetleyin `%` `"` .|Özel karakterleri kaldırarak VHD dosyasını yeniden adlandırın.|
 
-## <a name="first-mb-2048-kb-partition-linux-only"></a>İlk MB (2048 KB) bölüm (yalnızca Linux)
+## <a name="first-1mb-2048-sectors-each-sector-of-512-bytes-partition-linux-only"></a>İlk 1 MB (2048 kesim, her 512 baytlık kesim) bölümü (yalnızca Linux)
 
-VHD 'yi gönderdiğinizde, VHD 'nin ilk 2048 KB 'sinin boş olduğundan emin olun. Aksi takdirde, isteğiniz başarısız olur.
+VHD 'yi gönderdiğinizde, VHD 'nin ilk 2048 kesimlerinin (1MB) boş olduğundan emin olun. Aksi takdirde, isteğiniz başarısız olur. Bu, tüm ek veri diskleri için değil önyükleme/işletim sistemi diskine uygulanabilir olacağını lütfen unutmayın.
 
 >[!NOTE]
->Azure Marketi 'nden alınan Azure Windows temel görüntülerinin üzerine yerleştirilmiş olanlar gibi bazı özel görüntüler için, faturalandırma etiketi varsa ve dahili kullanılabilir değerlerimizle eşleşiyorsa, bir faturalandırma etiketi olup olmadığını ve MB bölümünü yoksayabilirsiniz.
+>Azure Marketi 'nden alınan Azure Windows temel görüntülerinin üzerine yerleştirilmiş olanlar gibi bazı özel görüntüler için, VHD 'nin ilk 1MB (2048 kesim) boş olduğundan emin olun. 
 
-### <a name="create-a-first-mb-2048-kb-partition-on-an-empty-vhd"></a>Boş bir VHD üzerinde ilk MB (2048 KB) bölüm oluşturma
+### <a name="create-a-first-1mb-2048-sectors-each-sector-of-512-bytes-partition-on-an-empty-vhd"></a>Boş bir VHD 'de ilk 1 MB 'lık (2048 kesim, her 512 baytlık bir kesim) bölüm oluşturun
 
 Bu adımlar yalnızca Linux için geçerlidir.
 
@@ -386,7 +386,7 @@ Bu adımlar yalnızca Linux için geçerlidir.
    1. _İlk kesim_ değeri olarak 2048 girin. _Son kesime_ varsayılan değer olarak bırakabilirsiniz.
 
       >[!IMPORTANT]
-      >Mevcut veriler, 2048 KB 'ye kadar silinecektir. Yeni bir bölüm oluşturmadan önce VHD 'nin yedeklemesi.
+      >Mevcut veriler 2048 kesim (her 512 baytlık bir kesim) olarak silinir. Yeni bir bölüm oluşturmadan önce VHD 'nin yedeklemesi.
 
       ![Silinen veriler için komutları ve çıktıyı gösteren Putty istemcisi komut satırı ekran görüntüsü.](./media/create-vm/vm-certification-issues-solutions-22.png)
 
@@ -400,7 +400,7 @@ Bu adımlar yalnızca Linux için geçerlidir.
 
 1. VHD 'yi VM 'den ayırın ve VM 'yi silin.
 
-### <a name="create-a-first-mb-2048-kb-partition-by-moving-existing-data-on-vhd"></a>VHD 'deki mevcut verileri taşıyarak Ilk MB (2048 KB) bölüm oluşturma
+### <a name="create-a-first-mb-2048-sectors-each-sector-of-512-bytes-partition-by-moving-existing-data-on-vhd"></a>VHD 'deki mevcut verileri taşıyarak Ilk MB (2048 kesim, her 512 baytlık bir kesim) bölümü oluşturun
 
 Bu adımlar yalnızca Linux için geçerlidir.
 

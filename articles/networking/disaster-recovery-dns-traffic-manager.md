@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
-ms.openlocfilehash: 6eab1803bf5adab42be87b5f8567682c6d75947e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cb1a490ac8edf2630253b45d99c3394bbe721b8
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74483529"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234163"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Azure DNS ve Traffic Manager kullanarak olağanüstü durum kurtarma
 
@@ -45,7 +45,7 @@ Olağanüstü durum kurtarma, uygulama işlevselliğinin önemli bir kaybından 
     
     *Şekil: etkin/Pasif olağanüstü durum kurtarma yapılandırması*
     
-Yük devretme ve yüksek kullanılabilirlik hakkında daha fazla bilgi edinmek için bkz. [Azure uygulamaları Için olağanüstü durum kurtarma](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications).
+Yük devretme ve yüksek kullanılabilirlik hakkında daha fazla bilgi edinmek için bkz. [Azure uygulamaları Için olağanüstü durum kurtarma](/azure/architecture/resiliency/disaster-recovery-azure-applications).
 
 
 ## <a name="planning-your-disaster-recovery-architecture"></a>Olağanüstü durum kurtarma mimarinizi planlama
@@ -54,7 +54,7 @@ Olağanüstü durum kurtarma mimarinizi ayarlamanın iki teknik yönü vardır:
 -  Birincil ve bekleme ortamları arasında örnekleri, verileri ve konfigürasyonları çoğaltmak için bir dağıtım mekanizması kullanma. Bu tür olağanüstü durum kurtarma, Azure Site-Recovery aracılığıyla VERITAS veya NetApp gibi Microsoft Azure iş ortağı gereçlerine göre yerel olarak yapılabilir. 
 - Birincil siteden bekleme sitesine ağ/web trafiği için bir çözüm geliştirme. Bu tür olağanüstü durum kurtarma Azure DNS, Azure Traffic Manager (DNS) veya üçüncü taraf küresel yük dengeleyiciler aracılığıyla elde edilebilir.
 
-Bu makale ağ ve web trafiği yeniden yönlendirme aracılığıyla yaklaşımlar ile sınırlıdır. Azure Site Recovery ayarlama yönergeleri için bkz. [Azure Site Recovery belgeleri](https://docs.microsoft.com/azure/site-recovery/).
+Bu makale ağ ve web trafiği yeniden yönlendirme aracılığıyla yaklaşımlar ile sınırlıdır. Azure Site Recovery ayarlama yönergeleri için bkz. [Azure Site Recovery belgeleri](../site-recovery/index.yml).
 DNS genellikle genel ve veri merkezine ait olduğundan ve bölge veya kullanılabilirlik bölgesi (AZ) düzeyindeki hatalardan ayrı olduğundan, ağ trafiğini incelemek için en verimli mekanizmalardan biridir. Bunlardan biri DNS tabanlı yük devretme mekanizmasını kullanabilir ve Azure 'da iki DNS hizmeti, bazı moda Azure DNS (yetkili DNS) ve Azure Traffic Manager (DNS tabanlı akıllı trafik yönlendirme) ile aynı işlemi gerçekleştirebilir. 
 
 Bu makalede sunulan çözümleri tartışmak için yaygın olarak kullanılan DNS 'in bazı kavramlarını anlamak önemlidir:
@@ -165,17 +165,8 @@ Yeniden deneme 1 olarak ayarlanmışsa ve TTL 10 saniye olarak ayarlanırsa, yü
 
 ### <a name="how-automatic-failover-works-using-traffic-manager"></a>Otomatik yük devretme Traffic Manager kullanarak nasıl kullanılır
 
-Bir olağanüstü durum sırasında, birincil uç nokta denetlenir ve durum **düşürülmüş** olarak değişir ve olağanüstü durum kurtarma sitesi **çevrimiçi**kalır. Traffic Manager varsayılan olarak tüm trafiği birincil (en yüksek öncelikli) uç noktaya gönderir. Birincil uç nokta düzeyi düşürülmüş görünüyorsa, Traffic Manager sağlıklı kaldığı sürece trafiği ikinci uç noktaya yönlendirir. Biri, ek yük devretme uç noktaları olarak kullanılabilecek Traffic Manager içinde daha fazla uç nokta yapılandırma seçeneğine sahiptir veya yük dengeleyiciler uç noktalar arasında paylaşımı paylaşıyor.
+Bir olağanüstü durum sırasında, birincil uç nokta denetlenir ve durum **düşürülmüş** olarak değişir ve olağanüstü durum kurtarma sitesi **çevrimiçi** kalır. Traffic Manager varsayılan olarak tüm trafiği birincil (en yüksek öncelikli) uç noktaya gönderir. Birincil uç nokta düzeyi düşürülmüş görünüyorsa, Traffic Manager sağlıklı kaldığı sürece trafiği ikinci uç noktaya yönlendirir. Biri, ek yük devretme uç noktaları olarak kullanılabilecek Traffic Manager içinde daha fazla uç nokta yapılandırma seçeneğine sahiptir veya yük dengeleyiciler uç noktalar arasında paylaşımı paylaşıyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)hakkında daha fazla bilgi edinin.
 - [Azure DNS](../dns/dns-overview.md)hakkında daha fazla bilgi edinin.
-
-
-
-
-
-
-
-
-

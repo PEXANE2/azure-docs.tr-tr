@@ -1,14 +1,14 @@
 ---
 title: Düzeltilebilir bir ilke dağıtma
 description: Azure 'da bir düzeltme görevi kullanan ilkeleri dağıtmak için, müşteri kiracısında bir yönetilen kimlik oluşturmanız gerekir.
-ms.date: 12/17/2020
+ms.date: 01/14/2021
 ms.topic: how-to
-ms.openlocfilehash: eb473fe2f589cf719e3944c887d46e75e9e7fdbf
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 01070133241117596bdf2b8e1e7c3fa101fc656c
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97670500"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233891"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>Temsilci bir abonelik içinde düzeltilebilir bir ilke dağıtın
 
@@ -19,9 +19,9 @@ ms.locfileid: "97670500"
 
 ## <a name="create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant"></a>Müşteri kiracısında yönetilen bir kimliğe roller atayabilecek bir kullanıcı oluşturun
 
-Azure 'da bir müşteriyi kullanıma aldığınızda, yönetim kiracınızdaki kullanıcıları, Kullanıcı gruplarını ve hizmet sorumlularını tanımlayan bir parametre dosyası ile birlikte, müşteri kiracısındaki Temsilcili kaynaklara erişebilecek bir [Azure Resource Manager şablonu](onboard-customer.md#create-an-azure-resource-manager-template) kullanırsınız. Parametreleriniz dosyasında, bu kullanıcıların (**PrincipalId**) her birine erişim düzeyini tanımlayan [yerleşik bir rol](../../role-based-access-control/built-in-roles.md) (**roledefinitionıd**) atanır.
+Azure 'da bir müşteri eklediğinizde, müşteri kiracısında Temsilcili kaynaklara erişim izni veren yetkilendirmeler tanımlamak için bir parametre dosyası ile birlikte bir [Azure Resource Manager şablonu](onboard-customer.md#create-an-azure-resource-manager-template) kullanırsınız. Her yetkilendirme, yönetim kiracısındaki bir Azure AD kullanıcısına, gruba veya hizmet sorumlusuna karşılık gelen bir **PrincipalId** ve verilecek [Azure yerleşik rolüne](../../role-based-access-control/built-in-roles.md) karşılık gelen bir **roledefinitionıd** belirler.
 
-**PrincipalId** 'nin müşteri kiracısında yönetilen bir kimlik oluşturmasına izin vermek Için, **roledefinitionıd** değerini **Kullanıcı erişimi Yöneticisi** olarak ayarlamanız gerekir. Bu rol genellikle desteklenmekle birlikte, bu özel senaryoda kullanılabilir ve bu izne sahip kullanıcıların yönetilen kimliklere bir veya daha fazla yerleşik rol atamasını sağlar. Bu roller, **Delegatedrotadefinitionıds** özelliğinde tanımlanmıştır. Kullanıcı erişimi Yöneticisi veya sahibi dışında, burada herhangi bir yerleşik rolü ekleyebilirsiniz.
+**PrincipalId** 'nin müşteri kiracısında yönetilen bir kimlik oluşturmasına izin vermek Için, **roledefinitionıd** değerini **Kullanıcı erişimi Yöneticisi** olarak ayarlamanız gerekir. Bu rol genellikle desteklenmekle birlikte, bu özel senaryoda kullanılabilir, bu izne sahip kullanıcı hesaplarının yönetilen kimliklere bir veya daha fazla yerleşik rol atamasını sağlar. Bu roller, **Delegatedrokadefinitionıds** özelliğinde tanımlanmıştır ve Kullanıcı erişimi Yöneticisi veya sahibi dışında [desteklenen Azure yerleşik rollerinin](../concepts/tenants-users-roles.md#role-support-for-azure-lighthouse) dahil edilebilir.
 
 Müşteri eklendi olduktan sonra, bu yetkilendirmede oluşturulan **PrincipalId** , bu yerleşik rolleri müşteri kiracısındaki yönetilen kimliklere atayabilecektir. Ancak, normalde Kullanıcı erişimi Yöneticisi rolüyle ilişkili başka hiçbir izinleri olmayacaktır.
 

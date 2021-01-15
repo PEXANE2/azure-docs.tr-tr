@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/03/2020
-ms.openlocfilehash: e9c1651244eecb036ca18ad5dadfe23f48b2bce6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/15/2021
+ms.openlocfilehash: ecdb0e55aa7127a373e63612908ed58109c1f8e2
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87529271"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233177"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Azure Data Factory kullanarak QuickBooks Online 'dan veri kopyalama (Önizleme)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -38,7 +38,7 @@ QuickBooks Online 'daki verileri desteklenen herhangi bir havuz veri deposuna ko
 
 Bu bağlayıcı, QuickBooks OAuth 2,0 kimlik doğrulamasını destekler.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -50,17 +50,17 @@ QuickBooks bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği: **QuickBooks** olarak ayarlanmalıdır | Evet |
-| connectionProperties | QuickBooks 'a nasıl bağlanılacağını tanımlayan bir özellik grubu. | Evet |
-| ***Altında `connectionProperties` :*** | | |
-| endpoint | QuickBooks Online sunucusunun uç noktası. (yani, quickbooks.api.intuit.com)  | Evet |
-| CompanyID | Yetkilendirmek için QuickBooks şirketinin şirket KIMLIĞI. Şirket KIMLIĞINI bulma hakkında bilgi için, bkz. [ŞIRKET kimliğini bulma nasıl yaparım?](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551). | Evet |
-| consumerKey | OAuth 2,0 kimlik doğrulaması için tüketici anahtarı. | Evet |
-| consumerSecret | OAuth 2,0 kimlik doğrulaması için tüketici parolası. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet |
-| refreshToken | QuickBooks uygulamasıyla ilişkili OAuth 2,0 yenileme belirteci. [Buradan](https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0#obtain-oauth2-credentials-for-your-app)daha fazla bilgi edinebilirsiniz. Göz yenileme belirtecinin 180 gün sonra zaman aşımına erdiğini göreceksiniz. Müşterinin yenileme belirtecini düzenli olarak güncelleştirmesi gerekiyor. <br/>Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın.| Evet |
-| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
+| tür | Type özelliği: **QuickBooks** olarak ayarlanmalıdır | Yes |
+| connectionProperties | QuickBooks 'a nasıl bağlanılacağını tanımlayan bir özellik grubu. | Yes |
+| **_Altında `connectionProperties` :_* _ | | |
+| endpoint | QuickBooks Online sunucusunun uç noktası. (yani, quickbooks.api.intuit.com)  | Yes |
+| CompanyID | Yetkilendirmek için QuickBooks şirketinin şirket KIMLIĞI. Şirket KIMLIĞINI bulma hakkında bilgi için, bkz. [ŞIRKET kimliğini bulma nasıl yaparım?](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551). | Yes |
+| consumerKey | OAuth 2,0 kimlik doğrulaması için QuickBooks Online uygulamanızın istemci KIMLIĞI. [Buradan](https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0#obtain-oauth2-credentials-for-your-app)daha fazla bilgi edinebilirsiniz. | Yes |
+| consumerSecret | OAuth 2,0 kimlik doğrulaması için QuickBooks Online uygulamanızın istemci gizli dizisi. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
+| refreshToken | QuickBooks uygulamasıyla ilişkili OAuth 2,0 yenileme belirteci. [Buradan](https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0#obtain-oauth2-credentials-for-your-app)daha fazla bilgi edinebilirsiniz. Göz yenileme belirtecinin 180 gün sonra zaman aşımına erdiğini göreceksiniz. Müşterinin yenileme belirtecini düzenli olarak güncelleştirmesi gerekiyor. <br/>Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın.| Yes |
+| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | No |
 
-**Örnek:**
+_ *Örnek:**
 
 ```json
 {
@@ -91,11 +91,11 @@ QuickBooks bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, QuickBooks veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
-QuickBooks Online 'daki verileri kopyalamak için, veri kümesinin Type özelliğini **Quickbooksobject**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
+QuickBooks Online 'daki verileri kopyalamak için, veri kümesinin Type özelliğini **Quickbooksobject** olarak ayarlayın. Aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | DataSet 'in Type özelliği: **Quickbooksobject** olarak ayarlanmalıdır | Evet |
+| tür | DataSet 'in Type özelliği: **Quickbooksobject** olarak ayarlanmalıdır | Yes |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -121,11 +121,11 @@ Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi iç
 
 ### <a name="quickbooks-as-source"></a>Kaynak olarak QuickBooks
 
-QuickBooks Online 'dan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **Quickbookssource**olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
+QuickBooks Online 'dan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **Quickbookssource** olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **Quickbookssource** olarak ayarlanmalıdır | Evet |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **Quickbookssource** olarak ayarlanmalıdır | Yes |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
 **Örnek:**

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: errobin
-ms.openlocfilehash: 63b91194c9ffb10fd8f4c5f1341eaf74bc81f5e1
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 88c287c4aa87b4df41bfe6bbc1992262b21d07aa
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94694890"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232769"
 ---
 # <a name="using-insights-to-monitor-and-configure-your-azure-load-balancer"></a>Azure Load Balancer izlemek ve yapılandırmak için öngörüleri kullanma
 
@@ -68,7 +68,7 @@ Veri Işleme sekmesi, trafik desenlerinizin beklenen şekilde olup olmadığın�
 ### <a name="flow-distribution"></a>Akış Dağıtımı
 Akış dağıtımı sekmesi, arka uç örneklerinizin aldığı ve üreteceği akış sayısını görselleştirmenize ve yönetmenize yardımcı olur. Gelen ve giden trafik için akış oluşturma hızını ve akış sayısını, her VM ve sanal makine ölçek kümesi örneğinin aldığı ağ trafiğini gösterir. 
 
-Bu görünümler, Load Balancer yapılandırmanızın veya trafik desenlerinizin imdenen dengeli trafiğe göre önde olup olmadığı hakkında geri bildirim verebilir. Örneğin, oturum benzeşiminin yapılandırılmış olması ve tek bir istemcinin orantısız sayıda istek yapmasını istiyorsanız. Ayrıca, makine boyutunuz için [VM başına akış sınırına](../virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) yaklaşıp yaklaşmayacağını da öğrenirsiniz.
+Bu görünümler, Load Balancer yapılandırmanızın veya trafik desenlerinizin imdenen dengeli trafiğe göre önde olup olmadığı hakkında geri bildirim verebilir. Örneğin, oturum benzeşiminin yapılandırılmış olması ve tek bir istemcinin orantısız sayıda istek yapmasını istiyorsanız. Ayrıca, makine boyutunuz için [VM başına akış sınırına](../virtual-network/virtual-machine-network-throughput.md#flow-limits-and-active-connections-recommendations) yaklaşıp yaklaşmayacağını da öğrenirsiniz.
 
 ### <a name="connection-monitors"></a>Bağlantı İzleyicileri
 Bağlantı Izleyicileri sekmesi, yapılandırdığınız tüm [bağlantı izlemeleri](../network-watcher/connection-monitor.md)  için bir genel haritada gidiş dönüş gecikme süresini gösterir. Bu görseller, katı gecikme gereksinimlerine sahip hizmetler için yararlı bilgiler sağlar. Gereksinimlerinizi karşılamak için, ek bölgesel dağıtımlar eklemeniz veya bir [çapraz bölgesel yük dengeleme](./cross-region-overview.md) modeline taşımanız gerekebilir

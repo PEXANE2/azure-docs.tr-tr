@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: d5f5e1098b688fc307bae5ea3538c818cb529b0a
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: e15dce586dc4dd43cf56fd1cbb08b84ebcda1787
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962406"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232310"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Web API 'Lerini çağıran masaüstü uygulaması: belirteç alma
 
@@ -420,8 +420,8 @@ Bir etki alanında veya Azure AD 'ye katılmış makinede bir etki alanı kullan
 - Tümleşik Windows kimlik doğrulaması yalnızca *federe +* Kullanıcı, diğer bir deyişle, Active Directory ve Azure AD tarafından desteklenen kullanıcılar için kullanılabilir. *Yönetilen* kullanıcılar olarak bilinen Active Directory yedekleme olmadan doğrudan Azure AD 'de oluşturulan kullanıcılar bu kimlik doğrulama akışını kullanamaz. Bu sınırlama, Kullanıcı adı ve parola akışını etkilemez.
 - IWA, .NET Framework, .NET Core ve Evrensel Windows Platformu (UWP) platformları için yazılan uygulamalar içindir.
 - IWA [Multi-Factor Authentication 'ı (MFA)](../authentication/concept-mfa-howitworks.md)atlamaz. MFA yapılandırıldıysa, MFA Kullanıcı etkileşimi gerektirdiğinden, bir MFA sınaması gerekliyse ıWA başarısız olabilir.
-  > [!NOTE]
-  > Bu, karmaşık bir değer. IWA etkileşimli değil, ancak MFA Kullanıcı etkileşimi gerektirir. Kimlik sağlayıcısının MFA istediğinde, kiracı yöneticisinin ne zaman yapılacağını kontrol etmeyin. Farklı bir ülke/bölgeden oturum açtığınızda MFA, bir kurumsal ağa VPN aracılığıyla bağlı olmadığında ve bazen VPN aracılığıyla bağlandığında bile gereklidir. Belirleyici bir kural kümesi beklenmeyin. Azure AD, MFA 'nın gerekli olup olmadığını sürekli olarak öğrenmek için AI 'yi kullanır. IWA başarısız olursa etkileşimli kimlik doğrulama veya cihaz kodu akışı gibi bir Kullanıcı istemine geri dönün.
+  
+    IWA etkileşimli değil, ancak MFA Kullanıcı etkileşimi gerektirir. Kimlik sağlayıcısının MFA istediğinde, kiracı yöneticisinin ne zaman yapılacağını kontrol etmeyin. Farklı bir ülke/bölgeden oturum açtığınızda MFA, bir kurumsal ağa VPN aracılığıyla bağlı olmadığında ve bazen VPN aracılığıyla bağlandığında bile gereklidir. Belirleyici bir kural kümesi beklenmeyin. Azure AD, MFA 'nın gerekli olup olmadığını sürekli olarak öğrenmek için AI 'yi kullanır. IWA başarısız olursa etkileşimli kimlik doğrulama veya cihaz kodu akışı gibi bir Kullanıcı istemine geri dönün.
 
 - Geçirilen yetkilinin `PublicClientApplicationBuilder` olması gerekir:
   - Form, `https://login.microsoftonline.com/{tenant}/` `tenant` Kiracı kimliğini veya kiracı ile ilişkili bir etki alanını temsıl eden GUID 'dir.
@@ -602,14 +602,13 @@ Ayrıca, Kullanıcı adı ve parola sağlayarak bir belirteç elde edebilirsiniz
 
 ### <a name="this-flow-isnt-recommended"></a>Bu akış önerilmez
 
-Bu akış *önerilmez* çünkü uygulamanızın bir kullanıcıdan parolalarını güvenli hale getirmesini isteyin. Daha fazla bilgi için, bkz. [parola büyüyen soruna neden olan çözüm nedir?](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). Windows etki alanına katılmış makinelerde sessizce belirteç almak için tercih edilen akış, [Windows kimlik doğrulaması ' nı tümleştirilmiştir](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication). [Cihaz kod akışını](https://aka.ms/msal-net-device-code-flow)da kullanabilirsiniz.
+Kullanıcı adı ve parola akışı *önerilmez* , çünkü uygulamanızın bir kullanıcıdan parolasını güvenli hale getirmesini isteyin. Daha fazla bilgi için bkz [. parolaların büyüyen sorunlu çözümü nedir?](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/) Windows etki alanına katılmış makinelerde sessizce belirteç almak için tercih edilen akış, [Windows kimlik doğrulaması ' nı tümleştirilmiştir](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication). [Cihaz kod akışını](https://aka.ms/msal-net-device-code-flow)da kullanabilirsiniz.
 
-> [!NOTE]
-> Bir Kullanıcı adı ve parola kullanmak, DevOps senaryoları gibi bazı durumlarda faydalıdır. Ancak, kendi Kullanıcı arabiriminizi sağladığınız Etkileşimli senaryolarda Kullanıcı adı ve parola kullanmak istiyorsanız, bunu nasıl uzaklaşmanız gerektiğini düşünün. Bir Kullanıcı adı ve parola kullanarak birkaç şey sağlarsınız:
->
-> - Modern kimliğin temel anları. Paylaşılan bir gizli dizi yakalanabileceğinden, bir parola, biraz ele alınabilir ve yeniden çalınabilir. Passwordless ile uyumsuz.
-> - MFA yapması gereken kullanıcılar etkileşime sahip olmadığından oturum açamıyor.
-> - Kullanıcılar çoklu oturum açma (SSO) yapamazlar.
+Bir Kullanıcı adı ve parola kullanmak, DevOps senaryoları gibi bazı durumlarda faydalıdır. Ancak, kendi Kullanıcı arabiriminizi sağladığınız Etkileşimli senaryolarda Kullanıcı adı ve parola kullanmak istiyorsanız, bunu nasıl uzaklaşmanız gerektiğini düşünün. Bir Kullanıcı adı ve parola kullanarak birkaç şey sağlarsınız:
+
+- Modern kimliğin temel anları. Paylaşılan bir gizli dizi yakalanabileceğinden, bir parola, biraz ele alınabilir ve yeniden çalınabilir. Passwordless ile uyumsuz.
+- MFA yapması gereken kullanıcılar etkileşime sahip olmadığından oturum açamıyor.
+- Kullanıcılar çoklu oturum açma (SSO) yapamazlar.
 
 ### <a name="constraints"></a>Kısıtlamalar
 

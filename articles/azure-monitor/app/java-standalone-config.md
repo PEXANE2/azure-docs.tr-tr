@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 375f0a26006f1176174b335073709e45911d9921
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 953a9cfeed558291fba1cb517039f26860444904
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165816"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233670"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Yapılandırma seçenekleri-Java için Azure Izleyici Application Insights
 
@@ -39,14 +39,14 @@ Daha fazla ayrıntı ve ek yapılandırma seçeneklerini aşağıda bulabilirsin
 
 ## <a name="configuration-file-path"></a>Yapılandırma dosyası yolu
 
-Varsayılan olarak Application Insights Java 3,0, yapılandırma dosyasının adlandırılması `applicationinsights.json` ve ile aynı dizinde bulunması beklenir `applicationinsights-agent-3.0.0.jar` .
+Varsayılan olarak Application Insights Java 3,0, yapılandırma dosyasının adlandırılması `applicationinsights.json` ve ile aynı dizinde bulunması beklenir `applicationinsights-agent-3.0.1.jar` .
 
 Kendi yapılandırma dosya yolunuzu aşağıdakilerden birini kullanarak belirtebilirsiniz
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE` ortam değişkeni veya
 * `applicationinsights.configuration.file` Java sistem özelliği
 
-Göreli bir yol belirtirseniz, bulunduğu dizine göre çözümlenir `applicationinsights-agent-3.0.0.jar` .
+Göreli bir yol belirtirseniz, bulunduğu dizine göre çözümlenir `applicationinsights-agent-3.0.1.jar` .
 
 ## <a name="connection-string"></a>Bağlantı dizesi
 
@@ -170,7 +170,7 @@ Tüm telemetrinize özel boyutlar eklemek istiyorsanız:
 `${...}` , başlangıçta belirtilen ortam değişkeninden değeri okumak için kullanılabilir.
 
 > [!NOTE]
-> Version 3.0.1-BETA sürümünden başlayarak, adlı özel bir boyut eklerseniz, `service.version` Bu değer `application_Version` özel bir boyut yerine Application Insights logs tablosundaki sütunda depolanır.
+> Sürüm 3.0.1 'den başlayarak, adlı özel bir boyut eklerseniz `service.version` , bu değer `application_Version` özel bir boyut yerine Application Insights logs tablosundaki sütununda depolanır.
 
 ## <a name="telemetry-processors-preview"></a>Telemetri işlemcileri (Önizleme)
 
@@ -241,7 +241,7 @@ Mikro ölçüm ölçümlerinin otomatik toplanmasını devre dışı bırakmak i
 
 ## <a name="suppressing-specific-auto-collected-telemetry"></a>Belirli otomatik toplanan Telemetriyi gizleme
 
-Sürüm 3.0.1-BETA. 2 ' den başlayarak, belirli otomatik toplanan telemetri bu yapılandırma seçenekleri kullanılarak gizlenebilir:
+3.0.1 sürümünden başlayarak, belirli otomatik toplanan telemetri şu yapılandırma seçenekleri kullanılarak gizlenebilir:
 
 ```json
 {
@@ -338,7 +338,7 @@ Varsayılan olarak, Java 3,0 günlüklerini `INFO` `applicationinsights.log` Bu 
 
 `level` ,,,,, veya bunlardan biri olabilir `OFF` `ERROR` `WARN` `INFO` `DEBUG` `TRACE` .
 
-`path` mutlak veya göreli bir yol olabilir. Göreli yollar, bulunduğu dizine göre çözümlenir `applicationinsights-agent-3.0.0.jar` .
+`path` mutlak veya göreli bir yol olabilir. Göreli yollar, bulunduğu dizine göre çözümlenir `applicationinsights-agent-3.0.1.jar` .
 
 `maxSizeMb` , oturum açmadan önce günlük dosyasının en büyük boyutudur.
 

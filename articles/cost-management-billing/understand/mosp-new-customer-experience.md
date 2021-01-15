@@ -6,14 +6,14 @@ ms.reviewer: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 01/11/2021
 ms.author: banders
-ms.openlocfilehash: 7bec455b804d1f4b13ab7e13677092077214a121
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: f0645115246995c9605563626d99bbf6a76784e1
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965859"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133579"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>Güncelleştirilmiş Azure faturalama hesabınızı kullanmaya başlama
 
@@ -40,7 +40,7 @@ Faturalama profili, faturanızı ve ödeme yöntemlerinizi yönetmek için kulla
 
 Hesabınız güncelleştirildiğinde her abonelik için otomatik olarak bir faturalama profili oluşturulur. Aboneliğin ücretleri ilgili faturalama profiline faturalandırılır ve faturasında görüntülenir.
 
-Faturalama profillerindeki roller, faturaları ve ödeme yöntemlerini görüntüleme ve yönetme izinlerine sahiptir. Bu roller, kuruluştaki muhasebe ekibinin üyeleri gibi faturaları ödeyen kullanıcılara atanmalıdır. Daha fazla bilgi için bkz. [faturalama profili rolleri ve görevleri](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks). 
+Faturalama profillerindeki roller, faturaları ve ödeme yöntemlerini görüntüleme ve yönetme izinlerine sahiptir. Bu roller, kuruluştaki muhasebe ekibinin üyeleri gibi faturaları ödeyen kullanıcılara atanmalıdır. Daha fazla bilgi için bkz. [faturalama profili rolleri ve görevleri](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks).
 
 Hesabınız güncelleştirildiğinde, başkalarına [faturaları görüntüleme](download-azure-invoice.md#allow-others-to-download-the-your-subscription-invoice) izni verdiğiniz her abonelik için sahip, katkıda bulunan, okuyucu veya fatura okuyucusu Azure rolüne sahip kullanıcılara ilgili faturalama profilinde okuyucu rolü verilir.
 
@@ -48,7 +48,7 @@ Hesabınız güncelleştirildiğinde, başkalarına [faturaları görüntüleme]
 
 Fatura bölümü, faturanızdaki maliyetleri düzenlemek için kullanılır. Örneğin, tek bir faturaya ihtiyacınız olabilir ama maliyetleri departmana, ekibe veya projeye göre düzenlemek isteyebilirsiniz. Bu senaryoda, her bir bölüm, ekip veya proje için fatura bölümü oluşturduğunuz tek bir faturalama profiliniz vardır.
 
-Hesabınız güncelleştirildiğinde her faturalama profili için bir fatura bölümü oluşturulur ve fatura bölümüne ilgili abonelik atanır. Daha fazla abonelik ekledikçe ek bölümler oluşturabilir ve abonelikleri fatura bölümlerine atayabilirsiniz. Faturalama profilinizin faturasında, atadığınız her aboneliğin kullanımını yansıtan bölümler görürsünüz.
+Hesabınız güncelleştirildiğinde her faturalama profili için bir fatura bölümü oluşturulur ve fatura bölümüne ilgili abonelik atanır. Daha fazla abonelik ekledikçe daha fazla bölümler oluşturabilir ve abonelikleri fatura bölümlerine atayabilirsiniz. Faturalama profilinizin faturasında, atadığınız her aboneliğin kullanımını yansıtan bölümler görürsünüz.
 
 Fatura bölümündeki roller, kimlerin Azure abonelikleri oluşturduğunu denetleme iznine sahiptir. Roller, kuruluştaki ekipler için Azure ortamını ayarlayan mühendislik liderleri ve teknik mimarlar gibi kullanıcılara atanmalıdır. Daha fazla bilgi için bkz. [fatura bölümü rolleri ve görevleri](../manage/understand-mca-roles.md#invoice-section-roles-and-tasks).
 
@@ -80,15 +80,15 @@ Yeni deneyiminiz, maliyetlerinizi ve faturalarınızı yönetmenizi kolaylaştı
 
 #### <a name="account-and-subscription-management"></a>Hesap ve abonelik yönetimi
 
-**Faturalama işlemlerini yapmaları için birden çok yönetici atayın**: Hesabınızın faturalamasını yönetmeleri için birden çok kullanıcıya faturalama izinleri atayın. Başkalarına okuma veya yazma izni ya da her iki izni de sağlayarak esneklik elde edin.
+**Faturalama işlemlerini yapmaları için birden çok yönetici atayın**: Hesabınızın faturalamasını yönetmeleri için birden çok kullanıcıya faturalama izinleri atayın. Başkalarına okuma izni, yazma izni veya her ikisini de vererek esneklik elde edin.
 
-**Doğrudan Azure portalda ek abonelikler oluşturun**: Azure portalda tüm aboneliklerinizi tek tıklamayla oluşturun.
+**Doğrudan Azure portalda daha fazla abonelik oluşturun**: Azure portalda tüm aboneliklerinizi tek seçimle oluşturun.
 
 #### <a name="api-support"></a>API desteği
 
-**Faturalama ve maliyet yönetimi işlemlerini API'ler, SDK ve PowerShell aracılığıyla gerçekleştirin**: Faturalama ve maliyet verilerini tercih ettiğiniz veri analizi araçlarına çekmek için maliyet yönetimi, faturalama ve tüketim API'lerini kullanın.
+**Faturalama ve maliyet yönetimi işlemlerini API'ler, SDK ve PowerShell aracılığıyla yapın**: Faturalama ve maliyet verilerini tercih ettiğiniz veri analizi araçlarına çekmek için maliyet yönetimi, faturalama ve tüketim API'lerini kullanın.
 
-**Tüm abonelik işlemlerini API'ler, SDK ve PowerShell üzerinden gerçekleştirin**: Azure aboneliklerinizin yönetimini otomatikleştirmek, örneğin aboneliği oluşturma, yeniden adlandırma ve iptal etme işlemlerini yapmak için Azure aboneliği API'lerini kullanın.
+**Tüm abonelik işlemlerini API'ler, SDK ve PowerShell üzerinden yapın**: Azure aboneliklerinizin yönetimini otomatikleştirmek, örneğin aboneliği oluşturma, yeniden adlandırma ve iptal etme işlemlerini yapmak için Azure aboneliği API'lerini kullanın.
 
 ## <a name="get-prepared-for-your-new-experience"></a>Yeni deneyiminize hazır olun
 
@@ -100,12 +100,63 @@ Yeni deneyimde faturanız her ayın yaklaşık dokuzuncu günü oluşturulur ve 
 
 **Yeni faturalama ve maliyet yönetimi API'leri**
 
-Faturalama ve maliyet verilerinizi sorgulamak ve güncelleştirmek için Maliyet Yönetimi ve Faturalama API'lerini kullanıyorsanız artık yeni API'leri kullanmalısınız. Aşağıdaki tabloda yeni faturalama hesabında kullanılamayacak API'ler ve yeni faturalama hesabınızda yapmanız gereken değişiklikler listelenir.
+Faturalama ve maliyet verilerinizi sorgulayıp güncelleştirmek için Maliyet Yönetimi ve Faturalama API'lerini kullanıyorsanız artık yeni API'leri kullanmalısınız. Aşağıdaki tabloda yeni faturalama hesabında kullanılamayacak API'ler ve yeni faturalama hesabınızda yapmanız gereken değişiklikler listelenir.
 
 |API | Değişiklikler  |
 |---------|---------|
-|[Faturalama Hesapları - Listeleme](/rest/api/billing/2019-10-01-preview/billingaccounts/list) | Faturalama Hesapları - Listeleme API'sinde eski faturalama hesabınızın agreementType ayarı **MicrosoftOnlineServiceProgram**'dır, yeni faturalama hesabınızın agreementType ayarı **MicrosoftCustomerAgreement** olur. agreementType üzerinde bir bağımlılığınız varsa lütfen güncelleştirin. |
+|[Faturalama Hesapları - Listeleme](/rest/api/billing/2019-10-01-preview/billingaccounts/list) | Faturalama Hesapları - Listeleme API'sinde eski faturalama hesabınızın agreementType ayarı **MicrosoftOnlineServiceProgram**'dır, yeni faturalama hesabınızın agreementType ayarı **MicrosoftCustomerAgreement** olur. agreementType üzerinde bir bağımlılığınız varsa bunu güncelleştirin. |
 |[Faturalar - Faturalama Aboneliğine Göre Listeleme](/rest/api/billing/2019-10-01-preview/invoices/listbybillingsubscription)     | Bu API yalnızca hesabınız güncelleştirilmeden önce oluşturulmuş olan faturaları döndürür. Yeni faturalama hesabınızda oluşturulan faturaları almak için [Faturalar - Faturalama Hesabına Göre Listeleme](/rest/api/billing/2019-10-01-preview/invoices/listbybillingaccount) API'sini kullanmanız gerekebilir. |
+
+## <a name="cost-management-updates-after-account-update"></a>Hesap güncelleştirmesi sonrasında Maliyet Yönetimi güncelleştirmeleri
+
+Microsoft Müşteri Sözleşmesi için güncelleştirilen Azure faturalama hesabınız, Azure portalda kullandıkça öde hesabınızla erişemediğiniz yeni ve genişletilmiş Maliyet Yönetimi deneyimlerine erişmenizi sağlar.
+
+### <a name="new-capabilities"></a>Yeni özellikler
+
+Azure faturalama hesabınızla aşağıdaki yeni özellikler sağlanır.
+
+#### <a name="new-billing-scopes"></a>Yeni faturalama kapsamları
+
+Güncelleştirilmiş hesabınızın bir parçası olarak Maliyet Yönetimi + Faturalama'da yeni kapsamlarınız vardır. Bunlar hiyerarşik düzenleme ve faturalamaya yardımcı olmanın yanı sıra, birden çok temel aboneliğin birleşik ücretlerini görüntülemek için de bir yol sağlar. Faturalama kapsamları hakkında daha fazla bilgi için bkz. [Microsoft Müşteri Sözleşmesi kapsamları](../costs/understand-work-scopes.md#microsoft-customer-agreement-scopes).
+
+Daha üst kapsamlarda birleşik maliyet görünümleri elde etmek için Maliyet Yönetimi API'lerini de kullanabilirsiniz. Abonelik kapsamını kullanan tüm Maliyet Yönetimi API'leri, şemadaki birkaç küçük değişiklikle hala kullanılabilir. API'ler hakkında daha fazla bilgi için bkz. [Azure Maliyet Yönetimi API'leri](/rest/api/cost-management/) ve [Azure Tüketim API'leri](/rest/api/consumption/).
+
+#### <a name="cost-allocation"></a>Maliyet ayırma
+
+Güncelleştirilmiş hesabınızla kuruluşunuzdaki paylaşılan hizmetler arasında maliyet dağılımı yapmak için maliyet ayırma özelliklerini kullanabilirsiniz. Maliyetleri ayırma hakkında daha fazla bilgi için bkz. [Azure maliyet ayırma kurallarını oluşturma ve yönetme](../costs/allocate-costs.md).
+
+#### <a name="power-bi"></a>Power BI
+
+Power BI Desktop için Azure Maliyet Yönetimi bağlayıcısı Azure kullanımınızı ve harcamalarınızı gösteren özel görselleştirmeler ve raporlar oluşturmanıza yardımcı olur. Güncelleştirilmiş hesabınıza bağlandıktan sonra maliyet ve kullanım verilerinize erişirsiniz. Power BI Desktop'ta Azure Maliyet Yönetimi bağlayıcısı hakkında daha fazla bilgi için bkz. [Power BI Desktop'ta Azure Maliyet Yönetimi bağlayıcısıyla görseller ve raporlar oluşturma](/power-bi/connect-data/desktop-connect-azure-cost-management).
+
+### <a name="updated-capabilities"></a>Güncelleştirilmiş özellikler
+
+Azure faturalama hesabınızla aşağıdaki güncelleştirilmiş özellikler sağlanır.
+
+#### <a name="cost-analysis"></a>Maliyet analizi
+
+Aylara göre tüketim maliyetlerinizi görüntülemeye ve izlemeye devam edebileceğiniz gibi, artık Maliyet analizinde rezervasyon ve Market satın alma maliyetlerinizi de görüntüleyebilirsiniz.
+
+Güncelleştirilmiş hesabınızla tüm Azure ücretleri için tek bir fatura alırsınız. Ayrıca önceki faturalama dönemleri görünümü yerine şimdi basitleştirilmiş tek bir aylık takvim görünümünden yararlanırsınız.
+
+Örneğin eski hesabınızda faturalama döneminiz 24 Kasım ile 23 Aralık arasındaysa, yükseltme sonrasında bu tarihler 1 Kasım ile 30 Kasım, 1 Aralık ile 31 Aralık vb. arasında olacaktır.
+
+:::image type="content" source="./media/mosp-new-customer-experience/billing-periods.png" alt-text="Eski ve yeni faturalama dönemleri arasındaki karşılaştırmayı gösteren resim" lightbox="./media/mosp-new-customer-experience/billing-periods.png" :::
+
+#### <a name="budgets"></a>Bütçeler
+
+Artık faturalama hesabı için bütçe oluşturabilir, bu sayede abonelikler arasında maliyetleri izleyebilirsiniz. Ayrıca bütçeleri kullanarak satın alma ücretlerinizi yakın takibe alabilirsiniz. Bütçeler hakkında daha fazla bilgi için bkz. [Azure bütçeleri oluşturma ve yönetme](../costs/tutorial-acm-create-budgets.md).
+
+#### <a name="exports"></a>Dışarı Aktarmalar
+
+Yeni faturalama döneminiz geliştirilmiş dışarı aktarma işlevi sağlar. Örneğin, satın almaları veya amorti edilmiş maliyetleri (satın alma dönemine yayılan rezervasyon satın alma maliyetleri) içeren gerçek maliyetler için dışarı aktarma işlemleri oluşturabilirsiniz. Ayrıca faturalama hesabının tüm aboneliklerindeki kullanımı ve ücretleri elde etmek üzere faturalama hesabı için de bir dışarı aktarma oluşturabilirsiniz. Dışa aktarma işlemleri hakkında daha fazla bilgi için bkz. [Dışarı aktarılan verileri oluşturma ve yönetme](../costs/tutorial-export-acm-data.md).
+
+> [!NOTE]
+> Hesabınız güncelleştirilmeden önce **Son ayın maliyetlerinin aylık dışarı aktarması** türünde oluşturulan dışarı aktarmalar son faturalama döneminin değil son takvim ayının verilerini dışarı aktarır.
+
+Örneğin 23 Aralık ile 22 Ocak arasındaki faturalama dönemi için dışarı aktarılan CSV dosyasında söz konusu dönemin maliyet ve kullanım verileri yer alır. Güncelleştirme sonrasında, dışarı aktarma işlemi takvim ayının verilerini içerecektir. Örneğin, 1 Ocak ile 31 Aralık arası vb.
+
+:::image type="content" source="./media/mosp-new-customer-experience/export-amortized-costs.png" alt-text="Eski ve yeni dışarı aktarma ayrıntıları arasındaki karşılaştırmayı gösteren resim" lightbox="./media/mosp-new-customer-experience/export-amortized-costs.png" :::
 
 ## <a name="additional-information"></a>Ek bilgiler
 

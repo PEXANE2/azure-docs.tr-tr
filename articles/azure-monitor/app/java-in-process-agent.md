@@ -6,12 +6,12 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 2011d013cce43eaf471d61936d5c34c318360381
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 32d906bf96a0ad5cf798f68bf83f2d6af1064361
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616652"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98231749"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Java kodsuz kullanacaksınız uygulama izleme Azure izleyici Application Insights
 
@@ -34,11 +34,11 @@ Uygulamanız için hala özel telemetri gönderebilirsiniz. 3,0 Aracısı, otoma
 >
 > JSON yapısı tamamen değiştiği için tüm [yapılandırma seçeneklerini](./java-standalone-config.md) dikkatle gözden geçirin. Bu, tüm küçük harfleri gösteren dosya adının tümüne ek olarak.
 
-[Applicationinsights-Agent-3.0.0. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0/applicationinsights-agent-3.0.0.jar) dosyasını indirin
+[Applicationinsights-Agent-3.0.1. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.1/applicationinsights-agent-3.0.1.jar) dosyasını indirin
 
 **2. JVM 'yi aracıya işaret edin**
 
-`-javaagent:path/to/applicationinsights-agent-3.0.0.jar`Uygulamanızın JVM bağımsız değişkenlerini ekleyin
+`-javaagent:path/to/applicationinsights-agent-3.0.1.jar`Uygulamanızın JVM bağımsız değişkenlerini ekleyin
 
 Tipik JVM bağımsız değişkenleri `-Xmx512m` ve içerir `-XX:+UseG1GC` . Bu nedenle, bunların nereye ekleneceğini biliyorsanız, bunun nereye ekleneceğini zaten öğrenmiş olursunuz.
 
@@ -54,7 +54,7 @@ Bir ortam değişkenini ayarlayarak aracıyı Application Insights kaynağına g
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 ```
 
-Ya da adlı bir yapılandırma dosyası oluşturup, ile `applicationinsights.json` aynı dizine yerleştirilerek `applicationinsights-agent-3.0.0.jar` aşağıdaki içerikle birlikte:
+Ya da adlı bir yapılandırma dosyası oluşturup, ile `applicationinsights.json` aynı dizine yerleştirilerek `applicationinsights-agent-3.0.1.jar` aşağıdaki içerikle birlikte:
 
 ```json
 {
@@ -255,7 +255,7 @@ try {
 ### <a name="add-request-custom-dimensions-using-the-2x-sdk"></a>2. x SDK 'sını kullanarak istek özel boyutları ekleme
 
 > [!NOTE]
-> Bu özellik yalnızca 3.0.1-BETA ve üzeri sürümlerde
+> Bu özellik yalnızca 3.0.1 ve üzeri sürümlerde
 
 `applicationinsights-web-2.6.2.jar`Uygulamanıza ekleme (tüm 2. x sürümleri Application Insights Java 3,0 tarafından desteklenir, ancak bir seçiminiz varsa en son kullanımı buna değecektir):
 
@@ -279,7 +279,7 @@ requestTelemetry.getProperties().put("mydimension", "myvalue");
 ### <a name="set-the-request-telemetry-user_id-using-the-2x-sdk"></a>2. x SDK 'sını kullanarak istek telemetrisi user_Id ayarlama
 
 > [!NOTE]
-> Bu özellik yalnızca 3.0.1-BETA ve üzeri sürümlerde
+> Bu özellik yalnızca 3.0.1 ve üzeri sürümlerde
 
 `applicationinsights-web-2.6.2.jar`Uygulamanıza ekleme (tüm 2. x sürümleri Application Insights Java 3,0 tarafından desteklenir, ancak bir seçiminiz varsa en son kullanımı buna değecektir):
 
@@ -303,7 +303,7 @@ requestTelemetry.getContext().getUser().setId("myuser");
 ### <a name="override-the-request-telemetry-name-using-the-2x-sdk"></a>2. x SDK 'sını kullanarak istek telemetri adını geçersiz kılın
 
 > [!NOTE]
-> Bu özellik yalnızca 3.0.1-BETA ve üzeri sürümlerde
+> Bu özellik yalnızca 3.0.1 ve üzeri sürümlerde
 
 `applicationinsights-web-2.6.2.jar`Uygulamanıza ekleme (tüm 2. x sürümleri Application Insights Java 3,0 tarafından desteklenir, ancak bir seçiminiz varsa en son kullanımı buna değecektir):
 

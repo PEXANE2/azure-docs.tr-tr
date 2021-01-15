@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: b11bdf9b82352c15b7f7236168494f32fe4a4f9f
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 280b3cbef8307691b0d50c4a26f6dca18b7fb65b
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221519"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233874"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Sanal makine ağ bant genişliği
 
@@ -52,15 +52,13 @@ Uç noktalar arasındaki veri aktarımı, veri aktarımını gerçekleştirenler
 
 ![Bir iletme gereci aracılığıyla TCP konuşması için akış sayısı](media/virtual-machine-network-throughput/flow-count-through-network-virtual-appliance.png)
 
-## <a name="flow-limits-and-recommendations"></a>Akış sınırları ve önerileri
+## <a name="flow-limits-and-active-connections-recommendations"></a>Akış sınırları ve etkin bağlantı önerileri
 
-Azure ağ yığını, 8 ' den fazla CPU çekirdeği ve 100 ' den fazla CPU çekirdeği olan VM 'Ler için iyi performansa sahip olan 250K toplam ağ akışını destekler. Bu sınırı aşan ağ performansı, ek akışlar bırakıldıktan sonra 500 k gelen ve 250K giden bir sabit sınıra kadar ek akışlar için düzgün şekilde düşer.
+Bugün, Azure ağ yığını bir VM için 1M toplam akışı (500k gelen ve 500k giden) destekler. Farklı senaryolarda bir VM tarafından işlenebilen toplam etkin bağlantı sayısı aşağıdaki gibidir.
+- VNET 'e ait VM 'Ler, _*_her yönde 500 bin etkin akışa_*_ sahıp tüm VM boyutları için 500 k **_etkin bağlantılar_* _ ' i işleyebilir.  
+- Ağ Geçidi, ara sunucu gibi ağ sanal gereçlerine sahip VM 'Ler (NVA 'lar), Yukarıdaki diyagramda gösterildiği gibi, yeni bağlantı kurulumunda bir sonraki atlamaya giden iletme ve ek yeni akış oluşturma nedeniyle *_her yönde_* 500 k _*_Etkin bağlantıları_*_ işleyebilir. 
 
-| Performans düzeyi | <8 CPU çekirdeği olan VM 'Ler | 8 + CPU çekirdekleri olan VM 'Ler |
-| ----------------- | --------------------- | --------------------- |
-|<b>İyi performans</b>|100K akış |250K akış|
-|<b>Azaltılmış performans</b>|100.000 akış üzerine|250K akışlar üzerinde|
-|<b>Akış sınırı</b>|500 k akış|500 k akış|
+Bu sınıra ulaştıktan sonra ek bağlantılar bırakılır. Bağlantı kurma ve sonlandırma ücretleri ayrıca, paket işleme yordamlarına sahip bağlantı kurma ve sonlandırma paylaşımları olarak ağ performansını etkileyebilir. İş yüklerini beklenen trafik desenlerine göre kıyaslanmasını ve iş yüklerini performans ihtiyaçlarınızı karşılayacak şekilde ölçeklendirmenizi öneririz.
 
 [Azure izleyici](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) 'de ölçümler, sanal makine veya VMSS örneklerindeki ağ akışı sayısını ve akış oluşturma hızını izlemek için kullanılabilir.
 

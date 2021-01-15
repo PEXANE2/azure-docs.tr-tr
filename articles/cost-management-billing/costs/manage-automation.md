@@ -3,17 +3,17 @@ title: Otomasyon ile Azure maliyetlerini yönetme
 description: Bu makalede, otomasyon ile Azure maliyetlerini nasıl yönetebileceğiniz açıklanmaktadır.
 author: bandersmsft
 ms.author: banders
-ms.date: 11/19/2020
+ms.date: 01/06/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 47d9c2838c5c806214e3be2f9ba7ce335bc0af67
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 02215bace693ac5ac36f9fc29758215d45b23eb1
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94956101"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051794"
 ---
 # <a name="manage-costs-with-automation"></a>Otomasyon ile maliyetleri yönetme
 
@@ -56,6 +56,22 @@ Kullanım Ayrıntıları API’sine bir günde _birden fazla istek yapmamanızı
 **Filtre uygulamadan en üst düzey kapsamları hedefleme**
 
 İhtiyaç duyduğunuz tüm verileri mümkün olan en geniş kapsamda almak için API’yi kullanın. Filtreleme, gruplandırma veya toplu analiz yapmadan önce tüm gerekli verilerin alınmasını bekleyin. API, büyük miktarda toplu olmayan ham maliyet verilerini sunmak amacıyla özel olarak iyileştirilmiştir. Maliyet Yönetimi’nde mevcut olan kapsamlar hakkında daha fazla bilgi edinmek için bkz. [Kapsamları anlama ve bunlarla çalışma](./understand-work-scopes.md). Bir kapsam için gereken verileri indirdiğinizde, verileri filtrelerle ve PivotTable’larla daha ayrıntılı bir şekilde analiz etmek için Excel’i kullanın.
+
+### <a name="notes-about-pricing"></a>Fiyatlandırma hakkında notlar
+
+Kullanımı ve ücretleri fiyat listeniz veya faturanızla mutabık kılmak istiyorsanız aşağıdaki bilgileri dikkate alın.
+
+Fiyat Listesi fiyat davranışı - Fiyat listesinde gösterilen fiyatlar, Azure'dan aldığınız fiyatlardır. Bunlar belirli bir ölçü birimine göre ölçeklendirilir. Ne yazık ki söz konusu ölçü birimi her zaman gerçek kaynak kullanımının ve ücretlerinin ifade edildiği ölçü birimiyle eşleşmez.
+
+Kullanım Ayrıntıları fiyat davranışı - Kullanım dosyalarında ölçeklendirilmiş bilgiler gösterilir ve bunlar fiyat listesiyle tam olarak eşleşmeyebilir. Özellikle:
+
+- Birim Fiyatı - Fiyat, ücretlerin Azure kaynakları tarafından ifade edildiği ölçü birimiyle eşleşmesi için ölçeklendirilir. Ölçeklendirme yapılırsa fiyat artık Fiyat Listesindeki fiyatla eşleşmeyecektir.
+- Ölçü Birimi - Ücretlerin Azure kaynakları tarafından ifade edildiği ölçü birimini temsil eder.
+- Geçerli Fiyat / Kaynak Ücreti - Fiyat, indirimler hesaba katıldıktan sonra birim başına ödeyeceğiniz gerçek rakamı temsil eder. Ücretleri mutabık kılmak için Miktara Uygulanan Fiyat * Miktar hesaplamaları yaparken kullanılacak olan fiyat budur. Fiyatta aşağıdaki senaryolar ve dosyalarda da yer alan ölçeklendirilmiş birim fiyatı hesaba katılır. Sonuç olarak bu, ölçeklendirilmiş birim fiyatından farklı olabilir.
+  - Katmanlı fiyatlandırma - Örneğin: İlk 100 birim için 10 ABD doları, sonraki 100 birim için 8 ABD doları.
+  - Dahil edilen miktar - Örneğin: İlk 100 birim ücretsiz ve sonra birim başına 10 ABD doları.
+  - Rezervasyonlar
+  - Hesaplamada yapılan yuvarlama – Yuvarlama yapılırken tüketilen miktar, katman/dahil edilen miktar fiyatlandırması ve ölçeklendirilmiş birim fiyatı hesaba katılır.
 
 ## <a name="example-usage-details-api-requests"></a>Örnek Kullanım Ayrıntıları API’si istekleri
 
@@ -325,7 +341,7 @@ Azure Eylem Grupları’nı kullanarak otomatikleştirilmiş eylemleri başlatma
 
 ## <a name="data-latency-and-rate-limits"></a>Veri gecikme süresi ve hız sınırları
 
-API’leri günde en fazla bir kez çağırmanızı öneririz. Maliyet Yönetimi verileri, Azure kaynak sağlayıcılarından yeni kullanım verileri alındıkça dört saatte bir yenilenir. Daha sık çağırmak, ek veri elde etmenizi sağlamaz. Bunun yerine, yalnızca yükün artmasına neden olur. Verilerin değişme sıklığı ve veri gecikme süresinin işlenme yöntemi hakkında daha fazla bilgi edinmek için bkz. [Maliyet Yönetimi verilerini anlama](understand-cost-mgt-data.md).
+API’leri günde en fazla bir kez çağırmanızı öneririz. Maliyet Yönetimi verileri, Azure kaynak sağlayıcılarından yeni kullanım verileri alındıkça dört saatte bir yenilenir. Daha sık çağrı yapmak daha fazla veri sağlamaz. Bunun yerine yalnızca yükün artmasına neden olur. Verilerin değişme sıklığı ve veri gecikme süresinin işlenme yöntemi hakkında daha fazla bilgi edinmek için bkz. [Maliyet Yönetimi verilerini anlama](understand-cost-mgt-data.md).
 
 ### <a name="error-code-429---call-count-has-exceeded-rate-limits"></a>Hata kodu 429 - Çağrı sayısı, hız sınırını aştı
 

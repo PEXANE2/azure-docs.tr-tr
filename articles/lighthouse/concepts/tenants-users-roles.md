@@ -1,14 +1,14 @@
 ---
 title: Azure açık senaryolarındaki kiracılar, kullanıcılar ve roller
 description: Azure Active Directory kiracılar, kullanıcılar ve roller kavramlarını ve bunların Azure Use senaryolarında nasıl kullanılabileceğini anlayın.
-ms.date: 10/29/2020
+ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 411b9bae19166e1875011360aa011c05d590b237
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d78828cc739030f8e456c64885d77ddf59dd13fb
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023951"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233925"
 ---
 # <a name="tenants-users-and-roles-in-azure-lighthouse-scenarios"></a>Azure açık senaryolarındaki kiracılar, kullanıcılar ve roller
 
@@ -18,7 +18,10 @@ Azure 'u açık bir şekilde [kullanmaya](../overview.md)başlamadan önce, Azur
 
 Bu mantıksal projeksiyonu başarmak için, müşteri kiracısındaki bir abonelik (veya bir abonelik içindeki bir veya daha fazla kaynak grubu), Azure açık *eklendi* olmalıdır. Bu ekleme işlemi, [Azure Resource Manager şablonlar aracılığıyla](../how-to/onboard-customer.md) veya [Azure Market 'e genel veya özel bir teklif yayınlayarak](../how-to/publish-managed-services-offers.md)yapılabilir.
 
-Seçtiğiniz ekleme yöntemine ne olursa *yetkilendirmeler* tanımlamanız gerekecektir. Her yetkilendirme, yönetim kiracısında, temsilcili kaynaklara erişimi olacak bir kullanıcı hesabı ve bu kullanıcıların her birinin bu kaynaklar için sahip olacağı izinleri ayarlayan yerleşik bir rol belirler.
+Seçtiğiniz ekleme yöntemine ne olursa *yetkilendirmeler* tanımlamanız gerekecektir. Her yetkilendirme, temsilcili kaynaklara erişimi olacak bir **PrincipalId** ve bu kullanıcıların her birinin bu kaynaklar için sahip olacağı izinleri ayarlayan yerleşik bir rol belirler. Bu **PrincipalId** , yönetim kiracısında BIR Azure AD kullanıcısı, grubu veya hizmet sorumlusu tanımlar.
+
+> [!NOTE]
+> Açıkça belirtilmedikçe, Azure Mathouse belgelerindeki bir "kullanıcıya" başvurular bir Azure AD kullanıcısına, grubuna veya hizmet sorumlusuna bir yetkilendirmede uygulanabilir.
 
 ## <a name="best-practices-for-defining-users-and-roles"></a>Kullanıcıları ve rolleri tanımlamaya yönelik en iyi uygulamalar
 

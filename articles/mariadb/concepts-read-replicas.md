@@ -5,13 +5,14 @@ author: savjani
 ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 10/15/2020
-ms.openlocfilehash: b2dbaa932c01c96582cb038143fa7686707be67d
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 01/15/2021
+ms.custom: references_regions
+ms.openlocfilehash: 576ff68961a68a8b54037d661a51a9d2de7a56df
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541173"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98231800"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanı’nda okuma amaçlı çoğaltmalar
 
@@ -24,7 +25,7 @@ GTıD çoğaltma hakkında daha fazla bilgi için bkz. [MariaDB çoğaltma belge
 > [!NOTE]
 > Sapma ücretsiz iletişim
 >
-> Microsoft, farklı ve üçlü ortamları destekler. Bu makale, _İkincil_ sözcüğe başvurular içerir. Kullanım açısından [ücretsiz iletişim Için Microsoft Stil Kılavuzu](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) bunu bir exclusionword olarak tanır. Bu makalede, şu anda yazılımda görüntülenen sözcük olduğundan, bu makalede tutarlılık için kullanılır. Yazılım, sözcüğü kaldıracak şekilde güncelleniyorsa, bu makale hizalamayla olacak şekilde güncelleştirilir.
+> Microsoft, farklı ve üçlü ortamları destekler. Bu makale _ana_ ve _bağımlı_ sözcüklere başvurular içerir. Kullanım açısından [ücretsiz iletişim Için Microsoft Stil Kılavuzu](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) , bu sözcükleri exclusionary kelimeleri olarak tanır. Bu makalede, şu anda yazılımda görüntülenen sözcükler olduklarından, bu makale tutarlılık için kullanılır. Yazılım, kelimeleri kaldırmak üzere güncelleniyorsa, bu makale hizalamayla olacak şekilde güncelleştirilir.
 >
 
 ## <a name="when-to-use-a-read-replica"></a>Okuma çoğaltması ne zaman kullanılır?
@@ -38,6 +39,7 @@ Yaygın bir senaryo, bı ve analitik iş yüklerinin raporlama için veri kayna�
 Okuma çoğaltması özelliği zaman uyumsuz çoğaltma kullanır. Özelliği, zaman uyumlu çoğaltma senaryolarına yönelik değildir. Kaynak ve çoğaltma arasında ölçülebilir bir gecikme olacaktır. Çoğaltılan veriler, sonunda, ana sunucudaki verilerle tutarlı hale gelir. Bu gecikmeyi barındırabilecek iş yükleri için bu özelliği kullanın.
 
 ## <a name="cross-region-replication"></a>Bölgeler arası çoğaltma
+
 Kaynak sunucunuzdaki farklı bir bölgede bir okuma çoğaltması oluşturabilirsiniz. Çapraz bölge çoğaltma, olağanüstü durum kurtarma planlaması veya kullanıcılarınıza daha yakın veri getirme gibi senaryolar için yararlı olabilir.
 
 [MariaDB bölgesinde herhangi bir Azure veritabanı için](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb)kaynak sunucunuz olabilir.  Kaynak sunucu, eşleştirilmiş bölgede veya evrensel çoğaltma bölgelerinde bir çoğaltmaya sahip olabilir. Aşağıdaki resimde, kaynak bölgenize göre hangi çoğaltma bölgelerinin kullanılabildiği gösterilmektedir.
@@ -118,14 +120,13 @@ Kaynak ve çoğaltma sunucuları arasında otomatik yük devretme yoktur.
 > [!Tip]
 > Çoğaltmaya yük devretmek, çoğaltmayı kaynaktan geri bağladığınızda oluşan gecikme süresi, ne kadar veri kaybı olduğunu gösterir.
 
-Bir çoğaltmaya yük devretmek istediğinizde, 
+Bir çoğaltmaya yük devretmek istediğinizde,
 
 1. Çoğaltmaya çoğaltmayı durdur<br/>
-   Bu adım, çoğaltma sunucusunun yazmaları kabul edebilmesini sağlamak için gereklidir. Bu işlemin bir parçası olarak, çoğaltma sunucusu ana sunucudan kaldırılacak. Çoğaltmayı Durdur ' u başlattığınızda, arka uç işleminin genellikle yaklaşık 2 dakika sürer. Bu eylemin etkilerini anlamak için bu makalenin [çoğaltmayı durdur](#stop-replication) bölümüne bakın.
-    
+   Bu adım, çoğaltma sunucusunun yazmaları kabul edebilmesini sağlamak için gereklidir. Bu işlemin bir parçası olarak, çoğaltma sunucusu ana sunucudan kaldırılacak. Çoğaltmayı durdur işlemini başlattıktan sonra, arka uç işleminin genellikle yaklaşık 2 dakika sürer. Bu eylemin etkilerini anlamak için bu makalenin [çoğaltmayı durdur](#stop-replication) bölümüne bakın.
 2. Uygulamanızı (eski) çoğaltmaya işaret edin<br/>
    Her sunucunun benzersiz bir bağlantı dizesi vardır. Uygulamanızı ana şablon yerine (eski) çoğaltmaya işaret etmek üzere güncelleştirin.
-    
+
 Uygulamanız okuma ve yazma işlemlerini başarıyla tamamladıktan sonra, yük devretmeyi tamamladınız. Bir sorunu saptadığınızda ve yukarıdaki 1. ve 2. adımları tamamladıktan sonra uygulama deneyimlerinizin ne kadar süre açık olacağını gösterir.
 
 ## <a name="considerations-and-limitations"></a>Önemli noktalar ve sınırlamalar

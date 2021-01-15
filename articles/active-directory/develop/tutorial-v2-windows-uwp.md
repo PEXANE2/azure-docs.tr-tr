@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 63d56d8afc584a760f4b31c6021d4c764afd52b3
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: bbcebfd69789eb6ec03e565b347d05533043781c
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064428"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232344"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Öğretici: Evrensel Windows Platformu (UWP) uygulamasından Microsoft Graph API 'sini çağırma
 
@@ -34,7 +34,7 @@ Bu öğreticide:
 > * Microsoft Graph API 'sini çağırmak için kod ekleme
 > * Uygulamayı test etme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) [Evrensel Windows platformu geliştirme](/windows/uwp/get-started/get-set-up) iş yükü yüklendi
 
@@ -48,7 +48,7 @@ Bu kılavuz Microsoft Graph API 'sini sorgulayan bir örnek UWP uygulaması olu�
 
 Bu kılavuz aşağıdaki NuGet paketini kullanır:
 
-|Kitaplık|Açıklama|
+|Kitaplık|Description|
 |---|---|
 |[Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)| Microsoft Authentication Library|
 |[Microsoft. Graph](https://www.nuget.org/packages/Microsoft.Graph)|Microsoft Graph Istemci kitaplığı|
@@ -59,8 +59,8 @@ Bu bölümde, Microsoft ile oturum açma ile bir Windows Masaüstü .NET uygulam
 
 Bu kılavuz, Microsoft Graph API 'sini sorgulayan ve oturumu kapatmak için bir düğme görüntüleyen bir uygulama oluşturur. Ayrıca, çağrıların sonuçlarını içeren metin kutularını da görüntüler.
 
-> [!NOTE]
-> Bu örnek Visual Studio projesini oluşturmak yerine indirmek istiyor musunuz? [Bir proje indirin](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)ve kod örneğini çalışmadan önce yapılandırmak için [uygulama kaydı](#register-your-application "uygulama kaydı adımı") adımına atlayın.
+> [!Tip]
+> Bu öğreticide oluşturduğunuz projenin tamamlanmış bir sürümünü görmek için [GitHub 'dan indirebilirsiniz](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip).
 
 ### <a name="create-your-application"></a>Uygulamanızı oluşturma
 
@@ -292,8 +292,7 @@ private async void SignOutButton_Click(object sender, RoutedEventArgs e)
     }
 ```
 
-> [!NOTE]
-> MSAL.NET, belirteçleri almak veya hesapları işlemek için zaman uyumsuz yöntemler kullanır. UI iş parçacığında Kullanıcı Arabirimi eylemlerini desteklemeniz gerekir. Bu, `Dispatcher.RunAsync` çağrının ve çağrı önleminden dolayı nedenidir `ConfigureAwait(false)` .
+MSAL.NET, belirteçleri almak veya hesapları işlemek için zaman uyumsuz yöntemler kullanır. UI iş parçacığında Kullanıcı Arabirimi eylemlerini desteklemeniz gerekir. Bu, `Dispatcher.RunAsync` çağrının ve çağrı önleminden dolayı nedenidir `ConfigureAwait(false)` .
 
 #### <a name="more-information-about-signing-out"></a>Oturumu kapatma hakkında daha fazla bilgi<a name="more-information-on-sign-out"></a>
 
@@ -477,8 +476,7 @@ Microsoft Graph API 'SI, `user.read` kapsamın bir kullanıcının profilini oku
 
 Kullanıcının takvimlerine bir uygulama bağlamında erişmek için, `Calendars.Read` temsilci iznini uygulama kayıt bilgilerine ekleyin. Ardından `Calendars.Read` kapsamı `acquireTokenSilent` çağrıya ekleyin.
 
-> [!NOTE]
-> Kapsam sayısını artırdıkça kullanıcılara ek yarışlar istenebilir.
+Kapsam sayısını artırdıkça kullanıcılara ek yarışlar istenebilir.
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 

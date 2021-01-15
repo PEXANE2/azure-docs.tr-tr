@@ -4,12 +4,12 @@ description: Azure Izleyici başvurusu, Azure Kaynak günlükleri için destekle
 ms.subservice: logs
 ms.topic: reference
 ms.date: 12/09/2020
-ms.openlocfilehash: c7b2d48b40843930bba78f54d2294769d952daf6
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: aeac069b4e9382867664a82af62e29e72da7585e
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931240"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232259"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Azure Kaynak günlükleri için desteklenen Kategoriler
 
@@ -18,7 +18,7 @@ ms.locfileid: "96931240"
 
 Azure [izleyici kaynak günlükleri](./platform-logs-overview.md) , bu hizmet veya kaynakların çalışmasını tanımlayan Azure hizmetleri tarafından oluşturulan günlüklerdir. Azure Izleyici aracılığıyla kullanılabilen tüm kaynak günlükleri, her bir hizmetin kendi olayları için benzersiz özellikler yaymasını sağlayan ortak bir üst düzey şemayı paylaşır.
 
-Kaynak türünün bir birleşimi ( `resourceId` özellikte mevcuttur) ve `category` bir şemayı benzersiz bir şekilde tanımlar. Daha sonra farklı günlük kategorileri için eklenen hizmete özgü alanları olan tüm kaynak günlüklerine ortak bir şema vardır. Daha fazla bilgi için bkz. [Azure Kaynak günlükleri Için ortak ve hizmete özel şema]()
+Kaynak türünün bir birleşimi ( `resourceId` özellikte mevcuttur) ve `category` bir şemayı benzersiz bir şekilde tanımlar. Hizmete özgü alanlarla, daha sonra farklı günlük kategorileri için eklenen tüm kaynak günlüklerine ortak bir şema vardır. Daha fazla bilgi için bkz. [Azure Kaynak günlükleri Için ortak ve hizmete özgü şema]()
 
 
 ## <a name="costs"></a>Maliyetler
@@ -34,7 +34,7 @@ Bazı kategoriler yalnızca belirli kaynak türleri için desteklenir. Bir kayna
 Hala bir sorun yoksa, bu makalenin alt kısmında bir GitHub açıklaması açabilirsiniz.
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft. AnalysisServices/sunucuları
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -44,7 +44,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -53,7 +53,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftappplatformspring"></a>Microsoft. AppPlatform/yay
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -63,7 +63,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft. Automation/automationAccounts
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -74,7 +74,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -83,7 +83,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftbatchaiworkspaces"></a>ChAI/çalışma alanlarını Microsoft.Bat
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -94,7 +94,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft. Blockzincirine/blockchainMembers
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -106,7 +106,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftblockchaincordamembers"></a>Microsoft. Blockzincirine/Cordadmembers
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -115,16 +115,16 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft. CDN/cdnwebapplicationfirewallpolicies
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
-|WebApplicationFirewallLogs|Web çıkışının başlatılıp başlatılmayacağını güvenlik duvarı günlükleri|
+|WebApplicationFirewallLogs|Web uygulaması güvenlik duvarı günlükleri|
 
 
 ## <a name="microsoftcdnprofiles"></a>Microsoft. CDN/profiller
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -133,7 +133,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftcdnprofilesendpoints"></a>Microsoft. CDN/profiller/uç noktaları
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -142,7 +142,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftclassicnetworknetworksecuritygroups"></a>Microsoft. ClassicNetwork/networksecuritygroups
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -151,7 +151,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft. Biliveservices/hesapları
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -162,7 +162,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftcontainerregistryregistries"></a>Microsoft. ContainerRegistry/kayıt defterleri
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -172,7 +172,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft. ContainerService/Managedkümeler
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -185,7 +185,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftcustomprovidersresourceproviders"></a>Microsoft. CustomProviders/resourceproviders
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -194,7 +194,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftdatabricksworkspaces"></a>Microsoft. Databricks/çalışma alanları
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -203,7 +203,7 @@ Maliyet: ücretsiz
 |dBFS|Databricks Dosya Sistemi|
 |ınstancepools|Örnek havuzları|
 |Çizelge|Databricks Işleri|
-|notebook|Databricks Not Defteri|
+|not defteri|Databricks Not Defteri|
 |kaynaklanır|Databricks gizli dizileri|
 |sqlPermissions|Databricks SQLPermissions|
 |SSH|Databricks SSH|
@@ -212,7 +212,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft. DataFactory/Factory
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -223,7 +223,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft. DataLakeStore/accounts
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -233,7 +233,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftdatashareaccounts"></a>Microsoft. DataShare/hesapları
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -245,7 +245,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftdbformariadbservers"></a>Microsoft. Dbformarıdb/sunucular
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -255,7 +255,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftdbformysqlflexibleservers"></a>Microsoft. Dbformyısql/Flexibelservers
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -265,7 +265,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft. Dbformyısql/sunucuları
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -275,7 +275,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftdbforpostgresqlflexibleservers"></a>Microsoft. DBforPostgreSQL/Flexibtaservers
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -284,7 +284,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft. DBforPostgreSQL/sunucuları
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -295,7 +295,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftdbforpostgresqlserversv2"></a>Microsoft. DBforPostgreSQL/serversv2
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -304,7 +304,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftdesktopvirtualizationapplicationgroups"></a>Microsoft. DesktopVirtualization/applicationgroups
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -315,7 +315,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftdesktopvirtualizationhostpools"></a>Microsoft. DesktopVirtualization/hostpools
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -328,7 +328,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftdesktopvirtualizationworkspaces"></a>Microsoft. DesktopVirtualization/çalışma alanları
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -340,7 +340,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft. Devices/IotHubs
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -362,7 +362,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Microsoft. Devices/provisioningServices
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -372,7 +372,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>UmentDB/databaseAccounts Microsoft.Doc
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -381,14 +381,14 @@ Maliyet: ücretsiz
 |DataPlaneRequests|DataPlaneRequests|
 |GremlinRequests|GremlinRequests|
 |MongoRequests|MongoRequests|
-|Partitionkeyrutüketim|Partitionkeyrutüketim|
+|PartitionKeyRUConsumption|PartitionKeyRUConsumption|
 |PartitionKeyStatistics|PartitionKeyStatistics|
 |QueryRuntimeStatistics|QueryRuntimeStatistics|
 
 
 ## <a name="microsofteventgriddomains"></a>Microsoft. EventGrid/Domains
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -398,7 +398,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsofteventgridsystemtopics"></a>Microsoft. EventGrid/Systemkonuları
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -407,7 +407,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsofteventgridtopics"></a>Microsoft. EventGrid/konuları
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -417,7 +417,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft. EventHub/ad alanları
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -432,7 +432,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsofthealthcareapisservices"></a>Microsoft. Healthgelişme API 'leri/Hizmetleri
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -441,7 +441,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftinsightsautoscalesettings"></a>Microsoft. Insights/oto Scalesettings
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -451,15 +451,15 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft. Insights/bileşenler
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
 |AppAvailabilityResults|Kullanılabilirlik sonuçları|
 |Appbrowserzamanlamalar|Tarayıcı zamanlamaları|
 |AppDependencies|Bağımlılıklar|
-|AppEvents|Olaylar|
-|AppExceptions|Özel Durumlar|
+|AppEvents|Ekinlikler|
+|AppExceptions|Özel durumlar|
 |Appölçümler|Ölçümler|
 |AppPageViews|Sayfa görünümleri|
 |AppPerformanceCounters|Performans sayaçları|
@@ -470,7 +470,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft. Keykasası/kasa
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -479,7 +479,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftkustoclusters"></a>Microsoft. kusto/kümeler
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -494,7 +494,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftlogicintegrationaccounts"></a>Microsoft. Logic/ıntegrationaccounts
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -503,7 +503,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft. Logic/iş akışları
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -512,7 +512,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft. MachineLearningServices/çalışma alanları
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -525,7 +525,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftmediamediaservices"></a>Microsoft. Media/mediaservices
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -534,7 +534,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft. Network/Applicationgateway 'ler
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -545,7 +545,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftnetworkazurefirewalls"></a>Microsoft. Network/azurefirewalls
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -555,7 +555,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftnetworkbastionhosts"></a>Microsoft. Network/bastionHosts
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -564,7 +564,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft. Network/Expressroutedevreleri
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -573,7 +573,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft. Network/frontkapaklı
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -583,7 +583,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft. Network/loadBalancers
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -593,7 +593,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftnetworknetworksecuritygroups"></a>Microsoft. Network/networksecuritygroups
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -604,7 +604,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft. Network/Publicıpaddresses
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -615,7 +615,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft. Network/trafficManagerProfiles
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -624,7 +624,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft. Network/Virtualnetworkgateway 'ler
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -637,7 +637,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft. Network/virtualNetworks
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -646,7 +646,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft. Powerbiadanmış/kapasiteler
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -655,7 +655,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftrecoveryservicesvaults"></a>Microsoft. RecoveryServices/kasa
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -677,7 +677,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftrelaynamespaces"></a>Microsoft. Relay/Namespace
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -686,7 +686,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft. Search/searchServices
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -695,7 +695,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft. ServiceBus/ad alanları
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -704,7 +704,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftsignalrservicesignalr"></a>Microsoft. SignalRService/SignalR
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -713,7 +713,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft. SQL/ManagedInstances
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -724,7 +724,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft. SQL/ManagedInstances/veritabanları
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -736,7 +736,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft. SQL/Servers/veritabanları
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -760,7 +760,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft. Storage/storageAccounts/blobServices
 
-Maliyet: [Azure Izleyici fiyatlandırma sayfasının](https://azure.microsoft.com/pricing/details/monitor/) platform günlükleri bölümünde Seviyelendirilmiş şekilde ödenmiştir. 
+Dışarı aktarma maliyeti: [Azure Izleyici fiyatlandırma sayfasının](https://azure.microsoft.com/pricing/details/monitor/) platform günlükleri bölümünde Seviyelendirilmiş şekilde ödenmiştir. 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -771,7 +771,7 @@ Maliyet: [Azure Izleyici fiyatlandırma sayfasının](https://azure.microsoft.co
 
 ## <a name="microsoftstoragestorageaccountsfileservices"></a>Microsoft. Storage/storageAccounts/fileServices
 
-Maliyet: [Azure Izleyici fiyatlandırma sayfasının](https://azure.microsoft.com/pricing/details/monitor/) platform günlükleri bölümünde Seviyelendirilmiş şekilde ödenmiştir. 
+Dışarı aktarma maliyeti: [Azure Izleyici fiyatlandırma sayfasının](https://azure.microsoft.com/pricing/details/monitor/) platform günlükleri bölümünde Seviyelendirilmiş şekilde ödenmiştir. 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -782,7 +782,7 @@ Maliyet: [Azure Izleyici fiyatlandırma sayfasının](https://azure.microsoft.co
 
 ## <a name="microsoftstoragestorageaccountsqueueservices"></a>Microsoft. Storage/storageAccounts/queueServices
 
-Maliyet: [Azure Izleyici fiyatlandırma sayfasının](https://azure.microsoft.com/pricing/details/monitor/) platform günlükleri bölümünde Seviyelendirilmiş şekilde ödenmiştir. 
+Dışarı aktarma maliyeti: [Azure Izleyici fiyatlandırma sayfasının](https://azure.microsoft.com/pricing/details/monitor/) platform günlükleri bölümünde Seviyelendirilmiş şekilde ödenmiştir. 
  
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -793,7 +793,7 @@ Maliyet: [Azure Izleyici fiyatlandırma sayfasının](https://azure.microsoft.co
 
 ## <a name="microsoftstoragestorageaccountstableservices"></a>Microsoft. Storage/storageAccounts/tableServices
 
-Maliyet: [Azure Izleyici fiyatlandırma sayfasının](https://azure.microsoft.com/pricing/details/monitor/) platform günlükleri bölümünde Seviyelendirilmiş şekilde ödenmiştir. 
+Dışarı aktarma maliyeti: [Azure Izleyici fiyatlandırma sayfasının](https://azure.microsoft.com/pricing/details/monitor/) platform günlükleri bölümünde Seviyelendirilmiş şekilde ödenmiştir. 
  
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -804,7 +804,7 @@ Maliyet: [Azure Izleyici fiyatlandırma sayfasının](https://azure.microsoft.co
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft. StreamAnalytics/streamingjobs
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -814,7 +814,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftsynapseworkspaces"></a>Microsoft. SYNAPSE/çalışma alanları
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -826,7 +826,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftsynapseworkspacesbigdatapools"></a>Microsoft. SYNAPSE/Workspaces/bigDataPools
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -835,7 +835,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftsynapseworkspacessqlpools"></a>Microsoft. SYNAPSE/Workspaces/Sqlhavuzlar
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -849,7 +849,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftwebhostingenvironments"></a>Microsoft. Web/hostingenvironments
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 |Kategori |Kategori görünen adı|
 |---|---|
@@ -858,7 +858,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftwebsites"></a>Microsoft. Web/siteler
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 
 |Kategori |Kategori görünen adı|
@@ -873,7 +873,7 @@ Maliyet: ücretsiz
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft. Web/Sites/Yuvaları
 
-Maliyet: ücretsiz 
+Dışarı aktarma maliyeti: ücretsiz 
 
 
 |Kategori |Kategori görünen adı|

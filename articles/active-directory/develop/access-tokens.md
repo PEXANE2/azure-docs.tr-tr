@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: hirsin
 ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: ceb5acbee2e572b1859a5577b58dd586fc924b3b
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 4a798443560f62673ef8fcf0bce970a66071d011
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653291"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232395"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity platform erişim belirteçleri
 
@@ -292,10 +292,7 @@ Yenileme belirteçleri, kimlik bilgilerinde bir değişiklik veya kullanım ya d
 - Ses
 - PIN
 
-> [!NOTE]
-> Windows 10 ' da birincil yenileme belirteçleri (PRT), kimlik bilgilerine göre ayrılmış olarak dağıtılır. Örneğin, Windows Hello ve Password kendilerine ait olan Prkalar varsa, bunlardan yalıtılmıştır. Bir Kullanıcı bir Hello kimlik bilgileri (PIN veya biyometri) ile oturum açtığında ve parolayı değiştirdiğinde, daha önce edinilen parola tabanlı PRT iptal edilir. Parola ile yeniden oturum açmak eski PRT 'yi geçersiz kılar ve yeni bir tane ister.
->
-> Yeni bir erişim belirteci getirmek ve belirteci yenilemek için kullanıldığında, yenileme belirteçleri geçersiz kılınmaz veya iptal edilmez.  Bununla birlikte, uygulamanız, kullanıldığı anda eskisini atmalıdır ve yeni belirtecin yeni bir sona erme saati olduğu için yenisiyle değiştirin.
+Birincil yenileme belirteçleri hakkında daha fazla bilgi için [birincil yenileme belirteçlerine](../devices/concept-primary-refresh-token.md) göz atın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

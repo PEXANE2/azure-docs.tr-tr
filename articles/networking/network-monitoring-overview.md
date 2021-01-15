@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
-ms.openlocfilehash: 36e41db6e1a3cff13f31f0abf2e83e872dfd7c49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a92c6789723dc42ac8f3a9c471e494079dc19328
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742341"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233449"
 ---
 # <a name="network-monitoring-solutions"></a>Ağ izleme çözümleri 
 
@@ -52,10 +52,10 @@ Performans Izleyicisi NPM 'nin bir parçasıdır ve bulut, karma ve şirket içi
 Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 * [Azure Izleyici günlüklerinde bir Ağ Performansı İzleyicisi çözümü yapılandırma](../azure-monitor/insights/network-performance-monitor.md) 
-* [Kullanım örnekleri](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)
+* [Kullanım örnekleri](/archive/blogs/msoms/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor)
 * Ürün güncelleştirmeleri:
-  * [Şubat 2017](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/)
-  * [Ağustos 2017](https://blogs.technet.microsoft.com/msoms/2017/08/14/improvements-to-oms-network-performance-monitor/)
+  * [Şubat 2017](/archive/blogs/msoms/oms-network-performance-monitor-is-now-generally-available)
+  * [Ağustos 2017](/archive/blogs/msoms/improvements-to-oms-network-performance-monitor)
 
 ## <a name="expressroute-monitor"></a>ExpressRoute Izleyicisi
 
@@ -70,7 +70,7 @@ ExpressRoute için NPM, Azure özel eşleme ve Microsoft eşleme bağlantıları
 
 ![Bölge genelinde trafiği gösteren coğrafi eşleme](./media/network-monitoring-overview/expressroute-topology-map.png) 
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 * [ExpressRoute için Ağ Performansı İzleyicisi’ni Yapılandırma](../expressroute/how-to-npm.md)
 * [Blog gönderisi](https://aka.ms/NPMExRmonitorGA)
@@ -86,7 +86,7 @@ Hizmet bağlantısı izleme ile artık uygulamaların erişilebilirliği test ed
 * Ağdaki etkin noktaları belirleme, bu durum kötü uygulama performansına neden olabilir
 * Microsoft 365, Dynamics 365, Skype Kurumsal ve diğer Microsoft Hizmetleri için yerleşik testler kullanarak Microsoft 365 uygulamalara yönelik erişilebilirliği izleyin
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 * [İzleme hizmeti uç noktaları için Ağ Performansı İzleyicisi yapılandırma](../azure-monitor/insights/network-performance-monitor-service-connectivity.md#configuration)
 * [Blog gönderisi](https://aka.ms/svcendptmonitor)
@@ -106,7 +106,7 @@ Trafik Analizi, kuruluşunuzun ağ etkinliğini denetlemenize, uygulamaları ve 
 ![Coğrafi eşleme, bölgeler arasında trafiği gösteriyor 2](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
 
 İlgili bağlantılar:
-* [Blog gönderisi](https://aka.ms/trafficanalytics), [Belgeler](https://aka.ms/trafficanalyticsdocs), [SSS](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-faq)
+* [Blog gönderisi](https://aka.ms/trafficanalytics), [Belgeler](../network-watcher/traffic-analytics.md), [SSS](../network-watcher/traffic-analytics-faq.md)
 
 ## <a name="dns-analytics"></a>DNS Analizi
 DNS yöneticileri için tasarlanan bu çözüm, güvenlik, işlemler ve performansla ilgili Öngörüler sağlamak için DNS günlüklerini toplar, çözümler ve birbirleriyle ilişkilendirir.  Bazı yetenekler şunlardır:
@@ -120,8 +120,8 @@ DNS yöneticileri için tasarlanan bu çözüm, güvenlik, işlemler ve performa
 ![DNS Analizi panosu](./media/network-monitoring-overview/dns-analytics-overview.png) 
 
 İlgili bağlantılar:
-* [Blog gönderisi](https://blogs.technet.microsoft.com/msoms/2017/04/19/introducing-oms-dns-analytics/), [Belgeler](https://docs.microsoft.com/azure/log-analytics/log-analytics-dns)
+* [Blog gönderisi](/archive/blogs/msoms/introducing-oms-dns-analytics), [Belgeler](../azure-monitor/insights/dns-analytics.md)
 
 ## <a name="miscellaneous"></a>Çeşitli
 
-* [Yeni fiyatlandırma](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor-pricing-faq)
+* [Yeni fiyatlandırma](../azure-monitor/insights/network-performance-monitor-pricing-faq.md)

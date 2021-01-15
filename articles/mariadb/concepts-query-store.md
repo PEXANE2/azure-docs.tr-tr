@@ -5,13 +5,13 @@ author: savjani
 ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: bca995f8b2cea33266e032b543abb18ee7140f3f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 01/15/2021
+ms.openlocfilehash: 164285b1fea3dce18161066e643aa165e47cc496
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541190"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233995"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>Sorgu deposu ile MariaDB için Azure veritabanı performansını izleme
 
@@ -21,7 +21,7 @@ MariaDB için Azure veritabanı 'nda bulunan Query Store özelliği, sorgu perfo
 
 ## <a name="common-scenarios-for-using-query-store"></a>Sorgu deposunu kullanmaya yönelik genel senaryolar
 
-Sorgu deposu, aşağıdakiler de dahil olmak üzere birkaç senaryo için kullanılabilir:
+Sorgu deposu, aşağıdakiler de dahil olmak üzere birçok senaryo için kullanılabilir:
 
 - Gerileyen sorgular algılanıyor
 - Belirli bir zaman penceresinde bir sorgunun kaç kez yürütüldüğünü belirleme
@@ -34,14 +34,14 @@ Sorgu deposu bir katılım özelliğidir, bu nedenle bir sunucuda varsayılan ol
 ### <a name="enable-query-store-using-the-azure-portal"></a>Azure portal kullanarak sorgu deposunu etkinleştirin
 
 1. Azure portal oturum açın ve MariaDB sunucusu için Azure veritabanınızı seçin.
-1. Menüdeki **Ayarlar** bölümünde **sunucu parametreleri** ' ni seçin.
-1. Query_store_capture_mode parametresini arayın.
-1. Değeri tümü ve **Kaydet** olarak ayarlayın.
+2. Menüdeki **Ayarlar** bölümünde **sunucu parametreleri** ' ni seçin.
+3. Query_store_capture_mode parametresini arayın.
+4. Değeri tümü ve **Kaydet** olarak ayarlayın.
 
 Sorgu deponuzda bekleme istatistiklerini etkinleştirmek için:
 
 1. Query_store_wait_sampling_capture_mode parametresini arayın.
-1. Değeri tümü ve **Kaydet** olarak ayarlayın.
+2. Değeri tümü ve **Kaydet** olarak ayarlayın.
 
 İlk veri toplu işi MySQL veritabanında kalıcı hale getirilemediği için 20 dakikaya kadar izin verin.
 
@@ -87,7 +87,7 @@ Sorgu deposu etkinleştirildiğinde, verileri 15 dakikalık toplama Windows 'a k
 
 Sorgu deposu parametrelerini yapılandırmak için aşağıdaki seçenekler kullanılabilir.
 
-| **Parametre** | **Açıklama** | **Varsayılan** | **Aralık** |
+| **Parametre** | **Açıklama** | **Varsayılanını** | **Aralık** |
 |---|---|---|---|
 | query_store_capture_mode | Değer temelinde sorgu deposu özelliğini açın/kapatın. Note: performance_schema KAPALıYSA query_store_capture_mode açıldığında, bu özellik için gerekli olan performance_schema ve performans şeması gereçlerinin bir alt kümesini açmanız gerekir. | ALL | HIÇBIRI, TÜMÜ |
 | query_store_capture_interval | Sorgu deposu yakalama aralığı dakika olarak. Sorgu ölçümlerinin toplanmış olduğu aralığın belirtilmesine izin verir | 15 | 5 - 60 |
@@ -96,7 +96,7 @@ Sorgu deposu parametrelerini yapılandırmak için aşağıdaki seçenekler kull
 
 Aşağıdaki seçenekler özellikle bekleme istatistikleri için geçerlidir.
 
-| **Parametre** | **Açıklama** | **Varsayılan** | **Aralık** |
+| **Parametre** | **Açıklama** | **Varsayılanını** | **Aralık** |
 |---|---|---|---|
 | query_store_wait_sampling_capture_mode | Bekleme istatistiklerinin açılmasını/KAPATıLMASıNı sağlar. | SEÇIM | HIÇBIRI, TÜMÜ |
 | query_store_wait_sampling_frequency | Saniye cinsinden bekleme örnekleme sıklığını değiştirir. 5-300 saniye. | 30 | 5-300 |
@@ -108,15 +108,15 @@ Bir parametre için farklı bir değer almak veya ayarlamak için [Azure Portal]
 
 ## <a name="views-and-functions"></a>Görünümler ve işlevler
 
-Aşağıdaki görünümleri ve işlevleri kullanarak sorgu deposunu görüntüleyin ve yönetin. [Ayrıcalık Seç ortak rolünde](howto-create-users.md#create-additional-admin-users) bulunan herkes, bu görünümleri sorgu deposundaki verileri görmek için kullanabilir. Bu görünümler yalnızca **MySQL** veritabanında kullanılabilir.
+Aşağıdaki görünümleri ve işlevleri kullanarak sorgu deposunu görüntüleyin ve yönetin. [Ayrıcalık Seç ortak rolünde](howto-create-users.md#create-more-admin-users) bulunan herkes, bu görünümleri sorgu deposundaki verileri görmek için kullanabilir. Bu görünümler yalnızca **MySQL** veritabanında kullanılabilir.
 
-Sorgular, sabit değerler ve sabitler kaldırıldıktan sonra yapısına bakılarak normalleştirilmelidir. İki sorgu özdeş değerler hariç aynıysa, aynı karma değerine sahip olur.
+Sorgular, sabit değerler ve sabitler kaldırıldıktan sonra yapısına bakılarak normalleştirilmelidir. İki sorgu özdeş değerler hariç aynıysa, aynı karma değerine sahip olacaktır.
 
 ### <a name="mysqlquery_store"></a>mysql.query_store
 
 Bu görünüm, sorgu deposundaki tüm verileri döndürür. Her farklı veritabanı KIMLIĞI, Kullanıcı KIMLIĞI ve sorgu KIMLIĞI için bir satır vardır.
 
-| **Ad** | **Veri Türü** | **IS_NULLABLE** | **Açıklama** |
+| **Ad** | **Veri türü** | **IS_NULLABLE** | **Açıklama** |
 |---|---|---|---|
 | `schema_name`| varchar (64) | NO | Şemanın adı |
 | `query_id`| büyük tamsayı (20) | NO| Belirli sorgu için oluşturulan benzersiz KIMLIK, aynı sorgu farklı şemada yürütülüyorsa yeni bir KIMLIK oluşturulur |
@@ -138,8 +138,8 @@ Bu görünüm, sorgu deposundaki tüm verileri döndürür. Her farklı veritaba
 | `sum_select_full_join` | büyük tamsayı (20)| NO| Tam birleşim sayısı|
 | `sum_select_scan` | büyük tamsayı (20)| NO| Seçme taraması sayısı |
 | `sum_sort_rows` | büyük tamsayı (20)| NO| Sıralanan satır sayısı|
-| `sum_no_index_used` | büyük tamsayı (20)| NO| Sorgunun herhangi bir dizini kullanmayan zaman sayısı|
-| `sum_no_good_index_used` | büyük tamsayı (20)| NO| Sorgu yürütme altyapısının herhangi bir iyi Dizin kullanmayan zaman sayısı|
+| `sum_no_index_used` | büyük tamsayı (20)| NO| Sorgunun herhangi bir dizin kullanmame sayısı|
+| `sum_no_good_index_used` | büyük tamsayı (20)| NO| Sorgu yürütme altyapısının hiçbir iyi Dizin kullanmame sayısı|
 | `sum_created_tmp_tables` | büyük tamsayı (20)| NO| Toplam oluşturulan geçici tablo sayısı|
 | `sum_created_tmp_disk_tables` | büyük tamsayı (20)| NO| Diskte oluşturulan toplam geçici tablo sayısı (g/ç oluşturur)|
 | `first_seen` | timestamp| NO| Toplama penceresi sırasında sorgunun ilk oluşumu (UTC)|
@@ -147,9 +147,9 @@ Bu görünüm, sorgu deposundaki tüm verileri döndürür. Her farklı veritaba
 
 ### <a name="mysqlquery_store_wait_stats"></a>mysql.query_store_wait_stats
 
-Bu görünüm sorgu deposundaki bekleme olayları verilerini döndürür. Her farklı veritabanı KIMLIĞI, Kullanıcı KIMLIĞI, sorgu KIMLIĞI ve olay için bir satır vardır.
+Bu görünüm sorgu deposundaki bekleme olayları verilerini döndürür. Her ayrı veritabanı KIMLIĞI, Kullanıcı KIMLIĞI, sorgu KIMLIĞI ve olay için bir satır vardır.
 
-| **Ad**| **Veri Türü** | **IS_NULLABLE** | **Açıklama** |
+| **Ad**| **Veri türü** | **IS_NULLABLE** | **Açıklama** |
 |---|---|---|---|
 | `interval_start` | timestamp | NO| Aralık başlangıcı (15 dakikalık artış)|
 | `interval_end` | timestamp | NO| Aralığın sonu (15 dakikalık artış)|
@@ -171,7 +171,7 @@ Bu görünüm sorgu deposundaki bekleme olayları verilerini döndürür. Her fa
 
 ## <a name="limitations-and-known-issues"></a>Sınırlamalar ve bilinen sorunlar
 
-- Bir MariaDB sunucusunda parametresi varsa `default_transaction_read_only` , sorgu deposu veri yakalayamaz.
+- Bir MariaDB sunucusunda parametresi varsa `default_transaction_read_only` , sorgu deposu verileri yakalayamaz.
 - Sorgu deposu işlevselliği, uzun Unicode sorgularıyla karşılaşırsa kesintiye uğrar ( \> = 6000 bayt).
 - Bekleme istatistikleri için bekletme süresi 24 saattir.
 - Bekleme istatistikleri örnek TI kullanarak olayların bir bölümünü yakalar. Sıklık parametresi kullanılarak değiştirilebilir `query_store_wait_sampling_frequency` .
