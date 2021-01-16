@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2021
-ms.openlocfilehash: 85172e2430a3e65edb0c5ec119c920e2c7d20217
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 877251ba7e0c1f3c33cab37e20d609479b69520c
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234977"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251837"
 ---
 # <a name="azure-monitor-for-existing-operations-manager-customers"></a>Mevcut Operations Manager müşterileri için Azure Izleyici
 Bu makalede, şu anda [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/welcome) kullananlar ve iş uygulamalarını ve diğer kaynakları Azure 'A geçirirken [Azure izleyici](overview.md) 'ye geçiş planlıyor olan müşteriler için rehberlik sunulmaktadır. Son hedefiniz, Azure Izleyici ile mümkün olduğunca çok Operations Manager işlevselliği, işletmenizin ve BT operasyonel gereksinimlerinizle ödün vermeden değiştirerek buluta tam geçiş olduğunu varsayar. 
@@ -63,7 +63,7 @@ Azure Izleyici, Azure hizmeti için Azure aboneliği oluşturandan hemen sonra e
 Azure Izleyici hakkında daha fazla sahip olduğunuzda, bazı yönetim paketi işlevlerini değiştirecek ve yeni izleme platformunu kullanmak için iş süreçlerinizi gelişmeye başlayabilecek uyarı kuralları oluşturmaya başlayabilirsiniz. Bu, Operations Manager yönetim grubundan makineleri ve yönetim paketlerini kaldırmaya başlayabilmeniz için izin verir. Kritik sunucu yazılımı ve şirket içi altyapı için yönetim paketlerini kullanmaya devam edersiniz, ancak Azure Izleyici 'de ek işlevselliği devre dışı bırakabilmeniz için yeni özellikleri izlemeye devam edersiniz.
 
 ## <a name="monitor-azure-services"></a>Azure hizmetlerini izleme
-Azure Hizmetleri, Azure Izleyici 'nin telemetri toplamasını gerektirir ve bir Azure aboneliği oluşturduğunuz anda etkindir. [Etkinlik günlüğü](platform/activity-log.md) , abonelik için otomatik olarak toplanır ve [Platform ölçümleri](platform/data-platform-metrics.md) oluşturduğunuz tüm Azure kaynaklarından otomatik olarak toplanır. Işlem konsolundaki performans görünümlerine benzer olan [Ölçüm Gezgini](platform/metrics-getting-started.md)'ni hemen kullanmaya başlayabilirsiniz, ancak etkileşimli analiz ve [Gelişmiş veri toplamaları](platform/metrics-charts.md) sağlar. Bir değer bir eşiği aştığında veya bir [Azure panosuna görünürlük için grafik eklerken](platform/metrics-charts.md#pin-charts-to-dashboards) size bildirimde bulunulması için [bir ölçüm uyarısı oluşturun](platform/alerts-metric.md) .
+Azure Hizmetleri, Azure Izleyici 'nin telemetri toplamasını gerektirir ve bir Azure aboneliği oluşturduğunuz anda etkindir. [Etkinlik günlüğü](platform/activity-log.md) , abonelik için otomatik olarak toplanır ve [Platform ölçümleri](platform/data-platform-metrics.md) oluşturduğunuz tüm Azure kaynaklarından otomatik olarak toplanır. Işlem konsolundaki performans görünümlerine benzer olan [Ölçüm Gezgini](platform/metrics-getting-started.md)'ni hemen kullanmaya başlayabilirsiniz, ancak etkileşimli analiz ve [Gelişmiş veri toplamaları](platform/metrics-charts.md) sağlar. Bir değer bir eşiği aştığında veya bir [Azure panosuna görünürlük için grafik eklerken](platform/metrics-charts.md#pinning-to-dashboards) size bildirimde bulunulması için [bir ölçüm uyarısı oluşturun](platform/alerts-metric.md) .
 
 [![Ölçüm gezgini](media/azure-monitor-operations-manager/metrics-explorer.png)](media/azure-monitor-operations-manager/metrics-explorer.png#lightbox)
 

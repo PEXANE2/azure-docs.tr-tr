@@ -3,14 +3,14 @@ title: Azure’da Kubernetes öğreticisi - Uygulamayı hazırlama
 description: Bu Azure Kubernetes Service (AKS) öğreticisinde Docker Compose ile AKS'ye dağıtabileceğiniz bir çok kapsayıcılı uygulama hazırlamayı ve derlemeyi öğreneceksiniz.
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/12/2021
 ms.custom: mvc
-ms.openlocfilehash: 15bf29c676c4ca41fc2d005f3500a89ed6b9c380
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 349bf90ea0b344d5232c885358814f39fba4c19f
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576345"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251968"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Öğretici: Azure Kubernetes Hizmeti (AKS) için uygulamayı hazırlama
 
@@ -23,9 +23,9 @@ Bu yedi parçalık öğreticinin ilk bölümünde, bir çoklu kapsayıcı uygula
 
 Tamamlandıktan sonra, aşağıdaki uygulama yerel geliştirme ortamınızda çalışacaktır:
 
-![Azure’da Kubernetes kümesinin görüntüsü](./media/container-service-tutorial-kubernetes-prepare-app/azure-vote.png)
+:::image type="content" source="./media/container-service-kubernetes-tutorials/azure-vote-local.png" alt-text="Yerel bir Web tarayıcısında yerel olarak açılan Azure oylama uygulamasının bulunduğu kapsayıcı görüntüsünü gösteren ekran görüntüsü" lightbox="./media/container-service-kubernetes-tutorials/azure-vote-local.png":::
 
-Ek öğreticilerde, kapsayıcı görüntüsü bir Azure Container Registry yüklenir ve ardından bir AKS kümesine dağıtılır.
+Sonraki öğreticilerde, kapsayıcı görüntüsü bir Azure Container Registry yüklenir ve ardından bir AKS kümesine dağıtılır.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -33,11 +33,12 @@ Bu öğreticide kapsayıcılar, kapsayıcı görüntüleri ve `docker` komutlar�
 
 Bu öğreticiyi tamamlamak için Linux kapsayıcılarını çalıştıran yerel bir Docker geliştirme ortamı gerekir. Docker [Mac][docker-for-mac], [Windows][docker-for-windows] veya [Linux][docker-for-linux] sisteminde Docker'ı kolayca yapılandırmanızı sağlayan paketler sağlar.
 
-Azure Cloud Shell, bu öğreticilerdeki her adımı tamamlamak için gerekli olan Docker bileşenlerini içermez. Bu yüzden, eksiksiz bir Docker geliştirme ortamı kullanmanızı öneririz.
+> [!NOTE]
+> Azure Cloud Shell, bu öğreticilerdeki her adımı tamamlamak için gerekli olan Docker bileşenlerini içermez. Bu yüzden, eksiksiz bir Docker geliştirme ortamı kullanmanızı öneririz.
 
 ## <a name="get-application-code"></a>Uygulama kodunu alma
 
-Bu öğreticide kullanılan örnek uygulama, temel oylama uygulamasıdır. Bu uygulama, ön uç bileşen ile arka uç Redis örneğinden oluşur. Web bileşeni, özel kapsayıcı görüntüsüne paketlenmiştir. Redis örneği, Docker Hub’dan alınan değiştirilmemiş bir görüntü kullanır.
+Bu öğreticide kullanılan [örnek uygulama][sample-application] , ön uç Web bileşeninden ve arka uç redin örneğinden oluşan temel bir oylama uygulamasıdır. Web bileşeni, özel kapsayıcı görüntüsüne paketlenmiştir. Redis örneği, Docker Hub’dan alınan değiştirilmemiş bir görüntü kullanır.
 
 Örnek uygulamayı geliştirme ortamınıza kopyalamak için [git][] komutunu kullanın:
 
@@ -51,7 +52,35 @@ Kopyalanmış dizine geçin.
 cd azure-voting-app-redis
 ```
 
-Dizinin içinde uygulama kaynak kodu, önceden oluşturulmuş Docker Compose dosyası ve Kubernetes bildirim dosyası bulunur. Bu dosyalar öğretici kümesi boyunca kullanılır.
+Dizinin içinde uygulama kaynak kodu, önceden oluşturulmuş Docker Compose dosyası ve Kubernetes bildirim dosyası bulunur. Bu dosyalar öğretici kümesi boyunca kullanılır. Dizinin içeriği ve yapısı aşağıdaki gibidir:
+
+```output
+azure-voting-app-redis
+│   azure-vote-all-in-one-redis.yaml
+│   docker-compose.yaml
+│   LICENSE
+│   README.md
+│
+├───azure-vote
+│   │   app_init.supervisord.conf
+│   │   Dockerfile
+│   │   Dockerfile-for-app-service
+│   │   sshd_config
+│   │
+│   └───azure-vote
+│       │   config_file.cfg
+│       │   main.py
+│       │
+│       ├───static
+│       │       default.css
+│       │
+│       └───templates
+│               index.html
+│
+└───jenkins-tutorial
+        config-jenkins.sh
+        deploy-jenkins-vm.sh
+```
 
 ## <a name="create-container-images"></a>Kapsayıcı görüntüleri oluşturma
 
@@ -88,11 +117,11 @@ d10e5244f237        mcr.microsoft.com/azuredocs/azure-vote-front:v1   "/entrypoi
 
 Çalışan uygulamayı görmek için yerel web tarayıcısına `http://localhost:8080` yazın. Örnek uygulama aşağıdaki örnekte gösterilen şekilde yüklenir:
 
-![Azure’da Kubernetes kümesinin görüntüsü](./media/container-service-tutorial-kubernetes-prepare-app/azure-vote.png)
+:::image type="content" source="./media/container-service-kubernetes-tutorials/azure-vote-local.png" alt-text="Yerel bir Web tarayıcısında yerel olarak açılan Azure oylama uygulamasının bulunduğu kapsayıcı görüntüsünü gösteren ekran görüntüsü" lightbox="./media/container-service-kubernetes-tutorials/azure-vote-local.png":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık uygulama işlevselliği doğrulandığından, çalışan kapsayıcılar durdurulup kaldırılabilir. Kapsayıcı görüntülerini silmeyin-sonraki öğreticide, *Azure-oyön* görüntüsü bir Azure Container Registry örneğine yüklenir.
+Artık uygulama işlevselliği doğrulandığından, çalışan kapsayıcılar durdurulup kaldırılabilir. ***Kapsayıcı görüntülerini silme** _-sonraki öğreticide, _azure-oyön * görüntüsü bir Azure Container Registry örneğine yüklenir.
 
 [docker-compose down][docker-compose-down] komutuyla kapsayıcı örneklerini ve kaynakları durdurabilir ve kaldırabilirsiniz:
 
@@ -100,7 +129,7 @@ Artık uygulama işlevselliği doğrulandığından, çalışan kapsayıcılar d
 docker-compose down
 ```
 
-Yerel uygulama kaldırıldığında, sonraki öğreticide kullanılmak üzere Azure oy uygulamasını, *Azure-oyönünü*Içeren bir Docker görüntüsüne sahip olursunuz.
+Yerel uygulama kaldırıldığında, sonraki öğreticide kullanılmak üzere Azure oy uygulamasını, *Azure-oyönünü* Içeren bir Docker görüntüsüne sahip olursunuz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -125,7 +154,8 @@ Kapsayıcı görüntülerini Azure Container Registry’de depolamayı öğrenme
 [docker-images]: https://docs.docker.com/engine/reference/commandline/images/
 [docker-ps]: https://docs.docker.com/engine/reference/commandline/ps/
 [docker-compose-down]: https://docs.docker.com/compose/reference/down
-[Git@@]: https://git-scm.com/downloads
+[git]: https://git-scm.com/downloads
+[sample-application]: https://github.com/Azure-Samples/azure-voting-app-redis
 
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-acr]: ./tutorial-kubernetes-prepare-acr.md

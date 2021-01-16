@@ -5,26 +5,18 @@ ms.author: mikben
 ms.date: 10/10/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: c72083f205fae77de366125e666cee479fd46805
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: dbba87be839d7f172d42827698a8e485c2edddd8
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97691904"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98256571"
 ---
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Uygulamayı çağıran, çalışan bir [Iletişim Hizmetleri](../getting-started-with-calling.md).
 - Bir [takımlar dağıtımı](/deployoffice/teams-install).
 
-## <a name="enable-teams-interoperability"></a>Takımların birlikte çalışabilirliğini etkinleştir
-
-Takımlar birlikte çalışabilirliği özelliği şu anda özel önizlemededir. Iletişim Hizmetleri kaynağınız için bu özelliği etkinleştirmek üzere lütfen ile e-posta gönderin [acsfeedback@microsoft.com](mailto:acsfeedback@microsoft.com) :
-
-1. Iletişim Hizmetleri kaynağınızı içeren Azure aboneliğinin abonelik KIMLIĞI.
-2. Takımlarınızın kiracı KIMLIĞI. Bunu almanın en kolay yolu, [takımın bir bağlantısını edinmektir ve paylaşmalıdır](https://support.microsoft.com/office/create-a-link-or-a-code-for-joining-a-team-11b0de3b-9288-4cb4-bc49-795e7028296f).
-
-Bu özelliği kullanmak için her iki varlığın sahip olduğu kuruluşun bir üyesi olmanız gerekir.
 
 ## <a name="add-the-teams-ui-controls"></a>Takımlar Kullanıcı arabirimi denetimlerini ekleme
 

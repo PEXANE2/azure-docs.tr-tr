@@ -7,12 +7,12 @@ ms.author: askaur
 ms.date: 12/08/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: ea66e4295e8228aa382aa29a46fcca8147dcbc98
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 1ad6b7241c7167c6da8952e7db2797fa275b7246
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97578149"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251935"
 ---
 # <a name="quickstart-join-your-chat-app-to-a-teams-meeting"></a>Hızlı başlangıç: sohbet uygulamanızı bir takımlar toplantısı 'na ekleme
 
@@ -20,7 +20,7 @@ ms.locfileid: "97578149"
 
 JavaScript istemci kitaplığını kullanarak sohbet çözümünüzü Microsoft ekiplerine bağlayarak Azure Iletişim Hizmetleri 'ni kullanmaya başlayın. 
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 1. Bir [takımlar dağıtımı](https://docs.microsoft.com/deployoffice/teams-install). 
 2. Çalışan bir [sohbet uygulaması](./get-started.md). 
@@ -29,11 +29,7 @@ JavaScript istemci kitaplığını kullanarak sohbet çözümünüzü Microsoft 
 
 Bir Konuk Kullanıcı olarak toplantıya katılan bir Iletişim Hizmetleri kullanıcısı, Toplantı sohbetine yalnızca takımlar toplantı çağrısına katıldığında erişebilir. Bir ekip hizmetine bir Iletişim Hizmetleri kullanıcısının nasıl ekleneceğini öğrenmek için [takımlar birlikte çalışma](../voice-video-calling/get-started-teams-interop.md) belgelerine bakın.
 
-Takımlar birlikte çalışabilirliği özelliği şu anda özel önizlemededir. Iletişim Hizmetleri kaynağınız için bu özelliği etkinleştirmek üzere lütfen ile e-posta gönderin acsfeedback@microsoft.com : 
-1. Iletişim Hizmetleri kaynağınızı içeren Azure aboneliğinin abonelik KIMLIĞI. 
-2. Takımlarınızın kiracı KIMLIĞI. Bunu almanın en kolay yolu, takımın bir bağlantısını edinmektir ve paylaşmalıdır. 
-
-Bu özelliği kullanmak için her iki varlığın sahip olduğu kuruluşun bir üyesi olmanız gerekir. 
+Bu özelliği kullanmak için her iki varlığın sahip olduğu kuruluşun bir üyesi olmanız gerekir.
 
 [!INCLUDE [Join Teams meetings](./includes/meeting-interop-javascript.md)]
 

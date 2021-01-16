@@ -12,20 +12,19 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/12/2020
+ms.date: 01/14/2021
 ms.author: b-juche
-ms.openlocfilehash: e5219e1c87221ade8da68c21209f41b4d6139be2
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 78cc68d2be600cec78c433ae3eae1de09d31ac94
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579088"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251820"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>Birimin hizmet düzeyini dinamik olarak değiştirme
 
 > [!IMPORTANT] 
-> * Bu özellik için genel önizleme kaydı, daha fazla bildirimde bulununcaya kadar tutuluyor. 
-> * Bir çoğaltma hedef biriminin hizmet düzeyini dinamik olarak değiştirme işlemi şu anda desteklenmiyor.
+> Bir çoğaltma hedef biriminin hizmet düzeyini dinamik olarak değiştirme işlemi şu anda desteklenmiyor.
 
 Birimi, birimi için istediğiniz [hizmet düzeyini](azure-netapp-files-service-levels.md) kullanan başka bir kapasite havuzuna taşıyarak mevcut bir birimin hizmet düzeyini değiştirebilirsiniz. Birime yönelik bu yerinde hizmet düzeyi değişikliği, veri geçişini gerektirmez. Ayrıca, birime erişimi etkilemez.  
 
@@ -38,30 +37,30 @@ Birimi taşımak istediğiniz kapasite havuzu zaten var olmalıdır. Kapasite ha
 * Birim başka bir kapasite havuzuna taşındıktan sonra, önceki toplu etkinlik günlüklerine ve birim ölçümlerine artık erişemeyecektir. Birim yeni kapasite havuzu altında yeni etkinlik günlükleri ve ölçümleri ile başlatılır.
 
 * Bir birimi daha yüksek bir hizmet düzeyinin kapasite havuzuna taşırsanız (örneğin, *Standart* düzeyinden *Premium* veya *Ultra* hizmet düzeyine geçme), *Bu birimi daha* düşük bir hizmet düzeyindeki bir kapasite havuzuna taşıyabilmeniz için en az yedi gün beklemeniz gerekir (örneğin, *Ultra* *Premium* veya *Standart* arasında geçiş).  
-<!-- 
-## Register the feature
 
-The feature to move a volume to another capacity pool is currently in preview. If you are using this feature for the first time, you need to register the feature first.
+## <a name="register-the-feature"></a>Özelliği kaydetme
 
-1. Register the feature: 
+Bir birimi başka bir kapasite havuzuna taşıma özelliği şu anda önizleme aşamasındadır. Bu özelliği ilk kez kullanıyorsanız önce özelliği kaydetmeniz gerekir.
+
+1. Özelliği kaydedin: 
 
     ```azurepowershell-interactive
     Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFTierChange
     ```
 
-2. Check the status of the feature registration: 
+2. Özellik kaydının durumunu denetleyin: 
 
     > [!NOTE]
-    > The **RegistrationState** may be in the `Registering` state for up to 60 minutes before changing to`Registered`. Wait until the status is **Registered** before continuing.
+    > **Registrationstate** , ' a `Registering` değiştirilmeden önce 60 dakikaya kadar bir durumda olabilir `Registered` . Devam etmeden önce durum **kaydoluncaya** kadar bekleyin.
 
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFTierChange
     ```
-You can also use [Azure CLI commands](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` and `az feature show` to register the feature and display the registration status. 
---> 
+Ayrıca, [Azure CLI komutlarını](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) kullanarak `az feature register` `az feature show` özelliği kaydedebilir ve kayıt durumunu görüntüleyebilirsiniz. 
+ 
 ## <a name="move-a-volume-to-another-capacity-pool"></a>Bir birimi başka bir kapasite havuzuna taşıma
 
-1.  Birimler sayfasında, hizmet düzeyini değiştirmek istediğiniz birime sağ tıklayın. **Havuzu Değiştir** ' i seçin.
+1.  Birimler sayfasında, hizmet düzeyini değiştirmek istediğiniz birime sağ tıklayın. **Havuzu Değiştir**' i seçin.
 
     ![Birim ' e sağ tıklayın](../media/azure-netapp-files/right-click-volume.png)
 
@@ -69,10 +68,11 @@ You can also use [Azure CLI commands](/cli/azure/feature?preserve-view=true&view
 
     ![Havuzu Değiştir](../media/azure-netapp-files/change-pool.png)
 
-3.  **Tamam** düğmesine tıklayın.
+3.  **Tamam**'a tıklayın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 
 * [Azure NetApp Files için hizmet düzeyleri](azure-netapp-files-service-levels.md)
 * [Kapasite havuzunu ayarlama](azure-netapp-files-set-up-capacity-pool.md)
+* [Bir birimin kapasite havuzunu değiştirme sorunlarını giderme](troubleshoot-capacity-pools.md#issues-when-changing-the-capacity-pool-of-a-volume)
