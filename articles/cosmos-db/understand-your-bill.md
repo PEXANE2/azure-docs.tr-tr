@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b51be165d3d05ae753c7e0e5536a157fbbacf1ab
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: b0d27cb2f941db374a144cbd5c026444730e24e8
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938639"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247514"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Azure Cosmos DB faturanızı anlama
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -215,8 +215,12 @@ Toplam aylık fatura şöyle olacaktır (bir ayda 30 gün/720 saat varsayılır)
 | | |2 ek bölge için üretilen iş faturası: Doğu ABD, Kuzey Avrupa (tüm bölgeler yazılabilir)  |`(1 + 1) * (70 K RU/sec /100 * $0.016) * 20 hours = $448`  |$224  |
 || |**Aylık toplam maliyet**  | |**$38.688**   |
 
-## <a name="billing-examples-with-free-tier-accounts"></a>Ücretsiz katman hesaplarıyla faturalandırma örnekleri
+## <a name="billing-examples-with-azure-cosmos-db-free-tier-accounts"></a><a id="azure-free-tier"></a>Azure Cosmos DB ücretsiz katman hesaplarıyla faturalandırma örnekleri
+
 Azure Cosmos DB ücretsiz katman sayesinde hesapta ücretsiz olarak ilk 400 RU/sn ve 5 GB depolama alanı, hesap düzeyinde uygulanır. 400 RU/s ve 5 GB 'ın ötesinde tüm RU/s ve depolama alanı, fiyatlandırma sayfası başına normal fiyatlandırma ücretlerine göre faturalandırılır. Faturanızda ücretsiz 400 ru/s ve 5 GB için bir ücret veya satır öğesi görmezsiniz, yalnızca RU/s ve boş katmanın kapsamına giren depolama alanı görüntülenir. 400 RU/s, her RU/sn tarafından sağlanan aktarım hızı, otomatik ölçeklendirme ve çok bölgeli yazma türleri için geçerlidir.  
+
+> [!NOTE]
+> Azure Cosmos DB ücretsiz katman, Azure Ücretsiz hesabından farklıdır. Ücretsiz Azure hesabı, Azure kredilerini ve kaynaklarını sınırlı bir süre boyunca ücretsiz olarak sunar. Bu ücretsiz hesabın bir parçası olarak Azure Cosmos DB kullanırken, 12 ay boyunca sağlanan üretilen iş hacmi 25 GB depolama ve 400 RU/sn edinirsiniz.
 
 ### <a name="billing-example---container-or-database-with-provisioned-throughput"></a>Faturalandırma örneği-sağlanan aktarım hızı ile kapsayıcı veya veritabanı
 - Ücretsiz bir katman hesabında 400 RU/sn ve 5 GB depolama alanı ile bir veritabanı ya da kapsayıcı oluşturduğumuz varsayın.

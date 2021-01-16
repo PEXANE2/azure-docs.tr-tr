@@ -10,18 +10,18 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 11/23/2020
 ms.author: aahi
-ms.openlocfilehash: d79c52c05d09eedab2dd964acb544c9cdb405380
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: b3e1bb3f418f21c75e29b5a1cad337c6f3c10145
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562608"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246647"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Kubernetes ve Held ile Görüntü İşleme kapsayıcısı kullanma
 
 Şirket içi Görüntü İşleme Kapsayıcılarınızı yönetmenin bir seçeneği, Kubernetes ve Held 'yi kullanmaktır. Kubernetes ve Held kullanarak bir Görüntü İşleme kapsayıcı görüntüsü tanımlamak için bir Kubernetes paketi oluşturacağız. Bu paket, şirket içi bir Kubernetes kümesine dağıtılacak. Son olarak, dağıtılan hizmetleri nasıl test ettireceğiz. Kubernetes düzenlemesi olmadan Docker kapsayıcılarını çalıştırma hakkında daha fazla bilgi için bkz. [görüntü işleme kapsayıcıları yükleyip çalıştırma](computer-vision-how-to-install-containers.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Şirket içinde Görüntü İşleme kapsayıcıları kullanmadan önce aşağıdaki Önkoşullar:
 
@@ -258,6 +258,8 @@ Tasarıma göre, her v3 kapsayıcısının bir dağıtıcı ve bir tanıma çal�
 
 İsteği alan kapsayıcı, görevi tek sayfalı alt görevlere bölebilir ve bunları evrensel kuyruğa ekleyebilir. Daha az meşgul bir kapsayıcıdan yapılan herhangi bir tanınma çalışanı kuyruktan tek sayfalı alt görevler tüketebilir, tanıma gerçekleştirebilir ve sonucu depolamaya yükleyebilir. Aktarım hızı, `n` dağıtılan kapsayıcıların sayısına bağlı olarak en çok iyileştirilen olabilir.
 
+V3 kapsayıcısı yolun altındaki lizleştirme araştırma API 'sini kullanıma sunar `/ContainerLiveness` . Kubernetes için bir lizleştirme araştırması yapılandırmak üzere aşağıdaki dağıtım örneğini kullanın. 
+
 Aşağıdaki YAML 'yi kopyalayıp adlı bir dosyaya yapıştırın `deployment.yaml` . `# {ENDPOINT_URI}`Ve `# {API_KEY}` açıklamalarını kendi değerlerinizle değiştirin. `# {AZURE_STORAGE_CONNECTION_STRING}`Yorumu Azure Storage bağlantı dizeniz ile değiştirin. `replicas`Aşağıdaki örnekte olarak ayarlanmış istediğiniz sayıya yapılandırın `3` .
 
 ```yaml
@@ -293,6 +295,13 @@ spec:
           value: # {AZURE_STORAGE_CONNECTION_STRING}
         - name: Queue__Azure__ConnectionString
           value: # {AZURE_STORAGE_CONNECTION_STRING}
+        livenessProbe:
+          httpGet:
+            path: /ContainerLiveness
+            port: 5000
+          initialDelaySeconds: 60
+          periodSeconds: 60
+          timeoutSeconds: 20
 --- 
 apiVersion: v1
 kind: Service

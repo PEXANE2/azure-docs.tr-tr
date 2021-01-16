@@ -10,12 +10,12 @@ ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 853c71ed4803f717188568ec051c40c4f73afe95
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: cefd00609062c30b036f87a0a01a75dc2afb868b
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202880"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246154"
 ---
 # <a name="graphics-binding"></a>Grafik bağlama
 
@@ -123,7 +123,7 @@ Yukarıdaki, `ptr` `ABI::Windows::Perception::Spatial::ISpatialCoordinateSystem`
 Her çerçevenin başlangıcında, uzak çerçevenin geri arabelleğin oluşturulması gerekir. Bu `BlitRemoteFrame` , her iki gözde hem renk hem de derinlik bilgilerini o anda bağlı işleme hedefine dolduracak şekilde çağırarak yapılır. Bu nedenle, tam arabelleği bir işleme hedefi olarak bağladıktan sonra bunu yapmak önemlidir.
 
 > [!WARNING]
-> Uzak görüntü geri arabelleğe alındıktan sonra, yerel içeriğin tek taramalı bir stereo işleme tekniği kullanılarak işlenmesi gerekir, örn. **SV_RenderTargetArrayIndex**kullanılıyor. Her bir gözü ayrı bir geçişte işleme gibi diğer stereo işleme tekniklerini kullanmak, önemli performans düşüşüne veya grafik yapılarına neden olabilir ve kaçınılması gerekir.
+> Uzak görüntü geri arabelleğe alındıktan sonra, yerel içeriğin tek taramalı bir stereo işleme tekniği kullanılarak işlenmesi gerekir, örn. **SV_RenderTargetArrayIndex** kullanılıyor. Her bir gözü ayrı bir geçişte işleme gibi diğer stereo işleme tekniklerini kullanmak, önemli performans düşüşüne veya grafik yapılarına neden olabilir ve kaçınılması gerekir.
 
 ```cs
 AzureSession currentSession = ...;
@@ -150,13 +150,13 @@ Simülasyon bağlamasını uygulamak için, [Kamera](../overview/features/camera
 
 Burada temel yaklaşım, hem uzak görüntünün hem de yerel içeriğin, proxy Kamerası kullanılarak bir ekran hedefine işlenmelerdir. Daha sonra, proxy görüntüsü daha sonra, [geç aşama yeniden projeksiyonda](../overview/features/late-stage-reprojection.md)açıklanan yerel kamera alanına yeniden yansıtılmıştı.
 
-Kurulum biraz daha karmaşıktır ve aşağıdaki gibi çalışmaktadır:
+`GraphicsApiType.SimD3D11` Ayrıca, aşağıdaki kurulum çağrısı sırasında etkinleştirilmesi gereken Stereoscopic işlemesini destekler `InitSimulation` . Kurulum biraz daha karmaşıktır ve aşağıdaki gibi çalışmaktadır:
 
 #### <a name="create-proxy-render-target"></a>Proxy oluşturma hedefi oluştur
 
 Uzak ve yerel içeriğin, işlev tarafından verilen proxy kamera verilerini kullanarak ' Proxy ' adlı bir ekran genişliği renk/derinlik işleme hedefine işlenmesi gerekir `GraphicsBindingSimD3d11.Update` .
 
-Proxy, arka arabelleğin çözümlenmesinden eşleşmelidir ve *DXGI_FORMAT_R8G8B8A8_UNORM* veya *DXGI_FORMAT_B8G8R8A8_UNORM* biçimindeki tamsayı olmalıdır. Bir oturum başlamaya başladıktan sonra, `GraphicsBindingSimD3d11.InitSimulation` kendisine bağlanmadan önce çağrılması gerekir:
+Proxy, arka arabelleğin çözümlenmesinden eşleşmelidir ve *DXGI_FORMAT_R8G8B8A8_UNORM* veya *DXGI_FORMAT_B8G8R8A8_UNORM* biçimindeki tamsayı olmalıdır. Stereoscopic işleme durumunda hem Color proxy dokusu hem de derinlik kullanılırsa, derinlik ara sunucu dokusunun yerine iki dizi katmanı olması gerekir. Bir oturum başlamaya başladıktan sonra, `GraphicsBindingSimD3d11.InitSimulation` kendisine bağlanmadan önce çağrılması gerekir:
 
 ```cs
 AzureSession currentSession = ...;
@@ -166,8 +166,9 @@ IntPtr depth = ...; // native pointer to ID3D11Texture2D
 float refreshRate = 60.0f; // Monitor refresh rate up to 60hz.
 bool flipBlitRemoteFrameTextureVertically = false;
 bool flipReprojectTextureVertically = false;
+bool stereoscopicRendering = false;
 GraphicsBindingSimD3d11 simBinding = (currentSession.GraphicsBinding as GraphicsBindingSimD3d11);
-simBinding.InitSimulation(d3dDevice, depth, color, refreshRate, flipBlitRemoteFrameTextureVertically, flipReprojectTextureVertically);
+simBinding.InitSimulation(d3dDevice, depth, color, refreshRate, flipBlitRemoteFrameTextureVertically, flipReprojectTextureVertically, stereoscopicRendering);
 ```
 
 ```cpp
@@ -178,8 +179,9 @@ void* depth = ...; // native pointer to ID3D11Texture2D
 float refreshRate = 60.0f; // Monitor refresh rate up to 60hz.
 bool flipBlitRemoteFrameTextureVertically = false;
 bool flipReprojectTextureVertically = false;
+bool stereoscopicRendering = false;
 ApiHandle<GraphicsBindingSimD3d11> simBinding = currentSession->GetGraphicsBinding().as<GraphicsBindingSimD3d11>();
-simBinding->InitSimulation(d3dDevice, depth, color, refreshRate, flipBlitRemoteFrameTextureVertically, flipReprojectTextureVertically);
+simBinding->InitSimulation(d3dDevice, depth, color, refreshRate, flipBlitRemoteFrameTextureVertically, flipReprojectTextureVertically, stereoscopicRendering);
 ```
 
 İnit işlevinin, yerel D3D-cihazının işaretçileriyle birlikte, proxy oluşturma hedefinin renk ve derinlik dokusunu sağlaması gerekir. Başlatıldıktan `AzureSession.ConnectToRuntime` ve `DisconnectFromRuntime` birden çok kez çağrılabilir, ancak farklı bir oturuma geçiş yapıldığında, `GraphicsBindingSimD3d11.DeinitSimulation` `GraphicsBindingSimD3d11.InitSimulation` başka bir oturumda çağrılabilmesi için önce eski oturumda çağrılmalıdır.
@@ -196,13 +198,14 @@ Döndürülen proxy güncelleştirmesi `SimulationUpdate.frameId` null ise, hen�
 ```cs
 AzureSession currentSession = ...;
 GraphicsBindingSimD3d11 simBinding = (currentSession.GraphicsBinding as GraphicsBindingSimD3d11);
-SimulationUpdate update = new SimulationUpdate();
+SimulationUpdateParameters updateParameters = new SimulationUpdateParameters();
 // Fill out camera data with current camera data
+// (see "Simulation Update structures" section below)
 ...
-SimulationUpdate proxyUpdate = new SimulationUpdate();
-simBinding.Update(update, out proxyUpdate);
+SimulationUpdateResult updateResult = new SimulationUpdateResult();
+simBinding.Update(updateParameters, out updateResult);
 // Is the frame data valid?
-if (proxyUpdate.frameId != 0)
+if (updateResult.frameId != 0)
 {
     // Bind proxy render target
     simBinding.BlitRemoteFrameToProxy();
@@ -223,13 +226,14 @@ else
 ApiHandle<AzureSession> currentSession;
 ApiHandle<GraphicsBindingSimD3d11> simBinding = currentSession->GetGraphicsBinding().as<GraphicsBindingSimD3d11>();
 
-SimulationUpdate update;
+SimulationUpdateParameters updateParameters;
 // Fill out camera data with current camera data
+// (see "Simulation Update structures" section below)
 ...
-SimulationUpdate proxyUpdate;
-simBinding->Update(update, &proxyUpdate);
+SimulationUpdateResult updateResult;
+simBinding->Update(updateParameters, &updateResult);
 // Is the frame data valid?
-if (proxyUpdate.frameId != 0)
+if (updateResult.frameId != 0)
 {
     // Bind proxy render target
     simBinding->BlitRemoteFrameToProxy();
@@ -245,6 +249,112 @@ else
     ...
 }
 ```
+
+#### <a name="simulation-update-structures"></a>Simülasyon güncelleştirme yapıları
+
+Önceki bölümde bulunan **işleme döngüsü güncelleştirmesi** , her çerçeve için yerel kameraya karşılık gelen bir dizi kamera parametresi yazmanızı ve bir sonraki kullanılabilir çerçevenin kameraya karşılık gelen bir kamera parametreleri kümesini döndürmelidir. Bu iki küme `SimulationUpdateParameters` `SimulationUpdateResult` sırasıyla ve yapılarında kapsanır:
+
+```cs
+public struct SimulationUpdateParameters
+{
+    public UInt32 frameId;
+    public StereoMatrix4x4 viewTransform;
+    public StereoCameraFOV fieldOfView;
+};
+
+public struct SimulationUpdateResult
+{
+    public UInt32 frameId;
+    public float nearPlaneDistance;
+    public float farPlaneDistance;
+    public StereoMatrix4x4 viewTransform;
+    public StereoCameraFOV fieldOfView;
+};
+```
+
+Yapı üyeleri aşağıdaki anlamlara sahiptir:
+
+| Üye | Description |
+|--------|-------------|
+| Frameıd | Sürekli çerçeve tanımlayıcısı. SimulationUpdateParameters girişi için gereklidir ve her yeni çerçeve için sürekli olarak arttırılmaları gerekir. Henüz kullanılabilir çerçeve verisi yoksa SimulationUpdateResult içinde 0 olur. |
+| viewTransform | Çerçevenin kamera görünümü dönüştürme matrislerinin sol sağ-Stereo çifti. Monoscopic işleme için yalnızca `left` üye geçerlidir. |
+| fieldOfView | [Görünüm kuralı 'Ndaki Openxr alanında](https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#angles)çerçeve kameranın görünüm alanlarının sol alt düğmesi çifti. Monoscopic işleme için yalnızca `left` üye geçerlidir. |
+| Kabul eden bir Planemesafeyi | geçerli uzak çerçevenin İzdüşüm matrisi için kullanılan, neredeyse düzlem uzaklığı. |
+| farPlaneDistance | geçerli uzak çerçevenin İzdüşüm matrisi için kullanılan, uzak düzlem uzaklığı. |
+
+`viewTransform` `fieldOfView` Stereoscopic oluşturma özelliği etkin olduğunda, stereo çiftleri ve hem göz-kamera değerlerini ayarlamaya izin verir. Aksi takdirde, `right` Üyeler göz ardı edilir. Gördüğünüz gibi, projeksiyon matrisleri belirtilmediği sürece yalnızca kameranın dönüşümü düz 4x4 dönüşüm matrisleri olarak geçirilir. Gerçek Matrisler, Azure uzaktan Işleme tarafından, belirtilen görünüm alanları ve [CAMERASETTINGS API](../overview/features/camera.md)'sinde bulunan geçerli neredeyse düzlem ve en yüksek düzlem kullanılarak dahili olarak hesaplanır.
+
+Çalışma zamanı sırasında [CameraSettings](../overview/features/camera.md) üzerinde neredeyse düzlemi ve en son düzlemi istediğiniz gibi değiştirebileceğinizden ve hizmet bu ayarları zaman uyumsuz olarak uygulayacağından, her SimulationUpdateResult, ilgili çerçevenin işlenmesi sırasında kullanılan belirli bir neredeyse düzlemi ve en yüksek düzlemi de taşır. Bu düzlem değerlerini, yerel nesneleri işlemeye yönelik projeksiyon matrislerinizi uzak çerçeve işlemeyle eşleşecek şekilde uyarlamak için kullanabilirsiniz.
+
+Son olarak, **simülasyon güncelleştirme** çağrısı Için OpenXR kuralındaki görünüm alanı gerekir, bu arada, standartlaşma ve algoritmik güvenlik nedenleriyle, aşağıdaki yapı popülasyonu örneklerinde gösterilen dönüştürme işlevlerinin kullanımını sağlayabilirsiniz:
+
+```cs
+public SimulationUpdateParameters CreateSimulationUpdateParameters(UInt32 frameId, Matrix4x4 viewTransform, Matrix4x4 projectionMatrix)
+{
+    SimulationUpdateParameters parameters;
+    parameters.frameId = frameId;
+    parameters.viewTransform.left = viewTransform;
+    if(parameters.fieldOfView.left.fromProjectionMatrix(projectionMatrix) != Result.Success)
+    {
+        // Invalid projection matrix
+        return null;
+    }
+    return parameters;
+}
+
+public void GetCameraSettingsFromSimulationUpdateResult(SimulationUpdateResult result, out Matrix4x4 projectionMatrix, out Matrix4x4 viewTransform, out UInt32 frameId)
+{
+    if(result.frameId == 0)
+    {
+        // Invalid frame data
+        return;
+    }
+    
+    // Use the screenspace depth convention you expect for your projection matrix locally
+    if(result.fov.left.toProjectionMatrix(result.nearPlaneDistance, result.farPlaneDistance, DepthConvention.ZeroToOne, projectionMatrix) != Result.Success)
+    {
+        // Invalid field-of-view
+        return;
+    }
+    viewTransform = result.viewTransform.left;
+    frameId = result.frameId;
+}
+```
+
+```cpp
+SimulationUpdateParameters CreateSimulationUpdateParameters(uint32_t frameId, Matrix4x4 viewTransform, Matrix4x4 projectionMatrix)
+{
+    SimulationUpdateParameters parameters;
+    parameters.frameId = frameId;
+    parameters.viewTransform.left = viewTransform;
+    if(FovFromProjectionMatrix(projectionMatrix, parameters.fieldOfView.left) != Result::Success)
+    {
+        // Invalid projection matrix
+        return {};
+    }
+    return parameters;
+}
+
+void GetCameraSettingsFromSimulationUpdateResult(const SimulationUpdateResult& result, Matrix4x4& projectionMatrix, Matrix4x4& viewTransform, uint32_t& frameId)
+{
+    if(result.frameId == 0)
+    {
+        // Invalid frame data
+        return;
+    }
+    
+    // Use the screenspace depth convention you expect for your projection matrix locally
+    if(FovToProjectionMatrix(result.fieldOfView.left, result.nearPlaneDistance, result.farPlaneDistance, DepthConvention::ZeroToOne, projectionMatrix) != Result::Success)
+    {
+        // Invalid field-of-view
+        return;
+    }
+    viewTransform = result.viewTransform.left;
+    frameId = result.frameId;
+}
+```
+
+Bu dönüştürme işlevleri, yerel işleme gereksinimlerinize bağlı olarak, alan görünüm belirtimi ve düz 4x4 perspektif projeksiyon matrisi arasında hızlı geçişe izin verir. Bu dönüştürme işlevleri doğrulama mantığını içerir ve giriş projeksiyon matrislerinin veya giriş alanlarının geçersiz olması durumunda geçerli bir sonuç ayarlamadan hataları döndürür.
 
 ## <a name="api-documentation"></a>API belgeleri
 

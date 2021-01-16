@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/11/2020
-ms.openlocfilehash: a740ad62dacc9a29cab1cc144f1789e125ec2e89
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 31b96f03a8519b068eaa816443be0a0f374a4a8c
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368588"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247038"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB 'de otomatik ölçeklendirme sağlanan aktarım hızı hakkında sık sorulan sorular
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -48,7 +48,7 @@ Evet. Tek bir yazma bölgesi olan hesaplar için ayrılmış kapasite satın ald
 Çoklu yazma bölgesi ayrılmış kapasitesi, otomatik ölçeklendirme ve standart (el ile) sağlanan aktarım hızı için aynı şekilde geçerlidir. Bkz. [Azure Cosmos DB ayrılmış kapasite](cosmos-db-reserved-capacity.md)
 
 ### <a name="does-autoscale-work-with-free-tier"></a>Otomatik ölçeklendirme, ücretsiz katmanla mı çalışıyor?
-Evet. Ücretsiz katmanda, bir kapsayıcıda otomatik ölçeklendirme işleme kullanabilirsiniz. Özel en büyük RU/s ile otomatik ölçeklendirme paylaşılan verimlilik veritabanları için destek henüz kullanılamamaktadır. [Ücretsiz katman faturalandırmasının nasıl otomatik ölçeklendirme ile çalıştığını](understand-your-bill.md#billing-examples-with-free-tier-accounts)görün.
+Evet. Ücretsiz katmanda, bir kapsayıcıda otomatik ölçeklendirme işleme kullanabilirsiniz. Özel en büyük RU/s ile otomatik ölçeklendirme paylaşılan verimlilik veritabanları için destek henüz kullanılamamaktadır. [Ücretsiz katman faturalandırmasının nasıl otomatik ölçeklendirme ile çalıştığını](understand-your-bill.md#azure-free-tier)görün.
 
 ### <a name="is-autoscale-supported-for-all-apis"></a>Tüm API 'Ler için otomatik ölçeklendirme destekleniyor mu?
 Evet, otomatik ölçeklendirme tüm API 'Ler için desteklenir: Core (SQL), Gremlin, Table, Cassandra ve MongoDB için API.

@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd1c7f5dec57127f92da52be908bd6faa2c90e85
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d348b8c2325c7bc2cdaa28356151647a9430684f
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500232"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247055"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Hazırlanan piyasaya çıkma kullanarak bulut kimlik doğrulamasına geçiş (Önizleme)
 
@@ -33,7 +33,7 @@ Bu özelliği denemeden önce doğru kimlik doğrulama yöntemini seçme Kılavu
 
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 -   Federasyon etki alanları içeren bir Azure Active Directory (Azure AD) kiracınız vardır.
 
@@ -67,7 +67,7 @@ Hazırlanan dağıtım için aşağıdaki senaryolar desteklenir. Özelliği yal
 
 Aşağıdaki senaryolar hazırlanan dağıtım için desteklenmez:
 
-- Uygulamalar veya bulut Hizmetleri, POP3 ve SMTP gibi eski kimlik doğrulamasını kullanır.
+- POP3 ve SMTP gibi eski kimlik doğrulaması desteklenmez.
 
 - Belirli uygulamalar, kimlik doğrulama sırasında "domain_hint" sorgu parametresini Azure AD 'ye gönderir. Bu akışlar devam eder ve hazırlanan dağıtım için etkinleştirilen kullanıcılar kimlik doğrulaması için Federasyon kullanmaya devam eder.
 

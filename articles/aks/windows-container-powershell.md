@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 05/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bf446c858e40014a4085721d646f819e08542064
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97741423fa8b689a92bd9db78b810e6b86aefcbd
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87497894"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247145"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>PowerShell kullanarak bir Azure Kubernetes Service (AKS) kümesi üzerinde Windows Server kapsayıcısı oluşturma
 
@@ -20,11 +20,15 @@ Azure Kubernetes hizmeti (AKS), kümelerinizi hızlı bir şekilde dağıtmanız
 
 Bu makalede, Kubernetes kavramlarının temel bir şekilde anlaşıldığı varsayılır. Daha fazla bilgi için bkz. [Azure Kubernetes hizmeti (AKS) Için Kubernetes temel kavramları][kubernetes-concepts].
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-PowerShell 'i yerel olarak kullanmayı seçerseniz, bu makale az PowerShell modülünü yüklemenizi ve [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) cmdlet 'Ini kullanarak Azure hesabınıza bağlanmanızı gerektirir. Az PowerShell modülünü yükleme hakkında daha fazla bilgi için bkz. [yükleme Azure PowerShell][install-azure-powershell].
+PowerShell 'i yerel olarak kullanmayı seçerseniz, bu makale az PowerShell modülünü yüklemenizi ve [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) cmdlet 'Ini kullanarak Azure hesabınıza bağlanmanızı gerektirir. Az PowerShell modülünü yükleme hakkında daha fazla bilgi için bkz. [yükleme Azure PowerShell][install-azure-powershell]. Az. aks PowerShell modülünü de yüklemelisiniz: 
+
+```azurepowershell-interactive
+Install-Module Az.Aks
+```
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
@@ -53,7 +57,7 @@ Windows Server düğüm havuzları için aşağıdaki ek sınırlamalar geçerli
 Aşağıdaki örnek **eastus** konumunda **myResourceGroup** adlı bir kaynak grubu oluşturur.
 
 > [!NOTE]
-> Bu makalede, bu öğreticideki komutlar için PowerShell sözdizimi kullanılmaktadır. Azure Cloud Shell kullanıyorsanız, Cloud Shell penceresinin sol üst kısmındaki açılan listenin **PowerShell**olarak ayarlandığından emin olun.
+> Bu makalede, bu öğreticideki komutlar için PowerShell sözdizimi kullanılmaktadır. Azure Cloud Shell kullanıyorsanız, Cloud Shell penceresinin sol üst kısmındaki açılan listenin **PowerShell** olarak ayarlandığından emin olun.
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroup -Location eastus
@@ -73,14 +77,14 @@ ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 
 `ssh-keygen`BIR SSH anahtar çifti oluşturmak için komut satırı yardımcı programını kullanın. Daha fazla ayrıntı için bkz. [hızlı adımlar: Azure 'Da Linux VM 'ler IÇIN SSH genel-özel anahtar çifti oluşturma ve kullanma](../virtual-machines/linux/mac-create-ssh-keys.md).
 
-Windows Server kapsayıcıları için düğüm havuzlarını destekleyen bir AKS kümesi çalıştırmak için, kümenizin [Azure CNI][azure-cni-about] (Gelişmiş) ağ eklentisini kullanan bir ağ ilkesi kullanması gerekir. Gerekli alt ağ aralıklarını ve ağ konularını planlamaya yardımcı olacak daha ayrıntılı bilgi için bkz. [Azure CNI ağını yapılandırma][use-advanced-networking]. **Myakscluster**adlı bir aks kümesi oluşturmak Için aşağıdaki [New-AzAks][new-azaks] cmdlet 'ini kullanın. Aşağıdaki örnek, mevcut değilse gerekli ağ kaynaklarını oluşturur.
+Windows Server kapsayıcıları için düğüm havuzlarını destekleyen bir AKS kümesi çalıştırmak için, kümenizin [Azure CNI][azure-cni-about] (Gelişmiş) ağ eklentisini kullanan bir ağ ilkesi kullanması gerekir. Gerekli alt ağ aralıklarını ve ağ konularını planlamaya yardımcı olacak daha ayrıntılı bilgi için bkz. [Azure CNI ağını yapılandırma][use-advanced-networking]. **Myakscluster** adlı bir aks kümesi oluşturmak Için aşağıdaki [New-AzAks][new-azaks] cmdlet 'ini kullanın. Aşağıdaki örnek, mevcut değilse gerekli ağ kaynaklarını oluşturur.
 
 > [!NOTE]
 > Kümenizin güvenilir bir şekilde çalıştığından emin olmak için varsayılan düğüm havuzunda en az 2 (iki) düğüm çalıştırmalısınız.
 
 ```azurepowershell-interactive
 $Password = Read-Host -Prompt 'Please enter your password' -AsSecureString
-New-AzAKS -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 2 -KubernetesVersion 1.16.7 -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets -WindowsProfileAdminUserName akswinuser -WindowsProfileAdminUserPassword $Password
+New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 2 -KubernetesVersion 1.16.7 -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets -WindowsProfileAdminUserName akswinuser -WindowsProfileAdminUserPassword $Password
 ```
 
 > [!Note]
@@ -96,7 +100,7 @@ Varsayılan olarak, bir AKS kümesi, Linux kapsayıcıları çalıştırabilirle
 New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myAKSCluster -OsType Windows -Name npwin -KubernetesVersion 1.16.7
 ```
 
-Yukarıdaki komut, **npwin** adlı yeni bir düğüm havuzu oluşturur ve bunu **Myakscluster**öğesine ekler. Windows Server kapsayıcıları çalıştırmak için bir düğüm havuzu oluştururken, **VMSize** varsayılan değeri **Standard_D2s_v3**. **VMSize** parametresini ayarlamayı seçerseniz, [kısıtlı VM boyutları][restricted-vm-sizes]listesini kontrol edin. Önerilen en düşük boyut **Standard_D2s_v3**. Önceki komut, çalışırken oluşturulan varsayılan VNET 'in varsayılan alt ağını de kullanır `New-AzAks` .
+Yukarıdaki komut, **npwin** adlı yeni bir düğüm havuzu oluşturur ve bunu **Myakscluster** öğesine ekler. Windows Server kapsayıcıları çalıştırmak için bir düğüm havuzu oluştururken, **VMSize** varsayılan değeri **Standard_D2s_v3**. **VMSize** parametresini ayarlamayı seçerseniz, [kısıtlı VM boyutları][restricted-vm-sizes]listesini kontrol edin. Önerilen en düşük boyut **Standard_D2s_v3**. Önceki komut, çalışırken oluşturulan varsayılan VNET 'in varsayılan alt ağını de kullanır `New-AzAks` .
 
 ## <a name="connect-to-the-cluster"></a>Kümeye bağlanma
 
@@ -193,7 +197,7 @@ deployment.apps/sample created
 service/sample created
 ```
 
-## <a name="test-the-application"></a>Uygulamayı test etme
+## <a name="test-the-application"></a>Uygulamayı test edin
 
 Uygulama çalıştığında bir Kubernetes hizmeti, uygulamanın ön uç noktasını Internet 'e sunar.
 Bu işlemin tamamlanması birkaç dakika sürebilir. Bazen hizmetin sağlanması birkaç dakikadan uzun sürebilir. Bu durumlarda en fazla 10 dakika bekleyin.
@@ -204,7 +208,7 @@ Bu işlemin tamamlanması birkaç dakika sürebilir. Bazen hizmetin sağlanması
 kubectl get service sample --watch
 ```
 
-Başlangıçta **örnek** hizmet IÇIN **dış IP** , **Beklemede**olarak gösterilir.
+Başlangıçta **örnek** hizmet IÇIN **dış IP** , **Beklemede** olarak gösterilir.
 
 ```plaintext
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE

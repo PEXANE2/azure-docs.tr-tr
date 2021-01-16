@@ -6,21 +6,15 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 12/18/2020
-ms.openlocfilehash: 091af70383eb3cab32a0453d7f7542d8a4395d0b
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.date: 01/14/2021
+ms.openlocfilehash: 89cd9f46474e8e311f003f317b90bdb21eae55fe
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98107404"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247561"
 ---
 # <a name="introduction-to-listing-options"></a>Listeleme seçeneklerine giriş
-
-Potansiyel müşterilerle çeşitli yollarla etkileşim kurmak için ticari Market 'teki kullanılabilir _Liste seçeneklerini_ kullanabilirsiniz. Teklifiniz yayımlandıktan sonra teklifiniz için seçtiğiniz listeleme seçenekleri, teklifinizin, çevrimiçi mağazalarınızın liste sayfasının sol üst köşesinde bir düğme olarak görünür. Örneğin, aşağıdaki ekran görüntüsünde, **benimle iletişim** ve **Test sürücüsü** düğmeleriyle Microsoft AppSource çevrimiçi mağazadaki bir teklif listesi sayfası gösterilmektedir.
-
-:::image type="content" source="./media/listing-options.png" alt-text="Bir teklifin listeleme sayfasını gösterir. Benimle Iletişim kurun ve test sürücüsü düğmeleri gösterilir.":::
-
-## <a name="available-listing-options-by-offer-type"></a>Teklif türüne göre kullanılabilir liste seçenekleri
 
 Bir teklif türü oluşturduğunuzda bir veya daha fazla listeleme seçeneği belirleyin. Bu seçenekler, müşterilerin çevrimiçi mağazalardaki teklif listesi sayfasında göreceği düğmeleri tespit ediyor. Liste seçenekleri _ücretsiz deneme_, _test sürücüsü_, _benimle iletişim kurun_ ve _Şimdi alın_.
 
@@ -42,7 +36,7 @@ Bu tabloda, her teklif türü için hangi liste seçeneklerinin kullanılabildi�
 | Hizmet olarak yazılım | &#10004; | &#10004; | &#10004; | &#10004; |
 ||||||
 
-`*` Şimdi al listeleme seçeneği, şimdi al (ücretsiz), kendi lisansını getir (KLG), abonelik ve kullanım tabanlı fiyatlandırmaya dahildir. Ayrıntılar için bkz. [Şimdi alın](#get-it-now).
+Şimdi al listesini al seçeneği &#42;, şimdi al (ücretsiz), kendi lisansını getir (KLG), abonelik ve kullanım tabanlı fiyatlandırmayı içerir. Ayrıntılar için bkz. [Şimdi alın](#get-it-now).
 
 ### <a name="free-trial"></a>Ücretsiz Deneme
 
@@ -102,9 +96,15 @@ Bu tabloda, şimdi al listesini Al seçeneğinin içerdiği ek fiyatlandırma se
 
 Uygulamanızı ücretsiz olarak sunmak için bu liste seçeneğini kullanın. Müşteriler ücretsiz teklifinizi almak için _Şimdi al_ düğmesini kullanır.
 
-#### <a name="byol"></a>KLG
+> [!NOTE]
+> Şimdi al (ücretsiz) teklifleri, transactable teklifleri için Market 'Teki avantajlar avantajlarına uygun değildir. Storefront aracılığıyla hiçbir işlem olmadığından, bunlar "deneme" olarak kategorize edilir. Aşağıdaki [Market remaronları](#marketplace-rewards) inceleyin.
 
-Keşfedilebilirliğini geliştirmek, çözümünüzün sağlamasını otomatik hale getirmek ve Market 'ten ayrı mali işlemleri gerçekleştirmek için ticari marketi kullanın. Kendi lisansını getir (KLG) listeleme seçeneği, şirket içi ve bulut geçişleri için idealdir. Müşteriler, sizin için önceden satın alınan bir lisans kullanarak teklifinizin satın almasını sağlamak için _Şimdi al_ düğmesini kullanır.
+#### <a name="bring-your-own-license-byol"></a>Kendi Lisansını Getir (KLG)
+
+Müşterilerin teklifinizi ticari Market dışında satın alınan bir lisans kullanarak dağıtmasına izin vermek için bu liste seçeneğini kullanın. Bu seçenek, Şirket içinden buluta geçişler için idealdir. Müşteriler, sizin için önceden satın alınan bir lisans kullanarak teklifinizin satın almasını sağlamak için _Şimdi al_ düğmesini kullanır.
+
+> [!NOTE]
+> KLG teklifler, transactable teklifleri için Market 'Teki avantajlar avantajlarına uygun değildir. Bunlar bir müşterinin lisansı iş ortağından almalarını gerektirdiğinden ve ticari Market storefront aracılığıyla hiçbir işlem olmadığından, bunlar "liste" olarak kategorize edilir. Aşağıdaki [Market remaronları](#marketplace-rewards) inceleyin.
 
 #### <a name="subscription"></a>Abonelik
 
@@ -117,11 +117,17 @@ Bu teklif türleri için bir sabit ücret ücreti alabilirsiniz:
 
 Aşağıdaki teklif türleri kullanım tabanlı fiyatlandırmayı destekler:
 
-- Azure uygulaması (yönetilen uygulama), tarifeli faturalandırmayı destekler. Daha ayrıntılı bilgi için bkz. [yönetilen uygulama ölçümlü faturalandırma](./partner-center-portal/azure-app-metered-billing.md).
-- SaaS teklifleri, tarifeli faturalandırma ve Kullanıcı başına (bilgisayar başına) fiyatlandırmayı destekler. Tarifeli faturalandırma hakkında daha fazla bilgi için bkz. [ticari Market ölçüm hizmeti kullanılarak SaaS Için ölçülen faturalandırma](./partner-center-portal/saas-metered-billing.md).
+- Azure uygulaması (yönetilen uygulama), tarifeli faturalandırmayı destekler. Daha ayrıntılı bilgi için bkz. [yönetilen uygulama ölçümlü faturalandırma](partner-center-portal/azure-app-metered-billing.md).
+- SaaS teklifleri, tarifeli faturalandırma ve Kullanıcı başına (bilgisayar başına) fiyatlandırmayı destekler. Tarifeli faturalandırma hakkında daha fazla bilgi için bkz. [ticari Market ölçüm hizmeti kullanılarak SaaS Için ölçülen faturalandırma](partner-center-portal/saas-metered-billing.md).
 - Azure sanal makinesi, çekirdek başına, çekirdek başına boyut ve her Pazar ve çekirdek boyut fiyatlandırması için destek sunar. Bu fiyatlandırma seçenekleri, saat başına fiyatlandırılır ve aylık olarak faturalandırılır.
 
 Bir transactable teklifi oluştururken, teklif türü seçmeden ve teklifinizi oluşturmadan önce fiyatlandırma, faturalandırma, faturalama ve ödeme konularını anlamak önemlidir. Daha fazla bilgi edinmek için bkz. [ticari Market çevrimiçi mağazaları](overview.md#commercial-marketplace-online-stores).
+
+## <a name="sample-offer"></a>Örnek teklif
+
+Teklifiniz yayımlandıktan sonra, seçtiğiniz listeleme seçenekleri çevrimiçi mağazadaki liste sayfasının sol üst köşesinde bir düğme olarak görünür. Örneğin, aşağıdaki ekranda **Şimdi al** ve **Test Drive** düğmelerini kullanarak Microsoft AppSource çevrimiçi mağazadaki bir teklif listesi sayfası gösterilmektedir:
+
+:::image type="content" source="media/listing-options.png" alt-text="Benimle Iletişim kurun ve sürücü sına düğmelerini içeren bir teklifin listeleme sayfasını gösterir.":::
 
 ## <a name="listing-and-pricing-options-by-online-store"></a>Çevrimiçi mağazaya göre listeleme ve fiyatlandırma seçenekleri
 
@@ -149,10 +155,14 @@ AppSource 'ta &#42; SaaS transactable teklifleri yalnızca kredi kartınlardır.
 
 &#42;&#42; Microsoft 365 eklentilerin yüklenmesi ücretsizdir ve SaaS teklifi kullanılarak Monaya eklenebilir. Daha fazla bilgi için bkz. [Microsoft Commercial Market aracılığıyla Office 365 eklentilerinizi Moneleştirme](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
 
-## <a name="marketplace-rewards"></a>Market 'teki ödüller
+## <a name="marketplace-rewards"></a>Marketplace Rewards
 
 Market Remarlarınız, seçtiğiniz listeleme seçeneğine göre farklılaştırılır. Daha fazla bilgi edinmek için [ticari Market avantajlarınıza](gtm-your-marketplace-benefits.md)bakın.
 
+Teklifiniz transactable ise, faturalandırılan satışları artırdıkça avantajlara sahip olursunuz.
+
+Transactable olmayan teklifler, ücretsiz bir denemeye bağlı olup olmamanıza bağlı olarak avantajlara sahip olur.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Oluşturulacak teklif türünü seçmek için, bkz. [teklif türüne göre Kılavuzu yayımlama](./publisher-guide-by-offer-type.md).
+- Oluşturulacak teklif türünü seçmek için, bkz. [teklif türüne göre Kılavuzu yayımlama](publisher-guide-by-offer-type.md).

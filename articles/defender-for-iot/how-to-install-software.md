@@ -7,18 +7,18 @@ ms.author: shhazam
 ms.date: 12/2/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 2bd994f14863715274e137bce2dd6873eeec1135
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 49a0129ff26d4a12392066aa6304317d71fdb0f1
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208769"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247599"
 ---
 # <a name="defender-for-iot-installation"></a>IoT yüklemesi için Defender
 
 Bu makalede IoT için Azure Defender 'ın aşağıdaki öğelerinin nasıl yükleneceği açıklanmaktadır:
 
-- **Algılayıcı**: bir IoT algılayıcısı için Defender, pasif (aracısız) Izleme kullanarak ICS ağ trafiğini toplar. Pasif ve kesintisiz bir şekilde, sensörlerden, OT ve IoT ağları ve cihazları üzerinde sıfır etkisi vardır. Algılayıcı bir SPAN bağlantı noktasına veya ağa DOKUNMASıNA bağlanır ve ağınızı izlemeye hemen başlar. Algılamalar, algılayıcı konsolunda görünür. Burada, bunları bir ağ eşlemesinde, cihaz envanterinde ve kapsamlı bir rapor yelpazğunda görüntüleyebilir, araştırabilir ve çözümleyebilirsiniz. Risk değerlendirmesi raporlarını, veri araştırma sorgularını ve saldırı vektörlerini örnek olarak içerir. [IoT algılayıcı Kullanıcı Kılavuzu (doğrudan indirme) Için Defender](https://aka.ms/AzureDefenderforIoTUserGuide)'daki algılayıcı özellikleri hakkında daha fazla bilgi edinin.
+- **Algılayıcı**: bir IoT algılayıcısı için Defender, pasif (aracısız) Izleme kullanarak ICS ağ trafiğini toplar. Pasif ve kesintisiz bir şekilde, sensörlerden, OT ve IoT ağları ve cihazları üzerinde sıfır etkisi vardır. Algılayıcı bir SPAN bağlantı noktasına veya ağa DOKUNMASıNA bağlanır ve ağınızı izlemeye hemen başlar. Algılamalar, algılayıcı konsolunda görünür. Burada, bunları bir ağ eşlemesinde, cihaz envanterinde ve kapsamlı bir rapor yelpazğunda görüntüleyebilir, araştırabilir ve çözümleyebilirsiniz. Risk değerlendirmesi raporlarını, veri araştırma sorgularını ve saldırı vektörlerini örnek olarak içerir. [IoT algılayıcı Kullanıcı Kılavuzu (doğrudan indirme) Için Defender](./getting-started.md)'daki algılayıcı özellikleri hakkında daha fazla bilgi edinin.
 
 - Şirket içi **Yönetim Konsolu**: şirket içi yönetim konsolu cihaz yönetimi, risk yönetimi ve güvenlik açığı yönetimini gerçekleştirmenize olanak tanır. Ayrıca, kuruluşunuz genelinde tehdit izlemeyi ve olay yanıtını yürütmek için de kullanabilirsiniz. Algılayıcıların dağıtıldığı tesislerde algılanan tüm ağ cihazlarının, anahtar IoT ve OT risk göstergelerinin ve uyarıların birleştirilmiş bir görünümünü sağlar. Şirket içi yönetim konsolunu kullanarak, AIR-gapped ağlardaki algılayıcıları görüntüleyin ve yönetin.
 

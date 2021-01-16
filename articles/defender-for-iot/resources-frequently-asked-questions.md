@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2020
 ms.author: rkarlin
-ms.openlocfilehash: 0c303adb4ee7c7551c6b389ec169d92a661a63bc
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 678b50ffb2df2cd16312548109b93f6f1a7f08ff
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835032"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247474"
 ---
 # <a name="azure-defender-for-iot-frequently-asked-questions"></a>IoT için Azure Defender hakkında sık sorulan sorular
 
@@ -38,7 +38,7 @@ IoT için Azure Defender kapsamlı protokol desteği sağlar. Gömülü protokol
 Eklentileri eklenti olarak geliştirmeye yönelik bu benzersiz çözüm, yeni bir protokolü desteklemek için adanmış geliştirici takımları veya sürüm sürümleri gerektirmez. Geliştiriciler, iş ortakları ve müşteriler ufku kullanarak protokolleri güvenle geliştirebilir ve Öngörüler ve bilgi paylaşabilir. 
 
 ## <a name="do-i-have-to-purchase-hardware-appliances-from-microsoft-partners"></a>Microsoft iş ortaklarından donanım gereçlerini satın almam gerekiyor mu?
-IoT algılayıcısı için Azure Defender, [donanım belirtimleri Kılavuzu](https://aka.ms/AzureDefenderforIoTBareMetalAppliance)' nda açıklandığı gibi belirli donanım özellikleri üzerinde çalışır, müşteriler Microsoft iş ortaklarından sertifikalı donanımlar satın alabilir veya sağlanan ürün REÇETELERINI (BOM) kullanabilir ve kendi kendinize satın alabilir. 
+IoT algılayıcısı için Azure Defender, [donanım belirtimleri Kılavuzu](./how-to-identify-required-appliances.md)' nda açıklandığı gibi belirli donanım özellikleri üzerinde çalışır, müşteriler Microsoft iş ortaklarından sertifikalı donanımlar satın alabilir veya sağlanan ürün REÇETELERINI (BOM) kullanabilir ve kendi kendinize satın alabilir. 
 
 Sertifikalı donanım, laboratuvarlarımızda sürücü kararlılığı, paket bırakılanlar ve ağ boyutlandırma için test edilmiştir.
 
@@ -51,7 +51,7 @@ Evet! IoT Platformu için Azure Defender çözümü, ağ trafiğini (SPAN, RSPAN
 
 IoT için Azure Defender algılayıcısı, bir SPAN bağlantı noktasına veya ağa DOKUNMASıNA bağlanır ve doğrudan pasif (aracısız) izleme aracılığıyla ICS ağ trafiğini toplamaya başlar. Bu, veri yoluna yerleştirilmediğinden ve cihazları etkin bir şekilde taramazsa OT ağları üzerinde sıfır etkiye sahiptir.
 
-Örnek:
+Örneğin:
 - Tek bir gereç (fiziksel sanal), atölye DMZ katmanında bulunabilir ve bu katmana tüm atölye hücre trafiği yönlendirilir.
 - Alternatif olarak, atölye DMZ katmanında yer alacak bulut ya da yerel yönetim ile her bir mağaza zemin hücresindeki küçük mini sensörlerini bulun. Başka bir gereç (sanal veya fiziksel), atölye DMZ katmanındaki trafiği izleyebilir (SCADA, Histora veya MES için).
 

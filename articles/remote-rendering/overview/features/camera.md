@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/07/2020
 ms.topic: article
-ms.openlocfilehash: fc82d046caa3663cffcda585258642813ab3a7d8
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 76bb9d289e984dd8c229bdaaab09e679e11283fe
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207266"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246290"
 ---
 # <a name="camera"></a>Kamera
 
@@ -32,7 +32,7 @@ Kamera ayarlarında aşağıdaki özellikler değiştirilebilir:
 
 **Yakın ve uzak düzlem:**
 
-Geçersiz Aralık ayarlanilemediğinizden emin olmak **için, yeniden, yeniden,** en fazla bir işlev salt **okunurdur ve aralığı** değiştirmek için ayrı bir **SetNearAndFarPlane** vardır. Bu veriler, çerçevenin sonundaki sunucuya gönderilir.
+Geçersiz Aralık ayarlanilemediğinizden emin olmak **için, yeniden, yeniden,** en fazla bir işlev salt **okunurdur ve aralığı** değiştirmek için ayrı bir **SetNearAndFarPlane** vardır. Bu veriler, çerçevenin sonundaki sunucuya gönderilir. Bu değerler ayarlanırken, en az bir **düzlem** **fardüzlemden** küçük olmalıdır. Aksi takdirde bir hata oluşur.
 
 > [!IMPORTANT]
 > Unity 'de, ana kameranın yakınında ve en dışı düzlemleri değiştirirken bu otomatik olarak işlenir.
@@ -44,6 +44,21 @@ Bazen hata ayıklama amacıyla uzak görüntünün derinlik arabelleği yazma i�
 > [!TIP]
 > Unity 'de, bu özelliği düzenleyici Kullanıcı arabiriminde değiştirmek için kullanılabilecek **Enabledepthcomponent** adlı bir hata ayıklama bileşeni sağlanır.
 
+**Ters çevir**:
+
+> [!NOTE]
+> Bu ayar yalnızca `EnableDepth` , olarak ayarlanmışsa önemlidir `true` . Aksi takdirde bu ayarın etkisi yoktur.
+
+Derinlik arabellekleri normalde, bir [0; 1] kayan nokta aralığında z değerlerini kaydeder; neredeyse düzlem derinliğini ve en yüksek düzlem derinliğini belirten 1. Bu aralığı ve [1; 0] aralığında kayıt derinlik değerlerini ters çevirmek de mümkündür; diğer bir deyişle, neredeyse düzlem derinliği 1 olur ve en yüksek düzlem derinliği 0 olur. Genellikle, ikinci olarak, kayan nokta duyarlığını doğrusal olmayan z aralığı boyunca dağılımı geliştirir.
+
+> [!WARNING]
+> Yaygın bir yaklaşım, kamera nesnelerinde neredeyse düzlem ve en yüksek değerleri tersine dönüştürmekte. Bu, üzerinde çalışırken bir hata ile Azure uzaktan Işleme için başarısız olur `CameraSettings` .
+
+Azure uzaktan Işleme API 'sinin, uzaktan derinliği yerel derinlik arabelleğine doğru şekilde oluşturmak için yerel işleyicinizdeki derinlik arabelleği kuralını bilmesi gerekir. Derinlik arabellek aralığınızı [0; 1] ise bu bayrağı olarak bırakın `false` . [1; 0] aralığıyla ters çevrilmiş bir derinlik arabelleği kullanırsanız, `InverseDepth` bayrağını olarak ayarlayın `true` .
+
+> [!NOTE]
+> Unity için, doğru ayar tarafından zaten uygulanmış olduğundan `RemoteManager` el ile müdahale gerekmez.
+
 Kamera ayarlarının değiştirilmesi şu şekilde yapılabilir:
 
 ```cs
@@ -53,6 +68,7 @@ void ChangeCameraSetting(AzureSession session)
 
     settings.SetNearAndFarPlane(0.1f, 20.0f);
     settings.EnableDepth = false;
+    settings.InverseDepth = false;
 }
 ```
 
@@ -63,6 +79,7 @@ void ChangeStageSpace(ApiHandle<AzureSession> session)
 
     settings->SetNearAndFarPlane(0.1f, 20.0f);
     settings->SetEnableDepth(false);
+    settings->SetInverseDepth(false);
 }
 ```
 

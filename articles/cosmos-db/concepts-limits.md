@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
-ms.openlocfilehash: 9d351bc945c08c82e96791059b00dc94eb94b918
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 793ff9eedb747da0edcbbf2df50b62f06f407892
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368767"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247434"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
 
@@ -256,7 +256,8 @@ Aşağıdaki tabloda, [Try Azure Cosmos DB ücretsiz deneme için](https://azure
 
 Cosmos DB, genel dağıtımı yalnızca Orta ABD, Kuzey Avrupa ve Güneydoğu Asya bölgelerinde destekler. Deneme Azure Cosmos DB hesapları için Azure destek biletleri oluşturulamıyor. Ancak, mevcut destek planlarına sahip aboneler için destek sağlanır.
 
-## <a name="free-tier-account-limits"></a>Ücretsiz katmanı hesap sınırları
+## <a name="azure-cosmos-db-free-tier-account-limits"></a>Ücretsiz katman hesap sınırlarını Azure Cosmos DB
+
 Aşağıdaki tabloda [Azure Cosmos DB ücretsiz katman hesapları](optimize-dev-test.md#azure-cosmos-db-free-tier) için sınırlar listelenmektedir.
 
 | Kaynak | Varsayılan limit |
@@ -268,7 +269,10 @@ Aşağıdaki tabloda [Azure Cosmos DB ücretsiz katman hesapları](optimize-dev-
 | En fazla paylaşılan üretilen iş veritabanı sayısı | 5 |
 | Paylaşılan bir üretilen iş veritabanında en fazla kapsayıcı sayısı | 25 <br>Ücretsiz katman hesaplarında, 25 ' e kadar kapsayıcı içeren paylaşılan bir üretilen iş veritabanı için en az RU/sn 400 RU/sn 'dir. |
 
-  Yukarıdaki ' a ek olarak, [Hesap başına sınırlar](#per-account-limits) ayrıca ücretsiz katman hesapları için de geçerlidir.
+Yukarıdaki ' a ek olarak, [Hesap başına sınırlar](#per-account-limits) ayrıca ücretsiz katman hesapları için de geçerlidir.
+
+> [!NOTE]
+> Azure Cosmos DB ücretsiz katman, Azure Ücretsiz hesabından farklıdır. Ücretsiz Azure hesabı, Azure kredilerini ve kaynaklarını sınırlı bir süre boyunca ücretsiz olarak sunar. Bu ücretsiz hesabın bir parçası olarak Azure Cosmos DB kullanırken, 12 ay boyunca sağlanan üretilen iş hacmi 25 GB depolama ve 400 RU/sn edinirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

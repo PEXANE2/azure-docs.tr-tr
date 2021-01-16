@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: acomet
-ms.openlocfilehash: 8a3142199502b912f20ebe05c625aa40be9fab11
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: f0111228b9b0030cbbceb9fc70d829a7a22fda01
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218680"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247021"
 ---
 # <a name="use-power-bi-and-serverless-synapse-sql-pool-preview-to-analyze-azure-cosmos-db-data-with-synapse-link"></a>SYNAPSE bağlantısı ile Azure Cosmos DB verileri çözümlemek için Power BI ve sunucusuz SYNAPSE SQL Havuzu (Önizleme) kullanın 
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -41,7 +41,7 @@ Başlamadan önce aşağıdaki kaynakları oluşturduğunuzdan emin olun:
 
 ## <a name="create-a-database-and-views"></a>Veritabanı ve görünümler oluşturma
 
-Ana veya varsayılan veritabanlarında görünümlerin oluşturulması önerilmez veya desteklenmez. Bu nedenle, bir veritabanı oluşturarak bu adımı başlatmanız gerekir. SYNAPSE çalışma alanından **Geliştir** sekmesine gidip **+** simgeyi seçin ve **SQL betiği**' ni seçin.
+SYNAPSE çalışma alanından **Geliştir** sekmesine gidip **+** simgeyi seçin ve **SQL betiği**' ni seçin.
 
 :::image type="content" source="./media/synapse-link-power-bi/add-sql-script.png" alt-text="SYNAPSE Analytics çalışma alanına bir SQL betiği ekleyin":::
 
@@ -49,7 +49,7 @@ Her çalışma alanı sunucusuz bir SQL uç noktası ile gelir. Bir SQL betiği 
 
 :::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="SQL betiğini, çalışma alanında sunucusuz SQL uç noktasını kullanacak şekilde etkinleştirin":::
 
-**RetailCosmosDB** adlı yeni bir veritabanı ve SYNAPSE bağlantısı etkinleştirilmiş kapsayıcılar ÜZERINDE bir SQL görünümü oluşturun. Aşağıdaki komut, bir veritabanının nasıl oluşturulacağını gösterir:
+**Ana** veya **varsayılan** veritabanlarında görünümlerin oluşturulması önerilmez veya desteklenmez. **RetailCosmosDB** adlı yeni bir veritabanı ve SYNAPSE bağlantısı etkinleştirilmiş kapsayıcılar ÜZERINDE bir SQL görünümü oluşturun. Aşağıdaki komut, bir veritabanının nasıl oluşturulacağını gösterir:
 
 ```sql
 -- Create database

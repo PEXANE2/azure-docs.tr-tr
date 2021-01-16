@@ -1,20 +1,20 @@
 ---
-title: Gerekli gereçlerini tanımla
+title: Gerekli gereçlerini tanımlama
 description: IoT sensörlerine ve şirket içi yönetim konsoluna yönelik sertifikalı Defender için donanım ve sanal gereçler hakkında bilgi edinin.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/21/2020
+ms.date: 01/13/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b22f880eee1b691b6b50b8151a64a2d501b891b3
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 25685d7e933c9d171e1547be2f5899c08443321a
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97842561"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246579"
 ---
-# <a name="identify-required-appliances"></a>Gerekli gereçlerini tanımla
+# <a name="identify-required-appliances"></a>Gerekli gereçlerini tanımlama
 
 Bu makalede, IoT algılayıcı gereçlerine yönelik sertifikalı Defender hakkında bilgi sağlanır. Defender Fort IoT, fiziksel ve sanal gereçlere dağıtılabilir.
 
@@ -109,7 +109,7 @@ Bu bölümde, aşağıdaki gereçlere yönelik donanım belirtimleri açıklanma
 
 ### <a name="appliance-bom"></a>Gereç ürün ağacı
 
-| DÖNÜŞTÜRME | Açıklama | Miktar |
+| DÖNÜŞTÜRME | Description | Miktar |
 |--|--|--|
 | P19766-B21 | HPE DL360 Gen10 8SFF NC CTO sunucusu | 1 |
 | P19766-B21 | Avrupa-çok dilli yerelleştirme | 1 |
@@ -180,7 +180,7 @@ Bu bölümde, aşağıdaki gereçlere yönelik donanım belirtimleri açıklanma
 
 ### <a name="appliance-bom"></a>Gereç ürün ağacı
 
-| DÖNÜŞTÜRME | Açıklama | Miktar |
+| DÖNÜŞTÜRME | Description | Miktar |
 |--|--|--|
 | P06961-B21 | HPE DL20 Gen10 NHP 2LFF CTO sunucusu | 1 |
 | P06961-B21 | HPE DL20 Gen10 NHP 2LFF CTO sunucusu | 1 |
@@ -209,7 +209,7 @@ Bu bölümde, aşağıdaki gereçlere yönelik donanım belirtimleri açıklanma
 
 | Tür | Kurumsal |
 |--|--|
-| Açıklama | Kurumsal Dağıtım türleri için Sanal Gereç |
+| Description | Kurumsal Dağıtım türleri için Sanal Gereç |
 | Sanal işlemci | 8 |
 | Bellek | 32 GB |
 | Depolama | 1,8 TB |
@@ -254,28 +254,6 @@ Gereci satın aldıktan sonra,   >  yazılımı indirmek için IoT **ağ sensör
 ## <a name="dell-r340-bom"></a>Dell R340 BOM
 
 :::image type="content" source="media/how-to-prepare-your-network/enterprise-deployment-for-azure-defender-for-iot-dell-r340-bom.png" alt-text="Dell R340 BOM.":::
-
-## <a name="smb-deployment-neousys-nuvo-5006lp"></a>SMB dağıtımı: Neousys Nuvo-5006LP
-
-| Bileşen | Teknik özellikler |
-|--|--|
-| İnşaat | Alumum, Fansız ve toz-prova tasarımı |
-| Boyutlar | 240 mm (W) x 225 mm (D) x 77 mm (H) |
-| Ağırlık | 3,1 kg (CPU, bellek ve HDD dahil) |
-| CPU | Intel Core i5-6500TE (6M önbelleği, 3,30 GHz'e kadar) S1151 |
-| Ç | Intel Q170 platform denetleyicisi hub 'ı |
-| Bellek | 8 GB DDR4 2133 MHz geniş sıcaklık SODıMM |
-| Depolama | 128-GB 3ME3 geniş sıcaklık mSATA SSD |
-| Ağ denetleyicisi | Intel I219 'e göre 6x Gigabit Ethernet bağlantı noktaları |
-| Cihaz erişimi | 4 USBs: Iki ön, iki revana, bir dahili |
-| Güç bağdaştırıcısı | 120/240VAC-20VDC/6A |
-| Takarak | Bağlama kiti, DIN |
-| İşletim sıcaklığı | \-25 °C ~ 70 °C |
-| Depolama sıcaklığı | \-40 °C ~ 85 °C |
-| Nem oranı | %10 ~ %90, yoğunlaşmayan |
-| Titreşimi | İşletim, 5 grms, 5-500 Hz, 3 eksen <br>(IEC60068-2-64 ' e göre w/SSD) |
-| Şok | İşletim, 50 grms, yarı sinüs 11-MS-MS süresi (w/SSD, IEC60068-27 ' e göre) |
-| EMC | EN 55022, EN 55024 ve EN 55032 'e göre CE/FCC A sınıfı |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -2,15 +2,15 @@
 title: Azure Otomasyonu Güncelleştirme Yönetimi sorunlarını giderme
 description: Bu makalede, Azure Otomasyonu Güncelleştirme Yönetimi sorunları nasıl giderebileceğiniz ve giderebileceğiniz açıklanır.
 services: automation
-ms.date: 12/04/2020
+ms.date: 01/13/2021
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: f00002c7374e0c35c7bb91c28b2dd87ad71e3350
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 55e58c92004f4f4cf4ba6a96620b4f037c80cdb4
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184926"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246273"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Güncelleştirme Yönetimi sorunlarını giderme
 
@@ -144,13 +144,11 @@ Bu soruna yerel yapılandırma sorunları veya yanlış yapılandırılmış kap
    | summarize by Computer, Solutions
    ```
 
-4. Makinenizi sorgu sonuçlarında görmüyorsanız, son zamanlarda iade edilmedi demektir. Büyük olasılıkla yerel bir yapılandırma sorunu var ve [aracıyı yeniden yüklemeniz](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)gerekir.
+    Makinenizi sorgu sonuçlarında görmüyorsanız, son zamanlarda iade edilmedi demektir. Büyük olasılıkla yerel bir yapılandırma sorunu var ve [aracıyı yeniden yüklemeniz](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)gerekir.
 
-5. Makineniz sorgu sonuçlarında görünüyorsa, kapsam yapılandırma sorunlarını kontrol edin. [Kapsam yapılandırması](../update-management/scope-configuration.md) , hangi makinelerin güncelleştirme yönetimi yapılandırıldığını belirler.
+    Makineniz sorgu sonuçlarında listeleniyorsa, **güncelleştirmelerin** listelendiğini, **çözüm** özelliği altında doğrulayın. Bu, Güncelleştirme Yönetimi kaydedildiğini doğrular. Değilse, kapsam yapılandırma sorunlarını kontrol edin. [Kapsam yapılandırması](../update-management/scope-configuration.md) , hangi makinelerin güncelleştirme yönetimi yapılandırıldığını belirler. Makinenin hedefi için kapsam yapılandırmasını yapılandırmak üzere, bkz. çalışma alanındaki [makineleri etkinleştirme](../update-management/enable-from-automation-account.md#enable-machines-in-the-workspace).
 
-6. Makinenizin çalışma alanınızda gösterilmesi, ancak Güncelleştirme Yönetimi istemiyorsanız, kapsam yapılandırmasını makineyi hedeflemek üzere yapılandırmanız gerekir. Bunun nasıl yapılacağını öğrenmek için bkz. [çalışma alanındaki makineleri etkinleştirme](../update-management/enable-from-automation-account.md#enable-machines-in-the-workspace).
-
-7. Çalışma alanınızda bu sorguyu çalıştırın.
+4. Çalışma alanınızda bu sorguyu çalıştırın.
 
    ```kusto
    Operation
@@ -158,9 +156,9 @@ Bu soruna yerel yapılandırma sorunları veya yanlış yapılandırılmış kap
    | sort by TimeGenerated desc
    ```
 
-8. Bir `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` sonuç alırsanız, çalışma alanınızda tanımlanan kotaya ulaşıldı ve bu da verilerin kaydedilmesini durdurdu. Çalışma alanınızda, **kullanım ve tahmini maliyetler** altında **veri hacmi yönetimi** ' ne gidin ve kotayı değiştirin veya kaldırın.
+   Bir `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` sonuç alırsanız, çalışma alanınızda tanımlanan kotaya ulaşıldı ve bu da verilerin kaydedilmesini durdurdu. Çalışma alanınızda, **kullanım ve tahmini maliyetler** altında **veri hacmi yönetimi** ' ne gidin ve kotayı değiştirin veya kaldırın.
 
-9. Sorununuz hala çözülmedi ise, Windows için karma çalışanı yeniden yüklemek üzere [Windows karma Runbook Worker dağıtma](../automation-windows-hrw-install.md) bölümündeki adımları izleyin. Linux için, [Linux karma runbook çalışanı dağıtma](../automation-linux-hrw-install.md)' daki adımları izleyin.
+5. Sorununuz hala çözülmedi ise, Windows için karma çalışanı yeniden yüklemek üzere [Windows karma Runbook Worker dağıtma](../automation-windows-hrw-install.md) bölümündeki adımları izleyin. Linux için, [Linux karma runbook çalışanı dağıtma](../automation-linux-hrw-install.md)' daki adımları izleyin.
 
 ## <a name="scenario-unable-to-register-automation-resource-provider-for-subscriptions"></a><a name="rp-register"></a>Senaryo: abonelikler için Otomasyon kaynak sağlayıcısı kaydedilemiyor
 

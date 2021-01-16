@@ -5,14 +5,14 @@ services: container-service
 ms.topic: overview
 ms.date: 05/06/2019
 ms.custom: mvc
-ms.openlocfilehash: 75f4602be15ef2487272ed5790d92c4c884c551f
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 4115ab2140cd3bf67135e494e16fb8121c040ff6
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681559"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246205"
 ---
-# <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti (AKS)
+# <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
 Azure Kubernetes Service (AKS), Azure'a yönetilen bir Kubernetes kümesi dağıtmayı kolaylaştırır. AKS, sorumluluğun çoğunu Azure'a devrederek Kubernetes yönetiminin karmaşıklığını ve işlemsel yükünü azaltır. Barındırılan bir Kubernetes hizmeti olarak, Azure sistem durumu izleme ve bakım gibi kritik görevleri sizin için gerçekleştirir. Kubernetes ana düğümler Azure tarafından yönetilir. Siz yalnızca aracı düğümlerini yönetir ve sürdürürsünüz. AKS, yönetilen bir Kubernetes servisi olarak ücretsizdir; ana düğümler için değil, yalnızca kümelerinizdeki aracı düğümleri için ücret ödersiniz.
 
@@ -60,15 +60,15 @@ Yaşam döngüsü sürümleri hakkında daha fazla bilgi edinmek için, bkz. [AK
 
 ### <a name="gpu-enabled-nodes"></a>GPU etkin düğümler
 
-AKS, GPU etkin düğüm havuzlarının oluşturulmasını destekler. Azure şu an için tekli veya çoklu GPU etkin VM'ler sunmaktadır. GPU etkin VM'ler işlemci, grafik ve görselleştirme talebi yoğun olan iş yükleri için tasarlanmıştır.
+AKS, GPU etkin düğüm havuzlarının oluşturulmasını destekler. Azure Şu anda tek veya birden çok GPU özellikli VM sağlıyor. GPU özellikli VM 'Ler, işlem yoğunluğu, grafik yoğun ve görselleştirme iş yükleri için tasarlanmıştır.
 
 Daha fazla bilgi için bkz. [AKS üzerinde GPU kullanma][aks-gpu].
 
 ### <a name="confidential-computing-nodes-public-preview"></a>Gizli bilgi işlem düğümleri (Genel Önizleme)
 
-AKS, Intel SGX tabanlı gizli bilgi işlem düğüm havuzlarının (DCSv2 VM 'Ler) oluşturulmasını destekler. Gizli bilgi işlem düğümleri, kapsayıcıların bir donanım tabanlı güvenilir ve yalıtılmış yürütme ortamında (şifreleme) çalışmasına izin verir. Kanıtlama aracılığıyla kod bütünlüğü ile birleştirilmiş kapsayıcılar arasındaki yalıtım, derinlemesine savunma kapsayıcısı güvenlik stratejinize yardımcı olabilir. Gizli bilgi işlem düğümleri hem gizli kapsayıcıları (mevcut Docker uygulamaları) hem de şifreleme kullanan kapsayıcıları destekler.
+AKS, Intel SGX tabanlı gizli bilgi işlem düğüm havuzlarının (DCSv2 VM 'Ler) oluşturulmasını destekler. Gizli bilgi işlem düğümleri, kapsayıcıların donanım tabanlı bir güvenilir yürütme ortamında (şifreleme) çalışmasına izin verir. Kanıtlama ile kod bütünlüğü ile birleştirilmiş kapsayıcılar arasındaki yalıtım, derinlemesine savunma kapsayıcısı güvenlik stratejinize yardımcı olabilir. Gizli bilgi işlem düğümleri hem gizli kapsayıcıları (mevcut Docker uygulamaları) hem de şifreleme kullanan kapsayıcıları destekler.
 
-Daha fazla bilgi için bkz. [AKS üzerinde gizli bilgi işlem düğümleri][conf-com-node]
+Daha fazla bilgi için bkz. [AKS üzerinde gizli bilgi işlem düğümleri][conf-com-node].
 
 ### <a name="storage-volume-support"></a>Depolama birimi desteği
 
@@ -80,7 +80,7 @@ Daha fazla bilgi için bkz. [AKS 'teki uygulamalar Için depolama seçenekleri][
 
 ## <a name="virtual-networks-and-ingress"></a>Sanal ağlar ve giriş
 
-AKS kümesi var olan bir sanal ağa dağıtılabilir. Bu yapılandırmada kümedeki her pod'a sanal ağda bir IP adresi atanır ve tümü hem kümedeki diğer pod'larla hem de sanal ağdaki diğer düğümlerle doğrudan iletişim kurabilir. Pod'lar ayrıca eş düğümlü bir sanal ağ üzerindeki diğer hizmetlere, ExpressRoute üzerinden şirket içindeki ağlara veya siteden siteye (S2S) VPN bağlantılarına da bağlanabilir.
+AKS kümesi var olan bir sanal ağa dağıtılabilir. Bu yapılandırmada kümedeki her pod'a sanal ağda bir IP adresi atanır ve tümü hem kümedeki diğer pod'larla hem de sanal ağdaki diğer düğümlerle doğrudan iletişim kurabilir. Pods Ayrıca, eşlenmiş bir sanal ağdaki diğer hizmetlere ve ExpressRoute veya siteden siteye (S2S) VPN bağlantıları üzerinden şirket içi ağlara bağlanabilir.
 
 Daha fazla bilgi için bkz. [AKS 'teki uygulamalar Için ağ kavramları][aks-networking].
 
@@ -98,15 +98,15 @@ Kubernetes, Visual Studio Code için Held ve Kubernetes uzantısı gibi bir geli
 
 Ayrıca Azure Dev Spaces, ekiplere yönelik hızlı ve yinelemeli bir Kubernetes geliştirme deneyimi sunar. Minimum yapılandırma ile AKS içinde kapsayıcıları çalıştırabilir ve kapsayıcıların hatasını ayıklayabilirsiniz. Başlamak için, bkz. [Azure Dev Spaces][azure-dev-spaces].
 
-Azure DevOps projesi, var olan kodunuzu ve Git deponuzu Azure’a taşımanız için kullanımı kolay bir çözüm sunar. DevOps projesi AKS gibi Azure kaynaklarını otomatik olarak oluşturur, CI için derleme işlem hattı içeren bir Azure DevOps Services yayın işlem hattı kurar, CD için yayın işlem hattı oluşturur ve ardından izleme için Azure Application Insights kaynağı oluşturur.
+DevOps Starter, mevcut kod ve Git depolarını Azure 'a getirmek için basit bir çözüm sunar. DevOps Starter, CI 'ler için derleme işlem hattı içeren Azure DevOps Services bir yayın işlem hattı olan AKS gibi Azure kaynaklarını otomatik olarak oluşturur, CD için bir yayın işlem hattı ayarlar ve ardından izleme için bir Azure Application Insights kaynağı oluşturur.
 
-Daha fazla bilgi için bkz. [Azure DevOps projesi][azure-devops].
+Daha fazla bilgi için bkz. [DevOps Starter][azure-devops].
 
 ## <a name="docker-image-support-and-private-container-registry"></a>Docker görüntü desteği ve özel kapsayıcı kayıt defteri
 
 AKS, Docker görüntü biçimini destekler. Docker görüntülerinizin özel olarak depolanması için, AKS’yi Azure Container Registry (ACR) ile tümleştirebilirsiniz.
 
-Özel görüntü deposu oluşturmak için, bkz. [Azure Container Registry][acr-docs].
+Özel bir görüntü deposu oluşturmak için, bkz. [Azure Container Registry][acr-docs].
 
 ## <a name="kubernetes-certification"></a>Kubernetes sertifikası
 

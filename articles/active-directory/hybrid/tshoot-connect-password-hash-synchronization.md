@@ -16,12 +16,12 @@ ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77271679306b0fbde10c748afc7535f3ad3d0945
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c6ec162ceb51c3bf19be42219b054d8371ff221
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317574"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247361"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect eşitlemesi ile parola karması eşitleme sorunlarını giderme
 
@@ -227,7 +227,7 @@ Bir kullanıcı için hiçbir parolanın eşitlenmediği sorunları gidermek iç
 
 2. `Set-ExecutionPolicy RemoteSigned`Veya çalıştırın `Set-ExecutionPolicy Unrestricted` .
 
-3. `Import-Module ADSyncDiagnostics` komutunu çalıştırın.
+3. `Import-Module ADSyncDiagnostics` öğesini çalıştırın.
 
 4. Aşağıdaki cmdlet'i çalıştırın:
 
@@ -270,7 +270,7 @@ Hesap, tüm etki alanlarındaki parola karmalarını okumak için gerekli izinle
 
 Özel yükleme kullandıysanız, aşağıdakileri yaparak izinleri el ile ayarlayın:
     
-1. Active Directory Bağlayıcısı tarafından kullanılan hesabı bulmak için **Synchronization Service Manager**başlatın. 
+1. Active Directory Bağlayıcısı tarafından kullanılan hesabı bulmak için **Synchronization Service Manager** başlatın. 
  
 2. **Bağlayıcılar**' a gidin ve sorun giderirken şirket içi Active Directory ormanını arayın. 
  
@@ -281,15 +281,15 @@ Hesap, tüm etki alanlarındaki parola karmalarını okumak için gerekli izinle
     ![Active Directory Bağlayıcısı tarafından kullanılan hesap](./media/tshoot-connect-password-hash-synchronization/connectoraccount.png)  
     Kullanıcı adını ve hesabın bulunduğu etki alanını aklınızda bulundurun.
     
-5. **Active Directory Kullanıcıları ve bilgisayarları**başlatın ve ardından, daha önce bulduğunuz hesabın ormanınızdaki tüm etki alanlarının kökünde ayarlanan izleme izinlerine sahip olduğunu doğrulayın:
+5. **Active Directory Kullanıcıları ve bilgisayarları** başlatın ve ardından, daha önce bulduğunuz hesabın ormanınızdaki tüm etki alanlarının kökünde ayarlanan izleme izinlerine sahip olduğunu doğrulayın:
     * Dizin Değişikliklerini Çoğalt
     * Dizin değişikliklerini çoğaltma
 
-6. Etki alanı denetleyicileri Azure AD Connect tarafından erişilebilir mi? Connect sunucusu tüm etki alanı denetleyicilerine bağlanamazsa, **yalnızca tercih edilen etki alanı denetleyicisini kullan**seçeneğini yapılandırın.  
+6. Etki alanı denetleyicileri Azure AD Connect tarafından erişilebilir mi? Connect sunucusu tüm etki alanı denetleyicilerine bağlanamazsa, **yalnızca tercih edilen etki alanı denetleyicisini kullan** seçeneğini yapılandırın.  
     
     ![Active Directory Bağlayıcısı tarafından kullanılan etki alanı denetleyicisi](./media/tshoot-connect-password-hash-synchronization/preferreddc.png)  
 
-7. **Synchronization Service Manager** ve **dizin bölümünü yapılandırmak**için geri dönün. 
+7. **Synchronization Service Manager** ve **dizin bölümünü yapılandırmak** için geri dönün. 
  
 8. **Dizin bölümlerini Seç**' de etki alanınızı seçin, **yalnızca tercih edilen etki alanı denetleyicilerini kullan** onay kutusunu işaretleyin ve ardından **Yapılandır**' a tıklayın. 
 
@@ -330,9 +330,9 @@ Bir nesnenin durumunu inceleyerek Parola karması eşitleme sorunlarını kolayc
 
     ![Nesne günlüğü ayrıntıları](./media/tshoot-connect-password-hash-synchronization/csobjectlog.png)  
 
-    Nesne günlüğü boşsa, Azure AD Connect Active Directory parola karmasını okuyamadı. Bağlantı hatalarıyla sorun gidermeye devam edin. **Başarıya**ait başka bir değer görürseniz, [parola eşitleme günlüğündeki](#password-sync-log)tabloya bakın.
+    Nesne günlüğü boşsa, Azure AD Connect Active Directory parola karmasını okuyamadı. Bağlantı hatalarıyla sorun gidermeye devam edin. **Başarıya** ait başka bir değer görürseniz, [parola eşitleme günlüğündeki](#password-sync-log)tabloya bakın.
 
-    h. **Kökenini** sekmesini seçin ve **PasswordSync** sütununda en az bir eşitleme kuralının **doğru**olduğundan emin olun. Varsayılan yapılandırmada, eşitleme kuralının adı **ad-User AccountEnabled konumunda**bulunur.  
+    h. **Kökenini** sekmesini seçin ve **PasswordSync** sütununda en az bir eşitleme kuralının **doğru** olduğundan emin olun. Varsayılan yapılandırmada, eşitleme kuralının adı **ad-User AccountEnabled konumunda** bulunur.  
 
     ![Bir kullanıcı hakkında kökenini bilgileri](./media/tshoot-connect-password-hash-synchronization/cspasswordsync.png)  
 
@@ -346,7 +346,7 @@ Bir nesnenin durumunu inceleyerek Parola karması eşitleme sorunlarını kolayc
 
     ![Meta veri deposu bilgileri](./media/tshoot-connect-password-hash-synchronization/mvconnectors.png)  
 
-    k. Azure AD 'yi temsil eden satırı seçin, **Özellikler**' e ve ardından **kökenini** sekmesine tıklayın. Bağlayıcı alanı nesnesinin, **PasswordSync** sütununda **doğru**olarak ayarlanmış bir giden kuralı olmalıdır. Varsayılan yapılandırmada, eşitleme kuralının adı **AAD-User JOIN ' e**gönderilir.  
+    k. Azure AD 'yi temsil eden satırı seçin, **Özellikler**' e ve ardından **kökenini** sekmesine tıklayın. Bağlayıcı alanı nesnesinin, **PasswordSync** sütununda **doğru** olarak ayarlanmış bir giden kuralı olmalıdır. Varsayılan yapılandırmada, eşitleme kuralının adı **AAD-User JOIN ' e** gönderilir.  
 
     ![Bağlayıcı alanı nesne özellikleri iletişim kutusu](./media/tshoot-connect-password-hash-synchronization/cspasswordsync2.png)  
 
@@ -380,7 +380,7 @@ if ($aadConnectors -ne $null -and $adConnectors -ne $null)
 {
     if ($aadConnectors.Count -eq 1)
     {
-        $features = Get-ADSyncAADCompanyFeature -ConnectorName $aadConnectors[0].Name
+        $features = Get-ADSyncAADCompanyFeature
         Write-Host
         Write-Host "Password sync feature enabled in your Azure AD directory: "  $features.PasswordHashSync
         foreach ($adConnector in $adConnectors)

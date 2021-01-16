@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/28/2020
 ms.author: shhazam
-ms.openlocfilehash: d4686f1d7192d1469e52e653185f1fc9389764de
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 2d82aaadf158e45cb8faaeee0b9b4e0fc80a3420
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832327"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247344"
 ---
 # <a name="connect-your-data-from-defender-for-iot-to-azure-sentinel"></a>IoT için Defender 'daki verilerinizi Azure Sentinel 'e bağlama 
 
@@ -25,7 +25,7 @@ Tüm IoT olayları için Defender 'ı Azure Sentinel 'e aktarmak üzere IoT içi
 
 Bu tümleştirme, kuruluşların genellikle onu ve sınırları aşan çok aşamalı saldırıları hızla algılamasını sağlar. Ayrıca, IoT 'nin Azure Sentinel 'in güvenlik düzenlemesi, otomasyonu ve yanıtı (SOAR) özellikleri ile tümleştirilmesi için Defender, yerleşik olarak iyileştirilmiş PlayBook 'lar kullanılarak otomatik yanıt ve önlemeye imkan tanıyor. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure Sentinel 'in dağıtıldığı çalışma alanında **okuma** ve **yazma** izinleri
 - **IoT Için Defender 'ın** ilgili IoT Hub **etkinleştirilmiş** olması gerekir
@@ -65,5 +65,5 @@ Bir **aboneliği** bağladıktan sonra merkez verileri yaklaşık 15 dakika sonr
 
 Bu belgede, IoT için Defender 'ı Azure Sentinel 'e bağlamayı öğrendiniz. Tehdit algılama ve güvenlik verileri erişimi hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
-- Azure Sentinel kullanarak [verilerinize ilişkin görünürlük ve potansiyel tehditler alma](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)hakkında bilgi edinin.
+- Azure Sentinel kullanarak [verilerinize ilişkin görünürlük ve potansiyel tehditler alma](../sentinel/quickstart-get-visibility.md)hakkında bilgi edinin.
 - [IoT güvenlik verilerinize erişme](how-to-security-data-access.md) hakkında bilgi edinin

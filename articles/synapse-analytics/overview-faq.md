@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0d833c32000eb91511782184ef4455bc1973a714
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: a7ee4e205851a751f7a50ac0ddadfb4e4c7eb81a
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97807918"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247412"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Azure SYNAPSE Analytics hakkında sık sorulan sorular
 
@@ -71,7 +71,7 @@ A: Apache Spark için SYNAPSE bağlantısı GA 'dir. Sunucusuz SQL havuzu için 
 
 Y: Evet! Tüm işlem hattı yapıtları, Not defterleri, SQL betikleri ve Spark iş tanımları git içinde yer alır. Tüm havuz tanımları, git 'te ARM şablonları olarak depolanır. Adanmış SQL havuzu nesneleri (şemalar, tablolar, görünümler, vb.), CI/CD desteğiyle veritabanı projeleriyle yönetilir.
 
-## <a name="pipelines"></a>İşlem hatları
+## <a name="pipelines"></a>Pipelines
 
 ### <a name="q-how-do-i-ensure-i-know-what-credential-is-being-used-to-run-a-pipeline"></a>S: bir ardışık düzen çalıştırmak için hangi kimlik bilgilerinin kullanıldığını Nasıl yaparım? emin olun. 
 
@@ -138,11 +138,6 @@ Y: "taşı" veya "geçiş" yoktur. Mevcut Havuzlarınızda yeni çalışma alan�
 ### <a name="q-what-is-the-default-deployment-of-dedicated-sql-pools-now"></a>S: adanmış SQL havuzlarının varsayılan dağıtımı şimdi nedir? 
 
 A: varsayılan olarak, tüm yeni adanmış SQL havuzları bir çalışma alanına dağıtılacak; Ancak, bir tek başına form faktöründe adanmış bir SQL Havuzu (eski adıyla SQL DW) oluşturmaya devam edebilirsiniz. 
-
-
-### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-sql-pools"></a>S: adanmış SQL havuzları ve sunucusuz SQL havuzları arasındaki işlevsel farklılıklar nelerdir?
-
-[Y: SYNAPSE SQL Içindeki T-SQL Özellik farklılıklarının](./sql/overview-features.md)tam bir listesini bulabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

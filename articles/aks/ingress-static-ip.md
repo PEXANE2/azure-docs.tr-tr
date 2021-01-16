@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) kümesinde statik bir genel IP adres
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 14835f7d332b1fcc6e1afabec9a6ee6e55d699e7
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: e6777946b0c83eb7f7eb6f3230bb95da2313e741
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219870"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246239"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde statik bir genel IP adresi ile giriş denetleyicisi oluşturma
 
@@ -103,7 +103,7 @@ Henüz bir giriş kuralı oluşturulmadı, bu nedenle genel IP adresine gözatt�
 Genel IP adresinde FQDN 'yi sorgulayarak DNS ad etiketinin uygulandığını aşağıdaki gibi doğrulayabilirsiniz:
 
 ```azurecli-interactive
-az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query "[?name=='myAKSPublicIP'].[dnsSettings.fqdn]" -o tsv
+az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query "[?ipAddress=='myAKSPublicIP'].[dnsSettings.fqdn]" -o tsv
 ```
 
 Giriş denetleyicisine artık IP adresi veya FQDN üzerinden erişilebilir.

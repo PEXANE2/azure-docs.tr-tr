@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/27/2019
 ms.author: shhazam
-ms.openlocfilehash: d3b50d909fb167ee123b548603628bae7d844c5b
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 2b1cd131e578b1d16fabee99b8de536e4a48ece0
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97843692"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247310"
 ---
 # <a name="get-started-with-azure-defender-for-iot-device-security-agents"></a>IoT cihaz güvenlik aracıları için Azure Defender ile çalışmaya başlama
 
@@ -31,7 +31,7 @@ IoT güvenlik aracıları için Defender, cihaz işletim sisteminden Ham olay to
 IoT güvenlik aracılarınız için Defender 'ı dağıtmak ve test etmek üzere aşağıdaki iş akışını kullanın:
 
 1. [IoT Hub IoT hizmeti için Defender 'ı etkinleştirin](quickstart-onboard-iot-hub.md)
-1. IoT Hub kayıtlı bir cihaz yoksa, [Yeni bir cihaz kaydedin](../iot-accelerators/quickstart-device-simulation-deploy.md).
+1. IoT Hub kayıtlı bir cihaz yoksa, [Yeni bir cihaz kaydedin](../iot-accelerators/iot-accelerators-device-simulation-overview.md).
 1. Cihazlarınız için [bir azureiotsecurity güvenlik modülü oluşturun](quickstart-create-security-twin.md) .
 1. Aracıyı gerçek bir cihaza yüklemek yerine bir Azure sanal cihazına yüklemek için, kullanılabilir bir bölgede [Yeni bir Azure sanal makinesi (VM)](../virtual-machines/linux/quick-create-portal.md) çalıştırın.
 1. IoT cihazınıza veya yeni VM 'de [IoT güvenlik Aracısı için bir Defender dağıtın](how-to-deploy-linux-cs.md) .

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/10/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b61bef89d53da280961b818425d11a6f81bbf5ea
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 25f47be98b11f05ee6ac27018152ece05c0de4e4
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210248"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246698"
 ---
 # <a name="manage-individual-sensors"></a>Algılayıcıları ayrı ayrı yönetme
 
@@ -84,7 +84,7 @@ Etkinleştirme dosyası yüklenemediğinden bir hata iletisi alırsınız. Aşa�
 
 - **Yerel olarak bağlı sensörler için**: etkinleştirme dosyası geçerli değil. Dosya geçerli değilse IoT portalı için Defender 'a gidin. **Algılayıcı yönetimi** sayfasında, geçersiz dosya ile algılayıcı ' ı seçin ve yeni bir etkinleştirme dosyası indirin.
 
-- **Buluta bağlı sensörler için**: algılayıcı internet 'e bağlanamıyor. Algılayıcının ağ yapılandırmasını denetleyin. Sensörizin internet 'e erişmek için bir Web proxy üzerinden bağlanması gerekiyorsa, **algılayıcı ağ yapılandırması** ekranında ara sunucunuzun doğru şekilde yapılandırıldığını doğrulayın. \*. Azure-Devices.net:443 güvenlik duvarında ve/veya proxy 'de izin verildiğini doğrulayın. Joker karakterler desteklenmiyorsa veya daha fazla denetim istiyorsanız, IoT Hub için özel Defender 'ın FQDN 'SI güvenlik duvarınız ve/veya ara sunucunuzda açılmalıdır. Ayrıntılar için bkz. [başvuru IoT Hub uç noktaları](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-endpoints).  
+- **Buluta bağlı sensörler için**: algılayıcı internet 'e bağlanamıyor. Algılayıcının ağ yapılandırmasını denetleyin. Sensörizin internet 'e erişmek için bir Web proxy üzerinden bağlanması gerekiyorsa, **algılayıcı ağ yapılandırması** ekranında ara sunucunuzun doğru şekilde yapılandırıldığını doğrulayın. \*. Azure-Devices.net:443 güvenlik duvarında ve/veya proxy 'de izin verildiğini doğrulayın. Joker karakterler desteklenmiyorsa veya daha fazla denetim istiyorsanız, IoT Hub için özel Defender 'ın FQDN 'SI güvenlik duvarınız ve/veya ara sunucunuzda açılmalıdır. Ayrıntılar için bkz. [başvuru IoT Hub uç noktaları](../iot-hub/iot-hub-devguide-endpoints.md).  
 
 - **Buluta bağlı sensörler için**: etkinleştirme dosyası geçerli, ancak IoT için Defender tarafından reddedildi. Bu sorunu gideremezseniz, IoT portalı için Defender 'ın **algılayıcı yönetimi** sayfasından başka bir etkinleştirme indirebilirsiniz. Bu işe yaramazsa Microsoft Desteği başvurun.
 

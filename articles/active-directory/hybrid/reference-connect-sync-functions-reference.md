@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6c8be064ade8182355c320e948b3b60b846033d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 7454733233f1fd487d774d52a6f46187354ae05c
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348067"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246715"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect Sync: Işlevler başvurusu
 Azure AD Connect, işlevler eşitleme sırasında bir öznitelik değerini işlemek için kullanılır.  
@@ -114,7 +114,7 @@ Türler aşağıdaki sözdizimiyle ifade edilir:
   * [Rasgelenum](#randomnum)
 * **Çoklu * değerli**
   * [Vardır](#contains)
-  * [Count](#count)
+  * [Biriktirme](#count)
   * [Öğe](#item)
   * [Imornull](#itemornull)
   * [Join](#join)
@@ -124,8 +124,8 @@ Türler aşağıdaki sözdizimiyle ifade edilir:
   * [Hata](#error)
   * [Mayan](#iif)
   * [Seç](#select)
-  * [Değiştirebilirsiniz](#switch)
-  * [Konum](#where)
+  * [Anahtar](#switch)
+  * [Olmadığı](#where)
   * [Kullanılarak](#with)
 * **Metin**
   * ['INI](#guid)
@@ -664,7 +664,7 @@ Biçim için olası değerler burada bulunabilir: [Format işlevi Için özel ta
 
 **Örnek:**  
 
-`FormatDateTime(CDate("12/25/2007"),"yyyy-mm-dd")`  
+`FormatDateTime(CDate("12/25/2007"),"yyyy-MM-dd")`  
 "2007-12-25" ile sonuçlanır.
 
 `FormatDateTime(DateFromNum([pwdLastSet]),"yyyyMMddHHmmss.0Z")`  

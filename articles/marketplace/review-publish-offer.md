@@ -8,12 +8,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/27/2020
-ms.openlocfilehash: b038834df3889a8b4b7f4a749568635e99f8408e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8b63dfb015c7337e36dac3812e92ddc53914206d
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188760"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247174"
 ---
 # <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>Ticari Market 'e yönelik bir teklifi İnceleme ve yayımlama
 
@@ -46,13 +46,13 @@ Sayfaların herhangi birinde **tamamlanmamış** bir durum varsa, söz konusu sa
 
 Tüm sayfalar tamamlandıktan ve ilgili test notlarını girdikten sonra, doğrulama ve yayımlama işlemlerine başlamak için **Yayımla** ' yı seçin. Aşamalar ve genel sıra, yayımladığınız teklifin türüne bağlı olarak farklılık gösterebilir. Aşağıdaki tabloda, olası bir yayımlama akışı gösterilmektedir. Her aşama aşağıdaki bölümlerde daha ayrıntılı olarak açıklanmıştır.
 
-| Faz | Ne olur? |
+| Aşama | Ne olur? |
 | ------------ | ------------- | ------------- |
 | [Otomatik doğrulama](#automated-validation-phase) | Otomatik doğrulama kümesini işliyoruz. |
 | [Sertifikasyon](#certification-phase) | El ile doğrulama yaptık. |
 | [Önizleme oluşturma](#preview-creation-phase) | Teklif önizlemeniz için liste sayfası önizleme bağlantısına sahip olan herkes tarafından kullanılabilir. Teklifiniz Microsoft (transactable) üzerinden satılıyorsa, yalnızca teklifinizin **ön izleme İzleyicisi** sayfasında belirttiğiniz hedef kitle, test için teklif satın alabilir ve bu teklifi erişebilir. |
 | [Yayımcı oturumu kapatma](#publisher-sign-off-phase) | Teklifinizi önizlemenizi ve onaylamanıza yönelik bir istek içeren bir e-posta göndereceğiz. |
-| [Yayımlama](#publish-phase) | Önizleme teklifinin ticari Market 'e canlı olarak yayımlandığını doğrulamak için bir dizi adımı çalıştırdık. |
+| [Yayımla](#publish-phase) | Önizleme teklifinin ticari Market 'e canlı olarak yayımlandığını doğrulamak için bir dizi adımı çalıştırdık. |
 |||
 
 ## <a name="automated-validation-phase"></a>Otomatik doğrulama aşaması
@@ -150,7 +150,7 @@ Aşağıdaki ekran görüntüsünde bir SaaS teklifinin **teklif genel bakış**
 ### <a name="previewing-and-approving-your-offer"></a>Teklifinizi önizleme ve onaylama
 
 > [!IMPORTANT]
-> Uçtan uca satın alma ve kurulum akışını doğrulamak için, önizleme aşamasında olan teklifinizi satın alın. Bir ücreti işlememenizi sağlamak için öncelikle Microsoft 'un bir [destek bileti](https://aka.ms/marketplacesupport) olduğunu bildirin.
+> Uçtan uca satın alma ve kurulum akışını doğrulamak için, önizleme aşamasında olan teklifinizi satın alın. Bir ücreti işlememenizi sağlamak için öncelikle Microsoft 'un bir [destek bileti](https://aka.ms/marketplacesupport) olduğunu bildirin. Teklifiniz bir kişi benimle Ilgili ise, önizleme sırasında Ilgili kişi ayrıntılarını sağlayarak bir müşteri adayının beklenen şekilde oluşturulduğunu test edin.
 
 **Teklif genel bakış** sayfasında, **canlı çalış** düğmesinin altında Önizleme bağlantıları görüntülenir. Teklifinizi oluştururken seçtiğiniz seçeneklere bağlı olarak, AppSource Preview, Azure Marketi önizlemesi veya her ikisinin de bir bağlantısı olacaktır. Teklifinizi Microsoft aracılığıyla satmayı seçerseniz, önizleme izleyicisine eklenmiş olan herkes, bu aşamada gereksinimlerinizi karşıladığından emin olmak için teklifinizin Alım ve dağıtımını test edebilir.
 
@@ -195,7 +195,7 @@ Teklifinizin geçmişini görüntülemek için:
 3.    Teklifinizi seçin.
 4.    Sol taraftaki gezinti menüsünde **Geçmiş** sekmesini seçin. Bu sayfa, teklifiniz için geçerli olan aşağıdaki olayların ayrıntılarını sağlar:
 
-|Olay    |Açıklama    |
+|Olay    |Description    |
 |---------|---------------|
 |Teklif oluşturuldu    |Teklif Iş Ortağı Merkezi 'nde oluşturulmuştur. Bir Kullanıcı, **ticari Market**  >  **'e genel bakış** bölümünde teklif türü, teklif kimliği ve teklif diğer adını seçti.    |
 |Plan oluşturuldu: *Plan adı*    |Kullanıcı plana **genel bakış** SEKMESINDE plan kimliği ve plan adı girerek yeni bir plan oluşturdu.</br>*Bu olay yalnızca planları destekleyen teklif türleri için geçerlidir*.    |

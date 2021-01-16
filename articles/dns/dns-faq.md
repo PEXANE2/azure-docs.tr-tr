@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 01/11/2021
 ms.author: rohink
-ms.openlocfilehash: c468b1216670ce7e6b5d252a7f7fee807199d20c
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: cb14cb95ec1362782a634b0e62cfa2f8237a5852
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131500"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246391"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS SSS
 
@@ -194,10 +194,6 @@ Evet. Azure DNS ad sunucuları ikili yığınlardır. İkili yığın, IPv4 ve I
 Uluslararası etki alanı adları (IDNs), her DNS adını [punıcode](https://en.wikipedia.org/wiki/Punycode)kullanarak kodlar. DNS sorguları, bu zayıf kod kodlu adlar kullanılarak yapılır.
 
 Azure DNS ' de IDNs 'yi yapılandırmak için bölge adı veya kayıt kümesi adını punıcode olarak dönüştürün. Azure DNS, atlama kodundan veya bu koddan yerleşik dönüştürmeyi desteklemez.
-
-### <a name="does-azure-dns-private-zones-store-any-customer-content"></a>Azure DNS özel bölgeler tüm müşteri içeriğini mi depolar?
-
-Hayır, Azure DNS özel bölgeler hiçbir müşteri içeriğini depolamaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

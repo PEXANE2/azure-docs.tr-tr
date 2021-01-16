@@ -3,12 +3,12 @@ title: Azure Event Grid teslimi ve yeniden dene
 description: Azure Event Grid olayların nasıl teslim edildiğini ve teslim edilmemiş iletileri nasıl işlediğini açıklar.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 51473cf457a1c713e6694edd23c344be8c4d439e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3c4ed6ec2c9eae4dbcf70a831e3e7f70a28a57a0
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463231"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247378"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>İleti teslimini Event Grid ve yeniden deneyin
 
@@ -57,7 +57,7 @@ Azure CLı 'yı Event Grid kullanma hakkında daha fazla bilgi için bkz. [Azure
 
 EventGrid bir olay teslim girişimi için bir hata aldığında, EventGrid teslim mi yoksa atılacak harfi mi yeniden denemeli ya da hatanın türüne göre olayı bırakmaya karar verir. 
 
-Abone olunan uç nokta tarafından döndürülen hata, yeniden denemeler ile çözülebilecek yapılandırma ile ilgili hata ise (örneğin, uç nokta silinirse), EventGrid olayı iptal eder veya eski bir harf yapılandırılmamışsa olayı yapmaz.
+Abone olunan uç nokta tarafından döndürülen hata, yeniden denemeler ile çözülebilecek yapılandırma ile ilgili hata ise (örneğin, uç nokta silinirse), EventGrid olayı iptal eder veya atılacak harf yapılandırılmamışsa olayı yapmaz.
 
 Yeniden deneme gerçekleşmeyen uç nokta türleri aşağıda verilmiştir:
 
@@ -67,7 +67,7 @@ Yeniden deneme gerçekleşmeyen uç nokta türleri aşağıda verilmiştir:
 | Web Kancası | 400 Hatalı Istek, 413 Istek varlığı çok büyük, 403 Yasak, 404 bulunamadı, 401 yetkilendirilmemiş |
  
 > [!NOTE]
-> Uç nokta için Dead-Letter yapılandırılmamışsa, yukarıdaki hatalar gerçekleştiğinde olaylar bırakılır, bu nedenle bu tür olayların kesilmesini istemiyorsanız, atılacak mektubu yapılandırmayı düşünün.
+> Uç nokta için Dead-Letter yapılandırılmamışsa, yukarıdaki hatalar gerçekleştiğinde olaylar bırakılır. Bu tür olayların kesilmesini istemiyorsanız, atılacak harfi yapılandırmayı düşünün.
 
 Abone olunan uç nokta tarafından döndürülen hata yukarıdaki listede değilse, EventGrid aşağıda açıklanan ilkeleri kullanarak yeniden denemeyi gerçekleştirir:
 
@@ -80,7 +80,10 @@ Event Grid bir ileti teslim ettikten sonra yanıt için 30 saniye bekler. 30 san
 - 10 dakika
 - 30 dakika
 - 1 saat
-- 24 saate kadar saatlik
+- 3 saat
+- 6 saat
+- 24 saate kadar her 12 saatte bir
+
 
 Uç nokta 3 dakika içinde yanıt verirse Event Grid, olayı en iyi çaba temelinde yeniden deneme sırasından kaldırmayı dener, ancak yinelemeler yine de alınabilir.
 
@@ -104,7 +107,7 @@ Event Grid belirli bir süre içinde veya olayı belirli bir sayıda teslim etme
 
 Koşullardan biri karşılanıyorsa, olay bırakılır veya atılacak.  Event Grid, varsayılan olarak, atılacak bir duruma getirin. Bunu etkinleştirmek için, olay aboneliğini oluştururken teslim edilmemiş olayları barındıracak bir depolama hesabı belirtmeniz gerekir. Teslimleri çözümlemek için bu depolama hesabından olay çekebilirsiniz.
 
-Event Grid, tüm yeniden deneme girişimlerini denediği zaman atılacak harf konumuna bir olay gönderir. Event Grid bir 400 (Hatalı Istek) veya 413 (varlık çok büyük Istek) yanıt kodu alırsa, olayı hemen atılacak ileti uç noktasına gönderir. Bu yanıt kodları olayın teslimini belirtir hiçbir şekilde başarısız olur.
+Event Grid, tüm yeniden deneme girişimlerini denediği zaman atılacak harf konumuna bir olay gönderir. Event Grid bir 400 (Hatalı Istek) veya 413 (varlık çok büyük Istek) yanıt kodu alırsa, olayı atılacak şekilde anında zamanlar. Bu yanıt kodları olayın teslimini belirtir hiçbir şekilde başarısız olur.
 
 Yaşam süresi sonu yalnızca bir sonraki zamanlanan teslim denemede denetlenir. Bu nedenle, bir sonraki zamanlanan teslim denemesinden önce yaşam süresi dolsa bile, olay süre sonu yalnızca sonraki teslimat sırasında denetlenir ve ardından atılacak. 
 

@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 11/25/2020
+ms.date: 01/15/2021
 ms.custom: designer
-ms.openlocfilehash: 14be695f2f58b9738af11a3d2ca3f06592a1cc6e
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 6bba5ad17cbb6f1ed72d06b37c6d6af9ebd26495
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575967"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246477"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Öğretici: tasarımcı ile makine öğrenimi modeli dağıtma
 
@@ -28,7 +28,7 @@ Diğer kullanıcılara bunu kullanma şansı vermek için [öğreticinin birinci
 > * Gerçek zamanlı bitiş noktasını dağıtın.
 > * Gerçek zamanlı uç noktayı test edin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Tasarımcı 'da makine öğrenimi modelinin nasıl eğeceğinizi ve puanlandıralınacağını öğrenmek için [öğreticiden birinin bir kısmını](tutorial-designer-automobile-price-train-score.md) doldurun.
 
@@ -97,11 +97,30 @@ AKS hizmetiniz sağlamayı tamamladıktan sonra, dağıtımı tamamlamaya yönel
 
 1. Oluşturduğunuz AKS kümesini seçin.
 
-1. **Dağıt**'ı seçin.
-    
     :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="Yeni bir gerçek zamanlı uç noktanın nasıl ayarlanacağını gösteren ekran görüntüsü":::
 
+    Ayrıca, gerçek zamanlı uç noktanıza yönelik **Gelişmiş** ayarları değiştirebilirsiniz.
+    
+    |Gelişmiş ayar|Description|
+    |---|---|
+    |Application Insights tanılamayı ve veri toplamayı etkinleştir| Azure uygulamalarının dağıtılan uç noktalardan veri toplamasına izin verilip verilmeyeceğini belirtir. </br> Varsayılan olarak: false |
+    |Puanlama zaman aşımı| Web hizmetine yönelik Puanlama çağrılarına zorlamak için milisaniye cinsinden zaman aşımı.</br>Varsayılan olarak: 60000|
+    |Otomatik ölçeklendirme etkin|   Web hizmeti için otomatik ölçeklendirmenin etkinleştirilip etkinleştirilmeyeceğini belirtir.</br>Varsayılan olarak: true|
+    |Minimum çoğaltmalar| Bu Web hizmetini otomatik ölçeklendirirken kullanılacak kapsayıcı sayısı alt sınırı.</br>Varsayılan olarak: 1|
+    |En fazla çoğaltma| Bu Web hizmetini otomatik ölçeklendirirken kullanılacak kapsayıcı sayısı üst sınırı.</br> Varsayılan olarak: 10|
+    |Hedef kullanım|Otomatik Scaler 'nın bu Web hizmeti için bakımını denemesi gereken hedef kullanım (100 ' dan fazla).</br> Varsayılan olarak: 70|
+    |Yenileme süresi|Otomatik gizleme bu Web hizmetini ölçeklendirmek için ne sıklıkta (saniye cinsinden) çalışır.</br> Varsayılan olarak: 1|
+    |CPU Reserve kapasitesi|Bu Web hizmeti için ayrılacak CPU çekirdeklerinin sayısı.</br> Varsayılan olarak: 0,1|
+    |Bellek ayırma kapasitesi|Bu Web hizmeti için ayrılacak bellek miktarı (GB cinsinden).</br> Varsayılan olarak: 0,5|
+        
+
+1. **Dağıt**'ı seçin. 
+
     Dağıtım bittikten sonra tuvalin üzerindeki başarı bildirimi görüntülenir. İşlem birkaç dakika sürebilir.
+
+> [!TIP]
+> Ayrıca, gerçek zamanlı uç nokta ayarı kutusunda **işlem türü** Için **Azure Container Instance** ' ı seçerseniz **Azure Container Instance** 'a (aci) dağıtabilirsiniz.
+> Azure Container Instance, test veya geliştirme için kullanılır. 48 GB 'den az RAM gerektiren düşük ölçekli CPU tabanlı iş yükleri için ACI 'yi kullanın.
 
 ## <a name="view-the-real-time-endpoint"></a>Gerçek zamanlı uç noktayı görüntüleme
 
