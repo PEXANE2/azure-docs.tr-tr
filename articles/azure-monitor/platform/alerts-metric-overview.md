@@ -4,12 +4,12 @@ description: Ölçüm uyarıları ile yapabileceklerinize ve bunların Azure Izl
 ms.date: 01/13/2021
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: d8e0621f88455a68ad0ee1b236f6b423c9d54b52
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: ab80496784b5d86d270830546cec73aadbcc50a6
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179903"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251242"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure İzleyici'de ölçüm uyarılarının nasıl çalıştığını anlama
 
@@ -26,7 +26,7 @@ Azure Izleyici 'de ölçüm uyarıları, çok boyutlu ölçümlerin üzerine ça
 - Hedef kaynak (izlemek istediğiniz Azure kaynağı): myVM
 - Ölçüm: CPU yüzdesi
 - Koşul türü: statik
-- Zaman toplama (ham ölçüm değerleri üzerinden çalıştırılan Istatistik. [Desteklenen süre toplamaları](metrics-charts.md#changing-aggregation) en az, en fazla, ortalama, toplam, sayı): Ortalama
+- Zaman toplama (ham ölçüm değerleri üzerinden çalıştırılan Istatistik. [Desteklenen süre toplamaları](metrics-charts.md#aggregation) en az, en fazla, ortalama, toplam, sayı): Ortalama
 - Süre (ölçüm değerlerinin denetlenme geri arama penceresi): son 5 dakika boyunca
 - Sıklık (koşulların karşılandığını ölçüm uyarısının denetlediği sıklık): 1 dk
 - İşleç: büyüktür
@@ -43,7 +43,7 @@ Aşağıdaki gibi basit bir dinamik eşikler ölçüm uyarısı kuralı oluştur
 - Hedef kaynak (izlemek istediğiniz Azure kaynağı): myVM
 - Ölçüm: CPU yüzdesi
 - Koşul türü: dinamik
-- Zaman toplama (ham ölçüm değerleri üzerinden çalıştırılan Istatistik. [Desteklenen süre toplamaları](metrics-charts.md#changing-aggregation) en az, en fazla, ortalama, toplam, sayı): Ortalama
+- Zaman toplama (ham ölçüm değerleri üzerinden çalıştırılan Istatistik. [Desteklenen süre toplamaları](metrics-charts.md#aggregation) en az, en fazla, ortalama, toplam, sayı): Ortalama
 - Süre (ölçüm değerlerinin denetlenme geri arama penceresi): son 5 dakika boyunca
 - Sıklık (koşulların karşılandığını ölçüm uyarısının denetlediği sıklık): 1 dk
 - İşleç: büyüktür
@@ -139,7 +139,7 @@ Geri arama sürelerini ve ihlallerin sayısını artırmak, uyarıların yalnız
 
 Bu özellik şu anda aşağıdaki Azure bulutlarında aşağıdaki hizmetler için platform ölçümleri (özel ölçümler değil) için desteklenir:
 
-| Hizmet | Genel Azure | Devlet | Çin |
+| Hizmet | Genel Azure | Kamu | Çin |
 |:--------|:--------|:--------|:--------|
 | Sanal makineler<sup>1</sup>  | **Evet** | **Evet** | No |
 | SQL Server veritabanları | **Evet** | **Evet** | **Evet** |
@@ -180,7 +180,7 @@ Desteklenen kaynak türlerinin tam listesini bu [makalede](./alerts-metric-near-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure 'da ölçüm uyarılarını oluşturma, görüntüleme ve yönetme hakkında bilgi edinin](alerts-metric.md)
-- [Azure montior Ölçüm Gezgini içinde uyarı oluşturma hakkında bilgi edinin](./metrics-charts.md#create-alert-rules)
+- [Azure montior Ölçüm Gezgini içinde uyarı oluşturma hakkında bilgi edinin](./metrics-charts.md#alert-rules)
 - [Azure Resource Manager şablonlarını kullanarak ölçüm uyarılarını dağıtmayı öğrenin](./alerts-metric-create-templates.md)
 - [Eylem grupları hakkında daha fazla bilgi edinin](action-groups.md)
 - [Dinamik eşikler durum türü hakkında daha fazla bilgi edinin](alerts-dynamic-thresholds.md)

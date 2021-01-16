@@ -3,12 +3,12 @@ title: ACR görevinden çapraz kayıt defteri kimlik doğrulaması
 description: Azure kaynakları için yönetilen bir kimlik kullanarak başka bir özel Azure Container Registry 'ye erişmek üzere bir Azure Container Registry görevi (ACR görevi) yapılandırma
 ms.topic: article
 ms.date: 07/06/2020
-ms.openlocfilehash: 9a460102eafa5c1eda2f37330887d985387d5df5
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 0e8e2690113167ad68ef1fc0bbef322491997c76
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026267"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251157"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Azure tarafından yönetilen kimlik kullanan bir ACR görevinde çapraz kayıt defteri kimlik doğrulaması 
 
@@ -26,7 +26,7 @@ Bu örnek, Kullanıcı tarafından atanan veya sistem tarafından atanan yöneti
 
 Gerçek dünyada bir senaryoda kuruluş, tüm geliştirme ekipleri tarafından uygulamalarını oluşturmak için kullanılan bir dizi temel görüntü tutabilir. Bu temel görüntüler, her geliştirme ekibinin yalnızca çekme haklarına sahip olduğu bir kurumsal kayıt defterinde saklanır. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede iki Azure Container Registry gerekir:
 
@@ -43,8 +43,8 @@ Tanıtım amacıyla, tek seferlik bir işlem olarak, Docker Hub 'ından temel ka
 
 ```azurecli
 az acr import --name mybaseregistry \
-  --source docker.io/library/node:9-alpine \
-  --image baseimages/node:9-alpine 
+  --source docker.io/library/node:15-alpine \
+  --image baseimages/node:15-alpine 
 ```
 
 ## <a name="define-task-steps-in-yaml-file"></a>YAML dosyasında görev adımlarını tanımlama
@@ -190,8 +190,8 @@ Waiting for an agent...
 2019/06/14 22:47:45 Launching container with name: acb_step_0
 Sending build context to Docker daemon   25.6kB
 Step 1/6 : ARG REGISTRY_NAME
-Step 2/6 : FROM ${REGISTRY_NAME}/baseimages/node:9-alpine
-9-alpine: Pulling from baseimages/node
+Step 2/6 : FROM ${REGISTRY_NAME}/baseimages/node:15-alpine
+15-alpine: Pulling from baseimages/node
 [...]
 Successfully built 41b49a112663
 Successfully tagged myregistry.azurecr.io/hello-world:cf10
@@ -211,7 +211,7 @@ The push refers to repository [myregistry.azurecr.io/hello-world]
   runtime-dependency:
     registry: mybaseregistry.azurecr.io
     repository: baseimages/node
-    tag: 9-alpine
+    tag: 15-alpine
     digest: sha256:e8e92cffd464fce3be9a3eefd1b65dc9cbe2484da31c11e813a4effc6105c00f
   git:
     git-head-revision: 0f988779c97fe0bfc7f2f74b88531617f4421643
@@ -219,7 +219,7 @@ The push refers to repository [myregistry.azurecr.io/hello-world]
 Run ID: cf10 was successful after 32s
 ```
 
-Oluşturulan görüntünün ve *myregistry* 'e başarıyla gönderildiğinden emin olmak için [az ACR Repository Show-Tags][az-acr-repository-show-tags] komutunu çalıştırın:
+Oluşturulan görüntünün ve *myregistry*'e başarıyla gönderildiğinden emin olmak için [az ACR Repository Show-Tags][az-acr-repository-show-tags] komutunu çalıştırın:
 
 ```azurecli
 az acr repository show-tags --name myregistry --repository hello-world --output tsv

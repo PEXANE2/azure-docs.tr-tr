@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 08/17/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: c3b3848e4e4f7b0445f882265dbe66bb10b48833
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0bb0a7833e9ee3b499ae013b665ecf137c667005
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968596"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251004"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>Azure portal ile SAP Çözümleri için Azure Izleyici dağıtma
 
@@ -59,7 +59,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 6. Kullanmak istediğiniz veritabanı kullanıcı adını girin. Veritabanı kullanıcısına, **izleme** ve **Katalog okuma** rollerinin atanmış olduğundan emin olun. 
 
-7. İşiniz bittiğinde **Sağlayıcı Ekle**' yi seçin. Gerektiğinde ek sağlayıcılar eklemeye devam edin veya dağıtımı tamamladıktan sonra **gözden geçir + oluştur** ' u seçin.
+7. İşiniz bittiğinde **Sağlayıcı Ekle**' yi seçin. Gerektiğinde daha fazla sağlayıcı eklemeye devam edin veya dağıtımı tamamladıktan sonra **gözden geçir + oluştur** ' u seçin.
 
    :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-4.png" alt-text="Sağlayıcı bilgileri eklenirken yapılandırma seçeneklerinin görüntüsü." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-4.png":::
 
@@ -74,9 +74,21 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
  
 3. Sistem KIMLIĞINI (SID), ana bilgisayar adını ve küme adını girin.
 
-4. İşiniz bittiğinde **Sağlayıcı Ekle**' yi seçin. Gerektiğinde ek sağlayıcılar eklemeye devam edin veya dağıtımı tamamladıktan sonra **gözden geçir + oluştur** ' u seçin.
+4. İşiniz bittiğinde **Sağlayıcı Ekle**' yi seçin. Gerektiğinde daha fazla sağlayıcı eklemeye devam edin veya dağıtımı tamamladıktan sonra **gözden geçir + oluştur** ' u seçin.
 
    :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-5.png" alt-text="Görüntü, HA kümesi pacemaker sağlayıcısıyla ilgili seçenekleri gösterir." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-5.png":::
+
+
+### <a name="os-linux-provider"></a>OS (Linux) sağlayıcısı 
+
+1. Açılan listeden OS (Linux) seçeneğini belirleyin 
+
+> [!IMPORTANT]
+> İşletim sistemi (Linux) sağlayıcısını yapılandırmak için, Node_Exporter her bir BareMetal örneğine yüklendiğinden emin olun. Daha fazla bilgi için bkz. [Node_Exporter](https://github.com/prometheus/node_exporter)
+
+2. BareMetal örneği için tanımlayıcı olacak bir ad girin.
+3. Düğüm verme uç noktasını biçiminde girin http://IP:9100/metrics .
+4. İşiniz bittiğinde **Sağlayıcı Ekle**' yi seçin. Gerektiğinde daha fazla sağlayıcı eklemeye devam edin veya dağıtımı tamamladıktan sonra **gözden geçir + oluştur**' u seçin   . 
 
 
 ### <a name="microsoft-sql-server-provider"></a>Microsoft SQL Server sağlayıcı
@@ -112,7 +124,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 3. Microsoft SQL Server ile ilişkili bilgileri kullanarak alanları doldurun. 
 
-4. İşiniz bittiğinde **Sağlayıcı Ekle**' yi seçin. Gerektiğinde ek sağlayıcılar eklemeye devam edin veya dağıtımı tamamladıktan sonra **gözden geçir + oluştur** ' u seçin.
+4. İşiniz bittiğinde **Sağlayıcı Ekle**' yi seçin. Gerektiğinde daha fazla sağlayıcı eklemeye devam edin veya dağıtımı tamamladıktan sonra **gözden geçir + oluştur** ' u seçin.
 
      :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-6.png" alt-text="Görüntüde Microsoft SQL Server sağlayıcısı eklemeyle ilgili bilgiler gösterilir." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-6.png":::
 

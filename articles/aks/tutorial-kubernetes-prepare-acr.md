@@ -3,14 +3,14 @@ title: Azure'da Kubernetes öğreticisi - Kapsayıcı kayıt defteri oluşturma
 description: Bu Azure Kubernetes Service (AKS) öğreticisinde bir Azure Container Registry örneği oluşturacak ve kapsayıcı görüntüsüne örnek uygulama yükleyeceksiniz.
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/12/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: b0f78c3969f3d02c19824fdb6d1e3b786dceb43c
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: d1dce1c59c4bf40eaead89e4a8a088e9a8ea4f76
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747063"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250634"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>Öğretici: Azure Container Registry’yi dağıtma ve kullanma
 
@@ -22,7 +22,7 @@ Azure Container Registry (ACR), kapsayıcı görüntüleri için özel bir kayı
 > * Görüntüyü ACR’ye yükleme
 > * Kayıt defterinizdeki görüntüleri görüntüleme
 
-Ek öğreticilerde, bu ACR örneği AKS 'teki bir Kubernetes kümesiyle tümleşiktir ve görüntüden bir uygulama dağıtılır.
+Sonraki öğreticilerde, bu ACR örneği AKS 'teki bir Kubernetes kümesiyle tümleşiktir ve görüntüden bir uygulama dağıtılır.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -60,12 +60,12 @@ Komut tamamlandığında bir *oturum açma başarılı* iletisi döndürür.
 
 Mevcut yerel görüntülerinizin listesini görüntülemek için [docker images][docker-images] komutunu kullanın:
 
-```azurecli
+```console
 $ docker images
 ```
-Yukarıdaki komut çıktısı geçerli yerel görüntülerinizin listesini gösterir:
+Yukarıdaki komutun çıktısı, geçerli yerel görüntülerinizin listesini gösterir:
 
-```
+```output
 REPOSITORY                                     TAG                 IMAGE ID            CREATED             SIZE
 mcr.microsoft.com/azuredocs/azure-vote-front   v1                  84b41c268ad9        7 minutes ago       944MB
 mcr.microsoft.com/oss/bitnami/redis            6.0.8               3a54a920bb6c        2 days ago          103MB
@@ -122,7 +122,7 @@ az acr repository list --name <acrName> --output table
 
 Aşağıdaki örnek çıktıda *azure-vote-front* görüntüsünün kayıt defterinde kullanılabilir durumda olduğu gösterilmektedir:
 
-```
+```output
 Result
 ----------------
 azure-vote-front
@@ -136,7 +136,7 @@ az acr repository show-tags --name <acrName> --repository azure-vote-front --out
 
 Aşağıdaki örnekte önceki adımda etiketlenen *v1* görüntüsü gösterilmektedir:
 
-```
+```output
 Result
 --------
 v1

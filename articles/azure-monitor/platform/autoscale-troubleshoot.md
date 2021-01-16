@@ -4,12 +4,12 @@ description: Service Fabric, sanal makineler, Web Apps ve bulut hizmetlerinde ku
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.subservice: autoscale
-ms.openlocfilehash: a29b5d11a6ea06af9d5b6a8b5120c6f0caa6601e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c4589acd17e76d1341d5aceada67e565c8f8c37
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979040"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251276"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Azure otomatik ölçeklendirme sorunlarını giderme
  
@@ -51,20 +51,20 @@ Otomatik ölçeklendirme hizmetindeki ölçümleri gözden geçirelim.
 
 ![Sanal makine ölçek kümesi yüzde CPU örneği](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-2.png)
 
-***Şekil 1a-sanal makine ölçek kümesi için CPU Ölçümü yüzdesi ve otomatik ölçeklendirme ayarı için gözlemlenen ölçüm değeri ölçümü***
+**_Şekil 1a-sanal makine ölçek kümesi IÇIN CPU Ölçümü yüzdesi ve otomatik ölçeklendirme ayarı Için gözlemlenen ölçüm değeri ölçümü_*
 
 ![Ölçüm eşiği ve gözlemlenen kapasite](media/autoscale-troubleshoot/autoscale-metric-threshold-capacity-ex-full.png)
 
-***Şekil 1B-metrik eşiği ve gözlemlenen kapasite***
+_*_Şekil 1B-metrik eşiği ve gözlemlenen kapasite_*_
 
-Şekil 1B, ölçek genişletme kuralı için **ölçüm eşiği** (açık mavi çizgi) 70 ' dir.  **Gözlenen kapasite** (koyu mavi çizgi), şu anda 3 olan etkin örnek sayısını gösterir. 
+Şekil 1B, ölçek genişletme kuralı için _ *ölçüm eşiği** (açık mavi çizgi) 70 ' dir.  **Gözlenen kapasite** (koyu mavi çizgi), şu anda 3 olan etkin örnek sayısını gösterir. 
 
 > [!NOTE]
 > Ölçek Genişletme eşiğini ve kural içindeki ölçeği (azalmayı) görmek için ölçüm tetikleme kuralı boyut ölçeği genişletme (artış) kuralına göre **ölçüm eşiğini** filtrelemeniz gerekir. 
 
 ## <a name="example-2---advanced-autoscaling-for-a-virtual-machine-scale-set"></a>Örnek 2-bir sanal makine ölçek kümesi için gelişmiş otomatik ölçeklendirme
 
-Bir sanal makine ölçek kümesi kaynağının kendi ölçüm **giden akışlarına**göre ölçeklendirilmesine izin veren bir otomatik ölçeklendirme ayarı vardır. Ölçüm eşiğinin **örnek sayısına göre ölçüyü Böl** seçeneğinin işaretli olduğuna dikkat edin. 
+Bir sanal makine ölçek kümesi kaynağının kendi ölçüm **giden akışlarına** göre ölçeklendirilmesine izin veren bir otomatik ölçeklendirme ayarı vardır. Ölçüm eşiğinin **örnek sayısına göre ölçüyü Böl** seçeneğinin işaretli olduğuna dikkat edin. 
 
 Ölçek eylemi kuralı: 
 
@@ -76,18 +76,18 @@ Bu durumda, otomatik ölçeklendirme motorunun gözlemlenen ölçüm değeri, ge
 
 ![Sanal makine ölçek kümesi otomatik ölçeklendirme ölçümleri grafikleri örneği](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-2.png)
 
-***Şekil 2-sanal makine ölçek kümesi otomatik ölçeklendirme ölçümleri grafikleri örneği***
+**_Şekil 2-sanal makine ölçek kümesi otomatik ölçeklendirme ölçümleri grafikleri örnek_* _
 
 Şekil 2 ' de iki ölçüm grafiği görebilirsiniz. 
 
-Üstteki grafik, **giden akışlar** ölçüsünün gerçek değerini gösterir. Gerçek değer 6 ' dır. 
+Üstteki grafik _ *giden akışlar** ölçüsünün gerçek değerini gösterir. Gerçek değer 6 ' dır. 
 
 En alttaki grafik birkaç değeri gösterir. 
  - **Gözlenen ölçüm değeri** (açık mavi) 3 ' tür ve 2 etkin örnek ve 6 ' a bölünmüş 2 3 ' tür. 
  - **Gözlenen kapasite** (mor), otomatik ölçeklendirme motoru tarafından görülen örnek sayısını gösterir. 
  - **Ölçüm eşiği** (açık yeşil) 10 olarak ayarlanır. 
 
-Birden fazla ölçeklendirme eylemi kuralı varsa, belirli bir kaynak veya kurala göre ölçüm bölümüne bakmak için ölçüm Gezgini grafiğinde bölme veya **Filtre Ekle** seçeneğini kullanabilirsiniz. Ölçüm grafiğinin bölünmesi hakkında daha fazla bilgi için bkz. [ölçüm grafiklerinin gelişmiş özellikleri-bölme](metrics-charts.md#apply-splitting-to-a-chart)
+Birden fazla ölçeklendirme eylemi kuralı varsa, belirli bir kaynak veya kurala göre ölçüm bölümüne bakmak için ölçüm Gezgini grafiğinde bölme veya **Filtre Ekle** seçeneğini kullanabilirsiniz. Ölçüm grafiğinin bölünmesi hakkında daha fazla bilgi için bkz. [ölçüm grafiklerinin gelişmiş özellikleri-bölme](metrics-charts.md#apply-splitting)
 
 ## <a name="example-3---understanding-autoscale-events"></a>Örnek 3-otomatik ölçeklendirme olaylarını anlama
 
@@ -111,7 +111,7 @@ Azure Izleyici desteklenen herhangi bir hizmette olduğu gibi, bu günlükleri y
 
 ![Otomatik ölçeklendirme Tanılama ayarları](media/autoscale-troubleshoot/diagnostic-settings.png)
 
-Önceki resimde Azure portal otomatik ölçeklendirme Tanılama ayarları gösterilmektedir. Tanılama/kaynak günlükleri sekmesini seçebilir ve günlük toplamayı ve yönlendirmeyi etkinleştirebilirsiniz. Ayrıca, *Microsoft. Insights/oto scalesettings*olarak kaynak türünü seçerek Tanılama ayarları için REST API, CLI, PowerShell ve Kaynak Yöneticisi şablonlarını kullanarak aynı eylemi gerçekleştirebilirsiniz. 
+Önceki resimde Azure portal otomatik ölçeklendirme Tanılama ayarları gösterilmektedir. Tanılama/kaynak günlükleri sekmesini seçebilir ve günlük toplamayı ve yönlendirmeyi etkinleştirebilirsiniz. Ayrıca, *Microsoft. Insights/oto scalesettings* olarak kaynak türünü seçerek Tanılama ayarları için REST API, CLI, PowerShell ve Kaynak Yöneticisi şablonlarını kullanarak aynı eylemi gerçekleştirebilirsiniz. 
 
 ## <a name="troubleshooting-using-autoscale-logs"></a>Otomatik ölçeklendirme günlüklerini kullanarak sorun giderme 
 

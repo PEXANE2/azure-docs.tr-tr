@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: ec4917aa378f746eb2caac6a7b4ce99d1c44db90
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 55e618a7e4e0d21f6d4afab270e257c26fa15634
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127660"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251123"
 ---
 # <a name="configure-and-submit-training-runs"></a>Eğitim çalıştırmalarını yapılandırma ve gönderme
 
@@ -75,6 +75,9 @@ experiment = Experiment(workspace=ws, name=experiment_name)
 Eğitim betiğinizin çalışacağı işlem hedefini seçin. ScriptRunConfig içinde herhangi bir işlem hedefi belirtilmemişse veya, `compute_target='local'` Azure ml, betiğinizi yerel olarak yürütecektir. 
 
 Bu makaledeki örnek kod, `my_compute_target` "Önkoşullar" bölümünde zaten bir işlem hedefi oluşturmuş olduğunuzu varsayar.
+
+>[!Note]
+>Azure Databricks model eğitimi için işlem hedefi olarak desteklenmez. Veri hazırlama ve dağıtım görevleri için Azure Databricks kullanabilirsiniz. 
 
 ## <a name="create-an-environment"></a>Ortam oluşturma
 Azure Machine Learning [ortamlar](concept-environments.md) , Machine Learning eğitiminin gerçekleştiği ortamın kapsüllenmesi. Bunlar, eğitim ve Puanlama betikleriniz etrafında Python paketlerini, Docker görüntüsünü, ortam değişkenlerini ve yazılım ayarlarını belirler. Bunlar ayrıca çalışma zamanlarını belirtir (Python, Spark veya Docker).

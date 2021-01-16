@@ -8,12 +8,12 @@ ms.author: mbaldwin
 author: msmbaldwin
 manager: rkarlin
 ms.date: 09/30/2020
-ms.openlocfilehash: a9a783333d8edd40556b7744eb7cf7dfb52953a7
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 4a6b3e4c6354c292d000a307bc25f8532aa9a096
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97933991"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250800"
 ---
 # <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>Geçici silme ve Temizleme koruması ile kurtarma yönetimi Azure Key Vault
 
@@ -29,6 +29,8 @@ Key Vault hakkında daha fazla bilgi için bkz.
 * [PowerShell modülü](https://docs.microsoft.com/powershell/azure/install-az-ps).
 * [Azure CLI](/cli/azure/install-azure-cli)
 * Key Vault- [Azure clı](../general/quick-create-cli.md) [Azure Portal](../general/quick-create-portal.md) veya [Azure PowerShell](../general/quick-create-powershell.md) kullanarak bir tane oluşturabilirsiniz.
+* Kullanıcının, geçici olarak silinen kasalarla ilgili işlemler gerçekleştirmek için aşağıdaki izinlere (abonelik düzeyinde) ihtiyacı olacak: | Microsoft. Keykasası/konumlar/Silinkaults/okuma | Geçici olarak silinen bir anahtar kasasının özelliklerini görüntüleyin | | Microsoft. Keykasası/konumlar/Silinkaults/Temizleme/eylem | Geçici olarak silinen bir anahtar kasasını Temizleme |
+
 
 ## <a name="what-are-soft-delete-and-purge-protection"></a>Geçici silme ve Temizleme koruması nedir?
 
@@ -48,7 +50,7 @@ Key Vault hakkında daha fazla bilgi için bkz.
 
 Geçici silme hakkında daha fazla bilgi için bkz. [Azure Key Vault geçici genel bakış](soft-delete-overview.md)
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/azure-portal)
 
 ## <a name="verify-if-soft-delete-is-enabled-on-a-key-vault-and-enable-soft-delete"></a>Bir anahtar kasasında geçici silmenin etkinleştirilip etkinleştirilmediğini ve geçici silme özelliğini etkinleştirip etkinleştirmediğinizi doğrulayın
 
@@ -392,6 +394,6 @@ Geçici silme hakkında daha fazla bilgi için bkz. [Azure Key Vault geçici gen
 - [Azure CLı komutlarını Key Vault](https://docs.microsoft.com/cli/azure/keyvault)
 - [Azure Key Vault yedekleme](backup.md)
 - [Key Vault günlüğü etkinleştirme](howto-logging.md)
-- [Anahtar kasasına güvenli erişim](secure-your-key-vault.md)
+- [Anahtar kasasına erişimin güvenliğini sağlama](secure-your-key-vault.md)
 - [Geliştirici Kılavuzu Azure Key Vault](developers-guide.md)
 - [Anahtar Kasası kullanmak için en iyi uygulamalar](security-overview.md)

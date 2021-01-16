@@ -3,12 +3,12 @@ title: Azure Relay SSS | Microsoft Docs
 description: Bu makalede Azure Relay hizmetiyle ilgili sık sorulan soruların bazılarına yanıtlar verilmektedir.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 77d3122942289654c0f651f9f648307123b23546
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 83cbc4b02bb8b63878abd046ed2314728546e87a
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131857"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250065"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay SSS
 
@@ -70,7 +70,7 @@ Bir Azure Relay iletinin gönderilmesi, iletiyi alan geçiş dinleyicisine "tam 
 ## <a name="quotas"></a>Kotalar
 | Kota adı | Kapsam |  Notlar | Değer |
 | --- | --- | --- | --- |
-| Geçiş sırasında eş zamanlı dinleyiciler |Varlık |Daha sonraki ek bağlantı istekleri reddedilir ve çağıran kod tarafından bir özel durum alınır. |25 |
+| Geçiş sırasında eş zamanlı dinleyiciler |Varlık (karma bağlantı veya WCF geçişi) |Daha sonraki ek bağlantı istekleri reddedilir ve çağıran kod tarafından bir özel durum alınır. |25 |
 | Hizmet ad alanındaki tüm geçiş uç noktaları başına eş zamanlı geçiş bağlantıları |Ad Alanı |- |5.000 |
 | Hizmet ad alanı başına geçiş uç noktaları |Ad Alanı |- |10,000 |
 | [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) ve [Neteventrelaybinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) geçişleri için ileti boyutu |Ad Alanı |Bu kotaları aşan gelen iletiler reddedilir ve çağıran kod tarafından bir özel durum alınır. |64 KB |

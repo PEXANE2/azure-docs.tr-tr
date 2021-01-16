@@ -5,12 +5,12 @@ ms.custom: subject-cost-optimization
 ms.service: app-service
 ms.topic: how-to
 ms.date: 01/01/2021
-ms.openlocfilehash: de55a708ab78844fd8e834db0bd88e12dd66885a
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: f92b766fc1122456fda70d2deff81fa80a02d159
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186511"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250120"
 ---
 # <a name="plan-and-manage-costs-for-azure-app-service"></a>Azure App Service maliyetlerini planlayın ve yönetin
 
@@ -25,7 +25,7 @@ ms.locfileid: "98186511"
 
 <!-- Note for Azure service writer: Modify the following for your service. -->
 
-Bu makalede, Azure App Service maliyetlerini nasıl planlayabileceğinizi ve yönetebileceğiniz açıklanır. İlk olarak, maliyetleri tahmin etmek üzere hizmet için herhangi bir kaynak eklemeden önce App Service maliyetlerini planlamaya yardımcı olması için Azure Fiyatlandırma hesaplayıcısı ' nı kullanırsınız. Daha sonra, Azure kaynaklarını eklerken Tahmini maliyetleri gözden geçirin. App Service kaynaklarını kullanmaya başladıktan sonra, bütçe ayarlamak ve maliyetleri izlemek için [maliyet yönetimi](https://docs.microsoft.com/azure/cost-management-billing/) özelliklerini kullanın. Ayrıca Tahmini maliyetleri gözden geçirebilir ve hareket etmek isteyebileceğiniz yerleri belirlemek için harcama eğilimlerini belirleyebilirsiniz. Azure App Service maliyetleri, Azure faturanızda bulunan Aylık maliyetlerin yalnızca bir parçasıdır. Bu makalede App Service maliyetlerinin nasıl planlanacağı ve yönetileceği açıklanmakta olsa da, üçüncü taraf hizmetler de dahil olmak üzere Azure aboneliğinizde kullanılan tüm Azure hizmetleri ve kaynakları için faturalandırılırsınız.
+Bu makalede, Azure App Service maliyetlerini nasıl planlayabileceğinizi ve yönetebileceğiniz açıklanır. İlk olarak, maliyetleri tahmin etmek üzere hizmet için herhangi bir kaynak eklemeden önce App Service maliyetlerini planlamaya yardımcı olması için Azure Fiyatlandırma hesaplayıcısı ' nı kullanırsınız. Daha sonra, Azure kaynaklarını eklerken Tahmini maliyetleri gözden geçirin. App Service kaynaklarını kullanmaya başladıktan sonra, bütçe ayarlamak ve maliyetleri izlemek için [maliyet yönetimi](https://docs.microsoft.com/azure/cost-management-billing/?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) özelliklerini kullanın. Ayrıca Tahmini maliyetleri gözden geçirebilir ve hareket etmek isteyebileceğiniz yerleri belirlemek için harcama eğilimlerini belirleyebilirsiniz. Azure App Service maliyetleri, Azure faturanızda bulunan Aylık maliyetlerin yalnızca bir parçasıdır. Bu makalede App Service maliyetlerinin nasıl planlanacağı ve yönetileceği açıklanmakta olsa da, üçüncü taraf hizmetler de dahil olmak üzere Azure aboneliğinizde kullanılan tüm Azure hizmetleri ve kaynakları için faturalandırılırsınız.
 
 ## <a name="relevant-costs-for-app-service"></a>App Service ilgili maliyetler
 
@@ -51,7 +51,7 @@ App Service yönelik diğer maliyet kaynakları şunlardır: (Ayrıntılar için
 
 Bir App Service planındaki tüm uygulamaları sildiğinizde, plan, yapılandırılmış fiyatlandırma katmanına ve örnek sayısına göre ücretleri tahakkuk etmeye devam eder. İstenmeyen ücretlerden kaçınmak için planı silin veya **ücretsiz** katmana ölçeklendirin.
 
-Azure App Service kaynaklarını sildikten sonra, ilgili Azure hizmetlerinden kaynaklar mevcut olmaya devam edebilir. Bunlar silinene kadar maliyetleri tahakkuk ettirmeye devam eder. Örnek:
+Azure App Service kaynaklarını sildikten sonra, ilgili Azure hizmetlerinden kaynaklar mevcut olmaya devam edebilir. Bunlar silinene kadar maliyetleri tahakkuk ettirmeye devam eder. Örneğin:
 
 - **Yalıtılmış** bir katman App Service planı Için oluşturduğunuz sanal ağ
 - Yedeklemeleri veya tanılama günlüklerini depolamak için oluşturduğunuz depolama hesapları
@@ -84,7 +84,7 @@ Bir uygulama oluşturmak ve tahmini fiyatı görüntülemek için:
 
     ![Portalda her fiyatlandırma katmanının tahmini maliyetini gözden geçirin](media/overview-manage-costs/pricing-estimates.png)
 
-Azure aboneliğinizin harcama limiti varsa, Azure kredi miktarınızdan harcamanıza engel olur. Azure kaynaklarını oluştururken ve kullanırken kredileriniz kullanılır. Kredi sınırınıza ulaştığınızda, dağıttığınız kaynaklar bu fatura döneminin geri kalanı için devre dışı bırakılır. Kredi sınırınızı değiştiremezsiniz, ancak kaldırabilirsiniz. Harcama limitleri hakkında daha fazla bilgi için bkz. [Azure harcama limiti](../billing/billing-spending-limit.md).
+Azure aboneliğinizin harcama limiti varsa, Azure kredi miktarınızdan harcamanıza engel olur. Azure kaynaklarını oluştururken ve kullanırken kredileriniz kullanılır. Kredi sınırınıza ulaştığınızda, dağıttığınız kaynaklar bu fatura döneminin geri kalanı için devre dışı bırakılır. Kredi sınırınızı değiştiremezsiniz, ancak kaldırabilirsiniz. Harcama limitleri hakkında daha fazla bilgi için bkz. [Azure harcama limiti](../cost-management-billing/manage/spending-limit.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 
 ## <a name="optimize-costs"></a>Maliyetleri iyileştirin
 
@@ -129,7 +129,7 @@ Ayrılmış örnek fiyatlandırması, ayırmış olduğunuz örnek sayısına ka
 
 ## <a name="monitor-costs"></a>Maliyetleri izleme
 
-App Service ile Azure kaynaklarını kullanırken maliyetleriniz vardır. Azure Kaynak kullanımı birim maliyetleri zaman aralıklarına göre farklılık gösterir (saniye, dakika, saat ve gün). App Service kullanımı başladığı anda maliyetler ücretlendirilir ve [Maliyet analizinde](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)maliyetleri görebilirsiniz.
+App Service ile Azure kaynaklarını kullanırken maliyetleriniz vardır. Azure Kaynak kullanımı birim maliyetleri zaman aralıklarına göre farklılık gösterir (saniye, dakika, saat ve gün). App Service kullanımı başladığı anda maliyetler ücretlendirilir ve [Maliyet analizinde](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)maliyetleri görebilirsiniz.
 
 Maliyet analizini kullandığınızda, grafikler ve tablolardaki App Service maliyetlerini farklı zaman aralıkları için görüntüleyebilirsiniz. Bazı örnekler güne, geçerli ve önceki aya ve yıla göre yapılır. Ayrıca bütçeleri ve tahmin edilen maliyetleri de görüntüleyebilirsiniz. Zamana göre daha uzun görünümlere geçiş yapmak harcama eğilimlerini belirlemenize yardımcı olabilir. Ve fazla harcama oluşmuş olabileceğini görürsünüz. Bütçeleri oluşturduysanız, nerede aşıldığınızı da kolayca görebilirsiniz.
     
@@ -155,20 +155,20 @@ Yalnızca App Service maliyetlerini gösteren bir örnek aşağıda verilmiştir
 
 <!-- Note to Azure service writer: Modify the following as needed for your service. -->
 
-Maliyetleri yönetmek için [bütçeler](https://docs.microsoft.com/azure/cost-management/tutorial-acm-create-budgets?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) oluşturabilir ve paydaşları harcama anormallikleri ve fazla harcama riskleri ile ilgili otomatik olarak bilgilendiren [uyarılar](https://docs.microsoft.com/azure/cost-management/cost-mgt-alerts-monitor-usage-spending?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) oluşturabilirsiniz. Uyarılar, bütçe ve maliyet eşiklerine kıyasla harcamaya göre belirlenir. Bütçeler ve uyarılar Azure abonelikleri ve kaynak grupları için oluşturulur, bu nedenle genel maliyet izleme stratejisinin bir parçası olarak faydalıdır. 
+Maliyetleri yönetmek için [bütçeler](../cost-management/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) oluşturabilir ve paydaşları harcama anormallikleri ve fazla harcama riskleri ile ilgili otomatik olarak bilgilendiren [uyarılar](../cost-management/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) oluşturabilirsiniz. Uyarılar, bütçe ve maliyet eşiklerine kıyasla harcamaya göre belirlenir. Bütçeler ve uyarılar Azure abonelikleri ve kaynak grupları için oluşturulur, bu nedenle genel maliyet izleme stratejisinin bir parçası olarak faydalıdır. 
 
-İzlemekte daha fazla ayrıntı düzeyi istiyorsanız, Azure 'daki belirli kaynaklara veya hizmetlere yönelik filtrelerle bütçeler oluşturulabilir. Filtreler, yanlışlıkla ek para maliyeti sağlayan yeni kaynaklar oluşturmamasını sağlamaya yardımcı olur. Bir bütçe oluşturduğunuzda kullanılabilecek filtre seçenekleri hakkında daha fazla bilgi için bkz. [Grup ve filtre seçenekleri](https://docs.microsoft.com/azure/cost-management-billing/costs/group-filter?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+İzlemekte daha fazla ayrıntı düzeyi istiyorsanız, Azure 'daki belirli kaynaklara veya hizmetlere yönelik filtrelerle bütçeler oluşturulabilir. Filtreler, yanlışlıkla ek para maliyeti sağlayan yeni kaynaklar oluşturmamasını sağlamaya yardımcı olur. Bir bütçe oluşturduğunuzda kullanılabilecek filtre seçenekleri hakkında daha fazla bilgi için bkz. [Grup ve filtre seçenekleri](../cost-management-billing/costs/group-filter.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 
 ## <a name="export-cost-data"></a>Maliyet verilerini dışarı aktarma
 
-Ayrıca, maliyet verilerinizi bir depolama hesabına [dışarı aktarabilirsiniz](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) . Bu, daha fazla maliyet için daha fazla veri analizi yapmanıza gerek duyduğunuzda veya başkaları için yararlıdır. Örneğin, bir Finans ekibi, Excel veya Power BI kullanarak verileri analiz edebilir. Maliyetlerinizi günlük, haftalık veya aylık bir zamanlamaya göre dışa aktarabilir ve özel bir tarih aralığı ayarlayabilirsiniz. Maliyet verilerini dışarı aktarmak, maliyet veri kümelerini almak için önerilen yoldur.
+Ayrıca, maliyet verilerinizi bir depolama hesabına [dışarı aktarabilirsiniz](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) . Bu, daha fazla maliyet için daha fazla veri analizi yapmanıza gerek duyduğunuzda veya başkaları için yararlıdır. Örneğin, bir Finans ekibi, Excel veya Power BI kullanarak verileri analiz edebilir. Maliyetlerinizi günlük, haftalık veya aylık bir zamanlamaya göre dışa aktarabilir ve özel bir tarih aralığı ayarlayabilirsiniz. Maliyet verilerini dışarı aktarmak, maliyet veri kümelerini almak için önerilen yoldur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Fiyatlandırma ile Azure depolama ile nasıl çalıştığı hakkında daha fazla bilgi edinin. [App Service fiyatlandırmasına](https://azure.microsoft.com/pricing/details/app-service/)bakın.
-- [Azure maliyet yönetimi ile bulut yatırımınızın nasıl iyileştirileceği hakkında](https://docs.microsoft.com/azure/cost-management-billing/costs/cost-mgt-best-practices?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)bilgi edinin.
-- [Maliyet Analizi](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)ile maliyetleri yönetme hakkında daha fazla bilgi edinin.
-- [Beklenmeyen maliyetlerin nasıl önleneceği](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)hakkında bilgi edinin.
+- [Azure maliyet yönetimi ile bulut yatırımınızın nasıl iyileştirileceği hakkında](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)bilgi edinin.
+- [Maliyet Analizi](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)ile maliyetleri yönetme hakkında daha fazla bilgi edinin.
+- [Beklenmeyen maliyetlerin nasıl önleneceği](../cost-management-billing/manage/getting-started.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)hakkında bilgi edinin.
 - [Maliyet yönetimi](https://docs.microsoft.com/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) destekli öğrenme kursuna katılın.
 
 <!-- Insert links to other articles that might help users save and manage costs for you service here.

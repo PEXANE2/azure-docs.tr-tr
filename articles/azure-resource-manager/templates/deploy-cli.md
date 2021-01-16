@@ -2,13 +2,13 @@
 title: Azure CLı ve şablonuyla kaynak dağıtma
 description: Azure 'a kaynak dağıtmak için Azure Resource Manager ve Azure CLı kullanın. Kaynaklar, bir Resource Manager şablonunda tanımlanır.
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: a2caea70a51a737bfa433a089c03b43f252b5d6e
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.date: 01/15/2021
+ms.openlocfilehash: d79a5c93bf79c5851beabbba2eb3a663c6ab5999
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028157"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251089"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>ARM şablonları ve Azure CLı ile kaynak dağıtma
 
@@ -134,7 +134,7 @@ Eşzamanlı dağıtımlar ile çakışmalardan kaçınmak ve dağıtım geçmiş
 
 Yerel veya uzak şablon dağıtmak yerine, bir [şablon belirtimi](template-specs.md)oluşturabilirsiniz. Şablon belirtimi, Azure aboneliğinizdeki bir ARM şablonu içeren bir kaynaktır. Şablonu kuruluşunuzdaki kullanıcılarla güvenli bir şekilde paylaşmayı kolaylaştırır. Şablon belirtimine erişim sağlamak için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanırsınız. Bu özellik şu anda önizleme aşamasındadır.
 
-Aşağıdaki örneklerde, bir şablon belirtiminin nasıl oluşturulacağı ve dağıtılacağı gösterilmektedir. Bu komutlar yalnızca [önizlemeye kaydolduysanız](https://aka.ms/templateSpecOnboarding)kullanılabilir.
+Aşağıdaki örneklerde, bir şablon belirtiminin nasıl oluşturulacağı ve dağıtılacağı gösterilmektedir.
 
 İlk olarak, ARM şablonunu sağlayarak şablon belirtimini oluşturun.
 

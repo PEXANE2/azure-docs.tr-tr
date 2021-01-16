@@ -1,5 +1,5 @@
 ---
-title: Sorgu ve Dizin iş yükleri için kapasiteyi ayarla
+title: Sorgu ve Dizin iş yükleri için kapasiteyi tahmin etme
 titleSuffix: Azure Cognitive Search
 description: Azure Bilişsel Arama 'de, her kaynağın faturalandırılabilir arama birimlerinde fiyatlandırıldıkları bölüm ve çoğaltma bilgisayar kaynaklarını ayarlayın.
 manager: nitinme
@@ -7,19 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/08/2020
-ms.openlocfilehash: 92dcbfd360938724bb65b734d7c69ea61d7826b0
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.date: 01/15/2021
+ms.openlocfilehash: 4a9a6b61e392ed2efd68cdcb1cf7e53d6bde5ccd
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533052"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249746"
 ---
-# <a name="adjust-the-capacity-of-an-azure-cognitive-search-service"></a>Azure Bilişsel Arama hizmetinin kapasitesini ayarlama
+# <a name="estimate-and-manage-capacity-of-an-azure-cognitive-search-service"></a>Azure Bilişsel Arama hizmetinin kapasitesini tahmin edin ve yönetin
 
 Belirli bir fiyatlandırma katmanında [bir arama hizmeti](search-create-service-portal.md) ve kilitlemeyi sağlamadan önce, kapasitenin nasıl çalıştığını ve iş yükü dalgalanmasına uyum sağlamak için çoğaltmaları ve bölümleri nasıl ayarlayabileceğinizi anlamak için birkaç dakikanızı yararlanın.
 
-Kapasite, [seçtiğiniz katmanın](search-sku-tier.md) bir işlevidir (Katmanlar, donanım özelliklerini belirleme) ve tasarlanan iş yükleri için gereken çoğaltma ve bölüm birleşimini. Bir hizmet oluşturulduktan sonra çoğaltma veya bölümlerin sayısını bağımsız olarak artırabilir veya azaltabilirsiniz. Maliyetler her ek fiziksel kaynakla çalışmaya devam eder, ancak büyük iş yükleri tamamlandığında faturanızı düşürmek için ölçeği azaltabilirsiniz. Katmana ve ayarlamanın boyutuna bağlı olarak, kapasite ekleme veya azaltma, 15 dakikadan birkaç saate kadar herhangi bir zaman alabilir.
+Kapasite, [hizmet katmanının](search-sku-tier.md)bir işlevidir. Katmanlar, en fazla depolama, bölüm başına depolama ve oluşturabileceğiniz nesne sayısı için en fazla sınıra göre farklılaştırılabilir. Temel katman, bir yüksek kullanılabilirlik yapılandırmasında (3 çoğaltma) çalışma olanağı sunan uygulamalar için tasarlanmıştır. Diğer katmanlar, çok kiracılı gibi belirli iş yükleri veya desenler için tasarlanmıştır. Dahili olarak, bu katmanlarda oluşturulan hizmetler bu senaryolara yardımcı olan donanımdan faydalanır.
+
+Azure Bilişsel Arama 'de ölçeklenebilirlik mimarisi, daha fazla sorgu veya dizin oluşturma gücü olmasına bağlı olarak kapasiteyi değiştirebilmeniz için çoğaltmaların ve bölümlerin esnek birleşimlerine dayanır. Bir hizmet oluşturulduktan sonra çoğaltma veya bölümlerin sayısını bağımsız olarak artırabilir veya azaltabilirsiniz. Maliyetler her ek fiziksel kaynakla çalışmaya devam eder, ancak büyük iş yükleri tamamlandığında faturanızı düşürmek için ölçeği azaltabilirsiniz. Katmana ve ayarlamanın boyutuna bağlı olarak, kapasite ekleme veya azaltma, 15 dakikadan birkaç saate kadar herhangi bir zaman alabilir.
 
 Kopyaların ve bölümlerin tahsisini değiştirirken Azure portal kullanmanızı öneririz. Portal, bir katmanın en fazla limitlerini takip eden izin verilen birleşimler üzerinde sınırlar uygular. Ancak, komut dosyası tabanlı veya kod tabanlı bir sağlama yaklaşımına ihtiyacınız varsa [Azure PowerShell](search-manage-powershell.md) veya [Yönetim REST API](/rest/api/searchmanagement/services) alternatif çözümlerdir.
 
@@ -42,17 +44,94 @@ Yukarıdaki diyagramda yalnızca bir örnek vardır. Birçok bölüm ve çoğalt
 
 Bilişsel Arama, parça yönetimi bir uygulama ayrıntısı ve yapılandırılamayan, ancak bir dizinin parçalı olduğunu bilmek, derecelendirme ve otomatik tamamlama davranışlarındaki zaman zaman anormallikleri anlamaya yardımcı olur:
 
-+ Sıralama bozukluileri: arama puanları önce parça düzeyinde hesaplanır ve sonra tek bir sonuç kümesine toplanır. Parça içeriğinin özelliklerine bağlı olarak, bir parçadaki eşleşmeler, başka bir parçadaki eşleşmelerle daha yüksek bir şekilde derecelendirilir. Arama sonuçlarında sezgisel olmayan bir derecelendirmeden fark ederseniz büyük olasılıkla, özellikle dizinler küçük olduğunda, parçalı olarak oluşan etkileri yüksektir. [Puanları tüm dizinde küresel olarak hesaplama](index-similarity-and-scoring.md#scoring-statistics-and-sticky-sessions)seçeneğini belirleyerek bu derecelendirme bozuklukilerini önleyebilirsiniz, ancak bunu yapmak bir performans cezası olur.
++ Sıralama bozukluileri: arama puanları önce parça düzeyinde hesaplanır ve sonra tek bir sonuç kümesine toplanır. Parça içeriğinin özelliklerine bağlı olarak, bir parçadaki eşleşmeler, başka bir parçadaki eşleşmelerle daha yüksek bir şekilde derecelendirilir. Arama sonuçlarındaki sayaç sezgisel derecelendirmeme bildirimini fark ederseniz büyük olasılıkla, özellikle de dizinler küçük olduğunda parçalama etkileri yüksektir. [Puanları tüm dizinde küresel olarak hesaplama](index-similarity-and-scoring.md#scoring-statistics-and-sticky-sessions)seçeneğini belirleyerek bu derecelendirme bozuklukilerini önleyebilirsiniz, ancak bunu yapmak bir performans cezası olur.
 
 + Otomatik tamamlama bozuklukları: kısmi olarak girilen bir terimin ilk birkaç karakterinin üzerinde eşleşme yapıldığında otomatik tamamlama sorguları, yazım içinde küçük sapmalar sağlayan benzer bir parametre kabul eder. Otomatik tamamlama için, belirsiz eşleştirme, geçerli parça içindeki koşullara göre kısıtlanmıştır. Örneğin, bir parça "Microsoft" ve kısmi "micor" terimi girilmişse, arama altyapısı bu parça içinde "Microsoft" ile eşleşir, ancak dizinin kalan bölümlerini tutan diğer parçalar üzerinde değildir.
 
-## <a name="when-to-add-nodes"></a>Düğüm ekleme
+## <a name="how-to-evaluate-capacity-requirements"></a>Kapasite gereksinimlerini değerlendirme
+
+Hizmetin kapasitesi ve maliyetleri, el ile çalışmaya devam ediyor. Katmanlar iki düzeyde sınırlar yapar: depolama ve içerik (örneğin, bir hizmette dizin sayısı). Her ikisini de göz önünde bulundurmanız önemlidir çünkü ilk ulaşılan sınır etkin limit.
+
+Dizinlerin ve diğer nesnelerin miktarları genellikle iş ve mühendislik gereksinimlerine göre belirlenir. Örneğin, etkin geliştirme, test ve üretim için aynı dizinin birden fazla sürümüne sahip olabilirsiniz.
+
+Depolama ihtiyaçları, derlemek istediğiniz dizinlerin boyutuna göre belirlenir. Tahminlerle ilgili olarak sağlam bir buluşsal yöntem veya genellik yoktur. Bir dizinin boyutunu belirlemenin tek yolu [derleme](search-what-is-an-index.md)amaçlıdır. Boyutu, içeri aktarılan verileri, metin analizini ve öneri araçları, filtrelemesini ve sıralamayı etkinleştirip etkinleştirmeyeceğinizi, dizin yapılandırmasını temel alır.
+
+Tam metin arama için, birincil veri yapısı, kaynak verilerden farklı özelliklere sahip olan [ters bir dizin](https://en.wikipedia.org/wiki/Inverted_index) yapısıdır. Ters bir dizin için boyut ve karmaşıklık, içeriğe göre belirlenir, bu, içinde yer alan veri miktarına göre değildir. Yüksek artıklığa sahip büyük bir veri kaynağı, yüksek oranda değişken içerik içeren küçük bir veri kümesinden daha küçük bir dizin oluşmasına neden olabilir. Bu nedenle, özgün veri kümesinin boyutuna bağlı olarak dizin boyutunu çıkarsmak nadiren mümkündür.
+
+> [!NOTE] 
+> Dizinler ve depolama için gelecekteki ihtiyaçları tahmin etmek de tahmin etmek gibi görünse de bunun yapılması gerekir. Bir katmanın kapasitesi çok düşük olursa, daha yüksek bir katmanda yeni bir hizmet sağlamanız ve ardından [dizinlerinizi yeniden yüklemeniz](search-howto-reindex.md)gerekir. Bir hizmetin bir katmandan diğerine yerinde yükseltilmesi yoktur.
+>
+
+### <a name="estimate-with-the-free-tier"></a>Ücretsiz katman ile tahmin edin
+
+Kapasiteyi tahmin etmek için bir yaklaşım ücretsiz katmanla başlamadır. Ücretsiz hizmetin üç Dizin, 50 MB depolama alanı ve 2 dakikalık dizin oluşturma süresi sunduğunu unutmayın. Tahmini bir dizin boyutunu bu kısıtlamalarla tahmin etmek zor olabilir, ancak bunlar şu adımlardan biri:
+
++ [Ücretsiz bir hizmet oluşturun](search-create-service-portal.md).
++ Küçük, temsili bir veri kümesi hazırlayın.
++ Bir dizin oluşturun ve verilerinizi yükleyin. Veri kümesi, Dizin oluşturucular tarafından desteklenen bir Azure veri kaynağında barındırılıyorsa, dizini oluşturmak ve yüklemek için [portalda veri alma Sihirbazı 'nı](search-get-started-portal.md) kullanabilirsiniz. Aksi takdirde, dizini oluşturmak ve verileri göndermek için REST ve [Postman](search-get-started-rest.md) veya [Visual Studio Code](search-get-started-vs-code.md) kullanmanız gerekir. Gönderim modeli, verilerin, belgedeki alanların dizindeki alanlarla karşılık geldiği JSON belgeleri biçiminde olmasını gerektirir.
++ Dizin hakkında boyut gibi bilgileri toplayın. Özellikler ve özniteliklerin depolama üzerinde bir etkisi vardır. Örneğin, öneri araçları (arama-yazma sorguları) ekleme, depolama gereksinimlerini artıracaktır. 
+
+  Aynı veri kümesini kullanarak, Depolama gereksinimlerinin nasıl değişeceğini görmek için, her bir alanda farklı özniteliklere sahip bir dizinin birden çok sürümünü oluşturmayı deneyebilirsiniz. Daha fazla bilgi için [temel dizin oluşturma içindeki "depolama etkileri"](search-what-is-an-index.md#index-size)başlığına bakın.
+
+El ile kabaca bir tahmin sayesinde, bu miktarı iki dizin (geliştirme ve üretim) için bütçeye katmanızı ve ardından katmanınızı uygun şekilde seçmenizi sağlayabilirsiniz.
+
+### <a name="estimate-with-a-billable-tier"></a>Faturalandırılabilir katman ile tahmin
+
+Adanmış kaynaklar, geliştirme sırasında dizin miktarının, boyutunun ve sorgu birimlerinin daha gerçekçi tahminleri için daha büyük örnekleme ve işleme sürelerine uyum sağlayabilir. Bazı müşteriler, faturalandırılabilir bir katmanda doğrudan geçiş yaparken geliştirme projesi olarak yeniden değerlendirilir.
+
+1. Alt katmanların ihtiyacınız olan dizin sayısını destekleyip desteklemediğini öğrenmek için [Her katmandaki hizmet sınırlarını gözden geçirin](./search-limits-quotas-capacity.md#index-limits) . Temel, S1 ve S2 katmanlarında Dizin sınırları sırasıyla 15, 50 ve 200 ' dir. Depolama için Iyileştirilmiş katmanın, az sayıda çok büyük dizini destekleyecek şekilde tasarlandığından 10 Dizin sınırı vardır.
+
+1. [Faturalanabilir katmanda bir hizmet oluşturun](search-create-service-portal.md):
+
+    + Tahmini yük hakkında emin değilseniz, temel veya S1 ' te düşük ' ı başlatın.
+    + Test, büyük ölçekli dizin oluşturma ve sorgu yüklerini içeriyorsa, S2 veya hatta S3 ' da yüksek bir başlangıç yapın.
+    + Depolama ile en Iyileştirilmiş, L1 veya L2 ile başlayın; büyük miktarda veri dizinleniyor ve sorgu yükü görece düşükse, dahili bir iş uygulamasında olduğu gibi.
+
+1. Kaynak verilerin bir dizine nasıl çevrilip dönüştürmediğine yönelik [bir başlangıç dizini oluşturun](search-what-is-an-index.md) . Bu, dizin boyutunu tahmin etmenin tek yoludur.
+
+1. Portalda [depolama, hizmet limitleri, sorgu hacmi ve gecikme süresini izleyin](search-monitor-usage.md) . Portal, saniye başına sorgular, kısıtlanmış sorgular ve arama gecikme süresi gösterir. Bu değerlerin tümü, doğru katmanı seçtiğinizden karar vermenize yardımcı olabilir.
+
+1. Yüksek kullanılabilirliğe ihtiyacınız varsa veya yavaş sorgu performansına karşılaşıyorsanız çoğaltmalar ekleyin.
+
+   Sorgu yüklerini karşılamak için kaç çoğaltmanın gerekli olduğu konusunda yönergeler yoktur. Sorgu performansı, sorgunun karmaşıklığına ve rekabet iş yüklerine bağlıdır. Çoğaltmaları ekleme işlemi daha iyi performansa neden olsa da, sonuç kesinlikle doğrusal değildir: üç çoğaltma eklemek Üçlü üretilen iş garantisi vermez. Çözümünüz için QPS tahmini konusunda rehberlik için bkz. performans ve [izleme sorguları](search-monitor-queries.md) [için ölçeklendirme](search-performance-optimization.md).
+
+> [!NOTE]
+> Hiçbir şekilde aranmayacak verileri dahil etmeniz halinde depolama gereksinimleri de düzlenebilir. İdeal olarak, belgeler yalnızca arama deneyimi için gereken verileri içerir. İkili veriler aranabilir değildir ve ayrı ayrı depolanmalıdır (Belki de bir Azure tablosu veya blob depolamada olabilir). Bir alan, dış verilere bir URL başvurusu tutmak için dizine eklenmelidir. Tek bir arama belgesinin en büyük boyutu 16 MB 'tır (veya bir istekte birden çok belgeyi toplu olarak karşıya yüklüyorsanız, daha az). Daha fazla bilgi için bkz. [Azure bilişsel arama hizmet limitleri](search-limits-quotas-capacity.md).
+>
+
+**Sorgu hacmi konuları**
+
+Saniyedeki sorgu sayısı (QPS), performans ayarlama sırasında önemli bir ölçümdür, ancak genellikle bir katman, mantıksal olarak yüksek sorgu hacmi beklemeniz durumunda yalnızca bir katman önem taşımaktadır.
+
+Standart katmanlar, çoğaltmaları ve bölümleri dengeleyebilir. Yük Dengeleme için çoğaltmalar ekleyerek veya paralel işleme için bölüm eklemek yoluyla sorgu kapatma işlemini artırabilirsiniz. Daha sonra hizmet sağlandıktan sonra performansı ayarlayabilirsiniz.
+
+Outset 'ten yüksek hacimli sorgu birimleri düşünüyorsanız, daha güçlü donanımlar tarafından desteklenen, daha yüksek standart katmanları göz önünde bulundurmanız gerekir. Daha sonra, bu sorgu birimleri gerçekleşmese de bölümleri ve çoğaltmaları çevrimdışı duruma geçirebilir veya alt katman bir hizmete geçebilirsiniz. Sorgu verimini hesaplama hakkında daha fazla bilgi için bkz. [Azure bilişsel arama performansı ve iyileştirmesi](search-performance-optimization.md).
+
+Depolama için Iyileştirilmiş katmanlar, büyük veri iş yükleri için yararlıdır ve sorgu gecikme süresi gereksinimleri daha az önemli olduğunda için daha fazla genel kullanılabilir dizin depolaması destekler. Yük Dengeleme için ek çoğaltmalar ve paralel işleme için ek bölümler kullanmanız gerekir. Daha sonra hizmet sağlandıktan sonra performansı ayarlayabilirsiniz.
+
+**Hizmet düzeyi sözleşmeleri**
+
+Ücretsiz katman ve Önizleme özellikleri [hizmet düzeyi sözleşmeleri (SLA 'lar)](https://azure.microsoft.com/support/legal/sla/search/v1_0/)sağlamaz. Tüm faturalanabilir katmanlar için, hizmet için yeterli artıklık sağladığınızda SLA 'Lar devreye girer. Sorgu (okuma) SLA 'Ları için iki veya daha fazla kopyaya sahip olmanız gerekir. Sorgu ve dizin oluşturma (okuma-yazma) SLA 'Ları için üç veya daha fazla kopyaya sahip olmanız gerekir. Bölüm sayısı SLA 'Ları etkilemez.
+
+## <a name="tips-for-capacity-planning"></a>Kapasite planlama ipuçları
+
++ Ölçümlerin sorguları etrafında derleme yapmasına ve kullanım desenlerinde (iş saatleri sırasında sorgular, yoğun olmayan saatlerde dizin oluşturma) veri toplamasına izin verin. Hizmet sağlama kararlarını bilgilendirmek için bu verileri kullanın. Saatlik veya günlük temposunda pratik olmasa da, sorgu birimlerindeki planlı değişikliklere uyum sağlamak için bölümleri ve kaynakları dinamik olarak ayarlayabilirsiniz. Ayrıca, düzeylerin işlem yapmak için yeterince uzun sürmesi durumunda planlanmamış ancak sürekli değişikliklere de uyum sağlayabilirsiniz.
+
++ Sağlama altındaki tek alt tarafının, gerçek gereksinimler tahmine göre daha büyükse bir hizmeti bölmek zorunda kalmamanız gerektiğini unutmayın. Hizmet kesintisi yaşamamak için, daha yüksek bir katmanda yeni bir hizmet oluşturun ve tüm uygulamalar ve istekler yeni uç noktayı hedefleyerek yan yana çalıştırabilirsiniz.
+
+## <a name="when-to-add-partitions-and-replicas"></a>Bölümler ve çoğaltmalar ne zaman eklenir
 
 Başlangıçta, bir hizmete bir bölümden ve bir çoğaltmadan oluşan en az düzeyde kaynak ayrılır.
 
 Tek bir hizmetin tüm iş yüklerini (Dizin oluşturma ve sorgular) işlemek için yeterli kaynak olması gerekir. Hiçbir iş yükü arka planda çalışır. Sorgu isteklerinin doğal olarak daha az sıklıkla olduğu durumlarda Dizin oluşturmayı zamanlayabilirsiniz, ancak hizmet diğer bir görevi başka bir görev için önceliklendirmez. Ayrıca, hizmetler veya düğümler dahili olarak güncelleştirilirken belirli bir artıklık miktarı sorgu performansını düzgünleştirir.
 
 Genel bir kural olarak, arama uygulamalarında, özellikle de hizmet işlemleri sorgu iş yüklerine yaklaşmanız durumunda bölümden daha fazla çoğaltma olması eğilimindedir. [Yüksek kullanılabilirlik](#HA) bölümünde bunun neden olduğu açıklanmaktadır.
+
+[Seçtiğiniz katman](search-sku-tier.md) bölüm boyutunu ve hızını belirler ve her katman çeşitli senaryolara uyan bir dizi özellik etrafında en iyi duruma getirilir. Daha yüksek bir katman seçerseniz S1 ile devam ediyorsanız daha az bölüm gerekebilir. Kendi kendine yönlendirilmiş test aracılığıyla yanıtlamanız gereken sorulardan biri, daha büyük ve daha pahalı bir bölümün daha düşük bir katmanda sağlanan bir hizmette iki ucuz bölümden daha iyi performans elde etmesinden biridir.
+
+Neredeyse gerçek zamanlı veri yenileme gerektiren uygulamalarda, çoğaltmalara göre orantılı daha fazla bölüm gerekecektir. Bölüm ekleme okuma/yazma işlemlerini çok sayıda bilgi işlem kaynağına yayar. Ayrıca ek dizinleri ve belgeleri depolamak için daha fazla disk alanı sağlar.
+
+Daha büyük dizinler sorgu için daha uzun sürer. Bu nedenle, bölümlerdeki her artımlı artışın çoğaltmalarda daha küçük ancak orantılı bir artış gerektirdiğini fark edebilirsiniz. Sorgularınızın ve sorgu biriminizin karmaşıklığı, sorgu yürütmenin ne kadar hızlı bir şekilde bir şekilde çalıştığını çarpanlara katacaktır.
 
 > [!NOTE]
 > Daha fazla çoğaltma veya bölüm eklenmesi hizmeti çalıştırmanın maliyetini artırır ve sonuçların nasıl sıralandığından hafif Çeşitlemeler getirebilir. Daha fazla düğüm eklemenin faturalandırma etkilerini anlamak için [fiyatlandırma hesaplayıcısını](https://azure.microsoft.com/pricing/calculator/) denetlediğinizden emin olun. [Aşağıdaki grafik](#chart) , belirli bir yapılandırma için gereken arama birimi sayısına çapraz başvuru yapmanıza yardımcı olabilir. Ek çoğaltmaların sorgu işlemeyi etkisi hakkında daha fazla bilgi için bkz. [sonuçları sıralama](search-pagination-page-layout.md#ordering-results).
@@ -61,27 +140,27 @@ Genel bir kural olarak, arama uygulamalarında, özellikle de hizmet işlemleri 
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın ve arama hizmetini seçin.
 
-1. **Ayarlar**' da, çoğaltmaları ve bölümleri değiştirmek için **Ölçek** sayfasını açın. 
+1. **Ayarlar**' ın altında, çoğaltmaları ve bölümleri değiştirmek için **Ölçek** sayfasını açın. 
 
-   Aşağıdaki ekran görüntüsünde, bir çoğaltma ve bölüm ile sağlanan standart bir hizmet gösterilmektedir. Alttaki formül, kaç arama birimi kullanıldığını gösterir (1). Birim fiyatı $100 (gerçek fiyat değil) ise, bu hizmeti çalıştırmanın aylık maliyeti, ortalama olarak $100 ' dir.
+   Aşağıdaki ekran görüntüsünde, tek bir çoğaltma ve bölüm ile sağlanan temel bir standart gösterilmektedir. Alttaki formül, kaç arama birimi kullanıldığını gösterir (1). Birim fiyatı $100 (gerçek fiyat değil) ise, bu hizmeti çalıştırmanın aylık maliyeti, ortalama olarak $100 ' dir.
 
-   ![Geçerli değerleri gösteren sayfayı Ölçeklendir](media/search-capacity-planning/1-initial-values.png "Geçerli değerleri gösteren sayfayı Ölçeklendir")
+   :::image type="content" source="media/search-capacity-planning/1-initial-values.png" alt-text="Geçerli değerleri gösteren sayfayı Ölçeklendir" border="true":::
 
-1. Bölüm sayısını artırmak veya azaltmak için kaydırıcıyı kullanın. Alttaki formül, kaç tane arama birimi kullanıldığını gösterir.
+1. Bölüm sayısını artırmak veya azaltmak için kaydırıcıyı kullanın. Alttaki formül, kaç tane arama birimi kullanıldığını gösterir. **Kaydet**’i seçin.
 
-   Bu örnek, iki çoğaltmalarla ve her bir bölümden oluşan kapasiteyi iki katına çıkarır. Arama Birimi sayısına dikkat edin; Fatura formülü bölümler (2 x 2) ile çarpıldığı için artık dördü vardır. Katlama kapasitesi, hizmeti çalıştırmanın maliyetini iki katına çıkarır. Arama birimi maliyeti $100 ise, yeni aylık fatura artık $400 olacaktır.
+   Bu örnek, ikinci bir çoğaltma ve bölüm ekler. Arama Birimi sayısına dikkat edin; Fatura formülü bölümler (2 x 2) ile çarpıldığı için artık dördü vardır. Katlama kapasitesi, hizmeti çalıştırmanın maliyetini iki katına çıkarır. Arama birimi maliyeti $100 ise, yeni aylık fatura artık $400 olacaktır.
 
    Her katmanın birim maliyetlerine göre geçerli olan [fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/search/)ziyaret edin.
 
-   ![Çoğaltmalar ve bölümler ekleme](media/search-capacity-planning/2-add-2-each.png "Çoğaltmalar ve bölümler ekleme")
+   :::image type="content" source="media/search-capacity-planning/2-add-2-each.png" alt-text="Çoğaltmalar ve bölümler ekleme" border="true":::
 
-1. Değişiklikleri onaylamak için **Kaydet** ' i seçin.
+1. Kaydettikten sonra, başarılı olan eylemi onaylamak için bildirimleri kontrol edebilirsiniz.
 
-   ![Ölçek ve faturalandırma Değişikliklerini Onayla](media/search-capacity-planning/3-save-confirm.png "Ölçek ve faturalandırma Değişikliklerini Onayla")
+   :::image type="content" source="media/search-capacity-planning/3-save-confirm.png" alt-text="Değişiklikleri Kaydet" border="true":::
 
-   Kapasite değişikliklerinin tamamlanması birkaç saat sürer. İşlem başladıktan sonra iptal edemezsiniz ve çoğaltma ve bölüm ayarlamaları için gerçek zamanlı izleme yoktur. Ancak, değişiklikler devam ederken aşağıdaki ileti görünür kalır.
+   Kapasite değişikliklerinin tamamlanması birkaç saate kadar sürebilir. İşlem başladıktan sonra iptal edemezsiniz ve çoğaltma ve bölüm ayarlamaları için gerçek zamanlı izleme yoktur. Ancak, değişiklikler devam ederken aşağıdaki ileti görünür kalır.
 
-   ![Portalda durum iletisi](media/search-capacity-planning/4-updating.png "Portalda durum iletisi")
+   :::image type="content" source="media/search-capacity-planning/4-updating.png" alt-text="Portalda durum iletisi" border="true":::
 
 > [!NOTE]
 > Bir hizmet sağlandıktan sonra, daha yüksek bir katmana yükseltilemez. Yeni katmanda bir arama hizmeti oluşturmanız ve dizinlerinizi yeniden yüklemeniz gerekir. Hizmet sağlama konusunda yardım için bkz. [portalda Azure bilişsel arama hizmeti oluşturma](search-create-service-portal.md) .
@@ -95,7 +174,7 @@ Genel bir kural olarak, arama uygulamalarında, özellikle de hizmet işlemleri 
 
 Temel bir hizmet, en fazla üç SUs sınırı için tam olarak bir bölüme ve en fazla üç çoğaltmaya sahip olabilir. Yalnızca ayarlanabilir kaynak çoğaltmadır. Sorgularda yüksek kullanılabilirlik için en az iki çoğaltma gerekir.
 
-Tüm standart ve depolama için Iyileştirilmiş arama hizmetleri, 36-SU sınırına tabi olan aşağıdaki çoğaltma ve bölüm birleşimlerini kabul edebilir. 
+Tüm standart ve depolama için Iyileştirilmiş arama hizmetleri, bu katmanlar için izin verilen 36-SU sınırına tabi olan aşağıdaki çoğaltma ve bölüm birleşimlerini kabul edebilir. 
 
 |   | **1 Bölüm** | **2 bölüm** | **3 Bölüm** | **4 Bölüm** | **6 Bölüm** | **12 Bölüm** |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -121,35 +200,15 @@ SUs, fiyatlandırma ve kapasite Azure Web sitesinde ayrıntılı olarak açıkla
 
 Yüksek kullanılabilirlik için genel öneriler şunlardır:
 
-* Salt okuma iş yüklerinin yüksek kullanılabilirliği için iki çoğaltma (sorgular)
++ Salt okuma iş yüklerinin yüksek kullanılabilirliği için iki çoğaltma (sorgular)
 
-* Okuma/yazma iş yüklerinin yüksek kullanılabilirliği için üç veya daha fazla çoğaltma (tek belgeler için sorgular ve dizin oluşturma eklenir, güncelleştirilir veya silinir)
++ Okuma/yazma iş yüklerinin yüksek kullanılabilirliği için üç veya daha fazla çoğaltma (tek belgeler için sorgular ve dizin oluşturma eklenir, güncelleştirilir veya silinir)
 
 Azure Bilişsel Arama için hizmet düzeyi sözleşmeleri (SLA), sorgu işlemlerine ve belge ekleme, güncelleştirme veya silme işlemlerinden oluşan Dizin güncelleştirmelerine yöneliktir.
 
 Temel katman, bir bölümde ve üç çoğaltmadan çıkar. Hem dizin oluşturma hem de sorgu işleme için talepteki dalgalanmaların hemen yanıt vermesini istiyorsanız Standart katmanlardan birini göz önünde bulundurun.  Depolama gereksinimlerinizin sorgu aktarım süresinden çok daha hızlı bir şekilde büyümesini fark ederseniz, depolama için Iyileştirilmiş katmanlardan birini düşünün.
 
-## <a name="disaster-recovery"></a>Olağanüstü durum kurtarma
-
-Şu anda olağanüstü durum kurtarma için yerleşik bir mekanizma yoktur. Bölüm veya çoğaltmaları eklemek, olağanüstü durum kurtarma hedeflerini karşılamak için yanlış stratejidir. En yaygın yaklaşım, başka bir bölgede ikinci bir arama hizmeti ayarlayarak hizmet düzeyinde artıklık eklemektir. Dizin yeniden oluşturma sırasında kullanılabilirliğinde olduğu gibi, yeniden yönlendirme veya yük devretme mantığı koddan gelmelidir.
-
-## <a name="estimate-replicas"></a>Çoğaltmaları tahmin etme
-
-Bir üretim hizmetinde, SLA amaçları için üç çoğaltma ayırmanız gerekir. Yavaş sorgu performansına karşılaşıyorsanız, çoğaltmanın ek kopyalarının daha büyük sorgu iş yüklerini destekleyecek ve isteklerin birden çok çoğaltma üzerinden yükünü dengeleyecek şekilde çevrimiçi hale getirilebilmesi için çoğaltmalar ekleyebilirsiniz.
-
-Sorgu yüklerini karşılamak için kaç yinelemenin gerekli olduğu konusunda yönergeler sağlamayız. Sorgu performansı, sorgunun karmaşıklığına ve rekabet iş yüklerine bağlıdır. Çoğaltmaları ekleme işlemi daha iyi performansa neden olsa da, sonuç kesinlikle doğrusal değildir: üç çoğaltma eklemek Üçlü üretilen iş garantisi vermez.
-
-Çözümünüz için QPS tahmini konusunda rehberlik için bkz. performans ve [izleme sorguları](search-monitor-queries.md) [için ölçeklendirme](search-performance-optimization.md)
-
-## <a name="estimate-partitions"></a>Tahmin bölümleri
-
-[Seçtiğiniz katman](search-sku-tier.md) bölüm boyutunu ve hızını belirler ve her katman çeşitli senaryolara uyan bir dizi özellik etrafında en iyi duruma getirilir. Daha yüksek bir katman seçerseniz S1 ile devam ediyorsanız daha az bölüm gerekebilir. Kendi kendine yönlendirilmiş test aracılığıyla yanıtlamanız gereken sorulardan biri, daha büyük ve daha pahalı bir bölümün daha düşük bir katmanda sağlanan bir hizmette iki ucuz bölümden daha iyi performans elde etmesinden biridir.
-
-Neredeyse gerçek zamanlı veri yenileme gerektiren uygulamalarda, çoğaltmalara göre orantılı daha fazla bölüm gerekecektir. Bölüm ekleme okuma/yazma işlemlerini çok sayıda bilgi işlem kaynağına yayar. Ayrıca ek dizinleri ve belgeleri depolamak için daha fazla disk alanı sağlar.
-
-Daha büyük dizinler sorgu için daha uzun sürer. Bu nedenle, bölümlerdeki her artımlı artışın çoğaltmalarda daha küçük ancak orantılı bir artış gerektirdiğini fark edebilirsiniz. Sorgularınızın ve sorgu biriminizin karmaşıklığı, sorgu yürütmenin ne kadar hızlı bir şekilde bir şekilde çalıştığını çarpanlara katacaktır.
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure Bilişsel Arama için bir fiyatlandırma katmanı seçin](search-sku-tier.md)
+> [Maliyetleri tahmin etme ve yönetme](search-sku-manage-costs.md)

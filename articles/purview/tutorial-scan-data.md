@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: feda969a5818402f4a5f2dadc80c70c324ad7492
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: eafa2187308c0324b85596ce25e8310fd8506a97
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559973"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249611"
 ---
 # <a name="tutorial-scan-data-with-azure-purview-preview"></a>Öğretici: Azure purview ile verileri tarama (Önizleme)
 
@@ -189,6 +189,8 @@ Hesabınız oluşturulduğunda, Azure purview hesabınızla aynı ada sahip yön
 1. Azure Data Lake Storage 2. için önceki adımları tekrarlayın.
 
 ### <a name="scan-your-data-sources"></a>Veri kaynaklarınızı tarayın
+
+1. [Azure Portal](https://portal.azure.com) Azure purview kaynağına gidin ve *purview Studio 'yu aç*' ı seçin. Otomatik olarak purview Studio 'nun giriş sayfasına yönlendirilirsiniz.
 
 1. Kataloğunuzun Web sayfasında **kaynakları** seçin ve **Kaydet**' i seçin. Ardından **Azure Blob depolama** ' yı seçin ve **devam edin**.
 

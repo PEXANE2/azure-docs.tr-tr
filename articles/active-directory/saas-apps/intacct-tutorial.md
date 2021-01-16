@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/05/2020
+ms.date: 01/15/2021
 ms.author: jeedes
-ms.openlocfilehash: a0266e62af55f6d775ca1b1ae5ee31d5f10d4249
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e1858047e9fc64be67cdea82aaca8113135f0b2a
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459994"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250749"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile yerleşik olarak tümleştirme
 
@@ -25,8 +25,6 @@ Bu öğreticide, u 'nin Azure Active Directory (Azure AD) ile nasıl tümleştir
 * Azure AD 'de, o Taktacct erişimi olan denetim.
 * Kullanıcılarınızın Azure AD hesaplarıyla şirket içinde yerleşik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
-
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -40,13 +38,12 @@ Başlamak için aşağıdaki öğeler gereklidir:
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
 * Ise Intacct, **IDP** tarafından başlatılan SSO 'yu destekliyor
-* Şirket \ ' i yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-sage-intacct-from-the-gallery"></a>Galeriden NtAcct ekleme
 
 Nıntacct 'ın Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden, yönetilen SaaS uygulamaları listenize
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
@@ -55,9 +52,9 @@ Nıntacct 'ın Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden
 
 ## <a name="configure-and-test-azure-ad-sso-for-sage-intacct"></a>It Intacct için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak, Azure AD SSO 'Yu, It Intacct ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile bağlantılı Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak, Azure AD SSO 'Yu, It Intacct ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile bağlantılı Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO 'yu, It Intacct ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO 'yu, It Intacct ile yapılandırmak ve test etmek için aşağıdaki adımları izleyin:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
@@ -70,9 +67,9 @@ Azure AD SSO 'yu, It Intacct ile yapılandırmak ve test etmek için aşağıdak
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **yerleşik uygulama tümleştirmesi** sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. Azure portal, **yerleşik uygulama tümleştirmesi** sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -89,7 +86,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     | Öznitelik adı  |  Kaynak özniteliği|
     | ---------------| --------------- |
     | Şirket Adı | **Şirket Içi şirket KIMLIĞI** |
-    | name | Değer, öğreticide daha sonra **açıklanacak olan IT Intacct test kullanıcısına**girdiğiniz **nıntacct kullanıcı kimliğiyle**aynı olmalıdır |
+    | name | Değer, öğreticide daha sonra **açıklanacak olan IT Intacct test kullanıcısına** girdiğiniz **nıntacct kullanıcı kimliğiyle** aynı olmalıdır |
 
     a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
 
@@ -97,7 +94,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     c. **Ad alanını** boş bırakın.
 
-    d. **Öznitelik**olarak kaynak seçin.
+    d. **Öznitelik** olarak kaynak seçin.
 
     e. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini yazın veya seçin.
 
@@ -132,15 +129,9 @@ Bu bölümde, B. Simon 'u, e-postayla erişim izni vererek Azure çoklu oturum a
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde, **zu Intacct**' ı seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
-
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
-
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ## <a name="configure-sage-intacct-sso"></a>Zu Intacct SSO 'yu yapılandırma
@@ -161,11 +152,11 @@ Bu bölümde, B. Simon 'u, e-postayla erişim izni vererek Azure çoklu oturum a
 
     a. **Çoklu oturum açmayı etkinleştir '** i seçin.
 
-    b. **Kimlik sağlayıcısı türü**olarak **SAML 2,0**' i seçin.
+    b. **Kimlik sağlayıcısı türü** olarak **SAML 2,0**' i seçin.
 
-    c. **Veren URL** metin kutusuna, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının**değerini yapıştırın.
+    c. **Veren URL** metin kutusuna, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının** değerini yapıştırın.
 
-    d. **Oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    d. **Oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
     e. **Base-64** kodlu sertifikanızı Not defteri 'nde açın, içeriğini panonuza kopyalayın ve ardından **sertifika** kutusuna yapıştırın.
 
@@ -191,7 +182,7 @@ Azure AD kullanıcılarını, o şekilde çalışır durumda oturum açabilirler
 
     ![Ekran görüntüsü, bu adımda bilgileri girebileceğiniz Kullanıcı bilgileri bölümünü gösterir.](./media/intacct-tutorial/ic790043.png "Kullanıcı bilgileri")
 
-    a. Kullanıcı **kimliği**, **Soyadı**, **adı, ad**, **e-posta adresi**, **başlık**ve **Kullanıcı bilgileri** bölümüne sağlamak istediğiniz bir Azure AD hesabının **telefonunu** girin.
+    a. Kullanıcı **kimliği**, **Soyadı**, **adı, ad**, **e-posta adresi**, **başlık** ve **Kullanıcı bilgileri** bölümüne sağlamak istediğiniz bir Azure AD hesabının **telefonunu** girin.
 
     > [!NOTE]
     > Yukarıdaki ekran görüntüsünde **Kullanıcı kimliğinin** ve Azure Portal Içindeki **Kullanıcı öznitelikleri** bölümünde **ad** özniteliğiyle eşlenen **kaynak öznitelik** değerinin aynı olması gerekir.
@@ -202,7 +193,7 @@ Azure AD kullanıcılarını, o şekilde çalışır durumda oturum açabilirler
     
     d. Azure AD hesap sahibi bir e-posta alır ve etkin hale gelmeden önce hesaplarını doğrulamak için bir bağlantıyı izler.
 
-1. **Çoklu oturum açma** sekmesi ' ne tıklayın ve aşağıda yer alan **Federasyon SSO kullanıcı kimliğinin** ve Azure Portal içindeki Kullanıcı öznitelikleri bölümünde ile eşlenmiş **kaynak öznitelik** değerinin `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` aynı olması gerekir. **User Attributes**
+1. **Çoklu oturum açma** sekmesi ' ne tıklayın ve aşağıda yer alan **Federasyon SSO kullanıcı kimliğinin** ve Azure Portal içindeki Kullanıcı öznitelikleri bölümünde ile eşlenmiş **kaynak öznitelik** değerinin `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` aynı olması gerekir. 
 
     ![Ekran görüntüsü, Federal S S O Kullanıcı g/ç 'sini girebileceğiniz Kullanıcı bilgileri bölümünü gösterir.](./media/intacct-tutorial/ic790044.png "Kullanıcı bilgileri")
 
@@ -211,16 +202,13 @@ Azure AD kullanıcılarını, o şekilde çalışır durumda oturum açabilirler
 
 ## <a name="test-sso"></a>Test SSO 'SU
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz.
 
-Erişim panelinde, bir e-nİç bağlantı kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız yerleşik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+* Azure portal bu uygulamayı test et ' e tıklayın ve SSO 'yu ayarladığınız yerleşik olarak oturum açmış olmanız gerekir
 
-## <a name="additional-resources"></a>Ek Kaynaklar
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım ' daki e Intacct kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız yerleşik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
-
-- [Microsoft Cloud App Security oturum denetimi nedir?](/cloud-app-security/proxy-intro-aad)
+Şirket \ ' i yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).

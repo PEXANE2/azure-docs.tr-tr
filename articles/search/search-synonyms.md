@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/18/2020
-ms.openlocfilehash: b62621a77f383b5c6413e7c187e7ba3d60beabad
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: 5e608d38ff70d51b569088629a6d80cb08e74ed4
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97732096"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251633"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Azure Bilişsel Arama eş anlamlılar
 
@@ -21,9 +21,9 @@ Eş anlamlı haritalar sayesinde, bir sorgunun kapsamını genişleterek, kullan
 
 ## <a name="create-synonyms"></a>Eş anlamlı oluştur
 
-Eş anlamlı eşleme, bir kez oluşturulabilen ve çok sayıda dizin tarafından kullanılan bir varlıktır. [Hizmet katmanı](search-limits-quotas-capacity.md#synonym-limits) , Standart katmanlar için 20 ' ye kadar ücretsiz ve temel katmanların 3 eş anlamlı haritalarından oluşan, oluşturabileceğiniz eş anlamlı harita sayısını belirler. 
+Eş anlamlı eşleme, bir kez oluşturulabilen ve çok sayıda dizin tarafından kullanılan bir varlıktır. [Hizmet katmanı](search-limits-quotas-capacity.md#synonym-limits) , ücretsiz ve temel katmanların üç eş anlamlı haritalarından ve Standart katmanlar için 20 ' ye kadar olan oluşturabileceğiniz eş anlamlı harita sayısını belirler. 
 
-Ingilizce ve Fransızca sürümleri gibi farklı diller için birden çok eş anlamlı harita veya içeriğiniz teknik veya belirsiz terminoloji içeriyorsa, lexsimgeler oluşturabilirsiniz. Birden çok eş anlamlı harita oluşturabilseniz de şu anda bir alan yalnızca birini kullanabilir.
+Ingilizce ve Fransızca sürümleri gibi farklı diller için birden çok eş anlamlı harita veya içeriğiniz teknik veya belirsiz terminoloji içeriyorsa, lexsimgeler oluşturabilirsiniz. Arama hizmetinizde birden fazla eş anlamlı harita oluşturabilseniz de bir alan bunlardan yalnızca birini kullanabilir.
 
 Eş anlamlı eşleme, eş anlamlı eşleme girişleri olarak işlev gösteren ad, biçim ve kurallardan oluşur. Desteklenen tek Biçim `solr` ve `solr` Biçim kural oluşturmayı belirler.
 
@@ -50,7 +50,7 @@ Eşleme kuralları, bu belgede açıklanan Apache Solr 'nin açık kaynaklı eş
 
 Her kuralın yeni satır karakteriyle () ayrılmış olması gerekir `\n` . Eş anlamlı eşleme başına en fazla 5.000 kuralı, diğer katmanlarda de harita başına 20.000 kural olarak tanımlayabilirsiniz. Her kural en fazla 20 genişleme (veya bir kuraldaki öğe) içerebilir. Daha fazla bilgi için bkz. [eş anlamlı sınırları](search-limits-quotas-capacity.md#synonym-limits).
 
-Sorgu Çözümleyicileri, büyük veya karışık bir servis talebi için büyük/küçük harfe sahip olur, ancak dizedeki bir virgül veya tire gibi özel karakterleri korumak istiyorsanız, eş anlamlı eşleme oluştururken uygun kaçış karakterlerini ekleyin. 
+Sorgu Çözümleyicileri, büyük veya karışık bir servis talebi için büyük/küçük harfe sahip olur, ancak dizedeki bir virgül veya tire gibi özel karakterleri korumak istiyorsanız, eş anlamlı eşleme oluştururken uygun kaçış karakterlerini ekleyin.
 
 ### <a name="equivalency-rules"></a>Denkliği kuralları
 
@@ -85,7 +85,7 @@ Açık durumda, veya için bir sorgu `Washington` olarak yeniden `Wash.` `WA` ya
 
 ### <a name="escaping-special-characters"></a>Özel karakterleri kaçış
 
-Virgül veya diğer özel karakterler içeren eş anlamlıları tanımlamanız gerekiyorsa, bu örnekte olduğu gibi bir ters eğik çizgiyle kaçış yapabilirsiniz:
+Eş anlamlılar, sorgu işleme sırasında çözümlenir. Virgül veya diğer özel karakterler içeren eş anlamlıları tanımlamanız gerekiyorsa, bu örnekte olduğu gibi bir ters eğik çizgiyle kaçış yapabilirsiniz:
 
 ```json
 {
@@ -143,11 +143,15 @@ POST /indexes?api-version=2020-06-30
 
 Eş anlamlıları eklemek, sorgu oluşturma konusunda yeni gereksinimler uygulamaz. Eş anlamlıların eklenmasından önce yaptığınız gibi terim ve tümcecik sorguları da verebilirsiniz. Tek fark, eş anlamlı eşlemede bir sorgu terimi mevcutsa, kurala bağlı olarak, sorgu altyapısının terimi veya tümceciği genişlettireceği veya yeniden yazacaktır.
 
-## <a name="how-synonyms-interact-with-other-features"></a>Eş anlamlılar diğer özelliklerle nasıl etkileşime sahiptir
+## <a name="how-synonyms-are-used-during-query-execution"></a>Sorgu yürütme sırasında eş anlamlılar nasıl kullanılır
 
-Eş anlamlılar özelliği, veya işleciyle birlikte eşanlamlı olan özgün sorguyu yeniden yazar. Bu nedenle, isabet vurgulama ve Puanlama profillerinin özgün terim ve eş anlamlıları eşdeğer olarak kabul eder.
+Eş anlamlılar, eşdeğer koşullara sahip bir dizinin içeriğini tamamlayan bir sorgu genişletme tekniğidir, ancak yalnızca bir eşanlamlı ataması olan alanlar için. Alan kapsamlı bir sorgu, eş anlamlı bir alanı *dışlayıp* , eş anlamlı eşlemesinden eşleşme görmezsiniz.
 
-Eş anlamlılar yalnızca arama sorguları için geçerlidir ve filtreler, modeller, otomatik tamamlama veya öneriler için desteklenmez. Otomatik tamamlama ve öneriler yalnızca özgün terime dayalıdır; eş anlamlı eşleşmeler yanıtta görünmez.
+Eş anlamlı etkin alanlar için, eş anlamlılar ilişkili alanla aynı metin analizine tabidir. Örneğin, bir alan standart Lucene çözümleyici kullanılarak çözümlenmekte ise, eş anlamlı terimler sorgu zamanında standart Lucene Çözümleyicisi 'ne de tabi olur. Nokta veya tire gibi noktalama işaretlerini korumak istiyorsanız, eş anlamlı terimi alanında bir içerik koruma Çözümleyicisi uygulayın.
+
+Dahili olarak, eş anlamlılar özelliği, veya işleciyle eş anlamlılarla orijinal sorguyu yeniden yazar. Bu nedenle, isabet vurgulama ve Puanlama profillerinin özgün terim ve eş anlamlıları eşdeğer olarak kabul eder.
+
+Eş anlamlılar yalnızca ücretsiz form metin sorgularını uygular ve filtreler, modeller, otomatik tamamlama veya öneriler için desteklenmez. Otomatik tamamlama ve öneriler yalnızca özgün terime dayalıdır; eş anlamlı eşleşmeler yanıtta görünmez.
 
 Joker karakter arama terimleri için eş anlamlı genişletmeleri uygulanmaz; ön ek, belirsiz ve Regex terimleri genişletilmedi.
 

@@ -3,14 +3,14 @@ title: 'Hızlı başlangıç: PowerShell kullanarak AKS kümesi dağıtma'
 description: Hızlı bir şekilde bir Kubernetes kümesi oluşturmayı, uygulamayı dağıtmayı ve PowerShell kullanarak Azure Kubernetes Service (AKS) içindeki performansı izlemeyi öğrenin.
 services: container-service
 ms.topic: quickstart
-ms.date: 09/11/2020
+ms.date: 01/13/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e5abcf9bfbf661abf5212d94d849d27c25fe9a8d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 41412a4ec95bb9b89df5fded6962965594e823fc
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91461062"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98248522"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-powershell"></a>Hızlı başlangıç: PowerShell kullanarak bir Azure Kubernetes hizmet kümesi dağıtma
 
@@ -22,7 +22,7 @@ Windows Server düğüm havuzu oluşturma hakkında daha fazla bilgi edinmek iç
 
 Bu hızlı başlangıç, Kubernetes kavramlarının temel olarak bilindiğini varsayar. Daha fazla bilgi için bkz. [Azure Kubernetes hizmeti (AKS) Için Kubernetes temel kavramları][kubernetes-concepts].
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -66,7 +66,7 @@ Bir AKS kümesi oluşturmak için [New-AzAks][new-azaks] cmdlet 'ini kullanın. 
 > AKS kümesi oluştururken, AKS kaynaklarını depolamak için otomatik olarak ikinci bir kaynak grubu oluşturulur. Daha fazla bilgi için bkz. [neden AKS ile iki kaynak grubu oluşturulur?](./faq.md#why-are-two-resource-groups-created-with-aks)
 
 ```azurepowershell-interactive
-New-AzAks -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 1
+New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 1
 ```
 
 Birkaç dakika sonra komut tamamlanır ve küme hakkında bilgi döndürür.
@@ -207,7 +207,7 @@ deployment.apps/azure-vote-front created
 service/azure-vote-front created
 ```
 
-## <a name="test-the-application"></a>Uygulamayı test etme
+## <a name="test-the-application"></a>Uygulamayı test edin
 
 Uygulama çalıştığında bir Kubernetes hizmeti, uygulamanın ön uç noktasını Internet 'e sunar.
 Bu işlemin tamamlanması birkaç dakika sürebilir.
@@ -218,7 +218,7 @@ Bu işlemin tamamlanması birkaç dakika sürebilir.
 .\kubectl get service azure-vote-front --watch
 ```
 
-Başlangıçta **Azure-oyönme** hizmeti IÇIN **dış IP** , **Beklemede**olarak gösterilir.
+Başlangıçta **Azure-oyönme** hizmeti IÇIN **dış IP** , **Beklemede** olarak gösterilir.
 
 ```plaintext
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE

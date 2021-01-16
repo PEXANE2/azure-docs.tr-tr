@@ -3,14 +3,14 @@ title: Azure’da Kubernetes öğreticisi - Uygulamayı Ölçeklendirme
 description: Bu Azure Kubernetes Service (AKS) öğreticisinde Kubernetes içindeki düğümleri ve podları ölçeklendirmenin yanı sıra yataya pod otomatik ölçeklendirme uygulamasını yapmayı öğreneceksiniz.
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/12/2021
 ms.custom: mvc
-ms.openlocfilehash: 7f16ba3ffe6b6f96f17df540eb67e9cec0bfea8c
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: dfebb6561e83c51063515ec655153aaaa7a09c0c
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825686"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251378"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Öğretici: Azure Kubernetes Hizmeti’nde (AKS) uygulamaları ölçeklendirme
 
@@ -21,7 +21,7 @@ ms.locfileid: "97825686"
 > * Uygulamanızı çalıştıran Kubernetes podlarını el ile ölçeklendirme
 > * Uygulama ön ucunu çalıştıran otomatik ölçeklendirme podlarını yapılandırma
 
-Ek öğreticilerde, Azure oy uygulaması yeni bir sürüme güncelleştirilir.
+Sonraki öğreticilerde, Azure oy uygulaması yeni bir sürüme güncelleştirilir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -39,7 +39,7 @@ kubectl get pods
 
 Aşağıdaki örnek çıktıda bir ön uç podu ve bir arka uç podu gösterilmektedir:
 
-```
+```output
 NAME                               READY     STATUS    RESTARTS   AGE
 azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
@@ -51,7 +51,7 @@ azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 kubectl scale --replicas=5 deployment/azure-vote-front
 ```
 
-[Kubectl][kubectl-get] 'yi yeniden çalıştırarak, aks 'lerin ek düğüm oluşturduğunu doğrulayın. Yaklaşık bir dakika sonra ek podlar kümenizde kullanılabilir duruma gelir:
+[Kubectl][kubectl-get] 'yi yeniden çalıştırarak, aks 'lerin ek düğüm 'leri başarıyla oluşturduğunu doğrulayın. Bir dakikadan sonra, kümelerinizi kümenizde bulabilirsiniz:
 
 ```console
 kubectl get pods
@@ -131,7 +131,7 @@ spec:
 
 `kubectl apply`Bildirim dosyasında tanımlanan otomatik Scaler 'ı uygulamak için kullanın `azure-vote-hpa.yaml` .
 
-```
+```console
 kubectl apply -f azure-vote-hpa.yaml
 ```
 
@@ -158,7 +158,7 @@ az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3
 
 Küme başarıyla ölçeklendirildiğinde, çıktı aşağıdaki örneğe benzer:
 
-```
+```output
 "agentPoolProfiles": [
   {
     "count": 3,

@@ -3,14 +3,14 @@ title: Azure’da Kubernetes öğreticisi - Kümeyi yükseltme
 description: Bu Azure Kubernetes Service (AKS) öğreticisinde var olan bir AKS kümesini en son Kubernetes sürümüne yükseltmeyi öğreneceksiniz.
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/12/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 517172b919552a24e9cb12bbaad14eb8cb71b3fd
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 8efb381562a5c55fa2c29b8379312dc41ef6a046
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007543"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251344"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Öğretici: Azure Kubernetes Hizmeti’nde (AKS) Kubernetes’i yükseltme
 
@@ -37,22 +37,22 @@ Bir kümeyi yükseltmeden önce, [az aks get-upgrades][] komutunu kullanarak han
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Aşağıdaki örnekte, geçerli sürüm *1.15.11*' dir ve kullanılabilir sürümler *yükseltmeler* altında gösterilir.
+Aşağıdaki örnekte, geçerli sürüm *1.18.10*' dir ve kullanılabilir sürümler *yükseltmeler* altında gösterilir.
 
 ```json
 {
   "agentPoolProfiles": null,
   "controlPlaneProfile": {
-    "kubernetesVersion": "1.15.11",
+    "kubernetesVersion": "1.18.10",
     ...
     "upgrades": [
       {
         "isPreview": null,
-        "kubernetesVersion": "1.16.8"
+        "kubernetesVersion": "1.19.1"
       },
       {
         "isPreview": null,
-        "kubernetesVersion": "1.16.9"
+        "kubernetesVersion": "1.19.3"
       }
     ]
   },
@@ -82,7 +82,7 @@ az aks upgrade \
 > [!NOTE]
 > Aynı anda yalnızca bir ikincil sürüm yükseltmesi yapabilirsiniz. Örneğin, *1.14. x* ' den *1.15. x*' e yükseltebilirsiniz, ancak *1.14. x* ' ten doğrudan *1.16. x* ' e yükseltemezsiniz. *1.14. x* ' den *1.16. x*' e yükseltmek için, ilk olarak *1.14. x* ' ten *1.15. x*' e yükseltin, sonra *1.15. x* ' den *1.16.* x ' e yükseltme gerçekleştirin
 
-Aşağıdaki sıkıştırılmış örnek çıktı, *1.16.8* sürümüne yükseltmenin sonucunu gösterir. *Kubernetesversion* 'ın artık *1.16.8* rapordığına dikkat edin:
+Aşağıdaki sıkıştırılmış örnek çıktı, *1.19.1* sürümüne yükseltmenin sonucunu gösterir. *Kubernetesversion* 'ın artık *1.19.1* rapordığına dikkat edin:
 
 ```json
 {
@@ -100,7 +100,7 @@ Aşağıdaki sıkıştırılmış örnek çıktı, *1.16.8* sürümüne yükselt
   "enableRbac": false,
   "fqdn": "myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io",
   "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "kubernetesVersion": "1.16.8",
+  "kubernetesVersion": "1.19.1",
   "location": "eastus",
   "name": "myAKSCluster",
   "type": "Microsoft.ContainerService/ManagedClusters"
@@ -115,12 +115,12 @@ Aşağıdaki sıkıştırılmış örnek çıktı, *1.16.8* sürümüne yükselt
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Aşağıdaki örnek çıktıda, AKS kümesi çalıştırıldığı *Kubernetesversion 1.16.8* gösterilmektedir:
+Aşağıdaki örnek çıktıda, AKS kümesi çalıştırıldığı *Kubernetesversion 1.19.1* gösterilmektedir:
 
-```
+```output
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myAKSCluster  eastus      myResourceGroup  1.16.8               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
+myAKSCluster  eastus      myResourceGroup  1.19.1               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="delete-the-cluster"></a>Küme silme

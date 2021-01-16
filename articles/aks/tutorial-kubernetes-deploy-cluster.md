@@ -3,14 +3,14 @@ title: Azure’da Kubernetes öğreticisi - Kümeyi dağıtma
 description: Bu Azure Kubernetes Service (AKS) öğreticisinde bir AKS kümesi oluşturacak ve kubectl istemcisini kullanarak Kubernetes ana düğümüne bağlanacaksınız.
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/12/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 0e034ebede39a3fd9046ced9716323d0c7d874df
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: a8e0ddcd77c26a00cf784fb8c2372734314dc0bb
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684080"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250647"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Hızlı Başlangıç: Azure Kubernetes Hizmeti (AKS) kümesini dağıtma
 
@@ -21,7 +21,7 @@ Kubernetes, kapsayıcılı uygulamalar için dağıtılmış bir platform sunar.
 > * Kubernetes CLI (kubectl) yükleme
 > * kubectl istemcisini AKS kümenize bağlanacak şekilde yapılandırma
 
-Ek öğreticilerde, Azure oy uygulaması kümeye dağıtılır, ölçeklendirilir ve güncelleştirilir.
+Sonraki öğreticilerde, Azure oy uygulaması kümeye dağıtılır, ölçeklendirilir ve güncelleştirilir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -33,9 +33,9 @@ Bu öğreticide, Azure CLı sürüm 2.0.53 veya üstünü çalıştırıyor olma
 
 AKS kümelerinde Kubernetes rol tabanlı erişim denetimi (Kubernetes RBAC) kullanılabilir. Bu denetimler, kullanıcılara atanmış olan rollere göre kaynaklara erişim vermenizi sağlayabilir. Bir kullanıcıya birden çok rol atanırsa izinler birleştirilir ve izinler tek bir ad alanı veya tüm küme genelinde kapsam olabilir. Varsayılan olarak, bir AKS kümesi oluşturduğunuzda, Azure CLı, Kubernetes RBAC 'yi otomatik olarak sağlar.
 
-[az aks create][] komutunu kullanarak bir AKS kümesi oluşturun. Aşağıdaki örnek, *myResourceGroup* adlı kaynak grubunda *myAKSCluster* adlı bir küme oluşturur. Bu kaynak grubu, *eastus* bölgesindeki [önceki öğreticide][aks-tutorial-prepare-acr] oluşturulmuştur. Aşağıdaki örnek, *eastus* bölgesinde aks kümesinin de oluşturulması için bir bölge belirtmiyor. AKS için kaynak sınırları ve bölge kullanılabilirliği hakkında daha fazla bilgi için bkz. [Azure Kubernetes Service 'te (aks) kotalar, sanal makine boyutu kısıtlamaları ve bölge kullanılabilirliği][quotas-skus-regions] .
+[az aks create][] komutunu kullanarak bir AKS kümesi oluşturun. Aşağıdaki örnek, *myResourceGroup* adlı kaynak grubunda *myAKSCluster* adlı bir küme oluşturur. Bu kaynak grubu, *eastus* bölgesindeki [önceki öğreticide][aks-tutorial-prepare-acr] oluşturulmuştur. Aşağıdaki örnek, *eastus* bölgesinde aks kümesinin de oluşturulması için bir bölge belirtmiyor. Daha fazla bilgi için bkz. [Azure Kubernetes Service (aks) Içindeki kotalar, sanal makine boyutu kısıtlamaları ve bölge kullanılabilirliği][quotas-skus-regions] , aks için kaynak sınırları ve bölge kullanılabilirliği hakkında daha fazla bilgi için.
 
-Bir AKS kümesinin diğer Azure kaynaklarıyla etkileşime geçmesini sağlamak için bir Azure Active Directory hizmet sorumlusu, bir tane belirtmediği için otomatik olarak oluşturulur. Burada, bu hizmet sorumlusu, önceki öğreticide oluşturduğunuz Azure Container Registry (ACR) örneğinden [görüntü çekme hakkı vermiş][container-registry-integration] olur. Daha kolay yönetim için hizmet sorumlusu yerine [yönetilen bir kimlik](use-managed-identity.md) kullanabileceğinizi unutmayın.
+Bir AKS kümesinin diğer Azure kaynaklarıyla etkileşime geçmesini sağlamak için bir Azure Active Directory hizmet sorumlusu, bir tane belirtmediği için otomatik olarak oluşturulur. Burada, bu hizmet sorumlusu, önceki öğreticide oluşturduğunuz Azure Container Registry (ACR) örneğinden [görüntü çekme hakkı vermiş][container-registry-integration] olur. Komutu başarıyla yürütmek için Azure aboneliğinde bir **sahip** veya **Azure hesabı Yöneticisi** rolüne sahip olmanız gerekir.
 
 ```azurecli
 az aks create \
@@ -46,7 +46,7 @@ az aks create \
     --attach-acr <acrName>
 ```
 
-Ayrıca, ACR 'den görüntü çekmek üzere bir hizmet sorumlusu el ile yapılandırabilirsiniz. Daha fazla bilgi için bkz. [hizmet sorumluları Ile ACR kimlik doğrulaması](../container-registry/container-registry-auth-service-principal.md) veya [çekme gizli anahtarı Ile Kubernetes kimlik doğrulaması](../container-registry/container-registry-auth-kubernetes.md).
+**Sahip** veya **Azure Hesap Yöneticisi** rolüne gerek duymamak için, ACR 'den görüntü çekmek üzere bir hizmet sorumlusu el ile de yapılandırabilirsiniz. Daha fazla bilgi için bkz. [hizmet sorumluları Ile ACR kimlik doğrulaması](../container-registry/container-registry-auth-service-principal.md) veya [çekme gizli anahtarı Ile Kubernetes kimlik doğrulaması](../container-registry/container-registry-auth-kubernetes.md). Alternatif olarak, daha kolay yönetim için hizmet sorumlusu yerine [yönetilen bir kimlik](use-managed-identity.md) kullanabilirsiniz.
 
 Birkaç dakika sonra dağıtım tamamlanır ve AKS dağıtımı hakkında JSON biçimli bilgileri döndürür.
 
@@ -76,8 +76,9 @@ Kümenizin bağlantısını doğrulamak için [kubectl Get Nodes][kubectl-get] k
 ```
 $ kubectl get nodes
 
-NAME                       STATUS   ROLES   AGE   VERSION
-aks-nodepool1-12345678-0   Ready    agent   32m   v1.14.8
+NAME                                STATUS   ROLES   AGE     VERSION
+aks-nodepool1-37463671-vmss000000   Ready    agent   2m37s   v1.18.10
+aks-nodepool1-37463671-vmss000001   Ready    agent   2m28s   v1.18.10
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

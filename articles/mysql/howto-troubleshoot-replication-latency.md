@@ -7,12 +7,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 01/13/2021
-ms.openlocfilehash: 34210d08ad5328f200f5b92c13bfcf85cfead3ec
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 92513a8c24b5106e3a59c8cfa4d743e900b957bf
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98199487"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249780"
 ---
 # <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı'nda çoğaltma gecikmesi sorununu giderme
 
@@ -32,9 +32,7 @@ ms.locfileid: "98199487"
 Bu makalede, MySQL için Azure veritabanı 'nda çoğaltma gecikmesini nasıl giderebileceğinizi öğreneceksiniz. Çoğaltma sunucularında daha fazla çoğaltma gecikme süresinin bazı yaygın nedenlerini de anlamış olursunuz.
 
 > [!NOTE]
-> Sapma ücretsiz iletişim
->
-> Microsoft, farklı ve üçlü ortamları destekler. Bu makale _ana_ ve _bağımlı_ sözcüklere başvurular içerir. Kullanım açısından [ücretsiz iletişim Için Microsoft Stil Kılavuzu](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) , bu sözcükleri exclusionary kelimeleri olarak tanır. Bu makalede, şu anda yazılımda görüntülenen sözcükler olduklarından, bu makale tutarlılık için kullanılır. Yazılım, kelimeleri kaldırmak üzere güncelleniyorsa, bu makale hizalamayla olacak şekilde güncelleştirilir.
+> Bu makale, Microsoft 'un artık kullandığı bir terim olan _bağımlı_ dönem başvuruları içerir. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
 >
 
 ## <a name="replication-concepts"></a>Çoğaltma kavramları

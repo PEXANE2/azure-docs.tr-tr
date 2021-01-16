@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 12/09/2020
+ms.date: 01/15/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: a1307aa19c66e3f6fcb71f677e6c67551d2a01f9
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: f799ed5c18537b862a4971075ae9107b7a722fdd
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928333"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251514"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulaması hakkında sık sorulan sorular (SSS)
 
@@ -33,13 +33,17 @@ Microsoft Authenticator uygulama Azure Authenticator uygulamasını değiştirdi
 
 Y **: bir** cihazı kaydetmek, cihazınızın kuruluşunuzun hizmetlerine erişmesini sağlar ve kuruluşunuzun cihazınıza erişmesine izin vermez.
 
-## <a name="too-many-app-permissions"></a>Çok fazla uygulama izni
+### <a name="too-many-app-permissions"></a>Çok fazla uygulama izni
 
 **S**: uygulama neden çok sayıda izin istiyor?
 
-**A**: burada, İstenen izinlerin tam listesi ve uygulama tarafından nasıl kullanıldıkları açıklanmaktadır. Gördüğünüz belirli izinler, sahip olduğunuz telefonun türüne bağlıdır.
+**A**: burada, İstenen izinlerin tam listesi ve uygulama tarafından nasıl kullanıldıkları açıklanmaktadır. Gördüğünüz belirli izinler, sahip olduğunuz telefonun türüne bağlıdır. Bazen kuruluşunuz, belirli kaynaklara erişmenize izin vermeden önce **konumunuzu** bilmek istiyor. Uygulama bu izni yalnızca, kuruluşunuzun konum gerektiren bir ilke varsa ister.
 
-- **Konum**. Bazen kuruluşunuz, belirli kaynaklara erişmenize izin vermeden önce konumunuzu bilmek istiyor. Uygulama bu izni yalnızca, kuruluşunuzun konum gerektiren bir ilke varsa ister. 
+### <a name="error-adding-account"></a>Hesap eklenirken hata oluştu
+
+**S**: hesabımı eklemeye çalıştığımda, "eklemeye çalıştığınız hesap şu anda geçerli değil ' i belirten bir hata mesajı alıyorum. Bu sorunu (benzersizlik doğrulaması) onarmak için yöneticinize başvurun. " Ne yapmalıyım?
+
+Y: yöneticinizle iletişime geçin **ve bir benzersizlik** doğrulama sorunu nedeniyle hesabınızı kimlik doğrulayıcısına eklememenizi engellemiş olursunuz. Yöneticinizin kuruluşunuzda bakabilmesi için oturum açma kullanıcı adınızı sağlamanız gerekir.
 
 ### <a name="legacy-apns-support-deprecated"></a>Eski APNs desteği kullanım dışı
 

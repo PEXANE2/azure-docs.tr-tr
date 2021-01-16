@@ -9,17 +9,17 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 06/04/2020
-ms.openlocfilehash: 44a37a912c5c7a882d21631b8ce2da2c7ba9c05e
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 27719663acfbdbcd7293defc4b746153359adb61
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97967710"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251866"
 ---
 # <a name="request-quota-increases-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL veritabanı ve SQL yönetilen örneği için istek kotası artıyor
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Bu makalede, Azure SQL veritabanı ve Azure SQL yönetilen örneği için kota artışı isteme açıklanmaktadır. Ayrıca, bir bölgeye abonelik erişiminin nasıl etkinleştirileceğini açıklar.
+Bu makalede, Azure SQL veritabanı ve Azure SQL yönetilen örneği için kota artışı isteme açıklanmaktadır. Ayrıca, bir bölgeye abonelik erişiminin nasıl etkinleştirileceği ve bir bölgedeki belirli donanımların etkinleştirilmesi için nasıl isteneceğini açıklar.
 
 ## <a name="create-a-new-support-request"></a><a id="newquota"></a> Yeni bir destek isteği oluşturun
 
@@ -62,8 +62,7 @@ Aşağıdaki bölümlerde, **SQL veritabanı** kota türleri için kota artış�
 
 - Sunucu başına veritabanı işlem birimi (DTU)
 - Abonelik başına sunucu sayısı
-- A serisi bölge erişimi
-- Bölge erişimi
+- Abonelikler veya belirli donanımlar için bölge erişimi
 
 ### <a name="database-transaction-units-dtus-per-server"></a>Sunucu başına veritabanı işlem birimi (DTU)
 
@@ -109,30 +108,15 @@ Aboneliğinizin belirli bir bölgede erişmesi gerekiyorsa **bölge erişimi** s
 
    ![İstek bölgesi erişimi](./media/quota-increase-request/quota-request.png)
 
-<!--
-### <a id="mseries"></a> Enable M-series access to a region
+### <a name="request-enabling-specific-hardware-in-a-region"></a>Bölgede belirli donanımları etkinleştirme isteği
 
-To enable M-series hardware for a subscription and region, a support request must be opened.
+Kullanmak istediğiniz bir [donanım oluşturma](service-tiers-vcore.md#hardware-generations) işlemi bölgenizde yoksa (bkz. [donanım kullanılabilirliği](service-tiers-vcore.md#hardware-availability)), aşağıdaki adımları kullanarak isteği isteyebilirsiniz.
 
-1. Select the **M-series region access** quota type.
+1. **Diğer kota isteği** kota türünü seçin.
 
-1. In the **Select a location** list, select the Azure region to use. The quota is per subscription in each region.
+1. **Açıklama** alanında, donanım oluşturma adı ve ihtiyacınız olan bölgenin adı dahil olmak üzere isteğinizi yapın.
 
-
-   ![Request M-series region access](./media/quota-increase-request/quota-m-series.png)
--->
-
-## <a name="sql-managed-instance-quota-type"></a><a id="sqlmiquota"></a> SQL yönetilen örnek kota türü
-
-**SQL yönetilen örnek** kota türü için aşağıdaki adımları kullanın:
-
-1. **Bölge** listesinde, hedeflenecek Azure bölgesini seçin.
-
-1. **Alt ağ** ve **sanal çekirdek** için istediğiniz yeni limitleri girin.
-
-   ![SQL yönetilen örnek kotası ayrıntıları](./media/quota-increase-request/quota-details-managed-instance.png)
-
-Daha fazla bilgi için bkz. [Azure SQL yönetilen örnek kaynak sınırlarına genel bakış](../managed-instance/resource-limits.md).
+   ![Yeni bir bölgede donanım iste](./media/quota-increase-request/hardware-in-new-region.png)
 
 ## <a name="submit-your-request"></a>İsteğinizi gönderin
 

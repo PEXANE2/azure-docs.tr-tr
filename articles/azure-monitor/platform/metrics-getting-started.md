@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 710de93a24037031784ca8d37a8ae0be76bff9e6
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 2bf56379a32bf8035ea2d0d3fe797776ec6ba40d
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614602"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250409"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Azure Ölçüm Gezgini'ni kullanmaya başlama
 
@@ -38,7 +38,7 @@ Bir ölçüm grafiği oluşturmak için, kaynak, kaynak grubu, abonelik veya Azu
 
     > ![Ölçüm seçin](./media/metrics-getting-started/metrics-dropdown.png)
 
-4. İsteğe bağlı olarak, [ölçüm toplamayı değiştirebilirsiniz](metrics-charts.md#changing-aggregation). Örneğin, grafiğinizin ölçüm minimum, maksimum veya Ortalama değerlerini göstermesini isteyebilirsiniz.
+4. İsteğe bağlı olarak, [ölçüm toplamayı değiştirebilirsiniz](metrics-charts.md#aggregation). Örneğin, grafiğinizin ölçüm minimum, maksimum veya Ortalama değerlerini göstermesini isteyebilirsiniz.
 
 > [!TIP]
 > Aynı grafikte birden çok ölçüm çizilmek istiyorsanız **ölçüm Ekle** düğmesini kullanın ve bu adımları tekrarlayın. Tek bir görünümdeki birden çok grafik için üstteki **Grafik Ekle** düğmesini seçin.
@@ -57,7 +57,7 @@ Varsayılan olarak, grafik en son 24 saat ölçüm verilerini gösterir. Zaman a
 
 ## <a name="apply-dimension-filters-and-splitting"></a>Boyut filtrelerini uygulama ve bölme
 
-[Filtreleme](metrics-charts.md#apply-filters-to-charts) ve [bölme](metrics-charts.md#apply-splitting-to-a-chart) boyutları olan ölçümler için güçlü tanılama araçlarıdır. Bu özellikler çeşitli ölçüm segmentlerinin ("boyut değerleri") ölçümün genel değerini nasıl etkilediğini gösterir ve olası aykırı değerleri tanımlamanızı sağlar.
+[Filtreleme](metrics-charts.md#filters) ve [bölme](metrics-charts.md#apply-splitting) boyutları olan ölçümler için güçlü tanılama araçlarıdır. Bu özellikler çeşitli ölçüm segmentlerinin ("boyut değerleri") ölçümün genel değerini nasıl etkilediğini gösterir ve olası aykırı değerleri tanımlamanızı sağlar.
 
 - **Filtreleme** , grafiğe hangi boyut değerlerinin ekleneceğini seçmenizi sağlar. Örneğin, *sunucu yanıt süresi* ölçümünü grafik oluştururken başarılı istekleri göstermek isteyebilirsiniz. Filtreyi *istek boyutunun başarısına* uygulamanız gerekir. 
 

@@ -1,44 +1,44 @@
 ---
 title: Fiyatlandırma katmanı seçin
 titleSuffix: Azure Cognitive Search
-description: 'Azure Bilişsel Arama şu katmanlarda sağlanabilir: ücretsiz, temel ve standart ve standart, çeşitli kaynak yapılandırmalarında ve kapasite düzeylerinde kullanılabilir.'
+description: "Azure Bilişsel Arama için fiyatlandırma katmanları (veya SKU 'Lar) hakkında bilgi edinin. Şu katmanlarda bir arama hizmeti sağlanabilir: ücretsiz, temel ve standart. Standart, çeşitli kaynak yapılandırmalarında ve kapasite düzeylerinde kullanılabilir."
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/15/2020
+ms.date: 01/15/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 4c58968cb6a38a10433915ec8fa00336ccad301e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 38ddfc2d3940bb9267edd6c5c683918c1fb5dc58
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216419"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251714"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Azure Bilişsel Arama için bir fiyatlandırma katmanı seçin
 
-[Bir arama hizmeti oluşturduğunuzda](search-create-service-portal.md), hizmetin kullanım ömrü boyunca düzeltilen bir fiyatlandırma katmanı seçersiniz. Seçtiğiniz katman şunları belirler:
+[Bir arama hizmeti oluşturduğunuzda](search-create-service-portal.md), hizmetin kullanım ömrü boyunca düzeltilen bir Fiyatlandırma Katmanı (veya SKU) seçersiniz. Tahmini aylık maliyetler portalda **fiyatlandırma katmanı Seç** sayfasında gösterilir. Bunun yerine PowerShell veya Azure CLı aracılığıyla bir hizmet oluşturuyorsanız, katman parametresi aracılığıyla belirtilir **`-Sku`** .
 
-+ Oluşturabileceğiniz dizinlerin ve diğer nesnelerin miktarı (en fazla limit)
+Seçtiğiniz katman şunları belirler:
+
++ Hizmette oluşturabileceğiniz en fazla dizin ve diğer nesne sayısı
 + Bölümlerin boyutu ve hızı (fiziksel depolama)
-+ Faturalanabilir ücret, sabit bir aylık maliyet, ancak aynı zamanda bölümler veya çoğaltmalar eklerseniz artımlı maliyet
++ Faturalanabilir ücret sabit bir aylık maliyet, ancak kapasite eklerseniz de artımlı maliyet
 
-Ayrıca, bazı [Premium özellikler](#premium-features) katman gereksinimleriyle birlikte gelir.
+Birkaç örnekte, seçtiğiniz katman [Premium özelliklerinin](#premium-features)kullanılabilirliğini belirler.
 
 ## <a name="tier-descriptions"></a>Katman açıklamaları
 
-Katmanlar **ücretsiz**, **temel**, **Standart** ve depolama için **iyileştirilmiş**. Standart ve depolama için Iyileştirilmiş çeşitli yapılandırmalarda ve kapasitelerde kullanılabilir.
+Katmanlar **ücretsiz**, **temel**, **Standart** ve depolama için **iyileştirilmiş**. Standart ve depolama için Iyileştirilmiş çeşitli yapılandırmalarda ve kapasitelerde kullanılabilir. Azure portal aşağıdaki ekran görüntüsünde, kullanılabilir katmanlar, eksi fiyatlandırma (portalda ve [fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/search/)bulabilirsiniz) gösterilmektedir. 
 
-Azure portal aşağıdaki ekran görüntüsünde, kullanılabilir katmanlar, eksi fiyatlandırma (portalda ve [fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/search/)bulabilirsiniz) gösterilmektedir. 
+:::image type="content" source="media/search-sku-tier/tiers.png" alt-text="Fiyatlandırma Katmanı grafiği" border="true":::
 
-![Azure Bilişsel Arama fiyatlandırma katmanları](media/search-sku-tier/tiers.png "Azure Bilişsel Arama fiyatlandırma katmanları")
+**Ücretsiz** , öğreticileri ve kod örneklerini çalıştırma gibi daha küçük projeler için sınırlı bir arama hizmeti oluşturur. Dahili olarak, sistem kaynakları birden çok abone arasında paylaşılır. Ücretsiz bir hizmeti ölçeklendiremez veya önemli iş yüklerini çalıştıramazsınız.
 
-**Ücretsiz** , öğreticileri ve kod örneklerini çalıştırma gibi daha küçük projeler için sınırlı bir arama hizmeti oluşturur. Dahili olarak, çoğaltmalar ve bölümler birden çok abone arasında paylaşılır. Ücretsiz bir hizmeti ölçeklendiremez veya önemli iş yüklerini çalıştıramazsınız.
+**Temel** ve **Standart** , en yaygın olarak kullanılan faturalanabilir katmanlardır, ancak iş yüklerinin ölçeklendirilmesine daha fazla esneklik sağladığından **Standart** olarak varsayılan olarak kullanılır. Denetiminizin altında adanmış kaynaklar sayesinde, daha büyük projeler dağıtabilir, performansı iyileştirir ve kapasiteyi artırabilirsiniz.
 
-**Temel** ve **Standart** , **Standart** olarak varsayılan değer olan en yaygın olarak kullanılan faturalanabilir katmanlardır. Denetiminizin altında adanmış kaynaklar sayesinde, daha büyük projeler dağıtabilir, performansı iyileştirir ve kapasiteyi artırabilirsiniz.
-
-Bazı katmanlar belirli iş türleri için iyileştirilmiştir. Örneğin, **Standart 3 yüksek yoğunluklu (S3 HD)** , S3 için bir *barındırma modudur* ; burada temeldeki donanım çok sayıda daha küçük dizinler için optimize edilmiştir ve çok kiracılı senaryolar için tasarlanmıştır. S3 HD, S3 ile aynı birim başına ücretine sahiptir, ancak donanım çok sayıda daha küçük dizin üzerinde hızlı dosya okuma için en iyi duruma getirilmiştir.
+Bazı katmanlar belirli iş türleri için tasarlanmıştır. Örneğin, **Standart 3 yüksek yoğunluklu (S3 HD)** , S3 için bir *barındırma modudur* ; burada temeldeki donanım çok sayıda daha küçük dizinler için optimize edilmiştir ve çok kiracılı senaryolar için tasarlanmıştır. S3 HD, S3 ile aynı birim başına ücretine sahiptir, ancak donanım çok sayıda daha küçük dizin üzerinde hızlı dosya okuma için en iyi duruma getirilmiştir.
 
 **Depolama Için iyileştirilmiş** katmanlar, standart katmanlardan TB başına daha büyük depolama kapasitesi sunar. Birincil zorunluluğunu getirir, belirli uygulama gereksinimleriniz için doğrulamanız gereken daha yüksek sorgu gecikmedir. Bu katmanın performans konuları hakkında daha fazla bilgi için bkz. [performans ve iyileştirme konuları](search-performance-optimization.md).
 
@@ -54,78 +54,37 @@ Birçok özellik, ücretsiz katman dahil olmak üzere tüm katmanlarda kullanıl
 |---------|-------------|
 | [Dizinleyiciler](search-indexer-overview.md) | Dizin oluşturucular S3 HD üzerinde kullanılamaz.  |
 | [Yapay zeka zenginleştirme](search-security-manage-encryption-keys.md) | Ücretsiz katmanda çalışır, ancak önerilmez. |
+| [Giden (Dizin Oluşturucu) erişimi için yönetilen veya güvenilen kimlikler](search-howto-managed-identities-data-sources.md) | Ücretsiz katmanda kullanılamaz.|
 | [Müşteri tarafından yönetilen şifreleme anahtarları](search-security-manage-encryption-keys.md) | Ücretsiz katmanda kullanılamaz. |
 | [IP güvenlik duvarı erişimi](service-configure-firewall.md) | Ücretsiz katmanda kullanılamaz. |
 | [Özel uç nokta (Azure özel bağlantısı ile tümleştirme)](service-create-private-endpoint.md) | Bir arama hizmetine gelen bağlantılar için ücretsiz katmanda kullanılamaz. Diğer Azure kaynaklarına yönelik Dizin oluşturucular tarafından giden bağlantılar için ücretsiz veya S3 HD 'de kullanılamaz. Becerileri kullanan Dizin oluşturucular için, ücretsiz, temel, S1 veya S3 HD ' de kullanılamaz.|
 
 Yeterli kapasiteye sahip değilseniz, Kaynak yoğunluklu Özellikler iyi çalışmayabilir. Örneğin, [AI zenginleştirme](cognitive-search-concept-intro.md) , veri kümesi küçük olmadığı sürece ücretsiz bir hizmette zaman aşımına uğrar uzun süreli yetenekler içerir.
 
-## <a name="billable-events"></a>Faturalandırılabilir olaylar
+## <a name="upper-limits"></a>Üst sınırlar
 
-Azure Bilişsel Arama 'de oluşturulan bir çözüm, aşağıdaki yollarla maliyette ücret alabilir:
+Katmanlar hizmetin kendisinin en fazla depolama alanını, oluşturabileceğiniz en fazla dizin, Dizin Oluşturucu, veri kaynağı, becerileri ve eş anlamlı haritalar sayısını da tespit edebilir. Tüm limitlerin tamamını tümüyle kesmek için bkz. [Azure bilişsel arama hizmet limitleri](search-limits-quotas-capacity.md). 
 
-+ [Hizmetin](#service-costs) , en düşük düzeyde (bir bölüm ve çoğaltma), temel fiyata 7/24 çalışan maliyeti. Bunu, hizmeti çalıştırmanın sabit maliyeti olarak düşünebilirsiniz.
+## <a name="partition-size-and-speed"></a>Bölüm boyutu ve hızı
 
-+ Maliyetlerin faturalanabilir ücret artışlarına göre artması kapasitesi (çoğaltmalar veya bölümler) ekleme
+Katman fiyatlandırması, temel için 2 GB ve depolama için Iyileştirilmiş (L2) katmanları için 2 TB 'a kadar değişen bölüm başına depolama hakkındaki ayrıntıları içerir. İşlemler, gecikme süresi ve aktarım hızı gibi diğer donanım özellikleri yayımlanmamıştır, ancak belirli çözüm mimarileri için tasarlanan katmanlar, bu senaryoları destekleme özelliklerine sahip donanımlar üzerine kurulmuştur.
 
-+ Bant genişliği ücretleri (giden veri aktarımı)
+## <a name="billing-rates"></a>Fatura ücretleri
 
-+ Belirli yetenekler veya özellikler için gereken eklenti hizmetleri:
+Katmanlar, daha pahalı donanımlar üzerinde çalışan katmanlara yönelik daha yüksek ücretler ve daha pahalı özellikler sağlayan farklı fatura fiyatları vardır. Fatura ücreti, Azure Bilişsel Arama her bir hizmet katmanı için [Azure fiyatlandırma sayfalarında](https://azure.microsoft.com/pricing/details/search/) gördüğünüz şeydir.
 
-  + AI zenginleştirme (bilişsel [Hizmetler](https://azure.microsoft.com/pricing/details/cognitive-services/)gerektirir)
-  + bilgi deposu ( [Azure Storage](https://azure.microsoft.com/pricing/details/storage/)gerektirir)
-  + Artımlı zenginleştirme ( [Azure Storage](https://azure.microsoft.com/pricing/details/storage/)gerektırır, AI zenginleştirme için geçerlidir)
-  + Müşteri tarafından yönetilen anahtarlar ve çift şifreleme ( [Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/)gerekir)
-  + İnternet erişimi olmayan bir model için özel uç noktalar ( [Azure özel bağlantısı](https://azure.microsoft.com/pricing/details/private-link/)gerekir)
+Bir hizmet oluşturduktan sonra faturalandırma ücreti, hizmetin saat içinde çalıştırılması için *sabit bir maliyet* ve daha fazla kapasite eklemeyi seçerseniz *artımlı bir maliyet* haline gelir.
 
-### <a name="service-costs"></a>Hizmet maliyetleri
+Arama Hizmetleri, *bölüm* kaynakları (depolama için) ve *çoğaltmalar* (sorgu altyapısının örnekleri) biçiminde bilgi işlem kaynaklarına ayrılır. Başlangıçta, her biri ile bir hizmet oluşturulur ve faturalandırma ücreti her iki kaynağın de dahil değildir. Ancak kapasiteyi ölçeklendirirseniz, maliyetler faturalandırılabilir fiyat artışlarıyla artar veya azaltılabilir.
 
-Ücretlendirmeden kaçınmak için sanal makinelerden veya "duraklatılmış" olabilecek diğer kaynaklardan farklı olarak Azure Bilişsel Arama hizmeti, özel kullanım için ayrılmış donanımlar üzerinde her zaman kullanılabilir. Bu nedenle, hizmet oluşturma hizmeti oluştururken başlayan faturalandırılabilir bir olaydır ve hizmeti sildiğinizde sona erer. 
+Aşağıdaki örnek, bir gösterim sağlar. Ayda $100 olan kuramsal faturalandırma oranını varsayın. Arama hizmetini bir bölümün ve bir çoğaltmanın ilk kapasitesine tutarsanız $100, ayın sonunda ödemeyi beklediğiniz şeydir. Ancak, yüksek kullanılabilirlik elde etmek için iki çoğaltma eklerseniz aylık fatura, ilk çoğaltma bölümü çifti için $300 ($100) ve ardından iki çoğaltma için $200 olarak artar.
 
-Minimum ücret, faturalandırılabilir fiyata ilk arama birimidir (bir çoğaltma x bir bölüm). Hizmet bu yapılandırmadan daha küçük bir süre içinde çalışmadığından hizmetin kullanım ömrü için bu minimum değer düzeltildi. En düşük değerin ötesinde, çoğaltmaları ve bölümleri birbirinden bağımsız olarak ekleyebilirsiniz. Çoğaltmalar ve bölümler aracılığıyla kapasitenin artımlı artışları, faturanızı aşağıdaki formüle göre artırır: [(çoğaltmalar x Partitions x oranı)](#search-units), burada ücretlendirilebilecek ücret seçtiğiniz fiyatlandırma katmanına bağlıdır.
-
-Bir arama çözümünün maliyetini tahmin ediyorsanız, fiyatlandırma ve kapasitenin doğrusal değil olduğunu aklınızda bulundurun. (Katından fazla kapasite maliyeti iki katına çıkarır.) Formülün nasıl çalıştığına ilişkin bir örnek için bkz. [çoğaltmaları ve bölümleri ayırma](search-capacity-planning.md#how-to-allocate-replicas-and-partitions).
-
-### <a name="bandwidth-charges"></a>Bant genişliği ücretleri
-
-Azure veri kaynağı Azure Bilişsel Arama farklı bir bölgedeyse, [Dizin oluşturucular](search-indexer-overview.md) kullanmak faturalandırmayı etkileyebilir. Bu senaryoda, giden verileri Azure veri kaynağından Azure Bilişsel Arama taşıma maliyeti olabilir. Ayrıntılar için, söz konusu Azure veri platformunun fiyatlandırma sayfalarına bakın.
-
-Azure Bilişsel Arama hizmetini verileriniz ile aynı bölgede oluşturursanız, veri çıkış ücretlerini tamamen ortadan kaldırabilirsiniz. [Bant genişliği fiyatlandırma sayfasından](https://azure.microsoft.com/pricing/details/bandwidth/)bazı bilgiler aşağıda verilmiştir:
-
-+ Gelen veriler: Microsoft, Azure 'daki herhangi bir hizmete gelen veriler için ücret ödemez. 
-
-+ Giden veriler: giden veriler sorgu sonuçlarına başvurur. Bilişsel Arama giden veriler için ücret alınmaz, ancak hizmetler farklı bölgelerde olduğunda Azure 'daki giden ücretler mümkündür. Bu ücretler aslında Azure Bilişsel Arama faturanızın bir parçası değildir. Bunlar burada bahsedildikleri için, diğer bölgelere veya Azure olmayan uygulamalara sonuç gönderiyorsanız, bu maliyetlerin genel faturanızda yansıtıldığını görebilirsiniz.
-
-### <a name="ai-enrichment-with-cognitive-services"></a>Bilişsel hizmetler ile AI zenginleştirme
-
-[AI zenginleştirme](cognitive-search-concept-intro.md)için, Kullandıkça Öde Işleme için S0 fiyatlandırma katmanında Azure bilişsel arama ile aynı bölgede [faturalandırılabilir bir Azure bilişsel hizmetler kaynağı eklemeyi](cognitive-search-attach-cognitive-services.md)planlamalısınız. Bilişsel hizmetler ekleme ile ilişkili sabit bir maliyet yoktur. Yalnızca ihtiyacınız olan işleme için ödeme yaparsınız.
-
-| İşlem | Faturalama etkisi |
-|-----------|----------------|
-| Belge çözme, metin ayıklama | Ücretsiz |
-| Belge çözme, görüntü ayıklama | Belgelerinizden ayıklanan görüntü sayısına göre faturalandırılır. Bir [Dizin Oluşturucu yapılandırmasında](/rest/api/searchservice/create-indexer#indexer-parameters) **ımageaction** , görüntü ayıklamayı tetikleyen parametredir. **Imageaction** "none" (varsayılan) olarak ayarlandıysa, görüntü ayıklama için ücretlendirilmezsiniz. Görüntü ayıklama oranı, Azure Bilişsel Arama için [fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/search/) sayfasında belgelenmiştir.|
-| [Yerleşik bilişsel beceriler](cognitive-search-predefined-skills.md) | Bilişsel hizmetler 'i doğrudan kullanarak görevi gerçekleştirdiyseniz aynı hızda faturalandırılır. |
-| Özel beceriler | Özel bir beceri sağladığınız işlevsellikdir. Özel bir beceri kullanmanın maliyeti, tamamen özel kodun diğer ölçülen Hizmetleri çağırarak çağrılmayacağı konusunda farklılık gösterir. |
-
-[Artımlı zenginleştirme (Önizleme)](cognitive-search-incremental-indexing-conceptual.md) özelliği, dizin oluşturucunun yalnızca beceri ' yi daha sonra değiştirmeniz gereken bilişsel becerileri çalıştırmaya ve zamandan ve paradan tasarruf etmenize olanak sağlayan bir önbellek sağlamanıza olanak tanır.
-
-<a name="search-units"></a>
-
-## <a name="billing-formula-r-x-p--su"></a>Faturalandırma formülü (R x P = SU)
-
-Azure Bilişsel Arama işlemlerinde anlaşılması için en önemli faturalandırma kavramı, *arama birimidir* (su). Azure Bilişsel Arama Dizin oluşturma ve sorgular için hem çoğaltmalara hem de bölümlere bağlı olduğundan, yalnızca bir veya başka bir fatura tarafından faturalandırılmıyor. Bunun yerine, faturalandırma her ikisinin de bir bileşimini temel alır.
-
-SU, bir hizmet tarafından kullanılan *kopyaların* ve *bölümlerin* ürünüdür: **(R x P = su)**.
-
-Her hizmet bir SU (bir çoğaltma bir bölümden çarpılarak) en düşük düzeyde başlar. Her hizmet için en fazla 36 SUs olur. Bu en fazla iki şekilde erişilebilir: 6 Bölüm x 6 çoğaltma veya 3 bölümden oluşan x 12 çoğaltma. Toplam kapasitenin (örneğin, 3 çoğaltma, 3 bölümlü bir hizmetin 9 ' da faturalandırılan) kullanılması yaygındır. Geçerli birleşimler için [bölüm ve çoğaltma birleşimleri](search-capacity-planning.md#chart) grafiğine bakın.
-
-Fatura ücreti SU başına saatlik olarak belirlenir. Her katmanda aşamalı olarak daha yüksek bir hız vardır. Daha yüksek katmanlar daha büyük ve speedileyici bölümleri ile gelir ve bu, bu katman için genel olarak saatlik bir fiyat sağlar. [Fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/search/) sayfasında her bir katmanın oranlarını görüntüleyebilirsiniz.
-
-Çoğu müşteri, kalanı ayrılmış olarak tutarak toplam kapasitenin yalnızca bir kısmını çevrimiçi duruma getirir. Faturalandırma için, çevrimiçi duruma getirdiğiniz bölüm ve çoğaltmaların sayısı, SU formülü tarafından hesaplandığınız, saatlik olarak ne ödediklerinizi belirler.
+Bu fiyatlandırma modeli, bir arama hizmeti tarafından kullanılan numara *arama birimlerine* (su) faturalama ücreti uygulama kavramını temel alır. Tüm hizmetler başlangıçta bir SU üzerinden sağlanır, ancak daha büyük iş yüklerini işlemek için bölümler veya çoğaltmalar ekleyerek SUs 'yi artırabilirsiniz. Daha fazla bilgi için bkz. [Arama hizmeti maliyetlerini tahmin etme](search-sku-manage-costs.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Maliyet yönetimi, kapasite planlamasının ayrılmaz bir parçasıdır. Bir sonraki adım olarak, kapasiteyi tahmin etme ve maliyetleri yönetme hakkında rehberlik için aşağıdaki makaleye devam edin.
+Fiyatlandırma katmanını seçmek için en iyi yol, en az maliyetli bir katmanla başlamadır ve daha sonra deneyimle ve test, hizmeti tutma veya daha yüksek bir katmanda yeni bir tane oluşturma kararınızı bilgilendirir. Sonraki adımlar için, bir katmanda, yapmak istediğiniz test düzeyini barındırabilecek bir arama hizmeti oluşturmanızı ve ardından maliyet ve kapasite tahmini hakkında öneriler için aşağıdaki kılavuzu incelemenizi öneririz.
 
-> [!div class="nextstepaction"]
-> [Azure Bilişsel Arama maliyetleri ve tahmini kapasiteyi yönetme](search-sku-manage-costs.md)
++ [Arama hizmeti oluşturma](search-create-service-portal.md)
++ [Maliyetleri tahmin etme](search-sku-manage-costs.md)
++ [Tahmin kapasitesi](search-sku-manage-costs.md)

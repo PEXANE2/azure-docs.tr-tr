@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyici ile Kubernetes izleme | Microsoft Doc
 description: Bu makalede, bir Kubernetes kümesinin, kapsayıcılar için Azure Izleyici ile performansını nasıl görüntüleyebileceğinizi ve analiz edeceğinizi açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: a1f661089b3a6357abb3eed584401e6a8ae2e2fb
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 68d0ac03ae0f6029e0f984e296a89048536f4eb7
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905715"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251293"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici ile Kubernetes küme performansınızı izleyin
 
@@ -24,7 +24,7 @@ Bir Windows Server kümesini bir Linux kümesiyle karşılaştırılan kapsayıc
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="multi-cluster-view-from-azure-monitor"></a>Azure Izleyici 'den çok küme görünümü
 
@@ -88,7 +88,7 @@ Küme listesinden, kümenin adını seçerek **küme** sayfasına ayrıntıya gi
 
 ## <a name="view-performance-directly-from-a-cluster"></a>Performansı doğrudan bir kümeden görüntüleme
 
-Kapsayıcılar için Azure izleyici 'ye erişim **Insights**  >  , sol bölmeden Öngörüler **kümesi** ' ni seçerek veya çok küme görünümündeki bir kümeyi seçtiğinizde doğrudan bir aks kümesinden bulunabilir. Kümeniz hakkında bilgiler dört perspektifle düzenlenmiştir:
+Kapsayıcılar için Azure izleyici 'ye erişim   >  , sol bölmeden Öngörüler **kümesi** ' ni seçerek veya çok küme görünümündeki bir kümeyi seçtiğinizde doğrudan bir aks kümesinden bulunabilir. Kümeniz hakkında bilgiler dört perspektifle düzenlenmiştir:
 
 - Küme
 - Düğümler
@@ -130,12 +130,12 @@ Kapsayıcılar için Azure Izleyici Ayrıca, kendi çizim grafiklerinizi oluştu
 | Öngörüler. kapsayıcı/pods | |
 | | Pod sayısı | Kubernetes 'den Pod sayısı.|
 
-Bir ölçümü, boyuta göre görüntülemek ve farklı segmentlerinin birbirleriyle nasıl karşılaştırılacağını görselleştirmek için [bölebilirsiniz](../platform/metrics-charts.md#apply-splitting-to-a-chart) . Bir düğüm için grafiği *konak* boyutuna göre segmentleyebilirsiniz. Pod 'dan aşağıdaki boyutlara göre segmentleyebilirsiniz:
+Bir ölçümü, boyuta göre görüntülemek ve farklı segmentlerinin birbirleriyle nasıl karşılaştırılacağını görselleştirmek için [bölebilirsiniz](../platform/metrics-charts.md#apply-splitting) . Bir düğüm için grafiği *konak* boyutuna göre segmentleyebilirsiniz. Pod 'dan aşağıdaki boyutlara göre segmentleyebilirsiniz:
 
 * Denetleyici
 * Kubernetes ad alanı
-* Node
-* Faz
+* Düğüm
+* Aşama
 
 ## <a name="analyze-nodes-controllers-and-container-health"></a>Düğümleri, denetleyicileri ve kapsayıcı sistem durumunu çözümleme
 
@@ -241,7 +241,7 @@ Denetleyicileri görüntülerken görüntülenen bilgiler aşağıdaki tabloda a
 | Kapsayıcılar | Denetleyici veya pod için toplam kapsayıcı sayısı. |
 | 'U | Kapsayıcılardan yeniden başlatma sayısı toplaması. |
 | Çalışma süresi | Kapsayıcının başlatılmasından bu yana geçen süreyi temsil eder. |
-| Node | Yalnızca kapsayıcılar ve pods için. Bu, içinde hangi denetleyiciyi olduğunu gösterir. |
+| Düğüm | Yalnızca kapsayıcılar ve pods için. Bu, içinde hangi denetleyiciyi olduğunu gösterir. |
 | Eğilim en az &nbsp; %, ortalama &nbsp; %, 50 .%, 90 TH%, &nbsp; &nbsp; &nbsp; en fazla&nbsp;% | Çubuk grafik eğilimi denetleyicinin ortalama yüzdebirlik ölçüsünü temsil eder. |
 
 Durum alanındaki simgeler, kapsayıcıların çevrimiçi durumunu gösterir.
@@ -276,7 +276,7 @@ Kapsayıcıları görüntülerken görüntülenen bilgiler aşağıdaki tabloda 
 | En az &nbsp; %, ortalama &nbsp; %, 50 .%, 90 TH%, &nbsp; &nbsp; &nbsp; %95, en fazla&nbsp;% | Seçili ölçüm ve yüzdebirlik için her bir varlığın ortalama yüzdesinin toplamı. |
 | En az, ortalama, 50 TH, 90 TH, en fazla | Seçilen yüzdelik için kapsayıcının ortalama CPU milde veya bellek performansının toplamı. Ortalama değer bir pod için CPU/bellek sınırı kümesinden ölçülür. |
 | Ayak | Pod 'un bulunduğu kapsayıcı.|
-| Node |  Kapsayıcının bulunduğu düğüm. |
+| Düğüm |  Kapsayıcının bulunduğu düğüm. |
 | 'U | Kapsayıcının başlatılmasından bu yana geçen süreyi temsil eder. |
 | Çalışma süresi | Kapsayıcının başlatıldığı veya yeniden başlatıldığı zamandan itibaren geçen süreyi temsil eder. |
 | Eğilim en az &nbsp; %, ortalama &nbsp; %, 50 .%, 90 TH%, &nbsp; &nbsp; &nbsp; en fazla&nbsp;% | Çubuk grafik eğilimi kapsayıcının ortalama yüzdebirlik ölçüm yüzdesini temsil eder. |

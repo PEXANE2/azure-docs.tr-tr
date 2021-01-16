@@ -3,14 +3,14 @@ title: Azure’da Kubernetes öğreticisi - Uygulamayı dağıtma
 description: Bu Azure Kubernetes Service (AKS) öğreticisinde, Azure Container Registry'de depolanan özel bir görüntüyü kullanarak kümenizde çok kapsayıcılı bir uygulama dağıtacaksınız.
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/12/2021
 ms.custom: mvc
-ms.openlocfilehash: 8114aa0b6c2483d543376727a44d14041ed02b37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0de097a545a831e39a671fe4cf5eadcd336ce24
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576498"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250188"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Öğretici: Azure Kubernetes Hizmeti’nde (AKS) uygulamaları çalıştırma
 
@@ -19,9 +19,9 @@ Kubernetes, kapsayıcılı uygulamalar için dağıtılmış bir platform sunar.
 > [!div class="checklist"]
 > * Kubernetes bildirim dosyasını güncelleştirme
 > * Kubernetes'te uygulama çalıştırma
-> * Uygulamayı test etme
+> * Uygulamayı test edin
 
-Ek öğreticilerde, bu uygulama genişletilebilir ve güncelleştirilir.
+Sonraki öğreticilerde, bu uygulama ölçeklendirilir ve güncelleştirilir.
 
 Bu hızlı başlangıç, Kubernetes kavramlarının temel olarak bilindiğini varsayar. Daha fazla bilgi için bkz. [Azure Kubernetes hizmeti (AKS) Için Kubernetes temel kavramları][kubernetes-concepts].
 
@@ -49,7 +49,7 @@ az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginSe
 vi azure-vote-all-in-one-redis.yaml
 ```
 
-*microsoft* yerine ACR oturum açma sunucunuzun adını yazın. Görüntü adı, bildirim dosyasının 51. satırında bulunur. Aşağıdaki örnekte varsayılan görüntü adı gösterilir:
+*microsoft* yerine ACR oturum açma sunucunuzun adını yazın. Görüntü adı, bildirim dosyasının 60. satırında bulunur. Aşağıdaki örnekte varsayılan görüntü adı gösterilir:
 
 ```yaml
 containers:
@@ -77,7 +77,7 @@ kubectl apply -f azure-vote-all-in-one-redis.yaml
 
 Aşağıdaki örnek çıktıda, AKS kümesinde başarıyla oluşturulan kaynaklar gösterilmektedir:
 
-```
+```console
 $ kubectl apply -f azure-vote-all-in-one-redis.yaml
 
 deployment "azure-vote-back" created
@@ -86,7 +86,7 @@ deployment "azure-vote-front" created
 service "azure-vote-front" created
 ```
 
-## <a name="test-the-application"></a>Uygulamayı test etme
+## <a name="test-the-application"></a>Uygulamayı test edin
 
 Uygulama çalıştığında, bir Kubernetes hizmeti, uygulamanın ön ucuna internet 'e koyar. Bu işlemin tamamlanması birkaç dakika sürebilir.
 
@@ -96,21 +96,21 @@ Uygulama çalıştığında, bir Kubernetes hizmeti, uygulamanın ön ucuna inte
 kubectl get service azure-vote-front --watch
 ```
 
-Başlangıçta *Azure-oyönme* hizmeti IÇIN *dış IP* , *Beklemede*olarak gösterilir:
+Başlangıçta *Azure-oyönme* hizmeti IÇIN *dış IP* , *Beklemede* olarak gösterilir:
 
-```
+```output
 azure-vote-front   LoadBalancer   10.0.34.242   <pending>     80:30676/TCP   5s
 ```
 
 *Dış IP* adresi *bekliyor* durumundan gerçek ortak IP adresi olarak değiştiğinde, `CTRL-C` izleme işlemini durdurmak için kullanın `kubectl` . Aşağıdaki örnek çıktıda, hizmete atanmış geçerli bir genel IP adresi gösterilmektedir:
 
-```
+```output
 azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   67s
 ```
 
 Uygulamayı eylemde görmek için, hizmetinizin dış IP adresine bir Web tarayıcısı açın:
 
-![Azure’da Kubernetes kümesinin görüntüsü](media/container-service-kubernetes-tutorials/azure-vote.png)
+:::image type="content" source="./media/container-service-kubernetes-tutorials/azure-vote.png" alt-text="Yerel Web tarayıcısında açılan bir AKS kümesinde çalıştırılan kapsayıcı görüntüsü Azure oylama uygulamasını gösteren ekran görüntüsü" lightbox="./media/container-service-kubernetes-tutorials/azure-vote.png":::
 
 Uygulama yüklenmediyse, görüntü kayıt defterinizde bir yetkilendirme sorunundan kaynaklanıyor olabilir. Kapsayıcılarınızın durumunu görüntülemek için `kubectl get pods` komutunu kullanın. Kapsayıcı görüntüleri çekemediği takdirde bkz. [Azure Kubernetes hizmetinden Azure Container Registry kimlik doğrulaması](cluster-container-registry-integration.md).
 
@@ -121,7 +121,7 @@ Bu öğreticide, AKS 'teki bir Kubernetes kümesine örnek bir Azure oy uygulama
 > [!div class="checklist"]
 > * Kubernetes bildirim dosyalarını güncelleştirme
 > * Kubernetes'te uygulama çalıştırma
-> * Uygulamayı test etme
+> * Uygulamayı test edin
 
 Kubernetes uygulamasını ve temel alınan Kubernetes altyapısını ölçeklendirme hakkında daha fazla bilgi için sonraki öğreticiye ilerleyin.
 

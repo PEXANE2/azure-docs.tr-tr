@@ -10,13 +10,13 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 10/15/2020
-ms.openlocfilehash: 4ffe663c1a1651891af5f6e65ee231cbe3e8d650
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.date: 01/15/2021
+ms.openlocfilehash: db3b168826223e4eb958f7700e65623a115e5779
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882338"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251480"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Sanal çekirdek satın alma modeli kullanıldığında tek veritabanları için kaynak sınırları
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -231,6 +231,37 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 
 **2. Note**: en çok kullanılan veri sayfalarını önbelleğe alan yerel Işlem çoğaltması SSD üzerindeki veriler için gecikme 1-2 ms 'dir. Sayfa sunucularından alınan veriler için daha yüksek gecikme.
 
+## <a name="hyperscale---provisioned-compute---dc-series"></a>Hiper ölçek-sağlanan işlem-DC-Serisi
+
+|İşlem boyutu (hizmet hedefi)|HS_DC_2|HS_DC_4|HS_DC_6|HS_DC_8|
+|:--- | --: |--: |--: |--: |---: | 
+|İşlem oluşturma|DC serisi|DC serisi|DC serisi|DC serisi|
+|Sanal çekirdek|2|4|6|8|
+|Bellek (GB)|9|18|27|36|
+|[Rbpex](service-tier-hyperscale.md#compute) Boyutla|3X belleği|3X belleği|3X belleği|3X belleği|
+|Columnstore desteği|Yes|Yes|Yes|Yes|
+|Bellek içi OLTP depolaması (GB)|Yok|Yok|Yok|Yok|
+|En fazla veri boyutu (TB)|100 |100 |100 |100 |
+|En fazla günlük boyutu (TB)|Sınırsız |Sınırsız |Sınırsız |Sınırsız |
+|TempDB en fazla veri boyutu (GB)|64|128|192|256|
+|Depolama türü| [1. nota](#notes) |[1. nota](#notes)|[1. nota](#notes) |[1. nota](#notes) |
+|En yüksek yerel SSD ıOPS *|8000 |16000 |24000 |32000 |
+|En fazla günlük hızı (MBps)|100 |100 |100 |100 |
+|GÇ gecikme süresi (yaklaşık)|[2. nota](#notes)|[2. nota](#notes)|[2. nota](#notes)|[2. nota](#notes)|
+|Maksimum eş zamanlı çalışan (istek)|160|320|480|640|
+|Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|
+|İkincil çoğaltmalar|0-4|0-4|0-4|0-4|
+|Çoklu-AZ|Yok|Yok|Yok|Yok|
+|Okuma Amaçlı Ölçeği Genişletme|Yes|Yes|Yes|Yes|
+|Yedekleme depolama saklama|7 gün|7 gün|7 gün|7 gün|
+|||
+
+### <a name="notes"></a>Notlar
+
+**Note 1**: hiper ölçek, ayrı işlem ve depolama bileşenlerine sahip çok katmanlı bir mimaridir: [hiper ölçek hizmeti katmanı mimarisi](service-tier-hyperscale.md#distributed-functions-architecture)
+
+**2. Note**: en çok kullanılan veri sayfalarını önbelleğe alan yerel Işlem çoğaltması SSD üzerindeki veriler için gecikme 1-2 ms 'dir. Sayfa sunucularından alınan veriler için daha yüksek gecikme.
+
 ## <a name="general-purpose---provisioned-compute---gen4"></a>Genel amaçlı-sağlanan işlem-4. nesil
 
 > [!IMPORTANT]
@@ -389,6 +420,32 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |Çoklu-AZ|Yok|Yok|Yok|Yok|Yok|Yok|
 |Okuma Amaçlı Ölçeği Genişletme|Yok|Yok|Yok|Yok|Yok|Yok|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
+
+\* 8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
+
+## <a name="general-purpose---provisioned-compute---dc-series"></a>Genel amaçlı-sağlanan işlem-DC-Serisi
+
+|İşlem boyutu (hizmet hedefi)|GP_DC_2|GP_DC_4|GP_DC_6|GP_DC_8| 
+|:---| ---:|---:|---:|---:|
+|İşlem oluşturma|DC serisi|DC serisi|DC serisi|DC serisi|
+|Sanal çekirdek|2|4|6|8|
+|Bellek (GB)|9|18|27|36|
+|Columnstore desteği|Yes|Yes|Yes|Yes|
+|Bellek içi OLTP depolaması (GB)|Yok|Yok|Yok|Yok|
+|En fazla veri boyutu (GB)|1024|1536|3072|3072|
+|En fazla günlük boyutu (GB)|307|461|922|922|
+|TempDB en fazla veri boyutu (GB)|64|128|192|256|
+|Depolama türü|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|
+|GÇ gecikme süresi (yaklaşık)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|
+|En fazla veri ıOPS *|640|1280|1920|2560|
+|En fazla günlük hızı (MBps)|9|18|27|36|
+|Maksimum eş zamanlı çalışan (istek)|160|320|480|640|
+|Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|
+|Çoğaltma sayısı|1|1|1|1|
+|Çoklu-AZ|Yok|Yok|Yok|Yok|
+|Okuma Amaçlı Ölçeği Genişletme|Yok|Yok|Yok|Yok|
+|Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
+
 
 \* 8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
 
@@ -563,6 +620,31 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 > [!IMPORTANT]
 > Bazı durumlarda, kullanılmayan alanı geri kazanmak için bir veritabanını daraltmanız gerekebilir. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda dosya alanını yönetme](file-space-manage.md).
 
+## <a name="business-critical---provisioned-compute---dc-series"></a>İş açısından kritik-sağlanan işlem-DC-Serisi
+
+|İşlem boyutu (hizmet hedefi)|BC_DC_2|BC_DC_4|BC_DC_6|BC_DC_8|
+|:--- | --: |--: |--: |--: |
+|İşlem oluşturma|DC serisi|DC serisi|DC serisi|DC serisi|
+|Sanal çekirdek|2|4|6|8|
+|Bellek (GB)|9|18|27|36|
+|Columnstore desteği|Yes|Yes|Yes|Yes|
+|Bellek içi OLTP depolaması (GB)|1.7|3.7|5.9|8.2|
+|En fazla veri boyutu (GB)|768|768|768|768|
+|En fazla günlük boyutu (GB)|230|230|230|230|
+|TempDB en fazla veri boyutu (GB)|64|128|192|256|
+|Depolama türü|Yerel SSD|Yerel SSD|Yerel SSD|Yerel SSD|
+|GÇ gecikme süresi (yaklaşık)|1-2 ms (yazma)<br>1-2 ms (okuma)|1-2 ms (yazma)<br>1-2 ms (okuma)|1-2 ms (yazma)<br>1-2 ms (okuma)|1-2 ms (yazma)<br>1-2 ms (okuma)|
+|En fazla veri ıOPS *|14000|28000|42000|56000|
+|En fazla günlük hızı (MBps)|24|48|72|96|
+|Maksimum eş zamanlı çalışan (istek)|200|400|600|800|
+|Maks. eş zamanlı oturum|200|400|600|800|
+|Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|
+|Çoğaltma sayısı|4|4|4|4|
+|Çoklu-AZ|Hayır|Hayır|Hayır|Hayır|
+|Okuma Amaçlı Ölçeği Genişletme|Hayır|Hayır|Hayır|Hayır|
+|Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
+
+\* 8 KB ile 64 KB arasında değişen GÇ boyutları için maksimum değer. Gerçek ıOPS iş yüküne bağımlıdır. Ayrıntılar için bkz. [Data IO idare](resource-limits-logical-server.md#resource-governance).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

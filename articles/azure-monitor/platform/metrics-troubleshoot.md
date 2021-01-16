@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 7c3af0865282475ded0172d18aecad1dfb61721b
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 5219553fe300d607212af1ef6cedf72ce6506762
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814270"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250341"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Ölçüm grafikleriyle ilgili sorunları giderme
 
@@ -48,7 +48,7 @@ Bazı kaynaklar ölçümlerini sürekli göstermez. Örneğin Azure durdurulan s
 
 ### <a name="all-metric-values-were-outside-of-the-locked-y-axis-range"></a>Tüm ölçüm değerleri kilitli y ekseni aralığının dışındaydı
 
-[Grafiğin y ekseninin sınırlarını kilitleyerek](metrics-charts.md#lock-boundaries-of-chart-y-axis) istemeden grafik görüntüleme alanının grafik çizgisini göstermemesini sağlayabilirsiniz. Örneğin y ekseni %0 ile %50 arasına kilitlendiyse ve ölçümün %100 olan bir sabit değeri varsa, çizgi her zaman görünür alanın dışında işlenir ve grafik boş görünür.
+[Grafiğin y ekseninin sınırlarını kilitleyerek](metrics-charts.md#locking-the-range-of-the-y-axis) istemeden grafik görüntüleme alanının grafik çizgisini göstermemesini sağlayabilirsiniz. Örneğin y ekseni %0 ile %50 arasına kilitlendiyse ve ölçümün %100 olan bir sabit değeri varsa, çizgi her zaman görünür alanın dışında işlenir ve grafik boş görünür.
 
 **Çözüm:** Grafiğin y ekseni sınırlarının, ölçüm değerleri aralığının dışında kilitlenmediğini doğrulayın. Y ekseni sınırları kilitlendiyse, ölçüm değerlerinin grafik aralığının dışında kalmaması için bunları geçici olarak sıfırlamak isteyebilirsiniz. **Sum**, **min** ve **max** toplaması olan grafiklerde y ekseni aralığının otomatik ayrıntı düzeyiyle kilitlenmesi önerilmez çünkü tarayıcı penceresi yeniden boyutlandırıldığında veya bir ekran çözünürlüğünden diğerine geçildiğinde bunların değerleri ayrıntı düzeyiyle birlikte değişir. Ayrıntı düzeyinde geçiş yapmak grafiğinizin görüntü alanını boş bırakabilir.
 

@@ -7,13 +7,13 @@ ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/19/2019
-ms.openlocfilehash: 9a4b57f3813adfeee53891f733dd4d303dbbef8d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 01/15/2021
+ms.openlocfilehash: a5c93244862d72f9c8ea2928c41e699302b1752b
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497138"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249452"
 ---
 # <a name="transform-data-securely-by-using-mapping-data-flow"></a>Eşleme veri akışını kullanarak verileri güvenli bir şekilde dönüştürme
 
@@ -33,7 +33,8 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * İşlem hattında test çalıştırması yapma.
 > * Veri akışı etkinliğini izleyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
+
 * **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 * **Azure depolama hesabı**. Data Lake Storage *kaynak* ve *Havuz* veri depoları olarak kullanırsınız. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Azure depolama hesabı oluşturma](../storage/common/storage-account-create.md?tabs=azure-portal). *Depolama hesabının yalnızca seçili ağlardan erişime izin verdiğinden emin olun.* 
 
@@ -64,12 +65,14 @@ Bu adımda, bir veri fabrikası oluşturur ve veri fabrikasında bir işlem hatt
 1. Data Factory Kullanıcı Arabirimini (UI) ayrı bir sekmede başlatmak için **Geliştir ve İzle**’yi seçin.
 
 ## <a name="create-an-azure-ir-in-data-factory-managed-virtual-network"></a>Data Factory yönetilen sanal ağda Azure IR oluşturma
+
 Bu adımda, bir Azure IR oluşturup Data Factory yönetilen sanal ağı etkinleştirirsiniz.
 
 1. Data Factory portalında **Yönet**' e gidin ve yeni bir Azure IR oluşturmak için **Yeni** ' yi seçin.
 
    ![Yeni Azure IR oluşturmayı gösteren ekran görüntüsü.](./media/tutorial-copy-data-portal-private/create-new-azure-ir.png)
-1. **Azure** IR seçeneğini belirleyin.
+1. **Tümleştirme çalışma zamanı kurulumu** sayfasında, gereken yeteneklere göre oluşturulacak tümleştirme çalışma zamanını seçin. Bu öğreticide, **Azure ve kendiliğinden konak** ' ı seçip **devam**' a tıklayın. 
+1. Azure **' ı seçin ve** ardından **devam** ' a tıklayarak bir Azure tümleştirme çalışma zamanı oluşturun.
 
    ![Yeni bir Azure IR gösteren ekran görüntüsü.](./media/tutorial-copy-data-portal-private/azure-ir.png)
 

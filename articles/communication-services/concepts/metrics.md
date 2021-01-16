@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 05/19/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 460cca051d743102e734971cf45069362e24c147
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: e7ed4ba181d3730ebbea7725451567c93433afb8
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106012"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251106"
 ---
 # <a name="metrics-overview"></a>Ölçümlere genel bakış
 
@@ -30,7 +30,7 @@ Iletişim Hizmetleri ölçümleri içinde temsil edilen iki tür istek vardır: 
 
 Hem sohbet hem de SMS API istek ölçümleri, ölçüm verilerinizi filtrelemek için kullanabileceğiniz üç boyut içerir. Bu boyutlar toplama türü kullanılarak birlikte toplanabilir ve,, `Count` ve dahil tüm standart Azure toplama zaman serisini destekler `Sum` `Average` `Min` `Max` .
 
-Desteklenen toplama türleri ve zaman serisi toplamaları hakkında daha fazla bilgi için [Azure Ölçüm Gezgini gelişmiş özellikleri](../../azure-monitor/platform/metrics-charts.md#changing-aggregation) bulunabilir
+Desteklenen toplama türleri ve zaman serisi toplamaları hakkında daha fazla bilgi için [Azure Ölçüm Gezgini gelişmiş özellikleri](../../azure-monitor/platform/metrics-charts.md#aggregation) bulunabilir
 
 - **İşlem** -ACS sohbet ağ geçidinde çağrılabilecek tüm işlemler veya rotalar.
 - **Durum kodu** -istekten sonra gönderilen durum kodu yanıtı.
@@ -41,7 +41,7 @@ Desteklenen toplama türleri ve zaman serisi toplamaları hakkında daha fazla b
 
 Sohbet API 'SI istek ölçümlerinde aşağıdaki işlemler mevcuttur:
 
-| İşlem/rota    | Açıklama                                                                                    |
+| İşlem/rota    | Description                                                                                    |
 | -------------------- | ---------------------------------------------------------------------------------------------- |
 | GetChatMessage       | İleti kimliğine göre bir ileti alır. |
 | ListChatMessages     | Bir iş parçacığından gelen sohbet iletilerinin listesini alır. |
@@ -68,7 +68,7 @@ Tanınmayan bir işleme bir istek yapılırsa, "Hatalı yol" değeri yanıtını
 
 SMS API istek ölçümlerinde aşağıdaki işlemler mevcuttur:
 
-| İşlem/rota    | Açıklama                                                                                    |
+| İşlem/rota    | Description                                                                                    |
 | -------------------- | ---------------------------------------------------------------------------------------------- |
 | Smsiletiçi       | SMS iletisi gönderir. |
 | Smsdeliveryreportsalındı     | SMS teslim raporlarını alır |
@@ -81,7 +81,7 @@ SMS API istek ölçümlerinde aşağıdaki işlemler mevcuttur:
 
 Kimlik doğrulama API 'SI istek ölçümlerinde aşağıdaki işlemler mevcuttur:
 
-| İşlem/rota    | Açıklama                                                                                    |
+| İşlem/rota    | Description                                                                                    |
 | -------------------- | ---------------------------------------------------------------------------------------------- |
 | CreateIdentity       | Tek bir kullanıcıyı temsil eden bir kimlik oluşturur. |
 | Deleteıdentity       | Bir kimliği siler. |

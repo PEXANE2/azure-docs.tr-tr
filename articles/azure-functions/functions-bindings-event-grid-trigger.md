@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
-ms.openlocfilehash: adec2a85373d33d08fe9aa16895d03229e40f475
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 886db905008af94b66a902cc551e4d55b36572a8
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825821"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250137"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Işlevleri için Azure Event Grid tetikleyicisi
 
@@ -336,7 +336,7 @@ Tüm örnek için bkz. C# örneği.
 
 Aşağıdaki tabloda, dosyasında *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır. Öznitelikte ayarlanacak bir oluşturucu parametresi veya özellik yok `EventGridTrigger` .
 
-|function.jsözelliği |Açıklama|
+|function.jsözelliği |Description|
 |---------|---------|
 | **türüyle** | Gerekli-olarak ayarlanmalıdır `eventGridTrigger` . |
 | **Görünüm** | Gerekli-olarak ayarlanmalıdır `in` . |
@@ -603,7 +603,7 @@ Abonelik doğrulama isteği ilk olarak alınır; tüm doğrulama isteklerini yok
 
 ### <a name="manually-post-the-request"></a>İsteği el ile gönderin
 
-Event Grid işlevinizi yerel olarak çalıştırın.
+Event Grid işlevinizi yerel olarak çalıştırın. `Content-Type`Ve `aeg-event-type` üst bilgilerinin el ile ayarlanması gerekir, ancak diğer tüm değerler varsayılan olarak bırakılabilir.
 
 HTTP POST isteği oluşturmak için [Postman](https://www.getpostman.com/) veya [kıvrımlı](https://curl.haxx.se/docs/httpscripting.html) gibi bir araç kullanın:
 

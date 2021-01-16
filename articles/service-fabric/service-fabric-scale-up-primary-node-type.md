@@ -1,71 +1,173 @@
 ---
 title: Azure Service Fabric birincil düğüm türünü büyütme
-description: Düğüm türü ekleyerek bir Service Fabric kümesini ölçeklendirmeyi öğrenin.
-ms.topic: article
-ms.date: 08/06/2020
+description: Yeni bir düğüm türü ekleyerek ve öncekini kaldırarak Service Fabric kümenizi dikey olarak ölçeklendirin.
+ms.date: 12/11/2020
 ms.author: pepogors
-ms.openlocfilehash: a18a40cc9e467b089ea9d6be3d0ca81a21d2c474
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.topic: how-to
+ms.openlocfilehash: 325ece761481077171a670c52e9d98071237601a
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89228741"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251190"
 ---
-# <a name="scale-up-a-service-fabric-cluster-primary-node-type-by-adding-a-node-type"></a>Düğüm türü ekleyerek Service Fabric kümesi birincil düğüm türünü büyütme
-Bu makalede, kümeye ek bir düğüm türü ekleyerek bir Service Fabric kümesi birincil düğüm türünün nasıl ölçeklenebileceğinizi açıklamaktadır. Service Fabric küme, mikro hizmetlerinizin dağıtıldığı ve yönetildiği, ağa bağlı bir sanal veya fiziksel makine kümesidir. Bir kümenin parçası olan makine veya VM, düğüm olarak adlandırılır. Sanal Makine Ölçek Kümeleri, bir sanal makine koleksiyonunu bir küme olarak dağıtmak ve yönetmek için kullandığınız bir Azure işlem kaynağıdır. Bir Azure kümesinde tanımlanan her düğüm türü [ayrı bir ölçek kümesi olarak ayarlanır](service-fabric-cluster-nodetypes.md). Her düğüm türü ayrıca yönetilebilir.
+# <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Service Fabric kümesi birincil düğüm türünün ölçeğini artırma
 
-Aşağıdaki öğreticideki örnek şablonlar şurada bulunabilir: [Service Fabric birincil düğüm türü ölçeklendirme örnekleri](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Primary-NodeType-Scaling-Sample)
+Bu makalede, en az kapalı kalma süresine sahip Service Fabric kümesi birincil düğüm türünün nasıl ölçeklenebileceğinizi açıklamaktadır. Service Fabric küme düğümü türünü yükseltmek için genel strateji şu şekilde yapılır:
+
+1. Service Fabric kümenize, yükseltilen (veya değiştirdiğiniz) sanal makine ölçek kümesi SKU 'SU ve yapılandırmanızla desteklenen yeni bir düğüm türü ekleyin. Bu adım Ayrıca ölçek kümesi için yeni bir yük dengeleyici, alt ağ ve genel IP ayarlamayı da içerir.
+
+1. Hem özgün hem de yükseltilen ölçek kümeleri yan yana çalışırken, sistem hizmetlerinin (veya durum bilgisi olan hizmetlerin çoğaltmalarının) yeni ölçek kümesine geçişini sağlamak için özgün düğüm örneklerini tek seferde devre dışı bırakın.
+
+1. Kümenin ve yeni düğümlerin sağlıklı olduğunu doğrulayın, sonra silinen düğümlerin orijinal ölçek kümesini (ve ilgili kaynakları) ve düğüm durumunu kaldırın.
+
+Aşağıda [, beş](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)düğümlü tek bir ölçek kümesiyle desteklenen bir örnek kümenin birincil düğüm türü VM 'lerinin VM boyutunu ve işletim sistemini güncelleştirme işleminde size kılavuzluk edilecek. Birincil düğüm türünü yükseltiyoruz:
+
+- VM boyutundan *Standard_D2_V2* *Standart D4_V2* ve
+- Kapsayıcılarla *Windows server 2019 Datacenter*'a KAPSAYıCı içeren VM Işletim sistemi *Windows Server 2016 Datacenter* 'dan.
 
 > [!WARNING]
-> Küme durumu sağlıksız ise, birincil düğüm türü ölçeği artırma yordamını denemeyin, çünkü bu durum yalnızca kümenin daha fazla kararlı hale gelmesine sebep olur.
+> Bir üretim kümesinde bu yordamı denemeden önce, örnek şablonları araştırmayı ve işlemi bir test kümesine karşı doğrulamanızı öneririz. Küme kısa bir süre için de kullanılamayabilir.
 >
+> Küme durumu sağlıksız ise, birincil düğüm türü ölçeği artırma yordamını denemeyin, çünkü bu durum yalnızca kümenin daha fazla kararlı hale gelmesine sebep olur.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Bu örnek yükseltme senaryosunu tamamlamaya yönelik olarak kullanacağınız adım adım Azure dağıtım şablonları aşağıda verilmiştir: https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade
 
-## <a name="process-to-upgrade-the-size-and-operating-system-of-the-primary-node-type"></a>Birincil düğüm türünün boyutunu ve işletim sistemini yükseltmek için işlem
-Aşağıda, birincil düğüm türü VM 'lerinin VM boyutunu ve işletim sistemini güncelleştirme işlemi verilmiştir.  Yükseltmeden sonra birincil düğüm türü VM 'Ler boyut standardı D4_V2 ve kapsayıcılarla Windows Server 2019 Datacenter çalıştırıyor.
+## <a name="set-up-the-test-cluster"></a>Test kümesini ayarlama
 
-> [!WARNING]
-> Bir üretim kümesinde bu yordamı denemeden önce, örnek şablonları araştırmayı ve işlemi bir test kümesine karşı doğrulamanızı öneririz. Küme kısa bir süre için de kullanılamayabilir. 
+İlk Service Fabric test kümesini ayarlayalim. İlk olarak, bu senaryoyu gerçekleştirmek için kullanacağımız Azure Resource Manager örnek şablonları [indirin](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade) .
 
-### <a name="deploy-the-initial-service-fabric-cluster"></a>İlk Service Fabric kümesini dağıtma 
-Örnekle birlikte izlemek isterseniz, ilk kümeyi tek bir birincil düğüm türü ve tek bir ölçek kümesi [Service Fabric-Ilk küme](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-1.json)ile dağıtın. Zaten dağıtılmış olan bir Service Fabric kümeniz varsa, bu adımı atlayabilirsiniz. 
+Ardından, Azure hesabınızda oturum açın.
 
-1. Azure hesabınızda oturum açın. 
 ```powershell
-# sign in to your Azure account and select your subscription
-Login-AzAccount -SubscriptionId "<your subscription ID>"
+# Sign in to your Azure account
+Login-AzAccount -SubscriptionId "<subscription ID>"
 ```
-2. Yeni bir kaynak grubu oluşturma. 
-```powershell
-# create a resource group for your cluster deployment
-$resourceGroupName = "myResourceGroup"
-$location = "WestUS"
 
-New-AzResourceGroup `
-    -Name $resourceGroupName `
-    -Location $location
+Sonra, [*parameters.jsdosya üzerinde*](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade/parameters.json) açın ve değerini `clusterName` benzersiz bir şekilde (Azure 'da) güncelleştirin.
+
+Aşağıdaki komutlar, otomatik olarak imzalanan yeni bir sertifika oluşturma ve test kümesini dağıtma konusunda size rehberlik edecektir. Kullanmak istediğiniz bir sertifikanız zaten varsa, [kümeyi dağıtmak için mevcut bir sertifikayı kullanmak](#use-an-existing-certificate-to-deploy-the-cluster)üzere atlayın.
+
+### <a name="generate-a-self-signed-certificate-and-deploy-the-cluster"></a>Kendinden imzalı bir sertifika oluşturma ve kümeyi dağıtma
+
+İlk olarak, Service Fabric küme dağıtımı için gereken değişkenleri atayın. `resourceGroupName` `certSubjectName` `parameterFilePath` `templateFilePath` Belirli hesabınız ve ortamınız için,,, ve değerlerini ayarlayın:
+
+```powershell
+# Assign deployment variables
+$resourceGroupName = "sftestupgradegroup"
+$certOutputFolder = "c:\certificates"
+$certPassword = "Password!1" | ConvertTo-SecureString -AsPlainText -Force
+$certSubjectName = "sftestupgrade.southcentralus.cloudapp.azure.com"
+$parameterFilePath = "C:\parameters.json"
+$templateFilePath = "C:\Initial-TestClusterSetup.json"
 ```
-3. Şablon dosyalarındaki parametre değerlerini girin. 
-4. Kümeyi adım 2 ' de oluşturulan kaynak grubuna dağıtın. 
-```powershell
-# deploy the template files to the resource group created above
-$templateFilePath = "C:\AzureDeploy-1.json"
-$parameterFilePath = "C:\AzureDeploy.Parameters.json"
 
+> [!NOTE]
+> `certOutputFolder`Yeni bir Service Fabric kümesi dağıtmak için komutunu çalıştırmadan önce, konumun yerel makinenizde mevcut olduğundan emin olun.
+
+Sonra Service Fabric test kümesini dağıtın:
+
+```powershell
+# Deploy the initial test cluster
+New-AzServiceFabricCluster `
+    -ResourceGroupName $resourceGroupName `
+    -CertificateOutputFolder $certOutputFolder `
+    -CertificatePassword $certPassword `
+    -CertificateSubjectName $certSubjectName `
+    -TemplateFile $templateFilePath `
+    -ParameterFile $parameterFilePath
+```
+
+Dağıtım tamamlandıktan sonra, yerel makinenizde *. pfx* dosyasını () bulun `$certPfx` ve sertifika deponuza içeri aktarın:
+
+```powershell
+cd c:\certificates
+$certPfx = ".\sftestupgradegroup20200312121003.pfx"
+
+Import-PfxCertificate `
+     -FilePath $certPfx `
+     -CertStoreLocation Cert:\CurrentUser\My `
+     -Password (ConvertTo-SecureString Password!1 -AsPlainText -Force)
+```
+
+Bu işlem, artık [yeni kümeye bağlanmak](#connect-to-the-new-cluster-and-check-health-status) ve sistem durumunu denetlemek için kullanabileceğiniz sertifika parmak izini döndürür. (Küme dağıtımına alternatif bir yaklaşım olan aşağıdaki bölümü atlayın.)
+
+### <a name="use-an-existing-certificate-to-deploy-the-cluster"></a>Kümeyi dağıtmak için var olan bir sertifikayı kullan
+
+Alternatif olarak, varolan bir Azure Key Vault sertifikayı test kümesini dağıtmak için kullanabilirsiniz. Bunu yapmak için, Key Vault ve sertifika parmak [izinizdeki başvuruları edinmeniz](#obtain-your-key-vault-references) gerekir.
+
+```powershell
+# Key Vault variables
+$certUrlValue = "https://sftestupgradegroup.vault.azure.net/secrets/sftestupgradegroup20200309235308/dac0e7b7f9d4414984ccaa72bfb2ea39"
+$sourceVaultValue = "/subscriptions/########-####-####-####-############/resourceGroups/sftestupgradegroup/providers/Microsoft.KeyVault/vaults/sftestupgradegroup"
+$thumb = "BB796AA33BD9767E7DA27FE5182CF8FDEE714A70"
+```
+
+Ardından, küme için bir kaynak grubu adı belirleyin ve `templateFilePath` ve `parameterFilePath` konumlarını ayarlayın:
+
+> [!NOTE]
+> Belirtilen kaynak grubu zaten var olmalıdır ve Key Vault aynı bölgede yer almalıdır.
+
+```powershell
+$resourceGroupName = "sftestupgradegroup"
+$templateFilePath = "C:\Initial-TestClusterSetup.json"
+$parameterFilePath = "C:\parameters.json"
+```
+
+Son olarak, ilk test kümesini dağıtmak için aşağıdaki komutu çalıştırın:
+
+```powershell
+# Deploy the initial test cluster
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -TemplateFile $templateFilePath `
-    -TemplateParameterFile $parameterFilePath
+    -TemplateParameterFile $parameterFilePath `
+    -CertificateThumbprint $thumb `
+    -CertificateUrlValue $certUrlValue `
+    -SourceVaultValue $sourceVaultValue `
+    -Verbose
 ```
 
-### <a name="add-a-new-primary-node-type-to-the-cluster"></a>Kümeye yeni bir birincil düğüm türü ekleyin
+### <a name="connect-to-the-new-cluster-and-check-health-status"></a>Yeni kümeye bağlanma ve sistem durumunu denetleme
+
+Kümeye bağlanın ve düğümlerin tümünün sağlıklı olduğundan emin olun ( `clusterName` ve `thumb` değişkenlerini kendi değerlerinizle değiştirin):
+
+```powershell
+# Connect to the cluster
+$clusterName = "sftestupgrade.southcentralus.cloudapp.azure.com:19000"
+$thumb = "BB796AA33BD9767E7DA27FE5182CF8FDEE714A70"
+
+Connect-ServiceFabricCluster `
+    -ConnectionEndpoint $clusterName `
+    -KeepAliveIntervalInSec 10 `
+    -X509Credential `
+    -ServerCertThumbprint $thumb  `
+    -FindType FindByThumbprint `
+    -FindValue $thumb `
+    -StoreLocation CurrentUser `
+    -StoreName My
+
+# Check cluster health
+Get-ServiceFabricClusterHealth
+```
+
+Bununla birlikte, yükseltme yordamına başlamaya hazırız.
+
+## <a name="deploy-a-new-primary-node-type-with-upgraded-scale-set"></a>Yükseltilmiş ölçek kümesiyle yeni bir birincil düğüm türü dağıtın
+
+Bir düğüm türünü yükseltmek (dikey olarak ölçeklendirmek) için ilk olarak yeni bir ölçek kümesi ve destekleyici kaynaklar tarafından desteklenen yeni bir düğüm türü dağıtmanız gerekir. Yeni ölçek kümesi `isPrimary: true` , özgün ölçek kümesi gibi birincil () olarak işaretlenir (birincil olmayan bir düğüm türü yükseltmesi yapmadığınız sürece). Aşağıdaki bölümde oluşturulan kaynaklar sonunda kümenizdeki yeni birincil düğüm türü olur ve özgün birincil düğüm türü kaynakları silinir.
+
+### <a name="update-the-cluster-template-with-the-upgraded-scale-set"></a>Küme şablonunu yükseltilen ölçek kümesiyle Güncelleştir
+
+Yeni birincil düğüm türü ve destekleyici kaynakları eklemek için özgün küme dağıtım şablonunun bölüm tarafından yapılan değişiklikleri aşağıda verilmiştir.
+
+Bu adım için gerekli değişiklikler, şablon dosyasında [*Step1-AddPrimaryNodeType.js*](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade/Step1-AddPrimaryNodeType.json) için zaten yapılmıştır ve aşağıdaki değişiklikler ayrıntılı olarak açıklanacaktır. İsterseniz, açıklamayı atlayıp [Key Vault başvurularınızı almaya](#obtain-your-key-vault-references) devam edebilir ve yeni bir birincil düğüm türü ekleyerek [güncelleştirilmiş şablonu dağıtabilirsiniz](#deploy-the-updated-template) .
+
 > [!Note]
-> Aşağıdaki adımlarda oluşturulan kaynaklar, ölçeklendirme işlemi tamamlandıktan sonra kümenizde yeni birincil düğüm türü olacaktır. İlk alt ağ, genel IP, Load Balancer, sanal makine ölçek kümesi ve düğüm türünden benzersiz olan adlar kullandığınızdan emin olun. 
+> Orijinal düğüm türü, ölçek kümesi, yük dengeleyici, genel IP ve özgün birincil düğüm türünün alt ağından benzersiz olan adlar kullandığınızdan emin olun, çünkü bu kaynaklar işlemdeki sonraki bir adımda silinir.
 
-Aşağıdaki adımların tümünü içeren bir şablon bulabilirsiniz: [Service Fabric-yeni düğüm türü küme](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-2.json). Aşağıdaki adımlarda, yeni kaynaklardaki değişiklikleri vurgulayan kısmi kaynak parçacıkları bulunur.  
+#### <a name="create-a-new-subnet-in-the-existing-virtual-network"></a>Var olan sanal ağda yeni bir alt ağ oluştur
 
-1. Var olan sanal ağınızda yeni bir alt ağ oluşturun.
 ```json
 {
     "name": "[variables('subnet1Name')]",
@@ -74,7 +176,9 @@ Aşağıdaki adımların tümünü içeren bir şablon bulabilirsiniz: [Service 
     }
 }
 ```
-2. Benzersiz bir domainNameLabel ile yeni bir genel IP kaynağı oluşturun. 
+
+#### <a name="create-a-new-public-ip-with-a-unique-domainnamelabel"></a>Benzersiz bir domainNameLabel ile yeni bir genel IP oluşturma
+
 ```json
 {
     "apiVersion": "[variables('publicIPApiVersion')]",
@@ -83,7 +187,7 @@ Aşağıdaki adımların tümünü içeren bir şablon bulabilirsiniz: [Service 
     "location": "[variables('computeLocation')]",
     "properties": {
     "dnsSettings": {
-        "domainNameLabel": "[concat(variables('dnsName'),'-','nt2')]"
+        "domainNameLabel": "[concat(variables('dnsName'),'-','nt1')]"
     },
     "publicIPAllocationMethod": "Dynamic"
     },
@@ -93,20 +197,25 @@ Aşağıdaki adımların tümünü içeren bir şablon bulabilirsiniz: [Service 
     }
 }
 ```
-3. Yukarıda oluşturulan genel IP 'ye bağlı yeni bir Load Balancer kaynağı oluşturun. 
+
+#### <a name="create-a-new-load-balancer-for-the-public-ip"></a>Genel IP için yeni bir yük dengeleyici oluşturun
+
 ```json
 "dependsOn": [
     "[concat('Microsoft.Network/publicIPAddresses/',concat(variables('lbIPName'),'-',variables('vmNodeType1Name')))]"
 ]
 ```
-4. Ölçeğini genişletmek istediğiniz yeni VM SKU 'SU ve işletim sistemi SKU 'su kullanan yeni bir sanal makine ölçek kümesi oluşturun. 
 
-Düğüm türü başvurusu 
+#### <a name="create-a-new-virtual-machine-scale-set-with-upgraded-vm-and-os-skus"></a>Yeni bir sanal makine ölçek kümesi oluşturma (yükseltilen VM ve işletim sistemi SKU 'Ları ile)
+
+Düğüm türü başvurusu
+
 ```json
 "nodeTypeRef": "[variables('vmNodeType1Name')]"
 ```
 
 VM SKU
+
 ```json
 "sku": {
     "name": "[parameters('vmNodeType1Size')]",
@@ -115,7 +224,8 @@ VM SKU
 }
 ```
 
-IŞLETIM SISTEMI SKU 'SU 
+IŞLETIM SISTEMI SKU 'SU
+
 ```json
 "imageReference": {
     "publisher": "[parameters('vmImagePublisher1')]",
@@ -125,134 +235,12 @@ IŞLETIM SISTEMI SKU 'SU
 }
 ```
 
-Aşağıdaki kod parçacığı, bir Service Fabric kümesi için yeni bir düğüm türü oluşturmak için kullanılan yeni bir sanal makine ölçek kümesi kaynağına bir örnektir. İş yükünüz için gerekli olan tüm ek uzantıları dahil etmek istemeniz gerekir. 
+Ayrıca, iş yükünüz için gereken ek uzantıları da dahil edin.
 
-```json
-    {
-      "apiVersion": "[variables('vmssApiVersion')]",
-      "type": "Microsoft.Compute/virtualMachineScaleSets",
-      "name": "[variables('vmNodeType1Name')]",
-      "location": "[variables('computeLocation')]",
-      "dependsOn": [
-        "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]",
-        "[concat('Microsoft.Network/loadBalancers/', concat('LB','-', parameters('clusterName'),'-',variables('vmNodeType1Name')))]",
-        "[concat('Microsoft.Storage/storageAccounts/', variables('supportLogStorageAccountName'))]",
-        "[concat('Microsoft.Storage/storageAccounts/', variables('applicationDiagnosticsStorageAccountName'))]"
-      ],
-      "properties": {
-        "overprovision": "[variables('overProvision')]",
-        "upgradePolicy": {
-          "mode": "Automatic"
-        },
-        "virtualMachineProfile": {
-          "extensionProfile": {
-            "extensions": [
-              {
-                "name": "[concat('ServiceFabricNodeVmExt_',variables('vmNodeType1Name'))]",
-                "properties": {
-                  "type": "ServiceFabricNode",
-                  "autoUpgradeMinorVersion": true,
-                  "protectedSettings": {
-                    "StorageAccountKey1": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key1]",
-                    "StorageAccountKey2": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key2]"
-                  },
-                  "publisher": "Microsoft.Azure.ServiceFabric",
-                  "settings": {
-                    "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
-                    "nodeTypeRef": "[variables('vmNodeType1Name')]",
-                    "dataPath": "D:\\SvcFab",
-                    "durabilityLevel": "Bronze",
-                    "enableParallelJobs": true,
-                    "nicPrefixOverride": "[variables('subnet1Prefix')]",
-                    "certificate": {
-                      "thumbprint": "[parameters('certificateThumbprint')]",
-                      "x509StoreName": "[parameters('certificateStoreValue')]"
-                    }
-                  },
-                  "typeHandlerVersion": "1.0"
-                }
-              }
-            ]
-          },
-          "networkProfile": {
-            "networkInterfaceConfigurations": [
-              {
-                "name": "[concat(variables('nicName'), '-1')]",
-                "properties": {
-                  "ipConfigurations": [
-                    {
-                      "name": "[concat(variables('nicName'),'-',1)]",
-                      "properties": {
-                        "loadBalancerBackendAddressPools": [
-                          {
-                            "id": "[variables('lbPoolID1')]"
-                          }
-                        ],
-                        "loadBalancerInboundNatPools": [
-                          {
-                            "id": "[variables('lbNatPoolID1')]"
-                          }
-                        ],
-                        "subnet": {
-                          "id": "[variables('subnet1Ref')]"
-                        }
-                      }
-                    }
-                  ],
-                  "primary": true
-                }
-              }
-            ]
-          },
-          "osProfile": {
-            "adminPassword": "[parameters('adminPassword')]",
-            "adminUsername": "[parameters('adminUsername')]",
-            "computernamePrefix": "[variables('vmNodeType1Name')]",
-            "secrets": [
-              {
-                "sourceVault": {
-                  "id": "[parameters('sourceVaultValue')]"
-                },
-                "vaultCertificates": [
-                  {
-                    "certificateStore": "[parameters('certificateStoreValue')]",
-                    "certificateUrl": "[parameters('certificateUrlValue')]"
-                  }
-                ]
-              }
-            ]
-          },
-          "storageProfile": {
-            "imageReference": {
-              "publisher": "[parameters('vmImagePublisher1')]",
-              "offer": "[parameters('vmImageOffer1')]",
-              "sku": "[parameters('vmImageSku1')]",
-              "version": "[parameters('vmImageVersion1')]"
-            },
-            "osDisk": {
-              "caching": "ReadOnly",
-              "createOption": "FromImage",
-              "managedDisk": {
-                "storageAccountType": "[parameters('storageAccountType')]"
-              }
-            }
-          }
-        }
-      },
-      "sku": {
-        "name": "[parameters('vmNodeType1Size')]",
-        "capacity": "[parameters('nt1InstanceCount')]",
-        "tier": "Standard"
-      },
-      "tags": {
-        "resourceType": "Service Fabric",
-        "clusterName": "[parameters('clusterName')]"
-      }
-    },
+#### <a name="add-a-new-primary-node-type-to-the-cluster"></a>Kümeye yeni bir birincil düğüm türü ekleyin
 
-```
+Artık yeni düğüm türünün (vmNodeType1Name) kendi adı, alt ağı, IP, yük dengeleyici ve ölçek kümesi olduğuna göre, özgün düğüm türünden diğer tüm değişkenleri ( `nt0applicationEndPort` , ve gibi) yeniden kullanabilir `nt0applicationStartPort` `nt0fabricTcpGatewayPort` :
 
-5. Kümeye yeni bir düğüm türü ekleyin, bu, yukarıda oluşturulan sanal makine ölçek kümesine başvurur. Bu düğüm türündeki **ısprımary** özelliği true olarak ayarlanmalıdır. 
 ```json
 "name": "[variables('vmNodeType1Name')]",
 "applicationPorts": {
@@ -270,72 +258,97 @@ Aşağıdaki kod parçacığı, bir Service Fabric kümesi için yeni bir düğ�
 "reverseProxyEndpointPort": "[variables('nt0reverseProxyEndpointPort')]",
 "vmInstanceCount": "[parameters('nt1InstanceCount')]"
 ```
-6. Güncelleştirilmiş ARM şablonunu dağıtın. 
+
+Şablon ve parametre dosyalarınızda tüm değişiklikleri yaptıktan sonra, Key Vault başvurularını almak ve güncelleştirmeleri kümenize dağıtmak için sonraki bölüme ilerleyin.
+
+### <a name="obtain-your-key-vault-references"></a>Key Vault başvurularınızı alın
+
+Güncelleştirilmiş yapılandırmayı dağıtmak için Key Vault depolanan küme sertifikasına birkaç başvuru gerekir. Bu değerleri bulmanın en kolay yolu Azure portal kullanmaktır. Şunlara ihtiyacınız var:
+
+* **Küme sertifikanızın Key Vault URL 'SI.** Azure Portal ' Key Vault,   >  *istediğiniz sertifika*  >  **gizli tanımlayıcı tanımlarınızı** seçin:
+
+    ```powershell
+    $certUrlValue="https://sftestupgradegroup.vault.azure.net/secrets/sftestupgradegroup20200309235308/dac0e7b7f9d4414984ccaa72bfb2ea39"
+    ```
+
+* **Küme sertifikanızın parmak izi.** (Bu durum muhtemelen, sistem durumunu denetlemek için [ilk kümeye bağlandıysanız](#connect-to-the-new-cluster-and-check-health-status) zaten var.) Azure Portal ' de aynı sertifika dikeypenceresinden (  >  *istediğiniz sertifika* sertifikaları), **X. 509.440 SHA-1 parmak izini (onaltılı)** kopyalayın:
+
+    ```powershell
+    $thumb = "BB796AA33BD9767E7DA27FE5182CF8FDEE714A70"
+    ```
+
+* **Key Vault kaynak KIMLIĞI.** Azure Portal Key Vault **Özellikler**  >  **kaynak kimliği**' ni seçin.
+
+    ```powershell
+    $sourceVaultValue = "/subscriptions/########-####-####-####-############/resourceGroups/sftestupgradegroup/providers/Microsoft.KeyVault/vaults/sftestupgradegroup"
+    ```
+
+### <a name="deploy-the-updated-template"></a>Güncelleştirilmiş şablonu dağıtma
+
+`templateFilePath`Gereken şekilde ayarlayın ve aşağıdaki komutu çalıştırın:
+
 ```powershell
-# deploy the updated template files to the existing resource group
-$templateFilePath = "C:\AzureDeploy-2.json"
-$parameterFilePath = "C:\AzureDeploy.Parameters.json"
+# Deploy the new node type and its resources
+$templateFilePath = "C:\Step1-AddPrimaryNodeType.json"
 
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -TemplateFile $templateFilePath `
     -TemplateParameterFile $parameterFilePath `
+    -CertificateThumbprint $thumb `
+    -CertificateUrlValue $certUrlValue `
+    -SourceVaultValue $sourceVaultValue `
+    -Verbose
 ```
 
-Dağıtım tamamlandığında Service Fabric kümesi artık iki düğüm türüne sahip olur. 
+Dağıtım tamamlandığında, küme durumunu yeniden denetleyin ve her iki düğüm türündeki tüm düğümlerin sağlıklı olduğundan emin olun.
 
-### <a name="remove-the-existing-node-type"></a>Var olan düğüm türünü kaldır 
-Kaynakların dağıtımı tamamlandıktan sonra, özgün birincil düğüm türündeki düğümleri devre dışı bırakmayı deneyebilirsiniz. Düğümler devre dışı bırakıldığı için, sistem hizmetleri Yukarıdaki adımda dağıtılan yeni birincil düğüm türüne geçirilir.
+```powershell
+Get-ServiceFabricClusterHealth
+```
 
-1. Service Fabric küme kaynağındaki birincil düğüm türü özelliğini false olarak ayarlayın. 
+## <a name="migrate-seed-nodes-to-the-new-node-type"></a>Çekirdek düğümlerini yeni düğüm türüne geçir
+
+Artık özgün düğüm türünü birincil olmayan olarak güncelleştirmeye ve düğümlerini devre dışı bırakmaya başlamaya hazırız. Düğümler devre dışı olduğunda, kümenin sistem hizmetleri ve tohum düğümleri yeni ölçek kümesine geçirilir.
+
+### <a name="unmark-the-original-node-type-as-primary"></a>Özgün düğüm türünün işaretini birincil olarak kaldır
+
+İlk `isPrimary` olarak şablondaki belirtimi özgün düğüm türünden kaldırın.
+
 ```json
 {
-    "name": "[variables('vmNodeType0Name')]",
-    "applicationPorts": {
-        "endPort": "[variables('nt0applicationEndPort')]",
-        "startPort": "[variables('nt0applicationStartPort')]"
-    },
-    "clientConnectionEndpointPort": "[variables('nt0fabricTcpGatewayPort')]",
-    "durabilityLevel": "Bronze",
-    "ephemeralPorts": {
-        "endPort": "[variables('nt0ephemeralEndPort')]",
-        "startPort": "[variables('nt0ephemeralStartPort')]"
-    },
-    "httpGatewayEndpointPort": "[variables('nt0fabricHttpGatewayPort')]",
     "isPrimary": false,
-    "reverseProxyEndpointPort": "[variables('nt0reverseProxyEndpointPort')]",
-    "vmInstanceCount": "[parameters('nt0InstanceCount')]"
 }
 ```
-2. Şablonu orijinal düğüm türündeki güncelleştirilmiş IsPrimary özelliği ile dağıtın. Birincil bayrağın asıl düğüm türünde false olarak ayarlanmış bir şablon bulabilirsiniz: [Service Fabric-birincil düğüm türü false](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-3.json).
+
+Ardından şablonu güncelleştirmesiyle birlikte dağıtın. Bu, çekirdek düğümlerin yeni ölçek kümesine geçişini başlatır.
 
 ```powershell
-# deploy the updated template files to the existing resource group
-$templateFilePath = "C:\AzureDeploy-3.json"
-$parameterFilePath = "C:\AzureDeploy.Parameters.json"
+$templateFilePath = "C:\Step2-UnmarkOriginalPrimaryNodeType.json"
 
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -TemplateFile $templateFilePath `
     -TemplateParameterFile $parameterFilePath `
+    -CertificateThumbprint $thumb `
+    -CertificateUrlValue $certUrlValue `
+    -SourceVaultValue $sourceVaultValue `
+    -Verbose
 ```
 
-3. Düğüm türü 0 içindeki düğümleri devre dışı bırakın. 
+> [!Note]
+> Yeni ölçek kümesine çekirdek düğümü geçişi işleminin tamamlanması biraz zaman alır. Veri tutarlılığını güvence altına almak için, tek seferde yalnızca bir çekirdek düğüm değiştirilebilir. Her çekirdek düğümü değişikliği bir küme güncelleştirmesi gerektirir; Bu nedenle, çekirdek düğümü değiştirmek için iki küme yükseltmesi gerekir (her biri düğüm ekleme ve kaldırma için bir tane). Bu örnek senaryoda beş tohum düğümünü yükseltmek, on küme yükseltmelerine neden olur.
+
+Çekirdek düğümlerin yeni ölçek kümesine geçişini izlemek için Service Fabric Explorer kullanın. Özgün düğüm türünün (nt0vm) düğümleri, bu **çekirdek düğüm** sütununda tümü *false* olmalıdır ve yeni düğüm türü (nt1vm) *true* olur.
+
+### <a name="disable-the-nodes-in-the-original-node-type-scale-set"></a>Özgün düğüm türü ölçek kümesindeki düğümleri devre dışı bırak
+
+Tüm çekirdek düğümleri yeni ölçek kümesine geçirildikten sonra, orijinal ölçek kümesinin düğümlerini devre dışı bırakabilirsiniz.
+
 ```powershell
-Connect-ServiceFabricCluster -ConnectionEndpoint $ClusterConnectionEndpoint `
-    -KeepAliveIntervalInSec 10 `
-    -X509Credential `
-    -ServerCertThumbprint $thumb  `
-    -FindType FindByThumbprint `
-    -FindValue $thumb `
-    -StoreLocation CurrentUser `
-    -StoreName My 
-
-Write-Host "Connected to cluster"
-
-
-$nodeType = "nt1vm" # specify the name of node type
-$nodes = Get-ServiceFabricNode 
+# Disable the nodes in the original scale set.
+$nodeType = "nt0vm"
+$nodes = Get-ServiceFabricNode
 
 Write-Host "Disabling nodes..."
 foreach($node in $nodes)
@@ -348,14 +361,23 @@ foreach($node in $nodes)
   }
 }
 ```
-* Bronz dayanıklılık için tüm düğümlerin devre dışı duruma gelmesini bekleyin.
-* Gümüş ve altın dayanıklılık için bazı düğümler devre dışı bırakılacak ve geri kalan durum devre dışı olacaktır. Devre dışı bırakma durumundaki düğümlerin Ayrıntılar sekmesini kontrol edin. Bunlar, altyapı hizmeti bölümleri için çekirdek sağlamaya açık durumdaysa devam etmek güvenli hale gelir.
 
-> [!Note]
-> Bu adımın tamamlanması biraz zaman alabilir. 
+Özgün ölçek kümesindeki düğümlerin ilerlemesini *devre dışı* durumuna göre *izlemek için Service Fabric Explorer* kullanın.
 
-4. Düğüm türü 0 üzerindeki verileri durdur. 
+:::image type="content" source="./media/scale-up-primary-node-type/service-fabric-explorer-node-status.png" alt-text="Devre dışı bırakılan düğümlerin durumunu gösteren Service Fabric Explorer":::
+
+Gümüş ve altın dayanıklılık için bazı düğümler devre dışı durumuna geçer, diğerleri devre *dışı* durumda kalabilir. Service Fabric Explorer, devre dışı bırakma durumundaki düğümlerin **Ayrıntılar** sekmesini denetleyin. Bu kişiler, *Ensurepartitionquorem* türü için *bekleyen bir güvenlik denetimi* gösteriyorlarsa (altyapı hizmeti bölümleri için çekirdeği sağlama), devam etmek güvenlidir.
+
+:::image type="content" source="./media/scale-up-primary-node-type/service-fabric-explorer-node-status-disabling.png" alt-text="' EnsurePartitionQuorum ' türünde bekleyen bir güvenlik denetimi varsa, verileri durdurma ve ' devre dışı bırakma ' durumunda kalmış düğümleri kaldırma işlemine devam edebilirsiniz.":::
+
+Kümeniz daha fazla dayanıklılık içeriyorsa, tüm düğümlerin *devre dışı* durumuna ulaşmasını bekleyin.
+
+### <a name="stop-data-on-the-disabled-nodes"></a>Devre dışı bırakılmış düğümlerdeki verileri durdur
+
+Artık devre dışı bırakılmış düğümlerdeki verileri durdurabilirsiniz.
+
 ```powershell
+# Stop data on the disabled nodes.
 foreach($node in $nodes)
 {
   if ($node.NodeType -eq $nodeType)
@@ -366,44 +388,62 @@ foreach($node in $nodes)
   }
 }
 ```
-5. Özgün sanal makine ölçek kümesindeki düğümleri serbest bırakma 
+
+## <a name="remove-the-original-node-type-and-cleanup-its-resources"></a>Özgün düğüm türünü kaldır ve kaynaklarını temizle
+
+Orijinal düğüm türünü ve ilişkili kaynaklarını, dikey ölçeklendirme yordamını sonuçlandırmaya yönelik olarak kaldırmaya hazırız.
+
+### <a name="remove-the-original-scale-set"></a>Özgün ölçek kümesini kaldır
+
+Önce düğüm türünün yedekleme ölçek kümesini kaldırın.
+
 ```powershell
-$scaleSetName="nt1vm"
-$scaleSetResourceType="Microsoft.Compute/virtualMachineScaleSets"
+$scaleSetName = "nt0vm"
+$scaleSetResourceType = "Microsoft.Compute/virtualMachineScaleSets"
 
 Remove-AzResource -ResourceName $scaleSetName -ResourceType $scaleSetResourceType -ResourceGroupName $resourceGroupName -Force
 ```
-> [!Note]
-> Standart SKU genel IP ve standart SKU yük dengeleyicisi kullanıyorsanız 6. ve 7. adım isteğe bağlıdır. Bu durumda, aynı yük dengeleyici altında birden fazla sanal makine ölçek kümesi/düğüm türüne sahip olabilirsiniz. 
 
-6. Artık özgün IP 'yi ve Load Balancer kaynakları silebilirsiniz. Bu adımda DNS adını da güncelleşolursunuz. 
+### <a name="delete-the-original-ip-and-load-balancer-resources"></a>Özgün IP ve yük dengeleyici kaynaklarını silme
+
+Artık özgün IP 'yi ve yük dengeleyici kaynaklarını silebilirsiniz. Bu adımda DNS adını da güncelleşolursunuz.
+
+> [!Note]
+> Zaten *Standart* SKU genel IP ve yük dengeleyici kullanıyorsanız bu adım isteğe bağlıdır. Bu durumda, aynı yük dengeleyici altında birden fazla ölçek kümesi/düğüm türüne sahip olabilirsiniz.
+
+Gerektiğinde değeri değiştirerek aşağıdaki komutları çalıştırın `$lbname` .
 
 ```powershell
-$lbname="LB-cluster-name-nt1vm"
-$lbResourceType="Microsoft.Network/loadBalancers"
-$ipResourceType="Microsoft.Network/publicIPAddresses"
-$oldPublicIpName="PublicIP-LB-FE-nt1vm"
-$newPublicIpName="PublicIP-LB-FE-nt2vm"
+# Delete the original IP and load balancer resources
+$lbName = "LB-sftestupgrade-nt0vm"
+$lbResourceType = "Microsoft.Network/loadBalancers"
+$ipResourceType = "Microsoft.Network/publicIPAddresses"
+$oldPublicIpName = "PublicIP-LB-FE-nt0vm"
+$newPublicIpName = "PublicIP-LB-FE-nt1vm"
 
-$oldprimaryPublicIP = Get-AzPublicIpAddress -Name $oldPublicIpName  -ResourceGroupName $resourceGroupName
-$primaryDNSName = $oldprimaryPublicIP.DnsSettings.DomainNameLabel
-$primaryDNSFqdn = $oldprimaryPublicIP.DnsSettings.Fqdn
+$oldPrimaryPublicIP = Get-AzPublicIpAddress -Name $oldPublicIpName  -ResourceGroupName $resourceGroupName
+$primaryDNSName = $oldPrimaryPublicIP.DnsSettings.DomainNameLabel
+$primaryDNSFqdn = $oldPrimaryPublicIP.DnsSettings.Fqdn
 
-Remove-AzResource -ResourceName $lbname -ResourceType $lbResourceType -ResourceGroupName $resourceGroupName -Force
+Remove-AzResource -ResourceName $lbName -ResourceType $lbResourceType -ResourceGroupName $resourceGroupName -Force
 Remove-AzResource -ResourceName $oldPublicIpName -ResourceType $ipResourceType -ResourceGroupName $resourceGroupName -Force
 
 $PublicIP = Get-AzPublicIpAddress -Name $newPublicIpName  -ResourceGroupName $resourceGroupName
 $PublicIP.DnsSettings.DomainNameLabel = $primaryDNSName
 $PublicIP.DnsSettings.Fqdn = $primaryDNSFqdn
 Set-AzPublicIpAddress -PublicIpAddress $PublicIP
-``` 
-
-7. Kümedeki yönetim uç noktasını yeni IP 'ye başvuracak şekilde güncelleştirin. 
-```json
-  "managementEndpoint": "[concat('https://',reference(concat(variables('lbIPName'),'-',variables('vmNodeType1Name'))).dnsSettings.fqdn,':',variables('nt0fabricHttpGatewayPort'))]",
 ```
-8. Düğüm durumu 0 olan düğüm türünden kaldır.
+
+### <a name="remove-node-state-from-the-original-node-type"></a>Düğüm durumunu orijinal düğüm türünden kaldır
+
+Özgün düğüm türü düğümleri artık **sistem durumları** için *hata* gösterir. Düğüm durumlarını kümeden kaldırın.
+
 ```powershell
+# Remove state of the obsolete nodes from the cluster
+$nodeType = "nt0vm"
+$nodes = Get-ServiceFabricNode
+
+Write-Host "Removing node state..."
 foreach($node in $nodes)
 {
   if ($node.NodeType -eq $nodeType)
@@ -414,7 +454,25 @@ foreach($node in $nodes)
   }
 }
 ```
-9. ARM şablonundaki Service Fabric kaynağından özgün düğüm türü başvurusunu kaldırın. 
+
+Service Fabric Explorer artık, yeni düğüm türünün (nt1vm) yalnızca beş düğümünü yansıtmalıdır, bu durum *Tamam*' a ait sağlık durumu değerleridir. Küme sistem durumlarınız yine de *hata* göstermeye devam eder. Şablonu, en son değişiklikleri yansıtacak ve yeniden dağıtmaya yönelik olarak güncelleştirerek bu ileri düzelteceğiz.
+
+### <a name="update-the-deployment-template-to-reflect-the-newly-scaled-up-primary-node-type"></a>Dağıtım şablonunu, yeni ölçekli birincil düğüm türünü yansıtacak şekilde güncelleştirin
+
+Bu adım için gerekli değişiklikler, şablon dosyasında [*Step3-CleanupOriginalPrimaryNodeType.js*](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade/Step3-CleanupOriginalPrimaryNodeType.json) için zaten yapılmıştır ve aşağıdaki bölümlerde bu şablon değişiklikleri ayrıntılı olarak açıklanacaktır. İsterseniz açıklamayı atlayabilir ve [güncelleştirilmiş şablonu dağıtmaya](#deploy-the-finalized-template) devam edebilir ve öğreticiyi tamamlayabilirsiniz.
+
+#### <a name="update-the-cluster-management-endpoint"></a>Küme yönetim uç noktasını güncelleştirme
+
+`managementEndpoint`Dağıtım şablonundaki kümeyi yenı IP 'ye başvuracak şekilde güncelleştirin ( *VmNodeType0Name* ile *vmNodeType1Name* güncelleyerek).
+
+```json
+  "managementEndpoint": "[concat('https://',reference(concat(variables('lbIPName'),'-',variables('vmNodeType1Name'))).dnsSettings.fqdn,':',variables('nt0fabricHttpGatewayPort'))]",
+```
+
+#### <a name="remove-the-original-node-type-reference"></a>Özgün düğüm türü başvurusunu kaldır
+
+Dağıtım şablonundaki Service Fabric kaynağından özgün düğüm türü başvurusunu kaldırın:
+
 ```json
 "name": "[variables('vmNodeType0Name')]",
 "applicationPorts": {
@@ -432,7 +490,11 @@ foreach($node in $nodes)
 "reverseProxyEndpointPort": "[variables('nt0reverseProxyEndpointPort')]",
 "vmInstanceCount": "[parameters('nt0InstanceCount')]"
 ```
-Yalnızca gümüş ve daha yüksek dayanıklılık kümelerinde, şablondaki küme kaynağını güncelleştirin ve küme kaynak özellikleri altına aşağıda verilen şekilde applicationDeltaHealthPolicies ekleyerek yapı:/sistem uygulaması durumu ' nu yok saymaya yönelik sistem durumu ilkelerini yapılandırın. Aşağıdaki ilke var olan hataları yoksayacak, ancak yeni sistem durumu hatalarına izin vermez.
+
+#### <a name="configure-health-policies-to-ignore-existing-errors"></a>Mevcut hataları yok saymak için sistem durumu ilkeleri yapılandırma
+
+Yalnızca gümüş ve daha yüksek dayanıklılık kümelerinde, şablondaki küme kaynağını güncelleştirin ve `fabric:/System` küme kaynağı özellikleri altına aşağıda verilen şekilde *Applicationdeltahealthpolicies* ekleyerek uygulama durumunu yoksayacak şekilde sistem durumu ilkelerini yapılandırın. Aşağıdaki ilke var olan hataları yoksayacak, ancak yeni sistem durumu hatalarına izin vermez.
+
 ```json
 "upgradeDescription":  
 { 
@@ -465,25 +527,55 @@ Yalnızca gümüş ve daha yüksek dayanıklılık kümelerinde, şablondaki kü
  } 
 }
 ```
-10. ARM şablonundan orijinal düğüm türüyle ilişkili diğer tüm kaynakları kaldırın. Bu özgün kaynakların tümü kaldırılmış olan bir şablon için [Service Fabric-yeni düğüm türü kümesi](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-4.json) ' ne bakın.
 
-11. Değiştirilen Azure Resource Manager şablonunu dağıtın. * * Bu adım genellikle iki saate kadar sürer. Bu yükseltme, ayarları InfrastructureService olarak değiştirecek; Bu nedenle, bir düğümün yeniden başlatılması gerekiyor. Bu durumda, forceRestart yoksayıldı. Yükseltilebilir Dereperepsetchecktimeout parametresi, Service Fabric bir bölümün güvenli bir durumda olmasını bekleyeceği en uzun süreyi belirtir, zaten güvenli bir durumda değildir. Güvenlik denetimleri bir düğümdeki tüm bölümler için başarılı olduktan sonra, bu düğümdeki yükseltmeye devam eder Service Fabric. UpgradeTimeout parametresi için değer 6 saate indirgenecek, ancak maxhayvan güvenliği 12 saat kullanılmalıdır.
-Ardından, portalda Service Fabric kaynağının, ' ın hazırlandığını doğrulayın. 
+#### <a name="remove-supporting-resources-for-the-original-node-type"></a>Özgün düğüm türü için destekleme kaynaklarını kaldır
+
+ARM şablonundan ve parametreler dosyasından orijinal düğüm türüyle ilişkili diğer tüm kaynakları kaldırın. Aşağıdakileri silin:
+
+```json
+    "vmImagePublisher": {
+      "value": "MicrosoftWindowsServer"
+    },
+    "vmImageOffer": {
+      "value": "WindowsServer"
+    },
+    "vmImageSku": {
+      "value": "2016-Datacenter-with-Containers"
+    },
+    "vmImageVersion": {
+      "value": "latest"
+    },
+```
+
+#### <a name="deploy-the-finalized-template"></a>Son şablonu dağıtma
+
+Son olarak, değiştirilen Azure Resource Manager şablonunu dağıtın.
 
 ```powershell
-# deploy the updated template files to the existing resource group
-$templateFilePath = "C:\AzureDeploy-4.json"
-$parameterFilePath = "C:\AzureDeploy.Parameters.json"
+# Deploy the updated template file
+$templateFilePath = "C:\Step3-CleanupOriginalPrimaryNodeType"
 
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -TemplateFile $templateFilePath `
     -TemplateParameterFile $parameterFilePath `
+    -CertificateThumbprint $thumb `
+    -CertificateUrlValue $certUrlValue `
+    -SourceVaultValue $sourceVaultValue `
+    -Verbose
 ```
 
-Kümenin birincil düğüm türü şimdi yükseltildi. Dağıtılan tüm uygulamaların düzgün çalıştığını ve küme durumunun tamam olduğunu doğrulayın.
+> [!NOTE]
+> Bu adım genellikle iki saate kadar sürer.
+
+Yükseltme, ayarları *InfrastructureService* olarak değiştirecek; Bu nedenle, bir düğümün yeniden başlatılması gerekiyor. Bu durumda, *forcerestart* yoksayıldı. Parametresi, `upgradeReplicaSetCheckTimeout` Service Fabric bir bölümün güvenli durumda olmasını bekleyeceği en uzun süreyi belirtir, daha önceden güvenli bir durumda değildir. Güvenlik denetimleri bir düğümdeki tüm bölümler için başarılı olduktan sonra, bu düğümdeki yükseltmeye devam eder Service Fabric. Parametrenin değeri `upgradeTimeout` 6 saate indirgenmiş olabilir, ancak maxhayvan güvenliği 12 saat kullanılmalıdır.
+
+Dağıtım tamamlandıktan sonra, Service Fabric kaynak durumunun Azure portal *doğrulayın.* Yeni Service Fabric Explorer uç noktasına ulaşabildiğinizi, **küme sistem durumunun** *Tamam* olduğunu ve dağıtılan tüm uygulamaların düzgün şekilde çalıştığını doğrulayın.
+
+Bu şekilde, küme birincil düğüm türünü dikey olarak ölçeklendirdiniz!
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 * [Kümeye düğüm türü eklemeyi](virtual-machine-scale-set-scale-node-type-scale-out.md) öğrenin
 * [Uygulama ölçeklenebilirliği](service-fabric-concepts-scalability.md)hakkında bilgi edinin.
 * [Bir Azure kümesini içinde veya dışarı ölçeklendirin](service-fabric-tutorial-scale-cluster.md).

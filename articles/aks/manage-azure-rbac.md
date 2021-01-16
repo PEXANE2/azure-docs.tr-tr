@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: a2a385b2be4e1005a7aabd76261b3190ecd2a506
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: af8d0300b533d9f25cddf225f4ffbe78ca6bf2cb
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684228"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249644"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Kubernetes Yetkilendirmesi için Azure RBAC kullanma (önizleme)
 
@@ -115,7 +115,7 @@ AKS aşağıdaki dört yerleşik rolü sağlar:
 
 | Rol                                | Açıklama  |
 |-------------------------------------|--------------|
-| Azure Kubernetes hizmeti RBAC Görüntüleyicisi  | Bir ad alanındaki birçok nesneyi görmek için salt okuma erişimine izin verir. Rollerin veya rol bağlamalarının görüntülenmesine izin vermez. `Secrets`Gizli dizi içeriğini okumak, ad alanındaki ServiceAccount kimlik bilgilerine erişim sağladığından, ad alanındaki (ayrıcalık yükseltme bir biçimde) API erişimine izin veren bu rol görüntülemeye izin vermez  |
+| Azure Kubernetes hizmeti RBAC okuyucusu  | Bir ad alanındaki birçok nesneyi görmek için salt okuma erişimine izin verir. Rollerin veya rol bağlamalarının görüntülenmesine izin vermez. `Secrets`Gizli dizi içeriğini okumak, ad alanındaki ServiceAccount kimlik bilgilerine erişim sağladığından, ad alanındaki (ayrıcalık yükseltme bir biçimde) API erişimine izin veren bu rol görüntülemeye izin vermez  |
 | Azure Kubernetes hizmeti RBAC yazıcı | Bir ad alanındaki nesnelerin çoğuna okuma/yazma erişimi sağlar. Bu rol, rolleri veya rol bağlamalarını görüntülemeye veya değiştirmeye izin vermez. Bununla birlikte, bu rol `Secrets` ad alanındaki herhangi bir ServiceAccount olarak, bu rol, ad alanındaki herhangi bir ServiceAccount 'ın API erişim düzeylerini kazanmak için kullanılabilir. |
 | Azure Kubernetes hizmeti RBAC Yöneticisi  | Yönetici erişimine izin verir, bir ad alanı içinde verilmek üzere tasarlanmıştır. Ad alanı içinde roller ve rol bağlamaları oluşturma özelliği de dahil olmak üzere bir ad alanındaki (veya küme kapsamındaki) kaynakların çoğuna okuma/yazma erişimi sağlar. Bu rol, kaynak kotasına veya ad alanının kendine yazma erişimine izin vermez. |
 | Azure Kubernetes hizmeti RBAC kümesi Yöneticisi  | Süper Kullanıcı erişiminin herhangi bir kaynak üzerinde herhangi bir işlem gerçekleştirmesine izin verir. Kümedeki her kaynak ve tüm ad alanlarında tam denetim sağlar. |

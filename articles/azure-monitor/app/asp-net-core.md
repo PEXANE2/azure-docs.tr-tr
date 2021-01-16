@@ -4,12 +4,12 @@ description: Kullanılabilirlik, performans ve kullanım için ASP.NET Core Web 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 2921c6379b34e002013b5f0087cefd502ab0ab84
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 2f17f4fbed196932ad7a5680338c459740e4d3bd
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904542"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249117"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core uygulamalar için Application Insights
 
@@ -31,7 +31,7 @@ Burada kullanacağınız örnek, ' i hedefleyen bir [MVC uygulamasıdır](/aspne
 > [!NOTE]
 > ASP.NET Core 3. X [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) veya üstünü gerektirir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Çalışan bir ASP.NET Core uygulaması. Bir ASP.NET Core uygulaması oluşturmanız gerekiyorsa, bu [ASP.NET Core öğreticisini](/aspnet/core/getting-started/)izleyin.
 - Geçerli bir Application Insights izleme anahtarı. Bu anahtar, Application Insights telemetri göndermek için gereklidir. Bir izleme anahtarı almak için yeni bir Application Insights kaynağı oluşturmanız gerekiyorsa, bkz. [Application Insights kaynağı oluşturma](./create-new-resource.md).
@@ -55,11 +55,11 @@ Mac için Visual Studio için [el ile Kılavuzu](#enable-application-insights-se
 
 4. Aboneliğinizi seçin. Sonra **kaynak**  >  **kaydı**' nı seçin.
 
-5. Projenize Application Insights ekledikten sonra, SDK 'nın en son kararlı sürümünü kullandığınızı onaylamak için denetleyin. **Project**'e git  >  Microsoft. ApplicationInsights. aspnetcore **NuGet Paketlerini Yönet**  >  **Microsoft.ApplicationInsights.AspNetCore**. Gerekirse **Güncelleştir**' i seçin.
+5. Projenize Application Insights ekledikten sonra, SDK 'nın en son kararlı sürümünü kullandığınızı onaylamak için denetleyin. **Project**'e git  >  Microsoft. ApplicationInsights. aspnetcore **NuGet Paketlerini Yönet**  >  . Gerekirse **Güncelleştir**' i seçin.
 
      ![Güncelleştirme için Application Insights paketinin nerede seçileceğini gösteren ekran görüntüsü](./media/asp-net-core/update-nuget-package.png)
 
-6. İsteğe bağlı ipucunu izlediyseniz ve projenizi kaynak denetimine eklediyseniz, **View**  >  **Takım Gezgini**  >  **değişiklikleri** görüntüle ' ye gidin. Sonra Application Insights telemetri tarafından yapılan değişikliklerin fark görünümünü görmek için her bir dosyayı seçin.
+6. İsteğe bağlı ipucunu izlediyseniz ve projenizi kaynak denetimine eklediyseniz,   >  **Takım Gezgini**  >  **değişiklikleri** görüntüle ' ye gidin. Sonra Application Insights telemetri tarafından yapılan değişikliklerin fark görünümünü görmek için her bir dosyayı seçin.
 
 ## <a name="enable-application-insights-server-side-telemetry-no-visual-studio"></a>Sunucu tarafı telemetrisini Application Insights etkinleştirme (Visual Studio yok)
 
@@ -69,7 +69,7 @@ Mac için Visual Studio için [el ile Kılavuzu](#enable-application-insights-se
 
     ```xml
         <ItemGroup>
-          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.13.1" />
+          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.16.0" />
         </ItemGroup>
     ```
 
@@ -110,7 +110,7 @@ Mac için Visual Studio için [el ile Kılavuzu](#enable-application-insights-se
 
     * `ApplicationInsights:InstrumentationKey`
 
-    Örnek:
+    Örneğin:
 
     * `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 
@@ -232,7 +232,7 @@ En güncel listesi için [içindeki `ApplicationInsightsServiceOptions` yapılan
 
 ### <a name="configuration-recommendation-for-microsoftapplicationinsightsaspnetcore-sdk-2150--above"></a>Yukarıdaki & Microsoft. ApplicationInsights. AspNetCore SDK 2.15.0 için yapılandırma önerisi
 
-Microsoft. ApplicationInsights. AspNetCore SDK sürümü [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0) 'dan başlayarak, ' de bulunan her ayarı `ApplicationInsightsServiceOptions` , uygulamalar örneği kullanılarak ınstrumentationkey dahil olmak üzere yapılandırmaktır `IConfiguration` . Aşağıdaki örnekte gösterildiği gibi ayarların "ApplicationInsights" bölümünde olması gerekir. appsettings.jsüzerindeki aşağıdaki bölüm, izleme anahtarını yapılandırır ve ayrıca Uyarlamalı örnekleme ve performans sayacı toplamayı devre dışı bırakır.
+Microsoft. ApplicationInsights. AspNetCore SDK sürümü [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0)'dan başlayarak, ' de bulunan her ayarı `ApplicationInsightsServiceOptions` , uygulamalar örneği kullanılarak ınstrumentationkey dahil olmak üzere yapılandırmaktır `IConfiguration` . Aşağıdaki örnekte gösterildiği gibi, ayarlar "ApplicationInsights" bölümünde olmalıdır. appsettings.jsüzerindeki aşağıdaki bölüm, izleme anahtarını yapılandırır ve ayrıca Uyarlamalı örnekleme ve performans sayacı toplamayı devre dışı bırakır.
 
 ```json
 {

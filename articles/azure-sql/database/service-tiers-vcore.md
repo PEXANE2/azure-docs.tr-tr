@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
-ms.date: 09/30/2020
-ms.openlocfilehash: b4473ea304176615c35205494f342922869b71ea
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 01/15/2021
+ms.openlocfilehash: 6589f451d4db8f2ed77ce70a2bdfa9d76927c1e2
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793152"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251225"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Sanal çekirdek modeline genel bakış-Azure SQL veritabanı ve Azure SQL yönetilen örneği 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -34,8 +34,8 @@ Sanal çekirdek modelindeki hizmet katmanı seçenekleri Genel Amaçlı, İş A�
 |-|**Genel Amaçlı**|**İş Açısından Kritik**|**Hiper Ölçek**|
 |---|---|---|---|
 |En iyi kullanım alanı:|Birçok iş yükü. Bütçe odaklı, dengeli ve ölçeklenebilir işlem ile depolama seçenekleri sunar. |, Birkaç yalıtılmış çoğaltma kullanarak ve en yüksek g/ç performansı sunan iş uygulamalarına en yüksek esnekliği sağlar.|Yüksek düzeyde ölçeklenebilir depolama ve okuma ölçeği gereksinimlerine sahip iş yüklerinin çoğu.  , Birden fazla yalıtılmış veritabanı çoğaltmasının yapılandırılmasına izin vererek daha yüksek esnekliği hatalara olanak sağlar. |
-|Depolama|Uzak depolamayı kullanır.<br/>**SQL veritabanı sağlanan işlem** :<br/>5 GB – 4 TB<br/>**Sunucusuz işlem** :<br/>5 GB-3 TB<br/>**SQL yönetilen örneği** : 32 GB-8 TB |Yerel SSD depolama kullanır.<br/>**SQL veritabanı sağlanan işlem** :<br/>5 GB – 4 TB<br/>**SQL yönetilen örneği** :<br/>32 GB-4 TB |Gerektiğinde depolamanın esnek otomatik büyümesi. 100 TB 'a kadar depolamayı destekler. Yerel ara havuz önbelleği ve yerel veri depolaması için yerel SSD depolama kullanır. Son uzun süreli veri deposu olarak Azure uzak depolama kullanır. |
-|IOPS ve aktarım hızı (yaklaşık)|**SQL veritabanı** : [tek veritabanları](resource-limits-vcore-single-databases.md) ve [elastik havuzlar](resource-limits-vcore-elastic-pools.md)için kaynak sınırlarına bakın.<br/>**SQL yönetilen örneği** : bkz. [Azure SQL yönetilen örnek kaynak sınırlarına genel bakış](../managed-instance/resource-limits.md#service-tier-characteristics).|[Tek veritabanları](resource-limits-vcore-single-databases.md) ve [elastik havuzlar](resource-limits-vcore-elastic-pools.md)için kaynak sınırlarına bakın.|Hiper ölçek, birden çok düzeyde önbelleğe alma özelliği olan çok katmanlı bir mimaridir. Etkin ıOPS ve aktarım hızı iş yüküne bağlıdır.|
+|Depolama|Uzak depolamayı kullanır.<br/>**SQL veritabanı sağlanan işlem**:<br/>5 GB – 4 TB<br/>**Sunucusuz işlem**:<br/>5 GB-3 TB<br/>**SQL yönetilen örneği**: 32 GB-8 TB |Yerel SSD depolama kullanır.<br/>**SQL veritabanı sağlanan işlem**:<br/>5 GB – 4 TB<br/>**SQL yönetilen örneği**:<br/>32 GB-4 TB |Gerektiğinde depolamanın esnek otomatik büyümesi. 100 TB 'a kadar depolamayı destekler. Yerel ara havuz önbelleği ve yerel veri depolaması için yerel SSD depolama kullanır. Son uzun süreli veri deposu olarak Azure uzak depolama kullanır. |
+|IOPS ve aktarım hızı (yaklaşık)|**SQL veritabanı**: [tek veritabanları](resource-limits-vcore-single-databases.md) ve [elastik havuzlar](resource-limits-vcore-elastic-pools.md)için kaynak sınırlarına bakın.<br/>**SQL yönetilen örneği**: bkz. [Azure SQL yönetilen örnek kaynak sınırlarına genel bakış](../managed-instance/resource-limits.md#service-tier-characteristics).|[Tek veritabanları](resource-limits-vcore-single-databases.md) ve [elastik havuzlar](resource-limits-vcore-elastic-pools.md)için kaynak sınırlarına bakın.|Hiper ölçek, birden çok düzeyde önbelleğe alma özelliği olan çok katmanlı bir mimaridir. Etkin ıOPS ve aktarım hızı iş yüküne bağlıdır.|
 |Kullanılabilirlik|1 çoğaltma, okuma ölçeğinde çoğaltmalar yok|3 çoğaltma, 1 [okuma ölçeği çoğaltma](read-scale-out.md),<br/>bölge yedekli yüksek kullanılabilirlik (HA)|1 okuma-yazma çoğaltması, artı 0-4 [okuma ölçekli çoğaltmalar](read-scale-out.md)|
 |Yedeklemeler|[Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS)](../../storage/common/geo-redundant-design.md), 7-35 gün (varsayılan olarak 7 gün)|[RA-GRS](../..//storage/common/geo-redundant-design.md), 7-35 gün (varsayılan olarak 7 gün)|Azure uzak depolama 'da anlık görüntü tabanlı yedeklemeler. Geri yükleme bu anlık görüntüleri hızlı kurtarma için kullanır. Yedeklemeler anında gerçekleşir ve işlem g/ç performansını etkilemez. Geri yükleme işlemleri hızlıdır ve veri boyutu (saatler veya günler yerine dakikalar içinde).|
 |Bellek içi|Desteklenmez|Desteklenir|Desteklenmez|
@@ -69,7 +69,7 @@ Sağlanan işlem katmanı, iş yükü etkinliğinden bağımsız olarak sürekli
 
 ## <a name="hardware-generations"></a>Donanım nesilleri
 
-VCore modelindeki donanım oluşturma seçenekleri gen 4/5, M serisi ve Fsv2-Series ' i içerir. Donanım oluşturma genellikle işlem ve bellek sınırlarını ve iş yükünün performansını etkileyen diğer özellikleri tanımlar.
+VCore modelindeki donanım oluşturma seçenekleri gen 4/5, M serisi, Fsv2-Series ve DC-Series ' i içerir. Donanım oluşturma genellikle işlem ve bellek sınırlarını ve iş yükünün performansını etkileyen diğer özellikleri tanımlar.
 
 ### <a name="gen4gen5"></a>4. nesil/5. nesil
 
@@ -84,7 +84,6 @@ VCore modelindeki donanım oluşturma seçenekleri gen 4/5, M serisi ve Fsv2-Ser
 - Fsv2, Diğer donanımlardan sanal çekirdek başına daha az bellek ve tempdb sağlar, bu sınırlara duyarlı iş yükleri bunun yerine 5. nesil veya d serisini düşünmek isteyebilir.  
 
 Fsv2-Series yalnızca Genel Amaçlı katmanında desteklenir. Fsv2-Series 'in kullanılabildiği bölgeler için bkz. [Fsv2 serisi kullanılabilirliği](#fsv2-series-1).
-
 
 ### <a name="m-series"></a>M serisi
 
@@ -101,6 +100,22 @@ E-seriye erişmek için abonelik, Kullandıkça Öde veya Kurumsal Anlaşma (EA)
 To enable M-series hardware for a subscription and region, a support request must be opened. The subscription must be a paid offer type including Pay-As-You-Go or Enterprise Agreement (EA).  If the support request is approved, then the selection and provisioning experience of M-series follows the same pattern as for other hardware generations. For regions where M-series is available, see [M-series availability](#m-series).
 -->
 
+### <a name="dc-series"></a>DC serisi
+
+> [!NOTE]
+> DC-Series Şu anda **genel önizleme** aşamasındadır.
+
+- DC Serisi donanım, yazılım koruyucu uzantıları (Intel SGX) teknolojisine sahip Intel işlemcileri kullanır.
+- DC-Series, diğer donanım yapılandırmalarında desteklenmeyen [güvenli şifreleme ile Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves)için gereklidir.
+- DC-Series, hassas verileri işleyen iş yükleri için ve güvenli şifreleme ile Always Encrypted tarafından sunulan isteğe bağlı gizli sorgu işleme yeteneklerini,
+- DC Serisi donanım, dengeli işlem ve bellek kaynakları sağlar.
+
+DC-Series yalnızca sağlanan işlem için desteklenir (sunucusuz desteklenmez) ve bölge yedekliliği desteklemez. DC Serisi kullanılabildiği bölgeler için bkz. [DC Serisi kullanılabilirliği](#dc-series-1).
+
+#### <a name="azure-offer-types-supported-by-dc-series"></a>DC serisi tarafından desteklenen Azure teklif türleri
+
+DC-Series 'e erişmek için abonelik, Kullandıkça Öde veya Kurumsal Anlaşma (EA) dahil olmak üzere ücretli bir teklif türü olmalıdır.  DC serisi tarafından desteklenen Azure teklif türlerinin tam listesi için, [harcama limitleri olmadan geçerli tekliflere](https://azure.microsoft.com/support/legal/offer-details)bakın.
+
 ### <a name="compute-and-memory-specifications"></a>İşlem ve bellek belirtimleri
 
 
@@ -110,6 +125,7 @@ To enable M-series hardware for a subscription and region, a support request mus
 |5. nesil     |**Sağlanan işlem**<br>-Intel® E5-2673 v4 (çok Iyi) 2,3-GHz, Intel® SP-8160 (ufuk Gölü) \* ve ıntel® 8272CL (Cascade Lake) 2,5 GHz \* işlemcileri<br>-En fazla 80 sanal çekirdek sağlama (1 sanal çekirdek = 1 hiper iş parçacığı)<br><br>**Sunucusuz işlem**<br>-Intel® E5-2673 v4 (çok Iyi) 2,3 GHz ve Intel® SP-8160 (ufuk Gölü) * işlemciler<br>-40 sanal çekirdeğe kadar otomatik ölçeklendirme (1 sanal çekirdek = 1 hiper iş parçacığı)|**Sağlanan işlem**<br>-vCore başına 5,1 GB<br>-408 GB 'a kadar sağlama<br><br>**Sunucusuz işlem**<br>-VCore başına 24 GB 'a kadar otomatik ölçeklendirme<br>-En fazla 120 GB 'a kadar otomatik ölçeklendirme|
 |Fsv2 serisi     |-Intel® 8168 (ufuk Gölü) işlemcileri<br>-Sürekli olarak 3,4 GHz 'nin tüm Core Turbo saat hızına ve en fazla 3,7 GHz bir adet tek çekirdekli Turbo saat hızına sahiptir.<br>-En fazla 72 sanal çekirdek sağlama (1 sanal çekirdek = 1 hiper iş parçacığı)|-vCore başına 1,9 GB<br>-136 GB 'a kadar sağlama|
 |M serisi     |-Intel® E7-8890 v3 2,5 GHz ve Intel® 8280D 2,7 GHz (Cascade Lake) işlemcileri<br>-En fazla 128 sanal çekirdek sağlama (1 sanal çekirdek = 1 hiper iş parçacığı)|-vCore başına 29 GB<br>-3,7 TB 'a kadar sağlama|
+|DC serisi     | -Intel XEON E-2288G işlemcileri<br>-Intel Software Guard uzantısı (Intel SGX))<br>-En fazla 8 sanal çekirdek sağlama (1 sanal çekirdek = 1 fiziksel çekirdek) | vCore başına 4,5 GB |
 
 \*[Sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) dinamik yönetim görünümünde, ıNTEL® SP-8160 (ufuk Gölü) işlemcileri kullanan veritabanları için donanım oluşturma Gen6 olarak görünür, ancak ıNTEL® 8272CL (Cascade Lake) kullanan veritabanları için donanım oluşturma, Gen7 olarak görünür. Tüm 5. nesil veritabanlarının kaynak sınırları, işlemci türünden (çok Iyi, ufuk Gölü veya Cascade Lake) bağımsız olarak aynıdır.
 
@@ -138,7 +154,7 @@ Bir veritabanı için genel bakış sayfasında, **fiyatlandırma katmanı** ba�
 
   ![donanımı değiştirme](./media/service-tiers-vcore/change-hardware.png)
 
-Bir havuz için genel bakış sayfasında **Yapılandır** ' ı seçin.
+Bir havuz için genel bakış sayfasında **Yapılandır**' ı seçin.
 
 Yapılandırmayı değiştirmek için adımları izleyin ve önceki adımlarda açıklandığı gibi donanım üretimini seçin.
 
@@ -225,6 +241,15 @@ On the **Details** page, provide the following:
 
 Approved support requests are typically fulfilled within 5 business days.
 -->
+
+#### <a name="dc-series"></a>DC serisi
+
+> [!NOTE]
+> DC-Series Şu anda **genel önizleme** aşamasındadır.
+
+DC-Series şu bölgelerde kullanılabilir: Kanada Orta, Kanada Doğu, Doğu ABD, Kuzey Avrupa, UK Güney, Batı Avrupa, Batı ABD.
+
+Şu anda desteklenmeyen bir bölgede DC Serisi gerekiyorsa, [Azure SQL veritabanı ve SQL yönetilen örneği Için istek kotası artışlarına ilişkin](quota-increase-request.md)yönergeleri izleyerek [bir destek bileti gönderebilirsiniz](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

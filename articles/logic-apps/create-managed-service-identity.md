@@ -3,35 +3,52 @@ title: Yönetilen kimliklerle kimlik doğrulaması
 description: Yönetilen bir kimlik kullanarak kimlik bilgileriyle veya gizli dizileri ile oturum açmadan Azure Active Directory korunan kaynaklara erişin
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 10/27/2020
-ms.openlocfilehash: 1152c8b72bcb830a7ba4efa053d3ffff667f9dc8
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.date: 01/15/2021
+ms.openlocfilehash: 9ac8a23569d9a85787768419a0377967026e9bd9
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034178"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251605"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Azure Logic Apps içindeki yönetilen kimlikleri kullanarak Azure kaynaklarına erişimi kimlik doğrulaması
 
-Azure Active Directory (Azure AD) tarafından korunan diğer kaynaklara kolayca erişmek ve oturum açmadan kimliğinizi doğrulamak için, mantıksal uygulamanız kimlik bilgileri veya gizli dizileri yerine yönetilen bir [kimlik](../active-directory/managed-identities-azure-resources/overview.md) (eski adıyla YÖNETILEN HIZMET KIMLIĞI veya MSI) kullanabilir. Azure bu kimliği sizin için yönetir ve gizli dizi sağlamak veya döndürmek zorunda olmadığınızdan kimlik bilgilerinizin güvenliğinin sağlanmasına yardımcı olur.
+Azure Active Directory (Azure AD) tarafından korunan diğer kaynaklara kolayca erişmek ve kimliğinizi doğrulamak için, mantıksal uygulamanız kimlik bilgileri, gizlilikler veya Azure AD belirteçleri yerine [yönetilen bir kimlik](../active-directory/managed-identities-azure-resources/overview.md) (eski adıyla YÖNETILEN HIZMET KIMLIĞI veya MSI) kullanabilir. Azure bu kimliği sizin için yönetir ve gizli dizileri yönetmeniz veya doğrudan Azure AD belirteçlerini kullanabilmeniz için kimlik bilgilerinizin güvenliğini sağlamaya yardımcı olur.
 
-Azure Logic Apps hem [*sistem tarafından atanan*](../active-directory/managed-identities-azure-resources/overview.md) hem de [*Kullanıcı tarafından atanan*](../active-directory/managed-identities-azure-resources/overview.md) yönetilen kimlikleri destekler. Mantıksal uygulamanız, sistem tarafından atanan kimlik veya *tek* bir kullanıcı tarafından atanan kimlik kullanabilir, bu da bir Logic Apps grubu genelinde paylaşabilir, ancak ikisini birden kullanamazsınız. Şu anda yalnızca [belirli yerleşik Tetikleyiciler ve eylemler](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound) , yönetilmeyen bağlayıcılar veya bağlantılar değil, yönetilen kimlikleri destekler, örneğin:
+Azure Logic Apps hem [*sistem tarafından atanan*](../active-directory/managed-identities-azure-resources/overview.md) hem de [*Kullanıcı tarafından atanan*](../active-directory/managed-identities-azure-resources/overview.md) yönetilen kimlikleri destekler. Mantıksal uygulamanız veya tek tek bağlantılarınız, sistem tarafından atanan kimlik veya *tek* bir kullanıcı tarafından atanan kimlik kullanabilir, bu da bir Logic Apps grubu genelinde paylaşabilir, ancak ikisini birden kullanamazsınız.
 
-* HTTP
-* Azure İşlevleri
+## <a name="where-can-logic-apps-use-managed-identities"></a>Logic Apps yönetilen kimlikleri nerede kullanabilir?
+
+Şu anda yalnızca [belirli yerleşik Tetikleyiciler ve eylemler](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions) ve Azure AD OAuth ' ı destekleyen [özel yönetilen bağlayıcılar](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions) , kimlik doğrulaması için yönetilen bir kimlik kullanabilir. Örneğin, bir seçim aşağıda verilmiştir:
+
+**Yerleşik Tetikleyiciler ve eylemler**
+
 * Azure API Management
 * Azure Uygulama Hizmetleri
+* Azure İşlevleri
+* HTTP
+* HTTP + Web kancası
+
+**Yönetilen bağlayıcılar**
+
+* Azure Otomasyonu
+* Azure Event Grid
+* Azure Key Vault
+* Azure İzleyici Günlükleri
+* Azure Resource Manager
+* Azure AD ile HTTP
+
+Yönetilen bağlayıcılar için destek şu anda önizlemededir. Geçerli liste için, bkz. [Tetikleyiciler ve kimlik doğrulamasını destekleyen eylemler Için kimlik doğrulama türleri](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions).
 
 Bu makalede mantıksal uygulamanız için her iki tür yönetilen kimliğin nasıl ayarlanacağı gösterilmektedir. Daha fazla bilgi için şu konulara bakın:
 
-* [Yönetilen kimlikleri destekleyen Tetikleyiciler ve eylemler](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
-* [Giden aramalarda desteklenen kimlik doğrulama türleri](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
+* [Yönetilen kimlikleri destekleyen Tetikleyiciler ve eylemler](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)
 * [Mantıksal uygulamalar için yönetilen kimliklerde sınırlamalar](../logic-apps/logic-apps-limits-and-config.md#managed-identity)
 * [Yönetilen kimliklerle Azure AD kimlik doğrulamasını destekleyen Azure hizmetleri](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir Azure hesabı ve aboneliği Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/). Hem yönetilen kimlik hem de erişmeniz gereken hedef Azure kaynağının aynı Azure aboneliğini kullanması gerekir.
 
@@ -39,7 +56,7 @@ Bu makalede mantıksal uygulamanız için her iki tür yönetilen kimliğin nas�
 
 * Erişmek istediğiniz hedef Azure kaynağı. Bu kaynakta, mantıksal uygulamanın hedef kaynağa erişim kimlik doğrulamasını sağlayan yönetilen kimlik için bir rol ekleyeceksiniz.
 
-* [Yönetilen kimlikleri destekleyen tetikleyiciyi veya eylemleri](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound) kullanmak istediğiniz mantıksal uygulama
+* [Yönetilen kimlikleri destekleyen tetikleyiciyi veya eylemleri](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)kullanmak istediğiniz mantıksal uygulama.
 
 ## <a name="enable-managed-identity"></a>Yönetilen kimliği etkinleştirme
 
@@ -54,7 +71,7 @@ Kullanmak istediğiniz yönetilen kimliği ayarlamak için bu kimliğin bağlant
 
 Kullanıcı tarafından atanan kimliklerin aksine, sistem tarafından atanan kimliği el ile oluşturmanız gerekmez. Mantıksal uygulamanız için sistem tarafından atanan kimliği ayarlamak için kullanabileceğiniz seçenekler şunlardır:
 
-* [Azure Portal](#azure-portal-system-logic-app)
+* [Azure portalı](#azure-portal-system-logic-app)
 * [Azure Resource Manager şablonları](#template-system-logic-app)
 
 <a name="azure-portal-system-logic-app"></a>
@@ -70,13 +87,13 @@ Kullanıcı tarafından atanan kimliklerin aksine, sistem tarafından atanan kim
    > [!NOTE]
    > Yalnızca tek bir yönetilen kimliğiniz olduğunu belirten bir hata alırsanız, mantıksal uygulamanız zaten Kullanıcı tarafından atanan kimlikle ilişkilendirilir. Sistem tarafından atanan kimliği ekleyebilmeniz için önce mantıksal uygulamanızdan Kullanıcı tarafından atanan kimliği *kaldırmanız* gerekir.
 
-   Mantıksal uygulamanız artık Azure Active Directory kayıtlı olan ve bir nesne KIMLIĞIYLE temsil edilen sistem tarafından atanan kimliği kullanabilir.
+   Mantıksal uygulamanız artık Azure AD 'ye kayıtlı olan ve bir nesne KIMLIĞIYLE temsil edilen sistem tarafından atanan kimliği kullanabilir.
 
    ![Sistem tarafından atanan kimliğin nesne KIMLIĞI](./media/create-managed-service-identity/object-id-system-assigned-identity.png)
 
    | Özellik | Değer | Açıklama |
    |----------|-------|-------------|
-   | **Nesne Kimliği** | <*kimlik-kaynak KIMLIĞI*> | Bir Azure AD kiracısında mantıksal uygulamanız için sistem tarafından atanan kimliği temsil eden bir genel benzersiz tanımlayıcı (GUID) |
+   | **Nesne kimliği** | <*kimlik-kaynak KIMLIĞI*> | Bir Azure AD kiracısında mantıksal uygulamanız için sistem tarafından atanan kimliği temsil eden bir genel benzersiz tanımlayıcı (GUID) |
    ||||
 
 1. Şimdi bu konunun ilerleyen kısımlarında bu [kimlik için kaynağa erişim sağlayan adımları](#access-other-resources) izleyin.
@@ -132,7 +149,7 @@ Azure mantıksal uygulama kaynak tanımınızı oluşturduğunda, `identity` nes
 
 Mantıksal uygulamanız için Kullanıcı tarafından atanan bir yönetilen kimlik ayarlamak için, önce bu kimliği ayrı bir tek başına Azure kaynağı olarak oluşturmanız gerekir. Kullanabileceğiniz seçenekler şunlardır:
 
-* [Azure Portal](#azure-portal-user-identity)
+* [Azure portalı](#azure-portal-user-identity)
 * [Azure Resource Manager şablonları](#template-user-identity)
 * Azure PowerShell
   * [Kullanıcı tarafından atanan kimlik oluşturma](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
@@ -162,10 +179,10 @@ Mantıksal uygulamanız için Kullanıcı tarafından atanan bir yönetilen kiml
 
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Abonelik** | Evet | <*Azure-abonelik-adı*> | Kullanılacak Azure aboneliğinin adı |
-   | **Kaynak grubu** | Evet | <*Azure-Resource-Group-Name*> | Kullanılacak kaynak grubunun adı. Yeni bir grup oluşturun veya mevcut bir grubu seçin. Bu örnek adlı yeni bir grup oluşturur `fabrikam-managed-identities-RG` . |
-   | **Bölge** | Evet | <*Azure-bölge*> | Kaynağınız hakkındaki bilgilerin depolanacağı Azure bölgesi. Bu örnek, "Batı ABD" kullanır. |
-   | **Ad** | Evet | <*Kullanıcı tarafından atanan kimlik-adı*> | Kullanıcı tarafından atanan kimliğinize verilecek ad. Bu örnekte `Fabrikam-user-assigned-identity` kullanılmıştır. |
+   | **Abonelik** | Yes | <*Azure-abonelik-adı*> | Kullanılacak Azure aboneliğinin adı |
+   | **Kaynak grubu** | Yes | <*Azure-Resource-Group-Name*> | Kullanılacak kaynak grubunun adı. Yeni bir grup oluşturun veya mevcut bir grubu seçin. Bu örnek adlı yeni bir grup oluşturur `fabrikam-managed-identities-RG` . |
+   | **Bölge** | Yes | <*Azure-bölge*> | Kaynağınız hakkındaki bilgilerin depolanacağı Azure bölgesi. Bu örnek, "Batı ABD" kullanır. |
+   | **Ad** | Yes | <*Kullanıcı tarafından atanan kimlik-adı*> | Kullanıcı tarafından atanan kimliğinize verilecek ad. Bu örnekte `Fabrikam-user-assigned-identity` kullanılmıştır. |
    |||||
 
    Bu ayrıntılar doğrulandıktan sonra, Azure yönetilen kimliğinizi oluşturur. Artık Kullanıcı tarafından atanan kimliği mantıksal uygulamanıza ekleyebilirsiniz. Mantıksal uygulamanıza birden fazla kullanıcı tarafından atanan kimlik ekleyemezsiniz.
@@ -284,7 +301,7 @@ Bu örnek, bir HTTP PUT isteği için mantıksal uygulama kaynak tanımını gö
 
 Kimlik doğrulaması için mantıksal uygulamanızın yönetilen kimliğini kullanabilmeniz için, kimliği kullanmayı planladığınız Azure kaynağında bu kimlik için erişim ayarlayın. Bu görevi gerçekleştirmek için, hedef Azure kaynağında ilgili kimliğe uygun rolü atayın. Kullanabileceğiniz seçenekler şunlardır:
 
-* [Azure Portal](#azure-portal-assign-access)
+* [Azure portalı](#azure-portal-assign-access)
 * [Azure Resource Manager şablonu](../role-based-access-control/role-assignments-template.md)
 * Azure PowerShell ([New-Azroleatama](/powershell/module/az.resources/new-azroleassignment))-daha fazla bilgi için bkz. [Azure RBAC ve Azure PowerShell kullanarak rol ataması ekleme](../role-based-access-control/role-assignments-powershell.md).
 * Azure CLı ([az rol atama oluşturma](/cli/azure/role/assignment?view=azure-cli-latest&preserve-view=true#az-role-assignment-create))-daha fazla bilgi için bkz. [Azure RBAC ve Azure CLI kullanarak rol ataması ekleme](../role-based-access-control/role-assignments-cli.md).
@@ -293,6 +310,8 @@ Kimlik doğrulaması için mantıksal uygulamanızın yönetilen kimliğini kull
 <a name="azure-portal-assign-access"></a>
 
 ### <a name="assign-access-in-the-azure-portal"></a>Azure portal erişim atama
+
+Yönetilen kimliğin erişimini istediğiniz hedef Azure kaynağında, hedef kaynağa bu kimlik rol tabanlı erişim izni verin.
 
 1. [Azure Portal](https://portal.azure.com), yönetilen kimliğinizin erişimini istediğiniz Azure kaynağına gidin.
 
@@ -345,7 +364,7 @@ Kimlik doğrulaması için mantıksal uygulamanızın yönetilen kimliğini kull
 
 ## <a name="authenticate-access-with-managed-identity"></a>Yönetilen kimlikle erişimin kimliğini doğrulama
 
-[Mantıksal uygulamanız için yönetilen kimliği etkinleştirdikten](#azure-portal-system-logic-app) ve [Bu kimliğe hedef kaynağa veya varlığa erişim izni](#access-other-resources)verdikten sonra, bu kimliği [yönetilen kimlikleri destekleyen Tetikleyiciler ve eylemler](logic-apps-securing-a-logic-app.md#managed-identity-authentication)' de kullanabilirsiniz.
+[Mantıksal uygulamanız için yönetilen kimliği etkinleştirdikten](#azure-portal-system-logic-app) ve [Bu kimliğe hedef kaynağa veya varlığa erişim izni](#access-other-resources)verdikten sonra, bu kimliği [yönetilen kimlikleri destekleyen Tetikleyiciler ve eylemler](logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)' de kullanabilirsiniz.
 
 > [!IMPORTANT]
 > Sistem tarafından atanan kimliği kullanmak istediğiniz bir Azure işleviniz varsa, önce [Azure işlevleri için kimlik doğrulamasını etkinleştirin](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-functions).
@@ -354,44 +373,120 @@ Bu adımlarda, Azure portal aracılığıyla yönetilen kimliğin bir tetikleyic
 
 1. [Azure Portal](https://portal.azure.com)mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 
-1. Henüz yapmadıysanız, [yönetilen kimlikleri destekleyen tetikleyiciyi veya eylemi](logic-apps-securing-a-logic-app.md#managed-identity-authentication)ekleyin.
+1. Henüz yapmadıysanız, [yönetilen kimlikleri destekleyen tetikleyiciyi veya eylemi](logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)ekleyin.
 
-   Örneğin, HTTP tetikleyicisi veya eylemi mantıksal uygulamanız için etkinleştirdiğiniz sistem tarafından atanan kimliği kullanabilir. Genel olarak, HTTP tetikleyicisi veya eylemi, erişmek istediğiniz kaynağı veya varlığı belirtmek için bu özellikleri kullanır:
+   > [!NOTE]
+   > Tüm tetikleyiciler ve eylemler desteği, kimlik doğrulama türü eklemenize izin vermez. Daha fazla bilgi için bkz. [Tetikleyiciler ve kimlik doğrulamasını destekleyen eylemler Için kimlik doğrulama türleri](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions).
 
-   | Özellik | Gerekli | Açıklama |
-   |----------|----------|-------------|
-   | **Yöntem** | Evet | Çalıştırmak istediğiniz işlem tarafından kullanılan HTTP yöntemi |
-   | **URI** | Evet | Hedef Azure kaynağına veya varlığına erişmek için uç nokta URL 'SI. URI sözdizimi genellikle Azure kaynağı veya hizmeti için [kaynak kimliğini](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) içerir. |
-   | **Bilgisinde** | Hayır | İçerik türü gibi giden isteğe dahil etmek veya istediğiniz tüm üst bilgi değerleri |
-   | **Sorgular** | Hayır | Belirli bir işlemin parametresi ya da çalıştırmak istediğiniz işlem için API sürümü gibi isteğe dahil etmek istediğiniz veya isteğe dahil etmek istediğiniz sorgu parametreleri |
-   | **Kimlik Doğrulaması** | Evet | Hedef kaynağa veya varlığa erişimi doğrulamak için kullanılacak kimlik doğrulaması türü |
-   ||||
+1. Eklediğiniz tetikleyici veya eylemde şu adımları izleyin:
 
-   Belirli bir örnek olarak, [anlık görüntü blobu işlemini](/rest/api/storageservices/snapshot-blob) , Azure depolama hesabındaki bir blob üzerinde daha önce Kimliğiniz için daha önce ayarladığınız bir blob üzerinde çalıştırmak istediğinizi varsayalım. Ancak, [Azure Blob depolama Bağlayıcısı](/connectors/azureblob/) Şu anda bu işlemi sunmaz. Bunun yerine, [http eylemini](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) veya başka bir [BLOB hizmeti REST API işlemini](/rest/api/storageservices/operations-on-blobs)kullanarak bu işlemi çalıştırabilirsiniz.
+   * **Yönetilen kimlik kullanımını destekleyen yerleşik Tetikleyiciler ve eylemler**
 
-   > [!IMPORTANT]
-   > HTTP isteklerini ve yönetilen kimlikleri kullanarak güvenlik duvarlarının arkasındaki Azure depolama hesaplarına erişmek için, depolama hesabınızı [Güvenilen Microsoft hizmetlerinin erişimine izin veren özel durumla](../connectors/connectors-create-api-azureblobstorage.md#access-trusted-service)ayarladığınızdan emin olun.
+     1. Özellik zaten görünmüyorsa, **kimlik doğrulama** özelliğini ekleyin.
 
-   [Anlık görüntü blobu işlemini](/rest/api/storageservices/snapshot-blob)ÇALıŞTıRMAK için http eylemi şu özellikleri belirtir:
+     1. **Kimlik doğrulama türü** altında **yönetilen kimlik**' i seçin.
 
-   | Özellik | Gerekli | Örnek değer | Açıklama |
-   |----------|----------|---------------|-------------|
-   | **Yöntem** | Evet | `PUT`| Anlık görüntü blobu işleminin kullandığı HTTP yöntemi |
-   | **URI** | Evet | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | Bu söz dizimini kullanan Azure genel (genel) ortamındaki bir Azure Blob depolama dosyasının kaynak KIMLIĞI |
-   | **Bilgisinde** | Azure depolama için | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` <p>`x-ms-date` = `@{formatDateTime(utcNow(),'r'}` | `x-ms-blob-type` `x-ms-version` `x-ms-date` Azure depolama işlemleri için,, ve üst bilgi değerleri gereklidir. <p><p>**Önemli**: giden http tetikleyicisinde ve Azure depolama için eylem isteklerinde, üst bilgi, `x-ms-version` çalıştırmak istediğiniz işlem IÇIN özelliği ve API sürümünü gerektirir. `x-ms-date`Geçerli tarih olmalıdır. Aksi takdirde, mantıksal uygulamanız hata vererek başarısız olur `403 FORBIDDEN` . Geçerli tarihi gerekli biçimde almak için, örnek değerindeki ifadesini kullanabilirsiniz. <p>Daha fazla bilgi için şu konulara bakın: <p><p>- [İstek üstbilgileri-anlık görüntü blobu](/rest/api/storageservices/snapshot-blob#request) <br>- [Azure depolama hizmetleri için sürüm oluşturma](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
-   | **Sorgular** | Yalnızca anlık görüntü blobu işlemi için | `comp` = `snapshot` | İşlemin sorgu parametresi adı ve değeri. |
-   |||||
+     Daha fazla bilgi için bkz. [Örneğin, yönetilen bir kimlikle yerleşik tetikleyici veya eylem kimlik doğrulaması](#authenticate-built-in-managed-identity).
+ 
+   * **Yönetilen bir kimlik kullanmayı destekleyen yönetilen bağlayıcı Tetikleyicileri ve eylemleri**
 
-   Bu özellik değerlerinin tümünü gösteren örnek HTTP eylemi aşağıda verilmiştir:
+     1. Kiracı seçimi sayfasında, **yönetilen kimlikle Bağlan**' ı seçin.
 
-   ![Azure kaynağına erişmek için HTTP eylemi ekleme](./media/create-managed-service-identity/http-action-example.png)
+     1. Sonraki sayfada bir bağlantı adı girin.
 
-1. Şimdi HTTP eylemine **kimlik doğrulama** özelliğini ekleyin. **Yeni parametre Ekle** listesinden **kimlik doğrulaması**' nı seçin.
+        Varsayılan olarak, bir mantıksal uygulama aynı anda yalnızca bir yönetilen kimliği etkinleştirmeyi desteklediğinden, yönetilen kimlik listesi yalnızca şu anda etkin olan yönetilen kimliği gösterir, örneğin:
+
+        ![Bağlantı adı sayfasını ve seçilen yönetilen kimliği gösteren ekran görüntüsü.](./media/create-managed-service-identity/system-assigned-managed-identity.png)
+
+     Daha fazla bilgi için bkz. [örnek: yönetilen bağlayıcı tetikleyicisinin veya yönetilen bir kimlikle eylem kimlik doğrulaması](#authenticate-managed-connector-managed-identity).
+
+     Yönetilen bir kimlik kullanmak için oluşturduğunuz bağlantılar, yalnızca yönetilen bir kimlikle çalışacak özel bir bağlantı türüdür. Çalışma zamanında, bağlantı mantıksal uygulamada etkinleştirilen yönetilen kimliği kullanır. Bu yapılandırma, `parameters` `$connections` Kullanıcı tarafından atanan kimliğin etkinleştirilmesi durumunda kimliğin kaynak kimliği ile birlikte bağlantı kaynak kimliği işaretçisi içeren nesnesini içeren mantıksal uygulama kaynak tanımı nesnesine kaydedilir.
+
+     Bu örnek, mantıksal uygulama sistem tarafından atanan yönetilen kimliği etkinleştirdiğinde yapılandırmanın nasıl göründüğünü gösterir:
+
+     ```json
+     "parameters": {
+        "$connections": {
+           "value": {
+              "<action-name>": {
+                 "connectionId": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/connections/{connection-name}",
+                 "connectionName": "{connection-name}",
+                 "connectionProperties": {
+                    "authentication": {
+                       "type": "ManagedServiceIdentity"
+                    }
+                 },
+                 "id": "/subscriptions/{Azure-subscription-ID}/providers/Microsoft.Web/locations/{Azure-region}/managedApis/{managed-connector-type}"
+              }
+           }
+        }
+     }
+     ```
+
+     Bu örnek, mantıksal uygulama kullanıcı tarafından atanan yönetilen kimliği etkinleştirdiğinde yapılandırmanın nasıl göründüğünü gösterir:
+
+     ```json
+     "parameters": {
+        "$connections": {
+           "value": {
+              "<action-name>": {
+                 "connectionId": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/connections/{connection-name}",
+                 "connectionName": "{connection-name}",
+                 "connectionProperties": {
+                    "authentication": {
+                       "identity": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/microsoft.managedidentity/userassignedidentities/{managed-identity-name}",
+                       "type": "ManagedServiceIdentity"
+                    }
+                 },
+                 "id": "/subscriptions/{Azure-subscription-ID}/providers/Microsoft.Web/locations/{Azure-region}/managedApis/{managed-connector-type}"
+              }
+           }
+        }
+     }
+     ```
+
+     Çalışma zamanı sırasında Logic Apps hizmeti, mantıksal uygulamadaki herhangi bir yönetilen bağlayıcı tetikleyicisi ve eylemi yönetilen kimliği kullanacak şekilde ayarlayıp ayarlamadığını ve tüm gerekli izinlerin tetikleyici ve eylemler tarafından belirtilen hedef kaynaklara erişmek için yönetilen kimliği kullanacak şekilde ayarlandığını denetler. Başarılı olursa, Logic Apps hizmeti yönetilen kimlikle ilişkili Azure AD belirtecini alır ve hedef kaynağa erişimin kimliğini doğrulamak ve tetikleyici ve Eylemler ' de yapılandırılan işlemi gerçekleştirmek için bu kimliği kullanır.
+
+<a name="authenticate-built-in-managed-identity"></a>
+
+#### <a name="example-authenticate-built-in-trigger-or-action-with-a-managed-identity"></a>Örnek: yönetilen bir kimlikle yerleşik tetikleyici veya eylem için kimlik doğrulama
+
+HTTP tetikleyicisi veya eylemi, mantıksal uygulamanız için etkinleştirdiğiniz sistem tarafından atanan kimliği kullanabilir. Genel olarak, HTTP tetikleyicisi veya eylemi, erişmek istediğiniz kaynağı veya varlığı belirtmek için bu özellikleri kullanır:
+
+| Özellik | Gerekli | Açıklama |
+|----------|----------|-------------|
+| **Yöntem** | Yes | Çalıştırmak istediğiniz işlem tarafından kullanılan HTTP yöntemi |
+| **URI** | Yes | Hedef Azure kaynağına veya varlığına erişmek için uç nokta URL 'SI. URI sözdizimi genellikle Azure kaynağı veya hizmeti için [kaynak kimliğini](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) içerir. |
+| **Üst Bilgiler** | No | İçerik türü gibi giden isteğe dahil etmek veya istediğiniz tüm üst bilgi değerleri |
+| **Sorgular** | No | Belirli bir işlemin parametresi ya da çalıştırmak istediğiniz işlem için API sürümü gibi isteğe dahil etmek istediğiniz veya isteğe dahil etmek istediğiniz sorgu parametreleri |
+| **Kimlik Doğrulaması** | Yes | Hedef kaynağa veya varlığa erişimi doğrulamak için kullanılacak kimlik doğrulaması türü |
+||||
+
+Belirli bir örnek olarak, [anlık görüntü blobu işlemini](/rest/api/storageservices/snapshot-blob) , Azure depolama hesabındaki bir blob üzerinde daha önce Kimliğiniz için daha önce ayarladığınız bir blob üzerinde çalıştırmak istediğinizi varsayalım. Ancak, [Azure Blob depolama Bağlayıcısı](/connectors/azureblob/) Şu anda bu işlemi sunmaz. Bunun yerine, [http eylemini](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) veya başka bir [BLOB hizmeti REST API işlemini](/rest/api/storageservices/operations-on-blobs)kullanarak bu işlemi çalıştırabilirsiniz.
+
+> [!IMPORTANT]
+> HTTP isteklerini ve yönetilen kimlikleri kullanarak güvenlik duvarlarının arkasındaki Azure depolama hesaplarına erişmek için, depolama hesabınızı [Güvenilen Microsoft hizmetlerinin erişimine izin veren özel durumla](../connectors/connectors-create-api-azureblobstorage.md#access-trusted-service)ayarladığınızdan emin olun.
+
+[Anlık görüntü blobu işlemini](/rest/api/storageservices/snapshot-blob)ÇALıŞTıRMAK için http eylemi şu özellikleri belirtir:
+
+| Özellik | Gerekli | Örnek değer | Description |
+|----------|----------|---------------|-------------|
+| **Yöntem** | Yes | `PUT`| Anlık görüntü blobu işleminin kullandığı HTTP yöntemi |
+| **URI** | Yes | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | Bu söz dizimini kullanan Azure genel (genel) ortamındaki bir Azure Blob depolama dosyasının kaynak KIMLIĞI |
+| **Üst Bilgiler** | Azure depolama için | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` <p>`x-ms-date` = `@{formatDateTime(utcNow(),'r'}` | `x-ms-blob-type` `x-ms-version` `x-ms-date` Azure depolama işlemleri için,, ve üst bilgi değerleri gereklidir. <p><p>**Önemli**: giden http tetikleyicisinde ve Azure depolama için eylem isteklerinde, üst bilgi, `x-ms-version` çalıştırmak istediğiniz işlem IÇIN özelliği ve API sürümünü gerektirir. `x-ms-date`Geçerli tarih olmalıdır. Aksi takdirde, mantıksal uygulamanız hata vererek başarısız olur `403 FORBIDDEN` . Geçerli tarihi gerekli biçimde almak için, örnek değerindeki ifadesini kullanabilirsiniz. <p>Daha fazla bilgi için şu konulara bakın: <p><p>- [İstek üstbilgileri-anlık görüntü blobu](/rest/api/storageservices/snapshot-blob#request) <br>- [Azure depolama hizmetleri için sürüm oluşturma](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
+| **Sorgular** | Yalnızca anlık görüntü blobu işlemi için | `comp` = `snapshot` | İşlemin sorgu parametresi adı ve değeri. |
+|||||
+
+Bu özellik değerlerinin tümünü gösteren örnek HTTP eylemi aşağıda verilmiştir:
+
+![Azure kaynağına erişmek için HTTP eylemi ekleme](./media/create-managed-service-identity/http-action-example.png)
+
+1. HTTP eylemini ekledikten sonra, HTTP eylemine **kimlik doğrulama** özelliğini ekleyin. **Yeni parametre Ekle** listesinden **kimlik doğrulaması**' nı seçin.
 
    ![HTTP eylemine "Authentication" özelliği Ekle](./media/create-managed-service-identity/add-authentication-property.png)
 
    > [!NOTE]
-   > Tüm tetikleyiciler ve eylemler desteği, kimlik doğrulama türü eklemenize izin vermez. Daha fazla bilgi için bkz. [giden çağrılara kimlik doğrulama ekleme](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
+   > Tüm tetikleyiciler ve eylemler desteği, kimlik doğrulama türü eklemenize izin vermez. Daha fazla bilgi için bkz. [Tetikleyiciler ve kimlik doğrulamasını destekleyen eylemler Için kimlik doğrulama türleri](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions).
 
 1. **Kimlik doğrulama türü** listesinden **yönetilen kimlik**' i seçin.
 
@@ -425,13 +520,39 @@ Bu adımlarda, Azure portal aracılığıyla yönetilen kimliğin bir tetikleyic
 
 1. Mantıksal uygulamayı istediğiniz şekilde oluşturmaya devam edin.
 
+<a name="authenticate-managed-connector-managed-identity"></a>
+
+#### <a name="example-authenticate-managed-connector-trigger-or-action-with-a-managed-identity"></a>Örnek: yönetilen bağlayıcı tetikleyicisinin veya yönetilen bir kimlikle eylem kimlik doğrulaması
+
+**Kaynak okuma** Azure Resource Manager eylemi, mantıksal uygulamanız için etkinleştirdiğiniz yönetilen kimliği kullanabilir. Bu örnek, sistem tarafından atanan yönetilen kimliğin nasıl kullanılacağını gösterir.
+
+1. İş akışınıza eylem ekledikten sonra, kiracı seçimi sayfasında, **yönetilen kimlikle Bağlan**' ı seçin.
+
+   ![Azure Resource Manager eylemi gösteren ekran görüntüsü ve "yönetilen kimliğe Bağlan" seçilidir.](./media/create-managed-service-identity/select-connect-managed-identity.png)
+
+   Eylem artık mantıksal uygulamada etkin olan yönetilen kimlik türünü içeren yönetilen kimlik listesi olan bağlantı adı sayfasını gösterir.
+
+1. Bağlantı adı sayfasında bağlantı için bir ad girin. Yönetilen kimlik listesinden, bu örnekte **sistem tarafından atanan yönetilen kimlik** olan yönetilen kimliği seçin ve **Oluştur**' u seçin. Kullanıcı tarafından atanan bir yönetilen kimliği etkinleştirdiyseniz, bunun yerine kimliği seçin.
+
+   ![Girilen bağlantı adı ve "sistem tarafından atanan yönetilen kimlik" seçiliyken Azure Resource Manager eylemi gösteren ekran görüntüsü.](./media/create-managed-service-identity/system-assigned-managed-identity.png)
+
+   Yönetilen kimlik etkinleştirilmemişse, bağlantıyı oluşturmaya çalıştığınızda aşağıdaki hata görüntülenir:
+
+   *Mantıksal uygulamanız için yönetilen kimliği etkinleştirmeniz ve ardından hedef kaynaktaki kimliğe gerekli erişim vermeniz gerekir.*
+
+   ![Yönetilen kimlik etkin olmadığında hata Azure Resource Manager eylemi gösteren ekran görüntüsü.](./media/create-managed-service-identity/system-assigned-managed-identity-disabled.png)
+
+1. Bağlantı başarıyla oluşturulduktan sonra, tasarımcı yönetilen kimlik kimlik doğrulamasını kullanarak herhangi bir dinamik değer, içerik veya şema getirebilir.
+
+1. Mantıksal uygulamayı istediğiniz şekilde oluşturmaya devam edin.
+
 <a name="remove-identity"></a>
 
 ## <a name="disable-managed-identity"></a>Yönetilen kimliği devre dışı bırak
 
 Mantıksal uygulamanız için yönetilen bir kimlik kullanmayı durdurmak için şu seçeneklere sahipsiniz:
 
-* [Azure Portal](#azure-portal-disable)
+* [Azure portalı](#azure-portal-disable)
 * [Azure Resource Manager şablonları](#template-disable)
 * Azure PowerShell
   * [Rol atamasını Kaldır](../role-based-access-control/role-assignments-powershell.md)

@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: conceptual
 ms.service: iot-hub
 ms.date: 11/06/2020
-ms.openlocfilehash: 2fabf75f74ccf57f57e7b47720ceda8885420842
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 35134f3ee4946d294ba6c6f71bd3953823d6d138
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460909"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250037"
 ---
 # <a name="monitoring-azure-iot-hub"></a>Azure IoT Hub izleme
 
@@ -87,7 +87,7 @@ Azure IoT Hub için toplanan platform ölçümlerinin bir listesi için bkz. [az
 
 Sayı birimlerinde toplanan IoT Hub platform ölçümleri için bazı toplamalar kullanılamayabilir veya kullanılamıyor olabilir. Daha fazla bilgi edinmek için bkz. [Azure IoT Hub veri başvurusunda desteklenen toplamalar](monitor-iot-hub-reference.md#supported-aggregations).
 
-[Yönlendirme ölçümleri](monitor-iot-hub-reference.md#routing-metrics)gibi bazı IoT Hub ölçümleri çok boyutlu. Bu ölçümler için, [filtre](../azure-monitor/platform/metrics-charts.md#apply-filters-to-charts) uygulayabilir ve bir boyuta göre grafiklerinize [bölme](../azure-monitor/platform/metrics-charts.md#apply-splitting-to-a-chart) uygulayabilirsiniz.
+[Yönlendirme ölçümleri](monitor-iot-hub-reference.md#routing-metrics)gibi bazı IoT Hub ölçümleri çok boyutlu. Bu ölçümler için, [filtre](../azure-monitor/platform/metrics-charts.md#filters) uygulayabilir ve bir boyuta göre grafiklerinize [bölme](../azure-monitor/platform/metrics-charts.md#apply-splitting) uygulayabilirsiniz.
 
 ## <a name="analyzing-logs"></a>Günlükler çözümleniyor
 

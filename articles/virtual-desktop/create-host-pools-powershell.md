@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 10/02/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a47126a48ea63efd4e49097428679b85b7a95a61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ec900f0537030d3ed0d1c875e8125806159bd51
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667172"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251463"
 ---
 # <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>PowerShell ile Windows sanal masaüstü konak havuzu oluşturma
 
@@ -124,7 +124,7 @@ Windows sanal masaüstü aracılarını kaydettirmek için, her bir sanal makine
 
 Aşağıdaki durumlardan birini kullanıyorsanız aracıyı güncelleştirmeniz gerekir:
 
-- Önceden kaydedilmiş bir oturumu yeni bir konak havuzuna geçirmek istiyorsunuz
+- Daha önce kayıtlı bir oturum konağını yeni bir konak havuzuna geçirmek istiyorsunuz
 - Oturum Ana bilgisayarı, bir güncelleştirmeden sonra konak havuzunuzdaki görünmüyor
 
 Aracıyı güncelleştirmek için:

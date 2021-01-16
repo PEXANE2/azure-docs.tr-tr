@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: f729c00d3b78631a32013ec9453302584cecbd16
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 82161a8f66dd717a9dc448a743b818a9ab9938db
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962440"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250987"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Kullanılabilirlik Alanları arasında bir Azure Service Fabric kümesi dağıtma
 Azure 'daki Kullanılabilirlik Alanları, uygulamalarınızı ve verilerinizi veri merkezi hatalarından koruyan yüksek kullanılabilirliğe sahip bir tekliftir. Bir kullanılabilirlik alanı, bir Azure bölgesi içinde bağımsız güç, soğutma ve ağ ile donatılmış benzersiz bir fiziksel konumdur.
@@ -345,7 +345,7 @@ Bir sanal makine ölçek kümesindeki bölgeleri etkinleştirmek için, sanal ma
 
 * İlk değer, sanal makine ölçek kümesinde var olan Kullanılabilirlik Alanları belirten **Zones** özelliğidir.
 * İkinci değer, true olarak ayarlanması gereken "singlePlacementGroup" özelliğidir. **3 AZ ' de yayılmış ölçek kümesi, "singlePlacementGroup = true" ile birlikte 300 VM 'ye ölçeklendirebilir.**
-* Üçüncü değer "bölge bakiyesi" ve isteğe bağlıdır; bu, doğru olarak ayarlandıysa katı bölge dengelemesi sağlar. [Bölge Dengeleme](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing)hakkında bilgi edinin.
+* Üçüncü değer "bölge bakiyesi" olup, doğru olarak ayarlandıysa katı bölge dengelemesi sağlar. VM 'lerin bölgeler arasında dengesiz şekilde dağıtılmasını önlemek için bunu true olarak ayarlamayı öneririz. [Bölge Dengeleme](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing)hakkında bilgi edinin.
 * FaultDomain ve UpgradeDomain geçersiz kılmalarını yapılandırmak için gerekli değildir.
 
 ```json
@@ -357,7 +357,7 @@ Bir sanal makine ölçek kümesindeki bölgeleri etkinleştirmek için, sanal ma
     "zones": ["1", "2", "3"],
     "properties": {
         "singlePlacementGroup": "true",
-        "zoneBalance": false
+        "zoneBalance": true
     }
 }
 ```

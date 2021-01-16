@@ -6,12 +6,12 @@ ms.author: bwren
 ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: 5dcb86ff4af2a68ecf0bb361e6da4f788ea32b62
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 121de67ddb251e7431873c76e379eb223ceacd0d
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881302"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250681"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>Öğretici: Azure Izleyici 'de ölçüm grafiği oluşturma
 Ölçüm değerleri, ölçüm değerlerinden grafikler oluşturmanıza, eğilimleri görsel olarak ilişkilendirmenize ve ölçüm değerlerinde ani artışları ve DIP 'leri araştırmanıza olanak tanıyan Azure portal Azure Izleyici 'nin bir özelliğidir. Azure kaynaklarınızın sistem durumunu ve kullanımını araştırmak veya özel ölçülerden grafikler çizmek için ölçüm gezginini kullanın. 
@@ -27,7 +27,7 @@ Aşağıda, bu makalede özetlenen yordamdan daha kapsamlı bir senaryo göstere
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4qO59]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için izlemeniz gereken bir Azure kaynağınız olması gerekir. Azure aboneliğinizde ölçümleri destekleyen herhangi bir kaynağı kullanabilirsiniz. Bir kaynağın ölçümleri destekleyip desteklemediğini anlamak için Azure portal menüsüne gidin ve menünün **izleme** bölümünde bir **ölçümler** seçeneği olduğunu doğrulayın.
 
@@ -70,20 +70,20 @@ Grafiğin ani veya DIP gibi ilginç bir alanını araştırmak için **zaman fı
 ## <a name="apply-dimension-filters-and-splitting"></a>Boyut filtrelerini uygulama ve bölme
 Ölçümleriniz üzerinde ek analizler gerçekleştirmenize ve verilerinizde olası aykırı değerleri tanımlamanızı sağlayan gelişmiş özellikler için aşağıdaki referanslara bakın.
 
-- [Filtreleme](../platform/metrics-charts.md#apply-filters-to-charts) , grafiğe hangi boyut değerlerinin ekleneceğini seçmenizi sağlar. Örneğin, bir *sunucu yanıt süresi* ölçümünü grafikleme sırasında yalnızca başarılı istekleri göstermek isteyebilirsiniz. 
+- [Filtreleme](../platform/metrics-charts.md#filters) , grafiğe hangi boyut değerlerinin ekleneceğini seçmenizi sağlar. Örneğin, bir *sunucu yanıt süresi* ölçümünü grafikleme sırasında yalnızca başarılı istekleri göstermek isteyebilirsiniz. 
 
-- Grafiğe, grafiğin her bir boyutun değeri için ayrı satırlar görüntüleyip görüntülemediğini veya değerleri tek bir satıra toplamayacağını [denetler.](../platform/metrics-charts.md#apply-splitting-to-a-chart) Örneğin, tüm sunucu örneklerinde ortalama yanıt süresi için bir satır görmek isteyebilirsiniz veya her bir sunucu için ayrı satırlar istemeniz gerekebilir. 
+- Grafiğe, grafiğin her bir boyutun değeri için ayrı satırlar görüntüleyip görüntülemediğini veya değerleri tek bir satıra toplamayacağını [denetler.](../platform/metrics-charts.md#apply-splitting) Örneğin, tüm sunucu örneklerinde ortalama yanıt süresi için bir satır görmek isteyebilirsiniz veya her bir sunucu için ayrı satırlar istemeniz gerekebilir. 
 
 Filtreleme ve bölme uygulanmış [grafiklerin örneklerine](../platform/metric-chart-samples.md) bakın.
 
 ## <a name="advanced-chart-settings"></a>Gelişmiş grafik ayarları
 
-Grafik stilini, başlığı özelleştirebilir ve gelişmiş grafik ayarlarını değiştirebilirsiniz. Özelleştirme ile işiniz bittiğinde çalışmanızı kaydetmek için bir panoya sabitleyin. Ayrıca, ölçüm uyarılarını yapılandırabilirsiniz. Azure Izleyici Ölçüm Gezgini 'nin bu ve diğer gelişmiş özellikleri hakkında bilgi edinmek için bkz. [azure Ölçüm Gezgini gelişmiş özellikleri](../platform/metrics-charts.md#lock-boundaries-of-chart-y-axis) .
+Grafik stilini, başlığı özelleştirebilir ve gelişmiş grafik ayarlarını değiştirebilirsiniz. Özelleştirme ile işiniz bittiğinde çalışmanızı kaydetmek için bir panoya sabitleyin. Ayrıca, ölçüm uyarılarını yapılandırabilirsiniz. Azure Izleyici Ölçüm Gezgini 'nin bu ve diğer gelişmiş özellikleri hakkında bilgi edinmek için bkz. [azure Ölçüm Gezgini gelişmiş özellikleri](../platform/metrics-charts.md#locking the-range-of-the-y-axis) .
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure Izleyici 'de ölçümlerle nasıl çalışacağınızı öğrendiğinize göre, öngörülü uyarılar göndermek için ölçümleri nasıl kullanacağınızı öğrenin.
 
 > [!div class="nextstepaction"]
-> [Azure İzleyici'yi kullanarak ölçüm uyarıları oluşturma, görüntüleme ve yönetme](../platform/metrics-charts.md#create-alert-rules)
+> [Azure İzleyici'yi kullanarak ölçüm uyarıları oluşturma, görüntüleme ve yönetme](../platform/metrics-charts.md#alert-rules)
 

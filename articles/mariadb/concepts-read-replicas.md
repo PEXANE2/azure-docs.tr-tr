@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/15/2021
 ms.custom: references_regions
-ms.openlocfilehash: 576ff68961a68a8b54037d661a51a9d2de7a56df
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: c91aab2bf59f93cf897f9a1b9109172523ae4e57
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231800"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251412"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanı’nda okuma amaçlı çoğaltmalar
 
@@ -23,10 +23,7 @@ Okuma amaçlı çoğaltma özelliği, MariaDB için Azure Veritabanı’ndan sal
 GTıD çoğaltma hakkında daha fazla bilgi için bkz. [MariaDB çoğaltma belgeleri](https://mariadb.com/kb/en/library/gtid/).
 
 > [!NOTE]
-> Sapma ücretsiz iletişim
->
-> Microsoft, farklı ve üçlü ortamları destekler. Bu makale _ana_ ve _bağımlı_ sözcüklere başvurular içerir. Kullanım açısından [ücretsiz iletişim Için Microsoft Stil Kılavuzu](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) , bu sözcükleri exclusionary kelimeleri olarak tanır. Bu makalede, şu anda yazılımda görüntülenen sözcükler olduklarından, bu makale tutarlılık için kullanılır. Yazılım, kelimeleri kaldırmak üzere güncelleniyorsa, bu makale hizalamayla olacak şekilde güncelleştirilir.
->
+> Bu makale, Microsoft 'un artık kullandığı bir terim olan _bağımlı_ dönem başvuruları içerir. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
 
 ## <a name="when-to-use-a-read-replica"></a>Okuma çoğaltması ne zaman kullanılır?
 
@@ -123,8 +120,11 @@ Kaynak ve çoğaltma sunucuları arasında otomatik yük devretme yoktur.
 Bir çoğaltmaya yük devretmek istediğinizde,
 
 1. Çoğaltmaya çoğaltmayı durdur<br/>
+
    Bu adım, çoğaltma sunucusunun yazmaları kabul edebilmesini sağlamak için gereklidir. Bu işlemin bir parçası olarak, çoğaltma sunucusu ana sunucudan kaldırılacak. Çoğaltmayı durdur işlemini başlattıktan sonra, arka uç işleminin genellikle yaklaşık 2 dakika sürer. Bu eylemin etkilerini anlamak için bu makalenin [çoğaltmayı durdur](#stop-replication) bölümüne bakın.
-2. Uygulamanızı (eski) çoğaltmaya işaret edin<br/>
+
+2. Uygulamanızı (eski) çoğaltmaya işaret edin
+
    Her sunucunun benzersiz bir bağlantı dizesi vardır. Uygulamanızı ana şablon yerine (eski) çoğaltmaya işaret etmek üzere güncelleştirin.
 
 Uygulamanız okuma ve yazma işlemlerini başarıyla tamamladıktan sonra, yük devretmeyi tamamladınız. Bir sorunu saptadığınızda ve yukarıdaki 1. ve 2. adımları tamamladıktan sonra uygulama deneyimlerinizin ne kadar süre açık olacağını gösterir.

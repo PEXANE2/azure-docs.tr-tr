@@ -1,86 +1,89 @@
 ---
-title: Ölçüm Gezgini birden çok kaynağı görüntüleme
-description: Azure Izleyici 'de birden çok kaynağı görselleştirmeyi öğrenin Ölçüm Gezgini
+title: Azure ölçümleri Gezgininde birden çok kaynağı görüntüleme
+description: Azure ölçümleri gezginini kullanarak birden çok kaynağı görselleştirmeyi öğrenin.
 author: ritaroloff
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: riroloff
 ms.subservice: metrics
-ms.openlocfilehash: 9d1460a8bebe75a3ee471eb304fcf642d566b5dd
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 4c895b287f72929e2a0571ccc2cae8cc4f673388
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614651"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250494"
 ---
-# <a name="viewing-multiple-resources-in-metrics-explorer"></a>Ölçüm Gezgini birden çok kaynağı görüntüleme
+# <a name="view-multiple-resources-in-the-azure-metrics-explorer"></a>Azure ölçümleri Gezgininde birden çok kaynağı görüntüleme
 
-Kaynak kapsamı seçici, aynı abonelik ve bölge içindeki birden fazla kaynak arasında ölçümleri görüntülemenize olanak sağlar. Aşağıda, Azure Izleyici Ölçüm Gezgini birden fazla kaynağın nasıl görüntüleneceği hakkında yönergeler verilmiştir. 
+Kaynak kapsamı seçici, aynı abonelik ve bölge içindeki birden fazla kaynak arasında ölçümleri görüntülemenize olanak sağlar. Bu makalede, Azure Izleyici 'nin Azure ölçümleri gezgin özelliğini kullanarak birden çok kaynağın nasıl görüntüleneceği açıklanır. 
 
-## <a name="selecting-a-resource"></a>Kaynak seçme 
+## <a name="select-a-resource"></a>Bir kaynak seçin 
 
-**Azure izleyici** menüsünde veya bir kaynağın menüsünün **izleme** bölümünden **ölçümler** ' i seçin. Kaynak kapsamı seçicisini açmak için "kapsam seçin" düğmesine tıklayın. Bu işlem, ölçümlerini görmek istediğiniz kaynakları seçmenizi sağlar. Bu, ölçüm Gezginini bir kaynağın menüsünden açtıysanız zaten doldurulmalıdır. 
+**Azure izleyici** menüsünde veya bir kaynağın menüsünün **izleme** bölümünden **ölçümler** ' i seçin. Ardından kapsam seçiciyi açmak için **kapsam seçin** öğesini seçin. 
 
-![Kırmızı renkle vurgulanmış kaynak kapsamı seçicisinin ekran görüntüsü](./media/metrics-charts/019.png)
+Ölçümlerini görmek istediğiniz kaynakları seçmek için kapsam seçiciyi kullanın. Ölçüm Gezginini bir kaynağın menüsünden açtıysanız kapsam doldurulmalıdır. 
 
-## <a name="selecting-multiple-resources"></a>Birden çok kaynak seçme 
+![Kaynak kapsamı seçicinin nasıl açılacağını gösteren ekran görüntüsü.](./media/metrics-charts/019.png)
 
-Bazı kaynak türleri, aynı abonelik ve konum dahilinde oldukları sürece birden fazla kaynak üzerinde ölçümleri sorgulama özelliğini etkinleştirdi. Bu kaynak türleri "kaynak türleri" açılan listesinin en üstünde bulunabilir. 
+## <a name="select-multiple-resources"></a>Birden çok kaynak seçin 
 
-![Çoklu kaynak uyumlu kaynakların açılan listesini gösteren ekran görüntüsü ](./media/metrics-charts/020.png)
+Bazı kaynak türleri, birden fazla kaynak üzerinde ölçümleri sorgulayabilir. Ölçümler aynı abonelik ve konum dahilinde olmalıdır. **Kaynak türleri** menüsünün en üstünde bu kaynak türlerini bulun.
+
+![Birden çok kaynakla uyumlu kaynakların bir menüsünü gösteren ekran görüntüsü.](./media/metrics-charts/020.png)
 
 > [!WARNING] 
-> Birden çok kaynakta, kaynak grubunda veya abonelikte ölçümleri görselleştirmek için abonelik düzeyinde Izleme okuyucusu izninizin olması gerekir. Bunu yapmak için lütfen [Bu belgedeki](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)yönergeleri izleyin.
+> Birden çok kaynakta, kaynak grubunda veya abonelikte ölçümleri görselleştirmek için abonelik düzeyinde Izleme okuyucusu izninizin olması gerekir. Daha fazla bilgi için, bkz. [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
 
 Birden çok kaynak üzerinde ölçümleri görselleştirmek için kaynak kapsamı seçicisinden birden çok kaynak seçerek başlayın. 
 
-![Birden çok kaynağın nasıl seçdiğinin gösterildiği ekran görüntüsü](./media/metrics-charts/021.png)
+![Birden çok kaynağın nasıl seçdiğinin gösterildiği ekran görüntüsü.](./media/metrics-charts/021.png)
 
 > [!NOTE]
-> Aynı kaynak türü, konum ve abonelik içinde yalnızca birden fazla kaynak seçebilirsiniz. Bu ölçüt dışındaki kaynaklar seçilemeyecektir. 
+> Seçtiğiniz kaynaklar aynı kaynak türü, konum ve abonelik içinde olmalıdır. Bu ölçütlere uymayan kaynaklar seçilebilir değildir. 
 
-Seçmeyi tamamladığınızda, seçiminizi kaydetmek için "Uygula" düğmesine tıklayın. 
+Bitirdiğinizde Seçimlerinizi kaydetmek için **Uygula** ' yı seçin. 
 
-## <a name="selecting-a-resource-group-or-subscription"></a>Kaynak grubu veya abonelik seçme 
+## <a name="select-a-resource-group-or-subscription"></a>Kaynak grubu veya abonelik seçin 
 
 > [!WARNING]
 > Birden çok kaynakta, kaynak grubunda veya abonelikte ölçümleri görselleştirmek için abonelik düzeyinde Izleme okuyucusu izninizin olması gerekir. 
 
-Çoklu kaynak uyumlu türler için bir abonelik veya birden çok kaynak grubu genelinde ölçümleri de sorgulayabilirsiniz. Bir abonelik veya bir veya daha fazla kaynak grubu seçerek başlayın: 
+Birden çok kaynakla uyumlu olan türler için bir abonelik veya birden çok kaynak grubu genelinde ölçümleri sorgulayabilirsiniz. Bir abonelik veya bir veya daha fazla kaynak grubu seçerek başlayın: 
 
-![Birden çok kaynak grubu genelinde sorgu oluşturmayı gösteren ekran görüntüsü ](./media/metrics-charts/022.png)
+![Birden çok kaynak grubunda nasıl sorgu yapılacağını gösteren ekran görüntüsü.](./media/metrics-charts/022.png)
 
-Daha sonra yeni kapsamınızı uygulamaya devam edebilmeniz için önce bir kaynak türü ve konum seçmeniz gerekir. 
+Kaynak türü ve konum seçin. 
 
-![Seçili kaynak gruplarını gösteren ekran görüntüsü ](./media/metrics-charts/023.png)
+![Seçili kaynak gruplarını gösteren ekran görüntüsü.](./media/metrics-charts/023.png)
 
-Ayrıca, bu, hangi kaynakların uygulanacağını doğrulamak için seçilen kapsamları genişletebilirsiniz.
+Seçimlerinizin uygulandığı kaynakları doğrulamak için seçilen kapsamları genişletebilirsiniz.
 
-![Gruplar içindeki seçili kaynakları gösteren ekran görüntüsü ](./media/metrics-charts/024.png)
+![Gruplar içindeki seçili kaynakları gösteren ekran görüntüsü.](./media/metrics-charts/024.png)
 
-Kapsamlarınızı seçmeyi tamamladıktan sonra Seçimlerinizi kaydetmek için "Uygula" düğmesine tıklayın. 
+Kapsamları seçmeyi tamamladığınızda **Uygula**' yı seçin. 
 
-## <a name="splitting-and-filtering-by-resource-group-or-resources"></a>Kaynak grubu veya kaynaklara göre bölme ve filtreleme
+## <a name="split-and-filter-by-resource-group-or-resources"></a>Kaynak grubu veya kaynaklara göre bölme ve filtreleme
 
-Kaynaklarınızı doldurduktan sonra, verilerinize daha fazla öngörü kazanmak için bölme ve filtreleme aracını kullanabilirsiniz. 
+Kaynaklarınızı doldurduktan sonra, verilerinize daha fazla öngörü kazanmak için bölme ve filtrelemeyi kullanabilirsiniz. 
 
-Bölme, ölçümün farklı segmentlerinin birbirleriyle nasıl karşılaştırılacağını görselleştirmenize olanak tanır. Örneğin, birden çok kaynak için bir ölçüm çizdirme yaparken, kaynak kimliğine veya kaynak grubuna göre bölmek için "bölmeyi Uygula" aracını kullanabilirsiniz. Bu, birden çok kaynak veya kaynak grubu genelinde tek bir ölçümü kolayca karşılaştırmanıza imkan tanır.  
+Bölme, ölçümün farklı segmentlerinin birbirleriyle nasıl karşılaştırılacağını görselleştirmenize olanak tanır. Örneğin, birden çok kaynak için bir ölçüm çizerseniz, kaynak KIMLIĞINE veya kaynak grubuna göre bölmek için **bölmeyi Uygula** ' yı seçebilirsiniz. Bölünmüş, tek bir ölçümü birden çok kaynak veya kaynak grubu genelinde karşılaştırmanıza olanak sağlar.  
 
-Örneğin, aşağıda, 9Vm 'lerde CPU yüzdesi olarak bir grafik verilmiştir. Kaynak kimliğine göre bölerek sanal makine başına yüzde CPU 'nun nasıl farklı olduğunu kolayca görebilirsiniz. 
+Örneğin, aşağıdaki grafik dokuz VM arasında CPU yüzdesini gösterir. Kaynak KIMLIĞINE göre böldüğünüz zaman CPU 'nun VM tarafından ne kadar farklı olduğunu görürsünüz. 
 
-![VM başına yüzde CPU değerini görmek için bölmeyi nasıl kullanabileceğinizi gösteren ekran görüntüsü](./media/metrics-charts/026.png)
+![VM 'lerde CPU yüzdesini görmek için bölmenin nasıl kullanılacağını gösteren ekran görüntüsü.](./media/metrics-charts/026.png)
 
-Bölmenin yanı sıra, yalnızca görmek istediğiniz kaynak gruplarını görüntülemek için filtreleme özelliğini de kullanabilirsiniz.  Örneğin, belirli bir kaynak grubu için VM 'Lerin CPU yüzdesini görüntülemek istiyorsanız, kaynak grubuna göre filtrelemek için "Filtre Ekle" aracını kullanabilirsiniz. Bu örnekte, bir Uyarspintoysdemo tarafından filtreliyoruz ve bu, Uyarspintoys 'daki kaynaklarla ilişkili ölçümleri kaldırır. 
+Bölme ile birlikte, yalnızca görmek istediğiniz kaynak gruplarını görüntülemek için filtrelemeyi kullanabilirsiniz.  Örneğin, belirli bir kaynak grubuna yönelik VM 'Lerin CPU yüzdesini görüntülemek için, kaynak grubuna göre filtrelemek için **Filtre Ekle** ' yi seçebilirsiniz. 
 
-![Kaynak grubuna göre nasıl filtreleyekullanabileceğinizi gösteren ekran görüntüsü](./media/metrics-charts/027.png)
+Bu örnekte, bir Uyarspintoysdemo tarafından filtreliyoruz. Burada, filtre,,,,,, bir,,,,,,,, 
 
-## <a name="pinning-your-multi-resource-charts"></a>Çoklu kaynak grafiklerinizi sabitleme 
+![Kaynak grubuna göre nasıl filtreleneceğini gösteren ekran görüntüsü.](./media/metrics-charts/027.png)
 
-> [!WARNING] 
-> Birden çok kaynakta, kaynak grubunda veya abonelikte ölçümleri görselleştirmek için abonelik düzeyinde Izleme okuyucusu izninizin olması gerekir. Bunu yapmak için lütfen [Bu belgedeki](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)yönergeleri izleyin. 
+## <a name="pin-multiple-resource-charts"></a>Birden çok Kaynak Grafiği sabitleme 
 
-Çoklu kaynak grafiğinizi sabitlemek için lütfen [buradaki](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts#pin-charts-to-dashboards)yönergeleri izleyin. 
+Kaynak grupları ve abonelikler arasında ölçümleri görselleştirerek çoklu kaynak grafikleri, kullanıcının abonelik düzeyinde *Izleme okuyucusu* iznine sahip olmasını gerektirir. Birden çok kaynak grafiği sabitlemeyi planladığınız panolar için tüm kullanıcıların yeterli izinlere sahip olduğundan emin olun. Daha fazla bilgi için, bkz. [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+
+Çoklu kaynak grafiğinizi bir panoya sabitlemek için bkz. [panolara sabitleme](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts#pinning-to-dashboards). 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

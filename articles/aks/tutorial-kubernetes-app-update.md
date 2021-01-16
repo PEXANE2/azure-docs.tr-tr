@@ -3,14 +3,14 @@ title: Azure’da Kubernetes öğreticisi - Uygulamayı güncelleştirme
 description: Bu Azure Kubernetes Service (AKS) öğreticisinde var olan bir AKS uygulama dağıtımını uygulama kodunun yeni sürümüyle güncelleştirmeyi öğreneceksiniz.
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: c8401a81a36d86b871df9fc428c393007b97c400
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.date: 01/12/2021
+ms.custom: mvc
+ms.openlocfilehash: b969e3ec1c670c0a12129289c8ff7eb81df51ff9
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833920"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250664"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Öğretici: Azure Kubernetes Hizmeti’nde (AKS) bir uygulamayı güncelleştirme
 
@@ -64,7 +64,7 @@ docker-compose up --build -d
 
 Güncelleştirilmiş kapsayıcı görüntüsünde yaptığınız değişikliklerin göründüğünü doğrulamak için yerel web tarayıcısında `http://localhost:8080` adresine gidin.
 
-:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated.png" alt-text="Yerel bir Web tarayıcısı ve yerel ana bilgisayar ile açılan güncelleştirilmiş kapsayıcı görüntüsü Azure oylama uygulaması örneğini gösteren ekran görüntüsü.":::
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated.png" alt-text="Yerel bir Web tarayıcısında açık olarak çalışan, güncelleştirilmiş kapsayıcı görüntüsü Azure oylama uygulaması örneğini gösteren ekran görüntüsü":::
 
 *Config_file. cfg* dosyasında belirtilen güncelleştirilmiş değerler, çalışan uygulamanızda görüntülenir.
 
@@ -143,9 +143,9 @@ Güncelleştirme uygulamasını görüntülemek için öncelikle `azure-vote-fro
 kubectl get service azure-vote-front
 ```
 
-Şimdi, hizmetinizin IP adresine yerel bir Web tarayıcısı açın:
+Şimdi hizmetinizin IP adresine bir Web tarayıcısı açın:
 
-:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated-external.png" alt-text="Yerel bir Web tarayıcısında açılan güncelleştirilmiş uygulama Azure oylama uygulaması örneğini gösteren ekran görüntüsü.":::
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated-external.png" alt-text="Yerel bir Web tarayıcısında açılan bir AKS kümesinde çalışan güncelleştirilmiş görüntü Azure oylama uygulaması örneğini gösteren ekran görüntüsü.":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 2b99d032b953caecfca2b34d5eadafe94f45f307
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ec3892c5e47c372d9f54d4a4224e94183e31f181
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009543"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251140"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Azure 'da Dayanıklı İşlevler örnekleri yönetme
 
@@ -24,7 +24,7 @@ Dayanıklı İşlevler, bu yönetim işlemlerinin her birini nasıl uygulamak is
 
 Bir düzenleme örneğini başlamamak önemlidir. Bu, başka bir işlevin tetikleyicisinde Dayanıklı İşlevler bağlama kullandığınızda genellikle yapılır.
 
-`StartNewAsync` `startNew` Orchestration istemcisi bağlamasındaki (.net), (JavaScript) veya `start_new` (Python) yöntemi [orchestration client binding](durable-functions-bindings.md#orchestration-client) yeni bir örnek başlatır. Bu yöntem, dahili olarak bir iletiyi denetim kuyruğuna sıraya alır, daha sonra [düzenleme tetikleyicisi bağlamasını](durable-functions-bindings.md#orchestration-trigger)kullanan belirtilen ada sahip bir işlevin başlangıcını tetikler.
+`StartNewAsync` `startNew` Orchestration istemcisi bağlamasındaki (.net), (JavaScript) veya `start_new` (Python) yöntemi [](durable-functions-bindings.md#orchestration-client) yeni bir örnek başlatır. Bu yöntem, dahili olarak bir iletiyi denetim kuyruğuna sıraya alır, daha sonra [düzenleme tetikleyicisi bağlamasını](durable-functions-bindings.md#orchestration-trigger)kullanan belirtilen ada sahip bir işlevin başlangıcını tetikler.
 
 Bu zaman uyumsuz işlem, Orchestration işlemi başarıyla zamanlandığında tamamlanır.
 
@@ -177,7 +177,7 @@ func durable start-new --function-name HelloWorld --input @counter-data.json --t
 
 Düzenlemeleri yönetme çabalarınızın bir parçası olarak, büyük olasılıkla bir düzenleme örneğinin durumu hakkında bilgi toplamanız gerekir (örneğin, normal veya başarısız olup olmadığını).
 
-`GetStatusAsync` `getStatus` Orchestration istemci bağlamasındaki (.net), (JavaScript) veya `get_status` (Python) yöntemi bir [orchestration client binding](durable-functions-bindings.md#orchestration-client) Orchestration örneğinin durumunu sorgular.
+`GetStatusAsync` `getStatus` Orchestration istemci bağlamasındaki (.net), (JavaScript) veya `get_status` (Python) yöntemi bir [](durable-functions-bindings.md#orchestration-client) Orchestration örneğinin durumunu sorgular.
 
 `instanceId`(Gerekli) ( `showHistory` isteğe bağlı), (isteğe bağlı) `showHistoryOutput` ve `showInput` (isteğe bağlı) parametreleri parametre olarak alır.
 
@@ -300,6 +300,10 @@ public static async Task Run(
     {
         log.LogInformation(JsonConvert.SerializeObject(instance));
     }
+    
+    // Note: ListInstancesAsync only returns the first page of results.
+    // To request additional pages provide the result.ContinuationToken
+    // to the OrchestrationStatusQueryCondition's ContinuationToken property.
 }
 ```
 
@@ -800,7 +804,7 @@ Beklenmeyen bir nedenden dolayı düzenleme hatası varsa, bu amaçla derlenen b
 > [!NOTE]
 > Bu API, doğru hata işleme ve yeniden deneme ilkelerine yönelik bir değişiklik yapmak üzere tasarlanmamıştır. Bunun yerine, yalnızca düzenleme örneklerinin beklenmeyen nedenlerle başarısız olduğu durumlarda kullanılmak üzere tasarlanmıştır. Hata işleme ve yeniden deneme ilkeleri hakkında daha fazla bilgi için bkz. [hata işleme](durable-functions-error-handling.md) makalesi.
 
-Orchestration `RewindAsync` istemci bağlamasının (.net) veya `rewind` (JavaScript) yöntemini kullanarak [orchestration client binding](durable-functions-bindings.md#orchestration-client) düzenlemeyi *çalışır* duruma geri yerleştirebilirsiniz. Bu yöntem, düzenleme hatasına neden olan etkinliği veya alt düzenleme yürütme hatalarını da yeniden çalıştırır.
+Orchestration `RewindAsync` istemci bağlamasının (.net) veya `rewind` (JavaScript) yöntemini kullanarak [](durable-functions-bindings.md#orchestration-client) düzenlemeyi *çalışır* duruma geri yerleştirebilirsiniz. Bu yöntem, düzenleme hatasına neden olan etkinliği veya alt düzenleme yürütme hatalarını da yeniden çalıştırır.
 
 Örneğin, bir dizi [insan onaylarını](durable-functions-overview.md#human)içeren bir iş akışınız olduğunu varsayalım. Birinin onayını gerekli olduğunu bildiren ve gerçek zamanlı yanıtı bekleyen bir dizi etkinlik işlevi olduğunu varsayalım. Tüm onay etkinlikleri yanıt aldıktan veya zaman aşımına uğradıktan sonra, geçersiz bir veritabanı bağlantı dizesi gibi uygulamanın yanlış yapılandırılması nedeniyle başka bir etkinliğin başarısız olduğunu varsayalım. Sonuç, iş akışının derinlemesine bir düzenleme hatasıdır. `RewindAsync`(.Net) veya `rewind` (JavaScript) API 'si ile, bir uygulama Yöneticisi yapılandırma hatasını giderebilir ve başarısız düzenlemeyi hatadan hemen önce geri Sara geri sarabilirler. İnsan etkileşimi adımlarının hiçbirinin yeniden onaylanması gerekmez ve düzenleme artık başarıyla tamamlanabilir.
 

@@ -4,14 +4,14 @@ description: Uygulama kapsayıcılarını bir kümede paketlemek ve çalıştır
 services: container-service
 author: zr-msft
 ms.topic: article
-ms.date: 07/28/2020
+ms.date: 01/12/2021
 ms.author: zarhoads
-ms.openlocfilehash: 2c4e39ae664c89e4f6d49f2941115e5a7d44cf7b
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 5656051ecd6e3fd39b051d2d0288e9762c83d9ad
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929183"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249933"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>Hızlı başlangıç: Held ile Azure Kubernetes hizmeti (AKS) üzerinde geliştirme
 
@@ -57,7 +57,7 @@ az acr create --resource-group MyResourceGroup --name MyHelmACR --sku Basic
 }
 ```
 
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service kümesi oluşturma
+## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service kümesini oluşturma
 
 AKS kümesi oluşturma. Aşağıdaki komut, MyAKS adlı bir AKS kümesi oluşturur ve MyHelmACR öğesini ekler.
 
@@ -134,7 +134,7 @@ helm create webfrontend
 * Değiştir `image.repository``<loginServer>/webfrontend`
 * Değiştir `service.type``LoadBalancer`
 
-Örnek:
+Örneğin:
 
 ```yml
 # Default values for webfrontend.
@@ -144,7 +144,7 @@ helm create webfrontend
 replicaCount: 1
 
 image:
-  repository: *myhelmacr.azurecr.io*/webfrontend
+  repository: myhelmacr.azurecr.io/webfrontend
   pullPolicy: IfNotPresent
 ...
 service:

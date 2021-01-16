@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 61bd23c74fd7960317dff17175b355b473cd6dc7
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 921c05b76640935a1bd9e65d556933c23093e5b2
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233840"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251446"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Sanal makine sertifikası sorunlarını giderme
 
@@ -23,19 +23,6 @@ Bu makalede, ilgili çözümlerle birlikte VM görüntüsü yayımlama sırasın
 > [!NOTE]
 > Bu makale veya geliştirme önerileri hakkında sorularınız varsa, [Iş Ortağı Merkezi desteğiyle](https://aka.ms/marketplacepublishersupport)iletişim kurun.
 
-## <a name="approved-base-image"></a>Onaylanan temel görüntü
-
-Görüntünüzü güncelleştirmelerle yeniden yayımlamak için bir istek gönderdiğinizde, bölüm numarası doğrulama test çalışması başarısız olabilir. Başarısız olursa, görüntünüz onaylanır.
-
-Bu hata, başka bir yayımcıya ait olan ve görüntüyü güncelleştirdiğiniz bir temel görüntü kullandığınızda oluşur. Bu durumda, görüntünüzü yayımlamanıza izin verilmez.
-
-Bu sorunu onarmak için, görüntüyü Azure Marketi 'nden alın ve üzerinde değişiklikler yapın. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
-
-- [Linux görüntüleri](../virtual-machines/linux/endorsed-distros.md?toc=/azure/virtual-machines/linux/toc.json)
-- [Windows görüntüleri](azure-vm-create-using-approved-base.md)
-
-> [!Note]
-> Azure Marketi 'nden alınmamış bir Linux temel görüntüsü kullanıyorsanız, Azure 'un VM 'nizi Azure Marketi 'ne yayımlamaya devam edebilmesi için, VHD 'de ilk 2048 kesimlerin (her bir kesim 512 bayt) boş olduğundan emin olun.  
 
 ## <a name="vm-extension-failure"></a>VM Uzantısı hatası
 
@@ -170,7 +157,7 @@ Test çalışmalarını çalıştırırken görebileceğiniz yaygın hatalar iç
 Aşağıdaki tabloda, test doğrulamasının bir açıklamasıyla birlikte, araç setinin çalışacağı Windows test çalışmaları listelenmektedir:
 
 |Senaryo |Test çalışmaları|Açıklama|
-|---|---|---|---|
+|---|---|---|
 |1|İşletim sistemi mimarisi|Azure yalnızca 64 bitlik işletim sistemlerini destekler.|
 |2|Kullanıcı hesabı bağımlılığı|Uygulama yürütme, yönetici hesabına bağlı olmamalıdır.|
 |3|Yük devri kümesi|Windows Server Yük Devretme Kümelemesi özelliği henüz desteklenmiyor. Uygulamanın bu özelliğe bağımlı olmaması gerekir.|
@@ -250,7 +237,7 @@ Görüntünüz aşağıdaki çekirdek sürümlerinden biriyle yüklenmezse, doğ
 |İşletim sistemi ailesi|Sürüm|Çekirdek|
 |---|---|---|
 |Ubuntu|14,04 LTS|4.4.0-151.552| 
-||14,04 LTS|4.15.0-1049-*-Azure|
+||14,04 LTS|4.15.0-1049- \* -Azure|
 ||16,04 LTS|4.15.0-1049|
 ||18,04 LTS|4.18.0-1023|
 ||18,04 LTS|5.0.0-1025|
@@ -283,9 +270,9 @@ Görüntünüz aşağıdaki çekirdek sürümlerinden biriyle yüklenmezse, doğ
 |Oracle|6,10|UEK2 2.6.39-400.312.2<br>UEK3 3.8.13-118.35.2<br>RHCK 2.6.32-754.15.3 
 ||7.0-7.5|UEK3 3.8.13-118.35.2<br>UEK4 4.1.12-124.28.3<br>RHCK yukarıdaki RHEL 'yi izler|
 ||7,6|RHCK 3.10.0-957.21.3<br>UEK5 4.14.35-1902.2.0|
-|CoreOS kararlı 2079.6.0|4.19.43*|
-||Beta 2135.3.1|4.19.50*|
-||Alpha 2163.2.1|4.19.50*|
+|CoreOS kararlı 2079.6.0|4.19.43\*|
+||Beta 2135.3.1|4.19.50\*|
+||Alpha 2163.2.1|4.19.50\*|
 |Debian|JESSIE (güvenlik)|3.16.68-2|
 ||jessıya arkabağlantı noktaları|4.9.168-1 + deb9u3|
 ||Esnetme (güvenlik)|4.9.168-1 + deb9u3|
@@ -328,14 +315,11 @@ Paylaşılan erişim imzası (SAS) URL 'SI ile VM görüntüsünü indirdiğiniz
 |6|HTTP koşullu üstbilgisi|SAS URL 'SI geçersiz.|Doğru SAS URL 'sini alın.|
 |7|Geçersiz VHD adı|VHD adında, yüzde işareti veya tırnak işareti gibi özel karakterlerin mevcut olup olmadığını denetleyin `%` `"` .|Özel karakterleri kaldırarak VHD dosyasını yeniden adlandırın.|
 
-## <a name="first-1mb-2048-sectors-each-sector-of-512-bytes-partition-linux-only"></a>İlk 1 MB (2048 kesim, her 512 baytlık kesim) bölümü (yalnızca Linux)
+## <a name="first-1-mb-partition-2048-sectors-each-sector-of-512-bytes"></a>İlk 1 MB bölüm (2.048 kesim, her bir kesim 512 bayt)
 
-VHD 'yi gönderdiğinizde, VHD 'nin ilk 2048 kesimlerinin (1MB) boş olduğundan emin olun. Aksi takdirde, isteğiniz başarısız olur. Bu, tüm ek veri diskleri için değil önyükleme/işletim sistemi diskine uygulanabilir olacağını lütfen unutmayın.
+[Kendi görüntünüzü oluşturuyorsanız](azure-vm-create-using-own-image.md), işletim sistemi diskinin ilk 2.048 kesimlerinin (1 MB) boş olduğundan emin olun. Aksi takdirde, yayımlarınız başarısız olur. Bu gereksinim yalnızca işletim sistemi diski için geçerlidir (Veri disklerine değil). Görüntüyü [onaylanan bir tabandan](azure-vm-create-using-approved-base.md)oluşturuyorsanız, bu gereksinimi atlayabilirsiniz. 
 
->[!NOTE]
->Azure Marketi 'nden alınan Azure Windows temel görüntülerinin üzerine yerleştirilmiş olanlar gibi bazı özel görüntüler için, VHD 'nin ilk 1MB (2048 kesim) boş olduğundan emin olun. 
-
-### <a name="create-a-first-1mb-2048-sectors-each-sector-of-512-bytes-partition-on-an-empty-vhd"></a>Boş bir VHD 'de ilk 1 MB 'lık (2048 kesim, her 512 baytlık bir kesim) bölüm oluşturun
+### <a name="create-a-1-mb-partition-2048-sectors-each-sector-of-512-bytes-on-an-empty-vhd-linux-only-steps"></a>Boş bir VHD (yalnızca Linux adımları) üzerinde 1 MB 'lık bir bölüm (2.048 kesim, her 512 baytlık bir kesim) oluşturun
 
 Bu adımlar yalnızca Linux için geçerlidir.
 
@@ -400,7 +384,7 @@ Bu adımlar yalnızca Linux için geçerlidir.
 
 1. VHD 'yi VM 'den ayırın ve VM 'yi silin.
 
-### <a name="create-a-first-mb-2048-sectors-each-sector-of-512-bytes-partition-by-moving-existing-data-on-vhd"></a>VHD 'deki mevcut verileri taşıyarak Ilk MB (2048 kesim, her 512 baytlık bir kesim) bölümü oluşturun
+### <a name="create-a-first-1-mb-partition-2048-sectors-each-sector-of-512-bytes-by-moving-existing-data-on-vhd"></a>VHD 'de var olan verileri taşıyarak ilk 1 MB 'lık bölüm (2.048 kesim, her 512 baytlık bir kesim) oluşturun
 
 Bu adımlar yalnızca Linux için geçerlidir.
 
