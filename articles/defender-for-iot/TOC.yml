@@ -230,7 +230,7 @@
         - name: Azure Güvenlik Merkezi belgeleri
           href: ../security-center/
         - name: Azure güvenlik belgeleri
-          href: 'https://docs.microsoft.com/azure/security/'
+          href: ../security/index.yml
         - name: Stack Overflow’da Azure RTOS güvenlik modülü
           href: 'https://stackoverflow.com/questions/tagged/azure-rtos+azure-iot-security-module'
         - name: 'Azure IoT Güvenlik, Gizlilik ve Uyumluluk blogu'
