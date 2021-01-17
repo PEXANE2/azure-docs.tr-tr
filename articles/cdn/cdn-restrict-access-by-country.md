@@ -1,37 +1,34 @@
 ---
-title: Azure CDN içeriğini ülkeye/bölgeye göre kısıtla | Microsoft Docs
+title: Azure CDN içeriğini ülkeye/bölgeye göre kısıtla
 description: Coğrafi filtreleme özelliğini kullanarak, ülkeye/bölgeye erişimi Azure CDN içeriğinize kısıtlama hakkında bilgi edinin.
 services: cdn
 documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: ''
-ms.assetid: 12c17cc5-28ee-4b0b-ba22-2266be2e786a
 ms.service: azure-cdn
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
-ms.date: 06/19/2018
+ms.date: 01/16/2021
 ms.author: allensu
-ms.openlocfilehash: ed82adcc1432bde27042d5775c454bfabcdb96ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8901dffb752409acd7fb08a2025bed9a4cc70132
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358143"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539516"
 ---
 # <a name="restrict-azure-cdn-content-by-countryregion"></a>Azure CDN içeriğini ülkeye/bölgeye göre kısıtla
 
 ## <a name="overview"></a>Genel Bakış
-Bir kullanıcı içeriğinizi istediğinde, varsayılan olarak, istek yapan kullanıcının konumundan bağımsız olarak içerik sunulur. Ancak bazı durumlarda, içeriğinize/bölgeye göre içeriğinizi erişimi kısıtlamak isteyebilirsiniz. *Coğrafi filtreleme* özelliği ile, seçili ülkelerde/bölgelerde içeriğe izin vermek veya bunları engellemek için CDN uç noktanıza belirli yollarda kurallar oluşturabilirsiniz.
+Bir kullanıcı içeriğinizi istediğinde, içerik tüm konumlarda kullanıcılara sunulur. İçeriğinizi ülkeye/bölgeye göre kısıtlamak isteyebilirsiniz. 
+
+*Coğrafi filtreleme* ÖZELLIĞIYLE, CDN uç noktanıza özel yollarda kurallar oluşturabilirsiniz. Kuralları seçilen ülkelerde/bölgelerde içeriğe izin vermek veya engellemek için ayarlayabilirsiniz.
 
 > [!IMPORTANT]
 > **Microsoft profillerinin Azure CDN Standard** , yol tabanlı coğrafi filtreleme 'yi desteklemez.
 > 
 
 ## <a name="standard-profiles"></a>Standart profiller
-Bu bölümdeki yordamlar, Akamai Azure CDN ve yalnızca **Verizon** profillerinden standart **Azure CDN Standart** yöneliktir. 
+
+Bu yönergeler Akamai **Azure CDN ve Verizon profillerden standart** **Azure CDN Standart** yöneliktir.
 
 **Verizon profillerden Azure CDN Premium** için, coğrafi filtrelemeyi etkinleştirmek üzere portalı **Yönet** ' i kullanmanız gerekir. Daha fazla bilgi için bkz. [Verizon Profiles 'dan Azure CDN Premium](#azure-cdn-premium-from-verizon-profiles).
 
@@ -42,7 +39,7 @@ Coğrafi filtreleme özelliğine erişmek için Portal içindeki CDN uç noktan�
 
 **Yol** kutusunda, kullanıcıların erişime izin verilecek veya erişimi reddedildiği konumun göreli yolunu belirtin. 
 
-Tüm dosyalarınız için bir eğik çizgi (/) ile coğrafi filtreleme uygulayabilir veya dizin yollarını belirterek belirli klasörleri seçebilirsiniz (örneğin, */resim/*). Ayrıca, tek bir dosyaya coğrafi filtreleme uygulayabilirsiniz (örneğin, */resim/city.png*). Birden çok kurala izin verilir; bir kural girdikten sonra, sonraki kuralı girmeniz için boş bir satır görüntülenir.
+Tüm dosyalarınız için bir eğik çizgi (/) ile coğrafi filtreleme uygulayabilir veya dizin yollarını belirterek belirli klasörleri seçebilirsiniz (örneğin, */resim/*). Ayrıca, tek bir dosyaya coğrafi filtreleme uygulayabilirsiniz (örneğin, */resim/city.png*). Birden çok kurala izin verilir. Bir kural girdikten sonra, sonraki kuralı girmeniz için boş bir satır görüntülenir.
 
 Örneğin, aşağıdaki dizin yolu filtrelerinin tümü geçerlidir:   
 */*                                 
@@ -63,6 +60,7 @@ Tüm dosyalarınız için bir eğik çizgi (/) ile coğrafi filtreleme uygulayab
  *http: \/ / \<endpoint> . azureedge.net/photos/Strasbourg/Cathedral/1000.jpg*
 
 ### <a name="define-the-countriesregions"></a>Ülkeleri/bölgeleri tanımlama
+
 **Ülke kodları** listesinden, yol için engellemek veya izin vermek istediğiniz ülkeleri/bölgeleri seçin. 
 
 Ülkeleri/bölgeleri seçmeyi tamamladıktan sonra yeni coğrafi Filtreleme kuralını etkinleştirmek için **Kaydet** ' i seçin. 
@@ -70,31 +68,33 @@ Tüm dosyalarınız için bir eğik çizgi (/) ile coğrafi filtreleme uygulayab
 ![Ekran görüntüsünde, ülkelerin veya bölgelerin engellenmesini veya bunlara izin vermek için kullanılacak ülke KODLARı gösterilmektedir.](./media/cdn-filtering/cdn-geo-filtering-rules.png)
 
 ### <a name="clean-up-resources"></a>Kaynakları temizleme
+
 Bir kuralı silmek için, **coğrafi filtreleme** sayfasındaki listeden seçin ve **Sil**' i seçin.
 
 ## <a name="azure-cdn-premium-from-verizon-profiles"></a>Verizon profillerden Azure CDN Premium
+
 **Verizon profillerden Azure CDN Premium** için, coğrafi filtreleme kuralı oluşturmaya yönelik kullanıcı arabirimi farklıdır:
 
 1. Azure CDN profilinizde üst menüden **Yönet**' i seçin.
 
 2. Verizon portalından, **http büyük**' i seçin ve ardından **ülke filtreleme**' yi seçin.
 
-    ![Ekran görüntüsünde, Azure C D N 'de ülke filtrelemeyi seçme Işlemi gösterilmektedir.](./media/cdn-filtering/cdn-geo-filtering-premium.png)
-
+    :::image type="content" source="./media/cdn-filtering/cdn-geo-filtering-premium.png" alt-text="Ekran görüntüsünde, Azure CDN ' de ülke filtrelemeyi seçme işlemi gösterilmektedir" border="true":::
+  
 3. **Ülke filtresi ekle**' yi seçin.
 
-    **Birinci adım:** sayfa görüntülenir.
+4. **Adım bir:**, dizin yolunu girin. **Engelle** veya **Ekle**' yi seçin ve ardından **İleri**' yi seçin.
 
-4. Dizin yolunu girin, **blok** veya **Ekle**' yi seçin ve ardından **İleri**' yi seçin.
-
-    **Ikinci adım:** sayfa görüntülenir. 
-
-5. Listeden bir veya daha fazla ülke/bölge seçin ve ardından kuralı etkinleştirmek için **son** ' u seçin. 
+    > [!IMPORTANT]
+    > Uç nokta adı yolda olmalıdır.  Örnek: **/myendpoint8675/myFolder**.  **Myendpoint8675** değerini bitiş noktanızın adıyla değiştirin.
+    > 
+    
+5. **Ikinci adımda** listeden bir veya daha fazla ülke/bölge seçin. Kuralı etkinleştirmek için **son** ' u seçin. 
     
     Yeni kural, **ülke filtreleme** sayfasındaki tabloda görüntülenir.
-
-    ![Ekran görüntüsü, kuralın ülke filtrelemesinde nerede göründüğünü gösterir.](./media/cdn-filtering/cdn-geo-filtering-premium-rules.png)
-
+    
+    :::image type="content" source="./media/cdn-filtering/cdn-geo-filtering-premium-rules.png" alt-text="Ekran görüntüsü, kuralın ülke filtrelemesinde nerede göründüğünü gösterir." border="true":::
+ 
 ### <a name="clean-up-resources"></a>Kaynakları temizleme
 Ülke/bölge filtreleme kuralları tablosunda, bir kuralın yanındaki Sil simgesini veya değiştirmek için Düzenle simgesini seçin.
 

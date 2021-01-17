@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
-ms.openlocfilehash: a708fb76b5a3d0fd0683cdb8915d1a5e1824a57c
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 4ad362b983f81e2cdc10cdbccafd8dda951482d7
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251677"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539551"
 ---
 # <a name="how-to-estimate-and-manage-costs-of-an-azure-cognitive-search-service"></a>Azure Bilişsel Arama hizmeti 'nin maliyetlerini tahmin etme ve yönetme
 
@@ -23,9 +23,14 @@ Bu makalede, fiyatlandırma modeli, faturalandırılabilir olaylar ve bir Azure 
 
 Azure Bilişsel Arama 'de ölçeklenebilirlik mimarisi, daha fazla sorgu veya dizin oluşturma gücü olmasına bağlı olarak kapasiteyi değiştirebilmeniz ve yalnızca ihtiyacınız olanlar için ücret ödemenizi sağlayacak şekilde çoğaltmalar ve bölümlerin esnek birleşimlerine dayanır.
 
-Arama hizmetiniz tarafından kullanılan, hizmet katmanı tarafından belirlenen faturalandırma ücretine göre çarpılan kaynak miktarı, hizmeti çalıştırma maliyetini belirler. Maliyetler ve kapasite sıkı bir şekilde bağlanır. Maliyet tahmini yaparken, dizin oluşturma ve sorgu iş yüklerinizi çalıştırmak için gereken kapasiteyi anlamak, öngörülen maliyetlerin ne olacağı konusunda en iyi fikir verir.
+Arama hizmetiniz tarafından kullanılan, hizmet katmanı tarafından belirlenen faturalandırma ücretine göre çarpılan kaynak miktarı, hizmeti çalıştırmanın maliyetini belirler. Maliyetler ve kapasite sıkı bir şekilde bağlanır. Maliyet tahmini yaparken, dizin oluşturma ve sorgu iş yüklerinizi çalıştırmak için gereken kapasiteyi anlamak, öngörülen maliyetlerin ne olacağı konusunda en iyi fikir verir.
 
-Faturalama amacıyla, Bilişsel Arama *arama birimi* (su) kavramı vardır. Bir SU, bir hizmet tarafından kullanılan *kopyaların* ve *bölümlerin* ürünüdür: **(R x P = su)**. **(Su * ücret = aylık harcama)** faturalama ücreti Ile çarpılan SUs sayısı, aramayla ilgili maliyetlerin birincil determinandır. 
+Faturalama amacıyla, bilmeniz için iki basit formül vardır:
+
+| Formül | Açıklama |
+|---------|-------------|
+| **R x P = SU** | Kullanılan çoğaltma sayısı, kullanılan bölüm sayısıyla çarpılır, bir hizmet tarafından kullanılan *arama birimi* (su) miktarına eşittir. SU bir kaynak birimidir ve bir bölüm ya da çoğaltma olabilir. |
+| **SU * faturalandırma oranı = aylık harcama** | SUs sayısı, hizmeti sağladığınız katmanın faturalama oranı ile çarpılır. genel aylık faturanız birincil olarak belirlenir. Bazı özellikler veya iş yükleri, diğer Azure hizmetlerinde bağımlılıklara sahiptir ve bu, çözümünüzün maliyetini abonelik düzeyinde artırabilir. Aşağıdaki faturalanabilir olaylar bölümü faturanızda ekleyebileceğini özellikleri tanımlar. |
 
 Her hizmet bir SU (bir çoğaltma bir bölümden çarpılarak) en düşük düzeyde başlar. Her hizmet için en fazla 36 SUs olur. Bu en fazla iki şekilde erişilebilir: 6 Bölüm x 6 çoğaltma veya 3 bölümden oluşan x 12 çoğaltma. Toplam kapasitenin (örneğin, 3 çoğaltma, 3 bölümlü bir hizmetin 9 ' da faturalandırılan) kullanılması yaygındır. Geçerli birleşimler için [bölüm ve çoğaltma birleşimleri](search-capacity-planning.md#chart) grafiğine bakın.
 

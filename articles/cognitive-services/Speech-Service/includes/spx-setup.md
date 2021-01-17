@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 327dce053c38fdb7b03e7ceb0d7a62ec8b8e7248
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 87af99d5136a8bed93854e9396895cddeb22549a
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96993040"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98540463"
 ---
 ## <a name="download-and-install"></a>İndirme ve yükleme
 
@@ -59,11 +59,11 @@ Konuşma CLı 'Yı bir Docker kapsayıcısına yüklemek için şu adımları iz
 
 1. <a href="https://www.docker.com/get-started" target="_blank">Docker Desktop <span class="docon docon-navigate-external x-hidden-focus"></span> 'ı yükler</a> zaten yüklü değilse, platformunuz için.
 2. Yeni bir komut isteminde veya terminalde aşağıdaki komutu yazın:
-   ```shell   
+   ```console   
    docker pull msftspeech/spx
    ```
 3. Bu komutu yazın. Konuşma CLı için yardım bilgileri görmeniz gerekir:
-   ```shell 
+   ```console 
    docker run -it --rm msftspeech/spx help
    ```
 
@@ -93,27 +93,27 @@ Bu belgelerde `spx` Docker olmayan yüklemelerde kullanılan konuşma CLI komutu
 
 Windows 'ta komutlarınız şöyle olacaktır:
 
-```shell
+```console
 docker run -it -v c:\spx-data:/data --rm msftspeech/spx
 ```
 
 Linux veya macOS 'ta, komutlarınız aşağıdaki örneğe benzer şekilde görünür. `ABSOLUTE_PATH`Bağlı dizininizin mutlak yoluyla değiştirin. Bu yol, `pwd` önceki bölümde komutu tarafından döndürüldü. 
 
 Anahtarınızı ve bölgenizi ayarlamadan önce bu komutu çalıştırırsanız, anahtarınızı ve bölgenizi ayarlamanızı söyleyen bir hata alacaksınız:
-```shell   
+```console   
 sudo docker run -it -v ABSOLUTE_PATH:/data --rm msftspeech/spx
 ```
 
 `spx`Bir kapsayıcıda yüklü olan komutu kullanmak için, her zaman yukarıda gösterilen tam komutu ve ardından isteğinizin parametrelerini girin.
 Örneğin, Windows 'da bu komut anahtarınızı ayarlar:
 
-```shell
+```console
 docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCRIPTION-KEY
 ```
 
 Komut satırı aracı ile daha fazla genişletilmiş etkileşim için giriş noktası parametresi ekleyerek etkileşimli bash kabuğu ile bir kapsayıcı başlatabilirsiniz.
 Windows 'ta, birden çok komut girebileceğiniz etkileşimli bir komut satırı arabirimi sunan bir kapsayıcı başlatmak için bu komutu girin `spx` :
-```shell
+```console
 docker run -it --entrypoint=/bin/bash -v c:\spx-data:/data --rm msftspeech/spx
 ```
 
@@ -160,7 +160,7 @@ Follow these instructions to create a shortcut:
 Konuşma CLı 'yı kullanmaya başlamak için konuşma abonelik anahtarınızı ve bölge tanımlayıcıyı girmeniz gerekir. [Konuşma hizmetini ücretsiz deneyin](../overview.md#try-the-speech-service-for-free)bölümündeki adımları izleyerek bu kimlik bilgilerini alın.
 Abonelik anahtarınızı ve bölge tanımlayıcıyı (örn. `eastus`, `westus` ), aşağıdaki komutları çalıştırın.
 
-```shell
+```console
 spx config @key --set SUBSCRIPTION-KEY
 spx config @region --set REGION
 ```

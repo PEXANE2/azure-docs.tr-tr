@@ -4,15 +4,15 @@ description: Etkinleştirme dosyalarını yönetme, yedeklemeleri gerçekleştir
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 01/10/2021
+ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 25f47be98b11f05ee6ac27018152ece05c0de4e4
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 68fa3ea15199ec1d9cc99f92f497847fb029acd6
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246698"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539563"
 ---
 # <a name="manage-individual-sensors"></a>Algılayıcıları ayrı ayrı yönetme
 
@@ -98,11 +98,34 @@ Bu makalede, sertifikaları güncelleştirme, sertifika CLı komutlarıyla çal�
 
 IoT için Azure Defender, SSL/TLS sertifikalarını şu amaçlarla kullanır:
 
-1. CA imzalı sertifikayı karşıya yükleyerek kuruluşunuz tarafından istenen belirli sertifika ve şifreleme gereksinimlerini karşılayın.
+- CA imzalı sertifikayı karşıya yükleyerek kuruluşunuz tarafından istenen belirli sertifika ve şifreleme gereksinimlerini karşılayın.
 
-1. Yönetim Konsolu ile bağlı sensörler arasında ve bir yönetim konsolu ve yüksek oranda kullanılabilir bir yönetim konsolu arasında doğrulamaya izin verin. Doğrulamalar bir sertifika Iptal listesi ve sertifikanın sona erme tarihi ile değerlendirilir. **Doğrulama başarısız olursa, Yönetim Konsolu ile algılayıcı arasındaki iletişim durdurulur ve konsolda bir doğrulama hatası sunulur. Bu seçenek, yüklemeden sonra varsayılan olarak etkinleştirilmiştir.**
+- Yönetim Konsolu ile bağlı sensörler arasında ve bir yönetim konsolu ve yüksek oranda kullanılabilir bir yönetim konsolu arasında doğrulamaya izin verin. Doğrulamalar bir sertifika Iptal listesi ve sertifikanın sona erme tarihi ile değerlendirilir. *Doğrulama başarısız olursa, Yönetim Konsolu ile algılayıcı arasındaki iletişim durdurulur ve konsolda bir doğrulama hatası sunulur*. Bu seçenek, yüklemeden sonra varsayılan olarak etkinleştirilmiştir.
 
  Üçüncü taraf Iletme kuralları, örneğin SYSLOG 'a gönderilen uyarı bilgileri, splunk veya ServiceNow; ya da Active Directory iletişim doğrulanmaz.
+
+#### <a name="ssl-certificates"></a>SSL sertifikaları
+
+IoT algılayıcısı ve şirket içi yönetim konsolu için Defender, aşağıdaki işlevler için SSL ve TLS sertifikaları kullanır: 
+
+ - Kullanıcılar ve gerecin Web konsolu arasındaki iletişimin güvenliğini sağlayın. 
+ 
+ - Algılayıcı ve şirket içi yönetim konsolundaki REST API için güvenli iletişim.
+ 
+ - Algılayıcılar ve şirket içi yönetim konsolu arasındaki iletişimin güvenliğini sağlayın. 
+
+Yüklendikten sonra gereç, web konsoluna ön erişim sağlamak için yerel bir otomatik olarak imzalanan sertifika oluşturur. Kurumsal SSL ve TLS sertifikaları [`cyberx-xsense-certificate-import`](#cli-commands) komut satırı aracı kullanılarak yüklenebilir. 
+
+ > [!NOTE]
+ > Gereçanın istemci ve oturum başlatıcısı olduğu tümleştirmeler ve iletme kuralları için, belirli sertifikalar kullanılır ve sistem sertifikalarıyla ilgili değildir.  
+ >
+ >Bu durumlarda, Sertifikalar genellikle sunucudan alınır veya tümleştirmeyi ayarlamak için belirli bir sertifikanın sağlandığı asimetrik şifrelemeyi kullanır.
+
+Gereçler, benzersiz sertifika dosyaları kullanabilir. Bir sertifikayı değiştirmeniz gerekiyorsa, karşıya yüklediğiniz,
+
+- Sürüm 10,0 ' den, sertifika sistem ayarları menüsünden değiştirilebilir.
+
+- 10,0 ' dan önceki sürümler için, SSL sertifikası komut satırı aracı kullanılarak değiştirilebilir.
 
 ### <a name="update-certificates"></a>Sertifikaları güncelleştirme
 
@@ -111,15 +134,19 @@ Algılayıcı yönetici kullanıcıları sertifikaları güncelleştirebilir.
 Bir sertifikayı güncelleştirmek için:  
 
 1. **Sistem ayarları**' nı seçin.
+
 1. **SSL/TLS sertifikaları** ' nı seçin.
 1. Sertifikayı silin veya düzenleyin ve yeni bir tane ekleyin.
+
     - Bir sertifika adı ekleyin.
+    
     - Bir CRT dosyası ve anahtar dosyası yükleyin ve bir parola girin.
     - Gerekirse bir ped dosyası yükleyin.
 
 Doğrulama ayarını değiştirmek için:
 
 1. **Sertifika doğrulamasını etkinleştir** değiştirmeyi etkinleştirin veya devre dışı bırakın.
+
 1. **Kaydet**’i seçin.
 
 Seçenek etkinleştirilirse ve doğrulama başarısız olursa, Yönetim Konsolu ile algılayıcı arasındaki iletişim durdurulur ve konsolda bir doğrulama hatası sunulur.
@@ -128,87 +155,167 @@ Seçenek etkinleştirilirse ve doğrulama başarısız olursa, Yönetim Konsolu 
 
 Aşağıdaki sertifikalar desteklenir:
 
-- Özel/Kurumsal anahtar altyapısı (özel PKI) 
-- Ortak anahtar altyapısı (genel PKI) 
-- Gereç üzerinde yerel olarak oluşturuldu (yerel olarak kendinden imzalı). **Otomatik olarak imzalanan sertifikaların kullanılması önerilmez.** Bu bağlantı *güvensiz* ve yalnızca test ortamları için kullanılmalıdır. Sertifikanın sahibi doğrulanamıyor ve sisteminizin güvenliği korunabilir olamaz. Otomatik olarak imzalanan sertifikalar, üretim ağları için asla kullanılmamalıdır.  
+- Özel ve Kurumsal anahtar altyapısı (özel PKI)
 
-Aşağıdaki parametreler desteklenir. Sertifika CRT
+- Ortak anahtar altyapısı (genel PKI) 
+
+- Gereç üzerinde yerel olarak oluşturuldu (yerel olarak kendinden imzalı). 
+
+> [!IMPORTANT]
+> Otomatik olarak imzalanan sertifikalar kullanmanızı önermiyoruz. Bu bağlantı türü güvenli değildir ve yalnızca test ortamları için kullanılmalıdır. Bu yana, sertifikanın sahibi doğrulanamaz ve sisteminizin güvenliği korunamamakta olduğundan, otomatik olarak imzalanan sertifikalar, üretim ağları için asla kullanılmamalıdır.
+
+### <a name="supported-ssl-certificates"></a>Desteklenen SSL sertifikaları 
+
+Aşağıdaki parametreler desteklenir. 
+
+**Sertifika CRT**
 
 - Etki alanı adınızın birincil sertifika dosyası
+
 - İmza algoritması = SHA256RSA
 - İmza karma algoritması = SHA256
 - Geçerlilik = geçerli bir geçmiş tarihi
 - Geçerli = geçerli bir gelecek tarih
-- Ortak anahtar = RSA 2048bitleri (minimum) veya 4096bit
+- Ortak anahtar = RSA 2048 bitleri (minimum) veya 4096 bit
 - CRL dağıtım noktası =. CRL dosyasının URL 'SI
-- Konu CN = URL 'SI, example.contoso.com veya *. contoso.com* gibi bir joker karakter sertifikası olabilir*
-- Subject (C) ons TRY = tanımlı, ör. US
-- Konu (OU) kuruluş birimi = tanımlı, örn. contoso Labs
-- Konu (O) rganleştirme = tanımlı, ör. contoso Inc.
+- Konu CN = URL, joker bir sertifika olabilir; Örneğin, sensör. contoso. <span> com, veya *. contoso. <span> e
+- Subject (C) ons TRY = tanımlanmış, örneğin, US
+- Konu (OU) kuruluş birimi = tanımlı, örneğin, contoso Labs
+- Konu (O) rganleştirme = tanımlanmış, örneğin, contoso Inc.
 
-Anahtar dosyası
+**Anahtar dosyası**
 
-- CSR oluşturduğunuzda oluşturulan anahtar dosya
-- RSA 2048bitleri (minimum) veya 4096bit
+- CSR oluşturduğunuzda oluşturulan anahtar dosyası.
 
-Sertifika Zinciri
+- RSA 2048 bitleri (minimum) veya 4096 bit.
+
+ > [!Note]
+ > 4096bit anahtar uzunluğu kullanılıyor:
+ > - Her bağlantının başlangıcında SSL el sıkışması daha yavaş olacaktır.  
+ > - El sıkışma sırasında CPU kullanımında artış vardır. 
+
+**Sertifika Zinciri**
 
 - CA 'nız tarafından sağlanan ara sertifika dosyası (varsa)
+
 - Sunucu sertifikasını veren CA sertifikası, dosyanın ilk olarak köke kadar olan diğer kullanıcılar tarafından gelmelidir. 
 - Paket öznitelikleri içerebilir.
 
-Deyimi
+**Deyimi**
 
-- 1 anahtar destekleniyor
-- Sertifikayı içeri aktarırken kurulum
+- Bir anahtar destekleniyor.
 
-Diğer parametrelere sahip sertifikalar çalışabilir, ancak Microsoft tarafından desteklenemez.
+- Sertifikayı içeri aktarırken ayarlayın.
+
+Diğer parametrelere sahip sertifikalar işe yarasa da Microsoft bunları desteklemez.
 
 #### <a name="encryption-key-artifacts"></a>Şifreleme anahtarı yapıtları
 
 **. pek – sertifika kapsayıcı dosyası**
 
-Ad gizlilik Gelişmiş posta (PED), güvenli e-posta için geçmiş bir yöntem, ancak kullandığı kapsayıcı biçimi üzerinde yer alır ve x509 ASN. 1 anahtarlarının Base64 bir çevirisi olur.  
+Gizlilik Gelişmiş posta (pek) dosyaları, e-postaların güvenliğini sağlamak için kullanılan genel dosya türüdür. Günümüzde, pek dosyaları sertifikalarla birlikte kullanılır ve x509 ASN1 anahtarlarını kullanır.  
 
-RFC 1421 ' de 1424 ' de tanımlanır: yalnızca ortak sertifikayı (örneğin Apache yüklemeleri ve CA sertifika dosyaları/etc/SSL/CERT) içerebilen bir kapsayıcı biçimi veya ortak anahtar, özel anahtar ve kök sertifikaları dahil olmak üzere tüm sertifika zincirlerini içerebilir.  
+Kapsayıcı dosyası, yalnızca ortak sertifikayı içerebilen bir kapsayıcı biçimi olan RFC 1421 ' de 1424 ' de tanımlanır. Örneğin, Apache yüklemeleri, CA sertifikası, dosyalar, vs, SSL veya CERT. Bu, ortak anahtar, özel anahtar ve kök sertifikaları dahil olmak üzere tüm sertifika zincirini içerebilir.  
 
-PKCS10 biçimi ped 'ye çevrilebilmesi için bir CSR de kodlayabilir.
+Ayrıca, ped 'ye çevrilebilen PKCS10 biçimi olarak bir CSR 'yi de kodlayabilir.
 
 **. cert. cer. CRT – sertifika kapsayıcı dosyası**
 
-Farklı bir uzantıya sahip. pek (veya nadiren. der) biçimli dosya. Windows Gezgini tarafından sertifika olarak tanınır. . Ped dosyası Windows Gezgini tarafından tanınmıyor.
+`.pem` `.der` Farklı bir uzantıya sahip veya biçimli bir dosya. Dosya Windows Gezgini tarafından sertifika olarak tanınır. `.pem`   Dosya Windows Gezgini tarafından tanınmıyor.
 
 **. Key – özel anahtar dosyası**
 
-ANAHTAR dosya, ped dosyası ile aynı "biçim", ancak farklı bir uzantıya sahip.
-##### <a name="use-cli-commands-to-deploy-certificates"></a>Sertifikaları dağıtmak için CLı komutlarını kullanma
+Anahtar dosya, ped dosyasıyla aynı biçimde, ancak farklı bir uzantıya sahiptir.
 
-Sertifikaları içeri aktarmak için *Six-xsense-Certificate-Import* CLI komutunu kullanın. Bu aracı kullanmak için, sertifika dosyalarının cihaza yüklenmesi gerekir (WinSCP veya wget gibi araçlar kullanılarak).
+#### <a name="additional-commonly-available-key-artifacts"></a>Yaygın olarak kullanılan ek anahtar yapıtları
+
+**. CSR-sertifika imzalama isteği**.  
+
+Bu dosya, sertifika yetkililerine göndermek için kullanılır. Gerçek biçim, RFC 2986 ' de tanımlanan PKCS10 ' dir ve istenen sertifikanın bazı veya tüm önemli ayrıntılarını içerebilir. Örneğin, konu, kuruluş ve durum. Bu, CA tarafından imzalanan sertifikanın ortak anahtarıdır ve döndürülen bir sertifikayı alır.  
+
+Döndürülen sertifika, ortak anahtarı içeren ancak özel anahtarı içermeyen genel sertifikadır. 
+
+**. PKCS12. pfx. p12 – Password kapsayıcısı**. 
+
+Public-Key şifreleme standartları (PKCS) tarafından başlangıçta RSA tarafından tanımlanan 12 değişkeni başlangıçta Microsoft tarafından geliştirilmiştir ve daha sonra RFC 7292 olarak gönderilir.  
+
+Bu kapsayıcı biçimi hem ortak hem de özel sertifika çiftlerini içeren bir parola gerektirir. `.pem`   Dosyaların aksine bu kapsayıcı tamamen şifrelenir.  
+
+Bunu `.pem`   hem ortak hem de özel anahtarlarla bir dosyaya dönüştürmek Için OpenSSL kullanabilirsiniz: `openssl pkcs12 -in file-to-convert.p12 -out converted-file.pem -nodes`  
+
+**. der – ikili kodlu ped**.
+
+ASN. 1 sözdizimini binary olarak kodlama yöntemi, `.pem`   yalnızca Base64 kodlamalı bir dosya olan bir dosyadır `.der` . 
+
+OpenSSL, bu dosyaları bir: olarak `.pem` dönüştürebilir  `openssl x509 -inform der -in to-convert.der -out converted.pem` .  
+
+Windows, bu dosyaları sertifika dosyası olarak tanır. Varsayılan olarak, Windows sertifikaları `.der` farklı bir uzantıya sahip biçimli dosya olarak dışarı aktarır.  
+
+**. CRL-sertifika iptal listesi**.  
+Sertifika yetkilileri bu dosyaları, süresi dolmadan önce sertifikaların yetkisini kaldırmak için bir yol olarak oluşturur.
+ 
+##### <a name="cli-commands"></a>CLI komutları
+
+`cyberx-xsense-certificate-import`Sertifikaları içeri aktarmak için CLI komutunu kullanın. Bu aracı kullanmak için, WinSCP veya wget gibi araçları kullanarak sertifika dosyalarını cihaza yüklemeniz gerekir.
 
 Komut aşağıdaki giriş bayraklarını destekler:
 
--h komut satırı yardım sözdizimini göster
+- `-h`: Komut satırı yardım söz dizimini gösterir.
 
---sertifika dosyasının CRT yolu (CRT uzantısı)
+- `--crt`: Bir sertifika dosyasının yolu (. CRT uzantısı).
 
---Key *. Key dosyası, anahtar uzunluğu en az 2048 bit olmalıdır
+- `--key`:  \* . Key dosyası. Anahtar uzunluğu en az 2.048 bit olmalıdır.
 
---sertifika zinciri dosyasına zincir yolu (isteğe bağlı)
+- `--chain`: Bir sertifika zinciri dosyasının yolu (isteğe bağlı).
 
---sertifikayı şifrelemek için kullanılan geçiş parolası (isteğe bağlı)
+- `--pass`: Sertifikayı şifrelemek için kullanılan parola (isteğe bağlı).
 
---Parola-Ayarla varsayılan = false, kullanılmıyor. Önceki sertifikayla sağlanan önceki parolayı kullanmak için TRUE olarak ayarlayın (isteğe bağlı)
+- `--passphrase-set`: Varsayılan = `False` , kullanılmıyor. `True`Önceki sertifikayla sağlanan önceki parolayı kullanmak için olarak ayarlayın (isteğe bağlı).
 
-CLı komutu kullanılırken:
+CLı komutunu kullanırken:
 
-- Gereç üzerinde sertifika dosyalarının okunabilir olduğunu doğrulayın.
+- Sertifika dosyalarının gereç üzerinde okunabilir olduğunu doğrulayın.
 
-- Sertifikadaki etki alanı adının ve IP 'nin BT departmanı tarafından planlanmış yapılandırmayla eşleştiğinden emin olun.
+- Sertifikadaki etki alanı adının ve IP 'nin, BT departmanının planlandığından yapılandırma ile eşleştiğinden emin olun.
 
+### <a name="use-openssl-to-manage-certificates"></a>Sertifikaları yönetmek için OpenSSL kullanma
+
+Aşağıdaki komutlarla sertifikalarınızı yönetin:
+
+| Description | CLı komutu |
+|--|--|
+| Yeni bir özel anahtar ve sertifika Imzalama Isteği oluştur | `openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key` |
+| Otomatik olarak imzalanan bir sertifika oluşturma | `openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt` |
+| Mevcut bir özel anahtar için bir sertifika imzalama isteği (CSR) oluştur | `openssl req -out CSR.csr -key privateKey.key -new` |
+| Mevcut bir sertifikayı temel alan bir sertifika imzalama isteği oluştur | `openssl x509 -x509toreq -in certificate.crt -out CSR.csr -signkey privateKey.key` |
+| Özel anahtardan bir parolayı kaldırma | `openssl rsa -in privateKey.pem -out newPrivateKey.pem` |
+
+Bir sertifika, CSR veya özel anahtar içindeki bilgileri denetlemeniz gerekiyorsa, bu komutları kullanın;
+
+| Description | CLı komutu |
+|--|--|
+| Sertifika Imzalama Isteği 'ni (CSR) denetleme | `openssl req -text -noout -verify -in CSR.csr` |
+| Özel anahtarı denetleme | `openssl rsa -in privateKey.key -check` |
+| Bir sertifikayı denetleme | `openssl x509 -in certificate.crt -text -noout`  |
+
+Özel anahtarın sertifikayla eşleşmemesi veya bir siteye yüklediğiniz bir sertifikanın güvenilir olmadığını belirten bir hata alırsanız, hatayı onarmak için bu komutları kullanın;
+
+| Description | CLı komutu |
+|--|--|
+| Bir CSR veya özel anahtardaki ile eşleştiğinden emin olmak için ortak anahtarın MD5 karmasını denetleyin | 1. `openssl x509 -noout -modulus -in certificate.crt | openssl md5` <br /> iki. `openssl rsa -noout -modulus -in privateKey.key | openssl md5` <br /> 03. `openssl req -noout -modulus -in CSR.csr | openssl md5 ` |
+
+Sertifikaları ve anahtarları, belirli sunucu türleri veya yazılımlar ile uyumlu hale getirmek üzere farklı biçimlere dönüştürmek için, bu komutları kullanın;
+
+| Description | CLı komutu |
+|--|--|
+| DER dosyasını (. CRT. cer. der) ped 'ye Dönüştür  | `openssl x509 -inform der -in certificate.cer -out certificate.pem`  |
+| PED dosyasını DER öğesine Dönüştür | `openssl x509 -outform der -in certificate.pem -out certificate.der`  |
+| Özel anahtar ve sertifikalar içeren bir PKCS # 12 dosyasını (. pfx. p12) ped 'ye Dönüştür | `openssl pkcs12 -in keyStore.pfx -out keyStore.pem -nodes` <br />`-nocerts`Yalnızca özel anahtarı çıkışa ekleyebilir veya `-nokeys` yalnızca sertifikaların çıktısını almak için ekleme yapabilirsiniz. |
+| PEK sertifika dosyasını ve özel anahtarı PKCS # 12 (. pfx. p12) öğesine Dönüştür | `openssl pkcs12 -export -out certificate.pfx -inkey privateKey.key -in certificate.crt -certfile CACert.crt` |
 
 ## <a name="connect-a-sensor-to-the-management-console"></a>Yönetim konsoluna bir algılayıcı bağlama
 
-Bu bölümde, algılayıcı ve şirket içi yönetim konsolu arasında bağlantı sağlamak açıklanmaktadır. Bir AIR-gapped ağında çalışıyorsanız ve algılayıcıdan yönetim konsoluna varlık ve uyarı bilgilerini göndermek istiyorsanız bunu yapmanız gerekir. Bu bağlantı ayrıca yönetim konsolunun sistem ayarlarını sensöre itmesi ve algılayıcısı üzerinde diğer yönetim görevlerini gerçekleştirmesini sağlar.
+Bu bölümde, algılayıcı ve şirket içi yönetim konsolu arasında bağlantı sağlamak açıklanmaktadır. Bu, bir AIR-gapped ağında çalışıyorsanız ve algılayıcıdan yönetim konsoluna varlık ve uyarı bilgilerini göndermek istiyorsanız bunu yapın. Bu bağlantı ayrıca yönetim konsolunun sistem ayarlarını sensöre itmesi ve algılayıcısı üzerinde diğer yönetim görevlerini gerçekleştirmesini sağlar.
 
 Bağlanmak için:
 

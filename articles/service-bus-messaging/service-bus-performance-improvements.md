@@ -2,14 +2,14 @@
 title: Azure Service Bus kullanarak performansı iyileştirmeye yönelik en iyi uygulamalar
 description: Aracılı iletileri değiş tokuşu yaparken performansı iyileştirmek için Service Bus nasıl kullanılacağını açıklar.
 ms.topic: article
-ms.date: 11/11/2020
+ms.date: 01/15/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6a0457537712ccb85191f320fd348446eed9b229
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 7bfff1a31365724ed1d1cb6ff1956a4e2ef4f4c0
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655637"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539429"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Service Bus Mesajlaşması kullanarak performans geliştirmek için en iyi yöntemler
 
@@ -24,22 +24,27 @@ Service Bus, istemcilerin üç protokolden birini kullanarak ileti göndermesini
 2. Service Bus mesajlaşma Protokolü (SBMP)
 3. Köprü Metni Aktarım Protokolü (HTTP)
 
-Service Bus bağlantısını sürdürdüğü için AMQP en verimli yoldur. Toplu işleme ve önceden getirme de uygular. Açıkça belirtilmedikçe, bu makaledeki tüm içerikler AMQP veya SBMP kullanımını varsayar.
+Service Bus bağlantısını sürdürdüğü için AMQP en verimli yoldur. [Toplu işleme](#batching-store-access) ve [önceden getirme](#prefetching)de uygular. Açıkça belirtilmedikçe, bu makaledeki tüm içerikler AMQP veya SBMP kullanımını varsayar.
 
 > [!IMPORTANT]
 > SBMP yalnızca .NET Framework için kullanılabilir. AMQP, .NET Standard için varsayılandır.
 
 ## <a name="choosing-the-appropriate-service-bus-net-sdk"></a>Uygun Service Bus .NET SDK 'sını seçme
-.NET SDK 'ların desteklenen iki Azure Service Bus vardır. API 'Leri benzerdir ve hangisinin seçeceğiniz kafa karıştırıcı olabilir. Kararınızı göstermeye yardımcı olması için aşağıdaki tabloya bakın. Daha modern, performans ve platformlar arası uyumlu olduğundan Microsoft. Azure. ServiceBus SDK 'sını kullanmanızı öneririz. Ayrıca, WebSockets üzerinden AMQP 'yi destekler ve açık kaynaklı projelerin Azure .NET SDK koleksiyonunun bir parçasıdır.
+Desteklenen üç Azure Service Bus .NET SDK 'Sı vardır. API 'Leri benzerdir ve hangisinin seçeceğiniz kafa karıştırıcı olabilir. Kararınızı göstermeye yardımcı olması için aşağıdaki tabloya bakın. Azure. Messaging. ServiceBus SDK, en son ve diğer SDK 'larda kullanılması önerilir. Hem Azure. Messaging. ServiceBus hem de Microsoft. Azure. ServiceBus SDK 'Ları modern, performanslı ve platformlar arası uyumludur. Ayrıca, WebSockets üzerinden AMQP destekleirler ve açık kaynaklı projelerin Azure .NET SDK koleksiyonunun bir parçasıdır.
 
 | NuGet paketi | Birincil ad alanı (ler) | Minimum platform (ler) | Protokoller |
 |---------------|----------------------|---------------------|-------------|
-| <a href="https://www.nuget.org/packages/Microsoft.Azure.ServiceBus" target="_blank">Microsoft. Azure. ServiceBus <span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.Azure.ServiceBus`<br>`Microsoft.Azure.ServiceBus.Management` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5,4<br>Xamarin. iOS 10,14<br>Xamarin. Mac 3,8<br>Xamarin. Android 8,0<br>Evrensel Windows Platformu 10.0.16299 | AMQP<br>HTTP |
-| <a href="https://www.nuget.org/packages/WindowsAzure.ServiceBus" target="_blank">WindowsAzure. ServiceBus <span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.ServiceBus`<br>`Microsoft.ServiceBus.Messaging` | .NET Framework 4.6.1 | AMQP<br>SBMP<br>HTTP |
+| [Azure. Messaging. ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus) | `Azure.Messaging.ServiceBus`<br>`Azure.Messaging.ServiceBus.Administration` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5,4<br>Xamarin. iOS 10,14<br>Xamarin. Mac 3,8<br>Xamarin. Android 8,0<br>Evrensel Windows Platformu 10.0.16299 | AMQP<br>HTTP |
+| [Microsoft. Azure. ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus/) | `Microsoft.Azure.ServiceBus`<br>`Microsoft.Azure.ServiceBus.Management` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5,4<br>Xamarin. iOS 10,14<br>Xamarin. Mac 3,8<br>Xamarin. Android 8,0<br>Evrensel Windows Platformu 10.0.16299 | AMQP<br>HTTP |
+| [WindowsAzure. ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus) | `Microsoft.ServiceBus`<br>`Microsoft.ServiceBus.Messaging` | .NET Framework 4.6.1 | AMQP<br>SBMP<br>HTTP |
 
 En düşük .NET Standard platform desteği hakkında daha fazla bilgi için bkz. [.NET uygulama desteği](/dotnet/standard/net-standard#net-implementation-support).
 
 ## <a name="reusing-factories-and-clients"></a>Fabrikaları ve istemcileri yeniden kullanma
+# <a name="azuremessagingservicebus-sdk"></a>[Azure. Messaging. ServiceBus SDK](#tab/net-standard-sdk-2)
+[Servicebusclient](/dotnet/api/azure.messaging.servicebus.servicebusclient), [servicebussender](/dotnet/api/azure.messaging.servicebus.servicebussender), [Servicebusalıcısı](/dotnet/api/azure.messaging.servicebus.servicebusreceiver)ve [servicebusprocessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor)gibi hizmetle etkileşime geçen Service Bus nesneleri, tek tonlar olarak bağımlılık ekleme (veya bir kez örneklenmiş ve paylaşılan) için kaydedilmelidir. ServiceBusClient, [Servicebusclientbuilderextensions](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/src/Compatibility/ServiceBusClientBuilderExtensions.cs)ile bağımlılık ekleme için kaydedilebilir. 
+
+Her iletiyi gönderdikten veya aldıktan sonra bu nesneleri kapatmayın veya atmemenizi öneririz. Varlığa özgü nesneleri kapatma veya elden atma (ServiceBusSender/alıcı/Işlemci), Service Bus hizmetine olan bağlantıyı aşağı doğru bir şekilde kapatıyor. ServiceBusClient, Service Bus hizmetine yapılan bağlantıyı aşağı doğru bir şekilde elden atılıyor. Bir bağlantı kurmak, aynı ServiceBusClient öğesini yeniden oluşturup aynı ServiceBusClient örneğinden gerekli varlığa özgü nesneleri oluşturarak kaçınmanıza engel olan pahalı bir işlemdir. Bu istemci nesnelerini, eşzamanlı zaman uyumsuz işlemler ve birden çok iş parçacığından güvenle kullanabilirsiniz.
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
@@ -55,6 +60,27 @@ Ya da gibi istemci nesneleri Service Bus `QueueClient` , `MessageSender` bağlan
 Gönderme, alma, silme, vb. gibi işlemler, biraz zaman alabilir. Bu süre, Service Bus hizmetinin işlemi ve isteğin gecikme süresini ve yanıtı işlemek için aldığı süreyi içerir. Zaman başına işlem sayısını artırmak için, işlemlerin eşzamanlı olarak yürütülmesi gerekir.
 
 İstemci **zaman uyumsuz** işlemler gerçekleştirerek eşzamanlı işlemleri zamanlar. Sonraki istek, önceki istek tamamlanmadan önce başlatılır. Aşağıdaki kod parçacığı, zaman uyumsuz gönderme işlemine bir örnektir:
+
+# <a name="azuremessagingservicebus-sdk"></a>[Azure. Messaging. ServiceBus SDK](#tab/net-standard-sdk-2)
+```csharp
+var messageOne = new ServiceBusMessage(body);
+var messageTwo = new ServiceBusMessage(body);
+
+var sendFirstMessageTask =
+    sender.SendMessageAsync(messageOne).ContinueWith(_ =>
+    {
+        Console.WriteLine("Sent message #1");
+    });
+var sendSecondMessageTask =
+    sender.SendMessageAsync(messageTwo).ContinueWith(_ =>
+    {
+        Console.WriteLine("Sent message #2");
+    });
+
+await Task.WhenAll(sendFirstMessageTask, sendSecondMessageTask);
+Console.WriteLine("All messages sent");
+
+```
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
@@ -101,6 +127,35 @@ Console.WriteLine("All messages sent");
 ---
 
 Aşağıdaki kod, zaman uyumsuz alma işlemine bir örnektir.
+
+# <a name="azuremessagingservicebus-sdk"></a>[Azure. Messaging. ServiceBus SDK](#tab/net-standard-sdk-2)
+
+```csharp
+var client = new ServiceBusClient(connectionString);
+var options = new ServiceBusProcessorOptions 
+{
+
+      AutoCompleteMessages = false,
+      MaxConcurrentCalls = 20
+};
+await using ServiceBusProcessor processor = client.CreateProcessor(queueName,options);
+processor.ProcessMessageAsync += MessageHandler;
+processor.ProcessErrorAsync += ErrorHandler;
+
+static Task ErrorHandler(ProcessErrorEventArgs args)
+{
+    Console.WriteLine(args.Exception);
+    return Task.CompletedTask;
+};
+
+static async Task MessageHandler(ProcessMessageEventArgs args)
+{
+Console.WriteLine("Handle message");
+      await args.CompleteMessageAsync(args.Message);
+}
+
+await processor.StartProcessingAsync();
+```
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
@@ -168,15 +223,18 @@ Service Bus, alma ve silme işlemlerine yönelik işlemleri desteklemez. Ayrıca
 
 İstemci tarafı toplu işleme, bir kuyruk veya konu istemcisinin belirli bir süre için ileti gönderilmesini geciktirmesini sağlar. İstemci bu süre içinde başka iletiler gönderirse, iletileri tek bir toplu iş olarak gönderir. İstemci tarafı toplu işleme Ayrıca bir kuyruk veya abonelik istemcisinin birden çok **tamamlanmış** isteği tek bir istek halinde toplu olarak yığın oluşturmasına neden olur. Toplu işleme yalnızca zaman uyumsuz **gönderme** ve **Tamamlanan** işlemler için kullanılabilir. Zaman uyumlu işlemler hemen Service Bus hizmetine gönderilir. Toplu işleme, göz atma veya alma işlemleri veya istemciler arasında toplu işlem gerçekleşmiyor.
 
+# <a name="azuremessagingservicebus-sdk"></a>[Azure. Messaging. ServiceBus SDK](#tab/net-standard-sdk-2)
+.NET Standard SDK için toplu işlem işlevselliği henüz işlemek üzere bir özellik sunmaz.
+
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
-.NET Standard SDK için toplu işlem işlevselliği, işlemek için bir özelliği kullanıma sunmaz.
+.NET Standard SDK için toplu işlem işlevselliği henüz işlemek üzere bir özellik sunmaz.
 
 # <a name="windowsazureservicebus-sdk"></a>[WindowsAzure. ServiceBus SDK 'Sı](#tab/net-framework-sdk)
 
 Varsayılan olarak, bir istemci 20 MS toplu iş aralığı kullanır. İleti fabrikası oluşturmadan önce [Batchflushınterval][BatchFlushInterval] özelliğini ayarlayarak Batch aralığını değiştirebilirsiniz. Bu ayar, bu fabrika tarafından oluşturulan tüm istemcileri etkiler.
 
-Toplu işlemeyi devre dışı bırakmak için [Batchflushınterval][BatchFlushInterval] özelliğini **TimeSpan. Zero** olarak ayarlayın. Örnek:
+Toplu işlemeyi devre dışı bırakmak için [Batchflushınterval][BatchFlushInterval] özelliğini **TimeSpan. Zero** olarak ayarlayın. Örneğin:
 
 ```csharp
 var settings = new MessagingFactorySettings
@@ -217,6 +275,19 @@ Bir kuyruğun, konunun veya aboneliğin aktarım hızını artırmak için Servi
 Bu Aralık süresince gerçekleşen ek mağaza işlemleri toplu işe eklenir. Toplu depolama erişimi yalnızca **gönderme** ve **tamamlanma** işlemlerini etkiler; alma işlemleri etkilenmez. Toplu depo erişimi, bir varlık üzerindeki bir özelliktir. Toplu işleme, toplu depo erişimini etkinleştiren tüm varlıklarda oluşur.
 
 Yeni bir kuyruk, konu veya abonelik oluştururken, toplu mağaza erişimi varsayılan olarak etkindir.
+
+
+# <a name="azuremessagingservicebus-sdk"></a>[Azure. Messaging. ServiceBus SDK](#tab/net-standard-sdk-2)
+Toplu depo erişimini devre dışı bırakmak için bir örneğine ihtiyacınız vardır `ServiceBusAdministrationClient` . `CreateQueueOptions`Özelliğini olarak ayarlayan bir sıra açıklamasıyla oluşturun `EnableBatchedOperations` `false` .
+
+```csharp
+var options = new CreateQueueOptions(path)
+{
+    EnableBatchedOperations = false
+};
+var queue = await administrationClient.CreateQueueAsync(options);
+```
+
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
@@ -270,6 +341,12 @@ Bir iletinin yaşam süresi (TTL) özelliği, sunucunun istemciye ileti gönderm
 
 Önceden getirme, faturalandırılabilir mesajlaşma işlemlerinin sayısını etkilemez ve yalnızca Service Bus istemci protokolü için kullanılabilir. HTTP protokolü, ön getirmeyi desteklemiyor. Önceden getirme, hem zaman uyumlu hem de zaman uyumsuz alma işlemleri için kullanılabilir.
 
+# <a name="azuremessagingservicebus-sdk"></a>[Azure. Messaging. ServiceBus SDK](#tab/net-standard-sdk-2)
+Daha fazla bilgi için aşağıdaki özelliklere bakın `PrefetchCount` :
+
+- [Servicebusalıcı. PrefetchCount](/dotnet/api/azure.messaging.servicebus.servicebusreceiver.prefetchcount)
+- [ServiceBusProcessor. PrefetchCount](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.prefetchcount)
+
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft. Azure. ServiceBus SDK](#tab/net-standard-sdk)
 
 Daha fazla bilgi için aşağıdaki özelliklere bakın `PrefetchCount` :
@@ -287,10 +364,6 @@ Daha fazla bilgi için aşağıdaki özelliklere bakın `PrefetchCount` :
 ---
 
 ## <a name="prefetching-and-receivebatch"></a>Ön getirme ve ReceiveBatch
-
-> [!NOTE]
-> Bu bölüm yalnızca WindowsAzure. ServiceBus SDK için geçerlidir; Microsoft. Azure. ServiceBus SDK, Batch işlevlerini sunmaz.
-
 Birden çok iletiyi önceden getirme kavramlarının bir toplu işte () iletileri işlemeye benzer semantiklerine sahip olsa `ReceiveBatch` da, bu yaklaşımları birlikte kullanırken aklınızda tutulması gereken küçük farklılıklar vardır.
 
 Önceden getirme, istemcideki bir yapılandırma (veya mod) `QueueClient` `SubscriptionClient` ve `ReceiveBatch` bir işlemdir (istek-yanıt semantiğini içeren).
@@ -309,7 +382,7 @@ Tek bir kuyruk veya konu beklenen bir şekilde işleyemiyorsa, birden çok mesaj
 ## <a name="development-and-testing-features"></a>Geliştirme ve test özellikleri
 
 > [!NOTE]
-> Bu bölüm yalnızca WindowsAzure. ServiceBus SDK için geçerlidir, Microsoft. Azure. ServiceBus SDK bu işlevselliği sunmaz.
+> Bu bölüm yalnızca WindowsAzure. ServiceBus SDK için geçerlidir, Microsoft. Azure. ServiceBus ve Azure. Messaging. ServiceBus bu işlevselliği sunmaz.
 
 Service Bus, özellikle geliştirme için kullanılan ve **Üretim yapılandırmalarında hiçbir şekilde kullanılmamalıdır** olan bir özelliğe sahiptir: [`TopicDescription.EnableFilteringMessagesBeforePublishing`][TopicDescription.EnableFiltering] .
 
@@ -372,9 +445,9 @@ Aktarım hızını en üst düzeye çıkarmak için aşağıdaki yönergeleri iz
 * Toplu mağaza erişimini devre dışı bırakın. Bu erişim, varlığın genel yükünü azaltır. Ayrıca, iletilerin kuyruğa veya konuya yazılma hızının genel oranını azaltır.
 * Önceden getirme sayısını küçük bir değere ayarlayın (örneğin, PrefetchCount = 10). Bu sayı, diğer alıcıların önbelleğe alınmış çok sayıda iletisi olduğunda alıcıların boşta kalmasını engeller.
 
-### <a name="topic-with-a-small-number-of-subscriptions"></a>Az sayıda aboneliğe sahip konu
+### <a name="topic-with-a-few-subscriptions"></a>Birkaç aboneliğe sahip konu
 
-Hedef: az sayıda aboneliğe sahip bir konunun verimini en üst düzeye çıkarın. Birçok abonelik tarafından bir ileti alınır; bu, tüm aboneliklerdeki Birleşik Alım oranının gönderme hızından büyük olduğu anlamına gelir. Gönderenlerin sayısı küçüktür. Abonelik başına alıcı sayısı küçüktür.
+Hedef: birkaç abonelikle bir konunun verimini en üst düzeye çıkarın. Birçok abonelik tarafından bir ileti alınır; bu, tüm aboneliklerdeki Birleşik Alım oranının gönderme hızından büyük olduğu anlamına gelir. Gönderenlerin sayısı küçüktür. Abonelik başına alıcı sayısı küçüktür.
 
 Aktarım hızını en üst düzeye çıkarmak için aşağıdaki yönergeleri izleyin:
 
