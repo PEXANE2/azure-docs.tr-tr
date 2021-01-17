@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 3d8107e980b9cad9bc55cb51cc78b63985986ba5
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 3370215e9a69e62596f214ba4330fc4914a2837f
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97696233"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539696"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Power BI kiracı kaydetme ve tarama (Önizleme)
 
@@ -55,7 +55,7 @@ Kimlik doğrulaması ayarlamak için bir güvenlik grubu oluşturun ve kataloğu
     > [!Important]
     > Kiracı ayarları sayfasını görmek için bir Power BI yöneticisi olmanız gerekir.
 
-1. **Geliştirici ayarlarını**,  >  **hizmet sorumluların salt okuma Power BI yönetici API 'lerini (Önizleme) kullanmasına izin ver**' i seçin.
+1. **Yönetim API 'si ayarları**,  >  **hizmet sorumluların salt okunurdur Power BI yönetici API 'leri kullanmasına izin ver (Önizleme)** seçeneğini belirleyin.
 1. **Belirli güvenlik gruplarını** seçin.
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/allow-service-principals-power-bi-admin.png" alt-text="Hizmet sorumluların salt okunurdur Power BI yönetici API izinleri alma ile nasıl izin verileceğini gösteren resim":::

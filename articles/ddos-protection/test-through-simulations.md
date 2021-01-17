@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: e3a665e3615c9ff3a68cf13eeaef5e8f41632f6a
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 55042c8d1e612598cc5728668c9e87b054fb3afa
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900369"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98537839"
 ---
 # <a name="test-through-simulations"></a>Simülasyonlar aracılığıyla test etme
 
@@ -42,9 +42,9 @@ Azure müşterilerinin benzetimler için DDoS koruması etkinleştirilmiş ortak
     |---------      |---------                                          |
     |Hedef IP adresi           | Test etmek istediğiniz genel IP adresinden birini girin.                     |
     |Bağlantı Noktası Numarası   | _443_ girin.                       |
-    |DDoS profili | Olası değerler şunlardır; **DNS sel**, **NTPv2 sel**, **SSDP sel**, **TCP SYN sel**, **UDP 64B sel**, **UDP 128b sel**, UDP **256B** sel, UDP **512B** sel, UDP **1024b sel**, UDP **1514b sel**, **UDP parçalanma** **UDP memönbellekli**.|
-    |Test boyutu       | Olası değerler **100K PPS, 50 Mbps ve 4 kaynak IP**, **200k PPS, 100 Mbps ve 8 Kaynak IP**, **400K PPS, 200Mbps ve 16 kaynak** ıp, **800k PPS, 400 Mbps ve 32 Kaynak IP 'leri** içerir.                                  |
-    |Test süresi | Olası değerler şunlardır **10 dakika**, **15 dakika**, **20 dakika**, **25 dakika**, **30 dakika**.|
+    |DDoS profili | Olası değerler şunlardır,,,, `DNS Flood` `NTPv2 Flood` `SSDP Flood` `TCP SYN Flood` `UDP 64B Flood` , `UDP 128B Flood` , `UDP 256B Flood` , `UDP 512B Flood` , `UDP 1024B Flood` , `UDP 1514B Flood` , `UDP Fragmentation` , `UDP Memcached` .|
+    |Test boyutu       | Olası değerler şunlardır,,, `100K pps, 50 Mbps and 4 source IPs` `200K pps, 100 Mbps and 8 source IPs` `400K pps, 200Mbps and 16 source IPs` `800K pps, 400 Mbps and 32 source IPs` .                                  |
+    |Test süresi | Olası değerler şunlardır,,,, `10 Minutes` `15 Minutes` `20 Minutes` `25 Minutes` `30 Minutes` .|
 
 Şu şekilde görünür:
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 9a6e46c0b52c22df0682034deaebd58bbfeb34a7
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 2f0889732ac756e16465659ee2e5b52335d1148f
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210102"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539267"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>ITSM Bağlayıcısındaki sorunları giderme
 
@@ -31,47 +31,7 @@ ISMC panosunu kullanarak olay ve değişiklik isteği verilerini görselleştire
 
 Pano, bağlantı sorunlarını analiz etmek için bir başlangıç noktası olarak kullanabileceğiniz bağlayıcı durumu hakkında bilgi de sağlar.
 
-### <a name="error-investigation-using-the-dashboard"></a>Panoyu kullanarak araştırma hatası
-
-Panodaki hataları görüntülemek için sonraki adımları izlemeniz gerekir:
-
-1. **Tüm kaynaklarda**, **ServiceDesk 'yi arayın (*çalışma alanınızın adı*)**:
-
-   ![Azure portal son kaynakları gösteren ekran görüntüsü.](media/itsmc-definition/create-new-connection-from-resource.png)
-
-2. Sol bölmedeki **çalışma alanı veri kaynakları** altında **ITSM bağlantıları**' nı seçin:
-
-   ![ITSM bağlantıları menü öğesini gösteren ekran görüntüsü.](media/itsmc-overview/add-new-itsm-connection.png)
-
-3. Sol taraftaki kutuda **BT hizmet yönetimi Bağlayıcısı** **Özet altında,** **Özeti görüntüle**' yi seçin:
-
-    ![Görünüm özetini gösteren ekran görüntüsü.](media/itsmc-resync-servicenow/dashboard-view-summary.png)
-
-4. Sol taraftaki kutudaki **BT hizmet yönetimi Bağlayıcısı** **Özet** altında, grafiğe tıklayın:
-
-    ![Graph tıklamesinin gösterildiği ekran görüntüsü.](media/itsmc-resync-servicenow/dashboard-graph-click.png)
-
-5. Bu Panoyu kullanarak, bağlayıcıdaki durum ve hataları inceleyebilirsiniz.
-    ![Bağlayıcı durumunu gösteren ekran görüntüsü.](media/itsmc-resync-servicenow/connector-dashboard.png)
-
-### <a name="dashboard-elements"></a>Pano öğeleri
-
-Pano, bu bağlayıcıyı kullanarak ıTSM aracına gönderilen uyarılarla ilgili bilgiler içerir.
-Pano 4 parçaya bölünür:
-
-1. Oluşturulan iş öğesi: grafik ve aşağıdaki tablo, tür başına iş öğesi sayısını içerir. Grafiğe veya tabloda tıkladığınızda, iş öğeleri hakkında daha fazla ayrıntı görebilirsiniz.
-    ![Oluşturulan iş öğesini gösteren ekran görüntüsü.](media/itsmc-resync-servicenow/itsm-dashboard-workitems.png)
-2. Etkilenen bilgisayarlar: tablolar, yapılandırma öğelerini oluşturan yapılandırma öğeleriyle ilgili ayrıntıları içerir.
-    Tablolardaki satırlara tıklayarak yapılandırma öğeleri hakkında daha fazla bilgi edinebilirsiniz.
-    Tablo sınırlı sayıda satır içerir. tüm listeyi görmek isterseniz "tümünü gör" düğmesine tıklayabilirsiniz.
-    ![Etkilenen bilgisayarları gösteren ekran görüntüsü.](media/itsmc-resync-servicenow/itsm-dashboard-impacted-comp.png)
-3. Bağlayıcı durumu: aşağıdaki grafik ve tablo, bağlayıcının durumu hakkındaki iletileri içerir. Tablodaki satırlardaki grafiğe tıklayarak bağlayıcı durumunun iletileri hakkında daha fazla bilgi edinebilirsiniz.
-    Tablo sınırlı sayıda satır içerir. tüm listeyi görmek isterseniz "tümünü gör" düğmesine tıklayabilirsiniz.
-    ![Bağlayıcı durumunu gösteren ekran görüntüsü.](media/itsmc-resync-servicenow/itsm-dashboard-connector-status.png)
-4. Uyarı kuralları: tablolar algılanan uyarı kuralları sayısı hakkındaki bilgileri içerir.
-    Tablolardaki satırlara tıklayarak, algılanan kurallara ilişkin daha fazla ayrıntı edinebilirsiniz.
-    Tablo sınırlı sayıda satır içerir. tüm listeyi görmek isterseniz "tümünü gör" düğmesine tıklayabilirsiniz.
-    ![Uyarı kurallarını gösteren ekran görüntüsü.](media/itsmc-resync-servicenow/itsm-dashboard-alert-rules.png)
+Pano araştırması hakkında daha fazla bilgi edinmek için, bkz. [Panoyu kullanarak hata araştırma](./itsmc-dashboard.md).
 
 ### <a name="service-map"></a>Hizmet eşlemesi
 

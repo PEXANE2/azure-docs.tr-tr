@@ -14,17 +14,17 @@ ms.topic: how-to
 ms.date: 06/12/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 43718f8ebc851f27035f2999bfb4ff3ec12ca5b4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7bbd54ed68863a4704319a25af96b6463ad2377b
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021971"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539703"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Azure CDN uç noktası oluşturma
 Bu makalede, mevcut bir CDN profilinde [Azure Content Delivery Network (CDN)](cdn-overview.md) uç noktası oluşturmaya yönelik tüm ayarlar açıklanmaktadır. Bir profil ve uç nokta oluşturduktan sonra müşterilerinize içerik sunmaya başlayabilirsiniz. Bir profil ve uç nokta oluşturmaya yönelik hızlı başlangıç için bkz. [hızlı başlangıç: Azure CDN profili ve uç noktası oluşturma](cdn-create-new-endpoint.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bir CDN uç noktası oluşturabilmeniz için önce bir veya daha fazla CDN uç noktası içerebilen en az bir CDN profili oluşturmuş olmanız gerekir. CDN uç noktalarınızı internet etki alanı, web uygulaması veya başka ölçütlere göre düzenlemek için birden çok profil kullanabilirsiniz. CDN fiyatlandırma, CDN profil düzeyinde uygulandığından, Azure CDN fiyatlandırma katmanlarının bir karışımını kullanmak istiyorsanız birden çok CDN profili oluşturmanız gerekir. CDN profili oluşturmak için bkz. [Yeni BIR CDN profili oluşturma](cdn-create-new-endpoint.md#create-a-new-cdn-profile).
 
 ## <a name="log-in-to-the-azure-portal"></a>Azure portalında oturum açma
@@ -97,7 +97,7 @@ Azure hesabınızla [Azure portalında](https://portal.azure.com) oturum açın.
     Kaydın yayılması zaman alacağından, uç nokta hemen kullanılabilir olmaz: 
     - **Microsoft’tan Azure CDN Standart** profilleri için yayma işlemi genellikle 10 dakikada tamamlanır. 
     - **Akamai’den Azure CDN Standart** profilleri için yayma işlemi genellikle bir dakika içinde tamamlanır. 
-    - **Verizon’dan Azure CDN Standart** ve **Verizon’dan Azure CDN Premium** profilleri için yayma işlemi genellikle 90 dakika içinde tamamlanır. 
+    - **Verizon 'den Azure CDN Standart** ve **Verizon profillerinden Azure CDN Premium** için, yayma genellikle 30 dakika içinde tamamlanır. 
    
     Uç nokta yapılandırması, mevcut nokta (POP) sunucularına yayılmadan önce CDN etki alanı adını kullanmayı denerseniz, bir HTTP 404 yanıt durumu alabilirsiniz. Uç noktanızı oluşturduğumdan bu yana birkaç saat sonra hala 404 yanıt durumu alıyorsanız, bkz. [404 durum kodu döndüren uç noktalar Azure CDN sorun giderme](cdn-troubleshoot-endpoint.md).
 

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 68ffde11059de4809e519c1ac4f79503f25b0004
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 38eee59ecffa0c09403f47678e588b678e038413
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653750"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98537979"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir GitHub hesabı ile kaydolma ve oturum açma ayarlama
 
@@ -32,15 +32,15 @@ ms.locfileid: "97653750"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-a-github-oauth-application"></a>GitHub OAuth uygulaması oluşturma
 
-Azure Active Directory B2C (Azure AD B2C) ' de bir GitHub hesabını bir [kimlik sağlayıcısı](authorization-code-flow.md) olarak kullanmak için kiracınızda onu temsil eden bir uygulama oluşturmanız gerekir. Zaten bir GitHub hesabınız yoksa kaydolabilirsiniz [https://www.github.com/](https://www.github.com/) .
+Azure Active Directory B2C (Azure AD B2C) ' de bir GitHub hesabıyla oturum açmayı etkinleştirmek için, [GitHub geliştirici](https://github.com/settings/developers) portalında bir uygulama oluşturmanız gerekir. Daha fazla bilgi için bkz. [OAuth uygulaması oluşturma](https://docs.github.com/en/free-pro-team@latest/developers/apps/creating-an-oauth-app). Zaten bir GitHub hesabınız yoksa kaydolabilirsiniz [https://www.github.com/](https://www.github.com/) .
 
-1. GitHub kimlik bilgilerinizle [GitHub geliştirici](https://github.com/settings/developers) Web sitesinde oturum açın.
+1. GitHub kimlik bilgilerinizle [GitHub Developer](https://github.com/settings/developers) 'da oturum açın.
 1. **OAuth uygulamaları** ' nı seçin ve ardından **Yeni OAuth uygulaması**' nı seçin.
 1. Bir **uygulama adı** ve **giriş sayfası URL 'si** girin.
 1. `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` **Yetkilendirme geri çağırma URL 'sini** girin. `your-tenant-name`Azure AD B2C kiracınızın adıyla değiştirin. Kiracı, Azure AD B2C büyük harfle tanımlansa bile kiracı adınızı girerken tüm küçük harfleri kullanın.
@@ -218,7 +218,7 @@ Artık bir düğmeye sahip olduğunuza göre, bunu bir eyleme bağlamanız gerek
 ## <a name="add-github-identity-provider-to-a-user-flow"></a>Bir Kullanıcı akışına GitHub kimlik sağlayıcısı ekleme 
 
 1. Azure AD B2C kiracınızda **Kullanıcı akışları**' nı seçin.
-1. GitHub kimlik sağlayıcısına istediğiniz kullanıcı akışına tıklayın.
+1. GitHub kimlik sağlayıcısı eklemek istediğiniz kullanıcı akışına tıklayın.
 1. **Sosyal kimlik sağlayıcıları** altında **GitHub**' ı seçin.
 1. **Kaydet**’i seçin.
 1. İlkenizi test etmek için **Kullanıcı akışını Çalıştır**' ı seçin.

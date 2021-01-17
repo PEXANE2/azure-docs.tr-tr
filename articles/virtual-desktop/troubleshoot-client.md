@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c6083dbcc270c0e9dde1da45ed01369d03146237
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 097c97d16cf62793d03ac42662267e0553383bc1
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108975"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539628"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>Uzak masaüstü istemcisinde sorun giderme
 
@@ -94,14 +94,15 @@ Windows istemci akışı Windows sanal masaüstü (klasik) uygulamalarını gös
 Uygulama KIMLIĞI 9cdead84-a844-4324-93f2-b2e6bb768d07 listede bulamazsanız, Windows Sanal Masaüstü kaynak sağlayıcısını kaydetmeniz gerekir. Kaynak sağlayıcısını kaydetmek için:
 
 1. Azure Portal’da oturum açın.
-2. **Aboneliğe**gidin ve aboneliğinizi seçin.
+2. **Aboneliğe** gidin ve aboneliğinizi seçin.
 3. Sayfanın sol tarafındaki menüde **kaynak sağlayıcısı**' nı seçin.
-4. **Microsoft. DesktopVirtualization**bulun ve seçin, sonra **yeniden kaydet**' i seçin.
+4. **Microsoft. DesktopVirtualization** bulun ve seçin, sonra **yeniden kaydet**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Windows sanal masaüstü ve yükseltme izlemelerinin sorunlarını giderme hakkında genel bilgi için bkz. [sorun giderme genel bakış, geri bildirim ve destek](troubleshoot-set-up-overview.md).
 - Windows sanal masaüstü ortamında bir Windows sanal masaüstü ortamı ve konak havuzu oluştururken oluşan sorunları gidermek için, bkz. [ortam ve konak havuzu oluşturma](troubleshoot-set-up-issues.md).
 - Windows sanal masaüstündeki bir sanal makineyi (VM) yapılandırırken oluşan sorunları gidermek için bkz. [oturum ana bilgisayarı sanal makine yapılandırması](troubleshoot-vm-configuration.md).
+- Windows sanal masaüstü Aracısı veya oturum bağlantısıyla ilgili sorunları gidermek için bkz. [Genel Windows sanal masaüstü Aracısı sorunlarını giderme](troubleshoot-agent.md).
 - Windows sanal masaüstü ile PowerShell kullanırken karşılaşılan sorunları gidermek için bkz. [Windows sanal masaüstü PowerShell](troubleshoot-powershell.md).
 - Sorun giderme öğreticisini öğrenmek için bkz. [öğretici: Kaynak Yöneticisi şablonu dağıtımlarının sorunlarını giderme](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).

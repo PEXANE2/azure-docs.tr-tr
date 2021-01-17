@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c8b942e66a76bcc3a095f9bd3d40b44bf4217e50
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 286f4f5ca8a18a67da2ac24beb4c6935de35778d
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584893"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538112"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir Google hesabı ile kaydolma ve oturum açma ayarlama
 
@@ -37,7 +37,7 @@ ms.locfileid: "97584893"
 
 ## <a name="create-a-google-application"></a>Google uygulaması oluşturma
 
-Bir Google hesabını Azure Active Directory B2C (Azure AD B2C) ' de bir [kimlik sağlayıcısı](authorization-code-flow.md) olarak kullanmak Için Google geliştiricileri konsolunuza bir uygulama oluşturmanız gerekir. Henüz bir Google hesabınız yoksa kaydolabilirsiniz [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp) .
+Azure Active Directory B2C (Azure AD B2C) içinde Google hesabı olan kullanıcılar için oturum açmayı etkinleştirmek üzere [Google geliştiricileri konsolu](https://console.developers.google.com/)'nda bir uygulama oluşturmanız gerekir. Daha fazla bilgi için bkz. [OAuth 2,0 'Yi ayarlama](https://support.google.com/googleapi/answer/6158849). Henüz bir Google hesabınız yoksa kaydolabilirsiniz [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp) .
 
 1. Google [Developers konsolunda](https://console.developers.google.com/) Google hesabı kimlik bilgilerinizle oturum açın.
 1. Sayfanın sol üst köşesinde proje listesini seçin ve ardından **Yeni proje**' yi seçin.
@@ -189,7 +189,7 @@ Artık bir düğmeye sahip olduğunuza göre, bunu bir eyleme bağlamanız gerek
 ## <a name="add-google-identity-provider-to-a-user-flow"></a>Kullanıcı akışına Google Identity sağlayıcısı ekleme 
 
 1. Azure AD B2C kiracınızda **Kullanıcı akışları**' nı seçin.
-1. Google Identity Provider 'a istediğiniz kullanıcı akışına tıklayın.
+1. Google Identity sağlayıcısını eklemek istediğiniz kullanıcı akışına tıklayın.
 1. **Sosyal kimlik sağlayıcıları** altında **Google**' ı seçin.
 1. **Kaydet**’i seçin.
 1. İlkenizi test etmek için **Kullanıcı akışını Çalıştır**' ı seçin.

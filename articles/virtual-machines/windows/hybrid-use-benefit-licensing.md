@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: 43784fe2bb94d5abd012f22ed530e4631a304614
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c13203c076378e1ff8f213971466eb5f63dfc4f4
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335995"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539174"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server için Azure Hibrit Avantajı
 Yazılım güvencesi olan müşteriler için, Windows Server Azure Hibrit Avantajı, şirket içi Windows Server lisanslarınızı kullanmanıza ve Azure 'da Windows sanal makinelerini daha düşük bir maliyetle çalıştırmanıza olanak sağlar. Windows işletim sistemi ile yeni sanal makineler dağıtmak için Windows Server Azure Hibrit Avantajı kullanabilirsiniz. Bu makalede, Windows Server için Azure Hibrit Avantajı ile yeni VM 'Leri dağıtma ve var olan çalışan VM 'Leri güncelleştirme adımları ele alınarak devam edebilir. Windows Server Lisanslama ve maliyet tasarrufları için Azure Hibrit Avantajı hakkında daha fazla bilgi için, bkz. [Windows Server Lisanslama için Azure hibrit avantajı sayfası](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -42,10 +42,9 @@ Windows sanal makinelerini Azure Hibrit Avantajı kullanmanın birkaç yolu vard
 Windows Server için Azure Hibrit Avantajı için tüm Windows Server işletim sistemi tabanlı görüntüler desteklenir. Azure platform destek görüntülerini kullanabilir veya kendi özel Windows Server görüntülerinizi yükleyebilirsiniz. 
 
 ### <a name="portal"></a>Portal
-Windows Server için Azure Hibrit Avantajı bir sanal makine oluşturmak için, "para tasarrufu" bölümünün altındaki geçişi kullanın.
+Windows Server için Azure Hibrit Avantajı bir VM oluşturmak için, oluşturma işlemi sırasında **temel bilgiler** sekmesinin en altına kaydırın ve **lisanslama** bölümünde var olan bir Windows Server lisansını kullanmak için kutuyu işaretleyin. 
 
 ### <a name="powershell"></a>PowerShell
-
 
 ```powershell
 New-AzVm `

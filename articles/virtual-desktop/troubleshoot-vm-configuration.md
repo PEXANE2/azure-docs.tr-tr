@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 31e9b4b065b2acb8378c2eeac332341f48b28165
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84a49ea2f6ce4a5119af024ab3de67fa2b89c02e
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88005217"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539747"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Oturum ana bilgisayarı sanal makine yapılandırması
 
@@ -20,7 +20,7 @@ ms.locfileid: "88005217"
 
 Windows sanal masaüstü oturumu ana bilgisayarı sanal makinelerini (VM 'Ler) yapılandırırken karşılaştığınız sorunları gidermek için bu makaleyi kullanın.
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 
 Windows Sanal Masaüstü hizmetini ürün ekibi ve etkin topluluk üyeleriyle tartışmak için [Windows sanal masaüstü teknoloji Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 'yi ziyaret edin.
 
@@ -82,8 +82,8 @@ VM 'Leri sağlamak için önerilen yol Azure portal oluşturma şablonunu kullan
 
 Bileşenlerin yüklendiğini doğrulamak ve hata iletilerini denetlemek için bu yönergeleri izleyin.
 
-1. **Denetim Masası**  >  **Programlar**  >  **Programlar ve Özellikler ' i**denetleyerek iki bileşenin yüklendiğini onaylayın. **Windows sanal masaüstü Aracısı** ve **Windows sanal masaüstü Aracısı önyükleme yükleyicisi** görünür değilse, VM 'de yüklü değildir.
-2. **Dosya Gezgini** 'ni açın ve **C:\windows\temp\scriptlog.log**konumuna gidin. Dosya eksikse, iki bileşeni yükleyen PowerShell DSC 'nin belirtilen güvenlik bağlamında çalıştırılmadığını gösterir.
+1. **Denetim Masası**  >  **Programlar**  >  **Programlar ve Özellikler ' i** denetleyerek iki bileşenin yüklendiğini onaylayın. **Windows sanal masaüstü Aracısı** ve **Windows sanal masaüstü Aracısı önyükleme yükleyicisi** görünür değilse, VM 'de yüklü değildir.
+2. **Dosya Gezgini** 'ni açın ve **C:\windows\temp\scriptlog.log** konumuna gidin. Dosya eksikse, iki bileşeni yükleyen PowerShell DSC 'nin belirtilen güvenlik bağlamında çalıştırılmadığını gösterir.
 3. **C:\windows\temp\scriptlog.log** dosyası varsa, açın ve hata iletilerini denetleyin.
 
 ### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptloglog-is-also-missing"></a>Hata: Windows sanal masaüstü Aracısı ve Windows sanal masaüstü Aracısı önyükleme yükleyicisi eksik. C:\Windows\Temp\ScriptLog.log de eksik
@@ -178,7 +178,7 @@ Windows sanal masaüstü Aracısı, oturum ana bilgisayar VM 'lerine ilk kez yü
 
 ## <a name="troubleshooting-issues-with-the-windows-virtual-desktop-side-by-side-stack"></a>Windows sanal masaüstü yan yana yığınıyla ilgili sorunları giderme
 
-Windows sanal masaüstü yan yana yığın Windows Server 2019 ile otomatik olarak yüklenir. Microsoft Windows Server 2016 veya Windows Server 2012 R2 'ye yan yana yığın yüklemek için Microsoft yükleyicisi 'ni (MSI) kullanın. Microsoft Windows 10 için, Windows sanal masaüstü yan yana yığın **enablesxstackrs.ps1**ile etkinleştirilir.
+Windows sanal masaüstü yan yana yığın Windows Server 2019 ile otomatik olarak yüklenir. Microsoft Windows Server 2016 veya Windows Server 2012 R2 'ye yan yana yığın yüklemek için Microsoft yükleyicisi 'ni (MSI) kullanın. Microsoft Windows 10 için, Windows sanal masaüstü yan yana yığın **enablesxstackrs.ps1** ile etkinleştirilir.
 
 Yan yana yığının, oturum ana bilgisayar havuzu VM 'lerinde yüklü veya etkin olduğu başlıca üç yol vardır:
 
@@ -310,7 +310,7 @@ Bu iletilerden birini görürseniz bu, görüntüde en son Windows güncelleşti
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>Uzak Masaüstü lisans modu Grup İlkesi ayarını devre dışı bırak
 
-VM 'de Grup İlkesi düzenleyicisini açıp **Yönetim Şablonları**  >  **Windows bileşenlerine**giderek  >  **Uzak Masaüstü Hizmetleri**  >  **Uzak Masaüstü oturumu ana bilgisayarı**  >  **lisanslama**  >  **Uzak Masaüstü lisans modunu ayarlayarak**Grup İlkesi ayarını kontrol edin. Grup İlkesi ayarı **etkinse**, **devre dışı**olarak değiştirin. Zaten devre dışıysa, olduğu gibi bırakın.
+VM 'de Grup İlkesi düzenleyicisini açıp **Yönetim Şablonları**  >  **Windows bileşenlerine** giderek  >  **Uzak Masaüstü Hizmetleri**  >  **Uzak Masaüstü oturumu ana bilgisayarı**  >  **lisanslama**  >  **Uzak Masaüstü lisans modunu ayarlayarak** Grup İlkesi ayarını kontrol edin. Grup İlkesi ayarı **etkinse**, **devre dışı** olarak değiştirin. Zaten devre dışıysa, olduğu gibi bırakın.
 
 >[!NOTE]
 >Etki alanınız aracılığıyla Grup İlkesi ayarlarsanız, bu Windows 10 Kurumsal Çoklu oturum VM 'lerini hedefleyen ilkelerde bu ayarı devre dışı bırakın.
@@ -348,6 +348,7 @@ Bu ilke hakkında daha fazla bilgi edinmek için bkz. [Uzak Masaüstü Hizmetler
 - Windows sanal masaüstü ve yükseltme izlemelerinin sorunlarını giderme hakkında genel bilgi için bkz. [sorun giderme genel bakış, geri bildirim ve destek](troubleshoot-set-up-overview.md).
 - Windows sanal masaüstü ortamında bir konak havuzu oluştururken oluşan sorunları gidermek için, bkz. [ortam ve konak havuzu oluşturma](troubleshoot-set-up-issues.md).
 - Windows sanal masaüstündeki bir sanal makineyi (VM) yapılandırırken oluşan sorunları gidermek için bkz. [oturum ana bilgisayarı sanal makine yapılandırması](troubleshoot-vm-configuration.md).
+- Windows sanal masaüstü Aracısı veya oturum bağlantısıyla ilgili sorunları gidermek için bkz. [Genel Windows sanal masaüstü Aracısı sorunlarını giderme](troubleshoot-agent.md).
 - Windows sanal masaüstü istemci bağlantılarıyla ilgili sorunları gidermek için bkz. [Windows sanal masaüstü hizmeti bağlantıları](troubleshoot-service-connection.md).
 - Uzak Masaüstü istemcileriyle ilgili sorunları gidermek için bkz [. uzak masaüstü Istemcisinde sorun giderme](troubleshoot-client.md)
 - Windows sanal masaüstü ile PowerShell kullanırken karşılaşılan sorunları gidermek için bkz. [Windows sanal masaüstü PowerShell](troubleshoot-powershell.md).

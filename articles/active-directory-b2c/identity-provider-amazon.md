@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.custom: project-no-code
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 48887df0ce6228fa436cb91bfb0a3ee7aa0f6c08
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 79fcbb6d2bf10da566139b0d103a4f31930f3200
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654515"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98537993"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir Amazon hesabı ile kaydolma ve oturum açma ayarlama
 
@@ -30,13 +30,13 @@ ms.locfileid: "97654515"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-an-app-in-the-amazon-developer-console"></a>Amazon geliştirici konsolunda uygulama oluşturma
 
-Azure Active Directory B2C (Azure AD B2C) ' de bir Amazon hesabını federal kimlik sağlayıcısı olarak kullanmak için, [Amazon Developer Services ve teknolojilerinde](https://developer.amazon.com)bir uygulama oluşturmanız gerekir. Zaten bir Amazon hesabınız yoksa kaydolabilirsiniz [https://www.amazon.com/](https://www.amazon.com/) .
+Azure Active Directory B2C (Azure AD B2C) ' de bir Amazon hesabı olan kullanıcılar için oturum açma 'yı etkinleştirmek üzere, [Amazon Geliştirici Hizmetleri ve teknolojilerinde](https://developer.amazon.com)bir uygulama oluşturmanız gerekir. Daha fazla bilgi için bkz. [Amazon Ile oturum açma Için kaydolma](https://developer.amazon.com/docs/login-with-amazon/register-web.html). Zaten bir Amazon hesabınız yoksa kaydolabilirsiniz [https://www.amazon.com/](https://www.amazon.com/) .
 
 > [!NOTE]  
 > Aşağıdaki **8. adımdaki** URL 'leri kullanarak `your-tenant-name` kiracınızın adıyla değiştirin. Kiracı adınızı girerken, kiracı, Azure AD B2C büyük harfle tanımlansa bile, tüm küçük harfleri kullanın.
@@ -181,7 +181,7 @@ Artık bir düğmeye sahip olduğunuza göre, bunu bir eyleme bağlamanız gerek
 ## <a name="add-amazon-identity-provider-to-a-user-flow"></a>Bir Kullanıcı akışına Amazon Identity sağlayıcısı ekleme 
 
 1. Azure AD B2C kiracınızda **Kullanıcı akışları**' nı seçin.
-1. Amazon Identity Provider ' a istediğiniz kullanıcı akışına tıklayın.
+1. Amazon Identity sağlayıcısını eklemek istediğiniz kullanıcı akışına tıklayın.
 1. **Sosyal kimlik sağlayıcıları** altında **Amazon**' ı seçin.
 1. **Kaydet**’i seçin.
 1. İlkenizi test etmek için **Kullanıcı akışını Çalıştır**' ı seçin.

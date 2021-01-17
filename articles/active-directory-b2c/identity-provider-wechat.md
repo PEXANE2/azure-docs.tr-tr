@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: af840a7becb0fb2c23e01153828458ee1cfa51a1
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 1dd9af3abd723b3a7adad82f3bbb4a09fc4464f7
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654243"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538029"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-wechat-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir WeChat hesabı ile kaydolma ve oturum açma ayarlama
 
@@ -27,13 +27,13 @@ ms.locfileid: "97654243"
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-a-wechat-application"></a>WeChat uygulaması oluşturma
 
-Azure Active Directory B2C (Azure AD B2C) içinde bir kimlik sağlayıcısı olarak WeChat hesabı kullanmak için kiracınızda onu temsil eden bir uygulama oluşturmanız gerekir. Zaten bir WeChat hesabınız yoksa bilgi edinebilirsiniz [https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html](https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html) .
+Azure Active Directory B2C (Azure AD B2C) ' de WeChat hesabı olan kullanıcılar için oturum açmayı etkinleştirmek üzere [Wechat Yönetim merkezinde](https://open.weixin.qq.com/)bir uygulama oluşturmanız gerekir. Zaten bir WeChat hesabınız yoksa bilgi edinebilirsiniz [https://kf.qq.com](https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html) .
 
 ### <a name="register-a-wechat-application"></a>WeChat uygulamasını kaydetme
 
@@ -183,7 +183,7 @@ Artık bir düğmeye sahip olduğunuza göre, bunu bir eyleme bağlamanız gerek
 ## <a name="add-wechat-identity-provider-to-a-user-flow"></a>Kullanıcı akışına WeChat kimlik sağlayıcısı ekleme 
 
 1. Azure AD B2C kiracınızda **Kullanıcı akışları**' nı seçin.
-1. WeChat kimlik sağlayıcısına istediğiniz kullanıcı akışına tıklayın.
+1. WeChat kimlik sağlayıcısını eklemek istediğiniz kullanıcı akışına tıklayın.
 1. **Sosyal kimlik sağlayıcıları** altında **Wechat**' i seçin.
 1. **Kaydet**’i seçin.
 1. İlkenizi test etmek için **Kullanıcı akışını Çalıştır**' ı seçin.

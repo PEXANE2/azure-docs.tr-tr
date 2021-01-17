@@ -5,24 +5,30 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/13/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 97d89db17af9cde3afadee430b3d0c2a434e12c9
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 57192ab2ee1624cb18de832ac91c95290da727df
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210146"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539882"
 ---
 # <a name="dynamically-provision-service-bus-namespaces-and-entities"></a>Service Bus ad alanlarını ve varlıklarını dinamik olarak sağlama 
 Azure Service Bus yönetim kitaplıkları, Service Bus ad alanlarını ve varlıklarını dinamik olarak sağlayabilir. Bu, karmaşık dağıtımlar ve mesajlaşma senaryolarına olanak tanır ve hangi varlıkların sağlanacağı ile programlı bir şekilde belirlenmesini olanaklı kılar. Bu kitaplıklar Şu anda .NET için kullanılabilir.
 
-## <a name="supported-functionality"></a>Desteklenen işlevsellik
+## <a name="overview"></a>Genel Bakış
+Service Bus varlıkları oluşturup yönetmeniz için kullanabileceğiniz üç Yönetim Kitaplığı vardır. Bunlar:
 
-* Ad alanı oluşturma, güncelleştirme, silme
-* Kuyruk oluşturma, güncelleştirme, silme
-* Konu oluşturma, güncelleştirme, silme
-* Abonelik oluşturma, güncelleştirme, silme
+- [Azure. Messaging. ServiceBus. Administration](#azuremessagingservicebusadministration)
+- [Microsoft. Azure. ServiceBus. Management](#microsoftazureservicebusmanagement)
+- [Microsoft.Azure.Management.ServiceBus](#microsoftazuremanagementservicebus)
 
-## <a name="azuremessagingservicebusadministration-recommended"></a>Azure. Messaging. ServiceBus. Administration (önerilir)
+Bu paketlerin tümü **Kuyruklar, konular ve abonelikler** üzerinde oluşturma, Get, listeleme, silme, güncelleştirme, silme ve güncelleştirme işlemlerini destekler. Ancak, yalnızca [Microsoft. Azure. Management. ServiceBus](#microsoftazuremanagementservicebus) , **ad alanları** üzerinde oluşturma, güncelleştirme, listeleme, Get ve SILME işlemlerini destekler, SAS anahtarlarını listeleme ve yeniden oluşturma ve daha fazlasını destekler. 
+
+Microsoft. Azure. Management. ServiceBus kitaplığı yalnızca Azure Active Directory (Azure AD) kimlik doğrulamasıyla birlikte çalışarak bir bağlantı dizesi kullanmayı desteklemez. Diğer iki kitaplık (Azure. Messaging. ServiceBus ve Microsoft. Azure. ServiceBus), hizmette kimlik doğrulaması için bir bağlantı dizesi kullanmayı destekler ve daha kolay kullanılır. Bu kitaplıklar arasında, Azure. Messaging. ServiceBus en son ve kullanmanızı öneririz.
+
+Aşağıdaki bölümlerde bu kitaplıklar hakkında daha fazla bilgi sağlanmaktadır. 
+
+## <a name="azuremessagingservicebusadministration"></a>Azure. Messaging. ServiceBus. Administration
 Ad alanlarını, kuyrukları, konuları ve abonelikleri yönetmek için [Azure. Messaging. ServiceBus. Administration](/dotnet/api/azure.messaging.servicebus.administration) ad alanındaki [Servicebusadministrationclient](/dotnet/api/azure.messaging.servicebus.administration.servicebusadministrationclient) sınıfını kullanabilirsiniz. Örnek kod aşağıda verilmiştir. Tüm bir örnek için bkz. [CRUD örneği](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/tests/Samples/Sample07_CrudOperations.cs).
 
 ```csharp
@@ -89,7 +95,7 @@ namespace adminClientTrack2
 Ad alanlarını, kuyrukları, konuları ve abonelikleri yönetmek için [Microsoft. Azure. ServiceBus. Management](/dotnet/api/microsoft.azure.servicebus.management) ad alanındaki [managementclient](/dotnet/api/microsoft.azure.servicebus.management.managementclient) sınıfını kullanabilirsiniz. Örnek kod aşağıda verilmiştir: 
 
 > [!NOTE]
-> `ServiceBusAdministrationClient`Kitaplığındaki sınıfı, `Azure.Messaging.ServiceBus.Administration` en son SDK olan kitaplıktan kullanmanızı öneririz. Ayrıntılar için [ilk bölüme](#azuremessagingservicebusadministration-recommended)bakın. 
+> `ServiceBusAdministrationClient`Kitaplığındaki sınıfı, `Azure.Messaging.ServiceBus.Administration` en son SDK olan kitaplıktan kullanmanızı öneririz. Ayrıntılar için [ilk bölüme](#azuremessagingservicebusadministration)bakın. 
 
 ```csharp
 using System;
@@ -156,7 +162,7 @@ Bu kitaplığı kullanmaya başlamak için Azure Active Directory (Azure AD) hiz
 
 * [Kaynaklara erişebilen Active Directory uygulama ve hizmet sorumlusu oluşturmak için Azure portal kullanın](../active-directory/develop/howto-create-service-principal-portal.md)
 * [Kaynaklara erişmek üzere hizmet sorumlusu oluşturmak için Azure PowerShell kullanma](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
-* [Kaynaklara erişmek üzere hizmet sorumlusu oluşturmak için Azure CLI kullanma](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)
+* [Kaynaklara erişmek üzere hizmet sorumlusu oluşturmak için Azure CLI kullanma](/cli/azure/create-an-azure-service-principal-azure-cli)
 
 Bu öğreticiler size, `AppId` `TenantId` `ClientSecret` Yönetim kitaplıkları tarafından kimlik doğrulaması için kullanılan BIR (istemci kimliği), ve (kimlik doğrulama anahtarı) sağlar. Çalıştırmak istediğiniz kaynak grubu için en az [**Azure Service Bus veri sahibi**](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner) veya [**katkıda bulunan**](../role-based-access-control/built-in-roles.md#contributor) izinlerinizin olması gerekir.
 

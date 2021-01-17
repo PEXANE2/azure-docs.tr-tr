@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 6d8c04e48a3d0009a152830a4ee332cd706c4b2c
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 8b73676adbb9aa12e6f3b42dd26bed94b22780a8
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360182"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539886"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure Machine Learning 'da güvenli veri erişimi
 
@@ -42,7 +42,7 @@ Bulut tabanlı depolama çözümünüzdeki verileri kullanmaya hazırsanız, aş
 
     1. Otomatik makine öğrenimi (otomatik ML) deneme çalıştırmaları, makine öğrenimi ardışık düzenleri veya [Azure Machine Learning Tasarımcısı](concept-designer.md)gibi Azure Machine Learning çözümlerinde doğrudan kullanın.
 
-4. Model çıkış veri kümeniz için veri [kümesi izleyicileri](#data-drift) oluşturun. 
+4. Model çıkış veri kümeniz için veri [kümesi izleyicileri](#drift) oluşturun. 
 
 5. Veri kayması algılanırsa, giriş veri kümenizi güncelleştirip modelinize uygun şekilde yeniden eğitme.
 
@@ -50,7 +50,8 @@ Aşağıdaki diyagramda, önerilen bu iş akışının görsel bir gösterimi su
 
 ![Diyagramda, veri kümesine akan, bir veri deposuna akan Azure depolama hizmeti gösterilmektedir. Veri kümesi, veri kümesine geri akan, veri kayması içine akan model eğitimlerine akar.](./media/concept-data/data-concept-diagram.svg)
 
-## <a name="datastores"></a>Veri depoları
+<a name="datastores"></a>
+## <a name="connect-to-storage-with-datastores"></a>Veri depolarıyla depolama 'ya bağlanma
 
 Azure Machine Learning veri depoları, bağlantı bilgilerini Azure depolama verilerinize güvenli bir şekilde saklayın, bu sayede betiklerinizde kod yazmanız gerekmez. Depolama hesabınıza kolayca bağlanmak ve temel Azure depolama hizmetindeki verilere erişmek için [bir veri deposu kaydedin ve oluşturun](how-to-access-data.md) . 
 
@@ -65,7 +66,8 @@ Azure 'da, veri depoları olarak kaydedilenebilir desteklenen bulut tabanlı dep
 + Databricks Dosya Sistemi
 + MySQL için Azure Veritabanı
 
-## <a name="datasets"></a>Veri kümeleri
+<a name="datasets"></a>
+## <a name="reference-data-in-storage-with-datasets"></a>Veri kümeleriyle depolamadaki başvuru verileri
 
 Azure Machine Learning veri kümeleri verilerinizin kopyası değildir. Bir veri kümesi oluşturarak, kendi meta verilerinin bir kopyasıyla birlikte depolama hizmetindeki verilere yönelik bir başvuru oluşturursunuz. 
 
@@ -105,7 +107,7 @@ Veri kümeleri ile Azure Machine Learning özellikleriyle sorunsuz tümleştirme
 
 <a name="label"></a>
 
-## <a name="data-labeling"></a>Veri etiketleme
+## <a name="label-data-with-data-labeling-projects"></a>Veri etiketleme projeleriyle verileri etiketleme
 
 Büyük miktarlarda verilerin etiketlenmesi, genellikle makine öğrenimi projelerinde bir zahmetli 'e sahiptir. Görüntü sınıflandırması veya nesne algılama gibi bir bilgisayar vizyonu bileşeni olan kişiler, genellikle binlerce görüntü ve karşılık gelen Etiketler gerektirir.
 
@@ -115,7 +117,7 @@ Bir [veri etiketleme projesi](how-to-create-labeling-projects.md)oluşturun ve M
 
 <a name="drift"></a>
 
-## <a name="data-drift"></a>Veri kayması
+## <a name="monitor-model-performance-with-data-drift"></a>Veri kayması ile model performansını izleme
 
 Machine Learning bağlamında, veri dolu modeli, performans düşüşünü modellemeyi sağlayan model girişi verilerinde değişiklik gösterir. Model doğruluğunun zaman içindeki en önemli nedenlerinden biridir, böylece izleme verileri, model performans sorunlarını algılamaya yardımcı olur.
 

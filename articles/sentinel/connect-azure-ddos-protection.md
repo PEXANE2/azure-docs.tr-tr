@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: yelevin
-ms.openlocfilehash: b5d98a834ed4f87fb95a13e666967a7b2d80975d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: c54b5b785f6da1bb651d8b1f508da42ab0fb802d
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656063"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538379"
 ---
 # <a name="connect-data-from-azure-ddos-protection"></a>Azure DDoS korumasından verileri bağlama
 
@@ -24,7 +24,7 @@ ms.locfileid: "94656063"
 
 Dağıtılmış hizmet reddi (DDoS) saldırıları bir uygulamanın kaynaklarını tüketmeye çalışır ve uygulamayı meşru kullanıcılar için kullanılamaz hale getirir. DDoS saldırıları internet üzerinden genel olarak erişilebilen herhangi bir uç noktasını hedefleyebilir. [Azure DDoS koruması](../ddos-protection/ddos-protection-overview.md), uygulama tasarımı en iyi uygulamaları ile birlikte, DDoS saldırılarına karşı güçlü bir savunma sağlar. Azure DDoS koruma günlüklerini Azure Sentinel 'e bağlanarak, çalışma kitaplarında günlük verilerini görüntülemenize, özel uyarılar oluşturmak için bu uygulamayı kullanmanıza ve araştırmalarınızı iyileştirebilecek şekilde katabilirsiniz. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure Sentinel çalışma alanında okuma ve yazma izinlerine sahip olmanız gerekir.
 
@@ -38,7 +38,7 @@ Dağıtılmış hizmet reddi (DDoS) saldırıları bir uygulamanın kaynakların
 
 1. Veri bağlayıcıları galerisinden **Azure DDoS koruması** ' nı seçin ve ardından Önizleme bölmesinde **bağlayıcı sayfasını aç** ' ı seçin.
 
-1. Günlüklerini bağlamak istediğiniz tüm güvenlik duvarları üzerinde **tanılama günlüklerini** etkinleştirin:
+1. Günlüklerini bağlamak istediğiniz tüm genel IP adreslerinde **tanılama günlüklerini** etkinleştirin:
 
     1. **Tanılama ayarlarını aç >** bağlantısını seçin ve listeden BIR **genel IP adresi** kaynağı seçin.
 

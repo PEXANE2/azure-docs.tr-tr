@@ -1,20 +1,20 @@
 ---
-title: Algılayıcıyı etkinleştirme ve ayarlama
+title: Algılayıcınızı etkinleştirme ve ayarlama
 description: Bu makalede, bir algılayıcı konsolunun nasıl oturum açılacağını ve etkinleştirileceği açıklanır.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/26/2020
+ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 9305609b624a96e4d785657dfb63af6639e132c4
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 4ad1562bdd9853b6ff3c537790a54dbeab96b5b8
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97842541"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538570"
 ---
-# <a name="activate-and-set-up-your-sensor"></a>Algılayıcıyı etkinleştirme ve ayarlama
+# <a name="activate-and-set-up-your-sensor"></a>Algılayıcınızı etkinleştirme ve ayarlama
 
 Bu makalede, bir algılayıcıyı etkinleştirme ve ilk kurulum gerçekleştirme açıklanır.
 
@@ -44,7 +44,7 @@ Algılayıcı konsolunda oturum açmadan önce yönetici kullanıcıların eriş
 
 Sensörizin belirli bir yönetim modunda IoT için Azure Defender eklendi:
 
-| Mod türü | Açıklama |
+| Mod türü | Description |
 |--|--|
 | **Buluta bağlı mod** | Algılayıcıyı algılayan bilgiler algılayıcı konsolunda görüntülenir. Uyarı bilgileri de IoT Hub 'ı aracılığıyla dağıtılır ve Azure Sentinel gibi diğer Azure hizmetleriyle paylaşılabilir. |
 | **Yerel olarak bağlı mod** | Algılayıcıyı algılayan bilgiler algılayıcı konsolunda görüntülenir. Algılama bilgileri, algılayıcı kendisine bağlıysa şirket içi yönetim konsolu ile de paylaşılır. |
@@ -65,10 +65,13 @@ Algılayıcı yüklemesinin ardından, yerel olarak imzalanan bir sertifika olu�
 Konsolu aşağıdaki sertifika türlerini destekler:
 
 - Özel ve Kurumsal anahtar altyapısı (özel PKI)
+
 - Ortak anahtar altyapısı (genel PKI)
+
 - Gereç üzerinde yerel olarak oluşturuldu (yerel olarak kendinden imzalı) 
 
-  > ÖNEMLI Varsayılan otomatik olarak imzalanan sertifikayı kullanmanızı öneririz. Sertifika güvenli değil ve yalnızca test ortamları için kullanılmalıdır. Sertifikanın sahibi doğrulanamaz ve sisteminizin güvenliği korunabilir olamaz. Bu seçeneği, üretim ağları için hiçbir şekilde kullanmayın.
+  > [!IMPORTANT]
+  > Varsayılan otomatik olarak imzalanan sertifikayı kullanmanızı öneririz. Sertifika güvenli değil ve yalnızca test ortamları için kullanılmalıdır. Sertifikanın sahibi doğrulanamaz ve sisteminizin güvenliği korunabilir olamaz. Bu seçeneği, üretim ağları için hiçbir şekilde kullanmayın.
 
 ### <a name="sign-in-and-activate-the-sensor"></a>Oturum açın ve algılayıcıyı etkinleştirin
 
@@ -139,7 +142,7 @@ Başlangıçta bu etkinlik öğrenme modunda yürütülür, bu da sensörize ağ
 
 Sensörin optimum olarak algılanması ve uyarı verecek şekilde yapılandırıldığından emin olmak için sensör sistem ayarlarını gözden geçirin.
 
-Algılayıcının sistem ayarlarını tanımlayın. Örnek:
+Algılayıcının sistem ayarlarını tanımlayın. Örneğin:
 
 - ICS (veya IoT) ve ayrılmış alt ağları tanımlayın.
 
@@ -174,7 +177,7 @@ Konsol araçlarına taraftaki menüden erişin.
 
 **Gezinti** 
 
-| Pencere | Simge | Açıklama |
+| Pencere | Simge | Description |
 | -----------|--|--|
 | Pano | :::image type="icon" source="media/concept-sensor-console-overview/dashboard-icon-azure.png" border="false"::: | Ağın güvenlik durumunun sezgisel bir anlık görüntüsünü görüntüleyin. |
 | Cihaz Haritası | :::image type="icon" source="media/concept-sensor-console-overview/asset-map-icon-azure.png" border="false"::: | Bir haritadaki ağ cihazlarını, cihaz bağlantılarını ve cihaz özelliklerini görüntüleyin. Ağınızı göstermek için çeşitli yakınlaştırmaları, vurgu ve filtreleme seçenekleri mevcuttur. |
@@ -184,13 +187,13 @@ Konsol araçlarına taraftaki menüden erişin.
 
 **Çözümlemeleri**
 
-| Pencere| Simge | Açıklama |
+| Pencere| Simge | Description |
 |---|---|---|
 | Olay zaman çizelgesi | :::image type="icon" source="media/concept-sensor-console-overview/event-timeline-icon-azure.png" border="false"::: | Uyarılar, ağ olayları (bilgilendirici) ve Kullanıcı oturumu açma ve Kullanıcı silmeleri gibi kullanıcı işlemleri hakkında bilgi içeren bir zaman çizelgesi görüntüleyin.|
 
 **Gezinti**
 
-| Pencere | Simge | Açıklama |
+| Pencere | Simge | Description |
 |---|---|---|
 | Veri araştırma | :::image type="icon" source="media/concept-sensor-console-overview/data-mining-icon-azure.png" border="false"::: | Çeşitli katmanlarda ağınızın cihazları hakkında kapsamlı ve ayrıntılı bilgiler oluşturun. |
 | Eğilimler ve istatistikler | :::image type="icon" source="media/concept-sensor-console-overview/trends-and-statistics-icon-azure.jpg" border="false"::: | Eğilimleri ve istatistikleri geniş bir pencere öğesi aralığında görüntüleyin. |
@@ -198,7 +201,7 @@ Konsol araçlarına taraftaki menüden erişin.
 
 **Yönetici**
 
-| Pencere | Simge | Açıklama |
+| Pencere | Simge | Description |
 |---|---|---|
 | Kullanıcılar | :::image type="icon" source="media/concept-sensor-console-overview/users-icon-azure.png" border="false"::: | Farklı erişim düzeylerine sahip kullanıcıları ve rolleri tanımlayın. |
 | İletildiğinde | :::image type="icon" source="media/concept-sensor-console-overview/forwarding-icon-azure.png" border="false"::: | IoT için Defender, e-posta adresleri, Web kancası sunucuları ve daha fazlasını içeren iş ortakları için uyarı bilgilerini iletin. <br /> Ayrıntılar için bkz. [uyarı bilgilerini ilet](how-to-forward-alert-information-to-partners.md) . |
@@ -207,7 +210,7 @@ Konsol araçlarına taraftaki menüden erişin.
 
 **Destek**
 
-| Pencere| Simge | Açıklama |
+| Pencere| Simge | Description |
 |----|---|---|
 | Destek | :::image type="icon" source="media/concept-sensor-console-overview/support-icon-azure.png" border="false"::: | Yardım için [Microsoft desteği](https://support.microsoft.com/) başvurun. |
 

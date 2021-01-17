@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 24e267b66d11cb3c5ca2b70ed09b7acb3653da99
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 36b7618fbacc18ec506f12eabc642246d3148ce0
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653614"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98537921"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak oturum açma ve Weibo hesabı ile oturum açma ayarlama
 
@@ -26,13 +26,13 @@ ms.locfileid: "97653614"
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-a-weibo-application"></a>Weibo uygulaması oluşturma
 
-Azure Active Directory B2C (Azure AD B2C) ' de bir kimlik sağlayıcısı olarak bir Weibo hesabı kullanmak için kiracınızda onu temsil eden bir uygulama oluşturmanız gerekir. Zaten bir Weibo hesabınız yoksa kaydolabilirsiniz [https://weibo.com/signup/signup.php?lang=en-us](https://weibo.com/signup/signup.php?lang=en-us) .
+Azure Active Directory B2C (Azure AD B2C) ' de bir Weibo hesabı olan kullanıcılar için oturum açmayı etkinleştirmek üzere [Weibo Geliştirici Portalında](https://open.weibo.com/)bir uygulama oluşturmanız gerekir. Zaten bir Weibo hesabınız yoksa kaydolabilirsiniz [https://weibo.com](https://weibo.com/signup/signup.php?lang=en-us) .
 
 1. [Weibo Geliştirici Portalında](https://open.weibo.com/) Weibo hesabı kimlik bilgilerinizle oturum açın.
 1. Oturum açtıktan sonra sağ üst köşedeki görünen adınızı seçin.
@@ -263,7 +263,7 @@ Artık bir düğmeye sahip olduğunuza göre, bunu bir eyleme bağlamanız gerek
 ## <a name="add-weibo-identity-provider-to-a-user-flow"></a>Kullanıcı akışına Weibo Identity sağlayıcısı ekleme 
 
 1. Azure AD B2C kiracınızda **Kullanıcı akışları**' nı seçin.
-1. Weibo Identity sağlayıcısına istediğiniz kullanıcı akışına tıklayın.
+1. Weibo Identity sağlayıcısını eklemek istediğiniz kullanıcı akışına tıklayın.
 1. **Sosyal kimlik sağlayıcıları** altında **Weibo**' yi seçin.
 1. **Kaydet**’i seçin.
 1. İlkenizi test etmek için **Kullanıcı akışını Çalıştır**' ı seçin.

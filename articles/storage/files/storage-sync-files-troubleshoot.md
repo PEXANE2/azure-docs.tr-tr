@@ -4,15 +4,15 @@ description: Windows Server 'ı Azure dosya paylaşımınızın hızlı önbelle
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 1/13/2021
+ms.date: 1/15/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: a262c2b4351c96217001ba42e8c745f7d71c7d45
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 71de1d17731e086d012da5365fa6671bcb9e6e3b
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233908"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539252"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure Dosya Eşitleme ile ilgili sorunları giderme
 Şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu koruyarak kuruluşunuzun dosya paylaşımlarını Azure dosyalarında merkezileştirmek için Azure Dosya Eşitleme kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünyanın dört bir yanında ihtiyacınız olan sayıda önbellekler olabilir.
@@ -916,6 +916,22 @@ Bu hata, Azure Dosya Eşitleme HTTP yeniden yönlendirmeyi (3xx durum kodu) dest
 | **Düzeltme gerekli** | No |
 
 Bu hata, bir veri alma işlemi zaman aşımını aştığında oluşur. Eşitleme ilerleme durumu (AppliedItemCount 0 ' dan büyükse) Bu hata yoksayılabilir. [Geçerli bir eşitleme oturumunun ilerlemesini izlemek nasıl yaparım? bakın mi?](#how-do-i-monitor-the-progress-of-a-current-sync-session).
+
+<a id="-2134375814"></a>**Sunucu uç noktası yolu sunucuda bulunamadığı için eşitleme başarısız oldu.**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c8027a |
+| **HRESULT (ondalık)** | -2134375814 |
+| **Hata dizesi** | ECS_E_SYNC_ROOT_DIRECTORY_NOT_FOUND |
+| **Düzeltme gerekli** | Yes |
+
+Sunucu uç noktası yolu olarak kullanılan dizin yeniden adlandırılırsa veya silinirse bu hata oluşur. Dizin yeniden adlandırılırsa, dizini özgün adla yeniden adlandırın ve depolama eşitleme Aracısı hizmetini (FileSyncSvc) yeniden başlatın.
+
+Dizin silinmişse, mevcut sunucu uç noktasını kaldırmak ve yeni bir yol kullanarak yeni bir sunucu uç noktası oluşturmak için aşağıdaki adımları gerçekleştirin:
+
+1. [Sunucu uç noktasını kaldırma](./storage-sync-files-server-endpoint.md#remove-a-server-endpoint)bölümünde belgelenen adımları izleyerek eşitleme grubundaki sunucu uç noktasını kaldırın.
+2. [Sunucu uç noktası ekleme](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#add-a-server-endpoint)bölümünde belgelenen adımları izleyerek eşitleme grubunda yeni bir sunucu uç noktası oluşturun.
 
 ### <a name="common-troubleshooting-steps"></a>Ortak sorun giderme adımları
 <a id="troubleshoot-storage-account"></a>**Depolama hesabının mevcut olduğundan emin olun.**  

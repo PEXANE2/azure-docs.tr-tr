@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/05/2021
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 129809a83bcebdcf80b05a7300dd9acf862e5886
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 92c5850c3e8c6db63bb5f6287078d2b0345a051c
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900408"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538047"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-salesforce-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir Salesforce hesabı ile kaydolma ve oturum açma ayarlama
 
@@ -37,7 +37,7 @@ ms.locfileid: "97900408"
 
 ## <a name="create-a-salesforce-application"></a>Salesforce uygulaması oluşturma
 
-Azure Active Directory B2C (Azure AD B2C) ' de Salesforce hesabı kullanmak için Salesforce **App Manager**'da bir uygulama oluşturmanız gerekir. Daha fazla bilgi için bkz. [temel bağlı uygulama ayarlarını yapılandırma](https://help.salesforce.com/articleView?id=connected_app_create_basics.htm)ve [API Tümleştirmesi Için OAuth ayarlarını etkinleştirme](https://help.salesforce.com/articleView?id=connected_app_create_api_integration.htm)
+Azure Active Directory B2C (Azure AD B2C) ' de Salesforce hesabı olan kullanıcılar için oturum açmayı etkinleştirmek üzere Salesforce [App Manager](https://login.salesforce.com/)'da bir uygulama oluşturmanız gerekir. Daha fazla bilgi için bkz. [temel bağlı uygulama ayarlarını yapılandırma](https://help.salesforce.com/articleView?id=connected_app_create_basics.htm)ve [API Tümleştirmesi Için OAuth ayarlarını etkinleştirme](https://help.salesforce.com/articleView?id=connected_app_create_api_integration.htm)
 
 1. [Salesforce 'Ta oturum açın](https://login.salesforce.com/).
 1. Menüden **Kurulum**' u seçin.
@@ -93,7 +93,7 @@ Azure Active Directory B2C (Azure AD B2C) ' de Salesforce hesabı kullanmak içi
 
 Daha önce Azure AD B2C kiracınızda kaydettiğiniz istemci gizli anahtarını depolamanız gerekir.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve kiracınızı içeren dizini seçin.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. Genel Bakış sayfasında **kimlik deneyimi çerçevesi**' ni seçin.
@@ -210,7 +210,7 @@ Artık bir düğmeye sahip olduğunuza göre, bunu bir eyleme bağlamanız gerek
 ## <a name="add-salesforce-identity-provider-to-a-user-flow"></a>Bir Kullanıcı akışına Salesforce kimlik sağlayıcısı ekleme 
 
 1. Azure AD B2C kiracınızda **Kullanıcı akışları**' nı seçin.
-1. Salesforce kimlik sağlayıcısına istediğiniz kullanıcı akışına tıklayın.
+1. Salesforce kimlik sağlayıcısı eklemek istediğiniz kullanıcı akışına tıklayın.
 1. **Sosyal kimlik sağlayıcıları** altında **Salesforce**' ı seçin.
 1. **Kaydet**’i seçin.
 1. İlkenizi test etmek için **Kullanıcı akışını Çalıştır**' ı seçin.

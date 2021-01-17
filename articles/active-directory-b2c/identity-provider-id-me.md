@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 01/15/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 6877a82d81b46ac2ffda8d0f0bf3fb0d7b337ff3
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: c7d43a55878a07e424ce1b6f55782502c244239c
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97663690"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98537939"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-idme-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak oturum açma ve ID.me hesabı ile oturum açma ayarlama
 
@@ -32,14 +32,14 @@ ms.locfileid: "97663690"
 ::: zone pivot="b2c-custom-policy"
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites-custom-policy](../../includes/active-directory-b2c-customization-prerequisites-custom-policy.md)]
 
 
 ## <a name="create-an-idme-application"></a>ID.me uygulaması oluşturma
 
-Azure Active Directory B2C (Azure AD B2C) ' de bir kimlik sağlayıcısı olarak bir ID.me hesabı kullanmak için, [apı & SDK için ID.me geliştirici kaynaklarında](https://developers.id.me/)bir uygulama oluşturmanız gerekir. Zaten bir ID.me geliştirici hesabınız yoksa kaydolabilirsiniz [https://developers.id.me/registration/new](https://developers.id.me/registration/new) .
+Azure Active Directory B2C (Azure AD B2C) ' de bir ID.me hesabı olan kullanıcılar için oturum açmayı etkinleştirmek üzere [apı & SDK için ID.me geliştirici kaynaklarında](https://developers.id.me/)bir uygulama oluşturmanız gerekir. Daha fazla bilgi için bkz. [OAuth tümleştirme Kılavuzu](https://developers.id.me/documentation/oauth/overview/kyc). Zaten bir ID.me geliştirici hesabınız yoksa kaydolabilirsiniz [https://developers.id.me/registration/new](https://developers.id.me/registration/new) .
 
 1. ID.me hesabı kimlik bilgilerinizle [apı & SDK için ID.me geliştirici kaynaklarında](https://developers.id.me/) oturum açın.
 1. **Uygulamalarımı görüntüle**' yi seçin ve **devam**' ı seçin.

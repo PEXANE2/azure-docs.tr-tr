@@ -1,5 +1,5 @@
 ---
-title: Verilere erişmek için Azure Machine Learning veri kümeleri oluşturma
+title: Azure Machine Learning veri kümeleri oluşturma
 titleSuffix: Azure Machine Learning
 description: Machine Learning deneme çalıştırmaları için verilerinize erişmek üzere Azure Machine Learning veri kümeleri oluşturmayı öğrenin.
 services: machine-learning
@@ -12,16 +12,14 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: fa6cdeaa47c7fdf9e90cdab96397473d8498afa0
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 8dac15f359d8ab6c7a84bbc30dba392322e84bb5
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108713"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538196"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning veri kümeleri oluşturma
-
-
 
 Bu makalede, Azure Machine Learning Python SDK ile yerel veya uzak denemeleri verilerinize erişmek için Azure Machine Learning veri kümeleri oluşturmayı öğreneceksiniz. Veri kümelerinin Azure Machine Learning genel veri erişimi iş akışına uygun olduğunu anlamak için, [güvenli erişim verileri](concept-data.md#data-workflow) makalesine bakın.
 
@@ -37,7 +35,7 @@ Azure Machine Learning veri kümeleri ile şunları yapabilirsiniz:
 
 * Veri paylaşma ve diğer kullanıcılarla işbirliği yapma.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Veri kümeleri oluşturmak ve bunlarla çalışmak için şunlar gerekir:
 
@@ -127,6 +125,7 @@ mnist_ds = Dataset.File.from_files(path=web_paths)
 > Dosyaları yerel bir dizinden karşıya yükleyin ve tek bir yöntemde, [upload_directory ()](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?preserve-view=true&view=azure-ml-py#upload-directory-src-dir--target--pattern-none--overwrite-false--show-progress-true-)genel önizleme yöntemiyle bir dosya veri kümesi oluşturun. Bu yöntem, [deneysel](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) Önizleme özelliğine sahiptir ve herhangi bir zamanda değişebilir. 
 > 
 >  Bu yöntem, verileri temel depolama verilerinize yükler ve sonuç olarak depolama maliyetlerine uygulanır. 
+
 ### <a name="create-a-tabulardataset"></a>TabularDataset oluşturma
 
 [`from_delimited_files()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory) `TabularDatasetFactory` . Csv veya. tsv biçimindeki dosyaları okumak ve kayıtlı olmayan bir TabularDataset oluşturmak için sınıfındaki yöntemini kullanın. Birden çok dosyadan okuyorsanız, sonuçlar tek tablolu bir gösterimde toplanacaktır. 
@@ -176,7 +175,6 @@ titanic_ds.take(3).to_pandas_dataframe()
 2|3|Doğru|3|Heıkkinen, Isabetsizlik. Laina|kadın|26.0|0|0|STON/O2. 3101282|7,9250||S
 
 Çalışma alanınızdaki denemeleri genelinde veri kümelerini yeniden kullanmak ve paylaşmak için [veri kümenizi kaydedin](#register-datasets).
-
 
 ## <a name="explore-data"></a>Verileri inceleme
 

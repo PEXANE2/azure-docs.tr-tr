@@ -1,7 +1,7 @@
 ---
-title: Azureml veri kümeleriyle eğitme
+title: Machine Learning veri kümeleriyle eğitme
 titleSuffix: Azure Machine Learning
-description: Verilerinizi Azure Machine Learning veri kümeleri ile ML modeli eğitimi için yerel veya uzak işlem için nasıl kullanılabilir yapacağınızı öğrenin.
+description: Verilerinizi, Azure Machine Learning veri kümeleriyle model eğitimi için yerel veya uzak işlem için nasıl kullanılabilir hale yapacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,15 +12,14 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 52b52c4c19b22fb1afd76d1e8dfa4163326c0244
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 2d6282c527293abdb8b21e0591548cb51e1339a9
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108600"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539665"
 ---
-# <a name="train-with-datasets-in-azure-machine-learning"></a>Azure Machine Learning veri kümeleriyle eğitme
-
+# <a name="train-models-with-azure-machine-learning-datasets"></a>Azure Machine Learning veri kümeleriyle modelleri eğitme 
 
 Bu makalede makine öğrenimi modellerini eğitmek için [Azure Machine Learning veri kümeleriyle](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py) nasıl çalışacağınızı öğreneceksiniz.  Bağlantı dizeleri veya veri yolları hakkında endişelenmeden, yerel veya uzaktan işlem Hedefinizdeki veri kümelerini kullanabilirsiniz. 
 
@@ -28,7 +27,7 @@ Azure Machine Learning veri kümeleri, [ScriptRunConfig](/python/api/azureml-cor
 
 Verilerinizi model eğitimi için kullanılabilir hale getirmek için hazır değilseniz, ancak verilerinizi veri araştırması için Not defterinize yüklemek istiyorsanız, bkz. veri [kümenizdeki verileri keşfetme](how-to-create-register-datasets.md#explore-data). 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Veri kümeleri oluşturup eğitmeniz için şunlar gerekir:
 
@@ -41,7 +40,7 @@ Veri kümeleri oluşturup eğitmeniz için şunlar gerekir:
 > [!Note]
 > Bazı veri kümesi sınıflarının [azureml-dataprep](/python/api/azureml-dataprep/?preserve-view=true&view=azure-ml-py) paketine bağımlılıkları vardır. Linux kullanıcıları için, bu sınıflar yalnızca şu dağıtımlarda desteklenir: Red Hat Enterprise Linux, Ubuntu, Fedora ve CentOS.
 
-## <a name="use-datasets-directly-in-training-scripts"></a>Doğrudan eğitim betiklerde veri kümelerini kullanma
+## <a name="consume-datasets-in-machine-learning-training-scripts"></a>Machine Learning eğitim betiklerine veri kümelerini kullanma
 
 Henüz bir veri kümesi olarak kayıtlı olmayan yapılandırılmış veriler varsa, bir TabularDataset oluşturun ve bunu yerel veya uzaktan denemenize yönelik eğitim betiğinizdeki doğrudan kullanın.
 
@@ -90,6 +89,7 @@ df = dataset.to_pandas_dataframe()
 ```
 
 ### <a name="configure-the-training-run"></a>Eğitim çalıştırmasını yapılandırma
+
 Eğitim çalıştırmasını yapılandırmak ve göndermek için bir [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrun?preserve-view=true&view=azure-ml-py) nesnesi kullanılır.
 
 Bu kod, şunu belirten bir ScriptRunConfig nesnesi oluşturur `src`
@@ -141,6 +141,7 @@ mnist_ds = Dataset.File.from_files(path = web_paths)
 ```
 
 ### <a name="configure-the-training-run"></a>Eğitim çalıştırmasını yapılandırma
+
 Oluşturucunun parametresi aracılığıyla bağlanırken veri kümesini bir bağımsız değişken olarak geçirmeyi öneririz `arguments` `ScriptRunConfig` . Bunu yaptığınızda, eğitim betiğinizdeki veri yolunu (takma noktası) bağımsız değişkenler aracılığıyla alacaksınız. Bu şekilde, yerel hata ayıklama ve herhangi bir bulut platformunda uzaktan eğitim için aynı eğitim betiğini kullanacaksınız.
 
 Aşağıdaki örnek ile FileDataset içinde geçen bir ScriptRunConfig oluşturur `arguments` . Çalışmayı gönderdikten sonra, veri kümesi tarafından başvurulan veri dosyaları `mnist_ds` işlem hedefine bağlanır.
@@ -160,7 +161,7 @@ run = experiment.submit(src)
 run.wait_for_completion(show_output=True)
 ```
 
-### <a name="retrieve-the-data-in-your-training-script"></a>Eğitim betiğinizdeki verileri alın
+### <a name="retrieve-data-in-your-training-script"></a>Eğitim betiğinizdeki verileri alma
 
 Aşağıdaki kod, betiğinizdeki verilerin nasıl alınacağını gösterir.
 
@@ -222,10 +223,9 @@ print(os.listdir(mounted_path))
 print (mounted_path)
 ```
 
+## <a name="get-datasets-in-machine-learning-scripts"></a>Makine öğrenimi betiklerine veri kümeleri al
 
-## <a name="directly-access-datasets-in-your-script"></a>Betikinizdeki veri kümelerine doğrudan erişin
-
-Kayıtlı veri kümelerine, Azure Machine Learning işlem gibi işlem kümelerinde hem yerel olarak hem de uzaktan erişilebilir. Kayıtlı veri kümenize denemeleri üzerinden erişmek için aşağıdaki kodu kullanarak çalışma alanınıza ve kayıtlı veri kümesine ad ile erişin. Varsayılan olarak, [`get_by_name()`](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) sınıfındaki yöntemi, `Dataset` çalışma alanına kayıtlı veri kümesinin en son sürümünü döndürür.
+Kayıtlı veri kümelerine, Azure Machine Learning işlem gibi işlem kümelerinde hem yerel olarak hem de uzaktan erişilebilir. Kayıtlı veri kümenize denemeleri üzerinden erişmek için aşağıdaki kodu kullanarak çalışma alanınıza erişin ve daha önce gönderdiğiniz çalıştırmada kullanılan veri kümesini alın. Varsayılan olarak, [`get_by_name()`](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) sınıfındaki yöntemi, `Dataset` çalışma alanına kayıtlı veri kümesinin en son sürümünü döndürür.
 
 ```Python
 %%writefile $script_folder/train.py
@@ -244,7 +244,7 @@ titanic_ds = Dataset.get_by_name(workspace=workspace, name=dataset_name)
 df = titanic_ds.to_pandas_dataframe()
 ```
 
-## <a name="accessing-source-code-during-training"></a>Eğitim sırasında kaynak koduna erişme
+## <a name="access-source-code-during-training"></a>Eğitim sırasında kaynak koduna erişin
 
 Azure Blob depolama, bir Azure dosya paylaşımından daha yüksek işleme hızına sahiptir ve paralel olarak başlatılan çok sayıda işi ölçeklendirecektir. Bu nedenle, çalıştırmaların kaynak kodu dosyalarını aktarmak için blob depolamayı kullanacak şekilde yapılandırılmasını öneririz.
 

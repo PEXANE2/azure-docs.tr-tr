@@ -7,16 +7,16 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 12/16/2020
+ms.date: 01/15/2021
 ms.custom: generated
-ms.openlocfilehash: f22b74b16594419b0eff33f0c73d6e9c3a62ac15
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 8f44de679c9b0280652b0020d1e454a70f7114a3
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655042"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538538"
 ---
-# <a name="azure-built-in-roles"></a>Azure yerleşik rolleri
+# <a name="azure-built-in-roles"></a>Yerleşik Azure rolleri
 
 [Azure rol tabanlı erişim denetimi (Azure RBAC)](overview.md) , kullanıcılara, gruplara, hizmet sorumlularına ve yönetilen kimliklere atayabileceğiniz birkaç Azure yerleşik rolüne sahiptir. Rol atamaları, Azure kaynaklarına erişimi denetlemenize olanak sağlar. Yerleşik roller kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa, kendi [Azure özel rollerinizi](custom-roles.md)de oluşturabilirsiniz.
 
@@ -119,6 +119,9 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 > | [HDInsight etki alanı Hizmetleri Katılımcısı](#hdinsight-domain-services-contributor) | HDInsight için gereken etki alanı Hizmetleri ile ilgili işlemleri okuyabilir, oluşturabilir, değiştirebilir ve silebilir Kurumsal Güvenlik Paketi | 8d8d5a11-05d3-4bdav-A417-a08778121c7c |
 > | [Log Analytics Katkıda Bulunan](#log-analytics-contributor) | Log Analytics katkı, tüm izleme verilerini okuyabilir ve izleme ayarlarını düzenleyebilir. İzleme ayarlarını düzenlediğinizde VM 'lere VM uzantısının eklenmesi dahildir; Azure depolama 'dan günlüklerin toplanmasını yapılandırabilmek için depolama hesabı anahtarlarını okuma; Otomasyon hesapları oluşturma ve yapılandırma; çözümler ekleme; ve Azure tanılama 'yı tüm Azure kaynaklarında yapılandırma. | 92aaf0dad-9dadb-42b6-94a3-d43ce8d16293 |
 > | [Log Analytics Okuyucusu](#log-analytics-reader) | Log Analytics okuyucu tüm izleme verilerini görüntüleyip arayabilir ve tüm Azure kaynaklarında Azure tanılama 'nın yapılandırılmasını görüntüleme dahil olmak üzere izleme ayarlarını görüntüleyebilir. | 73c42c96-874c-492b-b04d-ab87d138a893 |
+> | [Veri Seçisini takip etme](#purview-data-curator) | Microsoft. purview verileri Curator, Katalog veri nesnelerini oluşturabilir, okuyabilir, değiştirebilir ve silebilir ve nesneler arasında ilişkiler oluşturabilir. Bu rol önizleme aşamasındadır ve değiştirilebilir. | 8a3c2885-9b38-4fd2-9d99-91af537c1347 |
+> | [Purview veri okuyucu](#purview-data-reader) | Microsoft. purview veri okuyucu, Katalog veri nesnelerini okuyabilir. Bu rol önizleme aşamasındadır ve değiştirilebilir. | ff100721-1b9d-43d8-af52-42b69c1272db |
+> | [Takip görünümü veri kaynağı Yöneticisi](#purview-data-source-administrator) | Microsoft. purview veri kaynağı Yöneticisi veri kaynaklarını ve veri taramalarını yönetebilir. Bu rol önizleme aşamasındadır ve değiştirilebilir. | 200bba9e-f0c8-430f-892b-6f0794863803 |
 > | [Şema kayıt defterine katkıda bulunan (Önizleme)](#schema-registry-contributor-preview) | Şema kayıt defteri gruplarını ve şemalarını okuyun, yazın ve silin. | 5dffeca3-4936-4216-b2bc-10343a5abb25 |
 > | [Şema kayıt defteri okuyucusu (Önizleme)](#schema-registry-reader-preview) | Şema kayıt defteri gruplarını ve şemaları okuyun ve listeleyin. | 2c56ea50-C6B3-40a6-83c0-9d98858bc7d2 |
 > | **Blok Zinciri** |  |  |
@@ -4888,6 +4891,133 @@ Log Analytics okuyucu tüm izleme verilerini görüntüleyip arayabilir ve tüm 
 }
 ```
 
+### <a name="purview-data-curator"></a>Veri Seçisini takip etme
+
+Microsoft. purview verileri Curator, Katalog veri nesnelerini oluşturabilir, okuyabilir, değiştirebilir ve silebilir ve nesneler arasında ilişkiler oluşturabilir. Bu rol önizleme aşamasındadır ve değiştirilebilir.
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | [Microsoft. purview](resource-provider-operations.md#microsoftpurview)/accounts/Read | Microsoft purview sağlayıcısı için hesap kaynağını okuyun. |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | [Microsoft. purview](resource-provider-operations.md#microsoftpurview)/accounts/Data/Read | Veri nesnelerini okuyun. |
+> | [Microsoft. purview](resource-provider-operations.md#microsoftpurview)/accounts/Data/Write | Veri nesneleri oluşturun, güncelleştirin ve silin. |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "The Microsoft.Purview data curator can create, read, modify and delete catalog data objects and establish relationships between objects. This role is in preview and subject to change.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8a3c2885-9b38-4fd2-9d99-91af537c1347",
+  "name": "8a3c2885-9b38-4fd2-9d99-91af537c1347",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Purview/accounts/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Purview/accounts/data/read",
+        "Microsoft.Purview/accounts/data/write"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Purview Data Curator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="purview-data-reader"></a>Purview veri okuyucu
+
+Microsoft. purview veri okuyucu, Katalog veri nesnelerini okuyabilir. Bu rol önizleme aşamasındadır ve değiştirilebilir.
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | [Microsoft. purview](resource-provider-operations.md#microsoftpurview)/accounts/Read | Microsoft purview sağlayıcısı için hesap kaynağını okuyun. |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | [Microsoft. purview](resource-provider-operations.md#microsoftpurview)/accounts/Data/Read | Veri nesnelerini okuyun. |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "The Microsoft.Purview data reader can read catalog data objects. This role is in preview and subject to change.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/ff100721-1b9d-43d8-af52-42b69c1272db",
+  "name": "ff100721-1b9d-43d8-af52-42b69c1272db",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Purview/accounts/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Purview/accounts/data/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Purview Data Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="purview-data-source-administrator"></a>Takip görünümü veri kaynağı Yöneticisi
+
+Microsoft. purview veri kaynağı Yöneticisi veri kaynaklarını ve veri taramalarını yönetebilir. Bu rol önizleme aşamasındadır ve değiştirilebilir.
+
+> [!div class="mx-tableFixed"]
+> | Eylemler | Açıklama |
+> | --- | --- |
+> | [Microsoft. purview](resource-provider-operations.md#microsoftpurview)/accounts/Read | Microsoft purview sağlayıcısı için hesap kaynağını okuyun. |
+> | **NotActions** |  |
+> | *yok* |  |
+> | **Veri eylemleri** |  |
+> | [Microsoft. purview](resource-provider-operations.md#microsoftpurview)/accounts/Scan/Read | Veri kaynaklarını ve taramaları okuyun. |
+> | [Microsoft. purview](resource-provider-operations.md#microsoftpurview)/accounts/Scan/Write | Veri kaynaklarını oluşturun, güncelleştirin ve silin ve taramaları yönetin. |
+> | **NotDataActions** |  |
+> | *yok* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "The Microsoft.Purview data source administrator can manage data sources and data scans. This role is in preview and subject to change.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/200bba9e-f0c8-430f-892b-6f0794863803",
+  "name": "200bba9e-f0c8-430f-892b-6f0794863803",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Purview/accounts/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Purview/accounts/scan/read",
+        "Microsoft.Purview/accounts/scan/write"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Purview Data Source Administrator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="schema-registry-contributor-preview"></a>Şema kayıt defterine katkıda bulunan (Önizleme)
 
 Şema kayıt defteri gruplarını ve şemalarını okuyun, yazın ve silin.
@@ -7015,7 +7145,9 @@ Anahtarların meta verilerini okuyun ve sarmalama/sarmalama işlemleri gerçekle
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
 > | --- | --- |
-> | *yok* |  |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/EventSubscriptions/Write | EventSubscription oluşturma veya güncelleştirme |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/EventSubscriptions/Read | Bir eventSubscription okuma |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/EventSubscriptions/Delete | Bir eventSubscription silme |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -7035,7 +7167,11 @@ Anahtarların meta verilerini okuyun ve sarmalama/sarmalama işlemleri gerçekle
   "name": "e147488a-f6f5-4113-8e2d-b22465e65bf6",
   "permissions": [
     {
-      "actions": [],
+      "actions": [
+        "Microsoft.EventGrid/eventSubscriptions/write",
+        "Microsoft.EventGrid/eventSubscriptions/read",
+        "Microsoft.EventGrid/eventSubscriptions/delete"
+      ],
       "notActions": [],
       "dataActions": [
         "Microsoft.KeyVault/vaults/keys/read",
@@ -7438,6 +7574,9 @@ Güvenlik Merkezi için izinleri görüntüleyin. Önerileri, uyarıları, güve
 > | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/*/Read | Güvenlik bileşenlerini ve ilkelerini okuyun |
 > | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/*/Read |  |
+> | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/Iotsavunma Dersettings/packagedownloads/Action | İndirilebilir IoT Defender paketleri bilgilerini alır |
+> | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/Iotsavunma Dersettings/downloadmanageractivation/Action | Abonelik kota verileri içeren yönetici etkinleştirme dosyasını indir |
+> | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/Iotsensors/downloadresetpassword/Action | IoT sensörleri için parola sıfırlama dosyası indirilir |
 > | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/Managementgroups/Read | Kimliği doğrulanmış kullanıcı için Yönetim gruplarını listeleyin. |
 > | **NotActions** |  |
 > | *yok* |  |
@@ -7464,6 +7603,9 @@ Güvenlik Merkezi için izinleri görüntüleyin. Önerileri, uyarıları, güve
         "Microsoft.Resources/subscriptions/resourceGroups/read",
         "Microsoft.Security/*/read",
         "Microsoft.Support/*/read",
+        "Microsoft.Security/iotDefenderSettings/packageDownloads/action",
+        "Microsoft.Security/iotDefenderSettings/downloadManagerActivation/action",
+        "Microsoft.Security/iotSensors/downloadResetPassword/action",
         "Microsoft.Management/managementGroups/read"
       ],
       "notActions": [],
@@ -7634,7 +7776,7 @@ Azure Laboratuvar hesaplarınız altında yeni laboratuvarlar oluşturmanızı s
 }
 ```
 
-## <a name="monitor"></a>İzleme
+## <a name="monitor"></a>İzleyici
 
 
 ### <a name="application-insights-component-contributor"></a>Application Insights bileşeni Katılımcısı
@@ -8611,8 +8753,8 @@ Herhangi bir kullanıcıyı/hizmeti, Connectedkümeler kaynağı oluşturmak üz
 > | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/operationresults/Read | Abonelik işlem sonuçlarını alın. |
 > | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/Read | Aboneliklerin listesini alır. |
 > | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | Microsoft. Kubernetes/Connectedkümeler/yazma |  |
-> | Microsoft. Kubernetes/Connectedkümeler/okuma |  |
+> | [Microsoft. Kubernetes](resource-provider-operations.md#microsoftkubernetes)/Connectedclusters/Write | Connectedkümeler yazar |
+> | [Microsoft. Kubernetes](resource-provider-operations.md#microsoftkubernetes)/Connectedclusters/Read | Connectedkümelerini oku |
 > | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |

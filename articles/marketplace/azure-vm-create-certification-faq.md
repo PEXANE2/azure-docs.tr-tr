@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 10/19/2020
-ms.openlocfilehash: 921c05b76640935a1bd9e65d556933c23093e5b2
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/15/2021
+ms.openlocfilehash: 8c2739503f00848b1515f2061c2a9aa250c091a3
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251446"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539838"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Sanal makine sertifikası sorunlarını giderme
 
@@ -22,7 +22,6 @@ Bu makalede, ilgili çözümlerle birlikte VM görüntüsü yayımlama sırasın
 
 > [!NOTE]
 > Bu makale veya geliştirme önerileri hakkında sorularınız varsa, [Iş Ortağı Merkezi desteğiyle](https://aka.ms/marketplacepublishersupport)iletişim kurun.
-
 
 ## <a name="vm-extension-failure"></a>VM Uzantısı hatası
 
@@ -60,12 +59,12 @@ Sağlama sorunları aşağıdaki başarısızlık senaryolarını içerebilir:
 |1|Geçersiz sanal sabit disk (VHD)|VHD altbilgisinde belirtilen tanımlama bilgisi değeri yanlışsa, VHD geçersiz olarak kabul edilir.|Görüntüyü yeniden oluşturun ve isteği iletin.|
 |2|Geçersiz blob türü|Kullanılan blok, bir sayfa türü yerine bir blob türü olduğundan VM sağlama başarısız oldu.|Görüntüyü yeniden oluşturun ve isteği iletin.|
 |3|Sağlama zaman aşımı veya düzgün Genelleştirilmiş|VM Genelleştirme ile ilgili bir sorun var.|Yansımayı Genelleştirme ile yeniden oluşturun ve isteği iletin.|
+|
 
 > [!NOTE]
 > VM Genelleştirme hakkında daha fazla bilgi için bkz.
 > - [Linux belgeleri](azure-vm-create-using-approved-base.md#generalize-the-image)
 > - [Windows belgeleri](../virtual-machines/windows/capture-image-resource.md#generalize-the-windows-vm-using-sysprep)
-
 
 ## <a name="vhd-specifications"></a>VHD belirtimleri
 
@@ -93,7 +92,7 @@ Sağlama|4
 Benzersiz Kimlik|16
 Kaydedilen durum|1
 Ayrılmıştır|427
-
+|
 
 ### <a name="vhd-specifications"></a>VHD belirtimleri
 
@@ -139,6 +138,7 @@ Aşağıdaki tablo, araç setinin çalışacağı Linux test çalışmalarını 
 |8|İstemci canlı aralığı|ClientAliveInterval değerini 180 olarak ayarlayın. Uygulama gereksinimi üzerine 30 ' dan 235 ' e ayarlanabilir. Son kullanıcılarınız için SSH 'yi etkinleştirirseniz, bu değerin açıklanacak şekilde ayarlanması gerekir.|
 |9|İşletim sistemi mimarisi|Yalnızca 64 bit işletim sistemleri desteklenir.|
 |10|Otomatik güncelleştirme|Linux Aracısı otomatik güncelleştirme özelliğinin etkinleştirilip etkinleştirilmediğini belirler.|
+|
 
 ### <a name="common-test-case-errors"></a>Ortak test çalışması hataları
 
@@ -150,7 +150,7 @@ Test çalışmalarını çalıştırırken görebileceğiniz yaygın hatalar iç
 | 2 | Bash geçmiş test çalışması | Gönderilen görüntinizdeki Bash geçmişinin boyutu 1 kilobayt (KB) daha büyükse bir hata oluşur. Bash geçmiş dosyanızın potansiyel olabilecek duyarlı bilgiler içermediğinden emin olmak için Boyut 1 KB 'ye kısıtlıdır. | VHD 'yi başka bir çalışan VM 'ye bağlayarak ve boyutu 1 KB veya daha az olacak şekilde azaltmak için değişiklikler yapın. Örneğin, `.bash` geçmiş dosyalarını silin. |
 | 3 | Gerekli çekirdek parametresi test çalışması | Değeri olarak ayarlanmadıysa bu hatayı alırsınız `console` `ttyS0` . Aşağıdaki komutu çalıştırarak kontrol edin: <br /> `cat /proc/cmdline` | Değerini `console` olarak ayarlayın `ttyS0` ve isteği yeniden gönderin. |
 | 4 | ClientAlive Interval test çalışması | Araç seti size bu test çalışması için başarısız bir sonuç veriyorsa, için uygun olmayan bir değer vardır `ClientAliveInterval` . | Değerini `ClientAliveInterval` 235 değerinden küçük veya buna eşit olarak ayarlayın ve sonra isteği yeniden gönderin. |
-
+|
 
 ### <a name="windows-test-cases"></a>Windows test çalışmaları
 
@@ -175,8 +175,9 @@ Aşağıdaki tabloda, test doğrulamasının bir açıklamasıyla birlikte, ara�
 |15|SNMP Hizmetleri|Basit Ağ Yönetim Protokolü (SNMP) Hizmetleri özelliği henüz desteklenmiyor. Uygulamanın bu özelliğe bağımlı olmaması gerekir.|
 |16|Windows Internet ad hizmeti|Windows Internet ad hizmeti. Bu sunucu özelliği henüz desteklenmiyor. Uygulamanın bu özelliğe bağımlı olmaması gerekir.|
 |17|Kablosuz LAN Hizmeti|Kablosuz LAN Hizmeti. Bu sunucu özelliği henüz desteklenmiyor. Uygulamanın bu özelliğe bağımlı olmaması gerekir.|
+|
 
-Önceki test durumlarında tüm hatalarda karşılaşırsanız, çözüm için tablodaki **Açıklama** sütununa bakın. Daha fazla bilgi için destek ekibine başvurun. 
+Önceki test durumlarında tüm hatalarda karşılaşırsanız, çözüm için tablodaki **Açıklama** sütununa bakın. Daha fazla bilgi için destek ekibine başvurun.
 
 ## <a name="data-disk-size-verification"></a>Veri diski boyut doğrulaması
 
@@ -192,6 +193,7 @@ Boyut 1023 gigabayttan (GB) büyük olan veri diski istekleri onaylanmayacak. Bu
 |---|---|
 |Linux|1 GB ila 1023 GB|
 |Windows|30 GB ila 250 GB|
+|
 
 VM 'Ler temeldeki işletim sistemine erişime izin vermediğinden, VHD boyutunun VHD için yeterince büyük olduğundan emin olun. Diskler kesinti olmadan genişletilebilir değildir. 30 GB ile 50 GB arasında bir disk boyutu kullanın.
 
@@ -199,6 +201,7 @@ VM 'Ler temeldeki işletim sistemine erişime izin vermediğinden, VHD boyutunun
 |---|---|---|
 |>500 tebibayt (Tib)|yok|Özel durum onayı için destek ekibine başvurun.|
 |250-500 TiB|Blob boyutundan >200 Gibibyte (gib) farkı|Özel durum onayı için destek ekibine başvurun.|
+|
 
 > [!NOTE]
 > Daha büyük disk boyutları daha yüksek maliyetlere sahiptir ve kurulum ve çoğaltma işlemi sırasında gecikmeye neden olur. Bu gecikme ve maliyet nedeniyle, destek ekibi özel durum onayı için gerekçe arayabilir.
@@ -209,7 +212,7 @@ WannaCry virüsü ile ilgili olası bir saldırıyı engellemek için tüm Windo
 
 Ya da ' dan görüntü dosyası sürümünü doğrulayabilirsiniz `C:\windows\system32\drivers\srv.sys` `srv2.sys` .
 
-Aşağıdaki tabloda, Windows Server 'ın en düşük düzeltme eki uygulanmış sürümü gösterilmektedir: 
+Aşağıdaki tabloda, Windows Server 'ın en düşük düzeltme eki uygulanmış sürümü gösterilmektedir:
 
 |İşletim Sistemi|Sürüm|
 |---|---|
@@ -218,6 +221,7 @@ Aşağıdaki tabloda, Windows Server 'ın en düşük düzeltme eki uygulanmış
 |Windows Server 2012 R2|6.3.9600.18604|
 |Windows Server 2016|10.0.14393.953|
 |Windows Server 2019|NA|
+|
 
 > [!NOTE]
 > Windows Server 2019 zorunlu sürüm gereksinimlerine sahip değildir.
@@ -230,8 +234,8 @@ Bir Linux görüntüsü gönderdiğinizde, isteğiniz çekirdek sürümü sorunl
 
 Görüntünüz aşağıdaki çekirdek sürümlerinden biriyle yüklenmezse, doğru düzeltme ekleriyle güncelleştirin. Görüntü, gereken bu düzeltme ekleriyle güncelleştirildikten sonra destek ekibinin gerekli onayını iste:
 
-- CVE-2019-11477 
-- CVE-2019-11478 
+- CVE-2019-11477
+- CVE-2019-11478
 - CVE-2019-11479
 
 |İşletim sistemi ailesi|Sürüm|Çekirdek|
@@ -278,6 +282,7 @@ Görüntünüz aşağıdaki çekirdek sürümlerinden biriyle yüklenmezse, doğ
 ||Esnetme (güvenlik)|4.9.168-1 + deb9u3|
 ||Deuter GNU/Linux 10 (Buster)|Detem 6.3.0-18 + deb9u1|
 ||Buster, SID (Esnetme noktaları)|4.19.37-5|
+|
 
 ## <a name="image-size-should-be-in-multiples-of-megabytes"></a>Görüntü boyutu megabayt katları cinsinden olmalıdır
 
@@ -303,7 +308,7 @@ Sertifika işlemi için SSH devre dışı görüntüyle isteğinizi göndermek i
 3. Sertifika isteğinizi yeniden gönderin.
 
 ## <a name="download-failure"></a>İndirme hatası
-    
+
 Paylaşılan erişim imzası (SAS) URL 'SI ile VM görüntüsünü indirdiğinizde ortaya çıkan herhangi bir sorun için aşağıdaki tabloya bakın.
 
 |Senaryo|Hata|Nedeni|Çözüm|
@@ -314,12 +319,13 @@ Paylaşılan erişim imzası (SAS) URL 'SI ile VM görüntüsünü indirdiğiniz
 |4|Geçersiz imza|VHD için ilişkili SAS URL 'SI yanlış.|Doğru SAS URL 'sini alın.|
 |6|HTTP koşullu üstbilgisi|SAS URL 'SI geçersiz.|Doğru SAS URL 'sini alın.|
 |7|Geçersiz VHD adı|VHD adında, yüzde işareti veya tırnak işareti gibi özel karakterlerin mevcut olup olmadığını denetleyin `%` `"` .|Özel karakterleri kaldırarak VHD dosyasını yeniden adlandırın.|
+|
 
-## <a name="first-1-mb-partition-2048-sectors-each-sector-of-512-bytes"></a>İlk 1 MB bölüm (2.048 kesim, her bir kesim 512 bayt)
+## <a name="first-1-mb-2048-sectors-each-sector-of-512-bytes-partition"></a>İlk 1 MB (2048 kesim, her 512 baytlık kesim) bölümü
 
-[Kendi görüntünüzü oluşturuyorsanız](azure-vm-create-using-own-image.md), işletim sistemi diskinin ilk 2.048 kesimlerinin (1 MB) boş olduğundan emin olun. Aksi takdirde, yayımlarınız başarısız olur. Bu gereksinim yalnızca işletim sistemi diski için geçerlidir (Veri disklerine değil). Görüntüyü [onaylanan bir tabandan](azure-vm-create-using-approved-base.md)oluşturuyorsanız, bu gereksinimi atlayabilirsiniz. 
+[Kendi görüntünüzü oluşturuyorsanız](azure-vm-create-using-own-image.md), işletim sistemi diskinin ilk 2048 kesimlerinin (1 MB) boş olduğundan emin olun. Aksi takdirde, yayımlarınız başarısız olur. Bu gereksinim yalnızca işletim sistemi diski (veri diskleri değil) için geçerlidir. Görüntüyü [onaylanan bir tabandan](azure-vm-create-using-approved-base.md)oluşturuyorsanız, bu gereksinimi atlayabilirsiniz.
 
-### <a name="create-a-1-mb-partition-2048-sectors-each-sector-of-512-bytes-on-an-empty-vhd-linux-only-steps"></a>Boş bir VHD (yalnızca Linux adımları) üzerinde 1 MB 'lık bir bölüm (2.048 kesim, her 512 baytlık bir kesim) oluşturun
+### <a name="create-a-1-mb-2048-sectors-each-sector-of-512-bytes-partition-on-an-empty-vhd"></a>Boş bir VHD üzerinde 1 MB (2048 kesim, her 512 baytlık bir kesim) bölümü oluşturun
 
 Bu adımlar yalnızca Linux için geçerlidir.
 
@@ -374,17 +380,17 @@ Bu adımlar yalnızca Linux için geçerlidir.
 
       ![Silinen veriler için komutları ve çıktıyı gösteren Putty istemcisi komut satırı ekran görüntüsü.](./media/create-vm/vm-certification-issues-solutions-22.png)
 
-   1. `w`Bölüm oluşturulmasını onaylamak için yazın. 
+   1. `w`Bölüm oluşturulmasını onaylamak için yazın.
 
       ![Bölüm oluşturmaya yönelik komutları gösteren Putty istemcisi komut satırı ekran görüntüsü.](./media/create-vm/vm-certification-issues-solutions-23.png)
 
-   1. Komutunu çalıştırarak ve yazarak bölüm tablosunu doğrulayabilirsiniz `n fdisk /dev/sdb` `p` . Bölümün 2048 fark değeriyle oluşturulduğunu görürsünüz. 
+   1. Komutunu çalıştırarak ve yazarak bölüm tablosunu doğrulayabilirsiniz `n fdisk /dev/sdb` `p` . Bölümün 2048 fark değeriyle oluşturulduğunu görürsünüz.
 
       ![2048 sapmasını oluşturmaya yönelik komutları gösteren Putty istemcisi komut satırı ekran görüntüsü.](./media/create-vm/vm-certification-issues-solutions-24.png)
 
 1. VHD 'yi VM 'den ayırın ve VM 'yi silin.
 
-### <a name="create-a-first-1-mb-partition-2048-sectors-each-sector-of-512-bytes-by-moving-existing-data-on-vhd"></a>VHD 'de var olan verileri taşıyarak ilk 1 MB 'lık bölüm (2.048 kesim, her 512 baytlık bir kesim) oluşturun
+### <a name="create-a-1-mb-2048-sectors-each-sector-of-512-bytes-partition-by-moving-existing-data-on-vhd"></a>VHD 'deki mevcut verileri taşıyarak 1 MB (2048 kesim, her 512 baytlık bir kesim) bölümü oluşturun
 
 Bu adımlar yalnızca Linux için geçerlidir.
 
@@ -452,11 +458,11 @@ Bir görüntü oluşturulduğunda, bu, yanlış işletim sistemi etiketine eşle
 
 Azure Marketi 'nden alınan tüm görüntülerin yeniden kullanılabilmesi için işletim sistemi VHD 'sinin genelleştirilmesi gerekir.
 
-* **Linux** için aşağıdaki Işlem BIR Linux sanal makinesini genelleştirir ve ayrı bir VM olarak yeniden dağıtır.
+- **Linux** için aşağıdaki Işlem BIR Linux sanal makinesini genelleştirir ve ayrı bir VM olarak yeniden dağıtır.
 
   SSH penceresinde şu komutu girin: `sudo waagent -deprovision+user` .
 
-* **Windows** için, kullanarak Windows görüntülerini genelleştirdiğinizde `sysreptool` .
+- **Windows** için, kullanarak Windows görüntülerini genelleştirdiğinizde `sysreptool` .
 
   Araç hakkında daha fazla bilgi için `sysreptool` bkz. [Sistem Hazırlama (Sysprep) genel bakış](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
 

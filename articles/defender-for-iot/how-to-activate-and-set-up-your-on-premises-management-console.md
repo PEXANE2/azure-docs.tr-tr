@@ -1,20 +1,20 @@
 ---
-title: Şirket içi yönetim konsolunuzu etkinleştirin ve ayarlayın
+title: Şirket içi yönetim konsolunuzu etkinleştirme ve ayarlama
 description: Yönetim Konsolu etkinleştirme ve kurulumu, algılayıcıların Azure 'a kaydedilmesini ve şirket içi yönetim konsoluna bilgi göndermesini ve şirket içi yönetim konsolunun bağlı sensörlerde yönetim görevleri kapsamasını sağlar.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/24/2020
+ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 56092d61e1eed4e4ebe4f8cb7f97d01e91e8543e
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: d344b3d9ea54243d61cc6a1f3f0982eb5ab1d238
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97843819"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538591"
 ---
-# <a name="activate-and-set-up-your-on-premises-management-console"></a>Şirket içi yönetim konsolunuzu etkinleştirin ve ayarlayın 
+# <a name="activate-and-set-up-your-on-premises-management-console"></a>Şirket içi yönetim konsolunuzu etkinleştirme ve ayarlama 
 
 Şirket içi yönetim konsolunun etkinleştirilmesi ve kurulumu şunları sağlar:
 
@@ -51,7 +51,7 @@ Bir etkinleştirme dosyasını karşıya yüklemek için:
 
 ## <a name="set-up-a-certificate"></a>Sertifika ayarlama
 
-Yönetim konsolunun yüklenmesinden sonra, yerel olarak imzalanan bir sertifika oluşturulur ve konsola erişim için kullanılır. Yönetici Yönetim konsolunda ilk kez oturum açtıktan sonra, bu kullanıcıdan bir SSL/TLS sertifikası girmesi istenir. Güvenilen CA imzalı bir sertifikayla çalışmanız ve yerel olarak oluşturulan otomatik olarak imzalanan sertifikayı kullanbilmeniz önerilir.
+Yönetim konsolunun yüklenmesinden sonra, yerel olarak imzalanan bir sertifika oluşturulur ve konsola erişim için kullanılır. Yönetici Yönetim konsolunda ilk kez oturum açtıktan sonra, bu kullanıcıdan bir SSL/TLS sertifikası girmesi istenir. 
 
 İki güvenlik düzeyi mevcuttur:
 
@@ -61,7 +61,9 @@ Yönetim konsolunun yüklenmesinden sonra, yerel olarak imzalanan bir sertifika 
 Konsolu aşağıdaki sertifika türlerini destekler:
 
 - Özel ve Kurumsal anahtar altyapısı (özel PKI)
+
 - Ortak anahtar altyapısı (genel PKI)
+
 - Gereç üzerinde yerel olarak oluşturuldu (yerel olarak kendinden imzalı) 
 
   > [!IMPORTANT]
