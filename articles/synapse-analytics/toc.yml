@@ -1094,25 +1094,26 @@
     - name: Öğreticiler
       items:
         - name: Apache Spark ile verileri görselleştirme
+          displayname: machine learning
           href: ./spark/apache-spark-data-visualization-tutorial.md
-          displayname: machine learning
         - name: Ayrılmış SQL havuzları için puanlama sihirbazını kullanma
-          href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
           displayname: machine learning
+          href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
         - name: Otomatik makine öğrenmesi ile kod olmadan model eğitme
+          displayname: machine learning
           href: ./machine-learning/tutorial-automl.md
         - name: Otomatik makine öğrenmesi ile Python’da model eğitme
+          displayname: machine learning
           href: ./spark/apache-spark-azure-machine-learning-tutorial.md
-          displayname: machine learning
         - name: Apache Spark MLlib ile model oluşturma
-          href: ./spark/apache-spark-machine-learning-mllib-notebook.md
           displayname: machine learning
+          href: ./spark/apache-spark-machine-learning-mllib-notebook.md
+        - name: Azure Synapse için Bilişsel Hizmetler’i yapılandırma
+          href: ./machine-learning/tutorial-configure-cognitive-services-synapse.md
         - name: Bilişsel Hizmetler ile yaklaşım analizi
           href: ./machine-learning/tutorial-cognitive-services-sentiment.md
         - name: Bilişsel Hizmetler ile anomali algılama
           href: ./machine-learning/tutorial-cognitive-services-anomaly.md
-        - name: Azure Synapse için Bilişsel Hizmetler’i yapılandırma
-          href: ./machine-learning/tutorial-configure-cognitive-services-synapse.md
 - name: Veri Kataloğu ve İdare
   items:
     - name: Hızlı Başlangıçlar

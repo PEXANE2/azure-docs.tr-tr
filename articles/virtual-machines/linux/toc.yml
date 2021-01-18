@@ -234,7 +234,7 @@
         - name: Disk Depolama rezervasyonları
           href: ../../cost-management-billing/reservations/understand-disk-reservations.md
         - name: Sanal makine ve disk performansı
-          href: disk-performance-linux.md
+          href: ../disks-performance.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Yüksek performansa uygun tasarım yapma
           href: ../premium-storage-performance.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Disk genişletme
@@ -906,10 +906,8 @@
           href: snapshot-copy-managed-disk.md
         - name: Disk Depolama rezervasyonu yapma
           href: ../disks-reserved-capacity.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-        - name: Artımlı anlık görüntü oluşturma - CLI
-          href: disks-incremental-snapshots.md
-        - name: Artımlı anlık görüntü oluşturma - Portal
-          href: disks-incremental-snapshots-portal.md
+        - name: Artımlı anlık görüntü oluşturma
+          href: ../disks-incremental-snapshots.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Yönetilmeyen diskleri yedekleme
           href: incremental-snapshots.md
         - name: Şifreleme
@@ -943,7 +941,7 @@
             - name: Ultra diskleri kullanma
               href: ../disks-enable-ultra-ssd.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Disk kıyaslama
-              href: disks-benchmarks.md
+              href: ../disks-benchmarks.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Kullanıma açılmamış diskleri bulma - CLI
           href: find-unattached-disks.md
         - name: Kullanıma açılmamış diskleri bulma - Portal
