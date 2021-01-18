@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 360fbc3e1bfe7890f1f3b05899eb95ce7a3a72c2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 4e19991de20b130b878a230313d87ca09d31a84e
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496629"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556452"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak ilk veri fabrikanızı oluşturma
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "96496629"
 > Bu makale, Azure Data Factory’nin genel kullanıma açık olan 1. sürümü için geçerlidir. Data Factory'nin geçerli sürümünü kullanıyorsanız [Hızlı Başlangıç: Data Factory'yi kullanarak veri fabrikası oluşturma](../quickstart-create-data-factory-dot-net.md) konusunu inceleyin.
 
 > [!WARNING]
-> ADF v1 işlem hatları dağıtmak & yazma için Azure portalındaki JSON Düzenleyicisi, 31 Temmuz 2019 tarihinde kapatılacak. 31 Temmuz 2019 ' den sonra, ADF v1 için ADF v1 .NET SDK, ADF v1 [.NET SDK](/dotnet/api/microsoft.azure.management.datafactories.models?view=azure-dotnet), [ADF v1 REST API](/rest/api/datafactory/) 'leri kullanmaya devam edebilirsiniz & ADF v1 işlem hatlarınızı dağıtabilirsiniz. [ADF v1 Powershell cmdlets](/powershell/module/az.datafactory/?view=azps-2.4.0&viewFallbackFrom=azps-2.3.2)
+> ADF v1 işlem hatları dağıtmak & yazma için Azure portalındaki JSON Düzenleyicisi, 31 Temmuz 2019 tarihinde kapatılacak. 31 Temmuz 2019 ' den sonra, ADF v1 için ADF v1 .NET SDK, ADF v1 [.NET SDK](/dotnet/api/microsoft.azure.management.datafactories.models), [ADF v1 REST API](/rest/api/datafactory/) 'leri kullanmaya devam edebilirsiniz & ADF v1 işlem hatlarınızı dağıtabilirsiniz. [](/powershell/module/az.datafactory/)
 
 Bu makalede, [Azure portalını](https://portal.azure.com/) kullanarak ilk veri fabrikanızı oluşturmayı öğrenirsiniz. Öğreticiyi diğer araçları/SDK’ları kullanarak uygulamak için açılır listedeki seçeneklerden birini belirleyin. 
 
@@ -42,7 +42,7 @@ Bu öğreticideki işlem hattı bir etkinlik içerir: Azure HDInsight Hive etkin
 > 
 > Bir işlem hattında birden fazla etkinlik olabilir. Bir etkinliğin çıkış veri kümesini diğer etkinliğin giriş veri kümesi olarak ayarlayarak iki etkinliği zincirleyebilir, yani bir etkinliğin diğerinden sonra çalıştırılmasını sağlayabilirsiniz. Daha fazla bilgi için bkz. [Data Factory'de zamanlama ve yürütme](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 [Öğreticiye genel bakış](data-factory-build-your-first-pipeline.md) bölümünü okuyun ve "Önkoşullar" bölümündeki adımları izleyin.
 
 Bu makale, Data Factory hizmetine kavramsal bir genel bakış sağlamaz. Hizmet hakkında daha fazla bilgi için [Azure Data Factory'ye giriş](data-factory-introduction.md) konusunu okuyun.  
@@ -413,7 +413,7 @@ Bu adımda, bir HDInsightHive etkinliğiyle ilk işlem hattınızı oluşturursu
 
     ![İzleme ve Yönetme kutucuğu](./media/data-factory-build-your-first-pipeline-using-editor/monitor-and-manage-tile.png)
 
-1. İzleme ve Yönetme uygulamasında **Başlangıç saati** ve **Bitiş saati** değerlerini işlem hattınızın başlangıç ve bitiş saatleriyle eşleşecek şekilde değiştirin. **Uygula**’yı seçin.
+1. İzleme ve Yönetme uygulamasında **Başlangıç saati** ve **Bitiş saati** değerlerini işlem hattınızın başlangıç ve bitiş saatleriyle eşleşecek şekilde değiştirin. **Apply** (Uygula) seçeneğini belirleyin.
 
     ![İzleme ve Yönetme uygulaması](./media/data-factory-build-your-first-pipeline-using-editor/monitor-and-manage-app.png)
 
@@ -437,7 +437,7 @@ Bu makalede, isteğe bağlı HDInsight kümesinde bir Hive betiği çalıştıra
 ## <a name="see-also"></a>Ayrıca bkz.
 | Konu | Açıklama |
 |:--- |:--- |
-| [Pipelines](data-factory-create-pipelines.md) |Bu makale, Data Factory’de işlem hatlarını ve etkinliklerini anlamanıza ve senaryonuz ya da işletmeniz için uçtan uca veri odaklı iş akışları oluşturmak amacıyla bunları nasıl kullanacağınızı anlamanıza yardımcı olur. |
+| [İşlem hatları](data-factory-create-pipelines.md) |Bu makale, Data Factory’de işlem hatlarını ve etkinliklerini anlamanıza ve senaryonuz ya da işletmeniz için uçtan uca veri odaklı iş akışları oluşturmak amacıyla bunları nasıl kullanacağınızı anlamanıza yardımcı olur. |
 | [Veri kümeleri](data-factory-create-datasets.md) |Bu makale, Data Factory’deki veri kümelerini anlamanıza yardımcı olur. |
 | [Zamanlama ve yürütme](data-factory-scheduling-and-execution.md) |Bu makalede Data Factory uygulama modelinin zamanlama ve yürütme yönleri açıklanmaktadır. |
 | [İzleme ve Yönetme uygulamasını kullanılarak işlem hatlarını izleme ve yönetme](data-factory-monitor-manage-app.md) |Bu makalede, İzleme ve Yönetme uygulaması kullanılarak işlem hatlarını izleme, yönetme ve hatalarını ayıklama işlemleri açıklanmaktadır. |

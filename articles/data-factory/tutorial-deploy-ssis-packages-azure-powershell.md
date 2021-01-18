@@ -14,12 +14,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: afc2f05d61c888e50ec9de5edaa7806e6c6b5d3c
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e2ace9a8d7d9c0229e7e06847c2ce56bea11c138
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636247"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555823"
 ---
 # <a name="set-up-an-azure-ssis-ir-in-azure-data-factory-by-using-powershell"></a>PowerShell kullanarak Azure Data Factory Azure-SSIS IR ayarlama
 
@@ -30,7 +30,7 @@ Bu öğreticide, PowerShell kullanarak Azure Data Factory (ADF) içinde bir Azur
 - Azure SQL veritabanı sunucusu/yönetilen örneği (proje dağıtım modeli) tarafından barındırılan SSIS kataloğuna (SSıSDB) dağıtılan Paketleri çalıştırma
 - Azure SQL yönetilen örneği (paket dağıtım modeli) tarafından barındırılan dosya sistemine, Azure dosyalarına veya SQL Server veritabanına (MSDB) dağıtılan Paketleri çalıştırma
 
-Bir Azure-SSIS IR sağlandıktan sonra, Azure 'da paketlerinizi dağıtmak ve çalıştırmak için tanıdık araçları kullanabilirsiniz. Bu araçlar zaten Azure özellikli ve [dtutil](/sql/integration-services/dtutil-utility?view=sql-server-2017) ve [Azuredtexec](./how-to-invoke-ssis-package-azure-enabled-dtexec.md)gibi SQL Server veri araçları (ssdt), SQL Server Management Studio (SSMS) ve komut satırı yardımcı programlarını içerir.
+Bir Azure-SSIS IR sağlandıktan sonra, Azure 'da paketlerinizi dağıtmak ve çalıştırmak için tanıdık araçları kullanabilirsiniz. Bu araçlar zaten Azure özellikli ve [dtutil](/sql/integration-services/dtutil-utility) ve [Azuredtexec](./how-to-invoke-ssis-package-azure-enabled-dtexec.md)gibi SQL Server veri araçları (ssdt), SQL Server Management Studio (SSMS) ve komut satırı yardımcı programlarını içerir.
 
 Azure-SSIS IR’ler hakkında kavramsal bilgiler için bkz. [Azure SSIS tümleştirme çalışma zamanına genel bakış](concepts-integration-runtime.md#azure-ssis-integration-runtime).
 
@@ -49,9 +49,9 @@ Bu öğreticide şunları yapacaksınız:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure aboneliği** . Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+- **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-- **Azure SQL veritabanı sunucusu veya yönetilen örneği (isteğe bağlı)** . Henüz bir veritabanı sunucunuz yoksa, başlamadan önce Azure portalında bir tane oluşturun. Data Factory, bu veritabanı sunucusunda SSıSDB örneği oluşturacak. 
+- **Azure SQL veritabanı sunucusu veya yönetilen örneği (isteğe bağlı)**. Henüz bir veritabanı sunucunuz yoksa, başlamadan önce Azure portalında bir tane oluşturun. Data Factory, bu veritabanı sunucusunda SSıSDB örneği oluşturacak. 
 
   Veritabanı sunucusunu tümleştirme çalışma zamanı ile aynı Azure bölgesinde oluşturmanız önerilir. Bu yapılandırma, tümleştirme çalışma zamanının yürütme günlüklerini Azure bölgeleriyle çıkmadan SSSıSDB 'ye yazmasını sağlar.
 
@@ -69,7 +69,7 @@ Bu öğreticide şunları yapacaksınız:
 
   - Veritabanı sunucunuzun zaten bir SSıSDB örneğine sahip olmadığından emin olun. Azure-SSIS IR sağlanması, var olan bir SSıSDB örneğinin kullanımını desteklemez.
 
-- **Azure PowerShell** . Azure-SSIS IR ayarlamak üzere bir PowerShell Betiği çalıştırmak için, [Azure PowerShell yükleyip yapılandırma](/powershell/azure/install-Az-ps)bölümündeki yönergeleri izleyin.
+- **Azure PowerShell**. Azure-SSIS IR ayarlamak üzere bir PowerShell Betiği çalıştırmak için, [Azure PowerShell yükleyip yapılandırma](/powershell/azure/install-Az-ps)bölümündeki yönergeleri izleyin.
 
 > [!NOTE]
 > Azure Data Factory ve Azure-SSIS IR Şu anda kullanılabildiği Azure bölgelerinin bir listesi için bkz. [bölgeye göre Azure Data Factory ve Azure-SSIS IR kullanılabilirliği](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all). 
@@ -595,9 +595,9 @@ SSSıSDB kullanıyorsanız, paketlerinizi bu pakete dağıtabilir ve Azure özel
 - Özel uç noktası olan yönetilen bir örnek için sunucu uç noktası biçimi olur `<server name>.<dns prefix>.database.windows.net` .
 - Ortak uç nokta içeren bir yönetilen örnek için sunucu uç noktası biçimi olur `<server name>.public.<dns prefix>.database.windows.net,3342` . 
 
-SSSıSDB kullanmıyorsanız, paketlerinizi Azure SQL yönetilen örneğiniz tarafından barındırılan dosya sistemine, Azure dosyalarına veya MSDB 'ye dağıtabilir ve [dtutil](/sql/integration-services/dtutil-utility?view=sql-server-2017) ve [Azuredtexec](./how-to-invoke-ssis-package-azure-enabled-dtexec.md) komut satırı yardımcı programlarını kullanarak Azure-SSIS IR çalıştırabilirsiniz. 
+SSSıSDB kullanmıyorsanız, paketlerinizi Azure SQL yönetilen örneğiniz tarafından barındırılan dosya sistemine, Azure dosyalarına veya MSDB 'ye dağıtabilir ve [dtutil](/sql/integration-services/dtutil-utility) ve [Azuredtexec](./how-to-invoke-ssis-package-azure-enabled-dtexec.md) komut satırı yardımcı programlarını kullanarak Azure-SSIS IR çalıştırabilirsiniz. 
 
-Daha fazla bilgi için bkz. [SSIS projelerini/paketlerini dağıtma](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-ver15).
+Daha fazla bilgi için bkz. [SSIS projelerini/paketlerini dağıtma](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages).
 
 Her iki durumda da, Data Factory işlem hatlarında SSIS paketi yürütme etkinliğini kullanarak dağıtılmış paketlerinizi Azure-SSIS IR de çalıştırabilirsiniz. Daha fazla bilgi için bkz. [birinci sınıf Data Factory etkinliği olarak SSIS paketi yürütmeyi çağırma](./how-to-invoke-ssis-package-ssis-activity.md).
 

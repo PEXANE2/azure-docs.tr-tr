@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4e82b4adbfde7623de9497c94e56a9ae303131ad
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: ff777f079116942eba32e49f359c7f7e0b99f65d
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202785"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555789"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure Data Factory için Azure Güvenlik temeli
 
@@ -335,9 +335,9 @@ Azure AD, Kullanıcı erişimini yönetmek için önerilen yöntem olsa da, Azur
 
 * [Ayrıcalıklı Identity Manager hakkında bilgi](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [Azure AD 'de PowerShell ile dizin rolü alma](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [Azure AD 'de PowerShell ile dizin rolü alma](/powershell/module/azuread/get-azureaddirectoryrole)
 
-* [Azure AD 'de PowerShell ile bir dizin rolünün üyelerini alma](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [Azure AD 'de PowerShell ile bir dizin rolünün üyelerini alma](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 * [Yerel hesaplar için bilgiler](../active-directory/devices/assign-local-admin.md#manage-the-device-administrator-role)
 
@@ -744,7 +744,7 @@ Klasik Azure kaynakları kaynak Graph aracılığıyla bulunabilse de, ileri do�
 
 * [Azure Kaynak Graf ile sorgu oluşturma](../governance/resource-graph/first-query-portal.md)
 
-* [Azure aboneliklerinizi görüntüleme](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Azure aboneliklerinizi görüntüleme](/powershell/module/az.accounts/get-azsubscription)
 
 * [Azure RBAC 'yi anlama](../role-based-access-control/overview.md)
 
@@ -880,7 +880,7 @@ Bunun yalnızca Integration Runtime bir Azure sanal makinesinde çalışıyor ol
 
 **Rehberlik**: çalışma zamanı tümleştirmenizi, betiklerin türüne bağlı olarak bir Azure sanal makinesinde çalıştırıyorsanız, kullanıcıların Azure işlem kaynakları içinde betikleri yürütme yeteneğini sınırlamak için işletim sistemine özgü yapılandırma veya üçüncü taraf kaynakları kullanabilirsiniz. Ayrıca, Azure Güvenlik Merkezi Uyarlamalı uygulama denetimlerinden yararlanarak yalnızca yetkili yazılımın yürütüldüğünü ve tüm yetkisiz yazılımların Azure sanal makinelerinde yürütülmesini engellemiş olmasını sağlayabilirsiniz.
 
-* [Windows ortamlarında PowerShell betiği yürütmeyi denetleme](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+* [Windows ortamlarında PowerShell betiği yürütmeyi denetleme](/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
 * [Azure Güvenlik Merkezi Uyarlamalı uygulama denetimlerini kullanma](../security-center/security-center-adaptive-application.md)
 
@@ -918,7 +918,7 @@ Bunun yalnızca Integration Runtime bir Azure sanal makinesinde çalışıyor ol
 
 **Rehberlik**: Azure ilkesiyle Azure Data Factory için standart güvenlik yapılandırması tanımlayın ve uygulayın. Azure Data Factory örneklerinizin yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak için "Microsoft. DataFactory" ad alanındaki Azure Ilke diğer adlarını kullanın.
 
-* [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](/powershell/module/az.resources/get-azpolicyalias)
 
 * [Azure İlkesi'ni yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
@@ -964,7 +964,7 @@ Bunun yalnızca Integration Runtime bir Azure sanal makinesinde çalışıyor ol
 
 * [Azure Resource Manager şablonları oluşturma hakkında bilgi](../virtual-machines/windows/ps-template.md)
 
-* [Özel bir VM VHD 'sini Azure 'a yükleme](/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910)
+* [Özel bir VM VHD 'sini Azure 'a yükleme](/azure-stack/operator/azure-stack-add-vm-image)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -974,9 +974,9 @@ Bunun yalnızca Integration Runtime bir Azure sanal makinesinde çalışıyor ol
 
 **Kılavuz**: özel Azure ilke tanımları kullanıyorsanız, kodunuzu güvenli bir şekilde depolamak ve yönetmek Için Azure devops veya Azure Repos kullanın.
 
-* [Azure DevOps 'da kod depolama](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Azure DevOps 'da kod depolama](/azure/devops/repos/git/gitworkflow)
 
-* [Azure Repos belgeleri](/azure/devops/repos/index?view=azure-devops)
+* [Azure Repos belgeleri](/azure/devops/repos/index)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -1150,7 +1150,7 @@ Veri depolarınız için, düzenli ve otomatik yedeklemeleri gerçekleştirmeye 
 
 * [Azure VM yedeklemesine genel bakış](../backup/backup-azure-vms-introduction.md)
 
-* [Azure 'da Anahtar Kasası anahtarlarını yedekleme](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Azure 'da Anahtar Kasası anahtarlarını yedekleme](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -1164,7 +1164,7 @@ Veri depolarınız için, yedeklemeleri doğrulamaya yönelik yönergeler için 
 
 * [Azure sanal makine yedeklemesinden dosyaları kurtarma](../backup/backup-azure-restore-files-from-vm.md)
 
-* [Azure 'da Anahtar Kasası anahtarlarını geri yükleme](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Azure 'da Anahtar Kasası anahtarlarını geri yükleme](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 

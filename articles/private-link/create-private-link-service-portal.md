@@ -3,23 +3,25 @@ title: Hızlı başlangıç-Azure portal kullanarak özel bir bağlantı hizmeti
 titlesuffix: Azure Private Link
 description: Bu hızlı başlangıçta Azure portal kullanarak özel bir bağlantı hizmeti oluşturmayı öğrenin
 services: private-link
-author: malopMSFT
+author: asudbring
 ms.service: private-link
 ms.topic: quickstart
-ms.date: 02/03/2020
+ms.date: 01/18/2021
 ms.author: allensu
-ms.openlocfilehash: 5b7bc8be89068f0d3cf6722c36ae7fd5cc560736
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 3e9ade329d2b26d36763db579b0fcec03e938aad
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96012127"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555466"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak özel bir bağlantı hizmeti oluşturma
 
-Bir Azure özel bağlantı hizmeti, özel bağlantı tarafından yönetilen kendi hizmetinize başvurur. Azure Standart Load Balancer arkasında çalışan hizmet veya kaynağa özel bağlantı erişimi verebilirsiniz. Hizmetinizin tüketicileri, kendi sanal ağlarından özel olarak erişebilir. Bu hızlı başlangıçta, Azure portal kullanarak özel bir bağlantı hizmeti oluşturmayı öğreneceksiniz.
+Hizmetinize başvuran bir özel bağlantı hizmeti oluşturmaya başlayın.  Azure Standart Load Balancer arkasında dağıtılan hizmetinize veya kaynağa özel bağlantı erişimi verin.  Hizmetinizin kullanıcılarının sanal ağından özel erişimi vardır.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+## <a name="prerequisites"></a>Ön koşullar
+
+* Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
@@ -27,159 +29,210 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="create-an-internal-load-balancer"></a>İç yük dengeleyici oluşturma
 
-İlk olarak, bir sanal ağ oluşturun. Sonra, özel bağlantı hizmeti ile kullanmak için bir iç yük dengeleyici oluşturun.
+Bu bölümde, bir sanal ağ ve bir iç Azure Load Balancer oluşturacaksınız.
 
-## <a name="virtual-network-and-parameters"></a>Sanal ağ ve parametreler
+### <a name="virtual-network"></a>Sanal ağ
 
-Bu bölümde, bir sanal ağ oluşturursunuz. Ayrıca, özel bağlantı hizmetinize erişen yük dengeleyiciyi barındırmak için alt ağ oluşturursunuz.
+Bu bölümde, özel bağlantı hizmetinize erişen yük dengeleyiciyi barındırmak için bir sanal ağ ve alt ağ oluşturursunuz.
 
-Bu bölümde, adımlarda aşağıdaki parametreleri aşağıdaki bilgilerle değiştirmeniz gerekir:
+1. Ekranın sol üst kısmındaki **Kaynak oluştur > Ağ > Sanal ağ** seçeneğini belirleyin veya arama kutusuna **Sanal ağ** yazarak arama yapın.
 
-| Parametre                   | Değer                |
-|-----------------------------|----------------------|
-| **\<resource-group-name>**  | myResourceGroupLB |
-| **\<virtual-network-name>** | myVNet          |
-| **\<region-name>**          | Doğu ABD 2      |
-| **\<IPv4-address-space>**   | 10.3.0.0/16          |
-| **\<subnet-name>**          | myBackendSubnet        |
-| **\<subnet-address-range>** | 10.3.0.0/24          |
+2. **Sanal ağ oluştur**' da, **temel** bilgiler sekmesinde bu bilgileri girin veya seçin:
 
-[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
+    | **Ayar**          | **Değer**                                                           |
+    |------------------|-----------------------------------------------------------------|
+    | **Proje ayrıntıları**  |                                                                 |
+    | Abonelik     | Azure aboneliğinizi seçin                                  |
+    | Kaynak Grubu   | **Createprılinkservice-RG** seçin |
+    | **Örnek ayrıntıları** |                                                                 |
+    | Name             | **Myvnet** girin                                    |
+    | Bölge           | **Doğu ABD 2** seçin |
+
+3. **IP adresleri** sekmesini seçin veya sayfanın altındaki **Sonraki: IP adresleri** düğmesini seçin.
+
+4. **IP adresleri** sekmesinde şu bilgileri girin:
+
+    | Ayar            | Değer                      |
+    |--------------------|----------------------------|
+    | IPv4 adres alanı | **10.1.0.0/16** girin |
+
+5. **Alt ağ adı** altında, **varsayılan** sözcük ' ı seçin.
+
+6. **Alt ağı Düzenle**' de şu bilgileri girin:
+
+    | Ayar            | Değer                      |
+    |--------------------|----------------------------|
+    | Alt ağ adı | **Mysubnet** girin |
+    | Alt ağ adres aralığı | **10.1.0.0/24** girin |
+
+7. **Kaydet**’i seçin.
+
+8. **Gözden geçir + oluştur** sekmesini seçin ya da **gözden geçir + oluştur** düğmesini seçin.
+
+9. **Oluştur**’u seçin.
 
 ### <a name="create-a-standard-load-balancer"></a>Standart yük dengeleyici oluşturma
 
-Standart bir iç yük dengeleyici oluşturmak için portalını kullanın. Belirttiğiniz ad ve IP adresi, yük dengeleyicinin ön ucu olarak otomatik olarak yapılandırılır.
+Standart bir iç yük dengeleyici oluşturmak için portalını kullanın. 
 
-1. Portalın sol üst tarafında, **kaynak oluştur**  >  **ağ**  >  **Load Balancer**' ı seçin.
+1. Ekranın sol üst kısmında, **kaynak oluştur**  >  **ağ**  >  **Load Balancer**' ı seçin.
 
-1. **Yük dengeleyici oluştur** sayfasının **temel bilgiler** sekmesinde, aşağıdaki bilgileri girin veya seçin:
+2. **Yük dengeleyici oluştur** sayfasının **temel bilgiler** sekmesinde, aşağıdaki bilgileri girin veya seçin: 
 
     | Ayar                 | Değer                                              |
     | ---                     | ---                                                |
-    | **Abonelik**               | Aboneliğinizi seçin.    |
-    | **Kaynak grubu**         | Kutudan **Myresourcegrouplb** ' ı seçin.|
-    | **Ad**                   | **Myloadbalancer** girin.                                   |
-    | **Bölge**         | **Doğu ABD 2**’yi seçin.                                        |
-    | **Tür**          | **Dahili**' ı seçin.                                        |
-    | **SKU**           | **Standart**' ı seçin.                          |
-    | **Sanal ağ**           | **Myvnet**' i seçin.                          |
-    | **IP adresi ataması**              | **Statik**’i seçin.   |
-    | **Özel IP adresi**|Sanal ağınızın ve alt ağınızın adres alanında bir adres girin. Örnek olarak 10.3.0.7.  |
+    | Abonelik               | Aboneliğinizi seçin.    |    
+    | Kaynak grubu         | Önceki adımda **Createprılinkservice-RG** oluşturma seçeneğini belirleyin.|
+    | Name                   | **Myloadbalancer** girin                                   |
+    | Bölge         | **Doğu ABD 2**’yi seçin.                                        |
+    | Tür          | **Dahili**' ı seçin.                                        |
+    | SKU           | **Standart** seçin |
+    | Sanal ağ | Önceki adımda oluşturulan **Myvnet** öğesini seçin. |
+    | Alt ağ  | Önceki adımda oluşturulan **Mysubnet** öğesini seçin. |
+    | IP adresi ataması | **Dinamik**' i seçin. |
+    | Kullanılabilirlik alanı | **Bölge yedekli** seçeneğini belirleyin |
 
-1. Kalan ayarlar için varsayılan değerleri kabul edin ve ardından **gözden geçir + oluştur** ' u seçin.
+3. Geri kalan ayarlar için varsayılan değerleri kabul edin ve ardından **gözden geçir + oluştur**' u seçin.
 
-1. **Gözden geçir + oluştur** sekmesinde **Oluştur**' u seçin.
+4. **Gözden geçir + oluştur** sekmesinde **Oluştur**' u seçin.   
 
-### <a name="create-standard-load-balancer-resources"></a>Standart yük dengeleyici kaynakları oluşturma
+## <a name="create-load-balancer-resources"></a>Yük dengeleyici kaynakları oluşturma
 
-Bu bölümde, arka uç adres havuzu ve durum araştırması için yük dengeleyici ayarlarını yapılandıracaksınız. Yük dengeleyici kurallarını da belirtirsiniz.
+Bu bölümde şunları yapılandırırsınız:
 
-#### <a name="create-a-back-end-pool"></a>Arka uç havuzu oluşturma
+* Arka uç adres havuzu için yük dengeleyici ayarları.
+* Bir sistem durumu araştırması.
+* Yük dengeleyici kuralı.
 
-Bir arka uç adres havuzu, yük dengeleyiciye bağlı sanal NIC 'lerin IP adreslerini içerir. Bu havuz, kaynaklarınıza trafik dağıtmanızı sağlar. Yük Dengeleme trafiğini içeren kaynakları dahil etmek için **Mybackendpool** adlı arka uç adres havuzunu oluşturun.
+### <a name="create-a-backend-pool"></a>Arka uç havuzu oluşturma
 
-1. En soldaki menüden **tüm hizmetler** ' i seçin.
-1. **Tüm kaynaklar**' ı seçin ve ardından kaynaklar listesinden **myloadbalancer** ' ı seçin.
-1. **Ayarlar** bölümünde **Arka uç havuzları**’nı ve sonra **Ekle**’yi seçin.
-1. **Arka uç Havuzu Ekle** sayfasında, arka uç havuzunuzun adı olarak **mybackendpool** girin ve ardından **Ekle**' yi seçin.
+Arka uç adres havuzu, yük dengeleyiciye bağlı sanal (NIC) IP adreslerini içerir. 
 
-#### <a name="create-a-health-probe"></a>Durum araştırması oluşturma
+Yük Dengeleme internet trafiği için sanal makineleri dahil etmek üzere **Mybackendpool** arka uç adres havuzunu oluşturun.
 
-Yük dengeleyici 'nin kaynak durumunu izlemesine izin vermek için bir sistem durumu araştırması kullanın. Sistem durumu denetimlerine yönelik kaynak yanıtına bağlı olarak, sistem durumu araştırması yük dengeleyici rotasyondan kaynakları dinamik olarak ekler veya kaldırır.
+1. Sol taraftaki menüden **tüm hizmetler** ' i seçin, **tüm kaynaklar**' ı seçin ve ardından kaynaklar listesinden **myloadbalancer** ' ı seçin.
 
-Kaynakların sistem durumunu izlemek üzere bir sistem durumu araştırması oluşturmak için:
+2. **Ayarlar** altında **arka uç havuzları**' nı seçin ve ardından **Ekle**' yi seçin.
 
-1. En soldaki menüdeki **tüm kaynaklar** ' ı seçin ve ardından kaynak listesinden **myloadbalancer** ' yi seçin.
+3. **Arka uç Havuzu Ekle** sayfasında, ad için, arka uç havuzunuzun adı olarak **mybackendpool** yazın ve ardından **Ekle**' yi seçin.
 
-1. **Ayarlar** bölümünde **Durum araştırmaları**’nı ve sonra **Ekle**’yi seçin.
+### <a name="create-a-health-probe"></a>Durum araştırması oluşturma
 
-1. **Durum araştırması Ekle** sayfasında, aşağıdaki değerleri girin veya seçin:
+Yük dengeleyici, uygulamanızın durumunu bir sistem durumu araştırmasıyla izler. 
 
-   - **Ad**: **myhealtharaştırması** girin.
-   - **Protokol**: **TCP**' yi seçin.
-   - **Bağlantı noktası**: **80** girin.
-   - **Aralık**: **15** girin. Bu değer, araştırma denemeleri arasındaki saniye sayısıdır.
-   - **Sağlıksız eşik**: **2** girin. Bu değer, bir sanal makinenin sağlıksız olduğu kabul edilmeden önce ortaya çıkan arka arkaya araştırma hatalarının sayısıdır.
+Sistem durumu araştırması, sistem durumu denetimlerine yönelik yanıtlarını temel alarak yük dengeleyiciden VM 'Ler ekler veya kaldırır. 
 
-1. **Tamam**’ı seçin.
+Sanal makinelerin durumunu izlemek için **myHealthProbe** adlı bir durum araştırması oluşturun.
 
-#### <a name="create-a-load-balancer-rule"></a>Yük dengeleyici kuralı oluşturma
+1. Sol taraftaki menüden **tüm hizmetler** ' i seçin, **tüm kaynaklar**' ı seçin ve ardından kaynaklar listesinden **myloadbalancer** ' ı seçin.
 
-Yük dengeleyici kuralı trafiğin kaynaklara nasıl dağıtıldığını tanımlar. Kural şunları tanımlar:
+2. **Ayarlar** altında **sistem durumu araştırmaları**' nı ve ardından **Ekle**' yi seçin.
+    
+    | Ayar | Değer |
+    | ------- | ----- |
+    | Ad | **Myhealtharaştırması** girin. |
+    | Protokol | **TCP**’yi seçin. |
+    | Bağlantı noktası | **80** girin.|
+    | Aralık | Yoklama denemeleri arasındaki saniye cinsinden **Aralık** sayısı için **15** girin. |
+    | İyi durumda olmayan durum eşiği | Bir VM sağlıksız kabul edilmeden önce gerçekleşmesi gereken **sağlıksız eşik** veya arka arkaya araştırma hatası sayısı için **2** ' yi seçin.|
+    | | |
 
-- Gelen trafik için ön uç IP yapılandırması.
-- Trafiği almak için arka uç IP Havuzu.
-- Gerekli kaynak ve hedef bağlantı noktaları.
+3. Rest varsayılanlarını bırakın ve **Tamam**' ı seçin.
 
-**Myloadbalancerrule** adlı yük dengeleyici kuralı **loadbalancerön** uç ön ucundaki 80 numaralı bağlantı noktasını dinler. Kural, aynı bağlantı noktası 80 üzerindeki **Mybackendpool** arka uç adres havuzuna ağ trafiği gönderir.
+### <a name="create-a-load-balancer-rule"></a>Yük dengeleyici kuralı oluşturma
 
-Yük dengeleyici kuralı oluşturmak için:
+Trafiğin VM’lere dağıtımını tanımlamak için bir yük dengeleyici kuralı kullanılır. Trafiği almak için gelen trafik için ön uç IP yapılandırmasını ve arka uç IP havuzunu tanımlarsınız. Kaynak ve hedef bağlantı noktası kuralda tanımlanmıştır. 
 
-1. En soldaki menüdeki **tüm kaynaklar** ' ı seçin ve ardından kaynak listesinden **myloadbalancer** ' yi seçin.
+Bu bölümde, bir yük dengeleyici kuralı oluşturacaksınız:
 
-1. **Ayarlar** bölümünde **Yük Dengeleme kuralları**' nı ve ardından **Ekle**' yi seçin.
+* Adlandırılmış **Myhttprule**.
+* **Loadbalancerön uç** adında.
+* **80 numaralı bağlantı noktasını** dinliyor.
+* Yük dengeli trafiği, **80 numaralı bağlantı noktasında** **Mybackendpool** adlı arka uca yönlendirir.
 
-1. **Yük Dengeleme kuralı ekle** sayfasında, zaten mevcut değilse aşağıdaki değerleri girin veya seçin:
+1. Sol taraftaki menüden **tüm hizmetler** ' i seçin, **tüm kaynaklar**' ı seçin ve ardından kaynaklar listesinden **myloadbalancer** ' ı seçin.
 
-   - **Ad**: **myloadbalancerrule** yazın.
-   - **Ön uç IP adresi:** **Loadbalancerön uç** girin.
-   - **Protokol**: **TCP**' yi seçin.
-   - **Bağlantı noktası**: **80** girin.
-   - **Arka uç bağlantı noktası**: **80** girin.
-   - **Arka uç havuzu**: **mybackendpool**' u seçin.
-   - **Durum araştırması**: **myhealtharaştırması**' ni seçin. 
+2. **Ayarlar** bölümünde **Yük Dengeleme kuralları**' nı ve ardından **Ekle**' yi seçin.
 
-1. **Tamam**’ı seçin.
+3. Yük Dengeleme kuralını yapılandırmak için şu değerleri kullanın:
+    
+    | Ayar | Değer |
+    | ------- | ----- |
+    | Ad | **Myhttprule** girin. |
+    | IP sürümü | **IPv4** seçin |
+    | Ön uç IP adresi | **Loadbalancerön uç** seçin |
+    | Protokol | **TCP**’yi seçin. |
+    | Bağlantı noktası | **80** girin.|
+    | Arka uç bağlantı noktası | **80** girin. |
+    | Arka uç havuzu | **Mybackendpool** öğesini seçin.|
+    | Durum yoklaması | **Myhealtharaştırması**' ni seçin. |
+    | Boşta kalma zaman aşımı (dakika) | Kaydırıcıyı **15** dakikaya taşıyın. |
+    | TCP sıfırlaması | **Etkin**'i seçin. |
+
+4. Kalan varsayılan değerleri bırakın ve **Tamam**' ı seçin.
 
 ## <a name="create-a-private-link-service"></a>Özel Bağlantı hizmeti oluşturma
 
-Bu bölümde, standart yük dengeleyici arkasında bir özel bağlantı hizmeti oluşturacaksınız.
+Bu bölümde, standart bir yük dengeleyicinin arkasında bir özel bağlantı hizmeti oluşturacaksınız.
 
-1. Azure Portal sayfanın sol üst kısmında **kaynak oluştur**  >  **ağ**  >  **özel bağlantı merkezi (Önizleme)** öğesini seçin. Ayrıca, özel bağlantı aramak için portalın arama kutusunu da kullanabilirsiniz.
+1. Azure portal sayfanın sol üst kısmında **kaynak oluştur**' u seçin.
 
-1. **Özel bağlantı merkezi**'nde,  >  **Diğerlerinin bağlanabilmesi için kendi hizmetinizi kullanıma sunun**, **Başlat**' ı seçin.
+2. **Market 'Te arama** yapın kutusunda **özel bağlantı** araması yapın.
 
-1. **Özel bağlantı hizmeti oluşturma-temel bilgiler** altında bu bilgileri girin veya seçin:
+3. **Oluştur**’u seçin.
 
-    | Ayar           | Değer                                                                        |
-    |-------------------|------------------------------------------------------------------------------|
-    | Proje ayrıntıları:  |                                                                              |
-    | **Abonelik**      | Aboneliğinizi seçin.                                                     |
-    | **Kaynak Grubu**    | **Myresourcegrouplb** öğesini seçin.                                                    |
-    | Örnek ayrıntıları: |                                                                              |
-    | **Ad**              | **Myprivatelinkservice** yazın. |
-    | **Bölge**            | **Doğu ABD 2**’yi seçin.                                                        |
+4. **Özel bağlantı merkezi** **' nin altında,** mavi **özel bağlantı oluştur** düğmesini seçin.
 
-1. **İleri ' yi seçin: giden ayarları**.
+5. **Özel bağlantı hizmeti oluştur** altındaki **temel bilgiler** sekmesinde, aşağıdaki bilgileri girin veya seçin:
 
-1. **Özel bağlantı hizmeti oluştur-giden ayarları** altında bu bilgileri girin veya seçin:
+    | Ayar | Değer |
+    | ------- | ----- |
+    | **Proje ayrıntıları** |  |
+    | Abonelik | Aboneliğinizi seçin. |
+    | Kaynak Grubu | **Createprılinkservice-RG** öğesini seçin. |
+    | **Örnek ayrıntıları** |  |
+    | Name | **Myprivatelinkservice** yazın. |
+    | Bölge | **Doğu ABD 2**’yi seçin. |
 
-    | Ayar                           | Değer                                                                           |
-    |-----------------------------------|---------------------------------------------------------------------------------|
-    | **Load Balancer**                     | **Myloadbalancer** öğesini seçin.                                                           |
-    | **Load Balancer ön uç IP adresi** | **Myloadbalancer** ön uç IP adresini seçin.                                |
-    | **Kaynak NAT sanal ağı**        | **Myvnet**' i seçin.                                                                   |
-    | **Kaynak NAT alt ağı**                 | **Mybackendsubnet** öğesini seçin.                                                          |
-    | **TCP proxy v2 'yi etkinleştir**               | Uygulamanızın bir TCP proxy v2 üstbilgisini beklediğine bağlı olarak **Evet** ' i veya **Hayır** ' ı seçin. |
-    | **Özel IP adresi ayarları**       | Her NAT IP 'si için ayırma yöntemini ve IP adresini yapılandırın.                  |
+6. **Giden ayarları** sekmesini seçin veya sonraki: sayfanın en altındaki **giden ayarlar** ' ı seçin.
 
-1. **İleri ' yi seçin: erişim güvenliği**.
+7. **Giden ayarları** sekmesinde, aşağıdaki bilgileri girin veya seçin:
 
-1. **Özel bağlantı hizmeti oluşturma-erişim güvenliği** altında **görünürlük**' i seçin ve ardından **yalnızca rol tabanlı erişim denetimi**' ni seçin.
-  
-1. İleri ' **yi seçin: Etiketler**  >  **gözden geçir + oluştur** ' u seçin veya sayfanın üst kısmındaki **gözden geçir + oluştur** sekmesini seçin.
+    | Ayar | Değer |
+    | ------- | ----- |
+    | Yük dengeleyici | **Myloadbalancer** öğesini seçin. |
+    | Yük dengeleyici ön uç IP adresi | **Loadbalancerön uç (10.1.0.4)** öğesini seçin. |
+    | Kaynak NAT alt ağı | **Mysubnet (10.1.0.0/24)** seçeneğini belirleyin. |
+    | TCP proxy v2 'yi etkinleştir | Varsayılan değer olan **Hayır** olarak bırakın. </br> Uygulamanız bir TCP proxy v2 üstbilgisi bekliyorsa, **Evet**' i seçin. |
+    | **Özel IP adresi ayarları** |  |
+    | Varsayılan ayarları bırak |  |
 
-1. Bilgilerinizi gözden geçirin ve **Oluştur**' u seçin.
+8. **Erişim güvenliği** sekmesini seçin veya Ileri ' yi seçin: sayfanın en altındaki **güvenlik erişimi** .
+
+9. **Rol tabanlı erişim denetimi varsayılanını yalnızca** **erişim güvenliği** sekmesinde bırakın.
+
+10. **Etiketler** sekmesini seçin veya sayfanın altındaki **Etiketler** ' i seçin.
+
+11. **Gözden geçir + oluştur** sekmesini seçin ya da Ileri ' yi seçin. sayfanın alt kısmındaki **İnceleme + oluştur** ' u seçin.
+
+12. **Gözden geçir + oluştur** sekmesinde **Oluştur** ' u seçin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Özel bağlantı hizmetini kullanarak işiniz bittiğinde, bu hızlı başlangıçta kullanılan kaynakları temizlemek için kaynak grubunu silin.
 
-1. Portalın üst kısmındaki arama kutusuna **myresourcegrouplb** yazın ve arama sonuçlarından **myresourcegrouplb** ' ı seçin.
+1. Portalın üst kısmındaki arama kutusuna **Createprılinkservice-RG** yazın ve arama sonuçlarından **createprılinkservice-RG** ' yi seçin.
 1. **Kaynak grubunu sil**'i seçin.
-1. **Kaynak grubu adını yazın** alanına **myresourcegroup** girin.
+1. **Kaynak grubu adını yazın** alanına **Createprılinkservice-RG** girin.
 1. **Sil**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir iç Azure yük dengeleyici ve bir özel bağlantı hizmeti oluşturdunuz. Ayrıca [, Azure Portal kullanarak özel uç nokta oluşturmayı](./create-private-endpoint-portal.md)da öğrenebilirsiniz.
+Bu hızlı başlangıçta:
+
+* Bir sanal ağ ve dahili Azure Load Balancer oluşturulur.
+* Özel bir bağlantı hizmeti oluşturuldu
+
+Azure özel uç noktası hakkında daha fazla bilgi edinmek için devam edin:
+> [!div class="nextstepaction"]
+> [Hızlı başlangıç: Azure portal kullanarak özel uç nokta oluşturma](create-private-endpoint-portal.md)

@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: b4902e1fb7a2a181d3d5b2ce2ac6d1d458500fce
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 9609c382161514611ddc41af040e8fb438431fdf
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844191"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556010"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>SSIS tümleştirme çalışma zamanı 'nda paket yürütmeye sorun giderme
 
@@ -28,7 +28,7 @@ Bu makale, SSIS tümleştirme çalışma zamanı 'nda SQL Server Integration Ser
 
 SSIS paketi yürütme etkinliğinin çıkışını denetlemek için Azure Data Factory portalını kullanın. Çıktı, yürütme sonucunu, hata iletilerini ve işlem KIMLIĞINI içerir. Ayrıntılar için bkz. işlem hattını [izleme](how-to-invoke-ssis-package-ssis-activity.md#monitor-the-pipeline).
 
-Yürütmenin ayrıntı günlüklerini denetlemek için SSIS kataloğunu (SSıSDB) kullanın. Ayrıntılar için bkz. [çalışan paketleri ve diğer Işlemleri izleme](/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017).
+Yürütmenin ayrıntı günlüklerini denetlemek için SSIS kataloğunu (SSıSDB) kullanın. Ayrıntılar için bkz. [çalışan paketleri ve diğer Işlemleri izleme](/sql/integration-services/performance/monitor-running-packages-and-other-operations).
 
 ## <a name="common-errors-causes-and-solutions"></a>Yaygın hatalar, nedenleri ve çözümleri
 
@@ -91,7 +91,7 @@ Bu hata, yerel diskin SSIS tümleştirme çalışma zamanı düğümünde kullan
 Bu hata, paket yürütmesi SSIS tümleştirme çalışma zamanı 'nda yerel diskte bir dosya bulamadığında oluşur. Şu eylemleri deneyin:
 * SSIS tümleştirme çalışma zamanı 'nda yürütülen pakette mutlak yolu kullanmayın. Geçerli yürütme çalışma dizinini (.) veya Temp klasörünü (% TEMP%) kullanın yerine.
 * Bazı dosyaları SSIS tümleştirme çalışma zamanı düğümlerinde kalıcı hale getirmeniz gerekiyorsa, dosyaları [kurulumu Özelleştir](how-to-configure-azure-ssis-ir-custom-setup.md)bölümünde açıklandığı gibi hazırlayın. Çalışma dizinindeki tüm dosyalar yürütme tamamlandıktan sonra temizlenir.
-* Dosyayı SSIS tümleştirme çalışma zamanı düğümünde depolamak yerine Azure dosyaları 'nı kullanın. Ayrıntılar için bkz. [Azure dosya paylaşımlarını kullanma](/sql/integration-services/lift-shift/ssis-azure-files-file-shares?view=sql-server-2017#use-azure-file-shares).
+* Dosyayı SSIS tümleştirme çalışma zamanı düğümünde depolamak yerine Azure dosyaları 'nı kullanın. Ayrıntılar için bkz. [Azure dosya paylaşımlarını kullanma](/sql/integration-services/lift-shift/ssis-azure-files-file-shares#use-azure-file-shares).
 
 ### <a name="error-message-the-database-ssisdb-has-reached-its-size-quota"></a>Hata iletisi: "' SSSıSDB ' veritabanı boyut kotasına ulaştı"
 
@@ -154,7 +154,7 @@ Olası bir neden Self-Hosted tümleştirme çalışma zamanının düzgün şeki
 
 * Olası neden ve önerilen eylem:
   * Aynı zamanda bir uyarı mesajı varsa "Bileşen, yürütme günlüğünde" ConnectByProxy değeri ile bağlantı Yöneticisi 'ni kullanmayı desteklemez "olarak, bu, bir bağlantı yöneticisinin" ConnectByProxy "henüz desteklenmeyen bir bileşende kullanıldığı anlamına gelir. Desteklenen bileşenler, [ADF 'de Azure-SSIS IR için proxy olarak Self-Hosted IR yapılandırma bölümünde](self-hosted-integration-runtime-proxy-ssis.md#enable-ssis-packages-to-connect-by-proxy) bulunabilir
-  * Yürütme günlüğü [SSMS raporunda](/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017#reports) veya SSIS paketi yürütme etkinliğinde belirttiğiniz günlük klasöründe bulunabilir.
+  * Yürütme günlüğü [SSMS raporunda](/sql/integration-services/performance/monitor-running-packages-and-other-operations#reports) veya SSIS paketi yürütme etkinliğinde belirttiğiniz günlük klasöründe bulunabilir.
   * vNet, alternatif olarak şirket içi verilere erişmek için de kullanılabilir. [Azure-SSIS tümleştirme çalışma zamanına bir sanal ağa ekleme](join-azure-ssis-integration-runtime-virtual-network.md) konusunda daha ayrıntılı bilgi bulabilirsiniz
 
 ### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>Hata iletisi: "hazırlama görevi durumu: başarısız. Hazırlama görevi hatası: ErrorCode: 2906, ErrorMessage: paket yürütülemedi., çıkış: {"OperationErrorMessages": "SSIS yürütücüsü çıkış kodu:-1. \ n", "LogLocation": "... \\ SSISTelemetry \\ ExecutionLog \\ ... "," efekttiveıntegrationruntime ":"... "," ExecutionDuration ":...," durationInQueue ": {" ıntegrationruntimequeue ":...}}"

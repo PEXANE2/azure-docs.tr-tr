@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: c6bc5ca748a35b17c61d314e96f7284d30e7fc3b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b8dfe9a23e5c6697323142212156006cb65d2f9b
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96338138"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556537"
 ---
 # <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight KIMLIK Aracısı (HIB)
 
@@ -126,9 +126,9 @@ Kimlik doğrulama sorunlarını gidermek için [bu kılavuza](./domain-joined-au
 
 HDInsight ID Broker kurulumunda, ağ geçidine bağlanan özel uygulamalar ve istemciler, önce gerekli OAuth belirtecini almak üzere güncelleştirilebilen olabilir. Aşağıdaki bilgilerle belirteci almak için [Bu belgedeki](../../storage/common/storage-auth-aad-app.md) adımları izleyin:
 
-*   OAuth Kaynak URI 'si: `https://hib.azurehdinsight.net` 
+*    OAuth Kaynak URI 'si: `https://hib.azurehdinsight.net` 
 *   AppID: 7865c1d2-F040-46cc-875f-831a1ef6a28a
-*   İzin: (ad: Cluster. ReadWrite, ID: 8f89faa0-ffef-4007-974d-4989b39ad77d)
+*    İzin: (ad: Cluster. ReadWrite, ID: 8f89faa0-ffef-4007-974d-4989b39ad77d)
 
 OAuth belirtecini aldıktan sonra, bunu küme ağ geçidine yönelik HTTP isteğinin yetkilendirme üstbilgisinde kullanın (örneğin, https:// <clustername> -int.azurehdinsight.net). Apache Livy API 'sine örnek bir kıvrımlı komut aşağıdaki örnekteki gibi görünebilir:
     
@@ -146,7 +146,7 @@ Her küme için, üçüncü taraf bir uygulama, ıdentifieruri (gibi) olarak kü
 AAD 'de, kullanıcıların kimliğini doğrulayabilmesi veya verilere erişim izni vermeden önce tüm üçüncü taraf uygulamalar için izin gerekir.
 
 ### <a name="can-the-consent-be-approved-programatically"></a>Onay program aracılığıyla onaylansın mı?
-Microsoft Graph API, onayı otomatik hale getirmenizi sağlar. [API belgelerine](/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0) , onayı otomatik hale getirmeye yönelik dizi:
+Microsoft Graph API, onayı otomatik hale getirmenizi sağlar. [API belgelerine](/graph/api/resources/oauth2permissiongrant) , onayı otomatik hale getirmeye yönelik dizi:
 
 * Bir uygulamayı kaydedin ve App. ReadWrite verin. Microsoft Graph erişmek için uygulamaya tüm izinler verin
 * Bir küme oluşturulduktan sonra, küme uygulamasını tanımlayıcı URI 'sine göre sorgulama

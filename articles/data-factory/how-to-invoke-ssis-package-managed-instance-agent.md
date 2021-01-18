@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lle
 author: lle
 ms.date: 04/14/2020
-ms.openlocfilehash: 98484655dec069c3a284dce0ea83477faf75d9a8
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 5f8b18375c517ab5b620b2d6d897f5133b14705d
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637760"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556469"
 ---
 # <a name="run-ssis-packages-by-using-azure-sql-managed-instance-agent"></a>Azure SQL yönetilen örnek Aracısı 'nı kullanarak SSIS paketlerini çalıştırma
 
@@ -24,7 +24,7 @@ Bu özellikle, SSıSDB 'de bulunan SSIS paketlerini bir SQL yönetilen örneğin
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu özelliği kullanmak için en son SQL Server Management Studio (SSMS) [indirip](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) yükleyin. Sürüm desteği ayrıntıları aşağıda verilmiştir:
+Bu özelliği kullanmak için en son SQL Server Management Studio (SSMS) [indirip](/sql/ssms/download-sql-server-management-studio-ssms) yükleyin. Sürüm desteği ayrıntıları aşağıda verilmiştir:
 
 - SSSıSDB veya dosya sisteminde paket çalıştırmak için SSMS sürüm 18,5 veya üstünü çalıştırın.
 - Paket deposunda paket çalıştırmak için SSMS sürüm 18,6 veya üstünü yüklemelisiniz.
@@ -36,7 +36,7 @@ Ayrıca, Azure Data Factory 'de [bir Azure-SSIS tümleştirme çalışma zamanı
 Bu yordamda, SSıSDB 'de depolanan bir SSIS paketini çağırmak için SQL yönetilen örnek Aracısı 'nı kullanırsınız.
 
 1. SSMS 'nin en son sürümünde bir SQL yönetilen örneğine bağlanın.
-1. Yeni bir aracı işi ve yeni bir iş adımı oluşturun. **SQL Server Agent** altında **işler** klasörüne sağ tıklayın ve ardından **yeni iş** ' ı seçin.
+1. Yeni bir aracı işi ve yeni bir iş adımı oluşturun. **SQL Server Agent** altında **işler** klasörüne sağ tıklayın ve ardından **yeni iş**' ı seçin.
 
    ![Yeni bir aracı işi oluşturmaya yönelik seçimler](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
 
@@ -66,7 +66,7 @@ Bu yordamda, SSıSDB 'de depolanan bir SSIS paketini çağırmak için SQL yöne
 Bu yordamda, dosya sisteminde depolanan bir SSIS paketini çalıştırmak için SQL yönetilen örnek Aracısı 'nı kullanırsınız.
 
 1. SSMS 'nin en son sürümünde bir SQL yönetilen örneğine bağlanın.
-1. Yeni bir aracı işi ve yeni bir iş adımı oluşturun. **SQL Server Agent** altında **işler** klasörüne sağ tıklayın ve ardından **yeni iş** ' ı seçin.
+1. Yeni bir aracı işi ve yeni bir iş adımı oluşturun. **SQL Server Agent** altında **işler** klasörüne sağ tıklayın ve ardından **yeni iş**' ı seçin.
 
    ![Yeni bir aracı işi oluşturmaya yönelik seçimler](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
 
@@ -76,11 +76,11 @@ Bu yordamda, dosya sisteminde depolanan bir SSIS paketini çalıştırmak için 
 
 1. **Paket** sekmesinde:
 
-   1. **Paket konumu** için **dosya sistemi** ' ni seçin.
+   1. **Paket konumu** için **dosya sistemi**' ni seçin.
 
    1. **Dosya kaynağı türü** için:
 
-      - Paketiniz Azure dosyalarına yüklenirse **Azure dosya paylaşma** ' yı seçin.
+      - Paketiniz Azure dosyalarına yüklenirse **Azure dosya paylaşma**' yı seçin.
 
         ![Dosya kaynak türü seçenekleri](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-file-system.png)
 
@@ -88,7 +88,7 @@ Bu yordamda, dosya sisteminde depolanan bir SSIS paketini çalıştırmak için 
 
         **Paket dosyası erişimi kimlik bilgileri** altında Azure dosyasına erişmek için Azure dosya hesabı adını ve hesap anahtarını girin. Etki alanı **Azure** olarak ayarlanır.
 
-      - Paketiniz bir ağ paylaşımında karşıya yüklenirse **ağ paylaşma** ' yı seçin.
+      - Paketiniz bir ağ paylaşımında karşıya yüklenirse **ağ paylaşma**' yı seçin.
 
         Paket yolu, paket dosyanızın. dtsx uzantısıyla birlikte UNC yoludur.
 
@@ -111,7 +111,7 @@ Bu yordamda, dosya sisteminde depolanan bir SSIS paketini çalıştırmak için 
 Bu yordamda, Azure-SSIS IR paket deposunda depolanan bir SSIS paketini çalıştırmak için SQL yönetilen örnek Aracısı 'nı kullanırsınız.
 
 1. SSMS 'nin en son sürümünde bir SQL yönetilen örneğine bağlanın.
-1. Yeni bir aracı işi ve yeni bir iş adımı oluşturun. **SQL Server Agent** altında **işler** klasörüne sağ tıklayın ve ardından **yeni iş** ' ı seçin.
+1. Yeni bir aracı işi ve yeni bir iş adımı oluşturun. **SQL Server Agent** altında **işler** klasörüne sağ tıklayın ve ardından **yeni iş**' ı seçin.
 
    ![Yeni bir aracı işi oluşturmaya yönelik seçimler](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
 
@@ -121,7 +121,7 @@ Bu yordamda, Azure-SSIS IR paket deposunda depolanan bir SSIS paketini çalışt
 
 1. **Paket** sekmesinde:
 
-   1. **Paket konumu** Için **paket deposu** ' nu seçin.
+   1. **Paket konumu** Için **paket deposu**' nu seçin.
 
    1. **Paket yolu** için:
 
@@ -152,7 +152,7 @@ Bir SQL yönetilen örnek Aracısı işinden paket yürütmeyi iptal etmek için
    select * from '{table for job execution}' where  parameter_value = 'SQL_Agent_Job_{jobId}' order by execution_id desc
    ```
    SSIS paketleriniz SSSıSDB 'de ise, iş yürütmesi için tablo olarak **ssisdb.internal.execution_parameter_values** kullanın. SSIS paketleriniz dosya sistemiyse **ssisdb.internal.execution_parameter_values_noncatalog** kullanın.
-1. SSıSDB kataloğuna sağ tıklayın ve ardından **etkin işlemler** ' i seçin.
+1. SSıSDB kataloğuna sağ tıklayın ve ardından **etkin işlemler**' i seçin.
 
    ![SSSıSDB kataloğunun kısayol menüsünde "Etkin Işlemler"](./media/how-to-invoke-ssis-package-managed-instance-agent/catalog-active-operations.png)
 

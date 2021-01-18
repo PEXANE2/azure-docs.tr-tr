@@ -12,12 +12,12 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 11/06/2020
-ms.openlocfilehash: bc5d2cad7b4fbf1871d2c02dc91db30daf55e855
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: b9dc88c5773d1329ad4fb4d1c45a0cbc88737423
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600736"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556588"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime için kurulumu özelleştirme
 
@@ -48,7 +48,7 @@ Aşağıdaki sınırlamalar yalnızca standart özel kurulumların için geçerl
 
 - IBM ıferies erişimi ODBC sürücüsü Azure-SSIS IR desteklenmez. Özel kurulumunuz sırasında yükleme hataları görebilirsiniz. Bunu yaparsanız yardım için IBM desteği ile iletişime geçin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -345,7 +345,7 @@ Standart özel kurulumların bazı örneklerini görüntülemek ve yeniden kulla
 
       * Azure-SSIS IR her bir düğümde güçlü şifreleme ve daha güvenli ağ protokolü (TLS 1,2) kullanmak için özel bir kurulum betiği (*Main. cmd*) Içeren bir *TLS 1,2* klasörü. Betik, eski SSL/TLS sürümlerini de devre dışı bırakır.
 
-      * Azure-SSIS IR her bir düğümüne Zulu OpenJDK yüklemek için özel bir kurulum betiği (*Main. cmd*) ve PowerShell dosyası (*install_openjdk.ps1*) IÇEREN BIR *Zulu OpenJDK* klasörü. Bu kurulum, ORC ve Parquet dosyalarını işlemek için Azure Data Lake Store ve esnek dosya bağlayıcıları kullanmanıza olanak sağlar. Daha fazla bilgi için bkz. [Tümleştirme Hizmetleri Için Azure Feature Pack](/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-ver15#dependency-on-java). 
+      * Azure-SSIS IR her bir düğümüne Zulu OpenJDK yüklemek için özel bir kurulum betiği (*Main. cmd*) ve PowerShell dosyası (*install_openjdk.ps1*) IÇEREN BIR *Zulu OpenJDK* klasörü. Bu kurulum, ORC ve Parquet dosyalarını işlemek için Azure Data Lake Store ve esnek dosya bağlayıcıları kullanmanıza olanak sağlar. Daha fazla bilgi için bkz. [Tümleştirme Hizmetleri Için Azure Feature Pack](/sql/integration-services/azure-feature-pack-for-integration-services-ssis#dependency-on-java). 
       
         İlk olarak, [en son Zulu OpenJDK 'yi indirin](https://www.azul.com/downloads/zulu/zulu-windows/) (örneğin, *zulu8.33.0.1-jdk8.0.192-win_x64.zip*) ve ardından bunu *Main. cmd* ve *install_openjdk.ps1* birlikte kapsayıcınıza yükleyin.
 

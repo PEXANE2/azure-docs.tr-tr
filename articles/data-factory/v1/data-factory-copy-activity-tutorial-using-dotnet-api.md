@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d047a45d678918541eb3c2d2c45e4519a34bdd57
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 42d1d66c67b554b4b98cd8267b5945049215f843
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608689"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556027"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>Öğretici: .NET API kullanarak Kopyalama Etkinlikli bir işlem hattı oluşturma
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ Bu öğreticide, içinde bir etkinlik olan işlem hattı oluşturursunuz: Kopyal
 Bir işlem hattında birden fazla etkinlik olabilir. Bir etkinliğin çıkış veri kümesini diğer etkinliğin giriş veri kümesi olarak ayarlayarak iki etkinliği zincirleyebilir, yani bir etkinliğin diğerinden sonra çalıştırılmasını sağlayabilirsiniz. Daha fazla bilgi için bkz. [bir işlem hattında birden fazla etkinlik](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline). 
 
 > [!NOTE] 
-> .NET API’deki Data Factory ile ilgili tüm belgeleri görmek için bkz. [Data Factory .NET API Başvurusu](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1).
+> .NET API’deki Data Factory ile ilgili tüm belgeleri görmek için bkz. [Data Factory .NET API Başvurusu](/dotnet/api/overview/azure/data-factory).
 > 
 > Bu öğreticideki veri işlem hattı, bir kaynak veri deposundaki verileri hedef veri deposuna kopyalar. Azure Data Factory kullanarak verileri dönüştürme hakkında bir öğretici için bkz. [Öğretici: Hadoop kümesi kullanarak verileri dönüştürmek için işlem hattı oluşturma](data-factory-build-your-first-pipeline.md).
 
@@ -519,7 +519,7 @@ Bu adımlardan sonra aşağıdaki dört değere sahip olmanız gerekir:
 20. Belirtilen veritabanındaki bir **çalışan tablosunda,** iki çalışan kaydının oluşturulduğunu doğrulayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-.NET API’deki Data Factory ile ilgili tüm belgeleri görmek için bkz. [Data Factory .NET API Başvurusu](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1).
+.NET API’deki Data Factory ile ilgili tüm belgeleri görmek için bkz. [Data Factory .NET API Başvurusu](/dotnet/api/overview/azure/data-factory).
 
 Bu öğreticide, Azure Blob depolamayı bir kaynak veri deposu ve Azure SQL veritabanı olarak bir kopyalama işleminde hedef veri deposu olarak kullandınız. Aşağıdaki tabloda, kopyalama etkinliği tarafından kaynak ve hedef olarak desteklenen veri depolarının listesi sağlanmıştır: 
 

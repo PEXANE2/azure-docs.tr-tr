@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/18/2020
-ms.openlocfilehash: 9003366ec0d64057ca7426d5b6b99986bc21fc9d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 0d282ee805ac61ba17ceb3ecc6a3d8179ea7b319
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920287"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555908"
 ---
 # <a name="register-and-scan-an-on-premises-sql-server"></a>Şirket içi SQL Server 'ı kaydetme ve tarama
 
@@ -34,9 +34,9 @@ SQL Server şirket içi veri kaynağı şunları destekler:
 
 ### <a name="known-limitations"></a>Bilinen sınırlamalar
 
-Azure purview, SQL Server [görünümlerinin](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15) taranmasını desteklemez. 
+Azure purview, SQL Server [görünümlerinin](/sql/relational-databases/views/views) taranmasını desteklemez.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Veri kaynaklarını kaydetmeden önce bir Azure purview hesabı oluşturun. Bir purview hesabı oluşturma hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Azure purview hesabı oluşturma](create-catalog-portal.md).
 

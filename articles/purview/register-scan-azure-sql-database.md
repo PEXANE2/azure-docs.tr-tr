@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 15708e35fa27bb4a1f72368df6f49ff747eb799b
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 36781e7f975ee9d4a03cf899650701bf2d3940ac
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739799"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555959"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Azure SQL veritabanını kaydetme ve tarama
 
@@ -28,9 +28,9 @@ Azure SQL veritabanı veri kaynağı aşağıdaki işlevleri destekler:
 
 ### <a name="known-limitations"></a>Bilinen sınırlamalar
 
-Azure purview, Azure SQL veritabanı 'nda [görünümlerin](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15&preserve-view=true) taranmasını desteklemez. 
+Azure purview, Azure SQL veritabanı 'nda [görünümlerin](/sql/relational-databases/views/views?view=azuresqldb-current&preserve-view=true) taranmasını desteklemez.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 1. Henüz bir tane yoksa yeni bir purview hesabı oluşturun.
 
@@ -50,7 +50,7 @@ Azure SQL veritabanı 'nı taramak için kimlik doğrulaması. Yeni kimlik doğr
 > [!Note]
 > Yalnızca sunucu düzeyinde asıl oturum açma (sağlama işlemi tarafından oluşturulan) veya `loginmanager` ana veritabanındaki veritabanı rolünün üyeleri yeni oturumlar oluşturabilir. İzin verdikten yaklaşık **15 dakika** sürer, purview hesabının kaynakları tarayabilmesi için uygun izinlere sahip olması gerekir.
 
-Bu kullanılabilir değilse Azure SQL veritabanı için oturum açma oluşturmak üzere [oturum oluşturma](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1) ' daki yönergeleri izleyebilirsiniz. Sonraki adımlar için **Kullanıcı adı** ve **parolaya** ihtiyacınız olacak.
+Bu kullanılabilir değilse Azure SQL veritabanı için oturum açma oluşturmak üzere [oturum oluşturma](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1) ' daki yönergeleri izleyebilirsiniz. Sonraki adımlar için **Kullanıcı adı** ve **parolaya** ihtiyacınız olacak.
 
 1. Azure portal, anahtar kasanıza gidin
 1. **Gizli dizileri > ayarları** seçin
@@ -100,7 +100,7 @@ Hizmet sorumlusu veya yönetilen kimliğin veritabanı, şemalar ve tablolar iç
     ```
 
     > [!Note]
-    > `Username`Kendi hizmet sorumlusu veya takip görünümü tarafından yönetilen kimlik. [Sabit veritabanı rolleri ve özellikleri](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15&preserve-view=true#fixed-database-roles)hakkında daha fazla bilgi edinebilirsiniz.
+    > `Username`Kendi hizmet sorumlusu veya takip görünümü tarafından yönetilen kimlik. [Sabit veritabanı rolleri ve özellikleri](/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15&preserve-view=true#fixed-database-roles)hakkında daha fazla bilgi edinebilirsiniz.
     
 ##### <a name="add-service-principal-to-key-vault-and-purviews-credential"></a>Ana kasaya hizmet sorumlusu ve takip görünümü kimlik bilgileri ekleyin
 

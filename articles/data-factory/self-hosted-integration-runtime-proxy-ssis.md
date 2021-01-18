@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 11/19/2020
-ms.openlocfilehash: 82cc58d46061ec7b623d062ab0b0e5a1fdae7ddd
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: bde8bc11a959bea4bd2c05c5ae75db81192aad6a
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352227"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555874"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Azure Data Factory içinde Azure-SSIS IR için otomatik olarak barındırılan bir IR ara sunucu olarak yapılandırma
 
@@ -54,7 +54,7 @@ Son olarak, şirket içi makinenize veya Azure sanal makinenize (VM) ek sürüc�
 
 ### <a name="enable-windows-authentication-for-on-premises-staging-tasks"></a>Şirket içi hazırlama görevleri için Windows kimlik doğrulamasını etkinleştirme
 
-Şirket içinde barındırılan IR 'de şirket içi hazırlama görevleri Windows kimlik doğrulaması gerektiriyorsa, [SSIS paketlerinizi aynı Windows kimlik doğrulamasını kullanacak şekilde yapılandırın](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth?view=sql-server-ver15). 
+Şirket içinde barındırılan IR 'de şirket içi hazırlama görevleri Windows kimlik doğrulaması gerektiriyorsa, [SSIS paketlerinizi aynı Windows kimlik doğrulamasını kullanacak şekilde yapılandırın](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth). 
 
 Şirket içi hazırlama görevleriniz, kendi kendine barındırılan IR Hizmeti hesabıyla (varsayılan olarak *NT SERVICE\DIAHostService*) çağrılacaktır ve veri depolarınız Windows kimlik doğrulama hesabıyla erişilecek. Her iki hesap de belirli güvenlik ilkelerinin atanmasını gerektirir. Şirket içinde barındırılan IR makinesinde **yerel güvenlik ilkesi**  >  **Yerel ilkeler**  >  **Kullanıcı hakları ataması**' na gidin ve ardından aşağıdakileri yapın:
 
@@ -70,7 +70,7 @@ Daha önce yapmadıysanız, Azure-SSIS IR ayarlandığı veri fabrikasında bir 
 - **Kimlik doğrulama yöntemi** için **hesap anahtarı**, **SAS URI 'Si**, **hizmet sorumlusu** veya **yönetilen kimlik**' i seçin.  
 
 >[!TIP]
->**Hizmet sorumlusu** yöntemini seçerseniz, hizmet sorumlusuna en az bir *Depolama Blobu veri katılımcısı* rolü verin. Daha fazla bilgi için bkz. [Azure Blob Storage Bağlayıcısı](connector-azure-blob-storage.md#linked-service-properties). **Yönetilen kimlik** yöntemini seçerseniz, Azure Blob depolamaya erışmek için ADF ile yönetilen kimlik uygun rollerinizi verin. Daha fazla bilgi için bkz. [ADF ile yönetilen kimlikle Azure Active Directory kimlik doğrulaması kullanarak Azure Blob depolamaya erişme](/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication).
+>**Hizmet sorumlusu** yöntemini seçerseniz, hizmet sorumlusuna en az bir *Depolama Blobu veri katılımcısı* rolü verin. Daha fazla bilgi için bkz. [Azure Blob Storage Bağlayıcısı](connector-azure-blob-storage.md#linked-service-properties). **Yönetilen kimlik** yöntemini seçerseniz, Azure Blob depolamaya erışmek için ADF ile yönetilen kimlik uygun rollerinizi verin. Daha fazla bilgi için bkz. [ADF ile yönetilen kimlikle Azure Active Directory kimlik doğrulaması kullanarak Azure Blob depolamaya erişme](/sql/integration-services/connection-manager/azure-storage-connection-manager#managed-identities-for-azure-resources-authentication).
 
 ![Azure Blob depolama ile bağlantılı hizmeti hazırlama için hazırlama](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
@@ -132,7 +132,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 Visual Studio için SSIS projeleri uzantısı ya da tek başına bir yükleyici olarak en son SSDT 'yi kullanarak, `ConnectByProxy` desteklenen veri akışı bileşenlerine yönelik bağlantı yöneticilerine eklenmiş yeni bir özellik bulabilirsiniz.
 * [Visual Studio için SSIS projeleri uzantısını indirin](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)
-* [Tek başına yükleyiciyi indirme](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)   
+* [Tek başına yükleyiciyi indirme](/sql/ssdt/download-sql-server-data-tools-ssdt#ssdt-for-vs-2017-standalone-installer)   
 
 Şirket içindeki verilere erişen bileşenlerle veri akışı görevleri içeren yeni paketler tasarladığınızda, ilgili bağlantı yöneticilerinin **Özellikler** bölmesinde bu özelliği *true* olarak ayarlayarak etkinleştirebilirsiniz.
 
@@ -187,7 +187,7 @@ Azure-SSIS IR çalışan bulut hazırlama görevleri ayrı olarak faturalandır�
    
    1. Özel/3. taraf bileşen derlemeleriniz tarafından başvurulan tüm derlemeleri genel derleme önbelleği 'ne (GAC) kurar.
 
-İş ortaklarımızın sunduğu [Obald yazılımlarının](https://kb.theobald-software.com/xtract-is/XIS-for-Azure-SHIR) ve akayıtlarımızda [Aecorsoft](https://www.aecorsoft.com/blog/2020/11/8/using-azure-data-factory-to-bring-sap-data-to-azure-via-self-hosted-ir-and-ssis-ir), bir Azure-SSIS IR ara sunucu olarak hızlı özel kurulum ve şirket içinde barındırılan IR 'yi kullanmak için bileşenlerini uyarlayan örnekler aşağıda verilmiştir.
+İş ortaklarımızın sunduğu [Obald yazılımlarının](https://kb.theobald-software.com/xtract-is/XIS-for-Azure-SHIR) ve akayıtlarımızda [](https://www.aecorsoft.com/blog/2020/11/8/using-azure-data-factory-to-bring-sap-data-to-azure-via-self-hosted-ir-and-ssis-ir), bir Azure-SSIS IR ara sunucu olarak hızlı özel kurulum ve şirket içinde barındırılan IR 'yi kullanmak için bileşenlerini uyarlayan örnekler aşağıda verilmiştir.
 
 ## <a name="enforce-tls-12"></a>TLS 1.2’yi zorlama
 

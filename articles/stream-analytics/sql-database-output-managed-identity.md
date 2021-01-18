@@ -6,12 +6,12 @@ ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/30/2020
-ms.openlocfilehash: 244f8a446e33102e018881b3ec8f32ba9d8cbcc6
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 7d624f2dd2c0c9b4c7e99d5628a1d47e4303da7f
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014154"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555602"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-or-azure-synapse-analytics-from-an-azure-stream-analytics-job-preview"></a>Azure Stream Analytics işinden Azure SQL veritabanı 'na veya Azure SYNAPSE Analytics 'e erişmek için Yönetilen kimlikler kullanma (Önizleme)
 
@@ -19,7 +19,7 @@ Azure Stream Analytics, Azure SQL veritabanı ve Azure SYNAPSE Analytics çıkı
 
 Yönetilen kimlik, belirli bir Stream Analytics işini temsil eden Azure Active Directory kayıtlı yönetilen bir uygulamadır. Yönetilen uygulama, hedeflenen bir kaynağın kimliğini doğrulamak için kullanılır. Bu makalede, Azure portal aracılığıyla bir Azure SQL veritabanı için yönetilen kimliğin veya bir Stream Analytics işinin Azure SYNAPSE Analytics çıkışının nasıl etkinleştirileceği gösterilmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 #### <a name="azure-sql-database"></a>[Azure SQL Veritabanı](#tab/azure-sql)
 
@@ -123,7 +123,7 @@ Kapsanan bir veritabanı kullanıcısı oluşturduktan ve önceki bölümde aç�
 
 Kapsanan bir veritabanı kullanıcısı oluşturduktan ve önceki bölümde açıklandığı gibi portalda Azure hizmetlerine erişim izni verildiğinde, Stream Analytics işiniz yönetilen kimlik aracılığıyla Azure SYNAPSE veritabanı kaynaklarına, yönetilen kimlik üzerinden **bağlanmak** için bir izne sahiptir. Stream Analytics iş akışında daha sonra gerekli olacağı için Stream Analytics işine VERITABANı toplu IŞLEMLERINI seçme, ekleme ve yönetme izinleri vermenizi öneririz. **Select** izni, Işin Azure SYNAPSE veritabanındaki tabloyla bağlantısını test etmesine izin verir. VERITABANıNı **Ekle** ve **Yönet toplu işlemler** izinleri, bir girişi ve Azure SYNAPSE veritabanı çıktısını yapılandırdıktan sonra uçtan uca Stream Analytics sorgularının test edilmesine olanak tanır.
 
-VERITABANı yönetme Toplu IŞLEMLERI iznini vermek için, Stream Analytics işine [veritabanı izni tarafından ima](/sql/t-sql/statements/grant-database-permissions-transact-sql?view=azure-sqldw-latest#remarks) **altında etiketlenen** tüm izinleri vermeniz gerekir. Stream Analytics işi, [Veritabanını Yönet toplu işlemlerini ve eklemeyi](/sql/t-sql/statements/copy-into-transact-sql)gerektiren Copy ifadesini gerçekleştirdiğinden, bu izne ihtiyacınız vardır.
+VERITABANı yönetme Toplu IŞLEMLERI iznini vermek için, Stream Analytics işine [veritabanı izni tarafından ima](/sql/t-sql/statements/grant-database-permissions-transact-sql?view=azure-sqldw-latest&preserve-view=true#remarks) **altında etiketlenen** tüm izinleri vermeniz gerekir. Stream Analytics işi, [Veritabanını Yönet toplu işlemlerini ve eklemeyi](/sql/t-sql/statements/copy-into-transact-sql)gerektiren Copy ifadesini gerçekleştirdiğinden, bu izne ihtiyacınız vardır.
 
 ---
 

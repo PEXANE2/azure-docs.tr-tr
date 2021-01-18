@@ -11,12 +11,12 @@ author: dcstwh
 ms.author: weetok
 manager: anandsub
 ms.custom: devx-track-python
-ms.openlocfilehash: e7b435080fda48e1df0bb31d16dafed30ac3d3db
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b5d1f0c0d6aa848e590e68e1f18abf7861674483
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497869"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556571"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Programlı olarak bir Azure Data Factory izleme
 
@@ -68,7 +68,7 @@ Data Factory yalnızca 45 gün boyunca işlem hattı çalıştırma verilerini d
     Console.ReadKey();
     ```
 
-.NET SDK ile ilgili tüm belgeler için, [Data Factory .NET SDK başvurusu](/dotnet/api/microsoft.azure.management.datafactory?view=azure-dotnet)' na bakın.
+.NET SDK ile ilgili tüm belgeler için, [Data Factory .NET SDK başvurusu](/dotnet/api/microsoft.azure.management.datafactory)' na bakın.
 
 ## <a name="python"></a>Python
 Python SDK kullanarak bir işlem hattı oluşturma ve izlemeye yönelik kapsamlı bir anlatım için bkz. [Python kullanarak veri fabrikası ve işlem hattı oluşturma](quickstart-create-data-factory-python.md).
@@ -86,7 +86,7 @@ activity_runs_paged = list(adf_client.activity_runs.list_by_pipeline_run(
 print_activity_run_details(activity_runs_paged[0])
 ```
 
-Python SDK ile ilgili tüm belgeler için, [Data Factory Python SDK başvurusu](/python/api/overview/azure/datafactory?view=azure-python)' na bakın.
+Python SDK ile ilgili tüm belgeler için, [Data Factory Python SDK başvurusu](/python/api/overview/azure/datafactory)' na bakın.
 
 ## <a name="rest-api"></a>REST API
 REST API kullanarak bir işlem hattı oluşturma ve izlemeye yönelik kapsamlı bir anlatım için, bkz. [REST API kullanarak veri fabrikası oluşturma ve işlem hattı oluşturma](quickstart-create-data-factory-rest-api.md).

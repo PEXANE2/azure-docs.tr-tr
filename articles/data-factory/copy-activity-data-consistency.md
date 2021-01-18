@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
-ms.openlocfilehash: 3591bfe046fa1c3e1e55aa49a0ae3ad698bc57b3
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 274250fecdf69b6a488c33ff25df3728a1c90af0
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593680"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556384"
 ---
 #  <a name="data-consistency-verification-in-copy-activity"></a>Kopyalama etkinliğinde veri tutarlılığı doğrulaması
 
@@ -81,7 +81,7 @@ linkedServiceName | [Azure Blob depolama alanına](connector-azure-blob-storage.
 path | Günlük dosyalarının yolu. | Günlük dosyalarını depolamak istediğiniz yolu belirtin. Bir yol sağlamazsanız, hizmet sizin için bir kapsayıcı oluşturur. | Hayır
 
 >[!NOTE]
->- Ya da Azure Blob veya Azure Data Lake Storage 2. ikili dosyalarını kopyalarken, ADF, [Azure Blob API 'si](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy) ve [Azure Data Lake Storage 2. API 'si](/rest/api/storageservices/datalakestoragegen2/path/update#request-headers)aracılığıyla blok düzeyinde MD5 sağlama toplamı doğrulaması yapar. Azure Blob üzerinde ContentMD5 veya veri kaynağı olarak Azure Data Lake Storage 2., ADF dosyaları okuduktan sonra dosya düzeyi MD5 sağlama toplamı doğrulaması yapar. Dosyaları Azure Blob 'a veya veri hedefi olarak Azure Data Lake Storage 2. kopyaladıktan sonra, ADF, veri tutarlılığı doğrulaması için aşağı akış uygulamaları tarafından daha fazla tüketilen Azure Blob veya Azure Data Lake Storage 2. ContentMD5 yazar.
+>- Ya da Azure Blob veya Azure Data Lake Storage 2. ikili dosyalarını kopyalarken, ADF, [Azure Blob API 'si](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy&preserve-view=true) ve [Azure Data Lake Storage 2. API 'si](/rest/api/storageservices/datalakestoragegen2/path/update#request-headers)aracılığıyla blok düzeyinde MD5 sağlama toplamı doğrulaması yapar. Azure Blob üzerinde ContentMD5 veya veri kaynağı olarak Azure Data Lake Storage 2., ADF dosyaları okuduktan sonra dosya düzeyi MD5 sağlama toplamı doğrulaması yapar. Dosyaları Azure Blob 'a veya veri hedefi olarak Azure Data Lake Storage 2. kopyaladıktan sonra, ADF, veri tutarlılığı doğrulaması için aşağı akış uygulamaları tarafından daha fazla tüketilen Azure Blob veya Azure Data Lake Storage 2. ContentMD5 yazar.
 >- ADF, herhangi bir depolama deposu arasında ikili dosyalar kopyalanırken dosya boyutu doğrulaması yapar.
 
 ## <a name="monitoring"></a>İzleme
@@ -109,14 +109,14 @@ Kopyalama etkinliği tamamen çalıştıktan sonra, her bir kopyalama etkinliği
 "Dataımst doğrulama özelliği" kaynağından veri tutarlılığı doğrulama ayrıntılarını görebilirsiniz.
 
 **Doğrulamaları Icationresult** değeri: 
--   **Doğrulandı** : kopyalanmış verilerinizin kaynak ve hedef depo arasında tutarlı olması doğrulandı. 
--   **Notdoğrulandı** : kopyalama etkinliğinde Validatedatatutarlılığını etkinleştirmediyseniz, kopyalanmış verileriniz tutarlı olarak doğrulanmadı. 
--   **Desteklenmiyor** : Bu belirli bir kopya çifti için veri tutarlılığı doğrulaması desteklenmediğinden, kopyalanmış verileriniz tutarlı olarak doğrulanmadı. 
+-   **Doğrulandı**: kopyalanmış verilerinizin kaynak ve hedef depo arasında tutarlı olması doğrulandı. 
+-   **Notdoğrulandı**: kopyalama etkinliğinde Validatedatatutarlılığını etkinleştirmediyseniz, kopyalanmış verileriniz tutarlı olarak doğrulanmadı. 
+-   **Desteklenmiyor**: Bu belirli bir kopya çifti için veri tutarlılığı doğrulaması desteklenmediğinden, kopyalanmış verileriniz tutarlı olarak doğrulanmadı. 
 
 **Inreferencetentdata** değeri: 
--   **Bulundu** : ADF kopyalama etkinliği tutarsız veriler buldu. 
--   **Atlandı** : ADF kopyalama etkinliği tutarsız veriler buldu ve atladı. 
--   **Hiçbiri** : ADF kopyalama etkinliği tutarsız veriler bulamadı. Verilerinizin kaynak ve hedef depo arasında tutarlı olarak doğrulanması veya kopyalama etkinliğinde Validatedatatutarlılığı devre dışı bırakılması nedeniyle olabilir. 
+-   **Bulundu**: ADF kopyalama etkinliği tutarsız veriler buldu. 
+-   **Atlandı**: ADF kopyalama etkinliği tutarsız veriler buldu ve atladı. 
+-   **Hiçbiri**: ADF kopyalama etkinliği tutarsız veriler bulamadı. Verilerinizin kaynak ve hedef depo arasında tutarlı olarak doğrulanması veya kopyalama etkinliğinde Validatedatatutarlılığı devre dışı bırakılması nedeniyle olabilir. 
 
 ### <a name="session-log-from-copy-activity"></a>Kopyalama etkinliğinden oturum günlüğü
 
@@ -126,8 +126,8 @@ Bir günlük dosyasının şeması aşağıdaki gibidir:
 
 Sütun | Açıklama 
 -------- | -----------  
-Zaman damgası | ADF tutarsız dosyaları atlamazsa zaman damgası.
-Düzey | Bu öğenin günlük düzeyi. Dosya atlama gösteren öğe için ' uyarı ' düzeyinde olacaktır.
+Timestamp | ADF tutarsız dosyaları atlamazsa zaman damgası.
+Level | Bu öğenin günlük düzeyi. Dosya atlama gösteren öğe için ' uyarı ' düzeyinde olacaktır.
 OperationName | ADF kopyalama etkinliği işlem davranışı her dosyada. Atlanacak dosyayı belirtmek için ' FileSkip ' olur.
 Operationıtem | Atlanacak dosya adı.
 İleti | Dosyaların neden atlandığını gösteren daha fazla bilgi.

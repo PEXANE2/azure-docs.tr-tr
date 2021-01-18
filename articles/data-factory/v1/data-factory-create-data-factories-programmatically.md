@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dd1c7c20441d12600e2101f738904caf6260509e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0305094d3883fa6fc3254a682f9aa6f3202c9e48
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496033"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555551"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Azure Data Factory .NET SDK kullanarak Azure veri fabrikaları oluşturun, izleyin ve yönetin
 > [!NOTE]
@@ -27,9 +27,9 @@ ms.locfileid: "96496033"
 Data Factory .NET SDK kullanarak Azure veri fabrikalarını programlı bir şekilde oluşturabilir, izleyebilir ve yönetebilirsiniz. Bu makalede, bir veri fabrikası oluşturup izleyen örnek bir .NET konsol uygulaması oluşturmak için izleyebileceğiniz bir izlenecek yol yer almaktadır. 
 
 > [!NOTE]
-> Bu makale, Data Factory .NET API’nin tamamını kapsamaz. Data Factory için .NET API hakkında kapsamlı belgeler için bkz. [Data Factory .NET API başvurusu](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1) . 
+> Bu makale, Data Factory .NET API’nin tamamını kapsamaz. Data Factory için .NET API hakkında kapsamlı belgeler için bkz. [Data Factory .NET API başvurusu](/dotnet/api/overview/azure/data-factory) . 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -93,7 +93,7 @@ Bir Azure Active Directory uygulaması oluşturun, uygulama için bir hizmet sor
 9. Uygulama kimliğini alın.
 
     ```powershell
-    $azureAdApplication 
+    $azureAdApplication    
     ```
     Çıktıdaki uygulama kimliğini (applicationID) not alın.
 

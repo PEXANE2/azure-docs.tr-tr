@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: e0a1d8dba9ea284322584de3b4be2ae390d15fdf
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: c95f8b9e4466b22519a4dea580a86a0dcda83857
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920255"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555942"
 ---
 # <a name="register-and-scan-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'i kaydetme ve tarama
 
@@ -24,9 +24,9 @@ Azure SYNAPSE Analytics (eski adıyla SQL DW), meta verileri ve şemayı yakalam
 
 ### <a name="known-limitations"></a>Bilinen sınırlamalar
 
-Azure purview, Azure SYNAPSE Analytics 'te [görünümlerin](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15) taranmasını desteklemez
+Azure purview, Azure SYNAPSE Analytics 'te [görünümlerin](/sql/relational-databases/views/views?view=azure-sqldw-latest&preserve-view=true) taranmasını desteklemez
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Veri kaynaklarını kaydetmeden önce bir Azure purview hesabı oluşturun. Bir purview hesabı oluşturma hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Azure purview hesabı oluşturma](create-catalog-portal.md).
 - Azure purview veri kaynağı Yöneticisi olmanız gerekir
@@ -45,7 +45,7 @@ Azure Blob depolama için kimlik doğrulaması kurmanın üç yolu vardır:
 
 ### <a name="managed-identity-recommended"></a>Yönetilen kimlik (önerilen) 
    
-Takip ettiğiniz hesap, sizin oluşturduğunuz sırada önemli bir değer olan kendi yönetilen kimliği vardır. Azure AD [uygulamaları kullanarak Azure AD kullanıcıları oluşturma](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial)hakkında önkoşulları ve öğreticiyi Izleyerek Azure SYNAPSE Analytics 'te (eskı ADıYLA SQL DW) BIR Azure AD kullanıcısı oluşturmanız gerekir.
+Takip ettiğiniz hesap, sizin oluşturduğunuz sırada önemli bir değer olan kendi yönetilen kimliği vardır. Azure AD [uygulamaları kullanarak Azure AD kullanıcıları oluşturma](/azure/azure-sql/database/authentication-aad-service-principal-tutorial)hakkında önkoşulları ve öğreticiyi Izleyerek Azure SYNAPSE Analytics 'te (eskı ADıYLA SQL DW) BIR Azure AD kullanıcısı oluşturmanız gerekir.
 
 Kullanıcı oluşturmak ve izin vermek için örnek SQL söz dizimi:
 
@@ -102,7 +102,7 @@ GO
 
 ### <a name="sql-authentication"></a>SQL kimlik doğrulaması
 
-Henüz bir hesabınız yoksa Azure SYNAPSE Analytics (eski adıyla SQL DW) için oturum açma oluşturmak üzere [oturum oluşturma](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1) ' daki yönergeleri izleyebilirsiniz.
+Henüz bir hesabınız yoksa Azure SYNAPSE Analytics (eski adıyla SQL DW) için oturum açma oluşturmak üzere [oturum oluşturma](/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest&preserve-view=true#examples-1) ' daki yönergeleri izleyebilirsiniz.
 
 Kimlik doğrulama yöntemi seçiliyken **SQL kimlik doğrulaması** olduğunda, parolanızı ve anahtar kasasında deponuzu almanız gerekir:
 

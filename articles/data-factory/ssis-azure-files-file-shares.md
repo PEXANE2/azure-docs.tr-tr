@@ -8,12 +8,12 @@ ms.technology: integration-services
 author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
-ms.openlocfilehash: a2b95e0de642dc17865643ec569e7220fe5581b2
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 97ed9b6f3f21b6d9e220c1f4e17d4ba6b0d8b485
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637505"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555517"
 ---
 # <a name="open-and-save-files-on-premises-and-in-azure-with-ssis-packages-deployed-in-azure"></a>Azure 'da dağıtılmış SSIS paketleri ile şirket içinde ve Azure 'da dosya açma ve kaydetme
 
@@ -53,4 +53,4 @@ Yerel dosya sistemlerini kullanan paketleri Azure 'da yüklerken ve kaydıradı�
 
 - Paketlerinizi dağıtın. Daha fazla bilgi için bkz. [SSMS Ile Azure 'a BIR SSIS projesi dağıtma](/sql/integration-services/ssis-quickstart-deploy-ssms).
 - Paketlerinizi çalıştırın. Daha fazla bilgi için bkz. [SSMS Ile Azure 'DA SSIS paketleri çalıştırma](/sql/integration-services/ssis-quickstart-run-ssms).
-- Paketlerinizi zamanlayın. Daha fazla bilgi için bkz. [Azure 'DA SSIS paketlerini zamanlama](/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15).
+- Paketlerinizi zamanlayın. Daha fazla bilgi için bkz. [Azure 'DA SSIS paketlerini zamanlama](/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms).
