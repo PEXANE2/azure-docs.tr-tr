@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 34524626cc213233c3db2ca438261b238eb18a2a
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 93b05a5535b80d0e0d1a07c88aa9b19052f1b703
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831780"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562684"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Izleyici, ayrılmış kümeleri günlüğe kaydeder
 
@@ -58,7 +58,7 @@ Log Analytics adanmış kümeler için daha fazla ayrıntı faturalandırılır.
 
 ## <a name="asynchronous-operations-and-status-check"></a>Zaman uyumsuz işlemler ve durum denetimi
 
-Yapılandırma adımlarının bazıları hızla tamamlanamadığından zaman uyumsuz olarak çalışır. Yanıt ' daki durum, şu hata kodu dahil olmak üzere, ' InProgress ', ' Updating ', ' siliyor ', ' SUCCEEDED veya ' Failed ' olabilir. REST kullanılırken, yanıt, kabul edildiğinde Azure-AsyncOperation özelliği ile bir HTTP durum kodu 200 (Tamam) ve üst bilgi döndürür:
+Yapılandırma adımlarının bazıları hızla tamamlanamadığından zaman uyumsuz olarak çalışır. Yanıt ' daki durum, şu hata kodu dahil olmak üzere, ' InProgress ', ' Updating ', ' siliyor ', ' SUCCEEDED veya ' Failed ' olabilir. REST kullanılırken, yanıt başlangıçta bir HTTP durum kodu 202 (kabul edildi) ve üst bilgi Azure-AsyncOperation özelliğini döndürür:
 
 ```JSON
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
@@ -125,7 +125,7 @@ Content-type: application/json
 
 *Response*
 
-200 OK ve bir üst bilgi olmalıdır.
+202 (kabul edildi) ve bir üst bilgi olmalıdır.
 
 ### <a name="check-cluster-provisioning-status"></a>Küme sağlama durumunu denetleme
 
@@ -229,7 +229,7 @@ Content-type: application/json
 
 *Response*
 
-200 Tamam ve üst bilgi.
+202 (kabul edildi) ve üst bilgi.
 
 ### <a name="check-workspace-link-status"></a>Çalışma alanı bağlantı durumunu denetle
   

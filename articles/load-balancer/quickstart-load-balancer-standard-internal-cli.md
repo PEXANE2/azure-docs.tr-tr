@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 12/19/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 15060a367bba2d50d7054730321f7f20d4c25e46
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: edf893f1f6ba0691da5764420017282d7a8bde84
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916686"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562820"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak VM 'Lerin yükünü dengelemek için iç yük dengeleyici oluşturma
 
@@ -53,6 +53,12 @@ Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir
 
 >[!NOTE]
 >Standart SKU yük dengeleyici, üretim iş yükleri için önerilir. SKU 'Lar hakkında daha fazla bilgi için bkz. **[Azure Load Balancer SKU 'lar](skus.md)**.
+
+Bu bölümde, sanal makinelerin yükünü dengeleyen bir yük dengeleyici oluşturacaksınız. 
+
+Bir iç yük dengeleyici oluşturduğunuzda, yük dengeleyici için ağ olarak bir sanal ağ yapılandırılır. 
+
+Aşağıdaki diyagramda bu hızlı başlangıçta oluşturulan kaynaklar gösterilmektedir:
 
 :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal.png" alt-text="Hızlı başlangıç için oluşturulan Standart yük dengeleyici kaynakları." border="false":::
 
@@ -316,12 +322,9 @@ Yük dengeleyici kuralı şunları tanımlar:
     --frontend-ip-name myFrontEnd \
     --backend-pool-name myBackEndPool \
     --probe-name myHealthProbe \
-    --disable-outbound-snat true \
     --idle-timeout 15 \
     --enable-tcp-reset true
 ```
->[!NOTE]
->Arka uç havuzundaki sanal makinelerin, bu yapılandırmayla giden internet bağlantısı olmayacaktır. </br> Giden bağlantı sağlama hakkında daha fazla bilgi için bkz. </br> **[Azure’da giden bağlantılar](load-balancer-outbound-connections.md)**</br> Bağlantı sağlamaya yönelik seçenekler: </br> **[Yalnızca giden yük dengeleyici yapılandırması](egress-only.md)** </br> **[Sanal ağ NAT nedir?](../virtual-network/nat-overview.md)**
 
 ### <a name="add-virtual-machines-to-load-balancer-backend-pool"></a>Yük dengeleyici arka uç havuzuna sanal makineler ekleme
 
@@ -350,6 +353,12 @@ Yük dengeleyici kuralı şunları tanımlar:
 
 >[!NOTE]
 >Standart SKU yük dengeleyici, üretim iş yükleri için önerilir. SKU 'LAR hakkında daha fazla bilgi için bkz. **[Azure Load Balancer SKU 'lar](skus.md)**.
+
+Bu bölümde, sanal makinelerin yükünü dengeleyen bir yük dengeleyici oluşturacaksınız. 
+
+Bir iç yük dengeleyici oluşturduğunuzda, yük dengeleyici için ağ olarak bir sanal ağ yapılandırılır. 
+
+Aşağıdaki diyagramda bu hızlı başlangıçta oluşturulan kaynaklar gösterilmektedir:
 
 :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="Hızlı başlangıçta oluşturulan temel yük dengeleyici kaynakları." border="false":::
 

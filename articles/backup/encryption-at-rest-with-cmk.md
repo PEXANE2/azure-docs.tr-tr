@@ -3,12 +3,12 @@ title: Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verile
 description: Azure Backup, müşteri tarafından yönetilen anahtarları (CMK) kullanarak yedekleme verilerinizi şifrelemenize nasıl olanak sağladığını öğrenin.
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: cc6ad2f67b84bcd62bcc18566a4ac5d159ea32c4
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 30bcf907e1a2759c8a9977e50cb4880c2e254ca2
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197787"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562769"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verilerinin şifrelenmesi
 
@@ -37,7 +37,10 @@ Bu makalede aşağıdakiler ele alınmaktadır:
 
 - CMK şifreli kurtarma hizmetleri kasasını kaynak grupları ve abonelikler arasında taşıma Şu anda desteklenmemektedir.
 
-- Bu özellik şu anda yalnızca Azure portal yapılandırılabilir.
+- Bu özellik Azure portal ve PowerShell aracılığıyla yapılandırılabilir.
+
+    >[!NOTE]
+    >Kurtarma Hizmetleri kasasındaki yedeklemeler için müşteri tarafından yönetilen anahtarları kullanmak için az Module 5.3.0 veya üstünü kullanın.
 
 Kurtarma Hizmetleri kasanızı oluşturup yapılandırmadıysanız, [nasıl yapılacağını burada](backup-create-rs-vault.md)bulabilirsiniz.
 
@@ -62,6 +65,8 @@ Azure Backup, Azure Key Vault depolanan şifreleme anahtarlarına erişmek üzer
 >[!NOTE]
 >Etkinleştirildikten sonra, yönetilen kimlik devre dışı **bırakılmamalıdır (** geçici olarak bile). Yönetilen kimliğin devre dışı bırakılması tutarsız davranışa yol açabilir.
 
+**Portalda:**
+
 1. Kurtarma Hizmetleri kasasına gidin-> **kimliği**
 
     ![Kimlik ayarları](./media/encryption-at-rest-with-cmk/managed-identity.png)
@@ -70,9 +75,33 @@ Azure Backup, Azure Key Vault depolanan şifreleme anahtarlarına erişmek üzer
 
 1. Kasadaki sistem tarafından atanan yönetilen kimlik olan bir nesne KIMLIĞI oluşturulur.
 
+**PowerShell ile:**
+
+Kurtarma Hizmetleri Kasası için sistem tarafından atanan yönetilen kimliği etkinleştirmek üzere [Update-Azrecoveryserviceskasa](https://docs.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesvault) komutunu kullanın.
+
+Örnek:
+
+```AzurePowerShell
+$vault=Get-AzRecoveryServicesVault -ResourceGroupName "testrg" -Name "testvault"
+
+Update-AzRecoveryServicesVault -IdentityType SystemAssigned -VaultId $vault.ID
+
+$vault.Identity | fl
+```
+
+Çıkış:
+
+```output
+PrincipalId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+TenantId    : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Type        : SystemAssigned
+```
+
 ### <a name="assign-permissions-to-the-recovery-services-vault-to-access-the-encryption-key-in-the-azure-key-vault"></a>Azure Key Vault şifreleme anahtarına erişmek için kurtarma hizmetleri kasasına izinler atayın
 
 Artık kurtarma hizmetleri kasasının şifreleme anahtarını içeren Azure Key Vault erişmesine izin vermeniz gerekir. Bu, kurtarma hizmetleri kasasının yönetilen kimliğinin Key Vault erişmesine izin verilerek yapılır.
+
+**Portalda**:
 
 1. Azure Key Vault > **erişim ilkelerine** gidin. **+ Erişim Ilkeleri Ekle**' ye geçin.
 
@@ -89,6 +118,32 @@ Artık kurtarma hizmetleri kasasının şifreleme anahtarını içeren Azure Key
 1. İşiniz bittiğinde yeni erişim ilkesini eklemek için **Ekle** ' yi seçin.
 
 1. Azure Key Vault erişim ilkesinde yapılan değişiklikleri kaydetmek için **Kaydet** ' i seçin.
+
+**PowerShell ile**:
+
+Müşteri tarafından yönetilen anahtarlar kullanılarak şifrelemeyi etkinleştirmek ve kullanılacak şifreleme anahtarını atamak veya güncelleştirmek için [set-AzRecoveryServicesVaultProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) komutunu kullanın.
+
+Örnek:
+
+```azurepowershell
+$keyVault = Get-AzKeyVault -VaultName "testkeyvault" -ResourceGroupName "testrg" 
+$key = Get-AzKeyVaultKey -VaultName $keyVault -Name "testkey" 
+Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $key.ID -KeyVaultSubscriptionId "xxxx-yyyy-zzzz"  -VaultId $vault.ID
+
+
+$enc=Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
+$enc.encryptionProperties | fl
+```
+
+Çıkış:
+
+```output
+EncryptionAtRestType          : CustomerManaged
+KeyUri                        : testkey
+SubscriptionId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx 
+LastUpdateStatus              : Succeeded
+InfrastructureEncryptionState : Disabled
+```
 
 ### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>Azure Key Vault geçici silme ve Temizleme korumasını etkinleştirme
 
@@ -220,6 +275,8 @@ Geri yükleme işlemi tamamlandıktan sonra geri yüklenen diski/VM 'yi, geri y�
 
 #### <a name="select-a-disk-encryption-set-while-restoring-from-vault-recovery-point"></a>Kasa kurtarma noktasından geri yüklerken bir disk şifreleme kümesi seçin
 
+**Portalda**:
+
 Disk şifreleme kümesi, aşağıda gösterildiği gibi geri yükleme bölmesindeki şifreleme ayarları altında belirtilir:
 
 1. **Anahtarınızı kullanarak disk (ler) i şifreleyin**, **Evet**' i seçin.
@@ -230,6 +287,21 @@ Disk şifreleme kümesi, aşağıda gösterildiği gibi geri yükleme bölmesind
 >Azure disk şifrelemesi kullanan bir VM 'yi geri yüklüyorsanız, geri yükleme sırasında DES seçme özelliği kullanılamaz.
 
 ![Anahtarınızı kullanarak diski şifreleyin](./media/encryption-at-rest-with-cmk/encrypt-disk-using-your-key.png)
+
+**PowerShell ile**:
+
+[](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) `-DiskEncryptionSetId <string>` Geri yüklenen diski ŞIFRELEMEK için kullanılacak [des 'i belirtmek](https://docs.microsoft.com/powershell/module/az.compute/get-azdiskencryptionset) Için, [] parametresiyle Get-azrecoveryservicesbackupıtem komutunu kullanın. Diskleri VM yedeklemesinden geri yükleme hakkında daha fazla bilgi için [Bu makaleye](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-an-azure-vm)bakın.
+
+Örnek:
+
+```azurepowershell
+$namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM" -VaultId $vault.ID
+$backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $vault.ID
+$startDate = (Get-Date).AddDays(-7)
+$endDate = Get-Date
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $backupitem -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime() -VaultId $vault.ID
+$restorejob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -DiskEncryptionSetId “testdes1” -VaultId $vault.ID
+```
 
 #### <a name="restoring-files"></a>Dosyalar geri yükleniyor
 

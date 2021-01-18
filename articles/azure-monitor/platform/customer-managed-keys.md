@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 6c1f323828eb48b61b38370bc2fe56d4c93bf036
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 889ee48c43119086047d6f52737266f4c611fc8d
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127218"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562752"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure İzleyici müşteri tarafından yönetilen anahtar 
 
@@ -95,7 +95,7 @@ Yok
 
 # <a name="rest"></a>[REST](#tab/rest)
 
-REST kullanılırken, yanıt, kabul edildiğinde *Azure-AsyncOperation* özelliğine sahıp bir http durum kodu 200 (Tamam) ve üst bilgi döndürür:
+REST kullanılırken, yanıt başlangıçta HTTP durum kodu 202 (kabul edildi) ve üst bilgi olarak *Azure-AsyncOperation* özelliği döndürür:
 ```json
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
 ```
@@ -200,7 +200,7 @@ Anahtarın kaç dakika boyunca yayılmasının tamamlanmasını sağlar. Güncel
 1. Yanıttan Azure-AsyncOperation URL değerini kopyalayın ve [zaman uyumsuz işlemler durum denetimini](#asynchronous-operations-and-status-check)izleyin.
 2. Küme üzerinde bir GET isteği gönderin ve *Keyvaultproperties* özelliklerine bakın. Son güncelleştirdiğiniz anahtar, yanıtta döndürmelidir.
 
-Anahtar güncelleştirmesi tamamlandığında GET isteğinin yanıtı şuna benzemelidir: 200 OK ve Header
+Anahtar güncelleştirmesi tamamlandığında GET isteğinin yanıtı şuna benzemelidir: 202 (kabul edildi) ve üst bilgi
 ```json
 {
   "identity": {

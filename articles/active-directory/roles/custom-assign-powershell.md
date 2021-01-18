@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell kullanarak özel roller atama-Azure AD | Microsoft Docs
-description: Azure PowerShell ile bir Azure AD yöneticisi özel rolünün üyelerini yönetin.
+title: Azure AD PowerShell kullanarak özel roller atama-Azure AD | Microsoft Docs
+description: Azure AD PowerShell ile bir Azure AD yöneticisi özel rolünün üyelerini yönetin.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4695d0844ef8b707edce53a05de611c91223a46
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 8b155ccd7f8f0d7f6d63d906d7d0baaa3243512b
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861961"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562786"
 ---
 # <a name="assign-custom-roles-with-resource-scope-using-powershell-in-azure-active-directory"></a>Azure Active Directory 'de PowerShell kullanarak kaynak kapsamıyla özel roller atama
 
@@ -32,26 +32,26 @@ Rolleri atamak veya kaldırmak için bir genel yönetici hesabı kullanarak Azur
 
 ## <a name="prepare-powershell"></a>PowerShell 'i hazırlama
 
-[PowerShell Galerisi](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17)Azure AD PowerShell modülünü yükler. Ardından, aşağıdaki komutu kullanarak Azure AD PowerShell önizleme modülünü içeri aktarın:
+[PowerShell Galerisi](https://www.powershellgallery.com/packages/AzureADPreview)Azure AD PowerShell modülünü yükler. Ardından, aşağıdaki komutu kullanarak Azure AD PowerShell önizleme modülünü içeri aktarın:
 
 ``` PowerShell
-import-module azureadpreview
+Import-Module AzureADPreview
 ```
 
 Modülün kullanıma hazır olduğunu doğrulamak için, aşağıdaki komutla döndürülen sürümü burada listelenen sürüme eşleştirin:
 
 ``` PowerShell
-get-module azureadpreview
+Get-Module AzureADPreview
   ModuleType Version      Name                         ExportedCommands
   ---------- ---------    ----                         ----------------
   Binary     2.0.0.115    azureadpreview               {Add-AzureADMSAdministrati...}
 ```
 
-Artık modüldeki cmdlet 'leri kullanmaya başlayabilirsiniz. Azure AD modülündeki cmdlet 'lerin tam açıklaması için bkz. [Azure AD önizleme modülü](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17)için çevrimiçi başvuru belgeleri.
+Artık modüldeki cmdlet 'leri kullanmaya başlayabilirsiniz. Azure AD modülündeki cmdlet 'lerin tam açıklaması için bkz. [Azure AD önizleme modülü](https://www.powershellgallery.com/packages/AzureADPreview)için çevrimiçi başvuru belgeleri.
 
-## <a name="assign-a-role-to-a-user-or-service-principal-with-resource-scope"></a>Kaynak kapsamı ile bir kullanıcıya veya hizmet sorumlusuna rol atama
+## <a name="assign-a-directory-role-to-a-user-or-service-principal-with-resource-scope"></a>Kaynak kapsamı ile bir kullanıcıya veya hizmet sorumlusuna bir dizin rolü atama
 
-1. Azure AD önizleme PowerShell modülünü açın.
+1. Azure AD PowerShell (Önizleme) modülünü yükleyin.
 1. Komutunu yürüterek oturum açın `Connect-AzureAD` .
 1. Aşağıdaki PowerShell betiğini kullanarak yeni bir rol oluşturun.
 
@@ -69,13 +69,13 @@ $resourceScope = '/' + $appRegistration.objectId
 $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
 ```
 
-Rolü bir kullanıcı yerine bir hizmet sorumlusuna atamak için, [Get-AzureADMSServicePrincipal cmdlet 'ini](/powershell/module/azuread/get-azureadserviceprincipal)kullanın.
+Rolü bir kullanıcı yerine bir hizmet sorumlusuna atamak için, [Get-AzureADMSServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) cmdlet 'ini kullanın.
 
-## <a name="operations-on-roledefinition"></a>RoleDefinition üzerinde işlemler
+## <a name="role-definitions"></a>Rol tanımları
 
-Rol tanımı nesneleri, yerleşik veya özel rolün tanımını, bu rol ataması tarafından verilen izinlerle birlikte içerir. Bu kaynak hem özel rol tanımlarını hem de yerleşik directoryRoles (roleDefinition ile eşdeğer biçimde görüntülenir) görüntüler. Günümüzde, bir Azure AD kuruluşunda en fazla 30 benzersiz özel RoleDefinitions tanımlanmış olabilir.
+Rol tanımı nesneleri, yerleşik veya özel rolün tanımını, bu rol ataması tarafından verilen izinlerle birlikte içerir. Bu kaynak hem özel rol tanımlarını hem de yerleşik Dizin rollerini (roleDefinition ile eşdeğer biçimde görüntülenir) görüntüler. Günümüzde, bir Azure AD kuruluşunda en fazla 30 benzersiz özel rol tanımı tanımlanmış olabilir.
 
-### <a name="create-operations-on-roledefinition"></a>RoleDefinition üzerinde Işlem oluşturma
+### <a name="create-a-role-definition"></a>Rol tanımı oluşturma
 
 ``` PowerShell
 # Basic information
@@ -83,32 +83,32 @@ $description = "Can manage credentials of application registrations"
 $displayName = "Application Registration Credential Administrator"
 $templateId = (New-Guid).Guid
 
-# Set of actions to grant
-$allowedResourceAction =
-@(
-    "microsoft.directory/applications/standard/read",
-    "microsoft.directory/applications/credentials/update"
-)
-$rolePermissions = @{'allowedResourceActions'= $allowedResourceAction}
+# Set of actions to include
+$rolePermissions = @{
+    "allowedResourceActions" = @(
+        "microsoft.directory/applications/standard/read",
+        "microsoft.directory/applications/credentials/update"
+    )
+}
 
-# Create new custom admin role
+# Create new custom directory role
 $customAdmin = New-AzureADMSRoleDefinition -RolePermissions $rolePermissions -DisplayName $displayName -Description $description -TemplateId $templateId -IsEnabled $true
 ```
 
-### <a name="read-operations-on-roledefinition"></a>RoleDefinition üzerinde okuma Işlemleri
+### <a name="read-and-list-role-definitions"></a>Rol tanımlarını okuma ve listeleme
 
 ``` PowerShell
 # Get all role definitions
 Get-AzureADMSRoleDefinitions
 
-# Get single role definition by objectId
+# Get single role definition by ID
 Get-AzureADMSRoleDefinition -Id 86593cfc-114b-4a15-9954-97c3494ef49b
 
 # Get single role definition by templateId
 Get-AzureADMSRoleDefinition -Filter "templateId eq 'c4e39bd9-1100-46d3-8c65-fb160da0071f'"
 ```
 
-### <a name="update-operations-on-roledefinition"></a>RoleDefinition üzerinde güncelleştirme Işlemleri
+### <a name="update-a-role-definition"></a>Rol tanımını güncelleştirme
 
 ``` PowerShell
 # Update role definition
@@ -117,18 +117,18 @@ Get-AzureADMSRoleDefinition -Filter "templateId eq 'c4e39bd9-1100-46d3-8c65-fb16
 Set-AzureADMSRoleDefinition -Id c4e39bd9-1100-46d3-8c65-fb160da0071f -DisplayName "Updated DisplayName"
 ```
 
-### <a name="delete-operations-on-roledefinition"></a>RoleDefinition üzerinde silme işlemleri
+### <a name="delete-a-role-definition"></a>Rol tanımını silme
 
 ``` PowerShell
 # Delete role definition
 Remove-AzureADMSRoleDefinitions -Id c4e39bd9-1100-46d3-8c65-fb160da0071f
 ```
 
-## <a name="operations-on-roleassignment"></a>Roleatama üzerinde işlemler
+## <a name="role-assignments"></a>Rol atamaları
 
-Rol atamaları, belirli bir güvenlik sorumlusunu (bir kullanıcı veya uygulama hizmeti sorumlusu) rol tanımına bağlayan bilgiler içerir. Gerekirse, atanan izinler için tek bir Azure AD kaynağının kapsamını ekleyebilirsiniz.  İzin kapsamını kısıtlama, yerleşik ve özel roller için desteklenir.
+Rol atamaları, belirli bir güvenlik sorumlusunu (bir kullanıcı veya uygulama hizmeti sorumlusu) rol tanımına bağlayan bilgiler içerir. Gerekirse, atanan izinler için tek bir Azure AD kaynağının kapsamını ekleyebilirsiniz.  Rol atamasının kapsamını kısıtlama, yerleşik ve özel roller için desteklenir.
 
-### <a name="create-operations-on-roleassignment"></a>Roleatama üzerinde Işlem oluşturma
+### <a name="create-a-role-assignment"></a>Rol ataması oluşturma
 
 ``` PowerShell
 # Get the user and role definition you want to link
@@ -143,7 +143,7 @@ $resourceScope = '/' + $appRegistration.objectId
 $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
 ```
 
-### <a name="read-operations-on-roleassignment"></a>Roleatama 'da okuma Işlemleri
+### <a name="read-and-list-role-assignments"></a>Rol atamalarını okuma ve listeleme
 
 ``` PowerShell
 # Get role assignments for a given principal
@@ -153,7 +153,7 @@ Get-AzureADMSRoleAssignment -Filter "principalId eq '27c8ca78-ab1c-40ae-bd1b-eae
 Get-AzureADMSRoleAssignment -Filter "roleDefinitionId eq '355aed8a-864b-4e2b-b225-ea95482e7570'"
 ```
 
-### <a name="delete-operations-on-roleassignment"></a>Roleatamasında silme Işlemleri
+### <a name="delete-a-role-assignment"></a>Rol atamasını silme
 
 ``` PowerShell
 # Delete role assignment

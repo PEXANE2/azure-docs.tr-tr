@@ -16,18 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 08/27/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: d2d266462cb119e4a803b0e1012f5dfbe94a4a6e
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 5844b321fd3050bab9288657189ddcd87bba14db
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630573"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562344"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak VM 'Lerin yükünü dengelemek için iç yük dengeleyici oluşturma
 
 İç yük dengeleyici ve iki sanal makine oluşturmak için Azure PowerShell kullanarak Azure Load Balancer kullanmaya başlayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Azure PowerShell yerel olarak veya Azure Cloud Shell yüklendi
@@ -49,6 +49,12 @@ New-AzResourceGroup -Name 'CreateIntLBQS-rg' -Location 'eastus'
 
 >[!NOTE]
 >Standart SKU yük dengeleyici, üretim iş yükleri için önerilir. SKU 'lar hakkında daha fazla bilgi için bkz. **[Azure Load Balancer SKU 'lar](skus.md)**.
+
+Bu bölümde, sanal makinelerin yükünü dengeleyen bir yük dengeleyici oluşturacaksınız. 
+
+Bir iç yük dengeleyici oluşturduğunuzda, yük dengeleyici için ağ olarak bir sanal ağ yapılandırılır. 
+
+Aşağıdaki diyagramda bu hızlı başlangıçta oluşturulan kaynaklar gösterilmektedir:
 
 :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal.png" alt-text="Hızlı başlangıç için oluşturulan Standart yük dengeleyici kaynakları." border="false":::
 
@@ -190,7 +196,7 @@ $lbrule = @{
     FrontendIpConfiguration = $feip
     BackendAddressPool = $bePool
 }
-$rule = New-AzLoadBalancerRuleConfig @lbrule -EnableTcpReset -DisableOutboundSNAT
+$rule = New-AzLoadBalancerRuleConfig @lbrule -EnableTcpReset
 
 ## Create the load balancer resource. ##
 $loadbalancer = @{
@@ -206,8 +212,6 @@ $loadbalancer = @{
 New-AzLoadBalancer @loadbalancer
 
 ```
->[!NOTE]
->Arka uç havuzundaki sanal makinelerin, bu yapılandırmayla giden internet bağlantısı olmayacaktır. </br> Giden bağlantı sağlama hakkında daha fazla bilgi için bkz. </br> **[Azure’da giden bağlantılar](load-balancer-outbound-connections.md)**</br> Bağlantı sağlamaya yönelik seçenekler: </br> **[Yalnızca giden yük dengeleyici yapılandırması](egress-only.md)** </br> **[Sanal ağ NAT nedir?](../virtual-network/nat-overview.md)**
 
 ## <a name="create-virtual-machines---standard"></a>Sanal makine oluşturma-standart
 
@@ -304,6 +308,12 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 
 >[!NOTE]
 >Standart SKU yük dengeleyici, üretim iş yükleri için önerilir. SKU 'lar hakkında daha fazla bilgi için bkz. **[Azure Load Balancer SKU 'lar](skus.md)**.
+
+Bu bölümde, sanal makinelerin yükünü dengeleyen bir yük dengeleyici oluşturacaksınız. 
+
+Bir iç yük dengeleyici oluşturduğunuzda, yük dengeleyici için ağ olarak bir sanal ağ yapılandırılır. 
+
+Aşağıdaki diyagramda bu hızlı başlangıçta oluşturulan kaynaklar gösterilmektedir:
 
 :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="Hızlı başlangıçta oluşturulan temel yük dengeleyici kaynakları." border="false":::
 
@@ -674,7 +684,7 @@ New-AzVM @vm
 
 ```
 
-### <a name="test"></a>Test etme
+### <a name="test"></a>Test
 
 1. Azure portalında [oturum açın](https://portal.azure.com).
 

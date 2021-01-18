@@ -15,18 +15,18 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 14203021846e97a53f59c3bc24a1586774613dec
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: f70116847a8743cf8b3cb56ff35f9d913f13f359
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704342"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562361"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak VM 'Lerin yükünü dengelemek için iç yük dengeleyici oluşturma
 
 İç yük dengeleyici ve üç sanal makine oluşturmak için Azure portal kullanarak Azure Load Balancer kullanmaya başlayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -41,11 +41,13 @@ ms.locfileid: "97704342"
 >[!NOTE]
 >Standart SKU yük dengeleyici, üretim iş yükleri için önerilir.  SKU 'lar hakkında daha fazla bilgi için bkz. **[Azure Load Balancer SKU 'lar](skus.md)**.
 
-:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal.png" alt-text="Hızlı başlangıç için oluşturulan Standart yük dengeleyici kaynakları." border="false":::
-
 Bu bölümde, sanal makinelerin yükünü dengeleyen bir yük dengeleyici oluşturacaksınız. 
 
 Bir iç yük dengeleyici oluşturduğunuzda, yük dengeleyici için ağ olarak bir sanal ağ yapılandırılır. 
+
+Aşağıdaki diyagramda bu hızlı başlangıçta oluşturulan kaynaklar gösterilmektedir:
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal.png" alt-text="Hızlı başlangıç için oluşturulan Standart yük dengeleyici kaynakları." border="false":::
 
 Sanal ağdaki özel bir IP adresi, yük dengeleyici için ön uç (varsayılan olarak **Loadbalancerön uç** olarak adlandırılır) olarak yapılandırılır. 
 
@@ -112,7 +114,7 @@ Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
     | ---                     | ---                                                |
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | Önceki adımda oluşturulan **Createıntlbqs-RG** öğesini seçin.|
-    | Ad                   | **Myloadbalancer** girin                                   |
+    | Name                   | **Myloadbalancer** girin                                   |
     | Bölge         | **Batı Avrupa**'yı seçin.                                        |
     | Tür          | **Dahili**' ı seçin.                                        |
     | SKU           | **Standart** seçin |
@@ -199,12 +201,8 @@ Bu bölümde, bir yük dengeleyici kuralı oluşturacaksınız:
     | Durum yoklaması | **Myhealtharaştırması**' ni seçin. |
     | Boşta kalma zaman aşımı (dakika) | Kaydırıcıyı **15** dakikaya taşıyın. |
     | TCP sıfırlaması | **Etkin**'i seçin. |
-    | Giden kaynak ağ adresi çevirisi (SNAT) | **Arka uç havuzu üyelerine internet erişimi sağlamak için giden kuralları kullanın (önerilir)** seçeneğini belirleyin. |
-
+    
 4. Kalan varsayılan değerleri bırakın ve **Tamam**' ı seçin.
-
->[!NOTE]
->Arka uç havuzundaki sanal makinelerin, bu yapılandırmayla giden internet bağlantısı olmayacaktır. </br> Giden bağlantı sağlama hakkında daha fazla bilgi için bkz. </br> **[Azure’da giden bağlantılar](load-balancer-outbound-connections.md)**</br> Bağlantı sağlamaya yönelik seçenekler: </br> **[Yalnızca giden yük dengeleyici yapılandırması](egress-only.md)** </br> **[Sanal ağ NAT nedir?](../virtual-network/nat-overview.md)**
 
 ## <a name="create-backend-servers"></a>Arka uç sunucular oluşturma
 
@@ -268,7 +266,7 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
 
     | Ayar | VM 2 | VM 3 |
     | ------- | ----- | ---- |
-    | Ad |  **myVM2** | **myVM3** |
+    | Name |  **myVM2** | **myVM3** |
     | Kullanılabilirlik alanı | **2** | **3** |
     | Ağ güvenlik grubu | Mevcut **Mynsg** 'yi seçin| Mevcut **Mynsg** 'yi seçin |
 
@@ -278,11 +276,13 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
 >[!NOTE]
 >Standart SKU yük dengeleyici, üretim iş yükleri için önerilir.  SKU 'lar hakkında daha fazla bilgi için bkz. **[Azure Load Balancer SKU 'lar](skus.md)**.
 
-:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="Hızlı başlangıçta oluşturulan temel yük dengeleyici kaynakları." border="false":::
-
 Bu bölümde, sanal makinelerin yükünü dengeleyen bir yük dengeleyici oluşturacaksınız. 
 
 Bir iç yük dengeleyici oluşturduğunuzda, yük dengeleyici için ağ olarak bir sanal ağ yapılandırılır. 
+
+Aşağıdaki diyagramda bu hızlı başlangıçta oluşturulan kaynaklar gösterilmektedir:
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="Hızlı başlangıçta oluşturulan temel yük dengeleyici kaynakları." border="false":::
 
 Sanal ağdaki özel bir IP adresi, yük dengeleyici için ön uç (varsayılan olarak **Loadbalancerön uç** olarak adlandırılır) olarak yapılandırılır. 
 
@@ -349,7 +349,7 @@ Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
     | ---                     | ---                                                |
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | Önceki adımda oluşturulan **Createıntlbqs-RG** öğesini seçin.|
-    | Ad                   | **Myloadbalancer** girin                                   |
+    | Name                   | **Myloadbalancer** girin                                   |
     | Bölge         | **Batı Avrupa**'yı seçin.                                        |
     | Tür          | **Dahili**' ı seçin.                                        |
     | SKU           | **Temel** seçin |
@@ -506,7 +506,7 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
 
     | Ayar | VM 2 | VM 3 |
     | ------- | ----- | ---- |
-    | Ad |  **myVM2** | **myVM3** |
+    | Name |  **myVM2** | **myVM3** |
     | Kullanılabilirlik kümesi | **MyAvailabilitySet** seçin | **MyAvailabilitySet** seçin |
     | Ağ güvenlik grubu | Mevcut **Mynsg** 'yi seçin | Mevcut **Mynsg** 'yi seçin |
 

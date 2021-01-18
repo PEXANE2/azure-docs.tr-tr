@@ -6,16 +6,16 @@ ms.author: rahugup
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: a1203133d8749b43a92d89e7251539a1e002bfd8
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: a3e8b19810a58031b4d11cc6e361215afbc85de2
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968577"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562650"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>Fiziksel sunucu geçişi için destek matrisi
 
-Bu makalede, Azure geçişi ile fiziksel sunucuları geçirmeye yönelik destek ayarları ve sınırlamaları özetlenmektedir [: sunucu geçişi](migrate-services-overview.md#azure-migrate-server-migration-tool) . Fiziksel sunucuları Azure 'a geçiş için değerlendirme hakkında bilgi arıyorsanız, [değerlendirme desteği matrisini](migrate-support-matrix-physical.md)gözden geçirin.
+Bu makalede, [Azure geçişi: sunucu geçişi](migrate-services-overview.md#azure-migrate-server-migration-tool) ile fiziksel sunucuları Azure 'a geçirmeye yönelik destek ayarları ve sınırlamaları özetlenmektedir. Fiziksel sunucuları Azure 'a geçiş için değerlendirme hakkında bilgi arıyorsanız, [değerlendirme desteği matrisini](migrate-support-matrix-physical.md)gözden geçirin.
 
 ## <a name="migrating-machines-as-physical"></a>Makineleri fiziksel olarak geçirme
 
@@ -25,7 +25,7 @@ Bu makalede, Azure geçişi ile fiziksel sunucuları geçirmeye yönelik destek 
 - Xen, KVM gibi platformlar tarafından sanallaştırılmış VM 'Ler.
 - Hyper-V VM 'Leri veya VMware VM 'Leri, bazı nedenlerle standart [Hyper-v](tutorial-migrate-hyper-v.md) veya [VMware](server-migrate-overview.md) akışlarını kullanmak istemezsiniz.
 - Özel bulutlarda çalışan VM 'Ler.
-- Amazon Web Services (AWS) veya Google Cloud Platform (GCP) gibi genel bulutlarda çalışan VM 'Ler.
+- Amazon Web Services (AWS) veya Google Cloud Platform (GCP) dahil olmak üzere genel bulutlarda çalışan VM 'Ler.
 
 
 ## <a name="migration-limitations"></a>Geçiş sınırlamaları
@@ -57,7 +57,6 @@ Tablo, aracı tabanlı geçiş kullanarak geçirmek istediğiniz fiziksel sunucu
 **NFS** | Makinelere birim olarak takılan NFS birimleri çoğaltılmaz.
 **Iscsı hedefleri** | Iscsı hedefleri olan makineler aracısız geçiş için desteklenmez.
 **Çok yollu GÇ** | Desteklenmez.
-**Depolama vMotion** | Desteklenir
 **Ekip oluşturulmuş NIC 'ler** | Desteklenmez.
 **IPv6** | Desteklenmez.
 
