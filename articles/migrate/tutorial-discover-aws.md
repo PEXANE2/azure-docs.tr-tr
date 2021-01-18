@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 935aa8297e8b244bfd05483f07aad3eadb485f1b
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 8fb17dc880b74da3ca4e96df10946878fde31909
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797086"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541419"
 ---
 # <a name="tutorial-discover-aws-instances-with-server-assessment"></a>Öğretici: Sunucu değerlendirmesi ile AWS örneklerini bulma
 
@@ -40,7 +40,7 @@ Bu öğreticiye başlamadan önce, bu önkoşulların yerinde olup olmadığın�
 
 **Gereksinim** | **Ayrıntılar**
 --- | ---
-**Elektrikli** | Azure geçişi gerecinin çalıştırılacağı bir EC2 VM 'sine ihtiyacınız vardır. Makine şunları içermelidir:<br/><br/> -Windows Server 2016 yüklendi. Gereci Windows Server 2019 ile bir makinede çalıştırmak desteklenmez.<br/><br/> -16 GB RAM, 8 vCPU, 80 GB disk depolaması ve harici bir sanal anahtar.<br/><br/> -Doğrudan veya bir ara sunucu üzerinden internet erişimi olan statik veya dinamik bir IP adresi.
+**Elektrikli** | Azure geçişi gerecinin çalıştırılacağı bir EC2 VM 'sine ihtiyacınız vardır. Makine şunları içermelidir:<br/><br/> -Windows Server 2016 yüklendi.<br/> Gereci _Windows Server 2019 ile bir makinede çalıştırmak desteklenmez_.<br/><br/> -16 GB RAM, 8 vCPU, 80 GB disk depolaması ve harici bir sanal anahtar.<br/><br/> -Doğrudan veya bir ara sunucu üzerinden internet erişimi olan statik veya dinamik bir IP adresi.
 **Windows örnekleri** | BT 'nin yapılandırma ve performans meta verilerini çekebilmesi için WinRM bağlantı noktası 5985 (HTTP) üzerinde gelen bağlantılara izin verin.
 **Linux örnekleri** | 22 (TCP) numaralı bağlantı noktasında gelen bağlantılara izin verin.<br/><br/> Örneklerin `bash` varsayılan kabuk olarak kullanılması gerekir, aksi takdirde bulma başarısız olur.
 
@@ -48,7 +48,7 @@ Bu öğreticiye başlamadan önce, bu önkoşulların yerinde olup olmadığın�
 
 Azure geçişi projesi oluşturmak ve Azure geçişi gerecini kaydettirmek için, şu bir hesaba sahip olmanız gerekir:
 - Azure aboneliğinde katkıda bulunan veya sahip izinleri.
-- Azure Active Directory uygulamaları kaydetme izinleri.
+- Azure Active Directory (AAD) uygulamalarını kaydetme izinleri.
 
 Ücretsiz Azure hesabı oluşturduysanız aboneliğinizin sahibi siz olursunuz. Abonelik sahibi değilseniz, izinleri aşağıdaki şekilde atamak için sahibiyle birlikte çalışın:
 
@@ -67,18 +67,20 @@ Azure geçişi projesi oluşturmak ve Azure geçişi gerecini kaydettirmek için
 
     ![Hesaba rol atamak için rol ataması Ekle sayfasını açar](./media/tutorial-discover-aws/assign-role.png)
 
-7. Portalda, kullanıcılar için arama yapın ve **Hizmetler** altında **Kullanıcılar**' ı seçin.
-8. **Kullanıcı ayarları**' nda, Azure AD kullanıcılarının uygulamaları kaydedebildiğini doğrulayın (varsayılan olarak **Evet** ' e ayarlanır).
+1. Gereci kaydettirmek için, Azure hesabınızın **AAD uygulamalarını kaydetme izinleri** olması gerekir.
+1. Azure Portal ' de, **Azure Active Directory**  >  **kullanıcıları**  >  **Kullanıcı ayarları**' na gidin.
+1. **Kullanıcı ayarları**' nda, Azure AD kullanıcılarının uygulamaları kaydedebildiğini doğrulayın (varsayılan olarak **Evet** ' e ayarlanır).
 
     ![Kullanıcıların Active Directory uygulamalar kaydedebildiğini Kullanıcı ayarlarında doğrula](./media/tutorial-discover-aws/register-apps.png)
 
+1. ' Uygulama kayıtları ' ayarlarının ' No ' olarak ayarlanması durumunda, gerekli izni atamak için kiracı/genel yönetici isteyin. Alternatif olarak, kiracı/genel yönetici, AAD uygulamasının kaydedilmesine izin vermek için **uygulama geliştirici** rolünü bir hesaba atayabilir. [Daha fazla bilgi edinin](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="prepare-aws-instances"></a>AWS örneklerini hazırlama
 
 Gerecin AWS örneklerine erişmek için kullanabileceği bir hesap ayarlayın.
 
-- Windows sunucuları için, bulmaya dahil etmek istediğiniz tüm Windows sunucularında yerel bir kullanıcı hesabı ayarlayın. Kullanıcı hesabını aşağıdaki gruplara ekleyin:-uzaktan yönetim kullanıcıları-performans Izleyicisi kullanıcılar-performans günlüğü kullanıcıları.
- - Linux sunucuları için, bulmak istediğiniz Linux sunucularında bir kök hesabın olması gerekir.
+- **Windows sunucuları** için, bulmaya dahil etmek Istediğiniz tüm Windows sunucularında yerel bir kullanıcı hesabı ayarlayın. Kullanıcı hesabını aşağıdaki gruplara ekleyin:-uzaktan yönetim kullanıcıları-performans Izleyicisi kullanıcılar-performans günlüğü kullanıcıları.
+ - **Linux sunucuları** için, aramak istediğiniz Linux sunucularında bir kök hesaba ihtiyacınız vardır. Alternatif olarak [destek matrisindeki](migrate-support-matrix-physical.md#physical-server-requirements) yönergelere bakın.
 - Azure geçişi AWS örneklerini keşfederken parola kimlik doğrulamasını kullanır. AWS örnekleri varsayılan olarak parola kimlik doğrulamasını desteklemez. Örneği keşfedebilmeniz için önce parola kimlik doğrulamasını etkinleştirmeniz gerekir.
     - Windows makineleri için WinRM bağlantı noktası 5985 (HTTP) izin verin. Bu, uzak WMI çağrılarına izin verir.
     - Linux makineleri için:
@@ -105,11 +107,12 @@ Yeni bir Azure geçişi projesi ayarlayın.
    ![Proje adı ve bölgesi için kutular](./media/tutorial-discover-aws/new-project.png)
 
 7. **Oluştur**’u seçin.
-8. Azure Geçişi projesinin dağıtılması için birkaç dakika bekleyin.
-
-**Azure geçişi: Sunucu değerlendirmesi** Aracı, varsayılan olarak yeni projeye eklenir.
+8. Azure Geçişi projesinin dağıtılması için birkaç dakika bekleyin. **Azure geçişi: Sunucu değerlendirmesi** Aracı, varsayılan olarak yeni projeye eklenir.
 
 ![Varsayılan olarak eklenen sunucu değerlendirmesi aracını gösteren sayfa](./media/tutorial-discover-aws/added-tool.png)
+
+> [!NOTE]
+> Zaten bir proje oluşturduysanız, daha fazla sunucu bulmayı ve değerlendirmeyi yapmak üzere ek gereçlere kaydolmak için aynı projeyi kullanabilirsiniz. [Daha fazla bilgi](create-manage-projects.md#find-a-project)
 
 ## <a name="set-up-the-appliance"></a>Gereci ayarlama
 
@@ -120,17 +123,14 @@ Azure geçişi gereci, aşağıdakileri yapmak için Azure geçişi sunucu değe
 
 Azure geçişi gereci hakkında [daha fazla bilgi edinin](migrate-appliance.md) .
 
-
-## <a name="appliance-deployment-steps"></a>Gereç dağıtım adımları
-
 Gereci kurmak için şunları yapın:
-- Portal 'da bir gereç adı sağlayın ve bir Azure geçişi proje anahtarı oluşturun.
-- Azure geçişi yükleyicisi komut dosyasıyla Azure portal sıkıştırılmış bir dosyayı indirin.
-- Sıkıştırılmış dosyadan içerikleri ayıklayın. Yönetim ayrıcalıklarıyla PowerShell konsolunu başlatın.
-- Gereç Web uygulamasını başlatmak için PowerShell betiğini yürütün.
-- Gereci ilk kez yapılandırın ve Azure geçişi projesi anahtarını kullanarak Azure geçişi projesi ile kaydedin.
+1. Portal 'da bir gereç adı sağlayın ve bir Azure geçişi proje anahtarı oluşturun.
+1. Azure geçişi yükleyicisi komut dosyasıyla Azure portal sıkıştırılmış bir dosyayı indirin.
+1. Sıkıştırılmış dosyadan içerikleri ayıklayın. Yönetim ayrıcalıklarıyla PowerShell konsolunu başlatın.
+1. Gereç Web uygulamasını başlatmak için PowerShell betiğini yürütün.
+1. Gereci ilk kez yapılandırın ve Azure geçişi projesi anahtarını kullanarak Azure geçişi projesi ile kaydedin.
 
-### <a name="generate-the-azure-migrate-project-key"></a>Azure geçişi proje anahtarını oluşturma
+### <a name="1-generate-the-azure-migrate-project-key"></a>1. Azure geçişi proje anahtarını oluşturma
 
 1. **Geçiş hedefleri** > **Sunucular** > **Azure Geçişi: Sunucu Değerlendirmesi** bölümünde **Bul**'u seçin.
 2. Makinelerde **bulunan makineler**  >  **sanallaştırılmış mı?**, **fiziksel veya diğer (AWS, GCP, Xen, vb.)** öğesini seçin.
@@ -139,10 +139,9 @@ Gereci kurmak için şunları yapın:
 1. Azure kaynakları başarıyla oluşturulduktan sonra bir **Azure geçişi proje anahtarı** oluşturulur.
 1. Yapılandırma sırasında gereç kaydını tamamlamamak için gerekli olacak şekilde anahtarı kopyalayın.
 
-### <a name="download-the-installer-script"></a>Yükleyici betiğini indir
+### <a name="2-download-the-installer-script"></a>2. yükleyici betiğini indirin
 
 **2: Azure geçişi yükleme gereci indirin** ve **İndir**' e tıklayın.
-
 
 ### <a name="verify-security"></a>Güvenliği doğrulama
 
@@ -167,7 +166,7 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
         Fiziksel (85 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2140338) | ca67e8dbe21d113ca93bfe94c1003ab7faba50472cb03972d642be8a466f78ce
  
 
-### <a name="run-the-azure-migrate-installer-script"></a>Azure geçişi yükleyici betiğini çalıştırma
+### <a name="3-run-the-azure-migrate-installer-script"></a>3. Azure geçişi yükleyici betiğini çalıştırın
 Yükleyici betiği şunları yapar:
 
 - Fiziksel sunucu keşfi ve değerlendirmesi için aracıları ve bir Web uygulamasını kurar.
@@ -196,13 +195,11 @@ Betiği aşağıdaki gibi çalıştırın:
 
 Herhangi bir sorun yaşıyorsanız, sorun giderme için C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log dosyasına komut dosyası günlüklerine erişebilirsiniz.
 
-
-
 ### <a name="verify-appliance-access-to-azure"></a>Azure 'a gereç erişimini doğrulama
 
 Gereç sanal makinesinin, [kamu](migrate-appliance.md#public-cloud-urls) ve [kamu](migrate-appliance.md#government-cloud-urls) bulutları için Azure URL 'lerine bağlanabildiğinizden emin olun.
 
-### <a name="configure-the-appliance"></a>Gereci yapılandırma
+### <a name="4-configure-the-appliance"></a>4. gereci yapılandırma
 
 Gereci ilk kez ayarlayın.
 

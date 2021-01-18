@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/25/2020
+ms.date: 01/12/2021
 ms.author: yelevin
-ms.openlocfilehash: f6fd6920fafe4c1080cb5539e4e0222d9d6e18cd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 313f201aeabd470850b27d979dc5253f80e82a55
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93103029"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541180"
 ---
 # <a name="connect-your-beyond-security-besecure-to-azure-sentinel"></a>Azure Sentinel 'e daha fazla güveninizi bağlama
 
 > [!IMPORTANT]
-> Azure Sentinel 'de daha fazla güvenlik beSECURE veri Bağlayıcısı Şu anda genel önizlemededir. Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sunulmaktadır. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Daha fazla güvenlik beSECURE Bağlayıcısı Şu anda **önizlemededir**. Beta, önizleme veya henüz genel kullanıma sunulmayan Azure özelliklerine uygulanan ek koşullar için [Microsoft Azure önizlemeleri için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 'na bakın.
 
-Güvenlik beSECURE bağlayıcısının ötesinde, tüm beSECURE güvenlik çözüm günlüklerinizi Azure Sentinel ile kolayca bağlamanıza, panoları görüntülemenize, özel uyarılar oluşturmanıza ve araştırmaya olanak tanır. BeSECURE ve Azure Sentinel arasındaki tümleştirme REST API kullanır.
+Daha fazla güvenlik beSECURE Bağlayıcısı sayesinde tüm beSECURE güvenlik çözüm günlüklerinizi Azure Sentinel ile kolayca bağlamanıza, panoları görüntüleyebilir, özel uyarılar oluşturabilir ve araştırmayı geliştirebilirsiniz. BeSECURE ve Azure Sentinel arasındaki tümleştirme REST API kullanır.
 
 > [!NOTE]
 > Veriler, Azure Sentinel çalıştırdığınız çalışma alanının coğrafi konumunda depolanır.
@@ -36,7 +36,9 @@ Güvenlik beSECURE bağlayıcısının ötesinde, tüm beSECURE güvenlik çöz�
 
 beSECURE, günlükleri doğrudan Azure Sentinel ile tümleştirebilir ve dışarı aktarabilir.
 
-1. Azure Sentinel portalında, **veri bağlayıcıları** ' na tıklayın ve **güvenlik Besecure (Önizleme) dışında** bir seçim yapın ve **bağlayıcı sayfasını açın** .
+1. Azure Sentinel gezinti menüsünde **veri bağlayıcıları**' nı seçin.
+
+1. **Veri bağlayıcıları** galerisinden **güvenlik Besecure (Önizleme)** ve ardından **bağlayıcı sayfasını aç**' ı seçin.
 
 1. Tarama sonuçlarını, tarama durumunu ve denetim izi günlüklerini Azure Sentinel 'e göndermek üzere beSECURE çözümünüzü yapılandırmak için aşağıdaki adımları izleyin.
 
@@ -49,23 +51,26 @@ beSECURE, günlükleri doğrudan Azure Sentinel ile tümleştirebilir ve dışar
 
     1. Azure Sentinel'i etkinleştirme
 
-    **Azure Sentinel ayarlarını kullanarak beSECURE sağlayın.**
-      - *Çalışma alanı kimliği* ve *birincil anahtar* değerlerini Azure Sentinel bağlayıcı sayfasından kopyalayın, Besecure yapılandırmasına yapıştırın ve **Değiştir** ' e tıklayın.
+    **Azure Sentinel ayarları ile beSECURE sağlama:**
+
+      *Çalışma alanı kimliği* ve *birincil anahtar* değerlerini Azure Sentinel bağlayıcı sayfasından kopyalayın, Besecure yapılandırmasına yapıştırın ve **Değiştir**' e tıklayın.
+      
+      :::image type="content" source="media/connectors/workspace-id-primary-key.png" alt-text="{Çalışma alanı KIMLIĞI ve birincil anahtar}":::
 
 ## <a name="find-your-data"></a>Verilerinizi bulun
 
-Başarılı bir bağlantı kurulduktan sonra, veriler **günlüklerde** , **customlogs** bölümünün altında aşağıdaki tablolardan bir veya daha fazlasına görünür:
+Başarılı bir bağlantı kurulduktan sonra, veriler **günlüklerde**, **customlogs** bölümünün altında aşağıdaki tablolardan bir veya daha fazlasına görünür:
   - `beSECURE_ScanResults_CL`
   - `beSECURE_ScanEvents_CL`
   - `beSECURE_Audit_CL`
 
-Log Analytics beSECURE günlüklerini sorgulamak için, sorgu penceresinin en üstündeki yukarıdaki tablo adlarından birini girin.
+Analiz kurallarında beSECURE günlüklerini sorgulamak, sorguları, araştırmaları veya Azure Sentinel 'de başka herhangi bir yeri ele almak için, sorgu penceresinin en üstündeki yukarıdaki tablo adlarından birini girin.
 
 ## <a name="validate-connectivity"></a>Bağlantıyı doğrula
 Günlüklerinizin Log Analytics görünmeye başlaması 20 dakikaya kadar sürebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu belgede, Azure Sentinel 'e nasıl bağlanaleceğini öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
-- [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
+- [Verilerinize ve olası tehditlere nasıl görünürlük alabileceğinizi](quickstart-get-visibility.md)öğrenin.
 - [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
 - Verilerinizi izlemek için [çalışma kitaplarını kullanın](tutorial-monitor-your-data.md) .

@@ -7,18 +7,18 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: e11c3277ffa07fe0a8d5fc7495e2c09152ce585f
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: c697a8a944c74d12202c4e9e148713c4c8433026
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704304"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541368"
 ---
 # <a name="tutorial-discover-vmware-vms-with-server-assessment"></a>Öğretici: Sunucu değerlendirmesi ile VMware VM 'lerini bulma
 
-Azure 'a geçiş sürecinizin bir parçası olarak şirket içi envanterinizi ve iş yüklerinizi keşfedeceksiniz. 
+Azure 'a geçiş sürecinizin bir parçası olarak şirket içi envanterinizi ve iş yüklerinizi keşfedeceksiniz.
 
-Bu öğreticide, basit bir Azure geçişi gereci kullanarak Azure geçişi: Sunucu değerlendirmesi aracı ile şirket içi VMware sanal makinelerini (VM) nasıl keşfedebileceğiniz gösterilmektedir. Gereci bir VMware VM olarak dağıtırsınız; VM ve performans meta verilerini sürekli olarak bulur, VM 'lerde çalışan uygulamalar ve VM bağımlılıkları.
+Bu öğreticide, basit bir Azure geçişi gereci kullanarak Azure geçişi: Sunucu değerlendirmesi aracı ile şirket içi VMware sanal makinelerini (VM) nasıl keşfedebileceğiniz gösterilmektedir. Sanal makineleri bir VMware sanal makinesi olarak dağıtırsınız; VM 'Ler ve performans meta verileri, VM 'lerde çalışan uygulamalar ve VM bağımlılıkları için sürekli olarak keşif yapabilirsiniz.
 
 Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
@@ -42,16 +42,17 @@ Bu öğreticiye başlamadan önce, bu önkoşulların yerinde olup olmadığın�
 
 **Gereksinim** | **Ayrıntılar**
 --- | ---
-**vCenter Server/ESXi Konağı** | 5,5, 6,0, 6,5 veya 6,7 sürümünü çalıştıran bir vCenter Server gerekir.<br/><br/> VM 'Ler sürüm 5,5 veya üzerini çalıştıran bir ESXi konağında barındırılmalıdır.<br/><br/> VCenter Server, Gereç verilerini toplayabilmesi için TCP bağlantı noktası 443 ' de gelen bağlantılara izin verin.<br/><br/> Gereç, bağlantı noktası 443 ' de varsayılan olarak vCenter 'a bağlanır. VCenter sunucusu farklı bir bağlantı noktasını dinliyorsa, bulmayı başlatmak için gerecden sunucuya bağlandığınızda bağlantı noktasını değiştirebilirsiniz.<br/><br/> VM 'Leri barındıran Exsı sunucusunda, uygulama bulma için 443 numaralı TCP bağlantı noktasında gelen erişime izin verildiğinden emin olun.
-**Elektrikli** | vCenter Server Azure geçiş gereci için bir VM ayırmak üzere kaynaklara ihtiyaç duyuyor:<br/><br/> - Windows Server 2016<br/><br/> -32 GB RAM, sekiz vCPU ve yaklaşık 80 GB disk depolaması.<br/><br/> -Bir dış sanal anahtar ve VM 'nin doğrudan veya bir ara sunucu üzerinden internet erişimi.
-**VM’ler** | Bu öğreticiyi kullanabilmeniz için Windows VM 'lerinin Windows Server 2016, 2012 R2, 2012 veya 2008 R2 çalıştırması gerekir.<br/><br/> Linux VM 'lerinin Red Hat Enterprise Linux 7/6/5, Ubuntu Linux 14.04/16.04, de, 7/8, Oracle Linux 6/7 veya CentOS 5/6/7 çalıştırıyor olması gerekir.<br/><br/> VM 'Ler, VMware araçları (10.2.0 'den sonraki bir sürüm) yüklü ve çalışır olmalıdır.<br/><br/> Windows VM 'lerde, Windows PowerShell 2,0 veya sonraki bir sürümü yüklenmelidir.
+**vCenter Server/ESXi Konağı** | 5,5, 6,0, 6,5 veya 6,7 sürümünü çalıştıran bir vCenter Server gerekir.<br/><br/> VM 'Ler sürüm 5,5 veya üzerini çalıştıran bir ESXi konağında barındırılmalıdır.<br/><br/> VCenter Server, Gereç yapılandırma ve performans meta verilerini toplayabilmesi için TCP bağlantı noktası 443 ' de gelen bağlantılara izin verin.<br/><br/> Gereç, bağlantı noktası 443 ' de varsayılan olarak vCenter 'a bağlanır. VCenter Server farklı bir bağlantı noktasında dinliyorsa, Gereç Yapılandırma Yöneticisi 'nde vCenter Server ayrıntılarını sağladığınızda bağlantı noktasını değiştirebilirsiniz.<br/><br/> VM 'Leri barındıran ESXi sunucusunda, VM 'Lerde ve VM bağımlılıklarında yüklü olan uygulamaları öğrenmek için TCP bağlantı noktası 443 ' de gelen erişime izin verildiğinden emin olun.
+**Elektrikli** | vCenter Server Azure geçiş gereci için bir VM ayırmak üzere kaynaklara ihtiyaç duyuyor:<br/><br/> -32 GB RAM, 8 vCPU ve yaklaşık 80 GB disk depolaması.<br/><br/> -Bir dış sanal anahtar ve doğrudan ya da bir proxy aracılığıyla gereç VM 'sinde internet erişimi.
+**VM’ler** | Tüm Windows ve Linux işletim sistemi sürümleri, yapılandırma ve performans meta verilerinin bulunması ve VM 'lerde yüklü olan uygulamaların keşfedilmesi için desteklenir. <br/><br/> Aracısız bağımlılık analizi için desteklenen işletim sistemi sürümleri için [buraya](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) bakın.<br/><br/> Yüklü uygulamaları ve VM bağımlılıklarını öğrenmek için, VMware araçları (10.2.0 ' den sonraki sürümler) yüklenmeli ve VM 'lerde çalışıyor olmalıdır ve Windows VM 'lerinde PowerShell sürüm 2,0 veya üzeri yüklü olmalıdır.
 
 
 ## <a name="prepare-an-azure-user-account"></a>Azure Kullanıcı hesabı hazırlama
 
 Azure geçişi projesi oluşturmak ve Azure geçişi gerecini kaydettirmek için, şu bir hesaba sahip olmanız gerekir:
-- Azure aboneliğinde katkıda bulunan veya sahip izinleri.
-- Azure Active Directory uygulamaları kaydetme izinleri.
+- Azure aboneliğinde katkıda bulunan veya sahip izinleri
+- Azure Active Directory (AAD) uygulamalarını kaydetme izinleri
+- Sahip veya katkıda bulunan, Azure aboneliğinde aracısız VMware geçişi sırasında kullanılan bir Key Vault oluşturmak için Kullanıcı erişimi Yöneticisi izinleri
 
 Ücretsiz Azure hesabı oluşturduysanız aboneliğinizin sahibi siz olursunuz. Abonelik sahibi değilseniz, izinleri aşağıdaki şekilde atamak için sahibiyle birlikte çalışın:
 
@@ -70,16 +71,19 @@ Azure geçişi projesi oluşturmak ve Azure geçişi gerecini kaydettirmek için
 
     ![Hesaba rol atamak için rol ataması Ekle sayfasını açar](./media/tutorial-discover-vmware/assign-role.png)
 
-7. Portalda, kullanıcılar için arama yapın ve **Hizmetler** altında **Kullanıcılar**' ı seçin.
-8. **Kullanıcı ayarları**' nda, Azure AD kullanıcılarının uygulamaları kaydedebildiğini doğrulayın (varsayılan olarak **Evet** ' e ayarlanır).
+1. Gereci kaydettirmek için, Azure hesabınızın **AAD uygulamalarını kaydetme izinleri** olması gerekir.
+1. Azure Portal ' de, **Azure Active Directory**  >  **kullanıcıları**  >  **Kullanıcı ayarları**' na gidin.
+1. **Kullanıcı ayarları**' nda, Azure AD kullanıcılarının uygulamaları kaydedebildiğini doğrulayın (varsayılan olarak **Evet** ' e ayarlanır).
 
     ![Kullanıcıların Active Directory uygulamalar kaydedebildiğini Kullanıcı ayarlarında doğrula](./media/tutorial-discover-vmware/register-apps.png)
 
-9. Alternatif olarak, kiracı/genel yönetici, AAD uygulamalarının kaydedilmesine izin vermek için **uygulama geliştirici** rolünü bir hesaba atayabilir. [Daha fazla bilgi edinin](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
+9. ' Uygulama kayıtları ' ayarlarının ' No ' olarak ayarlanması durumunda, gerekli izni atamak için kiracı/genel yönetici isteyin. Alternatif olarak, kiracı/genel yönetici, AAD uygulamasının kaydedilmesine izin vermek için **uygulama geliştirici** rolünü bir hesaba atayabilir. [Daha fazla bilgi edinin](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="prepare-vmware"></a>VMware 'yi hazırlama
 
-VCenter Server, gerecin vCenter Server erişmek için kullanabileceği bir hesap oluşturun ve gerekli bağlantı noktalarının açık olduğundan emin olun. Ayrıca, gerecin sanal makinelere erişmek için kullanabileceği bir hesaba ihtiyacınız vardır. 
+VCenter Server, hesabınızın bir OVA dosyası kullanarak VM oluşturma izinlerine sahip olup olmadığını denetleyin. Bu, Azure geçişi gereci bir VMware sanal makinesi olarak bir OVA dosyası kullanarak dağıtırken gereklidir.
+
+Sunucu değerlendirmesi, VMware VM 'lerinin bulunması ve değerlendirilmesi için vCenter Server salt okunurdur. Yüklü uygulamaları ve VM bağımlılıklarını da öğrenmek isterseniz, hesabın **Konuk işlemleri > sanal makineler** için etkinleştirilmiş ayrıcalıklara ihtiyacı vardır.
 
 ### <a name="create-an-account-to-access-vcenter"></a>VCenter 'a erişmek için bir hesap oluşturun
 
@@ -90,20 +94,20 @@ VSphere Web Istemcisinde bir hesabı aşağıdaki şekilde ayarlayın:
 3. **Kullanıcılar**' da yeni bir kullanıcı ekleyin.
 4. **Yeni Kullanıcı**' da hesap ayrıntılarını yazın. Daha sonra, **Tamam**'a tıklayın.
 5. **Genel izinler**' de, Kullanıcı hesabını seçin ve hesaba **salt okunurdur** rolünü atayın. Daha sonra, **Tamam**'a tıklayın.
-6. **Roller** ' de > **salt oku** rolünü seçin ve **ayrıcalıklar** bölümünde **Konuk işlemler**' i seçin. Bu ayrıcalıklar, VM 'lerde çalışan uygulamaları keşfetmesi ve VM bağımlılıklarını analiz etmek için gereklidir.
+6. Ayrıca yüklü uygulamaları ve VM bağımlılıklarını bulmayı istiyorsanız, **Roller** ' e gidin > **salt oku** rolünü seçin ve **ayrıcalıklar** bölümünde **Konuk işlemler**' i seçin. "Alt öğelere yay" onay kutusunu seçerek ayrıcalıkları vCenter Server altındaki tüm nesnelere yayabilirsiniz.
  
     ![Salt okuma rolünde Konuk işlemlere izin vermek için onay kutusu](./media/tutorial-discover-vmware/guest-operations.png)
 
 
 ### <a name="create-an-account-to-access-vms"></a>VM 'Lere erişmek için bir hesap oluşturma
 
-Gereç, uygulamaları bulmaya ve VM bağımlılıklarını çözümlemeye yönelik VM 'Lere erişir. Gereç, sanal makinelere hiçbir aracı yüklemez.
+Yüklü uygulamaları ve VM bağımlılıklarını öğrenmek için VM 'lerde gereken ayrıcalıklara sahip bir kullanıcı hesabına sahip olmanız gerekir. Kullanıcı hesabını gereç Yapılandırma Yöneticisi ' nde sağlayabilirsiniz. Gereç, sanal makinelere hiçbir aracı yüklemez.
 
-1. Gerecin Windows VM 'lerinde uygulama ve bağımlılıkları keşfetmesi için kullanabileceği bir yerel yönetici hesabı oluşturun.
-2. Linux makineler için,/bin/netstat ve/bin/ls dosyalarında şu izinlere sahip bir kullanıcı hesabı olan kök ayrıcalıklarına sahip bir kullanıcı hesabı veya alternatif olarak bir kullanıcı hesabı oluşturun: CAP_DAC_READ_SEARCH ve CAP_SYS_PTRACE.
+1. Windows VM 'ler için VM 'lerde yönetim izinlerine sahip bir hesap (yerel veya etki alanı) oluşturun.
+2. Linux VM 'Ler için kök ayrıcalıkları olan bir hesap oluşturun. Alternatif olarak,/bin/netstat ve/bin/ls dosyalarında şu izinlere sahip bir hesap oluşturabilirsiniz: CAP_DAC_READ_SEARCH ve CAP_SYS_PTRACE.
 
 > [!NOTE]
-> Azure geçişi, tüm Windows sunucularında App-Discovery için bir kimlik bilgisi ve tüm Linux makinelerde App-Discovery için bir kimlik bilgisi destekler.
+> Şu anda Azure geçişi, Windows VM 'Ler için bir kullanıcı hesabını ve yüklü uygulamalar ve VM bağımlılıklarını bulmak için gereç üzerinde sağlandırabilen Linux VM 'Ler için bir kullanıcı hesabı destekler.
 
 
 ## <a name="set-up-a-project"></a>Proje ayarlama
@@ -119,34 +123,30 @@ Yeni bir Azure geçişi projesi ayarlayın.
    ![Proje adı ve bölgesi için kutular](./media/tutorial-discover-vmware/new-project.png)
 
 7. **Oluştur**’u seçin.
-8. Azure Geçişi projesinin dağıtılması için birkaç dakika bekleyin.
-
-**Azure geçişi: Sunucu değerlendirmesi** Aracı, varsayılan olarak yeni projeye eklenir.
+8. Azure geçişi projesinin dağıtılması için birkaç dakika bekleyin. **Azure geçişi: Sunucu değerlendirmesi** Aracı, varsayılan olarak yeni projeye eklenir.
 
 ![Varsayılan olarak eklenen sunucu değerlendirmesi aracını gösteren sayfa](./media/tutorial-discover-vmware/added-tool.png)
 
+> [!NOTE]
+> Zaten bir proje oluşturduysanız, daha fazla sanal makine bulmayı ve değerlendirmeyi yapmak için ek gereçlere kaydolmak üzere aynı projeyi kullanabilirsiniz.[daha fazla bilgi edinin](create-manage-projects.md#find-a-project)
 
 ## <a name="set-up-the-appliance"></a>Gereci ayarlama
 
-Bir OVA şablonunu kullanarak gereci ayarlamak için:
-- Portalda bir gereç adı sağlayın ve bir Azure geçişi proje anahtarı oluşturun
-- Bir OVA şablon dosyasını indirip vCenter Server içe aktarın.
-- Gereci oluşturun ve Azure geçişi sunucu değerlendirmesi 'ne bağlanıp bağlanamadığından emin olun.
-- Gereci ilk kez yapılandırın ve Azure geçişi projesi anahtarını kullanarak Azure geçişi projesi ile kaydedin.
+Azure geçişi: Sunucu değerlendirmesi basit bir Azure geçişi gereci kullanır. Gereç, VM bulma işlemini gerçekleştirir ve Azure geçişi 'ne VM yapılandırma ve performans meta verilerini gönderir. Gereç, Azure geçişi projesinden indirilebilen bir OVA şablonu dağıtarak ayarlanabilir.
 
 > [!NOTE]
-> Bir nedenden dolayı, şablonu kullanarak gereci ayarlayamazsınız, bunu bir PowerShell betiği kullanarak ayarlayabilirsiniz. [Daha fazla bilgi edinin](deploy-appliance-script.md#set-up-the-appliance-for-vmware).
+> Bir nedenden dolayı, şablonu kullanarak gereci ayarlayamazsınız, var olan bir Windows Server 2016 sunucusunda bir PowerShell betiği kullanarak bu ayarı yapabilirsiniz. [Daha fazla bilgi edinin](deploy-appliance-script.md#set-up-the-appliance-for-vmware).
 
 
 ### <a name="deploy-with-ova"></a>OVA ile dağıtma
 
 Bir OVA şablonunu kullanarak gereci ayarlamak için:
-- Portalda bir gereç adı sağlayın ve bir Azure geçişi proje anahtarı oluşturun
-- Bir OVA şablon dosyasını indirip vCenter Server içe aktarın.
-- Gereci oluşturun ve Azure geçişi sunucu değerlendirmesi 'ne bağlanıp bağlanamadığından emin olun.
-- Gereci ilk kez yapılandırın ve Azure geçişi projesi anahtarını kullanarak Azure geçişi projesi ile kaydedin.
+1. Portalda bir gereç adı sağlayın ve bir Azure geçişi proje anahtarı oluşturun
+1. Bir OVA şablon dosyasını indirip vCenter Server içe aktarın. OVA 'nın güvenli olduğunu doğrulayın.
+1. Gereci oluşturun ve Azure geçişi sunucu değerlendirmesi 'ne bağlanıp bağlanamadığından emin olun.
+1. Gereci ilk kez yapılandırın ve Azure geçişi projesi anahtarını kullanarak Azure geçişi projesi ile kaydedin.
 
-### <a name="generate-the-azure-migrate-project-key"></a>Azure geçişi proje anahtarını oluşturma
+### <a name="1-generate-the-azure-migrate-project-key"></a>1. Azure geçişi proje anahtarını oluşturma
 
 1. **Geçiş hedefleri** > **Sunucular** > **Azure Geçişi: Sunucu Değerlendirmesi** bölümünde **Bul**'u seçin.
 2. Makinelerde **bulunan makinelerde**  >  **makineler sanallaştırılmış mı?**, **VMware vSphere hiper yöneticiyle Evet '** i seçin.
@@ -155,10 +155,9 @@ Bir OVA şablonunu kullanarak gereci ayarlamak için:
 1. Azure kaynakları başarıyla oluşturulduktan sonra bir **Azure geçişi proje anahtarı** oluşturulur.
 1. Yapılandırma sırasında gereç kaydını tamamlamamak için gerekli olacak şekilde anahtarı kopyalayın.
 
-### <a name="download-the-ova-template"></a>OVA şablonunu indirin
+### <a name="2-download-the-ova-template"></a>2. OVA şablonunu indirin
 
-**2: Azure geçişi yükleme gereci indirin**, öğesini seçin. OVA dosyası ve **İndir**' e tıklayın. 
-
+**2: Azure geçişi yükleme gereci indirin**, öğesini seçin. OVA dosyası ve **İndir**' e tıklayın.
 
 ### <a name="verify-security"></a>Güvenliği doğrulama
 
@@ -185,10 +184,7 @@ Dağıtım yapmadan önce OVA dosyasının güvenli olup olmadığını denetley
         --- | --- | ---
         VMware (85,8 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2140337) | 2daaa2a59302bf911e8ef195f8add7d7c8352de77a9af0b860e2a627979085ca
 
-
-
-
-### <a name="create-the-appliance-vm"></a>Gereç VM 'sini oluşturma
+### <a name="3-create-the-appliance-vm"></a>3. gereç VM 'sini oluşturma
 
 İndirilen dosyayı içeri aktarın ve bir VM oluşturun.
 
@@ -207,7 +203,7 @@ Dağıtım yapmadan önce OVA dosyasının güvenli olup olmadığını denetley
 Gereç sanal makinesinin, [kamu](migrate-appliance.md#public-cloud-urls) ve [kamu](migrate-appliance.md#government-cloud-urls) bulutları için Azure URL 'lerine bağlanabildiğinizden emin olun.
 
 
-### <a name="configure-the-appliance"></a>Gereci yapılandırma
+### <a name="4-configure-the-appliance"></a>4. gereci yapılandırma
 
 Gereci ilk kez ayarlayın.
 
@@ -263,15 +259,16 @@ Gerecin, VM 'lerin yapılandırma ve performans verilerini bulması için vCente
 1. Bulmayı başlatmadan önce vCenter Server bağlantıyı **yeniden doğrulayabilirsiniz** .
 1. **3. Adım: yüklü uygulamaları bulmaya ve aracısız bağımlılık eşlemesi gerçekleştirmeye YÖNELIK VM kimlik bilgilerini sağlayın**, kimlik bilgileri **Ekle**' ye tıklayın ve kimlik bilgilerinin sağlandığı işletim sistemini, kimlik bilgileri Için kolay adı ve **Kullanıcı** adını ve **parolayı** belirtin. Ardından **Kaydet**' e tıklayın.
 
-    - [Uygulama bulma özelliği](how-to-discover-applications.md)veya [aracısız bağımlılık Analizi özelliği](how-to-create-group-machine-dependencies-agentless.md)için kullanmak üzere bir hesap oluşturduysanız, isteğe bağlı olarak burada kimlik bilgileri eklersiniz.
+    - [Uygulama bulma](how-to-discover-applications.md)veya [aracısız bağımlılık Analizi](how-to-create-group-machine-dependencies-agentless.md)için kullanılacak bir hesap oluşturduysanız, isteğe bağlı olarak burada kimlik bilgileri eklersiniz.
     - Bu özellikleri kullanmak istemiyorsanız, adımı atlamak için kaydırıcıya tıklayabilirsiniz. Amacınızı daha sonra dilediğiniz zaman tersine çevirebilirsiniz.
-    - [Uygulama bulma](migrate-support-matrix-vmware.md#application-discovery-requirements)veya [aracısız bağımlılık Analizi](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)için gereken kimlik bilgilerini gözden geçirin.
+    - [Uygulama bulma](migrate-support-matrix-vmware.md#application-discovery-requirements)hesabında veya [aracısız bağımlılık Analizi](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)için gereken izinleri gözden geçirin.
 
 5. VM bulmayı **başlatmak için bulmayı Başlat**' a tıklayın. Bulma işlemi başarılı bir şekilde başlatıldıktan sonra, tablodaki vCenter Server IP adresine/FQDN 'ye karşı bulma durumunu kontrol edebilirsiniz.
 
 Bulma işlemi aşağıdaki gibi çalışmaktadır:
 - Keşfedilen VM meta verilerinin portalda görünmesi 15 dakika içinde sürer.
 - Yüklenen uygulamaların, rollerin ve özelliklerin bulunması biraz zaman alır. Süre, bulunan VM sayısına bağlıdır. 500 VM 'Ler için, uygulama envanterinin Azure geçişi portalında görünmesi yaklaşık bir saat sürer.
+- VM 'lerin bulunması tamamlandıktan sonra, portaldan istenen VM 'lerde aracısız bağımlılık analizini etkinleştirebilirsiniz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

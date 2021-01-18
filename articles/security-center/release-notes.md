@@ -1,6 +1,6 @@
 ---
 title: Azure Güvenlik Merkezi için sürüm notları
-description: Azure Güvenlik Merkezi 'nde nelerin yeni ve değiştirilmiş olduğuna ilişkin bir açıklama.
+description: Azure Güvenlik Merkezi 'nde nelerin yeni ve değiştirilmiş olduğuna ilişkin bir açıklama
 services: security-center
 documentationcenter: na
 author: memildin
@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/07/2021
+ms.date: 01/17/2021
 ms.author: memildin
-ms.openlocfilehash: 86da6c0a3393dd3f47143355597cd9ccdec9928d
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 48e7093c30ffb135231f5843cb0767848f242d89
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539939"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541401"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -32,6 +32,24 @@ Güvenlik Merkezi 'ne yakında çıkacak *planlı* değişiklikler hakkında bil
 
 
 ## <a name="january-2021"></a>Ocak 2021
+
+Aralık ayında güncelleştirmeler şunlardır:
+
+- [Filtrelenmiş öneriler listesinin CSV dışa aktarılması](#csv-export-of-filtered-list-of-recommendations)
+- [Şirket içi ve çoklu bulut makinelerinde güvenlik açığı değerlendirmesi genel kullanıma sunuldu](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-generally-available)
+
+
+### <a name="csv-export-of-filtered-list-of-recommendations"></a>Filtrelenmiş öneriler listesinin CSV dışa aktarılması 
+
+2020 Kasım 'da öneriler sayfasına filtreler ekledik ([öneriler listesi şimdi filtreler içeriyor](#recommendations-list-now-includes-filters)). Aralık ayında, bu filtreleri genişlettik ([Öneriler sayfasında ortam, önem derecesi ve kullanılabilir yanıtlar için yeni filtreler bulunur](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses)). 
+
+Bu duyuruda CSV dışarı aktarmanın yalnızca filtrelenmiş listede görüntülenen önerileri içermesi **IÇIN CSV 'ye indir** düğmesinin davranışını değiştiriyorsunuz. 
+
+Örneğin, aşağıdaki görüntüde, listenin iki önerilere göre filtrelendiğine bakabilirsiniz. Oluşturulan CSV dosyası, bu iki önerinin etkilediği her kaynak için durum ayrıntılarını içerir.   
+
+:::image type="content" source="media/security-center-managing-and-responding-alerts/export-to-csv-with-filters.png" alt-text="Filtrelenmiş önerileri bir CSV dosyasına dışarı aktarma":::
+
+[Azure Güvenlik Merkezi 'Nde güvenlik önerileri](security-center-recommendations.md)hakkında daha fazla bilgi edinin.
 
 ### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-generally-available"></a>Şirket içi ve çoklu bulut makinelerinde güvenlik açığı değerlendirmesi genel kullanıma sunuldu
 

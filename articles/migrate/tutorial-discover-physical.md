@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 639b810cbb99496f84b76fc96124145a019fb625
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 548cee262d874f5bc0f6024a857c2bb8a5466106
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705549"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541351"
 ---
 # <a name="tutorial-discover-physical-servers-with-server-assessment"></a>Öğretici: Sunucu değerlendirmesi ile fiziksel sunucuları bulma
 
@@ -40,7 +40,7 @@ Bu öğreticiye başlamadan önce, bu önkoşulların yerinde olup olmadığın�
 
 **Gereksinim** | **Ayrıntılar**
 --- | ---
-**Elektrikli** | Azure geçişi gerecinin çalıştırılacağı bir makineye ihtiyacınız vardır. Makine şunları içermelidir:<br/><br/> -Windows Server 2016 yüklendi. _(Şu anda gereç dağıtımı yalnızca Windows Server 2016 ' de desteklenir.)_<br/><br/> -16 GB RAM, 8 vCPU, yaklaşık 80 GB disk depolaması<br/><br/> -Doğrudan veya bir ara sunucu üzerinden internet erişimi olan statik veya dinamik bir IP adresi.
+**Elektrikli** | Azure geçişi gerecinin çalıştırılacağı bir makineye ihtiyacınız vardır. Makine şunları içermelidir:<br/><br/> -Windows Server 2016 yüklendi.<br/> _(Şu anda gereç dağıtımı yalnızca Windows Server 2016 ' de desteklenir.)_<br/><br/> -16 GB RAM, 8 vCPU, yaklaşık 80 GB disk depolaması<br/><br/> -Doğrudan veya bir ara sunucu üzerinden internet erişimi olan statik veya dinamik bir IP adresi.
 **Windows sunucuları** | BT 'nin yapılandırma ve performans meta verilerini çekebilmesi için WinRM bağlantı noktası 5985 (HTTP) üzerinde gelen bağlantılara izin verin.
 **Linux sunucuları** | 22 (TCP) numaralı bağlantı noktasında gelen bağlantılara izin verin.
 
@@ -48,7 +48,7 @@ Bu öğreticiye başlamadan önce, bu önkoşulların yerinde olup olmadığın�
 
 Azure geçişi projesi oluşturmak ve Azure geçişi gerecini kaydettirmek için, şu bir hesaba sahip olmanız gerekir:
 - Azure aboneliğinde katkıda bulunan veya sahip izinleri.
-- Azure Active Directory uygulamaları kaydetme izinleri.
+- Azure Active Directory (AAD) uygulamalarını kaydetme izinleri.
 
 Ücretsiz Azure hesabı oluşturduysanız aboneliğinizin sahibi siz olursunuz. Abonelik sahibi değilseniz, izinleri aşağıdaki şekilde atamak için sahibiyle birlikte çalışın:
 
@@ -67,19 +67,20 @@ Azure geçişi projesi oluşturmak ve Azure geçişi gerecini kaydettirmek için
 
     ![Hesaba rol atamak için rol ataması Ekle sayfasını açar](./media/tutorial-discover-physical/assign-role.png)
 
-7. Portalda, kullanıcılar için arama yapın ve **Hizmetler** altında **Kullanıcılar**' ı seçin.
-8. **Kullanıcı ayarları**' nda, Azure AD kullanıcılarının uygulamaları kaydedebildiğini doğrulayın (varsayılan olarak **Evet** ' e ayarlanır).
+1. Gereci kaydettirmek için, Azure hesabınızın **AAD uygulamalarını kaydetme izinleri** olması gerekir.
+1. Azure Portal ' de, **Azure Active Directory**  >  **kullanıcıları**  >  **Kullanıcı ayarları**' na gidin.
+1. **Kullanıcı ayarları**' nda, Azure AD kullanıcılarının uygulamaları kaydedebildiğini doğrulayın (varsayılan olarak **Evet** ' e ayarlanır).
 
     ![Kullanıcıların Active Directory uygulamalar kaydedebildiğini Kullanıcı ayarlarında doğrula](./media/tutorial-discover-physical/register-apps.png)
 
-9. Alternatif olarak, kiracı/genel yönetici, AAD uygulamalarının kaydedilmesine izin vermek için **uygulama geliştirici** rolünü bir hesaba atayabilir. [Daha fazla bilgi edinin](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
+9. ' Uygulama kayıtları ' ayarlarının ' No ' olarak ayarlanması durumunda, gerekli izni atamak için kiracı/genel yönetici isteyin. Alternatif olarak, kiracı/genel yönetici, AAD uygulamasının kaydedilmesine izin vermek için **uygulama geliştirici** rolünü bir hesaba atayabilir. [Daha fazla bilgi edinin](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="prepare-physical-servers"></a>Fiziksel sunucuları hazırlama
 
 Gerecin fiziksel sunuculara erişmek için kullanabileceği bir hesap ayarlayın.
 
-- Windows sunucularında, etki alanına katılmış makineler için bir etki alanı hesabı ve etki alanına katılmamış makineler için yerel bir hesap kullanın. Kullanıcı hesabı şu gruplara eklenmelidir: Uzaktan Yönetim Kullanıcıları, Performans İzleyicisi Kullanıcıları ve Performans Günlüğü Kullanıcıları.
-- Linux sunucuları için, bulmak istediğiniz Linux sunucularında bir kök hesabın olması gerekir. Alternatif olarak, aşağıdaki komutları kullanarak kök olmayan bir hesabı gerekli yetenekler olarak ayarlayabilirsiniz:
+- **Windows sunucularında**, etki alanına katılmış makineler için bir etki alanı hesabı ve etki alanına katılmamış makineler için yerel bir hesap kullanın. Kullanıcı hesabı şu gruplara eklenmelidir: Uzaktan Yönetim Kullanıcıları, Performans İzleyicisi Kullanıcıları ve Performans Günlüğü Kullanıcıları.
+- **Linux sunucuları** için, aramak istediğiniz Linux sunucularında bir kök hesaba ihtiyacınız vardır. Alternatif olarak, aşağıdaki komutları kullanarak kök olmayan bir hesabı gerekli yetenekler olarak ayarlayabilirsiniz:
 
 **Komut** | **Amaç**
 --- | --- |
@@ -102,23 +103,25 @@ Yeni bir Azure geçişi projesi ayarlayın.
    ![Proje adı ve bölgesi için kutular](./media/tutorial-discover-physical/new-project.png)
 
 7. **Oluştur**’u seçin.
-8. Azure Geçişi projesinin dağıtılması için birkaç dakika bekleyin.
-
-**Azure geçişi: Sunucu değerlendirmesi** Aracı, varsayılan olarak yeni projeye eklenir.
+8. Azure Geçişi projesinin dağıtılması için birkaç dakika bekleyin. **Azure geçişi: Sunucu değerlendirmesi** Aracı, varsayılan olarak yeni projeye eklenir.
 
 ![Varsayılan olarak eklenen sunucu değerlendirmesi aracını gösteren sayfa](./media/tutorial-discover-physical/added-tool.png)
 
+> [!NOTE]
+> Zaten bir proje oluşturduysanız, daha fazla sunucu bulmayı ve değerlendirmeyi yapmak üzere ek gereçlere kaydolmak için aynı projeyi kullanabilirsiniz. [Daha fazla bilgi](create-manage-projects.md#find-a-project)
 
 ## <a name="set-up-the-appliance"></a>Gereci ayarlama
 
-Gereci kurmak için şunları yapın:
-- Portal 'da bir gereç adı sağlayın ve bir Azure geçişi proje anahtarı oluşturun.
-- Azure geçişi yükleyicisi komut dosyasıyla Azure portal sıkıştırılmış bir dosyayı indirin.
-- Sıkıştırılmış dosyadan içerikleri ayıklayın. Yönetim ayrıcalıklarıyla PowerShell konsolunu başlatın.
-- Gereç Web uygulamasını başlatmak için PowerShell betiğini yürütün.
-- Gereci ilk kez yapılandırın ve Azure geçişi projesi anahtarını kullanarak Azure geçişi projesi ile kaydedin.
+Azure geçişi gereci, sunucu bulma işlemini gerçekleştirir ve Azure geçişi 'ne sunucu yapılandırma ve performans meta verileri gönderir. Gereç, Azure geçişi projesinden indirilebilen bir PowerShell betiği yürütülerek ayarlanabilir.
 
-### <a name="generate-the-azure-migrate-project-key"></a>Azure geçişi proje anahtarını oluşturma
+Gereci kurmak için şunları yapın:
+1. Portal 'da bir gereç adı sağlayın ve bir Azure geçişi proje anahtarı oluşturun.
+2. Azure geçişi yükleyicisi komut dosyasıyla Azure portal sıkıştırılmış bir dosyayı indirin.
+3. Sıkıştırılmış dosyadan içerikleri ayıklayın. Yönetim ayrıcalıklarıyla PowerShell konsolunu başlatın.
+4. Gereç Web uygulamasını başlatmak için PowerShell betiğini yürütün.
+5. Gereci ilk kez yapılandırın ve Azure geçişi projesi anahtarını kullanarak Azure geçişi projesi ile kaydedin.
+
+### <a name="1-generate-the-azure-migrate-project-key"></a>1. Azure geçişi proje anahtarını oluşturma
 
 1. **Geçiş hedefleri** > **Sunucular** > **Azure Geçişi: Sunucu Değerlendirmesi** bölümünde **Bul**'u seçin.
 2. Makinelerde **bulunan makineler**  >  **sanallaştırılmış mı?**, **fiziksel veya diğer (AWS, GCP, Xen, vb.)** öğesini seçin.
@@ -127,10 +130,9 @@ Gereci kurmak için şunları yapın:
 1. Azure kaynakları başarıyla oluşturulduktan sonra bir **Azure geçişi proje anahtarı** oluşturulur.
 1. Yapılandırma sırasında gereç kaydını tamamlamamak için gerekli olacak şekilde anahtarı kopyalayın.
 
-### <a name="download-the-installer-script"></a>Yükleyici betiğini indir
+### <a name="2-download-the-installer-script"></a>2. yükleyici betiğini indirin
 
 **2: Azure geçişi yükleme gereci indirin** ve **İndir**' e tıklayın.
-
 
 ### <a name="verify-security"></a>Güvenliği doğrulama
 
@@ -155,7 +157,7 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
         Fiziksel (85,8 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2140338) | ae132ebc574caf231bf41886891040ffa7abbe150c8b50436818b69e58622276
  
 
-### <a name="run-the-azure-migrate-installer-script"></a>Azure geçişi yükleyici betiğini çalıştırma
+### <a name="3-run-the-azure-migrate-installer-script"></a>3. Azure geçişi yükleyici betiğini çalıştırın
 Yükleyici betiği şunları yapar:
 
 - Fiziksel sunucu keşfi ve değerlendirmesi için aracıları ve bir Web uygulamasını kurar.
@@ -184,13 +186,11 @@ Betiği aşağıdaki gibi çalıştırın:
 
 Herhangi bir sorun yaşıyorsanız, sorun giderme için C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log dosyasına komut dosyası günlüklerine erişebilirsiniz.
 
-
-
 ### <a name="verify-appliance-access-to-azure"></a>Azure 'a gereç erişimini doğrulama
 
 Gereç sanal makinesinin, [kamu](migrate-appliance.md#public-cloud-urls) ve [kamu](migrate-appliance.md#government-cloud-urls) bulutları için Azure URL 'lerine bağlanabildiğinizden emin olun.
 
-### <a name="configure-the-appliance"></a>Gereci yapılandırma
+### <a name="4-configure-the-appliance"></a>4. gereci yapılandırma
 
 Gereci ilk kez ayarlayın.
 

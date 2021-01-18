@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 90532a88e145507b09de9d36f704bc5c88899e95
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 109f61d9ff76d084b292dbe3cc8ce663b50141ae
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861897"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541334"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>Öğretici: Sunucu değerlendirmesi ile Hyper-V VM 'lerini bulma
 
@@ -42,16 +42,14 @@ Bu öğreticiye başlamadan önce, bu önkoşulların yerinde olup olmadığın�
 **Gereksinim** | **Ayrıntılar**
 --- | ---
 **Hyper-V konağı** | VM 'Lerin bulunduğu Hyper-V konakları tek başına veya bir kümede olabilir.<br/><br/> Konağın Windows Server 2019, Windows Server 2016 veya Windows Server 2012 R2 çalıştırması gerekir.<br/><br/> BT 'nin Genel Bilgi Modeli (CıM) oturumu kullanarak çekme VM meta verileri ve performans verilerine bağlanabilmesi için WinRM bağlantı noktası 5985 ' de (HTTP) gelen bağlantılara izin verildiğini doğrulayın.
-**Gereç dağıtımı** | Hyper-V konağının, Gereç için bir VM ayırması gereken kaynaklara ihtiyacı vardır:<br/><br/> - Windows Server 2016<br/><br/> -16 GB RAM<br/><br/> -Sekiz vCPU<br/><br/> -Yaklaşık 80 GB disk depolaması.<br/><br/> -Dış sanal anahtar.<br/><br/> -VM için doğrudan veya bir ara sunucu üzerinden Internet erişimi.
+**Gereç dağıtımı** | Hyper-V konağının, Gereç için bir VM ayırması gereken kaynaklara ihtiyacı vardır:<br/><br/> -16 GB RAM, 8 vCPU ve yaklaşık 80 GB disk depolaması.<br/><br/> -Bir dış sanal anahtar ve doğrudan ya da bir proxy aracılığıyla gereç VM 'sinde internet erişimi.
 **VM’ler** | VM 'Ler herhangi bir Windows veya Linux işletim sistemi çalıştırıyor olabilir. 
-
-Başlamadan önce, gerecin bulma sırasında topladığı [verileri gözden](migrate-appliance.md#collected-data---hyper-v) geçirebilirsiniz.
 
 ## <a name="prepare-an-azure-user-account"></a>Azure Kullanıcı hesabı hazırlama
 
 Azure geçişi projesi oluşturmak ve Azure geçişi gerecini kaydettirmek için, şu bir hesaba sahip olmanız gerekir:
 - Azure aboneliğinde katkıda bulunan veya sahip izinleri.
-- Azure Active Directory uygulamaları kaydetme izinleri.
+- Azure Active Directory (AAD) uygulamalarını kaydetme izinleri.
 
 Ücretsiz Azure hesabı oluşturduysanız aboneliğinizin sahibi siz olursunuz. Abonelik sahibi değilseniz, izinleri aşağıdaki şekilde atamak için sahibiyle birlikte çalışın:
 
@@ -71,20 +69,20 @@ Azure geçişi projesi oluşturmak ve Azure geçişi gerecini kaydettirmek için
 
     ![Hesaba rol atamak için rol ataması Ekle sayfasını açar](./media/tutorial-discover-hyper-v/assign-role.png)
 
-7. Portalda, kullanıcılar için arama yapın ve **Hizmetler** altında **Kullanıcılar**' ı seçin.
-8. **Kullanıcı ayarları**' nda, Azure AD kullanıcılarının uygulamaları kaydedebildiğini doğrulayın (varsayılan olarak **Evet** ' e ayarlanır).
+1. Gereci kaydettirmek için, Azure hesabınızın **AAD uygulamalarını kaydetme izinleri** olması gerekir.
+1. Azure Portal ' de, **Azure Active Directory**  >  **kullanıcıları**  >  **Kullanıcı ayarları**' na gidin.
+1. **Kullanıcı ayarları**' nda, Azure AD kullanıcılarının uygulamaları kaydedebildiğini doğrulayın (varsayılan olarak **Evet** ' e ayarlanır).
 
     ![Kullanıcıların Active Directory uygulamalar kaydedebildiğini Kullanıcı ayarlarında doğrula](./media/tutorial-discover-hyper-v/register-apps.png)
 
-9. Alternatif olarak, kiracı/genel yönetici, AAD uygulamalarının kaydedilmesine izin vermek için **uygulama geliştirici** rolünü bir hesaba atayabilir. [Daha fazla bilgi edinin](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
+9. ' Uygulama kayıtları ' ayarlarının ' No ' olarak ayarlanması durumunda, gerekli izni atamak için kiracı/genel yönetici isteyin. Alternatif olarak, kiracı/genel yönetici, AAD uygulamasının kaydedilmesine izin vermek için **uygulama geliştirici** rolünü bir hesaba atayabilir. [Daha fazla bilgi edinin](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="prepare-hyper-v-hosts"></a>Hyper-V konakları hazırlama
 
 Hyper-V konaklarında yönetici erişimi olan bir hesap ayarlayın. Gereç bu hesabı bulma için kullanır.
 
 - Seçenek 1: Hyper-V konak makinesine yönetici erişimi olan bir hesap hazırlayın.
-- 2. seçenek: bir yerel yönetici hesabı veya etki alanı yönetici hesabı hazırlayın ve hesabı şu gruplara ekleyin: uzak yönetim kullanıcıları, Hyper-V yöneticileri ve performans Izleyicisi kullanıcıları.
-
+- Seçenek 2: yönetici izinleri atamak istemiyorsanız, bir yerel veya etki alanı kullanıcı hesabı oluşturun ve bu gruplara kullanıcı hesabını ekleyin-uzak yönetim kullanıcıları, Hyper-V yöneticileri ve performans Izleyicisi kullanıcıları.
 
 ## <a name="set-up-a-project"></a>Proje ayarlama
 
@@ -99,26 +97,28 @@ Yeni bir Azure geçişi projesi ayarlayın.
    ![Proje adı ve bölgesi için kutular](./media/tutorial-discover-hyper-v/new-project.png)
 
 7. **Oluştur**’u seçin.
-8. Azure Geçişi projesinin dağıtılması için birkaç dakika bekleyin.
-
-**Azure geçişi: Sunucu değerlendirmesi** Aracı, varsayılan olarak yeni projeye eklenir.
+8. Azure geçişi projesinin dağıtılması için birkaç dakika bekleyin. **Azure geçişi: Sunucu değerlendirmesi** Aracı, varsayılan olarak yeni projeye eklenir.
 
 ![Varsayılan olarak eklenen sunucu değerlendirmesi aracını gösteren sayfa](./media/tutorial-discover-hyper-v/added-tool.png)
 
+> [!NOTE]
+> Zaten bir proje oluşturduysanız, daha fazla sanal makine bulmayı ve değerlendirmeyi yapmak için ek gereçlere kaydolmak üzere aynı projeyi kullanabilirsiniz.[daha fazla bilgi edinin](create-manage-projects.md#find-a-project)
 
 ## <a name="set-up-the-appliance"></a>Gereci ayarlama
 
+Azure geçişi: Sunucu değerlendirmesi basit bir Azure geçişi gereci kullanır. Gereç, VM bulma işlemini gerçekleştirir ve Azure geçişi 'ne VM yapılandırma ve performans meta verilerini gönderir. Gereç, Azure geçişi projesinden indirilebilen bir VHD dosyası dağıtarak ayarlanabilir.
+
+> [!NOTE]
+> Bir nedenden dolayı, şablonu kullanarak gereci ayarlayamazsınız, var olan bir Windows Server 2016 sunucusunda bir PowerShell betiği kullanarak bu ayarı yapabilirsiniz. [Daha fazla bilgi edinin](deploy-appliance-script.md#set-up-the-appliance-for-hyper-v).
+
 Bu öğreticide, aşağıdaki gibi bir Hyper-V sanal makinesinde gereç ayarlanır:
 
-- Portal 'da bir gereç adı sağlayın ve bir Azure geçişi proje anahtarı oluşturun.
-- Azure portal sıkıştırılmış bir Hyper-V VHD 'sini indirin.
-- Gereci oluşturun ve Azure geçişi sunucu değerlendirmesi 'ne bağlanıp bağlanamadığından emin olun.
-- Gereci ilk kez yapılandırın ve Azure geçişi projesi anahtarını kullanarak Azure geçişi projesi ile kaydedin.
-> [!NOTE]
-> Bir nedenle, bir şablon kullanarak gereci ayarlayamıyorum, bir PowerShell betiği kullanarak bu gereci ayarlayabilirsiniz. [Daha fazla bilgi edinin](deploy-appliance-script.md#set-up-the-appliance-for-hyper-v).
+1. Portal 'da bir gereç adı sağlayın ve bir Azure geçişi proje anahtarı oluşturun.
+1. Azure portal sıkıştırılmış bir Hyper-V VHD 'sini indirin.
+1. Gereci oluşturun ve Azure geçişi sunucu değerlendirmesi 'ne bağlanıp bağlanamadığından emin olun.
+1. Gereci ilk kez yapılandırın ve Azure geçişi projesi anahtarını kullanarak Azure geçişi projesi ile kaydedin.
 
-
-### <a name="generate-the-azure-migrate-project-key"></a>Azure geçişi proje anahtarını oluşturma
+### <a name="1-generate-the-azure-migrate-project-key"></a>1. Azure geçişi proje anahtarını oluşturma
 
 1. **Geçiş hedefleri** > **Sunucular** > **Azure Geçişi: Sunucu Değerlendirmesi** bölümünde **Bul**'u seçin.
 2. Makinelerde **bulunan makineler**  >  **sanallaştırılmış mı?**, **Hyper-V ile Evet '** i seçin.
@@ -127,10 +127,9 @@ Bu öğreticide, aşağıdaki gibi bir Hyper-V sanal makinesinde gereç ayarlan�
 1. Azure kaynakları başarıyla oluşturulduktan sonra bir **Azure geçişi proje anahtarı** oluşturulur.
 1. Yapılandırma sırasında gereç kaydını tamamlamamak için gerekli olacak şekilde anahtarı kopyalayın.
 
-### <a name="download-the-vhd"></a>VHD 'YI indirin
+### <a name="2-download-the-vhd"></a>2. VHD 'YI indirin
 
-**2: Azure geçişi yükleme gereci indirin**, öğesini seçin. VHD dosyası ve **İndir**' e tıklayın. 
-
+**2: Azure geçişi yükleme gereci indirin**, öğesini seçin. VHD dosyası ve **İndir**' e tıklayın.
 
 ### <a name="verify-security"></a>Güvenliği doğrulama
 
@@ -156,7 +155,7 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
         --- | --- | ---
         Hyper-V (85,8 MB) | [En son sürüm](https://go.microsoft.com/fwlink/?linkid=2140424) |  cfed44bb52c9ab3024a628dc7a5d0df8c624f156ec1ecc3507116bae330b257f
 
-### <a name="create-the-appliance-vm"></a>Gereç VM 'sini oluşturma
+### <a name="3-create-the-appliance-vm"></a>3. gereç VM 'sini oluşturma
 
 İndirilen dosyayı içeri aktarın ve VM 'yi oluşturun.
 
@@ -177,7 +176,7 @@ Dağıtmadan önce daraltılmış dosyanın güvenli olduğunu denetleyin.
 
 Gereç sanal makinesinin, [kamu](migrate-appliance.md#public-cloud-urls) ve [kamu](migrate-appliance.md#government-cloud-urls) bulutları için Azure URL 'lerine bağlanabildiğinizden emin olun.
 
-### <a name="configure-the-appliance"></a>Gereci yapılandırma
+### <a name="4-configure-the-appliance"></a>4. gereci yapılandırma
 
 Gereci ilk kez ayarlayın.
 
@@ -214,8 +213,6 @@ Gereci ilk kez ayarlayın.
 1. Başarıyla oturum açtıktan sonra, Gereç Yapılandırma Yöneticisi ile önceki sekmeye geri dönün.
 4. Günlüğe kaydetme için kullanılan Azure Kullanıcı hesabının, anahtar üretimi sırasında oluşturulan Azure kaynakları üzerinde doğru izinleri varsa, Gereç kaydı başlatılır.
 1. Gereç başarıyla kaydedildikten sonra, **Ayrıntıları görüntüle**' ye tıklayarak kayıt ayrıntılarına bakabilirsiniz.
-
-
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>SMB VHD 'leri için temsilci kimlik bilgileri
 

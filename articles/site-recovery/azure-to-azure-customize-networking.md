@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: sideeksh
-ms.openlocfilehash: 599ad76f38833e06cc458fd0687921e6975e190b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f63021275574e294fa372357d6e62724f5efe0f7
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89426376"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541199"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>Hedef Azure VM’nin ağ yapılandırmalarını özelleştirme
 
@@ -38,13 +38,13 @@ Azure VM 'Leri çoğaltılırken yük devretme VM 'si için aşağıdaki temel k
 
 ## <a name="customize-failover-and-test-failover-networking-configurations"></a>Yük devretme ve test yük devretme ağ yapılandırmasını özelleştirme
 
-1. **Çoğaltılan öğelere**gidin. 
+1. **Çoğaltılan öğelere** gidin. 
 2. İstediğiniz Azure VM 'yi seçin.
 3. **İşlem ve ağ** ' ı seçin ve **Düzenle**' yi seçin. NIC yapılandırma ayarlarının kaynaktaki ilgili kaynakları içerdiğine dikkat edin. 
 
      ![Yük devretme ağ yapılandırmasını özelleştirme](media/azure-to-azure-customize-networking/edit-networking-properties.png)
 
-4. Yük devretme testi sanal ağını seçin. Boş bırakmayı seçebilir ve test yük devretmesi sırasında bir tane seçebilirsiniz.
+4. Yük devretme testi sanal ağını seçin.
 5. Yük devretme ağı, yapılandırmak istediğiniz NIC 'in yakınında **Düzenle** ' yi seçin. Açılan sonraki dikey pencerede, yük devretme testi ve yük devretme konumunda ilgili önceden oluşturulmuş kaynakları seçin.
 
     ![NIC yapılandırmasını düzenleme](media/azure-to-azure-customize-networking/nic-drilldown.png) 
