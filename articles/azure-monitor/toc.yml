@@ -8,6 +8,8 @@
       href: faq.md
     - name: Yenilikler
       href: whats-new.md
+    - name: Operations Manager’dan geçiş
+      href: azure-monitor-operations-manager.md
 - name: Hızlı Başlangıçlar
   items:
     - name: Azure kaynağını izleme
@@ -196,6 +198,8 @@
               href: platform/metric-chart-samples.md
             - name: Ölçüm grafikleri için sorun çözümü
               href: platform/metrics-troubleshoot.md
+            - name: Ölçüm toplamayı anlama
+              href: platform/metrics-aggregation-explained.md
     - name: Azure İzleyici Günlükleri
       items:
         - name: Genel Bakış
@@ -664,6 +668,8 @@
                       href: app/javascript-react-native-plugin.md
                     - name: Angular eklentisi
                       href: app/javascript-angular-plugin.md
+                    - name: Tıklama Analizi Otomatik Toplama eklentisi
+                      href: app/javascript-click-analytics-plugin.md
                 - name: Sorun giderme
                   items:
                     - name: SDK yükleme hatası

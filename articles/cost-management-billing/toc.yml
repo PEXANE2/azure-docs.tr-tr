@@ -188,16 +188,6 @@
               href: manage/pay-by-invoice.md
             - name: Ek abonelikler oluşturma
               href: manage/create-subscription.md
-            - name: Program aracılığıyla EA abonelikleri oluşturma
-              href: manage/programmatically-create-subscription-enterprise-agreement.md
-            - name: Program aracılığıyla MCA abonelikleri oluşturma
-              href: manage/programmatically-create-subscription-microsoft-customer-agreement.md
-            - name: Program aracılığıyla MPA abonelikleri oluşturma
-              href: manage/programmatically-create-subscription-microsoft-partner-agreement.md
-            - name: Abonelik oluşturma - ARM şablonu
-              href: manage/create-subscription-template.md
-            - name: Program aracılığıyla abonelik oluşturma - önizleme
-              href: manage/programmatically-create-subscription-preview.md
             - name: EA abonelikleri oluşturmak için erişim izni verme
               href: manage/grant-access-to-create-subscription.md
             - name: Abonelik bilgilerini dışarı aktarma
@@ -214,6 +204,20 @@
               href: manage/transfer-subscriptions-subscribers-csp.md
             - name: Aboneliği iptal etme
               href: manage/cancel-azure-subscription.md
+        - name: Program aracılığıyla abonelik oluşturma
+          items:
+            - name: Program aracılığıyla abonelik oluşturma
+              href: manage/programmatically-create-subscription.md
+            - name: Program aracılığıyla EA abonelikleri oluşturma
+              href: manage/programmatically-create-subscription-enterprise-agreement.md
+            - name: Program aracılığıyla MCA abonelikleri oluşturma
+              href: manage/programmatically-create-subscription-microsoft-customer-agreement.md
+            - name: Program aracılığıyla MPA abonelikleri oluşturma
+              href: manage/programmatically-create-subscription-microsoft-partner-agreement.md
+            - name: Abonelik oluşturma - ARM şablonu
+              href: manage/create-subscription-template.md
+            - name: Program aracılığıyla abonelik oluşturma - önizleme API’leri
+              href: manage/programmatically-create-subscription-preview.md
         - name: Kurumsal Sözleşme aboneliklerini yönetme
           items:
             - name: Azure'da EA rolleri

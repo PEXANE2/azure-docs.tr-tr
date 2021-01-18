@@ -55,6 +55,8 @@
               href: ./database/security-controls-policy.md
             - name: Güvenlik temeli
               href: database/security-baseline.md
+            - name: Always Encrypted
+              href: database/always-encrypted-landing.yml
             - name: SQL için Azure Defender
               href: database/azure-defender-for-sql.md
             - name: Gelişmiş Tehdit Koruması
@@ -255,6 +257,8 @@
               href: database/service-tier-hyperscale.md
             - name: Hiper Ölçek hakkında SSS
               href: database/service-tier-hyperscale-frequently-asked-questions-faq.md
+        - name: Maliyetleri planlama ve yönetme
+          href: database/cost-management.md
     - name: Hızlı Başlangıçlar
       href: database/quickstart-content-reference-guide.md
       items:
@@ -293,14 +297,16 @@
               href: database/active-geo-replication-configure-portal.md
         - name: Güvenlik
           items:
+            - name: Güvenli kuşatmalarla Always Encrypted
+              href: database/always-encrypted-enclaves-getting-started.md
             - name: Güvenliği yapılandırma
               href: database/secure-database-tutorial.md
+            - name: Hizmet sorumluları kullanarak kullanıcı oluşturma
+              href: database/authentication-aad-service-principal-tutorial.md
             - name: TDE KAG anahtarlarını döndürme
               href: database/transparent-data-encryption-byok-key-rotation.md
             - name: TDE koruyucusunu kaldırma
               href: database/transparent-data-encryption-byok-remove-tde-protector.md
-            - name: Hizmet sorumluları kullanarak kullanıcı oluşturma
-              href: database/authentication-aad-service-principal-tutorial.md
         - name: Veri taşıma
           items:
             - name: DMS kullanarak geçiş
@@ -371,6 +377,19 @@
               href: database/sql-data-sync-troubleshoot.md
         - name: Güvenlik
           items:
+            - name: Always Encrypted
+              href: database/always-encrypted-landing.yml
+            - name: Güvenli kuşatmalarla Always Encrypted
+              href: database/always-encrypted-with-secure-enclaves-landing.yml
+              items:
+                - name: Güvenli kuşatmalarla Always Encrypted yapılandırma ve kullanma
+                  href: /sql/relational-databases/security/encryption/configure-always-encrypted-enclaves
+                - name: Intel SGX kuşatmaları ve kanıtlaması için planlama
+                  href: database/always-encrypted-enclaves-plan.md
+                - name: Intel SGX’i etkinleştirme
+                  href: database/always-encrypted-enclaves-enable-sgx.md
+                - name: Azure Doğrulama’yı yapılandırma
+                  href: database/always-encrypted-enclaves-configure-attestation.md
             - name: Azure SQL Denetimi
               href: database/auditing-overview.md
             - name: Denetim günlüğü biçimi
@@ -643,7 +662,7 @@
                       href: database/saas-multitenantdb-tenant-analytics.md
     - name: Örnekler
       items:
-        - name: Azure CLI’si
+        - name: Azure CLI
           href: database/az-cli-script-samples-content-guide.md?tabs=single-database
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=single-database
@@ -922,10 +941,12 @@
               href: /sql/relational-databases/database-mail/database-mail?toc=%2fazure%2fazure-sql%2ftoc.json
         - name: Güvenlik
           items:
-            - name: Genel uç noktaların güvenliğini sağlama
-              href: managed-instance/public-endpoint-overview.md
+            - name: Always Encrypted
+              href: database/always-encrypted-landing.yml
             - name: Denetim
               href: managed-instance/auditing-configure.md
+            - name: Genel uç noktaların güvenliğini sağlama
+              href: managed-instance/public-endpoint-overview.md
             - name: Sunucu güveni grupları
               href: managed-instance/server-trust-group-overview.md
     - name: Nasıl yapılır
@@ -968,7 +989,7 @@
           href: managed-instance/user-initiated-failover.md
     - name: Örnekler
       items:
-        - name: Azure CLI’si
+        - name: Azure CLI
           href: database/az-cli-script-samples-content-guide.md?tabs=managed-instance
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=managed-instance

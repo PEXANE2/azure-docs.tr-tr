@@ -128,6 +128,8 @@
       href: authentication.md
     - name: Windows Sanal Masaüstü ortamı
       href: environment-setup.md
+    - name: Windows Sanal Masaüstü Aracısı
+      href: agent-overview.md
     - name: Ağ bağlantısı
       items:
         - name: Ağ bağlantısını anlama
@@ -180,6 +182,8 @@
       href: troubleshoot-vm-configuration.md
     - name: Uzak Masaüstü hizmeti bağlantıları
       href: troubleshoot-service-connection.md
+    - name: Windows Sanal Masaüstü Aracısı
+      href: troubleshoot-agent.md
     - name: Uzak Masaüstü istemcisi sorunları
       href: troubleshoot-client.md
     - name: Windows Sanal Masaüstü PowerShell

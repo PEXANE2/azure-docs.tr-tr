@@ -223,14 +223,12 @@
           items:
             - name: Azure ile işleme
               href: batch-rendering-service.md
-            - name: VM görüntülerini işleme
+            - name: VM görüntülerini toplu işleme
               href: batch-rendering-applications.md
             - name: Toplu işleme özellikleri
               href: batch-rendering-functionality.md
             - name: Toplu işlemeyi kullanma
               href: batch-rendering-using.md
-            - name: İşleme yöneticilerini kullanma
-              href: batch-rendering-render-managers.md
             - name: Uygulama işleme başvurusu
               href: batch-rendering-application-reference.md
             - name: Depolama ve veri taşıma

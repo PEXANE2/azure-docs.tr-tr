@@ -1,0 +1,15 @@
+- name: Azure iş ortağı çözümleri belgeleri
+  href: overview.md
+- name: İş ortağı çözümleri
+  items:
+    - name: Confluent Cloud’da Apache Kafka
+      items:
+        - name: Genel Bakış
+          displayName: 'Apache, Kafka, Confluent'
+          href: ./apache-kafka-confluent-cloud/overview.md
+        - name: Oluştur
+          href: ./apache-kafka-confluent-cloud/create.md
+        - name: Yönetme
+          href: ./apache-kafka-confluent-cloud/manage.md
+        - name: Sorun giderme
+          href: ./apache-kafka-confluent-cloud/troubleshoot.md

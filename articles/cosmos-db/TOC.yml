@@ -1122,6 +1122,10 @@
           href: find-request-unit-charge-mongodb.md
         - name: Sorgu performansı sorunlarını giderme
           href: mongodb-troubleshoot-query.md
+        - name: Yaygın sorunları giderme
+          href: mongodb-troubleshoot.md
+        - name: Hızı sınırlayan hataları önleme
+          href: prevent-rate-limiting-errors.md
         - name: Mağaza ve Spring Verilerini yönetme
           href: /azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?context=%2fazure%2fcosmos-db%2fcontext%2fcontext
         - name: MongoDB uzantı komutları
@@ -1134,8 +1138,6 @@
           href: powershell-samples-mongodb.md
         - name: Azure CLI kullanarak yönetme
           href: cli-samples-mongodb.md
-        - name: Yaygın sorunları giderme
-          href: mongodb-troubleshoot.md
     - name: Başvuru
       items:
         - name: REST kaynak sağlayıcısı
