@@ -571,7 +571,11 @@
             - name: ITSM Ürününüzden Eşitlenen Veriler
               href: platform/itsmc-synced-data.md
             - name: ITSM Bağlayıcısındaki sorunları giderme
-              href: platform/itsmc-resync-servicenow.md
+              items:
+                - name: Genel Bakış
+                  href: platform/itsmc-resync-servicenow.md
+                - name: Pano Araştırması
+                  href: platform/itsmc-dashboard.md
             - name: Güvenli Dışarı Aktarma ile tümleştirme
               items:
                 - name: Genel Bakış

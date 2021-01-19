@@ -159,6 +159,20 @@
           href: how-to-troubleshoot-the-sensor-and-on-premises-management-console.md
         - name: SNMP MIB izlemesini ayarlama
           href: how-to-set-up-snmp-mib-monitoring.md
+        - name: İş ortakları ile tümleştirme
+          items:
+            - name: Cisco ISE pxGrid tümleştirmesi
+              href: integration-cisco-ise-pxgrid.md
+            - name: Forescout tümleştirmesi
+              href: integration-forescout.md
+            - name: Fortinet tümleştirmesi
+              href: integration-fortinet.md
+            - name: Palo Alto tümleştirmesi
+              href: integration-palo-alto.md
+            - name: ServiceNow tümleştirmesi
+              href: integration-servicenow.md
+            - name: Splunk tümleştirmesi
+              href: integration-splunk.md
     - name: Cihaz Oluşturucular için aracı tabanlı çözüm
       items:
         - name: Azure RTOS için Güvenlik Modülü ile çalışma
@@ -223,7 +237,7 @@
           href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
 - name: Kaynaklar
   items:
-    - name: Cihaz oluşturucular için aracı tabanlı çözüm
+    - name: Cihaz Oluşturucular için aracı tabanlı çözüm
       items:
         - name: Microsoft Learn ile güvenlik becerilerinizi geliştirme
           href: /learn/browse/?term=securityS&terms=securityS
