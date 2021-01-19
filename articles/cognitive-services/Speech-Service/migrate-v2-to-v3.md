@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: rbeckers
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e9e5db87f983c5db59715eb8b6a9561acf5fad14
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 9c8016b566db8be1b7f5c5ddb8d92123d6673db5
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630624"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569853"
 ---
 # <a name="migrate-code-from-v20-to-v30-of-the-rest-api"></a>Kodu v 2.0 'dan v 3.0 'a geçirin REST API
 
@@ -24,11 +24,51 @@ V2 ile karşılaştırıldığında, konuşma hizmetlerinin, konuşmadan metne R
 
 ## <a name="forward-compatibility"></a>İleriye dönük uyumluluk
 
-V2 'nin tüm varlıkları aynı kimliğin altındaki v3 API 'sinde de bulunabilir. Bir sonucun şemasının değiştiği (örneğin, döküm), API 'nin v3 sürümündeki bir GET 'in sonucu v3 şemasını kullanır. API 'nin v2 sürümündeki bir GET 'in sonucu aynı v2 şemasını kullanır. V3 üzerinde yeni oluşturulan varlıklar v2 API 'Lerinin **sonuçlarında kullanılamaz.**
+V2 'nin tüm varlıkları aynı kimliğin altındaki v3 API 'sinde de bulunabilir. Bir sonucun şemasının değiştiği (örneğin, döküm), API 'nin v3 sürümündeki bir GET 'in sonucu v3 şemasını kullanır. API 'nin v2 sürümündeki bir GET 'in sonucu aynı v2 şemasını kullanır. V3 üzerinde yeni oluşturulan varlıklar ****   v2 API 'lerinden gelen yanıtlardan kullanılamaz. 
+
+## <a name="migration-steps"></a>Geçiş adımları
+
+Bu, geçiş için hazırlanırken bilmeniz gereken öğelerin Özet listesidir. Ayrıntılar tek tek bağlantılarda bulunur. API 'nin geçerli kullanımına bağlı olarak burada listelenen adımların hepsi geçerli olabilir. Yalnızca birkaç değişiklik, çağıran kodda önemsiz olmayan değişiklikler gerektirir. Çoğu değişiklik yalnızca öğe adlarında değişiklik yapılmasını gerektirir. 
+
+Genel değişiklikler: 
+
+1. [Ana bilgisayar adını değiştirme](#host-name-changes)
+
+1. [Özellik kimliğini istemci kodunuzda kendi kendine yeniden adlandırın](#identity-of-an-entity) 
+
+1. [Varlıkların koleksiyonları üzerinde yinelemek için kodu değiştirin](#working-with-collections-of-entities)
+
+1. [Özellik adını istemci kodunuzda displayName olarak yeniden adlandırın](#name-of-an-entity)
+
+1. [Başvurulan varlıkların meta verilerinin alınmasını ayarla](#accessing-referenced-entities)
+
+1. Batch dökümünü kullanıyorsanız: 
+
+    * [Toplu iş dökümlerini oluşturmak için kodu ayarla](#creating-transcriptions) 
+
+    * [Kodu yeni döküm sonuçları şemasına uyarlayın](#format-of-v3-transcription-results)
+
+    * [Sonuçların alınma biçimi için kodu ayarla](#getting-the-content-of-entities-and-the-results)
+
+1. Özel model eğitimi ve test API 'Leri kullanıyorsanız: 
+
+    * [Değişiklikleri özel model eğitimlerine uygulayın](#customizing-models)
+
+    * [Taban ve özel modellerin nasıl alındığını değiştirme](#retrieving-base-and-custom-models)
+
+    * [Accuracytests yol segmentini istemci kodunuzda değerlendirmeler olarak yeniden adlandırın](#accuracy-tests)
+
+1. Uç nokta API 'Leri kullanıyorsanız:
+
+    * [Uç nokta günlüklerinin alınma şeklini değiştirme](#retrieving-endpoint-logs)
+
+1. Diğer küçük değişiklikler: 
+
+    * [Tüm özel özellikleri POST isteklerinizin özellikleri yerine customProperties olarak geçirin](#using-custom-properties)
+
+    * [Işlem konumu yerine yanıt üst bilgisi konumundan konumu okuyun](#response-headers)
 
 ## <a name="breaking-changes"></a>Yeni değişiklikler
-
-Son değişikliklerin listesi, uyarlanabilmesi için gereken değişikliklerin büyüklüğüne göre sıralanmıştır. Yalnızca birkaç değişiklik, çağıran kodda önemsiz olmayan değişiklikler gerektirir. Çoğu değişiklik yalnızca öğe adlarında değişiklik yapılmasını gerektirir.
 
 ### <a name="host-name-changes"></a>Ana bilgisayar adı değişiklikleri
 

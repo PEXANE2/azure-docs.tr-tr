@@ -5,15 +5,15 @@ author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: security
-ms.date: 04/15/2020
+ms.date: 01/18/2021
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 949b7e55569cc6fceacc37677ed06a28bb85d7c2
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: f55251932c8aa8f632bd3b498943ac722f006dee
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116373"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569936"
 ---
 # <a name="azure-synapse-analytics-managed-virtual-network"></a>Azure SYNAPSE Analytics yönetilen sanal ağı
 
@@ -52,8 +52,21 @@ Onay kutusunu işaretlenmemiş olarak bırakırsanız, çalışma alanınızın 
 
 ![Yönetilen çalışma alanı sanal ağını etkinleştir](./media/synapse-workspace-managed-vnet/enable-managed-vnet-1.png)
 
+Yönetilen bir çalışma alanı sanal ağını çalışma alanınıza ilişkilendirmeyi seçtikten sonra, yönetilen çalışma alanı sanal ağından yalnızca [yönetilen özel uç noktaları](./synapse-workspace-managed-private-endpoints.md)kullanan onaylanan hedeflere giden bağlantılara izin vererek veri blobuna karşı koruma sağlayabilirsiniz. Yönetilen çalışma alanı sanal ağından gelen giden trafiği yönetilen özel uç noktalar aracılığıyla hedeflerle sınırlandırmak için **Evet** ' i seçin. 
 
-Azure portal **Genel Bakış ' ı** seçerek Azure SYNAPSE çalışma alanınızın yönetilen bir çalışma alanı sanal ağıyla ilişkili olup olmadığını kontrol edebilirsiniz.
+
+>[!IMPORTANT]
+>Meta veri deposu koruması etkin olan yönetilen sanal ağa sahip SYNAPSE çalışma alanlarında metassyon devre dışı bırakıldı. Bu çalışma alanlarında Spark SQL kullanamayacaksınız.
+
+![Yönetilen özel uç noktaları kullanan giden trafik](./media/synapse-workspace-managed-vnet/select-outbound-connectivity.png)
+
+Çalışma alanından herhangi bir hedefe giden trafiğe izin vermek için **Hayır** ' ı seçin.
+
+Ayrıca, Azure SYNAPSE çalışma alanınızdan yönetilen özel uç noktaların oluşturulduğu hedefleri de denetleyebilirsiniz. Varsayılan olarak, aboneliğinizin ait olduğu AAD kiracısındaki kaynaklara yönelik yönetilen özel uç noktalara izin verilir. Bir AAD kiracısındaki bir kaynak için aboneliğinizin ait olduğu sunucudan farklı bir yönetilen özel uç nokta oluşturmak istiyorsanız **+ Ekle**' yi seçerek bu AAD kiracısını ekleyebilirsiniz. Açılan listeden AAD kiracısını seçebilir veya AAD kiracı KIMLIĞINI el ile girebilirsiniz.
+
+![Ek AAD kiracılar ekleme](./media/synapse-workspace-managed-vnet/add-additional-azure-active-directory-tenants.png)
+
+Çalışma alanı oluşturulduktan sonra, Azure portal **genel bakış** ' ı seçerek Azure SYNAPSE çalışma alanınızın yönetilen bir çalışma alanı sanal ağıyla ilişkili olup olmadığını kontrol edebilirsiniz.
 
 ![Azure portal çalışma alanına genel bakış](./media/synapse-workspace-managed-vnet/enable-managed-vnet-2.png)
 

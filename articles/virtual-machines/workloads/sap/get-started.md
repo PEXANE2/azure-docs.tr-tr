@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/05/2021
+ms.date: 01/18/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e3a4c367bbe0770495a63c00ca33861ac815460f
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 0b323268c625ed25236cf4a9f9faa17606bd967c
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121014"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98570074"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -49,7 +49,8 @@ Belirli sorularınız varsa, başlangıç sayfasının bu bölümündeki belirli
 - Senaryoum için en iyi Azure depolama alanı nedir? [SAP iş yükü Için Azure depolama türlerini](./planning-guide-storage.md) okuyun
 - , SAP tarafından desteklenen Oracle Enterprise Linux 'taki Red Hat çekirdeği midir? SAP [sap destek dekontunu okuyun #1565179](https://launchpad.support.sap.com/#/notes/1565179)
 - Azure [da (s) v4](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series) / [EA](https://docs.microsoft.com/azure/virtual-machines/eav4-easv4-series) 'lar sanal makine aileleri neden SAP HANA için sertifikalı değil? Azure das/EAS VM aileleri, AMD işlemci tabanlı donanımı temel alır. SAP HANA, sanallaştırılmış senaryolarda bile olmayan AMD işlemcileri desteklemez
-- Şu iletiyi almaya devam ediyorum: ' RDTSCP yönergesi için CPU bayrakları veya constant_tsc ya da nonstop_tsc için CPU bayrakları ayarlı değil veya current_clocksource ve available_clocksource doğru şekilde SAP HANA yapılandırılmamış, ancak en son Linux kernels 'i çalıştırdığımı belirten bir olay. Yanıt için [sap destek notuna bakın #2791572](https://launchpad.support.sap.com/#/notes/2791572) 
+- Şu iletiyi almaya devam ediyorum: ' RDTSCP yönergesi için CPU bayrakları veya constant_tsc ya da nonstop_tsc için CPU bayrakları ayarlı değil veya current_clocksource ve available_clocksource doğru şekilde SAP HANA yapılandırılmamış, ancak en son Linux kernels 'i çalıştırdığımı belirten bir olay. Yanıt için [sap destek notuna bakın #2791572](https://launchpad.support.sap.com/#/notes/2791572)
+- Azure 'da SAP Fiori dağıtmak için mimarileri nereden bulabilirim? [Internet 'e YÖNELIK SAP Fiori uygulamaları için Application Gateway Web uygulaması güvenlik duvarı (WAF) v2 kurulumu Azure 'da blog SAP 'ye](https://blogs.sap.com/2020/12/03/sap-on-azure-application-gateway-web-application-firewall-waf-v2-setup-for-internet-facing-sap-fiori-apps/) göz atın. 
 
  
 ## <a name="sap-hana-on-azure-large-instances"></a>Azure’da SAP HANA (Büyük Örnekler)
@@ -83,6 +84,7 @@ Bu bölümde, Microsoft Power BI tümleştirme hakkındaki belgeleri SAP veri ka
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
 
+- 01/18/2021: Azure sanal makineler 'de Oracle için Azure net Apps dosya tabanlı NFS desteği eklendi, [SAP iş yükü Için Oracle DBMS dağıtımı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_oracle) ve [SAP HANA Için Azure NetApp Files belge NFS v 4.1 birimlerindeki](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp) tabloda Ondalıklar ayarlanıyor
 - 01/11/2021: [RHEL for SAP Applications üzerinde Azure sanal](./high-availability-guide-rhel.md)makinelerinde SAP NW için ha 'da küçük değişiklikler, RHEL [çok düzeyli](./high-availability-guide-rhel-multi-sid.md) Azure VM ['lerinde RHEL](./high-availability-guide-rhel-netapp-files.md) 'de SAP NW IÇIN ve RHEL8 ve RHEL7, ENSA1 ve ENSA2 için çalışır.
 - 01/05/2021: [SLES 'de ANF Ile Azure VM](./sap-hana-scale-out-standby-netapp-files-suse.md) 'lerinde yer alan ve Azure VM 'lerinde yer alan SAP HANA ve [RHEL 'de ANF üzerinde](./sap-hana-scale-out-standby-netapp-files-rhel.md)yer alan Azure sanal makinelerinde bekleyen bir düğüm ile ölçek GENIŞLETME SAP HANA değişiklik, SAP konak aracısının yerel bağlantı noktası aralığını yönetmesine izin vermek için önerilen yapılandırmayı yeniden gözden geçirme  
 - 01/04/2021: Azure 'da SAP HANA, HLI tarafından desteklenen yeni Azure bölgelerini ekleme [(büyük örnekler)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)

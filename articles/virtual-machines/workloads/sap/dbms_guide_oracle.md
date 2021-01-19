@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/20/2020
+ms.date: 01/18/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3e99b3a8960eb49856e9a016eb054eed41eccde9
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b4cf2e79acf4cd58ff94a2e90f07202341672a1d
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965264"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569445"
 ---
 # <a name="azure-virtual-machines-oracle-dbms-deployment-for-sap-workload"></a>SAP iş yükü için Azure sanal makineler Oracle DBMS dağıtımı
 
@@ -360,7 +360,7 @@ DBMS iş yükü için uygun olan belirli Azure blok depolama türleri hakkında 
 
 [Azure yönetilen diskleri](../../managed-disks-overview.md)kullanmanızı kesinlikle öneririz. Ayrıca, Oracle Database dağıtımlarınız için [Azure Premium Storage veya Azure Ultra disk](../../disks-types.md) kullanılması önemle önerilir.
 
-Azure Dosya Hizmetleri gibi ağ sürücüleri veya uzak paylaşımlar Oracle Database dosyaları için desteklenmez. Daha fazla bilgi için bkz.
+Azure Dosya Hizmetleri gibi ağ sürücüleri veya uzak paylaşımlar Oracle Database dosyaları için desteklenmez. Daha fazla bilgi için bkz:
 
 - [Microsoft Azure Dosya Hizmeti’ne Giriş](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
@@ -445,15 +445,19 @@ Bu durumda, bir Oracle giriş, aşama,,,,, `saptrace` `saparch` `sapbackup` `sap
 
 ### <a name="storage-configuration"></a>Depolama yapılandırması
 
-Ext4, XFS veya Oracle ASM 'nin dosya sistemleri Azure 'daki Oracle Database dosyaları için desteklenir. Tüm veritabanı dosyaları, VHD 'leri veya yönetilen diskleri temel alan bu dosya sistemlerinde depolanmalıdır. Bu diskler Azure sanal makinesine bağlanır ve [Azure sayfa BLOB depolama](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) veya [Azure tarafından yönetilen diskleri](../../managed-disks-overview.md)temel alır.
+Ext4, XFS, NFSv 4.1 (yalnızca Azure NetApp Files (ANF)) veya Oracle ASM (bkz. sürüm/sürüm gereksinimleri için SAP Note [#2039619](https://launchpad.support.sap.com/#/notes/2039619) ), Azure 'daki Oracle Database dosyaları için desteklenir. Tüm veritabanı dosyalarının VHD 'ler, yönetilen diskler veya ANF tabanlı bu dosya sistemlerinde depolanması gerekir. Bu diskler Azure sanal makinesine bağlanır ve [Azure sayfa BLOB depolama](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs), [Azure yönetilen diskler](../../managed-disks-overview.md)veya [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)temel alır.
 
-Oracle Linux UEK kernels için, [Azure Premium SSD](../../premium-storage-performance.md#disk-caching)'leri desteklemek için en az UEK sürüm 4 gerekir.
+Şunun gibi minimum gereksinimler listesi: 
+
+- Oracle Linux UEK kernels için, [Azure Premium SSD](../../premium-storage-performance.md#disk-caching)'leri desteklemek için en az UEK sürüm 4 gerekir.
+- ANF ile Oracle için desteklenen en düşük Oracle Linux 8,2 ' dir.
+- ANF ile Oracle için desteklenen minimum Oracle sürümü 19c 'dir (19.8.0.0)
 
 DBMS iş yükü için uygun olan belirli Azure blok depolama türleri hakkında daha fazla bilgi edinmek için [SAP iş yükü Için Azure Depolama türleri](./planning-guide-storage.md) makalesini kullanıma alın.
 
-[Azure yönetilen diskleri](../../managed-disks-overview.md)kullanmanız önemle önerilir. Ayrıca, Oracle Database dağıtımlarınız için [Azure Premium SSD 'ler](../../disks-types.md) kullanılması önemle önerilir.
+Azure blok depolama 'yı kullanarak, Oracle Database dağıtımlarınız için [Azure yönetilen diskler](../../managed-disks-overview.md) ve [Azure Premium SSD 'ler](../../disks-types.md) kullanılması önemle önerilir.
 
-Azure Dosya Hizmetleri gibi ağ sürücüleri veya uzak paylaşımlar Oracle Database dosyaları için desteklenmez. Daha fazla bilgi için, aşağıdakilere bakın: 
+Azure NetApp Files dışında, diğer paylaşılan diskler, ağ sürücüleri veya Azure Dosya Hizmetleri (AFS) gibi uzak paylaşımlar Oracle Database dosyalar için desteklenmez. Daha fazla bilgi için, aşağıdakilere bakın: 
 
 - [Microsoft Azure Dosya Hizmeti’ne Giriş](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
@@ -469,10 +473,10 @@ En düşük yapılandırma:
 
 | Bileşen | Disk | Önbelleğe Alma | Şeridi oluşturma |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA & Irrlogb | Premium veya ultra disk | Yok | Gerekli değil |
-| /Oracle/ \<SID> /origlogaB & Irrloga | Premium veya ultra disk | Yok | Gerekli değil |
-| /Oracle/ \<SID> /sapdata1..exe. No | Premium veya ultra disk | Salt okunur | Premium için kullanılabilir |
-| /Oracle/ \<SID> /oraarch | Standart | Yok | Gerekli değil |
+| /Oracle/ \<SID> /origlogaA & Irrlogb | Premium, Ultra disk veya ANF | Yok | Gerekli değil |
+| /Oracle/ \<SID> /origlogaB & Irrloga | Premium, Ultra disk veya ANF | Yok | Gerekli değil |
+| /Oracle/ \<SID> /sapdata1..exe. No | Premium, Ultra disk veya ANF | Salt okunur | Premium için kullanılabilir |
+| /Oracle/ \<SID> /oraarch | Standart veya ANF | Yok | Gerekli değil |
 | Oracle ana, `saptrace` ,... | İşletim sistemi diski (Premium) | | Gerekli değil |
 
 * RAID0 kullanarak LVM Stripe veya MDADDM
@@ -483,13 +487,13 @@ Performans yapılandırması:
 
 | Bileşen | Disk | Önbelleğe Alma | Şeridi oluşturma |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA | Premium veya ultra disk | Yok | Premium için kullanılabilir  |
-| /Oracle/ \<SID> /origlogaB | Premium veya ultra disk | Yok | Premium için kullanılabilir |
-| /Oracle/ \<SID> /Mirrlogab | Premium veya ultra disk | Yok | Premium için kullanılabilir |
-| /Oracle/ \<SID> /Mirrlogba | Premium veya ultra disk | Yok | Premium için kullanılabilir |
-| /Oracle/ \<SID> /sapdata1..exe. No | Premium veya ultra disk | Salt okunur | Premium için önerilir  |
-| /Oracle/ \<SID> /sapdata (n + 1) * | Premium veya ultra disk | Yok | Premium için kullanılabilir |
-| /Oracle/ \<SID> /oraarch * | Premium veya ultra disk | Yok | Gerekli değil |
+| /Oracle/ \<SID> /origlogaA | Premium, Ultra disk veya ANF | Yok | Premium için kullanılabilir  |
+| /Oracle/ \<SID> /origlogaB | Premium, Ultra disk veya ANF | Yok | Premium için kullanılabilir |
+| /Oracle/ \<SID> /Mirrlogab | Premium, Ultra disk veya ANF | Yok | Premium için kullanılabilir |
+| /Oracle/ \<SID> /Mirrlogba | Premium, Ultra disk veya ANF | Yok | Premium için kullanılabilir |
+| /Oracle/ \<SID> /sapdata1..exe. No | Premium, Ultra disk veya ANF | Salt okunur | Premium için önerilir  |
+| /Oracle/ \<SID> /sapdata (n + 1) * | Premium, Ultra disk veya ANF | Yok | Premium için kullanılabilir |
+| /Oracle/ \<SID> /oraarch * | Premium, Ultra disk veya ANF | Yok | Gerekli değil |
 | Oracle ana, `saptrace` ,... | İşletim sistemi diski (Premium) | Gerekli değil |
 
 * RAID0 kullanarak LVM Stripe veya MDADDM
@@ -500,6 +504,10 @@ Performans yapılandırması:
 
 
 Azure Premium Depolama kullanılırken daha fazla ıOPS gerekliyse, birden çok bağlı diske göre büyük bir mantıksal birim oluşturmak için LVM (mantıksal birim Yöneticisi) veya MDADDM kullanılması önerilir. Daha fazla bilgi için bkz. LVM veya MDADDM 'nin kullanılmasıyla ilgili yönergeler ve işaretçilerle ilgili [SAP iş yükü Için Azure sanal MAKINELER DBMS dağıtımına yönelik hususlar](dbms_guide_general.md) . Bu yaklaşım, disk alanını yönetmenin yönetim yükünü basitleştirir ve dosyaları birden çok bağlı diskte el ile dağıtmanın çabadan kaçınmanıza yardımcı olur.
+
+Azure NetApp Files kullanmayı planlıyorsanız, dNFS istemcisinin düzgün yapılandırıldığından emin olun. DNFS 'nin kullanılması desteklenen bir ortama sahip olmak için zorunludur. DNFS yapılandırması, [doğrudan NFS üzerinde Oracle Database oluşturma](https://docs.oracle.com/en/database/oracle/oracle-database/19/ntdbi/creating-an-oracle-database-on-direct-nfs.html#GUID-2A0CCBAB-9335-45A8-B8E3-7E8C4B889DEA)makalesinde belgelenmiştir.
+
+Oracle veritabanları için Azure NetApp Files tabanlı NFS kullanımını gösteren bir örnek, blog [DAĞıTıMı SAP AnyDB (Oracle 19c) Azure NetApp Files ile](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/deploy-sap-anydb-oracle-19c-with-azure-netapp-files/ba-p/2064043)sunulmaktadır.
 
 
 #### <a name="write-accelerator"></a>Yazma Hızlandırıcısı

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 95993b35174b80dae8c878c22554ee60afeb8a14
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 57a9f6f11283e020efc25f55f1df473a6cb2d321
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206229"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98570006"
 ---
 # <a name="server-side-performance-queries"></a>Sunucu tarafı performans sorguları
 
@@ -65,13 +65,13 @@ Alınan `FrameStatistics` nesne aşağıdaki üyeleri barındırır:
 | Üye | Açıklama |
 |:-|:-|
 | Latşifreli Posetoreceive | Bu poza yönelik bir sunucu çerçevesi istemci uygulaması tarafından tam olarak kullanılabilir olana kadar, kamera, istemci cihazında tahmine göre gecikme süresi. Bu değer, ağ gidiş dönüş, sunucu işleme süresi, video kod çözme ve değişim dengelemesi içerir. **Yukarıdaki çizimde bulunan Aralık 1 ' i inceleyin.**|
-| Latşifreli Receivetopyeniden gönderildi | İstemci uygulaması CPU üzerinde PresentFrame çağrılana kadar alınan bir uzak çerçevenin kullanılabilirliğine gecikme süresi. |
-| latencyPresentToDisplay  | Ekran ışıkları bitene kadar CPU üzerinde bir çerçeve sunumu gecikme süresi. Bu değer, istemci GPU zamanını, işletim sistemi tarafından gerçekleştirilen tüm çerçeve ara belleği, donanım yeniden projeksiyonu ve cihaza bağlı görüntü tarama zamanı içerir. **Yukarıdaki çizimde bulunan Aralık 2 '** ye bakın.|
-| timeSinceLastPresent | CPU üzerinde PresentFrame için sonraki çağrılar arasındaki süre. Görüntüleme süresinden daha büyük değerler (örneğin, 60-Hz istemci cihazında 16,6 MS), istemci uygulamanın zaman içinde CPU iş yükünü bitirmediğinden kaynaklanan sorunları gösterir. **Yukarıdaki çizimde bulunan Aralık 3 ' ü inceleyin.**|
+| Latşifreli Receivetopyeniden gönderildi | İstemci uygulaması CPU üzerinde PresentFrame çağrılana kadar alınan bir uzak çerçevenin kullanılabilirliğine gecikme süresi. **Yukarıdaki çizimde bulunan Aralık 2 '** ye bakın.|
+| latencyPresentToDisplay  | Ekran ışıkları bitene kadar CPU üzerinde bir çerçeve sunumu gecikme süresi. Bu değer, istemci GPU zamanını, işletim sistemi tarafından gerçekleştirilen tüm çerçeve ara belleği, donanım yeniden projeksiyonu ve cihaza bağlı görüntü tarama zamanı içerir. **Yukarıdaki çizimde bulunan Aralık 3 ' ü inceleyin.**|
+| timeSinceLastPresent | CPU üzerinde PresentFrame için sonraki çağrılar arasındaki süre. Görüntüleme süresinden daha büyük değerler (örneğin, 60-Hz istemci cihazında 16,6 MS), istemci uygulamanın zaman içinde CPU iş yükünü bitirmediğinden kaynaklanan sorunları gösterir.|
 | Videoframpaalındı | Son saniye içinde sunucudan alınan çerçeve sayısı. |
 | Videofoymereusedcount | Son saniye içinde, cihazda birden çok kez kullanılan alınan çerçeve sayısı. Sıfır olmayan değerler, çerçevelerin ağ değişimi veya aşırı sunucu işleme süresi nedeniyle yeniden kullanılması gerektiğini ve yeniden yansıtıldığını gösterir. |
 | Videofınmesatlandı | Son saniye içinde kodu çözülen, ancak daha yeni bir çerçeve geldiği için görüntülenmemiş olan alınan çerçeve sayısı. Sıfır olmayan değerler, ağın birden çok çerçeveye ertelenmesini ve daha sonra istemci cihaza bir veri bloğu içinde birlikte ulaştığını gösterir. |
-| Videofınmesatılır | **Videofesmesatine**çok benzer, ancak atılma nedeni, bir karenin daha geç bir şekilde verilmemesine neden olan herhangi bir bekleyen pozla ilişkilendirilmeyecektir. Bu durumda, önemli bir ağ çekişmesi vardır.|
+| Videofınmesatılır | **Videofesmesatine** çok benzer, ancak atılma nedeni, bir karenin daha geç bir şekilde verilmemesine neden olan herhangi bir bekleyen pozla ilişkilendirilmeyecektir. Bu durumda, önemli bir ağ çekişmesi vardır.|
 | videoFrameMinDelta | Son saniye içinde gelen ardışık iki kare arasındaki en az süre. VideoFrameMaxDelta ile birlikte, bu Aralık ağ veya video codec bileşeni tarafından neden olan bir değişim göstergesi sağlar. |
 | videoFrameMaxDelta | Son saniye boyunca ardışık iki kare arasındaki en fazla zaman miktarı. VideoFrameMinDelta ile birlikte, bu Aralık ağ veya video codec bileşeni tarafından neden olan bir değişim göstergesi sağlar. |
 
@@ -132,7 +132,7 @@ Nesnenin aksine `FrameStatistics` , `PerformanceAssessment` nesne sunucu tarafı
 | networkLatency | Milisaniye cinsinden yaklaşık ortalama gidiş dönüş ağ gecikmesi. Yukarıdaki çizimde, kırmızı okların toplamına karşılık gelir. Değer, gerçek sunucu işleme zamanının değerinden çıkarılmasıyla hesaplanır `latencyPoseToReceive` `FrameStatistics` . Bu yaklaşık değer doğru olmasa da, istemci üzerinde hesaplanan gecikme değerlerinden yalıtılmış olan ağ gecikmesi hakkında bir gösterge sağlar. |
 | polygonsRendered | Bir çerçevede işlenen üçgenin sayısı. Bu sayı Ayrıca, işleme sırasında daha sonra gelen üçgenler de içerir. Yani bu sayı, farklı kamera konumlarında çok fazla farklılık göstermez, ancak üçgen yüzey kaldırma hızına bağlı olarak performans büyük ölçüde farklılık gösterebilir.|
 
-Değerleri değerlendirmenize yardımcı olmak için her bölüm **harika**, **iyi**, **mediocre**veya **kötü**gibi bir kalite sınıflandırmasıyla gelir.
+Değerleri değerlendirmenize yardımcı olmak için her bölüm **harika**, **iyi**, **mediocre** veya **kötü** gibi bir kalite sınıflandırmasıyla gelir.
 Bu değerlendirme ölçümü sunucunun sistem durumunu kabaca bir şekilde belirtir, ancak mutlak olarak görülmemelidir. Örneğin, GPU süresi için bir ' mediocre ' puanı gördüğünü varsayın. Bu, genel çerçeve süresi bütçesi sınırına yakın olduğundan mediocre olarak kabul edilir. Ancak, bir karmaşık modeli işlemekte olduğunuz için Nonetheless iyi bir değer olabilir.
 
 ## <a name="statistics-debug-output"></a>İstatistik hata ayıklama çıkışı

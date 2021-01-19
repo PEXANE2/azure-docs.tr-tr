@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 06/10/2019
+ms.date: 01/18/2021
 ms.author: jingwang
-ms.openlocfilehash: 48928c5c4f3a2787e8f00e4084daacf6a64f1ea7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 34a2e423e06782b0d43766cccac9319ce68239d4
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461573"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569479"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Hızlı Başlangıç: REST API kullanarak Azure veri fabrikası ve işlem hattı oluşturma
 
@@ -34,7 +34,7 @@ Bu hızlı başlangıç, REST API kullanarak bir Azure veri fabrikası oluşturm
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -303,7 +303,7 @@ $response | ConvertTo-Json
 ```
 ## <a name="create-pipeline"></a>İşlem hattı oluşturma
 
-Bu örnekte, işlem hattı bir etkinlik içerir ve giriş blob yolu ve çıkış blob yolu şeklinde iki parametre alır. Bu parametrelerin değerleri, işlem hattı tetiklendiğinde/çalıştırıldığında ayarlanır. Kopyalama etkinliği, önceki adımda girdi ve çıktı olarak oluşturulmuş blob veri kümesini ifade eder. Veri kümesi bir girdi veri kümesi olarak kullanıldığında girdi yolu belirtilir. Ayrıca, veri kümesi bir çıktı veri kümesi olarak kullanıldığında çıktı yolu belirtilir.
+Bu örnekte, bu işlem hattı bir kopyalama etkinliği içerir. Kopyalama etkinliği, önceki adımda girdi ve çıktı olarak oluşturulan "ınputdataset" ve "OutputDataset" anlamına gelir.
 
 ```powershell
 $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${dataFactoryName}/pipelines/Adfv2QuickStartPipeline?api-version=${apiVersion}"
@@ -383,10 +383,7 @@ $response | ConvertTo-Json
 
 ## <a name="create-pipeline-run"></a>İşlem hattı çalıştırması oluşturma
 
-Bu adımda, işlem hattında belrtilen **inputPath** ve **outputPath** parametrelerinin değerlerini kaynak ve havuz blob yollarının gerçek değerleriyle ayarlayacak ve bir işlem hattı çalıştırması tetikleyeceksiniz. Yanıt gövdesinde döndürülen işlem hattı çalıştırma kimliği sonraki izleme API’sinde kullanılır.
-
-Dosyayı kaydetmeden önce **inputPath** ve **outputPath** değerini, verilerin kopyalanacağı kaynak ve havuz blob yolunuzla değiştirin.
-
+Bu adımda bir işlem hattı çalıştırması tetiklersiniz. Yanıt gövdesinde döndürülen işlem hattı çalıştırma kimliği sonraki izleme API’sinde kullanılır.
 
 ```powershell
 $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/pipelines/Adfv2QuickStartPipeline/createRun?api-version=${apiVersion}"

@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 08/05/2020
+ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: a62943c1a808424ded1a5e46ed115cda332bf7d5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6a73ecf18a4bd89567dc603758d9ff8501267a1f
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020764"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98570056"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning"></a>Öğretici: Azure AD Kullanıcı sağlaması için SAP başarılı faktörleri yapılandırma
 Bu öğreticinin amacı, başarılı bir şekilde, başarılı bir şekilde e-posta adresi geri yazma işlemi sayesinde, başarılı bir şekilde çalışan verileri Azure Active Directory, çalışan verileri sağlamak için gerçekleştirmeniz gereken adımları gösterir. 
@@ -49,7 +49,7 @@ Azure Active Directory Kullanıcı sağlama çözümünün bu başarılı olmas�
 
 * E-posta için Microsoft 365 kullanan kuruluşlar
 
-## <a name="solution-architecture"></a>Çözüm mimarisi
+## <a name="solution-architecture"></a>Çözüm Mimarisi
 
 Bu bölümde, yalnızca bulutta bulunan kullanıcılar için uçtan uca Kullanıcı sağlama çözüm mimarisi açıklanmaktadır. İki ilişkili akış vardır:
 
@@ -91,51 +91,61 @@ Başarılı bir şekilde OData API 'Leri çağırmak için kullanılacak olan ba
 
 ### <a name="create-an-api-permissions-role"></a>API izinleri rolü oluşturma
 
-* Yönetim merkezine erişimi olan bir kullanıcı hesabıyla SAP 'de başarılı bir şekilde oturum açın.
-* *Izin Rollerini Yönet*' i arayın ve ardından arama sonuçlarından **izin Rollerini Yönet** ' i seçin.
+1. Yönetim merkezine erişimi olan bir kullanıcı hesabıyla SAP 'de başarılı bir şekilde oturum açın.
+1. *Izin Rollerini Yönet*' i arayın ve ardından arama sonuçlarından **izin Rollerini Yönet** ' i seçin.
   ![Izin rollerini yönetme](./media/sap-successfactors-inbound-provisioning/manage-permission-roles.png)
-* Izin rolü listesinden **Yeni oluştur**' a tıklayın.
-  > [!div class="mx-imgBorder"]
-  > ![Yeni Izin rolü oluştur](./media/sap-successfactors-inbound-provisioning/create-new-permission-role-1.png)
-* Yeni izin rolü için bir **rol adı** ve **Açıklama** ekleyin. Ad ve açıklama rolün API kullanım izinleri olduğunu göstermelidir.
-  > [!div class="mx-imgBorder"]
-  > ![İzin rolü ayrıntısı](./media/sap-successfactors-inbound-provisioning/permission-role-detail.png)
-* Izin ayarları altında **izin...** öğesine tıklayın, ardından izin listesini aşağı kaydırın ve **tümleştirme araçlarını Yönet**' e tıklayın. **Yöneticinin, temel kimlik doğrulaması aracılığıyla OData API 'Sine erişmesine Izin ver** kutusunu işaretleyin.
-  > [!div class="mx-imgBorder"]
-  > ![Tümleştirme araçlarını Yönet](./media/sap-successfactors-inbound-provisioning/manage-integration-tools.png)
-* Aynı kutuda aşağı kaydırın ve **çalışan yönetim API 'si**' ni seçin. ODATA API kullanarak okumak ve ODATA API kullanarak düzenlemek için aşağıda gösterildiği gibi izinler ekleyin. Başarılı bir şekilde geri yazma senaryosunda aynı hesabı kullanmayı planlıyorsanız Düzenle seçeneğini belirleyin. 
-  > [!div class="mx-imgBorder"]
-  > ![Okuma yazma izinleri](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
-* **Bitti**' ye tıklayın. **Değişiklikleri Kaydet**’e tıklayın.
+1. Izin rolü listesinden **Yeni oluştur**' a tıklayın.
+    > [!div class="mx-imgBorder"]
+    > ![Yeni Izin rolü oluştur](./media/sap-successfactors-inbound-provisioning/create-new-permission-role-1.png)
+1. Yeni izin rolü için bir **rol adı** ve **Açıklama** ekleyin. Ad ve açıklama rolün API kullanım izinleri olduğunu göstermelidir.
+    > [!div class="mx-imgBorder"]
+    > ![İzin rolü ayrıntısı](./media/sap-successfactors-inbound-provisioning/permission-role-detail.png)
+1. Izin ayarları altında **izin...** öğesine tıklayın, ardından izin listesini aşağı kaydırın ve **tümleştirme araçlarını Yönet**' e tıklayın. **Yöneticinin, temel kimlik doğrulaması aracılığıyla OData API 'Sine erişmesine Izin ver** kutusunu işaretleyin.
+    > [!div class="mx-imgBorder"]
+    > ![Tümleştirme araçlarını Yönet](./media/sap-successfactors-inbound-provisioning/manage-integration-tools.png)
+1. Aynı kutuda aşağı kaydırın ve **çalışan yönetim API 'si**' ni seçin. ODATA API kullanarak okumak ve ODATA API kullanarak düzenlemek için aşağıda gösterildiği gibi izinler ekleyin. Başarılı bir şekilde geri yazma senaryosunda aynı hesabı kullanmayı planlıyorsanız Düzenle seçeneğini belirleyin. 
+    > [!div class="mx-imgBorder"]
+    > ![Okuma yazma izinleri](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
+
+1. Aynı izinler kutusunda **Kullanıcı izinleri-> çalışan verileri** ' ne gidin ve hizmet hesabının başarılı Özellikler kiracısından okuyagörüntüleyebileceği öznitelikleri gözden geçirin. Örneğin, başarılı faktörlerden *Kullanıcı adı* özniteliğini almak için, bu öznitelik Için "Görünüm" izninin verildiğinden emin olun. Benzer şekilde, görüntüleme izni için her bir özniteliği gözden geçirin. 
+
+    > [!div class="mx-imgBorder"]
+    > ![Çalışan verileri izinleri](./media/sap-successfactors-inbound-provisioning/review-employee-data-permissions.png)
+   
+
+    >[!NOTE]
+    >Bu sağlama uygulaması tarafından alınan özniteliklerin tüm listesi için lütfen [başarılı oldu öznitelik başvurusuna](../app-provisioning/sap-successfactors-attribute-reference.md) başvurun
+
+1. **Bitti**' ye tıklayın. **Değişiklikleri Kaydet**’e tıklayın.
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>API kullanıcısı için bir Izin grubu oluşturma
 
-* Başarılı etmenleri yönetici merkezinde, *Izin gruplarını yönet*' i arayın ve ardından arama sonuçlarından **izin gruplarını yönet** ' i seçin.
-  > [!div class="mx-imgBorder"]
-  > ![İzin gruplarını yönet](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
-* Izin gruplarını yönet penceresinde **Yeni oluştur**' a tıklayın.
-  > [!div class="mx-imgBorder"]
-  > ![Yeni Grup Ekle](./media/sap-successfactors-inbound-provisioning/create-new-group.png)
-* Yeni grup için bir grup adı ekleyin. Grup adı, grubun API kullanıcıları için olduğunu göstermelidir.
-  > [!div class="mx-imgBorder"]
-  > ![İzin grubu adı](./media/sap-successfactors-inbound-provisioning/permission-group-name.png)
-* Gruba üye ekleyin. Örneğin, kişiler havuzu açılan menüsünden **Kullanıcı adı** ' nı seçip tümleştirme IÇIN kullanılacak API hesabının kullanıcı adını girebilirsiniz. 
-  > [!div class="mx-imgBorder"]
-  > ![Grup üyeleri ekleme](./media/sap-successfactors-inbound-provisioning/add-group-members.png)
-* Izin grubunu oluşturmayı tamamladıktan sonra **bitti** ' ye tıklayın.
+1. Başarılı etmenleri yönetici merkezinde, *Izin gruplarını yönet*' i arayın ve ardından arama sonuçlarından **izin gruplarını yönet** ' i seçin.
+    > [!div class="mx-imgBorder"]
+    > ![İzin gruplarını yönet](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
+1. Izin gruplarını yönet penceresinde **Yeni oluştur**' a tıklayın.
+    > [!div class="mx-imgBorder"]
+    > ![Yeni Grup Ekle](./media/sap-successfactors-inbound-provisioning/create-new-group.png)
+1. Yeni grup için bir grup adı ekleyin. Grup adı, grubun API kullanıcıları için olduğunu göstermelidir.
+    > [!div class="mx-imgBorder"]
+    > ![İzin grubu adı](./media/sap-successfactors-inbound-provisioning/permission-group-name.png)
+1. Gruba üye ekleyin. Örneğin, kişiler havuzu açılan menüsünden **Kullanıcı adı** ' nı seçip tümleştirme IÇIN kullanılacak API hesabının kullanıcı adını girebilirsiniz. 
+    > [!div class="mx-imgBorder"]
+    > ![Grup üyeleri ekleme](./media/sap-successfactors-inbound-provisioning/add-group-members.png)
+1. Izin grubunu oluşturmayı tamamladıktan sonra **bitti** ' ye tıklayın.
 
 ### <a name="grant-permission-role-to-the-permission-group"></a>İzin grubuna izin rolü verme
 
-* Başarılı bir şekilde Yönetim Merkezi 'nde, *Izin Rollerini Yönet*' i arayın ve ardından arama sonuçlarından **izin Rollerini Yönet** ' i seçin.
-* **Izin rolü listesinden**, API kullanım izinleri için oluşturduğunuz rolü seçin.
-* **Bu rolü Izin ver altında... öğesine** tıklayın **.**
-* Açılan menüden **Izin grubu...** ' yi seçin ve ardından **Seç...** öğesine tıklayarak yukarıda oluşturulan grubu aramak ve seçmek için gruplar penceresini açın. 
-  > [!div class="mx-imgBorder"]
-  > ![İzin grubu Ekle](./media/sap-successfactors-inbound-provisioning/add-permission-group.png)
-* İzin grubuna verme Izni rolünü gözden geçirin. 
-  > [!div class="mx-imgBorder"]
-  > ![İzin rolü ve Grup Ayrıntısı](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
-* **Değişiklikleri Kaydet**’e tıklayın.
+1. Başarılı bir şekilde Yönetim Merkezi 'nde, *Izin Rollerini Yönet*' i arayın ve ardından arama sonuçlarından **izin Rollerini Yönet** ' i seçin.
+1. **Izin rolü listesinden**, API kullanım izinleri için oluşturduğunuz rolü seçin.
+1. **Bu rolü Izin ver altında... öğesine** tıklayın **.**
+1. Açılan menüden **Izin grubu...** ' yi seçin ve ardından **Seç...** öğesine tıklayarak yukarıda oluşturulan grubu aramak ve seçmek için gruplar penceresini açın. 
+    > [!div class="mx-imgBorder"]
+    > ![İzin grubu Ekle](./media/sap-successfactors-inbound-provisioning/add-permission-group.png)
+1. İzin grubuna verme Izni rolünü gözden geçirin. 
+    > [!div class="mx-imgBorder"]
+    > ![İzin rolü ve Grup Ayrıntısı](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
+1. **Değişiklikleri Kaydet**’e tıklayın.
 
 ## <a name="configuring-user-provisioning-from-successfactors-to-azure-ad"></a>Kullanıcı hazırlama işlemini başarılı etmenlerden Azure AD 'ye yapılandırma
 

@@ -3,12 +3,12 @@ title: Azure Backup’taki yenilikler
 description: Azure Backup yeni özellikler hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: ba29ddea5d5f096640f2bfc012c44ab06bb3e131
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 62a6146990863c339917777b2624fee76ebe60d8
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309673"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569428"
 ---
 # <a name="whats-new-in-azure-backup"></a>Azure Backup’taki yenilikler
 
@@ -18,6 +18,9 @@ Yeni yayınlar hakkında daha fazla bilgi edinmek için bu sayfayı kitap halind
 
 ## <a name="updates-summary"></a>Güncelleştirme Özeti
 
+- Ocak 2021
+  - [Azure disk yedekleme (önizlemede)](disk-backup-overview.md)
+  - [Müşteri tarafından yönetilen anahtarlar kullanılarak bekleyen şifreleme artık genel kullanıma sunuldu](encryption-at-rest-with-cmk.md)
 - Kasım 2020
   - [Azure dosya paylaşma (AFS) yedeklemesi için Azure Resource Manager şablonu](#azure-resource-manager-template-for-afs-backup)
   - [Azure VM 'lerinde SAP HANA veritabanları için artımlı yedeklemeler](#incremental-backups-for-sap-hana-databases)
@@ -31,6 +34,18 @@ Yeni yayınlar hakkında daha fazla bilgi edinmek için bu sayfayı kitap halind
   - [RHEL Azure sanal makinelerinde yedekleme SAP HANA](#backup-sap-hana-in-rhel-azure-virtual-machines)
   - [Yedekleme verileri için bölge yedekli depolama (ZRS)](#zone-redundant-storage-zrs-for-backup-data)
   - [Azure VM 'lerinde SQL Server ve SAP HANA iş yükleri için geçici silme](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="azure-disk-backup-in-preview"></a>Azure disk yedekleme (önizlemede)
+
+Azure disk yedekleme, düzenli anlık görüntü oluşturmayı otomatikleştirerek ve yedekleme ilkesini kullanarak yapılandırılmış bir süre boyunca tutarak [Azure yönetilen diskler](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview) için anlık görüntü yaşam döngüsü yönetimi sağlayan bir anahtar oluşturma çözümü sunmaktadır. Disk anlık görüntülerini sıfır altyapı maliyetiyle ve özel betik oluşturmaya veya herhangi bir yönetim yüküne gerek kalmadan yönetebilirsiniz. Bu, günde birden çok yedekleme desteği olan [Artımlı anlık görüntüleri](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots) kullanarak yönetilen bir diskin zaman içinde yedeğini alan çökme ile tutarlı bir yedekleme çözümüdür. Ayrıca, aynı zamanda aracılı bir çözümdür ve üretim uygulaması performansını etkilemez. Hem işletim sistemi hem de veri disklerinin (paylaşılan diskler dahil), çalışmakta olan bir Azure sanal makinesine bağlı olup olmadığına bakılmaksızın yedekleme ve geri yükleme desteği sağlar.
+
+Daha fazla bilgi için bkz. [Azure disk yedekleme (önizlemede)](disk-backup-overview.md).
+
+## <a name="encryption-at-rest-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak bekleyen şifreleme
+
+Müşteri tarafından yönetilen anahtarlar kullanılarak bekleyen şifreleme desteği genel kullanıma sunuldu. Bu sayede, Azure Anahtar Kasası 'nda depolanan anahtarları kullanarak kurtarma hizmetleri kasalarınızda yedekleme verilerini şifreleyebilirsiniz. Kurtarma Hizmetleri kasasındaki yedeklemeleri şifrelemek için kullanılan şifreleme anahtarı, kaynağı şifrelemek için kullanılan olanlardan farklı olabilir. Veriler, Key Vault depolanan anahtarlarınız kullanılarak korunan bir AES 256 tabanlı veri şifreleme anahtarı (DEK) kullanılarak korunur. Platform tarafından yönetilen anahtarlar kullanılarak şifrelemeye kıyasla (varsayılan olarak kullanılabilir), bu anahtarlar üzerinde daha fazla denetim sağlar ve uyumluluk gereksinimlerinizi daha iyi karşılayabilmeniz için size yardımcı olabilir.
+
+Daha fazla bilgi için bkz. [müşteri tarafından yönetilen anahtarlar kullanılarak yedekleme verilerinin şifrelenmesi](encryption-at-rest-with-cmk.md).
 
 ## <a name="azure-resource-manager-template-for-afs-backup"></a>AFS yedeklemesi için Azure Resource Manager şablonu
 

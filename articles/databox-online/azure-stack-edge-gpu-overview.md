@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/23/2020
+ms.date: 01/18/2021
 ms.author: alkohli
-ms.openlocfilehash: 059aad8b45aa449f5cd28c97f4ba55e2204c04ce
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 31947ca4d5eb632998f5c50257c12ef9a52dfc66
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937075"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98570108"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>GPU ile Azure Stack Edge Pro nedir?
 
@@ -21,7 +21,7 @@ GPU ile Azure Stack Edge Pro, ağ veri aktarımı özelliklerine sahip bir AI ö
 
 GPU ile Azure Stack Edge Pro, bir hizmet olarak donanım çözümüdür. Microsoft, ağ depolama ağ geçidi olarak davranan ve hızlandırılmış AI sağlayan yerleşik bir grafik Işleme birimi (GPU) olan, bulut tarafından yönetilen bir cihaz sunar. 
 
-## <a name="use-cases"></a>Kullanım örnekleri
+## <a name="use-cases"></a>Uygulama alanları
 
 Azure Stack Edge Pro 'nun, en uçta hızlı Machine Learning (ML) için kullanılabileceği ve verileri Azure 'a göndermeden önce ön işlemesi için kullanabileceğiniz çeşitli senaryolar aşağıda verilmiştir.
 
@@ -71,7 +71,7 @@ Azure Stack Edge Pro çözümü, Azure Stack Edge kaynağı, Azure Stack Edge Pr
 
 Azure Stack Edge Pro fiziksel cihazı, Azure kaynağı ve veri aktarımı yaptığınız hedef depolama hesabı, tümünün aynı bölgede olması gerekmez.
 
-- **Kaynak kullanılabilirliği** -bu önizleme sürümü için kaynak Doğu ABD, Batı AB ve Güney Doğu Asya bölgelerinde kullanılabilir.
+- **Kaynak kullanılabilirliği** -bu sürüm için kaynak Doğu ABD, Batı AB ve Güney Doğu Asya bölgelerinde kullanılabilir.
 
 - **Cihaz kullanılabilirliği** -Azure Stack Edge Pro cihazının kullanılabildiği tüm ülkelerin/bölgelerin listesi için, [Azure Stack Edge pro fiyatlandırması](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgePro)için **Azure Stack Edge Pro** sekmesinde **kullanılabilirlik** bölümüne gidin.
     

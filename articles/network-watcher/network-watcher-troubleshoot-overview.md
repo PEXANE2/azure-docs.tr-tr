@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: 5342c4505bd300d1287acba246ca59610f2697bd
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 0d0597c2df8731171505a090de6959d8a112c004
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858646"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569989"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Azure ağ Izleyicisi 'nde kaynak sorunlarını gidermeye giriş
 
@@ -73,7 +73,7 @@ Aşağıdaki tablolarda, kullanılabilir olan farklı hata türleri (önceki lis
 | Connectionımarkedconnected | Bağlantı "bağlantısı kesildi" olarak işaretlendi |Hayır|
 | ConnectionNotConfiguredOnGateway | Temeldeki hizmette bağlantı yapılandırılmamış. | Yes |
 | ConnectionMarkedStandby | Temel alınan hizmet bekleme olarak işaretlendi.| Yes|
-| Kimlik doğrulaması | Önceden paylaşılmış anahtar uyumsuzluğu | Yes|
+| Kimlik Doğrulaması | Önceden paylaşılmış anahtar uyumsuzluğu | Yes|
 | Peerulaşılabilirlik | Eş ağ geçidine erişilemiyor. | Yes|
 | Ikepolicyuyuşmazlığıdır | Eş ağ geçidinde Azure tarafından desteklenmeyen ıKE ilkeleri vardır. | Yes|
 | WfpParse hatası | WFP günlüğü ayrıştırılırken bir hata oluştu. |Yes|
@@ -209,7 +209,9 @@ Elapsed Time            330 sec
 ```
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler 
+* Her abonelik için aynı anda yalnızca bir sorun giderme işlemi çalıştırılabilir. Başka bir sorun giderme işlemi çalıştırmak için, önceki birinin tamamlanmasını bekleyin. Önceki bir işlem tamamlanmadan daha fazla işlem tetiklenmesi, sonraki işlemlerin başarısız olmasına neden olur. 
 * CLı hatası: komutu çalıştırmak için Azure CLı kullanıyorsanız, VPN Gateway ve depolama hesabının aynı kaynak grubunda olması gerekir. Farklı kaynak gruplarındaki kaynaklara sahip müşteriler, bunun yerine PowerShell veya Azure portal kullanabilir.  
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

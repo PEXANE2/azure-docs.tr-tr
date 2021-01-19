@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: d499a0e7d3ca7933632b52d5edbd8094a29dbcaa
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: b67d75ac99f247659723ac0b5a90fd32ebf627e3
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979904"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569887"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>Öğretici: kimlik doğrulaması için Microsoft Identity platformunu kullanan bir Blazor Server uygulaması oluşturma
 
@@ -71,7 +71,7 @@ dotnet new blazorserver2 --auth SingleOrg --calls-graph -o {APP NAME} --client-i
 Şimdi, düzenleyicinizdeki yeni Blazor uygulamanıza gidin ve "gizli-uygulama-kayıt" metnini değiştirerek istemci gizli anahtarını dosyaya *appsettings.js* ekleyin.
 
 ```json
-"ClientSecret": "xkAlNiG70000000_UI~d.OS4Dl.-Cy-1m3",
+"ClientSecret": "secret-from-app-registration",
 ```
 
 ## <a name="test-the-app"></a>Uygulamayı test etme
@@ -94,7 +94,7 @@ Başlamadan önce, gerekli izinlerde değişiklikler yaptığınız için uygula
 
 1. Azure portal, **uygulama kayıtları**' de Uygulamanızı seçin.
 1. **Yönet** altında **API izinleri**' ni seçin.
-1. Microsoft Graph **izin Ekle**' yi seçin  >  **Microsoft Graph**.
+1. Microsoft Graph **izin Ekle**' yi seçin  >  .
 1. **Temsilci izinleri**' ni seçin, sonra **posta. Read** iznini arayıp seçin.
 1. **Izin Ekle**' yi seçin.
 

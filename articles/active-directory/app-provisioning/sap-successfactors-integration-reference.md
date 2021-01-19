@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 07/20/2020
+ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: 805cdc0713afd43502bb224cce60167adbc418ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e97be7fef09287e6c4f8696e217702b97853fa6a
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90969527"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569462"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-sap-successfactors"></a>Azure Active Directory sağlama, SAP başarılı faktörlerle nasıl tümleştirilir? 
 
@@ -55,21 +55,22 @@ Başarılı faktörlerdeki her kullanıcı için, Azure AD sağlama hizmeti aşa
 | 6  | Kullanıcı                                   | employmentNav/userNav        | Her zaman           |
 | 7  | EmpJob                                 | employmentNav/Jobınfonav     | Her zaman           |
 | 8  | EmpEmploymentTermination               | activeEmploymentsCount       | Her zaman           |
-| 9  | FOCompany                              | employmentNav/Jobınfonav/companyNav | Yalnızca `company` veya `companyId` özniteliği eşlenmişse |
-| 10 | FODepartment                           | employmentNav/Jobınfonav/departmentNav | Yalnızca `department` veya `departmentId` özniteliği eşlenmişse |
-| 11 | FOBusinessUnit                         | employmentNav/Jobınfonav/businessUnitNav | Yalnızca `businessUnit` veya `businessUnitId` özniteliği eşlenmişse |
-| 12 | FOCostCenter                           | employmentNav/Jobınfonav/costCenterNav | Yalnızca `costCenter` veya `costCenterId` özniteliği eşlenmişse |
-| 13 | Fobölüm                             | employmentNav/Jobınfonav/divisionNav  | Yalnızca `division` veya `divisionId` özniteliği eşlenmişse |
-| 14 | FOJobCode                              | employmentNav/Jobınfonav/jobCodeNav  | Yalnızca `jobCode` veya `jobCodeId` özniteliği eşlenmişse |
-| 15 | Fopaygrad                             | employmentNav/Jobınfonav/payGradeNav  | Yalnızca `payGrade` özniteliği eşlenmişse |
-| 16 | Katmanma                             | employmentNav/Jobınfonav/locationNav  | Yalnızca `location` özniteliği eşlenmişse |
-| 17 | FOCorporateAddressDEFLT                | employmentNav/Jobınfonav/addressNavDEFLT  | Eşleme aşağıdaki özniteliklerden birini içeriyorsa: `officeLocationAddress,  officeLocationCity, officeLocationZipCode` |
-| 18 | FOEventReason                          | employmentNav/Jobınfonav/eventReasonNav  | Yalnızca `eventReason` özniteliği eşlenmişse |
-| 19 | EmpGlobalAssignment                    | employmentNav/empGlobalAssignmentNav | Yalnızca `assignmentType` eşlenmişse |
-| 20 | EmploymentType seçim listesi                | employmentNav/Jobınfonav/employmentTypeNav | Yalnızca `employmentType` eşlenmişse |
-| 21 | EmployeeClass seçim listesi                 | employmentNav/Jobınfonav/employeeClassNav | Yalnızca `employeeClass` eşlenmişse |
-| 22 | EmplStatus seçim listesi                    | employmentNav/Jobınfonav/emplStatusNav | Yalnızca `emplStatus` eşlenmişse |
-| 23 | Atamatürü seçim listesi                | employmentNav/empGlobalAssignmentNav/Atamatypenav | Yalnızca `assignmentType` eşlenmişse |
+| 9  | Kullanıcının Yöneticisi                         | employmentNav/userNav/Manager/Empınfo | Her zaman  |
+| 10 | FOCompany                              | employmentNav/Jobınfonav/companyNav | Yalnızca `company` veya `companyId` özniteliği eşlenmişse |
+| 11 | FODepartment                           | employmentNav/Jobınfonav/departmentNav | Yalnızca `department` veya `departmentId` özniteliği eşlenmişse |
+| 12 | FOBusinessUnit                         | employmentNav/Jobınfonav/businessUnitNav | Yalnızca `businessUnit` veya `businessUnitId` özniteliği eşlenmişse |
+| 13 | FOCostCenter                           | employmentNav/Jobınfonav/costCenterNav | Yalnızca `costCenter` veya `costCenterId` özniteliği eşlenmişse |
+| 14 | Fobölüm                             | employmentNav/Jobınfonav/divisionNav  | Yalnızca `division` veya `divisionId` özniteliği eşlenmişse |
+| 15 | FOJobCode                              | employmentNav/Jobınfonav/jobCodeNav  | Yalnızca `jobCode` veya `jobCodeId` özniteliği eşlenmişse |
+| 16 | Fopaygrad                             | employmentNav/Jobınfonav/payGradeNav  | Yalnızca `payGrade` özniteliği eşlenmişse |
+| 17 | Katmanma                             | employmentNav/Jobınfonav/locationNav  | Yalnızca `location` özniteliği eşlenmişse |
+| 18 | FOCorporateAddressDEFLT                | employmentNav/Jobınfonav/addressNavDEFLT  | Eşleme aşağıdaki özniteliklerden birini içeriyorsa: `officeLocationAddress,  officeLocationCity, officeLocationZipCode` |
+| 19 | FOEventReason                          | employmentNav/Jobınfonav/eventReasonNav  | Yalnızca `eventReason` özniteliği eşlenmişse |
+| 20 | EmpGlobalAssignment                    | employmentNav/empGlobalAssignmentNav | Yalnızca `assignmentType` eşlenmişse |
+| 21 | EmploymentType seçim listesi                | employmentNav/Jobınfonav/employmentTypeNav | Yalnızca `employmentType` eşlenmişse |
+| 22 | EmployeeClass seçim listesi                 | employmentNav/Jobınfonav/employeeClassNav | Yalnızca `employeeClass` eşlenmişse |
+| 23 | EmplStatus seçim listesi                    | employmentNav/Jobınfonav/emplStatusNav | Yalnızca `emplStatus` eşlenmişse |
+| 24 | Atamatürü seçim listesi                | employmentNav/empGlobalAssignmentNav/Atamatypenav | Yalnızca `assignmentType` eşlenmişse |
 
 ## <a name="how-full-sync-works"></a>Tam eşitlemenin nasıl çalıştığı
 Öznitelik eşleme temel alınarak, tam eşitleme sırasında Azure AD sağlama hizmeti, tüm etkin kullanıcıların etkili verilerini getirmek için aşağıdaki "GET" OData API sorgusunu gönderir. 
@@ -113,7 +114,7 @@ Azure AD sağlama hizmeti başarılı faktörleri sorguladığında bir JSON son
 
 Ek öznitelikler almak için aşağıda listelenen adımları izleyin:
     
-1. **Kurumsal uygulamalara**gidin başarılı bir şekilde  ->  **uygulama**  ->  **sağlama**  ->  **Edit Provisioning**  ->  **özelliği sağlama özniteliği eşleme sayfası**.
+1. **Kurumsal uygulamalara** gidin başarılı bir şekilde  ->  **uygulama**  ->  **sağlama**  ->    ->  **özelliği sağlama özniteliği eşleme sayfası**.
 1. Aşağı kaydırın ve **Gelişmiş seçenekleri göster**' e tıklayın.
 1. **Başarılı etmenler için öznitelik listesini düzenle**' ye tıklayın. 
 
@@ -166,9 +167,9 @@ Varsayılan Azure AD başarılı etmenleri sağlama uygulama şeması, [90 + ön
    * Özniteliği *Kullanıcı* varlığının parçasıysa, *EmploymentNav/usernav* düğümündeki özniteliği bulun.
    * Özniteliği *Empjob* varlığının parçasıysa, *EmploymentNav/Jobınfonav* düğümündeki özniteliği bulun. 
 1. Özniteliğiyle ilişkili JSON yolunu oluşturun ve bu yeni özniteliği başarılı Özellikler listesine ekleyin. 
-   * Örnek 1: *employmentNav* varlığının bir parçası olan *Oktoreişe alma*özniteliğini eklemek ve ardından jsonpath 'i kullanmak istediğinizi varsayalım`$.employmentNav.results[0].okToRehire`
-   * Örnek 2: *Usernav* varlığının bir parçası olan Attribute *saat dilimini*eklemek Istediğinizi söyleyin, sonra jsonpath kullanın`$.employmentNav.results[0].userNav.timeZone`
-   * Örnek 3: bir *Jobınfonav* varlığının parçası olan *flsastatus*özniteliğini eklemek Istediğinizi söyleyin, sonra jsonpath kullanın`$.employmentNav.results[0].jobInfoNav.results[0].flsaStatus`
+   * Örnek 1: *employmentNav* varlığının bir parçası olan *Oktoreişe alma* özniteliğini eklemek ve ardından jsonpath 'i kullanmak istediğinizi varsayalım`$.employmentNav.results[0].okToRehire`
+   * Örnek 2: *Usernav* varlığının bir parçası olan Attribute *saat dilimini* eklemek Istediğinizi söyleyin, sonra jsonpath kullanın`$.employmentNav.results[0].userNav.timeZone`
+   * Örnek 3: bir *Jobınfonav* varlığının parçası olan *flsastatus* özniteliğini eklemek Istediğinizi söyleyin, sonra jsonpath kullanın`$.employmentNav.results[0].jobInfoNav.results[0].flsaStatus`
 1. Şemayı kaydedin. 
 1. Sağlamayı yeniden başlatın.
 
@@ -181,10 +182,10 @@ Varsayılan olarak, aşağıdaki özel öznitelikler Azure AD başarılı etmenl
 
 Diyelim ki, çalışan merkezi Örneğinizde, *Empjobınfo* 'daki *customString35* özniteliği konum açıklamasını depolar. Bu değeri Active Directory *physicalDeliveryOfficeName* özniteliğine akmasını istiyorsunuz. Bu senaryoya yönelik öznitelik eşlemesini yapılandırmak için aşağıda verilen adımları kullanın: 
 
-1. *EmpJobNavCustomString35*adlı yeni bir öznitelik eklemek Için başarılı etmenler öznitelik listesini düzenleyin.
+1. *EmpJobNavCustomString35* adlı yeni bir öznitelik eklemek Için başarılı etmenler öznitelik listesini düzenleyin.
 1. Bu öznitelik için JSONPath API ifadesini şu şekilde ayarlayın: `$.employmentNav.results[0].jobInfoNav.results[0].customString35`
 1. Eşleme değişikliğini Azure portal kaydedin ve yeniden yükleyin.  
-1. Öznitelik eşleme dikey penceresinde *empJobNavCustomString35* öğesini *physicalDeliveryOfficeName*olarak eşleyin.
+1. Öznitelik eşleme dikey penceresinde *empJobNavCustomString35* öğesini *physicalDeliveryOfficeName* olarak eşleyin.
 1. Eşlemeyi kaydedin.
 
 Bu senaryo genişletiliyor: 
@@ -244,8 +245,8 @@ Bu şema değişikliği, çalışan dönüştürme senaryosunu da destekler.
 ### <a name="handling-global-assignment-scenario"></a>Genel atama senaryosunu işleme
 
 Çalışan merkezi 'nde bir Kullanıcı genel atama için işlendiğinde, başarılı bir şekilde yeni bir *Empistihdam* varlığı ekler ve *ATAMASıNıFı* "ga" olarak ayarlar. Ayrıca yeni *Kullanıcı* varlığı da oluşturur. Bu nedenle, Kullanıcı şu anda şunları içerir:
-* *EmpEmployment*  +  *Atamasınıfı* ile ana atamaya karşılık gelen bir empistihdam*Kullanıcı* varlığı "St" olarak ayarlanmış ve 
-* *EmpEmployment*  +  *Atamasınıfı* ile genel atamaya karşılık gelen, "ga" olarak ayarlanmış başka bir empistihdam*Kullanıcı* varlığı
+*   +  *Atamasınıfı* ile ana atamaya karşılık gelen bir empistihdam *Kullanıcı* varlığı "St" olarak ayarlanmış ve 
+*   +  *Atamasınıfı* ile genel atamaya karşılık gelen, "ga" olarak ayarlanmış başka bir empistihdam *Kullanıcı* varlığı
 
 Standart atamaya ve genel atama Kullanıcı profiline ait öznitelikleri getirmek için aşağıda listelenen adımları kullanın: 
 
@@ -292,9 +293,9 @@ Bu bölümde, farklı geri yazma senaryoları ele alınmaktadır. E-posta ve tel
 | \# | Senaryo gereksinimi | Birincil e-posta <br> bayrak değeri | İş telefonu <br> birincil bayrak değeri | Cep telefonu <br> birincil bayrak değeri | İş telefonu <br> eşleme | Cep telefonu <br> eşleme |
 |--|--|--|--|--|--|--|
 | 1 | * İş e-postasını yalnızca birincil olarak ayarlayın. <br> * Telefon numaralarını ayarlama. | true | true | yanlış | \[Ayarlanmadı\] | \[Ayarlanmadı\] | 
-| 2 | * Başarılı etmenler, iş e-postası ve iş telefonu birincil <br> * Her zaman Azure AD telefon numarasını iş telefonuna ve cep telefonlarına cep telefonuna Flow. | true | true | yanlış | telephoneNumber 'dır | mobil | 
-| 3 | * Başarılı etkenlere, iş e-postasına ve cep telefonunun birincil <br> * Her zaman Azure AD telefon numarasını iş telefonuna ve cep telefonlarına cep telefonuna Flow | true | yanlış | true |  telephoneNumber 'dır | mobil | 
-| 4 | * Başarılı bir şekilde iş e-postası birincil <br> * Azure AD 'de iş telefonu numarasının mevcut olup olmadığını denetleyin, varsa, cep telefonu numarasını yalnızca cep telefonu numarası yoksa birincil olarak işaretleyin. | true | İfade eşlemeyi kullan: `IIF(IsPresent([telephoneNumber]), IIF(IsPresent([mobile]),"false", "true"), "false")` | İfade eşlemeyi kullan: `IIF(IsPresent([mobile]),"false", "true")` | telephoneNumber 'dır | mobil | 
+| 2 | * Başarılı etmenler, iş e-postası ve iş telefonu birincil <br> * Her zaman Azure AD telefon numarasını iş telefonuna ve cep telefonlarına cep telefonuna Flow. | true | true | yanlış | telephoneNumber | mobil | 
+| 3 | * Başarılı etkenlere, iş e-postasına ve cep telefonunun birincil <br> * Her zaman Azure AD telefon numarasını iş telefonuna ve cep telefonlarına cep telefonuna Flow | true | yanlış | true |  telephoneNumber | mobil | 
+| 4 | * Başarılı bir şekilde iş e-postası birincil <br> * Azure AD 'de iş telefonu numarasının mevcut olup olmadığını denetleyin, varsa, cep telefonu numarasını yalnızca cep telefonu numarası yoksa birincil olarak işaretleyin. | true | İfade eşlemeyi kullan: `IIF(IsPresent([telephoneNumber]), IIF(IsPresent([mobile]),"false", "true"), "false")` | İfade eşlemeyi kullan: `IIF(IsPresent([mobile]),"false", "true")` | telephoneNumber | mobil | 
 | 5 | * Başarılı bir şekilde iş e-postası ve iş telefonu, birincil. <br> * Azure AD 'de mobil kullanılabiliyorsa iş telefonu olarak ayarlayın, aksi takdirde telephoneNumber kullanın. | true | true | yanlış | `IIF(IsPresent([mobile]), [mobile], [telephoneNumber])` | \[Ayarlanmadı\] | 
 
 * Sonradan yazma özniteliği eşlemesinde telefon numarası için bir eşleme yoksa, yalnızca e-posta geri yazmaya dahil edilir.

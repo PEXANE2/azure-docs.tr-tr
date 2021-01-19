@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/28/2020
+ms.date: 01/18/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 511801962d07e5fb99000b2fc19adce2489b46d3
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2c7ea804e9e85578076969f0ec6bdf90b571bb75
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967491"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98570091"
 ---
 # <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>SAP HANA için Azure NetApp Files üzerinde NFS v4.1 birimleri
 
@@ -51,7 +51,7 @@ SAP NetWeaver ve SAP HANA için Azure NetApp Files düşünürken, aşağıdaki 
 > SAP HANA iş yükleri için düşük gecikme süresi kritik öneme sahiptir. Sanal makinelerin ve Azure NetApp Files birimlerinin yakın bir yerde dağıtıldığından emin olmak için Microsoft temsilcinizle birlikte çalışın.  
 
 > [!IMPORTANT]
-> <b>SID</b>adm Kullanıcı kimliği ve `sapsys` sanal makine Ile Azure NetApp YAPıLANDıRMASı arasındaki grup kimliği arasında UYUŞMAZLıK varsa, VM 'ye bağlanan Azure NetApp birimlerindeki dosyaların izinleri olarak görüntülenecektir `nobody` . <b>sid</b> `sapsys` Azure NetApp Files için [Yeni bir sistem](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u) oluştururken, SID adm ve grup kimliği için doğru Kullanıcı kimliğini belirttiğinizden emin olun.
+> <b>SID</b>adm Kullanıcı kimliği ve `sapsys` sanal makine Ile Azure NetApp YAPıLANDıRMASı arasındaki grup kimliği arasında UYUŞMAZLıK varsa, VM 'ye bağlanan Azure NetApp birimlerindeki dosyaların izinleri olarak görüntülenecektir `nobody` . <b></b> `sapsys` Azure NetApp Files için [Yeni bir sistem](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u) oluştururken, SID adm ve grup kimliği için doğru Kullanıcı kimliğini belirttiğinizden emin olun.
 
 
 ## <a name="sizing-for-hana-database-on-azure-netapp-files"></a>Azure NetApp Files HANA veritabanı için boyutlandırma
@@ -69,10 +69,10 @@ Bir LIF ve tek bir Linux oturumu için en yüksek aktarım hızı 1,2 ile 1,4 GB
 | 1 TB | 16 MB/sn | 64 MB/sn | 128 MB/sn |
 | 2 TB | 32 MB/sn | 128 MB/sn | 256 MB/sn |
 | 4 TB | 64 MB/sn | 256 MB/sn | 512 MB/sn |
-| 10 TB | 160 MB/sn | 640 MB/sn | 1,280 MB/sn |
-| 15 TB | 240 MB/sn | 960 MB/sn | 1,400 MB/sn |
-| 20 TB | 320 MB/sn | 1,280 MB/sn | 1,400 MB/sn |
-| 40 TB | 640 MB/sn | 1,400 MB/sn | 1,400 MB/sn |
+| 10 TB | 160 MB/sn | 640 MB/sn | 1.280 MB/sn |
+| 15 TB | 240 MB/sn | 960 MB/sn | 1.400 MB/sn |
+| 20 TB | 320 MB/sn | 1.280 MB/sn | 1.400 MB/sn |
+| 40 TB | 640 MB/sn | 1.400 MB/sn | 1.400 MB/sn |
 
 Verilerin depolama arka ucunda aynı SSD 'ye yazıldığını anlamak önemlidir. Kapasite havuzundaki performans kotası, ortamı yönetebilmek için oluşturulmuştur.
 Depolama KPI 'Leri tüm HANA veritabanı boyutları için eşittir. Neredeyse tüm durumlarda bu varsayım gerçekliği ve müşteri beklentisini yansıtmaz. HANA sistemlerinin boyutu, küçük bir sistemin depolama üretilen iş üretimi gerektirmesidir; büyük bir sistem yüksek depolama alanı işleme gerektirir. Ancak genel olarak daha büyük HANA veritabanı örnekleri için daha fazla verimlilik gereksinimi bekleyebilir. SAP 'nin temel alınan donanımla ilgili boyutlandırma kurallarının bir sonucu olarak, benzer HANA örnekleri de bir örnek yeniden başlatıldıktan sonra verileri yükleme gibi görevlerde daha fazla CPU kaynağı ve daha yüksek paralellik sağlar. Sonuç olarak, birim boyutları müşteri beklentileri ve gereksinimlerine benimsemelidir. Yalnızca saf kapasite gereksinimlerine göre değil.

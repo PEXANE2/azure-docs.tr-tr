@@ -4,12 +4,12 @@ description: Uzun süreli saklama (Önizleme) ile PostgreSQL için Azure veritab
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: 32837e5bb871f7db5024569efc27940047aeacd7
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 628f43788c11558185a7b8a735373f0a663fdad1
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734649"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569496"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Uzun süreli saklama ile PostgreSQL için Azure veritabanı yedekleme (Önizleme)
 
@@ -135,7 +135,7 @@ Aşağıdaki yönergeler, Azure PostgreSQL veritabanlarında Azure Backup kullan
 
 1. **Bekletme** ayarlarını tanımlayın. Bir veya daha fazla bekletme kuralı ekleyebilirsiniz. Her bekletme kuralı belirli yedeklemeler için girişleri ve bu yedeklemeler için veri depolama ve bekletme süresini varsayar.
 
-1. Yedeklemelerinizi iki veri deposundan (veya katmanda) birinde depolamayı seçebilirsiniz: **yedekleme veri deposu** (sık kullanılan katman) veya **Arşiv veri deposu** (önizlemede). Yedeklemelerin iki veri deposu arasında katmanlandığınızda tanımlamak üzere **iki katmanlama seçeneği** arasından seçim yapabilirsiniz:
+1. Yedeklemelerinizi iki veri deposundan (veya katmanda) birinde depolamayı seçebilirsiniz: **yedekleme veri deposu** (Standart katman) veya **Arşiv veri deposu** (önizlemede). Yedeklemelerin iki veri deposu arasında katmanlandığınızda tanımlamak üzere **iki katmanlama seçeneği** arasından seçim yapabilirsiniz:
 
     - Hem yedekleme hem de arşiv veri depolarında bir yedek kopya olmasını tercih ediyorsanız **hemen** kopyalamayı seçin.
     - Yedekleme veri deposundaki süresi dolduktan sonra yedeklemeyi Arşiv veri deposuna taşımayı tercih ediyorsanız, **süre sonu '** nu taşımayı seçin.

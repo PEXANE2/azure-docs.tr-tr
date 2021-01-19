@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 01/12/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2d2b65261e09d056ec76b25d6fcb6627bc54770b
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 65794c695fa4b36586b23a308845b1f12a20b7cb
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165731"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569955"
 ---
 # <a name="synapse-managed-private-endpoints"></a>SYNAPSE yönetilen özel uç noktalar
 
@@ -23,7 +23,7 @@ Bu makalede, Azure SYNAPSE Analytics 'te yönetilen özel uç noktalar açıklan
 
 Yönetilen özel uç noktalar, Azure SYNAPSE çalışma alanınız ile ilişkili bir yönetilen sanal ağda oluşturulan özel uç noktalardır. Yönetilen özel uç noktalar Azure kaynaklarına özel bir bağlantı kurar. Azure SYNAPSE, bu özel uç noktaları sizin adınıza yönetir. Azure hizmetlerine (Azure depolama veya Azure Cosmos DB) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine erişmek için Azure SYNAPSE çalışma alanınızdan yönetilen özel uç noktalar oluşturabilirsiniz.
 
-Özel uç noktaları, Azure SYNAPSE çalışma alanınız ve diğer Azure kaynakları arasındaki trafik, tamamen Microsoft omurga ağı üzerinden çapraz geçiş yapar. Yönetilen özel uç noktalar veri taşmalarına karşı koruma altına alınmıştır. Yönetilen bir özel uç nokta, Azure hizmeti 'nin sanal ağınızla iletişim kurduğu Azure hizmetini etkin bir şekilde getirmek için yönetilen sanal ağınızdan özel IP adresi kullanır. Yönetilen özel uç noktalar, Azure 'daki belirli bir kaynakla eşlenir ve hizmetin tamamı değildir. Müşteriler, şirket tarafından onaylanan belirli bir kaynakla bağlantıyı sınırlayabilir. 
+Yönetilen özel uç noktaları kullandığınızda, Azure SYNAPSE çalışma alanınız ve diğer Azure kaynakları arasındaki trafik tümüyle Microsoft omurga ağı üzerinden çapraz geçiş yapar. Yönetilen özel uç noktalar veri taşmalarına karşı koruma altına alınmıştır. Yönetilen bir özel uç nokta, Azure hizmeti 'nin sanal ağınızla iletişim kurduğu Azure hizmetini etkin bir şekilde getirmek için yönetilen sanal ağınızdan özel IP adresi kullanır. Yönetilen özel uç noktalar, Azure 'daki belirli bir kaynakla eşlenir ve hizmetin tamamı değildir. Müşteriler, şirket tarafından onaylanan belirli bir kaynakla bağlantıyı sınırlayabilir. 
 
 [Özel bağlantılar ve özel uç noktalar](../../private-link/index.yml)hakkında daha fazla bilgi edinin.
 
