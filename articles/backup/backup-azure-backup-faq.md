@@ -3,12 +3,12 @@ title: Yaygın soruların yanıtları
 description: 'Kurtarma Hizmetleri kasaları, neleri yedekleyebilir, nasıl çalışır, şifreleme ve limitlerin dahil olduğu Azure Backup özellikleriyle ilgili yaygın soruların yanıtları. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: d85866e490b2c56abb7de1e94cd0ffaa8f714615
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: bd84ff553b486d200ec4501b89b42335335b223f
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327160"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572536"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - Sık sorulan sorular
 
@@ -61,6 +61,10 @@ Yedeklemeyi zaten yapılandırdıysanız ve GRS 'den LRS 'ye geçiş yapmanız g
 ### <a name="how-can-i-move-data-from-the-recovery-services-vault-to-on-premises"></a>Verileri kurtarma hizmetleri kasasından şirket içine nasıl taşıyabilirim?
 
 Data Box kullanarak doğrudan kurtarma hizmetleri kasasından şirket içine veri aktarmak desteklenmez. Veriler bir depolama hesabına geri yüklenmelidir ve sonra [Data Box](../databox/data-box-overview.md) veya [Içeri/dışarı aktarma](../storage/common/storage-import-export-service.md)aracılığıyla şirket içine taşınabilir.
+
+### <a name="what-is-the-difference-between-a-geo-redundant-storage-grs-vault-with-and-without-the-cross-region-restore-crr-capability-enabled"></a>Bölgeler arası geri yükleme (CRR) özelliği etkin olan ve olmayan coğrafi olarak yedekli depolama (GRS) Kasası arasındaki fark nedir?
+
+[CRR](azure-backup-glossary.md#cross-region-restore-crr) özelliği etkin olmayan bir [GRS](azure-backup-glossary.md#grs) Kasası söz konusu olduğunda, Azure birincil bölgede bir olağanüstü durum bildirene kadar ikincil bölgedeki verilere erişilemez. Böyle bir senaryoda geri yükleme ikincil bölgeden yapılır. CRR etkinleştirildiğinde, birincil bölge çalışıyor olsa bile, ikincil bölgede geri yükleme tetikleyebilirsiniz.
 
 ## <a name="azure-backup-agent"></a>Azure Backup aracısı
 

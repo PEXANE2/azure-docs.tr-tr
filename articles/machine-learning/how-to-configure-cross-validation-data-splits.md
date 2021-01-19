@@ -11,18 +11,18 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: 2e26bfa484d573c0158e518b31087fb10bdcdfb9
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 8e749e5f6ea6bcf76a1b4f143bce03ceb41cbb07
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185691"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573301"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>Otomatik makine öğrenmesinde veri bölmelerini ve çapraz doğrulamayı yapılandırma
 
 Bu makalede, otomatik makine öğrenimi, otomatik ML, denemeleri için eğitim/doğrulama veri bölmelerini ve çapraz doğrulamayı yapılandırmaya yönelik farklı seçenekler öğreneceksiniz.
 
-Azure Machine Learning ' de, otomatik ML 'yi birden çok ML modeli oluşturmak için kullandığınızda, her bir alt çalıştırmanın, bu modelin doğruluk veya AUC ağırlıklı gibi kalite ölçümlerini hesaplayarak ilgili modeli doğrulaması gerekir. Bu ölçümler, her bir modelle yapılan tahminlerin, doğrulama verilerinde geçmiş gözlemlerden gerçek etiketlerle karşılaştırılmasıyla hesaplanır. 
+Azure Machine Learning ' de, otomatik ML 'yi birden çok ML modeli oluşturmak için kullandığınızda, her bir alt çalıştırmanın, bu modelin doğruluk veya AUC ağırlıklı gibi kalite ölçümlerini hesaplayarak ilgili modeli doğrulaması gerekir. Bu ölçümler, her bir modelle yapılan tahminlerin, doğrulama verilerinde geçmiş gözlemlerden gerçek etiketlerle karşılaştırılmasıyla hesaplanır. [Ölçümlerin doğrulama türü temelinde nasıl hesaplandığı hakkında daha fazla bilgi edinin](#metric-calculation-for-cross-validation-in-machine-learning). 
 
 Otomatik ML denemeleri otomatik olarak model doğrulaması gerçekleştirir. Aşağıdaki bölümlerde, [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py)ile doğrulama ayarlarını nasıl daha da özelleştireceğiniz açıklanır. 
 
@@ -43,9 +43,9 @@ Düşük kod veya kod içermeyen bir deneyim için [Azure Machine Learning Studi
 
     * [Machine Learning eğitim, doğrulama ve test kümeleri hakkında](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
 
-    * [Makine öğreniminde çapraz doğrulamayı anlama](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd)
+    * [Makine öğreniminde çapraz doğrulamayı anlama](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd) 
 
-## <a name="default-data-splits-and-cross-validation"></a>Varsayılan veri ayırır ve çapraz doğrulama
+## <a name="default-data-splits-and-cross-validation-in-machine-learning"></a>Makine öğreniminde varsayılan veri ayırır ve çapraz doğrulama
 
 Deneme ve eğitim ayarlarınızı tanımlamak için, [oto Mlconfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) nesnesini kullanın. Aşağıdaki kod parçacığında, veya için parametreler olan `n_cross_validation` veya `validation_ data` dahil **olmayan** yalnızca gerekli parametrelerin tanımlandığından emin olun.
 
@@ -155,6 +155,13 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 
 > [!NOTE]
 > `cv_split_column_names`Ve ile kullanmak `training_data` için `label_column_name` lütfen Azure Machine Learning Python SDK sürümü 1.6.0 veya üstünü yükseltin. Önceki SDK sürümleri için lütfen bkz `cv_splits_indices` . using, ancak `X` ve `y` yalnızca veri kümesi girişi ile kullanıldığını unutmayın. 
+
+
+## <a name="metric-calculation-for-cross-validation-in-machine-learning"></a>Makine öğreniminde çapraz doğrulama için ölçüm hesaplaması
+
+K katlamalı veya Monte Carlo çapraz doğrulaması kullanıldığında ölçümler her bir doğrulama katalınarak hesaplanır ve sonra toplanır. Toplama işlemi, skaler ölçümler için bir ortalama ve grafiklerin toplamı olur. Çapraz doğrulama sırasında hesaplanan ölçümler, tüm katlara ve bu nedenle eğitim kümesindeki tüm örneklere dayanır. [Otomatik makine öğreniminde ölçümler hakkında daha fazla bilgi edinin](how-to-understand-automated-ml.md).
+
+Özel bir doğrulama kümesi veya otomatik olarak seçilen doğrulama kümesi kullanıldığında, model değerlendirme ölçümleri eğitim verileri değil yalnızca bu doğrulama kümesinden hesaplanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

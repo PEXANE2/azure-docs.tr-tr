@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 51c22346ee89150194fb1dc83752e2ba2a2e0cf0
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: c6c09dc771692cb2fc2f36840e729874cfaf2d09
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185453"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572825"
 ---
 # <a name="basic-concepts"></a>Temel Kavramlar
 
@@ -28,9 +28,7 @@ Microsoft Azure kanıtlama ile ilgili bazı temel kavramlar aşağıda verilmiş
 
 ## <a name="attestation-provider"></a>Kanıtlama sağlayıcısı
 
-Kanıtlama sağlayıcısı, Microsoft. kanıtlama adlı Azure kaynak sağlayıcısına aittir. Kaynak sağlayıcı, Azure kanıtlama REST sözleşmesi sağlayan ve [Azure Resource Manager](../azure-resource-manager/management/overview.md)kullanılarak dağıtılan bir hizmet uç noktasıdır. Her kanıtlama sağlayıcısı, belirli, keşfedilebilir bir ilkeyi kabul eder. 
-
-Kanıtlama sağlayıcıları her bir kanıtlama türü için varsayılan ilkeyle oluşturulur (VBS kuşatma 'un varsayılan ilkesi olmadığını unutmayın). SGX için varsayılan ilke hakkında daha fazla bilgi için bkz. [kanıtlama ilkesi örnekleri](policy-examples.md) .
+Kanıtlama sağlayıcısı, Microsoft. kanıtlama adlı Azure kaynak sağlayıcısına aittir. Kaynak sağlayıcı, Azure kanıtlama REST sözleşmesi sağlayan ve [Azure Resource Manager](../azure-resource-manager/management/overview.md)kullanılarak dağıtılan bir hizmet uç noktasıdır. Her kanıtlama sağlayıcısı, belirli, keşfedilebilir bir ilkeyi kabul eder. Kanıtlama sağlayıcıları her bir kanıtlama türü için varsayılan ilkeyle oluşturulur (VBS kuşatma 'un varsayılan ilkesi olmadığını unutmayın). SGX için varsayılan ilke hakkında daha fazla bilgi için bkz. [kanıtlama ilkesi örnekleri](policy-examples.md) .
 
 ### <a name="regional-default-provider"></a>Bölgesel varsayılan sağlayıcı
 
@@ -63,7 +61,7 @@ Kanıtlama ilkesi, kanıtlama kanıtını işlemek için kullanılır ve müşte
 
 Kanıtlama sağlayıcıdaki varsayılan ilke ihtiyaçları karşılamıyorsa, müşteriler Azure kanıtlama tarafından desteklenen bölgelerde özel ilkeler oluşturabilir. İlke yönetimi, Azure kanıtlama tarafından müşterilere sunulan bir temel özelliktir. İlkeler, kanıtlama türüne özgüdür ve şifreleme tanımlamak veya çıkış belirtecine talepler eklemek ya da bir çıkış belirtecindeki talepleri değiştirmek için kullanılabilir. 
 
-Varsayılan ilke içeriği ve örnekleri için [bir kanıtlama ilkesi örneklerine](policy-examples.md) bakın.
+İlke örnekleri için [bir kanıtlama ilkesi örneklerine](policy-examples.md) bakın.
 
 ## <a name="benefits-of-policy-signing"></a>İlke imzalama avantajları
 
@@ -85,25 +83,55 @@ Bir SGX Enclave için oluşturulan JWT örneği:
 
 ```
 {
-  “alg”: “RS256”,
-  “jku”: “https://tradewinds.us.attest.azure.net/certs”,
-  “kid”: “f1lIjBlb6jUHEUp1/Nh6BNUHc6vwiUyMKKhReZeEpGc=”,
-  “typ”: “JWT”
+  "alg": "RS256",
+  "jku": "https://tradewinds.us.attest.azure.net/certs",
+  "kid": <self signed certificate reference to perform signature verification of attestation token,
+  "typ": "JWT"
 }.{
-  “maa-ehd”: <input enclave held data>,
-  “exp”: 1568187398,
-  “iat”: 1568158598,
-  “is-debuggable”: false,
-  “iss”: “https://tradewinds.us.attest.azure.net”,
-  “nbf”: 1568158598,
-  “product-id”: 4639,
-  “sgx-mrenclave”: “”,
-  “sgx-mrsigner”: “”,
-  “svn”: 0,
-  “tee”: “sgx”
+  "aas-ehd": <input enclave held data>,
+  "exp": 1568187398,
+  "iat": 1568158598,
+  "is-debuggable": false,
+  "iss": "https://tradewinds.us.attest.azure.net",
+  "maa-attestationcollateral": 
+    {
+      "qeidcertshash": <SHA256 value of QE Identity issuing certs>,
+      "qeidcrlhash": <SHA256 value of QE Identity issuing certs CRL list>,
+      "qeidhash": <SHA256 value of the QE Identity collateral>,
+      "quotehash": <SHA256 value of the evaluated quote>, 
+      "tcbinfocertshash": <SHA256 value of the TCB Info issuing certs>, 
+      "tcbinfocrlhash": <SHA256 value of the TCB Info issuing certs CRL list>, 
+      "tcbinfohash": <SHA256 value of the TCB Info collateral>
+     },
+  "maa-ehd": <input enclave held data>,
+  "nbf": 1568158598,
+  "product-id": 4639,
+  "sgx-mrenclave": <SGX enclave mrenclave value>,
+  "sgx-mrsigner": <SGX enclave msrigner value>,
+  "svn": 0,
+  "tee": "sgx"
+  "x-ms-attestation-type": "sgx", 
+  "x-ms-policy-hash": <>,
+  "x-ms-sgx-collateral": 
+    {
+      "qeidcertshash": <SHA256 value of QE Identity issuing certs>,
+      "qeidcrlhash": <SHA256 value of QE Identity issuing certs CRL list>,
+      "qeidhash": <SHA256 value of the QE Identity collateral>,
+      "quotehash": <SHA256 value of the evaluated quote>, 
+      "tcbinfocertshash": <SHA256 value of the TCB Info issuing certs>, 
+      "tcbinfocrlhash": <SHA256 value of the TCB Info issuing certs CRL list>, 
+      "tcbinfohash": <SHA256 value of the TCB Info collateral>
+     },
+  "x-ms-sgx-ehd": <>, 
+  "x-ms-sgx-is-debuggable": true,
+  "x-ms-sgx-mrenclave": <SGX enclave mrenclave value>,
+  "x-ms-sgx-mrsigner": <SGX enclave msrigner value>, 
+  "x-ms-sgx-product-id": 1, 
+  "x-ms-sgx-svn": 1,
+  "x-ms-ver": "1.0"
 }.[Signature]
 ```
-"Exp", "iat", "iss", "NBF" gibi talepler, [JWT RFC](https://tools.ietf.org/html/rfc7517) tarafından tanımlanır ve geri kalan Azure kanıtlama tarafından oluşturulur. Daha fazla bilgi için bkz. [Azure kanıtlama tarafından verilen talepler](claim-sets.md) .
+Yukarıda kullanılan bazı talepler kullanım dışı sayılır ancak tam olarak desteklenmektedir.  Gelecekteki tüm kod ve araç araçlarının kullanım dışı talep adlarını kullanması önerilir. Daha fazla bilgi için bkz. [Azure kanıtlama tarafından verilen talepler](claim-sets.md) .
 
 ## <a name="encryption-of-data-at-rest"></a>Bekleyen verilerin şifrelenmesi
 

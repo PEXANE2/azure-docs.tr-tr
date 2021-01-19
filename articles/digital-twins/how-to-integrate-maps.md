@@ -4,16 +4,16 @@ titleSuffix: Azure Digital Twins
 description: Azure Maps ınkapısı haritasını güncelleştirmek için ikizi grafiğini ve Azure dijital TWINS bildirimlerini kullanabileceğiniz bir işlev oluşturmak için bkz. Azure Işlevleri 'ni kullanma.
 author: alexkarcher-msft
 ms.author: alkarche
-ms.date: 6/3/2020
+ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 24487d3028b90d28f302a6f259096ba68c964541
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 6a654f74ff6a32ad37646021d504359c84942c12
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222131"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573046"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure haritalar ınkapısının haritasını güncelleştirmek için Azure dijital TWINS kullanma
 
@@ -72,7 +72,7 @@ Bu kalıp, IoT cihazı yerine doğrudan ikizi 'dan, eşleme mantığınızı gü
 
 ## <a name="create-a-function-to-update-maps"></a>Haritaları güncelleştirmek için bir işlev oluşturma
 
-Uçtan uca öğreticiden işlev uygulamanız içinde *Event Grid tetiklenen bir işlev* oluşturacağız ([*öğretici: uçtan uca bir çözümü bağlama*](./tutorial-end-to-end.md)). Bu işlev, bir odanın sıcaklığını güncelleştirmek için bu bildirimleri paketten çıkarın ve Azure Maps özelliği stateset 'e güncelleştirmeler gönderir. 
+Uçtan uca öğreticiden işlev uygulamanız içinde **Event Grid tetiklenen bir işlev** oluşturacağız ([*öğretici: uçtan uca bir çözümü bağlama*](./tutorial-end-to-end.md)). Bu işlev, bir odanın sıcaklığını güncelleştirmek için bu bildirimleri paketten çıkarın ve Azure Maps özelliği stateset 'e güncelleştirmeler gönderir.
 
 Başvuru bilgileri için aşağıdaki belgeye bakın: [*Azure işlevleri için Azure Event Grid tetikleyicisi*](../azure-functions/functions-bindings-event-grid-trigger.md).
 

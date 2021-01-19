@@ -7,40 +7,59 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 252026f7c59f73dfb37f69d7708a80be827ce104
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 7af91e2065235d749d3a690a3c4c244fc45c0e5a
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96748799"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572774"
 ---
 # <a name="examples-of-an-attestation-policy"></a>Kanıtlama ilkesi örnekleri
 
 Kanıtlama ilkesi, kanıtlama bulgusunda işlem yapmak ve Azure kanıtlama 'nın bir kanıtlama belirteci verip etmeyeceğini tespit etmek için kullanılır. Kanıtlama belirteci oluşturma, özel ilkelerle denetlenebilir. Aşağıda bir kanıtlama ilkesine ilişkin bazı örnekler verilmiştir.
 
-## <a name="default-policy-for-an-sgx-enclave-with-policyformattext"></a>Policyformat = Text ile bir SGX kuşatma için varsayılan ilke
+## <a name="default-policy-for-an-sgx-enclave-in-text-format"></a>Metin biçiminde bir SGX kuşatma için varsayılan ilke
+
+```
+version= 1.0;
+authorizationrules
+{
+    c:[type=="$is-debuggable"] => permit();
+};
+
+issuancerules
+{
+    c:[type=="$is-debuggable"] => issue(type="is-debuggable", value=c.value);
+    c:[type=="$sgx-mrsigner"] => issue(type="sgx-mrsigner", value=c.value);
+    c:[type=="$sgx-mrenclave"] => issue(type="sgx-mrenclave", value=c.value);
+    c:[type=="$product-id"] => issue(type="product-id", value=c.value);
+    c:[type=="$svn"] => issue(type="svn", value=c.value);
+    c:[type=="$tee"] => issue(type="tee", value=c.value);
+};
+```
+
+## <a name="sample-custom-policy-for-an-sgx-enclave-in-text-format"></a>Metin biçiminde bir SGX şifreleme için örnek özel ilke
 
 ```
 Version= 1.0;
-authorizationrules
+authorizationrules 
 {
-    c:[type==”$is-debuggable”] => permit();
+       [ type=="x-ms-sgx-is-debuggable", value==false ]
+        && [ type=="x-ms-sgx-product-id", value==<product-id> ]
+        && [ type=="x-ms-sgx-svn", value>= 0 ]
+        && [ type=="x-ms-sgx-mrsigner", value=="<mrsigner>"] 
+    => permit();
 };
 issuancerules
 {
-    c:[type==”$is-debuggable”] => issue(type=”is-debuggable”, value=c.value);
-    c:[type==”$sgx-mrsigner”] => issue(type=”sgx-mrsigner”, value=c.value);
-    c:[type==”$sgx-mrenclave”] => issue(type=”sgx-mrenclave”, value=c.value);
-    c:[type==”$product-id”] => issue(type=”product-id”, value=c.value);
-    c:[type==”$svn”] => issue(type=”svn”, value=c.value);
-    c:[type==”$tee”] => issue(type=”tee”, value=c.value);
+    c:[type=="x-ms-sgx-is-debuggable"] => issue(type="is-debuggable", value=c.value);
+    c:[type=="x-ms-sgx-mrsigner"] => issue(type="sgx-mrsigner", value=c.value);
+    c:[type=="x-ms-sgx-mrenclave"] => issue(type="sgx-mrenclave", value=c.value);
+    c:[type=="x-ms-sgx-product-id"] => issue(type="product-id", value=c.value);
+    c:[type=="x-ms-sgx-svn"] => issue(type="svn", value=c.value);
+    c:[type=="x-ms-sgx-tee"] => issue(type="tee", value=c.value);
 };
 ```
-
-## <a name="default-policy-for-vbs-enclave"></a>VBS kuşatma için varsayılan ilke
-
-VBS kuşatma için varsayılan ilke yok
-
 
 ## <a name="unsigned-policy-for-an-sgx-enclave-with-policyformatjwt"></a>Policyformat = JWT ile bir SGX kuşatma için imzasız ilke
 

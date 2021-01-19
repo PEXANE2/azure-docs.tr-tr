@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 01/19/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5a09a2083c1258a3120f8696aa39a0252dbfcf2d
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 83a4a2aa8328a6e3de9eab44bbf19fc76921b128
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209703"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573368"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Depolama yedekliliği
 
@@ -35,11 +35,15 @@ Azure depolama hesabındaki veriler her zaman birincil bölgede üç kez çoğal
 
 ### <a name="locally-redundant-storage"></a>Yerel olarak yedekli depolama
 
-Yerel olarak yedekli depolama (LRS), verilerinizi birincil bölgedeki tek bir fiziksel konum içinde üç kez çoğaltır. LRS, belirli bir yıl boyunca nesnelerin en az% 99,999999999 (11 nines) dayanıklılığı sağlar.
+Yerel olarak yedekli depolama (LRS), verilerinizi birincil bölgedeki tek bir veri merkezi içinde üç kez çoğaltır. LRS, belirli bir yıl boyunca nesnelerin en az% 99,999999999 (11 nines) dayanıklılığı sağlar.
 
 LRS, en düşük maliyetli artıklık seçeneğidir ve diğer seçeneklere kıyasla en az dayanıklılık sağlar. LRS, verilerinizi sunucu rafı ve sürücü hatalarıyla karşı korur. Ancak, veri merkezinde yangın ya da taşması gibi bir olağanüstü durum oluşursa, LRS kullanan bir depolama hesabının tüm çoğaltmaları kaybolabilir veya kurtarılamaz olabilir. Bu riski azaltmak için Microsoft, bölgesel olarak [yedekli depolama (](#zone-redundant-storage) ZRS), coğrafi olarak [yedekli depolama](#geo-redundant-storage) (GRS) veya [coğrafi bölge-yedekli depolama](#geo-zone-redundant-storage) (GZRS) kullanmanızı önerir.
 
 LRS kullanan bir depolama hesabına yazma isteği eşzamanlı olarak gerçekleştirilir. Yazma işlemi, yalnızca veriler üç kopyaya yazıldıktan sonra başarıyla döndürülür.
+
+Aşağıdaki diyagramda, LRS ile tek bir veri merkezi içinde verilerinizin nasıl çoğaltılacağı gösterilmektedir:
+
+:::image type="content" source="media/storage-redundancy/locally-redundant-storage.png" alt-text="LRS ile tek bir veri merkezinde verilerin nasıl çoğaltılacağı gösteren diyagram":::
 
 LRS aşağıdaki senaryolar için iyi bir seçimdir:
 
@@ -54,7 +58,11 @@ ZRS ile, bir bölge kullanılamaz hale gelirse bile verilerinize hem okuma hem d
 
 ZRS kullanan bir depolama hesabına yazma isteği eşzamanlı olarak gerçekleştirilir. Yazma işlemi, veriler yalnızca üç kullanılabilirlik alanı genelinde tüm yinelemelere yazıldıktan sonra başarıyla döndürülür.
 
-Microsoft, birincil bölgede, tutarlılık, dayanıklılık ve yüksek kullanılabilirlik gerektiren senaryolar için ZRS kullanılmasını önerir. Ayrıca, bir uygulamayı veri idare gereksinimleri nedeniyle yalnızca bir ülke veya bölge dahilinde verileri çoğaltmak üzere kısıtlamak istiyorsanız ZRS kullanılmasını öneririz.
+Microsoft, birincil bölgede, tutarlılık, dayanıklılık ve yüksek kullanılabilirlik gerektiren senaryolar için ZRS kullanılmasını önerir. ZRS, veri idare gereksinimlerini karşılamak üzere bir ülke veya bölge dahilinde verilerin çoğaltılmasını kısıtlamak için de önerilir.
+
+Aşağıdaki diyagramda, ZRS ile birincil bölgedeki kullanılabilirlik alanları arasında verilerinizin nasıl çoğaltılacağı gösterilmektedir:
+
+:::image type="content" source="media/storage-redundancy/zone-redundant-storage.png" alt-text="Birincil bölgede ZRS ile verilerin nasıl çoğaltılacağı gösteren diyagram":::
 
 ZRS, geçici olarak kullanılamaz duruma gelirse verileriniz için mükemmel performans, düşük gecikme süresi ve dayanıklılık sağlar. Ancak, ZRS, verileri birden çok bölgenin kalıcı olarak etkilediği bölgesel bir olağanüstü duruma karşı koruyamayabilir. Bölgesel felate karşı koruma için, Microsoft birincil bölgede ZRS kullanan ve ayrıca verilerinizi ikincil bir bölgeye çoğaltan [coğrafi bölge yedekli depolama](#geo-zone-redundant-storage) (GZRS) kullanılmasını önerir.
 

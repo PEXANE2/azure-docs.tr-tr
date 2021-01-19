@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 53fd2332224d903c5a4b33563470cf3569f82b13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec605fd30252b9a0cfb80d0bc3ff145ed3b5a1d4
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86526665"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573318"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Linux veya Windows üzerinde Azure sanal makine performansı sorunlarını giderme
 
@@ -208,7 +208,7 @@ IOPS sınırına ulaşıp ulaşmayacağını belirlemek için, depolama hesabı 
 
 Standart depolama alanındaki yeni disk teklifleriyle, ıOPS ve aktarım hızı sınırları farklı olabilir, ancak standart depolama hesabının birikimli limiti 20000 ıOPS 'dir (Premium Depolama, hesap veya disk düzeyinde farklı sınırlara sahiptir). Farklı standart depolama disk teklifleri ve disk başına sınırlar hakkında daha fazla bilgi edinin:
 
-* [Windows ÜZERINDE VM diskleri Için ölçeklenebilirlik ve performans hedefleri](../windows/disk-scalability-targets.md).
+* [Windows ÜZERINDE VM diskleri Için ölçeklenebilirlik ve performans hedefleri](../disks-scalability-targets.md).
 
 #### <a name="references"></a>Başvurular
 
@@ -224,7 +224,7 @@ VM 'ye bağlı VHD 'lerin verimlilik sınırlarını denetleyin. Okuma ve yazma 
 
 Standart depolama alanındaki yeni disk teklifleri farklı ıOPS ve verimlilik sınırlarına sahiptir (ıOPS, VHD başına gösterilmez). Disk okuma ve yazma kullanarak VM düzeyinde VHD 'ler için Birleşik üretilen iş MB/sn 'nin sınırlarına göz atın ve ardından sanal makine depolama yapılandırmanızı, son VHD limitlerini ölçeklendirmek için iyileştirin. Farklı standart depolama disk teklifleri ve disk başına sınırlar hakkında daha fazla bilgi edinin:
 
-* [Windows ÜZERINDE VM diskleri Için ölçeklenebilirlik ve performans hedefleri](../windows/disk-scalability-targets.md).
+* [Windows ÜZERINDE VM diskleri Için ölçeklenebilirlik ve performans hedefleri](../disks-scalability-targets.md).
 
 ### <a name="high-disk-utilizationlatency-remediation"></a>Yüksek disk kullanımı/gecikme süresi düzeltmesi
 

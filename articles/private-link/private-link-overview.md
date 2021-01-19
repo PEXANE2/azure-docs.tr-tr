@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 3c03a207e91ae969836e208f4e6bf4ea32086c7d
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: b3ca4f11b02f32e65cf80adc65ec12d25e6e7905
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121336"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573182"
 ---
 # <a name="what-is-azure-private-link"></a>Azure Özel Bağlantı nedir? 
 Azure özel bağlantısı, Azure PaaS hizmetlerine (örneğin, Azure depolama ve SQL veritabanı) ve Azure 'da barındırılan, müşteriye ait/iş ortağı hizmetlerine sanal ağınızdaki özel bir [uç nokta](private-endpoint-overview.md) üzerinden erişmenizi sağlar.
@@ -66,7 +66,7 @@ Azure özel bağlantısı aşağıdaki avantajları sağlar:
 |Azure Event Grid| Tüm ortak bölgeler<br/> Tüm kamu bölgeleri       |  | GA   <br/> [Azure Event Grid için özel uç nokta oluşturmayı öğrenin.](../event-grid/network-security.md) |
 |Azure Web Apps | Tüm ortak bölgeler      | PremiumV2, PremiumV3 veya Function Premium planıyla desteklenir  | GA   <br/> [Azure Web Apps için özel bir uç nokta oluşturmayı öğrenin.](./tutorial-private-endpoint-webapp-portal.md)   |
 |Azure Machine Learning | Tüm ortak bölgeler    |  | GA   <br/> [Azure Machine Learning için özel uç nokta oluşturmayı öğrenin.](../machine-learning/how-to-configure-private-link.md)   |
-| Azure Otomasyonu  | Tüm ortak bölgeler |  | Önizleme </br> [Azure Otomasyonu için özel bir uç nokta oluşturmayı öğrenin.](../automation/how-to/private-link-security.md)| |
+| Azure Otomasyonu  | Tüm ortak bölgeler<br/> Tüm kamu bölgeleri |  | Önizleme </br> [Azure Otomasyonu için özel bir uç nokta oluşturmayı öğrenin.](../automation/how-to/private-link-security.md)| |
 | Azure IoT Hub | Tüm ortak bölgeler    |  | GA   <br/> [Azure IoT Hub için özel bir uç nokta oluşturmayı öğrenin.](../iot-hub/virtual-network-support.md) |
 | Azure SignalR | DOĞU ABD, GÜNEY ORTA ABD,<br/>Batı ABD 2, tüm Çin bölgeleri      |  | Önizleme   <br/> [Azure SignalR için özel uç nokta oluşturmayı öğrenin.](../azure-signalr/howto-private-endpoints.md)   |
 | Azure İzleyici <br/>(Log Analytics & Application Insights) | Tüm ortak bölgeler      |  | GA   <br/> [Azure Izleyici için özel bir uç nokta oluşturmayı öğrenin.](../azure-monitor/platform/private-link-security.md)   | 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 10/07/2020
+ms.date: 01/19/2021
 ms.author: alkohli
-ms.openlocfilehash: 225cb9a31b73f330d8b4ed5790caacc4fa729477
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d40d26e8fab0832a37a43c353e11189f8f193f14
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839954"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573335"
 ---
 # <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>GPU ile Azure Stack Edge Pro için teknik belirtimler ve uyumluluk 
 
@@ -26,7 +26,7 @@ Azure Stack Edge Pro cihazı, işlem ve bellek için aşağıdaki belirtimlere s
 | Belirtim           | Değer                  |
 |-------------------------|----------------------------|
 | CPU                     | 2 X Intel Xeon gümüş 4214 (Cascade Lake) CPU            |
-| Bellek                  | 128 (8x16 GB) GB RAM                     |
+| Bellek                  | 128 (8x16 GB) GB RAM <br> Dell uyumlu 16 GB PC4-23400 DDR4-2933Mhz 2Rx8 1.2 v ECC Kayıtlı RDıMM       |
 
 
 ## <a name="compute-acceleration-specifications"></a>İşlem hızlandırma belirtimleri
@@ -45,9 +45,9 @@ Azure Stack Edge Pro cihazının yüksek performanslı fanlarla iki 100-240 V g�
 | Belirtim           | 750 W PSU                  |
 |-------------------------|----------------------------|
 | Maksimum çıkış gücü    | 750 W                     |
-| Frequency               | 50/60 Hz                   |
+| Sıklık               | 50/60 Hz                   |
 | Voltaj aralığı seçimi | Otomatik olarak değişen: 100-240 V AC |
-| Etkin takılabilir           | Evet                        |
+| Etkin takılabilir           | Yes                        |
 
 
 ## <a name="network-interface-specifications"></a>Ağ arabirimi belirtimleri
@@ -56,7 +56,7 @@ Azure Stack Edge Pro cihazınız altı ağ arabirimine sahiptir, PORT1-PORT6.
 
 | Belirtim           | Açıklama                 |
 |-------------------------|----------------------------|
-|  Ağ arabirimleri    | **2 X 1 GbE arabirimler** – 1 yönetim arabirimi bağlantı noktası 1, ilk kurulum için kullanılır ve varsayılan olarak statiktir. İlk kurulum tamamlandıktan sonra, herhangi bir IP adresine sahip veriler için arabirimi kullanabilirsiniz. Ancak, sıfırlama sırasında Arabirim statik IP 'ye geri döner. <br>Diğer arabirim bağlantı noktası 2 Kullanıcı tarafından yapılandırılabilir, veri aktarımı için kullanılabilir ve varsayılan olarak DHCP 'dir. <br>**4 X 25 GbE arabirim** – bu veri arabirimleri, bağlantı noktası 6 ile bağlantı noktası 3, Kullanıcı tarafından DHCP (varsayılan) veya statik olarak yapılandırılabilir. Bunlar ayrıca 10 GbE arabirimi olarak da çalışabilir.  | 
+|  Ağ arabirimleri    | **2 X 1 GbE arabirimler** – 1 yönetim arabirimi bağlantı noktası 1, ilk kurulum için kullanılır ve varsayılan olarak statiktir. İlk kurulum tamamlandıktan sonra, herhangi bir IP adresine sahip veriler için arabirimi kullanabilirsiniz. Ancak, sıfırlama sırasında Arabirim statik IP 'ye geri döner. <br>Diğer arabirim bağlantı noktası 2 Kullanıcı tarafından yapılandırılabilir, veri aktarımı için kullanılabilir ve varsayılan olarak DHCP 'dir. <br>**4 X 25 GbE arabirim** – bu veri arabirimleri, bağlantı noktası 6 ile bağlantı noktası 3, Kullanıcı tarafından DHCP (varsayılan) veya statik olarak yapılandırılabilir. Ayrıca 10 GbE arabirimi olarak da çalışabilir.  | 
 
 Azure Stack Edge Pro cihazınız aşağıdaki ağ donanımlarına sahiptir:
 
@@ -67,8 +67,8 @@ Aşağıda, Mellanox kartının ayrıntıları verilmiştir:
 
 | Parametre           | Açıklama                 |
 |-------------------------|----------------------------|
-| Model    | ConnectX®-4 LX EN fazla ağ arabirim kartı                      |
-| Model açıklaması               | 25GbE çift bağlantı noktası SFP28; PCIe 3.0 x8; ROHS R6                    |
+| Modelleme    | ConnectX®-4 LX EN fazla ağ arabirim kartı                      |
+| Model açıklaması               | 25 GbE çift bağlantı noktası SFP28; PCIe 3.0 x8; ROHS R6                    |
 | Cihaz bölüm numarası (R640) | MCX4121A-ACAT  |
 | PSıD (R640)           | MT_2420110034                         |
 
@@ -88,11 +88,9 @@ Azure Stack Edge Pro cihazlarında beş 2,5 "NVMe DC P4610 SSDs, her biri 1,6 TB
 |    Önyükleme SATA katı hal sürücüleri (SSD)      |    1                  |
 |    Önyükleme SSD kapasitesi                       |    240 GB             |
 |    Toplam kapasite                          |    8,0 TB             |
-|    Toplam kullanılabilir kapasite *                  |    ~ 4,19 TB          |
+|    Toplam kullanılabilir kapasite                   |    ~ 4,19 TB          |
+|    RAID yapılandırması                      |    Yansıtma ve eşlik birleşimi ile Depolama Alanları Doğrudan  |
 |    SAS denetleyicisi                          |    HBA330 12 Gbps     |
-
-
-**Eşlik dayanıklılığı sonrasında ve iç kullanım için alan ayırdıktan sonra.*
 
 <!--Remove based on feedback from Ravi
 ## Other hardware specifications
@@ -150,6 +148,7 @@ Bu bölümde sıcaklık, nem ve yükseklik gibi çevre duvarı ortamıyla ilgili
 |     Kutu                           |     İşletimsel belirtimler                                                                                                                                                                                         |
 |-----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |    Airflow                              |    Sistem Airflow, baştan sona. Sistemin düşük basınç, arka uç yüklemesiyle birlikte çalıştırılması gerekir. <!--Back pressure created by rack doors and obstacles should not exceed 5 pascals (0.5 mm water gauge).-->    |
+| Giriş koruması (IP)                 |    Inkapılı kullanım için rafa takılan bu ekipman, genellikle giriş koruması (elektrik Kasası için Solids ve lılar için koruma) için sınanmamıştır. Üreticinin güvenlik değerlendirmesi, ıPXO (giriş koruması olmadan) öğesini gösterir.  |
 |    Maksimum yükseklik, işletimsel        |    3048 metreler (10.000 metre), [çalışma sıcaklığı derecelendirme belirtimlerine](#operating-temperature-de-rating-specifications)göre belirlenen maksimum işletim sıcaklığı ile derecelendirildi.                                                                                |
 |    Maksimum yükseklik, işlemsel olmayan    |    12.000 ölçü (39.370 feet)                                                                                                                                                                                         |
 |    Darbe, işlemsel                   |    6 yönde 11 milisaniye için 6 G                                                                                                                                                                         |

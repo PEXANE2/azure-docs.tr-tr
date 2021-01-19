@@ -1,15 +1,15 @@
 ---
 title: Ölçüm uyarılarının Azure Izleyici 'de nasıl çalıştığını anlayın.
 description: Ölçüm uyarıları ile yapabileceklerinize ve bunların Azure Izleyici 'de nasıl çalışabileceklerini bir genel bakış alın.
-ms.date: 01/13/2021
+ms.date: 01/19/2021
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: ab80496784b5d86d270830546cec73aadbcc50a6
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 031768b8a72fbe9498abd3c17e0f79fd157d4f52
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251242"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572740"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure İzleyici'de ölçüm uyarılarının nasıl çalıştığını anlama
 
@@ -26,7 +26,7 @@ Azure Izleyici 'de ölçüm uyarıları, çok boyutlu ölçümlerin üzerine ça
 - Hedef kaynak (izlemek istediğiniz Azure kaynağı): myVM
 - Ölçüm: CPU yüzdesi
 - Koşul türü: statik
-- Zaman toplama (ham ölçüm değerleri üzerinden çalıştırılan Istatistik. [Desteklenen süre toplamaları](metrics-charts.md#aggregation) en az, en fazla, ortalama, toplam, sayı): Ortalama
+- Toplama türü (ham ölçüm değerleri üzerinden çalıştırılan bir istatistik. [Desteklenen toplama türleri](./metrics-aggregation-explained.md#aggregation-types) en düşük, en yüksek, ortalama, toplam, sayı): Ortalama
 - Süre (ölçüm değerlerinin denetlenme geri arama penceresi): son 5 dakika boyunca
 - Sıklık (koşulların karşılandığını ölçüm uyarısının denetlediği sıklık): 1 dk
 - İşleç: büyüktür
@@ -43,7 +43,7 @@ Aşağıdaki gibi basit bir dinamik eşikler ölçüm uyarısı kuralı oluştur
 - Hedef kaynak (izlemek istediğiniz Azure kaynağı): myVM
 - Ölçüm: CPU yüzdesi
 - Koşul türü: dinamik
-- Zaman toplama (ham ölçüm değerleri üzerinden çalıştırılan Istatistik. [Desteklenen süre toplamaları](metrics-charts.md#aggregation) en az, en fazla, ortalama, toplam, sayı): Ortalama
+- Toplama türü (ham ölçüm değerleri üzerinden çalıştırılan bir istatistik. [Desteklenen toplama türleri](./metrics-aggregation-explained.md#aggregation-types) en düşük, en yüksek, ortalama, toplam, sayı): Ortalama
 - Süre (ölçüm değerlerinin denetlenme geri arama penceresi): son 5 dakika boyunca
 - Sıklık (koşulların karşılandığını ölçüm uyarısının denetlediği sıklık): 1 dk
 - İşleç: büyüktür
@@ -80,7 +80,7 @@ Web siteniz için bir App Service planınız olduğunu varsayalım. Web sitenizi
 - Koşul türü: statik
 - Boyutlar
   - Örnek = InstanceName1, InstanceName2
-- Süre toplama: Ortalama
+- Toplama türü: Ortalama
 - Süre: son 5 dakika boyunca
 - Sıklık: 1 dk
 - İşleç: GreaterThan
@@ -95,7 +95,7 @@ Büyük ölçüde talep gösteren bir Web uygulamanız olduğunu ve daha fazla �
 - Koşul türü: statik
 - Boyutlar
   - Örnek = *
-- Süre toplama: Ortalama
+- Toplama türü: Ortalama
 - Süre: son 5 dakika boyunca
 - Sıklık: 1 dk
 - İşleç: GreaterThan
@@ -112,7 +112,7 @@ Birçok örneğe sahip bir Web uygulamanız olduğunu ve en uygun eşiğin ne ol
 - Koşul türü: dinamik
 - Boyutlar
   - Örnek = *
-- Süre toplama: Ortalama
+- Toplama türü: Ortalama
 - Süre: son 5 dakika boyunca
 - Sıklık: 1 dk
 - İşleç: GreaterThan
@@ -141,7 +141,7 @@ Bu özellik şu anda aşağıdaki Azure bulutlarında aşağıdaki hizmetler iç
 
 | Hizmet | Genel Azure | Kamu | Çin |
 |:--------|:--------|:--------|:--------|
-| Sanal makineler<sup>1</sup>  | **Evet** | **Evet** | No |
+| Sanal makineler<sup>1</sup>  | **Evet** | **Evet** | Hayır |
 | SQL Server veritabanları | **Evet** | **Evet** | **Evet** |
 | SQL Server elastik havuzlar | **Evet** | **Evet** | **Evet** |
 | NetApp dosyaları kapasite havuzları | **Evet** | **Evet** | **Evet** |

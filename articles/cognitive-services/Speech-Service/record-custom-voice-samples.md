@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: erhopf
-ms.openlocfilehash: dae7b8e0485c1a2456b85e0910f60b2164d4e41c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 966b11e2c9a0f7ffc5e6ec9238080b9076d37af6
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026327"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572434"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Özel bir ses oluşturmak için ses örneklerini kaydetme
 
@@ -24,6 +24,14 @@ Sıfırdan yüksek kaliteli bir üretim özel sesi oluşturmak, rastgele bir de�
 Bu kayıtları yapabilmeniz için önce bir betiğinizin olması gerekir. ses örnekleri oluşturmak için ses tasemi tarafından söylenen sözcükler. En iyi sonuçları elde etmek için, betiğinizin, özel ses modelini eğitebilmeniz için iyi bir fonetik kapsama sahip olması ve yeterli
 
 Birçok küçük ancak önemli ayrıntıların profesyonel bir ses kaydı oluşturma bölümüne bakın. Bu kılavuz, iyi, tutarlı sonuçlar almanıza yardımcı olacak bir süreç için yol haritası.
+
+> [!NOTE]
+> Bir sinir sesi eğmek isterseniz, özel bir ses modeli eğmek için kendi konuşma verilerini kullanma hakkında daha fazla ses onay dosyası içeren bir ses tatatsyon profili belirtmeniz gerekir. Kayıt betiğinizi hazırlarken aşağıdaki tümceyi eklediğinizden emin olun. 
+
+> "I [soyadınız ve soyadınız], sesimin yapay bir sürümünü oluşturmak ve kullanmak için sesimin kayıtlarının [Şirket adı olarak durum] tarafından kullanılacağını biliyor."
+Bu cümle, eğitim verilerinin onay yapan kişi tarafından gerçekleştirilip yapılkullanılmadığını doğrulamak için kullanılacaktır. [Sesli TATATK doğrulaması](https://aka.ms/CNV-data-privacy) hakkında daha fazla bilgi edinmek için buraya bakın.
+
+> Özel sinir Voice sınırlı erişimle kullanılabilir. [Sorumlu AI gereksinimlerini](https://aka.ms/gating-overview) anladığınızdan emin olun ve [erişimi buraya uygulayın](https://aka.ms/customneural). 
 
 > [!TIP]
 > En yüksek kaliteli sonuçlar için, özel sesinizi geliştirmeye yardımcı olmak üzere Microsoft 'a göz önünde bulundurun. Microsoft, Cortana ve Office dahil olmak üzere kendi ürünleri için yüksek kaliteli sesler üreten kapsamlı bir deneyimle sahiptir.
@@ -56,7 +64,7 @@ Sesiniz, denklemin diğer yarısıdır. Tutarlı hız, birim düzeyi, sıklık v
 
 Özel ses örneklerini kaydetmek, diğer ses çalışmatürlerinden daha fazla bilgi alabilir. Çoğu ses tatatsi günde iki veya üç saat için kayıt yapabilir. Mümkün olduğunca bir güne kadar, oturumları üç veya dört haftada bir olacak şekilde sınırlayın.
 
-Bir ses modeli için yapılan kayıtlar, çok nötr olmalıdır. Diğer bir deyişle, üzgün bir şekilde okunmamalıdır. Ruh, daha sonra Prosody denetimleri aracılığıyla sentezleştirilmiş konuşmaya eklenebilir. Özel sesin genel sesini ve tek bir tonu tanımlayan bir "kişi" geliştirmek için sesinizle birlikte çalışın. İşlemde, bu kişi için "nötr" seslerin ne olduğunu bulacağız.
+Özel sesin genel sesini ve tek bir tonu tanımlayan bir "kişi" geliştirmek için sesinizle birlikte çalışın. İşlemde, bu kişi için "nötr" seslerin ne olduğunu bulacağız. Özel sinir ses özelliğini kullanarak, emomlar ile konuşacak bir model eğitebilirsiniz. "Konuşma stillerini" tanımlayın ve sesli tatatdinizin komut dosyasını istediğiniz stillerin bulunduğu bir şekilde okumasını isteyin.  
 
 Bir kişi, örneğin doğal olarak bir kişilik olabilir. Bu nedenle "onların" sesi, doğru bir şekilde konuşduklarında bile optimize edilebilir bir şekilde bir nottur. Ancak, bu tür bir kişilik nitelik hafif ve tutarlı olmalıdır. Ne kadar iyi bir fikir sahibi olduğunuzu görmek için mevcut seslere göre okumaları dinleyin.
 
@@ -104,7 +112,7 @@ Telif hakkı yasaları kapsamında, bir aktörün, telif haklı metinlerin okunm
 
 Neyse ki, bu sorunlardan tamamen kaçınmak mümkündür. İzin veya lisans olmadan kullanabileceğiniz birçok metin kaynağı vardır.
 
-|Metin kaynağı|Description|
+|Metin kaynağı|Açıklama|
 |-|-|
 |[CMU arctik yapı](http://festvox.org/cmu_arctic/)|Telif hakkı dışında çalışarak, özellikle konuşma seniş projelerinde kullanılmak üzere 1100 tümce hakkında. Harika bir başlangıç noktası.|
 |Artık işe yarar<br>Telif hakkı altında|Genellikle 1923 ' dan önce yayımlanır. Ingilizce için [Project Gutenberg](https://www.gutenberg.org/) , bu tür binlerce çalışma sunar. Dil modern Ingilizce 'ye yakın olacağı için daha yeni bir işe odaklanmak isteyebilirsiniz.|
@@ -211,7 +219,7 @@ Her dosyayı dikkatle dinleyin. Bu aşamada, kayıt sırasında kaçırılmış 
 
 Kaydetmeden önce her bir dosyayı 16 bit ve örnek bir 16 kHz değerine dönüştürüp, Studio chatter ' yi kaydettiğinizde ikinci kanalı kaldırın. Dosyaları betiğinizdeki söylenişi numarasıyla adlandırarak, her dosyayı WAV biçiminde kaydedin.
 
-Son olarak, her bir WAV dosyasını karşılık gelen utterance 'in bir metin sürümüyle *ilişkilentiğiniz* döküm oluşturun. [Özel ses yazı tiplerinin oluşturulması](./how-to-custom-voice-create-voice.md) , gerekli biçimin ayrıntılarını içerir. Metni doğrudan betiğinizden kopyalayabilirsiniz. Ardından, WAV dosyalarının ve metin dökümü 'nin bir ZIP dosyasını oluşturun.
+Son olarak, her bir WAV dosyasını karşılık gelen utterance 'in bir metin sürümüyle *ilişkilentiğiniz* döküm oluşturun. [Özel sesler oluşturma](./how-to-custom-voice-create-voice.md) , gerekli biçimin ayrıntılarını içerir. Metni doğrudan betiğinizden kopyalayabilirsiniz. Ardından, WAV dosyalarının ve metin dökümü 'nin bir ZIP dosyasını oluşturun.
 
 Daha sonra ihtiyacınız olması durumunda özgün kayıtları güvenli bir yerde arşivleyin. Betiğinizi ve notlarınızı de koruyun.
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 3747033fcaf65e0c6da07e9f1bb625771958bb4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 262a96c0c316987d0245ed29836f6a013c4339d1
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319070"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573165"
 ---
 # <a name="create-a-custom-voice"></a>Özel bir ses oluşturun
 
@@ -52,17 +52,21 @@ Aşağıdaki tabloda, içeri aktarılan veri kümeleri için işleme durumları 
 
 Doğrulama işlemi tamamlandıktan sonra, **utterslar** sütunundaki veri kümelerinizin her biri için eşleşen Masların toplam sayısını görebilirsiniz. Seçtiğiniz veri türü uzun ses segmentlemesini gerektiriyorsa, bu sütun yalnızca kendi betiklerinizi temel alarak veya konuşma dökümü hizmeti aracılığıyla sizin için segmentettiğimiz göz asyonları yansıtır. Başarılı bir şekilde içeri aktarılan ve bunların eşleme dökümlerinin ayrıntı sonuçlarını görüntülemek için doğrulanan veri kümesini daha fazla indirebilirsiniz. İpucu: uzun ses segmentlenmesi, veri işlemeyi tamamlayacak bir saatten uzun sürebilir.
 
-En-US ve zh-CN veri kümeleri için, bir raporu daha fazla indirebilir ve kayıtlarınızın her biri için telaffuz puanlarını ve gürültü düzeyini kontrol edebilirsiniz. Söyleniş puanı 0 ile 100 arasındadır. 70 altındaki bir puan, normalde bir konuşma hatası veya betik uyuşmazlığını gösterir. Ağır bir vurgu, telaffuz puanınızı azaltabilir ve üretilen dijital sesi etkileyebilir.
+Veri Ayrıntıları görünümünde, veri kümelerinizin her biri için telaffuz ve gürültü düzeyini daha fazla kontrol edebilirsiniz. Söyleniş puanı 0 ile 100 arasındadır. 70 altındaki bir puan, normalde bir konuşma hatası veya betik uyuşmazlığını gösterir. Ağır bir vurgu, telaffuz puanınızı azaltabilir ve üretilen dijital sesi etkileyebilir.
 
 Daha yüksek sinyalden gürültü oranı (SNR), Sesinizdeki küçük paraziti gösterir. Profesyonel Studios adresinde kayıt yaparak genellikle 50 + SNR 'ye ulaşabilirsiniz. 20 ' nin altında bir SNR ile ses, üretilen sesinize açık gürültü oluşmasına neden olabilir.
 
 Düşük telaffuz puanlarla veya kötü bir sinyal gürültüsü oranlarına sahip tüm sinyalleri yeniden kaydetmeyi düşünün. Yeniden kaydedemeyebilirsiniz, bu ilgili söz konusu söz konusu söz konusu söz konusu söz konusu söz konusu söz konusu söz konusu
 
+> [!NOTE]
+> Özel sinir Voice kullanıyorsanız, ses tatatçinizi **Ses tatatmi** sekmesine kaydetmeniz gerekir. Kayıt betiğinizi hazırlarken, bir TTS ses modeli oluşturmak ve yapay konuşma oluşturmak için ses verilerini kullanmaya yönelik ses tatatsyon alındı bildirimini edinmek üzere aşağıdaki cümleyi eklediğinizden emin olun. "I [soyadınız ve soyadınız], sesimin yapay bir sürümünü oluşturmak ve kullanmak için sesimin kayıtlarının [Şirket adı olarak durum] tarafından kullanılacağını biliyor."
+Bu cümle, eğitim veri kümelerinizde bulunan kayıtların onay yapan kişi tarafından gerçekleştirilip yapılkullanılmadığını doğrulamak için kullanılacaktır. [Verilerinizin nasıl işleneceği hakkında daha fazla bilgi edinmek ve ses tatatçinizi doğrulamanın burada nasıl yapılacağını](https://aka.ms/CNV-data-privacy)öğrenin. 
+
 ## <a name="build-your-custom-voice-model"></a>Özel ses modelinizi oluşturma
 
 Veri kümeniz doğrulandıktan sonra, özel ses modelinizi oluşturmak için kullanabilirsiniz.
 
-1.  **Metin okuma > özel ses > [proje adı] > eğitimi**' ne gidin.
+1.  **Metin okuma > özel ses > [proje adı] > modeli**' ne gidin.
 
 2.  **Modeli eğitme**' ye tıklayın.
 
@@ -72,15 +76,22 @@ Veri kümeniz doğrulandıktan sonra, özel ses modelinizi oluşturmak için kul
 
     **Description** alanının yaygın bir kullanımı, modeli oluşturmak için kullanılan veri kümelerinin adlarını kaydetmek olur.
 
-4.  **Eğitim verilerini seçin** sayfasında, eğitim için kullanmak istediğiniz bir veya birden çok veri kümesi seçin. Göndermeden önce vurdıklarla sayısını denetleyin. En-US ve zh-CN ses modelleri için herhangi bir sayıda utterde başlayabilirsiniz. Diğer yerel ayarlarda, bir sesi eğitebilmek için 2.000 'den fazla yer seçmelisiniz.
+4.  **Eğitim verilerini seçin** sayfasında, eğitim için kullanmak istediğiniz bir veya birden çok veri kümesi seçin. Göndermeden önce vurdıklarla sayısını denetleyin. "Uyarlamalı" eğitim yöntemini kullanarak, en-US ve zh-CN ses modelleriyle ilgili herhangi bir sayıda metinle başlayabilirsiniz. Diğer yerel ayarlarda, "Istatistiksel parametrik" ve "Concatenative" eğitim yöntemleri gibi standart bir katman kullanarak bir sesi eğitebilmeniz için 2.000 ' den fazla yer seçmeniz ve özel bir sinir sesini eğitme 300 ' den fazla yer seçmeniz gerekir. 
 
     > [!NOTE]
     > Yinelenen ses adları eğitiminden kaldırılacak. Seçtiğiniz veri kümelerinin birden çok. zip dosyası arasında aynı ses adlarını içermediğinden emin olun.
 
     > [!TIP]
-    > Kalite sonuçları için aynı konuşmacının veri kümelerini kullanmak gereklidir. Eğitim için gönderdiğiniz veri kümeleri 6.000 farklı dıklardan toplam sayısı içeriyorsa, Istatistiksel parametrik Sensit tekniği aracılığıyla ses modelinizi eğitecaksınız. Eğitim verilerinizin toplam 6.000 farklı kuralı aşması durumunda, birleştirme birleştirme tekniğinin bulunduğu bir eğitim işlemini kapatıcaksınız. Normalde birleştirme teknolojisi, daha doğal ve daha yüksek uygunlukta sesli sonuçlara neden olabilir. Genel olarak kullanılabilir [sinir sesine](language-support.md#neural-voices)bir dijital sesli eşdeğer bir bağlantı üretebilmeniz için en son sinir TTS teknolojisine sahip bir model eğitmek Istiyorsanız [özel ses ekibine başvurun](https://go.microsoft.com/fwlink/?linkid=2108737) .
+    > Kalite sonuçları için aynı konuşmacının veri kümelerini kullanmak gereklidir. Farklı eğitim yöntemleri farklı eğitim verileri boyutu gerektirir. "Istatistiksel parametrik" yöntemiyle bir modeli eğitebilmeniz için en az 2.000 farklı uttersliği gereklidir. "Concatenative" yönteminde, 6.000 Bu, "sinir" için en düşük veri boyutu gereksinim300 idir.
 
-5.  Ses modelinizi oluşturmaya başlamak için **eğitme** ' ye tıklayın.
+5. Sonraki adımda **eğitim yöntemini** seçin. 
+
+    > [!NOTE]
+    > Bir sinir sesi eğmek isterseniz, özel bir ses modeli eğmek için kendi konuşma verilerini kullanma hakkında daha fazla ses onay dosyası içeren bir ses tatatsyon profili belirtmeniz gerekir. Özel sinir Voice sınırlı erişimle kullanılabilir. [Sorumlu AI gereksinimlerini](https://aka.ms/gating-overview) anladığınızdan emin olun ve [erişimi buraya uygulayın](https://aka.ms/customneural). 
+    
+    Bu sayfada, komut dosyanızı test için karşıya yüklemeyi de seçebilirsiniz. Sınama betiği, 1 MB 'tan küçük bir txt dosyası olmalıdır. Desteklenen kodlama biçimi ANSI/ASCII, UTF-8, UTF-8-BOM, UTF-16-LE veya UTF-16-of içerir. Söylenişi 'in her paragrafında ayrı bir ses elde edilir. Tüm cümleleri tek bir ses halinde birleştirmek istiyorsanız, bunları tek bir paragrafta yapın. 
+
+6. Ses modelinizi oluşturmaya başlamak için **eğitme** ' ye tıklayın.
 
 Eğitim tablosu, bu yeni oluşturulan modele karşılık gelen yeni bir giriş görüntüler. Tabloda Ayrıca durum görüntülenir: Işlem, başarılı, başarısız.
 
@@ -92,10 +103,13 @@ Gösterilen durum, burada gösterildiği gibi, veri kümenizi bir ses modeline d
 | Başarılı | Ses modeliniz oluşturuldu ve dağıtılabilir. |
 | Başarısız | Ses modeliniz birçok nedenden dolayı eğitiminde başarısız oldu, örneğin görülmeyen veri sorunları veya ağ sorunları. |
 
-Eğitim süresi, işlenen ses verilerinin hacmine bağlı olarak değişir. Tipik saatler, yaklaşık olarak 30 dakika boyunca yaklaşık 40 saat, 20.000 utterlerin saati kadar arasındadır. Model eğitiminizi başarılı olduktan sonra test edebilirsiniz.
+Eğitim süresi, işlenen ses verilerinin hacmine ve seçtiğiniz eğitim yöntemine bağlı olarak farklılık gösterir. 30 dakika ila 40 saat arasında değişebilir. Model eğitiminizi başarılı olduktan sonra test edebilirsiniz. 
 
 > [!NOTE]
 > Ücretsiz abonelik (F0) kullanıcıları aynı anda bir ses yazı tipi eğitebilir. Standart abonelik (S0) kullanıcıları aynı anda üç ses de eğitebilir. Sınıra ulaştıysanız, en az bir ses yazı tipinden eğitim bitene kadar bekleyip yeniden deneyin.
+
+> [!NOTE]
+> Özel sinir seslerine yönelik eğitim ücretsiz değildir. [Fiyatları](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) burada kontrol edin. 
 
 > [!NOTE]
 > Abonelik başına eğitime izin verilen maksimum ses modeli sayısı, ücretsiz abonelik (F0) kullanıcıları için 10 modeldir ve Standart abonelik (S0) kullanıcıları için 100.
@@ -104,32 +118,27 @@ Sinir Voice eğitim özelliğini kullanıyorsanız, gerçek zamanlı akış sena
 
 ## <a name="test-your-voice-model"></a>Ses modelinizi test etme
 
-Ses yazı tipi başarıyla derlendikten sonra, kullanım için dağıtılmadan önce test edebilirsiniz.
+Her eğitim modeli test etmenize yardımcı olmak için otomatik olarak 100 örnek audios üretir. Ses modeliniz başarıyla derlendikten sonra, kullanım için dağıtım yapmadan önce test edebilirsiniz.
 
-1.  **Metin okuma > özel ses > [proje adı] test >**' e gidin.
+1.  **Metin okuma > özel ses > [proje adı] > modeli**' ne gidin.
 
-2.  **Test Ekle**' ye tıklayın.
+2.  Test etmek istediğiniz modelin adına tıklayın.
 
-3.  Test etmek istediğiniz bir veya daha fazla modeli seçin.
+3.  Model ayrıntısı sayfasında, örnek seslendirme 'yi **Test** sekmesi altında bulabilirsiniz. 
 
-4.  Sesinizin konuşmasını istediğiniz metni sağlayın. Tek seferde birden çok modeli test etmeyi seçtiyseniz, farklı modeller için test için aynı metin kullanılacaktır.
-
-    > [!NOTE]
-    > Metninizin dili, ses yazı tipinin diliyle aynı olmalıdır. Yalnızca başarılı eğitilen modeller test edilebilir. Bu adımda yalnızca düz metin desteklenir.
-
-5.  **Oluştur**’a tıklayın.
-
-Test isteğinizi gönderdikten sonra, sınama sayfasına dönersiniz. Tablo artık yeni isteğinize ve durum sütununa karşılık gelen bir giriş içerir. Konuşmayı senberleştirmek birkaç dakika sürebilir. Durum sütunu **başarılı**olduğunda, sesi yürütebilir veya metin girişi (bir. txt dosyası) ve ses çıkışını (bir. wav dosyası) indirebilir ve daha sonra kalite için daha fazla sesleme yapabilirsiniz.
-
-Test sonuçlarını, test için seçtiğiniz her modellerin ayrıntı sayfasında de bulabilirsiniz. **Eğitim** sekmesine gidin ve model ayrıntısı sayfasına girmek için model adına tıklayın.
+Sesin kalitesi, eğitim verilerinin boyutu, kayıt kalitesi, döküm dosyasının doğruluğu, eğitim verilerinde kaydedilen sesin amaçlanan kullanım durumu için tasarlanan sesin kişiliğine ne kadar iyi eşleştiğini ve daha fazlasını içeren bir dizi etkene bağlıdır. [Teknolojimizin özellikleri ve limitleri hakkında daha fazla bilgi edinmek ve model kalitesini geliştirmek için en iyi uygulama hakkında daha fazla bilgi için buraya bakın](https://aka.ms/CNV-limits). 
 
 ## <a name="create-and-use-a-custom-voice-endpoint"></a>Özel bir ses uç noktası oluşturma ve kullanma
 
 Ses modelinizi başarıyla oluşturup test ettikten sonra, özel bir metin okuma uç noktasına dağıtırsınız. Sonra bu uç noktayı, REST API aracılığıyla metinden konuşmaya istekleri yaparken her zamanki uç noktanın yerine kullanırsınız. Özel uç noktanız yalnızca yazı tipini dağıtmak için kullandığınız abonelik tarafından çağrılabilir.
 
-Yeni bir özel ses uç noktası oluşturmak için, **metinden konuşmaya > özel sesli > dağıtımına**gidin. **Uç nokta Ekle** ' yi seçin ve özel uç noktanız Için bir **ad** ve **Açıklama** girin. Ardından, bu uç nokta ile ilişkilendirmek istediğiniz özel ses modelini seçin.
+Yeni bir özel ses uç noktası oluşturmak için, **metinden konuşmaya > özel sesli > uç** noktasına gidin. **Uç nokta Ekle** ' yi seçin ve özel uç noktanız Için bir **ad** ve **Açıklama** girin. Ardından, bu uç nokta ile ilişkilendirmek istediğiniz özel ses modelini seçin.
 
-**Ekle** düğmesine tıkladıktan sonra, uç nokta tablosunda, yeni uç noktanız için bir giriş görürsünüz. Yeni bir uç noktanın örneklendirilecek birkaç dakika sürebilir. Dağıtımın durumu **başarılı**olduğunda, uç nokta kullanıma hazırdır.
+**Ekle** düğmesine tıkladıktan sonra, uç nokta tablosunda, yeni uç noktanız için bir giriş görürsünüz. Yeni bir uç noktanın örneklendirilecek birkaç dakika sürebilir. Dağıtımın durumu **başarılı** olduğunda, uç nokta kullanıma hazırdır.
+
+Her zaman kullanmıyorsanız, uç noktanızı **askıya** alabilir ve **sürdürebilirsiniz** . Bir uç nokta askıya alındıktan sonra yeniden etkinleştirildiğinde, uygulamalarınızda kodunuzun değiştirilmesini istemediğiniz için uç nokta URL 'SI aynı kalır. 
+
+Uç noktasını yeni bir modele de güncelleştirebilirsiniz. Modeli değiştirmek için, yeni modelin güncelleştirmek istediğiniz adla aynı olduğundan emin olun. 
 
 > [!NOTE]
 > Ücretsiz abonelik (F0) kullanıcılarının yalnızca bir modeli dağıtılmış olabilir. Standart abonelik (S0) kullanıcıları, her biri kendi özel sesiyle en fazla 50 uç nokta oluşturabilir.

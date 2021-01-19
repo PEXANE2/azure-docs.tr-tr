@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: a9591a394d80e7b4c60f28fda6c0a425ba3d0a4f
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 05d6607c091361ecee3fcd5527025b6f9fb59051
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180073"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573216"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Öğretici: IoT Edge cihazları hiyerarşisi oluşturma (Önizleme)
 
@@ -360,7 +360,7 @@ IoT Edge çalışma zamanının ve dağıtım iş yüklerinin yapılandırılmas
 
 1. Aşağıdaki ortam değişkenlerini Edge hub modülünüzü ekleyin:
 
-    | Ad | Değer |
+    | Name | Değer |
     | - | - |
     | `experimentalFeatures__enabled` | `true` |
     | `experimentalFeatures__nestedEdgeEnabled` | `true` |
@@ -373,7 +373,7 @@ IoT Edge çalışma zamanının ve dağıtım iş yüklerinin yapılandırılmas
 
 1. Ortam değişkenleri sekmesinde, aşağıdaki ortam değişkeni adı-değer çiftini girin:
 
-    | Ad | Değer |
+    | Name | Değer |
     | - | - |
     | `REGISTRY_PROXY_REMOTEURL` | `https://mcr.microsoft.com` |
 
@@ -425,6 +425,7 @@ IoT Edge çalışma zamanının ve dağıtım iş yüklerinin yapılandırılmas
                            "env": {
                                "REGISTRY_PROXY_REMOTEURL": {
                                    "value": "https://mcr.microsoft.com"
+                               } 
                            },
                            "status": "running",
                            "restartPolicy": "always"
@@ -453,7 +454,7 @@ IoT Edge çalışma zamanının ve dağıtım iş yüklerinin yapılandırılmas
                    },
                    "runtime": {
                        "settings": {
-                           "minDockerVersion": "v1.25",
+                           "minDockerVersion": "v1.25"
                        },
                        "type": "docker"
                    },
@@ -531,7 +532,7 @@ Buluttan iş yüklerini **alt katman** cihazlarınıza dağıtmak için hem Azur
 
 1. Aşağıdaki ortam değişkenlerini Edge hub modülünüzü ekleyin:
 
-    | Ad | Değer |
+    | Name | Değer |
     | - | - |
     | `experimentalFeatures__enabled` | `true` |
     | `experimentalFeatures__nestedEdgeEnabled` | `true` |
@@ -575,7 +576,7 @@ Buluttan iş yüklerini **alt katman** cihazlarınıza dağıtmak için hem Azur
                    },
                    "runtime": {
                        "settings": {
-                           "minDockerVersion": "v1.25",
+                           "minDockerVersion": "v1.25"
                        },
                        "type": "docker"
                    },
@@ -650,7 +651,7 @@ sudo iotedge check --diagnostics-image-name <parent_device_fqdn_or_ip>:8000/azur
    
 `azureiotedge-diagnostics`Değer, kayıt defteri modülüyle bağlantılı kapsayıcı kayıt defterinden çekilir. Bu öğretici, varsayılan olarak şu şekilde ayarlanmıştır https://mcr.microsoft.com:
 
-| Ad | Değer |
+| Name | Değer |
 | - | - |
 | `REGISTRY_PROXY_REMOTEURL` | `https://mcr.microsoft.com` |
 

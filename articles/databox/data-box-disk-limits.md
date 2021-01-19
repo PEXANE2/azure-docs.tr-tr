@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: fb0e56c5eeebb4f3a869feacb996d690ea7dde86
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: e003d0121721838bd5ae038a3a8b4d1b8cd9d1eb
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124178"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573199"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box Disk sınırları
 
@@ -44,8 +44,8 @@ Azure depolama hizmeti sınırları ve adlandırma paylaşımları, kapsayıcıl
 
 ## <a name="data-upload-caveats"></a>Veri yükleme uyarıları
 
-- Verileri doğrudan disklere kopyalamayın. Verileri önceden oluşturulmuş *Blok Blobu*,*Pageblob*ve *AzureFile* klasörlerine kopyalayın.
-- *Blockblob* ve *pageblob* altındaki bir klasör bir kapsayıcıdır. Örneğin, kapsayıcılar *Blok Blobu/kapsayıcı* ve *pageblob/Container*olarak oluşturulur.
+- Verileri doğrudan disklere kopyalamayın. Verileri önceden oluşturulmuş *Blok Blobu*,*Pageblob* ve *AzureFile* klasörlerine kopyalayın.
+- *Blockblob* ve *pageblob* altındaki bir klasör bir kapsayıcıdır. Örneğin, kapsayıcılar *Blok Blobu/kapsayıcı* ve *pageblob/Container* olarak oluşturulur.
 - Bulutta bulunan nesneyle aynı ada sahip bir Azure nesneniz (örneğin, blob) varsa, Data Box Disk dosyayı bulutta dosya (1) olarak yeniden adlandıracaktır.
 - *Blockblob* ve *pageblob* paylaşımlarına yazılan her dosya sırasıyla Blok Blobu ve Sayfa Blobu olarak yüklenir.
 - *Blockblob* ve *pageblob* klasörleri altında oluşturulan boş dizin hiyerarşisi (herhangi bir dosya olmadan) karşıya yüklenmedi.
@@ -76,7 +76,7 @@ Yazıılabilecek Azure nesnelerinin boyutları aşağıda verilmiştir. Karşıy
 | Blok Blobu        | ~ 4,75 TiB                                                 |
 | Sayfa Blobu         | 8 TiB <br> (Sayfa Blobu biçiminde karşıya yüklenen her dosya 512 bayt hizalı olmalıdır, aksi takdirde karşıya yükleme başarısız olur. <br> Hem VHD hem de VHDX 512 bayt hizalı.) |
 |Azure Dosyaları        | 1 TiB <br> En çok, paylaşımın boyutu 5 TiB     |
-| Yönetilen diskler     |4 TiB <br> Boyut ve sınırlar hakkında daha fazla bilgi için bkz. <li>[Yönetilen diskler için ölçeklenebilirlik hedefleri](../virtual-machines/windows/disk-scalability-targets.md#managed-virtual-machine-disks)</li>|
+| Yönetilen diskler     |4 TiB <br> Boyut ve sınırlar hakkında daha fazla bilgi için bkz. <li>[Yönetilen diskler için ölçeklenebilirlik hedefleri](../virtual-machines/disks-scalability-targets.md#managed-virtual-machine-disks)</li>|
 
 
 ## <a name="azure-block-blob-page-blob-and-file-naming-conventions"></a>Azure Blok Blobu, Sayfa Blobu ve dosya adlandırma kuralları

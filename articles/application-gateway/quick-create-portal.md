@@ -6,15 +6,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 12/08/2020
+ms.date: 01/19/2021
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 42701fbcee9833fd31fff3ace55d48079015dbcd
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: c1b17d8c624d4bef74278acc24ece37a736a5ca8
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906412"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572978"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Hızlı Başlangıç: Azure Application Gateway ile web trafiğini yönlendirme - Azure portalı
 
@@ -26,7 +26,7 @@ Bu hızlı başlangıcı, [Azure PowerShell](quick-create-powershell.md) veya [A
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -38,7 +38,7 @@ Azure hesabınızla [Azure portalında](https://portal.azure.com) oturum açın.
 
 Uygulama ağ geçidini, **uygulama ağ geçidi oluşturma** sayfasında bulunan sekmeleri kullanarak oluşturacaksınız.
 
-1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin. **Yeni** pencere görüntülenir.
+1. Azure portal menüsünde veya **Giriş** sayfasında, **Kaynak oluştur**’u seçin. **Yeni** pencere görüntülenir.
 
 2. **Ağ** ' ı seçin ve ardından **öne çıkan** listede **Application Gateway** ' yi seçin.
 
@@ -78,7 +78,7 @@ Uygulama ağ geçidini, **uygulama ağ geçidi oluşturma** sayfasında bulunan 
    > [!NOTE]
    > Application Gateway v2 SKU 'SU için **genel** bir ön uç IP yapılandırması olmalıdır. Hem genel hem de özel ön uç IP yapılandırmasına sahip olabilirsiniz, ancak şu anda v2 SKU 'SU için yalnızca özel ön uç IP yapılandırması (yalnızca ıLB modu) etkin değildir. 
 
-2. **Genel IP** adresi Için **Yeni oluştur** ' u seçin ve genel IP adresi adı Için *myagpublicıpaddress* girin ve **Tamam**' ı seçin. 
+2. **Genel IP adresi** Için **Yeni Ekle** ' yı seçin ve genel IP adresi adı Için *myagpublicıpaddress* girin ve **Tamam**' ı seçin. 
 
      ![Yeni uygulama ağ geçidi oluştur: ön uçlar](./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png)
 
@@ -86,9 +86,9 @@ Uygulama ağ geçidini, **uygulama ağ geçidi oluşturma** sayfasında bulunan 
 
 ### <a name="backends-tab"></a>Backends sekmesi
 
-Arka uç havuzu, isteği sunan arka uç sunucularına istekleri yönlendirmek için kullanılır. Arka uç havuzları, NIC 'Ler, sanal makine ölçek kümeleri, genel IP 'Ler, iç IP 'Ler, tam etki alanı adları (FQDN) ve Azure App Service gibi çok kiracılı arka uçlar olabilir. Bu örnekte, uygulama ağ geçidiniz ile boş bir arka uç havuzu oluşturacak ve arka uç havuzuna arka uç hedefleri ekleyeceğiz.
+Arka uç havuzu, isteği sunan arka uç sunucularına istekleri yönlendirmek için kullanılır. Arka uç havuzları, NIC 'ler, sanal makine ölçek kümeleri, genel IP adresleri, iç IP adresleri, tam etki alanı adları (FQDN) ve Azure App Service gibi çok kiracılı arka uçlar olabilir. Bu örnekte, uygulama ağ geçidiniz ile boş bir arka uç havuzu oluşturacak ve arka uç havuzuna arka uç hedefleri ekleyeceğiz.
 
-1. **Backends** sekmesinde **+ arka uç Havuzu Ekle**' yi seçin.
+1. **Arka uç Havuzu Ekle**' yi seçin. 
 
 2. Açılan **bir arka uç havuzu ekleyin** penceresinde, boş bir arka uç havuzu oluşturmak için aşağıdaki değerleri girin:
 
@@ -105,7 +105,7 @@ Arka uç havuzu, isteği sunan arka uç sunucularına istekleri yönlendirmek i�
 
 **Yapılandırma** sekmesinde, bir yönlendirme kuralı kullanarak oluşturduğunuz ön uç ve arka uç havuzunu bağlayacaksınız.
 
-1. **Yönlendirme kuralları** sütununda **Kural Ekle** ' yi seçin.
+1. **Yönlendirme kuralları** sütununda **bir yönlendirme kuralı ekle** ' yi seçin.
 
 2. Açılan **yönlendirme kuralı ekle** penceresinde, **kural adı** için *myroutingrule* yazın.
 
@@ -120,7 +120,7 @@ Arka uç havuzu, isteği sunan arka uç sunucularına istekleri yönlendirmek i�
 
 4. **Arka uç hedefleri** sekmesinde, **arka uç hedefi** Için **mybackendpool** ' u seçin.
 
-5. **Http ayarı** Için yeni **Oluştur** ' u seçerek yeni bir http ayarı oluşturun. HTTP ayarı, yönlendirme kuralının davranışını tespit eder. Açılan **http ayarı Ekle** penceresinde, **arka uç bağlantı noktası** için **http ayarı adı** ve *80* için *myhttpsetting* yazın. **Http ayarı Ekle** penceresinde diğer ayarlar için varsayılan değerleri kabul edin ve ardından **Ekle** ' yi seçerek **yönlendirme kuralı ekle** penceresine dönün. 
+5. **Http ayarı** Için yeni **Ekle** ' yı seçerek yeni bir http ayarı ekleyin. HTTP ayarı, yönlendirme kuralının davranışını tespit eder. Açılan **http ayarı Ekle** penceresinde, **arka uç bağlantı noktası** için **http ayarı adı** ve *80* için *myhttpsetting* yazın. **Http ayarı Ekle** penceresinde diğer ayarlar için varsayılan değerleri kabul edin ve ardından **Ekle** ' yi seçerek **yönlendirme kuralı ekle** penceresine dönün. 
 
      ![Yeni uygulama ağ geçidi oluştur: HTTP ayarı](./media/application-gateway-create-gateway-portal/application-gateway-create-httpsetting.png)
 
@@ -146,8 +146,8 @@ Bunu yapmak için şunları yapmanız gerekir:
 
 ### <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
-1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin. **Yeni** pencere görüntülenir.
-2. **Popüler** listede **Windows Server 2016 Datacenter** ' ı seçin. **Sanal makine oluştur** sayfası görüntülenir.<br>Application Gateway, arka uç havuzunda kullanılan herhangi bir sanal makine türüne trafiği yönlendirebilir. Bu örnekte, bir Windows Server 2016 Datacenter kullanırsınız.
+1. Azure portal menüsünde veya **Giriş** sayfasında, **Kaynak oluştur**’u seçin. **Yeni** pencere görüntülenir.
+2. **Popüler** listede **Windows Server 2016 Datacenter** ' ı seçin. **Sanal makine oluştur** sayfası görüntülenir.<br>Application Gateway, arka uç havuzunda kullanılan herhangi bir sanal makine türüne trafiği yönlendirebilir. Bu örnekte, bir Windows Server 2016 Datacenter sanal makinesi kullanırsınız.
 3. Aşağıdaki sanal makine ayarları için **temel bilgiler** sekmesine bu değerleri girin:
 
     - **Kaynak grubu**: kaynak grubu adı için **myResourceGroupAG** öğesini seçin.
@@ -165,9 +165,11 @@ Bunu yapmak için şunları yapmanız gerekir:
 
 ### <a name="install-iis-for-testing"></a>Test için IIS 'yi yükler
 
-Bu örnekte, yalnızca Azure 'un Application Gateway 'i başarıyla oluşturduğunu doğrulamak için sanal makinelere IIS yüklersiniz.
+Bu örnekte, Azure 'un Application Gateway 'i başarıyla oluşturduğunu doğrulamak için sanal makinelere IIS yüklersiniz.
 
-1. Azure PowerShell açın. Azure portal üst gezinti çubuğundan **Cloud Shell** ' ı seçin ve ardından açılır listeden **PowerShell** ' i seçin. 
+1. Azure PowerShell açın.
+
+   Azure portal üst gezinti çubuğundan **Cloud Shell** ' ı seçin ve ardından açılır listeden **PowerShell** ' i seçin. 
 
     ![Özel uzantıyı yükleme](./media/application-gateway-create-gateway-portal/application-gateway-extension.png)
 
@@ -208,7 +210,9 @@ Bu örnekte, yalnızca Azure 'un Application Gateway 'i başarıyla oluşturduğ
 
 ## <a name="test-the-application-gateway"></a>Uygulama ağ geçidini test etme
 
-Uygulama ağ geçidini oluşturmak için IIS gerekli olmasa da, Azure 'un uygulama ağ geçidini başarıyla oluşturduğunu doğrulamak için bu hızlı başlangıç hızlı yüklenir. Uygulama ağ geçidini test etmek için IIS kullanın:
+Uygulama ağ geçidini oluşturmak için IIS gerekli olmasa da, Azure 'un uygulama ağ geçidini başarıyla oluşturduğunu doğrulamak için bu hızlı başlangıç hızlı yüklenir. 
+
+Uygulama ağ geçidini test etmek için IIS kullanın:
 
 1. Uygulama ağ geçidinin genel IP adresini **genel bakış** sayfasında bulabilirsiniz. ![ Uygulama Ağ Geçidi genel IP adresini kaydedin ](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) veya **tüm kaynaklar**' ı seçip Arama kutusuna *Myagpublicıpaddress* girebilir ve arama sonuçlarında bunu seçebilirsiniz. Azure **genel bakış** SAYFASıNDA genel IP adresini görüntüler.
 2. Genel IP adresini kopyalayın ve ardından bu IP adresine gözatabilmek için tarayıcınızın adres çubuğuna yapıştırın.
@@ -227,7 +231,7 @@ Kaynak grubunu silmek için:
 1. Azure portal menüsünde **kaynak grupları** ' nı seçin veya *kaynak grupları*' nı arayıp seçin.
 2. **Kaynak grupları** sayfasında, listede **myResourceGroupAG** araması yapın ve ardından seçin.
 3. **Kaynak grubu sayfasında**, **kaynak grubunu sil**' i seçin.
-4. **Kaynak grubu adını yazmak** için *MyResourceGroupAG* girin ve **Sil** ' i seçin.
+4. **Kaynak grubu adını yazın** bölümüne *MyResourceGroupAG* girin ve **Sil** ' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

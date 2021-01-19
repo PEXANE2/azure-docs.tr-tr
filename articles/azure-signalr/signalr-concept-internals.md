@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 3fc6971c66d06ae9f25584f5be28b051075bfa49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: afb63b76666f47217f9c19376d81aa4ed73991bf
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88921979"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572570"
 ---
 # <a name="azure-signalr-service-internals"></a>Azure SignalR Service iç işlevleri
 
@@ -42,7 +42,7 @@ Uygulama sunucusu başlatıldıktan sonra,
 - ASP.NET Core SignalR için Azure SignalR hizmeti SDK 'Sı, SignalR hizmetine hub başına 5 WebSocket bağlantısı açar. 
 - ASP.NET SignalR için Azure SignalR hizmeti SDK 'Sı, SignalR hizmetine hub başına 5 WebSocket bağlantısı ve uygulama WebSocket bağlantısı başına bir tane açar.
 
-5 WebSocket bağlantısı, [yapılandırmada](https://github.com/Azure/azure-signalr/blob/dev/docs/use-signalr-service.md#connectioncount)değiştirilebilen varsayılan değerdir.
+5 WebSocket bağlantısı, [yapılandırmada](https://github.com/Azure/azure-signalr/blob/dev/docs/run-asp-net-core.md#connectioncount)değiştirilebilen varsayılan değerdir.
 
 İstemcilere gelen ve bu bağlantılara yönelik iletiler bu bağlantılar için çoğullanmış olacaktır.
 

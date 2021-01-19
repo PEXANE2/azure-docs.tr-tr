@@ -3,12 +3,12 @@ title: Azure yönetilen disklerini yedekleme
 description: Azure portal Azure yönetilen disklerini nasıl yedekleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: c4e2d4e649d59389ac3f8bd115e43acabc792eb2
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 2169e2f44e3ffb2c05c674d633efabed2c531878
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98558373"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573131"
 ---
 # <a name="back-up-azure-managed-disks-in-preview"></a>Azure yönetilen disklerini yedekleme (önizlemede)
 
@@ -129,6 +129,8 @@ Yönetilen disklerin yedeklemesini yapılandırmak için aşağıdaki Önkoşull
    >Kasasının yönetilen kimliğini seçmek için Yedekleme Kasası adını yazın.
 
    ![Disk anlık görüntüsü katılımcısı rolü Ekle](./media/backup-managed-disks/disk-snapshot-contributor-role.png)
+
+1. Yedeklenecek disk, [müşteri tarafından yönetilen anahtarlarla (CMK)](https://docs.microsoft.com/azure/virtual-machines/disks-enable-customer-managed-keys-portal) şifrelenirse veya [platform tarafından yönetilen anahtarlar ve müşteri tarafından yönetilen anahtarlar kullanılarak Çift şifreleme](https://docs.microsoft.com/azure/virtual-machines/disks-enable-double-encryption-at-rest-portal)kullanıyorsa, bu durumda, **disk şifreleme kümesi** kaynağındaki yedekleme kasasının yönetilen kimliğine **okuyucu** rolü iznini atayın.
 
 1. Yedekleme kasasının yönetilen kimliğinin, anlık görüntü deposu görevi gören kaynak diskte ve kaynak grubunda doğru rol atamaları kümesine sahip olduğunu doğrulayın.
 

@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: raynew
-ms.openlocfilehash: 4da707ab698599c8ea5dd8e1ea8647f543eb2a68
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 00b220e07dc3fa7580100d6d36108c14fe598d40
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95524258"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572196"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Azure bölgeleri arasında Azure VM 'Leri taşıma desteği
 
@@ -108,12 +108,12 @@ Azure galeri görüntüleri (üçüncü taraf tarafından yayımlanan)  | Destek
 Özel görüntüler (üçüncü taraf tarafından yayımlanan)| Desteklenir | VM desteklenen bir işletim sisteminde çalışıyorsa desteklenir.
 Site Recovery kullanan VM 'Ler | Desteklenmez | Arka uçta Site Recovery kullanarak kaynakları VM 'Ler arasında taşıyın. Zaten Site Recovery kullanıyorsanız, çoğaltmayı devre dışı bırakın ve ardından hazırlama işlemini başlatın.
 Azure RBAC ilkeleri | Desteklenmez | VM 'lerde Azure rol tabanlı erişim denetimi (Azure RBAC) ilkeleri, hedef bölgedeki sanal makineye kopyalanmaz.
-Uzantılar | Desteklenmez | Uzantılar hedef bölgedeki sanal makineye kopyalanmaz. Taşıma işlemi tamamlandıktan sonra bunları el ile yükleyebilirsiniz.
+Uzantıları | Desteklenmez | Uzantılar hedef bölgedeki sanal makineye kopyalanmaz. Taşıma işlemi tamamlandıktan sonra bunları el ile yükleyebilirsiniz.
 
 
 ## <a name="supported-vm-storage-settings"></a>Desteklenen VM depolama ayarları
 
-Bu tabloda, Azure VM işletim sistemi diski, veri diski ve geçici disk için destek özetlenmektedir. Tüm performans sorunlarını önlemek için, [Linux](../virtual-machines/linux/disk-scalability-targets.md) ve [WINDOWS](../virtual-machines/windows/disk-scalability-targets.md) VM 'lerinin VM disk sınırlarını ve hedeflerini gözlemlemek önemlidir.
+Bu tabloda, Azure VM işletim sistemi diski, veri diski ve geçici disk için destek özetlenmektedir. Performans sorunlarından kaçınmak için, [yönetilen DISKLERIN](../virtual-machines/disks-scalability-targets.md) VM disk sınırlarını ve hedeflerini gözlemlemek önemlidir.
 
 > [!NOTE]
 > Hedef VM boyutu, kaynak VM 'den büyük veya bu değere eşit olmalıdır. Doğrulama için kullanılan parametreler: veri diskleri sayısı, NIC sayısı, kullanılabilir CPU 'Lar, GB cinsinden bellek. Bir hata verilmemişse.

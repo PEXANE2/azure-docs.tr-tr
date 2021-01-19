@@ -4,12 +4,12 @@ description: Azure Site Recovery olan ikincil bir bölgeye Azure VM olağanüst�
 ms.topic: article
 ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: fdd5b8f9cea549f64c4857d1c45b95b0d9b9ec53
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 2dbd7cd756e386b44c6933697ff50180021ac035
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569972"
+ms.locfileid: "98572315"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure bölgeleri arasında Azure sanal makinesi olağanüstü durum kurtarma için destek matrisi
 
@@ -213,7 +213,7 @@ Korumalı disklerde çevrimdışı değişiklikler | Disklerin bağlantısının
 
 Bu tabloda, Azure VM işletim sistemi diski, veri diski ve geçici disk için destek özetlenmektedir.
 
-- Tüm performans sorunlarını önlemek için, [Linux](../virtual-machines/linux/disk-scalability-targets.md) ve [WINDOWS](../virtual-machines/windows/disk-scalability-targets.md) VM 'lerinin VM disk sınırlarını ve hedeflerini gözlemlemek önemlidir.
+- Performans sorunlarından kaçınmak için, [yönetilen DISKLERIN](../virtual-machines/disks-scalability-targets.md) VM disk sınırlarını ve hedeflerini gözlemlemek önemlidir.
 - Varsayılan ayarlarla dağıtırsanız, Site Recovery kaynak ayarlarına bağlı olarak diskleri ve depolama hesaplarını otomatik olarak oluşturur.
 - ' Yi özelleştirirseniz, yönergeleri izlediğinizden emin olun.
 
@@ -261,7 +261,7 @@ Hızlandırıcı etkinleştirilmiş diskler yazma | Desteklenmez
 Etiketler  | Kullanıcı tarafından oluşturulan Etiketler her 24 saatte bir çoğaltılır.
 
 >[!IMPORTANT]
-> Performans sorunlarından kaçınmak için, [Linux](../virtual-machines/linux/disk-scalability-targets.md) veya [Windows](../virtual-machines/windows/disk-scalability-targets.md) VM 'leri için VM disk ölçeklenebilirliğini ve performans hedeflerini izlediğinizden emin olun. Varsayılan ayarları kullanıyorsanız, Site Recovery, kaynak yapılandırmasına göre gerekli diskleri ve depolama hesaplarını oluşturur. Kendi ayarlarınızı özelleştirip seçerseniz, kaynak sanal makinelerinize yönelik disk ölçeklenebilirlik ve performans hedeflerini izleyin.
+> Performans sorunlarından kaçınmak için, [yönetilen diskler](../virtual-machines/disks-scalability-targets.md)için VM disk ölçeklenebilirliğini ve performans hedeflerini izlediğinizden emin olun. Varsayılan ayarları kullanıyorsanız, Site Recovery, kaynak yapılandırmasına göre gerekli diskleri ve depolama hesaplarını oluşturur. Kendi ayarlarınızı özelleştirip seçerseniz, kaynak sanal makinelerinize yönelik disk ölçeklenebilirlik ve performans hedeflerini izleyin.
 
 ## <a name="limits-and-data-change-rates"></a>Sınırlar ve veri değişim oranları
 

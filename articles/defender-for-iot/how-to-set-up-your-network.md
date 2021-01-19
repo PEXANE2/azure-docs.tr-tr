@@ -4,15 +4,15 @@ description: IoT gereçlerinde Azure Defender ile çalışacak şekilde ağını
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/06/2020
+ms.date: 01/03/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 3e9380f067b091c4473b8c29bda3d31bb93cbc6d
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 2053632f24504f896d1045f99d581b9aa6050b55
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97843191"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573148"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>IoT Ağ kurulumu için Azure Defender hakkında
 
@@ -54,7 +54,7 @@ Site bilgilerini aşağıda gösterildiği gibi kaydedin:
 
 - Yapılandırma iş istasyonu.
 
-- SSL sertifikaları (isteğe bağlı).
+- SSL sertifikaları (isteğe bağlı ancak önerilir).
 
 - SMTP kimlik doğrulaması (isteğe bağlı). SMTP sunucusunu kimlik doğrulamasıyla kullanmak için sunucunuz için gereken kimlik bilgilerini hazırlayın.
 
@@ -223,7 +223,7 @@ Bir yıldız ağında, her ana bilgisayar bir merkezi hub 'a bağlanır. En basi
 
 Birden çok sensöri dağıtmaya yönelik bazı öneriler aşağıda verilmiştir:
 
-| * * Sayı * *| **Gösterilmiştir** | **Bağımlılık** | **Algılayıcı sayısı** |
+| **Sayı** | **Gösterilmiştir** | **Bağımlılık** | **Algılayıcı sayısı** |
 |--|--|--|--|
 | Anahtarlar arasındaki en fazla uzaklık | 80 ölçü | Hazırlanmış Ethernet kablosu | 1 ' den fazla |
 | OT ağı sayısı | 1 ' den fazla | Fiziksel bağlantı yok | 1 ' den fazla |
@@ -569,7 +569,7 @@ Endüstriyel ağ diyagramına genel bir bakış için, bir Defender for IoT dona
     > [!NOTE]
     > IoT gereci için Defender, anahtardaki bağlantı noktaları arasındaki trafiği gösteren alt düzey bir anahtara bağlanmalıdır.  
 
-2. Ağlarda yaklaşık cihaz sayısını sağlayın (isteğe bağlı).
+2. İzlenecek yaklaşık ağ aygıtı sayısını belirtin. Bu bilgilere IoT portalı için Azure Defender aboneliğinizi eklerken ihtiyacınız olacak. Ekleme işlemi sırasında cihaz sayısını 1000 artışlarla girmeniz istenir.
 
 3. Üretim ağları ve açıklama (isteğe bağlı) için bir alt ağ listesi sağlayın. 
 
