@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/12/2021
 ms.author: yelevin
-ms.openlocfilehash: 549b4e1e5e1aef3f6957fa52d69d252c55934286
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.openlocfilehash: 989520e079988e1821d8bb9a936f857e1f62c11a
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541598"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567758"
 ---
 # <a name="connect-your-trend-micro-tippingpoint-solution-to-azure-sentinel"></a>Trend mikro TippingPoint çözümünüzü Azure Sentinel 'e bağlama
 
@@ -48,15 +48,15 @@ Günlüklerini Azure Sentinel 'e almak için, TippingPoint TPS çözümünüzü,
 
 1. **Yapılandırma** altında, **yönergeler** sekmesindeki yönergeleri izleyin:
 
-    1. **1. Linux Syslog Aracısı yapılandırması** -çalışır durumda bir günlük ileticisi yoksa veya başka bir tane gerekiyorsa bu adımı izleyin. Daha ayrıntılı yönergeler ve açıklamalar için bkz. 1. Adım: Azure Sentinel belgelerindeki [günlük ileticisini dağıtma](connect-cef-agent.md) .
+    1. **1 altında. Linux Syslog Aracısı yapılandırması** -çalışır durumda bir günlük ileticisi yoksa veya başka bir tane gerekiyorsa bu adımı izleyin. Daha ayrıntılı yönergeler ve açıklamalar için bkz. 1. Adım: Azure Sentinel belgelerindeki [günlük ileticisini dağıtma](connect-cef-agent.md) .
 
-    1. **2. Iletme eğilimi mikro TIPPINGPOINT SMS günlükleri Syslog aracısına** -bu yapılandırma aşağıdaki öğeleri içermelidir:
+    1. **2 altında. İleriye doğru trend mikro TippingPoint SMS günlükleri Syslog aracısına ilet** -bu yapılandırma aşağıdaki öğeleri içermelidir:
         - Günlük hedefi – günlük iletme sunucunuzun ana bilgisayar adı ve/veya IP adresi
         - Protokol ve bağlantı noktası – **TCP 514** (Aksi takdirde önerilir), günlük iletme sunucunuzdaki Syslog Daemon öğesinde paralel değişikliği yaptığınızdan emin olun.
         - Günlük biçimi – **Arcgörüş CEF Format v 4.2**
         - Günlük türleri: tümü kullanılabilir
 
-    1. **3. bağlantıyı doğrulama** -bağlayıcı sayfasına komutu kopyalayarak ve günlük ileticide çalıştırarak veri alımını doğrulayın. Daha ayrıntılı yönergeler ve açıklamalar için bkz. [3. Adım:](connect-cef-verify.md) Azure Sentinel belgelerindeki bağlantıyı doğrulama.
+    1. 3 ' ün altında **. Bağlantıyı doğrulama** -bağlayıcı sayfasına komutu kopyalayarak ve günlük ileticisinde çalıştırarak veri alımını doğrulayın. Daha ayrıntılı yönergeler ve açıklamalar için bkz. [3. Adım:](connect-cef-verify.md) Azure Sentinel belgelerindeki bağlantıyı doğrulama.
 
         Günlüklerinizin Log Analytics görünmeye başlaması 20 dakikaya kadar sürebilir.
 

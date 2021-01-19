@@ -4,12 +4,12 @@ description: En son özellikleri ve güvenlik güncelleştirmelerini almak için
 services: container-service
 ms.topic: article
 ms.date: 12/17/2020
-ms.openlocfilehash: 947d669d436308a550bce31f04c7b1a2b8a8485a
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 1d3c275758a1e241a531b65d1897903153efab94
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734361"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567461"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) kümesini yükseltme
 
@@ -108,7 +108,7 @@ Yükseltmenin başarılı olduğunu doğrulamak için [az aks Show][az-aks-show]
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Aşağıdaki örnek çıktıda, kümenin artık *1.13.10* çalıştığını gösterilmektedir:
+Aşağıdaki örnek çıktıda, kümenin artık *1.18.10* çalıştığını gösterilmektedir:
 
 ```json
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn

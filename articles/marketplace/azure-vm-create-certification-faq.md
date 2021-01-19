@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 01/15/2021
-ms.openlocfilehash: 8c2739503f00848b1515f2061c2a9aa250c091a3
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.date: 01/18/2021
+ms.openlocfilehash: f802292d9723179b36d5291993bd4e07487fe6a8
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539838"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567390"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Sanal makine sertifikası sorunlarını giderme
 
@@ -70,7 +70,7 @@ Sağlama sorunları aşağıdaki başarısızlık senaryolarını içerebilir:
 
 ### <a name="conectix-cookie-and-other-vhd-specifications"></a>Conectix tanımlama bilgisi ve diğer VHD belirtimleri
 
-' Conectix ' dizesi, VHD belirtiminin bir parçasıdır. Dosya oluşturucuyu tanımlayan VHD altbilgisinde 8 baytlık tanımlama bilgisi olarak tanımlanır. Microsoft tarafından oluşturulan tüm VHD dosyaları bu tanımlama bilgisine sahiptir. 
+' Conectix ' dizesi, VHD belirtiminin bir parçasıdır. Dosya oluşturucuyu tanımlayan VHD altbilgisinde 8 baytlık tanımlama bilgisi olarak tanımlanır. Microsoft tarafından oluşturulan tüm VHD dosyaları bu tanımlama bilgisine sahiptir.
 
 VHD biçimli bir blob, bu biçimde 512 baytlık bir alt bilgiye sahip olmalıdır:
 
@@ -311,14 +311,14 @@ Sertifika işlemi için SSH devre dışı görüntüyle isteğinizi göndermek i
 
 Paylaşılan erişim imzası (SAS) URL 'SI ile VM görüntüsünü indirdiğinizde ortaya çıkan herhangi bir sorun için aşağıdaki tabloya bakın.
 
-|Senaryo|Hata|Nedeni|Çözüm|
-|---|---|---|---|
-|1|Blob bulunamadı|VHD silinmiş ya da belirtilen konumdan taşınmış olabilir.|| 
-|2|Kullanılan blob|VHD başka bir iç işlem tarafından kullanılıyor.|VHD 'yi bir SAS URL 'si ile indirdiğinizde kullanılan bir durumda olmalıdır.|
-|3|Geçersiz SAS URL 'SI|VHD için ilişkili SAS URL 'SI yanlış.|Doğru SAS URL 'sini alın.|
-|4|Geçersiz imza|VHD için ilişkili SAS URL 'SI yanlış.|Doğru SAS URL 'sini alın.|
-|6|HTTP koşullu üstbilgisi|SAS URL 'SI geçersiz.|Doğru SAS URL 'sini alın.|
-|7|Geçersiz VHD adı|VHD adında, yüzde işareti veya tırnak işareti gibi özel karakterlerin mevcut olup olmadığını denetleyin `%` `"` .|Özel karakterleri kaldırarak VHD dosyasını yeniden adlandırın.|
+|Hata|Nedeni|Çözüm|
+|---|---|---|
+|Blob bulunamadı|VHD silinmiş ya da belirtilen konumdan taşınmış olabilir.|| 
+|Kullanılan blob|VHD başka bir iç işlem tarafından kullanılıyor.|VHD 'yi bir SAS URL 'si ile indirdiğinizde kullanılan bir durumda olmalıdır.|
+|Geçersiz SAS URL 'SI|VHD için ilişkili SAS URL 'SI yanlış.|Doğru SAS URL 'sini alın.|
+|Geçersiz imza|VHD için ilişkili SAS URL 'SI yanlış.|Doğru SAS URL 'sini alın.|
+|HTTP koşullu üstbilgisi|SAS URL 'SI geçersiz.|Doğru SAS URL 'sini alın.|
+|Geçersiz VHD adı|VHD adında, yüzde işareti veya tırnak işareti gibi özel karakterlerin mevcut olup olmadığını denetleyin `%` `"` .|Özel karakterleri kaldırarak VHD dosyasını yeniden adlandırın.|
 |
 
 ## <a name="first-1-mb-2048-sectors-each-sector-of-512-bytes-partition"></a>İlk 1 MB (2048 kesim, her 512 baytlık kesim) bölümü
@@ -558,7 +558,7 @@ Bir güvenlik açığı olan veya açıktan yararlanan bir VM görüntüsünü d
 
 #### <a name="provide-a-new-vm-image-to-address-the-security-vulnerability-or-exploit"></a>Güvenlik açığı veya açıktan yararlanmak için yeni bir VM görüntüsü sağlayın
 
-Bu adımları gerçekleştirmek için, eklemek istediğiniz VM görüntüsü için teknik varlıkları hazırlayın. Daha fazla bilgi için bkz. [onaylanan temel kullanarak bir sanal makine oluşturma](azure-vm-create-using-approved-base.md)veya [kendi görüntünüzü kullanarak bir sanal makıne oluşturma](azure-vm-create-using-own-image.md) ve [VM Görüntünüz için SAS URI](azure-vm-get-sas-uri.md)oluşturma.
+Bu adımları gerçekleştirmek için, eklemek istediğiniz VM görüntüsü için teknik varlıkları hazırlayın. Daha fazla bilgi için bkz. [onaylanan temel kullanarak bir sanal makine oluşturma](azure-vm-create-using-approved-base.md) veya [kendi görüntünüzü kullanarak bir sanal makıne oluşturma](azure-vm-create-using-own-image.md) ve [VM Görüntünüz için SAS URI](azure-vm-get-sas-uri.md)oluşturma.
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın.
 1. Sol bölmede, **ticari Market**  >  **genel bakış**' ı seçin.

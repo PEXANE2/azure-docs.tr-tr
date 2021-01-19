@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makine kurtarma noktasından dosya ve klas
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: b4bd64fb00c2f341e474ecb96738fab47d717474
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 9bd66c1e3c89c8974adc3970f8595e5100878088
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831678"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567129"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 
@@ -188,7 +188,7 @@ Linux 'ta, kurtarma noktasının birimleri betiğin çalıştırıldığı klas�
 Dosya kurtarma işlemi, dosya geri yükleme betiğini çalıştırdıktan sonra askıda kalırsa (örneğin, diskler hiçbir şekilde bağlanmadıysa veya bağlanmamışsa ancak birimler görünmezse), aşağıdaki adımları uygulayın:
 
 1. /Etc/IDL/SCC \ dosya \ dosya & lt; 1} dosyasında, ayarı şu şekilde değiştirin:
-    - `node.conn[0].timeo.noop_out_timeout = 5`  Hedef `node.conn[0].timeo.noop_out_timeout = 30`
+    - `node.conn[0].timeo.noop_out_timeout = 5`  Hedef `node.conn[0].timeo.noop_out_timeout = 120`
 2. Yukarıdaki değişiklikleri yaptıktan sonra betiği yeniden çalıştırın. Geçici başarısızlıklar varsa, hedef hazırlanmasını etkileyen isteklerin birbirini izleyen ani arızalarını önlemek için yeniden oluşturma arasında 20 ila 30 dakikalık bir boşluk olduğundan emin olun. Yeniden çalıştırma arasındaki bu Aralık, hedefin betikten bağlantı için hazırlanmaya yönelik olduğundan emin olur.
 3. Dosya kurtarmasından sonra, portala geri dönüp birimleri takabileceğiniz kurtarma noktaları için **diskleri** çıkar ' ı seçtiğinizden emin olun. Temelde, bu adım mevcut tüm işlem/oturumları temizler ve kurtarma olasılığını artırır.
 

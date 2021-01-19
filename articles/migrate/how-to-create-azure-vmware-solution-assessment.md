@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 93d17ec2a4fb5c191ce02c73a7a3532e9c854b00
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: fb1ec55bc68ccc323f8dee90982a9169e3085219
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752082"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567639"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a>Azure VMware çözümü (AVS) değerlendirmesi oluşturma
 
@@ -58,27 +58,29 @@ Azure VMware çözümü (AVS) değerlendirmesi aşağıdaki gibi çalıştırın
 
     ![Ekran görüntüsü değerlendirme araçları altında değerlendirmede Azure geçişi sunucularını gösterir.](./media/how-to-create-assessment/assess.png)
 
-3. **Sunucuları değerlendir** bölümünde, değerlendirme türünü "Azure VMware çözümü (AVS)" olarak seçin, bulma kaynağını seçin ve değerlendirme adını belirtin.
+3. **Sunucuları değerlendir** bölümünde, değerlendirme türünü "Azure VMware çözümü (AVS)" olarak seçin, bulma kaynağı ' nı seçin.
 
-    ![Değerlendirmeyle ilgili temel bilgiler](./media/how-to-create-avs-assessment/assess-servers-avs.png)
+    :::image type="content" source="./media/how-to-create-avs-assessment/assess-servers-avs.png" alt-text="Değerlendirme temelleri ekleyin":::
 
-4. Değerlendirme özelliklerini gözden geçirmek için **Tümünü görüntüle**’ye tıklayın.
+4. Değerlendirme özelliklerini gözden geçirmek için **Düzenle** ' ye tıklayın.
 
-    ![AVS değerlendirmesi özellikleri](./media/how-to-create-avs-assessment/avs-view-all.png)
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-servers.png" alt-text="Değerlendirme özelliklerini gözden geçirmek için Düzenle düğmesinin konumu":::
 
-5. **Değerlendirilecek makineleri seçin**'in yanındaki **İleri**'yi seçin. **Grup oluşturun veya seçin** alanında **Yeni oluştur**'u seçip bir grup adı belirtin. Grup, değerlendirme için bir veya daha fazla VM'yi bir araya getirir.
+1. Değerlendirme **adını değerlendirmek için makineleri seçin**  >   > değerlendirme için bir ad belirtin. 
+ 
+1. > **Grup Seç veya oluştur** bölümünde **Yeni oluştur** ' u seçin ve bir grup adı belirtin. Grup, değerlendirme için bir veya daha fazla VM'yi bir araya getirir.
+    
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-group.png" alt-text="Bir gruba VM ekleme":::
 
-6. **Gruba makine ekleme**' de gruba eklenecek VM 'ler ' i seçin.
+1. **Gruba makine ekleme**' de gruba eklenecek VM 'ler ' i seçin.
 
-7. Değerlendirme ayrıntılarını gözden geçirmek için **Gözden geçir ve değerlendirmeyi oluştur**'un yanındaki **İleri**'yi seçin.
+1. Değerlendirme ayrıntılarını gözden geçirmek için **Gözden geçir ve değerlendirmeyi oluştur**'un yanındaki **İleri**'yi seçin.
 
-8. Grubu oluşturmak için **değerlendirme oluştur** ' a tıklayın ve değerlendirmeyi çalıştırın.
+1. Grubu oluşturmak için **değerlendirme oluştur** ' a tıklayın ve değerlendirmeyi çalıştırın.
 
-    ![AVS değerlendirmesi oluşturma](./media/how-to-create-avs-assessment/avs-assessment-create.png)
+1. Değerlendirme oluşturulduktan sonra **Sunucular** > **Azure Geçişi: Sunucu Değerlendirmesi** > **Değerlendirmeler** sayfasından görüntüleyin.
 
-9. Değerlendirme oluşturulduktan sonra **Sunucular** > **Azure Geçişi: Sunucu Değerlendirmesi** > **Değerlendirmeler** sayfasından görüntüleyin.
-
-10. Excel dosyası olarak indirmek için **Değerlendirmeyi dışarı aktar**’a tıklayın.
+1. Excel dosyası olarak indirmek için **Değerlendirmeyi dışarı aktar**’a tıklayın.
 
 
 ## <a name="review-an-azure-vmware-solution-avs-assessment"></a>Azure VMware çözümü (AVS) değerlendirmesini gözden geçirme
@@ -88,6 +90,8 @@ Bir Azure VMware çözümü (AVS) değerlendirmesi şunları açıklar:
 - **Azure VMware çözümü (AVS) hazırlığı**: Şirket Içi VM 'Lerin Azure VMware çözümüne (AVS) geçiş için uygun olup olmadığı.
 - **AVS düğüm sayısı**: VM 'leri çalıştırmak için gereken, tahmini AVS düğüm sayısı.
 - **AVS düğümleri genelinde kullanım**: tüm DÜĞÜMLERDE öngörülen CPU, bellek ve depolama kullanımı.
+    - Kullanım, vCenter Server, NSX Manager (büyük), NSX Edge gibi aşağıdaki küme yönetimi üst kısmında bulunan ön düzenleme içerir. HCX aynı zamanda HCX Yöneticisi ve x gereci (11 CPU), 75 GB RAM ve sıkıştırma ve yinelenenleri kaldırma öncesinde 7 22GB depolama alanı.
+    - Bellek, yinelenenleri kaldırma ve Compression Şu anda bellek ve 1,5 yinelenenleri kaldırma için %100 kullanımı ve sıkıştırma için Kullanıcı tanımlı bir giriş olacak şekilde, kullanıcının gerekli boyutlandırmasına ince ayar yapılmasına izin verir.
 - **Aylık maliyet tahmini**: Şirket Içi VM 'leri çalıştıran tüm Azure VMware çözümü (AVS) düğümlerine yönelik tahmini aylık maliyetler.
 
 
@@ -97,7 +101,7 @@ Bir Azure VMware çözümü (AVS) değerlendirmesi şunları açıklar:
 
 2. **Değerlendirmede**, bir değerlendirmeye tıklayarak açın.
 
-    ![AVS değerlendirmesi Özeti](./media/how-to-create-avs-assessment/avs-assessment-summary.png)
+    :::image type="content" source="./media/how-to-create-avs-assessment/avs-assessment-summary.png" alt-text="AVS değerlendirmesi Özeti":::
 
 ### <a name="review-azure-vmware-solution-avs-readiness"></a>Azure VMware Solution (AVS) hazırlığını gözden geçirme
 

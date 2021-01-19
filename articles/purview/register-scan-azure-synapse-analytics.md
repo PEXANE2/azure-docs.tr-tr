@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: c95f8b9e4466b22519a4dea580a86a0dcda83857
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 3ba43b83166b5548dee4ea4e52c7411db48d23f5
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555942"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567266"
 ---
 # <a name="register-and-scan-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'i kaydetme ve tarama
 
@@ -34,7 +34,7 @@ Azure purview, Azure SYNAPSE Analytics 'te [görünümlerin](/sql/relational-dat
  
 ## <a name="setting-up-authentication-for-a-scan"></a>Tarama için kimlik doğrulamasını ayarlama
 
-Azure Blob depolama için kimlik doğrulaması kurmanın üç yolu vardır:
+Azure SYNAPSE Analytics için kimlik doğrulaması kurmanın üç yolu vardır:
 
 - Yönetilen Kimlik
 - SQL Kimlik Doğrulaması

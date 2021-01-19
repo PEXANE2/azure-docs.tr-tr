@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: f6d3c6f77b062939a88e7277cb7f0ab6ecff9fcb
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: e57084dab00210802edbd46e3380313e034eb036
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753085"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98566773"
 ---
 # <a name="tutorial-assess-vmware-vms-for-migration-to-avs"></a>Öğretici: AVS 'ye geçiş için VMware VM 'lerini değerlendirin
 
@@ -20,7 +20,7 @@ Azure 'a geçiş sürecinizin bir parçası olarak, bulut hazırlığını ölç
 
 Bu makalede, Azure geçişi: Sunucu değerlendirmesi Aracı kullanılarak Azure VMware çözümüne (AVS) geçiş için keşfedilen VMware sanal makinelerini (VM 'Ler) nasıl değerlendireceğiniz gösterilmektedir. AVS, Azure 'da VMware platformunu çalıştırmanıza olanak tanıyan bir yönetilen hizmettir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 - Makine meta verileri ve yapılandırma bilgilerine göre bir değerlendirme çalıştırın.
 - Performans verilerine göre bir değerlendirme çalıştırın.
@@ -58,58 +58,63 @@ Bir değerlendirmeyi aşağıdaki gibi çalıştırın:
 
    ![Sunucuları değerlendir ve geçir düğmesinin konumu](./media/tutorial-assess-vmware-azure-vmware-solution/assess.png)
 
-2. **Azure geçişi: Sunucu değerlendirmesi**' nde **değerlendir**' e tıklayın.
+1. **Azure geçişi: Sunucu değerlendirmesi**' nde **değerlendir**' e tıklayın.
 
-3. **Sunucu**  >  **değerlendirmesi türünü** değerlendir bölümünde **Azure VMware çözümü (AVS) (Önizleme)** seçeneğini belirleyin.
-4. **Bulma kaynağında**:
+1. **Sunucu**  >  **değerlendirmesi türünü** değerlendir bölümünde **Azure VMware çözümü (AVS) (Önizleme)** seçeneğini belirleyin.
+
+1. **Bulma kaynağında**:
 
     - Gereci kullanarak makineler keşfetiyorsanız, **Azure geçişi gereci ' ndan bulunan makineler**' i seçin.
     - İçeri aktarılan bir CSV dosyası kullanan makineler tespit ederseniz, **Içeri aktarılan makineler**' i seçin. 
     
-5. Değerlendirme için bir ad belirtin. 
-6. Değerlendirme özelliklerini gözden geçirmek için **Tümünü görüntüle**’ye tıklayın.
+1. Değerlendirme özelliklerini gözden geçirmek için **Düzenle** ' ye tıklayın.
 
-    ![Değerlendirme ayarlarını seçme sayfası](./media/tutorial-assess-vmware-azure-vmware-solution/assess-servers.png)
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-servers.png" alt-text="Değerlendirme ayarlarını seçme sayfası":::
+ 
 
-
-7. 1n **değerlendirme özellikleri**  >  **hedef özellikleri**:
+1. **Değerlendirme özellikleri**  >  **hedef özellikleri**:
 
     - **Hedef konum**' da, geçirmek istediğiniz Azure bölgesini belirtin.
        - Boyut ve maliyet önerileri belirttiğiniz konuma göre hesaplanır.
-       - Şu anda üç bölge için değerlendirme yapabilirsiniz (Doğu ABD, Batı ABD, Batı Avrupa)
-   - **Depolama türü**' nde, **vSAN**' ı bırakın. Bu, bir AVS özel bulutu için varsayılan depolama türüdür.
+       - Şu anda dört bölge için değerlendirme yapabilirsiniz (Avustralya Doğu, Doğu ABD, Batı Avrupa, Batı ABD)
+   - **Depolama türü** varsayılan olarak **vSAN** olarak ayarlanır. Bu, bir AVS özel bulutu için varsayılan depolama türüdür.
    - **Ayrılmış örnekler** Şu anda AVS düğümleri için desteklenmiyor.
-8. **VM boyutu**:
-    - **Düğüm türü**' nde, şirket içi VM 'lerde çalışan iş yüklerine göre bir düğüm türü seçin.
-        - Azure geçişi, VM 'Leri AVS 'ye geçirmek için gereken düğüm düğümünü önerir.
-        - Varsayılan düğüm türü AV36 ' dir.
-    - **FTT ayarı, RAID düzeyi**, tolerans ve RAID birleşimine yönelik hata seçin.  Seçili FTT seçeneği, şirket içi VM disk gereksinimiyle birlikte kullanıldığında, AVS 'de gereken toplam vSAN depolama alanını belirler.
+1. **VM boyutu**:
+    - **Düğüm türü** varsayılan olarak **AV36**' dir. Azure geçişi, VM 'Leri AVS 'ye geçirmek için gereken düğüm düğümünü önerir.
+    - **FTT ayarında, RAID düzeyinde**, tolerans ve RAID birleşimine yönelik hata seçin.  Seçili FTT seçeneği, şirket içi VM disk gereksinimiyle birlikte kullanıldığında, AVS 'de gereken toplam vSAN depolama alanını belirler.
     - **CPU fazla aboneliği**' nde, AVS düğümündeki bir fiziksel çekirdekle ilişkili sanal çekirdekleri oranını belirtin. 4:1 'den büyük abonelik, performans düşüşüne neden olabilir, ancak Web sunucusu türü iş yükleri için de kullanılabilir.
 
-9. **Düğüm boyutu**: 
+1. **Düğüm boyutu**: 
     - **Boyutlandırma ölçütünde**, değerlendirmeyi statik meta verilerde veya performans tabanlı verilerde temel almak istiyorsanız seçin. Performans verileri kullanıyorsanız:
         - **Performans geçmişi**' nde, değerlendirmeye dayandırmak istediğiniz veri süresini belirtin
         - **Yüzdelik kullanım**' de, performans örneği için kullanmak istediğiniz yüzdebirlik değerini belirtin. 
     - **Rahatlık faktörüyle**, değerlendirme sırasında kullanmak istediğiniz arabelleği belirtin. Bu hesaplar, dönemsel kullanım, kısa performans geçmişi ve gelecekteki kullanımlarda olası artışlar gibi sorunlara yöneliktir. Örneğin, iki bir rahatlık faktörü kullanıyorsanız:
     
         **Bileşen** | **Etkin kullanım** | **Rakip çarpanı ekleme (2,0)**
-        --- | --- | ---  
-        Çekirdekler | 2 | 4
-        Bellek | 8 GB | 16 GB     
+        --- | --- | ---
+        Çekirdekler | 2  | 4
+        Bellek | 8 GB | 16 GB  
 
-10. **Fiyatlandırma**:
+1. **Fiyatlandırma**:
     - **Teklifte**, kaydettiğiniz [Azure teklifi](https://azure.microsoft.com/support/legal/offer-details/) görüntülenir sunucu değerlendirmesi, bu teklifin maliyetini tahmin eder.
     - **Para birimi**' nde, hesabınız için faturalandırma para birimini seçin.
     - **İndirim (%)** bölümünde, Azure teklifinin üzerine aldığınız aboneliğe özgü indirimleri ekleyin. Varsayılan ayar, %0’dır.
 
-11. Değişiklik yaparsanız **Kaydet** ' e tıklayın.
+1. Değişiklik yaparsanız **Kaydet** ' e tıklayın.
 
-    ![Değerlendirme özellikleri](./media/tutorial-assess-vmware-azure-vmware-solution/view-all.png)
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/avs-view-all.png" alt-text="Değerlendirme özellikleri":::
 
-12. **Sunucuları değerlendir** bölümünde **İleri**' ye tıklayın.
-13. **Sunucuları değerlendir**' de  >  **değerlendirmek üzere makineleri seçin**, değerlendirme için yeni bir sunucu grubu oluşturun, **Yeni oluştur**' u seçin ve bir grup adı belirtin. 
-14. Gereç ' ı seçin ve gruba eklemek istediğiniz VM 'Leri seçin. Ardından **İleri**'ye tıklayın.
-15. **İnceleme ve değerlendirme oluştur**' da, değerlendirme ayrıntılarını gözden geçirin ve grubu oluşturmak ve değerlendirmeyi çalıştırmak Için değerlendirme **Oluştur** ' a tıklayın.
+1. **Sunucuları değerlendir** bölümünde **İleri**' ye tıklayın.
+
+1. Değerlendirme **adını değerlendirmek için makineleri seçin**  >   > değerlendirme için bir ad belirtin. 
+ 
+1. > **Grup Seç veya oluştur** bölümünde **Yeni oluştur** ' u seçin ve bir grup adı belirtin. 
+    
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-group.png" alt-text="Bir gruba VM ekleme":::
+ 
+1. Gereç ' ı seçin ve gruba eklemek istediğiniz VM 'Leri seçin. Ardından **İleri**'ye tıklayın.
+
+1. **İnceleme ve değerlendirme oluştur**' da, değerlendirme ayrıntılarını gözden geçirin ve grubu oluşturmak ve değerlendirmeyi çalıştırmak Için değerlendirme **Oluştur** ' a tıklayın.
 
     > [!NOTE]
     > Performans tabanlı değerlendirmeler için, değerlendirme oluşturmadan önce bulmayı başlattıktan sonra en az bir gün beklemeniz önerilir. Bu, daha yüksek güvenilirliğe sahip performans verilerinin toplanması için zaman sağlar. İdeal olarak, bulmayı başlattıktan sonra, belirttiğiniz performans süresini (gün/hafta/ay) yüksek güvenilirlikli bir derecelendirme için bekleyin.
@@ -121,6 +126,8 @@ Bir AVS değerlendirmesi şunları açıklar:
 - AVS hazırlığı: şirket içi VM 'Lerin Azure VMware çözümüne (AVS) geçiş için uygun olup olmadığı.
 - AVS düğüm sayısı: VM 'Leri çalıştırmak için gereken, tahmini AVS düğüm sayısı.
 - AVS düğümleri genelinde kullanım: tüm düğümlerde öngörülen CPU, bellek ve depolama kullanımı.
+    - Kullanım vCenter Server, NSX Yöneticisi (büyük), NSX Edge gibi aşağıdaki küme yönetimi üst kısmında UPX 'in yanı sıra, HCX, sıkıştırma ve yinelenenleri kaldırma işleminden önce yaklaşık 44vCPU (11 CPU), 75GB RAM ve 722GB depolama alanı kullanan düzenleme. 
+    - Bellek, yinelenenleri kaldırma ve Compression Şu anda bellek ve 1,5 yinelenenleri kaldırma için %100 kullanımı ve sıkıştırma için Kullanıcı tanımlı bir giriş olacak şekilde, kullanıcının gerekli boyutlandırmasına ince ayar yapılmasına izin verir.
 - Aylık maliyet tahmini: şirket içi VM 'Leri çalıştıran tüm Azure VMware çözümü (AVS) düğümlerine yönelik tahmini aylık maliyetler.
 
 ## <a name="view-an-assessment"></a>Değerlendirmeyi görüntüleme
@@ -128,8 +135,12 @@ Bir AVS değerlendirmesi şunları açıklar:
 Bir değerlendirmeyi görüntülemek için:
 
 1. **Sunucular**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde, **değerlendirmeler**' ın yanındaki sayıya tıklayın.
-2. **Değerlendirmeler** sayfasında açmak istediğiniz değerlendirmeye tıklayın. 
-3. Değerlendirme özetini gözden geçirin. Ayrıca değerlendirme özelliklerini düzenleyebilir veya değerlendirmeyi yeniden hesaplayabilirsiniz.
+
+1. **Değerlendirmeler** sayfasında açmak istediğiniz değerlendirmeye tıklayın. Örnek olarak (yalnızca Örneğin, tahminler ve maliyetler): 
+
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/avs-assessment-summary.png" alt-text="AVS değerlendirmesi Özeti":::
+
+1. Değerlendirme özetini gözden geçirin. Ayrıca değerlendirme özelliklerini düzenleyebilir veya değerlendirmeyi yeniden hesaplayabilirsiniz.
  
 
 ### <a name="review-readiness"></a>İnceleme hazırlığı

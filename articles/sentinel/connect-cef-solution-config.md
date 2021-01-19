@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 36c832e198d7b6e9a6c3f6ddc19ad87c87917f38
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.openlocfilehash: 80e5cc18888b0e014fc1f617ca27dee05146472e
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541283"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567680"
 ---
 # <a name="step-2-configure-your-security-solution-to-send-cef-messages"></a>2. Adım: Güvenlik çözümünüzü CEF iletileri gönderecek şekilde yapılandırma
 
@@ -41,8 +41,9 @@ Güvenlik çözümünüz zaten mevcut bir bağlayıcınız varsa, bağlayıcıya
 - [Illusive Networks AMS](connect-illusive-attack-management-system.md)
 - [One Identity Safeguard](connect-one-identity.md)
 - [Palo Alto Networks](connect-paloalto.md)
+- [Thimtik gizli sunucu](connect-thycotic-secret-server.md)
 - [Trend Micro Deep Security](connect-trend-micro.md)
-- [Eğilim mikro TippingPoint](connect-trend-micro-tippingpoint.md)
+- [Trend Micro TippingPoint](connect-trend-micro-tippingpoint.md)
 - [Kablox ağ Forensics platformu](connect-wirex-systems.md)
 - [Zscaler](connect-zscaler.md)
 ## <a name="configure-any-other-solution"></a>Diğer herhangi bir çözümü yapılandırma
@@ -64,7 +65,7 @@ Belirli güvenlik çözümünüz için bir bağlayıcı yoksa, günlükleri CEF 
 > [!NOTE]
 > **TimeGenerated alanının kaynağını değiştirme**
 >
-> - Varsayılan olarak, Log Analytics Aracısı şemadaki *TimeGenerated* alanını, aracının Syslog arka plan programından olayı aldığı zamana göre doldurur. Sonuç olarak, olayın kaynak sistemde oluşturulduğu zaman Azure Sentinel 'de kaydedilmez.
+> - Varsayılan olarak, Log Analytics Aracısı şemadaki *TimeGenerated* alanını, aracının Syslog arka plan programından olayı aldığı zamana göre doldurur. Sonuç olarak kaynak sistemde olayın oluşturulma zamanı Azure Sentinel'de kaydedilmez.
 >
 > - Ancak, komut dosyasını indirecek ve çalıştıracak aşağıdaki komutu çalıştırabilirsiniz `TimeGenerated.py` . Bu betik, Log Analytics aracısını aracı tarafından alındığı zaman yerine, *TimeGenerated* alanını olayın kaynak sistemindeki özgün zamanına göre doldurmak üzere yapılandırır.
 >

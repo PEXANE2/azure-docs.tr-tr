@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/04/2020
-ms.openlocfilehash: a2e5cd43add6db080441812e4350d6f003ef81a2
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: b8f3a8e06bb27051417205c4dc3141948960bb00
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538501"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567798"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak MySQL için Azure veritabanı sunucusu oluşturma
 
@@ -45,7 +45,7 @@ Bir Azure aboneliği gereklidir. Azure aboneliğiniz yoksa başlamadan önce [ü
    Sunucu adı | **mydemoserver** | Benzersiz bir ad girin. Sunucu adı yalnızca küçük harf, sayı ve kısa çizgi (-) karakterini içerebilir. 3 ile 63 arasında karakter içermelidir.
    Veri kaynağı |**Hiçbiri** | Sıfırdan yeni bir sunucu oluşturmak için **Yok**'u seçin. Yalnızca var olan bir sunucunun coğrafi yedeklemesinden geri yükleme yapıyorsanız **yedekleme** ' yi seçin.
    Konum |İstediğiniz konum | Listeden bir konum seçin.
-   Sürüm | En son ana sürüm| En son ana sürümü kullanın. [Desteklenen tüm sürümleri](../mysql/concepts-supported-versions.md)görün.
+   Sürüm | En son ana sürüm| En son ana sürümü kullanın. [Desteklenen tüm sürümleri](concepts-supported-versions.md)görün.
    İşlem + depolama | Varsayılanları Kullan| Varsayılan fiyatlandırma katmanı, **4 sanal çekirdek** ve **100 GB** depolama alanı ile **genel amaçlı** . Yedekleme saklama, **coğrafi olarak yedekli** yedekleme seçeneğiyle **7 güne** ayarlanır.<br/>[Fiyatlandırma](https://azure.microsoft.com/pricing/details/mysql/) sayfasını gözden geçirin ve gerekirse Varsayılanları güncelleştirin.
    Yönetici kullanıcı adı | **mydemoadmin** | Sunucu Yöneticisi Kullanıcı adınızı girin. Yönetici Kullanıcı adı için **azure_superuser**, **yönetici**, **yönetici**, **kök**, **Konuk** veya **ortak** kullanamazsınız.
    Parola | Parola | Sunucu Yöneticisi kullanıcısı için yeni bir parola. Parola 8 ile 128 karakter uzunluğunda olmalı ve büyük veya küçük harfler, sayılar ve alfasayısal olmayan karakterler (!, $, #,%, vb.) birleşimini içermelidir.

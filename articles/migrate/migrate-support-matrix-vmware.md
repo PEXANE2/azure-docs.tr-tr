@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: e6582443ddc56b315c1c666c81a596fa71b1d54f
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 02757477ca4a07f4526df0339291122eda57c9b5
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753986"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567429"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware değerlendirmesi için destek matrisi 
 
@@ -23,10 +23,10 @@ VMware VM 'lerini Azure 'a geçirmek istiyorsanız, [geçiş desteği matrisini]
 
 ## <a name="limitations"></a>Sınırlamalar
 
-**Destek** | **Ayrıntılar**
+**Gereksinim** | **Ayrıntılar**
 --- | ---
 **Proje limitleri** | Bir Azure aboneliğinde birden çok proje oluşturabilirsiniz.<br/><br/> Tek bir [projede](migrate-support-matrix.md#azure-migrate-projects)en fazla 35.000 VMware VM 'yi bulabilir ve değerlendirebilirsiniz. Bir proje, fiziksel sunucular ve Hyper-V VM 'lerini her biri için değerlendirme sınırlarına kadar de içerebilir.
-**Bulma** | Azure geçişi gereci vCenter Server en fazla 10.000 VMware VM 'yi bulabilir.
+**Keşfini** | Azure geçişi gereci vCenter Server en fazla 10.000 VMware VM 'yi bulabilir.
 **Değerlendirme** | Tek bir gruba en fazla 35.000 makine ekleyebilirsiniz.<br/><br/> Tek bir değerlendirmede 35.000 adede kadar VM 'yi değerlendirebilirsiniz.
 
 Değerlendirmeler hakkında [daha fazla bilgi edinin](concepts-assessment-calculation.md) .
@@ -72,8 +72,8 @@ Sunucu değerlendirmesi, makineleri keşfetmenin yanı sıra makinelerde çalı�
 **Desteklenen makineler** | Şu anda yalnızca VMware VM 'Leri için destekleniyor. Her bir Azure geçişi gerecinden en fazla 10000 VMware VM 'ye yüklenmiş uygulamaları bulabilirsiniz.
 **İşletim sistemleri** | Tüm Windows ve Linux sürümlerini çalıştıran VM 'Ler için destek.
 **VM gereksinimleri** | VMware araçlarının, uygulamaları keşfetmesini istediğiniz VM 'lerde yüklü ve çalışıyor olması gerekir. <br/><br/> VMware araçları sürümü 10.2.0 'dan daha sonra olmalıdır.<br/><br/> VM 'Lerin PowerShell sürüm 2,0 veya sonraki bir sürümü yüklü olmalıdır.
-**Bulma** | Bir VM 'de yüklü uygulamalar hakkında bilgiler, VM 'de yüklü olan VMware araçları kullanılarak vCenter Server toplayın. Gereç, vSphere API 'Lerini kullanarak vCenter Server uygulama bilgilerini toplar. Uygulama bulma aracısız. Sanal makinelere hiçbir şey yüklenmez ve gereç doğrudan VM 'lere bağlanamaz. WMI/SSH, sanal makinelerde etkinleştirilmelidir ve kullanılabilir olmalıdır.
-**vCenter** | Değerlendirme için kullanılan vCenter Server salt oku hesabı, **Virtual Machines**  >  uygulama bulma için VM ile etkileşime geçmek üzere sanal makineler **Konuk işlemleri** için etkinleştirilmiş ayrıcalıklara ihtiyaç duyuyor.
+**Keşfini** | Bir VM 'de yüklü uygulamalar hakkında bilgiler, VM 'de yüklü olan VMware araçları kullanılarak vCenter Server toplayın. Gereç, vSphere API 'Lerini kullanarak vCenter Server uygulama bilgilerini toplar. Uygulama bulma aracısız. Sanal makinelere hiçbir şey yüklenmez ve gereç doğrudan VM 'lere bağlanamaz. WMI/SSH, sanal makinelerde etkinleştirilmelidir ve kullanılabilir olmalıdır.
+**vCenter** | Değerlendirme için kullanılan vCenter Server salt oku hesabı,   >  uygulama bulma için VM ile etkileşime geçmek üzere sanal makineler **Konuk işlemleri** için etkinleştirilmiş ayrıcalıklara ihtiyaç duyuyor.
 **VM erişimi** | Uygulama bulma 'nın uygulama bulma için VM 'de yerel bir kullanıcı hesabı olması gerekir.<br/><br/> Azure geçişi Şu anda tüm Windows sunucuları için bir kimlik bilgisi ve tüm Linux sunucuları için bir kimlik bilgisi kullanımını desteklemektedir.<br/><br/> Windows VM 'ler için bir Konuk Kullanıcı hesabı ve tüm Linux sanal makineleri için normal/normal kullanıcı hesabı (sudo erişimi olmayan) oluşturursunuz.
 **Bağlantı noktası erişimi** | Azure geçişi gereci, uygulamaları bulmayı istediğiniz VM 'Leri çalıştıran ESXi konaklarında TCP bağlantı noktası 443 ' e bağlanabilmelidir. VCenter Server, uygulama bilgilerini içeren dosyayı indirmek için bir ESXI ana bilgisayar bağlantısı döndürür.
 
@@ -81,9 +81,9 @@ Sunucu değerlendirmesi, makineleri keşfetmenin yanı sıra makinelerde çalı�
 
 ## <a name="dependency-analysis-requirements-agentless"></a>Bağımlılık Analizi gereksinimleri (aracısız)
 
-[Bağımlılık Analizi](concepts-dependency-visualization.md) , değerlendirmek ve Azure 'a geçirmek istediğiniz şirket içi makineler arasındaki bağımlılıkları belirlemenize yardımcı olur. Tablo aracısız bağımlılık analizini ayarlamaya yönelik gereksinimleri özetler.
+[Bağımlılık Analizi](concepts-dependency-visualization.md) , değerlendirmek ve Azure 'a geçirmek istediğiniz şirket içi makineler arasındaki bağımlılıkları belirlemenize yardımcı olur. Tablo aracısız bağımlılık analizini ayarlamaya yönelik gereksinimleri özetler. 
 
-**Gereksinim** | **Ayrıntılar**
+**Destek** | **Ayrıntılar**
 --- | --- 
 **Desteklenen makineler** | Şu anda yalnızca VMware VM 'Leri için destekleniyor.
 **Windows VM'leri** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64 bit).<br/>Microsoft Windows Server 2008 (32-bit). 

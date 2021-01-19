@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 109f61d9ff76d084b292dbe3cc8ce663b50141ae
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.openlocfilehash: eb10001436d3184b89aa064ec82fcd1f56bea931
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541334"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98566922"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>Öğretici: Sunucu değerlendirmesi ile Hyper-V VM 'lerini bulma
 
@@ -79,10 +79,41 @@ Azure geçişi projesi oluşturmak ve Azure geçişi gerecini kaydettirmek için
 
 ## <a name="prepare-hyper-v-hosts"></a>Hyper-V konakları hazırlama
 
-Hyper-V konaklarında yönetici erişimi olan bir hesap ayarlayın. Gereç bu hesabı bulma için kullanır.
+Hyper-V konaklarının el ile veya bir komut dosyası kullanarak hazırlanabilirsiniz. Hazırlama adımları tabloda özetlenmiştir. Komut dosyası bu otomatik olarak hazırlar.
 
-- Seçenek 1: Hyper-V konak makinesine yönetici erişimi olan bir hesap hazırlayın.
-- Seçenek 2: yönetici izinleri atamak istemiyorsanız, bir yerel veya etki alanı kullanıcı hesabı oluşturun ve bu gruplara kullanıcı hesabını ekleyin-uzak yönetim kullanıcıları, Hyper-V yöneticileri ve performans Izleyicisi kullanıcıları.
+**Adım** | **Komut Dosyası** | **El ile**
+--- | --- | ---
+Konak gereksinimlerini doğrulama | Konağın desteklenen bir Hyper-V sürümü ve Hyper-V rolü çalıştığını denetler.<br/><br/>WinRM hizmetini etkinleştirilir ve konakta 5985 (HTTP) ve 5986 (HTTPS) bağlantı noktalarını (meta veri koleksiyonu için gereklidir) açar. | Konağın Windows Server 2019, Windows Server 2016 veya Windows Server 2012 R2 çalıştırması gerekir.<br/><br/> BT 'nin Genel Bilgi Modeli (CıM) oturumu kullanarak çekme VM meta verileri ve performans verilerine bağlanabilmesi için WinRM bağlantı noktası 5985 ' de (HTTP) gelen bağlantılara izin verildiğini doğrulayın.
+PowerShell sürümünü doğrula | Betiği desteklenen bir PowerShell sürümünde çalıştırıp çalıştırdığınızı denetler. | Hyper-V konağında PowerShell sürüm 4,0 veya üstünü kullandığınızı denetleyin.
+Hesap oluşturma | Hyper-V konağı üzerinde doğru izinlere sahip olduğunuzu doğrular.<br/><br/> Doğru izinlerle yerel bir kullanıcı hesabı oluşturmanıza olanak sağlar. | Seçenek 1: Hyper-V konak makinesine yönetici erişimi olan bir hesap hazırlayın.<br/><br/> 2. seçenek: bir yerel yönetici hesabı veya etki alanı yönetici hesabı hazırlayın ve hesabı şu gruplara ekleyin: uzak yönetim kullanıcıları, Hyper-V yöneticileri ve performans Izleyicisi kullanıcıları.
+PowerShell uzaktan iletişimini etkinleştir | Azure geçişi gerecinin bir WinRM bağlantısı üzerinden konakta PowerShell komutları çalıştırabilmeleri için konakta PowerShell uzaktan iletişimini mümkün bir şekilde sunar. | Ayarlamak için, her bir konakta, yönetici olarak bir PowerShell konsolu açın ve şu komutu çalıştırın: ``` powershell Enable-PSRemoting -force ```
+Hyper-V tümleştirme hizmetlerini ayarlama | Hyper-V tümleştirme hizmetlerinin konak tarafından yönetilen tüm VM 'lerde etkin olduğunu denetler. | Her VM 'de [Hyper-V tümleştirme hizmetlerini etkinleştirin](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services.md) .<br/><br/> Windows Server 2003 çalıştırıyorsanız, [Bu yönergeleri izleyin](prepare-windows-server-2003-migration.md).
+VM diskleri uzak SMB paylaşımlarında bulunuyorsa kimlik bilgilerini devretmek | Temsilci kimlik bilgileri | CredSSP 'yi SMB paylaşımlarında diskler içeren Hyper-V VM 'Leri çalıştıran konaklarda kimlik bilgileri temsilcisine devretmek için bu komutu çalıştırın: ```powershell Enable-WSManCredSSP -Role Server -Force ```<br/><br/> Bu komutu, tüm Hyper-V konaklarında uzaktan çalıştırabilirsiniz.<br/><br/> Kümeye yeni konak düğümleri eklerseniz, bulma için otomatik olarak eklenir, ancak CredSSP 'yi el ile etkinleştirmeniz gerekir.<br/><br/> Gereci ayarlarken, [Bu uygulamayı gereç üzerinde etkinleştirerek](#delegate-credentials-for-smb-vhds)CredSSP ayarlamayı tamamlayacağız. 
+
+### <a name="run-the-script"></a>Betiği çalıştırın
+
+1. Betiği [Microsoft Indirme merkezi](https://aka.ms/migrate/script/hyperv)' nden indirin. Betik, Microsoft tarafından şifreli olarak imzalanır.
+2. MD5 veya SHA256 karma dosyalarını kullanarak betik bütünlüğünü doğrulayın. Diyez etiketi değerleri aşağıda verilmiştir. Komut dosyasının karmasını oluşturmak için şu komutu çalıştırın:
+
+    ```powershell
+    C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]
+    ```
+    Örnek kullanım: 
+
+    ```powershell
+    C:\>CertUtil -HashFile C:\Users\Administrators\Desktop\ MicrosoftAzureMigrate-Hyper-V.ps1 SHA256
+    ```
+3. Betik bütünlüğünü doğruladıktan sonra, bu PowerShell komutuyla her Hyper-V konağında betiği çalıştırın:
+
+    ```powershell
+    PS C:\Users\Administrators\Desktop> MicrosoftAzureMigrate-Hyper-V.ps1
+    ```
+Karma değerleri şunlardır:
+
+**Karma** |  **Değer**
+--- | ---
+MD5 | 0ef418f31915d01f896ac42a80dc414e
+SHA256 | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2
 
 ## <a name="set-up-a-project"></a>Proje ayarlama
 

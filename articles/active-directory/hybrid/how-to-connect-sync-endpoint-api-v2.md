@@ -12,12 +12,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07acd71eb1a77592c82b80aa574d79b98c48f60e
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 0067ed618f95e7f83fc041fe214bbc4d715a504f
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608308"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567622"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api"></a>Azure AD Connect eşitleme v2 uç nokta API’si 
 Microsoft, Azure Active Directory için eşitleme hizmeti işlemlerinin performansını geliştiren Azure AD Connect için yeni bir uç nokta (API) dağıttı. Yeni v2 uç noktasından yararlanarak, Azure AD 'ye dışarı ve içeri aktarma sırasında dikkat çekici performans kazanımları yaşarsınız. Bu yeni uç nokta şunları destekler:
@@ -28,7 +28,7 @@ Microsoft, Azure Active Directory için eşitleme hizmeti işlemlerinin performa
 > [!NOTE]
 > Şu anda, yeni uç noktanın geri yazılan Microsoft 365 grupları için yapılandırılmış bir Grup boyutu sınırı yok. Bu, Active Directory ve eşitleme döngüleriyle gecikme süreleriyle ilgili bir etkiye sahip olabilir. Grup boyutlarınızı artımlı olarak artırmanız önerilir.  
 
-## <a name="pre-requisites"></a>Ön koşullar  
+## <a name="prerequisites"></a>Ön koşullar  
 Yeni v2 uç noktasını kullanabilmek için, [Azure AD Connect sürüm 1.5.30.0](https://www.microsoft.com/download/details.aspx?id=47594) veya üstünü kullanmanız ve aşağıdaki dağıtım adımlarını izleyerek Azure AD Connect sunucunuz için v2 uç noktasını etkinleştirmeniz gerekir.   
 
 ## <a name="deployment-guidance"></a>Dağıtım Kılavuzu 
@@ -106,7 +106,7 @@ Maksimum sınır, Grup başına 250K üyeleridir.
 1. Azure AD eşitleme kuralları düzenleyicisini açın 
 2. Düzenleyicide, yön için **giden** ' ı seçin 
 3. **AAD 'ye tıklayın – gruba JOIN** eşitleme kuralı 
-4. **Edit** ![ "AAD-Group JOIN" ile "eşitleme kurallarınızı görüntüleme" seçeneğini gösteren Düzenle düğmesi ekran görüntüsüne tıklayın.](media/how-to-connect-sync-endpoint-api-v2/endpoint2.png)
+4.  ![ "AAD-Group JOIN" ile "eşitleme kurallarınızı görüntüleme" seçeneğini gösteren Düzenle düğmesi ekran görüntüsüne tıklayın.](media/how-to-connect-sync-endpoint-api-v2/endpoint2.png)
 
 6. Varsayılan kuralı devre dışı bırakmak ve düzenlenebilir bir kopya oluşturmak için **Evet** düğmesine tıklayın.
  !["Evet" düğmesinin seçili olduğu "ayrılmış kural onayını Düzenle" penceresini gösteren ekran görüntüsü.](media/how-to-connect-sync-endpoint-api-v2/endpoint3.png)
@@ -176,7 +176,7 @@ V2 uç noktasını etkinleştirdiyseniz ve geri almanız gerekiyorsa, şu adıml
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular  
  
 **Yeni bitiş noktası, yükseltmeler ve yeni yüklemeler için varsayılan olarak ne zaman olur?**  
-</br>Ocak 2021 ' de karşıdan yüklenmek üzere yayımlanacak AADConnect 'in yeni bir sürümünü planlıyoruz. Bu sürüm varsayılan olarak v2 uç noktasını kullanır ve herhangi bir ek yapılandırma için 50K 'den büyük olan eşitleme gruplarını etkinleştirir. Bu sürüm daha sonra uygun sunuculara otomatik olarak yükseltme için yayımlanacak.
+</br>Ocak 2021 ' de karşıdan yüklenmek üzere yayımlanacak AADConnect 'in yeni bir sürümünü planlıyoruz. Bu sürüm, varsayılan olarak v2 uç noktasını kullanır ve ek yapılandırma olmadan 50K 'den büyük olan eşitleme gruplarını etkinleştirir. Bu sürüm daha sonra uygun sunuculara otomatik olarak yükseltme için yayımlanacak.
  
 ## <a name="next-steps"></a>Sonraki adımlar
 

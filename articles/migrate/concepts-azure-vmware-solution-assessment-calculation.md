@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 67d4137a21753b221e17a1effde35bc1b89600d3
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: f52c0296023098c755feb1bf0baba980f2988bd7
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753816"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567720"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vmware-solution"></a>Sunucu değerlendirmesi genel bakış (Azure VMware çözümüne geçiş)
 
@@ -207,6 +207,8 @@ Etkin kullanım değeri saptandıktan sonra, depolama, ağ ve bilgi işlem boyut
 
 *Şirket içi boyutlandırma olarak* kullanıyorsanız, sunucu değerlendirmesi VM 'lerin ve disklerin performans geçmişini dikkate almaz. Bunun yerine, şirket içinde ayrılan boyuta göre AVS düğümlerini ayırır. Varsayılan depolama türü, AVS 'deki vSAN ' dır.
 
+Azure VMware Çözüm değerlendirmesini İnceleme hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware-azure-vmware-solution#review-an-assessment) .
+
 ## <a name="confidence-ratings"></a>Güven derecelendirmeleri
 
 Azure geçişi 'ndeki her performans tabanlı değerlendirme, bir (en düşük) ile beş yıldızlı (en yüksek) arasında değişen bir güvenirlik derecelendirmesi ile ilişkilendirilir.
@@ -235,9 +237,15 @@ Kullanılabilir veri noktalarının yüzdesine bağlı olarak, değerlendirmenin
 
 Bir değerlendirmenin en düşük güvenilirlik derecelendirmesinin neden olmasının birkaç nedeni aşağıda verilmiştir:
 
-- Değerlendirmeyi oluşturduğunuz süre için ortamınızı profildiniz. Örneğin, performans süresi ile bir gün ayarlanmış bir değerlendirme oluşturursanız, toplanan tüm veri noktaları için bulmayı başlattıktan sonra en az bir gün beklemeniz gerekir.
-- Bazı sanal makineler, değerlendirmenin hesaplanmakta olduğu süre boyunca kapatıldı. Bir süre için herhangi bir VM kapatılmışsa, sunucu değerlendirmesi söz konusu döneme ait performans verilerini toplayamazlar.
-- Değerlendirmenin hesaplandığı süre boyunca bazı sanal makineler oluşturulmuştur. Örneğin, geçen ayın performans geçmişi için bir değerlendirme oluşturduysanız ancak bazı sanal makineler ortamda yalnızca bir hafta önce oluşturulduysa, yeni VM 'lerin performans geçmişi, tamamlanma süresi boyunca mevcut olmayacaktır.
+- Değerlendirmeyi oluşturmakta olduğunuz süre için ortamınızı profildiniz. Örneğin, performans süresi ile bir gün ayarlanmış bir değerlendirme oluşturursanız, toplanan tüm veri noktaları için bulmayı başlattıktan sonra en az bir gün beklemeniz gerekir.
+- Değerlendirme, değerlendirme süresinde sanal makinelerin bazıları veya tümü için performans verilerini toplayamayabilir. Yüksek güvenilirlikli bir derecelendirme için lütfen şunları doğrulayın: 
+    - Değerlendirme süresi boyunca VM 'Ler açık
+    - 443 bağlantı noktalarında giden bağlantılara izin verilir
+    - Hyper-V VM 'Leri için dinamik bellek etkin 
+    
+    Güvenilirlik derecelendirmesindeki en son değişiklikleri yansıtacak şekilde değerlendirmeyi 'Yeniden Hesaplayın'.
+
+- Değerlendirmenin hesaplanışında bazı sanal makineler oluşturulmuştur. Örneğin, geçen ayın performans geçmişi için bir değerlendirme oluşturdunuz, ancak bazı VM 'Ler yalnızca bir hafta önce oluşturulmuştur. Bu durumda, sürenin tamamında yeni VM'lerin performans verileri sağlanmaz ve güvenilirlik derecesi düşük olabilir.
 
 > [!NOTE]
 > Herhangi bir değerlendirmenin güvenilirlik derecelendirmesi beş yıldızlı günden azsa, gerecin ortamın profilini oluşturup daha sonra değerlendirmeyi yeniden hesaplayabilmeniz için en az bir gün beklemeniz önerilir. Aksi takdirde, performans tabanlı boyutlandırma güvenilir olmayabilir. Bu durumda, değerlendirmeyi şirket içi boyutlandırılmasına geçmeniz önerilir.

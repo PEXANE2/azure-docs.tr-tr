@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: cf7c5fa8563544add55a7fad5075848eb5116fe1
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: c30c01a18a17981b4e034c9df2cf822e6580430e
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96901941"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567725"
 ---
 # <a name="networking-overview---azure-database-for-postgresql---flexible-server"></a>Ağa genel bakış-PostgreSQL için Azure veritabanı-esnek sunucu
 
@@ -74,7 +74,7 @@ PostgreSQL esnek sunucularıyla sanal ağları kullanırken bilmeniz için bazı
 [Azure Portal](how-to-manage-virtual-network-portal.md) veya [Azure CLI](how-to-manage-virtual-network-cli.md)'de özel erişim (VNET tümleştirmesi) ile esnek bir sunucu oluşturmayı öğrenin.
 
 > [!NOTE]
-> Özel DNS sunucusunu kullanıyorsanız, MySQL için Azure veritabanı 'nın FQDN 'sini çözümlemek üzere bir DNS ileticisi kullanmanız gerekir. Daha fazla bilgi edinmek için [kendı DNS sunucunuzu kullanan ad çözümlemesine](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) bakın.
+> Özel DNS sunucusunu kullanıyorsanız, PostgreSQL için Azure veritabanı 'nın FQDN 'sini çözümlemek üzere bir DNS ileticisi kullanmanız gerekir-esnek sunucu. Daha fazla bilgi edinmek için [kendı DNS sunucunuzu kullanan ad çözümlemesine](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) bakın.
 
 ## <a name="public-access-allowed-ip-addresses"></a>Genel erişim (izin verilen IP adresleri)
 Ortak erişim yönteminin özellikleri şunlardır:

@@ -1,21 +1,21 @@
 ---
 title: Azure Geçişi projelerini oluşturma ve yönetme
 description: Azure geçişi 'nde projeleri bulun, oluşturun, yönetin ve silin.
-author: ms-psharma
-ms.author: panshar
+author: vineetvikram
+ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 445e08b255e5b4dd67dd1c6a47c8df6ce59df5bd
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: de0c48bb775b96052fe16d60aa58049bfd58ca4d
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753833"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567779"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Azure Geçişi projelerini oluşturma ve yönetme
 
-Bu makalede, [Azure geçişi](migrate-services-overview.md) projelerini oluşturma, yönetme ve silme işlemlerinin nasıl yapılacağı açıklanır.
+Bu makalede, [Azure geçişi](migrate-services-overview.md) projelerini oluşturma, yönetme ve silme işlemlerinin nasıl yapılacağı açıklanır. Klasik Azure geçişi projelerini kullanıyorsanız, lütfen bu projeleri silin ve yeni bir Azure geçişi projesi oluşturma adımlarını izleyin. Klasik Azure geçişi projelerini veya bileşenlerini Azure geçişi 'ne yükseltemezsiniz.
 
 Değerlendirme veya geçiş yaptığınız ortamdan toplanan bulma, değerlendirme ve geçiş meta verilerini depolamak için bir Azure geçişi projesi kullanılır. Bir projede keşfedilen varlıkları izleyebilir, değerlendirmeler oluşturabilir ve geçişleri Azure 'da düzenleyebilirsiniz.  
 

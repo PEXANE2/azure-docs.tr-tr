@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: f8a4f29114f7e0a2ed7868f01e05e25c8a0d0ce1
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 9bdf907ede2c09f7e314df619cd81059956f17dc
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752235"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567744"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vms"></a>Sunucu değerlendirmesi genel bakış (Azure VM 'lerine geçiş)
 
@@ -268,8 +268,14 @@ Bu tabloda, kullanılabilir veri noktalarının yüzdesine bağlı olan değerle
 Bir değerlendirmenin en düşük güvenilirlik derecelendirmesinin neden olmasının birkaç nedeni aşağıda verilmiştir:
 
 - Değerlendirmeyi oluşturmakta olduğunuz süre için ortamınızı profildiniz. Örneğin, performans süresi ile bir gün ayarlanmış bir değerlendirme oluşturursanız, toplanan tüm veri noktaları için bulmayı başlattıktan sonra en az bir gün beklemeniz gerekir.
-- Bazı sanal makineler, değerlendirmenin hesaplanmakta olduğu süre boyunca kapatıldı. Bir süre için herhangi bir VM kapatılmışsa, sunucu değerlendirmesi söz konusu döneme ait performans verilerini toplayamazlar.
-- Değerlendirmenin hesaplanışında bazı sanal makineler oluşturulmuştur. Örneğin, geçen ayın performans geçmişi için bir değerlendirme oluşturdunuz, ancak bazı VM 'Ler yalnızca bir hafta önce oluşturulmuştur. Yeni VM 'lerin performans geçmişi, tamamlanma süresi boyunca mevcut olmayacaktır.
+- Değerlendirme, değerlendirme süresinde sanal makinelerin bazıları veya tümü için performans verilerini toplayamayabilir. Yüksek güvenilirlikli bir derecelendirme için lütfen şunları doğrulayın: 
+    - Değerlendirme süresi boyunca VM 'Ler açık
+    - 443 bağlantı noktalarında giden bağlantılara izin verilir
+    - Hyper-V VM 'Leri için dinamik bellek etkin 
+    
+    Güvenilirlik derecelendirmesindeki en son değişiklikleri yansıtacak şekilde değerlendirmeyi 'Yeniden Hesaplayın'.
+
+- Değerlendirmenin hesaplanışında bazı sanal makineler oluşturulmuştur. Örneğin, geçen ayın performans geçmişi için bir değerlendirme oluşturdunuz, ancak bazı VM 'Ler yalnızca bir hafta önce oluşturulmuştur. Bu durumda, sürenin tamamında yeni VM'lerin performans verileri sağlanmaz ve güvenilirlik derecesi düşük olabilir.
 
 > [!NOTE]
 > Herhangi bir değerlendirmenin güvenilirlik derecelendirmesi beş yıldızlı günden azsa, gerecin ortamın profilini oluşturup daha sonra değerlendirmeyi yeniden hesaplaması için en az bir gün beklemeniz önerilir. Aksi takdirde, performans tabanlı boyutlandırma güvenilir olmayabilir. Bu durumda, değerlendirmeyi şirket içi boyutlandırılmasına geçmeniz önerilir.

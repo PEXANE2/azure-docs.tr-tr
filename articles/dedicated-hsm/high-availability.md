@@ -10,22 +10,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/27/2019
+ms.date: 01/15/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 8f8fa2f12825fe88218fe7033a1721cb49fc7335
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85aa9d355b2440535ea13c8c15e95500bac22352
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88189861"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567263"
 ---
 # <a name="azure-dedicated-hsm-high-availability"></a>Azure adanmış HSM yüksek kullanılabilirlik
 
-Azure adanmış HSM, Microsoft 'un yüksek oranda kullanılabilir veri merkezleri tarafından sabitlenmiştir. Ancak, yüksek oranda kullanılabilir veri merkezi, yerelleştirilmiş arızalara ve çok büyük koşullarda bölgesel düzey hatalara karşı savunmasız kalır. Microsoft, birden çok cihazın tek bir rafı paylaşan cihazlara neden olmamasını sağlamak için bir bölgedeki farklı veri merkezlerinde HSM cihazları dağıtır. Bu HSM 'ler, Gemalto HA Group özelliğini kullanarak bir bölgedeki veri merkezlerinde bu HSM 'leri eşleştirerek daha fazla yüksek kullanılabilirlik elde edilebilir. Ayrıca, bir olağanüstü durum kurtarma durumunda bölgesel yük devretmeyi ele almak için cihazları bölgeler arasında eşleştirmek mümkündür. Bu çok katmanlı yüksek kullanılabilirlik yapılandırmasıyla, uygulamaların çalışmasını sağlamak için herhangi bir cihaz hatası otomatik olarak karşılanır. Tüm veri merkezleri aynı zamanda site üzerinde yedek cihazlara ve bileşenlere sahiptir, bu nedenle başarısız olan tüm cihazlar zamanında değiştirilebilir.
+Azure adanmış HSM, Microsoft 'un yüksek oranda kullanılabilir veri merkezleri tarafından sabitlenmiştir. Ancak, yüksek oranda kullanılabilir veri merkezi, yerelleştirilmiş arızalara ve çok büyük koşullarda bölgesel düzey hatalara karşı savunmasız kalır. Microsoft, birden çok cihazın tek bir rafı paylaşan cihazlara neden olmamasını sağlamak için bir bölgedeki farklı veri merkezlerinde HSM cihazları dağıtır. Bu HSM 'ler, Thales HA Grup özelliği kullanılarak bir bölgedeki veri merkezleri arasında eşlenilerek daha fazla yüksek kullanılabilirlik elde edilebilir. Ayrıca, bir olağanüstü durum kurtarma durumunda bölgesel yük devretmeyi ele almak için cihazları bölgeler arasında eşleştirmek mümkündür. Bu çok katmanlı yüksek kullanılabilirlik yapılandırmasıyla, uygulamaların çalışmasını sağlamak için herhangi bir cihaz hatası otomatik olarak karşılanır. Tüm veri merkezleri aynı zamanda site üzerinde yedek cihazlara ve bileşenlere sahiptir, bu nedenle başarısız olan tüm cihazlar zamanında değiştirilebilir.
 
 ## <a name="high-availability-example"></a>Yüksek kullanılabilirlik örneği
 
-Yazılım düzeyinde yüksek kullanılabilirlik için HSM cihazlarının nasıl yapılandırılacağı hakkında bilgiler, ' Gemalto Luna Network HSM Yönetim Kılavuzu ' nda bulunur. Bu belge,  [Gemalto HSM sayfasında](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/)bulunur.
+Yazılım düzeyinde yüksek kullanılabilirlik için HSM cihazlarının nasıl yapılandırılacağı hakkında bilgi ' Thales Luna 7 HSM Yönetim Kılavuzu ' nda bulunur. Bu belge  [Thales HSM sayfasında](https://thalesdocs.com/gphsm/Content/luna/network/luna_network_releases.htm)bulunur.
 
 Aşağıdaki diyagramda, yüksek oranda kullanılabilir bir mimari gösterilmektedir. Bölgede birden çok cihazı ve ayrı bir bölgede eşleştirilmiş birden çok cihazı kullanır. Bu mimari en az dört HSM cihaz ve sanal ağ bileşeni kullanır.
 
@@ -42,4 +42,4 @@ Daha fazla kavram düzeyi konuları:
 * [Desteklenebilirlik](supportability.md)
 * [İzleme](monitoring.md)
 
-Yüksek kullanılabilirlik için HSM cihazlarını yapılandırma hakkında ayrıntılı bilgi için, lütfen yönetici kılavuzlarıyla ilgili olarak Gemalto müşteri destek portalına başvurun ve Bölüm 6 ' yı inceleyin.
+Yüksek kullanılabilirlik için HSM cihazlarını yapılandırma hakkında ayrıntılı bilgi için, lütfen yönetici kılavuzlarına yönelik Thales müşteri destek portalına başvurun ve Bölüm 6 ' yı inceleyin.
