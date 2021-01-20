@@ -129,90 +129,92 @@
               href: troubleshoot-error-403.md
 - name: Başvuru
   items:
-    - name: Digital Twins hizmet sınırları
-      href: reference-service-limits.md
-    - name: Digital Twins fiyatlandırması
-      href: 'https://azure.microsoft.com/pricing/details/digital-twins/'
-    - name: API’ler ve SDK’lar
+    - name: REST API başvurusu
+      href: /rest/api/azure-digitaltwins/
+    - name: SDK
       items:
-        - name: REST API başvurusu
-          href: /rest/api/azure-digitaltwins/
         - name: Kontrol düzlemi
           items:
-            - name: Swagger
+            - name: .NET (C#) SDK’sı
+              href: /dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet
+            - name: Java SDK
+              href: /azure/developer/java/sdk/
+        - name: Veri düzlemi
+          items:
+            - name: .NET (C#) SDK’sı
+              href: /dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet
+            - name: Java SDK
+              href: /java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-stable
+            - name: JavaScript SDK'sı
+              href: /javascript/api/@azure/digital-twins-core/?branch=master&view=azure-node-latest
+            - name: Python SDK'sı
+              href: /python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python
+    - name: Digital Twins CLI
+      href: /cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true
+- name: Kaynaklar
+  items:
+    - name: API’ler ve SDK’lar
+      items:
+        - name: Kontrol düzlemi
+          items:
+            - name: Kontrol düzlemi Swagger’ı
               href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/stable'
             - name: .NET (C#) SDK - NuGet
               href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/'
-            - name: .NET (C#) SDK - başvuru
-              href: /dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet
-            - name: .NET (C#) SDK - kaynak
+            - name: .NET (C#) SDK - Kaynak kodu
               href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins'
             - name: Java SDK - Maven
               href: 'https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar'
-            - name: Java SDK - başvuru
-              href: /azure/developer/java/sdk/
-            - name: Java SDK - kaynak
+            - name: Java SDK - Kaynak kodu
               href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31'
-            - name: JavaScript SDK'sı
+            - name: JavaScript SDK - NPM
               href: 'https://www.npmjs.com/package/@azure/arm-digitaltwins'
-            - name: JavaScript SDK’sı - kaynak
+            - name: JavaScript SDK - Kaynak kodu
               href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins'
             - name: Python SDK - PyPi
               href: 'https://pypi.org/project/azure-mgmt-digitaltwins/'
-            - name: Python SDK - kaynak
+            - name: Python SDK - Kaynak kodu
               href: 'https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins'
             - name: Go SDK - GoDoc
               href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins'
-            - name: Go - kaynak
+            - name: Go - Kaynak kodu
               href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins'
         - name: Veri düzlemi
           items:
-            - name: Swagger
+            - name: Veri düzlemi Swagger’ı
               href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins'
             - name: .NET (C#) SDK - NuGet
               href: 'https://www.nuget.org/packages/Azure.DigitalTwins.Core'
-            - name: .NET (C#) SDK - başvuru
-              href: /dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet
-            - name: .NET (C#) SDK - kaynak
+            - name: .NET (C#) SDK - Kaynak kodu
               href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core'
             - name: Java SDK - Maven
               href: 'https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0/jar'
-            - name: Java SDK - başvuru
-              href: /java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-stable
-            - name: Java SDK - kaynak
+            - name: Java SDK - Kaynak kodu
               href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core'
-            - name: JavaScript SDK - npm
+            - name: JavaScript SDK - NPM
               href: 'https://www.npmjs.com/package/@azure/digital-twins-core'
-            - name: JavaScript SDK - başvuru
-              href: /javascript/api/@azure/digital-twins-core/?branch=master&view=azure-node-latest
-            - name: JavaScript SDK’sı - kaynak
+            - name: JavaScript SDK - Kaynak kodu
               href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core'
             - name: Python SDK - PyPi
               href: 'https://pypi.org/project/azure-digitaltwins-core/'
-            - name: Python SDK - başvuru
-              href: /python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python
-            - name: Python SDK - kaynak
+            - name: Python SDK - Kaynak kodu
               href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core'
-    - name: Digital Twins CLI
-      items:
-        - name: Digital Twins CLI başvurusu
-          href: /cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true
-        - name: CLI paketi
-          href: 'https://github.com/Azure/azure-iot-cli-extension/releases'
+    - name: Digital Twins CLI paketi
+      href: 'https://github.com/Azure/azure-iot-cli-extension/releases'
     - name: Digital Twins Azure PowerShell modülü
       href: 'https://www.powershellgallery.com/packages/Az.DigitalTwins/'
-    - name: DTDL
+    - name: Terraform modülleri
       items:
-        - name: DTDL v2 belirtimi
-          href: 'https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md'
-        - name: VS Code için DTDL uzantısı
-          href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl'
-        - name: DTDL ayrıştırıcı kitaplığı - NuGet
-          href: 'https://www.nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/'
-        - name: DTDL doğrulayıcı (örnek)
-          href: /samples/azure-samples/dtdl-validator/dtdl-validator/
-        - name: DTMI belirtimi
-          href: 'https://github.com/Azure/digital-twin-model-identifier'
+        - name: Digital Twins örnek kaynağı
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_instance'
+        - name: Digital Twins örneği veri kaynağı
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/digital_twins_instance'
+        - name: Olay Hub'ı uç nokta kaynağı
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_endpoint_eventhub'
+        - name: Event Grid uç nokta kaynağı
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_endpoint_eventgrid'
+        - name: Service Bus uç nokta kaynağı
+          href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_endpoint_servicebus'
     - name: Araçlar ve örnek projeler
       items:
         - name: Cihaz simülatörü hizmeti
@@ -229,6 +231,34 @@
           href: /samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/
         - name: Logic Apps bağlayıcısı için özel Swagger’lar
           href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
+    - name: DTDL
+      items:
+        - name: DTDL v2 belirtimi
+          href: 'https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md'
+        - name: VS Code için DTDL uzantısı
+          href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl'
+        - name: DTDL ayrıştırıcı kitaplığı - NuGet
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/'
+        - name: DTDL doğrulayıcı (örnek)
+          href: /samples/azure-samples/dtdl-validator/dtdl-validator/
+        - name: DTMI belirtimi
+          href: 'https://github.com/Azure/digital-twin-model-identifier'
+        - name: Müşteri verisi istekleri
+      href: resources-customer-data-requests.md
+    - name: Fiyatlandırma ve kullanılabilirlik
+      items:
+        - name: Fiyatlandırma
+          href: 'https://azure.microsoft.com/pricing/details/digital-twins'
+        - name: SLA
+          href: 'https://azure.microsoft.com/support/legal/sla/digital-twins'
+        - name: Bölgeler ve kullanılabilirlik
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'
+        - name: Digital Twins hizmet sınırları
+          href: reference-service-limits.md
+    - name: Müşteri hikayeleri
+      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Digital%20Twins%22&ff=&p=0&so=story_publish_date%20desc'
+    - name: Channel 9 videoları
+      href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
     - name: Azure araçları
       items:
         - name: Azure Cloud Shell
@@ -239,21 +269,5 @@
           href: 'https://portal.azure.com'
     - name: Azure RBAC belgeleri
       href: ../role-based-access-control/overview.md
-- name: Kaynaklar
-  items:
     - name: Destek ve yardım seçenekleri
       href: ../iot-fundamentals/iot-support-help.md
-    - name: Müşteri hikayeleri
-      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Digital%20Twins%22&ff=&p=0&so=story_publish_date%20desc'
-    - name: Channel 9 videoları
-      href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
-    - name: Müşteri verisi istekleri
-      href: resources-customer-data-requests.md
-    - name: Fiyatlandırma ve kullanılabilirlik
-      items:
-        - name: Fiyatlandırma
-          href: 'https://azure.microsoft.com/pricing/details/digital-twins'
-        - name: SLA
-          href: 'https://azure.microsoft.com/support/legal/sla/digital-twins'
-        - name: Bölgeler ve kullanılabilirlik
-          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'

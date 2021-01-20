@@ -308,10 +308,10 @@
       items:
         - name: Katman seçme
           href: search-sku-tier.md
-        - name: Kapasiteyi ve maliyeti tahmin etme
-          href: search-sku-manage-costs.md
-        - name: Kapasiteyi ayarlama
+        - name: Kapasiteyi tahmin etme ve yönetme
           href: search-capacity-planning.md
+        - name: Maliyetleri tahmin etme
+          href: search-sku-manage-costs.md
         - name: Hizmet sınırlamaları
           href: search-limits-quotas-capacity.md
         - name: Performansı ölçeklendirme

@@ -140,10 +140,14 @@
           href: phone-authentication-user-flows.md
     - name: Kimlik sağlayıcıları
       items:
+        - name: Yerel hesap kimlik sağlayıcısı
+          href: identity-provider-local.md
+          displayName: 'Username, Email, Phone authorization, Phone sing-in'
         - name: Kimlik sağlayıcısı ekleme
           href: add-identity-provider.md
         - name: AD FS
           href: identity-provider-adfs.md
+          displayName: 'AD-FS, ADFS'
         - name: Amazon
           href: identity-provider-amazon.md
         - name: Azure AD (Tek kiracılı)

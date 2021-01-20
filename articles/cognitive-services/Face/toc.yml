@@ -35,6 +35,8 @@
       href: Face-API-How-to-Topics/specify-recognition-model.md
     - name: Yüz algılama modeli belirtme
       href: Face-API-How-to-Topics/specify-detection-model.md
+    - name: Yüz Tanıma hizmetini kullanırken gecikmeyi azaltma
+      href: Face-API-How-to-Topics/how-to-mitigate-latency.md
     - name: Büyük ölçek özelliğini kullanma
       href: Face-API-How-to-Topics/how-to-use-large-scale.md
     - name: Videoları gerçek zamanlı olarak analiz etme

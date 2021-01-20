@@ -21,6 +21,8 @@
       href: author-sign-policy.md
     - name: Özel Uç Nokta oluşturma - PowerShell
       href: private-endpoint-powershell.md
+    - name: Azure Tanılama İzleme
+      href: azure-diagnostic-monitoring.md
     - name: SGX kanıtlama kodu örnekleri
       href: /samples/browse/?expanded=azure&terms=attestation
 - name: Örnekler
