@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 92b19941f34b9bf5656c9beb188a68d2cf01f674
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 68d1e9744d937cf80327c3f41cc69f4af97d3400
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92504138"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600178"
 ---
 # <a name="face-detection-and-attributes"></a>Yüz algılama ve öznitelikler
 
@@ -64,7 +64,9 @@ Giriş görüntülerinizin en doğru algılama sonuçlarını vermesini sağlama
 
 * Desteklenen giriş resim biçimleri JPEG, PNG, ilk çerçeve için GIF ve BMP.
 * Görüntü dosyası boyutu 6 MB 'tan büyük olmamalıdır.
-* Algılanabilir yüz boyut aralığı 36 x 36 ile 4096 x 4096 pikseldir. Bu aralığın dışındaki yüzler saptanmaz.
+* En düşük algılanabilir yüz boyutu, 1920 x 1080 pikselden daha büyük olmayan bir görüntüde 36 x 36 pikseldir. 1920 x 1080 pikselden daha büyük olan görüntüler, daha düşük bir en küçük yüz boyutuna sahiptir. Yüz boyutunu azaltmak, en düşük algılanabilir yüz boyutundan daha büyük olsalar bile bazı yüzlerin algılanmamasına neden olabilir.
+* En fazla algılanabilir yüz boyutu 4096 x 4096 pikseldir.
+* 36 x 36 ile 4096 x 4096 piksel boyut aralığının dışındaki yüzlerin algılanmamasını sağlar.
 * Teknik zorluk sorunları nedeniyle bazı yüzler algılanmayabilir. Aşırı yüz açıları (baş poz) veya yüz kapatma (yüz gözlüğü gibi nesneler) algılamayı etkileyebilir. En iyi ve yakın yüzler en iyi sonuçları verir.
 
 Video akışından yüz tespit ediyorsanız, video kameranızdaki belirli ayarları ayarlayarak performansı artırabilirsiniz:

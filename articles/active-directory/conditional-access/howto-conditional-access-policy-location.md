@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a531692264a768e4f6cb8e6475807789df049d03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e257ab39257b23c52aaadbe32f0325e8d71a8409
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049155"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98597975"
 ---
 # <a name="conditional-access-block-access-by-location"></a>Koşullu erişim: konuma göre erişimi engelleyin
 
@@ -28,7 +28,7 @@ Koşullu erişimde konum koşulu ile, bir kullanıcının ağ konumuna bağlı o
 1. **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi**  >  **konumuna gidin**.
 1. **Yeni konum**' ı seçin.
 1. Konumunuza bir ad verin.
-1. Bu konumu veya **ülkeleri/bölgeleri**oluşturan belirli dışarıdan erişilebilir IPv4 adresi aralıklarını biliyorsanız, **IP aralıklarını** seçin.
+1. Bu konumu veya **ülkeleri/bölgeleri** oluşturan belirli dışarıdan erişilebilir IPv4 adresi aralıklarını biliyorsanız, **IP aralıklarını** seçin.
    1. Belirttiğiniz konum için **IP aralıklarını** sağlayın veya **ülke/bölge** seçin.
       * Ülkeler/bölgeler ' i seçerseniz, isteğe bağlı olarak bilinmeyen alanları eklemeyi seçebilirsiniz.
 1. **Kaydet** 'i seçin
@@ -41,16 +41,18 @@ Koşullu erişim 'deki konum koşulu hakkında daha fazla bilgi için, [Azure Ac
 1. **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişimi**'ne gidin.
 1. **Yeni ilke**' yi seçin.
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
-1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Atamalar** altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Ekle**' nin altında **tüm kullanıcılar**' ı seçin.
-1. **Bulut uygulamaları veya eylemler**altında  >  **Include**, **tüm bulut uygulamaları**' nı seçin.
-1. **Koşulların**bulunduğu  >  **konum**.
+   1. **Dışla** altında, **Kullanıcılar ve gruplar** ' ı seçin ve kuruluşunuzun acil erişim veya kesme camı hesaplarını seçin. 
+   1. **Bitti** seçeneğini belirleyin.
+1. **Bulut uygulamaları veya eylemler** altında  >  , **tüm bulut uygulamaları**' nı seçin.
+1. **Koşulların** bulunduğu  >  **konum**.
    1. **Yapılandır** 'ı **Evet** olarak ayarla
-   1. **Dahil et**altında **Seçili konumlar** ' ı seçin.
+   1. **Dahil et** altında **Seçili konumlar** ' ı seçin.
    1. Kuruluşunuz için oluşturduğunuz engellenen konumu seçin.
    1. **Seç**’e tıklayın.
 1. **Erişim denetimleri** altında > **erişimi engelle**' yi seçin ve **Seç**' i seçin.
-1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
+1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık** olarak ayarlayın.
 1. Koşullu erişim Ilkesi oluşturmak için **Oluştur** ' u seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

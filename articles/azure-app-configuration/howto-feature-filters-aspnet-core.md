@@ -8,12 +8,12 @@ author: AlexandraKemperMS
 ms.author: alkemper
 ms.topic: conceptual
 ms.date: 3/9/2020
-ms.openlocfilehash: 13857580d434736fbf0b12f52d39537ca864a497
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 39455c4bc193cce036bd169c702b5c020d53d2f6
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203157"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602270"
 ---
 # <a name="use-feature-filters-to-enable-conditional-feature-flags"></a>Koşullu Özellik bayraklarını etkinleştirmek için özellik filtrelerini kullanın
 
@@ -31,7 +31,7 @@ Ayrıca, [Microsoft. FeatureManagement. IFeatureFilter arabirimini](/dotnet/api/
 
 ## <a name="registering-a-feature-filter"></a>Özellik filtresini kaydetme
 
-Özellik `AddFeatureFilter` filtresinin adını belirterek, yöntemini çağırarak bir özellik filtresi kaydedersiniz. Örneğin, aşağıdaki kod kaydedilir `PercentageFilter` :
+`AddFeatureFilter`Yöntemi çağırarak, istenen özellik filtresinin tür adını belirterek bir özellik filtresi kaydedersiniz. Örneğin, aşağıdaki kod kaydedilir `PercentageFilter` :
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -56,14 +56,14 @@ Bu ayarları, Azure Uygulama yapılandırmasında tanımlanan özellik bayraklar
     > [!div class="mx-imgBorder"]
     > ![Beta Özellik bayrağını Düzenle](./media/edit-beta-feature-flag.png)
 
-1. **Düzenleme** ekranında, henüz seçili değilse **özellik bayrağını etkinleştir** düğmesini seçin. Sonra **özellik filtresini kullan** düğmesine tıklayın ve **özel**' i seçin. 
+1. **Düzenleme** ekranında, zaten etkinleştirilmemişse **özellik bayrağını etkinleştir** onay kutusunu işaretleyin. Sonra **özellik filtresini kullan** onay kutusunu Işaretleyin ve **özel**' i seçin. 
 
-1. **Anahtar** alanına *Microsoft. Percentage* yazın.
+1. **Ad** alanında *Microsoft. Percentage*' i seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Özellik filtresi ekle](./media/feature-flag-add-filter.png)
 
-1. Özellik filtresi anahtarının yanındaki bağlam menüsüne tıklayın. **Filtre parametrelerini düzenle**' ye tıklayın.
+1. Özellik filtresi adının yanındaki bağlam menüsüne tıklayın. **Filtre parametrelerini düzenle**' ye tıklayın.
 
     > [!div class="mx-imgBorder"]
     > ![Özellik filtresi parametrelerini Düzenle](./media/feature-flags-edit-filter-parameters.png)
@@ -75,10 +75,10 @@ Bu ayarları, Azure Uygulama yapılandırmasında tanımlanan özellik bayraklar
 
 1. **Özellik düzenleme bayrağı** ekranına dönmek için **Uygula** ' ya tıklayın. Ardından, özellik bayrağı ayarlarını kaydetmek için yeniden **Uygula** ' ya tıklayın.
 
-1. Özellik bayrağının **durumu** artık *koşullu* olarak görünüyor. Bu durum, özellik filtresi tarafından zorlanan ölçütlere göre, özellik bayrağının istek başına temelinde etkinleştirileceğini veya devre dışı bırakılacağını gösterir.
+1. Özellik **Yöneticisi** sayfasında, özellik bayrağının artık *özel* bir **özellik filtresi** değeri vardır. 
 
     > [!div class="mx-imgBorder"]
-    > ![Koşullu Özellik bayrağı](./media/feature-flag-filter-enabled.png)
+    > ![Özellik bayrağı, "Custom" özellik filtresi değeri ile listelendi](./media/feature-flag-filter-custom.png)
 
 ## <a name="feature-filters-in-action"></a>Eylemde özellik filtreleri
 

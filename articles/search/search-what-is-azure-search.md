@@ -9,34 +9,34 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 12/17/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 1814555f738f37523c5b23ae729bf20bff62e1f9
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 3f62ab20359273aec6743c27ab46b33027e82b55
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679521"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598407"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure Bilişsel Arama nedir?
 
 Azure Bilişsel Arama ([eskiden "Azure Search" olarak bilinirdi](whats-new.md#new-service-name)), geliştiriciler için Web, mobil ve kurumsal uygulamalarda özel, heterojen içerik üzerinde zengin arama deneyimi oluşturmaya yönelik API 'ler ve araçlar sağlayan bir bulut arama hizmetidir. 
 
-Bir Bilişsel Arama hizmeti oluşturduğunuzda şunları alırsınız:
+Bir arama hizmeti aşağıdaki bileşenlere sahiptir:
 
-+ Dizin oluşturma ve sorgu yürütmeyi gerçekleştiren bir arama altyapısı
-+ Oluşturduğunuz ve yönettiğiniz arama dizinlerinin kalıcı depolaması
-+ Karmaşık sorguları basit sorgular oluşturmak için bir sorgu dili
-+ [AI odaklı zenginler](cognitive-search-concept-intro.md), görüntü, ham metin ve uygulama dosyalarından aranabilir içerik oluşturma
-+ Veri, makine öğrenimi/AI ve güvenlik için diğer Azure hizmetleriyle tümleştirme
++ Dizin oluşturma ve sorgu yürütme için arama altyapısı
++ Kullanıcıya ait arama dizinlerinin kalıcı depolaması
++ Karmaşık sorguları basit sorgular oluşturmak için sorgu dili
++ İsteğe bağlı [AI tabanlı zenginler](cognitive-search-concept-intro.md), görüntülerin, ham metinlerin ve uygulama dosyalarının aranabilir içeriğini oluşturma
++ Veri, makine öğrenimi/AI ve güvenlik için diğer Azure hizmetleriyle isteğe bağlı tümleştirme
 
 Mimari türsel olarak, bir arama hizmeti, dizini oluşturulmamış verilerinizi içeren dış veri depoları arasında ve bir arama dizinine sorgu istekleri gönderen ve yanıtı işleyen bir istemci uygulaması arasında yer alır.
 
 ![Azure Bilişsel Arama mimarisi](media/search-what-is-azure-search/azure-search-diagram.svg "Azure Bilişsel Arama mimarisi")
 
-Outwardly, bir arama hizmeti, Azure veri kaynaklarından veri alımı/alımı otomatikleştiren diğer Azure hizmetleriyle ve görüntü ve metin analizi gibi bilişsel hizmetlerden ya da Azure Machine Learning veya Azure Işlevleri içinde oluşturduğunuz özel *AI 'nin* TÜKETILEBILIR AI olan *becerileri* 'teki diğer Azure hizmetleriyle tümleşir.
+Outwardly, arama, Azure veri kaynaklarından veri alımı/alımı otomatik hale *getiren ve* görüntü ve metin analizi gibi bilişsel hizmetlerden veya Azure Machine Learning veya Azure  IŞLEVLERI içinde oluşturduğunuz özel AI dahil diğer Azure hizmetleriyle tümleşebilir.
 
 Arama hizmetinin kendisinde, iki birincil iş yükü *Dizin oluşturma* ve *sorgulama* yapılır. 
 
-+ Dizin oluşturma, metni arama hizmetinize getirir ve aranabilir hale getirir. Dahili olarak, gelen metinler belirteçlerde işlenir ve hızlı taramalar için ters dizinler halinde depolanır. 
++ Metin girişi, arama hizmetinize dizinleniyor ve aranabilir hale gelir. Dahili olarak, gelen metinler belirteçlerde işlenir ve hızlı taramalar için ters dizinler halinde depolanır. JSON belgeleri biçiminde olan tüm içeriği karşıya yükleyebilirsiniz.
 
   Dizin oluşturma içinde, bilişsel yetenekler aracılığıyla *AI zenginleştirme* ekleme seçeneğiniz vardır. bu [beceri](cognitive-search-working-with-skillsets.md), Microsoft 'tan veya oluşturduğunuz özel becerilerden önceden tanımlanmış olanlardan yararlanın. Sonraki analizler ve dönüştürmeler, daha önce mevcut olmayan yeni bilgi ve yapılara neden olabilir ve birçok arama ve bilgi araştırma senaryosu için yüksek yardımcı program sağlar.
 
@@ -48,13 +48,13 @@ Bilgi alma sürecinin karmaşıklığını maskeleyen basit bir [REST API’si](
 
 Azure Bilişsel Arama aşağıdaki uygulama senaryoları için uygundur:
 
-+ Heterojen içeriği özel, Kullanıcı tanımlı bir arama dizinine birleştirin. Bir arama dizinini, herhangi bir kaynaktaki JSON belgelerinin akışları ile doldurabilirsiniz. Azure 'da desteklenen kaynaklar için dizin oluşturmayı otomatikleştirmek üzere bir *Dizin Oluşturucu* kullanın. Dizin şeması üzerinde denetim ve yenileme zamanlaması, Bilişsel Arama kullanmanın önemli bir nedenidir.
++ Heterojen içeriği özel, Kullanıcı tanımlı bir arama dizinine birleştirin.
 
-+ Aramayla ilgili özelliklerin kolay uygulanması. Arama API 'Leri sorgu oluşturmayı, çok yönlü gezintiyi, filtreleri (coğrafi uzamsal arama dahil), eş anlamlı eşleme, otomatik tamamlama ve ilgi ayarlamayı basitleştirir. Yerleşik özellikleri kullanarak, ticari Web araması altyapılarına benzer bir arama deneyimine yönelik son kullanıcı beklentilerini karşılamasını sağlayabilirsiniz.
++ Aramayla ilgili özellikleri kolayca uygulayın: ilgi ayarlama, çok yönlü gezinme, filtreler (coğrafi uzamsal arama dahil), eş anlamlı eşleme ve otomatik tamamlama.
 
-+ Ham içerik, Azure Blob depolamada veya Cosmos DB depolanan büyük metin veya görüntü dosyaları ya da uygulama dosyalarıdır. Metin tanımlamak ve ayıklamak, yapı oluşturmak veya çevrilmiş metin veya varlıklar gibi yeni bilgiler oluşturmak için dizin oluşturma sırasında bilişsel [becerileri](cognitive-search-concept-intro.md) uygulayabilirsiniz.
++ Büyük ölçekli metin veya resim dosyalarını veya Azure Blob depolamada veya Cosmos DB depolanan uygulama dosyalarını aranabilir JSON belgelerine dönüştürün. Bu, dış işlem ekleyen bilişsel [yetenekler](cognitive-search-concept-intro.md) aracılığıyla Dizin sırasında elde edilir.
 
-+ İçerik dile veya özel metin çözümlemesine ihtiyaç duyuyor. Ingilizce olmayan içeriğiniz varsa Azure Bilişsel Arama hem Lucene Çözümleyicileri hem de Microsoft 'un doğal dil işlemcilerini destekler. Ayrıca, vurguları, aksanların filtrelenmesi veya dizelerde desenler tanınması veya korunması gibi ham içeriğin özel işlemesini elde etmek için de yapılandırabilirsiniz.
++ Dil veya özel metin analizi ekleyin. Ingilizce olmayan içeriğiniz varsa Azure Bilişsel Arama hem Lucene Çözümleyicileri hem de Microsoft 'un doğal dil işlemcilerini destekler. Ayrıca, vurguları, aksanların filtrelenmesi veya dizelerde desenler tanınması veya korunması gibi ham içeriğin özel işlemesini elde etmek için de yapılandırabilirsiniz.
 
 Belirli işlevler hakkında daha fazla bilgi için bkz. [Azure bilişsel arama özellikleri](search-features-list.md)
 
@@ -62,11 +62,11 @@ Belirli işlevler hakkında daha fazla bilgi için bkz. [Azure bilişsel arama �
 
 Temel arama özelliklerinin uçtan uca incelenmesi, dört adımda elde edilebilir:
 
-1. Diğer aboneler ile paylaşılan ücretsiz katmanda veya yalnızca hizmetiniz tarafından kullanılan adanmış kaynaklar için [ücretli bir katmanda](https://azure.microsoft.com/pricing/details/search/) [**bir arama hizmeti oluşturun**](search-create-service-portal.md) . Tüm hızlı başlangıçlar ve öğreticiler ücretsiz hizmetle tamamlanabilir.
+1. Yalnızca hizmetiniz tarafından kullanılan adanmış kaynaklar için paylaşılan ücretsiz katmanda veya [faturalanabilir katmanda](https://azure.microsoft.com/pricing/details/search/) [**bir arama hizmeti oluşturun**](search-create-service-portal.md) . Tüm hızlı başlangıçler ve öğreticiler, paylaşılan bir hizmette tamamlanabilir.
 
-1. Portalı kullanarak [**bir arama dizini oluşturun**](search-what-is-an-index.md) , [REST API](/rest/api/searchservice/create-index). [.NET SDK](search-howto-dotnet-sdk.md)veya başka bir SDK. Dizin şeması Aranabilir içeriğin yapısını tanımlar.
+1. Portal, [REST API](/rest/api/searchservice/create-index), [.NET SDK](search-howto-dotnet-sdk.md)veya başka bir SDK kullanarak [**bir arama dizini oluşturun**](search-what-is-an-index.md) . Dizin şeması Aranabilir içeriğin yapısını tanımlar.
 
-1. [**İçeriği dizine yükleyin**](search-what-is-data-import.md) . Herhangi bir kaynaktaki JSON belgelerini göndermek için ["Push" modelini](tutorial-optimize-indexing-push-api.md) kullanın veya kaynak verileriniz Azure üzerinde ise ["çekme" modelini (Dizin oluşturucular)](search-indexer-overview.md) kullanın.
+1. Herhangi bir kaynaktan JSON belgelerini göndermek için ["Push" modelini](tutorial-optimize-indexing-push-api.md) kullanarak [**içeriği karşıya yükleyin**](search-what-is-data-import.md) veya kaynak verileriniz Azure üzerinde ise ["çekme" modelini (Dizin oluşturucular)](search-indexer-overview.md) kullanın.
 
 1. Portal, [REST API](search-get-started-rest.md), [.NET SDK](/dotnet/api/azure.search.documents.searchclient.search)veya başka bir SDK 'daki [Arama Gezgini](search-explorer.md) 'ni kullanarak [**bir dizini sorgulayın**](search-query-overview.md) .
 

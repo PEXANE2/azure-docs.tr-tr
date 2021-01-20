@@ -8,12 +8,12 @@ author: emuench
 ms.author: mingshen
 ms.date: 10/15/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d8cb5179583dd23ea2bd4baf5ebe7d84b0ae9cbf
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 748b6c3506127de8fce153a77571664ea531ffa1
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814440"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601351"
 ---
 # <a name="azure-consumption-commitment-benefit"></a>Azure tüketim taahhüdü avantajı
 
@@ -24,7 +24,7 @@ Kuruluşunuzun Bu anlaşmalardan biri varsa, Microsoft ticari Market tekliflerin
 
 Yüksek kaliteli çözümler aldığınızdan emin olmak için bu programa katılan tüm teklifleri doğrulamamız gerekir.
 
-Bu avantajdan yararlanmak için Azure anlaşmanız ile ilgili bir abonelik kullanarak Azure Marketi 'nde uygun bir teklif satın almanız yeterlidir. Azure ön ödeme ve parasal taahhütler bu avantaja uygun değildir.
+Bu avantajdan yararlanmak için Azure anlaşmanız ile ilgili bir abonelik kullanarak Azure Marketi 'nde uygun bir teklif satın almanız yeterlidir. Azure ön ödemesi (daha önce parasal taahhüt olarak adlandırılır) bu avantaja uygun değildir.
 
 > [!IMPORTANT]
 > Dışlamalar, bu Market avantajından önce imzalanan CtC anlaşmaları için uygulanabilir. Uygunluk hakkında sorularınız varsa Microsoft hesabı Executive ile iletişime geçin.

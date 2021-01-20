@@ -1,7 +1,7 @@
 ---
-title: Çalışma alanınızda Jupyter Notebooks’u çalıştırma
+title: Çalışma alanınızda Jupyıter not defterlerini çalıştırma
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning Studio 'da çalışma alanınızdan çıkmadan Jupyter Notebook nasıl çalıştıracağınızı öğrenin.
+description: Jupyter Not defterini Azure Machine Learning Studio 'da çalışma alanınızdan çıkmadan nasıl çalıştıracağınızı öğrenin.
 services: machine-learning
 author: abeomor
 ms.author: osomorog
@@ -10,25 +10,17 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
-ms.date: 06/27/2020
-ms.openlocfilehash: d253699199617489947dd95a44d9bcd1eff17334
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 01/19/2021
+ms.openlocfilehash: 7bb1ce8141f609feb4f354aa85f202915e197f37
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325415"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599273"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Çalışma alanınızda Jupyter Notebooks’u çalıştırma
 
-
 Jupyıter not defterlerinizi Azure Machine Learning Studio 'daki çalışma alanınızda doğrudan çalıştırmayı öğrenin. [Jupi](https://jupyter.org/) veya [Jupyıterlab](https://jupyterlab.readthedocs.io)'ı başlatabilmeniz sırasında, çalışma alanından çıkmadan not defterlerinizi düzenleyebilir ve çalıştırabilirsiniz.
-
-Nasıl kullanabileceğinizi öğrenin:
-
-* Çalışma alanınızda Jupyıter Not defterleri oluşturma
-* Bir not defterinden deneme çalıştırma
-* Not defteri ortamını değiştirme
-* Not defterlerinizi çalıştırmak için kullanılan işlem örneklerinin ayrıntılarını bulun
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -42,15 +34,15 @@ Azure Machine Learning çalışma alanınızda yeni bir Jupyter Not defteri olu�
 Yeni bir not defteri oluşturmak için: 
 
 1. Çalışma alanınızı [Azure Machine Learning Studio](https://ml.azure.com)'da açın.
-1. Sol tarafta, **Not defterleri** ' ni seçin. 
+1. Sol tarafta, **Not defterleri**' ni seçin. 
 1. **My Files** bölümündeki **User Files** bölümünde **yeni dosya oluştur** simgesini seçin.
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/create-new-file.png" alt-text="Yeni dosya oluştur":::
 
 1. Dosyayı adlandırın. 
-1. Jupyter Notebook dosyaları için dosya türü olarak **Not defteri** ' ni seçin.
+1. Jupyter Not defteri dosyaları için dosya türü olarak **Not defteri** ' ni seçin.
 1. Bir dosya dizini seçin.
-1. **Oluştur** ’u seçin.
+1. **Oluştur**’u seçin.
 
 Metin dosyaları da oluşturabilirsiniz.  Dosya türü olarak **metin** ' i seçin ve uzantıyı ada ekleyin (örneğin, myfile.py veya myfile.txt)  
 
@@ -75,14 +67,14 @@ Tüm git işlemlerine, bir Terminal penceresi kullanarak erişebilirsiniz. Tüm 
 Terminale erişmek için:
 
 1. Çalışma alanınızı [Azure Machine Learning Studio](https://ml.azure.com)'da açın.
-1. Sol tarafta, **Not defterleri** ' ni seçin.
+1. Sol tarafta, **Not defterleri**' ni seçin.
 1. Sol taraftaki **Kullanıcı dosyaları** bölümünde yer alan herhangi bir not defteri seçin.  Not defteriniz yoksa, önce [bir not defteri oluşturun](#create)
 1. Bir **işlem** hedefi seçin veya yeni bir tane oluşturun ve çalışır hale gelene kadar bekleyin.
 1. **Açık Terminal** simgesini seçin.
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="Açık Terminal":::
 
-1. Simgeyi görmüyorsanız, işlem hedefinin sağındaki **...** ' ı seçin ve ardından **Açık Terminal** ' yı seçin.
+1. Simgeyi görmüyorsanız, işlem hedefinin sağındaki **...** ' ı seçin ve ardından **Açık Terminal**' yı seçin.
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="Terminalden aç...":::
 
@@ -153,18 +145,6 @@ Her bir not defteri, her 30 saniyede bir otomatik kaydedilir. Otomatik kaydetme,
  
 Adlandırılmış bir kontrol noktası oluşturmak ve Not defterini kaydedilmiş bir denetim noktasına dönüştürmek için Not defteri menüsünde **kontrol noktaları** ' nı seçin.
 
-
-### <a name="useful-keyboard-shortcuts"></a>Faydalı klavye kısayolları
-
-|Klavye  |Eylem  |
-|---------|---------|
-|Shift+Enter     |  Bir hücre Çalıştır       |
-|Ctrl+Ara Çubuğu | IntelliSense 'i etkinleştir |
-|CTRL + a (Windows)     |  Not defterinde sekme yakalamayı etkinleştirin/devre dışı bırakın.       |
-|CTRL + SHIFT + d (Mac & Linux)     |    Not defterinde sekme yakalamayı etkinleştirin/devre dışı bırakın.     |
-|Sekme (sekme tuzağı etkin olduğunda) | ' \T ' karakteri ekle (Girintile)
-|Sekme (Tab tuzağı devre dışı bırakıldığında) | Odağı sonraki odaksız öğeye Dönüştür (hücreyi Sil düğmesi, Çalıştır düğmesi vb.)
-
 ## <a name="delete-a-notebook"></a>Not defterini silme
 
 **Örnek** Not *defterlerini silemezsiniz.*  Bu not defterleri, Studio 'nun bir parçasıdır ve her yeni SDK yayımlandığında güncellenir.  
@@ -175,20 +155,38 @@ Adlandırılmış bir kontrol noktası oluşturmak ve Not defterini kaydedilmiş
 * Herhangi bir not defteri araç çubuğundan, işlem örneği için Terminal penceresine erişmek üzere [**terminali aç**](#terminal)  ' ı seçin.
 * Ya da bu araçların bulunduğu jupi veya Jupyıterlab.
 
-## <a name="run-an-experiment"></a>Deneme çalıştırma
+## <a name="run-a-notebook-or-python-script"></a>Bir not defteri veya Python betiği çalıştırma
 
-Bir not defterinden deneme çalıştırmak için önce çalışan bir [işlem örneğine](concept-compute-instance.md)bağlanırsınız. İşlem örneğiniz yoksa, oluşturmak için aşağıdaki adımları kullanın: 
+Bir not defteri veya Python betiği çalıştırmak için önce çalışan bir [işlem örneğine](concept-compute-instance.md)bağlanırsınız. İşlem örneğiniz yoksa, oluşturmak için aşağıdaki adımları kullanın: 
 
-1. **+** Not defteri araç çubuğundan öğesini seçin. 
+1. **+** Not defteri veya betik araç çubuğunda öğesini seçin. 
 2. Işlem adını adlandırın ve bir **sanal makine boyutu** seçin. 
-3. **Oluştur** ’u seçin.
-4. İşlem örneği not defterine otomatik olarak bağlanır ve artık hücrelerden çalıştırabilirsiniz.
+3. **Oluştur**’u seçin.
+4. İşlem örneği dosyaya otomatik olarak bağlanır.  Artık işlem örneğinin solundaki aracı kullanarak not defteri hücrelerini veya Python betiğini çalıştırabilirsiniz
 
 Yalnızca sizin oluşturduğunuz işlem örneklerini görebilir ve kullanabilirsiniz.  **Kullanıcı DOSYALARıNıZ** VM 'den ayrı olarak depolanır ve çalışma alanındaki tüm işlem örnekleri arasında paylaşılır.
 
 ### <a name="view-logs-and-output"></a>Günlükleri ve çıktıyı görüntüleme
 
 Çalışma ve günlüklerin ilerlemesini görüntülemek için [Not defteri pencere](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py) öğelerini kullanın. Pencere öğesi zaman uyumsuzdur ve eğitim bitene kadar güncelleştirmeler sağlar. Azure Machine Learning pencere öğeleri Jupyıter ve JupterLab içinde de desteklenir.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/jupyter-widget.png" alt-text="Ekran görüntüsü: Jupyter Not defteri pencere öğesi ":::
+
+## <a name="explore-variables-in-the-notebook"></a>Not defterindeki değişkenleri keşfet
+
+Not defteri araç çubuğunda, Not defterinizde oluşturulmuş tüm değişkenlerin adını, türünü, uzunluğunu ve örnek değerlerini göstermek için **değişken gezgin** aracını kullanın.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/variable-explorer.png" alt-text="Ekran görüntüsü: değişken gezgin aracı":::
+
+Değişken Gezgini penceresini göstermek için aracı seçin.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/variable-explorer-window.png" alt-text="Ekran görüntüsü: değişken Gezgin penceresi":::
+
+## <a name="navigate-with-a-toc"></a>TOC ile gezinme
+
+Not defteri araç çubuğunda, içindekiler tablosunu göstermek veya gizlemek için  **Içindekiler tablosu** aracını kullanın.  İçindekiler tablosuna eklemek için başlık ile bir markaşağı hücresi başlatın. Not defterindeki bir hücreye kaydırmak için tablodaki bir girdiye tıklayın.  
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/table-of-contents.png" alt-text="Ekran görüntüsü: not defterindeki içindekiler tablosu":::
 
 ## <a name="change-the-notebook-environment"></a>Not defteri ortamını değiştirme
 
@@ -242,7 +240,7 @@ Not defteri, bağlı işlem örneğinde yüklü olan tüm Jupyter çekirdekler '
 
 **İşlem** açılan listesinin yanındaki gösterge durumunu gösterir.  Durum, açılan listede de gösterilir.  
 
-|Color |İşlem durumu |
+|Renk |İşlem durumu |
 |---------|---------| 
 | Yeşil | İşlem çalışıyor |
 | Kırmızı |İşlem başarısız oldu | 
@@ -252,12 +250,95 @@ Not defteri, bağlı işlem örneğinde yüklü olan tüm Jupyter çekirdekler '
 
 **Çekirdek** açılan listesinin yanındaki gösterge durumunu gösterir.
 
-|Color |Çekirdek durumu |
+|Renk |Çekirdek durumu |
 |---------|---------|
 |  Yeşil |Çekirdek bağlı, boşta, meşgul|
 |  Tonlamalı |Çekirdek bağlı değil |
 
-## <a name="find-compute-details"></a>İşlem ayrıntılarını bul 
+## <a name="shortcut-keys"></a>Kısayol tuşları
+Jupi not defterlerine benzer şekilde, Azure Machine Learning Studio Not defterleri de kalıcı bir kullanıcı arabirimine sahiptir. Klavye, Not defteri hücresinin bulunduğu moda bağlı olarak farklı şeyler yapar. Azure Machine Learning Studio Not defterleri, belirli bir kod hücresi için aşağıdaki iki modu destekler: komut modu ve düzenleme modu.
+
+### <a name="command-mode-shortcuts"></a>Komut modu kısayolları
+
+Bir hücre, yazmanızı isteyen bir metin imleci olmadığında komut modundadır. Bir hücre komut modundayken, Not defterini tek tek hücrelere değil, bir bütün olarak düzenleyebilirsiniz. `ESC`Bir hücrenin düzenleyici alanının dışında seçim yapmak için fare tuşuna basarak veya fareyi kullanarak komut moduna girin.  Etkin hücrenin sol kenarlığı mavi ve Solid, **Çalıştır** düğmesi ise mavi.
+
+   :::image type="content" source="media/how-to-run-jupyter-notebooks/command-mode.png" alt-text="Komut modundaki Not defteri hücresi ":::
+
+| Kısayol                      | Açıklama                          |
+| ----------------------------- | ------------------------------------|
+| Enter                         | Düzenleme moduna girme             |        
+| Shift + Enter                 | Hücreyi Çalıştır, aşağıdan seçin         |     
+| Denetim/komut + ENTER       | Çalışma hücresi                            |
+| Alt + Enter                   | Hücreyi Çalıştır, aşağıya kod hücresi Ekle    |
+| Denetim/komut + alt + ENTER | Hücreyi Çalıştır, aşağı doğru markbelow hücresi Ekle|
+| Alt + R                       | Tümünü Çalıştır      |                       
+| Y                             | Hücreyi koda Dönüştür    |                         
+| M                             | Hücreyi markaşağı Dönüştür  |                       
+| Yukarı/K                          | Üstteki hücreyi seçin    |               
+| Aşağı/J                        | Aşağıdan hücre seçin    |               
+| A                             | Yukarıdaki kod hücresini Ekle  |            
+| B                             | Aşağıya kod hücresi Ekle   |           
+| Denetim/komut + Shift + A   | Yukarıya markaşağı hücresi Ekle    |      
+| Denetim/komut + SHIFT + B   | Aşağı markbelow hücresi Ekle   |       
+| X                             | Seçili hücreyi kes    |               
+| C                             | Seçili hücreyi Kopyala   |               
+| SHIFT + V                     | Seçili hücreyi yukarıya Yapıştır           |
+| V                             | Seçili hücreyi aşağı Yapıştır    |       
+| D D                           | Seçili hücreyi Sil|                
+| O                             | Çıkışı geç         |              
+| SHIFT + O                     | Çıkış kaydırmayı aç   |          
+| Ben                           | Kesme çekirdeği |                   
+| 0 0                           | Çekirdeği yeniden Başlat |                     
+| SHIFT + boşluk                 | Yukarı kaydır  |                         
+| Alan                         | Aşağı kaydır|
+| Tab                           | Odağı sonraki odaksız öğeye Değiştir (sekme tuzağı devre dışı bırakıldığında)|
+| Denetim/komut + S           | Not defterini Kaydet |                      
+| 1                             | H1 olarak değiştir|                       
+| 2                             | H2 olarak değiştir|                        
+| 3                             | H3 olarak değiştir|                        
+| 4                             | H4 olarak değiştir |                       
+| 5                             | H5 olarak değiştir |                       
+| 6                             | H6 olarak değiştir |                       
+
+### <a name="edit-mode-shortcuts"></a>Düzenleme modu kısayolları
+
+Düzenleme modu, düzenleyici alanına yazmanızı isteyen bir metin imlece belirtilir. Bir hücre düzenleme modundayken, hücreye yazabilirsiniz. `Enter`Fareyle sürükleyerek veya bir hücrenin düzenleyici alanında seçim yaparak düzenleme modunu girin. Etkin hücrenin sol kenarlığı yeşil ve taranmış ve **Çalıştır** düğmesi yeşil olur. Ayrıca, imleç isteminin hücrede düzenleme modunda görürsünüz.
+
+   :::image type="content" source="media/how-to-run-jupyter-notebooks/edit-mode.png" alt-text="Düzenleme modundaki Not defteri hücresi":::
+
+Aşağıdaki tuş vuruşu kısayollarını kullanarak, düzenleme modundayken Azure Machine Learning Not defterlerindeki kodu daha kolay bir şekilde gezinebilir ve çalıştırabilirsiniz.
+
+| Kısayol                      | Açıklama|                                     
+| ----------------------------- | ----------------------------------------------- |
+| Esc                        | Komut moduna gir|  
+| Denetim/komut + boşluk       | IntelliSense 'i etkinleştir |
+| Shift + Enter                 | Hücreyi Çalıştır, aşağıdan seçin |                         
+| Denetim/komut + ENTER       | Çalışma hücresi  |                                      
+| Alt + Enter                   | Hücreyi Çalıştır, aşağıya kod hücresi Ekle  |              
+| Denetim/komut + alt + ENTER | Hücreyi Çalıştır, aşağı doğru markbelow hücresi Ekle  |          
+| Alt + R                       | Tüm hücreleri Çalıştır     |                              
+| Yukarı                            | İmleci yukarı veya önceki hücreyi taşıyın    |             
+| Aşağı                          | İmleci aşağı veya sonraki hücreyi taşı |                  
+| Denetim/komut + S           | Not defterini Kaydet   |                                
+| Denetim/komut + yukarı          | Hücre başlangıcına git   |                             
+| Denetim/komut + aşağı        | Hücre sonuna git |                                 
+| Tab                           | Kod tamamlama veya girintileme (sekme tuzağı etkinse) |
+| Denetim/komut + d           | Sekme yakalamayı etkinleştir/devre dışı bırak  |                       
+| Denetim/komut +]           | Leyebilirsiniz |                                         
+| Denetim/komut + [           | Girintiyi geri al  |                                        
+| Control/Command + A           | Tümünü seç|                                      
+| Denetim/komut + Z           | Geri Al |                                           
+| Denetim/komut + SHIFT + Z   | Yinele |                                           
+| Denetim/komut + Y           | Yinele |                                           
+| Denetim/komut + giriş sayfası        | Hücre başlangıcına git|                                
+| Denetim/komut + End         | Hücre sonuna git   |                               
+| Denetim/komut + sol        | Bir kelimeyi sola git |                               
+| Denetim/komut + sağ       | Bir sözcüğe sağ git |                              
+| Denetim/komut + geri al   | Önceki kelimeyi Sil |                             
+| Denetim/komut + Sil      | Sonra sözcüğü Sil |                              
+| Denetim/komut +/           | Cu 'daki yorumu değiştirme
+
+## <a name="find-compute-details"></a>İşlem ayrıntılarını bul
 
 [Studio](https://ml.azure.com)'daki **işlem** sayfasında işlem örneklerinizin ayrıntılarını bulun.
 

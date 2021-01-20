@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 76232a917e8856a06645fabc0ab4716195c5c0e1
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: a303f5e6177d0dc4205eaec8c3b1911e8e004fe3
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094208"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602421"
 ---
 # <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>Azure haritalar yükseltme hizmetini kullanarak yükseltme verileri isteme (Önizleme)
 
@@ -24,7 +24,7 @@ ms.locfileid: "97094208"
 
 Azure haritalar [yükseltme hizmeti](https://docs.microsoft.com/rest/api/maps/elevation) , dünyanın her yerindeki yükseltme verilerini sorgulamak Için API 'ler sağlar. Tanımlanmış bir sınırlama kutusu içinde veya belirli koordinatlarda, bir veya daha fazla şekilde örneklenmiş yükseltme verileri isteyebilirsiniz. Ayrıca, yükseltme verilerini kutucuk biçiminde almak için [Işleme v2-harita kutucuğu API](https://docs.microsoft.com/rest/api/maps/renderv2) 'sini kullanabilirsiniz. Kutucuklar GeoTIFF raster biçiminde teslim edilir. Bu makalede, yükseltme verilerini istemek için Azure haritalar yükseltme hizmeti ve harita alma kutucuğu API 'sinin nasıl kullanılacağı gösterilir. Yükseltme verileri hem GeoJSON hem de GeoTiff biçimlerinde istenebilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 1. [S1 fiyatlandırma katmanında bir Azure Maps hesabı oluşturun](quick-demo-map-app.md#create-an-azure-maps-account)
 2. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account).
@@ -471,7 +471,7 @@ Codepen üzerinde Azure Maps () ile bir <a href='https://codepen.io/azuremaps/pe
 
 ### <a name="get-elevation-data-by-polyline-path"></a>Çoklu çizgi yoluna göre yükseltme verileri al
 
-Aşağıdaki örnek Web sayfası, bir yol üzerinde yükseltme verilerini göstermek için harita denetimini nasıl kullanacağınızı gösterir. Kullanıcı, `PolyLine` sol üst köşedeki simgeye tıklayarak ve çoklu çizgiyi haritaya çizerek yolu tanımlar. Harita denetimi daha sonra sağ üst köşede yer alan anahtarda belirtilen renklerde yükseltme verilerini işler.
+Aşağıdaki örnek Web sayfası, bir yol üzerinde yükseltme verilerini göstermek için harita denetimini nasıl kullanacağınızı gösterir. Kullanıcı, `Polyline` sol üst köşedeki simgeye tıklayarak ve çoklu çizgiyi haritaya çizerek yolu tanımlar. Harita denetimi daha sonra sağ üst köşede yer alan anahtarda belirtilen renklerde yükseltme verilerini işler.
 
 <br/>
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: yitoh
-ms.openlocfilehash: e87fd8724ab9a967bf3b75579eb0e375a324a7b1
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: b53501bf5aa4bafb0229158edfe0cb244116b909
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183107"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600854"
 ---
 # <a name="azure-ddos-protection-standard-frequent-asked-questions"></a>Azure DDoS koruması standart sık sorulan sorular
 
@@ -34,6 +34,12 @@ DDoS koruma planları, en fazla 100 genel IP adresini kapsayan ayda aylık $2.94
 Bir kiracı altında, tek bir DDoS koruma planı birden çok abonelik genelinde kullanılabilir, bu nedenle birden fazla DDoS koruma planı oluşturmaya gerek yoktur.
 
 Daha fazla ayrıntı için bkz. [Azure DDoS koruması standart fiyatlandırması](https://azure.microsoft.com/pricing/details/ddos-protection/) .
+
+## <a name="is-the-service-zone-resilient"></a>Hizmet bölgesi dayanıklı mı?
+Evet. Azure DDoS koruması, varsayılan olarak bölge esnektir.
+
+## <a name="how-do-i-configure-the-service-to-be-zone-resilient"></a>Hizmeti bölgeye dayanıklı olacak şekilde mi Nasıl yaparım??
+Bölge dayanıklılığı sağlamak için hiçbir müşteri yapılandırması gerekmez. Azure DDoS koruma kaynakları için bölge esnekliği, varsayılan olarak kullanılabilir ve hizmet tarafından yönetilir.
 
 ## <a name="what-about-protection-at-the-service-layer-layer-7"></a>Hizmet katmanında (katman 7) koruma hakkında ne olacak?
 Müşteriler, hem Ağ katmanında (katman 3 ve 4, Azure DDoS koruma standardı tarafından sunulan) hem de uygulama katmanında (bir WAF tarafından sunulan) koruma için Web uygulaması güvenlik duvarı (WAF) ile birlikte Azure DDoS koruma hizmeti 'ni kullanabilir. WAF teklifleri Azure [Application Gateway WAF SKU 'su](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ve [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall)'nde bulunan üçüncü taraf Web uygulaması güvenlik duvarı tekliflerini içerir.

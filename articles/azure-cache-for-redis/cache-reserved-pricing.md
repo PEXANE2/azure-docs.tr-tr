@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 9931dd9acb51e74c34a57b0475bca79fb9ba79cf
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 2f3472aa495042749410bc0b9635f0924a02e1fd
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184187"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598561"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>Ayrılmış kapasiteye sahip Redsıs işlem kaynakları için Azure önbelleği için ön ödeme
 
@@ -52,11 +52,11 @@ Aşağıdaki tablo gerekli alanları açıklar.
 
 | Alan | Açıklama |
 | :------------ | :------- |
-| Abonelik   | Reda için Azure önbelleği için ödeme yapmak üzere kullanılan abonelik, ayrılmış kapasite ayırması. Abonelik üzerindeki ödeme yöntemi, Red, ayrılmış kapasite rezervasyonu için Azure önbelleğinin ön maliyetlerini ücretlendirilmiştir. Abonelik türü bir kurumsal anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya kullandıkça öde fiyatlandırması (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P) içeren tek bir anlaşma olmalıdır. Kurumsal abonelik için ücretler kaydın maddi işlem bakiyesinden düşülür ve fazla kullanım olarak ücretlendirilir. Kullandıkça Öde fiyatlandırmasına sahip bireysel bir abonelik için ücretler, abonelik üzerindeki kredi kartına veya fatura ödeme yöntemine faturalandırılır.
+| Abonelik   | Reda için Azure önbelleği için ödeme yapmak üzere kullanılan abonelik, ayrılmış kapasite ayırması. Abonelik üzerindeki ödeme yöntemi, Red, ayrılmış kapasite rezervasyonu için Azure önbelleğinin ön maliyetlerini ücretlendirilmiştir. Abonelik türü bir kurumsal anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya kullandıkça öde fiyatlandırması (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P) içeren tek bir anlaşma olmalıdır. Bir kurumsal abonelik için ücretler, kaydın Azure ön ödemesinin (daha önce parasal taahhüt olarak adlandırılır) bakiyesinden düşülür veya fazla kullanım olarak ücretlendirilir. Kullandıkça Öde fiyatlandırmasına sahip bireysel bir abonelik için ücretler, abonelik üzerindeki kredi kartına veya fatura ödeme yöntemine faturalandırılır.
 | Kapsam | Ayırma kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Şunları seçerseniz: </br></br> **, Rezervasyon** indirimi, faturalandırma bağlamınızın içindeki aboneliklerde çalışan redsıs örnekleri Için Azure önbelleğine uygulanır. Kurumsal müşteriler için, paylaşılan kapsam kayıt içindedir ve kayıt dahilindeki tüm abonelikleri içerir. Kullandıkça Öde müşterileri için paylaşılan kapsam, hesap yöneticisi tarafından oluşturulan tüm Kullandıkça Öde abonelikleridir.</br></br> **Tek abonelik**, rezervasyon indirimi Bu abonelikteki redsıs örnekleri Için Azure önbelleğine uygulanır. </br></br> **Tek kaynak grubu**, ayırma indirimi seçili abonelikteki redsıs örnekleri ve bu abonelik içindeki seçili kaynak grubu Için Azure önbelleğine uygulanır.
-| Region | Reddir için Azure önbelleğinin kapsamına giren Azure bölgesi ayrılmış kapasite ayırması.
+| Bölge | Reddir için Azure önbelleğinin kapsamına giren Azure bölgesi ayrılmış kapasite ayırması.
 | Fiyatlandırma katmanı | Redsıs sunucuları için Azure önbelleğinin hizmet katmanı.
-| Süre | Bir yıl veya üç yıl
+| Terim | Bir yıl veya üç yıl
 | Miktar | Reda için Azure önbelleği içinde satın alınan işlem kaynakları miktarı, ayrılmış kapasite ayırması. Bu miktar, seçili Azure bölgesindeki ve hizmet katmanındaki ayrılan ve fatura iskontosunu alacak olan bir dizi önbelleklerdir. Örneğin, Doğu ABD bölgesinde toplam önbellek kapasitesi 16 GB olan Redsıs sunucuları için bir Azure önbelleği çalıştırmayı planlıyorsanız veya, tüm önbellekler için avantajı en üst düzeye çıkarmak üzere 26 GB eşdeğerini sağlayan miktarı belirtirsiniz. Bu 1 P3 veya 2 P2 önbellekler olabilir.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Rezervasyonları iptal etme, değiştirme veya para iadesi alma

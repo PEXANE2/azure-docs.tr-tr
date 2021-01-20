@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 6450b44e5c7281f0a24fd5000c9feec6e61fa29c
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 325502255e84e38a39ca5b90ee4126354c0d425b
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540754"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601232"
 ---
 # <a name="get-started-with-the-windows-virtual-desktop-agent"></a>Windows sanal masaüstü Aracısı 'nı kullanmaya başlama
 
@@ -44,5 +44,4 @@ Bu güncelleştirme yüklemesi, genellikle yeni bir sanal makinede 2-3 dakika s�
 
 Artık Windows sanal masaüstü Aracısı hakkında daha iyi anlayışınız olduğuna göre, şu konularda size yardımcı olabilecek bazı kaynaklar aşağıda verilmiştir:
 
-- Yeni Aracı güncelleştirmesinin her ay ne kadar iyi olduğunu öğrenmek için [Windows sanal masaüstü Aracısı güncelleştirmeleri](whats-new.md) bölümüne göz atın.
 - Aracı veya bağlantıyla ilgili sorunlar yaşıyorsanız, [Windows sanal masaüstü Aracısı sorunları sorun giderme kılavuzuna](troubleshoot-agent.md)göz atın.

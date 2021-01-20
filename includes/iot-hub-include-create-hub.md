@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/14/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 2144945647dc6b2e31e5593de3b6c8c0bf99a606
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a6a01b3a71a7e391c680e6c9547ccd9649dc0e89
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993279"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98605313"
 ---
 Bu bölümde [Azure Portal](https://portal.azure.com)kullanarak IoT Hub 'ı oluşturma açıklanmaktadır.
 
@@ -31,26 +31,32 @@ Bu bölümde [Azure Portal](https://portal.azure.com)kullanarak IoT Hub 'ı olu�
 
    - **Bölge**: hub 'ınızın bulunmasını istediğiniz bölgeyi seçin. Size en yakın konumu seçin. [IoT Hub cihaz akışları](../articles/iot-hub/iot-hub-device-streams-overview.md)gibi bazı özellikler yalnızca belirli bölgelerde kullanılabilir. Bu sınırlı Özellikler için desteklenen bölgelerden birini seçmeniz gerekir.
 
-   - **IoT Hub adı**: hub 'ınız için bir ad girin. Bu adın genel olarak benzersiz olması gerekir. Girdiğiniz ad kullanılabilir durumdaysa yeşil bir onay işareti görünür.
+   - **IoT Hub adı**: hub 'ınız için bir ad girin. Bu adın genel olarak benzersiz olması gerekir.
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 
    ![Azure portal hub oluşturma](./media/iot-hub-include-create-hub/iot-hub-create-screen-basics.png)
 
-1. **İleri ' yi seçin:** hub 'ınızı oluşturmaya devam etmek için boyut ve ölçek.
+1. Ileri ' yi seçin: hub 'ınızı oluşturmaya devam etmek için **ağ iletişimi** .
 
-   ![Azure portal kullanarak yeni bir hub için boyut ve ölçek ayarlama](./media/iot-hub-include-create-hub/iot-hub-create-screen-size-scale.png)
+   IoT Hub bağlanabilme uç noktalarını seçin. Varsayılan **genel uç nokta (tüm ağlar)** ayarını seçebilir veya **genel uç nokta (seçili IP aralıkları)** veya **Özel uç nokta** seçeneğini belirleyebilirsiniz. Bu örnek için varsayılan ayarı kabul edin.
 
-   Varsayılan ayarları burada kabul edebilirsiniz. İsterseniz, aşağıdaki alanlardan herhangi birini değiştirebilirsiniz: 
+   ![Bağlanabilecek uç noktaları seçin](./media/iot-hub-include-create-hub/iot-hub-create-network-screen.png)
 
-    - **Fiyatlandırma ve ölçek katmanı**: seçtiğiniz katman. İstediğiniz sayıda özelliğe ve her gün çözümünüz aracılığıyla kaç tane ileti gönderdiğinize bağlı olarak çeşitli katmanlardan seçim yapabilirsiniz. Ücretsiz katman, test ve değerlendirme için tasarlanmıştır. 500 cihazların hub 'a ve günde en fazla 8.000 iletiye bağlanmasını sağlar. Her Azure aboneliği ücretsiz katmanda bir IoT Hub 'ı oluşturabilir. 
+1. Hub 'ınızı oluşturmaya devam etmek için **İleri: yönetim** ' i seçin.
+
+    ![Azure portal kullanarak yeni bir hub için boyut ve ölçek ayarlama](./media/iot-hub-include-create-hub/iot-hub-management-screen.png)
+
+    Varsayılan ayarları burada kabul edebilirsiniz. İsterseniz, aşağıdaki alanlardan herhangi birini değiştirebilirsiniz:
+
+    - **Fiyatlandırma ve ölçek katmanı**: seçtiğiniz katman. İstediğiniz sayıda özelliğe ve her gün çözümünüz aracılığıyla kaç tane ileti gönderdiğinize bağlı olarak çeşitli katmanlardan seçim yapabilirsiniz. Ücretsiz katman, test ve değerlendirme için tasarlanmıştır. 500 cihazların hub 'a ve günde en fazla 8.000 iletiye bağlanmasını sağlar. Her Azure aboneliği ücretsiz katmanda bir IoT Hub 'ı oluşturabilir.
 
       IoT Hub cihaz akışları için bir hızlı başlangıç üzerinden çalışıyorsanız, ücretsiz katmanı seçin.
 
     - **IoT Hub birimler**: günlük birim başına izin verilen ileti sayısı, hub 'ın fiyatlandırma katmanına bağlıdır. Örneğin, hub 'ın 700.000 ileti girişini desteklemesini istiyorsanız iki adet S1 katmanı birimi seçersiniz.
     Diğer katman seçenekleri hakkında daha fazla bilgi için, bkz. [doğru IoT Hub katmanını seçme](../articles/iot-hub/iot-hub-scaling.md).
 
-    - **Azure Güvenlik Merkezi**: IoT ve cihazlarınıza ek bir tehdit koruması katmanı eklemek için bunu açın. Bu seçenek ücretsiz katmanda hub 'lar için kullanılamaz. Bu özellik hakkında daha fazla bilgi için bkz. [IoT Için Azure Güvenlik Merkezi](/azure/asc-for-iot/).
+    - **IoT Için Defender**: IoT ve cihazlarınıza ek bir tehdit koruması katmanı eklemek için bunu etkinleştirin. Bu seçenek ücretsiz katmanda hub 'lar için kullanılamaz. Bu özellik hakkında daha fazla bilgi için bkz. [IoT Için Azure Güvenlik Merkezi](/azure/asc-for-iot/).
 
     - **Gelişmiş ayarlar**  >  **Cihazdan buluta bölümler**: Bu özellik cihazdan buluta iletileri, iletilerin eşzamanlı okuyucu sayısıyla ilişkilendirir. Çoğu hub 'da yalnızca dört bölüm gereklidir.
 
@@ -58,10 +64,10 @@ Bu bölümde [Azure Portal](https://portal.azure.com)kullanarak IoT Hub 'ı olu�
 
     Etiketler ad/değer çiftleridir. Kaynakları kategorilere ayırarak ve faturalandırmayı birleştirmek için birden fazla kaynağa ve kaynak grubuna aynı etiketi atayabilirsiniz. Daha fazla bilgi için bkz. [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](../articles/azure-resource-manager/management/tag-resources.md).
 
-    ![Azure portal kullanarak hub için Etiketler atama](./media/iot-hub-include-create-hub/iot-hub-create-tabs.png)
+    ![Azure portal kullanarak hub için Etiketler atama](./media/iot-hub-include-create-hub/iot-hub-create-tags.png)
 
 1.  **İleri ' yi seçin:** seçimlerinizi gözden geçirmek için ve Oluştur ' a tıklayın. Bu ekrana benzer bir şey görürsünüz, ancak hub 'ı oluştururken seçtiğiniz değerler vardır. 
 
-    ![Yeni hub oluşturma bilgilerini gözden geçirin](./media/iot-hub-include-create-hub/iot-hub-create-review.png)
+    ![Yeni hub oluşturma bilgilerini gözden geçirin](./media/iot-hub-include-create-hub/iot-hub-review-and-create.png)
 
 1.  Yeni hub 'ınızı oluşturmak için **Oluştur** ' u seçin. Hub 'ın oluşturulması birkaç dakika sürer.

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: e8c7e21b0784aacc85bd02e3c1702e1a710e76ab
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 501a0e954efbdbc9a0396fd94c915efaf0fde9fc
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021890"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601127"
 ---
 # <a name="what-is-direct-line-speech"></a>Direct Line Speech nedir?
 
@@ -23,7 +23,7 @@ ms.locfileid: "95021890"
 
 [Ses yardımcıları](voice-assistants.md) kullanıcıları dinler ve genellikle geri konuşarak bir işlem gerçekleştirebilir. Bu kişiler, kullanıcının konuşma işlemini yapmak için [konuşmayı metne](speech-to-text.md) dönüştürme özelliğini kullanır ve ardından metnin doğal dilde anlaşılmasına ilişkin işlem yapın. Bu eylem sıklıkla, [metinden konuşmaya](text-to-speech.md)ile oluşturulan yardımcdan konuşulan çıktıyı içerir.
 
-Doğrudan hat konuşma, sesli Yardımcılar için en yüksek özelleştirme ve gelişmiş algoritmaların mümkündür düzeylerini sunmaktadır. Bu, görev tamamlama veya komut ve denetim kullanımı ile birlikte açık uçlu, doğal veya sonlandırımlar olan konuşma senaryoları için tasarlanmıştır. Bu yüksek düzeyde esneklik daha büyük bir karmaşıklıkla gelir ve doğal dil girişi kullanılarak iyi tanımlanmış görevler kapsamındaki senaryolar, kolaylaştırılmış bir çözüm deneyimi için [özel komutları (Önizleme)](custom-commands.md) düşünmek isteyebilir.
+Doğrudan hat konuşma, sesli Yardımcılar için en yüksek özelleştirme ve gelişmiş algoritmaların mümkündür düzeylerini sunmaktadır. Bu, görev tamamlama veya komut ve denetim kullanımı ile birlikte açık uçlu, doğal veya sonlandırımlar olan konuşma senaryoları için tasarlanmıştır. Bu yüksek düzeyde esneklik daha büyük bir karmaşıklıkla gelir ve doğal dil girişi kullanılarak iyi tanımlanmış görevler kapsamındaki senaryolar, kolaylaştırılmış bir çözüm deneyimi için [özel komutları](custom-commands.md) düşünmek isteyebilir.
 
 ## <a name="getting-started-with-direct-line-speech"></a>Doğrudan hat konuşmaya başlarken
 
@@ -45,7 +45,7 @@ Ayrıca, kod çalıştırıp API 'Leri hızla öğrenmenizi sağlayacak hızlı 
 
 Bir ses Yardımcısı oluşturmaya yönelik örnek kod GitHub ' da kullanılabilir. Bu örnekler, çeşitli popüler programlama dillerinde Yardımcınıza bağlanmak için istemci uygulamasını kapsar.
 
-* [Ses Yardımcısı örnekleri (SDK)](https://aka.ms/csspeech/samples)
+* [Ses Yardımcısı örnekleri (SDK)](https://aka.ms/csspeech/samples/#voice-assistants-quickstarts)
 * [Öğretici: konuşma SDK 'Sı ile yardımcınızı etkinleştirin, C #](tutorial-voice-enable-your-bot-speech-sdk.md)
 
 ## <a name="customization"></a>Özelleştirme

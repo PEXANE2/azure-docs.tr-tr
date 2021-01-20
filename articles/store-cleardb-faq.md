@@ -12,12 +12,12 @@ ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: references_regions
-ms.openlocfilehash: 25cc4dfaabee58a47cc33fe4be8dc7375bc804d2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d9d4ae746c192e8b4afd1781c1e072fc0dc70422
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96491651"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599790"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Azure App Service ile ClearDB MySql veritabanları için SSS
 Bu SSS, Azure Web Apps için ClearDB MySQL veritabanlarını kullanma ve satın alma hakkında sık sorulan soruları yanıtlar.
@@ -42,7 +42,7 @@ Bu, kullanmakta olduğunuz aboneliğin türüne bağlıdır. Yaygın olarak kull
 * [Kullandıkça Öde](https://azure.microsoft.com/offers/ms-azr-0003p/): kredi kartı gerektirir ve ücretli bir MySQL veritabanı satın aldığınızda kredi kartınız ücretlendirilir.
 * [Ücretsiz deneme](https://azure.microsoft.com/pricing/free-trial/): Microsoft Azure hizmetleriyle kullanım için krediler içerir ancak üçüncü taraf kaynakları satın almaya izin vermez. Üçüncü taraf hizmetlerini veya ücretli bir MySQL veritabanını satın almak için, kredi kartı etkinleştirilmiş bir abonelik kullanmanız gerekir. Web Apps için, ÜCRETSIZ bir ClearDB MySQL veritabanı oluşturabilirsiniz.
 * [MSDN aboneliği](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) ve **MSDN dev Test Kullandıkça Öde**: ücretsiz denemeye benzer şekilde, bir MSDN aboneliği, ClearDB 'den ücretli bir MySQL çözümü satın almak için kredi kartınız olmasını gerektirir.
-* [Kurumsal Anlaşma (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/): EA müşterileri, ayrı ve birleştirilmiş bir faturada tüm Azure Marketi (üçüncü taraf) satın alımları için her üç ayda bir, her üç ayda bir faturalandırılır. Tüm Market satınalmaları için parasal taahhüt dışında faturalandırılırsınız. Azure Mağazası 'nın Azerbaycan, Hırvatistan, Norveç ve Porto Riko 'ya kayıtlı müşteriler tarafından kullanılamayacağını lütfen unutmayın. 
+* [Kurumsal Anlaşma (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/): EA müşterileri, ayrı ve birleştirilmiş bir faturada tüm Azure Marketi (üçüncü taraf) satın alımları için her üç ayda bir, her üç ayda bir faturalandırılır. Tüm Market satınalmaları için Azure ön ödemesi (daha önce parasal taahhüt olarak adlandırılır) dışında faturalandırılırsınız. Azure Mağazası 'nın Azerbaycan, Hırvatistan, Norveç ve Porto Riko 'ya kayıtlı müşteriler tarafından kullanılamayacağını lütfen unutmayın. 
 
 ## <a name="why-was-i-charged-350-for-a-web-app--mysql-from-the-azure-marketplace"></a>Azure Marketi 'nden bir Web uygulaması + MySQL için neden $3,50 ücret ödersiniz?
 Varsayılan veritabanı seçeneği Titan 'dir ve bu $3,50 ' dir. Veritabanı oluşturma sırasında maliyeti göstermedik ve istemediğiniz bir veritabanını yanlışlıkla satın alabilirsiniz. Deneyimi geliştirmenin bir yolunu bulmaya çalışıyoruz ancak kaynakların dağıtımını başlatmadan önce Web **uygulaması ve veritabanı** için tüm seçtiğiniz fiyatlandırma katmanlarını denetlemeniz gerekir.
@@ -94,10 +94,10 @@ Mevcut ClearDB veritabanları, mevcut aboneliklerle ilişkili kredi kartını ku
 * Uygulamanızı yeni veritabanını kullanacak şekilde güncelleştirin.
 * Eski ClearDB veritabanınızı silin.
 
-MySQL (ClearDB) ile yeni bir Web uygulaması oluşturduğunuzda veya bir MySQL veritabanı (ClearDB) oluşturduğunuzda seçtiğiniz abonelik, hizmet için nasıl ödeme yapılacağını belirler. EA aboneliğiyle, Azure portal ClearDB gibi üçüncü taraf hizmetlerin temin etmeyecektir. EA abonelikleri, parasal taahhüt dışında faturalandırılır ve üç ayda bir ve Arsalda faturalandırılır. EA müşterisinin, herhangi bir üçüncü taraf Market hizmeti için ödeme yapmak üzere kredi kartı gibi bir ödeme yöntemi ayarlaması gerekir.
+MySQL (ClearDB) ile yeni bir Web uygulaması oluşturduğunuzda veya bir MySQL veritabanı (ClearDB) oluşturduğunuzda seçtiğiniz abonelik, hizmet için nasıl ödeme yapılacağını belirler. EA aboneliğiyle, Azure portal ClearDB gibi üçüncü taraf hizmetlerin temin etmeyecektir. EA abonelikleri, Azure ön ödemesi dışında faturalandırılır ve üç ayda bir ve daha sonra faturalandırılır. EA müşterisinin, herhangi bir üçüncü taraf Market hizmeti için ödeme yapmak üzere kredi kartı gibi bir ödeme yöntemi ayarlaması gerekir.
 
 ## <a name="where-can-i-see-the-charges-for-cleardb-resources-in-an-ea-subscription"></a>Bir EA aboneliğinde ClearDB kaynakları için ücretleri nereden görebilirim?
-Doğrudan EA müşterileri için, Azure Marketi ücretleri Enterprise Portal görünür. Tüm Market satın alımlarının ve tüketiminin parasal taahhüt dışında faturalandırıldığını ve üç ayda bir ve daha sonra faturalandırıldığını unutmayın. EA müşterilerinin doğrudan üçüncü taraf hizmet sağlayıcılarına ödemesi gerekir ve bu, EA hesabıyla kredi kartı gibi bir ödeme yöntemi etkinleştirerek bunu yapabilir.
+Doğrudan EA müşterileri için, Azure Marketi ücretleri Enterprise Portal görünür. Tüm Market satın alımların ve tüketiminin Azure ön ödemesi dışında faturalandırıldığını ve üç ayda bir ve daha sonra faturalandırıldığını unutmayın. EA müşterilerinin doğrudan üçüncü taraf hizmet sağlayıcılarına ödemesi gerekir ve bu, EA hesabıyla kredi kartı gibi bir ödeme yöntemi etkinleştirerek bunu yapabilir.
 
 Dolaylı EA müşterileri, Enterprise Portal **abonelikleri Yönet** sayfasında Azure Market aboneliklerini bulabilir, ancak fiyatlandırma gizlenir. Müşteriler, Market fiyatları için LSP ile iletişime geçmelidir.
 

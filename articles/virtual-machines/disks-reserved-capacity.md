@@ -7,12 +7,12 @@ ms.date: 01/30/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: e3642a621253b79fdfcdd8cb2b648dee534c6758
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: db6575894904e6ced2d4be48fec5961f5b8b8a54
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968694"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602631"
 ---
 # <a name="reduce-costs-with-azure-disks-reservation"></a>Azure Disk Rezervasyonu ile maliyetleri azaltın
 
@@ -69,11 +69,11 @@ Ayrılmış kapasiteyi satın almak için aşağıdaki adımları izleyin:
 
    |Öğe  |Açıklama  |
    |---------|---------|
-   |**Kapsam**   |  Ayırma ile ilişkili faturalandırma avantajını kaç tane abonelik kullanabilir? Bu değer Ayrıca, rezervasyonun belirli aboneliklere nasıl uygulanacağını belirtir. <br/><br/> **Paylaşılan**' i seçerseniz, rezervasyon indirimi, faturalandırma bağlamınızın içindeki her abonelikte Azure depolama kapasitesine uygulanır. Faturalandırma bağlamı, Azure 'a kaydolmanızı temel alır. Kurumsal müşteriler için, paylaşılan kapsam kayıt içindedir ve kayıt dahilindeki tüm abonelikleri içerir. Kullandıkça Öde müşterileri için, paylaşılan kapsam, hesap yöneticisi tarafından oluşturulan Kullandıkça Öde tarifesine sahip tüm bireysel abonelikleri içerir.  <br/><br/>  **Tek bir abonelik**seçerseniz, rezervasyon indirimi seçili abonelikte Azure depolama kapasitesine uygulanır. <br/><br/> **Tek kaynak grubu**' nu seçerseniz, ayırma indirimi seçili abonelikte ve bu aboneliğin seçili kaynak grubunda Azure depolama kapasitesine uygulanır. <br/><br/> Ayırmayı satın aldıktan sonra rezervasyon kapsamını değiştirebilirsiniz.  |
-   |**Abonelik**  | Azure depolama ayırması için ödeme yapmak üzere kullandığınız abonelik. Seçili abonelikteki ödeme yöntemi, maliyetleri borçlandırmak üzere kullanılır. Abonelik aşağıdaki türlerden biri olmalıdır:<br/><ul><li> Kurumsal Anlaşma (teklif numaraları MS-AZR-0017P ve MS-AZR-0148P). Kurumsal bir abonelik için ücretler, kayıt parasal taahhüt bakiyesinden düşülür veya fazla kullanım olarak ücretlendirilir.</li><br/><li>Kullandıkça Öde tarifesine sahip bireysel abonelik (MS-AZR-0003P ve MS-AZR-0023P). Kullandıkça Öde tarifesine sahip tek bir abonelik için ücretler, abonelik üzerindeki kredi kartına veya fatura ödeme yöntemine faturalandırılır.</li></ul>    |
+   |**Kapsam**   |  Ayırma ile ilişkili faturalandırma avantajını kaç tane abonelik kullanabilir? Bu değer Ayrıca, rezervasyonun belirli aboneliklere nasıl uygulanacağını belirtir. <br/><br/> **Paylaşılan**' i seçerseniz, rezervasyon indirimi, faturalandırma bağlamınızın içindeki her abonelikte Azure depolama kapasitesine uygulanır. Faturalandırma bağlamı, Azure 'a kaydolmanızı temel alır. Kurumsal müşteriler için, paylaşılan kapsam kayıt içindedir ve kayıt dahilindeki tüm abonelikleri içerir. Kullandıkça Öde müşterileri için, paylaşılan kapsam, hesap yöneticisi tarafından oluşturulan Kullandıkça Öde tarifesine sahip tüm bireysel abonelikleri içerir.  <br/><br/>  **Tek bir abonelik** seçerseniz, rezervasyon indirimi seçili abonelikte Azure depolama kapasitesine uygulanır. <br/><br/> **Tek kaynak grubu**' nu seçerseniz, ayırma indirimi seçili abonelikte ve bu aboneliğin seçili kaynak grubunda Azure depolama kapasitesine uygulanır. <br/><br/> Ayırmayı satın aldıktan sonra rezervasyon kapsamını değiştirebilirsiniz.  |
+   |**Abonelik**  | Azure depolama ayırması için ödeme yapmak üzere kullandığınız abonelik. Seçili abonelikteki ödeme yöntemi, maliyetleri borçlandırmak üzere kullanılır. Abonelik aşağıdaki türlerden biri olmalıdır:<br/><ul><li> Kurumsal Anlaşma (teklif numaraları MS-AZR-0017P ve MS-AZR-0148P). Bir kurumsal abonelik için ücretler, kaydın Azure ön ödemesinin (daha önce parasal taahhüt olarak adlandırılır) bakiyesinden düşülür veya fazla kullanım olarak ücretlendirilir.</li><br/><li>Kullandıkça Öde tarifesine sahip bireysel abonelik (MS-AZR-0003P ve MS-AZR-0023P). Kullandıkça Öde tarifesine sahip tek bir abonelik için ücretler, abonelik üzerindeki kredi kartına veya fatura ödeme yöntemine faturalandırılır.</li></ul>    |
    | **Diskler** | Oluşturmak istediğiniz SKU. |
    | **Bölge** | Ayırmanın etkin olduğu bölge. |
-   | **Faturalandırma sıklığı** | Hesap rezervasyon için ne sıklıkta faturalandırılır. Seçenekler **ayda** ve **önünde**bulunur. |
+   | **Faturalandırma sıklığı** | Hesap rezervasyon için ne sıklıkta faturalandırılır. Seçenekler **ayda** ve **önünde** bulunur. |
 
     ![purchase.png istediğiniz ürünü seçme bölmesi](media/disks-reserved-capacity/premium-ssd-reserved-purchase-selection.png)
 

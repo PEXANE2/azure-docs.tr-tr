@@ -1,7 +1,7 @@
 ---
 title: Sesli yardımcılar hakkında sık sorulan sorular
 titleSuffix: Azure Cognitive Services
-description: Özel komutlar (Önizleme) veya doğrudan hat konuşma kanalı kullanarak sesli yardımcılar hakkında en popüler sorulara yanıtlar alın.
+description: Özel komutlar veya doğrudan hat konuşma kanalı kullanarak sesli yardımcılar hakkında en popüler sorulara yanıtlar alın.
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: b43d446930d1f8c40c12e5d0aeba6eb202ef47ef
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 4b0bbb982ed48dc052b1a15514ad36b1d69b62b5
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353740"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599426"
 ---
 # <a name="voice-assistants-frequently-asked-questions"></a>Sesli yardımcılar hakkında sık sorulan sorular
 
@@ -25,11 +25,11 @@ Bu belgede sorularınıza yanıt bulamazsanız, [diğer destek seçeneklerine](.
 
 **S: Ses Yardımcısı nedir?**
 
-Y **:** Cortana gibi, bir ses Yardımcısı, kullanıcının konuşulan makollarını dinleyen bir çözümdür, söz konusu söz konusu çıkışların içeriğini analiz etmek için bir veya daha fazla eylem gerçekleştirir ve genellikle konuşulan bir bileşeni içeren kullanıcıya bir yanıt verir. Bu, bir sistemle etkileşimde bulunmak için bir "sesli oturum, sesli çıkış" deneyimidir. Sesli yardım yazarları, `DialogServiceConnector` [özel komutlar (Önizleme)](custom-commands.md) veya bot çerçevesinin [doğrudan çizgi konuşma](direct-line-speech.md) kanalı kullanılarak oluşturulan bir yardımcı ile iletişim kurmak için konuşma SDK 'sında kullanarak bir cihaz üzerinde uygulama oluşturur. Bu yardımcılar, marka veya ürününüze uyarlanmış bir deneyim sağlamak için özel anahtar sözcükler, özel konuşma ve özel ses kullanabilir.
+Y **:** Cortana gibi, bir ses Yardımcısı, kullanıcının konuşulan makollarını dinleyen bir çözümdür, söz konusu söz konusu çıkışların içeriğini analiz etmek için bir veya daha fazla eylem gerçekleştirir ve genellikle konuşulan bir bileşeni içeren kullanıcıya bir yanıt verir. Bu, bir sistemle etkileşimde bulunmak için bir "sesli oturum, sesli çıkış" deneyimidir. Sesli yardım yazarları, `DialogServiceConnector` [özel komutlar](custom-commands.md) veya bot çerçevesinin [doğrudan çizgi konuşma](direct-line-speech.md) kanalı kullanılarak oluşturulan bir yardımcı ile iletişim kurmak için konuşma SDK 'sında kullanarak bir cihaz üzerinde uygulama oluşturur. Bu yardımcılar, marka veya ürününüze uyarlanmış bir deneyim sağlamak için özel anahtar sözcükler, özel konuşma ve özel ses kullanabilir.
 
-**S: özel komutları (Önizleme) mi yoksa doğrudan konuşma hattını mi kullanmalıyım? Fark nedir?**
+**S: özel komutları mı yoksa doğrudan konuşma hattını mi kullanmalıyım? Fark nedir?**
 
-Y **:** [özel komutlar (Önizleme)](custom-commands.md) , görev tamamlama senaryolarına uygun olan bir yardımcıyı kolayca oluşturup barındırmak için daha düşük karmaşıklığa sahip bir araç kümesidir. [Doğrudan hat](direct-line-speech.md) konuşması, güçlü bir konuşma senaryolarını etkinleştirebilecek daha zengin, daha gelişmiş yetenekler sağlar. Daha fazla bilgi için [yardımcı çözümlerin karşılaştırmasına](voice-assistants.md#choosing-an-assistant-solution) bakın.
+**A:** [özel komutlar](custom-commands.md) , görev tamamlama senaryolarına uygun olan bir yardımcıyı kolayca oluşturup barındırmak için daha düşük karmaşıklığa sahip bir araç kümesidir. [Doğrudan hat](direct-line-speech.md) konuşması, güçlü bir konuşma senaryolarını etkinleştirebilecek daha zengin, daha gelişmiş yetenekler sağlar. Daha fazla bilgi için [yardımcı çözümlerin karşılaştırmasına](voice-assistants.md#choosing-an-assistant-solution) bakın.
 
 **S: Nasıl yaparım? kullanmaya başlamak istiyor musunuz?**
 
@@ -61,7 +61,7 @@ Y **:** Aboneliğinizi Azure portal yönetirken, lütfen _bilişsel_ **Hizmetler
 
 Y **:** Bu hata, yardımcınızla ses Yardımcısı hizmeti arasında bir iletişim sorunu olduğunu gösterir.
 
-- Özel komutlar (Önizleme) için, özel komutlar (Önizleme) uygulamanızın yayımlandığından emin olun
+- Özel komutlar için, özel komutlar uygulamanızın yayımlandığından emin olun
 - Doğrudan hat konuşması için, [bot 'Unuzu doğrudan hat konuşma kanalına bağladığınıza](/azure/bot-service/bot-service-channel-connect-directlinespeech), bot 'Unuza [akış protokolü desteği](/azure/bot-service/directline-speech-bot) (ilgili Web yuva desteğiyle) eklemiş olduğunuzdan emin olun ve ardından, bot 'un kanaldan gelen isteklere yanıt verdiğini denetleyin.
 
 **S: Bu kod hala çalışmıyor ve/veya kullanırken farklı bir hata alıyorum `DialogServiceConnector` . Ne yapmam gerekir?**

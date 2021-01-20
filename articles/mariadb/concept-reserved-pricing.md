@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: c28abc882635f7cd0815952fe0ae183bef7138d2
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 462ba0ccbd5d7e7048c2c7fcb9c5bece04adaebe
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241625"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600899"
 ---
 # <a name="prepay-for-azure-database-for-mariadb-compute-resources-with-reserved-capacity"></a>Ayrılmış kapasiteye sahip MariaDB işlem kaynakları için Azure veritabanı için ön ödeme
 
@@ -38,7 +38,7 @@ Ayırma boyutu, belirli bir bölgedeki mevcut veya hemen dağıtılmış veritab
 ## <a name="buy-azure-database-for-mariadb-reserved-capacity"></a>MariaDB için Azure veritabanı ayrılmış kapasitesi satın alın
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
-2. **Tüm hizmetler** > **Rezervasyonlar** ’ı seçin.
+2. **Tüm hizmetler** > **Rezervasyonlar**’ı seçin.
 3.  **Ekle** ' yi seçin ve ardından satın alma rezervasyonları bölmesinde, MariaDB veritabanlarınızı Için **Azure veritabanı** ' nı seçin.
 4.  Gerekli alanları doldur. ' Yi seçtiğiniz özniteliklerle eşleşen mevcut veya yeni veritabanları, ayrılmış kapasite indirimi elde etmek için nitelendir ' ı seçin. İndirimi alan MariaDB sunucuları için Azure veritabanınızın gerçek sayısı, seçilen kapsama ve miktara göre değişir.
 
@@ -50,9 +50,9 @@ Aşağıdaki tablo gerekli alanları açıklar.
 
 | Alan | Açıklama |
 | :------------ | :------- |
-| Abonelik   | MariaDB için Azure veritabanı ayrılmış kapasite ayırması için ödeme yapmak üzere kullanılan abonelik. Abonelik üzerindeki ödeme yöntemi, MariaDB için Azure veritabanı ayrılmış kapasite rezervasyonu için ön maliyetler üzerinden ücretlendirilir. Abonelik türü bir kurumsal anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya kullandıkça öde fiyatlandırması (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P) içeren tek bir anlaşma olmalıdır. Kurumsal abonelik için ücretler kaydın maddi işlem bakiyesinden düşülür ve fazla kullanım olarak ücretlendirilir. Kullandıkça Öde fiyatlandırmasına sahip bireysel bir abonelik için ücretler, abonelik üzerindeki kredi kartına veya fatura ödeme yöntemine faturalandırılır.
-| Kapsam | VCore rezervasyonunun kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Şunları seçerseniz: </br></br> **, Sanal** çekirdek ayırma indirimi, faturalandırma bağlamınızın içindeki aboneliklerde çalışan MariaDB sunucuları Için Azure veritabanı 'na uygulanır. Kurumsal müşteriler için, paylaşılan kapsam kayıt içindedir ve kayıt dahilindeki tüm abonelikleri içerir. Kullandıkça Öde müşterileri için paylaşılan kapsam, hesap yöneticisi tarafından oluşturulan tüm Kullandıkça Öde abonelikleridir.</br></br> **Tek abonelik** , sanal çekirdek ayırma indirimi Bu abonelikteki MariaDB sunucuları Için Azure veritabanı 'na uygulanır. </br></br> **Tek kaynak grubu** , rezervasyon indirimi seçili abonelikteki MariaDB sunucuları Için Azure veritabanı ve bu abonelikteki seçili kaynak grubu için geçerlidir.
-| Region | MariaDB için Azure veritabanı ayrılmış kapasite rezervasyonu kapsamındaki Azure bölgesi.
+| Abonelik   | MariaDB için Azure veritabanı ayrılmış kapasite ayırması için ödeme yapmak üzere kullanılan abonelik. Abonelik üzerindeki ödeme yöntemi, MariaDB için Azure veritabanı ayrılmış kapasite rezervasyonu için ön maliyetler üzerinden ücretlendirilir. Abonelik türü bir kurumsal anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya kullandıkça öde fiyatlandırması (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P) içeren tek bir anlaşma olmalıdır. Bir kurumsal abonelik için ücretler, kaydın Azure ön ödemesinin (daha önce parasal taahhüt olarak adlandırılır) bakiyesinden düşülür veya fazla kullanım olarak ücretlendirilir. Kullandıkça Öde fiyatlandırmasına sahip bireysel bir abonelik için ücretler, abonelik üzerindeki kredi kartına veya fatura ödeme yöntemine faturalandırılır.
+| Kapsam | VCore rezervasyonunun kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Şunları seçerseniz: </br></br> **, Sanal** çekirdek ayırma indirimi, faturalandırma bağlamınızın içindeki aboneliklerde çalışan MariaDB sunucuları Için Azure veritabanı 'na uygulanır. Kurumsal müşteriler için, paylaşılan kapsam kayıt içindedir ve kayıt dahilindeki tüm abonelikleri içerir. Kullandıkça Öde müşterileri için paylaşılan kapsam, hesap yöneticisi tarafından oluşturulan tüm Kullandıkça Öde abonelikleridir.</br></br> **Tek abonelik**, sanal çekirdek ayırma indirimi Bu abonelikteki MariaDB sunucuları Için Azure veritabanı 'na uygulanır. </br></br> **Tek kaynak grubu**, rezervasyon indirimi seçili abonelikteki MariaDB sunucuları Için Azure veritabanı ve bu abonelikteki seçili kaynak grubu için geçerlidir.
+| Bölge | MariaDB için Azure veritabanı ayrılmış kapasite rezervasyonu kapsamındaki Azure bölgesi.
 | Dağıtım türü | Ayırmasını satın almak istediğiniz MariaDB için Azure veritabanı kaynak türü.
 | Performans katmanı | MariaDB sunucuları için Azure veritabanı hizmet katmanı.
 | Terim | Bir yıl
