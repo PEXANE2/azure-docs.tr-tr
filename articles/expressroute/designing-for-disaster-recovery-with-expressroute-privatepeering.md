@@ -18,7 +18,7 @@ ms.locfileid: "92202422"
 
 ExpressRoute, Microsoft kaynaklarına yönelik taşıyıcı sınıfı özel ağ bağlantısı sağlamak için yüksek kullanılabilirlik için tasarlanmıştır. Diğer bir deyişle, Microsoft ağı içindeki ExpressRoute yolunda tek bir hata noktası yoktur. ExpressRoute devresinin kullanılabilirliğini en üst düzeye çıkarmak için tasarım konuları için bkz. [ExpressRoute ile yüksek kullanılabilirlik Için tasarlama][HA].
 
-Bununla birlikte, Murphy 'in popüler AdAge 'yi almak *için bir şey yanlış gidecekse* , bu makalede tek bir ExpressRoute bağlantı hattı kullanılarak ele alınan hatalardan çok daha fazla geçen çözümlere odaklanalım. Bu makalede, diğer bir deyişle, coğrafi olarak yedekli ExpressRoute devreleri kullanarak olağanüstü durum kurtarma için sağlam arka uç ağ bağlantısı oluşturmaya yönelik ağ mimarisi konularına bakmamıza izin verir.
+Bununla birlikte, Murphy 'in popüler AdAge 'yi almak *için bir şey yanlış gidecekse*, bu makalede tek bir ExpressRoute bağlantı hattı kullanılarak ele alınan hatalardan çok daha fazla geçen çözümlere odaklanalım. Bu makalede, diğer bir deyişle, coğrafi olarak yedekli ExpressRoute devreleri kullanarak olağanüstü durum kurtarma için sağlam arka uç ağ bağlantısı oluşturmaya yönelik ağ mimarisi konularına bakmamıza izin verir.
 
 >[!NOTE]
 >Bu makalede açıklanan kavramlar, sanal WAN veya bunun dışında bir ExpressRoute bağlantı hattı oluşturulduğunda geçerlidir.
@@ -140,10 +140,10 @@ Bu makalede, bir ExpressRoute devresi özel eşleme bağlantısının olağanüs
 
 <!--Image References-->
 [1]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/one-region.png "küçük ila orta büyüklükteki şirket içi ağ konuları"
-[2]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/specificroute.png "daha belirgin yollar kullanarak yol seçimini etkili" bir şekilde seçme
+[2]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/specificroute.png "daha belirgin yollar kullanarak yol seçimini etkili bir şekilde seçme"
 [3]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/configure-weight.png "Azure Portal aracılığıyla bağlantı ağırlığını yapılandırma"
-[4]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/connectionweight.png "bağlantı ağırlığı kullanarak yol seçimini" seçme
-[5]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/aspath.png "yol sonuna kadar kullanılan yol seçimini" seçme
+[4]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/connectionweight.png "bağlantı ağırlığı kullanarak yol seçimini seçme"
+[5]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/aspath.png "yol sonuna kadar kullanılan yol seçimini seçme"
 [6]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region.png "büyük dağıtılan şirket içi ağ konuları"
 [7]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-arch1.png "Senaryo 1"
 [8]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-sol1.png "etkin-etkin ExpressRoute bağlantı hattı çözümü 1"
