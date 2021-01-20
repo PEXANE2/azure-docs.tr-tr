@@ -5,12 +5,12 @@ ms.custom: subject-cost-optimization
 ms.service: app-service
 ms.topic: how-to
 ms.date: 01/01/2021
-ms.openlocfilehash: f92b766fc1122456fda70d2deff81fa80a02d159
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 85035ff894127df4e9eb8334702fd9546d7a63c3
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250120"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598699"
 ---
 # <a name="plan-and-manage-costs-for-azure-app-service"></a>Azure App Service maliyetlerini planlayın ve yönetin
 
@@ -51,7 +51,7 @@ App Service yönelik diğer maliyet kaynakları şunlardır: (Ayrıntılar için
 
 Bir App Service planındaki tüm uygulamaları sildiğinizde, plan, yapılandırılmış fiyatlandırma katmanına ve örnek sayısına göre ücretleri tahakkuk etmeye devam eder. İstenmeyen ücretlerden kaçınmak için planı silin veya **ücretsiz** katmana ölçeklendirin.
 
-Azure App Service kaynaklarını sildikten sonra, ilgili Azure hizmetlerinden kaynaklar mevcut olmaya devam edebilir. Bunlar silinene kadar maliyetleri tahakkuk ettirmeye devam eder. Örneğin:
+Azure App Service kaynaklarını sildikten sonra, ilgili Azure hizmetlerinden kaynaklar mevcut olmaya devam edebilir. Bunlar silinene kadar maliyetleri tahakkuk ettirmeye devam eder. Örnek:
 
 - **Yalıtılmış** bir katman App Service planı Için oluşturduğunuz sanal ağ
 - Yedeklemeleri veya tanılama günlüklerini depolamak için oluşturduğunuz depolama hesapları
@@ -61,7 +61,7 @@ Azure App Service kaynaklarını sildikten sonra, ilgili Azure hizmetlerinden ka
 
 ### <a name="using-monetary-credit-with-azure-app-service"></a>Azure App Service ile parasal krediyi kullanma
 
-EA parasal taahhüt krediniz ile Azure App Service ücretleri için ödeme yapabilirsiniz. Ancak, Azure Marketi 'nden dahil olmak üzere üçüncü taraf ürün ve hizmetlerine yönelik ücretler için ödeme yapmak üzere EA parasal taahhüt kredisi kullanamazsınız.
+Azure ön ödeyiniz (daha önce parasal taahhüt olarak adlandırılır) krediyle Azure App Service ücretleri için ödeme yapabilirsiniz. Ancak Azure ön ödeme kredisi, Azure Marketi 'nden farklı olan üçüncü taraf ürün ve hizmetlerine yönelik ücretlerle ödeme yapmak için kullanamazsınız.
 
 ## <a name="estimate-costs"></a>Maliyetleri tahmin etme
 

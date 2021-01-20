@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cognitive-services
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: 4fe06edbb3e02f23ef56a3e7fff848682e36e3af
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 925a092eb67fa459213a37df0fc6b3f7a1b8a0fb
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251327"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602364"
 ---
 # <a name="plan-and-manage-costs-for-azure-cognitive-services"></a>Azure bilişsel hizmetler için maliyetleri planlayın ve yönetin
 
@@ -60,9 +60,9 @@ Soru-Cevap Oluşturma kaynaklarını sildikten sonra, aşağıdaki kaynaklar mev
 - [Azure App Service (çalışma zamanı için)](https://azure.microsoft.com/pricing/details/app-service/)
 - [Azure Bilişsel Arama (veriler için)](https://azure.microsoft.com/pricing/details/search/)
 
-### <a name="using-monetary-credit-with-cognitive-services"></a>Bilişsel hizmetler ile parasal krediyi kullanma
+### <a name="using-azure-prepayment-credit-with-cognitive-services"></a>Bilişsel hizmetler ile Azure ön ödeme kredisi kullanma
 
-Bilişsel hizmetler ücretleri için EA parasal taahhüt krediniz ile ödeme yapabilirsiniz. Ancak, Azure Marketi 'nden dahil olmak üzere üçüncü taraf ürün ve hizmetleri için ücret ödeyerek EA parasal taahhüt kredisi kullanamazsınız.
+Bilişsel hizmetler ücretlendirmesinin Azure ön ödeme (daha önce parasal taahhüt olarak adlandırılır) kredisi ile ödeme yapabilirsiniz. Ancak Azure ön ödeme kredisi, Azure Marketi 'nden dahil olan üçüncü taraf ürün ve hizmetlerine yönelik ücretler için ödeme yapmak üzere kullanamazsınız.
 
 ## <a name="create-budgets"></a>Bütçe oluşturma
 

@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/19/2020
-ms.openlocfilehash: 793ff9eedb747da0edcbbf2df50b62f06f407892
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.date: 01/19/2021
+ms.openlocfilehash: 9ace9a319f4cc6bcc1545d6d1becce61b1892765
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247434"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598674"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
 
@@ -37,7 +37,7 @@ Aboneliğiniz kapsamında bir Azure Cosmos hesabı oluşturduktan sonra [veritab
 | Kapsayıcı başına en fazla depolama alanı | Sınırsız |
 | Veritabanı başına en fazla depolama alanı | Sınırsız |
 | Hesap başına en büyük ek boyutu (ek özelliği kullanım dışı) | 2 GB |
-| 1 GB başına gereken en az RU/s | 10 RU/sn<br>**Note:** Kapsayıcınız veya VERITABANıNıZ 1 TB 'tan fazla veri içeriyorsa, hesabınız ["yüksek depolama/düşük aktarım hızı" programına](set-throughput.md#high-storage-low-throughput-program) uygun olabilir |
+| 1 GB başına gereken en az RU/s | 10 RU/sn<br>**Note:** hesabınız ["yüksek depolama/düşük aktarım hızı" programımızla](set-throughput.md#high-storage-low-throughput-program) uygunsa bu en düşük seviyede düşürülebilecek |
 
 > [!NOTE]
 > Depolama veya işleme için daha fazla sınır gerektiren bölüm anahtarlarına sahip iş yüklerini yönetmeye yönelik en iyi yöntemler hakkında bilgi edinmek için bkz. [yapay bir bölüm anahtarı oluşturma](synthetic-partition-keys.md).
@@ -60,7 +60,7 @@ El ile işleme içeren bir kapsayıcının gerektirdiği minimum aktarım hızı
 
 Örnek: 400 RU/s ve 0 GB depolama alanı ile sağlanan bir kapsayıcınıza sahip olduğunuzu varsayalım. 50.000 RU/sn 'ye aktarım hızını artırır ve 20 GB veri içeri aktarın. En az RU/sn artık `MAX(400, 20 * 10 RU/s per GB, 50,000 RU/s / 100)` = 500 ru/sn 'dir. Zaman içinde, depolama alanı 200 GB olarak artar. En az RU/sn artık `MAX(400, 200 * 10 RU/s per GB, 50,000 / 100)` = 2000 ru/sn 'dir. 
 
-**Note:** Kapsayıcınız veya VERITABANıNıZ 1 TB 'tan fazla veri içeriyorsa, hesabınız ["yüksek depolama/düşük aktarım hızı" programına](set-throughput.md#high-storage-low-throughput-program)uygun olabilir.
+**Note:** hesabınız ["yüksek depolama/düşük aktarım hızı" programımız](set-throughput.md#high-storage-low-throughput-program)IÇIN uygun olduğunda, GB depolama alanı BAŞıNA en düşük 10 ru/sn miktarı düşürülemez.
 
 #### <a name="minimum-throughput-on-shared-throughput-database"></a>Paylaşılan aktarım hızı veritabanında en düşük aktarım hızı 
 Paylaşılan bir üretilen iş veritabanının el ile üretilen iş için gereken en düşük aktarım hızını tahmin etmek için en yüksek değeri bulun:
@@ -72,7 +72,7 @@ Paylaşılan bir üretilen iş veritabanının el ile üretilen iş için gereke
 
 Örnek: 400 RU/s, 15 GB depolama ve 10 kapsayıcı ile sağlanan bir veritabanınız olduğunu varsayalım. En az RU/sn `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 ru/sn 'dir. Veritabanında 30 kapsayıcı varsa, en az RU/sn şöyle olacaktır `400 + MAX(30 - 25, 0) * 100 RU/s` = 900 ru/s. 
 
-**Note:** Kapsayıcınız veya VERITABANıNıZ 1 TB 'tan fazla veri içeriyorsa, hesabınız ["yüksek depolama/düşük aktarım hızı" programına](set-throughput.md#high-storage-low-throughput-program)uygun olabilir.
+**Note:** hesabınız ["yüksek depolama/düşük aktarım hızı" programımız](set-throughput.md#high-storage-low-throughput-program)IÇIN uygun olduğunda, GB depolama alanı BAŞıNA en düşük 10 ru/sn miktarı düşürülemez.
 
 Özet bölümünde, sağlanan en düşük RU sınırları aşağıda verilmiştir. 
 

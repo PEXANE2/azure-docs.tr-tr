@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/03/2019
 author: christopheranderson
 ms.author: chrande
-ms.openlocfilehash: 3f5996b281c1985747f754e3796e9fb84f90fdd3
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 0442d21aebe1cf577c50d14a5aeff40bd1f6cd9c
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356986"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600523"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Azure Cosmos DB Gremlin sunucu yanıtı üstbilgileri
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -36,13 +36,12 @@ Bu üst bilgilere bağımlılık alan diğer Gremlin uygulamalarına yönelik ta
 
 ## <a name="status-codes"></a>Durum kodları
 
-Sunucu tarafından döndürülen en yaygın durum kodları aşağıda listelenmiştir.
+Sunucu tarafından durum özniteliği için döndürülen yaygın kodların çoğu `x-ms-status-code` aşağıda listelenmiştir.
 
 | Durum | Açıklama |
 | --- | --- |
 | **401** | `"Unauthorized: Invalid credentials provided"`Kimlik doğrulama parolası Cosmos DB hesap anahtarıyla eşleşmiyorsa hata iletisi döndürülür. Azure portal Gremlin hesabınıza Cosmos DB gidin ve anahtarın doğru olduğundan emin olun.|
 | **404** | Aynı kenarı veya köşeyi aynı anda silmeye ve güncelleştirmeye çalışacak eşzamanlı işlemler. `"Owner resource does not exist"` hata iletisi bağlantı parametrelerinde `/dbs/<database name>/colls/<collection or graph name>` biçiminde belirtilen veritabanı veya koleksiyonun doğru olmadığını gösterir.|
-| **408** | `"Server timeout"` çapraz geçişinin **30 saniyeden** fazla sürdüğünü ve sunucu tarafından iptal edildiğini gösterir. Çapraz arama kapsamını daraltmak için her geçiş atlamada köşeleri veya kenarları filtreleyerek, traversals uygulamanızı en uygun şekilde gerçekleştirin.|
 | **409** | `"Conflicting request to resource has been attempted. Retry to avoid conflicts."` Bu durum genellikle grafta zaten aynı tanımlayıcıya sahip bir köşe veya kenar bulunduğunda oluşur.| 
 | **412** | Durum kodu hata iletisiyle birlikte tamamlanır `"PreconditionFailedException": One of the specified pre-condition is not met` . Bu hata, bir kenar veya köşeyi okumak ve değiştirildikten sonra depoya geri yazmak arasındaki iyimser eşzamanlılık denetim ihlalinin göstergesi olur. Bu hatanın oluştuğu yaygın durumlar, örneğin özellik değişimdir `g.V('identifier').property('name','value')` . Gremlin motoru köşeyi okur, değiştirir ve tekrar yazar. Paralel olarak çalışan başka bir geçiş geçişi varsa, aynı köşeyi veya bir kenarı yazmaya çalışırken, bunlardan biri bu hatayı alır. Uygulamanın çapraz geçişi sunucuya yeniden göndermesi gerekir.| 
 | **429** | İstek azaltıldı ve **x-ms-retry-after-ms** değeri kadar süre sonra yeniden denenmelidir| 
@@ -53,6 +52,7 @@ Sunucu tarafından döndürülen en yaygın durum kodları aşağıda listelenmi
 | **1004** | Bu durum kodu hatalı biçimlendirilmiş grafik isteğini gösterir. Seri durumdan çıkarma işlemi başarısız olduğunda istek hatalı olabilir, değer türü veya desteklenmeyen Gremlin işlemi istendi olarak değer olmayan türün serisi kaldırılıyor. Uygulama başarılı olmayacak, isteği yeniden denememelidir. | 
 | **1007** | Genellikle bu durum kodu hata iletisiyle birlikte döndürülür `"Could not process request. Underlying connection has been closed."` . İstemci sürücüsü sunucu tarafından kapatılan bir bağlantıyı kullanmayı denerse bu durum oluşabilir. Uygulamanın çapraz geçişi farklı bir bağlantıda yeniden denemesi gerekir.
 | **1008** | Cosmos DB Gremlin Server, kümedeki trafiği yeniden dengelemek için bağlantıları sonlandırabilirler. İstemci sürücüleri bu durumu işlemeli ve istekleri sunucuya göndermek için yalnızca canlı bağlantıları kullanmalıdır. Bazen istemci sürücüleri bağlantının kapatıldığını algılayamayabilir. Uygulama bir hatayla karşılaştığında, `"Connection is too busy. Please retry after sometime or open more connections."` farklı bir bağlantıda çapraz geçişi yeniden denemelidir.
+| **1009** | İşlem ayrılan süre içinde tamamlanmadı ve sunucu tarafından iptal edildi. Her geçiş noktasında dar arama kapsamına olan köşeleri veya kenarları filtreleyerek hızlı bir şekilde çalışmak için traversals 'nizi iyileştirin. İstek zaman aşımı varsayılan değer **60 saniyedir**. |
 
 ## <a name="samples"></a>Örnekler
 

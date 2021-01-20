@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 07/29/2020
+ms.date: 01/20/2021
 ms.author: tisande
-ms.openlocfilehash: 35232f95bc18432db05775807d95f23ceab66aea
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 09148e65e446d723fbfe7a54602db59ee0739f83
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333792"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599349"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB anahtar sözcükler
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -107,6 +107,73 @@ Toplu sistem işlevine ve alt sorgusuna sahip sorgular `DISTINCT` desteklenmez. 
 ```sql
 SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 ```
+
+## <a name="like"></a>LIKE
+
+Belirli bir karakter dizesinin belirtilen bir Düzenle eşleşip eşleşmediğini bağlı olarak bir Boole değeri döndürür. Bir desenler, düzenli karakter ve joker karakterler içerebilir. `LIKE`Anahtar sözcüğü ya da [Regexmatch](sql-query-regexmatch.md) sistem işlevini kullanarak mantıksal olarak eşdeğer sorgular yazabilirsiniz. Seçtiğiniz dizinden bağımsız olarak aynı dizin kullanımını gözlemleyeceksiniz. Bu nedenle, `LIKE` söz dizimini normal ifadelerden daha fazla tercih ediyorsanız kullanmanız gerekir.
+
+> [!NOTE]
+> `LIKE`Bir dizini kullanabileceğinden, karşılaştırmak istediğiniz özellikler için [bir Aralık dizini oluşturmanız](indexing-policy.md) gerekir `LIKE` .
+
+Aşağıdaki joker karakterleri şu şekılde kullanabilirsiniz:
+
+| Joker karakter | Açıklama                                                  | Örnek                                     |
+| -------------------- | ------------------------------------------------------------ | ------------------------------------------- |
+| %                    | Herhangi bir sıfır veya daha fazla karakter dizesi                      | BURADA c. Description, "% SO% PS%" gıbı      |
+| _ (alt çizgi)     | Herhangi bir tek karakter                                       | BURADA c. Description "% SO_PS%" gıbı      |
+| [ ]                  | Belirtilen Aralık ([a-f]) veya set ([abcdef]) içinde herhangi bir tek karakter. | BURADA c. Description, "% SO [t-z] PS%" gıbı  |
+| [^]                  | Belirtilen Aralık ([^ a-f]) veya set ([^ abcdef]) içinde olmayan tek bir karakter. | BURADA c. Description, "% SO [^ abc] PS%" gıbı |
+
+
+### <a name="using-like-with-the--wildcard-character"></a>% Joker karakterle BEĞENME
+
+`%`Karakter, sıfır veya daha fazla karakterden oluşan herhangi bir dizeyle eşleşir. Örneğin, `%` deseninin başlangıcına ve sonuna bir koyarak aşağıdaki sorgu, içeren bir açıklama içeren tüm öğeleri döndürür `fruit` :
+
+```sql
+SELECT *
+FROM c
+WHERE c.description LIKE "%fruit%"
+```
+
+`%`Düzenin başlangıcında yalnızca bir karakter kullandıysanız, yalnızca ile başlayan bir açıklama içeren öğeleri geri döndürdük `fruit` :
+
+```sql
+SELECT *
+FROM c
+WHERE c.description LIKE "fruit%"
+```
+
+
+### <a name="using-not-like"></a>BEĞENMIYOR
+
+Aşağıdaki örnek, bir açıklama içeren tüm öğeleri döndürür `fruit` :
+
+```sql
+SELECT *
+FROM c
+WHERE c.description NOT LIKE "%fruit%"
+```
+
+### <a name="using-the-escape-clause"></a>Kaçış yan tümcesini kullanma
+
+KAÇıŞ yan tümcesini kullanarak bir veya daha fazla joker karakter içeren desenler için arama yapabilirsiniz. Örneğin, dizeyi içeren açıklamaları aramak isterseniz, `20-30%` bunu `%` joker karakter olarak yorumlamak istemezsiniz.
+
+```sql
+SELECT *
+FROM c
+WHERE c.description LIKE '%20-30!%%' ESCAPE '!'
+```
+
+### <a name="using-wildcard-characters-as-literals"></a>Joker karakterleri değişmez değer olarak kullanma
+
+Joker karakterleri, değişmez karakterler olarak değerlendirmek için köşeli ayraç içine alabilirsiniz. Bir joker karakteri köşeli ayraç içine aldığınızda, tüm özel öznitelikleri kaldırırsınız. İşte bazı örnekler:
+
+| Desen           | Anlamı |
+| ----------------- | ------- |
+| "20-30 [%]" GIBI | % 20-30  |
+| "[_] N" gıbı     | _n      |
+| "[[]" Gıbı    | [       |
+| "]" Gıbı        | ]       |
 
 ## <a name="in"></a>IN
 

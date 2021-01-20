@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 433875e52e77a8992197b47fe0424cd0b7e9f50c
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: d9e26b6388223ae252a5e85e6e9fb9783a3b8429
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628297"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600414"
 ---
 # <a name="how-to-plan-a-virtual-machine-offer"></a>Bir sanal makine teklifini planlayın
 
@@ -73,7 +73,7 @@ VM teklifleri için en az bir plan gereklidir. Bir plan, çözüm kapsamını ve
 VM 'Ler, Kullandıkça Öde veya kendi lisansını getir (KLG) lisanslama modellerini kullanarak tam olarak ticari olarak etkinleştirilmiştir. Microsoft, ticari işlemi barındırır ve müşterinizin adına fatura alır. Müşteri ile Microsoft arasında, kurumsal sözleşmeler dahil tercih edilen ödeme ilişkilerini kullanmanın avantajını elde edersiniz. Daha fazla bilgi için bkz. [ticari Market Transact özellikleri](./marketplace-commercial-transaction-capabilities-and-considerations.md).
 
 > [!NOTE]
-> Bir Kurumsal Anlaşma ilişkili parasal taahhütler, VM 'nizin Azure kullanımında kullanılabilir, ancak yazılım lisans ücretlerine karşı kullanılamaz.
+> Bir Kurumsal Anlaşma ilişkili Azure ön ödemesi (daha önce parasal taahhüt olarak adlandırılır), VM 'nizin Azure kullanımında kullanılabilir, ancak yazılım lisans ücretlerine karşı kullanılamaz.
 
 ### <a name="licensing-options"></a>Lisanslama seçenekleri
 

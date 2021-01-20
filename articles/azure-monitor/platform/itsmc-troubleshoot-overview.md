@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 14f1056bf761eb7b591d04db34610468058bc255
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 2ffe7c8994d32917a08896c7d25f20d4adf09066
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562871"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601903"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>ITSM Bağlayıcısındaki sorunları giderme
 
@@ -53,11 +53,36 @@ Hizmet Eşlemesi kullanıyorsanız, ıTSM çözümlerinde oluşturulan hizmet Ma
      - Web uygulamasının başarıyla dağıtıldığından ve karma bağlantının oluşturulduğundan emin olun. Bağlantının şirket içi Service Manager bilgisayarla başarıyla yapıldığını doğrulamak için [karma bağlantı](./itsmc-connections-scsm.md#configure-the-hybrid-connection)oluşturma belgelerinde açıklandığı gibi Web uygulaması URL 'sine gidin.  
 
 - Log Analytics uyarılar harekete geçmemişse ancak ıTSM ürününde iş öğeleri oluşturulmadıysa, yapılandırma öğeleri iş öğelerine oluşturulmaz/bağlanmadıysa veya diğer bilgiler için şu kaynaklara bakın:
-   -  ISMC: çözüm, bağlantıların, iş öğelerinin, bilgisayarların ve daha fazlasını bir Özet gösterir. **Bağlayıcı durumu** etiketine sahip kutucuğu seçin. Bunu yapmak ilgili sorguyla **aramayı günlüğe kaydetmek** için yönlendirir. `LogType_S`Daha fazla bilgi için ' a sahip günlük kayıtlarına bakın `ERROR` .
+   -  ISMC: çözüm, bağlantıların, iş öğelerinin, bilgisayarların ve daha fazlasını bir [Özet](itsmc-dashboard.md)gösterir. **Bağlayıcı durumu** etiketine sahip kutucuğu seçin. Bunu yapmak ilgili sorguyla **aramayı günlüğe kaydetmek** için yönlendirir. `LogType_S`Daha fazla bilgi için ' a sahip günlük kayıtlarına bakın `ERROR` .
+   Tablodaki iletilerle ilgili ayrıntıları [burada](itsmc-dashboard-errors.md)görebilirsiniz.
    - **Günlük arama** sayfası: doğrudan sorgu kullanarak hataları ve Ilgili bilgileri görüntüleyin `*ServiceDeskLog_CL*` .
 
-### <a name="troubleshoot-service-manager-web-app-deployment"></a>Web uygulaması dağıtımı Service Manager sorunlarını giderme
+## <a name="common-symptoms---how-it-should-be-resolved"></a>Genel belirtiler-nasıl çözülmesi gerekir?
 
--   Web uygulaması dağıtımıyla ilgili sorun yaşıyorsanız, abonelikte kaynak oluşturma/dağıtma izinlerinizin olduğundan emin olun.
--   Bir **nesne başvurusunu alırsanız bir nesne hatası örneğine ayarlı değilse** , [komut dosyasını](itsmc-service-manager-script.md)çalıştırdığınızda, **Kullanıcı Yapılandırması** bölümüne geçerli değerler girdiğinizden emin olun.
--   Service Bus geçişi ad alanını oluşturmadıysanız, gerekli kaynak sağlayıcının abonelikte kayıtlı olduğundan emin olun. Kayıtlı değilse, Service Bus geçişi ad alanını Azure portal el ile oluşturun. [Karma bağlantıyı](./itsmc-connections-scsm.md#configure-the-hybrid-connection) Azure Portal oluşturduğunuzda da oluşturabilirsiniz.
+Aşağıdaki liste, yaygın belirtileri ve nasıl çözümlenmelidir:
+
+* **Belirti**: yinelenen iş öğeleri oluşturuldu
+
+    **Neden**: neden iki seçenekten biri olabilir:
+    * Uyarı için birden fazla ıTSSM eylemi tanımlandı.
+    * Uyarı çözüldü.
+
+    **Çözüm**: iki çözüm olabilir:
+    * Uyarı başına bir tek ıSM eylem grubuna sahip olduğunuzdan emin olun.
+    * ITSM Bağlayıcısı, bir uyarı çözümlendiğinde eşleşen iş öğeleri durum güncelleştirmesini desteklemez. Yeni bir çözümlenmiş iş öğesi oluşturulur.
+* **Belirti**: iş öğeleri oluşturulmaz
+
+    **Neden**: bu belirtinin birkaç nedeni olabilir:
+    * ServiceNow tarafında kod değişikliği
+    * İzinlerin yanlış yapılandırılması
+    * ServiceNow hız sınırları çok yüksek/düşük
+    * Yenileme belirtecinin geçerliliği zaman aşımına uğradı
+    * ITSM Bağlayıcısı silindi
+
+    **Çözüm**: [panoyu](itsmc-dashboard.md) denetleyebilir ve bağlayıcı durumu bölümündeki hataları gözden geçirebilirsiniz. [Yaygın hataları](itsmc-dashboard-errors.md) gözden geçirin ve hatanın nasıl çözümleneceğini öğrenin.
+
+* **Belirti**: eylem grubu için ıtssm eylemi oluşturulamıyor
+
+    **Neden**: yeni oluşturulan ITSM Bağlayıcısı ilk eşitlemeyi henüz bitiremedi.
+
+    **Çözüm**: [ortak kullanıcı arabirimi hatalarını](itsmc-dashboard-errors.md#ui-common-errors) gözden geçirebilir ve hatanın nasıl çözümleneceğini öğrenebilirsiniz.

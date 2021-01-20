@@ -5,12 +5,12 @@ ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: 70aecc2613fbe21d34e36f9487d7ba383e140bc8
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 4db6abeb3e6f4a07780268a6455177e0ca237205
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217371"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598488"
 ---
 # <a name="manage-your-function-app"></a>İşlev uygulamanızı yönetme 
 
@@ -84,7 +84,7 @@ Yerel olarak bir işlev uygulaması geliştirirken, bu değerlerin yerel kopyala
 
 ## <a name="hosting-plan-type"></a>Barındırma planı türü
 
-Bir işlev uygulaması oluşturduğunuzda, uygulamanın çalıştırıldığı App Service bir barındırma planı da oluşturursunuz. Bir planda bir veya daha fazla işlev uygulaması olabilir. İşlevlerinizin işlevselliği, ölçeklendirilmesi ve fiyatları plan türüne bağlıdır. Daha fazla bilgi edinmek için bkz. [Azure işlevleri fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/functions/).
+Bir işlev uygulaması oluşturduğunuzda, uygulamanın çalıştığı bir barındırma planı da oluşturursunuz. Bir planda bir veya daha fazla işlev uygulaması olabilir. İşlevlerinizin işlevselliği, ölçeklendirilmesi ve fiyatları plan türüne bağlıdır. Daha fazla bilgi için bkz. [Azure işlevleri barındırma seçenekleri](functions-scale.md).
 
 İşlev uygulamanız tarafından kullanılan planın türünü Azure portal veya Azure CLı veya Azure PowerShell API 'Lerini kullanarak belirleyebilirsiniz. 
 
@@ -131,6 +131,75 @@ $PlanID = (Get-AzFunctionApp -ResourceGroupName $ResourceGroup -Name $FunctionAp
 
 ---
 
+## <a name="plan-migration"></a>Geçiş planlaması
+
+Azure CLı komutlarını, bir işlev uygulamasını bir tüketim planı ve Windows üzerinde Premium plan arasında geçirmek için kullanabilirsiniz. Belirli komutlar geçişin yönüne bağlıdır. Adanmış (App Service) plana doğrudan geçiş Şu anda desteklenmiyor.
+
+Bu geçiş Linux üzerinde desteklenmez.
+
+### <a name="consumption-to-premium"></a>Premium 'a tüketim
+
+Bir tüketim planından Windows 'da Premium plana geçiş yapmak için aşağıdaki yordamı kullanın:
+
+1. Mevcut işlev uygulamanızla aynı bölgede ve kaynak grubunda yeni bir App Service planı (elastik Premium) oluşturmak için aşağıdaki komutu çalıştırın.  
+
+    ```azurecli-interactive
+    az functionapp plan create --name <NEW_PREMIUM_PLAN_NAME> --resource-group <MY_RESOURCE_GROUP> --location <REGION> --sku EP1
+    ```
+
+1. Var olan işlev uygulamasını yeni Premium planına geçirmek için aşağıdaki komutu çalıştırın
+
+    ```azurecli-interactive
+    az functionapp update --name <MY_APP_NAME> --resource-group <MY_RESOURCE_GROUP> --plan <NEW_PREMIUM_PLAN>
+    ```
+
+1. Önceki tüketim işlevi uygulama planınızı artık gerekmiyorsa, yeni bir uygulamaya başarıyla geçirildiğini doğruladıktan sonra özgün işlev uygulama planınızı silin. Kaynak grubunuzdaki tüm tüketim planlarının listesini almak için aşağıdaki komutu çalıştırın.
+
+    ```azurecli-interactive
+    az functionapp plan list --resource-group <MY_RESOURCE_GROUP> --query "[?sku.family=='Y'].{PlanName:name,Sites:numberOfSites}" -o table
+    ```
+
+    Planı, geçiş yaptığınız bir sıfır siteyle güvenle silebilirsiniz.
+
+1. İçinden geçirdiğiniz tüketim planını silmek için aşağıdaki komutu çalıştırın.
+
+    ```azurecli-interactive
+    az functionapp plan delete --name <CONSUMPTION_PLAN_NAME> --resource-group <MY_RESOURCE_GROUP>
+    ```
+
+### <a name="premium-to-consumption"></a>Premium 'dan tüketim 'e
+
+Bir Premium planından Windows üzerinde tüketim planına geçiş yapmak için aşağıdaki yordamı kullanın:
+
+1. Mevcut işlev uygulamanızla aynı bölgede ve kaynak grubunda yeni bir işlev uygulaması (tüketim) oluşturmak için aşağıdaki komutu çalıştırın. Bu komut ayrıca işlev uygulamasının çalıştırıldığı yeni bir tüketim planı oluşturur.
+
+    ```azurecli-interactive
+    az functionapp create --resource-group <MY_RESOURCE_GROUP> --name <NEW_CONSUMPTION_APP_NAME> --consumption-plan-location <REGION> --runtime dotnet --functions-version 3 --storage-account <STORAGE_NAME>
+    ```
+
+1. Mevcut işlev uygulamasını yeni tüketim planına geçirmek için aşağıdaki komutu çalıştırın.
+
+    ```azurecli-interactive
+    az functionapp update --name <MY_APP_NAME> --resource-group <MY_RESOURCE_GROUP> --plan <NEW_CONSUMPTION_PLAN>
+    ```
+
+1. Yalnızca var olan işlev uygulamasını çalıştırmak için oluşturulan plana ihtiyaç duyduğundan, adım 1 ' de oluşturduğunuz işlev uygulamasını silin.
+
+    ```azurecli-interactive
+    az functionapp delete --name <NEW_CONSUMPTION_APP_NAME> --resource-group <MY_RESOURCE_GROUP>
+    ```
+
+1. Önceki Premium işlev uygulama planınızı artık gerekmiyorsa, yeni bir uygulamaya başarıyla geçirildiğini doğruladıktan sonra özgün işlev uygulama planınızı silin. Plan silinmediği takdirde Premium plan için de ücretlendirilirsiniz. Kaynak grubunuzdaki tüm Premium planların listesini almak için aşağıdaki komutu çalıştırın.
+
+    ```azurecli-interactive
+    az functionapp plan list --resource-group <MY_RESOURCE_GROUP> --query "[?sku.family=='EP'].{PlanName:name,Sites:numberOfSites}" -o table
+    ```
+
+1. İçinden geçirdiğiniz Premium planı silmek için aşağıdaki komutu çalıştırın.
+
+    ```azurecli-interactive
+    az functionapp plan delete --name <PREMIUM_PLAN> --resource-group <MY_RESOURCE_GROUP>
+    ```
 
 ## <a name="platform-features"></a>Platform özellikleri
 
@@ -199,7 +268,7 @@ az functionapp cors add --name <FUNCTION_APP_NAME> \
 
 [`az functionapp cors show`](/cli/azure/functionapp/cors#az-functionapp-cors-show)Mevcut izin verilen kaynakları listelemek için komutunu kullanın.
 
-### <a name="authentication"></a><a name="auth"></a>Kimlik Doğrulaması
+### <a name="authentication"></a><a name="auth"></a>Yetkilendirmesi
 
 ![İşlev uygulaması için kimlik doğrulamasını yapılandırma](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-authentication.png)
 

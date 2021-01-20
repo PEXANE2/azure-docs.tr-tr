@@ -9,12 +9,12 @@ ms.date: 11/13/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: 14e53efb7be9eef3ca388e6524e5ffd678671cd0
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 0bad4637f13bbcf02047416499e4f82fdc53eb4f
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251650"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601306"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Azure Blob depolama için maliyetleri planlayın ve yönetin
 
@@ -41,7 +41,7 @@ Azure depolama hesabına veri aktarmaya başlamadan önce maliyetleri tahmin etm
 4. Tahmine göre etkilerini görmek için kalan seçenekleri değiştirin.
 
    > [!NOTE]
-   > Azure Kurumsal Anlaşma parasal taahhüt krediniz ile Azure Blob Depolama ücretleri için ödeme yapabilirsiniz. Ancak, Azure Marketi 'nden dahil olmak üzere üçüncü taraf ürün ve hizmetlerine yönelik ücretler için ödeme yapmak üzere parasal taahhüt kredisi kullanamazsınız.
+   > Azure ön ödemenizi (daha önce parasal taahhüt olarak adlandırılır) krediyle Azure Blob Depolama ücretleri için ödeme yapabilirsiniz. Ancak Azure ön ödeme kredisi, Azure Marketi 'nden dahil olan üçüncü taraf ürün ve hizmetlerine yönelik ücretler için ödeme yapmak üzere kullanamazsınız.
 
 ## <a name="optimize-costs"></a>Maliyetleri iyileştirin
 

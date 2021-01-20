@@ -3,17 +3,17 @@ title: 'Hızlı başlangıç: JavaScript için Azure Blob depolama istemci kitap
 description: JavaScript için Azure Storage istemci kitaplığı ile v10 arasındaki ile Node.js blob ve kapsayıcılar oluşturun, karşıya yükleyin ve silin
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 07/24/2020
+ms.date: 01/19/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 1f47c35997fe060fd3c318602bcad17de83b530c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2371c789b9e4a9fc70f4207fd8a634e419c97912
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91249629"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599452"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>Hızlı başlangıç: Node.js içindeki JavaScript ile v10 arasındaki SDK ile Blobları yönetme
 
@@ -22,7 +22,7 @@ Bu hızlı başlangıçta, Node.js kullanarak blob 'ları yönetmeyi öğrenecek
 > [!NOTE]
 > Bu hızlı başlangıç, Azure Blob depolama istemci kitaplığı 'nın eski bir sürümünü kullanır. En son sürümü kullanmaya başlamak için bkz. [hızlı başlangıç: JavaScript V12 SDK ile Blobları yönetme Node.js](storage-quickstart-blobs-nodejs.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Azure Depolama hesabı. [Depolama hesabı oluşturun](../common/storage-account-create.md).
@@ -139,7 +139,7 @@ const ONE_MEGABYTE = 1024 * 1024;
 const FOUR_MEGABYTES = 4 * ONE_MEGABYTE;
 ```
 
-API tarafından yapılan istekler, belirli bir aralıktan sonra zaman aşımına getirilebilir şekilde ayarlanabilir. [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-legacy) sınıfı isteklerin zaman aşımının yönetilmesinden sorumludur ve arkasından gelen sabit, bu örnekte kullanılan zaman aşımlarını tanımlamak için kullanılır.
+API tarafından yapılan istekler, belirli bir aralıktan sonra zaman aşımına getirilebilir şekilde ayarlanabilir. [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-legacy&preserve-view=true) sınıfı isteklerin zaman aşımının yönetilmesinden sorumludur ve arkasından gelen sabit, bu örnekte kullanılan zaman aşımlarını tanımlamak için kullanılır.
 
 ```javascript
 const ONE_MINUTE = 60 * 1000;
@@ -178,13 +178,13 @@ const serviceURL = new ServiceURL(`https://${STORAGE_ACCOUNT_NAME}.blob.core.win
 
 Bu kod bloğunda aşağıdaki sınıflar kullanılmıştır:
 
-- [SharedKeyCredential](/javascript/api/%40azure/storage-blob/sharedkeycredential?view=azure-node-legacy) sınıfı istek işlem hattına göndermek üzere depolama hesabı kimlik bilgilerinin sarmalanmasından sorumludur.
+- [SharedKeyCredential](/javascript/api/%40azure/storage-blob/sharedkeycredential?view=azure-node-legacy&preserve-view=true) sınıfı istek işlem hattına göndermek üzere depolama hesabı kimlik bilgilerinin sarmalanmasından sorumludur.
 
-- [StorageURL](/javascript/api/%40azure/storage-blob/storageurl?view=azure-node-legacy) sınıfı yeni bir işlem hattı oluşturulmasından sorumludur.
+- [StorageURL](/javascript/api/%40azure/storage-blob/storageurl?view=azure-node-legacy&preserve-view=true) sınıfı yeni bir işlem hattı oluşturulmasından sorumludur.
 
-- [ServiceURL](/javascript/api/%40azure/storage-blob/serviceurl?view=azure-node-legacy), REST API'sinde kullanılan bir URL modeller. Bu sınıfın örnekleri kapsayıcıları listeleme gibi eylemler gerçekleştirmenizi ve kapsayıcı URL'lerini oluşturmak için bağlam bilgisi sunmanızı sağlar.
+- [ServiceURL](/javascript/api/%40azure/storage-blob/serviceurl?view=azure-node-legacy&preserve-view=true), REST API'sinde kullanılan bir URL modeller. Bu sınıfın örnekleri kapsayıcıları listeleme gibi eylemler gerçekleştirmenizi ve kapsayıcı URL'lerini oluşturmak için bağlam bilgisi sunmanızı sağlar.
 
-*ServiceURL* örneği, depolama hesabınızdaki kapsayıcıları ve blobları yönetmek için [ContainerURL](/javascript/api/%40azure/storage-blob/containerurl?view=azure-node-legacy) ve [BlockBlobURL](/javascript/api/%40azure/storage-blob/blockbloburl?view=azure-node-legacy) örnekleriyle birlikte kullanılır.
+*ServiceURL* örneği, depolama hesabınızdaki kapsayıcıları ve blobları yönetmek için [ContainerURL](/javascript/api/%40azure/storage-blob/containerurl?view=azure-node-legacy&preserve-view=true) ve [BlockBlobURL](/javascript/api/%40azure/storage-blob/blockbloburl?view=azure-node-legacy&preserve-view=true) örnekleriyle birlikte kullanılır.
 
 ```javascript
 const containerURL = ContainerURL.fromServiceURL(serviceURL, containerName);
@@ -222,7 +222,7 @@ Aborters, şu işlevleri sunarak istekler üzerinde denetim sahibi olmanızı sa
 - istekleri iptal etme
 - isteklerinizi birlikte zaman aşımına uğramak üzere durdurmak için *Aborter. None* statik üyesini kullanın
 
-### <a name="create-a-container"></a>Bir kapsayıcı oluşturma
+### <a name="create-a-container"></a>Kapsayıcı oluşturma
 
 Kapsayıcı oluşturmak için *ContainerURL*'nin *create* metodu kullanılır.
 

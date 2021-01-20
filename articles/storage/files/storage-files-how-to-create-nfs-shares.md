@@ -1,5 +1,5 @@
 ---
-title: NFS Share-Azure dosyaları oluşturma
+title: NFS paylaşma oluşturma-Azure dosyaları (Önizleme)
 description: Ağ dosya sistemi protokolü kullanılarak iliştirilenebilir bir Azure dosya paylaşımının nasıl oluşturulacağını öğrenin.
 author: roygara
 ms.service: storage
@@ -8,12 +8,12 @@ ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 3cf22ee22c35b850aff33290a59a7043bb57c984
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 323eed77d6f7a6ccfcdd0a7c7aecff3a125300dc
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620962"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602666"
 ---
 # <a name="how-to-create-an-nfs-share"></a>NFS paylaşma oluşturma
 
@@ -27,7 +27,7 @@ Azure dosya paylaşımları, bulutta yaşayan tamamen yönetilen dosya paylaşı
 
 [!INCLUDE [files-nfs-regional-availability](../../../includes/files-nfs-regional-availability.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Bir [dosya depolama hesabı](storage-how-to-create-premium-fileshare.md)oluşturun.
 

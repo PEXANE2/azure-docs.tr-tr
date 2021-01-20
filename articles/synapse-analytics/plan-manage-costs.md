@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.date: 12/09/2020
-ms.openlocfilehash: ab772043c681684836e3c488419584d94dd0b45a
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: c7a0be6f1d402cc994532ab4bc5a5d0ea39bc8b7
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220652"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599053"
 ---
 # <a name="plan-and-manage-costs-for-azure-synapse-analytics"></a>Azure SYNAPSE Analytics için maliyetleri planlayın ve yönetin
 
@@ -40,17 +40,17 @@ Azure SYNAPSE, yeni kaynağı dağıtırken Azure SYNAPSE ile birlikte maliyetle
 
 Azure SYNAPSE için kaynak oluşturduğunuzda, diğer Azure hizmetlerine yönelik kaynaklar da oluşturulur. Bunlara aşağıdakiler dahildir:
 
-- Data Lake Storage Gen2
+- Data Lake Storage 2. Nesil
 
  ### <a name="costs-might-accrue-after-resource-deletion"></a>Kaynak silme işleminin ardından maliyetler tahakkuk edebilir
 
 Azure SYNAPSE kaynaklarını sildikten sonra, aşağıdaki kaynaklar mevcut olmaya devam edebilir. Bunlar silinene kadar maliyetleri tahakkuk ettirmeye devam eder.
 
-- Data Lake Storage Gen2
+- Data Lake Storage 2. Nesil
 
-### <a name="using-monetary-credit-with-azure-synapse"></a>Azure SYNAPSE ile parasal krediyi kullanma 
+### <a name="using-azure-prepayment-credit-with-azure-synapse"></a>Azure SYNAPSE ile Azure ön ödeme kredisi kullanma 
 
-EA parasal taahhüt krediniz ile Azure SYNAPSE ücretleri için ödeme yapabilirsiniz. Ancak, Azure Marketi 'nden dahil olmak üzere üçüncü taraf ürün ve hizmetleri için ücret ödeyerek EA parasal taahhüt kredisi kullanamazsınız.
+Azure ön ödemenizin (daha önce parasal taahhüt olarak adlandırılır) krediyle Azure SYNAPSE ücretleri için ödeme yapabilirsiniz. Ancak Azure ön ödeme kredisi, Azure Marketi 'nden dahil olan üçüncü taraf ürün ve hizmetlerine yönelik ücretler için ödeme yapmak üzere kullanamazsınız.
 
 ## <a name="review-estimated-costs-in-the-azure-portal"></a>Azure portalında tahmini maliyetleri gözden geçirme
 

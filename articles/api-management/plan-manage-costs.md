@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: api-management
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: 90449a29f58f31827e2a36b5f6c41563e88ac032
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 799ef33e78737bfd2e1c1a1cfa4991f44c8f5ec0
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251361"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599647"
 ---
 # <a name="plan-and-manage-costs-for-api-management"></a>API Management maliyetlerini planlayın ve yönetin
 
@@ -49,7 +49,7 @@ Ek fiyatlandırma ve özellik ayrıntıları için bkz.
 
 ### <a name="using-monetary-credit-with-api-management"></a>API Management ile parasal krediyi kullanma
 
-EA parasal taahhüt krediniz ile API Management ücretleri için ödeme yapabilirsiniz. Ancak, Azure Marketi 'nden dahil olmak üzere üçüncü taraf ürün ve hizmetleri için ücret ödeyerek EA parasal taahhüt kredisi kullanamazsınız.
+Azure ön ödemenizin (daha önce parasal taahhüt olarak adlandırılır) API Management ücretleri için ödeme yapabilirsiniz. Ancak Azure ön ödeme kredisi, Azure Marketi 'nden farklı üçüncü taraf ürün ve hizmetlerine yönelik ücretler için ödeme yapmak üzere kullanamazsınız.
 
 ## <a name="monitor-costs"></a>Maliyetleri izleme
 

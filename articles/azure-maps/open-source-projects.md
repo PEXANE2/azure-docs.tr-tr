@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 0f0d94dbc7b2c720faa1da41a88e3c3313dac377
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: df82e76fa2e5a9ea70c447411beafb8a2df9b036
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680749"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601598"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure haritalar topluluk-açık kaynaklı projeler
 
@@ -65,6 +65,12 @@ Aşağıda, Azure Maps web SDK 'sının yeteneklerini genişleten açık kaynakl
 | [Azure Maps .NET UWP IoT uzaktan denetimi](https://github.com/Azure-Samples/azure-maps-dotnet-webgl-uwp-iot-remote-control) | Bu, Azure Maps ve IoT Hub hizmetlerini kullanarak uzaktan denetlenen bir haritanın nasıl oluşturulacağını gösteren örnek bir uygulamadır. |
 | [Azure Haritalar'ı kullanarak IoT uzamsal analiz gerçekleştirme](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing) | Boşluk ve saat içinde oluşan ilgili olayları izlemek ve yakalamak, yaygın bir IoT senaryosudur. |
 
+**Üçüncü taraf Haritası denetim eklentileri**
+
+| Proje Adı | Açıklama |
+|-|-|
+| [Azure haritalar leaflet eklentisi](https://github.com/azure-samples/azure-maps-leaflet) | [Azure haritalar kutucuk hizmetlerinden](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)kutucuk katmanlarının kaplamasını kolaylaştıran bir [leaflet](https://leafletjs.com/) JavaScript eklentisi. |
+ 
 **Araçlar ve kaynaklar**
 
 | Proje Adı | Açıklama |

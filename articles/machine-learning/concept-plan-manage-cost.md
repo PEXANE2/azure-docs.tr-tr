@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 81d9a6bcbd910a60e1f659e430bbe527eb3077c6
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 5be02ff698dac02d702e47f8929c6f8ddf2adbb7
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251752"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602551"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Azure Machine Learning maliyetlerini planlayın ve yönetin
 
@@ -81,9 +81,9 @@ ws.delete(delete_dependent_resources=True)
 
 Çalışma alanınızda Azure Kubernetes hizmeti (AKS) oluşturursanız veya çalışma alanınıza herhangi bir işlem kaynağı eklerseniz, bunları [Azure Portal](https://portal.azure.com)ayrı olarak silmeniz gerekir.
 
-### <a name="using-monetary-credit-with-azure-machine-learning"></a>Azure Machine Learning ile parasal krediyi kullanma
+### <a name="using-azure-prepayment-credit-with-azure-machine-learning"></a>Azure Machine Learning ile Azure ön ödeme kredisi kullanma
 
-EA parasal taahhüt krediniz ile Azure Machine Learning ücretleri için ödeme yapabilirsiniz. Ancak, Azure Marketi 'nden dahil olmak üzere üçüncü taraf ürün ve hizmetleri için ücret ödeyerek EA parasal taahhüt kredisi kullanamazsınız.
+Azure ön ödeyiniz (daha önce parasal taahhüt olarak adlandırılır) krediyle Azure Machine Learning ücretleri için ödeme yapabilirsiniz. Bununla birlikte, Azure Marketi 'nden dahil olmak üzere üçüncü taraf ürün ve hizmetlerine yönelik ücretler için Azure ön ödemeli hizmetini kullanamazsınız.
 
 
 ## <a name="create-budgets"></a>Bütçe oluşturma

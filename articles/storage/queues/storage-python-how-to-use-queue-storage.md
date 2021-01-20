@@ -4,17 +4,17 @@ description: Sıraları oluşturup silmek ve iletileri eklemek, almak ve silmek 
 author: mhopkins-msft
 ms.author: mhopkins
 ms.reviewer: dineshm
-ms.date: 08/25/2020
+ms.date: 01/19/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: seo-javascript-october2019, devx-track-python
-ms.openlocfilehash: e473bf5c2761010a6aeea94e6430d34ca34989fb
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 82d18fd79b10a8500cfd9191f143438d69fda401
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588286"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600797"
 ---
 # <a name="how-to-use-azure-queue-storage-from-python"></a>Python 'da Azure kuyruk depolama kullanma
 
@@ -69,7 +69,7 @@ Alternatif yükleme yöntemleri için bkz. [Python Için Azure SDK](https://gith
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-[`QueueService`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2)Nesnesi kuyruklarla çalışmanıza olanak sağlar. Aşağıdaki kod bir nesnesi oluşturur `QueueService` . Azure Storage 'a programlı bir şekilde erişmek istediğiniz herhangi bir Python dosyasının yanına aşağıdaki kodu ekleyin:
+[`QueueService`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true)Nesnesi kuyruklarla çalışmanıza olanak sağlar. Aşağıdaki kod bir nesnesi oluşturur `QueueService` . Azure Storage 'a programlı bir şekilde erişmek istediğiniz herhangi bir Python dosyasının yanına aşağıdaki kodu ekleyin:
 
 ```python
 from azure.storage.queue import (
@@ -127,7 +127,7 @@ Bir kuyruğa ileti eklemek için [`send_message`](/azure/developer/python/sdk/st
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Bir kuyruğa ileti eklemek için, [`put_message`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#put-message-queue-name--content--visibility-timeout-none--time-to-live-none--timeout-none-) yöntemini kullanarak yeni bir ileti oluşturun ve kuyruğa ekleyin.
+Bir kuyruğa ileti eklemek için, [`put_message`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#put-message-queue-name--content--visibility-timeout-none--time-to-live-none--timeout-none-) yöntemini kullanarak yeni bir ileti oluşturun ve kuyruğa ekleyin.
 
 ```python
 message = u"Hello, World"
@@ -167,7 +167,7 @@ Yöntemini çağırarak iletileri kuyruktan kaldırmadan göz atmayı sağlayabi
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Yöntemini çağırarak iletileri kuyruktan kaldırmadan göz atmayı sağlayabilirsiniz [`peek_messages`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#peek-messages-queue-name--num-messages-none--timeout-none-) . Varsayılan olarak, bu yöntem tek bir iletiye göz atar.
+Yöntemini çağırarak iletileri kuyruktan kaldırmadan göz atmayı sağlayabilirsiniz [`peek_messages`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#peek-messages-queue-name--num-messages-none--timeout-none-) . Varsayılan olarak, bu yöntem tek bir iletiye göz atar.
 
 ```python
 messages = queue_service.peek_messages(queue_name)
@@ -190,7 +190,7 @@ Aşağıdaki kod, [`update_message`](/azure/developer/python/sdk/storage/azure-s
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Aşağıdaki kod, [`update_message`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#update-message-queue-name--message-id--pop-receipt--visibility-timeout--content-none--timeout-none-) bir iletiyi güncelleştirmek için yöntemini kullanır. Görünürlük zaman aşımı 0 olarak ayarlanır, yani ileti hemen görünür ve içerik güncellenir.
+Aşağıdaki kod, [`update_message`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#update-message-queue-name--message-id--pop-receipt--visibility-timeout--content-none--timeout-none-) bir iletiyi güncelleştirmek için yöntemini kullanır. Görünürlük zaman aşımı 0 olarak ayarlanır, yani ileti hemen görünür ve içerik güncellenir.
 
 ```python
 messages = queue_service.get_messages(queue_name)
@@ -214,7 +214,7 @@ Bir kuyruktaki ileti sayısı ile ilgili bir tahmin alabilirsiniz.
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-[`get_queue_metadata`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#get-queue-metadata-queue-name--timeout-none-)Yöntemi, dahil sıra özelliklerini döndürür `approximate_message_count` .
+[`get_queue_metadata`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#get-queue-metadata-queue-name--timeout-none-)Yöntemi, dahil sıra özelliklerini döndürür `approximate_message_count` .
 
 ```python
 metadata = queue_service.get_queue_metadata(queue_name)
@@ -238,7 +238,7 @@ Sonuç yalnızca, hizmet isteğinize yanıt verdikten sonra iletiler eklenebildi
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-[Get_messages](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-)çağırdığınızda sıradaki bir sonraki iletiyi varsayılan olarak alırsınız. Öğesinden döndürülen bir ileti, `get_messages` Bu kuyruktan gelen diğer kod okuma iletileri için görünmez hale gelir. Varsayılan olarak bu ileti 30 saniye görünmez kalır. İletiyi kuyruktan kaldırma işleminin tamamlanabilmesi için, [delete_message](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#delete-message-queue-name--message-id--pop-receipt--timeout-none-)de çağırmanız gerekir.
+[Get_messages](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-)çağırdığınızda sıradaki bir sonraki iletiyi varsayılan olarak alırsınız. Öğesinden döndürülen bir ileti, `get_messages` Bu kuyruktan gelen diğer kod okuma iletileri için görünmez hale gelir. Varsayılan olarak bu ileti 30 saniye görünmez kalır. İletiyi kuyruktan kaldırma işleminin tamamlanabilmesi için, [delete_message](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#delete-message-queue-name--message-id--pop-receipt--timeout-none-)de çağırmanız gerekir.
 
 ```python
 messages = queue_service.get_messages(queue_name)
@@ -260,7 +260,7 @@ Aşağıdaki kod örneği, [`receive_messages`](/azure/developer/python/sdk/stor
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Aşağıdaki kod örneği, [`get_messages`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-) tek bir çağrıda 16 ileti almak için yöntemini kullanır. Ardından, her iletiyi bir döngü kullanarak işler `for` . Ayrıca her ileti için görünmezlik zaman aşımı beş dakika olarak ayarlanır.
+Aşağıdaki kod örneği, [`get_messages`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-) tek bir çağrıda 16 ileti almak için yöntemini kullanır. Ardından, her iletiyi bir döngü kullanarak işler `for` . Ayrıca her ileti için görünmezlik zaman aşımı beş dakika olarak ayarlanır.
 
 ```python
 messages = queue_service.get_messages(queue_name, num_messages=16, visibility_timeout=5*60)
@@ -282,7 +282,7 @@ Bir kuyruğu ve içerdiği tüm iletileri silmek için [`delete_queue`](/azure/d
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Bir kuyruğu ve içerdiği tüm iletileri silmek için [`delete_queue`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#delete-queue-queue-name--fail-not-exist-false--timeout-none-) yöntemini çağırın.
+Bir kuyruğu ve içerdiği tüm iletileri silmek için [`delete_queue`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#delete-queue-queue-name--fail-not-exist-false--timeout-none-) yöntemini çağırın.
 
 ```python
 print("Deleting queue: " + queue_name)

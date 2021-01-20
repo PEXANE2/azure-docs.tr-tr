@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: f2170aad9bc0218d39244d08f5cc838235f8fee9
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 9021d933e3808867ec784ad3c6d0f8810d608ea3
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134373"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600073"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python’da otomatik ML denemelerini yapılandırma
 
@@ -65,7 +65,7 @@ automl_config = AutoMLConfig(task = "classification")
 
 Otomatik makine öğrenmesi yerel masaüstünüzde veya Azure Blob Depolama gibi bulutta duran verilerinizi destekler. Veriler bir **Pandas DataFrame** veya **Azure Machine Learning TabularDataset** içinde okunabilir. [Veri kümeleri hakkında daha fazla bilgi edinin](how-to-create-register-datasets.md).
 
-Eğitim verileriyle ilgili gereksinimler:
+Machine Learning 'de Eğitim verileri için gereksinimler:
 - Verilerin tablolu biçimde olması gerekir.
 - Tahmin edilecek değer, hedef sütun, verilerde olmalıdır.
 
@@ -96,9 +96,9 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 ## <a name="training-validation-and-test-data"></a>Eğitim, doğrulama ve test verileri
 
-Doğrudan oluşturucuda ayrı **eğitim ve doğrulama kümeleri** belirtebilirsiniz `AutoMLConfig` . [Data bölmelerini yapılandırma ve](how-to-configure-cross-validation-data-splits.md) oto ml denemeleri için çapraz doğrulama hakkında daha fazla bilgi edinin. 
+Doğrudan oluşturucuda ayrı **eğitim verileri ve doğrulama veri kümeleri** belirtebilirsiniz `AutoMLConfig` . [Data bölmelerini yapılandırma ve](how-to-configure-cross-validation-data-splits.md) oto ml denemeleri için çapraz doğrulama hakkında daha fazla bilgi edinin. 
 
-Açıkça bir `validation_data` veya `n_cross_validation` parametresi belirtmezseniz,, doğrulamanın nasıl gerçekleştirileceğini belirlemek Için, oto varsayılan teknikler uygular. Bu belirleme, parametreye atanan veri kümesindeki satır sayısına bağlıdır `training_data` . 
+Açıkça bir `validation_data` veya `n_cross_validation` parametresi belirtmezseniz, otomatik ml doğrulamanın nasıl gerçekleştirileceğini belirlemek için varsayılan teknikler uygular. Bu belirleme, parametreye atanan veri kümesindeki satır sayısına bağlıdır `training_data` . 
 
 |Eğitim &nbsp; veri &nbsp; boyutu| Doğrulama tekniği |
 |---|-----|
@@ -219,7 +219,7 @@ Her otomatik makine öğrenimi denemesinde, verileriniz, farklı ölçeklerde bu
 
 Denemeleri 'nizi yapılandırırken `AutoMLConfig` , ayarı etkinleştirebilir/devre dışı bırakabilirsiniz `featurization` . Aşağıdaki tabloda, [oto Mlconfig nesnesinde](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)fealeştirme için kabul edilen ayarlar gösterilmektedir. 
 
-|Korleştirme yapılandırması | Description |
+|Korleştirme yapılandırması | Açıklama |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Ön işleme 'nin bir parçası olarak, [veri guardı ve korleştirme adımlarının](how-to-configure-auto-features.md#featurization) otomatik olarak gerçekleştirileceğini belirtir. **Varsayılan ayar**.|
 |`"featurization": 'off'`| Korleştirme adımının otomatik olarak yapılmaması gerektiğini gösterir.|

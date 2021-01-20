@@ -3,19 +3,22 @@ title: Ana VHD görüntüsünü hazırlama ve özelleştirme-Azure
 description: Windows sanal masaüstü ana görüntüsünü hazırlama, özelleştirme ve Azure 'a yükleme.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 10/14/2019
+ms.date: 01/19/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9e4cb4fe8a701600290d24c055e2be5187a711c5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 33af83934e8ecc5745f2edad3a7832a870406452
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023403"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602386"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Ana VHD görüntüsünü hazırlama ve özelleştirme
 
 Bu makalede, sanal makineler (VM 'Ler) oluşturma ve bunlara yazılım yükleme dahil olmak üzere Azure 'a yükleme için bir ana sanal sabit disk (VHD) görüntüsünün nasıl hazırlanacağı açıklanmaktadır. Bu yönergeler, kuruluşunuzun mevcut işlemleriyle kullanılabilecek Windows sanal masaüstüne özgü bir yapılandırma içindir.
+
+>[!IMPORTANT]
+>Azure görüntü Galerisi 'nden bir resim kullanmanızı öneririz. Ancak, özelleştirilmiş bir görüntü kullanmanız gerekiyorsa, cihazınızda WIndows sanal masaüstü aracısının zaten yüklü olmadığından emin olun. Windows sanal masaüstü aracısıyla özelleştirilmiş bir görüntü kullanmak görüntüyle ilgili sorunlara neden olabilir.  
 
 ## <a name="create-a-vm"></a>VM oluşturma
 
@@ -114,7 +117,7 @@ Saat dilimlerini yeniden yönlendirmek için:
 1. Active Directory sunucusunda, **Grup İlkesi Yönetim Konsolu** açın.
 2. Etki alanınızı ve grup ilkesi nesnelerini genişletin.
 3. Grup İlkesi ayarları için oluşturduğunuz **Grup İlkesi nesnesine** sağ tıklayın ve **Düzenle**' yi seçin.
-4. **Grup İlkesi Yönetimi Düzenleyicisi**, **Computer Configuration**  >  **Policies**  >  **Administrative Templates**  >  **Windows bileşenleri** Yönetim Şablonları  >  **Remote Desktop Services**  >  **Remote Desktop Session Host**  >  **Cihaz ve kaynak yeniden yönlendirme** Uzak Masaüstü Hizmetleri Uzak Masaüstü oturumu ana bilgisayarı bilgisayar yapılandırma ilkeleri ' ne gidin.
+4. **Grup İlkesi Yönetimi Düzenleyicisi**,   >    >    >  **Windows bileşenleri** Yönetim Şablonları  >    >    >  **Cihaz ve kaynak yeniden yönlendirme** Uzak Masaüstü Hizmetleri Uzak Masaüstü oturumu ana bilgisayarı bilgisayar yapılandırma ilkeleri ' ne gidin.
 5. **Saat dilimi yeniden yönlendirmesine Izin ver** ayarını etkinleştirin.
 
 Ayrıca, saat dilimlerini yeniden yönlendirmek için ana görüntüde bu komutu çalıştırabilirsiniz:

@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/08/2020
+ms.date: 01/18/2021
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: bc3640fecbe1138e46fd0d36975691740bc669dd
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: f6ae9ff27e773c36626812387b1284d660cbf39d
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369268"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602465"
 ---
 # <a name="understand-azure-role-definitions"></a>Azure rol tanımlarını anlama
 
@@ -291,11 +291,27 @@ REST API veri işlemlerini görüntülemek ve kullanmak için, **API sürümü**
 
 ## <a name="notactions"></a>NotActions
 
-`NotActions`İzin izin verilen ' dan dışlanan yönetim işlemlerini belirler `Actions` . İzin vermek istediğiniz `NotActions` işlem kümesi kısıtlanmış işlemleri dışlayarak daha kolay tanımlanmazsa, izni kullanın. Bir rol tarafından verilen erişim (geçerli izinler) işlemleri işlemlerden çıkararak hesaplanır `NotActions` `Actions` .
+`NotActions`İzin, `Actions` joker karakter () olan izin verilen ' den çıkarılan veya dışlanan yönetim işlemlerini belirtir `*` . İzin vermek istediğiniz `NotActions` işlem kümesi, `Actions` bir joker karakter () olan öğesinden çıkarılarak daha kolay tanımlanmazsa izin kullanın `*` . Bir rol tarafından verilen erişim (geçerli izinler) işlemleri işlemlerden çıkararak hesaplanır `NotActions` `Actions` .
+
+`Actions - NotActions = Effective management permissions`
+
+Aşağıdaki tabloda, bir [Microsoft. CostManagement](resource-provider-operations.md#microsoftcostmanagement) joker karakter işlemi için geçerli izinlerin iki örneği gösterilmektedir:
+
+> [!div class="mx-tableFixed"]
+> | Actions | NotActions | Etkin yönetim izinleri |
+> | --- | --- | --- |
+> | `Microsoft.CostManagement/exports/*` | *yok* | `Microsoft.CostManagement/exports/action`</br>`Microsoft.CostManagement/exports/read`</br>`Microsoft.CostManagement/exports/write`</br>`Microsoft.CostManagement/exports/delete`</br>`Microsoft.CostManagement/exports/run/action` |
+> | `Microsoft.CostManagement/exports/*` | `Microsoft.CostManagement/exports/delete` | `Microsoft.CostManagement/exports/action`</br>`Microsoft.CostManagement/exports/read`</br>`Microsoft.CostManagement/exports/write`</br>`Microsoft.CostManagement/exports/run/action` |
 
 > [!NOTE]
 > Bir kullanıcıya ' de bir işlemi dışlayan bir rol atanırsa `NotActions` ve aynı işleme erişim izni veren ikinci bir rol atanırsa, kullanıcının bu işlemi gerçekleştirmesine izin verilir. `NotActions` bir reddetme kuralı değil, belirli işlemler dışlanmanız gerektiğinde, izin verilen bir işlem kümesi oluşturmanın kolay bir yoludur.
 >
+
+### <a name="differences-between-notactions-and-deny-assignments"></a>NotActions ve reddetme atamaları arasındaki farklar
+
+`NotActions` ve reddetme atamaları aynı değildir ve farklı amaçlara hizmet eder. `NotActions` , belirli eylemleri bir joker karakter () işleminden çıkarmak için kullanışlı bir yoldur `*` .
+
+Bir rol ataması erişimine izin veriyorsa, atamaları Reddet, kullanıcıların belirli eylemleri gerçekleştirmesini engeller. Daha fazla bilgi için bkz. [Azure reddetme atamalarını anlama](deny-assignments.md).
 
 ## <a name="dataactions"></a>Veri eylemleri
 
@@ -311,7 +327,17 @@ REST API veri işlemlerini görüntülemek ve kullanmak için, **API sürümü**
 
 ## <a name="notdataactions"></a>NotDataActions
 
-`NotDataActions`İzin izin verilen ' dan dışlanan veri işlemlerini belirler `DataActions` . Bir rol tarafından verilen erişim (geçerli izinler) işlemleri işlemlerden çıkararak hesaplanır `NotDataActions` `DataActions` . Her kaynak sağlayıcı, veri işlemlerini karşılamak için ilgili API kümesini sağlar.
+`NotDataActions`İzin, `DataActions` joker karakter () olan izin verilen ' den çıkarılan veya dışlanan veri işlemlerini belirtir `*` . İzin vermek istediğiniz `NotDataActions` işlem kümesi, `DataActions` bir joker karakter () olan öğesinden çıkarılarak daha kolay tanımlanmazsa izin kullanın `*` . Bir rol tarafından verilen erişim (geçerli izinler) işlemleri işlemlerden çıkararak hesaplanır `NotDataActions` `DataActions` . Her kaynak sağlayıcı, veri işlemlerini karşılamak için ilgili API kümesini sağlar.
+
+`DataActions - NotDataActions = Effective data permissions`
+
+Aşağıdaki tabloda bir [Microsoft. Storage](resource-provider-operations.md#microsoftstorage) joker işlemi için etkin izinlerin iki örneği gösterilmektedir:
+
+> [!div class="mx-tableFixed"]
+> | Veri eylemleri | NotDataActions | Etkin veri izinleri |
+> | --- | --- | --- |
+> | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/*` | *yok* | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/read`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/write`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/add/action`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/process/action` |
+> | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/*` | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete`</br> | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/read`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/write`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/add/action`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/process/action` |
 
 > [!NOTE]
 > Bir kullanıcıya ' de bir veri işlemini dışlayan bir rol atanırsa `NotDataActions` ve aynı veri işlemine erişim veren ikinci bir rol atanırsa, kullanıcının bu veri işlemini gerçekleştirmesine izin verilir. `NotDataActions` , bir reddetme kuralı değil, belirli veri işlemlerinin dışlanması gerektiğinde bir izin verilen veri işlemleri kümesi oluşturmanın kolay bir yoludur.
@@ -337,6 +363,6 @@ Yerleşik roller `AssignableScopes` kök kapsamına ( `"/"` ) ayarlı. Kök kaps
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure yerleşik rolleri](built-in-roles.md)
+* [Yerleşik Azure rolleri](built-in-roles.md)
 * [Özel Azure rolleri](custom-roles.md)
 * [Azure Kaynak sağlayıcısı işlemleri](resource-provider-operations.md)

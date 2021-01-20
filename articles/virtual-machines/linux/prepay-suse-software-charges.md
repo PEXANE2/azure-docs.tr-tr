@@ -8,12 +8,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: banders
-ms.openlocfilehash: a527b75d376f05ab6190187b7a03d6da775055ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a4f7de0cacb17087e346123f53dad45ae1de357
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81759291"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602610"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Azure yazılım planları için ön ödeme yapma
 
@@ -32,7 +32,7 @@ Azure portal SUSE ve RedHat yazılım planlarını satın alabilirsiniz. Bir pla
 Gerekli alanları girin. Satın alma yaptığınız özelliklerin öznitelikleriyle eşleşen SUSE Linux VM veya RedHat VM 'si indirimi alır. İndirimin alınacağı gerçek dağıtım sayısı, seçilen kapsama ve miktara bağlıdır.
 3. Bir abonelik seçin. Plan için ödeme yapmak üzere kullanılır.
 Abonelik ödeme yöntemi, rezervasyonun ön maliyetlerine göre ücretlendirilir. Abonelik türü bir Kurumsal Anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya kullandıkça öde fiyatlandırması (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P) içeren tek bir anlaşma olmalıdır.
-    - Kurumsal abonelik için ücretler kaydın maddi işlem bakiyesinden düşülür ve fazla kullanım olarak ücretlendirilir.
+    - Bir kurumsal abonelik için ücretler, kaydın Azure ön ödemesinin (daha önce parasal taahhüt olarak adlandırılır) bakiyesinden düşülür veya fazla kullanım olarak ücretlendirilir.
     - Kullandıkça Öde fiyatlandırmasına sahip bireysel bir abonelik için ücretler, aboneliğin kredi kartına veya fatura ödeme yöntemine faturalandırılır.
 4. Bir kapsam seçin. Kapsam bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir.
     - Tek abonelik-plan indirimi, aboneliğin eşleşen kullanımı için uygulanır.

@@ -1,5 +1,5 @@
 ---
-title: VM 'den görüntü oluşturma (Önizleme)
+title: VM’den görüntü oluşturma
 description: Azure 'da var olan bir sanal makineden paylaşılan bir görüntü galerisinde görüntü oluşturmak için Azure PowerShell nasıl kullanacağınızı öğrenin.
 author: cynthn
 ms.topic: how-to
@@ -9,14 +9,14 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 3a7ca8236307bbf8a419d2988e1a6dc1e4c40597
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1a0bfb79b03b778696faef29597cabbcff47e6df
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964873"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601672"
 ---
-# <a name="preview-create-an-image-from-a-vm"></a>Önizleme: VM 'den görüntü oluşturma
+# <a name="create-an-image-from-a-vm"></a>VM’den görüntü oluşturma
 
 Birden çok, özdeş VM oluşturmak için kullanmak istediğiniz mevcut bir VM varsa, Azure PowerShell kullanarak paylaşılan görüntü galerisinde görüntü oluşturmak için bu VM 'yi kullanabilirsiniz. Ayrıca, [Azure CLI](image-version-vm-cli.md)kullanarak bir VM 'den görüntü oluşturabilirsiniz.
 

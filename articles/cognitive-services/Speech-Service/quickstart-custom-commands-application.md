@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.custom: references_regions
-ms.openlocfilehash: c5f8be87e7ee95e1deff12cce09204b5fe8a0bb7
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 2cc37cc66c06dc9e6997c6a031a9c60ad050c01a
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694198"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601765"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>Özel Komutlar kullanarak ses yardımcısı oluşturma
 
-Bu hızlı başlangıçta, konuşma Studio 'Yu kullanarak temel bir özel komut uygulaması oluşturur ve test edersiniz. Ayrıca, bu uygulamaya bir Windows istemci uygulamasından de erişebileceksiniz. **Özel komutlar** , sesli ilk etkileşim deneyimleri için iyileştirilmiş zengin sesli uygulama uygulamaları oluşturmayı kolaylaştırır. Birleştirilmiş bir yazma deneyimi, otomatik barındırma modeli ve görece daha düşük karmaşıklık sağlar. böylece, sesli komutlama senaryolarınız için en iyi çözümü oluşturmaya odaklanmanıza yardımcı olur.
+Bu hızlı başlangıçta, konuşma Studio 'Yu kullanarak temel bir özel komut uygulaması oluşturur ve test edersiniz. Ayrıca, bu uygulamaya bir Windows istemci uygulamasından de erişebileceksiniz.
 
 ## <a name="region-availability"></a>Bölge kullanılabilirliği
 Şu anda, özel komutlar şu bölgelerde oluşturulan konuşma aboneliklerini destekler:
@@ -35,7 +35,7 @@ Bu hızlı başlangıçta, konuşma Studio 'Yu kullanarak temel bir özel komut 
 * Güneydoğu Asya
 * Orta Hindistan
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 > [!div class="checklist"]
 > * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Özel komutları destekleyen bir bölgede Azure konuşma kaynağı oluşturun.<span class="docon docon-navigate-external x-hidden-focus"></span></a> Desteklenen bölgelerin listesi için yukarıdaki **bölge kullanılabilirliği** bölümüne bakın.

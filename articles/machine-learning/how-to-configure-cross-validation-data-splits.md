@@ -11,16 +11,16 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: 8e749e5f6ea6bcf76a1b4f143bce03ceb41cbb07
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: a781900534156e455c125dffe3b1334820fdf4d5
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573301"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599060"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>Otomatik makine öğrenmesinde veri bölmelerini ve çapraz doğrulamayı yapılandırma
 
-Bu makalede, otomatik makine öğrenimi, otomatik ML, denemeleri için eğitim/doğrulama veri bölmelerini ve çapraz doğrulamayı yapılandırmaya yönelik farklı seçenekler öğreneceksiniz.
+Bu makalede, otomatik makine öğrenimi, otomatik ML, denemeleri için çapraz doğrulama ayarlarıyla birlikte eğitim verilerini ve doğrulama verilerinin nasıl yapılandırılacağı ile ilgili farklı seçenekleri öğrenirsiniz.
 
 Azure Machine Learning ' de, otomatik ML 'yi birden çok ML modeli oluşturmak için kullandığınızda, her bir alt çalıştırmanın, bu modelin doğruluk veya AUC ağırlıklı gibi kalite ölçümlerini hesaplayarak ilgili modeli doğrulaması gerekir. Bu ölçümler, her bir modelle yapılan tahminlerin, doğrulama verilerinde geçmiş gözlemlerden gerçek etiketlerle karşılaştırılmasıyla hesaplanır. [Ölçümlerin doğrulama türü temelinde nasıl hesaplandığı hakkında daha fazla bilgi edinin](#metric-calculation-for-cross-validation-in-machine-learning). 
 
@@ -29,7 +29,7 @@ Otomatik ML denemeleri otomatik olarak model doğrulaması gerçekleştirir. Aş
 Düşük kod veya kod içermeyen bir deneyim için [Azure Machine Learning Studio 'da otomatik makine öğrenimi denemeleri oluşturma](how-to-use-automated-ml-for-ml-models.md)makalesine bakın. 
 
 > [!NOTE]
-> Studio şu anda eğitim/doğrulama veri bölmelerini ve çapraz doğrulama seçeneklerini desteklemektedir, ancak doğrulama kümesi için bireysel veri dosyalarının belirtilmesini desteklemez. 
+> Studio şu anda eğitim ve doğrulama verileri bölmelerini ve çapraz doğrulama seçeneklerini desteklemektedir, ancak doğrulama kümesi için bireysel veri dosyalarının belirtilmesini desteklemez. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -41,7 +41,7 @@ Düşük kod veya kod içermeyen bir deneyim için [Azure Machine Learning Studi
 
 * Eğitim/doğrulama verilerinin ve çapraz doğrulamanın makine öğrenimi kavramları olarak anlaşılmasının bir açıklaması. Üst düzey bir açıklama için
 
-    * [Machine Learning eğitim, doğrulama ve test kümeleri hakkında](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
+    * [Machine Learning 'de Eğitim, doğrulama ve test verileri hakkında](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
 
     * [Makine öğreniminde çapraz doğrulamayı anlama](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd) 
 
@@ -62,7 +62,7 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
                             )
 ```
 
-Açıkça bir `validation_data` veya `n_cross_validation` parametresi belirtmezseniz, belirtilen tek veri kümesindeki satır sayısına bağlı olarak, oto varsayılan teknikleri uygular `training_data` :
+Açıkça bir `validation_data` veya `n_cross_validation` parametresi belirtmezseniz, otomatik ml, tek veri kümesinde belirtilen satır sayısına bağlı olarak varsayılan teknikleri uygular `training_data` :
 
 |Eğitim &nbsp; veri &nbsp; boyutu| Doğrulama tekniği |
 |---|-----|
@@ -71,7 +71,7 @@ Açıkça bir `validation_data` veya `n_cross_validation` parametresi belirtmezs
 
 ## <a name="provide-validation-data"></a>Doğrulama verisi sağlama
 
-Bu durumda, tek bir veri dosyası ile başlayabilir ve bunu eğitim ve doğrulama kümelerine bölebilir ya da doğrulama kümesi için ayrı bir veri dosyası sağlayabilirsiniz. Her iki durumda da, `validation_data` nesnenizin parametresi `AutoMLConfig` doğrulama kümesi olarak hangi verileri kullanacağınızı atar. Bu parametre yalnızca bir [Azure Machine Learning DataSet](how-to-create-register-datasets.md) veya Pandas dataframe biçimindeki veri kümelerini kabul eder.   
+Bu durumda, tek bir veri dosyası ile başlayabilir ve bunu eğitim verilerine ve doğrulama veri kümelerine bölebilir ya da doğrulama kümesi için ayrı bir veri dosyası sağlayabilirsiniz. Her iki durumda da, `validation_data` nesnenizin parametresi `AutoMLConfig` doğrulama kümesi olarak hangi verileri kullanacağınızı atar. Bu parametre yalnızca bir [Azure Machine Learning DataSet](how-to-create-register-datasets.md) veya Pandas dataframe biçimindeki veri kümelerini kabul eder.   
 
 Aşağıdaki kod örneği, içinde sunulan verilerin hangi kısmını `dataset` eğitim ve doğrulama için kullanmak üzere açıkça tanımlar.
 

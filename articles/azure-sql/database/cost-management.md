@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: sql-database
 ms.topic: how-to
 ms.date: 01/15/2021
-ms.openlocfilehash: 19531b9d0019fb000efe5aeb2d1b9fed34ce23f1
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 8d36166a67e683dd7f15eef18d589562b39ba568
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253551"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600627"
 ---
 # <a name="plan-and-manage-costs-for-azure-sql-database"></a>Azure SQL veritabanı için maliyetleri planlayın ve yönetin
 
@@ -67,7 +67,7 @@ Azure SQL veritabanı (sunucusuz dışında), öngörülebilir, saatlik bir ücr
 
 ### <a name="using-monetary-credit-with-azure-sql-database"></a>Azure SQL veritabanı ile parasal krediyi kullanma
 
-EA parasal taahhüt krediniz ile Azure SQL veritabanı ücretleri için ödeme yapabilirsiniz. Ancak, Azure Marketi 'nden dahil olmak üzere üçüncü taraf ürün ve hizmetleri için ücret ödeyerek EA parasal taahhüt kredisi kullanamazsınız.
+Azure ön ödemeli (daha önce parasal taahhüt olarak adlandırılır) krediyle Azure SQL veritabanı ücretleri için ödeme yapabilirsiniz. Ancak Azure ön ödeme kredisi, Azure Marketi 'nden dahil olan üçüncü taraf ürün ve hizmetlerine yönelik ücretler için ödeme yapmak üzere kullanamazsınız.
 
 ## <a name="review-estimated-costs-in-the-azure-portal"></a>Azure portalında tahmini maliyetleri gözden geçirme
 

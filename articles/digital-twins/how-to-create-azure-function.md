@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6c4f23406c97d647002fbb3ab4a3544866303cf4
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 6f74f973abc33d809624bd8abd5a514a52ccfe70
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051352"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602708"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>Verileri işlemek için Azure 'da işlev uygulamalarına bağlanma
 
@@ -27,7 +27,7 @@ Bu makalede, Azure 'da Azure dijital TWINS ile kullanım için bir işlev oluşt
 1. Visual Studio'da bir Azure İşlevleri projesi oluşturma
 2. [Event Grid](../event-grid/overview.md) tetikleyicisiyle bir işlev yazma
 3. İşleve kimlik doğrulama kodu ekleme (Azure dijital TWINS 'ye erişebilmek için)
-4. İşlev uygulamasını Azure 'da yayımlayın
+4. İşlev uygulamasını Azure'da yayımlama
 5. İşlev uygulaması için [güvenlik](concepts-security.md) erişimini ayarlama
 
 ## <a name="prerequisite-set-up-azure-digital-twins-instance"></a>Önkoşul: Azure dijital TWINS örneğini ayarlama
@@ -63,24 +63,20 @@ SDK 'yı kullanmak için aşağıdaki paketleri projenize eklemeniz gerekir. Pak
 Bunu projeniz üzerinde sağ seçerek ve listeden _NuGet Paketlerini Yönet_ ' i seçerek yapabilirsiniz. Ardından, açılan pencerede, _gezinme_ sekmesi ' ni seçin ve aşağıdaki paketleri arayın. Paketi yüklemek için, _yüklemeyi_ seçin ve lisans sözleşmesini _kabul edin_ .
 
 * `Azure.DigitalTwins.Core`
-* `Azure.Identity` 
-
-Azure Işlevleri için doğru şekilde ayarlanmak üzere Azure SDK işlem hattının yapılandırılması için aşağıdaki paketlere de ihtiyacınız olacaktır. Tüm paketleri yüklemek için yukarıdaki işlemi yineleyin.
-
+* `Azure.Identity`
 * `System.Net.Http`
-* `Azure.Core.Pipeline`
+* `Azure.Core`
 
 **Seçenek 2. `dotnet` Komut satırı aracını kullanarak paket ekleyin:**
 
 Alternatif olarak, `dotnet add` bir komut satırı aracında aşağıdaki komutları kullanabilirsiniz:
-```cmd/sh
-dotnet add package System.Net.Http
-dotnet add package Azure.Core.Pipeline
-```
 
-Daha sonra, projenize Azure dijital TWINS ile çalışmak için gerekli olacak iki bağımlılık ekleyin. Aşağıdaki bağlantıları kullanarak, her birinin en son sürümünü projenize eklemek için konsol komutlarının (.NET CLı için de dahil olmak üzere) bulabileceğiniz NuGet üzerindeki paketlere gidebilirsiniz.
- * [**Azure. DigitalTwins. Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Bu paket, [.net Için Azure Digital TWINS SDK 'sına](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)yöneliktir.
- * [**Azure. Identity**](https://www.nuget.org/packages/Azure.Identity). Bu kitaplık, Azure 'da kimlik doğrulamaya yardımcı olacak araçlar sağlar.
+```cmd/sh
+dotnet add package Azure.DigitalTwins.Core
+dotnet add package Azure.Identity
+dotnet add package System.Net.Http
+dotnet add package Azure.Core
+```
 
 Ardından, Visual Studio Çözüm Gezgini, örnek kodunuzun bulunduğu _function.cs_ dosyasını açın ve işlevinizde aşağıdaki _using_ deyimlerini ekleyin. 
 
@@ -110,7 +106,7 @@ Bu değişikliklerden sonra, işlev kodunuz aşağıdakine benzer olacaktır:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs":::
 
-## <a name="publish-the-function-app-to-azure"></a>İşlev uygulamasını Azure 'da yayımlayın
+## <a name="publish-the-function-app-to-azure"></a>İşlev uygulamasını Azure'da yayımlama
 
 Projeyi Azure 'da bir işlev uygulamasına yayımlamak için, Çözüm Gezgini ' de işlev projesini (çözümü değil) sağ seçin ve **Yayımla**' yı seçin.
 
@@ -154,7 +150,7 @@ Sistem tarafından yönetilen kimliği oluşturmak için aşağıdaki komutu kul
 ```azurecli-interactive 
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>   
 ```
-İşlev uygulamasının kimliğini Azure dijital TWINS örneğinizin _Azure Digital TWINS veri sahibi_ rolüne atamak için aşağıdaki komutta _PrincipalId_ değerini kullanın.
+_principalId_ değerini aşağıdaki komutta kullanarak işlev uygulamasının kimliğini Azure Digital Twins örneğinizin _Azure Digital Twins Veri Sahibi_ rolüne atayın.
 
 ```azurecli-interactive 
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"

@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: 4fea027663b55e87822eae1fd0cdb2d67dbc630b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 01/19/2021
+ms.openlocfilehash: a03ad1eb893c97671d7ab60cc38708115a73d260
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96170840"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602388"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB sağlanan üretilen iş hızına giriş
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -109,7 +109,7 @@ Bu yöntemlerin yanıtı, kapsayıcı veya veritabanı için [sağlanan en düş
 Gerçek minimum RU/sn, hesap yapılandırmanıza göre farklılık gösterebilir. Ancak genellikle en yüksek değer:
 
 * 400 RU/sn 
-* GB * 10 RU/sn cinsinden geçerli depolama alanı (Kapsayıcınız veya veritabanınız 1 TB 'den fazla veri içermiyorsa, bkz. [yüksek depolama/düşük aktarım hızı programı](#high-storage-low-throughput-program))
+* GB * 10 RU/sn cinsinden geçerli depolama (Bu kısıtlama bazı durumlarda gevşek olabilir, bkz. [yüksek depolama/düşük aktarım hızı programı](#high-storage-low-throughput-program))
 * Veritabanı veya kapsayıcı/100 üzerinde sağlanan en yüksek RU/sn
 
 ### <a name="changing-the-provisioned-throughput"></a>Sağlanan aktarım hızını değiştirme
@@ -139,7 +139,7 @@ Yukarıdaki [geçerli sağlama üretilen iş](#current-provisioned-throughput) b
 
 Bu, büyük miktarlarda veri depolamanız gereken ancak karşılaştırmada düşük aktarım hızı gereksinimlerinin olduğu durumlarda sorun olabilir. Azure Cosmos DB bu senaryolara daha iyi uyum sağlamak için, uygun hesaplarda GB başına RU/sn kısıtlamasını azaltan bir **"yüksek depolama/düşük aktarım hızı" programı** getirmiştir.
 
-Şu anda hesabınızda 1 TB 'den fazla veri içeren en az 1 kapsayıcı veya paylaşılan işleme veritabanınız olması gerekir. Bu programa katılın ve tam uygunluğu değerlendirin, [Bu anketi](https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRzBPrdEMjvxPuDm8fCLUtXpUREdDU0pCR0lVVFY5T1lRVEhWNUZITUJGMC4u)doldurmanız gerekir. Azure Cosmos DB takım daha sonra ilerlemeniz ve ekleme işlemine devam eder.
+Bu programa katılın ve tam uygunluğu değerlendirin, [Bu anketi](https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRzBPrdEMjvxPuDm8fCLUtXpUREdDU0pCR0lVVFY5T1lRVEhWNUZITUJGMC4u)doldurmanız gerekir. Azure Cosmos DB takım daha sonra ilerlemeniz ve ekleme işlemine devam eder.
 
 ## <a name="comparison-of-models"></a>Modellerin karşılaştırması
 Bu tabloda bir veritabanında ve bir kapsayıcı üzerinde standart (el ile) aktarım hızı sağlama arasındaki bir karşılaştırma gösterilmektedir. 

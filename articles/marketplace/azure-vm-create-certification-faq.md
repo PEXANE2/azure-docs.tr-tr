@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 01/18/2021
-ms.openlocfilehash: f802292d9723179b36d5291993bd4e07487fe6a8
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 80dc19a58d212bb6ab8d608e222cd3a0bd3990d1
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567390"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600979"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Sanal makine sertifikası sorunlarını giderme
 
@@ -321,7 +321,7 @@ Paylaşılan erişim imzası (SAS) URL 'SI ile VM görüntüsünü indirdiğiniz
 |Geçersiz VHD adı|VHD adında, yüzde işareti veya tırnak işareti gibi özel karakterlerin mevcut olup olmadığını denetleyin `%` `"` .|Özel karakterleri kaldırarak VHD dosyasını yeniden adlandırın.|
 |
 
-## <a name="first-1-mb-2048-sectors-each-sector-of-512-bytes-partition"></a>İlk 1 MB (2048 kesim, her 512 baytlık kesim) bölümü
+## <a name="first-partition-starts-at-1-mb-2048-sectors"></a>İlk bölüm 1 MB (2048 kesim) ile başlar
 
 [Kendi görüntünüzü oluşturuyorsanız](azure-vm-create-using-own-image.md), işletim sistemi diskinin ilk 2048 kesimlerinin (1 MB) boş olduğundan emin olun. Aksi takdirde, yayımlarınız başarısız olur. Bu gereksinim yalnızca işletim sistemi diski (veri diskleri değil) için geçerlidir. Görüntüyü [onaylanan bir tabandan](azure-vm-create-using-approved-base.md)oluşturuyorsanız, bu gereksinimi atlayabilirsiniz.
 

@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: cb8e71d9f94441f79dd7ce2fd5ee6458987563c3
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: ad86ebdbef8bf8c8ec00e54e15b751fd2285ad68
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795929"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601349"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>Özel bir Docker görüntüsü kullanarak bir modeli eğitme
 
@@ -23,7 +23,7 @@ Bu makalede, Azure Machine Learning ile eğitim modelleriniz olduğunda özel bi
 
 Azure Machine Learning varsayılan bir Docker temel görüntüsü sağlar. Azure Machine Learning ortamlarını Ayrıca, korunan [Azure Machine Learning taban görüntülerinin](https://github.com/Azure/AzureML-Containers) veya kendi [özel yansımalarından](how-to-deploy-custom-docker-image.md#create-a-custom-base-image)biri gibi farklı bir temel görüntü belirtmek için de kullanabilirsiniz. Özel temel görüntüler, kendi bağımlılıklarınızı yakından yönetmenize ve eğitim işleri çalıştırırken bileşen sürümleri üzerinde daha sıkı bir denetim sürdürmenize imkan tanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Kodu şu ortamlardan birinde çalıştırın:
 
@@ -101,6 +101,12 @@ fastai_env.docker.base_dockerfile = dockerfile
 fastai_env.docker.base_image = None
 fastai_env.docker.base_dockerfile = "./Dockerfile"
 ```
+
+>[!IMPORTANT]
+> Azure Machine Learning yalnızca aşağıdaki yazılımları sağlayan Docker görüntülerini destekler:
+> * Ubuntu 16,04 veya üzeri.
+> * Conda 4.5. # veya üzeri.
+> * Python 3.5 +.
 
 Azure Machine Learning ortamları oluşturma ve yönetme hakkında daha fazla bilgi için bkz. [yazılım ortamları oluşturma ve kullanma](how-to-use-environments.md). 
 

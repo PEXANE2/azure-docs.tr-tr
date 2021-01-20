@@ -3,17 +3,17 @@ title: Azure haritalar arama hizmetlerini kullanarak bir konum arayın
 description: Azure haritalar arama hizmeti hakkında bilgi edinin. Bu API kümesini coğrafi kodlama, ters coğrafi kodlama, benzer aramalar ve çapraz açık aramalar için nasıl kullanacağınızı öğrenin.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 10/05/2020
+ms.date: 01/19/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 00ddb53276c052d538d658f2c40384e86cf72aee
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: dddf56edf2037d87a28589a59834db32f8d04a4c
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910993"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598358"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Azure haritalar arama hizmetlerini kullanarak bir konum arayın
 
@@ -27,7 +27,7 @@ Bu makalede şunları yapmayı öğreneceksiniz:
 * Koordinat konumunu cadde adresine çevirmek için [ters adres araması](/rest/api/maps/search/getsearchaddressreverse) yapın.
 * Koordinat konumunu, [arama adresi geriye yönelik arama API 'sini](/rest/api/maps/search/getsearchaddressreversecrossstreet)kullanarak, bir insan genelindeki bir merkezden karşılıklı olarak çevirin.  Genellikle, bu, bir cihazdan veya varlıktan GPS akışı alan uygulamaları izlemek ve koordinat nerede bulunduğunu bildirmek için gereklidir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 1. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
 2. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account).
@@ -41,9 +41,9 @@ Bu örnekte, bir adresi Enlem ve Boylam koordinatlarına dönüştürmek için A
 >[!TIP]
 >Geocode için bir adres kümesine sahipseniz, tek bir API çağrısında bir toplu sorgu göndermek için [arama adresini gönder Batch API](/rest/api/maps/search/postsearchaddressbatch) 'sini kullanabilirsiniz.
 
-1. Postman uygulamasını açın. Postman uygulamasının üst kısmında **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **koleksiyon** ' ı seçin.  Koleksiyonu adlandırın ve **Oluştur** düğmesini seçin. Bu belgenin geri kalan örnekleri için bu koleksiyonu kullanacaksınız.
+1. Postman uygulamasını açın. Postman uygulamasının üst kısmında **Yeni**' yi seçin. **Yeni oluştur** penceresinde **koleksiyon**' ı seçin.  Koleksiyonu adlandırın ve **Oluştur** düğmesini seçin. Bu belgenin geri kalan örnekleri için bu koleksiyonu kullanacaksınız.
 
-2. İsteği oluşturmak için **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **istek** ' ı seçin. İstek için bir **istek adı** girin. Önceki adımda oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet** ' i seçin.
+2. İsteği oluşturmak için **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin. İstek için bir **istek adı** girin. Önceki adımda oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet**' i seçin.
 
 3. Oluşturucu sekmesinde http **Al** metodunu seçin ve aşağıdaki URL 'yi girin. Bu istekte, belirli bir adres için arama yapıyoruz: `400 Braod St, Seattle, WA 98109` . Bu istek ve bu makalede bahsedilen diğer istekler için, `{Azure-Maps-Primary-Subscription-key}` birincil abonelik anahtarınızla değiştirin.
 
@@ -75,7 +75,7 @@ Bu örnekte, tüm dünyayı aramak için belirsiz arama kullanacağız `pizza` .
 >[!IMPORTANT]
 >Kullanıcılar için ilgili alana sonuçları elde etmek için, her zaman mümkün olduğunca fazla konum ayrıntısı ekleyin. Daha fazla bilgi edinmek için bkz. [arama Için En Iyi uygulamalar](how-to-use-best-practices-for-search.md#geobiased-search-results).
 
-1. Postman uygulamasını açın, **Yeni** ' ye tıklayın ve **istek** ' ı seçin. İstek için bir **istek adı** girin. Önceki bölümde oluşturduğunuz veya yeni bir tane oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet** ' i seçin.
+1. Postman uygulamasını açın, **Yeni**' ye tıklayın ve **istek**' ı seçin. İstek için bir **istek adı** girin. Önceki bölümde oluşturduğunuz veya yeni bir tane oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet**' i seçin.
 
 2. Oluşturucu sekmesinde http **Al** metodunu seçin ve aşağıdaki URL 'yi girin. Bu istek ve bu makalede bahsedilen diğer istekler için, `{Azure-Maps-Primary-Subscription-key}` birincil abonelik anahtarınızla değiştirin.
 
@@ -94,7 +94,7 @@ Bu örnekte, tüm dünyayı aramak için belirsiz arama kullanacağız `pizza` .
 
 4. Varsayılan davranış, büyük olasılıkla gereksiz sonuçlar döndüren dünyanın tamamında arama yapmak için kullanılır. Daha sonra, pizza yalnızca Birleşik Devletler arayacağız. `countrySet`Anahtarı **params** bölümüne ekleyin ve değerini olarak ayarlayın `US` . `countrySet`Anahtarın olarak ayarlanması, `US` sonuçları Birleşik Devletler ile bağlanacaktır.
 
-    :::image type="content" source="./media/how-to-search-for-address/search-fuzzy-country.png" alt-text="Adres ara":::
+    :::image type="content" source="./media/how-to-search-for-address/search-fuzzy-country.png" alt-text="Birleşik Devletler için pizza araması yapın":::
 
     Sonuçlar artık ülke kodu ile sınırlıdır ve sorgu Birleşik Devletler.
 
@@ -107,9 +107,9 @@ Bu örnekte, tüm dünyayı aramak için belirsiz arama kullanacağız `pizza` .
     | [ | 47,620525 |
     | Lon | -122,349274 |
     | La | 400 |
-    | sınırlı | 5|
+    | limit | 5|
 
-6. **Gönder** ’e tıklayın. Yanıt, Seattle Space Iğne 'ye yakın olan pizza restoranlar için sonuçlar içerir.
+6. **Gönder**’e tıklayın. Yanıt, Seattle Space Iğne 'ye yakın olan pizza restoranlar için sonuçlar içerir.
 
 ## <a name="search-for-a-street-address-using-reverse-address-search"></a>Ters adres arama kullanarak sokak adresi arama
 
@@ -123,7 +123,7 @@ Azure haritalar [arama adresi al ters API 'si]( https://docs.microsoft.com/rest/
 
 Bu örnekte, kullanılabilir isteğe bağlı parametrelerin birkaçını kullanarak geriye doğru aramalar yapacağız. İsteğe bağlı parametrelerin tam listesi için bkz. [ters arama parametreleri](/rest/api/maps/search/getsearchaddressreverse#uri-parameters).
 
-1. Postman uygulamasında **Yeni** ' ye tıklayın ve **istek** ' ı seçin. İstek için bir **istek adı** girin. İlk bölümde oluşturduğunuz veya yeni bir tane oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet** ' i seçin.
+1. Postman uygulamasında **Yeni**' ye tıklayın ve **istek**' ı seçin. İstek için bir **istek adı** girin. İlk bölümde oluşturduğunuz veya yeni bir tane oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet**' i seçin.
 
 2. Oluşturucu sekmesinde http **Al** metodunu seçin ve aşağıdaki URL 'yi girin. Bu istek ve bu makalede bahsedilen diğer istekler için, `{Azure-Maps-Primary-Subscription-key}` birincil abonelik anahtarınızla değiştirin. İstek aşağıdaki URL gibi görünmelidir:
 
@@ -131,7 +131,7 @@ Bu örnekte, kullanılabilir isteğe bağlı parametrelerin birkaçını kullana
     https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=47.591180,-122.332700&number=1
     ```
 
-3. **Gönder** ' e tıklayın ve yanıt gövdesini gözden geçirin. Bir sorgu sonucu görmeniz gerekir. Yanıt, Safeco alanı hakkındaki anahtar adres bilgilerini içerir.
+3. **Gönder**' e tıklayın ve yanıt gövdesini gözden geçirin. Bir sorgu sonucu görmeniz gerekir. Yanıt, Safeco alanı hakkındaki anahtar adres bilgilerini içerir.
   
 4. Şimdi aşağıdaki anahtar/değer çiftlerini **params** bölümüne ekleyeceğiz:
 
@@ -142,15 +142,15 @@ Bu örnekte, kullanılabilir isteğe bağlı parametrelerin birkaçını kullana
     | returnRoadUse | true | Adreste yol kullanım türlerini döndürür. Tüm olası yol kullanım türleri için bkz. [yol kullanım türleri](/rest/api/maps/search/getsearchaddressreverse#uri-parameters).|
     | returnMatchType | true| Eşleşme türünü döndürür. Olası tüm değerler için bkz. [ters adres arama sonuçları](/rest/api/maps/search/getsearchaddressreverse#searchaddressreverseresult)
 
-   :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="Adres ara":::
+   :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="Ters arama.":::
 
-5. **Gönder** ' e tıklayın ve yanıt gövdesini gözden geçirin.
+5. **Gönder**' e tıklayın ve yanıt gövdesini gözden geçirin.
 
 6. Sonra `entityType` anahtarı ekleyecek ve değerini olarak ayarlayacağız `Municipality` . `entityType`Bu anahtar, `returnMatchType` önceki adımda anahtarı geçersiz kılar. Ayrıca `returnSpeedLimit` `returnRoadUse` , municipsellik hakkında bilgi istediğimiz için de öğesini kaldırdık.  Tüm olası varlık türleri için bkz. [varlık türleri](/rest/api/maps/search/getsearchaddressreverse#entitytype).
 
-    :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="Adres ara":::
+    :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="Ters entityType 'ı arayın.":::
 
-7. **Gönder** ’e tıklayın. Sonuçları 5. adımda döndürülen sonuçlarla karşılaştırın.  İstenen varlık türü artık olduğundan `municipality` , yanıt, sokak adresi bilgisini içermez. Ayrıca, döndürülen `geometryId` Azure haritaları aracılığıyla sınır poligon [arama Çokgen API 'sini](/rest/api/maps/search/getsearchpolygon)almak için de kullanılır.
+7. **Gönder**’e tıklayın. Sonuçları 5. adımda döndürülen sonuçlarla karşılaştırın.  İstenen varlık türü artık olduğundan `municipality` , yanıt, sokak adresi bilgisini içermez. Ayrıca, döndürülen `geometryId` Azure haritaları aracılığıyla sınır poligon [arama Çokgen API 'sini](/rest/api/maps/search/getsearchpolygon)almak için de kullanılır.
 
 >[!TIP]
 >Bu parametrelerle ilgili daha fazla bilgi edinmek ve diğerleri hakkında bilgi edinmek için, [geriye doğru arama parametreleri bölümüne](/rest/api/maps/search/getsearchaddressreverse#uri-parameters)bakın.
@@ -159,7 +159,7 @@ Bu örnekte, kullanılabilir isteğe bağlı parametrelerin birkaçını kullana
 
 Bu örnekte, bir adresin koordinatları temelinde bir çapraz cadde arayacağız.
 
-1. Postman uygulamasında **Yeni** ' ye tıklayın ve **istek** ' ı seçin. İstek için bir **istek adı** girin. İlk bölümde oluşturduğunuz veya yeni bir tane oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet** ' i seçin.
+1. Postman uygulamasında **Yeni**' ye tıklayın ve **istek**' ı seçin. İstek için bir **istek adı** girin. İlk bölümde oluşturduğunuz veya yeni bir tane oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet**' i seçin.
 
 2. Oluşturucu sekmesinde http **Al** metodunu seçin ve aşağıdaki URL 'yi girin. Bu istek ve bu makalede bahsedilen diğer istekler için, `{Azure-Maps-Primary-Subscription-key}` birincil abonelik anahtarınızla değiştirin. İstek aşağıdaki URL gibi görünmelidir:
   
@@ -167,9 +167,9 @@ Bu örnekte, bir adresin koordinatları temelinde bir çapraz cadde arayacağız
    https://atlas.microsoft.com/search/address/reverse/crossstreet/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=47.591180,-122.332700
     ```
 
-    :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="Adres ara":::
+    :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="Çapraz cadde ara.":::
   
-3. **Gönder** ' e tıklayın ve yanıt gövdesini gözden geçirin. Yanıtın bir değeri içerdiğini fark edeceksiniz `crossStreet` `Occidental Avenue South` .
+3. **Gönder**' e tıklayın ve yanıt gövdesini gözden geçirin. Yanıtın bir değeri içerdiğini fark edeceksiniz `crossStreet` `South Atlantic Street` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

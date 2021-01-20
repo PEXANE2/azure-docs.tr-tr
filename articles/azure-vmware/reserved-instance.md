@@ -3,12 +3,12 @@ title: Azure VMware çözümü ayrılmış örneği ile maliyetleri kaydetme
 description: Azure VMware çözümü için ayrılmış bir örnek satın almayı öğrenin.
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: 80780e9718001893b6960220b5004c1c29b2fec5
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 74344889cd107350e5026c4a0369382fb9c7ef51
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327406"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600858"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>Azure VMware çözümü ile maliyetleri kaydetme
 
@@ -54,11 +54,11 @@ Bu gereksinimler ayrılmış bir ayrılmış ana bilgisayar örneği satın alma
 
    | Alan        |  Açıklama |
    | ------------ | ------------ |
-   | Abonelik | Ayırma için ödeme yapmak üzere kullanılan abonelik. Rezervasyon maliyetleri, aboneliğin ödeme yöntemiyle ücretlendirilir. Abonelik türü bir kurumsal anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P), Microsoft Müşteri Sözleşmesi veya Kullandıkça Öde tarifesine sahip bireysel bir abonelik olmalıdır (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P). Ücretler, parasal taahhüt bakiyesinden düşülür veya varsa fazla kullanım olarak ücretlendirilir. Kullandıkça Öde tarifesine sahip bir abonelik için ücretler, aboneliğin kredi kartına veya fatura ödeme yöntemine faturalandırılır. |
+   | Abonelik | Ayırma için ödeme yapmak üzere kullanılan abonelik. Rezervasyon maliyetleri, aboneliğin ödeme yöntemiyle ücretlendirilir. Abonelik türü bir kurumsal anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P), Microsoft Müşteri Sözleşmesi veya Kullandıkça Öde tarifesine sahip bireysel bir abonelik olmalıdır (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P). Ücretler, mevcut olduğunda veya fazla kullanım olarak ücretlendirildiğiniz Azure ön ödemesinin (daha önce parasal taahhüt olarak adlandırılır) bakiyesini düşüyordu. Kullandıkça Öde tarifesine sahip bir abonelik için ücretler, aboneliğin kredi kartına veya fatura ödeme yöntemine faturalandırılır. |
    | Kapsam        | Ayırma kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Şunları seçerseniz:<br><ul><li><b>Tek kaynak grubu kapsamı</b> -rezervasyon iskontosunu yalnızca seçili kaynak grubundaki eşleşen kaynaklara uygular.</li><li><b>Tek abonelik kapsamı</b> -rezervasyon iskontosunu seçili abonelikteki eşleşen kaynaklara uygular.</li><li><b>Paylaşılan kapsam</b> -fatura bağlamındaki uygun aboneliklerde bulunan kaynaklara karşılık gelen rezervasyon iskontosunu uygular. EA müşterileri için, faturalandırma bağlamı kayıt olur. Kullandıkça öde fiyatlarına tabi bireysel abonelikler için faturalama kapsamı, hesap yöneticisi tarafından oluşturulan tüm uygun aboneliklerdir.</li></ul>       |
-   | Region       | Ayırma kapsamındaki Azure bölgesi.   |
+   | Bölge       | Ayırma kapsamındaki Azure bölgesi.   |
    | Ana bilgisayar boyutu    | AV36    |
-   | Süre         | Bir yıl veya üç yıl.  |
+   | Terim         | Bir yıl veya üç yıl.  |
    | Miktar     | Ayırma içinde satın alınabilecek örneklerin sayısı. Bu miktar, fatura iskontosunu elde eden, çalışan Azure VMware Çözüm ana bilgisayarlarının sayısıdır.    |
 
 ### <a name="buy-reserved-instances-for-a-csp-subscription"></a>CSP aboneliği için ayrılmış örnekler satın alın
@@ -85,9 +85,9 @@ Müşterileri için ayrılmış örnekler satın almak isteyen CSP 'Ler [Iş Ort
    | ------------ | ------------ |
    | Abonelik | Ayırma için ödeme yapmak üzere kullanılan abonelik. Rezervasyon maliyetleri, aboneliğin ödeme yöntemiyle ücretlendirilir. Abonelik türü uygun bir değer olmalıdır, bu durumda bir CSP aboneliği vardır|
    | Kapsam        | Ayırma kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Şunları seçerseniz:<br><ul><li><b>Tek kaynak grubu kapsamı</b> -rezervasyon iskontosunu yalnızca seçili kaynak grubundaki eşleşen kaynaklara uygular.</li><li><b>Tek abonelik kapsamı</b> -rezervasyon iskontosunu seçili abonelikteki eşleşen kaynaklara uygular.</li><li><b>Paylaşılan kapsam</b> -fatura bağlamındaki uygun aboneliklerde bulunan kaynaklara karşılık gelen rezervasyon iskontosunu uygular. EA müşterileri için, faturalandırma bağlamı kayıt olur. Kullandıkça öde fiyatlarına tabi bireysel abonelikler için faturalama kapsamı, hesap yöneticisi tarafından oluşturulan tüm uygun aboneliklerdir.</li></ul>       |
-   | Region       | Ayırma kapsamındaki Azure bölgesi.   |
+   | Bölge       | Ayırma kapsamındaki Azure bölgesi.   |
    | Ana bilgisayar boyutu    | AV36    |
-   | Süre         | Bir yıl veya üç yıl.  |
+   | Terim         | Bir yıl veya üç yıl.  |
    | Miktar     | Ayırma içinde satın alınabilecek örneklerin sayısı. Bu miktar, fatura iskontosunu elde eden, çalışan Azure VMware Çözüm ana bilgisayarlarının sayısıdır.     |
 
 Müşteriniz için satın alınan rezervasyonları görüntüleme hakkında daha fazla bilgi edinmek için bkz. [Azure ayırmalarını bulut çözümü sağlayıcısı (CSP) olarak görüntüleme](../cost-management-billing/reservations/how-to-view-csp-reservations.md) .

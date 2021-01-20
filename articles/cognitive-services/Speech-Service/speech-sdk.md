@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 9356cbb6eb210d6745d90e8ad001917e73592cd3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 597a7c3954912a3a86b5db9f92ba75e8aaee63f6
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96022004"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601819"
 ---
 # <a name="about-the-speech-sdk"></a>Konuşma SDK'sı hakkında
 
@@ -58,7 +58,7 @@ Konuşma SDK 'Sı, konuşma hizmetinden pek çok özelliği kullanıma sunar, an
 
 ### <a name="voice-assistants"></a>Ses yardımcıları
 
-Konuşma SDK 'sını kullanan [sesli yardımcılar](voice-assistants.md) , geliştiricilerin, uygulamaları ve deneyimleri için doğal ve insan benzeri konuşma arabirimleri oluşturmalarına olanak tanır. Ses Yardımcısı hizmeti, bir cihaz ve yardımcı arasında hızlı ve güvenilir bir etkileşim sağlar. Uygulama, görev tamamlama için bot çerçevesinin doğrudan hat konuşma kanalını veya tümleşik özel komutlar (Önizleme) hizmetini kullanır. Ayrıca, sesli yardımcılar benzersiz bir ses çıkışı deneyimi eklemek için [özel ses portalında](https://aka.ms/customvoice) oluşturulan özel sesleri kullanabilir.
+Konuşma SDK 'sını kullanan [sesli yardımcılar](voice-assistants.md) , geliştiricilerin, uygulamaları ve deneyimleri için doğal ve insan benzeri konuşma arabirimleri oluşturmalarına olanak tanır. Ses Yardımcısı hizmeti, bir cihaz ve yardımcı arasında hızlı ve güvenilir bir etkileşim sağlar. Uygulama, bot çerçevesinin doğrudan hat konuşma kanalını veya görev tamamlama için tümleşik özel komutlar hizmetini kullanır. Ayrıca, sesli yardımcılar benzersiz bir ses çıkışı deneyimi eklemek için [özel ses portalında](https://aka.ms/customvoice) oluşturulan özel sesleri kullanabilir.
 
 **Ses yardımcıları** aşağıdaki platformlarda kullanılabilir:
 

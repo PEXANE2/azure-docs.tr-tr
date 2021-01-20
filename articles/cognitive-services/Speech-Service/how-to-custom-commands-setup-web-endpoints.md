@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: e50d7aba5cc5b3d5d620d844cc9ad169ad8b3bf6
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 6f2dfdbb5833b34441b4abba7359ad70c4717d1d
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025900"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602150"
 ---
 # <a name="set-up-web-endpoints"></a>Web uç noktalarını ayarlama
 
@@ -23,7 +23,7 @@ Bu makalede istemci uygulamasından HTTP isteği oluşturmak için Özel Komutla
 
 - Özel Komutlar uygulamasında web uç noktalarını ayarlama
 - Özel Komutlar uygulamasındaki web uç noktalarını çağırma
-- Web uç noktalarından yanıt alma 
+- Web uç noktalarından yanıt alma
 - Web uç noktalarından gelen yanıtı özel bir JSON yüküyle tümleştirme, gönderme ve C# UWP Konuşma SDK'sı istemci uygulamasından görselleştirme
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -35,7 +35,7 @@ Bu makalede istemci uygulamasından HTTP isteği oluşturmak için Özel Komutla
 
 ## <a name="setup-web-endpoints"></a>Web uç noktalarını ayarlama
 
-1. Önceden oluşturduğunuz Özel Komutlar uygulamasını açın. 
+1. Önceden oluşturduğunuz Özel Komutlar uygulamasını açın.
 1. "Web uç noktaları"na gidip "Yeni web uç noktası"na tıklayın.
 
    > [!div class="mx-imgBorder"]
@@ -61,7 +61,7 @@ Bu makalede istemci uygulamasından HTTP isteği oluşturmak için Özel Komutla
 1. **TurnOnOff** komutuna gidin, tamamlama kuralının altında **ConfirmationResponse** öğesini ve ardından **Eylem ekle**'yi seçin.
 1. **Yeni eylem türü**'nün altında **Web uç noktasını çağır**'ı seçin
 1. **Eylemi Düzenle - Uç Noktaları** bölümünde oluşturduğumuz web uç noktası olan **UpdateDeviceState** girişini seçin.  
-1. **Yapılandırma** alanına aşağıdaki değerleri girin: 
+1. **Yapılandırma** alanına aşağıdaki değerleri girin:
    > [!div class="mx-imgBorder"]
    > ![Web uç noktası çağırma - eylem parametreleri](media/custom-commands/setup-web-endpoint-edit-action-parameters.png)
 
@@ -75,16 +75,16 @@ Bu makalede istemci uygulamasından HTTP isteği oluşturmak için Özel Komutla
     > - Önerilen sorgu parametreleri yalnızca örnek uç nokta için gereklidir
 
 1. **Başarılı Olduğunda - Yürütülecek eylem** bölümünde **Konuşma yanıtı gönder**'i seçin.
-    
+
     **Basit düzenleyici**'ye `{SubjectDevice} is {OnOff}` yazın.
-   
+
    > [!div class="mx-imgBorder"]
    > ![Yürütme için başarı eylemini gösteren ekran görüntüsü.](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
 
    | Ayar | Önerilen değer | Açıklama |
    | ------- | --------------- | ----------- |
    | Yürütülecek eylem | Konuşma yanıtı gönder | Web uç noktasına gönderilen isteğin başarılı olması durumunda yürütülecek eylem |
-   
+
    > [!NOTE]
    > - Dilerseniz `{YourWebEndpointName.FieldName}` kullanarak HTTP yanıtındaki alanlara doğrudan erişim sağlayabilirsiniz. Örnek: `{UpdateDeviceState.TV}`
 
@@ -101,7 +101,7 @@ Bu makalede istemci uygulamasından HTTP isteği oluşturmak için Özel Komutla
 
    > [!NOTE]
    > - `{WebEndpointErrorMessage}` isteğe bağlıdır. Hata iletisi görmek istemiyorsanız bunu kaldırabilirsiniz.
-   > - Örnek uç noktamızda eksik üst bilgi parametreleri gibi yaygın hatalar için ayrıntılı hata iletisi içeren bir HTTP yanıtı gönderiyoruz. 
+   > - Örnek uç noktamızda eksik üst bilgi parametreleri gibi yaygın hatalar için ayrıntılı hata iletisi içeren bir HTTP yanıtı gönderiyoruz.
 
 ### <a name="try-it-out-in-test-portal"></a>Test portalında deneyin
 - Başarılı Olduğunda yanıt\
@@ -119,7 +119,7 @@ Sorgu parametrelerinden birini kaldır, kaydet, yeniden eğit ve test et
 Ancak çoğu durumda etkinliği istemci uygulamasına yalnızca web uç noktasına yapılan çağrının başarılı olması durumunda göndermek istersiniz. Bu örnekte bu işlem, cihazın durumunun başarıyla güncelleştirilmesidir.
 
 1. Önceden eklediğiniz **Etkinliği istemciye gönder** eylemini silin.
-1. Çağrı web uç noktasını düzenleyin: 
+1. Çağrı web uç noktasını düzenleyin:
     1. **Yapılandırma** bölümünde **Sorgu Parametreleri** değerinin `item={SubjectDevice}&&value={OnOff}` olduğundan emin olun
     1. **Başarılı Olduğunda** bölümünde **Yürütülecek eylem** değerini **Etkinliği istemciye gönder** olarak değiştirin
     1. Aşağıdaki JSON kodunu **Etkinlik İçeriği**'ne kopyalayın
@@ -133,7 +133,6 @@ Ancak çoğu durumda etkinliği istemci uygulamasına yalnızca web uç noktası
       }
     }
    ```
-   
 Artık yalnızca web uç noktasına yapılan istek başarılı olduğunda istemciye etkinlik gönderiyorsunuz.
 
 ### <a name="create-visuals-for-syncing-device-state"></a>Cihaz durumunu eşitlemek için görsel oluşturma
@@ -147,7 +146,7 @@ Aşağıdaki XML kodunu `MainPage.xaml` dosyasına, `"EnableMicrophoneButton"` b
         .........../>
 ```
 
-### <a name="sync-device-state"></a>Cihaz durumunu eşitleme 
+### <a name="sync-device-state"></a>Cihaz durumunu eşitleme
 
 `MainPage.xaml.cs` dosyasına `using Windows.Web.Http;` başvurusunu ekleyin. Aşağıdaki kodu `MainPage` sınıfına ekleyin. Bu yöntem, örnek uç noktaya bir GET isteği gönderir ve uygulamanız için geçerli cihaz durumunu ayıklar. `<your_app_name>` yerine Özel Komut web uç noktasındaki **üst bilgide** kullandığınız değeri yazın
 
@@ -157,7 +156,7 @@ private async void SyncDeviceState_ButtonClicked(object sender, RoutedEventArgs 
     //Create an HTTP client object
     var httpClient = new HttpClient();
 
-    //Add a user-agent header to the GET request. 
+    //Add a user-agent header to the GET request.
     var your_app_name = "<your-app-name>";
 
     Uri endpoint = new Uri("https://webendpointexample.azurewebsites.net/api/DeviceState");

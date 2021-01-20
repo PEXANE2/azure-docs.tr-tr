@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: d602687ea623b90ea5dcae4ece09a1ccc438ea57
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 5a2a7abf0227812826428557b86c4468f7693c82
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822395"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600383"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Ticari Market Transact özellikleri
 
@@ -115,7 +115,7 @@ Bu senaryoda, Microsoft, yayımlanmış VM Görüntünüzün kullanımı için s
 |Microsoft, Azure kullanım maliyetinin %100 ' ünü tutar | $0,14/saat |
 ||
 
-**Kendi Lisansını Getir (KLG)**
+**Kendi lisansınızı getirin (KLG)**
 
 KLG aşağıdaki maliyet yapısına sahiptir:
 
@@ -160,7 +160,7 @@ Bu senaryoda, Microsoft, yazılım lisansınızın $100,00 ' i faturalandırır 
 
 **Kredi kartları ve aylık fatura** – müşteriler, kredi kartı ve aylık fatura kullanarak da ödeme yapabilir. Bu durumda, yazılım lisans ücretleriniz, bir Azure 'a özgü kullanım maliyetlerinden ayrı olarak, Kurumsal Anlaşma senaryosu gibi, yeni bir maliyet olarak faturalandırılacaktır.
 
-**Ücretsiz krediler ve parasal taahhüt** : bazı müşteriler azure 'u kurumsal anlaşma bir parasal taahhütte ön ödeme yapmayı tercih ediyor veya Azure ile kullanım için ücretsiz krediler sağladı. Bu krediler Azure kullanımı için ödeme yapmak üzere kullanılabilse de, yayımcı yazılımı lisans ücretleri için ödeme yapmak üzere kullanılamaz.
+**Ücretsiz krediler ve Azure ön ödemesi** – bazı müşteriler Azure ön ödemeli (daha önce parasal taahhüt olarak adlandırılacaktır) Azure 'u önceden ödemenizi veya Azure ile kullanım için ücretsiz kredilerin sağlandığını tercih kurumsal anlaşma ediyor. Bu krediler Azure kullanımı için ödeme yapmak üzere kullanılabilse de, yayımcı yazılımı lisans ücretleri için ödeme yapmak üzere kullanılamaz.
 
 **Faturalandırma ve koleksiyonlar** – yayımcı yazılım lisansı faturalandırması, faturalandırılmasına ve faturalama zaman çizelgesine göre belirtilen müşteri tarafından seçilen yöntemi kullanılarak sunulur. Yerinde Kurumsal Anlaşma olmayan müşteriler Market yazılım lisansları için aylık olarak faturalandırılır. Kurumsal Anlaşma olan müşteriler aylık olarak sunulan bir fatura aracılığıyla aylık olarak faturalandırılır.
 

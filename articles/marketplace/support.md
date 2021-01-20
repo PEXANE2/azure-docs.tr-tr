@@ -1,18 +1,18 @@
 ---
-title: Iş Ortağı Merkezi 'nde ticari Market portalı için destek alın
-description: Destek isteğine nasıl dosya ekleneceğini de içeren Iş Ortağı Merkezi 'ndeki Destek seçenekleriniz hakkında bilgi edinin.
+title: Iş Ortağı Merkezi 'nde ticari Market programı için destek alın
+description: Destek isteğine nasıl dosya ekleneceğini de kapsayan Iş Ortağı Merkezi 'ndeki ticari Market programına yönelik destek seçenekleriniz hakkında bilgi edinin.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: navits09
 ms.author: navits
-ms.date: 01/14/2020
-ms.openlocfilehash: 8979a94ee63ef50c0a3abacd5ab3515226200131
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.date: 01/19/2020
+ms.openlocfilehash: 6075027124352746a3adbb8f6937d3787eb22b9d
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183447"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602575"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market programı desteği
 
@@ -22,60 +22,43 @@ Microsoft, çok çeşitli ürün ve hizmetler için destek sağlar. Doğru deste
 - Bir yayımsanız ve Azure üzerinde çalışan bir uygulamayla ilgili güvenlik sorunu algıladıysanız, bkz. [güvenlik olayı destek bileti günlüğe kaydetme](/azure/security/fundamentals/event-support-ticket). Yayımcılar, Azure Marketi yazılımlarının ve hizmet tekliflerinden oluşan güvenlik olayları ve güvenlik açıkları dahil şüpheli güvenlik olaylarını en erken fırsatta raporlamalarını sağlamalıdır.
 - Bir yayımsanız ve uygulamanız veya hizmetiniz ile ilgili sorularınız varsa, aşağıdaki destek seçeneklerini gözden geçirin.
 
-## <a name="support-options-for-publishers"></a>Yayımcılar için destek seçenekleri
+## <a name="get-help-or-open-a-support-ticket"></a>Yardım alın veya bir destek bileti açın
 
-1. İş hesabınızla [ortak merkezindeki ticari Market programında](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) oturum açın (henüz yapmadıysanız, [bir iş ortağı Merkezi hesabı oluşturmanız](partner-center-portal/create-account.md)gerekecektir.
+1. İş hesabınızla oturum açın. Henüz yapmadıysanız, [bir Iş Ortağı Merkezi hesabı oluşturmanız](partner-center-portal/create-account.md)gerekecektir.
 
-2. Sayfanın sağ tarafındaki menüden **destek** simgesini seçin.
+1. Sayfanın sağ üst kısmındaki menüde, **destek** simgesini seçin. **Yardım ve destek** bölmesi sayfanın sağ tarafında görünür.
 
-3. **Yardım ve destek** bölmesi sayfanın sağ tarafında görünür.
+1. Ticari Market hakkında yardım almak için **ticari Market**' i seçin.
 
    ![Destek açılan menüsü](./media/support/commercial-marketplace-support-pane.png)
 
-    Veya **giriş sayfası** bölmesine gidin ve **Yardım ve destek '** i seçin.
+1. **Sorun Özeti** kutusuna sorunun kısa bir açıklamasını girin.
 
-   ![Giriş sayfasından yardım ve destek](./media/support/homepage-help-support.png)
+1. **Sorun türü** kutusunda aşağıdakilerden birini yapın:
 
-4. Soruların ve kaynakların kapsamlı yanıtlarını gözden geçirmek için **[Belgeler](../index.yml)** ' i seçin.
+    - **1. seçenek**: market, Azure uygulaması, SaaS teklifi, hesap yönetimi, müşteri adayı yönetimi, dağıtım sorunu, ödeme veya ortak satış teklifi geçişi gibi anahtar sözcükleri girin. Ardından görüntülenen önerilen listeden bir sorun türü seçin.
 
-5. Diğer Microsoft yayımcılarından yararlanarak sorularınızı yanıtlamak için **[Market Iş ortağı topluluk Forumu](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** ' nu seçin.
+    - **2. seçenek**: **Kategori** listesinden **Gözden geçirme konuları** ' nı seçin ve ardından **ticari Market**' i seçin. Ardından uygun **konuyu** ve **alt konuyu** seçin.
 
-6. **Yeni bir destek talebi** bileti açmak için **[ek yardım](https://aka.ms/marketplacepublishersupport)** ' ı seçin.  
+1. Seçtiğiniz konuyu bulduktan sonra, **çözümleri gözden geçir**' i seçin.
 
-## <a name="how-to-open-a-support-ticket"></a>Destek bileti açma
+    ![Sonraki adım](./media/support/next-step.png)
 
-Artık **Yardım ve destek** ekranında bir destek bileti açmaya hazır olursunuz.
+Aşağıdaki seçenekler gösterilir:
 
-![Yardım ve destek](./media/support/help-and-support.png)
+- Farklı bir konu seçmek için **farklı bir sorun Seç**' e tıklayın.
+- Sorunu çözmeye yardımcı olmak için, varsa önerilen adımları ve belgeleri gözden geçirin.
 
->[!Note]
->Iş Ortağı Merkezi 'nde oturum açtıysanız, desteğiyle daha iyi deneyim alacaksınız.
+    ![Önerilen çözümler](./media/support/recommended-solutions.png)
 
-**Seçenek 1:** Market, Azure uygulaması, SaaS teklifi, hesap yönetimi, müşteri adayı yönetimi, dağıtım sorunu, ödeme vb. gibi anahtar sözcükleri girin.
-
-**Seçenek 2:** Konulara gözatıp >- **Kategori** Seç = ticari market-> ilgili **Konu** başlığını seçin **.**
-
-Seçtiğiniz konuyu bulduktan sonra **çözümleri gözden geçir**' i seçin.
-
-![Sonraki adım](./media/support/next-step.png)
-
-Aşağıdaki seçenekler kullanılabilir olacaktır:
-
-- Farklı bir konu seçmek için, **Seçili sorun** altında farklı bir konu bağlantısı seçin.
-- Varsa, bu sorunun açıklamasını gözden geçirin.  **Önerilen adımların** yukarısında gösterilen metindir.
-- Kullanılabiliyorsa **Önerilen adımları** gözden geçirin.
-- Kullanılabiliyorsa **Önerilen belgeleri** gözden geçirin.
-
-![Önerilen çözümler](./media/support/recommended-solutions.png)
-
-**Önerilen çözümler** bölümünde yanıtınızı bulamazsanız **Sorun ayrıntıları sağla**' yı seçin. Çözüm sürecini hızlandırmak için tüm gerekli alanları doldurun ve **Gönder**' i seçin.
+Kendi kendine yardımı 'nda yanıtınızı bulamıyorsanız **Sorun ayrıntıları sağla**' yı seçin. Çözüm sürecini hızlandırmak için tüm gerekli alanları doldurun ve **Gönder**' i seçin.
 
 >[!Note]
->Iş Ortağı Merkezi 'nde oturum açmadıysanız ve konu kimlik doğrulaması gerektiriyorsa, devam edebilmeniz için önce oturum açmanız istenir.  Ortak konularda kimlik doğrulaması gerekli değildir.
+>Iş Ortağı Merkezi 'nde oturum açmadıysanız, Bilet oluşturabilmeniz için oturum açmanız gerekebilir.
 
 ## <a name="track-your-existing-support-requests"></a>Mevcut destek isteklerinizi izleyin
 
-Açık ve kapalı biletlerinizi gözden geçirmek için sol gezinti çubuğunda **ticari Market** ' e gidin ve ardından **destek**' i seçin.
+Açık ve kapalı biletlerinizi gözden geçirmek için, sol gezinti menüsünde **ticari Market**  >  **desteği**' ni seçin.
 
 ## <a name="record-issue-details-with-a-har-file"></a>Sorun ayrıntılarını bir HAR dosyasıyla Kaydet
 

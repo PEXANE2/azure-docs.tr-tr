@@ -6,25 +6,25 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 08/27/2020
+ms.date: 01/19/2021
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 3f64086ed97594416b5964cf648c857c2f271480
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8073d1e18b08a6deb0175f8eaf18de382e93e299
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91331106"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601855"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak Azure Application Gateway ile doğrudan web trafiği
 
 Bu hızlı başlangıçta, uygulama ağ geçidi oluşturmak için Azure PowerShell kullanırsınız. Ardından, doğru çalıştığından emin olmak için test edersiniz. 
 
-Uygulama ağ geçidi, uygulama Web trafiğini bir arka uç havuzundaki belirli kaynaklara yönlendirir. Bağlantı noktalarına dinleyicileri atar, kurallar oluşturur ve bir arka uç havuzuna kaynak ekleyebilirsiniz. Kolaylık sağlaması için bu makalede, genel ön uç IP 'si olan basit bir kurulum ve uygulama ağ geçidinde tek bir siteyi barındırmak için temel bir dinleyici, temel bir istek yönlendirme kuralı ve arka uç havuzundaki iki sanal makine kullanılmaktadır.
+Uygulama ağ geçidi, uygulama Web trafiğini bir arka uç havuzundaki belirli kaynaklara yönlendirir. Bağlantı noktalarına dinleyicileri atar, kurallar oluşturur ve bir arka uç havuzuna kaynak ekleyebilirsiniz. Kolaylık sağlaması için bu makalede, genel ön uç IP adresi olan basit bir kurulum ve uygulama ağ geçidinde tek bir siteyi barındırmak için temel bir dinleyici, temel bir istek yönlendirme kuralı ve arka uç havuzundaki iki sanal makine kullanılmaktadır.
 
 Bu hızlı başlangıcı [Azure CLI](quick-create-cli.md) veya [Azure Portal](quick-create-portal.md)kullanarak da tamamlayabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Azure PowerShell Version 1.0.0 veya üzeri](/powershell/azure/install-az-ps) (Azure PowerShell yerel olarak çalıştırırsanız).
@@ -48,7 +48,7 @@ New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 ```
 ## <a name="create-network-resources"></a>Ağ kaynakları oluşturma
 
-Azure 'un, oluşturduğunuz kaynaklar arasında iletişim kurması için bir sanal ağa ihtiyacı vardır.  Application Gateway alt ağı yalnızca uygulama ağ geçitleri içerebilir. Başka hiçbir kaynağa izin verilmez.  Application Gateway için yeni bir alt ağ oluşturabilir veya var olan bir alt ağı kullanabilirsiniz. Bu örnekte, bu örnekte iki alt ağ oluşturursunuz: uygulama ağ geçidi için bir diğeri, arka uç sunucuları için bir diğeri. Application Gateway ön uç IP 'sini kullanım çalışmanıza göre genel veya özel olacak şekilde yapılandırabilirsiniz. Bu örnekte, genel ön uç IP 'si seçersiniz.
+Azure 'un, oluşturduğunuz kaynaklar arasında iletişim kurması için bir sanal ağa ihtiyacı vardır.  Application Gateway alt ağı yalnızca uygulama ağ geçitleri içerebilir. Başka hiçbir kaynağa izin verilmez.  Application Gateway için yeni bir alt ağ oluşturabilir veya var olan bir alt ağı kullanabilirsiniz. Bu örnekte iki alt ağ oluşturursunuz: bir tane uygulama ağ geçidi ve arka uç sunucuları için bir diğeri. Application Gateway ön uç IP adresini, kullanım çalışmanıza göre genel veya özel olacak şekilde yapılandırabilirsiniz. Bu örnekte, genel ön uç IP adresi seçersiniz.
 
 1. Kullanarak alt ağ yapılandırması oluşturun `New-AzVirtualNetworkSubnetConfig` .
 2. Kullanarak alt ağ yapılandırmalarına sahip sanal ağ oluşturun `New-AzVirtualNetwork` . 
@@ -81,7 +81,7 @@ New-AzPublicIpAddress `
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>IP yapılandırmaları ve ön uç bağlantı noktası oluşturma
 
 1. `New-AzApplicationGatewayIPConfiguration`Oluşturduğunuz alt ağı uygulama ağ geçidiyle ilişkilendiren yapılandırmayı oluşturmak için kullanın. 
-2. `New-AzApplicationGatewayFrontendIPConfig`Daha önce oluşturduğunuz genel IP adresini uygulama ağ geçidine atayan yapılandırmayı oluşturmak için kullanın. 
+2. `New-AzApplicationGatewayFrontendIPConfig`Uygulama ağ geçidi için daha önce oluşturduğunuz genel IP adresini atayan yapılandırmayı oluşturmak için kullanın. 
 3. `New-AzApplicationGatewayFrontendPort`Application Gateway 'e erişmek için 80 numaralı bağlantı noktasını atamak üzere kullanın.
 
 ```azurepowershell-interactive
@@ -101,7 +101,7 @@ $frontendport = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-backend-pool"></a>Arka uç havuzunu oluşturma
 
-1. `New-AzApplicationGatewayBackendAddressPool`Uygulama ağ geçidi için arka uç havuzu oluşturmak için kullanın. Arka uç havuzu şu anda boş olacak. Sonraki bölümde arka uç sunucusu NIC 'Leri oluşturduğunuzda, bunları arka uç havuzuna eklersiniz.
+1. `New-AzApplicationGatewayBackendAddressPool`Uygulama ağ geçidi için arka uç havuzu oluşturmak için kullanın. Arka uç havuzu şu anda boş. Sonraki bölümde arka uç sunucusu NIC 'Leri oluşturduğunuzda, bunları arka uç havuzuna eklersiniz.
 2. Arka uç havuzunun ayarlarını ile yapılandırın `New-AzApplicationGatewayBackendHttpSetting` .
 
 ```azurepowershell-interactive
@@ -120,7 +120,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSetting `
 Azure, arka uç havuzuna uygun trafiği yönlendirmek için Application Gateway 'i etkinleştirmek üzere bir dinleyici gerektirir. Azure Ayrıca, bir dinleyicinin gelen trafik için hangi arka uç havuzunun kullanılacağını bilmesi için bir kural gerektirir. 
 
 1. `New-AzApplicationGatewayHttpListener`Önceden oluşturduğunuz ön uç yapılandırması ve ön uç bağlantı noktası ile kullanarak bir dinleyici oluşturun. 
-2. `New-AzApplicationGatewayRequestRoutingRule` *Rule1*adlı bir kural oluşturmak için kullanın. 
+2. `New-AzApplicationGatewayRequestRoutingRule` *Rule1* adlı bir kural oluşturmak için kullanın. 
 
 ```azurepowershell-interactive
 $defaultlistener = New-AzApplicationGatewayHttpListener `
@@ -164,7 +164,9 @@ New-AzApplicationGateway `
 
 ### <a name="backend-servers"></a>Arka uç sunucuları
 
-Application Gateway oluşturdığınıza göre, Web sitelerini barındıracak arka uç sanal makinelerini oluşturun. Arka uç, NIC 'Ler, sanal makine ölçek kümeleri, genel IP 'Ler, iç IP 'Ler, tam etki alanı adları (FQDN) ve Azure App Service gibi çok kiracılı arka uçlar olabilir. Bu örnekte, Azure için uygulama ağ geçidi için arka uç sunucular olarak kullanılacak iki sanal makine oluşturursunuz. Ayrıca, Azure 'un uygulama ağ geçidini başarıyla oluşturduğunu doğrulamak için sanal makinelere IIS yüklersiniz.
+Application Gateway oluşturdığınıza göre, Web sitelerini barındıracak arka uç sanal makinelerini oluşturun. Arka uç, NIC 'ler, sanal makine ölçek kümeleri, genel IP adresi, iç IP adresi, tam etki alanı adları (FQDN) ve Azure App Service gibi çok kiracılı arka uçlar olabilir. 
+
+Bu örnekte, uygulama ağ geçidi için arka uç sunucusu olarak kullanmak üzere iki sanal makine oluşturursunuz. Ayrıca, Azure 'un uygulama ağ geçidini başarıyla oluşturduğunu doğrulamak için sanal makinelere IIS yüklersiniz.
 
 #### <a name="create-two-virtual-machines"></a>İki sanal makine oluşturma
 
@@ -173,7 +175,7 @@ Application Gateway oluşturdığınıza göre, Web sitelerini barındıracak ar
 3. İle bir sanal makine yapılandırması oluşturun `New-AzVMConfig` .
 4. İle sanal makineyi oluşturun `New-AzVM` .
 
-Sanal makineleri oluşturmak için aşağıdaki kod örneğini çalıştırdığınızda Azure sizden kimlik bilgilerini ister. Kullanıcı adı ve parola için *azureuser* girin:
+Sanal makineleri oluşturmak için aşağıdaki kod örneğini çalıştırdığınızda Azure sizden kimlik bilgilerini ister. Bir Kullanıcı adı ve parola girin:
     
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway -ResourceGroupName myResourceGroupAG -Name myAppGateway
@@ -224,7 +226,9 @@ for ($i=1; $i -le 2; $i++)
 
 ## <a name="test-the-application-gateway"></a>Uygulama ağ geçidini test etme
 
-Uygulama ağ geçidini oluşturmak için IIS gerekli olmasa da, Azure 'un uygulama ağ geçidini başarıyla oluşturup oluşturmadığını doğrulamak için bu hızlı başlangıçta yüklediniz. Uygulama ağ geçidini test etmek için IIS kullanın:
+Uygulama ağ geçidini oluşturmak için IIS gerekli olmasa da, Azure 'un uygulama ağ geçidini başarıyla oluşturduğunu doğrulamak için bu hızlı başlangıç hızlı yüklenir.
+
+Uygulama ağ geçidini test etmek için IIS kullanın:
 
 1. `Get-AzPublicIPAddress`Uygulama ağ geçidinin genel IP adresini almak için ' i çalıştırın. 
 2. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın. Tarayıcıyı yenilediğinizde, sanal makinenin adını görmeniz gerekir. Geçerli bir yanıt, uygulama ağ geçidinin başarıyla oluşturulduğunu ve arka uca başarıyla bağlanabildiğini doğrular.
