@@ -3,12 +3,12 @@ title: Azure yönetilen disklerini geri yükleme
 description: Azure portal Azure yönetilen disklerini nasıl geri yükleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 043a10a7359c95529ff1c4dcc181ea4aba75cb5f
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 848a7476b1c5095d4e4d3156d4c7ce33da777090
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98558383"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611143"
 ---
 # <a name="restore-azure-managed-disks-in-preview"></a>Azure yönetilen disklerini geri yükleme (önizlemede)
 
@@ -65,6 +65,8 @@ Geri yükleme işlemi gerçekleştirmek için aşağıdaki önkoşulların olmas
     >Rol atamaları portalda doğru şekilde yansıtıldığından, izinlerin yedekleme kasasının yönetilen kimliğine uygulanması yaklaşık 15 dakika sürebilir.
     >
     >Zamanlanmış yedeklemeler veya isteğe bağlı yedekleme işlemi sırasında, Azure Backup disk yedeklemesini yapılandırma sırasında belirtilen anlık görüntü kaynak grubundaki disk Artımlı anlık görüntülerini depolar. Azure Backup, geri yükleme işlemi sırasında bu artımlı anlık görüntüleri kullanır. Anlık görüntüler, anlık görüntü kaynak grubundan silinir veya taşınabilir veya anlık görüntü kaynak grubundaki Yedekleme Kasası rolü atamaları iptal edildiğinde, geri yükleme işlemi başarısız olur.
+
+1. Geri yüklenecek disk, [müşteri tarafından yönetilen anahtarlarla (CMK)](https://docs.microsoft.com/azure/virtual-machines/disks-enable-customer-managed-keys-portal) şifrelendiyse veya [platform tarafından yönetilen anahtarlar ve müşteri tarafından yönetilen anahtarlar kullanılarak Çift şifreleme](https://docs.microsoft.com/azure/virtual-machines/disks-enable-double-encryption-at-rest-portal)kullanıyorsa, bu durumda, **disk şifreleme kümesi** kaynağındaki yedekleme kasasının yönetilen kimliğine **okuyucu** rolü iznini atayın.
 
 Önkoşullar karşılandığında, geri yükleme işlemini gerçekleştirmek için aşağıdaki adımları izleyin.
 

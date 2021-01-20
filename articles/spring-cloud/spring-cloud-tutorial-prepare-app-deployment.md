@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 5d160c46b235c6890426cab9de52ec7b827efe4a
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 37753265afa7e76e87dbcdc5893595bea66798f4
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750722"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610259"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Azure Spring Cloud 'da bir uygulamayı dağıtıma hazırlama
 
@@ -146,40 +146,14 @@ Azure yay bulutu, Spring Boot sürüm 2,1 veya sürüm 2,2 ' nin yalnızca Sprin
 
 Spring Boot sürümü | Yay bulutu sürümü
 ---|---
-2.1 | Greenwich. RELEASE
 2.2 | Hoxton. SR8
 2.3 | Hoxton. SR8
+2.4.1 + | 2020.0.0
 
 > [!NOTE]
-> Spring Boot 2,4 ile uygulamalarınız ve Eureka arasındaki TLS kimlik doğrulamasında bir sorun tespit ettik ve bu sorunu çözmek için şu anda Spring Community ile çalışıyor. Geçici çözüm için lütfen [SSS bölümüne](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-faq?pivots=programming-language-java#development) bakın.
+> Uygulama ve Eureka arasında TLS kimlik doğrulamasında Spring Boot 2.4.0 ile ilgili bir sorun belirledik, lütfen 2.4.1 veya üstünü kullanın. 2.4.0 kullanarak insist geçici çözüm için lütfen [SSS bölümüne](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-faq?pivots=programming-language-java#development) bakın.
 
-### <a name="dependencies-for-spring-boot-version-21"></a>Spring Boot sürüm 2,1 için bağımlılıklar
-
-Spring Boot sürüm 2,1 için aşağıdaki bağımlılıkları uygulama Pod dosyasına ekleyin.
-
-```xml
-    <!-- Spring Boot dependencies -->
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.12.RELEASE</version>
-    </parent>
-
-    <!-- Spring Cloud dependencies -->
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Greenwich.RELEASE</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-```
-
-### <a name="dependencies-for-spring-boot-version-22"></a>Spring Boot sürüm 2,2 için bağımlılıklar
+### <a name="dependencies-for-spring-boot-version-2223"></a>Spring Boot sürüm 2.2/2.3 için bağımlılıklar
 
 Spring Boot sürüm 2,2 için aşağıdaki bağımlılıkları uygulama Pod dosyasına ekleyin.
 
@@ -204,16 +178,17 @@ Spring Boot sürüm 2,2 için aşağıdaki bağımlılıkları uygulama Pod dosy
         </dependencies>
     </dependencyManagement>
 ```
-### <a name="dependencies-for-spring-boot-version-23"></a>Spring Boot sürüm 2,3 için bağımlılıklar
 
-Spring Boot sürüm 2,3 için aşağıdaki bağımlılıkları uygulama Pod dosyasına ekleyin.
+### <a name="dependencies-for-spring-boot-version-24"></a>Spring Boot sürüm 2,4 için bağımlılıklar
+
+Spring Boot sürüm 2,2 için aşağıdaki bağımlılıkları uygulama Pod dosyasına ekleyin.
 
 ```xml
     <!-- Spring Boot dependencies -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.0.RELEASE</version>
+        <version>2.4.1.RELEASE</version>
     </parent>
 
     <!-- Spring Cloud dependencies -->
@@ -222,34 +197,14 @@ Spring Boot sürüm 2,3 için aşağıdaki bağımlılıkları uygulama Pod dosy
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Hoxton.SR8</version>
+                <version>2020.0.0</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
 ```
-## <a name="azure-spring-cloud-client-dependency"></a>Azure yay bulutu istemci bağımlılığı
 
-Azure yay bulutu, bahar bulut bileşenlerini barındırır ve yönetir. Bileşenler yay bulut hizmeti kayıt defteri ve yay bulut yapılandırma sunucusu içerir. Spring Boot 2,2 veya 2,3 kullanılması önerilir. Spring Boot 2,1 için, Azure Spring Cloud Service örneğiniz ile iletişime izin vermek üzere bağımlılıklarınızı Azure Spring Cloud istemci kitaplığı 'nı dahil etmeniz gerekir.
-
-Aşağıdaki tabloda, uygulamanız için Spring Boot ve Spring Cloud kullanan doğru Azure yay bulut sürümleri listelenmektedir.
-
-Spring Boot sürümü | Yay bulutu sürümü | Azure yay bulutu istemci Başlatıcı sürümü
----|---|---
-2.1. x | Greenwich. RELEASE | 2.1.2
-2.2. x | Hoxton. SR8 | Gerekli değil
-2.3. x | Hoxton. SR8 | Gerekli değil
-
-Spring Boot 2,1 kullanıyorsanız, pom.xml dosyanıza aşağıdaki bağımlılığı ekleyin.
-
-```xml
-<dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.1.2</version>
-</dependency>
-```
 > [!WARNING]
 > Yapılandırmanızda belirtmeyin `server.port` . Azure Spring Cloud, bu ayarı bir sabit bağlantı noktası numarasına overide. Lütfen bu ayara de dikkat edin ve kodunuzda sunucu bağlantı noktası belirtmeyin.
 
@@ -329,6 +284,9 @@ Dağıtılmış yapılandırmayı etkinleştirmek için, `spring-cloud-config-cl
 
 ### <a name="distributed-tracing"></a>Dağıtılmış Izleme
 
+Ayrıca Azure Spring Cloud Service örneğiniz ile çalışmak için bir Azure Application Insights örneğini etkinleştirmeniz gerekir. Azure Spring Cloud ile Application Insights kullanma hakkında daha fazla bilgi için bkz. [Dağıtılmış izleme hakkındaki belgeler](spring-cloud-tutorial-distributed-tracing.md).
+
+#### <a name="spring-boot-2223"></a>Spring Boot 2.2/2.3
 `spring-cloud-starter-sleuth` `spring-cloud-starter-zipkin` pom.xml dosyanızın bağımlılıklar bölümüne aşağıdaki ve bağımlılıklarını ekleyin:
 
 ```xml
@@ -342,7 +300,15 @@ Dağıtılmış yapılandırmayı etkinleştirmek için, `spring-cloud-config-cl
 </dependency>
 ```
 
- Ayrıca Azure Spring Cloud Service örneğiniz ile çalışmak için bir Azure Application Insights örneğini etkinleştirmeniz gerekir. Azure Spring Cloud ile Application Insights kullanma hakkında daha fazla bilgi için bkz. [Dağıtılmış izleme hakkındaki belgeler](spring-cloud-tutorial-distributed-tracing.md).
+#### <a name="spring-boot-24"></a>Spring Boot 2,4
+`spring-cloud-sleuth-zipkin`pom.xml dosyanızın bağımlılıklar bölümüne aşağıdaki bağımlılığı ekleyin:
+
+```xml
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-sleuth-zipkin</artifactId>
+</dependency>
+```
 
 ## <a name="see-also"></a>Ayrıca bkz.
 * [Uygulama günlüklerini ve ölçümleri çözümleme](./diagnostic-services.md)

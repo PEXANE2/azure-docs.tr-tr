@@ -4,12 +4,12 @@ description: Application Insights ile Node.js hizmetlerindeki performansı izley
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 7aea6c03b0ce35fa0e74c39ff5f94f714447ad6f
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 0d414ce44a8d6ab308bd31f7372bb1c146fac9f5
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920579"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611024"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Application Insights ile Node.js hizmetlerinizi ve uygulamalarınızı izleme
 
@@ -334,6 +334,12 @@ server.on("listening", () => {
   appInsights.defaultClient.trackMetric({name: "server startup time", value: duration});
 });
 ```
+
+### <a name="flush"></a>Temizlenemiyor
+
+Varsayılan olarak, telemetri, giriş sunucusuna gönderilmeden önce 15 saniye boyunca arabelleğe kaydedilir. Uygulamanızın kısa bir süre (örn. bir CLı aracı) varsa, uygulama sonlandırıldığında, arabelleğe alınmış Telemetriyi el ile temizlemek gerekli olabilir `appInsights.defaultClient.flush()` .
+
+SDK uygulamanızın kilitlenme olduğunu algılarsa, sizin için Temizleme işlemi çağırır `appInsights.defaultClient.flush({ isAppCrashing: true })` . Temizleme seçeneği ile `isAppCrashing` uygulamanızın anormal bir durumda olduğu varsayılır, telemetri göndermek için uygun değildir. Bunun yerine, SDK tüm arabelleğe alınmış telemetrileri [kalıcı depolamaya](./data-retention-privacy.md#nodejs) kaydeder ve uygulamanızın sonlandırılmasına izin verir. Uygulama yeniden başlatıldığında, kalıcı depolamaya kaydedilen herhangi bir Telemetriyi göndermeye çalışır.
 
 ### <a name="preprocess-data-with-telemetry-processors"></a>Telemetri işlemcileriyle verileri önceden işleme
 

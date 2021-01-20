@@ -8,12 +8,12 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 32aa94c986c90b7bd46b9f5561021c34c0f142af
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 29f7f241f119ca7fab50409881b517961b00cf20
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492101"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610480"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure Dosya Eşitleme dağıtımı planlama
 
@@ -50,6 +50,9 @@ Eşitleme grupları, Azure Dosya Eşitleme ile kullanım için sunucuları kayde
 Bir depolama eşitleme hizmetinde bir eşitleme grubu oluşturabilmeniz için önce depolama eşitleme hizmeti ile bir Windows Server kaydetmelisiniz. Bu, sunucunuz veya kümeniz ile depolama eşitleme hizmeti arasındaki bir güven ilişkisini temsil eden **kayıtlı bir sunucu** nesnesi oluşturur. Bir depolama eşitleme hizmeti kaydetmek için öncelikle sunucuya Azure Dosya Eşitleme aracısını yüklemeniz gerekir. Tek bir sunucu veya küme, aynı anda yalnızca bir depolama eşitleme hizmeti ile kaydedilebilir.
 
 Bir eşitleme grubu, bir bulut uç noktası veya Azure dosya paylaşımının yanı sıra en az bir sunucu uç noktası içerir. Sunucu uç noktası nesnesi, Azure Dosya Eşitleme önbelleğe alma özelliğini sağlayan **bulut katmanlama** özelliğini yapılandıran ayarları içerir. Azure dosya paylaşımıyla eşitleme yapmak için, Azure dosya paylaşımının bulunduğu depolama hesabı, depolama eşitleme hizmeti ile aynı Azure bölgesinde olmalıdır.
+
+> [!Important]  
+> Eşitleme grubundaki herhangi bir bulut uç noktasında veya sunucu uç noktasında değişiklik yapabilir ve dosyalarınızı eşitleme grubundaki diğer uç noktalarla eşitler. Bulut uç noktasına (Azure dosya paylaşımında) doğrudan değişiklik yaparsanız, önce değişikliklerin Azure Dosya Eşitleme değişiklik algılama işi tarafından bulunması gerekir. Bir değişiklik algılama işi, her 24 saatte bir bulut uç noktası için başlatılır. Daha fazla bilgi için bkz. [Azure dosyaları hakkında sık sorulan sorular](storage-files-faq.md#afs-change-detection).
 
 ### <a name="management-guidance"></a>Yönetim Kılavuzu
 Azure Dosya Eşitleme dağıttığınızda şunları yapmanızı öneririz:
@@ -99,8 +102,8 @@ Aşağıdaki tabloda, ortalama dosya boyutu 512 KiB olduğunda, ad alanının bo
 | 3        | 1.4     | 2        | 8 (ilk eşitleme)/2 (tipik dalgalanma)      |
 | 5        | 2.3     | 2        | 16 (ilk eşitleme)/4 (tipik dalgalanma)    |
 | 10       | 4.7     | 4        | 32 (ilk eşitleme)/8 (tipik dalgalanma)   |
-| 30       | 14,0    | 8        | 48 (ilk eşitleme)/16 (tipik dalgalanma)   |
-| 50       | 23,3    | 16       | 64 (ilk eşitleme)/32 (tipik dalgalanma)  |
+| 30       | 14.0    | 8        | 48 (ilk eşitleme)/16 (tipik dalgalanma)   |
+| 50       | 23.3    | 16       | 64 (ilk eşitleme)/32 (tipik dalgalanma)  |
 | 100 *     | 46,6    | 32       | 128 (ilk eşitleme)/32 (tipik dalgalanma)  |
 
 \*100.000.000 'den fazla dosyanın eşitlenmesi & dizinler Şu anda önerilmez. Bu, test edilen eşiklerimize göre bir geçici limit. Daha fazla bilgi için bkz. [Azure dosyaları ölçeklenebilirlik ve performans hedefleri](storage-files-scale-targets.md#azure-file-sync-scale-targets).
@@ -147,7 +150,7 @@ Yalnızca NTFS birimleri desteklenir; ReFS, FAT, FAT32 ve diğer dosya sistemler
 
 Aşağıdaki tabloda NTFS dosya sistemi özelliklerinin birlikte çalışma durumu gösterilmektedir: 
 
-| Özellik | Destek durumu | Notlar |
+| Öne çıkan özelliği | Destek durumu | Notlar |
 |---------|----------------|-------|
 | Erişim denetim listeleri (ACL’ler) | Tam olarak destekleniyor | Windows stili isteğe bağlı erişim denetim listeleri Azure Dosya Eşitleme tarafından korunur ve sunucu uç noktalarında Windows Server tarafından zorlanır. Azure dosya paylaşımının doğrudan bağlanması sırasında ACL 'Ler de zorlanabilir, ancak bunun için ek yapılandırma gerekir. Daha fazla bilgi için [kimlik bölümüne](#identity) bakın. |
 | Sabit bağlantılar | Atlandı | |

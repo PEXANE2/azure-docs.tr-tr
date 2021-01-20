@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc, devx-track-python, devx-track-js, devx-track-csharp
 ms.subservice: blobs
-ms.openlocfilehash: 1c1ba7d8cd0e4202003a98153a48e0593d1fcd04
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: dfb7e7c7c93a8af2b59f6d3d7049e2c14b8f382a
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95543162"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611058"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Öğretici: BLOB depolama ile yüksek oranda kullanılabilir bir uygulama oluşturma
 
@@ -73,7 +73,7 @@ Okuma Erişimli Coğrafi bölge-yedekli (RA-GZRS) depolama hesabı oluşturmak i
    | Ayar       | Örnek değer | Açıklama |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Abonelik** | *Aboneliğim* | Abonelikleriniz hakkında daha ayrıntılı bilgi için bkz. [Abonelikler](https://account.azure.com/Subscriptions). |
-   | **Kaynak** | *myResourceGroup* | Geçerli kaynak grubu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming). |
+   | **adlı yönetilen örnek,** | *myResourceGroup* | Geçerli kaynak grubu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming). |
    | **Ad** | *mystorageaccount* | Depolama hesabınız için benzersiz bir ad. |
    | **Konum** | *Doğu ABD* | Konum seçin. |
    | **Performans** | *Standart* | Standart performans, örnek senaryo için iyi bir seçenektir. |
@@ -184,17 +184,17 @@ Uygulamayı bir terminalde veya komut isteminde çalıştırmak için **circuitb
 
 ![Çalışan konsol uygulaması](media/storage-create-geo-redundant-storage/figure3.png)
 
-Örnek kodda, [get_blob_to_path](/python/api/azure-storage-blob/azure.storage.blob.baseblobservice.baseblobservice?view=azure-python-previous#get-blob-to-path-container-name--blob-name--file-path--open-mode--wb---snapshot-none--start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--lease-id-none--if-modified-since-none--if-unmodified-since-none--if-match-none--if-none-match-none--timeout-none-) yöntemini kullanarak depolama hesabından bir resim indirmek için `circuitbreaker.py` dosyasındaki `run_circuit_breaker` yöntemi kullanılmaktadır.
+Örnek kodda, [get_blob_to_path](/python/api/azure-storage-blob/azure.storage.blob.baseblobservice.baseblobservice#get-blob-to-path-container-name--blob-name--file-path--open-mode--wb---snapshot-none--start-range-none--end-range-none--validate-content-false--progress-callback-none--max-connections-2--lease-id-none--if-modified-since-none--if-unmodified-since-none--if-match-none--if-none-match-none--timeout-none-) yöntemini kullanarak depolama hesabından bir resim indirmek için `circuitbreaker.py` dosyasındaki `run_circuit_breaker` yöntemi kullanılmaktadır.
 
 Depolama nesnesi yeniden deneme işlevi, doğrusal bir yeniden deneme ilkesine ayarlıdır. Yeniden deneme işlevi, isteklerin yeniden denenip denenmeyeceğini belirler ve isteği yeniden denemeden önce kaç saniye bekleneceğini belirtir. Birincile yapılan istek başarısız olursa aynı isteğin ikincile yeniden denenmesini istiyorsanız **retry\_to\_secondary** değerini true olarak ayarlayın. Örnek uygulamada depolama nesnesinin `retry_callback` işlevinde özel bir yeniden deneme ilkesi tanımlanmıştır.
 
-İndirilmadan önce, Service Object [retry_callback](/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient?view=azure-python) ve [response_callback](/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient?view=azure-python) işlevi tanımlanmıştır. Bu işlevler, indirme işlemi başarıyla tamamlandığında veya indirme işlemi başarısız olup yeniden denendiğinde başlatılan olay işleyicilerini tanımlar.
+İndirilmadan önce, Service Object [retry_callback](/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient) ve [response_callback](/python/api/azure-storage-common/azure.storage.common.storageclient.storageclient) işlevi tanımlanmıştır. Bu işlevler, indirme işlemi başarıyla tamamlandığında veya indirme işlemi başarısız olup yeniden denendiğinde başlatılan olay işleyicilerini tanımlar.
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 Örneği çalıştırmak için bir komut istemi açın, örnek klasöre gidin ve girin `node index.js` .
 
-Örnek, BLOB depolama hesabınızda bir kapsayıcı oluşturur, kapsayıcıya **HelloWorld.png** yükler ve sonra kapsayıcının ve görüntünün ikincil bölgeye çoğaltılıp çoğaltılmadığını sürekli olarak denetler. Çoğaltma sonrasında, indirmek veya çıkmak için **D** veya **Q** (sonra ENTER ile) girmenizi ister. Çıktın aşağıdaki örneğe benzer şekilde görünmesi gerekir:
+Örnek, BLOB depolama hesabınızda bir kapsayıcı oluşturur, kapsayıcıya **HelloWorld.png** yükler ve sonra kapsayıcının ve görüntünün ikincil bölgeye çoğaltılıp çoğaltılmadığını sürekli olarak denetler. Çoğaltma sonrasında, indirmek veya çıkmak için **D** veya **Q** (sonra ENTER ile) girmenizi ister. Çıkışınız aşağıdaki örneğe benzer görünmelidir:
 
 ```
 Created container successfully: newcontainer1550799840726
@@ -276,7 +276,7 @@ private static void OperationContextRequestCompleted(object sender, RequestEvent
 
 ### <a name="retry-event-handler"></a>Yeniden deneme olay işleyicisi
 
-`retry_callback` olay işleyicisi, resmin indirilmesi işlemi başarısız olmuşsa ve yeniden denenecek şekilde ayarlanmışsa çağrılır. Uygulamada tanımlı yeniden deneme sayısı üst sınırına ulaşılmışsa isteğin [LocationMode](/python/api/azure-storage-common/azure.storage.common.models.locationmode?view=azure-python) değeri `SECONDARY` olarak değiştirilir. Bu ayar, uygulamayı resmi ikincil uç noktadan indirmeyi denemeye zorlar. Birincil uç nokta süresiz olarak yeniden denenmediği için bu yapılandırma resmin istenmesinde harcanan süreyi azaltmış olur.
+`retry_callback` olay işleyicisi, resmin indirilmesi işlemi başarısız olmuşsa ve yeniden denenecek şekilde ayarlanmışsa çağrılır. Uygulamada tanımlı yeniden deneme sayısı üst sınırına ulaşılmışsa isteğin [LocationMode](/python/api/azure-storage-common/azure.storage.common.models.locationmode) değeri `SECONDARY` olarak değiştirilir. Bu ayar, uygulamayı resmi ikincil uç noktadan indirmeyi denemeye zorlar. Birincil uç nokta süresiz olarak yeniden denenmediği için bu yapılandırma resmin istenmesinde harcanan süreyi azaltmış olur.
 
 ```python
 def retry_callback(retry_context):
@@ -300,7 +300,7 @@ def retry_callback(retry_context):
 
 ### <a name="request-completed-event-handler"></a>İstek tamamlandı olay işleyicisi
 
-`response_callback` olay işleyicisi, resmin indirilmesi işlemi başarılı olduğunda çağrılır. Uygulama ikincil uç noktayı kullanıyorsa bu uç noktayı 20 kereye kadar daha kullanmaya devam eder. 20 kereden sonra uygulama [LocationMode](/python/api/azure-storage-common/azure.storage.common.models.locationmode?view=azure-python) değerini yeniden `PRIMARY` olarak ayarlar ve birincil uç noktayı tekrar dener. Bir istek başarılı olursa uygulama birincil uç noktadan okumaya devam eder.
+`response_callback` olay işleyicisi, resmin indirilmesi işlemi başarılı olduğunda çağrılır. Uygulama ikincil uç noktayı kullanıyorsa bu uç noktayı 20 kereye kadar daha kullanmaya devam eder. 20 kereden sonra uygulama [LocationMode](/python/api/azure-storage-common/azure.storage.common.models.locationmode) değerini yeniden `PRIMARY` olarak ayarlar ve birincil uç noktayı tekrar dener. Bir istek başarılı olursa uygulama birincil uç noktadan okumaya devam eder.
 
 ```python
 def response_callback(response):

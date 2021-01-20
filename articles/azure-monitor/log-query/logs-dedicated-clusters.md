@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 93b05a5535b80d0e0d1a07c88aa9b19052f1b703
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: a5cbbed3881433121f5ab811082969bc3c6c4f7f
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562684"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98609953"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Izleyici, ayrılmış kümeleri günlüğe kaydeder
 
@@ -512,27 +512,25 @@ Kümeyi silmek için aşağıdaki REST çağrısını kullanın:
 
 - Bir çalışma alanını kümenize bağlayabilir ve sonra bağlantısını kesebilirsiniz. Belirli çalışma alanındaki çalışma alanı bağlantı işlemlerinin sayısı, 30 günlük bir dönemde 2 ile sınırlıdır.
 
-- Kümeye çalışma alanı bağlantısı yalnızca Log Analytics kümesi sağlama tamamlandığını doğruladıktan sonra taşınmalıdır. Tamamlanmadan önce çalışma alanınıza gönderilen veriler bırakılır ve geri alınamaz.
-
 - Küme başka bir kaynak grubuna veya aboneliğe taşıma Şu anda desteklenmiyor.
-
-- Başka bir kümeyle bağlantı varsa, kümeye çalışma alanı bağlantısı başarısız olur.
 
 - Kasa Çin 'de Şu anda kullanılamıyor. 
 
-- Desteklenen bölgelerde, Ekim 2020 ' den oluşturulan kümeler için [Çift şifreleme](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) otomatik olarak yapılandırılır. Kümenizin kümedeki bir GET isteğiyle Çift şifreleme için yapılandırılıp yapılandırılmadığını ve özellik değerini gözlemleyerek, `"isDoubleEncryptionEnabled"` `true` çift şifrelemeyi etkin kümeler için olduğunu doğrulayabilirsiniz. 
-  - Bir küme oluşturur ve "<Region-adı> kümeler için çift şifrelemeyi desteklemez.", kümeyi yine de çift şifreleme olmadan oluşturabilirsiniz. `"properties": {"isDoubleEncryptionEnabled": false}`Rest istek gövdesine özellik ekleyin.
+- Desteklenen bölgelerde, Ekim 2020 ' den oluşturulan kümeler için [Çift şifreleme](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) otomatik olarak yapılandırılır. Kümede bir GET isteği göndererek ve `isDoubleEncryptionEnabled` değerin `true` çift şifrelemeyi etkin kümeler için olduğunu gözlemleyerek, kümenizin Çift şifreleme için yapılandırılıp yapılandırılmadığını doğrulayabilirsiniz. 
+  - Bir küme oluşturur ve "<Region-adı> kümeler için çift şifrelemeyi desteklemez.", REST istek gövdesine ekleyerek kümeyi, Çift şifrelemeyi oluşturmaya devam edebilirsiniz `"properties": {"isDoubleEncryptionEnabled": false}` .
   - Küme oluşturulduktan sonra çift şifreleme ayarı değiştirilemez.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
 - Bir küme oluştururken çakışma hatası alırsanız, kümenizi son 14 gün içinde silmiş ve bu da geçici silme durumunda olabilir. Küme adı, geçici silme döneminde ayrılmış kalır ve bu adla yeni bir küme oluşturamazsınız. Bu ad, küme kalıcı olarak silindiğinde geçici silme süresinden sonra serbest bırakılır.
 
-- Bir işlem devam ederken kümenizi güncelleştirirseniz işlem başarısız olur.
+- Küme sağlama veya güncelleştirme durumundayken kümenizi güncelleştirirseniz güncelleştirme başarısız olur.
 
 - Bazı işlemler uzun sürer ve işlemin tamamlanması biraz zaman alabilir; bunlar küme oluşturma, küme anahtarı güncelleştirme ve küme silme işlemlerini gerçekleştirebilir. İşlem durumunu iki şekilde denetleyebilirsiniz:
   - REST kullanırken, Azure-AsyncOperation URL değerini yanıttan kopyalayın ve [zaman uyumsuz işlemler durum denetimini](#asynchronous-operations-and-status-check)izleyin.
   - Kümeye veya çalışma alanına GET isteği gönderin ve yanıtı gözlemleyin. Örneğin, bağlantısız çalışma alanının *Özellikler* bölümünde *kümeresourceıd* yok.
+
+- Başka bir kümeyle bağlantı varsa, kümeye çalışma alanı bağlantısı başarısız olur.
 
 - Hata iletileri
   

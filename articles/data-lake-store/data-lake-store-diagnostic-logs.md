@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 434917c1cee26a4a8eeb7f27808e3fcb487f3f55
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: aac0139e09866ce44d25989119b2eafb31e76961
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350050"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610463"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. için tanılama günlüklerine erişme
 Azure Data Lake Storage 1. hesabınız için tanılama günlüğünü etkinleştirmeyi ve hesabınız için toplanan günlüklerin nasıl görüntüleneceğini öğrenin.
@@ -63,7 +63,7 @@ Data Lake Storage 1. hesabınızın günlük verilerini görüntülemenin iki yo
 ### <a name="using-the-data-lake-storage-gen1-settings-view"></a>Data Lake Storage 1. ayarları görünümünü kullanma
 1. Data Lake Storage 1. hesap **ayarları** dikey penceresinde **tanılama günlükleri**' ne tıklayın.
    
-    ![Tanılama günlüklerini görüntüle](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs.png "Tanılama günlüklerini görüntüleme") 
+    ![Tanılama günlüklerini görüntüleme](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs.png "Tanılama günlüklerini görüntüleme") 
 2. **Tanılama günlükleri** dikey penceresinde, günlükleri **Denetim günlüklerine** ve **istek günlüklerine** göre kategorilere ayırarak görmeniz gerekir.
    
    * İstek günlükleri Data Lake Storage 1. hesapta yapılan her API isteğini yakalar.
@@ -115,7 +115,7 @@ JSON biçimli istek günlüğünde örnek bir giriş aşağıda verilmiştir. He
 ```
 
 #### <a name="request-log-schema"></a>İstek günlüğü şeması
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 | --- | --- | --- |
 | time |Dize |Günlüğün zaman damgası (UTC) |
 | resourceId |Dize |İşlemin gerçekleştiği kaynağın KIMLIĞI |
@@ -128,7 +128,7 @@ JSON biçimli istek günlüğünde örnek bir giriş aşağıda verilmiştir. He
 | properties |JSON |Ayrıntılar için aşağıya bakın |
 
 #### <a name="request-log-properties-schema"></a>İstek günlüğü özellikleri şeması
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 | --- | --- | --- |
 | HttpMethod |Dize |İşlem için kullanılan HTTP yöntemi. Örneğin, GET. |
 | Yol |Dize |İşlemin gerçekleştirildiği yol |
@@ -136,6 +136,8 @@ JSON biçimli istek günlüğünde örnek bir giriş aşağıda verilmiştir. He
 | Clientrequestıd 'ye sahip |Dize |Bu isteği benzersiz bir şekilde tanımlayan KIMLIK |
 | StartTime |Dize |Sunucunun isteği aldığı zaman |
 | EndTime |Dize |Sunucunun yanıt gönderdiği zaman |
+| StoreIngressSize |Kalacağını |Data Lake Store bayt cinsinden boyutu |
+| StoreEgressSize |Kalacağını |Data Lake Store okunan bayt boyutu |
 
 ### <a name="audit-logs"></a>Denetim günlükleri
 JSON biçimli denetim günlüğünde örnek bir giriş aşağıda verilmiştir. Her Blobun, bir dizi günlük nesneleri içeren **kayıtlar** adlı bir kök nesnesi vardır
@@ -164,7 +166,7 @@ JSON biçimli denetim günlüğünde örnek bir giriş aşağıda verilmiştir. 
 ```
 
 #### <a name="audit-log-schema"></a>Denetim günlüğü şeması
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 | --- | --- | --- |
 | time |Dize |Günlüğün zaman damgası (UTC) |
 | resourceId |Dize |İşlemin gerçekleştiği kaynağın KIMLIĞI |
@@ -177,7 +179,7 @@ JSON biçimli denetim günlüğünde örnek bir giriş aşağıda verilmiştir. 
 | properties |JSON |Ayrıntılar için aşağıya bakın |
 
 #### <a name="audit-log-properties-schema"></a>Denetim günlüğü özellikleri şeması
-| Ad | Tür | Açıklama |
+| Ad | Tür | Description |
 | --- | --- | --- |
 | StreamName |Dize |İşlemin gerçekleştirildiği yol |
 

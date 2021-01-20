@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 43d593a65fd08542eb2829fcebcea81ea0c99986
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: e10f45af89e19f6fe62ff729f96d870e008c96ec
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995445"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611109"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure Dosyaları ölçeklenebilirlik ve performans hedefleri
 
@@ -31,7 +31,7 @@ Azure dosya paylaşımının üst kaynağı bir Azure Storage hesabıdır. Depol
 > [!Important]  
 > Diğer depolama hizmetlerinden genel amaçlı depolama hesabı kullanımı, Depolama hesabınızdaki Azure dosya paylaşımlarınızı etkiler. Örneğin, Azure Blob depolama ile en fazla depolama hesabı kapasitesine ulaştıysanız, Azure dosya paylaşımınız maksimum dosya boyutu altında olsa bile Azure dosya paylaşımınızda yeni dosyalar oluşturamazsınız.
 
-## <a name="azure-files-scale-targets"></a>Azure dosyaları ölçek hedefleri
+## <a name="azure-files-scale-targets"></a>Azure Dosyalar ölçek hedefleri
 
 Azure dosyaları için göz önünde bulundurmanız gereken üç sınırlama kategorisi vardır: depolama hesapları, paylaşımlar ve dosyalar.
 
@@ -87,16 +87,16 @@ Bir aşamanın her biri için dağıtımınızı planlamaya yardımcı olmak üz
 | Nesne sayısı | 25.000.000 nesneleri |
 | Veri kümesi boyutu| ~ 4,7 TiB |
 | Ortalama dosya boyutu | ~ 200 KiB (en büyük dosya: 100 GiB) |
-| İlk bulut değişikliği numaralandırması | saniyede 7 nesne  |
+| İlk bulut değişikliği numaralandırması | saniyede 20 nesne  |
 | Aktarım hızını karşıya yükle | Her eşitleme grubu için saniyede 20 nesne |
 | Ad alanı Indirme üretilen Işi | saniyede 400 nesne |
 
 ### <a name="initial-one-time-provisioning"></a>İlk bir kerelik sağlama
 
 **İlk bulut değişikliği numaralandırması**: yeni bir eşitleme grubu oluşturulduğunda, ilk bulut değişikliği numaralandırması çalıştırılacak ilk adımdır. Bu süreçte, sistem Azure dosya paylaşımındaki tüm öğeleri listelemeye çalışır. Bu işlem sırasında, hiçbir eşitleme etkinliği olmaz. bir öğe, bulut uç noktasından sunucu uç noktasına indirilmeyecek ve sunucu uç noktasından bulut uç noktasına hiçbir öğe yüklenemeyecektir. İlk bulut değişikliği numaralandırması tamamlandıktan sonra eşitleme etkinliği sürdürülecek.
-Saniye başına 7 nesne performans hızıdır. Müşteriler, bulut paylaşımındaki öğelerin sayısını belirleyerek ve saati gün olarak almak için aşağıdaki formül ' i kullanarak ilk bulut değişikliği numaralandırması işleminin tamamlanması için gereken süreyi tahmin edebilir. 
+Performans hızı saniyede 20 nesne olur. Müşteriler, bulut paylaşımındaki öğelerin sayısını belirleyerek ve saati gün olarak almak için aşağıdaki formül ' i kullanarak ilk bulut değişikliği numaralandırması işleminin tamamlanması için gereken süreyi tahmin edebilir. 
 
-   **İlk bulut numaralandırması için (gün olarak) süre = (bulut uç noktasındaki nesne sayısı)/(7 * 60 * 60 * 24)**
+   **İlk bulut numaralandırması için (gün olarak) süre = (bulut uç noktasındaki nesne sayısı)/(20 * 60 * 60 * 24)**
 
 **Ad alanı indirme üretilen işi** Var olan bir eşitleme grubuna yeni bir sunucu uç noktası eklendiğinde Azure Dosya Eşitleme Aracısı, bulut uç noktasındaki dosya içeriğini indirmez. Önce tam ad alanını eşitler ve sonra, dosyaları tamamen veya bulut katmanlaması etkinse, sunucu uç noktasında ayarlanan bulut katmanlaması ilkesi için arka plan geri yüklemeyi tetikler.
 

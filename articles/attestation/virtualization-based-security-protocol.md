@@ -7,16 +7,18 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e5cc3b5fb7ca38df196119de12d346f5d0346b58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 53052b35a50899d6f9e761301f31b9ffd20a4b91
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91346081"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610021"
 ---
-# <a name="virtualization-based-security-vbs-attestation-protocol"></a>Sanallaştırma tabanlı güvenlik (VBS) kanıtlama Protokolü 
+# <a name="trusted-platform-module-tpm-and-virtualization-based-securityvbs-enclave-attestation-protocol"></a>Güvenilir Platform Modülü (TPM) ve sanallaştırma tabanlı güvenlik (VBS) şifreleme protokolü 
 
-Microsoft Azure kanıtlama, raporlama yaptığı verilerin gerçek olduğunu garanti etmek için, bellenimden hiper yönetici ve güvenli çekirdek 'nin başlatılması için bir güven zinciri oluşturulması gerekir. Bu Azure kanıtlama elde etmek için güvenli kuşve güvende güven kurmadan önce makinenin önyükleme durumunu atlamanız gerekir. İşletim sistemi, hiper yönetici ve güvenli çekirdek ikilileri, doğru resmi Microsoft yetkilileri tarafından imzalanmalıdır ve güvenli bir şekilde yapılandırılmalıdır. Güvenilir Platform Modülü (TPM) ve hiper yöneticinin sistem durumu arasında güven ilişkisi olduktan sonra, ölçülen önyükleme günlüğünde belirtilen VBS ıDKS öğesine güvenebiliriz. Bu özellik ile, bir anahtar çiftinin, bu anahtarda güveni bağlayan ve güvenlik düzeyi ve önyükleme kanıtlama özellikleri gibi diğer talepler içeren bir kanıtlama raporu ile bir anahtar çiftinin oluşturulduğunu doğrulayabiliriz.
+Güçlü bir güvenlik garantisi sağlamak için kanıtlama Microsoft Azure, bir güven zincirinin, hiper yönetici ve güvenli çekirdek başlatma ile bir güven köküne (TPM) karşı korunmasını sağlar. Bu Azure kanıtlama elde etmek için güvenli kuşve güvende güven kurmadan önce makinenin önyükleme durumunu atlamanız gerekir. İşletim sistemi, hiper yönetici ve güvenli çekirdek ikilileri, doğru resmi Microsoft yetkilileri tarafından imzalanmalıdır ve güvenli bir şekilde yapılandırılmalıdır. Güvenilir Platform Modülü (TPM) ve hiper yöneticinin sistem durumu arasında güven ilişkisi olduktan sonra, ölçülen önyükleme günlüğünde sunulan sanallaştırma tabanlı güvenlik (VBS) Şifreleçlerine güvenebilir ve bu anahtarla güveni bağlayan ve güvenlik düzeyi ve önyükleme kanıtlama özellikleri gibi başka talepler içeren bir kanıtlama raporu ile bir anahtar çiftinin oluşturulduğunu doğrulayabiliriz. 
+
+VBS enclaven, güvenlik temelini doğrulamaya yönelik ölçümü sağlamak için TPM gerektirir. VBS enclaven, protokolünde istek nesnesine ek olarak TPM uç noktası tarafından test edilmiştir. 
 
 ## <a name="protocol-messages"></a>Protokol iletileri
 
@@ -29,9 +31,9 @@ Microsoft Azure kanıtlama, raporlama yaptığı verilerin gerçek olduğunu gar
 #### <a name="payload"></a>Te
 
 ```
-{
-  "type": "aikcert"
-}
+{ 
+  "type": "aikcert" 
+} 
 ```
 
 "Type" (ASCII String): istenen kanıtlama türünü temsil eder. Şu anda yalnızca "aıkcert" desteklenir.
@@ -45,18 +47,15 @@ Azure kanıtlama-> Istemcisi
 #### <a name="payload"></a>Te
 
 ```
-{
-
-  "challenge": "<BASE64URL(CHALLENGE)>",
-  
-  "service_context": "<BASE64URL(SERVICECONTEXT)>"
-  
-}
+{ 
+  "challenge": "<BASE64URL(CHALLENGE)>", 
+  "service_context": "<BASE64URL(SERVICECONTEXT)>" 
+} 
 ```
 
 **Challenge** (BASE64URL (sekizli)): hizmet tarafından verilen rastgele değer.
 
-**service_context** (BASE64URL (sekizli)): hizmet tarafından oluşturulan, diğer kullanıcılar, zorluk ve bu zorluk için süre sonu zamanı içeren donuk, şifreli bağlam.
+**service_context** (BASE64URL (sekizli)): hizmet tarafından oluşturulan, diğer kullanıcılar, sınama ve bu zorluk için süre sonu zamanı içeren donuk, şifreli bağlam. 
 
 
 ### <a name="request-message"></a>İstek iletisi
@@ -69,9 +68,7 @@ Azure kanıtlama-> Istemcisi
 
 ```
 {
-
   "request": "<JWS>"
-  
 }
 ```
 
@@ -95,103 +92,112 @@ BASE64URL (JWS Imzası)
 
 ##### <a name="jws-payload"></a>JWS yükü
 
-JWS yükü Basic veya VBS türünde olabilir. Temel, kanıtlama kanıtlaması VBS verileri içermediği zaman kullanılır.
+JWS yükü Basic veya VBS türünde olabilir. Temel, kanıtlama kanıtlaması VBS verileri içermediği zaman kullanılır. 
 
-Temel örnek
+Yalnızca TPM örneği: 
 
 ``` 
-{
-  "att_type": "basic",
-  "att_data": {
-    "rp_id": "<URL>",
-    "rp_data": "<BASE64URL(RPCUSTOMDATA)>",
-    "challenge": "<BASE64URL(CHALLENGE)>",
-    "tpm_att_data": {
-      "srtm_boot_log": "<BASE64URL(SRTMBOOTLOG)>",
-      "srtm_resume_log": "<BASE64URL(SRTMRESUMELOG)>",
-      "drtm_boot_log": "<BASE64URL(DRTMBOOTLOG)>",
-      "drtm_resume_log": "<BASE64URL(DRTMRESUMELOG)>",
-      "aik_cert": "<BASE64URL(AIKCERTIFICATE)>",
-      // aik_pub is represented as a JSON Web Key (JWK) object (RFC 7517).
-      "aik_pub": {
-        "kty": "RSA",
-        "n": "<Base64urlUInt(MODULUS)>",
-        "e": "<Base64urlUInt(EXPONENT)>"
-      },
-      "current_claim": "<BASE64URL(CURRENTCLAIM)>",
-      "boot_claim": "<BASE64URL(BOOTCLAIM)>"
-    },
-    // attest_key is represented as a JSON Web Key (JWK) object (RFC 7517).
-    "attest_key": {
-      "kty": "RSA",
-      "n": "<Base64urlUInt(MODULUS)>",
-      "e": "<Base64urlUInt(EXPONENT)>"
-    },
-    "custom_claims": [
-      {
-        "name": "<name>",
-        "value": "<value>",
-        "value_type": "<value_type>"
-      },
-      {
-        "name": "<name>",
-        "value": "<value>",
-        "value_type": "<value_type>"
-      }
-    ],
-    "service_context": "<BASE64URL(SERVICECONTEXT)>"
-  }
-}
+{ 
+  "att_type": "basic", 
+  "att_data": { 
+    "rp_id": "<URL>", 
+    "rp_data": "<BASE64URL(RPCUSTOMDATA)>", 
+    "challenge": "<BASE64URL(CHALLENGE)>", 
+
+    "tpm_att_data": { 
+      "srtm_boot_log": "<BASE64URL(SRTMBOOTLOG)>", 
+      "srtm_resume_log": "<BASE64URL(SRTMRESUMELOG)>", 
+      "drtm_boot_log": "<BASE64URL(DRTMBOOTLOG)>", 
+      "drtm_resume_log": "<BASE64URL(DRTMRESUMELOG)>", 
+      "aik_cert": "<BASE64URL(AIKCERTIFICATE)>", 
+
+      // aik_pub is represented as a JSON Web Key (JWK) object (RFC 7517). 
+
+      "aik_pub": { 
+        "kty": "RSA", 
+        "n": "<Base64urlUInt(MODULUS)>", 
+        "e": "<Base64urlUInt(EXPONENT)>" 
+      }, 
+      "current_claim": "<BASE64URL(CURRENTCLAIM)>", 
+      "boot_claim": "<BASE64URL(BOOTCLAIM)>" 
+    }, 
+
+    // attest_key is represented as a JSON Web Key (JWK) object (RFC 7517). 
+
+    "attest_key": { 
+      "kty": "RSA", 
+      "n": "<Base64urlUInt(MODULUS)>", 
+      "e": "<Base64urlUInt(EXPONENT)>" 
+    }, 
+    "custom_claims": [ 
+      { 
+        "name": "<name>", 
+        "value": "<value>", 
+        "value_type": "<value_type>" 
+      }, 
+      { 
+        "name": "<name>", 
+        "value": "<value>", 
+        "value_type": "<value_type>" 
+      } 
+    ], 
+    "service_context": "<BASE64URL(SERVICECONTEXT)>" 
+  } 
+} 
 ```
 
-VBS örnek
+TPM + vbs kuşatma örneği: 
 
 ``` 
-{
-  "att_type": "vbs",
-  "att_data": {
-    "report_signed": {
-      "rp_id": "<URL>",
-      "rp_data": "<BASE64URL(RPCUSTOMDATA)>",
-      "challenge": "<BASE64URL(CHALLENGE)>",
-      "tpm_att_data": {
-        "srtm_boot_log": "<BASE64URL(SRTMBOOTLOG)>",
-        "srtm_resume_log": "<BASE64URL(SRTMRESUMELOG)>",
-        "drtm_boot_log": "<BASE64URL(DRTMBOOTLOG)>",
-        "drtm_resume_log": "<BASE64URL(DRTMRESUMELOG)>",
-        "aik_cert": "<BASE64URL(AIKCERTIFICATE)>",
-        // aik_pub is represented as a JSON Web Key (JWK) object (RFC 7517).
-        "aik_pub": {
-          "kty": "RSA",
-          "n": "<Base64urlUInt(MODULUS)>",
-          "e": "<Base64urlUInt(EXPONENT)>"
-        },
-        "current_claim": "<BASE64URL(CURRENTCLAIM)>",
-        "boot_claim": "<BASE64URL(BOOTCLAIM)>"
-      },
-      // attest_key is represented as a JSON Web Key (JWK) object (RFC 7517).
-      "attest_key": {
-        "kty": "RSA",
-        "n": "<Base64urlUInt(MODULUS)>",
-        "e": "<Base64urlUInt(EXPONENT)>"
-      },
-      "custom_claims": [
-        {
-          "name": "<name>",
-          "value": "<value>",
-          "value_type": "<value_type>"
-        },
-        {
-          "name": "<name>",
-          "value": "<value>",
-          "value_type": "<value_type>"
-        }
-      ],
-      "service_context": "<BASE64URL(SERVICECONTEXT)>"
-    },
-    "vbs_report": "<BASE64URL(REPORT)>"
-  }
-}
+{ 
+  "att_type": "vbs", 
+  "att_data": { 
+    "report_signed": { 
+      "rp_id": "<URL>", 
+      "rp_data": "<BASE64URL(RPCUSTOMDATA)>", 
+      "challenge": "<BASE64URL(CHALLENGE)>", 
+      "tpm_att_data": { 
+        "srtm_boot_log": "<BASE64URL(SRTMBOOTLOG)>", 
+        "srtm_resume_log": "<BASE64URL(SRTMRESUMELOG)>", 
+        "drtm_boot_log": "<BASE64URL(DRTMBOOTLOG)>", 
+        "drtm_resume_log": "<BASE64URL(DRTMRESUMELOG)>", 
+        "aik_cert": "<BASE64URL(AIKCERTIFICATE)>", 
+
+        // aik_pub is represented as a JSON Web Key (JWK) object (RFC 7517). 
+
+        "aik_pub": { 
+          "kty": "RSA", 
+          "n": "<Base64urlUInt(MODULUS)>", 
+          "e": "<Base64urlUInt(EXPONENT)>" 
+        }, 
+        "current_claim": "<BASE64URL(CURRENTCLAIM)>", 
+        "boot_claim": "<BASE64URL(BOOTCLAIM)>" 
+      }, 
+
+      // attest_key is represented as a JSON Web Key (JWK) object (RFC 7517). 
+
+      "attest_key": { 
+        "kty": "RSA", 
+        "n": "<Base64urlUInt(MODULUS)>", 
+        "e": "<Base64urlUInt(EXPONENT)>" 
+      }, 
+      "custom_claims": [ 
+        { 
+          "name": "<name>", 
+          "value": "<value>", 
+          "value_type": "<value_type>" 
+        }, 
+        { 
+          "name": "<name>", 
+          "value": "<value>", 
+          "value_type": "<value_type>" 
+        } 
+      ], 
+      "service_context": "<BASE64URL(SERVICECONTEXT)>" 
+    }, 
+    "vsm_report": "<BASE64URL(REPORT)>" 
+  } 
+} 
 ``` 
 
 **rp_id** (stringoruri): bağlı olan taraf tanımlayıcısı. Hizmet tarafından makine KIMLIĞI talebi hesaplamasında kullanılır
@@ -202,13 +208,13 @@ VBS örnek
 
 **tpm_att_data**: TPM ile ilgili kanıtlama verileri
 
-- **srtm_boot_log (BASE64URL (sekizli))**: işlev Tbsi_Get_TCG_Log_Ex, günlük türü = TBS_TCGLOG_SRTM_BOOT tarafından alınan SRTM önyükleme günlüğü
+- **srtm_boot_log (BASE64URL (sekizli))**: işlev Tbsi_Get_TCG_Log_Ex, günlük türü = TBS_TCGLOG_SRTM_BOOT tarafından alınan SRTM önyükleme günlükleri
 
-- **srtm_resume_log (BASE64URL (sekizli))**: SRTM günlük türü = TBS_TCGLOG_SRTM_RESUME ile işlev Tbsi_Get_TCG_Log_Ex tarafından alınan günlüğü sürdürür
+- **srtm_resume_log (BASE64URL (sekizli))**: SRTM, günlük türü = TBS_TCGLOG_SRTM_RESUME olan işlev Tbsi_Get_TCG_Log_Ex tarafından alınan günlüğü sürdürür
 
-- **drtm_boot_log (BASE64URL (sekizli))**: işlev Tbsi_Get_TCG_Log_Ex tarafından alınan drtm önyükleme günlüğü, günlük türü = TBS_TCGLOG_DRTM_BOOT
+- **drtm_boot_log (BASE64URL (sekizli))**: işlev Tbsi_Get_TCG_Log_Ex tarafından alınan drtm önyükleme günlükleri, günlük türü = TBS_TCGLOG_DRTM_BOOT
 
-- **drtm_resume_log (BASE64URL (sekizli))**: drtm günlük türü = TBS_TCGLOG_DRTM_RESUME ile işlev Tbsi_Get_TCG_Log_Ex tarafından alınan günlüğü sürdürür
+- **drtm_resume_log (BASE64URL (sekizli))**: drtm, günlük türü = TBS_TCGLOG_DRTM_RESUME olan işlev Tbsi_Get_TCG_Log_Ex tarafından alınan günlüğü sürdürür
 
 - **aik_cert (BASE64URL (sekizli))**: NCryptGetProperty işlevi tarafından döndürülen X. 509.440 sertifikası özelliği = NCRYPT_CERTIFICATE_PROPERTY
 
@@ -218,7 +224,7 @@ VBS örnek
 
 - **boot_claim (BASE64URL (sekizli))**: dwclaimtype = NCRYPT_CLAIM_PLATFORM ve Parameter NCRYPTBUFFER_TPM_PLATFORM_CLAIM_PCR_MASK tüm PTE 'leri içerecek şekilde ayarlanan NCryptCreateClaim işlevi tarafından döndürülen PCR durumu için kanıtlama talebi
 
-**vbs Report** (BASE64URL (sekizli)): işlev enclavegetattestationreport tarafından döndürülen vbs kuşatma kanıtlama raporu. EnclaveData parametresi, report_signed değerinin SHA-512 karması olmalıdır (açılış ve kapanış ayraçları dahil). Karma işlev girişi UTF8 (report_signed)
+**vsm_report**   (BASE64URL (sekizli)): işlev enclavegetattestationreport tarafından döndürülen vbs kuşatma kanıtlama raporu. EnclaveData parametresi, report_signed değerinin SHA-512 karması olmalıdır (açılış ve kapanış ayraçları dahil). Karma işlev girişi UTF8 (report_signed)
 
 **attest_key**: bir JSON Web anahtarı (JWK) nesnesi olarak temsil edilen şifreleme anahtarının genel bölümü (RFC 7517)
 
@@ -247,3 +253,7 @@ Azure kanıtlama-> Istemcisi
 ```
 
 **Report** (JWT): JSON Web token (JWT) biçiminde kanıtlama raporu (RFC 7519).
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+- [Azure kanıtlama iş akışı](workflow.md)

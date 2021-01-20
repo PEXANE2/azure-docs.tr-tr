@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 8e310ea487818f6d82869fe1973c8e9ed0b04195
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: d9ae9cae1a0a8014f007cd7c4a3d1f97f27128bb
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797120"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610973"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Izleyici 'de çalışma alanı verilerini dışarı aktarma Log Analytics (Önizleme)
 Azure Izleyici 'de Log Analytics çalışma alanı verileri dışarı aktarma işlemi, Log Analytics çalışma alanınızdaki seçili tablolardan verileri sürekli olarak bir Azure depolama hesabına veya Azure Event Hubs toplanarak dışarı aktaralmanıza olanak sağlar. Bu makalede, bu özellik hakkında ayrıntılar ve çalışma alanlarınızdaki veri dışarı aktarmayı yapılandırma adımları sağlanmaktadır.
@@ -35,13 +35,16 @@ Log Analytics çalışma alanı verileri dışarı aktarma bir Log Analytics ça
 
 ## <a name="current-limitations"></a>Geçerli sınırlamalar
 
-- Yapılandırma Şu anda yalnızca CLı veya REST istekleri kullanılarak gerçekleştirilebilir. Azure portal veya PowerShell kullanamazsınız.
+- Yapılandırma, şu anda CLı veya REST istekleri kullanılarak gerçekleştirilebilir. Azure portal veya PowerShell henüz desteklenmiyor.
 - ```--export-all-tables```CLI ve REST seçenekleri desteklenmez ve kaldırılacak. Dışarı aktarma kurallarında Tablo listesini açıkça sağlamanız gerekir.
-- Desteklenen tablolar şu anda aşağıdaki [desteklenen tablolar](#supported-tables) bölümünde yer aldığı sınırlandırıldı. Veri dışa aktarma kuralı desteklenmeyen bir tablo içeriyorsa, işlem başarılı olur, ancak bu tablo için hiçbir veri aktarılmaz. Veri dışa aktarma kuralı mevcut olmayan bir tablo içeriyorsa, hata ile başarısız olur ```Table <tableName> does not exist in the workspace.```
+- Desteklenen tablolar şu anda aşağıdaki [desteklenen tablolar](#supported-tables) bölümünde yer aldığı sınırlandırıldı. 
+- Veri dışa aktarma kuralı desteklenmeyen bir tablo içeriyorsa, işlem başarılı olur ancak tablo desteklenene kadar bu tablo için hiçbir veri aktarılmaz. 
+- Veri dışa aktarma kuralı mevcut olmayan bir tablo içeriyorsa, hata ile başarısız olur ```Table <tableName> does not exist in the workspace``` .
 - Log Analytics çalışma alanınız aşağıdakiler dışında herhangi bir bölgede olabilir:
   - İsviçre Kuzey
   - İsviçre Batı
   - Azure Kamu bölgeleri
+- Bir çalışma alanında iki dışarı aktarma kuralı oluşturabilirsiniz; içindeki bir olay hub 'ı ve depolama hesabına yönelik bir kural olabilir.
 - Hedef depolama hesabı veya Olay Hub 'ı Log Analytics çalışma alanıyla aynı bölgede olmalıdır.
 - Aktarılacak tabloların adları, bir depolama hesabı için 60 karakterden uzun ve bir olay hub 'ına en fazla 47 karakterden oluşabilir. Daha uzun adlara sahip tablolar verilmeyecektir.
 
@@ -58,7 +61,7 @@ Log Analytics çalışma alanı verileri dışarı aktarma bir Log Analytics ça
 ## <a name="data-completeness"></a>Veri bütünlüğü
 Verilerin dışarı aktarılması, hedefin kullanılamaz durumda olması durumunda 30 dakikaya kadar veri göndermeyi yeniden denemeye devam edecektir. 30 dakika sonra hala kullanılamıyorsa, veriler hedef kullanılabilir olana kadar atılır.
 
-## <a name="cost"></a>Cost
+## <a name="cost"></a>Maliyet
 Şu anda veri dışa aktarma özelliği için ek ücret alınmaz. Veri dışa aktarma fiyatlandırması gelecekte duyurulacaktır ve faturalandırma başlamadan önce bir uyarı verilir. Bildirim süresinden sonra veri dışa aktarmayı kullanmaya devam etmeyi seçerseniz, ilgili ücret üzerinden faturalandırılırsınız.
 
 ## <a name="export-destinations"></a>Hedefleri dışarı aktar
@@ -115,10 +118,10 @@ Depolama hesabınızı seçili ağlardan erişime izin verecek şekilde yapılan
 
 
 ### <a name="create-or-update-data-export-rule"></a>Veri dışarı aktarma kuralı oluştur veya güncelleştir
-Veri dışa aktarma kuralı, bir tablo kümesi için tek bir hedefe verilecek verileri tanımlar. Her hedef için bir kural oluşturabilirsiniz.
+Veri dışa aktarma kuralı, bir tablo kümesi için tek bir hedefe verilecek verileri tanımlar. Her hedef için tek bir kural oluşturabilirsiniz.
 
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
 Yok
 
@@ -400,7 +403,7 @@ Aşağıda, Olay Hub 'ı adının sağlandığı bir olay hub 'ı için REST ist
 
 ## <a name="view-data-export-rule-configuration"></a>Veri dışa aktarma kuralı yapılandırmasını görüntüle
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
 Yok
 
@@ -432,7 +435,7 @@ Yok
 
 ## <a name="disable-an-export-rule"></a>Dışarı aktarma kuralını devre dışı bırak
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
 Yok
 
@@ -479,7 +482,7 @@ Sınama gerçekleştirilirken belirli bir süre için verileri tutmanız gerekmi
 
 ## <a name="delete-an-export-rule"></a>Dışarı aktarma kuralını silme
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
 Yok
 
@@ -511,7 +514,7 @@ Yok
 
 ## <a name="view-all-data-export-rules-in-a-workspace"></a>Çalışma alanındaki tüm veri dışarı aktarma kurallarını görüntüleme
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
 Yok
 
@@ -680,7 +683,7 @@ Desteklenen tablolar şu anda aşağıda belirtilenler ile sınırlıdır. Kıs�
 | NWConnectionMonitorTestResult | |
 | NWConnectionMonitorTestResult | |
 | Officeetkinliği | Kısmi destek. Office 365 ' den Web kancaları aracılığıyla alınacak verilerden bazıları Log Analytics. Bu veriler şu anda dışarıya aktarılmamış. |
-| Çalışma | Kısmi destek. Bazı veriler dışarı aktarma için desteklenmeyen iç hizmetlerden alınır. Bu veriler şu anda dışarıya aktarılmamış. |
+| İşlem | Kısmi destek. Bazı veriler dışarı aktarma için desteklenmeyen iç hizmetlerden alınır. Bu veriler şu anda dışarıya aktarılmamış. |
 | Perf | Kısmi destek. Şu anda yalnızca Windows performans verileri destekleniyor. Linux performans verileri şu anda dışarıya aktarılmamış. |
 | ProtectionStatus | |
 | Sccmassessmentönerisi | |
@@ -706,7 +709,7 @@ Desteklenen tablolar şu anda aşağıda belirtilenler ile sınırlıdır. Kıs�
 | SynapseRBACEvents | |
 | Syslog | Kısmi destek. Bu tabloya ait verilerden bazıları depolama hesabı üzerinden alınır. Bu veriler şu anda dışarıya aktarılmamış. |
 | Threatıntelligenceındicator | |
-| Güncelleştirme | Kısmi destek. Bazı veriler dışarı aktarma için desteklenmeyen iç hizmetlerden alınır. Bu veriler şu anda dışarıya aktarılmamış. |
+| Güncelleştir | Kısmi destek. Bazı veriler dışarı aktarma için desteklenmeyen iç hizmetlerden alınır. Bu veriler şu anda dışarıya aktarılmamış. |
 | UpdateRunProgress | |
 | UpdateSummary | |
 | Kullanım | |

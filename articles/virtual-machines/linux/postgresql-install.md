@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: 4052a9c8614a17c3b5cdd871ad78be8cc3258c5a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 3bacec27f5253741b340688374d64402fdbc2836
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202598"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610395"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>Azure 'da PostgreSQL yükleme ve yapılandırma
 PostgreSQL, Oracle ve DB2 ile benzer gelişmiş bir açık kaynaklı veritabanıdır. Tam ACID uyumluluğu, güvenilir işlem işleme ve çok sürümlü eşzamanlılık denetimi gibi kurumsal özellikli özellikler içerir. Ayrıca, ANSI SQL ve SQL/MED gibi standartları destekler (Oracle, MySQL, MongoDB için yabancı veri sarmalayıcıları dahil) ve diğer birçok kişi). 12 yordamsal diller, GıN ve GiST dizinleri, uzamsal veri desteği ve JSON ya da anahtar-değer tabanlı uygulamalar için birden çok NoSQL benzeri Özellik desteğiyle yüksek düzeyde genişletilebilir.
@@ -35,7 +35,7 @@ PuTTY aracılığıyla oluşturduğunuz Linux sanal makinesine bağlanın. Azure
 1. Köke (yönetici) geçiş yapmak için aşağıdaki komutu çalıştırın:
 
     ```console
-    # sudo su -
+    sudo su -
     ```
 
 2. Bazı dağıtımların PostgreSQL yüklemeden önce yüklemeniz gereken bağımlılıkları vardır. Bu listede sahip olup olmadığınızı denetleyin ve uygun komutu çalıştırın:
@@ -43,27 +43,27 @@ PuTTY aracılığıyla oluşturduğunuz Linux sanal makinesine bağlanın. Azure
    * Red Hat Base Linux:
 
         ```console
-        # yum install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y
+        yum install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y
         ```
 
    * Temel Linux 'u kaldırma:
 
         ```console
-        # apt-get install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam libxslt-devel tcl-devel python-devel -y
+        apt-get install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam libxslt-devel tcl-devel python-devel -y
         ```
 
    * SUSE Linux:
 
         ```console
-        # zypper install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y
+        zypper install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y
         ```
 
 3. PostgreSQL ' i kök dizine indirin ve ardından paketi açın:
 
     ```console
-    # wget https://ftp.postgresql.org/pub/source/v9.3.5/postgresql-9.3.5.tar.bz2 -P /root/
+    wget https://ftp.postgresql.org/pub/source/v9.3.5/postgresql-9.3.5.tar.bz2 -P /root/
 
-    # tar jxvf  postgresql-9.3.5.tar.bz2
+    tar jxvf  postgresql-9.3.5.tar.bz2
     ```
 
     Yukarıdaki örnek bir örnektir. Daha ayrıntılı indirme adresini [/pub/Source/dizininde](https://ftp.postgresql.org/pub/source/)bulabilirsiniz.
@@ -71,15 +71,15 @@ PuTTY aracılığıyla oluşturduğunuz Linux sanal makinesine bağlanın. Azure
 4. Derlemeyi başlatmak için şu komutları çalıştırın:
 
     ```console
-    # cd postgresql-9.3.5
+    cd postgresql-9.3.5
 
-    # ./configure --prefix=/opt/postgresql-9.3.5
+    ./configure --prefix=/opt/postgresql-9.3.5
     ```
 
 5. Belgeler (HTML ve Man sayfaları) ve ek modüller () dahil olmak üzere derlenebilir her şeyi derlemek istiyorsanız `contrib` aşağıdaki komutu çalıştırın:
 
     ```console
-    # gmake install-world
+    gmake install-world
     ```
 
     Aşağıdaki onay iletisini almalısınız:
@@ -92,23 +92,23 @@ PuTTY aracılığıyla oluşturduğunuz Linux sanal makinesine bağlanın. Azure
 1. Seçim PostgreSQL başvurusunu, sürüm numarasını dahil etmek için kısaltmak üzere bir sembolik bağlantı oluşturun:
 
     ```console
-    # ln -s /opt/postgresql-9.3.5 /opt/pgsql
+    ln -s /opt/postgresql-9.3.5 /opt/pgsql
     ```
 
 2. Veritabanı için bir dizin oluşturun:
 
     ```console
-    # mkdir -p /opt/pgsql_data
+    mkdir -p /opt/pgsql_data
     ```
 
 3. Kök olmayan bir kullanıcı oluşturun ve bu kullanıcının profilini değiştirin. Ardından, bu yeni kullanıcıya geçin (örneğimizde *Postgres* adı verilir):
 
     ```console
-    # useradd postgres
+    useradd postgres
    
-    # chown -R postgres.postgres /opt/pgsql_data
+    chown -R postgres.postgres /opt/pgsql_data
    
-    # su - postgres
+    su - postgres
     ```
    
    > [!NOTE]
@@ -135,13 +135,13 @@ PuTTY aracılığıyla oluşturduğunuz Linux sanal makinesine bağlanın. Azure
 5. *Bash_profile* dosyasını yürütün:
 
     ```console
-    $ source .bash_profile
+    source .bash_profile
     ```
 
 6. Aşağıdaki komutu kullanarak yüklemenizi doğrulayın:
 
     ```console
-    $ which psql
+    which psql
     ```
 
     Yüklemeniz başarılı olursa aşağıdaki yanıtı görürsünüz:
@@ -153,13 +153,13 @@ PuTTY aracılığıyla oluşturduğunuz Linux sanal makinesine bağlanın. Azure
 7. PostgreSQL sürümünü de denetleyebilirsiniz:
 
     ```sql
-    $ psql -V
+    psql -V
     ```
 
 8. Veritabanını Başlat:
 
     ```console
-    $ initdb -D $PGDATA -E UTF8 --locale=C -U postgres -W
+    initdb -D $PGDATA -E UTF8 --locale=C -U postgres -W
     ```
 
     Aşağıdaki çıktıyı almalısınız:
@@ -172,17 +172,17 @@ PuTTY aracılığıyla oluşturduğunuz Linux sanal makinesine bağlanın. Azure
 Aşağıdaki komutları çalıştırın:
 
 ```console
-# cd /root/postgresql-9.3.5/contrib/start-scripts
+cd /root/postgresql-9.3.5/contrib/start-scripts
 
-# cp linux /etc/init.d/postgresql
+cp linux /etc/init.d/postgresql
 ```
 
 /Etc/ınitve d/PostgreSQL dosyasındaki iki değişkeni değiştirin. Ön ek PostgreSQL yükleme yoluna ayarlanır: **/seçenek/pgsql**. PGDATA, PostgreSQL: **/seçenek/pgsql_data** veri depolama yoluna ayarlanır.
 
 ```config
-# sed -i '32s#usr/local#opt#' /etc/init.d/postgresql
+sed -i '32s#usr/local#opt#' /etc/init.d/postgresql
 
-# sed -i '35s#usr/local/pgsql/data#opt/pgsql_data#' /etc/init.d/postgresql
+sed -i '35s#usr/local/pgsql/data#opt/pgsql_data#' /etc/init.d/postgresql
 ```
 
 ![Yükleme önekini ve veri dizinini gösteren ekran görüntüsü.](./media/postgresql-install/no2.png)
@@ -190,19 +190,19 @@ Aşağıdaki komutları çalıştırın:
 Dosyayı yürütülebilir hale getirmek için değiştirin:
 
 ```console
-# chmod +x /etc/init.d/postgresql
+chmod +x /etc/init.d/postgresql
 ```
 
 PostgreSQL 'i Başlat:
 
 ```console
-# /etc/init.d/postgresql start
+/etc/init.d/postgresql start
 ```
 
 PostgreSQL uç noktasının açık olup olmadığını denetle:
 
 ```console
-# netstat -tunlp|grep 1999
+netstat -tunlp|grep 1999
 ```
 
 Aşağıdaki çıkışı görmeniz gerekir:
@@ -213,19 +213,19 @@ Aşağıdaki çıkışı görmeniz gerekir:
 Postgres kullanıcısına bir kez daha geçin:
 
 ```console
-# su - postgres
+su - postgres
 ```
 
 Bir Postgres veritabanı oluşturun:
 
 ```console
-$ createdb events
+createdb events
 ```
 
 Yeni oluşturduğunuz olaylar veritabanına bağlanın:
 
 ```console
-$ psql -d events
+psql -d events
 ```
 
 ## <a name="create-and-delete-a-postgres-table"></a>Bir Postgres tablosu oluşturma ve silme

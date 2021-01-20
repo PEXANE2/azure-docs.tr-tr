@@ -11,26 +11,28 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to,automl,contperf-fy21q2
 ms.date: 12/18/2020
-ms.openlocfilehash: 5fcb57d1ef909d7c15e21b34c3f584c6615a6a44
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: c90ef9fe49a87c18c7f4f55175bafaebfd31d722
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134424"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610310"
 ---
 # <a name="data-featurization-in-automated-machine-learning"></a>Otomatik makine öğreniminde veri korleştirme
 
-
-
-Azure Machine Learning ' deki veri özelliği belirleme ayarları ve bu özellikleri [OTOMATIKLEŞTIRILMIŞ ml denemeleri](concept-automated-ml.md)için özelleştirme hakkında bilgi edinin.
+Azure Machine Learning ' deki veri özelliği belirleme ayarları ve bu özelliklerin [otomatik makine öğrenimi denemeleri](concept-automated-ml.md)için nasıl özelleştirileceği hakkında bilgi edinin.
 
 ## <a name="feature-engineering-and-featurization"></a>Özellik Mühendisliği ve korleştirme
 
-*Özellik Mühendisliği* , makine öğrenimi (ml) algoritmalarının daha iyi öğrenilmesine yardımcı olan özellikler oluşturmak için verilerin etki alanı bilgisini kullanma işlemidir. Azure Machine Learning, özellik Mühendisliği kolaylaştırmak için veri ölçekleme ve normalleştirme teknikleri uygulanır. Toplu olarak, bu teknikler ve bu özellik Mühendisliği otomatik makine öğrenimi veya *Otomatik ml*, denemeleri içinde *korleştirme* olarak adlandırılır.
+Eğitim verileri satırlardan ve sütunlardan oluşur. Her satır bir gözlem veya kayıttır ve her bir satırın sütunları her bir kaydı tanımlayan özelliklerdir. Genellikle, verilerdeki desenleri en iyi niteleyen özellikler, tahmine dayalı modeller oluşturmak için seçilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+Birçok ham veri alanı doğrudan bir modeli eğitede kullanılabilse de, verilerdeki desenleri daha iyi fark eden bilgiler sağlayan ek (mühendislik uygulanmış) özellikler oluşturmak genellikle gereklidir. Bu işleme, veri etki alanı bilgilerinin kullanılması, daha iyi bilgi edinmek için makine öğrenimi algoritmalarına yardımcı olan özellikler oluşturmak için yararlanılabilir olduğu **özellik Mühendisliği** olarak adlandırılır. 
 
-Bu makalede, bir oto ml denemesinin nasıl yapılandırılacağı zaten bildiğiniz varsayılmaktadır. Yapılandırma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+Azure Machine Learning, özellik Mühendisliği kolaylaştırmak için veri ölçekleme ve normalleştirme teknikleri uygulanır. Toplu olarak, bu teknikler ve bu özellik Mühendisliği otomatik ML denemeleri 'de **korturleştirme** olarak adlandırılır.
+
+## <a name="prerequisites"></a>Önkoşullar
+
+Bu makalede bir otomatik ML denemesinin nasıl yapılandırılacağı zaten bildiğiniz varsayılmaktadır. Yapılandırma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - İlk olarak bir kod deneyimi için: [Python için Azure Machine Learning SDK 'yı kullanarak OTOMATIK ml denemeleri yapılandırın](how-to-configure-auto-train.md).
 - Düşük kod veya kod içermeyen bir deneyim için: [Azure Machine Learning Studio 'yu kullanarak otomatik makine öğrenimi modelleri oluşturun, gözden geçirin ve dağıtın](how-to-use-automated-ml-for-ml-models.md).
@@ -59,7 +61,7 @@ Aşağıdaki tabloda, `featurization` [oto mlconfig sınıfında](/python/api/az
 Aşağıdaki tabloda verilerinize otomatik olarak uygulanan teknikler özetlenmektedir. Bu teknikler SDK veya Studio kullanılarak yapılandırılan denemeleri için geçerlidir. Bu davranışı devre dışı bırakmak için, `"featurization": 'off'` nesneniz içinde ayarlayın `AutoMLConfig` .
 
 > [!NOTE]
-> Bir [onnx modeline](concept-onnx.md), oto tarafından oluşturulan bir modellerinizi dışarı aktarmayı planlıyorsanız, onnx biçiminde yalnızca bir yıldız işareti ("*") ile gösterilen fealeştirme seçenekleri desteklenir. [Modelleri ONNX 'e dönüştürme](concept-automated-ml.md#use-with-onnx)hakkında daha fazla bilgi edinin.
+> Bir [onnx modeline](concept-onnx.md), oto tarafından oluşturulan bir modellerinizi dışarı aktarmayı planlıyorsanız, onnx biçiminde yalnızca bir yıldız işareti ("*") ile gösterilen fealeştirme seçenekleri desteklenir. [Modelleri ONNX 'e dönüştürme](how-to-use-automl-onnx-model-dotnet.md)hakkında daha fazla bilgi edinin.
 
 |Korturlama &nbsp; adımları| Description |
 | ------------- | ------------- |

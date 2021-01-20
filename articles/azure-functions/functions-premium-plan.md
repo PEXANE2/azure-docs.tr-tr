@@ -9,12 +9,12 @@ ms.custom:
 - references_regions
 - fasttrack-edit
 - devx-track-azurecli
-ms.openlocfilehash: d944512e5f6126920ab4fba99fb70513b93177ba
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 26dd3f7df5a71c687bfb4935f290e7a54b4e01fe
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936830"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610276"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Işlevleri Premium planı
 
@@ -41,7 +41,7 @@ Azure portal bir işlev uygulaması oluşturduğunuzda, tüketim planı varsayı
 
 Aşağıdaki makalelerde, programlama yoluyla veya Azure portal bir Premium plana sahip bir işlev uygulamasının nasıl oluşturulacağı gösterilmektedir:
 
-+ [Azure Portal](create-premium-plan-function-app-portal.md)
++ [Azure portalı](create-premium-plan-function-app-portal.md)
 + [Azure CLI](scripts/functions-cli-create-premium-plan.md)
 + [Azure Resource Manager şablonu](functions-infrastructure-as-code.md#deploy-on-premium-plan)
 
@@ -154,13 +154,15 @@ Daha fazla belleğe sahip bir makinede çalıştırmak, işlev uygulamanızın t
 
 Örneğin, JavaScript işlev uygulaması Node.js varsayılan bellek sınırı ile kısıtlanır. Bu sabit bellek sınırını artırmak için, `languageWorkers:node:arguments` bir değeri olan uygulama ayarını ekleyin `--max-old-space-size=<max memory in MB>` .
 
+Ve 4 GB 'den fazla bellek içeren planlar için, bit genişliği platformu ayarının `64 Bit` [Genel ayarlar](/azure/app-service/configure-common#configure-general-settings)altında olarak ayarlandığından emin olun.
+
 ## <a name="region-max-scale-out"></a>Bölge maksimum ölçeği genişletme
 
 Aşağıda, her bir bölgedeki ve işletim sistemi yapılandırmasındaki tek bir plan için desteklenen en büyük ölçek genişletme değerleri verilmiştir. Bir artış istemek için bir destek bileti açabilirsiniz.
 
 [Azure Web sitesindeki](https://azure.microsoft.com/global-infrastructure/services/?products=functions)işlevlerin tüm bölgesel kullanılabilirliğine bakın.
 
-|Region| Windows | Linux |
+|Bölge| Windows | Linux |
 |--| -- | -- |
 |Orta Avustralya| 100 | Kullanılamaz |
 |Orta Avustralya 2| 100 | Kullanılamaz |

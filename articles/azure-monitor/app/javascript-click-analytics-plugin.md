@@ -8,18 +8,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: lagayhar
-ms.openlocfilehash: e69d5cc76f8f4b14ab87e13546c98859bb801418
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 7af26be91ff129e4c968bcb131cc98290cd8d7b9
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234969"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610089"
 ---
 # <a name="click-analytics-auto-collection-plugin-for-application-insights-javascript-sdk"></a>Application Insights JavaScript SDK 'Sı için analiz otomatik toplama eklentisi ' ne tıklayın
 
-Application Insights JavaScript SDK 'Sı için analiz otomatik toplama eklentisi ' ne tıklayın, meta etiketlere göre Web sayfalarındaki tıklama olaylarının otomatik olarak izlenmesini mümkün `data-*` . Bu eklenti, `data-*` tıklama olaylarını yakalamak ve telemetri verilerini doldurmak için genel öznitelikleri kullanır.
+Bu eklenti Web sayfalarında tıklama olaylarını otomatik olarak izler ve olay telemetrisini doldurmak için HTML öğelerindeki Data-* özniteliklerini kullanır.
 
-## <a name="getting-started"></a>Kullanmaya başlama
+## <a name="getting-started"></a>Başlarken
 
 Kullanıcılar NPM aracılığıyla Analytics otomatik toplama eklentisini ayarlayabilir.
 
@@ -101,19 +101,19 @@ appInsights.loadAppInsights();
 
 ### <a name="icustomdatatags"></a>Icustomdatatags
 
-| Ad                      | Tür    | Varsayılan   | Description                                                                                       |
-|---------------------------|---------|-----------|---------------------------------------------------------------------------------------------------|
-| Usedefaultcontentnameorıd | boolean | yanlış     | Belirli bir öğe varsayılan customDataPrefix ile etiketlenmemişse veya customDataPrefix Kullanıcı tarafından sağlanmazsa, bu bayrak contentName için standart HTML özniteliğini toplamak üzere kullanılır. |
-| customDataPrefix          | string  | `data-`   | Otomatik yakalama içerik adı ve belirtilen önek ile etiketlenmiş öğelerin değeri.       |
-| aiBlobAttributeTag        | string  | `ai-blob` | Eklenti, bağımsız öznitelikler yerine JSON blob içeriği meta veri etiketlemesini destekler `data-*` . |
-| metaDataPrefix            | string  | null      | Otomatik yakalama HTML Head 'in meta öğesi adı ve belirtilen ön eki olan içerik. |
-| captureAllMetaDataContent | string  | null      | Tüm HTML kafasının meta öğe adlarını ve içeriğini otomatik olarak yakala. Varsayılan değer false’tur. Etkinleştirilirse bu, sağlanan metaDataPrefix 'i geçersiz kılar. |
-| parentDataTag             | string  | null      | Bu etiketle karşılaşıldığında DOM 'ın içerik adını ve değerlerini yakalamasını engeller.|
-| dntDataTag                | string  | `ai-dnt`  | Bu özniteliğe sahip HTML öğeleri telemetri verilerini yakalamaya yönelik eklenti tarafından yok sayılacak.|
+| Ad                      | Tür    | Varsayılan   | HTML içinde kullanılacak varsayılan etiket |   Description                                                                                |
+|---------------------------|---------|-----------|-------------|----------------------------------------------------------------------------------------------|
+| Usedefaultcontentnameorıd | boolean | yanlış     | Yok         |Belirli bir öğe varsayılan customDataPrefix ile etiketlenmemişse veya customDataPrefix Kullanıcı tarafından sağlanmadıysa, contentName için standart HTML özniteliğini toplar. |
+| customDataPrefix          | string  | `data-`   | `data-*`| Otomatik yakalama içerik adı ve belirtilen önek ile etiketlenmiş öğelerin değeri. Örneğin, `data-*-id` `data-<yourcustomattribute>` HTML etiketleri içinde kullanılabilir.   |
+| aiBlobAttributeTag        | string  | `ai-blob` |  `data-ai-blob`| Eklenti bağımsız öznitelikler yerine JSON blob özniteliğini destekler `data-*` . |
+| metaDataPrefix            | string  | null      | Yok  | Yakalama sırasında, Otomatik yakalama HTML baş meta öğesi adı ve belirtilen önek ile içerik. Örneğin, `custom-` HTML meta etiketinde kullanılabilir. |
+| captureAllMetaDataContent | boolean | yanlış     | Yok   | Tüm HTML kafasının meta öğe adlarını ve içeriğini otomatik olarak yakala. Varsayılan değer false’tur. Etkinleştirilirse bu, sağlanan metaDataPrefix 'i geçersiz kılar. |
+| parentDataTag             | string  | null      |  Yok  | Bu etiketle karşılaşıldığında DOM 'ın içerik adını ve değerlerini yakalamasını engeller. Örneğin, `data-<yourparentDataTag>` HTML etiketlerinde kullanılabilir.|
+| dntDataTag                | string  | `ai-dnt`  |  `data-ai-dnt`| Bu özniteliğe sahip HTML öğeleri telemetri verilerini yakalamaya yönelik eklenti tarafından yok sayılacak.|
 
 ### <a name="behaviorvalidator"></a>behaviorValidator
 
-Veri tutarlılığı sağlamak istediğinizde, behaviorValidator işlevini kullanarak, koddaki etiketli davranışların, kuruluşunuzda bilinen ve kabul edilen bilinen ve kabul edilmiş taksonominin önceden tanımlanmış bir listesine uygun olup olmadığını denetler. Bu gerekli değildir veya çoğu Azure Izleyici müşterilerinin bunu kullanması beklenir, ancak gelişmiş senaryolar için kullanılabilir. Bu uzantının parçası olarak kullanıma sunulan üç farklı behaviorValidator callback işlevi vardır. Ancak, sunulan işlevler gereksiniminizi çözmezse kullanıcılar kendi geri arama işlevlerini kullanabilir. Amaç, kendi davranış veri yapınızı getirmesiyken, eklenti bu Doğrulayıcı işlevini kullanarak veri etiketlerinden davranışları ayıklamaktır.
+BehaviorValidator işlevleri, koddaki etiketli davranışların önceden tanımlanmış bir listeyle uyumlu olup olmadığını otomatik olarak denetler. Bu, etiketli davranışların kuruluşunuzun belirlenen sınıflandırmasında tutarlı olmasını sağlar. Bu gerekli değildir veya çoğu Azure Izleyici müşterilerinin bunu kullanması beklenir, ancak gelişmiş senaryolar için kullanılabilir. Bu uzantının parçası olarak kullanıma sunulan üç farklı behaviorValidator callback işlevi vardır. Ancak, sunulan işlevler gereksiniminizi çözmezse kullanıcılar kendi geri arama işlevlerini kullanabilir. Amaç, kendi davranış veri yapınızı getirmesiyken, eklenti bu Doğrulayıcı işlevini kullanarak veri etiketlerinden davranışları ayıklamaktır.
 
 | Ad                   | Açıklama                                                                        |
 | ---------------------- | -----------------------------------------------------------------------------------|
@@ -312,6 +312,7 @@ appInsights.loadAppInsights();
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- Analiz otomatik toplama eklentisi için [GitHub deposunu](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-clickanalytics-js) ve [NPM paketini](https://www.npmjs.com/package/@microsoft/applicationinsights-clickanalytics-js) inceleyin.
 - En üstteki tıklamaları analiz etmek ve kullanılabilir boyutlara göre dilimlemek için [kullanım deneyiminde olay analizini](usage-segmentation.md) kullanın.
 - [Log Analytics](../log-query/log-analytics-tutorial.md#write-a-query)' deki CustomEvents tablosundaki customdimensions özniteliğinde bulunan içerik alanının altında bulunan verileri bulun.
 - Tıklama verilerinin özel görselleştirmelerini oluşturmak için bir [çalışma kitabı](../platform/workbooks-overview.md) oluşturun.

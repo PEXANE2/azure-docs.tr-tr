@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 04/15/2020
+ms.date: 01/19/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ba1e280e3c14a24e33246799ca0d7ef8221294f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: db87887fc2b51c7cb8cb300eb8e711d3ae9b6ac8
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741703"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610798"
 ---
 # <a name="troubleshooting-combined-security-information-registration"></a>Birleşik güvenlik bilgileri kaydı sorunlarını giderme
 
@@ -24,13 +24,13 @@ Bu makaledeki bilgiler, birleştirilmiş kayıt deneyiminin kullanıcıları tar
 
 ## <a name="audit-logs"></a>Denetim günlükleri
 
-Birleşik kayıt için günlüğe kaydedilen olaylar, Azure AD denetim günlüklerinde kimlik doğrulama yöntemleri kategorisinde bulunur.
+Birleşik kayıt için günlüğe kaydedilen olaylar, Azure AD denetim günlüklerinde kimlik doğrulama yöntemleri hizmetidir.
 
 ![Kayıt olaylarını gösteren Azure AD denetim günlükleri arabirimi](media/howto-registration-mfa-sspr-combined-troubleshoot/combined-security-info-audit-log.png)
 
 Aşağıdaki tabloda, Birleşik kayıt tarafından oluşturulan tüm denetim olayları listelenmektedir:
 
-| Etkinlik | Durum | Nedeni | Açıklama |
+| Etkinlik | Durum | Nedeni | Description |
 | --- | --- | --- | --- |
 | Kullanıcı tüm gerekli güvenlik bilgilerini kaydetti | Başarılı | Kullanıcı tüm gerekli güvenlik bilgilerini kaydetti. | Bu olay, bir kullanıcı kaydı başarıyla tamamladığında oluşur.|
 | Kullanıcı tüm gerekli güvenlik bilgilerini kaydetti | Hata | Kullanıcı güvenlik bilgileri kaydını iptal etti. | Bu olay, bir Kullanıcı kesme modundan kaydı iptal ettiğinde meydana gelir.|

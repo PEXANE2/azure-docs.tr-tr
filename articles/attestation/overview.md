@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 6a587ecbe7ff67908b22d4f2429cfdd0c511e07d
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 0d1b2bd039f3e110c83d7ad4bf32f1e53e4c7a79
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96748782"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610157"
 ---
 # <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure Doğrulama (önizleme)
 
@@ -25,7 +25,7 @@ Azure kanıtlama, [Azure gizli bilgi işlem](../confidential-computing/overview.
 
 Azure kanıtlama, işlem varlıklarından gelen kanıtları alır, bunları bir dizi talebe dönüştürür, yapılandırılabilir ilkelere göre doğrular ve talep tabanlı uygulamalar için şifreleme provaları üretir (örneğin, bağlı olan taraflar ve denetim yetkilileri).
 
-## <a name="use-cases"></a>Kullanım örnekleri
+## <a name="use-cases"></a>Uygulama alanları
 
 Azure kanıtlama, birden çok ortam ve farklı kullanım durumları için kapsamlı kanıtlama hizmetleri sağlar.
 
@@ -39,6 +39,12 @@ SGX, belirli Intel CPU modellerinde desteklenen donanım sınıfı yalıtımına
 [Açık Enclave](https://openenclave.io/sdk/) (OE), geliştiricilerin t tabanlı uygulamalar oluşturmalarına yönelik tek bir Birleşik kuşatma soyutlaması oluşturmaya hedeflenmiş bir kitaplıklar koleksiyonudur. Platform karmaşıklığını en aza indiren bir evrensel güvenli uygulama modeli sunar. Microsoft, democratizing donanım tabanlı kuşatma teknolojilerine ve Azure 'da upal 'ın artması gibi önemli bir atlama pulu olarak görüntüler.
 
 OE, bir kuşatma bulgusu doğrulaması için özel gereksinimleri standart hale getirir. Bu, Azure kanıtlama için yüksek düzeyde bir kanıtlama tüketicisi olan OE 'yi nitelendirir.
+
+### <a name="tpm-attestation"></a>TPM kanıtlama 
+
+Güvenilir Platform Modülü (TPM) tabanlı kanıtlama, bir platform durumu kanıtı sağlamak açısından kritik öneme sahiptir. TPM, ölçümlere (kanıt) şifreleme geçerliliği sağlamak için güven kökü ve güvenlik coişlemcisi görevi görür. TPM 'ye sahip cihazlar, önyükleme bütünlüğünden yararlanarak ön yükleme sırasında yapılan Özellik durumlarının algılanması için talepler kullanma taleplerini kullanır. 
+
+İstemci uygulamaları, bir platformun güvenli hale gelmesi doğrulandıktan sonra yalnızca gerçekleşecek şekilde güvenliğe duyarlı görevler vererek TPM kanıtlamanın avantajlarından faydalanmak için tasarlanabilir. Bu tür uygulamalar daha sonra, platformda güvenilir bir güven oluşturmak ve hassas verilere erişmek için Azure kanıtlama 'nın kullanımını kolaylaştırabilir.
 
 ## <a name="azure-attestation-can-run-in-a-tee"></a>Azure kanıtlama, bir t 'de çalışabilir
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: ecea9dcd28aede92ef255bf002b9195ded43c68b
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 53093edb1d3c142336f06ec8544aaa7b55e37477
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296123"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611262"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti’nde (AKS) desteklenen Kubernetes sürümleri
 
@@ -95,7 +95,7 @@ New Supported Version List
 
 `kubectl` [Kubectl Için Kubernetes destek ilkesiyle](https://kubernetes.io/docs/setup/release/version-skew-policy/#kubectl)tutarlı olan *kuin-apiserver* sürümünüze göre daha eski veya daha yeni bir sürümünü kullanabilirsiniz.
 
-Örneğin, *ku1,18* to *-apiserver* *1,17* ise, *1.16* `kubectl` Bu *kuin-apiserver* ile 1,16 arası sürümlerini kullanabilirsiniz.
+Örneğin, *ku1,18* to *-apiserver* *1,17* ise,  `kubectl` Bu *kuin-apiserver* ile 1,16 arası sürümlerini kullanabilirsiniz.
 
 Sürümünüzü yüklemek veya güncelleştirmek için `kubectl` ' i çalıştırın `az aks install-cli` .
 
@@ -138,13 +138,14 @@ Son sürüm geçmişi için bkz. [Kubernetes](https://en.wikipedia.org/wiki/Kube
 
 |  K8s sürümü | Yukarı akış yayını  | AKS önizlemesi  | AKS GA  | Yaşam sonu |
 |--------------|-------------------|--------------|---------|-------------|
-| 1.16  | Eyl-19-19  | Ocak 2019   | Mar 2020  | Ocak 2021 * | 
+| 1.16  | Eyl-19-19  | Ocak 2019   | Mar 2020  | Ocak 2021| 
 | 1,17  | Ara-09-19  | Ocak 2019   | 2020 Tem  | 1,20 GA | 
 | 1,18  | Mar-23-20  | Mayıs 2020   | Ağu 2020  | 1,21 GA | 
 | 1,19  | Ağu-04-20  | Eyl 2020   | Kas 2020  | 1,22 GA | 
 | 1.20  | Ara-08-20  | Ocak 2021   | Mar 2021  | 1,23 GA |
+| 1,21  | Nis-08-21 * | Mayıs 2021   | 2021 Tem  | 1,24 GA |
 
-\* Tatil döneminde, AKS, 1,16 ' 2021 e kadar 2020 ' den itibaren ' e kadar olan yaşam süresini uzatadır. [Daha fazla bilgi edinin](https://github.com/Azure/AKS/releases/tag/2020-10-12).
+\* Kubernetes 1,21 yukarı akış sürümü, henüz sonlandırılmadan yukarı akış tavtları olarak değişebilir.
 
 
 ## <a name="faq"></a>SSS
@@ -155,7 +156,7 @@ Kubernetes 1,19 ile birlikte, [Açık kaynaklı topluluk, 1 yıla kadar destek g
 
 **Bir Kullanıcı bir Kubernetes kümesini desteklenmeyen küçük bir sürümle yükseltdiğinde ne olur?**
 
-*N-3* veya daha eski bir sürüm kullanıyorsanız, destek dışında olduğunuz ve yükseltmeniz istenecek demektir. N-3 sürümünden n-2 ' ye yükseltme başarılı olursa, destek ilkeleriniz dahilinde geri dönebilirsiniz. Örneğin:
+*N-3* veya daha eski bir sürüm kullanıyorsanız, destek dışında olduğunuz ve yükseltmeniz istenecek demektir. N-3 sürümünden n-2 ' ye yükseltme başarılı olursa, destek ilkeleriniz dahilinde geri dönebilirsiniz. Örnek:
 
 - Desteklenen en eski AKS sürümü *1.15. a* ise ve *1.14. b* veya daha eski bir sürümdaysanız, destek dışında olursunuz.
 - *1.14. b* 'den 1.15 'e yükseltme yapıldığında, ya da daha yüksek *bir* başarılı olduğunda, destek ilkilerimize geri dönebilirsiniz.

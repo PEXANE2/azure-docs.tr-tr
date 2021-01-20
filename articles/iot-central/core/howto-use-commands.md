@@ -7,12 +7,12 @@ ms.date: 01/07/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 52872175eb799785674c331ad4d687ff8ef427a4
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: e53bf377a7ef8f2293debd288ba25ef8f04ff4fc
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134288"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611007"
 ---
 # <a name="how-to-use-commands-in-an-azure-iot-central-solution"></a>Azure IoT Central çözümünde komutları kullanma
 
@@ -40,7 +40,7 @@ Aşağıdaki tabloda, bir komut özelliğine ait yapılandırma ayarları göste
 | Alan             |Açıklama|
 |-------------------|-----------|
 |Görünen Ad       |Panolar ve formlarda kullanılan komut değeri.|
-| Ad            | Komutun adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. Bu alanın alfasayısal olması gerekir. Cihaz kodu bu **ad** değerini kullanır.|
+| Name            | Komutun adı. IoT Central görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. Bu alanın alfasayısal olması gerekir. Cihaz kodu bu **ad** değerini kullanır.|
 | Yetenek Türü | Komutundaki.|
 | Çevrimdışıyken kuyruğa al | Bu komutun *çevrimdışı* bir komut yapıp yapmayacağı. |
 | Description     | Komut yeteneğinin açıklaması.|
@@ -248,6 +248,9 @@ client.on('message', function (msg) {
 Body: {"StartTime":"2021-01-06T06:00:00.000Z","Bank":2}
 Properties: {"propertyList":[{"key":"iothub-ack","value":"none"},{"key":"method-name","value":"GenerateDiagnostics"}]}
 ```
+
+> [!NOTE]
+> Çevrimdışı komutlar için varsayılan yaşam süresi 24 saattir ve sonrasında iletinin süresi dolar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

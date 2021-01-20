@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.openlocfilehash: e87c9efc910d08307d40d42e58f8272a01902a41
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: b351be1e7212dc9923f701599dd951a73254afe0
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96554271"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610378"
 ---
 # <a name="role-based-access-control-in-azure-purviews-data-plane"></a>Azure purview 'un veri düzlemine rol tabanlı erişim denetimi
 
@@ -31,9 +31,9 @@ Azure takip görünümü, Azure purview 'da nelerin erişebileceğini denetlemek
 
 ## <a name="understanding-how-to-use-azure-purviews-data-plane-roles"></a>Azure purview 'ın veri düzlemi rollerinin nasıl kullanılacağını anlama
 
-Bir Azure purview hesabı oluşturulduğunda, Oluşturucu hem purview Data Curator hem de veri kaynağı Yöneticisi rollerindeki gibi değerlendirilir. Ancak hesap Oluşturucu rol deposunda bu rollere atanmaz. Azure purview, sorumlunun hesabı oluşturan olduğunu algılar ve bu özellikleri kendi kimlik 'lerine göre genişletir.
+Bir Azure purview hesabı oluşturulduğunda, Oluşturucu hem purview Data Curator hem de veri kaynağı Yöneticisi rollerindeki gibi değerlendirilir. Ama hesabı oluşturan rol deposunda bu rollere atanmaz. Azure Purview hesabı oluşturanı sorumlu olarak tanır ve kimlikleri temelinde bu özellikleri onları da içerecek şekilde genişletir.
 
-Diğer tüm kullanıcılar yalnızca bu rollerden en az birine yerleştirilebilecek Azure purview hesabını kullanabilir. Bu, bir Azure purview hesabı oluşturulduğunda, hiç kimse oluşturulamadığını, ancak bir veya daha fazla tanımlı rolün bir veya daha fazlasına yerleştirene kadar API 'Leri kullanamayacağı anlamına gelir.
+Azure Purview Hesabını kullanacak olan diğer tüm kullanıcıların bu rollerden en az birine eklenmesi gerekir. Bu, bir Azure purview hesabı oluşturulduğunda, hiç kimse oluşturulamadığını, ancak bir veya daha fazla tanımlı rolün bir veya daha fazlasına yerleştirene kadar API 'Leri kullanamayacağı anlamına gelir.
 
 Lütfen purview veri kaynağı Yöneticisi rolünün iki desteklenen senaryoya sahip olduğunu unutmayın. İlk senaryo, veri okuyucularını zaten takip eden ve tarama oluşturamayacak veri seçicileri olan kullanıcılar içindir. Bu kullanıcıların iki rol halinde olması gerekir: en az bir purview veri okuyucusu ya da izlenen veri kaynağı Yöneticisi rolüne yerleştirilme.
 
@@ -77,8 +77,8 @@ Kendi Studio 'yu kullanabilmeniz veya API 'Lerini çağırmak için bir Azure pu
 |Hizmet sorumlusu 'nı veya diğer programlı kimliği etkinleştirmek için, programlı kimliğin kataloğun bilgilerine erişmesine izin vermeden taramaları ayarlama ve izleme |Purview veri kaynağı Yöneticisi rolü|
 |Kullanıcıları Azure purview 'da rollere yerleştirmem gerekiyor | Sahip veya Kullanıcı erişimi Yöneticisi |
 
-Bir role güvenlik sorumlusu ekleme hakkında bilgi edinmek için sonraki makaleye ilerleyin.
+Bir role güvenlik sorumlusu ekleme hakkında daha fazla bilgi için [hızlı başlangıç: Azure purview hesabı oluşturma](create-catalog-portal.md) bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Hızlı başlangıç: Azure purview hesabı oluşturma](create-catalog-portal.md)
+* [Veri içgörüleri](concept-insights.md)

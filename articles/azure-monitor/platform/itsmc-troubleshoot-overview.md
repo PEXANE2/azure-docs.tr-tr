@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 2ffe7c8994d32917a08896c7d25f20d4adf09066
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: a4a7b7a4008d5cc4636e2d533c225a618f35af05
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601903"
+ms.locfileid: "98611194"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>ITSM Bağlayıcısındaki sorunları giderme
 
@@ -57,7 +57,7 @@ Hizmet Eşlemesi kullanıyorsanız, ıTSM çözümlerinde oluşturulan hizmet Ma
    Tablodaki iletilerle ilgili ayrıntıları [burada](itsmc-dashboard-errors.md)görebilirsiniz.
    - **Günlük arama** sayfası: doğrudan sorgu kullanarak hataları ve Ilgili bilgileri görüntüleyin `*ServiceDeskLog_CL*` .
 
-## <a name="common-symptoms---how-it-should-be-resolved"></a>Genel belirtiler-nasıl çözülmesi gerekir?
+## <a name="common-symptoms---how-should-it-be-resolved"></a>Ortak belirtiler-nasıl çözülmesi gerekir?
 
 Aşağıdaki liste, yaygın belirtileri ve nasıl çözümlenmelidir:
 

@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/19/2021
-ms.openlocfilehash: 9ace9a319f4cc6bcc1545d6d1becce61b1892765
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 007bf845bab6f493fae91debefde27a4929d9f95
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598674"
+ms.locfileid: "98611041"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
 
@@ -236,7 +236,8 @@ Aşağıdaki tabloda MongoDB Özellik desteğine özgü sınırlar listelenmekte
 | Kaynak | Varsayılan limit |
 | --- | --- |
 | Maksimum MongoDB sorgu belleği boyutu (Bu sınırlama yalnızca 3,2 sunucu sürümü içindir) | 40 MB |
-| MongoDB işlemleri için maksimum yürütme süresi| 30 saniye |
+|MongoDB işlemleri için maksimum yürütme süresi (3,2 sunucu sürümü için)| 15 saniye|
+|MongoDB işlemleri için maksimum yürütme süresi (3,6 sunucu sürümü için)| 60 saniye|
 | Sunucu tarafı bağlantısı kapanışı için boşta bağlantı zaman aşımı * | 30 dakika |
 
 \*[Azure Yük Dengeleyici için varsayılan zaman aşımı 4 dakika olduğundan,](../load-balancer/load-balancer-tcp-idle-timeout.md)istemci uygulamalarının sürücü ayarlarındaki boş bağlantı zaman aşımını 2-3 dakikaya ayarlaması önerilir.  Bu zaman aşımı, boşta bağlantıların, istemci makinesi ve Azure Cosmos DB arasında bir ara yük dengeleyici tarafından kapanmamasını sağlayacaktır.

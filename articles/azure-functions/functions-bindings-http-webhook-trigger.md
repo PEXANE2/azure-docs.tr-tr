@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 6466647056535635b67cd53012d051f11e9b484c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f04e2aa97cafe2345918e433bcef5e719cee7483
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91323320"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610176"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Işlevleri HTTP tetikleyicisi
 
@@ -43,11 +43,15 @@ public static async Task<IActionResult> Run(
     log.LogInformation("C# HTTP trigger function processed a request.");
 
     string name = req.Query["name"];
-
-    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+    
+    string requestBody = String.Empty;
+    using (StreamReader streamReader =  new  StreamReader(req.Body))
+    {
+        requestBody = await streamReader.ReadToEndAsync();
+    }
     dynamic data = JsonConvert.DeserializeObject(requestBody);
     name = name ?? data?.name;
-
+    
     return name != null
         ? (ActionResult)new OkObjectResult($"Hello, {name}")
         : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
@@ -100,11 +104,15 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
     log.LogInformation("C# HTTP trigger function processed a request.");
 
     string name = req.Query["name"];
-
-    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+    
+    string requestBody = String.Empty;
+    using (StreamReader streamReader =  new  StreamReader(req.Body))
+    {
+        requestBody = await streamReader.ReadToEndAsync();
+    }
     dynamic data = JsonConvert.DeserializeObject(requestBody);
     name = name ?? data?.name;
-
+    
     return name != null
         ? (ActionResult)new OkObjectResult($"Hello, {name}")
         : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
@@ -539,7 +547,7 @@ Tüm bir örnek için bkz. [tetikleyici örneği](#example).
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `HttpTrigger` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 | **türüyle** | yok| Gerekli-olarak ayarlanmalıdır `httpTrigger` . |
 | **Görünüm** | yok| Gerekli-olarak ayarlanmalıdır `in` . |
@@ -588,7 +596,7 @@ Bu yapılandırmayı kullanarak, işlev artık özgün yol yerine aşağıdaki r
 http://<APP_NAME>.azurewebsites.net/api/products/electronics/357
 ```
 
-Bu yapılandırma, işlev kodunun adreste, _kategoride_ ve _kimliğinde_iki parametreyi desteklemesini sağlar.
+Bu yapılandırma, işlev kodunun adreste, _kategoride_ ve _kimliğinde_ iki parametreyi desteklemesini sağlar.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -712,7 +720,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 ---
 
-Varsayılan olarak, tüm işlev yollarına *API*ön eki eklenir. Ayrıca, `extensions.http.routePrefix` dosyadaki [host.js](functions-host-json.md) özelliğini kullanarak ön eki özelleştirebilir veya kaldırabilirsiniz. Aşağıdaki örnek, dosyasındaki *host.js* önek için boş bir dize kullanarak *API* yol önekini kaldırır.
+Varsayılan olarak, tüm işlev yollarına *API* ön eki eklenir. Ayrıca, `extensions.http.routePrefix` dosyadaki [host.js](functions-host-json.md) özelliğini kullanarak ön eki özelleştirebilir veya kaldırabilirsiniz. Aşağıdaki örnek, dosyasındaki *host.js* önek için boş bir dize kullanarak *API* yol önekini kaldırır.
 
 ```json
 {
@@ -877,7 +885,7 @@ Anahtar gerektirmeyen anonim isteklere izin verebilirsiniz. Ana anahtarın kulla
 
 Sürüm 1. x içinde, Web kancası şablonları Web kancası yükleri için ek doğrulama sağlar. Sürüm 2. x ve üzeri sürümlerde, temel HTTP tetikleyicisi hala çalışıyor ve Web kancaları için önerilen yaklaşım. 
 
-### <a name="github-webhooks"></a>GitHub web kancaları
+### <a name="github-webhooks"></a>GitHub Web kancaları
 
 GitHub Web kancalarına yanıt vermek için, önce bir HTTP tetikleyicisiyle işlevinizi oluşturun ve **Web Kancatürü** özelliğini olarak ayarlayın `github` . Ardından, URL ve API anahtarını GitHub deponuzun **Web kancası Ekle** sayfasına kopyalayın. 
 

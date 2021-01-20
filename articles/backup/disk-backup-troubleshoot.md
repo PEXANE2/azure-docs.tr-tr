@@ -3,12 +3,12 @@ title: Azure disk yedekleme 'de yedekleme hatalarıyla ilgili sorunları giderme
 description: Azure disk yedekleme 'de yedekleme hatalarıyla ilgili sorunları nasıl giderebileceğinizi öğrenin
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 0a2ef1ea20ee8d6b7a3f32e244d3e00f3add80a2
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 3e7c81d70fc898528532a841a484bf6fff8b83a7
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98558843"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611245"
 ---
 # <a name="troubleshooting-backup-failures-in-azure-disk-backup-in-preview"></a>Azure disk yedekleme 'de yedekleme hatalarının sorunlarını giderme (önizlemede)
 
@@ -153,12 +153,30 @@ Hata Iletisi: Bu geri yükleme noktası için disk anlık görüntüsü meta ver
 
 Önerilen eylem: geri yüklemek için başka bir kurtarma noktası kullanmayı düşünün. Daha fazla bilgi için [geri yükleme belgelerine](restore-managed-disks.md)bakın.
 
+### <a name="error-code-backupagentpluginhostvalidateprotectionerror"></a>Hata kodu: BackupAgentPluginHostValidateProtectionError
+
+Hata Iletisi: yedekleme kasasının yapılandırma korumasını denediğiniz bölgede disk yedeklemesi henüz kullanılamıyor.
+
+Önerilen eylem: Yedekleme Kasası, önizleme desteklenen bir bölgede olmalıdır. Bölge kullanılabilirliği için [destek matrisine](disk-backup-support-matrix.md)bakın.
+
+### <a name="error-code-usererrordppdatasourcealreadyhasbackupinstance"></a>Hata kodu: Usererrordppdatasourcealreadyhasbackupınstance
+
+Hata Iletisi: yedeklemeyi yapılandırmaya çalıştığınız disk zaten korunuyor. Disk, bir yedekleme kasasındaki bir yedekleme örneğiyle zaten ilişkilendirilmiş.
+
+Önerilen eylem: Bu disk, bir yedekleme kasasındaki bir yedekleme örneğiyle zaten ilişkilendirilmiş. Bu diski yeniden korumak istiyorsanız, yedekleme örneğini Şu anda korunduğu yedekleme kasasından silin ve diğer kasadaki diski yeniden koruyun.
+
+### <a name="error-code-usererrordppdatasourcealreadyprotected"></a>Hata kodu: UserErrorDppDatasourceAlreadyProtected
+
+Hata Iletisi: yedeklemeyi yapılandırmaya çalıştığınız disk zaten korunuyor. Disk, bir yedekleme kasasındaki bir yedekleme örneğiyle zaten ilişkilendirilmiş.
+
+Önerilen eylem: Bu disk, bir yedekleme kasasındaki bir yedekleme örneğiyle zaten ilişkilendirilmiş. Bu diski yeniden korumak istiyorsanız, yedekleme örneğini Şu anda korunduğu yedekleme kasasından silin ve diğer kasadaki diski yeniden koruyun.
+
 ### <a name="error-code-usererrormaxconcurrentoperationlimitreached"></a>Hata kodu: Usererrormaxconcurrentoperationlimitulaşıldı
 
-Hata Iletisi: Bu işlem türü için izin verilen en fazla eşzamanlı işleme sayısına ulaşıldığından işlem başlatılamıyor.
+Hata Iletisi: izin verilen en fazla eşzamanlı yedeklemeye ulaşıldığından işlem başlatılamıyor.
 
-Önerilen eylem: önceki işlemler tamamlanana kadar bekleyin.
+Önerilen eylem: önceki çalışan Yedekleme tamamlanana kadar bekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure disk yedekleme desteği matrisi](disk-backup-support-matrix.md)
+- [Azure Disk Yedekleme destek matrisi](disk-backup-support-matrix.md)

@@ -7,18 +7,18 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 11/24/2020
-ms.openlocfilehash: 7ee203595a796529ae0aefe8b0c52a689ac29968
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: d94736656f691da9e893e4619a2299a061acd8e8
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96762338"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611211"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak bir çapraz bölge Azure Load Balancer oluşturma
 
 Çapraz bölge yük dengeleyici, bir hizmetin birden çok Azure bölgesinde küresel olarak kullanılabilmesini sağlar. Bir bölge başarısız olursa, trafik sonraki en iyi sağlıklı bölgesel yük dengeleyiciye yönlendirilir.  
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Bölgeler arası yük dengeleyici oluşturun.
@@ -41,7 +41,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="sign-in-to-azure-portal"></a>Azure portalda oturum açın
 
-Azure Preview Portal [' da oturum açın](https://preview.portal.azure.com) .
+Azure Preview Portal [' da oturum açın](https://portal.azure.com) .
 
 ## <a name="create-cross-region-load-balancer"></a>Çapraz bölge yük dengeleyici oluştur
 
@@ -56,7 +56,7 @@ Bu bölümde, bir çapraz bölge yük dengeleyici ve genel IP adresi oluşturaca
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | **Yeni oluştur** ' u seçin ve metin kutusuna **Createcrlböğreticisi-RG** girin.|
     | Name                   | **Myloadbalancer-CR** girin                                   |
-    | Region         | **Batı ABD** seçin.                                        |
+    | Bölge         | **Batı ABD** seçin.                                        |
     | Tür          | **Genel**’i seçin.                                        |
     | SKU           | **Standart** seçin |
     | Katman           | **Küresel** seçin |

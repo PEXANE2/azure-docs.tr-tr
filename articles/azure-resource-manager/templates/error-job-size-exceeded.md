@@ -2,17 +2,17 @@
 title: İş boyutu aşıldı hatası
 description: İş boyutu veya şablon çok büyük olduğunda hata giderme işlemlerinin nasıl yapılacağını açıklar.
 ms.topic: troubleshooting
-ms.date: 10/07/2020
-ms.openlocfilehash: 638bdef246fc908ab997bfb99e7526febdb3792e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/19/2021
+ms.openlocfilehash: 1fde4918aff6e3bf494876f83c5b4313b3c5f3d2
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822148"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610412"
 ---
 # <a name="resolve-errors-for-job-size-exceeded"></a>İş boyutu için hataları çözümleme aşıldı
 
-Bu makalede, **jobsizeexceededexception** ve **deploymentsizeexceededexception** hatalarının nasıl çözümleneceği açıklanır.
+Bu makalede, **jobsizeexceededexception** ve **deploymentjobsizeexceededexception** hatalarının nasıl çözümleneceği açıklanır.
 
 ## <a name="symptom"></a>Belirti
 
@@ -20,9 +20,12 @@ Bir şablonu dağıttığınızda, dağıtımın sınırları aştığını beli
 
 ## <a name="cause"></a>Nedeni
 
-Şablonunuzun boyutu 4 MB 'ı aştığında bu hatayı alabilirsiniz. 4 MB sınırı, çok sayıda örnek oluşturmak için [kopyayı](copy-resources.md) kullanan kaynak tanımları için genişletildikten sonra şablonun son durumuna uygulanır. Son durum ayrıca değişkenler ve parametreler için çözümlenen değerleri de içerir.
+Dağıtım izin verilen limitlerden birini aştığında bu hatayı alırsınız. Genellikle, şablonunuz veya dağıtımı çalıştıran iş çok büyük olduğunda bu hatayı görürsünüz.
 
-Dağıtım işi, istek hakkındaki meta verileri de içerir. Büyük şablonlar için, şablonla birleştirilmiş meta veriler, bir iş için izin verilen boyutu aşabilir.
+Dağıtım işi 1 MB 'ı aşamaz. İş, istekle ilgili meta veriler içeriyor. Büyük şablonlar için, şablonla birleştirilmiş meta veriler, bir iş için izin verilen boyutu aşabilir.
+
+
+Şablon 4 MB 'ı aşamaz. 4 MB sınırı, çok sayıda örnek oluşturmak için [kopyayı](copy-resources.md) kullanan kaynak tanımları için genişletildikten sonra şablonun son durumuna uygulanır. Son durum ayrıca değişkenler ve parametreler için çözümlenen değerleri de içerir.
 
 Şablon için diğer sınırlar şunlardır:
 
@@ -44,4 +47,4 @@ Bağlı şablona bağlı olarak diğer kaynakları ayarlayabilir ve [bağlı şa
 
 ## <a name="solution-3---use-serial-copy"></a>Çözüm 3-seri kopyalama kullan
 
-İkinci seçeneğiniz, kopyalama döngünüzü [paralel ve seri işlemeye](copy-resources.md#serial-or-parallel)değiştirmek. Bu seçeneği yalnızca hatanın, kopyalama yoluyla çok sayıda kaynak dağıtmaktan şüphelendiğiniz durumlarda kullanın. Bu değişiklik, kaynaklar paralel olarak dağıtılmadığından dağıtım süresini önemli ölçüde artırabilir.
+Kopyalama döngünüzü [paralel olarak seri işleme olarak](copy-resources.md#serial-or-parallel)değiştirmeyi düşünün. Bu seçeneği yalnızca hatanın, kopyalama yoluyla çok sayıda kaynak dağıtmaktan şüphelendiğiniz durumlarda kullanın. Bu değişiklik, kaynaklar paralel olarak dağıtılmadığından dağıtım süresini önemli ölçüde artırabilir.

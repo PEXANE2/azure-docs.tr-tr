@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 889ee48c43119086047d6f52737266f4c611fc8d
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 6061980ec556fccde3de882a291bc390b88c5a24
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562752"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611092"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure İzleyici müşteri tarafından yönetilen anahtar 
 
@@ -386,15 +386,11 @@ Customer-Managed anahtar adanmış kümede verilmiştir ve bu işlemlere [adanm�
 
 ## <a name="limitations-and-constraints"></a>Sınırlamalar ve kısıtlamalar
 
-- Müşteri tarafından yönetilen anahtar adanmış Log Analytics kümesinde desteklenir ve günde 1 GB veya daha fazlasını gönderen müşteriler için uygundur.
-
 - Bölge başına en fazla küme sayısı ve abonelik 2 ' dir
 
-- Kümeye en fazla bağlantılı çalışma alanı 1000
+- Bir kümeye bağlanabilen maksimum çalışma alanı sayısı 1000 ' dir
 
 - Bir çalışma alanını kümenize bağlayabilir ve sonra bağlantısını kesebilirsiniz. Belirli çalışma alanındaki çalışma alanı bağlantı işlemlerinin sayısı, 30 günlük bir dönemde 2 ile sınırlıdır.
-
-- Kümeye çalışma alanı bağlantısı yalnızca Log Analytics kümesi sağlama tamamlandığını doğruladıktan sonra taşınmalıdır. Tamamlanmadan önce çalışma alanınıza gönderilen veriler bırakılır ve geri alınamaz.
 
 - Müşteri tarafından yönetilen anahtar şifrelemesi, yapılandırma zamanından sonra yeni alınan veriler için geçerlidir. Yapılandırmadan önce alınan veriler, Microsoft anahtarıyla şifreli olarak kalır. Müşteri tarafından yönetilen anahtar yapılandırmasından önce ve sonra gelen verileri sorunsuz bir şekilde sorgulayabilirsiniz.
 
@@ -404,14 +400,12 @@ Customer-Managed anahtar adanmış kümede verilmiştir ve bu işlemlere [adanm�
 
 - Küme başka bir kaynak grubuna veya aboneliğe taşıma Şu anda desteklenmiyor.
 
-- Azure Key Vault, kümeniz ve bağlı çalışma alanlarınız aynı bölgede ve aynı Azure Active Directory (Azure AD) kiracısında olmalıdır, ancak farklı aboneliklerde olabilir.
-
-- Başka bir kümeyle bağlantı varsa, kümeye çalışma alanı bağlantısı başarısız olur.
+- Azure Key Vault, kümeniz ve çalışma alanlarınızın aynı bölgede ve aynı Azure Active Directory (Azure AD) kiracısında olması gerekir, ancak bunlar farklı aboneliklerde olabilir.
 
 - Kasa Çin 'de Şu anda kullanılamıyor. 
 
-- Desteklenen bölgelerde, Ekim 2020 ' den oluşturulan kümeler için [Çift şifreleme](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) otomatik olarak yapılandırılır. Kümenizin kümedeki bir GET isteğiyle Çift şifreleme için yapılandırılıp yapılandırılmadığını ve özellik değerini gözlemleyerek, `"isDoubleEncryptionEnabled"` `true` çift şifrelemeyi etkin kümeler için olduğunu doğrulayabilirsiniz. 
-  - Bir küme oluşturur ve "<Region-adı> kümeler için çift şifrelemeyi desteklemez.", kümeyi yine de çift şifreleme olmadan oluşturabilirsiniz. `"properties": {"isDoubleEncryptionEnabled": false}`Rest istek gövdesine özellik ekleyin.
+- Desteklenen bölgelerde, Ekim 2020 ' den oluşturulan kümeler için [Çift şifreleme](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) otomatik olarak yapılandırılır. Kümede bir GET isteği göndererek ve `isDoubleEncryptionEnabled` değerin `true` çift şifrelemeyi etkin kümeler için olduğunu gözlemleyerek, kümenizin Çift şifreleme için yapılandırılıp yapılandırılmadığını doğrulayabilirsiniz. 
+  - Bir küme oluşturur ve "<Region-adı> kümeler için çift şifrelemeyi desteklemez.", REST istek gövdesine ekleyerek kümeyi, Çift şifrelemeyi oluşturmaya devam edebilirsiniz `"properties": {"isDoubleEncryptionEnabled": false}` .
   - Küme oluşturulduktan sonra çift şifreleme ayarı değiştirilemez.
 
   - Kümeniz Kullanıcı tarafından atanan yönetilen kimlik ile ayarlandıysa, `UserAssignedIdentities` ile ayarı `None` kümeyi askıya alır ve verilerinize erişimi önler, ancak iptali iptal edin ve destek isteği açılmadan kümeyi etkinleştirin. Bu sınırlama, sistem tarafından atanan yönetilen kimliğe uygulandı.
@@ -429,13 +423,15 @@ Customer-Managed anahtar adanmış kümede verilmiştir ve bu işlemlere [adanm�
 
   - Key Vault erişim oranı--Azure Izleyici depolaması 'nın sarmalama ve sarmalama işlemleri için Key Vault, 6 ila 60 saniye arasındadır.
 
-- Bir küme oluşturur ve KeyVaultProperties 'i hemen belirtirseniz, sistem kimliği kümeye atanana kadar erişim ilkesi tanımlanmadığından işlem başarısız olabilir.
-
-- Mevcut kümeyi KeyVaultProperties ile güncelleştirirseniz ve ' Get ' anahtar erişimi Ilkesi Key Vault eksikse, işlem başarısız olur.
+- Küme sağlama veya güncelleştirme durumundayken kümenizi güncelleştirirseniz güncelleştirme başarısız olur.
 
 - Bir küme oluştururken çakışma hatası alırsanız, kümenizi son 14 gün içinde silmiş ve bu da geçici silme döneminde olabilir. Küme adı, geçici silme döneminde ayrılmış kalır ve bu adla yeni bir küme oluşturamazsınız. Bu ad, küme kalıcı olarak silindiğinde geçici silme süresinden sonra serbest bırakılır.
 
-- Bir işlem devam ederken kümenizi güncelleştirirseniz işlem başarısız olur.
+- Başka bir kümeyle bağlantı varsa, kümeye çalışma alanı bağlantısı başarısız olur.
+
+- Bir küme oluşturur ve KeyVaultProperties 'i hemen belirtirseniz, sistem kimliği kümeye atanana kadar erişim ilkesi tanımlanmadığından işlem başarısız olabilir.
+
+- Mevcut kümeyi KeyVaultProperties ile güncelleştirirseniz ve ' Get ' anahtar erişimi Ilkesi Key Vault eksikse, işlem başarısız olur.
 
 - Kümenizin dağıtımı başarısız olursa, Azure Key Vault, kümenizin ve bağlı Log Analytics çalışma alanlarınızın aynı bölgede olduğunu doğrulayın. Farklı aboneliklerde olabilir.
 

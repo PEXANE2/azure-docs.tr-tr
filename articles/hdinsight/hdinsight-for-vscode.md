@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: c32f90221a73d04fd6c54c8332826232d0e6a6f3
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 30c13adfebb911e443fb042821e09628da3b9405
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968543"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610990"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Visual Studio Code için Spark & Hive araçlarını kullanma
 
@@ -211,31 +211,30 @@ Sorguları göndermek için PySpark etkileşimli komutunu kullanarak şu adımla
 
    ![pyspark başarıyla yüklendi](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
 
-7. Lütfen komut satırını kullanarak **PIP yükleme sayısal tuş takımı 'nı çalıştırın y = = 1.19.3** ve ardından vscode penceresini yeniden yükleyin.
 
-8. Menü çubuğundan **görüntüle**  >  **komut paleti...** ' ya gidin veya **SHIFT + CTRL + P** klavye kısayolunu kullanın ve **Python: Select yorumlayıcı ' yı seçerek Jupyter sunucusunu başlatın**.
+7. Menü çubuğundan **görüntüle**  >  **komut paleti...** ' ya gidin veya **SHIFT + CTRL + P** klavye kısayolunu kullanın ve **Python: Select yorumlayıcı ' yı seçerek Jupyter sunucusunu başlatın**.
 
    ![jupyıter sunucusunu başlatmak için yorumlayıcı 'yı seçin](./media/hdinsight-for-vscode/select-interpreter-to-start-jupyter-server.png)
 
-9. Aşağıdaki Python seçeneğini belirleyin.
+8. Aşağıdaki Python seçeneğini belirleyin.
 
    ![aşağıdaki seçeneği seçin](./media/hdinsight-for-vscode/choose-the-below-option.png)
     
-10. Menü çubuğundan **Görünüm**  >  **komut paleti...** ' ya gidin veya **SHIFT + CTRL + P** klavye kısayolunu kullanın ve **Geliştirici: yeniden yükle penceresini** girin.
+9. Menü çubuğundan **Görünüm**  >  **komut paleti...** ' ya gidin veya **SHIFT + CTRL + P** klavye kısayolunu kullanın ve **Geliştirici: yeniden yükle penceresini** girin.
 
     ![pencereyi yeniden yükle](./media/hdinsight-for-vscode/reload-window.png)
 
-11. Azure hesabınıza [bağlanın](#connect-to-an-azure-account) veya henüz yapmadıysanız bir kümeyi bağlayın.
+10. Azure hesabınıza [bağlanın](#connect-to-an-azure-account) veya henüz yapmadıysanız bir kümeyi bağlayın.
 
-12. Tüm kodu seçin, komut dosyası düzenleyicisine sağ tıklayın ve **Spark: PySpark Interactive/SYNAPSE: Pyspark Interactive** ' i seçerek sorguyu gönderebilirsiniz. 
+11. Tüm kodu seçin, komut dosyası düzenleyicisine sağ tıklayın ve **Spark: PySpark Interactive/SYNAPSE: Pyspark Interactive** ' i seçerek sorguyu gönderebilirsiniz. 
 
     ![pyspark etkileşimli bağlam menüsü](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
 
-13. Varsayılan bir küme belirtmediyse kümeyi seçin. Birkaç dakika sonra **Python etkileşimli** sonuçları yeni bir sekmede görüntülenir. PySpark 'a tıklayarak çekirdeği **pyspark/SYNAPSE Pyspark** olarak değiştirin ve kod başarıyla çalıştırılır. SYNAPSE Pyspark çekirdeğine geçmek istiyorsanız, Azure portal otomatik ayarların devre dışı bırakılması önerilir. Aksi takdirde, kümeyi uyandırması ve ilk kez kullanılmak üzere SYNAPSE çekirdeğini ayarlamanız uzun sürebilir. Araçlar ayrıca bağlam menüsünü kullanarak tüm betik dosyası yerine bir kod bloğu göndermenize izin verir:
+12. Varsayılan bir küme belirtmediyse kümeyi seçin. Birkaç dakika sonra **Python etkileşimli** sonuçları yeni bir sekmede görüntülenir. PySpark 'a tıklayarak çekirdeği **pyspark/SYNAPSE Pyspark** olarak değiştirin ve kod başarıyla çalıştırılır. SYNAPSE Pyspark çekirdeğine geçmek istiyorsanız, Azure portal otomatik ayarların devre dışı bırakılması önerilir. Aksi takdirde, kümeyi uyandırması ve ilk kez kullanılmak üzere SYNAPSE çekirdeğini ayarlamanız uzun sürebilir. Araçlar ayrıca bağlam menüsünü kullanarak tüm betik dosyası yerine bir kod bloğu göndermenize izin verir:
 
     ![pyspark etkileşimli Python etkileşimli penceresi](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
 
-14. **%% Info** girin ve sonra iş bilgilerini görüntülemek için SHIFT + enter tuşlarına basın (isteğe bağlı):
+13. **%% Info** girin ve sonra iş bilgilerini görüntülemek için SHIFT + enter tuşlarına basın (isteğe bağlı):
 
     ![pyspark etkileşimli görüntüleme işi bilgileri](./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png)
 

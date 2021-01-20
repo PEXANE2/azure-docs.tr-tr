@@ -10,16 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/28/2020
 ms.author: juliako
-ms.openlocfilehash: 3a3ac3f2db4e23f03f83a98bee0aceaddef9f889
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: b25341fb58c1e758d807e3c7b4345fd0ab1baa53
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433447"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610429"
 ---
 # <a name="add-video-clips-to-your-projects"></a>Projelerinize video klipleri ekleyin
 
-Video Indexer Web sitesi, videolarınızın derin içgörülerini kullanarak, doğru medya içeriğini bulmanıza, ilgilendiğiniz bölümleri bulmanıza ve sonuçları kullanarak tamamen yeni bir proje oluşturmanıza olanak sağlar. 
+[Video Indexer](https://www.videoindexer.ai/) Web sitesi, videolarınızın derin içgörülerini kullanarak, doğru medya içeriğini bulmanıza, ilgilendiğiniz bölümleri bulmanıza ve sonuçları kullanarak tamamen yeni bir proje oluşturmanıza olanak sağlar. 
 
 Oluşturulduktan sonra proje, Video Indexer oluşturulabilir ve indirilebilir ve kendi Düzenle uygulamalarınızda veya aşağı akış akışlarınızda kullanılabilir.
 
@@ -37,7 +37,7 @@ Bu makalede, projenin nasıl oluşturulacağı ve seçili kliplerin videolardan 
 1. **Projeler** sekmesini seçin. Daha önce projeler oluşturduysanız, burada diğer projelerinizi görürsünüz.
 1. **Yeni proje oluştur**' a tıklayın.  
 
-    :::image type="content" source="./media/video-indexer-view-edit/new-project.png" alt-text="Yeni bir proje oluşturma":::
+    :::image type="content" source="./media/video-indexer-view-edit/new-project.png" alt-text="Yeni proje oluşturma":::
 1. Kalem simgesine tıklayarak projenize bir ad verin. "Başlıksız proje" yazan metni proje adınızla değiştirin ve onay düğmesine tıklayın.
 
     :::image type="content" source="./media/video-indexer-view-edit/new-project-edit-name.png" alt-text="Yeni bir proje":::
