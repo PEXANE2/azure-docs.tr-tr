@@ -574,12 +574,12 @@
               items:
                 - name: Genel Bakış
                   href: platform/itsmc-troubleshoot-overview.md
-                - name: ITSM Bağlayıcısını eşitleme
-                  href: platform/itsmc-resync-servicenow.md
                 - name: Pano Araştırması
                   href: platform/itsmc-dashboard.md
                 - name: Sık Karşılaşılan Hatalar
                   href: platform/itsmc-dashboard-errors.md
+                - name: ITSM Bağlayıcısını eşitleme
+                  href: platform/itsmc-resync-servicenow.md
             - name: Güvenli Dışarı Aktarma ile tümleştirme
               items:
                 - name: Genel Bakış
