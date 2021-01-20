@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1826edb31c442fb10b8053433ec01ee5abad0eb2
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 8bd919d2896b187d32ad5347e6b8729ccb8555de
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98109316"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98612942"
 ---
 <a name="HOLTop"></a>
 
@@ -255,24 +255,9 @@ Görüntü İşleme görüntüdeki görünür metni okuyabilir ve bunu bir karak
 
 ### <a name="call-the-read-api"></a>Okuma API 'sini çağırma
 
-Metni okumak için yeni bir yöntem tanımlayın. Verilen görüntü için **ReadAsync** yöntemini çağıran aşağıdaki kodu ekleyin. Bu işlem KIMLIĞI döndürür ve görüntünün içeriğini okumak için zaman uyumsuz bir işlem başlatır.
+Verilen görüntü için **ReadAsync** yöntemini çağıran aşağıdaki yöntemi ekleyin. Bu işlem KIMLIĞI döndürür ve görüntünün içeriğini okumak için zaman uyumsuz bir işlem başlatır. Ardından, **ReadAsync** çağrısından döndürülen işlem kimliğini alın ve bu işlemi, işlemin sonuçları için hizmeti yoklamak üzere kullanın. Son olarak, ayıklanan metni konsola yazdırın.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_read_url)]
-
-### <a name="get-read-results"></a>Okuma sonuçları al
-
-Ardından, **ReadAsync** çağrısından döndürülen işlem kimliğini alın ve bunu işlem sonuçları için hizmeti sorgulamak üzere kullanın. Aşağıdaki kod, sonuçlar döndürülünceye kadar işlemi denetler. Daha sonra ayıklanan metin verilerini konsola yazdırır.
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_read_response)]
-
-### <a name="display-read-results"></a>Okuma sonuçlarını görüntüle
-
-Alınan metin verilerini ayrıştırmak ve göstermek için aşağıdaki kodu ekleyin ve yöntem tanımını sona erdirin.
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_read_display)]
-
-> [!div class="nextstepaction"]
-> [Bir sorunla karşılaşdığım](https://www.research.net/r/7QYZKHL?issue=read-printed-handwritten-text) [metni okudum](?success=read-printed-handwritten-text#run-the-application)
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
@@ -289,8 +274,6 @@ dotnet run
 ```
 
 ---
-> [!div class="nextstepaction"]
-> [Bir sorunla karşılaşdığım](https://www.research.net/r/7QYZKHL?issue=run-the-application) [uygulamayı çalıştırdım](?success=run-the-application#clean-up-resources)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -299,14 +282,10 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 * [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-> [!div class="nextstepaction"]
-> [Bir sorunla karşılaşdığım](https://www.research.net/r/7QYZKHL?issue=clean-up-resources) [kaynakları temizm](?success=clean-up-resources#next-steps) 
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
 >[Görüntü İşleme API'si Başvurusu (.NET)](/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet)
-
 
 * [Görüntü İşleme nedir?](../../overview.md)
 * Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs)' da bulunabilir.

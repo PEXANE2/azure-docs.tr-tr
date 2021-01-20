@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: ff97aa6c6f04ad41ba6e1b986f3cc0734ec7a326
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 4c7c68bf690097004f2f3310a8d89ce954d7f87f
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92526090"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98612912"
 ---
 | Kaynak | Sınır | Not |
 | --- | --- | --- |
@@ -32,6 +32,9 @@ ms.locfileid: "92526090"
 | Dinleyici başına URL haritaları |1 | |
 | URL eşlemesi başına en fazla yol tabanlı kural|100||
 | Yeniden yönlendirme yapılandırması |100<sup>1</sup>| |
+| Yeniden yazma kuralı kümesi sayısı |400| |
+| Yeniden yazma kuralı kümesi başına üst bilgi veya URL yapılandırması sayısı|40| |
+| Yeniden yazma kuralı kümesi başına koşulların sayısı|40| |
 | Eşzamanlı WebSocket bağlantıları |Orta ağ geçitleri 20.000<br> Büyük ağ geçitleri 50.000| |
 | En fazla URL uzunluğu|AŞAMAZ| |
 | HTTP/2 için üst bilgi boyutu üst sınırı |4 KB 'DIR| |
