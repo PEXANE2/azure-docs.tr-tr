@@ -3,12 +3,12 @@ title: Özel durumları ve bunları nasıl çözebilmek Azure Relay | Microsoft 
 description: Bunları çözmeye yardımcı olmak için uygulayabileceğiniz Azure Relay özel durumların ve önerilen eylemlerin listesi.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: a644dfe80255c64980400866a5e3d197f75375bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44eeba6eb7b8cfd4e81a923c2d9a3155f1709f2c
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87532977"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625157"
 ---
 # <a name="azure-relay-exceptions"></a>Azure Relay özel durumlar
 
@@ -18,16 +18,16 @@ Bu makalede, Azure Relay API 'Leri tarafından oluşturulabilecek bazı özel du
 
 Geçiş API 'Leri, aşağıdaki kategorilere ayrılan özel durumlar oluşturur. Ayrıca, özel durumları çözmeye yardımcı olmak için uygulayabileceğiniz önerenlerden de yararlanabilirsiniz.
 
-*   **Kullanıcı kodlama hatası**: [System. ArgumentException](/dotnet/api/system.argumentexception?view=netcore-3.1), [System. InvalidOperationException](/dotnet/api/system.invalidoperationexception?view=netcore-3.1), [System. Operationolaydexception](/dotnet/api/system.operationcanceledexception?view=netcore-3.1), [System. Runtime. Serialization. SerializationException](/dotnet/api/system.runtime.serialization.serializationexception?view=netcore-3.1). 
+*   **Kullanıcı kodlama hatası**: [System. ArgumentException](/dotnet/api/system.argumentexception), [System. InvalidOperationException](/dotnet/api/system.invalidoperationexception), [System. Operationolaydexception](/dotnet/api/system.operationcanceledexception), [System. Runtime. Serialization. SerializationException](/dotnet/api/system.runtime.serialization.serializationexception). 
 
     **Genel eylem**: devam etmeden önce kodu gidermeyi deneyin.
-*   **Kurulum/yapılandırma hatası**: [System. UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1). 
+*   **Kurulum/yapılandırma hatası**: [System. UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception). 
 
     **Genel eylem**: yapılandırmanızı gözden geçirin. Gerekirse, yapılandırmayı değiştirin.
 *   **Geçici özel durumlar**: [Microsoft. ServiceBus. Messaging. messagingexception](/dotnet/api/microsoft.servicebus.messaging.messagingexception), [Microsoft. ServiceBus. Messaging. Serverbusyexception](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception), [Microsoft. ServiceBus. Messaging. MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception). 
 
     **Genel eylem**: işlemi yeniden deneyin veya kullanıcılara bildirin.
-*   **Diğer özel durumlar**: [System. Transactions. TransactionException](/dotnet/api/system.transactions.transactionexception?view=netcore-3.1), [System. TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1). 
+*   **Diğer özel durumlar**: [System. Transactions. TransactionException](/dotnet/api/system.transactions.transactionexception), [System. TimeoutException](/dotnet/api/system.timeoutexception). 
 
     **Genel eylem**: özel durum türüne özeldir. Aşağıdaki bölümde tablosuna bakın. 
 
@@ -37,11 +37,11 @@ Aşağıdaki tabloda mesajlaşma özel durum türleri ve nedenleri listelenmekte
 
 | **Özel durum türü** | **Açıklama** | **Önerilen eylem** | **Otomatik veya anında yeniden denemeye göz atma** |
 | --- | --- | --- | --- |
-| [Aş](/dotnet/api/system.timeoutexception?view=netcore-3.1) |Sunucu, belirtilen süre içinde, [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout)tarafından denetlenen istenen işleme yanıt vermedi. Sunucu istenen işlemi tamamlamış olabilir. Bu durum ağ veya diğer altyapı gecikmelerinden kaynaklanabilir. |Tutarlılık için sistem durumunu kontrol edin ve gerekirse yeniden deneyin. Bkz. [TimeoutException](#timeoutexception). |Yeniden deneme bazı durumlarda yardımcı olabilirler; koda yeniden deneme mantığı ekleyin. |
-| [Geçersiz Işlem](/dotnet/api/system.invalidoperationexception?view=netcore-3.1) |Sunucu veya hizmet içinde istenen Kullanıcı işlemine izin verilmiyor. Ayrıntılar için özel durum iletisine bakın. |Kodu ve belgeleri denetleyin. İstenen işlemin geçerli olduğundan emin olun. |Yeniden deneme, yardım etmez. |
-| [İşlem Iptal edildi](/dotnet/api/system.operationcanceledexception?view=netcore-3.1) |Zaten kapatılmış, durdurulmuş veya atılmış bir nesne üzerinde bir işlemi çağırmak için bir girişimde bulunuldu. Nadir durumlarda, çevresel işlem zaten atıldı. |Kodu denetleyin ve çıkarılan bir nesne üzerindeki işlemleri çağırmadığından emin olun. |Yeniden deneme, yardım etmez. |
-| [Yetkisiz erişim](/dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1) |[TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) nesnesi bir belirteç alamıyor, belirteç geçersiz veya belirteç işlemi gerçekleştirmek için gereken talepleri içermiyor. |Belirteç sağlayıcısının doğru değerlerle oluşturulduğundan emin olun. Access Control hizmetinin yapılandırmasını denetleyin. |Yeniden deneme bazı durumlarda yardımcı olabilirler; koda yeniden deneme mantığı ekleyin. |
-| [Bağımsız değişken özel durumu](/dotnet/api/system.argumentexception?view=netcore-3.1),<br /> [Bağımsız değişken null](/dotnet/api/system.argumentnullexception?view=netcore-3.1),<br />[Bağımsız değişken aralık dışında](/dotnet/api/system.argumentoutofrangeexception?view=netcore-3.1) |Aşağıdakilerden biri veya birkaçı oluştu:<br />Yönteme sağlanan bir veya daha fazla bağımsız değişken geçersiz.<br /> [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) veya [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) için sağlanan URI bir veya daha fazla yol kesimi içeriyor.<br />[NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) veya [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) için sağlanan URI şeması geçersiz. <br />Özellik değeri 32 KB 'den büyük. |Çağıran kodu denetleyin ve bağımsız değişkenlerin doğru olduğundan emin olun. |Yeniden deneme, yardım etmez. |
+| [Aş](/dotnet/api/system.timeoutexception) |Sunucu, belirtilen süre içinde, [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout)tarafından denetlenen istenen işleme yanıt vermedi. Sunucu istenen işlemi tamamlamış olabilir. Bu durum ağ veya diğer altyapı gecikmelerinden kaynaklanabilir. |Tutarlılık için sistem durumunu kontrol edin ve gerekirse yeniden deneyin. Bkz. [TimeoutException](#timeoutexception). |Yeniden deneme bazı durumlarda yardımcı olabilirler; koda yeniden deneme mantığı ekleyin. |
+| [Geçersiz Işlem](/dotnet/api/system.invalidoperationexception) |Sunucu veya hizmet içinde istenen Kullanıcı işlemine izin verilmiyor. Ayrıntılar için özel durum iletisine bakın. |Kodu ve belgeleri denetleyin. İstenen işlemin geçerli olduğundan emin olun. |Yeniden deneme, yardım etmez. |
+| [İşlem Iptal edildi](/dotnet/api/system.operationcanceledexception) |Zaten kapatılmış, durdurulmuş veya atılmış bir nesne üzerinde bir işlemi çağırmak için bir girişimde bulunuldu. Nadir durumlarda, çevresel işlem zaten atıldı. |Kodu denetleyin ve çıkarılan bir nesne üzerindeki işlemleri çağırmadığından emin olun. |Yeniden deneme, yardım etmez. |
+| [Yetkisiz erişim](/dotnet/api/system.unauthorizedaccessexception) |[TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) nesnesi bir belirteç alamıyor, belirteç geçersiz veya belirteç işlemi gerçekleştirmek için gereken talepleri içermiyor. |Belirteç sağlayıcısının doğru değerlerle oluşturulduğundan emin olun. Access Control hizmetinin yapılandırmasını denetleyin. |Yeniden deneme bazı durumlarda yardımcı olabilirler; koda yeniden deneme mantığı ekleyin. |
+| [Bağımsız değişken özel durumu](/dotnet/api/system.argumentexception),<br /> [Bağımsız değişken null](/dotnet/api/system.argumentnullexception),<br />[Bağımsız değişken aralık dışında](/dotnet/api/system.argumentoutofrangeexception) |Aşağıdakilerden biri veya birkaçı oluştu:<br />Yönteme sağlanan bir veya daha fazla bağımsız değişken geçersiz.<br /> [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) veya [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) için sağlanan URI bir veya daha fazla yol kesimi içeriyor.<br />[NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) veya [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) için sağlanan URI şeması geçersiz. <br />Özellik değeri 32 KB 'den büyük. |Çağıran kodu denetleyin ve bağımsız değişkenlerin doğru olduğundan emin olun. |Yeniden deneme, yardım etmez. |
 | [Sunucu meşgul](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) |Hizmet şu anda isteği işleyemiyor. |İstemci bir süre bekleyip işlemi yeniden deneyin. |İstemci belirli bir aralıktan sonra yeniden deneyebilir. Yeniden deneme farklı bir özel durumla sonuçlanırsa, bu özel durumun yeniden deneme davranışını kontrol edin. |
 | [Kota aşıldı](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) |Mesajlaşma varlığı izin verilen en büyük boyuta ulaştı. |Varlıktan veya onun alt sıraları üzerinden ileti alarak varlıkta alan oluşturun. Bkz. [QuotaExceededException](#quotaexceededexception). |Yeniden deneme, iletilerin bu sırada kaldırılıp kaldırılmadığı konusunda yardımcı olabilir. |
 | [İleti boyutu aşıldı](/dotnet/api/microsoft.servicebus.messaging.messagesizeexceededexception) |İleti yükü 256 KB sınırını aşıyor. 256 KB sınırının toplam ileti boyutu olduğunu unutmayın. Toplam ileti boyutu sistem özelliklerini ve tüm Microsoft .NET ek yükünü içerebilir. |İleti yükünün boyutunu küçültün, sonra işlemi yeniden deneyin. |Yeniden deneme, yardım etmez. |
@@ -50,12 +50,12 @@ Aşağıdaki tabloda mesajlaşma özel durum türleri ve nedenleri listelenmekte
 
 [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception), belirli bir varlık için belirlenen kotanın aşıldığını gösterir.
 
-Geçiş için, bu özel durum [System. ServiceModel. QuotaExceededException](/dotnet/api/system.servicemodel.quotaexceededexception?view=dotnet-plat-ext-3.1)sarmalanmış ve bu uç nokta için en fazla dinleyici sayısını aşmış olduğunu gösterir. Bu, özel durum iletisinin **Maximumlistenersperendpoint** değerinde belirtilir.
+Geçiş için, bu özel durum [System. ServiceModel. QuotaExceededException](/dotnet/api/system.servicemodel.quotaexceededexception)sarmalanmış ve bu uç nokta için en fazla dinleyici sayısını aşmış olduğunu gösterir. Bu, özel durum iletisinin **Maximumlistenersperendpoint** değerinde belirtilir.
 
 ## <a name="timeoutexception"></a>TimeoutException
-[TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1) , Kullanıcı tarafından başlatılan bir işlemin işlem zaman aşımından daha uzun sürdüğünü gösterir. 
+[TimeoutException](/dotnet/api/system.timeoutexception) , Kullanıcı tarafından başlatılan bir işlemin işlem zaman aşımından daha uzun sürdüğünü gösterir. 
 
-[ServicePointManager. DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit?view=netcore-3.1#System_Net_ServicePointManager_DefaultConnectionLimit) özelliğinin değerini denetleyin. Bu sınıra ulaşmak aynı zamanda [TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1)öğesine neden olabilir.
+[ServicePointManager. DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit#System_Net_ServicePointManager_DefaultConnectionLimit) özelliğinin değerini denetleyin. Bu sınıra ulaşmak aynı zamanda [TimeoutException](/dotnet/api/system.timeoutexception)öğesine neden olabilir.
 
 Geçiş için, ilk olarak bir geçiş gönderici bağlantısı açtığınızda zaman aşımı özel durumları alabilirsiniz. Bu özel durumun iki yaygın nedeni vardır:
 

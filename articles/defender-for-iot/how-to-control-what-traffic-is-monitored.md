@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b2f95ddb13896ed461a20f1948fef34569586d1f
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: bfe3e00c4930ba57c930eb1bc2f2dd4ed11886e0
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97977085"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624693"
 ---
 # <a name="control-what-traffic-is-monitored"></a>Hangi trafiğin izleneceğini denetleme
 
@@ -157,7 +157,7 @@ Dinamik ağlarla çalışıyorsanız, yeni IP adresleri atandığında gerçekle
 
 Her sensörde dinamik IP adreslerini tanımlamak, IP adresi değişiklikleri örneklerinde kapsamlı ve şeffaf destek sunar. Bu, her benzersiz cihaz için kapsamlı raporlama sağlar.
 
-Algılayıcı konsolu, cihazla ilişkili en güncel IP adresini sunar ve hangi cihazların dinamik olduğunu gösterir. Örneğin:
+Algılayıcı konsolu, cihazla ilişkili en güncel IP adresini sunar ve hangi cihazların dinamik olduğunu gösterir. Örnek:
 
 - Veri araştırma raporu ve cihaz envanteri raporu, IP adresi değişikliklerinden bağımsız olarak cihazdan öğrenilen tüm etkinlikleri tek bir varlık olarak birleştirir. Bu raporlar, hangi adreslerin DHCP adresleri olarak tanımlandığını gösterir.
 
@@ -186,11 +186,11 @@ DHCP adres aralığı ayarlamak için:
 
 ## <a name="configure-dns-servers-for-reverse-lookup-resolution"></a>Geriye doğru arama çözümlemesi için DNS sunucularını yapılandırma
 
-Varlık zenginleştirme işlemini iyileştirmek için, birden çok DNS sunucusunu carryout ters aramalar için yapılandırabilirsiniz. Ağ alt ağlarında algılanan IP adresleriyle ilişkili ana bilgisayar adlarını veya FQDN 'leri çözebilirsiniz. Örneğin, bir algılayıcı bir IP adresi belirlerse, ana bilgisayar adını çözümlemek için birden çok DNS sunucusu sorgulayabilir.
+Cihaz zenginleştirme işlemini iyileştirmek için, birden çok DNS sunucusunu carryout ters aramalar için yapılandırabilirsiniz. Ağ alt ağlarında algılanan IP adresleriyle ilişkili ana bilgisayar adlarını veya FQDN 'leri çözebilirsiniz. Örneğin, bir algılayıcı bir IP adresi belirlerse, ana bilgisayar adını çözümlemek için birden çok DNS sunucusu sorgulayabilir.
 
 Tüm CıDR biçimleri desteklenir.
 
-Ana bilgisayar adı varlık envanteri ve varlık haritasında, raporlarda da görünür.
+Ana bilgisayar adı cihaz envanterinde, cihaz eşlemesinde ve raporlarda görüntülenir.
 
 Geriye doğru arama çözümleme zamanlamalarını, her 12 saatte bir belirli saatlik aralıklar için zamanlayabilirsiniz. Ya da belirli bir zaman zamanlayabilirsiniz.
 
@@ -212,7 +212,7 @@ DNS sunucularını tanımlamak için:
 
 5. **DNS sunucusu bağlantı noktası** alanına DNS bağlantı noktasını girin.
 
-6. Ağ IP adreslerini varlık FQDN 'leri olarak çözün. **Etiket sayısı** alanında, görüntülenecek etki alanı etiketlerinin sayısını ekleyin. Soldan sağa en fazla 30 karakter görüntülenir.
+6. Ağ IP adreslerini cihaz FQDN 'leri olarak çözün. **Etiket sayısı** alanında, görüntülenecek etki alanı etiketlerinin sayısını ekleyin. Soldan sağa en fazla 30 karakter görüntülenir.
 
 7. **Alt ağlar** alanında, DNS sunucusunun sorgulamasını istediğiniz alt ağları girin.
 
@@ -220,7 +220,7 @@ DNS sunucularını tanımlamak için:
 
 ### <a name="test-the-dns-configuration"></a>DNS yapılandırmasını test etme 
 
-Bir test varlığı kullanarak, tanımladığınız ayarların düzgün çalıştığını doğrulayın:
+Bir test cihazı kullanarak, tanımladığınız ayarların düzgün çalıştığını doğrulayın:
 
 1. **DNS arama** geçişi ' ni etkinleştirin.
 

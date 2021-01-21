@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: e46bb87788de27916860720284087643db7153dc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a63c309c8e728e3f76ad904d479557b368388954
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913411"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624784"
 ---
 # <a name="use-azure-storage-explorer-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. Nesil’de dizinleri, dosyaları ve ACL’leri yönetmek için Azure Depolama Gezgini’ni kullanma
 
@@ -80,7 +80,7 @@ Yüklenecek dosyaları veya klasörü seçin.
 
 Kapsayıcının kökündeki izinleri ayarlayabilirsiniz. Bunu yapmak için, tek yapmanız gereken haklara sahip Azure Depolama Gezgini oturum açmanız gerekir (bağlantı dizesi ile aksine). Kapsayıcıya sağ tıklayın ve Izinleri **Yönet iletişim kutusunu** getirerek **izinleri yönet**' i seçin.
 
-![Microsoft Azure Depolama Gezgini-dizin erişimini yönetme](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
+![Microsoft Azure Depolama Gezgini-dizin erişimini yönetme](media/storage-quickstart-blobs-storage-explorer/manageperms.png)
 
 **Izni Yönet** iletişim kutusu, sahip ve sahipler grubu için izinleri yönetmenizi sağlar. Ayrıca, izinleri yönetebilmeniz için erişim denetim listesine yeni kullanıcılar ve gruplar eklemenize olanak tanır.
 
@@ -105,6 +105,10 @@ Bu kategorilerin her ikisinde de, dosyalara veya dizinlere atayabileceğiniz ü�
 > Burada seçimler yapıldığında, dizin içindeki mevcut olan herhangi bir öğe için izinler ayarlanmamaktadır. Dosya zaten varsa, her bir öğeye gitmeniz ve izinleri el ile ayarlamanız gerekir.
 
 Tek tek dizinlerde ve tek tek dosyalar üzerinde izinleri yönetebilir, bu da size daha iyi erişim denetimi sağlar. Her iki dizin ve dosya için izinleri yönetme işlemi yukarıda açıklanan şekilde aynıdır. İzinlerini yönetmek istediğiniz dosya veya dizine sağ tıklayın ve aynı süreci izleyin.
+
+## <a name="private-endpoints-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. özel uç noktaları
+
+Depolama Gezgini, Azure Data Lake Storage 2. ile çalışırken hem blob (blob) & Data Lake Storage 2. (DFS) [uç noktalarını](../common/storage-private-endpoints.md#private-endpoints-for-azure-storage) kullanır. Azure Data Lake Storage 2. erişimi özel uç noktalar kullanılarak yapılandırıldıysa, depolama hesabı için iki özel uç noktanın oluşturulduğundan emin olun: hedef alt kaynak `blob` ve diğeri hedef alt kaynakla `dfs` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 0004a250173ce6707462b852016d205782479717
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d8aaf093a7e2a0ad1470d72d815e919f5b4e2d05
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896689"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624991"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>Öğretici: Azure Maps Route Service ve Map Control kullanarak yol yönlerini görüntüleme
 
@@ -174,7 +174,7 @@ Bu öğreticide, bir çizgi katmanı kullanarak yolu oluşturacağız. Başlang�
 
 3. **MapRoute.html** 'yi kaydedin ve tarayıcınızı yenileyin. Eşleme artık Seattle üzerinden ortalanır. Teardrop mavi pin başlangıç noktasını işaretler. Yuvarlak mavi pin bitiş noktasını işaretler.
 
-    :::image type="content" source="./media/tutorial-route-location/map-pins.png" alt-text="Harita denetiminin temel eşleme işlemesi":::
+    :::image type="content" source="./media/tutorial-route-location/map-pins.png" alt-text="Yolların başlangıç ve bitiş noktasını haritada görüntüle":::
 
 <a id="getroute"></a>
 
@@ -183,7 +183,7 @@ Bu öğreticide, bir çizgi katmanı kullanarak yolu oluşturacağız. Başlang�
 Bu bölümde, yol yönlerini ve bir noktadan diğerine tahmini varış süresini almak için Azure Maps yol yönleri API 'sinin nasıl kullanılacağı gösterilmektedir.
 
 >[!TIP]
->Azure haritalar yol Hizmetleri, *en hızlı* , *en kısa* , *ekonomik* veya *Thrilling* yollar gibi farklı yol türlerine göre yolları, uzaklık, trafik koşullarına ve kullanılan taşıma moduna göre planlamak için API 'ler sunar. Hizmet Ayrıca, kullanıcıların geçmiş trafik koşullarına göre gelecek yolları planlayabilmenizi sağlar. Kullanıcılar, belirli bir süre için yol sürelerinin tahminini tahmin edebilir. Daha fazla bilgi için bkz. [yol yönleri API 'Si edinme](/rest/api/maps/route/getroutedirections).
+>Azure haritalar yol Hizmetleri, *en hızlı*, *en kısa*, *ekonomik* veya *Thrilling* yollar gibi farklı yol türlerine göre yolları, uzaklık, trafik koşullarına ve kullanılan taşıma moduna göre planlamak için API 'ler sunar. Hizmet Ayrıca, kullanıcıların geçmiş trafik koşullarına göre gelecek yolları planlayabilmenizi sağlar. Kullanıcılar, belirli bir süre için yol sürelerinin tahminini tahmin edebilir. Daha fazla bilgi için bkz. [yol yönleri API 'Si edinme](/rest/api/maps/route/getroutedirections).
 
 1. `GetMap`İşlevinde, denetimin `ready` olay işleyicisinin Içinde, JavaScript koduna aşağıdakini ekleyin.
 
@@ -216,9 +216,13 @@ Bu bölümde, yol yönlerini ve bir noktadan diğerine tahmini varış süresini
 
 3. **MapRoute.html** dosyasını kaydedin ve web tarayıcınızı yenileyin. Harita şimdi yolu başlangıçtan bitiş noktasına görüntülemelidir.
 
-     :::image type="content" source="./media/tutorial-route-location/map-route.png" alt-text="Harita denetiminin temel eşleme işlemesi":::
+     :::image type="content" source="./media/tutorial-route-location/map-route.png" alt-text="Azure harita denetimi ve yönlendirme hizmeti":::
 
 Örneğin tam kaynak kodunu [buradan](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)edinebilirsiniz. [Burada](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)canlı bir örnek bulabilirsiniz.
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Temizleme gerektiren kaynak yok.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

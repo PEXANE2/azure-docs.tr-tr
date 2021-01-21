@@ -9,33 +9,29 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/14/2019
+ms.date: 01/18/2021
 ms.author: jeedes
-ms.openlocfilehash: c15492031e3a83c9f4af4c3d8b45f9574674046c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 745a82300cbbc87070a117cd8dd094236821aee7
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514095"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625406"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-overdrive"></a>Öğretici: OverDrive ile tümleştirme Azure Active Directory
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile fazla sürücü tümleştirmeyi öğreneceksiniz.
-Overdrive 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
+Bu öğreticide, Azure Active Directory (Azure AD) ile fazla sürücü tümleştirmeyi öğreneceksiniz. Overdrive 'ı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de, Overdrive erişimi olan bir denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla fazla sürücü (çoklu oturum açma) için otomatik olarak oturum açmasını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
-
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+* Azure AD 'de Overdrive erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla fazla sürücü için otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure AD tümleştirmesini OverDrive ile yapılandırmak için aşağıdaki öğeler gereklidir:
-
-* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
-* Çoklu oturum açma etkin abonelik
+Başlamak için aşağıdaki öğeler gereklidir:
+ 
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Çoklu sürücü çoklu oturum açma (SSO) özellikli bir abonelik.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -45,63 +41,41 @@ Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandı
 
 * Overdrive **yalnızca zaman** Kullanıcı sağlamasını destekler
 
-## <a name="adding-overdrive-from-the-gallery"></a>Galeriden fazla sürücü ekleme
+## <a name="add-overdrive-from-the-gallery"></a>Galeriden fazla sürücü ekleme
 
-Overdrive 'ın Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden, yönetilen SaaS uygulamaları listenize fazla sürücü eklemeniz gerekir.
+Overdrive 'ın Azure AD ile tümleştirilmesini yapılandırmak için, aşağıdaki işlemleri gerçekleştirerek Galeriden, yönetilen SaaS uygulamaları listenize fazla sürücü ekleyin:
+ 
+1. Azure portal iş veya okul hesabıyla ya da kişisel bir Microsoft hesabı oturum açın.
+1. Sol bölmede **Azure Active Directory** hizmeti seçin.
+1. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni bir uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **Overdrive** yazın.
+1. Sonuçlar bölmesinde, **fazla sürücü**' yi seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-**Galeriden fazla sürücü eklemek için aşağıdaki adımları uygulayın:**
+## <a name="configure-and-test-azure-ad-sso-for-overdrive"></a>Fazla sürücü için Azure AD SSO 'yu yapılandırma ve test etme
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu OverDrive ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Overdrive içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+Azure AD SSO 'yu OverDrive ile yapılandırmak ve test etmek için aşağıdaki adımları uygulayın:
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. **[Fazla sürücü SSO 'Yu yapılandırma](#configure-overdrive-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+    1. Kullanıcının Azure AD gösterimine bağlı olan OverDrive 'da B. Simon 'a sahip olmak için **[fazla sürücü test kullanıcısı oluşturun](#create-overdrive-test-user)** .
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-    ![Yeni uygulama düğmesi](common/add-new-app.png)
+1. Azure portal, **fazla sürücü** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
-4. Ara kutusuna **fazla sürücü**yazın, sonuç panelinden **fazla sürücü** ' yi seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
-
-     ![Sonuçlar listesindeki fazla sürücü](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
-
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Overdrive Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
-Çoklu oturum açma için, bir Azure AD kullanıcısı ile ilgili kullanıcının Overdrive içindeki bağlantısını oluşturulması gerekir.
-
-Azure AD çoklu oturum açma 'yı fazla sürücü ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
-
-1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. **[Fazla sürücü çoklu oturum açmayı yapılandırma](#configure-overdrive-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
-3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-5. Kullanıcının Azure AD gösterimine bağlı olan Overtta SION 'ın üzerine gelin ve fazla sürücü için **[test kullanıcısı oluşturun](#create-overdrive-test-user)** .
-6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
-
-Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
-
-Azure AD çoklu oturum açmayı, Overdrive ile yapılandırmak için aşağıdaki adımları uygulayın:
-
-1. [Azure Portal](https://portal.azure.com/), **fazla sürücü** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
-
-    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
-
-2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
-
-    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
-
-3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
-
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
 4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
-
-    ![Etki alanı ve URL 'Leri fazla sürücü çoklu oturum açma bilgileri](common/sp-signonurl.png)
 
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`http://<subdomain>.libraryreserve.com`
 
@@ -116,40 +90,18 @@ Azure AD çoklu oturum açmayı, Overdrive ile yapılandırmak için aşağıdak
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-    a. Oturum Açma URL’si
-
-    b. Azure AD tanımlayıcısı
-
-    c. Oturum kapatma URL 'SI
-
-### <a name="configure-overdrive-single-sign-on"></a>Fazla sürücülü tek Sign-On yapılandırma
-
-**Fazla sürücü** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'Leri Azure Portal 'ten [fazla sürücü destek ekibine](https://help.overdrive.com/)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
-Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-
-    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
-
-2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
-
-    ![Yeni Kullanıcı düğmesi](common/new-user.png)
-
-3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
-
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
-
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alan türü**brittasimon@yourcompanydomain.extension**  
-    Örneğin, BrittaSimon@contoso.com
-
-    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
-
-    d. **Oluştur**’a tıklayın.
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+   1. **Ad** alanına `B.Simon` girin.  
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -157,25 +109,21 @@ Bu bölümde, fazla sürücü erişimi vererek Azure çoklu oturum açma özelli
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **fazla sürücü**' yi seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
-
 2. Uygulamalar listesinde, **fazla sürücü**' yi seçin.
-
-    ![Uygulamalar listesindeki fazla sürücü bağlantısı](common/all-applications.png)
 
 3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
-    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
 4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
 
 5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
 6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
 7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+
+### <a name="configure-overdrive-sso"></a>Fazla sürücü SSO 'yu yapılandırma
+
+**Fazla sürücü** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'Leri Azure Portal 'ten [fazla sürücü destek ekibine](https://help.overdrive.com/)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-overdrive-test-user"></a>Fazla sürücü test kullanıcısı oluştur
 
@@ -185,16 +133,16 @@ Bu bölümde, Overtta Simon adlı bir Kullanıcı fazla sürücüde oluşturulur
 >Azure AD Kullanıcı hesapları sağlamak için OverDrive tarafından sunulan başka bir fazla sürücü Kullanıcı hesabı oluşturma aracını veya API 'Leri kullanabilirsiniz.
 >
 
-### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
+### <a name="test-sso"></a>Test SSO 'SU
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-Erişim panelinde fazla sürücü kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız fazla sürücüde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz fazla sürücü oturum açma URL 'sine yeniden yönlendirilir. 
 
-## <a name="additional-resources"></a>Ek Kaynaklar
+* Doğrudan fazla sürücü oturum açma URL 'sine gidin ve oturum açma akışını buradan başlatın.
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım üzerindeki fazla sürücü kutucuğuna tıkladığınızda, bu işlem aşırı sürücü oturum açma URL 'sine yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)
+Overdrive 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

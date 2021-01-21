@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: 7bb1ce8141f609feb4f354aa85f202915e197f37
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: cdd8783daf9e1e1458f47e773eb3b6ccedfbae83
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599273"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624566"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Çalışma alanınızda Jupyter Notebooks’u çalıştırma
 
@@ -264,7 +264,7 @@ Bir hücre, yazmanızı isteyen bir metin imleci olmadığında komut modundadı
 
    :::image type="content" source="media/how-to-run-jupyter-notebooks/command-mode.png" alt-text="Komut modundaki Not defteri hücresi ":::
 
-| Kısayol                      | Açıklama                          |
+| Kısayol                      | Description                          |
 | ----------------------------- | ------------------------------------|
 | Enter                         | Düzenleme moduna girme             |        
 | Shift + Enter                 | Hücreyi Çalıştır, aşağıdan seçin         |     
@@ -308,7 +308,7 @@ Düzenleme modu, düzenleyici alanına yazmanızı isteyen bir metin imlece beli
 
 Aşağıdaki tuş vuruşu kısayollarını kullanarak, düzenleme modundayken Azure Machine Learning Not defterlerindeki kodu daha kolay bir şekilde gezinebilir ve çalıştırabilirsiniz.
 
-| Kısayol                      | Açıklama|                                     
+| Kısayol                      | Description|                                     
 | ----------------------------- | ----------------------------------------------- |
 | Esc                        | Komut moduna gir|  
 | Denetim/komut + boşluk       | IntelliSense 'i etkinleştir |
@@ -342,7 +342,14 @@ Aşağıdaki tuş vuruşu kısayollarını kullanarak, düzenleme modundayken Az
 
 [Studio](https://ml.azure.com)'daki **işlem** sayfasında işlem örneklerinizin ayrıntılarını bulun.
 
+## <a name="troubleshooting"></a>Sorun giderme
+
+* Bir not defterine bağlanamıyorsanız, Web yuva iletişiminin devre dışı **bırakılmadığından** emin olun. İşlem örneği jupi işlevinin çalışması için Web yuva iletişiminin etkinleştirilmesi gerekir. Lütfen ağınızın *. instances.azureml.net ve *. instances.azureml.ms öğesine WebSocket bağlantılarına izin verdiğinden emin olun. 
+
+* İşlem örneği bir özel bağlantı çalışma alanında dağıtıldığında, yalnızca sanal ağ içinden erişilebilir. Özel DNS veya hosts dosyası kullanıyorsanız lütfen <örnek adı> için bir giriş <region> ekleyin. çalışma alanı özel uç noktasının özel IP adresi ile instances.azureml.ms. Daha fazla bilgi için bkz. [özel DNS](https://docs.microsoft.com/azure/machine-learning/how-to-custom-dns?tabs=azure-cli) makalesi.
+    
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [İlk denemenizi çalıştırın](tutorial-1st-experiment-sdk-train.md)
 * [Dosya depolama alanınızı anlık görüntülerle yedekleyin](../storage/files/storage-snapshots-files.md)
+* [Güvenli ortamlarda çalışma](https://docs.microsoft.com/azure/machine-learning/how-to-secure-training-vnet#compute-instance)

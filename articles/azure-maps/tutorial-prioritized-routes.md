@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 125ca501dbad74263f32632db44eebd097c3b0a1
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: dbf2331dc6bcd3187175554b61d347e8bb2c04a4
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896710"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625007"
 ---
 # <a name="tutorial-find-and-display-routes-for-different-modes-of-travel-using-azure-maps"></a>Öğretici: Azure Maps kullanarak farklı seyahat modları için yolları bulma ve görüntüleme
 
@@ -121,7 +121,7 @@ Aşağıdaki adımlarda, harita denetiminin bir Web sayfasında nasıl oluşturu
 
 2. **MapTruckRoute.html** dosyasını kaydedin ve tarayıcınızın sayfasını yenileyin. Los Angeles gibi herhangi bir şehirde yakınlaştırırsanız, Streets 'in geçerli trafik akışı verileriyle birlikte göründüğünü görürsünüz.
 
-    :::image type="content" source="./media/tutorial-prioritized-routes/traffic-map.png" alt-text="Harita denetiminin temel eşleme işlemesi":::
+    :::image type="content" source="./media/tutorial-prioritized-routes/traffic-map.png" alt-text="Bir haritadaki trafiği görüntüleme":::
 
 <a id="queryroutes"></a>
 
@@ -197,7 +197,7 @@ Bu öğreticide iki rota hesaplanacak ve haritada işlenecektir. İlk yol özel 
 
 3. **TruckRoute.html** 'yi kaydedin ve tarayıcınızı yenileyin. Eşleme artık Seattle üzerinden ortalanır. Teardrop mavi pin başlangıç noktasını işaretler. Yuvarlak mavi pin bitiş noktasını işaretler.
 
-   :::image type="content" source="./media/tutorial-prioritized-routes/pins-map.png" alt-text="Harita denetiminin temel eşleme işlemesi":::
+   :::image type="content" source="./media/tutorial-prioritized-routes/pins-map.png" alt-text="Başlangıç ve bitiş noktaları ile haritayı görüntüleme":::
 
 <a id="multipleroutes"></a>
 
@@ -206,7 +206,7 @@ Bu öğreticide iki rota hesaplanacak ve haritada işlenecektir. İlk yol özel 
 Bu bölümde, taşıma modınızdan yola çıkarak bir noktadan diğerine yönlendirmeler almak için Azure Maps Route hizmeti 'nin nasıl kullanılacağı gösterilmektedir. İki taşıma modundan birini kullanacağız: kamyon ve otomobil.
 
 >[!TIP]
->Rota hizmeti, *en hızlı* , *en kısa* , *ekonomik* veya *Thrilling* yollarını uzaklık, trafik koşullarına ve kullanılan taşıma moduna göre planlamak için API 'ler sağlar. Hizmet Ayrıca, kullanıcıların geçmiş trafik koşullarına göre gelecek yolları planlayabilmenizi sağlar. Kullanıcılar, belirli bir süre için yol sürelerinin tahminini tahmin edebilir. Daha fazla bilgi için bkz. [yol yönleri API 'Si edinme](/rest/api/maps/route/getroutedirections).
+>Rota hizmeti, *en hızlı*, *en kısa*, *ekonomik* veya *Thrilling* yollarını uzaklık, trafik koşullarına ve kullanılan taşıma moduna göre planlamak için API 'ler sağlar. Hizmet Ayrıca, kullanıcıların geçmiş trafik koşullarına göre gelecek yolları planlayabilmenizi sağlar. Kullanıcılar, belirli bir süre için yol sürelerinin tahminini tahmin edebilir. Daha fazla bilgi için bkz. [yol yönleri API 'Si edinme](/rest/api/maps/route/getroutedirections).
 
 1. `GetMap`İşlevinde, denetimin `ready` olay işleyicisinin Içinde, JavaScript koduna aşağıdakini ekleyin.
 
@@ -277,7 +277,7 @@ Bu bölümde, taşıma modınızdan yola çıkarak bir noktadan diğerine yönle
 
 4. **TruckRoute.html** dosyasını kaydedin ve Web tarayıcınızı yenileyin. Harita Şimdi kamyon ve araba yollarını görüntülemelidir.
 
-    :::image type="content" source="./media/tutorial-prioritized-routes/prioritized-routes.png" alt-text="Harita denetiminin temel eşleme işlemesi":::
+    :::image type="content" source="./media/tutorial-prioritized-routes/prioritized-routes.png" alt-text="Azure Yönlendirme Hizmeti bir haritadaki özel ve ticari araç rotaları":::
 
     Kamyonun yolu, kalın mavi bir çizgi kullanılarak görüntülenir. Araba yolu ince mor bir çizgi kullanılarak görüntülenir. Araba rotası, u-90 ile Gölü, yöresel alanlarının altındaki tünellerden geçen bir noktadan geçer. Tüneller yöresel alanlara yakın olduğu için, tehlikeli çöp kargo kısıtlı olur. Kargo türünü belirten kamyon rotası, `USHazmatClass2` farklı bir Highway kullanımına yönlendirilir.
 
@@ -285,7 +285,9 @@ Bu bölümde, taşıma modınızdan yola çıkarak bir noktadan diğerine yönle
 
 [Veri odaklı stil ifadeleri de kullanabilirsiniz](data-driven-style-expressions-web-sdk.md)
 
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
+Temizleme gerektiren kaynak yok.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

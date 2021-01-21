@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: f30b99a1d9c8303d5b2ed4b02819d0ca837946d2
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 7a33cf4e66ce31f8fb8534de25d7564a5784ca3a
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905749"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625057"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Öğretici: Azure Notebooks (Python) kullanarak elektrik ve yönlendirme
 
@@ -398,6 +398,10 @@ Bu öğreticide kullanılan Azure Maps API 'Lerini araştırmak için, bkz.:
 * [Rota sonrası matrisi](/rest/api/maps/route/postroutematrix)
 * [Rota yönlerini al](/rest/api/maps/route/getroutedirections)
 * [Azure haritalar REST API 'Leri](./consumption-model.md)
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Temizleme gerektiren kaynak yok.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub ileti yönlendirme sonuçlarını görüntüleme (.NET) | Microsoft Docs
-description: Öğreticinin 1. kısmını kullanarak tüm kaynakları ayarladıktan sonra, Azure Stream Analytics iletileri yönlendirme ve sonuçları PowerBI 'da görüntüleme özelliğini ekleyin.
+title: Öğretici-Azure IoT Hub ileti yönlendirme sonuçlarını görüntüleme (.NET) | Microsoft Docs
+description: Öğretici-öğreticinin 1. kısmını kullanarak tüm kaynakları ayarladıktan sonra iletileri Azure Stream Analytics yönlendirme ve Power BI sonuçları görüntüleme özelliğini ekleyin.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 14f6fc685e99060474a17503cb13ba09a61a5a9a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 0db05c8caae8483de3b55448bfbe6b2bcfc23187
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149214"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625290"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Öğretici: 2. Bölüm-yönlendirilmiş iletileri görüntüleme
 
@@ -54,7 +54,7 @@ Service Bus kuyruğu kritik olarak belirlenmiş iletileri almak için kullanıla
 
    **Oluştur**’u seçin. Uygulamanın dağıtılması birkaç dakika sürebilir.
 
-2. Şimdi Mantıksal Uygulama'ya gidin. Mantıksal uygulamayı almanın en kolay yolu **kaynak grupları**seçmek, kaynak grubunuzu seçmek (Bu öğreticinin **contosoresources**kullanması) ve ardından kaynak listesinden mantıksal uygulamayı seçmeniz gerekir. 
+2. Şimdi Mantıksal Uygulama'ya gidin. Mantıksal uygulamayı almanın en kolay yolu **kaynak grupları** seçmek, kaynak grubunuzu seçmek (Bu öğreticinin **contosoresources** kullanması) ve ardından kaynak listesinden mantıksal uygulamayı seçmeniz gerekir. 
 
     Logic Apps Tasarımcısı sayfası gösterilir (sayfanın tamamını görmek için ekranı sağa doğru kaydırmanız gerekebilir). Logic Apps tasarımcı sayfasında, **boş Logic App +** belirten kutucuğu görene kadar aşağı kaydırın ve bunu seçin. Varsayılan sekme "sizin Için" dir. Bu bölme boş ise, tüm bağlayıcıları ve Tetikleyicileri görmek için **Tümü** ' nü seçin.
 
@@ -62,7 +62,7 @@ Service Bus kuyruğu kritik olarak belirlenmiş iletileri almak için kullanıla
 
    ![Bağlayıcıların listesi](./media/tutorial-routing-view-message-routing-results/logic-app-connectors.png)
 
-4. Tetikleyici listesi görüntülenir. **Kuyrukta bir ileti alındığında (otomatik tamamlamayı)/Service Bus**seçin.
+4. Tetikleyici listesi görüntülenir. **Kuyrukta bir ileti alındığında (otomatik tamamlamayı)/Service Bus** seçin.
 
    ![Service Bus tetikleyicilerinin listesi](./media/tutorial-routing-view-message-routing-results/logic-app-triggers.png)
 
@@ -116,7 +116,7 @@ Verileri Power BI görselleştirmesinde görmek için, önce bir Stream Analytic
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Stream Analytics işine giriş ekleme
 
-1. **Iş topolojisi**altında **girişler**' i seçin.
+1. **Iş topolojisi** altında **girişler**' i seçin.
 
 2. **Girişler** bölmesinde **akış girişi Ekle** ' yi seçin ve IoT Hub ' ı seçin. Görüntülenen ekranda aşağıdaki alanları doldurun:
 
@@ -130,7 +130,7 @@ Verileri Power BI görselleştirmesinde görmek için, önce bir Stream Analytic
 
    **Uç nokta**: **Mesajlaşma**'yı seçin. (İşlem İzleme'yi seçerseniz, gönderdiğiniz veriler yerine IoT hub'ı hakkındaki telemetri verilerini alırsınız.) 
 
-   **Paylaşılan erişim ilkesi adı**: **hizmeti**seçin. Paylaşılan Erişim İlkesi Anahtarı'nı portal sizin için doldurur.
+   **Paylaşılan erişim ilkesi adı**: **hizmeti** seçin. Paylaşılan Erişim İlkesi Anahtarı'nı portal sizin için doldurur.
 
    **Tüketici grubu**: Bu öğreticinin 1. bölümünde ayarlanan tüketici grubunu seçin. Bu öğreticide **contosoconsumers** kullanılır.
    
@@ -142,7 +142,7 @@ Verileri Power BI görselleştirmesinde görmek için, önce bir Stream Analytic
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Stream Analytics işine çıkış ekleme
 
-1. **Iş topolojisi**altında, **çıktılar**' i seçin.
+1. **Iş topolojisi** altında, **çıktılar**' i seçin.
 
 2. **Çıktılar** bölmesinde **Ekle**' yi ve ardından **Power BI**' yi seçin. Görüntülenen ekranda aşağıdaki alanları doldurun:
 
@@ -162,7 +162,7 @@ Verileri Power BI görselleştirmesinde görmek için, önce bir Stream Analytic
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>Stream Analytics işinin sorgusunu yapılandırma
 
-1. **Iş topolojisi**altında **sorgu**' yı seçin.
+1. **Iş topolojisi** altında **sorgu**' yı seçin.
 
 2. `[YourInputAlias]` değerini işin giriş diğer adıyla değiştirin. Bu öğreticide **contosoinputs** kullanılır.
 
@@ -176,7 +176,7 @@ Verileri Power BI görselleştirmesinde görmek için, önce bir Stream Analytic
 
 ### <a name="run-the-stream-analytics-job"></a>Stream Analytics işini çalıştırma
 
-Stream Analytics işinde **Start**  >  **Şimdi**  >  **Başlat Başlat**' ı seçin. İş düzgün bir şekilde başlatıldıktan sonra, **Durduruldu** olan iş durumu **Çalışıyor** olarak değiştirilir.
+Stream Analytics işinde   >  **Şimdi**  >  **Başlat Başlat**' ı seçin. İş düzgün bir şekilde başlatıldıktan sonra, **Durduruldu** olan iş durumu **Çalışıyor** olarak değiştirilir.
 
 Power BI raporunu ayarlamak için verilere ihtiyacınız vardır; bu nedenle, cihazı oluşturup cihaz simülasyon uygulamasını çalıştırdıktan sonra Power BI'ı ayarlarsınız.
 
@@ -234,7 +234,7 @@ Artık uygulama çalışmaya devam ettiğinden, varsayılan yönlendirmede gelen
 
 2. **Çalışma Alanları**'na gidin ve Stream Analytics işi için çıkış oluştururken ayarladığını çalışma alanını seçin. Bu öğreticide **My Workspace** kullanılır. 
 
-3. **Veri kümelerini**seçin. Herhangi bir veri kümeniz yoksa birkaç dakika bekleyip tekrar kontrol edin.
+3. **Veri kümelerini** seçin. Herhangi bir veri kümeniz yoksa birkaç dakika bekleyip tekrar kontrol edin.
 
    Stream Analytics işi için çıkış oluştururken belirttiğiniz veri kümesinin listelendiğini görüyor olmalısınız. Bu öğreticide **contosodataset** kullanılır. (Veri kümesinin ilk kez görüntülenmesi 5-10 dakika kadar sürebilir.)
 
@@ -256,7 +256,7 @@ Artık uygulama çalışmaya devam ettiğinden, varsayılan yönlendirmede gelen
 
    Bir çizgi grafik oluşturulur. Grafiğin x ekseninde UTC saat dilimine göre tarih ve saat görüntülenir. Grafiğin y ekseninde algılayıcıdan alınan sıcaklık görüntülenir.
 
-6. Zamanla değişen gerçek zamanlı nem oranını göstermek için bir çizgi grafik daha oluşturun. İkinci grafiği ayarlamak için, ilk grafik için aynı süreci izleyin ve x ekseninde **Eventenqueuedutctime** ve y**ekseni (** değerler) hakkında **nem** **değeri**koyarak.
+6. Zamanla değişen gerçek zamanlı nem oranını göstermek için bir çizgi grafik daha oluşturun. İkinci grafiği ayarlamak için, ilk grafik için aynı süreci izleyin ve x ekseninde **Eventenqueuedutctime** ve y **ekseni (** değerler) hakkında **nem** **değeri** koyarak.
 
    ![İki grafik içeren son Power BI raporu](./media/tutorial-routing-view-message-routing-results/power-bi-report.png)
 
@@ -280,7 +280,7 @@ Bu öğreticinin her iki bölümünde da oluşturduğunuz tüm Azure kaynakları
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>Azure CLı kullanarak kaynakları Temizleme
 
-Kaynak grubunu kaldırmak için [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) komutunu kullanın. `$resourceGroup` Bu öğreticinin başlangıcında **Contosoresources** olarak yeniden ayarlandı.
+Kaynak grubunu kaldırmak için [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) komutunu kullanın. `$resourceGroup` Bu öğreticinin başlangıcında **Contosoresources** olarak yeniden ayarlandı.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup

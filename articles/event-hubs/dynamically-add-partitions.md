@@ -3,12 +3,12 @@ title: Azure Event Hubs bir olay hub 'ına dinamik olarak bölüm ekleme
 description: Bu makalede, Azure Event Hubs 'te bir olay hub 'ına dinamik olarak bölüm ekleme konusu gösterilmektedir.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 4ebe4491338c24a331812041f4d3e6d37b934117
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: e6efdc7bab309f825032555c97f1e1128f5addd6
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132180"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625274"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>Azure Event Hubs bir olay hub 'ına (Apache Kafka konuya) dinamik olarak bölüm ekleme
 Event Hubs her bir tüketicinin ileti akışında yalnızca belirli bir alt küme ya da bölümü okuduğu bölünmüş bir tüketici modeli aracılığıyla ileti akışı sağlar. Bu model, olay işleme için yatay ölçek sağlar ve kuyruklar ile konularda kullanılamayan diğer akış odaklı özellikleri sunar. Bölüm bir olay hub'ında tutulan olayların sıralı dizisidir. Daha yeni olaylar geldikçe, bu sıranın sonuna eklenir. Genel olarak bölümler hakkında daha fazla bilgi için bkz. [bölümler](event-hubs-scalability.md#partitions)
@@ -26,14 +26,14 @@ Bir olay hub 'ı oluşturma sırasında bölüm sayısını belirtebilirsiniz. B
 Bu bölümde, bir olay hub 'ının bölüm sayısını farklı şekillerde güncelleştirme (PowerShell, CLı, vb.) gösterilmektedir.
 
 ### <a name="powershell"></a>PowerShell
-Bir olay hub 'ındaki bölümleri güncelleştirmek için [set-AzureRmEventHub](/powershell/module/azurerm.eventhub/Set-AzureRmEventHub?view=azurermps-6.13.0) PowerShell komutunu kullanın. 
+Bir olay hub 'ındaki bölümleri güncelleştirmek için [set-AzureRmEventHub](/powershell/module/azurerm.eventhub/Set-AzureRmEventHub) PowerShell komutunu kullanın. 
 
 ```azurepowershell-interactive
 Set-AzureRmEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespaceName -Name MyEventHubName -partitionCount 12
 ```
 
 ### <a name="cli"></a>CLI
-[`az eventhubs eventhub update`](/cli/azure/eventhubs/eventhub?view=azure-cli-latest#az-eventhubs-eventhub-update)Bir olay hub 'ındaki bölümleri güncelleştirmek için CLI komutunu kullanın. 
+[`az eventhubs eventhub update`](/cli/azure/eventhubs/eventhub#az-eventhubs-eventhub-update)Bir olay hub 'ındaki bölümleri güncelleştirmek için CLI komutunu kullanın. 
 
 ```azurecli-interactive
 az eventhubs eventhub update --resource-group MyResourceGroupName --namespace-name MyNamespaceName --name MyEventHubName --partition-count 12

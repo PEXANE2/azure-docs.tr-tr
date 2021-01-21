@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
-ms.openlocfilehash: 0dbd6ea13069b72e6bca5c065af92568a5c7cdb8
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 2259d0114d91af2e688df66ff8dc4e8d293c2b03
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97844939"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624850"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>Özel Görüntü İşleme projesi için bir etki alanı seçin
 
@@ -26,6 +26,7 @@ ms.locfileid: "97844939"
 |Etki alanı|Amaç|
 |---|---|
 |__Genel__| Çok çeşitli resim Sınıflandırma görevleri için iyileştirilmiştir. Diğer etki alanlarından hiçbiri uygun değilse veya hangi etki alanının seçeceğinizden emin değilseniz, genel etki alanını seçin. NUMARASıNı `ee85a74c-405e-4adc-bb47-ffa8ca0c9f31`|
+|__Genel [a1]__| Benzer bir çıkarım süresi genel etki alanı olarak daha iyi doğruluk için iyileştirilmiştir. Daha büyük veri kümeleri veya daha zor kullanıcı senaryoları için önerilir. Bu etki alanı için daha fazla eğitim süresi gerekiyor. NUMARASıNı `a8e3c40f-fb4a-466f-832a-5e457ae4a344`|
 |__Yemek__|Bir restoran menüsünde gördüğünüz gibi yemeklerin fotoğrafları için iyileştirildi. Bireysel meyve veya vegetables fotoğraflarını sınıflandırmak istiyorsanız, yiyecek etki alanını kullanın. NUMARASıNı `c151d5b5-dd07-472a-acc8-15d29dea8518`|
 |__Bölümler__|Hem doğal hem de yapay olan tanınabilir yer işaretleri için iyileştirilmiştir. Bu etki alanı, yer işareti fotoğrafta açık bir şekilde görünür olduğunda en iyi şekilde çalışıyor. Bu etki alanı, yer işareti, önündeki kişiler tarafından biraz engelde olsa bile çalışıyor. NUMARASıNı `ca455789-012d-4b50-9fec-5bb63841c793`|
 |__Perakende__|Bir alışveriş kataloğunda veya alışveriş web sitesinde bulunan görüntüler için iyileştirilmiştir. Dresler, Pants ve Shirts arasında yüksek duyarlıklı sınıflandırmaları istiyorsanız bu etki alanını kullanın. NUMARASıNı `b30a91ae-e3c1-4f73-a81e-c270bff27c39`|
@@ -36,6 +37,7 @@ ms.locfileid: "97844939"
 |Etki alanı|Amaç|
 |---|---|
 |__Genel__| Çok çeşitli nesne algılama görevleri için iyileştirilmiştir. Diğer etki alanlarından hiçbiri uygun değilse veya hangi etki alanının seçeceğinizden emin değilseniz, genel etki alanını seçin. NUMARASıNı `da2e3a8a-40a5-4171-82f4-58522f70fbc1`|
+|__Genel [a1]__| Benzer bir çıkarım süresi genel etki alanı olarak daha iyi doğruluk için iyileştirilmiştir. Daha doğru bölge konumu gereksinimlerine, daha büyük veri kümelerine veya daha zor Kullanıcı senaryolarına önerilir. Bu etki alanı daha fazla eğitim süresi gerektiriyor ve sonuçlar belirleyici değil: belirtilen eğitim verileriyle birlikte bir %1% eşleme farkı bekliyor. NUMARASıNı `9c616dff-2e7d-ea11-af59-1866da359ce6`|
 |__Logo__|Görüntülerde marka logolarını bulmak için iyileştirildi. NUMARASıNı `1d8ffafe-ec40-4fb2-8f90-72b3b6cecea4`|
 |__Rafların ürünleri__|Rafların ürünlerini algılamak ve sınıflandırmak için iyileştirildi. NUMARASıNı `3780a898-81c3-4516-81ae-3a139614e1f3`|
 |__Compact etki alanları__| Uç cihazlarda gerçek zamanlı nesne algılama kısıtlamaları için iyileştirilmiştir.|
@@ -48,7 +50,8 @@ Model performansı seçilen etki alanına göre değişir. Aşağıdaki tabloda,
 
 |Görev|Etki alanı|ID|Model Boyutu|CPU çıkarımı süresi|GPU çıkarımı süresi|
 |---|---|---|---|---|---|
-|Sınıflandırma|General (compact) (Genel (kompakt))|`0732100f-1a38-4e49-a514-c9b44c697ab5`|5 MB|13 MS|5 MS|
+|Sınıflandırma|General (compact) (Genel (kompakt))|`0732100f-1a38-4e49-a514-c9b44c697ab5`|6 MB|10 MS|5 MS|
+|Sınıflandırma|Genel (Compact) [S1]|`a1db07ca-a19a-4830-bae8-e004a42dc863`|43 MB|50 MS|5 MS|
 |Nesne Algılama|General (compact) (Genel (kompakt))|`a27d5ca5-bb19-49d8-a70a-fec086c47f5b`|45 MB|35 MS|5 MS|
 |Nesne Algılama|Genel (Compact) [S1]|`7ec2ac80-887b-48a6-8df9-8b1357765430`|14 MB|27 MS|7 MS|
 

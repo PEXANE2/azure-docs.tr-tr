@@ -4,12 +4,12 @@ description: Bu makalede, Azure Relay Karma Bağlantılar .NET Standard API 'sin
 ms.topic: article
 ms.custom: devx-track-csharp
 ms.date: 06/23/2020
-ms.openlocfilehash: 44d5800c08b49118e99a678e31d02e5b7a1f550c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 724fb1a62b82036b4a0fa8b9f4f3608293f608a9
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935679"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625140"
 ---
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Azure Relay Karma Bağlantılar .NET Standard API 'ye Genel Bakış
 
@@ -83,7 +83,7 @@ var hybridConnectionStream = await client.CreateConnectionAsync();
 
 ### <a name="receiving-data"></a>Veri alma
 
-[Hybridconnectionstream][HCStream] sınıfı iki yönlü iletişime olanak tanıyor. Çoğu durumda, akıştan sürekli olarak alırsınız. Akıştan metin okuyorsanız, verilerin daha kolay ayrıştırılmasını sağlayan bir [StreamReader](/dotnet/api/system.io.streamreader?view=netcore-3.1) nesnesi de kullanmak isteyebilirsiniz. Örneğin, verileri yerine metin olarak okuyabilirsiniz `byte[]` .
+[Hybridconnectionstream][HCStream] sınıfı iki yönlü iletişime olanak tanıyor. Çoğu durumda, akıştan sürekli olarak alırsınız. Akıştan metin okuyorsanız, verilerin daha kolay ayrıştırılmasını sağlayan bir [StreamReader](/dotnet/api/system.io.streamreader) nesnesi de kullanmak isteyebilirsiniz. Örneğin, verileri yerine metin olarak okuyabilirsiniz `byte[]` .
 
 Aşağıdaki kod, bir iptal istenene kadar her metin satırını akıştan okur:
 
@@ -110,14 +110,14 @@ while (!cancellationToken.IsCancellationRequested)
 
 ### <a name="sending-data"></a>Veriler gönderiliyor
 
-Bir bağlantı kurulduktan sonra, geçiş uç noktasına bir ileti gönderebilirsiniz. Bağlantı nesnesi [Stream](/dotnet/api/system.io.stream?view=netcore-3.1)devraldığından verilerinizi bir olarak gönderin `byte[]` . Aşağıdaki örnek bunun nasıl yapılacağını göstermektedir:
+Bir bağlantı kurulduktan sonra, geçiş uç noktasına bir ileti gönderebilirsiniz. Bağlantı nesnesi [Stream](/dotnet/api/system.io.stream)devraldığından verilerinizi bir olarak gönderin `byte[]` . Aşağıdaki örnek bunun nasıl yapılacağını göstermektedir:
 
 ```csharp
 var data = Encoding.UTF8.GetBytes("hello");
 await clientConnection.WriteAsync(data, 0, data.Length);
 ```
 
-Ancak, her seferinde dizeyi kodlamasına gerek kalmadan doğrudan metin göndermek istiyorsanız `hybridConnectionStream` nesneyi bir [StreamWriter](/dotnet/api/system.io.streamwriter?view=netcore-3.1) nesnesiyle sardırabilirsiniz.
+Ancak, her seferinde dizeyi kodlamasına gerek kalmadan doğrudan metin göndermek istiyorsanız `hybridConnectionStream` nesneyi bir [StreamWriter](/dotnet/api/system.io.streamwriter) nesnesiyle sardırabilirsiniz.
 
 ```csharp
 // The StreamWriter object only needs to be created once

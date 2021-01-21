@@ -1,5 +1,5 @@
 ---
-title: Genel Kullanıcı erişim denetimi tanımlama
+title: Global kullanıcı erişim denetimini tanımlama
 description: Büyük kuruluşlarda, Kullanıcı izinleri karmaşık olabilir ve standart site ve bölge yapısına ek olarak genel bir kuruluş yapısıyla belirlenebilir.
 author: shhazam-ms
 manager: rkarlin
@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/08/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: de3ff6ead1f0dd86e07c86b992a720a676a2095c
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 399eee06d472204eaf6dbc333f15cee7c4373739
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97843291"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624651"
 ---
 # <a name="define-global-access-control"></a>Genel erişim denetimi tanımlama
 
@@ -20,7 +20,7 @@ Büyük kuruluşlarda, Kullanıcı izinleri karmaşık olabilir ve standart site
 
 Küresel ve daha karmaşık olan kullanıcı erişimi izinlerinin talebini desteklemek için, iş birimleri, bölgeler ve siteler temelinde küresel bir iş topolojisi oluşturabilirsiniz. Daha sonra, bu varlıklar etrafında Kullanıcı erişim izinleri tanımlayabilirsiniz.
 
-İş topolojisi için erişim araçları ile çalışma, kuruluşların, kullanıcıların IoT Platformu için Azure Defender 'daki varlıkları yönetme ve çözümleme konusunda daha iyi kontrol yaparak, sıfır-güven stratejileri uygulamasına yardımcı olur.
+İş topolojisi için erişim araçları ile çalışma, kuruluşların, kullanıcıların IoT Platformu için Azure Defender 'da cihazları yönetip ve analiz etmesini sağlar.
 
 ## <a name="about-access-groups"></a>Erişim grupları hakkında
 

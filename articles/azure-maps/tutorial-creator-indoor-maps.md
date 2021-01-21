@@ -8,20 +8,18 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: eab8a2729209bb0023662b652f862b4fa678470e
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: dac5a434d7f7c62d7a20e971294992ea91c79d2b
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905732"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625024"
 ---
 # <a name="tutorial-use-creator-preview-to-create-indoor-maps"></a>Öğretici: iç kapak eşlemeleri oluşturmak için Oluşturucu (Önizleme) kullanın
 
 > [!IMPORTANT]
 > Azure haritalar Creator Hizmetleri şu anda genel önizlemededir.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-
 
 Bu öğreticide, ınkapı haritaları oluşturma gösterilmektedir. Bu öğreticide API 'yi kullanarak şunları yapmayı öğreneceksiniz:
 
@@ -85,7 +83,7 @@ Karşıya veri yükleme API 'SI, burada tanımlanan kalıbı uygulayan uzun sür
     }
     ```
 
-8. İçerik meta verilerini almak için, **GET** `resourceLocation` adım 7 ' de alınan URL 'de http isteği Al ' ı oluşturun. Kimlik doğrulaması için birincil abonelik anahtarınızı URL 'ye eklemediğinizden emin olun. **Get** isteği aşağıdaki URL 'yi beğenmelidir:
+8. İçerik meta verilerini almak için,  `resourceLocation` adım 7 ' de alınan URL 'de http isteği Al ' ı oluşturun. Kimlik doğrulaması için birincil abonelik anahtarınızı URL 'ye eklemediğinizden emin olun. **Get** isteği aşağıdaki URL 'yi beğenmelidir:
 
     ```http
    https://atlas.microsoft.com/mapData/metadata/{udid}?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
@@ -123,7 +121,7 @@ Karşıya veri yükleme API 'SI, burada tanımlanan kalıbı uygulayan uzun sür
 
     :::image type="content" source="./media/tutorial-creator-indoor-maps/copy-location-uri-dialog.png" border="true" alt-text="Konum anahtarının değerini kopyalayın":::
 
-4. Oluşturucu sekmesinde yeni bir **Get** http yöntemi başlatın. Azure Maps birincil abonelik anahtarınızı öğesine ekleyin `status URL` . **GET** `status URL` Adım 3 ' te kopyaladığınız bir get isteği yapın. `status URL`AŞAĞıDAKI URL gibi görünür:
+4. Oluşturucu sekmesinde yeni bir **Get** http yöntemi başlatın. Azure Maps birincil abonelik anahtarınızı öğesine ekleyin `status URL` .  `status URL` Adım 3 ' te kopyaladığınız bir get isteği yapın. `status URL`AŞAĞıDAKI URL gibi görünür:
 
     ```http
     https://atlas.microsoft.com/conversion/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
@@ -316,7 +314,7 @@ Bir tileset, haritada işlenen vektör kutucukları kümesidir. Tilesets 'ler va
     https://atlas.microsoft.com/featureState/stateset?api-version=1.0&datasetId={datasetId}&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-3. **Post** Isteğinin **üst bilgilerinde** , `Content-Type` olarak ayarlanır `application/json` . **Gövdesinde**, ve durumlarındaki değişiklikleri yansıtmak için aşağıdaki stilleri sağlayın `occupied` `temperature` *states*. İşiniz bittiğinde **Gönder**' e tıklayın.
+3. **Post** Isteğinin **üst bilgilerinde** , `Content-Type` olarak ayarlanır `application/json` . **Gövdesinde**, ve durumlarındaki değişiklikleri yansıtmak için aşağıdaki stilleri sağlayın `occupied` `temperature` . İşiniz bittiğinde **Gönder**' e tıklayın.
 
     ```json
     {
@@ -411,6 +409,10 @@ Bir tileset, haritada işlenen vektör kutucukları kümesidir. Tilesets 'ler va
 [Özellik alma API 'si](/rest/api/maps/featurestate/getstatespreview) , özelliğini kullanarak bir özelliğin durumunu almanıza olanak sağlar `ID` . Ayrıca, [durum SILME API](/rest/api/maps/featurestate/deletestatesetpreview)'sini kullanarak stateset ve kaynaklarını silebilirsiniz.
 
 Bu makalede ele alınan farklı Azure Maps Creator Hizmetleri (Önizleme) hakkında daha fazla bilgi edinmek için bkz. [creator ınkapıharitaları](creator-indoor-maps.md).
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Temizleme gerektiren kaynak yok.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

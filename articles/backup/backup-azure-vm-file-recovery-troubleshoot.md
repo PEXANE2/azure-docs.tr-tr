@@ -3,171 +3,171 @@ title: Azure VM dosya kurtarma sorunlarını giderme
 description: Azure VM yedeklemesinden dosya ve klasörleri kurtarırken karşılaşılan sorunları giderin.
 ms.topic: troubleshooting
 ms.date: 07/12/2020
-ms.openlocfilehash: bd369577e320cf6dca510183948f41e6cf91779b
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: aec69b91ad1dae5864e5e8fba61c53e6d15887f4
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605301"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624515"
 ---
-# <a name="troubleshooting-issues-in-file-recovery-of-azure-vm-backup"></a>Azure VM yedeklemesi 'nin dosya kurtarmasında sorun giderme sorunları
+# <a name="troubleshoot-issues-in-file-recovery-of-an-azure-vm-backup"></a>Azure VM yedeklemesinin dosya kurtarma sorunlarını giderme
 
-Bu makalede, Azure VM yedeğinden dosya ve klasörleri kurtarırken sorunlarla ilgili Azure Backup hataları çözmenize yardımcı olabilecek sorun giderme adımları sunulmaktadır.
+Bu makalede, bir Azure sanal makinesi (VM) yedeklemesinden dosya ve klasörleri kurtarmayla ilgili sorunları çözmenize yardımcı olabilecek sorun giderme adımları sunulmaktadır.
 
 ## <a name="common-error-messages"></a>Genel hata iletileri
 
-### <a name="exception-caught-while-connecting-to-target"></a>Hedefe bağlanılırken özel durum yakalandı
+Bu bölüm, görebileceğiniz hata iletilerinin sorunlarını gidermek için gereken adımları sağlar.
+
+### <a name="exception-caught-while-connecting-to-target"></a>"Hedefe bağlanırken özel durum yakalandı"
 
 **Olası neden**: betik kurtarma noktasına erişemiyor.
 
-**Önerilen eylem**: makinenin tüm [erişim gereksinimlerini](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-4-access-requirements-to-successfully-run-the-script)yerine getirip getirmediğini denetleyin.
+**Önerilen eylem**: Bu sorunu çözmek için betikte listelenen adımları izleyin, [ancak bağlantı başarısız oldu](#the-script-runs-but-the-connection-to-the-iscsi-target-failed).
 
-### <a name="the-target-has-already-been-logged-in-via-an-iscsi-session"></a>Hedef, bir Iscsı oturumu aracılığıyla zaten oturum açtı
+### <a name="the-target-has-already-been-logged-in-via-an-iscsi-session"></a>"Hedef, bir Iscsı oturumu aracılığıyla zaten oturum açtı"
 
-**Olası neden**: komut dosyası aynı makinede zaten yürütüldü ve sürücüler eklenmiş.
+**Olası neden**: betik aynı makinede zaten çalıştırılmış ve sürücüler eklenmiş.
 
-**Önerilen eylem**: kurtarma noktası birimleri zaten eklenmiş. Özgün VM 'nin aynı sürücü harflerine bağlı olmayabilir. Dosya Gezgini 'nde kullanılabilir tüm birimlere göz atabilirsiniz.
+**Önerilen eylem**: kurtarma noktası birimleri zaten eklenmiş. Özgün VM 'nin aynı sürücü harflerine bağlanamaz. Dosya Gezgini 'nde kullanılabilir birimlere göz atabilirsiniz.
 
-### <a name="this-script-is-invalid-because-the-disks-have-been-dismounted-via-portalexceeded-the-12-hr-limit-download-a-new-script-from-the-portal"></a>Diskler Portal üzerinden çıkartılırsa/12-hr sınırını aştığından bu betik geçersizdir. Portaldan yeni bir betiği indirme
+### <a name="this-script-is-invalid-because-the-disks-have-been-dismounted-via-portalexceeded-the-12-hr-limit-download-a-new-script-from-the-portal"></a>"Diskler Portal üzerinden çıkartılırsa/12-hr limitini aştığından bu betik geçersizdir. Portaldan yeni bir betik indirin "
 
-**Olası neden**: diskler portaldan çıkarıldı veya 12 saatlik sınır aşıldı.
+**Olası neden**: diskler portaldan çıkarıldı veya 12 saatlik süre sınırı aşıldı.
 
-**Önerilen eylem**: betik, indirildiği zamandan itibaren 12 saat sonra geçersizdir ve yürütülemez. Portalı ziyaret edin ve dosya kurtarmaya devam etmek için yeni bir betik indirin.
+**Önerilen eylem**: betiği indirdikten 12 saat sonra geçersiz hale gelir ve çalıştırılamaz. Portala gidin ve dosya kurtarmaya devam etmek için yeni bir betik indirin.
 
-## <a name="troubleshooting-common-scenarios"></a>Yaygın senaryoların sorunlarını giderme
+### <a name="iscsi_tcp-module-cant-be-loaded-or-iscsi_tcp_module-not-found"></a>iscsi_tcp modül yüklenemiyor (veya) iscsi_tcp_module bulunamadı
 
-Bu bölümde, dosya kurtarma için betiği indirme ve yürütme sırasında karşılaşabileceğiniz sorunları gidermeye yönelik adımlar sağlanmaktadır.
+**Önerilen eylem**: Bu sorunu çözmek için, [komut dosyası indirmelerinde](#the-script-downloads-successfully-but-fails-to-run)bulunan adımları başarıyla izleyin, ancak çalıştırılamaz.
 
-### <a name="cant-download-the-script"></a>Betik indirilemiyor
+## <a name="common-problems"></a>Sık karşılaşılan sorunlar
 
-Önerilen eylem:
+Bu bölümde, dosya kurtarma için betiği indirirken ve yürütürken karşılaşabileceğiniz yaygın sorunları gidermeye yönelik adımlar sağlanmaktadır.
 
-1. [Betiği indirmek için gereken tüm izinlere](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#select-recovery-point-who-can-generate-script)sahip olduğunuzdan emin olun.
-1. Azure hedef IP 'lerine bağlantı olduğundan emin olun
+### <a name="you-cant-download-the-script"></a>Betiği indirileyemiyorum
 
-Bağlantıyı doğrulamak için, yükseltilmiş bir komut isteminden aşağıdaki komutlardan birini çalıştırın.
+1. [Betiği indirmek için gerekli izinlere](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#select-recovery-point-who-can-generate-script)sahip olduğunuzdan emin olun.
+1. Azure hedef IP 'Lerinin bağlantısını doğrulayın. Yükseltilmiş bir komut isteminden aşağıdaki komutlardan birini çalıştırın:
 
-`nslookup download.microsoft.com`
+   `nslookup download.microsoft.com`
 
-veya
+    veya
 
-`ping download.microsoft.com`
+    `ping download.microsoft.com`
 
 ### <a name="the-script-downloads-successfully-but-fails-to-run"></a>Betik başarıyla indirilir, ancak çalıştırılamadı
 
-#### <a name="for-sles-12-sp4-os-linux"></a>SLES 12 SP4 OS (Linux) için
+SUSE Linux Enterprise Server 12 SP4 üzerinde öğe düzeyinde kurtarma (ıLR) için Python betiğini çalıştırdığınızda, "iscsi_tcp modülü yüklenemiyor" veya "iscsi_tcp_module bulunamadı" hatasıyla başarısız olur.
 
-**Hata**: iscsi_tcp_module bulunamadı
+**Olası neden**: ILR modülü, yedekleme hizmetine TCP bağlantısı kurmak için **iscsi_tcp** kullanır. SLES 12 SP4 sürümünün bir parçası olarak, SUSE **iscsi_tcp** açık iSCSI paketinden kaldırılmıştır ve bu nedenle ILR işlemi başarısız olur.
 
-**Olası neden**: SUSE Linux işletim sistemi sürüm 12sp4 üzerinde öğe düzeyinde kurtarma (ILR) için Python betiği çalıştırılırken, bu hata ile başarısız olur **_iscsi_tcp modülü yüklenemiyor_* _.
+**Önerilen eylem**: SUSE 12 SP4 VM 'lerinde dosya kurtarma betiği yürütme desteklenmez. SUSE 12 SP4 'ün eski bir sürümünde geri yükleme işlemini deneyin.
 
-ILR modülü, yedekleme hizmetine TCP bağlantısı kurmak için _ *iscsi_tcp** kullanır. 12SP4 sürümünün bir parçası olarak, SUSE açık iSCSI paketinden **iscsi_tcp** KALDıRDıKÇA ILR işlemi başarısız olur.
+### <a name="the-script-runs-but-the-connection-to-the-iscsi-target-failed"></a>Betik çalışıyor, ancak Iscsı hedefi bağlantısı başarısız oldu
 
-**Önerilen eylem**: SUSE 12Sp4 VM 'lerinde dosya kurtarma betiği yürütme desteklenmez. SUSE 12SP4 'ün eski bir sürümünde geri yükleme işlemini deneyin.
+"Hedefe bağlanırken özel durum yakalandı" hata iletisini görebilirsiniz.
 
-### <a name="the-script-runs-but-connection-to-iscsi-target-failed"></a>Betik çalışıyor ancak Iscsı hedefine bağlantı başarısız oldu
-
-**Hata**: hedefe bağlanılırken özel durum yakalandı
-
-1. Betiğin çalıştırıldığı makinenin tüm [erişim gereksinimlerini](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-4-access-requirements-to-successfully-run-the-script)karşıladığından emin olun.
-1. Azure hedef IP 'lerine bağlantı olup olmadığını denetleyin.
-Bağlantıyı doğrulamak için, yükseltilmiş bir komut isteminden aşağıdaki komutlardan birini çalıştırın.
+1. Betiğin çalıştırıldığı makinenin [erişim gereksinimlerini](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-4-access-requirements-to-successfully-run-the-script)karşıladığından emin olun.
+1. Azure hedef IP 'Lerinin bağlantısını doğrulayın. Yükseltilmiş bir komut isteminden aşağıdaki komutlardan birini çalıştırın:
 
    `nslookup download.microsoft.com`
 
    veya
 
    `ping download.microsoft.com`
-1. Iscsı giden bağlantı noktası 3260 ' e erişim olduğundan emin olun.
-1. Azure hedef IP 'Leri veya kurtarma hizmeti URL 'Lerine giden trafiği engelleyen güvenlik duvarı veya NSG olmadığından emin olun.
-1. Virüsten koruma 'nın betiğin yürütülmesini engelleyip engellemediğini denetleyin.
+1. Iscsı giden bağlantı noktası 3260 ' e erişim sağlayın.
+1. Azure hedef IP 'Leri veya kurtarma hizmeti URL 'Lerine giden trafiği engelleyen bir güvenlik duvarı veya NSG denetimi yapın.
+1. Virüsten koruma yazılımınızın betiğin yürütülmesini engellemediğinden emin olun.
 
-### <a name="connected-to-recovery-point-but-disks-didnt-get-attached"></a>Kurtarma noktasına bağlanıldı ancak diskler iliştirilmedi
+### <a name="youre-connected-to-the-recovery-point-but-the-disks-werent-attached"></a>Kurtarma noktasına bağlandınız, ancak diskler iliştirilmedi
 
-[Betiği çalıştırmak için doğru makineye](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script) sahip olduğunuzdan emin olun
+İşletim sisteminiz için adımları izleyerek bu sorunu çözün.
 
-#### <a name="on-a-windows-vm"></a>Bir Windows sanal makinesinde
+#### <a name="windows-file-recovery-fails-on-server-with-storage-pools"></a>Windows dosya kurtarma, depolama havuzları ile sunucuda başarısız oluyor
 
-**VM 'Deki depolama havuzu salt okunurdur**: Windows 2012 R2 ve Windows 2016 (depolama havuzları ile), betiği ilk kez ÇALıŞTıRıRKEN, VM 'ye bağlı depolama havuzu salt okunurdur.
+Windows Server 2012 R2 ve Windows Server 2016 (depolama havuzları ile) üzerinde ilk kez betiği çalıştırdığınızda, depolama havuzu sanal makineye salt okunurdur.
 
-Bu sorunu çözmek için, depolama havuzuna ilk kez Read-Write erişimi el ile ayarlamanız ve sanal diskleri iliştirmemiz gerekir. Aşağıdaki adımları izleyin:
+>[!Tip]
+> [Betiği çalıştırmak için doğru makineye](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)sahip olduğunuzdan emin olun.
 
-1. Read-Write erişimi ayarlayın.
+Bu sorunu çözmek için, depolama havuzuna el ile okuma/yazma erişimi atayın ve sanal diskleri ekleyin:
 
-   **Sunucu Yöneticisi**  >  **dosya ve depolama hizmetleri**  >  **birimleri**  >  **depolama havuzları**' na gidin.
+1. **Sunucu Yöneticisi**  >  **dosya ve depolama hizmetleri**  >  **birimleri**  >  **depolama havuzları**' na gidin.
 
-   ![Windows Storage](./media/backup-azure-restore-files-from-vm/windows-storage-1.png)
+   ![Depolama havuzları seçeneklerini gösteren ekran görüntüsü.](./media/backup-azure-restore-files-from-vm/windows-storage-1.png)
 
-1. **Depolama havuzu** penceresinde, kullanılabilir depolama havuzuna sağ tıklayın ve **Read-Write erişimi ayarla** seçeneğini belirleyin.
+1. **Depolama havuzu** penceresinde, kullanılabilir depolama havuzuna sağ tıklayın ve **Read-Write erişimi ayarla**' yı seçin.
 
-   ![Windows Storage okuma yazma](./media/backup-azure-restore-files-from-vm/windows-storage-read-write-2.png)
+   ![Bir depolama kuyruğu için sağ tıklama seçeneklerini gösteren ekran görüntüsü.](./media/backup-azure-restore-files-from-vm/windows-storage-read-write-2.png)
 
-1. Depolama havuzu okuma/yazma erişimiyle atandıktan sonra, sanal diski bağlayın.
+1. Depolama havuzuna okuma-yazma erişimi atandıktan sonra, **sanal diskler** bölümüne sağ tıklayıp **sanal disk Ekle**' yi seçin.
 
-   **Sunucu Yöneticisi Kullanıcı arabirimine** gidin. **Sanal diskler** bölümünün altında > **sanal disk Ekle** seçeneğini belirlemek için sağ tıklayın.
+   ![Sanal disk için sağ tıklama seçeneklerini gösteren ekran görüntüsü.](./media/backup-azure-restore-files-from-vm/server-manager-virtual-disk-3.png)
 
-   ![Sunucu Yöneticisi sanal diski](./media/backup-azure-restore-files-from-vm/server-manager-virtual-disk-3.png)
+#### <a name="linux-file-recovery-fails-to-auto-mount-because-the-disk-doesnt-contain-volumes"></a>Disk birim içermediğinden Linux dosya kurtarması otomatik bağlama yapamıyor
 
-#### <a name="on-a-linux-vm"></a>Bir Linux sanal makinesinde
+Dosya kurtarma gerçekleştirilirken, yedekleme hizmeti birimleri algılar ve otomatik olarak takar. Ancak, yedeklenen disklerin ham bölümleri varsa, bu diskler otomatik olarak bağlanmaz ve kurtarma için veri diski göremezsiniz.
 
-##### <a name="file-recovery-fails-to-auto-mount-because-disk-doesnt-contain-volumes"></a>Disk birim içermediğinden dosya kurtarma otomatik olarak bağlanamıyor
+Bu sorunu çözmek için [Azure sanal makine yedeklemesinden dosyaları kurtar](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#lvmraid-arrays-for-linux-vms)' a gidin.
 
-Dosya kurtarma gerçekleştirilirken, yedekleme hizmeti birimleri ve otomatik takar algılar. Ancak, yedeklenen disklerin ham bölümleri varsa, bu diskler yeniden bağlanmaz ve kurtarma için veri diski göremezsiniz.
+#### <a name="linux-file-recovery-fails-because-the-os-couldnt-identify-the-file-system"></a>İşletim sistemi dosya sistemini tanımlamadığından, Linux dosya kurtarması başarısız oluyor
 
-Bu sorunu gidermek için, bu [makalede](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#lvmraid-arrays-for-linux-vms)belgelenen adımları izleyin.
-
-##### <a name="the-os-couldnt-identify-the-filesystem-causing-linux-file-recovery-to-fail-while-mountings-disks"></a>İşletim sistemi, Linux dosya kurtarmanın, dağlar diskler sırasında başarısız olmasına neden olan FileSystem 'ı tanımlayamadı
-
-Dosya kurtarma betiği çalıştırılırken, veri diski aşağıdaki hatayla iliştirilemedi:
-
-"İşletim sisteminin FileSystem 'ı tanımlamadığından aşağıdaki bölümler bağlanamadı"
+Dosya kurtarma betiğini çalıştırdığınızda veri diski iliştirilemiyor. "İşletim sistemi FileSystem 'ı belirleyemedik bu yana aşağıdaki bölümler takılamadı" hatasını görürsünüz.
 
 Bu sorunu çözmek için birimin bir üçüncü taraf uygulamayla şifrelenip şifrelenmediğini denetleyin. Şifrelendiyse, disk veya VM portalda şifreli olarak gösterilmez.
 
 1. Yedeklenen VM 'de oturum açın ve şu komutu çalıştırın:
 
-   `*lsblk -f*`
+   `lsblk -f`
 
-   ![Birim olmadan disk](./media/backup-azure-restore-files-from-vm/disk-without-volume-5.png)
+   ![Blok cihazları listelemek için komut sonuçlarının gösterildiği ekran görüntüsü.](./media/backup-azure-restore-files-from-vm/disk-without-volume-5.png)
 
-2. FileSystem ve şifrelemeyi doğrulayın.
-3. Birim şifrelenirse, dosya kurtarma desteklenmez. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#support-for-file-level-restore).
+1. Dosya sistemini ve şifrelemeyi doğrulayın. Birim şifrelendiyse, dosya kurtarma desteklenmez. [Azure VM yedeklemesi Için destek matrisi](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#support-for-file-level-restore)hakkında daha fazla bilgi edinin.
 
-### <a name="disks-are-attached-but-unable-to-mount-volumes"></a>Diskler iliştirildi, ancak birimler takılamadı
+### <a name="disks-are-attached-but-the-volumes-arent-mounted"></a>Diskler bağlı, ancak birimler bağlı değil
 
-- [Betiği çalıştırmak için doğru makineye](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)sahip olduğunuzdan emin olun.
+İşletim sisteminiz için adımları izleyerek bu sorunu çözün.
 
-#### <a name="on-windows-vms"></a>Windows VM 'lerde
+#### <a name="windows"></a>Windows
 
-Windows için dosya kurtarma betiği çalıştırılırken, ***0 birim eklendiği** bir ileti vardır. Ancak diskler Disk Yönetimi konsolunda bulunur. Iscsı aracılığıyla birim eklenirken algılanan bazı birimler çevrimdışı duruma geçer. Iscsı kanalı VM ile hizmet arasında iletişim kurduğunda, bu birimleri algılar ve bunları çevrimiçi duruma getirir ancak bağlanmazlar.
+Windows için dosya kurtarma komut dosyasını çalıştırdığınızda, "0 kurtarma birimi bağlı" iletisini görürsünüz. Ancak diskler Disk Yönetimi konsolunda bulunur.
 
-   ![Disk iliştirilmemiş](./media/backup-azure-restore-files-from-vm/disk-not-attached-6.png)
+**Olası neden**: birimleri iSCSI aracılığıyla iliştirdiğinde, algılanan bazı birimler çevrimdışı oldu. Iscsı kanalı VM ile hizmet arasında iletişim kurduğunda, bu birimleri algılar ve bunları çevrimiçi duruma getirir ancak bağlanmazlar.
+
+   ![Bağlı 0 kurtarma birimini gösteren ekran görüntüsü.](./media/backup-azure-restore-files-from-vm/disk-not-attached-6.png)
 
 Bu sorunu tanımlamak ve çözmek için aşağıdaki adımları gerçekleştirin:
 
-1. Cmd penceresinde **diskmgmt** komutunu çalıştırarak _ *disk yönetimi** bölümüne gidin.
-1. Ek disklerin görüntülenip görüntülenmediğini denetleyin. Aşağıdaki örnekte disk 2 ek bir disktir.
+>[!Tip]
+>[Betiği çalıştırmak için doğru makineye](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)sahip olduğunuzdan emin olun.
 
-   ![Disk management0](./media/backup-azure-restore-files-from-vm/disk-management-7.png)
+1. **Cmd** penceresinde, **disk yönetimi**'ni açmak için **diskmgmt** ' ı çalıştırın.
+1. Ek diskler arayın. Aşağıdaki örnekte **Disk 2** ek bir disktir.
 
-1. **Yeni birime** sağ tıklayın ve **sürücü harfini ve yollarını Değiştir**' i seçin.
+   ![Disk Yönetimi penceresinin ek disk ile ekran görüntüsü.](./media/backup-azure-restore-files-from-vm/disk-management-7.png)
 
-   ![Disk management1](./media/backup-azure-restore-files-from-vm/disk-management-8.png)
+1. **Yeni birim**' e sağ tıklayın ve ardından **sürücü harfini ve yolları Değiştir**' i seçin.
 
-1. **Sürücü harfi veya yolu Ekle** penceresinde, **aşağıdaki sürücü harfini ata** ' yı seçin ve kullanılabilir bir sürücü atayın ve **Tamam**' ı seçin.
+   ![Ek diskte sağ tıklama seçeneklerini gösteren ekran görüntüsü.](./media/backup-azure-restore-files-from-vm/disk-management-8.png)
 
-   ![Disk management2](./media/backup-azure-restore-files-from-vm/disk-management-9.png)
+1. **Sürücü harfini veya yolu Değiştir** penceresinde, **aşağıdaki sürücü harfini ata**' yı seçin, kullanılabilir bir sürücü atayın ve **Tamam**' ı seçin.
 
-1. Dosya Gezgini 'nden seçtiğiniz sürücü harfini görüntüleyin ve dosyaları araştırın.
+   ![Sürücü harfini veya yolu Değiştir penceresinin ekran görüntüsü.](./media/backup-azure-restore-files-from-vm/disk-management-9.png)
 
-#### <a name="on-linux-vms"></a>Linux VM 'lerde
+1. Seçtiğiniz sürücüyü görüntülemek ve dosyaları araştırmak için dosya Gezgini 'ni açın.
 
-- [Betiği çalıştırmak için doğru makineye](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)sahip olduğunuzdan emin olun.
-- Korunan Linux sanal makinesi LVM veya RAID dizileri kullanıyorsa, bu [makalede](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#lvmraid-arrays-for-linux-vms)listelenen adımları izleyin.
+#### <a name="linux"></a>Linux
 
-### <a name="cant-copy-the-files-from-mounted-volumes"></a>Dosyalar bağlı birimlerden kopyalanamıyor
+>[!Tip]
+>[Betiği çalıştırmak için doğru makineye](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)sahip olduğunuzdan emin olun.
 
-Kopya 0x80070780 hatası ile başarısız olabilir **: dosyaya sistem tarafından erişilemiyor.** Bu durumda, kaynak sunucuda disk yinelenenleri kaldırma özelliğinin etkin olup olmadığını denetleyin. Ardından, geri yükleme sunucusunda sürücülerde yinelenenleri kaldırma özelliği de bulunduğundan emin olun. Geri yükleme sunucusunda sürücüleri çoğaltmamanız için Yinelenenleri kaldırma rolünü yapılandırılmamış olarak bırakabilirsiniz.
+Korunan Linux sanal makinesi LVM veya RAID dizileri kullanıyorsa, [Azure sanal makine yedeklemesinden dosyaları kurtarma](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#lvmraid-arrays-for-linux-vms)bölümündeki adımları izleyin.
+
+### <a name="you-cant-copy-the-files-from-mounted-volumes"></a>Dosyaları bağlı birimlerden kopyalayamazsınız
+
+Kopya, "0x80070780: dosyaya sistem tarafından erişilemiyor" hatasıyla başarısız olabilir. 
+
+Kaynak sunucuda disk yinelenenleri kaldırma özelliğinin etkin olup olmadığını denetleyin. Varsa, geri yükleme sunucusunda, sürücülerde da yinelenen verileri kaldırma özelliğinin etkinleştirildiğinden emin olun. Geri yükleme sunucusunda sürücüleri çoğaltmamanız için Yinelenenleri kaldırmayı yapılandırılmamış olarak bırakabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

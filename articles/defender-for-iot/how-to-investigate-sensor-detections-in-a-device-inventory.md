@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: f3058953e702f40fa1500441e382898b0314ddbb
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 9c868685ad943c1ab9ab263a164111e46294c042
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97841811"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625440"
 ---
-# <a name="investigate-sensor-detections-in-a-device-inventory"></a>Bir cihaz envanterinde algılayıcı algılamalarını araştırın
+# <a name="investigate-sensor-detections-in-a-device-inventory"></a>Bir cihaz envanterinde algılayıcı algılamalarını araştırma
 
 Cihaz envanteri, bir algılayıcının algıladığı çok sayıda cihaz özniteliği görüntüler. Seçenekler kullanılabilir:
 
@@ -225,6 +225,6 @@ Bir CSV dosyasını dışarı aktarmak için:
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-[Bir cihaz envanterinde tüm kurumsal algılayıcı algılamalarını araştırın](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)
+[Bir cihaz envanterinde tüm kurumsal algılayıcı algılamalarını araştırma](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)
 
 [Site Haritası görünümleriyle çalışma](how-to-gain-insight-into-global-regional-and-local-threats.md#work-with-site-map-views)

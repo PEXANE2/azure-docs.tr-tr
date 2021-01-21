@@ -1,20 +1,20 @@
 ---
-title: SSH ve RDP için Azure IoT Hub cihaz akışları C hızlı başlangıcı
+title: Hızlı başlangıç-SSH ve RDP için Azure IoT Hub cihaz akışları C hızlı başlangıcı
 description: Bu hızlı başlangıçta, IoT Hub cihaz akışları üzerinde SSH ve RDP senaryolarını etkinleştirmek için proxy görevi gören örnek bir C uygulaması çalıştırırsınız.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: quickstart
-ms.custom: mvc, devx-track-azurecli
+ms.custom: references_regions
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 037ff64f4811515e7ce64d66a36e08e71de54058
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 2305a87b91160b5de90f4cbfbc9418adc50bb92a
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94831999"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624414"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Hızlı başlangıç: C proxy uygulaması (Önizleme) kullanarak IoT Hub cihaz akışı üzerinden SSH ve RDP 'yi etkinleştirme
 
@@ -25,6 +25,22 @@ Azure IoT Hub Şu anda cihaz akışlarını [Önizleme özelliği](https://azure
 [Cihaz akışları IoT Hub](./iot-hub-device-streams-overview.md) hizmet ve cihaz uygulamalarının güvenli ve güvenlik duvarı kolay bir şekilde iletişim kurmasına olanak tanır. Kuruluma genel bakış için bkz. [yerel proxy örnek sayfası](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp).
 
 Bu hızlı başlangıçta, cihaz akışları aracılığıyla tünel Secure Shell (SSH) trafiğinin (22 numaralı bağlantı noktasını kullanarak) kurulumu açıklanmaktadır. Uzak Masaüstü Protokolü (RDP) trafiği kurulumu benzerdir ve basit bir yapılandırma değişikliği gerektirir. Cihaz akışları uygulama ve protokol belirsiz olduğundan, bu hızlı başlangıcı diğer uygulama trafiği türlerine uyacak şekilde değiştirebilirsiniz.
+
+## <a name="prerequisites"></a>Önkoşullar
+
+* Cihaz akışlarının önizlemesi Şu anda yalnızca şu bölgelerde oluşturulan IoT Hub 'lar için desteklenmektedir:
+
+  * Central US
+  * EUAP Orta ABD
+  * Kuzey Avrupa
+  * Güneydoğu Asya
+
+* C++ iş yükü etkinken [Masaüstü geliştirmeyle](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) [Visual Studio 2019](https://www.visualstudio.com/vs/) ' i yükler.
+* En son [Git](https://git-scm.com/download/) sürümünü yükleyin.
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
@@ -47,22 +63,6 @@ Aşağıdaki şekilde, cihaz ve hizmet yerel proxy programlarının SSH istemcis
 > Bir cihaz akışı üzerinden gönderilen SSH trafiği, doğrudan hizmet ve cihaz arasında gönderilmek yerine IoT Hub 'ının akış uç noktası aracılığıyla tünel oluşturulur. Daha fazla bilgi için bkz. [IoT Hub cihaz akışlarını kullanmanın avantajları](iot-hub-device-streams-overview.md#benefits). Ayrıca, şekil, cihaz yerel ara sunucusu ile aynı cihazda (veya makinede) çalışan SSH cinini gösterir. Bu hızlı başlangıçta, SSH Daemon IP adresini sağlamak, cihazın yerel ara sunucusunun ve arka plan programının farklı makinelerde da çalışmasına izin verir.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-## <a name="prerequisites"></a>Ön koşullar
-
-* Cihaz akışlarının önizlemesi Şu anda yalnızca şu bölgelerde oluşturulan IoT Hub 'lar için desteklenmektedir:
-
-  * Central US
-  * EUAP Orta ABD
-  * Kuzey Avrupa
-  * Güneydoğu Asya
-
-* C++ iş yükü etkinken [Masaüstü geliştirmeyle](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) [Visual Studio 2019](https://www.visualstudio.com/vs/) ' i yükler.
-* En son [Git](https://git-scm.com/download/) sürümünü yükleyin.
-
-[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
-
-[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="prepare-the-development-environment"></a>Geliştirme ortamını hazırlama
 
@@ -120,7 +120,7 @@ Bu hızlı başlangıç için, [C Için Azure IoT cihaz SDK 'sını](iot-hub-dev
 
 ## <a name="register-a-device"></a>Cihaz kaydetme
 
-Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu bölümde, sanal bir cihazı kaydetmek için [IoT uzantısıyla](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) birlikte Azure Cloud Shell kullanırsınız.
+Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu bölümde, sanal bir cihazı kaydetmek için [IoT uzantısıyla](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest&preserve-view=true) birlikte Azure Cloud Shell kullanırsınız.
 
 1. Cihaz kimliğini oluşturmak için Cloud Shell ' de aşağıdaki komutu çalıştırın:
 
@@ -138,7 +138,7 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu b�
    > *Youriothubname* yer tutucusunu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
     Bu hızlı başlangıçta kullanılmak üzere döndürülen cihaz bağlantı dizesini aklınızda edin. Aşağıdaki örneğe benzer şekilde görünür:

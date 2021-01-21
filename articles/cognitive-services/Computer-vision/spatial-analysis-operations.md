@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 63184a623c6f0a8c53e09e6af92c05e45c5e0794
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: b530fc320f6c29dd7a86a39c5a7019265bb6b724
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185992"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624431"
 ---
 # <a name="spatial-analysis-operations"></a>Uzamsal analiz işlemleri
 
@@ -69,6 +69,38 @@ Bunlar, bu uzamsal analiz işlemlerinin her biri için gereken parametrelerdir.
 | DETECTOR_NODE_CONFIG | Üzerinde algılayıcı düğümünün çalıştırılacağı GPU 'YU gösteren JSON. Aşağıdaki biçimde olmalıdır: `"{ \"gpu_index\": 0 }",`|
 | SPACEANALYTICS_CONFIG | Aşağıda özetlenen bölge ve satır için JSON yapılandırması.|
 | ENABLE_FACE_MASK_CLASSIFIER | `True` videoyu devre dışı bırakmak için video akışında yüz maskeleri takanlar `False` . Varsayılan olarak devre dışıdır. Yüz maskesini algılama için giriş video genişliği parametresinin 1920 olması gerekir `"INPUT_VIDEO_WIDTH": 1920` . Algılanan insanlar kamerayı karşılamayamıyorsa veya bu bilgisayardan çok uzakta olduğunda yüz maskesi özniteliği döndürülmez. Daha fazla bilgi için [kamera yerleştirme](spatial-analysis-camera-placement.md) kılavuzuna başvurun |
+
+Bu, tüm uzamsal analiz işlemleri için DETECTOR_NODE_CONFIG parametrelerine bir örnektir.
+
+```json
+{
+"gpu_index": 0,
+"do_calibration": true,
+"enable_recalibration": true,
+"calibration_quality_check_frequency_seconds":86400,
+"calibration_quality_check_sampling_num": 80,
+"calibration_quality_check_sampling_times": 5,
+"calibration_quality_check_sample_collect_frequency_seconds": 300,
+"calibration_quality_check_one_round_sample_collect_num":10,
+"calibration_quality_check_queue_max_size":1000,
+"recalibration_score": 75
+}
+```
+
+| Ad | Tür| Description|
+|---------|---------|---------|
+| `gpu_index` | dize| Bu işlemin çalıştırılacağı GPU dizini.|
+| `do_calibration` | string | Ayarlama özelliğinin açık olduğunu gösterir. `do_calibration`**biliveservices. Vision. spatialanalysis-persondistance** 'ın düzgün şekilde çalışması için true olması gerekir. do_calibration varsayılan olarak true olarak ayarlanır. |
+| `enable_recalibration` | bool | Otomatik yeniden renklendirme özelliğinin açılıp açılmadığını gösterir. `true` varsayılan değerdir.|
+| `calibration_quality_check_frequency_seconds` | int | Her kalite denetimi arasındaki en az saniye sayısının, gerekli olup olmadığını belirleme gerekliliği. Varsayılan değer `86400` (24 saat). Yalnızca ne zaman kullanılır `enable_recalibration=True` .|
+| `calibration_quality_check_sampling_num` | int | Kalite denetimi hata ölçümü başına kullanılacak, rastgele seçilmiş depolanmış veri örneği sayısı. `80` varsayılan değerdir. Yalnızca ne zaman kullanılır `enable_recalibration=True` .|
+| `calibration_quality_check_sampling_times` | int | Kalite denetimi başına rastgele seçilen farklı veri örneği kümelerinde hata ölçümlerinin kaç kez gerçekleştirileceği. `5` varsayılan değerdir. Yalnızca ne zaman kullanılır `enable_recalibration=True` .|
+| `calibration_quality_check_sample_collect_frequency_seconds` | int | Yeni veri örneklerinin toplanması ve kalite denetimi için en az saniye sayısı. Varsayılan değer `300` (5 dakikadır). Yalnızca ne zaman kullanılır `enable_recalibration=True` .|
+| `calibration_quality_check_one_round_sample_collect_num` | int | Örnek toplamanın hepsini başına toplanacak en az yeni veri örneği sayısı. `10` varsayılan değerdir. Yalnızca ne zaman kullanılır `enable_recalibration=True` .|
+| `calibration_quality_check_queue_max_size` | int | Kamera modeli kalibre edildiğinde depolanacak en fazla veri örneği sayısı. `1000` varsayılan değerdir. Yalnızca ne zaman kullanılır `enable_recalibration=True` .|
+| `recalibration_score` | int | Başlamaya başlamak için maksimum kalite eşiği. `75` varsayılan değerdir. Yalnızca ne zaman kullanılır `enable_recalibration=True` . Ayarlama kalitesi, görüntü hedefi yeniden projeksiyon hatası ile ters ilişki temel alınarak hesaplanır. 2B görüntü çerçevelerinde algılanan hedefler verildiğinde, hedefler 3B alana yansıtıldığını ve var olan kamera ayarlama parametreleri kullanılarak 2B görüntü çerçevesine yeniden yansıtılacak. Yeniden projeksiyon hatası, algılanan hedefler ve yeniden öngörülen hedefler arasındaki ortalama uzaklıklara göre ölçülür.|
+| `enable_breakpad`| bool | Hata ayıklama kullanımı için kilitlenme dökümünü oluşturmak için kullanılan BreakPad ' i etkinleştirmek isteyip istemediğinizi belirtir. `false`Varsayılan olarak. Öğesini olarak ayarlarsanız `true` kapsayıcının bölümüne de eklemeniz gerekir `"CapAdd": ["SYS_PTRACE"]` `HostConfig` `createOptions` . Varsayılan olarak, kilitlenme dökümü [RealTimePersonTracking](https://appcenter.ms/orgs/Microsoft-Organization/apps/RealTimePersonTracking/crashes/errors?version=&appBuild=&period=last90Days&status=&errorType=all&sortCol=lastError&sortDir=desc) AppCenter uygulamasına yüklenir, kilitlenme dökümlerinin kendi AppCenter uygulamanıza yüklenmesini isterseniz, ortam değişkenini `RTPT_APPCENTER_APP_SECRET` uygulamanızın uygulama gizli anahtarı ile geçersiz kılabilirsiniz.
+
 
 ### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-personcount"></a>Biliveservices. Vision. spatialanalysis-PersonCount için bölge yapılandırması
 
@@ -142,10 +174,10 @@ Bu, bir satırı yapılandıran SPACEANALYTICS_CONFIG parametresi için bir JSON
 | `line` | list| Çizginin tanımı. Bu bir yön çizgisi, "giriş" ve "çıkış" ile anlamanızı sağlar.|
 | `start` | değer çifti| çizginin başlangıç noktası için x, y koordinatları. Float değerleri, üst, sol köşeye göre köşe konumunu temsil eder. Mutlak x, y değerlerini hesaplamak için, bu değerleri çerçeve boyutuyla çarpmanız gerekir. |
 | `end` | değer çifti| çizginin bitiş noktası için x, y koordinatları. Float değerleri, üst, sol köşeye göre köşe konumunu temsil eder. Mutlak x, y değerlerini hesaplamak için, bu değerleri çerçeve boyutuyla çarpmanız gerekir. |
-| `threshold` | float| AI modellerinin güvenilirliği bu değere eşit veya ondan fazlaysa, olaylar yumurallardır. |
+| `threshold` | float| AI modellerinin güvenilirliği bu değere eşit veya ondan fazlaysa, olaylar yumurallardır. Varsayılan değer 16'dır. Bu, en fazla doğruluğu sağlamak için önerilen değerdir. |
 | `type` | string| **Biliveservices. Vision. spatialanalysis-personcrossingline** için bu olmalıdır `linecrossing` .|
 |`trigger`|string|Olay gönderme tetikleyicisinin türü.<br>Desteklenen değerler: "olay": bir kişi çizgiyi kesiştiğinde yangın.|
-| `focus` | string| Olayları hesaplamak için kullanılan öğenin sınırlayıcı kutusundaki nokta konumu. Odağın değeri `footprint` (kişinin parmak izi), (kişinin sınırlayıcı `bottom_center` kutusunun alt Merkezi), `center` (kişinin sınırlayıcı kutusunun merkezi) olabilir.|
+| `focus` | string| Olayları hesaplamak için kullanılan öğenin sınırlayıcı kutusundaki nokta konumu. Odağın değeri `footprint` (kişinin parmak izi), (kişinin sınırlayıcı `bottom_center` kutusunun alt Merkezi), `center` (kişinin sınırlayıcı kutusunun merkezi) olabilir. Varsayılan değer, parmak izdir.|
 
 ### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-personcrossingpolygon"></a>Biliveservices. Vision. spatialanalysis-personcrossingçokgen için bölge yapılandırması
 
@@ -186,10 +218,10 @@ Bu, bir bölgeyi yapılandıran SPACEANALYTICS_CONFIG parametresine yönelik JSO
 | `zones` | list| Bölgelerin listesi. |
 | `name` | string| Bu bölge için kolay ad.|
 | `polygon` | list| Her bir değer çifti, poligonun köşeleri için x, y 'yi temsil eder. Çokgen, insanların izlenmekte veya dikkate alındığı alanı temsil eder. Float değerleri, üst, sol köşeye göre köşe konumunu temsil eder. Mutlak x, y değerlerini hesaplamak için, bu değerleri çerçeve boyutuyla çarpmanız gerekir. 
-| `threshold` | float| AI modellerinin güvenilirliği bu değere eşit veya ondan fazlaysa, olaylar yumurallardır. |
+| `threshold` | float| AI modellerinin güvenilirliği bu değere eşit veya ondan fazlaysa, olaylar yumurallardır. Tür zonecrossing olduğunda varsayılan değer 48, saat DwellTime olduğunda 16 ' dır. Bunlar, en fazla doğruluğu elde etmek için önerilen değerlerdir.  |
 | `type` | string| **Biliveservices. Vision. spatialanalysis-personcrossingçokgen** için bu veya olmalıdır `zonecrossing` `zonedwelltime` .|
 | `trigger`|string|Olay gönderme tetikleyicisinin türü<br>Desteklenen değerler: "olay": birisi bölgeden girdiğinde veya uygulamadan çıktığında yangın.|
-| `focus` | string| Olayları hesaplamak için kullanılan öğenin sınırlayıcı kutusundaki nokta konumu. Odağın değeri `footprint` (kişinin parmak izi), (kişinin sınırlayıcı `bottom_center` kutusunun alt Merkezi), `center` (kişinin sınırlayıcı kutusunun merkezi) olabilir.|
+| `focus` | string| Olayları hesaplamak için kullanılan öğenin sınırlayıcı kutusundaki nokta konumu. Odağın değeri `footprint` (kişinin parmak izi), (kişinin sınırlayıcı `bottom_center` kutusunun alt Merkezi), `center` (kişinin sınırlayıcı kutusunun merkezi) olabilir. Varsayılan değer, parmak izdir.|
 
 ### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-persondistance"></a>Biliveservices. Vision. spatialanalysis-persondistance için bölge yapılandırması
 
@@ -228,29 +260,6 @@ Bu, **biliveservices. Vision. spatialanalysis-persondistance** için bir bölgey
 | `minimum_distance_threshold` | float| İnsanlar bu uzaklığa göre daha az olduğunda "Toockaybetme" olayını tetikleyen bir uzaklık.|
 | `maximum_distance_threshold` | float| İnsanlar bu uzaklıktan daha büyük olduğunda bir "TooFar" olayı tetikleyen bir uzaklık.|
 | `focus` | string| Olayları hesaplamak için kullanılan öğenin sınırlayıcı kutusundaki nokta konumu. Odağın değeri `footprint` (kişinin parmak izi), (kişinin sınırlayıcı `bottom_center` kutusunun alt Merkezi), `center` (kişinin sınırlayıcı kutusunun merkezi) olabilir.|
-
-Bu, **biliveservices. Vision. spatialanalysis-persondistance** bölgesini yapılandıran DETECTOR_NODE_CONFIG parametresi IÇIN bir JSON girişi örneğidir.
-
-```json
-{ 
-"gpu_index": 0, 
-"do_calibration": true
-}
-```
-
-| Ad | Tür| Description|
-|---------|---------|---------|
-| `gpu_index` | dize| Bu işlemin çalıştırılacağı GPU dizini.|
-| `do_calibration` | string | Ayarlama özelliğinin açık olduğunu gösterir. `do_calibration`**biliveservices. Vision. spatialanalysis-persondistance** 'ın düzgün şekilde çalışması için true olması gerekir.|
-| `enable_recalibration` | bool | Otomatik yeniden renklendirme özelliğinin açılıp açılmadığını gösterir. `true` varsayılan değerdir.|
-| `calibration_quality_check_frequency_seconds` | int | Her kalite denetimi arasındaki en az saniye sayısının, gerekli olup olmadığını belirleme gerekliliği. Varsayılan değer `86400` (24 saat). Yalnızca ne zaman kullanılır `enable_recalibration=True` .|
-| `calibration_quality_check_sampling_num` | int | Kalite denetimi hata ölçümü başına kullanılacak, rastgele seçilmiş depolanmış veri örneği sayısı. `80` varsayılan değerdir. Yalnızca ne zaman kullanılır `enable_recalibration=True` .|
-| `calibration_quality_check_sampling_times` | int | Kalite denetimi başına rastgele seçilen farklı veri örneği kümelerinde hata ölçümlerinin kaç kez gerçekleştirileceği. `5` varsayılan değerdir. Yalnızca ne zaman kullanılır `enable_recalibration=True` .|
-| `calibration_quality_check_sample_collect_frequency_seconds` | int | Yeni veri örneklerinin toplanması ve kalite denetimi için en az saniye sayısı. Varsayılan değer `300` (5 dakikadır). Yalnızca ne zaman kullanılır `enable_recalibration=True` .|
-| `calibration_quality_check_one_round_sample_collect_num` | int | Örnek toplamanın hepsini başına toplanacak en az yeni veri örneği sayısı. `10` varsayılan değerdir. Yalnızca ne zaman kullanılır `enable_recalibration=True` .|
-| `calibration_quality_check_queue_max_size` | int | Kamera modeli kalibre edildiğinde depolanacak en fazla veri örneği sayısı. `1000` varsayılan değerdir. Yalnızca ne zaman kullanılır `enable_recalibration=True` .|
-| `recalibration_score` | int | Başlamaya başlamak için maksimum kalite eşiği. `75` varsayılan değerdir. Yalnızca ne zaman kullanılır `enable_recalibration=True` . Ayarlama kalitesi, görüntü hedefi yeniden projeksiyon hatası ile ters ilişki temel alınarak hesaplanır. 2B görüntü çerçevelerinde algılanan hedefler verildiğinde, hedefler 3B alana yansıtıldığını ve var olan kamera ayarlama parametreleri kullanılarak 2B görüntü çerçevesine yeniden yansıtılacak. Yeniden projeksiyon hatası, algılanan hedefler ve yeniden öngörülen hedefler arasındaki ortalama uzaklıklara göre ölçülür.|
-| `enable_breakpad`| bool | Hata ayıklama kullanımı için kilitlenme dökümünü oluşturmak için kullanılan BreakPad ' i etkinleştirmek isteyip istemediğinizi belirtir. `false`Varsayılan olarak. Öğesini olarak ayarlarsanız `true` kapsayıcının bölümüne de eklemeniz gerekir `"CapAdd": ["SYS_PTRACE"]` `HostConfig` `createOptions` . Varsayılan olarak, kilitlenme dökümü [RealTimePersonTracking](https://appcenter.ms/orgs/Microsoft-Organization/apps/RealTimePersonTracking/crashes/errors?version=&appBuild=&period=last90Days&status=&errorType=all&sortCol=lastError&sortDir=desc) AppCenter uygulamasına yüklenir, kilitlenme dökümlerinin kendi AppCenter uygulamanıza yüklenmesini isterseniz, ortam değişkenini `RTPT_APPCENTER_APP_SECRET` uygulamanızın uygulama gizli anahtarı ile geçersiz kılabilirsiniz.
 
 Bölge ve hat yapılandırma hakkında bilgi edinmek için [kamera yerleştirme](spatial-analysis-camera-placement.md) yönergelerine bakın.
 
@@ -606,7 +615,7 @@ Bu işlem tarafından SPACEANALYTICS_CONFIG türünde algılanan algılamalar i�
 | `trackinId` | string| Algılanan kişinin benzersiz tanıtıcısı|
 | `status` | string| Çokgen çapraz yönlerinin yönü, ' Enter ' veya ' Exit '|
 | `side` | int| Kişinin çapraz olduğu Çokgen tarafının numarası. Her kenar, kendi diliminizi temsil eden iki köşe arasında numaralandırılmış bir kenar. Poligonun ilk iki köşesi arasındaki kenar ilk tarafı temsil eder|
-| `durationMs` | int | Kişinin bölgede harcadığı süreyi temsil eden milisaniye sayısı. Bu alan, olay türü _Personzonedwelltimeevent_ olduğunda sağlanır|
+| `durationMs` | float | Kişinin bölgede harcadığı süreyi temsil eden milisaniye sayısı. Bu alan, olay türü _Personzonedwelltimeevent_ olduğunda sağlanır|
 | `zone` | string | Çapraz olan bölgeyi temsil eden çokgenin "ad" alanı|
 
 | Algılama alanı adı | Tür| Description|

@@ -4,12 +4,12 @@ description: Azure Backup hizmetine genel bir bakış sağlar ve iş süreklili�
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: 805fa81362b9f90c1d6ba468caaf4b6745e42c62
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 6a30e31dd1462e427faf64966a38c94f9fa56df6
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746123"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624481"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Azure Backup hizmeti nedir?
 
@@ -21,6 +21,7 @@ Azure Backup hizmeti, Microsoft Azure bulutundaki verilerinizi yedekleyip kurtar
 
 - **Şirket içi** - [Microsoft Azure kurtarma hizmetleri (mars) Aracısı](backup-support-matrix-mars-agent.md)'nı kullanarak dosyaları, klasörleri, sistem durumunu yedekleyin. Ya da şirket içi VM 'Leri ([Hyper-V](back-up-hyper-v-virtual-machines-mabs.md) ve [VMware](backup-azure-backup-server-vmware.md)) ve diğer [Şirket ıçı iş yüklerini](backup-mabs-protection-matrix.md) korumak için DPM veya Azure Backup sunucusu (mabs) aracısını kullanın
 - **Azure VM 'leri**  -  [Mars Aracısı](backup-azure-manage-mars.md)'Nı kullanarak [Windows/Linux VM 'lerinin tamamını yedekleyin](backup-azure-vms-introduction.md) (yedekleme uzantıları kullanarak) veya dosyaları, klasörleri ve sistem durumunu yedekleyin.
+- **Azure yönetilen diskler**  -  [Azure yönetilen disklerini yedekleme (önizlemede)](backup-managed-disks.md)
 - **Azure dosya paylaşımları**  -  [Azure dosya paylaşımlarını bir depolama hesabına yedekleme](backup-afs.md)
 - **Azure VM**  -   'lerinde SQL Server [Azure VM 'lerinde çalışan SQL Server veritabanları yedekleme](backup-azure-sql-database.md)
 - **Azure VM**  -  'lerinde SAP HANA veritabanları [Azure VM 'lerinde çalışan SAP HANA veritabanları yedekleme](backup-azure-sap-hana-database.md)

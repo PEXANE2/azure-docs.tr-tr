@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Hub cihaz akışları ile Node.js cihaz uygulamasıyla iletişim kurma
+title: Hızlı başlangıç-Azure IoT Hub cihaz akışları ile Node.js cihaz uygulamasıyla Iletişim kurma
 description: Bu hızlı başlangıçta, bir cihaz akışı aracılığıyla IoT cihazıyla iletişim kuran bir Node.js hizmet tarafı uygulaması çalıştıracaksınız.
 author: robinsh
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-js, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 678955970f3eeb87a10c43cd43effc3464db7794
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 335014f032162866e4780bf1294ddcd108b4fd03
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832016"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624397"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>Hızlı başlangıç: IoT Hub cihaz akışları aracılığıyla Node.js bir cihaz uygulamasıyla Iletişim kurma (Önizleme)
 
@@ -22,7 +22,7 @@ ms.locfileid: "94832016"
 
 Bu hızlı başlangıçta, bir hizmet tarafı uygulaması çalıştırır ve cihaz akışlarını kullanarak bir cihaz ve hizmet arasında iletişim kurabilirsiniz. Azure IoT Hub cihaz akışları, hizmet ve cihaz uygulamalarının güvenli ve güvenlik duvarı kullanımı kolay bir şekilde iletişim kurmasına olanak tanır. Genel Önizleme sırasında, Node.js SDK yalnızca hizmet tarafında cihaz akışlarını destekler. Sonuç olarak, bu hızlı başlangıç yalnızca hizmet tarafı uygulamasını çalıştırma yönergelerini ele alır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [IoT Hub cihaz akışları aracılığıyla C 'deki cihaz uygulamalarıyla Iletişim kurmayı](./quickstart-device-streams-echo-c.md) tamamlama veya [IoT Hub cihaz akışları aracılığıyla C# ' deki cihaz uygulamalarıyla iletişim](./quickstart-device-streams-echo-csharp.md)kurma.
 
@@ -79,7 +79,7 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
     **Youriothubname**: aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
     ```azurecli-interactive
-    az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
+    az iot hub connection-string show --policy-name service --name {YourIoTHubName} --output table
     ```
 
     Daha sonra bu hızlı başlangıçta kullanılmak üzere döndürülen hizmet bağlantı dizesine göz önünde edin. Aşağıdaki örneğe benzer şekilde görünür:
@@ -154,4 +154,4 @@ Bu hızlı başlangıçta, bir IoT Hub 'ı ayarlarsınız, cihaz kaydettiniz, ci
 Cihaz akışları hakkında daha fazla bilgi edinmek için aşağıdaki bağlantıları kullanın:
 
 > [!div class="nextstepaction"]
-> [Cihaz akışlarına genel bakış](./iot-hub-device-streams-overview.md) 
+> [Cihaz akışlarına genel bakış](./iot-hub-device-streams-overview.md)

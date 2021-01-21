@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 8cc7c1e0b776574ec7908557108e2cda49bb2a11
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 31dd1c06b0f17b469454593131ccdc93b45b2446
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896669"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624975"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Öğretici: Azure haritalar 'ı kullanarak yakındaki ilgi noktalarını arama
 
@@ -139,7 +139,7 @@ Harita Denetimi API 'SI uygun bir istemci kitaplığı. Bu API, haritaları Web 
 
 ## <a name="add-search-capabilities"></a>Arama özellikleri ekleme
 
-Bu bölümde, haritalarınızın bir ilgi noktasını bulmak için haritalar [Arama API 'sinin](/rest/api/maps/search) nasıl kullanılacağı gösterilmektedir. Bu, geliştiricilerin adres, ilgi çekici nokta ve diğer coğrafi bilgileri araması için tasarlanmış bir RESTful API’dir. Arama hizmeti, belirtilen bir adrese enlem ve boylam bilgileri atar. Aşağıda açıklanan **Hizmet Modülü** , Haritalar Arama API'si ile konum bulmaya yönelik aramalarda kullanılabilir.
+Bu bölümde, haritalarınızın bir ilgi noktasını bulmak için haritalar [Arama API 'sinin](/rest/api/maps/search) nasıl kullanılacağı gösterilmektedir. Bu, geliştiricilerin adres, ilgi çekici nokta ve diğer coğrafi bilgileri araması için tasarlanmış bir RESTful API’dir. Arama hizmeti, belirtilen bir adrese enlem ve boylam bilgileri atar. Aşağıda açıklanan **Hizmet Modülü**, Haritalar Arama API'si ile konum bulmaya yönelik aramalarda kullanılabilir.
 
 ### <a name="service-module"></a>Hizmet Modülü
 
@@ -246,6 +246,10 @@ Bu noktada MapSearch sayfası, belirsiz arama sorgusundan döndürülen ilgi çe
     ![Azure Harita Denetimi ve Arama Hizmeti](./media/tutorial-search-location/popup-map.png)
 
 Bu öğreticinin tam kodunu görüntülemek için [buraya](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html)tıklayın. Canlı örneği görüntülemek için [buraya](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest) tıklayın
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Temizleme gerektiren kaynak yok.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

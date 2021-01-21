@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: ee32749e2c6f0118507fcfc6d4994a04ea3a6d69
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 759adea3cf34b79c76b6facec3bd4626ca54107e
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997282"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625041"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Öğretici: Azure Haritalar’ı kullanarak bölge sınırı ayarlama
 
@@ -165,7 +165,7 @@ Bu öğreticide, içeren bölge sınırlaması coğrafi JSON verilerini karşıy
       }
       ```
 
-8. İçerik meta verilerini almak için, **GET** `resourceLocation` adım 7 ' de alınan URL 'de http isteği Al ' ı oluşturun. Kimlik doğrulaması için birincil abonelik anahtarınızı URL 'ye eklemediğinizden emin olun. **Get** isteği aşağıdaki URL 'yi beğenmelidir:
+8. İçerik meta verilerini almak için,  `resourceLocation` adım 7 ' de alınan URL 'de http isteği Al ' ı oluşturun. Kimlik doğrulaması için birincil abonelik anahtarınızı URL 'ye eklemediğinizden emin olun. **Get** isteği aşağıdaki URL 'yi beğenmelidir:
 
     ```http
    https://atlas.microsoft.com/mapData/metadata/{udid}?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
@@ -205,7 +205,7 @@ Ardından, bir e-posta bildirimi tetikleyen iki [mantıksal uygulama](../event-g
 
     :::image type="content" source="./media/tutorial-geofence/logic-app-create.png" alt-text="Mantıksal uygulama oluşturma ekranının ekran görüntüsü.":::
 
-6. **Gözden geçir + oluştur**' u seçin. Ayarlarınızı gözden geçirin ve dağıtımı göndermek için **Oluştur** ' u seçin. Dağıtım başarıyla tamamlandığında **Kaynağa Git**' i seçin. **Mantıksal uygulama Tasarımcısı**' na götürülürsünüz.
+6. **Gözden geçir + Oluştur**’u seçin. Ayarlarınızı gözden geçirin ve dağıtımı göndermek için **Oluştur** ' u seçin. Dağıtım başarıyla tamamlandığında **Kaynağa Git**' i seçin. **Mantıksal uygulama Tasarımcısı**' na götürülürsünüz.
 
 7. Tetikleyici türü seçin. **Sık kullanılan bir tetikleyici Ile başlayın** bölümüne gidin. **BIR http isteği alındığında** öğesini seçin.
 
@@ -471,6 +471,10 @@ Aşağıdaki bölümlerin her biri, donanımların beş farklı konum koordinatl
 
 
 Ayrıca, [Event Grid ve Logic Apps kullanarak e-posta bildirimleri gönderebilir](../event-grid/publish-iot-hub-events-to-logic-apps.md) ve Azure haritalar 'ı kullanarak [Event Grid desteklenen olay işleyicilerini](../event-grid/event-handlers.md) denetleyebilirsiniz.
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Temizleme gerektiren kaynak yok.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

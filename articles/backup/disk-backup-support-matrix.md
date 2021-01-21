@@ -1,15 +1,15 @@
 ---
-title: Azure disk yedekleme desteği matrisi
+title: Azure Disk Yedekleme destek matrisi
 description: Destek ayarları ve kısıtlamaları için Azure disk yedekleme 'nin bir özetini sağlar.
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 950651148237c7b9374c378e27ef5cd76697ae9e
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 099e83d8a2fb109da862657265dad8be8143f608
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98558424"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624943"
 ---
 # <a name="azure-disk-backup-support-matrix-in-preview"></a>Azure disk yedekleme desteği matrisi (önizlemede)
 
@@ -55,6 +55,8 @@ Kullanılabilir olduklarında daha fazla bölge duyurulacaktır.
 - Şu anda yedekleme ilkesi değiştirilemez ve bir diskin yedeğini yapılandırırken bir yedekleme örneğine atanmış olan anlık görüntü kaynak grubu değiştirilemez.
 
 - Şu anda, disklerin yedeklenmesini yapılandırmak için Azure portal deneyimi aynı abonelikte en fazla 20 diskle sınırlıdır.
+
+- Şu anda (Önizleme sırasında), diskleri yedeklemeyi ve geri yüklemeyi yapılandırmak için PowerShell ve Azure CLı kullanımı desteklenmez.
 
 - Yedekleme yapılandırılırken, yedeklenmek üzere seçilen disk ve anlık görüntülerin depolanacağı anlık görüntü kaynak grubu aynı aboneliğin bir parçası olmalıdır. Bu diskin aboneliği dışındaki belirli bir disk için artımlı bir anlık görüntü oluşturamazsınız. Yönetilen disk için [Artımlı anlık görüntüler](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) hakkında daha fazla bilgi edinin. Anlık görüntü kaynak grubu seçme hakkında daha fazla bilgi için bkz.  [yedeklemeyi yapılandırma](backup-managed-disks.md#configure-backup).
 

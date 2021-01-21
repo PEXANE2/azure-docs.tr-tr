@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 47e3833fe9f35467c1d16945a9b336d4014b2efd
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 9da5c8c89ee124e527584164b21b096ac815e5ca
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97841851"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625473"
 ---
 # <a name="investigate-all-enterprise-sensor-detections-in-the-device-inventory"></a>Cihaz envanterindeki tüm kurumsal algılayıcı algılamalarını araştırın
 
@@ -35,7 +35,7 @@ Aşağıdaki tabloda, cihaz envanterindeki tablo sütunları açıklanmaktadır.
 | **Satıcı** | MAC adresinde tanımlandığı şekilde cihazın satıcısının adı. |
 | **İşletim Sistemi** | Cihazın işletim sistemi. |
 | **Üretici yazılımı** | Cihazın üretici yazılımı. |
-| **IP adresi** | Cihazın IP adresi. |
+| **IP Adresi** | Cihazın IP adresi. |
 | **VLAN** | Cihazın VLAN 'ı. |
 | **MAC adresi** | Cihazın MAC adresi. |
 | **Protokoller** | Cihazın kullandığı protokoller. |
@@ -67,7 +67,7 @@ Bu bilgileri öğrenmek için kullanabilirsiniz. Örnek:
 
 - Cihazlarda oturum açan kullanıcılar
 
-:::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-inventory-screen-with-items-highlighted-v2.png" alt-text="Varlık envanteri ekranındaki veri tablosu.":::
+:::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-inventory-screen-with-items-highlighted-v2.png" alt-text="Cihaz envanteri ekranındaki veri tablosu.":::
 
 Verileri şu şekilde tümleştirebilirsiniz:
 
@@ -131,13 +131,13 @@ Bu bilgileri almak ve bütünleştirmek için, IoT API komutlarına yönelik Def
 
 İlgilendiğiniz sütunları göstermek için cihaz envanterine filtre uygulayabilirsiniz. Örneğin, PLC cihaz bilgilerini görüntüleyebilirsiniz.
 
-:::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-inventory-view-v2.png" alt-text="Varlık envanterinin ekran görüntüsü.":::
+:::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-inventory-view-v2.png" alt-text="Cihaz envanterinin ekran görüntüsü.":::
 
 Pencereyi bıraktığınızda filtre temizlenir.
 
 Aynı filtreyi birden çok kez kullanmak için, bir filtre veya ihtiyacınız olan filtrelerin bir birleşimini kaydedebilirsiniz. Sol Bölmeyi açabilir ve kaydettiğiniz filtreleri görüntüleyebilirsiniz:
 
-:::image type="content" source="media/how-to-work-with-asset-inventory-information/view-your-asset-inventories-v2.png" alt-text="Varlık envanterleri ekranı.":::
+:::image type="content" source="media/how-to-work-with-asset-inventory-information/view-your-asset-inventories-v2.png" alt-text="Cihaz envanterleri ekranı.":::
 
 Cihaz envanterini filtrelemek için:
 
@@ -187,7 +187,7 @@ Haritalardan cihazları ve cihaz bilgilerini görüntülemek için aşağıdaki 
 
 - **Cihaz özelliklerini görüntüle**: Örneğin, cihazı izleyen algılayıcı ve temel cihaz özellikleri. Cihaz özelliklerini görüntülemek için cihaza sağ tıklayın.
 
-  :::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-properties-v2.png" alt-text="Varlık özellikleri görünümünün ekran görüntüsü.":::
+  :::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-properties-v2.png" alt-text="Cihaz özellikleri görünümünün ekran görüntüsü.":::
 
 - **Bir cihazla Ilişkili uyarı:** İlgili uyarıları görüntülemek için cihaza sağ tıklayın.
 
@@ -227,4 +227,4 @@ Aşağıdaki ek bölge bilgileri kullanılabilir:
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-[Bir cihaz envanterinde algılayıcı algılamalarını araştırın](how-to-investigate-sensor-detections-in-a-device-inventory.md)
+[Bir cihaz envanterinde algılayıcı algılamalarını araştırma](how-to-investigate-sensor-detections-in-a-device-inventory.md)

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/09/2020
+ms.date: 01/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 9272114dd472717e59680b40c07d8435dea19682
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d99a19efcef0cae518d8d21d3371adaf37d32ff7
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181977"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625489"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>Öğretici: Azure AD çoklu oturum açma (SSO) ile NetSuite tümleştirme
 
@@ -26,7 +26,7 @@ Bu öğreticide, NetSuite 'i Azure Active Directory (Azure AD) ile tümleştirme
 * Kullanıcılarınızın Azure AD hesaplarıyla NetSuite 'e otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin, Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -41,7 +41,6 @@ NetSuite şunları destekler:
 
 * IDP tarafından başlatılan SSO.
 * JıT (tam zamanında) Kullanıcı hazırlama.
-* [Otomatik Kullanıcı sağlama](NetSuite-provisioning-tutorial.md).
 
 > [!NOTE]
 > Bu uygulamanın tanımlayıcısı sabit bir dize değeri olduğundan, tek bir kiracıda yalnızca bir örnek yapılandırılabilir.
@@ -104,7 +103,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için aşağıdakileri yapın:
 
 1. NetSuite uygulaması, yukarıdakine ek olarak aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği |
+    | Name | Kaynak özniteliği |
     | ---------------| --------------- |
     | account  | `account id` |
 
@@ -123,7 +122,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için aşağıdakileri yapın:
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure Portal sol bölmesinde, kullanıcıları **Azure Active Directory**  >  **Users**  >  **tüm kullanıcılar**' ı seçin.
+1. Azure Portal sol bölmesinde, kullanıcıları **Azure Active Directory**  >    >  **tüm kullanıcılar**' ı seçin.
 
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 

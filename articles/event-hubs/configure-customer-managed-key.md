@@ -3,12 +3,12 @@ title: Azure Event Hubs verilerini bekleyen bir şekilde şifrelemek için kendi
 description: Bu makalede, Azure Event Hubs Data Rest 'i şifrelemek için kendi anahtarınızı yapılandırma hakkında bilgi verilmektedir.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 1b0469a2f25b7f2bec2668b6ab33ff99eb1df809
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 095def84c5ab5e4dac7802027468b67eefb3161f
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348220"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625390"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Azure Event Hubs verilerini Rest 'te şifrelemek için müşteri tarafından yönetilen anahtarları Azure portal kullanarak yapılandırın
 Azure Event Hubs, Azure Depolama Hizmeti Şifrelemesi (Azure SSE) ile bekleyen verilerin şifrelenmesini sağlar. Event Hubs, verileri depolamak için Azure depolama 'yı kullanır ve varsayılan olarak, Azure Storage ile depolanan tüm veriler Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. 
@@ -42,12 +42,12 @@ Azure portal müşteri tarafından yönetilen anahtarları etkinleştirmek için
 Müşteri tarafından yönetilen anahtarları etkinleştirdikten sonra, müşteri tarafından yönetilen anahtarı Azure Event Hubs ad alanınız ile ilişkilendirmeniz gerekir. Event Hubs yalnızca Azure Key Vault destekler. Önceki bölümde, **müşteri tarafından yönetilen anahtar seçeneğiyle şifrelemeyi** etkinleştirirseniz, anahtarın Azure Key Vault içine aktarılması gerekir. Ayrıca, anahtarlar için **yumuşak silme** ve anahtar Için de **Temizleme** yapılandırması olmalıdır. Bu ayarlar, [PowerShell](../key-vault/general/key-vault-recovery.md) veya [CLI](../key-vault/general/key-vault-recovery.md)kullanılarak yapılandırılabilir.
 
 1. Yeni bir Anahtar Kasası oluşturmak için Azure Key Vault [hızlı](../key-vault/general/overview.md)başlangıcı ' nı izleyin. Varolan anahtarları içeri aktarma hakkında daha fazla bilgi için bkz. [anahtarlar, gizlilikler ve sertifikalar hakkında](../key-vault/general/about-keys-secrets-certificates.md).
-1. Bir kasa oluştururken hem geçici silme hem de Temizleme korumasını açmak için [az keykasa Create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) komutunu kullanın.
+1. Bir kasa oluştururken hem geçici silme hem de Temizleme korumasını açmak için [az keykasa Create](/cli/azure/keyvault#az-keyvault-create) komutunu kullanın.
 
     ```azurecli-interactive
     az keyvault create --name ContosoVault --resource-group ContosoRG --location westus --enable-soft-delete true --enable-purge-protection true
     ```    
-1. Var olan bir kasaya Temizleme koruması eklemek için (zaten geçici silme etkindir), [az keykasa Update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) komutunu kullanın.
+1. Var olan bir kasaya Temizleme koruması eklemek için (zaten geçici silme etkindir), [az keykasa Update](/cli/azure/keyvault#az-keyvault-update) komutunu kullanın.
 
     ```azurecli-interactive
     az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge-protection true
@@ -56,7 +56,7 @@ Müşteri tarafından yönetilen anahtarları etkinleştirdikten sonra, müşter
     1. Yeni bir anahtar oluşturmak için **Ayarlar** altındaki **anahtarlar** menüsünden **Oluştur/içeri aktar** ' ı seçin.
         
         ![Oluştur/Içeri Aktar düğmesini seçin](./media/configure-customer-managed-key/select-generate-import.png)
-    1. Oluşturma **seçeneklerini** belirleyin **Generate** ve anahtara bir ad verin.
+    1. Oluşturma **seçeneklerini** belirleyin  ve anahtara bir ad verin.
 
         ![Bir anahtar oluşturma](./media/configure-customer-managed-key/create-key.png) 
     1. Şimdi, açılan listeden şifrelemek için Event Hubs ad alanıyla ilişkilendirmek üzere bu anahtarı seçebilirsiniz. 
@@ -97,7 +97,7 @@ Tüm Günlükler JavaScript Nesne Gösterimi (JSON) biçiminde depolanır. Her g
 | Ad | Açıklama |
 | ---- | ----------- | 
 | Silinecek | Başarısız olan görevin açıklaması. |
-| Etkinlik kimliği | İzleme için kullanılan iç KIMLIK. |
+| ActivityId | İzleme için kullanılan iç KIMLIK. |
 | category | Görevin sınıflandırmasını tanımlar. Örneğin, anahtar kasanızın anahtarı devre dışı bırakılmışsa, bir bilgi kategorisi olur veya bir anahtarın sarmalanmamış olması durumunda hataya neden olabilir. |
 | resourceId | Azure Resource Manager kaynak KIMLIĞI |
 | keyVault | Anahtar kasasının tam adı. |

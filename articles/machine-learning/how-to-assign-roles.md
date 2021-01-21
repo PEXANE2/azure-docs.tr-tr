@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: Blackmist
 ms.author: nigup
 author: nishankgu
-ms.date: 11/09/2020
+ms.date: 01/20/2020
 ms.custom: how-to, seodec18, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: 636f63b3f7e43bd8f27d1df58ab82d24bd19a616
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 8420aecbc160fa6df2640d2ba0ae8a8b77702b67
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033757"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624549"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanına erişimi yönetme
 
@@ -160,6 +160,10 @@ Yeni rol tanımınızın tüm kapsamındaki izinlere sahip olmanız gerekir. Ör
 
 > [!NOTE]
 > Rol güncelleştirmelerinin, bu kapsamdaki tüm rol atamaları üzerinde uygulanması 15 dakika ila saat arasında sürebilir.
+
+## <a name="use-azure-resource-manager-templates-for-repeatability"></a>Yinelenebilirlik için Azure Resource Manager şablonları kullanma
+
+Karmaşık rol atamalarını yeniden oluşturmanız gerektiğini düşünüyorsanız, bir Azure Resource Manager şablonu büyük bir yardım olabilir. [201-Machine-Learning-Dependencies-role-atama şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-dependencies-role-assignment) , rol atamalarının yeniden kullanım için kaynak kodda nasıl belirtilenebilir olduğunu gösterir. 
 
 ## <a name="common-scenarios"></a>Genel senaryolar
 

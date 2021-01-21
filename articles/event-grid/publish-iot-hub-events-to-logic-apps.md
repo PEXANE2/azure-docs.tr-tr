@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: philmea
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 857ae8d824443e9a8abdac7c4a66e2b014be2be0
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 3772988e9bf4f733323adae6c0527c8b811c4d04
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566359"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624464"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Öğretici: Event Grid ve Logic Apps kullanarak Azure IoT Hub olayları hakkında e-posta bildirimleri gönderme
 
@@ -23,7 +23,7 @@ Bu makalede IoT Hub ve Event Grid kullanan bir örnek yapılandırma gösterilme
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Office 365 Outlook veya Outlook.com gibi Azure Logic Apps tarafından desteklenen herhangi bir e-posta sağlayıcısından bir e-posta hesabı. Bu e-posta hesabı olay bildirimlerini göndermek için kullanılır.
 
@@ -59,21 +59,21 @@ Ardından, bir Logic App oluşturun ve IoT Hub 'ından istekleri işleyen bir HT
 
 ### <a name="create-a-logic-app-resource"></a>Mantıksal uygulama kaynağı oluşturma
 
-1. [Azure Portal](https://portal.azure.com), **kaynak oluştur** ' u seçin, sonra arama kutusuna "Logic App" yazın ve geri dön ' ü seçin. Sonuçlardan **Logic App** ' i seçin.
+1. [Azure Portal](https://portal.azure.com), **kaynak oluştur**' u seçin, sonra arama kutusuna "Logic App" yazın ve geri dön ' ü seçin. Sonuçlardan **Logic App** ' i seçin.
 
    ![Mantıksal uygulama oluşturma](./media/publish-iot-hub-events-to-logic-apps/select-logic-app.png)
 
-1. Sonraki ekranda **Oluştur** ' u seçin. 
+1. Sonraki ekranda **Oluştur**' u seçin. 
 
 1. Mantıksal uygulamanıza aboneliğiniz içinde benzersiz olan bir ad verin, ardından IoT Hub'ınızla aynı aboneliği, kaynak grubunu ve konumu seçin. 
 
    ![Mantıksal uygulama oluşturma alanları](./media/publish-iot-hub-events-to-logic-apps/create-logic-app-fields.png)
 
-1. **Gözden geçir + oluştur** ’u seçin.
+1. **Gözden geçir ve oluştur**’u seçin.
 
-1. Ayarlarınızı doğrulayın ve ardından **Oluştur** ' u seçin.
+1. Ayarlarınızı doğrulayın ve ardından **Oluştur**' u seçin.
 
-1. Kaynak oluşturulduktan sonra **Kaynağa Git** ' i seçin. 
+1. Kaynak oluşturulduktan sonra **Kaynağa Git**' i seçin. 
 
 1. Logic Apps tasarımcısında, **şablonları** görmek için sayfayı aşağı kaydırın. Mantıksal uygulamanızı sıfırdan oluşturabilmeniz için **boş mantıksal uygulama** ' yı seçin.
 
@@ -91,7 +91,7 @@ Tetikleyici, mantıksal uygulamanızı başlatan belirli bir olaydır. Bu öğre
 
    ![Örnek yük kullanma](./media/publish-iot-hub-events-to-logic-apps/sample-payload.png)
 
-1. *Cihaza bağlı olay şeması* JSON 'sini metin kutusuna yapıştırın, sonra **bitti** ' yi seçin:
+1. *Cihaza bağlı olay şeması* JSON 'sini metin kutusuna yapıştırın, sonra **bitti**' yi seçin:
 
    ```json
      [{  
@@ -123,7 +123,7 @@ Tetikleyici, mantıksal uygulamanızı başlatan belirli bir olaydır. Bu öğre
 
 Eylemler, tetikleyici mantıksal uygulama iş yükünü başlattıktan sonra gerçekleşen adımlardır. Bu öğreticide, e-posta sağlayıcınızdan bir e-posta bildirimi gönderme eylemi kullanılır. 
 
-1. **Yeni adım** 'ı seçin. Bu **işlem, bir eylemi seçmek** için bir pencere açar.
+1. **Yeni adım**'ı seçin. Bu **işlem, bir eylemi seçmek** için bir pencere açar.
 
 1. **Outlook** için arama yapın.
 
@@ -137,17 +137,17 @@ Eylemler, tetikleyici mantıksal uygulama iş yükünü başlattıktan sonra ger
 
 1. E-posta şablonunuzu oluşturun. 
 
-   * **Kime** : Bildirim e-postalarını alacak e-posta adresini girin. Bu öğreticide, test için erişebileceğiniz bir e-posta hesabı kullanın. 
+   * **Kime**: Bildirim e-postalarını alacak e-posta adresini girin. Bu öğreticide, test için erişebileceğiniz bir e-posta hesabı kullanın. 
 
-   * **Konu** : Konunun metnini girin. Konu metin kutusuna tıkladığınızda, içerilecek dinamik içerik ' i seçebilirsiniz. Örneğin, bu öğretici kullanır `IoT Hub alert: {eventType}` . Dinamik içeriği göremiyorsanız, **dinamik Içerik Ekle** köprüsünü seçin--Bu, açıp kapatır.
+   * **Konu**: Konunun metnini girin. Konu metin kutusuna tıkladığınızda, içerilecek dinamik içerik ' i seçebilirsiniz. Örneğin, bu öğretici kullanır `IoT Hub alert: {eventType}` . Dinamik içeriği göremiyorsanız, **dinamik Içerik Ekle** köprüsünü seçin--Bu, açıp kapatır.
 
-   * **Gövde** : E-postanız için metni yazın. Olay verilerine göre dinamik içerik eklemek için seçici aracından JSON özelliklerini seçin. Dinamik içeriği göremiyorsanız **gövde** metin kutusu altında **dinamik içerik Ekle** köprüsünü seçin. İstediğiniz alanları göstermezse, önceki eylemden alanları dahil etmek için dinamik içerik ekranında *daha fazla* ' ya tıklayın.
+   * **Gövde**: E-postanız için metni yazın. Olay verilerine göre dinamik içerik eklemek için seçici aracından JSON özelliklerini seçin. Dinamik içeriği göremiyorsanız **gövde** metin kutusu altında **dinamik içerik Ekle** köprüsünü seçin. İstediğiniz alanları göstermezse, önceki eylemden alanları dahil etmek için dinamik içerik ekranında *daha fazla* ' ya tıklayın.
 
    E-posta şablonunuz, aşağıdaki örneğe benzer görünebilir:
 
    ![E-posta bilgilerini doldurma](./media/publish-iot-hub-events-to-logic-apps/email-content.png)
 
-1. Logic Apps tasarımcısında **Kaydet** ' i seçin.  
+1. Logic Apps Tasarımcısı’nda **Kaydet**’i seçin.  
 
 ### <a name="copy-the-http-url"></a>HTTP URL'sini kopyalama
 
@@ -165,34 +165,34 @@ Logic Apps Tasarımcısı'ndan çıkmadan önce, mantıksal uygulamalarınızın
 
 Bu bölümde, IoT Hub'ınızı gerçekleşen olayları yayımlamak için yapılandıracaksınız. 
 
-1. Azure portalında IoT Hub'ınıza gidin. Bunu, **kaynak grupları** ' nı seçerek ve ardından Bu öğreticinin kaynak grubunu seçip kaynak listesinden IoT Hub 'ınızı seçerek yapabilirsiniz.
+1. Azure portalında IoT Hub'ınıza gidin. Bunu, **kaynak grupları**' nı seçerek ve ardından Bu öğreticinin kaynak grubunu seçip kaynak listesinden IoT Hub 'ınızı seçerek yapabilirsiniz.
 
-1. **Olaylar** 'ı seçin.
+1. **Olaylar**'ı seçin.
 
    ![Event Grid ayrıntılarını açma](./media/publish-iot-hub-events-to-logic-apps/event-grid.png)
 
-1. **Olay aboneliği** ’ni seçin. 
+1. **Olay aboneliği**’ni seçin. 
 
    ![Yeni olay aboneliği oluşturma](./media/publish-iot-hub-events-to-logic-apps/event-subscription.png)
 
 1. Olay aboneliğini aşağıdaki değerlerle oluşturun: 
 
-   1. **Olay ABONELIĞI ayrıntıları** bölümünde:
+   1. **OLAY ABONELİK AYRINTILARI** bölümünde:
       1. Olay aboneliği için bir **ad** sağlayın. 
       2. **Olay şeması** Için **Event Grid şeması** ' nı seçin. 
-   2. **Konu ayrıntıları** bölümünde:
-      1. **Konu türünün** **IoT Hub** olarak ayarlandığını onaylayın. 
-      2. IoT Hub 'ın adının **kaynak kaynak** alanı için değer olarak ayarlandığını doğrulayın. 
+   2. **KONU AYRINTILARI** bölümünde:
+      1. **Konu türü**'nün **IoT Hub** olarak ayarlandığını doğrulayın. 
+      2. IoT hub adının **Kaynak** alanındaki değer olarak ayarlandığını doğrulayın. 
       3. Sizin için oluşturulacak **Sistem konusu** için bir ad girin. Sistem konuları hakkında bilgi edinmek için bkz. [sistem konularına genel bakış](system-topics.md).
-   3. **Olay türleri** bölümünde:
-      1. **Olay türlerine Filtre Uygula** açılır öğesini seçin.
+   3. **OLAY TÜRLERİ** bölümünde:
+      1. **Olay Türlerine Filtrele** açılan menüsünü seçin.
       1. **Oluşturulan** **Cihaz ve cihaz** bağlantısı kesildi onay kutularını seçili bırakarak yalnızca **cihaz bağlı** ve **cihaz bağlantısı kesilen** cihazların seçimini kaldırın.
 
-         ![abonelik olay türlerini seçin](./media/publish-iot-hub-events-to-logic-apps/subscription-event-types.png)
+         ![Abonelik olay türlerini seçme](./media/publish-iot-hub-events-to-logic-apps/subscription-event-types.png)
    
-   4. **Uç nokta ayrıntıları** bölümünde: 
+   4. **UÇ NOKTA AYRINTILARI** bölümünde: 
        1. **Uç nokta türünü** **Web kancası** olarak seçin.
-       2. **Uç nokta seç** ' e tıklayın, mantıksal UYGULAMANıZDAN kopyaladığınız URL 'yi yapıştırın ve seçimi onaylayın.
+       2. **Bir uç nokta seçin**'i seçin ve mantıksal uygulamanızdan kopyaladığınız URL’yi yapıştırıp seçimi onaylayın.
 
          ![uç nokta URL'si seçme](./media/publish-iot-hub-events-to-logic-apps/endpoint-webhook.png)
 
@@ -200,7 +200,7 @@ Bu bölümde, IoT Hub'ınızı gerçekleşen olayları yayımlamak için yapıla
 
          ![Örnek olay aboneliği formu](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
 
-1.  **Oluştur** ’u seçin.
+1.  **Oluştur**’u seçin.
 
 ## <a name="simulate-a-new-device-connecting-and-sending-telemetry"></a>Telemetriyi bağlayan yeni bir cihazın benzetimini yapın
 
@@ -232,9 +232,9 @@ Bu öğreticide Azure aboneliğinize ücret uygulanmasına neden olan kaynaklar 
 
 Bu öğreticide oluşturulan tüm kaynakları silmek için kaynak grubunu silin. 
 
-1. **Kaynak grupları** ' nı seçin ve ardından Bu öğretici için oluşturduğunuz kaynak grubunu seçin.
+1. **Kaynak grupları**' nı seçin ve ardından Bu öğretici için oluşturduğunuz kaynak grubunu seçin.
 
-2. Kaynak grubu bölmesinde **kaynak grubunu sil** ' i seçin. Kaynak grubu adını girmeniz istenir ve ardından onu silebilirsiniz. İçinde bulunan tüm kaynaklar da kaldırılır.
+2. Kaynak grubu bölmesinde **kaynak grubunu sil**' i seçin. Kaynak grubu adını girmeniz istenir ve ardından onu silebilirsiniz. İçinde bulunan tüm kaynaklar da kaldırılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -242,4 +242,7 @@ Bu öğreticide oluşturulan tüm kaynakları silmek için kaynak grubunu silin.
 * [Cihazla bağlantılı ve bağlantısız olayları nasıl sıralayacağınızı öğrenin](../iot-hub/iot-hub-how-to-order-connection-state-events.md)
 * [Event Grid](overview.md) ile başka neler yapabileceğinizi öğrenin.
 
-Desteklenen mantıksal uygulama bağlayıcılarının tüm listesi için bkz. [bağlayıcılara genel bakış](/connectors/).
+Desteklenen mantıksal uygulama bağlayıcılarının tüm listesi için bkz. 
+
+> [!div class="nextstepaction"]
+> [Bağlayıcılara genel bakış](/connectors/).

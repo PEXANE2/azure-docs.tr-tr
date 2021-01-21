@@ -1,5 +1,5 @@
 ---
-title: Cihaz bilgilerini içeri aktar
+title: Cihaz bilgilerini içeri aktarma
 description: IoT sensörleri için Defender yansıtılmış trafiği izler ve analiz eder. Bu gibi durumlarda, önceden algılanan cihazlarda verileri zenginleştirme konusunda bilgi almak isteyebilirsiniz.
 author: shhazam-ms
 manager: rkarlin
@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 0a443ba7b41615fc62882bd8de6bf077c6b5a137
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 7cb805f60ba9feb0ae2d1483b2ab2df4e03639d8
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97842511"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625423"
 ---
 # <a name="import-device-information-to-a-sensor"></a>Cihaz bilgilerini bir sensöre aktar
 
@@ -67,7 +67,7 @@ Bu bölümde cihaz IP adresi, işletim sistemi, düzeltme eki düzeyi veya yetki
 
 IP adresi, işletim sistemi ve düzeltme eki düzeyini içeri aktarmak için:
 
-1. [Yardım Merkezi](https://cyberx-labs.zendesk.com/hc/en-us) 'nden [assets_info_2.2.8 ve up.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) dosyasını indirin ve bilgileri aşağıdaki gibi girin:
+1. [Yardım Merkezi](https://cyberx-labs.zendesk.com/hc/en-us) 'nden [devices_info_2.2.8 ve up.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) dosyasını indirin ve bilgileri aşağıdaki gibi girin:
 
    - **IP adresi**: Cihaz IP adresini girin.
 
@@ -85,7 +85,7 @@ IP adresi, işletim sistemi ve düzeltme eki düzeyini içeri aktarmak için:
 
 Yetkilendirme durumunu içeri aktarmak için:
 
-1. IoT yardım merkezi için Defender 'dan [authorized_assets.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) dosyasını indirip kaydedin. Dosyayı bir CSV olarak kaydettiğinizden emin olun.
+1. IoT yardım merkezi için Defender 'dan [authorized_devices.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) dosyasını indirip kaydedin. Dosyayı bir CSV olarak kaydettiğinizden emin olun.
 
 2. Bilgileri şu şekilde girin:
 
@@ -154,7 +154,7 @@ Bu bölümde cihaz IP adresi, işletim sistemi, düzeltme eki düzeyi veya yetki
 
 IP adresi, işletim sistemi ve düzeltme eki düzeyini içeri aktarmak için:
 
-1. [Yardım Merkezi](https://cyberx-labs.zendesk.com/hc/en-us) 'nden [assets_info_2.2.8 ve up.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) dosyasını indirin ve bilgileri aşağıdaki gibi girin:
+1. [Yardım Merkezi](https://cyberx-labs.zendesk.com/hc/en-us) 'nden [devices_info_2.2.8 ve up.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) dosyasını indirin ve bilgileri aşağıdaki gibi girin:
 
    - **IP adresi**: cihazın IP adresi.
 
@@ -172,7 +172,7 @@ IP adresi, işletim sistemi ve düzeltme eki düzeyini içeri aktarmak için:
 
 Yetkilendirme durumunu içeri aktarmak için:
 
-1. IoT yardım merkezi için Defender 'dan [authorized_assets.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) dosyasını indirip kaydedin. Dosyayı bir CSV olarak kaydettiğinizden emin olun.
+1. IoT yardım merkezi için Defender 'dan [authorized_devices.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) dosyasını indirip kaydedin. Dosyayı bir CSV olarak kaydettiğinizden emin olun.
 
 2. Bilgileri şu şekilde girin:
 
@@ -192,4 +192,4 @@ Bilgiler içeri aktarıldığında, bu listede görünmeyen tüm cihazların yet
 
 [Hangi trafiğin izleneceğini denetleme](how-to-control-what-traffic-is-monitored.md)
 
-[Bir cihaz envanterinde algılayıcı algılamalarını araştırın](how-to-investigate-sensor-detections-in-a-device-inventory.md)
+[Bir cihaz envanterinde algılayıcı algılamalarını araştırma](how-to-investigate-sensor-detections-in-a-device-inventory.md)

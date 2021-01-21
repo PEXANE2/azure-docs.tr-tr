@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/15/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 1e88aac4209f7960b2589cf43f59ead4bd129134
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 383b5bb5c7295fe54efda883e47b9b2338286de5
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90605082"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624734"
 ---
 # <a name="availability-zone-support-for-app-service-environments"></a>App Service ortamları için kullanılabilirlik alanı desteği
 
@@ -30,14 +30,12 @@ Bu makalede açıklanan adımlar izlenmediği takdirde ıLB ASEs, bir şekilde o
 Aşağıdaki bölgelerde zonal ıLB ASEs oluşturulabilir:
 
 - Doğu Avustralya
-- Brezilya Güney
 - Orta Kanada
 - Central US
 - Doğu ABD
 - Doğu ABD 2
 - Doğu ABD 2 (EUAP)
 - Orta Fransa 
-- Almanya Orta Batı
 - Doğu Japonya
 - Kuzey Avrupa
 - West Europe
@@ -51,9 +49,9 @@ Bir bölgesel ILB ASE 'de dağıtılan uygulamalar, aynı bölgedeki diğer böl
 
 ARM şablonları kullanılarak zonal ıLB ASEs oluşturulması gerekir. Bir bölgesel ILB akolu bir ARM şablonu aracılığıyla oluşturulduktan sonra, Azure Portal ve CLI aracılığıyla görüntülenebilir ve bunlarla etkileşim yapılabilir.  ARM şablonu yalnızca bir bölgesel ILB Ao 'nun ilk oluşturulması için gereklidir.
 
-Bir ARM şablonunda bir bölgesel ILB akoli belirtmek için gereken tek değişiklik, yeni ***bölgeler*** özelliğidir. ILB ATıCı 'in sabitlendiği mantıksal kullanılabilirlik bölgesine bağlı olarak, ***Zones*** özelliği "1", "2" veya "3" değerine ayarlanmalıdır.
+Bir ARM şablonunda gereken tek değişiklik yeni ***Zones** _ özelliğidir. ILB ATıCı 'in sabitlendiği mantıksal kullanılabilirlik bölgesine bağlı olarak, _*_Zones_*_ özelliği "1", "2" veya "3" değerine ayarlanmalıdır.
 
-Aşağıdaki örnek ARM şablon parçacığı, ıLB ATıCı 'in bölge 2 ' ye sabitlenebilmelidir. ***zones***
+Aşağıdaki örnek ARM şablon parçacığı, ıLB ATıCı 'in bölge 2 ' ye sabitlenebilmelidir. _**_
 
 ```
    "resources": [
@@ -91,6 +89,6 @@ Müşteriler, "kullanılabilirlik bölgesinde bir App Service Ortamı dağıtma"
 
 Müşteriler, aşağıdaki adımları izleyerek bir App Service Ortamı verileri tek bir bölgede depolamak üzere düzgün bir şekilde yapılandırıldığını doğrulayabilir: 
 
-1. [Kaynak Gezgini](https://resources.azure.com)kullanarak App Service ortamı ARM kaynağına gidin.  ASEs *sağlayıcılar/Microsoft. Web/hostingEnvironments*altında listelenmiştir.
+1. [Kaynak Gezgini](https://resources.azure.com)kullanarak App Service ortamı ARM kaynağına gidin.  ASEs 'ler _providers/Microsoft.Web/hostingEnvironments * altında listelenmiştir.
 2. ARM JSON sözdiziminin görünümünde bir *bölgeler* özelliği varsa ve bu, "1", "2" veya "3" değerine sahip tek DEĞERLI bir JSON dizisi içeriyorsa, ASE bölge tarafından dağıtılır ve müşteri verileri aynı bölgede kalır.
 2. Bir *bölgeler* özelliği yoksa veya özelliğin daha önce belirtildiği gibi geçerli bir bölge değeri yoksa, Ao, bölge dışı olarak dağıtılır ve müşteri verileri, aynı bölgede özel olarak depolanmaz.

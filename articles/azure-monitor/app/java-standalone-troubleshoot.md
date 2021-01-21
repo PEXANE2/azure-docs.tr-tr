@@ -4,12 +4,12 @@ description: Azure Izleyici için Java aracısında sorun gidermeyi öğrenin Ap
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 2876abd3749c9e56cef462e41b8268135f82cd12
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 788eea17cabbea46578d0f59919ae95a59f2223f
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232225"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625356"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Sorun giderme kılavuzu: Java için Azure Izleyici Application Insights
 
@@ -17,7 +17,7 @@ Bu makalede, Application Insights için Java aracısını kullanarak bir Java uy
 
 ## <a name="check-the-self-diagnostic-log-file"></a>Kendi kendine tanılama günlük dosyasını denetleme
 
-Varsayılan olarak, Application Insights için Java 3,0 Aracısı, `applicationinsights.log` dosyayı tutan aynı dizinde adlı bir günlük dosyası üretir `applicationinsights-agent-3.0.1.jar` .
+Varsayılan olarak, Application Insights için Java 3,0 Aracısı, `applicationinsights.log` dosyayı tutan aynı dizinde adlı bir günlük dosyası üretir `applicationinsights-agent-3.0.2.jar` .
 
 Bu günlük dosyası, karşılaşmanız gerekebilecek herhangi bir sorunun ipuçlarını denetlemek için ilk yerdir.
 

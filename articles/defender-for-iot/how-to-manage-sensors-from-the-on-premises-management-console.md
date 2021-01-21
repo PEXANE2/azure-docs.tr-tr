@@ -1,5 +1,5 @@
 ---
-title: Şirket içi yönetim konsolundan algılayıcıları yönetme
+title: Algılayıcıları şirket içi yönetim konsolundan yönetme
 description: Algılayıcı sürümlerini güncelleştirme, sistem ayarlarını sensörlerden iletme ve algılayıcılar üzerinde altyapıları etkinleştirme ve devre dışı bırakma dahil olmak üzere yönetim konsolundan algılayıcıları yönetmeyi öğrenin.
 author: shhazam-ms
 manager: rkarlin
@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 36db1b23d8fb17cec4fe981c938f8c7003543b4d
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 73eb693ab9f06535fd523eb386969e2cce961eef
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97841922"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624600"
 ---
 # <a name="manage-sensors-from-the-management-console"></a>Yönetim konsolundan algılayıcıları yönetme
 
@@ -144,13 +144,13 @@ Bağlantısı kesilen algılayıcılar hakkında bilgi içeren üçüncü tarafl
 
 Algılayıcılar, IoT motorları için beş Defender tarafından korunur. Bağlı sensörler için altyapıları etkinleştirebilir veya devre dışı bırakabilirsiniz.
 
-| Altyapı | Açıklama | Örnek senaryo |
+| Altyapı | Description | Örnek senaryo |
 |--|--|--|
 | Protokol ihlali altyapısı | Paket yapısı veya alan değerleri protokol belirtimine uymadığında protokol ihlali oluşur. | "Geçersiz MODBUS Işlemi (Işlev kodu sıfır)" uyarısı. Bu uyarı, birincil bir cihazın bir ikincil cihaza 0 işlev koduna sahip bir istek gönderdiğini gösterir. Bu, protokol belirtimine göre kullanılamaz ve ikincil cihaz girişi doğru şekilde işleyemeyebilir. |
 | İlke ihlali altyapısı | Öğrenilen veya yapılandırılan ilkede tanımlanan taban çizgisi davranışından sapmayla bir ilke ihlali meydana gelir. | "Yetkisiz HTTP Kullanıcı Aracısı" uyarısı. Bu uyarı, ilke tarafından öğrenilen veya onaylanan bir uygulamanın bir cihazda HTTP istemcisi olarak kullanıldığını belirtir. Bu, bu cihazdaki yeni bir Web tarayıcısı veya uygulama olabilir. |
 | Kötü amaçlı yazılım altyapısı | Kötü amaçlı yazılım altyapısı kötü amaçlı ağ etkinliğini algılar. | "Şüphesi of Kötü_niyetli Activity (Stuxnet)" uyarısı. Bu uyarı, sensörin, endüstriyel denetim ve SCADA ağlarını hedefleyen gelişmiş kalıcı bir tehdit olan Stuxnet kötü amaçlı yazılımlara ilişkin bilinen şüpheli ağ etkinliğini buldığını gösterir. |
 | Anomali altyapısı | Kötü amaçlı yazılım altyapısı ağ davranışında bir anomali algılar. | "Iletişim kanalında düzenli davranış." Bu, ağ bağlantılarını denetleyen ve endüstri ağlarında ortak olan veri iletiminin düzenli veya döngüsel davranışını bulan bir bileşendir. |
-| İşlemsel altyapı | Bu altyapı, işlemsel olayları veya hatalı çalışan varlıkları algılar. | "Varlığın bağlantısının kesilmesi (yanıt vermeyen)" uyarısı. Bu uyarı, bir cihaz önceden tanımlanmış bir döneme yönelik isteklere yanıt vermediğinde tetiklenir. Bu, bir cihazın kapatılmasını, bağlantısının kesilmesi veya hatalı bir şekilde olduğunu gösteriyor olabilir.
+| İşlemsel altyapı | Bu altyapı, işlemsel olayları veya hatalı çalışan varlıkları algılar. | `Device is Suspected to be Disconnected (Unresponsive)` daki. Bu uyarı, bir cihaz önceden tanımlanmış bir döneme yönelik isteklere yanıt vermediğinde tetiklenir. Bu, bir cihazın kapatılmasını, bağlantısının kesilmesi veya hatalı bir şekilde olduğunu gösteriyor olabilir.
 |
 
 Bağlı sensörlerden altyapıları etkinleştirmek veya devre dışı bırakmak için:
@@ -317,4 +317,4 @@ Bir SMB sunucusu ayarlamak için, bir dış sürücüye bir algılayıcı yedekl
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-[Her sensöri Yönet](how-to-manage-individual-sensors.md)
+[Algılayıcıları ayrı ayrı yönetme](how-to-manage-individual-sensors.md)

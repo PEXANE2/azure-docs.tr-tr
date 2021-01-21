@@ -6,16 +6,16 @@ ms.author: krishmam
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 8d01f43dd6e404bb8f8ae0898625ae1ea9d09fd6
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: dc590593b9bff8f646ee6155d32a2ce3f9790f6e
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020443"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625257"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>Jeo-uzamsal işlevlere Stream Analytics giriş
 
-Azure Stream Analytics Jeo uzamsal işlevler, Jeo uzamsal verileri akışta gerçek zamanlı analizler sağlar. Yalnızca birkaç satır kodla, karmaşık senaryolar için bir üretim sınıfı çözümü geliştirebilirsiniz. 
+Azure Stream Analytics Jeo uzamsal işlevler, Jeo uzamsal verileri akışta gerçek zamanlı analizler sağlar. Yalnızca birkaç satır kodla, karmaşık senaryolar için bir üretim sınıfı çözümü geliştirebilirsiniz. Bu işlevler tüm WKT türlerini ve GeoJSON noktasını, çokgeni ve LineString 'i destekler.
 
 Jeo-uzamsal işlevlerden faydalanabilir senaryolar örnekleri şunlardır:
 
@@ -110,7 +110,7 @@ Daha fazla bilgi edinmek için [Createçokgen](/stream-analytics-query/createpol
 
 
 ## <a name="st_distance"></a>ST_DISTANCE
-`ST_DISTANCE`İşlevi, ölçü cinsinden iki işaret arasındaki mesafeyi döndürür. 
+`ST_DISTANCE`İşlevi, ölçü cinsinden iki geometri arasındaki mesafeyi döndürür. 
 
 Aşağıdaki sorgu, `ST_DISTANCE` bir gaz istasyonu arabadan 10 km 'tan az olduğunda bir olay oluşturmak için kullanır.
 
@@ -123,7 +123,7 @@ JOIN Station s ON ST_DISTANCE(c.Location, s.Location) < 10 * 1000
 Daha fazla bilgi edinmek için [ST_DISTANCE](/stream-analytics-query/st-distance) başvurusunu ziyaret edin.
 
 ## <a name="st_overlaps"></a>ST_OVERLAPS
-`ST_OVERLAPS`İşlev iki poligonu karşılaştırır. Çokgenler çakışırsa, işlev bir 1 döndürür. Çokgenler çakışmazsa işlev 0 döndürür. 
+`ST_OVERLAPS`İşlev iki geometrileri karşılaştırır. Geometriler çakışırsa, işlev bir 1 döndürür. Geometriler örtütürse, işlev 0 döndürür. 
 
 Aşağıdaki sorgu, `ST_OVERLAPS` bir derleme olası bir taşması bölgesi içindeyse bir olay oluşturmak için kullanır.
 
@@ -144,7 +144,7 @@ JOIN Storm s ON ST_OVERLAPS(c.Location, s.Course)
 Daha fazla bilgi edinmek için [ST_OVERLAPS](/stream-analytics-query/st-overlaps) başvurusunu ziyaret edin.
 
 ## <a name="st_intersects"></a>ST_INTERSECTS
-`ST_INTERSECTS`İşlevi Iki LineString 'i karşılaştırır. LineString kesiştiğinde, işlev 1 değerini döndürür. LineString kesişmezseniz işlev 0 döndürür.
+`ST_INTERSECTS`İşlev iki geometrileri karşılaştırır. Geometriler kesiştiğinde, işlev 1 değerini döndürür. Geometriler birbirleriyle kesişmezseniz işlev 0 döndürür.
 
 Aşağıdaki örnek sorgu, `ST_INTERSECTS` bir geçen yolun bir kir yolunda kesişip kesişmediğine yönelik olarak kullanılır.
 
@@ -170,7 +170,7 @@ FROM input
 Daha fazla bilgi edinmek için [ST_INTERSECTS](/stream-analytics-query/st-intersects) başvurusunu ziyaret edin.
 
 ## <a name="st_within"></a>ST_WITHIN
-`ST_WITHIN`İşlevi bir noktanın veya çokgenin çokgen içinde olup olmadığını belirler. Çokgen nokta veya Çokgen içeriyorsa, işlev 1 döndürür. Nokta veya Çokgen, belirtilen çokgen içinde yer alıyorsa işlev 0 döndürür.
+`ST_WITHIN`İşlevi, bir geometrinin başka bir geometri dahilinde olup olmadığını belirler. Birincisi en sonda yer alıyorsa, işlev 1 döndürür. İlk geometri son bir içinde yer alıyorsa işlev 0 döndürür.
 
 Aşağıdaki örnek sorgu, `ST_WITHIN` teslim hedef noktasının belirtilen ambar çokgen içinde olup olmadığını belirlemede kullanır.
 

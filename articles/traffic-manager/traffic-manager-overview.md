@@ -1,28 +1,27 @@
 ---
 title: Azure Traffic Manager | Microsoft Docs
-description: Bu makalede Azure Traffic Manager'a genel bir bakış sağlanmıştır. Uygulamanızın kullanıcı trafiğine yük dengeleme uygulamak için doğru seçenek olup olmadığına karar verin.
+description: Bu makalede Azure Traffic Manager'a genel bir bakış sağlanmıştır. Uygulamanız için Yük Dengeleme Kullanıcı trafiği için doğru seçenek olup olmadığını öğrenin.
 services: traffic-manager
 author: duongau
-manager: twooley
 ms.service: traffic-manager
 customer intent: As an IT admin, I want to learn about Traffic Manager and what I can use it for.
 ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/23/2019
+ms.date: 01/19/2021
 ms.author: duau
-ms.openlocfilehash: e2a4db1404709dadb2500df29f3f7acf8787c2b2
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 09b82eed5ad6a9ad121ca56d197eb9c003d027f5
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185740"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624918"
 ---
 # <a name="what-is-traffic-manager"></a>Traffic Manager nedir?
-Azure Traffic Manager, trafiği farklı Azure bölgelerindeki hizmetlere en uygun şekilde dağıtırken yüksek kullanılabilirlik ve yanıtlama hızı sağlayan DNS tabanlı bir trafik yük dengeleyicidir.
+Azure Traffic Manager, DNS tabanlı bir trafik yük dengeleyicidir. Bu hizmet, genel Azure bölgelerinde genel kullanıma açık uygulamalarınıza giden trafiği dağıtmanıza olanak tanır. Traffic Manager ayrıca, yüksek kullanılabilirlik ve hızlı yanıt verme ile genel uç noktalarınız sağlar.
 
-Traffic Manager, trafik yönlendirme yöntemine ve uç noktaların sistem durumuna bağlı olarak istemci isteklerini en uygun hizmet uç noktasına yönlendirmek için DNS hizmetini kullanır. Uç nokta, Azure içinde veya dışında barındırılan İnternet'e yönelik bir hizmettir. Traffic Manager, farklı uygulama ihtiyaçlarına ve otomatik yük devretme modellerine uyan farklı [trafik yönlendirme yöntemleri](traffic-manager-routing-methods.md) ve [uç nokta izleme seçenekleri](traffic-manager-monitoring.md) sunar. Traffic Manager, bir Azure bölgesinin tamamının devre dışı kalması dahil olmak üzere hatalara dayanıklıdır.
+Traffic Manager, istemci isteklerini bir trafik yönlendirme yöntemine göre uygun hizmet uç noktasına yönlendirmek için DNS kullanır. Traffic Manager ayrıca her uç nokta için sistem durumu izleme sağlar. Uç nokta, Azure 'un içinde veya dışında barındırılan Internet 'e yönelik herhangi bir hizmet olabilir. Traffic Manager, farklı uygulama ihtiyaçlarına ve otomatik yük devretme modellerine uyan farklı [trafik yönlendirme yöntemleri](traffic-manager-routing-methods.md) ve [uç nokta izleme seçenekleri](traffic-manager-monitoring.md) sunar. Traffic Manager, bir Azure bölgesinin tamamının devre dışı kalması dahil olmak üzere hatalara dayanıklıdır.
 
 >[!NOTE]
 > Azure, senaryolarınız için tam olarak yönetilen yük dengeleme çözümleri sunar. Aktarım Katmanı Güvenliği (TLS) protokolü sonlandırma ("SSL yük boşaltma") veya HTTP/HTTPS isteği başına uygulama katmanı işleme özellikleri istiyorsanız [Application Gateway](../application-gateway/overview.md)'i inceleyin. Bölgesel yük dengelemeyi arıyorsanız [Load Balancer](../load-balancer/load-balancer-overview.md)gözden geçirin. Uçtan uca senaryolarınızda bu çözümleri bir arada da kullanabilirsiniz.
@@ -37,11 +36,11 @@ Traffic Manager, uç noktalarınızı izleyerek ve uç nokta kullanım dışı k
     
 ## <a name="improve-application-performance"></a>Uygulama performansını geliştirme
 
-Azure, dünyanın dört bir yanında bulunan veri merkezlerinde bulut hizmeti veya web sitesi çalıştırmanıza olanak tanır. Traffic Manager, trafiği istemci için en düşük ağ gecikme süresine sahip trafiğe yönlendirerek uygulama yanıt süresini kısaltır.
+Azure, dünyanın dört bir yanındaki veri merkezlerinde bulut hizmetleri ve Web siteleri çalıştırmanızı sağlar. Traffic Manager, en düşük gecikme süresine sahip trafiği uç noktaya yönlendirerek Web sitenizin yanıt hızını iyileştirebilir.
 
-## <a name="perform-service-maintenance-without-downtime"></a>Kesinti süresi olmadan hizmet bakımı gerçekleştirme
+## <a name="service-maintenance-without-downtime"></a>Kesinti olmadan hizmet Bakımı
 
-Kesinti süresi yaşamadan uygulamalarınızda planlı bakım çalışmaları yürütebilirsiniz. Traffic Manager, bakım devam ederken trafiği alternatif uç noktalara yönlendirebilir.
+Kapalı kalma süresi olmadan uygulamalarınız üzerinde planlı bakım yapmış olabilirsiniz. Traffic Manager, bakım devam ederken trafiği alternatif uç noktalara yönlendirebilir.
 
 ## <a name="combine-hybrid-applications"></a>Hibrit uygulamaları birleştirme
 
