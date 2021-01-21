@@ -8,21 +8,18 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 10/12/2020
 ms.author: matjazl
-ms.openlocfilehash: bfbdb98e691312db5665261743f8ce698541d4cc
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: cdb41f12e8f050e3c74fccddb392d7a816c15b2f
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93398224"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621887"
 ---
 # <a name="configure-private-link"></a>Özel bağlantıyı Yapılandır
 
-> [!IMPORTANT]
-> Bu özellik genel önizleme aşamasındadır, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 Özel bağlantı, sanal ağınızdan özel bir IP adresi kullanarak özel ve güvenli bir şekilde bağlanan bir ağ arabirimi olan özel bir uç nokta üzerinden FHıR için Azure API 'sine erişmenizi sağlar. Özel bağlantıyla, herkese ortak bir DNS aracılığıyla bir ilk taraf hizmeti olarak güvenli bir şekilde erişim sağlayabilirsiniz. Bu makalede, FHıR için Azure API için özel uç noktanızı oluşturma, test etme ve yönetme işlemi adım adım açıklanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Özel bir uç nokta oluşturmadan önce, öncelikle oluşturmanız gereken bazı Azure kaynakları vardır:
 
@@ -82,7 +79,7 @@ FHıR sunucunuzun ortak ağ erişimini devre dışı bıraktıktan sonra ortak t
 
 ## <a name="manage-private-endpoint"></a>Özel uç noktayı Yönet
 
-### <a name="view"></a>Görüntüle
+### <a name="view"></a>Görünüm
 
 Özel uç noktalar ve ilişkili NIC, içinde oluşturuldukları kaynak grubundan Azure portal görünür.
 
@@ -90,6 +87,6 @@ FHıR sunucunuzun ortak ağ erişimini devre dışı bıraktıktan sonra ortak t
 
 ### <a name="delete"></a>Sil
 
-Özel uç noktalar yalnızca genel bakış dikey penceresinde (aşağıdaki gibi) veya ağ (Önizleme) "özel uç nokta bağlantıları" sekmesinde Sil seçeneği aracılığıyla Azure portal silinebilir. Sil düğmesine tıkladığınızda özel uç nokta ve ilişkili NIC silinir. Tüm özel uç noktaları FHıR kaynağına silerseniz ve genel ağ erişimi devre dışıysa, hiçbir istek bunu FHıR sunucunuza yapmaz. FHıR kaynağının silinebilmesi veya taşınabilmesi için tüm özel uç noktalar FHıR kaynağından silinmelidir.
+Özel uç noktalar yalnızca genel bakış dikey penceresinde (aşağıdaki gibi) veya ağ (Önizleme) "özel uç nokta bağlantıları" sekmesinde Sil seçeneği aracılığıyla Azure portal silinebilir. Sil düğmesine tıkladığınızda özel uç nokta ve ilişkili NIC silinir. Tüm özel uç noktaları FHıR kaynağına silerseniz ve genel ağ erişimi devre dışıysa, hiçbir istek bunu FHıR sunucunuza yapmaz.
 
 ![Özel uç noktayı Sil](media/private-link/private-link-delete.png)

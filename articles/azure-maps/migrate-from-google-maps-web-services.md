@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 444e7c9ad06c6f2ad584c0701fa652b901a4c3e7
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 3bb0aadf81ba501070ce0c734847bb16c0378896
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680779"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624047"
 ---
 # <a name="tutorial-migrate-web-service-from-google-maps"></a>Öğretici: Google Maps 'tan Web hizmeti geçirme
 
@@ -22,6 +22,7 @@ Hem Azure hem de Google Maps, REST Web Hizmetleri aracılığıyla uzamsal API '
 
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
+> [!div class="checklist"]
 > * İleri ve ters coğrafi kodlama
 > * İlgi noktası arama
 > * Rotaları ve yönleri hesapla
@@ -40,7 +41,7 @@ Tablo, listelenen Google Maps hizmeti API 'Lerinde benzer işlevlere sahip Azure
 
 | Google Maps hizmeti API 'SI | Azure haritalar hizmeti API 'SI                                                                      |
 |-------------------------|---------------------------------------------------------------------------------------------|
-| Yönergeler              | [Yol](/rest/api/maps/route)                                     |                         
+| Yönergeler              | [Yolu](/rest/api/maps/route)                                     |                         
 | Uzaklık matrisi         | [Yol matrisi](/rest/api/maps/route/postroutematrixpreview)       |                         
 | Coğrafi Kodlama               | [Ara](/rest/api/maps/search)                                   |                         
 | Konum arama           | [Ara](/rest/api/maps/search)                                   |                         
@@ -64,7 +65,7 @@ Azure haritalar, ilgi çekici olabilecek birkaç ek REST Web hizmetine sahiptir:
 - [Uzamsal işlemler](/rest/api/maps/spatial): bir hizmete bölge sınırlaması gibi karmaşık uzamsal hesaplamalar ve işlemler için yük boşaltma.
 - [Trafik](/rest/api/maps/traffic): gerçek zamanlı trafik akışına ve olay verilerine erişin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. [Azure portalında](https://portal.azure.com) oturum açın. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 2. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)

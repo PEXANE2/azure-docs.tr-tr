@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 13edc0280f1a6f7e962e8e4593d8a17990dd9e6f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3cb6ee3162c70d2d07c4868ae90ecc54bd489966
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454754"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622499"
 ---
 # <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>Öğretici: Displayr 'yi Azure Active Directory tümleştirin
 
@@ -52,7 +52,7 @@ Displayr 'nin tümleştirmesini Azure AD 'ye göre yapılandırmak için galerid
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Azure AD SSO 'yu, **Britta Simon**adlı bir test kullanıcısı kullanarak displayr ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Displayr içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+Azure AD SSO 'yu, **Britta Simon** adlı bir test kullanıcısı kullanarak displayr ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Displayr içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Displayr ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -78,6 +78,10 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<YOURDOMAIN>.displayr.com`
 
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`<YOURDOMAIN>.displayr.com`
+    
+    c. **Yanıt URL 'si** metin kutusuna yazın `https://app.displayr.com/Login/ProcessSamlResponse` .
+    
+    d. **Kaydet**’e tıklayın.
 
     >[!NOTE]
     >Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Displayr istemci desteği ekibine](mailto:support@displayr.com) başvurun. Ayrıca, Azure portal temel SAML yapılandırması bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -88,25 +92,23 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Displayr uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. Kullanıcı öznitelikleri iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    !["Düzenle" simgesi vurgulanmış "Kullanıcı öznitelikleri" bölümünü gösteren ekran görüntüsü.](common/edit-attribute.png)
+   !["Düzenle" simgesi vurgulanmış "Kullanıcı öznitelikleri" bölümünü gösteren ekran görüntüsü.](common/edit-attribute.png)
 
 1. Yukarıdaki ' a ek olarak, Displayr uygulaması SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. **Grup talepleri (Önizleme)** Iletişim kutusundaki **Kullanıcı öznitelikleri & talepler** bölümünde aşağıdaki adımları uygulayın:
 
-    a. **Talepte döndürülen gruplar ' ın**yanındaki **kaleme** tıklayın.
+   a. **Grup talebi ekle**' ye tıklayın.
 
-    !["Talep içinde döndürülen gruplar" seçeneğinin yanında "kalem" simgesiyle "Kullanıcı öznitelikleri & talepler" bölümünü gösteren ekran görüntüsü.](./media/displayr-tutorial/config04.png)
+      !["Talepler (Önizleme) penceresini ayarlar seçiliyken gösteren ekran görüntüsü.](./media/displayr-tutorial/config05.png)
 
-    !["Talepler (Önizleme) penceresini ayarlar seçiliyken gösteren ekran görüntüsü.](./media/displayr-tutorial/config05.png)
+   b. Radyo listesinden **tüm gruplar** ' ı seçin.
 
-    b. Radyo listesinden **tüm gruplar** ' ı seçin.
+   c. **Grup Kimliği**'Nin **kaynak özniteliğini** seçin.
 
-    c. **Grup Kimliği**'Nin **kaynak özniteliğini** seçin.
+   d. **Grup talebinin adını özelleştirmeyi** denetleyin.
 
-    d. **Grup talebinin adını özelleştirmeyi**denetleyin.
+   e. **Grup gruplarını rol talepleri olarak** kontrol edin.
 
-    e. **Grup gruplarını rol talepleri olarak**kontrol edin.
-
-    f. **Kaydet**’e tıklayın.
+   f. **Kaydet**’e tıklayın.
 
 1. **Kurulum Displayr** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
@@ -114,7 +116,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 ### <a name="configure-displayr"></a>Displayr 'yi yapılandırma
 
-1. Displayr 'deki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemek**üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+1. Displayr 'deki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemek** üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
     ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
 
@@ -140,9 +142,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     b. Azure AD 'nin **temel SAML yapılandırması** bölümünden gerçek **tanımlayıcı** değerini kopyalayın ve **sertifikayı veren** metin kutusuna yapıştırın.
 
-    c. **Oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    c. **Oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-    d. **Logout URL 'si** metin kutusunda, Azure Portal kopyaladığınız **Logout URL 'si**değerini yapıştırın.
+    d. **Logout URL 'si** metin kutusunda, Azure Portal kopyaladığınız **Logout URL 'si** değerini yapıştırın.
 
     e. Sertifika (base64) Not defteri 'nde açın, içeriğini kopyalayın ve **sertifikayı sertifika** metin kutusuna yapıştırın.
 
@@ -200,11 +202,11 @@ Azure AD kullanıcılarını etkinleştirmek için, Displayr 'de oturum açın v
 
     ![Displayr yapılandırması](./media/displayr-tutorial/config06.png)
 
-    a. **Ad** metin kutusuna, **Brittasıon**gibi kullanıcının adını girin.
+    a. **Ad** metin kutusuna, **Brittasıon** gibi kullanıcının adını girin.
 
     b. **E-posta** metin kutusuna kullanıcının e-postasını girin `Brittasimon@contoso.com` .
 
-    c. Uygun **Grup üyeliğinizi**seçin.
+    c. Uygun **Grup üyeliğinizi** seçin.
 
     d. **Kaydet**’e tıklayın.
 

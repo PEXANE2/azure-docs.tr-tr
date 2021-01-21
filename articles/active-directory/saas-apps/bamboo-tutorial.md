@@ -9,28 +9,24 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/16/2019
+ms.date: 01/12/2021
 ms.author: jeedes
-ms.openlocfilehash: 50b7ad2523210034b7c05e024e00950edb5e713c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: c92295eb3f173d0e050740d0aa38787eff242b39
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457410"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623945"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bamboo-by-resolution-gmbh"></a>Öğretici: çözüm GmbH tarafından Bamboo için SAML SSO ile tümleştirme Azure Active Directory
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile Bamboo için SAML SSO 'yu çözüm GmbH ile tümleştirmeyi öğreneceksiniz.
-Azure AD ile Bamboo için SAML SSO 'yu çözüm GmbH ile tümleştirme, aşağıdaki avantajları sağlar:
+Bu öğreticide, Azure Active Directory (Azure AD) ile Bamboo için SAML SSO 'yu çözüm GmbH ile tümleştirmeyi öğreneceksiniz. Bamboo için SAML SSO 'yu Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Bamboo için SAML SSO 'ya erişimi olan Azure AD 'de çözüm GmbH ' i denetleyebilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla çözüm GmbH (çoklu oturum açma) tarafından Bamboo için SAML SSO 'ya otomatik olarak oturum açmasını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
+* Azure AD 'de çözüm GmbH tarafından Bamboo için SAML SSO 'ya erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla çözüm GmbH tarafından Bamboo için SAML SSO 'ya otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin: Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
-
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bamboo tarafından çözümlenmek üzere SAML SSO ile Azure AD tümleştirmesini yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -44,63 +40,40 @@ Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandı
 * Bamboo tarafından çözümlenmek üzere SAML SSO GmbH **, SP ve ıDP** tarafından başlatılan SSO 'yu destekler
 * Bamboo by çözümüne göre SAML SSO GmbH **, tam zamanında** Kullanıcı sağlamayı destekler
 
-## <a name="adding-saml-sso-for-bamboo-by-resolution-gmbh-from-the-gallery"></a>Galeriden Bamboo için SAML SSO 'SU çözümleme GmbH ekleniyor
+## <a name="add-saml-sso-for-bamboo-by-resolution-gmbh-from-the-gallery"></a>Bamboo için SAML SSO 'yu, Galeriden çözüm GmbH ile ekleme
 
 Bamboo için SAML SSO 'yu çözüm GmbH tarafından Azure AD 'ye tümleştirmeyi yapılandırmak için, Galeri 'den yönetilen SaaS uygulamaları listenize çözüm GmbH tarafından Bamboo için SAML SSO 'SU eklemeniz gerekir.
 
-**Bamboo için SAML SSO 'yu, Galeriden çözüm GmbH ile eklemek için aşağıdaki adımları uygulayın:**
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **Bamboo by Resolution GmbH için SAML SSO** yazın.
+1. Sonuçlar panelinden **Bamboo by Resolution GmbH tarafından SAML SSO** 'yu seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
+## <a name="configure-and-test-azure-ad-sso-with-saml-sso-for-bamboo-by-resolution-gmbh"></a>Bamboo için SAML SSO ile Azure AD SSO 'yu yapılandırma ve test etme GmbH
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+**B. Simon** adlı bir test kullanıcısı kullanarak Bamboo IÇIN SAML SSO Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile Bamboo için SAML SSO 'daki ilgili Kullanıcı arasında bağlı bir ilişki kurmanız gerekir.
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
+Bamboo tarafından çözümlenmek üzere SAML SSO ile Azure AD SSO 'yu yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+     1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Bamboo by Resolution GmbH SSO-SAML SSO 'Yu yapılandırın](#configure-saml-sso-for-bamboo-by-resolution-gmbh-sso)** .
+    1. **[Bamboo tarafından Resolution GmbH test kullanıcısına YÖNELIK SAML SSO 'Su oluşturun](#create-saml-sso-for-bamboo-by-resolution-gmbh-test-user)** ; bu, kullanıcının Azure AD gösterimine bağlı olan, çözümleme GmbH çözümü ile Bamboo için SAML SSO 'su Ile bir Britta Simon çözümü oluşturun.
+6. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-    ![Yeni uygulama düğmesi](common/add-new-app.png)
-
-4. Arama kutusuna **Bamboo Için SAML SSO 'yu çözüm GmbH**yazın, sonuç panelinden **Bamboo için SAML SSO 'su** ' nu seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
-
-    ![Sonuç listesinde çözüm GmbH tarafından Bamboo için SAML SSO](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
-
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına bağlı olarak çözüm GmbH tarafından Bamboo IÇIN SAML SSO Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
-Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ve Bamboo için SAML SSO 'daki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
-
-Bamboo tarafından çözümlenmek üzere SAML SSO ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
-
-1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Bamboo IÇIN SAML SSO 'yu çözüm GmbH çoklu oturum açma Ile yapılandırın](#configure-saml-sso-for-bamboo-by-resolution-gmbh-single-sign-on)** .
-3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-5. **[Bamboo by Resolution GmbH test KULLANıCıSıNA SAML SSO 'Su oluşturun](#create-saml-sso-for-bamboo-by-resolution-gmbh-test-user)** ve bu, kullanıcının Azure AD gösterimine bağlı olan Bamboo tarafından çözümlenme GmbH için SAML SSO 'su Ile Ilgili Britta Simon 'un bir karşılığı olur.
-6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
-
-Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
-
-Bamboo tarafından çözümlenmek üzere SAML SSO ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdaki adımları uygulayın:
-
-1. [Azure Portal](https://portal.azure.com/), **Bamboo için SAML SSO çözüm GmbH** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
-
-    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
-
-2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
-
-    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
-
-3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+Bu bölümde, Azure portal Azure AD SSO 'yu etkinleştirirsiniz.
+ 
+1. Azure portal, **Bamboo Için SAML SSO ve çözüm GmbH** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Tek bir Sign-On yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesini seçin.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
-
 4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
-
-    ![Bamboo tarafından çözümlenmek GmbH etki alanı ve URL 'Ler çoklu oturum açma bilgileri için SAML S S O.](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<server-base-url>/plugins/servlet/samlsso`
 
@@ -108,9 +81,7 @@ Bamboo tarafından çözümlenmek üzere SAML SSO ile Azure AD çoklu oturum aç
 
 5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    ![Ekran görüntüsü, U R L 'ye bir Işaret girebileceğiniz ek U R 'Leri ayarlamayı gösterir.](common/metadata-upload-additional-signon.png)
-
-    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<server-base-url>/plugins/servlet/samlsso`
+     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<server-base-url>/plugins/servlet/samlsso`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [Bamboo by Resolution GmbH Client support ekibine yönelik SAML SSO ile](https://marketplace.atlassian.com/plugins/com.resolution.atlasplugins.samlsso-bamboo/server/support) iletişim kurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -123,17 +94,36 @@ Bamboo tarafından çözümlenmek üzere SAML SSO ile Azure AD çoklu oturum aç
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-    a. Oturum Açma URL’si
 
-    b. Azure AD tanımlayıcısı
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-    c. Oturum kapatma URL 'SI
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-### <a name="configure-saml-sso-for-bamboo-by-resolution-gmbh-single-sign-on"></a>Bamboo için SAML SSO 'yu çözüm GmbH tek Sign-On yapılandırma
+1. Azure Portal sol bölmeden, kullanıcılar **Azure Active Directory**  >    >  **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+   1. **Ad** alanına `B.Simon` girin.  
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu işaretleyin ve parolayı aşağı yazın.
+   1. **Oluştur**’u seçin.
+
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
+
+Bu bölümde, çözüm GmbH tarafından Bamboo için SAML SSO 'SU erişimi vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirin.
+
+1. Azure Portal **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **çözüm GmbH tarafından Bamboo Için SAML SSO**' yı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. **Kullanıcı ekle**'yi seçin. Sonra **atama Ekle** Iletişim kutusunda **Kullanıcılar ve gruplar**' ı seçin.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, Kullanıcı listesinden **B. Simon** öğesini seçin. Ardından ekranın alt kısmında **Seç** ' i seçin.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
+1. **Atama Ekle** Iletişim kutusunda **ata**' yı seçin.
+
+### <a name="configure-saml-sso-for-bamboo-by-resolution-gmbh-sso"></a>Bamboo by Resolution GmbH SSO için SAML SSO 'yu yapılandırma
 
 1. Bamboo için SAML SSO 'da yönetici olarak çözüm GmbH Şirket sitesini oturum açın.
 
-1. Ana araç çubuğunun sağ tarafında, **Ayarlar**Eklentiler ' e tıklayın  >  **Add-ons**.
+1. Ana araç çubuğunun sağ tarafında, **Ayarlar** Eklentiler ' e tıklayın  >  .
 
     ![Ayarlar](./media/bamboo-tutorial/tutorial_bamboo_setings.png)
 
@@ -149,7 +139,7 @@ Bamboo tarafından çözümlenmek üzere SAML SSO ile Azure AD çoklu oturum aç
 
     ![Kimlik sağlayıcısı](./media/bamboo-tutorial/tutorial_bamboo_identityprovider.png)
 
-    a. **IDP türünü** **Azure AD**olarak seçin.
+    a. **IDP türünü** **Azure AD** olarak seçin.
 
     b. **Ad** metin kutusuna adı yazın.
 
@@ -169,72 +159,26 @@ Bamboo tarafından çözümlenmek üzere SAML SSO ile Azure AD çoklu oturum aç
 
 1. **Ayarları kaydet**’e tıklayın.
 
-    ![Kaydet](./media/bamboo-tutorial/tutorial_bamboo_save.png)
-
-### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
-
-Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
-
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-
-    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
-
-2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
-
-    ![Yeni Kullanıcı düğmesi](common/new-user.png)
-
-3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
-
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
-
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com
-
-    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
-
-    d. **Oluştur**’a tıklayın.
-
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
-
-Bu bölümde, çözüm GmbH tarafından Bamboo için SAML SSO 'ya erişim vererek Azure çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin, sonra **Bamboo tarafından çözüm GmbH için SAML SSO**' yı seçin.
-
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
-
-2. Uygulamalar listesinde, **çözüm GmbH tarafından Bamboo Için SAML SSO**' yı seçin.
-
-    ![Uygulamalar listesindeki Bamboo by Resolution GmbH LINK için SAML SSO](common/all-applications.png)
-
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
-
-    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
-4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
-
-5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-
-6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-
-7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
-
 ### <a name="create-saml-sso-for-bamboo-by-resolution-gmbh-test-user"></a>Çözüm GmbH test kullanıcısı tarafından Bamboo için SAML SSO oluşturma
 
 Bu bölümün amacı, Bamboo by Resolution GmbH tarafından SAML SSO 'da Britta Simon adlı bir Kullanıcı oluşturmaktır. Bamboo tarafından çözümlenmek üzere SAML SSO GmbH, tam zamanında sağlamayı destekler ve ayrıca kullanıcılar el ile oluşturulabilir, gereksiniminize göre, [Bamboo Için SAML SSO 'Su GmbH istemci destek ekibine](https://marketplace.atlassian.com/plugins/com.resolution.atlasplugins.samlsso-bamboo/server/support) başvurun.
 
-### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
+### <a name="test-sso"></a>Test SSO 'SU
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-Erişim panelinde Bamboo tarafından çözüm için SAML SSO GmbH kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız çözüm GmbH tarafından Bamboo için SAML SSO 'ya otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>SP başlatıldı:
 
-## <a name="additional-resources"></a>Ek Kaynaklar
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum akışını başlatabileceğiniz çözüm GmbH oturum açma URL 'sine göre Bamboo için SAML SSO 'ya yönlendirilir.  
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
+* Bamboo için SAML SSO ve çözüm GmbH oturum açma URL 'sine doğrudan gidin ve oturum akışını buradan başlatın.
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP başlatıldı:
 
-- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)
+* Azure portal **Bu uygulamayı test et** ' e tıklayın ve SSO 'Yu ayarladığınız Bamboo by çözüm GmbH tarafından SAML SSO 'su için otomatik olarak oturum açmış olmanız gerekir.
+
+Uygulamayı dilediğiniz modda test etmek için Microsoft My Apps ' i de kullanabilirsiniz. Uygulamalarım için SAML SSO for Resolution GmbH kutucuğuna tıkladığınızda, SP modunda yapılandırılmışsa, oturum açma akışını başlatmak için uygulama oturum açma sayfasına yönlendirilirsiniz ve ıDP modunda yapılandırıldıysa, SSO 'yu ayarladığınız Bamboo tarafından çözümleme için SAML SSO 'ya otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](../user-help/my-apps-portal-end-user-access.md).
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Bamboo için SAML SSO 'yu çözüm GmbH ile yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

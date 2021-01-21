@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 8/15/2018
+ms.date: 01/20/2021
 ms.author: victorh
-ms.openlocfilehash: 413ae2ee19f0b8e427de9167b52971e413cdf573
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: f0c06a94498f4d2481a6e953b959d766c60415fb
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397238"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622189"
 ---
 # <a name="renew-application-gateway-certificates"></a>Application Gateway sertifikalarını Yenile
 
@@ -20,13 +20,13 @@ Bir noktada, TLS/SSL şifrelemesi için uygulama ağ geçidinizi yapılandırdı
 
 Azure portal, Azure PowerShell ya da Azure CLı kullanarak bir dinleyiciyle ilişkili bir sertifikayı yenileyebilirsiniz:
 
-## <a name="azure-portal"></a>Azure portalı
+## <a name="azure-portal"></a>Azure portal
 
-Portaldan bir dinleyici sertifikasını yenilemek için uygulama ağ geçidi dinleyicilerine gidin. Yenilenmesi gereken sertifikaya sahip olan dinleyiciye tıklayın ve ardından **Yenile veya seçili sertifikayı Düzenle** ' ye tıklayın.
+Portaldan bir dinleyici sertifikasını yenilemek için uygulama ağ geçidi dinleyicilerine gidin. Yenilenmesi gereken bir sertifikaya sahip dinleyiciyi seçin ve ardından **Yenile veya seçili sertifikayı Düzenle**' yi seçin.
 
-![Sertifikayı Yenile](media/renew-certificate/ssl-cert.png)
+:::image type="content" source="media/renew-certificate/ssl-cert.png" alt-text="Sertifikayı Yenile":::
 
-Yeni PFX sertifikanızı karşıya yükleyin, bir ad verin, parolayı yazın ve ardından **Kaydet** ' e tıklayın.
+Yeni PFX sertifikanızı karşıya yükleyin, bir ad verin, parolayı yazın ve ardından **Kaydet**' i seçin.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 

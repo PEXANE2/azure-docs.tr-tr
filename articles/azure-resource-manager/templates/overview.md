@@ -2,13 +2,13 @@
 title: Şablonlara genel bakış
 description: Kaynak dağıtımı için Azure Resource Manager şablonları (ARM şablonları) kullanmanın avantajlarını açıklar.
 ms.topic: conceptual
-ms.date: 12/17/2020
-ms.openlocfilehash: c4995791b784351219458c546442d082e2396315
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.date: 01/20/2021
+ms.openlocfilehash: dd9207ca1d0397b7dce63eb826567f07b1d0b892
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657320"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621848"
 ---
 # <a name="what-are-arm-templates"></a>ARM şablonları nelerdir?
 
@@ -125,6 +125,12 @@ Katmanlarınızın farklı yaşam döngülerine sahip olacağını düşünüyor
 ![katman şablonu](./media/overview/tier-templates.png)
 
 İç içe geçmiş şablonlar hakkında daha fazla bilgi için bkz. [Azure Resource Manager ile bağlı şablonları kullanma](linked-templates.md).
+
+## <a name="share-templates"></a>Şablonları paylaşma
+
+Şablonunuzu oluşturduktan sonra kuruluşunuzdaki diğer kullanıcılarla paylaşmak isteyebilirsiniz. [Şablon Özellikleri](template-specs.md) , bir şablonu kaynak türü olarak depolamanızı sağlar. Şablon belirtimine erişimi yönetmek için rol tabanlı erişim denetimi kullanırsınız. Şablon belirtimine okuma erişimi olan kullanıcılar bu özelliği dağıtabilir ancak şablonu değiştirmez.
+
+Bu yaklaşım, kuruluşunuzun standartlarını karşılayan şablonları güvenli bir şekilde paylaşabileceğiniz anlamına gelir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

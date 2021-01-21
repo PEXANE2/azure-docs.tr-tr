@@ -4,12 +4,12 @@ description: Bu makalede Azure Service Bus iletilerinin teslimini erteleme açı
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7c9ec55de24c97df3530d80deef55ed87be84077
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3a940f8aa9e72d9b09e9c0a3305521c6f17dfb0
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511288"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622054"
 ---
 # <a name="message-deferral"></a>İleti erteleme
 
@@ -26,7 +26,7 @@ Sonuç olarak, alma sırasındaki iletileri, işleme için bir ileti deposunda g
 
 ## <a name="message-deferral-apis"></a>İleti erteleme API 'Leri
 
-API, .NET Standard istemcisinde .NET Framework istemcisi, [MessageReceiver.](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) Defsilinsync ve Java istemcisinde [IMessageReceiver. ertele](/java/api/com.microsoft.azure.servicebus.imessagereceiver.defer?view=azure-java-stable) ya da [IMessageReceiver. Defsilinsync](/java/api/com.microsoft.azure.servicebus.imessagereceiver.deferasync?view=azure-java-stable) olan [brokeredmessage.](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.defer?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_Defer) erteleme veya [brokeredmessage. defsilinebilir](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deferasync?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeferAsync) Sync. 
+API, .NET Standard istemcisinde .NET Framework istemcisi, [MessageReceiver.](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) Defsilinsync ve Java istemcisinde [IMessageReceiver. ertele](/java/api/com.microsoft.azure.servicebus.imessagereceiver.defer) ya da [IMessageReceiver. Defsilinsync](/java/api/com.microsoft.azure.servicebus.imessagereceiver.deferasync) olan [brokeredmessage.](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.defer#Microsoft_ServiceBus_Messaging_BrokeredMessage_Defer) erteleme veya [brokeredmessage. defsilinebilir](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deferasync#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeferAsync) Sync. 
 
 Ertelenmiş iletiler, diğer tüm etkin iletilerle birlikte ana sırada kalır (bir alt sırada bulunan atılacak ileti iletilerinin aksine), ancak artık normal alma/ReceiveAsync işlevleri kullanılarak alınamazlar. Ertelenmiş iletiler, bir uygulama tarafından izlenmeleri kaybolursa [ileti göz atma](message-browsing.md) aracılığıyla bulunabilir.
 

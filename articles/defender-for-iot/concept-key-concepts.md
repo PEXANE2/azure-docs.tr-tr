@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/13/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 1ac87f98af555aae155a201cc20692c950fc7924
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 419e32a127947cde1d3761507f0df7a889528ff2
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97841712"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621937"
 ---
 # <a name="basic-concepts"></a>Temel kavramlar 
 
@@ -22,7 +22,7 @@ Bu makalede IoT için Azure Defender 'ın temel avantajları açıklanmaktadır.
 
 IoT sensörleri için Defender, bir SPAN bağlantı noktasına veya ağa dokunmaya bağlanır ve doğrudan pasif (aracısız) izleme aracılığıyla ICS ağ trafiğini toplamaya başlar. Derin paket incelemesi (DPı), hem seri hem de Ethernet denetim ağı cihazından gelen trafiği dissect için kullanılır. IoT için Defender, veri yoluna yerleştirilmediğinden ve cihaz etkin bir şekilde taramadığı için OT ağları üzerinde sıfır etkiye sahiptir. 
 
-Ayrıntılı varlık bilgilerinin anlık anlık görüntülerini sağlamak için, IoT algılayıcısı için Defender, isteğe bağlı bir etkin bileşenle pasif izlemeyi tamamlar. Bu bileşen, varlık ayrıntıları için hem Windows hem de denetleyici cihazlarını istediğiniz sıklıkta sorgulamak için güvenli, satıcının onayladığı komutları kullanır.
+Ayrıntılı cihaz bilgilerinin anlık anlık görüntülerini teslim etmek için, IoT algılayıcısı için Defender, isteğe bağlı bir etkin bileşenle pasif izlemeyi tamamlar. Bu bileşen, cihaz ayrıntıları için hem Windows hem de denetleyici cihazlarını istediğiniz sıklıkta sorgulamak için güvenli, satıcının onayladığı komutları kullanır.
 
 ## <a name="embedded-knowledge-of-ics-protocols-devices-and-applications"></a>ICS protokolleri, cihazları ve uygulamaları için gömülü bilgi
 
@@ -34,7 +34,7 @@ Altyapılar, imzaları güncelleştirmek veya kuralları tanımlamak için gerek
 
 - **Protokol ihlali algılama**: ICS protokol belirtimlerini ihlal eden paket yapılarının ve alan değerlerinin kullanımını tanımlar.
 
-- **İlke ihlali algılama**: işlev kodlarının yetkisiz kullanımı, belirli nesnelere erişim veya varlık yapılandırmasındaki değişiklikler gibi ilke ihlallerini tanımlar.
+- **İlke ihlali algılama**: işlev kodlarının yetkisiz kullanımı, belirli nesnelere erişim veya cihaz yapılandırmasındaki değişiklikler gibi ilke ihlallerini tanımlar.
 
 - **Endüstriyel kötü amaçlı yazılım algılama**: Conficker, Black Energy, Havex, WannaCry ve NotPetya gibi bilinen kötü amaçlı yazılımların varlığını belirten davranışları tanımlar.
 

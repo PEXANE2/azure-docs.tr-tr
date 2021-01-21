@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 59cf250a9db5a1f6759495c1b5a3c48cb07cde15
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 59dfa439f6428f2db972a8f848887e1a74bc2622
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018796"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624312"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 için tahmin uç noktası değişiklikleri
 
@@ -66,9 +66,6 @@ Bu API v3 tahmin uç noktasında desteklenmez-yazım düzeltmeleri için v2 API 
 
 Bot çerçevesinin V 4.7 'i serbest bırakılana kadar v2 API tahmini uç noktasını kullanmaya devam edin.
 
-## <a name="v2-api-deprecation"></a>V2 API 'sinin kullanımdan kaldırılması
-
-V2 tahmin API 'SI v3 önizlemesi sonrasında 8 Haziran 2020 ' den sonra en az 9 ay boyunca kullanım dışı olmayacaktır.
 
 ## <a name="endpoint-url-changes"></a>Uç nokta URL 'SI değişiklikleri
 
@@ -268,9 +265,6 @@ V3 'de, `verbose` varlık meta verilerini döndürme bayrağıyla aynı sonuç:
 
 Tahmin çalışma zamanında uygulamanın nasıl genişletileceği hakkında [kavramları](schema-change-prediction-runtime.md) öğrenin.
 
-## <a name="deprecation"></a>Kullanımdan kaldırma
-
-V2 API 'SI, v3 önizlemesi sonrasında en az 9 ay boyunca kullanım dışı olmayacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

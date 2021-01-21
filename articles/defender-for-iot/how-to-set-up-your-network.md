@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/03/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 2053632f24504f896d1045f99d581b9aa6050b55
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: a71ea75eb603b141c4b28cff5f2b4aa957583bcd
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573148"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621321"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>IoT Ağ kurulumu için Azure Defender hakkında
 
@@ -94,35 +94,36 @@ Aşağıdaki tarayıcılar, sensörler ve şirket içi yönetim konsolu Web uygu
 
 Kurumsal güvenlik ilkenizin aşağıdakilere erişime izin verdiğini doğrulayın:
 
-| **Amaç** | **Protokol** | **Aktarım** | **Dışarı veya dışarı** | **Bağlantı noktası** | **Kategori** |
-| ----------- | ----------- | ------------ | ---------- | -------- | ------------ |
-| **Web konsoluna erişim** | HTTPS | TCP | Dışarı veya dışarı | 443 | IoT Platformu için Defender 'ın şirket içi yönetim konsolu |
-| **CLı erişimi** | SSH | TCP | Dışarı veya dışarı | 22 | CLI |
-| **IoT Platformu için Defender ve şirket içi yönetim konsolu arasında bağlantı** | SSL | TCP | Dışarı veya dışarı | 443 | Algılayıcı ve şirket içi yönetim konsolu|
-| **Sensöre NTP olarak kullanılan şirket içi yönetim konsolu** | NTP | UDP| CM 'ye | 123 | Zaman eşitleme | 
-| **Dış NTP sunucusuna bağlı algılayıcı (ilgiliyse)** | NTP | UDP | Dışarı veya dışarı| 123 | Zaman eşitleme |
-| **IoT Platformu ve yönetim platformu ve posta sunucusu (uygunsa) için Defender arasında bağlantı** | SMTP | TCP | Algılayıcı yönetimi yok | 25 | E-posta |
-| **Şirket içi yönetim konsolundan Syslog sunucusuna (ilgiliyse) gönderilen Günlükler** | Syslog | UDP | Algılayıcı yönetimi yok| 514 | LEEF |
-| **DNS sunucusu bağlantı noktası (ilgiliyse)** | DNS | Yok | Dışarı veya dışarı| 53 | DNS |
-| **IoT Platformu için Defender ve şirket içi yönetim konsolu arasında Active Directory (ilgiliyse) arasında bağlantı** | LDAPS | TCP | Dışarı veya dışarı | 636 <br />389 | Active Directory |
-| **Uzak SNMP toplayıcıları (ilgiliyse)** | SNMP | UDP | Algılayıcı yönetimi yok| 161 | İzleme |
-| **Windows uç nokta izleme (ilgiliyse)** | WMI | UDP | Algılayıcı yönetimi yok| 135 | İzleme |
-| **Windows uç nokta izleme (ilgiliyse)** | WMI | TCP | Algılayıcı yönetimi yok| 1024 ve üzeri | İzleme |
-| **Tünel oluşturma (ilgiliyse)** | Tünel | TCP | CM 'ye | 9000<br />443 numaralı bağlantı noktasına ek olarak<br />Son kullanıcıdan şirket içi yönetim konsoluna <br />Algılayıcıdan şirket içi yönetim konsoluna bağlantı noktası 22 | İzleme |
-| **IoT Hub için Defender 'a giden** | HTTPS | TCP | Algılayıcı yönetimi yok| **URL**<br />*. azure-devices.net:443<br />veya joker karakterler desteklenmiyorsa<br />{IoT Hub adınız}. Azure-devices.net:443 |
+| Protokol | Aktarım | Gelen/giden | Bağlantı noktası | Kullanılan | Amaç | Kaynak | Hedef |
+|--|--|--|--|--|--|--|--|
+| HTTPS | TCP | GELEN/GIDEN | 443 | Algılayıcı ve şirket Içi Yönetim Konsolu Web Konsolu | Web konsoluna erişim | İstemci | Algılayıcı ve şirket içi yönetim konsolu |
+| SSH | TCP | GELEN/GIDEN | 22 | CLI | CLı erişimi | İstemci | Algılayıcı ve şirket içi yönetim konsolu |
+| SSL | TCP | GELEN/GIDEN | 443 | Algılayıcı ve şirket içi yönetim konsolu | Six platformu ve merkezi yönetim platformu arasında bağlantı | algılayıcı | Şirket içi yönetim konsolu |
+| NTP | UDP | IN | 123 | Zaman eşitleme | Şirket içi yönetim konsolu, algılayıcı için NTP olarak kullanın | algılayıcı | Şirket içi yönetim konsolu |
+| NTP | UDP | GELEN/GIDEN | 123 | Zaman eşitleme | Şirket içi yönetim konsolunun yüklü olmadığı durumlarda, dış NTP sunucusuna bağlı algılayıcı | algılayıcı | NTP |
+| SMTP | TCP | DıŞı | 25 | E-posta | Six platformu ile yönetim platformu ve posta sunucusu arasındaki bağlantı | Algılayıcı ve şirket içi yönetim konsolu | E-posta sunucusu |
+| Syslog | UDP | DıŞı | 514 | LEEF | Şirket içi yönetim konsolundan Syslog sunucusuna gönderilen Günlükler | Şirket içi yönetim konsolu ve algılayıcı | Syslog sunucusu |
+| DNS |  | GELEN/GIDEN | 53 | DNS | DNS sunucusu bağlantı noktası | Şirket içi yönetim konsolu ve algılayıcı | DNS sunucusu |
+| LDAP | TCP | GELEN/GIDEN | 389 | Active Directory | Six platformu ile yönetim platformu arasındaki bağlantı Active Directory | Şirket içi yönetim konsolu ve algılayıcı | LDAP sunucusu |
+| LDAPS | TCP | GELEN/GIDEN | 636 | Active Directory | Six platformu ile yönetim platformu arasındaki bağlantı Active Directory | Şirket içi yönetim konsolu ve algılayıcı | LDAPS sunucusu |
+| SNMP | UDP | DıŞı | 161 | İzleme | Uzak SNMP toplayıcıları. | Şirket içi yönetim konsolu ve algılayıcı | SNMP sunucusu |
+| WMI | UDP | DıŞı | 135 | izleme | Windows uç nokta Izleme | Algılayıcısı | İlgili ağ öğesi |
+| Tünel | TCP | IN | 9000 <br /><br />-bağlantı noktası 443 ' nin üstünde <br /><br />Son kullanıcıdan şirket içi yönetim konsoluna. <br /><br />-Noktadan şirket içi yönetim konsoluna kadar olan bağlantı noktası 22  | izleme | Tünel | Algılayıcısı | Şirket içi yönetim konsolu |
 
 ### <a name="planning-rack-installation"></a>Raf yükleme planlaması
 
 Raf yüklemenizi planlamak için:
 
 1. Gereç ağı ayarlarınıza bir izleyici ve klavye hazırlayın.
-2. Gereç için raf alanını ayırın.
-3. Gereç için AC gücü kullanılabilir.
-4. Yönetim bağlantısını ağ anahtarına bağlamak için LAN kablosunu hazırlayın.
-5. Anahtar yayma (yansıtma) bağlantı noktalarını ve ya da ağ tap 'ları IoT gereci için Defender 'a bağlamak üzere LAN kablolarını hazırlayın. 
-6. Mimari inceleme oturumunda açıklandığı gibi yansıtılan anahtarların YAYıLMA bağlantı noktalarını yapılandırın, bağlayın ve doğrulayın.
-7. Yapılandırılmış YAYıLMA bağlantı noktasını Wireshark çalıştıran bir bilgisayara bağlayın ve bağlantı noktasının doğru şekilde yapılandırıldığını doğrulayın.
-8. İlgili tüm güvenlik duvarı bağlantı noktalarını açın.
+
+1. Gereç için raf alanını ayırın.
+
+1. Gereç için AC gücü kullanılabilir.
+1. Yönetim bağlantısını ağ anahtarına bağlamak için LAN kablosunu hazırlayın.
+1. Anahtar yayma (yansıtma) bağlantı noktalarını ve ya da ağ tap 'ları IoT gereci için Defender 'a bağlamak üzere LAN kablolarını hazırlayın. 
+1. Mimari inceleme oturumunda açıklandığı gibi yansıtılan anahtarların YAYıLMA bağlantı noktalarını yapılandırın, bağlayın ve doğrulayın.
+1. Yapılandırılmış YAYıLMA bağlantı noktasını Wireshark çalıştıran bir bilgisayara bağlayın ve bağlantı noktasının doğru şekilde yapılandırıldığını doğrulayın.
+1. İlgili tüm güvenlik duvarı bağlantı noktalarını açın.
 
 ## <a name="about-passive-network-monitoring"></a>Pasif ağ izleme hakkında
 
@@ -141,6 +142,7 @@ Aşağıdaki bölümlerde, takip eden düzeyler açıklanır.
 Düzey 0, temel üretim sürecinde yer alan çok sayıda sensörden, Atlayıcıları ve cihazdan oluşur. Bu cihazlar, endüstriyel otomasyon ve denetim sisteminin temel işlevlerini gerçekleştirir, örneğin:
 
 - Motor sürüş.
+
 - Değişkenleri ölçme.
 - Çıkış ayarlama.
 - Boyama, kaynak ve döndürme gibi önemli işlevleri gerçekleştirme.
@@ -227,7 +229,7 @@ Birden çok sensöri dağıtmaya yönelik bazı öneriler aşağıda verilmişti
 |--|--|--|--|
 | Anahtarlar arasındaki en fazla uzaklık | 80 ölçü | Hazırlanmış Ethernet kablosu | 1 ' den fazla |
 | OT ağı sayısı | 1 ' den fazla | Fiziksel bağlantı yok | 1 ' den fazla |
-| Anahtar sayısı | RSPAN yapılandırması kullanılabilir | Yerel yayılmasına sahip 8 ' e kadar geçiş, her bir kablo mesafeden algılayıcıya yakın | 1 ' den fazla |
+| Anahtar sayısı | RSPAN yapılandırması kullanılabilir | Yerel yayılmasına sahip en fazla sekiz anahtar, en çok kablo mesafeden algılayıcıya yakın | 1 ' den fazla |
 
 #### <a name="traffic-mirroring"></a>Trafik yansıtma  
 
@@ -355,7 +357,7 @@ Terminal erişim noktası (TAP), ağ trafiğinin bağlantı noktasından B 'ye v
 
 Dokunmalar çeşitli nedenlerle avantajlıdır. Bunlar donanım tabanlıdır ve tehlikeye girebilir. Tüm trafik, hatta hasar gören iletiler bile geçer ve bu anahtarlar genellikle düşürüktir. İşlemciye duyarlı değildir, bu nedenle paket zamanlaması, anahtarların yansıtma işlevini, yansıtılmış paketlerin zamanlamasını etkileyebilecek düşük öncelikli bir görev olarak işleyeceği bir tam değer. Adli amaçlar için en iyi cihaz bir dokunma olur.
 
-Bağlantı noktası izleme için, toplayıcısını değiştirme 'lar de kullanılabilir. Bu cihazlar, işlemci tabanlıdır ve donanım dokunmasıyla doğası gereği güvende değildir. Bunlar tam paket zamanlamasını yansıtmayabilir.
+Bağlantı noktası izleme için, toplayıcısını değiştirme 'lar de kullanılabilir. Bu cihazlar, işlemci tabanlıdır ve donanım dokunmasıyla doğası gereği güvenli değildir. Bunlar tam paket zamanlamasını yansıtmayabilir.
 
 :::image type="content" source="media/how-to-set-up-your-network/active-passive-tap-v2.PNG" alt-text="Etkin ve pasif dokunmalar diyagramı.":::
 
@@ -364,10 +366,10 @@ Bağlantı noktası izleme için, toplayıcısını değiştirme 'lar de kullan�
 Bu modeller uyumluluk için test edilmiştir. Diğer satıcılar ve modeller de uyumlu olabilir.
 
 | Görüntü | Modelleme |
-| -- | -- |
-| :::image type="content" source="media/how-to-set-up-your-network/garland-p1gccas-v2.png" alt-text="Garland P1GCCAS ekran görüntüsü.":::  | Garland P1GCCAS  |
-| :::image type="content" source="media/how-to-set-up-your-network/ixia-tpa2-cu3-v2.png" alt-text="IXIA TPA2-CU3 ekran görüntüsü.":::  | IXIA TPA2-CU3  |
-| :::image type="content" source="media/how-to-set-up-your-network/us-robotics-usr-4503-v2.png" alt-text="US Robotics USR 4503 ekran görüntüsü.":::  | US Robotics USR 4503  |
+|--|--|
+| :::image type="content" source="media/how-to-set-up-your-network/garland-p1gccas-v2.png" alt-text="Garland P1GCCAS ekran görüntüsü."::: | Garland P1GCCAS |
+| :::image type="content" source="media/how-to-set-up-your-network/ixia-tpa2-cu3-v2.png" alt-text="IXIA TPA2-CU3 ekran görüntüsü."::: | IXIA TPA2-CU3 |
+| :::image type="content" source="media/how-to-set-up-your-network/us-robotics-usr-4503-v2.png" alt-text="US Robotics USR 4503 ekran görüntüsü."::: | US Robotics USR 4503 |
 
 ##### <a name="special-tap-configuration"></a>Özel dokunma yapılandırması
 
@@ -425,7 +427,7 @@ Site mühendislerinin ağın nasıl göründüğünü öğrenmiş. Yerel ağ ve 
 
 - IoT gereci için Defender bu anahtara bağlanmalıdır, bu dolapta fiziksel olarak kullanılabilir raf alanı var mı?
 
-#### <a name="additional-considerations"></a>Diğer konular
+#### <a name="other-considerations"></a>Diğer önemli noktalar
 
 IoT gereci için Defender 'ın amacı, 1 ve 2. katmanlardan trafiği izmektir.
 
@@ -547,7 +549,7 @@ Site dağıtımından önce bu listeyi gözden geçirin:
 | 14 | Gereçlerden oluşan raf ve kablo. | ☐ |  |
 | 15 | Dağıtımı desteklemek için site kaynaklarını ayırın. | ☐ |  |
 | 16 | Active Directory grupları veya yerel kullanıcılar oluşturun. | ☐ |  |
-| 17 | Eğitimi ayarlayın (kendi kendine öğrenme). | ☐ |  |
+| 17 | Kurulum Eğitimi (kendi kendine öğrenme). | ☐ |  |
 | 18 | Git veya git. | ☐ |  |
 | 19 | Dağıtım tarihini zamanlayın. | ☐ |  |
 
@@ -671,7 +673,7 @@ Algılayıcı gereci, bir ağ bağdaştırıcısı aracılığıyla anahtar yaym
 | Gizli anahtar | |
 | SNMP v2 topluluk dizesi |
 
-### <a name="cm-ssl-certificate"></a>CM SSL sertifikası
+### <a name="on-premises-management-console-ssl-certificate"></a>Şirket içi yönetim konsolu SSL sertifikası
 
 Bir SSL sertifikası kullanmayı planlıyor musunuz? Evet veya Hayır
 

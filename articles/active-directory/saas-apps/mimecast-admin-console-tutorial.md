@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/21/2020
+ms.date: 01/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 8f0274aa15d965a4e06a096c21c0fd282ec1d12a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7198d341de9de42f28aeafe0fb94273b916482f1
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92522621"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621287"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mimecast-admin-console"></a>Öğretici: Mimecast Yönetici Konsolu ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -25,8 +25,6 @@ Bu öğreticide, Mimecast yönetici konsolunun Azure Active Directory (Azure AD)
 * Azure AD 'de Mimecast Yönetici konsoluna erişimi olan denetim.
 * Kullanıcılarınızın Azure AD hesaplarıyla Mimecast Yönetici konsoluna otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
-
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -40,24 +38,23 @@ Başlamak için aşağıdaki öğeler gereklidir:
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
 * Mimecast Yönetici Konsolu **SP ve ıDP** tarafından başlatılan SSO 'yu destekler
-* Mimecast Yönetici Konsolu 'Nu yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-mimecast-admin-console-from-the-gallery"></a>Galeriden Mimecast Yönetici Konsolu ekleniyor
+## <a name="add-mimecast-admin-console-from-the-gallery"></a>Galeriden Mimecast yönetici konsolu ekle
 
 Mimecast yönetici konsolunun tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden, yönetilen SaaS uygulamaları listenize Mimecast Yönetici Konsolu eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Mimecast Yönetici Konsolu** yazın.
 1. Sonuçlar panelinden **Mimecast Yönetici Konsolu** ' nu seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-mimecast-admin-console"></a>Mimecast Yönetici Konsolu için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-mimecast-admin-console"></a>Mimecast Yönetici Konsolu için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak, Mimecast Yönetici Konsolu Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Mimecast Yönetici konsolundaki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak, Mimecast Yönetici Konsolu Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Mimecast Yönetici konsolundaki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO 'yu Mimecast yönetim konsoluyla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO 'yu Mimecast Yönetici Konsolu ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
@@ -70,15 +67,15 @@ Azure AD SSO 'yu Mimecast yönetim konsoluyla yapılandırmak ve test etmek içi
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **Mimecast Yönetici Konsolu** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. Azure portal, **Mimecast Yönetici Konsolu** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
 1. **Temel SAML yapılandırması** bölümünde, uygulamayı IDP tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
-    a. **Tanımlayıcı** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
+    a. **Tanımlayıcı** metin kutusuna aşağıdaki kalıbı kullanarak URL 'yi yazın:
 
     | Bölge  |  Değer | 
     | --------------- | --------------- |
@@ -89,9 +86,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     | Yurtdışında        | `https://jer-api.mimecast.com/sso/<accountcode>`|
 
     > [!NOTE]
-    > Bu `accountcode` değeri, **Hesap**  >  **ayarları**  >  **Hesap kodu**altında Mimecast Yönetici Konsolu 'nda bulabilirsiniz. `accountcode`Tanımlayıcısını tanımlayıcıya ekleyin.
+    > Bu `accountcode` değeri, **Hesap**  >  **ayarları**  >  **Hesap kodu** altında Mimecast Yönetici Konsolu 'nda bulabilirsiniz. `accountcode`Tanımlayıcısını tanımlayıcıya ekleyin.
 
-    b. **Yanıt URL** 'si metin kutusuna bir URL yazın: 
+    b. **Yanıt URL** 'si metin kutusuna URL 'yi yazın: 
 
     | Bölge  |  Değer | 
     | --------------- | --------------- | 
@@ -103,7 +100,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak istiyorsanız:
 
-    **Oturum açma URL 'si** metin kutusuna bir URL yazın: 
+    **Oturum açma URL 'si** metin kutusuna URL 'yi yazın: 
 
     | Bölge  |  Değer | 
     | --------------- | --------------- | 
@@ -138,22 +135,16 @@ Bu bölümde, Mimecast Yönetici konsoluna erişim vererek Azure çoklu oturum a
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde, **Mimecast Yönetici Konsolu**' nu seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
-
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
-
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ## <a name="configure-mimecast-admin-console-sso"></a>Mimecast Yönetici Konsolu SSO 'SU yapılandırma
 
 1. Farklı bir Web tarayıcısı penceresinde, Mimecast yönetim konsolunda oturum açın.
 
-1. **Yönetim**  >  **Hizmetleri**  >  **uygulamalarına**gidin.
+1. **Yönetim**  >  **Hizmetleri**  >  **uygulamalarına** gidin.
 
     ![Ekran görüntüsü, seçili uygulamaların bulunduğu Mimecast penceresini gösterir.](./media/mimecast-admin-console-tutorial/services.png)
 
@@ -173,7 +164,7 @@ Bu bölümde, Mimecast Yönetici konsoluna erişim vererek Azure çoklu oturum a
 
     ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz Yönetim Konsolu için SAML Yapılandırması sayfasını gösterir.](./media/mimecast-admin-console-tutorial/sso-settings.png)
 
-    a. **Sağlayıcı**Için, açılan listeden **Azure Active Directory** seçin.
+    a. **Sağlayıcı** Için, açılan listeden **Azure Active Directory** seçin.
 
     b. **Meta veri URL 'si** metin kutusunda, Azure Portal kopyaladığınız **uygulama Federasyon meta veri URL 'si** değerini yapıştırın.
 
@@ -191,7 +182,7 @@ Bu bölümde, Mimecast Yönetici konsoluna erişim vererek Azure çoklu oturum a
 
     ![Ekran görüntüsü, Iç dizinlerin seçili olduğu Mimecast penceresini gösterir.](./media/mimecast-admin-console-tutorial/internal-directories.png)
 
-1. Etki alanı aşağıda bahsedildiğinde, etki alanınızı seçin, aksi takdirde lütfen **yeni etki alanına**tıklayarak yeni bir etki alanı oluşturun.
+1. Etki alanı aşağıda bahsedildiğinde, etki alanınızı seçin, aksi takdirde lütfen **yeni etki alanına** tıklayarak yeni bir etki alanı oluşturun.
 
     ![Ekran görüntüsü seçili etki alanını gösterir.](./media/mimecast-admin-console-tutorial/domain-name.png)
 
@@ -219,20 +210,20 @@ Bu bölümde, Mimecast Yönetici konsoluna erişim vererek Azure çoklu oturum a
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-Erişim panelinde Mimecast Yönetici Konsolu kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Mimecast yönetici konsolunda otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>SP başlatıldı:
 
-## <a name="additional-resources"></a>Ek kaynaklar
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz Mimecast Yönetici Konsolu oturum açma URL 'sine yönlendirecektir.  
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
+* Mimecast Yönetici Konsolu oturum açma URL 'sine doğrudan gidin ve oturum akışını buradan başlatın.
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP başlatıldı:
 
-- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
+* Azure portal **Bu uygulamayı test et** ' e tıklayın ve SSO 'Yu ayarladığınız Mimecast yönetici konsolunda otomatik olarak oturum açmış olmanız gerekir 
 
-- [Azure AD ile Mimecast Yönetici Konsolu 'Nu deneyin](https://aad.portal.azure.com/)
+Uygulamayı dilediğiniz modda test etmek için Microsoft My Apps ' i de kullanabilirsiniz. Uygulamalarım içindeki Mimecast Yönetici Konsolu kutucuğuna tıkladığınızda, SP modunda yapılandırıldıysa, oturum açma akışını başlatmak için uygulama oturum açma sayfasına yönlendirilirsiniz ve ıDP modunda yapılandırıldıysa, SSO 'yu ayarladığınız Mimecast yönetici konsolunda otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Microsoft Cloud App Security oturum denetimi nedir?](/cloud-app-security/proxy-intro-aad)
+## <a name="next-steps"></a>Sonraki adımlar
 
-- [Mimecast yönetici konsolunu gelişmiş görünürlük ve denetimlerle koruma](/cloud-app-security/proxy-intro-aad)
+Mimecast yönetici konsolunu yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

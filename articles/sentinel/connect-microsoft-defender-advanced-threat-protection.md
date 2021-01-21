@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 72b2ba0ea444fb14ef9fc1bc3ea6aea3654677df
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 0db4e0fe0472c75f1eae392980ae697f53007244
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655536"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623375"
 ---
 # <a name="connect-alerts-from-microsoft-defender-for-endpoint-formerly-microsoft-defender-atp"></a>Uç nokta için Microsoft Defender 'daki uyarıları bağlama (eski adıyla Microsoft Defender ATP)
 
@@ -28,10 +28,6 @@ ms.locfileid: "94655536"
 > - **Uç nokta Için Microsoft Defender, daha** önce **Microsoft Defender Gelişmiş tehdit koruması** veya **mdadtp** olarak biliniyordu.
 >
 >     Eski adı bir süre için üründe hala kullanımda (Azure Sentinel 'deki veri Bağlayıcısı dahil) görebilirsiniz.
->
-> - Endpoint Alerts için Microsoft Defender 'ın alımı Şu anda genel önizlemededir.
-> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez.
-> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [Endpoint Connector Için Microsoft](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) Defender, uç nokta Için Microsoft Defender 'Daki uyarıları Azure Sentinel 'e aktarmanıza olanak tanır. Bu, kuruluşunuzda güvenlik olaylarını çok daha ayrıntılı bir şekilde analiz etmenizi ve etkili ve anında yanıt için PlayBook 'lar oluşturmanıza imkan tanır.
 

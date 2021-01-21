@@ -15,21 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: ae361c74b261bdd6a5673040f868392282b573ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e895640daeb3fbbba2f2708969ee4cf856bf1033
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77588289"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621190"
 ---
 # <a name="connect-your-f5-big-ip-appliance"></a>F5 BIG-IP gerecinizi bağlama 
 
-> [!IMPORTANT]
-> Azure Sentinel 'de F5 BIG-IP veri Bağlayıcısı Şu anda genel önizlemededir.
-> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 F5 BIG-IP Bağlayıcısı, çalışma kitaplarını görüntülemek, özel uyarılar oluşturmak ve araştırmayı geliştirmek için tüm F5 büyük IP günlüklerinizi Azure Sentinel 'e kolayca bağlamanıza olanak tanır. Bu, kuruluşunuzun ağı hakkında daha ayrıntılı bilgi verir ve güvenlik işlemi yeteneklerini geliştirir. F5 BIG-IP ve Azure Sentinel arasındaki tümleştirme REST API kullanır.
-
 
 > [!NOTE]
 > Veriler, Azure Sentinel çalıştırdığınız çalışma alanının coğrafi konumunda depolanır.
@@ -42,7 +37,7 @@ F5 BIG-IP, günlükleri doğrudan Azure Sentinel 'e tümleştirebilir ve dışar
 1. F5 BIG-IP 'nizi bağlamak için sistemin API uç noktasına bir JSON bildirimi nakletmeniz gerekir. Bunun nasıl yapılacağı hakkında yönergeler için bkz. [F5 BIG-IP 'Yi Azure Sentinel Ile tümleştirme](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel).
 8. F5 BIG-IP bağlayıcı sayfasında, çalışma alanı KIMLIĞI ve birincil anahtarı kopyalayın ve [akış verileri ' ni Azure Log Analytics 'e](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel#streaming-data-to-azure-log-analytics)göre gösterildiği gibi yapıştırın.
 1. F5 BIG-IP yönergelerini tamamladıktan sonra, Azure Sentinel bağlayıcı sayfasında, bağlı veri türlerini görürsünüz.
-1. F5 BIG-IP olayları için Log Analytics ilgili şemayı kullanmak için **F5Telemetry_LTM_CL**, **F5Telemetry_system_CL**ve **F5Telemetry_ASM_CL**aratın.
+1. F5 BIG-IP olayları için Log Analytics ilgili şemayı kullanmak için **F5Telemetry_LTM_CL**, **F5Telemetry_system_CL** ve **F5Telemetry_ASM_CL** aratın.
 
 
 ## <a name="validate-connectivity"></a>Bağlantıyı doğrula

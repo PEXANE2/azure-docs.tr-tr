@@ -17,12 +17,12 @@ ms.date: 1/19/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05a514debcf8036a296bbe66b2dd75c7dacacdc2
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4c7d02b48d30fa558f8fd12f92705046dab74057
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600744"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624244"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Azure Active Directory portalında raporları sağlama (Önizleme)
 
@@ -37,9 +37,13 @@ Azure Active Directory (Azure AD) içindeki raporlama mimarisi aşağıdaki bile
     - **Riskli oturum** açma işlemleri- [riskli oturum](../identity-protection/overview-identity-protection.md) açma, bir kullanıcı hesabının meşru sahibi olmayan birisi tarafından gerçekleştirilmiş olabilecek oturum açma girişimine yönelik bir göstergedir.
     - **Risk için Işaretlenen kullanıcılar** - [riskli bir Kullanıcı](../identity-protection/overview-identity-protection.md) , tehlikeye girmiş olabilecek bir kullanıcı hesabı göstergesidir.
 
-Bu konu, sağlama raporuna genel bir bakış sağlar.
+Bu konu, sağlama günlüklerine genel bir bakış sağlar. Bunlar gibi soruların yanıtlarını sağlar: 
 
-## <a name="prerequisites"></a>Ön koşullar
+* ServiceNow 'da hangi gruplar başarıyla oluşturuldu?
+* Hangi kullanıcılar Adobe 'dan başarıyla kaldırıldı?
+* Workday 'den hangi kullanıcıların Active Directory başarıyla oluşturulduğu? 
+
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="who-can-access-the-data"></a>Verilere kimler erişebilir?
 * Uygulama sahipleri, sahip oldukları uygulamalar için günlükleri görüntüleyebilir
@@ -52,14 +56,16 @@ Bu konu, sağlama raporuna genel bir bakış sağlar.
 
 Tüm sağlama etkinliği raporunu görmek için kiracınızın kendisiyle ilişkili bir Azure AD Premium lisansı olması gerekir. Azure Active Directory sürümünüzü yükseltmek için bkz. [Azure Active Directory Premium kullanmaya](../fundamentals/active-directory-get-started-premium.md) başlama. 
 
-## <a name="provisioning-logs"></a>Sağlama günlükleri
 
-Sağlama günlükleri aşağıdaki soruların yanıtlarını sağlar:
+## <a name="ways-of-interacting-with-the-provisioning-logs"></a>Sağlama günlükleriyle etkileşim kurma yolları 
+Müşterilerin sağlama günlükleriyle etkileşimde bulunmak için dört yolu vardır:
 
-* ServiceNow 'da hangi gruplar başarıyla oluşturuldu?
-* Hangi kullanıcılar Adobe 'dan başarıyla kaldırıldı?
-* DropBox 'ta başarısız olan kullanıcılar nelerdir?
+1. Azure portal günlüklere aşağıda açıklandığı gibi erişme.
+1. Sağlama günlüklerinin [Azure izleyici](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics)'de akışını sağlayarak genişletilmiş veri saklama, özel Pano, uyarı ve sorgu oluşturma.
+1. Sağlama günlükleri için [MICROSOFT Graph API](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) sorgulanıyor.
+1. Sağlama günlükleri bir CSV dosyası veya JSON olarak indiriliyor.
 
+## <a name="access-the-logs-from-the-azure-portal"></a>Azure portal günlüklere erişin
 Sağlama günlüklerine, [Azure portal](https://portal.azure.com) **Azure Active Directory** dikey penceresinin **izleme** bölümünde **sağlama günlükleri** ' ni seçerek erişebilirsiniz. Bazı sağlama kayıtlarının portalda gösterilmesi iki saate kadar sürebilir.
 
 ![Sağlama günlükleri](./media/concept-provisioning-logs/access-provisioning-logs.png "Sağlama günlükleri")
@@ -130,7 +136,7 @@ Olası değerler şunlardır:
 **Eylem** filtresi aşağıdakileri filtrelemenizi sağlar:
 
 - Oluştur 
-- Güncelleştirme
+- Güncelleştir
 - Sil
 - Devre Dışı Bırak
 - Diğer
@@ -205,10 +211,57 @@ Ayrıntılar aşağıdaki kategorilere göre gruplandırılır:
 
 **Değiştirilen özellikler** eski değeri ve yeni değeri gösterir. Eski değer olmadığı durumlarda eski değer sütunu boştur. 
 
-
 ### <a name="summary"></a>Özet
 
 **Özet** sekmesi, kaynak ve hedef sistemdeki nesne için ne olduğunu ve tanımlayıcılara genel bakış sağlar. 
+
+## <a name="download-logs-as-csv-or-json"></a>Günlükleri CSV veya JSON olarak indir
+
+Daha sonra, Azure portal günlüklere giderek ve İndir ' e tıklayarak, daha sonra kullanmak üzere sağlama günlüklerini indirebilirsiniz. Dosya, seçtiğiniz filtre ölçütlerine göre filtrelenecektir. İndirilmesi gereken süreyi ve indirmenin boyutunu azaltmak için filtreleri mümkün olduğunca belirli hale getirmek isteyebilirsiniz. CSV indirmesi üç dosyaya ayrılmıştır:
+
+* ProvisioningLogs: sağlama adımları ve değiştirilen özellikler dışında tüm günlükleri Indirir.
+* ProvisioningLogs_ProvisioningSteps: sağlama adımlarını ve değişiklik KIMLIĞINI Içerir. Değişiklik KIMLIĞI, olayı diğer iki dosya ile birleştirmek için kullanılabilir.
+* ProvisioningLogs_ModifiedProperties: değiştirilen öznitelikleri ve değişiklik KIMLIĞINI Içerir. Değişiklik KIMLIĞI, olayı diğer iki dosya ile birleştirmek için kullanılabilir.
+
+#### <a name="opening-the-json-file"></a>JSON dosyası açılıyor
+JSON dosyasını açmak için [Microsoft Visual Studio kod](https://aka.ms/vscode)gibi bir metin düzenleyicisi kullanın. Visual Studio Code, sözdizimi vurgulama sağlayarak okumayı daha kolay hale getirir. JSON dosyası, tarayıcı kullanılarak düzenlenebilir olmayan bir biçimde açılabilir, örneğin [Microsoft Edge](https://aka.ms/msedge) 
+
+#### <a name="prettifying-the-json-file"></a>JSON dosyasını önceden bloklama
+Yükleme boyutunu azaltmak için JSON dosyası küçültülmüş biçimde indirilir. Bu da, yükü okumayı zorlaştırır. Dosyayı önceden tanımlamak için iki seçeneğe göz atın:
+
+1. JSON biçimlendirmek için Visual Studio Code kullanma
+
+Visual Studio Code kullanarak JSON dosyasını biçimlendirmek için [burada](https://code.visualstudio.com/docs/languages/json#_formatting) tanımlanan yönergeleri izleyin.
+
+2. JSON 'yi biçimlendirmek için PowerShell 'i kullanma
+
+Bu betik, JSON 'u, sekmeler ve boşluklar ile önceden bir biçimde çıktı olarak çıktı. 
+
+` $JSONContent = Get-Content -Path "<PATH TO THE PROVISIONING LOGS FILE>" | ConvertFrom-JSON`
+
+`$JSONContent | ConvertTo-Json > <PATH TO OUTPUT THE JSON FILE>`
+
+#### <a name="parsing-the-json-file"></a>JSON dosyası ayrıştırılıyor
+
+PowerShell kullanarak JSON dosyasıyla çalışmak için bazı örnek komutlar aşağıda verilmiştir. Rahat olan herhangi bir programlama dilini kullanabilirsiniz.  
+
+İlk olarak, şunu çalıştırarak [json dosyasını okuyun](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json?view=powershell-7.1) :
+
+` $JSONContent = Get-Content -Path "<PATH TO THE PROVISIONING LOGS FILE>" | ConvertFrom-JSON`
+
+Artık, senaryonuza göre verileri ayrıştırtırabilirsiniz. Aşağıda birkaç örnek verilmiştir: 
+
+1. JsonFile içindeki tüm iş kimliklerini çıkar
+
+`foreach ($provitem in $JSONContent) { $provitem.jobId }`
+
+2. Eylemin "oluşturma" olduğu olayların tüm Changeıds değerlerini çıkar
+
+`foreach ($provitem in $JSONContent) { `
+`   if ($provItem.action -eq 'Create') {`
+`       $provitem.changeId `
+`   }`
+`}`
 
 ## <a name="what-you-should-know"></a>Bilmeniz gerekenler
 
@@ -226,7 +279,7 @@ Ayrıntılar aşağıdaki kategorilere göre gruplandırılır:
 
 Sağlama günlüklerinde bulabileceğiniz hataların nasıl çözümleneceğini daha iyi anlamak için aşağıdaki tabloyu kullanın. Eksik olan herhangi bir hata kodu için, bu sayfanın en altındaki bağlantıyı kullanarak geri bildirim sağlayın. 
 
-|Hata Kodu|Açıklama|
+|Hata Kodu|Description|
 |---|---|
 |Çakışma, EntryConflict|Çakışan Kullanıcı hesabının eşleştirilmek ve üzerinde alınması gerekiyorsa, Azure AD 'de veya uygulamada çakışan öznitelik değerlerini düzeltin ya da eşleşen öznitelik yapılandırmanızı gözden geçirin. Eşleşen öznitelikleri yapılandırma hakkında daha fazla bilgi için aşağıdaki [belgeleri](../app-provisioning/customize-application-attributes.md) gözden geçirin.|
 |TooManyRequests|Hedef uygulama, aşırı yüklenmiş ve çok fazla istek aldığından kullanıcıyı güncelleştirme girişimini reddetti. Yapılacak bir şey yok. Bu deneme otomatik olarak kullanımdan kaldırılacak. Microsoft bu sorunla aynı zamanda bilgilendirildi.|
@@ -234,14 +287,14 @@ Sağlama günlüklerinde bulabileceğiniz hataların nasıl çözümleneceğini 
 |InsufficientRights, MethodNotAllowed, NotAllowed, yetkisiz| Azure AD, hedef uygulamayla kimlik doğrulaması yapabiliyor, ancak güncelleştirmeyi gerçekleştirme yetkisi yoktu. Lütfen hedef uygulamanın sunduğu yönergeleri ve ilgili uygulama [öğreticisini](../saas-apps/tutorial-list.md)gözden geçirin.|
 |UnprocessableEntity|Hedef uygulama beklenmeyen bir yanıt döndürdü. Hedef uygulamanın yapılandırması doğru olmayabilir veya hedef uygulamayla bunun çalışmasını engelleyen bir hizmet sorunu olabilir.|
 |WebExceptionProtocolError |Hedef uygulamaya bağlanılırken bir HTTP protokol hatası oluştu. Yapılacak bir şey yok. Bu deneme, 40 dakika içinde otomatik olarak kullanımdan kaldırılacaktır.|
-|Invalidanchor|Sağlama hizmeti tarafından daha önce oluşturulmuş veya eşleştirilmiş bir Kullanıcı artık yok. Kullanıcının mevcut olduğundan emin olmak için denetleyin. Tüm kullanıcıların yeniden eşleşmesini zorlamak için, [işi yeniden başlatmak](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)üzere MS Graph API kullanın. Yeniden başlatmanın sağlanması, tamamlanması zaman alabilir ve bir başlangıç döngüsünü tetikleyeceğini unutmayın. Ayrıca, sağlama hizmetinin çalışması için kullandığı önbelleği de siler, yani Kiracıdaki tüm kullanıcılar ve gruplar yeniden değerlendirilmek ve belirli sağlama olayları bırakılamaz.|
-|NotImplemented | Hedef uygulama beklenmeyen bir yanıt döndürdü. Uygulamanın yapılandırması doğru olmayabilir veya hedef uygulamayla bunun çalışmasını engelleyen bir hizmet sorunu olabilir. Lütfen hedef uygulamanın sunduğu yönergeleri ve ilgili uygulama [öğreticisini](../saas-apps/tutorial-list.md)gözden geçirin. |
+|Invalidanchor|Sağlama hizmeti tarafından daha önce oluşturulmuş veya eşleştirilmiş bir Kullanıcı artık yok. Kullanıcının mevcut olduğundan emin olmak için denetleyin. Tüm kullanıcıların yeniden eşleşmesini zorlamak için, [işi yeniden başlatmak](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)üzere MS Graph API kullanın. Sağlama işleminin yeniden başlatılması, tamamlanması zaman alabilir ve bir başlangıç döngüsünü tetikler. Ayrıca, sağlama hizmetinin çalışması için kullandığı önbelleği de siler, yani Kiracıdaki tüm kullanıcılar ve gruplar yeniden değerlendirilmek ve belirli sağlama olayları bırakılamaz.|
+|NotImplemented | Hedef uygulama beklenmeyen bir yanıt döndürdü. Uygulamanın yapılandırması doğru olmayabilir veya hedef uygulamayla bunun çalışmasını engelleyen bir hizmet sorunu olabilir. Lütfen hedef uygulama ve ilgili uygulama [öğreticisi](../saas-apps/tutorial-list.md)tarafından sunulan yönergeleri gözden geçirin. |
 |MandatoryFieldsMissing, MissingValues |Gerekli değerler eksik olduğundan kullanıcı oluşturulamadı. Kaynak kayıttaki eksik öznitelik değerlerini düzeltin veya gerekli alanların atlanmadığından emin olmak için eşleşen öznitelik yapılandırmanızı gözden geçirin. Eşleşen öznitelikleri yapılandırma hakkında [daha fazla bilgi edinin](../app-provisioning/customize-application-attributes.md) .|
 |SchemaAttributeNotFound |Hedef uygulamada mevcut olmayan bir öznitelik belirtildiğinden, işlem gerçekleştirilemedi. Öznitelik özelleştirme hakkındaki [belgelere](../app-provisioning/customize-application-attributes.md) bakın ve yapılandırmanızın doğru olduğundan emin olun.|
 |InternalError |Azure AD sağlama hizmeti içinde bir iç hizmet hatası oluştu. Yapılacak bir şey yok. Bu deneme 40 dakika içinde otomatik olarak yeniden denenecek.|
 |Invaliddomain |Geçersiz bir etki alanı adı içeren bir öznitelik değeri nedeniyle işlem gerçekleştirilemedi. Kullanıcının etki alanı adını güncelleştirin veya hedef uygulamadaki izin verilen listeye ekleyin. |
 |Zaman aşımı |Hedef uygulamanın yanıt vermesi çok uzun sürdüğü için işlem tamamlanamadı. Yapılacak bir şey yok. Bu deneme 40 dakika içinde otomatik olarak yeniden denenecek.|
-|Licenselimitexceıbaşında|Bu Kullanıcı için kullanılabilir lisans olmadığından, Kullanıcı hedef uygulamada oluşturulamadı. Hedef uygulama için ek lisanslar temin edebilir ya da doğru özniteliklerin doğru özniteliklerle atandığından emin olmak için Kullanıcı atamalarınızı ve öznitelik eşleme yapılandırmanızı gözden geçirin.|
+|Licenselimitexceıbaşında|Bu Kullanıcı için kullanılabilir lisans olmadığından, Kullanıcı hedef uygulamada oluşturulamadı. Hedef uygulama için daha fazla lisans sağlayın ya da doğru kullanıcıların doğru özniteliklerle atandığından emin olmak için Kullanıcı atamalarınızı ve öznitelik eşleme yapılandırmanızı gözden geçirin.|
 |DuplicateTargetEntries  |Hedef uygulamada yapılandırılmış eşleşen özniteliklerle birden fazla kullanıcı bulunduğundan işlem tamamlanamadı. Hedef uygulamadan yinelenen kullanıcıyı kaldırın ya da öznitelik eşlemelerinizi [burada](../app-provisioning/customize-application-attributes.md)açıklandığı gibi yeniden yapılandırın.|
 |DuplicateSourceEntries | Yapılandırılmış eşleşen özniteliklerle birden fazla kullanıcı bulunduğundan işlem tamamlanamadı. Yinelenen kullanıcıyı kaldırın ya da öznitelik eşlemelerinizi [burada](../app-provisioning/customize-application-attributes.md)açıklandığı gibi yeniden yapılandırın.|
 |Importatlandı | Her kullanıcı değerlendirildiğinde, kullanıcıyı kaynak sistemden içeri aktarmayı deneiyoruz. Bu hata genellikle, içeri aktarılan Kullanıcı öznitelik eşlemelerinizde tanımlanan eşleşen özellik eksikse oluşur. Eşleşen öznitelik için Kullanıcı nesnesinde bir değer olmadan kapsam, eşleme veya dışarı aktarma değişikliklerini değerlendiremedik. Not, bu hatanın varlığı kullanıcının kapsam içinde olduğunu göstermez, ancak kullanıcı için kapsamları henüz değerlendirdik.|

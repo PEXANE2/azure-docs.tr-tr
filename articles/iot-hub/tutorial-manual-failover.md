@@ -1,6 +1,6 @@
 ---
-title: Azure IoT hub'ında elle yük devretme | Microsoft Docs
-description: IoT Hub 'ınızı farklı bir bölgeye el ile yük devretme işlemini gerçekleştirmeyi ve çalıştığını onaylamaya ve sonra özgün bölgeye geri dönüp yeniden kontrol yapmayı öğrenin.
+title: Öğretici-Azure IoT Hub 'ın el Ile yük devretmesi | Microsoft Docs
+description: Öğretici-IoT Hub 'ınızı farklı bir bölgeye el ile yük devretme işlemini gerçekleştirmeyi ve çalıştığını onaylamaya, sonra da özgün bölgeye geri dönüp yeniden kontrol yapmayı öğrenin.
 author: robinsh
 manager: timlt
 ms.service: iot-hub
@@ -11,12 +11,12 @@ ms.author: robinsh
 ms.custom:
 - mvc
 - mqtt
-ms.openlocfilehash: 69a0795b9c299b5113c39ce2c4556573f730e4b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b6bc972f5c26c78ffff81f5bab8c2812cf2cb11
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89013954"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622921"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub"></a>Öğretici: IoT Hub 'ı için el ile yük devretme gerçekleştirme
 
@@ -39,7 +39,7 @@ El ile yük devretme ve Microsoft tarafından başlatılan IoT Hub yük devretme
 
 * Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu öğreticideki cihaz örneği, 8883 numaralı bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 1. [Azure Portal](https://portal.azure.com)oturum açın. 
 
@@ -75,7 +75,7 @@ Bir IoT hub'ı için günlük iki yük devretme ve iki yeniden çalışma sını
 
    ![IoT Hub'ı özellikler bölmesini gösteren ekran görüntüsü](./media/tutorial-manual-failover/trigger-failover-01.png)
 
-1. El Ile yük devretme bölmesinde **geçerli konumu** ve **Yük devretme konumunu**görürsünüz. Geçerli konum her zaman hub 'ın Şu anda etkin olduğu konumu gösterir. Yük devretme konumu, geçerli konumla eşleştirilmiş standart [Azure coğrafi eşlenmiş bölgesidir](../best-practices-availability-paired-regions.md) . Konum değerlerini değiştiremezsiniz. Bu öğretici için, geçerli konum `West US 2` ve yük devretme konumu olur `West Central US` .
+1. El Ile yük devretme bölmesinde **geçerli konumu** ve **Yük devretme konumunu** görürsünüz. Geçerli konum her zaman hub 'ın Şu anda etkin olduğu konumu gösterir. Yük devretme konumu, geçerli konumla eşleştirilmiş standart [Azure coğrafi eşlenmiş bölgesidir](../best-practices-availability-paired-regions.md) . Konum değerlerini değiştiremezsiniz. Bu öğretici için, geçerli konum `West US 2` ve yük devretme konumu olur `West Central US` .
 
    ![Elle Yük Devretme bölmesini gösteren ekran görüntüsü](./media/tutorial-manual-failover/trigger-failover-02.png)
 

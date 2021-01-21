@@ -4,12 +4,12 @@ description: Bu makalede, Azure .NET SDK kullanarak Azure Event Hubs için kod y
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 46bd0c3c1488d6dd7afbae5e88e0b83f56654bb8
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: a299813620ee90591d8c9491991237f75f2e9382
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131245"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623057"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Azure Event Hubs için .NET Programlama Kılavuzu (eski Microsoft. Azure. EventHubs paketi)
 Bu makalede, Azure Event Hubs kullanarak kod yazma konusunda bazı yaygın senaryolar ele alınmaktadır. Burada Event Hubs’ın önceden bilindiği varsayılır. Event Hubs’a kavramsal genel bakış için bkz. [Event Hubs’a genel bakış](./event-hubs-about.md).
@@ -97,7 +97,7 @@ Tek bir toplu işlem, bir olayın 1 MB sınırını aşmamalıdır. Ayrıca, top
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>Zaman uyumsuz olarak gönderme ve ölçekli gönderme
 
-Olayları bir olay hub 'ına zaman uyumsuz olarak gönderirsiniz. Zaman uyumsuz olarak gönderilmesi, bir istemcinin olayları gönderme hızını arttırır. [Sendadsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) bir [görev](/dotnet/api/system.threading.tasks.task?view=netcore-3.1) nesnesi döndürüyor. İstemci yeniden deneme seçeneklerini denetlemek için istemci üzerindeki [Retrypolicy](/dotnet/api/microsoft.servicebus.retrypolicy) sınıfını kullanabilirsiniz.
+Olayları bir olay hub 'ına zaman uyumsuz olarak gönderirsiniz. Zaman uyumsuz olarak gönderilmesi, bir istemcinin olayları gönderme hızını arttırır. [Sendadsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) bir [görev](/dotnet/api/system.threading.tasks.task) nesnesi döndürüyor. İstemci yeniden deneme seçeneklerini denetlemek için istemci üzerindeki [Retrypolicy](/dotnet/api/microsoft.servicebus.retrypolicy) sınıfını kullanabilirsiniz.
 
 ## <a name="event-consumers"></a>Olay tüketicileri
 [EventProcessorHost][] sınıfı Event Hubs verilerini işler. .NET platformu üzerinde olay okuyucuları oluştururken bu uygulamayı kullanmanız gerekir. [EventProcessorHost][] aynı zamanda denetim noktası oluşturma ve bölüm kiralama yönetimi sağlayan olay işlemcisi uygulamaları için iş parçacığı güvenli, çok işlemli, güvenli bir çalışma zamanı ortamı sağlar.

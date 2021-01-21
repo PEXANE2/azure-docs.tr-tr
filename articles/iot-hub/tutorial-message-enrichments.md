@@ -4,16 +4,16 @@ description: Azure IoT Hub iletileri için ileti zenginlerinin nasıl kullanıla
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 60bd416cf330676485f83720be4365b56c56baaf
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: ddc212e99c0e55156f56df6bf77e122408a727f9
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436717"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624064"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Öğretici: Azure IoT Hub ileti zenginleştirme kullanın
 
@@ -77,7 +77,7 @@ Daha önce yapmadıysanız, bir Azure [Cloud Shell penceresi](https://shell.azur
 
 Komut dosyası tarafından oluşturulan kaynaklar aşağıda verilmiştir. *Zenginleştirme* , kaynağın enzenginler içeren iletiler için olduğu anlamına gelir. *Özgün* , kaynağın zenginleştirilmiş iletiler için olduğu anlamına gelir.
 
-| Ad | Değer |
+| Name | Değer |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | kapsayıcı adı | Özgün  |
@@ -279,7 +279,7 @@ Bu noktada, kaynakların hepsi ayarlanır ve ileti yönlendirme yapılandırıl�
 ## <a name="create-and-configure-by-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak oluşturma ve yapılandırma
 Kaynakları, ileti yönlendirmeyi ve ileti zenginleştirme kaynaklarını oluşturmak ve yapılandırmak için bir Kaynak Yöneticisi şablonu kullanabilirsiniz.
 
-1. Azure portalında oturum açın. Arama kutusunu açmak için **+ kaynak oluştur** ' u seçin. *Şablon dağıtımını* girin ve arama yapın. Sonuçlar bölmesinde **şablon dağıtımı (özel şablon kullanarak Dağıt)** öğesini seçin.
+1. Azure Portal’da oturum açın. Arama kutusunu açmak için **+ kaynak oluştur** ' u seçin. *Şablon dağıtımını* girin ve arama yapın. Sonuçlar bölmesinde **şablon dağıtımı (özel şablon kullanarak Dağıt)** öğesini seçin.
 
    ![Azure portal Şablon dağıtımı](./media/tutorial-message-enrichments/template-select-deployment.png)
 
@@ -297,7 +297,7 @@ Kaynakları, ileti yönlendirmeyi ve ileti zenginleştirme kaynaklarını oluşt
 
    Şablonu yükleyerek oluşturulan kaynaklar aşağıda verilmiştir. **Zenginleştirme** , kaynağın enzenginler içeren iletiler için olduğu anlamına gelir. **Özgün** , kaynağın zenginleştirilmiş iletiler için olduğu anlamına gelir. Bunlar, Azure CLı betikte kullanılan aynı değerlerdir.
 
-   | Ad | Değer |
+   | Name | Değer |
    |-----|-----|
    | resourceGroup | ContosoResourcesMsgEn |
    | kapsayıcı adı | Özgün  |
@@ -386,7 +386,7 @@ Bu öğreticide oluşturduğunuz tüm kaynakları kaldırmak için kaynak grubun
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>Azure CLı kullanarak kaynakları Temizleme
 
-Kaynak grubunu kaldırmak için [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) komutunu kullanın. `$resourceGroup`Bu öğreticinin başlangıcında **Contosoresourcesmsgen** olarak ayarlandığını geri çekin.
+Kaynak grubunu kaldırmak için [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) komutunu kullanın. `$resourceGroup`Bu öğreticinin başlangıcında **Contosoresourcesmsgen** olarak ayarlandığını geri çekin.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup
@@ -397,6 +397,7 @@ az group delete --name $resourceGroup
 Bu öğreticide, aşağıdaki adımları kullanarak ileti zenginleştirmelerinin IoT Hub iletileri ekleme ve test edilmiştir:
 
 **IoT Hub ileti zenginleştirme kullanın**
+
 > [!div class="checklist"]
 > * İlk Yöntem: Azure CLı kullanarak kaynak oluşturma ve ileti yönlendirmeyi yapılandırma. [Azure Portal](https://portal.azure.com)kullanarak iletiyi zenginleştirerek el ile yapılandırın.
 > * İkinci yöntem: bir Azure Resource Manager şablonu kullanarak kaynak oluşturun ve ileti yönlendirmeyi ve ileti zenginleştirmelerinin yapılandırın.
@@ -407,5 +408,8 @@ Bu öğreticide, aşağıdaki adımları kullanarak ileti zenginleştirmelerinin
 
 İleti yönlendirme hakkında daha fazla bilgi için şu makalelere bakın:
 
-* [Farklı uç noktalara cihazdan buluta iletiler göndermek için IoT Hub ileti yönlendirmeyi kullanma](iot-hub-devguide-messages-d2c.md)
-* [Öğretici: IoT Hub yönlendirme](tutorial-routing.md)
+> [!div class="nextstepaction"]
+> [Farklı uç noktalara cihazdan buluta iletiler göndermek için IoT Hub ileti yönlendirmeyi kullanma](iot-hub-devguide-messages-d2c.md)
+
+> [!div class="nextstepaction"]
+> [Öğretici: IoT Hub yönlendirme](tutorial-routing.md)

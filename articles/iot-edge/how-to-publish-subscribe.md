@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 005830575ba7f45d30fed71a73e7a419e4d98220
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 13bfd7c602389ff286a80f625829da5924a73bdf
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922595"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621904"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>Azure IoT Edge yayımlayın ve abone olun
 
@@ -31,7 +31,7 @@ ms.locfileid: "96922595"
 - SKU 'nun **IoT Hub** F1, S1, S2 veya S3.
 - **Sürüm 1,2 veya üzeri bir IoT Edge cihazına** sahip olmanız gerekir. MQTT Aracısı Şu anda genel önizleme aşamasında olduğundan, MQTT Aracısı 'nı etkinleştirmek için aşağıdaki ortam değişkenlerini edgeHub kapsayıcısında doğru olarak ayarlayın: IoT Edge
 
-   | Ad | Değer |
+   | Name | Değer |
    | - | - |
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__mqttBrokerEnabled` | `true` |
@@ -251,7 +251,7 @@ IoT Hub iki IoT cihazı oluşturun ve parolalarını alın. Terminalinizden Azur
 
 ### <a name="authorize-publisher-and-subscriber-clients"></a>Yayımcı ve abone istemcilerini yetkilendirme
 
-Yayımcıyı ve aboneyi yetkilendirmek için, Azure CLı, Visual Studio veya Visual Studio Code aracılığıyla IoT Edge hub ikizi ' ı aşağıdaki yetkilendirme ilkesini içerecek şekilde düzenleyin:
+Yayımcı ve aboneyi yetkilendirmek için, aşağıdaki yetkilendirme ilkesini dahil etmek üzere Azure CLı, Visual Studio veya Visual Studio Code aracılığıyla IoT Edge bir dağıtım oluşturarak IoT Edge hub ikizi 'ı düzenleyin:
 
 ```json
 {
@@ -311,7 +311,7 @@ Yayımcıyı ve aboneyi yetkilendirmek için, Azure CLı, Visual Studio veya Vis
 
 ### <a name="symmetric-keys-authentication-without-tls"></a>TLS olmadan simetrik anahtarlar kimlik doğrulaması
 
-#### <a name="subscribe"></a>Abone olma
+#### <a name="subscribe"></a>Abonelik
 
 **Sub_client** MQTT ISTEMCINIZI MQTT aracısına bağlayın ve `test_topic` IoT Edge cihazınızda aşağıdaki komutu çalıştırarak hizmetine abone olun:
 

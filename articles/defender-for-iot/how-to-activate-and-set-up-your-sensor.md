@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 4ad1562bdd9853b6ff3c537790a54dbeab96b5b8
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 908460bd0a034e21524b6ea6d3042f362cc810d4
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538570"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623598"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>Algılayıcınızı etkinleştirme ve ayarlama
 
@@ -134,15 +134,15 @@ Oturum açtıktan sonra IoT için Azure Defender konsolu açılır.
 
 ## <a name="initial-setup-and-learning-for-administrators"></a>İlk kurulum ve öğrenme (Yöneticiler için)
 
-İlk oturum açma işleminden sonra IoT için Azure Defender algılayıcısı, ağınızı otomatik olarak izlemeye başlar. Ağ varlıkları varlık Haritası ve varlık envanteri bölümlerinde görüntülenir. IoT için Azure Defender, ağınızda oluşan tüm güvenlik ve işletimsel olaylar hakkında sizi algılamaya ve sizi uyaracak. Daha sonra, algılanan bilgilere göre raporlar ve sorgular oluşturabilirsiniz.
+İlk oturum açma işleminden sonra IoT için Azure Defender algılayıcısı, ağınızı otomatik olarak izlemeye başlar. Ağ aygıtları cihaz Haritası ve cihaz envanteri bölümlerinde görünür. IoT için Azure Defender, ağınızda oluşan tüm güvenlik ve işletimsel olaylar hakkında sizi algılamaya ve sizi uyaracak. Daha sonra, algılanan bilgilere göre raporlar ve sorgular oluşturabilirsiniz.
 
-Başlangıçta bu etkinlik öğrenme modunda yürütülür, bu da sensörize ağınızın olağan etkinliklerini öğrenmesini sağlar. Örneğin, algılayıcı ağınızda bulunan varlıkları öğreniyor, ağda algılanan protokoller ve belirli varlıklar arasında gerçekleşen dosya aktarımları. Bu etkinlik ağınızın temel etkinliği haline gelir.
+Başlangıçta bu etkinlik öğrenme modunda yürütülür, bu da sensörize ağınızın olağan etkinliklerini öğrenmesini sağlar. Örneğin, algılayıcı ağınızda bulunan cihazları öğreniyor, ağda algılanan protokoller ve belirli aygıtlar arasında gerçekleşen dosya aktarımları. Bu etkinlik ağınızın temel etkinliği haline gelir.
 
 ### <a name="review-and-update-basic-system-settings"></a>Temel sistem ayarlarını gözden geçirme ve güncelleştirme
 
 Sensörin optimum olarak algılanması ve uyarı verecek şekilde yapılandırıldığından emin olmak için sensör sistem ayarlarını gözden geçirin.
 
-Algılayıcının sistem ayarlarını tanımlayın. Örneğin:
+Algılayıcının sistem ayarlarını tanımlayın. Örnek:
 
 - ICS (veya IoT) ve ayrılmış alt ağları tanımlayın.
 

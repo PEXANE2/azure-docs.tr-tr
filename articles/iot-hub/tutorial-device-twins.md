@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub’dan cihaz durumunu eşitleme | Microsoft Docs
-description: Cihazlarınızı buluttan yapılandırmak ve cihazlarınızdan durum ve uyumluluk verileri almak için cihaz ikizlerini nasıl kullanacağınızı öğrenin.
+title: Öğretici-cihaz durumunu Azure IoT Hub ile eşitler | Microsoft Docs
+description: Öğretici-cihazlarınızı buluttan yapılandırmak ve cihazlarınızdan durum ve uyumluluk verileri almak için cihaz ikizlerini nasıl kullanacağınızı öğrenin.
 services: iot-hub
 author: wesmc7777
 ms.author: wesmc
@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: 9ec2c51f01d6b13f33bc2d537a8f73a6721967d4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 912e59197970e60f57a13c049ffadbd2ad938a9b
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572533"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621420"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 

@@ -2,13 +2,13 @@
 title: Azure Site Recovery yenilikleri
 description: Azure Site Recovery hizmetindeki yeni özelliklerin ve en son güncelleştirmelerin özetini sağlar.
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: 3667f963eac0ebc719872db00ac069c7da70ec91
-ms.sourcegitcommit: b849ecdc8aa97337299b0f09970b7810c59cd044
+ms.date: 01/20/2021
+ms.openlocfilehash: 2778f1af99512c4594d2d688eea7e04b3b81ae47
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96310366"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621769"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery'deki yenilikler
 
@@ -22,13 +22,27 @@ Site Recovery bileşenleri için n-4 sürümlerini destekliyoruz, burada N en so
 
 **Güncelleştirme** |  **Birleşik kurulum** | **Yapılandırma sunucusu ova** | **Mobility hizmeti Aracısı** | **Site Recovery sağlayıcı** | **Kurtarma Hizmetleri Aracısı**
 --- | --- | --- | --- | --- | ---
+[Toplu 53](https://support.microsoft.com/help/4602881/)  | 9.40.5850.1 | 5.1.6537.0 | 9.40.5850.1 | 5.1.6537.0  | 2.0.9202.0
 [Toplu 52](https://support.microsoft.com/help/4597409/)  | 9.39.5796.1 | 5.1.6458.0 | 9.39.5796.1 | 5.1.6458.0  | 2.0.9196.0
 [Toplu 51](https://support.microsoft.com/help/4590304)  | 9.38.5761.1 | 5.1.6400.0 | 9.38.5761.1 | 5.1.6400.0  | 2.0.9193.0
 [Toplu 50](https://support.microsoft.com/help/4582666/) | 9.37.5724.1 | 5.1.6347.0 | 9.37.5724.1 | 5.1.6347.0  | 2.0.9192.0
 [Toplu 49](https://support.microsoft.com/help/4578241/) | 9.36.5696.1 | 5.1.6315.0 | 9.36.5696.1 | 5.1.6315.0 | 2.0.9188.0
-[Toplu 48](https://support.microsoft.com/help/4573888/) | 9.35.5659.1 | 5.1.6200.0 | 9.35.5659.1 | 5.1.6200.0 | 2.0.9186.0
+
 
 Güncelleştirme yükleme ve destek hakkında [daha fazla bilgi edinin](service-updates-how-to.md) .
+
+## <a name="updates-january-2021"></a>Güncelleştirmeler (Ocak 2021)
+
+### <a name="update-rollup-53"></a>Güncelleştirme paketi 53
+
+[Güncelleştirme paketi 53](https://support.microsoft.com/help/4602881/update-rollup-53-for-azure-site-recovery) aşağıdaki güncelleştirmeleri sağlar:
+
+**Güncelleştirme** | **Ayrıntılar**
+--- | ---
+**Sağlayıcılar ve aracılar** | Site Recovery aracıları ve sağlayıcıları toplu olarak, toplamada ayrıntılı olarak güncelleştirir.
+**Sorun düzeltmeleri/geliştirmeler** | Toplamada ayrıntılı olarak bir dizi düzeltmeler ve geliştirmeler. 
+**Azure VM olağanüstü durum kurtarma** | Etiketler için çoğaltma artık destekleniyor. Kaynak bölgedeki Azure VM 'lerine, disklere ve NIC 'lerine eklenen Etiketler hedef bölgedeki makinelere çoğaltılır.<br/><br/> Deler 10 çalıştıran Azure VM 'Leri artık çoğaltma için desteklenmektedir.
+**Azure 'da VMware VM/fiziksel olağanüstü durum kurtarma** | Güncelleştirme, Azure 'a VMware VM çoğaltması için günlük geliştirmelerini ve geliştirilmiş hata iletilerini içerir.<br/><br/> VMware VM 'Leri ve deler 10 çalıştıran fiziksel makineler artık çoğaltma için desteklenmektedir.
 
 
 ## <a name="updates-november-2020"></a>Güncelleştirmeler (Kasım 2020)
@@ -414,7 +428,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 --- | ---
 **Ağ eşlemesi** | Azure VM olağanüstü durum kurtarma için artık çoğaltmayı etkinleştirdiğinizde kullanılabilir bir hedef ağı kullanabilirsiniz.
 **Standart SSD** | Artık [Standart SSD diskleri](../virtual-machines/disks-types.md#standard-ssd)kullanarak Azure VM 'leri için olağanüstü durum kurtarma ayarlayabilirsiniz.
-**Doğrudan Depolama Alanları** | Azure VM uygulamalarında çalışan uygulamalar için, yüksek kullanılabilirlik için [depolama alanları doğrudan](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) kullanarak olağanüstü durum kurtarma ayarlayabilirsiniz.  Site Recovery ile birlikte Depolama Alanları Doğrudan (S2D) kullanılması, Azure VM iş yüklerinin kapsamlı bir şekilde korunmasını sağlar. S2D, Azure 'da bir konuk küme barındırmanızı sağlar. Bu özellikle, bir VM, SAP ASCS katmanı, SQL Server veya genişleme dosya sunucusu gibi kritik bir uygulama barındırıyorsa kullanışlıdır.
+**Depolama Alanları Doğrudan** | Azure VM uygulamalarında çalışan uygulamalar için, yüksek kullanılabilirlik için [depolama alanları doğrudan](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) kullanarak olağanüstü durum kurtarma ayarlayabilirsiniz.  Site Recovery ile birlikte Depolama Alanları Doğrudan (S2D) kullanılması, Azure VM iş yüklerinin kapsamlı bir şekilde korunmasını sağlar. S2D, Azure 'da bir konuk küme barındırmanızı sağlar. Bu özellikle, bir VM, SAP ASCS katmanı, SQL Server veya genişleme dosya sunucusu gibi kritik bir uygulama barındırıyorsa kullanışlıdır.
 
 
 ### <a name="vmwarephysical-server-disaster-recovery"></a>VMware/fiziksel sunucu olağanüstü durum kurtarma
@@ -452,7 +466,7 @@ Bu ay eklenen özellikler tabloda özetlenmiştir.
 **Özellik** | **Ayrıntılar**
 --- | ---
 **Linux desteği** | RedHat Workstation 6/7 için destek eklendi ve Ubuntu, de, ve SUSE için yeni çekirdek sürümleri eklendi.
-**Doğrudan Depolama Alanları** | Site Recovery, Depolama Alanları Doğrudan (S2D) kullanarak Azure VM 'lerini destekler.
+**Depolama Alanları Doğrudan** | Site Recovery, Depolama Alanları Doğrudan (S2D) kullanarak Azure VM 'lerini destekler.
 
 ### <a name="vmware-vmsphysical-servers-disaster-recovery"></a>VMware VM 'Leri/fiziksel sunucular olağanüstü durum kurtarma
 

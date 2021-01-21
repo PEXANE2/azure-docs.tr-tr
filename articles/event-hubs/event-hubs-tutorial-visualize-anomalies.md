@@ -3,12 +3,12 @@ title: Azure Event Hubs-gerçek zamanlı olaylarda veri bozuklukilerini görsell
 description: 'Öğretici: Microsoft Azure gönderilen gerçek zamanlı olaylarda veri bozuklukilerini görselleştirin Event Hubs'
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: b72b82f3959565e6bd0598fef8e21bb64fedb053
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: bd08d611761e125fdd03173ce6027c60e82baed6
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655688"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623467"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Öğretici: Azure Event Hubs'a gönderilen gerçek zamanlı olaylardaki veri anomalilerini görselleştirme
 
@@ -16,7 +16,7 @@ Azure Event Hubs ile Azure Stream Analytics'i kullanarak gelen verileri denetley
 
 Bu öğreticide bu örneğin simülasyonunu yapacaksınız. Kredi kartı işlemleri oluşturup bunları bir olay hub'ına gönderen bir uygulama çalıştıracaksınız. Ardından, geçerli işlemleri geçersiz işlemlere ayıran Azure Stream Analytics veri akışını gerçek zamanlı olarak okur ve sonra geçersiz olarak etiketlenen işlemleri görsel olarak tanımlamak için Power BI kullanırsınız.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > * Event Hubs ad alanı oluşturma
 > * Olay hub’ı oluşturma
@@ -349,7 +349,7 @@ Power BI hesabınızda oturum açın. **Çalışma Alanım**'a gidin. Pano adın
 
 ### <a name="clean-up-resources-using-azure-cli"></a>Azure CLI kullanarak kaynakları temizleme
 
-Kaynak grubunu kaldırmak için [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) komutunu kullanın.
+Kaynak grubunu kaldırmak için [az group delete](/cli/azure/group#az-group-delete) komutunu kullanın.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/13/2021
 ms.author: shhazam
-ms.openlocfilehash: f3239434a7ba737bc9323bc4f383afd794800db1
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 66b960bf874cc46985230e488c749663eff0b835
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201493"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621106"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>IoT mimarisi için Azure Defender
 
@@ -81,7 +81,7 @@ Karma ortamlarda IoT için Azure Defender 'ın yönetilmesi iki yönetim portal�
 - Azure portal
 
 ### <a name="sensor-console"></a>Algılayıcı konsolu
-Algılayıcı algılamaları, bir ağ eşlemesinde, varlık envanterinde ve çok çeşitli raporlarda, örneğin risk değerlendirmesi raporları, veri araştırma sorguları ve saldırı vektörleri gibi görüntülenebileceği, araştırılabilecek ve çözümlenebilecekleri algılayıcı konsolunda görüntülenir. Ayrıca, algılayıcı motorları tarafından algılanan tehditleri görüntüleyip işlemek, bilgileri iş ortağı sistemlerine iletmek, kullanıcıları yönetmek ve daha fazlasını yapmak için konsolunu da kullanabilirsiniz.
+Algılayıcı algılamaları, bir ağ eşlemesinde, cihaz envanterinde görüntülenebilecek, araştırılabilecek ve çözümlenebilecekleri, risk değerlendirmesi raporları, veri madenciliği sorguları ve saldırı vektörleri gibi çok sayıda raporda görüntülenmek, araştırılması ve çözümlenmesi gereken algılayıcı konsolunda görüntülenir. Ayrıca, algılayıcı motorları tarafından algılanan tehditleri görüntüleyip işlemek, bilgileri iş ortağı sistemlerine iletmek, kullanıcıları yönetmek ve daha fazlasını yapmak için konsolunu da kullanabilirsiniz.
 
 :::image type="content" source="./media/architecture/sensor-console-v2.png" alt-text="IoT algılayıcı konsolu için Defender":::
 
@@ -96,7 +96,7 @@ Yönetim Konsolu, kurtarma için gereken tüm yapılandırma dosyalarının yede
 
 SOC iş akışlarınızla sıkı bir şekilde tümleştirilmiş ve Kitaplar çalıştırdığından, risk azaltma etkinliklerinin ve siteler arası tehditlerin kolay bir şekilde önceliklendirilmesi sağlanır.
 
-- Bütünsel-varlık yönetimi, risk ve güvenlik açığı yönetimi ve olay yanıtıyla tehdit izleme için tek bir birleştirilmiş platformun karmaşıklığını azaltın.
+- Bütünsel-cihaz yönetimi, risk ve güvenlik açığı yönetimi ve olay yanıtıyla tehdit izleme için tek bir birleştirilmiş platformun karmaşıklığını azaltın.
 
 - Toplama ve bağıntı: tüm sitelerden toplanan verileri ve Uyarıları görüntüleyin, toplayın ve çözümleyin.
 
@@ -104,7 +104,7 @@ SOC iş akışlarınızla sıkı bir şekilde tümleştirilmiş ve Kitaplar çal
 
    :::image type="content" source="media/updates/alerts-and-site-management-v2.png" alt-text="Tüm uyarılarınızı ve bilgilerinizi yönetin.":::
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 Azure 'daki IoT portalı için Defender, size yardımcı olmak için kullanılır:
 

@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/09/2020
-ms.openlocfilehash: 13f9e2271dd18121ba740c843e99fae86c76821d
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 5b4ab207462955be3876dc1a25fae491e48a9cd2
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845415"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621719"
 ---
 # <a name="welcome-to-azure-defender-for-iot"></a>IoT için Azure Defender 'a hoş geldiniz
 
 İşletimsel teknoloji (OT) ağları, topluluğu 'in en önemli yönlerini güçlendirin. Ancak bu teknolojilerin birçoğu göz önünde bulundurularak tasarlanmamıştır ve geleneksel BT güvenlik denetimleriyle korunamaz. Nesnelerin İnterneti (IoT), milyarlarca bağlı cihaz ile yeni bir yenilik dalgasını etkinleştirerek saldırı yüzeyini ve riskini artırır.  
 
-IoT için Azure Defender, IoT/OT varlıklarını, güvenlik açıklarını ve tehditleri tanımlamaya yönelik Birleşik bir güvenlik çözümüdür. Mevcut IoT/OT cihazlarını korumanızı veya yeni IoT yeniliklerine güvenlik derlemenize gerek duyduğunuzda IoT/OT ortamınızın tamamını güvenli hale getirmenizi sağlar.  
+IoT için Azure Defender, IoT/OT cihazlarını, güvenlik açıklarını ve tehditleri tanımlamaya yönelik Birleşik bir güvenlik çözümüdür. Mevcut IoT/OT cihazlarını korumanızı veya yeni IoT yeniliklerine güvenlik derlemenize gerek duyduğunuzda IoT/OT ortamınızın tamamını güvenli hale getirmenizi sağlar.  
 
 IoT için Azure Defender, ortamınızın ihtiyaçlarını karşılamak için iki özellik kümesi sunar.
 
@@ -47,7 +47,7 @@ IoT için Azure Defender 'daki Aracısız izleme özellikleri, bu ağlar için g
 
 ### <a name="automatic-device-discovery"></a>Otomatik cihaz bulma  
 
-IoT/ot ağı üzerinde sıfır etki ile tüm IoT/OT varlıklarınızın, ayrıntılarının ve nasıl iletişim kurdukları hakkında tamamen bir stok elde etmek için pasif, aracısız ağ izleme kullanın.  
+IoT/ot ağı üzerinde sıfır etki ile tüm IoT/OT cihazlarınızın, ayrıntılarının ve nasıl iletişim kurdukları hakkında tamamen bir stok elde etmek için pasif, aracısız ağ izleme kullanın.  
 
 ### <a name="proactive-visibility-into-risk-and-vulnerabilities"></a>Risk ve güvenlik açıklarına karşı öngörülü görünürlük
  

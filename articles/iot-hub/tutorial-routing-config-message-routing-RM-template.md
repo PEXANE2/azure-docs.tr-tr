@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager şablonu kullanarak Azure IoT Hub için ileti yönlendirmeyi yapılandırma
-description: Azure Resource Manager şablonu kullanarak Azure IoT Hub için ileti yönlendirmeyi yapılandırma
+title: Öğretici-Azure Resource Manager şablonu kullanarak Azure IoT Hub için ileti yönlendirmeyi yapılandırma
+description: Öğretici-Azure Resource Manager şablonu kullanarak Azure IoT Hub için ileti yönlendirmeyi yapılandırma
 author: robinsh
 manager: philmeagit st
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: e5ae5948c8baf1573393c73026c84d0f62e8693e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 53217340b0d91f3de77e5e0d8c0a82e30599d6ed
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480114"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621436"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>Öğretici: IoT Hub ileti yönlendirmeyi yapılandırmak için Azure Resource Manager şablonu kullanma
 
@@ -30,7 +30,7 @@ ms.locfileid: "92480114"
 
 Bu öğreticinin ikinci bölümünde, IoT Hub iletileri göndermek için bir Visual Studio uygulaması indirip çalıştırırsınız. Bu indirmenin, Azure CLı ve PowerShell betikleri ile birlikte Azure Resource Manager şablonu ve parametreleri dosyasını içeren bir klasör vardır.
 
-Devam edin ve [Azure IoT C# örneklerini](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) şimdi indirin. master.zip dosyasını sıkıştırmayı açın. Kaynak Yöneticisi şablonu ve parametreler dosyası, ** üzerindetemplate_iothub.js** ve üzerinde **template_iothub_parameters.js**olarak/iot-hub/Tutorials/Routing/SimulatedDevice/resources/.
+Devam edin ve [Azure IoT C# örneklerini](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) şimdi indirin. master.zip dosyasını sıkıştırmayı açın. Kaynak Yöneticisi şablonu ve parametreler dosyası, **üzerindetemplate_iothub.js** ve üzerinde **template_iothub_parameters.js** olarak/iot-hub/Tutorials/Routing/SimulatedDevice/resources/.
 
 ## <a name="create-your-resources"></a>Kaynaklarınızı oluşturun
 
@@ -54,11 +54,11 @@ Bu parametrelerin çoğu varsayılan değerlere sahiptir. **_İn** ile biten ola
 
 **konum**: Bu alan, "westus" gibi dağıttığınız Azure bölgesidir.
 
-**consumer_group**: Bu alan, yönlendirme uç noktasından gelen iletiler için bir tüketici grubu kümesidir. Azure Stream Analytics sonuçları filtrelemek için kullanılır. Örneğin, her şeyi alacağınız tüm akış, veya consumer_group **contoso**olarak ayarlanan verilerle birlikte geliyorsa, yalnızca bu girişleri göstermek için bir Azure Stream Analytics akışı (ve Power BI raporu) ayarlayabilirsiniz. Bu alan, Bu öğreticinin 2. bölümünde kullanılır.
+**consumer_group**: Bu alan, yönlendirme uç noktasından gelen iletiler için bir tüketici grubu kümesidir. Azure Stream Analytics sonuçları filtrelemek için kullanılır. Örneğin, her şeyi alacağınız tüm akış, veya consumer_group **contoso** olarak ayarlanan verilerle birlikte geliyorsa, yalnızca bu girişleri göstermek için bir Azure Stream Analytics akışı (ve Power BI raporu) ayarlayabilirsiniz. Bu alan, Bu öğreticinin 2. bölümünde kullanılır.
 
 **sku_name**: Bu alan, IoT Hub için ölçeklendiriliyor. Bu değer S1 veya üzeri olmalıdır; Bu öğreticide, birden çok uç noktaya izin verilmediğinden ücretsiz bir katman çalışmıyor.
 
-**sku_units**: bu alan **sku_name**ve kullanılabilecek IoT Hub birimi sayısıdır.
+**sku_units**: bu alan **sku_name** ve kullanılabilecek IoT Hub birimi sayısıdır.
 
 **d2c_partitions**: Bu alan, olay akışı için kullanılan bölüm sayısıdır.
 
@@ -364,7 +364,7 @@ Yerel diskinizdeki dosyaları bulmak için açılan dosya gezginini kullanın ve
 
 Dosyalar karşıya yüklendikten sonra, bir sonuç iletişim kutusu aşağıdaki görüntüye benzer bir şey gösterir.
 
-![Karşıya yükle/Indir dosyaları vurgulanmış menü çubuğu Cloud Shell](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_results.png)
+![Karşıya yükle/Indir sonuçları vurgulanmış menü çubuğu Cloud Shell](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_results.png)
 
 Dosyalar, Cloud Shell örneğiniz tarafından kullanılan paylaşıma yüklenir. 
 

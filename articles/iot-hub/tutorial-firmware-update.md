@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub aracılığıyla cihaz üretici yazılımını güncelleştirme | Microsoft Docs
-description: IoT Hub 'ınıza bağlı bir arka uç uygulamasından tetiklenebilecek bir cihaz üretici yazılımı güncelleştirme işlemini nasıl uygulayacağınızı öğrenin.
+title: Öğretici-Azure IoT Hub cihaz bellenimini güncelleştirme | Microsoft Docs
+description: Öğretici-IoT Hub 'ınıza bağlı bir arka uç uygulamasından tetiklenebilecek bir cihaz üretici yazılımı güncelleştirme işleminin nasıl uygulanacağını öğrenin.
 services: iot-hub
 author: wesmc7777
 ms.author: wesmc
@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: b4de685accf665c7555a454ef247ddf589c6ba5f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 807de3c41ec8026edd2b2d8859eb70863ae5697b
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572346"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621404"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Öğretici: Cihaz yazılımı güncelleştirme işlemi gerçekleştirme
 

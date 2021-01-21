@@ -3,12 +3,12 @@ title: Azure Service Bus sık sorulan sorular (SSS) | Microsoft Docs
 description: Bu makalede Azure Service Bus hakkında sık sorulan soruların (SSS) bazılarına yanıtlar verilmektedir.
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: acd741101928f5a2dfd72eab1598af6e4556a3d1
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 576df12a9d53ec3585f8691016cd250bf1ba4be3
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96022157"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623116"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus-sık sorulan sorular (SSS)
 
@@ -57,7 +57,7 @@ Resmi Azure SDK 'Ları genellikle Service Bus ileti göndermek ve almak için AM
 
 [!INCLUDE [service-bus-websockets-options](../../includes/service-bus-websockets-options.md)]
 
-.NET Framework için eski WindowsAzure. ServiceBus paketi, "NetMessaging" olarak da adlandırılan eski "Service Bus mesajlaşma protokolünü" (SBMP) kullanma seçeneğine sahiptir. Bu protokol 9350-9354 TCP bağlantı noktalarını kullanır. Bu paketin varsayılan modu, bu bağlantı noktalarının iletişim için kullanılabilir olup olmadığını otomatik olarak algılamadır ve bu durum söz konusu değilse 443 bağlantı noktası üzerinden TLS ile WebSockets ' ye geçiş yapar. Bu ayarı geçersiz kılabilir ve `Https` uygulama için global olarak uygulanan ayarda [connectivitymode](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) ayarını yaparak bu modu zorlayabilirsiniz [`ServiceBusEnvironment.SystemConnectivity`](/dotnet/api/microsoft.servicebus.servicebusenvironment.systemconnectivity?view=azure-dotnet) .
+.NET Framework için eski WindowsAzure. ServiceBus paketi, "NetMessaging" olarak da adlandırılan eski "Service Bus mesajlaşma protokolünü" (SBMP) kullanma seçeneğine sahiptir. Bu protokol 9350-9354 TCP bağlantı noktalarını kullanır. Bu paketin varsayılan modu, bu bağlantı noktalarının iletişim için kullanılabilir olup olmadığını otomatik olarak algılamadır ve bu durum söz konusu değilse 443 bağlantı noktası üzerinden TLS ile WebSockets ' ye geçiş yapar. Bu ayarı geçersiz kılabilir ve `Https` uygulama için global olarak uygulanan ayarda [connectivitymode](/dotnet/api/microsoft.servicebus.connectivitymode) ayarını yaparak bu modu zorlayabilirsiniz [`ServiceBusEnvironment.SystemConnectivity`](/dotnet/api/microsoft.servicebus.servicebusenvironment.systemconnectivity) .
 
 ### <a name="what-ip-addresses-do-i-need-to-add-to-allow-list"></a>İzin verilenler listesine hangi IP adreslerini eklemem gerekir?
 Bağlantılarınızın izin verilenler listesine eklenecek doğru IP adreslerini bulmak için şu adımları izleyin:

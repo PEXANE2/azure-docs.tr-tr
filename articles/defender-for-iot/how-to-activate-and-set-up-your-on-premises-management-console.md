@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: d344b3d9ea54243d61cc6a1f3f0982eb5ab1d238
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 94a1db30419e5d7e52f369392d94b817d0dc273a
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538591"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623763"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>Şirket içi yönetim konsolunuzu etkinleştirme ve ayarlama 
 
@@ -147,13 +147,13 @@ Sensörde tünel ayarlamak için:
 
 ## <a name="set-up-a-site"></a>Site ayarlama
 
-Varsayılan kurumsal harita, çeşitli coğrafi konumlar düzeylerine göre varlıklarınızın genel bir görünümünü sağlar.
+Varsayılan kurumsal harita, çeşitli coğrafi konumlar düzeylerine göre cihazlarınızın genel bir görünümünü sağlar.
 
-Varlıklarınızın görünümü, kuruluş yapısının ve Kullanıcı izinlerinin karmaşık olduğu durumlarda gerekli olabilir. Bu durumlarda, site kurulumu standart site veya bölge yapısına ek olarak genel bir kuruluş yapısıyla belirlenebilir.
+Cihazların görünümü, kuruluş yapısının ve Kullanıcı izinlerinin karmaşık olduğu durumlarda gerekli olabilir. Bu durumlarda, site kurulumu standart site veya bölge yapısına ek olarak genel bir kuruluş yapısıyla belirlenebilir.
 
 Bu ortamı desteklemek için kuruluşunuzun iş birimlerini, bölgelerini, sitelerini ve bölgelerini temel alan küresel bir iş topolojisi oluşturmanız gerekir. Ayrıca, erişim gruplarını kullanarak bu varlıklar etrafında Kullanıcı erişim izinleri tanımlamanız gerekir.
 
-Erişim grupları, kullanıcıların, IoT Platformu için Defender 'daki varlıkları Yönetve analiz etmesine daha iyi denetim sağlar.
+Erişim grupları, kullanıcıların, IoT Platformu için Defender 'da cihazları yönetmesi ve analiz etmek için daha iyi denetim sağlar.
 
 ### <a name="how-it-works"></a>Nasıl çalışır?
 
@@ -215,7 +215,7 @@ Bir siteyi silmek için:
 
 ## <a name="create-enterprise-zones"></a>Kurumsal bölgeler oluşturma
 
-Bölgeler, bir sitedeki varlıkları çeşitli özelliklere göre gruplara bölmenizi sağlayan mantıksal varlıklardır. Örneğin, üretim hatları, alt istasyonlar, site alanları veya varlık türleri için gruplar oluşturabilirsiniz. Alanları, kuruluşunuz için uygun olan herhangi bir özelliğe göre tanımlayabilirsiniz.
+Bölgeler, bir sitedeki cihazları çeşitli özelliklere göre gruplara bölmenizi sağlayan mantıksal varlıklardır. Örneğin, üretim hatları, alt istasyonlar, site alanları veya cihaz türleri için gruplar oluşturabilirsiniz. Alanları, kuruluşunuz için uygun olan herhangi bir özelliğe göre tanımlayabilirsiniz.
 
 Bölgeleri, site yapılandırma sürecinin bir parçası olarak yapılandırırsınız.
 
@@ -231,7 +231,7 @@ Aşağıdaki tabloda, **site yönetim** penceresindeki parametreler açıklanmak
 | Bağlantı | Algılayıcı bağlantı durumu. Durum **bağlı** veya **bağlantısı kesilmiş** olabilir. |
 | Son yükseltme | Son yükseltmenin tarihi. |
 | Yükseltme Ilerleme durumu | İlerleme çubuğu, yükseltme işleminin durumunu aşağıdaki gibi gösterir:<br />-Paket karşıya yükleniyor<br />-Yüklenmeye hazırlanıyor<br />-İşlem durduruluyor<br />-Verileri yedekleme<br />-Anlık görüntü alınıyor<br />-Yapılandırma güncelleştiriliyor<br />-Bağımlılıklar güncelleştiriliyor<br />-Kitaplıklar güncelleştiriliyor<br />-Düzeltme eki uygulama<br />-Süreçler başlatılıyor<br />-Sistem sağlamlık doğrulanıyor<br />-Doğrulama başarılı<br />-Başarılı<br />-Hata<br />-Yükseltme başlatıldı<br />-Yükleme başlatılıyorogress bar shows the status of the upgrade process, as follows:<br />- Uploading package<br />- Preparing to install<br />- Stopping processes<br />- Backing up data<br />- Taking snapshot<br />- Updating configuration<br />- Updating dependencies<br />- Updating libraries<br />- Patching databases<br />- Starting processes<br />- Validating system sanity<br />- Validation succeeded<br />- Success<br />- Failure<br />- Upgrade started<br />- Starting installation<br /></br >Yükseltme hakkında daha fazla bilgi için, yardım için [Microsoft desteği](https://support.microsoft.com/) başvurun. |
-| Varlıklar | Algılayıcıyı izleyen OT varlıklarının sayısı. |
+| Cihazlar | Algılayıcıyı izleyen OT cihaz sayısı. |
 | Uyarılar | Sensördeki uyarı sayısı. |
 | :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/assign-icon.png" border="false"::: | Bölgelere bir algılayıcı atanmasını sağlar. |
 | :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/delete-icon.png" border="false":::| Siteden bağlantısı kesilen bir algılayıcıyı silmeye izin vermez. |

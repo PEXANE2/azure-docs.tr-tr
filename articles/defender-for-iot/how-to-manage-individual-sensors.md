@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 68fa3ea15199ec1d9cc99f92f497847fb029acd6
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 16031c3d67b075e962c73fbb38ada36c7efeddad
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539563"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621223"
 ---
 # <a name="manage-individual-sensors"></a>Algılayıcıları ayrı ayrı yönetme
 
@@ -315,7 +315,7 @@ Sertifikaları ve anahtarları, belirli sunucu türleri veya yazılımlar ile uy
 
 ## <a name="connect-a-sensor-to-the-management-console"></a>Yönetim konsoluna bir algılayıcı bağlama
 
-Bu bölümde, algılayıcı ve şirket içi yönetim konsolu arasında bağlantı sağlamak açıklanmaktadır. Bu, bir AIR-gapped ağında çalışıyorsanız ve algılayıcıdan yönetim konsoluna varlık ve uyarı bilgilerini göndermek istiyorsanız bunu yapın. Bu bağlantı ayrıca yönetim konsolunun sistem ayarlarını sensöre itmesi ve algılayıcısı üzerinde diğer yönetim görevlerini gerçekleştirmesini sağlar.
+Bu bölümde, algılayıcı ve şirket içi yönetim konsolu arasında bağlantı sağlamak açıklanmaktadır. Bir AIR-gapped ağında çalışıyorsanız ve algılayıcıdan yönetim konsoluna cihaz ve uyarı bilgilerini göndermek istiyorsanız bunu yapmanız gerekir. Bu bağlantı ayrıca yönetim konsolunun sistem ayarlarını sensöre itmesi ve algılayıcısı üzerinde diğer yönetim görevlerini gerçekleştirmesini sağlar.
 
 Bağlanmak için:
 
