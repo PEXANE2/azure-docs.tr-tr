@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/16/2020
+ms.date: 01/20/2021
 ms.author: b-juche
-ms.openlocfilehash: 7b664dcd1cb12808960ffacf91c6d02d58632c4e
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 4a4fff18d21ccb0c729ecb1f79df17225c8086bc
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95243146"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632682"
 ---
 # <a name="requirements-and-considerations-for-using-cross-region-replication"></a>Bölgeler arası çoğaltmayı kullanma gereksinimleri ve konuları 
 
@@ -31,6 +31,7 @@ Azure NetApp Files [birim çapraz bölge çoğaltma işlevini kullanma](cross-re
 * Azure NetApp Files çoğaltma yalnızca belirli sabit bölge çiftlerinde kullanılabilir. Bkz. [desteklenen bölge çiftleri](cross-region-replication-introduction.md#supported-region-pairs). 
 * SMB birimleri NFS birimleri ile birlikte desteklenir. SMB birimlerinin çoğaltılması, kaynak ve hedef NetApp hesaplarında bir Active Directory bağlantısı gerektirir. Hedef AD bağlantısının DNS sunucularına erişimi olmalıdır veya hedef bölgedeki Temsilcili alt ağdan erişilebilen etki alanı denetleyicileri ekler. Daha fazla bilgi için bkz. [Active Directory bağlantıları gereksinimleri](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections). 
 * Hedef hesap, kaynak birim bölgesinden farklı bir bölgede olmalıdır. Ayrıca, farklı bir bölgede var olan bir NetApp hesabını da seçebilirsiniz.  
+* Hedef birimi okuma ve yazma için etkinleştirmek üzere [hedef bölgeye yük devretmek](cross-region-replication-manage-disaster-recovery.md#fail-over-to-destination-volume) için çoğaltma hedefi birimi salt okunurdur. 
 * Azure NetApp Files çoğaltma şu anda birden çok aboneliği desteklemiyor; tüm çoğaltmalar tek bir abonelik altında gerçekleştirilmelidir.
 * Her bölge için tek bir abonelik içinde çoğaltma için en fazla beş birim ayarlayabilirsiniz. Beş çoğaltma hedefi birimi (bir bölgedeki abonelik başına) için varsayılan kotada bir artış istemek üzere bir destek bileti açabilirsiniz. 
 * Arabirim, kaynak birimde yeni eklenen bir anlık görüntüyü yansıtmak için beş dakikaya kadar bir gecikme olabilir.  
@@ -41,11 +42,11 @@ Azure NetApp Files [birim çapraz bölge çoğaltma işlevini kullanma](cross-re
 * Çoğaltma hedefi birimi oluşturulmadan önce alınmış bir anlık görüntüye döndüremezsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Birim çoğaltması oluştur](cross-region-replication-create-peering.md)
+* [Birim çoğaltması oluşturma](cross-region-replication-create-peering.md)
 * [Çoğaltma ilişkisinin uygunluk durumunu görüntüleme](cross-region-replication-display-health-status.md)
 * [Olağanüstü durum kurtarmayı yönetme](cross-region-replication-manage-disaster-recovery.md)
 * [Birim çoğaltma ölçümleri](azure-netapp-files-metrics.md#replication)
-* [Birim çoğaltmaları veya birimleri silme](cross-region-replication-delete.md)
+* [Birim çoğaltmalarını veya birimleri silme](cross-region-replication-delete.md)
 * [Bölgeler arası çoğaltma sorunlarını giderme](troubleshoot-cross-region-replication.md)
 
 

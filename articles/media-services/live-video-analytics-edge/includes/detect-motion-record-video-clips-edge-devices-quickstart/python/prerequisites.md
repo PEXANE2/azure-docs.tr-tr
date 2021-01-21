@@ -1,12 +1,14 @@
 ---
-ms.openlocfilehash: 3a6b78aaa2bf23051ed4ee8950a764b01a3ca3bb
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: f031843243e64515549eaa4e850efcddca58d1f2
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98061245"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633488"
 ---
 * Etkin aboneliği olan bir Azure hesabı. Henüz bir [hesabınız yoksa ücretsiz olarak bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+  > [!NOTE]
+  > Hizmet sorumluları oluşturma izinlerine sahip bir Azure aboneliğine ihtiyacınız olacak (**sahip rolü** bunu sağlar). Doğru izinleriniz yoksa, size doğru izinleri vermek için lütfen hesap yöneticinize ulaşın. 
 * [Visual Studio Code](https://code.visualstudio.com/), aşağıdaki uzantılara sahip:
     * [Azure IoT Araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
         > [!TIP]

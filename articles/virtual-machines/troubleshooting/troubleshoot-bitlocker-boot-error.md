@@ -13,18 +13,16 @@ ms.workload: infrastructure
 ms.date: 11/20/2020
 ms.author: genli
 ms.custom: has-adal-ref
-ms.openlocfilehash: 00095eed3fe6d143d9ed7a0c748c4702028f4632
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 87bf311b5199ec187c24c28a42314d9dc6787998
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832069"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633036"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM 'de BitLocker önyükleme hataları
 
  Bu makalede, Microsoft Azure ' de bir Windows sanal makinesi (VM) başlattığınızda karşılaşabileceğiniz BitLocker hataları açıklanır.
-
- 
 
 ## <a name="symptom"></a>Belirti
 
@@ -42,6 +40,9 @@ ms.locfileid: "97832069"
 Bu sorun, sanal makine şifreli diskin şifresini çözmek için BitLocker kurtarma anahtarı (BEK) dosyasını bulamıyorsa oluşabilir.
 
 ## <a name="solution"></a>Çözüm
+
+> [!TIP]
+> VM 'nin son yedeğine sahipseniz önyükleme sorununu çözmek için [VM 'yi yedekten geri yüklemeyi](../../backup/backup-azure-arm-restore-vms.md) deneyebilirsiniz.
 
 Bu sorunu çözmek için VM 'yi durdurup serbest bırakın ve başlatın. Bu işlem, VM 'yi Azure Key Vault BEK dosyasını almaya zorlar ve sonra şifrelenmiş diske koyar. 
 

@@ -3,16 +3,16 @@ title: Azure Service Bus abonelik kuralı SQL eylemi sözdizimi | Microsoft Docs
 description: Bu makale, SQL kuralı eylem sözdizimi için bir başvuru sağlar. Eylemler, bir iletiyle gerçekleştirilen SQL dil tabanlı söz dizimine yazılır.
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: 7ce3332fb1a2025e89135e5e42e72d4afe1e7a5e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 606281d42d5598d7f73312990d3a19775a202c08
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489403"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632821"
 ---
 # <a name="subscription-rule-sql-action-syntax"></a>Abonelik kuralı SQL eylemi sözdizimi
 
-Bir ileti bir abonelik kuralı filtresi tarafından seçildikten sonra ileti meta verilerini işlemek için bir *SQL eylemi* kullanılır. Bu, SQL-92 standardının bir alt kümesini içeren bir metin deyimidir. Eylem ifadeleri `sqlExpression` , bir Azure Resource Manager şablonundaki bir Service Bus ' Action ' özelliğinin öğesi `Rule` veya Azure CLI [Azure Resource Manager template](service-bus-resource-manager-namespace-topic-with-rule.md) `az servicebus topic subscription rule create` komutunun [`--action-sql-expression`](/cli/azure/servicebus/topic/subscription/rule?preserve-view=true&view=azure-cli-latest#az_servicebus_topic_subscription_rule_create) bağımsız değişkeni ve ABONELIK kurallarının yönetilmesine izin veren çeşitli SDK işlevleri ile birlikte kullanılır.
+Bir ileti bir abonelik kuralı filtresi tarafından seçildikten sonra ileti meta verilerini işlemek için bir *SQL eylemi* kullanılır. Bu, SQL-92 standardının bir alt kümesini içeren bir metin deyimidir. Eylem ifadeleri `sqlExpression` , bir Azure Resource Manager şablonundaki bir Service Bus ' Action ' özelliğinin öğesi `Rule` veya Azure CLI [](service-bus-resource-manager-namespace-topic-with-rule.md) `az servicebus topic subscription rule create` komutunun [`--action-sql-expression`](/cli/azure/servicebus/topic/subscription/rule#az_servicebus_topic_subscription_rule_create) bağımsız değişkeni ve ABONELIK kurallarının yönetilmesine izin veren çeşitli SDK işlevleri ile birlikte kullanılır.
   
   
 ```  
@@ -51,7 +51,7 @@ Bir ileti bir abonelik kuralı filtresi tarafından seçildikten sonra ileti met
     [<scope> .] <property_name>
 ``` 
   
-## <a name="arguments"></a>Arguments  
+## <a name="arguments"></a>Bağımsız değişkenler  
   
 -   `<scope>` , kapsamını belirten isteğe bağlı bir dizedir `<property_name>` . Geçerli değerler veya ' dir `sys` `user` . `sys`Değer, `<property_name>` [aracılı edmessage sınıfının](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)ortak özellik adı olan sistem kapsamını gösterir. `user` Kullanıcı kapsamını `<property_name>` , [aracılı Edmessage sınıf](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) sözlüğünün bir anahtarı olduğunu gösterir. `user` belirtilmemişse, kapsam varsayılan kapsamdır `<scope>` .  
   
@@ -71,7 +71,7 @@ Var olmayan bir sistem özelliğine erişme girişimi bir hatadır, ancak varolm
   
 ```  
   
-### <a name="arguments"></a>Arguments  
+### <a name="arguments"></a>Bağımsız değişkenler  
  `<regular_identifier>` , aşağıdaki normal ifade tarafından temsil edilen bir dizedir:  
   
 ```  
@@ -135,7 +135,7 @@ Var olmayan bir sistem özelliğine erişme girişimi bir hatadır, ancak varolm
       <integer_constant> | <decimal_constant> | <approximate_number_constant> | <boolean_constant> | NULL  
 ```  
   
-### <a name="arguments"></a>Arguments  
+### <a name="arguments"></a>Bağımsız değişkenler  
   
 -   `<integer_constant>` , tırnak işaretleri içine alınmış ve ondalık noktaları içermeyen sayıların bir dizesidir. Değerler dahili olarak depolanır `System.Int64` ve aynı aralığı izler.  
   

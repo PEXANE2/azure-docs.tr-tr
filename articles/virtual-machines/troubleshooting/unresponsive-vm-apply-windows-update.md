@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 55dcd65e901a5ce8665ef8d3a2a29d7943581df9
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 145d58013b259bf14c26d0840b8cd4299cfe85f0
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200728"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632631"
 ---
 # <a name="vm-is-unresponsive-with-c01a001d-error-when-applying-windows-update"></a>Windows Update uygulanırken VM "C01A001D" hatası ile yanıt vermiyor
 
@@ -38,6 +38,9 @@ Dosya sisteminde bir çekirdek dosya oluşturulamıyor. İşletim sistemi diske 
 ## <a name="resolution"></a>Çözüm
 
 ### <a name="process-overview"></a>İşleme genel bakış
+
+> [!TIP]
+> VM 'nin son yedeğine sahipseniz önyükleme sorununu çözmek için [VM 'yi yedekten geri yüklemeyi](../../backup/backup-azure-arm-restore-vms.md) deneyebilirsiniz.
 
 1. [Bir onarım VM 'Si oluşturun ve erişin](#create-and-access-a-repair-vm).
 2. [Sabit diskte boş alan açın](#free-up-space-on-the-hard-disk).

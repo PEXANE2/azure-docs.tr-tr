@@ -6,12 +6,12 @@ ms.date: 10/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: 39897e490e4653fbaad7a64ecc0b33f161d1264b
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: c0745dd4069c64292fbcaef666d843ae2d25f7b3
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165799"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632589"
 ---
 # <a name="telemetry-processors-preview---azure-monitor-application-insights-for-java"></a>Telemetri işlemcileri (Önizleme)-Java için Azure Izleyici Application Insights
 
@@ -38,7 +38,7 @@ Bir yayılma, bu üç şeyin herhangi biri için genel bir terimdir:
 
 Telemetri işlemcilerin amacı doğrultusunda bir yayılma alanının önemli bileşenleri şunlardır:
 
-* Ad
+* Name
 * Öznitelikler
 
 Yayılma adı, Azure portal istekler ve Bağımlılıklar için kullanılan birincil görüntüdir.
@@ -241,7 +241,7 @@ Eylem için `hash` aşağıdakiler gereklidir
 ### `extract`
 
 > [!NOTE]
-> Bu özellik yalnızca 3.0.1 ve üzeri sürümlerde
+> Bu özellik yalnızca 3.0.2 ve üzeri sürümlerde
 
 Kural içinde belirtilen hedef anahtarlara giriş anahtarından bir normal ifade kuralı kullanarak değerleri ayıklar. Bir hedef anahtar zaten varsa, geçersiz kılınır. Kaynak olarak var olan özniteliğiyle [span işlemci](#extract-attributes-from-span-name) ayarına benzer şekilde davranır `toAttributes` .
 

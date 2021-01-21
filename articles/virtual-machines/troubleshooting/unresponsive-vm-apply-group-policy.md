@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.author: v-mibufo
-ms.openlocfilehash: cbf2fe491e1fe0b553eab04ca7190da0413a3ba6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7160ec9564ede21eab0a205b2d66a7d566639506
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86526019"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632665"
 ---
 # <a name="vm-is-unresponsive-when-applying-group-policy-local-users-and-groups-policy"></a>Yerel Kullanıcılar ve Gruplar ilkesi grup ilkesi uygulanırken VM yanıt vermiyor
 
@@ -31,7 +31,7 @@ VM 'nin bir ekran görüntüsünü görüntülemek için [önyükleme tanılamay
 
 :::image type="content" source="media//unresponsive-vm-apply-group-policy/applying-group-policy-1.png" alt-text="Grup ilkesi yerel kullanıcılar ve Gruplar ilkesi yüklemeyi uygulama ekran görüntüsü (Windows Server 2012 R2).":::
 
-:::image type="content" source="media/unresponsive-vm-apply-group-policy/applying-group-policy-2.png" alt-text="Grup ilkesi yerel kullanıcılar ve Gruplar ilkesi yüklemeyi uygulama ekran görüntüsü (Windows Server 2012 R2).":::
+:::image type="content" source="media/unresponsive-vm-apply-group-policy/applying-group-policy-2.png" alt-text="Grup ilkesi yerel kullanıcılar ve Gruplar ilkesi yüklemeyi uygulama ekran görüntüsü (Windows Server 2012).":::
 
 ## <a name="cause"></a>Nedeni
 
@@ -47,6 +47,9 @@ Sorunlu ilke aşağıda verilmiştir:
 ## <a name="resolution"></a>Çözüm
 
 ### <a name="process-overview"></a>İşleme genel bakış
+
+> [!TIP]
+> VM 'nin son yedeğine sahipseniz önyükleme sorununu çözmek için [VM 'yi yedekten geri yüklemeyi](../../backup/backup-azure-arm-restore-vms.md) deneyebilirsiniz.
 
 1. [Bir onarım VM 'si oluşturma ve erişme](#step-1-create-and-access-a-repair-vm)
 1. [İlkeyi devre dışı bırak](#step-2-disable-the-policy)
@@ -66,7 +69,23 @@ Sorunlu ilke aşağıda verilmiştir:
 1. VM 'yi Onar sayfasında, kayıt defteri düzenleyicisini açın.
 1. **HKEY_LOCAL_MACHINE** anahtarı bulun ve menüden **Dosya**  >  **yükleme Hive** ' yi seçin.
 
-    :::image type="content" source="media/unresponsive-vm-apply-group-policy/registry.png" alt-text="Grup ilkesi yerel kullanıcılar ve Gruplar ilkesi yüklemeyi uygulama ekran görüntüsü (Windows Server 2012 R2)." /v CleanupProfiles /f
+    :::image type="content" source="media/unresponsive-vm-apply-group-policy/registry.png" alt-text="Ekran görüntüsü vurgulanan HKEY_LOCAL_MACHINE ve Load Hive içeren menüyü gösterir.":::
+
+    - Çevrimdışı bir sistemden kayıt defteri anahtarlarını yüklemek için Hive Yükle ' ye yararlanabilirsiniz. Bu durumda, sistem, onarım sanal makinesine bağlı bozuk disktir.
+    - Sistem genelinde ayarlar üzerinde depolanır `HKEY_LOCAL_MACHINE` ve "HKLM" olarak kısaltılabilir.
+1. Ekli diskte, `\windows\system32\config\SOFTWARE` dosyaya gidin ve açın.
+
+    1. Bir ad girmeniz istendiğinde, BROKENSOFTWARE ' i girin.
+    1. BROKENSOFTWARE 'in yüklendiğini doğrulamak için **HKEY_LOCAL_MACHINE** genişletin ve eklenen bromi yazılım anahtarını arayın.
+1. BROVKENSOFTWARE ' e gidin ve yüklenen Hive içinde CleanupProfile anahtarının var olup olmadığını denetleyin.
+
+    1. Anahtar varsa, CleanupProfile ilkesi ayarlanır. Değeri, gün cinsinden ölçülen bekletme ilkesini temsil eder. Anahtarı silmeye devam edin.
+    1. Anahtar yoksa, CleanupProfile ilkesi ayarlı değildir. Bağlı işletim sistemi diskinin Windows dizininde bulunan Memory. dmp dosyası dahil olmak üzere [bir destek bileti gönderme](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+
+1. CleanupProfiles anahtarını şu komutu kullanarak silin:
+
+    ```
+    reg delete "HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows\System" /v CleanupProfiles /f
     ```
 1.  Şu komutu kullanarak BROKENSOFTWARE kovanını kaldırın:
 

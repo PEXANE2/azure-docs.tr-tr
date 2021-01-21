@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 2457952051f575306de46e3e8145cc26678a1ef8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f83f4871d5cde23194ff51a90a22031b526cf91
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86526551"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632572"
 ---
 # <a name="windows-vm-cannot-boot-due-to-windows-boot-manager"></a>Windows Önyükleme Yöneticisi nedeniyle Windows sanal makinesi önyükleme yapılamıyor
 
@@ -40,6 +40,9 @@ VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](
 Hata, Windows Önyükleme Yöneticisi 'ndeki bir BCD bayrağının *displaybootmenu* olmasından kaynaklanır. Bayrak etkinleştirildiğinde, Windows önyükleme yöneticisi kullanıcıya önyükleme işlemi sırasında, hangi yükleyiciyi çalıştırmak istediğinizi seçerek önyükleme gecikmesine neden olur. Azure 'da, bu özellik bir VM 'yi önyüklemek için gereken süreye eklenebilir.
 
 ## <a name="solution"></a>Çözüm
+
+> [!TIP]
+> VM 'nin son yedeğine sahipseniz önyükleme sorununu çözmek için [VM 'yi yedekten geri yüklemeyi](../../backup/backup-azure-arm-restore-vms.md) deneyebilirsiniz.
 
 İşleme genel bakış:
 
@@ -85,11 +88,11 @@ Seri konsoluna erişiminiz varsa, daha hızlı önyükleme süreleri elde etmeni
 1. Yükseltilmiş bir komut istemi açın.
 2. DisplayBootMenu ' i etkinleştirmek için aşağıdakileri girin:
 
-   **1. nesil VM 'ler**için bu komutu kullanın:
+   **1. nesil VM 'ler** için bu komutu kullanın:
 
    `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /set {bootmgr} displaybootmenu yes`
 
-   **2. nesil VM 'ler**için bu komutu kullanın:
+   **2. nesil VM 'ler** için bu komutu kullanın:
 
    `bcdedit /store <VOLUME LETTER OF EFI SYSTEM PARTITION>:EFI\Microsoft\boot\bcd /set {bootmgr} displaybootmenu yes`
 
@@ -97,11 +100,11 @@ Seri konsoluna erişiminiz varsa, daha hızlı önyükleme süreleri elde etmeni
 
 3. Zaman aşımı değerini 5 saniye olarak değiştirin:
 
-   **1. nesil VM 'ler**için bu komutu kullanın:
+   **1. nesil VM 'ler** için bu komutu kullanın:
 
    `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /set {bootmgr} timeout 5`
 
-   **2. nesil VM 'ler**için bu komutu kullanın:
+   **2. nesil VM 'ler** için bu komutu kullanın:
 
    `bcdedit /store <VOLUME LETTER OF EFI SYSTEM PARTITION>:EFI\Microsoft\boot\bcd /set {bootmgr} timeout 5`
 

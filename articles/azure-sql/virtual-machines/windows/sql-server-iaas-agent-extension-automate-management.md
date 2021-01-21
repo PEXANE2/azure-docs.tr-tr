@@ -17,12 +17,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 3fe87f94ce05efa4a784ba7e3f65e53abb00fd05
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 7ddc13306f4adb1730169c4811b9d2227dedca33
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914255"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632775"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>SQL Server IaaS Aracısı Uzantısı ile yönetimi otomatikleştirme
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -115,7 +115,7 @@ Uzantıya kaydolmak için üç yol vardır:
 
 ### <a name="named-instance-support"></a>Adlandırılmış örnek desteği
 
-SQL Server IaaS Aracısı uzantısı, sanal makinede kullanılabilen tek SQL Server örneğidir SQL Server adlandırılmış bir örneğiyle birlikte çalışıyor. Uzantı birden çok SQL Server örneğine sahip VM 'Lere yüklenemez. 
+SQL Server IaaS Aracısı uzantısı, sanal makinede kullanılabilen tek SQL Server örnek varsa SQL Server adlandırılmış bir örneğiyle birlikte çalışıyor. SANAL makinede varsayılan örnek yoksa, uzantı birden çok adlandırılmış SQL Server örneğe sahip VM 'Lere yüklenemez. 
 
 SQL Server adlı bir örneğini kullanmak için bir Azure sanal makinesini dağıtın, bu örneğe tek bir adlandırılmış SQL Server örneği yükleyip [SQL IaaS uzantısına](sql-agent-extension-manually-register-single-vm.md)kaydedin.
 
@@ -228,7 +228,7 @@ Hayır. SQL IaaS Aracısı uzantısına başarıyla kaydolmak için bir VM 'nin 
 
 **Birden çok SQL Server örneği varsa SQL IaaS Aracısı uzantısına sahip bir VM 'yi kaydedebilir miyim?**
 
-Evet. SQL IaaS Aracısı uzantısı yalnızca bir SQL Server (veritabanı altyapısı) örneğini kaydeder. SQL IaaS Aracısı uzantısı, birden çok örnek olması durumunda varsayılan SQL Server örneğini kaydeder. Varsayılan örnek yoksa, yalnızca hafif modda kaydolma desteklenir. Hafif ve tam yönetilebilirlik moduna yükseltmek için, varsayılan SQL Server örneği var olmalıdır veya VM yalnızca bir adlandırılmış SQL Server örneğine sahip olmalıdır.
+Evet, VM 'de varsayılan bir örnek vardır. SQL IaaS Aracısı uzantısı yalnızca bir SQL Server (veritabanı altyapısı) örneğini kaydeder. SQL IaaS Aracısı uzantısı, birden çok örnek olması durumunda varsayılan SQL Server örneğini kaydeder.
 
 **SQL Server yük devretme kümesi örneğini SQL IaaS Aracısı Uzantısı ile kaydedebilir miyim?**
 

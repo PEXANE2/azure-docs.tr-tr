@@ -3,12 +3,12 @@ title: Uzamsal analiz için Görüntü İşleme ile canlı videoyu çözümleme-
 description: Bu öğreticide, canlı video analizinin Azure bilişsel hizmetler 'deki Görüntü İşleme uzamsal analiz AI özelliği ile birlikte nasıl kullanılacağı gösterilmektedir. Bu, (benzetimli) bir IP kamerasından canlı video akışını analiz edebilir.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 5b979bfeb6961b285cfeb2287888d8f157608d96
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 1c6fe6e10a91034d794437f31d495b85ef086848
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060189"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632951"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Uzamsal analizler için Görüntü İşleme ile canlı videoyu çözümleme (Önizleme)
 
@@ -23,7 +23,8 @@ Bu öğreticide şunları yapmanız gerekir:
 > * Olayları izleme.
  
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
-
+  > [!NOTE]
+  > Hizmet sorumluları oluşturma izinlerine sahip bir Azure aboneliğine ihtiyacınız olacak (**sahip rolü** bunu sağlar). Doğru izinleriniz yoksa, size doğru izinleri vermek için lütfen hesap yöneticinize ulaşın. 
 ## <a name="suggested-pre-reading"></a>Önerilen önceden okuma
 
 Başlamadan önce şu makaleleri okuyun:
@@ -136,10 +137,10 @@ Dağıtım şablonu dosyasında dikkat etmeniz gereken birkaç nokta vardır:
 1. `IpcMode` lvaEdge ve uzamsal analiz modülü createOptions içinde aynı olmalıdır ve konak olarak ayarlanmalıdır.
 1. RTSP benzeticisinin çalışması için Birim sınırlarını oluşturduğunuzdan emin olun. Daha fazla bilgi için bkz. [Docker Volume takmaları kurma](deploy-azure-stack-edge-how-to.md#optional-setup-docker-volume-mounts).
 
-    1. [SMB paylaşımıyla bağlantı kurmak için](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share) [örnek Bulldozer video dosyasını](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv) yerel paylaşıma kopyalayın.
+    1. [SMB paylaşımıyla bağlantı kurmak için](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share) [örnek Bulldozer video dosyasını](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv) yerel paylaşıma kopyalayın.  
+        > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Mesi]  
     1. Rtspsim modülünün aşağıdaki yapılandırmaya sahip olduğunu görün:
-        
-        ```json
+        ```
         "createOptions": {
                             "HostConfig": {
                               "Mounts": [
@@ -159,6 +160,8 @@ Dağıtım şablonu dosyasında dikkat etmeniz gereken birkaç nokta vardır:
                             }
                           }
         ```
+        
+
 ## <a name="generate-and-deploy-the-deployment-manifest"></a>Dağıtım bildirimini oluşturma ve dağıtma
 
 Dağıtım bildirimi, bir sınır cihazına hangi modüllerin dağıtıldığını tanımlar. Ayrıca, bu modüllerle ilgili yapılandırma ayarlarını tanımlar.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: ff21975c34c28d7476635467e0c1abb8e6575e35
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f286542c91ba473d13595d8e8299b1bbd8c93856
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977961"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632614"
 ---
 # <a name="virtual-machine-is-unresponsive-while-applying-audit-policy-configuration-policy"></a>Denetim ilkesi yapılandırma ilkesi uygulanırken sanal makine yanıt vermiyor
 
@@ -27,7 +27,7 @@ Bu makalede, bir Azure VM 'nin önyüklenmesini önleyen denetim Ilkesi yapılan
 
 ## <a name="symptom"></a>Belirti
 
-VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](./boot-diagnostics.md) kullandığınızda, ekran görüntüsünde, **Denetim Ilkesi yapılandırma ilkesini uygulayan**ileti ile bir önyükleme SıRASıNDA işletim sisteminin (OS) yanıt vermeyen bir şekilde görüntülediğini görürsünüz.
+VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](./boot-diagnostics.md) kullandığınızda, ekran görüntüsünde, **Denetim Ilkesi yapılandırma ilkesini uygulayan** ileti ile bir önyükleme SıRASıNDA işletim sisteminin (OS) yanıt vermeyen bir şekilde görüntülediğini görürsünüz.
 
   !["Denetim Ilkesi yapılandırma ilkesi uygulanıyor" iletisiyle işletim sistemi önyüklemesi](./media/vm-unresponsive-applying-audit-configuration-policy/1.png)
 
@@ -46,6 +46,9 @@ Sorunlu ilke şu şekildedir: *Bilgisayar Yapılandırması \ Yönetim Şablonla
 
 ### <a name="process-overview"></a>İşleme genel bakış
 
+> [!TIP]
+> VM 'nin son yedeğine sahipseniz önyükleme sorununu çözmek için [VM 'yi yedekten geri yüklemeyi](../../backup/backup-azure-arm-restore-vms.md) deneyebilirsiniz.
+
 1. Bir onarım VM 'si oluşturun ve erişin.
 1. İlkeyi devre dışı bırakın.
 1. Seri konsolu ve bellek dökümü toplamayı etkinleştirin.
@@ -59,13 +62,13 @@ Sorunlu ilke şu şekildedir: *Bilgisayar Yapılandırması \ Yönetim Şablonla
 
 ### <a name="disable-the-policy"></a>İlkeyi devre dışı bırak
 
-1. VM 'yi Onar sayfasında, **kayıt defteri düzenleyicisini**açın.
+1. VM 'yi Onar sayfasında, **kayıt defteri düzenleyicisini** açın.
 1. **HKEY_LOCAL_MACHINE** anahtarı bulun ve menüden **Hive yükle > dosya** ' yı seçin.
 
    ![Hive yüklemek için kayıt defteri Düzenleyicisi içinde gezinme.](./media/vm-unresponsive-applying-audit-configuration-policy/3.png)
 
    - Çevrimdışı bir sistemden kayıt defteri anahtarlarını yüklemek için Hive Yükle ' ye yararlanabilirsiniz. Bu durumda, sistem, onarım sanal makinesine bağlı bozuk disktir.
-   - Sistem genelinde ayarlar **HKEY_LOCAL_MACHINE** depolanır ve **HKLM**olarak kısaltılabilir.
+   - Sistem genelinde ayarlar **HKEY_LOCAL_MACHINE** depolanır ve **HKLM** olarak kısaltılabilir.
 
 1. Ekli diskte `\windows\system32\config\SOFTWARE` dosyasını açın.
 
@@ -105,8 +108,8 @@ Sorunlu ilke şu şekildedir: *Bilgisayar Yapılandırması \ Yönetim Şablonla
       `bcdedit /store <LETTER OF THE EFI SYSTEM PARTITION>:EFI\Microsoft\boot\bcd /enum`
 
       - Komutunda, `<LETTER OF THE EFI SYSTEM PARTITION>` EFI sistem bölümünün harfiyle değiştirin.
-      - **EFI sistem bölümü**olarak etiketlenmiş uygun sistem bölümünü belirlemek Için Disk Yönetimi konsolunu başlatmak faydalı olabilir.
-      - Tanımlayıcı, benzersiz bir GUID olabilir veya varsayılan **Bootmgr**olabilir.
+      - **EFI sistem bölümü** olarak etiketlenmiş uygun sistem bölümünü belirlemek Için Disk Yönetimi konsolunu başlatmak faydalı olabilir.
+      - Tanımlayıcı, benzersiz bir GUID olabilir veya varsayılan **Bootmgr** olabilir.
 
 1. Aşağıdaki komutları çalıştırın:
 
@@ -180,6 +183,6 @@ Bu sorunu çözmek için öncelikle kilitlenme için bellek dökümü dosyasın�
 
 #### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>Döküm dosyasını bulma ve destek bileti gönderme
 
-1. VM 'yi Onar sayfasında, bağlı işletim sistemi diskinde Windows klasörü ' ne gidin. Bağlı işletim sistemi diskine atanan sürücü harfi *F*olarak etiketlenmişse, adresine gitmeniz gerekir `F:\Windows` .
+1. VM 'yi Onar sayfasında, bağlı işletim sistemi diskinde Windows klasörü ' ne gidin. Bağlı işletim sistemi diskine atanan sürücü harfi *F* olarak etiketlenmişse, adresine gitmeniz gerekir `F:\Windows` .
 1. Dosyayı bulun `memory.dmp` ve ardından bellek dökümü dosyası ile [bir destek bileti gönderebilirsiniz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .
 1. Dosyayı bulmada sorun yaşıyorsanız `memory.dmp` , bunun yerine, [seri konsolundaki maskelenemeyen kesme (NMI) çağrılarını](./serial-console-windows.md#use-the-serial-console-for-nmi-calls) kullanın. [Burada NMI çağrılarını kullanarak kilitlenme bilgi döküm dosyası oluşturma](/windows/client-management/generate-kernel-or-complete-crash-dump)kılavuzunu izleyin.

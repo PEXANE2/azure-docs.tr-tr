@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: c04f3b27c7214dcf821c7698796bfaea399b947d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8279aee4a0df8155b23e6f984d259bf92555dc95
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86509112"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632842"
 ---
 # <a name="windows-stop-error---0x000000ef-critical-process-died"></a>Windows durma hatası-#0x000000EF "kritik Işlem died"
 
@@ -27,7 +27,7 @@ Bu makalede, bir Azure VM 'de önyükleme sırasında kritik bir işlemin bulund
 
 ## <a name="symptom"></a>Belirti
 
-VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](./boot-diagnostics.md) kullandığınızda, ekran görüntüsünde Ileti *kritik işlemiyle*ilgili hata *#0x000000EF* görüntülediğini görürsünüz.
+VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](./boot-diagnostics.md) kullandığınızda, ekran görüntüsünde Ileti *kritik işlemiyle* ilgili hata *#0x000000EF* görüntülediğini görürsünüz.
 
 !["Bilgisayarınız bir sorunla karşılaştı ve yeniden başlatılması gerekiyor. Yalnızca bazı hata bilgilerini topluyoruz ve sonra yeniden başlatabilirsiniz. (% #% Tamam) Daha fazla bilgi edinmek istiyorsanız, daha sonra çevrimiçi olarak bu hata için arama yapabilirsiniz: 0x000000EF "](media/troubleshoot-guide-critical-process-died/1.jpg)
 
@@ -38,6 +38,9 @@ Genellikle bunun nedeni, önyükleme sırasında kritik bir sistem işlemi başa
 ## <a name="solution"></a>Çözüm
 
 ### <a name="process-overview"></a>İşleme genel bakış:
+
+> [!TIP]
+> VM 'nin son yedeğine sahipseniz önyükleme sorununu çözmek için [VM 'yi yedekten geri yüklemeyi](../../backup/backup-azure-arm-restore-vms.md) deneyebilirsiniz.
 
 1. Bir onarım VM 'si oluşturun ve erişin.
 2. Tüm işletim sistemi bozulmasını düzeltin.
@@ -75,7 +78,7 @@ SFC çalıştırıldıktan sonra sorun devam ederse, sorunun nedenini öğrenmek
 
 ### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>Döküm dosyasını bulma ve destek bileti gönderme
 
-3. VM 'yi Onar sayfasında, bağlı işletim sistemi diskinde Windows klasörü ' ne gidin. Bağlı işletim sistemi diskine atanan sürücü harfi *F*ise, *f:\Windows*'a gitmeniz gerekir.
+3. VM 'yi Onar sayfasında, bağlı işletim sistemi diskinde Windows klasörü ' ne gidin. Bağlı işletim sistemi diskine atanan sürücü harfi *F* ise, *f:\Windows*'a gitmeniz gerekir.
 4. *Memory. dmp* dosyasını bulun ve ardından bellek dökümü dosyası ile [bir destek bileti gönderebilirsiniz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .
 
    > [!NOTE]

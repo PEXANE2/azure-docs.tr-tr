@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/22/2020
 ms.author: v-mibufo
-ms.openlocfilehash: cfeb040893ae2be5842959ed8458bd713bebe6ee
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: d8d2ab2bb3f24e1faa4791ebdc1ce3852f6a790e
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512146"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632699"
 ---
 # <a name="os-start-up--computer-restarted-unexpectedly-or-encountered-an-unexpected-error"></a>İşletim sistemi başlatma – bilgisayar beklenmedik şekilde yeniden başlatıldı veya beklenmeyen bir hatayla karşılaşıldı
 
@@ -52,6 +52,9 @@ Bu sorun, en sık, genelleştirilmiş bir VM 'yi Azure 'a yüklemek için bir ş
 ## <a name="solution"></a>Çözüm
 
 ### <a name="do-not-use-unattendxml"></a>Unattend.xml kullanma
+
+> [!TIP]
+> VM 'nin son yedeğine sahipseniz önyükleme sorununu çözmek için [VM 'yi yedekten geri yüklemeyi](../../backup/backup-azure-arm-restore-vms.md) deneyebilirsiniz.
 
 Bu sorunu giderecek [bir görüntü hazırlama/yakalama](../windows/upload-generalized-managed.md) ve yeni bir Genelleştirilmiş görüntü hazırlama hakkında Azure kılavuzunu izleyin. Sysprep sırasında **`/unattend:<your file’s name>` bayrak kullanmayın**. Bunun yerine yalnızca aşağıdaki bayrakları kullanın:
 

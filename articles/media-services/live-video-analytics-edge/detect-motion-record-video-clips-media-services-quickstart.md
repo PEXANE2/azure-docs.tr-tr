@@ -3,12 +3,12 @@ title: Hareket algılama, video Azure Media Services kaydetme
 description: Bu hızlı başlangıçta canlı video analizinin IoT Edge, canlı video akışındaki hareketleri tespit etmek ve video kliplerini Azure Media Services kaydetmek için nasıl kullanılacağı gösterilmektedir.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 33deabf27fe9b74fd01dba5d6fbe3883b54dda63
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 15a9def78c7dddda7e63db66d2b21794506f6a92
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060427"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632733"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Hızlı başlangıç: hareketi algılama, videoyu Media Services kaydetme
 
@@ -19,6 +19,8 @@ Bu makalede [Başlarken hızlı](get-started-detect-motion-emit-events-quickstar
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+  > [!NOTE]
+  > Hizmet sorumluları oluşturma izinlerine sahip bir Azure aboneliğine ihtiyacınız olacak (**sahip rolü** bunu sağlar). Doğru izinleriniz yoksa, size doğru izinleri vermek için lütfen hesap yöneticinize ulaşın. 
 * [Azure IoT araçları uzantısı](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)ile makinenizde [Visual Studio Code](https://code.visualstudio.com/) .
 * Daha önce [Başlarken hızlı başlangıç](get-started-detect-motion-emit-events-quickstart.md) adımlarını tamamlamadıysanız, aşağıdaki adımları izleyin:
     * [Azure kaynakları ayarlama](get-started-detect-motion-emit-events-quickstart.md#set-up-azure-resources)

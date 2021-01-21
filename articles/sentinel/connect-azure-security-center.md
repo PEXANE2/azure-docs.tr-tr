@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: yelevin
-ms.openlocfilehash: b37675d46d501fc43446eafc83d6c0a02f238177
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: bb188aa79015c2123b9d9d8b6baf277dfadf2f9c
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655961"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633053"
 ---
 # <a name="connect-azure-defender-alert-data-from-azure-security-center"></a>Azure Güvenlik Merkezi 'nden Azure Defender uyarı verilerini bağlama
 
@@ -39,6 +39,8 @@ Azure [Güvenlik Merkezi](../security-center/security-center-introduction.md) 'N
 1. Azure Defender uyarıları için Log Analytics ilgili şemayı kullanmak için, **Securityalert** aratın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Bu belgede Azure Defender 'ı Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
 - [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/31/2018
 ms.author: genli
-ms.openlocfilehash: f80fbd803cbe4ae5c4ac381c8cdb2f72d0ede316
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 196f49a72932906e0a21b3c6c534c79d291a845f
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86132943"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633002"
 ---
 # <a name="windows-shows-checking-file-system-when-booting-an-azure-vm"></a>Windows, bir Azure VM 'yi önyüklerken "dosya sistemini denetleme" işlemini gösterir
 
@@ -36,6 +36,9 @@ Bir Windows VM 'si başlamıyor. Önyükleme [tanılamalarında](boot-diagnostic
 Dosya sisteminde bir NTFS hatası bulunursa, Windows bir sonraki yeniden başlatmada diskin tutarlılığını denetler ve onarır. Genellikle bu durum, VM 'nin beklenmeyen bir yeniden başlatmaya sahip olması veya VM kapatılma işleminin aniden kesintiye uğramasından kaynaklanır.
 
 ## <a name="solution"></a>Çözüm 
+
+> [!TIP]
+> VM 'nin son yedeğine sahipseniz önyükleme sorununu çözmek için [VM 'yi yedekten geri yüklemeyi](../../backup/backup-azure-arm-restore-vms.md) deneyebilirsiniz.
 
 Disk denetleme işlemi tamamlandıktan sonra Windows normal olarak önyüklenir. VM, diski denetle işleminde takılı kalırsa, sanal makinede denetim diskini çevrimdışı çalıştırmayı deneyin:
 1. Etkilenen VM 'nin işletim sistemi diskinin anlık görüntüsünü bir yedekleme olarak alın. Daha fazla bilgi için bkz. [disk anlık görüntüsü](../windows/snapshot-copy-managed-disk.md).

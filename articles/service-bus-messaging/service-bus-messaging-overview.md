@@ -3,12 +3,12 @@ title: Azure Service Bus mesajlaşmasına genel bakış | Microsoft Belgeleri
 description: Bu makalede, tam olarak yönetilen bir kurumsal tümleştirme ileti Aracısı olan Azure Service Bus üst düzey bir genel bakış sunulmaktadır.
 ms.topic: overview
 ms.date: 11/20/2020
-ms.openlocfilehash: 70e9d966a14f78866d72865eed4cbb2dfd6c18dd
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: d9103557eb7b32f376ba6590bbca5f557bf32764
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755744"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632876"
 ---
 # <a name="what-is-azure-service-bus"></a>Azure Service Bus nedir?
 Microsoft Azure Service Bus, ileti kuyrukları ve yayımlama-abone ol konuları ile tam olarak yönetilen bir kurumsal ileti aracısıdır. Service Bus, uygulamaları ve hizmetleri birbirinden ayırmak için kullanılır ve aşağıdaki avantajları sağlar:
@@ -138,11 +138,11 @@ Service Bus, standart [AMQP 1,0](service-bus-amqp-overview.md) ve [http ya da re
 
 Tam olarak desteklenen Service Bus istemci kitaplıkları Azure SDK ile kullanılabilir.
 
-- [.NET için Azure Service Bus](/dotnet/api/overview/azure/service-bus?preserve-view=true&view=azure-dotnet)
-- [Java için Azure Service Bus kitaplıkları](/java/api/overview/azure/servicebus?preserve-view=true&view=azure-java-stable)
+- [.NET için Azure Service Bus](/dotnet/api/overview/azure/service-bus?preserve-view=true)
+- [Java için Azure Service Bus kitaplıkları](/java/api/overview/azure/servicebus?preserve-view=true)
 - [Java JMS 2,0 için Azure Service Bus sağlayıcısı](how-to-use-java-message-service-20.md)
-- [JavaScript ve TypeScript için Azure Service Bus modülleri](/javascript/api/overview/azure/service-bus?preserve-view=true&view=azure-node-latest)
-- [Python için Azure Service Bus kitaplıkları](/python/api/overview/azure/servicebus?preserve-view=true&view=azure-python)
+- [JavaScript ve TypeScript için Azure Service Bus modülleri](/javascript/api/overview/azure/service-bus?preserve-view=true)
+- [Python için Azure Service Bus kitaplıkları](/python/api/overview/azure/servicebus?preserve-view=true)
 
 [Azure Service Bus ' birincil protokol amqp 1,0](service-bus-amqp-overview.md) ve herhangi bir amqp 1,0 uyumlu protokol istemcisinden kullanılabilir. Çeşitli açık kaynaklı AMQP istemcilerinin, Service Bus birlikte çalışabilirliği açıkça gösteren örnekleri vardır. AMQP 1,0 istemcilerinin doğrudan Service Bus ' özelliklerini kullanmayı öğrenmek için [amqp 1,0 protokol kılavuzunu](service-bus-amqp-protocol-guide.md) gözden geçirin.
 

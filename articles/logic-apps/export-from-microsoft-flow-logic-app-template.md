@@ -3,17 +3,19 @@ title: Power otomatikleştirmede akışları Azure Logic Apps dışa aktarma
 description: Azure Resource Manager şablonları olarak dışa aktararak Power otomatikleştirmede akışları Azure Logic Apps geçirme
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, sneshaf, pinath, logicappspm
 ms.topic: conceptual
-ms.date: 06/03/2020
-ms.openlocfilehash: 1c2f0a2c54be7adbc7b8babd596f18e08c67a024
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/20/2021
+ms.openlocfilehash: 2192ae5f3de551cb8ff2b6c36e233804c3c56bf1
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014423"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633256"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Akışları Power Automate'ten dışarı aktarma ve Azure Logic Apps’e dağıtma
+
+> 2020 Ekim 'den sonra oluşturulan akışlar için artık Power otomatikleştirmede dışa ve dağıtım Azure Logic Apps.
 
 Akışınızın yeteneklerini genişletmek ve genişletmek için, bu akışı [Power otomatikleştirmede](https://flow.microsoft.com) [Azure Logic Apps](../logic-apps/logic-apps-overview.md)geçirebilirsiniz. Akışınızı bir mantıksal uygulama için bir Azure Resource Manager şablonu olarak dışa aktarabilir, bu mantıksal uygulama şablonunu bir Azure Kaynak grubuna dağıtabilir ve ardından mantıksal uygulama tasarımcısında bu mantıksal uygulamayı açabilirsiniz.
 
@@ -32,7 +34,7 @@ Akışınızın yeteneklerini genişletmek ve genişletmek için, bu akışı [P
 
 ## <a name="export-your-flow"></a>Akışınızı dışarı aktarın
 
-1. [Power otomatikleştirmek](https://flow.microsoft.com)için oturum açın ve **Akışlarım**' ı seçin. Akışınızı bulun ve seçin. Araç çubuğunda üç nokta (**...**) düğmesini **Export**  >  **(Logic Apps şablonu (. JSON)** dışarı aktar > seçin.
+1. [Power otomatikleştirmek](https://flow.microsoft.com)için oturum açın ve **Akışlarım**' ı seçin. Akışınızı bulun ve seçin. Araç çubuğunda üç nokta (**...**) düğmesini   >  **(Logic Apps şablonu (. JSON)** dışarı aktar > seçin.
 
    ![Güç otomatikleştirmede akışı dışarı aktarma](./media/export-from-microsoft-flow-logic-app-template/export-flow.png)
 
@@ -82,7 +84,7 @@ Daha fazla bilgi için bkz. [Azure Logic Apps büyütme](https://flow.microsoft.
 
    1. İşiniz bittiğinde, gerekli Azure kaynaklarını oluşturma ve Azure aboneliğinizi buna göre faturalama hakkındaki **hüküm ve koşulları** gözden geçirin.
 
-   1. Hazırsanız, satın alma sırasında **belirtilen hüküm ve koşulları kabul ediyorum**' u seçin  >  **Purchase**.
+   1. Hazırsanız, satın alma sırasında **belirtilen hüküm ve koşulları kabul ediyorum**' u seçin  >  .
 
       Azure, şablonunuzu belirtilen kaynak grubunuza bir mantıksal uygulama olarak dağıtır.
 
@@ -146,7 +148,7 @@ Mantıksal uygulamalar oluşturmaya yönelik [önkoşullara](../logic-apps/quick
 
    1. Mantıksal uygulamayı dağıtmadan önce çözümünüzü kaydedin.
 
-1. Çözüm Gezgini menüsünde, proje kısayol menüsünü açın ve yeni **Dağıt**' ı seçin  >  **New**. Sorulursa Azure hesabınızla oturum açın.
+1. Çözüm Gezgini menüsünde, proje kısayol menüsünü açın ve yeni **Dağıt**' ı seçin  >  . Sorulursa Azure hesabınızla oturum açın.
 
 1. İstendiğinde, Azure aboneliğini, Azure kaynak grubunu ve dağıtım için kullanmak istediğiniz diğer ayarları (şablon parametre değerlerini iletmek için kullanılacak [Parametreler dosyası](../azure-resource-manager/templates/parameter-files.md) gibi) onaylayın ve **Dağıt**' ı seçin.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: f83a1820eb931fa075681da7a9661b304059cd2a
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 0c0ec45eee86031e1533b97ccf352de0ecf70e38
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635714"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633163"
 ---
 # <a name="troubleshoot-os-start-up--windows-update-installation-capacity"></a>İşletim sistemi başlatma sorunlarını giderme – Windows Update yükleme kapasitesi
 
@@ -38,6 +38,9 @@ Bu durumda, işletim sistemi (OS), dosya sisteminde çekirdek dosya oluşturuolu
 ## <a name="solution"></a>Çözüm
 
 ### <a name="process-overview"></a>İşleme genel bakış:
+
+> [!TIP]
+> VM 'nin son yedeğine sahipseniz önyükleme sorununu çözmek için [VM 'yi yedekten geri yüklemeyi](../../backup/backup-azure-arm-restore-vms.md) deneyebilirsiniz.
 
 1. Bir onarım VM 'si oluşturun ve erişin.
 1. Diskteki boş alan.
@@ -73,12 +76,12 @@ Parçalama düzeyine bağlı olarak, parçalama birkaç saat sürebilir.
 
 ### <a name="enable-the-serial-console-and-memory-dump-collection"></a>Seri konsol ve bellek dökümü toplamayı etkinleştirme
 
-**Önerilir** : VM 'yi yeniden oluşturmadan önce, aşağıdaki betiği çalıştırarak seri konsol ve bellek dökümü toplamasını etkinleştirin:
+**Önerilir**: VM 'yi yeniden oluşturmadan önce, aşağıdaki betiği çalıştırarak seri konsol ve bellek dökümü toplamasını etkinleştirin:
 
 1. Yükseltilmiş bir komut istemi oturumunu yönetici olarak açın.
 1. Aşağıdaki komutları çalıştırın:
 
-   **Seri konsolunu etkinleştirin** :
+   **Seri konsolunu etkinleştirin**:
    
    ```
    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON 
@@ -97,7 +100,7 @@ Parçalama düzeyine bağlı olarak, parçalama birkaç saat sürebilir.
    REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM 
    ```
    
-   **ControlSet001 üzerinde etkinleştir** :
+   **ControlSet001 üzerinde etkinleştir**:
 
    ```
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
@@ -105,7 +108,7 @@ Parçalama düzeyine bağlı olarak, parçalama birkaç saat sürebilir.
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
    ```
    
-   **ControlSet002 üzerinde etkinleştir** :
+   **ControlSet002 üzerinde etkinleştir**:
 
    ```
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
@@ -113,7 +116,7 @@ Parçalama düzeyine bağlı olarak, parçalama birkaç saat sürebilir.
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
    ```
    
-   **Bozuk işletim sistemi diskini kaldır** :
+   **Bozuk işletim sistemi diskini kaldır**:
 
    ```
    REG UNLOAD HKLM\BROKENSYSTEM

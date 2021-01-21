@@ -3,12 +3,12 @@ title: .NET ve AMQP 1,0 ile Azure Service Bus | Microsoft Docs
 description: Bu makalede, AMQP (gelişmiş mesajlaşma sıraya alma Protokolü) kullanarak bir .NET uygulamasından Azure Service Bus nasıl kullanılacağı açıklanır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 0d6d7d01a56d2e7068f9c4ccb8ec505914a31ecf
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 20800363327aefda073cd484dc737b28e60466a7
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233942"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632859"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>AMQP 1,0 ile .NET 'ten Service Bus kullanma
 
@@ -107,10 +107,10 @@ Varsayılan protokolle karşılaştırıldığında AMQP kullanılırken Service
 
 [.NET API 'leri](/dotnet/api/) AMQP protokolünün davranışını denetlemek için çeşitli ayarlar sunar:
 
-* **[MessageReceiver. PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver.prefetchcount?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)**: bir bağlantıya uygulanan ilk kredisi denetler. Varsayılan değer, 0'dur.
-* **[Messagingfactorysettings. AmqpTransportSettings. MaxFrameSize](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.maxframesize?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)**: bağlantı açma zamanında anlaşma sırasında sunulan en yüksek AMQP çerçeve boyutunu denetler. Varsayılan değer 65.536 bayttır.
-* **[MessagingFactorySettings.AmqpTransportSettings.BatChflushınterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)**: aktarımlar batchable ise, bu değer deklerin gönderilmesi için maksimum gecikme sayısını belirler. Varsayılan olarak Gönderenler/alıcılar tarafından devralınır. Bireysel gönderici/alıcı varsayılan değer olan 20 milisaniyeyi geçersiz kılabilir.
-* **[Messagingfactorysettings. AmqpTransportSettings. UseSslStreamSecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)**: AMQP BAĞLANTıLARıNıN bir TLS bağlantısı üzerinden oluşturulup yüklenmediğini denetler. Varsayılan değer **true**'dur.
+* **[MessageReceiver. PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver.prefetchcount#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)**: bir bağlantıya uygulanan ilk kredisi denetler. Varsayılan değer, 0'dur.
+* **[Messagingfactorysettings. AmqpTransportSettings. MaxFrameSize](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.maxframesize#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)**: bağlantı açma zamanında anlaşma sırasında sunulan en yüksek AMQP çerçeve boyutunu denetler. Varsayılan değer 65.536 bayttır.
+* **[MessagingFactorySettings.AmqpTransportSettings.BatChflushınterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)**: aktarımlar batchable ise, bu değer deklerin gönderilmesi için maksimum gecikme sayısını belirler. Varsayılan olarak Gönderenler/alıcılar tarafından devralınır. Bireysel gönderici/alıcı varsayılan değer olan 20 milisaniyeyi geçersiz kılabilir.
+* **[Messagingfactorysettings. AmqpTransportSettings. UseSslStreamSecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)**: AMQP BAĞLANTıLARıNıN bir TLS bağlantısı üzerinden oluşturulup yüklenmediğini denetler. Varsayılan değer **true**'dur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -120,10 +120,10 @@ Daha fazla bilgi edinmeye hazır mısınız? Aşağıdaki bağlantıları ziyare
 * [AMQP 1.0 protokol kılavuzu]
 
 [Create a Service Bus namespace using the Azure portal]: service-bus-create-namespace-portal.md
-[DataContractSerializer]: /dotnet/api/system.runtime.serialization.datacontractserializer?view=netcore-3.1
-[BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azureservicebus-4.0.0
-[Microsoft.ServiceBus.Messaging.MessagingFactory.AcceptMessageSession]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory.acceptmessagesession?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessagingFactory_AcceptMessageSession
-[OperationTimeout]: /dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessagingFactorySettings_OperationTimeout
+[DataContractSerializer]: /dotnet/api/system.runtime.serialization.datacontractserializer
+[BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
+[Microsoft.ServiceBus.Messaging.MessagingFactory.AcceptMessageSession]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory.acceptmessagesession#Microsoft_ServiceBus_Messaging_MessagingFactory_AcceptMessageSession
+[OperationTimeout]: /dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout#Microsoft_ServiceBus_Messaging_MessagingFactorySettings_OperationTimeout
 [NuGet]: https://nuget.org/packages/WindowsAzure.ServiceBus/
 [Azure portal]: https://portal.azure.com
 [Service Bus AMQP 'ye Genel Bakış]: service-bus-amqp-overview.md

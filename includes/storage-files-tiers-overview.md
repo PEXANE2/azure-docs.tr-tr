@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d3ba7baf79ee972ed7289a1aab93484108da70cf
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 6d06a46d2eaaad362890f1e3e44dbc746fa10898
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724243"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633382"
 ---
 Azure dosyaları, kendi senaryolarınızın performans ve fiyat gereksinimlerine yönelik olarak paylaşımlarınızı uyarlamanızı sağlamak için dört farklı depolama, Premium, işlem için iyileştirilmiş, sık erişimli ve seyrek katman katmanları sunar:
 
@@ -22,7 +22,7 @@ Azure dosyaları, kendi senaryolarınızın performans ve fiyat gereksinimlerine
 - **Sık** erişimli: sık erişimli dosya paylaşımları, takım paylaşımları gibi genel amaçlı dosya paylaşım senaryolarında en iyi duruma getirilmiş depolama sunar. Etkin dosya paylaşımları, HDD 'Ler tarafından desteklenen standart depolama donanımında sunulur.
 - Seyrek **erişimli: seyrek** erişimli dosya paylaşımları, çevrimiçi arşiv depolama senaryoları için iyileştirilmiş uygun maliyetli depolama sunar. Seyrek Erişimli dosya paylaşımları, HDD 'Ler tarafından desteklenen standart depolama donanımında sunulur.
 
-Premium dosya paylaşımları, **FileStorage depolama hesabı** türüne dağıtılır ve yalnızca sağlanan faturalandırma modelinde kullanılabilir. Premium dosya paylaşımları için sağlanan faturalandırma modeli hakkında daha fazla bilgi için bkz. [Premium dosya paylaşımları için sağlamayı anlama](../articles/storage/files/understanding-billing.md#provisioned-billing). İşlem için iyileştirilmiş, sık erişimli ve seyrek erişimli dosya paylaşımları dahil olmak üzere standart dosya paylaşımları **genel amaçlı sürüm 2 (GPv2) depolama hesabı** türüne dağıtılır ve kullandıkça öde faturalandırma üzerinden kullanılabilir. Sık erişimli ve seyrek erişimli dosya paylaşımları, tüm Azure Kamu ve Azure Kamu bölgelerinde kullanılabilir. İşlem için iyileştirilmiş dosya paylaşımları, Azure Çin ve Azure Almanya bölgeleri dahil olmak üzere tüm Azure bölgelerinde kullanılabilir.
+Premium dosya paylaşımları, **FileStorage depolama hesabı** türüne dağıtılır ve yalnızca sağlanan faturalandırma modelinde kullanılabilir. Premium dosya paylaşımları için sağlanan faturalandırma modeli hakkında daha fazla bilgi için bkz. [Premium dosya paylaşımları için sağlamayı anlama](../articles/storage/files/understanding-billing.md#provisioned-model). İşlem için iyileştirilmiş, sık erişimli ve seyrek erişimli dosya paylaşımları dahil olmak üzere standart dosya paylaşımları **genel amaçlı sürüm 2 (GPv2) depolama hesabı** türüne dağıtılır ve kullandıkça öde faturalandırma üzerinden kullanılabilir. Sık erişimli ve seyrek erişimli dosya paylaşımları, tüm Azure Kamu ve Azure Kamu bölgelerinde kullanılabilir. İşlem için iyileştirilmiş dosya paylaşımları, Azure Çin ve Azure Almanya bölgeleri dahil olmak üzere tüm Azure bölgelerinde kullanılabilir.
 
 İş yükünüz için bir depolama katmanı seçerken, performans ve kullanım gereksinimlerinizi göz önünde bulundurun. İş yükünüz tek basamaklı gecikme gerektiriyorsa veya şirket içi SSD depolama medyası kullanıyorsanız, Premium katman büyük olasılıkla en uygun seçenektir. Düşük gecikme süresi çok önemli değilse, örneğin, Azure 'dan şirket içine takılan veya şirket içinde Azure Dosya Eşitleme aracılığıyla önbelleğe alınmış takım paylaşımları ile standart depolama, maliyet açısından daha iyi bir uyum sağlayabilir.
 

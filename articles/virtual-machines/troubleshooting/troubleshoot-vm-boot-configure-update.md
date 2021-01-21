@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: d7e56fe36af3d841cfd888dd6c1bf05502837cdd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3e4d51b4d41fa0dc23e9b12ac0251c14215de5c
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87079851"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633019"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>"Windows hazırlanıyor" sanal makine başlatması takılmış. Azure 'da bilgisayarınızı kapatmayın "
 
@@ -39,6 +39,9 @@ Bir Windows sanal makinesi önyükleme yapmaz. VM 'nin ekran görüntüsünü al
 Bu sorun genellikle sunucu, yapılandırma değiştirildikten sonra son yeniden başlatma işlemi gerçekleştirdiğinde oluşur. Yapılandırma değişikliği Windows güncelleştirmeleri veya sunucu rolleri/özelliğindeki değişiklikler tarafından başlatılabilir. Windows Update için, güncelleştirmelerin boyutu büyükse, işletim sisteminin değişiklikleri yeniden yapılandırmak için daha fazla zaman gerekir.
 
 ## <a name="collect-an-os-memory-dump"></a>Bir işletim sistemi bellek dökümü toplayın
+
+> [!TIP]
+> VM 'nin son yedeğine sahipseniz önyükleme sorununu çözmek için [VM 'yi yedekten geri yüklemeyi](../../backup/backup-azure-arm-restore-vms.md) deneyebilirsiniz.
 
 Değişikliklerin işlenmesi beklendikten sonra Sorun çözümlenmezse, bir bellek dökümü dosyası toplayıp desteğe başvurmanız gerekir. Döküm dosyasını toplamak için aşağıdaki adımları izleyin:
 

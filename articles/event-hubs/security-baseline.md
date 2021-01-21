@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3f56fc1b321396c5cc6aa93e3f47fcaafcbe4ae4
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 0fbd7cda4723b62863d7d9bb0fe6aa2fac32dcd9
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202343"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633112"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>Event Hubs için Azure Güvenlik temeli
 
@@ -293,9 +293,9 @@ Azure Sentinel 'i ekleme: https://docs.microsoft.com/azure/sentinel/quickstart-o
 
 **Rehberlik**: Azure ACTIVE DIRECTORY (ad) açıkça atanması ve sorgulanabilir olması gereken yerleşik roller içerir. Yönetim gruplarının üyesi olan hesapları bulmaya yönelik geçici sorgular gerçekleştirmek için Azure AD PowerShell modülünü kullanın. 
 
-Azure AD 'de PowerShell ile dizin rolü alma: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
+Azure AD 'de PowerShell ile dizin rolü alma: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole
 
-Azure AD 'de PowerShell ile bir dizin rolünün üyelerini alma: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
+Azure AD 'de PowerShell ile bir dizin rolünün üyelerini alma: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -633,7 +633,7 @@ Azure etkinlik günlüğü olayları için uyarı oluşturma: https://docs.micro
 
 Azure Kaynak Graf ile sorgu oluşturma: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Azure aboneliklerinizi görüntüleme: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+Azure aboneliklerinizi görüntüleme: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription
 
 Azure RBAC 'yi anlama: https://docs.microsoft.com/azure/role-based-access-control/overview
 
@@ -779,7 +779,7 @@ Azure Resource Manager erişimi engellemek için koşullu erişimi yapılandırm
 
 Event Hubs ad alanı için Azure yerleşik Ilkesi: https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub
 
-Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias
 
 Azure Ilkesini yapılandırma ve yönetme: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -820,9 +820,9 @@ Azure Ilke etkileri hakkında daha fazla bilgi için:  https://docs.microsoft.co
 
 **Rehberlik**: Event Hubs veya ilgili kaynaklarınız Için özel Azure ilke tanımları kullanıyorsanız, kodunuzu güvenli bir şekilde depolamak ve yönetmek için Azure Repos kullanın.
 
-Azure DevOps 'da kod depolama: https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+Azure DevOps 'da kod depolama: https://docs.microsoft.com/azure/devops/repos/git/gitworkflow
 
-Azure Repos belgeleri: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+Azure Repos belgeleri: https://docs.microsoft.com/azure/devops/repos/index
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -986,7 +986,7 @@ Key Vault gizli dizileri yedekleme: https://docs.microsoft.com/powershell/module
 
  
 
-Azure 'da Anahtar Kasası anahtarlarını geri yükleme: https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
+Azure 'da Anahtar Kasası anahtarlarını geri yükleme: https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 

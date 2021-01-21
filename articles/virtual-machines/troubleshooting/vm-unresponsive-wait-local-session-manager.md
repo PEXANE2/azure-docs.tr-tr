@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/22/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 8af8d7695c48c6ac682109bb38935e98921fa9e4
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: fc3bd5d2590e969db07e9dffa61b4902ea4604c3
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681916"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632555"
 ---
 # <a name="vm-is-unresponsive-while-waiting-for-the-local-session-manager-service"></a>Yerel oturum Yöneticisi hizmeti beklenirken VM yanıt vermiyor
 
@@ -34,6 +34,9 @@ VM 'nin çıktısının bir ekran görüntüsünü görüntülemek için [önyü
 Yerel oturum Yöneticisi için bekleyen bir VM 'nin takılmasının birden çok nedeni olabilir. Bu sorun devam ederse, analiz için bir bellek dökümü toplamanız gerekir.
 
 ## <a name="solution"></a>Çözüm
+
+> [!TIP]
+> VM 'nin son yedeğine sahipseniz önyükleme sorununu çözmek için [VM 'yi yedekten geri yüklemeyi](../../backup/backup-azure-arm-restore-vms.md) deneyebilirsiniz.
 
 Bazı durumlarda, işlemin bitmesini beklemek sorunu çözmeyecektir. VM 'niz yanıt vermezse ve bir saatten daha fazla süre boyunca kalırsa, bir bellek dökümü toplayıp Microsoft destek 'e başvurmanız gerekir.
 

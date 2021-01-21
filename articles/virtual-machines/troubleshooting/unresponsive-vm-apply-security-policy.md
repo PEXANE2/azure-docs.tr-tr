@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 06/15/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 6b50bffd1a44c0cf53f15650f5ff4d938f45df4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 047c8afbfe7b489e5c3ac0ccb677f6fc021443a8
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84908223"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632648"
 ---
 # <a name="azure-vm-is-unresponsive-while-applying-security-policy-to-the-system"></a>Güvenlik Ilkesi sisteme uygulanırken Azure VM yanıt vermiyor
 
@@ -33,7 +33,7 @@ VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](
 
 :::image type="content" source="media/unresponsive-vm-apply-security-policy/apply-policy.png" alt-text="Windows Server 2012 R2 başlangıç ekranının ekran görüntüsü takıldı.":::
 
-:::image type="content" source="media/unresponsive-vm-apply-security-policy/apply-policy-2.png" alt-text="Windows Server 2012 R2 başlangıç ekranının ekran görüntüsü takıldı.":::
+:::image type="content" source="media/unresponsive-vm-apply-security-policy/apply-policy-2.png" alt-text="İşletim sistemi başlangıç ekranının ekran görüntüsü takıldı.":::
 
 ## <a name="cause"></a>Nedeni
 
@@ -42,6 +42,9 @@ Bu sorunun olası nedenlerine ilişkin bir plethora vardır. Bir bellek döküm�
 ## <a name="resolution"></a>Çözüm
 
 ### <a name="process-overview"></a>İşleme genel bakış
+
+> [!TIP]
+> VM 'nin son yedeğine sahipseniz önyükleme sorununu çözmek için [VM 'yi yedekten geri yüklemeyi](../../backup/backup-azure-arm-restore-vms.md) deneyebilirsiniz.
 
 1. [Bir onarım VM 'si oluşturma ve erişme](#create-and-access-a-repair-vm)
 2. [Seri konsolu ve bellek dökümü toplamayı etkinleştir](#enable-serial-console-and-memory-dump-collection)
@@ -68,7 +71,54 @@ Bellek dökümü toplamayı ve seri konsolunu etkinleştirmek için şu betiği 
 
         Komutunda, öğesini \<BOOT PARTITON> önyükleme klasörünü içeren, eklenen diskteki bölümünün harfiyle değiştirin.
 
-        :::image type="content" source="media/unresponsive-vm-apply-security-policy/store-data.png" alt-text="Windows Server 2012 R2 başlangıç ekranının ekran görüntüsü takıldı." /v NMICrashDump /t REG_DWORD /d 1 /f
+        :::image type="content" source="media/unresponsive-vm-apply-security-policy/store-data.png" alt-text="Diyagramda, BCD deposunun listesinin Windows önyükleme yükleyicisi 'nin kimlik numarası altında listelendiği 1. nesil bir VM 'de listelenmesi gösterilmektedir.":::
+
+     2. 2. nesil bir VM için aşağıdaki komutu girin ve listelenen tanımlayıcıyı aklınızda yapın:
+
+        ```console
+        bcdedit /store <LETTER OF THE EFI SYSTEM PARTITION>:EFI\Microsoft\boot\bcd /enum
+        ```
+
+        - Komutunda, \<LETTER OF THE EFI SYSTEM PARTITION> EFI sistem bölümünün harfiyle değiştirin.
+        - "EFı sistem bölümü" olarak etiketlenen uygun sistem bölümünü belirlemek için Disk Yönetimi konsolunu başlatmak faydalı olabilir.
+        - Tanımlayıcı benzersiz bir GUID olabilir veya varsayılan "Bootmgr" olabilir.
+3. Seri konsolunu etkinleştirmek için aşağıdaki komutları çalıştırın:
+
+    ```console
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON
+    ```
+
+    ```console
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
+    ```
+
+    - Komutunda, \<VOLUME LETTER WHERE THE BCD FOLDER IS> BCD klasörünün harfiyle değiştirin.
+    - Komutunda, \<BOOT LOADER IDENTIFIER> önceki adımda bulduğunuz tanımlayıcıyla değiştirin.
+4. İşletim sistemi diskindeki boş alanın, VM 'deki bellek boyutundan (RAM) daha büyük olduğunu doğrulayın.
+
+    1. İşletim sistemi diskinde yeterli alan yoksa, bellek dökümü dosyasının oluşturulacağı konumu değiştirmelisiniz. Dosyayı işletim sistemi diskinde oluşturmak yerine, yeterli boş alana sahip olan VM 'ye bağlı başka bir veri diskine de başvurabilirsiniz. Konumu değiştirmek için, "% SystemRoot%" değerini aşağıda listelenen komutlarda veri diskinin sürücü harfiyle (örneğin "F:") değiştirin.
+    2. Aşağıdaki komutları girin (önerilen döküm yapılandırması):
+
+        Bozuk işletim sistemi diski yükle:
+
+        ```console
+        REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM
+        ```
+
+        ControlSet001 üzerinde etkinleştir:
+
+        ```console
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
+        ```
+
+        ControlSet002 üzerinde etkinleştir:
+
+        ```console
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
         ```
 
         Bozuk işletim sistemi diskini kaldır:

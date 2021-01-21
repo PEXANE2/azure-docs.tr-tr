@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 16f6919577955bda5b04db26deb9fe78a467e364
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14da41815e177ece64c72ac27a7cb126e69fdc62
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86509044"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633197"
 ---
 # <a name="boot-error--this-is-not-a-bootable-disk"></a>Önyükleme hatası – bu önyüklenebilir bir disk değil
 
@@ -41,6 +41,9 @@ Bu hata iletisi, IŞLETIM sistemi önyükleme işleminin etkin bir sistem bölü
 
 ### <a name="process-overview"></a>İşleme genel bakış
 
+> [!TIP]
+> VM 'nin son yedeğine sahipseniz önyükleme sorununu çözmek için [VM 'yi yedekten geri yüklemeyi](../../backup/backup-azure-arm-restore-vms.md) deneyebilirsiniz.
+
 1. Bir onarım VM 'si oluşturun ve erişin.
 2. Bölüm durumunu etkin olarak ayarlayın.
 3. Disk bölümünü onarın.
@@ -57,7 +60,7 @@ Bu hata iletisi, IŞLETIM sistemi önyükleme işleminin etkin bir sistem bölü
 
 ### <a name="set-partition-status-to-active"></a>Bölüm durumunu etkin olarak ayarla
 
-1. nesil sanal makineler önce, BCD deposunu tutan işletim sistemi bölümünün *etkin*olarak işaretlendiğinden emin olmalıdır. 2. nesil bir sanal makinenize sahipseniz, sonraki nesil *durum* bayrağı kullanım dışı olduğundan, [disk bölümünü düzelten](#fix-the-disk-partition)önce atlayın.
+1. nesil sanal makineler önce, BCD deposunu tutan işletim sistemi bölümünün *etkin* olarak işaretlendiğinden emin olmalıdır. 2. nesil bir sanal makinenize sahipseniz, sonraki nesil *durum* bayrağı kullanım dışı olduğundan, [disk bölümünü düzelten](#fix-the-disk-partition)önce atlayın.
 
 1. Yükseltilmiş bir komut istemi açın *(cmd.exe)*.
 2. DISKPART aracını başlatmak için *DiskPart* girin.
@@ -75,7 +78,7 @@ Bu hata iletisi, IŞLETIM sistemi önyükleme işleminin etkin bir sistem bölü
 
    ![Şekil 3 * liste bölümü * komutunun çıkışıyla * DISKPART * penceresini gösterir. Bölüm 1 ve Bölüm 2 tabloda görüntülenir. Ayrıca Bölüm 1 seçili diskse, * sel Bölüm 1 * komutunun çıkışını gösterir.](media/troubleshoot-guide-not-bootable-disk/3.jpg)
 
-7. Bölümün durumunu denetlemek için ' ayrıntı bölümü ' girin. Bkz. Şekil 4, bölüm *etkin: Hayır*veya şekil 5, burada Bölüm ' aktif: Yes '.
+7. Bölümün durumunu denetlemek için ' ayrıntı bölümü ' girin. Bkz. Şekil 4, bölüm *etkin: Hayır* veya şekil 5, burada Bölüm ' aktif: Yes '.
 
    Şekil 4
 
@@ -86,7 +89,7 @@ Bu hata iletisi, IŞLETIM sistemi önyükleme işleminin etkin bir sistem bölü
    ![Şekil 5, Bölüm 1 * etkin: Evet * olarak ayarlandığında * ayrıntı bölümü * komutunun çıkışıyla * DISKPART * penceresini gösterir.](media/troubleshoot-guide-not-bootable-disk/5.jpg)
 
 8. Bölüm **etkin değilse** *, etkin bayrağını değiştirmek* için *etkin* ' i girin.
-9. *Ayrıntı bölümü*yazarak durum değişikliğinin düzgün şekilde yapıldığından emin olun.
+9. *Ayrıntı bölümü* yazarak durum değişikliğinin düzgün şekilde yapıldığından emin olun.
 
    Şekil 6
 

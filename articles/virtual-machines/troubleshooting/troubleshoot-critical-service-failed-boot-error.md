@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: 8c3e76f1a7edffefc8773dfa548773ec0932fae6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a937528e3bfd8bea16912d614133988763748bab
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86129864"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632968"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Windows, bir Azure VM 'yi önyüklerken mavi ekranda "KRITIK HIZMET başarısız oldu" olarak gösterilir
 Bu makalede, Microsoft Azure ' de bir Windows sanal makinesini (VM) önyüklediğinizde karşılaşabileceğiniz "KRITIK HIZMET başarısız oldu" hatası açıklanır. Sorunları gidermeye yardımcı olmak için sorun giderme adımları sağlar. 
@@ -38,6 +38,9 @@ Durma hatalarının çeşitli nedenleri vardır. En yaygın nedenler şunlardır
 - Uygulama, belleğin yasak bir sektörüne erişiyor
 
 ## <a name="solution"></a>Çözüm 
+
+> [!TIP]
+> VM 'nin son yedeğine sahipseniz önyükleme sorununu çözmek için [VM 'yi yedekten geri yüklemeyi](../../backup/backup-azure-arm-restore-vms.md) deneyebilirsiniz.
 
 Bu sorunu çözmek için [desteğe başvurun ve bir döküm dosyası göndererek](./troubleshoot-common-blue-screen-error.md#collect-memory-dump-file)sorunu daha hızlı tanılamanıza yardımcı olur veya aşağıdaki kendi kendine yardım çözümünü deneyin.
 
@@ -113,10 +116,10 @@ Döküm günlüklerini ve seri konsolunu etkinleştirmek için aşağıdaki beti
 Döküm günlüklerini kendiniz çözümlemek için aşağıdaki adımları izleyin:
 
 1. İşletim sistemi diskini bir kurtarma sanal makinesine ekleyin.
-2. Eklediğiniz işletim sistemi diskinde **\Windows\System32\Config**dosyasına gidin. Geri almanın gerekli olması durumunda tüm dosyaları yedekleme olarak kopyalayın.
+2. Eklediğiniz işletim sistemi diskinde **\Windows\System32\Config** dosyasına gidin. Geri almanın gerekli olması durumunda tüm dosyaları yedekleme olarak kopyalayın.
 3. **Kayıt defteri Düzenleyicisi 'ni** (regedit.exe) başlatın.
 4. **HKEY_LOCAL_MACHINE** anahtarını seçin. Menüde **Dosya**  >  **yükleme Hive**' yi seçin.
-5. Eklediğiniz işletim sistemi diskinde **\Windows\system32\config\system** klasörüne gidin. Hive adı için **brokensystem**girin. Yeni kayıt defteri kovanı **HKEY_LOCAL_MACHINE** anahtarı altında görüntülenir.
+5. Eklediğiniz işletim sistemi diskinde **\Windows\system32\config\system** klasörüne gidin. Hive adı için **brokensystem** girin. Yeni kayıt defteri kovanı **HKEY_LOCAL_MACHINE** anahtarı altında görüntülenir.
 6. **HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Control\CrashControl** gidin ve aşağıdaki değişiklikleri yapın:
 
     Oto yeniden başlatma = 0
