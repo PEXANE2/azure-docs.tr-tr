@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 98499961f55b55b15687d5742b4d593e3d461e49
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 397c650d1d7a593a855c8f26e61dbf12ec6360fa
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625339"
+ms.locfileid: "98631330"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Yapılandırma seçenekleri-Java için Azure Izleyici Application Insights
 
@@ -296,7 +296,9 @@ Uygulamanız bir güvenlik duvarının arkasındaysa ve Application Insights do�
 }
 ```
 
-[//]: # "0.9.0 'den büyük ölçüde önemli değişiklikler olan 0.10.0 'yi desteklemeene kadar Opentelemetri desteğinin duyurulmadığını Not edın"
+Application Insights Java 3,0, ayrıca genel `-Dhttps.proxyHost` ve `-Dhttps.proxyPort` bunlar ayarlananlar için de kullanılır.
+
+[//]: # "Opentelemetri API 'sinin 1,0 'e ulaşması için Opentelemetri desteği özel önizlemede"
 
 [//]: # "# # Opentelemetri API 1,0 öncesi sürümler için destek"
 
@@ -343,6 +345,8 @@ Varsayılan olarak, Java 3,0 günlüklerini `INFO` `applicationinsights.log` Bu 
 `maxSizeMb` , oturum açmadan önce günlük dosyasının en büyük boyutudur.
 
 `maxHistory` , tutulan günlük dosyalarının (geçerli günlük dosyasına ek olarak) alınan sayısıdır.
+
+Version 3.0.2 'tan başlayarak, ortam değişkenini kullanarak kendi kendine tanılamayı da ayarlayabilirsiniz `level` `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` .
 
 ## <a name="an-example"></a>Örnek
 

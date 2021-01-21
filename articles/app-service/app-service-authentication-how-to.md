@@ -4,12 +4,12 @@ description: Farklı senaryolar için App Service kimlik doğrulaması ve yetkil
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 85fd7fdba4c62f4837a419af44c83f7e46cb9e39
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 4f2f43b142b290d29a4a90e504422b6c9ba2739c
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601790"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630336"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure App Service 'da gelişmiş kimlik doğrulama ve yetkilendirme kullanımı
 
@@ -279,6 +279,150 @@ Kimlik sağlayıcısı, belirli bir anahtar yetkilendirme sağlayabilir. Örnek:
 ### <a name="application-level"></a>Uygulama düzeyi
 
 Diğer düzeylerin herhangi biri ihtiyacınız olan yetkilendirmeyi sağlamıyorsa veya platformunuz veya kimlik sağlayıcınız desteklenmiyorsa, [Kullanıcı taleplerine](#access-user-claims)göre kullanıcılara yetki vermek için özel kod yazmanız gerekir.
+
+## <a name="updating-the-configuration-version-preview"></a>Yapılandırma sürümünü güncelleştirme (Önizleme)
+
+Kimlik doğrulama/yetkilendirme özelliği için yönetim API 'sinin iki sürümü vardır. Preview v2 sürümü, Azure portal "kimlik doğrulama (Önizleme)" deneyimi için gereklidir. Zaten v1 API 'sini kullanan bir uygulama, birkaç değişiklik yapıldıktan sonra v2 sürümüne yükseltilebilir. Özellikle gizli yapılandırma, yuva Yapışkan uygulama ayarlarına taşınmalıdır. Microsoft hesabı sağlayıcısı 'nın yapılandırması şu anda v2 sürümünde de desteklenmiyor.
+
+> [!WARNING]
+> V2 önizlemesine geçiş, uygulamanız için App Service kimlik doğrulama/yetkilendirme özelliğinin yönetimini devre dışı bırakır. Örneğin, Azure portal, Azure CLı ve Azure PowerShell var olan deneyimi gibi. Bu işlem geri alınamaz. Önizleme sırasında, üretim iş yüklerinin geçirilmesi önerilir veya desteklenmez. Test uygulamaları için bu bölümdeki adımları izlemeniz gerekir.
+
+### <a name="moving-secrets-to-application-settings"></a>Gizli dizileri uygulama ayarlarına taşıma
+
+1. V1 API 'sini kullanarak mevcut yapılandırmanızı alın:
+
+   ```azurecli
+   # For Web Apps
+   az webapp auth show -g <group_name> -n <site_name>
+
+   # For Azure Functions
+   az functionapp auth show -g <group_name> -n <site_name>
+   ```
+
+   Sonuçta elde edilen JSON yükünde, yapılandırdığınız her sağlayıcı için kullanılan gizli değeri unutmayın:
+
+   * AAD `clientSecret`
+   * Google `googleClientSecret`
+   * 'A `facebookAppSecret`
+   * Twitter `twitterConsumerSecret`
+   * Microsoft hesabı: `microsoftAccountClientSecret`
+
+   > [!IMPORTANT]
+   > Gizli anahtar değerleri önemli güvenlik kimlik bilgileridir ve dikkatle işlenmelidir. Bu değerleri paylaşmayın veya yerel bir makinede kalıcı hale getirin.
+
+1. Her gizli değer için yuva Yapışkan uygulama ayarları oluşturun. Her uygulama ayarının adını seçebilirsiniz. Bu değer, önceki adımda elde ettiğiniz şekilde veya bu değerle oluşturduğunuz [Key Vault bir gizli](./app-service-key-vault-references.md?toc=/azure/azure-functions/toc.json) dizi ile eşleşmelidir.
+
+   Ayarı oluşturmak için Azure portal kullanabilir veya her bir sağlayıcı için aşağıdakilerin bir çeşidini çalıştırabilirsiniz:
+
+   ```azurecli
+   # For Web Apps, Google example    
+   az webapp config appsettings set -g <group_name> -n <site_name> --slot-settings GOOGLE_PROVIDER_AUTHENTICATION_SECRET=<value_from_previous_step>
+
+   # For Azure Functions, Twitter example
+   az functionapp config appsettings set -g <group_name> -n <site_name> --slot-settings TWITTER_PROVIDER_AUTHENTICATION_SECRET=<value_from_previous_step>
+   ```
+
+   > [!NOTE]
+   > Bu yapılandırma için uygulama ayarları yuva yapışkan olarak işaretlenmelidir, yani bir [yuva değiştirme işlemi](./deploy-staging-slots.md)sırasında ortamlar arasında hareket etmez. Bunun nedeni, kimlik doğrulama yapılandırmanızın ortama bağlı olması. 
+
+1. Adlı yeni bir JSON dosyası oluşturun `authsettings.json` . Daha önce aldığınız çıktıyı alın ve her gizli değeri bundan kaldırın. Gizli anahtar bulunmadığından emin olmak için geri kalan çıktıyı dosyaya yazın. Bazı durumlarda, yapılandırma boş dizeler içeren dizilere sahip olabilir. Olmadığından emin olun `microsoftAccountOAuthScopes` ve varsa, bu değere geçiş yapın `null` .
+
+1. `authsettings.json`Her sağlayıcı için daha önce oluşturduğunuz uygulama ayarı adına işaret eden bir özellik ekleyin:
+ 
+   * AAD `clientSecretSettingName`
+   * Google `googleClientSecretSettingName`
+   * 'A `facebookAppSecretSettingName`
+   * Twitter `twitterConsumerSecretSettingName`
+   * Microsoft hesabı: `microsoftAccountClientSecretSettingName`
+
+   Bu işlemden sonra örnek bir dosya aşağıdakine benzer görünebilir, bu durumda yalnızca AAD için yapılandırılır:
+
+   ```json
+   {
+       "id": "/subscriptions/00d563f8-5b89-4c6a-bcec-c1b9f6d607e0/resourceGroups/myresourcegroup/providers/Microsoft.Web/sites/mywebapp/config/authsettings",
+       "name": "authsettings",
+       "type": "Microsoft.Web/sites/config",
+       "location": "Central US",
+       "properties": {
+           "enabled": true,
+           "runtimeVersion": "~1",
+           "unauthenticatedClientAction": "AllowAnonymous",
+           "tokenStoreEnabled": true,
+           "allowedExternalRedirectUrls": null,
+           "defaultProvider": "AzureActiveDirectory",
+           "clientId": "3197c8ed-2470-480a-8fae-58c25558ac9b",
+           "clientSecret": null,
+           "clientSecretSettingName": "MICROSOFT_IDENTITY_AUTHENTICATION_SECRET",
+           "clientSecretCertificateThumbprint": null,
+           "issuer": "https://sts.windows.net/0b2ef922-672a-4707-9643-9a5726eec524/",
+           "allowedAudiences": [
+               "https://mywebapp.azurewebsites.net"
+           ],
+           "additionalLoginParams": null,
+           "isAadAutoProvisioned": true,
+           "aadClaimsAuthorization": null,
+           "googleClientId": null,
+           "googleClientSecret": null,
+           "googleClientSecretSettingName": null,
+           "googleOAuthScopes": null,
+           "facebookAppId": null,
+           "facebookAppSecret": null,
+           "facebookAppSecretSettingName": null,
+           "facebookOAuthScopes": null,
+           "gitHubClientId": null,
+           "gitHubClientSecret": null,
+           "gitHubClientSecretSettingName": null,
+           "gitHubOAuthScopes": null,
+           "twitterConsumerKey": null,
+           "twitterConsumerSecret": null,
+           "twitterConsumerSecretSettingName": null,
+           "microsoftAccountClientId": null,
+           "microsoftAccountClientSecret": null,
+           "microsoftAccountClientSecretSettingName": null,
+           "microsoftAccountOAuthScopes": null,
+           "isAuthFromFile": "false"
+       }   
+   }
+   ```
+
+1. Bu dosyayı uygulamanız için yeni kimlik doğrulama/yetkilendirme yapılandırması olarak gönder:
+
+   ```azurecli
+   az rest --method PUT --url "/subscriptions/<subscription_id>/resourceGroups/<group_name>/providers/Microsoft.Web/sites/<site_name>/config/authsettings?api-version=2020-06-01" --body @./authsettings.json
+   ```
+
+1. Bu hareket sonrasında uygulamanızın beklendiği gibi hala çalışıyor olduğunu doğrulayın.
+
+1. Önceki adımlarda kullanılan dosyayı silin.
+
+Artık uygulamayı, kimlik sağlayıcısı gizli dizilerini uygulama ayarları olarak depolayacak şekilde geçirdiniz.
+
+### <a name="support-for-microsoft-account-registrations"></a>Microsoft hesabı kayıtları için destek
+
+V2 API 'SI Şu anda farklı bir sağlayıcı olarak Microsoft hesabını desteklemez. Bunun yerine, kişisel Microsoft hesaplarıyla kullanıcıları oturum açmak için yakınsanmış [Microsoft Identity platformunu](../active-directory/develop/v2-overview.md) kullanır. V2 API 'sine geçiş yaparken, v1 Azure Active Directory yapılandırması Microsoft Identity platform sağlayıcısını yapılandırmak için kullanılır.
+
+Mevcut yapılandırmanız bir Microsoft hesabı sağlayıcısı içeriyorsa ve bir Azure Active Directory sağlayıcısı içermiyorsa, yapılandırmayı Azure Active Directory sağlayıcısına değiştirebilir ve sonra geçişi gerçekleştirebilirsiniz. Bunu yapmak için:
+
+1. Azure portal [**uygulama kayıtları**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) gidin ve Microsoft hesap sağlayıcınızla ilişkili kaydı bulun. "Kişisel hesap uygulamaları" başlığı altında olabilir.
+1. Kayıt için "kimlik doğrulama" sayfasına gidin. "Yeniden yönlendirme URI 'Leri" altında, bir girişi görmeniz gerekir `/.auth/login/microsoftaccount/callback` . Bu URI 'yi kopyalayın.
+1. Yeni kopyaladığınız bir URI 'yi ekleyin, bunun yerine içinde sona erdiğinden `/.auth/login/aad/callback` . Bu, kaydın App Service kimlik doğrulaması/yetkilendirme yapılandırması tarafından kullanılmasına izin verir.
+1. Uygulamanız için App Service kimlik doğrulaması/yetkilendirme yapılandırmasına gidin.
+1. Microsoft hesabı sağlayıcısı için yapılandırmayı toplayın.
+1. Önceki adımda topladığınız istemci KIMLIĞI ve istemci gizli değerlerini sağlayarak, Azure Active Directory sağlayıcıyı "Gelişmiş" yönetim modunu kullanarak yapılandırın. Veren URL 'SI için kullan ' ı kullanın `<authentication-endpoint>/<tenant-id>/v2.0` ve *\<authentication-endpoint>* [bulut ortamınız için kimlik doğrulama uç noktasıyla](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) değiştirin (örneğin, " https://login.microsoftonline.com Genel Azure için), ayrıca *\<tenant-id>* **Dizin (kiracı) kimliğiniz** ile değiştirin.
+1. Yapılandırmayı kaydettikten sonra, tarayıcınızda `/.auth/login/aad` sitenizdeki uç noktaya giderek ve oturum açma akışını tamamladıktan sonra oturum açma akışını test edin.
+1. Bu noktada yapılandırmayı başarıyla kopyaladınız, ancak mevcut Microsoft hesap sağlayıcısı yapılandırması kalmaya devam eder. Kaldırmadan önce, uygulamanızın tüm bölümlerinin Azure Active Directory sağlayıcıya oturum açma bağlantıları aracılığıyla başvurduğunuzdan emin olun. Uygulamanızın tüm bölümlerinin beklendiği gibi çalıştığını doğrulayın.
+1. Her şeyin AAD Azure Active Directory sağlayıcısına karşı çalıştığını doğrulandıktan sonra, Microsoft hesap sağlayıcısı yapılandırmasını kaldırabilirsiniz.
+
+Bazı uygulamalarda Azure Active Directory ve Microsoft hesabı için ayrı kayıtlar olabilir. Bu uygulamalar şu anda geçirilemez. 
+
+> [!WARNING]
+> AAD uygulama kaydı için [Desteklenen hesap türlerini](../active-directory/develop/supported-accounts-validation.md) değiştirerek iki kaydı yakınlaşmak mümkündür. Bununla birlikte, bu, Microsoft hesabı kullanıcıları için yeni bir onay istemi zorlamasına ve bu kullanıcıların kimlik talepleri yapıda farklı olabilir ve bu da `sub` Yeni bir uygulama kimliği kullanımda olduğundan değerleri özellikle değiştiriyor. Bu yaklaşım, iyice anlaşılmadığı takdirde önerilmez. Bunun yerine v2 API yüzeyinde iki kayıt desteğini beklemeniz gerekir.
+
+### <a name="switching-to-v2"></a>V2 'ye geçiliyor
+
+Yukarıdaki adımlar gerçekleştirildikten sonra, Azure portal uygulamaya gidin. "Kimlik doğrulama (Önizleme)" bölümünü seçin. 
+
+Alternatif olarak, `config/authsettingsv2` site kaynağı altındaki kaynağa karşı bır PUT isteği de yapabilirsiniz. Yük şeması, [dosya kullanarak yapılandırma](#config-file) bölümünde yakalanan ile aynıdır.
 
 ## <a name="configure-using-a-file-preview"></a><a name="config-file"> </a>Dosya kullanarak yapılandırma (Önizleme)
 

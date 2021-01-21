@@ -3,12 +3,12 @@ title: IoT Edge sürüm notlarında canlı video analizi-Azure
 description: Bu konu, IoT Edge sürümler, geliştirmeler, hata düzeltmeleri ve bilinen sorunlar üzerine canlı video analizinin sürüm notlarını sağlar.
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 7f8957d1ec93259cf6defe7980f19298f782ea5e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 328fe97c4e03f039a1224d13ce6712ccff06b3b7
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121252"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629785"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>IoT Edge sürüm notlarında canlı video analizi
 
@@ -51,9 +51,12 @@ Bu sürüm, IoT Edge üzerindeki canlı video analizinin genel önizleme sürüm
 * Havuz düğümleri için disk alanı yönetimine yönelik destek eklendi.
 * `MediaGraphGrpcExtension` düğüm artık tek bir gRPC sunucusu içinde birden çok AI modeli kullanmak için [Extensionconfiguration](grpc-extension-protocol.md) özelliğini destekliyor.
 * [Prometheus biçiminde](https://prometheus.io/docs/practices/naming/)canlı video analizi modülü ölçümleri toplama desteği eklendi. [Azure izleyici 'de ölçümleri ve görünümü toplama](monitoring-logging.md#azure-monitor-collection-via-telegraf) hakkında daha fazla bilgi edinin. 
+* Çıkış seçimini filtreleme özelliği eklendi. Herhangi bir grafik düğümüne yardım ile **yalnızca ses** veya **video** ya da video **ile videoları** doğrudan gönderebilirsiniz `outputSelectors` . 
 * Çerçeve hızı filtre işlemcisi **kullanım dışıdır**.  
     * Çerçeve hızı yönetimi artık grafik uzantısı işlemci düğümlerinin içinde kullanılabilir.
 
+### <a name="visual-studio-code-extension"></a>Visual Studio Code uzantısı
+* LVA medya grafiklerini yönetmenize yardımcı olmak için IoT Edge bir Visual Studio Code uzantısında [canlı video analizi](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge) yayınlandı. Bu uzantı **LVA 2,0 modülü** ile birlikte çalışarak, çok şık ve kullanımı kolay bir grafik arabirimiyle medya grafiklerini düzenleme ve yönetme olanağı sunar.
 ## <a name="september-22-2020"></a>22 Eylül 2020
 
 Bu yayın etiketi, modülün Eylül 2020 yenilemesi için kullanılır:
@@ -149,4 +152,4 @@ Bu sürüm, IoT Edge üzerindeki canlı video analizinin ilk genel önizleme sü
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Genel bakış](overview.md)
+[Genel Bakış](overview.md)

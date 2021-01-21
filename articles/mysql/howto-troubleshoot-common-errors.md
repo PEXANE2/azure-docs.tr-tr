@@ -7,16 +7,28 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: 986bc5ef24855ac0014975edc0a26a11a82ec6ca
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ca75416a66bcf2c90028c7f1dc11fbe23a9a9bd9
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510971"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631376"
 ---
 # <a name="common-errors"></a>Sık karşılaşılan hatalar
 
 MySQL için Azure veritabanı, MySQL 'in topluluk sürümü tarafından desteklenen tam olarak yönetilen bir hizmettir. Yönetilen bir hizmet ortamındaki MySQL deneyimi, kendi ortamınızda MySQL 'i çalıştırmanın farklı olabilir. Bu makalede, kullanıcıların MySQL için Azure veritabanı hizmetine geçiş yaparken veya geliştirme sırasında karşılaşabilecekleri yaygın hatalardan bazılarını görürsünüz.
+
+## <a name="common-connection-errors"></a>Ortak bağlantı hataları
+
+#### <a name="error-1184-08s01-aborted-connection-22-to-db-db-name-user-user-host-hostip-init_connect-command-failed"></a>HATA 1184 (08S01): bağlantı 22 ' den DB 'ye durduruldu: ' DB-adı ' kullanıcısı: ' Kullanıcı ' Konağı: ' hostIP ' (init_connect komutu başarısız oldu)
+Yukarıdaki hata, başarılı oturum açma işleminden sonra, ancak oturum oluşturulduğunda herhangi bir komut yürütülmeden önce oluşur. Yukarıdaki ileti, oturum başlatmanın başarısız olmasına neden olan init_connect Server parametresinin yanlış bir değerini ayarlamış olduğunu gösterir.
+
+Oturum düzeyinde desteklenmeyen require_secure_transport gibi bazı sunucu parametreleri vardır ve bu nedenle init_connect kullanarak bu parametrelerin değerlerini değiştirmeye çalışmak, aşağıda gösterildiği gibi MySQL sunucusuna bağlanılırken 1184 hatasına neden olabilir
+
+MySQL> veritabanlarını göster; HATA 2006 (HY000): MySQL sunucusunun bağlantısı yok. Yeniden bağlanmaya çalışılıyor... Bağlantı kimliği: 64897 geçerli veritabanı: * * * yok * * _ hata 1184 (08S01): bağlantı 22-veritabanı: ' DB-adı ' kullanıcısı: ' Kullanıcı ' Konağı: ' hostIP ' (init_connect komutu başarısız oldu)
+
+_ *Resolution**: Azure Portal sunucu parametreleri sekmesindeki init_connect değeri sıfırlamanız ve yalnızca init_connect parametresini kullanarak desteklenen sunucu parametreleri ayarlamanız gerekir. 
+
 
 ## <a name="errors-due-to-lack-of-super-privilege-and-dba-role"></a>Süper ayrıcalık olmaması ve DBA rolü nedeniyle hatalar oluştu
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: 7d1233c97ec80d5a2efa8b53c68e9e07a823165d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: cbfdb9a73f53e194b43010c0b2d84357aa3e2e5b
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977040"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631994"
 ---
 # <a name="windows-stop-error---0x00000074-bad-system-config-info"></a>Windows Dur hatası-0x00000074 hatalı sistem yapılandırma bilgileri
 
@@ -27,7 +27,7 @@ Bu makalede, bir Azure sanal makinesindeki (VM) bozuk sistem yapılandırma bilg
 
 ## <a name="symptom"></a>Belirti
 
-VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](./boot-diagnostics.md) kullandığınızda, ekran görüntüsünde Windows dur kodu **#0x00000074** veya **BAD_SYSTEM_CONFIG_INFO**görüntülenir.
+VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](./boot-diagnostics.md) kullandığınızda, ekran görüntüsünde Windows dur kodu **#0x00000074** veya **BAD_SYSTEM_CONFIG_INFO** görüntülenir.
 
 *Bilgisayarınız bir sorunla karşılaştı ve yeniden başlatılması gerekiyor. Yeniden başlatabilirsiniz.* 
  *Bu sorun ve olası düzeltmeler hakkında daha fazla bilgi için şu http://windows.com/stopcode adresi ziyaret edin* 
@@ -47,6 +47,9 @@ VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](
 ## <a name="solution"></a>Çözüm
 
 ### <a name="process-overview"></a>İşleme genel bakış:
+
+> [!TIP]
+> VM 'nin son yedeğine sahipseniz önyükleme sorununu çözmek için [VM 'yi yedekten geri yüklemeyi](../../backup/backup-azure-arm-restore-vms.md) deneyebilirsiniz.
 
 1. Bir onarım VM 'si oluşturun ve erişin.
 1. Hive bozulma olup olmadığını denetleyin.
@@ -73,7 +76,7 @@ Aşağıdaki yönergeler, nedenin Hive bozulması olup olmadığını veya Hive 
 1. Onarım sanal makinenizde, **kayıt defteri Düzenleyicisi** uygulamasını açın. Bulmak için Windows Search çubuğuna "REGEDIT" yazın.
 1. Kayıt Defteri Düzenleyicisi 'nde, vurgulamak için **HKEY_LOCAL_MACHINE** seçin ve ardından **Dosya > Hive yükle...** seçeneğini belirleyin. menüsünde.
 1. Öğesine gidin `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM` ve **Aç**' ı seçin.
-1. Ad girmeniz istendiğinde, **brokensystem**girin.
+1. Ad girmeniz istendiğinde, **brokensystem** girin.
 
    1. Hive açılamazsa veya boşsa, Hive bozulur. Hive bozuksa [bir destek bileti açın](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 

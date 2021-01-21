@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/09/2020
 ms.author: v-miegge
-ms.openlocfilehash: bde091b4a4559c3574ee122d74574d1f9477f3fd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6cb3467fec99bd12810ed058a61de1be7b39cdd0
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977057"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629598"
 ---
 # <a name="troubleshoot-windows-could-not-finish-configuring-the-system"></a>Windows’un sistem yapılandırmasını bitirememesiyle ilgili sorunları giderme
 
@@ -39,5 +39,8 @@ VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](
 Bu hata, işletim sistemi (OS) [Sysprep işlemini](/windows-hardware/manufacture/desktop/sysprep-process-overview)tamamlayamadığında oluşur. Bu hata, genelleştirilmiş bir VM 'nin ilk önyüklemesine çalıştığınızda oluşur. Bu sorunla karşılaşırsanız, görüntü dağıtılabilir bir durumda olduğundan ve kurtarılamadığından Genelleştirilmiş görüntüyü yeniden oluşturun.
 
 ## <a name="solution"></a>Çözüm
+
+> [!TIP]
+> VM 'nin son yedeğine sahipseniz önyükleme sorununu çözmek için [VM 'yi yedekten geri yüklemeyi](../../backup/backup-azure-arm-restore-vms.md) deneyebilirsiniz.
 
 Bu sorunu giderecek [bir görüntü hazırlama/yakalama](../windows/upload-generalized-managed.md) ve yeni bir Genelleştirilmiş görüntü hazırlama hakkında Azure kılavuzunu izleyin.

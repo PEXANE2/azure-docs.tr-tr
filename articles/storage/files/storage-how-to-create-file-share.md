@@ -9,12 +9,12 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 705910a9e2f4ebc80a63ab22ac4edecc5ae03cd0
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 7f72d703e5377f725addc4aa8c52e1cdb0fa571d
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724808"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630760"
 ---
 # <a name="create-an-azure-file-share"></a>Azure dosya paylaşımı oluşturma
 Bir Azure dosya paylaşımının oluşturulması için, nasıl kullanacağınız hakkında üç soruyu yanıtlamanız gerekir:
@@ -172,7 +172,7 @@ Standart dosya paylaşımları standart katmanlardan birine dağıtılabilir: i�
 
 - Standart dosya paylaşımları için bu, son kullanıcıların gidebileceği Azure dosya paylaşımının üst sınırıdır. Standart dosya paylaşımının kotasının birincil amacı budgetary: "Bu dosya paylaşımının bu noktanın ötesine büyümesini istemiyorum". Bir kota belirtilmemişse standart dosya paylaşımı 100 TiB 'ye yayılabilir (veya büyük dosya paylaşımları özelliği bir depolama hesabı için ayarlanmamışsa, 5 TiB).
 
-- Premium dosya paylaşımları için kotanın **sağlanan boyut** ile aşırı yüklenmiş olması gerekir. Sağlanan boyut, fiili kullanımdan bağımsız olarak faturalandırılacaksınız. Premium bir dosya paylaşma sağladığınızda iki faktörü göz önünde bulundurmanız gerekir: 1) paylaşımın bir alan kullanım perspektifinden ve 2) iş yükünüz için gereken ıOPS. Her sağlanan GiB size ek ayrılmış ve patlama ıOPS sahibine. Premium dosya paylaşımının nasıl planlanacağı hakkında daha fazla bilgi için bkz. [Premium dosya paylaşımlarını sağlama](understanding-billing.md#provisioned-billing).
+- Premium dosya paylaşımları için kotanın **sağlanan boyut** ile aşırı yüklenmiş olması gerekir. Sağlanan boyut, fiili kullanımdan bağımsız olarak faturalandırılacaksınız. Premium bir dosya paylaşma sağladığınızda iki faktörü göz önünde bulundurmanız gerekir: 1) paylaşımın bir alan kullanım perspektifinden ve 2) iş yükünüz için gereken ıOPS. Her sağlanan GiB size ek ayrılmış ve patlama ıOPS sahibine. Premium dosya paylaşımının nasıl planlanacağı hakkında daha fazla bilgi için bkz. [Premium dosya paylaşımlarını sağlama](understanding-billing.md#provisioned-model).
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 Depolama hesabınızı yeni oluşturduysanız, **Kaynağa Git**' i seçerek dağıtım ekranından bu sayfaya gidebilirsiniz. Depolama hesabını daha önce oluşturduysanız, onu içeren kaynak grubu aracılığıyla buna gidebilirsiniz. Depolama hesabında bir kez, **dosya paylaşımları** etiketli kutucuğu seçin (depolama hesabı için içindekiler tablosu aracılığıyla **dosya paylaşımlarına** da gidebilirsiniz).

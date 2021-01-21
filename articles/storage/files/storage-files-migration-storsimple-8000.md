@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 08ed07adbfe0fc4b22d8a3d0afcfc9ab1312dba4
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 76a244810042adf3cec64b15fe847c5b684527c2
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134356"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631193"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 ve 8600 Azure Dosya Eşitleme 'e geçiş
 
@@ -160,7 +160,7 @@ Azure dosya paylaşımları veya standart depolama için Premium Depolama (SSD) 
 
 Hala emin değil misiniz?
 
-* [Premium Azure dosya paylaşımının performansına](understanding-billing.md#provisioned-billing)ihtiyacınız varsa Premium Depolama ' yı seçin.
+* [Premium Azure dosya paylaşımının performansına](understanding-billing.md#provisioned-model)ihtiyacınız varsa Premium Depolama ' yı seçin.
 * Sık erişimli veri ve arşiv verilerini içeren genel amaçlı dosya sunucusu iş yükleri için standart depolama ' yı seçin. Ayrıca, buluttaki paylaşımdaki tek iş yükünün Azure Dosya Eşitleme olması durumunda standart depolamayı da seçin.
 
 #### <a name="account-kind"></a>Hesap türü
@@ -244,7 +244,7 @@ Bu bölümde, bir geçiş işinin nasıl ayarlanacağı ve seçtiğiniz hedef Az
         ![StorSimple 8000 serisi geçiş işi.](media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-job.png "Veri dönüştürme hizmeti işi için yeni iş oluşturma formunun ekran görüntüsü.")
     :::column-end:::
     :::column:::
-        **İş tanımı adı**</br>Bu ad, taşıdığınız dosya kümesini göstermelidir. Azure dosya paylaşımınıza benzer bir ad vermek iyi bir uygulamadır. </br></br>**İşin çalıştığı konum**</br>Bir bölge seçerken, StorSimple depolama hesabınızla aynı bölgeyi seçmeniz gerekir, aksi takdirde, bu durumda bir bölge de buraya yakın olur. </br></br><h3>Kaynak</h3>**Kaynak aboneliği**</br>StorSimple Aygıt Yöneticisi kaynağınızı depoladığınız aboneliği seçin. </br></br>**StorSimple kaynağı**</br>Gerecinizin birlikte kaydedildiği StorSimple Aygıt Yöneticisi seçin. </br></br>**Hizmet verileri şifreleme anahtarı**</br>Kayıtlarınızda anahtarı bulamıyorsanız bu [makalenin önceki bölümüne](#storsimple-service-data-encryption-key) bakın. </br></br>**Cihaz**</br>Geçirmek istediğiniz birimi tutan StorSimple cihazınızı seçin. </br></br>**Birim**</br>Kaynak birimi seçin. Daha sonra, tüm birim veya alt dizinleri hedef Azure dosya paylaşımında geçirmek istediğinize karar verirsiniz. </br></br><h3>Hedef</h3>Bu geçiş işinin hedefi olarak abonelik, depolama hesabı ve Azure dosya paylaşımından birini seçin.
+        **İş tanımı adı**</br>Bu ad, taşıdığınız dosya kümesini göstermelidir. Azure dosya paylaşımınıza benzer bir ad vermek iyi bir uygulamadır. </br></br>**İşin çalıştığı konum**</br>Bir bölge seçerken, StorSimple depolama hesabınızla aynı bölgeyi seçmeniz gerekir, aksi takdirde, bu durumda bir bölge de buraya yakın olur. </br></br><h3>Kaynak</h3>**Kaynak aboneliği**</br>StorSimple Device Manager kaynağınızı depoladığınız aboneliği seçin. </br></br>**StorSimple kaynağı**</br>Gerecinizin birlikte kaydedildiği StorSimple Device Manager seçin. </br></br>**Hizmet verileri şifreleme anahtarı**</br>Kayıtlarınızda anahtarı bulamıyorsanız bu [makalenin önceki bölümüne](#storsimple-service-data-encryption-key) bakın. </br></br>**Cihaz**</br>Geçirmek istediğiniz birimi tutan StorSimple cihazınızı seçin. </br></br>**Birim**</br>Kaynak birimi seçin. Daha sonra, tüm birim veya alt dizinleri hedef Azure dosya paylaşımında geçirmek istediğinize karar verirsiniz. </br></br><h3>Hedef</h3>Bu geçiş işinin hedefi olarak abonelik, depolama hesabı ve Azure dosya paylaşımından birini seçin.
     :::column-end:::
 :::row-end:::
 
@@ -567,7 +567,7 @@ Başlamadan önce, üretim sırasında yeni Azure Dosya Eşitleme dağıtımın�
 
 1. StorSimple Veri Yöneticisi kaynağınızın Azure portal aracılığıyla sağlamasını kaldırma. Tüm DTS işleriniz onunla birlikte silinecektir. Kopyalama günlüklerini kolayca alamazsınız. Kayıtlarınız için önemliyse, sağlamadan önce bunları alın.
 1. StorSimple fiziksel gereçlerinizin geçirildiğinden emin olun ve ardından bunların kaydını kaldırın. Geçirildiklerinden tamamen emin değilseniz, devam etmeyin. Bu kaynakları hala gerekli olmaya devam ediyorsa, verileri veya yapılandırmalarını kurtarmanız mümkün olmayacaktır.<br>İsteğe bağlı olarak, ilk olarak StorSimple birim kaynağını temin edebilir ve bu da gereç üzerindeki verileri temizler. Bu işlem birkaç gün sürebilir ve bu işlem, Gereç üzerindeki verileri hiçbir şekilde **içermez** . Bu sizin için önemliyse, disk sıfırlama işlemini kaynak sağlamayı ve ilkelerinize göre ayrı olarak işleyin.
-1. StorSimple Aygıt Yöneticisi daha fazla kayıtlı cihaz yoksa, bu Aygıt Yöneticisi kaynağının kendisini kaldırmaya devam edebilirsiniz.
+1. StorSimple Device Manager daha fazla kayıtlı cihaz yoksa, bu Device Manager kaynağının kendisini kaldırmaya devam edebilirsiniz.
 1. Azure 'da StorSimple depolama hesabını silmek artık zaman alabilir. Daha sonra, devam etmeden önce geçişinizi durdurup ve hiçbir şey ve hiçbir şeyin bu verilere bağlı olmadığından emin olun.
 1. StorSimple fiziksel gerecini veri merkezinizden çıkarın.
 1. StorSimple gerecine sahipseniz, bılgısayar geri dönüşüm için ücretsiz olursunuz. Cihazınız kiralandıysanız, lessa bildirin ve cihazı uygun şekilde geri döndürün.

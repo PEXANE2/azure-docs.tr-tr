@@ -8,12 +8,12 @@ ms.date: 10/06/2020
 ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a082ccb62103ab5bd027bf49b9ee05bc48c63115
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2878d682d0f2025a50f26baf87476f66aa236e2c
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979878"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630625"
 ---
 # <a name="powershell-scripts-for-iot-edge-on-windows"></a>Windows üzerinde IoT Edge için PowerShell betikleri
 
@@ -67,7 +67,7 @@ Initialize-IoTEdge komutu, IoT Edge cihaz bağlantı dizeniz ve işletimsel ayr�
 | **DpsSymmetricKey** | Yok | **Anahtar parametresi**. Hiçbir sağlama türü belirtilmemişse, bir bağlantı dizesiyle el ile sağlama varsayılan değerdir.<br><br>Bir cihaz sağlama hizmeti (DPS) kapsam KIMLIĞI ve bir cihaz kayıt KIMLIĞININ, DPS aracılığıyla sağlaması için, kanıtlama için bir simetrik anahtarla birlikte sağlayacağınızı bildirir. |
 | **DpsX509** | Yok | **Anahtar parametresi**. Hiçbir sağlama türü belirtilmemişse, bir bağlantı dizesiyle el ile sağlama varsayılan değerdir.<br><br>Bir cihaz sağlama hizmeti (DPS) kapsam KIMLIĞI ve bir X. 509.440 kimlik sertifikası ve kanıtlama için özel anahtarla birlikte, DPS aracılığıyla sağlamak üzere cihazınızın kayıt KIMLIĞI sağlayacağınızı bildirir.  |
 | **DeviceConnectionString** | Tek tırnak içinde bir IoT Hub kayıtlı IoT Edge cihazdan bağlantı dizesi | Bir bağlantı dizesiyle el ile sağlama için **gereklidir** . Betik parametrelerinde bir bağlantı dizesi sağlamazsanız sizden bir tane istenir. |
-| **IotHubHostName** | Bir cihazın bağlandığı IoT Hub 'ın ana bilgisayar adı. | X. 509.440 sertifikaları ile el ile sağlama için **gereklidir** . *{Hub Name}. Azure-Devices.net*biçimini alır. |
+| **IotHubHostName** | Bir cihazın bağlandığı IoT Hub 'ın ana bilgisayar adı. | X. 509.440 sertifikaları ile el ile sağlama için **gereklidir** . *{Hub Name}. Azure-Devices.net* biçimini alır. |
 | **DeviceID** | IoT Hub içindeki kayıtlı bir cihaz kimliğinden cihaz KIMLIĞI. | X. 509.440 sertifikaları ile el ile sağlama için **gereklidir** . |
 | **KML** | IoT Hub ilişkili cihaz sağlama hizmeti örneğinden bir kapsam KIMLIĞI. | DPS sağlaması için **gereklidir** . Komut dosyası parametrelerinde bir kapsam kimliği sağlamazsanız sizden bir kapsam kimliği belirtmeniz gerekir. |
 | **RegistrationId** | Cihazınız tarafından oluşturulan bir kayıt KIMLIĞI | TPM veya simetrik anahtar kanıtlama kullanılıyorsa, DPS sağlaması için **gereklidir** . X. 509.440 sertifika kanıtlama kullanılıyorsa **Isteğe bağlıdır** . |
@@ -96,13 +96,11 @@ Initialize-IoTEdge komutu, IoT Edge cihaz bağlantı dizeniz ve işletimsel ayr�
 
 | Parametre | Kabul edilen değerler | Yorumlar |
 | --------- | --------------- | -------- |
-| **Zorla** | yok | Bu bayrak, önceki kaldırma girişimi başarısız olursa kaldırma işlemini zorlar.
+| **Force** | yok | Bu bayrak, önceki kaldırma girişimi başarısız olursa kaldırma işlemini zorlar.
 | **Restartifgerekliyse** | yok | Bu bayrak, gerekirse, kaldırma komut dosyasının makineyi sormadan yeniden başlatmasını sağlar. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdaki makalelerde bu komutları kullanmayı öğrenin:
+Aşağıdaki makalede bu komutları kullanmayı öğrenin:
 
-* [Azure IoT Edge çalışma zamanını yükleme veya kaldırma](how-to-install-iot-edge.md)
-* [Simetrik anahtar kimlik doğrulamasıyla Azure IoT Edge bir cihaz sağlama](how-to-manual-provision-symmetric-key.md)
-* [X. 509.440 sertifikası kimlik doğrulamasıyla Azure IoT Edge bir cihaz sağlama](how-to-manual-provision-x509.md)
+* [Windows için Azure IoT Edge yükleme veya kaldırma](how-to-install-iot-edge-windows-on-windows.md)

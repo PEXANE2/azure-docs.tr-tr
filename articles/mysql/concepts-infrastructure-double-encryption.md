@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 233dcbeee0bccc714e3b4fe93e7c8b19aa9f2df0
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: e9182a2a0b88f85af5305f5794fec2ffe7935701
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242458"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631742"
 ---
 # <a name="azure-database-for-mysql-infrastructure-double-encryption"></a>MySQL için Azure veritabanı altyapısı Çift şifreleme
 
@@ -20,7 +20,7 @@ MySQL için Azure veritabanı, Microsoft 'un yönetilen anahtarlarını kullanar
 Altyapı çift şifrelemesi, hizmet tarafından yönetilen anahtarlar kullanılarak ikinci bir şifreleme katmanı ekler. FIPS 140-2 tarafından doğrulanan şifreleme modülünü, farklı bir şifreleme algoritması kullanır. Bu, bekleyen veriler için ek bir koruma katmanı sağlar. Altyapı çift şifrelemede kullanılan anahtar, MySQL için Azure veritabanı hizmeti tarafından da yönetilir. Ek şifreleme katmanı performans etkisine sahip olabileceği için altyapı çift şifrelemesi varsayılan olarak etkinleştirilmemiştir.
 
 > [!NOTE]
-> Bu özellik yalnızca PostgreSQL için Azure veritabanı 'nda "Genel Amaçlı" ve "bellek için Iyileştirilmiş" fiyatlandırma katmanlarında desteklenir.
+> Bu özellik yalnızca MySQL için Azure veritabanı 'nda "Genel Amaçlı" ve "bellek için Iyileştirilmiş" fiyatlandırma katmanlarında desteklenir.
 
 Altyapı katmanı şifrelemesi, depolama cihazına veya ağ kablolarına en yakın katmanda uygulanma avantajına sahiptir. MySQL için Azure veritabanı, hizmet tarafından yönetilen anahtarlar kullanılarak iki şifreleme katmanını uygular. Hizmet katmanında Teknik olarak yine de devam ediyor olsa da, bekleyen verileri depolayan donanıma çok yakın. İsteğe bağlı olarak, sağlanan MySQL sunucusu için [müşteri tarafından yönetilen anahtarı](concepts-data-encryption-mysql.md) kullanarak bekleyen veri şifrelemeyi etkinleştirebilirsiniz. 
 
@@ -29,7 +29,7 @@ Altyapı katmanlarında uygulama, anahtarların çeşitliliğe de sahiptir. Alty
 > [!NOTE]
 > Altyapı çift şifrelemenin kullanılması, ek şifreleme işlemi nedeniyle MySQL için Azure veritabanı sunucusu üzerinde performans etkisine sahip olacaktır.
 
-## <a name="benefits"></a>Yararları
+## <a name="benefits"></a>Avantajlar
 
 MySQL için Azure veritabanı 'nın altyapı çift şifrelemesi aşağıdaki avantajları sağlar:
 
@@ -59,13 +59,7 @@ MySQL için Azure veritabanı tarafından sunulan şifreleme özellikleri birlik
 MySQL için Azure veritabanı 'nda, hizmet tarafından yönetilen anahtar kullanılarak altyapı Çift şifreleme desteği aşağıdaki sınırlamalara sahiptir:
 
 * Bu işlevselliğe yönelik destek, **genel amaçlı** ve bellek için **iyileştirilmiş** fiyatlandırma katmanlarında sınırlandırılmıştır.
-* Aşağıdaki bölgelerde altyapı şifrelemesi etkinleştirilmiş bir MySQL için Azure veritabanı oluşturabilirsiniz:
-
-   * Doğu ABD
-   * Orta Güney ABD
-   * Batı ABD 2
-   
-* * Bu özellik yalnızca bölge ve sunucularda desteklenir ve 16 TB 'a kadar depolamayı destekler. 16 TB 'a kadar depolamayı destekleyen Azure bölgelerinin listesi için [depolama belgelerine](concepts-pricing-tiers.md#storage)bakın.
+* Bu özellik yalnızca bölge ve sunucularda desteklenir ve 16 TB 'a kadar depolamayı destekler. 16 TB 'a kadar depolamayı destekleyen Azure bölgelerinin listesi için [depolama belgelerine](concepts-pricing-tiers.md#storage)bakın.
 
     > [!NOTE]
     > - Yukarıda listelenen bölgelerde oluşturulan tüm **Yeni** MySQL sunucuları, müşteri yöneticisi anahtarlarıyla veri şifrelemeyi de destekler. Bu durumda, zaman noktası geri yükleme (ıNR) veya okuma çoğaltmaları aracılığıyla oluşturulan sunucular "yeni" olarak nitelemez.

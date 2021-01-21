@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/14/2020
 ms.custom: references_regions
-ms.openlocfilehash: 2db8d09511385039ea79ad1ed1f50177156f69c8
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 86f18be73966cb07489630191420b846622e45b8
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369939"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629836"
 ---
 # <a name="replicate-machines-with-private-endpoints"></a>Makineleri özel uç noktalarla Çoğalt
 
@@ -32,7 +32,7 @@ Aşağıda, çoğaltma iş akışının özel uç noktalarla nasıl değiştiği
 
 ## <a name="prerequisites-and-caveats"></a>Önkoşullar ve uyarılar
 
-- Özel uç noktalar yalnızca kasaya kayıtlı bir öğe bulunmayan yeni kurtarma hizmetleri kasaları için oluşturulabilir. Bu nedenle, **kasaya herhangi bir öğe eklenmeden önce**özel uç noktaların oluşturulması gerekir. [Özel uç noktalar](https://azure.microsoft.com/pricing/details/private-link/)için fiyatlandırma yapısını gözden geçirin.
+- Özel uç noktalar yalnızca kasaya kayıtlı bir öğe bulunmayan yeni kurtarma hizmetleri kasaları için oluşturulabilir. Bu nedenle, **kasaya herhangi bir öğe eklenmeden önce** özel uç noktaların oluşturulması gerekir. [Özel uç noktalar](https://azure.microsoft.com/pricing/details/private-link/)için fiyatlandırma yapısını gözden geçirin.
 - Kasa için özel bir uç nokta oluşturulduğunda, kasa kilitlenir ve **Özel uç noktaları olan ağlardan başka ağlardan erişilemez**.
 - Azure Active Directory şu anda özel uç noktaları desteklemiyor. Bu nedenle, Azure Active Directory bir bölgede çalışması için gereken IP 'Ler ve tam etki alanı adlarının, güvenli ağdan giden erişime izin verilmesi gerekir. Ayrıca, Azure Active Directory erişimine izin vermek için "Azure Active Directory" ağ güvenlik grubu etiketini ve Azure Güvenlik Duvarı etiketlerini de kullanabilirsiniz.
 - Hem kaynak makinelerinizin hem de kurtarma makinelerinizin alt ağlarında **en az yedı IP adresi gereklidir** . Kasa için özel bir uç nokta oluşturduğunuzda, Site Recovery mikro hizmetlerine erişmek için beş özel bağlantı oluşturur. Ayrıca, çoğaltmayı etkinleştirdiğinizde, kaynak ve hedef bölge eşleştirmesi için iki ek özel bağlantı ekler.
@@ -55,9 +55,9 @@ Kurtarma Hizmetleri Kasası, makinelerin çoğaltma bilgilerini içeren ve Site 
 [Yönetilen bir kimlik](../active-directory/managed-identities-azure-resources/overview.md) , kasanın müşterinin depolama hesaplarına erişim sağlamasına izin verir. Site Recovery, senaryo gereksinimine bağlı olarak kaynak depolama, hedef depolama ve önbellek/günlük depolama hesaplarına erişmesi gerekir.
 Kasa için özel bağlantılar hizmeti kullanırken, yönetilen kimlik erişimi önemlidir.
 
-1. Kurtarma Hizmetleri kasanıza gidin. _Ayarlar_altında **kimlik** ' i seçin.
+1. Kurtarma Hizmetleri kasanıza gidin. _Ayarlar_ altında **kimlik** ' i seçin.
 
-   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/enable-managed-identity-in-vault.png" alt-text="Özel uç noktalarla Site Recovery için başvuru mimarisi.":::
+   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/enable-managed-identity-in-vault.png" alt-text="Azure portal ve Kurtarma Hizmetleri sayfasını gösterir.":::
 
 1. **Durumu** _Açık_ olarak değiştirin ve **Kaydet**' i seçin.
 
@@ -73,19 +73,21 @@ Portaldaki özel bağlantı merkezini veya [Azure PowerShell](../private-link/cr
 
 1. Azure portal arama çubuğunda, "özel bağlantı" öğesini arayın ve seçin. Bu eylem sizi özel bağlantı merkezine götürür.
 
-   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/search-private-links.png" alt-text="Özel uç noktalarla Site Recovery için başvuru mimarisi.":::
+   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/search-private-links.png" alt-text="Özel bağlantı merkezi için Azure portal arama gösterir.":::
 
-1. Sol gezinti çubuğunda **Özel uç noktalar**' ı seçin. Özel uç noktalar sayfasında, kasa için özel bir uç nokta oluşturmaya başlamak üzere ** \+ Ekle** ' yi seçin.
+1. Sol gezinti çubuğunda **Özel uç noktalar**' ı seçin. Özel uç noktalar sayfasında, kasa için özel bir uç nokta oluşturmaya başlamak üzere **\+ Ekle** ' yi seçin.
 
-   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints.png" alt-text="Özel uç noktalarla Site Recovery için başvuru mimarisi." deneyiminden sonra, Özel uç nokta bağlantınızın oluşturulması için ayrıntıları belirtmeniz gerekir.
+   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints.png" alt-text="Özel bağlantı merkezinde özel uç nokta oluşturmayı gösterir.":::
+
+1. "Özel uç nokta oluştur" deneyiminden sonra, Özel uç nokta bağlantınızın oluşturulması için ayrıntıları belirtmeniz gerekir.
 
    1. **Temel bilgiler**: özel uç noktalarınız için temel ayrıntıları girin. Bölge, kaynak makinelerle aynı olmalıdır.
 
-      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints-basic-tab.png" alt-text="Özel uç noktalarla Site Recovery için başvuru mimarisi.":::
+      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints-basic-tab.png" alt-text="Azure portal özel bir uç nokta oluşturmak için temel sekmeyi, proje ayrıntılarını, aboneliği ve diğer ilgili alanları gösterir.":::
 
-   1. **Kaynak**: Bu sekme, bağlantınızı oluşturmak istediğiniz hizmet olarak platform kaynağını bahsetmeniz gerekir. Seçtiğiniz abonelik için **kaynak türünden** _Microsoft. recoveryservices/kasaults_ ' yi seçin. Ardından, **kaynak** Için kurtarma hizmetleri kasasının adını seçin ve **hedef alt kaynak**olarak _Azure Site Recovery_ ayarlayın.
+   1. **Kaynak**: Bu sekme, bağlantınızı oluşturmak istediğiniz hizmet olarak platform kaynağını bahsetmeniz gerekir. Seçtiğiniz abonelik için **kaynak türünden** _Microsoft. recoveryservices/kasaults_ ' yi seçin. Ardından, **kaynak** Için kurtarma hizmetleri kasasının adını seçin ve **hedef alt kaynak** olarak _Azure Site Recovery_ ayarlayın.
 
-      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints-resource-tab.png" alt-text="Özel uç noktalarla Site Recovery için başvuru mimarisi.":::
+      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints-resource-tab.png" alt-text="Azure portal özel bir uç noktaya bağlanmak için kaynak sekmesini, kaynak türünü, kaynağı ve hedef alt kaynak alanlarını gösterir.":::
 
    1. **Yapılandırma**: yapılandırma bölümünde, Özel uç noktanın oluşturulmasını istediğiniz sanal ağı ve alt ağı belirtin. Bu sanal ağ, sanal makinenin bulunduğu ağ. **Evet**' i seçerek özel DNS bölgesi ile tümleştirmeyi etkinleştirin. Zaten oluşturulmuş bir DNS bölgesi seçin veya yeni bir tane oluşturun. **Evet** seçildiğinde, bölge otomatik olarak kaynak sanal ağa bağlanır ve yeni IP 'lerin DNS çözümlemesi IÇIN gereken DNS kayıtları ve özel uç nokta için oluşturulan tam etki alanı adları eklenir.
 
@@ -95,7 +97,7 @@ Portaldaki özel bağlantı merkezini veya [Azure PowerShell](../private-link/cr
 
       Özel DNS bölgesini el ile oluşturmak için [özel DNS bölgeleri oluşturma ' daki adımları izleyin ve DNS kayıtlarını el ile ekleyin](#create-private-dns-zones-and-add-dns-records-manually).
 
-      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints-configuration-tab.png" alt-text="Özel uç noktalarla Site Recovery için başvuru mimarisi.":::
+      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-endpoints-configuration-tab.png" alt-text="Azure portal özel bir uç noktanın yapılandırılması için ağ ve DNS tümleştirme alanlarıyla birlikte yapılandırma sekmesini gösterir.":::
 
    1. **Etiketler**: isteğe bağlı olarak, Özel uç noktanız için Etiketler ekleyebilirsiniz.
 
@@ -113,7 +115,7 @@ Beş etki alanı adı aşağıdaki Düzenle biçimlendirilir:
 
 Devam etmeden önce bağlantının durumunu gözden geçirmek için özel uç nokta kaynağına gidebilirsiniz.
 
-:::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/vault-private-endpoint-connections.png" alt-text="Özel uç noktalarla Site Recovery için başvuru mimarisi.":::
+:::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/vault-private-endpoint-connections.png" alt-text="Kasadaki özel uç nokta bağlantıları sayfasını ve Azure portal bağlantıların listesini gösterir.":::
 
 ## <a name="optional-create-private-endpoints-for-the-cache-storage-account"></a><a name="create-private-endpoints-for-the-cache-storage-account"></a>Seçim Önbellek depolama hesabı için özel uç noktalar oluşturma
 
@@ -121,6 +123,9 @@ Azure depolama 'ya özel bir uç nokta kullanılıyor olabilir. Depolama erişim
 
 - Kaynak sanal ağınızdaki önbellek/günlük depolama hesabı için özel bir uç noktaya ihtiyacınız vardır.
 - Kurtarma ağındaki yük devredilen makinelerin yeniden korunması sırasında ikinci bir özel uç noktaya ihtiyacınız vardır. Bu özel uç nokta, hedef bölgede oluşturulan yeni depolama hesabı içindir.
+
+> [!NOTE]
+> Depolama hesabında özel uç noktalar etkinleştirilmemişse, koruma yine de başarılı olur. Ancak, çoğaltma trafiği Azure Site Recovery ortak uç noktalara geçiş yapılır. Çoğaltma trafiğinin özel bağlantılar aracılığıyla akmasını sağlamak için, depolama hesabının özel uç noktalarla etkinleştirilmesi gerekir.
 
 > [!NOTE]
 > Depolama için özel uç nokta yalnızca bir **genel amaçlı v2** depolama hesabında oluşturulabilir. Fiyatlandırma bilgileri için bkz. [Standart Sayfa Blobu fiyatları](https://azure.microsoft.com/pricing/details/storage/page-blobs/).
@@ -149,9 +154,13 @@ Aşağıdaki adımlar, depolama hesaplarınıza birer birer rol atamasının nas
 
 1. **Access Control (IAM)** üzerinde bir kez, "rol ataması Ekle" kutusunda **Ekle**' yi seçin.
 
-   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/storage-role-assignment.png" alt-text="Özel uç noktalarla Site Recovery için başvuru mimarisi." yan sayfasında, **rol** açılan listesinden yukarıdaki listeden rolü seçin. Kasanın **adını** girip **Kaydet**' i seçin.
+   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/storage-role-assignment.png" alt-text="Bir depolama hesabındaki erişim denetimi (ıAM) sayfasını ve Azure portal ' rol ataması Ekle ' düğmesini gösterir.":::
 
-   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/storage-role-assignment-select-role.png" alt-text="Özel uç noktalarla Site Recovery için başvuru mimarisi." onay kutusunu seçin.
+1. "Rol ataması Ekle" yan sayfasında, **rol** açılan listesinden yukarıdaki listeden rolü seçin. Kasanın **adını** girip **Kaydet**' i seçin.
+
+   :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/storage-role-assignment-select-role.png" alt-text="Bir depolama hesabındaki erişim denetimi (ıAM) sayfasını ve rol seçme seçeneklerini ve bu rolü Azure portal için hangi sorumluyu gösterir.":::
+
+Bu izinlere ek olarak, MS güvenilen hizmetlerin de erişime izin verilmesi gerekir. **Özel durumlar** bölümünde "güvenlik duvarları ve sanal ağlar" a gidin ve "Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin ver" onay kutusunu seçin.
 
 ## <a name="protect-your-virtual-machines"></a>Sanal makinelerinizi koruyun
 
@@ -167,9 +176,13 @@ Mobility aracısının özel IP 'lere tam etki alanı adlarını çözümlemesin
 
    1. **Tüm hizmetler** arama çubuğunda "özel DNS bölgesi" araması yapın ve açılan listeden "özel DNS bölgeler" seçeneğini belirleyin.
 
-      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/search-private-dns-zone.png" alt-text="Özel uç noktalarla Site Recovery için başvuru mimarisi." sayfasında, gerekli ayrıntıları girin. Özel DNS bölgesinin adını olarak girin `privatelink.siterecovery.windowsazure.com` . Herhangi bir kaynak grubunu ve bunu oluşturmak için herhangi bir aboneliği seçebilirsiniz.
+      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/search-private-dns-zone.png" alt-text="Azure portal yeni kaynaklar sayfasında ' özel DNS Bölgesi ' aramasını gösterir.":::
 
-      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-dns-zone.png" alt-text="Özel uç noktalarla Site Recovery için başvuru mimarisi.":::
+   1. "Özel DNS bölgeleri" sayfasında, yeni bir bölge oluşturmaya başlamak için **\+ Ekle** düğmesini seçin.
+
+   1. "Özel DNS bölgesi oluştur" sayfasında, gerekli ayrıntıları girin. Özel DNS bölgesinin adını olarak girin `privatelink.siterecovery.windowsazure.com` . Herhangi bir kaynak grubunu ve bunu oluşturmak için herhangi bir aboneliği seçebilirsiniz.
+
+      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/create-private-dns-zone.png" alt-text="Özel DNS bölgesi oluştur sayfasının temel bilgiler sekmesini ve Azure portal ilgili proje ayrıntılarını gösterir.":::
 
    1. DNS bölgesini gözden geçirmek ve oluşturmak için **İnceleme \+ Oluştur** sekmesine geçin.
 
@@ -177,15 +190,28 @@ Mobility aracısının özel IP 'lere tam etki alanı adlarını çözümlemesin
 
    Yukarıda oluşturulan özel DNS bölgelerinin artık sunucularınızın bulunduğu sanal ağ ile bağlantılı olması gerekir. Ayrıca, özel DNS bölgesini hedef sanal ağa önceden bağlamanız gerekir.
 
-   1. Önceki adımda oluşturduğunuz özel DNS bölgesine gidin ve sayfanın sol tarafındaki **sanal ağ bağlantıları** ' na gidin. Buradan, ** \+ Ekle** düğmesini seçin.
+   1. Önceki adımda oluşturduğunuz özel DNS bölgesine gidin ve sayfanın sol tarafındaki **sanal ağ bağlantıları** ' na gidin. Buradan, **\+ Ekle** düğmesini seçin.
 
    1. Gerekli ayrıntıları girin. **Abonelik** ve **sanal ağ** alanları, sunucularınızın bulunduğu sanal ağın ilgili ayrıntıları ile doldurulmalıdır. Diğer alanların olduğu gibi bırakılması gerekir.
 
-      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/add-virtual-network-link.png" alt-text="Özel uç noktalarla Site Recovery için başvuru mimarisi." sayfasından elde edilebilir. Aşağıdaki örnekte gösterildiği gibi, Özel uç noktasındaki ilk tam etki alanı adı özel DNS bölgesindeki kayıt kümesine eklenir.
+      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/add-virtual-network-link.png" alt-text="Azure portal bağlantı adı, abonelik ve ilgili sanal ağla bir sanal ağ bağlantısı eklemek için sayfayı gösterir.":::
+
+1. DNS kayıtları ekleme
+
+   Gerekli özel DNS bölgelerini ve özel uç noktaları oluşturduktan sonra DNS kayıtlarınızı DNS bölgelerine eklemeniz gerekir.
+
+   > [!NOTE]
+   > Özel bir özel DNS bölgesi kullanıyorsanız, benzer girişlerin aşağıda anlatıldığı şekilde yapıldığından emin olun.
+
+   Bu adım özel uç noktanıza ait her bir tam etki alanı adı için özel DNS bölgenize giriş yapmanızı gerektirir.
+
+   1. Özel DNS bölgenize gidin ve sayfanın sol tarafındaki **genel bakış** bölümüne gidin. Buradan, kayıt eklemeyi başlatmak için **\+ kayıt kümesi** ' ni seçin.
+
+   1. Açılan "kayıt kümesi Ekle" sayfasında, her bir tam etki alanı adı ve _bir_ tür kaydı olarak özel IP için bir giriş ekleyin. Tam etki alanı adları ve IP 'Lerin listesi **genel bakış** bölümünde "özel uç nokta" sayfasından elde edilebilir. Aşağıdaki örnekte gösterildiği gibi, Özel uç noktasındaki ilk tam etki alanı adı özel DNS bölgesindeki kayıt kümesine eklenir.
 
       Bu tam etki alanı adları düzeniyle eşleşir: `{Vault-ID}-asr-pod01-{type}-.{target-geo-code}.siterecovery.windowsazure.com`
 
-      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/add-record-set.png" alt-text="Özel uç noktalarla Site Recovery için başvuru mimarisi.":::
+      :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/add-record-set.png" alt-text="Azure portal, tam etki alanı adı için bir DNS A türü kaydını, Özel uç noktasına eklemek için sayfayı gösterir.":::
 
    > [!NOTE]
    > Çoğaltmayı etkinleştirdikten sonra, her iki bölgedeki özel uç noktalar üzerinde iki tam etki alanı adı oluşturulur. Bu yeni oluşturulan tam etki alanı adları için DNS kayıtlarını da eklemediğinizden emin olun.

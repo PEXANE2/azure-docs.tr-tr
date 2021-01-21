@@ -1,6 +1,6 @@
 ---
 title: Windows Güvenliği olay verilerini Azure Sentinel 'e bağlama | Microsoft Docs
-description: Windows sistemlerinizdeki tüm güvenlik olaylarını Azure Sentinel çalışma alanınıza akışa almak için güvenlik olayları bağlayıcısını kullanmayı öğrenin. 
+description: Windows sistemlerinizdeki tüm güvenlik olaylarını Azure Sentinel çalışma alanınıza akışa almak için güvenlik olayları bağlayıcısını kullanmayı öğrenin.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: a16afcafa03ef2ab8642316db560e30a473a526b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 226d5a46482d6611fdecf214d040fc27af9ac586
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883714"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632055"
 ---
 # <a name="connect-windows-security-events"></a>Windows güvenlik olaylarını bağlama 
 
@@ -54,19 +54,19 @@ Azure Sentinel 'de Windows Güvenlik olaylarınızı toplamak için:
 
 1. Azure Sentinel gezinti menüsünde **veri bağlayıcıları**' nı seçin. Bağlayıcılar listesinden **güvenlik olayları**' na tıklayın ve ardından sağ alt köşedeki **bağlayıcı sayfası aç** düğmesine tıklayın. Daha sonra, bu bölümün geri kalanında açıklandığı şekilde **yönergeler** sekmesi altındaki ekrandaki yönergeleri uygulayın.
 
-1. **Önkoşullar**bölümünde açıklandığı gibi uygun izinlere sahip olduğunuzu doğrulayın.
+1. Bağlayıcı sayfasındaki **Önkoşullar** bölümünde açıklandığı gibi uygun izinlere sahip olduğunuzu doğrulayın.
 
 1. Azure Sentinel 'de güvenlik olaylarını akışa almak istediğiniz makinelere [Log Analytics aracısını](../azure-monitor/platform/log-analytics-agent.md) (Microsoft Monitoring Agent veya MMA olarak da bilinir) indirip yükleyin.
 
     Azure sanal makineleri için:
     
-    1. **Aracıyı Azure Windows sanal makinesine**ve ardından aşağıda görüntülenen bağlantıya tıklayın.
+    1. **Aracıyı Azure Windows sanal makinesine** ve ardından aşağıda görüntülenen bağlantıya tıklayın.
     1. Bağlamak istediğiniz her bir sanal makine için, sağ tarafta görüntülenen listede adına tıklayın ve ardından **Bağlan**' a tıklayın.
 
     Azure olmayan Windows makineleri (fiziksel, sanal şirket içi veya başka bir buluttaki sanal) için:
 
-    1. **Azure olmayan Windows makinesine aracıyı**ve ardından aşağıda görüntülenen bağlantıyı seçin.
-    1. Sağ tarafta, **Windows bilgisayarları**altında görüntülenen uygun indirme bağlantılarına tıklayın.
+    1. **Azure olmayan Windows makinesine aracıyı** ve ardından aşağıda görüntülenen bağlantıyı seçin.
+    1. Sağ tarafta, **Windows bilgisayarları** altında görüntülenen uygun indirme bağlantılarına tıklayın.
     1. İndirilen yürütülebilir dosyayı kullanarak, istediğiniz Windows sistemlerine aracıyı yükleyin ve yukarıda bahsedilen indirme bağlantılarının altında görüntülenen **çalışma alanı kimliğini ve anahtarları** kullanarak yapılandırın.
 
     > [!NOTE]
@@ -92,7 +92,7 @@ Günlüklerinizin Log Analytics görünmeye başlaması 20 dakika kadar sürebil
 > [!IMPORTANT]
 > Anomalous RDP oturum açma algılaması Şu anda genel önizlemededir.
 > Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez.
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Azure Sentinel, anormal Uzak Masaüstü Protokolü (RDP) oturum açma etkinliğini belirlemek için, güvenlik olayları verilerine makine öğrenimi (ML) uygulayabilir. Senaryolar şunlardır:
 
@@ -106,7 +106,7 @@ Azure Sentinel, anormal Uzak Masaüstü Protokolü (RDP) oturum açma etkinliği
 
 1. **Güvenlik olayları** veri BAĞLAYıCıSı aracılığıyla RDP oturum açma verilerini (olay kimliği 4624) toplamalısınız. Azure Sentinel 'de akışı yapmak için "hiçbiri" nin yanı sıra bir [olay kümesini](#event-sets) seçtiğinizden emin olun.
 
-1. Azure Sentinel portalından **analiz**' e ve ardından **kural şablonları** sekmesine tıklayın. **(Önizleme) anormal RDP oturum açma algılaması** kuralını seçin ve **durum** kaydırıcısını **etkin**olarak taşıyın.
+1. Azure Sentinel portalından **analiz**' e ve ardından **kural şablonları** sekmesine tıklayın. **(Önizleme) anormal RDP oturum açma algılaması** kuralını seçin ve **durum** kaydırıcısını **etkin** olarak taşıyın.
 
     > [!NOTE]
     > Makine öğrenimi algoritması, Kullanıcı davranışının temel profilini oluşturmak için 30 günlük veri gerektirdiğinden, herhangi bir olay algılanabilmesi için 30 günlük güvenlik olayları verilerinin toplanmasına izin vermelisiniz.

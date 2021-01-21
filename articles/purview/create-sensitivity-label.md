@@ -6,13 +6,13 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 12/03/2020
-ms.openlocfilehash: 003a71f962652b1a1436f5d9875835534090a77a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.date: 01/19/2021
+ms.openlocfilehash: b376883ab7d8ef0ffd57a271e74862b684788ebd
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196597"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630285"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Verilerinizi Azure purview 'da otomatik olarak etiketleme
 
@@ -32,10 +32,9 @@ Purview 'da, sınıflandırmalar konu etiketlerine benzerdir ve tarama sırasın
 
 Takip, Microsoft 365 olarak gizli bilgi türleri olarak da bilinen aynı sınıflandırmaları kullanır.  MıP duyarlılık etiketleri Microsoft 365 güvenlik ve Uyumluluk Merkezi 'nde (SCC) oluşturulur. Bu, mevcut duyarlılık etiketlerinizi Azure purview varlıklarınız genelinde genişletmenizi sağlar.
 
-> [!NOTE]
-> Sınıflandırmalar, **sosyal güvenlik numarası** sınıflandırmasına sahip olan sosyal güvenlik numarası gibi doğrudan eşleştirilir. 
->
-> Buna karşılık, bir veya daha fazla sınıflandırma ve koşul birlikte bulunduğunda duyarlık etiketleri uygulanır. Bu bağlamda [koşullar](/microsoft-365/compliance/apply-sensitivity-label-automatically) , **başka bir sınıflandırmaya yakınlık** ve **% güvenirlik** gibi yapılandırılmamış veriler için tanımlayabileceğiniz tüm parametrelere başvurur. 
+**Sınıflandırmalar** , **sosyal güvenlik numarası** sınıflandırmasına sahip olan sosyal güvenlik numarası gibi doğrudan eşleştirilir. 
+
+Buna karşılık, bir veya daha fazla sınıflandırma ve koşul birlikte bulunduğunda **duyarlık etiketleri** uygulanır. Bu bağlamda [koşullar](/microsoft-365/compliance/apply-sensitivity-label-automatically) , *başka bir sınıflandırmaya yakınlık* ve *% güvenirlik* gibi yapılandırılmamış veriler için tanımlayabileceğiniz tüm parametrelere başvurur. 
 
 Azure purview içindeki duyarlılık etiketleri, dosyalara ve veritabanı sütunlarına otomatik olarak Etiketler uygulamak için kullanılabilir.
 
@@ -44,6 +43,7 @@ Daha fazla bilgi için bkz:
 - Microsoft 365 belgelerindeki [duyarlılık etiketleri hakkında bilgi edinin](/microsoft-365/compliance/sensitivity-labels)
 - [Oto etiketleme kuralları nelerdir?](#what-are-autolabeling-rules)
 - [Azure purview 'da duyarlılık etiketleri için desteklenen veri türleri](#supported-data-types-for-sensitivity-labels-in-azure-purview)
+- [SQL veritabanı sütunları için etiketleme](#labeling-for-sql-database-columns)
 
 #### <a name="what-are-autolabeling-rules"></a>Oto etiketleme kuralları nelerdir?
 
@@ -54,7 +54,6 @@ Belirli bir etiketin ne zaman uygulanacağını belirten,, oto etiketleme kurall
 Etiketlerinizi oluştururken, her bir veri taramasında etiketlerinizi otomatik olarak uygulamak için hem [Dosya](#define-autolabeling-rules-for-files) hem de [veritabanı sütunları](#define-autolabeling-rules-for-database-columns) için otomatik etiketleme kuralları tanımlamadığınızdan emin olun. 
 
 Verilerinizi takip ettiğiniz şekilde taradıktan sonra, takip görünümü kataloğunda ve Öngörüler raporlarında otomatik olarak uygulanan etiketleri görüntüleyebilirsiniz.
-
 #### <a name="supported-data-types-for-sensitivity-labels-in-azure-purview"></a>Azure purview 'da duyarlılık etiketleri için desteklenen veri türleri
 
 Duyarlılık etiketleri aşağıdaki veri türleri için Azure purview 'da desteklenir:
@@ -62,8 +61,16 @@ Duyarlılık etiketleri aşağıdaki veri türleri için Azure purview 'da deste
 |Veri türü  |Kaynaklar  |
 |---------|---------|
 |Dosyalar için otomatik etiketleme     |     -Azure Blob depolama  </br>-Azure Data Lake Storage Gen 1 ve Gen 2  |
-|Veritabanı sütunları için otomatik etiketleme     |  -SQL Server </br>-Azure SQL veritabanı </br>-Azure SQL veritabanı yönetilen örneği   <br> -Azure SYNAPSE  <br>-Azure Cosmos DB   |
+|Veritabanı sütunları için otomatik etiketleme     |  -SQL Server </br>-Azure SQL veritabanı </br>-Azure SQL veritabanı yönetilen örneği   <br> -Azure SYNAPSE  <br>-Azure Cosmos DB <br><br>Daha fazla bilgi için bkz. [SQL veritabanı sütunları Için etiketleme](#labeling-for-sql-database-columns) .  |
 | | |
+
+#### <a name="labeling-for-sql-database-columns"></a>SQL veritabanı sütunları için etiketleme
+
+Microsoft, veritabanı sütunları için bir görünüm etiketlemesine ek olarak, [SQL Server Management Studio (SSMS)](/sql/ssms/sql-server-management-studio-ssms)içindeki SQL veri SıNıFLANDıRMASıNı kullanarak SQL veritabanı sütunlarının etiketlenmesini de destekler. Purview genel [MIP duyarlılık etiketlerini](/microsoft-365/compliance/sensitivity-labels)kullanırken SSMS yalnızca yerel olarak tanımlanan etiketleri kullanır.
+
+SSMS 'de ve etiketlemenin içinde etiketleme, şu anda birbirleriyle etkileşim kurmayan ayrı işlemlerdir. Bu nedenle, SSMS 'de uygulanan Etiketler purview 'da gösterilmez ve tam tersi de geçerlidir. Birden çok platformda uygulanabilen küresel MıP etiketlerini kullandığından SQL veritabanlarını etiketleme için Azure purview önerilir.
+
+Daha fazla bilgi için bkz. [SQL veri bulma ve sınıflandırma belgeleri](/sql/relational-databases/security/sql-data-discovery-and-classification).
 
 ## <a name="how-to-create-sensitivity-labels-in-microsoft-365"></a>Microsoft 365 duyarlılık etiketleri oluşturma
 
@@ -86,7 +93,7 @@ Varsayılan olarak, MıP duyarlılık etiketleri yalnızca Microsoft 365 varlık
 
 Azure purview 'daki Azure varlıklarına MıP duyarlılık etiketlerini uygulamak için, etiketleri genişletmeyi açık bir şekilde kabul etmeniz ve purview 'ta kullanılabilir olmasını istediğiniz belirli etiketleri seçmeniz gerekir.
 
-Kuruluşlar, MıP 'nin duyarlılık etiketlerini Azure purview ile genişleterek, daha geniş bir veri kaynağı yelpazesinden uyumluluk riskini en aza indirerek daha fazla bilgi bulabilir, sınıflandırabilir ve bunlarla ilgili daha fazla bilgi alabilir.
+Kuruluşlar, MıP 'nin duyarlılık etiketlerini Azure purview ile genişleterek, daha geniş bir veri kaynağı yelpazesinden uyumluluk riskini en aza indirmek için daha fazla bilgi bulabilir, sınıflandırabilir ve duyarlık elde edebilir.
 
 > [!NOTE]
 > Microsoft 365 ve Azure purview ayrı hizmetler olduğundan, farklı bölgelerde dağıtılabilecek bir olasılık vardır. Etiket adları ve özel hassas bilgi türü adları müşteri verileri olarak kabul edilir ve verilerinizin duyarlılığını korumak ve GDPR yasaları önlemek için varsayılan olarak aynı COĞRAFI konum içinde tutulur.
@@ -97,7 +104,7 @@ Kuruluşlar, MıP 'nin duyarlılık etiketlerini Azure purview ile genişleterek
 
 Microsoft 365 **Information Protection** sayfasına gidin. **Azure purview 'daki varlıklara etiketlemeyi Genişlet**' de, **Aç** düğmesini seçin ve açılan onay iletişim kutusunda **Evet** ' i seçin.
 
-Örneğin:
+Örnek:
 
 :::image type="content" source="media/create-sensitivity-label/extend-sensitivity-labels-to-purview-small.png" alt-text="Duyarlılık etiketlerini purview 'a genişletmek için * * aç * * seçeneğini belirleyin" lightbox="media/create-sensitivity-label/extend-sensitivity-labels-to-purview.png":::
  
@@ -123,7 +130,7 @@ Etiketlemeyi Azure purview içindeki varlıklara genişlettikten sonra, purview 
 
     Sihirbaz seçenekleri hakkında daha fazla bilgi için, Microsoft 365 belgelerinde [Hangi duyarlılık etiketlerinin yapabileceğini](/microsoft-365/compliance/sensitivity-labels#what-sensitivity-labels-can-do) görün.
 
-1. Ek etiketler oluşturmak için yukarıda listelenen adımları yineleyin. 
+1. Daha fazla etiket oluşturmak için yukarıda listelenen adımları yineleyin. 
 
     Alt etiket oluşturmak için > üst etiketi seçin **.**  >  .. **Diğer eylemler**  >  **Alt etiket ekleyin**.
 
@@ -155,7 +162,7 @@ Etiketinizi oluştururken veya düzenlerken, sihirbazdaki dosyalar için bir oto
 
 **Office uygulamaları Için otomatik etiketleme** sayfasında, **Office uygulamaları için otomatik etiketlemeyi** etkinleştirin ve sonra etiketinizin verilerinize otomatik olarak uygulanmasını istediğiniz koşulları tanımlayın.
 
-Örneğin:
+Örnek:
 
 :::image type="content" source="media/create-sensitivity-label/create-auto-labeling-rules-files-small.png" alt-text="Microsoft 365 güvenlik ve Uyumluluk Merkezi 'nde dosyalar için oto etiketleme kuralları tanımlama" lightbox="media/create-sensitivity-label/create-auto-labeling-rules-files.png":::
  
@@ -171,7 +178,7 @@ Etiketinizi oluştururken veya düzenlediğinizde sihirbazda veritabanı sütunl
 
 1. Etiketinizden uygulamak istediğiniz hassas bilgi türlerini seçmek için **hassas bilgi türlerini denetle** ' yi seçin.
 
-Örneğin:
+Örnek:
         
 :::image type="content" source="media/create-sensitivity-label/create-auto-labeling-rules-db-columns-small.png" alt-text="Microsoft 365 güvenlik ve Uyumluluk Merkezi 'nde SQL sütunları için oto etiketleme kuralları tanımlama" lightbox="media/create-sensitivity-label/create-auto-labeling-rules-db-columns.png":::
 
@@ -194,11 +201,11 @@ Microsoft 365 etiketleriniz için otomatik etiketleme kuralları tanımladıktan
 
 **Azure purview kataloğunda varlıklarınıza uygulanan etiketleri görüntülemek için:**
 
-Azure purview kataloğunda, yalnızca belirli etiketlere sahip dosyaları göstermek için **etiket** filtreleme seçeneklerini kullanın. Örneğin: 
+Azure purview kataloğunda, yalnızca belirli etiketlere sahip dosyaları göstermek için **etiket** filtreleme seçeneklerini kullanın. Örnek: 
 
 :::image type="content" source="media/create-sensitivity-label/filter-search-results-small.png" alt-text="Varlıkları etikete göre ara" lightbox="media/create-sensitivity-label/filter-search-results.png":::
 
-Örneğin:
+Örnek:
 
 :::image type="content" source="media/create-sensitivity-label/view-labeled-files-blob-storage-small.png" alt-text="Azure Blob depolamadaki bir dosyadaki duyarlılık etiketini görüntüleme" lightbox="media/create-sensitivity-label/view-labeled-files-blob-storage.png":::
 

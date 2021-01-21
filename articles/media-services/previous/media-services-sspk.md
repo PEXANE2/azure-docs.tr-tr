@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: cdb575d7b3884370e1a53f79f1184d40cd15d270
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: eb88d2cf96cc8557f2b8c729554106530cf6f956
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97732402"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629632"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Microsoft &reg; kesintisiz akış Istemci taşıma kiti lisanslama
 
@@ -32,7 +32,7 @@ Aşağıda yer alan üst düzey bir mimari ve IIS Kesintisiz Akış taşıma pak
 
 ![SSPK](./media/media-services-sspk/sspk-arch.png)
 
-## <a name="description"></a>Açıklama
+## <a name="description"></a>Description
 SSPK, mükemmel iş değeri sunan koşullara göre lisanslanır. SSPK lisansı sektörde şunları sağlar:
 
 * C++ ' ta Kesintisiz Akış taşıma paketi kaynağı 
@@ -128,6 +128,7 @@ Ara ve nihai SSPK lisanslamamaları, konusunda teknik sorular gönderebilir [smo
 * Hong Kong konka Ltd
 * Innolux Corporation
 * Innopia Technologies, Inc
+* Jınpin elektrik şirketi Ltd. Zhuhai. S. E. Z
 * K-tronics (Suzhou) Technology Co., Ltd. 
 * Kaonmedia Co., Ltd.
 * KDDı Corporation
@@ -160,6 +161,6 @@ Ara ve nihai SSPK lisanslamamaları, konusunda teknik sorular gönderebilir [smo
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

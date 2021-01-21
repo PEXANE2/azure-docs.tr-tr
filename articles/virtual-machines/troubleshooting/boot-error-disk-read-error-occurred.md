@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/01/2020
 ms.author: v-miegge
-ms.openlocfilehash: f59903ed111be1fe414f4b3ded250d754c91d323
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75d1cf8638f922bb0275322568eb1399db4f49e8
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87069144"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629734"
 ---
 # <a name="troubleshoot-boot-error---disk-read-error-occurred"></a>Önyükleme hatası sorunlarını giderme-disk okuma hatası oluştu
 
@@ -33,11 +33,14 @@ VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](
 
 ## <a name="cause"></a>Nedeni
 
-Bu hata iletisi, disk yapısının bozuk ve okunamaz olduğunu gösterir. 1. nesil bir VM kullanıyorsanız, önyükleme yapılandırma verilerini içeren disk bölümünün **etkin**olarak ayarlanmamış olması da mümkündür.
+Bu hata iletisi, disk yapısının bozuk ve okunamaz olduğunu gösterir. 1. nesil bir VM kullanıyorsanız, önyükleme yapılandırma verilerini içeren disk bölümünün **etkin** olarak ayarlanmamış olması da mümkündür.
 
 ## <a name="solution"></a>Çözüm
 
 ### <a name="process-overview"></a>İşleme genel bakış
+
+> [!TIP]
+> VM 'nin son yedeğine sahipseniz önyükleme sorununu çözmek için [VM 'yi yedekten geri yüklemeyi](../../backup/backup-azure-arm-restore-vms.md) deneyebilirsiniz.
 
 1. Bir onarım VM 'si oluşturun ve erişin.
 1. Bir çözüm seçin:
@@ -56,7 +59,7 @@ Bu hata iletisi, disk yapısının bozuk ve okunamaz olduğunu gösterir. 1. nes
 
 ### <a name="set-partition-status-to-active"></a>Bölüm durumunu etkin olarak ayarla
 
-1. nesil sanal makineler önce, BCD deposunu tutan işletim sistemi bölümünün **etkin**olarak işaretlendiğinden emin olmalıdır. 2. nesil bir sanal makinenize sahipseniz, sonraki nesil durum bayrağı kullanım dışı olduğundan, [disk bölümünü düzelten](#fix-the-disk-partition)önce atlayın.
+1. nesil sanal makineler önce, BCD deposunu tutan işletim sistemi bölümünün **etkin** olarak işaretlendiğinden emin olmalıdır. 2. nesil bir sanal makinenize sahipseniz, sonraki nesil durum bayrağı kullanım dışı olduğundan, [disk bölümünü düzelten](#fix-the-disk-partition)önce atlayın.
 
 1. Yükseltilmiş bir komut istemi açın (cmd.exe).
 1. **DiskPart** aracını başlatmak için **DiskPart** girin.
@@ -80,7 +83,7 @@ Bu hata iletisi, disk yapısının bozuk ve okunamaz olduğunu gösterir. 1. nes
 
    ![Bölüm 1 ' in * * etkin: Evet * * olarak ayarlandığı * * ayrıntı bölümü * * komutunun çıkışıyla DiskPart penceresi.](./media/disk-read-error-occurred/5.png)
 
-1. Bölüm **etkin**olarak ayarlanmamışsa etkin bayrağını değiştirmek için **etkin** ' i girin.
+1. Bölüm **etkin** olarak ayarlanmamışsa etkin bayrağını değiştirmek için **etkin** ' i girin.
 1. Durum değişikliğinin düzgün şekilde tamamlandığını denetlemek için **ayrıntı bölümünü** girin ve çıktının etkin içerdiğini doğrulayın **: Evet**. 
 1. DISKPART aracını kapatmak ve yapılandırma değişikliklerinizi kaydetmek için **Çıkış** girin.
 

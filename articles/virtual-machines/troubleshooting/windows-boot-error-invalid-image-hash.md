@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/03/2020
 ms.author: v-miegge
-ms.openlocfilehash: e58e349d7b7385ec913986c39462c17deadcb61d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 22db9c7966b6f988ca0ea799104275f3f86c77ea
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969611"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629581"
 ---
 # <a name="windows-boot-manager-error---0xc0000428-status-invalid-image-hash"></a>Windows Önyükleme Yöneticisi hatası-0xC0000428 durum geçersiz görüntü karması
 
@@ -65,6 +65,9 @@ VM 'yi oluşturmak için kullanılan görüntü, RTM (üretim sürümü) görün
 - Azure 'da, önizleme sürümü olan Windows için tüm görüntüler, kendilerine üretime yönelik değildir ve yalnızca belirli bir deneme süresi için veya "önizleme sürümü" olarak kullanılabilir.
 
 ## <a name="solution"></a>Çözüm
+
+> [!TIP]
+> VM 'nin son yedeğine sahipseniz önyükleme sorununu çözmek için [VM 'yi yedekten geri yüklemeyi](../../backup/backup-azure-arm-restore-vms.md) deneyebilirsiniz.
 
 Görüntünüz bir önizleme görüntüsü ise, kullanılan görüntünün sona erme tarihini genişletmenin bir yolu yoktur, Önizleme olmayan bir görüntü kullanarak [Yeni BIR VM dağıtmanız](../windows/quick-create-portal.md) gerekir. Aşağıdaki adımlar, bir önizleme görüntüsü kullandıysanız ve bu VM 'den yeni bir VM 'ye veri aktarırken size yardımcı olacak kaynaklar sağlamanıza yardımcı olur. Görüntüyü bir önizleme görüntüsü olarak pozitif olarak belirlediyseniz, artık bu süre dolduğunda görüntü kurtarılamaz.
 

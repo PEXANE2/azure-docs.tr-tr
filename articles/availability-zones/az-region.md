@@ -1,5 +1,5 @@
 ---
-title: Kullanılabilirlik Alanları destekleyen Azure hizmetleri
+title: Kullanılabilirlik Alanlarını destekleyen Azure Hizmetleri
 description: Azure 'da yüksek oranda kullanılabilir ve dayanıklı uygulamalar oluşturmak için, kaynaklarınızı çalıştırmak için kullanabileceğiniz fiziksel olarak ayrı konumlar sağlayın Kullanılabilirlik Alanları.
 author: cynthn
 ms.service: azure
@@ -7,14 +7,14 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 0365a60317538ba31f39928cd30a57e2c969c832
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: ea21a56249c8eaa7c6b329b755e96b21b91ebaa1
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97723052"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632317"
 ---
-# <a name="azure-services-that-support-availability-zones"></a>Kullanılabilirlik Alanları destekleyen Azure hizmetleri
+# <a name="azure-services-that-support-availability-zones"></a>Kullanılabilirlik Alanlarını destekleyen Azure Hizmetleri
 
 Kullanılabilirlik Alanları, uygulamalarınızı ve verilerinizi veri merkezi hatalarından koruyan yüksek kullanılabilirliğe sahip bir tekliftir. Kullanılabilirlik Alanları destekleyen mevcut ve yaklaşan bölgelerin listesi için bkz. [Azure 'Da bölgeler ve kullanılabilirlik alanları](az-overview.md).  
 
@@ -63,7 +63,7 @@ Azure 'da kapsamlı iş sürekliliği elde etmek için Azure bölge çiftleriyle
 | **Depolama** |  |  |  |  |  |
 | [Azure Data Lake Storage 2. Nesil](../storage/common/storage-account-create.md?tabs=azure-portal)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Premium dosya depolaması](../storage/files/storage-files-planning.md) |  | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [BLOB depolama](../storage/blobs/storage-blobs-introduction.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| [Blob Depolama](../storage/blobs/storage-blobs-introduction.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Yönetilen Diskler](https://azure.microsoft.com/en-gb/updates/azure-managed-snapshots-images-ga/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Ağ** |  |  |  |  |  |
 | [Application Gateway v2](../application-gateway/application-gateway-autoscaling-zone-redundant.md)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -88,7 +88,7 @@ Azure 'da kapsamlı iş sürekliliği elde etmek için Azure bölge çiftleriyle
 | **Tümleştirme** |  |  |  |  |  |
 | [Event Grid](../event-grid/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Service Bus](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Yönetim ve İdare** |  |  |  |  |  |
+| **Yönetim ve Idare** |  |  |  |  |  |
 | [Ağ İzleyicisi](../network-watcher/frequently-asked-questions.md) | sayı | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | sayı |
 | **Güvenlik** |  |  |  |  |  |
 | [Azure Active Directory Domain Services](../active-directory-domain-services/overview.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
@@ -106,7 +106,7 @@ Azure 'da kapsamlı iş sürekliliği elde etmek için Azure bölge çiftleriyle
 | **Depolama** |  |  |  |  |
 | [Azure Data Lake Storage 2. Nesil](../storage/common/storage-account-create.md?tabs=azure-portal)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Premium dosya depolaması](../storage/files/storage-files-planning.md) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [BLOB depolama](../storage/blobs/storage-blobs-introduction.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| [Blob Depolama](../storage/blobs/storage-blobs-introduction.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Yönetilen Diskler](https://azure.microsoft.com/en-gb/updates/azure-managed-snapshots-images-ga/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Ağ** |  |  |  |  |
 | [Application Gateway v2](../application-gateway/application-gateway-autoscaling-zone-redundant.md)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -124,14 +124,14 @@ Azure 'da kapsamlı iş sürekliliği elde etmek için Azure bölge çiftleriyle
 | [Azure Veri Gezgini](/azure/data-explorer/create-cluster-database-portal) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [MySQL için Azure veritabanı-esnek sunucu](../mysql/flexible-server/concepts-high-availability.md) | sayı | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [PostgreSQL için Azure veritabanı-esnek sunucu](../postgresql/flexible-server/overview.md) | sayı | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure SQL veritabanı (Genel Amaçlı katmanı)](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | sayı | : heavy_check_mark: (Önizleme) | sayı | : heavy_check_mark: (Önizleme) |
+| [Azure SQL veritabanı (Genel Amaçlı katmanı)](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | : heavy_check_mark: (Önizleme) | : heavy_check_mark: (Önizleme) | sayı | : heavy_check_mark: (Önizleme) |
 | [Azure SQL veritabanı (Premium & İş Açısından Kritik katmanları)](../azure-sql/database/high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Analiz** |  |  |  |  |
 | [Event Hubs](../event-hubs/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Tümleştirme** |  |  |  |  |
 | [Event Grid](../event-grid/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Service Bus](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Yönetim ve İdare** |  |  |  |  |
+| **Yönetim ve Idare** |  |  |  |  |
 | [Ağ İzleyicisi](../network-watcher/frequently-asked-questions.md) | :heavy_check_mark: | :heavy_check_mark: | sayı | :heavy_check_mark: |
 | **Güvenlik** |  |  |  |  |
 | [Azure Active Directory Domain Services](../active-directory-domain-services/overview.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
@@ -151,7 +151,7 @@ Azure 'da kapsamlı iş sürekliliği elde etmek için Azure bölge çiftleriyle
 | **Depolama** |  |  |  |
 | [Azure Data Lake Storage 2. Nesil](../storage/common/storage-account-create.md?tabs=azure-portal)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Premium dosya depolaması](../storage/files/storage-files-planning.md) |  | :heavy_check_mark: | :heavy_check_mark: |
-| [BLOB depolama](../storage/blobs/storage-blobs-introduction.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| [Blob Depolama](../storage/blobs/storage-blobs-introduction.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Yönetilen Diskler](https://azure.microsoft.com/en-gb/updates/azure-managed-snapshots-images-ga/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Ağ** |  |  |  |
 | [Application Gateway v2](../application-gateway/application-gateway-autoscaling-zone-redundant.md)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -169,14 +169,14 @@ Azure 'da kapsamlı iş sürekliliği elde etmek için Azure bölge çiftleriyle
 | [Azure Veri Gezgini](/azure/data-explorer/create-cluster-database-portal) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [MySQL için Azure veritabanı-esnek sunucu](../mysql/flexible-server/concepts-high-availability.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [PostgreSQL için Azure veritabanı-esnek sunucu](../postgresql/flexible-server/overview.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure SQL veritabanı (Genel Amaçlı katmanı)](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | sayı | : heavy_check_mark: (Önizleme) | : heavy_check_mark: (Önizleme) |
+| [Azure SQL veritabanı (Genel Amaçlı katmanı)](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | : heavy_check_mark: (Önizleme) | : heavy_check_mark: (Önizleme) | : heavy_check_mark: (Önizleme) |
 | [Azure SQL veritabanı (Premium & İş Açısından Kritik katmanları)](../azure-sql/database/high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Analiz** |  |  |  |
 | [Event Hubs](../event-hubs/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **Tümleştirme** |  |  |  |
 | [Event Grid](../event-grid/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Service Bus](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| **Yönetim ve İdare** |  |  |  |
+| **Yönetim ve Idare** |  |  |  |
 | [Ağ İzleyicisi](../network-watcher/frequently-asked-questions.md) | :heavy_check_mark: | sayı | sayı |
 | **Güvenlik** |  |  |  |
 | [Azure Active Directory Domain Services](../active-directory-domain-services/overview.md) | :heavy_check_mark: | :heavy_check_mark: |  |

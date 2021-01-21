@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/20/2021
 ms.author: yelevin
-ms.openlocfilehash: 9700e5d9179f7c1e33b2371eea89be9bb1c8d08f
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: e84484990725b0c39b132aead51e9b01dbb7e7ef
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621371"
+ms.locfileid: "98632300"
 ---
 # <a name="connect-data-from-azure-active-directory-azure-ad"></a>Azure Active Directory verileri bağlama (Azure AD)
 
@@ -28,7 +28,7 @@ Azure Sentinel 'in yerleşik bağlayıcısını kullanarak [Azure Active Directo
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Azure Sentinel 'de oturum açma günlüklerini almak için bir [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) aboneliğine sahip olmanız gerekir. Azure Izleyici (Log Analytics) ve Azure Sentinel için ek gigabayt başına ücretler uygulanabilir.
+- Herhangi bir Azure AD lisansı (ücretsiz/O365/P1/P2), oturum açma günlüklerini Azure Sentinel 'e almak için yeterlidir. Azure Izleyici (Log Analytics) ve Azure Sentinel için ek gigabayt başına ücretler uygulanabilir.
 
 - Kullanıcı çalışma alanında Azure Sentinel katılımcısı rolüne atanmalıdır.
 
@@ -42,11 +42,27 @@ Azure Sentinel 'in yerleşik bağlayıcısını kullanarak [Azure Active Directo
 
 1. Veri bağlayıcıları galerisinden **Azure Active Directory** ' yi seçin ve ardından **bağlayıcı sayfasını aç**' ı seçin.
 
-1. Azure Sentinel 'e akışa almak istediğiniz günlüklerin yanındaki onay kutularını işaretleyin ve **Bağlan**' a tıklayın.
+1. Azure Sentinel 'de akışa almak istediğiniz günlük türlerinin yanındaki onay kutularını işaretleyin ve **Bağlan**' a tıklayın. Bunlar, aralarından seçim yapabileceğiniz günlük türleridir:
 
-1. Azure AD 'deki uyarıların Azure Sentinel 'de otomatik olarak olay oluşturmasını isteyip istemediğinizi seçebilirsiniz. Olayları **Oluştur** altında, bağlı güvenlik hizmetinde oluşturulan uyarılardan olayları otomatik olarak oluşturan varsayılan analiz kuralını etkinleştirmek için **Etkinleştir** ' i seçin. Daha sonra bu kuralı **analiz** ve ardından **etkin kurallar** altında düzenleyebilirsiniz.
+    - Oturum açma günlükleri
+    - Denetim günlükleri
+    - Etkileşimli olmayan kullanıcı oturum açma günlükleri
+    - Hizmet sorumlusu oturum açma günlükleri
+    - Yönetilen kimlik oturum açma günlükleri
+    - Sağlama günlükleri
 
-1. Azure AD uyarılarını sorgulamak için Log Analytics içinde ilgili şemayı kullanmak için, `SigninLogs` `AuditLogs` sorgu penceresinde veya yazın.
+## <a name="find-your-data"></a>Verilerinizi bulun
+
+Başarılı bir bağlantı kurulduktan sonra, veriler **günlüklerde**, **logmanagement** bölümünün altında aşağıdaki tablolarda görünür:
+
+- `SigninLogs`
+- `AuditLogs`
+- `AADNonInteractiveUserSignInLogs`
+- `AADServicePrincipalSignInLogs`
+- `AADManagedIdentitySignInLogs`
+- `AADProvisioningLogs`
+
+Azure AD günlüklerini sorgulamak için, sorgu penceresinin üst kısmında ilgili tablo adını girin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu belgede Azure Active Directory Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:

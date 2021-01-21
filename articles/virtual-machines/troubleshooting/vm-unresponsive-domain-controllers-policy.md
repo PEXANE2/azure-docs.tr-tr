@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: v-miegge
-ms.openlocfilehash: 4f181a6dee7ed182150bd0cad2b51690b6c77d7a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6c139398182ca9d875de0d3b21c58afe503bd8a5
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963134"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632283"
 ---
 # <a name="vm-is-unresponsive-while-applying-default-domain-controllers-policy"></a>Varsayılan etki alanı denetleyicisi ilkesi uygulanırken VM yanıt vermiyor
 
@@ -28,7 +28,7 @@ Bu makalede, varsayılan etki alanı denetleyicileri Ilkesinin bir Azure sanal m
 
 ## <a name="symptom"></a>Belirti
 
-VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](./boot-diagnostics.md) kullandığınızda, ekran görüntüsünün **varsayılan etki alanı denetleyicileri ilkesiyle**önyükleme sırasında işletim sisteminin yanıt vermemeye karşı bir şekilde görüntülediğini görürsünüz.
+VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](./boot-diagnostics.md) kullandığınızda, ekran görüntüsünün **varsayılan etki alanı denetleyicileri ilkesiyle** önyükleme sırasında işletim sisteminin yanıt vermemeye karşı bir şekilde görüntülediğini görürsünüz.
 
   ![Şekil 1 ' varsayılan etki alanı denetleyicileri Ilkesi ' iletisiyle takılmış işletim sistemini görüntüler](./media/vm-unresponsive-domain-controllers-policy/1-default-domain-controllers-policy.png)
 
@@ -37,6 +37,9 @@ VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](
 Bu sorun, varsayılan etki alanı denetleyicileri Ilkesinde yapılan son değişikliklerden kaynaklanıyor olabilir. Aksi takdirde, kök nedenin belirlenmesi için bir bellek dökümü dosya analizinin gerçekleştirilmesi gerekir.
 
 ## <a name="solution"></a>Çözüm
+
+> [!TIP]
+> VM 'nin son yedeğine sahipseniz önyükleme sorununu çözmek için [VM 'yi yedekten geri yüklemeyi](../../backup/backup-azure-arm-restore-vms.md) deneyebilirsiniz.
 
 En son olarak varsayılan etki alanı denetleyicileri Ilkesinde değişiklikler yaptıysanız, sorunu giderecek değişiklikleri geri almak isteyebilirsiniz. Soruna neyin neden olduğunu bilmiyorsanız, bir bellek dökümü toplayın ve ardından bir destek bileti gönderin.
 

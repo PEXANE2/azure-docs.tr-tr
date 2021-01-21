@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 4f4cd8189c9166ee08c1e4ccd800a1202d3b5893
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: cbded0a9c905bb488e1bae0f92d777e2e7ed7441
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724825"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630862"
 ---
 # <a name="smb-multichannel-performance"></a>Çok Kanallı SMB performansı
 
@@ -119,7 +119,7 @@ Aşağıdaki ipuçları, performansınızı iyileştirmenize yardımcı olabilir
 - Ağ gecikmesini azaltmak için depolama hesabınızın ve istemcinizin aynı Azure bölgesinde birlikte bulunduğundan emin olun.
 - Çoklu iş parçacıklı uygulamalar kullanın ve birden çok dosya genelinde yayılmış yük yükleyin.
 - Yükün dağıtılması sırasında SMB çok kanallı artışın performans avantajları.
-- Premium paylaşımın performansı, sağlanan paylaşma boyutu (ıOPS/çıkış/giriş) ve tek dosya limitleri ile bağlıdır. Ayrıntılar için bkz. [Premium dosya paylaşımları için sağlamayı anlama](understanding-billing.md#provisioned-billing).
+- Premium paylaşımın performansı, sağlanan paylaşma boyutu (ıOPS/çıkış/giriş) ve tek dosya limitleri ile bağlıdır. Ayrıntılar için bkz. [Premium dosya paylaşımları için sağlamayı anlama](understanding-billing.md#provisioned-model).
 - Tek bir VM istemcisinin maksimum performansı hala VM sınırlarına bağlanır. Örneğin, [Standard_D32s_v3](../../virtual-machines/dv3-dsv3-series.md) maksimum bant genişliğini 16.000 Mbps (veya 2Gbps) DESTEKLEYEBILIR, VM 'den çıkış (depolamaya yazma) tarifeli, giriş (depolamadan okuma) desteklenmez. Dosya paylaşımının performansı makine ağ sınırları, CPU 'Lar, iç depolama kullanılabilir ağ bant genişliği, GÇ boyutları, paralellik ve diğer faktörlere tabidir.
 - İlk test genellikle bir sıcak olur, sonuçlarını atar ve testi yineler.
 - Performans tek bir istemciyle sınırlı ise ve iş yükü hala sağlanan paylaşma sınırlarına göre sınırlıysa, yük birden fazla istemcinin üzerinden yayılırken daha yüksek performans elde edilebilir.

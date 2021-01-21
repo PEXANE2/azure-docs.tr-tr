@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/21/2020
+ms.date: 01/18/2021
 ms.author: jeedes
-ms.openlocfilehash: d7cafdcbbf44f3f501d54c13d1b4549c446ed8c8
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: ebd07990767d91c88f245b4ed7f8a66f93de0b85
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724009"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631426"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>Öğretici: Citrix ShareFile ile tümleştirme Azure Active Directory
 
@@ -31,8 +31,8 @@ Citrix ShareFile 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağl
 
 Azure AD tümleştirmesini Citrix ShareFile ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
-* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
-* Citrix ShareFile çoklu oturum açma etkin aboneliği
+* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/)bir aylık deneme sürümü edinebilirsiniz.
+* Citrix ShareFile çoklu oturum açma etkin aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -115,7 +115,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -126,7 +126,7 @@ Bu bölümde, Citrix ShareFile erişimi vererek Azure çoklu oturum açma özell
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ## <a name="configure-citrix-sharefile-sso"></a>Citrix ShareFile SSO 'yu yapılandırma
@@ -141,7 +141,7 @@ Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır l
 
 3. Citrix ShareFile öğesini el ile ayarlamak istiyorsanız, farklı bir Web tarayıcısı penceresinde Citrix ShareFile şirket sitenizde yönetici olarak oturum açın.
 
-1. **Panoda**, **Ayarlar** ' a tıklayın ve **yönetici ayarları** ' nı seçin.
+1. **Panoda**, **Ayarlar** ' a tıklayın ve **yönetici ayarları**' nı seçin.
 
     ![Yönetim](./media/sharefile-tutorial/settings.png)
 
@@ -165,7 +165,9 @@ Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır l
     
     f. **Logout URL** metin kutusuna, Azure Portal kopyaladığınız **Logout URL 'si** değerini yapıştırın.
 
-5. Citrix ShareFile yönetim portalında **Kaydet** ' e tıklayın.
+    örneğin: **Isteğe bağlı ayarlarda**, **Kullanıcı adı ve parola** olarak **SP tarafından başlatılan kimlik doğrulama bağlamı** ' nı ve **tam**' ı seçin.
+
+5. **Kaydet**’e tıklayın.
 
 ## <a name="create-citrix-sharefile-test-user"></a>Citrix ShareFile test kullanıcısı oluştur
 

@@ -5,19 +5,19 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: mijos, rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 11/20/2020
-ms.openlocfilehash: 0057a4671dbc63bf53bafa8d2d742d4edcda1e5e
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.date: 01/20/2021
+ms.openlocfilehash: d31fbd813f0c5d63ee9eddbff5b299209618626b
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741057"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629683"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Azure Logic Apps içindeki tümleştirme hizmeti ortamları (sesleri) için bekleyen verileri şifrelemek üzere müşteri tarafından yönetilen anahtarlar ayarlayın
 
 Azure Logic Apps, [bekleyen verileri](../storage/common/storage-service-encryption.md)depolamak ve otomatik olarak şifrelemek Için Azure Storage 'ı kullanır. Bu şifreleme, verilerinizi korur ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur. Azure depolama, verilerinizi şifrelemek için varsayılan olarak Microsoft tarafından yönetilen anahtarları kullanır. Azure depolama şifrelemesi 'nin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [bekleyen veriler Için Azure depolama şifrelemesi](../storage/common/storage-service-encryption.md) ve [bekleyen Azure veri şifreleme](../security/fundamentals/encryption-atrest.md).
 
-Logic Apps 'i barındırmak için bir [tümleştirme hizmeti ortamı (ıSE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) oluşturduğunuzda ve Azure Storage tarafından kullanılan şifreleme anahtarları üzerinde daha fazla denetim istiyorsanız, [Azure Key Vault](../key-vault/general/overview.md)kullanarak kendi anahtarınızı ayarlayabilir, kullanabilir ve yönetebilirsiniz. Bu özellik "Kendi Anahtarını Getir" (BYOK) olarak da bilinir ve anahtarınız "müşteri tarafından yönetilen anahtar" olarak adlandırılır.
+Logic Apps 'i barındırmak için bir [tümleştirme hizmeti ortamı (ıSE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) oluşturduğunuzda ve Azure Storage tarafından kullanılan şifreleme anahtarları üzerinde daha fazla denetim istiyorsanız, [Azure Key Vault](../key-vault/general/overview.md)kullanarak kendi anahtarınızı ayarlayabilir, kullanabilir ve yönetebilirsiniz. Bu özellik "Kendi Anahtarını Getir" (BYOK) olarak bilinir ve anahtarınız "müşteri tarafından yönetilen anahtar" olarak adlandırılır. Bu özellik sayesinde Azure Storage, anahtarınız için [platform tarafından yönetilen anahtarlar kullanılarak otomatik olarak çift şifrelemeyi veya *altyapı şifrelemesini*](../security/fundamentals/double-encryption.md) otomatik olarak sunar. Daha fazla bilgi edinmek için bkz. [altyapı şifrelemesi ile verileri](../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)daha fazla şifreleme.
 
 Bu konuda, Logic Apps REST API kullanarak ıSE oluştururken kullanmak üzere kendi şifreleme anahtarınızı ayarlama ve belirtme işlemlerinin nasıl yapılacağı gösterilmektedir. Logic Apps REST API aracılığıyla bir ıSE oluşturmanın genel adımları için, bkz. [Logic Apps REST API kullanarak bir tümleştirme hizmeti ortamı (ISE) oluşturma](../logic-apps/create-integration-service-environment-rest-api.md).
 
@@ -51,7 +51,7 @@ Bu konuda, Logic Apps REST API kullanarak ıSE oluştururken kullanmak üzere ke
   |----------|-------|
   | **Anahtar türü** | RSA |
   | **RSA anahtar boyutu** | 2048 |
-  | **Etkin** | Evet |
+  | **Etkin** | Yes |
   |||
 
   ![Müşteri tarafından yönetilen şifreleme anahtarınızı oluşturma](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)
@@ -240,7 +240,7 @@ Bu görev için Azure PowerShell [set-AzKeyVaultAccessPolicy](/powershell/module
 
       !["Anahtar yönetimi" > "anahtar izinleri" ni seçin](./media/customer-managed-keys-integration-service-environment/select-key-permissions.png)
 
-   1. **Asıl seçin** Için **Seçili hiçbiri**' ni seçin. **Asıl** bölmesi açıldıktan sonra arama kutusunda, Ise 'nizi bulun ve seçin. İşiniz bittiğinde Ekle ' **yi seçin**  >  **Add**.
+   1. **Asıl seçin** Için **Seçili hiçbiri**' ni seçin. **Asıl** bölmesi açıldıktan sonra arama kutusunda, Ise 'nizi bulun ve seçin. İşiniz bittiğinde Ekle ' **yi seçin**  >  .
 
       ![Asıl öğe olarak kullanılacak ıSE 'yi seçin](./media/customer-managed-keys-integration-service-environment/select-service-principal-ise.png)
 

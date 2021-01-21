@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: fe2d444bbdc09ed5ab0205d4139591e3288e3358
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 3090b7b889d914fc0cdb598b8bf29a73c81f50cb
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734574"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632012"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Azure VM başlatması Windows Update 'te takıldı
 
@@ -37,6 +37,8 @@ Bu makale, sanal makineniz (VM) başlangıç sırasında Windows Update aşamada
 
 
 ## <a name="solution"></a>Çözüm
+> [!TIP]
+> VM 'nin son yedeğine sahipseniz önyükleme sorununu çözmek için [VM 'yi yedekten geri yüklemeyi](../../backup/backup-azure-arm-restore-vms.md) deneyebilirsiniz.
 
 Yüklenen veya toplanan güncelleştirmelerin sayısına bağlı olarak güncelleştirme işlemi biraz zaman alabilir. Bu durumda VM 'yi 8 saat boyunca bırakın. VM bu süre sonunda hala bu durumundaysa, VM 'yi Azure portal yeniden başlatın ve normal bir şekilde başlayıp başlamadığından emin olmanız gerekir. Bu adım işe yaramazsa, aşağıdaki çözümü deneyin.
 

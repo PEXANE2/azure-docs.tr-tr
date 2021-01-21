@@ -14,20 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: 4d3e3615ede7406a3b581171ae759ec0ec53f13e
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 05848eb2761284669e659b3875e96acdfa71f90f
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655379"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632191"
 ---
-# <a name="connect-office-365-logs-to-azure-sentinel"></a>Office 365 günlüklerini Azure Sentinel 'e bağlama
+# <a name="connect-office-365-logs-to-azure-sentinel"></a>Office 365 günlüklerini Azure Sentinel'e bağlama
 
 [Office 365](/office/) log Connector, **Exchange** ve **SharePoint** 'te ( **OneDrive** dahil) ve artık **ekiplerde** bulunan devam eden Kullanıcı ve yönetici etkinliklerinde Azure Sentinel bilgilerini sunar. Bu bilgiler, dosya indirmeleri, gönderilen erişim istekleri, Grup olayları, posta kutusu işlemleri, takımlar olayları (sohbet, takım, üye ve kanal olayları gibi) gibi eylemlerin ayrıntılarını ve eylemleri gerçekleştiren kullanıcının ayrıntılarını içerir. Office 365 günlüklerini Azure Sentinel 'e bağlamak, bu verileri çalışma kitaplarınızda görüntülemenize ve çözümlemenize, özel uyarılar oluşturmak için sorgulamanıza ve araştırma işleminizi iyileştirebilmenizi sağlayarak Office 365 güvenliğine daha fazla öngörü sağlamanıza olanak sağlar.
-
-> [!IMPORTANT]
-> Office 365 günlük bağlayıcısının **Microsoft ekipleri günlükleri için olan uzantısı** Şu anda genel önizlemededir.
-> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 

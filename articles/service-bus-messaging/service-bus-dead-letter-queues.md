@@ -4,12 +4,12 @@ description: Azure Service Bus içindeki atılacak ileti kuyruklarını açıkla
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: 4dbd1216d3ff81e785f16ebed6ceabfa5d5897db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad62f946584071e7ce6fd55f48b5f7ee8db44a2f
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91301032"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630107"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Service Bus atılacak ileti sıralarına genel bakış
 
@@ -30,7 +30,7 @@ Konu düzeyinde teslim edilemeyen ileti sırasındaki ileti sayısını almak m�
 
 ![DLQ ileti sayısı](./media/service-bus-dead-letter-queues/dead-letter-queue-message-count.png)
 
-Ayrıca, Azure CLı komutunu kullanarak DLQ iletilerinin sayısını alabilirsiniz: [`az servicebus topic subscription show`](/cli/azure/servicebus/topic/subscription?view=azure-cli-latest#az-servicebus-topic-subscription-show) . 
+Ayrıca, Azure CLı komutunu kullanarak DLQ iletilerinin sayısını alabilirsiniz: [`az servicebus topic subscription show`](/cli/azure/servicebus/topic/subscription#az-servicebus-topic-subscription-show) . 
 
 ## <a name="moving-messages-to-the-dlq"></a>İletileri DLQ 'a taşıma
 
@@ -56,7 +56,7 @@ Bu davranış devre dışı bırakılamaz, ancak [Maxdeliverycount](/dotnet/api/
 
 ## <a name="exceeding-timetolive"></a>TimeToLive aşma
 
-[Queuedescription. EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription) veya [Subscriptiondescription. EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) özelliği **true** olarak ayarlandığında (varsayılan değer **false**ise), süresi dolan tüm iletiler DLQ 'a taşınır ve `TTLExpiredException` neden kodu belirlenir.
+[Queuedescription. EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription) veya [Subscriptiondescription. EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) özelliği **true** olarak ayarlandığında (varsayılan değer **false** ise), süresi dolan tüm iletiler DLQ 'a taşınır ve `TTLExpiredException` neden kodu belirlenir.
 
 Süre dolan iletiler yalnızca, ana kuyruktan veya abonelikte en az bir adet etkin alıcı olduğunda DLCı 'ye taşınır ve ayrıca [Ertelenen iletiler](./message-deferral.md) temizlenmez ve zaman aşımına erdikten sonra atılacak ileti kuyruğuna taşınamaz. Bu yetki kaldırıldığında davranışlar tasarıma göre yapılır.
 
@@ -80,7 +80,7 @@ Bu kullanılmayan iletileri almak için [FormatTransferDeadletterPath](/dotnet/a
 
 ## <a name="example"></a>Örnek
 
-Aşağıdaki kod parçacığı bir ileti alıcısı oluşturur. Ana sıranın Alım döngüsünde, kod [Receive (TimeSpan. Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver)ile iletiyi alır. Bu, aracıda, aracı açık bir şekilde kullanılabilir olan herhangi bir iletiyi anında döndürmesini veya sonuç olmadan dönmesini ister. Kod bir ileti alırsa, onu artıran  `DeliveryCount` . Sistem iletiyi DLCı 'ye taşıdıktan sonra, [ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) **null**döndürdüğünden, ana sıra boştur ve döngü çıkar.
+Aşağıdaki kod parçacığı bir ileti alıcısı oluşturur. Ana sıranın Alım döngüsünde, kod [Receive (TimeSpan. Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver)ile iletiyi alır. Bu, aracıda, aracı açık bir şekilde kullanılabilir olan herhangi bir iletiyi anında döndürmesini veya sonuç olmadan dönmesini ister. Kod bir ileti alırsa, onu artıran  `DeliveryCount` . Sistem iletiyi DLCı 'ye taşıdıktan sonra, [ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) **null** döndürdüğünden, ana sıra boştur ve döngü çıkar.
 
 ```csharp
 var receiver = await receiverFactory.CreateMessageReceiverAsync(queueName, ReceiveMode.PeekLock);
@@ -107,7 +107,7 @@ Aşağıdaki sözdizimini kullanarak atılacak ileti kuyruğuna erişebilirsiniz
 <topic path>/Subscriptions/<subscription path>/$deadletterqueue
 ```
 
-.NET SDK kullanıyorsanız, SubscriptionClient. FormatDeadLetterPath () yöntemini kullanarak atılacak ileti sırasının yolunu alabilirsiniz. Bu yöntem, **/$DeadLetterQueue**konu adını/abonelik adını ve soneklerini alır.
+.NET SDK kullanıyorsanız, SubscriptionClient. FormatDeadLetterPath () yöntemini kullanarak atılacak ileti sırasının yolunu alabilirsiniz. Bu yöntem, **/$DeadLetterQueue** konu adını/abonelik adını ve soneklerini alır.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

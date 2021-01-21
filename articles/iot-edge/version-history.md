@@ -8,12 +8,12 @@ ms.date: 11/08/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cdb84f817f63e6401d17f18319e161f4c3477293
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e7b85f3e01a1c9a9c354599cfed8359b4a56d549
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024662"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631463"
 ---
 # <a name="azure-iot-edge-versions-and-release-notes"></a>Azure IoT Edge sürümleri ve sürüm notları
 
@@ -25,7 +25,7 @@ Bu sitedeki IoT Edge belge, ürünün iki farklı sürümünde sunulmaktadır. b
 
 * **IoT Edge 1.0.10** , genel kullanıma sunulan en son sürüm aracılığıyla tüm özellikleri ve özellikleri içerir: [1.0.10](https://github.com/Azure/azure-iotedge/releases/tag/1.0.10).
 * **IoT Edge 1,2 (Önizleme)** en son önizleme sürümündeki özellikler ve yetenekler için ek içerik içerir: [1,2-RC1](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc1)
-  * IoT Edge 1,2 Önizleme sürümündedir, sürüm adayı sürümlerini yüklemeniz gerekir. Daha fazla bilgi için bkz. [çevrimdışı veya belirli sürümü yükleme](how-to-install-iot-edge.md?tabs=linux#offline-or-specific-version-installation).
+  * IoT Edge 1,2 Önizleme sürümündedir, sürüm adayı sürümlerini yüklemeniz gerekir. Daha fazla bilgi için bkz. [çevrimdışı veya belirli sürümü yükleme](how-to-install-iot-edge.md?tabs=linux#offline-or-specific-version-installation-optional).
 
 ## <a name="version-history"></a>Sürüm geçmişi
 
@@ -34,7 +34,7 @@ Bu tabloda, IoT Edge paket sürümleri için son sürüm geçmişi ve her bir s�
 | Sürüm notları ve varlıkları | Tür | Tarih | Önemli Noktalar |
 | ------------------------ | ---- | ---- | ---------- |
 | [1,2-RC1](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc1) | Önizleme | Kasım 2020 | [Ağ geçitlerinin arkasındaki Cihazları IoT Edge](how-to-connect-downstream-iot-edge-device.md?view=iotedge-2020-11&preserve-view=true)<br>[IoT Edge MQTT Aracısı](how-to-publish-subscribe.md?view=iotedge-2020-11&preserve-view=true) |
-| [1.0.10](https://github.com/Azure/azure-iotedge/releases/tag/1.0.10) | Dengeli | Ekim 2020 | [Uploadsupportdemeti doğrudan yöntemi](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics)<br>[Çalışma zamanı ölçümlerini karşıya yükle](how-to-access-built-in-metrics.md)<br>[Yönlendirme önceliği ve yaşam süresi](module-composition.md#priority-and-time-to-live)<br>[Modül başlangıç sırası](module-composition.md#configure-modules)<br>[X. 509.440 el ile sağlama](how-to-manual-provision-x509.md) |
+| [1.0.10](https://github.com/Azure/azure-iotedge/releases/tag/1.0.10) | Dengeli | Ekim 2020 | [Uploadsupportdemeti doğrudan yöntemi](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics)<br>[Çalışma zamanı ölçümlerini karşıya yükle](how-to-access-built-in-metrics.md)<br>[Yönlendirme önceliği ve yaşam süresi](module-composition.md#priority-and-time-to-live)<br>[Modül başlangıç sırası](module-composition.md#configure-modules)<br>[X. 509.440 el ile sağlama](how-to-register-device.md) |
 | [1.0.9](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9) | Dengeli | Mart 2020 | [DPS ile X. 509.440 otomatik sağlama](how-to-auto-provision-x509-certs.md)<br>[RestartModule Direct yöntemi](how-to-edgeagent-direct-method.md#restart-module)<br>[support-demeti komutu](troubleshoot.md#gather-debug-information-with-support-bundle-command) |
 
 ## <a name="next-steps"></a>Sonraki adımlar

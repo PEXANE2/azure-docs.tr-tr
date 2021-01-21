@@ -4,22 +4,22 @@ description: Azure dosya paylaşımları için sağlanan ve kullandıkça öde f
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/1/2020
+ms.date: 01/20/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 880ec90ce1cf0efffce0cfd6800bdbaed23f8dd0
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 19ecbea70d9cb6b8cc31c72ed3c1294cd137ce93
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831474"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632487"
 ---
 # <a name="understanding-azure-files-billing"></a>Azure dosyalarının faturalandırmasını anlama
 Azure dosyaları iki ayrı faturalandırma modeli sağlar: sağlanan ve kullandıkça öde. Sağlanan model yalnızca, **FileStorage** depolama hesabı türü içinde dağıtılan dosya paylaşımları olan Premium dosya paylaşımları için kullanılabilir. Kullandıkça Öde modeli, yalnızca **genel amaçlı sürüm 2 (GPv2)** depolama hesabı türünde dağıtılan dosya paylaşımları olan standart dosya paylaşımları için kullanılabilir. Bu makalede, her iki modelin de aylık Azure dosyaları faturanızı anlamanıza yardımcı olmak için nasıl çalıştığı açıklanır.
 
 Azure dosyaları için geçerli fiyatlandırma, [Azure dosyaları fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/storage/files/)bulunabilir.
 
-## <a name="provisioned-billing"></a>Sağlanan faturalandırma
+## <a name="provisioned-model"></a>Sağlanan model
 Azure dosyaları Premium dosya paylaşımları için sağlanan modeli kullanır. Sağlanan bir iş modelinde, Azure dosyaları hizmetini, kullandığınız işe göre faturalandırılması yerine, depolama gereksinimlerinizin ne olduğunu önceden belirlersiniz. Bu, belirli bir depolama alanı ile bir Azure dosya paylaşımının sağlanması halinde Şirket içi satın alma ile benzerdir, ancak alan kullanmaya başladığınızda, şirket içi fiziksel medya maliyetlerini ödemekten bağımsız olarak bu depolama alanı için ödeme yapmayı başlamadınız. Şirket içi fiziksel medya satın alma işleminden farklı olarak, sağlanan dosya paylaşımları depolama ve GÇ performansı özelliklerine göre dinamik olarak ölçeklendirilebilir veya azaltılabilir.
 
 Bir Premium dosya paylaşma sağladığınızda, iş yükünüzün kaç tane GiBs gerektirdiğini belirtirsiniz. Sağladığınız her GiB, sabit bir oran üzerinde ek ıOPS ve aktarım hızı sahibine. Garanti ettiğiniz taban çizgisi ıOPS 'ye ek olarak, her bir Premium dosya paylaşımının en iyi çaba temelinde elde edilmesi desteklenir. IOPS ve aktarım hızı formülleri aşağıdaki gibidir:
@@ -63,7 +63,7 @@ Paylaşılan kredilerin üç durumu vardır:
 
 Yeni dosya paylaşımları, veri bloğu demetini içinde tam kredi sayısı ile başlar. Sunucu tarafından azaltma nedeniyle, paylaşılan ıOPS, temel ıOPS 'nin altında olursa patlama kredileri tahakkuk ettirilmeyecektir.
 
-## <a name="pay-as-you-go-billing"></a>Kullandıkça Öde faturalandırması
+## <a name="pay-as-you-go-model"></a>Kullandıkça Öde modeli
 Azure dosyaları, standart dosya paylaşımları için Kullandıkça Öde iş modeli kullanır. Kullandıkça Öde iş modelinde, ödeme yaptığınız miktar, sağlanan tutara göre değil, gerçekten ne kadar kullanacağınızı belirler. Yüksek düzeyde, diskte depolanan veri miktarı için bir maliyet ödeyin ve bu verilerin kullanımına bağlı olarak ek bir işlem kümesi ödersiniz. Bir Kullandıkça Öde modeli, gelecekteki büyüme veya performans gereksinimlerine göre hesaba ulaşmalı veya iş yükünüz veri parmak izi zaman içinde farklılık gösterdiği takdirde sağlamayı kaldırmak zorunda olmadığınız için uygun maliyetli olabilir. Diğer yandan, Kullandıkça Öde modeli, bir bütçeleme işleminin parçası olarak planlanabilir, çünkü Kullandıkça Öde faturalandırma modeli son kullanıcı tüketimine göre yönlendiriliyor.
 
 ### <a name="differences-in-standard-tiers"></a>Standart katmanlardaki farklılıklar

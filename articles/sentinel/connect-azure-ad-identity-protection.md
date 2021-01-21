@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 06/24/2020
 ms.author: yelevin
-ms.openlocfilehash: 69ab76bf213653ea10db8dfd181b615a7e0f47b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f420e80f10072c440f5401c042d6370a061b1a7f
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85564467"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632250"
 ---
 # <a name="connect-data-from-azure-active-directory-azure-ad-identity-protection"></a>Azure Active Directory (Azure AD) kimlik korumasından verileri bağlama
 
@@ -25,7 +25,6 @@ Panoları görüntülemek, özel uyarılar oluşturmak ve araştırmayı gelişt
 - Bir [Azure AD Premium P2 aboneliğine](https://azure.microsoft.com/pricing/details/active-directory/)sahip olmanız gerekir.
 - Genel yönetici veya Güvenlik Yöneticisi izinlerine sahip bir kullanıcıya sahip olmanız gerekir.
 
-
 ## <a name="connect-to-azure-ad-identity-protection"></a>Azure AD Kimlik Koruması Bağlan
 
 Bir Azure AD Premium P2 aboneliğiniz varsa Azure AD Kimlik Koruması dahil edilir. Herhangi bir [ilke etkinse](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md) ve uyarılar üretiyorsa, uyarı verileri kolayca Azure Sentinel 'e akışla eklenebilir.
@@ -34,7 +33,7 @@ Bir Azure AD Premium P2 aboneliğiniz varsa Azure AD Kimlik Koruması dahil edil
 
 1. Azure Sentinel 'e Azure AD Kimlik Koruması olayları akışa başlamak için **Bağlan** ' a tıklayın.
 
-1. Azure AD Kimlik Koruması uyarıları için Log Analytics ilgili şemayı kullanmak için, **Securityalert**aratın.
+1. Azure AD Kimlik Koruması uyarıları için Log Analytics ilgili şemayı kullanmak için, **Securityalert** aratın.
 
 Bağlayıcıyı test etmek isterseniz, Azure Sentinel 'e akışa eklenecek örnek uyarılar oluşturmak için [algılamaları benzeleyebilirsiniz](../active-directory/identity-protection/howto-identity-protection-simulate-risk.md) .
 
