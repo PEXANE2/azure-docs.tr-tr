@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/04/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 1ce594d9e3ffddf781c61717ae4534f0c7bd40f8
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: beb658474e49f9b47900d8481dab0424dae8c5be
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681899"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661400"
 ---
 # <a name="windows-stop-error---0x0000007e-system-thread-exception-not-handled"></a>Windows Dur hatası-0x0000007E sistem iş parçacığı özel durumu işlenmedi
 
@@ -34,6 +34,10 @@ VM çıkışının ekran görüntüsünü görüntülemek için [önyükleme tan
 Nedeni, bir bellek dökümü dosyası çözümlenene kadar belirlenemez. Bellek dökümü dosyasını toplamaya devam edin.
 
 ## <a name="solution"></a>Çözüm
+
+> [!TIP]
+> VM 'nin son yedeğine sahipseniz önyükleme sorununu çözmek için [VM 'yi yedekten geri yüklemeyi](../../backup/backup-azure-arm-restore-vms.md) deneyebilirsiniz.
+
 
 Bu sorunu çözmek için öncelikle kilitlenme için bellek dökümü dosyasını toplamanız ve sonra dosyayı Microsoft destek 'e göndermeniz gerekir. Döküm dosyasını toplamak için sonraki iki bölüm içindeki yönergeleri izleyin.
 

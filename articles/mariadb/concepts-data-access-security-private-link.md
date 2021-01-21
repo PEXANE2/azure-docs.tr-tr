@@ -3,15 +3,15 @@ title: Özel bağlantı-MariaDB için Azure veritabanı
 description: Özel bağlantının, MariaDB için Azure veritabanı için nasıl çalıştığını öğrenin.
 author: mksuni
 ms.author: sumuth
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: ec43fa995fc9772964db399baa0b6f8c2a7db1db
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 12f52cd497d606fda6bbea9b54f467522373eeb7
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241506"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98665149"
 ---
 # <a name="private-link-for-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı için özel bağlantı
 
@@ -41,7 +41,7 @@ Bu kurulumun sonunda, Azure VM yalnızca Batı ABD bölgesindeki MariaDB için A
 
 Özel bağlantı ile artık özel uç noktaya erişimi kısıtlamak için NSG 'ler gibi ağ erişim denetimlerini ayarlayabilirsiniz. Tek tek Azure PaaS kaynakları, belirli özel uç noktalara eşlenir. Kötü amaçlı bir Insider yalnızca eşlenmiş PaaS kaynağına erişebilir (örneğin, MariaDB için Azure veritabanı) ve başka bir kaynak olamaz.
 
-## <a name="on-premises-connectivity-over-private-peering"></a>Özel eşleme üzerinden şirket içi bağlantı
+## <a name="on-premises-connectivity-over-private-peering"></a>Özel eşleme üzerinde şirket içi bağlantısı
 
 Şirket içi makinelerden ortak uç noktaya bağlandığınızda, IP adresinizin sunucu düzeyinde bir güvenlik duvarı kuralı kullanılarak IP tabanlı güvenlik duvarına eklenmesi gerekir. Bu model geliştirme veya test iş yükleri için bireysel makinelere erişim sağlamak için iyi bir şekilde çalıştığından, bir üretim ortamında yönetilmesi zordur.
 
@@ -114,7 +114,7 @@ Farklı bir bölgede veya abonelikte bulunan bir Azure VM 'den MariaDB için Azu
 
 ## <a name="deny-public-access-for-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı genel erişimini reddetme
 
-MariaDB için Azure veritabanı 'na erişmek üzere yalnızca özel uç noktalara tamamen ulaşmak istiyorsanız, veritabanı sunucusunda **ortak ağ erişimi reddetme** yapılandırmasını ayarlayarak tüm genel uç noktaları ( [güvenlik duvarı kuralları](concepts-firewall-rules.md) ve [VNET hizmet uç noktaları](concepts-data-access-security-vnet.md)) ayarını devre dışı bırakabilirsiniz. 
+MariaDB için Azure veritabanı 'na erişmek üzere yalnızca özel uç noktalara tamamen ulaşmak istiyorsanız, veritabanı sunucusunda **ortak ağ erişimi reddetme** yapılandırmasını ayarlayarak tüm genel uç noktaları ([güvenlik duvarı kuralları](concepts-firewall-rules.md) ve [VNET hizmet uç noktaları](concepts-data-access-security-vnet.md)) ayarını devre dışı bırakabilirsiniz. 
 
 Bu ayar *Evet* olarak ayarlandığında, MariaDB Için Azure veritabanı ile yalnızca özel uç noktalar aracılığıyla bağlantılara izin verilir. Bu ayar *Hayır* olarak ayarlandığında, istemcileri, güvenlik duvarınız veya VNET hizmeti uç noktası ayarlarınıza göre MariaDB Için Azure veritabanınıza bağlanabilir. Ayrıca, özel ağ erişiminin değeri ayarlandıktan sonra müşteriler var olan ' güvenlik duvarı kurallarını ' ve ' VNet hizmeti uç noktası kuralları ' ekleyemez ve/veya güncelleştiremez.
 

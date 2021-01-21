@@ -3,23 +3,23 @@ title: Yavaş sorgu günlüklerine erişme-Azure CLı-MariaDB için Azure verita
 description: Bu makalede, Azure CLı komut satırı yardımcı programı kullanılarak MariaDB için Azure veritabanı 'ndaki yavaş günlüklere nasıl erişebileceğiniz açıklanır.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 4/13/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cea1571a48afe00350dde247c3c10e222a446247
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 9c8f69f00ed4314fbe8b3fd1958b52c82ce55d99
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539881"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662398"
 ---
 # <a name="configure-and-access-azure-database-for-maria-db-slow-query-logs-by-using-azure-cli"></a>Azure CLı kullanarak Maria DB yavaş sorgu günlükleri için Azure veritabanı 'nı yapılandırma ve erişme
 
 Azure komut satırı yardımcı programı olan Azure CLı 'yı kullanarak MariaDB yavaş sorgu günlükleri için Azure veritabanı 'nı indirebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 - [MariaDB sunucusu için Azure veritabanı](quickstart-create-mariadb-server-database-using-azure-cli.md)
 - Tarayıcıda [Azure CLI](/cli/azure/install-azure-cli) veya Azure Cloud Shell
@@ -27,7 +27,7 @@ Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 ## <a name="configure-logging"></a>Günlüğe kaydetmeyi yapılandırma
 Aşağıdaki adımları gerçekleştirerek, sunucuyu MySQL yavaş sorgu günlüğüne erişecek şekilde yapılandırabilirsiniz:
 1. **Yavaş \_ sorgu \_ günlüğü** parametresini açık olarak ayarlayarak yavaş sorgu günlüğünü açın.
-2. **Günlük \_ çıkışını** kullanarak günlüklerin çıktısının kaydedileceği yeri seçin. Günlükleri hem yerel depolama hem de Azure Izleyici tanılama günlüklerine göndermek için **Dosya** ' yı seçin. Günlükleri yalnızca Azure Izleyici günlüklerine göndermek için **hiçbiri** ' ni seçin.
+2. **Günlük \_ çıkışını** kullanarak günlüklerin çıktısının kaydedileceği yeri seçin. Günlükleri hem yerel depolama hem de Azure Izleyici tanılama günlüklerine göndermek için **Dosya**' yı seçin. Günlükleri yalnızca Azure Izleyici günlüklerine göndermek için **hiçbiri** ' ni seçin.
 3. **Uzun \_ sorgu \_ süresi** ve **günlük \_ yavaş \_ Yönetim \_ deyimleri** gibi diğer parametreleri ayarlayın.
 
 Bu parametrelerin değerini Azure CLı aracılığıyla ayarlamayı öğrenmek için bkz. [sunucu parametrelerini yapılandırma](howto-configure-server-parameters-cli.md).

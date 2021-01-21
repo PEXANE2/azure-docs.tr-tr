@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 33b4c59e14301e496d0eddafa7bdfdf201b7aa29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d6e738152e542617046834980d3e7c58e497093
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87005914"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664690"
 ---
 # <a name="windows-stop-error---status-no-memory"></a>Windows durma hatası - Durum Bellek Yok
 
@@ -27,7 +27,7 @@ Bu makalede, Windows 'un başlayaamadığı sorunları gidermeye yönelik adıml
 
 ## <a name="symptom"></a>Belirti
 
-Sanal makinenin (VM) ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](./boot-diagnostics.md) kullandığınızda, ekran görüntüsünde hata kodu görüntülenir: `0xC0000017` . Çalıştırmakta olduğunuz Windows sürümüne bağlı olarak, bu kodun **Windows Önyükleme Yöneticisi** veya **Kurtarma ekranında**görüntülendiğini görebilirsiniz.
+Sanal makinenin (VM) ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](./boot-diagnostics.md) kullandığınızda, ekran görüntüsünde hata kodu görüntülenir: `0xC0000017` . Çalıştırmakta olduğunuz Windows sürümüne bağlı olarak, bu kodun **Windows Önyükleme Yöneticisi** veya **Kurtarma ekranında** görüntülendiğini görebilirsiniz.
 
    **Windows Önyükleme Yöneticisi**
 
@@ -44,6 +44,9 @@ Sanal makinenin (VM) ekran görüntüsünü görüntülemek için [önyükleme t
 ## <a name="solution"></a>Çözüm
 
 ### <a name="process-overview"></a>İşleme genel bakış:
+
+> [!TIP]
+> VM 'nin son yedeğine sahipseniz önyükleme sorununu çözmek için [VM 'yi yedekten geri yüklemeyi](../../backup/backup-azure-arm-restore-vms.md) deneyebilirsiniz.
 
 1. Bir onarım VM 'si oluşturma ve erişme
 1. Diskte yer açın
@@ -64,9 +67,9 @@ Sanal makinenin (VM) ekran görüntüsünü görüntülemek için [önyükleme t
 
 2. nesil bir VM kullanıyorsanız, eklenen diskin EFı bölümünün kendisine atanmış bir harfi olmayabilir. Bu sorun giderme kılavuzuna geçmeden önce bölüme bir harf atamak için aşağıdaki adımları izlemeniz gerekir.
 
-1. Windows Search 'te `diskmgmt` **Disk Yönetimi konsolunu**girip açın.
+1. Windows Search 'te `diskmgmt` **Disk Yönetimi konsolunu** girip açın.
 1. Onarım sanal makinesine bağlı bozuk diski tanımla. Genellikle, bu disk konsolunda son olarak listelenir ve en yüksek sayısal değere sahiptir.
-1. Bu diskte, kendisine atanmış bir harf değerine sahip olmayan **EFI sistem bölümünü**tutan bir bölüm (örneğin, *F:*) varsa unutmayın. Tüm bölümler atanırsa diskte boş alan kazanmak için ilerlemeye geçebilirsiniz. Aksi takdirde, bu diske bir harf atamaya devam edin.
+1. Bu diskte, kendisine atanmış bir harf değerine sahip olmayan **EFI sistem bölümünü** tutan bir bölüm (örneğin, *F:*) varsa unutmayın. Tüm bölümler atanırsa diskte boş alan kazanmak için ilerlemeye geçebilirsiniz. Aksi takdirde, bu diske bir harf atamaya devam edin.
 
    !["Disk 2" ve "EFı sistem bölümü" 100 olan atanmamış bölüm ile birlikte Disk Yönetimi konsolu.](./media/troubleshoot-windows-stop-error/3.png)
 
@@ -94,8 +97,8 @@ Sanal makinenin (VM) ekran görüntüsünü görüntülemek için [önyükleme t
 Artık bozuk disk onarım sanal makinesine bağlı olduğuna göre, o diskteki işletim sisteminin düzgün şekilde çalışması için yeterli alanı olduğunu doğrulamanız gerekir. 
 
 1. Eklenen diskin sürücüsüne sağ tıklayıp **Özellikler**' i seçerek diskin dolu olup olmadığını denetleyin.
-1. Diskte **300 MB 'tan az boş alan**varsa, [PowerShell kullanarak en fazla 1 TB 'a genişletin](../windows/expand-os-disk.md).
-1. Disk boyutu **1 TB**olduğunda disk temizleme işlemi gerçekleştirmeniz gerekir. [Disk Temizleme aracını](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) kullanarak boş alan açabilirsiniz.
+1. Diskte **300 MB 'tan az boş alan** varsa, [PowerShell kullanarak en fazla 1 TB 'a genişletin](../windows/expand-os-disk.md).
+1. Disk boyutu **1 TB** olduğunda disk temizleme işlemi gerçekleştirmeniz gerekir. [Disk Temizleme aracını](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) kullanarak boş alan açabilirsiniz.
 1. Yükseltilmiş bir komut istemi (yönetici olarak çalıştır) örneği açın ve sürücüde parçalama gerçekleştirin:
 
    ``
@@ -137,13 +140,13 @@ Herhangi bir adımı gerçekleştirmeden önce, iyi durumda bir diskte **\Window
    ![Kayıt defteri düzenleyicisinin Hive yükle menüsü.](./media/troubleshoot-windows-stop-error/4.png)
 
 1. Hive Yükle iletişim kutusunda **\Windows\system32\config\system** ' i seçin ve Aç ' a tıklayın.
-   1. Bir ad girmeniz istenir, bu, **brokensystem**girmelisiniz. Bu ad, sorun giderirken etkilenen kovanları ayırt etmenize yardımcı olur.
+   1. Bir ad girmeniz istenir, bu, **brokensystem** girmelisiniz. Bu ad, sorun giderirken etkilenen kovanları ayırt etmenize yardımcı olur.
    1. Eklediğiniz yeni BROKENSYSTEM anahtarını görmek için **HKEY_LOCAL_MACHINE** ' ı genişletin.
 1. Kayıt Defteri Düzenleyicisi 'ni kullanarak makinenin hangi ControlSet 'e önyükleme olduğunu belirleyin.
    1. **HKEY_LOCAL_MACHINE >> BROKENSYSTEM >> Seç**' e gidin.
    1. Listelenen anahtarlar ' da, geçerli öğesinin veri değerini aklınızda yapın. Örneğin, bu değer **1** veya **0x00000001 (1)** Ise, denetim kümesi ControlSet001 olur.
 1. Disk belleği oluşturma 'nın yapılandırıldığı Konumu kontrol edin.
-   1. HKEY_LOCAL_MACHINE\BROKENSYSTEM sırasında, **ControlSet001**gibi 4. adımda tanımladığınız CONTROLSET numarasıyla eşleşen dizini genişletin.
+   1. HKEY_LOCAL_MACHINE\BROKENSYSTEM sırasında, **ControlSet001** gibi 4. adımda tanımladığınız CONTROLSET numarasıyla eşleşen dizini genişletin.
    1. **Denetim >> oturum yöneticisi >> bellek yönetimi** ' ne gidin ve **existingpagefiles** anahtarının konumunu aklınızda edin.
    1. Bu anahtar, geçici sürücünün varsayılan Azure konumunda olmalıdır. Bu yoksa ve veri diski sürücüsü ya da işletim sistemi sürücüsü gibi başka bir konumdaki VHD 'de yer alıyorsa, silinmesi gerekecektir.
    1. Dosya Gezgini 'nde bu konuma gidin ve **pagefile.sys** dosyayı silin.
@@ -174,8 +177,8 @@ Bellek dökümü toplamayı ve seri konsolunu etkinleştirmek için aşağıdaki
       ``
    
    - Komutunda, `<LETTER OF THE EFI SYSTEM PARTITION>` EFI sistem bölümünün harfiyle değiştirin.
-   - **EFI sistem bölümü**olarak etiketlenmiş uygun sistem bölümünü belirlemek Için Disk Yönetimi konsolunu başlatmak faydalı olabilir.
-   - Tanımlayıcı, benzersiz bir GUID olabilir veya varsayılan **Bootmgr**olabilir.
+   - **EFI sistem bölümü** olarak etiketlenmiş uygun sistem bölümünü belirlemek Için Disk Yönetimi konsolunu başlatmak faydalı olabilir.
+   - Tanımlayıcı, benzersiz bir GUID olabilir veya varsayılan **Bootmgr** olabilir.
 
 1. Seri konsolunu etkinleştirmek için aşağıdaki komutları çalıştırın:
 

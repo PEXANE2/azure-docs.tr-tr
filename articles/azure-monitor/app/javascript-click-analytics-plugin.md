@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: lagayhar
-ms.openlocfilehash: 7af26be91ff129e4c968bcb131cc98290cd8d7b9
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: b2e9c267b0a3723c9ac7b3edd49e23b95741962f
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610089"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660462"
 ---
 # <a name="click-analytics-auto-collection-plugin-for-application-insights-javascript-sdk"></a>Application Insights JavaScript SDK 'Sı için analiz otomatik toplama eklentisi ' ne tıklayın
 
@@ -69,7 +69,7 @@ appInsights.loadAppInsights();
     2. , Verimliliği artırmak için, eklenti bu etiketi bir bayrak olarak kullanır. Bu, karşılaştığı zaman, DOM 'ın (Belge Nesne Modeli) yukarı doğru işlemesini durdurur.
     
     > [!CAUTION]
-    > Bir kez `parentDataTag` kullanıldığında, yalnızca içinde KULLANDıĞıNıZ HTML öğesi değil, uygulamanın tamamında kalıcı bir etkiye sahiptir.
+    > Bir kez `parentDataTag` kullanıldığında, SDK yalnızca KULLANDıĞıNıZ HTML öğesini değil, uygulamanın tamamında üst etiketleri aramaya başlar.
 4. `customDataPrefix` Örneğin, Kullanıcı tarafından belirtilen her zaman ile başlamalıdır `data-` `data-sample-` . HTML 'de `data-*` Genel öznitelikler, özel veri öznitelikleri olarak adlandırılan özniteliklerin bir sınıfını oluşturur ve bu, özel bIlgIlerIn HTML ile BETIKLERLE Dom gösterimi arasında değiştirilmesini sağlar. Eski tarayıcılar (Internet Explorer, Safari), ile başlamadıkça anlamadığı öznitelikleri bırakacaktır `data-` .
 
     `*`İçindeki, `data-*` [XML adları üretim kuralıyla](https://www.w3.org/TR/REC-xml/#NT-Name) aşağıdaki kısıtlamalara göre herhangi bir adla değiştirilebilir:
@@ -314,5 +314,5 @@ appInsights.loadAppInsights();
 
 - Analiz otomatik toplama eklentisi için [GitHub deposunu](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-clickanalytics-js) ve [NPM paketini](https://www.npmjs.com/package/@microsoft/applicationinsights-clickanalytics-js) inceleyin.
 - En üstteki tıklamaları analiz etmek ve kullanılabilir boyutlara göre dilimlemek için [kullanım deneyiminde olay analizini](usage-segmentation.md) kullanın.
-- [Log Analytics](../log-query/log-analytics-tutorial.md#write-a-query)' deki CustomEvents tablosundaki customdimensions özniteliğinde bulunan içerik alanının altında bulunan verileri bulun.
+- [Log Analytics](../log-query/log-analytics-tutorial.md#write-a-query)' deki CustomEvents tablosundaki customdimensions özniteliğinde bulunan içerik alanının altında bulunan verileri bulun. Ek rehberlik için bkz. [örnek uygulama](https://go.microsoft.com/fwlink/?linkid=2152871) .
 - Tıklama verilerinin özel görselleştirmelerini oluşturmak için bir [çalışma kitabı](../platform/workbooks-overview.md) oluşturun.

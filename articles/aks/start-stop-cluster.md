@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 09/24/2020
 author: palma21
-ms.openlocfilehash: bc756994cf0f6e12af1c1ad5a6c8db304b4253e3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 026da4237fe14726766b265e55930346293c71df
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968795"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662906"
 ---
 # <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster-preview"></a>Azure Kubernetes hizmeti (AKS) kümesini durdurma ve başlatma (Önizleme)
 
@@ -28,7 +28,6 @@ Bu makalede, mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümesine ih
 Küme Başlat/Durdur özelliğini kullanırken aşağıdaki kısıtlamalar geçerlidir:
 
 - Bu özellik yalnızca sanal makine ölçek kümeleri desteklenen kümeler için desteklenir.
-- Önizleme süresince, bu özellik özel kümeler için desteklenmez.
 - Durdurulan bir AKS kümesinin küme durumu 12 aya kadar korunur. Kümeniz 12 aydan uzun bir süre için durdurulmuşsa, küme durumu kurtarılamaz. Daha fazla bilgi için bkz. [aks destek ilkeleri](support-policies.md).
 - Önizleme süresince kümeyi durdurmayı denemeden önce küme otomatik Scaler (CA) öğesini durdurmanız gerekir.
 - Yalnızca durdurulmuş bir AKS kümesini başlatabilir ya da silebilirsiniz. Ölçek veya yükseltme gibi işlemleri gerçekleştirmek için önce kümenizi başlatın.
@@ -55,7 +54,7 @@ Kümeyi Başlat/Durdur özelliğini kullanmak için `StartStopPreview` aboneliğ
 az feature register --namespace "Microsoft.ContainerService" --name "StartStopPreview"
 ```
 
-Durumun *kayıtlı*gösterilmesi birkaç dakika sürer. [Az Feature List][az-feature-list] komutunu kullanarak kayıt durumunu doğrulayın:
+Durumun *kayıtlı* gösterilmesi birkaç dakika sürer. [Az Feature List][az-feature-list] komutunu kullanarak kayıt durumunu doğrulayın:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/StartStopPreview')].{Name:name,State:properties.state}"
@@ -69,7 +68,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ## <a name="stop-an-aks-cluster"></a>AKS kümesini durdurma
 
-`az aks stop`Çalıştıran BIR AKS kümesinin düğümlerini ve denetim düzlemi 'ni durdurmak için komutunu kullanabilirsiniz. Aşağıdaki örnek, *Myakscluster*adlı bir kümeyi durduruyor:
+`az aks stop`Çalıştıran BIR AKS kümesinin düğümlerini ve denetim düzlemi 'ni durdurmak için komutunu kullanabilirsiniz. Aşağıdaki örnek, *Myakscluster* adlı bir kümeyi durduruyor:
 
 ```azurecli-interactive
 az aks stop --name myAKSCluster --resource-group myResourceGroup
@@ -100,7 +99,7 @@ Gösteriyorsa, `provisioningState` `Stopping` kümenizin henüz tam olarak durdu
 ## <a name="start-an-aks-cluster"></a>AKS kümesi başlatma
 
 `az aks start`Durdurulmuş BIR AKS kümesinin düğümleri ve denetim düzlemi başlatmak için komutunu kullanabilirsiniz. Küme, önceki denetim düzlemi durumu ve aracı düğümleri sayısıyla yeniden başlatılır.  
-Aşağıdaki örnek, *Myakscluster*adlı bir küme başlatır:
+Aşağıdaki örnek, *Myakscluster* adlı bir küme başlatır:
 
 ```azurecli-interactive
 az aks start --name myAKSCluster --resource-group myResourceGroup

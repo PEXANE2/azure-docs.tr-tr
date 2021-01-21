@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 09/18/2020
 ms.author: duau
 ms.custom: references_regions
-ms.openlocfilehash: e3f9105037c049a53f1b7b99da96dd857070fcc7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50679e11697a4227af69b8568c5f3cd23fe26cbe
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987619"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662806"
 ---
 # <a name="expressroute-global-reach"></a>ExpressRoute Global Reach hakkında
 ExpressRoute, şirket içi ağlarınızı Microsoft Bulut bağlamak için özel ve dayanıklı bir yoldur. Azure ve Microsoft 365 gibi birçok Microsoft bulut hizmetine, özel veri merkezinizden veya şirket ağınızdan erişebilirsiniz. Örneğin, aynı şehirde bulunan bir ExpressRoute devresini içeren bir Expressvalley ve diğer şube ofisindeki bir ExpressRoute devresini içeren bir şube ofisiniz olabilir. Her iki şube ofisi ABD Batı ve UK Güney Azure kaynaklarıyla yüksek hızda bağlantı sağlar. Ancak, şube ofisleri birbirine bağlanamaz ve verileri birbiriyle doğrudan gönderemez. Diğer bir deyişle, 10.0.1.0/24, verileri 10.0.3.0/24 ve 10.0.4.0/24 ağına gönderebilir, ancak 10.0.2.0/24 ağ 'a vermez.
 
 ![Hızlı rota Global Reach ile bağlantılı olmayan devreleri gösteren diyagram.][1]
 
-**Expressroute Global Reach**ile, şirket içi ağlarınızla özel bir ağ oluşturmak Için ExpressRoute bağlantı devresine bir araya getirebilirsiniz. Yukarıdaki örnekte, ExpressRoute Global Reach eklenmesiyle, San Francisco Office (10.0.1.0/24), mevcut ExpressRoute devreleri ve Microsoft 'un küresel ağı aracılığıyla Londra Office (10.0.2.0/24) ile verileri doğrudan değiş tokuş edebilir. 
+**Expressroute Global Reach** ile, şirket içi ağlarınızla özel bir ağ oluşturmak Için ExpressRoute bağlantı devresine bir araya getirebilirsiniz. Yukarıdaki örnekte, ExpressRoute Global Reach eklenmesiyle, San Francisco Office (10.0.1.0/24), mevcut ExpressRoute devreleri ve Microsoft 'un küresel ağı aracılığıyla Londra Office (10.0.2.0/24) ile verileri doğrudan değiş tokuş edebilir. 
 
 ![Express Route Global Reach ile birbirine bağlı devreleri gösteren diyagram.][2]
 
@@ -33,7 +33,7 @@ ExpressRoute Global Reach, hizmet sağlayıcınızın WAN uygulamasını tamamla
 ExpressRoute Global Reach aşağıdaki konumlarda desteklenir. 
 
 > [!NOTE] 
-> [Farklı geopolitik bölgeler](expressroute-locations-providers.md#locations)arasında expressroute Global Reach etkinleştirmek için, Devrelerinizin **Premium SKU 'su**olması gerekir.
+> [Farklı geopolitik bölgeler](expressroute-locations-providers.md#locations)arasında expressroute Global Reach etkinleştirmek için, Devrelerinizin **Premium SKU 'su** olması gerekir.
 
 * Avustralya
 * Kanada
@@ -47,6 +47,7 @@ ExpressRoute Global Reach aşağıdaki konumlarda desteklenir.
 * Yeni Zelanda
 * Norveç
 * Singapur
+* Güney Afrika (yalnızca Johannesburg)
 * İsveç
 * İsviçre
 * Birleşik Krallık

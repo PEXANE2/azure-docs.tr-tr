@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 01/20/2021
 ms.author: justinha
-ms.openlocfilehash: c078117baf84d7dbfaaaa2b569abb8a5f5c67e6d
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 04c611b8a902d27f40893a05f301898c0111748f
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96619020"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660958"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services-using-azure-ad-powershell"></a>Azure AD PowerShell 'i kullanarak Azure AD 'den kapsamlı eşitlemeyi Azure Active Directory Domain Services yapılandırma
 
@@ -41,15 +41,14 @@ Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar ger
 
 Varsayılan olarak, bir Azure AD dizininden tüm kullanıcılar ve gruplar yönetilen bir etki alanıyla eşitlenir. Yönetilen etki alanına yalnızca birkaç kullanıcının erişmesi gerekiyorsa yalnızca bu kullanıcı hesaplarını eşitlemeniz yeterlidir. Bu kapsamlı eşitleme grup tabanlıdır. Grup tabanlı kapsamlı eşitleme yapılandırdığınızda, yalnızca belirttiğiniz gruplara ait olan kullanıcı hesapları yönetilen etki alanına eşitlenir. İç içe gruplar yalnızca seçtiğiniz belirli gruplar ile eşitlenmez.
 
-Yönetilen etki alanını oluştururken veya dağıtıldıktan sonra eşitleme kapsamını değiştirebilirsiniz. Ayrıca, mevcut bir yönetilen etki alanındaki eşitleme kapsamını yeniden oluşturmanız gerekmeden de değiştirebilirsiniz.
+Yönetilen etki alanını oluşturmadan önce veya sonra eşitleme kapsamını değiştirebilirsiniz. Eşitleme kapsamı, 2565bd9d-dad50-47d4-8B85-4c97f669dc36 uygulama tanımlayıcısına sahip bir hizmet sorumlusu tarafından tanımlanır. Kapsam kaybını engellemek için hizmet sorumlusunu silmeyin veya değiştirmeyin. Yanlışlıkla silinirse, eşitleme kapsamı kurtarılamaz. 
+
+Eşitleme kapsamını değiştirirseniz aşağıdaki uyarıları aklınızda bulundurun:
+
+- Tam eşitleme gerçekleşir.
+- Yönetilen etki alanında artık gerekli olmayan nesneler silinir. Yönetilen etki alanında yeni nesneler oluşturulur.
 
 Eşitleme işlemi hakkında daha fazla bilgi edinmek için bkz. [Azure AD Domain Services eşitlemeyi anlama][concepts-sync].
-
-> [!WARNING]
-> Eşitleme kapsamını değiştirmek, yönetilen etki alanının tüm verileri yeniden eşitlemesine neden olur. Aşağıdaki noktalara dikkat edilmelidir:
->
->  * Yönetilen bir etki alanı için eşitleme kapsamını değiştirdiğinizde, tam bir yeniden eşitleme gerçekleşir.
->  * Yönetilen etki alanında artık gerekli olmayan nesneler silinir. Yönetilen etki alanında yeni nesneler oluşturulur.
 
 ## <a name="powershell-script-for-scoped-synchronization"></a>Kapsamlı eşitleme için PowerShell betiği
 

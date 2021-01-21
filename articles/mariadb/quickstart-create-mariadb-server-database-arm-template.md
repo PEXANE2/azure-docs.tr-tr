@@ -3,16 +3,16 @@ title: 'Hızlı başlangıç: MariaDB için Azure DB-ARM şablonu oluşturma'
 description: Bu hızlı başlangıç makalesinde Azure Resource Manager şablonu kullanarak MariaDB sunucusu için Azure veritabanı oluşturmayı öğrenin.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/14/2020
-ms.openlocfilehash: de6df8349025c3e87e5b005196008053039fa49f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: b40aa30121bf98e756e26d70b44bc74a500de79f
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537152"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662085"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mariadb-server"></a>Hızlı başlangıç: bir ARM şablonu kullanarak MariaDB sunucusu için Azure veritabanı oluşturma
 
@@ -70,34 +70,34 @@ Azure portal için Azure veritabanı sunucu şablonunu dağıtmak için aşağı
 
 **VNET Ile MariaDB Için Azure veritabanı 'Nı dağıtma** sayfasında:
 
-1. **Kaynak grubu** Için **Yeni oluştur** ' u seçin, yeni kaynak grubu için bir ad girin ve **Tamam** ' ı seçin.
+1. **Kaynak grubu** Için **Yeni oluştur**' u seçin, yeni kaynak grubu için bir ad girin ve **Tamam**' ı seçin.
 
 2. Yeni bir kaynak grubu oluşturduysanız, kaynak grubu ve yeni sunucu için bir **konum** seçin.
 
-3. **Sunucu adı** , **yönetici oturumu açma** ve **yönetici oturum açma parolası** girin.
+3. **Sunucu adı**, **yönetici oturumu açma** ve **yönetici oturum açma parolası** girin.
 
     ![VNet ile MariaDB için Azure veritabanı penceresi, Azure hızlı başlangıç şablonu, Azure portal](./media/quickstart-create-mariadb-server-database-arm-template/deploy-azure-database-mariadb-vnet.png)
 
 4. İsterseniz diğer varsayılan ayarları değiştirin:
 
-    * **Abonelik** : sunucu için kullanmak istediğiniz Azure aboneliği.
-    * **SKU kapasitesi** : *2* (varsayılan), *4* , *8* , *16* , *32* veya *64* olabilen Vcore kapasitesi.
-    * **SKU adı** : *B_Gen5_1* , *GP_Gen5_2* (varsayılan) veya *MO_Gen5_32* gıbı alt çizgilerden BIRLEŞTIRILMIŞ SKU katmanı öneki, SKU ailesi ve SKU kapasitesi.
-    * **SKU boyutu MB** : MariaDB sunucusu Için Azure veritabanı 'nın megabayt cinsinden depolama boyutu (varsayılan *51200* ).
-    * **SKU katmanı** : *temel* , *generalamacını* (varsayılan) veya *memoryoptıılanmış* gibi dağıtım katmanı.
-    * **SKU ailesi** : sunucu dağıtımı için donanım oluşturmayı gösteren *4. nesil* veya *5. nesil* (varsayılan).
-    * **MariaDB sürümü** : dağıtılacak MariaDB sunucusunun sürümü (örneğin, *10,2* veya *10,3* ) (varsayılan).
-    * **Yedekleme bekletme günleri** : coğrafi olarak yedekli yedekleme saklama için gün cinsinden istenen süre (varsayılan *7* ).
-    * **Coğrafi olarak yedekli yedekleme** : coğrafi olağanüstü durum kurtarma (COĞRAFI-Dr) gereksinimlerine bağlı olarak *etkin* veya *devre dışı* (varsayılan).
-    * **Sanal ağ adı** : sanal ağın adı (varsayılan *azure_mariadb_vnet* ).
-    * **Alt ağ adı** : alt ağın adı (varsayılan *azure_mariadb_subnet* ).
-    * **Sanal ağ kuralı adı** : alt ağa izin veren sanal ağ kuralının adı (varsayılan *allowsubnet* ).
-    * **VNET adresi ön eki** : sanal ağın adres ön eki (varsayılan *10.0.0.0/16* ).
-    * **Alt ağ ön eki** : alt ağın adres ön eki (varsayılan *10.0.0.0/16* ).
+    * **Abonelik**: sunucu için kullanmak istediğiniz Azure aboneliği.
+    * **SKU kapasitesi**: *2* (varsayılan), *4*, *8*, *16*, *32* veya *64* olabilen Vcore kapasitesi.
+    * **SKU adı**: *B_Gen5_1*, *GP_Gen5_2* (varsayılan) veya *MO_Gen5_32* gıbı alt çizgilerden BIRLEŞTIRILMIŞ SKU katmanı öneki, SKU ailesi ve SKU kapasitesi.
+    * **SKU boyutu MB**: MariaDB sunucusu Için Azure veritabanı 'nın megabayt cinsinden depolama boyutu (varsayılan *51200*).
+    * **SKU katmanı**: *temel*, *generalamacını* (varsayılan) veya *memoryoptıılanmış* gibi dağıtım katmanı.
+    * **SKU ailesi**: sunucu dağıtımı için donanım oluşturmayı gösteren *4. nesil* veya *5. nesil* (varsayılan).
+    * **MariaDB sürümü**: dağıtılacak MariaDB sunucusunun sürümü (örneğin, *10,2* veya *10,3* ) (varsayılan).
+    * **Yedekleme bekletme günleri**: coğrafi olarak yedekli yedekleme saklama için gün cinsinden istenen süre (varsayılan *7*).
+    * **Coğrafi olarak yedekli yedekleme**: coğrafi olağanüstü durum kurtarma (COĞRAFI-Dr) gereksinimlerine bağlı olarak *etkin* veya *devre dışı* (varsayılan).
+    * **Sanal ağ adı**: sanal ağın adı (varsayılan *azure_mariadb_vnet*).
+    * **Alt ağ adı**: alt ağın adı (varsayılan *azure_mariadb_subnet*).
+    * **Sanal ağ kuralı adı**: alt ağa izin veren sanal ağ kuralının adı (varsayılan *allowsubnet*).
+    * **VNET adresi ön eki**: sanal ağın adres ön eki (varsayılan *10.0.0.0/16*).
+    * **Alt ağ ön eki**: alt ağın adres ön eki (varsayılan *10.0.0.0/16*).
 
-5. Hüküm ve koşulları okuyun ve ardından **yukarıda belirtilen hüküm ve koşulları kabul ediyorum** ' u seçin.
+5. Hüküm ve koşulları okuyun ve ardından **yukarıda belirtilen hüküm ve koşulları kabul ediyorum**' u seçin.
 
-6. **Satın al** 'ı seçin.
+6. **Satın al**'ı seçin.
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
@@ -148,7 +148,7 @@ read -p "Press [ENTER] to continue: "
 
 MariaDB sunucusu için yeni Azure veritabanı 'na genel bir bakış görmek için şu adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com), **MariaDB sunucuları için Azure veritabanı** ' nı arayıp seçin.
+1. [Azure Portal](https://portal.azure.com), **MariaDB sunucuları için Azure veritabanı**' nı arayıp seçin.
 
 2. Veritabanı listesinde yeni sunucunuzu seçin. MariaDB sunucusu için yeni Azure veritabanınızın **genel bakış** sayfası görüntülenir.
 
@@ -185,9 +185,9 @@ Artık gerekli olmadığında kaynak grubundaki kaynakları silen kaynak grubunu
 
 2. Kaynak grubu listesinde, kaynak grubunuzun adını seçin.
 
-3. Kaynak grubunuzun **genel bakış** sayfasında **kaynak grubunu sil** ' i seçin.
+3. Kaynak grubunuzun **genel bakış** sayfasında **kaynak grubunu sil**' i seçin.
 
-4. Onay iletişim kutusunda, kaynak grubunuzun adını yazın ve ardından **Sil** ' i seçin.
+4. Onay iletişim kutusunda, kaynak grubunuzun adını yazın ve ardından **Sil**' i seçin.
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 

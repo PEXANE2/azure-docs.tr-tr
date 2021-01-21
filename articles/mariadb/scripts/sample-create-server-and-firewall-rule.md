@@ -3,17 +3,17 @@ title: CLı betiği-sunucu oluşturma-MariaDB için Azure veritabanı
 description: Bu örnek CLı betiği, MariaDB sunucusu için bir Azure veritabanı oluşturur ve sunucu düzeyinde bir güvenlik duvarı kuralı yapılandırır.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 11/28/2018
-ms.openlocfilehash: a9a0ce595da1aecc3cd2ebdc071c99e42944ef9f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8b414b5d483f4662bf8fdeb144a9cc8ef99d02dd
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536814"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664623"
 ---
 # <a name="create-a-mariadb-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>Azure CLı kullanarak bir MariaDB sunucusu oluşturma ve güvenlik duvarı kuralı yapılandırma
 Bu örnek CLı betiği, MariaDB sunucusu için bir Azure veritabanı oluşturur ve sunucu düzeyinde bir güvenlik duvarı kuralı yapılandırır. Betik başarıyla çalıştıktan sonra, MariaDB sunucusuna tüm Azure hizmetleri ve yapılandırılmış IP adresi tarafından erişilebilir.

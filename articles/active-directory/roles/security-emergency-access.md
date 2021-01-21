@@ -1,5 +1,5 @@
 ---
-title: Acil durum erişimi yönetici hesaplarını yönetme-Azure AD | Microsoft Docs
+title: Acil durum erişimi yönetici hesaplarını yönetme-Azure AD
 description: Bu makalede, acil durum erişim hesaplarının Azure Active Directory (Azure AD) kuruluşunuzdan yanlışlıkla kilitlenmesini önlemeye yardımcı olmak için nasıl kullanılacağı açıklanır.
 services: active-directory
 author: markwahl-msft
@@ -13,18 +13,18 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10d93b92f3bb0adfe734ad439079afdfcaa6270e
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 6ef8e7ed662d8c0acfc7c43112d6d7edb1cb9a94
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94834447"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660656"
 ---
-# <a name="manage-emergency-access-accounts-in-azure-ad"></a>Azure AD 'de acil durum erişim hesaplarını yönetme
+# <a name="manage-emergency-access-accounts-in-azure-ad"></a>Azure AD'deki acil durum erişim hesaplarını yönetme
 
 Oturum açabilmeniz veya başka bir kullanıcının hesabını yönetici olarak etkinleştirediğinizden Azure Active Directory (Azure AD) kuruluşunuzun yanlışlıkla kilitlenmesini engellemeniz önemlidir. Kuruluşunuzda iki veya daha fazla *acil durum erişim hesabı* oluşturarak yönetim erişiminin yanlışlıkla ne kadar etkili olduğunu azaltabilirsiniz.
 
-Acil durum erişim hesapları yüksek ayrıcalıklı ve belirli kişilere atanmazlar. Acil durum erişim hesapları, normal yönetim hesaplarının kullanılabileceği acil durum veya "cam camı" senaryolarıyla sınırlıdır. Acil durum hesabı kullanımını sınırlandırma amacını yalnızca kesinlikle gerekli olduğu zamanlarda korumanızı öneririz.
+Acil durum erişim hesapları yüksek ayrıcalıklı ve belirli kişilere atanmazlar. Acil durum erişim hesaplarının kullanım alanı, normal yönetici hesaplarının kullanılamadığı acil veya "camı kırın" senaryolarıyla sınırlıdır. Acil durum hesabı kullanımını sınırlandırma amacını yalnızca kesinlikle gerekli olduğu zamanlarda korumanızı öneririz.
 
 Bu makalede, Azure AD 'de acil durum erişim hesaplarının yönetilmesine yönelik yönergeler sağlanmaktadır.
 
@@ -60,7 +60,7 @@ Acil bir durum sırasında, bir ilkenin sorunu çözmesi için erişiminizi enge
 
 ## <a name="federation-guidance"></a>Federasyon Kılavuzu
 
-AD etki alanı Hizmetleri ve ADFS veya benzer kimlik sağlayıcısı kullanan kuruluşlar için Azure AD 'ye federasyona ek bir seçenek, MFA talebi bu kimlik sağlayıcısı tarafından sağlanabilecek bir acil durum erişim hesabı yapılandırmaktır.  Örneğin, acil durum erişim hesabı bir sertifika ve akıllı kart üzerinde depolanan bir anahtar çifti tarafından desteklenir.  Bu kullanıcının kimliği doğrulandığında, ADFS, kullanıcının MFA gereksinimlerini karşıladığını belirten bir Azure AD talebi sağlayabilir.  Bu yaklaşımda, kuruluşların yine de bulut tabanlı acil durum erişim hesapları olması gerekir, çünkü Federasyonun oluşturulamaz. 
+Bazı kuruluşlar AD etki alanı hizmetlerini ve ADFS veya benzer kimlik sağlayıcısını Azure AD 'ye federasyona eklemek için kullanır. [Yönetim ayrıcalıklarına sahip şirket içi hesap](../fundamentals/protect-m365-from-on-premises-attacks.md)olmamalıdır. Azure AD dışında yönetim ayrıcalıklarına sahip hesaplar için bir veya daha fazla kimlik doğrulaması, bu sistem (ler) in kesilmesi veya güvenliğinin kesilmesi durumunda gereksiz risk ekler.
 
 ## <a name="store-account-credentials-safely"></a>Hesap kimlik bilgilerini güvenli bir şekilde depolayın
 
@@ -72,7 +72,7 @@ Parolalar kullanılıyorsa, hesapların parolasının sona ermemesi için güçl
 
 Kuruluşlar, acil durum hesaplarından oturum açma ve denetim günlüğü etkinliğini izlemeli ve bildirimleri diğer yöneticilere tetiklemelidir. Çıkış camı hesaplarında etkinliği izlerken, bu hesapların yalnızca test veya gerçek durumlar için kullanıldığını doğrulayabilirsiniz. Oturum açma günlüklerini izlemek ve cam hesapları her oturum açtığında yönetici ve SMS uyarılarını tetiklemeniz için Azure Log Analytics kullanabilirsiniz.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 1. Azure [ad oturum açma günlüklerini](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) Azure Izleyici 'ye gönderin.
 
@@ -109,7 +109,7 @@ Kuruluşlar, acil durum hesaplarından oturum açma ve denetim günlüğü etkin
 
         ![Uyarı mantığı](./media/security-emergency-access/alert-image2.png)
 
-    1. **Bitti**'yi seçin. Artık bu uyarının tahmini aylık maliyetini görüntüleyebilirsiniz.
+    1. **Bitti** seçeneğini belirleyin. Artık bu uyarının tahmini aylık maliyetini görüntüleyebilirsiniz.
 1. Uyarı tarafından bildirilecek Kullanıcı bir eylem grubu seçin. Bir tane oluşturmak isterseniz, bkz. [eylem grubu oluşturma](#create-an-action-group).
 1. Eylem grubunun üyelerine gönderilen e-posta bildirimini özelleştirmek için, **eylemleri Özelleştir** altında Eylemler ' i seçin.
 1. **Uyarı ayrıntıları**' nın altında, uyarı kuralı adını belirtin ve isteğe bağlı bir açıklama ekleyin.

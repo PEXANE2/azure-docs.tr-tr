@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: d39d72a79d4b273918986d0d350df4706592c77d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: c30d8a66cf9deffaa32e5ec0356a9067575b77e8
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95503177"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660711"
 ---
 # <a name="header-based-single-sign-on-for-on-premises-apps-with-azure-ad-app-proxy-preview"></a>Azure AD Uygulaması Proxy (Önizleme) ile şirket içi uygulamalar için üst bilgi tabanlı çoklu oturum açma
 
@@ -64,7 +64,7 @@ Aşağıdaki tabloda, uygulama proxy 'Si ile desteklenen üst bilgi tabanlı kim
     - Iç URL değeri, uygulamanın kapsamını belirler. Uygulamanın kök yolunda Iç URL değerini yapılandırırsanız, kök altındaki tüm alt yollar aynı üstbilgi yapılandırmasını ve diğer uygulama yapılandırmasını alır. 
     - Yapılandırdığınız uygulamadan daha ayrıntılı bir yol için farklı bir üst bilgi yapılandırması veya Kullanıcı Ataması ayarlamak üzere yeni bir uygulama oluşturun. Yeni uygulamada, iç URL 'YI istediğiniz belirli bir yolla yapılandırın ve ardından bu URL için gereken belirli üst bilgileri yapılandırın. Uygulama proxy 'Si, yapılandırma ayarlarınızla her zaman bir uygulama için ayarlanan en ayrıntılı yol kümesiyle eşleşir. 
 
-2.  **Azure Active Directory**    **Ön kimlik doğrulama yöntemi** olarak Azure Active Directory ' yi seçin. 
+2.  ****    **Ön kimlik doğrulama yöntemi** olarak Azure Active Directory ' yi seçin. 
 3. **Kullanıcılar ve gruplar** ' a giderek ve uygun kullanıcıları ve grupları atayarak bir test kullanıcısı atayın. 
 4. Bir tarayıcı açın ve uygulama proxy 'si ayarlarından **dış URL**'ye gidin   . 
 5. Uygulamaya bağlanabildiğinizi doğrulayın. Bağlanabilseniz de, üst bilgiler yapılandırılmadığı için uygulamaya henüz erişemezsiniz. 
@@ -88,6 +88,10 @@ Tüm bu adımları tamamladığınızda, uygulamanız çalışıyor ve kullanıl
 1. Daha önce önbelleğe alınmış üstbilgilerin temizlendiğinden emin olmak için yeni bir tarayıcı veya özel tarayıcı penceresi açın. Ardından, uygulama proxy 'si ayarlarından **dış URL**'ye gidin   .
 2. Uygulamaya atadığınız test hesabıyla oturum açın. SSO kullanarak uygulamayı yükleyip oturum açabilirseniz, iyi bir uygulamadır! 
 
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
+
+- Uygulama proxy 'Si, şirket içinde veya özel bulutta uygulamalara uzaktan erişim sağlamak için kullanılır. Şirket ağından iç kaynaklı trafiği işlemek için uygulama proxy 'Si önerilmez.
+- Üst bilgi tabanlı kimlik doğrulama uygulamalarına erişim yalnızca bağlayıcının veya diğer izin verilen üst bilgi tabanlı kimlik doğrulama çözümünün trafiğiyle sınırlandırılmalıdır. Bu, uygulama sunucusunda bir güvenlik duvarı veya IP kısıtlaması kullanılarak uygulamaya ağ erişimini kısıtlayarak genellikle yapılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

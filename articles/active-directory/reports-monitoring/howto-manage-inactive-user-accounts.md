@@ -13,16 +13,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/07/2020
+ms.date: 01/21/2021
 ms.author: markvi
-ms.reviewer: dhanyahk
+ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b48a84bb69a356815cccd1e33c555eeb667699f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8fb517f8c50ad2c32f23542e60069a0e0a496a2d
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89244730"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660673"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>Nasıl yapılır: Azure AD 'de etkin olmayan kullanıcı hesaplarını yönetme
 
@@ -34,7 +34,7 @@ Bu makalede, Azure AD 'de eski Kullanıcı hesaplarını işlemeye yönelik bir 
 
 Etkin olmayan hesaplar, kaynaklarınıza erişim kazanmak için artık kuruluşunuzun üyeleri tarafından gerekli olmayan kullanıcı hesaplarıdır. Etkin olmayan hesaplara yönelik bir anahtar tanımlayıcı, ortamınızda oturum açmak için *bir süredir* kullanılmalarıdır. Etkin olmayan hesaplar oturum açma etkinliğine bağlı olduğundan, bunları tespit etmek için başarılı olan son oturum açma işleminin zaman damgasını kullanabilirsiniz. 
 
-Bu yöntemin zorluğuyla, ortamınız için ne kadar *bir süre boyunca* ne olacağı tanımlanır. Örneğin, kullanıcılar tatilde olduklarından *bir ortamda bir*ortamda oturum açabilirler. Etkin olmayan kullanıcı hesaplarının ne kadar Delta olduğunu tanımlarken ortamınızda oturum açmadığınız tüm yasal nedenlerle etken yapmanız gerekir. Birçok kuruluşta, etkin olmayan kullanıcı hesapları için Delta 90 ile 180 gün arasındadır. 
+Bu yöntemin zorluğuyla, ortamınız için ne kadar *bir süre boyunca* ne olacağı tanımlanır. Örneğin, kullanıcılar tatilde olduklarından *bir ortamda bir* ortamda oturum açabilirler. Etkin olmayan kullanıcı hesaplarının ne kadar Delta olduğunu tanımlarken ortamınızda oturum açmadığınız tüm yasal nedenlerle etken yapmanız gerekir. Birçok kuruluşta, etkin olmayan kullanıcı hesapları için Delta 90 ile 180 gün arasındadır. 
 
 Son başarılı oturum açma, bir kullanıcının kaynaklara erişim gereksinimi hakkında potansiyel öngörüler sağlar.  Grup üyeliği veya uygulama erişiminin hala gerekli olduğunu veya kaldırılıp kaldırılmadığını belirlemeye yardımcı olabilir. Dış Kullanıcı yönetimi için, bir dış kullanıcının kiracı içinde hala etkin olup olmadığını veya temizlenmesi gerektiğini anlayabilirsiniz. 
 
@@ -85,7 +85,7 @@ Başarılı olan her etkileşimli oturum açma işlemi, temel alınan veri depos
 
 Bir Lastsignındatetime zaman damgası oluşturmak için başarılı bir oturum açma işlemi gerekir. Lastsignındatetime özelliği yeni bir özellik olduğundan, Lastsignındatetime özelliğinin değeri şu durumlarda boş olabilir:
 
-- Bir kullanıcının son başarılı oturum açma işlemi, bu özellik yayınlanmadan önce gerçekleşti (1 Aralık 2019).
+- Bir kullanıcının son başarılı oturum açma işlemi 2020 Nisan 'dan önce gerçekleşti.
 - Etkilenen Kullanıcı hesabı, başarılı bir oturum açma işlemi için hiç kullanılmadı.
 
 ## <a name="next-steps"></a>Sonraki adımlar

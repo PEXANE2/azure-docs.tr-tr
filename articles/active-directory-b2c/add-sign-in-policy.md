@@ -12,12 +12,12 @@ ms.date: 01/12/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c4db7bf989a0062f87a5c3e6303ba64224996554
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 2956f0ffb562214477249da3198ebbe42ef9bb45
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98224492"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660378"
 ---
 # <a name="set-up-a-sign-in-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C oturum açma akışı ayarlama
 
@@ -30,11 +30,11 @@ Oturum açma ilkesi, kullanıcıların şunları sağlar:
 * Kullanıcılar Azure AD B2C yerel hesapla oturum açabilirler
 * Bir sosyal hesapla kaydolma veya oturum açma
 * Parola sıfırlama
-* Kullanıcılar Azure AD B2C yerel hesaba kaydolayamıyor; bir hesap oluşturmak Için yönetici [MS Graph API](manage-user-accounts-graph-api.md)kullanabilir.
+* Kullanıcılar Azure AD B2C yerel hesaba kaydolayamıyor; bir hesap oluşturmak Için yönetici [MS Graph API](microsoft-graph-operations.md)kullanabilir.
 
 ![Profil düzenlemesi akışı](./media/add-sign-in-policy/sign-in-user-flow.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Henüz yapmadıysanız, [bir Web uygulamasını Azure Active Directory B2C kaydedin](tutorial-register-applications.md).
 

@@ -4,12 +4,12 @@ description: Sorun giderme ve bakım görevleri için Azure Kubernetes Service (
 services: container-service
 ms.topic: article
 ms.date: 07/31/2019
-ms.openlocfilehash: 50a52584618e505aa2ae7bd9ed7e0a9f6bc330a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c044b552cd0c28a7073364c48b9572045a290331
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87015621"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662856"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Bakım veya sorun giderme amacıyla SSH ile Azure Kubernetes Service (AKS) kümesi düğümlerine bağlanma
 
@@ -25,7 +25,7 @@ Varsayılan olarak, SSH anahtarları alınır veya oluşturulur, ardından bir A
 
 Bu makalede ayrıca bir SSH anahtarınız olduğunu varsaymaktadır. [MacOS veya Linux][ssh-nix] veya [WINDOWS][ssh-windows]kullanarak bir SSH anahtarı oluşturabilirsiniz. Anahtar çiftini oluşturmak için PuTTY gen kullanırsanız, anahtar çiftini varsayılan PuTTy özel anahtar biçimi (. PPK dosyası) yerine bir OpenSSH biçiminde kaydedin.
 
-Ayrıca Azure CLı sürüm 2.0.64 veya üzeri yüklü ve yapılandırılmış olmalıdır.  `az --version`Sürümü bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
+Ayrıca Azure CLı sürüm 2.0.64 veya üzeri yüklü ve yapılandırılmış olmalıdır. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][install-azure-cli].
 
 ## <a name="configure-virtual-machine-scale-set-based-aks-clusters-for-ssh-access"></a>SSH erişimi için sanal makine ölçek kümesi tabanlı AKS kümelerini yapılandırma
 
@@ -35,10 +35,10 @@ AKS kümenizin kaynak grubu adını almak için [az aks Show][az-aks-show] komut
 
 ```azurecli-interactive
 CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
-SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
+SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query '[0].name' -o tsv)
 ```
 
-Yukarıdaki örnek, *Myresourcegroup* Içindeki *Myakscluster* için küme kaynak grubunun adını *CLUSTER_RESOURCE_GROUP*olarak atar. Örnek daha sonra ölçek kümesi adını listelemek ve *SCALE_SET_NAME*atamak için *CLUSTER_RESOURCE_GROUP* kullanır.
+Yukarıdaki örnek, *Myresourcegroup* Içindeki *Myakscluster* için küme kaynak grubunun adını *CLUSTER_RESOURCE_GROUP* olarak atar. Örnek daha sonra ölçek kümesi adını listelemek ve *SCALE_SET_NAME* atamak için *CLUSTER_RESOURCE_GROUP* kullanır.
 
 > [!IMPORTANT]
 > Şu anda, Azure CLı kullanarak sanal makine ölçek kümesi tabanlı AKS kümeleriniz için yalnızca SSH anahtarlarınızı güncelleştirmeniz gerekir.
@@ -97,7 +97,7 @@ CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myA
 az vm list --resource-group $CLUSTER_RESOURCE_GROUP -o table
 ```
 
-Yukarıdaki örnek, *Myresourcegroup* Içindeki *Myakscluster* için küme kaynak grubunun adını *CLUSTER_RESOURCE_GROUP*olarak atar. Örnek daha sonra sanal makine adını listelemek için *CLUSTER_RESOURCE_GROUP* kullanır. Örnek çıkış, sanal makinenin adını gösterir:
+Yukarıdaki örnek, *Myresourcegroup* Içindeki *Myakscluster* için küme kaynak grubunun adını *CLUSTER_RESOURCE_GROUP* olarak atar. Örnek daha sonra sanal makine adını listelemek için *CLUSTER_RESOURCE_GROUP* kullanır. Örnek çıkış, sanal makinenin adını gösterir:
 
 ```
 Name                      ResourceGroup                                  Location

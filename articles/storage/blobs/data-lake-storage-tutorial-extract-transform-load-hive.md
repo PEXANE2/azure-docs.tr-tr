@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 7640b7a6053532360da4c908089aecfe163bd3de
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f8210c3bc0437180ace110f8decd9f83e18650ed
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95912663"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661941"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>Öğretici: Azure HDInsight kullanarak verileri ayıklama, dönüştürme ve yükleme
 
@@ -40,7 +40,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 * **Azure SQL veritabanı**: Azure SQL veritabanını hedef veri deposu olarak kullanırsınız. SQL veritabanında bir veritabanınız yoksa, bkz. [Azure Portal Azure SQL veritabanı 'nda veritabanı oluşturma](../../azure-sql/database/single-database-create-quickstart.md).
 
-* **Azure CLI**: Azure CLI 'yi yüklemediyseniz bkz. [Azure CLI 'yı yükleme](/cli/azure/install-azure-cli?view=azure-cli-latest).
+* **Azure CLI**: Azure CLI 'yi yüklemediyseniz bkz. [Azure CLI 'yı yükleme](/cli/azure/install-azure-cli).
 
 * **Bir Secure Shell (SSH) istemcisi**: daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'a (Hadoop) bağlanma](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 

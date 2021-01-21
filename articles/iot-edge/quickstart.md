@@ -10,12 +10,12 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: f3af2b7839465f886d1edba01eb9988419761dac
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 71e38059aceb7da63f3545610b9acfe48c5d3150
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631088"
+ms.locfileid: "98663222"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-windows-device-preview"></a>Hızlı başlangıç: ilk IoT Edge modülünüzü bir Windows cihazına dağıtma (Önizleme)
 
@@ -108,58 +108,69 @@ Cihazınıza Windows üzerinde Linux için IoT Edge yükleyip cihazı bir cihaz 
 ![Diyagram-cihazda IoT Edge çalışma zamanını Başlat](./media/quickstart/start-runtime.png)
 
 1. [Windows yönetici merkezini indirin](https://aka.ms/WACDownloadEFLOW).
-2. Cihazınızda Windows yönetici merkezini ayarlamak için Yükleme Sihirbazı ' nı izleyin.
-3. Windows Yönetim Merkezi 'nde, ekranın sağ üst kısmında bulunan **Ayarlar dişli simgesini** seçin.  
-4. Ayarlar menüsünde, ağ geçidi altında, **Uzantılar** ' ı seçin.
-5. **Kullanılabilir uzantılar** listesinden **Azure IoT Edge** seçin
-6. Uzantıyı **yükler**
 
-7. Uzantı yüklendikten sonra, ekranın sol üst köşesindeki **Windows Yönetim Merkezi** ' ni seçerek ana pano sayfasına gidin.
+1. Cihazınızda Windows yönetici merkezini ayarlamak için Yükleme Sihirbazı ' nı izleyin.
 
-8. Windows Yönetim Merkezi 'Ni çalıştırdığınız BILGISAYARı temsil eden yerel ana bilgisayar bağlantısını görürsünüz.
+1. Windows Yönetim Merkezi 'nde, ekranın sağ üst kısmında bulunan **Ayarlar dişli simgesini** seçin.
+
+1. Ayarlar menüsünde, ağ geçidi altında, **Uzantılar** ' ı seçin.
+
+1. **Akışlar** sekmesini seçin ve **Ekle**' yi seçin.
+
+1. https://aka.ms/wac-insiders-feedMetin kutusuna girin ve **Ekle**' yi seçin.
+
+1. Akış eklendikten sonra **kullanılabilir uzantılar** sekmesine gidin. Uzantılar listesini güncelleştirmek biraz zaman alabilir.
+
+1. **Kullanılabilir uzantılar** listesinden **Azure IoT Edge** seçin
+
+1. Uzantıyı **yükler**
+
+1. Uzantı yüklendikten sonra, ekranın sol üst köşesindeki **Windows Yönetim Merkezi** ' ni seçerek ana pano sayfasına gidin.
+
+1. Windows Yönetim Merkezi 'Ni çalıştırdığınız BILGISAYARı temsil eden yerel ana bilgisayar bağlantısını görürsünüz.
 
    :::image type="content" source="media/quickstart/windows-admin-center-start-page.png" alt-text="Ekran görüntüsü-Windows Yöneticisi başlangıç sayfası":::
 
-9. **Ekle**’yi seçin.
+1. **Ekle**’yi seçin.
 
    :::image type="content" source="media/quickstart/windows-admin-center-start-page-add.png" alt-text="Ekran görüntüsü-Windows Yöneticisi başlangıç sayfası Ekle düğmesi":::
 
-10. Azure IoT Edge kutucuğunu bulun ve **Yeni oluştur**' u seçin. Bu, Yükleme Sihirbazı 'nı başlatacak.
+1. Azure IoT Edge kutucuğunu bulun ve **Yeni oluştur**' u seçin. Bu, Yükleme Sihirbazı 'nı başlatacak.
 
     :::image type="content" source="media/quickstart/select-tile-screen.png" alt-text="Ekran görüntüsü-Windows kutucuğunda Linux Için Azure IoT Edge":::
 
-11. EULA 'yı kabul etmek için Yükleme Sihirbazı 'nda ilerleyin ve **İleri ' yi** seçin.
+1. EULA 'yı kabul etmek için Yükleme Sihirbazı 'nda ilerleyin ve **İleri ' yi** seçin.
 
     :::image type="content" source="media/quickstart/wizard-welcome-screen.png" alt-text="Ekran görüntüsü-sihirbaza hoş geldiniz":::
 
-12. Microsoft 'un hizmet kalitesini izlemelerine ve korumasına yardımcı olan genişletilmiş Tanılama verileri sağlamak için **Isteğe bağlı tanılama verilerini** seçin ve ileri ' ye tıklayın **: dağıt**
+1. Microsoft 'un hizmet kalitesini izlemelerine ve korumasına yardımcı olan genişletilmiş Tanılama verileri sağlamak için **Isteğe bağlı tanılama verilerini** seçin ve ileri ' ye tıklayın **: dağıt**
 
     :::image type="content" source="media/quickstart/diagnostic-data-screen.png" alt-text="Ekran görüntüsü-Tanılama verileri":::
 
-13. **Hedef cihaz Seç** ekranında, istenen hedef cihazınızı seçerek en düşük gereksinimleri karşıladığını doğrulayın. Bu hızlı başlangıç için yerel cihaza IoT Edge yüklüyorsunuz, bu nedenle localhost bağlantısını seçiyoruz. Onaylandıktan sonra devam etmek için **İleri** 'yi seçin
+1. **Hedef cihaz Seç** ekranında, istenen hedef cihazınızı seçerek en düşük gereksinimleri karşıladığını doğrulayın. Bu hızlı başlangıç için yerel cihaza IoT Edge yüklüyorsunuz, bu nedenle localhost bağlantısını seçiyoruz. Onaylandıktan sonra devam etmek için **İleri** 'yi seçin
 
     :::image type="content" source="media/quickstart/wizard-select-target-device-screen.png" alt-text="Ekran görüntüsü-hedef cihaz Seç":::
 
-14. **İleri**'yi seçerek varsayılan ayarları kabul edin.
+1. **İleri**'yi seçerek varsayılan ayarları kabul edin.
 
-15. Dağıtım ekranında, paketi yükleme, paketi yükleme, ana bilgisayarı yapılandırma ve Linux VM 'yi son ayarlama işlemi gösterilir.  Başarılı bir dağıtım şöyle görünür:
+1. Dağıtım ekranında, paketi yükleme, paketi yükleme, ana bilgisayarı yapılandırma ve Linux VM 'yi son ayarlama işlemi gösterilir.  Başarılı bir dağıtım şöyle görünür:
 
     :::image type="content" source="media/quickstart/wizard-deploy-success-screen.png" alt-text="Ekran görüntüsü-sihirbaz dağıtımı başarılı":::
 
-16. Ileri ' ye tıklayın: Azure IoT Edge cihazınızı IoT Hub örneğiniz için cihaz KIMLIĞIYLE sağlamak üzere son adıma devam etmek için **Bağlan** ' a tıklayın.
+1. Ileri ' ye tıklayın: Azure IoT Edge cihazınızı IoT Hub örneğiniz için cihaz KIMLIĞIYLE sağlamak üzere son adıma devam etmek için **Bağlan** ' a tıklayın.
 
-17. Bağlantı dizesini cihazınızdan Azure IoT Hub kopyalayın ve cihaz bağlantı dizesi alanına yapıştırın. Ardından **Seçili yöntemle sağlamayı** seçin.
+1. Bağlantı dizesini cihazınızdan Azure IoT Hub kopyalayın ve cihaz bağlantı dizesi alanına yapıştırın. Ardından **Seçili yöntemle sağlamayı** seçin.
 
     > [!NOTE]
     > Bağlantı dizenizi almak için önceki bölümde 3. adıma bakın, [bir IoT Edge cihazı kaydedin](#register-an-iot-edge-device).
 
     :::image type="content" source="media/quickstart/wizard-provision.png" alt-text="Ekran görüntüsü-sihirbaz sağlama":::
 
-18. Sağlama tamamlandıktan sonra **, Tamam ' ı seçin ve** Windows Yönetim Merkezi Başlangıç ekranına geri dönün. Artık cihazınızı IoT Edge bir cihaz olarak listelenmiş görebilmeniz gerekir.
+1. Sağlama tamamlandıktan sonra **, Tamam ' ı seçin ve** Windows Yönetim Merkezi Başlangıç ekranına geri dönün. Artık cihazınızı IoT Edge bir cihaz olarak listelenmiş görebilmeniz gerekir.
 
     :::image type="content" source="media/quickstart/windows-admin-center-device-screen.png" alt-text="Ekran görüntüsü-Windows Yönetim Merkezi Azure IoT Edge cihaz":::
 
-19. Panosunu görüntülemek için Azure IoT Edge cihazınızı seçin. Azure IoT Hub 'deki cihaz ikizi iş yüklerinin dağıtıldığını görmeniz gerekir. **IoT Edge modül listesinde** , **edgeagent** çalıştıran bir modül ve **IoT Edge durumunun** **etkin (çalışıyor)** gösterilmesi gerekir.
+1. Panosunu görüntülemek için Azure IoT Edge cihazınızı seçin. Azure IoT Hub 'deki cihaz ikizi iş yüklerinin dağıtıldığını görmeniz gerekir. **IoT Edge modül listesinde** , **edgeagent** çalıştıran bir modül ve **IoT Edge durumunun** **etkin (çalışıyor)** gösterilmesi gerekir.
 
 Artık IoT Edge cihazınız yapılandırıldı. Bulutta dağıtılan modülleri çalıştırmak için hazır.
 

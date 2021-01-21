@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: cbfdb9a73f53e194b43010c0b2d84357aa3e2e5b
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 8d501bcc745ef19d15564951b8c0f29f9e2678ab
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631994"
+ms.locfileid: "98661315"
 ---
 # <a name="windows-stop-error---0x00000074-bad-system-config-info"></a>Windows Dur hatası-0x00000074 hatalı sistem yapılandırma bilgileri
 
@@ -34,7 +34,7 @@ VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](
  *Bir destek kişisi çağırırsanız, bu bilgileri verin:* 
  *Kodu durdur: BAD_SYSTEM_CONFIG_INFO*
 
-  ![Windows, "BAD_SYSTEM_CONFIG_INFO" olarak da gösterilen 0x00000074 kodunu durdurur. Windows, kullanıcıya BILGISAYARıN bir sorunla karşılaşdığını ve yeniden başlatılması gerektiğini bildirir.](./media/windows-stop-error-bad-system-config-info/1.png)
+  ![Windows, "BAD_SYSTEM_CONFIG_INFO" olarak da gösterilen 0x00000074 kodunu durdurur. Windows, kullanıcıya BILGISAYARıN bir sorunla karşılaşdığını ve yeniden başlatılması gerektiğini bildirir.](./media/windows-stop-error-bad-system-config-info/stop-code-0x00000074.png)
 
 ## <a name="cause"></a>Nedeni
 
@@ -56,8 +56,8 @@ VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](
 1. Seri konsolu ve bellek dökümü toplamayı etkinleştirin.
 1. VM 'yi yeniden derleyin.
 
-> [!NOTE]
-> Bu hatayla karşılaşdığınızda, Konuk işletim sistemi (OS) işlemsel değildir. Bu sorunu çözmek için çevrimdışı modda sorun gidermeye başlayacaksınız.
+   > [!NOTE]
+   > Bu hatayla karşılaşdığınızda, Konuk işletim sistemi (OS) işlemsel değildir. Bu sorunu çözmek için çevrimdışı modda sorun gidermeye başlayacaksınız.
 
 ### <a name="create-and-access-a-repair-vm"></a>Bir onarım VM 'si oluşturma ve erişme
 
@@ -66,8 +66,8 @@ VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](
 1. Onarım sanal makinesine bağlanmak için Uzak Masaüstü Bağlantısı kullanın.
 1. Klasörü kopyalayın `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` ve iyi disk bölümünüze ya da başka bir güvenli konuma kaydedin. Kritik kayıt defteri dosyalarını düzenleyebileceğinizden bu klasörü bir önlem olarak yedekleyin. 
 
-> [!NOTE]
-> `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config`Kayıt defterinde yaptığınız değişiklikleri geri almanız gerektiğinde klasörün bir kopyasını yedekleme olarak oluşturun.
+   > [!NOTE]
+   > `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config`Kayıt defterinde yaptığınız değişiklikleri geri almanız gerektiğinde klasörün bir kopyasını yedekleme olarak oluşturun.
 
 ### <a name="check-for-hive-corruption"></a>Hive bozulmasını denetle
 
@@ -80,7 +80,7 @@ Aşağıdaki yönergeler, nedenin Hive bozulması olup olmadığını veya Hive 
 
    1. Hive açılamazsa veya boşsa, Hive bozulur. Hive bozuksa [bir destek bileti açın](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-     ![Kayıt Defteri Düzenleyicisi 'nin Hive yükleyemediğini belirten bir hata oluşur.](./media/windows-stop-error-bad-system-config-info/2.png)
+      ![Kayıt Defteri Düzenleyicisi 'nin Hive yükleyemediğini belirten bir hata oluşur.](./media/windows-stop-error-bad-system-config-info/cannot-load-hive-error.png)
 
    1. Hive normal şekilde açılırsa Hive düzgün şekilde kapatılmadı. 5. adımdan devam edin.
 
@@ -95,7 +95,7 @@ Aşağıdaki yönergeler, nedenin Hive bozulması olup olmadığını veya Hive 
 
    **Seri konsolunu etkinleştirin**:
    
-   ```
+   ```ps
    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON 
    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
    ```
@@ -108,13 +108,13 @@ Aşağıdaki yönergeler, nedenin Hive bozulması olup olmadığını veya Hive 
 
    **Bozuk işletim sistemi diskinden kayıt defteri kovanını yükle:**
 
-   ```
+   ```ps
    REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM
    ```
 
    **ControlSet001 üzerinde etkinleştir:**
 
-   ```
+   ```ps
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f 
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f 
@@ -122,7 +122,7 @@ Aşağıdaki yönergeler, nedenin Hive bozulması olup olmadığını veya Hive 
 
    **ControlSet002 üzerinde etkinleştir:**
 
-   ```
+   ```ps
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f 
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f 
@@ -130,7 +130,7 @@ Aşağıdaki yönergeler, nedenin Hive bozulması olup olmadığını veya Hive 
 
    **Bozuk işletim sistemi diskini kaldır:**
 
-   ```
+   ```ps
    REG UNLOAD HKLM\BROKENSYSTEM
    ```
    
