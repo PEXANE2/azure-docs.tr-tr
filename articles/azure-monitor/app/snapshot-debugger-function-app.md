@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 12/18/2020
-ms.openlocfilehash: 3060bd6ea8d7fbc4a4bf005b84cd07d420987ab6
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: d86455eae0834f29099c7d5c96f8326408daf519
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97696419"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675538"
 ---
 # <a name="enable-snapshot-debugger-for-net-and-net-core-apps-in-azure-functions"></a>Azure Işlevlerinde .NET ve .NET Core uygulamaları için Snapshot Debugger etkinleştirme
 
@@ -22,7 +22,7 @@ Snapshot Debugger kullanırken uygulamanızı temel hizmet katmanında veya daha
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [İşlev Uygulaması Application Insights izlemeyi etkinleştirme](https://docs.microsoft.com/azure/azure-functions/configure-monitoring#add-to-an-existing-function-app)
+* [İşlev Uygulaması Application Insights izlemeyi etkinleştirme](../../azure-functions/configure-monitoring.md#add-to-an-existing-function-app)
 
 ## <a name="enable-snapshot-debugger"></a>Snapshot Debugger etkinleştir
 
@@ -147,5 +147,5 @@ Uygulama özel durumlarının tanılamayı kolaylaştırmak için tüm uygulamal
 
 - Uygulamanıza bir özel durum tetikleyebilmesi için trafik oluşturun. Ardından, anlık görüntülerin Application Insights örneğine gönderilmesi için 10 ila 15 dakika bekleyin.
 - Azure portal [anlık görüntüleri görüntüleyin](snapshot-debugger.md?toc=/azure/azure-monitor/toc.json#view-snapshots-in-the-portal) .
-- Işlev uygulamanızda kullanım örneğine göre Snapshot Debugger yapılandırmayı özelleştirin. Daha fazla bilgi için bkz. [host.jsüzerinde anlık görüntü yapılandırması](https://docs.microsoft.com/azure/azure-functions/functions-host-json#applicationinsightssnapshotconfiguration).
+- Işlev uygulamanızda kullanım örneğine göre Snapshot Debugger yapılandırmayı özelleştirin. Daha fazla bilgi için bkz. [host.jsüzerinde anlık görüntü yapılandırması](../../azure-functions/functions-host-json.md#applicationinsightssnapshotconfiguration).
 - Sorunları giderme Snapshot Debugger konusunda yardım için bkz. [Snapshot Debugger sorun giderme](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json).

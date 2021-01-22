@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 15b4b61fd250dfb7d68c563f9f42c7d288a0019c
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 9aca01bae7911d2b6234d48bedc14b116e911a79
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070873"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675393"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV iş ortakları
 
@@ -40,6 +40,7 @@ Kimlik doğrulama ve sağlama için aşağıdaki ISV 'Lere sahip Microsoft iş o
 |![Bir Experian logosunun ekran görüntüsü.](./media/partner-gallery/experian-logo.png) | [Experian](./partner-experian.md) , sahtekarlık önlemek için Kullanıcı özniteliklerine dayalı risk değerlendirmeleri gerçekleştiren bir kimlik doğrulama ve sağlama sağlayıcıdır. |
 |![Bir IDology logosunun ekran görüntüsü.](./media/partner-gallery/idology-logo.png) | [IDology](./partner-idology.md) kimlik doğrulama çözümlerini, sahtekarlık önleme çözümlerini, uyumluluk çözümlerini ve diğerlerini içeren bir kimlik doğrulama ve sağlama sağlayıcıdır.|
 |![Jumio logosunun ekran görüntüsü.](./media/partner-gallery/jumio-logo.png) | [Jumio](./partner-jumio.md) , gerçek ZAMANLı otomatik kimlik doğrulamaya izin veren ve müşteri verilerini koruma sağlayan bir kimlik doğrulama hizmetidir. |
+|![Keyless logosunun ekran görüntüsü.](./media/partner-gallery/keyless-logo.png) | [Keyless](./partner-keyless.md) , yüz Biyometrik tarama biçiminde kimlik doğrulaması sağlayan ve sahtekarlık, kimlik avı ve kimlik bilgisi yeniden kullanımını ortadan KALDıRAN bir kimlik doğrulama hizmetidir.
 | ![Lexisnexof logosunun ekran görüntüsü.](./media/partner-gallery/lexisnexis-logo.png) | [Lexisnex,](./partner-lexisnexis.md) Kullanıcı kimliğini doğrulayan ve kullanıcının cihazına göre kapsamlı risk değerlendirmesi sağlayan bir profil oluşturma ve kimlik doğrulama sağlayıcısıdır. |
 | ![Onfido logosunun ekran görüntüsü](./media/partner-gallery/onfido-logo.png) | [Onfido](./partner-onfido.md) , şirketlerin müşteri ve kimlik gereksinimlerinizi gerçek zamanlı olarak *bilmesini* sağlayan bir belge kimliği ve yüz Biyometri doğrulama çözümüdür.  |
 
@@ -78,9 +79,9 @@ Güvenlik için aşağıdaki ISV 'Ler ile Microsoft iş ortakları.
 
 ## <a name="additional-information"></a>Ek bilgiler
 
-- [Azure AD B2C'deki özel ilkeler](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C'deki özel ilkeler](./custom-policy-overview.md)
 
-- [Azure AD B2C özel ilkeleri kullanmaya başlama](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C özel ilkeleri kullanmaya başlama](./custom-policy-get-started.md?tabs=applications)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

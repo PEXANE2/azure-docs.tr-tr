@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/13/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7b134c4e9e980104a54f6a96d45445ee114556a5
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: f76aecc80537e6db55c8c4f2e5a7a240be6b1415
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178730"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675755"
 ---
 # <a name="user-profile-attributes"></a>Kullanıcı profili öznitelikleri
 
@@ -160,7 +160,7 @@ Kullanıcı geçişi senaryolarında, geçirmek istediğiniz hesapların Azure A
 
 ## <a name="mfa-phone-number-attribute"></a>MFA telefon numarası özniteliği
 
-Multi-Factor Authentication (MFA) için bir telefon kullanırken, mobil telefon kullanıcı kimliğini doğrulamak için kullanılır. Telefon numarasını program aracılığıyla, [güncelleştirmeyi](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-update), [almayı](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-get)veya [silmeyi](https://docs.microsoft.com/graph/api/phoneauthenticationmethod-delete) yeni BIR telefon numarası [eklemek](https://docs.microsoft.com/graph/api/authentication-post-phonemethods) için, MS Graph API [Phone kimlik doğrulama yöntemi](https://docs.microsoft.com/graph/api/resources/phoneauthenticationmethod)kullanın.
+Multi-Factor Authentication (MFA) için bir telefon kullanırken, mobil telefon kullanıcı kimliğini doğrulamak için kullanılır. Telefon numarasını program aracılığıyla, [güncelleştirmeyi](/graph/api/b2cauthenticationmethodspolicy-update), [almayı](/graph/api/b2cauthenticationmethodspolicy-get)veya [silmeyi](/graph/api/phoneauthenticationmethod-delete) yeni BIR telefon numarası [eklemek](/graph/api/authentication-post-phonemethods) için, MS Graph API [Phone kimlik doğrulama yöntemi](/graph/api/resources/phoneauthenticationmethod)kullanın.
 
 [Özel ilkeler](custom-policy-overview.md)Azure AD B2C, telefon numarası `strongAuthenticationPhoneNumber` talep türü aracılığıyla kullanılabilir.
 

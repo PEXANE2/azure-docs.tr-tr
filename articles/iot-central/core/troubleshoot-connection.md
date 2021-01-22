@@ -8,12 +8,12 @@ ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
 ms.custom: device-developer, devx-track-azurecli
-ms.openlocfilehash: 2bbf400840c968587de3a0a0951d28c7c35b210f
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: d1a7c94152b611ea0dbea249156add617178d7ca
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990899"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673243"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Cihazlarınızdan gelen verilerin Azure IoT Central'da gösterilmemesi sorununu giderme
 
@@ -35,11 +35,11 @@ Bu bölüm, verilerinizin IoT Central ulaşmadığını belirlemenize yardımcı
 
 Daha önce yapmadıysanız, `az cli` Aracı ve `azure-iot` uzantıyı yükleyebilirsiniz.
 
-' Nin nasıl yükleneceğini öğrenmek için `az cli` bkz. [Azure CLI 'yı yüklemek](/cli/azure/install-azure-cli?view=azure-cli-latest).
+' Nin nasıl yükleneceğini öğrenmek için `az cli` bkz. [Azure CLI 'yı yüklemek](/cli/azure/install-azure-cli).
 
-Uzantıyı [yüklemek](/cli/azure/azure-cli-reference-for-IoT?view=azure-cli-latest#extension-reference-installation) için `azure-iot` Şu komutu çalıştırın:
+Uzantıyı [yüklemek](/cli/azure/azure-cli-reference-for-IoT#extension-reference-installation) için `azure-iot` Şu komutu çalıştırın:
 
-```cmd/bash
+```azurecli
 az extension add --name azure-iot
 ```
 
@@ -50,20 +50,20 @@ az extension add --name azure-iot
 
 IoT Central uygulamanıza sahip olduğunuz abonelikte oturum açmak için aşağıdaki komutları kullanın:
 
-```cmd/bash
+```azurecli
 az login
 az set account --subscription <your-subscription-id>
 ```
 
 Cihazınızın gönderdiği Telemetriyi izlemek için aşağıdaki komutu kullanın:
 
-```cmd/bash
+```azurecli
 az iot central diagnostics monitor-events --app-id <app-id> --device-id <device-name>
 ```
 
 Cihaz IoT Central başarıyla bağlanırsa aşağıdakine benzer bir çıktı görürsünüz:
 
-```cmd/bash
+```output
 Monitoring telemetry.
 Filtering on device: device-001
 {
@@ -82,13 +82,13 @@ Filtering on device: device-001
 
 Cihazınızın IoT Central ile birlikte değişiminde olan özellik güncelleştirmelerini izlemek için aşağıdaki Önizleme komutunu kullanın:
 
-```cmd/bash
+```azurecli
 az iot central diagnostics monitor-properties --app-id <app-id> --device-id <device-name>
 ```
 
 Cihaz, özellik güncelleştirmelerini başarıyla gönderirse aşağıdakine benzer bir çıktı görürsünüz:
 
-```cmd/bash
+```output
 Changes in reported properties:
 version : 32
 {'state': 'true', 'name': {'value': {'value': 'Contoso'}, 'status': 'completed', 'desiredVersion': 7, 'ad': 'completed', 'av': 7, 'ac
@@ -106,7 +106,7 @@ Terminalinizde herhangi bir veri görünmüyorsa, büyük olasılıkla cihazın�
 
 Verileriniz izleyicisinde görünmüyorsa, aşağıdaki komutu çalıştırarak cihazınızın sağlama durumunu kontrol edin:
 
-```cmd/bash
+```azurecli
 az iot central device registration-info --app-id <app-id> --device-id <device-name>
 ```
 
@@ -132,7 +132,7 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 
 | Cihaz sağlama durumu | Description | Olası risk azaltma |
 | - | - | - |
-| Sağlanan | Anında tanınabilir sorun yoktur. | YOK |
+| Sağlanan | Anında tanınabilir sorun yoktur. | Yok |
 | Kaydedildi | Cihaz henüz IoT Central bağlanmadı. | Bağlantı sorunları için cihaz günlüklerinizi denetleyin. |
 | Engellendi | Cihazın IoT Central 'e bağlanması engellendi. | Cihazın IoT Central uygulamasına bağlanması engellendi. IoT Central cihaz engelini kaldırın ve yeniden deneyin. Daha fazla bilgi için bkz. [Cihazları engelleme](concepts-get-connected.md#device-status-values). |
 | Durumdaki | Cihaz onaylanmadı. | Cihaz IoT Central uygulamasına bağlanacak şekilde onaylanmadı. IoT Central cihazı onaylayın ve yeniden deneyin. Daha fazla bilgi için bkz. [cihazları onaylama](concepts-get-connected.md#device-registration) |
@@ -176,13 +176,13 @@ Sorununuzla ilgili hangi kategorilerin olduğunu saptamak için senaryonuz için
 
 - Telemetriyi doğrulamak için Önizleme komutunu kullanın:
 
-    ```cmd/bash
+    ```azurecli
     az iot central diagnostics validate-messages --app-id <app-id> --device-id <device-name>
     ```
 
 - Özellik güncelleştirmelerini doğrulamak için Önizleme komutunu kullanın
 
-    ```cmd/bash
+    ```azurecli
     az iot central diagnostics validate-properties --app-id <app-id> --device-id <device-name>
     ```
 
@@ -190,7 +190,7 @@ Sorununuzla ilgili hangi kategorilerin olduğunu saptamak için senaryonuz için
 
 Aşağıdaki çıktı, Validate komutundan örnek hata ve uyarı iletilerini gösterir:
 
-```cmd/bash
+```output
 Validating telemetry.
 Filtering on device: v22upeoqx6.
 Exiting after 300 second(s), or 10 message(s) have been parsed (whichever happens first).

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47
-ms.openlocfilehash: feb6b36f8e5e7bbec83d8882552484f68abfd56d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5750597d7d4d372be975aa64ce8db11859791da2
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537761"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674326"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Azure Logic Apps ile tümleşen bir işlev oluşturma
 
@@ -22,7 +22,7 @@ Bu öğreticide, Twitter gönderilerinden yaklaşım analizini çalıştırmak i
 
 ![Logic App Tasarımcısı’nda uygulamanın ilk iki adımını gösteren görüntü](media/functions-twitter-email/00-logic-app-overview.png)
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Bir Bilişsel Hizmetler API Kaynağı oluşturun.
@@ -40,14 +40,14 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!NOTE]
 > Gmail bağlayıcısını kullanmak istiyorsanız, yalnızca G-Suite iş hesapları bu bağlayıcıyı mantıksal uygulamalarda kısıtlama olmadan kullanabilir. Gmail tüketicisi hesabınız varsa, Gmail bağlayıcısını yalnızca belirli Google-onaylanan uygulamalar ve hizmetlerle kullanabilir ya da [Gmail bağlayıcısında kimlik doğrulaması için kullanmak üzere bir Google istemci uygulaması oluşturabilirsiniz](/connectors/gmail/#authentication-and-bring-your-own-application). Daha fazla bilgi için, bkz. [Azure Logic Apps Google bağlayıcıları Için veri güvenliği ve gizlilik ilkeleri](../connectors/connectors-google-data-security-privacy-policy.md).
 
-+ Bu makalede, başlangıç noktası olarak [Azure portalında ilk işlevinizi oluşturma](functions-create-first-azure-function.md) bölümünde oluşturulan kaynaklar kullanılmaktadır.
++ Bu makalede, başlangıç noktası olarak [Azure portalında ilk işlevinizi oluşturma](./functions-get-started.md) bölümünde oluşturulan kaynaklar kullanılmaktadır.
 Daha önce yapmadıysanız işlev uygulamanızı oluşturmak için bu adımları uygulayın.
 
 ## <a name="create-a-cognitive-services-resource"></a>Bilişsel Hizmetler kaynağı oluşturma
 
 Bilişsel Hizmetler API'leri Azure’da tek kaynaklar halinde kullanılabilir. İzlenmekte olan tweetlerin duyarlılığını algılamak için Metin Analizi API’sini kullanın.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesine tıklayın.
 
@@ -126,7 +126,7 @@ Azure Işlevleri, bir Logic Apps iş akışında işleme görevlerinin yükünü
 
     Bu işlev kodu, istekte alınan duyarlılık puanına göre bir renk kategorisi döndürür. 
 
-5. İşlevi test etmek için üstteki menüden **Test** ' i seçin. **Giriş** sekmesinde, `0.2` **gövdede**bir değer girin ve sonra **Çalıştır**' ı seçin. **Çıkış** sekmesindeki **http yanıtı içeriğinde** **Red** değeri döndürülür. 
+5. İşlevi test etmek için üstteki menüden **Test** ' i seçin. **Giriş** sekmesinde, `0.2` **gövdede** bir değer girin ve sonra **Çalıştır**' ı seçin. **Çıkış** sekmesindeki **http yanıtı içeriğinde** **Red** değeri döndürülür. 
 
     :::image type="content" source="./media/functions-twitter-email/07-function-test.png" alt-text="Proxy ayarlarını tanımlama":::
 
@@ -239,7 +239,7 @@ Artık mantıksal uygulamadan bir duyarlılık puanı gönderildiğinde işlevin
     
 | Ayar      |  Önerilen değer   | Açıklama  |
 | ----------------- | ------------ | ------------- |
-| **Amaç** | E-posta adresinizi girin | Bildirimi alan e-posta adresi. |
+| **Kime** | E-posta adresinizi girin | Bildirimi alan e-posta adresi. |
 | **Konu** | Olumsuz tweet duyarlılığı algılandı  | E-posta bildiriminin konu satırı.  |
 | **Gövde** | Tweet metni, Konum | **Tweet metni** ve **Konum** parametrelerine tıklayın. |
 

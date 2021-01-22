@@ -11,12 +11,12 @@ ms.date: 07/20/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 96e81b3d7781f1c6f7bf5743a083e9640dd6c831
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5c620aa60e134379614a905226caa4a66d179fae
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323595"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673544"
 ---
 # <a name="using-identity-to-create-surrogate-keys-using-dedicated-sql-pool-in-azuresynapse-analytics"></a>AzureSynapse Analytics 'te adanmış SQL havuzu kullanarak yedek anahtarlar oluşturmak için KIMLIK kullanma
 
@@ -26,7 +26,7 @@ Bu makalede, adanmış SQL havuzundaki tablolarda vekil anahtarlar oluşturmak i
 
 Tablodaki bir vekil anahtar, her satır için benzersiz bir tanımlayıcıya sahip bir sütundur. Anahtar Tablo verilerinden oluşturulmaz. Veri ambarı modellerini tasarlarken, tablolarında vekil anahtarlar oluşturmak gibi veri modelleri. KIMLIK özelliğini, yük performansını etkilemeden, bu hedefe basitçe ulaşmak için kullanabilirsiniz.
 > [!NOTE]
-> Azure SYNAPSE Analytics 'te, KIMLIK değeri her dağıtımda kendi kendine artar ve diğer dağıtımların KIMLIK değerleriyle çakışmaz.  Kullanıcı açıkça "SET IDENTITY_INSERT ON" veya reseeds KIMLIĞIYLE yinelenen bir değer eklediğinde, SYNAPSE içindeki KIMLIK değerinin benzersiz olması garanti edilmez. Ayrıntılar için bkz. [Create Table (Transact-SQL) Identity (özellik)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest). 
+> Azure SYNAPSE Analytics 'te, KIMLIK değeri her dağıtımda kendi kendine artar ve diğer dağıtımların KIMLIK değerleriyle çakışmaz.  Kullanıcı açıkça "SET IDENTITY_INSERT ON" veya reseeds KIMLIĞIYLE yinelenen bir değer eklediğinde, SYNAPSE içindeki KIMLIK değerinin benzersiz olması garanti edilmez. Ayrıntılar için bkz. [Create Table (Transact-SQL) Identity (özellik)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest&preserve-view=true). 
 
 
 ## <a name="creating-a-table-with-an-identity-column"></a>KIMLIK sütunuyla tablo oluşturma
@@ -168,7 +168,7 @@ Verileri yükleme hakkında daha fazla bilgi için bkz. [Özel SQL havuzu Için 
 
 ## <a name="system-views"></a>Sistem görünümleri
 
-IDENTITY özelliği olan bir sütunu belirlemek için [sys.identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) katalog görünümünü kullanabilirsiniz.
+IDENTITY özelliği olan bir sütunu belirlemek için [sys.identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) katalog görünümünü kullanabilirsiniz.
 
 Veritabanı şemasını daha iyi anlamanıza yardımcı olmak için bu örnek sys.identity_column ' öğesini diğer sistem Kataloğu görünümleriyle nasıl tümleştirileceğini gösterir:
 
@@ -200,12 +200,12 @@ IDENTITY özelliği kullanılamaz:
 
 Aşağıdaki ilgili işlevler adanmış SQL havuzunda desteklenmez:
 
-- [IDENTITY ()](/sql/t-sql/functions/identity-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [SCOPE_IDENTITY](/sql/t-sql/functions/scope-identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [IDENT_CURRENT](/sql/t-sql/functions/ident-current-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [IDENT_INCR](/sql/t-sql/functions/ident-incr-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [IDENT_SEED](/sql/t-sql/functions/ident-seed-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [IDENTITY ()](/sql/t-sql/functions/identity-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [SCOPE_IDENTITY](/sql/t-sql/functions/scope-identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [IDENT_CURRENT](/sql/t-sql/functions/ident-current-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [IDENT_INCR](/sql/t-sql/functions/ident-incr-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [IDENT_SEED](/sql/t-sql/functions/ident-seed-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 
 ## <a name="common-tasks"></a>Genel görevler
 
@@ -245,5 +245,5 @@ AND     tb.name = 'T1'
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Tabloya genel bakış](sql-data-warehouse-tables-overview.md)
-- [CREATE TABLE (Transact-SQL) KIMLIĞI (özellik)](/sql/t-sql/statements/create-table-transact-sql-identity-property?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [DBCC CHECKGIRINTILE](/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE (Transact-SQL) KIMLIĞI (özellik)](/sql/t-sql/statements/create-table-transact-sql-identity-property?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [DBCC CHECKGIRINTILE](/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 2a17825d062496e6600966dc7c90b14749507e4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0fea82c376a178de0be8ede6c0393e1de21de614
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86494522"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675813"
 ---
 # <a name="disable-or-remove-the-linux-agent-from-vms-and-images"></a>Linux aracısını VM 'lerden ve görüntülerden devre dışı bırakma veya kaldırma
 
@@ -31,9 +31,9 @@ Azure platformu, VM yapılandırması, izleme, güvenlik ve yardımcı program u
 
 ## <a name="disabling-extension-processing"></a>Uzantı işleme devre dışı bırakılıyor
 
-Gereksinimlerinize bağlı olarak, uzantı işlemeyi devre dışı bırakmak için birkaç yol vardır, ancak devam etmeden önce, VM 'ye dağıtılan tüm uzantıları kaldırmanız **gerekir** ; ÖRNEĞIN, az CLI kullanarak, aşağıdakileri [listeleyebilir](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-list) ve [silebilirsiniz](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-delete):
+Gereksinimlerinize bağlı olarak uzantı işlemeyi devre dışı bırakmak için birkaç yol vardır, ancak devam etmeden önce, sanal makineye dağıtılan tüm uzantıları kaldırmanız **gerekir** (örneğin, Azure CLI 'yi kullanarak) ve bunları [listeleyebilir](/cli/azure/vm/extension#az-vm-extension-list) ve [silebilirsiniz](/cli/azure/vm/extension#az-vm-extension-delete):
 
-```bash
+```azurecli
 az vm extension delete -g MyResourceGroup --vm-name MyVm -n extension_name
 ```
 > [!Note]
@@ -43,7 +43,7 @@ az vm extension delete -g MyResourceGroup --vm-name MyVm -n extension_name
 ### <a name="disable-at-the-control-plane"></a>Denetim düzleminde devre dışı bırak
 Gelecekte uzantılara ihtiyacınız olup olmadığından emin değilseniz, Linux aracısını VM 'de yüklü bırakıp uzantı işleme özelliğini platformdan devre dışı bırakabilirsiniz. Bu seçenek, `Microsoft.Compute` API sürümü `2018-06-01` veya üzeri sürümlerde kullanılabilir ve Linux Aracısı sürümünün yüklü olduğu bir bağımlılığa sahip değildir.
 
-```bash
+```azurecli
 az vm update -g <resourceGroup> -n <vmName> --set osProfile.allowExtensionOperations=false
 ```
 Yukarıdaki komutla birlikte bu uzantı işlemini platformdan kolayca yeniden etkinleştirebilirsiniz, ancak bunu ' true ' olarak ayarlayabilirsiniz.
@@ -132,7 +132,7 @@ Yukarıdaki işlemi tamamladıktan sonra, Azure CLı 'yi kullanarak özel görü
 
 
 **Düzenli olarak yönetilen görüntü oluşturma**
-```bash
+```azurecli
 az vm deallocate -g <resource_group> -n <vm_name>
 az vm generalize -g <resource_group> -n <vm_name>
 az image create -g <resource_group> -n <image_name> --source <vm_name>
@@ -140,7 +140,7 @@ az image create -g <resource_group> -n <image_name> --source <vm_name>
 
 **Paylaşılan görüntü galerisinde görüntü sürümü oluşturma**
 
-```bash
+```azurecli
 az sig image-version create \
     -g $sigResourceGroup 
     --gallery-name $sigName 
@@ -157,7 +157,7 @@ Linux Aracısı içermeyen görüntüden sanal makineyi oluşturduğunuzda, VM d
 
 VM 'yi uzantılar ile dağıtmak için, [--Enable-Agent](/cli/azure/vm#az-vm-create)Ile Azure CLI kullanabilirsiniz.
 
-```bash
+```azurecli
 az vm create \
     --resource-group $resourceGroup \
     --name $prodVmName \

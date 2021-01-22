@@ -4,18 +4,18 @@ description: Kubernetes 'in temel kümesini ve iş yükü bileşenlerini ve bunl
 services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 17203123ceb0c196bd8f9011e2962f5022e54698
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 54d6f4529c236c7ff9f6258122b5b49d6d3723e8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901289"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674935"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) için Kubernetes temel kavramları
 
 Uygulama geliştirme, kapsayıcı tabanlı bir yaklaşıma doğru şekilde taşındıkça, kaynakları düzenleme ve yönetme gereksinimi önemlidir. Kubernetes, hataya dayanıklı uygulama iş yüklerinin güvenilir bir şekilde planlanmasına olanak sağlayan önde gelen platformudur. Azure Kubernetes hizmeti (AKS), kapsayıcı tabanlı uygulama dağıtımını ve yönetimini kolaylaştıran, yönetilen bir Kubernetes sunumudur.
 
-Bu makalede, *Denetim düzlemi* , *düğümler* ve *düğüm havuzları* gibi temel Kubernetes altyapı bileşenleri tanıtılmaktadır. *Pod* , *dağıtımlar* ve *kümeler* gibi iş yükü kaynakları, kaynakların *ad alanlarına* nasıl gruplandırılmasına yönelik olarak da sunulmuştur.
+Bu makalede, *Denetim düzlemi*, *düğümler* ve *düğüm havuzları* gibi temel Kubernetes altyapı bileşenleri tanıtılmaktadır. *Pod*, *dağıtımlar* ve *kümeler* gibi iş yükü kaynakları, kaynakların *ad alanlarına* nasıl gruplandırılmasına yönelik olarak da sunulmuştur.
 
 ## <a name="what-is-kubernetes"></a>Kubernetes nedir?
 
@@ -78,7 +78,6 @@ Düğüm kaynakları, kümenin bir parçası olarak düğüm işlevini yapmak i�
 Bir düğümün allocatable kaynaklarını bulmak için şunu çalıştırın:
 ```kubectl
 kubectl describe node [NODE_NAME]
-
 ```
 
 Düğüm performansını ve işlevselliğini sürdürmek için, kaynaklar her bir düğüme AKS tarafından ayrılır. Düğüm, kaynaklarda daha büyük bir süre büyüdükçe, daha yüksek miktarda Kullanıcı tarafından dağıtılan yük olması nedeniyle kaynak ayırma artar.
@@ -86,22 +85,24 @@ Düğüm performansını ve işlevselliğini sürdürmek için, kaynaklar her bi
 >[!NOTE]
 > Container Insights (OMS) gibi AKS eklentilerinin kullanılması ek düğüm kaynakları kullanacaktır.
 
+İki tür kaynak ayrılır:
+
 - **CPU** 'ya ayrılmış CPU düğüm türüne ve küme yapılandırmasına bağımlıdır, bu da ek özelliklerin çalıştırılması nedeniyle daha az ayrılamayabilir
 
-| Konaktaki CPU çekirdekleri | 1    | 2    | 4    | 8    | 16 | 32|64|
-|---|---|---|---|---|---|---|---|
-|Kule ayrılmış (miliçekirdekler)|60|100|140|180|260|420|740|
+   | Konaktaki CPU çekirdekleri | 1    | 2    | 4    | 8    | 16 | 32|64|
+   |---|---|---|---|---|---|---|---|
+   |Kule ayrılmış (miliçekirdekler)|60|100|140|180|260|420|740|
 
 - **Bellek** -aks tarafından kullanılan bellek, iki değerin toplamını içerir.
 
-1. Kubelet arka plan programı, kapsayıcı oluşturma ve sonlandırmayı yönetmek için tüm Kubernetes aracı düğümlerine yüklenir. AKS ' de varsayılan olarak, bu arka plan programı aşağıdaki çıkarma kuralına sahiptir: *bellek. kullanılabilir<750Mı* , bu da bir düğümün her zaman en az 750 mi ayrıma göre olması gerektiği anlamına gelir.  Bir ana bilgisayar kullanılabilir bellek eşiğinin altındaysa, kubelet konak makinede belleği boşaltmak ve korumak için çalışan bir yığından birini sonlandırır. Bu eylem, kullanılabilir bellek, 750Mı eşiğinin ötesinde daha fazla azaldıkça tetiklenir.
+   1. Kubelet arka plan programı, kapsayıcı oluşturma ve sonlandırmayı yönetmek için tüm Kubernetes aracı düğümlerine yüklenir. AKS ' de varsayılan olarak, bu arka plan programı aşağıdaki çıkarma kuralına sahiptir: *bellek. kullanılabilir<750Mı*, bu da bir düğümün her zaman en az 750 mi ayrıma göre olması gerektiği anlamına gelir.  Bir ana bilgisayar kullanılabilir bellek eşiğinin altındaysa, kubelet konak makinede belleği boşaltmak ve korumak için çalışan bir yığından birini sonlandırır. Bu eylem, kullanılabilir bellek, 750Mı eşiğinin ötesinde daha fazla azaldıkça tetiklenir.
 
-2. İkinci değer, kubelet arka plan programının düzgün çalışması için (Kuto-ayrılmış) bellek ayırmalarının gerileme hızıdır.
-    - ilk 4 GB belleğin %25 ' i
-    - sonraki 4 GB belleğin %20 ' si (8 GB 'a kadar)
-    - Sonraki 8 GB belleğin %10 ' ından (16 GB 'a kadar)
-    - sonraki 112 GB belleğin %6 ' ından (128 GB 'a kadar)
-    - 128 GB üzerinde herhangi bir belleğin %2 ' i
+   2. İkinci değer, kubelet arka plan programının düzgün çalışması için (Kuto-ayrılmış) bellek ayırmalarının gerileme hızıdır.
+      - ilk 4 GB belleğin %25 ' i
+      - sonraki 4 GB belleğin %20 ' si (8 GB 'a kadar)
+      - Sonraki 8 GB belleğin %10 ' ından (16 GB 'a kadar)
+      - sonraki 112 GB belleğin %6 ' ından (128 GB 'a kadar)
+      - 128 GB üzerinde herhangi bir belleğin %2 ' i
 
 Yukarıdaki bellek ve CPU ayırması kuralları, küme durumu için kritik olan bazı barındırma sistemi bilgisayarları dahil olmak üzere, aracı düğümlerinin sağlıklı tutulması için kullanılır. Ayrıca, bu ayırma kuralları düğümün bir Kubernetes kümesinin parçası olmaması durumunda daha az ayrılanmayan belleği ve CPU 'ya rapor vermesine neden olur. Yukarıdaki kaynak ayırmaları değiştirilemez.
 

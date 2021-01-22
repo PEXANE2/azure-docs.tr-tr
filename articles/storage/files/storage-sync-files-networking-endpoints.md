@@ -8,12 +8,12 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 61ff5d05eb74804af69b90d839115a8468619275
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 64d66e1b9eab225b38ee21306fea6f9534a708f3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921723"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673864"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>Azure Dosya Eşitleme ağının uç noktalarını yapılandırma
 Azure dosyaları ve Azure Dosya Eşitleme, Azure dosya paylaşımlarına erişmek için iki ana uç nokta türü sağlar: 
@@ -52,13 +52,13 @@ Bir Azure kaynağı için özel bir uç nokta oluştururken aşağıdaki kaynakl
 
 Sanal ağınızın içinde bir sanal makineniz varsa veya [Azure dosyaları IÇIN DNS Iletmeyi yapılandırma](storage-files-networking-dns.md)bölümünde AÇıKLANDıĞı gibi DNS iletmeyi yapılandırdıysanız, PowerShell, komut satırı veya terminalden (Windows, Linux veya MacOS için çalışır) aşağıdaki komutları çalıştırarak özel uç noktanızın doğru şekilde ayarlandığını test edebilirsiniz. `<storage-account-name>`Uygun depolama hesabı adıyla değiştirmeniz gerekir:
 
-```
+```console
 nslookup <storage-account-name>.file.core.windows.net
 ```
 
 Her şey başarıyla çalıştıysa aşağıdaki çıktıyı görmeniz gerekir, burada `192.168.0.5` sanal ağınızdaki özel uç noktanın özel IP adresidir (Windows için gösterilen çıktı):
 
-```Output
+```output
 Server:  UnKnown
 Address:  10.2.4.4
 
@@ -73,7 +73,7 @@ Aliases:  storageaccount.file.core.windows.net
 
 Sanal ağınızın içinde bir sanal makineniz varsa veya [Azure dosyaları IÇIN DNS Iletmeyi yapılandırma](storage-files-networking-dns.md)bölümünde AÇıKLANDıĞı gibi DNS iletmeyi yapılandırdıysanız, Özel uç noktanızın aşağıdaki komutlarla doğru şekilde ayarlandığını test edebilirsiniz:
 
-```PowerShell
+```powershell
 $storageAccountHostName = [System.Uri]::new($storageAccount.PrimaryEndpoints.file) | `
     Select-Object -ExpandProperty Host
 
@@ -82,7 +82,7 @@ Resolve-DnsName -Name $storageAccountHostName
 
 Her şey başarıyla çalıştıysa aşağıdaki çıktıyı görmeniz gerekir, burada `192.168.0.5` sanal ağınızdaki özel uç noktanın özel IP adresidir:
 
-```Output
+```output
 Name                             Type   TTL   Section    NameHost
 ----                             ----   ---   -------    --------
 storageaccount.file.core.windows CNAME  60    Answer     storageaccount.privatelink.file.core.windows.net
@@ -113,7 +113,7 @@ nslookup $hostName
 
 Her şey başarıyla çalıştıysa aşağıdaki çıktıyı görmeniz gerekir, burada `192.168.0.5` sanal ağınızdaki özel uç noktanın özel IP adresidir:
 
-```Output
+```output
 Server:         127.0.0.53
 Address:        127.0.0.53#53
 
@@ -168,7 +168,7 @@ Get-AzPrivateEndpoint `
 
 Her şey doğru şekilde çalıştıysa,,, `192.168.1.4` `192.168.1.5` `192.168.1.6` ve `192.168.1.7` Özel uç noktaya atanmış özel IP adreslerinden oluşan aşağıdaki çıktıyı görmeniz gerekir:
 
-```Output
+```output
 Name     : mysssmanagement.westus2.afs.azure.net
 Type     : CNAME
 TTL      : 60
@@ -244,7 +244,7 @@ if ($null -eq $storageSyncService) {
 
 Özel bir uç nokta oluşturmak için, depolama eşitleme hizmeti 'ne özel bir bağlantı hizmeti bağlantısı oluşturmanız gerekir. Özel bağlantı bağlantısı, Özel uç noktanın oluşturulmasına yönelik bir giriştir.
 
-```PowerShell 
+```powershell 
 # Disable private endpoint network policies
 $subnet.PrivateEndpointNetworkPolicies = "Disabled"
 $virtualNetwork = $virtualNetwork | `
@@ -325,7 +325,7 @@ if ($null -eq $dnsZone) {
 ```
 Artık özel DNS bölgesine bir başvurunuz olduğuna göre, depolama eşitleme hizmetiniz için bir kayıt oluşturmanız gerekir.
 
-```PowerShell 
+```powershell 
 $privateEndpointIpFqdnMappings = $privateEndpoint | `
     Select-Object -ExpandProperty NetworkInterfaces | `
     Select-Object -ExpandProperty Id | `
@@ -607,7 +607,8 @@ $storageSyncService = $storageSyncService | Set-AzResource -Confirm:$false -Forc
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-<a name="azure-cli-does-not-support-setting-the-incomingtrafficpolicy-property-on-the-storage-sync-service-please-select-the-azure-powershell-tab-to-get-instructions-on-how-to-disable-the-storage-sync-service-public-endpoint"></a>Azure CLı, `incomingTrafficPolicy` depolama eşitleme hizmeti 'nde özelliğinin ayarlanmasını desteklemez. Depolama eşitleme hizmeti genel uç noktasını devre dışı bırakma hakkında yönergeler almak için lütfen Azure PowerShell sekmesini seçin.
+Azure CLı, `incomingTrafficPolicy` depolama eşitleme hizmeti 'nde özelliğinin ayarlanmasını desteklemez. Depolama eşitleme hizmeti genel uç noktasını devre dışı bırakma hakkında yönergeler almak için lütfen Azure PowerShell sekmesini seçin.
+
 ---
 
 ## <a name="see-also"></a>Ayrıca bkz.

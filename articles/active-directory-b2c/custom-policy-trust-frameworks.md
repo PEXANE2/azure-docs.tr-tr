@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ed477a931ed63c0db378ff84f85544072492ef96
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 644192de74a888daa0391b31dd42eb6028403fd8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387046"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674483"
 ---
 # <a name="azure-ad-b2c-custom-policy-overview"></a>Azure AD B2C özel ilkeye genel bakış
 
@@ -53,7 +53,7 @@ Bir talep, Azure AD B2C ilkesi yürütmesi sırasında verilerin geçici olarak 
 
 ### <a name="customize-and-localize-your-ui"></a>Kullanıcı arabiriminizi özelleştirin ve yerelleştirin
 
-Kullanıcılarınızın web tarayıcısında bir sayfa sunarak bilgi toplamak istediğinizde, [kendi kendine onaylanan teknik profili](self-asserted-technical-profile.md)kullanın. [Talepler eklemek ve Kullanıcı girişini özelleştirmek](custom-policy-configure-user-input.md)için kendi kendini onaylanan teknik profilinizi düzenleyebilirsiniz.
+Kullanıcılarınızın web tarayıcısında bir sayfa sunarak bilgi toplamak istediğinizde, [kendi kendine onaylanan teknik profili](self-asserted-technical-profile.md)kullanın. [Talepler eklemek ve Kullanıcı girişini özelleştirmek](./configure-user-input.md)için kendi kendini onaylanan teknik profilinizi düzenleyebilirsiniz.
 
 Kendi kendini onaylanan teknik profiliniz için [Kullanıcı arabirimini özelleştirmek](customize-ui-with-html.md) üzere, özelleştirilmiş HTML içeriğiyle [İçerik tanımı](contentdefinitions.md) öğesinde bir URL belirtirsiniz. Kendi kendine onaylanan teknik profilde, bu içerik tanımı KIMLIĞI ' ni işaret edersiniz.
 
@@ -127,17 +127,17 @@ Aşağıdaki diyagramda, ilke dosyaları ve bağlı olan taraf uygulamaları ara
 
 ## <a name="guidance-and-best-practices"></a>Rehberlik ve en iyi deneyimler
 
-### <a name="best-practices"></a>Önerilen uygulamalar
+### <a name="best-practices"></a>En iyi uygulamalar
 
 Azure AD B2C özel bir ilke içinde, kullanıcıların ihtiyaç duyduğu ve genişletmeniz için kendi iş mantığınızı tümleştirebilmeniz gerekir. Kullanmaya başlamak için en iyi uygulama ve önerilerden oluşan bir kümesidir.
 
 - **Uzantı ilkesi** veya **geçiş partisi ilkesi** içinde mantığınızı oluşturun. Aynı KIMLIĞE başvurarak temel ilkeyi geçersiz kılacak yeni öğeler ekleyebilirsiniz. Bu, Microsoft 'un yeni başlangıç paketleri yayımlarsa temel ilkeyi daha sonra yükseltmeyi kolaylaştırırken projenizi ölçeklendirmenize olanak tanır.
 - **Temel ilke** içinde herhangi bir değişiklik yapmaktan kaçınıyoruz.  Gerektiğinde, değişikliklerin yapıldığı yerde yorum yapın.
-- Teknik profil meta verileri gibi bir öğeyi geçersiz kıldığınızda, tüm teknik profilin temel ilkeden kopyalanmasını önleyin. Bunun yerine, öğesinin yalnızca gerekli kısmını kopyalayın. Değişikliğin nasıl yapılacağını gösteren bir örnek için bkz. [e-posta doğrulamayı devre dışı bırakma](custom-policy-disable-email-verification.md) .
+- Teknik profil meta verileri gibi bir öğeyi geçersiz kıldığınızda, tüm teknik profilin temel ilkeden kopyalanmasını önleyin. Bunun yerine, öğesinin yalnızca gerekli kısmını kopyalayın. Değişikliğin nasıl yapılacağını gösteren bir örnek için bkz. [e-posta doğrulamayı devre dışı bırakma](./disable-email-verification.md) .
 - Temel işlevlerin paylaşıldığı teknik profillerin çoğaltılmasını azaltmak için [Teknik profille içerme](technicalprofiles.md#include-technical-profile)özelliğini kullanın.
 - Oturum açma sırasında Azure AD dizinine yazmaktan kaçının, bu da azaltma sorunlarına yol açabilir.
 - İlkenizin dış bağımlılıkları varsa REST API gibi, yüksek oranda kullanılabilir olduklarından emin olur.
-- Daha iyi bir kullanıcı deneyimi için, özel HTML şablonlarınızın [çevrimiçi içerik teslimi](https://docs.microsoft.com/azure/cdn/)kullanılarak küresel bir şekilde dağıtıldığından emin olun. Azure Content Delivery Network (CDN), yükleme sürelerini azaltmanıza, bant genişliğinden tasarruf etmenize ve yanıt hızını hızlandırmanıza olanak tanır.
+- Daha iyi bir kullanıcı deneyimi için, özel HTML şablonlarınızın [çevrimiçi içerik teslimi](../cdn/index.yml)kullanılarak küresel bir şekilde dağıtıldığından emin olun. Azure Content Delivery Network (CDN), yükleme sürelerini azaltmanıza, bant genişliğinden tasarruf etmenize ve yanıt hızını hızlandırmanıza olanak tanır.
 - Kullanıcı yolculuğunda değişiklik yapmak istiyorsanız. Kullanıcı yolculuğunun tamamını temel ilkeden uzantı ilkesine kopyalayın. Kopyaladığınız Kullanıcı yolculuğuna benzersiz bir Kullanıcı yolculuğu KIMLIĞI sağlayın. Ardından [bağlı olan taraf ilkesinde](relyingparty.md), [Varsayılan Kullanıcı](relyingparty.md#defaultuserjourney) yolculuğu öğesini yeni Kullanıcı yolculuğuna işaret etmek üzere değiştirin.
 
 ## <a name="troubleshooting"></a>Sorun giderme
@@ -168,9 +168,9 @@ Azure AD B2C özel ilke ile çalışmaya başlayın:
 
 Azure AD B2C ilkenizi ayarlayıp test ettikten sonra ilkenizi özelleştirmeye başlayabilirsiniz. Aşağıdakilerin nasıl yapılacağını öğrenmek için aşağıdaki makalelere bakın:
 
-- Özel ilkeler kullanarak [talepler ekleyin ve Kullanıcı girişini özelleştirin](custom-policy-configure-user-input.md) . Bir talep tanımlama hakkında bilgi edinin, bazı başlangıç paketi teknik profillerini özelleştirerek Kullanıcı arabirimine talep ekleme.
+- Özel ilkeler kullanarak [talepler ekleyin ve Kullanıcı girişini özelleştirin](./configure-user-input.md) . Bir talep tanımlama hakkında bilgi edinin, bazı başlangıç paketi teknik profillerini özelleştirerek Kullanıcı arabirimine talep ekleme.
 - Özel bir ilke kullanarak uygulamanızın [Kullanıcı arabirimini özelleştirin](customize-ui-with-html.md) . Kendi HTML içeriğinizi oluşturmayı ve içerik tanımını özelleştirmeyi öğrenin.
-- Özel bir ilke kullanarak uygulamanızın [Kullanıcı arabirimini yerelleştirin](custom-policy-localization.md) . Desteklenen dillerin listesini ayarlamayı ve yerelleştirilmiş kaynaklar öğesini ekleyerek dile özgü Etiketler sağlamayı öğrenin.
-- İlke geliştirme ve test etme sırasında, [e-posta doğrulamasını devre dışı](custom-policy-disable-email-verification.md)bırakabilirsiniz. Teknik profil meta verilerinin üzerine yazmayı öğrenin.
-- Özel ilkeler kullanarak [bir Google hesabı ile oturum açma ayarlayın](identity-provider-google-custom.md) . OAuth2 Technical profile ile yeni bir talep sağlayıcı oluşturmayı öğrenin. Ardından Kullanıcı yolculuğu 'nı Google oturum açma seçeneğini içerecek şekilde özelleştirin.
+- Özel bir ilke kullanarak uygulamanızın [Kullanıcı arabirimini yerelleştirin](./language-customization.md) . Desteklenen dillerin listesini ayarlamayı ve yerelleştirilmiş kaynaklar öğesini ekleyerek dile özgü Etiketler sağlamayı öğrenin.
+- İlke geliştirme ve test etme sırasında, [e-posta doğrulamasını devre dışı](./disable-email-verification.md)bırakabilirsiniz. Teknik profil meta verilerinin üzerine yazmayı öğrenin.
+- Özel ilkeler kullanarak [bir Google hesabı ile oturum açma ayarlayın](./identity-provider-google.md) . OAuth2 Technical profile ile yeni bir talep sağlayıcı oluşturmayı öğrenin. Ardından Kullanıcı yolculuğu 'nı Google oturum açma seçeneğini içerecek şekilde özelleştirin.
 - Özel ilkeleriniz ile ilgili sorunları tanılamak için, [Application Insights Azure Active Directory B2C günlüklerini toplayabilirsiniz](troubleshoot-with-application-insights.md). Yeni teknik profillerin nasıl ekleneceğini ve geçiş partisi ilkenizi nasıl yapılandıracağınızı öğrenin.

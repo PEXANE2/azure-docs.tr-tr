@@ -11,12 +11,12 @@ ms.date: 04/02/2019
 ms.author: emtehran
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: cc6a58b4ef78aca60d2a26870980e032c0b11a52
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e28eeac131c737d673cac947a3fda30239180a62
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463223"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673595"
 ---
 # <a name="using-stored-procedures-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzları için saklı yordamları kullanma
 
@@ -73,7 +73,7 @@ GO
 EXEC prc_nesting
 ```
 
-Adanmış SQL havuzu şu anda [@ @NESTLEVEL ](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)öğesini desteklemiyor. Bu nedenle, iç içe düzeyi izlemeniz gerekir. Sekiz iç içe düzey sınırı aşmanız çok düşüktür. Ancak bunu yaparsanız, kodunuzu bu sınırın içinde iç içe geçmiş düzeylerine uyacak şekilde yeniden güncelleştirmeniz gerekir.
+Adanmış SQL havuzu şu anda [@ @NESTLEVEL ](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)öğesini desteklemiyor. Bu nedenle, iç içe düzeyi izlemeniz gerekir. Sekiz iç içe düzey sınırı aşmanız çok düşüktür. Ancak bunu yaparsanız, kodunuzu bu sınırın içinde iç içe geçmiş düzeylerine uyacak şekilde yeniden güncelleştirmeniz gerekir.
 
 ## <a name="insertexecute"></a>INSERT..EXECUTE
 

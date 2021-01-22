@@ -11,12 +11,12 @@ ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 6984ad41c07f7790a746dbd197c18dce2aa83e2f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d668c3e505d6849d3cde52d52698a95c1c5647d9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453713"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676171"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore-indexes-in-dedicated-sql-pool"></a>Adanmış SQL havuzundaki columnstore dizinleri için satır grubu kalitesini en üst düzeye çıkarma 
 
@@ -28,7 +28,7 @@ Bir columnstore dizini, tek tek grupların sütun segmentlerini tarayarak bir ta
 
 RowGroups çok sayıda satıra sahip olduğunda veri sıkıştırma, diskten okunmaları daha az veri olduğu anlamına gelir.
 
-RowGroups hakkında daha fazla bilgi için bkz. [columnstore dizinleri Kılavuzu](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+RowGroups hakkında daha fazla bilgi için bkz. [columnstore dizinleri Kılavuzu](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="target-size-for-rowgroups"></a>RowGroups için hedef boyut
 
@@ -42,11 +42,11 @@ Toplu yükleme veya columnstore dizini yeniden oluşturma sırasında, her bir r
 
 Her rowgroup 'ta en az 10.000 satırı sıkıştırmak için yeterli bellek olmadığında bir hata oluşturulur.
 
-Toplu yükleme hakkında daha fazla bilgi için bkz. [kümelenmiş bir columnstore dizinine toplu yükleme](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Toplu yükleme hakkında daha fazla bilgi için bkz. [kümelenmiş bir columnstore dizinine toplu yükleme](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>Satır grubu kalitesini izleme
 
-DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys.DM_DB_COLUMN_STORE_ROW_GROUP_PHYSICAL_STATS](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) SQL DB ile eşleşen görünüm tanımını içerir) RowGroups içindeki satır sayısı ve kırpma nedeni gibi yararlı bilgileri kullanıma sunar.
+DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys.DM_DB_COLUMN_STORE_ROW_GROUP_PHYSICAL_STATS](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) SQL DB ile eşleşen görünüm tanımını içerir) RowGroups içindeki satır sayısı ve kırpma nedeni gibi yararlı bilgileri kullanıma sunar.
 
 Satır grubu kırpması hakkında bilgi almak için bu DMV sorgusunun kolay bir yolu olarak aşağıdaki görünümü oluşturabilirsiniz.
 

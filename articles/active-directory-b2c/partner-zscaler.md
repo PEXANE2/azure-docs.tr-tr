@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 12/09/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 254f8da74a187e88cfb973da7100fe5654c84bb6
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: fe427150b15c6bccb97172ae751235d388c95c7b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97732455"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675035"
 ---
 # <a name="tutorial-configure-zscaler-private-access-with-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C ile Zscaler özel erişimini yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticide, Azure Active Directory B2C (Azure AD B2C) kimlik doğrulamasın
 Başlamadan önce şunları yapmanız gerekir:
 
 - Azure aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.  
-- Azure aboneliğinize bağlı [bir Azure AD B2C kiracısı](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) .  
+- Azure aboneliğinize bağlı [bir Azure AD B2C kiracısı](./tutorial-create-tenant.md) .  
 - [ZPA aboneliği](https://azuremarketplace.microsoft.com/marketplace/apps/aad.zscalerprivateaccess?tab=Overview).
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
@@ -96,15 +96,15 @@ Azure AD B2C yapılandırdıktan sonra, IDP yapılandırmasının geri kalanı d
 >[!Note]
 >Bu adım yalnızca özel ilkeleri henüz yapılandırmadıysanız gereklidir. Zaten bir veya daha fazla özel ilkeleriniz varsa, bu adımı atlayabilirsiniz.
 
-Azure AD B2C kiracınızda özel ilkeleri yapılandırmak için, bkz. [Azure Active Directory B2C özel ilkeleri kullanmaya başlama](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started).
+Azure AD B2C kiracınızda özel ilkeleri yapılandırmak için, bkz. [Azure Active Directory B2C özel ilkeleri kullanmaya başlama](./custom-policy-get-started.md).
 
 ### <a name="step-3-register-zpa-as-a-saml-application-in-azure-ad-b2c"></a>3. Adım: ZPA 'yi bir SAML uygulaması olarak kaydetme Azure AD B2C
 
-Azure AD B2C bir SAML uygulaması yapılandırmak için, bkz. [Azure AD B2C BIR SAML uygulaması kaydetme](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers). 
+Azure AD B2C bir SAML uygulaması yapılandırmak için, bkz. [Azure AD B2C BIR SAML uygulaması kaydetme](./connect-with-saml-service-providers.md). 
 
-["3,2 ilke meta verilerini karşıya yükleme ve test etme"](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers#32-upload-and-test-your-policy-metadata)adımında, Azure AD B2C tarafından kullanılan ıDP SAML meta veri URL 'sini kopyalayın veya unutmayın. Buna daha sonra ihtiyacınız olacak.
+["3,2 ilke meta verilerini karşıya yükleme ve test etme"](./connect-with-saml-service-providers.md#32-upload-and-test-your-policy-metadata)adımında, Azure AD B2C tarafından kullanılan ıDP SAML meta veri URL 'sini kopyalayın veya unutmayın. Buna daha sonra ihtiyacınız olacak.
 
-["4,2 uygulama bildirimini güncelleştirme"](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers#42-update-the-app-manifest)adımındaki yönergeleri izleyin. Adım 4,2 ' de, uygulama bildirimi özelliklerini aşağıdaki şekilde güncelleştirin:
+["4,2 uygulama bildirimini güncelleştirme"](./connect-with-saml-service-providers.md#42-update-the-app-manifest)adımındaki yönergeleri izleyin. Adım 4,2 ' de, uygulama bildirimi özelliklerini aşağıdaki şekilde güncelleştirin:
 
 - **Identifieruris** için: daha önce "Adım 1.6. b" içinde kopyaladığınız veya not ettiğiniz hizmet sağlayıcısı varlık kimliğini kullanın.  
 - **Samlmetadataurl** IÇIN: ZPA bir SAML meta veri URL 'si barındırmadığından bu özelliği atlayın.  
@@ -149,7 +149,7 @@ Bir ZPA Kullanıcı portalına veya tarayıcı erişimi uygulamasına gidin ve k
 
 Daha fazla bilgi için aşağıdaki makaleleri gözden geçirin:
 
-- [Azure AD B2C özel ilkeleri kullanmaya başlama](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started)
-- [Azure AD B2C bir SAML uygulaması kaydetme](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers)
+- [Azure AD B2C özel ilkeleri kullanmaya başlama](./custom-policy-get-started.md)
+- [Azure AD B2C bir SAML uygulaması kaydetme](./connect-with-saml-service-providers.md)
 - [ZPA için adım adım yapılandırma kılavuzu](https://help.zscaler.com/zpa/step-step-configuration-guide-zpa)
 - [Bir IDP 'yi çoklu oturum açma için yapılandırma](https://help.zscaler.com/zpa/configuring-idp-single-sign)

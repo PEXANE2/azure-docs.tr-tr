@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/10/2020
 ms.author: kenwith
-ms.openlocfilehash: 012038399796a0f2dc87acfb350043542268379a
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: efdbec10c74a6b1892df13b8308538e61f42f679
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936990"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673510"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Öğretici-Kullanıcı sağlama özniteliğini özelleştirme-Azure Active Directory SaaS uygulamaları için eşlemeler
 
@@ -115,7 +115,7 @@ Ancak, bazı uygulamalar özel öznitelikleri destekler ve Azure AD sağlama hiz
 
 
 > [!NOTE]
-> Desteklenen özniteliklerin listesinin düzenlenmesiyle yalnızca, uygulamalarının ve sistemlerinin şemasını özelleştiren Yöneticiler için önerilir ve özel özniteliklerinin nasıl tanımlandıkları hakkında ilk bilgiye sahip olmanız gerekir. Bu, bazen bir uygulama veya sistem tarafından sunulan API 'Ler ve geliştirici araçları hakkında daha fazla benzerlik gerektirir. Desteklenen özniteliklerin listesini düzenleme özelliği varsayılan olarak kilitlidir, ancak müşteriler aşağıdaki URL 'ye giderek yeteneği etkinleştirebilir: https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true . Daha sonra, [yukarıda](https://docs.microsoft.com/azure/active-directory/app-provisioning/customize-application-attributes#editing-the-list-of-supported-attributes)açıklanan öznitelik listesini görüntülemek için uygulamanıza gidebilirsiniz. 
+> Desteklenen özniteliklerin listesinin düzenlenmesiyle yalnızca, uygulamalarının ve sistemlerinin şemasını özelleştiren Yöneticiler için önerilir ve özel özniteliklerinin nasıl tanımlandıkları hakkında ilk bilgiye sahip olmanız gerekir. Bu, bazen bir uygulama veya sistem tarafından sunulan API 'Ler ve geliştirici araçları hakkında daha fazla benzerlik gerektirir. Desteklenen özniteliklerin listesini düzenleme özelliği varsayılan olarak kilitlidir, ancak müşteriler aşağıdaki URL 'ye giderek yeteneği etkinleştirebilir: https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true . Daha sonra, [yukarıda](#editing-the-list-of-supported-attributes)açıklanan öznitelik listesini görüntülemek için uygulamanıza gidebilirsiniz. 
 
 Desteklenen özniteliklerin listesi düzenlenirken aşağıdaki özellikler sağlanır:
 
@@ -128,7 +128,7 @@ Desteklenen özniteliklerin listesi düzenlenirken aşağıdaki özellikler sağ
   - *Reference* -Attribute, Hedef uygulamadaki başka bir tabloda depolanan bir değere başvuruda bulunan bir kimlik içeriyor.
   - *String*  özniteliği bir metin dizesi içerir.
 - **Birincil anahtar?** -Özniteliğin hedef nesnenin şemasında birincil anahtar alanı olarak tanımlanıp tanımlanmayacağı.
-- **Gerekli?** -Özniteliğin hedef uygulamada veya sistemde doldurulması gerekip gerekmediği.
+- **Gerekli mi?** -Özniteliğin hedef uygulamada veya sistemde doldurulması gerekip gerekmediği.
 - **Çoklu değer?** -Özniteliğin birden çok değeri destekleyip desteklemediğini belirtir.
 - **Tam durum?** -Öznitelik değerlerinin büyük/küçük harfe duyarlı bir şekilde değerlendirilip değerlendirilmediğini belirtir.
 - **API ifadesi** -bunu, belirli bir sağlama Bağlayıcısı (Workday gibi) için belgeler tarafından istenmedikçe kullanmayın.

@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b213954dde6ca4eaa0a69ddf0e40398fc09b9063
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: b142c88b0003281237dad125080930c0dd4d3bee
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98115778"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673612"
 ---
 # <a name="connect-to-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-with-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) ile Azure SYNAPSE Analytics 'te adanmış bir SQL havuzuna (eski adıyla SQL DW) bağlanma
 
@@ -30,12 +30,12 @@ ms.locfileid: "98115778"
 
 Adanmış bir SQL havuzuna bağlanmak ve (eski adıyla SQL DW) sorgulamak için SQL Server Management Studio (SSMS) kullanın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi kullanmak için şunlar gerekir:
 
 * Mevcut bir adanmış SQL Havuzu. Bir tane oluşturmak için bkz. [adanmış BIR SQL havuzu oluşturma (eski ADıYLA SQL DW)](create-data-warehouse-portal.md).
-* SQL Server Management Studio (SSMS) yüklendi. Zaten yoksa [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 'Yi ücretsiz indirin.
+* SQL Server Management Studio (SSMS) yüklendi. Zaten yoksa [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 'Yi ücretsiz indirin.
 * Tam SQL server adı. Bu bilgileri bulmak için bkz. [ADANMıŞ SQL Havuzu (eski ADıYLA SQL DW)](sql-data-warehouse-connect-overview.md).
 
 ## <a name="1-connect-to-your-dedicated-sql-pool-formerly-sql-dw"></a>1. adanmış SQL havuzunuza bağlanın (eski adıyla SQL DW)

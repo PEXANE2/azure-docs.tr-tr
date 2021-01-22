@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 3b61df954e913671eafff4b739e0f53a4d420c28
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 5aefe869041d9fff8112b6aa380961ca6568ae0b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98117308"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673578"
 ---
 # <a name="guidance-for-designing-distributed-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu kullanarak dağıtılmış tablo tasarlama Kılavuzu
 
@@ -96,7 +96,7 @@ Dağıtım sütununda depolanan veriler güncelleştirilebilen olabilir. Dağıt
 
 Bu sütundaki değerler satırların nasıl dağıtıldığını belirlemediğinden, bir dağıtım sütunu seçilmesi önemli bir tasarım kararıdır. En iyi seçenek çeşitli faktörlere bağlıdır ve genellikle avantajları içerir. Bir dağıtım sütunu seçildikten sonra, bunu değiştiremezsiniz.  
 
-En iyi sütunu ilk kez seçmediyseniz, farklı bir dağıtım sütunuyla tabloyu yeniden oluşturmak için [Create Table Select (CTAS) olarak](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kullanabilirsiniz.
+En iyi sütunu ilk kez seçmediyseniz, farklı bir dağıtım sütunuyla tabloyu yeniden oluşturmak için [Create Table Select (CTAS) olarak](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) kullanabilirsiniz.
 
 ### <a name="choose-a-distribution-column-with-data-that-distributes-evenly"></a>Eşit olarak dağıtan verilerle bir dağıtım sütunu seçin
 
@@ -133,7 +133,7 @@ Veriler karma olarak dağıtılmış bir tabloya yüklendikten sonra, satırlar�
 
 ### <a name="determine-if-the-table-has-data-skew"></a>Tabloda veri eğriliği olup olmadığını belirleme
 
-Veri eğriliğini denetlemeye yönelik hızlı bir yol, [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)kullanmaktır. Aşağıdaki SQL kodu, 60 dağıtımların her birinde depolanan tablo satırı sayısını döndürür. Dengeli performans için, dağıtılmış tablodaki satırların tüm dağıtımlarla eşit olarak yayılmalıdır.
+Veri eğriliğini denetlemeye yönelik hızlı bir yol, [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)kullanmaktır. Aşağıdaki SQL kodu, 60 dağıtımların her birinde depolanan tablo satırı sayısını döndürür. Dengeli performans için, dağıtılmış tablodaki satırların tüm dağıtımlarla eşit olarak yayılmalıdır.
 
 ```sql
 -- Find data skew for a distributed table
@@ -183,7 +183,7 @@ Varolan bir tablodaki dağıtım sütununu değiştirebileceğinizden, veri eğr
 
 ### <a name="re-create-the-table-with-a-new-distribution-column"></a>Tabloyu yeni bir dağıtım sütunuyla yeniden oluşturun
 
-Bu örnekte CREATE TABLE, farklı bir karma dağıtım sütunuyla bir tabloyu yeniden oluşturmak için [SEÇIM olarak](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kullanılmaktadır.
+Bu örnekte CREATE TABLE, farklı bir karma dağıtım sütunuyla bir tabloyu yeniden oluşturmak için [SEÇIM olarak](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) kullanılmaktadır.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_CustomerKey]
@@ -225,5 +225,5 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 
 Dağıtılmış bir tablo oluşturmak için aşağıdaki deyimlerden birini kullanın:
 
-- [CREATE TABLE (adanmış SQL havuzu)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [SELECT (adanmış SQL havuzu) olarak CREATE TABLE](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE (adanmış SQL havuzu)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [SELECT (adanmış SQL havuzu) olarak CREATE TABLE](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)

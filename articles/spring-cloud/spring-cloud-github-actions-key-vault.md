@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 995d10b3c7064e462500e0bec4d5d8aa010afe64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ea0db1faf8c452958b8d95c193d45506057777c
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888787"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673341"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>GitHub eylemlerinde Key Vault Azure Spring Cloud kimlik doğrulaması yapma
 
@@ -22,13 +22,14 @@ Anahtar Kasası, anahtarları depolamak için güvenli bir yerdir. Kurumsal kull
 
 ## <a name="generate-credential"></a>Kimlik bilgisi oluştur
 Anahtar kasasına erişmek için bir anahtar oluşturmak üzere yerel makinenizde aşağıdaki komutu yürütün:
-```
+
+```azurecli
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.KeyVault/vaults/<KEY_VAULT> --sdk-auth
 ```
 Parametresi tarafından belirtilen kapsam, `--scopes` kaynağa yönelik anahtar erişimini sınırlandırır.  Yalnızca güçlü kutuya erişebilir.
 
 Sonuçlarla:
-```
+```output
 {
     "clientId": "<GUID>",
     "clientSecret": "<GUID>",
@@ -46,25 +47,25 @@ Ardından, [GitHub deponuzu ayarlama ve Azure ile kimlik doğrulama](./spring-cl
 ## <a name="add-access-policies-for-the-credential"></a>Kimlik bilgileri için erişim Ilkeleri ekleme
 Yukarıda oluşturduğunuz kimlik bilgileri, depoladığı içeriklerle değil Key Vault hakkında yalnızca genel bilgileri alabilir.  Key Vault depolanan gizli dizileri almak için kimlik bilgisi için erişim ilkeleri ayarlamanız gerekir.
 
-Azure portal **Key Vault** panosuna gidin, **erişim denetim** menüsüne tıklayın ve ardından **rol atamaları** sekmesini açın. **Tür** ve kapsam için **uygulamalar** ' ı seçin `This resource` . **scope**  Önceki adımda oluşturduğunuz kimlik bilgisini görmeniz gerekir:
+Azure portal **Key Vault** panosuna gidin, **erişim denetim** menüsüne tıklayın ve ardından **rol atamaları** sekmesini açın. **Tür** ve kapsam için **uygulamalar** ' ı seçin `This resource` .   Önceki adımda oluşturduğunuz kimlik bilgisini görmeniz gerekir:
 
  ![Erişim ilkesini ayarla](./media/github-actions/key-vault1.png)
 
-Kimlik bilgisi adını (örneğin,) kopyalayın `azure-cli-2020-01-19-04-39-02` . **Erişim ilkeleri** menüsünü açın, **+ erişim ilkesi Ekle** bağlantısı ' na tıklayın.  `Secret Management` **Şablon**için ' i seçin ve ardından **sorumlu**' ı seçin. Kimlik bilgisi adını **asıl öğe** / **Seç** giriş kutusuna yapıştırın:
+Kimlik bilgisi adını (örneğin,) kopyalayın `azure-cli-2020-01-19-04-39-02` . **Erişim ilkeleri** menüsünü açın, **+ erişim ilkesi Ekle** bağlantısı ' na tıklayın.  `Secret Management` **Şablon** için ' i seçin ve ardından **sorumlu**' ı seçin. Kimlik bilgisi adını **asıl öğe** / **Seç** giriş kutusuna yapıştırın:
 
- ![Seç](./media/github-actions/key-vault2.png)
+ ![Şunu seçin:](./media/github-actions/key-vault2.png)
 
  **Erişim Ilkesi Ekle** Iletişim kutusunda **Ekle** düğmesine tıklayın ve ardından **Kaydet**' e tıklayın.
 
 ## <a name="generate-full-scope-azure-credential"></a>Tam kapsam Azure kimlik bilgisi oluştur
 Bu, binadaki tüm kapıların açılacağı ana anahtardır. Yordam, önceki adıma benzerdir, ancak burada ana anahtarı oluşturmak için kapsamı değiştirdik:
 
-```
+```azurecli
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID> --sdk-auth
 ```
 
 Yine, sonuçlar:
-```
+```output
 {
     "clientId": "<GUID>",
     "clientSecret": "<GUID>",
@@ -84,7 +85,7 @@ Tüm JSON dizesini kopyalayın.  Kutuyu **Key Vault** panoya geri dönün. **Giz
 ## <a name="combine-credentials-in-github-actions"></a>GitHub eylemlerinde kimlik bilgilerini birleştirme
 CICD ardışık düzeni yürütüldüğünde kullanılan kimlik bilgilerini ayarlayın:
 
-```
+```console
 on: [push]
 
 jobs:

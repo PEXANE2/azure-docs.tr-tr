@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: f65c1d6fda09d7762a59fb5a932a72ad706a767a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8a59c24100b433719ccfd3a9ea1b6a676695d381
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448030"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673443"
 ---
 # <a name="partitioning-tables-in-dedicated-sql-pool"></a>Adanmış SQL havuzunda tabloları bölümleme
 
@@ -58,9 +58,9 @@ Daha fazla bilgi için, küme columnstore dizinlerinin kalitesini değerlendireb
 
 Adanmış SQL havuzu, SQL Server daha basit olan bölümleri tanımlamanın bir yolunu sunar. Bölümlendirme işlevleri ve şemaları, SQL Server olduklarından adanmış SQL havuzunda kullanılmaz. Bunun yerine, tek yapmanız gereken bölümlenmiş sütunu ve sınır noktalarını belirlemektir. 
 
-Bölümleme sözdizimi SQL Server biraz farklı olabilir, ancak temel kavramlar aynıdır. SQL Server ve adanmış SQL havuzu, her tablo için bir bölüm sütununu destekler ve bu bölüm, sıralaştırılmış bölümdür. Bölümlendirme hakkında daha fazla bilgi için bkz. [bölümlenmiş tablolar ve dizinler](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Bölümleme sözdizimi SQL Server biraz farklı olabilir, ancak temel kavramlar aynıdır. SQL Server ve adanmış SQL havuzu, her tablo için bir bölüm sütununu destekler ve bu bölüm, sıralaştırılmış bölümdür. Bölümlendirme hakkında daha fazla bilgi için bkz. [bölümlenmiş tablolar ve dizinler](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
-Aşağıdaki örnek, OrderDateKey sütunundaki FactInternetSales tablosunu bölümlemek için [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ifadesini kullanır:
+Aşağıdaki örnek, OrderDateKey sütunundaki FactInternetSales tablosunu bölümlemek için [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ifadesini kullanır:
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -90,8 +90,8 @@ WITH
 
 SQL Server bölüm tanımlarını adanmış SQL havuzuna geçirmek için:
 
-- SQL Server [bölüm düzenini](/sql/t-sql/statements/create-partition-scheme-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)kaldırın.
-- [Bölüm işlev](/sql/t-sql/statements/create-partition-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) tanımını Create Table ekleyin.
+- SQL Server [bölüm düzenini](/sql/t-sql/statements/create-partition-scheme-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)kaldırın.
+- [Bölüm işlev](/sql/t-sql/statements/create-partition-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) tanımını Create Table ekleyin.
 
 Bölümlenmiş bir tabloyu SQL Server örneğinden geçiriyorsanız, aşağıdaki SQL her bölümde bulunan satır sayısını bulmanıza yardımcı olabilir. Adanmış SQL havuzunda aynı bölümleme ayrıntı düzeyi kullanılıyorsa, bölüm başına satır sayısı 60 faktörüyle azaldığını unutmayın.  
 
@@ -131,7 +131,7 @@ GROUP BY    s.[name]
 
 ## <a name="partition-switching"></a>Bölüm değiştirme
 
-Adanmış SQL havuzu bölüm bölmeyi, birleştirmeyi ve değiştirmeyi destekler. Bu işlevlerin her biri [alter table](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ifadesi kullanılarak yürütülür.
+Adanmış SQL havuzu bölüm bölmeyi, birleştirmeyi ve değiştirmeyi destekler. Bu işlevlerin her biri [alter table](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ifadesi kullanılarak yürütülür.
 
 Bölümleri iki tablo arasında değiştirmek için bölümlerin ilgili sınırlarına göre hizalanmasına ve tablo tanımlarının eşleştiğinden emin olmanız gerekir. Denetim kısıtlamaları tablodaki değer aralığını zorlamak için kullanılabilir olmadığından, kaynak tablo hedef tabloyla aynı bölüm sınırlarını içermelidir. Bölüm sınırları aynı değilse, Bölüm meta verileri eşitlenmediği için bölüm anahtarı başarısız olur.
 
@@ -279,7 +279,7 @@ ALTER TABLE dbo.FactInternetSales_NewSales SWITCH PARTITION 2 TO dbo.FactInterne
 
 ### <a name="table-partitioning-source-control"></a>Tablo bölümleme kaynak denetimi
 
-Kaynak denetim sisteminizde tablo tanımınızın **rusting** bir engel olmasını önlemek için aşağıdaki yaklaşımı göz önünde bulundurmanız gerekebilir:
+Kaynak denetim sisteminizde tablo tanımınızın  bir engel olmasını önlemek için aşağıdaki yaklaşımı göz önünde bulundurmanız gerekebilir:
 
 1. Tabloyu bölümlenmiş tablo olarak oluştur, ancak bölüm değeri yok
 

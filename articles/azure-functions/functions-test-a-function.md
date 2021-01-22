@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp, devx-track-js
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 2488a476fe40c2bf1f3e290b462babceff30a9b0
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: f75f42f3879f551a945bdeb2d88450ae3b9d6106
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601399"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674159"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Azure İşlevleri'nde kodunuzu test etmeye yönelik stratejiler
 
@@ -36,12 +36,12 @@ Aşağıdaki örnek, Visual Studio 'da C# işlev uygulamasının nasıl oluştur
 
 Ortamınızı ayarlamak için bir Işlev ve test uygulaması oluşturun. Aşağıdaki adımlar, testleri desteklemek için gereken uygulamaları ve işlevleri oluşturmanıza yardımcı olur:
 
-1. [Yeni bir işlevler uygulaması oluşturun](./functions-create-first-azure-function.md) ve **işlevleri** adlandırın
-2. [Şablondan BIR http Işlevi oluşturun](./functions-create-first-azure-function.md) ve **myhttptrigger** olarak adlandırın.
+1. [Yeni bir işlevler uygulaması oluşturun](./functions-get-started.md) ve **işlevleri** adlandırın
+2. [Şablondan BIR http Işlevi oluşturun](./functions-get-started.md) ve **myhttptrigger** olarak adlandırın.
 3. [Şablondan bir Zamanlayıcı Işlevi oluşturun](./functions-create-scheduled-function.md) ve **mytimertrigger** olarak adlandırın.
 4. Çözümde [bir xUnit test uygulaması oluşturun](https://xunit.net/docs/getting-started/netcore/cmdline) ve bunu **Functions. Tests** olarak adlandırın.
 5. Test uygulamasından [Microsoft. AspNetCore. Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) 'ye bir başvuru eklemek için NuGet kullanın
-6. [*Functions*](/visualstudio/ide/managing-references-in-a-project?view=vs-2017) Functions *. Tests* uygulamasındaki Functions uygulamasına başvurun.
+6. [](/visualstudio/ide/managing-references-in-a-project?view=vs-2017) Functions *. Tests* uygulamasındaki Functions uygulamasına başvurun.
 
 ### <a name="create-test-classes"></a>Test sınıfları oluşturma
 
@@ -251,7 +251,7 @@ Bu sınıfta uygulanan Üyeler şunlardır:
 
 - **Timer_should_log_message**: Bu test bir örneği oluşturur `ListLogger` ve bunu bir Zamanlayıcı işlevlerine geçirir. İşlev çalıştırıldığında, beklenen iletinin mevcut olduğundan emin olmak için günlük denetlenir.
 
-Testlerinizde uygulama ayarlarına erişmek istiyorsanız, [inject](./functions-dotnet-dependency-injection.md) `IConfiguration` işlevinizdeki moclenmiş ortam değişkeni değerlerini içeren bir örnek ekleyebilirsiniz.
+Testlerinizde uygulama ayarlarına erişmek istiyorsanız, [](./functions-dotnet-dependency-injection.md) `IConfiguration` işlevinizdeki moclenmiş ortam değişkeni değerlerini içeren bir örnek ekleyebilirsiniz.
 
 ### <a name="run-tests"></a>Testleri çalıştırma
 

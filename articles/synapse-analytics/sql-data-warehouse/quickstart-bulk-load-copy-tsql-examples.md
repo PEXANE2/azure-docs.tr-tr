@@ -9,23 +9,23 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 25c692ea9a2dce4723472f6812ac46d82b2b318d
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 1551e85bd45d4d64861b43bf53dd0c155520861f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120997"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673646"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>SYNAPSE SQL kullanarak güvenli bir şekilde veri yükleme
 
-Bu makalede, [Copy ifadesiyle](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)ilgili güvenli kimlik doğrulama mekanizmalarına örnekler verilmektedir. COPY yöntemi, SYNAPSE SQL 'de verileri toplu yüklemenin en esnek ve güvenli yoludur.
+Bu makalede, [Copy ifadesiyle](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)ilgili güvenli kimlik doğrulama mekanizmalarına örnekler verilmektedir. COPY yöntemi, SYNAPSE SQL 'de verileri toplu yüklemenin en esnek ve güvenli yoludur.
 ## <a name="supported-authentication-mechanisms"></a>Desteklenen kimlik doğrulama mekanizmaları
 
 Aşağıdaki matris, her dosya türü ve depolama hesabı için desteklenen kimlik doğrulama yöntemlerini açıklar. Bu, kaynak depolama konumu ve hata dosyası konumu için geçerlidir.
 
 |                          |                CSV                |                      Parquet                       |                        ORC                         |
 | :----------------------: | :-------------------------------: | :------------------------------------------------: | :------------------------------------------------: |
-|  **Azure Blob depolama**  | SAS/MSı/HIZMET SORUMLUSU/ANAHTARı/AAD |                      SAS/ANAHTAR                       |                      SAS/ANAHTAR                       |
+|  **Azure blob depolama**  | SAS/MSı/HIZMET SORUMLUSU/ANAHTARı/AAD |                      SAS/ANAHTAR                       |                      SAS/ANAHTAR                       |
 | **Azure Data Lake Gen2** | SAS/MSı/HIZMET SORUMLUSU/ANAHTARı/AAD | SAS (blob<sup>1</sup>)/MSI (DFS<sup>2</sup>)/SERVICE PRINCIPAL/Key/AAD | SAS (blob<sup>1</sup>)/MSI (DFS<sup>2</sup>)/SERVICE PRINCIPAL/Key/AAD |
 
 1: Bu kimlik doğrulama yöntemi için dış konum yolunuzda. blob uç noktası (**. blob**. Core.Windows.net) gereklidir.
@@ -72,7 +72,7 @@ WITH (
 
 Depolama Hesabınız VNet 'e eklendiğinde yönetilen kimlik kimlik doğrulaması gerekir. 
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 1. Bu [kılavuzu](/powershell/azure/install-az-ps?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) kullanarak Azure PowerShell'i yükleyin.
 2. Genel amaçlı v1 veya blob depolama hesabınız varsa öncelikle bu [kılavuzda](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) yer alan adımları izleyerek genel amaçlı v2 sürümüne yükseltmeniz gerekir.
@@ -176,5 +176,5 @@ Depolama Hesabınız VNet 'e eklendiğinde yönetilen kimlik kimlik doğrulamas�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Ayrıntılı sözdizimi için [kopyalama ekstresi makale](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax) makalesini denetleyin
+- Ayrıntılı sözdizimi için [kopyalama ekstresi makale](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax) makalesini denetleyin
 - En iyi yöntemleri yüklemek için [veri yüklemeye genel bakış](./design-elt-data-loading.md#what-is-elt) makalesini denetleyin

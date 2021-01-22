@@ -5,30 +5,30 @@ ms.assetid: 0b609bc0-c264-4092-8e3e-0784dcc23b5d
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 9c635b01bcd04bd03191fca2590b0189bad0f544
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2821a16e0b72b32cc392b7ae626d782734458a6
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90982026"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674210"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>İşlevleri kullanarak bir Azure Depolama kuyruğuna ileti ekleme
 
 Azure İşlevleri’nde giriş ve çıkış bağlamaları, kodunuzda kullanılabilen dış hizmetlerden veri oluşturmanın bildirim temelli bir yöntemini sağlar. Bu hızlı başlangıçta, bir HTTP isteği tarafından işlev tetiklendiğinde kuyrukta bir ileti oluşturmak üzere çıkış bağlaması kullanırsınız. İşlevinizin oluşturduğu sıra iletilerini görüntülemek için Azure Storage kapsayıcısını kullanırsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlamak için:
 
 - Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-- [Azure portalından ilk işlevinizi oluşturma](functions-create-first-azure-function.md) bölümündeki yönergeleri izleyin ve **Kaynakları temizleme** adımını uygulamayın. Bu hızlı başlangıç, burada kullandığınız işlev uygulamasını ve işlevi oluşturur.
+- [Azure portalından ilk işlevinizi oluşturma](./functions-get-started.md) bölümündeki yönergeleri izleyin ve **Kaynakları temizleme** adımını uygulamayın. Bu hızlı başlangıç, burada kullandığınız işlev uygulamasını ve işlevi oluşturur.
 
 ## <a name="add-an-output-binding"></a><a name="add-binding"></a>Çıkış bağlaması ekleme
 
 Bu bölümde, daha önce oluşturduğunuz işleve bir kuyruk depolama çıkış bağlaması eklemek üzere portal kullanıcı arabirimini kullanın. Bu bağlama, bir kuyrukta ileti oluşturmak için en az kod yazmayı mümkün kılar. Depolama bağlantısı açma, kuyruk oluşturma veya bir kuyruk başvurusu alma gibi görevler için kod yazmanız gerekmez. Azure İşlevleri çalışma zamanı ve kuyruk çıkış bağlaması bu görevleri sizin için gerçekleştirir.
 
-1. Azure portalında, [Azure portalından ilk işlevinizi oluşturma](functions-create-first-azure-function.md) bölümünde oluşturduğunuz işlev uygulamasına ait işlev uygulaması sayfasını açın. Bu sayfayı açmak için arama yapın ve **işlev uygulaması**seçin. Ardından, işlev uygulamanızı seçin.
+1. Azure portalında, [Azure portalından ilk işlevinizi oluşturma](./functions-get-started.md) bölümünde oluşturduğunuz işlev uygulamasına ait işlev uygulaması sayfasını açın. Bu sayfayı açmak için arama yapın ve **işlev uygulaması** seçin. Ardından, işlev uygulamanızı seçin.
 
 1. İşlev uygulamanızı seçin ve ardından önceki hızlı başlangıçta oluşturduğunuz işlevi seçin.
 
@@ -38,7 +38,7 @@ Bu bölümde, daha önce oluşturduğunuz işleve bir kuyruk depolama çıkış 
 
 1. **Azure kuyruk depolama** bağlama türünü seçin ve bu ekran görüntüsünü izleyen tabloda belirtilen ayarları ekleyin: 
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-create-output-binding-details.png" alt-text="İşleviniz için bir çıkış bağlaması oluşturun." border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-create-output-binding-details.png" alt-text="Azure portalındaki bir işleve Kuyruk depolama çıkış bağlaması ekleyin." border="true":::
     
     | Ayar      |  Önerilen değer   | Açıklama                              |
     | ------------ |  ------- | -------------------------------------------------- |
@@ -94,11 +94,11 @@ Bu bölümde, çıkış kuyruğuna bir ileti yazan kodu ekleyeceksiniz. İleti, 
 1. Kod değişiklikleri kaydedildikten sonra **Test**' i seçin.
 1. Testinizin aşağıdaki görüntüyle eşleştiğinden emin olun ve **Çalıştır**' ı seçin. 
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png" alt-text="İşleviniz için bir çıkış bağlaması oluşturun." border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png" alt-text="Azure portal kuyruk depolama bağlamasını test edin." border="true":::
 
     **İstek gövdesinin**`name` değeri *Azure*’u içerdiğine dikkat edin. Bu değer, işlev çağrıldığında oluşturulan kuyruk iletisinde görüntülenir.
     
-    Burada **Çalıştır**’ı seçmeye alternatif olarak, bir tarayıcıya URL girerek ve sorgu dizesinde `name` değerini belirterek işlevi çağırabilirsiniz. Tarayıcı yöntemi [önceki hızlı başlangıç](functions-create-first-azure-function.md#test-the-function) içinde gösterilmiştir.
+    Burada **Çalıştır**’ı seçmeye alternatif olarak, bir tarayıcıya URL girerek ve sorgu dizesinde `name` değerini belirterek işlevi çağırabilirsiniz. Tarayıcı yöntemi [önceki hızlı başlangıç](./functions-get-started.md) içinde gösterilmiştir.
 
 1. İşlevin başarılı olduğundan emin olmak için günlükleri denetleyin. 
 
@@ -109,19 +109,19 @@ Bu bölümde, çıkış kuyruğuna bir ileti yazan kodu ekleyeceksiniz. İleti, 
 
 1. İşlev uygulamanıza gidin ve **yapılandırma**' yı seçin.
 
-1. **Uygulama ayarları**altında **AzureWebJobsStorage**öğesini seçin.
+1. **Uygulama ayarları** altında **AzureWebJobsStorage** öğesini seçin.
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-find-storage-account.png" alt-text="İşleviniz için bir çıkış bağlaması oluşturun." border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-find-storage-account.png" alt-text="Ekran görüntüsü AzureWebJobsStorage seçili olan yapılandırma sayfasını gösterir." border="true":::
 
 1. Hesap adını bulun ve aklınızda olun.
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-storage-account-name.png" alt-text="İşleviniz için bir çıkış bağlaması oluşturun." border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-storage-account-name.png" alt-text="AzureWebJobsStorage 'e bağlı depolama hesabını bulun." border="true":::
 
 ### <a name="examine-the-output-queue"></a>Çıkış kuyruğunu inceleme
 
 1. İşlev uygulamanızın kaynak grubunda, bu hızlı başlangıç için kullandığınız depolama hesabını seçin.
 
-1. **Kuyruk hizmeti**altında **Kuyruklar** ' ı seçin ve **outqueue**adlı kuyruğu seçin. 
+1. **Kuyruk hizmeti** altında **Kuyruklar** ' ı seçin ve **outqueue** adlı kuyruğu seçin. 
 
    Kuyruk, HTTP ile tetiklenen işlevi çalıştırdığınızda kuyruk çıkış bağlamasının oluşturduğu iletiyi içerir. İşlevi varsayılan `name`*Azure* değeri ile çağırdıysanız, kuyruk iletisi *İşleve geçirilen ad: Azure* şeklinde olur.
 

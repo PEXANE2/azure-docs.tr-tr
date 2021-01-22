@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: dbb380dca231f75f6d6e77676c9059ef3762dac5
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 4b649942a52c51aef0d6edd17b913f75e1fb247b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050944"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674176"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Işlevlerinde işlev uygulamanız için kaynak dağıtımını otomatikleştirme
 
@@ -137,7 +137,7 @@ Barındırma planının tanımı değişir ve aşağıdakilerden biri olabilir:
 
 Bir işlev uygulaması şu uygulama ayarlarını içermelidir:
 
-| Ayar adı                 | Açıklama                                                                               | Örnek değerler                        |
+| Ayar adı                 | Description                                                                               | Örnek değerler                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | Işlevlerin çalışma zamanının iç sıraya alma için kullandığı bir depolama hesabına yönelik bağlantı dizesi | [Depolama hesabını](#storage) gör       |
 | FUNCTIONS_EXTENSION_VERSION  | Azure Işlevleri çalışma zamanının sürümü                                                | `~3`                                  |
@@ -646,7 +646,7 @@ Bir işlev uygulamasının, dağıtımınızda kullanabileceğiniz uygulama ayar
 
 * [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 * [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
-* [Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
+* [Azure portalı](../azure-resource-manager/templates/deploy-portal.md)
 * [REST API](../azure-resource-manager/templates/deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>Azure'a Dağıt düğmesi
@@ -692,7 +692,7 @@ Azure Işlevleri geliştirme ve yapılandırma hakkında daha fazla bilgi edinin
 
 * [Azure İşlevleri geliştirici başvurusu](functions-reference.md)
 * [Azure işlevi uygulama ayarlarını yapılandırma](functions-how-to-use-azure-function-app-settings.md)
-* [İlk Azure işlevinizi oluşturma](functions-create-first-azure-function.md)
+* [İlk Azure işlevinizi oluşturma](./functions-get-started.md)
 
 <!-- LINKS -->
 

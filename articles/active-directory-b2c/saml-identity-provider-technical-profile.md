@@ -11,18 +11,18 @@ ms.topic: reference
 ms.date: 12/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: db99fbdea38dd30401a8aeedb7ebc23c71c5236c
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 2f16de49518e334f2f5e679ce24e24a262a1e231
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655195"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674952"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde bir SAML kimlik sağlayıcısı teknik profili tanımlama
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) SAML 2,0 kimlik sağlayıcısı için destek sağlar. Bu makalede, bu standartlaştırılmış protokolü destekleyen bir talep sağlayıcısıyla etkileşim kurmaya yönelik teknik bir profilin ayrıntıları açıklanmaktadır. SAML teknik profiliyle, [ADFS](identity-provider-adfs2016-custom.md) ve [Salesforce](identity-provider-salesforce-saml.md)gibi SAML tabanlı bir kimlik sağlayıcısıyla federasyona bağlayabilirsiniz. Bu Federasyon, kullanıcılarınızın mevcut sosyal veya kurumsal kimliklerinde oturum açmasına olanak tanır.
+Azure Active Directory B2C (Azure AD B2C) SAML 2,0 kimlik sağlayıcısı için destek sağlar. Bu makalede, bu standartlaştırılmış protokolü destekleyen bir talep sağlayıcısıyla etkileşim kurmaya yönelik teknik bir profilin ayrıntıları açıklanmaktadır. SAML teknik profiliyle, [ADFS](./identity-provider-adfs.md) ve [Salesforce](identity-provider-salesforce-saml.md)gibi SAML tabanlı bir kimlik sağlayıcısıyla federasyona bağlayabilirsiniz. Bu Federasyon, kullanıcılarınızın mevcut sosyal veya kurumsal kimliklerinde oturum açmasına olanak tanır.
 
 ## <a name="metadata-exchange"></a>Meta veri değişimi
 
@@ -152,7 +152,7 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepleri de 
 
 **Outputclaimstransformations** öğesi, çıkış taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir.
 
-## <a name="metadata"></a>Meta Veriler
+## <a name="metadata"></a>Meta veri
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |

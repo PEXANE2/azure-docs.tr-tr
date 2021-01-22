@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: cffa6b1200b7236b3c0a3e48b50c58275cf4c57b
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 01ac42cce29f941a90631936ece025f02afedeaf
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95316629"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673629"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure Dosya Eşitleme proxy’si ve güvenli duvarı ayarları
 Azure Dosya Eşitleme, şirket içi sunucularınızı Azure dosyalarına bağlayarak çok siteli eşitlemeyi ve bulut katmanlama özelliklerini etkinleştirir. Bu nedenle, bir şirket içi sunucu internet 'e bağlı olmalıdır. BT yöneticisinin, sunucunun Azure Cloud Services 'e ulaşması için en iyi yolu karar vermesini gerektirir.
@@ -110,7 +110,7 @@ Aşağıdaki tabloda iletişim için gerekli etki alanları açıklanmaktadır:
 
 İş sürekliliği ve olağanüstü durum kurtarma (BCDR) nedenleriyle Azure dosya paylaşımlarınızı küresel olarak yedekli (GRS) depolama hesabında belirtmiş olabilirsiniz. Böyle bir durum söz konusu ise, Azure dosya paylaşımlarınız, coğrafi bölge kesintisi durumunda eşleştirilmiş bölgeye yük devreder. Azure Dosya Eşitleme depolama ile aynı bölgesel eşleştirmeleri kullanır. Bu nedenle, GRS depolama hesapları kullanıyorsanız, sunucunuzun Azure Dosya Eşitleme eşleştirilmiş bölge ile iletişim kurmasına izin vermek için ek URL 'Ler etkinleştirmeniz gerekir. Aşağıdaki tablo bu "eşleştirilmiş bölgeyi" çağırır. Ayrıca, aynı zamanda etkinleştirilmesi gereken bir Traffic Manager profil URL 'SI vardır. Bu, ağ trafiğinin yük devretme olayında eşleştirilmiş bölgeye sorunsuz bir şekilde yeniden yönlendirilmesini ve aşağıdaki tabloda "keşif URL 'SI" olarak adlandırılmasına olanak sağlar.
 
-| Bulut  | Region | Birincil uç nokta URL 'SI | Eşleştirilmiş bölge | Bulma URL 'SI |
+| Bulut  | Bölge | Birincil uç nokta URL 'SI | Eşleştirilmiş bölge | Bulma URL 'SI |
 |--------|--------|----------------------|---------------|---------------|
 | Genel |Doğu Avustralya | https: \/ /australiaeast01.AFS.Azure.net<br>https: \/ /Kailani-Aue.One.Microsoft.com | Avustralya Güneydoğu | https: \/ /TM-australiaeast01.AFS.Azure.net<br>https: \/ /TM-Kailani-Aue.One.Microsoft.com |
 | Genel |Avustralya Güneydoğu | https: \/ /australiasoutheast01.AFS.Azure.net<br>https: \/ /Kailani-aus.One.Microsoft.com | Doğu Avustralya | https: \/ /TM-australiasoutheast01.AFS.Azure.net<br>https: \/ /TM-Kailani-aus.One.Microsoft.com |
@@ -133,6 +133,8 @@ Aşağıdaki tabloda iletişim için gerekli etki alanları açıklanmaktadır:
 | Genel | Orta Güney ABD | https: \/ /southcentralus01.AFS.Azure.net | Orta Kuzey ABD | https: \/ /TM-southcentralus01.AFS.Azure.net |
 | Genel | Güney Hindistan | https: \/ /southindia01.AFS.Azure.net<br>https: \/ /Kailani-sin.One.Microsoft.com | Orta Hindistan | https: \/ /TM-southindia01.AFS.Azure.net<br>https: \/ /TM-Kailani-sin.One.Microsoft.com |
 | Genel | Güneydoğu Asya | https: \/ /southeastasia01.AFS.Azure.net<br>https: \/ /kailani10.One.Microsoft.com | Doğu Asya | https: \/ /TM-southeastasia01.AFS.Azure.net<br>https: \/ /TM-kailani10.One.Microsoft.com |
+| Genel | İsviçre Kuzey | https: \/ /switzerlandnorth01.AFS.Azure.net<br>https: \/ /TM-switzerlandnorth01.AFS.Azure.net | İsviçre Batı | https: \/ /switzerlandwest01.AFS.Azure.net<br>https: \/ /TM-switzerlandwest01.AFS.Azure.net |
+| Genel | İsviçre Batı | https: \/ /switzerlandwest01.AFS.Azure.net<br>https: \/ /TM-switzerlandwest01.AFS.Azure.net | İsviçre Kuzey | https: \/ /switzerlandnorth01.AFS.Azure.net<br>https: \/ /TM-switzerlandnorth01.AFS.Azure.net |
 | Genel | Güney Birleşik Krallık | https: \/ /uksouth01.AFS.Azure.net<br>https: \/ /Kailani-UKS.One.Microsoft.com | Batı Birleşik Krallık | https: \/ /TM-uksouth01.AFS.Azure.net<br>https: \/ /TM-Kailani-UKS.One.Microsoft.com |
 | Genel | Batı Birleşik Krallık | https: \/ /ukwest01.AFS.Azure.net<br>https: \/ /Kailani-UKW.One.Microsoft.com | Güney Birleşik Krallık | https: \/ /TM-ukwest01.AFS.Azure.net<br>https: \/ /TM-Kailani-UKW.One.Microsoft.com |
 | Genel | Orta Batı ABD | https: \/ /westcentralus01.AFS.Azure.net | Batı ABD 2 | https: \/ /TM-westcentralus01.AFS.Azure.net |

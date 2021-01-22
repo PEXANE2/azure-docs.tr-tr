@@ -9,12 +9,12 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 7f72d703e5377f725addc4aa8c52e1cdb0fa571d
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 3ff7b3cd29740461a4f94f3c1d433086db119a09
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630760"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673815"
 ---
 # <a name="create-an-azure-file-share"></a>Azure dosya paylaşımı oluşturma
 Bir Azure dosya paylaşımının oluşturulması için, nasıl kullanacağınız hakkında üç soruyu yanıtlamanız gerekir:
@@ -129,7 +129,7 @@ Azure CLı kullanarak bir depolama hesabı oluşturmak için az Storage Account 
 
 Depolama hesabının ve sonraki dosya paylaşımının oluşturulmasını basitleştirmek için, çeşitli parametreleri değişkenlerde depolayacağız. Değişken içeriğini istediğiniz değerle değiştirebilirsiniz, ancak depolama hesabı adının genel olarak benzersiz olması gerektiğini unutmayın.
 
-```bash
+```azurecli
 resourceGroupName="myResourceGroup"
 storageAccountName="mystorageacct$RANDOM"
 region="westus2"
@@ -137,7 +137,7 @@ region="westus2"
 
 Standart Azure dosya paylaşımlarını depolayabilen bir depolama hesabı oluşturmak için aşağıdaki komutu kullanacağız. `--sku`Parametresi, istenen artıklık türü ile ilgilidir; coğrafi olarak yedekli veya coğrafi bölge yedekli depolama hesabı istiyorsanız parametreyi de kaldırmanız gerekir `--enable-large-file-share` .
 
-```bash
+```azurecli
 az storage account create \
     --resource-group $resourceGroupName \
     --name $storageAccountName \
@@ -149,7 +149,7 @@ az storage account create \
 
 Premium Azure dosya paylaşımlarını depolayabilen bir depolama hesabı oluşturmak için aşağıdaki komutu kullanacağız. `--sku`Parametresinin hem hem de `Premium` istenen artıklık düzeyini yerel olarak yedekli () içerecek şekilde değiştirildiğini unutmayın `LRS` . `--kind` `FileStorage` Bunun yerine, `StorageV2` bir GPv2 depolama hesabı yerine Premium dosya paylaşımlarının bir FileStorage depolama hesabında oluşturulması gerekir.
 
-```bash
+```azurecli
 az storage account create \
     --resource-group $resourceGroupName \
     --name $storageAccountName \
@@ -233,7 +233,7 @@ Belirli bir katmana bir dosya paylaşımının oluşturulması veya taşınması
 > [!Important]  
 > Premium dosya paylaşımları için parametresi, `--quota` dosya paylaşımının sağlanan boyutunu ifade eder. Dosya paylaşımının sağlanan boyutu, kullanımdan bağımsız olarak, faturalandırılacak tutardır. Standart dosya paylaşımları, sağlanan boyut yerine kullanıma göre faturalandırılır.
 
-```bash
+```azurecli
 shareName="myshare"
 
 az storage share-rm create \
@@ -285,7 +285,7 @@ Update-AzRmStorageShare `
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 Aşağıdaki Azure CLı komutu `$resourceGroupName` , `$storageAccountName` `$shareName` Bu belgenin önceki bölümlerinde açıklandığı gibi,, ve değişkenlerini ayarlamış olduğunuzu varsayar.
 
-```bash
+```azurecli
 az storage share-rm update \
     --resource-group $resourceGroupName \
     --storage-account $storageAccountName \

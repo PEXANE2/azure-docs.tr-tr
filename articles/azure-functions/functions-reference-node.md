@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 0b32efe3738dedbe8178889b3e9008964d485b00
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 3e99b156d220b4c24a368886b1c0ca0813ffdc51
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034926"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674142"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Işlevleri JavaScript Geliştirici Kılavuzu
 
@@ -201,7 +201,7 @@ module.exports = (context) => {
 
 İşlevinize geçirilen bağlam, `executionContext` aşağıdaki özelliklere sahip bir nesne olan bir özelliği gösterir:
 
-| Özellik adı  | Tür  | Açıklama |
+| Özellik adı  | Tür  | Description |
 |---------|---------|---------|
 | `invocationId` | Dize | Belirli işlev çağrısı için benzersiz bir tanımlayıcı sağlar. |
 | `functionName` | Dize | Çalışan işlevin adını sağlar |
@@ -567,7 +567,7 @@ Hem yerel hem de bulut ortamlarınızdaki işlemsel gizlilikler (bağlantı dize
 
 ### <a name="in-local-development-environment"></a>Yerel geliştirme ortamında
 
-Yerel olarak çalışırken, işlevleriniz, ortam değişkenlerinizi nesnesinde depoladığınız bir [ `local.settings.json` Dosya](/azure/azure-functions/functions-run-local)içerir `Values` . 
+Yerel olarak çalışırken, işlevleriniz, ortam değişkenlerinizi nesnesinde depoladığınız bir [ `local.settings.json` Dosya](./functions-run-local.md)içerir `Values` . 
 
 ```json
 {

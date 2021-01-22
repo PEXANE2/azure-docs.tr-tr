@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: 96c68850cfd8b03f7d1457eb0f1ca9ce5880c926
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: a20c19c3da89801570ca4d74a646e3cf0d8434b6
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98198008"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675911"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Azure 'daki sanal makinelerle altyapı Otomasyonu araçlarını kullanma
 
@@ -87,8 +87,8 @@ Betikler, Azure Storage 'dan veya GitHub deposu gibi genel bir konumdan indirile
 
 Şunları nasıl yapacağınızı öğrenin:
 
-- [Azure CLI ile bir LINUX VM oluşturun ve özel Betik uzantısı 'nı kullanın](./scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md?toc=%2fcli%2fazure%2ftoc.json).
-- [Azure PowerShell ile bir Windows sanal makinesi oluşturun ve özel betik uzantısını kullanın](./scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md).
+- [Azure CLI ile bir LINUX VM oluşturun ve özel Betik uzantısı 'nı kullanın](/previous-versions/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-nginx?toc=%2fcli%2fazure%2ftoc.json).
+- [Azure PowerShell ile bir Windows sanal makinesi oluşturun ve özel betik uzantısını kullanın](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-iis).
 
 
 ## <a name="packer"></a>Packer
@@ -144,7 +144,7 @@ Aşağıdakiler hakkında daha fazla bilgi edinin:
 
 - [Kaynak Yöneticisi şablonu kullanarak spot VM 'Leri dağıtın](./linux/spot-template.md).
 - [Kaynak Yöneticisi şablonundan bir Windows sanal makinesi oluşturun](./windows/ps-template.md).
-- [BIR VM için şablonu indirin](./windows/download-template.md).
+- [BIR VM için şablonu indirin](/previous-versions/azure/virtual-machines/windows/download-template).
 - [Azure görüntü Oluşturucu şablonu oluşturun](./linux/image-builder-json.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar

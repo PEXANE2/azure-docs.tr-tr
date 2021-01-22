@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 07/30/2020
+ms.date: 01/21/2021
 ms.author: victorh
-ms.openlocfilehash: c56298d68bddd326ed2b32215f30a9057fa51e85
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: dc1eb64b5cfb527c10967a1a46525a418fdc37e3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94653122"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674006"
 ---
 # <a name="ip-groups-in-azure-firewall"></a>Azure Güvenlik duvarında IP grupları
 
@@ -26,6 +26,9 @@ IP grupları, Azure Güvenlik duvarı kuralları için IP adreslerini aşağıda
 Bir IP grubunun tek bir IP adresi, birden çok IP adresi veya bir veya daha fazla IP adresi aralığı olabilir.
 
 Azure 'daki bölgeler ve abonelikler arasında birden fazla güvenlik duvarı için Azure Güvenlik Duvarı DNAT, ağ ve uygulama kurallarında IP grupları yeniden kullanılabilir. Grup adları benzersiz olmalıdır. Azure portal, Azure CLı veya REST API bir IP grubu yapılandırabilirsiniz. Başlamanıza yardımcı olmak için örnek bir şablon sağlanır.
+
+> [!NOTE]
+> IP grupları Şu anda Azure Ulusal bulutlar ortamlarında kullanılamıyor.
 
 ## <a name="sample-format"></a>Örnek biçimi
 

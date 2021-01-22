@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 2f383876963e3e1d310e7d93f7dc99bb58b189d3
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 78b0cbbdccc7d6853d4ce2821bf659e888680a5f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97681659"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674652"
 ---
 # <a name="create-a-data-source-android-sdk"></a>Veri kaynağı oluşturma (Android SDK)
 
@@ -355,10 +355,10 @@ Vektör kutucuk kaynağı bir vektör kutucuk katmanına nasıl erişebileceğin
 
 Azure haritalar, açık bir standart olan [Mapbox vektör kutucuk belirtimine](https://github.com/mapbox/vector-tile-spec)uyar. Azure Maps, platformun bir parçası olarak aşağıdaki vektör kutucukları hizmetlerini sağlar:
 
-- Yol kutucukları [belge](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)  |  [verileri biçimi ayrıntıları](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
-- Trafik olayları [belge](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidenttile)  |  [verileri biçimi ayrıntıları](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
-- Trafik akışı [belgeleri](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowtile)  |  [veri biçimi ayrıntıları](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
-- Azure haritalar Oluşturucusu Ayrıca özel vektör kutucuklarının oluşturma ve [kutucuk oluşturma v2](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) aracılığıyla erişilebilir olmasını sağlar
+- Yol kutucukları [belge](/rest/api/maps/renderv2/getmaptilepreview)  |  [verileri biçimi ayrıntıları](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
+- Trafik olayları [belge](/rest/api/maps/traffic/gettrafficincidenttile)  |  [verileri biçimi ayrıntıları](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
+- Trafik akışı [belgeleri](/rest/api/maps/traffic/gettrafficflowtile)  |  [veri biçimi ayrıntıları](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
+- Azure haritalar Oluşturucusu Ayrıca özel vektör kutucuklarının oluşturma ve [kutucuk oluşturma v2](/rest/api/maps/renderv2/getmaptilepreview) aracılığıyla erişilebilir olmasını sağlar
 
 Haritadaki bir vektör kutucuk kaynağından verileri göstermek için, kaynağı veri işleme katmanlarından birine bağlayın. Vektör kaynağı kullanan tüm katmanların seçeneklerde bir değer belirtmesi gerekir `sourceLayer` . Aşağıdaki kod, Azure Maps trafik akışı vektör kutucuk hizmetini bir vektör kutucuk kaynağı olarak yükler ve bir çizgi katmanını kullanarak haritada görüntüler. Bu vektör kutucuk kaynağı kaynak katmanda "trafik akışı" adlı tek bir veri kümesine sahiptir. Bu veri kümesindeki satır verilerinde, `traffic_level` rengi seçmek ve çizgilerin boyutunu ölçeklendirmek için bu kodda kullanılan adlı bir özellik vardır.
 
@@ -523,4 +523,4 @@ Haritalarınıza eklemek için daha fazla kod örneği için aşağıdaki makale
 > [Isı haritası ekleme](map-add-heat-map-layer-android.md)
 
 > [!div class="nextstepaction"]
-> [Web SDK kodu örnekleri](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Web SDK kodu örnekleri](/samples/browse/?products=azure-maps)

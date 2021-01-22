@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: ff7b07cb1a4f480907bb51e741a05deeaae8e66b
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: cfd0476d3462fc902acb7238fcc1947c85af041f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116492"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676188"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio"></a>Azure Data Studio ile SYNAPSE SQL 'e bağlanma
 
@@ -26,7 +26,7 @@ ms.locfileid: "98116492"
 > * [sqlcmd](get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-Azure SYNAPSE Analytics 'te SYNAPSE SQL 'e bağlanmak ve sorgu eklemek için [Azure Data Studio)](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) kullanabilirsiniz. 
+Azure SYNAPSE Analytics 'te SYNAPSE SQL 'e bağlanmak ve sorgu eklemek için [Azure Data Studio)](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) kullanabilirsiniz. 
 
 ## <a name="connect"></a>Bağlan
 
@@ -73,7 +73,7 @@ Başarılı oturum açma işleminden sonra şu şekilde bir pano görmeniz gerek
 
 ## <a name="query"></a>Sorgu
 
-Bağlandıktan sonra, örnek olarak desteklenen [Transact-SQL (T-SQL)](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) deyimlerini kullanarak SYNAPSE SQL 'i sorgulama yapabilirsiniz. Başlamak için Pano görünümünden **Yeni sorgu** ' yı seçin.
+Bağlandıktan sonra, örnek olarak desteklenen [Transact-SQL (T-SQL)](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) deyimlerini kullanarak SYNAPSE SQL 'i sorgulama yapabilirsiniz. Başlamak için Pano görünümünden **Yeni sorgu** ' yı seçin.
 
 ![Yeni Sorgu](./media/get-started-azure-data-studio/5-new-query.png)
 
