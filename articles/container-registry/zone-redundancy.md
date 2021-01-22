@@ -3,12 +3,12 @@ title: Yüksek kullanılabilirlik için bölge yedekli kayıt defteri
 description: Azure Container Registry bölgede yedekliliği etkinleştirme hakkında bilgi edinin. Bir Azure kullanılabilirlik bölgesinde kapsayıcı kayıt defteri veya çoğaltma oluşturun. Bölge artıklığı Premium hizmet katmanının bir özelliğidir.
 ms.topic: article
 ms.date: 01/07/2021
-ms.openlocfilehash: 8c03b2bb093f8d0fa70ff5132f7448ce86e8779d
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 7de8ed101d2df9e491c475f522a56580798c49a9
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127370"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696287"
 ---
 # <a name="enable-zone-redundancy-in-azure-container-registry-for-resiliency-and-high-availability"></a>Dayanıklılık ve yüksek kullanılabilirlik için Azure Container Registry bölgede yedekliliği etkinleştirin
 
@@ -39,7 +39,7 @@ Bölge yedekliliği sağlamak için Azure CLı 'yı kullanmak için Azure CLı s
 
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Gerekirse, kayıt defteri için bir kaynak grubu oluşturmak için [az Group Create](/cli/az/group#az_group_create) komutunu çalıştırın.
+Gerekirse, kayıt defteri için bir kaynak grubu oluşturmak için [az Group Create](/cli/azure/group#az_group_create) komutunu çalıştırın.
 
 ```azurecli
 az group create --name <resource-group-name> --location <location>
@@ -47,7 +47,7 @@ az group create --name <resource-group-name> --location <location>
 
 ### <a name="create-zone-enabled-registry"></a>Bölge özellikli kayıt defteri oluşturma
 
-Premium hizmet katmanında bölge yedekli bir kayıt defteri oluşturmak için [az ACR Create](/cli/az/acr#az_acr_create) komutunu çalıştırın. Azure Container Registry için [kullanılabilirlik bölgelerini destekleyen](../availability-zones/az-region.md) bir bölge seçin. Aşağıdaki örnekte, *eastus* bölgesinde bölge artıklığı etkinleştirilmiştir. `az acr create`Daha fazla kayıt defteri seçeneği için komut yardımına bakın.
+Premium hizmet katmanında bölge yedekli bir kayıt defteri oluşturmak için [az ACR Create](/cli/azure/acr?view=azure-cli-latest#az_acr_create) komutunu çalıştırın. Azure Container Registry için [kullanılabilirlik bölgelerini destekleyen](../availability-zones/az-region.md) bir bölge seçin. Aşağıdaki örnekte, *eastus* bölgesinde bölge artıklığı etkinleştirilmiştir. `az acr create`Daha fazla kayıt defteri seçeneği için komut yardımına bakın.
 
 ```azurecli
 az acr create \
@@ -69,7 +69,7 @@ Komut çıkışında, `zoneRedundancy` kayıt defteri için özelliği aklınız
 
 ### <a name="create-zone-redundant-replication"></a>Bölge yedekli çoğaltma oluşturma
 
-*Westus2* gibi Azure Container Registry [kullanılabilirlik bölgelerini destekleyen](../availability-zones/az-region.md) bir bölgede bölgesel olarak yedekli bir kayıt defteri çoğaltması oluşturmak için [az ACR Replication Create](/cli/az/acr/replication#az_acr_replication_create) komutunu çalıştırın. 
+*Westus2* gibi Azure Container Registry [kullanılabilirlik bölgelerini destekleyen](../availability-zones/az-region.md) bir bölgede bölgesel olarak yedekli bir kayıt defteri çoğaltması oluşturmak için [az ACR Replication Create](/cli/azure/acr/replication?view=azure-cli-latest#az_acr_replication_create) komutunu çalıştırın. 
 
 ```azurecli
 az acr replication create \
@@ -113,7 +113,7 @@ Bölgesel olarak yedekli bir çoğaltma oluşturmak için:
 
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Gerekirse, *eastus* gibi Azure Container Registry [kullanılabilirlik bölgelerini destekleyen](../availability-zones/az-region.md) bir bölgede kayıt defteri için bir kaynak grubu oluşturmak için [az Group Create](/cli/az/group#az_group_create) komutunu çalıştırın. Bu bölge, şablon tarafından kayıt defteri konumunu ayarlamak için kullanılır.
+Gerekirse, *eastus* gibi Azure Container Registry [kullanılabilirlik bölgelerini destekleyen](../availability-zones/az-region.md) bir bölgede kayıt defteri için bir kaynak grubu oluşturmak için [az Group Create](/cli/azure/group#az_group_create) komutunu çalıştırın. Bu bölge, şablon tarafından kayıt defteri konumunu ayarlamak için kullanılır.
 
 ```azurecli
 az group create --name <resource-group-name> --location eastus
@@ -219,7 +219,7 @@ Aşağıdaki içerikleri yeni bir dosyaya kopyalayın ve gibi bir dosya adı kul
   }
 ```
 
-Önceki şablon dosyasını kullanarak kayıt defterini oluşturmak için aşağıdaki [az Deployment Group Create](/cli/az/deployment#az_group_deployment_create) komutunu çalıştırın. Belirtilen yerlerde şunları sağlayın:
+Önceki şablon dosyasını kullanarak kayıt defterini oluşturmak için aşağıdaki [az Deployment Group Create](/cli/azure/group/deployment?view=azure-cli-latest#az_group_deployment_create) komutunu çalıştırın. Belirtilen yerlerde şunları sağlayın:
 
 * benzersiz bir kayıt defteri adı veya şablonu parametre olmadan dağıtın ve sizin için benzersiz bir ad oluşturur
 * çoğaltma için *westus2* gibi kullanılabilirlik bölgelerini destekleyen bir konum

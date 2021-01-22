@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: bcb912a24dfb2a5e78719cf9010fd23afe0df185
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1c33011d947d6dc9dd9ee4dd6331c24c06d99b38
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484405"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693833"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>SAP Çözümleri için Azure izleyici (Önizleme)
 
@@ -24,7 +24,7 @@ SAP Çözümleri için Azure Izleyici ile müşteriler, Azure altyapısından ve
 
 SAP Çözümleri için Azure Izleyici, Azure Marketi aracılığıyla sunulur. Basit, sezgisel bir kurulum deneyimi sağlar ve yalnızca birkaç tıklamayla yararlanarak SAP için Azure Izleyici çözümleri için kaynak ( **SAP Monitor kaynağı** olarak bilinir) dağıtımı gerçekleştirir.
 
-Müşteriler, bu bileşene karşılık gelen **sağlayıcıyı** ekleyerek Azure sanal makineleri, yüksek kullanılabilirlik kümesi, SAP HANA veritabanı vb. gibi SAP yatay 'ın farklı bileşenlerini izleyebilir.
+Müşteriler, bu bileşene karşılık gelen **sağlayıcıyı** ekleyerek Azure sanal makineler, yüksek kullanılabilirlik kümesi, SAP HANA veritabanı vb. gibi SAP yatay 'ın farklı bileşenlerini izleyebilir.
 
 Desteklenen altyapı:
 
@@ -35,7 +35,7 @@ Desteklenen veritabanları:
 - SAP HANA Veritabanı
 - Microsoft SQL Server
 
-SAP Çözümleri için Azure Izleyici, ek izleme özellikleri sağlamak üzere Log Analytics ve [çalışma kitapları](../../../azure-monitor/platform/workbooks-overview.md) gibi mevcut [Azure izleyici](../../../azure-monitor/overview.md) yeteneklerinin gücünden yararlanır. Müşteriler, SAP Çözümleri için Azure Izleyici tarafından sunulan varsayılan çalışma kitaplarını düzenleyerek özel bir [görselleştirme](../../../azure-monitor/platform/workbooks-overview.md#getting-started) oluşturabilir, Azure Log Analytics çalışma alanı kullanarak [özel sorgular](../../../azure-monitor/log-query/log-analytics-tutorial.md) yazabilir ve [özel uyarılar](../../../azure-monitor/learn/tutorial-response.md) oluşturabilir, [Esnek saklama süresinden](../../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) yararlanır ve izleme verilerini bilet oluşturma sistemiyle birbirine bağlayabilirler.
+SAP Çözümleri için Azure Izleyici, daha fazla izleme özelliği sağlamak üzere Log Analytics ve [çalışma kitapları](../../../azure-monitor/platform/workbooks-overview.md) gibi mevcut [Azure izleyici](../../../azure-monitor/overview.md) yeteneklerinin gücünü kullanır. Müşteriler, SAP Çözümleri için Azure Izleyici tarafından sunulan varsayılan çalışma kitaplarını düzenleyerek özel bir [görselleştirme](../../../azure-monitor/platform/workbooks-overview.md#getting-started) oluşturabilir, Azure Log Analytics çalışma alanı kullanarak [özel sorgular](../../../azure-monitor/log-query/log-analytics-tutorial.md) yazabilir ve [özel uyarılar](../../../azure-monitor/learn/tutorial-response.md) oluşturabilir, [Esnek saklama süresinden](../../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) yararlanır ve izleme verilerini bilet oluşturma sistemiyle birbirine bağlayabilirler.
 
 ## <a name="what-data-does-azure-monitor-for-sap-solutions-collect"></a>SAP Çözümleri için Azure Izleyici hangi verileri toplar?
 
@@ -60,8 +60,17 @@ Microsoft SQL Server telemetri:
 - Zaman içinde toplu Istekler, derlemeler ve sayfa ömrü erkeklerin
 - Zaman içinde en çok pahalı 10 SQL deyimi
 - SAP sisteminde ilk 12 en büyük tablo
-- SQL Server hata günlüklerine kaydedilen sorunlar
+- SQL Server hata günlüğüne kaydedilen sorunlar
 - Zaman içinde işlem ve SQL bekleme Istatistiklerini engelleme
+
+İşletim sistemi telemetrisi (Linux) 
+- CPU kullanımı, çatal sayısı, çalışan ve Engellenen süreçler. 
+- Bellek kullanımı ve kullanılan, önbelleğe alınmış, ara belleğe alınmış. 
+- Kullanım, sayfalama ve takas hızını değiştirme. 
+- Dosya sistemleri kullanımı, blok cihaz başına okunan ve yazılan bayt sayısı. 
+- Blok cihaz başına okuma/yazma gecikme süresi. 
+- Devam eden g/ç sayısı, kalıcı bellek okuma/yazma baytları. 
+- Ağ paketleri/Out, ağ baytları/Out 
 
 ## <a name="data-sharing-with-microsoft"></a>Microsoft ile veri paylaşımı
 
@@ -96,9 +105,9 @@ Mimarinin temel bileşenleri şunlardır:
 
 Mimarinin başlıca vurgulamaları aşağıda verilmiştir:
  - **Çok örnekli** -MÜŞTERILER, SAP Çözümleri için tek bir Azure izleyici kaynağına sahıp bir sanal ağ içindeki bırden fazla sap SID arasında belirli bir bileşen türünün (ÖRNEĞIN, Hana DB, ha kümesi, Microsoft SQL Server) birden çok örneği için izleyici oluşturabilir.
- - **Multi-Provider** -yukarıdaki mimari diyagramda, örnek olarak SAP HANA sağlayıcısı gösterilmektedir. Benzer şekilde, müşteriler ilgili bileşenler için ek sağlayıcılar (örneğin, HANA DB, HA kümesi, Microsoft SQL Server), bu bileşenlerden veri toplamak için yapılandırabilir.
+ - **Multi-Provider** -yukarıdaki mimari diyagramda, örnek olarak SAP HANA sağlayıcısı gösterilmektedir. Benzer şekilde, müşteriler ilgili bileşenleri (örneğin, HANA DB, HA kümesi, Microsoft SQL Server) Bu bileşenlerden veri toplamak için daha fazla sağlayıcı yapılandırabilir.
  - **Açık kaynak** -SAP Için Azure izleyici çözümlerinin kaynak kodu [GitHub](https://github.com/Azure/AzureMonitorForSAPSolutions)' da bulunabilir. Müşteriler sağlayıcı koduna başvurabilir ve ürün, katkıda bulunma veya paylaşma hakkında daha fazla bilgi edinebilirsiniz.
- - **Genişletilebilir sorgu çerçevesi** -telemetri verilerini toplamak için SQL sorguları [JSON](https://github.com/Azure/AzureMonitorForSAPSolutions/blob/master/sapmon/content/SapHana.json)dilinde yazılır. Daha fazla telemetri verisi toplamak için ek SQL sorguları kolayca eklenebilir. Müşteriler, bu belgenin sonundaki bağlantı aracılığıyla geri bildirim bırakarak veya hesap ekibine başvurarak, SAP Çözümleri için Azure Izleyici 'ye belirli telemetri verileri eklemek isteyebilir.
+ - **Genişletilebilir sorgu çerçevesi** -telemetri verilerini toplamak için SQL sorguları [JSON](https://github.com/Azure/AzureMonitorForSAPSolutions/blob/master/sapmon/content/SapHana.json)dilinde yazılır. Daha fazla telemetri verisi toplamak için daha fazla SQL sorgusu kolayca eklenebilir. Müşteriler, bu belgenin sonundaki bağlantı aracılığıyla geri bildirim bırakarak veya hesap ekibine başvurarak, SAP Çözümleri için Azure Izleyici 'ye belirli telemetri verileri eklemek isteyebilir.
 
 ## <a name="pricing"></a>Fiyatlandırma
 SAP Çözümleri için Azure Izleyici, ücretsiz bir üründür (lisans ücreti yoktur). Müşteriler, yönetilen kaynak grubundaki temel bileşenler için maliyeti ödemekten sorumludur.

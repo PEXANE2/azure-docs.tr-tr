@@ -14,19 +14,19 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f2e899a9d98d43f826bfa63e62458adf1601f071
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 77c68b3c17b8815c4858e1d73251975a7e00e6eb
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042989"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695713"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>Media Services kullanarak canlı akışa genel bakış
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -53,9 +53,9 @@ Media Services sayesinde [dinamik paketlemeden](media-services-dynamic-packaging
 
 ## <a name="streaming-endpoints-channels-programs"></a>Akış uç noktaları, kanallar, programlar
 
-Azure Media Services’de **Kanallar** , **Programlar** ve **Akış Uç Noktaları** ; alma biçimlendirme, DVR, güvenlik, ölçeklenebilirlik ve yedeklilik dahil olmak üzere tüm canlı akış işlevlerini idare eder.
+Azure Media Services’de **Kanallar**, **Programlar** ve **Akış Uç Noktaları**; alma biçimlendirme, DVR, güvenlik, ölçeklenebilirlik ve yedeklilik dahil olmak üzere tüm canlı akış işlevlerini idare eder.
 
-**Kanal** , canlı akış içeriğinin işleneceği bir işlem hattını temsil eder. Kanal aşağıdaki yollarla bir canlı girdi akışı alabilir:
+**Kanal**, canlı akış içeriğinin işleneceği bir işlem hattını temsil eder. Kanal aşağıdaki yollarla bir canlı girdi akışı alabilir:
 
 * Şirket içi bir gerçek zamanlı kodlayıcı, çoklu bit hızına sahip **RTMP** veya **Kesintisiz Akışı** (parçalanmış MP4) **doğrudan geçiş** teslimi için yapılandırılmış Kanala gönderir. **Doğrudan geçiş** teslimi, alınan akışların herhangi başka bir işlemeye uğramadan **Kanallardan** geçmesidir. Çoklu bit hızı Kesintisiz Akış: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco ve elete çıkış yapan aşağıdaki canlı kodlayıcıları kullanabilirsiniz. Aşağıdaki Live kodlayıcılar çıktıyı RTMP: Telestream kablo, haivision, teradek transcoders.  Gerçek zamanlı bir kodlayıcı, gerçek zamanlı kodlama için etkinleştirilmemiş bir kanala tek bit hızlı bir akış da gönderebilir, ancak bu işlem önerilmez. İstendiğinde, Media Services akışı müşterilere teslim eder.
 
@@ -74,19 +74,19 @@ Media Services 2,10 sürümü ile başlayarak, bir kanal oluşturduğunuzda, kan
 
 Aşağıdaki tabloda, Media Services desteklenen iki kanal türünü Karşılaştırma Kılavuzu sunulmaktadır
 
-| Özellik | Doğrudan geçiş kanalı | Standart Kanal |
+| Öne çıkan özelliği | Doğrudan geçiş kanalı | Standart Kanal |
 | --- | --- | --- |
-| Tek bit hızı girişi, bulutta birden çok bit hızında kodlanır |Hayır |Yes |
+| Tek bit hızı girişi, bulutta birden çok bit hızında kodlanır |Hayır |Evet |
 | Maksimum çözünürlük, katman sayısı |1080p, 8 katman, 60 + fps |720p, 6 katman, 30 fps |
 | Giriş protokolleri |RTMP, Kesintisiz Akış |RTMP, Kesintisiz Akış |
 | Fiyat |[Fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/media-services/) bakın ve "canlı video" sekmesine tıklayın |[Fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/media-services/) bakın |
 | En fazla çalışma süresi |7x24 |8 saat |
-| SLA ekleme desteği |Hayır |Yes |
-| Ad sinyali için destek |Hayır |Yes |
-| Geçiş CEA 608/708 açıklamalı alt yazılar |Yes |Yes |
-| Tekdüzen olmayan giriş GOPs desteği |Yes |Hayır – giriş sabit 2sec GOPs olmalıdır |
-| Değişken çerçeve hızı girişi desteği |Yes |Hayır – giriş sabit kare oranı olmalıdır.<br/>Küçük çeşitlemeler, örneğin, yüksek hareket sahneleri sırasında toleranslı olarak dağıtılır. Ancak kodlayıcı 10 kare/sn 'ye bırakamıyor. |
-| Giriş akışı kaybedildiği zaman kanalların otomatik olarak kaybolması |No |12 saat sonra, çalışan bir program yoksa |
+| SLA ekleme desteği |Hayır |Evet |
+| Ad sinyali için destek |Hayır |Evet |
+| Geçiş CEA 608/708 açıklamalı alt yazılar |Evet |Evet |
+| Tekdüzen olmayan giriş GOPs desteği |Evet |Hayır – giriş sabit 2sec GOPs olmalıdır |
+| Değişken çerçeve hızı girişi desteği |Evet |Hayır – giriş sabit kare oranı olmalıdır.<br/>Küçük çeşitlemeler, örneğin, yüksek hareket sahneleri sırasında toleranslı olarak dağıtılır. Ancak kodlayıcı 10 kare/sn 'ye bırakamıyor. |
+| Giriş akışı kaybedildiği zaman kanalların otomatik olarak kaybolması |Hayır |12 saat sonra, çalışan bir program yoksa |
 
 ## <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>Şirket içi kodlayıcılardan çoklu bit hızlı canlı akış alan Kanallar ile çalışma (doğrudan geçiş)
 
@@ -142,11 +142,11 @@ Kanal ile işiniz bittiğinde kanallarınızı durdurmaktan siz sorumlusunuz. Ka
 ### <a name="channel-states-and-how-they-map-to-the-billing-mode"></a><a id="states"></a>Kanal durumları ve bunların faturalama moduyla nasıl eşlendikleri
 Bir kanalın geçerli durumu. Olası değerler şunlardır:
 
-* **Durduruldu** . Bu, oluşturulduktan sonra kanalın ilk durumudur (portalda otomatik başlatma seçili değilse). Bu durumda faturalandırma yapılmaz. Bu durumda, kanal özellikleri güncelleştirilemeyebilir ancak akışa izin verilmez.
-* **Başlatılıyor** . Kanal başlatılıyor. Bu durumda faturalandırma yapılmaz. Bu durum sırasında güncelleştirme veya akışa izin verilmez. Bir hata oluşursa, kanal durdurulmuş duruma geri döner.
-* **Çalışıyor** . Kanal Canlı akışları işleyebilir. Artık fatura kullanımı. Daha fazla faturalandırma yapılmasını engellemek için kanalı durdurmanız gerekir.
-* **Durduruluyor** . Kanal durduruluyor. Bu geçici durumda faturalandırma yapılmaz. Bu durum sırasında güncelleştirme veya akışa izin verilmez.
-* **Siliniyor** . Kanal siliniyor. Bu geçici durumda faturalandırma yapılmaz. Bu durum sırasında güncelleştirme veya akışa izin verilmez.
+* **Durduruldu**. Bu, oluşturulduktan sonra kanalın ilk durumudur (portalda otomatik başlatma seçili değilse). Bu durumda faturalandırma yapılmaz. Bu durumda, kanal özellikleri güncelleştirilemeyebilir ancak akışa izin verilmez.
+* **Başlatılıyor**. Kanal başlatılıyor. Bu durumda faturalandırma yapılmaz. Bu durum sırasında güncelleştirme veya akışa izin verilmez. Bir hata oluşursa, kanal durdurulmuş duruma geri döner.
+* **Çalışıyor**. Kanal Canlı akışları işleyebilir. Artık fatura kullanımı. Daha fazla faturalandırma yapılmasını engellemek için kanalı durdurmanız gerekir.
+* **Durduruluyor**. Kanal durduruluyor. Bu geçici durumda faturalandırma yapılmaz. Bu durum sırasında güncelleştirme veya akışa izin verilmez.
+* **Siliniyor**. Kanal siliniyor. Bu geçici durumda faturalandırma yapılmaz. Bu durum sırasında güncelleştirme veya akışa izin verilmez.
 
 Aşağıdaki tabloda, kanal durumlarının faturalandırma moduna nasıl eşlenme gösterilmektedir.
 
@@ -155,12 +155,12 @@ Aşağıdaki tabloda, kanal durumlarının faturalandırma moduna nasıl eşlenm
 | Başlatılıyor |Başlatılıyor |Hayır (geçici durum) |
 | Çalışma |Ready (çalışan program yok)<br/>veya<br/>Akış (en az bir çalışan program) |EVET |
 | Durduruluyor |Durduruluyor |Hayır (geçici durum) |
-| Durduruldu |Durduruldu |No |
+| Durduruldu |Durduruldu |Hayır |
 
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>İlgili konular

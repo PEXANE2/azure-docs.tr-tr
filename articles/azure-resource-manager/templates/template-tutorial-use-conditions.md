@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: bc6dc5b385a39ddb1c4f1663649ea21e5ed14767
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 4affc2add2822702c1d5395f81efe01eeedf448b
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97669321"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696032"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>Öğretici: ARM şablonlarında koşul kullanma
 
@@ -28,10 +28,10 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Şablonu dağıtma
 > * Kaynakları temizleme
 
-Bu öğretici yalnızca koşulların kullanıldığı temel bir senaryoyu ele alır. Daha fazla bilgi için bkz:
+Bu öğretici yalnızca koşulların kullanıldığı temel bir senaryoyu ele alır. Daha fazla bilgi için bkz.
 
 * [Şablon dosyası yapısı: koşul](conditional-resource-deployment.md).
-* [BIR ARM şablonunda bir kaynağı koşullu olarak dağıtın](/azure/architecture/building-blocks/extending-templates/conditional-deploy).
+* [BIR ARM şablonunda bir kaynağı koşullu olarak dağıtın](/azure/architecture/guide/azure-resource-manager/advanced-templates/conditional-deploy).
 * [Şablon işlevi: Eğer](./template-functions-logical.md#if).
 * [ARM şablonları için karşılaştırma işlevleri](./template-functions-comparison.md)
 

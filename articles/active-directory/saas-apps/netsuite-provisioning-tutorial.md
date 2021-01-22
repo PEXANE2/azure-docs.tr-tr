@@ -10,21 +10,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: a5b995fd273fcfa231e101bc77b11d268be728fb
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 294870d3448886b9cea573a0e79b3ac436941f89
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359144"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696498"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için NetSuite yapılandırma
 
 Bu öğreticinin amacı, Azure AD 'den NetSuite 'e Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için NetSuite OneWorld ve Azure AD 'de gerçekleştirmeniz gereken adımları gösteriyoruz.
 
-> [!NOTE]
-> Bu tümleştirme Şu anda temel kimlik doğrulaması (Kullanıcı adı ve parola) kullanarak kimlik doğrular. NetSuite, bu gereksinimden bir istisna olmadıkları takdirde müşterilerin bu tümleştirmeyi kullanmasını engelleyen bir Multi-Factor Authentication gereksinimi uygulamıştır. Bu tümleştirmeyi, bir istisna olmadan müşterileri etkinleştirmek için daha yeni bir kimlik doğrulama yöntemiyle güncelleştirmek üzere NetSuite ile çalışıyoruz. Bu belgeyi, varsa bir ETA ile güncelleştireceğiz.
-
-Önerilen eylem: lütfen bu tümleştirme için kimlik doğrulama davranışına bir güncelleştirme yayınlıyoruz veya Multi-Factor Authentication gereksinimini bir istisna hakkında sorgulamak için NetSuite desteğine ulaşın.
+> [!WARNING]
+> Bu sağlama tümleştirmesi, Microsoft tarafından NetSuite 'e Kullanıcı sağlamak için kullanılan NetSuite API 'Lerinde yapılan bir değişiklik nedeniyle Şubat 2020 ' de çalışmayı durdurur. Bunun sonucunda, Azure Active Directory Kurumsal uygulama galerisinde NetSuite uygulamasının sağlama işlevselliği yakında kaldırılacaktır. Uygulamanın SSO işlevselliği değişmeden kalır. Microsoft, NetSuite ile birlikte çalışarak yeni bir modernlanmış sağlama tümleştirmesi oluşturur, ancak bu işlem tamamlandığında Şu anda hiçbir ETA yoktur.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -66,7 +64,7 @@ Bu bölümün amacı, Active Directory Kullanıcı hesaplarının NetSuite 'e Ku
 
 1. NetSuite örneğinizi seçin, sonra **sağlama** sekmesini seçin.
 
-1. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın. 
+1. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın. 
 
     ![Ekran görüntüsü, sağlama modu otomatik ve ayarlayabileceğiniz diğer değerlere ayarlanmış olan NetSuite sağlama sayfasını gösterir.](./media/netsuite-provisioning-tutorial/provisioning.png)
 

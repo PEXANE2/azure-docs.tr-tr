@@ -2,13 +2,13 @@
 title: Azure Service Bus sık sorulan sorular (SSS) | Microsoft Docs
 description: Bu makalede Azure Service Bus hakkında sık sorulan soruların (SSS) bazılarına yanıtlar verilmektedir.
 ms.topic: article
-ms.date: 09/16/2020
-ms.openlocfilehash: e5bc9aae081868c92e0968c88c8cb6dcfb8ee57c
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.date: 01/20/2021
+ms.openlocfilehash: 3a96cf94ca4a7edd115f12b3e2eded11a5894e04
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676383"
+ms.locfileid: "98693416"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus-sık sorulan sorular (SSS)
 
@@ -35,8 +35,11 @@ Bölümlenmiş varlıklar kullanılırken sıralama değildir. Bir bölümün ku
 
  Bölümlenmiş varlıklar artık [Premium SKU 'sunda](service-bus-premium-messaging.md)desteklenmez. 
 
-### <a name="where-does-azure-service-bus-store-customer-data"></a><a name="in-region-data-residency"></a>Azure Service Bus müşteri verilerini nerede depolar?
-Azure Service Bus müşteri verilerini depolar. Bu veriler tek bir bölgede Service Bus tarafından otomatik olarak depolanır. bu nedenle bu hizmet, [Güven Merkezi](https://azuredatacentermap.azurewebsites.net/)'nde belirtilenler de dahil olmak üzere bölge verileri 'nin gereksinimlerini otomatik olarak karşılar.
+### <a name="where-does-azure-service-bus-store-data"></a><a name="in-region-data-residency"></a>Azure Service Bus verileri nerede depolar?
+Azure Service Bus Standart katman, arka uç depolama katmanı için Azure SQL veritabanı 'nı kullanır. Brezilya Güney ve Güneydoğu Asya dışındaki tüm bölgelerde veritabanı yedeklemesi, farklı bir bölgede (genellikle Azure eşleştirilmiş bölge) barındırılır. Brezilya Güney ve Güneydoğu Asya bölgeleri için veritabanı yedeklemeleri, bu bölgelerin veri fazlalığını karşılamak için aynı bölgede depolanır.
+
+Azure Service Bus Premium katmanı, seçtiğiniz bölgelerde meta verileri ve verileri depolar. Coğrafi olağanüstü durum kurtarma, Azure Service Bus Premium ad alanı için ayarlandığında, meta veriler üzerinde seçtiğiniz ikincil bölgeye kopyalanır.
+
 
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Güvenlik duvarında hangi bağlantı noktalarını açmalıyım? 
 Aşağıdaki protokolleri, ileti göndermek ve almak için Azure Service Bus ile birlikte kullanabilirsiniz:

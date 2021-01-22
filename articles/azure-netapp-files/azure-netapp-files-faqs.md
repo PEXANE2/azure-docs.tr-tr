@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/05/2020
+ms.date: 01/21/2020
 ms.author: b-juche
-ms.openlocfilehash: 913d61c506505d18fff416291e7f3b718f1d92f3
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: f680b1ec76200cb4d3bfc90cd83a2c134f379245
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913507"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696134"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files hakkında SSS
 
@@ -258,6 +258,16 @@ Hayır. Azure Data Box Şu anda Azure NetApp Files desteklemiyor.
 ### <a name="is-migration-with-azure-importexport-service-supported"></a>Azure Içeri/dışarı aktarma hizmeti ile geçiş destekleniyor mu?
 
 Hayır. Azure Içeri/dışarı aktarma hizmeti şu anda Azure NetApp Files desteklemiyor.
+
+## <a name="product-faqs"></a>Ürün SSS
+
+### <a name="can-i-use-azure-netapp-files-nfs-or-smb-volumes-with-azure-vmware-solution-avs"></a>Azure VMware çözümü (AVS) ile Azure NetApp Files NFS veya SMB birimleri kullanabilir miyim?
+
+AVS Windows VM 'lerine veya Linux VM 'lerine Azure NetApp Files NFS birimleri bağlayabilirsiniz. AVS Windows VM 'lerinde Azure NetApp Files SMB paylaşımlarını eşleyebilirsiniz. Daha ayrıntılı bilgi için bkz. [Azure VMware çözümü ile Azure NetApp Files]( ../azure-vmware/net-app-files-with-azure-vmware-solution.md).  
+
+### <a name="what-regions-are-supported-for-using-azure-netapp-files-nfs-or-smb-volumes-with-azure-vmware-solution-avs"></a>Azure VMware çözümü (AVS) ile Azure NetApp Files NFS veya SMB birimi kullanımı için hangi bölgeler desteklenir?
+
+Azure NetApp Files NFS veya AVS ile SMB birimleri kullanmak, aşağıdaki bölgelerde Doğu ABD, Batı ABD, Batı Avrupa ve Avustralya Doğu desteklenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 

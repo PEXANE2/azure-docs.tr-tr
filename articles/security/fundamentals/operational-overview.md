@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: 9dcb1113bb37cb0f5f65c54ae9d6ca76a88330c1
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: c3674b6877438a0dd4fe53569cf6852e872334a7
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698674"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693621"
 ---
 # <a name="azure-operational-security-overview"></a>Azure operasyonel güvenliğe genel bakış
 
@@ -171,21 +171,21 @@ Planlar çeşitli kaynak şablonlarının ve diğer yapıtların dağıtımını
 
 ## <a name="devops"></a>DevOps
 
-[Geliştirici işlemleri (DevOps)](https://www.visualstudio.com/learn/what-is-devops/) uygulaması geliştirmeden önce, takımlar bir yazılım programı için iş gereksinimlerini toplamaya ve kod yazmaya ücretsizdir. Ardından, ayrı bir QA ekibi, programı yalıtılmış bir geliştirme ortamında test ediyor. Gereksinimler karşılanıyorsa, QA ekibi dağıtılacak işlemler için kodu serbest bıraktı. Dağıtım takımları ağ ve veritabanı gibi gruplara daha fazla parçalanmıştı. Bir yazılım programının bir bağımsız ekibe "her ne kadar her" bir şekilde oluşturulduğu "her seferinde performans sorunları oluşur.
+[Geliştirici işlemleri (DevOps)](https://azure.microsoft.com/overview/what-is-devops/) uygulaması geliştirmeden önce, takımlar bir yazılım programı için iş gereksinimlerini toplamaya ve kod yazmaya ücretsizdir. Ardından, ayrı bir QA ekibi, programı yalıtılmış bir geliştirme ortamında test ediyor. Gereksinimler karşılanıyorsa, QA ekibi dağıtılacak işlemler için kodu serbest bıraktı. Dağıtım takımları ağ ve veritabanı gibi gruplara daha fazla parçalanmıştı. Bir yazılım programının bir bağımsız ekibe "her ne kadar her" bir şekilde oluşturulduğu "her seferinde performans sorunları oluşur.
 
 DevOps, ekiplerin daha hızlı ve daha fazla sayıda daha güvenli, daha fazla kaliteli çözüm sunmalarını sağlar. Müşteriler, yazılım ve Hizmetleri kullanırken dinamik ve güvenilir bir deneyim bekler. Ekipler, yazılım güncelleştirmelerinde hızla yineleyebilir ve güncelleştirmelerin etkisini ölçmelidir. Sorunları gidermek veya daha fazla değer sağlamak için yeni geliştirme yinelemeleriyle hızla yanıt vermelidir.  
 
 Microsoft Azure gibi bulut platformları, geleneksel performans sorunlarını kaldırmış ve metalaşmasına altyapısına yardımcı olmuştur. Her işletmeden yazılım, anahtar farklılama ve iş sonuçları faktörü olarak yeniden yapılır. Kuruluş, geliştirici veya BT çalışanı DevOps hareketini önyükleyebilir veya kaçınmamalıdır.
 
-Yetişkinlere yönelik DevOps uygulayıcıları aşağıdaki uygulamalardan birkaçını benimseyin. Bu uygulamalar, iş senaryolarına göre stratejileri oluşturacak [kişileri içerir](https://www.visualstudio.com/learn/what-is-devops-culture/) . Araç araçları çeşitli uygulamaların otomatikleştirilmesine yardımcı olabilir.
+Yetişkinlere yönelik DevOps uygulayıcıları aşağıdaki uygulamalardan birkaçını benimseyin. Bu uygulamalar, iş senaryolarına göre stratejileri oluşturacak [kişileri içerir](/azure/devops/learn/what-is-devops-culture) . Araç araçları çeşitli uygulamaların otomatikleştirilmesine yardımcı olabilir.
 
 - [Çevik planlama ve proje yönetimi](https://www.visualstudio.com/learn/what-is-agile/) teknikleri, işleri planlamak ve Sprint 'ler halinde yalıtmak, takım kapasitesini yönetmek ve takımların değişen iş ihtiyaçlarına hızla uyum sağlamasına yardımcı olmak için kullanılır.
-- [Genellikle git Ile sürüm denetimi](https://www.visualstudio.com/learn/what-is-git/), dünyanın herhangi bir yerinden bulunan ekiplerin kaynak paylaşmasını ve yazılım geliştirme araçlarıyla tümleşmesini sağlar ve yayın işlem hattını otomatik hale getirir.
-- [Sürekli tümleştirme](https://www.visualstudio.com/learn/what-is-continuous-integration/) , kodun sürekli olarak birleştirilmesini ve test edilmesini sağlar ve bu da kusurların erken olarak bulunmasına yol açar.  Diğer avantajlar, birleştirme sorunları ve geliştirme ekipleri için hızlı geri bildirimde bulunmak için harcanan süreyi daha az zaman alır.
-- Yazılım çözümlerinin üretime ve test ortamlarına [sürekli teslimi](https://www.visualstudio.com/learn/what-is-continuous-delivery/) , kuruluşların hataları hızla düzeltmesine ve sürekli değişen iş gereksinimlerine yanıt vermesine yardımcı olur.
-- Çalışan uygulamaların [izlenmesi](https://www.visualstudio.com/learn/what-is-monitoring/) --uygulama durumu için üretim ortamları ve müşteri kullanımı dahil olmak üzere, kuruluşların bir varsayım oluşturmasına ve stratejileri hızlı bir şekilde doğrulamasına veya kanıtlarına yardımcı olur.  Zengin veriler yakalanır ve çeşitli günlük biçimlerinde depolanır.
-- [Kod olarak altyapı (IAC)](https://www.visualstudio.com/learn/what-is-infrastructure-as-code/) , güvenli, kararlı uygulama barındırma platformları sunmaya yardımcı olmak üzere ağların ve sanal makinelerin oluşturulması ve test edilmesi için Otomasyon ve doğrulamanın doğrulanmasını sağlayan bir uygulamadır.
-- [Mikro hizmetler](https://www.visualstudio.com/learn/what-are-microservices/) mimarisi, iş kullanım örneklerini küçük yeniden kullanılabilir hizmetlere ayırmak için kullanılır.  Bu mimari ölçeklenebilirlik ve verimliliği sunar.
+- [Genellikle git Ile sürüm denetimi](/azure/devops/learn/git/what-is-git), dünyanın herhangi bir yerinden bulunan ekiplerin kaynak paylaşmasını ve yazılım geliştirme araçlarıyla tümleşmesini sağlar ve yayın işlem hattını otomatik hale getirir.
+- [Sürekli tümleştirme](/azure/devops/learn/what-is-continuous-integration) , kodun sürekli olarak birleştirilmesini ve test edilmesini sağlar ve bu da kusurların erken olarak bulunmasına yol açar.  Diğer avantajlar, birleştirme sorunları ve geliştirme ekipleri için hızlı geri bildirimde bulunmak için harcanan süreyi daha az zaman alır.
+- Yazılım çözümlerinin üretime ve test ortamlarına [sürekli teslimi](/azure/devops/learn/what-is-continuous-delivery) , kuruluşların hataları hızla düzeltmesine ve sürekli değişen iş gereksinimlerine yanıt vermesine yardımcı olur.
+- Çalışan uygulamaların [izlenmesi](/azure/devops/learn/what-is-monitoring) --uygulama durumu için üretim ortamları ve müşteri kullanımı dahil olmak üzere, kuruluşların bir varsayım oluşturmasına ve stratejileri hızlı bir şekilde doğrulamasına veya kanıtlarına yardımcı olur.  Zengin veriler yakalanır ve çeşitli günlük biçimlerinde depolanır.
+- [Kod olarak altyapı (IAC)](/azure/devops/learn/what-is-infrastructure-as-code) , güvenli, kararlı uygulama barındırma platformları sunmaya yardımcı olmak üzere ağların ve sanal makinelerin oluşturulması ve test edilmesi için Otomasyon ve doğrulamanın doğrulanmasını sağlayan bir uygulamadır.
+- [Mikro hizmetler](/azure/devops/learn/what-are-microservices) mimarisi, iş kullanım örneklerini küçük yeniden kullanılabilir hizmetlere ayırmak için kullanılır.  Bu mimari ölçeklenebilirlik ve verimliliği sunar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

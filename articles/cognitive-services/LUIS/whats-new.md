@@ -4,13 +4,13 @@ description: Bu makale, Azure bilişsel hizmetler Language Understanding API hak
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 01/12/2021
-ms.openlocfilehash: 4bcd25e96aba1ca103737679540cb9ff67674914
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.date: 01/21/2021
+ms.openlocfilehash: 5fdde81d31eae4c50b86a5553742f9b599f32505
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179138"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693604"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding yenilikleri
 
@@ -21,6 +21,7 @@ Hizmette nelerin yeni olduğunu öğrenin. Bu öğeler sürüm notlarını, Vide
 ### <a name="january-2021"></a>Ocak 2021
 
 * V3 tahmin API 'si artık [Bing yazım denetımı API](luis-how-to-publish-app.md#spelling-correction)'sini destekliyor.
+* Bölgesel portallar (au.luis.ai ve eu.luis.ai) tek bir portalda ve URL 'de birleştirildi. Bu portallardan birini kullanıyorsanız, luis.ai 'e otomatik olarak yeniden yönlendirilirsiniz.
 
 ### <a name="december-2020"></a>Aralık 2020
 

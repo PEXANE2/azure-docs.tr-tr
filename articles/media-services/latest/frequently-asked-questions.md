@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 50a0fe0fa5dece41ac9e343d5a8939e8d9dc634e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 9e48d14419e2cd24251f1b00a09fd0289c50c55f
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426881"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693816"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 hakkında sık sorulan sorular
 
@@ -30,7 +30,7 @@ Bu makalede, Azure Media Services v3 hakkında sık sorulan sorulara yanıtlar v
 
 V3 canlı olaylarını yönetmek, v3 varlıklarını ve işleri görüntülemek, API 'Lere erişme hakkında bilgi almak, içeriği şifrelemek için [Azure Portal](https://portal.azure.com/) kullanabilirsiniz. <br/>Diğer tüm yönetim görevleri için (örneğin, dönüşümleri ve işleri yönetme veya v3 içeriğini çözümleme), [REST API](/rest/api/media/accountfilters), [CLI](/cli/azure/ams)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
 
-Videonuz daha önce Media Services v3 API kullanılarak Media Services hesabına yüklenmişse veya içerik canlı bir çıkışa göre oluşturulduysa, Azure portal **kodlama**, **Çözümleme**veya **şifreleme** düğmelerini görmezsiniz. Bu görevleri gerçekleştirmek için Media Services v3 API 'Lerini kullanın.  
+Videonuz daha önce Media Services v3 API kullanılarak Media Services hesabına yüklenmişse veya içerik canlı bir çıkışa göre oluşturulduysa, Azure portal **kodlama**, **Çözümleme** veya **şifreleme** düğmelerini görmezsiniz. Bu görevleri gerçekleştirmek için Media Services v3 API 'Lerini kullanın.  
 
 ### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Azure Media Services kaynaklarda hangi Azure rolleri eylemler gerçekleştirebilir? 
 
@@ -38,7 +38,7 @@ Videonuz daha önce Media Services v3 API kullanılarak Media Services hesabına
 
 ### <a name="how-do-i-stream-to-apple-ios-devices"></a>Apple iOS cihazlarına akış Nasıl yaparım? mı?
 
-Akış kaynak sunucusuna Apple iOS Native cihazlarda tüketim için HTTP Canlı Akışı (HLS) içeriği döndürmesini bildirmek üzere yolun sonunda ( **/manifest** **Biçim = M3U8-AAPL)** bulunduğundan emin olun. Ayrıntılar için bkz. [Içerik sunma](dynamic-packaging-overview.md).
+Akış kaynak sunucusuna Apple iOS Native cihazlarda tüketim için HTTP Canlı Akışı (HLS) içeriği döndürmesini bildirmek üzere yolun sonunda (  **Biçim = M3U8-AAPL)** bulunduğundan emin olun. Ayrıntılar için bkz. [Içerik sunma](dynamic-packaging-overview.md).
 
 ### <a name="how-do-i-configure-media-reserved-units"></a>Medya ayrılmış birimleri Nasıl yaparım? yapılandırmak mi?
 
@@ -60,7 +60,7 @@ Sayfalandırma kullanırken, belirli bir sayfa boyutuna bağlı olmaması için 
 
 ### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Azure Media Services v3 'de henüz kullanılamayan özellikler nelerdir?
 
-Ayrıntılar için bkz. [v2 API 'lerine göre Özellik boşlukları](media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis).
+Ayrıntılar için bkz. [Geçiş Kılavuzu](migrate-v-2-v-3-migration-introduction.md).
 
 ### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>Media Services bir hesabı abonelikler arasında taşıma işlemi nedir?  
 
@@ -169,7 +169,7 @@ Diğer tüm yönetim görevleri (örneğin, [dönüşümler ve işler](transform
 
 `AssetFile`Kavram, depolama SDK bağımlılığıyla Media Services ayırmak için MEDIA SERVICES API 'sinden kaldırılmıştır. Azure depolama, Media Services değil, depolama SDK 'sına ait bilgileri korur. 
 
-Daha fazla bilgi için bkz. [Media Services v3 'ye geçirme](media-services-v2-vs-v3.md).
+Daha fazla bilgi için bkz. [Media Services v3 'ye geçirme](migrate-v-2-v-3-migration-introduction.md).
 
 ### <a name="where-did-client-side-storage-encryption-go"></a>İstemci tarafı depolama şifrelemesi nerede?
 
@@ -183,7 +183,7 @@ Aşağıdaki sık sorulan sorular iOS için çevrimdışı FairPlay akışı sor
 
 #### <a name="why-does-only-audio-play-but-not-video-during-offline-mode"></a>Çevrimdışı mod sırasında yalnızca ses oynayabilir ancak video değil mi?
 
-Bu davranış, örnek uygulamanın tasarımıyla aynı şekilde görünür. Çevrimdışı modda alternatif bir ses izi varsa (HLS için bu durum söz konusu olduğunda), alternatif ses kanalında hem iOS 10 hem de iOS 11 varsayılandır. Bu davranışı, FPS çevrimdışı modu için dengelemek üzere akıştan alternatif ses parçasını kaldırın. Bunu Media Services yapmak için, dinamik bildirim filtresi **yalnızca ses = false değerini**ekleyin. Diğer bir deyişle, HLS URL 'SI **. ISM/manifest ile biter (format = M3U8-AAPL, Audio-Only = false)**. 
+Bu davranış, örnek uygulamanın tasarımıyla aynı şekilde görünür. Çevrimdışı modda alternatif bir ses izi varsa (HLS için bu durum söz konusu olduğunda), alternatif ses kanalında hem iOS 10 hem de iOS 11 varsayılandır. Bu davranışı, FPS çevrimdışı modu için dengelemek üzere akıştan alternatif ses parçasını kaldırın. Bunu Media Services yapmak için, dinamik bildirim filtresi **yalnızca ses = false değerini** ekleyin. Diğer bir deyişle, HLS URL 'SI **. ISM/manifest ile biter (format = M3U8-AAPL, Audio-Only = false)**. 
 
 #### <a name="why-does-it-still-play-audio-only-without-video-during-offline-mode-after-i-add-audio-onlyfalse"></a>Yalnızca ses ekle = yanlış olarak çevrimdışı modda video olmadan hala ses çalsın.
 

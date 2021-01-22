@@ -9,24 +9,27 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1a1fc0ce634282ffd4fcf374138fe97a04f32062
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 320f02f6ece106b4d0e14293f95533aa5b4e0743
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539599"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693460"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Azure Bilişsel Arama için bir fiyatlandırma katmanı seçin
 
-[Bir arama hizmeti oluşturduğunuzda](search-create-service-portal.md), hizmetin kullanım ömrü boyunca düzeltilen bir Fiyatlandırma Katmanı (veya SKU) seçersiniz. Tahmini aylık maliyetler portalda **fiyatlandırma katmanı Seç** sayfasında gösterilir. Bunun yerine PowerShell veya Azure CLı aracılığıyla bir hizmet oluşturuyorsanız, katman parametresi aracılığıyla belirtilir **`-Sku`** .
+[Arama Hizmeti oluşturmanın bir](search-create-service-portal.md) parçası, hizmetin kullanım ömrü boyunca düzeltilen bir fiyatlandırma katmanını (veya SKU) seçme anlamına gelir. Hizmeti oluştururken fiyatlara veya hizmet çalıştırmanın tahmini aylık ücretlerine ilişkin fiyatlar, Portal 'ın **fiyatlandırma katmanını Seç** sayfasında gösterilir. Bunun yerine PowerShell veya Azure CLı aracılığıyla hazırlama yapıyorsanız, katman parametresi aracılığıyla belirtilir **`-Sku`** ve tahmini maliyetler hakkında bilgi edinmek için [hizmet fiyatlandırmasını](https://azure.microsoft.com/pricing/details/search/) denetlemeniz gerekir.
 
 Seçtiğiniz katman şunları belirler:
 
-+ Hizmette oluşturabileceğiniz en fazla dizin ve diğer nesne sayısı
++ Hizmette izin verilen en fazla dizin ve diğer nesne sayısı
 + Bölümlerin boyutu ve hızı (fiziksel depolama)
 + Faturalanabilir ücret sabit bir aylık maliyet, ancak kapasite eklerseniz de artımlı maliyet
 
 Birkaç örnekte, seçtiğiniz katman [Premium özelliklerinin](#premium-features)kullanılabilirliğini belirler.
+
+> [!NOTE]
+> "Azure SKU 'Ları" hakkında bilgi mi arıyorsunuz? [Azure fiyatlandırması](https://azure.microsoft.com/pricing/) ile başlayın ve ardından hizmet başına fiyatlandırma sayfalarına bağlantılar için aşağı kaydırın.
 
 ## <a name="tier-descriptions"></a>Katman açıklamaları
 
@@ -67,7 +70,7 @@ Katmanlar hizmetin kendisinin en fazla depolama alanını, oluşturabileceğiniz
 
 ## <a name="partition-size-and-speed"></a>Bölüm boyutu ve hızı
 
-Katman fiyatlandırması, temel için 2 GB ve depolama için Iyileştirilmiş (L2) katmanları için 2 TB 'a kadar değişen bölüm başına depolama hakkındaki ayrıntıları içerir. İşlemler, gecikme süresi ve aktarım hızı gibi diğer donanım özellikleri yayımlanmamıştır, ancak belirli çözüm mimarileri için tasarlanan katmanlar, bu senaryoları destekleme özelliklerine sahip donanımlar üzerine kurulmuştur.
+Katman fiyatlandırması, temel için 2 GB ve depolama için Iyileştirilmiş (L2) katmanları için 2 TB 'a kadar değişen bölüm başına depolama hakkındaki ayrıntıları içerir. İşlemler, gecikme süresi ve aktarım hızı gibi diğer donanım özellikleri yayımlanmamıştır, ancak belirli çözüm mimarileri için tasarlanan katmanlar, bu senaryoları destekleme özelliklerine sahip donanımlar üzerine kurulmuştur. Bölümler hakkında daha fazla bilgi için bkz. [kapasiteyi tahmin edin ve yönetin](search-capacity-planning.md) ve [performans için ölçeklendirin](search-performance-optimization.md).
 
 ## <a name="billing-rates"></a>Fatura ücretleri
 

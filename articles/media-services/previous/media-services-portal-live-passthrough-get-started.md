@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 707c12cac6bbceee925c4710eff29482f687d47f
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 08d1e9cd281cf41a79d1b30d709062c01abbab33
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040738"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695450"
 ---
 # <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Azure portal kullanarak şirket içi kodlayıcılarla canlı akış gerçekleştirme
 
@@ -33,7 +33,7 @@ ms.locfileid: "93040738"
 > 
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 Bu öğretici, Azure portal kullanarak doğrudan teslimat için yapılandırılmış bir **Kanal** oluşturmaya ilişkin adımları anlatmaktadır. 
 
@@ -112,15 +112,15 @@ Bu bölüm bir geçiş kanalı oluşturmak için **Hızlı Oluştur** seçeneği
 Geçiş kanalları hakkında daha fazla ayrıntı için bkz. [Çoklu bit hızı akışları oluşturan şirket içi kodlayıcılarla canlı akış](media-services-live-streaming-with-onprem-encoders.md).
 
 1. [Azure portalında](https://portal.azure.com/) Azure Media Services hesabınızı seçin.
-2. **Ayarlar** penceresinde, **Canlı Akış** ’a tıklayın. 
+2. **Ayarlar** penceresinde, **Canlı Akış**’a tıklayın. 
    
     ![Başlarken](./media/media-services-portal-passthrough-get-started/media-services-getting-started.png)
    
     **Canlı akış** penceresi görüntülenir.
-3. RTMP alma protokolüyle bir geçiş kanalı oluşturmak için **Hızlı Oluştur** ’a tıklayın.
+3. RTMP alma protokolüyle bir geçiş kanalı oluşturmak için **Hızlı Oluştur**’a tıklayın.
    
     **YENİ KANAL OLUŞTUR** penceresi görüntülenir.
-4. Yeni kanala bir ad verin ve **Oluştur** ’a tıklayın. 
+4. Yeni kanala bir ad verin ve **Oluştur**’a tıklayın. 
    
     Bunun yapılması RTMP alma protokolüyle bir geçiş kanalı oluşturur.
 
@@ -136,7 +136,7 @@ Kanal oluşturulduktan sonra, gerçek zamanlı kodlayıcıya sağlayacağınız 
 ![Bir kanalın seçili olduğu ve kanal bölmesinin gösterildiği "canlı akış" sayfasını gösteren ekran görüntüsü.](./media/media-services-portal-passthrough-get-started/media-services-channel-created.png)
 
 ## <a name="watch-the-event"></a>Olayı izleme
-Olay izlemek için, Azure portalda **İzle** ’ye tıklayın veya akış URL'sini kopyalayın ve tercih ettiğiniz bir oynatıcı kullanın. 
+Olay izlemek için, Azure portalda **İzle**’ye tıklayın veya akış URL'sini kopyalayın ve tercih ettiğiniz bir oynatıcı kullanın. 
 
 ![Oluşturulan](./media/media-services-portal-passthrough-get-started/media-services-default-event.png)
 
@@ -151,7 +151,7 @@ Geçiş kanalları hakkında daha fazla ayrıntı için bkz. [Çoklu bit hızı 
 ## <a name="view-archived-content"></a>Arşivlenen içeriği görüntüleme
 Olayı durdurduktan ve sildikten sonra dahi, varlığı silmeniz sürece, kullanıcılar arşivlenen içeriğinizin isteğe bağlı içerik olarak akışını gerçekleştirebilir. Bir olay tarafından kullanılıyorsa varlık silinemez; önce olayın silinmesi gerekir. 
 
-Varlıklarınızı yönetmek için, **Ayar** ’ı seçin ve **Varlıklar** ’a tıklayın.
+Varlıklarınızı yönetmek için, **Ayar**’ı seçin ve **Varlıklar**’a tıklayın.
 
 ![Varlıklar](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
 
@@ -160,5 +160,5 @@ Media Services öğrenme yollarını gözden geçirin.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

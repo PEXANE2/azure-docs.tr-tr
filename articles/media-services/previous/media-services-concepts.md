@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 2a251ef426d41413cf81f46ca05b11640f01e87a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 180965942285e99300c8aa054e638f2f0a2c0580
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333792"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695967"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services kavramlar
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 Bu konu, en önemli Media Services kavramlara genel bakış sunar.
 
@@ -155,7 +155,7 @@ Bir Player tarafından bir akış istendiğinde, Media Services, bir zarf şifre
 
 Belirteç kısıtlı ilkesini yapılandırırken, birincil doğrulama anahtarını, verenin ve hedef kitle parametrelerini belirtmeniz gerekir. Birincil doğrulama anahtarı, belirtecin imzalandığı anahtarı içerir ve veren, belirteci veren güvenli belirteç hizmetidir. Hedef kitle (bazen kapsam olarak adlandırılır) belirtecin amacını veya belirtecin erişim yetkisi aldığı kaynağı açıklar. Media Services anahtar teslim hizmeti, belirteçteki bu değerlerin şablondaki değerlerle eşleştiğini doğrular.
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 - [İçeriğe karşı korumaya genel bakış](media-services-content-protection-overview.md)
 - [AES ile koruma-128](media-services-protect-with-aes128.md)
 - [PlayReady/Widevine ile koruma](media-services-protect-with-playready-widevine.md)
@@ -191,7 +191,7 @@ Aşamalı indirme, tüm dosya indirilmeden önce medya çalmaya başlayabilmeniz
 >[!NOTE]
 >Bu kaynakların aşamalı indirme için kullanılabilir olmasını istiyorsanız şifrelenmiş varlıkların şifresini çözmeniz gerekir.
 
-Kullanıcılara aşamalı indirme URL 'Leri sağlamak için, önce bir OnDemandOrigin Bulucu oluşturmanız gerekir. Bulucunun oluşturulması, size varlığın temel yolunu sağlar. Daha sonra MP4 dosyasının adını eklemeniz gerekir. Örneğin:
+Kullanıcılara aşamalı indirme URL 'Leri sağlamak için, önce bir OnDemandOrigin Bulucu oluşturmanız gerekir. Bulucunun oluşturulması, size varlığın temel yolunu sağlar. Daha sonra MP4 dosyasının adını eklemeniz gerekir. Örnek:
 
 `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4`
 
@@ -236,5 +236,5 @@ http: \/ /testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

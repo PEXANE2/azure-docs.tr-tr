@@ -2,13 +2,13 @@
 title: Sık sorulan sorular-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, Azure Event Hubs ve yanıtları hakkında sık sorulan soruların (SSS) bir listesi sunulmaktadır.
 ms.topic: article
-ms.date: 10/27/2020
-ms.openlocfilehash: e7a34fe0f2ef04fffeeddc5615d3ac1749467902
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.date: 01/20/2021
+ms.openlocfilehash: e6fd4814e771d03827e51f1cd5ee182c9e432cc5
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955425"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696117"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs sık sorulan sorular
 
@@ -55,8 +55,8 @@ Depolama hesabınızdaki yakalanan veriler için saklama süresini yapılandıra
 ### <a name="how-do-i-monitor-my-event-hubs"></a>Event Hubs izleme Nasıl yaparım??
 Event Hubs kaynaklarınızın durumunu [Azure izleyici](../azure-monitor/overview.md)'ye sağlayan ayrıntılı ölçümleri yayar. Ayrıca, yalnızca ad alanı düzeyinde değil, varlık düzeyinde de Event Hubs hizmetin genel durumunu değerlendirmenize imkan tanır. [Azure Event Hubs](event-hubs-metrics-azure-monitor.md)için hangi izlemenin sunulmakta olduğunu öğrenin.
 
-### <a name="where-does-azure-event-hubs-store-customer-data"></a><a name="in-region-data-residency"></a>Azure Event Hubs müşteri verilerini nerede depolar?
-Azure Event Hubs, müşteri verilerini depolar. Bu veriler, tek bir bölgede Event Hubs tarafından otomatik olarak depolanır. bu nedenle, bu hizmet [Güven Merkezi](https://azuredatacentermap.azurewebsites.net/)'nde belirtilenler dahil olmak üzere bölge verileri 'nin gereksinimlerini otomatik olarak karşılar.
+### <a name="where-does-azure-event-hubs-store-data"></a><a name="in-region-data-residency"></a>Azure Event Hubs verileri nerede depolar?
+Azure Event Hubs standart ve adanmış katmanlar, seçtiğiniz bölgelerde meta verileri ve verileri depolar. Coğrafi olağanüstü durum kurtarma, bir Azure Event Hubs ad alanı için ayarlandığında, meta veriler, seçtiğiniz ikincil bölgeye kopyalanır. Bu nedenle, bu hizmet [güven merkezinde](https://azuredatacentermap.azurewebsites.net/)belirtilenler dahil olmak üzere bölge verileri 'nin gereksinimlerini otomatik olarak karşılar.
 
 [!INCLUDE [event-hubs-connectivity](../../includes/event-hubs-connectivity.md)]
 
@@ -252,5 +252,5 @@ Kodunuzda belirli bir depolama API sürümünün nasıl hedeflenecek hakkında b
 Aşağıdaki bağlantıları inceleyerek Event Hubs hakkında daha fazla bilgi edinebilirsiniz:
 
 * [Event Hubs genel bakış](./event-hubs-about.md)
-* [Olay Hub 'ı oluşturma](event-hubs-create.md)
+* [Olay Hub'ı oluşturma](event-hubs-create.md)
 * [Event Hubs otomatik Şişir](event-hubs-auto-inflate.md)

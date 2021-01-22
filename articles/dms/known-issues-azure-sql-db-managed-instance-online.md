@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 1d5c79a141dbe1310762dc90b447fe78848ac10d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 46c5f5995c7a1d4eb074f6c1b25ecaad7e2da37e
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94962493"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695549"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği 'ne çevrimiçi geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları
 
@@ -31,7 +31,7 @@ SQL Server ile Azure SQL yönetilen örneği arasındaki çevrimiçi geçişlerl
 
     Azure veritabanı geçiş hizmeti, şirket içi veritabanlarınızı SQL yönetilen örneğine geçirmek için yedekleme ve geri yükleme yöntemini kullanır. Azure veritabanı geçiş hizmeti yalnızca sağlama toplamı kullanılarak oluşturulan yedeklemeleri destekler.
 
-    [Yedekleme veya geri yükleme sırasında yedekleme sağlama toplamlarını etkinleştirme veya devre dışı bırakma (SQL Server)](/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017)
+    Yedekleme [veya geri yükleme sırasında yedekleme sağlama toplamlarını etkinleştirin veya devre dışı bırakın (SQL Server)](/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server).
 
     > [!NOTE]
     > Veritabanı yedeklerini sıkıştırma ile alırsanız, açıkça devre dışı bırakılmadığı takdirde sağlama toplamı varsayılan davranıştır.
@@ -65,3 +65,29 @@ SQL Server ile Azure SQL yönetilen örneği arasındaki çevrimiçi geçişlerl
     SQL yönetilen örneği, otomatik düzeltme eki uygulama ve sürüm güncelleştirmeleri içeren bir PaaS hizmetidir. SQL yönetilen örneğinizin geçirilmesi sırasında kritik olmayan güncelleştirmeler 36 saate kadar tutulur. Daha sonra (ve kritik güncelleştirmeler için), geçiş kesintiye uğratılıyor ise işlem tam geri yükleme durumuna sıfırlanır.
 
     Tam geçişi geçişi yalnızca tam yedekleme geri yüklendikten sonra çağrılabilir ve tüm günlük yedeklemeleriyle yapılır. Üretim geçişiniz etkileniyorsa [Azure DMS geri bildirim diğer adı](mailto:dmsfeedback@microsoft.com)ile iletişime geçin.
+
+## <a name="smb-file-share-connectivity"></a>SMB dosya paylaşma bağlantısı
+
+SMB dosya paylaşımıyla bağlantı kurma sorunları büyük olasılıkla izin sorunu nedeniyle oluşur. 
+
+SMB dosya paylaşımının bağlantısını test etmek için aşağıdaki adımları izleyin: 
+
+1. SMB dosya paylaşımında bir yedek kaydedin. 
+1. Azure veritabanı geçiş hizmeti ve kaynak SQL Server alt ağı arasındaki ağ bağlantısını doğrulayın. Bunu yapmanın en kolay yolu, DMS alt ağına SQL Server sanal makine dağıtmaktır ve kaynak SQL Server SQL Server Management Studio kullanarak bağlanır. 
+1. Kaynak SQL Server üst bilgisini FileShare üzerindeki yedekten geri yükleyin: 
+
+   ```sql
+   RESTORE HEADERONLY   
+   FROM DISK = N'\\<SMB file share path>\full.bak'
+   ```
+
+Dosya paylaşımıyla bağlantı kuramıyor, izinleri şu adımlarla yapılandırın: 
+
+1. Dosya Gezgini 'ni kullanarak dosya paylaşımınıza gidin. 
+1. Dosya paylaşımıyla sağ tıklayıp Özellikler ' i seçin. 
+1. **Paylaşım** sekmesini seçin ve **Gelişmiş paylaşım**' ı seçin. 
+1. Geçiş için kullanılan Windows hesabını ekleyin ve tam denetim erişimi atayın. 
+1. SQL Server hizmet hesabını ekleyin ve tam denetim erişimi atayın. Hangi hesabın kullanılmakta olduğundan emin değilseniz SQL Server hizmet hesabının **SQL Server Yapılandırma Yöneticisi** denetleyin. 
+
+   :::image type="content" source="media/known-issues-azure-sql-db-managed-instance-online/assign-fileshare-permissions.png" alt-text="Geçiş için kullanılan Windows hesaplarına ve SQL Server hizmeti hesabına yönelik tam denetim erişimi verin. ":::
+

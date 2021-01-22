@@ -7,24 +7,24 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/15/2020
+ms.date: 01/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: ffb5a78c13413a46565a9c57c87dc8273742fd24
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 49364681f0c5b4b6cc4d5f20778edb61e9f6f5b3
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563458"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695789"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Azure Bilişsel Arama güvenlik-genel bakış
 
-Bu makalede, Azure Bilişsel Arama içerik ve işlemleri koruyabilecek temel güvenlik özellikleri açıklanmaktadır.
+Bu makalede, Azure Bilişsel Arama içeriğini ve işlemlerini koruyan güvenlik özellikleri açıklanmaktadır.
 
-+ Depolama katmanında, diskler, eş anlamlı eşlemeler ve Dizin oluşturucular, veri kaynakları ve becerileri tanımları dahil olmak üzere diske kaydedilen tüm hizmet tarafından yönetilen içerikler için, Rest 'ten şifreleme yerleşik olarak bulunur. Azure Bilişsel Arama, dizinli içeriğin ek şifrelenmesi için müşteri tarafından yönetilen anahtarların (CMK) eklenmesini de destekler. 1 2020 Ağustos 'Tan sonra oluşturulan hizmetler için, CMK şifrelemesi, dizini oluşturulmuş içeriğin tam çift şifrelemesi için geçici disklerdeki verilere genişletilir.
++ Depolama katmanında, dizinler, eş anlamlı eşlemeler ve Dizin oluşturucular, veri kaynakları ve becerileri tanımları dahil olmak üzere diske kaydedilen tüm hizmet tarafından yönetilen içerikler için veri şifreleme yerleşik olarak bulunur. İsteğe bağlı olarak, dizine alınmış içeriğin ek şifrelenmesi için müşteri tarafından yönetilen anahtarlar (CMK) ekleyebilirsiniz. 1 2020 Ağustos 'Tan sonra oluşturulan hizmetler için CMK şifrelemesi, dizini oluşturulmuş içeriğin tam "çift şifrelemesi" için geçici disklerde verileri genişletir.
 
-+ Gelen güvenlik, arama hizmeti uç noktasını, güvenlik seviyelerine karşı koruma sağlar: istekteki API anahtarlarından, güvenlik duvarında gelen kurallara, genel İnternet 'ten hizmetinizi tamamen koruyan özel uç noktalara.
++ Gelen güvenlik, güvenlik düzeyi uç noktasındaki korumaların güvenlik seviyelerine göre daha yüksek olduğunu gösterir: istekteki API anahtarlarından, güvenlik duvarındaki gelen kurallara, genel İnternet 'ten hizmetinizi tamamen korumayan özel uç noktalara.
 
-+ Giden güvenlik, dış kaynaklardan içerik çeken Dizin oluşturucular için geçerlidir. Giden istekler için, Azure depolama, Azure SQL, Cosmos DB veya diğer Azure veri kaynaklarından verilere erişirken bir güvenilen hizmet arama yapmak üzere yönetilen bir kimlik ayarlayın. Yönetilen kimlik, bağlantıda kimlik bilgilerinin veya erişim anahtarlarının yerini alır. Giden güvenlik Bu makalede ele alınmıyor. Bu yetenek hakkında daha fazla bilgi için bkz. [yönetilen kimlik kullanarak bir veri kaynağına bağlanma](search-howto-managed-identities-data-sources.md).
++ Giden güvenlik, dış kaynaklardan içerik çeken Dizin oluşturucular ile ilgilidir. Giden istekler için, Azure depolama, Azure SQL, Cosmos DB veya diğer Azure veri kaynaklarından verilere erişirken bir güvenilen hizmet arama yapmak üzere yönetilen bir kimlik ayarlayın. Yönetilen kimlik, bağlantıda kimlik bilgilerinin veya erişim anahtarlarının yerini alır. Giden güvenlik Bu makalede ele alınmıyor. Bu yetenek hakkında daha fazla bilgi için bkz. [yönetilen kimlik kullanarak bir veri kaynağına bağlanma](search-howto-managed-identities-data-sources.md).
 
 Güvenlik mimarisine ve her özellik kategorisine genel bir bakış için bu hızla ilerleyebileceğiniz videoyu izleyin.
 

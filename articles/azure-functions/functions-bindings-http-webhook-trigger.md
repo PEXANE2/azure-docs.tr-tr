@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: f04e2aa97cafe2345918e433bcef5e719cee7483
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: eaba099725530f24dcd6aa5da7eb59cb233efd46
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610176"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695654"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Işlevleri HTTP tetikleyicisi
 
@@ -553,7 +553,7 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 | **Görünüm** | yok| Gerekli-olarak ayarlanmalıdır `in` . |
 | **ada** | yok| Required-istek veya istek gövdesi için işlev kodunda kullanılan değişken adı. |
 | <a name="http-auth"></a>**authLevel** |  **AuthLevel** |, Varsa, işlevi çağırmak için istekte hangi anahtarların mevcut olması gerektiğini belirler. Yetkilendirme düzeyi aşağıdaki değerlerden biri olabilir: <ul><li><code>anonymous</code>&mdash;API anahtarı gerekli değildir.</li><li><code>function</code>&mdash;İşleve özgü bir API anahtarı gereklidir. Hiçbiri sağlanmazsa varsayılan değer budur.</li><li><code>admin</code>&mdash;Ana anahtar gereklidir.</li></ul> Daha fazla bilgi için [Yetkilendirme anahtarları](#authorization-keys)hakkında bölümüne bakın. |
-| **Yöntem** |**Yöntemler** | İşlevin yanıt verdiği HTTP yöntemlerinin dizisi. Belirtilmemişse, işlev tüm HTTP yöntemlerine yanıt verir. Bkz. [http uç noktasını özelleştirme](#customize-the-http-endpoint). |
+| **methods** |**Yöntem** | İşlevin yanıt verdiği HTTP yöntemlerinin dizisi. Belirtilmemişse, işlev tüm HTTP yöntemlerine yanıt verir. Bkz. [http uç noktasını özelleştirme](#customize-the-http-endpoint). |
 | **yol** | **Yolu** | İşlevinizin hangi istek URL 'Lerine yanıt vereceğini denetleyen yol şablonunu tanımlar. Hiçbiri sağlanmadıysa varsayılan değer `<functionname>` . Daha fazla bilgi için bkz. [http uç noktasını özelleştirme](#customize-the-http-endpoint). |
 | **Web kancası türü** | **Web kancası türü** | _Yalnızca sürüm 1. x çalışma zamanı için desteklenir._<br/><br/>HTTP tetikleyicisini, belirtilen sağlayıcı için bir [Web kancası](https://en.wikipedia.org/wiki/Webhook) alıcısı olarak davranacak şekilde yapılandırır. `methods`Bu özelliği ayarlarsanız özelliği ayarlamazsanız. Web kancası türü aşağıdaki değerlerden biri olabilir:<ul><li><code>genericJson</code>&mdash;Belirli bir sağlayıcı için mantığı olmayan genel amaçlı bir Web kancası uç noktası. Bu ayar, istekleri yalnızca HTTP POST kullanan ve `application/json` içerik türüyle kısıtlar.</li><li><code>github</code>&mdash;İşlevi [GitHub Web kancalarına](https://developer.github.com/webhooks/)yanıt verir. _AUTHLEVEL_ özelliğini GitHub Web kancaları ile kullanmayın. Daha fazla bilgi için bu makalenin ilerleyen kısımlarında bulunan GitHub Web kancaları bölümüne bakın.</li><li><code>slack</code>&mdash;İşlev, [bolluk web kancalarına](https://api.slack.com/outgoing-webhooks)yanıt veriyor. _AUTHLEVEL_ özelliğini bolluk web kancaları ile kullanmayın. Daha fazla bilgi için bu makalenin ilerleyen kısımlarında yer alarak bolluk web kancaları bölümüne bakın.</li></ul>|
 
@@ -749,6 +749,10 @@ Aşağıdaki yapılandırma, `{id}` parametresinin bağlamaya nasıl geçtiğini
 }
 ```
 
+Yol parametreleri kullandığınızda, `invoke_URL_template` işleviniz için bir otomatik olarak oluşturulur. İstemcileriniz, URL 'sini kullanarak işlevinizi çağırırken URL 'de geçmesi gereken parametreleri anlamak için URL şablonunu kullanabilir. [Azure Portal](https://portal.azure.com) http ile tetiklenen işlevlerinizin birine gidin ve **Işlev URL 'sini al**' ı seçin.
+
+`invoke_URL_template` [List Işlevleri](https://docs.microsoft.com/rest/api/appservice/webapps/listfunctions) veya [Get Işlevi](https://docs.microsoft.com/rest/api/appservice/webapps/getfunction)için Azure Resource Manager API 'lerini kullanarak programlı olarak öğesine erişebilirsiniz.
+
 ## <a name="working-with-client-identities"></a>İstemci kimlikleriyle çalışma
 
 İşlev uygulamanız [App Service kimlik doğrulaması/yetkilendirme](../app-service/overview-authentication-authorization.md)kullanıyorsa, koddan kimliği doğrulanmış istemcilerle ilgili bilgileri görüntüleyebilirsiniz. Bu bilgiler, [platform tarafından eklenen istek üstbilgileri](../app-service/app-service-authentication-how-to.md#access-user-claims)olarak kullanılabilir.
@@ -846,11 +850,17 @@ Kimliği doğrulanmış kullanıcı [http üstbilgileri](../app-service/app-serv
 
 ## <a name="obtaining-keys"></a>Anahtarları edinme
 
-Anahtarlar, Azure 'daki işlev uygulamanızın bir parçası olarak depolanır ve bekleyen olarak şifrelenir. Anahtarlarınızı görüntülemek, yenilerini oluşturmak veya yeni değerlere anahtar almak için, [Azure Portal](https://portal.azure.com) http ile tetiklenen işlevlerinizin birine gidin ve **Yönet**' i seçin.
+Anahtarlar, Azure 'daki işlev uygulamanızın bir parçası olarak depolanır ve bekleyen olarak şifrelenir. Anahtarlarınızı görüntülemek, yenilerini oluşturmak veya yeni değerlere anahtar almak için, [Azure Portal](https://portal.azure.com) http ile tetiklenen işlevlerinizin birine gidin ve **işlev anahtarları**' nı seçin.
 
-![Portalda işlev anahtarlarını yönetin.](./media/functions-bindings-http-webhook/manage-function-keys.png)
+Ayrıca, ana bilgisayar anahtarlarını da yönetebilirsiniz. [Azure Portal](https://portal.azure.com) işlev uygulamasına gidin ve **uygulama anahtarları**' nı seçin.
 
-[Anahtar yönetimi API 'lerini](https://github.com/Azure/azure-functions-host/wiki/Key-management-API)kullanarak işlev anahtarlarını programlama yoluyla elde edebilirsiniz.
+Azure Resource Manager API 'Lerini kullanarak işlev ve konak anahtarlarını programlama yoluyla elde edebilirsiniz. [Işlev anahtarlarını listelemek](/rest/api/appservice/webapps/listfunctionkeys) ve [konak anahtarlarını listelemek](/rest/api/appservice/webapps/listhostkeys)için API 'ler vardır ve dağıtım yuvaları kullanılırken eşdeğer API 'Ler, [Işlev anahtarları yuvası](/rest/api/appservice/webapps/listfunctionkeysslot) ve [liste ana bilgisayar anahtarları yuvası](/rest/api/appservice/webapps/listhostkeysslot)olarak listelenmektedir.
+
+Ayrıca, programlı bir şekilde [Oluştur veya Güncelleştir Işlev gizli](/rest/api/appservice/webapps/createorupdatefunctionsecret)anahtarını kullanarak, [işlev gizli](/rest/api/appservice/webapps/createorupdatefunctionsecretslot)dizisi oluşturma veya güncelleştirme, [ana bilgisayar gizli](/rest/api/appservice/webapps/createorupdatehostsecret) dizisi oluşturma veya güncelleştirme [, ana bilgisayar gizli dizisi API 'leri](/rest/api/appservice/webapps/createorupdatehostsecretslot) oluşturma veya güncelleştirme gibi yeni işlev ve konak anahtarları da oluşturabilirsiniz.
+
+İşlev ve ana bilgisayar anahtarları programlı olarak [silme Işlevi gizli](/rest/api/appservice/webapps/deletefunctionsecret)dizisi kullanılarak silinebilir, [işlev gizli yuvasını](/rest/api/appservice/webapps/deletefunctionsecretslot)silebilir, [konak gizliliğini](/rest/api/appservice/webapps/deletehostsecret)silebilir ve [ana bilgisayar gizli yuva](/rest/api/appservice/webapps/deletehostsecretslot) API 'lerini silebilir.
+
+[İşlev anahtarları almak için eski anahtar yönetim API 'lerini](https://github.com/Azure/azure-functions-host/wiki/Key-management-API)de kullanabilirsiniz, ancak bunun yerine Azure Resource Manager API 'leri kullanılması önerilir.
 
 ## <a name="api-key-authorization"></a>API anahtarı yetkilendirmesi
 

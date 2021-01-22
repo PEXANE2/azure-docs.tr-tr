@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c6c1dcb0af500c47aabbd8e8193c066bb4a921c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 634b508ca15349152540aca90125575b17943929
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89267778"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696439"
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>.NET ile Media Services iş bildirimlerini izlemek için Azure kuyruk depolamayı kullanma
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 Kodlama işlerini çalıştırdığınızda, genellikle işin ilerlemesini izlemek için bir yol gerekir. Media Services [Azure kuyruk depolama](../../storage/queues/storage-dotnet-how-to-use-queues.md)'ya bildirim sunacak şekilde yapılandırabilirsiniz. Sıra depolamadan bildirim alarak iş ilerlemesini izleyebilirsiniz. 
 
@@ -60,14 +60,14 @@ Bu bölümdeki kod örneği şunları yapar:
     job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly, _notificationEndPoint);
     ```
 
-7. **Notificationjobstate. All**geçirirseniz, şu durum değişikliği bildirimlerinin tümünü alırsınız: sıraya alınmış, zamanlanmış, işleme ve bitti. Ancak, daha önce belirtildiği gibi, kuyruk depolaması sipariş teslimini garanti etmez. İletileri sıralamak için, **zaman damgası** özelliğini kullanın (aşağıdaki örnekte **EncodingJobMessage** türünde tanımlanmıştır). Yinelenen iletiler mümkündür. Yinelemeleri denetlemek için **ETag özelliğini** kullanın ( **EncodingJobMessage** türü üzerinde tanımlanmıştır). Bazı durum değişikliği bildirimlerinin atlanması da mümkündür.
+7. **Notificationjobstate. All** geçirirseniz, şu durum değişikliği bildirimlerinin tümünü alırsınız: sıraya alınmış, zamanlanmış, işleme ve bitti. Ancak, daha önce belirtildiği gibi, kuyruk depolaması sipariş teslimini garanti etmez. İletileri sıralamak için, **zaman damgası** özelliğini kullanın (aşağıdaki örnekte **EncodingJobMessage** türünde tanımlanmıştır). Yinelenen iletiler mümkündür. Yinelemeleri denetlemek için **ETag özelliğini** kullanın ( **EncodingJobMessage** türü üzerinde tanımlanmıştır). Bazı durum değişikliği bildirimlerinin atlanması da mümkündür.
 8. Her 10 saniyede bir kuyruğu denetleyerek işin tamamlanmış duruma gelmesini bekler. İşlendikten sonra iletileri siler.
 9. Kuyruğu ve bildirim uç noktasını siler.
 
 > [!NOTE]
 > Bir işin durumunu izlemek için önerilen yol, aşağıdaki örnekte gösterildiği gibi bildirim iletilerini dinlemedir:
 >
-> Alternatif olarak, **ıjob. State** özelliğini kullanarak bir işin durumunu denetleyebilirsiniz.  Bir işin tamammasıyla ilgili bir bildirim iletisi, **ıjob** üzerindeki durum **tamamlandı**olarak ayarlanmadan önce gelebilir. **Ijob. State** özelliği, hafif bir gecikmeyle doğru durumu yansıtır.
+> Alternatif olarak, **ıjob. State** özelliğini kullanarak bir işin durumunu denetleyebilirsiniz.  Bir işin tamammasıyla ilgili bir bildirim iletisi, **ıjob** üzerindeki durum **tamamlandı** olarak ayarlanmadan önce gelebilir. **Ijob. State** özelliği, hafif bir gecikmeyle doğru durumu yansıtır.
 >
 >
 
@@ -382,5 +382,5 @@ Media Services öğrenme yollarını gözden geçirin.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

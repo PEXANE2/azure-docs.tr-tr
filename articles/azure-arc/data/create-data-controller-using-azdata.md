@@ -9,18 +9,18 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 19451fb09919238a04ac953c9c38fc70b4744d16
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 986019ec4de2fc25b6d8714a8c687cc9342f47b8
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955306"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696081"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>Azure Arc veri denetleyicisi 'ni kullanarak oluşturma [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Genel bakış bilgileri için [Azure Arc veri denetleyicisi oluşturma](create-data-controller.md) konusunu gözden geçirin.
 
@@ -266,34 +266,11 @@ Komutu çalıştırdığınızda, [oluşturma durumunu izlemek](#monitoring-the-
 
 ### <a name="create-on-azure-red-hat-openshift-aro"></a>Azure Red Hat OpenShift (ARO) üzerinde oluştur
 
-#### <a name="apply-the-scc"></a>SCC 'yi uygulama
+Azure Red Hat OpenShift bir güvenlik bağlamı kısıtlaması gerektirir.
 
-Azure Red Hat OpenShift üzerinde veri denetleyicisi oluşturmadan önce, belirli güvenlik bağlamı kısıtlamalarını (SCC) uygulamanız gerekir. Önizleme sürümü için bu, güvenlik kısıtlamalarını daha rahat hale getiren. Gelecekteki yayınlar, güncelleştirilmiş SCC sağlayacak.
+#### <a name="apply-the-security-context"></a>Güvenlik bağlamını uygulama
 
-1. Özel güvenlik bağlamı kısıtlamasını (SCC) indirin. Aşağıdakilerden birini kullanın: 
-   - [GitHub](https://github.com/microsoft/azure_arc/tree/main/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
-   - ([Ham](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml))
-   - `curl` Aşağıdaki komut yay-Data-SCC. YAML 'yi indirir:
-
-      ```console
-      curl https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
-      ```
-
-1. SCC oluşturun.
-
-   ```console
-   oc create -f arc-data-scc.yaml
-   ```
-
-1. SCC 'yi hizmet hesabına uygulayın.
-
-   > [!NOTE]
-   > Burada ve aşağıdaki komutta aynı ad alanını kullanın `azdata arc dc create` . Örnek `arc` .
-
-   ```console
-   oc adm policy add-scc-to-user arc-data-scc --serviceaccount default --namespace arc
-   ```
-
+[!INCLUDE [apply-security-context-constraint](includes/apply-security-context-constraint.md)]
 
 #### <a name="create-custom-deployment-profile"></a>Özel dağıtım profili oluştur
 
@@ -324,33 +301,11 @@ Komutu çalıştırdığınızda, [oluşturma durumunu izlemek](#monitoring-the-
 > [!NOTE]
 > Azure 'da Red Hat OpenShift kapsayıcı platformu kullanıyorsanız, kullanılabilir en son sürümü kullanmanız önerilir.
 
-#### <a name="apply-the-scc"></a>SCC 'yi uygulama
+Red Hat OCP üzerinde veri denetleyicisi oluşturmadan önce, belirli güvenlik bağlamı kısıtlamalarını uygulamanız gerekir. 
 
-Red Hat OCP üzerinde veri denetleyicisi oluşturmadan önce, belirli güvenlik bağlamı kısıtlamalarını (SCC) uygulamanız gerekir. Önizleme sürümü için bu, güvenlik kısıtlamalarını daha rahat hale getiren. Gelecekteki yayınlar, güncelleştirilmiş SCC sağlayacak.
+#### <a name="apply-the-security-context-constraint"></a>Güvenlik bağlamı kısıtlamasını Uygula
 
-1. Özel güvenlik bağlamı kısıtlamasını (SCC) indirin. Aşağıdakilerden birini kullanın: 
-   - [GitHub](https://github.com/microsoft/azure_arc/tree/main/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
-   - ([Ham](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml))
-   - `curl` Aşağıdaki komut yay-Data-SCC. YAML 'yi indirir:
-
-      ```console
-      curl https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
-      ```
-
-1. SCC oluşturun.
-
-   ```console
-   oc create -f arc-data-scc.yaml
-   ```
-
-1. SCC 'yi hizmet hesabına uygulayın.
-
-   > [!NOTE]
-   > Burada ve aşağıdaki komutta aynı ad alanını kullanın `azdata arc dc create` . Örnek `arc` .
-
-   ```console
-   oc adm policy add-scc-to-user arc-data-scc --serviceaccount default --namespace arc
-   ```
+[!INCLUDE [apply-security-context-constraint](includes/apply-security-context-constraint.md)]
 
 #### <a name="determine-storage-class"></a>Depolama sınıfını belirleme
 

@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 9578793c88c069b885f03dd682c47ae9f1f1b0a1
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: bc2f802a902212633fdbc081d33a51407d374e36
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802635"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696371"
 ---
 # <a name="install-software-and-set-up-resources-for-the-tutorial"></a>Yazılım yükleyip öğreticiye yönelik kaynakları ayarlayın
 
@@ -32,7 +32,6 @@ Bu üç bölümden oluşan öğreticide, silika 'nın yüzdesi olarak Iron ve da
 5. [Azure CLI](https://github.com/Azure/azure-powershell/releases/tag/v3.5.0-February2020)'nın en son sürümünü yükler. Aşağıdaki betikler, AZ PowerShell 'in en son sürümü (3.5.0, Şubat 2020) olmasını gerektirir.
 6. [Azure IoT EdgeHub geliştirme aracı 'nı](https://pypi.org/project/iotedgehubdev/)yükleyerek hata ayıklama, çalıştırma ve test IoT Edge çözümü için ortamı ayarlayın.
 7. Docker 'ı yükler.
-8. Öğreticide kullanılacak DACPAC dosyasını indirin. 
 
 ## <a name="deploy-azure-resources-using-powershell-script"></a>PowerShell betiği kullanarak Azure kaynaklarını dağıtma
 

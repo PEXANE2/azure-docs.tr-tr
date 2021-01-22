@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 83e9b0278e99867cafa7e633bc382e490ec273c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e9f1dc0ce303b45ad2d43c0c9365edc197f7d8e
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250563"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695603"
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>.NET kullanarak Media Services hesabına dosya yükleme
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 Media Services’de, dijital dosyalar bir varlığa yüklenir (veya alınır). Varlık **varlığı video** , ses, görüntüler, küçük resim koleksiyonları, metin parçaları ve kapalı açıklamalı alt yazı dosyaları (ve bu dosyalar hakkındaki meta veriler) içerebilir.  Dosyalar karşıya yüklendikten sonra, içeriğiniz daha fazla işlem ve akış için bulutta güvenli bir şekilde depolanır.
 
@@ -40,7 +40,7 @@ Aşağıdaki noktalara dikkat edilmelidir:
  * Media Services, akış içeriği için URL 'Ler oluştururken IAssetFile.Name özelliğinin değerini kullanır (örneğin, http://{AMSAccount}. Origin. mediaservices. Windows. net/{GUID}/{ıassetfile. Name}/streamingParameters.) Bu nedenle, yüzde kodlamalı izin verilmez. **Name** özelliğinin değeri, Şu sayıda [kodlamaya ayrılan karakterlerden](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)herhangi birini içeremez:! * ' ();: @ &= + $,/?% # [] ". Ayrıca, dosya adı uzantısı için yalnızca bir '. ' olabilir.
 * Adın uzunluğu 260 karakterden büyük olmamalıdır.
 * Media Services ile işleme için desteklenen dosya boyutlarına yönelik üst sınır uygulanır. Dosya boyutu sınırlaması hakkında ayrıntılı bilgi için [bu](media-services-quotas-and-limitations.md) makaleye bakın.
-* Farklı AMS ilkeleri için sınır 1.000.000 ilkedir (örneğin, Bulucu ilkesi veya ContentKeyAuthorizationPolicy için). Uzun süre boyunca kullanılmak için oluşturulan bulucu ilkeleri gibi aynı günleri / erişim izinlerini sürekli olarak kullanıyorsanız, aynı ilke kimliğini kullanmalısınız (karşıya yükleme olmayan ilkeler için). Daha fazla bilgi için [bu makaleye](media-services-dotnet-manage-entities.md#limit-access-policies) bakın.
+* Farklı AMS ilkeleri için sınır 1.000.000 ilkedir (örneğin, Bulucu ilkesi veya ContentKeyAuthorizationPolicy için). Uzun süre boyunca kullanılmak için oluşturulan bulucu ilkeleri gibi aynı günleri / erişim izinlerini sürekli olarak kullanıyorsanız, aynı ilke kimliğini kullanmalısınız (karşıya yükleme olmayan ilkeler için). Daha fazla bilgi için [Bu](media-services-dotnet-manage-entities.md#limit-access-policies) makaleye bakın.
 
 Varlıklar oluşturduğunuzda, aşağıdaki şifreleme seçeneklerini belirtebilirsiniz:
 
@@ -54,7 +54,7 @@ Varlıklar oluşturduğunuzda, aşağıdaki şifreleme seçeneklerini belirtebil
   
     Varlığınıza depolama şifrelemesi uygulanmışsa varlık teslim ilkesini yapılandırmanız gerekir. Daha fazla bilgi için bkz. [varlık teslim Ilkesini yapılandırma](media-services-dotnet-configure-asset-delivery-policy.md).
 
-Varlığınızın **Commonşifrelenen** bir seçenekle veya bir **EnvelopeEncrypted** seçeneğiyle şifrelenmesini belirtirseniz, varlığınızı bir **contentkey**ile ilişkilendirmeniz gerekir. Daha fazla bilgi için bkz. [ContentKey oluşturma](media-services-dotnet-create-contentkey.md). 
+Varlığınızın **Commonşifrelenen** bir seçenekle veya bir **EnvelopeEncrypted** seçeneğiyle şifrelenmesini belirtirseniz, varlığınızı bir **contentkey** ile ilişkilendirmeniz gerekir. Daha fazla bilgi için bkz. [ContentKey oluşturma](media-services-dotnet-create-contentkey.md). 
 
 Varlığınızın **Storageşifrelenen** bir seçenekle şifrelenmesini belirtirseniz, .net IÇIN Media Services SDK, varlığınız Için **storageşifrelenen** bir **contentkey** oluşturur.
 
@@ -237,9 +237,9 @@ Bu makalede kullanılan örnek için varlık dosyalarını karşıya yükleme ko
     UploadBlobFile(manifest.BlobStorageUriForUpload, filename3);
 ```
 
-**IngestManifest**istatistik özelliğini yoklayarak, bir **IngestManifest** ile ilişkili tüm varlıklar için toplu geri ödeme sürecini saptayabilirsiniz. İlerleme bilgilerini güncelleştirmek için, Istatistikler özelliğini her yoklamada yeni bir **Cloudmediacontext** kullanmanız gerekir.
+**IngestManifest** istatistik özelliğini yoklayarak, bir **IngestManifest** ile ilişkili tüm varlıklar için toplu geri ödeme sürecini saptayabilirsiniz. İlerleme bilgilerini güncelleştirmek için, Istatistikler özelliğini her yoklamada yeni bir **Cloudmediacontext** kullanmanız gerekir.
 
-Aşağıdaki örnek, bir IngestManifest tarafından **kimliğini**yoklayarak gösterir.
+Aşağıdaki örnek, bir IngestManifest tarafından **kimliğini** yoklayarak gösterir.
 
 ```csharp
     static void MonitorBulkManifest(string manifestID)
@@ -311,7 +311,7 @@ Yapılandırılmış kapsayıcıya gelen dosyaya göre bir kodlama işi tetiklem
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-step"></a>Sonraki adım

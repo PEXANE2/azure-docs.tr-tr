@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: ab056e0685264b03d35ee6b95afad7c6362f9db6
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 0d8ce501b951f3543e1baf54c8a52648b13f6e66
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695781"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695679"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Sanal makineler için Azure oto yönetimi
 
@@ -43,16 +43,16 @@ Sanal makinelerinizde Azure oto yönetimi 'ni etkinleştirmeyi denemeden önce g
 
 - Yalnızca Windows Server VM 'Leri
 - VM 'Ler çalışıyor olmalıdır
-- VM 'Ler desteklenen bir bölgede olmalıdır
+- VM 'Ler desteklenen bir bölgede olmalıdır (aşağıdaki paragrafı görüntüleyin)
 - Kullanıcının doğru izinleri olması gerekir (aşağıdaki paragrafa bakın)
 - Oto yönetimi şu anda korumalı alan aboneliklerini desteklemiyor
 
-Mevcut bir oto Yönet hesabı kullanarak VM 'lerde oto yönetimi 'ni etkinleştirmek için VM 'lerinizi içeren kaynak grubunda **katkıda** bulunan rolüne sahip olmanız gerekir. Yeni bir bir oto Yönet hesabıyla bir oto yönetimi etkinleştirirseniz, aboneliğiniz üzerinde aşağıdaki izinlere sahip olmanız gerekir: **sahip** rolü veya **katkıda bulunan** **Kullanıcı erişimi yönetici** rolleriyle birlikte. 
+Ayrıca, oto yönetimi 'nin yalnızca şu bölgelerde bulunan Windows VM 'Leri desteklediğini unutmayın: Batı Avrupa, Doğu ABD, Batı ABD 2, Kanada Orta, Orta Batı ABD, Japonya Doğu.
+
+Mevcut bir oto Yönet hesabı kullanarak VM 'lerde oto yönetimi 'ni etkinleştirmek için VM 'lerinizi içeren kaynak grubunda **katkıda** bulunan rolüne sahip olmanız gerekir. Yeni bir bir oto Yönet hesabıyla bir oto yönetimi etkinleştirirseniz, aboneliğiniz üzerinde aşağıdaki izinlere sahip olmanız gerekir: **sahip** rolü veya **katkıda bulunan** **Kullanıcı erişimi yönetici** rolleriyle birlikte.
 
 > [!NOTE]
 > Farklı bir abonelikte bulunan bir çalışma alanına bağlı bir sanal makinede, oto yönetimi 'ni kullanmak istiyorsanız, her bir abonelikte yukarıda açıklanan izinlere sahip olmanız gerekir.
-
-Ayrıca, oto yönetimi 'nin yalnızca şu bölgelerde bulunan Windows VM 'Leri desteklediğini unutmayın: Batı Avrupa, Doğu ABD, Batı ABD 2, Kanada Orta, Orta Batı ABD, Japonya Doğu.
 
 ## <a name="participating-services"></a>Katılım Hizmetleri
 
@@ -102,12 +102,20 @@ Varsayılan yapılandırma profilinin ayarlarını Tercihler aracılığıyla ay
 
 ## <a name="automanage-account"></a>Hesabı oto Yönet
 
-Otomatikmanage hesabı, güvenlik bağlamına veya otomatik işlemlerin oluştuğu kimliğe sahiptir. Genellikle, hesabı otomatik Yönet seçeneği, seçmeniz için gereksizdir, ancak otomatik yönetimi bölmek istediğiniz bir temsili senaryosu varsa (Belki iki sistem yöneticisi arasında), bu seçenek bu yöneticilerin her biri için bir Azure kimliği tanımlamanızı sağlar.
+Otomatikmanage hesabı, güvenlik bağlamına veya otomatik işlemlerin oluştuğu kimliğe sahiptir. Genellikle, hesabı otomatik Yönet seçeneği, seçmeniz için gereksizdir, ancak kaynaklarınızın otomatik yönetimini bölmek istediğiniz bir yetkilendirme senaryosu varsa (Belki iki sistem yöneticisi arasında), bu seçenek bu yöneticilerin her biri için bir Azure kimliği tanımlamanızı sağlar.
 
 Azure portal deneyiminde, sanal makinelerinizdeki oto yönetimini etkinleştirirken, el ile Yönet hesabı atamanıza veya el ile oluşturmanıza imkan tanıyan, **Azure VM en iyi uygulama** dikey penceresinde gelişmiş bir açılan menü bulunur.
 
+Oto Yönet hesabına hem **katkıda bulunan** hem de **kaynak ilkesi katılımcısı** rollerinin, sizin eklediğiniz makineleri içeren abonelikler (ler) e-olarak verilmesi sağlanır. Tüm aboneliklerde hesap **katılımcısı** ve **kaynak ilkesi katkıda** bulunan izinlerini oto yönetmesine izin veren birden çok abonelik genelinde makinelerde aynı oto Yönet hesabını kullanabilirsiniz.
+
+VM 'niz başka bir abonelikteki bir Log Analytics çalışma alanına bağlıysa, oto Yönet hesabına hem **katkıda** bulunan hem de **kaynak ilkesi katılımcısı** da bu diğer abonelikte de verilecektir.
+
+Yeni bir bir oto Yönet hesabıyla bir oto yönetimi etkinleştirirseniz, aboneliğiniz üzerinde aşağıdaki izinlere sahip olmanız gerekir: **sahip** rolü veya **katkıda bulunan** **Kullanıcı erişimi yönetici** rolleriyle birlikte.
+
+Var olan bir oto Yönet hesabıyla bir oto yönetimi etkinleştirirseniz, VM 'lerinizi içeren kaynak grubunda **katkıda** bulunan rolüne sahip olmanız gerekir.
+
 > [!NOTE]
-> Mevcut bir oto Yönet hesabı kullanarak VM 'lerde oto yönetimi 'ni etkinleştirmek için VM 'lerinizi içeren kaynak grubunda **katkıda** bulunan rolüne sahip olmanız gerekir. Yeni bir bir oto Yönet hesabıyla bir oto yönetimi etkinleştirirseniz, aboneliğiniz üzerinde aşağıdaki izinlere sahip olmanız gerekir: **sahip** rolü veya **katkıda bulunan** **Kullanıcı erişimi yönetici** rolleriyle birlikte.
+> En Iyi Yönet uygulamalarını devre dışı bıraktığınızda, tüm ilişkili aboneliklerdeki hesap izinlerini oto Yönet olarak kalır. Aboneliğin ıAM sayfasına gidip izinleri el ile kaldırın veya tekrar Yönet hesabını silin. Hala herhangi bir makine yönetiliyorsa, oto Yönet hesabı silinemez.
 
 
 ## <a name="status-of-vms"></a>VM 'lerin durumu
@@ -122,6 +130,7 @@ Listelenen her VM için şu ayrıntılar görüntülenir: ad, yapılandırma pro
 - *Devam eden* -VM yeni etkinleştirildi ve yapılandırılıyor
 - *Yapılandırıldı* -VM yapılandırıldı ve bir DRT algılanmadı
 - *Başarısız* -VM 'de düzeltebilecekler ve düzeltilemedi
+- *Bekliyor* -VM Şu anda çalışmıyor ve bir sonraki çalıştırıldığında, yeniden Yönet işlemi VM 'yi ekleme veya düzeltme girişiminde bulunur
 
 **Durumu** *başarısız* olarak görürseniz, sanal makinenizin bulunduğu kaynak grubu aracılığıyla dağıtımda sorun giderebilirsiniz. **Kaynak grupları**' na gidin, kaynak grubunuzu seçin, **dağıtımlar** ' a tıklayın ve hata ayrıntılarıyla birlikte *başarısız* durumuna bakın.
 
@@ -145,7 +154,6 @@ Kabul etmiş önce **devre dışı bırakmak** için ortaya çıkan açılan pen
 
 
 İlk ve daha önce, sanal makineyi eklendi ve yapılandırdığımız hizmetlerden herhangi birinden kurmayacak. Bu nedenle, bu hizmetler tarafından tahakkuk eden ücretler faturalandırılabilir olmaya devam edecektir. Gerekirse Pano 'ya ihtiyacınız olacaktır. Herhangi bir oto yönetimi davranışı hemen durdurulur. Örneğin, artık VM 'yi DRFT için izliyoruz.
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

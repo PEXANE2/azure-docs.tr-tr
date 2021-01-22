@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/09/2020
+ms.date: 01/21/2021
 ms.author: b-juche
-ms.openlocfilehash: 7c78d5fa89d6d4f3c73bdd1fe9b6d2fdae97c011
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: e51297e8fe5c3dccf43318a066ac5da4a7d24cb2
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937483"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696100"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Azure NetApp Files birimlerinin çapraz bölge çoğaltması
 
@@ -37,6 +37,7 @@ Azure NetApp Files birim çoğaltması Şu anda aşağıdaki sabit bölge çiftl
 * ABD Orta Güney ve ABD Orta 
 * ABD Orta Güney ve ABD Doğu
 * ABD Orta Güney ve ABD Doğu 2 
+* ABD Doğu ve ABD Doğu 2  
 * ABD Doğu 2 ve ABD Orta 
 * Avustralya Doğu ve Avustralya Güneydoğu
 * Kanada Orta ve Kanada Doğu

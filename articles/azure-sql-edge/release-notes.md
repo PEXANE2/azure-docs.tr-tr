@@ -10,16 +10,31 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 11/24/2020
-ms.openlocfilehash: c18cb1cef9b46b4b3cd2f614945f98abf9de7c58
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: e078fb91b3279b6f4321cd51dfb094f82bbe5f14
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704359"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696388"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge sürüm notları 
 
 Bu makalede, yenilikler ve her yeni Azure SQL Edge derlemesi ile nelerin değiştiğini açıklanmaktadır.
+
+## <a name="azure-sql-edge-102"></a>Azure SQL Edge 1.0.2
+
+SQL Engine derleme 15.0.2000.1554
+
+### <a name="fixes"></a>Düzeltmeler
+
+- T-SQL akışı  
+   - Akış nesneleri için sahiplik ve izinleri çözme
+   - Günlük döndürme ve günlük önek olarak günlüğe kaydetme geliştirmeleri
+   - Azure Stream Analytics: günlük iyileştirmeler, bağdaştırıcılarda hata kodu/hata iletilerini geliştirme 
+
+- ONNX
+    - Paralel sorgu senaryosu ve model Temizleme hataları için hata düzeltmeleri
+    - ONNX çalışma zamanı 1.5.1 'e yükseltildi
 
 ## <a name="azure-sql-edge-101"></a>Azure SQL Edge 1.0.1
 

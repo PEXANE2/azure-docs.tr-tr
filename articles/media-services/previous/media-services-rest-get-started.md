@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: ddad462658465c07624f078e20c224750c5180c9
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: fe35cd39af9b2fe7d547b463b6432b0b54344794
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019486"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696253"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>REST kullanarak isteğe bağlı içerik sunmaya başlayın
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 Bu hızlı başlangıç, Azure Media Services (AMS) REST API 'Lerini kullanarak Isteğe bağlı video (VoD) içerik teslim uygulaması uygulama adımlarında size yol gösterir.
 
@@ -38,7 +38,7 @@ Resmi tam boyutlu görüntülemek için tıklayın.
 
 [![Isteğe bağlı uygulamalar üzerinde video geliştirmek için Azure Media Services nesne veri modelinde en yaygın olarak kullanılan nesnelerden bazılarını gösteren diyagram.](./media/media-services-rest-get-started/media-services-overview-object-model-small.png)](./media/media-services-rest-get-started/media-services-overview-object-model.png#lightbox)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 REST API 'Leri ile Media Services geliştirmeye başlamak için aşağıdaki Önkoşullar gereklidir.
 
 * Azure hesabı. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).
@@ -56,7 +56,7 @@ Bu hızlı başlangıçta aşağıdaki görevler gösterilmiştir.
 6. İçeriğinizi oynatın.
 
 >[!NOTE]
->Farklı AMS ilkeleri için sınır 1.000.000 ilkedir (örneğin, Bulucu ilkesi veya ContentKeyAuthorizationPolicy için). Aynı gün/erişim izinlerini (örneğin, uzun bir süre (karşıya yükleme olmayan ilkeler) yerinde kalması amaçlanan konum belirleyicilerinin ilkeleri gibi her zaman kullandığınız ilke KIMLIĞINI kullanın. Daha fazla bilgi için [bu makaleye](media-services-dotnet-manage-entities.md#limit-access-policies) bakın.
+>Farklı AMS ilkeleri için sınır 1.000.000 ilkedir (örneğin, Bulucu ilkesi veya ContentKeyAuthorizationPolicy için). Aynı gün/erişim izinlerini (örneğin, uzun bir süre (karşıya yükleme olmayan ilkeler) yerinde kalması amaçlanan konum belirleyicilerinin ilkeleri gibi her zaman kullandığınız ilke KIMLIĞINI kullanın. Daha fazla bilgi için [Bu](media-services-dotnet-manage-entities.md#limit-access-policies) makaleye bakın.
 
 Bu makalede kullanılan AMS REST varlıkları hakkında daha fazla bilgi için bkz. [Azure Media Services REST API'si Reference](/rest/api/media/operations/azure-media-services-rest-api-reference). Ayrıca bkz. [Azure Media Services kavramları](media-services-concepts.md).
 
@@ -353,7 +353,7 @@ AccessPolicy ve Locator kümesine sahip olduğunuzda, gerçek dosya Azure depola
 Azure depolama Blobları ile çalışma hakkında daha fazla bilgi için bkz. [BLOB hizmeti REST API](/rest/api/storageservices/blob-service-rest-api).
 
 ### <a name="update-the-assetfile"></a>Assetdosyasını güncelleştirme
-Dosyanızı karşıya yüklediğinize göre, Filevarlık boyutu (ve diğer) bilgilerini güncelleştirin. Örneğin:
+Dosyanızı karşıya yüklediğinize göre, Filevarlık boyutu (ve diğer) bilgilerini güncelleştirin. Örnek:
 
 ```console
 MERGE https://wamsbayclus001rest-hs.cloudapp.net/api/Files('nb%3Acid%3AUUID%3Af13a0137-0a62-9d4c-b3b9-ca944b5142c5') HTTP/1.1
@@ -435,7 +435,7 @@ Varlıkları Media Services 'e gönderdikten sonra medya, istemcilere teslim edi
 
 Daha önce belirtildiği gibi, en yaygın senaryolarından biri Azure Media Services ile çalışırken, istemcilerinize bit hızı uyarlamalı akış teslim edilir. Media Services bir uyarlamalı bit hızı MP4 dosyası kümesini dinamik olarak şu biçimlerden birine paketleyebilir: HTTP Canlı Akışı (HLS), Kesintisiz Akış, MPEG DASH.
 
-Aşağıdaki bölümde, bir kodlama görevi içeren bir iş oluşturma işlemi gösterilmektedir. Görev, **Media Encoder Standard**kullanarak Mezzanine dosyasının bir uyarlamalı bit hızı kümesine dönüştürülmesini belirtir. Bu bölümde ayrıca iş işleme ilerleme durumunun nasıl izleneceği gösterilmektedir. İş tamamlandığında, varlıklarınıza erişim sağlamak için gereken konum belirleyicilerinin oluşturulması mümkün olacaktır.
+Aşağıdaki bölümde, bir kodlama görevi içeren bir iş oluşturma işlemi gösterilmektedir. Görev, **Media Encoder Standard** kullanarak Mezzanine dosyasının bir uyarlamalı bit hızı kümesine dönüştürülmesini belirtir. Bu bölümde ayrıca iş işleme ilerleme durumunun nasıl izleneceği gösterilmektedir. İş tamamlandığında, varlıklarınıza erişim sağlamak için gereken konum belirleyicilerinin oluşturulması mümkün olacaktır.
 
 ### <a name="get-a-media-processor"></a>Medya işlemcisi al
 Media Services, medya işlemcisi kodlama, biçim dönüştürme, şifreleme veya medya içeriğini çözme gibi belirli bir işleme görevini işleyen bir bileşendir. Bu öğreticide gösterilen kodlama görevi için Media Encoder Standard kullanacağız.
@@ -873,7 +873,7 @@ AccessPolicy ve Locator kümesini aldıktan sonra Azure depolama REST API 'Lerin
 
 Azure depolama Blobları ile çalışma hakkında daha fazla bilgi için bkz. [BLOB hizmeti REST API](/rest/api/storageservices/blob-service-rest-api).
 
-Daha önce gerçekleştirdiğiniz kodlama işinin bir sonucu olarak (Uyarlamalı MP4 kümesine kodlama), aşamalı olarak indirebileceğiniz birden fazla MP4 dosyasına sahip olursunuz. Örneğin:    
+Daha önce gerçekleştirdiğiniz kodlama işinin bir sonucu olarak (Uyarlamalı MP4 kümesine kodlama), aşamalı olarak indirebileceğiniz birden fazla MP4 dosyasına sahip olursunuz. Örnek:    
 
 * `https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z`
 
@@ -974,5 +974,5 @@ Aşamalı indirmeyi test etmek için bir tarayıcıya URL (örneğin, IE, Chrome
 ## <a name="next-steps-media-services-learning-paths"></a>Sonraki Adımlar: Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

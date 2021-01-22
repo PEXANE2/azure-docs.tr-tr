@@ -11,16 +11,16 @@ author: justinha
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43573b54be6884e01121e404370d2e1d85a3c4e8
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: d9430066ad92b4d0b69bd07c763e3f7b5d6e889a
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660890"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693545"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory"></a>Azure Active Directory kullanarak SMS tabanlı kimlik doğrulaması için kullanıcıları yapılandırma ve etkinleştirme 
 
-Uygulama ve hizmetlerde oturum açmayı basitleştirmek ve güvenli hale getirmek için Azure Active Directory (Azure AD) birden çok kimlik doğrulama seçeneği sağlar. SMS tabanlı kimlik doğrulaması, kullanıcıların kullanıcı adını ve parolasını sağlamadan, hatta bilmeksizin oturum açmalarına olanak tanır. Hesabı bir kimlik yöneticisi tarafından oluşturulduktan sonra, oturum açma isteminde telefon numaralarını girebilirler. Bu kişiler, oturum açma işleminin tamamlanabilmesi için sağlayabilecekleri kısa mesaj aracılığıyla bir kimlik doğrulama kodu alırlar. Bu kimlik doğrulama yöntemi, özellikle ön hat çalışanları için uygulamalara ve hizmetlere erişimi basitleştirir.
+Uygulama ve hizmetlerde oturum açmayı basitleştirmek ve güvenli hale getirmek için Azure Active Directory (Azure AD) birden çok kimlik doğrulama seçeneği sağlar. SMS tabanlı kimlik doğrulaması, kullanıcıların kullanıcı adını ve parolasını sağlamadan, hatta bilmeksizin oturum açmalarına olanak tanır. Hesabı bir kimlik yöneticisi tarafından oluşturulduktan sonra, oturum açma isteminde telefon numaralarını girebilirler. Bu kişiler, oturum açma işleminin tamamlanabilmesi için sağlayabilecekleri kısa mesaj aracılığıyla bir kimlik doğrulama kodu alırlar. Bu kimlik doğrulama yöntemi, özellikle Frontline çalışanları için uygulamalara ve hizmetlere erişimi basitleştirir.
 
 Bu makalede, Azure AD 'de Kullanıcı veya grup seçme için SMS tabanlı kimlik doğrulamanın nasıl etkinleştirileceği gösterilmektedir.
 

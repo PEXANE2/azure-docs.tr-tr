@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: dc08e23b6ef040ba5833ffa97f71d8cd1da3bb8a
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 3f9fc9fd1bacce8733949969b496dc03d6c10901
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019809"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695840"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Azure Media Services v3 ile canlı akış
 
@@ -62,7 +62,7 @@ Canlı [Etkinlikler](/rest/api/media/liveevents) , canlı video akışlarını g
 
 ![Bir geçişli canlı olaydan video ve ses akışlarının nasıl alınacağını ve işlendiğini gösteren diyagram.](./media/live-streaming/pass-through.svg)
 
-Geçiş **canlı olayını**kullanırken, çoklu bit hızı video akışı oluşturmak için şirket içi Live Encoder ' ı kullanır ve canlı olaya katkı akışı olarak (RTMP veya PARÇALANMıŞ-MP4 giriş protokolünü kullanarak) gönderebilirsiniz. Canlı etkinlik daha sonra gelen video akışlarını dinamik paketlemeden (akış uç noktası) daha fazla kodlama olmadan taşır. Bu tür bir geçişli canlı etkinlik, uzun süreli canlı etkinlikler veya 24x365 doğrusal canlı akış için iyileştirilmiştir. 
+Geçiş **canlı olayını** kullanırken, çoklu bit hızı video akışı oluşturmak için şirket içi Live Encoder ' ı kullanır ve canlı olaya katkı akışı olarak (RTMP veya PARÇALANMıŞ-MP4 giriş protokolünü kullanarak) gönderebilirsiniz. Canlı etkinlik daha sonra gelen video akışlarını dinamik paketlemeden (akış uç noktası) daha fazla kodlama olmadan taşır. Bu tür bir geçişli canlı etkinlik, uzun süreli canlı etkinlikler veya 24x365 doğrusal canlı akış için iyileştirilmiştir. 
 
 ### <a name="live-encoding"></a>Live encoding  
 
@@ -103,7 +103,7 @@ Media Services v3 sürümünde canlı akış iş akışını anlamak için önce
 8. Kullanılacak URL 'Leri geri almak için **akış bulucunun** yollarını listeleyin (bunlar belirleyici 'dir).
 9. Akışı yapmak istediğiniz **akış uç noktası** (başlangıç) için ana bilgisayar adını alın.
 10. Tam URL 'yi almak için, adım 8 ' deki URL 'YI adım 9 ' daki ana bilgisayar adı ile birleştirin.
-11. **Canlı olaylarınızın** görüntülenmesini durdurmak isterseniz, olay akışını durdurup **akış bulucuyu**silmeniz gerekir.
+11. **Canlı olaylarınızın** görüntülenmesini durdurmak isterseniz, olay akışını durdurup **akış bulucuyu** silmeniz gerekir.
 12. Olayların akışla aktarılmasını tamamlayıp önceden sağlanan kaynakları temizlemek istediğinizde aşağıdaki yordamı izleyin.
 
     * Kodlayıcıdan akışı göndermeyi durdurun.
@@ -135,4 +135,4 @@ Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştir
 
 * [Canlı akış hızlı başlangıç](live-events-wirecast-quickstart.md)
 * [Canlı akış öğreticisi](stream-live-tutorial-with-api.md)
-* [Media Services V2 'den v3 'e geçmek için geçiş kılavuzu](migrate-from-v2-to-v3.md)
+* [Media Services V2 'den v3 'e geçmek için geçiş kılavuzu](migrate-v-2-v-3-migration-introduction.md)
