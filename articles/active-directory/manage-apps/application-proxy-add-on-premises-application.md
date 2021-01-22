@@ -8,20 +8,22 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/10/2020
+ms.date: 01/20/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: contperf-fy21q2
-ms.openlocfilehash: bcb484d62b7c4add7e1ab5562c19417a90cfb7e1
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 6b46a5ea71bf8c9705ffc3bc51ea48f4b0c28502
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587562"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660772"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Öğretici: Azure Active Directory içindeki uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme
 
 Azure Active Directory (Azure AD), kullanıcıların Azure AD hesabıyla oturum açarak şirket içi uygulamalara erişmesini sağlayan bir uygulama proxy hizmeti içerir. Bu öğretici, ortamınızı uygulama proxy 'Si ile kullanılmak üzere hazırlar. Ortamınız hazırlandıktan sonra, Azure AD kiracınıza şirket içi bir uygulama eklemek için Azure portal kullanırsınız.
+
+:::image type="content" source="./media/application-proxy-add-on-premises-application/app-proxy-diagram.png" alt-text="Uygulama proxy 'Si genel bakış Diyagramı" lightbox="./media/application-proxy-add-on-premises-application/app-proxy-diagram.png":::
 
 Bağlayıcılar, uygulama proxy 'sinin önemli bir parçasıdır. Bağlayıcılar hakkında daha fazla bilgi edinmek için bkz. [Azure AD uygulama ara sunucusu bağlayıcıları anlama](application-proxy-connectors.md).
 
@@ -34,7 +36,7 @@ Bu öğreticide:
 > * Azure AD kiracınıza şirket içi bir uygulama ekler
 > * Bir sınama kullanıcısının Azure AD hesabı kullanarak uygulamada oturum açmasını doğrular
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD 'ye şirket içi bir uygulama eklemek için şunlar gerekir:
 
@@ -126,7 +128,11 @@ Aşağıdaki URL 'Lere erişime izin ver:
 | login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>&ast;.microsoftonline.com<br>&ast;. microsoftonline-p.com<br>&ast;. msauth.net<br>&ast;. msauthimages.net<br>&ast;. msecnd.net<br>&ast;. msftauth.net<br>&ast;. msftauthimages.net<br>&ast;. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com<br>www.microsoft.com/pkiops | 443/HTTPS |Bağlayıcı, kayıt işlemi sırasında bu URL 'Leri kullanır. |
 | ctldl.windowsupdate.com | 80/HTTP |Bağlayıcı, kayıt işlemi sırasında bu URL 'YI kullanır. |
 
-&ast; &ast; Güvenlik duvarınız veya proxy 'niz DNS izin verilenler listelerine yapılandırmanıza izin verirseniz, yukarıdaki. msappproxy.net,. ServiceBus.Windows.net ve diğer URL 'lere bağlantılara izin verebilirsiniz. Aksi takdirde, [Azure IP aralıklarına ve hizmet etiketlerine genel buluta](https://www.microsoft.com/download/details.aspx?id=56519)erişime izin vermeniz gerekir. IP aralıkları her hafta güncellenir.
+&ast; &ast; Güvenlik duvarınız veya ara sunucunuz, etki alanı sonekleri temelinde erişim kurallarını yapılandırmanıza izin ver, yukarıdaki. msappproxy.net,. ServiceBus.Windows.net ve diğer URL 'lere bağlantılara izin verebilirsiniz. Aksi takdirde, [Azure IP aralıklarına ve hizmet etiketlerine genel buluta](https://www.microsoft.com/download/details.aspx?id=56519)erişime izin vermeniz gerekir. IP aralıkları her hafta güncellenir.
+
+### <a name="dns-name-resolution-for-azure-ad-application-proxy-endpoints"></a>Azure AD Uygulama Ara Sunucusu uç noktaları için DNS ad çözümlemesi
+
+Azure AD Uygulama Ara Sunucusu uç noktaları için genel DNS kayıtları, bir kayda işaret eden CNAME kayıtlardır. Bu, hataya dayanıklılık ve esneklik sağlar. Azure AD Uygulama Ara Sunucusu bağlayıcısının, her zaman, _*. msappproxy.net_ veya _*. ServiceBus.Windows.net_ etki alanı sonekleri ile ana bilgisayar adlarıyla eriştiği garanti edilir. Ancak, ad çözümlemesi sırasında CNAME kayıtları farklı ana bilgisayar adları ve sonekleri içeren DNS kayıtları içerebilir.  Bu nedenle, cihazın (Kurulum-bağlayıcı sunucunuza, güvenlik duvarı, giden ara sunucuya bağlı olarak) zincirdeki tüm kayıtları çözümleyebildiğinden ve çözümlenen IP adresleriyle bağlantıya izin verdiğinden emin olmanız gerekir. Zincirdeki DNS kayıtları zaman zaman olarak değiştirilebileceğinizden, hiçbir liste DNS kaydı sunamaz.
 
 ## <a name="install-and-register-a-connector"></a>Bağlayıcı yükleyip kaydetme
 
@@ -216,9 +222,9 @@ Ortamınızı hazırladığınıza ve bir bağlayıcı yükleolduğunuza göre, 
     | **Üst bilgilerdeki URL 'Leri çevir** | Uygulamanız kimlik doğrulaması isteğindeki orijinal ana bilgisayar üst bilgisini gerektirmediğiniz sürece bu değeri **Evet** olarak tutun. |
     | **Uygulama gövdesinde URL 'Leri çevir** | Diğer şirket içi uygulamalara yönelik olarak kodlanmış HTML bağlantıları yoksa ve özel etki alanları kullanmadıkça bu değeri **Hayır** olarak tutun. Daha fazla bilgi için bkz. [uygulama proxy 'si Ile bağlantı çevirisi](application-proxy-configure-hard-coded-link-translation.md).<br><br>Bu uygulamayı Microsoft Cloud App Security (MCAS) ile izlemeyi planlıyorsanız, bu değeri **Evet** olarak ayarlayın. Daha fazla bilgi için bkz. [Microsoft Cloud App Security ve Azure Active Directory ile gerçek zamanlı uygulama erişimi Izlemeyi yapılandırma](application-proxy-integrate-with-microsoft-cloud-application-security.md). |
 
-7. **Add (Ekle)** seçeneğini belirleyin.
+7. **Ekle**’yi seçin.
 
-## <a name="test-the-application"></a>Uygulamayı test etme
+## <a name="test-the-application"></a>Uygulamayı test edin
 
 Uygulamanın doğru şekilde ekleneceğini test etmeye hazırsınız. Aşağıdaki adımlarda, uygulamaya bir kullanıcı hesabı ekleyecek ve oturum açmayı denemeniz gerekir.
 

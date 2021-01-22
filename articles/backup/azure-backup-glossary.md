@@ -3,12 +3,12 @@ title: Azure Backup sözlüğü
 description: Bu makalede, Azure Backup ile kullanım için yararlı olan terimler tanımlanmaktadır.
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: 1e28f0c2ad5d14ea2a8dc6ce8d5fa2b21c7e65ac
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 121258665ab275fdcffd618e7c0cf1b3e0537e70
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935079"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661485"
 ---
 # <a name="azure-backup-glossary"></a>Azure Backup sözlüğü
 
@@ -192,7 +192,7 @@ Bir kullanıcı veya Azure Backup hizmeti tarafından oluşturulan, yedeklemeyle
 
 (İş yüküne özgü terim)
 
-Azure Backup Sunucusu ile, Hyper-V VM 'Leri, Microsoft SQL Server, SharePoint Server, Microsoft Exchange ve Windows istemcileri gibi uygulama iş yüklerini tek bir konsoldan koruyabilirsiniz. DPM 'den iş yükü yedekleme işlevselliğinin çoğunu devralır, ancak birkaç farklılık vardır. [Daha fazla bilgi edinin](backup-azure-microsoft-azure-backup.md)
+Azure Backup Sunucusu ile, Hyper-V VM 'Leri, Microsoft SQL Server, SharePoint Server, Microsoft Exchange ve Windows istemcileri gibi uygulama iş yüklerini tek bir konsoldan koruyabilirsiniz. DPM 'den iş yükü yedekleme işlevselliğinin çoğunu devralır, ancak birkaç farklılık vardır. [Daha fazla bilgi](backup-azure-microsoft-azure-backup.md)
 
 ## <a name="managed-disks"></a>Yönetilen diskler
 

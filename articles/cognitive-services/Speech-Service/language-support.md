@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: e51354b1c2905d0532ce4eb49236dda8550f98a4
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 83d7263d430ed9dc8f2f61711fc4c1339ba03810
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600078"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662939"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -128,8 +128,6 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 ## <a name="text-to-speech"></a>Metin okuma
 
 Hem Microsoft konuşma SDK 'Sı hem de REST API 'Leri, her biri yerel ayar ile tanımlanan belirli bir dili ve diyalekt destekleyen bu sesleri destekler. Ayrıca, [sesler/liste API 'si](rest-text-to-speech.md#get-a-list-of-voices)aracılığıyla her belirli bölge/uç nokta için desteklenen dillerin ve seslerin tam listesini de alabilirsiniz. 
-
-Sinir sesleri dahil olmak üzere konuşma stillerini nasıl yapılandıracağınızı ve ayarlayabileceğinizi öğrenmek için, bkz. [nasıl yapılır konuşma SensMe](speech-synthesis-markup.md#adjust-speaking-styles) biçimlendirme dili.
 
 > [!IMPORTANT]
 > Fiyatlandırma, standart, özel ve sinir sesleri için farklılık gösterir. Daha fazla bilgi için lütfen [fiyatlandırma](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) sayfasını ziyaret edin.
@@ -289,6 +287,8 @@ Aşağıdaki sinir sesleri genel önizlemede.
 
 Bölgesel kullanılabilirlik hakkında daha fazla bilgi için bkz. [bölgeler](regions.md#standard-and-neural-voices).
 
+Konuşma stilleri gibi sinir seslerini nasıl yapılandıracağınızı ve ayarlayabileceğinizi öğrenmek için bkz. [konuşma SensMe biçimlendirme dili](speech-synthesis-markup.md#adjust-speaking-styles).
+
 > [!IMPORTANT]
 > `en-US-JessaNeural`Ses olarak değiştirildi `en-US-AriaNeural` . Daha önce "Jessa" kullandıysanız, "Aria" öğesine dönüştürün.
 
@@ -392,30 +392,10 @@ Bölgesel kullanılabilirlik hakkında daha fazla bilgi için bkz. [bölgeler](r
 
 ### <a name="customization"></a>Özelleştirme
 
-Özel ses standart ve sinir katmanında kullanılabilir. Desteklenen diller bu iki katmanda farklıdır. 
-
-| Dil | Yerel Ayar | Standart | Sinir |
-|--|--|--|--|
-| Çince (Mandarin, Basitleştirilmiş) | `zh-CN` | Yes | Yes |
-| Çince (Mandarin, Basitleştirilmiş), Ingilizce iki dilli | `zh-CN` iki dilli | Yes | Yes |
-| İngilizce (Avustralya) | `en-AU` | Hayır | Yes |
-| İngilizce (Hindistan) | `en-IN` | Yes | Yes |
-| İngilizce (İngiltere) | `en-GB` | Yes | Yes |
-| İngilizce (ABD) | `en-US` | Yes | Yes |
-| Fransızca (Kanada) | `fr-CA` | Hayır | Yes |
-| Fransızca (Fransa) | `fr-FR` | Yes | Yes |
-| Almanca (Almanya) | `de-DE` | Yes | Yes |
-| İtalyanca (İtalya) | `it-IT` | Yes | Yes |
-| Japonca (Japonya) | `ja-JP` | Hayır | Yes |
-| Korece (Kore) | `ko-KR` | Hayır | Yes |
-| Portekizce (Brezilya) | `pt-BR` | Yes | Yes |
-| İspanyolca (Meksika) | `es-MX` | Yes | Yes |
-| İspanyolca (İspanya) | `es-ES` | Hayır | Yes |
-
-Özel bir ses modeli eğitmeniz gereken eğitim verileriyle eşleşen doğru yerel ayarı seçin. Örneğin, kullandığınız kayıt verileri Ingiliz alfabesindeki bir vurgu ile konuşulursam, seçeneğini belirleyin `en-GB` .
+,,,,, `de-DE` `en-GB` `en-IN` `en-US` `es-MX` `fr-FR` , `it-IT` , `pt-BR` Ve `zh-CN` için ses özelleştirmesi kullanılabilir. Özel bir ses modeli eğitmeniz gereken eğitim verileriyle eşleşen doğru yerel ayarı seçin. Örneğin, kullandığınız kayıt verileri Ingiliz alfabesindeki bir vurgu ile konuşulursam, seçeneğini belirleyin `en-GB` .
 
 > [!NOTE]
-> Chinese-English bı-dilli dışında, özel seste bı-dilli model eğitimini desteklemiyoruz. Ingilizce 'ye de konuşarak bir Çince ses alıştırması yapmak istiyorsanız "Çince-Ingilizce çift dilli" seçeneğini belirleyin. Standart yöntemi kullanan Chinese-English iki dilli model eğitimi yalnızca Kuzey Avrupa ve Orta Kuzey ABD bulunabilir. Özel sinir ses eğitimi UK Güney ve Doğu ABD kullanılabilir. 
+> Chinese-English bı-dilli dışında, özel seste bı-dilli model eğitimini desteklemiyoruz. Ingilizce 'ye de konuşarak bir Çince ses alıştırması yapmak istiyorsanız "Çince-Ingilizce çift dilli" seçeneğini belirleyin. Tüm yerel ayarlarda sesli eğitim, `en-US` `zh-CN` her türlü eğitim verisi ile başlayabileceğiniz ve dışında bir 2000 + utterations veri kümesiyle başlar.
 
 ## <a name="speech-translation"></a>Konuşma çevirisi
 

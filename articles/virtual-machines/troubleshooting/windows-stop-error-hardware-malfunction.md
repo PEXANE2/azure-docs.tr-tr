@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/13/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 18622d60f3a33658fadfd28c53c93a07b4b438a9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 89faa5b29e0a972f31ad51a7354635a53176541a
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488655"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661366"
 ---
 # <a name="windows-stop-error---hardware-malfunction"></a>Windows durma hatası - Donanım arızası
 
@@ -48,6 +48,9 @@ Konuk işletim sistemi doğru şekilde ayarlanmamışsa ve maskelenemeyen bir ke
 ## <a name="solution"></a>Çözüm
 
 ### <a name="process-overview"></a>İşleme genel bakış 
+
+> [!TIP]
+> VM 'nin son yedeğine sahipseniz önyükleme sorununu çözmek için [VM 'yi yedekten geri yüklemeyi](../../backup/backup-azure-arm-restore-vms.md) deneyebilirsiniz.
 
 1. Maskelenemeyen kesme (NMI) kayıt defteri anahtarını ayarlama 
 2. Bir onarım VM 'si oluşturma ve erişme 

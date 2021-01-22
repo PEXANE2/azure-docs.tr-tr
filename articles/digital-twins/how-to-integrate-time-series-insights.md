@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 24b4f56e5798acc4d9bd0962be7059a359958645
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 97f1f5d0f1f351164e05d18b9f80c7f26450f31b
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573250"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661611"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Azure dijital TWINS 'i Azure Time Series Insights ile tümleştirme
 
@@ -20,7 +20,7 @@ Bu makalede, Azure dijital TWINS 'i [Azure Time Series Insights (TSI)](../time-s
 
 Bu makalede açıklanan çözüm, IoT çözümünüz hakkında geçmiş verileri toplayıp analiz etmenize olanak sağlayacak. Azure Digital Twins, Time Series Insights'a veri akışı yapmak için ideal bir hizmettir ve bilgilerinizi Time Series Insights'a göndermeden önce birden çok veri akışı arasında bağıntı kurup standart hale getirmenizi sağlar. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Time Series Insights bir ilişki ayarlayabilmeniz için önce bir **Azure dijital TWINS örneğine** sahip olmanız gerekir. Bu örnek, verileri temel alarak dijital ikizi bilgilerini güncelleştirme özelliği ile ayarlanmalıdır, çünkü bu verileri Time Series Insights ' de izlenen şekilde görmek için ikizi bilgilerini birkaç kez güncelleştirmeniz gerekir. 
 
@@ -65,7 +65,7 @@ Azure dijital TWINS [*öğreticisi: uçtan uca bir çözümü bağlama*](./tutor
 4. Olay Hub 'ınızı Azure dijital TWINS örneğinize bağlayan bir Azure dijital TWINS [uç noktası](concepts-route-events.md#create-an-endpoint) oluşturun.
 
     ```azurecli-interactive
-    az dt endpoint create eventhub --endpoint-name <name for your Event Hubs endpoint> --eventhub-resource-group <resource group name> --eventhub-namespace <Event Hubs namespace from above> --eventhub <Twins event hub name from above> --eventhub-policy <Twins auth rule from above> -n <your Azure Digital Twins instance name>
+    az dt endpoint create eventhub -n <your Azure Digital Twins instance name> --endpoint-name <name for your Event Hubs endpoint> --eventhub-resource-group <resource group name> --eventhub-namespace <Event Hubs namespace from above> --eventhub <Twins event hub name from above> --eventhub-policy <Twins auth rule from above>
     ```
 
 5. İkiz güncelleştirme olaylarını uç noktanıza göndermek için Azure Digital Twins'de bir [rota](concepts-route-events.md#create-an-event-route) oluşturun. Bu rotadaki filtre yalnızca ikizi güncelleştirme iletilerinin uç noktanıza geçirilmesine izin verir.
@@ -89,11 +89,16 @@ Bu işlev, bu ikizi Update olaylarını kendi özgün formdan JSON yaması belge
 
 Azure Işlevleri ile Event Hubs kullanma hakkında daha fazla bilgi için bkz. Azure [*için azure Event Hubs tetikleyicisi işlevleri*](../azure-functions/functions-bindings-event-hubs-trigger.md).
 
-Yayınlanan işlev uygulamanızın içinde, işlev kodunu aşağıdaki kodla değiştirin.
+Yayınlanan işlev uygulamanızın içinde, aşağıdaki kodla **ProcessDTUpdatetoTSI** adlı yeni bir işlev ekleyin.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/updateTSI.cs":::
 
-Bundan sonra, işlev, oluşturduğu JSON nesnelerini Time Series Insights bağlanacak ikinci bir olay hub 'ına gönderir.
+>[!NOTE]
+>Bu `dotnet add package` komutu veya Visual Studio NuGet Paket Yöneticisi 'ni kullanarak paketleri projenize eklemeniz gerekebilir.
+
+Sonra, yeni Azure işlevini **yayımlayın** . Bunun nasıl yapılacağı hakkında yönergeler için bkz. [*nasıl yapılır: verileri işlemek için bir Azure Işlevi ayarlama*](how-to-create-azure-function.md#publish-the-function-app-to-azure).
+
+Bu işlev, bu işlevin oluşturduğu JSON nesnelerini, Time Series Insights bağlanacak ikinci bir olay hub 'ına gönderir. Sonraki bölümde bu olay hub 'ını oluşturacaksınız.
 
 Daha sonra, bu işlevin kendi olay hub 'larınız ile bağlantı kurmak için kullanacağı bazı ortam değişkenlerini de ayarlayacaksınız.
 
@@ -130,7 +135,7 @@ Daha sonra, oluşturduğunuz Olay Hub 'ları için bağlantı dizelerini içeren
     az eventhubs eventhub authorization-rule keys list --resource-group <resource group name> --namespace-name <Event Hubs namespace> --eventhub-name <Twins event hub name from earlier> --name <Twins auth rule from earlier>
     ```
 
-2. Sonuç olarak elde ettiğiniz bağlantı dizesini kullanarak işlev uygulamanızda bağlantı dizesini içeren bir uygulama ayarı oluşturun:
+2. İşlev uygulamanızda, Bağlantı dizenizi içeren bir uygulama ayarı oluşturmak için sonuçtan *Primaryconnectionstring* değerini kullanın:
 
     ```azurecli-interactive
     az functionapp config appsettings set --settings "EventHubAppSetting-Twins=<Twins event hub connection string>" -g <resource group> -n <your App Service (function app) name>
@@ -152,15 +157,15 @@ Daha sonra, oluşturduğunuz Olay Hub 'ları için bağlantı dizelerini içeren
 
 ## <a name="create-and-connect-a-time-series-insights-instance"></a>Time Series Insights örneği oluşturma ve bağlantı kurma
 
-Sonra, ikinci olay hub 'ından verileri almak için bir Time Series Insights örneği ayarlayacaksınız. Aşağıdaki adımları izleyin ve bu işlemle ilgili daha fazla ayrıntı için bkz. [*öğretici: Azure Time Series Insights Gen2 PAYG ortamı ayarlama*](../time-series-insights/tutorials-set-up-tsi-environment.md).
+Sonra, ikinci (TSI) Olay Hub 'ından verileri almak için bir Time Series Insights örneği ayarlayacaksınız. Aşağıdaki adımları izleyin ve bu işlemle ilgili daha fazla ayrıntı için bkz. [*öğretici: Azure Time Series Insights Gen2 PAYG ortamı ayarlama*](../time-series-insights/tutorials-set-up-tsi-environment.md).
 
-1. Azure portal, bir Time Series Insights kaynağı oluşturmaya başlayın. 
+1. Azure portal, bir Time Series Insights ortamı oluşturmaya başlayın. 
     1. **Gen2 (L1)** fiyatlandırma katmanını seçin.
     2. Bu ortam için bir **zaman SERISI kimliği** seçmeniz gerekir. Zaman serisi KIMLIĞINIZ, Time Series Insights verilerinizi aramak için kullanacağınız üç değerden fazla olabilir. Bu öğretici için **$dtId** kullanabilirsiniz. [*Bir zaman SERISI kimliği seçmek Için en iyi yöntemler*](../time-series-insights/how-to-select-tsid.md)bölümünde kimlik değeri seçme hakkında daha fazla bilgi edinin.
     
         :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="Time Series Insights ortamı için oluşturma portalı UX. Gen2 (L1) Fiyatlandırma Katmanı seçilidir ve zaman serisi KIMLIĞI Özellik adı $dtId" lightbox="media/how-to-integrate-time-series-insights/create-twin-id.png":::
 
-2. **İleri ' yi seçin: olay kaynağı** ve yukarıdaki Event Hubs bilgilerinizi seçin. Ayrıca, yeni bir Event Hubs Tüketici grubu oluşturmanız gerekir.
+2. **İleri: olay kaynağı** ' nı seçin ve daha önce, daha önce gelen TSI Olay Hub 'ınızı seçin Ayrıca, yeni bir Event Hubs Tüketici grubu oluşturmanız gerekir.
     
     :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="Time Series Insights ortamı olay kaynağı için oluşturma portalı UX. Yukarıdaki olay hub 'ı bilgileriyle bir olay kaynağı oluşturuyorsunuz. Ayrıca yeni bir tüketici grubu oluşturuyorsunuz." lightbox="media/how-to-integrate-time-series-insights/event-source-twins.png":::
 
@@ -174,7 +179,7 @@ Uçtan uca öğreticiyi kullanıyorsanız ([*öğretici: uçtan uca çözümü b
 
 Şimdi, verilerin çözümlenmeye hazır Time Series Insights Örneğinizde akışı yapılmalıdır. İçinde gelen verileri araştırmak için aşağıdaki adımları izleyin.
 
-1. Time Series Insights örneğinizi [Azure Portal](https://portal.azure.com) açın (portal arama çubuğunda örneğinizin adını arayabilirsiniz). Örneğe genel bakış bölümünde gösterilen *Time Series Insights gezgin URL 'sini* ziyaret edin.
+1. Time Series Insights ortamınızı [Azure Portal](https://portal.azure.com) açın (portal arama çubuğunda ortamınızın adını arayabilirsiniz). Örneğe genel bakış bölümünde gösterilen *Time Series Insights gezgin URL 'sini* ziyaret edin.
     
     :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="Time Series Insights ortamınızın Genel Bakış sekmesinde Time Series Insights Explorer URL 'sini seçin":::
 

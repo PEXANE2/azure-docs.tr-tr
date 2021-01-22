@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 8c0dd9713c673ad676058acc7dbbb3cb5a65362e
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 1794d5b15c724008d95cfc59b16960b7ae6a0783
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929200"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661577"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Öğretici: ASP.NET Core uygulamasında Özellik bayraklarını kullanma
 
@@ -37,7 +37,6 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 ## <a name="set-up-feature-management"></a>Özellik yönetimini ayarlama
 
 `Microsoft.FeatureManagement.AspNetCore` `Microsoft.FeatureManagement` .NET Core Feature Manager 'ı kullanmak için ve NuGet paketlerine bir başvuru ekleyin.
-    
 .NET Core Feature Manager, `IFeatureManager` Framework 'ün yerel yapılandırma sisteminden Özellik bayraklarını alır. Sonuç olarak, dosyadaki veya ortam değişkenlerinin yerel *appsettings.js* dahil olmak üzere .NET Core tarafından desteklenen herhangi bir yapılandırma kaynağını kullanarak uygulamanızın Özellik bayraklarını tanımlayabilirsiniz. `IFeatureManager` .NET Core bağımlılığı ekleme 'yi kullanır. Özellik yönetimi hizmetlerini standart kuralları kullanarak kaydedebilirsiniz:
 
 ```csharp
@@ -109,7 +108,7 @@ ASP.NET Core uygulamanızı uygulama yapılandırmasına bağlanmanın en kolay 
 2. *Startup.cs* ' i açın ve `Configure` adlı yerleşik ara yazılımı eklemek için yöntemi güncelleştirin `UseAzureAppConfiguration` . Bu ara yazılım, ASP.NET Core Web uygulaması istekleri almaya devam ederken, özellik bayrağı değerlerinin yinelenen bir aralıkta yenilenmesini sağlar.
 
    ```csharp
-   public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+   public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
    {
        app.UseAzureAppConfiguration();
        app.UseMvc();
@@ -189,6 +188,8 @@ if (await featureManager.IsEnabledAsync(nameof(MyFeatureFlags.FeatureA)))
 ASP.NET Core MVC 'de `IFeatureManager` bağımlılık ekleme aracılığıyla Özellik yöneticisine erişebilirsiniz:
 
 ```csharp
+using Microsoft.FeatureManagement;
+
 public class HomeController : Controller
 {
     private readonly IFeatureManager _featureManager;
@@ -202,7 +203,7 @@ public class HomeController : Controller
 
 ## <a name="controller-actions"></a>Denetleyici eylemleri
 
-MVC denetleyicileri ' nde, `FeatureGate` bir denetleyici sınıfının veya belirli bir eylemin etkin olup olmadığını denetlemek için özniteliğini kullanırsınız. Aşağıdaki `HomeController` denetleyicinin, `FeatureA` Denetleyici sınıfı içeren *on* herhangi bir eylemde yürütülmesi gerekir:
+MVC denetleyicileri ' nde, `FeatureGate` bir denetleyici sınıfının veya belirli bir eylemin etkin olup olmadığını denetlemek için özniteliğini kullanırsınız. Aşağıdaki `HomeController` denetleyicinin, `FeatureA` Denetleyici sınıfı içeren  herhangi bir eylemde yürütülmesi gerekir:
 
 ```csharp
 using Microsoft.FeatureManagement.Mvc;

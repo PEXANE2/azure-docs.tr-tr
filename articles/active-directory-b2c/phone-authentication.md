@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8d41f8959d0a1ec0d6e48cf2fa4711a8ef8d8ae5
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 2600ea3488c643bcf215b058425de42cd439dcff
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178951"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660276"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>Azure AD B2C özel ilkelerle telefon kayıt ve oturum açma ayarlama
 
@@ -39,12 +39,12 @@ Telefon kayıt ve oturum açma ile Kullanıcı, birincil tanımlayıcıları ola
 >
 > *&lt;Ekle: Gizlilik Bildiriinize bir bağlantı&gt;*<br/>*&lt;Ekle: hizmet koşullarınıza bir bağlantı&gt;*
 
-Kendi onay bilgilerinizi eklemek için aşağıdaki örneği özelleştirin ve görüntüleme denetimiyle ( [Telefon kayıt ve oturum açma başlangıç paketindeki][starter-pack-phone] *Phone_Email_Base.xml* dosyası), kendi kendini onaylanan sayfa tarafından kullanılan ContentDefinition için localizedresources içine dahil edin:
+Kendi onay bilgilerinizi eklemek için aşağıdaki örneği özelleştirin. Kendisini, `LocalizedResources` görüntüleme denetimiyle ( [Telefon kayıt ve oturum açma başlangıç paketindeki][starter-pack-phone] *Phone_Email_Base.xml* dosyası), kendi kendini onaylanan sayfa tarafından kullanılan ContentDefinition için içine ekleyin:
 
 ```xml
 <LocalizedResources Id="phoneSignUp.en">        
     <LocalizedStrings>
-    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_msg_intro">By providing your phone number, you consent to receiving a one-time passcode sent by text message to help you sign into {insert your application name}. Standard messsage and data rates may apply.</LocalizedString>          
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_msg_intro">By providing your phone number, you consent to receiving a one-time passcode sent by text message to help you sign into {insert your application name}. Standard message and data rates may apply.</LocalizedString>          
     <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_1_text">Privacy Statement</LocalizedString>                
     <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_1_url">{insert your privacy statement URL}</LocalizedString>          
     <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_2_text">Terms and Conditions</LocalizedString>             
@@ -64,7 +64,7 @@ Kullanıcının telefon numarasına bir kerelik doğrulama kodu gönderilir. Kul
 
 ![Kullanıcı telefon kaydı sırasında kodu doğrular](media/phone-authentication/phone-signup-verify-code.png)
 
- Kullanıcı kaydolma sayfasında istenen diğer bilgileri (örneğin, **görünen ad**, **verilen ad** ve **Soyadı** ) girer (ülke ve telefon numarası doldurulmuş olarak kalır). Kullanıcı farklı bir telefon numarası kullanmak isterse, kayıt işlemini yeniden başlatmak için **numarayı Değiştir** ' i seçebilirler. İşiniz bittiğinde, Kullanıcı **devam**' ı seçer.
+Kullanıcı kaydolma sayfasında istenen diğer bilgileri girer. Örneğin, **görünen ad**, **verilen ad** ve **Soyadı** (ülke ve telefon numarası doldurulmuş olarak kalır). Kullanıcı farklı bir telefon numarası kullanmak isterse, kayıt işlemini yeniden başlatmak için **numarayı Değiştir** ' i seçebilirler. İşiniz bittiğinde, Kullanıcı **devam**' ı seçer.
 
 ![Kullanıcı ek bilgi sağlar](media/phone-authentication/phone-signup-additional-info.png)
 
@@ -88,7 +88,7 @@ Belirli durumlarda, Azure AD B2C dizininizden bir kullanıcıyı ve ilişkili ve
 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 OTP 'yi ayarlamadan önce aşağıdaki kaynaklara sahip olmanız gerekir.
 
@@ -99,8 +99,6 @@ OTP 'yi ayarlamadan önce aşağıdaki kaynaklara sahip olmanız gerekir.
 ## <a name="get-the-phone-sign-up--sign-in-starter-pack"></a>Telefon kaydolma & oturum açma başlangıç paketini alın
 
 Telefon kayıt ve oturum açma özel ilke dosyalarını güncelleştirerek Azure AD B2C kiracınızla çalışacak şekilde çalışmaya başlayın.
-
-Aşağıdaki adımlarda [önkoşulları](#prerequisites) tamamladığınız ve [özel ilke Başlatıcı paketi][starter-pack] deposunu zaten yerel makinenize Klonladığınız varsayılır.
 
 1. Başlangıç paketi deposunun yerel kopyanızda [Telefon kayıt ve oturum açma özel ilke dosyalarını][starter-pack-phone] bulun veya doğrudan indirin. XML ilke dosyaları şu dizinde bulunur:
 
@@ -136,9 +134,9 @@ Her dosyayı karşıya yüklerken Azure, ön eki ekler `B2C_1A_` .
 
 ## <a name="get-user-account-by-phone-number"></a>Telefon numarasına göre Kullanıcı hesabını al
 
-Telefon numarası ile kaydolan ancak bir kurtarma e-posta adresi sağlamayan bir Kullanıcı, oturum açma adı olarak telefon numarası ile Azure AD B2C dizinine kaydedilir. Kullanıcı daha sonra telefon numaralarını değiştirmeyi istiyorsa, yardım masasına veya destek ekibinizin öncelikle hesabını bulması ve sonra telefon numaralarını güncelleştirmesi gerekir.
+Bir telefon numarasıyla kaydolan bir Kullanıcı, kurtarma e-posta adresi olmadan Azure AD B2C dizininize, oturum açma adı olarak telefon numarası ile kaydedilir. Telefon numarasını değiştirmek için yardım masasına veya destek ekibinizin öncelikle hesabını bulması ve sonra telefon numaralarını güncelleştirmesi gerekir.
 
-[Microsoft Graph](manage-user-accounts-graph-api.md)kullanarak, bir kullanıcıyı telefon numarası (oturum açma adı) ile bulabilirsiniz:
+[Microsoft Graph](microsoft-graph-operations.md)kullanarak, bir kullanıcıyı telefon numarası (oturum açma adı) ile bulabilirsiniz:
 
 ```http
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+{phone number}' and c/issuer eq '{tenant name}.onmicrosoft.com')

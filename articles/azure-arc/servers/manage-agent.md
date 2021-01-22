@@ -1,14 +1,14 @@
 ---
 title: Azure Arc etkin sunucular Aracısı 'nı yönetme
 description: Bu makalede, Azure Arc etkin sunucular bağlı makine aracısının yaşam döngüsü boyunca genellikle gerçekleştirdiğiniz farklı yönetim görevleri açıklanır.
-ms.date: 12/21/2020
+ms.date: 01/21/2021
 ms.topic: conceptual
-ms.openlocfilehash: f408048f61f76d6b258ea8e063630b4e2aa841af
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 27712dcd30857ca8c677de4f99dc4ed7e2e7b292
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724383"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662135"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Bağlı makine aracısını yönetme ve sürdürme
 
@@ -34,7 +34,74 @@ Artık Azure Arc etkin sunucularıyla yönetmek istemediğiniz sunucular veya ma
 
     * [Azure CLI](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-cli#delete-resource) veya [Azure PowerShell](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-powershell#delete-resource)kullanma. Parametresi için `ResourceType` kullanın `Microsoft.HybridCompute/machines` .
 
-3. Aracıyı makineden veya sunucudan kaldırın. Aşağıdaki adımları izleyin.
+3. Aşağıdaki adımları izleyerek aracıyı makineden veya sunucudan [kaldırın](#remove-the-agent) .
+
+## <a name="renaming-a-machine"></a>Makineyi yeniden adlandırma
+
+Azure Arc etkin sunucularına bağlı Linux veya Windows makinesinin adını değiştirdiğinizde, Azure 'daki kaynak adı sabit olduğundan yeni ad otomatik olarak tanınmaz. Diğer Azure kaynaklarında olduğu gibi, yeni adı kullanmak için kaynağı silip yeniden oluşturmanız gerekir.
+
+Yay etkin sunucular için, makineyi yeniden adlandırmadan önce, devam etmeden önce VM uzantılarının kaldırılması gerekir.
+
+> [!NOTE]
+> Yüklenen uzantılar çalışmaya devam eder ve bu yordam tamamlandıktan sonra normal işlemlerini gerçekleştirmeyecektir. Makinede uzantıları yeniden dağıtmaya çalışırsanız öngörülemeyen davranışlarla karşılaşabilirsiniz.
+
+> [!WARNING]
+> Makinenin bilgisayar adını yeniden adlandırmaktan kaçınmanıza ve kesinlikle gerekli olduğunda bu yordamı gerçekleştirmeniz önerilir.
+
+Aşağıdaki adımlarda bilgisayar yeniden adlandırma yordamı özetlenmektedir.
+
+1. Makinede yüklü olan VM uzantılarını denetleyin ve [Azure CLI](manage-vm-extensions-cli.md#list-extensions-installed) kullanarak veya [Azure PowerShell](manage-vm-extensions-powershell.md#list-extensions-installed)kullanarak yapılandırmalarını aklınızda edin.
+
+2. PowerShell, Azure CLı veya Azure portal kullanarak VM uzantılarını kaldırın.
+
+    > [!NOTE]
+    > Azure Ilke Konuk yapılandırma ilkesini kullanarak VM'ler için Azure İzleyici (Öngörüler) Aracısı veya Log Analytics Aracısı dağıttıysanız, aracılar sonraki [değerlendirme döngüsünden](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers) sonra ve yeniden adlandırılmış makine yay etkin sunucularla kaydedildikten sonra yeniden dağıtılır.
+
+3. PowerShell, Azure CLı veya portaldan yararlanarak, makinenin yayın etkin sunucularla bağlantısını kesin.
+
+4. Bilgisayarı yeniden adlandırın.
+
+5. `Azcmagent`Azure 'da yeni bir kaynak kaydettirmek ve oluşturmak için aracı kullanarak, makineyi yay etkin sunucularla bağlayın.
+
+6. Hedef makinede daha önce yüklü olan VM uzantılarını dağıtın.
+
+Bu görevi gerçekleştirmek için aşağıdaki adımları kullanın.
+
+1. [Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension)kullanarak veya [Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension)kullanarak [Azure Portal](manage-vm-extensions-portal.md#uninstall-extension)yüklü VM uzantılarını kaldırın.
+
+2. Makinenin Azure Arc bağlantısını kesmek için aşağıdaki yöntemlerden birini kullanın. Makinenin yay özellikli sunuculardan bağlantısının kesilmesi bağlı makine aracısını kaldırmaz ve aracıyı bu işlemin bir parçası olarak kaldırmanız gerekmez. Makineye dağıtılan tüm VM uzantıları bu işlem sırasında çalışmaya devam eder.
+
+    # <a name="azure-portal"></a>[Azure portalı](#tab/azure-portal)
+
+    1. Tarayıcınızdan [Azure Portal](https://portal.azure.com)gidin.
+    1. Portalda, **sunucular-Azure Arc** ' a gidin ve listeden karma makinenizi seçin.
+    1. Seçili kayıtlı yay etkin sunucusunda, Azure 'daki kaynağı silmek için üstteki çubuktan **Sil** ' i seçin.
+
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+    
+    ```azurecli
+    az resource delete \
+      --resource-group ExampleResourceGroup \
+      --name ExampleArcMachine \
+      --resource-type "Microsoft.HybridCompute/machines"
+    ```
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+    ```powershell
+    Remove-AzResource `
+     -ResourceGroupName ExampleResourceGroup `
+     -ResourceName ExampleArcMachine `
+     -ResourceType Microsoft.HybridCompute/machines
+    ```
+
+3. Makinenin bilgisayar adını yeniden adlandırın.
+
+### <a name="after-renaming-operation"></a>İşlemi yeniden adlandırdıktan sonra
+
+Bir makine yeniden adlandırıldıktan sonra, bağlı makine aracısının yay etkin sunucularla yeniden kaydedilmesi gerekir. `azcmagent`Aracı [Connect](#connect) parametresiyle çalıştırın bu adımı gerçekleştirin.
+
+Özgün olarak dağıtılan sanal makine uzantılarını yay etkin sunuculardan yeniden dağıtın. Azure Ilke Konuk yapılandırma ilkesini kullanarak VM'ler için Azure İzleyici (Öngörüler) aracısını veya Log Analytics aracısını dağıttıysanız, aracılar bir sonraki [değerlendirme döngüsünden](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers)sonra yeniden dağıtılır.
 
 ## <a name="upgrading-agent"></a>Aracı yükseltiliyor
 
@@ -229,7 +296,7 @@ Aşağıdaki yöntemlerin her ikisi de aracıyı kaldırır, ancak makinede *C:\
 
 Aracıyı komut Isteminden el ile kaldırmak veya betik gibi otomatikleştirilmiş bir yöntemi kullanmak için aşağıdaki örneği kullanabilirsiniz. İlk olarak, işletim sisteminden uygulama paketinin asıl tanımlayıcısı olan bir GUID olan ürün kodunu almanız gerekir. Kaldırma işlemi Msiexec.exe komut satırı kullanılarak gerçekleştirilir `msiexec /x {Product Code}` .
 
-1. Kayıt defteri düzenleyicisini açın.
+1. Kayıt Defteri Düzenleyicisi'ni açın.
 
 2. Kayıt defteri anahtarı altında `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall` ürün kodu GUID 'sini bulup kopyalayın.
 

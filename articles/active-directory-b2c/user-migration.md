@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fea8d93121fcb5622f86257febcc7d834b444098
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 34bc50f5f95725b59c0d2b30b529e12abb6aa7fa
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178815"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661162"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>Kullanıcıları Azure AD B2C geçir
 
-Başka bir kimlik sağlayıcısından Azure Active Directory B2C (Azure AD B2C) uygulamasına geçiş, mevcut kullanıcı hesaplarının geçirilmesini de gerektirebilir. Burada iki geçiş yöntemi ele alınmıştır, *geçiş öncesi* ve *sorunsuz geçiş*. Her iki yaklaşım da, Azure AD B2C içinde Kullanıcı hesapları oluşturmak için [MICROSOFT Graph API](manage-user-accounts-graph-api.md) 'sini kullanan bir uygulama veya betik yazmanız gerekir.
+Başka bir kimlik sağlayıcısından Azure Active Directory B2C (Azure AD B2C) uygulamasına geçiş, mevcut kullanıcı hesaplarının geçirilmesini de gerektirebilir. Burada iki geçiş yöntemi ele alınmıştır, *geçiş öncesi* ve *sorunsuz geçiş*. Her iki yaklaşım da, Azure AD B2C içinde Kullanıcı hesapları oluşturmak için [MICROSOFT Graph API](microsoft-graph-operations.md) 'sini kullanan bir uygulama veya betik yazmanız gerekir.
 
 ## <a name="pre-migration"></a>Geçiş öncesi
 
@@ -34,7 +34,7 @@ Geçiş öncesi akışını şu iki durumda kullanın:
 - Kullanıcının düz metin kimlik bilgilerine (Kullanıcı adı ve parola) erişiminiz var.
 - Kimlik bilgileri şifrelenir, ancak şifrelerini çözebilirsiniz.
 
-Programlı olarak Kullanıcı hesapları oluşturma hakkında bilgi için bkz. [Microsoft Graph Azure AD B2C Kullanıcı hesaplarını yönetme](manage-user-accounts-graph-api.md).
+Programlı olarak Kullanıcı hesapları oluşturma hakkında bilgi için bkz. [Microsoft Graph Azure AD B2C Kullanıcı hesaplarını yönetme](microsoft-graph-operations.md).
 
 ## <a name="seamless-migration"></a>Kesintisiz geçiş
 

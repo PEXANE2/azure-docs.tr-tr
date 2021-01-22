@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: 881309c040f6c1bdff758d17ab7f51e935437192
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: a49258208f7a5945ac71c8f17db56fccfdcd6515
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607890"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662009"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için MediusFlow yapılandırma
 
@@ -31,7 +31,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Medius
 > * MediusFlow 'da grupları ve grup üyeliklerini sağlama
 > * MediusFlow 'da çoklu oturum açma (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -155,17 +155,25 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 9. **Öznitelik eşleme** bölümünde Azure AD 'Den MediusFlow 'a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için MediusFlow 'daki Kullanıcı hesaplarıyla eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](../app-provisioning/customize-application-attributes.md)değiştirmeyi seçerseniz, MediusFlow API 'sinin, bu özniteliğe göre kullanıcıların filtrelenmesini desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-   |Öznitelik|Tür|
-   |---|---|
-   |userName|Dize|
+   |Öznitelik|Tür|Filtreleme için destekleniyor|
+   |---|---|---|
+   |userName|Dize|&check;|
    |emails[type eq "work"].value|Dize|
    |Name. displayName|Dize|
    |active|Boole|
    |name.givenName|Dize|
    |name.familyName|Dize|
    |ad. biçimlendirildi|Dize|
-   |externalID|Dize|
+   |externalId|Dize|
    |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Manager|Başvuru|
+   |urn: IETF: params: Scim: schemas: Extension: medius: 2.0: Kullanıcı: configurationFilter|Dize|
+   |urn: IETF: params: Scim: schemas: Extension: medius: 2.0: Kullanıcı: IdentityProvider|Dize|
+   |urn: IETF: params: Scim: schemas: Extension: medius: 2.0: Kullanıcı: NameIdentifier|Dize|
+   |urn: IETF: params: Scim: schemas: Extension: medius: 2.0: Kullanıcı: customFieldText1|Dize|
+   |urn: IETF: params: Scim: schemas: Extension: medius: 2.0: Kullanıcı: customFieldText2|Dize|
+   |urn: IETF: params: Scim: schemas: Extension: medius: 2.0: Kullanıcı: customFieldText3|Dize|
+   |urn: IETF: params: Scim: schemas: Extension: medius: 2.0: Kullanıcı: customFieldText4|Dize|
+   |urn: IETF: params: Scim: schemas: Extension: medius: 2.0: Kullanıcı: customFieldText5|Dize|
 
 
 10. **Eşlemeler** bölümünde, **Azure Active Directory grupları Mediusflow olarak eşitler**' ı seçin.
@@ -200,6 +208,10 @@ Hazırlama ayarlarını yapılandırdıktan sonra dağıtımınızı izlemek iç
 1. Hazırlama işlemi başarılı ve başarısız olan kullanıcıları belirlemek için [hazırlama günlüklerini](../reports-monitoring/concept-provisioning-logs.md) kullanın
 2. Hazırlama döngüsünün durumunu ve tamamlanması için kalan miktarı görmek için [ilerleme çubuğuna](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) bakın
 3. Hazırlama yapılandırmasının durumu iyi görünmüyorsa uygulama karantinaya geçer. Karantina durumu hakkında daha fazla bilgi edinmek için [buraya](../app-provisioning/application-provisioning-quarantine-status.md) bakın.
+
+## <a name="change-log"></a>Değişiklik günlüğü
+
+* 01/21/2021-özel uzantı öznitelikleri **ConfigurationFilter**, **IdentityProvider**, **NameIdentifier**, **customFieldText1**, **customFieldText2**, **customFieldText3**, **customFieldText3** ve **customFieldText5** eklendi.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

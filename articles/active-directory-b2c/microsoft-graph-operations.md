@@ -1,29 +1,31 @@
 ---
-title: Desteklenen Microsoft Graph işlemleri
+title: Microsoft Graph ile kaynakları yönetme
 titleSuffix: Azure AD B2C
-description: Kullanıcılar, Kullanıcı akışları, kimlik sağlayıcıları, özel ilkeler, ilke anahtarları ve daha fazlası dahil Azure AD B2C kaynaklarının yönetimi için desteklenen Microsoft Graph işlemlerinin bir dizini.
+description: Microsoft Graph API 'sini çağırarak ve işlemi otomatikleştirmek için bir uygulama kimliği kullanarak Azure AD B2C kiracısındaki kaynakları yönetme.
 services: B2C
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: reference
-ms.date: 10/15/2020
+ms.topic: how-to
+ms.date: 01/21/2021
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.custom: fasttrack-edit
-ms.openlocfilehash: fed1e31380381b864530b3fa0b9e8c0886737d04
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 1dc5b8dc8930d75456f307324ef97bd60e78eca9
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033617"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660166"
 ---
-# <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>Azure AD B2C için kullanılabilir Microsoft Graph işlemler
+# <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Microsoft Graph ile Azure AD B2C yönetme
 
-Aşağıdaki Microsoft Graph API işlemleri, kullanıcılar, kimlik sağlayıcıları, Kullanıcı akışları, özel ilkeler ve ilke anahtarları dahil Azure AD B2C kaynaklarının yönetimi için desteklenir.
+Microsoft Graph, Azure AD B2C dizininizdeki kaynakları yönetmenizi sağlar. Aşağıdaki Microsoft Graph API işlemleri, kullanıcılar, kimlik sağlayıcıları, Kullanıcı akışları, özel ilkeler ve ilke anahtarları dahil Azure AD B2C kaynaklarının yönetimi için desteklenir. Aşağıdaki bölümlerde yer alan her bağlantı, bu işlem için Microsoft Graph API başvurusu içinde karşılık gelen sayfayı hedefler. 
 
-Aşağıdaki bölümlerde yer alan her bağlantı, bu işlem için Microsoft Graph API başvurusu içinde karşılık gelen sayfayı hedefler.
+## <a name="perquisites"></a>Önkoşulları denetle
+
+MS Graph API kullanmak ve Azure AD B2C kiracınızdaki kaynaklarla etkileşim kurmak için izinleri veren bir uygulama kaydına ihtiyacınız vardır. Yönetim uygulamanızın kullanabileceği bir uygulama kaydı oluşturmak için, [Azure AD B2C yönetme Microsoft Graph](microsoft-graph-get-started.md) makalesindeki adımları izleyin. 
 
 ## <a name="user-management"></a>Kullanıcı yönetimi
 
@@ -33,8 +35,6 @@ Aşağıdaki bölümlerde yer alan her bağlantı, bu işlem için Microsoft Gra
 - [Kullanıcı güncelleştirme](/graph/api/user-update)
 - [Kullanıcı silme](/graph/api/user-delete)
 
-Microsoft Graph API 'siyle Azure AD B2C Kullanıcı hesaplarını yönetme hakkında daha fazla bilgi için bkz. [Microsoft Graph ile Azure AD B2C Kullanıcı hesaplarını yönetme](manage-user-accounts-graph-api.md).
-
 ## <a name="user-phone-number-management"></a>Kullanıcı telefon numarası yönetimi
 
 - [Ekle](/graph/api/authentication-post-phonemethods)
@@ -42,7 +42,7 @@ Microsoft Graph API 'siyle Azure AD B2C Kullanıcı hesaplarını yönetme hakk�
 - [Güncelleştirme](/graph/api/b2cauthenticationmethodspolicy-update)
 - [Silme](/graph/api/phoneauthenticationmethod-delete)
 
-Kullanıcının Microsoft Graph API 'SI ile oturum açma telefon numarasını yönetme hakkında daha fazla bilgi için bkz. [B2C kimlik doğrulama yöntemleri](/graph/api/resources/b2cauthenticationmethodspolicy).
+Kullanıcının oturum açma telefon numarasını yönetme hakkında daha fazla bilgi için bkz. [B2C kimlik doğrulama yöntemleri](/graph/api/resources/b2cauthenticationmethodspolicy).
 
 ## <a name="identity-providers-user-flow"></a>Kimlik sağlayıcıları (Kullanıcı akışı)
 
@@ -77,7 +77,7 @@ Aşağıdaki işlemler, [özel ilkeler](custom-policy-overview.md)olarak bilinen
 
 Kimlik deneyimi çerçevesi, bileşenler arasında güven sağlamak için bir özel ilkede başvurulan gizli dizileri depolar. Bu gizlilikler simetrik veya asimetrik anahtarlar/değerler olabilir. Azure portal, bu varlıklar **ilke anahtarları** olarak gösterilir.
 
-Microsoft Graph API 'sindeki ilke anahtarları için en üst düzey kaynak, [güvenilir çerçeve anahtar kümesi](/graph/api/resources/trustframeworkkeyset)' dir. Her **anahtar kümesi** en az bir **anahtar** içerir. Anahtar oluşturmak için, önce boş bir anahtar kümesi oluşturun ve sonra anahtar kümesi içinde bir anahtar oluşturun. El ile gizli dizi oluşturabilir, bir sertifikayı veya PKCS12 anahtarını karşıya yükleyebilirsiniz. Anahtar, oluşturulan bir gizli dizi, tanımladığınız bir dize (Facebook uygulaması gizli dizisi gibi) veya karşıya yüklediğiniz bir sertifika olabilir. Bir anahtar kümesi birden fazla anahtara sahipse, anahtarlardan yalnızca biri etkin olur.
+Microsoft Graph API 'sindeki ilke anahtarları için en üst düzey kaynak, [güvenilir çerçeve anahtar kümesi](/graph/api/resources/trustframeworkkeyset)' dir. Her **anahtar kümesi** en az bir **anahtar** içerir. Anahtar oluşturmak için, önce boş bir anahtar kümesi oluşturun ve sonra anahtar kümesi içinde bir anahtar oluşturun. El ile gizli dizi oluşturabilir, bir sertifikayı veya PKCS12 anahtarını karşıya yükleyebilirsiniz. Anahtar, oluşturulmuş bir gizli dizi, bir dize (Facebook uygulaması gizli dizisi gibi) veya karşıya yüklediğiniz bir sertifika olabilir. Bir anahtar kümesi birden fazla anahtara sahipse, anahtarlardan yalnızca biri etkin olur.
 
 ### <a name="trust-framework-policy-keyset"></a>Güven çerçevesi ilkesi anahtar kümesi
 
@@ -114,4 +114,93 @@ Azure AD B2C, Kullanıcı başına 100 özel öznitelik tutan bir dizin sağlar.
 
 - [Denetim günlüklerini listeleme](/graph/api/directoryaudit-list)
 
-Microsoft Graph API 'siyle Azure AD B2C denetim günlüklerine erişme hakkında daha fazla bilgi için bkz. [Azure AD B2C denetim günlüklerine erişme](view-audit-logs.md).
+Azure AD B2C denetim günlüklerine erişme hakkında daha fazla bilgi için bkz. [Azure AD B2C denetim günlüklerine erişme](view-audit-logs.md).
+
+## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>Kod örneği: program aracılığıyla Kullanıcı hesaplarını yönetme
+
+Bu kod örneği, Microsoft Graph API ile etkileşim kurmak için [Microsoft Graph SDK 'sını](/graph/sdks/sdks-overview) kullanan bir .NET Core konsol uygulamasıdır. Kodu, bir Azure AD B2C kiracısındaki kullanıcıları programlı bir şekilde yönetmek için API 'nin nasıl çağrılacağını gösterir.
+[Örnek Arşivi](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management/archive/master.zip) (*. zip) Indirebilir, GitHub 'daki [depoya gözatabilir](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management) veya depoyu klonlayabilirsiniz:
+
+```cmd
+git clone https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management.git
+```
+
+Kod örneğini aldıktan sonra, ortamınız için yapılandırın ve ardından projeyi derleyin:
+
+1. Projeyi [Visual Studio](https://visualstudio.microsoft.com) 'da veya [Visual Studio Code](https://code.visualstudio.com)açın.
+1. `src/appsettings.json` dosyasını açın.
+1. Bölümünde, `appSettings` `your-b2c-tenant` kiracınızın adıyla ve `Application (client) ID` ve `Client secret` yönetim uygulaması kaydınızın değerleriyle değiştirin. Daha fazla bilgi için bkz. [Microsoft Graph uygulamasını kaydetme](microsoft-graph-get-started.md).
+1. Deponun yerel kopyanızda bir konsol penceresi açın, dizine geçin ve `src` ardından projeyi derleyin:
+
+    ```console
+    cd src
+    dotnet build
+    ```
+    
+1. Uygulamayı `dotnet` komutla çalıştırın:
+
+    ```console
+    dotnet bin/Debug/netcoreapp3.1/b2c-ms-graph.dll
+    ```
+
+Uygulama, yürütebilmeniz için kullanabileceğiniz komutların bir listesini görüntüler. Örneğin, tüm kullanıcıları alma, tek bir Kullanıcı alma, Kullanıcı silme, Kullanıcı parolasını güncelleştirme ve toplu içeri aktarma.
+
+### <a name="code-discussion"></a>Kod tartışması
+
+Örnek kod, Microsoft Graph erişen yüksek kaliteli, verimli ve esnek uygulamalar oluşturmayı basitleştirmek için tasarlanan [Microsoft Graph SDK 'sını](/graph/sdks/sdks-overview)kullanır.
+
+Microsoft Graph API 'sine yönelik herhangi bir istek, kimlik doğrulaması için bir erişim belirteci gerektirir. Çözüm, Microsoft Graph SDK ile kullanmak üzere Microsoft kimlik doğrulama kitaplığı 'nın (MSAL) kimlik doğrulama senaryosu tabanlı bir sarmalayıcı sağlayan [Microsoft. Graph. auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/) NuGet paketini kullanır.
+
+`RunAsync` _Program.cs_ dosyasındaki yöntemi:
+
+1. _appsettings.js_ dosyadaki uygulama ayarlarını okur
+1. Kimlik doğrulama sağlayıcısını [OAuth 2,0 istemci kimlik bilgileri verme](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md) akışı kullanarak başlatır. İstemci kimlik bilgileri verme akışı ile, uygulama Microsoft Graph API 'sini çağırmak için bir erişim belirteci alabilir.
+1. Kimlik doğrulama sağlayıcısına Microsoft Graph hizmeti istemcisini ayarlar:
+
+    ```csharp
+    // Read application settings from appsettings.json (tenant ID, app ID, client secret, etc.)
+    AppSettings config = AppSettingsFile.ReadFromJsonFile();
+
+    // Initialize the client credential auth provider
+    IConfidentialClientApplication confidentialClientApplication = ConfidentialClientApplicationBuilder
+        .Create(config.AppId)
+        .WithTenantId(config.TenantId)
+        .WithClientSecret(config.ClientSecret)
+        .Build();
+    ClientCredentialProvider authProvider = new ClientCredentialProvider(confidentialClientApplication);
+
+    // Set up the Microsoft Graph service client with client credentials
+    GraphServiceClient graphClient = new GraphServiceClient(authProvider);
+    ```
+
+Başlatılmış *GraphServiceClient* daha sonra Kullanıcı yönetimi işlemlerini gerçekleştirmek için _UserService.cs_ ' de kullanılır. Örneğin, Kiracıdaki Kullanıcı hesaplarının bir listesini alma:
+
+```csharp
+public static async Task ListUsers(GraphServiceClient graphClient)
+{
+    Console.WriteLine("Getting list of users...");
+
+    // Get all users (one page)
+    var result = await graphClient.Users
+        .Request()
+        .Select(e => new
+        {
+            e.DisplayName,
+            e.Id,
+            e.Identities
+        })
+        .GetAsync();
+
+    foreach (var user in result.CurrentPage)
+    {
+        Console.WriteLine(JsonConvert.SerializeObject(user));
+    }
+}
+```
+
+[Microsoft Graph SDK 'ları kullanarak API çağrıları yapın](/graph/sdks/create-requests) Microsoft Graph bilgileri okuma ve yazma hakkında bilgiler içerir, `$select` döndürülen özellikleri denetlemek, özel sorgu parametreleri sağlamak ve `$filter` ve sorgu parametrelerini kullanmak için kullanın `$orderBy` .
+
+<!-- LINK -->
+
+[graph-objectIdentity]: /graph/api/resources/objectidentity
+[graph-user]: (https://docs.microsoft.com/graph/api/resources/user)

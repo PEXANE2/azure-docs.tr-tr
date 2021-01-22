@@ -10,26 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 563a3e224ffedc98bcc3102ea865f06315294365
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 28cc0e27e5ac97ca52f5e94a556795b1404f6961
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573114"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663205"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>Özel bir ses oluşturmak için verileri hazırlama
 
 Uygulamanız için özel bir metin okuma sesi oluşturmaya hazırsanız, ilk adım ses kaydı ve ilişkili betikleri toplamaktır. böylece ses modeli eğitimi başlatılır. Konuşma hizmeti bu verileri, kayıtlarda bulunan sesle eşleşecek şekilde ayarlanmış benzersiz bir ses oluşturmak için kullanır. Sesi eğitdikten sonra, uygulamalarınızda konuşmayı senizme başlatabilirsiniz.
 
-Kendi metinden konuşmaya ses modelinizi eğmeden önce, ses kayıtları ve ilişkili metin dökümlerinin olması gerekir. Bu sayfada, veri türlerini, bunların nasıl kullanıldığını ve bunların nasıl yönetileceğini inceleyeceğiz.
-
-> [!NOTE]
-> Bir sinir sesi eğmek isterseniz, özel bir ses modeli eğmek için kendi konuşma verilerini kullanma hakkında daha fazla ses onay dosyası içeren bir ses tatatsyon profili belirtmeniz gerekir. Kayıt betiğinizi hazırlarken aşağıdaki tümceyi eklediğinizden emin olun. 
-
-> "I [soyadınız ve soyadınız], sesimin yapay bir sürümünü oluşturmak ve kullanmak için sesimin kayıtlarının [Şirket adı olarak durum] tarafından kullanılacağını biliyor."
-Bu cümle, eğitim verilerinin onay yapan kişi tarafından gerçekleştirilip yapılkullanılmadığını doğrulamak için kullanılacaktır. [Sesli TATATK doğrulaması](https://aka.ms/CNV-data-privacy) hakkında daha fazla bilgi edinmek için buraya bakın.
-
-> Özel sinir Voice sınırlı erişimle kullanılabilir. [Sorumlu AI gereksinimlerini](https://aka.ms/gating-overview) anladığınızdan emin olun ve [erişimi buraya uygulayın](https://aka.ms/customneural). 
+Kavram kanıtı oluşturmak için az miktarda veri ile başlayabilirsiniz. Ancak, daha fazla veri sağlarsanız, özel sesinize daha fazla doğal olur. Kendi metinden konuşmaya ses modelinizi eğmeden önce, ses kayıtları ve ilişkili metin dökümlerinin olması gerekir. Bu sayfada, veri türlerini, bunların nasıl kullanıldığını ve bunların nasıl yönetileceğini inceleyeceğiz.
 
 ## <a name="data-types"></a>Veri türleri
 
@@ -39,22 +31,22 @@ Bazı durumlarda, doğru veri kümesi hazır olmayabilir ve uygun ses eğitimini
 
 Bu tabloda, veri türleri ve bunların her birinin özel metin okuma ses modeli oluşturmak için nasıl kullanıldığı listelenmektedir.
 
-| Veri türü | Açıklama | Kullanılması gereken durumlar | Ek işlem gerekiyor | 
-| --------- | ----------- | ----------- | --------------------------- |
-| **Bireysel söyleyle + eşleşen döküm** | Tek tek bildirimler olarak ses dosyalarının (. wav) bir koleksiyonu (. zip). Her ses dosyası, biçimlendirilen bir döküm dosyası (. txt) ile eşleştirilmiş 15 saniye veya daha az uzunlukta olmalıdır. | Eşleşen yazılı betiklerle profesyonel kayıtlar | Eğitim için hazırlayın. |
-| **Uzun ses + döküm (Beta)** | Tüm konuşulan kelimeleri içeren bir döküm dosyası (. txt) ile eşleştirilmiş ve uzun, bölünmeden (20 saniyeden uzun) bir koleksiyon (. zip). | Ses dosyalarınız ve eşleşen yazılı betikleriniz var, ancak bunlar utterler halinde bölünmemelidir. | Segmentleme (toplu iş dökümü kullanılarak).<br>Gereken yerlerde ses biçimi dönüşümü. | 
-| **Yalnızca ses (Beta)** | Döküm dosyası olmayan ses dosyalarının koleksiyonu (. zip). | Yazılı betikler olmadan yalnızca kullanılabilir ses dosyalarınız vardır. | Segment + döküm oluşturma (toplu iş dökümü kullanılarak).<br>Gereken yerlerde ses biçimi dönüşümü.| 
+| Veri türü | Açıklama | Kullanılması gereken durumlar | Ek hizmet gerekli | Model eğitimi için miktar | Yerel ayarlar |
+| --------- | ----------- | ----------- | --------------------------- | ----------------------------- | --------- |
+| **Bireysel söyleyle + eşleşen döküm** | Tek tek bildirimler olarak ses dosyalarının (. wav) bir koleksiyonu (. zip). Her ses dosyası, biçimlendirilen bir döküm dosyası (. txt) ile eşleştirilmiş 15 saniye veya daha az uzunlukta olmalıdır. | Eşleşen yazılı betiklerle profesyonel kayıtlar | Eğitim için hazırlayın. | En-US ve zh-CN için sabit gereksinim yoktur. Diğer yerel ayarlar için 2000 ' den fazla + farklı utterleri. | [Tüm özel ses yerel ayarları](language-support.md#customization) |
+| **Uzun ses + döküm (Beta)** | Tüm konuşulan kelimeleri içeren bir döküm dosyası (. txt) ile eşleştirilmiş ve uzun, bölünmeden (20 saniyeden uzun) bir koleksiyon (. zip). | Ses dosyalarınız ve eşleşen yazılı betikleriniz var, ancak bunlar utterler halinde bölünmemelidir. | Segmentleme (toplu iş dökümü kullanılarak).<br>Gereken yerlerde ses biçimi dönüşümü. | Sabit gereksinim yok  | [Tüm özel ses yerel ayarları](language-support.md#customization) |
+| **Yalnızca ses (Beta)** | Döküm dosyası olmayan ses dosyalarının koleksiyonu (. zip). | Yazılı betikler olmadan yalnızca kullanılabilir ses dosyalarınız vardır. | Segment + döküm oluşturma (toplu iş dökümü kullanılarak).<br>Gereken yerlerde ses biçimi dönüşümü.| Sabit gereksinim yok | [Tüm özel ses yerel ayarları](language-support.md#customization) |
 
 Dosyalar bir veri kümesine türlerine göre gruplanmalı ve zip dosyası olarak karşıya yüklenir. Her veri kümesi yalnızca tek bir veri türü içerebilir.
 
 > [!NOTE]
-> Abonelik başına içeri aktarılmaya izin verilen en fazla veri kümesi sayısı, ücretsiz abonelik (F0) kullanıcıları için 10 ZIP dosyası ve Standart abonelik (S0) kullanıcıları için 500 ' dir.
+> Abonelik başına içeri aktarılmaya izin verilen en fazla veri kümesi sayısı 10. ücretsiz abonelik (F0) kullanıcıları ve Standart abonelik (S0) kullanıcıları için 500. zip dosyalarıdır.
 
 ## <a name="individual-utterances--matching-transcript"></a>Bireysel söyleyle + eşleşen döküm
 
 Tek tek dıklarınızın ve eşleşen döküm dosyalarının kayıtlarını iki şekilde hazırlayabilirsiniz. Bir komut dosyası yazın ve bir sesli taçın tarafından okunmasını ister İkincisini yaparsanız, "um" ve diğer dolgu sesleri, geri alma, geri alınan sözcükler veya yanlış söylenler gibi ses dosyalarından birliklerini düzenleyin.
 
-İyi bir ses modeli oluşturmak için, yüksek kaliteli bir mikrofona sahip bir sessiz odada kayıtlar oluşturun. Tutarlı birim, konuşma oranı, konuşma sıklığı ve önemli öneme sahip bir konuşma
+İyi bir ses yazı tipi oluşturmak için, yüksek kaliteli bir mikrofona sahip bir sessiz odada kayıtlar oluşturun. Tutarlı birim, konuşma oranı, konuşma sıklığı ve önemli öneme sahip bir konuşma
 
 > [!TIP]
 > Üretim kullanımı için bir ses oluşturmak üzere bir profesyonel Kayıt Studio ve ses taçı kullanmanızı öneririz. Daha fazla bilgi için bkz. [özel bir ses için ses örneklerini kaydetme](record-custom-voice-samples.md).
@@ -97,6 +89,9 @@ Aşağıda, döküm dosyalarının tek bir. txt dosyasında söylenişi tarafın
 0000000003[tab] It was Janet Maslin.
 ```
 Bu, döküm dosyalarının karşılık gelen sesin %100 doğru dökümünü gerektirdiğinden önemlidir. Dökümleri hataları eğitim sırasında kalite kaybı ortaya çıkaracak.
+
+> [!TIP]
+> Üretim metin okuma seslerini oluştururken, hem fonetik kapsamı hem de verimliliği hesaba katan (veya yazma betikleri) ' ni seçin. İstediğiniz sonuçları alırken sorun mu yaşıyorsunuz? [Başvurmamıza](mailto:speechsupport@microsoft.com) daha fazla bilgi edinmek Için özel ses ekibine başvurun.
 
 ## <a name="long-audio--transcript-beta"></a>Uzun ses + döküm (Beta)
 

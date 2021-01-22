@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 09ce611b5bca6c04d55da95a82a8fcd7ae348db3
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 4f68eba8106a20d357fe6d3fb2baac1d1661aa1e
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049227"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660547"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Öğretici: uçtan uca bir çözüm oluşturma
 
@@ -167,11 +167,13 @@ Ana Visual Studio penceresinde geri açılan *Yayımla* bölmesinde tüm bilgile
 
 [!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
-Azure Cloud Shell ' de, işlev uygulamanızın Azure dijital TWINS örneğinizi referans olarak kullanacağı bir uygulama ayarı ayarlamak için aşağıdaki komutu kullanın.
+Azure Cloud Shell ' de, işlev uygulamanızın Azure dijital TWINS örneğinizi referans olarak kullanacağı bir uygulama ayarı ayarlamak için aşağıdaki komutu kullanın. Yer tutucuları kaynaklarınızın ayrıntıları ile birlikte girin (Azure Digital TWINS örnek URL 'nizin önünde *https://* tarafından ana bilgisayar adı olduğunu unutmayın).
 
 ```azurecli-interactive
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
 ```
+
+Çıktı, artık *ADT_SERVICE_URL* adlı bir giriş Içermesi gereken Azure işlevi için ayarların listesidir.
 
 Sistem tarafından yönetilen kimliği oluşturmak için aşağıdaki komutu kullanın. Çıktıda *PrincipalId* alanını bir yere göz atın.
 
@@ -257,7 +259,7 @@ az iot hub device-identity create --device-id thermostat67 --hub-name <your-IoT-
 
 ### <a name="configure-and-run-the-simulation"></a>Simülasyonu yapılandırma ve çalıştırma
 
-Daha sonra, cihaz simülatörünü IoT Hub örneğinize veri gönderecek şekilde yapılandırın.
+Şimdi cihaz simülatörünü yapılandırın ve IoT Hub örneğinize veri gönderin.
 
 Şu komutla *IoT Hub bağlantı dizesini* alarak başlayın:
 
@@ -265,7 +267,7 @@ Daha sonra, cihaz simülatörünü IoT Hub örneğinize veri gönderecek şekild
 az iot hub connection-string show -n <your-IoT-hub-name>
 ```
 
-Ardından, aşağıdaki komutla *Cihaz bağlantı dizesini* alın:
+Ardından şu komutla *cihaz bağlantı dizesini* alın:
 
 ```azurecli-interactive
 az iot hub device-identity connection-string show --device-id thermostat67 --hub-name <your-IoT-hub-name>

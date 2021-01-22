@@ -3,15 +3,15 @@ title: Özel bağlantı-Azure portal-MariaDB için Azure veritabanı
 description: Azure portal 'ten MariaDB için Azure veritabanı için özel bağlantıyı yapılandırma hakkında bilgi edinin
 author: mksuni
 ms.author: sumuth
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 79b3c3f8eca2fa4442a7845ca4aa3921d0302453
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 127a1c83525c4a9c457f551c05045a63a3c4347a
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005053"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98659633"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>Portal kullanarak MariaDB için Azure veritabanı için özel bağlantı oluşturma ve yönetme
 
@@ -60,7 +60,7 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
     | Kaynak grubu | **myResourceGroup** öğesini seçin. Bu, önceki bölümde oluşturdunuz.  |
     | **ÖRNEK AYRıNTıLARı** |  |
     | Sanal makine adı | *Myvm*' i girin. |
-    | Region | **Batı Avrupa**'yı seçin. |
+    | Bölge | **Batı Avrupa**'yı seçin. |
     | Kullanılabilirlik seçenekleri | Varsayılan **altyapı yedekliliği gerekli değildir**. |
     | Görüntü | **Windows Server 2019 Datacenter** öğesini seçin. |
     | Boyut | Varsayılan **Standart DS1 v2**' i bırakın. |
@@ -144,7 +144,7 @@ Bu bölümde, MariaDB sunucusuna özel bir uç nokta oluşturacaksınız.
     | Kaynak grubu | **myResourceGroup** öğesini seçin. Bu, önceki bölümde oluşturdunuz.|
     | **Örnek ayrıntıları** |  |
     | Name | *myPrivateEndpoint* değerini girin. Bu ad alındıysanız, benzersiz bir ad oluşturun. |
-    |Region|**Batı Avrupa**'yı seçin.|
+    |Bölge|**Batı Avrupa**'yı seçin.|
     |||
 5. **Sonraki: kaynak**' ı seçin.
 6. **Özel uç nokta oluştur-kaynak** bölümünde bu bilgileri girin veya seçin:
@@ -199,7 +199,7 @@ Bu bölümde, MariaDB sunucusuna özel bir uç nokta oluşturacaksınız.
     1. VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
 
         > [!NOTE]
-        > **More choices**  >  VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için **farklı bir hesap kullan**' ı seçmeniz gerekebilir.
+        >   >  VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için **farklı bir hesap kullan**' ı seçmeniz gerekebilir.
 
 1. **Tamam**’ı seçin.
 
@@ -245,7 +245,7 @@ Bu bölümde, MariaDB sunucusuna özel bir uç nokta oluşturacaksınız.
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 Özel uç nokta, MariaDB sunucusu ve VM 'yi kullanarak işiniz bittiğinde, kaynak grubunu ve içerdiği tüm kaynakları silin:
 
-1.  *myResourceGroup*   Portalın üst kısmındaki **arama** kutusuna myresourcegroup yazın ve arama sonuçlarından  *myresourcegroup* öğesini seçin   .
+1.  **   Portalın üst kısmındaki **arama** kutusuna myresourcegroup yazın ve arama sonuçlarından  *myresourcegroup* öğesini seçin   .
 2. **Kaynak grubunu sil**'i seçin.
 3. **Kaynak grubu adını yazın** ve **Sil**' i seçmek için myresourcegroup girin.
 

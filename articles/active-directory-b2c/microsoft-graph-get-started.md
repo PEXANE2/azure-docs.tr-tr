@@ -1,5 +1,5 @@
 ---
-title: Microsoft Graph ile kaynakları yönetme
+title: Microsoft Graph uygulaması kaydetme
 titleSuffix: Azure AD B2C
 description: Gerekli Graph API izinleri verilen bir uygulamayı kaydederek Microsoft Graph Azure AD B2C kaynaklarını yönetmeye hazırlanın.
 services: B2C
@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/14/2020
+ms.date: 01/21/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 61e32f50e02e45487830c5ea7ff476a0571960f6
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1886a0308f32ed53a1c9f0974715f20823e8bdd5
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94954010"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660361"
 ---
-# <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Microsoft Graph ile Azure AD B2C yönetme
+# <a name="register-a-microsoft-graph-application"></a>Microsoft Graph uygulaması kaydetme
 
 [Microsoft Graph][ms-graph] , müşteri Kullanıcı hesapları ve özel ilkeler dahil olmak üzere Azure AD B2C kiracınızdaki kaynakların birçoğunu yönetmenizi sağlar. [MICROSOFT Graph API][ms-graph-api]'sini çağıran komut dosyaları veya uygulamalar yazarak, şu şekilde kiracı yönetim görevlerini otomatikleştirebilirsiniz:
 
@@ -83,12 +83,13 @@ Uygulamanızın veya betiğinizin kullanıcıları silmesi veya parolalarını g
 1. **Ekle**’yi seçin. İzinlerin tam olarak yayılması birkaç dakika sürebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Yönetim uygulamanızı kaydoldığınıza ve gerekli izinleri vermiş olduğunuza göre, uygulama ve hizmetleriniz (örneğin, Azure Pipelines) Microsoft Graph API 'siyle etkileşim kurmak için kimlik bilgilerini ve izinlerini kullanabilir. 
 
 * [Azure AD'den erişim belirteci alma](/graph/auth-v2-service#4-get-an-access-token)
 * [Microsoft Graph çağırmak için erişim belirtecini kullanın](/graph/auth-v2-service#4-get-an-access-token)
 * [Microsoft Graph tarafından desteklenen B2C işlemleri](microsoft-graph-operations.md)
-* [Microsoft Graph ile Azure AD B2C Kullanıcı hesaplarını yönetme](manage-user-accounts-graph-api.md)
+* [Microsoft Graph ile Azure AD B2C Kullanıcı hesaplarını yönetme](microsoft-graph-operations.md)
 * [Azure AD Raporlama API 'SI ile denetim günlüklerini alın](view-audit-logs.md#get-audit-logs-with-the-azure-ad-reporting-api)
 
 <!-- LINKS -->

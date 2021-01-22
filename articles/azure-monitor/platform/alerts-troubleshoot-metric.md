@@ -4,14 +4,14 @@ description: Azure Izleyici ölçüm uyarıları ve olası çözümlerle ilgili 
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 01/11/2021
+ms.date: 01/21/2021
 ms.subservice: alerts
-ms.openlocfilehash: e4e876b58c82605df0c005b225dcf2cdbcda1b34
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 11dc71578b3d94ce41fe040557184ff32bcf3240
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070753"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661806"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure İzleyici ölçüm uyarılarındaki sorunları giderme 
 
@@ -24,8 +24,9 @@ Bu makalede, Azure Izleyici [ölçüm uyarılarında](alerts-metric-overview.md)
 Bir ölçüm uyarısının tetiklenmesi gerektiğini ancak Azure portal başlatmadıysanız ve bulunamadığını düşünüyorsanız, aşağıdaki adımları deneyin:
 
 1. **Yapılandırma** -uygun şekilde yapılandırıldığından emin olmak için ölçüm uyarı kuralı yapılandırmasını gözden geçirin:
-    - **Toplama türü**, **toplama ayrıntı düzeyi (süre)** ve **eşik değerinin** veya **Duyarlığın** beklenen şekilde yapılandırılıp yapılandırılmadığını denetleyin
-    - Dinamik eşikleri kullanan bir uyarı kuralı için, gelişmiş ayarların yapılandırılıp yapılandırılmadığını denetleyin. bu durum, **eşiklerin** nasıl hesaplanacağını etkilemeden önce uyarıları filtreleyebilir ve **verileri yoksayabilir** .
+    - **Toplama türü** ve **toplama ayrıntı düzeyi (Period)** beklenen şekilde yapılandırılıp yapılandırılmadığını denetleyin. **Toplama türü** , ölçüm değerlerinin nasıl toplandığını belirler [(daha fazla](./metrics-aggregation-explained.md#aggregation-types)bilgi edinin) ve **toplama ayrıntı düzeyi (süre)** , uyarı kuralının her çalıştırılışında değerlendirmenin ölçüm değerlerini toplamasının ne kadar geri alınacağını denetler.
+    -  **Eşik değerinin** veya **Duyarlığın** beklenen şekilde yapılandırılıp yapılandırılmadığını denetleyin.
+    - Dinamik eşikleri kullanan bir uyarı kuralı için, gelişmiş ayarların yapılandırılıp yapılandırılmadığını denetleyin, **Ihlallerin sayısı** uyarıları filtreleyip daha sonra **verileri yok sayarak** eşiklerin nasıl hesaplanacağını etkilemez.
 
        > [!NOTE] 
        > Dinamik eşikler, etkin hale gelmeden önce en az 3 gün ve 30 ölçüm örneği gerektirir.
@@ -187,7 +188,7 @@ Kaynak Yöneticisi şablonları, REST API, PowerShell veya Azure komut satırı 
 - [Yaygın Azure dağıtım hataları](../../azure-resource-manager/templates/common-deployment-errors.md) listesini gözden geçirin ve ilgili sorun giderme adımlarını izleyin
 - Tüm parametreleri doğru şekilde geçirdiğinizden emin olmak için [ölçüm uyarıları Azure Resource Manager şablon örneklerine](./alerts-metric-create-templates.md) bakın
 
-### <a name="rest-api"></a>REST API'si
+### <a name="rest-api"></a>REST API
 
 Tüm parametreleri doğru şekilde geçirdiğinizi doğrulamak için [REST API kılavuzunu](/rest/api/monitor/metricalerts/) gözden geçirin
 
@@ -252,7 +253,7 @@ Birden çok koşul içeren bir uyarı kuralında boyutları kullanırken aşağ�
 - Her bir koşul içinde yalnızca boyut başına bir değer seçebilirsiniz.
 - "Tüm geçerli ve gelecekteki değerleri Seç" seçeneğini (Select \* ) kullanamazsınız.
 - Farklı koşullarda yapılandırılan ölçümler aynı boyutu destekledikleri zaman, yapılandırılmış bir boyut değerinin tüm bu ölçümler için (ilgili koşullarda) aynı şekilde ayarlanması gerekir.
-Örneğin:
+Örnek:
     - Bir depolama hesabında tanımlanan ölçüm uyarısı kuralını düşünün ve iki koşulu izler:
         * Toplam **işlem** sayısı > 5
         * Ortalama **SuccessE2ELatency** > 250 MS

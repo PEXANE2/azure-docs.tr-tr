@@ -4,12 +4,12 @@ description: Azure Kubernetes hizmeti 'nde (AKS) yönetilen kimlikleri nasıl ku
 services: container-service
 ms.topic: article
 ms.date: 12/16/2020
-ms.openlocfilehash: fe11170b1cdf18aacf832f4c8171bfc082339395
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: e991f7313bae5aa67478043b4f9306dbc274e1e7
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599615"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98659998"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Azure Kubernetes hizmetinde Yönetilen kimlikler kullanma
 
@@ -25,7 +25,6 @@ Aşağıdaki kaynağın yüklü olması gerekir:
 
 ## <a name="limitations"></a>Sınırlamalar
 
-* Küme **yükseltme** işlemleri sırasında, yönetilen kimlik geçici olarak kullanılamaz.
 * Yönetilen kimlik etkin kümelerin kiracılarının taşınması/geçirilmesi desteklenmez.
 * Küme `aad-pod-identity` etkinleştirilmişse Node-Managed Identity (NMI) Pod, Azure örnek meta veri uç noktasına yapılan çağrıları ele almak için düğümleri ' Iptables ' ı değiştirir. Bu yapılandırma, Pod kullanılmasa bile meta veri uç noktasına yapılan her türlü isteğin NMI tarafından yakalanmasıdır `aad-pod-identity` . AzurePodIdentityException CRD, `aad-pod-identity` CRD 'de tanımlanan etiketlerle eşleşen bir pod 'dan kaynaklanan meta veri uç noktasına yapılan tüm isteklerin NMI içinde herhangi bir işlem yapılmadan proxy olması gerektiğini bildirmek üzere yapılandırılabilir. `kubernetes.azure.com/managedby: aks` _Kuto-System_ ad alanındaki etiketli sistem KÖKLERI `aad-pod-identity` , AzurePodIdentityException CRD 'yi yapılandırarak içinde dışlanmalıdır. Daha fazla bilgi için bkz. [belirli bir pod veya uygulama için AAD-Pod kimliğini devre dışı bırakma](https://azure.github.io/aad-pod-identity/docs/configure/application_exception).
   Bir özel durum yapılandırmak için, [MIC özel durum YAML](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml)'yi yükler.
@@ -38,16 +37,16 @@ AKS, yerleşik hizmetler ve eklentiler için birkaç yönetilen kimlik kullanır
 |----------------------------|-----------|----------|
 | Kontrol düzlemi | görünür değil | AKS denetim düzlemi bileşenleri tarafından, giriş yük dengeleyiciler ve AKS yönetilen ortak IP 'Ler ve küme otomatik Scaler işlemleri dahil olmak üzere küme kaynaklarını yönetmek için kullanılır | Düğüm kaynak grubu için katkıda bulunan rolü | destekleniyor
 | Kubelet | AKS küme adı-agentpool | Azure Container Registry (ACR) ile kimlik doğrulaması | NA (Kubernetes v 1.15 + için) | Şu anda desteklenmiyor
-| Eklenti | AzureNPM | Kimlik gerekli değil | NA | Hayır
-| Eklenti | Azurecnı ağ izleme | Kimlik gerekli değil | NA | Hayır
-| Eklenti | Azure-Policy (Gatekeeper) | Kimlik gerekli değil | NA | Hayır
-| Eklenti | Azure-ilke | Kimlik gerekli değil | NA | Hayır
-| Eklenti | Calıco | Kimlik gerekli değil | NA | Hayır
-| Eklenti | Pano | Kimlik gerekli değil | NA | Hayır
-| Eklenti | HTTPApplicationRouting | Gerekli ağ kaynaklarını yönetir | Düğüm kaynak grubu için okuyucu rolü, DNS bölgesi için katkıda bulunan rolü | Hayır
-| Eklenti | Giriş uygulama ağ geçidi | Gerekli ağ kaynaklarını yönetir| Düğüm kaynak grubu için katkıda bulunan rolü | Hayır
-| Eklenti | omsagent | AKS ölçümlerini Azure Izleyicisine göndermek için kullanılır | İzleme ölçümleri Yayımcı rolü | Hayır
-| Eklenti | Virtual-Node (ACIConnector) | Azure Container Instances (ACI) için gerekli ağ kaynaklarını yönetir | Düğüm kaynak grubu için katkıda bulunan rolü | Hayır
+| Eklenti | AzureNPM | Kimlik gerekli değil | NA | No
+| Eklenti | Azurecnı ağ izleme | Kimlik gerekli değil | NA | No
+| Eklenti | Azure-Policy (Gatekeeper) | Kimlik gerekli değil | NA | No
+| Eklenti | Azure-ilke | Kimlik gerekli değil | NA | No
+| Eklenti | Calıco | Kimlik gerekli değil | NA | No
+| Eklenti | Pano | Kimlik gerekli değil | NA | No
+| Eklenti | HTTPApplicationRouting | Gerekli ağ kaynaklarını yönetir | Düğüm kaynak grubu için okuyucu rolü, DNS bölgesi için katkıda bulunan rolü | No
+| Eklenti | Giriş uygulama ağ geçidi | Gerekli ağ kaynaklarını yönetir| Düğüm kaynak grubu için katkıda bulunan rolü | No
+| Eklenti | omsagent | AKS ölçümlerini Azure Izleyicisine göndermek için kullanılır | İzleme ölçümleri Yayımcı rolü | No
+| Eklenti | Virtual-Node (ACIConnector) | Azure Container Instances (ACI) için gerekli ağ kaynaklarını yönetir | Düğüm kaynak grubu için katkıda bulunan rolü | No
 | OSS projesi | aad-Pod kimliği | Azure Active Directory (AAD) ile uygulamaların bulut kaynaklarına güvenli bir şekilde erişmesini sağlar | NA | İzin verme adımları https://github.com/Azure/aad-pod-identity#role-assignment .
 
 ## <a name="create-an-aks-cluster-with-managed-identities"></a>Yönetilen kimliklerle bir AKS kümesi oluşturma

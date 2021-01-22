@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/21/2020
 ms.author: v-mibufo
-ms.openlocfilehash: b13b61aff819271ed1722572f251f9a6d14b17ab
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8af656e00c457dfa3d438f0cb104d85ccc687745
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977006"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661247"
 ---
 # <a name="windows-stop-error---0xc000021a-status-system-process-terminated"></a>Windows Dur hatası-0xC000021A durum sistem Işlemi sonlandırıldı
 
@@ -35,7 +35,7 @@ VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](
 
 ## <a name="cause"></a>Nedeni
 
-Hata 0xC000021A **STATUS_SYSTEM_PROCESS_TERMINATED**anlamına gelir.
+Hata 0xC000021A **STATUS_SYSTEM_PROCESS_TERMINATED** anlamına gelir.
 
 Bu hata, WinLogon (winlogon.exe) veya Istemci sunucusu Run-Time alt sistemi (csrss.exe) gibi kritik bir işlem başarısız olduğunda oluşur. Çekirdek bu hizmetlerden birinin durdurulduğunu algıladığında, **Dur 0xC000021A** hatasını yükseltir. Bu hata, aşağıdakiler de dahil olmak üzere birkaç nedenden kaynaklanabilir:
 
@@ -48,12 +48,16 @@ Bu hata, WinLogon (winlogon.exe) veya Istemci sunucusu Run-Time alt sistemi (csr
 
 ### <a name="collect-the-memory-dump-file"></a>Bellek dökümü dosyasını toplayın
 
+> [!TIP]
+> VM 'nin son yedeğine sahipseniz önyükleme sorununu çözmek için [VM 'yi yedekten geri yüklemeyi](../../backup/backup-azure-arm-restore-vms.md) deneyebilirsiniz.
+
+
 Bu sorunu çözmek için kilitlenme bilgi dökümünü analiz etmeniz gerekir. Kilitlenme için bellek dökümü dosyasını toplayın ve desteğe başvurun. Döküm dosyasını toplamak için aşağıdaki adımları izleyin:
 
 ### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>İşletim sistemi diskini yeni bir onarım VM 'sine iliştirme
 
 1.  Bir onarım VM 'si hazırlamak için [VM onarım komutlarının](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 1-3 adımlarını kullanın.
-2.  **Uzak Masaüstü bağlantısı**kullanarak, onarım sanal makinesine bağlanın.
+2.  **Uzak Masaüstü bağlantısı** kullanarak, onarım sanal makinesine bağlanın.
 
 ### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>Döküm dosyasını bulma ve destek bileti gönderme
 

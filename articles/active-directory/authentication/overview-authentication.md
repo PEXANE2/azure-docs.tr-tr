@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: overview
-ms.date: 07/13/2020
+ms.date: 01/20/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f85b78480e7258780f8dd396431edeb968189e4c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: ae7ae239493c999d98100bf9dee4f4f0183addf2
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741261"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660822"
 ---
 # <a name="what-is-azure-active-directory-authentication"></a>Azure Active Directory kimlik doğrulaması nedir?
 
@@ -27,6 +27,8 @@ Bir kimlik platformunun ana özelliklerinden biri, bir Kullanıcı bir cihazda, 
 * Parola değişikliklerini şirket içi ortama geri yazmaya yönelik karma tümleştirme
 * Şirket içi bir ortamda parola koruma ilkelerini zorlamak için karma tümleştirme
 * Parolasız kimlik doğrulaması
+
+Bu kimlik doğrulama bileşenleri hakkında daha fazla bilgi edinmek için kısa videolarımıza göz atın.
 
 ## <a name="improve-the-end-user-experience"></a>Son Kullanıcı deneyimini geliştirme
 
@@ -80,7 +82,7 @@ Birçok ortam için son hedef, oturum açma olaylarının bir parçası olarak p
 
 ![Güvenlik, passwordless 'a yol gösteren kimlik doğrulama işlemi ile karşı daha kolay](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
 
-Parolasız bir yöntem ile oturum açtığınızda, kimlik bilgileri Windows Hello for Business ile Biyometri gibi yöntemlerin kullanımı veya bir FIDO2 güvenlik anahtarı aracılığıyla sağlanır. Bu kimlik doğrulama yöntemleri bir saldırgan tarafından kolayca çoğaltılamaz.
+Passwordless yöntemiyle oturum açtığınızda, kimlik bilgileri, Iş için Windows Hello veya FIDO2 güvenlik anahtarı ile Biyometri gibi yöntemler kullanılarak sağlanır. Bu kimlik doğrulama yöntemleri bir saldırgan tarafından kolayca çoğaltılamaz.
 
 Azure AD, kullanıcılar için oturum açma deneyimini basitleştirmek ve saldırı riskini azaltmak için passwordless yöntemlerini kullanarak yerel olarak kimlik doğrulaması yapmak için yollar sağlar.
 

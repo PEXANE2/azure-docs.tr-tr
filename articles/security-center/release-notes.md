@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/17/2021
+ms.date: 01/21/2021
 ms.author: memildin
-ms.openlocfilehash: 48e7093c30ffb135231f5843cb0767848f242d89
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.openlocfilehash: d171e3a7f1f0d63d0a5d130c6e19b246bf0cd795
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541401"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661823"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -35,27 +35,17 @@ Güvenlik Merkezi 'ne yakında çıkacak *planlı* değişiklikler hakkında bil
 
 Aralık ayında güncelleştirmeler şunlardır:
 
+- [Şirket içi ve çoklu bulut makinelerinde güvenlik açığı değerlendirmesi, genel kullanıma sunuldu (GA)](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga)
+- [Güvenli puan API 'SI genel kullanıma sunuldu (GA)](#secure-score-api-is-released-for-general-availability-ga)
 - [Filtrelenmiş öneriler listesinin CSV dışa aktarılması](#csv-export-of-filtered-list-of-recommendations)
-- [Şirket içi ve çoklu bulut makinelerinde güvenlik açığı değerlendirmesi genel kullanıma sunuldu](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-generally-available)
+- ["Uygulanamaz" kaynakları artık Azure Ilke değerlendirmelerinde "uyumlu" olarak bildirildi](#not-applicable-resources-now-reported-as-compliant-in-azure-policy-assessments)
 
 
-### <a name="csv-export-of-filtered-list-of-recommendations"></a>Filtrelenmiş öneriler listesinin CSV dışa aktarılması 
-
-2020 Kasım 'da öneriler sayfasına filtreler ekledik ([öneriler listesi şimdi filtreler içeriyor](#recommendations-list-now-includes-filters)). Aralık ayında, bu filtreleri genişlettik ([Öneriler sayfasında ortam, önem derecesi ve kullanılabilir yanıtlar için yeni filtreler bulunur](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses)). 
-
-Bu duyuruda CSV dışarı aktarmanın yalnızca filtrelenmiş listede görüntülenen önerileri içermesi **IÇIN CSV 'ye indir** düğmesinin davranışını değiştiriyorsunuz. 
-
-Örneğin, aşağıdaki görüntüde, listenin iki önerilere göre filtrelendiğine bakabilirsiniz. Oluşturulan CSV dosyası, bu iki önerinin etkilediği her kaynak için durum ayrıntılarını içerir.   
-
-:::image type="content" source="media/security-center-managing-and-responding-alerts/export-to-csv-with-filters.png" alt-text="Filtrelenmiş önerileri bir CSV dosyasına dışarı aktarma":::
-
-[Azure Güvenlik Merkezi 'Nde güvenlik önerileri](security-center-recommendations.md)hakkında daha fazla bilgi edinin.
-
-### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-generally-available"></a>Şirket içi ve çoklu bulut makinelerinde güvenlik açığı değerlendirmesi genel kullanıma sunuldu
+### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga"></a>Şirket içi ve çoklu bulut makinelerinde güvenlik açığı değerlendirmesi, genel kullanıma sunuldu (GA)
 
 Ekim 'de, Azure Arc etkin sunucularını, sunucuların tümleşik güvenlik açığı değerlendirmesi tarayıcısı (Qualys tarafından desteklenir) [Için Azure Defender](defender-for-servers-introduction.md)ile taramanın bir önizlemesini duyurduk.
 
-Genel kullanıma sunulmuştur. 
+Artık genel kullanılabilirlik (GA) için yayımlanmıştır.
 
 Azure dışı makinelerinizde Azure yayı 'yi etkinleştirdiyseniz, Güvenlik Merkezi, tümleşik güvenlik açığı tarayıcısını bunlara el ile ve ölçekli olarak dağıtmayı sağlar.
 
@@ -71,6 +61,36 @@ Ana yetenekler:
 [Tümleşik güvenlik açığı tarayıcısını karma makinelerinize dağıtma hakkında daha fazla bilgi edinin](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines).
 
 [Azure Arc etkin sunucuları hakkında daha fazla bilgi edinin](../azure-arc/servers/index.yml).
+
+
+### <a name="secure-score-api-is-released-for-general-availability-ga"></a>Güvenli puan API 'SI genel kullanıma sunuldu (GA)
+
+Artık puanınızı [güvenli Puanlama API 'si](/rest/api/securitycenter/securescores/)aracılığıyla erişebilirsiniz. API yöntemleri, verileri sorgulama ve zaman içinde güvenli Puanlarınızın kendi raporlama mekanizmanızı oluşturma esnekliğini sağlar. Örneğin, belirli bir aboneliğin Puanını almak için **güvenli puanlar** API 'sini kullanabilirsiniz. Ayrıca, güvenlik denetimlerini ve aboneliklerinizin geçerli Puanını listelemek için **güvenli puan denetimleri** API 'sini de kullanabilirsiniz.
+
+Güvenli Puanlama API 'SI ile mümkün olan dış araçların örnekleri için [GitHub topluluğumuzın güvenli Puanlama alanına](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)bakın.
+
+[Azure Güvenlik Merkezi 'nde güvenli puan ve güvenlik denetimleri](secure-score-security-controls.md)hakkında daha fazla bilgi edinin.
+
+
+### <a name="csv-export-of-filtered-list-of-recommendations"></a>Filtrelenmiş öneriler listesinin CSV dışa aktarılması 
+
+2020 Kasım 'da öneriler sayfasına filtreler ekledik ([öneriler listesi şimdi filtreler içeriyor](#recommendations-list-now-includes-filters)). Aralık ayında, bu filtreleri genişlettik ([Öneriler sayfasında ortam, önem derecesi ve kullanılabilir yanıtlar için yeni filtreler bulunur](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses)). 
+
+Bu duyuruda CSV dışarı aktarmanın yalnızca filtrelenmiş listede görüntülenen önerileri içermesi **IÇIN CSV 'ye indir** düğmesinin davranışını değiştiriyorsunuz. 
+
+Örneğin, aşağıdaki görüntüde, listenin iki önerilere göre filtrelendiğine bakabilirsiniz. Oluşturulan CSV dosyası, bu iki önerinin etkilediği her kaynak için durum ayrıntılarını içerir.   
+
+:::image type="content" source="media/security-center-managing-and-responding-alerts/export-to-csv-with-filters.png" alt-text="Filtrelenmiş önerileri bir CSV dosyasına dışarı aktarma":::
+
+[Azure Güvenlik Merkezi 'Nde güvenlik önerileri](security-center-recommendations.md)hakkında daha fazla bilgi edinin.
+
+
+### <a name="not-applicable-resources-now-reported-as-compliant-in-azure-policy-assessments"></a>"Uygulanamaz" kaynakları artık Azure Ilke değerlendirmelerinde "uyumlu" olarak bildirildi
+
+Daha önce, bir öneri için değerlendirilen ve **geçerli olmayan** kaynaklar Azure ilkesinde "uyumlu değil" olarak göründü. Kullanıcı eylemi, durumunu "uyumlu" olarak değiştiremez. Bu değişiklik ile, gelişmiş açıklık için "uyumlu" olarak bildirilir.
+
+Azure Ilkesinde, uyumlu kaynakların sayısının arttıracağı tek etkisi görünür. Azure Güvenlik Merkezi 'nde güvenli puanınızın hiçbir etkisi olmayacaktır.
+
 
 
 ## <a name="december-2020"></a>Aralık 2020
@@ -134,12 +154,12 @@ Azure ortamınız için iki yeni bulut Yerel enine koruma özelliği ekledik.
 
 Bu yeni korumalar tehdit aktörlerini saldırılara karşı dayanıklılığını büyük ölçüde geliştirir ve Azure Defender tarafından korunan Azure kaynakları sayısını önemli ölçüde artırır.
 
-- **Kaynak Yöneticisi Için Azure Defender** -kuruluşunuzda gerçekleştirilen tüm kaynak yönetimi işlemlerini otomatik olarak izler. Daha fazla bilgi için bkz:
+- **Kaynak Yöneticisi Için Azure Defender** -kuruluşunuzda gerçekleştirilen tüm kaynak yönetimi işlemlerini otomatik olarak izler. Daha fazla bilgi için bkz.
     - [Kaynak Yöneticisi için Azure Defender 'a giriş](defender-for-resource-manager-introduction.md)
     - [Resource Manager için Azure Defender uyarılarına yanıt verme](defender-for-resource-manager-usage.md)
     - [Kaynak Yöneticisi için Azure Defender tarafından sunulan uyarıların listesi](alerts-reference.md#alerts-resourcemanager)
 
-- **DNS Için Azure Defender** -Azure kaynaklarınızdaki tüm DNS sorgularını sürekli izler. Daha fazla bilgi için bkz:
+- **DNS Için Azure Defender** -Azure kaynaklarınızdaki tüm DNS sorgularını sürekli izler. Daha fazla bilgi için bkz.
     - [DNS için Azure Defender 'a giriş](defender-for-dns-introduction.md)
     - [DNS için Azure Defender uyarılarına yanıt verme](defender-for-dns-usage.md)
     - [DNS için Azure Defender tarafından sunulan uyarıların listesi](alerts-reference.md#alerts-dns)
@@ -419,7 +439,7 @@ Pano, varsayılan bir mevzuat standartları kümesi içerir. Sağlanan standartl
 
 Azure Kaynak Grafiği, ortamınızı etkili bir şekilde yönetebilmeniz için belirli bir abonelik kümesi genelinde ölçeği sorgulama özelliği ile verimli kaynak araştırması sağlamak üzere tasarlanan Azure hizmetidir. 
 
-Azure Güvenlik Merkezi için bağımsız değişken ve [kusto sorgu dili (KQL)](/azure/data-explorer/kusto/query/) kullanarak çok çeşitli güvenlik sonrası verileri sorgulayabilirsiniz. Örneğin:
+Azure Güvenlik Merkezi için bağımsız değişken ve [kusto sorgu dili (KQL)](/azure/data-explorer/kusto/query/) kullanarak çok çeşitli güvenlik sonrası verileri sorgulayabilirsiniz. Örnek:
 
 - Varlık envanteri kullanır (bağımsız değişken)
 - [Multi-Factor Authentication (MFA) etkin olmayan hesapların nasıl tanımlanacağına](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled) yönelik örnek bir bağımsız değişken sorgusu belgeliyoruz

@@ -1,5 +1,5 @@
 ---
-title: Telefon numarası için SMS oturum açma kullanıcı deneyimi (Önizleme)-Azure AD
+title: Telefon numarası için SMS oturum açma kullanıcı deneyimi-Azure AD
 description: Yeni veya mevcut telefon numaraları için SMS oturum açma kullanıcı deneyimi hakkında daha fazla bilgi edinin
 services: active-directory
 author: curtand
@@ -8,18 +8,18 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 04/14/2020
+ms.date: 01/21/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: a4dcb6774990c03ce3d55fb6c519b0600a1086f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a50f2032a978a552205d1bba602249f34f0478a
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536894"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661610"
 ---
-# <a name="use-your-phone-number-as-a-user-name-preview"></a>Telefon numaranızı Kullanıcı adı olarak kullanma (Önizleme)
+# <a name="use-your-phone-number-as-a-user-name"></a>Telefon numaranızı Kullanıcı adı olarak kullanma
 
 Bir cihazın kaydedilmesi, kuruluşunuzun hizmetlerine yönelik telefondan erişim sağlar ve kuruluşunuzun telefonunuza erişmesine izin vermez. Yönetici değilseniz, [SMS tabanlı kimlik doğrulaması için kullanıcıları yapılandırma ve etkinleştirme](../authentication/howto-authentication-sms-signin.md)bölümünde daha fazla bilgi bulabilirsiniz.
 
@@ -29,14 +29,14 @@ Kuruluşunuz kullanılabilir SMS oturum açma yapmadıysa, hesabınız ile telef
 
 Yeni bir telefon veya yeni numara alırsanız ve bunu SMS oturum açma 'nın kullanılabildiği bir kuruluşa kaydettiğinizde, normal telefon kayıt işlemine karşılaşırsınız:
 
-1. **Add metodunu**seçin.
-1. **Telefon**seçin.
-1. Telefon numarası girin ve **bana bir kod**seçin.
+1. **Add metodunu** seçin.
+1. **Telefon** seçin.
+1. Telefon numarası girin ve **bana bir kod** seçin.
 1. Kodu girdikten sonra **İleri**' yi seçin.
 1. "SMS doğrulandı" ifadesini bildiren bir istem görürsünüz. Telefonunuz başarıyla kaydedildi. "
 
 > [!Important]
-> Önizlemedeki bilinen bir sorundan dolayı telefon numarası eklenirken kısa bir süre için SMS oturum açma numarası kayıt etmez. Ek numara ile oturum açmanız ve sonra SMS oturum açma için numarayı kaydetmek üzere istemleri izlemeniz gerekir.
+> Bilinen bir sorun nedeniyle telefon numarası eklenirken kısa bir süre için SMS oturum açma numarası kayıt etmez. Ek numara ile oturum açmanız ve sonra SMS oturum açma için numarayı kaydetmek üzere istemleri izlemeniz gerekir.
 
 ### <a name="when-the-phone-number-is-in-use"></a>Telefon numarası kullanımda olduğunda
 
