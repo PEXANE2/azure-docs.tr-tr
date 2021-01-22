@@ -2,13 +2,13 @@
 title: İleti oturumlarını Azure Service Bus | Microsoft Docs
 description: Bu makalede, sınırsız sayıda ilişkili ileti dizisinin Birleşik ve sıralı işlenmesini sağlamak üzere oturumların nasıl kullanılacağı açıklanmaktadır.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 05efc550e119186a2925c13d3fcfed11bec17251
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/20/2021
+ms.openlocfilehash: 6d316571d69d2e1e73ddca4ccca53c116ee8fa5f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511305"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680762"
 ---
 # <a name="message-sessions"></a>İleti oturumları
 Microsoft Azure Service Bus oturumlar, sınırsız sayıda ilgili ileti dizisinin birleşme ve sıralı işlenmesini sağlar. Oturumlar **ilk içinde, ilk çıkar (FIFO)** ve **istek-yanıt** desenlerinde kullanılabilir. Bu makalede, Service Bus kullanırken bu desenleri uygulamak için oturumların nasıl kullanılacağı gösterilmektedir. 
@@ -25,7 +25,7 @@ Oturum kullanan sıralarda veya aboneliklerde oturum, oturumun [SessionID](/dotn
 
 Bununla birlikte, genellikle bir uygulama, ilgili bir ileti kümesinin başladığı ve bittiği yerde açık bir kavram içerir. Service Bus belirli bir kural yapmaz.
 
-Bir dosyanın aktarılması için bir diziyi belirleme örneği, ilk iletinin **Başlangıç**olarak, ara iletilerin **içeriğe**ve son Iletinin **sona erdirmek**için **Label** özelliğini ayarlamaya yönelik bir örnektir. İçerik iletilerinin göreli konumu, *SequenceNumber* **Başlangıç** iletisinden Delta *SequenceNumber*geçerli ileti olarak hesaplanabilir.
+Bir dosyanın aktarılması için bir diziyi belirleme örneği, ilk iletinin **Başlangıç** olarak, ara iletilerin **içeriğe** ve son Iletinin **sona erdirmek** için **Label** özelliğini ayarlamaya yönelik bir örnektir. İçerik iletilerinin göreli konumu, *SequenceNumber* **Başlangıç** iletisinden Delta *SequenceNumber* geçerli ileti olarak hesaplanabilir.
 
 Service Bus oturum özelliği, C# ve Java API 'Lerinde [Messagesession](/dotnet/api/microsoft.servicebus.messaging.messagesession) biçiminde belirli bir alma işlemini mümkün bir şekilde sunar. Azure Resource Manager aracılığıyla ya da portalda bayrağını ayarlayarak ya da abonelik veya abonelikte [RequiresSession](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) özelliğini ayarlayarak özelliği etkinleştirebilirsiniz. İlgili API işlemlerini kullanmayı denemeden önce bu gereklidir.
 
@@ -34,9 +34,9 @@ Portalda bayrağı aşağıdaki onay kutusuyla ayarlayın:
 ![Oturumları etkinleştir seçeneği belirlenmiş ve kırmızı renkle özetlenen kuyruk oluştur iletişim kutusunun ekran görüntüsü.][2]
 
 > [!NOTE]
-> Bir kuyrukta veya abonelikte Oturumlar etkinleştirildiğinde, istemci uygulamalar ***artık*** normal iletileri gönderemez/alamaz. Tüm iletilerin bir oturumun parçası olarak gönderilmesi (oturum kimliği ayarlanarak) ve oturum alarak alınmalıdır.
+> Bir kuyrukta veya abonelikte Oturumlar etkinleştirildiğinde, istemci uygulamalar, normal ileti gönderme/alma. Tüm iletilerin bir oturumun parçası olarak gönderilmesi (oturum kimliği ayarlanarak) ve oturum alarak alınmalıdır.
 
-Kuyruk ve abonelik istemcilerinde oturum için API 'Ler mevcuttur. Oturum ve mesajların ne zaman alındığını denetleyen ve alma döngüsünü yönetmenin karmaşıklığını gizleyen bir işleyici tabanlı model olan bir zorunlu model vardır. *OnMessage*
+Kuyruk ve abonelik istemcilerinde oturum için API 'Ler mevcuttur. Oturum ve mesajların ne zaman alındığını denetleyen bir zorunlu model ve _OnMessage * ' a benzer ve alma döngüsünü yönetme karmaşıklığını gizleyen bir işleyici tabanlı model vardır.
 
 ### <a name="session-features"></a>Oturum özellikleri
 
@@ -64,9 +64,9 @@ Oturum durumu özelliği, bu oturuma göre kaydedilen işleme durumunun, oturum 
 
 Service Bus perspektifinden ileti oturumu durumu, Service Bus standart için 256 KB ve Service Bus Premium için 1 MB olan bir ileti boyutunun verilerini tutan donuk bir ikili nesnedir. Bir oturuma göre işleme durumu oturum durumu içinde tutulabilir veya oturum durumu, bu tür bilgileri tutan bir depolama konumunu veya veritabanı kaydını işaret edebilir.
 
-Oturum durumunu yönetmeye yönelik API 'Ler, [SetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_) ve [GetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate#Microsoft_ServiceBus_Messaging_MessageSession_GetState), hem C# hem de Java API 'lerinde [messagesession](/dotnet/api/microsoft.servicebus.messaging.messagesession) nesnesinde bulunabilir. Daha önce oturum durumu kümesi olmayan bir oturum, **GetState**için **null** bir başvuru döndürür. Daha önce ayarlanan oturum durumunu Temizleme işlemi [setstate (null)](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_)ile yapılır.
+Oturum durumunu yönetmeye yönelik API 'Ler, [SetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_) ve [GetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate#Microsoft_ServiceBus_Messaging_MessageSession_GetState), hem C# hem de Java API 'lerinde [messagesession](/dotnet/api/microsoft.servicebus.messaging.messagesession) nesnesinde bulunabilir. Daha önce oturum durumu kümesi olmayan bir oturum, **GetState** için **null** bir başvuru döndürür. Daha önce ayarlanan oturum durumunu Temizleme işlemi [setstate (null)](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_)ile yapılır.
 
-Oturum durumu, bir oturumdaki tüm iletiler tüketilse bile temizlenmeyen ( **null**döndüren) sürece kalır.
+Oturum durumu, bir oturumdaki tüm iletiler tüketilse bile temizlenmeyen ( **null** döndüren) sürece kalır.
 
 Bir kuyruktaki veya abonelikteki tüm mevcut oturumlar, Java API 'sinde **Sessionbrowser** yöntemiyle ve .NET Framework Istemcisinde [Queueclient](/dotnet/api/microsoft.servicebus.messaging.queueclient) ve [Subscriptionclient](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient) üzerinde [getmessagesessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions) ile listelenebilir.
 
@@ -78,8 +78,8 @@ Oturum bağlamındaki ileti başına teslim sayısı tanımı, oturum yokluğund
 
 | Senaryo | İletinin teslim sayısı arttırılır |
 |----------|---------------------------------------------|
-| Oturum kabul edildi, ancak oturum kilidinin süresi dolduğunda (zaman aşımı nedeniyle) | Evet |
-| Oturum kabul edildi, oturumdaki iletiler (kilitli olsalar bile) tamamlanmaz ve oturum kapalı | Hayır |
+| Oturum kabul edildi, ancak oturum kilidinin süresi dolduğunda (zaman aşımı nedeniyle) | Yes |
+| Oturum kabul edildi, oturumdaki iletiler (kilitli olsalar bile) tamamlanmaz ve oturum kapalı | No |
 | Oturum kabul edildi, iletiler tamamlandı, sonra oturum açık olarak kapalı | Yok (Standart akışdır. Buradan iletiler oturumdan kaldırılır) |
 
 ## <a name="request-response-pattern"></a>İstek-yanıt deseninin

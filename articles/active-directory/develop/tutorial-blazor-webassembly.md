@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: ce854c8f2d1d317c3660aaab9c0a6569aae0bb36
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 4d6401c53071235784a5371a4a6315e4e25a438f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895980"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680273"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>Öğretici: kullanıcılarda oturum açın ve Blazor WebAssembly uygulamasından korunan API 'yi çağırın
 
@@ -26,7 +26,7 @@ Bu öğreticide:
 > * Microsoft Identity platformunu kullanarak [kimlik doğrulaması ve yetkilendirme](authentication-vs-authorization.md) için Azure Active Directory (Azure AD) kullanmak üzere yapılandırılmış yeni bir Blazor WebAssembly uygulaması oluşturun
 > * Bu durumda korumalı bir Web API 'sinden veri alma [Microsoft Graph](/graph/overview)
 
-Bu öğretici .NET Core 3,1 kullanır. .NET belgeleri, ASP.NET Core 5,0 kullanarak [bir Blazor WebAssembly uygulamasının güvenliğini sağlamaya yönelik](https://docs.microsoft.com/aspnet/core/blazor/security/webassembly/graph-api) yönergeler içerir. 
+Bu öğretici .NET Core 3,1 kullanır. .NET belgeleri, ASP.NET Core 5,0 kullanarak [bir Blazor WebAssembly uygulamasının güvenliğini sağlamaya yönelik](/aspnet/core/blazor/security/webassembly/graph-api) yönergeler içerir. 
 
 Ayrıca [Blazor Server için bir öğretici](tutorial-blazor-server.md)sunuyoruz. 
 
@@ -80,7 +80,7 @@ Bu şablonun Microsoft Identity platformunu kullanarak Azure AD ile oturum açma
 
 [Microsoft Graph](/graph/overview) , kullanıcılarınız için Microsoft 365 verilere erişim sağlayan API 'leri Içerir ve Microsoft Identity platformu tarafından verilen belirteçleri destekler, bu da bir örnek olarak kullanılmak üzere iyi BIR korumalı API sağlar. Bu bölümde, Microsoft Graph çağırmak ve kullanıcının e-postalarını uygulamanın "verileri getirme" sayfasında göstermek için kod eklersiniz.
 
-Bu bölüm, adlandırılmış bir istemci kullanarak korunan API 'yi çağırmak için ortak bir yaklaşım kullanılarak yazılmıştır. Aynı yöntem, çağırmak istediğiniz diğer korumalı API 'Ler için de kullanılabilir. Ancak, uygulamanızdan Microsoft Graph çağırmayı planlıyorsanız, demirbaş 'ı azaltmak için Graf SDK 'sını kullanabilirsiniz. .NET belgeleri, [Graph SDK 'nın nasıl kullanılacağına](https://docs.microsoft.com/aspnet/core/blazor/security/webassembly/graph-api?view=aspnetcore-5.0)ilişkin yönergeler içerir.
+Bu bölüm, adlandırılmış bir istemci kullanarak korunan API 'yi çağırmak için ortak bir yaklaşım kullanılarak yazılmıştır. Aynı yöntem, çağırmak istediğiniz diğer korumalı API 'Ler için de kullanılabilir. Ancak, uygulamanızdan Microsoft Graph çağırmayı planlıyorsanız, demirbaş 'ı azaltmak için Graf SDK 'sını kullanabilirsiniz. .NET belgeleri, [Graph SDK 'nın nasıl kullanılacağına](/aspnet/core/blazor/security/webassembly/graph-api?view=aspnetcore-5.0)ilişkin yönergeler içerir.
 
 Başlamadan önce, gerekli izinlerde değişiklikler yaptığınız için uygulamanızı oturumunuzu kapatıp geçerli belirteciniz çalışmayacak. Henüz yapmadıysanız, aşağıdaki kodu güncelleştirmeden önce uygulamanızı yeniden çalıştırın ve **Oturumu Kapat** ' ı seçin.
 

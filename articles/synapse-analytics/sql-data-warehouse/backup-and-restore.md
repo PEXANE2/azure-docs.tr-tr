@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: b033fd9c0a7f752cf08d6e679facc9fa27b44037
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: d8c680ec30dcecc56c064f08e4690cbbde9c2377
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120215"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679922"
 ---
 # <a name="backup-and-restore-in-azure-synapse-dedicated-sql-pool"></a>Azure SYNAPSE adanmış SQL havuzunda yedekleme ve geri yükleme
 
@@ -88,7 +88,7 @@ Azure SYNAPSE fiyatlandırması hakkında daha fazla bilgi için bkz. [Azure SYN
 
 Her anlık görüntü, anlık görüntünün başlatıldığı süreyi temsil eden bir geri yükleme noktası oluşturur. Bir veri ambarını geri yüklemek için bir geri yükleme noktası seçer ve geri yükleme komutu verirsiniz.  
 
-Geri yüklenen veri ambarını ve geçerli olanı koruyabilir ya da bunlardan birini silebilirsiniz. Geçerli veri ambarını geri yüklenen veri ambarı ile değiştirmek istiyorsanız, [alter database](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) SEÇENEĞINI kullanarak adı Değiştir seçeneğiyle yeniden adlandırabilirsiniz.
+Geri yüklenen veri ambarını ve geçerli olanı koruyabilir ya da bunlardan birini silebilirsiniz. Geçerli veri ambarını geri yüklenen veri ambarı ile değiştirmek istiyorsanız, [alter database](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) SEÇENEĞINI kullanarak adı Değiştir seçeneğiyle yeniden adlandırabilirsiniz.
 
 Bir veri ambarını geri yüklemek için bkz. [ayrılmış BIR SQL havuzunu geri yükleme](sql-data-warehouse-restore-points.md#create-user-defined-restore-points-through-the-azure-portal).
 

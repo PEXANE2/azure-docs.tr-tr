@@ -10,14 +10,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: da6c9f6df0e9e74de297cf6c8f655b62e3446bad
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: bd911868028825164cdd9627bf6b5c6d56de7164
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462711"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679627"
 ---
-# <a name="azure-synapse-sql-architecture"></a>Azure SYNAPSE SQL mimarisi 
+# <a name="azure-synapse-sql-architecture"></a>Azure Synapse SQL mimarisi 
 
 Bu makalede, SYNAPSE SQL 'in mimari bileşenleri açıklanır.
 
@@ -45,11 +45,11 @@ Ayrılmış depolama ve işlem ile, SYNAPSE SQL 'in kullanılması, depolama iht
 * Verileri olduğu gibi bırakıp işlem kapasitesini duraklatır, böylece yalnızca depolama için ödeme yaparsınız.
 * Çalışma saatleri içinde işlem kapasitesini sürdürme.
 
-## <a name="azure-storage"></a>Azure Depolama
+## <a name="azure-storage"></a>Azure Storage
 
 SYNAPSE SQL, kullanıcı verilerinizi güvende tutmak için Azure Storage 'ı kullanır. Verileriniz Azure depolama tarafından depolandığından ve yönetildiğinden, depolama tüketiminize yönelik ayrı bir ücret alınır. 
 
-Sunucusuz SQL havuzu, Veri Gölü dosyaları salt okuma biçiminde sorgulamanızı sağlar, ancak SQL havuzu verileri de almanızı sağlar. Veriler adanmış SQL havuzuna eklendiğinde, sistem performansını iyileştirmek için veriler **dağıtımlarla** birleştirilir. Tabloyu tanımlarken verileri dağıtmak için kullanılacak parçalama düzeninin arasından seçim yapabilirsiniz. Bu parçalı desenler desteklenir:
+Sunucusuz SQL havuzu, Veri Gölü dosyaları salt okuma biçiminde sorgulamanızı sağlar, ancak SQL havuzu verileri de almanızı sağlar. Veriler adanmış SQL havuzuna eklendiğinde, sistem performansını iyileştirmek için veriler **dağıtımlarla** birleştirilir. Tabloyu tanımlarken verileri dağıtmak için hangi parçalama deseninin kullanılacağını seçebilirsiniz. Bu parçalı desenler desteklenir:
 
 * Karma
 * Hepsini Bir Kez Deneme
@@ -67,7 +67,7 @@ Sunucusuz SQL havuzunda, DQP altyapısı, Işlem düğümlerinde yürütülecek 
 
 İşlem düğümleri, hesaplama gücü sağlar. 
 
-Adanmış SQL havuzunda dağıtımlar, işlenmek üzere Işlem düğümlerine eşlenir. Daha fazla işlem kaynağı için ödeme yaparken, havuz dağıtımları kullanılabilir Işlem düğümlerine yeniden eşler. İşlem düğümlerinin sayısı 1 ile 60 arasında değişir ve adanmış SQL havuzunun hizmet düzeyi tarafından belirlenir. Her Işlem düğümünün sistem görünümlerinde görünür bir düğüm KIMLIĞI vardır. Adları sys.pdw_nodes ile başlayan sistem görünümlerindeki node_id sütununa bakarak Işlem düğümü KIMLIĞINI görebilirsiniz. Bu sistem görünümlerinin listesi için bkz. [SYNAPSE SQL System views](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest).
+Adanmış SQL havuzunda dağıtımlar, işlenmek üzere Işlem düğümlerine eşlenir. Daha fazla işlem kaynağı için ödeme yaparken, havuz dağıtımları kullanılabilir Işlem düğümlerine yeniden eşler. İşlem düğümlerinin sayısı 1 ile 60 arasında değişir ve adanmış SQL havuzunun hizmet düzeyi tarafından belirlenir. Her Işlem düğümünün sistem görünümlerinde görünür bir düğüm KIMLIĞI vardır. Adları sys.pdw_nodes ile başlayan sistem görünümlerindeki node_id sütununa bakarak Işlem düğümü KIMLIĞINI görebilirsiniz. Bu sistem görünümlerinin listesi için bkz. [SYNAPSE SQL System views](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest&preserve-view=true).
 
 Sunucusuz SQL havuzunda, her Işlem düğümüne görevi yürütmek için görev ve dosya kümesi atanır. Görev, aslında sorgu kullanıcısının gönderildiği bir parçası olan sorgu yürütme birimidir. Otomatik ölçeklendirme, Kullanıcı sorgusunu yürütmek için yeterli Işlem düğümlerinin kullanıldığını sağlamak üzere etkin olur.
 

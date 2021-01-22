@@ -4,12 +4,12 @@ description: Azure Application Insights verileriyle özel günlük/haftalık/ayl
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: d465666ce5d631a234644d1adc85afcf6e3c1e27
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: da465fbc899cb52fc48dbde830d3db4f3b58c68b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010614"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680459"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Azure Application Insights verileriyle özel raporları otomatikleştirin
 
@@ -33,7 +33,7 @@ Bir zamanlamaya göre özel raporlar oluşturmak için [programlı olarak Applic
 
 * [Power otomatikleştirmede raporları otomatikleştirin](../platform/logicapp-flow-connector.md)
 * [Raporları Logic Apps otomatikleştirin](automate-with-logic-apps.md)
-* Izleme senaryosundaki "Application Insights zamanlanmış Özet" [Azure işlev](../../azure-functions/functions-create-first-azure-function.md) şablonunu kullanın. Bu işlev, e-postayı teslim etmek için SendGrid kullanır. 
+* Izleme senaryosundaki "Application Insights zamanlanmış Özet" [Azure işlev](../../azure-functions/functions-get-started.md) şablonunu kullanın. Bu işlev, e-postayı teslim etmek için SendGrid kullanır. 
 
     ![Azure işlev şablonu](./media/automate-custom-reports/azure-function-template.png)
 
@@ -72,7 +72,7 @@ availabilityResults
 
 1. Azure İşlev Uygulaması oluşturun. (Application Insights _üzerinde_ yalnızca yeni işlev uygulaması Application Insights ile izlemek istiyorsanız gereklidir)
 
-   [İşlev uygulaması oluşturmayı](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app) öğrenmek Için Azure işlevleri belgelerini ziyaret edin
+   [İşlev uygulaması oluşturmayı](../../azure-functions/functions-get-started.md) öğrenmek Için Azure işlevleri belgelerini ziyaret edin
 
 2. Yeni İşlev Uygulaması dağıtımı tamamladıktan sonra **Kaynağa Git**' i seçin.
 
@@ -95,7 +95,7 @@ availabilityResults
 
     ![Azure Işlevi uygulama ayarları ekran görüntüsü](./media/automate-custom-reports/config.png)
 
-7. Karşılık gelen uygun değerlerle üç yeni uygulama ayarı oluşturun ``AI_APP_ID`` , ``AI_APP_KEY`` ve ``SendGridAPI`` . **Kaydet**'i seçin.
+7. Karşılık gelen uygun değerlerle üç yeni uygulama ayarı oluşturun ``AI_APP_ID`` , ``AI_APP_KEY`` ve ``SendGridAPI`` . **Kaydet**’i seçin.
 
      ![İşlev tümleştirme arabirimi ekran görüntüsü](./media/automate-custom-reports/app-settings.png)
     
@@ -154,4 +154,3 @@ Bu adımlar yalnızca önceden yapılandırılmış bir SendGrid hesabınız yok
 * [Application Insights verileri programlı](https://dev.applicationinsights.io/) bir şekilde sorgulama hakkında daha fazla bilgi edinin
 * [Logic Apps](../../logic-apps/logic-apps-overview.md) hakkında daha fazla bilgi edinin.
 * [Microsoft Power otomatikleştir](https://ms.flow.microsoft.com)hakkında daha fazla bilgi edinin.
-

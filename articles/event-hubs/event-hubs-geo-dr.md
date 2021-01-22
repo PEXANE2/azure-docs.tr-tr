@@ -3,12 +3,12 @@ title: Coğrafi olağanüstü durum kurtarma-Azure Event Hubs | Microsoft Docs
 description: Coğrafi bölgeleri kullanarak yük devretme ve Azure Event Hubs olağanüstü durum kurtarma gerçekleştirme
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 8824334e762237c3f18cb763d5b39fa55d6415a3
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 0e0a207630898eb7fe7613acb311364a64f9b38b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108497"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681692"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs-coğrafi olağanüstü durum kurtarma 
 
@@ -43,8 +43,10 @@ Bu makalede aşağıdaki terimler kullanılmaktadır:
 
 -  *Diğer ad*: ayarladığınız bir olağanüstü durum kurtarma yapılandırması adı. Diğer ad, tek bir tutarlı tam etki alanı adı (FQDN) bağlantı dizesi sağlar. Uygulamalar, bir ad alanına bağlanmak için bu diğer ad bağlantı dizesini kullanır. 
 
--  *Birincil/ikincil ad alanı*: diğer ada karşılık gelen ad alanları. Birincil ad alanı "etkin" ve iletileri alır (var olan veya yeni bir ad alanı olabilir). İkincil ad alanı "pasif" ve ileti almaz. Her ikisi arasındaki meta veriler eşitlenmiş olduğundan, her ikisi de herhangi bir uygulama kodu veya bağlantı dizesi değişikliği olmadan iletileri sorunsuzca kabul edebilir. Yalnızca etkin ad alanının iletileri aldığından emin olmak için diğer adı kullanmanız gerekir. 
+-  *Birincil/ikincil ad alanı*: diğer ada karşılık gelen ad alanları. Birincil ad alanı "etkin" ve iletileri alır (var olan veya yeni bir ad alanı olabilir). İkincil ad alanı "pasif" ve ileti almaz. Her ikisi arasındaki meta veriler eşitlenmiş olduğundan, her ikisi de herhangi bir uygulama kodu veya bağlantı dizesi değişikliği olmadan iletileri sorunsuzca kabul edebilir. Yalnızca etkin ad alanının iletileri aldığından emin olmak için diğer adı kullanmanız gerekir.
 
+    > [!IMPORTANT]
+    > Coğrafi olağanüstü durum kurtarma özelliği, aboneliğin ve kaynak grubunun birincil ve ikincil ad alanları için aynı olmasını gerektirir. 
 -  *Meta veri*: Olay Hub 'ları ve tüketici grupları gibi varlıklar; ve ad alanıyla ilişkili hizmetin özellikleri. Yalnızca varlıklar ve ayarları otomatik olarak çoğaltılır. İletiler ve olaylar çoğaltılmaz. 
 
 -  *Yük devretme*: ikincil ad alanını etkinleştirme işlemi.
@@ -54,10 +56,10 @@ Aşağıdaki birincil ve ikincil ad alanları birleşimleri desteklenir:
 
 | Birincil ad alanı | İkincil ad alanı | Desteklenir | 
 | ----------------- | -------------------- | ---------- |
-| Standart | Standart | Evet | 
-| Standart | Ayrılmış | Evet | 
-| Ayrılmış | Ayrılmış | Evet | 
-| Ayrılmış | Standart | Hayır | 
+| Standart | Standart | Yes | 
+| Standart | Ayrılmış | Yes | 
+| Ayrılmış | Ayrılmış | Yes | 
+| Ayrılmış | Standart | No | 
 
 > [!NOTE]
 > Aynı adanmış kümede bulunan ad alanlarını eşleştiriyorsunuz. Ayrı kümelerdeki ad alanlarını eşleştirde ayırabilirsiniz. 
@@ -73,12 +75,12 @@ Aşağıdaki bölüm, yük devretme işlemine genel bakış ve ilk yük devretme
 Önce mevcut bir birincil ad alanını ve yeni bir ikincil ad alanını oluşturun veya kullanın, ardından ikisini eşleştirin. Bu eşleştirme size bağlanmak için kullanabileceğiniz bir diğer ad sağlar. Bir diğer ad kullandığınız için bağlantı dizelerini değiştirmeniz gerekmez. Yalnızca yeni ad alanları, yük devretme eşleştirmeye eklenebilir. 
 
 1. Birincil ad alanını oluşturun.
-1. İkincil ad alanını oluşturun. Bu adım isteğe bağlıdır. Bir sonraki adımda eşleştirmeyi oluştururken ikincil ad alanını oluşturabilirsiniz. 
+1. Abonelikte ve birincil ad alanına sahip kaynak grubunda ikincil ad alanını oluşturun. Bu adım isteğe bağlıdır. Bir sonraki adımda eşleştirmeyi oluştururken ikincil ad alanını oluşturabilirsiniz. 
 1. Azure portal, birincil ad alanına gidin.
 1. Sol menüde **coğrafi kurtarma** ' yı seçin ve araç çubuğunda **eşleştirmeyi başlat** ' ı seçin. 
 
     :::image type="content" source="./media/event-hubs-geo-dr/primary-namspace-initiate-pairing-button.png" alt-text="Birincil ad alanından eşleştirmeyi Başlat":::    
-1. **Eşleştirmeyi başlat** sayfasında, var olan bir ikincil ad alanını seçin ya da bir tane oluşturun ve ardından **Oluştur**' u seçin. Aşağıdaki örnekte, var olan bir ikincil ad alanı seçilidir. 
+1. **Eşleştirmeyi başlat** sayfasında, var olan bir ikincil ad alanını seçin veya abonelikte ve birincil ad alanına sahip kaynak grubunda bir tane oluşturun. Ardından **Oluştur**’u seçin. Aşağıdaki örnekte, var olan bir ikincil ad alanı seçilidir. 
 
     :::image type="content" source="./media/event-hubs-geo-dr/initiate-pairing-page.png" alt-text="İkincil ad alanını seçin":::        
 1. Artık birincil ad alanı için **coğrafi kurtarmayı** seçtiğinizde, aşağıdaki görüntüde olduğu gıbı **coğrafi Dr diğer ad** sayfasını görmeniz gerekir:

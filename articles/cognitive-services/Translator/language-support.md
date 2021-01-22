@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 6163f059581c2699d0b2780545c3ad5ec80f2907
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 60da61d094316b29c8fbc5454472bb898d693937
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882424"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681592"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Metin ve konuşma çevirisi için dil ve bölge desteği
 
@@ -195,24 +195,38 @@ Alfabede bulunan yöntem aşağıdaki dilleri destekler. "To/from", "<-->", dili
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | Arapça | `ar` | Arapça `Arab` | <--> | Tin `Latn` |
 | Bangla  | `bn` | Bengali `Beng` | <--> | Tin `Latn` |
+|Beyaz Rusça| `be` | V `Cyrl`  | <--> | Tin `Latn` |
+|Bulgarca| `bg` | V `Cyrl`  | <--> | Tin `Latn` |
 | Basitleştirilmiş Çince | `zh-Hans` | Basitleştirilmiş Çince `Hans`| <--> | Tin `Latn` |
 | Basitleştirilmiş Çince | `zh-Hans` | Basitleştirilmiş Çince `Hans`| <--> | Geleneksel Çince `Hant`|
 | Geleneksel Çince | `zh-Hant` | Geleneksel Çince `Hant`| <--> | Tin `Latn` |
 | Geleneksel Çince | `zh-Hant` | Geleneksel Çince `Hant`| <--> | Basitleştirilmiş Çince `Hans` |
+|Yunanca| `el` | Yunanca `Grek`  | <--> | Tin `Latn` |
 | Gucerat dili | `gu`  | Gucerat dili `Gujr` | <--> | Tin `Latn` |
 | İbranice | `he` | İbranice `Hebr` | <--> | Tin `Latn` |
 | Hintçe | `hi` | Devanagari `Deva` | <--> | Tin `Latn` |
 | Japonca | `ja` | Japonca `Jpan` | <--> | Tin `Latn` |
 | Kannada dili | `kn` | Kannada dili `Knda` | <--> | Tin `Latn` |
+|Kazakça| `kk` | V `Cyrl`  | <--> | Tin `Latn` |
+|Kırgızca| `ky` | V `Cyrl`  | <--> | Tin `Latn` |
+|CA| `mk` | V `Cyrl`  | <--> | Tin `Latn` |
 | Malayalam dili | `ml` | Malayalam dili `Mlym` | <--> | Tin `Latn` |
 | Marathi | `mr` | Devanagari `Deva` | <--> | Tin `Latn` |
+|Moğolca| `mn` | V `Cyrl`  | <--> | Tin `Latn` |
 | Odia | `or` | Oriya `Orya` | <--> | Tin `Latn` |
+|Farsça| `fa` | Arapça `Arab`  | <--> | Tin `Latn` |
 | Pencap dili | `pa` | Gurmukhi `Guru`  | <--> | Tin `Latn`  |
+|Rusça| `ru` | V `Cyrl`  | <--> | Tin `Latn` |
 | Sırpça (Kiril) | `sr-Cyrl` | V `Cyrl`  | --> | Tin `Latn` |
 | Sırpça (Latin) | `sr-Latn` | Tin `Latn` | --> | V `Cyrl`|
+|Di| `sd` | Arapça `Arab`  | <--> | Tin `Latn` |
+|İK| `tg` | V `Cyrl`  | <--> | Tin `Latn` |
 | Tamil dili | `ta` | Tamil dili `Taml` | <--> | Tin `Latn` |
+|Tatarca| `tt` | V `Cyrl`  | <--> | Tin `Latn` |
 | Telugu dili | `te` | Telugu dili `Telu` | <--> | Tin `Latn` |
 | Tayca | `th` | Tay dili `Thai` | --> | Tin `Latn` |
+|Ukraynaca| `uk` | V `Cyrl`  | <--> | Tin `Latn` |
+|Urduca| `ur` | Arapça `Arab`  | <--> | Tin `Latn` |
 
 ### <a name="dictionary"></a>Sözlük
 

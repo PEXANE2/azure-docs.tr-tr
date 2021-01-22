@@ -3,12 +3,12 @@ title: Etkinliği özel Azure Event Grid konusuna gönder
 description: Bu makalede, özel bir konuya bir olay nasıl nakledeceğiniz açıklanmaktadır. Gönderi ve olay verilerinin biçimini gösterir.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 197d8eb1963300bc6576e664c7c3fd470cf70bb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed126487938e524264c94544903460854ffc4d41
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86108269"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681626"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>Azure Event Grid için özel konuya gönderi gönder
 
@@ -16,7 +16,7 @@ Bu makalede, özel bir konuya bir olay nasıl nakledeceğiniz açıklanmaktadır
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="endpoint"></a>Uç Noktası
+## <a name="endpoint"></a>Uç Nokta
 
 HTTP GÖNDERISINI özel bir konuya gönderirken URI biçimini kullanın: `https://<topic-endpoint>?api-version=2018-01-01` .
 
@@ -71,10 +71,7 @@ PowerShell ile özel bir konunun anahtarını almak için şunu kullanın:
 ]
 ```
 
-Bu özelliklerin açıklaması için bkz. [olay şeması Azure Event Grid](event-schema.md). Olayları bir Event Grid konusuna naklederken, dizi toplam boyutu 1 MB olabilir. Dizideki her olay 64 KB (genel kullanılabilirlik) veya 1 MB (Önizleme) ile sınırlıdır.
-
-> [!NOTE]
-> 64 KB 'a kadar olan bir olay, genel kullanım (GA) Hizmet Düzeyi Sözleşmesi (SLA) ile ele alınmıştır. 1 MB 'a kadar olan bir olay desteği şu anda önizleme aşamasındadır. 64 KB üzerindeki olaylar 64 KB 'lik artışlarla ücretlendirilir. 
+Bu özelliklerin açıklaması için bkz. [olay şeması Azure Event Grid](event-schema.md). Olayları bir Event Grid konusuna naklederken, dizi toplam boyutu 1 MB olabilir. Bir olay için izin verilen en büyük boyut da 1 MB 'tır. 64 KB üzerindeki olaylar 64 KB 'lik artışlarla ücretlendirilir. 
 
 Örneğin, geçerli bir olay veri şeması:
 

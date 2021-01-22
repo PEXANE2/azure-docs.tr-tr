@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: e15dce586dc4dd43cf56fd1cbb08b84ebcda1787
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 040f9fa67617b058138926310706f4bc56c4ff62
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232310"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680982"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Web API 'Lerini çağıran masaüstü uygulaması: belirteç alma
 
@@ -1181,7 +1181,7 @@ ADAL.NET 3. x, ADAL.NET 5. x ve MSAL.NET arasındaki SSO durumunu paylaşmak iç
 
 ### <a name="simple-token-cache-serialization-msal-only"></a>Basit belirteç önbelleği serileştirme (yalnızca MSAL)
 
-Aşağıdaki örnek, masaüstü uygulamaları için bir belirteç önbelleğinin özel serileştirilmesi Naïve uygulamasıdır. Burada, kullanıcı belirteci önbelleği uygulamayla aynı klasörde veya uygulamanın [paketlenmiş bir masaüstü uygulaması](https://docs.microsoft.com/windows/msix/desktop/desktop-to-uwp-behind-the-scenes)olduğu durumda her uygulama için Kullanıcı başına bir dosya içinde bulunur. Tam kod için aşağıdaki örneğe bakın: [Active-Directory-DotNet-Desktop-MSGraph-v2](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2).
+Aşağıdaki örnek, masaüstü uygulamaları için bir belirteç önbelleğinin özel serileştirilmesi Naïve uygulamasıdır. Burada, kullanıcı belirteci önbelleği uygulamayla aynı klasörde veya uygulamanın [paketlenmiş bir masaüstü uygulaması](/windows/msix/desktop/desktop-to-uwp-behind-the-scenes)olduğu durumda her uygulama için Kullanıcı başına bir dosya içinde bulunur. Tam kod için aşağıdaki örneğe bakın: [Active-Directory-DotNet-Desktop-MSGraph-v2](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2).
 
 Uygulamayı oluşturduktan sonra, ``TokenCacheHelper.EnableSerialization()`` uygulamayı çağırarak ve geçirerek serileştirme etkinleştirilir `UserTokenCache` .
 

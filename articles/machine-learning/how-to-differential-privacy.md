@@ -1,7 +1,7 @@
 ---
-title: SmartNoise paketlerini kullanarak veri gizliliğini koruma (Önizleme)
+title: Değişiklik gizliliği nasıl-akıllı gürültü (Önizleme)
 titleSuffix: Azure Machine Learning
-description: Akıllı gürültü paketlerini kullanarak Azure Machine Learning modellere yönelik değişiklik gizliliği en iyi yöntemlerini nasıl uygulayacağınızı öğrenin.
+description: Akıllı gürültü açık kaynak kitaplıklarını kullanarak Azure Machine Learning modellere yönelik fark gizliliği en iyi yöntemlerini nasıl uygulayacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,27 +10,27 @@ ms.custom: how-to, responsible-ml
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
-ms.date: 12/21/2020
-ms.openlocfilehash: ebc14d6c9d0ebaa6e0258578f94771c9f286bdb4
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.date: 01/21/2020
+ms.openlocfilehash: 62a002569696da4ef18e7bd967f027eb8247ef65
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221944"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681413"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>Azure Machine Learning 'de değişiklik gizliliğini kullanın (Önizleme)
 
-Akıllı gürültü Python paketlerini kullanarak Azure Machine Learning modellere yönelik değişiklik gizliliği en iyi yöntemlerini nasıl uygulayacağınızı öğrenin.
+Akıllı gürültü Python açık kaynak kitaplıklarını kullanarak Azure Machine Learning modellere yönelik fark gizliliği en iyi yöntemlerini nasıl uygulayacağınızı öğrenin.
 
 Değişiklik gizliliği, altın standart gizlilik tanımıdır. Bu Gizlilik tanımına bağlı olan sistemler, daha fazla veri yeniden oluşturma ve yeniden tanımlama saldırılarına karşı, yardımcı bilgilere sahip olan saldırgan saldırıları da dahil olmak üzere güçlü bir iş yelpazesi sunar. [Değişiklik gizliliği 'nin nasıl çalıştığı](./concept-differential-privacy.md)hakkında daha fazla bilgi edinin.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 - [Python 3 karşılaştırması](https://www.python.org/downloads/)
 
-## <a name="install-smartnoise-packages"></a>SmartNoise paketlerini yükler
+## <a name="install-smartnoise-python-libraries"></a>SmartNoise Python kitaplıklarını yükler
 
 ### <a name="standalone-installation"></a>Tek başına yükleme
 
@@ -51,7 +51,7 @@ import opendp.smartnoise.sql
 
 İçeri aktarmalar başarılı olursa kitaplıklar yüklenir ve kullanıma hazırlıolur.
 
-### <a name="docker-image"></a>Docker görüntüsü
+### <a name="docker-image-installation"></a>Docker görüntü yüklemesi
 
 Ayrıca, Docker ile Smartgürültü paketleri de kullanabilirsiniz.
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 45e1ae5b8a1084334b7596f62c272e16294c4c14
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 6df8c3238ed6dfeb37fd10d0a7e97aa839e7bf26
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118770"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681086"
 ---
 # <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu kullanarak Parquet ve JSON dosyalarındaki iç içe türleri sorgulama
 
@@ -47,7 +47,7 @@ FROM
 > [!IMPORTANT]
 > Bu örnek COVıD-19 açık araştırma veri kümesinden bir dosya kullanır. Bu [verilerin yapısına ve yapısına bakın](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 İlk adım, DataSource 'un oluşturulacağı bir veritabanı oluşturmaktır. Ardından, veritabanında bir [kurulum betiği](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) çalıştırarak nesneleri başlatacaksınız. Kurulum betiği, örneklerde kullanılan veri kaynaklarını, veritabanı kapsamlı kimlik bilgilerini ve harici dosya biçimlerini oluşturacaktır.
 
@@ -147,7 +147,7 @@ FROM
 
 ## <a name="access-elements-from-repeated-columns"></a>Yinelenen sütunlardan öğelerine erişin
 
-Aşağıdaki sorgu, yatsimplearray. Parquet dosyasını okur ve bir Array veya Map gibi yinelenen bir sütunun içinden skaler bir öğe almak için [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) kullanır:
+Aşağıdaki sorgu, yatsimplearray. Parquet dosyasını okur ve bir Array veya Map gibi yinelenen bir sütunun içinden skaler bir öğe almak için [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) kullanır:
 
 ```sql
 SELECT
@@ -172,7 +172,7 @@ Sonuç şu şekildedir:
 
 ## <a name="access-sub-objects-from-complex-columns"></a>Karmaşık sütunlardan alt nesnelere erişme
 
-Aşağıdaki sorgu, mapExample. Parquet dosyasını okur ve bir dizi veya eşleme gibi yinelenen bir sütunun içinden skalar olmayan bir öğeyi almak için [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) kullanır:
+Aşağıdaki sorgu, mapExample. Parquet dosyasını okur ve bir dizi veya eşleme gibi yinelenen bir sütunun içinden skalar olmayan bir öğeyi almak için [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) kullanır:
 
 ```sql
 SELECT

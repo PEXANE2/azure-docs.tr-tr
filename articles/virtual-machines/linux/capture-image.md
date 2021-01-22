@@ -8,24 +8,24 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
-ms.openlocfilehash: eacd1426b856de11a18b0da6c509d281b3bca94c
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 53fb11216e65ebead43c02a7153d937c37b841a0
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655178"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681069"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>Bir sanal makinenin veya VHD 'nin yönetilen görüntüsünü oluşturma
 
 Geliştirme ve test için Azure 'da kullanmak üzere bir sanal makinenin (VM) birden çok kopyasını oluşturmak için, VM 'nin veya işletim sistemi VHD 'sinin yönetilen bir görüntüsünü yakalayın. Görüntü oluşturmak, depolamak ve ölçeklenebilir bir şekilde paylaşmak için bkz. [paylaşılan görüntü galerileri](../shared-images-cli.md).
 
-Bir yönetilen görüntü, en fazla 20 eşzamanlı dağıtımı destekler. Aynı yönetilen görüntüden 20 ' den fazla VM oluşturmaya çalışmak, tek bir VHD 'nin depolama performans sınırlamaları nedeniyle zaman aşımları sağlamaya neden olabilir. Aynı anda 20 ' den fazla VM oluşturmak için, her 20 eş zamanlı VM dağıtımı için 1 çoğaltma ile yapılandırılmış [paylaşılan görüntü galerileri](shared-image-galleries.md) görüntüsünü kullanın.
+Bir yönetilen görüntü, en fazla 20 eşzamanlı dağıtımı destekler. Aynı yönetilen görüntüden 20 ' den fazla VM oluşturmaya çalışmak, tek bir VHD 'nin depolama performans sınırlamaları nedeniyle zaman aşımları sağlamaya neden olabilir. Aynı anda 20 ' den fazla VM oluşturmak için, her 20 eş zamanlı VM dağıtımı için 1 çoğaltma ile yapılandırılmış [paylaşılan görüntü galerileri](../shared-image-galleries.md) görüntüsünü kullanın.
 
 Yönetilen bir görüntü oluşturmak için kişisel hesap bilgilerini kaldırmanız gerekir. Aşağıdaki adımlarda, var olan bir VM 'yi serbest bırakın, serbest bırakın ve bir görüntü oluşturun. Bu görüntüyü, aboneliğinizdeki tüm kaynak grupları arasında VM 'Ler oluşturmak için kullanabilirsiniz.
 
 Yedekleme veya hata ayıklama için mevcut Linux sanal makinenizin bir kopyasını oluşturmak veya şirket içi bir VM 'den özelleştirilmiş bir Linux VHD 'yi yüklemek için, bkz. [özel disk görüntüsünden LINUX VM 'Yi karşıya yükleme ve oluşturma](upload-vhd.md).  
 
-Özel görüntünüzü oluşturmak için **Azure VM görüntü Oluşturucu (Genel Önizleme)** hizmetini kullanabilirsiniz, herhangi bir araç öğrenmeniz gerekmez veya yapı işlem hatlarını kurulum, yalnızca bir görüntü yapılandırması sağlamaktan ve görüntü Oluşturucu görüntüyü oluşturacaktır. Daha fazla bilgi için bkz. [Azure VM görüntü Oluşturucu Ile çalışmaya](./image-builder-overview.md)başlama.
+Özel görüntünüzü oluşturmak için **Azure VM görüntü Oluşturucu (Genel Önizleme)** hizmetini kullanabilirsiniz, herhangi bir araç öğrenmeniz gerekmez veya yapı işlem hatlarını kurulum, yalnızca bir görüntü yapılandırması sağlamaktan ve görüntü Oluşturucu görüntüyü oluşturacaktır. Daha fazla bilgi için bkz. [Azure VM görüntü Oluşturucu Ile çalışmaya](../image-builder-overview.md)başlama.
 
 Görüntü oluşturmadan önce aşağıdaki öğelere sahip olmanız gerekir:
 

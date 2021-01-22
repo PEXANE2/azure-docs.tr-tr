@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 2ebff0d86c27bcdbc11d23e18116b33b4ea838a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4ca28efce28933eed9be5cca7bd412f2d9505aa
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89300264"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679543"
 ---
 # <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-powershell"></a>PowerShell kullanarak paylaşılan bir görüntü galerisinde yönetilen diskten veya anlık görüntüden görüntü oluşturma
 
@@ -42,7 +42,7 @@ Bu makalede çalışırken, kaynak adlarını gereken yerde değiştirin.
 get-azsnapshot | Format-Table -Property Name,ResourceGroupName
 ```
 
-Anlık görüntü adını ve içindeki kaynak grubunu öğrendikten sonra, `Get-AzSnapshot` anlık görüntü nesnesini almak ve daha sonra kullanmak üzere bir değişkende depolamak için yeniden kullanabilirsiniz. Bu örnek, "myResourceGroup" kaynak grubundan *Kapsamım* adlı bir anlık görüntü alır ve onu *$Source*değişkenine atar. 
+Anlık görüntü adını ve içindeki kaynak grubunu öğrendikten sonra, `Get-AzSnapshot` anlık görüntü nesnesini almak ve daha sonra kullanmak üzere bir değişkende depolamak için yeniden kullanabilirsiniz. Bu örnek, "myResourceGroup" kaynak grubundan *Kapsamım* adlı bir anlık görüntü alır ve onu *$Source* değişkenine atar. 
 
 ```azurepowershell-interactive
 $source = Get-AzSnapshot `
@@ -90,9 +90,9 @@ Görüntü tanımları görüntüler için bir mantıksal gruplama oluşturur. B
 
 Görüntü tanımınızı yaparken, doğru bilgilerin tümünün bulunduğundan emin olun. Bu örnekte, anlık görüntü veya yönetilen diskin kullanımda olan ve genelleştirilmiş bir VM 'den olduğunu varsayıyoruz. Yönetilen disk veya anlık görüntü genelleştirilmiş bir işletim sistemi (Windows için [Sysprep veya](https://github.com/Azure/WALinuxAgent) `-deprovision` `-deprovision+user` Linux için veya Linux için) aldıysanız, öğesini `-OsState` olarak değiştirin `generalized` . 
 
-Bir görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla bilgi için bkz. [görüntü tanımları](./windows/shared-image-galleries.md#image-definitions).
+Bir görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla bilgi için bkz. [görüntü tanımları](./shared-image-galleries.md#image-definitions).
 
-[New-Azgallerımagedefinition](/powershell/module/az.compute/new-azgalleryimageversion)kullanarak görüntü tanımını oluşturun. Bu örnekte, görüntü tanımı *Myımagedefinition*olarak adlandırılır ve özelleştirilmiş bir Windows işletim sistemi içindir. Linux işletim sistemi kullanan görüntülerin tanımını oluşturmak için kullanın `-OsType Linux` . 
+[New-Azgallerımagedefinition](/powershell/module/az.compute/new-azgalleryimageversion)kullanarak görüntü tanımını oluşturun. Bu örnekte, görüntü tanımı *Myımagedefinition* olarak adlandırılır ve özelleştirilmiş bir Windows işletim sistemi içindir. Linux işletim sistemi kullanan görüntülerin tanımını oluşturmak için kullanın `-OsType Linux` . 
 
 ```azurepowershell-interactive
 $imageDefinition = New-AzGalleryImageDefinition `

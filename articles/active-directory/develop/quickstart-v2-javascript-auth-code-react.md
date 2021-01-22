@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 4e1addc9a5b07f9ae6f119b89b0e7d6f8186f29a
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 58e8fd5006e72465e35912a5b15cade1201d680f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98634479"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680324"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-a-react-spa-using-the-auth-code-flow"></a>Hızlı başlangıç: kimlik doğrulama kod akışını kullanarak oturum açma ve yanıt olarak bir SPA 'da erişim belirteci edinme
 
@@ -66,6 +66,15 @@ Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL yanıt verme kulla
 > 1. Değişiklikleri uygulamak için **Yapılandır** düğmesine tıklayın.
 > 1. **Platform yapılandırması** ' nın altında **tek sayfalı uygulama**' yı genişletin.
 > 1.  ![ Yeniden yönlendirme URI 'nizi zaten yapılandırılmış olan sağlama türleri altında ](media/quickstart-v2-javascript/green-check.png) , yetkilendirme kodu akışı için PKI CE 'nin uygun olduğunu doğrulayın.
+
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1. Adım: uygulamanızı Azure portal yapılandırma
+> Bu hızlı başlangıçta kod örneğinin çalışmasını sağlamak için, bir olarak eklemeniz gerekir `redirectUri` `http://localhost:3000/` .
+> > [!div renderon="portal" id="makechanges" class="nextstepaction"]
+> > [Bu değişiklikleri benim için yap]()
+>
+> > [!div id="appconfigured" class="alert alert-info"]
+> > ![Zaten yapılandırılmış](media/quickstart-v2-javascript/green-check.png) Uygulamanız bu özniteliklerle yapılandırılmış.
 
 #### <a name="step-2-download-the-project"></a>2. Adım: Projeyi indirme
 

@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 01/21/2021
 ms.author: tisande
-ms.openlocfilehash: 00c80fa311837918a78f26e941f00cb17f1dc279
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 4d2ad9cf6b47d8307d9652419b82de8ffcbcb099
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019185"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681659"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB'de dizin oluşturma ilkeleri
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -35,6 +35,17 @@ Azure Cosmos DB iki dizin oluşturma modunu destekler:
 > Azure Cosmos DB, yavaş dizin oluşturma modunu da destekler. Gecikmeli dizinde, dizin güncelleştirmeleri altyapıda hiçbir çalışma yapılmadığı sırada çok daha düşük öncelik düzeyinde gerçekleştirilir. Bu **tutarsız veya eksik** sorgu sonuçlarına yol açabilir. Cosmos kapsayıcısını sorgulamayı planlıyorsanız gecikmeli dizini seçmemelisiniz. Yeni kapsayıcılar geç dizin oluşturmayı seçemezsiniz. [Azure desteği](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ile iletişim kurarak (yavaş Dizin oluşturmayı desteklemeyen [sunucusuz](serverless.md) modda bir Azure Cosmos hesabı kullanıyor olmanız dışında) bir istisna isteyebilirsiniz.
 
 Varsayılan olarak, dizin oluşturma ilkesi olarak ayarlanır `automatic` . `automatic`Dizin oluşturma ilkesindeki özelliği olarak ayarlanarak elde edilir `true` . Bu özelliği ayarlamak için `true` Azure CosmosDB 'nin belgeleri yazıldığı gibi otomatik olarak dizin oluşturulmasına izin verir.
+
+## <a name="index-size"></a><a id="index-size"></a>Dizin boyutu
+
+Azure Cosmos DB, tüketilen toplam depolama alanı, hem veri boyutu hem de dizin boyutunun birleşimidir. Aşağıda Dizin boyutunun bazı özellikleri verilmiştir:
+
+* Dizin boyutu dizin oluşturma ilkesine bağlıdır. Tüm özellikler dizine alınmışsa, dizin boyutu veri boyutundan daha büyük olabilir.
+* Veriler silindiğinde, dizinler neredeyse sürekli olarak sıkıştırılır. Ancak, küçük veri silme işlemleri için Dizin boyutundaki azalmayı hemen gözlemleyebilirsiniz.
+* Dizin boyutu aşağıdaki durumlarda büyüyebilir:
+
+  * Bölüm bölme süresi-bölüm bölme işlemi tamamlandıktan sonra Dizin alanı serbest bırakılır.
+  * Bölüm bölündüğünde, Bölüm bölme sırasında dizin alanı geçici olarak artar. 
 
 ## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a>Özellik yollarını dahil etme ve hariç tutma
 
@@ -91,7 +102,7 @@ Yolları dahil etme ve hariç tutma sırasında aşağıdaki özniteliklerle kar
 
 Belirtilmediğinde, bu özellikler aşağıdaki varsayılan değerlere sahip olur:
 
-| **Özellik adı**     | **Varsayılan değer** |
+| **Özellik Adı**     | **Varsayılan değer** |
 | ----------------------- | -------------------------------- |
 | `kind`   | `range` |
 | `precision`   | `-1`  |
@@ -103,7 +114,7 @@ Yolların dahil edilmesi ve dışlanması için ilke örneklerinin dizinini olu�
 
 Dahil edilen yollarınızın ve dışlanan yolların bir çakışması varsa, daha kesin yol daha önceliklidir.
 
-İşte bir örnek:
+Aşağıda bir örnek verilmiştir:
 
 **Dahil edilen yol**: `/food/ingredients/nutrition/*`
 

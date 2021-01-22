@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: fcfddce568be6c641a5bf5be70c2cd0ad368095f
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 1eeb291c7a058efd8905e95ebf1ea14fed046691
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843613"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680527"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Azure Spring Cloud uygulama günlüklerini gerçek zamanlı olarak akışla aktarma
 
@@ -20,7 +20,7 @@ ms.locfileid: "94843613"
 
 Azure yay bulutu, sorun giderme amacıyla gerçek zamanlı uygulama konsolu günlüklerini almak için Azure CLı 'de günlük akışı sağlar. Ayrıca, [günlükleri ve ölçümleri tanılama ayarlarıyla çözümleyebilirsiniz](./diagnostic-services.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Yay bulutu için [Azure CLI uzantısı](/cli/azure/install-azure-cli) 'nı, en düşük sürüm 0.2.0 'yi yükler.
 * Çalışan bir uygulamayla **Azure Spring Cloud** örneği, örneğin [Spring Cloud App](./spring-cloud-quickstart.md).
@@ -31,7 +31,7 @@ Azure yay bulutu, sorun giderme amacıyla gerçek zamanlı uygulama konsolu gün
 ## <a name="use-cli-to-tail-logs"></a>Günlükleri kuyruk için CLı kullanma
 
 Kaynak grubunuzu ve hizmet örneği adınızı tekrar tekrar belirtmeyi önlemek için varsayılan kaynak grubu adınızı ve küme adınızı ayarlayın.
-```
+```azurecli
 az configure --defaults group=<service group name>
 az configure --defaults spring-cloud=<service instance name>
 ```
@@ -39,11 +39,11 @@ Aşağıdaki örneklerde, komutlarda kaynak grubu ve hizmet adı atlanır.
 
 ### <a name="tail-log-for-app-with-single-instance"></a>Tek örnekli uygulama için kuyruk günlüğü
 Auth-Service adlı bir uygulamanın yalnızca bir örneği varsa, uygulama örneğinin günlüğünü aşağıdaki komutla görüntüleyebilirsiniz:
-```
+```azurecli
 az spring-cloud app logs -n auth-service
 ```
 Bu işlem günlükleri döndürür:
-```
+```output
 ...
 2020-01-15 01:54:40.481  INFO [auth-service,,,] 1 --- [main] o.apache.catalina.core.StandardService  : Starting service [Tomcat]
 2020-01-15 01:54:40.482  INFO [auth-service,,,] 1 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.22]
@@ -58,12 +58,12 @@ Adlı uygulama için birden çok örnek varsa `auth-service` , seçeneğini kull
 
 İlk olarak, aşağıdaki komutla uygulama örneği adlarını alabilirsiniz.
 
-```
+```azurecli
 az spring-cloud app show -n auth-service --query properties.activeDeployment.properties.instances -o table
 ```
 Sonuçlarla:
 
-```
+```output
 Name                                         Status    DiscoveryStatus
 -------------------------------------------  --------  -----------------
 auth-service-default-12-75cc4577fc-pw7hb  Running   UP
@@ -72,7 +72,7 @@ auth-service-default-12-75cc4577fc-n25mh  Running   UP
 ``` 
 Ardından, bir uygulama örneğinin günlüklerini seçenek seçeneğiyle akışla aktarabilirsiniz `-i/--instance` :
 
-```
+```azurecli
 az spring-cloud app logs -n auth-service -i auth-service-default-12-75cc4577fc-pw7hb
 ```
 
@@ -81,11 +81,11 @@ Ayrıca Azure portal uygulama örneklerinin ayrıntılarını alabilirsiniz.  Az
 ### <a name="continuously-stream-new-logs"></a>Yeni günlükleri sürekli olarak akışla
 Varsayılan olarak, `az spring-cloud ap log tail` yalnızca uygulama konsoluna akan mevcut günlükleri yazdırır ve sonra çıkar. Yeni Günlükler akışı yapmak istiyorsanız, Add-f (--izleyin):  
 
-```
+```azurecli
 az spring-cloud app logs -n auth-service -f
 ``` 
 Desteklenen tüm günlük seçeneklerini denetlemek için:
-``` 
+```azurecli
 az spring-cloud app logs -h 
 ```
 

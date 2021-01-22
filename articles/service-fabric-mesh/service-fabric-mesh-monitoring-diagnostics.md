@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: eda0b62729343b0a138d027548d8750b1e0fc74f
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 63c79169646f05cddc7c605c764398bdef7492d4
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844412"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682080"
 ---
 # <a name="monitoring-and-diagnostics"></a>İzleme ve tanılama
 Azure Service Fabric Mesh, geliştiricilerin sanal makineleri, depolama alanını veya ağ bileşenlerini yönetmeden mikro hizmet uygulamaları dağıtmasını sağlayan tam olarak yönetilen bir hizmettir. Service Fabric ağ için izleme ve tanılama, üç temel tanılama verisi türüne kategorize edilir:
@@ -26,7 +26,7 @@ Bu makalede, kullanılabilir en son önizleme sürümü için izleme ve tanılam
 
 Her kapsayıcı için dağıtılan kapsayıcılarınızdaki Docker günlüklerinizi görüntüleyebilirsiniz. Service Fabric kafes uygulama modelinde, her kapsayıcı uygulamanızdaki bir kod paketidir. Bir kod paketiyle ilişkili günlükleri görmek için aşağıdaki komutu kullanın:
 
-```cli
+```azurecli
 az mesh code-package-log get --resource-group <nameOfRG> --app-name <nameOfApp> --service-name <nameOfService> --replica-name <nameOfReplica> --code-package-name <nameOfCodePackage>
 ```
 
@@ -35,7 +35,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --app-name <nameOfApp> 
 
 Bu, oylama uygulamasındaki VotingWeb. Code kapsayıcısından günlükleri görmek için şöyle görünür:
 
-```cli
+```azurecli
 az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzVoting --service-name VotingWeb --replica-name 0 --code-package-name VotingWeb.Code
 ```
 
@@ -51,11 +51,11 @@ Ağ ortamı, kapsayıcılarınızın nasıl gerçekleştiğini gösteren bir diz
 | Ayrılan bellek | Azure Resource Manager şablonuna göre ayrılan bellek | MB |
 | ActualCpu | CPU kullanımı | Milicore |
 | ActualMemory | Bellek kullanımı | MB |
-| ContainerStatus | 0-geçersiz: kapsayıcı durumu bilinmiyor <br> 1-bekliyor: kapsayıcı başlatılmaya zamanlandı <br> 2-başlatılıyor: kapsayıcı başlangıç sürecinde <br> 3-başlatıldı: kapsayıcı başarıyla başlatıldı <br> 4-durduruluyor: kapsayıcı durduruluyor <br> 5-durduruldu: kapsayıcı başarıyla durduruldu | YOK |
-| ApplicationStatus | 0-bilinmiyor: durum alınabilir değil <br> 1-Ready: uygulama başarıyla çalışıyor <br> 2-yükseltiliyor: sürmekte olan bir yükseltme var <br> 3-oluşturma: uygulama oluşturuluyor <br> 4-silme: uygulama siliniyor <br> 5-başarısız: uygulama dağıtılamadı | YOK |
-| ServiceStatus | 0-geçersiz: hizmetin Şu anda bir sistem durumu yok <br> 1-Tamam: hizmet sağlıklı  <br> 2-Uyarı: araştırma gerektiren yanlış bir sorun olabilir <br> 3-hata: araştırma gerektiren bir sorun oluştu <br> 4-bilinmiyor: durum alınabilir değil | YOK |
-| Servicereperepstatus | 0-geçersiz: çoğaltmanın Şu anda bir sistem durumu yok <br> 1-Tamam: hizmet sağlıklı  <br> 2-Uyarı: araştırma gerektiren yanlış bir sorun olabilir <br> 3-hata: araştırma gerektiren bir sorun oluştu <br> 4-bilinmiyor: durum alınabilir değil | YOK | 
-| RestartCount | Kapsayıcı yeniden başlatmaları sayısı | YOK |
+| ContainerStatus | 0-geçersiz: kapsayıcı durumu bilinmiyor <br> 1-bekliyor: kapsayıcı başlatılmaya zamanlandı <br> 2-başlatılıyor: kapsayıcı başlangıç sürecinde <br> 3-başlatıldı: kapsayıcı başarıyla başlatıldı <br> 4-durduruluyor: kapsayıcı durduruluyor <br> 5-durduruldu: kapsayıcı başarıyla durduruldu | Yok |
+| ApplicationStatus | 0-bilinmiyor: durum alınabilir değil <br> 1-Ready: uygulama başarıyla çalışıyor <br> 2-yükseltiliyor: sürmekte olan bir yükseltme var <br> 3-oluşturma: uygulama oluşturuluyor <br> 4-silme: uygulama siliniyor <br> 5-başarısız: uygulama dağıtılamadı | Yok |
+| ServiceStatus | 0-geçersiz: hizmetin Şu anda bir sistem durumu yok <br> 1-Tamam: hizmet sağlıklı  <br> 2-Uyarı: araştırma gerektiren yanlış bir sorun olabilir <br> 3-hata: araştırma gerektiren bir sorun oluştu <br> 4-bilinmiyor: durum alınabilir değil | Yok |
+| Servicereperepstatus | 0-geçersiz: çoğaltmanın Şu anda bir sistem durumu yok <br> 1-Tamam: hizmet sağlıklı  <br> 2-Uyarı: araştırma gerektiren yanlış bir sorun olabilir <br> 3-hata: araştırma gerektiren bir sorun oluştu <br> 4-bilinmiyor: durum alınabilir değil | Yok | 
+| RestartCount | Kapsayıcı yeniden başlatmaları sayısı | Yok |
 
 > [!NOTE]
 > ServiceStatus ve Servicereperepstatus değerleri, Service Fabric [HealthState](/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet) ile aynıdır. 
@@ -74,7 +74,7 @@ Her boyut [Service Fabric uygulama modelinin](service-fabric-mesh-service-fabric
 
 ### <a name="azure-monitor-cli"></a>Azure Izleyici CLı
 
-Komutların tam listesi [Azure IZLEYICI CLI belgelerinden](/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list) edinilebilir ancak aşağıda birkaç faydalı örnek verilmiştir 
+Komutların tam listesi [Azure IZLEYICI CLI belgelerinden](/cli/azure/monitor/metrics#az-monitor-metrics-list) edinilebilir ancak aşağıda birkaç faydalı örnek verilmiştir 
 
 Her örnekte, kaynak KIMLIĞI bu düzene uyar
 
@@ -83,21 +83,21 @@ Her örnekte, kaynak KIMLIĞI bu düzene uyar
 
 * Bir uygulamadaki kapsayıcıların CPU kullanımı
 
-```cli
+```azurecli
     az monitor metrics list --resource <resourceId> --metric "CpuUtilization"
 ```
 * Her hizmet çoğaltması için bellek kullanımı
-```cli
+```azurecli
     az monitor metrics list --resource <resourceId> --metric "MemoryUtilization" --dimension "ServiceReplicaName"
 ``` 
 
 * 1 saatlik penceredeki her bir kapsayıcı için yeniden başlatmalar 
-```cli
+```azurecli
     az monitor metrics list --resource <resourceId> --metric "RestartCount" --start-time 2019-02-01T00:00:00Z --end-time 2019-02-01T01:00:00Z
 ``` 
 
 * 1 saatlik bir pencerede "VotingWeb" adlı hizmetler genelinde ortalama CPU kullanımı
-```cli
+```azurecli
     az monitor metrics list --resource <resourceId> --metric "CpuUtilization" --start-time 2019-02-01T00:00:00Z --end-time 2019-02-01T01:00:00Z --aggregation "Average" --filter "ServiceName eq 'VotingWeb'"
 ``` 
 
@@ -118,4 +118,4 @@ In addition to the metrics explorer, we also have a dashboard available out of t
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Service Fabric Mesh hakkında daha fazla bilgi edinmek için [Service Fabric Mesh’e genel bakış](service-fabric-mesh-overview.md) makalesini okuyun.
-* Azure Izleyici ölçümleri komutları hakkında daha fazla bilgi edinmek için [Azure IZLEYICI CLI belgelerine](/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)göz atın.
+* Azure Izleyici ölçümleri komutları hakkında daha fazla bilgi edinmek için [Azure IZLEYICI CLI belgelerine](/cli/azure/monitor/metrics#az-monitor-metrics-list)göz atın.

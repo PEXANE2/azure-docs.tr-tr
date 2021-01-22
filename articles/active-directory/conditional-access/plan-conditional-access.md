@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13756be041f88883d84f9558308c7fe5c9be2d0e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: da21359b56b9e5b9d6e971032d06f8bae94efce0
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116016"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682147"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Koşullu Erişim dağıtımını planlama
 
@@ -52,7 +52,7 @@ Bkz. [koşullu erişim lisans gereksinimleri](overview.md).
 
 Ek özellikler gerekliyse, ilgili lisanslara de ihtiyacınız olabilir. Daha fazla bilgi için bkz. [Azure Active Directory fiyatlandırması](https://azure.microsoft.com/pricing/details/active-directory/).
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 * Azure AD Premium veya deneme lisansı etkin çalışan bir Azure AD kiracısı. Gerekirse, [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -134,7 +134,7 @@ Derlemeden önce her ilke için soruların yanıtlarını belgeleyin.
 
 #### <a name="common-questions-about-assignments"></a>Atamalar hakkında sık sorulan sorular
 
-[Kullanıcılar ve Gruplar](concept-conditional-access-users-groups.md)
+[Kullanıcılar ve gruplar](concept-conditional-access-users-groups.md)
 
 * İlkeye hangi kullanıcılar ve gruplar dahil edilecek veya ilkeden hariç tutulacak?
 
@@ -485,4 +485,4 @@ Bilgileri topladıktan sonra, aşağıdaki kaynaklara bakın:
 
 [Kimlik koruması hakkında daha fazla bilgi](../identity-protection/overview-identity-protection.md)
 
-[Koşullu erişim ilkelerini Microsoft Graph API ile yönetme](https://docs.microsoft.com/graph/api/resources/conditionalaccesspolicy)
+[Koşullu erişim ilkelerini Microsoft Graph API ile yönetme](/graph/api/resources/conditionalaccesspolicy)

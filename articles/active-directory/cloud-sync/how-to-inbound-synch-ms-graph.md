@@ -11,12 +11,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e65569cadd8f778a94f93aa22dd3924c52ff12f8
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 3796b3d86f647e38cf2ff018e8c0c903d9a64e41
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98614257"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682047"
 ---
 # <a name="inbound-synchronization-for-cloud-sync-using-ms-graph-api"></a>MS Graph API kullanarak bulut eşitlemesi için gelen eşitleme
 
@@ -31,7 +31,7 @@ Bunun nasıl yapılacağını gösteren yapı aşağıdaki adımlardan oluşur. 
 - [Eşitleme işini Başlat](#start-sync-job)
 - [İnceleme durumu](#review-status)
 
-Bu [Windows PowerShell için Microsoft Azure Active Directory modülü](https://docs.microsoft.com/powershell/module/msonline/) komutlarını, bu kiracı Için Yönetim Web hizmetini çağırabilmek üzere bir üretim kiracısı için eşitlemeyi etkinleştirmek üzere kullanın.
+Bu [Windows PowerShell için Microsoft Azure Active Directory modülü](/powershell/module/msonline/) komutlarını, bu kiracı Için Yönetim Web hizmetini çağırabilmek üzere bir üretim kiracısı için eşitlemeyi etkinleştirmek üzere kullanın.
 
 ## <a name="basic-setup"></a>Temel kurulum
 
@@ -60,7 +60,7 @@ Bu uygulama KIMLIĞI 1a4721b3-e57f-4451-ae87-ef078703ec94 kullanmanız gerekir. 
 ## <a name="create-sync-job"></a>Eşitleme işi oluştur
 Yukarıdaki komutun çıktısı, oluşturulan hizmet sorumlusunun ObjectID değerini döndürür. Bu örnekte, ObjectID 614ac0e9-a59b-481f-bd8f-79a73d167e1c olur.  Bu hizmet sorumlusuna bir synchronizationJob eklemek için Microsoft Graph kullanın.  
 
-Eşitleme işi oluşturmaya yönelik belgeler [burada](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-post?view=graph-rest-beta&tabs=http)bulunabilir.
+Eşitleme işi oluşturmaya yönelik belgeler [burada](/graph/api/synchronization-synchronizationjob-post?tabs=http&view=graph-rest-beta)bulunabilir.
 
 Yukarıdaki KIMLIĞI kaydetmediyseniz, aşağıdaki MS Graf çağrısını çalıştırarak hizmet sorumlusunu bulabilirsiniz. Dizin. Read. bu çağrıyı yapmak için tüm izinlere sahip olmanız gerekir:
  
@@ -216,11 +216,11 @@ Burada, vurgulanan "etki alanı" değeri, girişlerin Azure Active Directory sa�
 
  `GET https://graph.microsoft.com/beta/servicePrincipals/[SERVICE_PRINCIPAL_ID]/synchronization/jobs/ ` 
 
-İşlerin alınmasına ilişkin belgeler [burada](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-list?view=graph-rest-beta&tabs=http)bulunabilir. 
+İşlerin alınmasına ilişkin belgeler [burada](/graph/api/synchronization-synchronizationjob-list?tabs=http&view=graph-rest-beta)bulunabilir. 
  
 İşi başlatmak için, ilk adımda oluşturulan hizmet sorumlusu ObjectID 'yi ve işi oluşturan istekten döndürülen iş tanımlayıcısını kullanarak bu isteği verin.
 
-Bir işi başlatmaya ilişkin belgeler [burada](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-start?view=graph-rest-beta&tabs=http)bulunabilir. 
+Bir işi başlatmaya ilişkin belgeler [burada](/graph/api/synchronization-synchronizationjob-start?tabs=http&view=graph-rest-beta)bulunabilir. 
 
  ```
  POST  https://graph.microsoft.com/beta/servicePrincipals/8895955e-2e6c-4d79-8943-4d72ca36878f/synchronization/jobs/AD2AADProvisioning.fc96887f36da47508c935c28a0c0b6da/start
@@ -228,7 +228,7 @@ Bir işi başlatmaya ilişkin belgeler [burada](https://docs.microsoft.com/graph
 
 Beklenen yanıt... HTTP 204/içerik yok.
 
-İşi denetlemeye yönelik diğer komutlar [burada](https://docs.microsoft.com/graph/api/resources/synchronization-synchronizationjob?view=graph-rest-beta)belgelenmiştir.
+İşi denetlemeye yönelik diğer komutlar [burada](/graph/api/resources/synchronization-synchronizationjob?view=graph-rest-beta)belgelenmiştir.
  
 Bir işi yeniden başlatmak için, bunlardan biri kullanılır...
 
@@ -254,4 +254,4 @@ Bir işi yeniden başlatmak için, bunlardan biri kullanılır...
 
 - [Azure AD Connect bulut eşitlemesi nedir?](what-is-cloud-sync.md)
 - [Dönüşümler](how-to-transformation.md)
-- [Azure AD eşitleme API 'SI](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
+- [Azure AD eşitleme API 'SI](/graph/api/resources/synchronization-overview?view=graph-rest-beta)

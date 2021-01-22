@@ -11,12 +11,12 @@ ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 0cf40990d59aff984226244f520e6f8f937713fd
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7dcb884d8eafdfa5218e96d63f62a5d462d20cf8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456496"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679939"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda çoğaltılan tabloları kullanmaya yönelik tasarım kılavuzu
 
@@ -46,8 +46,8 @@ Aşağıdaki diyagramda, her bir Işlem düğümündeki erişilebilir bir çoğa
 
 Şu durumlarda çoğaltılan bir tablo kullanmayı göz önünde bulundurun:
 
-- Disk üzerindeki tablo boyutu, satır sayısından bağımsız olarak 2 GB 'tan az. Bir tablonun boyutunu bulmak için [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) komutunu kullanabilirsiniz: `DBCC PDW_SHOWSPACEUSED('ReplTableCandidate')` .
-- Tablo, aksi takdirde veri hareketine gerek duyduğu birleşimlerde kullanılır. Karma olarak dağıtılan tablo gibi aynı sütunda dağıtılmamış tablolar, hepsini bir kez deneme tablosuna katılırken, sorguyu tamamlaması için veri taşıma gerekir.  Tablolardan biri küçükse, çoğaltılan bir tabloyu düşünün. Çoğu durumda, hepsini bir kez deneme tablosu yerine çoğaltılan tabloları kullanmanızı öneririz. Sorgu planlarında veri taşıma işlemlerini görüntülemek için [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)kullanın.  Yayınmoveişlem, çoğaltılan bir tablo kullanılarak ortadan kaldırılabilir olan tipik veri taşıma işlemidir.  
+- Disk üzerindeki tablo boyutu, satır sayısından bağımsız olarak 2 GB 'tan az. Bir tablonun boyutunu bulmak için [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) komutunu kullanabilirsiniz: `DBCC PDW_SHOWSPACEUSED('ReplTableCandidate')` .
+- Tablo, aksi takdirde veri hareketine gerek duyduğu birleşimlerde kullanılır. Karma olarak dağıtılan tablo gibi aynı sütunda dağıtılmamış tablolar, hepsini bir kez deneme tablosuna katılırken, sorguyu tamamlaması için veri taşıma gerekir.  Tablolardan biri küçükse, çoğaltılan bir tabloyu düşünün. Çoğu durumda, hepsini bir kez deneme tablosu yerine çoğaltılan tabloları kullanmanızı öneririz. Sorgu planlarında veri taşıma işlemlerini görüntülemek için [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)kullanın.  Yayınmoveişlem, çoğaltılan bir tablo kullanılarak ortadan kaldırılabilir olan tipik veri taşıma işlemidir.  
 
 Çoğaltılan tablolar şu durumlarda en iyi sorgu performansını vermeyebilir:
 
@@ -78,7 +78,7 @@ WHERE EnglishDescription LIKE '%frame%comfortable%'
 
 Daha önce hepsini bir kez deneme tablonuz varsa, bu makalede özetlenen kriterleri karşılıyorsa onları çoğaltılan tablolara dönüştürmeyi öneririz. Çoğaltılan tablolar, veri taşıma gereksinimini ortadan kaldırdıklarından, hepsini bir kez deneme tablolarında performansı geliştirir.  Hepsini bir kez deneme tablosu her zaman birleşimler için veri hareketini gerektirir.
 
-Bu örnek, DimSalesTerritory tablosunu çoğaltılan bir tabloyla değiştirmek için [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kullanır. Bu örnek, DimSalesTerritory 'in karma dağıtılan veya hepsini bir kez deneme olmasına bakılmaksızın işe yarar.
+Bu örnek, DimSalesTerritory tablosunu çoğaltılan bir tabloyla değiştirmek için [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) kullanır. Bu örnek, DimSalesTerritory 'in karma dağıtılan veya hepsini bir kez deneme olmasına bakılmaksızın işe yarar.
 
 ```sql
 CREATE TABLE [dbo].[DimSalesTerritory_REPLICATE]
@@ -99,7 +99,7 @@ DROP TABLE [dbo].[DimSalesTerritory_old];
 
 ### <a name="query-performance-example-for-round-robin-versus-replicated"></a>Hepsini bir kez deneme için sorgu performansı örneği yinelenmiş
 
-Çoğaltılan bir tablo, tüm tablo bir Işlem düğümünde zaten mevcut olduğundan, birleştirmeler için herhangi bir veri taşıması gerektirmez. Boyut tabloları hepsini bir kez daha kez dağıtılmışsa, bir JOIN boyut tablosunu her bir Işlem düğümüne tam olarak kopyalar. Verileri taşımak için, sorgu planı, Yayınmoveoperation adlı bir işlem içerir. Bu tür veri taşıma işlemi sorgu performansını yavaşlatır ve çoğaltılan tablolar kullanılarak ortadan kalkar. Sorgu planı adımlarını görüntülemek için [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) Sistem kataloğu görünümünü kullanın.  
+Çoğaltılan bir tablo, tüm tablo bir Işlem düğümünde zaten mevcut olduğundan, birleştirmeler için herhangi bir veri taşıması gerektirmez. Boyut tabloları hepsini bir kez daha kez dağıtılmışsa, bir JOIN boyut tablosunu her bir Işlem düğümüne tam olarak kopyalar. Verileri taşımak için, sorgu planı, Yayınmoveoperation adlı bir işlem içerir. Bu tür veri taşıma işlemi sorgu performansını yavaşlatır ve çoğaltılan tablolar kullanılarak ortadan kalkar. Sorgu planı adımlarını görüntülemek için [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) Sistem kataloğu görünümünü kullanın.  
 
 Örneğin, AdventureWorks şemasına karşı aşağıdaki sorguda `FactInternetSales` tablo karma olarak dağıtılır. `DimDate`Ve `DimSalesTerritory` tabloları daha küçük boyut tablolarıdır. Bu sorgu, 2004 mali yılı için Kuzey Amerika toplam satışları döndürür:
 
@@ -170,7 +170,7 @@ Standart dizin oluşturma uygulamaları çoğaltılan tablolar için geçerlidir
 
 Tutarlı sorgu yürütme süreleri sağlamak için, bir toplu yükleme sonrasında çoğaltılan tabloların derlemesini zorunlu tutmayı düşünün. Aksi halde, ilk sorgu sorguyu tamamlayacak veri hareketini kullanmaya devam eder.
 
-Bu sorgu, değiştirilmiş ancak yeniden derlenmemişse çoğaltılan tabloları listelemek için [sys.pdw_replicated_table_cache_state](/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) DMV 'yi kullanır.
+Bu sorgu, değiştirilmiş ancak yeniden derlenmemişse çoğaltılan tabloları listelemek için [sys.pdw_replicated_table_cache_state](/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) DMV 'yi kullanır.
 
 ```sql
 SELECT [ReplicatedTable] = t.[name]
@@ -193,7 +193,7 @@ SELECT TOP 1 * FROM [ReplicatedTable]
 
 Çoğaltılan bir tablo oluşturmak için aşağıdaki deyimlerden birini kullanın:
 
-- [CREATE TABLE (SQL havuzu)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [SELECT olarak CREATE TABLE (SQL havuzu)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE (SQL havuzu)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [SELECT olarak CREATE TABLE (SQL havuzu)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 
 Dağıtılmış tablolara genel bakış için bkz. [Dağıtılmış tablolar](sql-data-warehouse-tables-distribute.md).

@@ -11,16 +11,16 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 939a74a2bbedf6b00159f0c33a50eeb93595cda4
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 547f697c4f8ffb903006e48e94086433d64225c7
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116084"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681345"
 ---
 # <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>Hızlı başlangıç: COPY ifadesini kullanarak verileri toplu yükleme
 
-Bu hızlı başlangıçta, yüksek aktarım hızı veri alımı için basit ve esnek [kopyalama ifadesini](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) kullanarak adanmış SQL havuzunuza verileri toplu olarak yükleyebilirsiniz. KOPYALAMA deyimleri, aşağıdakileri yapmak için işlevler sağlayarak, verileri sorunsuzca ve esnek bir şekilde yüklemeyi sağlayan önerilen yükleme yardımcı programıdır:
+Bu hızlı başlangıçta, yüksek aktarım hızı veri alımı için basit ve esnek [kopyalama ifadesini](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) kullanarak adanmış SQL havuzunuza verileri toplu olarak yükleyebilirsiniz. KOPYALAMA deyimleri, aşağıdakileri yapmak için işlevler sağlayarak, verileri sorunsuzca ve esnek bir şekilde yüklemeyi sağlayan önerilen yükleme yardımcı programıdır:
 
 - Veri ambarında kesin DENETIM izinlerine gerek duymadan daha düşük ayrıcalıklı kullanıcıların yüklenmesine izin ver
 - Ek veritabanı nesneleri oluşturmak zorunda kalmadan yalnızca tek bir T-SQL ifadesiyle yararlanın
@@ -32,7 +32,7 @@ Bu hızlı başlangıçta, yüksek aktarım hızı veri alımı için basit ve e
 - CSV dosyaları için SQL Server Tarih biçimlerinden yararlanın
 - Depolama konumu yolunda joker karakter ve birden çok dosya belirtin
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıç, zaten adanmış bir SQL havuzunuz olduğunu varsayar. Adanmış bir SQL havuzu oluşturulmadıysa, [oluşturma ve bağlanma-Portal](create-data-warehouse-portal.md) hızlı başlangıcı ' nı kullanın.
 

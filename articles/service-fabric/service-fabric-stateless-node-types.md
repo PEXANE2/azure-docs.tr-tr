@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: pepogors
-ms.openlocfilehash: 0876891e42ce629a3b088d8068c74386d690492d
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 3767a16656ac4d11511c0928be8b2703c4e94c7c
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683191"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680612"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>Yalnızca durum bilgisi olan düğüm türleriyle bir Azure Service Fabric kümesi dağıtma (Önizleme)
 Service Fabric düğüm türleri, bazı zaman bir noktada, durum bilgisi olmayan hizmetlerin düğümlere yerleştirilebileceği bir süre ile gelir. Durum bilgisiz düğüm türleri bir düğüm türü için bu varsayımını daha hızlı hale getirme, böylece düğüm türünün daha hızlı genişleme işlemleri gibi diğer özellikleri kullanmasına izin vermek, bu sayede düğüm türünün daha hızlı genişleme işlemleri, en az sayıda düğüm için destek ve tek bir sanal makine ölçek kümesinde 100 ' den fazla düğüme
@@ -253,6 +253,8 @@ Başlamak için, mevcut Kaynak Yöneticisi şablonunuza yeni kaynakları eklemen
 
 Kaynakların dağıtımı tamamlandıktan sonra, özgün kümeden kaldırmak istediğiniz düğüm türündeki düğümleri devre dışı bırakmayı deneyebilirsiniz.
 
+>[!NOTE]
+> Bronz dayanıklılık ile, yok etme dayanıklılığına sahip durum bilgisiz olmayan nodetypes ile otomatik ölçeklendirmeyi kullanırken, düğüm durumu otomatik olarak temizlenmez. Otomatik ölçeklendirme sırasında aşağı düğümlerin NodeState 'i temizlemek için [Service Fabric otomatik ölçeklendirme Yardımcısı](https://github.com/Azure/service-fabric-autoscale-helper) kullanılması önerilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 * [Reliable Services](service-fabric-reliable-services-introduction.md)

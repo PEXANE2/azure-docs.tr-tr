@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 7a33cf4e66ce31f8fb8534de25d7564a5784ca3a
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 7341d1f07e8814edcad7b84f6b3b46c7bece3159
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625057"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680340"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Öğretici: Azure Notebooks (Python) kullanarak elektrik ve yönlendirme
 
@@ -27,7 +27,7 @@ Bu öğreticide, elektrik araç pili düşük olan bir sürücünün yardımına
 Bu öğreticide şunları yapacaksınız:
 
 > [!div class="checklist"]
-> * Bulutta [Azure Notebooks](../notebooks/index.yml) bir Jupyter Notebook dosyası oluşturun ve çalıştırın.
+> * Bulutta [Azure Notebooks](https://notebooks.azure.com) bir Jupyter Notebook dosyası oluşturun ve çalıştırın.
 > * Python 'da Azure haritalar REST API 'Lerini çağırın.
 > * Elektrik araç tüketiminin tüketim modeline göre erişilebilir bir Aralık arayın.
 > * Erişilebilir Aralık veya ısovaone içindeki elektrik araç doldurma istasyonlarını arayın.
@@ -49,7 +49,7 @@ Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [
 
 Bu öğreticiyle birlikte izlemek için bir Azure Notebooks projesi oluşturmanız ve Jupyter Notebook dosyasını indirip çalıştırmanız gerekir. Jupyter Notebook dosyası, bu öğreticide senaryoyu uygulayan Python kodunu içerir. Bir Azure Notebooks projesi oluşturmak ve Jupyter Notebook belgeyi bu klasöre yüklemek için aşağıdaki adımları uygulayın:
 
-1. [Azure Notebooks](https://notebooks.azure.com) gidin ve oturum açın. Daha fazla bilgi için bkz. [hızlı başlangıç: oturum açın ve bir kullanıcı kimliği ayarlayın](../notebooks/quickstart-sign-in-azure-notebooks.md).
+1. [Azure Notebooks](https://notebooks.azure.com) gidin ve oturum açın. Daha fazla bilgi için bkz. [hızlı başlangıç: oturum açın ve bir kullanıcı kimliği ayarlayın](https://notebooks.azure.com).
 1. Ortak profil sayfanızın en üstünde **Projelerim**' nı seçin.
 
     ![Projelerim düğmesi](./media/tutorial-ev-routing/myproject.png)
@@ -408,4 +408,4 @@ Temizleme gerektiren kaynak yok.
 Azure Notebooks hakkında daha fazla bilgi edinmek için bkz.
 
 > [!div class="nextstepaction"]
-> [Azure Notebooks](../notebooks/index.yml)
+> [Azure Notebooks](https://notebooks.azure.com)

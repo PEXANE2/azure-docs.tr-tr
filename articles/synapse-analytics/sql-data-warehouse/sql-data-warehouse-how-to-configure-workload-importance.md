@@ -11,12 +11,12 @@ ms.date: 05/15/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 067551d198f717dd40995cb8bc3e1345e82f078f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 38fb842cf90c110266f53b79a9ab2ef6157025b4
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461916"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681294"
 ---
 # <a name="configure-workload-importance-in-dedicated-sql-pool-for-azure-synapse-analytics"></a>Azure SYNAPSE Analytics için adanmış SQL havuzunda iş yükü önem derecesini yapılandırma
 
@@ -24,7 +24,7 @@ Azure SYNAPSE için adanmış SQL havuzunda önem ayarı, sorguların zamanlamas
 
 ## <a name="create-a-workload-classifier-with-importance"></a>Önem derecesine sahip bir Iş yükü Sınıflandırıcısı oluşturun
 
-Genellikle bir veri ambarı senaryosunda, kullanıcıların, sorgularını hızlı bir şekilde çalıştırması gereken, meşgul bir sistemde kullanıcıları vardır.  Kullanıcı, raporları çalıştırması gereken şirketin Yöneticiler olabilir veya Kullanıcı geçici sorgu çalıştıran bir analist olabilir. Önem derecesi atamak için bir iş yükü Sınıflandırıcısı oluşturun ve bir sorguya önem verilir.  Aşağıdaki örneklerde iki sınıflandırıcı oluşturmak için  [iş yükü sınıflandırıcı sözdizimi oluştur](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kullanılır. `Membername` tek bir kullanıcı veya grup olabilir.  Mevcut adanmış SQL havuzu kullanıcılarını bulmak için şunu çalıştırın:
+Genellikle bir veri ambarı senaryosunda, kullanıcıların, sorgularını hızlı bir şekilde çalıştırması gereken, meşgul bir sistemde kullanıcıları vardır.  Kullanıcı, raporları çalıştırması gereken şirketin Yöneticiler olabilir veya Kullanıcı geçici sorgu çalıştıran bir analist olabilir. Önem derecesi atamak için bir iş yükü Sınıflandırıcısı oluşturun ve bir sorguya önem verilir.  Aşağıdaki örneklerde iki sınıflandırıcı oluşturmak için  [iş yükü sınıflandırıcı sözdizimi oluştur](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) kullanılır. `Membername` tek bir kullanıcı veya grup olabilir.  Mevcut adanmış SQL havuzu kullanıcılarını bulmak için şunu çalıştırın:
 
 ```sql
 Select name from sys.sysusers

@@ -3,18 +3,20 @@ title: Başkalarıyla işbirliği yap-LUSıS
 titleSuffix: Azure Cognitive Services
 description: Uygulama sahibi, yazma kaynağına katkıda bulunanlar ekleyebilir. Bu katkıda bulunanlar, modeli değiştirebilir, eğleyebilir ve uygulamayı yayımlayabilir.
 services: cognitive-services
+author: aahill
+ms.author: aahi
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 12/08/2020
-ms.openlocfilehash: d4bde21dd13b562ffbb51b27ef083ee53685397a
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.date: 01/21/2021
+ms.openlocfilehash: ea95b2097c611635eb937498c6f1d87cb544bcd1
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007980"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681103"
 ---
 # <a name="add-contributors-to-your-app"></a>Uygulamanıza katkıda bulunanlar ekleyin
 
@@ -66,9 +68,7 @@ LUSıS, standart Azure Active Directory (Azure AD) onay akışını kullanır.
 Kiracı yöneticisinin, Azure AD 'de LUO 'NUN kullanılmasına erişim izni olan kullanıcıyla doğrudan çalışması gerekir.
 
 * İlk olarak, Kullanıcı LUO 'da oturum açar ve yönetici onayı gerektiren açılır iletişim kutusunu görür. Devam etmeden önce Kullanıcı Kiracı Yöneticisi ile iletişim kurar.
-* İkincisi, kiracı yöneticisi LUO 'da oturum açar ve bir onay akışı açılır iletişim kutusu görür. Bu, yöneticinin kullanıcı için izin vermesi gereken iletişim kutusu budur. Yönetici izni kabul ettiğinde, Kullanıcı LUO ile devam edebilir. Kiracı Yöneticisi LUO 'da oturum açamayacak, yönetici, aşağıdaki ekran görüntüsünde gösterilen Lua 'ya erişim [izni](https://account.activedirectory.windowsazure.com/r#/applications) verebilir. Listenin adı içeren öğelere filtrelendiğine dikkat edin `LUIS` .
-
-![Uygulama Web sitesi tarafından Azure Active Directory izni](./media/luis-how-to-collaborate/tenant-permissions.png)
+* İkincisi, kiracı yöneticisi LUO 'da oturum açar ve bir onay akışı açılır iletişim kutusu görür. Bu, yöneticinin kullanıcı için izin vermesi gereken iletişim kutusu budur. Yönetici izni kabul ettiğinde, Kullanıcı LUO ile devam edebilir. Kiracı Yöneticisi LUO 'da oturum açamayacak, yönetici LUSıS 'e [izin](https://account.activedirectory.windowsazure.com/r#/applications) verebilir. Bu sayfada, listeyi adı içeren öğelere filtreleyebilirsiniz `LUIS` .
 
 Kiracı Yöneticisi yalnızca belirli kullanıcıların LUSıS kullanmasını istiyorsa, olası birçok çözüm vardır:
 * "Yönetici onayı" (Azure AD 'nin tüm kullanıcılarına onay) verme, ancak ardından kurumsal uygulama özellikleri altında "Kullanıcı Ataması gerekli" olarak ayarlanır ve son olarak yalnızca istenen kullanıcıları uygulamaya atayın/ekleyin. Bu yöntemde, yönetici uygulamaya "yönetici onayı" sağlamaya devam eder, ancak buna erişebilen kullanıcıları denetlemek mümkündür.

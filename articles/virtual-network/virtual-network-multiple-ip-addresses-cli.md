@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: allensu
-ms.openlocfilehash: a1d94166c6c56a3652dc0ad532bd481c6e792c52
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 0b5e8f28be9960a2bb4e1406a293ab5e03962681
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217099"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680578"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Azure CLı kullanarak sanal makinelere birden çok IP adresi atama
 
@@ -38,7 +38,7 @@ Aşağıdaki adımlarda, senaryoda açıklandığı gibi birden çok IP adresi i
 3. Komut kabuğundan komutuyla oturum açın `az login` ve kullanmakta olduğunuz aboneliği seçin.
 4. Bir Linux veya Mac bilgisayarda aşağıdaki betiği yürüterek VM 'yi oluşturun. Betik bir kaynak grubu, bir sanal ağ (VNet), üç IP yapılandırmasına sahip bir NIC ve kendisine bağlı iki NIC içeren bir VM oluşturur. NIC, genel IP adresi, sanal ağ ve VM kaynaklarının hepsi aynı konum ve abonelikte bulunmalıdır. Kaynakların tümünün aynı kaynak grubunda mevcut olması gerekmese de, aşağıdaki betikte.
 
-```bash
+```azurecli
     
 #!/bin/sh
     
