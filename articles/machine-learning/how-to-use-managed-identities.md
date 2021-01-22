@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 3490e3004e5f5dd99795967f0deb8510200fa50b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b0b0c43039648737b229edc79dd4e0a3dc45f38e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311038"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683349"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Azure Machine Learning ile yönetilen kimlikler kullanma (Önizleme)
 
@@ -38,7 +38,7 @@ Bu makalede, yönetilen kimliklerin nasıl kullanılacağını şu şekilde öğ
 - Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 - [Machine Learning hizmeti Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md)
 - [Python SDK Azure Machine Learning](/python/api/overview/azure/ml/intro?view=azure-ml-py).
-- Rol atamak için, Azure aboneliğiniz için oturum açma, [yönetilen kimlik operatörü](../role-based-access-control/built-in-roles.md#managed-identity-operator) rolüne veya gerekli eylemlere (örneğin, __sahip__ ) izin veren başka bir role sahip olmalıdır.
+- Rol atamak için, Azure aboneliğiniz için oturum açma, [yönetilen kimlik operatörü](../role-based-access-control/built-in-roles.md#managed-identity-operator) rolüne veya gerekli eylemlere (örneğin, __sahip__) izin veren başka bir role sahip olmalıdır.
 - [Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md)oluşturma ve bunlarla çalışma konusunda bilgi sahibi olmanız gerekir.
 
 ## <a name="configure-managed-identities"></a>Yönetilen kimlikleri yapılandırma
@@ -59,7 +59,7 @@ ACR yönetici kullanıcısına abonelik ilkesi tarafından izin verilmedikçe, �
 Bağımsız değişken ayarlamadan [Azure CLI 'dan](../container-registry/container-registry-get-started-azure-cli.md) ```--admin-enabled``` veya yönetici kullanıcı etkinleştirilmeden Azure Portal 'Ten ACR oluşturun. Sonra, Azure Machine Learning çalışma alanı oluştururken ACR 'nin Azure Kaynak KIMLIĞINI belirtin. Aşağıdaki örnek, var olan bir ACR kullanan yeni bir Azure ML çalışma alanı oluşturmayı göstermektedir:
 
 > [!TIP]
-> Parametresinin değerini almak için `--container-registry` [az ACR Show](/cli/azure/acr?view=azure-cli-latest#az_acr_show) komutunu kullanarak ACR 'nizin bilgilerini görüntüleyin. `id`Alanı ACR 'nizin kaynak kimliğini içerir.
+> Parametresinin değerini almak için `--container-registry` [az ACR Show](/cli/azure/acr#az_acr_show) komutunu kullanarak ACR 'nizin bilgilerini görüntüleyin. `id`Alanı ACR 'nizin kaynak kimliğini içerir.
 
 ```azurecli-interactive
 az ml workspace create -w <workspace name> \
@@ -90,7 +90,7 @@ Kendi ACR 'nizi getirmeyin, tek yapmanız gereken bir işlem gerçekleştirdiği
 
     Bu komut, aşağıdaki metne benzer bir değer döndürür. Metnin yalnızca, ACR örnek adı olan son kısmını istersiniz:
 
-    ```text
+    ```output
     /subscriptions/<subscription id>/resourceGroups/<my resource group>/providers/MicrosoftContainerReggistry/registries/<ACR instance name>
     ```
 
@@ -173,7 +173,7 @@ env.python.user_managed_dependencies = True
 
 Bu senaryoda Azure Machine Learning hizmeti, özel bir ACR 'den sağladığınız temel görüntünün üzerinde eğitim veya çıkarım ortamı oluşturur. Görüntü oluşturma görevi ACR görevlerini kullanarak çalışma alanında ACR görevlerini yaptığından, erişime izin vermek için ek adımlar gerçekleştirmeniz gerekir.
 
-1. __Kullanıcı tarafından atanan yönetilen kimlik__ oluşturun ve kimliği __özel ACR__ 'ye erişim izni verin.  
+1. __Kullanıcı tarafından atanan yönetilen kimlik__ oluşturun ve kimliği __özel ACR__'ye erişim izni verin.  
 1. Çalışma alanına __sistem tarafından atanan yönetilen kimliğe__ , önceki adımdan __Kullanıcı tarafından atanan yönetilen__ kimlik Için yönetilen bir kimlik operatörü rolü verin. Bu rol, çalışma alanının yönetilen ortamı oluşturmak için Kullanıcı tarafından atanan yönetilen kimliği ACR görevine atamasını sağlar. 
 
     1. Çalışma alanı sistem tarafından atanan yönetilen kimliğin asıl KIMLIĞINI edinin:

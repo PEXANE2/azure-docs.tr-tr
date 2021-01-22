@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: c39104912c99b199d38cf489bb61d64e83b89286
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 3b647a02731a4fa404aab4bb648853eea766d92e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895605"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684081"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>Etkileşimli olmayan oturum açma ile tek sayfalı bir uygulamanın güvenliğini sağlama
 
@@ -30,7 +30,7 @@ Aşağıdaki kılavuz, Kullanıcı Azure AD 'de oturum açarken Azure Maps uygul
 
 Azure AD 'den kimlik doğrulamasından sorumlu bir güvenli Web hizmeti uygulaması oluşturun. 
 
-1. Azure portal bir işlev oluşturun. Daha fazla bilgi için bkz. [Azure Işlevi oluşturma](../azure-functions/functions-create-first-azure-function.md).
+1. Azure portal bir işlev oluşturun. Daha fazla bilgi için bkz. [Azure Işlevi oluşturma](../azure-functions/functions-get-started.md).
 
 2. Azure işlevindeki CORS ilkesini tek sayfalı Web uygulaması tarafından erişilebilir olacak şekilde yapılandırın. Bu, tarayıcı istemcilerinin Web uygulamanızın izin verilen kaynaklarına güvenmemesini sağlar. Bkz. [CORS Işlevselliği ekleme](../app-service/app-service-web-tutorial-rest-api.md#add-cors-functionality).
 
@@ -102,14 +102,14 @@ Azure AD 'den kimlik doğrulamasından sorumlu bir güvenli Web hizmeti uygulama
 
 ## <a name="grant-role-based-access"></a>Rol tabanlı erişim verme
 
-Sistem tarafından atanan kimliği bir veya daha fazla Azure rol tanımına atayarak *Azure rol tabanlı erişim denetimi (Azure RBAC)* erişimi verirsiniz. Azure haritalar için kullanılabilen Azure rol tanımlarını görüntülemek için **erişim denetimi 'ne (IAM)** gidin. **Roller** ' i seçin ve ardından *Azure Maps* ile başlayan roller için arama yapın.
+Sistem tarafından atanan kimliği bir veya daha fazla Azure rol tanımına atayarak *Azure rol tabanlı erişim denetimi (Azure RBAC)* erişimi verirsiniz. Azure haritalar için kullanılabilen Azure rol tanımlarını görüntülemek için **erişim denetimi 'ne (IAM)** gidin. **Roller**' i seçin ve ardından *Azure Maps* ile başlayan roller için arama yapın.
 
 1. **Azure haritalar hesabınıza** gidin. **Erişim denetimi (IAM)**  >  **rol atamasını** seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Azure RBAC kullanarak erişim verme](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. **Rol atamaları** sekmesinde, **rol** altında **Azure Maps veri okuyucusu** veya **Azure haritalar veri katılımcısı** gibi yerleşik bir Azure Maps rol tanımı seçin. **Erişim ata** altında **işlev uygulaması** ' yi seçin. Asıl ada göre ' yi seçin. Sonra **Kaydet** 'i seçin.
+2. **Rol atamaları** sekmesinde, **rol** altında **Azure Maps veri okuyucusu** veya **Azure haritalar veri katılımcısı** gibi yerleşik bir Azure Maps rol tanımı seçin. **Erişim ata** altında **işlev uygulaması**' yi seçin. Asıl ada göre ' yi seçin. Sonra **Kaydet**'i seçin.
 
    * [Rol atamaları ekleme veya kaldırma](../role-based-access-control/role-assignments-portal.md)ile ilgili ayrıntılara bakın.
 

@@ -14,12 +14,12 @@ ms.service: azure
 ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
-ms.openlocfilehash: 65d8ade438228d7af71de1fc66639e5b6de2edda
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 735c0955a25a3995c94c73bd6471643ce2783df3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040792"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682622"
 ---
 # <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>Azure 'da bir özetleme Cloud Foundry kümesi oluşturma
 
@@ -42,11 +42,13 @@ Daha fazla bilgi için bkz. [Azure 'Da Windows Ile SSH anahtarlarını kullanma]
 
 > [!NOTE]
 >
-> Hizmet sorumlusu oluşturmak için, sahip hesabı izninizin olması gerekir. Ayrıca hizmet sorumlusu oluşturmayı otomatikleştirmek için bir betik yazabilirsiniz. Örneğin, Azure CLı [az ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest)' i kullanabilirsiniz.
+> Hizmet sorumlusu oluşturmak için, sahip hesabı izninizin olması gerekir. Ayrıca hizmet sorumlusu oluşturmayı otomatikleştirmek için bir betik yazabilirsiniz. Örneğin, Azure CLı [az ad SP Create-for-RBAC](/cli/azure/ad/sp)' i kullanabilirsiniz.
 
 1. Azure hesabınızda oturum açın.
 
-    `az login`
+    ```azurecli
+    az login
+    ```
 
     ![Azure CLı oturum açma](media/deploy/az-login-output.png )
  
@@ -54,11 +56,15 @@ Daha fazla bilgi için bkz. [Azure 'Da Windows Ile SSH anahtarlarını kullanma]
 
 2. Bu yapılandırma için varsayılan aboneliğinizi ayarlayın.
 
-    `az account set -s {id}`
+    ```azurecli
+    az account set -s {id}
+    ```
 
 3. PCF 'niz için bir Azure Active Directory uygulaması oluşturun. Benzersiz bir alfasayısal parola belirtin. Daha sonra kullanmak için parolayı **ClientSecret** olarak depolayın.
 
-    `az ad app create --display-name "Svc Principal for OpsManager" --password {enter-your-password} --homepage "{enter-your-homepage}" --identifier-uris {enter-your-homepage}`
+    ```azurecli
+    az ad app create --display-name "Svc Principal for OpsManager" --password {enter-your-password} --homepage "{enter-your-homepage}" --identifier-uris {enter-your-homepage}
+    ```
 
     Çıkışta "AppID" değerini, daha sonra kullanmak üzere **ClientID** 'niz olarak kopyalayın.
 
@@ -68,23 +74,31 @@ Daha fazla bilgi için bkz. [Azure 'Da Windows Ile SSH anahtarlarını kullanma]
 
 4. Yeni uygulama KIMLIĞINIZLE bir hizmet sorumlusu oluşturun.
 
-    `az ad sp create --id {appId}`
+    ```azurecli
+    az ad sp create --id {appId}
+    ```
 
 5. Hizmet sorumlunuzun izin rolünü Katkıda bulunan olarak belirleyin.
 
-    `az role assignment create --assignee "{enter-your-homepage}" --role "Contributor"`
+    ```azurecli
+    az role assignment create --assignee "{enter-your-homepage}" --role "Contributor"
+    ```
 
     Ya da kullanabilirsiniz
 
-    `az role assignment create --assignee {service-principal-name} --role "Contributor"`
+    ```azurecli
+    az role assignment create --assignee {service-principal-name} --role "Contributor"
+    ```
 
     ![Hizmet sorumlusu rol ataması](media/deploy/svc-princ.png )
 
 6. Uygulama KIMLIĞI, parola ve kiracı KIMLIĞINI kullanarak hizmet sorumlusunda başarıyla oturum açabildiğinizi doğrulayın.
 
-    `az login --service-principal -u {appId} -p {your-password}  --tenant {tenantId}`
+    ```azurecli
+    az login --service-principal -u {appId} -p {your-password}  --tenant {tenantId}
+    ```
 
-7. Aşağıdaki biçimde bir. JSON dosyası oluşturun. Daha önce kopyaladığınız **ABONELIK kimliği** , **tenantıd** , **ClientID** ve **ClientSecret** değerlerini kullanın. Dosyayı kaydedin.
+7. Aşağıdaki biçimde bir. JSON dosyası oluşturun. Daha önce kopyaladığınız **ABONELIK kimliği**, **tenantıd**, **ClientID** ve **ClientSecret** değerlerini kullanın. Dosyayı kaydedin.
 
     ```json
     {
@@ -98,7 +112,7 @@ Daha fazla bilgi için bkz. [Azure 'Da Windows Ile SSH anahtarlarını kullanma]
 ## <a name="get-the-pivotal-network-token"></a>Özetleme ağ belirtecini al
 
 1. Özet [ağ](https://network.pivotal.io) hesabınızda kaydolun veya oturum açın.
-2. Sayfanın sağ üst köşesinde profil adınızı seçin. **Profili Düzenle** ' yi seçin.
+2. Sayfanın sağ üst köşesinde profil adınızı seçin. **Profili Düzenle**' yi seçin.
 3. Sayfanın alt kısmına ilerleyin ve **eskı API belirteci** değerini kopyalayın. Bu değer, daha sonra kullandığınız **özetleme ağ belirteci** değeridir.
 
 ## <a name="provision-your-cloud-foundry-cluster-on-azure"></a>Azure 'da Cloud Foundry kümenizi sağlama

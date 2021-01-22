@@ -11,12 +11,12 @@ ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019, azure-synapse
-ms.openlocfilehash: 95158193a978702392106c8aa3347de211fd1a3e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 6750f010e3992a2b76cc688449ad44efa7ec76d0
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98115455"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683282"
 ---
 # <a name="create-table-as-select-ctas"></a>SELECT OLARAK CREATE TABLE (CTAS)
 
@@ -24,11 +24,11 @@ Bu makalede, çözümleri geliştirmek için SYNAPSE SQL 'de SELECT (CTAS) T-SQL
 
 ## <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
 
-[Select as Select](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (CTAS) bildirisi, kullanılabilen en önemli T-SQL özelliklerinden biridir. Create Table CTAS, SELECT ifadesinin çıktısına göre yeni bir tablo oluşturan paralel bir işlemdir. CTAS, tek bir komutla bir tabloya veri oluşturup eklemenin en basit ve en hızlı yoludur.
+[Select as Select](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (CTAS) bildirisi, kullanılabilen en önemli T-SQL özelliklerinden biridir. Create Table CTAS, SELECT ifadesinin çıktısına göre yeni bir tablo oluşturan paralel bir işlemdir. CTAS, tek bir komutla bir tabloya veri oluşturup eklemenin en basit ve en hızlı yoludur.
 
 ## <a name="selectinto-vs-ctas"></a>Seç... Vs. CTAS 'A
 
-CTAS, Select... öğesinin daha özelleştirilebilir bir sürümüdür [. INTO](/sql/t-sql/queries/select-into-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) bildirisi.
+CTAS, Select... öğesinin daha özelleştirilebilir bir sürümüdür [. INTO](/sql/t-sql/queries/select-into-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) bildirisi.
 
 Aşağıda basit bir seçme örneği verilmiştir... BIRLEŞTIRIN
 
@@ -379,7 +379,7 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 
 Tür tutarlılığı ve bir CTAS üzerinde null değer alabilme özelliklerinin sürdürülmesi, mühendisliğin en iyi yöntemidir. Hesaplamalarınızda tutarlılığın sağlanmasına yardımcı olur ve ayrıca bölüm geçişinin mümkün olmasını sağlar.
 
-CTAS, SYNAPSE SQL 'deki en önemli ifadelerden biridir. Kapsamlı olarak anladığınızdan emin olun. Bkz. [CTAS belgeleri](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+CTAS, SYNAPSE SQL 'deki en önemli ifadelerden biridir. Kapsamlı olarak anladığınızdan emin olun. Bkz. [CTAS belgeleri](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

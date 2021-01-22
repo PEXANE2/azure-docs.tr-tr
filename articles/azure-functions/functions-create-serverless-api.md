@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: d683ef92c4e8d11e9defbed5454e5849211bf8f7
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 7375a46245fbe523ddf0512bb5a55371adff64e9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104759"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683751"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>Azure Işlevlerinde bir HTTP uç noktasını özelleştirme
 
 Bu makalede, Azure Işlevlerinin yüksek düzeyde ölçeklenebilir API 'Ler oluşturmanıza nasıl izin verdiğini öğrenirsiniz. Azure Işlevleri, Node.js, C# ve daha fazlasını içeren çeşitli dillerde bir uç nokta yazmayı kolaylaştıran yerleşik HTTP Tetikleyicileri ve bağlamaları koleksiyonuyla birlikte gelir. Bu makalede, API tasarımınızda belirli eylemleri işlemek üzere bir HTTP tetikleyicisi özelleştireceksiniz. Ayrıca, Azure İşlev Proxy'leri ile tümleştirerek ve sahte API 'Ler ayarlayarak API 'nizi büyümeye hazırlarsınız. Bu görevler, Işlevlerin sunucusuz işlem ortamının üzerinde gerçekleştirilir. bu nedenle, kaynakları ölçeklendirmeniz gerekmez; API mantığınıza odaklanmanız yeterlidir.
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 [!INCLUDE [Previous quickstart note](../../includes/functions-quickstart-previous-topics.md)]
 
@@ -31,7 +31,7 @@ Azure hesabınızla [Azure portalında](https://portal.azure.com) oturum açın.
 
 Varsayılan olarak HTTP tetikleyici işleviniz herhangi bir HTTP yöntemini kabul edecek şekilde yapılandırılmıştır. Varsayılan URL 'yi de kullanabilirsiniz `http://<yourapp>.azurewebsites.net/api/<funcname>?code=<functionkey>` . Bu bölümde, yalnızca ile istekleri almak için Yanıtla işlevini değiştirirsiniz `/api/hello` . 
 
-1. Azure portalda işlevinize gidin. Sol menüden **tümleştirme** ' i seçin ve ardından **tetikleyici**altında **http (req)** öğesini seçin.
+1. Azure portalda işlevinize gidin. Sol menüden **tümleştirme** ' i seçin ve ardından **tetikleyici** altında **http (req)** öğesini seçin.
 
     :::image type="content" source="./media/functions-create-serverless-api/customizing-http.png" alt-text="HTTP işlevini özelleştirme":::
 
@@ -86,11 +86,11 @@ Bu bölümde, genel API 'niz için ön uç görevi gören yeni bir ara sunucu ol
 
 ### <a name="setting-up-the-frontend-environment"></a>Ön uç ortamını ayarlama
 
-Proxy'nizi oluşturacağınız yeni bir işlev uygulaması oluşturmak için [İşlev uygulaması oluşturma](./functions-create-first-azure-function.md#create-a-function-app) bölümündeki adımları tekrarlayın. Bu yeni uygulamanın URL 'SI API 'imiz için ön uç işlevi görür ve daha önce düzenlediğiniz işlev uygulaması arka uç görevi görür.
+Proxy'nizi oluşturacağınız yeni bir işlev uygulaması oluşturmak için [İşlev uygulaması oluşturma](./functions-get-started.md) bölümündeki adımları tekrarlayın. Bu yeni uygulamanın URL 'SI API 'imiz için ön uç işlevi görür ve daha önce düzenlediğiniz işlev uygulaması arka uç görevi görür.
 
 1. Portalda yeni ön uç işlev uygulamanıza gidin.
 1. **Platform Özellikleri**'ni ve **Uygulama Ayarları**'nı seçin.
-1. Anahtar/değer çiftlerinin depolandığı **uygulama ayarlarına**aşağı kaydırın ve anahtarla yeni bir ayar oluşturun `HELLO_HOST` . Değerini arka uç işlev uygulamanızın ana bilgisayarı olacak şekilde ayarların, örneğin: `<YourBackendApp>.azurewebsites.net`. Bu değer, HTTP işlevinizi sınarken daha önce kopyaladığınız URL 'nin bir parçasıdır. Bu ayarı yapılandırmanın ilerleyen bölümlerinde kullanacaksınız.
+1. Anahtar/değer çiftlerinin depolandığı **uygulama ayarlarına** aşağı kaydırın ve anahtarla yeni bir ayar oluşturun `HELLO_HOST` . Değerini arka uç işlev uygulamanızın ana bilgisayarı olacak şekilde ayarların, örneğin: `<YourBackendApp>.azurewebsites.net`. Bu değer, HTTP işlevinizi sınarken daha önce kopyaladığınız URL 'nin bir parçasıdır. Bu ayarı yapılandırmanın ilerleyen bölümlerinde kullanacaksınız.
 
     > [!NOTE] 
     > Proxy için sabit olarak yazılmış ortam bağımlılığı oluşmasını önleme amacıyla ana bilgisayar yapılandırması için uygulama ayarlarının kullanılması önerilir. Uygulama ayarlarını kullanarak proxy yapılandırmasını birden fazla ortamda kullanabilirsiniz ve bu durumda ortama özgü uygulama ayarları geçerli olur.
@@ -112,7 +112,7 @@ Proxy'nizi oluşturacağınız yeni bir işlev uygulaması oluşturmak için [İ
     | Arka uç URL'si | https://%HELLO_HOST%/api/hello | İsteğe proxy uygulanacak uç noktayı belirtir |
 
     
-    :::image type="content" source="./media/functions-create-serverless-api/creating-proxy.png" alt-text="HTTP işlevini özelleştirme":::
+    :::image type="content" source="./media/functions-create-serverless-api/creating-proxy.png" alt-text="Proxy oluşturma":::
 
     Azure İşlev Proxy'leri `/api` , yol şablonuna dahil olması gereken temel yol önekini sağlamaz. `%HELLO_HOST%`Sözdizimi, daha önce oluşturduğunuz uygulama ayarına başvurur. Çözümlenen URL, özgün işlevinize işaret edecektir.
 
@@ -124,7 +124,7 @@ Proxy'nizi oluşturacağınız yeni bir işlev uygulaması oluşturmak için [İ
 
 Daha sonra, çözümünüz için bir sahte API oluşturmak üzere bir ara sunucu kullanacaksınız. Bu proxy, arka uç tam olarak uygulanmış olması gerekmeden istemci geliştirmenin ilerlemesini sağlar. Daha sonra geliştirmede, bu mantığı destekleyen ve proxy 'nizi buna yönlendiren yeni bir işlev uygulaması oluşturabilirsiniz.
 
-Bu sahte API 'yi oluşturmak için, bu kez [App Service Düzenleyicisi](https://github.com/projectkudu/kudu/wiki/App-Service-Editor)kullanarak yeni bir ara sunucu oluşturacağız. Başlamak için portalda işlev uygulamanıza gidin. **Platform özellikleri**' ni seçin ve **geliştirme araçları** altında **App Service Düzenleyicisi**bulun. App Service Düzenleyicisi yeni bir sekmede açılır.
+Bu sahte API 'yi oluşturmak için, bu kez [App Service Düzenleyicisi](https://github.com/projectkudu/kudu/wiki/App-Service-Editor)kullanarak yeni bir ara sunucu oluşturacağız. Başlamak için portalda işlev uygulamanıza gidin. **Platform özellikleri**' ni seçin ve **geliştirme araçları** altında **App Service Düzenleyicisi** bulun. App Service Düzenleyicisi yeni bir sekmede açılır.
 
 Sol gezinti bölmesinden `proxies.json` öğesini seçin. Bu dosya, tüm proxy 'lerinizin yapılandırmasını depolar. [İşlevlerden birini dağıtım yöntemlerinden](./functions-continuous-deployment.md)birini kullanırsanız, bu dosyayı kaynak denetiminde koruursunuz. Bu dosya hakkında daha fazla bilgi için bkz. [Gelişmiş proxy yapılandırması](./functions-proxies.md#advanced-configuration).
 
@@ -195,5 +195,5 @@ API'nizi geliştirirken aşağıdaki konulara da başvurabilirsiniz:
 - [Azure İşlevleri API'sini belgeleme (önizleme)](./functions-openapi-definition.md)
 
 
-[Create your first function]: ./functions-create-first-azure-function.md
+[Create your first function]: ./functions-get-started.md
 [Azure İşlev Proxy'leri ile çalışma]: ./functions-proxies.md

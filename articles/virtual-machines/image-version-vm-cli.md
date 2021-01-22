@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fa4a649115f8e89c27f435888b682b7de36e9894
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8aa2623722b5e75480e68324d76e4a1493501df
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87533929"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685149"
 ---
 # <a name="create-an-image-version-from-a-vm-in-azure-using-the-azure-cli"></a>Azure CLı kullanarak Azure 'daki bir VM 'den görüntü sürümü oluşturma
 
@@ -57,11 +57,11 @@ Görüntü tanımı adları büyük veya küçük harflerden, rakamlardan, nokta
 
 Görüntü tanımınızın doğru türde olduğundan emin olun. VM 'yi genelleştirdiğinizde (Windows için Sysprep veya Linux için waagent-deprovision), kullanarak genelleştirilmiş bir görüntü tanımı oluşturmanız gerekir `--os-state generalized` . VM 'yi mevcut kullanıcı hesaplarını kaldırmadan kullanmak istiyorsanız, kullanarak özel bir görüntü tanımı oluşturun `--os-state specialized` .
 
-Bir görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla bilgi için bkz. [görüntü tanımları](./linux/shared-image-galleries.md#image-definitions).
+Bir görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla bilgi için bkz. [görüntü tanımları](./shared-image-galleries.md#image-definitions).
 
 Galeride [az Sig Image-Definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create)kullanarak bir görüntü tanımı oluşturun.
 
-Bu örnekte, görüntü tanımı *Myımagedefinition*olarak adlandırılır ve [özelleştirilmiş](./linux/shared-image-galleries.md#generalized-and-specialized-images) bir Linux işletim sistemi görüntüsü içindir. Windows işletim sistemi kullanan görüntülerin tanımını oluşturmak için kullanın `--os-type Windows` . 
+Bu örnekte, görüntü tanımı *Myımagedefinition* olarak adlandırılır ve [özelleştirilmiş](./shared-image-galleries.md#generalized-and-specialized-images) bir Linux işletim sistemi görüntüsü içindir. Windows işletim sistemi kullanan görüntülerin tanımını oluşturmak için kullanın `--os-type Windows` . 
 
 ```azurecli-interactive 
 az sig image-definition create \

@@ -4,16 +4,19 @@ description: Bu makale, işlem işleme ve Azure Service Bus aracılığıyla gö
 ms.topic: article
 ms.date: 10/28/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9162b8578fe4f48cc3740b38d9d84ffaa2f260de
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9a95a200b57d348109884a319b5433f0ffd5dde1
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023610"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684800"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Service Bus işlem işlemeye genel bakış
 
 Bu makale Microsoft Azure Service Bus işlem yeteneklerini açıklamaktadır. Tartışmanın çoğu [Service Bus örnekle AMQP işlemlerine](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia)göre gösterilmiştir. Bu makale, işlem işleme ve Service Bus *aracılığıyla gönderme* özelliği hakkında genel bir bakış ile sınırlıdır, ancak Atomik işlemler örneği kapsamda daha geniş ve daha karmaşıktır.
+
+> [!NOTE]
+> Service Bus temel katmanı işlemleri desteklemez. Standart ve Premium katmanlar işlemleri destekler. Bu katmanlar arasındaki farklar için bkz. [Service Bus fiyatlandırması](https://azure.microsoft.com/pricing/details/service-bus/).
 
 ## <a name="transactions-in-service-bus"></a>Service Bus işlemler
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 43625a80df76ff35b8bb1804df5f5fd1524326c5
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ba66013e37c196c58291a6bcd979be7fb5fa0130
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097541"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684585"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Azure Cosmos DB çevrimiçi yedekleme ve isteğe bağlı veri yükleme
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -52,15 +52,15 @@ Mevcut bir Azure Cosmos hesabının varsayılan yedekleme seçeneklerini değiş
 
    * **Korunan verilerin kopyaları** -varsayılan olarak, verilerinizin iki yedek kopyası ücretsiz olarak sunulur. İkiden fazla kopyaya ihtiyacınız varsa ek bir ücret vardır. Ek kopyaların tam fiyatını öğrenmek için [Fiyatlandırma sayfasındaki](https://azure.microsoft.com/pricing/details/cosmos-db/) Kullanılan Depolama bölümüne bakın.
 
-   :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="GRS Azure depolama alanındaki tüm Cosmos DB varlıkların düzenli aralıklarla tam yedeklemeleri" border="true":::
+   :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="Mevcut bir Azure Cosmos hesabı için yedekleme aralığını ve bekletmeyi yapılandırın" border="true":::
 
 Hesap oluşturma sırasında yedekleme seçeneklerini yapılandırırsanız, her bir **düzenli** veya **sürekli** olan **yedekleme ilkesini** yapılandırabilirsiniz. Düzenli ilke, yedekleme aralığını ve yedekleme saklama süresini yapılandırmanıza olanak tanır. Sürekli ilke şu anda yalnızca kaydolma tarafından kullanılabilir. Azure Cosmos DB ekibi, iş yükünüzü değerlendirecek ve isteğinizi onaylacaktır.
 
-:::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="GRS Azure depolama alanındaki tüm Cosmos DB varlıkların düzenli aralıklarla tam yedeklemeleri" border="true":::
+:::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="Yeni Azure Cosmos hesapları için dönemsel veya sürekli yedekleme ilkesini yapılandırma" border="true":::
 
 ## <a name="request-data-restore-from-a-backup"></a>Yedekten veri geri yükleme isteği
 
-Veritabanınızı veya bir kapsayıcıyı yanlışlıkla silerseniz, verileri otomatik çevrimiçi yedeklemelerden geri yüklemek için [bir destek bileti dosyası](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) veya [Azure desteği çağırabilirsiniz](https://azure.microsoft.com/support/options/) . Azure desteği, yalnızca **Standart** , **Geliştirici** ve planlardan daha yüksek planlar gibi seçili planlar için kullanılabilir. Azure desteği, **temel** plan ile kullanılamaz. Farklı destek planları hakkında bilgi edinmek için bkz. [Azure destek planları](https://azure.microsoft.com/support/plans/) sayfası.
+Veritabanınızı veya bir kapsayıcıyı yanlışlıkla silerseniz, verileri otomatik çevrimiçi yedeklemelerden geri yüklemek için [bir destek bileti dosyası](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) veya [Azure desteği çağırabilirsiniz](https://azure.microsoft.com/support/options/) . Azure desteği, yalnızca **Standart**, **Geliştirici** ve planlardan daha yüksek planlar gibi seçili planlar için kullanılabilir. Azure desteği, **temel** plan ile kullanılamaz. Farklı destek planları hakkında bilgi edinmek için bkz. [Azure destek planları](https://azure.microsoft.com/support/plans/) sayfası.
 
 Yedeklemenin belirli bir anlık görüntüsünü geri yüklemek için Azure Cosmos DB, verilerin söz konusu anlık görüntüye ait yedekleme döngüsünün süresi boyunca kullanılabilir olmasını gerektirir.
 Geri yükleme isteğinde bulunulmadan önce aşağıdaki ayrıntılara sahip olmanız gerekir:
@@ -81,7 +81,7 @@ Azure Cosmos hesap adına, veritabanı adlarına, kapsayıcı adlarına ek olara
 
 Aşağıdaki ekran görüntüsünde, Azure portal kullanarak verileri geri yüklemek için bir kapsayıcı (koleksiyon/grafik/tablo) için bir destek isteği oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir. İsteğin önceliklendirmemize yardımcı olması için veri türü, geri yükleme amacı, verilerin silindiği zaman gibi ek ayrıntılar sağlayın.
 
-:::image type="content" source="./media/online-backup-and-restore/backup-support-request-portal.png" alt-text="GRS Azure depolama alanındaki tüm Cosmos DB varlıkların düzenli aralıklarla tam yedeklemeleri":::
+:::image type="content" source="./media/online-backup-and-restore/backup-support-request-portal.png" alt-text="Azure portal kullanarak bir yedekleme destek isteği oluşturun":::
 
 ## <a name="considerations-for-restoring-the-data-from-a-backup"></a>Verileri bir yedekten geri yükleme konuları
 
@@ -115,6 +115,13 @@ Verilerinizi yanlışlıkla silmiş veya bozdıysanız, Azure Cosmos DB ekibin v
 
 Veritabanı düzeyinde üretilen iş sağlamak istiyorsanız, bu durumda yedekleme ve geri yükleme işlemi, tek tek kapsayıcılar düzeyinde değil, tüm veritabanı düzeyinde gerçekleşir. Bu gibi durumlarda, geri yüklenecek kapsayıcıların bir alt kümesini seçemezsiniz.
 
+## <a name="required-permissions-to-change-retention-or-restore-from-the-portal"></a>Portaldan saklama veya geri yükleme yapmak için gerekli izinler
+[Cosmosdbbackupoperator](../role-based-access-control/built-in-roles.md#cosmosbackupoperator), Owner veya katkıda bulunan rolünün bir parçası olan sorumlular geri yükleme istemesine veya saklama süresini değiştirmesine izin verilir.
+
+## <a name="understanding-costs-of-extra-backups"></a>Ekstra yedeklemelerin maliyetlerini anlama
+2 yedek sağlanır ve ek yedeklemeler, [Yedekleme Depolama fiyatlandırması](https://azure.microsoft.com/en-us/pricing/details/cosmos-db/)bölümünde açıklanan yedekleme depolaması için bölge tabanlı fiyatlandırmaya göre ücretlendirilir. Örneğin, yedekleme bekletme 240 saat, 10 gün ve yedekleme aralığı 24 saat olarak yapılandırılmışsa. Bu, yedekleme verilerinin 10 kopyasını gerektirir. Batı ABD 2 1 TB veri varsayıldığında, belirli bir ayda yedekleme depolaması için 1000 * 0,12 ~ $120 olur. 
+
+
 ## <a name="options-to-manage-your-own-backups"></a>Kendi yedeklemelerinizi yönetme seçenekleri
 
 SQL API hesaplarıyla Azure Cosmos DB, aşağıdaki yaklaşımlardan birini kullanarak kendi yedeklemelerinizi de koruyabilirsiniz:
@@ -147,4 +154,3 @@ Daha sonra, verileri bir Azure Cosmos hesabından geri yükleme veya Azure Cosmo
 * Geri yükleme isteği oluşturmak için Azure desteğine başvurun, [Azure Portal bir bilet](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) oluşturun
 * Verileri Azure Cosmos DB taşımak için [Cosmos DB değişiklik akışını kullanın](change-feed.md) .
 * Verileri Azure Cosmos DB taşımak için [Azure Data Factory kullanın](../data-factory/connector-azure-cosmos-db.md) .
-

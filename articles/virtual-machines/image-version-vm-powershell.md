@@ -9,18 +9,18 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 1a0bfb79b03b778696faef29597cabbcff47e6df
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: a7b8cb10f75d7a99198ddfdc1a1bbef3c34a03da
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601672"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685115"
 ---
 # <a name="create-an-image-from-a-vm"></a>VM’den görüntü oluşturma
 
 Birden çok, özdeş VM oluşturmak için kullanmak istediğiniz mevcut bir VM varsa, Azure PowerShell kullanarak paylaşılan görüntü galerisinde görüntü oluşturmak için bu VM 'yi kullanabilirsiniz. Ayrıca, [Azure CLI](image-version-vm-cli.md)kullanarak bir VM 'den görüntü oluşturabilirsiniz.
 
-Azure PowerShell kullanarak, hem [özel hem de Genelleştirilmiş](./windows/shared-image-galleries.md#generalized-and-specialized-images) VM 'lerden bir görüntü yakalayabilirsiniz. 
+Azure PowerShell kullanarak, hem [özel hem de Genelleştirilmiş](./shared-image-galleries.md#generalized-and-specialized-images) VM 'lerden bir görüntü yakalayabilirsiniz. 
 
 Görüntü galerisindeki görüntülerin iki bileşeni vardır ve bu örnekte oluşturacağız:
 - **Görüntü tanımı** , görüntü ve kullanma gereksinimleri hakkında bilgi taşır. Bu, görüntünün Windows veya Linux, özelleştirilmiş veya Genelleştirilmiş, sürüm notları ve en düşük ve en yüksek bellek gereksinimlerini içerir. Bu, bir görüntü türünün tanımıdır. 
@@ -77,7 +77,7 @@ Görüntü tanımları görüntüler için bir mantıksal gruplama oluşturur. B
 
 Görüntü tanımınızı yaparken, doğru bilgilerin tümünün bulunduğundan emin olun. VM 'yi genelleştirdiğinizde (Windows için Sysprep veya Linux için waagent-deprovision), kullanarak bir görüntü tanımı oluşturmanız gerekir `-OsState generalized` . VM 'yi genelleştirmediyseniz, kullanarak bir görüntü tanımı oluşturun `-OsState specialized` .
 
-Bir görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla bilgi için bkz. [görüntü tanımları](./windows/shared-image-galleries.md#image-definitions).
+Bir görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla bilgi için bkz. [görüntü tanımları](./shared-image-galleries.md#image-definitions).
 
 [New-Azgallerımagedefinition](/powershell/module/az.compute/new-azgalleryimageversion)kullanarak görüntü tanımını oluşturun. 
 

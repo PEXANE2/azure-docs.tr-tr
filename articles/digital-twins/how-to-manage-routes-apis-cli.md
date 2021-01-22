@@ -7,18 +7,18 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 33b30f29146e446c5525b1bbcfd76af71c557702
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: fa699163fdf445624c918e714fda890a41a67f07
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045329"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682673"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Azure dijital TWINS 'te uç noktaları ve yolları yönetme (API 'Ler ve CLı)
 
 [!INCLUDE [digital-twins-route-selector.md](../../includes/digital-twins-route-selector.md)]
 
-Azure dijital TWINS 'de, [olay bildirimlerini](how-to-interpret-event-data.md) aşağı akış hizmetlerine veya bağlı işlem kaynaklarına yönlendirebilirsiniz. Bu, önce olayları alabilen **uç noktalar** ayarlanarak yapılır. Daha sonra, Azure dijital TWINS tarafından oluşturulan olayların hangi uç noktalara teslim edildiğini belirten  [**olay yolları**](concepts-route-events.md) oluşturabilirsiniz.
+Azure dijital TWINS 'de, [olay bildirimlerini](how-to-interpret-event-data.md) aşağı akış hizmetlerine veya bağlı işlem kaynaklarına yönlendirebilirsiniz. Bunu yapmak için öncelikle olayları alabilecek **uç noktaları** ayarlamanız gerekir. Daha sonra, Azure dijital TWINS tarafından oluşturulan olayların hangi uç noktalara teslim edildiğini belirten  [**olay yolları**](concepts-route-events.md) oluşturabilirsiniz.
 
 Bu makalede, [olay yolları API 'leri](/rest/api/digital-twins/dataplane/eventroutes), [.net (C#) SDK 'Sı](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)ve [Azure dijital TWINS CLI](how-to-use-cli.md)ile uç noktalar ve yollar oluşturma işlemi adım adım açıklanmaktadır.
 
@@ -26,10 +26,12 @@ Alternatif olarak, [Azure Portal](https://portal.azure.com)uç noktalarını ve 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Bir **Azure hesabınızın** olması gerekir ( [buradan](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)birini ücretsiz olarak ayarlayabilirsiniz)
-* Azure aboneliğinizde bir **Azure dijital TWINS örneği** gerekir. Zaten bir örneğiniz yoksa, [*nasıl yapılır: örnek ve kimlik doğrulaması ayarlama*](how-to-set-up-instance-cli.md)bölümündeki adımları kullanarak bir tane oluşturabilirsiniz. Bu makalede daha sonra kullanmak için kurulum 'un aşağıdaki değerlerini kullanın:
+- Bir **Azure hesabınızın** olması gerekir ( [buradan](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)birini ücretsiz olarak ayarlayabilirsiniz)
+- Azure aboneliğinizde bir **Azure dijital TWINS örneği** gerekir. Zaten bir örneğiniz yoksa, [*nasıl yapılır: örnek ve kimlik doğrulaması ayarlama*](how-to-set-up-instance-cli.md)bölümündeki adımları kullanarak bir tane oluşturabilirsiniz. Bu makalede daha sonra kullanmak için kurulum 'un aşağıdaki değerlerini kullanın:
     - Örnek adı
     - Kaynak grubu
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
     
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>Azure dijital TWINS için uç nokta oluşturma
 
@@ -44,7 +46,7 @@ Bir uç noktayı Azure dijital TWINS 'e bağlamak için, uç nokta için kullanm
 
 ### <a name="create-an-event-grid-endpoint"></a>Event Grid uç noktası oluşturma
 
-Aşağıdaki örnek, Azure CLı kullanarak olay Kılavuzu türü uç noktasının nasıl oluşturulacağını göstermektedir. [Azure Cloud Shell](https://shell.azure.com)KULLANABILIR veya [CLI 'yi yerel olarak yükleyebilirsiniz](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
+Aşağıdaki örnek, Azure CLı kullanarak olay Kılavuzu türü uç noktasının nasıl oluşturulacağını göstermektedir.
 
 İlk olarak, bir olay Kılavuzu konusu oluşturun. Aşağıdaki komutu kullanabilir veya *özel olay* hızlı başlangıcı Event Grid [ *özel konu oluştur* bölümünü](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) ziyaret ederek adımları daha ayrıntılı şekilde görüntüleyebilirsiniz.
 
@@ -185,7 +187,7 @@ Olay yolları [veri düzlemi API 'leri](how-to-use-apis-sdks.md#overview-data-pl
 Bir yol tanımı şu öğeleri içerebilir:
 * Kullanmak istediğiniz yol adı
 * Kullanmak istediğiniz uç noktanın adı
-* Uç noktaya hangi olayların gönderileceğini tanımlayan bir filtre 
+* Uç noktaya gönderilen olayları tanımlayan filtre 
 
 Yol adı yoksa, Azure dijital TWINS dışında hiçbir ileti yönlendirilmez. Bir yol adı varsa ve filtre ise `true` , tüm iletiler uç noktaya yönlendirilir. Bir yol adı varsa ve farklı bir filtre eklenirse, iletiler filtreye göre filtrelenecektir.
 

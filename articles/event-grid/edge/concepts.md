@@ -7,18 +7,18 @@ ms.author: vkukke
 ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
-ms.openlocfilehash: b3babfe93012fae15e79362ba34f3f48856bc833
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8314447e7d5d282eb428ec9316c4eef6844a7423
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86171746"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682388"
 ---
 # <a name="event-grid-concepts"></a>Event Grid kavramları
 
 Bu makalede Azure Event Grid temel kavramları açıklanmaktadır.
 
-## <a name="events"></a>Olaylar
+## <a name="events"></a>Ekinlikler
 
 Bir olay, sistemde gerçekleşen bir şeyi tam olarak açıklayan en düşük bilgi miktarıdır. Her olayda, olayın kaynağı, olayın gerçekleştiği süre ve benzersiz tanımlayıcı gibi yaygın bilgiler bulunur. Her olay, yalnızca belirli olay türüyle ilgili belirli bilgilere de sahiptir. 1 MB 'a kadar olan bir olay desteği şu anda önizleme aşamasındadır.
 
@@ -48,7 +48,7 @@ Event Grid abonelikleri yönetme hakkında [REST API](api.md) bakın.
 
 ## <a name="event-handlers"></a>Olay işleyicileri
 
-Bir Event Grid perspektifinden olay işleyicisi, olayın gönderildiği yerdir. İşleyici, olayı işlemek için daha fazla işlem gerçekleştirir. Event Grid çeşitli işleyici türlerini destekler. Desteklenen bir Azure hizmetini veya kendi web kancasını işleyici olarak kullanabilirsiniz. İşleyicinin türüne bağlı olarak, Event Grid olayın teslimini güvence altına almak için farklı mekanizmalardan oluşur. Hedef olay işleyicisi bir HTTP Web kancası ise, işleyici bir durum kodu döndürdüğünde olay yeniden denenir `200 – OK` . Edge hub 'ı için, olay herhangi bir özel durum olmadan teslim edildiğinde, başarılı olarak kabul edilir.
+Bir Event Grid perspektifinden olay işleyicisi, olayın gönderildiği yerdir. İşleyici, olayı işlemek için daha fazla işlem gerçekleştirir. Event Grid çeşitli işleyici türlerini destekler. Desteklenen bir Azure hizmetini veya kendi web kancasını işleyici olarak kullanabilirsiniz. İşleyicinin türüne bağlı olarak, Event Grid olayın teslimini güvence altına almak için farklı mekanizmalardan oluşur. Hedef olay işleyicisi bir HTTP Web kancası ise, işleyici bir durum kodu döndürene kadar olay yeniden denenir `200 – OK` . Edge hub 'ı için, olay herhangi bir özel durum olmadan teslim edildiğinde, başarılı olarak kabul edilir.
 
 ## <a name="security"></a>Güvenlik
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 4f68eba8106a20d357fe6d3fb2baac1d1661aa1e
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 8933dd6655223db092597aedf839fd800119864a
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660547"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684014"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Öğretici: uçtan uca bir çözüm oluşturma
 
@@ -117,49 +117,9 @@ Bu, NuGet Paket Yöneticisi 'Ni açar. *Güncelleştirmeler* sekmesini seçin ve
 
 ### <a name="publish-the-app"></a>Uygulamayı yayımlama
 
-_**AdtE2ESample**_ projesinin açık olduğu Visual Studio pencerenizi geri döndüğünüzde, *Çözüm Gezgini* bölmesinden _**samplefunctionsapp**_ proje dosyasını sağ seçin ve **Yayınla**' yı tıklayın.
+_**AdtE2ESample**_ projesinin açık olduğu Visual Studio penceresine geri döndüğünüzde, *Çözüm Gezgini* bölmesinde _**samplefunctionsapp**_ projesini bulun.
 
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-1.png" alt-text="Visual Studio: projeyi Yayımla":::
-
-Aşağıdaki *Yayımla* sayfasında, **Azure** varsayılan hedef seçimini bırakın ve *İleri*' yi ziyaret edin. 
-
-Belirli bir hedef için **Azure işlev uygulaması (Windows)** öğesini seçin ve *İleri*' yi tıklayın.
-
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-2.png" alt-text="Visual Studio 'da Azure işlevini yayımlama: belirli hedef":::
-
-*İşlevler örneği* sayfasında, aboneliğinizi seçin. Bu, aboneliğinizdeki *kaynak gruplarıyla* bir kutu doldurmalıdır.
-
-Örneğinizin kaynak grubunu seçin ve *+* Yeni bir Azure işlevi oluşturmak için isabet edin.
-
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-3.png" alt-text="Visual Studio 'da Azure işlevini yayımlama: Işlevler örneği (işlev uygulamasından önce)":::
-
-*İşlev uygulaması (Windows)-yeni oluştur* penceresinde, alanları aşağıdaki gibi girin:
-* **Ad** , Azure 'un Azure işlevleri uygulamanızı barındırmak için kullanacağı tüketim planının adıdır. Bu aynı zamanda gerçek işlevinizi tutan işlev uygulamasının adı olur. Kendi benzersiz bir değer seçebilir veya varsayılan öneriyi bırakabilirsiniz.
-* **Aboneliğin** kullanmak istediğiniz abonelikle eşleştiğinden emin olun 
-* **Kaynak** grubunun kullanmak istediğiniz kaynak grubuna emin olun
-* **Plan türünü** *Tüketim* olarak bırakın
-* Kaynak grubunuzun konumuyla eşleşen **konumu** seçin
-* *Yeni...* bağlantısını kullanarak yeni bir **Azure depolama** kaynağı oluşturun. Konumu kaynak grubunuza uyacak şekilde ayarlayın, diğer varsayılan değerleri kullanın ve "Tamam" düğmesine basın.
-
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-4.png" alt-text="Visual Studio 'da Azure işlevini yayımlama: İşlev Uygulaması (Windows)-yeni oluştur":::
-
-Ardından **Oluştur**’u seçin.
-
-Bu, yeni işlev uygulamanızın artık kaynak grubunuzun altında göründüğünden, bunu *işlevler örneği* sayfasına geri getirmelidir. İsabet *sonu*.
-
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-5.png" alt-text="Visual Studio 'da Azure işlevini yayımlama: Işlevler örneği (işlev uygulamasından sonra)":::
-
-Ana Visual Studio penceresinde geri açılan *Yayımla* bölmesinde tüm bilgilerin doğru göründüğünden emin olun ve **Yayımla**' yı seçin.
-
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-6.png" alt-text="Visual Studio 'da Azure işlevini yayımlama: yayımlama":::
-
-> [!NOTE]
-> Şu şekilde bir açılan pencere görürseniz: :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="Visual Studio 'Da Azure Işlevini yayımlama: kimlik bilgilerini yayımlama" border="false":::
-> **Azure 'dan kimlik bilgilerini alma** ve **kaydetme** girişimini seçin.
->
-> *Azure 'Da işlev sürümünü yükseltmek* için bir uyarı görürseniz veya *işlevler çalışma zamanının sürümünün Azure 'da çalışan sürümle eşleşmemesi* durumunda:
->
-> En son Azure Işlevleri çalışma zamanı sürümüne yükseltmek için istemleri izleyin. Bu sorun, Bu öğreticinin başlangıcında *Önkoşullar* bölümünde önerilenden daha eski bir Visual Studio sürümü kullanıyorsanız meydana gelebilir.
+[!INCLUDE [digital-twins-publish-azure-function.md](../../includes/digital-twins-publish-azure-function.md)]
 
 ### <a name="assign-permissions-to-the-function-app"></a>İşlev uygulamasına izin atama
 

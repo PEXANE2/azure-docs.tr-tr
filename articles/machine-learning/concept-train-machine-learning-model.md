@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 2448f5f778f19674aec63291acb72536c65ca6c9
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: ac9a1b43ba4ffb537afd658c84edb48ed59a3694
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555898"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683491"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modelleri Azure Machine Learning ile eğitme
 
@@ -31,9 +31,9 @@ Azure Machine Learning, SDK 'yı kullanarak otomatik makine öğrenimi ve görse
 
 + [R için Azure MACHINE LEARNING SDK (Önizleme)](#r-sdk-preview): r için sdk, Azure Machine Learning Python SDK 'sına bağlamak için reticute paketini kullanır. Bu, herhangi bir R ortamından Python SDK 'sında uygulanan temel nesnelere ve yöntemlere erişmenizi sağlar.
 
-+ **Tasarımcı** : Azure Machine Learning tasarımcı, kavram kanıtı oluşturmak için veya çok az kodlama deneyimi olan kullanıcılar için makine öğrenimine kolay bir giriş noktası sağlar. Bir sürükle ve bırak Web tabanlı kullanıcı arabirimi kullanarak modelleri eğmenize olanak tanır. Python kodunu tasarımın bir parçası olarak kullanabilir veya herhangi bir kod yazmadan modelleri eğitebilirsiniz.
++ **Tasarımcı**: Azure Machine Learning tasarımcı, kavram kanıtı oluşturmak için veya çok az kodlama deneyimi olan kullanıcılar için makine öğrenimine kolay bir giriş noktası sağlar. Bir sürükle ve bırak Web tabanlı kullanıcı arabirimi kullanarak modelleri eğmenize olanak tanır. Python kodunu tasarımın bir parçası olarak kullanabilir veya herhangi bir kod yazmadan modelleri eğitebilirsiniz.
 
-+ **CLI** : MACHINE Learning clı, Azure Machine Learning ortak görevlere yönelik komutlar sağlar ve genellikle **komut dosyası oluşturma ve otomatikleştirme işlemleri** için kullanılır. Örneğin, bir eğitim betiği veya işlem hattı oluşturduktan sonra, bir zamanlamaya göre çalışan bir eğitimi başlatmak veya eğitim için kullanılan veri dosyaları güncelleniyorsa, CLı 'yi kullanabilirsiniz. Eğitim modelleri için eğitim işleri gönderen komutları sağlar. Çalışma yapılandırması veya işlem hatları kullanarak işleri gönderebilir.
++ **CLI**: MACHINE Learning clı, Azure Machine Learning ortak görevlere yönelik komutlar sağlar ve genellikle **komut dosyası oluşturma ve otomatikleştirme işlemleri** için kullanılır. Örneğin, bir eğitim betiği veya işlem hattı oluşturduktan sonra, bir zamanlamaya göre çalışan bir eğitimi başlatmak veya eğitim için kullanılan veri dosyaları güncelleniyorsa, CLı 'yi kullanabilirsiniz. Eğitim modelleri için eğitim işleri gönderen komutları sağlar. Çalışma yapılandırması veya işlem hatları kullanarak işleri gönderebilir.
 
 Bu eğitim yöntemlerinin her biri, eğitim için farklı türlerde işlem kaynakları kullanabilir. Toplu olarak, bu kaynaklara [__işlem hedefleri__](concept-azure-machine-learning-architecture.md#compute-targets)denir. İşlem hedefi bir yerel makine veya Azure Machine Learning Işlem, Azure HDInsight veya uzak bir sanal makine gibi bir bulut kaynağı olabilir.
 
@@ -107,9 +107,8 @@ Yerel makinenizde ("Yerel çalıştırma olarak yapılandırma") eğitme seçene
 
 R SDK, Azure Machine Learning R dilini kullanmanıza olanak sağlar. SDK, Azure Machine Learning Python SDK 'sına bağlamak için reticute paketini kullanır. Bu, herhangi bir R ortamından Python SDK 'sında uygulanan temel nesnelere ve yöntemlere erişmenizi sağlar.
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
-* [Öğretici: lojistik regresyon modeli oluşturma](tutorial-1st-r-experiment.md)
 * [R başvurusu için SDK Azure Machine Learning](https://azure.github.io/azureml-sdk-for-r/index.html)
 
 ## <a name="azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısı

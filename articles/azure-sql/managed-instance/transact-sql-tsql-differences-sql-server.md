@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: e6dc4656e33b55a2cc695874376baf1cd816a838
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 6fb17ead2546875c0f334aae322f8fb070e8f1ea
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796304"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684917"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL yönetilen örneği arasındaki T-SQL farklılıkları
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -100,7 +100,7 @@ SQL yönetilen örneği 'nde XEvent denetimi Azure Blob depolama hedeflerini des
 - `TO URL`Dosyaların yerleştirildiği Azure Blob depolama KAPSAYıCıSıNıN URL 'sini belirtmek için kullanabileceğiniz yeni bir sözdizimi sağlanır `.xel` .
 - `TO FILE`SQL yönetilen örnek Windows dosya paylaşımlarına erişemediği için sözdizimi desteklenmiyor.
 
-Daha fazla bilgi için bkz: 
+Daha fazla bilgi için bkz. 
 
 - [SUNUCU DENETIMI OLUŞTUR](/sql/t-sql/statements/create-server-audit-transact-sql) 
 - [SUNUCU DENETIMINI DEĞIŞTIR](/sql/t-sql/statements/alter-server-audit-transact-sql)
@@ -276,6 +276,8 @@ Aşağıdaki seçenekler değiştirilemez:
 - `RESTRICTED_USER`
 - `SINGLE_USER`
 - `WITNESS`
+
+Bazı `ALTER DATABASE` deyimler (örn. [kapsama ayarla](https://docs.microsoft.com/sql/relational-databases/databases/migrate-to-a-partially-contained-database?#converting-a-database-to-partially-contained-using-transact-sql)), örneğin otomatik veritabanı yedeklemesi sırasında veya bir veritabanı oluşturulduktan sonra doğru bir şekilde geçiş yapabilir. Bu durumda `ALTER DATABASE` deyimde yeniden denenmelidir. İlgili hata iletileri hakkında daha ayrıntılı bilgi edinmek için bkz. [açıklamalar bölümü](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true&tabs=sqlpool#remarks-2).
 
 Daha fazla bilgi için bkz. [alter database](/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options).
 

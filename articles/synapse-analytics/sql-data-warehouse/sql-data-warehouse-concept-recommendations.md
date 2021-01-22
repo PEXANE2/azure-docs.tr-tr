@@ -11,12 +11,12 @@ ms.date: 06/26/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: bd32b9690f8a9aef92eb1f2fbcc4ec926a65584e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 6510a7143e78c054130a1f1dddba78342a6785fe
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121201"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685285"
 ---
 # <a name="azure-advisor-recommendations-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu için Azure Advisor önerileri
 
@@ -73,4 +73,4 @@ Yüksek tempdb Çekişmesi olduğunda sorgu performansı düşebilir.  Tempdb ç
 
 ## <a name="data-loading-misconfiguration"></a>Veri yükleme yanlış yapılandırma
 
-Gecikmeyi en aza indirmek için, her zaman ayrılmış SQL havuzunuz ile aynı bölgedeki bir depolama hesabındaki verileri yüklemeniz gerekir. [Yüksek aktarım hızı verileri alımı Için kopyalama ifadesini](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) kullanın ve üretilen dosyalarınızı depolama hesabınızda bölerek üretilen iş üretimini en üst düzeye çıkarın. COPY ifadesini kullanamıyoruz, daha iyi aktarım hızı için SqlBulkCopy API veya bcp 'yi yüksek bir toplu iş boyutuyla birlikte kullanabilirsiniz. Ek veri yükleme kılavuzu için aşağıdaki [belgeleri](./guidance-for-loading-data.md)ziyaret edin.
+Gecikmeyi en aza indirmek için, her zaman ayrılmış SQL havuzunuz ile aynı bölgedeki bir depolama hesabındaki verileri yüklemeniz gerekir. [Yüksek aktarım hızı verileri alımı Için kopyalama ifadesini](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) kullanın ve üretilen dosyalarınızı depolama hesabınızda bölerek üretilen iş üretimini en üst düzeye çıkarın. COPY ifadesini kullanamıyoruz, daha iyi aktarım hızı için SqlBulkCopy API veya bcp 'yi yüksek bir toplu iş boyutuyla birlikte kullanabilirsiniz. Ek veri yükleme kılavuzu için aşağıdaki [belgeleri](./guidance-for-loading-data.md)ziyaret edin.

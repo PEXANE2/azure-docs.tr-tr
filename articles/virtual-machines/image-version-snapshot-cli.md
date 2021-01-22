@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: e694630d8bcd7879d9405152c4141fb6e5bad4e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9cfb1fe6d2050a63070e9c21e4b8c3ef59efcb15
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297102"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682690"
 ---
 # <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-the-azure-cli"></a>Azure CLı kullanarak paylaşılan bir görüntü galerisinde yönetilen diskten veya anlık görüntüden görüntü oluşturma
 
@@ -69,11 +69,11 @@ Görüntü tanımları görüntüler için bir mantıksal gruplama oluşturur. B
 
 Görüntü tanımınızı yaparken, doğru bilgilerin tümünün bulunduğundan emin olun. Bu örnekte, anlık görüntü veya yönetilen diskin kullanımda olan ve genelleştirilmiş bir VM 'den olduğunu varsayıyoruz. Yönetilen disk veya anlık görüntü genelleştirilmiş bir işletim sistemi (Windows için [Sysprep veya](https://github.com/Azure/WALinuxAgent) `-deprovision` `-deprovision+user` Linux için veya Linux için) aldıysanız, öğesini `-OsState` olarak değiştirin `generalized` . 
 
-Bir görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla bilgi için bkz. [görüntü tanımları](./linux/shared-image-galleries.md#image-definitions).
+Bir görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla bilgi için bkz. [görüntü tanımları](./shared-image-galleries.md#image-definitions).
 
 Galeride [az Sig Image-Definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create)kullanarak bir görüntü tanımı oluşturun.
 
-Bu örnekte, görüntü tanımı *Myımagedefinition*olarak adlandırılır ve [özelleştirilmiş](./linux/shared-image-galleries.md#generalized-and-specialized-images) bir Linux işletim sistemi görüntüsü içindir. Windows işletim sistemi kullanan görüntülerin tanımını oluşturmak için kullanın `--os-type Windows` . 
+Bu örnekte, görüntü tanımı *Myımagedefinition* olarak adlandırılır ve [özelleştirilmiş](./shared-image-galleries.md#generalized-and-specialized-images) bir Linux işletim sistemi görüntüsü içindir. Windows işletim sistemi kullanan görüntülerin tanımını oluşturmak için kullanın `--os-type Windows` . 
 
 Bu örnekte Galeri, *Mygallerrg* kaynak grubunda yer aldığı ve görüntü tanımı adı *mımagedefinition* *olarak adlandırılmaktadır*.
 

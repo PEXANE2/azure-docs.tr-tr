@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d6bf4df1499d919cead0a184054e5ba0db9c06e
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 0620304de1866d24719b137836419502cd25bee9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346609"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682246"
 ---
 # <a name="troubleshoot-self-service-password-reset-writeback-in-azure-active-directory"></a>Azure Active Directory içinde self servis parola sıfırlama geri yazma sorunlarını giderme
 
@@ -43,7 +43,7 @@ Azure AD Connect Version *1.1.443.0* ve üzeri için, *giden https* erişimi aş
 * *\*. passwordreset.microsoftonline.com*
 * *\*. servicebus.windows.net*
 
-Azure [gov uç noktaları](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#guidance-for-developers):
+Azure [gov uç noktaları](../../azure-government/compare-azure-government-global-azure.md#guidance-for-developers):
 
 * *\*. passwordreset.microsoftonline.us*
 * *\*. servicebus.usgovcloudapi.net*
@@ -155,7 +155,7 @@ Parola geri yazma ile ilgili sorunları giderirken en iyi yöntem, Azure AD Conn
 
 ### <a name="if-the-source-of-the-event-is-adsync"></a>Olayın kaynağı ADSync ise
 
-| Kod | Ad veya ileti | Açıklama |
+| Kod | Ad veya ileti | Description |
 | --- | --- | --- |
 | 6329 | BAıL: MMS (4924) 0x80230619: "bir kısıtlama, parolanın belirtilen geçerli bir şekilde değiştirilmesini engelliyor." | Bu olay, parola geri yazma hizmeti yerel dizininizde, etki alanının parola yaşı, geçmişi, karmaşıklık veya filtreleme gereksinimlerini karşılamayan bir parola ayarlamaya çalıştığında oluşur. <br> <br> En az bir parola yaşı varsa ve kısa süre önce bu zaman içindeki parolayı değiştirdiyseniz, etki alanındaki belirli bir yaşa ulaşıncaya kadar parolayı tekrar değiştiremezsiniz. Sınama amacıyla, minimum yaş 0 olarak ayarlanmalıdır. <br> <br> Parola geçmişi gereksinimleriniz etkinse, son *n* kez kullanılmamış bir parola seçmeniz gerekir, burada *n* parola geçmişi ayarıdır. Son *N* kez kullanılan bir parola seçerseniz, bu durumda bir hata görürsünüz. Sınama amacıyla parola geçmişi 0 olarak ayarlanmalıdır. <br> <br> Parola karmaşıklığı gereksinimleriniz varsa, Kullanıcı bir parolayı değiştirmeye veya sıfırlamaya çalıştığında bunların hepsi zorlanır. <br> <br> Parola Filtreleriniz etkinse ve Kullanıcı filtreleme ölçütlerine uymayan bir parola seçerse, sıfırlama veya değiştirme işlemi başarısız olur. |
 | 6329 | MMS (3040): admaexport. cpp (2837): sunucuda LDAP parola ilkesi denetimi yoktur. | DC 'lerde LDAP_SERVER_POLICY_HINTS_OID Control (1.2.840.113556.1.4.2066) etkinleştirilmemişse bu sorun oluşur. Parola geri yazma özelliğini kullanmak için, denetimi etkinleştirmeniz gerekir. Bunu yapmak için, DC 'Ler Windows Server 2008R2 veya üzeri sürümlerde olmalıdır. |
@@ -163,7 +163,7 @@ Parola geri yazma ile ilgili sorunları giderirken en iyi yöntem, Azure AD Conn
 
 ### <a name="if-the-source-of-the-event-is-passwordresetservice"></a>Olayın kaynağı PasswordResetService ise
 
-| Kod | Ad veya ileti | Açıklama |
+| Kod | Ad veya ileti | Description |
 | --- | --- | --- |
 | 31001 | PasswordResetStart | Bu olay, şirket içi hizmetin, buluttan kaynaklanan bir Federasyon, geçişli kimlik doğrulama veya parola karması ile eşitlenen Kullanıcı için bir parola sıfırlama isteği algıladığını gösterir. Bu olay, her parola sıfırlama geri yazma işlemindeki ilk olaydır. |
 | 31002 | PasswordResetSuccess | Bu olay, bir kullanıcının parola sıfırlama işlemi sırasında yeni bir parola seçtiği anlamına gelir. Bu parolanın, kurumsal parola gereksinimlerini karşıladığını belirledik. Parola, yerel Active Directory ortamına başarıyla geri yazıldı. |

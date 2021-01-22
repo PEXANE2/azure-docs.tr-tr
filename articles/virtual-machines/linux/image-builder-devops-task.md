@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 43447454b82b74c10b1d53c41c7883b0b9bef242
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 634fc183cc27db1ae949959c3ae7fae8eda5b644
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196512"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684551"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Azure görüntü Oluşturucu hizmeti DevOps görevi
 
@@ -71,10 +71,10 @@ Geçici görüntü şablonu yapısının depolanacağı kaynak grubunu kullanın
  
 ### <a name="location"></a>Konum
 
-Konum, Image Builder 'ın çalışacağı bölgedir. Yalnızca bir dizi [bölge](../windows/image-builder-overview.md#regions) desteklenir. Kaynak görüntülerin bu konumda bulunması gerekir. Örneğin, paylaşılan görüntü Galerisi kullanıyorsanız, bu bölgede bir çoğaltma olması gerekir.
+Konum, Image Builder 'ın çalışacağı bölgedir. Yalnızca bir dizi [bölge](../image-builder-overview.md#regions) desteklenir. Kaynak görüntülerin bu konumda bulunması gerekir. Örneğin, paylaşılan görüntü Galerisi kullanıyorsanız, bu bölgede bir çoğaltma olması gerekir.
 
 ### <a name="managed-identity-required"></a>Yönetilen kimlik (gerekli)
-Image Builder, kaynak özel görüntüleri okumak, Azure depolama 'ya bağlanmak ve özel görüntüler oluşturmak için kullandığı yönetilen bir kimlik gerektirir. Daha ayrıntılı bilgi için [buraya](./image-builder-overview.md#permissions) bakın.
+Image Builder, kaynak özel görüntüleri okumak, Azure depolama 'ya bağlanmak ve özel görüntüler oluşturmak için kullandığı yönetilen bir kimlik gerektirir. Daha ayrıntılı bilgi için [buraya](../image-builder-overview.md#permissions) bakın.
 
 ### <a name="vnet-support"></a>VNET desteği
 
@@ -154,7 +154,7 @@ Aşağıdaki örnek bunun nasıl çalıştığını açıklar:
     & 'c:\buildArtifacts\webapp\webconfig.ps1'
     ```
 
-* Linux-Linux sistemlerinde derleme yapıtları `/tmp` dizine konur. Ancak, birçok Linux OSs 'de, bir yeniden başlatma işlemi için/tmp dizin içeriği silinir. Yapıtların görüntüde mevcut olmasını istiyorsanız, başka bir dizin oluşturmanız ve bunları üzerine kopyalamanız gerekir.  Örneğin:
+* Linux-Linux sistemlerinde derleme yapıtları `/tmp` dizine konur. Ancak, birçok Linux OSs 'de, bir yeniden başlatma işlemi için/tmp dizin içeriği silinir. Yapıtların görüntüde mevcut olmasını istiyorsanız, başka bir dizin oluşturmanız ve bunları üzerine kopyalamanız gerekir.  Örnek:
 
     ```bash
     sudo mkdir /lib/buildArtifacts
@@ -176,7 +176,7 @@ Aşağıdaki örnek bunun nasıl çalıştığını açıklar:
 > Image Builder, derleme yapıtlarını otomatik olarak kaldırmaz, derleme yapıtlarını kaldırmak için her zaman kodunuzun olması önemle önerilir.
 > 
 
-* Windows-Image Builder dosyaları `c:\buildArtifacts` dizine dağıtır. Dizin kalıcı olduğundan dizini kaldırmanız gerekir. Bunu, yürüttiğiniz betikte kaldırabilirsiniz. Örneğin:
+* Windows-Image Builder dosyaları `c:\buildArtifacts` dizine dağıtır. Dizin kalıcı olduğundan dizini kaldırmanız gerekir. Bunu, yürüttiğiniz betikte kaldırabilirsiniz. Örnek:
 
     ```PowerShell
     # Clean up buildArtifacts directory
@@ -186,7 +186,7 @@ Aşağıdaki örnek bunun nasıl çalıştığını açıklar:
     Remove-Item -Path "C:\buildArtifacts" -Force 
     ```
     
-* Linux-derleme yapıtları `/tmp` dizine konur. Ancak, birçok Linux OSs 'de, bir yeniden başlatma işlemi, `/tmp` Dizin içerikleri silinir. İçeriği kaldırmak için işletim sistemine bağlı olmayan ve içeriği kaldırmak için kodunuzun olması önerilir. Örneğin:
+* Linux-derleme yapıtları `/tmp` dizine konur. Ancak, birçok Linux OSs 'de, bir yeniden başlatma işlemi, `/tmp` Dizin içerikleri silinir. İçeriği kaldırmak için işletim sistemine bağlı olmayan ve içeriği kaldırmak için kodunuzun olması önerilir. Örnek:
 
     ```bash
     sudo rm -R "/tmp/AppsAndImageBuilderLinux"
@@ -312,7 +312,7 @@ Hayır. Benzersiz bir şablon adı kullanılır ve sonra silinir.
 
 Bir yapı hatası varsa, DevOps görevi hazırlama kaynak grubunu silmez. Yapı özelleştirme günlüğünü içeren hazırlama kaynak grubuna erişebilirsiniz.
 
-Sanal makine görüntüsü Oluşturucu görevi için DevOps günlüğünde bir hata görürsünüz ve özelleştirme. log konumunu görürsünüz. Örneğin:
+Sanal makine görüntüsü Oluşturucu görevi için DevOps günlüğünde bir hata görürsünüz ve özelleştirme. log konumunu görürsünüz. Örnek:
 
 :::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="Hata gösteren örnek DevOps görev hatası.":::
 
@@ -335,4 +335,4 @@ Görüntü şablonu kaynak yapıtı başlangıçta görevde belirtilen kaynak gr
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için bkz. [Azure Image Builder 'a genel bakış](image-builder-overview.md).
+Daha fazla bilgi için bkz. [Azure Image Builder 'a genel bakış](../image-builder-overview.md).

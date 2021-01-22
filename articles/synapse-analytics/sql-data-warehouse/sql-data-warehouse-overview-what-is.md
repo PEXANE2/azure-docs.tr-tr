@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: b8738b46359287ce1d4e410292cdce213ab80999
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 9077ce35065b1bf45646496cc4c43d6def82d958
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98115829"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685234"
 ---
 # <a name="what-is-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL Havuzu (eski adıyla SQL DW) nedir?
 
@@ -29,7 +29,7 @@ Azure Synapse Analytics, kurumsal veri ambarı özellikleriyle Büyük Veri anal
 
 Adanmış SQL Havuzu (eski adıyla SQL DW), SYNAPSE SQL kullanılırken sağlanan analitik kaynakların koleksiyonunu temsil eder. Adanmış bir SQL havuzunun boyutu (eski adıyla SQL DW), veri ambarı birimleri (DWU) tarafından belirlenir.
 
-Adanmış SQL havuzunuz oluşturulduktan sonra, basit [PolyBase](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL sorgularıyla büyük verileri içeri aktarabilir ve ardından yüksek performanslı analizler çalıştırmak için dağıtılmış sorgu altyapısının gücünden yararlanabilirsiniz. Verileri tümleştirdiğinizde ve analiz ettiğiniz için adanmış SQL Havuzu (eski adıyla SQL DW), işletmenizin daha hızlı ve daha sağlam Öngörüler için üzerine gelebilmesi için tek bir Truth sürümü olacaktır.
+Adanmış SQL havuzunuz oluşturulduktan sonra, basit [PolyBase](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL sorgularıyla büyük verileri içeri aktarabilir ve ardından yüksek performanslı analizler çalıştırmak için dağıtılmış sorgu altyapısının gücünden yararlanabilirsiniz. Verileri tümleştirdiğinizde ve analiz ettiğiniz için adanmış SQL Havuzu (eski adıyla SQL DW), işletmenizin daha hızlı ve daha sağlam Öngörüler için üzerine gelebilmesi için tek bir Truth sürümü olacaktır.
 
 > [!NOTE]
 >[Azure SYNAPSE Analytics belgelerini](../overview-what-is.md)inceleyin.

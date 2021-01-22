@@ -3,12 +3,12 @@ title: Azure VMware çözümünde dağıtım ufku
 description: Azure VMware çözümünde VMware ufuk dağıtımı hakkında bilgi edinin.
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: 6d5d8e12e358e2289128af9840660be18f5f217a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 2cf6fc5cb7662188650365cb019774d6c778d405
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95537450"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684884"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Azure VMware çözümünde dağıtım ufku 
 
@@ -130,15 +130,35 @@ Ufkın Azure VMware çözümünde çalışan bir konakta boyutlandırma yöntemi
 
 ### <a name="sizing-tables"></a>Tabloları boyutlandırma
 
-Tablolar, oturum açma VSI bilgi çalışanı iş yükleri ve güç çalışanı iş yükleri için ortak iş yüklerini gösterir.
+Ufku sanal masaüstleri için belirli vCPU/vRAM gereksinimleri müşterinin belirli iş yükü profiline göre değişir.   Sanal Masaüstlerinizi için vCPU/vRAM gereksinimlerinizi belirlemenize yardımcı olması için MSFT ve VMware Sales ekibinizle birlikte çalışın. 
 
-#### <a name="knowledge-worker-workloads"></a>Bilgi çalışanı iş yükleri
+| VM başına vCPU | VM başına vRAM (GB) | Örnek | 100 VM 'Ler | 200 VM 'Ler | 300 VM 'Ler | 400 VM 'Ler | 500 VM 'Ler | 600 VM 'Ler | 700 VM 'Ler | 800 VM 'Ler | 900 VM 'Ler | 1000 VM 'Ler | 2000 VM 'Ler | 3000 VM 'Ler | 4000 VM 'Ler | 5000 VM 'Ler | 6000 VM 'Ler | 6400 VM 'Ler |
+|:-----------:|:----------------:|:--------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|
+|      2      |        3,5       |    AVS   |    3    |    3    |    4    |    4    |    5    |    6    |    6    |    7    |    8    |     9    |    17    |    25    |    33    |    41    |    49    |    53    |
+|      2      |         4        |    AVS   |    3    |    3    |    4    |    5    |    6    |    6    |    7    |    8    |    9    |     9    |    18    |    26    |    34    |    42    |    51    |    54    |
+|      2      |         6        |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    12   |    13    |    26    |    38    |    51    |    62    |    75    |    79    |
+|      2      |         8        |    AVS   |    3    |    5    |    6    |    8    |    9    |    11   |    12   |    14   |    16   |    18    |    34    |    51    |    67    |    84    |    100   |    106   |
+|      2      |        12        |    AVS   |    4    |    6    |    9    |    11   |    13   |    16   |    19   |    21   |    23   |    26    |    51    |    75    |    100   |    124   |    149   |    158   |
+|      2      |        16        |    AVS   |    5    |    8    |    11   |    14   |    18   |    21   |    24   |    27   |    30   |    34    |    67    |    100   |    133   |    165   |    198   |    211   |
+|      4      |        3,5       |    AVS   |    3    |    3    |    4    |    5    |    6    |    7    |    8    |    9    |    10   |    11    |    22    |    33    |    44    |    55    |    66    |    70    |
+|      4      |         4        |    AVS   |    3    |    3    |    4    |    5    |    6    |    7    |    8    |    9    |    10   |    11    |    22    |    33    |    44    |    55    |    66    |    70    |
+|      4      |         6        |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    12   |    13    |    26    |    38    |    51    |    62    |    75    |    79    |
+|      4      |         8        |    AVS   |    3    |    5    |    6    |    8    |    9    |    11   |    12   |    14   |    16   |    18    |    34    |    51    |    67    |    84    |    100   |    106   |
+|      4      |        12        |    AVS   |    4    |    6    |    9    |    11   |    13   |    16   |    19   |    21   |    23   |    26    |    51    |    75    |    100   |    124   |    149   |    158   |
+|      4      |        16        |    AVS   |    5    |    8    |    11   |    14   |    18   |    21   |    24   |    27   |    30   |    34    |    67    |    100   |    133   |    165   |    198   |    211   |
+|      6      |        3,5       |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    13   |    14    |    27    |    41    |    54    |    68    |    81    |    86    |
+|      6      |         4        |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    13   |    14    |    27    |    41    |    54    |    68    |    81    |    86    |
+|      6      |         6        |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    13   |    14    |    27    |    41    |    54    |    68    |    81    |    86    |
+|      6      |         8        |    AVS   |    3    |    5    |    6    |    8    |    9    |    11   |    12   |    14   |    16   |    18    |    34    |    51    |    67    |    84    |    100   |    106   |
+|      6      |        12        |    AVS   |    4    |    6    |    9    |    11   |    13   |    16   |    19   |    21   |    23   |    26    |    51    |    75    |    100   |    124   |    149   |    158   |
+|      6      |        16        |    AVS   |    5    |    8    |    11   |    14   |    18   |    21   |    24   |    27   |    30   |    34    |    67    |    100   |    133   |    165   |    198   |    211   |
+|      8      |        3,5       |    AVS   |    3    |    4    |    6    |    7    |    9    |    10   |    12   |    14   |    15   |    17    |    33    |    49    |    66    |    82    |    98    |    105   |
+|      8      |         4        |    AVS   |    3    |    4    |    6    |    7    |    9    |    10   |    12   |    14   |    15   |    17    |    33    |    49    |    66    |    82    |    98    |    105   |
+|      8      |         6        |    AVS   |    3    |    4    |    6    |    7    |    9    |    10   |    12   |    14   |    15   |    17    |    33    |    49    |    66    |    82    |    98    |    105   |
+|      8      |         8        |    AVS   |    3    |    5    |    6    |    8    |    9    |    11   |    12   |    14   |    16   |    18    |    34    |    51    |    67    |    84    |    100   |    106   |
+|      8      |        12        |    AVS   |    4    |    6    |    9    |    11   |    13   |    16   |    19   |    21   |    23   |    26    |    51    |    75    |    100   |    124   |    149   |    158   |
+|      8      |        16        |    AVS   |    5    |    8    |    11   |    14   |    18   |    21   |    24   |    27   |    30   |    34    |    67    |    100   |    133   |    165   |    198   |    211   |
 
-:::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-knowledge.png" alt-text="VMware ufku için oturum açma VSI bilgi çalışanı iş yükleri için ortak VDı profilleri tablosu" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-knowledge.png" border="false":::
-
-#### <a name="power-worker-workloads"></a>Güç çalışanı iş yükleri
-
-:::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-power.png" alt-text="VMware ufku için oturum açma VSI Power Worker iş yükleri için ortak VDı profillerinin tablosu" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-power.png" border="false":::
 
 ### <a name="horizon-sizing-inputs"></a>Ufuk boyutlandırma girişleri
 
@@ -189,24 +209,9 @@ Azure VMware çözümüne ve şirket içine dağıtılmışsa, olağanüstü dur
 
 Gereksinimlerinize göre ufku lisanslama maliyetini öğrenmek için VMware EUC Sales ekibinizle birlikte çalışın.
 
-### <a name="cost-of-the-horizon-infrastructure-vms-on-azure-virtual-network"></a>Azure sanal ağındaki ufuk altyapısı VM 'lerinin maliyeti
+### <a name="azure-instance-types"></a>Azure örnek türleri
 
-Standart dağıtım mimarisine bağlı olarak, ufuk altyapısı VM 'Leri bağlantı sunucuları, UAGs, App Volume yöneticilerinden oluşur. Bunlar müşterinin Azure sanal ağında dağıtılır. Azure 'da yüksek kullanılabilirlik (HA), Microsoft SQL veya Microsoft Active Directory (AD) hizmetlerini desteklemek için ek Azure yerel örnekleri gerekir. Tabloda, Azure örnekleri bir 2.000-masaüstü dağıtım örneğine göre listelenir. 
-
->[!NOTE]
->Sorunu işleyebilmek için, bağlantı sayısı için gerekenden daha fazla sunucu dağıtın (n + 1). Bağlantı sunucusunun, UAG ve App Volumes Yöneticisi 'nin önerilen minimum örnek sayısı 2 ' dir ve gereken süre, ortamın destekleyeceği kullanıcı miktarına göre genişleyecektir.  Tek bir bağlantı sunucusu en çok 4.000 oturumu destekler, ancak en iyi yöntem olarak 2.000 önerilir. En fazla yedi bağlantı sunucusu, Pod başına toplam 12.000 etkin oturum önerisi ile pod başına desteklenir. En güncel sayılar için bkz. VMware [Bilgi Bankası makalesi VMware ufuk 7 boyutlandırma sınırları ve önerileri](https://kb.vmware.com/s/article/2150348).
-
-| Ufuk Altyapısı bileşeni | Azure örneği | Gerekli örnek sayısı (2.000-masaüstü bilgisayarlar için)    | Yorum  |
-|----------------------------------|----------------|----------------------------------------------------|----------|
-| Bağlantı sunucusu                | D4sv3          | 2       | *Yukarıdaki nota bakın*                         |    
-| UAG                              | F2sv2          | 2       | *Yukarıdaki nota bakın*                         |
-| Uygulama birimleri Yöneticisi              | D4sv3          | 2       | *Yukarıdaki nota bakın*                         |
-| Bulut bağlayıcısı                  | D4sv3          | 1       |                                          |
-| AD denetleyicisi                    | D4sv3          | 2       | *Azure 'da MSFT AD hizmetini kullanma seçeneği* |
-| MS-SQL veritabanı                  | D4sv3          | 2       | *Azure 'da SQL hizmetini kullanma seçeneği*     |
-| Windows dosya paylaşma               | D4sv3          |         | *İsteğe bağlı*                               |
-
-Altyapı VM maliyeti, \$ Yukarıdaki örnekteki 2.000-Desktop dağıtımı için ayda Kullanıcı başına 0,36 olarak ücretlendirilir. Bu örnekte ABD Doğu Azure örneği Haziran 2020 fiyatlandırması kullanılmaktadır. Fiyatlandırma, bölgeye, seçili seçeneklere ve zamanlamaya göre farklılık gösterebilir.
+Ufuk altyapısı için gerekli olacak Azure sanal makine boyutlarını anlamak için, lütfen [burada](https://techzone.vmware.com/resource/horizon-on-azure-vmware-solution-configuration#horizon-installation-on-azure-vmware-solution)bulunan VMware yönergelerine başvurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure VMware çözümünde VMware ufku hakkında daha fazla bilgi edinmek için, [VMWare ufku SSS](https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/products/horizon/vmw-horizon-on-microsoft-azure-vmware-solution-faq.pdf)makalesini okuyun.

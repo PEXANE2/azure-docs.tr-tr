@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 09/01/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 9f0309f4e8273c2ef19ea86636de8e3aa6b6c4bc
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: edbcabfe4d0b633a784163562f52b303120916ca
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435109"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685080"
 ---
 # <a name="creating-generalized-images-without-a-provisioning-agent"></a>Sağlama Aracısı olmadan Genelleştirilmiş görüntüler oluşturma
 
@@ -180,7 +180,7 @@ SANAL makinenizde Python yüklü değilse veya kullanılabilir değilse, aşağ�
 
 Bu tanıtımda, modern Linux distros 'de en yaygın init sistemi olan systemd kullanılmaktadır. Bu nedenle, bu rapor için uygun mekanizmanın en kolay ve en yerel yolu, bir systemd hizmet birimi oluşturmaktır. Aşağıdaki birim dosyasını öğesine ekleyebilirsiniz `/etc/systemd/system` (Bu örnek, birim dosyasını adlandırır `azure-provisioning.service` ):
 
-```
+```bash
 [Unit]
 Description=Azure Provisioning
 
@@ -204,7 +204,7 @@ Bu systemd hizmeti temel sağlama için üç şey yapar:
 
 Dosya sisteminde birimle birlikte etkinleştirmek için aşağıdakileri çalıştırın:
 
-```
+```bash
 $ sudo systemctl enable azure-provisioning.service
 ```
 
@@ -214,14 +214,14 @@ Artık VM genelleştirilemez ve bundan sonra bir görüntü oluşturulabilir.
 
 Geliştirme makinenize geri döndüğünüzde, temel VM 'den görüntü oluşturmaya hazırlanmak için aşağıdakileri çalıştırın:
 
-```
+```bash
 $ az vm deallocate --resource-group demo1 --name demo1
 $ az vm generalize --resource-group demo1 --name demo1
 ```
 
 Ve bu VM 'den görüntü oluşturun:
 
-```
+```bash
 $ az image create \
     --resource-group demo1 \
     --source demo1 \
@@ -231,7 +231,7 @@ $ az image create \
 
 Artık görüntüden yeni bir VM (veya birden çok VM) oluşturmaya hazırız:
 
-```
+```bash
 $ IMAGE_ID=$(az image show -g demo1 -n demo1img --query id -o tsv)
 $ az vm create \
     --resource-group demo12 \
@@ -249,7 +249,7 @@ $ az vm create \
 
 Bu sanal makinenin başarıyla sağlanması gerekir. Yeni sağlama VM 'de oturum açmak için, rapor için Ready systemd hizmetinin çıkışını görmeniz gerekir:
 
-```
+```bash
 $ sudo journalctl -u azure-provisioning.service
 -- Logs begin at Thu 2020-06-11 20:28:45 UTC, end at Thu 2020-06-11 20:31:24 UTC. --
 Jun 11 20:28:49 thstringnopa systemd[1]: Starting Azure Provisioning...

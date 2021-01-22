@@ -11,12 +11,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: ce09488e2323aada5f99494ef3920681b685ec0b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7e2d4b47f8f37a8e6d69a7846b8b0f92247121da
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453658"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685200"
 ---
 # <a name="secure-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış bir SQL havuzunun (eski adıyla SQL DW) güvenliğini sağlama
 
@@ -81,9 +81,9 @@ Bağlantı kurmak için kullandığınız sunucu yöneticisi hesabı, veritaban�
 
 Kullanıcının veritabanında neler yapabileceğini daha fazla sınırlandırmak için yollar vardır:
 
-* Ayrıntılı [izinler](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) , veritabanındaki tek tek sütunlarda, tablolarda, görünümlerde, şemalarda, yordamlarda ve diğer nesnelerde hangi işlemleri yapabilmeniz gerektiğini denetlemenize olanak tanır. En fazla denetime sahip olmak ve gereken en düşük izinleri vermek için ayrıntılı izinler kullanın.
-* Db_datareader ve db_datawriter dışındaki [veritabanı rolleri](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) , daha güçlü uygulama kullanıcı hesapları veya daha az güçlü yönetim hesapları oluşturmak için kullanılabilir. Yerleşik sabit veritabanı rolleri, izin vermek için kolay bir yol sağlar, ancak gerekenden daha fazla izin verilmesine neden olabilir.
-* [Saklı yordamlar](/sql/relational-databases/stored-procedures/stored-procedures-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ile veritabanında gerçekleştirilebilecek eylemler sınırlandırılabilir.
+* Ayrıntılı [izinler](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) , veritabanındaki tek tek sütunlarda, tablolarda, görünümlerde, şemalarda, yordamlarda ve diğer nesnelerde hangi işlemleri yapabilmeniz gerektiğini denetlemenize olanak tanır. En fazla denetime sahip olmak ve gereken en düşük izinleri vermek için ayrıntılı izinler kullanın.
+* Db_datareader ve db_datawriter dışındaki [veritabanı rolleri](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) , daha güçlü uygulama kullanıcı hesapları veya daha az güçlü yönetim hesapları oluşturmak için kullanılabilir. Yerleşik sabit veritabanı rolleri, izin vermek için kolay bir yol sağlar, ancak gerekenden daha fazla izin verilmesine neden olabilir.
+* [Saklı yordamlar](/sql/relational-databases/stored-procedures/stored-procedures-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ile veritabanında gerçekleştirilebilecek eylemler sınırlandırılabilir.
 
 Aşağıdaki örnek, Kullanıcı tanımlı bir şemaya okuma erişimi verir.
 
@@ -98,7 +98,7 @@ Veritabanlarını ve sunucuları Azure portal veya Azure Resource Manager API 's
 
 Saydam Veri Şifrelemesi (TDE), bekleyen verilerinizi şifreleyerek ve şifresini çözerek kötü amaçlı etkinlik tehditlerine karşı korunmaya yardımcı olur. Veritabanınızı şifrelerken, ilişkili yedeklemeler ve işlem günlük dosyaları, uygulamalarınızda herhangi bir değişiklik yapılmadan şifrelenir. Saydam Veri Şifrelemesi, veritabanı şifreleme anahtarı olarak adlandırılan bir simetrik anahtarı kullanarak veritabanı depolama alanının tamamını şifreler.
 
-SQL veritabanında, veritabanı şifreleme anahtarı yerleşik bir sunucu sertifikası tarafından korunur. Yerleşik sunucu sertifikası her bir sunucu için benzersizdir. Microsoft bu sertifikaları en az 90 günde bir otomatik olarak döndürür. Kullanılan şifreleme algoritması AES-256 ' dir. TDE genel bir açıklaması için bkz. [Saydam veri şifrelemesi](/sql/relational-databases/security/encryption/transparent-data-encryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+SQL veritabanında, veritabanı şifreleme anahtarı yerleşik bir sunucu sertifikası tarafından korunur. Yerleşik sunucu sertifikası her bir sunucu için benzersizdir. Microsoft bu sertifikaları en az 90 günde bir otomatik olarak döndürür. Kullanılan şifreleme algoritması AES-256 ' dir. TDE genel bir açıklaması için bkz. [Saydam veri şifrelemesi](/sql/relational-databases/security/encryption/transparent-data-encryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 [Azure Portal](sql-data-warehouse-encryption-tde.md) veya [T-SQL](sql-data-warehouse-encryption-tde-tsql.md)' i kullanarak veritabanınızı şifreleyebilirsiniz.
 

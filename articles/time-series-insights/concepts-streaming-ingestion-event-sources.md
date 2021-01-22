@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/01/2020
-ms.openlocfilehash: ee13b2fbe4abbaf9bddf4975f8e25d746dc78f5e
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.date: 01/19/2021
+ms.openlocfilehash: 31398a49de871ad44499a796adfef1be618ccab9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232191"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685183"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights Gen2 olay kaynakları
 
@@ -45,7 +45,7 @@ Bir olay kaynağını bağladığınızda, Azure Time Series Insights Gen2 ortam
 
 - Ortamınızın [işleme hızı sınırının](./concepts-streaming-ingress-throughput-limits.md) ötesine geçmeyin ve bölüm sayısı sınırı yoktur.
 
-- Ortamınız verileri işlerken sorunlarla karşılaşıyorsa bildirim almak için bir gecikme [uyarısı](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts) yapılandırın. Önerilen uyarı koşulları için aşağıdaki [üretim iş yükleri](./concepts-streaming-ingestion-event-sources.md#production-workloads) bölümüne bakın. 
+- Ortamınız verileri işlerken sorunlarla karşılaşıyorsa bildirim almak için bir gecikme [uyarısı](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts) yapılandırın. Önerilen uyarı koşulları için aşağıdaki [üretim iş yükleri](./concepts-streaming-ingestion-event-sources.md#production-workloads) bölümüne bakın.
 
 - Yalnızca neredeyse gerçek zamanlı ve en son veriler için akış alımı kullanın, geçmiş verileri akışa alma desteklenmez.
 
@@ -55,14 +55,14 @@ Bir olay kaynağını bağladığınızda, Azure Time Series Insights Gen2 ortam
 
 ## <a name="production-workloads"></a>Üretim iş yükleri
 
-Yukarıdaki en iyi yöntemlere ek olarak, iş açısından kritik iş yükleri için aşağıdakileri uygulamanızı öneririz. 
+Yukarıdaki en iyi yöntemlere ek olarak, iş açısından kritik iş yükleri için aşağıdakileri uygulamanızı öneririz.
 
 - IoT Hub veya Olay Hub 'ı veri saklama süresini en fazla 7 güne yükseltin.
 
 - Azure portal ortam uyarıları oluşturun. Platform [ölçümlerini](https://docs.microsoft.com/azure/time-series-insights/how-to-monitor-tsi-reference#metrics) temel alan uyarılar, uçtan uca ardışık düzen davranışını doğrulamanızı sağlar. Uyarı oluşturma ve yönetme yönergelerine [buradan](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts)ulaşabilirsiniz. Önerilen uyarı koşulları:
 
-     - Inressreceived Iletizamanı gecikme 5 dakikadan fazla
-     - Alınan baytlar 0 ' dır
+  - Inressreceived Iletizamanı gecikme 5 dakikadan fazla
+  - Alınan baytlar 0 ' dır
 - IoT Hub veya Olay Hub 'ı bölümleriniz arasında alma yük dengelenme süresini koruyun.
 
 ### <a name="historical-data-ingestion"></a>Geçmiş veri alımı

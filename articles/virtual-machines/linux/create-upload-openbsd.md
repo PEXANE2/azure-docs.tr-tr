@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 05/24/2017
 ms.author: guybo
-ms.openlocfilehash: 08b18dae6cec3f30ba9ecc69a3537eec428cc9ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efa38384778bb63857d3c867d74ace7f4f199118
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372731"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685098"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>OpenBSD disk görüntüsünü Azure 'a oluşturma ve yükleme
 Bu makalede, OpenBSD işletim sistemini içeren bir sanal sabit disk (VHD) oluşturma ve karşıya yükleme işleminin nasıl yapılacağı gösterilir. Karşıya yükledikten sonra, Azure CLı aracılığıyla Azure 'da bir sanal makine (VM) oluşturmak için kendi görüntünüz olarak kullanabilirsiniz.
@@ -56,7 +56,7 @@ Hyper-V desteği eklenen OpenBSD işletim sistemi 6,1 ' i yüklediğiniz VM 'de 
     ln -sf /usr/local/bin/python2.7 /usr/local/bin/python
     ln -sf /usr/local/bin/python2.7-2to3 /usr/local/bin/2to3
     ln -sf /usr/local/bin/python2.7-config /usr/local/bin/python-config
-    ln -sf /usr/local/bin/pydoc2.7  /usr/local/bin/pydoc
+    ln -sf /usr/local/bin/pydoc2.7  /usr/local/bin/pydoc
     ```
 
 6. Azure aracısının en son sürümü her zaman [GitHub](https://github.com/Azure/WALinuxAgent/releases)'da bulunabilir. Aracıyı aşağıdaki gibi yükleyin:
@@ -100,7 +100,7 @@ Convert-VHD OpenBSD61.vhdx OpenBSD61.vhd -VHDType Fixed
 az group create --name myResourceGroup --location eastus
 ```
 
-VHD 'nizi karşıya yüklemek için [az Storage Account Create](/cli/azure/storage/account)komutuyla bir depolama hesabı oluşturun. Depolama hesabı adları benzersiz olmalıdır, bu nedenle kendi adınızı sağlayın. Aşağıdaki örnek, *mystorageaccount*adlı bir depolama hesabı oluşturur:
+VHD 'nizi karşıya yüklemek için [az Storage Account Create](/cli/azure/storage/account)komutuyla bir depolama hesabı oluşturun. Depolama hesabı adları benzersiz olmalıdır, bu nedenle kendi adınızı sağlayın. Aşağıdaki örnek, *mystorageaccount* adlı bir depolama hesabı oluşturur:
 
 ```azurecli
 az storage account create --resource-group myResourceGroup \
@@ -140,7 +140,7 @@ az storage blob upload \
 
 
 ## <a name="create-vm-from-your-vhd"></a>VHD 'nizden VM oluşturma
-[Örnek bir betikle](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md) veya doğrudan [az VM Create](/cli/azure/vm)ile bir VM oluşturabilirsiniz. Karşıya yüklediğiniz OpenBSD VHD 'sini belirtmek için `--image` parametresini aşağıdaki gibi kullanın:
+[Örnek bir betikle](/previous-versions/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-vhd) veya doğrudan [az VM Create](/cli/azure/vm)ile bir VM oluşturabilirsiniz. Karşıya yüklediğiniz OpenBSD VHD 'sini belirtmek için `--image` parametresini aşağıdaki gibi kullanın:
 
 ```azurecli
 az vm create \
@@ -168,4 +168,4 @@ ssh azureuser@<ip address>
 ## <a name="next-steps"></a>Sonraki adımlar
 OpenBSD 6.1 üzerinde Hyper-V desteği hakkında daha fazla bilgi edinmek istiyorsanız [openbsd 6,1](https://www.openbsd.org/61.html) ve [hyperv. 4](https://man.openbsd.org/hyperv.4)makalesini okuyun.
 
-Yönetilen diskten bir VM oluşturmak istiyorsanız [az disk](/cli/azure/disk)' i okuyun. 
+Yönetilen diskten bir VM oluşturmak istiyorsanız [az disk](/cli/azure/disk)' i okuyun.

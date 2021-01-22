@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: fb0a5fbf33b48521882646bf8fb5eb3fe5dacca6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 12b75ad3746cd0f54e27e474e0fd13bb0bba0e05
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96459210"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685251"
 ---
 # <a name="manage-and-monitor-workload-importance-in-dedicated-sql-pool-for-azure-synapse-analytics"></a>Azure SYNAPSE Analytics için adanmış SQL havuzunda iş yükü önemini yönetme ve izleme
 
@@ -24,7 +24,7 @@ DMVs ve katalog görünümlerini kullanarak Azure SYNAPSE 'de adanmış SQL havu
 
 ## <a name="monitor-importance"></a>Önemli izleme
 
-[Sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) dinamik yönetim görünümündeki yeni önem sütununu kullanarak önem derecesini izleyin.
+[Sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) dinamik yönetim görünümündeki yeni önem sütununu kullanarak önem derecesini izleyin.
 Aşağıdaki izleme sorgusunda sorgular için gönderme zamanı ve başlangıç saati gösterilmektedir. Zamanlamanın planlanmasının nasıl yapıldığını görmek için önem derecesine sahip gönderme süresini ve başlangıç saatini gözden geçirin.
 
 ```sql
@@ -47,7 +47,7 @@ SELECT *
   WHERE classifier_id > 12
 ```
 
-[Sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)Katalog görünümü, sınıflandırıcının oluşturulmasında kullanılan parametrelerle ilgili bilgiler içerir.  Aşağıdaki sorgu, ExecReportsClassifier 'in ```membername``` Executıvereports değerleri için parametresinde oluşturulduğunu gösterir:
+[Sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)Katalog görünümü, sınıflandırıcının oluşturulmasında kullanılan parametrelerle ilgili bilgiler içerir.  Aşağıdaki sorgu, ExecReportsClassifier 'in ```membername``` Executıvereports değerleri için parametresinde oluşturulduğunu gösterir:
 
 ```sql
 SELECT c.name,cd.classifier_type, classifier_value

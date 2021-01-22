@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 52071b964412071d820745b173e8835c6f9e7d0e
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 62f89106538ab7f57047e211fc8715878f889af1
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511000"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684568"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Azure VM 'Leri için kısa ömürlü işletim sistemi diskleri
 
@@ -26,7 +26,7 @@ Kısa ömürlü disklerin temel özellikleri şunlardır:
 - Geçici bir diske benzer şekilde daha düşük gecikme süresi. 
 - Kısa ömürlü işletim sistemi diskleri ücretsizdir, işletim sistemi diski için depolama maliyeti yoktur.
 - Tüm Azure bölgelerinde kullanılabilir. 
-- Kısa ömürlü işletim sistemi diski [paylaşılan görüntü Galerisi](./linux/shared-image-galleries.md)tarafından desteklenir. 
+- Kısa ömürlü işletim sistemi diski [paylaşılan görüntü Galerisi](./shared-image-galleries.md)tarafından desteklenir. 
  
 
  

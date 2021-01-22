@@ -3,12 +3,12 @@ title: Azure Işlevleri tüketim planı barındırma
 description: Azure Işlevi tüketim planı barındırma, kodunuzu dinamik olarak ölçeklenen bir ortamda çalıştırmanızı sağlar, ancak yalnızca yürütme sırasında kullanılan kaynaklar için ödeme yaparsınız.
 ms.date: 8/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: c0619def4687935cd9e403563966b35b84f13c7c
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: ffb556ce48f18702e06fcdb02dda84f41ae5f906
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937803"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684700"
 ---
 # <a name="azure-functions-consumption-plan-hosting"></a>Azure Işlevleri tüketim planı barındırma
 
@@ -33,10 +33,10 @@ Azure portal bir işlev uygulaması oluşturduğunuzda, tüketim planı varsayı
 Program aracılığıyla veya Azure portal bir tüketim planında bir sunucusuz işlev uygulaması oluşturmayı öğrenmek için aşağıdaki bağlantıları kullanın:
 
 + [Azure CLI](./scripts/functions-cli-create-serverless.md)
-+ [Azure Portal](functions-create-first-azure-function.md)
++ [Azure portalı](./functions-get-started.md)
 + [Azure Resource Manager şablonu](functions-create-first-function-resource-manager.md)
 
-Ayrıca, [Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) veya [Visual Studio](functions-create-your-first-function-visual-studio.md#publish-the-project-to-azure)'dan bir işlevler projesi yayımladığınızda tüketim planında işlev uygulamaları da oluşturabilirsiniz.
+Ayrıca, [Visual Studio Code](./create-first-function-vs-code-csharp.md#publish-the-project-to-azure) veya [Visual Studio](functions-create-your-first-function-visual-studio.md#publish-the-project-to-azure)'dan bir işlevler projesi yayımladığınızda tüketim planında işlev uygulamaları da oluşturabilirsiniz.
 
 ## <a name="multiple-apps-in-the-same-plan"></a>Aynı planda birden çok uygulama
 

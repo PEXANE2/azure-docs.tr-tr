@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure Arc etkin bir Kubernetes kümesi (Önizleme) yapılandırmak için Gilar 'ı kullanma
 keywords: Gilar, Kubernetes, K8s, Azure, Arc, Azure Kubernetes hizmeti, AKS, kapsayıcılar
-ms.openlocfilehash: 906021377cbfd6960769f98f9dbd15a5c430c71f
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 751b274a9cae68f6bc9b1adc45804f2dd2ef4c72
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955340"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684766"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Arc özellikli Kubernetes kümesinde (Önizleme) GitOps kullanarak yapılandırmaları dağıtma
 
@@ -48,7 +48,7 @@ Yeni `config-agent` `sourceControlConfiguration` `config-agent` veya güncelleş
 
 `k8sconfiguration`Bağlı bir kümeyi [örnek git deposuna](https://github.com/Azure/arc-k8s-demo)bağlamak için Azure CLI uzantısını kullanın. Bu yapılandırmaya bir ad vereceğiz `cluster-config` , aracıyı `cluster-config` ad alanına dağıtmasını ve operatör izinleri vermesini sağlıyoruz `cluster-admin` .
 
-```console
+```azurecli
 az k8sconfiguration create --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name cluster-config --operator-namespace cluster-config --repository-url https://github.com/Azure/arc-k8s-demo --scope cluster --cluster-type connectedClusters
 ```
 
@@ -179,7 +179,7 @@ Daha fazla bilgi için bkz. [Flox belgeleri](https://aka.ms/FluxcdReadme).
 
 Azure CLı 'yı kullanarak `sourceControlConfiguration` başarıyla oluşturulduğunu doğrulayın.
 
-```console
+```azurecli
 az k8sconfiguration show --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
 ```
 
@@ -351,7 +351,7 @@ kubectl -n itops get all
 > Ad alanı kapsamına sahip bir sourceControlConfiguration oluşturulduktan sonra, ad alanında rol bağlama olan kullanıcıların `edit` Bu ad alanında iş yüklerini dağıtması mümkündür. `sourceControlConfiguration`Ad alanı kapsamı silindiğinde, ad alanı değişmeden kalır ve bu diğer iş yüklerinin kesilmesini önlemek için silinmez.  Gerekirse, bu ad alanını kubectl ile el ile silebilirsiniz.
 > Değişiklik yapıldığında, izlenen git deposundan dağıtımların sonucu olan kümedeki değişiklikler silinmez `sourceControlConfiguration` .
 
-```console
+```azurecli
 az k8sconfiguration delete --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
 ```
 

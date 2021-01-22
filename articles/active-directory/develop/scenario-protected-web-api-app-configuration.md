@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f1277972480f504d9d2df67930d9385cbe8c06b4
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 9ffb77db4f7bcd5a07e25085eed17e8972aa9a33
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063204"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683768"
 ---
 # <a name="protected-web-api-code-configuration"></a>Korumalı Web API 'SI: kod yapılandırması
 
@@ -175,7 +175,7 @@ services.AddControllers();
 > - `$"api://{ClientId}` diğer tüm durumlarda (v 1.0 [erişim belirteçleri](access-tokens.md)için).
 > Ayrıntılar için bkz. Microsoft. Identity. Web [kaynak kodu](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/Resource/RegisterValidAudience.cs#L70-L83).
 
-Yukarıdaki kod parçacığı [ASP.NET Core Web API 'si artımlı öğreticiden](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/63087e83326e6a332d05fee6e1586b66d840b08f/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Startup.cs#L23-L28)ayıklanır. **AddMicrosoftIdentityWebApiAuthentication** ayrıntısı [Microsoft. Identity. Web](microsoft-identity-web.md)içinde kullanılabilir. Bu yöntem, kendi ara yazılım tarafından belirtecin nasıl doğrulandığını bildiren [Addmicrosoftidentitywebapi](https://docs.microsoft.com/dotnet/api/microsoft.identity.web.microsoftidentitywebapiauthenticationbuilderextensions.addmicrosoftidentitywebapi?view=azure-dotnet-preview&preserve-view=true)' i çağırır.
+Yukarıdaki kod parçacığı [ASP.NET Core Web API 'si artımlı öğreticiden](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/63087e83326e6a332d05fee6e1586b66d840b08f/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Startup.cs#L23-L28)ayıklanır. **AddMicrosoftIdentityWebApiAuthentication** ayrıntısı [Microsoft. Identity. Web](microsoft-identity-web.md)içinde kullanılabilir. Bu yöntem, kendi ara yazılım tarafından belirtecin nasıl doğrulandığını bildiren [Addmicrosoftidentitywebapi](/dotnet/api/microsoft.identity.web.microsoftidentitywebapiauthenticationbuilderextensions.addmicrosoftidentitywebapi?preserve-view=true&view=azure-dotnet-preview)' i çağırır.
 
 ## <a name="token-validation"></a>Belirteç doğrulama
 
@@ -195,7 +195,7 @@ Doğrulama adımları, .NET açık kaynak kitaplığı [Için Microsoft Identity
 
 Bu tabloda doğrulayıcılar açıklanmaktadır:
 
-| Doğrulayıcı | Açıklama |
+| Doğrulayıcı | Description |
 |---------|---------|
 | **ValidateAudience** | Belirtecin sizin için belirteci doğrulayan uygulamanın olduğundan emin olur. |
 | **Validateıssuer** | Belirtecin güvenilir bir STS tarafından verildiğini ve güvendiğiniz bir kişiden geldiğini sağlar. |

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 34ce36f0ff348f896b7c2ea680c113b5e9e4ea09
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 87f592f0cff8504fbafba392d20f405640e2578a
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463166"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682979"
 ---
 # <a name="serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu 
 
@@ -75,7 +75,7 @@ Sunucusuz SQL havuzu, yarı yapılandırılmış ve yapılandırılmamış veril
 
 Desteklenen T-SQL:
 
-- Tam [seçme](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) yüzeyı alanı SQL işlevlerinin çoğunluğu dahil desteklenir
+- Tam [seçme](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) yüzeyı alanı SQL işlevlerinin çoğunluğu dahil desteklenir
 - CETAS-DıŞ TABLOYU SEÇ OLARAK OLUŞTUR
 - Yalnızca görünümler ve güvenlikle ilgili DDL deyimleri
 
@@ -87,9 +87,9 @@ Sunucusuz SQL havuzunda yerel depolama alanı yoktur, yalnızca meta veri nesnel
 - Görünümler ve güvenlikle ilgili olanlar dışındaki DDL deyimleri
 - DML deyimleri
 
-### <a name="extensions"></a>Uzantılar
+### <a name="extensions"></a>Uzantıları
 
-Data Lake 'teki dosyalarda bulunan verilerin yerinde sorgulanmasında sorunsuz bir deneyim sağlamak için, sunucusuz SQL havuzu aşağıdaki özellikleri ekleyerek var olan [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) işlevini genişletir:
+Data Lake 'teki dosyalarda bulunan verilerin yerinde sorgulanmasında sorunsuz bir deneyim sağlamak için, sunucusuz SQL havuzu aşağıdaki özellikleri ekleyerek var olan [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) işlevini genişletir:
 
 [Birden çok dosyayı veya klasörü sorgulama](query-data-storage.md#query-multiple-files-or-folders)
 
@@ -119,13 +119,13 @@ Sunucusuz SQL havuzu, veritabanı kullanıcısı ve diğer Microsoft hizmetlerin
 
 Sunucusuz SQL havuzu kimlik doğrulaması, kullanıcıların uç noktaya bağlanırken kimliklerini nasıl kanıtlayacağına başvurur. İki tür kimlik doğrulaması desteklenir:
 
-- **SQL kimlik doğrulaması**
+- **SQL Kimlik Doğrulaması**
 
   Bu kimlik doğrulama yöntemi bir Kullanıcı adı ve parola kullanır.
 
 - **Azure Active Directory kimlik doğrulaması**:
 
-  Bu kimlik doğrulama yöntemi, Azure Active Directory tarafından yönetilen kimlikleri kullanır. Azure AD kullanıcıları için Multi-Factor Authentication etkinleştirilebilir. [Mümkün olan her durumda](/sql/relational-databases/security/choose-an-authentication-mode?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)Active Directory kimlik doğrulaması (tümleşik güvenlik) kullanın.
+  Bu kimlik doğrulama yöntemi, Azure Active Directory tarafından yönetilen kimlikleri kullanır. Azure AD kullanıcıları için Multi-Factor Authentication etkinleştirilebilir. [Mümkün olan her durumda](/sql/relational-databases/security/choose-an-authentication-mode?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)Active Directory kimlik doğrulaması (tümleşik güvenlik) kullanın.
 
 #### <a name="authorization"></a>Yetkilendirme
 

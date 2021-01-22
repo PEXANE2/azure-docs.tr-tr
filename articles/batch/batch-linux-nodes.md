@@ -2,14 +2,14 @@
 title: Sanal makine işlem düğümlerinde Linux çalıştırma
 description: Azure Batch 'de Linux sanal makinelerinin havuzlarında paralel işlem iş yüklerini işlemeyi öğrenin.
 ms.topic: how-to
-ms.date: 11/10/2020
+ms.date: 01/21/2021
 ms.custom: H1Hack27Feb2017, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 0a9c801a13af05f077b87f296992da7f50742e4b
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: c711ec0d035b9b59ec7628a51fe3cff26de358bc
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533506"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683709"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Batch havuzlarında Linux işlem düğümleri sağlama
 
@@ -17,9 +17,7 @@ Hem Linux hem de Windows sanal makinelerinde paralel işlem iş yüklerini çal�
 
 ## <a name="virtual-machine-configuration"></a>Sanal makine yapılandırması
 
-Batch 'de işlem düğümleri havuzu oluşturduğunuzda, düğüm boyutunu ve işletim sistemini seçebileceğiniz iki seçeneğe sahip olursunuz: Cloud Services yapılandırma ve sanal makine yapılandırması. Çoğu Windows işlem düğümü havuzu, havuzun Azure Cloud Services düğümlerinden oluştuğunu belirten [Cloud Services yapılandırma](nodes-and-pools.md#cloud-services-configuration)kullanır. Bu havuzlar yalnızca Windows işlem düğümleri sağlar.
-
-Buna karşılık, [sanal makine yapılandırması](nodes-and-pools.md#virtual-machine-configuration) , havuzun Linux veya Windows görüntülerinden oluşturulan Azure VM 'lerinden oluştuğunu belirtir. Sanal makine yapılandırmasıyla bir havuz oluşturduğunuzda, [kullanılabilir bir işlem düğüm boyutu](../virtual-machines/sizes.md), sanal makine görüntüsü başvurusu ve Batch düğüm Aracısı SKU 'su (her düğümde çalışan bir program ve düğüm ile Batch hizmeti arasında bir arabirim sağlar) ve düğümlere yüklenecek sanal makine görüntüsü başvurusu belirtmeniz gerekir.
+Batch 'de işlem düğümleri havuzu oluşturduğunuzda, düğüm boyutunu ve işletim sistemini seçebileceğiniz iki seçeneğe sahip olursunuz: Cloud Services yapılandırma ve sanal makine yapılandırması. [Sanal makine yapılandırma](nodes-and-pools.md#virtual-machine-configuration) havuzları, Linux veya Windows görüntülerinden oluşturulan Azure VM 'lerinden oluşur. Sanal makine yapılandırmasıyla bir havuz oluşturduğunuzda, [kullanılabilir bir işlem düğümü boyutu](../virtual-machines/sizes.md), düğümlere yüklenecek sanal makine görüntüsü başvurusu ve Batch düğüm Aracısı SKU 'su (her düğümde çalışan ve düğüm ile Batch hizmeti arasında bir arabirim sağlayan bir program) belirtirsiniz.
 
 ### <a name="virtual-machine-image-reference"></a>Sanal makine görüntüsü başvurusu
 
@@ -35,7 +33,11 @@ Bir sanal makine görüntü başvurusu oluşturduğunuzda, aşağıdaki özellik
 | Sürüm |en son |
 
 > [!TIP]
-> Bu özellikler hakkında daha fazla bilgi ve Azure [CLI Ile Azure Marketi 'Nde LINUX VM görüntülerini bulma](../virtual-machines/linux/cli-ps-findimage.md)bölümünde Market görüntülerinin nasıl belirtilme hakkında daha fazla bilgi edinebilirsiniz. Tüm Market görüntülerinin Şu anda Batch ile uyumlu olduğunu unutmayın.
+> Bu özellikler hakkında daha fazla bilgi ve Azure [CLI Ile Azure Marketi 'Nde LINUX VM görüntülerini bulma](../virtual-machines/linux/cli-ps-findimage.md)bölümünde Market görüntülerinin nasıl belirtilme hakkında daha fazla bilgi edinebilirsiniz. Bazı Market görüntülerinin Şu anda Batch ile uyumlu olmadığına unutmayın.
+
+### <a name="list-of-virtual-machine-images"></a>Sanal makine görüntülerinin listesi
+
+Tüm Market görüntüleri, mevcut olan toplu Iş düğüm aracılarıyla uyumlu değildir. Batch hizmeti ve bunlara karşılık gelen düğüm Aracısı SKU 'Ları için desteklenen tüm Market sanal makine görüntülerini listelemek için [list_supported_images](/python/api/azure-batch/azure.batch.operations.AccountOperations#list-supported-images-account-list-supported-images-options-none--custom-headers-none--raw-false----operation-config-) (Python), [Listsupportedimages](/dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages) (Batch .net) veya başka bir dil SDK 'sında karşılık gelen API 'yi kullanın.
 
 ### <a name="node-agent-sku"></a>Düğüm Aracısı SKU 'SU
 
@@ -44,10 +46,6 @@ Bir sanal makine görüntü başvurusu oluşturduğunuzda, aşağıdaki özellik
 - Batch. Node. Ubuntu 18,04
 - Batch. Node. CentOS 7
 - Batch. Node. Windows AMD64
-
-### <a name="list-of-virtual-machine-images"></a>Sanal makine görüntülerinin listesi
-
-Tüm Market görüntüleri, mevcut olan toplu Iş düğüm aracılarıyla uyumlu değildir. Batch hizmeti ve bunlara karşılık gelen düğüm Aracısı SKU 'Ları için desteklenen tüm Market sanal makine görüntülerini listelemek için [list_supported_images](/python/api/azure-batch/azure.batch.operations.AccountOperations#list-supported-images-account-list-supported-images-options-none--custom-headers-none--raw-false----operation-config-) (Python), [Listsupportedimages](/dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages) (Batch .net) veya başka bir dil SDK 'sında karşılık gelen API 'yi kullanın.
 
 ## <a name="create-a-linux-pool-batch-python"></a>Linux havuzu oluşturma: Batch Python
 
@@ -269,7 +267,7 @@ Bir parola yerine, bir düğümde Kullanıcı oluştururken bir SSH ortak anahta
 
 ## <a name="pricing"></a>Fiyatlandırma
 
-Azure Batch Azure Cloud Services ve Azure sanal makineler teknolojisinden oluşturulmuştur. Batch hizmeti 'nin kendisi ücretsiz olarak sunulur, bu da yalnızca toplu Iş çözümlerinizin tükettiği işlem kaynakları (ve buna yönelik ilişkili maliyetler) için ücretlendirilirsiniz. **Sanal makine yapılandırması** ' nı seçtiğinizde, [sanal makinelerin fiyatlandırma](https://azure.microsoft.com/pricing/details/virtual-machines/) yapısına göre ücretlendirilirsiniz.
+Azure Batch Azure Cloud Services ve Azure sanal makineler teknolojisinden oluşturulmuştur. Batch hizmeti 'nin kendisi ücretsiz olarak sunulur, bu da yalnızca toplu Iş çözümlerinizin tükettiği işlem kaynakları (ve buna yönelik ilişkili maliyetler) için ücretlendirilirsiniz. **Sanal makine yapılandırması**' nı seçtiğinizde, [sanal makinelerin fiyatlandırma](https://azure.microsoft.com/pricing/details/virtual-machines/) yapısına göre ücretlendirilirsiniz.
 
 [Uygulama paketlerini](batch-application-packages.md)kullanarak toplu iş düğümlerinize uygulamalar dağıtırsanız, uygulama paketlerinizin kullanacağı Azure depolama kaynakları için de ücretlendirilirsiniz.
 

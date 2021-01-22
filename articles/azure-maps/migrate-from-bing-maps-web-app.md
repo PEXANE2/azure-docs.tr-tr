@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: ef2c69409ce3f479338ffc9d418b3469f197ad30
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: db53e4407674abc1e6c81090dc4a50afa784940d
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679390"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684833"
 ---
 # <a name="tutorial-migrate-a-web-app-from-bing-maps"></a>Öğretici: Bing Haritalar 'dan bir Web uygulaması geçirme
 
@@ -44,7 +44,7 @@ Bir JavaScript çerçevesi kullanılarak geliştirilirken, aşağıdaki açık k
 * [Azure Maps 'e tepki verme bileşeni](https://github.com/WiredSolutions/react-azure-maps) -Azure Maps denetimi için bir tepki düzeyi.
 * [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) -Vue uygulaması Için bir Azure Maps bileşeni.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. [Azure portalında](https://portal.azure.com) oturum açın. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 2. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
@@ -85,7 +85,7 @@ Azure Maps [, Web SDK 'sının](open-source-projects.md#open-web-sdk-modules) ye
 
 Aşağıda, Bing Haritalar ve Azure Maps web SDK 'Ları arasındaki önemli farklılıklar aşağıda verilmiştir:
 
-* Azure Maps web SDK 'sına erişim için barındırılan bir uç nokta sağlamaya ek olarak, tercih edilen durumlarda Web SDK 'sını uygulamalara katıştırmak için de bir NPM paketi de mevcuttur. Daha fazla bilgi için bu [belgelere](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control) bakın. Bu paket TypeScript tanımlarını da içerir.
+* Azure Maps web SDK 'sına erişim için barındırılan bir uç nokta sağlamaya ek olarak, tercih edilen durumlarda Web SDK 'sını uygulamalara katıştırmak için de bir NPM paketi de mevcuttur. Daha fazla bilgi için bu [belgelere](./how-to-use-map-control.md) bakın. Bu paket TypeScript tanımlarını da içerir.
 * Bing Haritalar, SDK 'sının iki barındırılan dalını sağlar; Yayın ve deneysel. Deneysel dal, yeni geliştirme gerçekleşirken günde birden çok güncelleştirme alabilir. Azure Maps yalnızca bir sürüm dalı barındırır, ancak deneysel Özellikler açık kaynaklı Azure Maps kod örnekleri projesinde özel modüller olarak oluşturulur. Bing Haritalar, dondurulmuş bir dala sahip olmak ve daha az sıklıkta güncelleştirildiğinden, bir yayın nedeniyle değişiklikleri bozmak riskini azaltmak için kullanılır. Azure haritalar 'da, NPM modülünü kullanabilir ve önceki bir alt sürüm sürümüne işaret edebilirsiniz.
 
 > [!TIP]
@@ -95,7 +95,7 @@ Aşağıda, Bing Haritalar ve Azure Maps web SDK 'Ları arasındaki önemli fark
 * Her iki platform da temel haritalar için benzer bir döşeme sistemi kullanır, ancak Bing Haritalar 'daki kutucuklar boyut olarak 256 pikseldir, ancak Azure haritalar 'daki kutucuklar boyut olarak 512 pikseldir. Bu nedenle, Azure haritalar 'daki aynı harita görünümünü Bing Haritalar olarak almak için, Bing Haritalar 'da kullanılan bir yakınlaştırma düzeyinin Azure Maps 'ta bir tane tarafından çıkarılan olması gerekir.
 * Bing Haritalar 'daki koordinatlar `latitude, longitude` Azure haritalar 'ın kullandığı sırada olarak adlandırılır `longitude, latitude` . Bu biçim `[x, y]` , en fazla GIS platformundan sonra gelen standart ile hizalanır.
 
-* Azure Haritalar Web SDK 'sindeki şekiller GeoJSON şemasına dayalıdır. Yardımcı sınıflar, [Atlas. Data ad alanı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data)aracılığıyla sunulur. Ayrıca Atlas de vardır [. ](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) GeoJSON nesnelerini kaydırmak ve veri bağlanabilir bir şekilde güncellemenin ve bakımını kolaylaştırmak için kullanılabilecek şekil sınıfı.
+* Azure Haritalar Web SDK 'sindeki şekiller GeoJSON şemasına dayalıdır. Yardımcı sınıflar, [Atlas. Data ad alanı](/javascript/api/azure-maps-control/atlas.data)aracılığıyla sunulur. Ayrıca Atlas de vardır [. ](/javascript/api/azure-maps-control/atlas.shape) GeoJSON nesnelerini kaydırmak ve veri bağlanabilir bir şekilde güncellemenin ve bakımını kolaylaştırmak için kullanılabilecek şekil sınıfı.
 * Azure haritalar 'daki Koordinatlar, veya biçiminde basit bir sayı dizisi olarak belirtime konumu nesneleri olarak tanımlanır `[longitude, latitude]` `new atlas.data.Position(longitude, latitude)` .
 
 > [!TIP]
@@ -909,7 +909,7 @@ Azure haritalar 'da veriler bir veri kaynağı tarafından eklenir ve yönetilir
 
 Kümeleme etkinleştirildiğinde veri kaynağı, işleme için katmanlara kümelenmiş ve kümelenmemiş veri noktaları gönderir. Veri kaynağı yüzlerce binlerce veri noktası kümelemesine sahiptir. Kümelenmiş bir veri noktası üzerinde aşağıdaki özelliklere sahiptir:
 
-| Özellik adı               | Tür    | Açıklama                                    |
+| Özellik adı               | Tür    | Description                                    |
 |-----------------------------|---------|------------------------------------------------|
 | `cluster`                   | boolean | Özelliğin bir kümeyi temsil ettiğini belirtir.     |
 | `cluster_id`                | string  | Kümeyle `DataSource` `getClusterExpansionZoom` , `getClusterChildren` , ve işlevleriyle KULLANıLABILECEK benzersiz bir kimlik `getClusterLeaves` . |
@@ -918,7 +918,7 @@ Kümeleme etkinleştirildiğinde veri kaynağı, işleme için katmanlara kümel
 
 `DataSource`Sınıfı, kullanarak bir kümeyle ilgili ek bilgilere erişmek için aşağıdaki yardımcı işleve sahiptir `cluster_id` .
 
-| İşlev       | Dönüş türü        | Açıklama     |
+| İşlev       | Dönüş türü        | Description     |
 |----------------|--------------------|-----------------|
 | `getClusterChildren(clusterId: number)`                              | `Promise<Feature<Geometry, any> | Shape>` | Sonraki yakınlaştırma düzeyinde verilen kümenin alt öğelerini alır. Bu alt öğeler, şekillerin ve alt kümelerin bir birleşimi olabilir. Alt kümeler, küme özellikleriyle eşleşen özelliklerle özellik olacaktır. |
 | `getClusterExpansionZoom(clusterId: number)`                         | `Promise<number>`                            | Kümenin genişlemekte veya parçalanmasına başlayacağı yakınlaştırma düzeyini hesaplar.    |

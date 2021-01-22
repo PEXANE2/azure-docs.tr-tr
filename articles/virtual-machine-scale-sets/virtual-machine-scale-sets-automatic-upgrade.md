@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 06/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 4ebb16186e613affdb886a8819240d47f944c42f
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: ff1a29577c0778d6ef88d3523c726f7a48739cdc
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763549"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684619"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure sanal makine ölçek kümesi otomatik işletim sistemi görüntüsü yükseltmeleri
 
@@ -49,7 +49,7 @@ Yükseltme işlemi aşağıdaki gibi kullanılabilir:
 >Otomatik işletim sistemi yükseltmesi, ölçek kümesindeki başvuru görüntüsü SKU 'sunu yükseltmez. SKU 'Yu (Ubuntu 16,04-LTS ile 18,04-LTS) değiştirmek için, [Ölçek kümesi modelini](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model) doğrudan Istenen görüntü SKU 'su ile güncelleştirmeniz gerekir. Görüntü yayımcısı ve teklif, var olan bir ölçek kümesi için değiştirilemez.  
 
 ## <a name="supported-os-images"></a>Desteklenen işletim sistemi görüntüleri
-Şu anda yalnızca belirli işletim sistemi platformu görüntüleri destekleniyor. Ölçek kümesi, [paylaşılan görüntü Galerisi](shared-image-galleries.md)aracılığıyla özel görüntüler kullanıyorsa, özel görüntüler [desteklenir](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images) .
+Şu anda yalnızca belirli işletim sistemi platformu görüntüleri destekleniyor. Ölçek kümesi, [paylaşılan görüntü Galerisi](../virtual-machines/shared-image-galleries.md)aracılığıyla özel görüntüler kullanıyorsa, özel görüntüler [desteklenir](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images) .
 
 Aşağıdaki platform SKU 'Ları Şu anda desteklenmektedir (ve daha fazla düzenli olarak eklenir):
 
@@ -89,11 +89,11 @@ Uyuşmazlık ayarlarının Service Fabric kümesinde ve Service Fabric uzantıs�
 
 ## <a name="automatic-os-image-upgrade-for-custom-images"></a>Özel görüntüler için otomatik işletim sistemi görüntüsü yükseltmesi
 
-[Paylaşılan görüntü Galerisi](shared-image-galleries.md)aracılığıyla dağıtılan özel görüntüler için otomatik işletim sistemi görüntüsü yükseltmesi desteklenir. Diğer özel görüntüler otomatik işletim sistemi görüntüsü yükseltmeleri için desteklenmez.
+[Paylaşılan görüntü Galerisi](../virtual-machines/shared-image-galleries.md)aracılığıyla dağıtılan özel görüntüler için otomatik işletim sistemi görüntüsü yükseltmesi desteklenir. Diğer özel görüntüler otomatik işletim sistemi görüntüsü yükseltmeleri için desteklenmez.
 
 ### <a name="additional-requirements-for-custom-images"></a>Özel görüntüler için ek gereksinimler
 - Otomatik işletim sistemi görüntüsü yükseltmesi için kurulum ve yapılandırma işlemi, bu sayfanın [yapılandırma bölümünde](virtual-machine-scale-sets-automatic-upgrade.md#configure-automatic-os-image-upgrade) ayrıntılı olarak tüm ölçek kümeleri için aynıdır.
-- Ölçek Kümeleri, otomatik işletim sistemi görüntüsü yükseltmeleri için yapılandırılan örnekleri, görüntünün yeni bir sürümü yayımlandığında ve bu ölçek kümesinin bölgesine [çoğaltıldığında](shared-image-galleries.md#replication) paylaşılan görüntü Galerisi görüntüsünün en son sürümüne yükseltilir. Yeni görüntü ölçeğin dağıtıldığı bölgeye çoğaltılmamışsa, ölçek kümesi örnekleri en son sürüme yükseltilmeyecektir. Bölgesel görüntü çoğaltma, ölçek kümeleriniz için yeni görüntünün dağıtımını denetlemenize olanak tanır.
+- Ölçek Kümeleri, otomatik işletim sistemi görüntüsü yükseltmeleri için yapılandırılan örnekleri, görüntünün yeni bir sürümü yayımlandığında ve bu ölçek kümesinin bölgesine [çoğaltıldığında](../virtual-machines/shared-image-galleries.md#replication) paylaşılan görüntü Galerisi görüntüsünün en son sürümüne yükseltilir. Yeni görüntü ölçeğin dağıtıldığı bölgeye çoğaltılmamışsa, ölçek kümesi örnekleri en son sürüme yükseltilmeyecektir. Bölgesel görüntü çoğaltma, ölçek kümeleriniz için yeni görüntünün dağıtımını denetlemenize olanak tanır.
 - Yeni görüntü sürümü, bu Galeri görüntüsü için en son sürümden dışlanmamalıdır. Galeri görüntüsünün en son sürümünden dışlanan görüntü sürümleri, otomatik işletim sistemi görüntüsü yükseltmesinde ölçek kümesine alınmaz.
 
 > [!NOTE]

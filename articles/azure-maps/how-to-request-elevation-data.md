@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: a303f5e6177d0dc4205eaec8c3b1911e8e004fe3
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: d14eda84144105bf2e04f1238284bc58a91c4c03
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602421"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684064"
 ---
 # <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>Azure haritalar yükseltme hizmetini kullanarak yükseltme verileri isteme (Önizleme)
 
@@ -22,9 +22,9 @@ ms.locfileid: "98602421"
 > Azure haritalar yükseltme hizmeti şu anda genel önizleme aşamasındadır.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Azure haritalar [yükseltme hizmeti](https://docs.microsoft.com/rest/api/maps/elevation) , dünyanın her yerindeki yükseltme verilerini sorgulamak Için API 'ler sağlar. Tanımlanmış bir sınırlama kutusu içinde veya belirli koordinatlarda, bir veya daha fazla şekilde örneklenmiş yükseltme verileri isteyebilirsiniz. Ayrıca, yükseltme verilerini kutucuk biçiminde almak için [Işleme v2-harita kutucuğu API](https://docs.microsoft.com/rest/api/maps/renderv2) 'sini kullanabilirsiniz. Kutucuklar GeoTIFF raster biçiminde teslim edilir. Bu makalede, yükseltme verilerini istemek için Azure haritalar yükseltme hizmeti ve harita alma kutucuğu API 'sinin nasıl kullanılacağı gösterilir. Yükseltme verileri hem GeoJSON hem de GeoTiff biçimlerinde istenebilir.
+Azure haritalar [yükseltme hizmeti](/rest/api/maps/elevation) , dünyanın her yerindeki yükseltme verilerini sorgulamak Için API 'ler sağlar. Tanımlanmış bir sınırlama kutusu içinde veya belirli koordinatlarda, bir veya daha fazla şekilde örneklenmiş yükseltme verileri isteyebilirsiniz. Ayrıca, yükseltme verilerini kutucuk biçiminde almak için [Işleme v2-harita kutucuğu API](/rest/api/maps/renderv2) 'sini kullanabilirsiniz. Kutucuklar GeoTIFF raster biçiminde teslim edilir. Bu makalede, yükseltme verilerini istemek için Azure haritalar yükseltme hizmeti ve harita alma kutucuğu API 'sinin nasıl kullanılacağı gösterilir. Yükseltme verileri hem GeoJSON hem de GeoTiff biçimlerinde istenebilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. [S1 fiyatlandırma katmanında bir Azure Maps hesabı oluşturun](quick-demo-map-app.md#create-an-azure-maps-account)
 2. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account).
@@ -35,7 +35,7 @@ Bu makale [Postman](https://www.postman.com/) uygulamasını kullanır, ancak fa
 
 ## <a name="request-elevation-data-in-raster-tiled-format"></a>Tarama döşenmiş biçimdeki yükseltme verileri iste
 
-Raster kutucuk biçiminde yükseltme verileri istemek için, [oluşturma v2-Get Map kutucuğu API](https://docs.microsoft.com/rest/api/maps/renderv2)'sini kullanın. Kutucuk bulunamıyorsa, API, kutucuğu bir GeoTIFF olarak döndürür. Aksi takdirde, API 0 döndürür. Tüm raster DEM kutucukları, GeoId (Sea düzeyi) Dünya modunu kullanıyor. Bu örnekte, mt için yükseltme verileri isteyeceğiz. Her bir yaprak.
+Raster kutucuk biçiminde yükseltme verileri istemek için, [oluşturma v2-Get Map kutucuğu API](/rest/api/maps/renderv2)'sini kullanın. Kutucuk bulunamıyorsa, API, kutucuğu bir GeoTIFF olarak döndürür. Aksi takdirde, API 0 döndürür. Tüm raster DEM kutucukları, GeoId (Sea düzeyi) Dünya modunu kullanıyor. Bu örnekte, mt için yükseltme verileri isteyeceğiz. Her bir yaprak.
 
 >[!TIP]
 >Dünya eşlemesindeki belirli bir alanda kutucuk almak için uygun yakınlaştırma düzeyinde doğru kutucuğu bulmanız gerekir. Ayrıca, WorldDEM genel yer kaplamasından, ancak Oceans kapsamadığı unutulmamalıdır.  Daha fazla bilgi için bkz. [yakınlaştırma düzeyleri ve kutucuk Kılavuzu](zoom-levels-and-tile-grid.md).
@@ -58,9 +58,9 @@ GeoJSON biçiminde yükseltme verileri istemek için yükseltme hizmeti (Önizle
 
 * [Noktalara yönelik verileri al](/rest/api/maps/elevation/getdataforpoints)
 * [Noktaları için veri Gönder](/rest/api/maps/elevation/postdataforpoints)
-* [Çoklu çizgi için veri al](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline)
-* [Çoklu çizgi için veri Gönder](https://docs.microsoft.com/rest/api/maps/elevation/postdataforpolyline)
-* [Sınırlayıcı kutu için veri al](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
+* [Çoklu çizgi için veri al](/rest/api/maps/elevation/getdataforpolyline)
+* [Çoklu çizgi için veri Gönder](/rest/api/maps/elevation/postdataforpolyline)
+* [Sınırlayıcı kutu için veri al](/rest/api/maps/elevation/getdataforboundingbox)
 
 >[!IMPORTANT]
 > Hiçbir veri döndürülmediğinde, tüm API 'Ler döndürülür `0` .
@@ -126,11 +126,11 @@ Bu örnekte, MT 'de yükseltme verileri istemek için [noktalara yönelik verile
 
 ### <a name="request-elevation-data-samples-along-a-polyline"></a>Çoklu çizgi üzerinde yükseltme veri örnekleri iste
 
-Bu örnekte, her bir [Çoklu çizgi Için veri al](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline) ' ı kullanarak, her Ikisi de MT 'deki koordinatlar arasında düz bir çizgi boyunca, eşit oranda yükseltme verisi örnekleri talep ederiz. Marest ve Chamlang mountaıns. Her iki koordinat de Long/Lat biçiminde tanımlanmalıdır. Parametresi için bir değer belirtmezseniz `samples` , örnek sayısı varsayılan olarak 10 ' dur. En fazla örnek sayısı 2.000 ' dir.
+Bu örnekte, her bir [Çoklu çizgi Için veri al](/rest/api/maps/elevation/getdataforpolyline) ' ı kullanarak, her Ikisi de MT 'deki koordinatlar arasında düz bir çizgi boyunca, eşit oranda yükseltme verisi örnekleri talep ederiz. Marest ve Chamlang mountaıns. Her iki koordinat de Long/Lat biçiminde tanımlanmalıdır. Parametresi için bir değer belirtmezseniz `samples` , örnek sayısı varsayılan olarak 10 ' dur. En fazla örnek sayısı 2.000 ' dir.
 
 Daha sonra, bir yol boyunca aynı şekilde yükseltme verilerinin üç eşit olarak yer aldığı örnek istemek için çoklu çizgi için veri al ' ı kullanacağız. Üç Long/Lat koordinat çiftlerine geçirerek örneklerin kesin konumunu tanımlayacağız.
 
-Son olarak, aynı üç eşit aralıklı örnek üzerinde yükseltme verileri istemek için [Çoklu çizgi API 'Si Için post verilerini](https://docs.microsoft.com/rest/api/maps/elevation/postdataforpolyline) kullanacağız.
+Son olarak, aynı üç eşit aralıklı örnek üzerinde yükseltme verileri istemek için [Çoklu çizgi API 'Si Için post verilerini](/rest/api/maps/elevation/postdataforpolyline) kullanacağız.
 
 URL 'deki Latitudes ve Longitudes 'in, WGS84 (Dünya coğrafi sistem) ondalık derecesindeki olması beklenir.
 
@@ -229,7 +229,7 @@ URL 'deki Latitudes ve Longitudes 'in, WGS84 (Dünya coğrafi sistem) ondalık d
     }
     ```
 
-7. Artık aynı üç noktaya yönelik yükseltme verilerini almak için [Çoklu çizgi API 'Si Için post verilerini](https://docs.microsoft.com/rest/api/maps/elevation/postdataforpolyline) çağıracağız. Oluşturucu sekmesinde http **Post** yöntemini seçin ve aşağıdaki URL 'yi girin. Bu istek ve bu makalede bahsedilen diğer istekler için, `{Azure-Maps-Primary-Subscription-key}` birincil abonelik anahtarınızla değiştirin.
+7. Artık aynı üç noktaya yönelik yükseltme verilerini almak için [Çoklu çizgi API 'Si Için post verilerini](/rest/api/maps/elevation/postdataforpolyline) çağıracağız. Oluşturucu sekmesinde http **Post** yöntemini seçin ve aşağıdaki URL 'yi girin. Bu istek ve bu makalede bahsedilen diğer istekler için, `{Azure-Maps-Primary-Subscription-key}` birincil abonelik anahtarınızla değiştirin.
 
     ```http
     https://atlas.microsoft.com/elevation/line/json?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&samples=5
@@ -256,7 +256,7 @@ URL 'deki Latitudes ve Longitudes 'in, WGS84 (Dünya coğrafi sistem) ondalık d
 
 ### <a name="request-elevation-data-by-bounding-box"></a>Sınırlama kutusuna göre yükseltme verileri iste
 
-Şimdi, veri al ' a yakın bir yükseltme verisi istemek için [sınırlayıcı Için veri al kutusunu](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox) kullanacağız. Rainier, WA. Yükseltme verileri, bir sınırlayıcı kutu içindeki eşit aralıklı konumlarda döndürülür. (2) enlem/uzun koordinatları (Güney Latitude, Batı boylam | kuzey enlem, Doğu Boylam) tarafından tanımlanan sınırlayıcı alan, satırlara ve sütunlara bölünür. Satırların iki (2) için sınırlayıcı kutu hesabının kenarları ve iki (2) sütun. Satır ve sütun kesişimlerde oluşturulan kılavuz köşeleri için yükseltme döndürülür. Tek bir istekte 2000 ' e kadar yükseltme döndürülebilir.
+Şimdi, veri al ' a yakın bir yükseltme verisi istemek için [sınırlayıcı Için veri al kutusunu](/rest/api/maps/elevation/getdataforboundingbox) kullanacağız. Rainier, WA. Yükseltme verileri, bir sınırlayıcı kutu içindeki eşit aralıklı konumlarda döndürülür. (2) enlem/uzun koordinatları (Güney Latitude, Batı boylam | kuzey enlem, Doğu Boylam) tarafından tanımlanan sınırlayıcı alan, satırlara ve sütunlara bölünür. Satırların iki (2) için sınırlayıcı kutu hesabının kenarları ve iki (2) sütun. Satır ve sütun kesişimlerde oluşturulan kılavuz köşeleri için yükseltme döndürülür. Tek bir istekte 2000 ' e kadar yükseltme döndürülebilir.
 
 Bu örnekte, satırları = 3 ve sütun = 6 olarak belirteceğiz. yanıtta 18 yükseltme değeri döndürülür. Aşağıdaki diyagramda, yükseltme değerleri güneybatı köşesinden başlayarak sıralanır ve Batı ile Doğu ve Güney-Kuzey arasında devam eder.  Yükseltme noktaları, döndürültikleri sırada numaralandırılır.
 
@@ -488,15 +488,15 @@ Azure haritalar yükseltme (Önizleme) API 'Lerini daha ayrıntılı incelemek i
 > [Yükseltme (Önizleme)-enlem uzun koordinatları için veri al](/rest/api/maps/elevation/getdataforpoints)
 
 > [!div class="nextstepaction"]
-> [Yükseltme (Önizleme)-sınırlayıcı kutu için veri al](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
+> [Yükseltme (Önizleme)-sınırlayıcı kutu için veri al](/rest/api/maps/elevation/getdataforboundingbox)
 
 > [!div class="nextstepaction"]
-> [Yükseltme (Önizleme)-çoklu çizgi için veri al](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline)
+> [Yükseltme (Önizleme)-çoklu çizgi için veri al](/rest/api/maps/elevation/getdataforpolyline)
 
 > [!div class="nextstepaction"]
-> [Render v2: harita kutucuğunu al](https://docs.microsoft.com/rest/api/maps/renderv2)
+> [Render v2: harita kutucuğunu al](/rest/api/maps/renderv2)
 
 Azure haritalar REST API 'lerinin tüm listesi için bkz.:
 
 > [!div class="nextstepaction"]
-> [Azure haritalar REST API 'Leri](https://docs.microsoft.com/rest/api/maps/)
+> [Azure haritalar REST API 'Leri](/rest/api/maps/)

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 1/5/2021
 ms.author: v-jawe
-ms.openlocfilehash: 07c9bd12664a94c64a0d0b37d638b5668cc7f61e
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: b4035e2039afb6fe66d2658ebfcd3206d46e1de5
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98605635"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682471"
 ---
 # <a name="how-to-mitigate-latency-when-using-the-face-service"></a>Nasıl yapılır: yüz hizmetini kullanırken gecikme süresini azaltma
 
@@ -42,7 +42,11 @@ var faces = await client.Face.DetectWithUrlAsync("https://www.biography.com/.ima
 
 Yüz hizmeti 'nin görüntüyü uzak sunucudan indirmesi gerekir. Yüz hizmetten uzak sunucuya bağlantı yavaşsa, algılama yönteminin yanıt süresini etkiler.
 
-Bunu azaltmak için [görüntüyü Azure Premium BLOB depolama alanında depolamayı](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet)göz önünde bulundurun.
+Bunu azaltmak için [görüntüyü Azure Premium BLOB depolama alanında depolamayı](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet)göz önünde bulundurun. Örnek:
+
+``` csharp
+var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows.net/resources/Face/Images/Family1-Daughter1.jpg");
+```
 
 ### <a name="large-upload-size"></a>Büyük karşıya yükleme boyutu
 
@@ -58,7 +62,10 @@ Karşıya yüklenecek dosya büyükse, `DetectWithStreamAsync` aşağıdaki nede
 - Dosyayı dosya boyutuna göre işlemek için hizmeti daha uzun sürer.
 
 Karşı
-- [Görüntüyü Azure Premium blob depolamada depolamayı](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet)göz önünde bulundurun.
+- [Görüntüyü Azure Premium blob depolamada depolamayı](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet)göz önünde bulundurun. Örnek:
+``` csharp
+var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows.net/resources/Face/Images/Family1-Daughter1.jpg");
+```
 - Daha küçük bir dosyayı karşıya yüklemeyi düşünün.
     - Yüz tanıma için [giriş verileriyle](https://docs.microsoft.com/azure/cognitive-services/face/concepts/face-detection#input-data) ilgili yönergeleri ve yüz [tanıma için giriş verilerini](https://docs.microsoft.com/azure/cognitive-services/face/concepts/face-recognition#input-data)görüntüleyin.
     - Yüz algılama için, algılama modeli kullanılırken `DetectionModel.Detection01` , görüntü dosyası boyutunu azaltmak işleme hızını artırır. Algılama modeli kullanılırken, görüntü dosyası `DetectionModel.Detection02` boyutunu azaltmak yalnızca görüntü dosyası 1920x1080 ' den küçük olduğunda işleme hızını artırır.

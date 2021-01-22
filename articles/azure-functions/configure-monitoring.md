@@ -4,12 +4,12 @@ description: İzleme için işlev uygulamanızı Application Insights bağlama v
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 24350eb07481db66907d199cd96f84a02cc98c9e
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 73ed679288d9d03b81a0b01670aa0f574a14839f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937289"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684717"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>Azure Işlevleri için izlemeyi yapılandırma
 
@@ -233,7 +233,7 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
 
 Bir işlev uygulamasının Application Insights verileri gönderebilmesi için, bir Application Insights kaynağının izleme anahtarını bilmeleri gerekir. Anahtar, **APPINSIGHTS_INSTRUMENTATIONKEY** adlı bir uygulama ayarında olmalıdır.
 
-İşlev uygulamanızı [Azure Portal](functions-create-first-azure-function.md)oluşturduğunuzda, komut satırından [Azure Functions Core Tools](./create-first-function-cli-csharp.md)veya [Visual Studio Code](./create-first-function-vs-code-csharp.md)kullanarak Application Insights tümleştirme varsayılan olarak etkinleştirilir. Application Insights kaynak, işlev uygulamanızla aynı ada sahiptir ve aynı bölgede ya da en yakın bölgede oluşturulur.
+İşlev uygulamanızı [Azure Portal](./functions-get-started.md)oluşturduğunuzda, komut satırından [Azure Functions Core Tools](./create-first-function-cli-csharp.md)veya [Visual Studio Code](./create-first-function-vs-code-csharp.md)kullanarak Application Insights tümleştirme varsayılan olarak etkinleştirilir. Application Insights kaynak, işlev uygulamanızla aynı ada sahiptir ve aynı bölgede ya da en yakın bölgede oluşturulur.
 
 ### <a name="new-function-app-in-the-portal"></a>Portalda yeni işlev uygulaması
 

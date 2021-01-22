@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: larryfr
 author: BlackMist
 ms.date: 03/05/2020
-ms.openlocfilehash: 812bbb2507310d088c42fa1cf2cad4c330755892
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: ec99be6082e01ea49e75ff29b5fb3c37d56b6dd5
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072335"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683383"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench’te neler oldu?
 
@@ -67,7 +67,7 @@ Modellerinizi eğitmek ve yeni CLı ve SDK kullanarak çalıştırma geçmişler
 
 Hiçbir kodu veya çalışmayı kaybetmeyeceksiniz. Eski sürümde projeler yerel dizini olan bulut varlıklarıydı. En son sürümde, yerel bir yapılandırma dosyası kullanarak Azure Machine Learning çalışma alanına yerel dizinler iliştirerek. [En son mimarinin diyagramını](concept-azure-machine-learning-architecture.md)görüntüleyin.
 
-Proje içeriğinin büyük bölümü zaten yerel makinenizde. Bu nedenle, çalışma alanınıza bağlanmak için bu dizinde bir yapılandırma dosyası oluşturmanız ve kodunuzda buna başvurmanız yeterlidir. Dosyalarınızı ve betikleri içeren yerel dizini kullanmaya devam etmek için, [' denemeler. Gönder '](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py) Python komutunda veya CLI komutunu kullanarak dizinin adını belirtin `az ml project attach` .  Örneğin:
+Proje içeriğinin büyük bölümü zaten yerel makinenizde. Bu nedenle, çalışma alanınıza bağlanmak için bu dizinde bir yapılandırma dosyası oluşturmanız ve kodunuzda buna başvurmanız yeterlidir. Dosyalarınızı ve betikleri içeren yerel dizini kullanmaya devam etmek için, [' denemeler. Gönder '](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py) Python komutunda veya CLI komutunu kullanarak dizinin adını belirtin `az ml project attach` .  Örnek:
 ```python
 run = exp.submit(source_directory=script_folder,
                  script='train.py', run_config=run_config_system_managed)
@@ -101,7 +101,7 @@ Tercih ettiğiniz yöntemle ilk denemenizi oluşturun:
 
   + [Kendi ortamınızı kullanın](tutorial-1st-experiment-sdk-setup-local.md)
   + [Python not defterlerini kullanma](tutorial-1st-experiment-sdk-setup.md)
-  + [R Markdown kullan](tutorial-1st-r-experiment.md) 
+  + [R Markdown kullan](https://github.com/Azure/azureml-sdk-for-r) 
   + [Otomatik makine öğrenimi kullan](tutorial-designer-automobile-price-train-score.md) 
   + [Tasarımcı 'nın sürükleme & bırakma özelliklerini kullanın](tutorial-first-experiment-automated-ml.md) 
   + [CLı için ML uzantısını kullanma](tutorial-train-deploy-model-cli.md)

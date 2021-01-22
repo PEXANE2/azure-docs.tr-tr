@@ -1,25 +1,25 @@
 ---
-title: Akıllı gürültü paketiyle değişiklik gizliliği uygulama (Önizleme)
+title: Makine öğreniminde değişiklik gizliliği (Önizleme)
 titleSuffix: Azure Machine Learning
-description: Değişiklik gizliliğinin ne olduğunu ve Smartgürültü paketinin, veri gizliliğini koruyan fark özel sistemlerini uygulamanıza nasıl yardımcı olabileceğini öğrenin.
+description: Değişiklik gizliliğinizi ve veri gizliliğini koruyan farklı şekilde özel sistemleri nasıl uygulayabileceğinizi öğrenin.
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 12/21/2020
+ms.date: 01/21/2020
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: responsible-ml
-ms.openlocfilehash: 22ba505a2e13b2f88f212f2fe1b85d07f79f77e5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 39f4b1a7b9eb1ad7a87097240dd772e4f2dadf17
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218969"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683555"
 ---
-# <a name="preserve-data-privacy-by-using-differential-privacy-and-the-smartnoise-package-preview"></a>Değişiklik gizliliği ve SmartNoise paketini (Önizleme) kullanarak veri gizliliğini koruma
+# <a name="what-is-differential-privacy-in-machine-learning-preview"></a>Makine öğreniminde değişiklik gizliliği nedir (Önizleme)
 
-Değişiklik gizliliğinin ne olduğunu ve Smartgürültü paketinin farklı bir özel sistem uygulamanıza nasıl yardımcı olabileceğini öğrenin.
+Machine Learning 'de değişiklik gizliliği ve nasıl çalıştığı hakkında bilgi edinin.
 
 Kuruluşun analizler için topladığı ve kullandığı veri miktarı arttıkça, gizlilik ve güvenlikle ilgili endişeler de vardır. Çözümlemeler için veri gerekir. Genellikle, modelleri eğitmek için kullanılan veriler daha doğru olur. Bu çözümlemeler için kişisel bilgiler kullanıldığında, verilerin kullanımı boyunca özel olarak kalması özellikle önemlidir.
 
@@ -28,9 +28,9 @@ Kuruluşun analizler için topladığı ve kullandığı veri miktarı arttıkç
 Değişiklik gizliliği, kişilerin verilerinin güvende ve özel olmasını sağlamaya yardımcı olan bir sistem ve uygulamalar kümesidir.
 
 > [!div class="mx-imgBorder"]
-> ![Değişiklik gizlilik süreci](./media/concept-differential-privacy/differential-privacy-process.jpg)
+> ![Değişiklik gizliliği makine öğrenimi işlemi](./media/concept-differential-privacy/differential-privacy-machine-learning.jpg)
 
-Geleneksel senaryolarda, ham veriler dosya ve veritabanlarında depolanır. Kullanıcılar verileri çözümlerse genellikle ham verileri kullanır. Bu sorun, bir kişinin gizliliğine infringe olabileceğinden bir kaygıdır. Değişiklik gizliliği, kullanıcıların herhangi bir veri noktasını tanımlayamaması için verilere "gürültü" veya rasgelelik ekleyerek bu sorunla başa geçmeye çalışır. En azından, bu tür bir sistem, plausıble deniability sağlar.
+Geleneksel senaryolarda, ham veriler dosya ve veritabanlarında depolanır. Kullanıcılar verileri çözümlerse genellikle ham verileri kullanır. Bu sorun, bir kişinin gizliliğine infringe olabileceğinden bir kaygıdır. Değişiklik gizliliği, kullanıcıların herhangi bir veri noktasını tanımlayamaması için verilere "gürültü" veya rasgelelik ekleyerek bu sorunla başa geçmeye çalışır. En azından, bu tür bir sistem, plausıble deniability sağlar. Bu nedenle, kişilerin gizliliği verilerin doğruluğu üzerinde sınırlı bir etkiye sahip olacak şekilde korunur.
 
 Farklı şekilde özel sistemlerde, veriler **sorgu** olarak adlandırılan istekler aracılığıyla paylaşılır. Bir Kullanıcı veriler için bir sorgu gönderdiğinde, **Gizlilik mekanizmaları** olarak bilinen işlemler istenen verilere gürültü ekler. Gizlilik mekanizmaları ham veriler yerine *verilerin yaklaşık bir kısmını* döndürür. Bu Gizlilik-koruma sonucu bir **raporda** görüntülenir. Raporlar, hesaplanan gerçek veriler ve verilerin nasıl oluşturulduğuna ilişkin bir açıklama olmak üzere iki bölümden oluşur.
 
@@ -42,22 +42,22 @@ Epsilon değerleri negatif değil. Aşağıdaki değerler 1 tam plausible deniab
 
 Daha doğrudan Epsilon ile bağıntılı bir değer **Delta**. Delta, raporun tam olarak özel olmadığı olasılığının bir ölçüsüdür. Delta ne kadar yüksekse, Epsilon daha yüksektir. Bu değerler bağıntılı olduğundan, Epsilon daha sık kullanılır.
 
-## <a name="privacy-budget"></a>Gizlilik bütçesi
+## <a name="limit-queries-with-a-privacy-budget"></a>Sorguları bir gizlilik bütçesi ile sınırlayın
 
-Birden çok sorguya izin verilen sistemlerde gizliliği sağlamak için, değişiklik gizliliği bir hız sınırı tanımlar. Bu sınır **Gizlilik bütçesi** olarak bilinir. Gizlilik bütçelerine, yeniden tanımlama riskini sınırlamak için genellikle 1 ile 3 arasında bir Epsilon miktarı ayrılır. Raporlar oluşturulduğunda, gizlilik bütçeleri tek tek raporların Epsilon değerini ve tüm raporların toplamasını izler. Bir gizlilik bütçesi harcandıktan veya boşaldığında, kullanıcılar artık verilere erişemez.  
+Birden çok sorguya izin verilen sistemlerde gizliliği sağlamak için, değişiklik gizliliği bir hız sınırı tanımlar. Bu sınır **Gizlilik bütçesi** olarak bilinir. Gizlilik bütçeleri, verilerin birden çok sorgu aracılığıyla yeniden oluşturulmasını önler. Gizlilik bütçelerine, yeniden tanımlama riskini sınırlamak için genellikle 1 ile 3 arasında bir Epsilon miktarı ayrılır. Raporlar oluşturulduğunda, gizlilik bütçeleri tek tek raporların Epsilon değerini ve tüm raporların toplamasını izler. Bir gizlilik bütçesi harcandıktan veya boşaldığında, kullanıcılar artık verilere erişemez. 
 
 ## <a name="reliability-of-data"></a>Verilerin güvenilirliği
 
-Gizlilik Koruması hedef olmalıdır, ancak verilerin kullanılabilirliği ve güvenilirliği olduğunda bir zorunluluğunu getirir vardır. Veri Analizi 'nde doğruluk, örnekleme hataları tarafından sunulan belirsizlik ölçüsü olarak düşünülebilir. Bu belirsizlik, belirli sınırlar dahilinde düşecek şekilde eğilimlidir. Bunun yerine bir değişiklik gizliliği perspektifinden **doğruluk** , verilerin güvenilirliğini ölçer ve bu, gizlilik mekanizmalarının sunduğu belirsizlik tarafından etkilendi. Kısacası, daha yüksek bir gürültü veya gizlilik düzeyi, daha düşük bir Epsilon, doğruluk ve güvenilirliğe sahip verileri dönüştürür. Veriler çok gizli olsa da, güvenilir olmadığından büyük olasılıkla kullanılma olasılığı düşüktür.
+Gizlilik Koruması hedef olmalıdır, ancak verilerin kullanılabilirliği ve güvenilirliği olduğunda bir zorunluluğunu getirir vardır. Veri Analizi 'nde doğruluk, örnekleme hataları tarafından sunulan belirsizlik ölçüsü olarak düşünülebilir. Bu belirsizlik, belirli sınırlar dahilinde düşecek şekilde eğilimlidir. Bunun yerine bir değişiklik gizliliği perspektifinden **doğruluk** , verilerin güvenilirliğini ölçer ve bu, gizlilik mekanizmalarının sunduğu belirsizlik tarafından etkilendi. Kısacası, daha yüksek bir gürültü veya gizlilik düzeyi, daha düşük bir Epsilon, doğruluk ve güvenilirliğe sahip verileri dönüştürür. 
 
-## <a name="implementing-differentially-private-systems"></a>Farklı, özel sistemleri uygulama
+## <a name="open-source-differential-privacy-libraries"></a>Açık kaynaklı değişiklik gizlilik kitaplıkları
 
-Farklı şekilde özel sistemlerin uygulanması zordur. SmartNoise, küresel farklı özel sistemler oluşturmak için farklı bileşenler içeren açık kaynaklı bir projem. SmartNoise, aşağıdaki üst düzey bileşenlerden oluşur:
+SmartNoise, küresel farklı özel sistemler oluşturmak için farklı bileşenler içeren açık kaynaklı bir projem. SmartNoise, aşağıdaki üst düzey bileşenlerden oluşur:
 
-- Çekirdek
-- SDK
+- SmartNoise Çekirdek Kitaplığı
+- Smartgürültü SDK Kitaplığı
 
-### <a name="core"></a>Çekirdek
+### <a name="smartnoise-core"></a>Smartgürültü çekirdeği
 
 Çekirdek kitaplık, farklı bir özel sistem uygulamak için aşağıdaki Gizlilik mekanizmalarını içerir:
 
@@ -68,7 +68,7 @@ Farklı şekilde özel sistemlerin uygulanması zordur. SmartNoise, küresel far
 |Çalışma Zamanı     | Çözümlemenin yürütüleceği ortam. Başvuru çalışma zamanı Rust dilinde yazılmıştır, ancak çalışma zamanları, veri gereksinimlerinize bağlı olarak SQL ve Spark gibi herhangi bir hesaplama çerçevesi kullanılarak yazılabilir.        |
 |Bağlamalar     | Analizler oluşturmak için dil bağlamaları ve yardımcı kitaplıkları. Şu anda akıllı gürültü, Python bağlamaları sunuyor. |
 
-### <a name="sdk"></a>SDK
+### <a name="smartnoise-sdk"></a>Smartgürültü SDK 'Sı
 
 Sistem kitaplığı, tablolu ve ilişkisel verilerle çalışmaya yönelik aşağıdaki araçları ve hizmetleri sağlar:
 
@@ -80,6 +80,6 @@ Sistem kitaplığı, tablolu ve ilişkisel verilerle çalışmaya yönelik aşa�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning [veri gizliliğini koruyun](how-to-differential-privacy.md) .
+Azure Machine Learning ' de farklı [bir özel sistem oluşturma](how-to-differential-privacy.md) .
 
-Smartgürültü bileşenleri hakkında daha fazla bilgi edinmek için, [Smartnoise Core paketi](https://github.com/opendifferentialprivacy/smartnoise-core), [smartgürültü SDK](https://github.com/opendifferentialprivacy/smartnoise-sdk)ve [smartnoise örnekleri](https://github.com/opendifferentialprivacy/smartnoise-samples)için GitHub depolarına göz atın.
+Smartgürültü bileşenleri hakkında daha fazla bilgi edinmek için, [Smartnoise Core](https://github.com/opendifferentialprivacy/smartnoise-core), [smartgürültü SDK](https://github.com/opendifferentialprivacy/smartnoise-sdk)ve [smartnoise örnekleri](https://github.com/opendifferentialprivacy/smartnoise-samples)için GitHub depolarına göz atın.

@@ -12,12 +12,12 @@ ms.date: 12/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 37d9c24d58e0dd9fb10db607ef1b96de0a44eb78
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 1f1100c27bb3c02e3d1a5040942509c24bab0e65
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97399375"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683997"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Uygulamanızı Azure AD uygulama galerisine yayımlayın
 
@@ -175,7 +175,7 @@ HTML oturum açma sayfasına sahip bir Web uygulaması oluşturun. Uygulamanız�
 Müşterilerinizin SCıM standartları ve avantajları hakkında daha fazla bilgi edinmek için bkz. [SCIM ile sağlama-](https://aka.ms/scimoverview)Başlarken.
 
 ### <a name="understand-the-azure-ad-scim-implementation"></a>Azure AD SCıM uygulamasını anlama
-Azure AD SCıM uygulamasıyla ilgili daha fazla bilgi edinmek için bkz. [SCIM uç noktası oluşturma ve Azure AD ile Kullanıcı sağlamayı yapılandırma](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups).
+Azure AD SCıM uygulamasıyla ilgili daha fazla bilgi edinmek için bkz. [SCIM uç noktası oluşturma ve Azure AD ile Kullanıcı sağlamayı yapılandırma](../app-provisioning/use-scim-to-provision-users-and-groups.md).
 
 ### <a name="implement-scim"></a>SCıM 'i uygulama
 Azure AD, bir SCıM uç noktası oluşturmanıza yardımcı olacak [başvuru kodu](https://aka.ms/scimoverview) sağlar. GitHub 'da bulabileceğiniz birçok üçüncü taraf kitaplığı/başvurusu da vardır.  
@@ -186,7 +186,7 @@ Uygulamanızı test etmek için bir Azure AD kiracısına sahip olmanız gerekir
 
 Alternatif olarak, Azure AD kiracısı her Microsoft 365 abonelikle birlikte gelir. Ücretsiz bir Microsoft 365 geliştirme ortamı ayarlamak için, bkz. [Microsoft 365 Geliştirici programına ekleme](/office/developer-program/microsoft-365-developer-program).
 
-Kiracınız olduktan sonra, tek oturum açma ve [sağlamayı](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client)test etmeniz gerekir. 
+Kiracınız olduktan sonra, tek oturum açma ve [sağlamayı](../app-provisioning/use-scim-to-provision-users-and-groups.md#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client)test etmeniz gerekir. 
 
 **OıDC veya Oath uygulamaları için** uygulamanızı çok kiracılı bir uygulama olarak [kaydedin](quickstart-register-app.md) . Desteklenen hesap türlerinde herhangi bir kurumsal dizin ve kişisel Microsoft hesabı seçeneğinde bulunan hesapları seçin.
 
@@ -274,7 +274,7 @@ Uygulamanızı parola SSO kullanarak galerideki listeye eklemek istiyorsanız, g
 
 ![Galerideki parola SSO uygulamasını listeleme](./media/howto-app-gallery-listing/passwordsso.png)
 
-Kullanıcı hazırlama için bir [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2,0 uç noktası uygulamadıysanız gösterilen seçeneği belirleyin. Ekleme isteğinde şema sağlanırken, şemanızı indirmek için lütfen [buradaki](https://docs.microsoft.com/azure/active-directory/app-provisioning/export-import-provisioning-configuration) yönergeleri izleyin. Galeri uygulamasını oluşturmak için Galeri dışı uygulamayı test ederken yapılandırdığınız şemayı kullanacağız. 
+Kullanıcı hazırlama için bir [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2,0 uç noktası uygulamadıysanız gösterilen seçeneği belirleyin. Ekleme isteğinde şema sağlanırken, şemanızı indirmek için lütfen [buradaki](../app-provisioning/export-import-provisioning-configuration.md) yönergeleri izleyin. Galeri uygulamasını oluşturmak için Galeri dışı uygulamayı test ederken yapılandırdığınız şemayı kullanacağız. 
 
    ![Kullanıcı hazırlama isteği](./media/howto-app-gallery-listing/user-provisioning.png)
 

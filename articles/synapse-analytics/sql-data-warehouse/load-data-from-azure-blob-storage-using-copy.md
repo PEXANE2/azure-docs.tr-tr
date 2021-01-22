@@ -11,16 +11,16 @@ ms.date: 11/23/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: ec577e2a70e2b354b8d2013fe259aa9ea622c50e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: b305a07997ccd2cbab0d963ced2bd23ab7a97690
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120147"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683416"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Öğretici: New York Taxicab veri kümesini yükleme
 
-Bu öğretici, New York Taxıab veri kümesini bir Azure Blob depolama hesabından yüklemek için [Copy ifadesini](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) kullanır. Öğreticide aşağıdaki işlemler için [Azure Portal](https://portal.azure.com) ve [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) kullanılır:
+Bu öğretici, New York Taxıab veri kümesini bir Azure Blob depolama hesabından yüklemek için [Copy ifadesini](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) kullanır. Öğreticide aşağıdaki işlemler için [Azure Portal](https://portal.azure.com) ve [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) kullanılır:
 
 > [!div class="checklist"]
 >
@@ -33,7 +33,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu öğreticiye başlamadan önce, [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)’nun (SSMS) en yeni sürümünü indirin ve yükleyin.  
+Bu öğreticiye başlamadan önce, [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)’nun (SSMS) en yeni sürümünü indirin ve yükleyin.  
 
 Bu öğreticide, aşağıdaki [öğreticiden](./create-data-warehouse-portal.md#connect-to-the-server-as-server-admin)zaten bir SQL adanmış havuzu oluşturmuş olduğunuz varsayılmaktadır.
 
@@ -251,7 +251,7 @@ Aşağıdaki SQL betiklerini çalıştırın ve yüklemek istediğiniz veriler h
 
 ## <a name="load-the-data-into-your-data-warehouse"></a>Verileri veri ambarınıza yükleme
 
-Bu bölüm, örnek verileri Azure Depolama Blobu [yüklemek Için Copy ifadesini](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) kullanır.  
+Bu bölüm, örnek verileri Azure Depolama Blobu [yüklemek Için Copy ifadesini](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) kullanır.  
 
 > [!NOTE]
 > Bu öğretici verileri doğrudan son tabloya yükler. Genellikle üretim iş yükleriniz için bir hazırlama tablosuna yüklersiniz. Veriler hazırlama tablosundayken tüm gerekli dönüştürmeleri yapabilirsiniz. 
@@ -393,7 +393,7 @@ Kaynakları istediğiniz gibi temizlemek için bu adımları izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, veri ambarı oluşturmayı ve verileri yüklemek için kullanıcı oluşturmayı öğrendiniz. Veri ambarınıza veri yüklemek için basit [kopyalama ifadesini](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#examples) kullandınız.
+Bu öğreticide, veri ambarı oluşturmayı ve verileri yüklemek için kullanıcı oluşturmayı öğrendiniz. Veri ambarınıza veri yüklemek için basit [kopyalama ifadesini](/sql/t-sql/statements/copy-into-transact-sql&preserve-view=true?view=azure-sqldw-latest&preserve-view=true#examples) kullandınız.
 
 Şu işlemleri yaptınız:
 > [!div class="checklist"]
@@ -413,6 +413,6 @@ Mevcut bir veritabanını Azure SYNAPSE Analytics 'e geçirmeyi öğrenmek için
 
 Daha fazla örnek ve başvuru yüklemek için aşağıdaki belgeleri görüntüleyin:
 
-- [Deyimdeki başvuru belgelerini Kopyala](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
+- [Deyimdeki başvuru belgelerini Kopyala](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax)
 - [Her kimlik doğrulama yöntemi için örnekleri KOPYALAYıN](./quickstart-bulk-load-copy-tsql-examples.md)
 - [Tek bir tablo için hızlı başlangıç kopyalama](./quickstart-bulk-load-copy-tsql.md)

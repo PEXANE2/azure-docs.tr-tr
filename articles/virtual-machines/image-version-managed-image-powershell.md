@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 92cae59978b172993c779e9a486ff67d82309800
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 6bf2054a1b9d42529c3917994e5f446b3c50ecf7
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349931"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682724"
 ---
 # <a name="clone-a-managed-image-to-a-shared-image-gallery-image"></a>Yönetilen bir görüntüyü paylaşılan görüntü Galerisi görüntüsüne kopyalama
 
@@ -54,7 +54,7 @@ Görüntü tanımları görüntüler için bir mantıksal gruplama oluşturur. B
 
 Görüntü tanımınızı yaparken, doğru bilgilerin tümünün bulunduğundan emin olun. Yönetilen görüntüler her zaman genelleştirildiğinden, öğesini ayarlamanız gerekir `-OsState generalized` . 
 
-Bir görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla bilgi için bkz. [görüntü tanımları](./windows/shared-image-galleries.md#image-definitions).
+Bir görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla bilgi için bkz. [görüntü tanımları](./shared-image-galleries.md#image-definitions).
 
 [New-Azgallerımagedefinition](/powershell/module/az.compute/new-azgalleryimageversion)kullanarak görüntü tanımını oluşturun. Bu örnekte, görüntü tanımı *Myımagedefinition* olarak adlandırılır ve genelleştirilmiş bir Windows işletim sistemi içindir. Linux işletim sistemi kullanan görüntülerin tanımını oluşturmak için kullanın `-OsType Linux` . 
 

@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: a557d4045b18b5c0ff71b3e47f0c189028702863
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7714ce748eb172565357723924ab2212e9559e1f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289540"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685336"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te kaynak sınıflarıyla iş yükü yönetimi
 
@@ -78,7 +78,7 @@ Her kaynak sınıfı için bellek ayırma aşağıdaki gibidir.
 
 ### <a name="default-resource-class"></a>Varsayılan kaynak sınıfı
 
-Varsayılan olarak, her Kullanıcı, **smallrc**dinamik kaynak sınıfının bir üyesidir.
+Varsayılan olarak, her Kullanıcı, **smallrc** dinamik kaynak sınıfının bir üyesidir.
 
 Hizmet yöneticisinin kaynak sınıfı smallrc 'de düzeltildi ve değiştirilemez.  Hizmet Yöneticisi, sağlama işlemi sırasında oluşturulan kullanıcı.  Bu bağlamdaki Hizmet Yöneticisi, yeni bir sunucu ile yeni bir Synapse SQL havuzu oluştururken "Sunucu Yöneticisi oturum açma" için belirtilen oturum açdır.
 
@@ -129,7 +129,7 @@ Aşağıdaki deyimler kaynak sınıflarından muaf tutulur ve her zaman smallrc 
 - Görünüm Oluştur veya bırak
 - DEĞER EKLE
 - Sistem görünümleri ve DMVs 'ler arasından SEÇIM yapın
-- AÇıKLAMAK
+- EXPLAIN
 - DBCC
 
 <!--
@@ -162,13 +162,13 @@ WHERE  name LIKE '%rc%' AND type_desc = 'DATABASE_ROLE';
 
 Kaynak sınıfları, kullanıcılar veritabanı rollerine atanarak uygulanır. Bir Kullanıcı bir sorgu çalıştırdığında, sorgu kullanıcının kaynak sınıfıyla çalışır. Örneğin, bir Kullanıcı staticrc10 veritabanı rolünün üyesiyse, sorguları az miktarda bellekle çalışır. Bir veritabanı kullanıcısı xlargerc veya staticrc80 veritabanı rollerinin üyesiyse, sorguları büyük miktarda bellekle çalışır.
 
-Bir kullanıcının kaynak sınıfını artırmak için, [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kullanarak kullanıcıyı büyük bir kaynak sınıfının veritabanı rolüne ekleyin.  Aşağıdaki kod, bir kullanıcıyı largerc veritabanı rolüne ekler.  Her istek, sistem belleğinin %22 ' i alır.
+Bir kullanıcının kaynak sınıfını artırmak için, [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) kullanarak kullanıcıyı büyük bir kaynak sınıfının veritabanı rolüne ekleyin.  Aşağıdaki kod, bir kullanıcıyı largerc veritabanı rolüne ekler.  Her istek, sistem belleğinin %22 ' i alır.
 
 ```sql
 EXEC sp_addrolemember 'largerc', 'loaduser';
 ```
 
-Kaynak sınıfını azaltmak için [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)kullanın.  ' Loaduser ' bir üye veya başka herhangi bir kaynak sınıfı değilse, varsayılan smallrc kaynak sınıfına, %3 bellek izni ile gitirler.  
+Kaynak sınıfını azaltmak için [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)kullanın.  ' Loaduser ' bir üye veya başka herhangi bir kaynak sınıfı değilse, varsayılan smallrc kaynak sınıfına, %3 bellek izni ile gitirler.  
 
 ```sql
 EXEC sp_droprolemember 'largerc', 'loaduser';
