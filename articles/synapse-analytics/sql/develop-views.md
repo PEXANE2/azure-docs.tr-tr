@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6fb75257a86e9e46d6c180a2a38193adecb2b36a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: de04be2495c6e81e9c5f8d32f9d876b49482c5fe
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451680"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678381"
 ---
 # <a name="t-sql-views-with-dedicated-sql-pool-and-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu ve sunucusuz SQL havuzu içeren T-SQL görünümleri
 
@@ -27,11 +27,11 @@ Görünümler, çözümünüzün kalitesini artırmak için çeşitli şekillerd
 ### <a name="sql-pool---create-view"></a>SQL havuzu-görünüm oluştur
 
 > [!NOTE]
-> OLUŞTURMA görünümü sözdizimi Bu makalede ele alınmıyor. Daha fazla bilgi için bkz. [create VIEW](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) documentation.
+> OLUŞTURMA görünümü sözdizimi Bu makalede ele alınmıyor. Daha fazla bilgi için bkz. [create VIEW](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) documentation.
 
 ## <a name="architectural-abstraction"></a>Mimari soyutlama
 
-Ortak bir uygulama, [Create Table Select](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (CTAS) kullanarak tabloları yeniden oluşturmak, bu, verileri yüklerken bir nesne yeniden adlandırma deseninin ardından.
+Ortak bir uygulama, [Create Table Select](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (CTAS) kullanarak tabloları yeniden oluşturmak, bu, verileri yüklerken bir nesne yeniden adlandırma deseninin ardından.
 
 Aşağıdaki örnek bir tarih boyutuna yeni tarih kayıtları ekler. Yeni bir tablo olan DimDate_New önce nasıl oluşturulduğuna ve sonra tablonun orijinal sürümünün yerini alacak şekilde yeniden adlandırdığına göz önünde edin.
 

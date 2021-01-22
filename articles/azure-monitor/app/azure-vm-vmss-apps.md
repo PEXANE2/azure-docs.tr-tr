@@ -3,12 +3,12 @@ title: Azure VM 'lerde performansı izleme-Azure Application Insights
 description: Azure VM ve Azure sanal makine ölçek kümeleri için uygulama performansı izleme. Grafik yükleme ve yanıt süresi, bağımlılık bilgileri ve performans üzerinde Uyarılar ayarlama.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 6bc70b3d9a1a7a2d3fffb71ad28f2cf64cbd323b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ed56bc88a9d2e8a9490331605cd4a72aef6930db
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461724"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677952"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Azure sanal makineler ve Azure sanal makine ölçek kümelerinde Azure Izleyici Application Insights aracısını dağıtma
 
@@ -17,7 +17,7 @@ ms.locfileid: "96461724"
 Bu makale, Application Insights Aracısı kullanarak Application Insights izlemeyi etkinleştirme konusunda size kılavuzluk eder ve büyük ölçekli dağıtımlar için işlemi otomatikleştirmek üzere ön kılavuz sağlar.
 
 > [!IMPORTANT]
-> **Azure VM 'lerinde ve VMSS** 'de çalışan ASP.NET uygulamaları için Azure Application Insights Aracısı Şu anda genel önizlemededir. **Şirket içinde** çalışan ASP.NET uygulamalarınızı izlemek için, genel olarak kullanılabilen ve tam olarak desteklenen [Şirket Içi sunucular Için Azure Application Insights aracısını](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)kullanın.
+> **Azure VM 'lerinde ve VMSS** 'de çalışan ASP.NET uygulamaları için Azure Application Insights Aracısı Şu anda genel önizlemededir. **Şirket içinde** çalışan ASP.NET uygulamalarınızı izlemek için, genel olarak kullanılabilen ve tam olarak desteklenen [Şirket Içi sunucular Için Azure Application Insights aracısını](./status-monitor-v2-overview.md)kullanın.
 > Azure VM 'Leri ve VMSS 'nin önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için önermiyoruz. Bazı özellikler desteklenmeyebilir ve bazıları kısıtlı özelliklere sahip olabilir.
 > Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 

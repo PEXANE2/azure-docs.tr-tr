@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: b8b7a03d5176f5dbd8500b5ff9044c2f22ecbfc0
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 343ddb109de41a0959533b16b11762841b5b1105
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127150"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676768"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Azure Windows VM Uzantısı hatalarında sorun giderme
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -85,7 +85,7 @@ Bu sertifika, sanal makinenin içinden Windows Konuk Aracısı yeniden başlatı
 - Sağ tıklayın ve "Görevi Sonlandır" seçeneğini belirleyin. İşlem otomatik olarak yeniden başlatılacak
 
 
-Ayrıca, bir "VM yeniden uygula" yürüterek sanal makineye yeni bir GoalState tetikleyebilirsiniz. VM yeniden [uygulama](https://docs.microsoft.com/rest/api/compute/virtualmachines/reapply) , bir VM 'nin durumunu yeniden uygulamak için 2020 ' de TANıTıLAN bir API 'dir. Kısa bir VM kapalı kalma süresini kabul edebilmeniz için bunu tek seferde yapmanızı öneririz. Yeniden Uygula işlemi, VM 'nin yeniden başlatılmasına neden olmaz ve yeniden uygula 'yı çağırmanın büyük çoğunluğu sanal makineyi yeniden başlatmaz, VM modeline yönelik başka bir bekleyen güncelleştirme, yeni bir hedef durumu tetikler ve diğer değişikliğin yeniden başlatma gerektirebilecekleri çok küçük bir risk vardır. 
+Ayrıca, bir "VM yeniden uygula" yürüterek sanal makineye yeni bir GoalState tetikleyebilirsiniz. VM yeniden [uygulama](/rest/api/compute/virtualmachines/reapply) , bir VM 'nin durumunu yeniden uygulamak için 2020 ' de TANıTıLAN bir API 'dir. Kısa bir VM kapalı kalma süresini kabul edebilmeniz için bunu tek seferde yapmanızı öneririz. Yeniden Uygula işlemi, VM 'nin yeniden başlatılmasına neden olmaz ve yeniden uygula 'yı çağırmanın büyük çoğunluğu sanal makineyi yeniden başlatmaz, VM modeline yönelik başka bir bekleyen güncelleştirme, yeni bir hedef durumu tetikler ve diğer değişikliğin yeniden başlatma gerektirebilecekleri çok küçük bir risk vardır. 
 
 Azure portal:
 

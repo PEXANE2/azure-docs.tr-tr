@@ -7,12 +7,12 @@ ms.date: 12/11/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: ece9f62e64eb64b1f34af46b42d57ec583f8f214
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 43c89b0fac08bf9f2c72f885fbf4788371876b17
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97675938"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678585"
 ---
 # <a name="build-deploy-and-extend-the-iot-plug-and-play-bridge"></a>IoT Tak ve Kullan köprüsü oluşturma, dağıtma ve genişletme
 
@@ -188,7 +188,7 @@ Bu bölümü gerçekleştirmek için, yerel makinenize aşağıdaki yazılımı 
 
 [Iot Tak ve kullan köprü](https://github.com/Azure/iot-plug-and-play-bridge) deposunu yerel makinenize kopyalayın:
 
-```cmd/sh
+```console
 git clone https://github.com/Azure/iot-plug-and-play-bridge.git
 
 cd iot-plug-and-play-bridge
@@ -205,7 +205,7 @@ git submodule update --init --recursive
 
 **VS 2019 için geliştirici komut istemi** açın ve Klonladığınız depoyu içeren klasöre gidin ve aşağıdaki komutları çalıştırın:
 
-```cmd
+```console
 cd pnpbridge\scripts\windows
 
 build.cmd
@@ -279,7 +279,7 @@ Bu örnekte hangi arabirim bileşenlerinin ve genel parametrelerin yapılandır�
 
 Köprüyü komut isteminde çalıştırarak başlatın:
 
-```cmd
+```console
 cd iot-plug-and-play-bridge\pnpbridge\cmake\pnpbridge_x86\src\pnpbridge\samples\console
 
 Debug\pnpbridge_bin.exe
@@ -330,13 +330,13 @@ Buradaki komutlar bir Azure sanal makinesinde çalışan IoT Edge bir cihaz olu�
 
 IoT Hub 'ınızda IoT Edge cihaz kaydı oluşturmak için, WSL 2 ortamınızda aşağıdaki komutları çalıştırın. `az login`Azure aboneliğinizde oturum açmak için komutunu kullanın:
 
-```bash
+```azurecli
 az iot hub device-identity create --device-id bridge-edge-device --edge-enabled true --hub-name {your IoT hub name}
 ```
 
 IoT Edge çalışma zamanı yüklü bir Azure sanal makinesi oluşturmak için aşağıdaki komutları çalıştırın. Yer tutucuları uygun değerlerle güncelleştirin:
 
-```bash
+```azurecli
 az group create --name bridge-edge-resources --location eastus
 az deployment group create \
 --resource-group bridge-edge-resources \
@@ -350,7 +350,7 @@ az deployment group create \
 
 Artık bir sanal makinede çalışan IoT Edge çalışma zamanına sahipsiniz. **$EdgeAgent** ve **$edgeHub** cihazda çalıştığından emin olmak için aşağıdaki komutu kullanabilirsiniz:
 
-```bash
+```azurecli
 az iot hub module-identity list --device-id bridge-edge-device -o table --hub-name {your IoT hub name}
 ```
 
@@ -405,7 +405,7 @@ Bir IoT Edge cihaz modül görüntülerini bir kapsayıcı kayıt defterinden in
 
 **Köprü uç kaynakları** kaynak grubunda bir Azure Container Registry oluşturun. Ardından kapsayıcı Kayıt defterinize yönetici erişimini etkinleştirin ve IoT Edge cihazınızın modül görüntülerini indirmek için ihtiyaç duyacağı kimlik bilgilerini alın:
 
-```bash
+```azurecli
 az acr create -g bridge-edge-resources --sku Basic -n {your container registry name}
 az acr update --admin-enabled true -n {your container registry name}
 az acr credential show -n {your container registry name}
@@ -517,7 +517,7 @@ VS Code ' de, **Gezgin** görünümündeki dosya *üzerinde pnpbridge/config/dep
 
 Cihazınızdaki modüllerin durumunu görüntülemek için aşağıdaki komutu çalıştırın:
 
-```bash
+```azurecli
 az iot hub module-identity list --device-id bridge-edge-device -o table --hub-name {your IoT hub name}
 ```
 
@@ -527,7 +527,7 @@ az iot hub module-identity list --device-id bridge-edge-device -o table --hub-na
 
 Sanal makineyi ve kapsayıcı kayıt defterini Azure aboneliğinizden kaldırmak için aşağıdaki komutu çalıştırın:
 
-```bash
+```azurecli
 az group delete -n bridge-edge-resources
 ```
 

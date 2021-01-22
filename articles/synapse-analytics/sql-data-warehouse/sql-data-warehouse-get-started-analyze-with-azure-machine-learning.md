@@ -12,18 +12,18 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-Synapse
-ms.openlocfilehash: 5348c0ed5d80e2738bb865ca3ec1ddf5aaed009a
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 76a154d3a137017f374247308a3980d598698246
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118056"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678668"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Azure Machine Learning ile veri çözümleme
 
 Bu öğretici, tahmine dayalı bir makine öğrenimi modeli oluşturmak için [Azure Machine Learning tasarımcısını](../../machine-learning/concept-designer.md) kullanır. Model, Azure SYNAPSE 'de depolanan verileri temel alır. Öğreticinin senaryosu, bir müşterinin bir bisiklet satın alabileceği ya da Adventure Works 'Ün hedeflenen bir pazarlama kampanyası oluşturabileceğiniz şekilde tahmin edilmesine yönelik bir tahmin sağlamaktır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide ilerleyebilmeniz için şunlar gereklidir:
 
@@ -161,4 +161,4 @@ Modelin ne kadar iyi gerçekleştirildiğini görmek için, Bikealıcısı (ger�
 
 Azure Machine Learning hakkında daha fazla bilgi edinmek için bkz. [Azure 'da Machine Learning 'ye giriş](../../machine-learning/overview-what-is-azure-ml.md).
 
-Veri ambarındaki yerleşik Puanlama hakkında bilgi [edinin.](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)
+Veri ambarındaki yerleşik Puanlama hakkında bilgi [edinin.](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true)

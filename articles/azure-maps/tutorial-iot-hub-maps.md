@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: a3481830a09b183213e84490b5300f2fb38f8d19
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: b5c65035f8b51b53f617d4562fe1982f53f0deec
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625073"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678280"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>Öğretici: Azure Maps kullanarak IoT uzamsal analizler uygulama
 
@@ -161,15 +161,15 @@ IoT Hub IoT uygulaması ile yönettiği cihazlar arasında güvenli ve güvenili
 > [!NOTE]
 > Event Grid cihaz telemetri olaylarını yayımlama özelliği şu anda önizleme aşamasındadır. Bu özellik, şunlar dışında tüm bölgelerde kullanılabilir: Doğu ABD, Batı ABD, Batı Avrupa, Azure Kamu, Azure Çin 21Vianet ve Azure Almanya.
 
-*ContosoRental* kaynak grubunda bir IoT Hub 'ı oluşturmak için [IoT Hub oluşturma](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet#create-an-iot-hub)' daki adımları izleyin.
+*ContosoRental* kaynak grubunda bir IoT Hub 'ı oluşturmak için [IoT Hub oluşturma](../iot-hub/quickstart-send-telemetry-dotnet.md#create-an-iot-hub)' daki adımları izleyin.
 
 ## <a name="register-a-device-in-your-iot-hub"></a>IoT Hub 'ınıza cihaz kaydetme
 
-IoT Hub kimlik kayıt defterine kaydedilmedikleri takdirde cihazlar IoT Hub 'ına bağlanamaz. Burada, *InVehicleDevice* adında tek bir cihaz oluşturacaksınız. Cihaz oluşturmak ve IoT Hub 'ınızda kaydetmek için [IoT Hub 'ına yeni bir cihaz kaydetme](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal#register-a-new-device-in-the-iot-hub)bölümündeki adımları izleyin. Cihazınızın birincil bağlantı dizesini kopyalamadığınızdan emin olun. Buna daha sonra ihtiyacınız olacak.
+IoT Hub kimlik kayıt defterine kaydedilmedikleri takdirde cihazlar IoT Hub 'ına bağlanamaz. Burada, *InVehicleDevice* adında tek bir cihaz oluşturacaksınız. Cihaz oluşturmak ve IoT Hub 'ınızda kaydetmek için [IoT Hub 'ına yeni bir cihaz kaydetme](../iot-hub/iot-hub-create-through-portal.md#register-a-new-device-in-the-iot-hub)bölümündeki adımları izleyin. Cihazınızın birincil bağlantı dizesini kopyalamadığınızdan emin olun. Buna daha sonra ihtiyacınız olacak.
 
 ## <a name="create-a-function-and-add-an-event-grid-subscription"></a>Bir işlev oluşturma ve bir Event Grid aboneliği ekleme
 
-Azure Işlevleri, işlem altyapısını açıkça sağlamak veya yönetmek zorunda kalmadan, küçük kod parçalarını ("işlevler") çalıştırmanıza olanak tanıyan sunucusuz bir işlem hizmetidir. Daha fazla bilgi için bkz. [Azure işlevleri](https://docs.microsoft.com/azure/azure-functions/functions-overview).
+Azure Işlevleri, işlem altyapısını açıkça sağlamak veya yönetmek zorunda kalmadan, küçük kod parçalarını ("işlevler") çalıştırmanıza olanak tanıyan sunucusuz bir işlem hizmetidir. Daha fazla bilgi için bkz. [Azure işlevleri](../azure-functions/functions-overview.md).
 
 Bir işlev belirli bir olay tarafından tetiklenir. Burada, bir Event Grid tetikleyicisi tarafından tetiklenen bir işlev oluşturacaksınız. IoT Hub cihaz telemetri olayları için bir olay aboneliği oluşturarak tetikleyici ve işlev arasında ilişki oluşturun. Bir cihaz telemetri olayı gerçekleştiğinde, işleviniz bir uç nokta olarak çağrılır ve daha önce IoT Hub kaydettiğiniz cihaz için ilgili verileri alır.
 
@@ -223,7 +223,7 @@ Bir işlev belirli bir olay tarafından tetiklenir. Burada, bir Event Grid tetik
 
 ## <a name="filter-events-by-using-iot-hub-message-routing"></a>IoT Hub ileti yönlendirme kullanarak olayları filtreleme
 
-Azure işlevine Event Grid aboneliği eklediğinizde, belirtilen IoT Hub 'ında otomatik olarak bir mesajlaşma yolu oluşturulur. İleti yönlendirme, farklı veri türlerini çeşitli uç noktalara yönlendirmenize olanak tanır. Örneğin, cihaz telemetri iletilerini, cihaz yaşam döngüsü olaylarını ve cihaz ikizi değişiklik olaylarını yönlendirebilirsiniz. Daha fazla bilgi için bkz. [IoT Hub ileti yönlendirmeyi kullanma](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c).
+Azure işlevine Event Grid aboneliği eklediğinizde, belirtilen IoT Hub 'ında otomatik olarak bir mesajlaşma yolu oluşturulur. İleti yönlendirme, farklı veri türlerini çeşitli uç noktalara yönlendirmenize olanak tanır. Örneğin, cihaz telemetri iletilerini, cihaz yaşam döngüsü olaylarını ve cihaz ikizi değişiklik olaylarını yönlendirebilirsiniz. Daha fazla bilgi için bkz. [IoT Hub ileti yönlendirmeyi kullanma](../iot-hub/iot-hub-devguide-messages-d2c.md).
 
 :::image type="content" source="./media/tutorial-iot-hub-maps/hub-route.png" alt-text="IoT Hub 'da ileti yönlendirmenin ekran görüntüsü.":::
 
@@ -232,7 +232,7 @@ Azure işlevine Event Grid aboneliği eklediğinizde, belirtilen IoT Hub 'ında 
 :::image type="content" source="./media/tutorial-iot-hub-maps/hub-filter.png" alt-text="Filtre yönlendirme iletilerinin ekran görüntüsü.":::
 
 >[!TIP]
->IoT cihazdan buluta iletileri sorgulamak için çeşitli yollar vardır. İleti yönlendirme sözdizimi hakkında daha fazla bilgi için bkz. [IoT Hub Message Routing](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax).
+>IoT cihazdan buluta iletileri sorgulamak için çeşitli yollar vardır. İleti yönlendirme sözdizimi hakkında daha fazla bilgi için bkz. [IoT Hub Message Routing](../iot-hub/iot-hub-devguide-routing-query-syntax.md).
 
 ## <a name="send-telemetry-data-to-iot-hub"></a>Telemetri verilerini IoT Hub gönder
 

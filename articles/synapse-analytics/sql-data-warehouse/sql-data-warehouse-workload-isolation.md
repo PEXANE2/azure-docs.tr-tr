@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: a9ebee68c7abd90f5fb3345eec1ee929fc30ca20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce2451ddf775b7aff63b43ec02041ecd5440c580
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85212318"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678398"
 ---
 # <a name="azure-synapse-analytics-workload-group-isolation"></a>Azure SYNAPSE Analytics iş yükü grubu yalıtımı
 
@@ -24,13 +24,13 @@ Bu makalede iş yükü gruplarının, iş yükü yalıtımı yapılandırmak, ka
 
 ## <a name="workload-groups"></a>İş yükü grupları
 
-İş yükü grupları bir istek kümesi için kapsayıcılardır ve iş yükü yalıtımı da dahil olmak üzere, bir sistemde yapılandırılan iş yükü yönetiminin temelini oluşturur.  İş yükü grupları [oluşturma Iş yükü grubu](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) sözdizimi kullanılarak oluşturulur.  Basit bir iş yükü yönetimi yapılandırması, veri yüklerini ve Kullanıcı sorgularını yönetebilir.  Örneğin, adlı bir iş yükü grubu `wgDataLoads` sisteme yüklenmekte olan verilerin iş yükü yönlerini tanımlayacaktır. Ayrıca, adlı bir iş yükü grubu, `wgUserQueries` verileri sistemden okumak için sorguları çalıştıran kullanıcıların iş yükü yönlerini tanımlar.
+İş yükü grupları bir istek kümesi için kapsayıcılardır ve iş yükü yalıtımı da dahil olmak üzere, bir sistemde yapılandırılan iş yükü yönetiminin temelini oluşturur.  İş yükü grupları [oluşturma Iş yükü grubu](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) sözdizimi kullanılarak oluşturulur.  Basit bir iş yükü yönetimi yapılandırması, veri yüklerini ve Kullanıcı sorgularını yönetebilir.  Örneğin, adlı bir iş yükü grubu `wgDataLoads` sisteme yüklenmekte olan verilerin iş yükü yönlerini tanımlayacaktır. Ayrıca, adlı bir iş yükü grubu, `wgUserQueries` verileri sistemden okumak için sorguları çalıştıran kullanıcıların iş yükü yönlerini tanımlar.
 
 Aşağıdaki bölümler, iş yükü gruplarının yalıtım, kapsama, istek kaynağı tanımını tanımlama ve yürütme kurallarına bağlı olarak nasıl olduğunu vurgulayacaktır.
 
 ## <a name="workload-isolation"></a>İş yükü yalıtımı
 
-İş yükü yalıtımı, kaynakların yalnızca bir iş yükü grubu için ayrılmış olması anlamına gelir.  İş yükü yalıtımı, MIN_PERCENTAGE_RESOURCE parametresi, [Iş yükü grubu oluşturma](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) sözdiziminde sıfırdan büyük olacak şekilde yapılandırılarak elde edilir.  Sıkı SLA 'Lara uyması gereken sürekli yürütme iş yükleri için yalıtım, kaynakların iş yükü grubu için her zaman kullanılabilir olmasını sağlar.
+İş yükü yalıtımı, kaynakların yalnızca bir iş yükü grubu için ayrılmış olması anlamına gelir.  İş yükü yalıtımı, MIN_PERCENTAGE_RESOURCE parametresi, [Iş yükü grubu oluşturma](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) sözdiziminde sıfırdan büyük olacak şekilde yapılandırılarak elde edilir.  Sıkı SLA 'Lara uyması gereken sürekli yürütme iş yükleri için yalıtım, kaynakların iş yükü grubu için her zaman kullanılabilir olmasını sağlar.
 
 İş yükü yalıtımını yapılandırma, örtülü olarak garantili bir eşzamanlılık düzeyi tanımlar. Örneğin, `MIN_PERCENTAGE_RESOURCE` %30 ' a ayarlanmış ve %2 ' ye ayarlanmış bir iş yükü grubu `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 15 eşzamanlılık olarak garanti edilir.  % 15-2 kaynak yuvaları her zaman iş yükü grubu içinde ayrıldığından eşzamanlılık düzeyi garanti edilir (yapılandırıldıktan bağımsız olarak `REQUEST_*MAX*_RESOURCE_GRANT_PERCENT` ).  , `REQUEST_MAX_RESOURCE_GRANT_PERCENT` Şundan büyükse `REQUEST_MIN_RESOURCE_GRANT_PERCENT` ve `CAP_PERCENTAGE_RESOURCE` ek kaynaklardan daha büyükse `MIN_PERCENTAGE_RESOURCE` istek başına eklenir.  `REQUEST_MAX_RESOURCE_GRANT_PERCENT`Ve `REQUEST_MIN_RESOURCE_GRANT_PERCENT` eşitse ve `CAP_PERCENTAGE_RESOURCE` daha büyükse `MIN_PERCENTAGE_RESOURCE` , ek eşzamanlılık mümkündür.  Garantili eşzamanlılık belirlemek için aşağıdaki yöntemi göz önünde bulundurun:
 
@@ -50,18 +50,18 @@ Kullanıcılar, %100 iş yükü yalıtımı yapılandıran bir iş yükü yönet
 
 ## <a name="workload-containment"></a>İş yükü kapsama
 
-İş yükü kapsamı, bir iş yükü grubunun kullanabileceği kaynak miktarını sınırlandırmayı ifade eder.  İş yükü kapsama, CAP_PERCENTAGE_RESOURCE parametresi, [Iş yükü grubu oluşturma](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  sözdiziminde 100 ' den az olacak şekilde yapılandırılarak elde edilir.  Kullanıcıların, geçici sorgular aracılığıyla bir durum çözümlemesi çalıştırabilmeleri için sisteme okuma erişimi olması gereken senaryoyu göz önünde bulundurun.  Bu tür istekler, sistemde çalışan diğer iş yükleri üzerinde olumsuz bir etkiye sahip olabilir.  Kapsamayı yapılandırmak, kaynak miktarının sınırlı olmasını sağlar.
+İş yükü kapsamı, bir iş yükü grubunun kullanabileceği kaynak miktarını sınırlandırmayı ifade eder.  İş yükü kapsama, CAP_PERCENTAGE_RESOURCE parametresi, [Iş yükü grubu oluşturma](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)  sözdiziminde 100 ' den az olacak şekilde yapılandırılarak elde edilir.  Kullanıcıların, geçici sorgular aracılığıyla bir durum çözümlemesi çalıştırabilmeleri için sisteme okuma erişimi olması gereken senaryoyu göz önünde bulundurun.  Bu tür istekler, sistemde çalışan diğer iş yükleri üzerinde olumsuz bir etkiye sahip olabilir.  Kapsamayı yapılandırmak, kaynak miktarının sınırlı olmasını sağlar.
 
 İş yükü kapsamayı yapılandırmak, en yüksek eşzamanlılık düzeyini örtülü olarak tanımlar.  %60 olarak ayarlanan ve bir REQUEST_MIN_RESOURCE_GRANT_PERCENT %1 ' e ayarlanmış CAP_PERCENTAGE_RESOURCE, iş yükü grubu için 60 eşzamanlılık düzeyine kadar izin verilir.  En fazla eşzamanlılık belirlemek için aşağıda verilen yöntemi göz önünde bulundurun:
 
 [En fazla eşzamanlılık] = [ `CAP_PERCENTAGE_RESOURCE` ]/[ `REQUEST_MIN_RESOURCE_GRANT_PERCENT` ]
 
 > [!NOTE]
-> Bir iş yükü grubunun geçerli CAP_PERCENTAGE_RESOURCE, sıfırdan büyük MIN_PERCENTAGE_RESOURCE olan iş yükü grupları oluşturulduğunda %100 ' a ulaşmaz.  Etkin çalışma zamanı değerleri için [sys.dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) bakın.
+> Bir iş yükü grubunun geçerli CAP_PERCENTAGE_RESOURCE, sıfırdan büyük MIN_PERCENTAGE_RESOURCE olan iş yükü grupları oluşturulduğunda %100 ' a ulaşmaz.  Etkin çalışma zamanı değerleri için [sys.dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) bakın.
 
 ## <a name="resources-per-request-definition"></a>İstek tanımına göre kaynaklar
 
-İş yükü grupları, her istek için ayrılan minimum ve maksimum kaynak miktarını tanımlamak için bir mekanizma sağlar REQUEST_MIN_RESOURCE_GRANT_PERCENT ve [Iş yükü oluşturma grubu](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) sözdiziminde REQUEST_MAX_RESOURCE_GRANT_PERCENT parametreleri.  Bu durumda kaynaklar CPU ve bellektir.  Bu değerleri yapılandırmak, sistemde ne kadar kaynak ve ne kadar eşzamanlılık düzeyi elde edilebileceğini belirler.
+İş yükü grupları, her istek için ayrılan minimum ve maksimum kaynak miktarını tanımlamak için bir mekanizma sağlar REQUEST_MIN_RESOURCE_GRANT_PERCENT ve [Iş yükü oluşturma grubu](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) sözdiziminde REQUEST_MAX_RESOURCE_GRANT_PERCENT parametreleri.  Bu durumda kaynaklar CPU ve bellektir.  Bu değerleri yapılandırmak, sistemde ne kadar kaynak ve ne kadar eşzamanlılık düzeyi elde edilebileceğini belirler.
 
 > [!NOTE]
 > REQUEST_MAX_RESOURCE_GRANT_PERCENT, REQUEST_MIN_RESOURCE_GRANT_PERCENT için belirtilen değere varsayılan değer olan isteğe bağlı bir parametredir.
@@ -71,11 +71,11 @@ Kaynak sınıfı seçme gibi, REQUEST_MIN_RESOURCE_GRANT_PERCENT yapılandırmak
 REQUEST_MAX_RESOURCE_GRANT_PERCENT REQUEST_MIN_RESOURCE_GRANT_PERCENT daha büyük bir değere yapılandırmak sistemin istek başına daha fazla kaynak ayırmasına izin verir.  Bir istek zamanlarken, sistem isteğe gerçek kaynak ayırmayı, REQUEST_MIN_RESOURCE_GRANT_PERCENT ve REQUEST_MAX_RESOURCE_GRANT_PERCENT arasında, paylaşılan havuzdaki kaynak kullanılabilirliğine ve sistemdeki geçerli yüke göre belirler.  Sorgu zamanlandığında kaynakların paylaşılan kaynak [havuzunda](#shared-pool-resources) bulunması gerekir.  
 
 > [!NOTE]
-> REQUEST_MIN_RESOURCE_GRANT_PERCENT ve REQUEST_MAX_RESOURCE_GRANT_PERCENT, etkin MIN_PERCENTAGE_RESOURCE ve CAP_PERCENTAGE_RESOURCE değerlerine bağımlı etkin değerler vardır.  Etkin çalışma zamanı değerleri için [sys.dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) bakın.
+> REQUEST_MIN_RESOURCE_GRANT_PERCENT ve REQUEST_MAX_RESOURCE_GRANT_PERCENT, etkin MIN_PERCENTAGE_RESOURCE ve CAP_PERCENTAGE_RESOURCE değerlerine bağımlı etkin değerler vardır.  Etkin çalışma zamanı değerleri için [sys.dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) bakın.
 
 ## <a name="execution-rules"></a>Yürütme kuralları
 
-Geçici raporlama sistemlerinde, müşteriler yanlışlıkla başkalarının üretkenliğini önemli ölçüde etkileyebilecek bir ard arda sorgu yürütebilir.  Sistem yöneticileri, sistem kaynaklarını boşaltmak için ard arda yapılan sorguları sonlandırmaya zorlanır.  İş yükü grupları, belirtilen değeri aşmış sorguları iptal etmek için bir sorgu yürütme zaman aşımı kuralını yapılandırma olanağı sunar.  Kural, `QUERY_EXECUTION_TIMEOUT_SEC` [Iş yükü oluşturma grubu](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) sözdiziminde parametresi ayarlanarak yapılandırılır.
+Geçici raporlama sistemlerinde, müşteriler yanlışlıkla başkalarının üretkenliğini önemli ölçüde etkileyebilecek bir ard arda sorgu yürütebilir.  Sistem yöneticileri, sistem kaynaklarını boşaltmak için ard arda yapılan sorguları sonlandırmaya zorlanır.  İş yükü grupları, belirtilen değeri aşmış sorguları iptal etmek için bir sorgu yürütme zaman aşımı kuralını yapılandırma olanağı sunar.  Kural, `QUERY_EXECUTION_TIMEOUT_SEC` [Iş yükü oluşturma grubu](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) sözdiziminde parametresi ayarlanarak yapılandırılır.
 
 ## <a name="shared-pool-resources"></a>Paylaşılan havuz kaynakları
 
@@ -88,6 +88,6 @@ Paylaşılan havuzdaki kaynaklara erişim bir [önem derecesine](sql-data-wareho
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Hızlı başlangıç: iş yükü yalıtımını yapılandırma](quickstart-configure-workload-isolation-tsql.md)
-- [IŞ YÜKÜ GRUBU OLUŞTUR](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [IŞ YÜKÜ GRUBU OLUŞTUR](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 - [Kaynak sınıflarını iş yükü gruplarına dönüştürün](sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md).
 - [Iş yükü izleme yönetim portalı](sql-data-warehouse-workload-management-portal-monitor.md).  

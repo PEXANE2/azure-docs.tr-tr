@@ -9,18 +9,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 967250cf29d1f0248f296cb545a764bd8e611773
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9500d682a99e6345289a83b4b3b2fc29ffe18457
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462664"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676893"
 ---
 # <a name="query-storage-files-with-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu ile depolama dosyalarını sorgulama
 
 Sunucusuz SQL havuzu, Data Lake 'unuzdaki verileri sorgulamanızı sağlar. Yarı yapılandırılmış ve yapılandırılmamış veri sorgularına uyum sağlayan bir T-SQL sorgu yüzeyi alanı sunar. Sorgulamak için aşağıdaki T-SQL yönleri desteklenir:
 
-- [SQL işlevlerinin ve işleçlerin](overview-features.md)büyük çoğunluğu dahil olmak üzere tam [seçim](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) yüzeyi alanı.
+- [SQL işlevlerinin ve işleçlerin](overview-features.md)büyük çoğunluğu dahil olmak üzere tam [seçim](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) yüzeyi alanı.
 - SELECT ([Cetas](develop-tables-cetas.md)) olarak dış tablo oluşturma bir [dış tablo](develop-tables-external-tables.md) oluşturur ve ardından Transact-SQL SELECT ifadesinin sonuçlarını Azure Storage 'a aktarır.
 
 Vs. ile ilgili daha fazla bilgi için, şu anda desteklenmeyen [sunucusuz SQL havuzuna genel bakış](on-demand-workspace-overview.md) makalesini veya aşağıdaki makaleleri okuyun:
@@ -190,15 +190,15 @@ Sorgu örnekleri için, [sorgu Parquet iç içe türler](query-parquet-nested-ty
 
 #### <a name="access-elements-from-repeated-columns"></a>Yinelenen sütunlardan öğelerine erişin
 
-Bir dizi veya haritanın bir öğesi gibi yinelenen bir sütundan öğelere erişmek için, proje yapmanız ve sağlamanız gereken her skalar öğe için [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) işlevini kullanın:
+Bir dizi veya haritanın bir öğesi gibi yinelenen bir sütundan öğelere erişmek için, proje yapmanız ve sağlamanız gereken her skalar öğe için [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) işlevini kullanın:
 
 - İlk parametre olarak iç içe veya yinelenen sütun
-- İkinci bir parametre olarak, erişim için öğe veya özellik belirten bir [JSON yolu](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+- İkinci bir parametre olarak, erişim için öğe veya özellik belirten bir [JSON yolu](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 
-Yinelenen bir sütundan skalar olmayan öğelere erişmek için, proje yapmanız ve sağlamanız gereken skalar olmayan her öğe için [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) işlevini kullanın:
+Yinelenen bir sütundan skalar olmayan öğelere erişmek için, proje yapmanız ve sağlamanız gereken skalar olmayan her öğe için [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) işlevini kullanın:
 
 - İlk parametre olarak iç içe veya yinelenen sütun
-- İkinci bir parametre olarak, erişim için öğe veya özellik belirten bir [JSON yolu](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+- İkinci bir parametre olarak, erişim için öğe veya özellik belirten bir [JSON yolu](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 
 Aşağıdaki sözdizimi parçasını inceleyin:
 
@@ -222,7 +222,7 @@ Aşağıdaki sözdizimi parçasını inceleyin:
 ### <a name="tools"></a>Araçlar
 
 Sorgu vermek için gereken araçlar:
-    - Azure SYNAPSE Studio 
+    - Azure Synapse Studio 
     - Azure Data Studio
     - SQL Server Management Studio
 
@@ -248,7 +248,7 @@ Demo verileri aşağıdaki veri kümelerini içerir:
 - İç içe geçmiş sütunlara sahip örnek Parquet dosyaları
 - JSON biçimindeki kitaplar
 
-| Klasör yolu                                                  | Açıklama                                                  |
+| Klasör yolu                                                  | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | CSV                                                        | CSV biçimindeki veriler için üst klasör                         |
 | /csv/population/<br />/csv/population-unix/<br />/csv/population-unix-hdr/<br />/csv/population-unix-hdr-escape<br />/csv/population-unix-hdr-quoted | Farklı CSV biçimlerinde popülasyon veri dosyaları içeren klasörler. |

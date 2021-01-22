@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: ec925ce165c1de98fe920381e1b51e3388c1e4ad
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 33dffa40e0236483d641c2e2bbe318bb62a7724d
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232412"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678196"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft Identity platformunda yapılandırılabilir belirteç yaşam süreleri (Önizleme)
 
@@ -82,9 +82,11 @@ Belirteçleri ve oturum belirteçlerini yenileme belirteçleri için belirteç �
 > [!IMPORTANT]
 > Mayıs 2020 itibariyle yeni kiracılar yenileme ve oturum belirteci yaşam sürelerini yapılandıramaz.  Mevcut yapılandırmaya sahip kiracılar, 30 Ocak 2021 ' ye kadar yenileme ve oturum belirteci ilkelerini değiştirebilir.   Azure Active Directory, 30 Ocak 2021 ' den sonra ilkelerde bulunan mevcut yenileme ve oturum belirteci yapılandırmasını durdurur. Kullanımdan sonra erişimi, SAML ve KIMLIK belirteci yaşam sürelerini yapılandırabilirsiniz.
 >
-> Bir kullanıcının yeniden oturum açması istenmeden önce geçen süreyi tanımlamaya devam etmeniz gerekiyorsa, koşullu erişimde oturum açma sıklığını yapılandırın. Koşullu erişim hakkında daha fazla bilgi edinmek için [koşullu erişimle kimlik doğrulama oturumu yönetimini yapılandırma](/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)makalesini okuyun.
+> Bir kullanıcının yeniden oturum açması istenmeden önce geçen süreyi tanımlamaya devam etmeniz gerekiyorsa, koşullu erişimde oturum açma sıklığını yapılandırın. Koşullu erişim hakkında daha fazla bilgi edinmek için [koşullu erişimle kimlik doğrulama oturumu yönetimini yapılandırma](../conditional-access/howto-conditional-access-session-lifetime.md)makalesini okuyun.
 >
 > Kullanımdan kaldırma tarihinden sonra koşullu erişim kullanmak istemiyorsanız, yenileme ve oturum belirteçleriniz bu tarih için [varsayılan yapılandırmaya](#configurable-token-lifetime-properties-after-the-retirement) ayarlanır ve artık yaşam sürelerini değiştiremeyeceksiniz.
+>
+> Mevcut belirtecin ömrü değiştirilmeyecektir. Süreleri dolduktan sonra, varsayılan değere göre yeni bir belirteç verilir.
 
 :::image type="content" source="./media/active-directory-configurable-token-lifetimes/roadmap.svg" alt-text="Kullanımdan kaldırma bilgileri":::
 

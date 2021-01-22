@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 8db1825e7abfaaeca4650cbd03dd05eec4777c21
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 9b2fc61054c40f52f7e638117109ec556cc63a78
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121286"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678466"
 ---
 # <a name="troubleshooting-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL Havuzu (eski adıyla SQL DW) sorunlarını giderme
 
@@ -30,13 +30,13 @@ Bu makalede, Azure SYNAPSE Analytics 'te adanmış SQL havuzunda (eski adıyla S
 | Sunucu sorumlusu "MyUserName" geçerli güvenlik bağlamında "asıl" veritabanına erişemiyor. Kullanıcının varsayılan veritabanı açılamıyor. Oturum açılamadı. 'MyUserName' kullanıcısı için oturum açma başarısız oldu. (Microsoft SQL Server, hata: 916) | Bu hata, bir Azure AD kullanıcısı ana veritabanına bağlanmaya çalıştığında ancak ana veritabanında bir kullanıcı olmadığında oluşur.  Bu sorunu düzeltmek için bağlantı zamanında bağlanmak istediğiniz adanmış SQL havuzunu (eski adıyla SQL DW) belirtin ya da kullanıcıyı ana veritabanına ekleyin.  Daha fazla bilgi için [güvenlik genel bakış](sql-data-warehouse-overview-manage-security.md) makalesine bakın. |
 | CTAıP hatası                                                  | Bu hata, SQL veritabanı ana veritabanında bir oturum oluşturulduğunda, ancak belirli SQL veritabanında olmadığında ortaya çıkabilir.  Bu hatayla karşılaşırsanız, [güvenlik genel bakış](sql-data-warehouse-overview-manage-security.md) makalesine göz atın.  Bu makalede, ana veritabanında bir oturum açma ve Kullanıcı oluşturma ve ardından bir SQL veritabanında Kullanıcı oluşturma işlemleri açıklanmaktadır. |
 | Güvenlik Duvarı Tarafından Engellendi                                          | Adanmış SQL Havuzu (eski adıyla SQL DW), yalnızca bilinen IP adreslerinin bir veritabanına erişimi olduğundan emin olmak için güvenlik duvarları tarafından korunur. Güvenlik duvarları varsayılan olarak güvenli hale gelir. Bu, bağlanmadan önce açıkça etkinleştirmeniz ve IP adresi veya adres aralığı yapmanız gerekir.  Güvenlik duvarınızı erişim için yapılandırmak üzere, [sağlama yönergelerindeki](create-data-warehouse-portal.md) [istemci IP 'niz için sunucu güvenlik duvarı erişimini yapılandırma](create-data-warehouse-portal.md) bölümündeki adımları izleyin. |
-| Araçla veya sürücüyle bağlantı yapılamaz                           | Adanmış SQL Havuzu (eski adıyla SQL DW), [SMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)'Yi, [Visual Studio için SSDT](sql-data-warehouse-install-visual-studio.md)'yi veya verilerinizi sorgulamak için [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) kullanılmasını önerir. Sürücüler hakkında daha fazla bilgi ve Azure SYNAPSE 'a bağlanma hakkında daha fazla bilgi için bkz. [Azure SYNAPSE Için sürücüler](sql-data-warehouse-connection-strings.md) ve [Azure SYNAPSE makalelerine bağlanma](sql-data-warehouse-connect-overview.md) . |
+| Araçla veya sürücüyle bağlantı yapılamaz                           | Adanmış SQL Havuzu (eski adıyla SQL DW), [SMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)'Yi, [Visual Studio için SSDT](sql-data-warehouse-install-visual-studio.md)'yi veya verilerinizi sorgulamak için [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) kullanılmasını önerir. Sürücüler hakkında daha fazla bilgi ve Azure SYNAPSE 'a bağlanma hakkında daha fazla bilgi için bkz. [Azure SYNAPSE Için sürücüler](sql-data-warehouse-connection-strings.md) ve [Azure SYNAPSE makalelerine bağlanma](sql-data-warehouse-connect-overview.md) . |
 
 ## <a name="tools"></a>Araçlar
 
 | Sorun                                                        | Çözüm                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Visual Studio Nesne Gezgini 'nde Azure AD kullanıcıları eksik           | Bu bilinen bir sorundur.  Geçici bir çözüm olarak, [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)kullanıcıları görüntüleyin.  Adanmış SQL Havuzu (eski adıyla SQL DW) ile Azure Active Directory kullanma hakkında daha fazla bilgi edinmek için bkz. [Azure SYNAPSE kimlik doğrulaması](sql-data-warehouse-authentication.md) . |
+| Visual Studio Nesne Gezgini 'nde Azure AD kullanıcıları eksik           | Bu bilinen bir sorundur.  Geçici bir çözüm olarak, [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)kullanıcıları görüntüleyin.  Adanmış SQL Havuzu (eski adıyla SQL DW) ile Azure Active Directory kullanma hakkında daha fazla bilgi edinmek için bkz. [Azure SYNAPSE kimlik doğrulaması](sql-data-warehouse-authentication.md) . |
 | El ile betik oluşturma, betik Sihirbazı 'nı kullanma veya SSMS aracılığıyla bağlanma yavaş, yanıt vermiyor veya hata üretmiyor | Ana veritabanında kullanıcıların oluşturulduğundan emin olun. Komut dosyası seçeneklerinde Ayrıca, Engine sürümünün "Microsoft Azure SYNAPSE Analytics Edition" olarak ayarlandığından ve altyapı türünün "Microsoft Azure SQL Veritabanı" olduğundan emin olun. |
 | SSMS 'de betik oluşturma başarısız oluyor                               | "Bağımlı nesneler için betik oluştur" seçeneği "true" olarak ayarlanmışsa adanmış SQL Havuzu (eski adıyla SQL DW) için betik oluşturma işlemi başarısız olur. Geçici bir çözüm olarak, kullanıcıların **Araçlar-> seçenekler->SQL Server Nesne Gezgini-> bağımlı seçenekler için betik oluştur ve yanlış olarak ayarla** seçeneğine el ile gitmesi gerekir |
 
@@ -75,7 +75,7 @@ Bu makalede, Azure SYNAPSE Analytics 'te adanmış SQL havuzunda (eski adıyla S
 | Desteklenmeyen SQL veritabanı özellikleri     | [Desteklenmeyen tablo özelliklerine](sql-data-warehouse-tables-overview.md#unsupported-table-features)bakın. |
 | Desteklenmeyen SQL veritabanı veri türleri   | [Desteklenmeyen veri türlerine](sql-data-warehouse-tables-data-types.md#identify-unsupported-data-types)bakın.        |
 | Saklı yordam sınırlamaları          | Saklı yordamların bazı sınırlamalarını anlamak için [saklı yordam sınırlamaları](sql-data-warehouse-develop-stored-procedures.md#limitations) bölümüne bakın. |
-| UDF 'ler SELECT deyimlerini desteklemez | Bu, UDF 'lerimizin geçerli bir sınırlamasıdır.  Destekliyoruz sözdizimi için bkz. [oluşturma işlevi](/sql/t-sql/statements/create-function-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) . |
+| UDF 'ler SELECT deyimlerini desteklemez | Bu, UDF 'lerimizin geçerli bir sınırlamasıdır.  Destekliyoruz sözdizimi için bkz. [oluşturma işlevi](/sql/t-sql/statements/create-function-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) . |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

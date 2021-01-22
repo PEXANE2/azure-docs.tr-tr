@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 2f26716a4d04b574bf393f502758a725948419da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85bc6f4468e0365d247b0adc204bd53ce9fa3006
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89299958"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676725"
 ---
 # <a name="copy-an-image-from-another-gallery-using-powershell"></a>PowerShell kullanarak başka bir galerinin görüntüsünü kopyalama
 
@@ -103,7 +103,7 @@ Get-AzGalleryImageDefinition `
 [Yeni-Azgallerımagedefinition](/powershell/module/az.compute/new-azgalleryimageversion) cmdlet 'ini ve yukarıdaki çıktıdaki bilgileri kullanarak hedef galerinizin yeni bir görüntü tanımını oluşturun.
 
 
-Bu örnekte, görüntü tanımı *Mydestinationgallery*adlı galerideki *Mydestinationımgdef* olarak adlandırılmıştır.
+Bu örnekte, görüntü tanımı *Mydestinationgallery* adlı galerideki *Mydestinationımgdef* olarak adlandırılmıştır.
 
 
 ```azurepowershell-interactive
@@ -127,7 +127,7 @@ $destinationImgDef  = New-AzGalleryImageDefinition `
 
 Görüntü sürümü için izin verilen karakterler rakamlardan ve dönemlerdir. Sayılar 32 bitlik bir tamsayı aralığında olmalıdır. Biçim: *MajorVersion*. *MinorVersion*. *Düzeltme Eki*.
 
-Bu örnekte, hedef Galeri, *Batı ABD* konumundaki *mydestinationrg* kaynak grubunda *mydestinationgallery*olarak adlandırılmıştır. Görüntüimizin sürümü *1.0.0* ve *Orta Güney ABD* bölgesinde 1 çoğaltma ve *Batı ABD* bölgesinde 2 çoğaltma oluşturacağız. 
+Bu örnekte, hedef Galeri, *Batı ABD* konumundaki *mydestinationrg* kaynak grubunda *mydestinationgallery* olarak adlandırılmıştır. Görüntüimizin sürümü *1.0.0* ve *Orta Güney ABD* bölgesinde 1 çoğaltma ve *Batı ABD* bölgesinde 2 çoğaltma oluşturacağız. 
 
 
 ```azurepowershell-interactive
@@ -164,6 +164,6 @@ $job.State
 
 [Genelleştirilmiş](vm-generalized-image-version-powershell.md) veya [özel](vm-specialized-image-version-powershell.md) BIR görüntü sürümünden bir VM oluşturun.
 
-[Azure görüntü Oluşturucu (Önizleme)](./linux/image-builder-overview.md) , görüntü sürümü oluşturmayı otomatikleştirmenize yardımcı olabilir, hatta [mevcut bir görüntü sürümünden yeni bir görüntü sürümünü](./linux/image-builder-gallery-update-image-version.md)güncelleştirmek ve oluşturmak için de kullanabilirsiniz. 
+[Azure görüntü Oluşturucu (Önizleme)](./image-builder-overview.md) , görüntü sürümü oluşturmayı otomatikleştirmenize yardımcı olabilir, hatta [mevcut bir görüntü sürümünden yeni bir görüntü sürümünü](./linux/image-builder-gallery-update-image-version.md)güncelleştirmek ve oluşturmak için de kullanabilirsiniz. 
 
 Satın alma planı bilgilerini sağlama hakkında daha fazla bilgi için bkz. [görüntü oluştururken Azure Marketi satın alma planı bilgilerini sağlama](marketplace-images.md).

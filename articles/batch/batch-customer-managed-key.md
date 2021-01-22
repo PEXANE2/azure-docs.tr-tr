@@ -5,12 +5,12 @@ author: pkshultz
 ms.topic: how-to
 ms.date: 07/17/2020
 ms.author: peshultz
-ms.openlocfilehash: 404103caf376b792d363996664a69f655d5bd202
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 2ed19846209d098d9eba8dba991e08d1fc57f185
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326021"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678019"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-batch-account-with-azure-key-vault-and-managed-identity"></a>Azure Key Vault ve yönetilen kimlik ile Azure Batch hesabınız için müşteri tarafından yönetilen anahtarlar yapılandırın
 
@@ -39,7 +39,7 @@ Hesap oluşturulduktan sonra, **özellik** bölümü altındaki **kimlik sorumlu
 
 Yeni bir Batch hesabı oluşturduğunuzda, `SystemAssigned` parametresi için öğesini belirtin `--identity` .
 
-```powershell
+```azurecli
 resourceGroupName='myResourceGroup'
 accountName='mybatchaccount'
 
@@ -52,7 +52,7 @@ az batch account create \
 
 Hesap oluşturulduktan sonra, bu hesapta sistem tarafından atanan yönetilen kimliğin etkinleştirildiğini doğrulayabilirsiniz. `PrincipalId`Key Vault bu toplu iş hesabına erişim vermek için bu değerin gerekli olacağı şekilde dikkat edin.
 
-```powershell
+```azurecli
 az batch account show \
     -n $accountName \
     -g $resourceGroupName \
@@ -100,7 +100,7 @@ Anahtar oluşturulduktan sonra, yeni oluşturulan anahtara ve geçerli sürüme 
 
 Batch hesabı sistem tarafından atanan yönetilen kimlikle oluşturulduktan ve Key Vault Erişimi verildikten sonra, Batch hesabını `{Key Identifier}` parametresi altındaki URL ile güncelleştirin `keyVaultProperties` . **Encryption_key_source** olarak da ayarlayın `Microsoft.KeyVault` .
 
-```powershell
+```azurecli
 az batch account set \
     -n $accountName \
     -g $resourceGroupName \
@@ -118,7 +118,7 @@ Bir anahtarın yeni bir sürümünü oluşturduğunuzda, Batch hesabını yeni s
 
 Ayrıca sürümü güncelleştirmek için Azure CLı 'yi de kullanabilirsiniz.
 
-```powershell
+```azurecli
 az batch account set \
     -n $accountName \
     -g $resourceGroupName \
@@ -134,7 +134,7 @@ Toplu şifreleme için kullanılan anahtarı değiştirmek için şu adımları 
 
 Azure CLı 'yi farklı bir anahtar kullanmak için de kullanabilirsiniz.
 
-```powershell
+```azurecli
 az batch account set \
     -n $accountName \
     -g $resourceGroupName \

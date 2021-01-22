@@ -11,12 +11,12 @@ ms.date: 08/13/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b82342ffb76f8bb58b8f6875751601094d6131ca
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b6dd2199452837d81c201cf4aef2bcd94b35cda3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461888"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677214"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>Kaynak sınıflarını Iş yükü gruplarına Dönüştür
 
@@ -56,7 +56,7 @@ CREATE WORKLOAD GROUP wgDataLoads WITH
 
 ## <a name="create-the-classifier"></a>Sınıflandırıcı oluşturma
 
-Daha önce, sorguların kaynak sınıflarıyla eşlenmesi [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class)ile yapılır.  Aynı işlevselliği elde etmek ve istekleri iş yükü gruplarıyla eşlemek için [Iş yükü SıNıFLANDıRıCıSı oluştur](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) sözdizimini kullanın.  Sp_addrolemember kullanmak yalnızca bir oturum açma temelli kaynakları bir istek ile eşlemenizi sağlar.  Bir sınıflandırıcı, oturum açma hakkında ek seçenekler sağlar, örneğin:
+Daha önce, sorguların kaynak sınıflarıyla eşlenmesi [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class)ile yapılır.  Aynı işlevselliği elde etmek ve istekleri iş yükü gruplarıyla eşlemek için [Iş yükü SıNıFLANDıRıCıSı oluştur](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) sözdizimini kullanın.  Sp_addrolemember kullanmak yalnızca bir oturum açma temelli kaynakları bir istek ile eşlemenizi sağlar.  Bir sınıflandırıcı, oturum açma hakkında ek seçenekler sağlar, örneğin:
     - etiket
     - oturum
     - Aşağıdaki örnek, `AdfLogin` oturum açma verilerinden, yukarıda oluşturulan iş yükü grubuna ayarlanmış [seçenek etiketini](sql-data-warehouse-develop-label.md)  de içeren sorguları atar `factloads` `wgDataLoads` .
@@ -91,4 +91,4 @@ SELECT request_id, [label], classifier_name, group_name, command
 - [İş yükü yalıtımı](sql-data-warehouse-workload-isolation.md)
 - [Nasıl yapılır-Iş yükü grubu oluşturma](quickstart-configure-workload-isolation-tsql.md)
 - [Iş yükü SıNıFLANDıRıCıSı oluşturma (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?&view=azure-sqldw-latest)
-- [Iş yükü grubu oluşturma (Transact-SQL)](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)
+- [Iş yükü grubu oluşturma (Transact-SQL)](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest&preserve-view=true)

@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/19/2021
 ms.custom: seodec18
-ms.openlocfilehash: eeb3de2fc3f0e3e0be9c98002f11e470eaf04f8c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 912dbf48254a8d68b9bf76db04734fd791a3edb9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020938"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677062"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-gen2-environment"></a>Öğretici: bir Azure Time Series Insights Gen2 ortamı ayarlama
 
@@ -119,7 +119,7 @@ Bu bölümde, bir Azure Time Series Insights Gen2 ortamının nasıl oluşturula
    | **IoT Hub Tüketici grubu** | **Yeni**' yi seçin, benzersiz bir ad girin ve **+ Ekle**' yi seçin. Tüketici grubu Azure Time Series Insights Gen2 içinde benzersiz bir değer olmalıdır. |
    | **TimeStamp Özelliği** | Bu değer, gelen telemetri verilerinizde **zaman damgası** özelliğini tanımlamak için kullanılır. Bu öğretici için bu kutuyu boş bırakın. Bu simülatör, Azure Time Series Insights Gen2 varsayılan olarak IoT Hub gelen zaman damgasını kullanır. |
 
-1. **Gözden geçir + oluştur**' u seçin.
+1. **Gözden geçir + Oluştur**’u seçin.
 
    [![Oluşturulan IoT Hub 'ını bir olay kaynağı olarak yapılandırın.](media/v2-update-provision/tsi-configure-event-source.png)](media/v2-update-provision/tsi-configure-event-source.png#lightbox)
 
@@ -229,32 +229,32 @@ Bu bölümde, verilerinizi yapılandırmak için bir model uygularsınız. Model
         | Parametre | Eylem |
         | --- | --- |
         | **Ad** | **Ort sıcaklık** girin. |
-        | **Tür** | **Sayısal** seçin |
+        | **Tip** | **Sayısal** seçin |
         | **Değer** | Önayar arasından seç: **sıcaklık (Double)** seçeneğini belirleyin. <br /> Note: Azure Time Series Insights Gen2 olayları almaya başladıktan sonra **değerin** otomatik olarak doldurulması birkaç dakika sürebilir.|
         | **Toplama Işlemi** | **Gelişmiş Seçenekler**' i genişletin. <br /> **Ort**' ı seçin. |
 
-    1. **Apply** (Uygula) seçeneğini belirleyin. Sonra, **+ değişkeni tekrar ekleyin** ve aşağıdaki değerleri ayarlayın:
+    1. **Uygula**’yı seçin. Sonra, **+ değişkeni tekrar ekleyin** ve aşağıdaki değerleri ayarlayın:
 
         | Parametre | Eylem |
         | --- | --- |
         | **Ad** | **Ortalama titreşim** girin. |
-        | **Tür** | **Sayısal** seçin |
+        | **Tip** | **Sayısal** seçin |
         | **Değer** | Önayar arasından seç: **titreşim (Double)** seçeneğini belirleyin. <br /> Note: Azure Time Series Insights Gen2 olayları almaya başladıktan sonra **değerin** otomatik olarak doldurulması birkaç dakika sürebilir.|
         | **Toplama Işlemi** | **Gelişmiş Seçenekler**' i genişletin. <br /> **Ort**' ı seçin. |
 
-    1. **Apply** (Uygula) seçeneğini belirleyin. Sonra, **+ değişkeni tekrar ekleyin** ve üçüncü ve son değişken için aşağıdaki değerleri ayarlayın:
+    1. **Uygula**’yı seçin. Sonra, **+ değişkeni tekrar ekleyin** ve üçüncü ve son değişken için aşağıdaki değerleri ayarlayın:
 
         | Parametre | Eylem |
         | --- | --- |
         | **Ad** | **Kat** girin. |
-        | **Tür** | **Kategorik** seçin |
+        | **Tip** | **Kategorik** seçin |
         | **Değer** | Önayar arasından seç: **kat (Double)** seçeneğini belirleyin. <br /> Note: Azure Time Series Insights Gen2 olayları almaya başladıktan sonra **değerin** otomatik olarak doldurulması birkaç dakika sürebilir.|
         | **Kategoriler** | <span style="text-decoration: underline">Etiketi</span>   -  <span style="text-decoration: underline">Değerler</span> <br /> Düşük: 1, 2, 3, 4 <br /> Orta: 5, 6, 7, 8, 9 <br /> Üst: 10, 11, 12, 13, 14, 15 |
         | **Varsayılan kategori** | **Bilinmeyen** girin |
 
         [![Tür değişkenleri ekleyin.](media/v2-update-provision/tsi-add-type-variables.png)](media/v2-update-provision/tsi-add-type-variables.png#lightbox)
 
-    1. **Apply** (Uygula) seçeneğini belirleyin. 
+    1. **Uygula**’yı seçin. 
     1. **Kaydet**’i seçin. Üç değişken oluşturulur ve görüntülenir.
 
         [![Tür eklendikten sonra Model görünümünde gözden geçirin.](media/v2-update-provision/tsi-add-type-and-view.png)](media/v2-update-provision/tsi-add-type-and-view.png#lightbox)

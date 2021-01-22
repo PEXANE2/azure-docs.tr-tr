@@ -11,12 +11,12 @@ ms.date: 05/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 302249b7d8490e43b841116c52500e686626433d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5773691852ddc723ec84503edee37c678bbbcfd9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460601"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677513"
 ---
 # <a name="quickstart-configure-dedicated-sql-pool-workload-isolation-using-a-workload-group-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal bir iş yükü grubunu kullanarak adanmış SQL havuzu iş yükü yalıtımını yapılandırma
 
@@ -93,7 +93,7 @@ Kaynakları temizlemek için bu adımları izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İş yükü grubunu kullanmak için `DataLoads` , istekleri iş yükü grubuna yönlendirmek üzere bir [iş yükü sınıflandırıcının](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) oluşturulması gerekir.  İçin bir iş yükü Sınıflandırıcısı oluşturmak üzere [iş yükü Sınıflandırıcısı oluşturma](quickstart-create-a-workload-classifier-portal.md) öğreticisine geçin `DataLoads` .
+İş yükü grubunu kullanmak için `DataLoads` , istekleri iş yükü grubuna yönlendirmek üzere bir [iş yükü sınıflandırıcının](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) oluşturulması gerekir.  İçin bir iş yükü Sınıflandırıcısı oluşturmak üzere [iş yükü Sınıflandırıcısı oluşturma](quickstart-create-a-workload-classifier-portal.md) öğreticisine geçin `DataLoads` .
 
 ## <a name="see-also"></a>Ayrıca bkz.
 İş yükü yönetimi için iş yüklerini izleme hakkında ayrıntılı bilgi için bkz. nasıl yapılır makalesi [Iş yükü yönetimini yönetme ve izleme](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md) .

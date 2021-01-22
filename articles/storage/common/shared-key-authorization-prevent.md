@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/21/2021
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 6a24713a6027c38d2b9817928f3a82161bd37314
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: e4a5803b3d04b59316f71e50af24945efc87cb69
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936735"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677572"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Azure depolama hesabı (Önizleme) için paylaşılan anahtar yetkilendirmesini engelleyin
 
@@ -123,7 +123,7 @@ Paylaşılan anahtarla yetkilendirilmiş istekleri güvenli bir şekilde reddede
 > [!WARNING]
 > Herhangi bir istemci şu anda paylaşılan anahtarla Depolama hesabınızdaki verilere erişiyorsa, Microsoft, depolama hesabına paylaşılan anahtar erişimine izin vermeden önce bu istemcileri Azure AD 'ye geçirmenize olanak önerir.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
 Azure portal bir depolama hesabı için paylaşılan anahtar yetkilendirmesi engellemek için şu adımları izleyin:
 
@@ -239,8 +239,6 @@ Bazı Azure Araçları, Azure depolama 'ya erişmek için Azure AD yetkilendirme
 ## <a name="about-the-preview"></a>Önizleme hakkında
 
 Paylaşılan anahtar yetkilendirmesinin önlenmesi için Önizleme, Azure genel bulutu 'nda bulunabilir. Yalnızca Azure Resource Manager dağıtım modelini kullanan depolama hesapları için desteklenir. Hangi depolama hesaplarının Azure Resource Manager dağıtım modelini kullanması hakkında daha fazla bilgi için bkz. [depolama hesabı türleri](storage-account-overview.md#types-of-storage-accounts).
-
-Önizlemeye kaydolmak için bkz. [Azure Storage paylaşılan anahtar erişimine sınırlı genel önizlemeye Izin verin](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUN1o4TUtUUzZBV0JYVlhKQ1FITDlVUUU0Ui4u).
 
 > [!IMPORTANT]
 > Bu Önizleme yalnızca üretim dışı kullanım için tasarlanmıştır.

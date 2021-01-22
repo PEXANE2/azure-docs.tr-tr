@@ -16,12 +16,12 @@ ms.subservice: hybrid
 ms.reviewer: chmutali
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4cdda52271bc7b9e9d854e0af181e2c8f22ad9a
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 1f39ef611e2ea15ef3bc3dbfcf09e9624cbcf8b3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98614121"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678230"
 ---
 # <a name="manage-agent-registry-options"></a>Aracı kayıt defteri seçeneklerini yönetme
 
@@ -34,7 +34,7 @@ Yapılandırılmış Active Directory etki alanı denetleyicilerinde LDAP işlem
 System.DirectoryServices.Protocols.LdapException: The operation was aborted because the client side timeout limit was exceeded.
 `
 
-Arama özniteliğinin dizini oluşturulmadıysa LDAP arama işlemleri daha uzun sürebilir. İlk adım olarak, yukarıdaki hatayı alırsanız, önce arama/arama özniteliğinin [dizine alınmış](https://docs.microsoft.com/windows/win32/ad/indexed-attributes)olup olmadığını kontrol edin. Arama öznitelikleri dizine alınmışsa ve hata devam ederse, aşağıdaki adımları kullanarak LDAP bağlantısı zaman aşımını artırabilirsiniz: 
+Arama özniteliğinin dizini oluşturulmadıysa LDAP arama işlemleri daha uzun sürebilir. İlk adım olarak, yukarıdaki hatayı alırsanız, önce arama/arama özniteliğinin [dizine alınmış](/windows/win32/ad/indexed-attributes)olup olmadığını kontrol edin. Arama öznitelikleri dizine alınmışsa ve hata devam ederse, aşağıdaki adımları kullanarak LDAP bağlantısı zaman aşımını artırabilirsiniz: 
 
 1. Azure AD Connect sağlama aracısını çalıştıran Windows Server 'da yönetici olarak oturum açın.
 1. *Çalıştır* menü öğesini kullanarak kayıt defteri düzenleyicisini açın (regedit.exe) 
@@ -48,7 +48,7 @@ Arama özniteliğinin dizini oluşturulmadıysa LDAP arama işlemleri daha uzun 
 1. Birden çok sağlama Aracısı dağıttıysanız, bu kayıt defteri değişikliğini tutarlılık için tüm aracılara uygulayın. 
 
 ## <a name="configure-referral-chasing"></a>Başvuru işlemesini yapılandırma
-Varsayılan olarak, Azure AD Connect sağlama Aracısı [başvuruları](https://docs.microsoft.com/windows/win32/ad/referrals)içermez. Belirli HR gelen sağlama senaryolarını desteklemek için başvuru işlemesini etkinleştirmek isteyebilirsiniz: 
+Varsayılan olarak, Azure AD Connect sağlama Aracısı [başvuruları](/windows/win32/ad/referrals)içermez. Belirli HR gelen sağlama senaryolarını desteklemek için başvuru işlemesini etkinleştirmek isteyebilirsiniz: 
 * Birden çok etki alanı genelinde UPN 'nin benzersizliği denetleniyor
 * Etki alanları arası yönetici başvurularını çözme
 

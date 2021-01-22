@@ -11,16 +11,16 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4f881dcc0d26589c4029246019119fa0555dcd5d
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 0974e880b75cce69f2b5ac82e3c4b39de53e03ce
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98117784"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677113"
 ---
 # <a name="load-data-from-azure-data-lake-storage-into-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure Data Lake Storage verileri Azure SYNAPSE Analytics 'te adanmış SQL havuzlarına yükleme
 
-Bu kılavuzda, Azure Data Lake Storage verileri yüklemek için [Copy ifadesinin](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) nasıl kullanılacağı özetlenmektedir. Tüm kimlik doğrulama yöntemlerinde COPY ifadesini kullanmayla ilgili hızlı örnekler için aşağıdaki belgeleri ziyaret edin: [ADANMıŞ SQL havuzlarını kullanarak verileri güvenli bir şekilde yükleyin](./quickstart-bulk-load-copy-tsql-examples.md).
+Bu kılavuzda, Azure Data Lake Storage verileri yüklemek için [Copy ifadesinin](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) nasıl kullanılacağı özetlenmektedir. Tüm kimlik doğrulama yöntemlerinde COPY ifadesini kullanmayla ilgili hızlı örnekler için aşağıdaki belgeleri ziyaret edin: [ADANMıŞ SQL havuzlarını kullanarak verileri güvenli bir şekilde yükleyin](./quickstart-bulk-load-copy-tsql-examples.md).
 
 > [!NOTE]  
 > COPY ifadesinde geri bildirim veya rapor sorunları sağlamak için şu dağıtım listesine bir e-posta gönderin: sqldwcopypreview@service.microsoft.com .
@@ -34,7 +34,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu öğreticiye başlamadan önce, [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)’nun (SSMS) en yeni sürümünü indirin ve yükleyin.
+Bu öğreticiye başlamadan önce, [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)’nun (SSMS) en yeni sürümünü indirin ve yükleyin.
 
 Bu öğreticiyi çalıştırmak için şunlar gerekir:
 
@@ -133,6 +133,6 @@ Verilerin yüklenmesi, Azure SYNAPSE Analytics kullanılarak veri ambarı çöz�
 > [Veri depolama için tablo geliştirmeyi öğrenin](sql-data-warehouse-tables-overview.md)
 
 Daha fazla örnek ve başvuru yüklemek için aşağıdaki belgeleri görüntüleyin:
-- [Deyimdeki başvuru belgelerini Kopyala](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
+- [Deyimdeki başvuru belgelerini Kopyala](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax)
 - [Her kimlik doğrulama yöntemi için örnekleri KOPYALAYıN](./quickstart-bulk-load-copy-tsql-examples.md)
 - [Tek bir tablo için hızlı başlangıç kopyalama](./quickstart-bulk-load-copy-tsql.md)

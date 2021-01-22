@@ -9,12 +9,12 @@ ms.date: 06/24/2020
 ms.author: mhopkins
 ms.reviewer: dineshm
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: c20c78cb3c946c666b1640ccac6f86c9b52387ea
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b50aadfa16ed95bacb5247187c15489a1b017d39
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843885"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676599"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Öğretici: Azure depolama ile buluta görüntü verileri yükleme
 
@@ -41,7 +41,7 @@ Serinin birinci bölümünde şunları öğrenirsiniz:
 > * Uygulama ayarlarını yapılandırma
 > * Web uygulamasıyla etkileşim kurma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir. Başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 
@@ -55,7 +55,7 @@ CLı 'yi yerel olarak yüklemek ve kullanmak için Azure CLı sürüm 2.0.4 veya
 
 Aşağıdaki örnek `myResourceGroup` adlı bir kaynak grubu oluşturur.
 
-```bash
+```azurecli
 az group create --name myResourceGroup --location southeastasia
 ```
 
@@ -72,7 +72,7 @@ az group create --name myResourceGroup --location southeastasia
 
 Aşağıdaki komutta, yer tutucuyu gördüğünüz BLOB depolama hesabı için kendi genel benzersiz adınızı değiştirin `<blob_storage_account>` .
 
-```bash
+```azurecli
 blobStorageAccount="<blob_storage_account>"
 
 az storage account create --name $blobStorageAccount --location southeastasia \
@@ -130,7 +130,7 @@ BLOB depolama hesabı adınızı ve anahtarınızı bir yere göz önüne alın.
 
 Aşağıdaki örnekte, **Ücretsiz** fiyatlandırma katmanı kullanılarak `myAppServicePlan` adlı bir App Service planı oluşturulmaktadır:
 
-```bash
+```azurecli
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku Free
 ```
 
@@ -144,7 +144,7 @@ Web uygulaması, GitHub örnek deposundan dağıtılan örnek uygulama kodu içi
 
 Aşağıdaki komutta, öğesini `<web_app>` benzersiz bir adla değiştirin. Geçerli karakterler: `a-z`, `0-9` ve `-`. `<web_app>`Benzersiz değilse, şu hata iletisini alırsınız: *Verilen ada sahip Web sitesi `<web_app>` zaten var.* Web uygulamasının varsayılan URL'si `https://<web_app>.azurewebsites.net` şeklindedir.  
 
-```bash
+```azurecli
 webapp="<web_app>"
 
 az webapp create --name $webapp --resource-group myResourceGroup --plan myAppServicePlan
@@ -164,7 +164,7 @@ App Service bir web uygulamasına içerik dağıtmanın birkaç yolunu destekler
 
 Örnek proje bir [ASP.NET MVC](https://www.asp.net/mvc) uygulaması içerir. Uygulama bir görüntüyü kabul eder, bir depolama hesabına kaydeder ve küçük resim kapsayıcılarından görüntüleri görüntüler. Web uygulaması, Azure depolama hizmetiyle etkileşim kurmak için [Azure. Storage](/dotnet/api/azure.storage), [Azure. Storage. blob 'ları](/dotnet/api/azure.storage.blobs)ve [Azure. Storage. blob. model](/dotnet/api/azure.storage.blobs.models) ad alanlarını kullanır.
 
-```bash
+```azurecli
 az webapp deployment source config --name $webapp --resource-group myResourceGroup \
   --branch master --manual-integration \
   --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
@@ -180,7 +180,7 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
 
 App Service bir web uygulamasına içerik dağıtmanın birkaç yolunu destekler. Bu öğreticide, web uygulamasını bir [genel GitHub örnek deposundan](https://github.com/Azure-Samples/azure-sdk-for-js-storage-blob-stream-nodejs) dağıtırsınız. [az webapp deployment source config](/cli/azure/webapp/deployment/source) komutuyla Git dağıtımını web uygulamasında gerçekleşecek şekilde yapılandırın.
 
-```bash
+```azurecli
 az webapp deployment source config --name $webapp --resource-group myResourceGroup \
   --branch master --manual-integration \
   --repo-url https://github.com/Azure-Samples/azure-sdk-for-js-storage-blob-stream-nodejs
@@ -200,7 +200,7 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
 
 Örnek Web uygulaması, görüntüleri karşıya yüklemek için [.net Için Azure depolama API 'lerini](/dotnet/api/overview/azure/storage) kullanır. Depolama hesabı kimlik bilgileri, Web uygulaması için uygulama ayarları 'nda ayarlanır. Uygulama ayarlarını, [az WebApp config appSettings set](/cli/azure/webapp/config/appsettings) komutuyla dağıtılan uygulamaya ekleyin.
 
-```bash
+```azurecli
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
   --settings AzureStorageConfig__AccountName=$blobStorageAccount \
     AzureStorageConfig__ImageContainer=images \
@@ -220,7 +220,7 @@ az webapp config appsettings set --name $webapp --resource-group myResourceGroup
 
 Örnek Web uygulaması, görüntüleri karşıya yüklemek için [JavaScript Için Azure Storage istemci kitaplığını](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage) kullanır. Depolama hesabı kimlik bilgileri, Web uygulaması için uygulama ayarları 'nda ayarlanır. Uygulama ayarlarını, [az WebApp config appSettings set](/cli/azure/webapp/config/appsettings) komutuyla dağıtılan uygulamaya ekleyin.
 
-```bash
+```azurecli
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
   --settings AZURE_STORAGE_ACCOUNT_NAME=$blobStorageAccount \
     AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey

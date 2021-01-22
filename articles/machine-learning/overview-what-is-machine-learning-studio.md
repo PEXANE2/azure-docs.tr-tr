@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: f59ed16f98a22f77b2e67ec2bf829f58dccef611
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 4212c76d052fe1f272963003e836425b50d6f105
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740513"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677623"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Azure Machine Learning stüdyo nedir?
 
@@ -68,7 +68,7 @@ Makine öğrenimi varlıklarınızı doğrudan tarayıcınızda yönetin. Varlı
 - Notebooks
 - Denemeler
 - Günlükleri Çalıştır
-- İşlem hatları 
+- Pipelines 
 - Ardışık düzen uç noktaları
 
 Deneyimli bir geliştirici olsanız bile, Studio çalışma alanı kaynaklarını nasıl yönetebileceğinizi kolaylaştırabilir.
@@ -87,10 +87,10 @@ Yeni kullanıcıların, en son veri bilimi araçları aralığı için ML Studio
 
 Aşağıdaki tablo ML Studio (klasik) ve Azure Machine Learning arasındaki önemli farklılıkları özetler.
 
-| Özellik | ML Studio (klasik) | Azure Machine Learning |
+| Öne çıkan özelliği | ML Studio (klasik) | Azure Machine Learning |
 |---| --- | --- |
 | Sürükle ve bırak arabirimi | Klasik deneyim | Güncelleştirilmiş deneyim- [Azure Machine Learning Tasarımcısı](concept-designer.md)| 
-| Kod SDK 'Ları | Desteklenmeyen | [Azure Machine Learning Python](/python/api/overview/azure/ml/) ve [R](tutorial-1st-r-experiment.md) SDK 'leriyle tamamen tümleşik |
+| Kod SDK 'Ları | Desteklenmeyen | [Azure Machine Learning Python](/python/api/overview/azure/ml/) ve [R](https://github.com/Azure/azureml-sdk-for-r) SDK 'leriyle tamamen tümleşik |
 | Deneme | Ölçeklenebilir (10 GB eğitim veri limiti) | İşlem hedefi ile ölçeklendirme |
 | Eğitim işlem hedefleri | Özel işlem hedefi, yalnızca CPU desteği | Geniş kapsamlı özelleştirilebilir [eğitim işlem hedefleri](concept-compute-target.md#train). GPU ve CPU desteği içerir | 
 | Dağıtım işlem hedefleri | Özel Web hizmeti biçimi özelleştirilebilir değil | Geniş kapsamlı özelleştirilebilir [dağıtım işlem hedefleri](concept-compute-target.md#deploy). GPU ve CPU desteği içerir |

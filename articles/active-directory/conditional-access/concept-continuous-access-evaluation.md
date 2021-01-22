@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7519b6c7e1f3381be77b9a0734ddda250228e7d
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: fd14c7911676768a61d2b2c0e366d2c227455be8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860312"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678213"
 ---
 # <a name="continuous-access-evaluation"></a>Sürekli erişim değerlendirmesi
 
@@ -28,7 +28,7 @@ Müşteriler, ağ konumu veya kimlik bilgisi hırsızlığı gibi ilke ve bu de�
 
 Sürekli erişim değerlendirmesinin ilk uygulamasını Exchange, takımlar ve SharePoint Online 'a odaklanır.
 
-Uygulamalarınızı CAE 'yi kullanacak şekilde hazırlamak için bkz. [uygulamalarınızda sürekli erişim değerlendirmesi etkin API 'leri kullanma](/azure/active-directory/develop/app-resilience-continuous-access-evaluation).
+Uygulamalarınızı CAE 'yi kullanacak şekilde hazırlamak için bkz. [uygulamalarınızda sürekli erişim değerlendirmesi etkin API 'leri kullanma](../develop/app-resilience-continuous-access-evaluation.md).
 
 ### <a name="key-benefits"></a>Önemli avantajlar
 

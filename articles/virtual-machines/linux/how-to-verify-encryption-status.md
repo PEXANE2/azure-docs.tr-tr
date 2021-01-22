@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: kaib
 ms.date: 03/11/2020
 ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 7f51aae39c2cb60d8b60d4fb496f74eadb91b33b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 42b1aed2f6c66dbfc0f04759b232855f3b7f0a2a
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487662"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676827"
 ---
 # <a name="verify-encryption-status-for-linux"></a>Linux için şifreleme durumunu doğrulama 
 
@@ -70,7 +70,7 @@ Aşağıdaki PowerShell komutlarını kullanarak her bir diskten şifreleme ayar
 ### <a name="single-pass"></a>Tek pass
 Tek bir geçişte, şifreleme ayarları her bir disk (işletim sistemi ve veri) üzerinde damgalanır. Bir işletim sistemi diskinin şifreleme ayarlarını, tek bir geçişte şu şekilde yakalayabilirsiniz:
 
-``` powershell
+```powershell
 $RGNAME = "RGNAME"
 $VMNAME = "VMNAME"
 
@@ -160,7 +160,7 @@ Write-Host "====================================================================
 
 Aşağıdaki Azure CLı komutlarını kullanarak, şifrelenmiş bir sanal makinenin *genel* şifreleme durumunu doğrulayabilirsiniz:
 
-```bash
+```azurecli
 VMNAME="VMNAME"
 RGNAME="RGNAME"
 az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} --query "substatus"
@@ -170,14 +170,14 @@ az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} --query "subst
 ### <a name="single-pass"></a>Tek pass
 Aşağıdaki Azure CLı komutlarını kullanarak her bir disk için şifreleme ayarlarını doğrulayabilirsiniz:
 
-```bash
+```azurecli
 az vm encryption show -g ${RGNAME} -n ${VMNAME} --query "disks[*].[name, statuses[*].displayStatus]"  -o table
 ```
 
 ![Veri şifreleme ayarları](./media/disk-encryption/verify-encryption-linux/data-encryption-settings-2.png)
 
 >[!IMPORTANT]
-> Diskte şifreleme ayarları atıyamazsa, metin **diskinin şifrelenmediğini**görürsünüz.
+> Diskte şifreleme ayarları atıyamazsa, metin **diskinin şifrelenmediğini** görürsünüz.
 
 Ayrıntılı durum ve şifreleme ayarları almak için aşağıdaki komutları kullanın.
 
@@ -203,7 +203,7 @@ done
 
 Veri diskleri:
 
-```bash
+```azurecli
 RGNAME="RGNAME"
 VMNAME="VMNAME"
 az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} --query "substatus"
@@ -223,7 +223,7 @@ done
 
 ### <a name="dual-pass"></a>Çift geçiş
 
-``` bash
+```azurecli
 az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} -o table
 ```
 
@@ -276,7 +276,7 @@ Belirli bir diskin ayrıntılarını almak için şunları sağlamanız gerekir:
 
 Bu komut tüm depolama hesaplarınızın tüm kimliklerini listeler:
 
-```bash
+```azurecli
 az storage account list --query [].[id] -o tsv
 ```
 Depolama hesabı kimlikleri aşağıdaki biçimde listelenir:
@@ -295,7 +295,7 @@ ConnectionString=$(az storage account show-connection-string --ids $id --query c
 ```
 
 Aşağıdaki komut, bir depolama hesabı altındaki tüm kapsayıcıları listeler:
-```bash
+```azurecli
 az storage container list --connection-string $ConnectionString --query [].[name] -o tsv
 ```
 Diskler için kullanılan kapsayıcı normalde "VHD 'ler" olarak adlandırılır.
@@ -306,7 +306,7 @@ ContainerName="name of the container"
 ```
 
 Belirli bir kapsayıcıdaki tüm Blobları listelemek için bu komutu kullanın:
-```bash 
+```azurecli 
 az storage blob list -c ${ContainerName} --connection-string $ConnectionString --query [].[name] -o tsv
 ```
 Sorgulamak istediğiniz diski seçin ve adını bir değişkende depolayın:
@@ -314,7 +314,7 @@ Sorgulamak istediğiniz diski seçin ve adını bir değişkende depolayın:
 DiskName="diskname.vhd"
 ```
 Disk şifreleme ayarlarını sorgulayın:
-```bash
+```azurecli
 az storage blob show -c ${ContainerName} --connection-string ${ConnectionString} -n ${DiskName} --query metadata.DiskEncryptionSettings
 ```
 
@@ -323,7 +323,7 @@ Veri diski bölümlerinin şifrelendiğini (ve işletim sistemi diskinin olmadı
 
 Bir bölüm veya disk şifrelendiğinde **, şifreli bir tür olarak** görüntülenir. Şifrelenmediğinde, **bölüm/disk** türü olarak gösterilir.
 
-``` bash
+```bash
 lsblk
 ```
 
@@ -331,7 +331,7 @@ lsblk
 
 Aşağıdaki **lsblk** türevini kullanarak daha fazla bilgi edinebilirsiniz. 
 
-Uzantı tarafından bağlanan bir **Crypt** türü katmanı görürsünüz. Aşağıdaki örnek, mantıksal birimleri ve **şifre \_ Luks fsType**olan normal diskleri gösterir.
+Uzantı tarafından bağlanan bir **Crypt** türü katmanı görürsünüz. Aşağıdaki örnek, mantıksal birimleri ve **şifre \_ Luks fsType** olan normal diskleri gösterir.
 
 ```bash
 lsblk -o NAME,TYPE,FSTYPE,LABEL,SIZE,RO,MOUNTPOINT
@@ -340,15 +340,15 @@ lsblk -o NAME,TYPE,FSTYPE,LABEL,SIZE,RO,MOUNTPOINT
 
 Ek bir adım olarak, veri diskinde yüklenmiş bir anahtar olup olmadığını doğrulayabilirsiniz:
 
-``` bash
+```bash
 cryptsetup luksDump /dev/VGNAME/LVNAME
 ```
 
-``` bash
+```bash
 cryptsetup luksDump /dev/sdd1
 ```
 
-Ve hangi **DM** cihazlarının **şifreli**olarak listelendiğini kontrol edebilirsiniz:
+Ve hangi **DM** cihazlarının **şifreli** olarak listelendiğini kontrol edebilirsiniz:
 
 ```bash
 dmsetup ls --target crypt

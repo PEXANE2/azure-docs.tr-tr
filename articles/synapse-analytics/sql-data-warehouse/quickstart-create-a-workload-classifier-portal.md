@@ -11,12 +11,12 @@ ms.date: 05/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 4c761404ab5a95bc0189407cc97ce779b66356fe
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 1f4d113f3bc6add67dd34a7ef5e3f8cdc08cecf0
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460699"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677530"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-workload-classifier-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak adanmış bir SQL havuzu iş yükü Sınıflandırıcısı oluşturma
 
@@ -45,7 +45,7 @@ Bir iş yükü grubu `DataLoads` var.  İş yükü grubunu oluşturmak için [h�
 
 ## <a name="create-a-login-for-eltlogin"></a>ELTLogin için oturum açma oluşturma
 
-`master`IÇIN [oturum açma oluştur](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kullanarak veritabanında SQL Server kimlik doğrulaması oturumu oluşturun `ELTLogin` .
+`master`IÇIN [oturum açma oluştur](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) kullanarak veritabanında SQL Server kimlik doğrulaması oturumu oluşturun `ELTLogin` .
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.sql_logins WHERE name = 'ELTLogin')
@@ -57,7 +57,7 @@ END
 
 ## <a name="create-user-and-grant-permissions"></a>Kullanıcı oluşturma ve izin verme
 
-Oturum açma oluşturulduktan sonra, veritabanında bir kullanıcının oluşturulması gerekir.  Mysampledatawarehouse içinde SQL kullanıcısını oluşturmak için [Kullanıcı oluşturma](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ' yı kullanın `ELTRole` . **mySampleDataWarehouse**  Bu öğretici sırasında sınıflandırmayı test edeceğiz, `ELTLogin` **Mysampledatawarehouse** için izin verin. 
+Oturum açma oluşturulduktan sonra, veritabanında bir kullanıcının oluşturulması gerekir.  Mysampledatawarehouse içinde SQL kullanıcısını oluşturmak için [Kullanıcı oluşturma](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ' yı kullanın `ELTRole` .   Bu öğretici sırasında sınıflandırmayı test edeceğiz, `ELTLogin` **Mysampledatawarehouse** için izin verin. 
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'ELTLogin')
@@ -96,13 +96,13 @@ Sınıflandırma, istekleri bir dizi kurala göre iş yükü grubuna yönlendirm
     ![Yapılandırma ' ya tıklayın](./media/quickstart-create-a-workload-classifier-portal/config-wc.png)
 
 ## <a name="verify-and-test-classification"></a>Doğrulama ve test sınıflandırması
-Sınıflandırıcının varlığını doğrulamak için [sys.workload_management_workload_classifiers](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql?view=azure-sqldw-latest) katalog görünümünü denetleyin `ELTLoginDataLoads` .
+Sınıflandırıcının varlığını doğrulamak için [sys.workload_management_workload_classifiers](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql?view=azure-sqldw-latest&preserve-view=true) katalog görünümünü denetleyin `ELTLoginDataLoads` .
 
 ```sql
 SELECT * FROM sys.workload_management_workload_classifiers WHERE name = 'ELTLoginDataLoads'
 ```
 
-Sınıflandırıcı ayrıntılarını doğrulamak için [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?view=azure-sqldw-latest) katalog görünümünü denetleyin.
+Sınıflandırıcı ayrıntılarını doğrulamak için [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?view=azure-sqldw-latest&preserve-view=true) katalog görünümünü denetleyin.
 
 ```sql
 SELECT c.[name], c.group_name, c.importance, cd.classifier_type, cd.classifier_value
