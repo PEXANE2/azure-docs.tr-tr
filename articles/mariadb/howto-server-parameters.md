@@ -3,15 +3,15 @@ title: Sunucu parametrelerini Yapılandırma-Azure portal-MariaDB için Azure ve
 description: Bu makalede, Azure portal kullanılarak MariaDB için Azure veritabanı 'nda MariaDB sunucu parametrelerinin nasıl yapılandırılacağı açıklanır.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 10/1/2020
-ms.openlocfilehash: 7081535bb709e6731a9a15436334e8742e7bdd08
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: cda6b2bd3d49bd71b4c57d5d459c07b61addb493
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539465"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664809"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-portal"></a>Azure portal kullanarak MariaDB için Azure veritabanı 'nda sunucu parametrelerini yapılandırma
 
@@ -29,7 +29,7 @@ MariaDB için Azure veritabanı bazı sunucu parametrelerinin yapılandırılmas
 ![Açılan listesini numaralandır](./media/howto-server-parameters/3-toggle_parameter.png)
 4. Değişikliklerinizi kaydetmek için  **Kaydet** ' e tıklayın.
 ![Değişiklikleri kaydetme veya atma](./media/howto-server-parameters/4-save_parameters.png)
-5. Parametreler için yeni değerler kaydettiyseniz, **Tümünü Sıfırla** ' yı seçerek her şeyi varsayılan değerlere geri döndürebilirsiniz.
+5. Parametreler için yeni değerler kaydettiyseniz, **Tümünü Sıfırla**' yı seçerek her şeyi varsayılan değerlere geri döndürebilirsiniz.
 ![Tümünü Varsayılana sıfırla](./media/howto-server-parameters/5-reset_parameters.png)
 
 ## <a name="setting-parameters-not-listed"></a>Ayar parametreleri listelenmedi
@@ -41,7 +41,7 @@ Güncelleştirmek istediğiniz sunucu parametresi Azure portal listelenmemişse,
 3. Sunucu parametrelerini şu biçimde ekleyin: değer `SET parameter_name=YOUR_DESIRED_VALUE` sütununda değer sütunu.
 
     Örneğin, için ayarını yaparak sunucunuzun karakter kümesini değiştirebilirsiniz. `init_connect``SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;`
-4. **Kaydet** ’a tıklayarak değişikliklerinizi kaydedin.
+4. **Kaydet**’a tıklayarak değişikliklerinizi kaydedin.
 
 ## <a name="working-with-the-time-zone-parameter"></a>Saat dilimi parametresiyle çalışma
 

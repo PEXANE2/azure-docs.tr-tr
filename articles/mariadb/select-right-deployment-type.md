@@ -3,15 +3,15 @@ title: Doğru dağıtım türünü seçme-MariaDB için Azure veritabanı
 description: Bu makalede, MariaDB için Azure veritabanı 'nı hizmet olarak altyapı (IaaS) veya hizmet olarak platform (PaaS) olarak dağıtmadan önce göz önünde bulundurmanız gereken faktörler açıklanmaktadır.
 author: mksuni
 ms.author: sumuth
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: d8885e374142b3d916803fc472ae18351ca6d470
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 921ad8d187f6c2478bdf92aab0ee0ec3c9e75bce
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240282"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664527"
 ---
 # <a name="choose-the-right-mariadb-server-option-in-azure"></a>Azure 'da doğru MariaDB sunucu seçeneğini belirleyin
 
@@ -49,11 +49,11 @@ Bu seçenekler arasındaki temel farklılıklar aşağıdaki tabloda listelenmi�
 
 MariaDB veritabanlarınızı barındırmak için PaaS veya IaaS seçme kararlarınızı etkileyebilecek birkaç etken vardır.
 
-### <a name="cost"></a>Cost
+### <a name="cost"></a>Maliyet
 
 Sınırlı komik genellikle veritabanlarınızı barındırmak için en iyi çözümü belirleyen birincil noktadır. Bu, sıkı bütçe kısıtlamaları altında çalışan kurulu bir şirkette çok az nakit veya ekip ile bir başlangıç yaptığınız için geçerlidir. Bu bölümde, Azure VM 'lerinde MariaDB ve MariaDB için Azure veritabanı 'na uygulanan Azure 'da faturalandırma ve lisanslama temelleri açıklanmaktadır.
 
-#### <a name="billing"></a>Faturalama
+#### <a name="billing"></a>Faturalandırma
 
 MariaDB için Azure veritabanı şu anda birkaç katmanda kaynaklar için farklı fiyatlarla bir hizmet olarak sunulmaktadır. Tüm kaynaklar, saatlik olarak sabit bir fiyat üzerinden faturalandırılır. Şu anda desteklenen hizmet katmanları, işlem boyutları ve depolama miktarları hakkında en son bilgiler için bkz. [sanal çekirdek tabanlı satın alma modeli](concepts-pricing-tiers.md). Hizmet katmanlarını ve işlem boyutlarını, uygulamanızın değişen aktarım hızı gereksinimleriyle eşleşecek şekilde dinamik olarak ayarlayabilirsiniz. Giden Internet trafiği için düzenli [veri aktarımı fiyatları](https://azure.microsoft.com/pricing/details/data-transfers/)üzerinden faturalandırılırsınız.
 

@@ -3,15 +3,15 @@ title: Yeniden yönlendirme ile bağlanma-MariaDB için Azure veritabanı
 description: Bu makalede, uygulamayı yeniden yönlendirme ile MariaDB için Azure veritabanı 'na bağlanmak üzere nasıl yapılandırabileceğiniz açıklanmaktadır.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 6/8/2020
-ms.openlocfilehash: 3f26de72839fcaa39bff4d827aba757721736934
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 29f2ab8f70af2ca19cbffcbba6db39c5a93445fe
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537433"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664911"
 ---
 # <a name="connect-to-azure-database-for-mariadb-with-redirection"></a>Yeniden yönlendirme ile MariaDB için Azure veritabanı 'na bağlanma
 
@@ -54,7 +54,7 @@ Belgenin sonraki bölümlerinde, `mysqlnd_azure` Bu parametrenin değerini nası
 
 ### <a name="ubuntu-linux"></a>Ubuntu Linux
 
-#### <a name="prerequisites"></a>Ön koşullar 
+#### <a name="prerequisites"></a>Önkoşullar 
 - PHP sürümleri 7.2.15 + ve 7.3.2 +
 - PHP PEAR 
 - PHP-MySQL
@@ -93,7 +93,7 @@ Belgenin sonraki bölümlerinde, `mysqlnd_azure` Bu parametrenin değerini nası
 
 ### <a name="windows"></a>Windows
 
-#### <a name="prerequisites"></a>Ön koşullar 
+#### <a name="prerequisites"></a>Önkoşullar 
 - PHP sürümleri 7.2.15 + ve 7.3.2 +
 - PHP-MySQL
 - MariaDB sunucusu için Azure veritabanı

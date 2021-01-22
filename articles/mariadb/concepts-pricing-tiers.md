@@ -3,15 +3,15 @@ title: Fiyatlandırma katmanları - MariaDB için Azure Veritabanı
 description: Bilgi işlem oluşturmaları, depolama türleri, depolama boyutu, sanal çekirdek, bellek ve yedekleme bekletme dönemleri dahil olmak üzere MariaDB için Azure veritabanı için çeşitli fiyatlandırma katmanları hakkında bilgi edinin.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: b5b5a506b2f932d20a617634ace7ebf02093fbfa
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 6c786ea80ecbe2f174d8c3b701316791e1b6104f
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536294"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664257"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>MariaDB için Azure veritabanı fiyatlandırma katmanları
 
@@ -108,7 +108,7 @@ Depolamanın ölçeklendirilmesi ve yedekleme saklama süresinin değiştirilmes
 
 ## <a name="pricing"></a>Fiyatlandırma
 
-En güncel fiyatlandırma bilgileri için bkz. hizmet [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/mariadb/). İstediğiniz yapılandırmanın maliyetini görmek için [Azure Portal](https://portal.azure.com/#create/Microsoft.MariaDBServer) , seçtiğiniz seçeneklere göre **fiyatlandırma katmanı** sekmesindeki aylık maliyeti gösterir. Azure aboneliğiniz yoksa, tahmini bir fiyat almak için Azure Fiyatlandırma hesaplayıcısı ' nı kullanabilirsiniz. [Azure Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/) Web sitesinde, **öğe Ekle** ' yi seçin, **veritabanları** kategorisini genişletin ve seçenekleri özelleştirmek Için **MariaDB için Azure veritabanı** ' nı seçin.
+En güncel fiyatlandırma bilgileri için bkz. hizmet [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/mariadb/). İstediğiniz yapılandırmanın maliyetini görmek için [Azure Portal](https://portal.azure.com/#create/Microsoft.MariaDBServer) , seçtiğiniz seçeneklere göre **fiyatlandırma katmanı** sekmesindeki aylık maliyeti gösterir. Azure aboneliğiniz yoksa, tahmini bir fiyat almak için Azure Fiyatlandırma hesaplayıcısı ' nı kullanabilirsiniz. [Azure Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/) Web sitesinde, **öğe Ekle**' yi seçin, **veritabanları** kategorisini genişletin ve seçenekleri özelleştirmek Için **MariaDB için Azure veritabanı** ' nı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Hizmet sınırlamaları](concepts-limits.md)hakkında bilgi edinin.

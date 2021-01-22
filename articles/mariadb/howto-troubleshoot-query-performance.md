@@ -3,15 +3,15 @@ title: Sorgu performansı sorunlarını giderme-MariaDB için Azure veritabanı
 description: MariaDB için Azure veritabanı 'nda sorgu performansı sorunlarını gidermek için AÇıKLA ' yı nasıl kullanacağınızı öğrenin.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: 2b7491723ffcff73e4b243fe54ef18608167d636
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8c996520a77a107017aecad30c221da9ec69137c
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537246"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664724"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda sorgu performansını profil oluşturma hakkında açıklama kullanma
 **Açıkla** sorguları iyileştirmek için kullanışlı bir araçtır. AÇıKLA deyimi, SQL deyimlerinin nasıl yürütüldüğü hakkında bilgi almak için kullanılabilir. Aşağıdaki çıktıda bir açıklama ifadesinin yürütülmesi örneği gösterilmektedir.
@@ -75,7 +75,7 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-Çıkışta görünebileceğinden, MariaDB hiçbir dizini kullanmaz çünkü uygun dizin yok. Ayrıca, *geçici kullanmayı da gösterir; Dosya sıralamayı kullanarak* , MariaDB, **Group By** yan tümcesini karşılamak için geçici bir tablo oluşturur.
+Çıkışta görünebileceğinden, MariaDB hiçbir dizini kullanmaz çünkü uygun dizin yok. Ayrıca, *geçici kullanmayı da gösterir; Dosya sıralamayı kullanarak*, MariaDB, **Group By** yan tümcesini karşılamak için geçici bir tablo oluşturur.
  
 Yalnızca **C2** sütununda bir dizin oluşturmak farklılık yapmaz ve MariaDB 'nin hala geçici bir tablo oluşturması gerekir:
 
@@ -97,7 +97,7 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-Bu durumda, daha fazla veri aramasını ortadan kaldırmak için, **C1** ve **C2** ' de **Kapsanan bir dizin** oluşturulabilir ve bu değerin **C2** "değeri doğrudan dizinde eklenmesi
+Bu durumda, daha fazla veri aramasını ortadan kaldırmak için, **C1** ve **C2** ' de **Kapsanan bir dizin** oluşturulabilir ve bu değerin **C2**"değeri doğrudan dizinde eklenmesi
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY covered(c1,c2);

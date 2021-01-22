@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d84acc5501b3d40f6db85d0ee6ee369aec5a6aa4
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 71e74789654d2df91d9a087eaaf8d8f2a2664f7b
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051114"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664121"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Azure Digital TWINS 'i Azure SignalR hizmeti ile tümleştirme
 
@@ -40,7 +40,11 @@ Azure SignalR hizmetini aşağıdaki yoldan Azure dijital TWINS 'e iliştirirsin
 
 İlk olarak, gerekli örnek uygulamaları indirin. Aşağıdakilerin her ikisine de ihtiyacınız olacak:
 * [**Azure dijital TWINS uçtan uca örnekler**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/): Bu örnek, verileri bir Azure dijital TWINS örneğine taşımak Için iki Azure işlevi tutan bir *AdtSampleApp* içerir (Bu senaryo hakkında daha ayrıntılı bilgi edinmek için [*öğretici: uçtan uca bir çözümü bağlama*](tutorial-end-to-end.md)). Ayrıca, bir IoT cihazına benzetiren, her saniye yeni bir sıcaklık değeri oluşturan bir *Devicesimülatör* örnek uygulaması da içerir. 
-    - Örnek bağlantısına gidin ve örneğin _**Azure_Digital_Twins_end_to_end_samples.zip**_ bir kopyasını makinenize ındırmek Için *ZIP yükle* düğmesine basın. Klasörün sıkıştırmasını açın.
+    - [*Önkoşulları önkoşul*](#prerequisites)olarak öğreticinin bir parçası olarak henüz indirmediyseniz örnek bağlantısına gidin ve başlığın altındaki *kodu görüntüle* düğmesine tıklayın. Bu işlem sizi, örnek olarak indirebileceğiniz GitHub deposuna götürür *.* *Kod* düğmesini seçip zip ' i *indirin*.
+
+    :::image type="content" source="media/includes/download-repo-zip.png" alt-text="GitHub 'da dijital-TWINS-örnek deposunun görünümü. Kod düğmesi seçilidir ve posta Indirme düğmesinin vurgulandığı küçük bir iletişim kutusu oluşturulur." lightbox="media/includes/download-repo-zip.png":::
+
+    Bu işlem, örnek deponun bir kopyasını **digital-twins-samples-master.zip** olarak makinenize indirir. Klasörün sıkıştırmasını açın.
 * [**SignalR tümleştirmesi Web uygulaması örneği**](/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/): Bu, Azure SignalR hizmetinden Azure dijital TWINS telemetri verilerini tüketen örnek bir tepki veren Web uygulamasıdır.
     -  Örnek bağlantısına gidin ve örneğin _**Azure_Digital_Twins_SignalR_integration_web_app_sample.zip**_ bir kopyasını makinenize ındırmek Için *ZIP yükle* düğmesine basın. Klasörün sıkıştırmasını açın.
 
@@ -63,7 +67,7 @@ Bu bölümde, iki Azure işlevi ayarlayacaksınız:
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-keys.png" alt-text="SignalR örneği için anahtarlar sayfasını gösteren Azure portal ekran görüntüsü. Birincil bağlantı DIZESININ yanındaki ' panoya kopyala ' simgesi vurgulanır." lightbox="media/how-to-integrate-azure-signalr/signalr-keys.png":::
 
-Ardından, Visual Studio 'Yu (veya seçtiğiniz başka bir kod düzenleyicisini) başlatın ve kod çözümünü *Azure_Digital_Twins_end_to_end_samples > ADTSampleApp* klasöründe açın. Ardından, işlevleri oluşturmak için aşağıdaki adımları uygulayın:
+Ardından, Visual Studio 'Yu (veya seçtiğiniz başka bir kod düzenleyicisini) başlatın ve Code çözümünü *Digital-TWINS-Samples-master > ADTSampleApp* klasöründe açın. Ardından, işlevleri oluşturmak için aşağıdaki adımları uygulayın:
 
 1. *Samplefunctionsapp* projesinde **SignalRFunctions.cs** adlı yeni bir C# Sharp sınıfı oluşturun.
 
@@ -71,7 +75,7 @@ Ardından, Visual Studio 'Yu (veya seçtiğiniz başka bir kod düzenleyicisini)
     
     :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/signalRFunction.cs":::
 
-1. Visual Studio 'nun *Paket Yöneticisi konsol* penceresinde veya makinenizde *Azure_Digital_Twins_end_to_end_samples \adtsampleapp\samplefunctionsapp* klasöründe herhangi bir komut penceresinde, `SignalRService` NuGet paketini projeye yüklemek için aşağıdaki komutu çalıştırın:
+1. Visual Studio 'nun *Paket Yöneticisi konsol* penceresinde veya *Digital-Twins-Samples-master\AdtSampleApp\SampleFunctionsApp* klasöründe makinenizde herhangi bir komut penceresinde, `SignalRService` NuGet paketini projeye yüklemek için aşağıdaki komutu çalıştırın:
     ```cmd
     dotnet add package Microsoft.Azure.WebJobs.Extensions.SignalRService --version 1.2.0
     ```
@@ -126,7 +130,7 @@ Bu bölümde, sonucu eylem olarak görürsünüz. İlk olarak, Azure dijital TWI
 
 Uçtan uca öğretici ön eki sırasında, [cihaz simülatörünü](tutorial-end-to-end.md#configure-and-run-the-simulation) bir IoT Hub ve Azure dijital TWINS örneğiniz aracılığıyla veri gönderecek şekilde yapılandırdınız.
 
-Şimdi yapmanız gerekir, *Azure_Digital_Twins_end_to_end_samples > devicesimülatör > devicesimülatör. sln*' de bulunan simülatör projesini başlatmıştır. Visual Studio kullanıyorsanız, projeyi açabilir ve araç çubuğunda Bu düğmeyle çalıştırabilirsiniz:
+Şimdi yapmanız gerekir, *dijital-TWINS-örnekler-master > devicesimülatör > devicesimülatör. sln*' de bulunan simülatör projesini başlatmıştır. Visual Studio kullanıyorsanız, projeyi açabilir ve araç çubuğunda Bu düğmeyle çalıştırabilirsiniz:
 
 :::image type="content" source="media/how-to-integrate-azure-signalr/start-button-simulator.png" alt-text="Visual Studio Başlangıç düğmesi (Devicesimülatör Projesi)":::
 
@@ -188,7 +192,7 @@ Azure Cloud Shell veya yerel Azure CLı kullanarak, [az Group Delete](/cli/azure
 az group delete --name <your-resource-group>
 ```
 
-Son olarak, indirdiğiniz proje örnek klasörlerini yerel makinenize (*Azure_Digital_Twins_end_to_end_samples.zip* ve *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip*) silin.
+Son olarak, indirdiğiniz proje örnek klasörlerini yerel makinenize (*digital-twins-samples-master.zip* ve *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip*) silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

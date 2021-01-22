@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 49b7bae1a0cc224b92f292b891fae210f2cffa4e
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 91915f204a68d59a603b8bdea383b497a5b33d34
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400616"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664036"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure Digital Twins nedir?
 
@@ -33,6 +33,8 @@ Azure dijital TWINS tarafından sunulan özelliklerin bir özeti aşağıda veri
 Azure dijital TWINS 'de, [**modeller**](concepts-models.md)olarak adlandırılan özel ikizi türlerini kullanarak fiziksel ortamınızdaki kişileri, yerleri ve şeyleri temsil eden dijital varlıkları tanımlarsınız. 
 
 Bu model tanımlarını, işletmenizi anlatmak için özel bir sözlük olarak düşünebilirsiniz. Örneğin, bir yapı yönetimi çözümü için, "derleme", "taban" ve "Asansör" gibi modeller tanımlayabilirsiniz. Böylece, belirli ortamınızı temsil etmek için bu modellere göre **dijital TWINS** oluşturabilirsiniz.
+
+[!INCLUDE [digital-twins-versus-device-twins](../../includes/digital-twins-versus-device-twins.md)]
 
 Modeller, [dijital TWINS tanım dili (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)adlı JSON benzeri bir dilde tanımlanır ve bunların durum özellikleri, telemetri olayları, komutlar, bileşenler ve ilişkiler açısından, TWINS 'leri tanımlar.
 * Modeller, TWINS 'nizi, etkileşimlerini yansıtan bir bilgi grafiğine bağlayabilmeniz için varlıklarınız arasında anlamsal **ilişkiler** tanımlar. Modelleri, dünyanın bir açıklamasında ve ilişkileri fiiller olarak düşünebilir.
@@ -67,11 +69,11 @@ Ayrıca, REST API 'Leri veya bağlayıcıları [Logic Apps](../logic-apps/logic-
 Azure dijital TWINS modelinizdeki veriler ek analiz veya depolama için aşağı akış Azure hizmetlerine yönlendirilebilir. Bu, istediğiniz veri akışlarınızı barındırmak için [Olay Hub](../event-hubs/event-hubs-about.md)'ı, [Event Grid](../event-grid/overview.md)veya [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) kullanan **olay yolları** aracılığıyla sağlanır.
 
 Olay rotalarıyla gerçekleştirebileceğiniz bazı şeyler şunlardır:
-* Azure dijital TWINS verilerini [Azure Data Lake](../storage/blobs/data-lake-storage-introduction.md) depolama
-* Azure [SYNAPSE Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)veya diğer Microsoft veri analizi araçlarıyla Azure dijital TWINS verilerini çözümleme
-* Daha büyük iş akışlarını Logic Apps tümleştirme
+* Azure Digital Twins verilerini [Azure Data Lake](../storage/blobs/data-lake-storage-introduction.md) içinde depolama
+* Azure Digital Twins verilerini [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) veya diğer Microsoft veri analizi araçlarıyla analiz etme
+* Daha büyük iş akışlarını Logic Apps ile tümleştirme
 * Her ikizi zaman serisi geçmişini izlemek için Azure dijital TWINS 'i Time Series Insights bağlama
-* Azure dijital TWINS 'te bir kaynak ile Time Series Insights bir zaman serisi modeli hizalama
+* Time Series Insights içindeki bir zaman serisi modelini Azure Digital Twins'deki bir kaynakla hizalama
 
 Bu, Azure dijital TWINS 'in daha büyük bir çözüme bağlanabilme ve bu öngörülerle çalışmaya devam etmesi için özel ihtiyaçlarınızı desteklemeye yönelik başka bir yoldur.
 

@@ -3,16 +3,16 @@ title: İzleme-MariaDB için Azure veritabanı
 description: Bu makalede CPU, depolama ve bağlantı istatistikleri dahil olmak üzere MariaDB için Azure veritabanı izleme ve uyarma ölçümleri açıklanmaktadır.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 10/21/2020
-ms.openlocfilehash: 7420a7c6355fbcd70ce57fbb36ab29d1241df31f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3d2cf88dba44a7f18f73fbafb66381d2ef8b29c5
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453330"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664291"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda izleme
 Sunucularınız hakkındaki izleme verileri, iş yükünüz için sorun gidermenize ve iyileştirmenize yardımcı olur. MariaDB için Azure veritabanı, sunucunuzun davranışına ilişkin Öngörüler sağlayan çeşitli ölçümler sunar.
@@ -25,7 +25,7 @@ Adım adım yönergeler için bkz. [uyarıları ayarlama](howto-alert-metric.md)
 ### <a name="list-of-metrics"></a>Ölçüm listesi
 Bu ölçümler, MariaDB için Azure veritabanı 'nda kullanılabilir:
 
-|Ölçüm|Ölçüm görünen adı|Birim|Açıklama|
+|Ölçüm|Ölçüm görünen adı|Birim|Description|
 |---|---|---|---|
 |cpu_percent|CPU yüzdesi|Yüzde|Kullanımdaki CPU yüzdesi.|
 |memory_percent|Bellek yüzdesi|Yüzde|Kullanımdaki belleğin yüzdesi.|

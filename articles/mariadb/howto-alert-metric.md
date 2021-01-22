@@ -3,15 +3,15 @@ title: Ölçüm uyarılarını Yapılandırma-Azure portal-MariaDB için Azure v
 description: Bu makalede, Azure portal MariaDB için Azure veritabanı 'nın ölçüm uyarılarının nasıl yapılandırılacağı ve erişebileceği açıklanır.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: e108ca3aa346af20b31ff446130014e1250f49c0
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 1e7dafaba6b6792afdec1f1866629fac9ba5a577
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541088"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664427"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı ölçümleri hakkında uyarı ayarlamak için Azure portal kullanın
 
@@ -25,7 +25,7 @@ Bir uyarıyı, tetiklendiğinde aşağıdaki eylemleri yapmak üzere yapılandı
 * Web kancası çağırma
 
 Kullanarak uyarı kuralları hakkında bilgi alabilir ve bunları alabilirsiniz:
-* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure portalı](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
 * [Azure İzleyici REST API'si](/rest/api/monitor/metricalerts)
 
@@ -42,13 +42,13 @@ Kullanarak uyarı kuralları hakkında bilgi alabilir ve bunları alabilirsiniz:
 
    ![Ölçüm uyarısı formu Ekle](./media/howto-alert-metric/4-add-rule-form.png)
 
-5. **Koşul** bölümünde **Koşul Ekle** ' yi seçin.
+5. **Koşul** bölümünde **Koşul Ekle**' yi seçin.
 
 6. Uyarı almak için sinyaller listesinden bir ölçüm seçin. Bu örnekte, "depolama alanı yüzdesi" ni seçin.
    
    ![Ölçüm seçin](./media/howto-alert-metric/6-configure-signal-logic.png)
 
-7. **Koşul** (örn.) gibi uyarı mantığını yapılandırın. "Büyüktür"), **eşik** (örn. yüzde 85), **zaman toplama** , ölçüm kuralının uyarı tetikleyiciden önce karşılanması **gereken süre (** örn. "Son 30 dakika içinde") ve **Sıklık**.
+7. **Koşul** (örn.) gibi uyarı mantığını yapılandırın. "Büyüktür"), **eşik** (örn. yüzde 85), **zaman toplama**, ölçüm kuralının uyarı tetikleyiciden önce karşılanması **gereken süre (** örn. "Son 30 dakika içinde") ve **Sıklık**.
    
    Tamamlandığında **bitti** ' yi seçin.
 

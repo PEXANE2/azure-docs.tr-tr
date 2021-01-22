@@ -9,18 +9,18 @@ ms.custom: devx-track-csharp, contperf-fy21q1
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.author: alkemper
-ms.openlocfilehash: d0e564b98ab6331677451afd32a0848e7f5594dd
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 353a934842fd872d48d091f1df1b6d94ac4599ff
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598742"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663443"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Hızlı başlangıç: Azure Uygulama yapılandırmasıyla ASP.NET Core uygulaması oluşturma
 
 Bu hızlı başlangıçta, bir ASP.NET Core uygulamasının uygulama ayarlarının depolanmasını ve yönetimini merkezileştirmek için Azure Uygulama yapılandırması 'nı kullanacaksınız. ASP.NET Core, bir uygulama tarafından belirtilen bir veya daha fazla veri kaynağından ayarları kullanarak tek, anahtar-değer tabanlı bir yapılandırma nesnesi oluşturur. Bu veri kaynakları *yapılandırma sağlayıcıları* olarak bilinir. Uygulama yapılandırmasının .NET Core istemcisi bir yapılandırma sağlayıcısı olarak uygulandığından, hizmet başka bir veri kaynağı gibi görünür.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/dotnet)
 * [.NET Core SDK](https://dotnet.microsoft.com/download)
@@ -41,7 +41,7 @@ Bu hızlı başlangıçta, bir ASP.NET Core uygulamasının uygulama ayarların�
     | `TestApp:Settings:FontSize`        | *24*                                |
     | `TestApp:Settings:Message`         | *Azure Uygulama yapılandırmasından veriler* |
 
-    **Etiket** ve **içerik türü** şimdilik boş bırakın. **Apply** (Uygula) seçeneğini belirleyin.
+    **Etiket** ve **içerik türü** şimdilik boş bırakın. **Uygula**’yı seçin.
 
 ## <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core web uygulaması oluşturma
 
@@ -87,6 +87,19 @@ dotnet new mvc --no-https --output TestAppConfig
     > [!IMPORTANT]
     > `CreateHostBuilder``CreateWebHostBuilder`.NET Core 3. x içindeki yerini alır. Ortamınıza göre doğru söz dizimini seçin.
 
+     #### <a name="net-5x"></a>[.NET 5. x](#tab/core5x)
+
+    ```csharp
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+                webBuilder.ConfigureAppConfiguration(config =>
+                {
+                    var settings = config.Build();
+                    var connection = settings.GetConnectionString("AppConfig");
+                    config.AddAzureAppConfiguration(connection);
+                }).UseStartup<Startup>());
+    ```
     #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
     ```csharp

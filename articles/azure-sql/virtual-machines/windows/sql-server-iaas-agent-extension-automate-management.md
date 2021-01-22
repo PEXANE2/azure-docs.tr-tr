@@ -17,12 +17,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7ddc13306f4adb1730169c4811b9d2227dedca33
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 481a4ff21c361e4cf82a21d9e98357a4c8b7b1b4
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632775"
+ms.locfileid: "98663681"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>SQL Server IaaS Aracısı Uzantısı ile yönetimi otomatikleştirme
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,7 +34,7 @@ Bu makale, uzantıya genel bir bakış sağlar. SQL Server IaaS uzantısını Az
 
 ## <a name="overview"></a>Genel Bakış
 
-SQL Server IaaS Aracısı uzantısı, Azure VM 'lerinde SQL Server için birkaç avantaj sağlar: 
+IaaS Aracısı uzantısı, Azure portal tümleştirilmesine olanak tanır ve yönetim moduna bağlı olarak, Azure VM 'lerinde SQL Server için birçok özellik avantajlarının kilidini açar: SQL Server 
 
 - **Özellik avantajları**: uzantı, Portal yönetimi, lisans esnekliği, otomatik yedekleme, otomatik düzeltme eki uygulama ve daha fazlası gibi birçok Otomasyon özelliği avantajlarından yararlanır. Ayrıntılar için bu makalenin ilerleyen kısımlarında bulunan [özellik avantajları](#feature-benefits) bölümüne bakın. 
 
@@ -74,12 +74,13 @@ Aşağıdaki tabloda bu avantajlar ayrıntılı olarak verilmiştir:
 
 | Özellik | Açıklama |
 | --- | --- |
-| **Portal yönetimi** | [Portaldaki yönetimin](manage-sql-vm-portal.md)kilidini açarak SQL Server sanal makinelerinizi tek bir yerde görüntüleyebilir ve böylece SQL 'e özgü özellikleri doğrudan portaldan etkinleştirebilir ve devre dışı bırakabilmenizi sağlayabilirsiniz. 
-| **Otomatik yedekleme** |Tüm veritabanları için, varsayılan örnek veya VM üzerinde [doğru şekilde yüklenmiş](frequently-asked-questions-faq.md#administration) bir SQL Server örneği için yedeklemelerin zamanlamasını otomatikleştirir. Daha fazla bilgi için bkz. [Azure sanal makinelerinde SQL Server Için otomatik yedekleme (Kaynak Yöneticisi)](automated-backup-sql-2014.md). |
-| **Otomatik düzeltme eki uygulama** |, Önemli Windows ve VM 'niz için SQL Server güvenlik güncelleştirmelerinin gerçekleşmesi sırasında bir bakım penceresi yapılandırır, bu sayede iş yükünüz için yoğun zamanlarda güncelleştirmelerden kaçınabilirsiniz. Daha fazla bilgi için bkz. [Azure sanal makinelerinde SQL Server Için otomatik düzeltme eki uygulama (Kaynak Yöneticisi)](automated-patching.md). |
-| **Azure Key Vault tümleştirme** |SQL Server VM Azure Key Vault otomatik olarak yüklemenize ve yapılandırmanıza olanak sağlar. Daha fazla bilgi için bkz. [Azure sanal makinelerinde SQL Server için Azure Key Vault tümleştirmesini yapılandırma (Kaynak Yöneticisi)](azure-key-vault-integration-configure.md). |
-| **Esnek lisanslama** | Kendi lisansını getir (Azure Hibrit Avantajı olarak da bilinir) ile Kullandıkça Öde lisanslama modeline [sorunsuz](licensing-model-azure-hybrid-benefit-ahb-change.md) bir şekilde geçiş yaparak maliyetten tasarruf edin. | 
-| **Esnek sürüm/sürüm** | SQL Server [sürümünü](change-sql-server-version.md) [veya sürümünü](change-sql-server-edition.md) değiştirmeye karar verirseniz, tüm SQL Server VM yeniden dağıtmak zorunda kalmadan, Azure Portal içindeki meta verileri güncelleştirebilirsiniz.  | 
+| **Portal yönetimi** | [Portaldaki yönetimin](manage-sql-vm-portal.md)kilidini açarak SQL Server sanal makinelerinizi tek bir yerde görüntüleyebilir ve böylece SQL 'e özgü özellikleri doğrudan portaldan etkinleştirebilir ve devre dışı bırakabilmenizi sağlayabilirsiniz. <br/> Yönetim modu: hafif & dolu|  
+| **Otomatik yedekleme** |Tüm veritabanları için, varsayılan örnek veya VM üzerinde [doğru şekilde yüklenmiş](frequently-asked-questions-faq.md#administration) bir SQL Server örneği için yedeklemelerin zamanlamasını otomatikleştirir. Daha fazla bilgi için bkz. [Azure sanal makinelerinde SQL Server Için otomatik yedekleme (Kaynak Yöneticisi)](automated-backup-sql-2014.md). <br/> Yönetim modu: tam|
+| **Otomatik düzeltme eki uygulama** |, Önemli Windows ve VM 'niz için SQL Server güvenlik güncelleştirmelerinin gerçekleşmesi sırasında bir bakım penceresi yapılandırır, bu sayede iş yükünüz için yoğun zamanlarda güncelleştirmelerden kaçınabilirsiniz. Daha fazla bilgi için bkz. [Azure sanal makinelerinde SQL Server Için otomatik düzeltme eki uygulama (Kaynak Yöneticisi)](automated-patching.md). <br/> Yönetim modu: tam|
+| **Azure Key Vault tümleştirme** |SQL Server VM Azure Key Vault otomatik olarak yüklemenize ve yapılandırmanıza olanak sağlar. Daha fazla bilgi için bkz. [Azure sanal makinelerinde SQL Server için Azure Key Vault tümleştirmesini yapılandırma (Kaynak Yöneticisi)](azure-key-vault-integration-configure.md). <br/> Yönetim modu: tam|
+| **Portalda disk kullanımını görüntüleme** | Azure portal SQL veri dosyalarınızın disk kullanımının grafik temsilini görüntülemenize olanak sağlar.  <br/> Yönetim modu: tam | 
+| **Esnek lisanslama** | Kendi lisansını getir (Azure Hibrit Avantajı olarak da bilinir) ile Kullandıkça Öde lisanslama modeline [sorunsuz](licensing-model-azure-hybrid-benefit-ahb-change.md) bir şekilde geçiş yaparak maliyetten tasarruf edin. <br/> Yönetim modu: hafif & dolu| 
+| **Esnek sürüm/sürüm** | SQL Server [sürümünü](change-sql-server-version.md) [veya sürümünü](change-sql-server-edition.md) değiştirmeye karar verirseniz, tüm SQL Server VM yeniden dağıtmak zorunda kalmadan, Azure Portal içindeki meta verileri güncelleştirebilirsiniz.  <br/> Yönetim modu: hafif & dolu| 
 
 
 ## <a name="management-modes"></a>Yönetim modları

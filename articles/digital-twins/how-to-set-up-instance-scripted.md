@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1667c21b9a35b8e93feffb8cf1b37d4409da73c3
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 1552401953a8cba9dda787a0f0e461adb7972920
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044317"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664461"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Azure dijital TWINS örneği ve kimlik doğrulaması (komut dosyası) ayarlama
 
@@ -29,11 +29,13 @@ Bu makalenin bu sürümü, işlemi kolaylaştıran [ **otomatikleştirilmiş bir
 
 ## <a name="prerequisites-download-the-script"></a>Önkoşullar: betiği Indir
 
-Örnek betik, PowerShell 'de yazılmıştır. Bu örnek bağlantıyı inceleyerek makinenize indirebileceğiniz [**Azure dijital TWINS uçtan uca örneklerinin**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)bir parçasıdır. Bu, söz konusu örnek bağlantısına giderek ve başlık altındaki *posta indirme* düğmesini seçmiş olursunuz.
+Örnek betik, PowerShell 'de yazılmıştır. Bu örnek bağlantıya giderek ve başlık altındaki *koda Gözat* düğmesine tıklayarak makinenize Indirebileceğiniz [**Azure dijital TWINS uçtan uca örneklerinin**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)bir parçasıdır. Bu işlem sizi, örnek olarak indirebileceğiniz GitHub deposuna götürür *.* *Kod* düğmesini seçip zip ' i *indirin*.
 
-Bu işlem, örnek projeyi _**Azure_Digital_Twins_end_to_end_samples.zip**_ olarak makinenize indirir. Makinenizde bulunan klasöre gidin ve dosyaları ayıklamak için dosyayı ayıklayın.
+:::image type="content" source="media/includes/download-repo-zip.png" alt-text="GitHub 'da dijital-TWINS-örnek deposunun görünümü. Kod düğmesi seçilidir ve posta Indirme düğmesinin vurgulandığı küçük bir iletişim kutusu oluşturulur." lightbox="media/includes/download-repo-zip.png":::
 
-Sıkıştırılmış klasörde, dağıtım betiği _Azure_Digital_Twins_end_to_end_samples > betiklerinin > **deploy.ps1**_ bulunur.
+Bu, bir yükler *. ZIP* klasörünü makinenize **digital-twins-samples-master.zip**. Makinenizde bulunan klasöre gidin ve dosyaları ayıklamak için dosyayı ayıklayın.
+
+Sıkıştırılmış klasörde, dağıtım betiği, _**deploy.ps1**> Digital-TWINS-samples-Master > betiklerinde_ bulunur.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -56,7 +58,7 @@ Dağıtım betiğini Cloud Shell ' de çalıştırma adımları aşağıda veril
 
     :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Karşıya yükleme simgesinin seçimini gösteren Cloud Shell pencere":::
 
-    Makinenizde _**deploy.ps1**_ dosyasına gidin ( _Azure_Digital_Twins_end_to_end_samples > betikler > **deploy.ps1**_) ve "Aç" düğmesine basın. Bu işlem, dosyayı Cloud Shell penceresinde çalıştırabilmeniz için Cloud Shell dosyasına yükler.
+    Makinenizde _**deploy.ps1**_ dosyasına gidin ( _dijital-TWINS-örnekler-ana > betikler > **deploy.ps1**_) ve "Aç" düğmesine basın. Bu işlem, dosyayı Cloud Shell penceresinde çalıştırabilmeniz için Cloud Shell dosyasına yükler.
 
 4. Komutu Cloud Shell penceresine göndererek betiği çalıştırın `./deploy.ps1` . Aşağıdaki komutu kopyalayabilir (Cloud Shell yapıştırmak için çağırır, Windows ve Linux 'ta **CTRL + SHIFT + v** ' i veya MacOS 'ta **cmd + SHIFT + v** ' yi kullanabilirsiniz. Sağ tıklama menüsünü de kullanabilirsiniz.
 
@@ -102,7 +104,7 @@ Bu sayfada tüm Azure dijital TWINS örnekleri listelenir. Listede yeni oluştur
 
 Doğrulama başarısız olduysa, [Portal](how-to-set-up-instance-portal.md#create-the-azure-digital-twins-instance) veya [CLI](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance)kullanarak bir örnek oluşturmayı yeniden deneyebilirsiniz.
 
-### <a name="collect-instance-values"></a>Örnek değerlerini topla
+### <a name="collect-instance-values"></a>Örnek değerlerini toplama
 
 [Azure dijital TWINS sayfasında](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances) örneğinizin adını seçerek örneğin *genel bakış* sayfasını açın. *Adına*, *kaynak grubuna* ve *ana bilgisayar adına göz önünde barının*. Daha sonra örneğinizi belirleyip daha sonra bu örneğe bağlanmanız gerekebilir.
 

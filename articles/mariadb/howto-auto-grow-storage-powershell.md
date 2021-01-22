@@ -3,16 +3,16 @@ title: Depolamayı otomatik Büyüt-Azure PowerShell-MariaDB için Azure veritab
 description: Bu makalede, MariaDB için Azure veritabanı 'nda PowerShell kullanarak otomatik büyüme depolamayı nasıl etkinleştirebileceğinizi açıklanmaktadır.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 5/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 87438c406ea2b31942003d9211cf5e285628f15d
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: ef495fc884b1930f8510b6b2443bde40e269a8f1
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541003"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98665166"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mariadb-server-using-powershell"></a>PowerShell kullanarak MariaDB sunucusu için Azure veritabanı 'nda depolamayı otomatik olarak büyüt
 
@@ -23,7 +23,7 @@ Depolama otomatik büyüme [, sunucunuzun depolama sınırına ulaşmasını](co
 > [!IMPORTANT]
 > Depolamanın yalnızca yukarı ölçeklenebileceğinden, aşağı doğru ölçeklenemediğini unutmayın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 

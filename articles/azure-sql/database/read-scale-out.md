@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
-ms.date: 09/03/2020
-ms.openlocfilehash: 9c09a54daa482d738ded9f7aca1c95c2b640617e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 01/20/2021
+ms.openlocfilehash: 5f9e7e1c96db2b60e41fe0ded69ea562cf8fcea6
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790279"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663994"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>Salt okuma sorgusu iş yüklerini boşaltmak için salt okuma çoğaltmaları kullanın
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -85,7 +85,7 @@ Bir salt okuma çoğaltmasına bağlanıldığında, dinamik yönetim görünüm
 
 Yaygın olarak kullanılan görünümler şunlardır:
 
-| Ad | Amaç |
+| Name | Amaç |
 |:---|:---|
 |[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Son saat için CPU, veri GÇ ve hizmet hedefi sınırlarına göre günlük yazma kullanımı dahil olmak üzere kaynak kullanım ölçümleri sağlar.|
 |[sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| Veritabanı altyapısı örneği için toplam bekleme istatistikleri sağlar. |
@@ -115,12 +115,12 @@ Nadir durumlarda, bir anlık görüntü yalıtım işlemi başka bir eşzamanlı
 
 ### <a name="long-running-queries-on-read-only-replicas"></a>Salt okuma çoğaltmalarda uzun süre çalışan sorgular
 
-Salt okuma çoğaltmalarda çalıştırılan sorguların sorguda başvurulan nesneler için meta verilere erişmesi gerekir (tablolar, dizinler, istatistikler, vb.) Nadir durumlarda, bir sorgu salt okuma çoğaltmasındaki aynı nesne üzerinde bir kilit tuttuğunda, birincil çoğaltmada bir meta veri nesnesi değiştirilirse, sorgu birincil çoğaltmadaki salt okuma çoğaltmasına değişiklikler uygulayan işlemi [engelleyebilir](/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK) . Bu tür bir sorgu uzun bir süre çalıştırmak olsaydı, salt okuma çoğaltmasının birincil çoğaltmayla önemli ölçüde eşitlenmemesine neden olur. 
+Salt okuma çoğaltmalarda çalıştırılan sorguların sorguda başvurulan nesneler için meta verilere erişmesi gerekir (tablolar, dizinler, istatistikler, vb.) Nadir durumlarda, bir sorgu salt okuma çoğaltmasındaki aynı nesne üzerinde bir kilit tuttuğunda, birincil çoğaltmada bir meta veri nesnesi değiştirilirse, sorgu birincil çoğaltmadaki salt okuma çoğaltmasına değişiklikler uygulayan işlemi [engelleyebilir](/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK) . Bu tür bir sorgu uzun bir süre çalıştırmak olsaydı, salt okuma çoğaltmasının birincil çoğaltmayla önemli ölçüde eşitlenmemesine neden olur.
 
-Salt okuma çoğaltması üzerinde uzun süre çalışan bir sorgu bu tür engellemeye neden oluyorsa, otomatik olarak sonlandırılır ve oturum, "yüksek öncelikli bir DDL işlemi nedeniyle oturumunuz kesildi" 1219 hatasını alır.
+Salt okuma çoğaltması üzerinde uzun süre çalışan bir sorgu bu tür engellemeye neden oluyorsa, otomatik olarak sonlandırılır. Oturum, "yüksek öncelikli bir DDL işlemi nedeniyle oturumunuz kesildi" veya hata 3947 "1219 hatası alacak," ikincil işlem yeniden yakalayamadığı için işlem iptal edildi. İşlemi yeniden deneyin. "
 
 > [!NOTE]
-> Sorguları salt bir çoğaltmada çalıştırırken 3961 hatası veya 1219 hatası alırsanız, sorguyu yeniden deneyin.
+> Sorguları salt bir çoğaltmada çalıştırırken 3961, 1219 veya 3947 hatası alırsanız, sorguyu yeniden deneyin.
 
 > [!TIP]
 > Premium ve İş Açısından Kritik hizmet katmanlarında, salt okunurdur bir kopyaya bağlanıldığında, `redo_queue_size` `redo_rate` [sys.dm_database_replica_states](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) DMV içindeki ve sütunları, salt okuma çoğaltmasındaki veri gecikmesi göstergesi olarak hizmet veren veri eşitleme işlemini izlemek için kullanılabilir.

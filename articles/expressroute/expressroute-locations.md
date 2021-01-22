@@ -6,14 +6,14 @@ author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 01/05/2021
+ms.date: 01/21/2021
 ms.author: duau
-ms.openlocfilehash: c68d9654c673b75742205853ec186caa5d6a3ce5
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 589f8bef7e5023a3667ce0ebf9a14637b007223d
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916159"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664070"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute bağlantı iş ortakları ve eşleme konumları
 
@@ -93,7 +93,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **[Baş Telem](https://www.chief.com.tw/)** |Desteklenir |Desteklenir |Hong Kong, Taipei |
 | **Çin Mobile Uluslararası** |Desteklenir |Desteklenir | Hong Kong, Hong Kong2, Singapur |
 | **China Telecom Global** |Desteklenir |Desteklenir |Hong Kong, Hong Kong2 |
-| **Çin tek noktaya yayın küresel** |Desteklenir |Desteklenir | Singapur2 |
+| **Çin tek noktaya yayın küresel** |Desteklenir |Desteklenir | Hong Kong, Singapur2 |
 | **[Chunghwa telekomünikasyon](https://www.cht.com.tw/en/home/cht/about-cht/products-and-services/International/Cloud-Service)** |Desteklenir |Desteklenir |Taipei |
 | **[Claro](https://www.usclaro.com/enterprise-mnc/connectivity/mpls/)** |Desteklenir |Desteklenir |Miami |
 | **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |Desteklenir |Desteklenir |Chicago, Dallas, Minneapolis, Montreal, Toron, Vansu ver, Washington DC |
@@ -121,6 +121,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **[İnternet Initiative Japan Inc. - IIJ](https://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** |Desteklenir |Desteklenir |Osaka, Tokyo |
 | **[Internet Solutions - Cloud Connect](https://www.is.co.za/solution/cloud-connect/)** |Desteklenir |Desteklenir |Cape Town, Johannesburg, Londra |
 | **[Interxiyon](https://www.interxion.com/why-interxion/colocate-with-the-clouds/Microsoft-Azure/)** |Desteklenir |Desteklenir |Amsterdam, Amsterdam2, Copenhagen, Dublin, Frankfurt, Londra, Marseille, Paris, Zurich |
+| **[IRıDEOS](https://irideos.it/)** |Desteklenir |Desteklenir |Milano |
 | **[IX Reach](https://www.ixreach.com/partners/cloud-partners/microsoft-azure/)**|Desteklenir |Desteklenir | Amsterdam, London2, Silicon Valley, Toron, Washington DC |
 | **Jaguar ağı** |Desteklenir |Desteklenir |Marseille, Paris |
 | **[Jisc](https://www.jisc.ac.uk/microsoft-azure-expressroute)** |Desteklenir |Desteklenir |Londra, Newport (Wales) |
@@ -159,7 +160,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **[Swisscom](https://www.swisscom.ch/en/business/enterprise/offer/cloud-data-center/microsoft-cloud-services/microsoft-azure-von-swisscom.html)** | Desteklenir | Desteklenir | Zürih |
 | **[Tata Communications](https://www.tatacommunications.com/lp/izo/azure/azure_index.html)** |Desteklenir |Desteklenir |Amsterdam, Chennai, Hong Kong ÖIB, Londra, Mumbai, Sao Paulo, Silicon Valley, Singapur, Washington DC |
 | **[Telefonica](https://www.business-solutions.telefonica.com/es/enterprise/solutions/efficient-infrastructure/managed-voice-data-connectivity/)** |Desteklenir |Desteklenir |Amsterdam, Sao Paulo |
-| **[Telehouse - KDDI](https://www.telehouse.net/solutions/cloud-services/cloud-link)** |Desteklenir |Desteklenir |Londra, London2 |
+| **[Telehouse - KDDI](https://www.telehouse.net/solutions/cloud-services/cloud-link)** |Desteklenir |Desteklenir |Londra, London2, Singapur2 |
 | **Telenor** |Desteklenir |Desteklenir |Amsterdam, Londra, Oslo |
 | **[Telia Carrier](https://www.teliacarrier.com/)** | Desteklenir | Desteklenir |Amsterdam, Chicago, Dallas, Frankfurt, Hong Kong, Londra, Oslo, Paris, Silicon Valley, Stockholm, Washington DC |
 | **[Telın](https://www.telin.net/)** | Desteklenir | Desteklenir |Cakarta |

@@ -4,16 +4,16 @@ description: Bulutta kurumsal düzeyde veri modelleri sağlayan, tam olarak yön
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 01/07/2021
+ms.date: 01/20/2021
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: c4a14ab1e5b52eb36a532c6d69713d588864d288
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 542b1ed96025f6bd40cd4da766b434dde3569c25
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019083"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663783"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services nedir?
 
@@ -79,10 +79,11 @@ Azure Analysis Services, dünyanın dört bir yanındaki bölgelerde desteklenir
 
 ### <a name="americas"></a>Kuzey ve Güney Amerika
 
-|Region  | Desteklenen planlar | Sorgu çoğaltmaları (yalnızca Standart planlar) |
+|Bölge  | Desteklenen planlar | Sorgu çoğaltmaları (yalnızca Standart planlar) |
 |---------|---------|:---------:|
 |Brezilya Güney     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
 |Orta Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
+|Orta Kanada     |     S8v2, S9v2   |    1    |
 |Doğu ABD     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
 |Doğu ABD 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
 |Doğu ABD 2     |     S8v2, S9v2   |    1    |
@@ -100,7 +101,7 @@ Azure Analysis Services, dünyanın dört bir yanındaki bölgelerde desteklenir
 
 ### <a name="europe"></a>Europe
 
-|Region  | Desteklenen planlar | Sorgu çoğaltmaları (yalnızca Standart planlar) |
+|Bölge  | Desteklenen planlar | Sorgu çoğaltmaları (yalnızca Standart planlar) |
 |---------|---------|:---------:|
 |Kuzey Avrupa     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
 |Kuzey Avrupa     |    S8v2, S9v2      |    3     |
@@ -110,7 +111,7 @@ Azure Analysis Services, dünyanın dört bir yanındaki bölgelerde desteklenir
 
 ### <a name="asia-pacific"></a>Asya Pasifik 
 
-|Region  | Desteklenen planlar | Sorgu çoğaltmaları (yalnızca Standart planlar) |
+|Bölge  | Desteklenen planlar | Sorgu çoğaltmaları (yalnızca Standart planlar) |
 |---------|---------|:---------:|
 |Doğu Avustralya     |    B1, B2, S0, S1, S2, S4     |    3     |
 |Doğu Avustralya     |    S8v2, S9v2    |    1     |

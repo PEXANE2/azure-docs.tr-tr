@@ -3,21 +3,21 @@ title: Okuma çoğaltmalarını yönetme-Azure portal-MariaDB için Azure verita
 description: Bu makalede Portal kullanılarak MariaDB için Azure veritabanı 'nda okuma çoğaltmalarının nasıl ayarlanacağı ve yönetileceği açıklanmaktadır
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: 3ca6ef3c368a5f578cc90fae3923caa89f3b076a
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: fa2afdccf9c8bd6ec7f5808674e6eec968838d10
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537756"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98665013"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Azure portal kullanarak MariaDB için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme
 
 Bu makalede, Azure portal kullanarak MariaDB hizmeti için Azure veritabanı 'nda okuma çoğaltmaları oluşturmayı ve yönetmeyi öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Kaynak sunucu olarak kullanılacak [MariaDB sunucusu Için Azure veritabanı](quickstart-create-mariadb-server-database-using-azure-portal.md) .
 
@@ -35,9 +35,9 @@ Aşağıdaki adımlar kullanılarak, bir okuma çoğaltması sunucusu oluşturul
 
 2. Ana sunucu olarak kullanmak istediğiniz MariaDB sunucusu için mevcut Azure veritabanını seçin. Bu eylem **genel bakış** sayfasını açar.
 
-3. **Ayarlar** ' ın altında, menüden **çoğaltma** ' yı seçin.
+3. **Ayarlar**' ın altında, menüden **çoğaltma** ' yı seçin.
 
-4. **Çoğaltma ekle** ' yi seçin.
+4. **Çoğaltma ekle**' yi seçin.
 
    ![MariaDB için Azure veritabanı-çoğaltma](./media/howto-read-replica-portal/add-replica.png)
 
@@ -67,17 +67,17 @@ Azure portal bir kaynak ve çoğaltma sunucusu arasında çoğaltmayı durdurmak
 
 1. Azure portal, MariaDB sunucusu için kaynak Azure veritabanını seçin. 
 
-2. **Ayarlar** ' ın altında, menüden **çoğaltma** ' yı seçin.
+2. **Ayarlar**' ın altında, menüden **çoğaltma** ' yı seçin.
 
 3. Çoğaltmasını durdurmak istediğiniz çoğaltma sunucusunu seçin.
 
    ![MariaDB için Azure veritabanı-çoğaltmayı durdur Sunucu Seç](./media/howto-read-replica-portal/stop-replication-select.png)
 
-4. **Çoğaltmayı durdur** ' u seçin.
+4. **Çoğaltmayı durdur**' u seçin.
 
    ![MariaDB için Azure veritabanı-çoğaltmayı durdur](./media/howto-read-replica-portal/stop-replication.png)
 
-5. **Tamam** ' a tıklayarak çoğaltmayı durdurmak istediğinizi onaylayın.
+5. **Tamam**' a tıklayarak çoğaltmayı durdurmak istediğinizi onaylayın.
 
    ![MariaDB için Azure veritabanı-çoğaltmayı durdur Onayla](./media/howto-read-replica-portal/stop-replication-confirm.png)
 
@@ -87,7 +87,7 @@ Azure portal bir okuma çoğaltması sunucusunu silmek için aşağıdaki adıml
 
 1. Azure portal, MariaDB sunucusu için kaynak Azure veritabanını seçin.
 
-2. **Ayarlar** ' ın altında, menüden **çoğaltma** ' yı seçin.
+2. **Ayarlar**' ın altında, menüden **çoğaltma** ' yı seçin.
 
 3. Silmek istediğiniz çoğaltma sunucusunu seçin.
 
@@ -110,7 +110,7 @@ Azure portal bir kaynak sunucuyu silmek için aşağıdaki adımları kullanın:
 
 1. Azure portal, MariaDB sunucusu için kaynak Azure veritabanını seçin.
 
-2. **Genel bakışta** **Sil** ' i seçin.
+2. **Genel bakışta** **Sil**' i seçin.
 
    ![MariaDB için Azure veritabanı-ana öğe silme](./media/howto-read-replica-portal/delete-master-overview.png)
 
@@ -122,7 +122,7 @@ Azure portal bir kaynak sunucuyu silmek için aşağıdaki adımları kullanın:
 
 1. [Azure Portal](https://portal.azure.com/), Izlemek Istediğiniz MariaDB sunucusu Için çoğaltma Azure veritabanı ' nı seçin.
 
-2. Kenar çubuğunun **izleme** bölümü altında **ölçümler** ' i seçin:
+2. Kenar çubuğunun **izleme** bölümü altında **ölçümler**' i seçin:
 
 3. Kullanılabilir ölçümler açılan listesinden **saniye cinsinden çoğaltma gecikmesi** seçin.
 

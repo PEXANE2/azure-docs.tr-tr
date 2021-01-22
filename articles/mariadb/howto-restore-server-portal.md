@@ -3,22 +3,22 @@ title: Yedekleme ve geri yükleme-Azure portal-MariaDB için Azure veritabanı
 description: Bu makalede, Azure portal kullanarak MariaDB için Azure veritabanı 'nda bir sunucunun nasıl geri yükleneceği açıklanmaktadır.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: 4a5f2cc4cbf73f5c13533a94f1454022d3538880
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 06da58b5c82af39abbaa1cbc15a217c25d7808f9
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539634"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664826"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-portal"></a>Azure portal kullanarak MariaDB için Azure veritabanı 'nda sunucu yedekleme ve geri yükleme
 
 ## <a name="backup-happens-automatically"></a>Yedekleme otomatik olarak gerçekleşir
 MariaDB sunucuları için Azure veritabanı, geri yükleme özelliklerini etkinleştirmek üzere düzenli aralıklarla yedeklenir. Bu özelliği kullanarak, sunucuyu ve tüm veritabanlarını yeni bir sunucuda daha önceki bir zaman noktasına geri yükleyebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 - [MariaDB sunucusu ve veritabanı Için Azure veritabanı](quickstart-create-mariadb-server-database-using-azure-portal.md)
 
@@ -41,7 +41,7 @@ Yedekleme saklama süresi bir sunucuda aşağıdaki adımlarla değiştirilebili
 
 2. MariaDB sunucusu için Azure veritabanınızı seçin. Bu eylem **genel bakış** sayfasını açar.
 
-3. Menüde, **Ayarlar** ' ın altında **fiyatlandırma katmanı** ' nı seçin. Kaydırıcıyı kullanarak **yedekleme saklama süresini** 7 ila 35 gün süreyle tercihlerinize göre değiştirebilirsiniz.
+3. Menüde, **Ayarlar**' ın altında **fiyatlandırma katmanı** ' nı seçin. Kaydırıcıyı kullanarak **yedekleme saklama süresini** 7 ila 35 gün süreyle tercihlerinize göre değiştirebilirsiniz.
 Aşağıdaki ekran görüntüsünde 35 güne yükselmiştir.
 ![Yedekleme bekletme süresi arttı](./media/howto-restore-server-portal/3-increase-backup-days.png)
 
@@ -57,17 +57,17 @@ MariaDB için Azure veritabanı, sunucuyu bir zaman noktasına geri yüklemenize
 Aşağıdaki adımlar örnek sunucuyu bir zaman noktasına geri yükler:
 1. Azure portal, MariaDB sunucusu için Azure veritabanınızı seçin. 
 
-2. Sunucunun **genel bakış** sayfasının araç çubuğunda **geri yükle** ' yi seçin.
+2. Sunucunun **genel bakış** sayfasının araç çubuğunda **geri yükle**' yi seçin.
 
    ![MariaDB için Azure veritabanı-genel bakış-geri yükleme düğmesi](./media/howto-restore-server-portal/2-server.png)
 
 3. Geri yükleme formunu gereken bilgilerle doldurun:
 
    ![MariaDB için Azure veritabanı-bilgileri geri yükleme](./media/howto-restore-server-portal/3-restore.png)
-   - **Geri yükleme noktası** : geri yüklemek istediğiniz zaman noktasını seçin.
-   - **Hedef sunucu** : yeni sunucu için bir ad sağlayın.
-   - **Konum** : bölgeyi seçemezsiniz. Varsayılan olarak, kaynak sunucu ile aynıdır.
-   - **Fiyatlandırma katmanı** : bir zaman içinde geri yükleme yaparken bu parametreleri değiştiremezsiniz. Kaynak sunucuyla aynıdır. 
+   - **Geri yükleme noktası**: geri yüklemek istediğiniz zaman noktasını seçin.
+   - **Hedef sunucu**: yeni sunucu için bir ad sağlayın.
+   - **Konum**: bölgeyi seçemezsiniz. Varsayılan olarak, kaynak sunucu ile aynıdır.
+   - **Fiyatlandırma katmanı**: bir zaman içinde geri yükleme yaparken bu parametreleri değiştiremezsiniz. Kaynak sunucuyla aynıdır. 
 
 4. Sunucuyu bir zaman noktasına geri yüklemek üzere geri yüklemek için **Tamam** ' a tıklayın. 
 
@@ -81,7 +81,7 @@ Geri yükleme sırasında oluşturulan yeni sunucu, özgün sunucuda var olan VN
 
 Sunucunuzu coğrafi olarak yedekli yedeklemeler için yapılandırdıysanız, var olan sunucunun yedeklemesinden yeni bir sunucu oluşturulabilir. Bu yeni sunucu, MariaDB için Azure veritabanı 'nın kullanılabildiği herhangi bir bölgede oluşturulabilir.  
 
-1. Portalın sol üst köşesinde bulunan **kaynak oluştur** düğmesini (+) seçin. **Veritabanları** ' nı  >  **MariaDB için Azure veritabanı** ' nı seçin.
+1. Portalın sol üst köşesinde bulunan **kaynak oluştur** düğmesini (+) seçin. **Veritabanları**' nı  >  **MariaDB için Azure veritabanı**' nı seçin.
 
    :::image type="content" source="./media/howto-restore-server-portal/2_navigate-to-mariadb.png" alt-text="MariaDB için Azure veritabanı 'na gidin.":::
  
@@ -103,7 +103,7 @@ Sunucunuzu coğrafi olarak yedekli yedeklemeler için yapılandırdıysanız, va
    
    :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="Yedekle 'yi seçin.":::
 
-6. Sunucu, **sanal çekirdek** sayısı, **yedekleme saklama süresi** , **yedekleme artıklığı seçeneği** , **altyapı sürümü** ve **yönetici kimlik bilgileri** için varsayılan değerleri sağlar. **Devam** ’ı seçin. 
+6. Sunucu, **sanal çekirdek** sayısı, **yedekleme saklama süresi**, **yedekleme artıklığı seçeneği**, **altyapı sürümü** ve **yönetici kimlik bilgileri** için varsayılan değerleri sağlar. **Devam**’ı seçin. 
    
    :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="Yedeklemeye devam edin.":::
 
@@ -115,7 +115,7 @@ Sunucunuzu coğrafi olarak yedekli yedeklemeler için yapılandırdıysanız, va
 
 8. Seçimlerinizi gözden geçirmek için **gözden geçir + oluştur** ' u seçin. 
 
-9. Sunucuyu sağlamak için **Oluştur** ’u seçin. Bu işlem birkaç dakika sürebilir.
+9. Sunucuyu sağlamak için **Oluştur**’u seçin. Bu işlem birkaç dakika sürebilir.
 
 Coğrafi geri yükleme tarafından oluşturulan yeni sunucu, geri yükleme başlatıldığı sırada mevcut sunucu için geçerli olan Sunucu Yöneticisi oturum açma adı ve parolaya sahiptir. Parola, yeni sunucunun **genel bakış** sayfasından değiştirilebilir.
 

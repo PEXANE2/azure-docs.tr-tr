@@ -3,15 +3,15 @@ title: Sorgu deposu-MariaDB için Azure veritabanı
 description: Zaman içinde performansı izlemenize yardımcı olması için, MariaDB için Azure veritabanı 'nda sorgu depolama özelliği hakkında bilgi edinin.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 01/15/2021
-ms.openlocfilehash: 164285b1fea3dce18161066e643aa165e47cc496
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 0841a38ab6e4fe3b4d0faf755209d85cfea1ac17
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233995"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664206"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>Sorgu deposu ile MariaDB için Azure veritabanı performansını izleme
 

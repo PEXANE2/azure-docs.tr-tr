@@ -3,16 +3,16 @@ title: Okuma çoğaltmalarını yönetme-Azure PowerShell-MariaDB için Azure ve
 description: PowerShell kullanarak MariaDB için Azure veritabanı 'nda okuma çoğaltmalarını ayarlamayı ve yönetmeyi öğrenin.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 713f99f67706caded0694d88ece220373920e555
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 43f0de153a19c0ee7ef44539407c0af4fda61c72
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250562"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664996"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-powershell"></a>PowerShell kullanarak MariaDB için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme
 
@@ -22,7 +22,7 @@ Bu makalede, PowerShell kullanarak MariaDB hizmeti için Azure veritabanı 'nda 
 
 PowerShell kullanarak okuma çoğaltmaları oluşturabilir ve yönetebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 

@@ -3,17 +3,17 @@ title: CLı betiği-ölçek sunucusu-MariaDB için Azure veritabanı
 description: Bu örnek CLı betiği, ölçümleri sorguladıktan sonra MariaDB sunucusu için Azure veritabanı 'nı farklı bir performans düzeyine ölçeklendirir.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 12/02/2019
-ms.openlocfilehash: 71a2ad5b8d09812eb999ab75a3522caf5a8dd20a
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: ac59ee30b75f4d6cab7d773b3561fcea542cb778
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536654"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664559"
 ---
 # <a name="monitor-and-scale-an-azure-database-for-mariadb-server-using-azure-cli"></a>Azure CLı kullanarak bir MariaDB sunucusu için Azure veritabanını izleme ve ölçeklendirme
 Bu örnek CLı betiği, ölçümleri sorguladıktan sonra MariaDB sunucusu için tek bir Azure veritabanı için işlem ve depolamayı ölçeklendirir. İşlem ölçeği yukarı veya aşağı olabilir. Depolama alanı yalnızca ölçeği değiştirebilir.

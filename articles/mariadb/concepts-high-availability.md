@@ -3,15 +3,15 @@ title: Yüksek kullanılabilirlik-MariaDB için Azure veritabanı
 description: Bu makalede, MariaDB için Azure veritabanı 'nda yüksek kullanılabilirlik hakkında bilgi sağlanır
 author: mksuni
 ms.author: sumuth
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: 4dcb1ac7ce4b468374993c11578bce553f766a42
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: dc37474a56ddb7d2c48c7acfce881fb812f0b8a4
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241353"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664342"
 ---
 # <a name="high-availability-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda yüksek kullanılabilirlik
 MariaDB için Azure veritabanı hizmeti, [% 99,99](https://azure.microsoft.com/support/legal/sla/MariaDB) çalışma süresi için mali olarak desteklenen hizmet düzeyi SÖZLEŞMESI (SLA) ile garantili yüksek düzeyde kullanılabilirlik sağlar. MariaDB için Azure veritabanı, Kullanıcı tarafından sağlanan ölçek işlem işlemi gibi planlı olaylar sırasında ve ayrıca temel alınan donanım, yazılım veya ağ başarısızlığı gibi planlanmamış olaylar gerçekleştiğinde yüksek kullanılabilirlik sağlar. MariaDB için Azure veritabanı en kritik durumlardan hızla kurturabilir ve bu hizmeti kullanırken neredeyse hiçbir uygulama süresi olmamasını sağlar.
@@ -24,7 +24,7 @@ MariaDB için Azure veritabanı, yüksek çalışma süresi gerektiren görev a�
 | ------------ | ----------- |
 | <b>MariaDB veritabanı sunucusu | MariaDB için Azure veritabanı, veritabanı sunucuları için güvenlik, yalıtım, kaynak korumaları ve hızlı yeniden başlatma özelliği sağlar. Bu yetenekler, saniye cinsinden bir kesinti olduktan sonra ölçekleme ve veritabanı sunucusu kurtarma işlemi gibi işlemleri kolaylaştırır. <br/> Veritabanı sunucusundaki veri değişiklikleri genellikle bir veritabanı işlemi bağlamında meydana gelir. Tüm veritabanı değişiklikleri zaman uyumlu olarak, veritabanı sunucusuna eklenen Azure Storage 'da yazma öncesi Günlükler (ib_log) biçiminde kaydedilir. Veritabanı [denetim noktası](https://mariadb.com/kb/innodb-redo-log/#checkpoints) işlemi sırasında, veritabanı sunucusu belleğinden veri sayfaları da depolamaya silinir. |
 | <b>Uzak depolama | Tüm MariaDB fiziksel veri dosyaları ve günlük dosyaları, veri yedekliliği, kullanılabilirliği ve güvenilirliği sağlamak için bir bölge içinde verilerin üç kopyasını depolamak üzere tasarlanmış Azure Storage 'da depolanır. Depolama katmanı, veritabanı sunucusundan de bağımsızdır. Bu, başarısız bir veritabanı sunucusundan ayrılabilir ve birkaç saniye içinde yeni bir veritabanı sunucusuna yeniden iliştirilebilir. Ayrıca, Azure Storage her türlü depolama hatalarını sürekli izler. Bir blok bozulması algılanırsa, yeni bir depolama kopyası örnekleyerek otomatik olarak düzeltilir. |
-| <b>Geçidinde | Ağ geçidi bir veritabanı proxy 'si görevi görür ve tüm istemci bağlantılarını veritabanı sunucusuna yönlendirir. |
+| <b>Ağ geçidi | Ağ geçidi bir veritabanı proxy 'si görevi görür ve tüm istemci bağlantılarını veritabanı sunucusuna yönlendirir. |
 
 ## <a name="planned-downtime-mitigation"></a>Planlanmış kapalı kalma süresi hafifletme
 MariaDB için Azure veritabanı, planlanan kapalı kalma işlemleri sırasında yüksek kullanılabilirlik sağlamak üzere tasarlanmıştır. 

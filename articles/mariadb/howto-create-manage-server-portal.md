@@ -3,15 +3,15 @@ title: Sunucu Yönetme-Azure portal-MariaDB için Azure veritabanı
 description: MariaDB sunucusu için Azure veritabanı 'nı Azure portal yönetme hakkında bilgi edinin.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: ade70c884a3ef01db45273e4789f34b629473661
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b492e04629f23c991c1c5d69dd5e2c472676d37a
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005036"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664410"
 ---
 # <a name="manage-an-azure-database-for-mariadb-server-using-the-azure-portal"></a>Azure portal kullanarak bir MariaDB sunucusu için Azure veritabanı 'nı yönetme
 Bu makalede, MariaDB sunucuları için Azure veritabanınızı nasıl yöneteceğiniz gösterilmektedir. Yönetim görevleri işlem ve depolama ölçeklendirmesi, yönetici parola sıfırlama ve sunucu ayrıntılarını görüntüleme içerir.
@@ -90,7 +90,7 @@ Artık gerekmiyorsa, sunucunuzu silebilirsiniz.
 
 1. Azure portal sunucunuzu seçin. **Genel bakış** penceresinde **Sil**' i seçin.
 
-    ![delete](./media/howto-create-manage-server-portal/overview-delete.png)
+    ![silme](./media/howto-create-manage-server-portal/overview-delete.png)
 
 2. Bu sunucunun silmek istediğiniz sunucu olduğunu onaylamak için, giriş kutusuna sunucunun adını yazın.
 

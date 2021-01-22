@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/5/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e19277aa3639031371e0e8dd28f4dd849efd4597
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 24fef1680c5660a70a20ae727833b045f6c5aa88
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97933940"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664359"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak Azure Anahtar Kasası ve kasa erişim ilkesi oluşturma
 
@@ -23,7 +23,7 @@ ms.locfileid: "97933940"
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları gerçekleştirmek için:
 
@@ -150,7 +150,7 @@ Tüm Anahtar Kasası şablonunu yeniden dağıtmaya gerek kalmadan, mevcut bir a
             "permissions": {
               "keys": "[parameters('keysPermissions')]",
               "secrets": "[parameters('secretsPermissions')]",
-              "certificates": [parameters('certificatesPermissions')]
+              "certificates": "[parameters('certificatesPermissions')]"
             }
           }
         ]
@@ -160,6 +160,7 @@ Tüm Anahtar Kasası şablonunu yeniden dağıtmaya gerek kalmadan, mevcut bir a
 }
 
 ```
+
 Key Vault şablonu ayarları hakkında daha fazla bilgi için bkz. [Key Vault ARM şablonu başvurusu](/azure/templates/microsoft.keyvault/vaults/accesspolicies).
 
 ## <a name="more-key-vault-resource-manager-templates"></a>Daha fazla Key Vault Kaynak Yöneticisi şablonu
@@ -217,6 +218,6 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Anahtar kasasına güvenli erişim](secure-your-key-vault.md)
+- [Anahtar kasasına erişimin güvenliğini sağlama](secure-your-key-vault.md)
 - [Anahtar kasasında kimlik doğrulama](authentication.md)
 - [Azure Key Vault Geliştirici Kılavuzu](developers-guide.md)

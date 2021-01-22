@@ -3,15 +3,15 @@ title: Sunucuyu yeniden Başlat-Azure portal-MariaDB için Azure veritabanı
 description: Bu makalede, Azure portalını kullanarak bir MariaDB sunucusu için Azure veritabanı 'nı nasıl yeniden başlatabileceğinizi açıklanmaktadır.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 0c16cf8d67394f6aa50cb30a44b4ff5a677159de
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: a912c1cde092b082e4c0229b1f454e80f32e319e
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538895"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664894"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-azure-portal"></a>Azure portal kullanarak MariaDB sunucusu için Azure veritabanı 'nı yeniden başlatın
 Bu konuda, MariaDB sunucusu için Azure veritabanı 'nı nasıl yeniden başlatabileceğinizi anlatmaktadır. Sunucu işlemi gerçekleştirdiğinden kısa süreli bir kesinti oluşmasına neden olan bakım nedenleriyle sunucunuzu yeniden başlatmanız gerekebilir.
@@ -20,7 +20,7 @@ Hizmet meşgulse sunucu yeniden başlatması engellenir. Örneğin, hizmet, sana
 
 Yeniden başlatmanın tamamlanması için gereken süre, MariaDB kurtarma işlemine bağlıdır. Yeniden başlatma süresini azaltmak için, yeniden başlatmadan önce sunucuda gerçekleşen etkinlik miktarını en aza indirmenizi öneririz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 - [MariaDB sunucusu Için Azure veritabanı](./quickstart-create-mariadb-server-database-using-azure-portal.md)
 
@@ -30,7 +30,7 @@ Aşağıdaki adımlar MariaDB sunucusunu yeniden başlatır:
 
 1. Azure portal, MariaDB sunucusu için Azure veritabanınızı seçin.
 
-2. Sunucunun **genel bakış** sayfasının araç çubuğunda **Yeniden Başlat** ' a tıklayın.
+2. Sunucunun **genel bakış** sayfasının araç çubuğunda **Yeniden Başlat**' a tıklayın.
 
    ![MariaDB için Azure veritabanı-genel bakış-yeniden Başlat düğmesi](./media/howto-restart-server-portal/2-server.png)
 

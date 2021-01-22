@@ -3,15 +3,15 @@ title: Sunucular-MariaDB için Azure veritabanı
 description: Bu konu, MariaDB sunucuları için Azure veritabanı ile çalışmaya yönelik hususlar ve yönergeleri sağlar.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 4d8293258083ea3e8d0172f510e5b41e91328736
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: abe17556d9ff62c44a33bfe4c4546a284785522e
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541071"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664138"
 ---
 # <a name="server-concepts-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda sunucu kavramları
 Bu makalede, MariaDB sunucuları için Azure veritabanı ile çalışmaya yönelik konular ve yönergeler sağlanmaktadır.
@@ -39,7 +39,7 @@ Aşağıdaki öğeler veritabanınıza güvenli erişimin sağlanmasına yardım
 
 |||
 | :--| :--|
-| **Kimlik doğrulama ve yetkilendirme** | MariaDB sunucusu için Azure veritabanı yerel MySQL kimlik doğrulamasını destekler. Sunucu Yöneticisi oturum açma bilgileri ile sunucuya bağlanabilir ve kimlik doğrulaması yapabilirsiniz. |
+| **Kimlik doğrulaması ve yetkilendirme** | MariaDB sunucusu için Azure veritabanı yerel MySQL kimlik doğrulamasını destekler. Sunucu Yöneticisi oturum açma bilgileri ile sunucuya bağlanabilir ve kimlik doğrulaması yapabilirsiniz. |
 | **Protokol** | Hizmet MySQL tarafından kullanılan ileti tabanlı bir protokolü destekler. |
 | **TCP/IP** | Protokol TCP/IP üzerinden ve UNIX-etki alanı Yuvaları üzerinden desteklenir. |
 | **Güvenlik duvarı** | Verilerinizin korunmasına yardımcı olmak için, hangi bilgisayarların iznine sahip olduğunu belirtene kadar bir güvenlik duvarı kuralı, veritabanı sunucunuza tüm erişimi engeller. Bkz. [MariaDB sunucusu Için Azure veritabanı güvenlik duvarı kuralları](./concepts-firewall-rules.md). |

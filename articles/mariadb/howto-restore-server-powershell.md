@@ -3,23 +3,23 @@ title: Yedekleme ve geri yükleme-Azure PowerShell-MariaDB için Azure veritaban
 description: Azure PowerShell kullanarak MariaDB için Azure veritabanı 'nda bir sunucuyu nasıl yedekleyeceğinizi ve geri yükleyeceğinizi öğrenin.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 05/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0207be2c983fd986d5852403e36462d2d7d2cdda
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 211285a0ae8aaa9b82bca914f3add7fbaa700146
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539643"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664860"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mariadb-server-using-powershell"></a>PowerShell kullanarak bir MariaDB sunucusu için Azure veritabanı 'nı yedekleme ve geri yükleme
 
 MariaDB sunucuları için Azure veritabanı, geri yükleme özelliklerini etkinleştirmek üzere düzenli aralıklarla yedeklenir. Bu özelliği kullanarak, sunucuyu ve tüm veritabanlarını yeni bir sunucuda daha önceki bir zaman noktasına geri yükleyebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 
@@ -41,7 +41,7 @@ Sunucu oluşturma sırasında, sunucunuzu yerel olarak yedekli veya coğrafi ola
 > [!NOTE]
 > Bir sunucu oluşturulduktan sonra, coğrafi olarak yedekli ve yerel olarak yedekli olan artıklık türü değiştirilemez.
 
-Komutu aracılığıyla bir sunucu oluştururken `New-AzMariaDbServer` , **GeoRedundantBackup** parametresi yedekleme yedekliliğe karar verir. **Etkinleştirilirse** , coğrafi olarak yedekli yedeklemeler alınır. Ya da **devre dışı** bırakılmışsa yerel olarak yedekli yedeklemeler alınır.
+Komutu aracılığıyla bir sunucu oluştururken `New-AzMariaDbServer` , **GeoRedundantBackup** parametresi yedekleme yedekliliğe karar verir. **Etkinleştirilirse**, coğrafi olarak yedekli yedeklemeler alınır. Ya da **devre dışı** bırakılmışsa yerel olarak yedekli yedeklemeler alınır.
 
 Yedekleme saklama süresi **BackupRetentionDay** parametresine göre ayarlanır.
 
@@ -78,7 +78,7 @@ Cmdlet 'in **Pointintimeresıtransaction** parametre kümesi `Restore-AzMariaDbS
 | Ayar | Önerilen değer | Açıklama  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Kaynak sunucunun varolduğu kaynak grubu.  |
-| Ad | mydemoserver-restored | Geri yükleme komutu tarafından oluşturulan yeni sunucunun adı. |
+| Name | mydemoserver-restored | Geri yükleme komutu tarafından oluşturulan yeni sunucunun adı. |
 | Restorepoinıntime | 2020-03-13T13:59:00Z | Geri yüklenecek bir zaman noktası seçin. Bu tarih ve saat, kaynak sunucunun yedekleme saklama dönemi içinde olmalıdır. ISO8601 tarih ve saat biçimini kullanın. Örneğin, **2020-03-13T05:59:00-08:00** gibi kendi yerel saat diliminizi kullanabilirsiniz. UTC Zulu dili biçimini de kullanabilirsiniz; Örneğin, **2018-03-13T13:59:00Z**. |
 | Usepointintimerestınic | `<SwitchParameter>` | Geri yüklemek için zaman noktası modunu kullanın. |
 
@@ -106,7 +106,7 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
   Restore-AzMariaDbServer -Name mydemoserver-georestored -ResourceGroupName myresourcegroup -Location eastus -Sku GP_Gen5_8 -UseGeoRestore
 ```
 
-Bu örnek, **myresourcegroup** öğesine ait Doğu ABD bölgesinde **mydemoserver-geogeri yüklenen** adlı yeni bir sunucu oluşturur. 8 sanal çekirdeğe sahip bir Genel Amaçlı, Gen 5 sunucusudur. Sunucu, **myresourcegroup** kaynak grubundaki **demosunucum** 'ın coğrafi olarak yedekli yedeğinden oluşturulur.
+Bu örnek, **myresourcegroup** öğesine ait Doğu ABD bölgesinde **mydemoserver-geogeri yüklenen** adlı yeni bir sunucu oluşturur. 8 sanal çekirdeğe sahip bir Genel Amaçlı, Gen 5 sunucusudur. Sunucu, **myresourcegroup** kaynak grubundaki **demosunucum**'ın coğrafi olarak yedekli yedeğinden oluşturulur.
 
 Yeni sunucuyu mevcut sunucudan farklı bir kaynak grubunda oluşturmak için, aşağıdaki örnekte gösterildiği gibi **Resourcegroupname** parametresini kullanarak yeni kaynak grubu adını belirtin:
 
@@ -120,7 +120,7 @@ Cmdlet 'in **Georestore** parametre kümesi `Restore-AzMariaDbServer` aşağıda
 | Ayar | Önerilen değer | Açıklama  |
 | --- | --- | --- |
 |ResourceGroupName | myresourcegroup | Yeni sunucunun ait olduğu kaynak grubunun adı.|
-|Ad | mydemoserver-geogeri yüklendi | Yeni sunucunun adı. |
+|Name | mydemoserver-geogeri yüklendi | Yeni sunucunun adı. |
 |Konum | eastus | Yeni sunucunun konumu. |
 |UseGeoRestore | `<SwitchParameter>` | Geri yüklemek için coğrafi mod kullanın. |
 

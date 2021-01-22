@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d9a6eb572b1ab870fdb848f8b0989f88e6dbc3c0
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: a4875c2c75b133f0ab4046266d6aac36d5478fe4
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045963"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664053"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Dijital TWINS ve ikizi graflarını anlayın
 
@@ -25,7 +25,9 @@ Bir Azure dijital TWINS çözümünde ortamınızdaki varlıklar Azure **dijital
 
 Azure dijital TWINS Örneğinizde dijital bir ikizi oluşturabilmeniz için önce hizmete bir *modelin* yüklenmiş olması gerekir. Model, diğer şeyler arasında belirli bir ikizi sahip olduğu özellikler, telemetri iletileri ve ilişkiler kümesini açıklar. Bir modelde tanımlanan bilgi türleri için bkz. [*Kavramlar: özel modeller*](concepts-models.md).
 
-Bir modeli oluşturup karşıya yükledikten sonra, istemci uygulamanız türün bir örneğini oluşturabilir; Bu bir dijital ikizi. Örneğin, bir *kat* modeli oluşturduktan sonra bu türü kullanan bir veya birkaç dijital TWINS oluşturabilirsiniz ( *Groundfloor* adlı bir *taban*-tür ikizi gibi, başka bir *Floor2* vb.). 
+Bir modeli oluşturup karşıya yükledikten sonra, istemci uygulamanız türün bir örneğini oluşturabilir; Bu bir dijital ikizi. Örneğin, bir *kat* modeli oluşturduktan sonra bu türü kullanan bir veya birkaç dijital TWINS oluşturabilirsiniz ( *Groundfloor* adlı bir *taban*-tür ikizi gibi, başka bir *Floor2* vb.).
+
+[!INCLUDE [digital-twins-versus-device-twins](../../includes/digital-twins-versus-device-twins.md)]
 
 ## <a name="relationships-a-graph-of-digital-twins"></a>İlişkiler: dijital TWINS 'in bir grafiği
 
@@ -41,7 +43,7 @@ Bu işlemin sonucu, bir grafikteki kenarlar (bunların ilişkileri) aracılığ�
 
 Bu bölümde, bir istemci uygulamasından dijital TWINS ve ilişkiler oluşturmak için nasıl göründüğü gösterilmektedir. Bu kavramların her birinde nelerin üzerinde olduğuna ilişkin ek bağlam sağlamak için [Digitaltwins API 'lerini](/rest/api/digital-twins/dataplane/twins)kullanan .NET kod örnekleri içerir.
 
-### <a name="create-digital-twins"></a>Dijital TWINS oluşturma
+### <a name="create-digital-twins"></a>Dijital ikizleri oluşturma
 
 Aşağıda, *Oda* türünde bir ikizi örneği oluşturmak Için [Digitaltwins API 'lerini](/rest/api/digital-twins/dataplane/twins) kullanan istemci kodu kod parçacığı verilmiştir.
 
@@ -54,7 +56,7 @@ Bir `BasicDigitalTwin` "ikizi" nesnesindeki Özellik alanlarını doğrudan bir 
 >[!NOTE]
 >İkizi özellikleri isteğe bağlı kabul edilirken ve bu nedenle **başlatılması gerekmiyorsa, ikizi oluşturulduğunda ikizi 'in** tüm [bileşenlerinin](concepts-models.md#elements-of-a-model) ayarlanması gerekir. Bunlar boş nesneler olabilirler, ancak bileşenlerin kendisi mevcut olmalıdır.
 
-### <a name="create-relationships"></a>İlişki oluştur
+### <a name="create-relationships"></a>İlişki oluşturma
 
 Burada, *Groundfloor* adlı bir *taban*-tür dijital ikizi ve *Cafe* adlı bir *Oda* türü dijital Ikizi arasında bir ilişki oluşturmak için [digitaltwins API 'lerini](/rest/api/digital-twins/dataplane/twins) kullanan bazı örnek istemci kodları verilmiştir.
 
@@ -68,7 +70,7 @@ Dijital ikizi verileri ve ilişki verileri her ikisi de JSON biçiminde depolan�
 
 JSON nesnesi olarak temsil edildiğinde, dijital bir ikizi aşağıdaki alanları görüntüler:
 
-| Alan adı | Açıklama |
+| Alan adı | Description |
 | --- | --- |
 | `$dtId` | Dijital ikizi KIMLIĞINI temsil eden kullanıcı tarafından sağlanmış dize |
 | `$etag` | Web sunucusu tarafından atanan standart HTTP alanı |
@@ -135,7 +137,7 @@ JSON nesnesi olarak biçimlendirilen bir dijital ikizi örneği aşağıda veril
 
 Bir JSON nesnesi olarak temsil edildiğinde, dijital bir ikizi bir ilişki aşağıdaki alanları görüntüler:
 
-| Alan adı | Açıklama |
+| Alan adı | Description |
 | --- | --- |
 | `$relationshipId` | Bu ilişkinin KIMLIĞINI temsil eden kullanıcı tarafından sağlanmış bir dize. Bu dize, kaynak dijital ikizi bağlamında benzersizdir, bu da `sourceId`  +  `relationshipId` Azure dijital TWINS örneği bağlamında benzersiz anlamına gelir. |
 | `$etag` | Web sunucusu tarafından atanan standart HTTP alanı |
