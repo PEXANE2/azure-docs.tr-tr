@@ -3,18 +3,18 @@ title: İş ortakları için Azure Maliyet Yönetimi’ni kullanmaya başlama
 description: Bu makalede iş ortaklarının Azure Maliyet Yönetimi özelliklerini nasıl kullanacağı ve müşterileri için Maliyet Yönetimi'ni nasıl etkinleştirebilecekleri anlatılmaktadır.
 author: bandersmsft
 ms.author: banders
-ms.date: 11/16/2020
+ms.date: 01/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: cd3ca4d3ddf73469cd1f1fc065eccb369cf765af
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 8a04cb2c590bc4f0104a93ac7c7c2cf7b71a4662
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905688"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602175"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>İş ortakları için Azure Maliyet Yönetimi’ni kullanmaya başlama
 
@@ -71,9 +71,9 @@ Müşterilerinizi bir Microsoft Müşteri Sözleşmesi'ne ekledikten sonra aşa�
 
 Ödeme hesabı kapsamını kullanarak tüm müşteriler ve faturalama profilleri için vergilerden önceki maliyetleri görüntüleyebilirsiniz. Fatura maliyetleri yalnızca müşterinin Microsoft Müşteri Sözleşmesi kapsamındaki tüketim tabanlı ürünleri için gösterilir. Ancak fatura maliyetleri, hem Microsoft Müşteri Sözleşmesi hem de CSP teklifini kullanan müşterilere ait satın alma tabanlı ürünler için gösterilir. Kapsamdaki maliyetlerin görüntülenmesi için kullanılan varsayılan para birimi, ABD dolarıdır. Kapsam için belirlenen bütçeler de ABD doları olarak gösterilir.
 
-Müşteriye fatura düzenlemek için kullanılan para birimlerinden bağımsız olarak iş ortakları, Ödeme hesabı kapsamı ile müşteriler, abonelikler, kaynaklar ve kaynak grupları için gerçekleştirdikleri bütçe belirleme ve maliyet yönetimi işlemlerinde ABD dolarını kullanır.
+Fatura düzenlemek için kullanılan para birimlerinden bağımsız olarak iş ortakları, Ödeme hesabı kapsamı ile müşteriler, abonelikler, kaynaklar ve kaynak grupları için gerçekleştirdikleri bütçe belirleme ve maliyet yönetimi işlemlerinde ABD dolarını kullanır.
 
-İş ortakları ayrıca maliyet analizi görünümünde müşteriler için belirli bir para birimindeki maliyetleri filtreleyebilir. Desteklenen müşteri faturalandırma para birimlerinin kullanılabileceği maliyetleri görüntülemek için **Gerçek maliyet** listesini seçin.
+İş ortakları ayrıca maliyet analizi görünümünde müşteriler için belirli bir para birimindeki maliyetleri filtreleyebilir. Desteklenen faturalama para birimlerinin kullanılabileceği maliyetleri görüntülemek için **Gerçek maliyet** listesini seçin.
 
 ![Para birimleri için Gerçek maliyet seçimini gösteren örnek](./media/get-started-partners/actual-cost-selector.png)
 
@@ -83,7 +83,7 @@ Bir rezervasyon dönemindeki ayrılmış örnek amorti edilmiş maliyetlerini g�
 
 Bir faturaya dahil edilen tüm ürünler ve abonelikler için tüm müşterilerinizin faturalama para biriminde vergi öncesi maliyetleri görüntülemek üzere faturalama profili kapsamını kullanın. **InvoiceID** filtresini kullanarak faturalama profilindeki maliyetleri belirli bir faturaya göre filtreleyebilirsiniz. Filtre, belirli bir faturaya ait olan tüketim ve ürün satın alma maliyetlerini gösterir. Ayrıca faturada belirli bir müşteriye ait olan maliyetleri filtreleyerek vergi öncesi maliyetleri görüntüleyebilirsiniz.
 
-Müşterileri Microsoft Müşteri Sözleşmesi'ne ekledikten sonra Microsoft Müşteri Sözleşmesi'ne eklenen müşteriler için tüm ürünlere ait ücretleri (tüketim, satın alma ve yetkilendirme) içeren bir fatura alırsınız. Aynı para biriminde düzenlenen bu faturalar yetkilendirmenin yanı sıra SaaS, Azure Market ve CSP teklifinde olan müşteriler için rezervasyonlar gibi satın alınan ürünlere ait ücretleri de içerir.
+Müşterileri Microsoft Müşteri Sözleşmesi'ne ekledikten sonra Microsoft Müşteri Sözleşmesi'ne eklenen müşteriler için tüm ürünlere ait ücretleri (tüketim, satın alma ve yetkilendirme) içeren bir fatura alırsınız. Aynı para biriminde düzenlenen bu faturalar Azure planı yerine hala klasik CSP teklifinde olan müşteriler için yetkilendirmenin yanı sıra SaaS, Azure Market ve rezervasyonlar gibi satın alınan ürünlere ait ücretleri de içerir.
 
 Faturalama profili kapsamı, ücretlerin müşteri faturasıyla mutabık kılınmasına yardımcı olmak için müşterilerinize fatura düzenlenmesine neden olan tüm maliyetleri görmenizi sağlar. Faturada olduğu gibi kapsam da yeni Microsoft Müşteri Sözleşmesi'ndeki tüm müşteriler için geçerlidir. Kapsam ayrıca geçerli CSP teklifinde bulunan müşteri yetkilendirme ürünleri için tahsil edilen ücretleri de gösterir.
 
@@ -91,7 +91,7 @@ Faturalama profili ve ödeme hesabı kapsamları, yetkilendirmenin yanı sıra A
 
 Faturalama profilleri, faturaya dahil edilen abonelikleri tanımlar. Faturalama profilleri, işlev açısından kurumsal anlaşma kaydına eşdeğerdir. Faturalama profili, faturaların oluşturulduğu kapsamdır.
 
-Şu anda müşterinin faturalandırma para birimi, faturalama profili kapsamındaki maliyetler görüntülenirken varsayılan olarak kullanılmaktadır. Faturalama profili kapsamında belirlenen bütçeler, faturalandırma para birimini kullanır.
+Şu anda faturalama para birimi, faturalama profili kapsamındaki maliyetler görüntülenirken varsayılan olarak kullanılmaktadır. Faturalama profili kapsamında belirlenen bütçeler, faturalandırma para birimini kullanır.
 
 İş ortakları, faturaları mutabık kılmak için kapsamı kullanabilir. Ayrıca kapsamı kullanarak şu öğelerin faturalandırma para biriminde bütçe belirleyebilir:
 
@@ -220,7 +220,7 @@ Aşağıdaki veri alanları, kullanım ayrıntıları dosyalarında ve Maliyet Y
 | Miktar | Satın alınan veya tüketilen ölçülen miktar. Faturalama dönemi boyunca kullanılan ölçüm miktarı. | Birim sayısı. Mutabakat sırasında faturalandırma sisteminizdeki bilgilerle eşleştiğinden emin olun. |
 | unitOfMeasure | Hizmetin ücretlendirildiği birimi tanımlar. Örneğin, GB ve saat. | Hizmetin ücretlendirildiği birimi tanımlar. Örneğin GB, saat, 10.000'lik bloklar. |
 | PricingCurrency | Birim fiyatı tanımlayan para birimi. | Fiyat listesindeki para birimi.|
-| billingCurrency | Faturalandırılan maliyeti tanımlayan para birimi. | Müşterinin coğrafi bölgesinin para birimi. |
+| billingCurrency | Faturalanan maliyeti tanımlayan para birimi. | Faturada faturalama para birimi olarak tanımlanan para birimi. |
 | chargeType | Satın alma ve para iadesi gibi maliyetin Azure Maliyet Yönetimi'nde temsil ettiği ücret türünü tanımlar. | Ücretin veya düzeltmenin türü. Geçerli etkinlik için mevcut değildir. |
 | costinBillingCurrency | Faturalandırılan para biriminde vergilerden önce ExtendedCost veya karıştırılmış maliyet. | Yok |
 | costinPricingCurrency | Fiyatlarla ilişkilendirmek için fiyatlandırma para biriminde vergilerden önce ExtendedCost veya karıştırılmış maliyet. | Yok |

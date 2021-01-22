@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a300345749351a360a16dc00424ee41ece7a17c9
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 6c1c74f86a9cf0e4bcd73844222f256a715cbfe5
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652989"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695899"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Media Encoder Standard önayarlarını özelleştirme
 
@@ -33,7 +33,7 @@ Bu makalede, özel bir ön ayar kullanılarak Media Encoder Standard (MES) ile g
 Bu makalede, [H264 çoklu bit hızı 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) önayarını gerçekleştirerek ve katman sayısını azaltarak bir önayarı nasıl özelleştireceğiniz gösterilmektedir. [Media Encoder Standard özelleştirmeyi özelleştirme](media-services-advanced-encoding-with-mes.md) makalesinde, gelişmiş kodlama görevlerini gerçekleştirmek için kullanılabilecek özel önayarlar gösterilir.
 
 > [!NOTE]
-> Bu makalede açıklanan özel ön ayarlar [Media Services v3](../latest/index.yml) dönüştürmelerde veya CLI komutlarında kullanılamaz. Daha fazla ayrıntı için bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md) .
+> Bu makalede açıklanan özel ön ayarlar [Media Services v3](../latest/index.yml) dönüştürmelerde veya CLI komutlarında kullanılamaz. Daha fazla ayrıntı için bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-v-2-v-3-migration-introduction.md) .
 
 ## <a name="customizing-a-mes-preset"></a><a id="customizing_presets"></a> MES ön ayarını özelleştirme
 
@@ -277,5 +277,5 @@ namespace CustomizeMESPresests
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: d6d0d0a4c4b3328fa50777b5106bac202c9972ef
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: ea1ee2311d8655ce17017c73309bc69e89f4b5f4
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151501"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599122"
 ---
 # <a name="save-on-sap-hana-large-instances-with-an-azure-reservation"></a>Azure rezervasyonuyla SAP HANA Büyük Örnekleri’nden tasarruf etme
 
@@ -224,7 +224,7 @@ Aşağıdaki bilgilerde çeşitli rezervasyon alanlarının anlamı açıklanmı
 
   **Ayrılmış Kaynak türü** `SapHana`
 
-  **Abonelik** Rezervasyonun ödemesini yapmak için kullanılan abonelik. Rezervasyon maliyetleri, aboneliğin ödeme yöntemiyle ücretlendirilir. Abonelik türü bir kurumsal anlaşma (teklif numarası: MS-AZR-0017P veya MS-AZR-0148P) ya da Microsoft Müşteri Sözleşmesi. Ücretler, parasal taahhüt bakiyesinden düşülür veya varsa fazla kullanım olarak ücretlendirilir.
+  **Abonelik** Rezervasyonun ödemesini yapmak için kullanılan abonelik. Rezervasyon maliyetleri, aboneliğin ödeme yöntemiyle ücretlendirilir. Abonelik türü bir kurumsal anlaşma (teklif numarası: MS-AZR-0017P veya MS-AZR-0148P) ya da Microsoft Müşteri Sözleşmesi. Ücretler, Azure Ön Ödemesi (eski adıyla parasal taahhüt) bakiyesinden düşülür veya varsa fazla kullanım olarak ücretlendirilir.
 
   **Kapsam** Rezervasyonun kapsamı tek bir kapsam olmalıdır.
 

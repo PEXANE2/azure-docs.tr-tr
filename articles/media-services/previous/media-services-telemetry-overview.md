@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 0701e9c6428283d45cf4b4a2e24c8de99d9a286b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bf9a96d7ffc3b939abe8cfb889c5bd49fee09cc
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89265907"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98694630"
 ---
 # <a name="azure-media-services-telemetry"></a>Azure Media Services telemetri  
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](../latest/index.yml)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-v-2-v-3-migration-introduction.md)
 
-Azure Media Services (AMS), Hizmetleri için telemetri/ölçüm verilerine erişmenizi sağlar. AMS 'nin geçerli sürümü, canlı **Kanal**, **streamingendpoint**ve canlı **Arşiv** varlıkları için telemetri verilerini toplamanıza olanak tanır. 
+Azure Media Services (AMS), Hizmetleri için telemetri/ölçüm verilerine erişmenizi sağlar. AMS 'nin geçerli sürümü, canlı **Kanal**, **streamingendpoint** ve canlı **Arşiv** varlıkları için telemetri verilerini toplamanıza olanak tanır. 
 
 Telemetri, belirttiğiniz bir Azure depolama hesabındaki bir depolama tablosuna yazılır (genellikle AMS hesabınızla ilişkili depolama hesabını kullanırsınız). 
 
@@ -78,10 +78,10 @@ Telemetri verileri, "TelemetryMetrics20160321" ("20160321") oluşturulan tablonu
 Özellik|Değer|Örnekler/notlar
 ---|---|---
 PartitionKey|{Hesap KIMLIĞI} _ {varlık KIMLIĞI}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66<br/<br/>Birden çok Media Services hesabının aynı depolama hesabına yazıldığı iş akışlarını basitleştirmek için hesap KIMLIĞI bölüm anahtarına dahil edilir.
-RowKey|{saniye-gece yarısı} _ {rastgele değer}|01688_00199<br/><br/>Satır anahtarı, bir bölüm içinde ilk n stil sorgusuna izin vermek için saniye cinsinden gece yarısına kadar başlar. Daha fazla bilgi için [bu makaleye](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern) bakın. 
-Zaman damgası|Tarih/Saat|Azure Tablo 2016 ' dan otomatik zaman damgası-09-09T22:43:42.241 Z
+RowKey|{saniye-gece yarısı} _ {rastgele değer}|01688_00199<br/><br/>Satır anahtarı, bir bölüm içinde ilk n stil sorgusuna izin vermek için saniye cinsinden gece yarısına kadar başlar. Daha fazla bilgi için [Bu](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern) makaleye bakın. 
+Timestamp|Tarih/Saat|Azure Tablo 2016 ' dan otomatik zaman damgası-09-09T22:43:42.241 Z
 Tür|Telemetri verileri sağlayan varlığın türü|Channel/StreamingEndpoint/Arşivi<br/><br/>Olay türü yalnızca bir dize değeridir.
-Adı|Telemetri olayının adı|Channelsinyal/StreamingEndpointRequestLog
+Name|Telemetri olayının adı|Channelsinyal/StreamingEndpointRequestLog
 ObservedTime|Telemetri olayının gerçekleştiği zaman (UTC)|2016-09-09T22:42:36.924 Z<br/><br/>Gözlemlenen zaman, telemetri gönderen varlık tarafından sağlanır (örneğin bir kanal). Bu değerin yaklaşık olması için bileşenler arasında zaman eşitleme sorunları olabilir
 ServiceId|{hizmet KIMLIĞI}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 Varlığa özgü özellikler|Olay tarafından tanımlanan şekilde|StreamName: STREAM1, bit hızı 10123,...<br/><br/>Kalan özellikler, belirtilen olay türü için tanımlanmıştır. Azure tablo içeriği anahtar değer çiftleridir.  (diğer bir deyişle, tablodaki farklı satırların farklı özellik kümeleri vardır).
@@ -100,9 +100,9 @@ Her biri aşağıdaki sıklıkta itilmiş, varlığa özgü üç telemetri veri 
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
-Zaman damgası|Zaman damgası|Azure Tablo 2016 ' dan otomatik zaman damgası-09-09T22:43:42.241 Z
+Timestamp|Timestamp|Azure Tablo 2016 ' dan otomatik zaman damgası-09-09T22:43:42.241 Z
 Tür|Tür|Streammingendpoint
-Adı|Adı|Streammingendpointrequestlog
+Name|Name|Streammingendpointrequestlog
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
 ServiceId|Hizmet Kimliği|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 HostName|Uç noktanın ana bilgisayar adı|builddemoserver.origin.mediaservices.windows.net
@@ -119,9 +119,9 @@ E2ELatency|Ortalama uçtan uca gecikme süresi|250
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
-Zaman damgası|Zaman damgası|Azure Tablo 2016 ' dan otomatik zaman damgası-09-09T22:43:42.241 Z
+Timestamp|Timestamp|Azure Tablo 2016 ' dan otomatik zaman damgası-09-09T22:43:42.241 Z
 Tür|Tür|Kanal
-Adı|Adı|Channelsinyal
+Name|Name|Channelsinyal
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
 ServiceId|Hizmet Kimliği|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 TrackType|Video/ses/metin izleme türü|video/ses
@@ -144,9 +144,9 @@ Sağlam|Doğruysa, <br/>Fazla atlama sayısı, <br/>DiscontinuityCount, <br/>Non
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
-Zaman damgası|Zaman damgası|Azure Tablo 2016 ' dan otomatik zaman damgası-09-09T22:43:42.241 Z
+Timestamp|Timestamp|Azure Tablo 2016 ' dan otomatik zaman damgası-09-09T22:43:42.241 Z
 Tür|Tür|Arşiv
-Adı|Adı|ArchiveHeartbeat
+Name|Name|ArchiveHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924 Z
 ServiceId|Hizmet Kimliği|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 ManifestName|Program URL 'si|varlık-eb149703-ed0a-483c-91c4-e4066e72cce3/a0a5cfbf-71ec-4BD2-8c01-a92a2b38c9ba. ISM
@@ -221,6 +221,6 @@ Telemetri sistemi, veri saklama yönetimi sağlamaz veya eski kayıtları otomat
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geribildirim gönderme
 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

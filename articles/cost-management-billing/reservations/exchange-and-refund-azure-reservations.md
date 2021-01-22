@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 12/15/2020
 ms.author: banders
-ms.openlocfilehash: b0f17149eb646b6108dc6a81922e6e5b00f143d6
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 045ab35a35aa4caefb1e1bcbbf7bf78b726c09f7
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560551"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601463"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure Rezervasyonları için self servis değişimler ve para iadeleri
 
@@ -47,7 +47,7 @@ Premium depolamayı desteklemeyen bir sanal makine boyutu için satın alınan b
 
 ### <a name="enterprise-agreement-customers"></a>Kurumsal anlaşma müşterileri
 
-İlk satın alma, değişim veya para iadesi kullanılarak yapıldıysa, değişim ve para iadeleri için parasal taahhüde para eklenir. Satın alınan rezervasyonu kullanan parasal taahhüt dönemi artık etkin değilse kredi, geçerli kurumsal anlaşma parasal taahhüt döneminize eklenir. Kredi, iade tarihinden itibaren 90 gün geçerlidir. Kullanılmayan kredilerin süresi 90 günün sonunda dolar.
+İlk satın alma, değişim veya para iadesi kullanılarak yapıldıysa, değişim ve para iadeleri için Azure Ön Ödemesine (eski adıyla parasal taahhüt) para eklenir. Satın alınan rezervasyonun kullanıldığı Azure Ön Ödemesi dönemi artık etkin değilse kredi, geçerli kurumsal anlaşma Azure Ön Ödemesi döneminize eklenir. Kredi, iade tarihinden itibaren 90 gün geçerlidir. Kullanılmayan kredilerin süresi 90 günün sonunda dolar.
 
 Başlangıçtaki satın alma işlemi fazla kullanım olarak yapıldıysa, rezervasyonun satın alındığı ilk fatura ve sonraki tüm faturalar yeniden açılır ve yeniden ayarlanır. Microsoft para iadeleri için bir alacak faturası düzenler.
 

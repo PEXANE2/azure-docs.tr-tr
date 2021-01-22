@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: c03bf5e52ae7f6b259c7b744e6033d760af23dd0
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 72b371fd1184c9c9e69593c5ad7e57310abf1de2
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683683"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600026"
 ---
 # <a name="common-cost-analysis-uses"></a>Yaygın maliyet analizi kullanımları
 
@@ -198,7 +198,7 @@ Maliyetler yalnızca etkin kaydınız için gösterilir. Bir kaydı (etkin olmay
 
 
 1. Azure portalında **Maliyet Yönetimi + Faturalandırma** > **Genel Bakış**'a gidin.
-1. Geçerli aya ait **Döküm**'e tıklayın ve parasal taahhüdünüzün nasıl tükendiğine bakın.  
+1. Geçerli aya ait **Döküm**'e tıklayın ve Azure Ön Ödemenizin (eski adıyla parasal taahhüt) nasıl tükendiğine bakın.  
     [![EA maliyetlerine genel bakış - döküm özeti](./media/cost-analysis-common-uses/breakdown1.png)](./media/cost-analysis-common-uses/breakdown1.png#lightbox)
 1.  **Kullanım ve Ücretler** sekmesine tıklayıp seçili zaman aralığı için bir önceki aynı dökümünü görüntüleyin.  
     [![Kullanım ve ücretler sekmesi](./media/cost-analysis-common-uses/breakdown2.png)](./media/cost-analysis-common-uses/breakdown2.png#lightbox)

@@ -4,20 +4,23 @@ description: Kullanıcıya veya hizmet sorumlusuna program aracılığıyla Azur
 author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
-ms.reviewer: amberb
+ms.reviewer: andalmia
 ms.topic: conceptual
-ms.date: 08/26/2020
+ms.date: 01/13/2021
 ms.author: banders
-ms.openlocfilehash: c13670df26e5d0f7774b5a2aac81f656de94c960
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 039e728f6518d21ddfb9c7c359a6cf2ec743f232
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844719"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185113"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Azure Kurumsal abonelikleri oluşturma erişimi verme (önizleme)
 
 Azure'ın bir [Kurumsal Anlaşma (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) müşterisi olarak başka bir kullanıcıya veya hizmet sorumlusuna sizin hesabınıza faturalanacak abonelikler oluşturma izni verebilirsiniz. Bu makalede [Azure rol tabanlı erişim denetimini (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) kullanarak abonelik oluşturma becerisini paylaşmayı ve abonelik oluşturma işlemlerini izlemeyi öğreneceksiniz. Paylaşmak istediğiniz hesapta Sahip rolünüz olmalıdır.
+
+> [!NOTE]
+> Bu API yalnızca [abonelik oluşturmak için önizleme API'leriyle](programmatically-create-subscription-preview.md) çalışır. [GA sürümünü](programmatically-create-subscription-enterprise-agreement.md) kullanmak istiyorsanız [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) ile sağlanan en son API sürümünü kullanın. Daha yeni API'leri kullanmaya geçiyorsanız [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) kullanarak yeniden sahip izinleri vermeniz gerekir. Aşağıdaki API'leri kullanan önceki yapılandırmanız otomatik olarak daha yeni API'leri kullanacak şekilde dönüştürülmez.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

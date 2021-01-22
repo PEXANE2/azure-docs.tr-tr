@@ -3,18 +3,18 @@ title: Azure Kurumsal kayıt faturaları
 description: Bu makalede Azure Kurumsal faturanızı nasıl yöneteceğiniz ve işleme alacağınız açıklanır.
 author: bandersmsft
 ms.author: banders
-ms.date: 12/09/2020
+ms.date: 01/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: c64127f7ebbb416d9dfebb5e417cd27d51697665
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 90ae9bdcee5f5f4c4281f2c3f931389b2ebf9486
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030731"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598071"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure Kurumsal kayıt faturaları
 
@@ -238,7 +238,7 @@ Hizmetlerle ilgili temel genel fiyatlandırma bilgileri, ölçü birimleri, SSS 
 
 ### <a name="enterprise-agreement-units-of-measure"></a>Kurumsal Anlaşma ölçü birimleri
 
-Kurumsal Anlaşma ölçü birimleri genellikle Microsoft Çevrimiçi Abonelik Sözleşmesi programı (MOSA) gibi programlarda görünenden farklıdır. Başka bir deyişle birden fazla hizmetteki ölçü birimi toplanarak normalleştirilmiş fiyatlandırma elde edilir. Azure Enterprise Portal'ın Kullanım Özeti görünümünde gösterilen ölçü birimi her zaman Enterprise ölçü birimidir. Her hizmetin ölçü biriminin ve dönüşümlerin yer aldığı listeye [Hizmet Kolay Adları](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) Excel dosyasından ulaşabilirsiniz.
+Kurumsal Anlaşma ölçü birimleri genellikle Microsoft Çevrimiçi Abonelik Sözleşmesi programı (MOSA) gibi programlarda görünenden farklıdır. Başka bir deyişle birden fazla hizmetteki ölçü birimi toplanarak normalleştirilmiş fiyatlandırma elde edilir. Azure Enterprise Portal'ın Kullanım Özeti görünümünde gösterilen ölçü birimi her zaman Enterprise ölçü birimidir. Her hizmetin tüm geçerli ölçü birimlerinin ve dönüşümlerin yer aldığı listeye [destek isteği](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) göndererek ulaşabilirsiniz.
 
 ### <a name="conversion-between-usage-detail-report-and-the-usage-summary-page"></a>Kullanım ayrıntıları raporu ile kullanım özeti sayfası verilerini birbirine dönüştürme
 
@@ -324,13 +324,6 @@ Kanal iş ortağı değişikliği (COCP) ayın ortasında olursa, müşteri önc
 Faturalar, fatura dönemi sona erdikten sonraki ay yayınlanır. Faturalama sıklığı aylık ise, Eylül ayının faturası her iki iş ortağı için de Ekim ayında yayınlanır. Fatura dönemi üç aylık veya yıllık ise müşteri, önceki ilişkili iş ortağıyla ilgili dönemdeki kullanımlara yönelik bir fatura alır. Diğer faturalar faturalama sıklığına göre yeni iş ortağı için oluşturulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-
-- Aşağıdaki Excel dosyaları, Azure hizmetleri hakkında ayrıntılı bilgiler içerir ve her ayın 6. ve 20. gününde güncelleştirilir:
-
-   | Başlık | Açıklama | Dosya adı |
-   | --- | --- | --- |
-   | [Hizmet Kolay Adları](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) | Tüm etkin hizmetlerin listesidir ve şunları içerir: <br>  <ul><li>hizmet kategorisi</li>   <li>hizmet kolay adı</li>   <li>Ön ödeme adı ve parça numarası</li> <li>tüketim adı ve parça numarası</li>   <li>ölçü birimi</li>   <li>bildirilen kullanım ile görüntülenen Enterprise Portal kullanımı arasındaki dönüştürme faktörleri</li></ul> | Hizmet\_Kolay\_Adları.xlsx |
-   | [Hizmet İndirme Alanları](https://azurepricing.blob.core.windows.net/supplemental/Service_Download_Fields.xlsx) | Bu elektronik tabloda Kullanım İndirme Raporundaki hizmetle ilgili alanların tüm olası birleşimlerinin bir listesi bulunur. | Hizmet\_İndirme\_Alanları.xlsx |
 
 - Faturanızı ve ücretlerinizi anlama konusunda bilgi için bkz. [Azure Kurumsal Anlaşma faturanızı anlama](../understand/review-enterprise-agreement-bill.md).
 - Azure Enterprise Portal'ı kullanmaya başlamak için bkz. [Azure EA portalını kullanmaya başlama](ea-portal-get-started.md).

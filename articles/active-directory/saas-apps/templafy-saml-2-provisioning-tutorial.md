@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/19/2021
 ms.author: zhchia
-ms.openlocfilehash: 057b437c5d88c4f292e08828482e5dca0d2ca5b4
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 0e7275ee92431e791fec7bd2c9ec07dd623b0f9e
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98614679"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696016"
 ---
 # <a name="tutorial-configure-templafy-saml2-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Templamy SAML2 yapılandırma
 
@@ -133,7 +133,26 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
 9. **Öznitelik eşlemeleri** bölümünde, Azure AD 'Den TEMPLAMY SAML2 ile eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için TEMPLAMY SAML2 içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Templamy SAML2 Kullanıcı öznitelikleri](media/templafy-saml-2-provisioning-tutorial/user-attribute.png)
+   |Öznitelik|Tür|Filtreleme için destekleniyor|
+   |---|---|---|
+   |userName|Dize|&check;|
+   |active|Boole|
+   |displayName|Dize|
+   |başlık|Dize|
+   |preferredLanguage|Dize|
+   |name.givenName|Dize|
+   |name.familyName|Dize|
+   |phoneNumbers[type eq "work"].value|Dize|
+   |phoneNumbers[type eq "mobile"].value|Dize|
+   |phoneNumbers [tür EQ "Faks"]. değer|Dize|
+   |externalId|Dize|
+   |adresler [tür EQ "iş"]. konum|Dize|
+   |adresler [tür EQ "iş"]. PostaKodu|Dize|
+   |adresler [tür EQ "iş"]. bölge|Dize|
+   |adresler [tür EQ "Work"]. streetAddress|Dize|
+   |adresler [tür EQ "iş"]. ülke|Dize|
+   |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Department|Dize|
+   |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Organization|Dize|
 
 10. **Eşlemeler** bölümünde, **Azure Active Directory grupları Şablonlarım**' a eşitler ' ı seçin.
 
@@ -141,7 +160,12 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
 11. **Öznitelik eşlemeleri** bölümünde, Azure AD 'Den TEMPLAMY SAML2 ile eşitlenen grup özniteliklerini inceleyin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için TEMPLAMY SAML2 içindeki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Templamy SAML2 Group öznitelikleri](media/templafy-saml-2-provisioning-tutorial/group-attribute.png)
+      |Öznitelik|Tür|Filtreleme için destekleniyor|
+      |---|---|---|
+      |displayName|Dize|&check;|
+      |üyeler|Başvuru|
+      |externalId|Dize|      
+
 
 12. Kapsam belirleme filtrelerini yapılandırmak için [Kapsam belirleme filtresi öğreticisi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) ile sunulan yönergeleri izleyin.
 

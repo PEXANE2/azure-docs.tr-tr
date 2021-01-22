@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: b3ae2b8323c9f278dcec432dfaac05e9fcfb4b49
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 15e8a31c7ca3b87a8bf92a520bcf07de1e063efd
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132117"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599141"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Azure kullanımınıza ilişkin program aracılığıyla içgörü elde etmek için Azure Faturalama API’lerini kullanın
 Kullanım ve kaynak verilerini tercih ettiğiniz veri analizi aracına almak için Azure Faturalama API'lerini kullanın. Azure Kaynak Kullanımı ve RateCard API'leri maliyetlerinizi doğru tahmin etmenize ve yönetmenize yardımcı olabilir. API’ler Kaynak Sağlayıcısı olarak ve Azure Resource Manager tarafından kullanıma sunulan API ailesi kapsamında uygulanır.  
@@ -36,13 +36,13 @@ Azure [Kaynak Kullanım API’si](/previous-versions/azure/reference/mt219003(v=
 * **Saatlik veya Günlük Toplamalar**: Çağıranlar, Azure kullanım verilerinin saatlik demetler halinde mi yoksa günlük demetler halinde mi istediğini belirtebilir. Varsayılan değer günlük değeridir.
 * **Örnek meta verileri (kaynak etiketlerini içerir)** : Tam kaynak URI’si (/subscriptions/{subscription-id}/..), kaynak grubu bilgileri ve kaynak etiketleri gibi örnek düzeyinde ayrıntıları alın. Bu meta veriler, belirlenimci şekilde ve program aracılığıyla çapraz ücretlendirme gibi kullanım senaryoları için etiketlere göre kullanımı ayırmanıza yardımcı olur.
 * **Kaynak meta verileri**: Ölçüm adı, ölçüm kategorisi, ölçüm alt kategorisi, birim ve bölge gibi kaynak ayrıntıları, çağıranın nelerin kullanıldığını daha iyi anlamasını sağlar. Ayrıca deneyimler genelinde verilerin bağıntısını oluşturmanıza yardımcı olması için Azure portalı, Azure kullanım CSV’si, EA faturalama CSV’si ve diğer kamuya açık deneyimler arasında kaynak meta verileri terminolojisini hizalamak için de çalışıyoruz.
-* **Farklı teklif türleri için kullanım**: [CSP](/partner-center) dışında, Kullandıkça öde, MSDN, Parasal taahhüt, kredi ve EA gibi teklif türleri için kullanım verileri mevcuttur.
+* **Farklı teklif türleri için kullanım**: Kullandıkça öde, MSDN, Azure Ön Ödemesi (daha önceki adı parasal taahhüt), Azure Ön Ödeme kredisi ve EA ([CSP](/partner-center) dışında) gibi teklif türleri için kullanım verileri sağlanır.
 
 ## <a name="azure-resource-ratecard-api-preview"></a>Azure Kaynak RateCard API’si (Önizleme)
 [Azure Kaynak RateCard API’sini](/previous-versions/azure/reference/mt219005(v=azure.100)) kullanarak mevcut Azure kaynaklarının listesine ve her biri için tahmini fiyat bilgisine ulaşabilirsiniz. API şunları içerir:
 
 * **Azure rol tabanlı erişim denetimi (Azure RBAC)** : Hangi kullanıcıların veya uygulamaların RateCard verilerine erişim elde edebileceğini belirtmek için [Azure portaldan](https://portal.azure.com) veya [Azure PowerShell cmdlet’leri](/powershell/azure/) aracılığıyla erişim ilkelerinizi yapılandırın. Çağıranlar, kimlik doğrulaması için standart Azure Active Directory belirteçlerini kullanmalıdır. Belirli bir Azure aboneliğine ilişkin kullanım verilerine erişim elde etmek için çağıranı Okuyucu, Sahip veya Katkıda Bulunan rolüne ekleyin.
-* **Kullandıkça öde, MSDN, Parasal taahhüt ve Kredi teklifleri desteği (EA ve [CSP](/partner-center) desteklenmez)** : Bu API, Azure teklif düzeyinde fiyat bilgilerini sağlar.  Bu API’nin çağıranı, kaynak ayrıntılarını ve fiyatlarını almak için teklif bilgilerini iletmelidir. EA teklifleri, kayıt başına özelleştirilmiş fiyatlar içerdiğinden şu anda EA fiyatları sağlayamıyoruz.
+* **Kullandıkça öde, MSDN, Azure Ön Ödemesi ve Azure Ön Ödeme kredisi teklifleri desteği (EA ve [CSP](/partner-center) desteklenmez)** : Bu API, Azure teklif düzeyinde fiyat bilgilerini sağlar.  Bu API’nin çağıranı, kaynak ayrıntılarını ve fiyatlarını almak için teklif bilgilerini iletmelidir. EA teklifleri, kayıt başına özelleştirilmiş fiyatlar içerdiğinden şu anda EA fiyatları sağlayamıyoruz.
 
 ## <a name="scenarios"></a>Senaryolar
 Kullanım ve RateCard API’lerinin birleşimiyle mümkün olan bazı senaryolar aşağıda verilmiştir:
@@ -50,7 +50,7 @@ Kullanım ve RateCard API’lerinin birleşimiyle mümkün olan bazı senaryolar
 * **Ay boyunca Azure harcaması**: Ay boyunca bulut harcamalarınıza yönelik daha iyi içgörüler elde etmek için Kullanım ve RateCard API’leri birleşimini kullanın. Kullanım ve ücret tahminleri için saatlik ve günlük demetleri analiz edebilirsiniz.
 * **Uyarılar ayarlama**: Tahmini bulut tüketimi ve ücretlerini öğrenmek ve kaynak tabanlı veya parasal tabanlı uyarılar ayarlamak için Kullanım ve RateCard API’lerini kullanın.
 * **Fatura tahmini**: Tahmini tüketim ve bulut harcamalarınızı öğrenin ve hangi faturanın faturalama dönemi sonunda olduğunu tahmin etmek için makine öğrenimi algoritmaları uygulayın.
-* **Ön tüketim maliyet analizi**: İş yüklerinizi Azure’a taşıdığınızda beklenen kullanımınız için ne kadar faturanız olacağını tahmin etmek için RateCard API’sini kullanın. Diğer bulutlarda veya özel bulutlarda mevcut iş yükleriniz varsa, Azure harcamasının daha iyi bir tahminini elde etmek için kullanımınızı Azure ücretleriyle de eşleyebilirsiniz. Bu tahmin size teklif yapma ve Kullandıkça Öde dışında Parasal taahhüt ve Kredi gibi farklı teklif türlerini karşılaştırma olanağı sağlar. Ayrıca API, bölgeye göre maliyet farklarını görmenizi sağlar ve dağıtım kararları almanıza yardımcı olması için bir olasılık analizi yapmanıza imkan tanır.
+* **Ön tüketim maliyet analizi**: İş yüklerinizi Azure’a taşıdığınızda beklenen kullanımınız için ne kadar faturanız olacağını tahmin etmek için RateCard API’sini kullanın. Diğer bulutlarda veya özel bulutlarda mevcut iş yükleriniz varsa, Azure harcamasının daha iyi bir tahminini elde etmek için kullanımınızı Azure ücretleriyle de eşleyebilirsiniz. Bu tahmin size teklif yapma ve Kullandıkça Öde dışında Azure Ön Ödemesi ve Azure Ön Ödeme kredisi gibi farklı teklif türlerini karşılaştırma olanağı sağlar. Ayrıca API, bölgeye göre maliyet farklarını görmenizi sağlar ve dağıtım kararları almanıza yardımcı olması için bir olasılık analizi yapmanıza imkan tanır.
 * **Olasılık analizi** -
 
   * İş yüklerinin başka bir bölgede mi yoksa Azure kaynağının başka bir yapılandırmasında mı çalıştırılmasının daha uygun maliyetli olduğunu belirleyebilirsiniz. Azure kaynak maliyetleri, kullandığınız Azure bölgesine bağlı olarak değişiklik gösterebilir.

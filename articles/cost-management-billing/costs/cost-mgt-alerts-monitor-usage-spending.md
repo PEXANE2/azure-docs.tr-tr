@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: c59bd7f9bc8c5049572afdf93343222b30c0007b
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: d1546ef92d923b9d72c4aca0ddf61d2b93646656
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131913"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602351"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>Maliyet uyarılarını kullanarak kullanımı ve harcamayı izleme
 
@@ -29,7 +29,7 @@ Bütçe API’sini kullanarak farklı bir dilde e-posta uyarısı gönderebilirs
 
 ## <a name="credit-alerts"></a>Kredi uyarıları
 
-Kredi uyarıları size Azure kredisi parasal taahhütlerinizin tüketildiğini bildirir. Parasal taahhütler Kurumsal Anlaşmaları olan kuruluşlara yöneliktir. Kredi uyarıları, Azure kredisi bakiyenizin %90'ına ve %100'üne ulaşıldığında otomatik olarak oluşturulur. Her uyarı oluşturulduğunda, bu uyarı maliyet uyarılarında ve hesap sahiplerine gönderilen e-postada yansıtılır.
+Kredi uyarıları Azure Ön Ödemeniz (eski adıyla parasal taahhüt) tükendiğinde size bunu bildirir. Azure Ön Ödemesi, Kurumsal Anlaşma sahibi olan kuruluşlara yöneliktir. Kredi uyarıları, Azure Ön Ödeme kredisi bakiyenizin %90 ve %100 düzeyinde otomatik olarak oluşturulur. Her uyarı oluşturulduğunda, bu uyarı maliyet uyarılarında ve hesap sahiplerine gönderilen e-postada yansıtılır.
 
 ## <a name="department-spending-quota-alerts"></a>Departman harcama kotası uyarıları
 

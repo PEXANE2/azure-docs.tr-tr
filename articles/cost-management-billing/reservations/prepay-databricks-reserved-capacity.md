@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: b7d7380114046fbeaaf4b6eb2660997d64168715
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 390a8b421a7b34391bde689e4b968fa98cdbaf76
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91368575"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599167"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>Önceden satın alma ile Azure Databricks maliyetlerini iyileştirme
 
@@ -48,7 +48,7 @@ Satın almadan önce, farklı iş yükleri ve katmanlar için kullanılan toplam
 **Satın almak için:**
 
 1. [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D) gidin.
-1. Bir abonelik seçin. Ayrılmış kapasitenin ödemesini yapmak için kullanılan aboneliği seçmek amacıyla **Abonelik** listesini kullanın. Ayrılmış kapasiteye ilişkin peşin maliyetler, aboneliğin ödeme yöntemiyle ücretlendirilir. Ücretler, kaydın parasal taahhüt bakiyesinden düşülür ve fazla kullanım olarak ücretlendirilir.
+1. Bir abonelik seçin. Ayrılmış kapasitenin ödemesini yapmak için kullanılan aboneliği seçmek amacıyla **Abonelik** listesini kullanın. Ayrılmış kapasiteye ilişkin peşin maliyetler, aboneliğin ödeme yöntemiyle ücretlendirilir. Ücretler, kaydın Azure Ön Ödemesi (eski adıyla parasal taahhüt) bakiyesinden düşülür veya fazla kullanım olarak ücretlendirilir.
 1. Bir kapsam seçin. **Kapsam** listesini kullanarak bir abonelik kapsamı seçin:
     - **Tek kaynak grubu kapsamı**: Yalnızca seçilen kaynak grubunda eşleşen kaynaklara rezervasyon indirimini uygular.
     - **Tek abonelik kapsamı**: Yalnızca seçilen abonelikte eşleşen kaynaklara rezervasyon indirimini uygular.

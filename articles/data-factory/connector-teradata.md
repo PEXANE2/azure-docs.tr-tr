@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/26/2020
+ms.date: 01/22/2021
 ms.author: jingwang
-ms.openlocfilehash: a48ac86e8f9814adef9be2360b2446335d368447
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 430b9a1e567d9a79093f50ae388b4b69119c057d
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296565"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695882"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Teradata Vanndan veri kopyalama
 
@@ -44,7 +44,7 @@ Teradata Vana 'dan verileri desteklenen herhangi bir havuz veri deposuna kopyala
 - **Temel**, **Windows** veya **LDAP** kimlik doğrulaması kullanarak verileri kopyalama.
 - Teradata kaynağından paralel kopyalama. Ayrıntılar için [Teradata 'Dan paralel kopyalama](#parallel-copy-from-teradata) bölümüne bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -72,6 +72,7 @@ Büyük/küçük harf olarak bağlantı dizesinde ayarlayabileceğiniz daha fazl
 
 | Özellik | Açıklama | Varsayılan değer |
 |:--- |:--- |:--- |
+| TdmstPortNumber | Teradata veritabanına erişmek için kullanılan bağlantı noktası numarası.<br>Bu değeri, teknik destek tarafından istenmedikçe değiştirmeyin. | 1025 |
 | UseDataEncryption | Teradata veritabanıyla iletişimin tümünün şifrelenip şifrelenmeyeceğini belirtir. İzin verilen değerler 0 veya 1 ' dir.<br><br/>- **0 (devre dışı, varsayılan)**: yalnızca kimlik doğrulama bilgilerini şifreler.<br/>- **1 (etkin)**: sürücü ve veritabanı arasında geçirilen tüm verileri şifreler. | `0` |
 | CharacterSet | Oturum için kullanılacak karakter kümesi. Ör., `CharacterSet=UTF16` .<br><br/>Bu değer, Kullanıcı tanımlı bir karakter kümesi veya aşağıdaki önceden tanımlanmış karakter kümelerinden biri olabilir: <br/>-ASCII<br/>-UTF8<br/>-UTF16<br/>-LATIN1252_0A<br/>-LATIN9_0A<br/>-LATIN1_0A<br/>-Shift-JıS (Windows, DOS uyumlu, KANJISJIS_0S)<br/>-EUC (UNIX ile uyumlu, KANJIEC_0U)<br/>-IBM ana bilgisayar (KANJIEBCDIC5035_0I)<br/>-KANJI932_1S0<br/>-BIG5 (TCHBIG5_1R0)<br/>-GB (SCHGB2312_1T0)<br/>-SCHINESE936_6R0<br/>-TCHINESE950_8R0<br/>-Networkkorece (HANGULKSC5601_2R4)<br/>-HANGUL949_7R0<br/>-ARABIC1256_6A0<br/>-CYRILLIC1251_2A0<br/>-HEBREW1255_5A0<br/>-LATIN1250_1A0<br/>-LATIN1254_7A0<br/>-LATIN1258_8A0<br/>-THAI874_4A0 | `ASCII` |
 | MaxRespSize |SQL istekleri için en büyük yanıt arabelleği boyutu (kilobayt (KBs) cinsinden). Ör., `MaxRespSize=‭10485760‬` .<br/><br/>Teradata veritabanı sürüm 16,00 veya üzeri için en büyük değer 7361536 ' dir. Önceki sürümleri kullanan bağlantılarda en büyük değer 1048576 ' dir. | `65536` |
@@ -171,7 +172,7 @@ Teradata 'tan veri kopyalamak için aşağıdaki özellikler desteklenir:
 |:--- |:--- |:--- |
 | tür | Veri kümesinin Type özelliği olarak ayarlanmalıdır `TeradataTable` . | Evet |
 | database | Teradata örneğinin adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
-| table | Teradata örneğindeki tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
+| tablo | Teradata örneğindeki tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
 **Örnek:**
 
@@ -350,7 +351,7 @@ Teradata 'tan veri kopyaladığınızda aşağıdaki eşlemeler geçerlidir. Kop
 | Small |Int16 |
 | Saat |TimeSpan |
 | Saat dilimiyle saat |TimeSpan |
-| Zaman damgası |DateTime |
+| Timestamp |DateTime |
 | Saat dilimi Ile zaman damgası |DateTime |
 | VarByte |Byte [] |
 | VarChar |Dize |

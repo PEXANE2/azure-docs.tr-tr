@@ -5,16 +5,16 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 01/13/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 0cdd25b2937dd1fb2cc70ef7b1c5a9e9ddaef375
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: bd155ea3c98231cf20fa7c62325e3c2ecfb89920
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780629"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185929"
 ---
 # <a name="programmatically-create-azure-enterprise-agreement-subscriptions-with-the-latest-apis"></a>En son API’lerle program aracılığıyla Azure Kurumsal Anlaşma abonelikleri oluşturma
 
@@ -31,7 +31,9 @@ Program aracılığıyla Azure aboneliği oluşturduğunuzda, bu abonelik Micros
 Abonelik oluşturmak için Kayıt Hesabında Sahip rolünüzün olması gerekir. Rolü almanın iki yolu vardır:
 
 * Kaydınızın Kuruluş Yöneticisi [sizi Hesap Sahibi yapabilir](https://ea.azure.com/helpdocs/addNewAccount) (oturum açma gereklidir) ve bu durumda Kayıt Hesabının Sahibi olursunuz.
-* Kayıt Hesabının mevcut Sahibi [size erişim verebilir](grant-access-to-create-subscription.md). Benzer şekilde, EA aboneliğini oluştururken bir hizmet sorumlusu kullanmak için [söz konusu hizmet sorumlusuna abonelik oluşturabilme becerisi](grant-access-to-create-subscription.md) vermelisiniz.
+* Kayıt Hesabının mevcut Sahibi [size erişim verebilir](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). Benzer şekilde, EA aboneliğini oluştururken bir hizmet sorumlusu kullanmak için [söz konusu hizmet sorumlusuna abonelik oluşturabilme becerisi](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) vermelisiniz. 
+  > [!NOTE]
+  > Kayıt hesabı sahip izinleri vermek için doğru API sürümünü kullandığınızdan emin olun. Bu makale ve makalede belgelenen API'ler için [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) API'sini kullanın. Daha yeni API'leri kullanmaya geçiyorsanız [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) kullanarak yeniden sahip izni vermeniz gerekir. [2015-07-01 version](grant-access-to-create-subscription.md) ile yapılmış olan önceki yapılandırmanız daha yeni API'lerle çalışacak şekilde otomatik olarak dönüştürülmez.
 
 ## <a name="find-accounts-you-have-access-to"></a>Erişiminiz olan hesapları bulma
 

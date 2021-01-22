@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: reference
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 8cef36cf26231758eb839379d0c020484cbe09fb
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: e0a7553269e1223a5e744db967d65814877878ab
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132610"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598278"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>Faturalama ve maliyet yönetimi için otomasyon senaryoları
 
@@ -103,7 +103,7 @@ Aşağıdaki API'ler yalnızca Kuruluş içindir:
 ### <a name="whats-the-difference-between-the-enterprise-reporting-apis-and-the-consumption-apis-when-should-i-use-each"></a>Kurumsal Raporlama API'leriyle Tüketim API'leri arasında ne fark vardır? Bunların her birini hangi durumlarda kullanmalıyım?
 Bu API'lerin benzer bir işlev kümesi vardır ve faturalama ve maliyet yönetimi alanında aynı kapsamlı soruları yanıtlayabilirler. Ama hedef kitleleri farklıdır:
 
-- Kurumsal Raporlama API'leri, Microsoft'la kendilerine anlaşmalı parasal taahhütler ve özel fiyatlandırma getiren bir Kurumsal Anlaşma imzalamış müşterilere yöneliktir. API'ler için [Enterprise Portal](https://ea.azure.com)'dan alabileceğiniz bir anahtar gerekir. Bu API'lerin açıklaması için bkz. [Enterprise müşterileri için Raporlama API'lerine genel bakış](enterprise-api.md).
+- Kurumsal Raporlama API'leri, Microsoft'la kendilerine anlaşmalı Azure Ön Ödemesi (eski adıyla parasal taahhüt) ve özel fiyatlandırma getiren bir Kurumsal Anlaşma imzalamış müşterilere yöneliktir. API'ler için [Enterprise Portal](https://ea.azure.com)'dan alabileceğiniz bir anahtar gerekir. Bu API'lerin açıklaması için bkz. [Enterprise müşterileri için Raporlama API'lerine genel bakış](enterprise-api.md).
 
 - Tüketim API'leri birkaç özel durum dışında tüm müşteriler tarafından kullanılabilir. Daha fazla bilgi için bkz. [Azure tüketim API'sine genel bakış](consumption-api-overview.md) ve [Azure Tüketim API'si başvurusu](/rest/api/consumption/). En son geliştirme senaryolarına çözüm olarak sağlanan API'lerin kullanılmasını öneririz.
 
@@ -112,7 +112,7 @@ Bu API'ler temelde farklı veriler sağlar:
 
 - [Kullanım Ayrıntıları API'si](/rest/api/consumption/usagedetails) ölçüm örneği başına Azure kullanım ve maliyet bilgilerini sağlar. Sağlanan veriler Azure'da maliyet ölçüm sisteminden zaten geçirilmiştir ve bunlara diğer olası değişikliklerle birlikte maliyet de uygulanmıştır:
 
-   - Ön ödemeli parasal taahhütler için hesapta yapılan değişiklikler
+   - Önceden ödenmiş Azure Ön Ödemesi için hesapta yapılan değişiklikler
    - Azure tarafından bulunan kullanım tutarsızlıkları için hesapta yapılan değişiklikler
 
 - [Kullanım API'si](/previous-versions/azure/reference/mt219003(v=azure.100)) Azure'da maliyet ölçüm sisteminden geçirilmeden önceki ham Azure kullanım bilgilerini sağlar. Bu verilerin, Azure ücret ölçüm sisteminden sonra görülen kullanım ve ücret miktarıyla hiçbir bağıntısı olmayabilir.

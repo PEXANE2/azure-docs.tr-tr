@@ -3,17 +3,17 @@ title: Azure EA sözleşmeleri ve düzeltmeleri
 description: Bu makalede Azure EA sözleşmeleri ve düzeltmelerinin Azure EA portalı kullanımınızı nasıl etkilediği açıklanır.
 author: bandersmsft
 ms.author: banders
-ms.date: 09/03/2020
+ms.date: 01/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 9e6750bd8404b4f9b910dda93859a0ca3fd268d4
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: c2c3636e98d67616826b03cca9657b806c5bd653
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442539"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598017"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA sözleşmeleri ve düzeltmeleri
 
@@ -21,7 +21,7 @@ Makalede Azure EA sözleşmeleri ve düzeltmelerinin Azure hizmetleri erişimini
 
 ## <a name="enrollment-provisioning-status"></a>Kayıt sağlama durumu
 
-Yeni Azure Ön Ödemesinin başlangıç tarihi, bölgesel işlemler merkezinde bu taahhüdün işlendiği tarihle tanımlanır. Azure EA portalı aracılığıyla gerçekleştirilen Azure Ön Ödeme siparişleri UTC saat dilimine göre işleme alındığından Azure Ön Ödeme satın alma siparişinizin farklı bir bölgede işleme alınması durumunda gecikme yaşayabilirsiniz. Satın alma siparişindeki kapsam başlangıç tarihi Azure Ön Ödemesinin başlangıcını gösterir. Kapsam başlangıç tarihi Azure Ön Ödemesinin Azure EA portalında gösterildiği tarihtir.
+Yeni Azure Ön Ödemesinin (eski adıyla parasal taahhüt) başlangıç tarihi, bölgesel işlemler merkezinde bu taahhüdün işlendiği tarihle tanımlanır. Azure EA portalı aracılığıyla gerçekleştirilen Azure Ön Ödeme siparişleri UTC saat dilimine göre işleme alındığından Azure Ön Ödeme satın alma siparişinizin farklı bir bölgede işleme alınması durumunda gecikme yaşayabilirsiniz. Satın alma siparişindeki kapsam başlangıç tarihi Azure Ön Ödemesinin başlangıcını gösterir. Kapsam başlangıç tarihi Azure Ön Ödemesinin Azure EA portalında gösterildiği tarihtir.
 
 ## <a name="support-for-enterprise-customers"></a>Kurumsal müşterilere yönelik destek
 
@@ -60,7 +60,7 @@ Microsoft, iş ortağı tarafından açıkça yetki verilen durumların haricind
 
 ### <a name="how-the-calculation-works"></a>Hesaplama nasıl yapılır?
 
-LSP, EA portalında tek bir yüzde değeri belirtir.  Portaldaki tüm ticari bilgiler, LSP tarafından belirtilen yüzdeye göre artırılır. Örnek:
+LSP, EA portalında tek bir yüzde değeri belirtir.    Portaldaki tüm ticari bilgiler, LSP tarafından belirtilen yüzdeye göre artırılır. Örnek:
 
 - Müşteri, 100.000 ABD doları tutarında Azure Ön Ödemesini kapsayan bir EA imzalar.
 - A Hizmetinin ölçüm ücreti saatte 10 ABD dolarıdır.
@@ -101,13 +101,14 @@ Kar payı uygulanmış fiyatları son müşteriyle paylaşmadan önce parasal ba
 Müşteri görünümünde Ön Ödeme dönemine ait _Kullanım Özeti_ içinde kar payı fiyatını gözden geçirin. İş ortağı görünümünde Microsoft fiyatı görünüyor olacaktır. Görünümler arasında geçiş yapmak için sağ üstteki iş ortağı kar payı "kişiler" seçeneğini kullanabilirsiniz.
 
 1. Fiyat listesindeki fiyatları gözden geçirin.
-1. _Kullanım Özetini Görüntüle > Müşteri Görünümü_ sekmesinde **Düzenle**'yi seçerek yayımlamadan önce değişiklik yapabilirsiniz.  
-  Hem hizmet ücretlerine hem de Ön Ödeme bakiyelerine aynı yüzde değerinde kar payı eklenecektir. Parasal bakiye ve ölçüm ücretleri için farklı yüzde değerleri kullanıyorsanız veya hizmetlere ait yüzde değerleriniz birbirinden farklıysa lütfen bu özelliği kullanmayın.
+1. _Kullanım Özetini Görüntüle > Müşteri Görünümü_ sekmesinde **Düzenle**'yi seçerek yayımlamadan önce değişiklik yapabilirsiniz. 
+   
+Hem hizmet ücretlerine hem de Ön Ödeme bakiyelerine aynı yüzde değerinde kar payı eklenecektir. Parasal bakiye ve ölçüm ücretleri için farklı yüzde değerleri kullanıyorsanız veya hizmetlere ait yüzde değerleriniz birbirinden farklıysa lütfen bu özelliği kullanmayın.
 
 **Üçüncü Adım: Yayımlama**
 
 Fiyatlandırmayı gözden geçirip doğruladıktan sonra **Yayımla**'ya tıklayın.
-  
+  
 Yayımla'yı seçtiğinizde kar payı uygulanmış fiyatlar kuruluş yöneticilerine yansıtılacaktır. Kar payında düzenleme yapılamaz. Kar payını devre dışı bırakıp Birinci Adım ile başlamanız gerekir.
 
 ### <a name="which-enrollments-have-a-markup-enabled"></a>Kar payı hangi kayıtlar için etkindir?

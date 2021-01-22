@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 7c8a35e7c8ecd0952f8e02b66c5071253d9b0445
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 072377f98939d996547cb6ee9f9a535b4b32a3dc
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348934"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98597957"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA VM ayrılmış örnekleri
 
@@ -25,7 +25,7 @@ Bir rezervasyonu aynı türdeki başka bir rezervasyonla değiştirebilirsiniz. 
 
 ### <a name="partial-refunds"></a>Kısmi para iadeleri
 
-EA müşterileri, fazla kullanım ve parasal olmayan taahhüt kullanılarak satın alınan rezervasyonları iade ettiğinde kısmi para iadesi yaparız.
+EA müşterileri, fazla kullanım ve parasal olmayan Azure Ön Ödemesi (eski adıyla parasal taahhüt) kullanılarak satın alınan rezervasyonları iade ettiğinde kısmi para iadesi yaparız.
 
 Para iadesi önceki aya ait negatif ve geçerli aya ait pozitif bir ayarlama olarak EA portalında gösterilir. Bu işlemler, rezervasyon değişimine benzer şekilde gösterilir. Alacak faturasında özgün fatura numarası belirtildiğinden, alacak faturasıyla ilk satın almanın mutabakatını yapmak için lütfen özgün fatura numarasını belirtin.
 

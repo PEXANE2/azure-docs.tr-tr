@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/11/2021
-ms.openlocfilehash: a411f4ce261ee6d203e274efe3cf23ca23203453
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.date: 01/22/2021
+ms.openlocfilehash: 48450218975f2c6ee14e12af8d722942e8db1347
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070938"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695857"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SYNAPSE Analytics 'te veri kopyalama ve dönüştürme
 
@@ -76,6 +76,9 @@ Farklı kimlik doğrulama türleri için sırasıyla Önkoşullar ve JSON örnek
 - [SQL kimlik doğrulaması](#sql-authentication)
 - Azure AD uygulama belirteci kimlik doğrulaması: [hizmet sorumlusu](#service-principal-authentication)
 - Azure AD uygulama belirteci kimlik doğrulaması: [Azure kaynakları Için Yönetilen kimlikler](#managed-identity)
+
+>[!TIP]
+>Kullanıcı arabiriminden Azure SYNAPSE **sunucusuz** SQL havuzu için bağlı hizmet oluştururken, abonelikten göz atmak yerine "el ile gir" i seçin.
 
 >[!TIP]
 >"UserErrorFailedToConnectToSqlServer" adlı hata kodu ile hata ve "veritabanı için oturum sınırı XXX ve erişildi." gibi bir hatayla karşılaşırsanız, `Pooling=false` Bağlantı dizenizi ekleyin ve yeniden deneyin.
@@ -226,7 +229,7 @@ Aşağıdaki özellikler Azure SYNAPSE Analytics veri kümesi için desteklenir:
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | tür      | Veri kümesinin **Type** özelliği **Azuresqldwtable** olarak ayarlanmalıdır. | Evet                         |
 | schema | Şemanın adı. |Kaynak için Hayır, havuz için Evet  |
-| table | Tablo/görünüm adı. |Kaynak için Hayır, havuz için Evet  |
+| tablo | Tablo/görünüm adı. |Kaynak için Hayır, havuz için Evet  |
 | tableName | Şema ile tablonun/görünümün adı. Bu özellik geriye dönük uyumluluk için desteklenir. Yeni iş yükü için `schema` ve kullanın `table` . | Kaynak için Hayır, havuz için Evet |
 
 ### <a name="dataset-properties-example"></a>DataSet özellikleri örneği
@@ -780,6 +783,7 @@ Azure SYNAPSE Analytics 'e özgü ayarlar, kaynak dönüşümünün **kaynak se�
 
 - Depolama bağlı hizmetiniz için yönetilen kimlik kimlik doğrulaması kullandığınızda, [Azure Blob](connector-azure-blob-storage.md#managed-identity) için gerekli konfigürasyonları ve [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#managed-identity) sırasıyla öğrenin.
 - Azure depolama alanı VNet hizmet uç noktası ile yapılandırıldıysa, depolama hesabında "Güvenilen Microsoft hizmeti 'ne izin ver" özelliği etkinleştirilmiş olarak yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir. [Azure depolama Ile VNET hizmet uç noktaları kullanmanın etkileri](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage).
+- Kaynak olarak Azure SYNAPSE **sunucusuz** SQL havuzu kullandığınızda, hazırlama etkinleştirme desteklenmez.
 
 **Sorgu**: giriş alanında sorgu ' yı seçerseniz, kaynağınız IÇIN bir SQL sorgusu girin. Bu ayar, veri kümesinde seçtiğiniz tüm tabloları geçersiz kılar. **Order by** yan tümceleri burada desteklenmez, ancak BIR tam select from ifadesini ayarlayabilirsiniz. Kullanıcı tanımlı tablo işlevleri de kullanabilirsiniz. **select * from udfGetData ()** , bir tablo döndüren SQL 'de bir UDF 'dir. Bu sorgu, veri akışınızda kullanabileceğiniz bir kaynak tablosu oluşturur. Sorguların kullanılması, test veya aramalar için satırları azaltmanın harika bir yoludur.
 

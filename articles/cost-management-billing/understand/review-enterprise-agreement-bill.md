@@ -9,18 +9,18 @@ ms.subservice: enterprise
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: d707051e20b4ce9d1289557aec6f8256c2e6bfba
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 643aac7927cc7b14693387fbb5765bdcd0214dc2
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150082"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598248"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Azure Kurumsal Anlaşma faturanızı anlama
 
 Kurumsal Anlaşması olan Azure müşterileri, kuruluşun kredisini aştığında veya kredi kapsamında olmayan hizmetleri kullandığında bir fatura alır.
 
-Kuruluşunuzun kredisi, parasal taahhüdünüzü kapsar. Parasal taahhüt, kuruluşunuzun Azure hizmetleri kullanımı için peşin ödediği tutardır. Microsoft hesap yöneticinizle veya kurumsal bayinizle iletişim kurarak Kurumsal Anlaşmanıza parasal taahhüt fonları ekleyebilirsiniz.
+Kuruluşunuzun kredisi Azure Ön Ödemenizi (eski adıyla parasal taahhüt) içerir. Azure Ön Ödemesi, kuruluşunuzun Azure hizmetleri kullanımı için peşin ödediği tutardır. Microsoft hesap yöneticinizle veya kurumsal bayinizle iletişim kurarak Kurumsal Anlaşmanıza Azure Ön Ödemesi fonları ekleyebilirsiniz.
 
 Bu öğretici yalnızca Azure Kurumsal Anlaşma sahibi olan Azure müşterileri için geçerlidir.
 
@@ -60,7 +60,7 @@ Faturanızda önce Azure kullanım ücretleri ve bunlarla ilişkili maliyetler, 
 
 Enterprise Portal’da **Raporlar** > **Kullanım Özeti** bölümünde gösterilen birleşik toplam tutarı, Azure faturanızla karşılaştırın. **Kullanım Özeti**’ndeki tutarlara vergiler dahil değildir.
 
-[Azure EA portalında](https://ea.azure.com) oturum açın. Ardından **Raporlar**’ı seçin. Sekmenin sağ üst köşesinde**M** görünümünü **C** olarak değiştirin ve fatura dönemine göre ayarlayın.  
+[Azure EA portalında](https://ea.azure.com) oturum açın. Ardından **Raporlar**’ı seçin. Sekmenin sağ üst köşesinde **M** görünümünü **C** olarak değiştirin ve fatura dönemine göre ayarlayın.  
 
 ![Kullanım özetinde M + C seçeneğini gösteren ekran görüntüsü.](./media/review-enterprise-agreement-bill/ea-portal-usage-sumary-cm-option.png)
 
@@ -97,7 +97,7 @@ Bu bölüm yalnızca Avustralya, Japonya veya Singapur’daysanız geçerlidir.
 
 Enterprise Portal’da **Raporlar** > **Kullanım Özeti** bölümündeki toplam kullanım tutarınızı, hizmet fazla kullanım faturanızla karşılaştırın. Hizmet fazla kullanım faturası, kuruluşunuzun kredisini aşan kullanımı ve/veya kredi kapsamında olmayan hizmetleri içerir. **Kullanım Özeti**’ndeki tutarlara vergiler dahil değildir.
 
-[Azure EA portalında](https://ea.azure.com) oturum açın ve **Raporlar**'ı seçin. Sekmenin sağ üst köşesinde**M** görünümünü **C** olarak değiştirin ve fatura dönemine göre ayarlayın.  
+[Azure EA portalında](https://ea.azure.com) oturum açın ve **Raporlar**'ı seçin. Sekmenin sağ üst köşesinde **M** görünümünü **C** olarak değiştirin ve fatura dönemine göre ayarlayın.  
 
 ![Kullanım özetinde M + C seçeneğini gösteren ekran görüntüsü.](./media/review-enterprise-agreement-bill/ea-portal-usage-sumary-cm-option.png)
 
@@ -121,11 +121,11 @@ Bu bölüm yalnızca Avustralya, Japonya veya Singapur’daysanız geçerlidir.
 
 Enterprise Portal’daki **Raporlar** > **Kullanım Özeti** bölümündeki Azure Market toplamınızı market faturanızla karşılaştırın. Market faturasında yalnızca Azure Market satın alma işlemleri ve kullanımı bulunur. **Kullanım Özeti** miktarları, yayımcı tarafından belirlenen bir vergiyi içerir.
 
-[Enterprise Portal](https://ea.azure.com)'da oturum açın ve **Raporlar**'ı seçin. Sekmenin sağ üst köşesinde**M** görünümünü **C** olarak değiştirin ve fatura dönemine göre ayarlayın.  
+[Enterprise Portal](https://ea.azure.com)'da oturum açın ve **Raporlar**'ı seçin. Sekmenin sağ üst köşesinde **M** görünümünü **C** olarak değiştirin ve fatura dönemine göre ayarlayın.  
 
 ![Kullanım özetinde M + C seçeneğini gösteren ekran görüntüsü.](./media/review-enterprise-agreement-bill/ea-portal-usage-sumary-cm-option.png)  
 
-**Azure Market** toplamı, market faturanızdaki **Toplam Satış** ile aynı olmalıdır. Kullanım temelli ücretlerinizle ilgili daha fazla bilgi edinmek için**Kullanımı İndir** bölümüne gidin. **Market Ücretleri** bölümünde **İndir**’i seçin. Market fiyatı, yayımcı tarafından belirlenen bir vergiyi içerir. Müşteriler, yayımcıdan işlemle ilgili verginin tahsil edilmesine ilişkin ayrı bir fatura almaz.
+**Azure Market** toplamı, market faturanızdaki **Toplam Satış** ile aynı olmalıdır. Kullanım temelli ücretlerinizle ilgili daha fazla bilgi edinmek için **Kullanımı İndir** bölümüne gidin. **Market Ücretleri** bölümünde **İndir**’i seçin. Market fiyatı, yayımcı tarafından belirlenen bir vergiyi içerir. Müşteriler, yayımcıdan işlemle ilgili verginin tahsil edilmesine ilişkin ayrı bir fatura almaz.
 
 ![Market ücretleri bölümünde indirme seçeneğini gösteren ekran görüntüsü.](./media/review-enterprise-agreement-bill/ea-portal-download-usage-marketplace.png)
 
@@ -155,7 +155,7 @@ Fiyat farklılıklarının nedenlerinden bazıları şunlardır:
 
 ## <a name="request-detailed-usage-information"></a>Ayrıntılı kullanım bilgileri isteme
 
-Kuruluş yöneticileri, Azure Enterprise Portal'da portalında kullanım verilerinin özetini, tüketilen parasal taahhüdü ve ek kullanımla ilişkili ücretleri görüntüleyebilir. Ücretler, tüm hesaplar ve abonelikler genelinde özet düzeyinde gösterilir.
+Kuruluş yöneticileri, Azure Enterprise Portal’da kullanım verilerinin özetini, tüketilen Azure Ön Ödemesini ve ek kullanımla ilişkili ücretleri görüntüleyebilir. Ücretler, tüm hesaplar ve abonelikler genelinde özet düzeyinde gösterilir.
 
 Belirli hesaplardaki ayrıntılı kullanımı görüntülemek için **Raporlar** > **Kullanımı İndir**'e gidip kullanım ayrıntıları raporunu indirebilirsiniz.
 
@@ -166,7 +166,7 @@ Dolaylı kayıtlarda, maliyetle ilgili bilgileri görebilmeniz için önce iş o
 
 ## <a name="reports"></a>Raporlar
 
-Kuruluş yöneticileri, Azure Enterprise Portal'da portalında kullanım verilerinin özetini, tüketilen parasal taahhüdü ve ek kullanımla ilişkili ücretleri görüntüleyebilir. Ücretler, tüm hesaplar ve abonelikler genelinde özet düzeyinde gösterilir.
+Kuruluş yöneticileri, Azure Enterprise Portal’da kullanım verilerinin özetini, tüketilen Azure Ön Ödemesini ve ek kullanımla ilişkili ücretleri görüntüleyebilir. Ücretler, tüm hesaplar ve abonelikler genelinde özet düzeyinde gösterilir.
 
 ### <a name="azure-enterprise-reports"></a>Azure Kurumsal raporları
 

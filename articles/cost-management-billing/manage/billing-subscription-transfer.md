@@ -8,15 +8,15 @@ tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/11/2020
+ms.date: 01/06/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: d37225f988cc906bdd92467afcf3f286220eebda
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: ae588708a41c1259628b726a3a471034dba7d131
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027875"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601531"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure aboneliğinin faturalama sahipliğini başka bir hesaba aktarma
 
@@ -72,6 +72,18 @@ Bir Azure aboneliğinin faturalama sahipliğini kabul ettiyseniz, sonraki adıml
    1. Depolama gibi hizmetler için erişim anahtarları. Daha fazla bilgi için bkz. [Azure depolama hesapları hakkında](../../storage/common/storage-account-create.md)
    1. Azure Sanal Makineleri gibi hizmetler için Uzaktan Erişim kimlik bilgileri.
 1. Bir iş ortağıyla çalışıyorsanız, abonelikteki iş ortağı kimliğini güncelleştirmeyi göz önünde bulundurun. [Azure portalından](https://portal.azure.com) iş ortağı kimliğini güncelleştirebilirsiniz. Daha fazla bilgi için bkz. [İş ortağı kimliğini Azure hesaplarınıza bağlama](link-partner-id.md)
+
+## <a name="cancel-a-transfer-request"></a>Aktarım isteğini iptal etme
+
+Bir kerede tek bir aktarım isteği etkin olur. Aktarım isteği 15 gün süreyle geçerlidir. 15 gün sonra aktarım isteğinin süresi dolar.
+
+Aktarım isteğini iptal etmek için:
+
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. **Abonelikler** > Aktarım isteğini gönderdiğiniz aboneliği seçin alanına gidin > **Faturalama sahipliğini aktar**'ı seçin.
+1. Sayfanın en altında **Transfer isteğini iptal et**'i seçin.
+
+:::image type="content" source="./media/billing-subscription-transfer/transfer-billing-owership-cancel-request.png" alt-text="Aktarım isteğini iptal et seçeneğinin bulunduğu Faturalama sahipliğini aktar penceresini gösteren örnek" lightbox="./media/billing-subscription-transfer/transfer-billing-owership-cancel-request.png" :::
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
