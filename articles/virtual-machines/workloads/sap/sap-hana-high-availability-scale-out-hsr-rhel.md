@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 23a5ea2d3ffc1511bea66bb8bc3c4282b6d16cc2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c97975d6920cd0f04a7d2d4e73c00104a2b13235
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489131"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685621"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux üzerinde SAP HANA genişleme sisteminin yüksek kullanılabilirliği 
 
@@ -161,11 +161,11 @@ Bu belgede sunulan yapılandırma için yedi sanal makine dağıtın:
 
 5. `inter` `hsr` Aşağıdaki adımları uygulayarak ve alt ağları için ek ağ arabirimleri için hızlandırılmış ağı etkinleştirin:  
 
-    a. Azure portal [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) açın. [Azure portal](https://portal.azure.com/#home)  
+    a. Azure portal [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) açın. [](https://portal.azure.com/#home)  
 
     b. `inter`Ve alt ağlarına eklenen ek ağ arabirimleri için hızlandırılmış ağı etkinleştirmek üzere aşağıdaki komutları yürütün `hsr` .  
 
-    ```
+    ```azurecli
     az network nic update --id /subscriptions/your subscription/resourceGroups/your resource group/providers/Microsoft.Network/networkInterfaces/hana-s1-db1-inter --accelerated-networking true
     az network nic update --id /subscriptions/your subscription/resourceGroups/your resource group/providers/Microsoft.Network/networkInterfaces/hana-s1-db2-inter --accelerated-networking true
     az network nic update --id /subscriptions/your subscription/resourceGroups/your resource group/providers/Microsoft.Network/networkInterfaces/hana-s1-db3-inter --accelerated-networking true
@@ -256,7 +256,7 @@ Aşağıdaki adımları uygulayarak işletim sistemini yapılandırın ve hazır
 
 1. **[A]** sanal makinelerdeki konak dosyalarını koruyun. Tüm alt ağların girdilerini dahil edin. Bu örnek için aşağıdaki girişler eklenmiştir `/etc/hosts` .  
 
-    ```
+    ```bash
      # Client subnet
      10.23.0.11 hana-s1-db1
      10.23.0.12 hana-s1-db1
@@ -303,17 +303,17 @@ Bu örnekte, paylaşılan HANA dosya sistemleri Azure NetApp Files dağıtılır
 
 1. **[Ah]** HANA veritabanı birimleri için bağlama noktaları oluşturun.  
 
-    ```
+    ```bash
     mkdir -p /hana/shared
     ```
 
-2. **[Ah]** NFS etki alanı ayarını doğrulayın. Etki alanının varsayılan Azure NetApp Files etki alanı olarak yapılandırıldığından, diğer bir deyişle ve eşlemenin hiçbir bir **`defaultv4iddomain.com`** şekilde ayarlandığından emin olun. **nobody**  
+2. **[Ah]** NFS etki alanı ayarını doğrulayın. Etki alanının varsayılan Azure NetApp Files etki alanı olarak yapılandırıldığından, diğer bir deyişle ve eşlemenin hiçbir bir **`defaultv4iddomain.com`** şekilde ayarlandığından emin olun.   
    Bu adım yalnızca Azure NetAppFiles NFSv 4.1 kullanılıyorsa gereklidir.  
 
     > [!IMPORTANT]
     > VM 'de NFS etki alanını `/etc/idmapd.conf` Azure NetApp Files ' deki varsayılan etki alanı yapılandırmasıyla eşleşecek şekilde ayarladığınızdan emin olun: **`defaultv4iddomain.com`** . NFS istemcisindeki (yani, VM) ve NFS sunucusunun etki alanı yapılandırması arasında uyuşmazlık varsa (örneğin, Azure NetApp yapılandırması), VM 'Lere bağlı Azure NetApp birimlerinde dosya izinleri olarak görüntülenir `nobody` .  
 
-    ```
+    ```bash
     sudo cat /etc/idmapd.conf
     # Example
     [General]
@@ -326,7 +326,7 @@ Bu örnekte, paylaşılan HANA dosya sistemleri Azure NetApp Files dağıtılır
 3. **[Ah]** Doğrulayın `nfs4_disable_idmapping` . **Y** olarak ayarlanmalıdır. Bulunduğu dizin yapısını oluşturmak için `nfs4_disable_idmapping` Mount komutunu yürütün. Erişim çekirdek/sürücü için ayrıldığından,/sys/modules altında dizini el ile oluşturamazsınız.  
    Bu adım yalnızca Azure NetAppFiles NFSv 4.1 kullanılıyorsa gereklidir.  
 
-    ```
+    ```bash
     # Check nfs4_disable_idmapping 
     cat /sys/module/nfs/parameters/nfs4_disable_idmapping
     # If you need to set nfs4_disable_idmapping to Y
@@ -342,20 +342,20 @@ Bu örnekte, paylaşılan HANA dosya sistemleri Azure NetApp Files dağıtılır
 
 4. **[AH1]** SITE1 HANA DB VM 'lerinde paylaşılan Azure NetApp Files birimlerini bağlayın.  
 
-    ```
+    ```bash
     sudo mount -o rw,vers=4,minorversion=1,hard,timeo=600,rsize=262144,wsize=262144,intr,noatime,lock,_netdev,sec=sys 10.23.1.7:/HN1-shared-s1 /hana/shared
     ```
 
 5. **[AH2]** SITE2 HANA DB VM 'lerinde paylaşılan Azure NetApp Files birimlerini bağlayın.  
 
-    ```
+    ```bash
     sudo mount -o rw,vers=4,minorversion=1,hard,timeo=600,rsize=262144,wsize=262144,intr,noatime,lock,_netdev,sec=sys 10.23.1.7:/HN1-shared-s2 /hana/shared
     ```
 
 
 10. **[Ah]** Karşılık gelen `/hana/shared/` dosya sistemlerinin, NFS protokol sürümü **NFSv4** olan tüm Hana DB VM 'lerine bağlı olduğunu doğrulayın.  
 
-    ```
+    ```bash
     sudo nfsstat -m
     # Verify that flag vers is set to 4.1 
     # Example from SITE 1, hana-s1-db1
@@ -372,25 +372,25 @@ Sunulan yapılandırmada, dosya sistemleri `/hana/data` ve `/hana/log` yönetile
 **Mantıksal birim Yöneticisi (LVM)** ile disk düzeni ayarlayın. Aşağıdaki örnek, her bir HANA sanal makinesinin, iki birim oluşturmak için kullanılan üç veri diskine bağlı olduğunu varsayar.
 
 1. **[Ah]** Tüm kullanılabilir diskleri listeleyin:
-    ```
+    ```bash
     ls /dev/disk/azure/scsi1/lun*
     ```
 
    Örnek çıktı:
 
-    ```
+    ```bash
     /dev/disk/azure/scsi1/lun0  /dev/disk/azure/scsi1/lun1  /dev/disk/azure/scsi1/lun2 
     ```
 
 2. **[Ah]** Kullanmak istediğiniz tüm diskler için fiziksel birimler oluşturun:
-    ```
+    ```bash
     sudo pvcreate /dev/disk/azure/scsi1/lun0
     sudo pvcreate /dev/disk/azure/scsi1/lun1
     sudo pvcreate /dev/disk/azure/scsi1/lun2
     ```
 
 3. **[Ah]** Veri dosyaları için bir birim grubu oluşturun. Günlük dosyaları için bir birim grubu ve SAP HANA paylaşılan dizinine yönelik bir tane kullanın:
-    ```
+    ```bash
     sudo vgcreate vg_hana_data_HN1 /dev/disk/azure/scsi1/lun0 /dev/disk/azure/scsi1/lun1
     sudo vgcreate vg_hana_log_HN1 /dev/disk/azure/scsi1/lun2
     ```
@@ -402,7 +402,7 @@ Sunulan yapılandırmada, dosya sistemleri `/hana/data` ve `/hana/log` yönetile
    > `-i`Her bir veri veya günlük birimi için birden fazla fiziksel birim kullandığınızda anahtarı kullanın ve temel alınan fiziksel birimin numarasını ayarlayın. `-I`Şeritli birim oluştururken Stripe boyutunu belirtmek için anahtarını kullanın.  
    > Bkz. şerit boyutları ve disk sayısı dahil olmak üzere önerilen depolama yapılandırmalarının [SAP HANA VM depolama yapılandırması](./hana-vm-operations-storage.md) .  
 
-    ```
+    ```bash
     sudo lvcreate -i 2 -I 256 -l 100%FREE -n hana_data vg_hana_data_HN1
     sudo lvcreate -l 100%FREE -n hana_log vg_hana_log_HN1
     sudo mkfs.xfs /dev/vg_hana_data_HN1/hana_data
@@ -410,7 +410,7 @@ Sunulan yapılandırmada, dosya sistemleri `/hana/data` ve `/hana/log` yönetile
     ```
 
 5. **[Ah]** Bağlama dizinlerini oluşturun ve tüm mantıksal birimlerin UUID 'sini kopyalayın:
-    ```
+    ```bash
     sudo mkdir -p /hana/data/HN1
     sudo mkdir -p /hana/log/HN1
     # Write down the ID of /dev/vg_hana_data_HN1/hana_data and /dev/vg_hana_log_HN1/hana_log
@@ -418,20 +418,20 @@ Sunulan yapılandırmada, dosya sistemleri `/hana/data` ve `/hana/log` yönetile
     ```
 
 6. **[Ah]** `fstab` Mantıksal birimler ve bağlama için giriş oluşturun:
-    ```
+    ```bash
     sudo vi /etc/fstab
     ```
 
    Aşağıdaki satırı `/etc/fstab` dosyasına ekleyin:
 
-    ```
+    ```bash
     /dev/disk/by-uuid/UUID of /dev/mapper/vg_hana_data_HN1-hana_data /hana/data/HN1 xfs  defaults,nofail  0  2
     /dev/disk/by-uuid/UUID of /dev/mapper/vg_hana_log_HN1-hana_log /hana/log/HN1 xfs  defaults,nofail  0  2
     ```
 
    Yeni birimleri bağlama:
 
-    ```
+    ```bash
     sudo mount -a
     ```
 
@@ -444,27 +444,27 @@ Bu örnekte, Azure VM 'lerinde HSR ile genişleme yapılandırmasında SAP HANA 
 1. **[Ah]** HANA yüklemesinden önce kök parolasını ayarlayın. Yükleme tamamlandıktan sonra kök parolayı devre dışı bırakabilirsiniz. Farklı Çalıştır `root` komutu `passwd` .  
 
 2. **[1, 2]** üzerindeki izinleri değiştirme `/hana/shared` 
-    ```
+    ```bash
     chmod 775 /hana/shared
     ```
 
 3. **[1]** bu sitedeki Hana **-S1-DB2** ve **Hana-S1-DB3**, bir parola sorulmadan, SSH aracılığıyla oturum açabildiğinizi doğrulayın.  
    Böyle bir durum değilse, [anahtar tabanlı kimlik doğrulaması kullanma](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/s2-ssh-configuration-keypairs)bölümünde belirtildiği gibi Exchange SSH anahtarları.  
-    ```
+    ```bash
     ssh root@hana-s1-db2
     ssh root@hana-s1-db3
     ```
 
 4. **[2]** bir parola istenmeden bu sitede **Hana-S2-DB2** ve **Hana-S2-DB3** içindeki Hana DB VM 'lerine SSH aracılığıyla oturum açabildiğinizi doğrulayın.  
    Böyle bir durum değilse, [anahtar tabanlı kimlik doğrulaması kullanma](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/s2-ssh-configuration-keypairs)bölümünde belirtildiği gibi Exchange SSH anahtarları.  
-    ```
+    ```bash
     ssh root@hana-s2-db2
     ssh root@hana-s2-db3
     ```
 
 5. **[Ah]** HANA 2,0 SP4 için gereken ek paketleri yükler. Daha fazla bilgi için bkz. RHEL 7 için SAP Note [2593824](https://launchpad.support.sap.com/#/notes/2593824) . 
 
-    ```
+    ```bash
     # If using RHEL 7
     yum install libgcc_s1 libstdc++6 compat-sap-c++-7 libatomic1
     # If using RHEL 8
@@ -473,7 +473,7 @@ Bu örnekte, Azure VM 'lerinde HSR ile genişleme yapılandırmasında SAP HANA 
 
 
 6. **[A]** güvenlik duvarını geçici olarak devre DıŞı bırakarak Hana yüklemesiyle karışmaz. HANA yüklemesi yapıldıktan sonra yeniden etkinleştirebilirsiniz. 
-    ```
+    ```bash
     # Execute as root
     systemctl stop firewalld
     systemctl disable firewalld
@@ -485,7 +485,7 @@ Bu örnekte, Azure VM 'lerinde HSR ile genişleme yapılandırmasında SAP HANA 
 
    a. **Hdblcm** programını `root` Hana yükleme yazılımı dizininden başlatın. Parametresini kullanın `internal_network` ve Iç Hana düğümler arası iletişim için kullanılan alt ağ için adres alanını geçirin.  
 
-    ```
+    ```bash
     ./hdblcm --internal_network=10.23.1.128/26
     ```
 
@@ -522,7 +522,7 @@ Bu örnekte, Azure VM 'lerinde HSR ile genişleme yapılandırmasında SAP HANA 
 
    global.ini görüntüleyin ve iç SAP HANA düğümler arası iletişimin yapılandırmasının yerinde olduğundan emin olun. **İletişim** bölümünü doğrulayın. Alt ağ için adres alanına sahip olmalıdır `inter` ve `listeninterface` olarak ayarlanmalıdır `.internal` . **İnternal_hostname_resolution** bölümünü doğrulayın. Bu, alt ağa ait olan HANA sanal makinelerinin IP adreslerine sahip olmalıdır `inter` .  
 
-   ```
+   ```bash
      sudo cat /usr/sap/HN1/SYS/global/hdb/custom/config/global.ini
      # Example from SITE1 
      [communication]
@@ -536,7 +536,7 @@ Bu örnekte, Azure VM 'lerinde HSR ile genişleme yapılandırmasında SAP HANA 
 
 4. **[1, 2]** `global.ini` SAP Note [2080991](https://launchpad.support.sap.com/#/notes/0002080991)' de açıklandığı gibi, paylaşılmayan ortamda yüklemeye hazırlanın.  
 
-   ```
+   ```bash
     sudo vi /usr/sap/HN1/SYS/global/hdb/custom/config/global.ini
     [persistence]
     basepath_shared = no
@@ -544,14 +544,14 @@ Bu örnekte, Azure VM 'lerinde HSR ile genişleme yapılandırmasında SAP HANA 
 
 4. **[1, 2]** değişiklikleri etkinleştirmek için SAP HANA yeniden başlatın.  
 
-   ```
+   ```bash
     sudo -u hn1adm /usr/sap/hostctrl/exe/sapcontrol -nr 03 -function StopSystem
     sudo -u hn1adm /usr/sap/hostctrl/exe/sapcontrol -nr 03 -function StartSystem
    ```
 
 6. **[1, 2]** istemci arabiriminin `client` iletişim IÇIN alt ağdan IP adreslerini kullandığını doğrulayın.  
 
-    ```
+    ```bash
     # Execute as hn1adm
     /usr/sap/HN1/HDB03/exe/hdbsql -u SYSTEM -p "password" -i 03 -d SYSTEMDB 'select * from SYS.M_HOST_INFORMATION'|grep net_publicname
     # Expected result - example from SITE 2
@@ -562,13 +562,13 @@ Bu örnekte, Azure VM 'lerinde HSR ile genişleme yapılandırmasında SAP HANA 
 
 7. **[Ah]** HANA yükleme hatasından kaçınmak için veri ve günlük dizinlerinde izinleri değiştirin.  
 
-   ```
+   ```bash
     sudo chmod o+w -R /hana/data /hana/log
    ```
 
 8. **[1]** ikincil Hana düğümlerini yükler. Bu adımdaki örnek yönergeler SITE 1 içindir.  
    a. Yerleşik **hdblcm** programını olarak başlatın `root` .    
-    ```
+    ```bash
      cd /hana/shared/HN1/hdblcm
      ./hdblcm 
     ```
@@ -602,21 +602,21 @@ Bu örnekte, Azure VM 'lerinde HSR ile genişleme yapılandırmasında SAP HANA 
 
    Veritabanlarını **hn1** adm olarak yedekleme:
 
-    ```
+    ```bash
     hdbsql -d SYSTEMDB -u SYSTEM -p "passwd" -i 03 "BACKUP DATA USING FILE ('initialbackupSYS')"
     hdbsql -d HN1 -u SYSTEM -p "passwd" -i 03 "BACKUP DATA USING FILE ('initialbackupHN1')"
     ```
 
    Sistem PKI dosyalarını ikincil siteye kopyalayın:
 
-    ```
+    ```bash
     scp /usr/sap/HN1/SYS/global/security/rsecssfs/data/SSFS_HN1.DAT hana-s2-db1:/usr/sap/HN1/SYS/global/security/rsecssfs/data/
     scp /usr/sap/HN1/SYS/global/security/rsecssfs/key/SSFS_HN1.KEY  hana-s2-db1:/usr/sap/HN1/SYS/global/security/rsecssfs/key/
     ```
 
    Birincil siteyi oluşturun:
 
-    ```
+    ```bash
     hdbnsutil -sr_enable --name=HANA_S1
     ```
 
@@ -624,7 +624,7 @@ Bu örnekte, Azure VM 'lerinde HSR ile genişleme yapılandırmasında SAP HANA 
     
    Sistem çoğaltmasını başlatmak için ikinci siteyi kaydedin. <hanasid adm olarak aşağıdaki komutu çalıştırın \> :
 
-    ```
+    ```bash
     sapcontrol -nr 03 -function StopWait 600 10
     hdbnsutil -sr_register --remoteHost=hana-s1-db1 --remoteInstance=03 --replicationMode=sync --name=HANA_S2
     sapcontrol -nr 03 -function StartSystem
@@ -634,7 +634,7 @@ Bu örnekte, Azure VM 'lerinde HSR ile genişleme yapılandırmasında SAP HANA 
 
    Çoğaltma durumunu denetleyin ve tüm veritabanları eşitlenene kadar bekleyin.
 
-    ```
+    ```bash
     sudo su - hn1adm -c "python /usr/sap/HN1/HDB03/exe/python_support/systemReplicationStatus.py"
     # | Database | Host          | Port  | Service Name | Volume ID | Site ID | Site Name | Secondary     | Secondary | Secondary | Secondary | Secondary     | Replication | Replication | Replication    |
     # |          |               |       |              |           |         |           | Host          | Port      | Site ID   | Site Name | Active Status | Mode        | Status      | Status Details |
@@ -657,12 +657,12 @@ Bu örnekte, Azure VM 'lerinde HSR ile genişleme yapılandırmasında SAP HANA 
 
 4. **[1, 2]** Hana sistem çoğaltması sanal ağ arabirimlerine yönlendirilse, Hana sistem çoğaltması için iletişim sağlamak üzere Hana yapılandırmasını değiştirin.   
    - Her iki sitede de HANA 'yı durdur
-    ```
+    ```bash
     sudo -u hn1adm /usr/sap/hostctrl/exe/sapcontrol -nr 03 -function StopSystem HDB
     ```
 
    - HANA sistem çoğaltması için konak eşlemesini eklemek üzere global.ini Düzenle: alt ağdan IP adreslerini kullanın `hsr` .  
-    ```
+    ```bash
     sudo vi /usr/sap/HN1/SYS/global/hdb/custom/config/global.ini
     #Add the section
     [system_replication_hostname_resolution]
@@ -675,7 +675,7 @@ Bu örnekte, Azure VM 'lerinde HSR ile genişleme yapılandırmasında SAP HANA 
     ```
 
    - Her iki sitede de HANA 'yı Başlat
-   ```
+   ```bash
     sudo -u hn1adm /usr/sap/hostctrl/exe/sapcontrol -nr 03 -function StartSystem HDB
    ```
 
@@ -683,7 +683,7 @@ Bu örnekte, Azure VM 'lerinde HSR ile genişleme yapılandırmasında SAP HANA 
 
 5. **[Ah]** Güvenlik duvarını yeniden etkinleştirin.  
    - Güvenlik duvarını yeniden etkinleştirin
-       ```
+       ```bash
        # Execute as root
        systemctl start firewalld
        systemctl enable firewalld
@@ -694,7 +694,7 @@ Bu örnekte, Azure VM 'lerinde HSR ile genişleme yapılandırmasında SAP HANA 
        > [!IMPORTANT]
        > HANA düğüm iletişimine ve istemci trafiğine izin vermek için güvenlik duvarı kuralları oluşturun. Gerekli bağlantı noktaları, [Tüm sap ürünlerinin TCP/IP bağlantı noktalarında](https://help.sap.com/viewer/ports)listelenir. Aşağıdaki komutlar yalnızca bir örnektir. Bu senaryoda, kullanılan sistem numarası 03.
 
-       ```
+       ```bash
         # Execute as root
         sudo firewall-cmd --zone=public --add-port=30301/tcp --permanent
         sudo firewall-cmd --zone=public --add-port=30301/tcp
@@ -753,19 +753,19 @@ Kümedeki çoğunluk Oluşturucu dahil olmak üzere tüm sanal makineleri dahil 
 
 1. **[1, 2]** her iki çoğaltma sitesinde SAP HANA durdurun. <SID adm olarak yürütün \> .  
 
-    ```
+    ```bash
     sapcontrol -nr 03 -function StopSystem
     ```
 
 2. **[Ah]** `/hana/shared`Tüm Hana DB VM 'lerinde yüklenmek üzere geçici olarak bağlanmış olan dosya sistemini kaldır. Bağlamadan önce dosya sistemini kullanan tüm işlem ve oturumları durdurmanız gerekecektir. 
  
-    ```
+    ```bash
     umount /hana/shared 
     ```
 
 3. **[1]** dosya sistemi kümesi kaynaklarını `/hana/shared` devre dışı durumda için oluşturun. `--disabled`Bağlar etkinleştirilmeden önce konum kısıtlamalarını tanımlamanız gerektiğinden, bu seçenek ile kaynaklar oluşturulur.  
 
-    ```
+    ```bash
     # /hana/shared file system for site 1
     pcs resource create fs_hana_shared_s1 --disabled ocf:heartbeat:Filesystem device=10.23.1.7:/HN1-shared-s1  directory=/hana/shared \
     fstype=nfs options='defaults,rw,hard,timeo=600,rsize=262144,wsize=262144,proto=tcp,intr,noatime,sec=sys,vers=4.1,lock,_netdev' op monitor interval=20s on-fail=fence timeout=40s OCF_CHECK_LEVEL=20 \
@@ -787,7 +787,7 @@ Kümedeki çoğunluk Oluşturucu dahil olmak üzere tüm sanal makineleri dahil 
 
 4. **[1]** düğüm özniteliklerini yapılandırın ve doğrulayın. Çoğaltma sitesi 1 ' deki tüm SAP HANA DB düğümlerine öznitelik atanır `S1` ve çoğaltma sitesi 2 ' deki tüm SAP HANA DB düğümlerine öznitelik atanır `S2` .  
 
-    ```
+    ```bash
     # HANA replication site 1
     pcs node attribute hana-s1-db1 NFS_SID_SITE=S1
     pcs node attribute hana-s1-db2 NFS_SID_SITE=S1
@@ -801,7 +801,7 @@ Kümedeki çoğunluk Oluşturucu dahil olmak üzere tüm sanal makineleri dahil 
     ```
 
 5. **[1]** , NFS dosya sistemlerinin nereye takıldığını ve dosya sistemi kaynaklarını etkinleştirmek için kısıtlamaları yapılandırın.  
-    ```
+    ```bash
     # Configure the constraints
     pcs constraint location fs_hana_shared_s1-clone rule resource-discovery=never score=-INFINITY NFS_SID_SITE ne S1
     pcs constraint location fs_hana_shared_s2-clone rule resource-discovery=never score=-INFINITY NFS_SID_SITE ne S2
@@ -814,7 +814,7 @@ Kümedeki çoğunluk Oluşturucu dahil olmak üzere tüm sanal makineleri dahil 
  
 6. **[Ah]** ANF birimlerinin, `/hana/shared` her iki sitedeki tüm Hana DB VM 'lerinde takılı olduğundan emin olun.
 
-    ```
+    ```bash
     sudo nfsstat -m
     # Verify that flag vers is set to 4.1 
     # Example from SITE 1, hana-s1-db1
@@ -827,7 +827,7 @@ Kümedeki çoğunluk Oluşturucu dahil olmak üzere tüm sanal makineleri dahil 
 
 7. **[1]** öznitelik kaynaklarını yapılandırın. `true`IÇIN NFS takmalar bağlandığında, özniteliklerini olarak ayarlanacak kısıtlamaları yapılandırın `hana/shared` .  
 
-    ```
+    ```bash
     # Configure the attribure resources
     pcs resource create hana_nfs_s1_active ocf:pacemaker:attribute active_value=true inactive_value=false name=hana_nfs_s1_active
     pcs resource create hana_nfs_s2_active ocf:pacemaker:attribute active_value=true inactive_value=false name=hana_nfs_s2_active
@@ -843,7 +843,7 @@ Kümedeki çoğunluk Oluşturucu dahil olmak üzere tüm sanal makineleri dahil 
    > Yapılandırmanız,/, NFS 'nin bağlı olduğu diğer dosya sistemlerini de içeriyorsa, `hana/shared` `sequential=false` dosya sistemleri arasında bir sıralama bağımlılığı olmaması için seçeneği dahil edin. Tüm NFS bağlı dosya sistemleri, karşılık gelen öznitelik kaynağıyla önce başlamalı, ancak birbirleriyle ilgili herhangi bir sırada başlaması gerekmez. Daha fazla bilgi için [, Hana dosya SISTEMLERI NFS paylaşımları olduğunda bir paceoluşturucu kümesinde Nasıl yaparım? SAP HANA Scale-Out HSR yapılandırma](https://access.redhat.com/solutions/5423971)konusuna bakın.  
 
 8. **[1]** Hana küme kaynaklarının oluşturulmasına yönelik hazırlık bölümünde paceyapıcısı bakım moduna yerleştirirken.  
-    ```
+    ```bash
     pcs property set maintenance-mode=true
     ```
 
@@ -851,7 +851,7 @@ Kümedeki çoğunluk Oluşturucu dahil olmak üzere tüm sanal makineleri dahil 
 
 1. **[A]** Hana genişleme kaynak aracısını, çoğunluk Oluşturucu dahil olmak üzere tüm küme düğümlerine yükler.    
 
-    ```
+    ```bash
     yum install -y resource-agents-sap-hana-scaleout 
     ```
 
@@ -862,14 +862,14 @@ Kümedeki çoğunluk Oluşturucu dahil olmak üzere tüm sanal makineleri dahil 
 2. **[1, 2]** Hana "sistem çoğaltma kancasını" yükler. Kanca her bir sistem çoğaltma sitesinde bir HANA DB düğümüne yüklenmelidir. SAP HANA hala çalışmıyor olmalıdır.        
 
    1. Kancayı hazırlama `root` 
-    ```
+    ```bash
      mkdir -p /hana/shared/myHooks
      cp /usr/share/SAPHanaSR-ScaleOut/SAPHanaSR.py /hana/shared/myHooks
      chown -R hn1adm:sapsys /hana/shared/myHooks
     ```
 
    2. Ayarlamayı `global.ini`
-    ```
+    ```bash
     # add to global.ini
     [ha_dr_provider_SAPHanaSR]
     provider = SAPHanaSR
@@ -881,7 +881,7 @@ Kümedeki çoğunluk Oluşturucu dahil olmak üzere tüm sanal makineleri dahil 
     ```
 
 3. **[Ah]** Küme, <SID adm için küme düğümünde sudoers yapılandırması gerektirir \> . Bu örnekte, yeni bir dosya oluşturularak elde edilen. Komutları olarak yürütün `root` .    
-    ``` 
+    ```bash
     cat << EOF > /etc/sudoers.d/20-saphana
     # SAPHanaSR-ScaleOut needs for srHook
      Cmnd_Alias SOK = /usr/sbin/crm_attribute -n hana_hn1_glob_srHook -v SOK -t crm_config -s SAPHanaSR
@@ -892,13 +892,13 @@ Kümedeki çoğunluk Oluşturucu dahil olmak üzere tüm sanal makineleri dahil 
 
 4. **[1, 2]** her iki çoğaltma sitesinde de SAP HANA başlatın. <SID adm olarak yürütün \> .  
 
-    ```
+    ```bash
     sapcontrol -nr 03 -function StartSystem 
     ```
 
 5. **[1]** kanca yüklemesini doğrulayın. \>ETKIN Hana sistem çoğaltma sitesinde <SID adm olarak yürütün.   
 
-    ```
+    ```bash
     cdtrace
      awk '/ha_dr_SAPHanaSR.*crm_attribute/ \
      { printf "%s %s %s %s\n",$2,$3,$5,$16 }' nameserver_*
@@ -917,7 +917,7 @@ Kümedeki çoğunluk Oluşturucu dahil olmak üzere tüm sanal makineleri dahil 
     
    2. Ardından, HANA topolojisi kaynağını oluşturun.  
       RHEL **7. x** kümesi oluşturuyorsanız aşağıdaki komutları kullanın:  
-      ```
+      ```bash
       pcs resource create SAPHanaTopology_HN1_HDB03 SAPHanaTopologyScaleOut \
        SID=HN1 InstanceNumber=03 \
        op start timeout=600 op stop timeout=300 op monitor interval=10 timeout=600
@@ -926,7 +926,7 @@ Kümedeki çoğunluk Oluşturucu dahil olmak üzere tüm sanal makineleri dahil 
       ```
 
       RHEL **8. x** kümesi oluşturuyorsanız aşağıdaki komutları kullanın:  
-      ```
+      ```bash
       pcs resource create SAPHanaTopology_HN1_HDB03 SAPHanaTopology \
        SID=HN1 InstanceNumber=03 meta clone-node-max=1 interleave=true \
        op methods interval=0s timeout=5 \
@@ -940,7 +940,7 @@ Kümedeki çoğunluk Oluşturucu dahil olmak üzere tüm sanal makineleri dahil 
       > Bu makale, Microsoft 'un artık kullandığı bir terim olan *bağımlı* dönem başvuruları içerir. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.  
  
       RHEL **7. x** kümesi oluşturuyorsanız aşağıdaki komutları kullanın:    
-      ```
+      ```bash
       pcs resource create SAPHana_HN1_HDB03 SAPHanaController \
        SID=HN1 InstanceNumber=03 PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=false \
        op start interval=0 timeout=3600 op stop interval=0 timeout=3600 op promote interval=0 timeout=3600 \
@@ -951,7 +951,7 @@ Kümedeki çoğunluk Oluşturucu dahil olmak üzere tüm sanal makineleri dahil 
       ```
 
       RHEL **8. x** kümesi oluşturuyorsanız aşağıdaki komutları kullanın:  
-      ```
+      ```bash
       pcs resource create SAPHana_HN1_HDB03 SAPHanaController \
        SID=HN1 InstanceNumber=03 PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=false \
        op demote interval=0s timeout=320 op methods interval=0s timeout=5 \
@@ -965,7 +965,7 @@ Kümedeki çoğunluk Oluşturucu dahil olmak üzere tüm sanal makineleri dahil 
       > Başarısız olan birincil örneğin otomatik olarak ikincil olarak kaydolmasını engellemek için AUTOMATED_REGISTER yalnızca **Hayır** olarak ayarlamanız önerilir. Yük devretme testleri başarıyla tamamlandıktan sonra, AUTOMATED_REGISTER ' i **Evet** olarak ayarlayın, böylelikle sistem çoğaltması otomatik olarak devam edebilir. 
 
    4. Sanal IP ve ilişkili kaynaklar oluşturun.  
-      ```
+      ```bash
       pcs resource create vip_HN1_03 ocf:heartbeat:IPaddr2 ip=10.23.0.18 op monitor interval="10s" timeout="20s"
       sudo pcs resource create nc_HN1_03 azure-lb port=62503
       sudo pcs resource group add g_ip_HN1_03 nc_HN1_03 vip_HN1_03
@@ -973,7 +973,7 @@ Kümedeki çoğunluk Oluşturucu dahil olmak üzere tüm sanal makineleri dahil 
 
    5. Küme kısıtlamalarını oluşturma  
       RHEL **7. x** kümesi oluşturuyorsanız aşağıdaki komutları kullanın:  
-      ```
+      ```bash
       #Start HANA topology, before the HANA instance
       pcs constraint order SAPHanaTopology_HN1_HDB03-clone then msl_SAPHana_HN1_HDB03
 
@@ -983,7 +983,7 @@ Kümedeki çoğunluk Oluşturucu dahil olmak üzere tüm sanal makineleri dahil 
       ```
  
       RHEL **8. x** kümesi oluşturuyorsanız aşağıdaki komutları kullanın:  
-      ```
+      ```bash
       #Start HANA topology, before the HANA instance
       pcs constraint order SAPHanaTopology_HN1_HDB03-clone then SAPHana_HN1_HDB03-clone
 
@@ -993,7 +993,7 @@ Kümedeki çoğunluk Oluşturucu dahil olmak üzere tüm sanal makineleri dahil 
       ```
 
 7. **[1]** kümeyi bakım modundan çıkar. Küme durumunun tamam olduğundan ve tüm kaynakların başlatıldığından emin olun.  
-    ```
+    ```bash
     sudo pcs property set maintenance-mode=false
     #If there are failed cluster resources, you may need to run the next command
     pcs resource cleanup
@@ -1007,7 +1007,7 @@ Kümedeki çoğunluk Oluşturucu dahil olmak üzere tüm sanal makineleri dahil 
 1. Bir teste başlamadan önce, kümeyi denetleyin ve sistem çoğaltma durumunu SAP HANA.  
 
    a. Başarısız küme eylemi olmadığını doğrulayın  
-     ```
+     ```bash
      #Verify that there are no failed cluster actions
      pcs status
      # Example
@@ -1044,7 +1044,7 @@ Kümedeki çoğunluk Oluşturucu dahil olmak üzere tüm sanal makineleri dahil 
 
    b. SAP HANA sistem çoğaltmasının eşitlenmiş olduğunu doğrulama
 
-      ```
+      ```bash
       # Verify HANA HSR is in sync
       sudo su - hn1adm -c "python /usr/sap/HN1/HDB03/exe/python_support/systemReplicationStatus.py"
       #| Database | Host        | Port  | Service Name | Volume ID | Site ID | Site Name | Secondary     | Secondary| Secondary | Secondary | Secondary     | Replication | Replication | Replication    |
@@ -1074,7 +1074,7 @@ Kümedeki çoğunluk Oluşturucu dahil olmak üzere tüm sanal makineleri dahil 
    **Beklenen sonuç**: `/hana/shared` *salt okuma* olarak yeniden bağlama yaptığınızda dosya sisteminde okuma/yazma işlemi gerçekleştiren izleme işlemi başarısız olur, çünkü dosya sistemine yazamaz ve Hana kaynak yük devretmesini tetikleyecektir. HANA düğümünüz NFS paylaşımının erişimini kaybettiğinde aynı sonuç beklenmektedir.  
      
    Veya çalıştırarak küme kaynaklarının durumunu kontrol edebilirsiniz `crm_mon` `pcs status` . Teste başlamadan önce kaynak durumu:
-      ```
+      ```bash
       # Output of crm_mon
       #7 nodes configured
       #45 resources configured
@@ -1103,7 +1103,7 @@ Kümedeki çoğunluk Oluşturucu dahil olmak üzere tüm sanal makineleri dahil 
       ```
 
    `/hana/shared`Birincil çoğaltma sitesi VM 'lerinden birinde hata benzetimi yapmak için aşağıdaki komutu yürütün:
-      ```
+      ```bash
       # Execute as root 
       mount -o ro /hana/shared
       # Or if the above command returns an error
@@ -1114,7 +1114,7 @@ Kümedeki çoğunluk Oluşturucu dahil olmak üzere tüm sanal makineleri dahil 
          
    Küme VM üzerinde başlatılmamışsa, yeniden başlatıldığında, şunu yürüterek kümeyi başlatın: 
 
-      ```
+      ```bash
       # Start the cluster 
       pcs cluster start
       ```
@@ -1122,7 +1122,7 @@ Kümedeki çoğunluk Oluşturucu dahil olmak üzere tüm sanal makineleri dahil 
    Küme başladığında, dosya sistemi `/hana/shared` otomatik olarak bağlanır.     
    AUTOMATED_REGISTER = "false" ayarlarsanız, ikincil sitede SAP HANA sistem çoğaltmasını yapılandırmanız gerekir. Bu durumda, SAP HANA ikincil olarak yeniden yapılandırmak için bu komutları çalıştırabilirsiniz.   
 
-      ```
+      ```bash
       # Execute on the secondary 
       su - hn1adm
       # Make sure HANA is not running on the secondary site. If it is started, stop HANA
@@ -1135,7 +1135,7 @@ Kümedeki çoğunluk Oluşturucu dahil olmak üzere tüm sanal makineleri dahil 
 
    Sınama sonrasında kaynakların durumu: 
 
-      ```
+      ```bash
       # Output of crm_mon
       #7 nodes configured
       #45 resources configured

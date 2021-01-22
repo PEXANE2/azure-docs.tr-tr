@@ -11,16 +11,16 @@ ms.date: 01/12/2021
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
-ms.openlocfilehash: c492ec930cea000e45f7b6f09cc5e9c7a6a0db22
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: bd9d477ed20122b0706e7997ab8922dcce7a59ba
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134509"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685434"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Öğretici: Azure SYNAPSE Analytics SQL havuzuna veri yükleme
 
-Bu öğretici, Azure Blob depolama alanındaki WideWorldImportersDW veri ambarını Azure SYNAPSE Analytics SQL havuzundaki veri ambarınıza yüklemek için PolyBase 'i kullanır. Öğreticide aşağıdaki işlemler için [Azure Portal](https://portal.azure.com) ve [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) kullanılır:
+Bu öğretici, Azure Blob depolama alanındaki WideWorldImportersDW veri ambarını Azure SYNAPSE Analytics SQL havuzundaki veri ambarınıza yüklemek için PolyBase 'i kullanır. Öğreticide aşağıdaki işlemler için [Azure Portal](https://portal.azure.com) ve [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) kullanılır:
 
 > [!div class="checklist"]
 >
@@ -35,7 +35,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu öğreticiye başlamadan önce, [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)’nun (SSMS) en yeni sürümünü indirin ve yükleyin.
+Bu öğreticiye başlamadan önce, [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)’nun (SSMS) en yeni sürümünü indirin ve yükleyin.
 
 Bu öğreticide, aşağıdaki [öğreticiden](./create-data-warehouse-portal.md#connect-to-the-server-as-server-admin)zaten bir SQL adanmış havuzu oluşturmuş olduğunuz varsayılmaktadır. 
 
@@ -111,7 +111,7 @@ Aşağıdaki SQL betiklerini çalıştırarak yüklemek istediğiniz veriler hak
     CREATE MASTER KEY;
     ```
 
-4. Aşağıdaki [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) deyimini çalıştırarak Azure blobunun konumunu tanımlayın. Bu, dünya çapındaki dışarıdan içe aktarmalar verilerinin konumudur.  Sorgu penceresine eklediğiniz komutları çalıştırmak için, çalıştırmak istediğiniz komutları vurgulayın ve **Yürüt**'e tıklayın.
+4. Aşağıdaki [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) deyimini çalıştırarak Azure blobunun konumunu tanımlayın. Bu, dünya çapındaki dışarıdan içe aktarmalar verilerinin konumudur.  Sorgu penceresine eklediğiniz komutları çalıştırmak için, çalıştırmak istediğiniz komutları vurgulayın ve **Yürüt**'e tıklayın.
 
     ```sql
     CREATE EXTERNAL DATA SOURCE WWIStorage
@@ -122,7 +122,7 @@ Aşağıdaki SQL betiklerini çalıştırarak yüklemek istediğiniz veriler hak
     );
     ```
 
-5. Aşağıdaki [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL deyimini çalıştırarak dış veri dosyasının biçimlendirme özelliklerini ve seçeneklerini belirtin. Bu deyim dış verilerin metin olarak depolandığını ve değerlerin birbirinden dikey çizgi ('|') karakteriyle ayrıldığını belirtir.  
+5. Aşağıdaki [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL deyimini çalıştırarak dış veri dosyasının biçimlendirme özelliklerini ve seçeneklerini belirtin. Bu deyim dış verilerin metin olarak depolandığını ve değerlerin birbirinden dikey çizgi ('|') karakteriyle ayrıldığını belirtir.  
 
     ```sql
     CREATE EXTERNAL FILE FORMAT TextFileFormat
@@ -137,7 +137,7 @@ Aşağıdaki SQL betiklerini çalıştırarak yüklemek istediğiniz veriler hak
     );
     ```
 
-6. Aşağıdaki [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) deyimlerini çalıştırarak dış dosya biçiminiz için bir şema oluşturun. Dış şema, oluşturmak üzere olduğunuz dış tabloları düzenlemek için bir yol sağlar. Wwi şeması, verileri içerecek standart tabloları düzenler.
+6. Aşağıdaki [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) deyimlerini çalıştırarak dış dosya biçiminiz için bir şema oluşturun. Dış şema, oluşturmak üzere olduğunuz dış tabloları düzenlemek için bir yol sağlar. Wwi şeması, verileri içerecek standart tabloları düzenler.
 
     ```sql
     CREATE SCHEMA ext;
@@ -431,7 +431,7 @@ Bu bölüm, Azure Blobundan SQL havuzuna örnek verileri yüklemek için tanıml
 > [!NOTE]
 > Bu öğretici verileri doğrudan son tabloya yükler. Üretim ortamında, genellikle CREATE TABLE AS SELECT kullanarak bir hazırlama tablosuna yüklersiniz. Veriler hazırlama tablosundayken tüm gerekli dönüştürmeleri yapabilirsiniz. Hazırlama tablosundaki verileri üretim tablosuna eklemek için, INSERT...SELECT deyimini kullanabilirsiniz. Daha fazla bilgi için kz. [Üretim tablosuna veri ekleme](guidance-for-loading-data.md#inserting-data-into-a-production-table).
 
-Verileri Azure Depolama Blobu'ndan veri ambarınızdaki yeni tablolara yüklemek için, betikte [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL deyimi kullanılır. CTAS bir SELECT deyiminin sonuçlarına göre yeni tablo oluşturur. Yeni tablo, select deyiminin sonuçları ile aynı sütunlara ve veri türlerine sahiptir. Select deyimleri bir dış tablodan seçim yaparken, veriler veri ambarındaki ilişkisel bir tabloya aktarılır.
+Verileri Azure Depolama Blobu'ndan veri ambarınızdaki yeni tablolara yüklemek için, betikte [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL deyimi kullanılır. CTAS bir SELECT deyiminin sonuçlarına göre yeni tablo oluşturur. Yeni tablo, select deyiminin sonuçları ile aynı sütunlara ve veri türlerine sahiptir. Select deyimleri bir dış tablodan seçim yaparken, veriler veri ambarındaki ilişkisel bir tabloya aktarılır.
 
 Bu betik, wwi.dimension_Date ve wwi.fact_Sale tablolarına veri yüklemez. Bu tablolar, boyutlandırılabilir satır sayısı içermesi için daha sonraki bir adımda oluşturulur.
 

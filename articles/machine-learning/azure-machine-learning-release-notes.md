@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 4ba06af98714004e4429fe802a206acdfa8fb148
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 117bc71ba304445e3186b4e633f5888647be9223
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127626"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685638"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
@@ -77,7 +77,7 @@ Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK 
     + Azureml-Core paketindeki belgeler için XREF uyarılarını Düzeltme
     + SDK 'daki komut desteği özelliği için belge dize düzeltmeleri
     + RunConfiguration 'a komut özelliği ekleniyor. Özelliği, kullanıcıların, işlem üzerinde AzureML SDK aracılığıyla gerçek bir komutu veya yürütülebilir dosyaları çalıştırmasını sağlar.
-    + Kullanıcılar, bu denemenin kimliği verilen boş bir denemeyi silebilir.
+    + Kullanıcılar, bu denemenin KIMLIĞI verilen boş bir denemeyi silebilir.
   + **azureml-dataprep**
     + Scala 2,12 ile derlenmiş Spark için veri kümesi desteği eklendi. Bu, var olan 2,11 desteğine ekler.
   + **azureml-mlflow**
@@ -148,8 +148,8 @@ Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK 
     + `OutputDatasetConfig.register_on_complete`Adı zaten mevcut olduğunda ne olacağı hakkında davranışı eklemek için geliştirilmiş belgeler.
     + Ortak ortam değişkenleriyle çakışabilecek potansiyel veri kümesi girişi ve çıkış adlarını belirtme, şimdi bir uyarı oluşmasına neden olur
     + `grant_workspace_access`Veri depoları kaydedilirken yeniden parametre yeniden `True`Machine Learning Studio sanal ağın arkasındaki verilere erişecek şekilde ayarlayın.
-      [Daha fazla bilgi edinin](./how-to-enable-studio-virtual-network.md)
-    + Bağlı hizmet API 'SI iyileştiriliyor. Kaynak kimliği sağlamak yerine, yapılandırmada tanımlı 3 ayrı parametre sub_id, RG ve adı vardır.
+      [Daha fazla bilgi](./how-to-enable-studio-virtual-network.md)
+    + Bağlı hizmet API 'SI iyileştiriliyor. Kaynak KIMLIĞI sağlamak yerine, yapılandırmada tanımlı 3 ayrı parametre sub_id, RG ve adı vardır.
     + Müşterilerin belirteç bozulması sorunlarını kendi kendine çözümlemesine olanak tanımak için, çalışma alanı belirteci eşitlemesini ortak bir yöntem olacak şekilde etkinleştirin.
     + Bu değişiklik, boş bir dizenin bir script_param değer olarak kullanılmasına izin verir
   + **azureml-train-automl-client**
@@ -1421,7 +1421,7 @@ Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
 
 ### <a name="r-sdk"></a>R SDK 
  
-Veri bilimcileri ve AI geliştiricileri, Azure Machine Learning ile makine öğrenimi iş akışlarını derlemek ve çalıştırmak için [R için Azure Machine Learning SDK 'sını](tutorial-1st-r-experiment.md) kullanır.
+Veri bilimcileri ve AI geliştiricileri, Azure Machine Learning ile makine öğrenimi iş akışlarını derlemek ve çalıştırmak için [R için Azure Machine Learning SDK 'sını](https://github.com/Azure/azureml-sdk-for-r) kullanır.
 
 R için Azure Machine Learning SDK, `reticulate` Python SDK 'sına bağlamak için paketini kullanır. Doğrudan Python 'a bağlayarak, R için SDK, seçtiğiniz herhangi bir R ortamından Python SDK 'sında uygulanan temel nesnelere ve yöntemlere erişmenizi sağlar.
 
@@ -1597,13 +1597,13 @@ Azure Machine Learning artık Event Grid için bir kaynak sağlayıcıdır, Azur
   + **azureml-eğitme-oto ml**
     + [Deneme](/python/api/azureml-core/azureml.core.experiment.experiment) nesnesi oluşturma, çalışma geçmişi izlemenin Azure Machine Learning çalışma alanında denemeyi alır veya oluşturur. Deneme KIMLIĞI ve arşivlenen süre, oluşturma sırasında denemeler nesnesine doldurulur. Örnek:
 
-        ```py
+        ```python
         experiment = Experiment(workspace, "New Experiment")
         experiment_id = experiment.id
         ```
         [Archive ()](/python/api/azureml-core/azureml.core.experiment.experiment#archive--) ve [yeniden etkinleştirme ()](/python/api/azureml-core/azureml.core.experiment.experiment#reactivate-new-name-none-) , bir deneyinin UX içinde gösterilmesi veya bir List denemeleri çağrısında varsayılan olarak döndürülmesi için bir denemede çağrılabilecek işlevlerdir. Arşivlenmiş bir deneyle aynı ada sahip yeni bir deneme oluşturulursa, yeni bir ad geçirerek yeniden etkinleştirme sırasında arşivlenmiş denemeyi yeniden adlandırabilirsiniz. Yalnızca belirli bir ada sahip bir etkin deneme olabilir. Örnek:
 
-        ```py
+        ```python
         experiment1 = Experiment(workspace, "Active Experiment")
         experiment1.archive()
         # Create new active experiment with the same name as the archived.
@@ -1612,7 +1612,7 @@ Azure Machine Learning artık Event Grid için bir kaynak sağlayıcıdır, Azur
         ```
         Deneme sırasında statik yöntem [listesi ()](/python/api/azureml-core/azureml.core.experiment.experiment#list-workspace--experiment-name-none--view-type--activeonly---tags-none-) bir ad filtresi ve ViewType filtresi alabilir. ViewType değerleri şunlardır "ACTIVE_ONLY", "ARCHIVED_ONLY" ve "ALL". Örnek:
 
-        ```py
+        ```python
         archived_experiments = Experiment.list(workspace, view_type="ARCHIVED_ONLY")
         all_first_experiments = Experiment.list(workspace, name="First Experiment", view_type="ALL")
         ```
@@ -1768,7 +1768,7 @@ Azure Machine Learning artık Event Grid için bir kaynak sağlayıcıdır, Azur
     + Estimators 'daki parametreye dockerfile desteği eklendi `environment_definition` .
     + Estimators 'da Basitleştirilmiş dağıtılmış eğitim parametreleri.
 
-         ```py
+         ```python
         from azureml.train.dnn import TensorFlow, Mpi, ParameterServer
         ```
 
@@ -1820,14 +1820,14 @@ Bu sürümün sırasında, aşağıdaki tarayıcılar desteklenir: Chrome, Firef
   + **azureml-core**
     + Bir sözlüğü `TabularDataset` ve `FileDataset` kayıt adına göre anahtarlı nesneler döndüren DataSet.get_all (çalışma alanı) tanıtın.
 
-    ```py
+    ```python
     workspace = Workspace.from_config()
     all_datasets = Dataset.get_all(workspace)
     mydata = all_datasets['my-data']
     ```
 
     + `parition_format`Ve için bağımsız değişken olarak tanıtın `Dataset.Tabular.from_delimited_files` `Dataset.Tabular.from_parquet.files` . Her veri yolunun bölüm bilgileri, belirtilen biçime göre sütunlarda ayıklanır. ' {column_name} ' dize sütunu oluşturuyor ve ' {column_name: yyyy/aa/gg/HH/mm/ss} ' DateTime sütunu oluşturuyor; burada ' yyyy ', ' AA ', ' gg ', ' HH ', ' mm ' ve ' ss ', DateTime türü için Year, month, Day, Hour, Minute ve Second 'ı ayıklamak için kullanılır. Partition_format, dosya yolunun sonuna kadar ilk bölüm anahtarının konumundan başlamalıdır. Örneğin, '. ' yolu veriliyor. /USA/2019/01/01/data.csv ' bölümü ülkeye ve zamana göre, partition_format = '/{Country}/{PartitionDate: yyyy/aa/gg}/data.csv ', ' ABD ' değeri ve ' PartitionDate ' tarih sütunu ' 2019-01-01 ' değerine sahip ' Country ' dize sütununu oluşturur.
-        ```py
+        ```python
         workspace = Workspace.from_config()
         all_datasets = Dataset.get_all(workspace)
         mydata = all_datasets['my-data']
@@ -2239,7 +2239,7 @@ Python v 1.0.30 için SDK Azure Machine Learning.
 
 ### <a name="azure-machine-learning-sdk-for-python-v1018"></a>Python v 1.0.18 için SDK Azure Machine Learning
 
- + **Değişikliklerine**
+ + **Değişiklikler**
    + Azureml-tensorboard paketi, azureml-contrib-tensorboard yerini alır.
    + Bu sürümle birlikte, yönetilen işlem kümenizde (amlcompute), oluştururken bir kullanıcı hesabı ayarlayabilirsiniz. Bu, sağlama yapılandırmasında bu özellikler geçirerek yapılabilir. Daha fazla ayrıntı için [SDK başvuru belgelerine](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none--remote-login-port-public-access--notspecified--)ulaşabilirsiniz.
 

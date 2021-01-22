@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 0a73651b11c9ca6f7cb34deb755543c3b5a6d710
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f8e4925f721b307abd85a8b881caff3e5fc04fde
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042992"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685671"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Azure CLı kullanarak IoT Edge modüllerini ölçeklendirerek dağıtma ve izleme
 
@@ -191,7 +191,7 @@ Dağıtım bildiriminin yanı sıra diğer parametrelerden oluşan bir dağıtı
 
 Dağıtım oluşturmak için [az IoT Edge Deployment Create](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-create) komutunu kullanın:
 
-```cli
+```azurecli
 az iot edge deployment create --deployment-id [deployment id] --hub-name [hub name] --content [file path] --labels "[labels]" --target-condition "[target query]" --priority [int]
 ```
 
@@ -204,7 +204,7 @@ Dağıtım oluşturma komutu aşağıdaki parametreleri alır:
 * **--Content** -FilePath öğesine DAĞıTıM bildirimi JSON 'ı. Gerekli parametre.
 * **--hub-adı** -dağıtımın oluşturulacağı IoT Hub 'ının adı. Hub geçerli abonelikte olmalıdır. Geçerli aboneliğinizi `az account set -s [subscription name]` komutla değiştirin.
 * **--labels** -dağıtımlarınızın izlenmesine yardımcı olmak için Etiketler ekleyin. Etiketler, dağıtımınızı tanımlayan ad ve değer çiftleridir. Etiketler, adlar ve değerler için JSON biçimlendirmesi alır. Örneğin, `{"HostPlatform":"Linux", "Version:"3.0.1"}`
-* **--target-Condition** -Bu dağıtıma hangi cihazların hedeflenceğini belirleyen bir hedef koşul girin.Bu koşul, Device ikizi etiketlerine veya Device ikizi bildirilen özelliklerine dayalıdır ve ifade biçimiyle eşleşmelidir.Örneğin, `tags.environment='test' and properties.reported.devicemodel='4000x'`.
+* **--target-Condition** -Bu dağıtıma hangi cihazların hedeflenceğini belirleyen bir hedef koşul girin. Bu koşul, Device ikizi etiketlerine veya Device ikizi bildirilen özelliklerine dayalıdır ve ifade biçimiyle eşleşmelidir. Örneğin, `tags.environment='test' and properties.reported.devicemodel='4000x'`.
 * **--Priority** -pozitif bir tamsayı. İki veya daha fazla dağıtımın aynı cihaza hedeflenme durumunda, öncelik için en yüksek sayısal değere sahip dağıtım uygulanır.
 * **--ölçümler** -bir dağıtımın durumunu Izlemek Için edgeHub tarafından bildirilen özellikleri sorgulayan ölçümler oluşturun. Ölçümler JSON girişi veya bir FilePath alır. Örneğin, `'{"queries": {"mymetric": "SELECT deviceId FROM devices WHERE properties.reported.lastDesiredStatus.code = 200"}}'`.
 
@@ -224,7 +224,7 @@ Dağıtım bildiriminde tanımlanan modülleri ve yolları içeren bir dağıtı
 
 Bir dağıtımı güncelleştirmek için [az IoT Edge Deployment Update](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-update) komutunu kullanın:
 
-```cli
+```azurecli
 az iot edge deployment update --deployment-id [deployment id] --hub-name [hub name] --set [property1.property2='value']
 ```
 
@@ -245,7 +245,7 @@ Bir dağıtımı sildiğinizde, tüm cihazlar bir sonraki en yüksek öncelikli 
 
 Bir dağıtımı silmek için [az IoT Edge Deployment Delete](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-delete) komutunu kullanın:
 
-```cli
+```azurecli
 az iot edge deployment delete --deployment-id [deployment id] --hub-name [hub name]
 ```
 

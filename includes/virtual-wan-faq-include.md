@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5aab11b31756ee8430e8ae4d54a2b3de5ea2e136
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 8cd6f6a32071dc7bbd4aaccb92168cda009933a6
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97612632"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98689620"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Azure sanal WAN, GA 'de mi?
 
@@ -198,6 +198,9 @@ VPN siteleri bir hub 'a bağlandığında bağlantıları bu şekilde görür. S
 ### <a name="what-is-the-total-vpn-throughput-of-a-vpn-tunnel-and-a-connection"></a>VPN tünelinin toplam VPN işleme ve bağlantı nedir?
 
 Bir hub 'ın toplam VPN verimlilik, VPN ağ geçidinin seçilen ölçek birimine göre 20 Gbps 'ye kadar olur. Aktarım hızı, var olan tüm bağlantılar tarafından paylaşılır. Bir bağlantı içindeki her tünel 1 GB/sn 'ye kadar destek alabilir.
+
+### <a name="can-i-use-nat-t-on-my-vpn-connections"></a>VPN bağlantımda NAT-T kullanabilir miyim?
+Evet, NAT geçişi (NAT-T) desteklenir. Sanal WAN VPN Gateway, IPSec tünellerine/bu paketlerin iç paketlerinde NAT benzeri işlevsellik gerçekleştirmez. Bu yapılandırmada, lütfen şirket içi cihazın IPSec Tünelini başlattığınızdan emin olun.
 
 ### <a name="i-dont-see-the-20-gbps-setting-for-the-virtual-hub-in-portal-how-do-i-configure-that"></a>Portalda sanal hub için 20 Gbps ayarı görmüyorum. Nasıl yaparım? yapılandırmak mı istiyorsunuz?
 

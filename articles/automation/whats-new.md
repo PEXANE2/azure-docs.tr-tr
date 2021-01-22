@@ -1,0 +1,229 @@
+---
+title: Azure Otomasyonu 'ndaki yenilikler
+description: Her ay Azure Otomasyonu için önemli güncelleştirmeler güncelleştirildi.
+ms.subservice: ''
+ms.topic: overview
+author: mgoedtel
+ms.author: magoedte
+ms.date: 01/21/2021
+ms.custom: references_regions
+ms.openlocfilehash: 8b412fffdda1ce6a2023a8b9ae459a52986cd93d
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98690873"
+---
+# <a name="whats-new-in-azure-automation"></a>Azure Otomasyonu 'ndaki yenilikler nelerdir?
+
+Azure Otomasyonu, iyileştirmeleri sürekli olarak alır. En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmektedir:
+
+- En son yayınlar
+- Bilinen sorunlar
+- Hata düzeltmeleri
+
+Bu sayfa aylık olarak güncelleştirildiğinden düzenli olarak yeniden ziyaret edin.
+
+## <a name="january-2021"></a>Ocak 2021
+
+### <a name="azure-automation-runbooks-moved-from-technet-script-center-to-github"></a>Azure Otomasyonu runbook 'ları TechNet Betik merkezinden GitHub 'a taşındı
+
+**Şunu yazın:** Değişiklik planı
+
+TechNet Betik Merkezi devre dışı bırakıldı ve Runbook galerisinde barındırılan tüm runbook 'lar [Otomasyon GitHub kuruluşumuza](https://github.com/azureautomation)taşındı. Daha fazla bilgi için [GitHub 'a taşınan Azure Otomasyonu runbook 'larını](https://techcommunity.microsoft.com/t5/azure-governance-and-management/azure-automation-runbooks-moving-to-github/ba-p/2039337)okuyun.
+
+## <a name="december-2020"></a>Aralık 2020
+
+### <a name="azure-automation-and-update-management-private-link-ga"></a>Azure Otomasyonu ve Güncelleştirme Yönetimi özel bağlantısı GA
+
+**Şunu yazın:** Yeni Özellik
+
+Azure Otomasyonu ve Güncelleştirme Yönetimi desteği, Azure küresel ve kamu bulutları için GA olarak duyurulmuştur. Azure Otomasyonu etkin özel bağlantı, bir runbook 'un bir karma çalışan rolünde yürütülmesini güvenli hale getirmek için Güncelleştirme Yönetimi, bir Web Kancası aracılığıyla runbook 'u çağırmak ve makinelerinizi şikayet etmek için durum yapılandırma hizmeti 'ni kullanmak için destekler. Daha fazla bilgi için [Azure Otomasyonu özel bağlantı desteğini](https://azure.microsoft.com/updates/azure-automation-private-link) okuyun
+
+### <a name="azure-automation-classified-as-grade-c-certified-on-accessibility"></a>Erişilebilirlik 'de C sınıfı sertifikalı olarak sınıflandırılan Azure Otomasyonu
+
+**Şunu yazın:** Yeni Özellik
+
+Microsoft ürünlerinin erişilebilirlik özellikleri, küresel erişilebilirlik gereksinimlerini ele almanıza yardımcı olur. [Blog duyurusu](https://cloudblogs.microsoft.com/industry-blog/government/2018/09/11/accessibility-conformance-reports/) sayfasında, Otomasyon Hizmeti için erişilebilirlik uyumluluk raporunu okumak üzere **Azure Otomasyonu** ' nu arayın.
+
+### <a name="support-for-automation-and-state-configuration-ga-in-uae-north"></a>BAE Kuzey 'de Otomasyon ve durum yapılandırması GA desteği
+
+**Şunu yazın:** Yeni Özellik
+
+BAE Kuzey bölgesindeki Otomasyon hesabı ve durum yapılandırması kullanılabilirliği. Daha fazla bilgi için [duyuruyu](https://azure.microsoft.com/updates/azure-automation-in-uae-north-region/)okuyun.
+
+### <a name="support-for-automation-and-state-configuration-ga-in-germany-west-central"></a>Almanya Orta Batı 'de Otomasyon ve durum yapılandırması GA desteği
+
+**Şunu yazın:** Yeni Özellik
+
+Almanya Batı bölgesindeki Otomasyon hesabı ve durum yapılandırması kullanılabilirliği. Daha fazla bilgi için [duyuruyu](https://azure.microsoft.com/updates/azure-automation-in-germany-west-central-region/)okuyun.
+
+### <a name="dsc-support-for-oracle-6-and-7"></a>Oracle 6 ve 7 için DSC desteği
+
+**Şunu yazın:** Yeni Özellik
+
+Oracle Linux 6 ve 7 makineyi Automation durum yapılandırması ile yönetin. Bu değişiklikleri yansıtmak için belgelerdeki güncelleştirmeler için [desteklenen Linux destekleri](https://github.com/Azure/azure-linux-extensions/tree/master/DSC#4-supported-linux-distributions) bölümüne bakın.
+
+### <a name="public-preview-for-python3-runbooks-in-automation"></a>Otomasyon 'da Python3 runbook 'lar için genel önizleme
+
+**Şunu yazın:** Yeni Özellik
+
+Azure Otomasyonu artık Azure genel bulutundaki tüm bölgelerde genel önizlemede, karma runbook yürütmesi & Python 3 bulutunu desteklemektedir. Bkz. [Duyuru] ( https://azure.microsoft.com/updates/azure-automation-python-3-public-preview/) daha fazla ayrıntı için).
+
+## <a name="november-2020"></a>Kasım 2020
+
+### <a name="dsc-support-for-ubuntu-1804"></a>Ubuntu 18,04 için DSC desteği
+
+**Şunu yazın:** Yeni Özellik
+
+Bu değişiklikleri yansıtan belgelerde güncelleştirmeler için [desteklenen Linux destekleri](https://github.com/Azure/azure-linux-extensions/tree/master/DSC#4-supported-linux-distributions) bölümüne bakın.
+
+## <a name="october-2020"></a>Ekim 2020
+
+### <a name="support-for-automation-and-state-configuration-ga-in-switzerland-north"></a>İsviçre Kuzey 'de Otomasyon ve durum yapılandırması GA desteği
+
+**Şunu yazın:** Yeni Özellik
+
+İsviçre Kuzey 'de Otomasyon hesabı ve durum yapılandırması kullanılabilirliği. Daha fazla bilgi için [duyuruyu](https://azure.microsoft.com/updates/azure-automation-in-switzerland-north-region/)okuyun.
+
+### <a name="support-for-automation-and-state-configuration-ga-in-brazil-south-east"></a>Brezilya Güney Doğu 'da Otomasyon ve durum yapılandırması GA desteği
+
+**Şunu yazın:** Yeni Özellik
+
+Brezilya Güney Doğu ' de Otomasyon hesabı ve durum yapılandırması kullanılabilirliği. Daha fazla bilgi için [duyuruyu](https://azure.microsoft.com/updates/azure-automation-in-brazil-southeast-region/)okuyun.
+
+### <a name="update-management-availability-in-south-central-us"></a>Orta Güney ABD Güncelleştirme Yönetimi kullanılabilirliği
+
+**Şunu yazın:** Yeni Özellik
+
+Azure Otomasyonu bölgesi eşleme, Orta Güney ABD bölgesindeki Güncelleştirme Yönetimi özelliğini destekleyecek şekilde güncelleştirildi. Bu değişikliği yansıtmak için belgelerdeki güncelleştirmeler için bkz. [desteklenen bölge eşlemesi](how-to/region-mappings.md#supported-mappings) .
+
+## <a name="september-2020"></a>Eylül 2020
+
+### <a name="startstop-vms-during-off-hours-runbooks-updated-to-use-azure-az-modules"></a>VM'leri çalışma saatleri dışında başlat/durdur runbook 'ları Azure az modules kullanacak şekilde güncelleştirildi
+
+**Şunu yazın:** Yeni Özellik
+
+VM runbook 'larını Başlat/Durdur, Azure Resource Manager modülleri yerine az modüller kullanacak şekilde güncelleştirilmiştir. Bu değişiklikleri yansıtmak için belgelerde yapılan güncelleştirmelerin [VM'leri çalışma saatleri dışında Başlat/Durdur](automation-solution-vm-management.md) genel bakış bölümüne bakın.
+
+## <a name="august-2020"></a>Ağustos 2020
+
+### <a name="published-the-dsc-extension-to-support-azure-arc"></a>Azure yayı 'yi desteklemek için DSC Uzantısı yayımlandı
+
+**Şunu yazın:** Yeni Özellik
+
+Azure Otomasyonu durum yapılandırması 'nı kullanarak yapılandırmaları merkezi olarak depolar ve Azure Arc etkin sunucular DSC VM Uzantısı aracılığıyla etkinleştirilen karma bağlantılı makinelerin istenen durumunu koruyun. Daha fazla bilgi için, bkz. [yay etkin SUNUCULARı VM uzantılarına genel bakış](../azure-arc/servers/manage-vm-extensions.md).
+
+### <a name="july-2020"></a>Temmuz 2020
+
+### <a name="introduced-public-preview-of-private-link-support-in-automation"></a>Otomasyon 'da özel bağlantı desteğinin genel önizlemesi kullanıma sunuldu
+
+**Şunu yazın:** Yeni Özellik
+
+Özel uç noktaları kullanarak sanal ağları güvenli bir şekilde Azure Otomasyonu 'na bağlamak için Azure özel bağlantısı 'nı kullanın. Daha fazla bilgi için [duyuruyu](https://azure.microsoft.com/updates/public-preview-private-link-azure-automation-is-now-available/)okuyun.
+
+### <a name="hybrid-runbook-worker-support-for-windows-server-2008-r2"></a>Windows Server 2008 R2 için karma Runbook Worker desteği
+
+**Şunu yazın:** Yeni Özellik
+
+Otomasyon karma Runbook Worker, Windows Server 2008 R2 işletim sistemini destekler. Bu değişiklikleri yansıtmak için belgelerdeki güncelleştirmeler için [desteklenen işletim sistemleri](automation-windows-hrw-install.md#supported-windows-operating-system) bölümüne bakın.
+
+### <a name="update-management-support-for-windows-server-2008-r2"></a>Windows Server 2008 R2 için Güncelleştirme Yönetimi desteği
+
+**Şunu yazın:** Yeni Özellik
+
+Güncelleştirme Yönetimi, Windows Server 2008 R2 işletim sistemi için değerlendirme ve düzeltme eki uygulamayı destekler. Bu değişiklikleri yansıtmak için belgelerdeki güncelleştirmeler için [desteklenen işletim sistemleri](update-management/overview.md#clients) bölümüne bakın.
+
+### <a name="automation-diagnostic-logs-schema-update"></a>Otomasyon tanılama günlükleri şema güncelleştirmesi
+
+**Şunu yazın:** Yeni Özellik
+
+Log Analytics hizmetindeki Azure Otomasyonu günlük verilerinin şeması değiştirildi. Daha fazla bilgi edinmek için bkz. [Azure Otomasyonu iş verilerini Azure izleyici günlüklerine iletme](automation-manage-send-joblogs-log-analytics.md#filter-job-status-output-converted-into-a-json-object).
+
+### <a name="azure-lighthouse-supports-automation-update-management"></a>Azure Athouse Otomasyon Güncelleştirme Yönetimi destekler
+
+**Şunu yazın:** Yeni Özellik
+
+Azure Aydınlathouse, hizmet sağlayıcıları ve müşteriler için Güncelleştirme Yönetimi ile yetkilendirilmiş kaynak yönetimine izin vermez. Daha fazla bilgi için [buraya](https://azure.microsoft.com/blog/how-azure-lighthouse-enables-management-at-scale-for-service-providers/) bakabilirsiniz.
+
+## <a name="june-2020"></a>Haziran 2020
+
+### <a name="automation-and-update-management-availability-in-the-us-gov-arizona-region"></a>US Gov Arizona bölgesinde Otomasyon ve Güncelleştirme Yönetimi kullanılabilirliği
+
+**Şunu yazın:** Yeni Özellik
+
+Otomasyon hesabı ve Güncelleştirme Yönetimi US Gov Arizona kullanılabilir. Daha fazla bilgi için bkz. [duyuru](https://azure.microsoft.com/updates/azure-automation-generally-available-in-usgov-arizona-region/).
+
+### <a name="hybrid-runbook-worker-onboarding-script-updated-to-use-az-modules"></a>Karma Runbook Worker ekleme betiği az modüller kullanacak şekilde güncelleştirildi
+
+**Şunu yazın:** Yeni Özellik
+
+New-OnPremiseHybridWorker runbook az modülleri destekleyecek şekilde güncelleştirilmiştir. Daha fazla bilgi için [PowerShell Galerisi](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker/1.7)pakete bakın.
+
+### <a name="update-management-availability-in-china-east-2"></a>Çin Doğu 2 ' de Güncelleştirme Yönetimi kullanılabilirliği
+
+**Şunu yazın:** Yeni Özellik
+
+Azure Otomasyonu bölge eşlemesi, Çin Doğu 2 bölgesindeki Güncelleştirme Yönetimi özelliği destekleyecek şekilde güncelleştirildi. Bu değişikliği yansıtmak için belgelerdeki güncelleştirmeler için bkz. [desteklenen bölge eşlemesi](how-to/region-mappings.md#supported-mappings) .
+
+## <a name="may-2020"></a>Mayıs 2020
+
+### <a name="updated-automation-service-dns-records-from-region-specific-to-automation-account-specific-urls"></a>Belirli bir bölgedeki Otomasyon Hizmeti DNS kayıtları, Otomasyon hesabına özgü URL 'lere güncelleştirildi
+
+**Şunu yazın:** Yeni Özellik
+
+Azure Otomasyonu DNS kayıtları, özel bağlantıları destekleyecek şekilde güncelleştirilmiştir. Daha fazla bilgi için [duyuruyu](https://azure.microsoft.com/updates/azure-automation-updateddns-records/)okuyun.
+
+### <a name="added-capability-to-keep-automation-runbooks--dsc-scripts-encrypted-by-default"></a>Automation runbook 'larını varsayılan olarak şifrelenen & DSC betiklerini tutma özelliği eklendi
+
+**Şunu yazın:** Yeni Özellik
+
+Varlıkların güvenliğini artırmanın yanı sıra, Azure Otomasyonu güvenliğini artırmak için Runbook 'ların & DSC betikleri de şifrelenir.
+
+## <a name="april-2020"></a>Nisan 2020
+
+### <a name="retirement-of-the-automation-watcher-task"></a>Otomasyon İzleyicisi görevinin kullanımdan kaldırılması
+
+**Şunu yazın:** Değişiklik planı
+
+Azure Logic Apps artık olayları izlemek, yinelenen görevleri zamanlamak ve eylemleri tetiklemek için önerilen ve desteklenen bir yoldur. Izleyici görevi işlevselliğinde daha fazla yatırım olmayacaktır. Daha fazla bilgi için bkz. [yinelenen otomatikleştirilmiş görevleri zamanlama ve çalıştırma Logic Apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
+
+## <a name="march-2020"></a>Mart 2020
+
+### <a name="support-for-impact-level-5-il5-compute-isolation-in-azure-commercial-and-government-cloud"></a>Azure ticari ve kamu bulutu 'nda etki düzeyi 5 (IL5) işlem yalıtımına yönelik destek
+
+**Türüyle**
+
+Azure Otomasyonu karma Runbook Worker, Azure Kamu 'da, etki düzeyi 5 iş yüklerini desteklemek için kullanılabilir. Daha fazla bilgi edinmek için [belgelerimize](automation-hybrid-runbook-worker.md#support-for-impact-level-5-il5)bakın.
+
+## <a name="february-2020"></a>Şubat 2020
+
+### <a name="introduced-support-for-azure-virtual-network-service-tags"></a>Azure sanal ağ hizmeti etiketleri için sunulan destek
+
+**Şunu yazın:** Yeni Özellik
+
+Hizmet etiketlerinin Otomasyon desteği, bir senaryo alt kümesi için Otomasyon Hizmeti trafiğine izin verir veya bu trafiğe izin vermez. Daha fazla bilgi edinmek için [belgelerine](automation-hybrid-runbook-worker.md#service-tags)bakın.
+
+### <a name="enable-tls-12-support-for-azure-automation-service"></a>Azure Otomasyonu hizmeti için TLS 1,2 desteğini etkinleştir
+
+**Şunu yazın:** Değişiklik planı
+
+Azure Otomasyonu, TLS 1,2 ve tüm istemci çağrılarını (Web kancaları, DSC düğümleri ve karma çalışan aracılığıyla) tam olarak destekler. TLS 1,1 ve TLS 1,0, müşteriler standartlaştırır ve TLS 1,2 'e tam olarak geçiş yapılıncaya kadar eski istemcilerle geriye dönük uyumluluk için de desteklenmektedir.
+
+## <a name="january-2020"></a>Ocak 2020
+
+### <a name="introduced-public-preview-of-customer-managed-keys-for-azure-automation"></a>Azure Otomasyonu için müşteri tarafından yönetilen anahtarların genel önizlemesi kullanıma sunuldu
+
+**Şunu yazın:** Yeni Özellik
+
+Müşteriler, kendi yönetilen anahtarlarını kullanarak Azure Otomasyonu varlıklarının şifrelemesini yönetebilir ve güvenli hale getirebilirsiniz. Daha fazla bilgi için bkz. [müşteri tarafından yönetilen anahtarların kullanımı](automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account).
+
+### <a name="retirement-of-azure-service-management-asm-rest-apis-for-azure-automation"></a>Azure Otomasyonu için Azure hizmet yönetimi (ASM) REST API 'Lerinin kullanımdan kaldırılması
+
+**Şunu yazın:** Bırakmak
+
+Azure Otomasyonu için Azure hizmet yönetimi (ASM) REST API 'Leri kullanımdan kaldırılır ve 30 Ocak 2020 sonrasında desteklenmez. Daha fazla bilgi edinmek için [duyurusuna](https://azure.microsoft.com/updates/azure-automation-service-management-rest-apis-are-being-retired-april-30-2019/)bakın.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Azure Otomasyonu belgelerine katkıda bulunmak istiyorsanız [docs katılımcısı Kılavuzu](/contribute/)' na bakın.

@@ -2,26 +2,23 @@
 title: Azure Event Grid kavramlar
 description: Azure Event Grid ve kavramlarını açıklar. Event Grid birçok anahtar bileşenini tanımlar.
 ms.topic: conceptual
-ms.date: 10/29/2020
-ms.openlocfilehash: 6cfb8b3aaf16a0080b9864ce5198b8a7232e8bc8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 01/21/2021
+ms.openlocfilehash: 6edc8a3980bfea15f28cfb7114bb9f8350a47a3f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075118"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685712"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Azure Event Grid kavramlar
 
 Bu makalede Azure Event Grid temel kavramları açıklanmaktadır.
 
-## <a name="events"></a>Olaylar
+## <a name="events"></a>Ekinlikler
 
 Bir olay, sistemde gerçekleşen bir şeyi tam olarak açıklayan en düşük bilgi miktarıdır. Her olayda, olayın kaynağı, olayın gerçekleştiği süre ve benzersiz tanımlayıcı gibi yaygın bilgiler bulunur. Her olay, yalnızca belirli olay türüyle ilgili belirli bilgilere de sahiptir. Örneğin, Azure Depolama'da oluşturulan yeni dosya hakkındaki olayda dosyayla ilgili `lastTimeModified` değeri gibi ayrıntılar vardır. Öte yandan, bir Event Hubs olayında Capture dosyasının URL'si bulunur. 
 
-64 KB 'a kadar olan bir olay, genel kullanım (GA) Hizmet Düzeyi Sözleşmesi (SLA) ile ele alınmıştır. 1 MB 'a kadar olan bir olay desteği şu anda önizleme aşamasındadır. 64 KB üzerindeki olaylar 64 KB 'lik artışlarla ücretlendirilir. 
-
-
-Bir olayda gönderilen özellikler için bkz. [Azure Event Grid olay şeması](event-schema.md).
+Bir olay için izin verilen en büyük boyut 1 MB 'tır. 64 KB üzerindeki olaylar 64 KB 'lik artışlarla ücretlendirilir. Bir olayda gönderilen özellikler için bkz. [Azure Event Grid olay şeması](event-schema.md).
 
 ## <a name="publishers"></a>Yayımcılar
 
@@ -41,7 +38,7 @@ Olay Kılavuzu konusu, kaynağın olayları gönderdiği bir uç nokta sağlar. 
 
 **Özel konular** uygulama ve üçüncü taraf konulardır. Özel konu başlığı oluşturduğunuzda veya özel konu başlığına erişim için atandığınızda, aboneliğinizde özel konu başlığını görürsünüz. Daha fazla bilgi için bkz. [özel konular](custom-topics.md). Uygulamanızı tasarlarken, kaç tane konu oluşturacağına karar verirken esneklik elde edersiniz. Büyük çözümler için ilgili olayların her kategorisi için özel bir konu oluşturun. Örneğin, kullanıcı hesaplarını değiştirme ve siparişleri işleme ile ilgili olaylar gönderen bir uygulamayı ele alalım. Herhangi bir olay işleyicisinin her iki olay kategorisini de istemesi pek olası değildir. İki özel konu başlığı oluşturun ve olay işleyicilerinin ilgilendikleri konu başlığına abone olmalarına izin verin. Küçük çözümler için tüm olayları tek bir konuya göndermenizi tercih edebilirsiniz. Olay aboneleri istedikleri olay türlerini filtreleyebilir.
 
-Başka türde bir konu vardır: **iş ortağı konusu** . [Iş ortağı olayları](partner-events-overview.md) özelliği, üçüncü taraf SaaS sağlayıcısı 'nın, bu olaylara abone olan tüketiciler tarafından kullanılabilmesini sağlamak için hizmetlerinden olayları yayımlamasına olanak sağlar. SaaS sağlayıcısı, abonelerin olayları tüketmek için kullandığı bir **iş ortağı konusu** olan bir konu türü sunar. Ayrıca, olay yayımcıları ve aboneler tarafından kullanılan kaynakların kaygılarını ve sahipliğini ayırarak temiz bir yayın-alt modeli sunar.
+Başka türde bir konu vardır: **iş ortağı konusu**. [Iş ortağı olayları](partner-events-overview.md) özelliği, üçüncü taraf SaaS sağlayıcısı 'nın, bu olaylara abone olan tüketiciler tarafından kullanılabilmesini sağlamak için hizmetlerinden olayları yayımlamasına olanak sağlar. SaaS sağlayıcısı, abonelerin olayları tüketmek için kullandığı bir **iş ortağı konusu** olan bir konu türü sunar. Ayrıca, olay yayımcıları ve aboneler tarafından kullanılan kaynakların kaygılarını ve sahipliğini ayırarak temiz bir yayın-alt modeli sunar.
 
 ## <a name="event-subscriptions"></a>Olay abonelikleri
 
@@ -76,10 +73,7 @@ Event Grid, abonenin uç noktası tarafından bir olayın alındığını doğru
 
 ## <a name="batching"></a>Toplu İşleme
 
-Özel bir konu kullanıldığında, olaylar her zaman bir dizide yayımlanmalıdır. Bu, düşük performanslı senaryolar için bir toplu iş olabilir, ancak yüksek hacimli kullanım durumları için, daha yüksek bir verimlilik elde etmek üzere yayımlama başına birkaç olayı toplu olarak toplu yapmanız önerilir. Toplu işlemler 1 MB 'a kadar olabilir. Her olay hala 64 KB (genel kullanılabilirlik) veya 1 MB (Önizleme) değerinden büyük olmamalıdır.
-
-> [!NOTE]
-> 64 KB 'a kadar olan bir olay, genel kullanım (GA) Hizmet Düzeyi Sözleşmesi (SLA) ile ele alınmıştır. 1 MB 'a kadar olan bir olay desteği şu anda önizleme aşamasındadır. 64 KB üzerindeki olaylar 64 KB 'lik artışlarla ücretlendirilir. 
+Özel bir konu kullanıldığında, olaylar her zaman bir dizide yayımlanmalıdır. Bu, düşük performanslı senaryolar için bir toplu iş olabilir, ancak yüksek hacimli kullanım durumları için, daha yüksek bir verimlilik elde etmek üzere yayımlama başına birkaç olayı toplu olarak toplu yapmanız önerilir. Toplu işlemler 1 MB 'a kadar, bir etkinliğin en büyük boyutu 1 MB 'tır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

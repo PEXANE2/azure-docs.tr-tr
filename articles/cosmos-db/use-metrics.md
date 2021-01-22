@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 243f6f26be592e2db82d8f46df3de9aafcd2078b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b0760b86012504ea86e4a0cde36ae878e8ff3b26
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996993"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685746"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Azure Cosmos DB ölçümlerle izleme ve hata ayıklama
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -77,7 +77,7 @@ Hangi bölüm anahtarının dağıtım içinde eğilmesine neden olduğunu tanı
 
 ## <a name="compare-data-size-against-index-size"></a>Veri boyutunu Dizin boyutuyla karşılaştırın
 
-Azure Cosmos DB, tüketilen toplam depolama alanı, hem veri boyutu hem de dizin boyutunun birleşimidir. Genellikle, dizin boyutu veri boyutunun bir kesiri olur. [Azure Portal](https://portal.azure.com)ölçümler dikey penceresinde, depolama sekmesi verileri ve dizini temel alarak depolama tüketiminin dökümünü alır.
+Azure Cosmos DB, tüketilen toplam depolama alanı, hem veri boyutu hem de dizin boyutunun birleşimidir. Genellikle, dizin boyutu veri boyutunun bir kesiri olur. Daha fazla bilgi edinmek için [Dizin boyutu](index-policy.md#index-size) makalesine bakın. [Azure Portal](https://portal.azure.com)ölçümler dikey penceresinde, depolama sekmesi verileri ve dizini temel alarak depolama tüketiminin dökümünü alır.
 
 ```csharp
 // Measure the document size usage (which includes the index size)  

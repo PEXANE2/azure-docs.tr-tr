@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 72caeb60fc058b88158979d211a0bc38985975c7
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 444b514dfb1798ff810e84fc4e9d50001dbaee1c
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968866"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685797"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure portalında eylem gruplarını oluşturma ve yönetme
 Bir eylem grubu, bir Azure aboneliğinin sahibi tarafından tanımlanan bildirim tercihleri koleksiyonudur. Azure Izleyici ve hizmet durumu uyarıları, kullanıcılara bir uyarının tetiklendiğini bildirmek için eylem gruplarını kullanır. Çeşitli uyarılar, kullanıcının gereksinimlerine bağlı olarak aynı eylem grubunu veya farklı eylem gruplarını kullanabilir. 
@@ -164,6 +164,7 @@ Bir eylem grubunda sınırlı sayıda mantıksal uygulama eylemi olabilir.
 
 > [!NOTE]
 > Web kancası eyleminin kullanılması için hedef Web kancası uç noktasının, uyarının ayrıntılarının başarıyla çalışması gerekmez veya POST işleminin bir parçası olarak sağlanmış olan uyarı bağlamı bilgilerini ayrıştırmaktan emin olmanız gerekir. Web kancası uç noktası, uyarı bağlamı bilgilerini kendi kendine işleyemez, Web kancasının beklenen veri biçimiyle eşleşecek şekilde uyarı bağlamı bilgilerini özel bir şekilde işlemek için bir [mantıksal uygulama eylemi](./action-groups-logic-app.md) gibi bir çözüm kullanabilirsiniz.
+> Güvenliğin ihlal olmadığından emin olmak için kullanıcının Web kancası hizmet sorumlusu 'nın **sahibi** olması gerekir. Herhangi bir Azure müşterisi Portal aracılığıyla tüm nesne kimliklerine erişebilir, sahibi denetlemeden, herkes güvenliği ihlal eden Azure izleyici uyarı bildirimi için güvenli Web kancasını kendi eylem grubuna ekleyebilir.
 
 Eylem grupları Web kancası eylemi, eylem grubunuz ve korumalı Web API 'niz (Web kancası uç noktası) arasındaki bağlantıyı güvenli hale getirmek için Azure Active Directory avantajlarından yararlanmanızı sağlar. Bu işlevden yararlanmak için genel iş akışı aşağıda açıklanmıştır. Azure AD uygulamalarına ve hizmet sorumlularına genel bakış için bkz. [Microsoft Identity platform (v 2.0) genel bakış](../../active-directory/develop/v2-overview.md).
 
@@ -318,11 +319,7 @@ Desteklenen ülkeler/bölgeler için fiyatlandırma, [Azure izleyici fiyatlandı
 ### <a name="webhook"></a>Web Kancası
 
 > [!NOTE]
-> Web kancası eyleminin kullanılması için hedef Web kancası uç noktasının, uyarının ayrıntılarının başarıyla çalışması gerekmez veya POST işleminin bir parçası olarak sağlanmış olan uyarı bağlamı bilgilerini ayrıştırmaktan emin olmanız gerekir. 
-
-> Güvenliğin ihlal olmadığından emin olmak için kullanıcının Web kancası hizmet sorumlusu 'nın **sahibi** olması gerekir. Herhangi bir Azure müşterisi Portal aracılığıyla tüm nesne kimliklerine erişebilir, sahibi denetlemeden, herkes güvenliği ihlal eden Azure izleyici uyarı bildirimi için güvenli Web kancasını kendi eylem grubuna ekleyebilir.
-
-> Web kancası uç noktası, uyarı bağlamı bilgilerini kendi kendine işleyemez, Web kancasının beklenen veri biçimiyle eşleşecek şekilde uyarı bağlamı bilgilerini özel bir şekilde işlemek için bir [mantıksal uygulama eylemi](./action-groups-logic-app.md) gibi bir çözüm kullanabilirsiniz.
+> Web kancası eyleminin kullanılması için hedef Web kancası uç noktasının, uyarının ayrıntılarının başarıyla çalışması gerekmez veya POST işleminin bir parçası olarak sağlanmış olan uyarı bağlamı bilgilerini ayrıştırmaktan emin olmanız gerekir. Web kancası uç noktası, uyarı bağlamı bilgilerini kendi kendine işleyemez, Web kancasının beklenen veri biçimiyle eşleşecek şekilde uyarı bağlamı bilgilerini özel bir şekilde işlemek için bir [mantıksal uygulama eylemi](./action-groups-logic-app.md) gibi bir çözüm kullanabilirsiniz.
 
 Web kancaları aşağıdaki kurallar kullanılarak işlenir
 - Bir Web kancası çağrısı en fazla 3 kez denendi.

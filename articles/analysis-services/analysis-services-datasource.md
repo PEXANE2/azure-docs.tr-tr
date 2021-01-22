@@ -4,15 +4,15 @@ description: Azure Analysis Services tablo 1200 ve daha yüksek veri modelleri i
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/21/2020
+ms.date: 01/21/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 61efc7719b071ff4e8e5c0e07534b72a2883aff1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b778cf55ea485d7b3b4d3730d3659750f27b2697
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458863"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685604"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services’ta desteklenen veri kaynakları
 
@@ -22,14 +22,14 @@ Visual Studio 'da Analysis Services projelerine sahip veri veya tablo Içeri akt
 
 |Veri kaynağı  |Bellek içi  |DirectQuery  |Notlar |
 |---------|---------|---------|---------|
-|Azure SQL Veritabanı      |   Evet      |    Evet      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
-|Azure Synapse Analytics (SQL DW)      |   Evet      |   Evet       |<sup>[iki](#azprovider)</sup>|
+|Azure SQL Veritabanı      |   Evet      |    Yes      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
+|Azure Synapse Analytics (SQL DW)      |   Yes      |   Yes       |<sup>[iki](#azprovider)</sup>|
 |Azure Blob Depolama Alanı      |   Evet       |    Hayır      | <sup>[1](#tab1400a)</sup> |
 |Azure Tablo Depolama     |   Evet       |    Hayır      | <sup>[1](#tab1400a)</sup>|
 |Azure Cosmos DB     |  Evet        |  Hayır        |<sup>[1](#tab1400a)</sup> |
-|Azure Data Lake Storage 1. Nesil      |   Evet       |    Hayır      |<sup>[1](#tab1400a)</sup> |
-|Azure Data Lake Storage 2. Nesil       |   Evet       |    Hayır      |<sup>[1](#tab1400a)</sup>, <sup> [5](#gen2)</sup>|
-|Azure HDInsight.    |     Evet     |   Hayır       |<sup>[1](#tab1400a)</sup> |
+|Azure Data Lake Storage 1. Nesil      |   Yes       |    Hayır      |<sup>[1](#tab1400a)</sup> |
+|Azure Data Lake Storage 2. Nesil       |   Yes       |    Hayır      |<sup>[1](#tab1400a)</sup>, <sup> [5](#gen2)</sup>|
+|Azure HDInsight.    |     Yes     |   Hayır       |<sup>[1](#tab1400a)</sup> |
 |Azure HDInsight Spark     |   Evet       |   Hayır       |<sup>[1](#tab1400a)</sup>, <sup> [4](#databricks)</sup>|
 ||||
 
@@ -47,33 +47,33 @@ yalnızca <a name="tab1400a">1</a> tablolu 1400 ve daha yüksek modeller.
 |  --- | --- | --- | --- |
 |Access Veritabanı     |  Evet | Hayır |  |
 |Active Directory     |  Evet | Hayır | <sup>[inç](#tab1400b)</sup>  |
-|Analysis Services     |  Evet | Hayır |  |
-|Analytics platform sistemi     |  Evet | Hayır |  |
-|CSV dosyası  |Evet | Hayır |  |
-|Dynamics 365     |  Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
-|Excel çalışma kitabı     |  Evet | Hayır |  |
-|Exchange      |  Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
+|Analysis Services     |  Yes | Hayır |  |
+|Analytics platform sistemi     |  Yes | Hayır |  |
+|CSV dosyası  |Yes | Hayır |  |
+|Dynamics 365     |  Yes | Hayır | <sup>[inç](#tab1400b)</sup> |
+|Excel çalışma kitabı     |  Yes | Hayır |  |
+|Exchange      |  Yes | Hayır | <sup>[inç](#tab1400b)</sup> |
 |Klasör      |Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
-|IBM Informix  |Evet | Hayır |  |
-|JSON belgesi      |  Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
-|İkili dosyadan satırlar      | Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
+|IBM Informix  |Yes | Hayır |  |
+|JSON belgesi      |  Yes | Hayır | <sup>[inç](#tab1400b)</sup> |
+|İkili dosyadan satırlar      | Yes | Hayır | <sup>[inç](#tab1400b)</sup> |
 |MySQL Veritabanı     | Evet | Hayır |  |
 |OData Akışı      |  Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
-|ODBC sorgusu     | Evet | Hayır |  |
+|ODBC sorgusu     | Yes | Hayır |  |
 |OLE DB     |   Evet | Hayır |  |
-|Oracle  | Evet  |Evet  | <sup>[tuşlarına](#oracle)</sup> |
+|Oracle  | Evet  |Yes  | <sup>[tuşlarına](#oracle)</sup> |
 |PostgreSQL Veritabanı   | Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
 |Salesforce Nesneleri|  Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
 |Salesforce Raporları |Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
 |SAP HANA     |  Evet | Hayır |  |
-|SAP Business Warehouse    |  Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
+|SAP Business Warehouse    |  Yes | Hayır | <sup>[inç](#tab1400b)</sup> |
 |SharePoint Listesi      |   Evet | Hayır | <sup>[6](#tab1400b)</sup>, <sup> [11](#filesSP)</sup> |
-|SQL Server |Evet   | Evet  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
-|SQL Server veri ambarı |Evet   | Evet  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
+|SQL Server |Evet   | Yes  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
+|SQL Server veri ambarı |Yes   | Yes  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
 |Sybase Veritabanı     |  Evet | Hayır |  |
-|Teradata | Evet  | Evet  | <sup>[(](#teradata)</sup> |
-|TXT dosyası  |Evet | Hayır |  |
-|XML tablosu    |  Evet | Hayır | <sup>[inç](#tab1400b)</sup> |
+|Teradata | Evet  | Yes  | <sup>[(](#teradata)</sup> |
+|TXT dosyası  |Yes | Hayır |  |
+|XML tablosu    |  Yes | Hayır | <sup>[inç](#tab1400b)</sup> |
 | | | |
 
 **Notlar:**  
@@ -98,7 +98,7 @@ Sağlayıcı veri kaynaklarını etkinleştirmek için, Visual Studio 'da **Ara�
 
 ![Eski veri kaynaklarını etkinleştir](media/analysis-services-datasource/aas-enable-legacy-datasources.png)
 
-Eski veri kaynakları etkinken **tablosal Model Gezgini**' nde veri kaynağı ' **Data Sources**  >  **ndan (eski)** veri kaynakları ' na sağ tıklayın.
+Eski veri kaynakları etkinken **tablosal Model Gezgini**' nde veri kaynağı '   >  **ndan (eski)** veri kaynakları ' na sağ tıklayın.
 
 ![Tablosal model Gezgininde eski veri kaynakları](media/analysis-services-datasource/aas-import-legacy-datasources.png)
 
@@ -117,6 +117,14 @@ Bazı durumlarda, farklı bir kimliğe bürünme hesabı belirtmek gerekli olabi
 Bulut veri kaynakları için:
 
 * SQL kimlik doğrulaması kullanılıyorsa, kimliğe bürünme hizmet hesabı olmalıdır.
+
+## <a name="service-principal-authentication"></a>Hizmet sorumlusu kimlik doğrulaması
+
+Bir *sağlayıcı* veri kaynağı olarak belirtildiğinde Azure Analysis Services, Azure SQL veritabanı ve Azure SYNAPSE veri kaynakları Için [msoledbsql](/sql/connect/oledb/release-notes-for-oledb-driver-for-sql-server) Azure Active Directory hizmet sorumlusu kimlik doğrulamasını destekler.
+
+`
+Provider=MSOLEDBSQL;Data Source=[server];Initial Catalog=[database];Authentication=ActiveDirectoryServicePrincipal;User ID=[Application (client) ID];Password=[Application (client) secret];Use Encryption for Data=true
+`
 
 ## <a name="oauth-credentials"></a>OAuth kimlik bilgileri
 

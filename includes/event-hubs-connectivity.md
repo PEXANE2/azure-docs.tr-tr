@@ -5,15 +5,15 @@ services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.topic: include
-ms.date: 11/19/2020
+ms.date: 01/21/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 7ebb9dbce020086a716872c86221b97b4b7a6653
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 44afd8ea4ef2ab06ec31b7528e9776faebc3b4dc
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97978790"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98689997"
 ---
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Güvenlik duvarında hangi bağlantı noktalarını açmalıyım? 
 Olayları göndermek ve almak için Azure Event Hubs ile aşağıdaki protokolleri kullanabilirsiniz:
@@ -36,10 +36,10 @@ Resmi Azure SDK 'Ları genellikle Event Hubs olayları göndermek ve almak için
 
 | Dil | Seçenek   |
 | -------- | ----- |
-| .NET     | [Eventhubstransporttype. AmqpTcp](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype?view=azure-dotnet&preserve-view=true) veya [Eventhubstransporttype. AmqpWebSockets](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype?view=azure-dotnet&preserve-view=true) Ile [Eventhubconnectionoptions. TransportType](/dotnet/api/azure.messaging.eventhubs.eventhubconnectionoptions.transporttype?view=azure-dotnet&preserve-view=true) özelliği |
-| Java     | [com. Microsoft. Azure. eventhubs. EventProcessorClientBuilder. TransportType](/java/api/com.azure.messaging.eventhubs.eventprocessorclientbuilder.transporttype?view=azure-java-stable&preserve-view=true) , [Amqptransporttype. amqp](/java/api/com.azure.core.amqp.amqptransporttype?view=azure-java-stable&preserve-view=true) veya [AmqpTransportType.AMQP_WEB_SOCKETS](/java/api/com.azure.core.amqp.amqptransporttype?view=azure-java-stable&preserve-view=true) |
-| Düğüm  | [Eventhubconsumerclientoptions](/javascript/api/@azure/event-hubs/eventhubconsumerclientoptions?view=azure-node-latest&preserve-view=true) bir `webSocketOptions` özelliğe sahip. |
-| Python | [TransportType. AMQP](/python/api/azure-eventhub/azure.eventhub.transporttype?view=azure-python) veya [TransportType. AmqpOverWebSocket](/python/api/azure-eventhub/azure.eventhub.transporttype?view=azure-python&preserve-view=true) ile [EventHubConsumerClient.transport_type](/python/api/azure-eventhub/azure.eventhub.eventhubconsumerclient?view=azure-python&preserve-view=true) |
+| .NET     | [Eventhubstransporttype. AmqpTcp](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype) veya [Eventhubstransporttype. AmqpWebSockets](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype) Ile [Eventhubconnectionoptions. TransportType](/dotnet/api/azure.messaging.eventhubs.eventhubconnectionoptions.transporttype) özelliği |
+| Java     | [com. Microsoft. Azure. eventhubs. EventProcessorClientBuilder. TransportType](/java/api/com.azure.messaging.eventhubs.eventprocessorclientbuilder.transporttype) , [Amqptransporttype. amqp](/java/api/com.azure.core.amqp.amqptransporttype) veya [AmqpTransportType.AMQP_WEB_SOCKETS](/java/api/com.azure.core.amqp.amqptransporttype) |
+| Düğüm  | [Eventhubconsumerclientoptions](/javascript/api/@azure/event-hubs/eventhubconsumerclientoptions) bir `webSocketOptions` özelliğe sahip. |
+| Python | [TransportType. AMQP](/python/api/azure-eventhub/azure.eventhub.transporttype) veya [TransportType. AmqpOverWebSocket](/python/api/azure-eventhub/azure.eventhub.transporttype) ile [EventHubConsumerClient.transport_type](/python/api/azure-eventhub/azure.eventhub.eventhubconsumerclient) |
 
 ### <a name="what-ip-addresses-do-i-need-to-allow"></a>Hangi IP adreslerine izin vermem gerekir?
 Azure ile çalışırken, bazı durumlarda kurumsal güvenlik duvarınızdaki veya ara ortamınızdaki belirli IP adresi aralıklarına veya URL 'Lerine, kullanmakta olduğunuz veya kullanmaya çalıştığınız tüm Azure hizmetlerine erişim izni vermeniz gerekir. Event Hubs tarafından kullanılan IP adreslerinde trafiğe izin verildiğini doğrulayın. Azure Event Hubs tarafından kullanılan IP adresleri için: bkz. [Azure IP aralıkları ve hizmet etiketleri-genel bulut](https://www.microsoft.com/download/details.aspx?id=56519).

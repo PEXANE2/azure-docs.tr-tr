@@ -4,12 +4,12 @@ description: 'Tümleştirme görevleri için optimize edilmiş Microsoft bulut h
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 81b143219fd0b53d4cd00761af6b767c173ed88d
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 95167791efe13526b0a70c28fa89771542a9d220
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934875"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685570"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>Azure’da doğru tümleştirme ve otomasyon hizmetlerini seçme
 
@@ -79,7 +79,7 @@ Azure İşlevleri, WebJobs SDK’da derlendiğinden diğer Azure hizmetlerine y�
 |  | İşlevler | WebJobs SDK ile WebJobs |
 | --- | --- | --- |
 |**[Otomatik ölçeklendirmeyle](event-driven-scaling.md) [sunucusuz uygulama modeli](https://azure.microsoft.com/solutions/serverless/)**|✔||
-|**[Tarayıcıda geliştirin ve test edin](functions-create-first-azure-function.md)** |✔||
+|**[Tarayıcıda geliştirin ve test edin](./functions-get-started.md)** |✔||
 |**[Kullanım başına ödeme fiyatlandırması](consumption-plan.md)**|✔||
 |**[Logic Apps ile tümleştirme](functions-twitter-email.md)**|✔||
 | **Tetikleyici olayları** |[Zamanlayıcı](functions-bindings-timer.md)<br>[Azure Depolama kuyrukları ve blobları](functions-bindings-storage-blob.md)<br>[Azure Service Bus kuyrukları ve konuları](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub, Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Zamanlayıcı](functions-bindings-timer.md)<br>[Azure Depolama kuyrukları ve blobları](functions-bindings-storage-blob.md)<br>[Azure Service Bus kuyrukları ve konuları](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[Dosya sistemi](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
@@ -124,4 +124,4 @@ Aşağıdaki bağlantıları kullanarak tümleştirme hizmetleri hakkında daha 
 
 * [Power Automate kullanmaya başlama](/power-automate/getting-started)
 * [Mantıksal uygulama oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md)
-* [İlk Azure işlevinizi oluşturma](functions-create-first-azure-function.md)
+* [İlk Azure işlevinizi oluşturma](./functions-get-started.md)

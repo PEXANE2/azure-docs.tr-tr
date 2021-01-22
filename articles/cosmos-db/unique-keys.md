@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 165fb2937db5edfa4f51f62033afaf87cfff83ef
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9eb2b916bfe6c73a1535afb077b04fbb081dd5f1
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353111"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685729"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Azure Cosmos DB 'de benzersiz anahtar kısıtlamaları
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,7 +22,7 @@ Benzersiz anahtarlar bir Azure Cosmos kapsayıcısına veri bütünlüğü katma
 
 Benzersiz anahtar ilkesiyle bir kapsayıcı oluşturduktan sonra, benzersiz anahtar kısıtlaması tarafından belirtilen şekilde, bir mantıksal bölüm içinde yinelenerek yeni veya mevcut bir öğenin güncelleştirilmesi engellenir. Benzersiz anahtarla birlikte birleştirilmiş bölüm anahtarı, kapsayıcının kapsamındaki bir öğenin benzersizlik düzeyini garanti eder.
 
-Örneğin, benzersiz anahtar kısıtlaması ve bölüm anahtarı olarak e-posta adresi ile bir Azure Cosmos kapsayıcısını göz önünde bulundurun `CompanyID` . Kullanıcının e-posta adresini benzersiz bir anahtarla yapılandırdığınızda, her öğe belirli bir içinde benzersiz bir e-posta adresine sahiptir `CompanyID` . Yinelenen e-posta adresleriyle ve aynı bölüm anahtarı değeriyle iki öğe oluşturulamıyor. Azure Cosmos DB SQL (Core) API 'sinde, öğeler JSON değerleri olarak depolanır. Bu JSON değerleri büyük/küçük harfe duyarlıdır. Benzersiz anahtar olarak bir özellik seçtiğinizde, bu özellik için büyük/küçük harfe duyarlı değerler ekleyebilirsiniz. Örneğin, ad özelliğinde tanımlanmış benzersiz bir anahtarınız varsa, "Gaby", "Gaby" öğesinden farklıdır ve her ikisini de kapsayıcıya ekleyebilirsiniz.
+Örneğin, `Email address` benzersiz anahtar kısıtlaması ve bölüm anahtarı olarak bir Azure Cosmos kapsayıcısını göz önünde bulundurun `CompanyID` . Kullanıcının e-posta adresini benzersiz bir anahtarla yapılandırdığınızda, her öğe belirli bir içinde benzersiz bir e-posta adresine sahiptir `CompanyID` . Yinelenen e-posta adresleriyle ve aynı bölüm anahtarı değeriyle iki öğe oluşturulamıyor. Azure Cosmos DB SQL (Core) API 'sinde, öğeler JSON değerleri olarak depolanır. Bu JSON değerleri büyük/küçük harfe duyarlıdır. Benzersiz anahtar olarak bir özellik seçtiğinizde, bu özellik için büyük/küçük harfe duyarlı değerler ekleyebilirsiniz. Örneğin, ad özelliğinde tanımlanmış benzersiz bir anahtarınız varsa, "Gaby", "Gaby" öğesinden farklıdır ve her ikisini de kapsayıcıya ekleyebilirsiniz.
 
 Aynı e-posta adresine sahip olan ancak aynı adı, soyadı ve e-posta adresini içermeyen öğeler oluşturmak için benzersiz anahtar ilkesine daha fazla yol ekleyin. Yalnızca e-posta adresini temel alan benzersiz bir anahtar oluşturmak yerine, ad, soyadı ve e-posta adresi birleşimini içeren benzersiz bir anahtar da oluşturabilirsiniz. Bu anahtar, bileşik benzersiz anahtar olarak bilinir. Bu durumda, belirli bir verilen içindeki üç değerin her benzersiz birleşimine `CompanyID` izin verilir. 
 

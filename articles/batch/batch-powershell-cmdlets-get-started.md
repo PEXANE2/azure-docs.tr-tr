@@ -2,34 +2,34 @@
 title: PowerShell ile çalışmaya başlayın
 description: Batch kaynaklarını yönetmek için kullanabileceğiniz Azure PowerShell cmdlet'lerine hızlı bir giriş.
 ms.topic: how-to
-ms.date: 01/15/2019
+ms.date: 01/21/2021
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 3c152733ee3a75732d119db16f7db7c266740fdb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b51a2a7852df82625fb342bbbbc4a3a1cbf72a3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89079855"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685519"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Batch kaynaklarını PowerShell cmdlet'leriyle yönetme
 
-Azure Batch PowerShell cmdlet’leri ile Batch API'leri, Azure portalı ve Azure Komut Satırı Arabirimi (CLI) ile gerçekleştirdiğiniz Batch aynı görevlerin çoğunu gerçekleştirebilir ve betik oluşturabilirsiniz. Bu bilgiler, Batch hesabınızı yönetmek, havuzlar, işler ve görevler gibi Batch kaynaklarınızla da çalışmak için kullanabildiğiniz cmdlet’lere hızlı bir giriş yapmanızı sağlar.
+Azure Batch PowerShell cmdlet 'leri ile, birçok ortak Batch görevi gerçekleştirebilir ve betik oluşturabilirsiniz. Bu bilgiler, Batch hesabınızı yönetmek, havuzlar, işler ve görevler gibi Batch kaynaklarınızla da çalışmak için kullanabildiğiniz cmdlet’lere hızlı bir giriş yapmanızı sağlar.
 
 Tam Batch cmdlet’leri listesi ve ayrıntılı cmdlet sözdizimi için bkz. [Azure Batch cmdlet başvurusu](/powershell/module/az.batch).
 
-Bu makale, az Batch Module 1.0.0 içindeki cmdlet 'lere dayalıdır. Hizmet güncelleştirmeleri ve geliştirmeleri avantajlarından yararlanmak için Azure PowerShell modüllerinizi sık sık güncelleştirin.
+Hizmet güncelleştirmeleri ve geliştirmeleri avantajlarından yararlanmak için Azure PowerShell modüllerinizi sık sık güncelleştirin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* [Azure PowerShell modülünü yükleyin ve yapılandırın](/powershell/azure/). Yayın öncesi modül gibi belirli bir Azure Batch modülünü yüklemek için [PowerShell Galerisi](https://www.powershellgallery.com/packages/Az.Batch/1.0.0)'ne bakın.
+- [Azure PowerShell modülünü yükleyin ve yapılandırın](/powershell/azure/). Yayın öncesi modül gibi belirli bir Azure Batch modülünü yüklemek için [PowerShell Galerisi](https://www.powershellgallery.com/packages/Az.Batch/)'ne bakın.
 
-* Aboneliğinize bağlanmak için **Connect-AzAccount** cmdlet 'ini çalıştırın (Azure Batch cmdlet 'leri Azure Resource Manager modülünde):
+- Aboneliğinize bağlanmak için **Connect-AzAccount** cmdlet 'ini çalıştırın (Azure Batch cmdlet 'leri Azure Resource Manager modülünde):
 
   ```powershell
   Connect-AzAccount
   ```
 
-* **Batch sağlayıcı ad alanı ile kaydolun**. Bu işlemin **her abonelik için yalnızca bir kez** gerçekleştirilmesi gerekir.
+- **Batch sağlayıcı ad alanı ile kaydolun**. Bu işlemin **her abonelik için yalnızca bir kez** gerçekleştirilmesi gerekir.
   
   ```powershell
   Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
@@ -39,13 +39,13 @@ Bu makale, az Batch Module 1.0.0 içindeki cmdlet 'lere dayalıdır. Hizmet gün
 
 ### <a name="create-a-batch-account"></a>Batch hesabı oluşturma
 
-**New-AzBatchAccount** , belirtilen kaynak grubunda bir Batch hesabı oluşturur. Henüz bir kaynak grubunuz yoksa, [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet 'ini çalıştırarak bir tane oluşturun. **Location** parametresinde, "Orta ABD" gibi Azure bölgelerinden birini belirtin. Örneğin:
+**New-AzBatchAccount** , belirtilen kaynak grubunda bir Batch hesabı oluşturur. Henüz bir kaynak grubunuz yoksa, [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet 'ini çalıştırarak bir tane oluşturun. **Location** parametresinde, "Orta ABD" gibi Azure bölgelerinden birini belirtin. Örnek:
 
 ```powershell
 New-AzResourceGroup –Name MyBatchResourceGroup –Location "Central US"
 ```
 
-Ardından, kaynak grubunda bir Batch hesabı oluşturun. <*account_name*> hesap için bir ad ve kaynak grubunuzun konumunu ve adını belirtin. Batch hesabının oluşturulması biraz zaman alabilir. Örneğin:
+Ardından, kaynak grubunda bir Batch hesabı oluşturun. <*account_name*> hesap için bir ad ve kaynak grubunuzun konumunu ve adını belirtin. Batch hesabının oluşturulması biraz zaman alabilir. Örnek:
 
 ```powershell
 New-AzBatchAccount –AccountName <account_name> –Location "Central US" –ResourceGroupName <res_group_name>
@@ -79,7 +79,7 @@ New-AzBatchAccountKey -AccountName <account_name> -KeyType Primary
 
 ### <a name="delete-a-batch-account"></a>Batch hesabını silme
 
-**Remove-AzBatchAccount** bir Batch hesabını siler. Örneğin:
+**Remove-AzBatchAccount** bir Batch hesabını siler. Örnek:
 
 ```powershell
 Remove-AzBatchAccount -AccountName <account_name>
@@ -108,15 +108,15 @@ $context = Get-AzBatchAccount -AccountName <account_name>
 
 ## <a name="create-and-modify-batch-resources"></a>Batch kaynaklarını oluşturma ve değiştirme
 
-Batch hesabı altında kaynak oluşturmak için **New-AzBatchPool**, **New-azbatchjob**ve **New-azbatchtask** gibi cmdlet 'leri kullanın. Batch hesabı altında var olan kaynakların özelliklerini güncelleştirmek için **Get-** ve **Set-** cmdlet’leri, kaldırmak için de **Remove-** cmdlet’leri vardır.
+Batch hesabı altında kaynak oluşturmak için **New-AzBatchPool**, **New-azbatchjob** ve **New-azbatchtask** gibi cmdlet 'leri kullanın. Batch hesabı altında var olan kaynakların özelliklerini güncelleştirmek için **Get-** ve **Set-** cmdlet’leri, kaldırmak için de **Remove-** cmdlet’leri vardır.
 
 Bu cmdlet’lerinin birçoğunu kullanırken bir BatchContext nesnesi geçirmeye ek olarak aşağıdaki örnekte gösterildiği gibi ayrıntılı kaynak ayarlarını içeren nesneleri oluşturmanız ya da geçirmeniz gerekir. Diğer örnekler için her bir cmdlet’e ilişkin ayrıntılı yardıma bakın.
 
 ### <a name="create-a-batch-pool"></a>Batch havuzu oluşturma
 
-Bir Batch havuzu oluştururken ya da güncelleştirirken, işlem düğümlerinde işletim sisteminin bulut Hizmetleri yapılandırmasını veya sanal makine yapılandırmasını (bkz. [düğümler ve havuzlar](nodes-and-pools.md#configurations)) seçersiniz. Bulut hizmetleri yapılandırmasını belirtirseniz işlem düğümleriniz [Azure konuk işletim sistemi sürümlerinden](../cloud-services/cloud-services-guestos-update-matrix.md#releases) biriyle görüntülenir. Sanal makinenin yapılandırmasını belirtirseniz [Azure Sanal Makineler Market görüntüleri][vm_marketplace] içindeki desteklenen Linux ya da Windows sanal makine görüntülerinden birini seçebilir veya hazırladığınız özel bir görüntüyü kullanabilirsiniz.
+Bir Batch havuzu oluştururken veya güncelleştirirken bir [yapılandırma](nodes-and-pools.md#configurations)belirtirsiniz. Havuzlar genellikle, [Azure sanal makineler marketi](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images&page=1)'nde listelenen desteklenen Linux veya Windows VM görüntülerinden birini belirtmenize veya hazırladığınız özel bir görüntü sağlamanıza olanak sağlayan sanal makine yapılandırmasıyla yapılandırılmalıdır. Cloud Services yapılandırma havuzları yalnızca Windows işlem düğümleri sağlar ve tüm Batch özelliklerini desteklemez.
 
-**New-AzBatchPool**komutunu çalıştırdığınızda, işletim sistemi ayarlarını bir Pschoparlör ServiceConfiguration veya PSVirtualMachineConfiguration nesnesine geçirin. Örneğin, aşağıdaki kod parçacığı, sanal makine yapılandırmasındaki boyut Standard_A1 işlem düğümlerine sahip bir Batch havuzu oluşturur. Ubuntu Server 18,04-LTS ile yansıma. Burada **VirtualMachineConfiguration** parametresi *$configuration* değişkenini PSVirtualMachineConfiguration nesnesi olarak belirtir. **BatchContext** parametresi önceden tanımlanmış *$context* değişkenini BatchAccountContext nesnesi olarak belirtir.
+**New-AzBatchPool** komutunu çalıştırdığınızda, işletim sistemi ayarlarını bir PSVirtualMachineConfiguration veya Pscıscsiserviceconfiguration nesnesine geçirin. Örneğin, aşağıdaki kod parçacığı, sanal makine yapılandırmasındaki boyut Standard_A1 işlem düğümlerine sahip bir Batch havuzu oluşturur. Ubuntu Server 18,04-LTS ile yansıma. Burada **VirtualMachineConfiguration** parametresi *$configuration* değişkenini PSVirtualMachineConfiguration nesnesi olarak belirtir. **BatchContext** parametresi önceden tanımlanmış *$context* değişkenini BatchAccountContext nesnesi olarak belirtir.
 
 ```powershell
 $imageRef = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSImageReference" -ArgumentList @("UbuntuServer","Canonical","18.04-LTS")
@@ -130,7 +130,7 @@ Yeni havuzdaki işlem düğümlerinin hedef sayısı bir otomatik ölçeklendirm
 
 ## <a name="query-for-pools-jobs-tasks-and-other-details"></a>Havuzlar, işler, görevler ve diğer ayrıntılar için sorgulama
 
-Batch hesabı altında oluşturulan varlıkları sorgulamak için **Get-AzBatchPool**, **Get-azbatchjob**ve **Get-azbatchtask** gibi cmdlet 'leri kullanın.
+Batch hesabı altında oluşturulan varlıkları sorgulamak için **Get-AzBatchPool**, **Get-azbatchjob** ve **Get-azbatchtask** gibi cmdlet 'leri kullanın.
 
 ### <a name="query-for-data"></a>Verileri sorgulama
 
@@ -164,7 +164,7 @@ Get-AzBatchPool -Id "myPool" -BatchContext $context
 
 ### <a name="use-the-maxcount-parameter"></a>MaxCount parametresini kullanma
 
-Varsayılan olarak, her cmdlet en çok 1000 nesne döndürür. Bu sınıra ulaştıysanız, daha az nesne döndürmek için filtreyi daraltın veya **MaxCount** parametresini kullanarak kesin bir üst sınır ayarlayın. Örneğin:
+Varsayılan olarak, her cmdlet en çok 1000 nesne döndürür. Bu sınıra ulaştıysanız, daha az nesne döndürmek için filtreyi daraltın veya **MaxCount** parametresini kullanarak kesin bir üst sınır ayarlayın. Örnek:
 
 ```powershell
 Get-AzBatchTask -MaxCount 2500 -BatchContext $context
@@ -190,7 +190,10 @@ Get-AzBatchComputeNode -PoolId "myPool" -BatchContext $context | Restart-AzBatch
 
 ## <a name="application-package-management"></a>Uygulama paketi yönetimi
 
-Uygulama paketleri havuzlarınızdaki işlem düğümlerine uygulama dağıtmanın basit bir yolunu sağlar. Batch PowerShell cmdlet'leriyle, Batch hesabınızdaki uygulama paketlerini yükleyebilir, yönetebilir ve paket sürümlerini işlem düğümlerine dağıtabilirsiniz.
+[Uygulama paketleri](batch-application-packages.md) havuzlarınızdaki işlem düğümlerine uygulama dağıtmanın basitleştirilmiş bir yolunu sağlar. Batch PowerShell cmdlet'leriyle, Batch hesabınızdaki uygulama paketlerini yükleyebilir, yönetebilir ve paket sürümlerini işlem düğümlerine dağıtabilirsiniz.
+
+> [!IMPORTANT]
+> Uygulama paketlerini kullanmak için Batch hesabınıza bir Azure Depolama hesabı bağlamanız gerekir.
 
 Uygulama **oluşturma** :
 
@@ -247,17 +250,13 @@ $appPackageReference.ApplicationId = "MyBatchApplication"
 $appPackageReference.Version = "1.0"
 ```
 
-Şimdi yapılandırmayı ve havuzu oluşturun. Bu örnek, **CloudServiceConfiguration** `PSCloudServiceConfiguration` `$configuration` **OSFamily** `6` ' Windows Server 2019 ' için OSFamily öğesini ve ' nin ' i ' **olarak** ayarlayan bir tür nesnesi içinde başlatılan cloudserviceconfiguration parametresini kullanır `*` . Seçeneğe bağımsız değişken olarak paket başvuru nesnesini belirtin `ApplicationPackageReferences` :
+Şimdi havuzu oluşturun ve paket başvuru nesnesini, `ApplicationPackageReferences` seçeneğinin bağımsız değişkeni olarak belirtin:
 
 ```powershell
-$configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration" -ArgumentList @(6,"*")  # 6 = OSFamily 'Windows Server 2019'
-New-AzBatchPool -Id "PoolWithAppPackage" -VirtualMachineSize "Small" -CloudServiceConfiguration $configuration -BatchContext $context -ApplicationPackageReferences $appPackageReference
+New-AzBatchPool -Id "PoolWithAppPackage" -VirtualMachineSize "Small" -VirtualMachineConfiguration $configuration -BatchContext $context -ApplicationPackageReferences $appPackageReference
 ```
 
 [Batch uygulama paketleriyle işlem düğümlerine uygulama dağıtımı](batch-application-packages.md) konusunda, uygulama paketlerine ilişkin daha fazla bilgi bulabilirsiniz.
-
-> [!IMPORTANT]
-> Uygulama paketlerini kullanmak için Batch hesabınıza bir Azure Depolama hesabı bağlamanız gerekir.
 
 ### <a name="update-a-pools-application-packages"></a>Bir havuzun uygulama paketlerini güncelleştirme
 
@@ -272,7 +271,7 @@ $appPackageReference.Version = "2.0"
 
 ```
 
-Ardından, Batch’den havuzu alın, mevcut paketleri temizleyin, yeni paket başvurumuzu ekleyin ve Batch hizmetini yeni havuz ayarlarıyla güncelleştirin:
+Sonra, havuzu Batch 'ten alın, var olan paketleri temizleyin, yeni paket başvurusunu ekleyin ve Batch hizmetini yeni havuz ayarlarıyla güncelleştirin:
 
 ```powershell
 $pool = Get-AzBatchPool -BatchContext $context -Id "PoolWithAppPackage"
@@ -291,11 +290,9 @@ Get-AzBatchComputeNode -PoolId "PoolWithAppPackage" -BatchContext $context | Res
 ```
 
 > [!TIP]
-> Havuzdaki işlem düğümlerine birden fazla uygulama paketini dağıtabilirsiniz. Hâlihazırda dağıtılmış paketleri değiştirmek yerine uygulama paketi *eklemek* isterseniz yukarıdaki `$pool.ApplicationPackageReferences.Clear()` satırını atlayın.
+> Havuzdaki işlem düğümlerine birden fazla uygulama paketini dağıtabilirsiniz. Hâlihazırda dağıtılmış paketleri değiştirmek yerine uygulama paketi eklemek isterseniz yukarıdaki `$pool.ApplicationPackageReferences.Clear()` satırını atlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Ayrıntılı cmdlet sözdizimi ve örnekleri için bkz. [Azure Batch cmdlet başvurusu](/powershell/module/az.batch).
-* Batch’deki uygulamalar ve uygulama paketleri hakkında daha fazla bilgi için bkz. [Batch uygulama paketleriyle işlem düğümlerine uygulama dağıtımı](batch-application-packages.md).
-
-[vm_marketplace]: https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images&page=1
+- Ayrıntılı cmdlet sözdizimi ve örnekleri için [Azure Batch cmdlet başvurusunu](/powershell/module/az.batch) gözden geçirin.
+- [Batch uygulama paketleriyle işlem düğümlerine uygulama dağıtmayı](batch-application-packages.md)öğrenin.
