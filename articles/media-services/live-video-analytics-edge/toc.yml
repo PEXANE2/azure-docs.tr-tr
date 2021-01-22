@@ -59,8 +59,12 @@
   items:
     - name: C# Doğrudan Yöntem örnekleri
       href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp'
+    - name: C# SDK örnekleri
+      href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp-sdk'
     - name: Python Doğrudan Yöntem örnekleri
       href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-python'
+    - name: Python SDK örnekleri
+      href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-python-sdk'
 - name: Kavramlar
   items:
     - name: Medya grafiği

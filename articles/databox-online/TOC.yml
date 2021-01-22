@@ -397,6 +397,11 @@
   items:
     - name: Güvenlik temeli
       href: security-baseline.md
+- name: Başvurular
+  items:
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Kaynaklar
   items:
     - name: Azure Stack Edge Pro C# modülü örnekleri (.NET)

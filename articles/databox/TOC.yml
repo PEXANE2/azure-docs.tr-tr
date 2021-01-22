@@ -241,6 +241,9 @@
           href: /powershell/module/az.databox
         - name: .NET API'ları
           href: /dotnet/api/overview/azure/databox/management
+        - name: Azure İlkesi yerleşik ilkeler
+          displayName: 'samples, policies, definitions'
+          href: ./policy-reference.md
     - name: Kaynaklar
       items:
         - name: Data Box ürünü

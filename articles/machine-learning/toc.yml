@@ -70,10 +70,6 @@
         - name: Etiket resmi verileri
           displayName: 'tag, tagging, images'
           href: tutorial-labeling.md
-    - name: R SDK
-      items:
-        - name: İlk ML denemesini oluşturma (R)
-          href: tutorial-1st-r-experiment.md
     - name: CLI
       items:
         - name: CLI ile eğitim ve dağıtım
