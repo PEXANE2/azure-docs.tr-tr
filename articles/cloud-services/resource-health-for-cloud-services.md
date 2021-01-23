@@ -1,20 +1,25 @@
 ---
 title: Cloud Services için Kaynak Durumu (klasik)
 description: Bu makalede, Microsoft Azure Cloud Services (klasik) için Kaynak Durumu denetimi (RHC) desteği ele bir konuşuyor
-services: cloud-services
-author: tanmaygore
-ms.service: cloud-services
 ms.topic: article
-ms.date: 9/1/2020
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: f99dd8131df9f8bc5d3e4013d4438faa8c25e53b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 37294e681066eb27ace69bcacee3a813b750b8eb
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072722"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743517"
 ---
 # <a name="resource-health-check-rhc-support-for-azure-cloud-services-classic"></a>Azure Cloud Services için Kaynak Durumu denetimi (RHC) desteği (klasik)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
+
 Bu makalede, [Microsoft Azure Cloud Services (klasik)](https://azure.microsoft.com/services/cloud-services) Için kaynak durumu denetimi (RHC) desteği ele bir konuşuyor
 
 Bulut hizmetleri için [Azure Kaynak durumu](../service-health/resource-health-overview.md) , bulut hizmeti dağıtımınızı, rolleri & rol örneklerini etkileyen hizmet sorunlarını tanılamanıza ve destek almanıza yardımcı olur. Dağıtım, rol & rol örneği düzeyinde bulut hizmetlerinizin güncel ve geçmiş durumunu raporlar.
@@ -45,7 +50,7 @@ Bilinmiyor, bulut hizmeti dağıtımının toplu sistem durumunun belirlenemedi�
 Rol örnekleri temelde sanal makineler olduğundan ve VM 'Ler için sistem durumu denetimi rol örnekleri için yeniden kullanıldığından, VM terimi rol örneklerini temsil etmek için kullanılır. 
 
 ## <a name="cloud-services-deployment-level-annotations--their-meanings"></a>Cloud Services (dağıtım düzeyi) ek açıklamaları anlamları &
-| Ek Açıklama | Description | 
+| Ek Açıklama | Açıklama | 
 | --- | --- | 
 | Kullanılabilir| Bu bulut hizmeti dağıtımını etkileyen bilinen bir Azure platformu sorunu yok |
 | Bilinmiyor | Şu anda bu bulut hizmeti dağıtımının sistem durumunu belirleyemiyoruz | 
@@ -58,7 +63,7 @@ Rol örnekleri temelde sanal makineler olduğundan ve VM 'Ler için sistem durum
 | Bilinmiyor ve etkilenmiş olabilir | Şu anda bu bulut hizmeti dağıtımının sistem durumunu belirleyemedik. Bunun nedeni, bu sanal makineyi etkileyebilecek devam eden bir Azure hizmet kesintisi olabilir ve bu durum, kesinti çözümlendiğinde otomatik olarak kurtarılır |
 
 ## <a name="cloud-services-role-instance-level-annotations--their-meanings"></a>Cloud Services (rol örneği düzeyi) ek açıklamaları anlamları &
-| Ek Açıklama | Description | 
+| Ek Açıklama | Açıklama | 
 | --- | --- | 
 | Kullanılabilir | Bu sanal makineyi etkileyen bilinen bir Azure platformu sorunu yok | 
 | Bilinmiyor | Şu anda bu sanal makinenin durumunu belirleyemedik |

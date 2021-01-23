@@ -1,0 +1,97 @@
+- name: Cloud Services (genişletilmiş destek) belgeleri
+  href: index.yml
+- name: Genel Bakış
+  items:
+    - name: Cloud Services hakkında (genişletilmiş destek)
+      href: overview.md
+    - name: Dağıtım önkoşulları
+      href: deploy-prerequisite.md
+    - name: Yapılandırma dosyaları ve paketleme
+      href: cloud-services-model-and-package.md
+- name: Öğreticiler
+  items:
+    - name: Bulut hizmeti dağıtma-Portal
+      href: deploy-portal.md
+    - name: Bulut hizmeti dağıtma-PowerShell
+      href: deploy-powershell.md
+    - name: Bulut hizmeti dağıtma-şablon
+      href: deploy-template.md
+    - name: Bulut hizmeti dağıtma-Visual Studio
+      href: deploy-visual-studio.md
+  expanded: true
+- name: Kavramlar
+  items:
+    - name: Kullanılabilir VM boyutları
+      href: available-sizes.md
+    - name: Sık Sorulan Sorular
+      href: faq.md
+    - name: Konuk işletim sistemi yamaları
+      href: ../cloud-services/cloud-services-guestos-msrc-releases.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
+    - name: Konuk işletim sistemini kullanımdan kaldırma
+      href: ../cloud-services/cloud-services-guestos-retirement-policy.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
+    - name: Konuk işletim sistemi sürüm haberleri
+      href: ../cloud-services/cloud-services-guestos-update-matrix.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
+    - name: XML şeması
+      items:
+        - name: Csdef XML şeması
+          href: schema-csdef-file.md
+        - name: Loadbalanceraraştırma şeması
+          href: schema-csdef-loadbalancerprobe.md
+        - name: WebRole şeması
+          href: schema-csdef-webrole.md
+        - name: WorkerRole şeması
+          href: schema-csdef-workerrole.md
+        - name: NetworkTrafficRules şeması
+          href: schema-csdef-networktrafficrules.md
+        - name: Cscfg XML şeması
+          href: schema-cscfg-file.md
+        - name: Rol şeması
+          href: schema-cscfg-role.md
+        - name: NetworkConfiguration şeması
+          href: schema-cscfg-networkconfiguration.md
+- name: Nasıl yapılır
+  items:
+    - name: Uzantılara genel bakış
+      href: extensions.md
+    - name: Uzak Masaüstü uzantısını Uygula
+      href: enable-rdp.md
+    - name: WAD uzantısını Uygula
+      href: enable-wad.md
+    - name: Uyarıları etkinleştirme
+      href: enable-alerts.md
+    - name: Ölçeklendirmeyi yapılandırma
+      href: configure-scaling.md
+    - name: Sertifikalar
+      href: certificates-and-key-vault.md
+- name: Örnekler
+  items:
+    - name: Yeni bir bulut hizmeti oluşturun
+      href: sample-create-cloud-service.md
+    - name: Bulut hizmeti ayrıntılarını al
+      href: sample-get-cloud-service.md
+    - name: Bulut hizmetini sıfırlama
+      href: sample-reset-cloud-service.md
+- name: Başvuru
+  items:
+    - name: Az. CloudService modülü
+      href: 'https://www.powershellgallery.com/packages/Az.CloudService/0.1.0'
+    - name: PowerShell cmdlet'leri
+      href: 'https://docs.microsoft.com/powershell/module/az.cloudservice/?view=azps-5.4.0#cloudservice'
+    - name: ARM şablon başvurusu
+      href: 'https://docs.microsoft.com/azure/templates/microsoft.compute/cloudservices'
+    - name: REST
+      href: 'https://docs.microsoft.com/rest/api/compute/cloudservices'
+- name: Kaynaklar
+  items:
+    - name: Azure Yol Haritası
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: Öğrenme yolu
+      href: /learn/paths/azure-fundamentals/
+    - name: Microsoft Soru-Cevap
+      href: 'https://docs.microsoft.com/answers/topics/azure-cloud-services.html'
+    - name: Fiyatlandırma
+      href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
+    - name: Fiyatlandırma hesaplayıcı
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Hizmet güncelleştirmeleri
+      href: 'https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform='

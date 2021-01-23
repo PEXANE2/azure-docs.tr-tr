@@ -1,0 +1,83 @@
+### YamlMime:Landing
+title: Azure Cloud Services (genişletilmiş destek) belgeleri
+summary: Cloud Services’ı kullanarak yüksek oranda kullanılabilir ve ölçeklenebilir bulut uygulamaları ve API'ler barındırma ve çalıştırma hakkında bilgi edinin. Sanal makine konaklarının nasıl yönetileceğini ve yazılım yapılandırma, düzeltme eki uygulama ve yüklemeyi gösterir.
+metadata:
+  title: Azure Cloud Services (genişletilmiş destek) belgeleri
+  description: Cloud Services’ı kullanarak yüksek oranda kullanılabilir ve ölçeklenebilir bulut uygulamaları ve API'ler barındırmayı ve çalıştırmayı açıklar.
+  ms.service: cloud-services-extended-support
+  service: cloud-services-extended-support
+  ms.topic: landing-page
+  author: mimckitt
+  ms.author: mimckitt
+  ms.date: 03/06/2020
+  ms.openlocfilehash: 8f999851c1566b2a488daa4bdc5da73761f7ce0b
+  ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+  ms.translationtype: MT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 01/23/2021
+  ms.locfileid: "98745270"
+landingContent:
+- title: Cloud Services hakkında (genişletilmiş destek)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Cloud Services nedir (genişletilmiş destek)?
+      url: overview.md
+    - text: Dağıtım önkoşulları
+      url: deploy-prerequisite.md
+    - text: Yapılandırma dosyaları ve paketleme
+      url: cloud-services-model-and-package.md
+- title: Öğreticiler
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: PowerShell kullanarak dağıtma
+      url: deploy-powershell.md
+    - text: Azure portalını kullanarak dağıtma
+      url: deploy-portal.md
+    - text: ARM şablonlarını kullanarak dağıtma
+      url: deploy-template.md
+    - text: Visual Studio kullanarak dağıtma
+      url: deploy-visual-studio.md
+- title: Kavramlar
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Kullanılabilir boyutlar
+      url: available-sizes.md
+    - text: Sık sorulan sorular
+      url: faq.md
+- title: Nasıl Yapılır Kılavuzları
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Uzantıları
+      url: extensions.md
+    - text: Uyarıları etkinleştirme
+      url: enable-alerts.md
+    - text: Ölçeklendirmeyi yapılandırma
+      url: configure-scaling.md
+    - text: Sertifikalar
+      url: certificates-and-key-vault.md
+- title: Örnekler
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: Bulut hizmeti dağıtımı oluşturma
+      url: sample-create-cloud-service.md
+    - text: Bulut hizmeti dağıtımı hakkında bilgi alma
+      url: sample-get-cloud-service.md
+    - text: Bulut hizmeti dağıtımını güncelleştirme
+      url: sample-update-cloud-service.md
+    - text: Bulut hizmeti dağıtımını sıfırlama
+      url: sample-reset-cloud-service.md
+- title: Şema bilgileri
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Yapılandırma şeması
+      url: schema-cscfg-file.md
+    - text: Tanım Şeması
+      url: schema-csdef-file.md
+    - text: Yapılandırma rolü şeması
+      url: schema-cscfg-role.md
