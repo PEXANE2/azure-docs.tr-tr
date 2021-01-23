@@ -1,20 +1,25 @@
 ---
-title: Cloud Services rol yapılandırması XPath sayfa | Microsoft Docs
+title: Cloud Services (klasik) rol yapılandırması XPath bir sayfa | Microsoft Docs
 description: Ayarları bir ortam değişkeni olarak göstermek için bulut hizmeti rol yapılandırmasında kullanabileceğiniz çeşitli XPath ayarları.
-services: cloud-services
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 04/19/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 380b0be4e4e4b19d16cb611b0b472294339f2199
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 397bc6845dc8d2d8bc44c00c27f6c12037651337
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75386094"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741392"
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>Rol yapılandırma ayarlarını XPath ile bir ortam değişkeni olarak kullanıma sunma
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
+
 Bulut hizmeti çalışanı veya Web rolü hizmeti tanım dosyasında, çalışma zamanı yapılandırma değerlerini ortam değişkenleri olarak kullanıma sunabilirsiniz. Aşağıdaki XPath değerleri desteklenir (API değerlerine karşılık gelir).
 
 Bu XPath değerleri, [Microsoft. WindowsAzure. ServiceRuntime](/previous-versions/azure/reference/ee773173(v=azure.100)) kitaplığı aracılığıyla da kullanılabilir. 

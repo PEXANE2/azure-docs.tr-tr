@@ -3,23 +3,23 @@ title: Yönetim birimleri sorun giderme ve SSS-Azure Active Directory | Microsof
 description: Azure Active Directory, kısıtlanmış kapsama sahip izinler vermek için yönetim birimlerini araştırın.
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f585be2057bda19038fff1066e7864c6796576c0
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 0fb61388b13b912166c9c07b9ee28b365c4a63b9
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394688"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740389"
 ---
 # <a name="azure-ad-administrative-units-troubleshooting-and-faq"></a>Azure AD yönetim birimleri: sorun giderme ve SSS
 
@@ -47,7 +47,7 @@ Ayrıcalık yükselmesine engel olmak için, yönetim birimi kapsamlı bir yöne
 
 **S: yönetim birimleri neden gereklidir? Kapsam tanımlama yolu olarak güvenlik grupları kullanılamadı mu?**
 
-Y **:** Güvenlik grupları, mevcut bir amaç ve yetkilendirme modeline sahiptir. Örneğin, bir *Kullanıcı Yöneticisi* , Azure AD kuruluşundaki tüm güvenlik gruplarının üyeliğini yönetebilir. Rol, Salesforce gibi uygulamalara erişimi yönetmek için grupları kullanabilir. Bir *Kullanıcı Yöneticisi* , yetkilendirme modelinin kendisini yönetebilmelidir, bu da güvenlik grupları "kaynak gruplandırması" senaryolarını destekleyecek şekilde genişletilmişse sonuç olur. 
+Y **:** Güvenlik grupları, mevcut bir amaç ve yetkilendirme modeline sahiptir. Örneğin, bir *Kullanıcı Yöneticisi*, Azure AD kuruluşundaki tüm güvenlik gruplarının üyeliğini yönetebilir. Rol, Salesforce gibi uygulamalara erişimi yönetmek için grupları kullanabilir. Bir *Kullanıcı Yöneticisi* , yetkilendirme modelinin kendisini yönetebilmelidir, bu da güvenlik grupları "kaynak gruplandırması" senaryolarını destekleyecek şekilde genişletilmişse sonuç olur. 
 
 Windows Server Active Directory 'daki kuruluş birimleri gibi yönetim birimlerinin, çok çeşitli dizin nesnelerinin kapsamını yönetmek için bir yol sağlaması amaçlanmıştır. Güvenlik grupları, kaynak kapsamlarının üyesi olabilir. Yöneticinin yönetebileceği güvenlik grupları kümesini tanımlamak için güvenlik gruplarının kullanılması kafa karıştırıcı hale gelebilir.
 

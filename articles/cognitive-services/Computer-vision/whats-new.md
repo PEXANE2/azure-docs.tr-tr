@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 33987be39258adc74cf4f88dbb0544f7026f6086
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: d59826ba0e53c4b4146c13b354a85a124ac29b23
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183362"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98738110"
 ---
 # <a name="whats-new-in-computer-vision"></a>Görüntü İşleme yenilikleri
 
@@ -91,7 +91,7 @@ Artık görüntülerden yazdırılmış veya el yazısı metin ayıklamak için 
 * Ayıklanan her sözcüğün Güvenirlik puanı
 * Ek dil parametresiyle hem Ispanyolca hem de Ingilizce diller için destek
 
-3,0 API 'sini kullanmaya başlamak için [Extract metin hızlı](./quickstarts/csharp-hand-text.md?tabs=version-3) başlangıcını izleyin.
+3,0 API 'sini kullanmaya başlamak için [Extract metin hızlı](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/REST/CSharp-hand-text.md?tabs=version-3) başlangıcını izleyin.
 
 ## <a name="cognitive-service-updates"></a>Bilişsel hizmet güncelleştirmeleri
 

@@ -3,22 +3,22 @@ title: Kullanıcı Yönetimi (Önizleme) için personelimi kullanma-Azure AD | M
 description: Personel ve yönetim birimlerimi kullanarak Kullanıcı yönetimi temsilcisi seçme
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.date: 05/08/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 927d1f6dff9a24fb8427bb9c353e6cc61ac6a1f0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 304d88dfcf0c72769f27911186df04c66224419e
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376312"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740151"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>Personelim ile kullanıcılarınızı yönetme (Önizleme)
 
@@ -54,8 +54,8 @@ Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar ger
 Au 'yı yapılandırdıktan sonra, bu kapsamı personelime erişen kullanıcılarınıza uygulayabilirsiniz. Yalnızca bir yönetim rolü atanmış kullanıcılar personelime erişebilir. Personelimi etkinleştirmek için aşağıdaki adımları izleyin:
 
 1. Azure portal Kullanıcı Yöneticisi olarak oturum açın.
-2. Kullanıcı ayarlarına **Azure Active Directory**, Kullanıcı  >  **User settings**  >  **özelliği önizlemeleri**  >  **Kullanıcı özelliği Önizleme ayarlarını yönet**' e gidin.
-3. **Yöneticiler temsilcime erişebilme**altında, tüm kullanıcılar, seçili kullanıcılar veya Kullanıcı erişimi olmadan ' yi etkinleştirmeyi seçebilirsiniz.
+2. Kullanıcı ayarlarına **Azure Active Directory**, Kullanıcı  >    >  **özelliği önizlemeleri**  >  **Kullanıcı özelliği Önizleme ayarlarını yönet**' e gidin.
+3. **Yöneticiler temsilcime erişebilme** altında, tüm kullanıcılar, seçili kullanıcılar veya Kullanıcı erişimi olmadan ' yi etkinleştirmeyi seçebilirsiniz.
 
 > [!Note]
 > Yalnızca bir yönetici rolü atanmış kullanıcılar personelime erişebilir. Yönetici rolü atanmamış bir kullanıcı için personelimi etkinleştirirseniz, personelime erişemezler.
@@ -91,10 +91,10 @@ Aşağıdaki rollerin bir kullanıcının parolasını sıfırlama izni vardır:
 - [Ayrıcalıklı kimlik doğrulama Yöneticisi](permissions-reference.md#privileged-authentication-administrator)
 - [Genel yönetici](permissions-reference.md#global-administrator--company-administrator)
 - [Yardım Masası Yöneticisi](permissions-reference.md#helpdesk-administrator)
-- [Kullanıcı Yöneticisi](permissions-reference.md#user-administrator)
+- [Kullanıcı yöneticisi](permissions-reference.md#user-administrator)
 - [Parola yöneticisi](permissions-reference.md#password-administrator)
 
-**Personelimin**içinden bir kullanıcının profilini açın. **Parolayı Sıfırla**' yı seçin.
+**Personelimin** içinden bir kullanıcının profilini açın. **Parolayı Sıfırla**' yı seçin.
 
 - Kullanıcı yalnızca bulutta ise, kullanıcıya verebileceğiniz geçici bir parola görebilirsiniz.
 - Kullanıcı şirket içi Active Directory eşitlendiğinde, şirket içi AD ilkelerinizi karşılayan bir parola girebilirsiniz. Daha sonra bu parolayı kullanıcıya verebilirsiniz.
@@ -105,7 +105,7 @@ Kullanıcının bir sonraki oturum açışlarında parolasını değiştirmesi g
 
 ## <a name="manage-a-phone-number"></a>Telefon numarasını yönetme
 
-**Personelimin**içinden bir kullanıcının profilini açın.
+**Personelimin** içinden bir kullanıcının profilini açın.
 
 - Kullanıcı için telefon numarası eklemek üzere **telefon numarası Ekle** bölümünü seçin
 - Telefon numarasını değiştirmek için **telefon numarasını Düzenle** ' yi seçin

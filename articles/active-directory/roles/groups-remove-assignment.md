@@ -2,23 +2,23 @@
 title: Rol atamalarını Azure Active Directory bir gruptan Kaldır | Microsoft Docs
 description: Kimlik yönetimi temsilcisi seçme için özel Azure AD rollerini önizleyin. Azure portal, PowerShell veya Graph API Azure rollerini yönetin.
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d58465c56be310d3f9d500ab551c7d2b19ffaa83
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 89fa3bb94f72ab04c2ea68641b8d1dff7695aa53
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378389"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741035"
 ---
 # <a name="remove-role-assignments-from-a-group-in-azure-active-directory"></a>Rol atamalarını Azure Active Directory gruptan Kaldır
 
@@ -28,15 +28,15 @@ Bu makalede, bir BT yöneticisinin gruplara atanan Azure AD rollerini nasıl kal
 
 1. Azure AD kuruluşunda ayrıcalıklı rol yöneticisi veya genel yönetici izinleriyle [Azure AD Yönetim merkezinde](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) oturum açın.
 
-1. **Roller ve yöneticiler** > * *_rol adı_* _ ' i seçin.
+1. **Roller ve yöneticiler** > **_rol adı_* _ ' i seçin.
 
 1. Rol atamasını kaldırmak istediğiniz grubu seçin ve _ * Atamayı Kaldır * * ' ı seçin.
 
    ![Seçili bir gruptan rol atamasını Kaldır.](./media/groups-remove-assignment/remove-assignment.png)
 
-1. Eyleminizi onaylamanız istendiğinde **Evet** ' i seçin.
+1. Eyleminizi onaylamanız istendiğinde **Evet**' i seçin.
 
-## <a name="using-powershell"></a>PowerShell'i kullanma
+## <a name="using-powershell"></a>PowerShell’i kullanma
 
 ### <a name="create-a-group-that-can-be-assigned-to-role"></a>Role atanabilecek bir grup oluşturun
 

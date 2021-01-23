@@ -1,8 +1,8 @@
-- name: Cloud Services belgeleri
+- name: Cloud Services (klasik) belgeleri
   href: index.yml
 - name: Genel Bakış
   items:
-    - name: Cloud Services nedir?
+    - name: Cloud Services (klasik) nedir?
       href: cloud-services-choose-me.md
     - name: Bulut hizmeti yapılandırma dosyaları ve paketleme
       href: cloud-services-model-and-package.md

@@ -1,20 +1,24 @@
 ---
-title: Bulut hizmetini güncelleştirme | Microsoft Docs
+title: Bulut hizmetini güncelleştirme (klasik) | Microsoft Docs
 description: Azure 'da Cloud Services 'ı güncelleştirmeyi öğrenin. Bulut hizmetindeki bir güncelleştirmenin kullanılabilirliği güvence altına almak için nasıl devam eden hakkında bilgi edinin.
-services: cloud-services
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 04/19/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: f12e5b6b0b2902d69936b9cf2695b7ee21db88e2
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 5d85003ca7b4307c308914484502ae03269f66ac
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075051"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741120"
 ---
-# <a name="how-to-update-a-cloud-service"></a>Bulut hizmetini güncelleştirme
+# <a name="how-to-update-an-azure-cloud-service-classic"></a>Azure bulut hizmetini güncelleştirme (klasik)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
 
 Hem rollerinin hem de konuk işletim sisteminin dahil olduğu bir bulut hizmetini güncelleştirmek, üç adımlı bir işlemdir. İlk olarak, yeni bulut hizmeti veya işletim sistemi sürümü için ikili dosyalar ve yapılandırma dosyaları karşıya yüklenmelidir. Daha sonra Azure, yeni bulut hizmeti sürümünün gereksinimlerine bağlı olarak bulut hizmeti için işlem ve ağ kaynaklarını ayırır. Son olarak, Azure 'un kullanılabilirliği korurken kiracıyı yeni sürüme veya Konuk işletim sistemine artımlı olarak güncellemek için sıralı bir yükseltme gerçekleştirir. Bu makalede, bu son adımın ayrıntıları (sıralı yükseltme) açıklanmaktadır.
 
@@ -149,7 +153,7 @@ Yükseltmenin dağıtımı sırasında, [yükseltme dağıtımını](/previous-v
 <a name="multiplemutatingoperations"></a>
 
 ## <a name="initiating-multiple-mutating-operations-on-an-ongoing-deployment"></a>Devam eden bir dağıtımda birden çok değiştirici işlem başlatılıyor
-Bazı durumlarda, devam eden bir dağıtımda birden çok eşzamanlı işlem başlatmak isteyebilirsiniz. Örneğin, bir hizmet güncelleştirmesi gerçekleştirebilir ve bu güncelleştirme hizmetiniz genelinde kullanıma sunulurken, örneğin güncelleştirmeyi geri almak, farklı bir güncelleştirme uygulamak veya dağıtımı silmek için bazı değişiklikler yapmak isteyebilirsiniz. Bir hizmet yükseltmesi, yükseltilen bir rol örneğinin sürekli kilitlenmesine neden olan bir önemlidir Code içeriyorsa bunun gerekli olabileceği bir durumdur. Bu durumda, yükseltilen etki alanındaki yetersiz sayıda örnek olduğundan, Azure yapı denetleyicisi bu yükseltmeyi uygulamak için ilerleme yapamayacak. Bu durum, *takılmış bir dağıtım*olarak adlandırılır. Güncelleştirmeyi geri alarak veya başarısız olan birinin üstüne yeni bir güncelleştirme uygulayarak dağıtımı kaldırabilirsiniz.
+Bazı durumlarda, devam eden bir dağıtımda birden çok eşzamanlı işlem başlatmak isteyebilirsiniz. Örneğin, bir hizmet güncelleştirmesi gerçekleştirebilir ve bu güncelleştirme hizmetiniz genelinde kullanıma sunulurken, örneğin güncelleştirmeyi geri almak, farklı bir güncelleştirme uygulamak veya dağıtımı silmek için bazı değişiklikler yapmak isteyebilirsiniz. Bir hizmet yükseltmesi, yükseltilen bir rol örneğinin sürekli kilitlenmesine neden olan bir önemlidir Code içeriyorsa bunun gerekli olabileceği bir durumdur. Bu durumda, yükseltilen etki alanındaki yetersiz sayıda örnek olduğundan, Azure yapı denetleyicisi bu yükseltmeyi uygulamak için ilerleme yapamayacak. Bu durum, *takılmış bir dağıtım* olarak adlandırılır. Güncelleştirmeyi geri alarak veya başarısız olan birinin üstüne yeni bir güncelleştirme uygulayarak dağıtımı kaldırabilirsiniz.
 
 Hizmeti güncelleştirmek veya yükseltmek için ilk istek Azure Fabric denetleyicisi tarafından alındıktan sonra, sonraki değiştirici işlemleri başlatabilirsiniz. Diğer bir deyişle, başka bir değiştirici işleme başlamadan önce ilk işlemin tamamlanmasını beklemeniz gerekmez.
 

@@ -3,37 +3,37 @@ title: Yönetim birimleri ekleme ve kaldırma-Azure Active Directory | Microsoft
 description: Azure Active Directory içindeki rol izinlerinin kapsamını kısıtlamak için yönetim birimlerini kullanın.
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbe76d21d948525421790f574830da7b3a163216
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 537847d84b417814bddb16cf5b961bdb221af488
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395402"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740457"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>Azure Active Directory Yönetim birimlerini yönetme
 
 Azure Active Directory (Azure AD) ' da daha ayrıntılı yönetim denetimi için, bir veya daha fazla yönetim birimiyle sınırlı bir kapsama sahip bir Azure AD rolüne kullanıcı atayabilirsiniz.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 1. [Grafik Gezgini](https://aka.ms/ge)aracılığıyla aşağıdaki yönergelerden sorguları çalıştırmak için aşağıdakileri yapın:
 
     a. Azure portal Azure AD 'ye gidin. 
     
-    b. Uygulamalar listesinde, **Graph Explorer** ' ı seçin.
+    b. Uygulamalar listesinde, **Graph Explorer**' ı seçin.
     
-    c. **İzinler** bölmesinde, **Graph Explorer Için yönetici onayı ver** ' i seçin.
+    c. **İzinler** bölmesinde, **Graph Explorer Için yönetici onayı ver**' i seçin.
 
     !["Graph Explorer için yönetici onayı verme" bağlantısını gösteren ekran görüntüsü.](./media/admin-units-manage/select-graph-explorer.png)
 
@@ -44,9 +44,9 @@ Azure Active Directory (Azure AD) ' da daha ayrıntılı yönetim denetimi için
 
 Azure portal veya PowerShell 'i kullanarak bir yönetim birimi ekleyebilirsiniz.
 
-### <a name="use-the-azure-portal"></a>Azure portalı kullanma
+### <a name="use-the-azure-portal"></a>Azure portalını kullanma
 
-1. Azure portal Azure AD 'ye gidin. Ardından, sol bölmede **yönetim birimleri** ' ni seçin.
+1. Azure portal Azure AD 'ye gidin. Ardından, sol bölmede **yönetim birimleri**' ni seçin.
 
     ![Azure AD 'de "yönetim birimleri" bağlantısının ekran görüntüsü.](./media/admin-units-manage/nav-to-admin-units.png)
 
@@ -83,11 +83,11 @@ Request body
 
 Azure AD 'de, artık yönetici rolleri için bir kapsam birimi olarak ihtiyacınız olmayan bir yönetim birimini kaldırabilirsiniz.
 
-### <a name="use-the-azure-portal"></a>Azure portalı kullanma
+### <a name="use-the-azure-portal"></a>Azure portalını kullanma
 
-1. Azure portal **Azure AD** ' a gidin ve ardından **yönetim birimleri** ' ni seçin. 
-1. Silinecek yönetim birimini seçin ve **Sil** ' i seçin. 
-1. Yönetim birimini silmek istediğinizi onaylamak için **Evet** ' i seçin. Yönetim birimi silinir.
+1. Azure portal **Azure AD**' a gidin ve ardından **yönetim birimleri**' ni seçin. 
+1. Silinecek yönetim birimini seçin ve **Sil**' i seçin. 
+1. Yönetim birimini silmek istediğinizi onaylamak için **Evet**' i seçin. Yönetim birimi silinir.
 
 ![Yönetim birimi silme düğmesi ve onay penceresinin ekran görüntüsü.](./media/admin-units-manage/select-admin-unit-to-delete.png)
 

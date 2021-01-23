@@ -1,28 +1,25 @@
 ---
 title: Hizmet Yönetim API'si (Python)-özellik kılavuzunu kullanın
 description: Python 'dan programlama yoluyla ortak hizmet yönetimi görevlerini nasıl gerçekleştireceğinizi öğrenin.
-services: cloud-services
-documentationcenter: python
-author: tanmaygore
-manager: vashan
-editor: ''
-ms.assetid: 61538ec0-1536-4a7e-ae89-95967fe35d73
-ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: python
 ms.topic: article
-ms.date: 05/30/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.custom: devx-track-python
-ms.openlocfilehash: ef155116904ee0d3ecab250a254010e2f7664757
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 02993f2b79e37e5e50c20c4ee07220bcbd36edb8
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073997"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741409"
 ---
 # <a name="use-service-management-from-python"></a>Python 'da hizmet yönetimi kullanma
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
+
 Bu kılavuzda, Python 'dan programlı olarak ortak hizmet yönetimi görevlerini nasıl gerçekleştireceğiniz gösterilmektedir. [Python Için Azure SDK](https://github.com/Azure/azure-sdk-for-python) 'Daki **ServiceManagementService** sınıfı, [Azure Portal][management-portal]mevcut olan hizmet yönetimiyle ilgili işlevlerin büyük bölümüne programlı erişimi destekler. Bulut Hizmetleri, dağıtımlar, veri yönetimi hizmetleri ve sanal makineler oluşturmak, güncelleştirmek ve silmek için bu işlevi kullanabilirsiniz. Bu işlevsellik, hizmet yönetimine programlı erişim gerektiren uygulamalar oluşturmak için yararlı olabilir.
 
 ## <a name="what-is-service-management"></a><a name="WhatIs"> </a>Hizmet yönetimi nedir?
@@ -127,12 +124,12 @@ Bir bulut hizmeti veya depolama hizmeti oluşturduğunuzda, geçerli bir konum s
 * Doğu ABD
 * Doğu Japonya
 * Batı Japonya
-* Brezilya Güney
+* Güney Brezilya
 * Doğu Avustralya
 * Güneydoğu Avustralya
 
 ## <a name="create-a-cloud-service"></a><a name="CreateCloudService"> </a>Bulut hizmeti oluşturma
-Bir uygulama oluşturup Azure 'da çalıştırdığınızda, koda ve yapılandırmaya birlikte bir Azure [bulut hizmeti][cloud service]denir. (Önceki Azure sürümlerindeki barındırılan bir *hizmet* olarak bilinirdi.) ** \_ Barındırılan \_ hizmet oluşturma** yöntemini kullanarak yeni bir barındırılan hizmet oluşturabilirsiniz. Barındırılan bir hizmet adı (Azure 'da benzersiz olması gerekir), bir etiket (base64 olarak otomatik olarak kodlanır), bir açıklama ve bir konum sağlayarak hizmeti oluşturun.
+Bir uygulama oluşturup Azure 'da çalıştırdığınızda, koda ve yapılandırmaya birlikte bir Azure [bulut hizmeti][cloud service]denir. (Önceki Azure sürümlerindeki barındırılan bir *hizmet* olarak bilinirdi.) **\_ Barındırılan \_ hizmet oluşturma** yöntemini kullanarak yeni bir barındırılan hizmet oluşturabilirsiniz. Barındırılan bir hizmet adı (Azure 'da benzersiz olması gerekir), bir etiket (base64 olarak otomatik olarak kodlanır), bir açıklama ve bir konum sağlayarak hizmeti oluşturun.
 
 ```python
 from azure import *
@@ -148,7 +145,7 @@ location = 'West US'
 sms.create_hosted_service(name, label, desc, location)
 ```
 
-Şirket içinde barındırılan Hizmetleri **Listele \_ \_ ** yöntemiyle aboneliğiniz için tüm barındırılan Hizmetleri listeleyebilirsiniz.
+Şirket içinde barındırılan Hizmetleri **Listele \_ \_** yöntemiyle aboneliğiniz için tüm barındırılan Hizmetleri listeleyebilirsiniz.
 
 ```python
 result = sms.list_hosted_services()
@@ -160,7 +157,7 @@ for hosted_service in result:
     print('')
 ```
 
-Belirli bir barındırılan hizmet hakkında bilgi almak için barındırılan hizmet adını ** \_ barındırılan \_ hizmet \_ özelliklerini al** metoduna geçirin.
+Belirli bir barındırılan hizmet hakkında bilgi almak için barındırılan hizmet adını **\_ barındırılan \_ hizmet \_ özelliklerini al** metoduna geçirin.
 
 ```python
 hosted_service = sms.get_hosted_service_properties('myhostedservice')
@@ -170,10 +167,10 @@ print('Management URL: ' + hosted_service.url)
 print('Location: ' + hosted_service.hosted_service_properties.location)
 ```
 
-Bir bulut hizmeti oluşturduktan sonra, ** \_ dağıtım oluşturma** yöntemiyle kodunuzu hizmete dağıtın.
+Bir bulut hizmeti oluşturduktan sonra, **\_ dağıtım oluşturma** yöntemiyle kodunuzu hizmete dağıtın.
 
 ## <a name="delete-a-cloud-service"></a><a name="DeleteCloudService"> </a>Bulut hizmetini silme
-Hizmet adını ** \_ barındırılan \_ hizmet** yöntemine geçirerek bir bulut hizmetini silebilirsiniz.
+Hizmet adını **\_ barındırılan \_ hizmet** yöntemine geçirerek bir bulut hizmetini silebilirsiniz.
 
 ```python
 sms.delete_hosted_service('myhostedservice')
@@ -182,7 +179,7 @@ sms.delete_hosted_service('myhostedservice')
 Bir hizmeti silebilmeniz için önce hizmet için tüm dağıtımların silinmesi gerekir. Daha fazla bilgi için bkz. [bir dağıtımı silme](#DeleteDeployment).
 
 ## <a name="delete-a-deployment"></a><a name="DeleteDeployment"> </a>Bir dağıtımı silme
-Bir dağıtımı silmek için, ** \_ dağıtımı Sil** yöntemini kullanın. Aşağıdaki örnek adlı bir dağıtımın nasıl silineceğini göstermektedir `v1` :
+Bir dağıtımı silmek için, **\_ dağıtımı Sil** yöntemini kullanın. Aşağıdaki örnek adlı bir dağıtımın nasıl silineceğini göstermektedir `v1` :
 
 ```python
 from azure import *
@@ -213,7 +210,7 @@ operation_result = sms.get_operation_status(result.request_id)
 print('Operation status: ' + operation_result.status)
 ```
 
-Önceki örnekte **, depolama hesabı oluşturma işleminin durumu \_ \_ ** , ** \_ depolama \_ hesabı oluşturma** işlemi ** \_ \_ durum** metoduna döndürülen sonuç alınarak alınabilir. 
+Önceki örnekte **, depolama hesabı oluşturma işleminin durumu \_ \_** , **\_ depolama \_ hesabı oluşturma** işlemi **\_ \_ durum** metoduna döndürülen sonuç alınarak alınabilir. 
 
 Depolama hesaplarınızı ve bunların özelliklerini **liste \_ depolama \_ hesapları** yöntemiyle listeleyebilirsiniz.
 
@@ -231,7 +228,7 @@ for account in result:
 ```
 
 ## <a name="delete-a-storage-service"></a><a name="DeleteStorageService"> </a>Depolama hizmetini silme
-Depolama hizmetini silmek için depolama hizmeti adını ** \_ depolama \_ hesabı silme** metoduna geçirin. Depolama hizmeti silindiğinde, hizmette depolanan tüm veriler (Bloblar, tablolar ve kuyruklar) silinir.
+Depolama hizmetini silmek için depolama hizmeti adını **\_ depolama \_ hesabı silme** metoduna geçirin. Depolama hizmeti silindiğinde, hizmette depolanan tüm veriler (Bloblar, tablolar ve kuyruklar) silinir.
 
 ```python
 from azure import *
@@ -243,7 +240,7 @@ sms.delete_storage_account('mystorageaccount')
 ```
 
 ## <a name="list-available-operating-systems"></a><a name="ListOperatingSystems"> </a>Kullanılabilir işletim sistemlerini listeleme
-Barındırma hizmetleri için kullanılabilen işletim sistemlerini listelemek için, ** \_ işletim \_ sistemlerini Listele** yöntemini kullanın.
+Barındırma hizmetleri için kullanılabilen işletim sistemlerini listelemek için, **\_ işletim \_ sistemlerini Listele** yöntemini kullanın.
 
 ```python
 from azure import *
@@ -259,7 +256,7 @@ for os in result:
     print('Active: ' + str(os.is_active))
 ```
 
-Alternatif olarak, işletim sistemlerini ailesine göre gruplandıran ** \_ işletim \_ sistemi \_ aileleri** yöntemini de kullanabilirsiniz.
+Alternatif olarak, işletim sistemlerini ailesine göre gruplandıran **\_ işletim \_ sistemi \_ aileleri** yöntemini de kullanabilirsiniz.
 
 ```python
 result = sms.list_operating_system_families()
@@ -274,7 +271,7 @@ for family in result:
 ```
 
 ## <a name="create-an-operating-system-image"></a><a name="CreateVMImage"> </a>Bir işletim sistemi görüntüsü oluşturma
-Görüntü deposuna bir işletim sistemi görüntüsü eklemek için, ** \_ işletim sistemi \_ görüntüsü Ekle** yöntemini kullanın.
+Görüntü deposuna bir işletim sistemi görüntüsü eklemek için, **\_ işletim sistemi \_ görüntüsü Ekle** yöntemini kullanın.
 
 ```python
 from azure import *
@@ -293,7 +290,7 @@ operation_result = sms.get_operation_status(result.request_id)
 print('Operation status: ' + operation_result.status)
 ```
 
-Kullanılabilir işletim sistemi görüntülerini listelemek için ** \_ OS \_ görüntülerini Listele** yöntemini kullanın. Tüm platform görüntülerini ve Kullanıcı görüntülerini içerir.
+Kullanılabilir işletim sistemi görüntülerini listelemek için **\_ OS \_ görüntülerini Listele** yöntemini kullanın. Tüm platform görüntülerini ve Kullanıcı görüntülerini içerir.
 
 ```python
 result = sms.list_os_images()
@@ -310,7 +307,7 @@ for image in result:
 ```
 
 ## <a name="delete-an-operating-system-image"></a><a name="DeleteVMImage"> </a>Bir işletim sistemi görüntüsünü silme
-Bir Kullanıcı görüntüsünü silmek için ** \_ OS \_ görüntüsünü silme** yöntemini kullanın.
+Bir Kullanıcı görüntüsünü silmek için **\_ OS \_ görüntüsünü silme** yöntemini kullanın.
 
 ```python
 from azure import *
@@ -325,7 +322,7 @@ print('Operation status: ' + operation_result.status)
 ```
 
 ## <a name="create-a-virtual-machine"></a><a name="CreateVM"> </a>Sanal makine oluşturma
-Bir sanal makine oluşturmak için önce bir [bulut hizmeti](#CreateCloudService)oluşturmanız gerekir. Ardından sanal makine dağıtımı oluşturma yöntemini kullanarak sanal makine **dağıtımını \_ \_ \_ ** oluşturun.
+Bir sanal makine oluşturmak için önce bir [bulut hizmeti](#CreateCloudService)oluşturmanız gerekir. Ardından sanal makine dağıtımı oluşturma yöntemini kullanarak sanal makine **dağıtımını \_ \_ \_** oluşturun.
 
 ```python
 from azure import *
@@ -365,7 +362,7 @@ sms.create_virtual_machine_deployment(service_name=name,
 ```
 
 ## <a name="delete-a-virtual-machine"></a><a name="DeleteVM"> </a>Sanal makineyi sil
-Bir sanal makineyi silmek için önce dağıtımı **Sil \_ ** yöntemini kullanarak dağıtımı silmelisiniz.
+Bir sanal makineyi silmek için önce dağıtımı **Sil \_** yöntemini kullanarak dağıtımı silmelisiniz.
 
 ```python
 from azure import *
@@ -377,7 +374,7 @@ sms.delete_deployment(service_name='myvm',
     deployment_name='myvm')
 ```
 
-Bulut hizmeti daha sonra ** \_ barındırılan \_ hizmet silme** yöntemi kullanılarak silinebilir.
+Bulut hizmeti daha sonra **\_ barındırılan \_ hizmet silme** yöntemi kullanılarak silinebilir.
 
 ```python
 sms.delete_hosted_service(service_name='myvm')
@@ -413,13 +410,13 @@ result = sms.capture_vm_image(
     )
 ```
 
-Görüntüyü başarıyla yakaladığınızdan emin olmak için ** \_ VM \_ görüntülerini Listele** API 'sini kullanın. Resminizin sonuçlarda görüntülendiğinden emin olun.
+Görüntüyü başarıyla yakaladığınızdan emin olmak için **\_ VM \_ görüntülerini Listele** API 'sini kullanın. Resminizin sonuçlarda görüntülendiğinden emin olun.
 
 ```python
 images = sms.list_vm_images()
 ```
 
-Son olarak, yakalanan görüntüyü kullanarak sanal makineyi oluşturmak için, ** \_ sanal \_ makine \_ dağıtımı oluşturma** yöntemini daha önce olduğu gibi kullanın, ancak bu zaman bunun yerine vm_image_name geçer.
+Son olarak, yakalanan görüntüyü kullanarak sanal makineyi oluşturmak için, **\_ sanal \_ makine \_ dağıtımı oluşturma** yöntemini daha önce olduğu gibi kullanın, ancak bu zaman bunun yerine vm_image_name geçer.
 
 ```python
 from azure import *

@@ -12,12 +12,12 @@ metadata:
   title: Language Understanding (LUIS) Belgeleri
   titleSuffix: Azure Cognitive Services
   description: Language Understanding (LUIS) hizmeti, bir kişinin kendi sözcükleriyle ifade ettiği isteği uygulamanızın anlamasını sağlar. LUIS, geliştiricilerin doğal dilde kullanıcı girdisi alabilen ve bu girdiden anlam çıkarabilen uygulamalar derlemesini sağlamak için makine öğrenimini kullanır.
-  ms.openlocfilehash: ff928f1879f8cfd356fa020ff6afaa68b72f63c5
-  ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
-  ms.translationtype: HT
+  ms.openlocfilehash: ca9209295d8265eeac5545091e4d4c5c9678e994
+  ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+  ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 11/21/2020
-  ms.locfileid: "95019390"
+  ms.lasthandoff: 01/23/2021
+  ms.locfileid: "98738076"
 landingContent:
 - title: Language Understanding (LUIS) hakkında
   linkLists:
@@ -60,9 +60,9 @@ landingContent:
     - text: 'Portal: Yeni LUIS uygulaması oluşturma'
       url: get-started-portal-build-app.md
     - text: C# SDK'sını kullanma
-      url: azure-sdk-quickstart.md?pivots=programming-language-csharp
+      url: ./client-libraries-rest-api.md?pivots=rest-api
     - text: Python SDK’sını kullanma
-      url: azure-sdk-quickstart.md?pivots=programming-language-python
+      url: ./client-libraries-rest-api.md?pivots=rest-api
   - linkListType: how-to-guide
     links:
     - text: Yeni LUIS uygulaması oluşturma
@@ -82,13 +82,13 @@ landingContent:
     - text: Etkileşimli test
       url: luis-concept-test.md
     - text: Toplu işe testi
-      url: luis-concept-batch-test.md
+      url: ./luis-how-to-batch-test.md
   - linkListType: quickstart
     links:
     - text: 'Portal: Uygulamayı tahmin uç noktasına dağıtma'
       url: get-started-portal-deploy-app.md
     - text: SDK’yı kullanma
-      url: azure-sdk-quickstart.md
+      url: ./client-libraries-rest-api.md?pivots=rest-api
   - linkListType: how-to-guide
     links:
     - text: Uygulamanızın sürümünü oluşturma
@@ -106,7 +106,7 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: SDK’yı kullanma
-      url: azure-sdk-quickstart.md
+      url: ./client-libraries-rest-api.md?pivots=rest-api
   - linkListType: quickstart
     links:
     - text: REST kullanarak C# ile

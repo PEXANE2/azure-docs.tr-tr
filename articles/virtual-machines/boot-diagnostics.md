@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 3ae300ca2746ab9e3478d3fe14fd6fc49c95a93d
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: dc9f7dfdf33411f11d51734b48105be200874d02
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071740"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98738127"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure önyükleme tanılaması
 
@@ -45,7 +45,7 @@ Azure portal bir VM oluştururken, varsayılan ayar, bir yönetilen depolama hes
 :::image type="content" source="./media/boot-diagnostics/boot-diagnostics-enable-portal.png" alt-text="VM oluşturma sırasında yönetilen önyükleme tanılamayı etkinleştiren ekran görüntüsü.":::
 
 ### <a name="enable-managed-boot-diagnostics-using-cli"></a>CLı kullanarak yönetilen önyükleme tanılamayı etkinleştirme
-Yönetilen depolama hesabıyla önyükleme Tanılaması, Azure CLı 2.12.0 ve sonrasında desteklenir. Depolama hesabı için bir ad veya URI girişi yapmazsanız, yönetilen bir hesap kullanılacaktır. Daha fazla bilgi ve kod örneği için bkz. [önyükleme tanılaması Için CLI belgeleri](/cli/azure/vm/boot-diagnostics?preserve-view=true&view=azure-cli-latest).
+Yönetilen depolama hesabıyla önyükleme Tanılaması, Azure CLı 2.12.0 ve sonrasında desteklenir. Depolama hesabı için bir ad veya URI girişi yapmazsanız, yönetilen bir hesap kullanılacaktır. Daha fazla bilgi ve kod örneği için bkz. [önyükleme tanılaması Için CLI belgeleri](/cli/azure/vm/boot-diagnostics).
 
 ### <a name="enable-managed-boot-diagnostics-using-azure-resource-manager-arm-templates"></a>Azure Resource Manager (ARM) şablonları kullanarak yönetilen önyükleme tanılamayı etkinleştirme
 API sürüm 2020-06-01 ' den sonraki her şey yönetilen önyükleme tanılamayı destekler. Daha fazla bilgi için bkz. [önyükleme tanılama örneği görünümü](/rest/api/compute/virtualmachines/createorupdate#bootdiagnostics).

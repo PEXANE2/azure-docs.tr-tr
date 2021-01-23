@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: bb00595a5d5be130bf6c1177004bf3042ef8f9f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c901d4024292ad03a9195ad0cbd226f473917ee4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327196"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98738093"
 ---
 # <a name="data-collection-for-your-app"></a>Uygulamanız için veri toplama
 
@@ -28,7 +28,7 @@ Eğitim kümesi için aşağıdaki ölçütlere göre utterler ' i seçin:
     * **İstemci uygulamasından gerçek veriler**: istemci uygulamanızdan gerçek veriler olan detersliği seçin.  Müşteri, kendi sorgusu ile bir Web formu gönderirse ve bir bot oluşturuyorsanız, Web formu verilerini kullanarak başlayabilirsiniz.
     * **Kitle-kaynak verileri**: mevcut herhangi bir veriniz yoksa, utalrakları inceleyin.  Uygulamanızın göreceği gerçek verilerin en iyi sonucu elde etmek için senaryonuz için gerçek Kullanıcı popülasyoninizden alınmış kaynak çeklerini yeniden deneyin. Crowd-kaynaklarca insanlar, bilgisayar tarafından oluşturulan dıklarla daha iyidir.  Belirli desenler üzerinde oluşturulan yapay bir veri kümesi oluşturduğunuzda, bu, insanların oluşturulmasıyla ilgili olarak gördüğünüz doğal çeşitlemelerin büyük bir kısmını ortaya sürmez ve üretimde en iyi şekilde bilgi vermez.
 * **Veri çeşitlemesi**:
-    * **Bölge çeşitlemesi**: her bir amaca ait verilerin, _oluşturma (kelime_ seçimi) ve _dilbilgisi_dahil olmak üzere mümkün olduğunca farklı olduğundan emin olun.  Tatil günleri hakkında ık ilkeleri hakkında bir amaç öğretme yapıyorsanız, hizmet verdiğiniz tüm bölgeler için kullanılan koşulları temsil eden uttatile sahip olduğunuzdan emin olun.  Örneğin, Avrupa 'da kişiler soru `taking a holiday` sorabilir `taking vacation days` .
+    * **Bölge çeşitlemesi**: her bir amaca ait verilerin, _oluşturma (kelime_ seçimi) ve _dilbilgisi_ dahil olmak üzere mümkün olduğunca farklı olduğundan emin olun.  Tatil günleri hakkında ık ilkeleri hakkında bir amaç öğretme yapıyorsanız, hizmet verdiğiniz tüm bölgeler için kullanılan koşulları temsil eden uttatile sahip olduğunuzdan emin olun.  Örneğin, Avrupa 'da kişiler soru `taking a holiday` sorabilir `taking vacation days` .
     * **Dil çeşitlemesi**: ikinci bir dilde iletişim kuran farklı yerel dillere sahip kullanıcılarınız varsa, yerel olmayan hoparlörleri temsil eden utterlere sahip olduğunuzdan emin olun.
     * **Giriş çeşitlemesi**: veri giriş yolunuzu değerlendirin. Bir kişiden, bölümden veya giriş cihazında (mikrofona) veri topluyorsanız, büyük olasılıkla uygulamanızın tüm giriş yolları hakkında bilgi edinmesi için önemli olabilecek çeşitliliğe sahip olursunuz.
     * **Noktalama ayrımlılık**: insanların metin uygulamalarında değişen noktalama düzeylerini kullandığını düşünün ve noktalama işaretlerinin nasıl kullanıldığına ilişkin bir çeşitliliğe sahip olduğunuzdan emin olun. Konuşmadan gelen verileri kullanıyorsanız, herhangi bir noktalama işareti yoktur, bu nedenle verilerinizin ikisi de olmamalıdır.
@@ -71,7 +71,7 @@ Bir uygulamayı üretime dağıttıktan sonra gerçek söylenişi trafiğini izl
 
 ## <a name="test-data-selection-for-batch-testing"></a>Toplu test için test verileri seçimi
 
-Eğitim için yukarıda listelenen tüm ilkeler, [test kümesi](luis-concept-batch-test.md)için kullanmanız gereken söyler için geçerlidir. Amaçlar ve varlıklar genelinde dağıtımın, gerçek dağılımı mümkün olduğunca yakından yansıtmasının güvence altına aldığından emin olun.
+Eğitim için yukarıda listelenen tüm ilkeler, [test kümesi](./luis-how-to-batch-test.md)için kullanmanız gereken söyler için geçerlidir. Amaçlar ve varlıklar genelinde dağıtımın, gerçek dağılımı mümkün olduğunca yakından yansıtmasının güvence altına aldığından emin olun.
 
 Test kümesindeki eğitim kümesinden gelen utbotları yeniden kullanmayın. Bu, sonuçlarınızı yanlış bir şekilde daha uygun hale getiremez ve LUO Uygulamanızın üretimde nasıl gerçekleştirileceğini doğru şekilde belirtir.
 

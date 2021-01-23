@@ -2,23 +2,23 @@
 title: Azure Active Directory bir gruba atanmış rolleri görüntüle | Microsoft Docs
 description: Bir gruba atanan rollerin Azure AD Yönetim Merkezi kullanılarak nasıl görüntülenebileceğini öğrenin. Grupları ve atanan rolleri görüntüleme varsayılan kullanıcı izinleridir.
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8fdfd99b2ef5c1578bc9e87534461d68398c9f6
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 1a1939be42126606fdae261e60c890c71374c894
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378287"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741834"
 ---
 # <a name="view-roles-assigned-to-a-group-in-azure-active-directory"></a>Azure Active Directory bir gruba atanan rolleri görüntüleme
 
@@ -28,11 +28,11 @@ Bu bölümde, bir gruba atanan rollerin Azure AD Yönetim Merkezi kullanılarak 
 
 1. İlgilendiğiniz grubu seçin.
 
-1. **Atanan roller** ' i seçin. Artık bu gruba atanmış tüm Azure AD rollerini görebilirsiniz.
+1. **Atanan roller**' i seçin. Artık bu gruba atanmış tüm Azure AD rollerini görebilirsiniz.
 
    ![Seçili bir gruba atanan tüm rolleri görüntüle](./media/groups-view-assignments/view-assignments.png)
 
-## <a name="using-powershell"></a>PowerShell'i kullanma
+## <a name="using-powershell"></a>PowerShell’i kullanma
 
 ### <a name="get-object-id-of-the-group"></a>Grubun nesne KIMLIĞINI al
 

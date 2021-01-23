@@ -4,7 +4,7 @@ description: Bu makalede, acil durum erişim hesaplarının Azure Active Directo
 services: active-directory
 author: markwahl-msft
 manager: daveba
-ms.author: curtand
+ms.author: rolyon
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.service: active-directory
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ef8e7ed662d8c0acfc7c43112d6d7edb1cb9a94
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: d6a1e4b3b44004ec6d03c293bbd10617b3d3af69
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660656"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740831"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Azure AD'deki acil durum erişim hesaplarını yönetme
 
@@ -72,7 +72,7 @@ Parolalar kullanılıyorsa, hesapların parolasının sona ermemesi için güçl
 
 Kuruluşlar, acil durum hesaplarından oturum açma ve denetim günlüğü etkinliğini izlemeli ve bildirimleri diğer yöneticilere tetiklemelidir. Çıkış camı hesaplarında etkinliği izlerken, bu hesapların yalnızca test veya gerçek durumlar için kullanıldığını doğrulayabilirsiniz. Oturum açma günlüklerini izlemek ve cam hesapları her oturum açtığında yönetici ve SMS uyarılarını tetiklemeniz için Azure Log Analytics kullanabilirsiniz.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 1. Azure [ad oturum açma günlüklerini](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) Azure Izleyici 'ye gönderin.
 

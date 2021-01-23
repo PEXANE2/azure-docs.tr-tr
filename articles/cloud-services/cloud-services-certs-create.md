@@ -1,21 +1,25 @@
 ---
-title: Cloud Services ve yönetim sertifikaları | Microsoft Docs
+title: Cloud Services (klasik) ve yönetim sertifikaları | Microsoft Docs
 description: Bulut hizmetleri ve Azure 'da yönetim API 'SI ile kimlik doğrulaması için sertifika oluşturma ve dağıtma hakkında bilgi edinin.
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 04/19/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 8650b8670c61cab15b26163dd5108145b8509434
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: c73f9812f344eecf4e51f43405b48693ddfa191b
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072433"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98739743"
 ---
-# <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services’da sertifikalara genel bakış
+# <a name="certificates-overview-for-azure-cloud-services-classic"></a>Azure Cloud Services sertifikalara genel bakış (klasik)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
+
 Sertifikalar, Azure 'da bulut Hizmetleri ([hizmet sertifikaları](#what-are-service-certificates)) ve yönetim API 'siyle ([yönetim sertifikaları](#what-are-management-certificates)) kimlik doğrulaması için kullanılır. Bu konu, her iki sertifika türü için genel bir bakış sağlar ve bunları Azure 'a [oluşturma](#create) ve dağıtma.
 
 Azure 'da kullanılan sertifikalar x. 509.440 v3 sertifikalardır ve başka bir güvenilen sertifika tarafından imzalanabilir veya otomatik olarak imzalanabilir. Kendinden imzalı bir sertifika kendi oluşturucusu tarafından imzalanır, bu nedenle varsayılan olarak güvenilir değildir. Tarayıcıların çoğu bu sorunu yok sayabilir. Bulut hizmetlerinizi geliştirirken ve sınarken yalnızca otomatik olarak imzalanan sertifikalar kullanmanız gerekir. 
@@ -55,7 +59,7 @@ Bu ayarlara bağlı oldukları sürece kendinden imzalı bir sertifika oluşturm
 * Anahtar değişimi (. pfx dosyası) için oluşturulur.
 * Konu adı, bulut hizmetine erişmek için kullanılan etki alanıyla aynı olmalıdır.
 
-    > Cloudapp.net (veya Azure ile ilgili herhangi bir) etki alanı için TLS/SSL sertifikası edinemezsiniz; Sertifikanın konu adı, uygulamanıza erişmek için kullanılan özel etki alanı adıyla aynı olmalıdır. Örneğin, **contoso.cloudapp.net**değil, **contoso.net**.
+    > Cloudapp.net (veya Azure ile ilgili herhangi bir) etki alanı için TLS/SSL sertifikası edinemezsiniz; Sertifikanın konu adı, uygulamanıza erişmek için kullanılan özel etki alanı adıyla aynı olmalıdır. Örneğin, **contoso.cloudapp.net** değil, **contoso.net**.
 
 * En az 2048 bit şifreleme.
 * **Yalnızca hizmet sertifikası**: istemci tarafı sertifika, *Kişisel* sertifika deposunda bulunmalıdır.

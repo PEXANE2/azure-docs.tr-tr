@@ -21,8 +21,13 @@
         - name: ARM şablonunu kullanma
           displayName: Resource Manager
           href: fhir-paas-arm-template-quickstart.md
-    - name: FHIR için Azure IoT Bağlayıcısı dağıtma (önizleme) - Portal
-      href: iot-fhir-portal-quickstart.md
+    - name: FHIR için Azure IoT Bağlayıcısı dağıtma (önizleme)
+      expanded: false
+      items:
+        - name: Portalı kullanma
+          href: iot-fhir-portal-quickstart.md
+        - name: ARM şablonunu kullanma
+          href: iot-fhir-arm-template-quickstart.md
 - name: Öğreticiler
   expanded: false
   items:

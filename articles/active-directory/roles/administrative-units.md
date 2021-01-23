@@ -3,23 +3,23 @@ title: Azure Active Directory 'de yönetim birimleri | Microsoft Docs
 description: Azure Active Directory izinlerin daha ayrıntılı şekilde temsili için yönetim birimleri kullanın.
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.topic: overview
 ms.subservice: roles
 ms.workload: identity
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 792e8cd1e70f901385ed3b225a753024e06f2df0
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: e82be52cff824c69dd2fe4ea5e7e1c0d7489be1d
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394603"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740338"
 ---
 # <a name="administrative-units-in-azure-active-directory"></a>Azure Active Directory 'de yönetim birimleri
 
@@ -58,9 +58,9 @@ Yönetim birimlerinin oluşturulduğu ölçütler, bir kuruluşun benzersiz gere
 
 Aşağıdaki aşamaları izleyerek kuruluştaki yönetim birimlerinin oluşturulmasını bekleyebilir:
 
-1. **İlk benimseme** : Kuruluşunuz, ilk ölçütlere göre yönetim birimleri oluşturmaya başlar ve ölçütler iyileştirilyerek yönetim birimlerinin sayısı artacaktır.
-1. **Ayıklama** : ölçütler tanımlandıktan sonra artık gerekli olmayan yönetim birimleri silinir.
-1. **Sabitlemeyi** : Kurumsal yapınız tanımlanmıştır ve kısa dönemde yönetim birimlerinin sayısı önemli ölçüde değişmeyeceklerdir.
+1. **İlk benimseme**: Kuruluşunuz, ilk ölçütlere göre yönetim birimleri oluşturmaya başlar ve ölçütler iyileştirilyerek yönetim birimlerinin sayısı artacaktır.
+1. **Ayıklama**: ölçütler tanımlandıktan sonra artık gerekli olmayan yönetim birimleri silinir.
+1. **Sabitlemeyi**: Kurumsal yapınız tanımlanmıştır ve kısa dönemde yönetim birimlerinin sayısı önemli ölçüde değişmeyeceklerdir.
 
 ## <a name="currently-supported-scenarios"></a>Şu anda desteklenen senaryolar
 
@@ -79,7 +79,7 @@ Aşağıdaki bölümlerde, yönetim birimi senaryoları için geçerli destek a�
 
 ### <a name="administrative-unit-management"></a>Yönetim Birimi Yönetimi
 
-| İzinler |   Grafik/PowerShell   | Azure AD portalı | Microsoft 365 yönetici merkezi |
+| İzinler |   Grafik/PowerShell   | Azure AD portalı | Microsoft 365 yönetim merkezi |
 | --- | --- | --- | --- |
 | Yönetim birimleri oluşturma ve silme   |    Desteklenir    |   Desteklenir   |    Desteklenmez |
 | Yönetim birimi üyelerini tek tek ekleme ve kaldırma    |   Desteklenir    |   Desteklenir   |    Desteklenmez |
@@ -89,7 +89,7 @@ Aşağıdaki bölümlerde, yönetim birimi senaryoları için geçerli destek a�
 
 ### <a name="user-management"></a>Kullanıcı yönetimi
 
-| İzinler |   Grafik/PowerShell   | Azure AD portalı | Microsoft 365 yönetici merkezi |
+| İzinler |   Grafik/PowerShell   | Azure AD portalı | Microsoft 365 yönetim merkezi |
 | --- | --- | --- | --- |
 | Kullanıcı özelliklerinin, parolalarının ve lisansların yönetim birimi kapsamlı yönetimi   |    Desteklenir     |  Desteklenir   |   Desteklenir |
 | Yönetim birimi kapsamlı engelleme ve Kullanıcı oturum açma işlemleri engellemesini kaldırma    |   Desteklenir   |    Desteklenir   |    Desteklenir |
@@ -97,7 +97,7 @@ Aşağıdaki bölümlerde, yönetim birimi senaryoları için geçerli destek a�
 
 ### <a name="group-management"></a>Grup yönetimi
 
-| İzinler |   Grafik/PowerShell   | Azure AD portalı | Microsoft 365 yönetici merkezi |
+| İzinler |   Grafik/PowerShell   | Azure AD portalı | Microsoft 365 yönetim merkezi |
 | --- | --- | --- | --- |
 | Grup özelliklerinin ve üyelerinin yönetim birimi kapsamlı yönetimi     |  Desteklenir   |    Desteklenir    |  Desteklenmez |
 | Grup lisanslamanın yönetim birimi kapsamlı yönetimi   |    Desteklenir  |    Desteklenir   |   Desteklenmez |

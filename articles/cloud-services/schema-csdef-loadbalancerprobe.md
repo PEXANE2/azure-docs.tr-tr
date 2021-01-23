@@ -1,22 +1,25 @@
 ---
-title: Azure Cloud Services def. Loadbalanceraraştırma şeması | Microsoft Docs
+title: Azure Cloud Services (klasik) def. Loadbalanceraraştırma şeması | Microsoft Docs
 description: Müşteri tanımlı Loadbalanceraraştırması, rol örneklerinde uç noktaların durum araştırmasına sahiptir. Bir hizmet tanım dosyasındaki Web veya çalışan rolleriyle birleştirir.
-ms.custom: ''
-ms.date: 04/14/2015
-services: cloud-services
+ms.topic: article
 ms.service: cloud-services
-ms.topic: reference
-caps.latest.revision: 14
-author: georgewallace
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 6d0e84b6724d9df4162d4be3e06a9952087a53a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 3dca519f7fb4523ce9d9267f7629c1177cc5e3b6
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79537355"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98739810"
 ---
-# <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Azure Cloud Services Definition Loadbalanceraraştırma şeması
+# <a name="azure-cloud-services-classic-definition-loadbalancerprobe-schema"></a>Azure Cloud Services (klasik) tanımlama Loadbalanceraraştırma şeması
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
+
 Yük dengeleyici araştırması, bir müşteri tarafından tanımlanan UDP uç noktaları ve uç noktaların rol örneklerinde bir sistem durumu araştırmasına sahiptir. `LoadBalancerProbe`Tek başına bir öğe değildir; bir hizmet tanım dosyasındaki web rolü veya çalışan rolüyle birleştirilir. Bir `LoadBalancerProbe` , birden fazla rol tarafından kullanılabilir.
 
 Hizmet tanım dosyası için varsayılan uzantı. csdef ' dir.

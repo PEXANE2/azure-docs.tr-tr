@@ -1,27 +1,25 @@
 ---
-title: Bulut hizmeti ayırma hatası giderme | Microsoft Docs
+title: Bulut hizmeti (klasik) ayırma hatası giderme | Microsoft Docs
 description: Azure Cloud Services dağıtırken bir ayırma hatası giderme. Ayırmanın nasıl çalıştığını ve ayırmanın neden başarısız olabileceğini öğrenin.
-services: azure-service-management, cloud-services
-documentationcenter: ''
-author: simonxjx
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 529157eb-e4a1-4388-aa2b-09e8b923af74
+ms.topic: article
 ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: ibiza
-ms.topic: troubleshooting
-ms.date: 06/15/2018
-ms.author: v-six
-ms.openlocfilehash: 1d82b7223c2b392e6b9aebffdc545dc38b38ca2f
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 0c172add9aa49b2ca64d2fb2281d326256e3aec7
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074235"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741596"
 ---
-# <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>Azure’da Cloud Services dağıtımı sırasında oluşan ayırma hatalarını giderme
+# <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-classic-in-azure"></a>Azure 'da Cloud Services (klasik) dağıtırken ayırma hatası giderme
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
+
 ## <a name="summary"></a>Özet
 Bir bulut hizmetine örnekler dağıtırken veya yeni Web ya da çalışan rolü örnekleri eklediğinizde Microsoft Azure işlem kaynaklarını ayırır. Azure abonelik limitlerine ulaşmadan önce bu işlemleri gerçekleştirirken zaman zaman bir hata alabilirsiniz. Bu makalede, bazı yaygın ayırma hatalarının nedenleri açıklanmaktadır ve olası düzeltme önerilir. Ayrıca, hizmetlerinizin dağıtımını planlarken bilgiler de yararlı olabilir.
 
@@ -43,7 +41,7 @@ Aşağıdaki hata iletisini görebilirsiniz:
 
 > "' {Operation ID} ' adlı Azure işlemi, kod Işlem. ConstrainedAllocationFailed ile başarısız oldu. Ayrıntılar: ayırma başarısız oldu; istekteki kısıtlamalar karşılayamadı. İstenen yeni hizmet dağıtımı bir Benzeşim Grubuna bağlı veya bir Sanal Ağı hedefliyor ya da bu barındırılan hizmetin altında mevcut bir dağıtım var. Bu koşullardan herhangi biri, yeni dağıtımı belirli Azure kaynaklarına kısıtlar. Lütfen daha sonra yeniden deneyin veya sanal makine boyutunu ya da rol örneği sayısını azaltmayı deneyin. Alternatif olarak, mümkünse, belirtilen kısıtlamaları kaldırın veya farklı bir bölgeye dağıtımı deneyin. "
 
-### <a name="common-issues"></a>Genel Sorunlar
+### <a name="common-issues"></a>Sık Karşılaşılan Sorunlar
 Bir ayırma isteğinin tek bir kümeye sabitlenememesine neden olan ortak ayırma senaryoları aşağıda verilmiştir.
 
 * Hazırlama yuvasına dağıtım-bir bulut hizmetinin her iki yuvada da bir dağıtımı varsa, tüm bulut hizmeti belirli bir kümeye sabitlenmiştir.  Diğer bir deyişle, üretim yuvasında bir dağıtım zaten varsa, yeni bir hazırlama dağıtımı yalnızca üretim yuvası ile aynı kümede ayrılabilir. Küme kapasiteye yaklaştığı takdirde istek başarısız olabilir.

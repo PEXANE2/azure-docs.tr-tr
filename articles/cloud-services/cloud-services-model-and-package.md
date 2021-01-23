@@ -1,21 +1,26 @@
 ---
-title: Bulut hizmeti modeli ve paketi nedir? | Microsoft Docs
+title: Bulut hizmeti (klasik) modeli ve paketi nedir? | Microsoft Docs
 description: Azure 'da bulut hizmeti modelini (. csdef,. cscfg) ve paketi (. cspkg) açıklar
-services: cloud-services
-author: tanmaygore
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/05/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 180295599082a762fc525c4740079ceefc0954a1
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 1cf8e966b80e005a0cb2cf7ea46f355e38cb0011
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077193"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741545"
 ---
-# <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Bulut hizmeti modeli nedir ve nasıl paketlarım?
-Üç bileşenden bir bulut hizmeti, hizmet tanımı *(. csdef)*, hizmet yapılandırma *(. cscfg)* ve bir hizmet paketi *(. cspkg)* oluşturulur. Hem **ServiceDefinition. csdef** hem de **ServiceConfig. cscfg** dosyaları XML tabanlıdır ve bulut hizmetinin yapısını ve nasıl yapılandırıldığını açıklamaktadır; toplu olarak model olarak adlandırılır. **Servicepackage. cspkg** , **ServiceDefinition. csdef** öğesinden ve diğer şeyler arasında oluşturulan ve tüm gerekli ikili tabanlı bağımlılıkları içeren bir zip dosyasıdır. Azure, hem **Servicepackage. cspkg** hem de **ServiceConfig. cscfg**öğesinden bir bulut hizmeti oluşturur.
+# <a name="what-is-the-cloud-service-classic-model-and-how-do-i-package-it"></a>Bulut hizmeti (klasik) modeli nedir ve bunu nasıl paketederim?
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
+
+Üç bileşenden bir bulut hizmeti, hizmet tanımı *(. csdef)*, hizmet yapılandırma *(. cscfg)* ve bir hizmet paketi *(. cspkg)* oluşturulur. Hem **ServiceDefinition. csdef** hem de **ServiceConfig. cscfg** dosyaları XML tabanlıdır ve bulut hizmetinin yapısını ve nasıl yapılandırıldığını açıklamaktadır; toplu olarak model olarak adlandırılır. **Servicepackage. cspkg** , **ServiceDefinition. csdef** öğesinden ve diğer şeyler arasında oluşturulan ve tüm gerekli ikili tabanlı bağımlılıkları içeren bir zip dosyasıdır. Azure, hem **Servicepackage. cspkg** hem de **ServiceConfig. cscfg** öğesinden bir bulut hizmeti oluşturur.
 
 Bulut hizmeti Azure 'da çalışmaya başladıktan sonra **ServiceConfig. cscfg** dosyası aracılığıyla yapılandırabilirsiniz, ancak tanımı değiştiremezsiniz.
 
@@ -221,7 +226,7 @@ Hizmeti çevrimdışı yapmadan, Azure 'da çalışırken bulut hizmetinizin yap
 
 Azure 'da bir uygulamayı bulut hizmeti olarak dağıtmak için, önce uygulamayı uygun biçimde paketetmeniz gerekir. Paket dosyasını Visual Studio 'ya alternatif olarak oluşturmak için **CSPack** komut satırı aracını ( [Azure SDK](https://azure.microsoft.com/downloads/)ile birlikte yüklenir) kullanabilirsiniz.
 
-**CSPack** , paketin içeriğini tanımlamak için hizmet tanım dosyasının ve hizmet yapılandırma dosyasının içeriğini kullanır. **CSPack** , [Azure Portal](cloud-services-how-to-create-deploy-portal.md#create-and-deploy)kullanarak Azure 'a yükleyebileceğiniz bir uygulama paketi dosyası (. cspkg) oluşturur. Varsayılan olarak, paket adlandırılır `[ServiceDefinitionFileName].cspkg` , ancak CSPack seçeneğini kullanarak farklı bir ad belirtebilirsiniz `/out` . **CSPack**
+**CSPack** , paketin içeriğini tanımlamak için hizmet tanım dosyasının ve hizmet yapılandırma dosyasının içeriğini kullanır. **CSPack** , [Azure Portal](cloud-services-how-to-create-deploy-portal.md#create-and-deploy)kullanarak Azure 'a yükleyebileceğiniz bir uygulama paketi dosyası (. cspkg) oluşturur. Varsayılan olarak, paket adlandırılır `[ServiceDefinitionFileName].cspkg` , ancak CSPack seçeneğini kullanarak farklı bir ad belirtebilirsiniz `/out` . 
 
 **CSPack** şurada bulunur:  
 `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\[sdk-version]\bin\`
@@ -236,7 +241,7 @@ Azure 'da bir uygulamayı bulut hizmeti olarak dağıtmak için, önce uygulamay
 <p />
 
 > [!TIP]
-> Bulut hizmetinizi **Microsoft Azure Işlem öykünücüsünde**yerel olarak çalıştırın, **/CopyOnly** seçeneğini kullanın. Bu seçenek, uygulamanın ikili dosyalarını, işlem öykünücüsünde çalıştırılabilecekleri bir dizin düzenine kopyalar.
+> Bulut hizmetinizi **Microsoft Azure Işlem öykünücüsünde** yerel olarak çalıştırın, **/CopyOnly** seçeneğini kullanın. Bu seçenek, uygulamanın ikili dosyalarını, işlem öykünücüsünde çalıştırılabilecekleri bir dizin düzenine kopyalar.
 > 
 > 
 

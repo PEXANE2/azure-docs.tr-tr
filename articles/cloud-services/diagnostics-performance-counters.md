@@ -1,21 +1,24 @@
 ---
-title: Azure Cloud Services performans sayaçlarında toplayın | Microsoft Docs
+title: Azure Cloud Services (klasik) performans sayaçlarında toplama | Microsoft Docs
 description: Azure Tanılama ve Application Insights ile Cloud Services performans sayaçlarını bulmayı, kullanmayı ve oluşturmayı öğrenin.
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 02/02/2018
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 39843ad83830a72b5d6b01cc00ecd65269c02e12
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 16b54e8a59eb42c6e2351d37ec0a29d775161493
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078604"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98739845"
 ---
-# <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Azure bulut hizmetiniz için performans sayaçlarını toplayın
+# <a name="collect-performance-counters-for-your-azure-cloud-service-classic"></a>Azure bulut hizmetiniz (klasik) için performans sayaçlarını toplayın
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
 
 Performans sayaçları, uygulamanızın ve konağın ne kadar iyi performans gösterdiğini izlemeniz için bir yol sağlar. Windows Server, donanım, uygulamalar, işletim sistemi ve daha fazlası ile ilgili birçok farklı performans sayacı sağlar. Performans sayaçlarını toplayıp Azure 'a göndererek, daha iyi kararlar almanıza yardımcı olması için bu bilgileri çözümleyebilirsiniz. 
 

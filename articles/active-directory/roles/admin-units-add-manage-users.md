@@ -3,23 +3,23 @@ title: Yönetici birimine Kullanıcı ekleme, kaldırma ve listeleme-Azure Activ
 description: Azure Active Directory bir yönetim biriminde kullanıcıları ve rol izinlerini yönetme
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b490e03ea7ac0a3bc780fa731629217126b6828a
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: d3dc7b37c96d2d82ae42d9bce32a97beab2d91e9
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395538"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740525"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Azure Active Directory bir yönetim biriminde Kullanıcı ekleme ve yönetme
 
@@ -29,7 +29,7 @@ Yönetim birimi yönetimi için PowerShell ve Microsoft Graph kullanmaya hazırl
 
 ## <a name="add-users-to-an-administrative-unit"></a>Yönetici birimine Kullanıcı ekleme
 
-### <a name="use-the-azure-portal"></a>Azure portalı kullanma
+### <a name="use-the-azure-portal"></a>Azure portalını kullanma
 
 Kullanıcıları, yönetim birimlerine ayrı ayrı veya toplu bir işlem olarak atayabilirsiniz.
 
@@ -48,8 +48,8 @@ Kullanıcıları, yönetim birimlerine ayrı ayrı veya toplu bir işlem olarak 
 - Bir yönetim biriminden bireysel kullanıcı atama:
 
    1. [Azure AD Yönetim merkezinde](https://portal.azure.com) ayrıcalıklı rol yöneticisi izinleriyle oturum açın.
-   1. **Yönetim birimleri** ' ni seçin ve ardından kullanıcının atanacağı yönetim birimini seçin.
-   1. **Tüm kullanıcılar** ' ı seçin, **üye Ekle** ' yi seçin ve ardından **üye Ekle** bölmesinde, yönetim birimine atamak istediğiniz bir veya daha fazla kullanıcı seçin.
+   1. **Yönetim birimleri**' ni seçin ve ardından kullanıcının atanacağı yönetim birimini seçin.
+   1. **Tüm kullanıcılar**' ı seçin, **üye Ekle** ' yi seçin ve ardından **üye Ekle** bölmesinde, yönetim birimine atamak istediğiniz bir veya daha fazla kullanıcı seçin.
 
         ![Yönetici birimine Kullanıcı atamak için yönetim birimi "kullanıcılar" bölmesinin ekran görüntüsü.](./media/admin-units-add-manage-users/assign-to-admin-unit.png)
 
@@ -61,7 +61,7 @@ Kullanıcıları, yönetim birimlerine ayrı ayrı veya toplu bir işlem olarak 
 
    1. Kullanıcıları eklemek istediğiniz yönetim birimini seçin.
 
-   1. **Kullanıcılar**  >  **toplu etkinlikleri**  >  **toplu ekleme üyeleri** ' ni seçin. Daha sonra, virgülle ayrılmış değerler (CSV) şablonunu indirebilir ve dosyayı düzenleyebilirsiniz. Biçim basittir ve her satıra tek bir Kullanıcı asıl adının eklenmesi gerekir. Dosya hazırlandıktan sonra uygun bir konuma kaydedin ve bu adımın bir parçası olarak karşıya yükleyin.
+   1. **Kullanıcılar**  >  **toplu etkinlikleri**  >  **toplu ekleme üyeleri**' ni seçin. Daha sonra, virgülle ayrılmış değerler (CSV) şablonunu indirebilir ve dosyayı düzenleyebilirsiniz. Biçim basittir ve her satıra tek bir Kullanıcı asıl adının eklenmesi gerekir. Dosya hazırlandıktan sonra uygun bir konuma kaydedin ve bu adımın bir parçası olarak karşıya yükleyin.
 
       ![Bir yönetim birimine toplu işlem olarak Kullanıcı atamaya yönelik "kullanıcılar" bölmesinin ekran görüntüsü.](./media/admin-units-add-manage-users/bulk-assign-to-admin-unit.png)
 
@@ -99,11 +99,11 @@ Request body
 
 ## <a name="view-a-list-of-administrative-units-for-a-user"></a>Bir kullanıcı için yönetim birimlerinin bir listesini görüntüleme
 
-### <a name="use-the-azure-portal"></a>Azure portalı kullanma
+### <a name="use-the-azure-portal"></a>Azure portalını kullanma
 
 Azure portal, aşağıdakileri yaparak bir kullanıcının profilini açabilirsiniz:
 
-1. **Azure AD** 'ye gidin ve ardından **Kullanıcılar** ' ı seçin.
+1. **Azure AD**'ye gidin ve ardından **Kullanıcılar**' ı seçin.
 
 1. Profilini görüntülemek istediğiniz kullanıcıyı seçin.
 
@@ -131,19 +131,19 @@ https://graph.microsoft.com/v1.0/users/{id}/memberOf/$/Microsoft.Graph.Administr
 
 ## <a name="remove-a-single-user-from-an-administrative-unit"></a>Yönetim biriminden tek bir kullanıcıyı kaldırma
 
-### <a name="use-the-azure-portal"></a>Azure portalı kullanma
+### <a name="use-the-azure-portal"></a>Azure portalını kullanma
 
 Bir kullanıcıyı, yönetim biriminden iki şekilde kaldırabilirsiniz: 
 
-* Azure portal **Azure AD** ' a gidin ve ardından **Kullanıcılar** ' ı seçin. 
+* Azure portal **Azure AD**' a gidin ve ardından **Kullanıcılar**' ı seçin. 
   1. Kullanıcının profilini açmak için kullanıcıyı seçin. 
-  1. Kullanıcıyı kaldırmak istediğiniz yönetim birimini seçin ve ardından **Yönetim biriminden kaldır** ' ı seçin.
+  1. Kullanıcıyı kaldırmak istediğiniz yönetim birimini seçin ve ardından **Yönetim biriminden kaldır**' ı seçin.
 
      ![Kullanıcının profil bölmesinden bir yönetim biriminden bir kullanıcının nasıl kaldırılacağını gösteren ekran görüntüsü.](./media/admin-units-add-manage-users/user-remove-admin-units.png)
 
-* Azure portal **Azure AD** ' a gidin ve ardından **yönetim birimleri** ' ni seçin.
+* Azure portal **Azure AD**' a gidin ve ardından **yönetim birimleri**' ni seçin.
   1. Kullanıcıyı kaldırmak istediğiniz yönetim birimini seçin. 
-  1. Kullanıcıyı seçin ve ardından **üyeyi kaldır** ' ı seçin.
+  1. Kullanıcıyı seçin ve ardından **üyeyi kaldır**' ı seçin.
   
      ![Yönetim birimi düzeyinde bir kullanıcının nasıl kaldırılacağını gösteren ekran görüntüsü.](./media/admin-units-add-manage-users/admin-units-remove-user.png)
 
@@ -165,11 +165,11 @@ Yer tutucuları test bilgileriyle değiştirin ve aşağıdaki komutu çalışt�
 
 Bir yönetim biriminden birden çok kullanıcıyı kaldırmak için aşağıdakileri yapın:
 
-1. Azure portal **Azure AD** 'ye gidin.
+1. Azure portal **Azure AD**'ye gidin.
 
-1. **Yönetim birimleri** ' ni seçin ve ardından kullanıcıları kaldırmak istediğiniz yönetim birimini seçin. 
+1. **Yönetim birimleri**' ni seçin ve ardından kullanıcıları kaldırmak istediğiniz yönetim birimini seçin. 
 
-1. **Üyeleri toplu kaldır** ' ı seçin ve ardından kaldırmak istediğiniz kullanıcıları listelemek IÇIN kullanacağınız CSV şablonunu indirin.
+1. **Üyeleri toplu kaldır**' ı seçin ve ardından kaldırmak istediğiniz kullanıcıları listelemek IÇIN kullanacağınız CSV şablonunu indirin.
 
    !["Kullanıcılar" bölmesinde "üyeleri toplu kaldırma" bağlantısını gösteren ekran görüntüsü.](./media/admin-units-add-manage-users/bulk-user-remove.png)
 
@@ -177,7 +177,7 @@ Bir yönetim biriminden birden çok kullanıcıyı kaldırmak için aşağıdaki
 
    ![Bir yönetim biriminden toplu olarak kullanıcıları kaldırmak için düzenlenmiş bir CSV dosyasının ekran görüntüsü.](./media/admin-units-add-manage-users/bulk-user-entries.png)
 
-1. Değişikliklerinizi kaydedin, dosyayı karşıya yükleyin ve ardından **Gönder** ' i seçin.
+1. Değişikliklerinizi kaydedin, dosyayı karşıya yükleyin ve ardından **Gönder**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

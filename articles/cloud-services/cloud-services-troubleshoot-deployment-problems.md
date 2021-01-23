@@ -1,27 +1,25 @@
 ---
-title: Cloud Service dağıtım sorunlarını giderme | Microsoft Docs
+title: Bulut hizmeti (klasik) dağıtım sorunlarını giderme | Microsoft Docs
 description: Azure 'a bir bulut hizmeti dağıttığınızda karşılaşabileceğiniz bazı yaygın sorunlar vardır. Bu makale, bunların bazılarına yönelik çözümler sağlar.
-services: cloud-services
-documentationcenter: ''
-author: simonxjx
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: a18ae415-0d1c-4bc4-ab6c-c1ddea02c870
+ms.topic: article
 ms.service: cloud-services
-ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 06/15/2018
-ms.author: v-six
-ms.openlocfilehash: 0e7cd496f031f76320df5127d7e1aa3f2f7b06c7
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 7b3d7a9a674aab3976da9399f71ff4d8df08eb62
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075085"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741086"
 ---
-# <a name="troubleshoot-cloud-service-deployment-problems"></a>Cloud Service dağıtım sorunlarını giderme
+# <a name="troubleshoot-azure-cloud-services-classic-deployment-problems"></a>Azure Cloud Services (klasik) dağıtım sorunlarını giderme
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
+
 Azure 'a bir bulut hizmeti uygulama paketi dağıttığınızda, Azure portal **Özellikler** bölmesinden dağıtım hakkında bilgi alabilirsiniz. Bu bölmedeki ayrıntıları, bulut hizmetindeki sorunları gidermenize yardımcı olması için kullanabilir ve yeni bir destek isteği açarken bu bilgileri Azure desteği 'ne verebilirsiniz.
 
 **Özellikler** bölmesini aşağıdaki gibi bulabilirsiniz:
@@ -39,7 +37,7 @@ Azure 'a bir bulut hizmeti uygulama paketi dağıttığınızda, Azure portal **
 Portalda gösterilen Web sitesi URL 'SI bağlantısı, bağlantı noktasını içermez. Web siteleri için varsayılan bağlantı noktası 80 ' dir. Uygulamanız farklı bir bağlantı noktasında çalışacak şekilde yapılandırıldıysa, Web sitesine erişirken doğru bağlantı noktası numarasını URL 'ye eklemeniz gerekir.
 
 1. Azure portal bulut hizmetinizin dağıtımına tıklayın.
-2. Azure portal **Özellikler** bölmesinde, rol örneklerinin ( **giriş uç noktaları**altında) bağlantı noktalarını kontrol edin.
+2. Azure portal **Özellikler** bölmesinde, rol örneklerinin ( **giriş uç noktaları** altında) bağlantı noktalarını kontrol edin.
 3. Bağlantı noktası 80 değilse, uygulamaya erişirken doğru bağlantı noktası değerini URL 'ye ekleyin. Varsayılan olmayan bir bağlantı noktası belirtmek için, URL 'yi yazın ve ardından iki nokta üst üste (:), ardından bağlantı noktası numarası, boşluk olmadan).
 
 ## <a name="problem-my-role-instances-recycled-without-me-doing-anything"></a>Sorun: rol örneklerim hiçbir şey yapmadan geri dönüştürüldü
@@ -60,19 +58,19 @@ Devam eden bir dağıtım güncelleştirmesi varsa bir VIP Swap öğesine izin v
 Bir otomatik güncelleştirmenin bir VIP takası yapmanızı engelleyip engellemediğini öğrenmek için:
 
 1. Azure portal bulut hizmetinizin dağıtımına tıklayın.
-2. Azure portal **Özellikler** bölmesinde **durum**değerine bakın. Bu **durumda, en** **son işlemi** , VIP takasını engelleyebilecek bir en son gerçekleşip öngörmeyebilirsiniz.
+2. Azure portal **Özellikler** bölmesinde **durum** değerine bakın. Bu **durumda, en** **son işlemi** , VIP takasını engelleyebilecek bir en son gerçekleşip öngörmeyebilirsiniz.
 3. Üretim dağıtımı için 1 ve 2. adımları tekrarlayın.
 4. Bir otomatik güncelleştirme sürecde ise, VIP takas işlemini gerçekleştirmeye çalışmadan önce işlemin bitmesini bekleyin.
 
 ## <a name="problem-a-role-instance-is-looping-between-started-initializing-busy-and-stopped"></a>Sorun: bir rol örneği başlatıldı, başlatılıyor, meşgul ve durduruldu arasında döngü yapıyor
-Bu durum, uygulama kodunuz, paketiniz veya yapılandırma dosyanızla ilgili bir sorundan kaynaklanıyor olabilir. Bu durumda, her birkaç dakikada bir değişikliği görebilmeniz ve Azure portal **geri dönüşüm**, **meşgul**veya **başlatma**gibi bir şey olabileceğini görmeniz gerekir. Bu, uygulamada rol örneğinin çalışmasını koruyan bir sorun olduğunu gösterir.
+Bu durum, uygulama kodunuz, paketiniz veya yapılandırma dosyanızla ilgili bir sorundan kaynaklanıyor olabilir. Bu durumda, her birkaç dakikada bir değişikliği görebilmeniz ve Azure portal **geri dönüşüm**, **meşgul** veya **başlatma** gibi bir şey olabileceğini görmeniz gerekir. Bu, uygulamada rol örneğinin çalışmasını koruyan bir sorun olduğunu gösterir.
 
 Bu sorunla ilgili sorun giderme hakkında daha fazla bilgi için bkz. [Azure PaaS Işlem Tanılama verileri](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data) ve [rollerin geri dönüştürülmesine neden olan yaygın sorunlar](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md).
 
 ## <a name="problem-my-application-stopped-working"></a>Sorun: Uygulamam çalışmayı durdurdu
 1. Azure portal rol örneğine tıklayın.
 2. Azure portal **Özellikler** bölmesinde, sorununuzu çözmek için aşağıdaki koşulları göz önünde bulundurun:
-   * Rol örneği yakın zamanda durdurulmuşsa ( **iptal sayısı**değerini kontrol edebilirsiniz), dağıtım güncelleştiriyoruz. Rol örneğinin kendi kendine çalışmayı sürdürüyor olup olmadığını görmek için bekleyin.
+   * Rol örneği yakın zamanda durdurulmuşsa ( **iptal sayısı** değerini kontrol edebilirsiniz), dağıtım güncelleştiriyoruz. Rol örneğinin kendi kendine çalışmayı sürdürüyor olup olmadığını görmek için bekleyin.
    * Rol örneği **meşgulse**, [StatusCheck](/previous-versions/azure/reference/ee758135(v=azure.100)) olayının işlenmiş olup olmadığını görmek için uygulama kodunuzu kontrol edin. Bu olayı işleyen bir kod eklemeniz veya çözmeniz gerekebilir.
    * [Azure PaaS Işlem tanılama verilerinde](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data)blog postasında tanılama verilerini ve sorun giderme senaryolarını gözden geçin.
 

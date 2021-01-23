@@ -1,27 +1,25 @@
 ---
-title: Bulut hizmeti rollerinin geri dönüşümlerine ilişkin yaygın nedenler | Microsoft Docs
+title: Bulut hizmeti (klasik) rollerinin geri dönüşüme ilişkin yaygın nedenler | Microsoft Docs
 description: Aniden geri dönüşümlü bir bulut hizmeti rolü önemli bir kesinti oluşmasına neden olabilir. Rollerin geri dönüştürülmesine neden olan bazı yaygın sorunlar aşağıda verilmiştir. Bu, kapalı kalma süresini azaltmanıza yardımcı olabilir.
-services: cloud-services
-documentationcenter: ''
-author: simonxjx
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 533930d1-8035-4402-b16a-cf887b2c4f85
+ms.topic: article
 ms.service: cloud-services
-ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 06/15/2018
-ms.author: v-six
-ms.openlocfilehash: 0484eb919a9de11b64dcc3334c5a9a942d875ca6
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 9610b32207f8367b9415c0881e49b54e24c49ad7
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075136"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741171"
 ---
-# <a name="common-issues-that-cause-roles-to-recycle"></a>Rollerin geri dönüştürülmesine neden olan yaygın sorunlar
+# <a name="common-issues-that-cause-azure-cloud-service-classic-roles-to-recycle"></a>Azure bulut hizmeti (klasik) rollerinin geri dönüştürülmesine neden olan yaygın sorunlar
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
+
 Bu makalede, dağıtım sorunlarının bazı yaygın nedenleri ele alınmaktadır ve bu sorunları çözmenize yardımcı olacak sorun giderme ipuçları sunulmaktadır. Bir uygulamada sorun olduğunu belirten bir ifade, rol örneğinin başlayamadığını veya başlatma, meşgul ve durdurma durumları arasında geçiş yapar.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
@@ -33,7 +31,7 @@ Uygulamanızı oluşturmadan ve paketlemenize başlamadan önce aşağıdakileri
 
 * Visual Studio kullanıyorsanız, projenizde Azure SDK 'sının veya .NET Framework bir parçası olmayan her Başvurulmuş derleme için yereli **Kopyala** özelliğinin **true** olarak ayarlandığından emin olun.
 * web.config dosyasının, derleme öğesinde kullanılmayan hiçbir derlemeye başvurmadığından emin olun.
-* Her. cshtml dosyasının **derleme eylemi** **içerik**olarak ayarlanır. Bu, dosyaların pakette doğru görünmesini ve başvurulan diğer dosyaların pakette görünmesini sağlar.
+* Her. cshtml dosyasının **derleme eylemi** **içerik** olarak ayarlanır. Bu, dosyaların pakette doğru görünmesini ve başvurulan diğer dosyaların pakette görünmesini sağlar.
 
 ## <a name="assembly-targets-wrong-platform"></a>Derleme yanlış platformu hedefliyor
 Azure, 64 bitlik bir ortamdır. Bu nedenle, 32 bitlik bir hedef için derlenen .NET derlemeleri Azure 'da çalışmaz.

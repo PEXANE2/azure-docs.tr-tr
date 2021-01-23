@@ -3,23 +3,23 @@ title: Yönetim birimi kapsamına sahip rolleri atama ve listeleme-Azure Active 
 description: Azure Active Directory içindeki rol atamalarının kapsamını kısıtlamak için yönetim birimlerini kullanın.
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73ed2741c7dd754127a57642703b650a70637c63
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: ecfa9186ef42d4822c9b3053d76b7c0160841621
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393447"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740406"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>Yönetim birimine kapsamlı roller atama
 
@@ -50,17 +50,17 @@ Aşağıdaki güvenlik sorumluları, yönetim birimi kapsamına sahip bir role a
 
 Azure portal, PowerShell veya Microsoft Graph kullanarak kapsamlı bir rol atayabilirsiniz.
 
-### <a name="use-the-azure-portal"></a>Azure portalı kullanma
+### <a name="use-the-azure-portal"></a>Azure portalını kullanma
 
-1. Azure portal **Azure AD** 'ye gidin.
+1. Azure portal **Azure AD**'ye gidin.
 
-1. **Yönetim birimleri** ' ni seçin ve ardından bir kullanıcı rolü kapsamı atamak istediğiniz yönetim birimini seçin. 
+1. **Yönetim birimleri**' ni seçin ve ardından bir kullanıcı rolü kapsamı atamak istediğiniz yönetim birimini seçin. 
 
 1. Sol bölmede, tüm kullanılabilir rolleri listelemek için **Roller ve yöneticiler** ' i seçin.
 
    ![Rol kapsamını atamak istediğiniz yönetim birimini seçmek için "rol ve Yöneticiler" bölmesinin ekran görüntüsü.](./media/admin-units-assign-roles/select-role-to-scope.png)
 
-1. Atanacak rolü seçin ve ardından **atama Ekle** ' yi seçin. 
+1. Atanacak rolü seçin ve ardından **atama Ekle**' yi seçin. 
 
 1. **Atama Ekle** bölmesinde, role atanacak bir veya daha fazla kullanıcı seçin.
 
@@ -101,15 +101,15 @@ Request body
 
 Kapsamlı yöneticilerin listesini Azure portal, PowerShell veya Microsoft Graph kullanarak görüntüleyebilirsiniz.
 
-### <a name="use-the-azure-portal"></a>Azure portalı kullanma
+### <a name="use-the-azure-portal"></a>Azure portalını kullanma
 
 Yönetim birimi kapsamıyla oluşturulan tüm rol atamalarını [Azure AD 'Nin yönetim birimleri bölümünde](https://ms.portal.azure.com/?microsoft_aad_iam_adminunitprivatepreview=true&microsoft_aad_iam_rbacv2=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/AdminUnit)görüntüleyebilirsiniz. 
 
-1. Azure portal **Azure AD** 'ye gidin.
+1. Azure portal **Azure AD**'ye gidin.
 
-1. Sol bölmede **yönetim birimleri** ' ni seçin ve ardından görüntülemek istediğiniz rol atamalarının listesi için yönetim birimini seçin. 
+1. Sol bölmede **yönetim birimleri**' ni seçin ve ardından görüntülemek istediğiniz rol atamalarının listesi için yönetim birimini seçin. 
 
-1. **Roller ve yöneticiler** ' i seçin ve ardından yönetim biriminde atamaları görüntülemek için bir rol açın.
+1. **Roller ve yöneticiler**' i seçin ve ardından yönetim biriminde atamaları görüntülemek için bir rol açın.
 
 ### <a name="use-powershell"></a>PowerShell kullanma
 
