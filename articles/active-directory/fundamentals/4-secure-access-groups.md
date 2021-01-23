@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f83e5584f8f9c6823e1259cb5e6034d8b13ae3a6
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 7eb168610f10ac336084ac04c19679d26fc913e0
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222386"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725253"
 ---
 # <a name="securing-external-access-with-groups"></a>Gruplarla dış erişimin güvenliğini sağlama 
 
@@ -48,13 +48,13 @@ Kaynaklarınıza dış erişimin güvenliğini sağlamak için Grup stratejinizi
 
    * *Varsayılan olarak, tüm kiracı üyeleri Azure AD güvenlik grupları oluşturabilir*. 
 
-      * [Yönetici olmayanlar için portala erişimi kısıtlayabilir](../develop/howto-restrict-your-app-to-a-set-of-users.md) ve PowerShell 'de Grup oluşturma özelliğini devre dışı bırakabilirsiniz [.](../users-groups-roles/groups-troubleshooting.md) 
+      * [Yönetici olmayanlar için portala erişimi kısıtlayabilir](../develop/howto-restrict-your-app-to-a-set-of-users.md) ve PowerShell 'de Grup oluşturma özelliğini devre dışı bırakabilirsiniz [.](../enterprise-users/groups-troubleshooting.md) 
 
-      * Ayrıca, [Azure Active Directory içinde Self Servis Grup yönetimini de ayarlayabilirsiniz](../users-groups-roles/groups-self-service-management.md). 
+      * Ayrıca, [Azure Active Directory içinde Self Servis Grup yönetimini de ayarlayabilirsiniz](../enterprise-users/groups-self-service-management.md). 
 
    * *Varsayılan olarak, tüm kullanıcılar M365 grupları oluşturabilir ve kiracınızdaki tüm (iç ve dış) kullanıcıların katılması için gruplar açıktır*. 
 
-      * [Microsoft 365 grubu oluşturmayı,](https://docs.microsoft.com/microsoft-365/solutions/manage-creation-of-groups?view=o365-worldwide) belirli bir güvenlik grubunun üyeleriyle kısıtlayabilirsiniz. Bu ayarı yapılandırmak için Windows PowerShell 'i kullanın. 
+      * [Microsoft 365 grubu oluşturmayı,](/microsoft-365/solutions/manage-creation-of-groups?view=o365-worldwide) belirli bir güvenlik grubunun üyeleriyle kısıtlayabilirsiniz. Bu ayarı yapılandırmak için Windows PowerShell 'i kullanın. 
 
 * **Kişileri gruplara davet edebiliyor musunuz?** Tüm grup üyeleri başka Üyeler ekleyebiliyor mu, yoksa yalnızca sahipleri üye ekleyebiliyor musunuz?
 
@@ -80,7 +80,7 @@ Dinamik Gruplar Kullanıcı veya cihazları içerebilir ancak ikisini birden iç
 
 ![Dinamik üyelik kurallarını yapılandırma ekran görüntüsü.](media/secure-external-access/4-dynamic-membership-rules.png)
 
-Dinamik Gruplar hakkında daha fazla bilgi için, bkz [. Azure Active Directory bir dinamik grup oluşturma veya güncelleştirme.](../users-groups-roles/groups-create-rule.md)
+Dinamik Gruplar hakkında daha fazla bilgi için, bkz [. Azure Active Directory bir dinamik grup oluşturma veya güncelleştirme.](../enterprise-users/groups-create-rule.md)
 
 ### <a name="do-not-use-groups-for-multiple-purposes"></a>Grupları birden çok amaçla kullanma
 
@@ -117,7 +117,7 @@ Ekip ve ilişkili siteleri ve içeriği gibi bir Microsoft 365 kaynakları küme
 
 ## <a name="azure-ad-security-groups"></a>Azure AD güvenlik grupları 
 
-[Azure AD güvenlik grupları](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups) , kullanıcıları veya cihazları içerebilir ve erişimini yönetmek için kullanılabilir 
+[Azure AD güvenlik grupları](./active-directory-manage-groups.md) , kullanıcıları veya cihazları içerebilir ve erişimini yönetmek için kullanılabilir 
 
 * Microsoft 365 uygulamalar, özel uygulamalar ve bir hizmet olarak yazılım (SaaS) uygulaması gibi Azure kaynakları Dropbox 'ın ServiceNow gibi.
 
@@ -127,11 +127,11 @@ Ekip ve ilişkili siteleri ve içeriği gibi bir Microsoft 365 kaynakları küme
 
 Azure AD güvenlik grupları şunları yapmak için de kullanılabilir:
 
-* M365, Dynamics 365 ve Enterprise Mobility ve Security gibi hizmetler için lisans atayın. Daha fazla bilgi için bkz. [grup tabanlı lisanslama](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal).
+* M365, Dynamics 365 ve Enterprise Mobility ve Security gibi hizmetler için lisans atayın. Daha fazla bilgi için bkz. [grup tabanlı lisanslama](./active-directory-licensing-whatis-azure-portal.md).
 
-* yükseltilmiş izinler atayın. Daha fazla bilgi için bkz. [rol atamalarını yönetmek için bulut gruplarını kullanma (Önizleme](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-groups-concept)). 
+* yükseltilmiş izinler atayın. Daha fazla bilgi için bkz. [rol atamalarını yönetmek için bulut gruplarını kullanma (Önizleme](../roles/groups-concept.md)). 
 
-[Azure Portal](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal) bir grup oluşturmak için Azure Active Directory ve ardından Gruplar ' a gidin. Ayrıca, [PowerShell cmdlet 'lerini](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-settings-v2-cmdlets)kullanarak Azure AD güvenlik grupları da oluşturabilirsiniz. 
+[Azure Portal](./active-directory-groups-create-azure-portal.md) bir grup oluşturmak için Azure Active Directory ve ardından Gruplar ' a gidin. Ayrıca, [PowerShell cmdlet 'lerini](../enterprise-users/groups-settings-v2-cmdlets.md)kullanarak Azure AD güvenlik grupları da oluşturabilirsiniz. 
 
 > [!NOTE]
 > Bir güvenlik grubu en fazla 1500 uygulama ataması için kullanılabilir, ancak daha fazla kullanılamaz. 
@@ -146,17 +146,17 @@ Azure AD güvenlik grupları şunları yapmak için de kullanılabilir:
 
 Hibrit kuruluşların hem şirket içi altyapısı hem de bir Azure AD bulut altyapısı vardır. Active Directory kullanan birçok karma kuruluş, şirket içinde güvenlik gruplarını oluşturur ve bunları buluta eşitler. Bu yöntemi kullanarak, yalnızca şirket içi ortamdaki kullanıcılar güvenlik gruplarına eklenebilir.
 
-Şirket içi **altyapınızı güvenlik altına alarak koruyun çünkü şirket içi bir ihlal, Microsoft 365 kiracınıza erişim kazanmak için kullanılabilir**. Yönergeler için bkz. [Şirket içi saldırılardan Microsoft 365 koruma](https://aka.ms/protectm365) .
+Şirket içi **altyapınızı güvenlik altına alarak koruyun çünkü şirket içi bir ihlal, Microsoft 365 kiracınıza erişim kazanmak için kullanılabilir**. Yönergeler için bkz. [Şirket içi saldırılardan Microsoft 365 koruma](./protect-m365-from-on-premises-attacks.md) .
 
 ## <a name="microsoft-365-groups"></a>Microsoft 365 grupları
 
-[Microsoft 365 Gruplar](https://docs.microsoft.com/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide) , tüm erişimi M365 genelinde yönlendiren temel üyelik hizmetidir. [Azure Portal](https://portal.azure.com/)veya [M365 Portal](https://admin.microsoft.com/)' dan oluşturulabilirler. Bir M365 grubu oluşturulduğunda, işbirliği yapmak için kullanılan bir kaynak grubuna erişim izni verirsiniz. Bu kaynakların tüm listesi için bkz. [Yöneticiler için Microsoft 365 gruplarına genel bakış](https://docs.microsoft.com/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide) .
+[Microsoft 365 Gruplar](/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide) , tüm erişimi M365 genelinde yönlendiren temel üyelik hizmetidir. [Azure Portal](https://portal.azure.com/)veya [M365 Portal](https://admin.microsoft.com/)' dan oluşturulabilirler. Bir M365 grubu oluşturulduğunda, işbirliği yapmak için kullanılan bir kaynak grubuna erişim izni verirsiniz. Bu kaynakların tüm listesi için bkz. [Yöneticiler için Microsoft 365 gruplarına genel bakış](/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide) .
 
 M365 gruplar, rollerinin aşağıdaki nuslarını sahiptir
 
 * **Sahipler** grubu sahipleri üye ekleyebilir veya kaldırabilir ve paylaşılan gelen kutusundan konuşmaları silme veya grup ayarlarını değiştirme yeteneği gibi benzersiz izinlere sahip olabilir. Grup sahipleri grubu yeniden adlandırabilir, açıklama veya resmi güncelleştirebilir ve daha fazlasını yapabilir.
 
-* **Üyeler** -Üyeler gruptaki her şeye erişebilir, ancak Grup ayarlarını değiştiremezler. Varsayılan olarak, Grup üyeleri konukları grubunuza katılmaya davet edebilir, ancak [Bu ayarı denetleyebilirsiniz](https://docs.microsoft.com/microsoft-365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide).
+* **Üyeler** -Üyeler gruptaki her şeye erişebilir, ancak Grup ayarlarını değiştiremezler. Varsayılan olarak, Grup üyeleri konukları grubunuza katılmaya davet edebilir, ancak [Bu ayarı denetleyebilirsiniz](/microsoft-365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide).
 
 * **Konuklar** grubu konukları, kuruluşunuzun dışından gelen üyedir. Varsayılan olarak konuklar ekipteki işlevlere bazı sınırlara sahiptir.
 

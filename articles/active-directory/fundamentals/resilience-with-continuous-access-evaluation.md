@@ -13,16 +13,16 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ad36c2a7f47948d9362b85e78355e6046cda703
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1a12cc3299fbb5916afba48d2608024f28999634
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919866"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724636"
 ---
 # <a name="build-resilience-by-using-continuous-access-evaluation"></a>Sürekli erişim değerlendirmesi kullanarak esnekliği derleme
 
-[Sürekli erişim değerlendirmesi](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-continuous-access-evaluation) (CAE), Azure AD uygulamalarının, daha sonra değerlendirilebilecek ve zorlanacak kritik olaylara abone olmasına olanak sağlar. Buna aşağıdaki olayların değerlendirmesi dahildir:
+[Sürekli erişim değerlendirmesi](../conditional-access/concept-continuous-access-evaluation.md) (CAE), Azure AD uygulamalarının, daha sonra değerlendirilebilecek ve zorlanacak kritik olaylara abone olmasına olanak sağlar. Buna aşağıdaki olayların değerlendirmesi dahildir:
 
 * Silinmekte veya devre dışı bırakılmakta olan kullanıcı hesabı
 
@@ -48,11 +48,11 @@ Microsoft, üçüncü taraf uygulamaların bu özelliği kullanmasına imkan tan
 
 ## <a name="how-do-i-implement-cae"></a>CAE uygulama Nasıl yaparım??
 
-* Azure AD güvenlik yapılandırması 'nda [CAE 'Yi etkinleştirin](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-continuous-access-evaluation) .
+* Azure AD güvenlik yapılandırması 'nda [CAE 'Yi etkinleştirin](../conditional-access/concept-continuous-access-evaluation.md) .
 
-* Kuruluşunuzun Microsoft Office yerel uygulamaların [uyumlu sürümlerini](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-continuous-access-evaluation) kullandığından emin olun.
+* Kuruluşunuzun Microsoft Office yerel uygulamaların [uyumlu sürümlerini](../conditional-access/concept-continuous-access-evaluation.md) kullandığından emin olun.
 
-* Yeniden [kimlik doğrulama istemlerinizi iyileştirin](https://docs.microsoft.com/azure/active-directory/authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime).
+* Yeniden [kimlik doğrulama istemlerinizi iyileştirin](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md).
 
  
 ## <a name="next-steps"></a>Sonraki adımlar

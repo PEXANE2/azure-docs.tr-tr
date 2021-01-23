@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 18c626a11724b585bf699f8be470b439177991ae
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: fdca04c645e1bb956c8e9f294c702b639c8e2f74
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250915"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726409"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adobe-identity-management"></a>Öğretici: Adobe Identity Management ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -164,7 +164,7 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 * Doğrudan Adobe Identity Management oturum açma URL 'sine gidin ve oturum açma akışını buradan başlatın.
 
-* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım ' da Adobe Identity Management kutucuğuna tıkladığınızda bu, Adobe Identity Management oturum açma URL 'sine yeniden yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım ' da Adobe Identity Management kutucuğuna tıkladığınızda bu, Adobe Identity Management oturum açma URL 'sine yeniden yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

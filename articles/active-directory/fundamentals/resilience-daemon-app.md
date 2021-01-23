@@ -11,12 +11,12 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: 74bfc9eeeb8375fca2c88a3fd3c31f17e130fc99
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a7b8f893026bb96c8d768d2e6d07d0240ecb81fa
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919997"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724850"
 ---
 # <a name="increase-the-resilience-of-authentication-and-authorization-in-daemon-applications-you-develop"></a>Geliştirdiğiniz Daemon uygulamalarında kimlik doğrulama ve yetkilendirme esnekliği artırma
 
@@ -26,7 +26,7 @@ Bu makalede, geliştiricilerin Microsoft Identity platformunu nasıl kullanabile
 
 ## <a name="use-managed-identities-for-azure-resources"></a>Azure kaynakları için Yönetilen kimlikler kullanma
 
-Microsoft Azure Daemon uygulamaları geliştiren geliştiriciler, [Azure kaynakları Için Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)kullanabilir. Yönetilen kimlikler, geliştiricilerin gizli dizileri ve kimlik bilgilerini yönetmesi gereksinimini ortadan kaldırır. Özelliği, sertifika süre sonu, döndürme hataları veya güvende hatalardan kaçınarak esnekliği geliştirir. Ayrıca, özellikle de esnekliği arttırmak için çeşitli yerleşik özellikler içerir.
+Microsoft Azure Daemon uygulamaları geliştiren geliştiriciler, [Azure kaynakları Için Yönetilen kimlikler](../managed-identities-azure-resources/overview.md)kullanabilir. Yönetilen kimlikler, geliştiricilerin gizli dizileri ve kimlik bilgilerini yönetmesi gereksinimini ortadan kaldırır. Özelliği, sertifika süre sonu, döndürme hataları veya güvende hatalardan kaçınarak esnekliği geliştirir. Ayrıca, özellikle de esnekliği arttırmak için çeşitli yerleşik özellikler içerir.
 
 Yönetilen kimlikler, mevcut belirtecin süresi dolmadan büyük bir süre içinde yeni belirteçleri önceden almak için Microsoft kimliğinden uzun süreli erişim belirteçleri ve bilgiler kullanır. Uygulamanız yeni bir belirteç alınmaya çalışırken çalışmaya devam edebilir.
 
@@ -34,11 +34,11 @@ Yönetilen kimlikler Ayrıca, bölge dışı hatalara karşı performansı ve es
 
 ## <a name="use-the-microsoft-authentication-library"></a>Microsoft kimlik doğrulama kitaplığı 'nı kullanma
 
-Yönetilen kimlikleri kullanmayan Daemon uygulamalarının geliştiricileri, kimlik doğrulama ve yetkilendirmeyi basit hale getiren [Microsoft kimlik doğrulama kitaplığı 'nı (msal)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)kullanabilir ve otomatik olarak esnekliği için en iyi yöntemleri kullanır. MSAL, gerekli Istemci kimlik bilgilerini sağlama işlemini daha kolay hale getirir. Örneğin, uygulamanızın sertifika tabanlı kimlik bilgilerini kullanırken JSON Web Token onayları oluşturma ve imzalama işlemlerini uygulaması gerekmez.
+Yönetilen kimlikleri kullanmayan Daemon uygulamalarının geliştiricileri, kimlik doğrulama ve yetkilendirmeyi basit hale getiren [Microsoft kimlik doğrulama kitaplığı 'nı (msal)](../develop/msal-overview.md)kullanabilir ve otomatik olarak esnekliği için en iyi yöntemleri kullanır. MSAL, gerekli Istemci kimlik bilgilerini sağlama işlemini daha kolay hale getirir. Örneğin, uygulamanızın sertifika tabanlı kimlik bilgilerini kullanırken JSON Web Token onayları oluşturma ve imzalama işlemlerini uygulaması gerekmez.
 
 ### <a name="use-microsoftidentityweb-for-net-developers"></a>.NET geliştiricileri için Microsoft. Identity. Web kullanma
 
-ASP.NET Core Daemon uygulamaları oluşturan geliştiriciler [Microsoft. Identity. Web](https://docs.microsoft.com/azure/active-directory/develop/microsoft-identity-web) kitaplığını kullanabilir. Bu kitaplık, yetkilendirme uygulamanın ASP.NET Core uygulamalar için daha da kolay hale getirmek için MSAL üzerine kurulmuştur. Bu, birden çok bölgede çalışabilen dağıtılmış uygulamalar için birkaç [Dağıtılmış belirteç önbellek](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization#distributed-token-cache) stratejisi içerir.
+ASP.NET Core Daemon uygulamaları oluşturan geliştiriciler [Microsoft. Identity. Web](../develop/microsoft-identity-web.md) kitaplığını kullanabilir. Bu kitaplık, yetkilendirme uygulamanın ASP.NET Core uygulamalar için daha da kolay hale getirmek için MSAL üzerine kurulmuştur. Bu, birden çok bölgede çalışabilen dağıtılmış uygulamalar için birkaç [Dağıtılmış belirteç önbellek](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization#distributed-token-cache) stratejisi içerir.
 
 ## <a name="cache-and-store-tokens"></a>Önbellek ve mağaza belirteçleri
 

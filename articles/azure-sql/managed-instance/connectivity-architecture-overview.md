@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 10/22/2020
-ms.openlocfilehash: 9a35c0dc8a3b994b015d7a8d64f76f7e10d95a00
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 58563629b30e7be764732a9810162e1a0b1931e6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722411"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725845"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Azure SQL Yönetilen Örneği için bağlantı mimarisi
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -107,11 +107,11 @@ SQL yönetilen örneğini sanal ağın içindeki ayrılmış bir alt ağda dağ�
 - **Yeterlı IP adresi:** SQL yönetilen örnek alt ağı en az 32 IP adresine sahip olmalıdır. Daha fazla bilgi için bkz. [SQL yönetilen örneği için alt ağın boyutunu belirleme](vnet-subnet-determine-size.md). Yönetilen örnekleri, [SQL yönetilen örneği için ağ gereksinimlerini](#network-requirements)karşılayacak şekilde yapılandırdıktan sonra [, var olan ağda](vnet-existing-add-subnet.md) dağıtabilirsiniz. Bunu yapamazsanız [yeni bir ağ ve alt ağ](virtual-network-subnet-create-arm-template.md) oluşturabilirsiniz.
 
 > [!IMPORTANT]
-> Yönetilen bir örnek oluşturduğunuzda, ağ kurulum üzerinde uyumsuz değişiklikler yapılmasını engellemek için alt ağa bir ağ hedefi ilkesi uygulanır. Son örnek alt ağdan kaldırıldıktan sonra, ağ hedefi ilkesi de kaldırılır. Aşağıdaki kurallar yalnızca bilgilendirme amaçlıdır ve ARM şablonu/PowerShell/CLı kullanarak bunları dağıtmamalıdır. En son resmi şablonu kullanmak istiyorsanız, her zaman [portaldan alabilirsiniz](https://docs.microsoft.com/azure/azure-resource-manager/templates/quickstart-create-templates-use-the-portal).
+> Yönetilen bir örnek oluşturduğunuzda, ağ kurulum üzerinde uyumsuz değişiklikler yapılmasını engellemek için alt ağa bir ağ hedefi ilkesi uygulanır. Son örnek alt ağdan kaldırıldıktan sonra, ağ hedefi ilkesi de kaldırılır. Aşağıdaki kurallar yalnızca bilgilendirme amaçlıdır ve ARM şablonu/PowerShell/CLı kullanarak bunları dağıtmamalıdır. En son resmi şablonu kullanmak istiyorsanız, her zaman [portaldan alabilirsiniz](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Hizmet destekli alt ağ yapılandırması ile zorunlu gelen güvenlik kuralları
 
-| Ad       |Bağlantı noktası                        |Protokol|Kaynak           |Hedef|Eylem|
+| Name       |Bağlantı noktası                        |Protokol|Kaynak           |Hedef|Eylem|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |yönetim  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |Mı ALT AĞı  |İzin Ver |
 |            |9000, 9003                  |TCP     |Corpnetgördünüz       |Mı ALT AĞı  |İzin Ver |
@@ -121,14 +121,14 @@ SQL yönetilen örneğini sanal ağın içindeki ayrılmış bir alt ağda dağ�
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Hizmet destekli alt ağ yapılandırması ile zorunlu giden güvenlik kuralları
 
-| Ad       |Bağlantı noktası          |Protokol|Kaynak           |Hedef|Eylem|
+| Name       |Bağlantı noktası          |Protokol|Kaynak           |Hedef|Eylem|
 |------------|--------------|--------|-----------------|-----------|------|
 |yönetim  |443, 12000    |TCP     |Mı ALT AĞı        |AzureCloud |İzin Ver |
 |mi_subnet   |Herhangi biri           |Herhangi biri     |Mı ALT AĞı        |Mı ALT AĞı  |İzin Ver |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>Hizmet destekli alt ağ yapılandırmasıyla Kullanıcı tanımlı rotalar
 
-|Ad|Adres ön eki|Sonraki atlama|
+|Name|Adres ön eki|Sonraki atlama|
 |----|--------------|-------|
 |alt ağdan vnetlocal|Mı ALT AĞı|Sanal ağ|
 |mi-13-64-11-sonrakii-Internet|13.64.0.0/11|İnternet|

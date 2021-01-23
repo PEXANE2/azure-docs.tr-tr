@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 6b217e77310224779ea3ea840e613e28da6c86a3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 5d15947254d80d97b6a241a717fb7d33a3d5ccb5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779875"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724025"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL Yönetilen Örneği hakkında sık sorulan sorular (SSS)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -118,7 +118,7 @@ Yönetilen örnek adının değiştirilmesi desteklenmiyor.
 
 Evet, yönetilen örnek varsayılan DNS bölgesi *. Database.Windows.net* değiştirilebilir. 
 
-Varsayılan yerine başka bir DNS bölgesi kullanmak için, örneğin *. contoso.com* : 
+Varsayılan yerine başka bir DNS bölgesi kullanmak için, örneğin *. contoso.com*: 
 - Bir diğer ad tanımlamak için CliConfig 'i kullanın. Araç yalnızca bir kayıt defteri ayarları sarmalayıcısıdır ve bu nedenle Grup İlkesi veya bir komut dosyası kullanılarak yapılabilir.
 - *TrustServerCertificate = true* seçeneğiyle *CNAME* kullanın.
 
@@ -326,7 +326,7 @@ Yönetim ve Dağıtım Hizmetleri, bir dış yük dengeleyiciye eşlenen bir [Y�
 
 **Yönetilen örnek veritabanlarındaki verilere erişmek için genel uç noktasını kullanabilir miyim?**
 
-Evet. Müşterinin, [Azure Portal](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal)PowerShell/ARM 'den ortak uç nokta veri erişiminin etkinleştirilmesi  /  [PowerShell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) ve NSG 'yi, veri bağlantı noktasına (bağlantı noktası numarası 3342) erişimi kilitleyecek şekilde yapılandırması gerekir. Daha fazla bilgi için bkz. [Azure SQL yönetilen örneği 'nde ortak uç noktayı yapılandırma](public-endpoint-configure.md) ve [genel uç noktayla GÜVENLI şekilde Azure SQL yönetilen örneği kullanma](public-endpoint-overview.md). 
+Evet. Müşterinin, [Azure Portal](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal)PowerShell/ARM 'den ortak uç nokta veri erişiminin etkinleştirilmesi  /  [](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) ve NSG 'yi, veri bağlantı noktasına (bağlantı noktası numarası 3342) erişimi kilitleyecek şekilde yapılandırması gerekir. Daha fazla bilgi için bkz. [Azure SQL yönetilen örneği 'nde ortak uç noktayı yapılandırma](public-endpoint-configure.md) ve [genel uç noktayla GÜVENLI şekilde Azure SQL yönetilen örneği kullanma](public-endpoint-overview.md). 
 
 **SQL Data Endpoint için özel bir bağlantı noktası belirtebilir miyim?**
 
@@ -339,7 +339,7 @@ Hızlı rota devresi eşlemesi bunu yapmanın tercih edilen yoludur. Küresel sa
 > [!IMPORTANT]
 > [9/22/2020 tarihinde yeni oluşturulan sanal kümeler için genel sanal ağ eşlemesi duyuruldu](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Diğer bir deyişle, duyuru tarihinden sonra boş alt ağlarda oluşturulan SQL yönetilen örnekleri ve bu alt ağlarda oluşturulan tüm sonraki yönetilen örnekler için genel sanal ağ eşlemesi desteklenir. Diğer tüm SQL yönetilen örnekler için eşleme desteği, [Genel sanal ağ eşlemesi kısıtlamalarından](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)dolayı aynı bölgedeki ağlarla sınırlıdır. Daha fazla bilgi için bkz. [Azure sanal ağlar sık sorulan sorular](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) makalesinin ilgili bölümü. 
 
-Hızlı rota devresi eşlemesi ve genel sanal ağ eşlemesi mümkün değilse, tek diğer seçenek siteden siteye VPN bağlantısı ([Azure Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md), [POWERSHELL](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), [Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)) oluşturmaktır.
+Hızlı rota devresi eşlemesi ve genel sanal ağ eşlemesi mümkün değilse, tek diğer seçenek siteden siteye VPN bağlantısı ([Azure Portal](../../vpn-gateway/tutorial-site-to-site-portal.md), [POWERSHELL](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), [Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)) oluşturmaktır.
 
 ## <a name="mitigate-data-exfiltration-risks"></a>Veri kaybı riskini azaltma  
 
@@ -409,8 +409,8 @@ Azure Cloud Shell kullanarak, yönetilen örnek için TDE koruyucuyu döndürebi
 
 Evet, SQL yönetilen örneğine geri yüklemek için veritabanınızın şifresini çözmeniz gerekmez. Şifrelenmiş yedekleme dosyasından verileri okuyabilmeniz için kaynak sistemde SQL yönetilen örneği için şifreleme anahtarı koruyucusu olarak kullanılan bir sertifika/anahtar sağlamanız gerekir. Bunu yapmak için iki olası yol vardır:
 
-- *Sertifika koruyucuyu SQL yönetilen örneğine yükleyin* . Yalnızca PowerShell kullanılarak yapılabilir. [Örnek betik](./tde-certificate-migrate.md) , tüm süreci açıklar.
-- *Azure Key Vault için asimetrik anahtar koruyucusunu karşıya yükleyin ve SQL yönetilen örneği üzerine gelin* . Bu yaklaşım, şifreleme anahtarını depolamak için Key Vault tümleştirmesinin kullanıldığı, kendi anahtarını getir (BYOK) TDE kullanım örneğine benzer. Anahtarı şifreleme anahtar koruyucusu olarak kullanmak istemiyorsanız ve yalnızca SQL yönetilen örneği için anahtarı şifrelenmiş veritabanlarını geri yüklemek istiyorsanız, [BYOK TDE ayarlama](../database/transparent-data-encryption-tde-overview.md#manage-transparent-data-encryption)yönergelerini izleyin ve **Seçili anahtarı varsayılan TDE koruyucusu yap** onay kutusunu işaretlemeyin.
+- *Sertifika koruyucuyu SQL yönetilen örneğine yükleyin*. Yalnızca PowerShell kullanılarak yapılabilir. [Örnek betik](./tde-certificate-migrate.md) , tüm süreci açıklar.
+- *Azure Key Vault için asimetrik anahtar koruyucusunu karşıya yükleyin ve SQL yönetilen örneği üzerine gelin*. Bu yaklaşım, şifreleme anahtarını depolamak için Key Vault tümleştirmesinin kullanıldığı, kendi anahtarını getir (BYOK) TDE kullanım örneğine benzer. Anahtarı şifreleme anahtar koruyucusu olarak kullanmak istemiyorsanız ve yalnızca SQL yönetilen örneği için anahtarı şifrelenmiş veritabanlarını geri yüklemek istiyorsanız, [BYOK TDE ayarlama](../database/transparent-data-encryption-tde-overview.md#manage-transparent-data-encryption)yönergelerini izleyin ve **Seçili anahtarı varsayılan TDE koruyucusu yap** onay kutusunu işaretlemeyin.
 
 Şifreleme koruyucusunu SQL yönetilen örneği için kullanılabilir hale getirildikten sonra standart veritabanı geri yükleme yordamıyla devam edebilirsiniz.
 
@@ -443,7 +443,7 @@ Yönetilen örnek fiyatlandırma seçeneklerini araştırmak için bkz. [fiyatla
 
 **Yönetilen örneğimin fatura maliyetini nasıl izleyebilirim?**
 
-Bunu [Azure maliyet yönetimi çözümünü](../../cost-management-billing/index.yml)kullanarak yapabilirsiniz. [Azure Portal](https://portal.azure.com) **abonelikler** ' e gidin ve **Maliyet Analizi** ' ni seçin. 
+Bunu [Azure maliyet yönetimi çözümünü](../../cost-management-billing/index.yml)kullanarak yapabilirsiniz. [Azure Portal](https://portal.azure.com) **abonelikler** ' e gidin ve **Maliyet Analizi**' ni seçin. 
 
 **Birikmiş maliyetler** seçeneğini kullanın ve ardından **kaynak türüne** göre filtreleyin `microsoft.sql/managedinstances` .
 

@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecde474abf3c814b7c3afa4ae18d044868785cf5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ff7505e7c47b93f32efd9de60463873026247329
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95920058"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724934"
 ---
 # <a name="resilience-through-developer-best-practices"></a>Geliştirici en iyi uygulamaları esnekliği
 
@@ -28,7 +28,7 @@ Bu makalede, büyük müşterilerle çalışırken deneyimimizi temel alan bazı
 
 ## <a name="use-the-microsoft-authentication-library-msal"></a>Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanma
 
-ASP.NET için [Microsoft kimlik doğrulama kitaplığı (msal)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) ve [Microsoft Identity Web kimlik doğrulaması kitaplığı](https://docs.microsoft.com/azure/active-directory/develop/reference-v2-libraries) , bir uygulamanın gerektirdiği belirteçleri alma, yönetme, önbelleğe alma ve yenilemeyi basitleştirir. Bu kitaplıklar, uygulama dayanıklılığı geliştiren özellikler dahil olmak üzere özellikle Microsoft kimliğini desteklemek için iyileştirilmiştir.
+ASP.NET için [Microsoft kimlik doğrulama kitaplığı (msal)](../develop/msal-overview.md) ve [Microsoft Identity Web kimlik doğrulaması kitaplığı](../develop/reference-v2-libraries.md) , bir uygulamanın gerektirdiği belirteçleri alma, yönetme, önbelleğe alma ve yenilemeyi basitleştirir. Bu kitaplıklar, uygulama dayanıklılığı geliştiren özellikler dahil olmak üzere özellikle Microsoft kimliğini desteklemek için iyileştirilmiştir.
 
 Geliştiriciler MSAL 'in en son sürümlerini benimsemeli ve güncel kalmalıdır. Uygulamalarınızdaki [kimlik doğrulama ve yetkilendirme esnekliği artırma](resilience-app-development-overview.md) bölümüne bakın. Mümkün olduğunda, kendi kimlik doğrulama yığınınızı uygulamaktan ve iyi belirlenen kitaplıkları kullanmaktan kaçının.
 
@@ -40,7 +40,7 @@ Microsoft Azure AD B2C dizin hizmeti günde milyarlarca kimlik doğrulamasını 
 
 - **Oturum açma sırasında dizine yazma Işlevlerinden kaçının**: özel ilkeleriniz üzerinde bir ön koşul (if yan tümcesi) olmadan oturum açma sırasında hiç bir yazma yürütün. Oturum açma sırasında yazma gerektiren bir kullanım durumu, [kullanıcı parolalarının tam zamanında geçişini](https://github.com/azure-ad-b2c/user-migration/tree/master/seamless-account-migration)gerektirir. Her oturum açma için yazma gerektiren herhangi bir senaryoyu kullanmaktan kaçının.
 
-  - Bir Kullanıcı yolculuğunda [önkoşulları](https://docs.microsoft.com/azure/active-directory-b2c/userjourneys) şöyle görünür:
+  - Bir Kullanıcı yolculuğunda [önkoşulları](../../active-directory-b2c/userjourneys.md) şöyle görünür:
 
   ``
   <Precondition Type="ClaimEquals" ExecuteActionsIf="true"> 
@@ -50,7 +50,7 @@ Microsoft Azure AD B2C dizin hizmeti günde milyarlarca kimlik doğrulamasını 
   ``
   - [BIR CAPTCHA sistemiyle tümleştirerek bot tabanlı oturum açma](https://github.com/azure-ad-b2c/samples/tree/master/policies/captcha-integration)işlemleri oluşturma.
 
-  - Kaydolma ve oturum açma benzetimi için bir [Yük testi örneği](https://docs.microsoft.com/azure/active-directory-b2c/best-practices#testing) kullanın. 
+  - Kaydolma ve oturum açma benzetimi için bir [Yük testi örneği](../../active-directory-b2c/best-practices.md#testing) kullanın. 
 
 - **Azaltmayı anlayın**: Dizin hem uygulama hem de kiracı düzeyi azaltma kurallarını uygular. Okuma/yazma, yazma/gönderme, güncelleştirme/YERLEŞTIRME ve silme/SILME işlemleri için daha fazla hız sınırı vardır ve her işlem farklı sınırlara sahiptir.
 
@@ -62,11 +62,11 @@ Microsoft Azure AD B2C dizin hizmeti günde milyarlarca kimlik doğrulamasını 
 
   - Geçiş zaman çizelgenizi anlayın ve planlayın. Microsoft Graph kullanarak Azure AD B2C kullanıcıları geçirmeyi planlarken, kullanıcıların geçişini tamamlaması için gereken süreyi hesaplamak üzere uygulamayı ve kiracı sınırlarını göz önünde bulundurun. Kullanıcı oluşturma işinizi veya komut dosyanızı iki uygulama kullanarak böldüğünüz takdirde, uygulama başına sınırı kullanabilirsiniz. Yine de her kiracı eşiğinin altında kalması gerekir.
 
-  - Geçiş işinizin diğer uygulamalarda etkilerini anlayın. Diğer bağlı uygulamalar tarafından sunulan canlı trafiği göz önünde bulundurun. böylece, kiracı düzeyinde ve kaynak üzerinde etkin uygulamanız için bir azalma olup olmadığından emin olun. Daha fazla bilgi için [Microsoft Graph azaltma Kılavuzu](https://docs.microsoft.com/graph/throttling)' na bakın.
+  - Geçiş işinizin diğer uygulamalarda etkilerini anlayın. Diğer bağlı uygulamalar tarafından sunulan canlı trafiği göz önünde bulundurun. böylece, kiracı düzeyinde ve kaynak üzerinde etkin uygulamanız için bir azalma olup olmadığından emin olun. Daha fazla bilgi için [Microsoft Graph azaltma Kılavuzu](/graph/throttling)' na bakın.
   
 ## <a name="extend-token-lifetimes"></a>Belirteç ömrünü Genişlet
 
-Olası bir olayda, Azure AD B2C kimlik doğrulama hizmeti yeni oturum açma işlemlerini ve oturum açma işlemlerini tamamlayamadığı zaman, oturum açan kullanıcılar için de risk azaltma sağlayabilirsiniz. [Yapılandırma](https://docs.microsoft.com/azure/active-directory-b2c/configure-tokens)sayesinde, zaten oturum açmış olan kullanıcıların, Kullanıcı uygulamadan oturum açana veya [oturum](https://docs.microsoft.com/azure/active-directory-b2c/session-behavior) zaman aşımına uğramasından kaynaklanan bir kesinti olmadan uygulamayı kullanmaya devam etmesine izin verebilirsiniz.
+Olası bir olayda, Azure AD B2C kimlik doğrulama hizmeti yeni oturum açma işlemlerini ve oturum açma işlemlerini tamamlayamadığı zaman, oturum açan kullanıcılar için de risk azaltma sağlayabilirsiniz. [Yapılandırma](../../active-directory-b2c/configure-tokens.md)sayesinde, zaten oturum açmış olan kullanıcıların, Kullanıcı uygulamadan oturum açana veya [oturum](../../active-directory-b2c/session-behavior.md) zaman aşımına uğramasından kaynaklanan bir kesinti olmadan uygulamayı kullanmaya devam etmesine izin verebilirsiniz.
 
 İş gereksinimleriniz ve istenen son kullanıcı deneyimi, hem Web hem de tek sayfalı uygulamalar (maça 'Lar) için belirteç yenileme sıklığınızı dikte edecektir.
 
@@ -82,7 +82,7 @@ Olası bir olayda, Azure AD B2C kimlik doğrulama hizmeti yeni oturum açma işl
 
   - Kimlik doğrulama proxy 'si olarak bir API ağ geçidi kullanmak için uygulamanızı oluşturun. Bu yapılandırmada, SPA herhangi bir kimlik doğrulaması olmadan yüklenir ve API çağrıları API ağ geçidine yapılır. API Gateway, bir ilkeye göre [yetkilendirme kodu izni](https://oauth.net/2/grant-types/authorization-code/) kullanarak kullanıcıyı bir oturum açma işlemiyle gönderir ve kullanıcının kimliğini doğrular. Daha sonra, API ağ geçidi ve istemci arasındaki kimlik doğrulama oturumu bir kimlik doğrulama tanımlama bilgisi kullanılarak tutulur. API 'Ler API ağ geçidi veya sertifikalar, istemci kimlik bilgileri ya da API anahtarları gibi başka bir doğrudan kimlik doğrulama yöntemi tarafından edinilen belirteci kullanarak API Gateway 'den hizmet verilir.
 
-  - Kod değişimi (PKCE) ve çıkış noktaları arası kaynak paylaşımı (CORS) desteği için düzeltme anahtarıyla, örtük [kimlik doğrulama kodu verme AKıŞıNA](https://docs.microsoft.com/azure/active-directory-b2c/implicit-flow-single-page-application) [Spa 'yı geçirin](https://developer.microsoft.com/identity/blogs/msal-js-2-0-supports-authorization-code-flow-is-now-generally-available/) . Uygulamanızı, Web uygulamalarının dayanıklılığını sağlamak için MSAL.js 1. x ' ten MSAL.js 2. x ' e geçirin.
+  - Kod değişimi (PKCE) ve çıkış noktaları arası kaynak paylaşımı (CORS) desteği için düzeltme anahtarıyla, örtük [kimlik doğrulama kodu verme AKıŞıNA](../../active-directory-b2c/implicit-flow-single-page-application.md) [Spa 'yı geçirin](https://developer.microsoft.com/identity/blogs/msal-js-2-0-supports-authorization-code-flow-is-now-generally-available/) . Uygulamanızı, Web uygulamalarının dayanıklılığını sağlamak için MSAL.js 1. x ' ten MSAL.js 2. x ' e geçirin.
 
   - Mobil uygulamalar için hem yenileme hem de erişim belirteci yaşam sürelerinin genişletilmesi önerilir.
 
@@ -90,25 +90,25 @@ Olası bir olayda, Azure AD B2C kimlik doğrulama hizmeti yeni oturum açma işl
 
 ## <a name="configure-single-sign-on"></a>Çoklu oturum açmayı yapılandırma
 
-[Çoklu oturum açma (SSO)](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)ile kullanıcılar tek bir hesapla oturum açıp birden çok uygulamaya erişim sağlar. Uygulama, platform veya etki alanı adından bağımsız olarak bir Web, mobil veya tek sayfalı uygulama (SPA) olabilir. Kullanıcı başlangıçta bir uygulamaya oturum açtığında, Azure AD B2C [tanımlama bilgisi tabanlı bir oturumu](https://docs.microsoft.com/azure/active-directory-b2c/session-overview)devam ettirir.
+[Çoklu oturum açma (SSO)](../manage-apps/what-is-single-sign-on.md)ile kullanıcılar tek bir hesapla oturum açıp birden çok uygulamaya erişim sağlar. Uygulama, platform veya etki alanı adından bağımsız olarak bir Web, mobil veya tek sayfalı uygulama (SPA) olabilir. Kullanıcı başlangıçta bir uygulamaya oturum açtığında, Azure AD B2C [tanımlama bilgisi tabanlı bir oturumu](../../active-directory-b2c/session-behavior.md)devam ettirir.
 
 Sonraki kimlik doğrulama istekleri üzerine Azure AD B2C, tanımlama bilgisi tabanlı oturumu okuyup doğrular ve kullanıcıdan tekrar oturum açmasını istemeden bir erişim belirteci yayınlar. SSO, ilke veya uygulama üzerinde sınırlı bir kapsamla yapılandırılmışsa, diğer ilkelere ve uygulamalara daha sonra erişmek için yeni kimlik doğrulaması gerekir.
 
 ### <a name="how-to-configure-sso"></a>SSO 'yu yapılandırma
 
-Kiracınızdaki birden fazla uygulamanın ve Kullanıcı akışının aynı kullanıcı oturumunu paylaşmasına izin vermek için SSO 'yu kiracı genelinde (varsayılan) olarak [yapılandırın](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso-quick-start) . Kiracı genelinde yapılandırma, kimlik doğrulaması için en çok dayanıklılık sağlar.  
+Kiracınızdaki birden fazla uygulamanın ve Kullanıcı akışının aynı kullanıcı oturumunu paylaşmasına izin vermek için SSO 'yu kiracı genelinde (varsayılan) olarak [yapılandırın](../hybrid/how-to-connect-sso-quick-start.md) . Kiracı genelinde yapılandırma, kimlik doğrulaması için en çok dayanıklılık sağlar.  
 
 ## <a name="safe-deployment-practices"></a>Güvenli dağıtım uygulamaları
 
-En yaygın kesintiler hizmet, kod ve yapılandırma değişiklerdir. Sürekli tümleştirme ve sürekli teslim (CICD) işlemleri ve araçları, büyük ölçekte hızlı dağıtımla ilgili yardımcı olur ve test etme ve üretime dağıtım sırasında insan hatalarını azaltır. Hata azaltma, verimlilik ve tutarlılık için CICD 'yi benimseyin. [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/azure/cicd-data-overview) , CICD 'nin bir örneğidir.
+En yaygın kesintiler hizmet, kod ve yapılandırma değişiklerdir. Sürekli tümleştirme ve sürekli teslim (CICD) işlemleri ve araçları, büyük ölçekte hızlı dağıtımla ilgili yardımcı olur ve test etme ve üretime dağıtım sırasında insan hatalarını azaltır. Hata azaltma, verimlilik ve tutarlılık için CICD 'yi benimseyin. [Azure Pipelines](/azure/devops/pipelines/apps/cd/azure/cicd-data-overview) , CICD 'nin bir örneğidir.
 
 ## <a name="web-application-firewall"></a>Web uygulaması güvenlik duvarı
 
 Uygulamalarınızı dağıtılmış hizmet reddi (DDoS) saldırıları, SQL ınjler, siteler arası betik oluşturma, uzaktan kod yürütme ve [OWASP en iyi 10](https://owasp.org/www-project-top-ten/)' da belgelendiği gibi bilinen güvenlik açıklarına karşı koruyun. Web uygulaması güvenlik duvarı (WAF) dağıtımı, yaygın güvenlik açıklarından ve güvenlik açıklarına karşı savunabilirsiniz.
 
-- Saldırılara karşı merkezi koruma sağlayan Azure [WAF](https://docs.microsoft.com/azure/web-application-firewall/overview)' i kullanın.
+- Saldırılara karşı merkezi koruma sağlayan Azure [WAF](../../web-application-firewall/overview.md)' i kullanın.
 
-- Azure AD B2C kullanırken [çok katmanlı koruma sağlamak Için Azure AD kimlik koruması ve koşullu erişim](https://docs.microsoft.com/azure/active-directory-b2c/conditional-access-identity-protection-overview) ile WAF kullanın.  
+- Azure AD B2C kullanırken [çok katmanlı koruma sağlamak Için Azure AD kimlik koruması ve koşullu erişim](../../active-directory-b2c/conditional-access-identity-protection-overview.md) ile WAF kullanın.  
 
 ## <a name="secrets-rotation"></a>Gizli dizi dönüşü
 
@@ -116,9 +116,9 @@ Azure AD B2C uygulamalar, API 'Ler, ilkeler ve şifreleme için gizli dizileri k
 
 ### <a name="how-to-implement-secret-rotation"></a>Gizli dizi dönüşü uygulama
 
-- Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmak için desteklenen kaynaklar için [Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) kullanın. Yönetilen kimlikler kullandığınızda, kimlik bilgilerinin dönmesi dahil olmak üzere kaynakları otomatik olarak yönetebilirsiniz.
+- Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmak için desteklenen kaynaklar için [Yönetilen kimlikler](../managed-identities-azure-resources/overview.md) kullanın. Yönetilen kimlikler kullandığınızda, kimlik bilgilerinin dönmesi dahil olmak üzere kaynakları otomatik olarak yönetebilirsiniz.
 
-- Azure AD B2C ' de [yapılandırılan tüm anahtar ve sertifikaların](https://docs.microsoft.com/azure/active-directory-b2c/policy-keys-overview) envanterini alın. Bu liste, özel ilkeler, [API 'ler](https://docs.microsoft.com/azure/active-directory-b2c/secure-rest-api), imzalama kimliği BELIRTECI ve SAML sertifikalarında kullanılan anahtarları dahil ediyor olabilir.
+- Azure AD B2C ' de [yapılandırılan tüm anahtar ve sertifikaların](../../active-directory-b2c/policy-keys-overview.md) envanterini alın. Bu liste, özel ilkeler, [API 'ler](../../active-directory-b2c/secure-rest-api.md), imzalama kimliği BELIRTECI ve SAML sertifikalarında kullanılan anahtarları dahil ediyor olabilir.
 
 - CICD kullanarak, tahmini en yüksek mevsimi iki ay içinde sona ermek üzere olan gizli dizileri döndürün. Bir sertifikayla ilişkili önerilen en büyük şifre süresi bir yıldır.
 
@@ -130,7 +130,7 @@ Dayanıklılık bağlamında, REST API 'lerinin test edilmesi, HTTP kodlarının
 
 ### <a name="how-to-test-apis"></a>API 'Leri test etme
 
-Test planınızın [KAPSAMLı API testlerini](https://docs.microsoft.com/azure/active-directory-b2c/best-practices#testing)içermesini öneririz. Promosyon veya tatil trafiği nedeniyle yaklaşan bir aşırı yük için planlama yapıyorsanız, yük testinizi Yeni tahminlerle düzeltmeniz gerekir. Bir geliştirici ortamında API 'lerinizin yük testini ve Content Delivery Network (CDN) yürütün ve üretimde değildir.
+Test planınızın [KAPSAMLı API testlerini](../../active-directory-b2c/best-practices.md#testing)içermesini öneririz. Promosyon veya tatil trafiği nedeniyle yaklaşan bir aşırı yük için planlama yapıyorsanız, yük testinizi Yeni tahminlerle düzeltmeniz gerekir. Bir geliştirici ortamında API 'lerinizin yük testini ve Content Delivery Network (CDN) yürütün ve üretimde değildir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

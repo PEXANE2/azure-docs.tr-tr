@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 12/14/2020
+ms.date: 01/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 24b29cfb1f58a61193f67ba924e583d4264dfc51
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 1459dd41fcdc30a29a5f9f93ec9704083767a342
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562132"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725680"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory'de mevcut olan kimlik doğrulaması ve doğrulama yöntemleri
 
@@ -68,10 +68,10 @@ Aşağıdaki tabloda, bir oturum açma olayı sırasında bir kimlik doğrulama 
 | İş İçin Windows Hello     | Yes                    | Çok faktörlü kimlik doğrulaması                       |
 | Microsoft Authenticator uygulaması    | Evet (Önizleme)          | MFA ve SSPR              |
 | FIDO2 güvenlik anahtarı (Önizleme)   | Yes                    | Çok faktörlü kimlik doğrulaması                       |
-| OATH Donanım belirteçleri (Önizleme) | No                     | Çok faktörlü kimlik doğrulaması                       |
-| OATH yazılım belirteçleri           | No                     | Çok faktörlü kimlik doğrulaması                       |
-| SMS                            | Evet (Önizleme)          | MFA ve SSPR              |
-| Sesli arama                     | No                     | MFA ve SSPR              |
+| OATH Donanım belirteçleri (Önizleme) | Hayır                     | Çok faktörlü kimlik doğrulaması                       |
+| OATH yazılım belirteçleri           | Hayır                     | Çok faktörlü kimlik doğrulaması                       |
+| SMS                            | Yes                    | MFA ve SSPR              |
+| Sesli arama                     | Hayır                     | MFA ve SSPR              |
 | Parola                       | Yes                    |                           |
 
 Bu kimlik doğrulama yöntemlerinin tümü Azure portal yapılandırılabilir ve [Microsoft Graph REST API Beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)aracılığıyla giderek giderek daha da yönetilebilir.
@@ -83,7 +83,7 @@ Her bir kimlik doğrulama yönteminin nasıl çalıştığı hakkında daha fazl
 * [FIDO2 güvenlik anahtarı (Önizleme)](concept-authentication-passwordless.md#fido2-security-keys)
 * [OATH Donanım belirteçleri (Önizleme)](concept-authentication-oath-tokens.md#oath-hardware-tokens-preview)
 * [OATH yazılım belirteçleri](concept-authentication-oath-tokens.md#oath-software-tokens)
-* SMS [oturum açma (Önizleme)](howto-authentication-sms-signin.md) ve [doğrulama](concept-authentication-phone-options.md#mobile-phone-verification)
+* [SMS oturum açma](howto-authentication-sms-signin.md) ve [doğrulama](concept-authentication-phone-options.md#mobile-phone-verification)
 * [Sesli arama doğrulaması](concept-authentication-phone-options.md)
 * Parola
 

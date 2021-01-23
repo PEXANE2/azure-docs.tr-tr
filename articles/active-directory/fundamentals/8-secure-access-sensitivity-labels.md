@@ -13,22 +13,22 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71031c7f5db299fbb1b7c99014c30590fec89f03
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 0dcb6d24eacbe594a907f084874e76fea963c561
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222301"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725137"
 ---
 # <a name="control-access-with-sensitivity-labels"></a>Duyarlılık etiketleriyle erişimi denetleme 
 
-[Duyarlılık etiketleri](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels?view=o365-worldwide) Office 365 uygulamalarındaki Içeriğinize ve Microsoft ekipleri, Microsoft 365 grupları ve SharePoint siteleri gibi kapsayıcılara erişimi denetlemenize yardımcı olur. Kullanıcılarınızın işbirliği ve üretim becerileriyle hindering gerek kalmadan içeriğinizi koruyabilirler. Duyarlılık etiketleri, kuruluşunuzun içeriğini cihazlar, uygulamalar ve hizmetler arasında göndermenizi sağlarken verilerinizi korurken ve uyumluluk ve güvenlik ilkelerinizi karşılamış olursunuz. 
+[Duyarlılık etiketleri](/microsoft-365/compliance/sensitivity-labels?view=o365-worldwide) Office 365 uygulamalarındaki Içeriğinize ve Microsoft ekipleri, Microsoft 365 grupları ve SharePoint siteleri gibi kapsayıcılara erişimi denetlemenize yardımcı olur. Kullanıcılarınızın işbirliği ve üretim becerileriyle hindering gerek kalmadan içeriğinizi koruyabilirler. Duyarlılık etiketleri, kuruluşunuzun içeriğini cihazlar, uygulamalar ve hizmetler arasında göndermenizi sağlarken verilerinizi korurken ve uyumluluk ve güvenlik ilkelerinizi karşılamış olursunuz. 
 
 Duyarlılık etiketleriyle şunları yapabilirsiniz:
 
 * **Herhangi bir koruma ayarı eklemeden Içeriği sınıflandırın**. Bir içeriğe (bir etiket gibi) devam eden ve paylaşılan ve paylaşılan içeriklerinizi içeren bir sınıflandırma atayabilirsiniz. Bu sınıflandırmayı kullanarak kullanım raporları oluşturabilir ve hassas içeriğiniz için etkinlik verilerini görebilirsiniz.
 
-* **Şifreleme, Filigranlar ve erişim kısıtlamaları gibi koruma ayarlarını zorlayın**. Örneğin, kullanıcılar bir belgeye veya e-postaya gizli Etiketler uygulayabilir ve bu etiket [içeriği şifreleyebilir](https://docs.microsoft.com/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide) ve "gizli" bir filigran ekleyebilir. Ayrıca, bir SharePoint sitesi gibi bir [kapsayıcıya duyarlılık etiketi uygulayabilir](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide) ve dış kullanıcıların içerdiği içeriğe erişip erişemeyeceğini zorlayabilirsiniz.
+* **Şifreleme, Filigranlar ve erişim kısıtlamaları gibi koruma ayarlarını zorlayın**. Örneğin, kullanıcılar bir belgeye veya e-postaya gizli Etiketler uygulayabilir ve bu etiket [içeriği şifreleyebilir](/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide) ve "gizli" bir filigran ekleyebilir. Ayrıca, bir SharePoint sitesi gibi bir [kapsayıcıya duyarlılık etiketi uygulayabilir](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide) ve dış kullanıcıların içerdiği içeriğe erişip erişemeyeceğini zorlayabilirsiniz.
 
 E-posta ve diğer içeriklerdeki duyarlılık etiketleri içerikle birlikte seyahat ediyor. Kapsayıcılardaki duyarlılık etiketleri kapsayıcıya erişimi kısıtlayabilir, ancak kapsayıcıdaki içerik etiketi aktarılmaz. Örneğin, bir kullanıcı korumalı bir siteden içerik alabilir, indirebilir ve içerik aynı zamanda bir duyarlılık etiketine sahip olmadığı takdirde kısıtlama olmadan paylaşabilir.
 
@@ -52,7 +52,7 @@ Varsayılan olarak, kiracınız için genel Yöneticiler bu yönetici merkezleri
 
 * Yüksek, orta veya düşük Iş etkisi (HBı, MBı, LBI) ne olduğunu nasıl tanımlayacaksınız? Belirli içerik türleri uygun şekilde paylaşılmışsa kuruluşunuzun etkisini göz önünde bulundurun.
 
-   * Kredi kartları veya Passport numaraları gibi belirli bir doğal olarak [hassas içerik](https://docs.microsoft.com/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide)türlerine sahip içerik
+   * Kredi kartları veya Passport numaraları gibi belirli bir doğal olarak [hassas içerik](/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide)türlerine sahip içerik
 
    * Belirli gruplar veya kişiler tarafından oluşturulan içerik (örneğin, uyumluluk ofisleri, finansal ofisler veya Yöneticiler)
 
@@ -66,21 +66,21 @@ Varsayılan olarak, kiracınız için genel Yöneticiler bu yönetici merkezleri
 
 * HBı verileri, siteleri veya Microsoft 365 grupları için varsayılanlar ne gerekir?
 
-* [Şifrelemeyi zorlamak](https://docs.microsoft.com/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide) veya [kapsayıcı erişim kısıtlamalarını zorlamak](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)için duyarlılık etiketlerini nerede [etiketleyip izlemek](https://docs.microsoft.com/microsoft-365/compliance/label-analytics?view=o365-worldwide)için kullanacaksınız?
+* [Şifrelemeyi zorlamak](/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide) veya [kapsayıcı erişim kısıtlamalarını zorlamak](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)için duyarlılık etiketlerini nerede [etiketleyip izlemek](/microsoft-365/compliance/label-analytics?view=o365-worldwide)için kullanacaksınız?
 
 **E-posta ve içerik için**
 
-* İçeriğe [duyarlılık etiketlerini otomatik olarak uygulamak](https://docs.microsoft.com/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide) mi yoksa el ile yapmak mi istiyorsunuz?
+* İçeriğe [duyarlılık etiketlerini otomatik olarak uygulamak](/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide) mi yoksa el ile yapmak mi istiyorsunuz?
 
-   * Bunu el ile yapmak istiyorsanız, [kullanıcıların bir etiket uygulaması önerilir](https://docs.microsoft.com/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide)mi?
+   * Bunu el ile yapmak istiyorsanız, [kullanıcıların bir etiket uygulaması önerilir](/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide)mi?
 
 **Kapsayıcılar için**
 
 * M365 gruplarının, takımların veya SharePoint sitelerinin duyarlılık etiketleri kullanılarak kısıtlanması gerekip gerekmediğini hangi ölçütlere göre belirleyeceğini belirlemektir?
 
-* Yalnızca bu kapsayıcıların içeriğini ileriye doğru etiketlemek mi istiyorsunuz, yoksa SharePoint ve OneDrive 'daki mevcut dosyaları [otomatik olarak etiketlemek](https://docs.microsoft.com/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide) mi istiyorsunuz?
+* Yalnızca bu kapsayıcıların içeriğini ileriye doğru etiketlemek mi istiyorsunuz, yoksa SharePoint ve OneDrive 'daki mevcut dosyaları [otomatik olarak etiketlemek](/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide) mi istiyorsunuz?
 
-Duyarlılık etiketlerini nasıl kullanabileceğiniz hakkında daha fazla fikir için [duyarlılık etiketleri için bu yaygın senaryolar](https://docs.microsoft.com/microsoft-365/compliance/get-started-with-sensitivity-labels?view=o365-worldwide) bölümüne bakın.
+Duyarlılık etiketlerini nasıl kullanabileceğiniz hakkında daha fazla fikir için [duyarlılık etiketleri için bu yaygın senaryolar](/microsoft-365/compliance/get-started-with-sensitivity-labels?view=o365-worldwide) bölümüne bakın.
 
 ### <a name="sensitivity-labels-on-email-and-content"></a>E-posta ve içeriklerdeki duyarlılık etiketleri
 
@@ -100,7 +100,7 @@ Bir belgeye veya e-postaya duyarlılık etiketi atadığınızda, özelleştiril
 
 ### <a name="sensitivity-labels-on-containers"></a>Kapsayıcılarda duyarlılık etiketleri
 
-[Microsoft 365 grupları](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-assign-sensitivity-labels), [Microsoft ekipleri](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)ve [SharePoint siteleri](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)gibi kapsayıcılar için duyarlılık etiketleri uygulayabilirsiniz. Bu duyarlılık etiketini desteklenen bir kapsayıcıya uyguladığınızda, etiket otomatik olarak bağlı siteye veya gruba sınıflandırma ve koruma ayarlarını uygular. Bu kapsayıcılardaki duyarlılık etiketleri, kapsayıcıların aşağıdaki yönlerini denetleyebilir:
+[Microsoft 365 grupları](../enterprise-users/groups-assign-sensitivity-labels.md), [Microsoft ekipleri](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)ve [SharePoint siteleri](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)gibi kapsayıcılar için duyarlılık etiketleri uygulayabilirsiniz. Bu duyarlılık etiketini desteklenen bir kapsayıcıya uyguladığınızda, etiket otomatik olarak bağlı siteye veya gruba sınıflandırma ve koruma ayarlarını uygular. Bu kapsayıcılardaki duyarlılık etiketleri, kapsayıcıların aşağıdaki yönlerini denetleyebilir:
 
 * **Gizlilik**. Siteyi kimlerin görebileceğini seçebilirsiniz: belirli kullanıcılar, tüm iç kullanıcılar veya herkes.
 
@@ -116,25 +116,25 @@ Bir belgeye veya e-postaya duyarlılık etiketi atadığınızda, özelleştiril
 
 Bir kapsayıcı etiketini SharePoint sitesi gibi bir kapsayıcıya uyguladığınızda, bu içeriğe uygulanmaz: kapsayıcılardaki duyarlılık etiketleri, kapsayıcıdaki içeriğe erişimi denetler. 
 
-* Kapsayıcının içindeki içeriğe otomatik olarak Etiketler uygulamak isterseniz, bkz. [içeriğe duyarlılık için otomatik olarak duyarlılık uygulama](https://docs.microsoft.com/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide).
+* Kapsayıcının içindeki içeriğe otomatik olarak Etiketler uygulamak isterseniz, bkz. [içeriğe duyarlılık için otomatik olarak duyarlılık uygulama](/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide).
 
-* Kullanıcıların bu içeriğe el ile Etiketler uygulayabilmesini istiyorsanız [SharePoint ve OneDrive 'Da Office dosyaları için duyarlılık etiketlerini](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-sharepoint-onedrive-files?view=o365-worldwide)etkinleştirdiğinizden emin olun.
+* Kullanıcıların bu içeriğe el ile Etiketler uygulayabilmesini istiyorsanız [SharePoint ve OneDrive 'Da Office dosyaları için duyarlılık etiketlerini](/microsoft-365/compliance/sensitivity-labels-sharepoint-onedrive-files?view=o365-worldwide)etkinleştirdiğinizden emin olun.
 
 ### <a name="plan-to-implement-sensitivity-labels"></a>Duyarlılık etiketlerini uygulamayı planlayın
 
 Duyarlılık etiketlerini nasıl kullanmak istediğinizi belirledikten ve bunları uygulamak istediğiniz içerik ve sitelere sahip olduktan sonra, uygulamanızı gerçekleştirmenize yardımcı olması için aşağıdaki belgelere bakın.
 
-1. [Duyarlılık etiketleriyle çalışmaya başlama](https://docs.microsoft.com/microsoft-365/compliance/get-started-with-sensitivity-labels?view=o365-worldwide)
+1. [Duyarlılık etiketleriyle çalışmaya başlama](/microsoft-365/compliance/get-started-with-sensitivity-labels?view=o365-worldwide)
 
-2. [Dağıtım stratejisi oluşturma](https://docs.microsoft.com/microsoft-365/compliance/get-started-with-sensitivity-labels?view=o365-worldwide)
+2. [Dağıtım stratejisi oluşturma](/microsoft-365/compliance/get-started-with-sensitivity-labels?view=o365-worldwide)
 
-3. [Duyarlılık etiketleri oluşturma ve yayımlama](https://docs.microsoft.com/microsoft-365/compliance/create-sensitivity-labels?view=o365-worldwide)
+3. [Duyarlılık etiketleri oluşturma ve yayımlama](/microsoft-365/compliance/create-sensitivity-labels?view=o365-worldwide)
 
-4. [Şifrelemeyi uygulamak için duyarlılık etiketlerini kullanarak içeriğe erişimi kısıtlama](https://docs.microsoft.com/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide)
+4. [Şifrelemeyi uygulamak için duyarlılık etiketlerini kullanarak içeriğe erişimi kısıtlama](/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide)
 
-5. [Takımlar, gruplar ve siteler ile duyarlılık etiketlerini kullanın](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)
+5. [Takımlar, gruplar ve siteler ile duyarlılık etiketlerini kullanın](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)
 
-6. [SharePoint ve OneDrive 'da Office dosyaları için duyarlılık etiketlerini etkinleştirin](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-sharepoint-onedrive-files?view=o365-worldwide)
+6. [SharePoint ve OneDrive 'da Office dosyaları için duyarlılık etiketlerini etkinleştirin](/microsoft-365/compliance/sensitivity-labels-sharepoint-onedrive-files?view=o365-worldwide)
 
 ### <a name="next-steps"></a>Sonraki adımlar
 

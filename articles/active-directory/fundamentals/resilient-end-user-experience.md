@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c695466fbd50435a85c63842ceb50ce80765760
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: f6896a812ec173994a1299a28ff2e99a0f351391
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630301"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724450"
 ---
 # <a name="resilient-end-user-experience"></a>Dayanıklı son kullanıcı deneyimi
 
@@ -34,19 +34,19 @@ Kaydolma ve oturum açma Son Kullanıcı deneyimi aşağıdaki öğelerden oluş
 
 ## <a name="choose-between-user-flow-and-custom-policy"></a>Kullanıcı akışı ve özel ilke arasında seçim yapın  
 
-En yaygın kimlik görevlerini ayarlamanıza yardımcı olması için Azure AD B2C yerleşik yapılandırılabilir [Kullanıcı akışları](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-overview)sağlar. Size en fazla esneklik sunan kendi [özel ilkelerinizi](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)da oluşturabilirsiniz. Ancak, özel ilkelerin yalnızca karmaşık senaryolara yönelik olarak kullanılması önerilir.
+En yaygın kimlik görevlerini ayarlamanıza yardımcı olması için Azure AD B2C yerleşik yapılandırılabilir [Kullanıcı akışları](../../active-directory-b2c/user-flow-overview.md)sağlar. Size en fazla esneklik sunan kendi [özel ilkelerinizi](../../active-directory-b2c/custom-policy-overview.md)da oluşturabilirsiniz. Ancak, özel ilkelerin yalnızca karmaşık senaryolara yönelik olarak kullanılması önerilir.
 
 ### <a name="how-to-decide-between-user-flow-and-custom-policy"></a>Kullanıcı akışı ve özel ilke arasında karar verme
 
 İş gereksinimlerinize göre karşılanabileceği yerleşik Kullanıcı akışları ' nı seçin. Microsoft tarafından kapsamlı bir şekilde test edildiğinden, bu kimlik Kullanıcı akışlarının ilke düzeyi işlevsel, performans veya ölçeğini doğrulamak için gereken testi en aza indirmenize izin verebilirsiniz. Uygulamalarınızın işlevselliği, performansı ve ölçeği için yine de test etmeniz gerekir.
 
-İş gereksinimleriniz nedeniyle [özel ilkeler](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started) ' i seçmeniz gerekir, uygulama düzeyinde teste ek olarak işlevsel, performans veya ölçek için ilke düzeyinde test gerçekleştirdiğinizden emin olun.
+İş gereksinimleriniz nedeniyle [özel ilkeler](../../active-directory-b2c/custom-policy-get-started.md) ' i seçmeniz gerekir, uygulama düzeyinde teste ek olarak işlevsel, performans veya ölçek için ilke düzeyinde test gerçekleştirdiğinizden emin olun.
 
-Karar vermenize yardımcı olması için [Kullanıcı akışlarını ve özel ilkeleri karşılaştıran](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview#comparing-user-flows-and-custom-policies) makaleye bakın.
+Karar vermenize yardımcı olması için [Kullanıcı akışlarını ve özel ilkeleri karşılaştıran](../../active-directory-b2c/custom-policy-overview.md#comparing-user-flows-and-custom-policies) makaleye bakın.
 
 ## <a name="choose-multiple-idps"></a>Birden çok IDPs seçin
 
-Facebook gibi bir [dış kimlik sağlayıcısı](https://docs.microsoft.com/azure/active-directory-b2c/technical-overview#external-identity-providers) kullanırken, dış sağlayıcının kullanılamaz hale gelmesi durumunda bir geri dönüş planına sahip olduğunuzdan emin olun.
+Facebook gibi bir [dış kimlik sağlayıcısı](../../active-directory-b2c/technical-overview.md#external-identity-providers) kullanırken, dış sağlayıcının kullanılamaz hale gelmesi durumunda bir geri dönüş planına sahip olduğunuzdan emin olun.
 
 ### <a name="how-to-set-up-multiple-idps"></a>Birden çok IDPs ayarlama
 
@@ -58,11 +58,11 @@ Dış kimlik sağlayıcısı kayıt işleminin bir parçası olarak, kullanıcı
 
  2. Kullanıcıların oturum açtıklarında [Diğer kimliği hesabına](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/account-linking) bağlanmasına izin vermek için bir profil ilkesi yapılandırın.
 
- 3. Bir kesinti sırasında kullanıcıların [Alternatif BIR ıDP 'ye geçiş](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#configure-dynamic-custom-page-content-uri) yapmasına izin verin ve bunları bilgilendirin.
+ 3. Bir kesinti sırasında kullanıcıların [Alternatif BIR ıDP 'ye geçiş](../../active-directory-b2c/customize-ui-with-html.md#configure-dynamic-custom-page-content-uri) yapmasına izin verin ve bunları bilgilendirin.
 
 ## <a name="availability-of-multi-factor-authentication"></a>Multi-Factor Authentication 'ın kullanılabilirliği
 
-[Multi-Factor Authentication (MFA) için bir telefon hizmeti](https://docs.microsoft.com/azure/active-directory-b2c/phone-authentication)kullanırken, alternatif bir hizmet sağlayıcısını kabul ettiğinizden emin olun. Yerel Telco veya telefon hizmet sağlayıcısı, hizmetinde kesintiler yaşayabilir.
+[Multi-Factor Authentication (MFA) için bir telefon hizmeti](../../active-directory-b2c/phone-authentication.md)kullanırken, alternatif bir hizmet sağlayıcısını kabul ettiğinizden emin olun. Yerel Telco veya telefon hizmet sağlayıcısı, hizmetinde kesintiler yaşayabilir.
 
 ### <a name="how-to-choose-an-alternate-mfa"></a>Alternatif MFA seçme  
 

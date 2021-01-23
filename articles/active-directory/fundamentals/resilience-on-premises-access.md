@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8bfc3fb239f30911eddf0aa27496a465e36c486
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8fed78d7d2250d749ced7fe343689df76329b60d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919878"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724669"
 ---
 # <a name="build-resilience-in-application-access-with-application-proxy"></a>Uygulama proxy 'Si ile uygulama erişimi içinde derleme esnekliği
 
@@ -27,7 +27,7 @@ Uygulama proxy 'Si, kullanıcıların uzak bir istemciden şirket içi Web uygul
 Kullanıcılar, uygulama proxy 'si aracılığıyla yayınlanan bir URL aracılığıyla şirket içi kaynaklara erişir. Azure AD oturum açma sayfasına yönlendirilir. Azure AD 'deki uygulama proxy 'Si hizmeti daha sonra şirket ağındaki uygulama proxy Bağlayıcısı 'na bir belirteç gönderir ve kimliği doğrulanmış kullanıcı daha sonra şirket içi kaynağa erişebilir Active Directory. Aşağıdaki diyagramda [Bağlayıcılar](../manage-apps/application-proxy-connectors.md) bir [bağlayıcı grubunda](../manage-apps/application-proxy-connector-groups.md)gösterilmiştir.
 
 > [!IMPORTANT]
-> Uygulamalarınızı uygulama proxy 'Si aracılığıyla yayımladığınızda, [uygulama proxy bağlayıcıları için kapasite planlaması ve uygun artıklık](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#capacity-planning)uygulamanız gerekir.
+> Uygulamalarınızı uygulama proxy 'Si aracılığıyla yayımladığınızda, [uygulama proxy bağlayıcıları için kapasite planlaması ve uygun artıklık](../manage-apps/application-proxy-connectors.md#capacity-planning)uygulamanız gerekir.
 
 ![Uygulama y 'nin mimari diyagramı](./media/resilience-on-prem-access/admin-resilience-app-proxy.png))
 

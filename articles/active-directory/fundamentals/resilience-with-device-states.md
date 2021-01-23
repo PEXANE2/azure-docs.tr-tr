@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: faa334c21e23ecddad287846d34aaf0d72af66cc
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 6d476be7a417cfc31cca76d3409074aaaa281a56
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602193"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724619"
 ---
 # <a name="build-resilience-with-device-states"></a>Cihaz durumlarıyla esnekliği derleme
 
@@ -40,11 +40,11 @@ Bir bir uygulamaya erişim istemek için bir PRT kullanıldığında, cihazı, o
 
   Kuruluşunuzda Windows 'un eski sürümleri varsa, bu cihazları Windows 10 ' u kullanacak şekilde yükseltin.
 
-* PRT kullanarak Web uygulamalarına sorunsuz SSO 'yu destekleyen [desteklenen](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji) [uzantılara](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb) sahip [Microsoft Edge](https://docs.microsoft.com/deployedge/microsoft-edge-security-identity) veya Google Chrome 'ı kullanmak için Kullanıcı tarayıcı erişimini standartlaştırın.
+* PRT kullanarak Web uygulamalarına sorunsuz SSO 'yu destekleyen [desteklenen](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji) [uzantılara](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb) sahip [Microsoft Edge](/deployedge/microsoft-edge-security-identity) veya Google Chrome 'ı kullanmak için Kullanıcı tarayıcı erişimini standartlaştırın.
 
-* Kişisel veya şirkete ait iOS ve Android cihazlar için [Microsoft Authenticator uygulamasını](../user-help/user-help-auth-app-overview.md)dağıtın. Multi-Factor Authentication ve parola-Less oturum açma özelliklerine ek olarak, Microsoft Authenticator uygulaması, son kullanıcılar için daha az kimlik doğrulama istemiyle [aracılı kimlik doğrulama](../develop/brokered-auth.md) aracılığıyla yerel uygulama genelinde çoklu oturum açmayı etkinleştirecektir.
+* Kişisel veya şirkete ait iOS ve Android cihazlar için [Microsoft Authenticator uygulamasını](../user-help/user-help-auth-app-overview.md)dağıtın. Multi-Factor Authentication ve parola-Less oturum açma özelliklerine ek olarak, Microsoft Authenticator uygulaması, son kullanıcılar için daha az kimlik doğrulama istemiyle [aracılı kimlik doğrulama](../develop/msal-android-single-sign-on.md) aracılığıyla yerel uygulama genelinde çoklu oturum açmayı etkinleştirecektir.
 
-* Kişisel veya şirkete ait iOS ve Android cihazlar için, daha az kimlik doğrulama istekleriyle şirket kaynaklarına güvenli bir şekilde erişmek üzere [mobil uygulama yönetimi](https://docs.microsoft.com/mem/intune/apps/app-management) 'ni kullanır. 
+* Kişisel veya şirkete ait iOS ve Android cihazlar için, daha az kimlik doğrulama istekleriyle şirket kaynaklarına güvenli bir şekilde erişmek üzere [mobil uygulama yönetimi](/mem/intune/apps/app-management) 'ni kullanır. 
 
 * [Apple cihazları (Önizleme) Için Microsoft ENTERPRISE SSO eklentisini kullanın](../develop/apple-sso-plugin.md). Bu, cihazı kaydeder ve tarayıcı ve yerel Azure AD uygulamaları arasında SSO sağlar. 
 

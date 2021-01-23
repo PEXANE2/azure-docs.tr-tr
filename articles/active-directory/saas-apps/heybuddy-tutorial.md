@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
-ms.openlocfilehash: c1f102182a9f91d2f8038947b6009fff1af1a508
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 40c533874dcfb00384ae3ab604a3aef8b9c50fc8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914272"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726152"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-heybuddy"></a>Öğretici: Heyarkadaş ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -93,13 +93,13 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Ezofficeınventory uygulaması, yukarıdakine ek olarak aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
 
-    | Ad |  Kaynak özniteliği|
+    | Name |  Kaynak özniteliği|
     | -------- | --------- |
     | Roller  | Kullanıcı. atandroles |
     | | |
     
     > [!NOTE]
-    > Lütfen uygulamanın rollerini yapılandırma ve ayarlama hakkında bu [bağlantıya](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui) başvurun.
+    > Lütfen uygulamanın rollerini yapılandırma ve ayarlama hakkında bu [bağlantıya](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview) başvurun.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
 
@@ -148,9 +148,9 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 * Heyıarkadaş oturum açma URL 'sine doğrudan gidin ve oturum akışını buradan başlatın.
 
-* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki Hei arkadaş kutucuğuna tıkladığınızda, bu, Hei arkadaş oturum açma URL 'sine yönlendirecektir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki Hei arkadaş kutucuğuna tıkladığınızda, bu, Hei arkadaş oturum açma URL 'sine yönlendirecektir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hece arkadaş yapılandırıldıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Hece arkadaş yapılandırıldıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 3ac81e89aaea5bc37297d2f83dce9e2158ae28d8
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 3f66da38d3303b47c2a9b6cefeee19af6bf64ec1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060665"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725515"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Öğretici: Facebook tarafından çalışma alanı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -27,7 +27,7 @@ Bu öğreticide, çalışma alanını Azure Active Directory (Azure AD) ile Face
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -205,7 +205,7 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 * Facebook oturum açma URL 'sine doğrudan çalışma alanına gidin ve oturum açma akışını buradan başlatın.
 
-* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım 'ın Facebook kutucuğunda çalışma alanına tıkladığınızda bu, Facebook oturum açma URL 'SI ile çalışma alanına yeniden yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım 'ın Facebook kutucuğunda çalışma alanına tıkladığınızda bu, Facebook oturum açma URL 'SI ile çalışma alanına yeniden yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="test-sso-for-workplace-by-facebook-mobile"></a>Facebook tarafından çalışma alanı için test SSO 'SU (mobil)
 

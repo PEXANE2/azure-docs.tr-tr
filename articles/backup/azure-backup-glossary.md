@@ -3,12 +3,12 @@ title: Azure Backup sözlüğü
 description: Bu makalede, Azure Backup ile kullanım için yararlı olan terimler tanımlanmaktadır.
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: 121258665ab275fdcffd618e7c0cf1b3e0537e70
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 5b575e0f56c9cf39987e9e77850ab1d9b2e80d93
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661485"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98723923"
 ---
 # <a name="azure-backup-glossary"></a>Azure Backup sözlüğü
 
@@ -21,7 +21,7 @@ Bu terim sözlüğü Azure Backup kullanılırken yararlı olabilir.
 
 ## <a name="afs-azure-file-shares"></a>AFS (Azure dosya paylaşımları)
 
-[Azure dosyaları belgelerine](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)bakın.
+[Azure dosyaları belgelerine](../storage/files/storage-files-introduction.md)bakın.
 
 ## <a name="alternate-location-recovery"></a>Alternatif konum kurtarma
 
@@ -35,7 +35,7 @@ Uygulamayla tutarlı yedeklemeler bellek içeriğini ve bekleyen g/ç işlemleri
 
 ## <a name="azure-resource-manager-arm-templates"></a>Azure Resource Manager (ARM) şablonları
 
-[ARM şablonları belgelerine](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)bakın.
+[ARM şablonları belgelerine](../azure-resource-manager/templates/overview.md)bakın.
 
 ## <a name="autoprotection-for-databases"></a>Oto Koruma (veritabanları için)
 
@@ -49,38 +49,38 @@ Azure Backup, depolama ve verilerinizi yüksek oranda kullanılabilir tutmak iç
 
 ### <a name="lrs"></a>LRS
 
-[Yerel olarak yedekli depolama (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy#locally-redundant-storage) , veri merkezindeki bir depolama ölçek biriminde yedekleme verilerinizi üç kez (yedekleme verilerinizin üç kopyasını oluşturur) çoğaltır. Yedekleme verilerinin tüm kopyaları aynı bölgede bulunur. LRS, yedekleme verilerinizi yerel donanım hatalarından korumak için düşük maliyetli bir seçenektir.
+[Yerel olarak yedekli depolama (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) , veri merkezindeki bir depolama ölçek biriminde yedekleme verilerinizi üç kez (yedekleme verilerinizin üç kopyasını oluşturur) çoğaltır. Yedekleme verilerinin tüm kopyaları aynı bölgede bulunur. LRS, yedekleme verilerinizi yerel donanım hatalarından korumak için düşük maliyetli bir seçenektir.
 
 ### <a name="grs"></a>GRS
 
-[Coğrafi olarak yedekli depolama (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy#geo-redundant-storage) , varsayılan ve önerilen çoğaltma seçeneğidir. GRS, yedekleme verilerinizi kaynak verilerin birincil konumundan yüzlerce mil uzakta olan ikincil bir bölgeye çoğaltır. GRS 'nin maliyeti LRS 'den fazladır, ancak bölgesel bir kesinti olsa da, yedekleme verileriniz için GRS daha yüksek düzeyde dayanıklılık sağlar.
+[Coğrafi olarak yedekli depolama (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) , varsayılan ve önerilen çoğaltma seçeneğidir. GRS, yedekleme verilerinizi kaynak verilerin birincil konumundan yüzlerce mil uzakta olan ikincil bir bölgeye çoğaltır. GRS 'nin maliyeti LRS 'den fazladır, ancak bölgesel bir kesinti olsa da, yedekleme verileriniz için GRS daha yüksek düzeyde dayanıklılık sağlar.
 
 >[!NOTE]
 >Çapraz bölge geri yükleme özelliği etkin olan GRS kasaları için yedekleme depolama alanı, GRS 'den RA-GRS (okuma erişimli Geo-Redundant depolama) sürümüne yükseltilir.
 
 ### <a name="zrs"></a>ZRS
 
-Bölgesel olarak [yedekli depolama (ZRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy#zone-redundant-storage) , yedekleme verilerini [kullanılabilirlik bölgelerinde](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)çoğaltır ve bu da aynı bölgedeki yedekleme verileri uygunluğunu ve dayanıklılığı garanti altına alır. Bu nedenle, [veri](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/) yerleşimi gerektiren kritik iş YÜKLERINIZ ZRS 'de yedeklenebilir.
+Bölgesel olarak [yedekli depolama (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) , yedekleme verilerini [kullanılabilirlik bölgelerinde](../availability-zones/az-overview.md#availability-zones)çoğaltır ve bu da aynı bölgedeki yedekleme verileri uygunluğunu ve dayanıklılığı garanti altına alır. Bu nedenle, [veri](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/) yerleşimi gerektiren kritik iş YÜKLERINIZ ZRS 'de yedeklenebilir.
 
 ## <a name="azure-command-line-interface-cli"></a>Azure Komut Satırı Arabirimi (CLI)
 
-[Azure CLI belgeleri](https://docs.microsoft.com/cli/azure/what-is-azure-cli)bölümüne bakın.
+[Azure CLI belgeleri](/cli/azure/what-is-azure-cli)bölümüne bakın.
 
 ## <a name="azure-policy"></a>Azure İlkesi
 
-[Azure ilkesi belgeleri](https://docs.microsoft.com/azure/governance/policy/overview)bölümüne bakın.
+[Azure ilkesi belgeleri](../governance/policy/overview.md)bölümüne bakın.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-[Azure PowerShell belgelerine](https://docs.microsoft.com/powershell/azure/)bakın.
+[Azure PowerShell belgelerine](/powershell/azure/)bakın.
 
 ## <a name="azure-resource-manager-arm"></a>Azure Resource Manager (ARM)
 
-[Azure Resource Manager belgelerine](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)bakın.
+[Azure Resource Manager belgelerine](../azure-resource-manager/management/overview.md)bakın.
 
 ## <a name="azure-disk-encryption-ade"></a>Azure Disk Şifrelemesi (ADE)
 
-[Azure disk şifrelemesi belgeleri](https://docs.microsoft.com/azure/security/fundamentals/azure-disk-encryption-vms-vmss)bölümüne bakın.
+[Azure disk şifrelemesi belgeleri](../security/fundamentals/azure-disk-encryption-vms-vmss.md)bölümüne bakın.
 
 ## <a name="backend-storage--cloud-storage--backup-storage"></a>Arka uç depolama/bulut depolama/yedekleme depolaması
 
@@ -124,11 +124,11 @@ Kilitlenme tutarlı anlık görüntüler genellikle bir Azure VM yedekleme sıra
 
 ## <a name="cross-region-restore-crr"></a>Bölgeler arası geri yükleme (CRR)
 
-[Geri yükleme seçeneklerinden](backup-azure-arm-restore-vms.md#restore-options)biri olan çapraz bölge geri yükleme (CRR), yedekleme öğelerini bir [Azure eşlenmiş bölgesi](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#what-are-paired-regions)olan ikincil bir bölgeye geri yüklemenize olanak tanır.
+[Geri yükleme seçeneklerinden](backup-azure-arm-restore-vms.md#restore-options)biri olan çapraz bölge geri yükleme (CRR), yedekleme öğelerini bir [Azure eşlenmiş bölgesi](../best-practices-availability-paired-regions.md#what-are-paired-regions)olan ikincil bir bölgeye geri yüklemenize olanak tanır.
 
 ## <a name="data-box"></a>Veri kutusu
 
-[Veri kutusu belgelerine](https://docs.microsoft.com/azure/databox/data-box-overview)bakın.
+[Veri kutusu belgelerine](../databox/data-box-overview.md)bakın.
 
 ## <a name="datasource"></a>Veri kaynağı
 
@@ -138,11 +138,11 @@ Yedeklenmek üzere bir aday olan kaynak (Azure kaynağı, proxy-kaynak veya şir
 
 (İş yüküne özgü terim)
 
-[DPM belgelerine](https://docs.microsoft.com/system-center/dpm/dpm-overview)bakın.
+[DPM belgelerine](/system-center/dpm/dpm-overview)bakın.
 
 ## <a name="expressroute"></a>ExpressRoute
 
-[ExpressRoute belgelerine](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)bakın.
+[ExpressRoute belgelerine](../expressroute/expressroute-introduction.md)bakın.
 
 ## <a name="file-system-consistent-backup"></a>Dosya sistemiyle tutarlı yedekleme
 
@@ -164,7 +164,7 @@ Bir GFS (büyükbabalar-son) yedekleme ilkesi, günlük yedekleme zamanlamaları
 
 ## <a name="iaas-vms--azure-vms"></a>IaaS VM 'Leri/Azure VM 'Leri
 
-[Azure VM belgeleri](https://docs.microsoft.com/azure/virtual-machines/)bölümüne bakın.
+[Azure VM belgeleri](../virtual-machines/index.yml)bölümüne bakın.
 
 ## <a name="incremental-backup"></a>Artımlı yedekleme
 
@@ -192,11 +192,11 @@ Bir kullanıcı veya Azure Backup hizmeti tarafından oluşturulan, yedeklemeyle
 
 (İş yüküne özgü terim)
 
-Azure Backup Sunucusu ile, Hyper-V VM 'Leri, Microsoft SQL Server, SharePoint Server, Microsoft Exchange ve Windows istemcileri gibi uygulama iş yüklerini tek bir konsoldan koruyabilirsiniz. DPM 'den iş yükü yedekleme işlevselliğinin çoğunu devralır, ancak birkaç farklılık vardır. [Daha fazla bilgi](backup-azure-microsoft-azure-backup.md)
+Azure Backup Sunucusu ile, Hyper-V VM 'Leri, Microsoft SQL Server, SharePoint Server, Microsoft Exchange ve Windows istemcileri gibi uygulama iş yüklerini tek bir konsoldan koruyabilirsiniz. DPM 'den iş yükü yedekleme işlevselliğinin çoğunu devralır, ancak birkaç farklılık vardır. [Daha fazla bilgi edinin](backup-azure-microsoft-azure-backup.md)
 
 ## <a name="managed-disks"></a>Yönetilen diskler
 
-[Yönetilen diskler belgesine](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview)bakın.
+[Yönetilen diskler belgesine](../virtual-machines/managed-disks-overview.md)bakın.
 
 ## <a name="mars-agent"></a>MARS Aracısı
 
@@ -206,7 +206,7 @@ Azure Backup Sunucusu ile, Hyper-V VM 'Leri, Microsoft SQL Server, SharePoint Se
 
 ## <a name="nsg-network-security-group"></a>NSG (ağ güvenlik grubu)
 
-[NSG belgelerine](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview)bakın.
+[NSG belgelerine](../virtual-network/network-security-groups-overview.md)bakın.
 
 ## <a name="offline-seeding"></a>Çevrimdışı dengeli dağıtım
 
@@ -228,7 +228,7 @@ Bir parola, şirket içi veya yerel makinenizi, MARS aracısını veya Azure 'da
 
 ## <a name="private-endpoint"></a>Özel uç nokta
 
-[Özel uç nokta belgelerine](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)bakın.
+[Özel uç nokta belgelerine](../private-link/private-endpoint-overview.md)bakın.
 
 ## <a name="protected-instance"></a>Korumalı örnek
 
@@ -236,7 +236,7 @@ Korumalı örnek, Azure 'a yedeklemeyi yapılandırmak için kullandığınız b
 
 ## <a name="rbac-role-based-access-control"></a>RBAC (rol tabanlı erişim denetimi)
 
-[RBAC belgelerini](https://docs.microsoft.com/azure/role-based-access-control/overview)inceleyin.
+[RBAC belgelerini](../role-based-access-control/overview.md)inceleyin.
 
 ## <a name="recovery-point-restore-point-retention-point--point-in-time-pit"></a>Kurtarma noktası/geri yükleme noktası/bekletme noktası/zaman aşımı (PIT)
 
@@ -248,11 +248,11 @@ Yedeklenmekte olan özgün verilerin bir kopyası. Bir saklama noktası bir zama
 
 ## <a name="resource-group"></a>Kaynak grubu
 
-[Azure Resource Manager belgelerine](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal#what-is-a-resource-group)bakın.
+[Azure Resource Manager belgelerine](../azure-resource-manager/management/manage-resource-groups-portal.md#what-is-a-resource-group)bakın.
 
 ## <a name="rest-api"></a>REST API
 
-[Azure REST API belgelerine](https://docs.microsoft.com/rest/api/azure/)bakın.
+[Azure REST API belgelerine](/rest/api/azure/)bakın.
 
 ## <a name="retention-rule"></a>Bekletme kuralı
 
@@ -272,7 +272,7 @@ Verilen öğe için yapılandırılan yedekleme ilkesi tarafından otomatik olar
 
 ## <a name="secondary-region--paired-region"></a>İkincil bölge/eşleştirilmiş bölge
 
-Bölgesel bir çift aynı coğrafya içindeki iki bölgeden oluşur. Biri birincil bölgedir ve diğeri ikincil bölgedir. Eşleştirilmiş bölgeler, bazı Azure Hizmetleri (GRS ayarlarıyla Azure Backup dahil) tarafından, iş sürekliliği ve veri kaybına karşı koruma sağlamak için kullanılır. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Bölgesel bir çift aynı coğrafya içindeki iki bölgeden oluşur. Biri birincil bölgedir ve diğeri ikincil bölgedir. Eşleştirilmiş bölgeler, bazı Azure Hizmetleri (GRS ayarlarıyla Azure Backup dahil) tarafından, iş sürekliliği ve veri kaybına karşı koruma sağlamak için kullanılır. [Daha fazla bilgi edinin](../best-practices-availability-paired-regions.md).
 
 ## <a name="soft-delete"></a>Geçici silme
 
@@ -280,11 +280,11 @@ Geçici silme, yedekleme verilerinin yanlışlıkla silinmesine karşı koruma s
 
 ## <a name="snapshot"></a>Anlık Görüntü
 
-Anlık görüntü, bir sanal sabit sürücünün (VHD) veya Azure dosya paylaşımının tam, salt okunurdur bir kopyasıdır. [Disk anlık görüntüleri](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk) ve [dosya anlık görüntüleri](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files)hakkında daha fazla bilgi edinin.
+Anlık görüntü, bir sanal sabit sürücünün (VHD) veya Azure dosya paylaşımının tam, salt okunurdur bir kopyasıdır. [Disk anlık görüntüleri](../virtual-machines/windows/snapshot-copy-managed-disk.md) ve [dosya anlık görüntüleri](../storage/files/storage-snapshots-files.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="storage-account"></a>Depolama hesabı
 
-[Depolama hesabı belgelerine](https://docs.microsoft.com/azure/storage/common/storage-account-overview)bakın.
+[Depolama hesabı belgelerine](../storage/common/storage-account-overview.md)bakın.
 
 ## <a name="subscription"></a>Abonelik
 
@@ -302,7 +302,7 @@ Kiracı, bir kuruluşu temsil eden birimdir. Kuruluş veya uygulama geliştirici
 
 ## <a name="unmanaged-disk"></a>Yönetilmeyen disk
 
-[Yönetilmeyen diskler belgesine](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance#azure-unmanaged-disks)bakın.
+[Yönetilmeyen diskler belgesine](../storage/common/storage-disaster-recovery-guidance.md#azure-unmanaged-disks)bakın.
 
 ## <a name="vault"></a>Kasa
 
@@ -314,11 +314,11 @@ Kasa kimlik bilgileri dosyası, her kasa için Portal tarafından oluşturulan b
 
 ## <a name="vnet-virtual-network"></a>VNET (sanal ağ)
 
-[VNET belgelerini](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)inceleyin.
+[VNET belgelerini](../virtual-network/virtual-networks-overview.md)inceleyin.
 
 ## <a name="vss-windows-volume-shadow-copy-service"></a>VSS (Windows Birim Gölge Kopyası Hizmeti)
 
-[VSS belgelerine](https://docs.microsoft.com/windows-server/storage/file-server/volume-shadow-copy-service)bakın.
+[VSS belgelerine](/windows-server/storage/file-server/volume-shadow-copy-service)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

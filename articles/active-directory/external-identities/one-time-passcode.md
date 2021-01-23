@@ -12,12 +12,12 @@ manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1aebfaa176992b7e20824518bc214a6688ae493
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: a9a0668b3ea651d129dc076e5f2247e38f5ab7d0
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97703594"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725504"
 ---
 # <a name="email-one-time-passcode-authentication"></a>E-posta bir kerelik geçiş kodu kimlik doğrulaması
 
@@ -102,7 +102,7 @@ Daha önce bir kerelik geçiş kodu genel önizlemesine kaydoldıysanız, otomat
 
 ![E-posta bir kerelik geçiş kodunu etkinleştir](media/delegate-invitations/enable-email-otp-opted-in.png)
 
-Ancak, özelliği devre dışı bırakmayı tercih ediyorsanız ve bu özelliğin Mart 2021 ' de otomatik olarak etkinleştirilmesini istiyorsanız, Microsoft Graph API [e-posta kimlik doğrulama yöntemi yapılandırma kaynak türünü](https://aka.ms/exid-graphemailauth)kullanarak varsayılan ayarlara geri döndürebilirsiniz. Varsayılan ayarlara döndükten sonra, **Konuklar için bir kerelik geçiş kodu** altında aşağıdaki seçenekler kullanılabilir:
+Ancak, özelliği devre dışı bırakmayı tercih ediyorsanız ve bu özelliğin Mart 2021 ' de otomatik olarak etkinleştirilmesini istiyorsanız, Microsoft Graph API [e-posta kimlik doğrulama yöntemi yapılandırma kaynak türünü](/graph/api/resources/emailauthenticationmethodconfiguration)kullanarak varsayılan ayarlara geri döndürebilirsiniz. Varsayılan ayarlara döndükten sonra, **Konuklar için bir kerelik geçiş kodu** altında aşağıdaki seçenekler kullanılabilir:
 
 - **Mart 2021 ' de guests için e-posta tek seferlik geçiş kodunu otomatik olarak etkinleştirin**. Varsayılanını E-posta bir kerelik geçiş kodu özelliği kiracınız için zaten etkin değilse, bu, Mart 2021 ' de otomatik olarak açılır. Özelliğin o anda etkinleştirilmesini istiyorsanız başka bir eylem gerekmez. Özelliği zaten etkinleştirdiyseniz veya devre dışı bıraktığınız takdirde bu seçenek kullanılamaz.
 

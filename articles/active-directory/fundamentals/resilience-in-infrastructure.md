@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f65ab02e06319519548eaa2c02120691a0ceef02
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 64fe4b8c217ec46cbb6dd046339c3ac65eebb121
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498566"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724686"
 ---
 # <a name="build-resilience-in-your-identity-and-access-management-infrastructure"></a>Kimlik ve erişim yönetimi altyapınızda esnekliği oluşturma
 
@@ -32,7 +32,7 @@ Belge kümesi için tasarlandı
 
 * Kimlik Işlemleri takımları
 
-Lütfen [uygulama geliştiricileri](https://aka.ms/azureadresilience/developer) ve [Azure AD B2C sistemleri](resilience-b2c.md)için belgelere bakın.
+Lütfen [uygulama geliştiricileri](./resilience-app-development-overview.md) ve [Azure AD B2C sistemleri](resilience-b2c.md)için belgelere bakın.
 
 ## <a name="what-is-resilience"></a>Esnekliği nedir?
 
@@ -44,7 +44,7 @@ Her bir çağrının bileşeni başarısız olursa, kimlik doğrulama sistemine 
 
 Azure AD gibi belirteç tabanlı bir kimlik doğrulama sisteminde, bir kullanıcının uygulaması (istemci) bir uygulamaya veya başka bir kaynağa erişmeden önce kimlik sisteminden bir güvenlik belirteci almalıdır. Geçerlilik süresi boyunca, bir istemci uygulamaya erişmek için aynı belirteci birden çok kez sunabilir.
 
-Uygulamaya sunulan belirtecin süresi dolarsa, uygulama belirteci reddeder ve istemcinin Azure AD 'den yeni bir belirteç edinmesi gerekir. Yeni bir belirteç almak, kimlik bilgileri istemleri gibi kullanıcı etkileşimini veya kimlik doğrulama sisteminin diğer gereksinimlerini karşılamayı gerektirir. Daha uzun süreli belirteçlerle yapılan kimlik doğrulama çağrılarının sıklığını azaltmak gereksiz etkileşimleri azaltır. Ancak, belirteç ömrünü daha az ilke değerlendirmesi tarafından oluşturulan riske göre dengeetmeniz gerekir. Belirteç yaşam sürelerini yönetme hakkında daha fazla bilgi için, bu makaleye bkz. yeniden [kimlik doğrulama istemlerini iyileştirme](https://docs.microsoft.com/azure/active-directory/authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime).
+Uygulamaya sunulan belirtecin süresi dolarsa, uygulama belirteci reddeder ve istemcinin Azure AD 'den yeni bir belirteç edinmesi gerekir. Yeni bir belirteç almak, kimlik bilgileri istemleri gibi kullanıcı etkileşimini veya kimlik doğrulama sisteminin diğer gereksinimlerini karşılamayı gerektirir. Daha uzun süreli belirteçlerle yapılan kimlik doğrulama çağrılarının sıklığını azaltmak gereksiz etkileşimleri azaltır. Ancak, belirteç ömrünü daha az ilke değerlendirmesi tarafından oluşturulan riske göre dengeetmeniz gerekir. Belirteç yaşam sürelerini yönetme hakkında daha fazla bilgi için, bu makaleye bkz. yeniden [kimlik doğrulama istemlerini iyileştirme](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md).
 
 ## <a name="ways-to-increase-resilience"></a>Esnekliği artırma yolları
 Aşağıdaki diyagramda esnekliği artırabileceğiniz altı somut yol gösterilmektedir. Her yöntem, bu makalenin sonraki adımlar bölümünde bağlantılı makalelerdeki ayrıntılı olarak açıklanır.

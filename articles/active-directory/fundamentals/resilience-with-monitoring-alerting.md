@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 766fd80ae5f7450c8e45d10afa4612a788a8d5fc
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 90b2cd4521613a7b449598f0d097a7ec1c2958c6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602165"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724551"
 ---
 # <a name="resilience-through-monitoring-and-analytics"></a>İzleme ve analiz aracılığıyla esnekliği
 
@@ -34,14 +34,14 @@ Benzer şekilde, hataları veya performans kesintilerini algılamak, iyi bir tab
 
 ### <a name="how-to-implement-monitoring-and-alerting"></a>İzleme ve uyarı uygulama
 
-- **İzleme**: temel hizmet düzeyi HEDEFLERINE (SLO) göre sistem durumunu sürekli olarak Izlemek Için [Azure izleyici](https://docs.microsoft.com/azure/active-directory-b2c/azure-monitor) 'yi kullanın ve kritik bir değişiklik olduğunda bildirim alın. Azure AD B2C ilkesi veya bir uygulamayı, sistem durumunun SLO 'yu sürdürmek üzere izlenmesi gereken kritik bir bileşen olarak tanımlayarak başlayın. Yuvalarınız ile hizalı anahtar göstergelerini belirler.
+- **İzleme**: temel hizmet düzeyi HEDEFLERINE (SLO) göre sistem durumunu sürekli olarak Izlemek Için [Azure izleyici](../../active-directory-b2c/azure-monitor.md) 'yi kullanın ve kritik bir değişiklik olduğunda bildirim alın. Azure AD B2C ilkesi veya bir uygulamayı, sistem durumunun SLO 'yu sürdürmek üzere izlenmesi gereken kritik bir bileşen olarak tanımlayarak başlayın. Yuvalarınız ile hizalı anahtar göstergelerini belirler.
 Örneğin, ' de ani bir bırakma bir iş kaybına neden olacağı için aşağıdaki ölçümleri izleyin.
 
   - **Toplam istek** sayısı: Azure AD B2C ilkeye gönderilen toplam "n" istek sayısı.
 
   - **Başarı oranı (%)**: başarılı Istekler/toplam istek sayısı.
 
-  Azure AD B2C ilke tabanlı günlüklerin, [Denetim günlüklerinin](https://docs.microsoft.com/azure/active-directory-b2c/analytics-with-application-insights)ve oturum açma günlüklerinin depolandığı [Application Insights](https://docs.microsoft.com/azure/active-directory-b2c/analytics-with-application-insights) 'daki [anahtar göstergelerine](https://docs.microsoft.com/azure/active-directory-b2c/view-audit-logs) erişin.  
+  Azure AD B2C ilke tabanlı günlüklerin, [Denetim günlüklerinin](../../active-directory-b2c/analytics-with-application-insights.md)ve oturum açma günlüklerinin depolandığı [Application Insights](../../active-directory-b2c/analytics-with-application-insights.md) 'daki [anahtar göstergelerine](../../active-directory-b2c/view-audit-logs.md) erişin.  
 
    - **Görselleştirmeler**: anahtar göstergelerini görsel olarak Izlemek için Log Analytics derleme panoları kullanma.
 
@@ -49,15 +49,15 @@ Benzer şekilde, hataları veya performans kesintilerini algılamak, iyi bir tab
 
    - **Önceki dönem**: Toplam Isteklerindeki ve başarı oranlarındaki değişiklikleri göstermek için zamana bağlı grafikler oluşturma (%) önceki bir dönem boyunca başvuru amaçlıdır. Örneğin, geçen hafta.
 
-- **Uyarı**: Log Analytics 'in kullanılması, anahtar göstergelerinde ani değişiklikler olduğunda tetiklenen [uyarıları](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) tanımlar. Bu değişiklikler, SLOs 'yi olumsuz etkileyebilir. Uyarılar, e-posta, SMS ve Web kancaları gibi çeşitli bildirim yöntemleri biçimlerini kullanır. Uyarı tetiklenecek eşik olarak davranan bir ölçüt tanımlayarak başlayın. Örnek:
+- **Uyarı**: Log Analytics 'in kullanılması, anahtar göstergelerinde ani değişiklikler olduğunda tetiklenen [uyarıları](../../azure-monitor/platform/alerts-log.md) tanımlar. Bu değişiklikler, SLOs 'yi olumsuz etkileyebilir. Uyarılar, e-posta, SMS ve Web kancaları gibi çeşitli bildirim yöntemleri biçimlerini kullanır. Uyarı tetiklenecek eşik olarak davranan bir ölçüt tanımlayarak başlayın. Örneğin:
   - Toplam isteklerin ani olarak düşürülme uyarısı: toplam istek sayısı aniden başlatıldığında bir uyarı tetikleyin. Örneğin, bir önceki döneme kıyasla toplam istek sayısı %25 ' i olduğunda bir uyarı yükseltir.  
   - Başarı oranına göre uyarı (%): seçili ilkenin başarı oranı önemli ölçüde düşerse bir uyarı tetikleyin.
-  - Uyarı aldıktan sonra, Azure AD B2C için [Log Analytics](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-install-use-log-analytics-views), [Application Insights](https://docs.microsoft.com/azure/active-directory-b2c/troubleshoot-with-application-insights#:~:text=Setup%20Application%20Insights%201%20Go%20to%20the%20Azure,left-menu%2C%20and%20click%20on%20it.%20More%20items...%20)ve [vs Code uzantısını](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c) kullanarak sorunu giderin. Sorunu çözdükten ve güncelleştirilmiş bir uygulamayı veya ilkeyi dağıttıktan sonra, normal aralığa geri dönene kadar anahtar göstergelerini izlemeye devam eder.
+  - Uyarı aldıktan sonra, Azure AD B2C için [Log Analytics](../reports-monitoring/howto-install-use-log-analytics-views.md), [Application Insights](../../active-directory-b2c/troubleshoot-with-application-insights.md)ve [vs Code uzantısını](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c) kullanarak sorunu giderin. Sorunu çözdükten ve güncelleştirilmiş bir uygulamayı veya ilkeyi dağıttıktan sonra, normal aralığa geri dönene kadar anahtar göstergelerini izlemeye devam eder.
 
-- **Hizmet uyarıları**: hizmet sorunları, planlı bakım, sağlık danışmanlığı ve güvenlik danışmanlığı hakkında bildirim almak için [Azure AD B2C hizmet düzeyi uyarılarını](https://docs.microsoft.com/azure/service-health/service-health-overview) kullanın.
+- **Hizmet uyarıları**: hizmet sorunları, planlı bakım, sağlık danışmanlığı ve güvenlik danışmanlığı hakkında bildirim almak için [Azure AD B2C hizmet düzeyi uyarılarını](../../service-health/service-health-overview.md) kullanın.
 
-- **Raporlama**: [Log Analytics 'i kullanarak](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics), Kullanıcı öngörüleri, teknik sorunlar ve büyüme fırsatları hakkında bilgi sahibi olmanıza yardımcı olan raporlar oluşturun.
-  - **Sistem durumu panosu**: Log Analytics sorguları kullanarak grafik eklemeyi destekleyen [Azure Panosu özelliğini kullanarak özel panolar](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards) oluşturun. Örneğin, başarılı ve başarısız oturum açma düzenlerini, istekleri yapmak için kullanılan cihazlarla ilgili hata nedenlerini ve telemetrileri öğrenin.
+- **Raporlama**: [Log Analytics 'i kullanarak](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md), Kullanıcı öngörüleri, teknik sorunlar ve büyüme fırsatları hakkında bilgi sahibi olmanıza yardımcı olan raporlar oluşturun.
+  - **Sistem durumu panosu**: Log Analytics sorguları kullanarak grafik eklemeyi destekleyen [Azure Panosu özelliğini kullanarak özel panolar](../../azure-monitor/learn/tutorial-app-dashboards.md) oluşturun. Örneğin, başarılı ve başarısız oturum açma düzenlerini, istekleri yapmak için kullanılan cihazlarla ilgili hata nedenlerini ve telemetrileri öğrenin.
   - **Abandon Azure AD B2C It neys**: kullanıcının oturum açma veya kaydolma yolculuğuna başladığı ancak hiç bitmediğini terk edilmiş Azure AD B2C It neys listesini izlemek için [çalışma kitabını](https://github.com/azure-ad-b2c/siem#list-of-abandon-journeys) kullanın. Bu, bir yolculuğa geçmeden önce Kullanıcı tarafından gerçekleştirilen adımların ilke KIMLIĞI ve dökümü hakkındaki ayrıntıları sağlar.
   - **Azure AD B2C izleme çalışma kitapları**: Azure AD B2C ortamınızın sağlık durumu hakkında daha iyi öngörüler elde etmek için Azure AD B2C Pano, Multi-Factor AUTHENTICATION (MFA) Işlemleri, koşullu erişim raporu ve Bağıntıkimliği ile arama günlükleri içeren [izleme çalışma kitaplarını](https://github.com/azure-ad-b2c/siem)kullanın.
   

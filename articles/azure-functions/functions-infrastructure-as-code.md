@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4b649942a52c51aef0d6edd17b913f75e1fb247b
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: a1b621b5d5601e6d8bffef48e23d217e0eee1d6a
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98674176"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725828"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Işlevlerinde işlev uygulamanız için kaynak dağıtımını otomatikleştirme
 
@@ -137,7 +137,7 @@ Barındırma planının tanımı değişir ve aşağıdakilerden biri olabilir:
 
 Bir işlev uygulaması şu uygulama ayarlarını içermelidir:
 
-| Ayar adı                 | Description                                                                               | Örnek değerler                        |
+| Ayar adı                 | Açıklama                                                                               | Örnek değerler                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | Işlevlerin çalışma zamanının iç sıraya alma için kullandığı bir depolama hesabına yönelik bağlantı dizesi | [Depolama hesabını](#storage) gör       |
 | FUNCTIONS_EXTENSION_VERSION  | Azure Işlevleri çalışma zamanının sürümü                                                | `~3`                                  |
@@ -212,9 +212,11 @@ Tüketim planınızı açık bir şekilde tanımlarsanız, `serverFarmId` uygula
 
 ### <a name="create-a-function-app"></a>İşlev uygulaması oluşturma
 
+Tüketim planında çalışan bir işlev uygulamasının gerektirdiği ayarlar Windows ve Linux arasında erteleyin. 
+
 #### <a name="windows"></a>Windows
 
-Windows 'da bir tüketim planı, site yapılandırmasında iki ek ayar gerektirir: `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` ve `WEBSITE_CONTENTSHARE` . Bu özellikler, uygulama kodu ve yapılandırmasının depolandığı depolama hesabını ve dosya yolunu yapılandırır.
+Windows 'da, bir tüketim planı site yapılandırmasında ek bir ayar gerektirir: [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring) . Bu özellik, uygulama kodu ve yapılandırmasının depolandığı depolama hesabını yapılandırır.
 
 ```json
 {
@@ -238,10 +240,6 @@ Windows 'da bir tüketim planı, site yapılandırmasında iki ek ayar gerektiri
                     "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
                 },
                 {
-                    "name": "WEBSITE_CONTENTSHARE",
-                    "value": "[toLower(variables('functionAppName'))]"
-                },
-                {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
                     "value": "node"
                 },
@@ -259,9 +257,12 @@ Windows 'da bir tüketim planı, site yapılandırmasında iki ek ayar gerektiri
 }
 ```
 
+> [!IMPORTANT]
+> [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare)Site ilk oluşturulduğunda, ayarı sizin için oluşturulmuşa ayarlayın.  
+
 #### <a name="linux"></a>Linux
 
-Linux 'ta, işlev uygulamasının `kind` için ayarlanmış olması `functionapp,linux` ve `reserved` özelliğinin özelliği olarak ayarlanmış olması gerekir `true` :
+Linux 'ta, işlev uygulamasının `kind` için ayarlanmış olması `functionapp,linux` ve `reserved` özelliği olarak ayarlanmış olması gerekir `true` . 
 
 ```json
 {
@@ -299,8 +300,9 @@ Linux 'ta, işlev uygulamasının `kind` için ayarlanmış olması `functionapp
 }
 ```
 
-<a name="premium"></a>
+[`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring)Ve [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) ayarları Linux üzerinde desteklenmez.
 
+<a name="premium"></a>
 ## <a name="deploy-on-premium-plan"></a>Premium planda dağıt
 
 Premium planı, tüketim planıyla aynı ölçeklendirmeyi sunar, ancak adanmış kaynakları ve ek özellikleri içerir. Daha fazla bilgi için bkz. [Azure Işlevleri Premium planı](./functions-premium-plan.md).
@@ -332,7 +334,7 @@ Premium plan, "ServerFarm" kaynağının özel bir türüdür. `EP1` `EP2` `EP3`
 
 ### <a name="create-a-function-app"></a>İşlev uygulaması oluşturma
 
-Premium plandaki bir işlev uygulamasının, `serverFarmId` daha önce oluşturulan planın kaynak kimliği olarak ayarlanmış özelliği olmalıdır. Ayrıca, Premium planı site yapılandırmasında iki ek ayar gerektirir: `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` ve `WEBSITE_CONTENTSHARE` . Bu özellikler, uygulama kodu ve yapılandırmasının depolandığı depolama hesabını ve dosya yolunu yapılandırır.
+Premium plandaki bir işlev uygulamasının, `serverFarmId` daha önce oluşturulan planın kaynak kimliği olarak ayarlanmış özelliği olmalıdır. Ayrıca, Premium planı site yapılandırmasında ek bir ayar gerektirir: [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring) . Bu özellik, uygulama kodu ve yapılandırmasının depolandığı depolama hesabını yapılandırır.
 
 ```json
 {
@@ -358,10 +360,6 @@ Premium plandaki bir işlev uygulamasının, `serverFarmId` daha önce oluşturu
                     "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
                 },
                 {
-                    "name": "WEBSITE_CONTENTSHARE",
-                    "value": "[toLower(variables('functionAppName'))]"
-                },
-                {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
                     "value": "node"
                 },
@@ -378,6 +376,8 @@ Premium plandaki bir işlev uygulamasının, `serverFarmId` daha önce oluşturu
     }
 }
 ```
+> [!IMPORTANT]
+> [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare)Site ilk oluşturulduğunda, ayarı sizin için oluşturulmuşa ayarlayın.  
 
 <a name="app-service-plan"></a>
 

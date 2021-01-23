@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 8/26/2020
 ms.author: alkemper
-ms.openlocfilehash: 6996fdd9dce4314e9365177815d7d310ac80c7cb
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 96efc0ea6300e482ddeeda8fa177847f02b7e126
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98046082"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724263"
 ---
 # <a name="quickstart-add-feature-flags-to-an-azure-functions-app"></a>Hızlı başlangıç: Azure Işlevleri uygulamasına özellik bayrakları ekleme
 
@@ -21,7 +21,7 @@ Bu hızlı başlangıçta, bir Azure Işlevleri uygulaması oluşturup içindeki
 
 .NET Özellik Yönetimi kitaplıkları çerçeveyi Özellik bayrağı desteğiyle genişletir. Bu kitaplıklar, .NET yapılandırma sisteminin üzerine kurulmuştur. Bunlar, .NET yapılandırma sağlayıcısı aracılığıyla uygulama yapılandırmasıyla tümleştirilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - **Azure geliştirme** iş yüküyle [Visual Studio 2019](https://visualstudio.microsoft.com/vs) .
@@ -46,7 +46,7 @@ Bu hızlı başlangıçta, bir Azure Işlevleri uygulaması oluşturup içindeki
 
 ## <a name="connect-to-an-app-configuration-store"></a>Uygulama yapılandırma deposuna bağlanma
 
-Bu proje, [.net Azure işlevlerinde bağımlılık ekleme](/azure/azure-functions/functions-dotnet-dependency-injection)işlemini kullanacaktır. Azure uygulama yapılandırmasını, özellik bayraklarınızın depolandığı ek bir yapılandırma kaynağı olarak ekler.
+Bu proje, [.net Azure işlevlerinde bağımlılık ekleme](../azure-functions/functions-dotnet-dependency-injection.md)işlemini kullanacaktır. Azure uygulama yapılandırmasını, özellik bayraklarınızın depolandığı ek bir yapılandırma kaynağı olarak ekler.
 
 1. Projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin. **Araştır** sekmesinde, aşağıdaki NuGet paketlerini arayıp projenize ekleyin.
    - [Microsoft.Extensions.Configurlama. AzureAppConfiguration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureAppConfiguration/) sürümü 4.1.0 veya üzeri
@@ -180,7 +180,7 @@ Bu proje, [.net Azure işlevlerinde bağımlılık ekleme](/azure/azure-function
 
     ![Hızlı başlangıç Işlevi Özellik bayrağı devre dışı](./media/quickstarts/functions-launch-ff-disabled.png)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin ve oluşturduğunuz uygulama yapılandırma deposunu seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin ve oluşturduğunuz uygulama yapılandırma deposunu seçin.
 
 1. **Özellik Yöneticisi**' ni seçin ve **Beta** anahtarının durumunu **Açık** olarak değiştirin.
 
@@ -201,6 +201,6 @@ Bu hızlı başlangıçta, bir özellik bayrağı oluşturdunuz ve [Microsoft. F
 
 - [Özellik yönetimi](./concept-feature-management.md) hakkında daha fazla bilgi edinin
 - [Özellik bayraklarını yönetme](./manage-feature-flags.md)
-- [Koşullu Özellik bayraklarını kullanın](./howto-feature-filters-aspnet-core.md)
+- [Koşullu özellik bayraklarını kullanma](./howto-feature-filters-aspnet-core.md)
 - [Hedeflenen izleyiciler için özelliklerin aşamalı dağıtımını etkinleştir](./howto-targetingfilter-aspnet-core.md)
 - [Azure Işlevleri uygulamasında dinamik yapılandırma kullanma](./enable-dynamic-configuration-azure-functions-csharp.md)

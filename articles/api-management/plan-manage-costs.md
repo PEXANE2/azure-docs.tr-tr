@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: api-management
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: 799ef33e78737bfd2e1c1a1cfa4991f44c8f5ec0
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: e171e642440b7c6c99353169e426a722885f1bcf
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599647"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725946"
 ---
 # <a name="plan-and-manage-costs-for-api-management"></a>API Management maliyetlerini planlayın ve yönetin
 
@@ -108,7 +108,7 @@ Daha fazla yüklemeye uyum sağlamak için bir API Management örneğini ölçek
 
 - [Azure maliyet yönetimi ile bulut yatırımınızın nasıl iyileştirileceği hakkında](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)bilgi edinin.
 - [Maliyet Analizi](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)ile maliyetleri yönetme hakkında daha fazla bilgi edinin.
-- [Beklenmeyen maliyetlerin nasıl önleneceği](../cost-management-billing/manage/getting-started.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)hakkında bilgi edinin.
-- [Maliyet yönetimi](https://docs.microsoft.com/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) destekli öğrenme kursuna katılın.
+- [Beklenmeyen maliyetlerin nasıl önleneceği](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)hakkında bilgi edinin.
+- [Maliyet yönetimi](/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) destekli öğrenme kursuna katılın.
 - API Management [kapasitesi](api-management-capacity.md)hakkında bilgi edinin.
 - [Azure Portal](upgrade-and-scale.md)kullanarak API Management ölçeklendirmek ve yükseltmek için adımlara bakın ve [Otomatik ölçeklendirme](api-management-howto-autoscale.md)hakkında bilgi edinin.

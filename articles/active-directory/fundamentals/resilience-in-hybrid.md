@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c45b362bc37df71346fc3b635c8ae4a51f62cdc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: de01788c01d4d6dedd9563faaaac07bff30bbd97
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919914"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724768"
 ---
 # <a name="build-resilience-in-your-hybrid-architecture"></a>Karma mimariniz üzerinde esnekliği oluşturma
 
@@ -82,7 +82,7 @@ Doğrudan kimlik doğrulaması uygulamak için aşağıdaki kaynaklara bakın.
 
 Federasyon, Azure AD ile, uç nokta değişimi, belirteç imzalama sertifikaları ve diğer meta veriler de dahil olmak üzere, Azure AD ile Federasyon Hizmeti arasında bir güven ilişkisi oluşturulmasını içerir. Azure AD 'ye bir istek geldiğinde, yapılandırmayı okur ve kullanıcıyı yapılandırılan uç noktalara yönlendirir. Bu noktada Kullanıcı, Azure AD tarafından doğrulanan bir SAML onayı veren Federasyon hizmetiyle etkileşime girer. 
 
-Aşağıdaki diyagramda, birden çok şirket içi veri merkezinde gereksiz Federasyon ve Web uygulaması proxy sunucuları içeren bir kurumsal Active Directory Federasyon Hizmetleri (AD FS) (AD FS) dağıtımı gösterilmektedir. Bu yapılandırma DNS, coğrafi benzeşim özellikleri, güvenlik duvarları vb. ile Ağ Yük Dengelemesi gibi kuruluş ağ altyapısı bileşenlerini kullanır. Tüm şirket içi bileşenler ve bağlantılar hataya açıktır. Daha fazla bilgi için [AD FS kapasite planlama belgelerini](https://docs.microsoft.com/windows-server/identity/ad-fs/design/planning-for-ad-fs-server-capacity) ziyaret edin.
+Aşağıdaki diyagramda, birden çok şirket içi veri merkezinde gereksiz Federasyon ve Web uygulaması proxy sunucuları içeren bir kurumsal Active Directory Federasyon Hizmetleri (AD FS) (AD FS) dağıtımı gösterilmektedir. Bu yapılandırma DNS, coğrafi benzeşim özellikleri, güvenlik duvarları vb. ile Ağ Yük Dengelemesi gibi kuruluş ağ altyapısı bileşenlerini kullanır. Tüm şirket içi bileşenler ve bağlantılar hataya açıktır. Daha fazla bilgi için [AD FS kapasite planlama belgelerini](/windows-server/identity/ad-fs/design/planning-for-ad-fs-server-capacity) ziyaret edin.
 
 > [!NOTE]
 >  Federasyonun en yüksek sayıda şirket içi bağımlılığı ve bu nedenle en olası hata noktaları vardır. Bu diyagramda AD FS gösterildiği sırada, diğer şirket içi kimlik sağlayıcıları, yüksek kullanılabilirlik, ölçeklenebilirlik ve yük devretme işlemleri için benzer tasarım konularına tabidir.
@@ -99,9 +99,9 @@ Bir Federasyon kimlik doğrulama stratejisi uyguyor veya daha dayanıklı hale g
 
 * [Azure AD federasyonu uyumluluk listesi](../hybrid/how-to-connect-fed-compatibility.md)
 
-* [AD FS kapasite planlama belgelerini](https://docs.microsoft.com/windows-server/identity/ad-fs/design/planning-for-ad-fs-server-capacity) izleyin
+* [AD FS kapasite planlama belgelerini](/windows-server/identity/ad-fs/design/planning-for-ad-fs-server-capacity) izleyin
 
-* [Azure IaaS 'de AD FS dağıtma](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs)
+* [Azure IaaS 'de AD FS dağıtma](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs)
 
 * Federasyonla birlikte [PHS 'Yi etkinleştirin](../hybrid/tutorial-phs-backup.md)
 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97893dece068dfdde85159f734095401288231d2
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: ecddb950c06c9f8e61f31e104051f5e3b3640ae5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201357"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725019"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>Şirket içi saldırılardan Microsoft 365 koruma
 
@@ -60,7 +60,7 @@ Yukarıda özetlenen tehdit vektörlerini ele almak için aşağıda gösterilen
 
      *  Yalnızca Azure yönetilen Iş Istasyonları kullanılarak erişilir.
 
-Bunlar kısıtlı kullanım hesaplarıdır. **Microsoft 365 üzerinde yönetici ayrıcalıklarına sahip şirket içi hesap olmaması gerekir.** Daha fazla bilgi için, [Microsoft 365 yönetici rollerine genel bakış](https://docs.microsoft.com/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide)bölümüne bakın.
+Bunlar kısıtlı kullanım hesaplarıdır. **Microsoft 365 üzerinde yönetici ayrıcalıklarına sahip şirket içi hesap olmaması gerekir.** Daha fazla bilgi için, [Microsoft 365 yönetici rollerine genel bakış](/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide)bölümüne bakın.
 Ayrıca bkz. [Azure Active Directory Microsoft 365 rolleri](../roles/m365-workload-docs.md).
 
 *  **Microsoft 365 cihazları yönetin.** Şirket içi cihaz yönetimi altyapınızdaki bağımlılıkları ortadan kaldırmak için Azure AD JOIN ve bulut tabanlı mobil cihaz yönetimi (MDM) kullanın ve cihaz ve güvenlik denetimlerini tehlikeye atabilir.
@@ -82,7 +82,7 @@ Azure AD 'de yöneticiler gibi ayrıcalıklı rollere sahip kullanıcılar, orta
 
 * Azure AD ve Microsoft 365 ayrıcalıklı roller için yalnızca bulut hesapları kullanın. d
 
-* Microsoft 365 ve Azure AD 'yi yönetmek için ayrıcalıklı erişim [cihazları](https://docs.microsoft.com/security/compass/privileged-access-devices#device-roles-and-profiles) dağıtın.
+* Microsoft 365 ve Azure AD 'yi yönetmek için ayrıcalıklı erişim [cihazları](/security/compass/privileged-access-devices#device-roles-and-profiles) dağıtın.
 
 *  Ayrıcalıklı rollere sahip tüm insan hesaplarına tam zamanında (JıT) erişim için [Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md) (PIM) dağıtın ve rolleri etkinleştirmek için güçlü kimlik doğrulaması gerekir.
 
@@ -92,7 +92,7 @@ Azure AD 'de yöneticiler gibi ayrıcalıklı rollere sahip kullanıcılar, orta
 
 * [Acil durum erişim hesapları](../roles/security-emergency-access.md) dağıtın ve kimlik bilgilerini depolamak için şirket içi parola kasaları kullanmayın.
 
-Daha fazla bilgi için, bkz. bu konuda ayrıntılı yönergeler içeren [ayrıcalıklı erişimin güvenliğini sağlama](https://aka.ms/SPA). Ayrıca bkz. [Azure AD 'de Yöneticiler Için güvenli erişim uygulamaları](../roles/security-planning.md).
+Daha fazla bilgi için, bkz. bu konuda ayrıntılı yönergeler içeren [ayrıcalıklı erişimin güvenliğini sağlama](/security/compass/overview). Ayrıca bkz. [Azure AD 'de Yöneticiler Için güvenli erişim uygulamaları](../roles/security-planning.md).
 
 ### <a name="use-cloud-authentication"></a>Bulut kimlik doğrulaması kullan 
 
@@ -100,15 +100,15 @@ Kimlik bilgileri, birincil saldırı vektörüdür. Kimlik bilgilerini daha güv
 
 * [Passwordless kimlik doğrulaması dağıtma](../authentication/howto-authentication-passwordless-deployment.md): passwordless kimlik bilgilerini dağıtarak parolaların kullanımını mümkün olduğunca azaltır. Bu kimlik bilgileri, bulutta yerel olarak yönetilir ve onaylanır. Aşağıdakilerden birini seçin:
 
-   * [İş için Windows Hello](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/passwordless-strategy)
+   * [İş için Windows Hello](/windows/security/identity-protection/hello-for-business/passwordless-strategy)
 
    * [Authenticator Uygulaması](../authentication/howto-authentication-passwordless-phone.md)
 
    * [FIDO2 güvenlik anahtarları](../authentication/howto-authentication-passwordless-security-key-windows.md)
 
-* [Dağıtım Multi-Factor Authentication](https://aka.ms/deploymentplans/mfa): [Azure AD MFA kullanarak birden çok güçlü kimlik bilgileri](../fundamentals/resilience-in-credentials.md)sağlayın. Bu şekilde, bulut kaynaklarına erişim, Azure AD 'de yönetilebilen ve bir şirket içi parolaya ek olarak yönetilen bir kimlik bilgisi gerektirir.
+* [Dağıtım Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md): [Azure AD MFA kullanarak birden çok güçlü kimlik bilgileri](../fundamentals/resilience-in-credentials.md)sağlayın. Bu şekilde, bulut kaynaklarına erişim, Azure AD 'de yönetilebilen ve bir şirket içi parolaya ek olarak yönetilen bir kimlik bilgisi gerektirir.
 
-   * Daha fazla bilgi için bkz. [Azure Active Directory ile esnek erişim denetimi yönetim stratejisi oluşturma](https://aka.ms/resilientaad).
+   * Daha fazla bilgi için bkz. [Azure Active Directory ile esnek erişim denetimi yönetim stratejisi oluşturma](./resilience-overview.md).
 
 **Sınırlamalar ve avantajları**
 
@@ -131,7 +131,7 @@ Sağlama, uygulama veya kimlik sağlayıcılarındaki Kullanıcı hesaplarının
 
    *  Konuk erişimini gözatma gruplarına ve dizindeki diğer özelliklere sınırlayın. Konuk, üye olmadıkları grupları okuyabilme yeteneğini kısıtlamak için dış işbirliği ayarlarını kullanın. 
 
-    *   Azure portal erişimini engelleyin. Nadir olarak gereken özel durumları yapabilirsiniz.  Tüm konukları ve dış kullanıcıları içeren bir koşullu erişim ilkesi oluşturun ve ardından [erişimi engellemek için bir ilke uygulayın](/azure/role-based-access-control/conditional-access-azure-management). 
+    *   Azure portal erişimini engelleyin. Nadir olarak gereken özel durumları yapabilirsiniz.  Tüm konukları ve dış kullanıcıları içeren bir koşullu erişim ilkesi oluşturun ve ardından [erişimi engellemek için bir ilke uygulayın](../../role-based-access-control/conditional-access-azure-management.md). 
 
 * **Bağlantısı kesilen ormanlar:** [Azure AD bulut sağlamasını](../cloud-provisioning/what-is-cloud-provisioning.md)kullanın. Bu, bağlantısı kesilen ormanlara bağlanmanızı, ormanlar arası bağlantı veya güvenler oluşturma gereğini ortadan kaldırarak şirket içi ihlalin etkisini genişletmenizi sağlar. * 
  
@@ -143,7 +143,7 @@ Sağlama, uygulama veya kimlik sağlayıcılarındaki Kullanıcı hesaplarının
 
 Bulut grupları, işbirliklerinizi ve şirket içi altyapınızdan erişiminizi kullanmanıza olanak sağlar.
 
-* **İşbirliği:** Modern işbirliği için Microsoft 365 grupları ve Microsoft ekipleri kullanın. Şirket içi dağıtım listelerine yetki alın ve [dağıtım listelerini Outlook 'ta Microsoft 365 gruplara yükseltin](https://docs.microsoft.com/office365/admin/manage/upgrade-distribution-lists?view=o365-worldwide).
+* **İşbirliği:** Modern işbirliği için Microsoft 365 grupları ve Microsoft ekipleri kullanın. Şirket içi dağıtım listelerine yetki alın ve [dağıtım listelerini Outlook 'ta Microsoft 365 gruplara yükseltin](/office365/admin/manage/upgrade-distribution-lists?view=o365-worldwide).
 
 * **Erişim:** Azure AD 'de uygulamalara erişim yetkisi vermek için Azure AD güvenlik gruplarını veya Microsoft 365 gruplarını kullanın.
 * **Office 365 lisansı:** Yalnızca bulutta bulunan grupları kullanarak Office 365 'e temin etmek için grup tabanlı lisanslama kullanın. Bu, şirket içi altyapıdan grup üyeliği denetimini ayırır.
@@ -156,7 +156,7 @@ Alma, grup üyeliğinin şirket içinde veya Microsoft 365 içindeki dinamik gru
 
 Cihazları güvenli bir şekilde yönetmek için Azure AD yeteneklerini kullanın.
 
--   **Windows 10 Iş Istasyonlarını kullanın:** MDM ILKELERIYLE [Azure AD 'ye katılmış cihazları dağıtın](../devices/azureadjoin-plan.md) . Tam otomatik sağlama deneyimi için [Windows Autopilot](https://docs.microsoft.com/mem/autopilot/windows-autopilot) etkinleştirin.
+-   **Windows 10 Iş Istasyonlarını kullanın:** MDM ILKELERIYLE [Azure AD 'ye katılmış cihazları dağıtın](../devices/azureadjoin-plan.md) . Tam otomatik sağlama deneyimi için [Windows Autopilot](/mem/autopilot/windows-autopilot) etkinleştirin.
 
     -   Windows 8.1 ve önceki makineler kullanımdan kaldırıldı.
 
@@ -164,7 +164,7 @@ Cihazları güvenli bir şekilde yönetmek için Azure AD yeteneklerini kullanı
 
     -   Tüm cihaz yönetimi iş yüklerinin yetkilisinin kaynağı olarak [Microsoft Intune](https://www.microsoft.com/en/microsoft-365/enterprise-mobility-security/microsoft-intune) kullanın.
 
--   Microsoft 365 ve Azure AD 'yi yönetmek için ayrıcalıklı erişim [**cihazları dağıtın**](https://docs.microsoft.com/security/compass/privileged-access-devices#device-roles-and-profiles) .
+-   Microsoft 365 ve Azure AD 'yi yönetmek için ayrıcalıklı erişim [**cihazları dağıtın**](/security/compass/privileged-access-devices#device-roles-and-profiles) .
 
  ## <a name="workloads-applications-and-resources"></a>İş yükleri, uygulamalar ve kaynaklar 
 
@@ -181,19 +181,19 @@ Cihazları güvenli bir şekilde yönetmek için Azure AD yeteneklerini kullanı
 
 *  **Uygulama ve iş yükü sunucuları**
 
-   * Gerekli sunucuları Azure IaaS 'ye geçirilebileceği uygulamalar veya kaynaklar, şirket içi güven ve bağımlılığı ayırmak için [Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/overview) (Azure AD DS) kullanır. Bu ayrılmayı başarmak için, Azure AD DS için kullanılan sanal ağların kurumsal ağlarla bağlantı sahibi olmaması gerekir.
+   * Gerekli sunucuları Azure IaaS 'ye geçirilebileceği uygulamalar veya kaynaklar, şirket içi güven ve bağımlılığı ayırmak için [Azure AD Domain Services](../../active-directory-domain-services/overview.md) (Azure AD DS) kullanır. Bu ayrılmayı başarmak için, Azure AD DS için kullanılan sanal ağların kurumsal ağlarla bağlantı sahibi olmaması gerekir.
 
-   * [Kimlik bilgisi katmanlama](https://aka.ms/TierModel)kılavuzunu izleyin. Uygulama sunucuları genellikle katman 1 varlıkları olarak kabul edilir.
+   * [Kimlik bilgisi katmanlama](/security/compass/privileged-access-access-model#ADATM_BM)kılavuzunu izleyin. Uygulama sunucuları genellikle katman 1 varlıkları olarak kabul edilir.
 
  ## <a name="conditional-access-policies"></a>Koşullu erişim Ilkeleri
 
-Sinyalleri yorumlamak ve bunlara göre kimlik doğrulama kararları almak için Azure AD koşullu erişimini kullanın. Daha fazla bilgi için bkz [. koşullu erişim dağıtım planı.](https://aka.ms/deploymentplans/ca)
+Sinyalleri yorumlamak ve bunlara göre kimlik doğrulama kararları almak için Azure AD koşullu erişimini kullanın. Daha fazla bilgi için bkz [. koşullu erişim dağıtım planı.](../conditional-access/plan-conditional-access.md)
 
 * [Eski kimlik doğrulama protokolleri](../fundamentals/auth-sync-overview.md): mümkün olduğunda [eski kimlik doğrulama protokollerini engellemek](../conditional-access/howto-conditional-access-policy-block-legacy.md) için koşullu erişimi kullanın. Ayrıca, uygulamaya özgü yapılandırmayı kullanarak, uygulama düzeyinde eski kimlik doğrulama protokollerini devre dışı bırakın.
 
-   * [Exchange Online](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online#how-basic-authentication-works-in-exchange-online) ve [SharePoint Online](https://docs.microsoft.com/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps)için belirli ayrıntılara bakın.
+   * [Exchange Online](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online#how-basic-authentication-works-in-exchange-online) ve [SharePoint Online](/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps)için belirli ayrıntılara bakın.
 
-* Önerilen [kimlik ve cihaz erişim yapılandırmasını uygulayın.](https://docs.microsoft.com/microsoft-365/security/office-365-security/identity-access-policies?view=o365-worldwide)
+* Önerilen [kimlik ve cihaz erişim yapılandırmasını uygulayın.](/microsoft-365/security/office-365-security/identity-access-policies?view=o365-worldwide)
 
 * Azure AD 'nin koşullu erişimi içermeyen bir sürümünü kullanıyorsanız [Azure AD güvenlik varsayılanlarını](../fundamentals/concept-fundamentals-security-defaults.md)kullandığınızdan emin olun.
 
@@ -206,13 +206,13 @@ Ortamınızı şirket içi bir uzlaşmadan Microsoft 365 korumak üzere yapılan
 
 Kuruluşunuza özgü tüm senaryolara ek olarak aşağıdaki önemli senaryoları izleyin. Örneğin, iş açısından kritik uygulamalarınızın ve kaynaklarınızın erişimini önceden izlemeniz gerekir.
 
-* **Şüpheli etkinlik**: tüm [Azure AD risk olayları](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection#risk-detection-and-remediation) , şüpheli etkinlik için izlenmelidir. [Azure AD kimlik koruması](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection) , Azure Güvenlik Merkezi ile yerel olarak tümleşiktir.
+* **Şüpheli etkinlik**: tüm [Azure AD risk olayları](../identity-protection/overview-identity-protection.md#risk-detection-and-remediation) , şüpheli etkinlik için izlenmelidir. [Azure AD kimlik koruması](../identity-protection/overview-identity-protection.md) , Azure Güvenlik Merkezi ile yerel olarak tümleşiktir.
 
    * Konum tabanlı sinyallerin gürültülü algılamalarını önlemek için konum [adlı](../reports-monitoring/quickstart-configure-named-locations.md) ağı tanımlayın. 
 *  **Kullanıcı varlığı davranış analizi (UEBA) uyarıları** Anomali algılama hakkında Öngörüler almak için UEBA 'yi kullanın.
-   * Microsoft Bulut uygulama bulma (MCAS) [bulutta Ueba](https://docs.microsoft.com/cloud-app-security/tutorial-ueba)sağlar.
+   * Microsoft Bulut uygulama bulma (MCAS) [bulutta Ueba](/cloud-app-security/tutorial-ueba)sağlar.
 
-   * [Şirket ıçı UEBA 'Yi Azure ATP 'den tümleştirebilirsiniz](https://docs.microsoft.com/defender-for-identity/install-step2). MCAS Azure AD Kimlik Koruması sinyalleri okur. 
+   * [Şirket ıçı UEBA 'Yi Azure ATP 'den tümleştirebilirsiniz](/defender-for-identity/install-step2). MCAS Azure AD Kimlik Koruması sinyalleri okur. 
 
 * **Acil erişim hesapları etkinliği**: [acil durum erişim hesapları](../roles/security-emergency-access.md) kullanan tüm erişim izlenmeli ve araştırmalar için uyarılar oluşturulmalıdır. Bu izleme şunları içermelidir: 
 
@@ -223,7 +223,7 @@ Kuruluşunuza özgü tüm senaryolara ek olarak aşağıdaki önemli senaryolar�
    * Grup üyeliklerinde tüm güncelleştirmeler. 
 
    *    Uygulama atamaları. 
-* **Ayrıcalıklı rol etkinliği**: [Azure AD PIM tarafından oluşturulan güvenlik uyarılarını](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-configure-security-alerts?tabs=new#security-alerts)yapılandırın ve gözden geçirin.
+* **Ayrıcalıklı rol etkinliği**: [Azure AD PIM tarafından oluşturulan güvenlik uyarılarını](../privileged-identity-management/pim-how-to-configure-security-alerts.md?tabs=new#security-alerts)yapılandırın ve gözden geçirin.
     Her kullanıcı doğrudan atandığında uyarı oluşturarak yalnızca, PıM dışında ayrıcalıklı rollerin doğrudan atamasını izleyin.
 * **Azure AD kiracı genelinde yapılandırma**: kiracı genelindeki yapılandırmalarda yapılan herhangi bir değişiklik sistemde uyarılar üretmelidir. Bunlar arasında şunlar yer alır ancak bunlarla sınırlı değildir
   *  Özel etki alanlarını güncelleştirme  
@@ -254,11 +254,11 @@ Azure Sentinel, ortak sorgular ve araştırma ve adli PlayBook gibi SIEM sisteml
 
    * Risk olayları 
 
-Azure AD, oturum açma etkinlik günlüğü ve denetim günlükleri için [Azure izleyici tümleştirmesi](../reports-monitoring/concept-activity-logs-azure-monitor.md) sağlar. Risk olayları [MICROSOFT Graph API](https://aka.ms/AzureADSecuredAzure/32b)aracılığıyla alınabilir. Azure [ad günlüklerini Azure izleyici günlüklerine akışını](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)sağlayabilirsiniz.
+Azure AD, oturum açma etkinlik günlüğü ve denetim günlükleri için [Azure izleyici tümleştirmesi](../reports-monitoring/concept-activity-logs-azure-monitor.md) sağlar. Risk olayları [MICROSOFT Graph API](/graph/api/resources/identityriskevent)aracılığıyla alınabilir. Azure [ad günlüklerini Azure izleyici günlüklerine akışını](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)sağlayabilirsiniz.
 
 * **Karma altyapı işletim sistemi güvenlik günlükleri.** Tüm karma kimlik altyapısı işletim sistemi günlüklerinin arşivlenmesi ve bir <br>Katman 0 sistemi, yüzey alanı etkilerine göre. Şunları içerir: 
 
-   *  Azure AD Connect. Kimlik eşitlemesini izlemek için [Azure AD Connect Health](https://aka.ms/AzureADSecuredAzure/32e) dağıtılması gerekir.
+   *  Azure AD Connect. Kimlik eşitlemesini izlemek için [Azure AD Connect Health](../hybrid/whatis-azure-ad-connect.md) dağıtılması gerekir.
 
    *  Uygulama proxy aracıları 
 

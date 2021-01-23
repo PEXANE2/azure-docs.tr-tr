@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6814cafcf6dafa6f007bdd9d3623d30ef079084
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 37c27e84f15a01a2d8832baae137518685de59a8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222454"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725450"
 ---
 # <a name="determine-your-security-posture-for-external-access"></a>Dış erişim için güvenlik durunuzu belirleme 
 
@@ -69,7 +69,7 @@ Kuruluşunuz ve senaryolarınız için işlem yaptığınızda şunlar gerekir:
 
 * **Uygulamalara, verilere ve içeriğe erişimi denetleme**. Bu, [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) ve [Microsoft 365](https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans)sürümlerinize bağlı olarak çeşitli yöntemlerle gerçekleştirilebilir. 
 
-* **Saldırı yüzeyini küçültün**. [Ayrıcalıklı kimlik yönetimi](../privileged-identity-management/pim-configure.md), [veri kaybı önleme (DLP)](https://docs.microsoft.com/exchange/security-and-compliance/data-loss-prevention/data-loss-prevention) ve [şifreleme özellikleri](https://docs.microsoft.com/exchange/security-and-compliance/data-loss-prevention/data-loss-prevention) saldırı yüzeyini azaltır.
+* **Saldırı yüzeyini küçültün**. [Ayrıcalıklı kimlik yönetimi](../privileged-identity-management/pim-configure.md), [veri kaybı önleme (DLP)](/exchange/security-and-compliance/data-loss-prevention/data-loss-prevention) ve [şifreleme özellikleri](/exchange/security-and-compliance/data-loss-prevention/data-loss-prevention) saldırı yüzeyini azaltır.
 
 * **Uyumluluğu onaylamak Için düzenli olarak etkinlik ve denetim günlüğü gözden geçirin**. Erişim gözden geçirmeleri, sürekli erişimi düzenli olarak onaylamaya yönelik bir yol sağlarken, yetkilendirme yönetimi aracılığıyla iş sahiplerine erişim kararları devredebilir. Duyarlılık etiketleriyle otomatik veri sınıflandırması, çalışan son kullanıcılarının uyum sağlaması için hassas içerik şifrelemesini otomatik hale getirmeye yardımcı olur.
 
@@ -96,4 +96,3 @@ Kaynaklara dışarıdan erişimi güvenli hale getirmek için aşağıdaki makal
 9. [Microsoft ekipleri, OneDrive ve SharePoint 'e güvenli erişim](9-secure-access-teams-sharepoint.md)
  
 
- 

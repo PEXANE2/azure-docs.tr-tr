@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c0d63df3e5525b200723db209d05e5eb5013e23
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 654e1c163a16f427958320ea081c38338e0ab4e1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222369"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725401"
 ---
 # <a name="transition-to-governed-collaboration-with-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B işbirliğiyle yönetilen işbirliğine geçiş 
 
@@ -100,7 +100,7 @@ Konuk kullanıcıları kaynaklara erişmek için kimler davet edebilen kişileri
 
 Azure AD Yetkilendirme Yönetimi kullanıyorsanız, dış kullanıcıların yanıt vermesi için soruları yapılandırabilirsiniz. Daha sonra bu sorular bir karar vermek için onaylayanlara gösterilir. Her bir [erişim paketi ilkesi](../governance/entitlement-management-access-package-approval-policy.md) için farklı soru kümelerini, onaylayanlara onaylarımız erişim için ilgili bilgileri kullanabilmesi için yapılandırabilirsiniz. Örneğin, bir erişim paketinin satıcı erişimine yönelik olması amaçlanıyorsa, istek sahibine satıcı sözleşmesi numarası istenebilir. Tedarikçilere yönelik olarak tasarlanmış farklı bir erişim paketi, kaynak ülkesini isteyebilir.
 
-Self Servis Portalı kullanıyorsanız, kullanıcıların kaydoldukları kullanıcılar hakkında ek öznitelikler toplamak için [API bağlayıcılarını](../external-identities/api-connectors-overview.md) kullanabilirsiniz. Daha sonra bu öznitelikleri, erişim atamak için kullanabilirsiniz. Örneğin, kaydolma işlemi sırasında kendi üretici KIMLIKLERINI topladığınızda, bu özniteliği, söz konusu tedarikçinin bir gruba veya erişim paketine dinamik olarak atamak için kullanabilirsiniz. Azure portal özel öznitelikler oluşturabilir ve bunları self servis kaydolma Kullanıcı akışlarınızda kullanabilirsiniz. Ayrıca, [MICROSOFT Graph API](https://docs.microsoft.com/azure/active-directory-b2c/manage-user-accounts-graph-api)'sini kullanarak bu öznitelikleri okuyabilir ve yazabilirsiniz. 
+Self Servis Portalı kullanıyorsanız, kullanıcıların kaydoldukları kullanıcılar hakkında ek öznitelikler toplamak için [API bağlayıcılarını](../external-identities/api-connectors-overview.md) kullanabilirsiniz. Daha sonra bu öznitelikleri, erişim atamak için kullanabilirsiniz. Örneğin, kaydolma işlemi sırasında kendi üretici KIMLIKLERINI topladığınızda, bu özniteliği, söz konusu tedarikçinin bir gruba veya erişim paketine dinamik olarak atamak için kullanabilirsiniz. Azure portal özel öznitelikler oluşturabilir ve bunları self servis kaydolma Kullanıcı akışlarınızda kullanabilirsiniz. Ayrıca, [MICROSOFT Graph API](../../active-directory-b2c/manage-user-accounts-graph-api.md)'sini kullanarak bu öznitelikleri okuyabilir ve yazabilirsiniz. 
 
 ### <a name="troubleshoot-invitation-redemption-to-azure-ad-users"></a>Azure AD kullanıcılarına yönelik davet yeniden satın alma sorunlarını giderme
 
@@ -132,7 +132,7 @@ Konuk kullanıcılar için aşağıdaki kısıtlamaları öneririz.
 
 * **Azure Portal erişimini engelleyin. Nadir olarak gereken özel durumları** yapabilirsiniz. 
 
-   * Tüm konuk ve dış kullanıcıları içeren bir koşullu erişim ilkesi oluşturun ve [erişimi engellemek için bir ilke uygulayın](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management).
+   * Tüm konuk ve dış kullanıcıları içeren bir koşullu erişim ilkesi oluşturun ve [erişimi engellemek için bir ilke uygulayın](../../role-based-access-control/conditional-access-azure-management.md).
 
  
 
@@ -185,7 +185,7 @@ Varsayılan olarak takımlar dış erişime izin verir, bu da kuruluşun tüm d�
 
 ### <a name="direct-sharing-through-sharepoint-and-onedrive"></a>SharePoint ve OneDrive aracılığıyla doğrudan paylaşma
 
-SharePoint ve OneDrive aracılığıyla doğrudan paylaşım, yetkilendirme yönetimi işleminin dışındaki kullanıcıları ekleyebilirler. Bu yapılandırmalara derinlemesine bir bakış için bkz. [Microsoft ekipleri, SharePoint ve OneDrive iş Ile erişimi yönetme](9-secure-access-teams-sharepoint.md) . isterseniz, [kullanıcının kişisel OneDrive kullanımını da engelleyebilirsiniz](https://docs.microsoft.com/office365/troubleshoot/group-policy/block-onedrive-use-from-office) .
+SharePoint ve OneDrive aracılığıyla doğrudan paylaşım, yetkilendirme yönetimi işleminin dışındaki kullanıcıları ekleyebilirler. Bu yapılandırmalara derinlemesine bir bakış için bkz. [Microsoft ekipleri, SharePoint ve OneDrive iş Ile erişimi yönetme](9-secure-access-teams-sharepoint.md) . isterseniz, [kullanıcının kişisel OneDrive kullanımını da engelleyebilirsiniz](/office365/troubleshoot/group-policy/block-onedrive-use-from-office) .
 
 ### <a name="sending-documents-through-email"></a>E-posta ile belge gönderme
 
@@ -197,9 +197,9 @@ Kullanıcılarınız, belgeleri dış kullanıcılara e-posta ile gönderir. Duy
 
 Tasdiksiz uygulamaları yönetme hakkında daha fazla bilgi için bkz.:
 
-* [Bağlı uygulamaları yönetme](https://docs.microsoft.com/cloud-app-security/governance-actions)
+* [Bağlı uygulamaları yönetme](/cloud-app-security/governance-actions)
 
-* [Bir uygulamayı tasdikleme ve tasdiksiz etme.](https://docs.microsoft.com/cloud-app-security/governance-discovery)
+* [Bir uygulamayı tasdikleme ve tasdiksiz etme.](/cloud-app-security/governance-discovery)
 
  
 ### <a name="next-steps"></a>Sonraki adımlar

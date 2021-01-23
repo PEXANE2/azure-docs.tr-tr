@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c556940ace02f2e7bf0354e67d32df7c5c6714e
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: eb01a3e0fc5bc11a4d3de62b16aafb7dd308e34a
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032771"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724280"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory varsayılan kullanıcı izinleri nelerdir?
 Azure Active Directory'de (Azure AD) tüm kullanıcılara varsayılan olarak belirli izinler verilir. Kullanıcının erişimi, Kullanıcı türünden, [rol atamalarından](active-directory-users-assign-role-azure-portal.md)ve ayrı nesnelerin sahiplerinden oluşur. Bu makalede bu varsayılan izinler ve açıklanmakta ve üye ile konuk varsayılan değerleri karşılaştırılmaktadır. Varsayılan Kullanıcı izinleri yalnızca Azure AD 'deki Kullanıcı ayarları ' nda değiştirilebilir.
@@ -63,7 +63,7 @@ Konuk kullanıcılar için varsayılan izinler aşağıdaki yollarla kısıtlana
 
 İzin | Ayar açıklaması
 ---------- | ------------
-Konuklar Kullanıcı erişimi kısıtlamaları (Önizleme) | Bu seçeneğin Konuk kullanıcılara ayarlanması, üye kullanıcılara varsayılan olarak tüm üye Kullanıcı izinlerini veren **aynı erişime sahip olmalıdır** .<p>Bu seçeneğin **Konuk Kullanıcı erişimi olarak ayarlanması, kendi dizin nesnelerinin özellikleri ve üyelikleri ile kısıtlıdır,** konuk erişimini varsayılan olarak yalnızca kendi Kullanıcı profiline kısıtlar. Kullanıcı asıl adına, ObjectID 'ye veya görünen ada göre arama yapıldığında bile diğer kullanıcılara erişime izin verilmez. Gruplar üyelikleri de dahil olmak üzere grupların bilgilerine erişime artık izin verilmez.<p>**Not**: Bu ayar, Microsoft ekipleri gibi bazı Microsoft 365 hizmetlerde birleştirilmiş gruplara erişimi engellemez. Daha fazla bilgi için bkz. [Microsoft ekipleri konuk erişimi](https://docs.microsoft.com/MicrosoftTeams/guest-access) .<p>Konuk kullanıcılar, bu izin ayarlarından bağımsız olarak yönetici rollerine de eklenebilir.
+Konuklar Kullanıcı erişimi kısıtlamaları (Önizleme) | Bu seçeneğin Konuk kullanıcılara ayarlanması, üye kullanıcılara varsayılan olarak tüm üye Kullanıcı izinlerini veren **aynı erişime sahip olmalıdır** .<p>Bu seçeneğin **Konuk Kullanıcı erişimi olarak ayarlanması, kendi dizin nesnelerinin özellikleri ve üyelikleri ile kısıtlıdır,** konuk erişimini varsayılan olarak yalnızca kendi Kullanıcı profiline kısıtlar. Kullanıcı asıl adına, ObjectID 'ye veya görünen ada göre arama yapıldığında bile diğer kullanıcılara erişime izin verilmez. Gruplar üyelikleri de dahil olmak üzere grupların bilgilerine erişime artık izin verilmez.<p>**Not**: Bu ayar, Microsoft ekipleri gibi bazı Microsoft 365 hizmetlerde birleştirilmiş gruplara erişimi engellemez. Daha fazla bilgi için bkz. [Microsoft ekipleri konuk erişimi](/MicrosoftTeams/guest-access) .<p>Konuk kullanıcılar, bu izin ayarlarından bağımsız olarak yönetici rollerine de eklenebilir.
 Konuklar davet edebilir | Bu seçeneğin Evet olarak ayarlanması, konukların diğer konukları davet etmesine olanak tanır. Daha fazla bilgi için bkz. [B2B işbirliği Için temsilci davetleri](../external-identities/delegate-invitations.md#configure-b2b-external-collaboration-settings) .
 Üyeler davet edebilir | Bu seçeneğin Evet olarak ayarlanması, konuklarınızın yönetici olmayan üyelerine konukları davet etmesine izin verir. Daha fazla bilgi için bkz. [B2B işbirliği Için temsilci davetleri](../external-identities/delegate-invitations.md#configure-b2b-external-collaboration-settings) .
 Konuk davet eden rolündeki yöneticiler ve kullanıcılar davet edebilir | Bu seçeneğin Evet olarak ayarlanması, "konuk davet eden" rolündeki yöneticilerin ve kullanıcıların konukları davet etmesine izin verir. Evet olarak ayarlandığında, konuk davet eden rolündeki kullanıcılar, Üyeler ayar davet edebilmeksizin konukları davet edebilir. Daha fazla bilgi için bkz. [B2B işbirliği Için temsilci davetleri](../external-identities/delegate-invitations.md#assign-the-guest-inviter-role-to-a-user) .

@@ -13,16 +13,16 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba7b8ff2555fd7014cf16f66745721c6425ff868
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: b40918db03c260f899c36d306c892b787cc6371c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029532"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724900"
 ---
 # <a name="build-resilience-in-your-customer-identity-and-access-management-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile Müşteri Kimliğiniz ve erişim yönetiminde esnekliği oluşturun
 
-[Azure Active Directory (ad) B2C](https://docs.microsoft.com/azure/active-directory-b2c/overview) , kritik müşterilere yönelik uygulamalarınızı başarıyla başlatmanıza yardımcı olmak üzere tasarlanan bir müşteri kimliği ve erişim yönetimi (cıhar) platformudur. Hizmetlerimizin gereksinimlerinize göre ölçeklendirilmesine yardımcı olmak ve olası kesinti durumlarında esnekliği 'i geliştirmek üzere tasarlanan [esnekliği](https://azure.microsoft.com/blog/advancing-azure-active-directory-availability/) için birçok yerleşik özelliği sunuyoruz. Ayrıca, görev açısından kritik bir uygulama başlatırken, uygulamanızda çeşitli tasarım ve yapılandırma öğelerinin yanı sıra, kesinti veya başarısızlık senaryolarına yanıt olarak dayanıklı bir davranış almanızı sağlamak için uygulamanın Azure AD B2C içinde nasıl yapılandırıldığına göz önünde bulundurmanız önemlidir. Bu makalede, esnekliği artırmanıza yardımcı olacak en iyi uygulamalardan bazılarını ele alacağız.
+[Azure Active Directory (ad) B2C](../../active-directory-b2c/overview.md) , kritik müşterilere yönelik uygulamalarınızı başarıyla başlatmanıza yardımcı olmak üzere tasarlanan bir müşteri kimliği ve erişim yönetimi (cıhar) platformudur. Hizmetlerimizin gereksinimlerinize göre ölçeklendirilmesine yardımcı olmak ve olası kesinti durumlarında esnekliği 'i geliştirmek üzere tasarlanan [esnekliği](https://azure.microsoft.com/blog/advancing-azure-active-directory-availability/) için birçok yerleşik özelliği sunuyoruz. Ayrıca, görev açısından kritik bir uygulama başlatırken, uygulamanızda çeşitli tasarım ve yapılandırma öğelerinin yanı sıra, kesinti veya başarısızlık senaryolarına yanıt olarak dayanıklı bir davranış almanızı sağlamak için uygulamanın Azure AD B2C içinde nasıl yapılandırıldığına göz önünde bulundurmanız önemlidir. Bu makalede, esnekliği artırmanıza yardımcı olacak en iyi uygulamalardan bazılarını ele alacağız.
 
 Dayanıklı bir hizmet, kesintiler olmasına rağmen çalışmaya devam eden bir hizmettir. Şu şekilde hizmetinize esnekliği artırılmasına yardımcı olabilirsiniz:
 
@@ -49,3 +49,6 @@ Uygulamanızı geliştirirken, çözümünüzün kimlik bileşenleriyle uygulama
 - [Kimlik doğrulama altyapınızda esnekliği oluşturma](resilience-in-infrastructure.md)
 
 - [Uygulamalarınızda kimlik doğrulama ve yetkilendirme esnekliği artırın](resilience-app-development-overview.md)
+
+Azure AD B2C kullanarak esnek ve ölçeklenebilir akışlar oluşturmayı öğrenmek için bu videoyu izleyin.
+>[!Video https://www.youtube.com/embed/8f_Ozpw9yTs]

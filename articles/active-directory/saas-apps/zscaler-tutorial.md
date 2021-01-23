@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 77b2d41e28f39debea2d28ad8287e9ce2679d8ad
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 84c74d5c1452cf5945aa4f66c3ed3c6af48681b3
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538601"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726180"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler"></a>Öğretici: Zscaler ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -104,7 +104,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     f. **Kaydet**’e tıklayın.
 
     > [!NOTE]
-    > Azure AD 'de rolün nasıl yapılandırılacağını öğrenmek için lütfen [buraya](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui) tıklayın.
+    > Azure AD 'de rolün nasıl yapılandırılacağını öğrenmek için lütfen [buraya](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview) tıklayın.
 
 1. **SAML Ile tekli Sign-On ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -233,7 +233,7 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 * Zscaler oturum açma URL 'sine doğrudan gidin ve oturum akışını buradan başlatın.
 
-* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki Zscaler kutucuğuna tıkladığınızda, bu, Zscaler oturum açma URL 'sine yeniden yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki Zscaler kutucuğuna tıkladığınızda, bu, Zscaler oturum açma URL 'sine yeniden yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

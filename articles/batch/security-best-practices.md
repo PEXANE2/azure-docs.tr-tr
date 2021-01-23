@@ -3,12 +3,12 @@ title: Toplu güvenlik ve uyumluluk en iyi uygulamaları
 description: Azure Batch çözümlerinizle güvenliği geliştirmek için en iyi uygulamaları ve yararlı ipuçlarını öğrenin.
 ms.date: 12/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: b9732ffb810a1038a6f402a46fa8b809f180f0a8
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 6ec4a1d89ebaa9318986fc0d51e832652ba51683
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802295"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98723821"
 ---
 # <a name="batch-security-and-compliance-best-practices"></a>Toplu güvenlik ve uyumluluk en iyi uygulamaları
 
@@ -137,8 +137,8 @@ Batch işlem düğümlerinde varsayılan olarak iki disk vardır: bir işletim s
 
 Ek güvenlik için, şu Azure disk şifrelemesi olanaklarından birini kullanarak bu diskleri şifreleyin:
 
-- [Platform tarafından yönetilen anahtarlarla bekleyen yönetilen disk şifrelemesi](../virtual-machines/windows/disk-encryption.md#platform-managed-keys)
-- [Platform tarafından yönetilen anahtar kullanarak konakta şifreleme](../virtual-machines/windows/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
+- [Platform tarafından yönetilen anahtarlarla bekleyen yönetilen disk şifrelemesi](../virtual-machines/disk-encryption.md#platform-managed-keys)
+- [Platform tarafından yönetilen anahtar kullanarak konakta şifreleme](../virtual-machines/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
 - [Azure Disk Şifrelemesi](disk-encryption.md)
 
 ## <a name="securely-access-services-from-compute-nodes"></a>İşlem düğümlerinden hizmetlere güvenli bir şekilde erişin

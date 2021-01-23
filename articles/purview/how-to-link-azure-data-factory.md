@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/22/2020
-ms.openlocfilehash: 01af7b251c9ce3bfebb87016c85ea3efd9c0e8ac
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: dbd7937667a3c4d5af9f13e15cdd4ff2081241f0
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928775"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98723889"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Azure Data Factory ve Azure purview 'a bağlanma
 
@@ -99,27 +99,27 @@ Data Factory ile takip görünümü arasındaki tümleştirme, aşağıdaki böl
 
 | Veri depolama sistemi | Kaynak olarak desteklenir | Havuz olarak destekleniyor |
 | ------------------- | ------------------- | ----------------- |
-| ADLS 1. (JSON desteği yok) | Evet | Evet (yalnızca ikili olmayan kopya) |
-| ADLS 2. (JSON desteği yok) | Evet | Evet |
-| Azure Blob (JSON desteği yok) | Evet | Evet |
-| Azure Cosmos DB (SQL API) | Evet | Evet |
-| Azure Cosmos DB (Mongo API) | Evet | Evet |
-| Azure Bilişsel Arama | Evet | Evet |
-| Azure Veri Gezgini | Evet | Evet |
-| Maria DB için Azure veritabanı \* | Evet | Evet |
-| MYSQL için Azure veritabanı \* | Evet | Evet |
-| PostgreSQL için Azure veritabanı \* | Evet | Evet |
-| Azure Dosya Depolama | Evet | Evet |
-| Azure Tablo Depolama | Evet | Evet |
-| Azure SQL veritabanı \* | Evet | Evet |
-| Azure SQL MI \* | Evet | Evet |
-| Azure SYNAPSE Analytics (eski adıyla SQL DW) \* | Evet | Evet |
-| Şirket içi SQL Server (KııR gerekir) \* | Evet | Evet |
-| Amazon S3 | Evet | Evet |
-| Teradata | Evet | Evet |
-| SAP S4 Hana | Evet | Evet |
-| SAP ECC | Evet | Evet |
-| Hive | Evet | Evet |
+| ADLS 1. Nesil | Yes | Evet (yalnızca ikili olmayan kopya) |
+| ADLS 2. Nesil | Yes | Yes |
+| Azure Blob | Yes | Yes |
+| Azure Cosmos DB (SQL API) | Yes | Yes |
+| Azure Cosmos DB (Mongo API) | Yes | Yes |
+| Azure Bilişsel Arama | Yes | Yes |
+| Azure Veri Gezgini | Yes | Yes |
+| Maria DB için Azure veritabanı \* | Yes | Yes |
+| MYSQL için Azure veritabanı \* | Yes | Yes |
+| PostgreSQL için Azure veritabanı \* | Yes | Yes |
+| Azure Dosya Depolama | Yes | Evet |
+| Azure Tablo Depolama | Evet | Yes |
+| Azure SQL veritabanı \* | Yes | Yes |
+| Azure SQL MI \* | Yes | Yes |
+| Azure SYNAPSE Analytics (eski adıyla SQL DW) \* | Yes | Yes |
+| Şirket içi SQL Server (KııR gerekir) \* | Yes | Yes |
+| Amazon S3 | Yes | Evet |
+| Teradata | Evet | Yes |
+| SAP S4 Hana | Yes | Yes |
+| SAP ECC | Yes | Yes |
+| Hive | Yes | Yes |
 
 > [!Note]
 > Kökenini özelliği Data Factory kopyalama etkinliğinde belirli performans ek yüküne sahiptir. Veri Fabrikası bağlantıları kuran kullanıcılar için, purview 'da daha uzun süren belirli kopyalama işlerinin gözlemleyebilirsiniz. Genellikle etki, yok edilebilir değildir. Kopyalama işlerinin her zamanki gibi daha uzun sürmesi durumunda lütfen zaman karşılaştırmayla desteğe başvurun.
@@ -128,24 +128,24 @@ Data Factory ile takip görünümü arasındaki tümleştirme, aşağıdaki böl
 
 | Veri depolama sistemi | Desteklenir |
 | ------------------- | ------------------- | ----------------- |
-| ADLS 1. Nesil | Evet |
-| ADLS 2. Nesil | Evet |
-| Azure Blob | Evet |
-| Azure SQL veritabanı \* | Evet |
-| Azure SYNAPSE Analytics (eski adıyla SQL DW) \* | Evet |
+| ADLS 1. Nesil | Yes |
+| ADLS 2. Nesil | Yes |
+| Azure Blob | Yes |
+| Azure SQL veritabanı \* | Yes |
+| Azure SYNAPSE Analytics (eski adıyla SQL DW) \* | Yes |
 
 ### <a name="data-factory-execute-ssis-package-support"></a>SSIS paketi desteğini Data Factory Yürüt
 
 | Veri depolama sistemi | Desteklenir |
 | ------------------- | ------------------- | ----------------- |
-| Azure Blob | Evet |
-| ADLS 1. Nesil | Evet |
-| ADLS 2. Nesil | Evet |
-| Azure SQL veritabanı \* | Evet |
-| Azure SQL MI \*| Evet |
-| Azure SYNAPSE Analytics (eski adıyla SQL DW) \* | Evet |
-| Şirket içi SQL Server \* | Evet |
-| Azure Dosya Depolama | Evet |
+| Azure Blob | Yes |
+| ADLS 1. Nesil | Yes |
+| ADLS 2. Nesil | Yes |
+| Azure SQL veritabanı \* | Yes |
+| Azure SQL MI \*| Yes |
+| Azure SYNAPSE Analytics (eski adıyla SQL DW) \* | Yes |
+| Şirket içi SQL Server \* | Yes |
+| Azure Dosya Depolama | Yes |
 
 *\* SQL (Azure ve şirket içi) senaryolarında Azure purview, kökenini veya tarama için saklı yordamları veya betikleri desteklemez. Kökenini yalnızca tablo ve görünüm kaynaklarıyla sınırlandırılmıştır.*
 

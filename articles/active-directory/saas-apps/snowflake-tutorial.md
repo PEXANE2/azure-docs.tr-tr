@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/27/2020
 ms.author: jeedes
-ms.openlocfilehash: f516f51c2e059526b4e678f2779ef0ad059c74e7
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 1af0209265ec4945950120e80a83e19c8ab2eb4b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968560"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726293"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>Öğretici: kar tanesi ile Azure Active Directory tümleştirme
 
@@ -26,7 +26,7 @@ Bu öğreticide, kar ke 'ı Azure Active Directory (Azure AD) ile tümleştirmey
 * Kullanıcılarınızın Azure AD hesaplarıyla kar almak için otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini kar tanesi ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -184,7 +184,7 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 * Azure portal **Bu uygulamayı test et** ' e tıklayın ve SSO 'Yu ayarladığınız kar için otomatik olarak oturum açmış olmanız gerekir 
 
-Uygulamayı dilediğiniz modda test etmek için Microsoft My Apps ' i de kullanabilirsiniz. Uygulamalarım içindeki kar kutucuğunu tıklattığınızda, SP modunda yapılandırıldıysa, oturum açma akışını başlatmak için uygulama oturum açma sayfasına yönlendirilirsiniz ve ıDP modunda yapılandırıldıysa, SSO 'yu ayarladığınız kar için otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Uygulamayı dilediğiniz modda test etmek için Microsoft My Apps ' i de kullanabilirsiniz. Uygulamalarım içindeki kar kutucuğunu tıklattığınızda, SP modunda yapılandırıldıysa, oturum açma akışını başlatmak için uygulama oturum açma sayfasına yönlendirilirsiniz ve ıDP modunda yapılandırıldıysa, SSO 'yu ayarladığınız kar için otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -17,12 +17,12 @@ ms.date: 1/19/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c7d02b48d30fa558f8fd12f92705046dab74057
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: deab3460baf9c46e2a3073eb41b738b0e7ad586f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624244"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726310"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Azure Active Directory portalında raporları sağlama (Önizleme)
 
@@ -43,12 +43,12 @@ Bu konu, sağlama günlüklerine genel bir bakış sağlar. Bunlar gibi sorular�
 * Hangi kullanıcılar Adobe 'dan başarıyla kaldırıldı?
 * Workday 'den hangi kullanıcıların Active Directory başarıyla oluşturulduğu? 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="who-can-access-the-data"></a>Verilere kimler erişebilir?
 * Uygulama sahipleri, sahip oldukları uygulamalar için günlükleri görüntüleyebilir
 * Güvenlik Yöneticisi, güvenlik okuyucu, rapor okuyucu, uygulama Yöneticisi ve bulut uygulaması yönetici rolleri kullanıcıları
-* [Provisioninglogs iznine](https://docs.microsoft.com/azure/active-directory/roles/custom-enterprise-app-permissions#full-list-of-permissions) sahip özel bir roldeki kullanıcılar
+* [Provisioninglogs iznine](../roles/custom-enterprise-app-permissions.md#full-list-of-permissions) sahip özel bir roldeki kullanıcılar
 * Genel Yöneticiler
 
 
@@ -279,7 +279,7 @@ Artık, senaryonuza göre verileri ayrıştırtırabilirsiniz. Aşağıda birka�
 
 Sağlama günlüklerinde bulabileceğiniz hataların nasıl çözümleneceğini daha iyi anlamak için aşağıdaki tabloyu kullanın. Eksik olan herhangi bir hata kodu için, bu sayfanın en altındaki bağlantıyı kullanarak geri bildirim sağlayın. 
 
-|Hata Kodu|Description|
+|Hata Kodu|Açıklama|
 |---|---|
 |Çakışma, EntryConflict|Çakışan Kullanıcı hesabının eşleştirilmek ve üzerinde alınması gerekiyorsa, Azure AD 'de veya uygulamada çakışan öznitelik değerlerini düzeltin ya da eşleşen öznitelik yapılandırmanızı gözden geçirin. Eşleşen öznitelikleri yapılandırma hakkında daha fazla bilgi için aşağıdaki [belgeleri](../app-provisioning/customize-application-attributes.md) gözden geçirin.|
 |TooManyRequests|Hedef uygulama, aşırı yüklenmiş ve çok fazla istek aldığından kullanıcıyı güncelleştirme girişimini reddetti. Yapılacak bir şey yok. Bu deneme otomatik olarak kullanımdan kaldırılacak. Microsoft bu sorunla aynı zamanda bilgilendirildi.|

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cd782cdab625934fe60617142e5ac0baf756398
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 614b3f927dc22bc534168f8fe95cc2f97031b621
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80128753"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725532"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Dsregcmd komutunu kullanarak cihazların sorunlarını giderme
 
@@ -305,7 +305,7 @@ Bu bölümde, buluta katılmış bir cihazda gerçekleştirilen sağlamlık dene
 
 ## <a name="ngc-prerequisite-check"></a>NGC önkoşul denetimi
 
-Bu bölüm, Iş için Windows Hello (WHFB) sağlamaya yönelik önkoşul denetimlerini gerçekleştirir. 
+Bu bölümde, Iş için Windows Hello (WHFB) sağlama için önkoşul denetimleri gerçekleştirilir. 
 
 > [!NOTE]
 > Kullanıcı zaten WHFB 'yi başarıyla yapılandırdıysa dsregcmd/Status içinde NGC önkoşul denetimi ayrıntılarını göremeyebilirsiniz.

@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6da9f27e25fa5543f949716824f54af2b9f1ad1
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 12b5c95b67f8fada29914d3a8de559280e6145f8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132554"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724229"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory yenilikler nelerdir?
 
@@ -100,7 +100,7 @@ Artık yeni tümleştirilmiş uygulamalar için Kullanıcı hesapları oluşturm
 - [Dijital Süreç Otomasyonu için Bizagi Studio](../saas-apps/bizagi-studio-for-digital-process-automation-provisioning-tutorial.md)
 - [CybSafe](../saas-apps/cybsafe-provisioning-tutorial.md)
 - [GroupTalk](../saas-apps/grouptalk-provisioning-tutorial.md)
-- [PaperCut Cloud Print Management](/azure/active-directory/saas-apps/papercut-cloud-print-management-provisioning-tutorial)
+- [PaperCut Cloud Print Management](../saas-apps/papercut-cloud-print-management-provisioning-tutorial.md)
 - [Parsable](../saas-apps/parsable-provisioning-tutorial.md)
 - [Shopify Plus](../saas-apps/shopify-plus-provisioning-tutorial.md)
 
@@ -191,7 +191,7 @@ Uygulamanızı Azure AD uygulama galerisinde listelemek için buradaki ayrıntı
 **Hizmet kategorisi:** RAPORDAKI  
 **Ürün yeteneği:** Access Control
  
- [Temsilci kurumsal uygulama yönetimi Için özel RBAC rolleri](../users-groups-roles/roles-custom-available-permissions.md) artık genel önizlemede. Bu yeni izinler, uygulama kayıt yönetimi için özel rollerde derleme yapar ve bu, yöneticilerinize erişim için ayrıntılı denetim sağlar. Zaman içinde, Azure AD 'ye temsilci yönetiminin ek izinleri yayımlanacak.
+ [Temsilci kurumsal uygulama yönetimi Için özel RBAC rolleri](../roles/custom-available-permissions.md) artık genel önizlemede. Bu yeni izinler, uygulama kayıt yönetimi için özel rollerde derleme yapar ve bu, yöneticilerinize erişim için ayrıntılı denetim sağlar. Zaman içinde, Azure AD 'ye temsilci yönetiminin ek izinleri yayımlanacak.
 
 Bazı yaygın temsili senaryolar:
 - SAML tabanlı çoklu oturum açma uygulamalarına erişebilen kullanıcı ve grupların atanması
@@ -247,7 +247,7 @@ Artık yeni tümleştirilmiş uygulamalar için Kullanıcı hesapları oluşturm
 - [Tic-Tac mobil](../saas-apps/tic-tac-mobile-provisioning-tutorial.md)
 - [Visibly](../saas-apps/visibly-provisioning-tutorial.md)
 
-Daha fazla bilgi için bkz. [Azure AD Ile SaaS uygulamalarına Kullanıcı sağlamayı otomatikleştirme](../manage-apps/user-provisioning.md).
+Daha fazla bilgi için bkz. [Azure AD Ile SaaS uygulamalarına Kullanıcı sağlamayı otomatikleştirme](../app-provisioning/user-provisioning.md).
  
 ---
 
@@ -301,7 +301,7 @@ Bulut sağlama Aracısı genel önizlemede yayımlanmıştır ve artık Portal �
  
 Daha önce,/BitLocker uç noktası aracılığıyla BitLocker anahtarlarını kurtarabilirsiniz. Bu uç noktayı kullanımdan kaldıracağız ve müşteriler artık/ınformationprotectionaltında olan API 'YI kullanmaya başlamalıdır. 
 
-Bu değişiklikleri yansıtmak için belgelerdeki güncelleştirmeler için bkz. [BitLocker kurtarma API 'si](https://docs.microsoft.com/graph/api/resources/bitlockerrecoverykey?view=graph-rest-beta) .
+Bu değişiklikleri yansıtmak için belgelerdeki güncelleştirmeler için bkz. [BitLocker kurtarma API 'si](/graph/api/resources/bitlockerrecoverykey?view=graph-rest-beta) .
 
 ---
 
@@ -603,7 +603,7 @@ En iyi kullanıcı deneyimi için, güvenilir cihazlarda, konumlarda veya düş�
  
 Artık yeni tümleştirilmiş uygulamalar için Kullanıcı hesapları oluşturmayı, güncellemeyi ve silmeyi otomatik hale getirebilirsiniz:
 
-- [Coda](../saas-apps/coda-provisioning-tutorial.md)
+- [CODA](../saas-apps/coda-provisioning-tutorial.md)
 - [Cofense Alıcı Eşitleme](../saas-apps/cofense-provision-tutorial.md)
 - [InVision](../saas-apps/invision-provisioning-tutorial.md)
 - [myday](../saas-apps/myday-provision-tutorial.md)
@@ -1126,4 +1126,3 @@ Kuruluşunuz Azure MFA SDK 'sını kullanıyorsa, 30 Eylül 2020 ' e kadar geçi
 
 ---
 
- 

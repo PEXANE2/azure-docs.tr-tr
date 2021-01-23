@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40738f8fcb14c48ccfe3bc7869e5176c4ab63165
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 202f2190e68b89d790c628248ae89f0cb274ff76
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222339"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725220"
 ---
 # <a name="3-create-a-security-plan-for-external-access"></a>3. dış erişim için bir güvenlik planı oluşturun 
 
@@ -93,7 +93,7 @@ Oturum açma koşulları, [Azure AD koşullu erişim](../conditional-access/over
 | Yüksek riskli| Her zaman dış kullanıcılar için MFA gerektir |
 
 
-Bugün, [KIRACıNıZDAKI B2B kullanıcıları için Multi-Factor Authentication 'ı zorunlu](https://docs.microsoft.com/azure/active-directory/external-identities/b2b-tutorial-require-mfa)kılabilirsiniz. 
+Bugün, [KIRACıNıZDAKI B2B kullanıcıları için Multi-Factor Authentication 'ı zorunlu](../external-identities/b2b-tutorial-require-mfa.md)kılabilirsiniz. 
 
 **Kullanıcı ve cihaz tabanlı oturum açma koşulları**.
 
@@ -106,11 +106,11 @@ Bugün, [KIRACıNıZDAKI B2B kullanıcıları için Multi-Factor Authentication 
 
 Günümüzde, cihaz durumunu bir ilkeye giriş olarak kullanmak için cihazın kayıtlı olması veya kiracınıza katılması gerekir. 
 
-[Kimlik koruması risk tabanlı ilkeler](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-risk) kullanılabilir. Ancak, kullanıcıların giriş kiracısında sorunlar azaltılmalıdır.
+[Kimlik koruması risk tabanlı ilkeler](../conditional-access/howto-conditional-access-policy-risk.md) kullanılabilir. Ancak, kullanıcıların giriş kiracısında sorunlar azaltılmalıdır.
 
-[Ağ konumları](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-location)için, sahip olduğunuz HERHANGI bir IP adresi aralığına erişimi kısıtlayabilirsiniz. Yalnızca dış iş ortaklarının, kuruluşunuzda site üzerinde olduklarında bir uygulamaya erişmesini istiyorsanız bunu kullanabilirsiniz.
+[Ağ konumları](../conditional-access/howto-conditional-access-policy-location.md)için, sahip olduğunuz HERHANGI bir IP adresi aralığına erişimi kısıtlayabilirsiniz. Yalnızca dış iş ortaklarının, kuruluşunuzda site üzerinde olduklarında bir uygulamaya erişmesini istiyorsanız bunu kullanabilirsiniz.
 
-[Koşullu erişim ilkeleri hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/active-directory/conditional-access/overview).
+[Koşullu erişim ilkeleri hakkında daha fazla bilgi edinin](../conditional-access/overview.md).
 
 ## <a name="document-access-review-policies"></a>Belge erişimi gözden geçirme ilkeleri
 
@@ -126,13 +126,13 @@ Kaynaklara erişimi gözden geçirmeniz gerektiğinde ve dış kullanıcılar i�
 
 * **Yetkilendirme Yönetimi erişim gözden geçirmeleri**. Yetkilendirme Yönetimi 'ndeki işlevleri kullanarak
 
-   * [Erişim paketleri otomatik olarak sona erer](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-access-package-lifecycle-policy)ve bu nedenle dış Kullanıcı dahil edilen kaynaklara erişebilir.
+   * [Erişim paketleri otomatik olarak sona erer](../governance/entitlement-management-access-package-lifecycle-policy.md)ve bu nedenle dış Kullanıcı dahil edilen kaynaklara erişebilir.
 
-   * Erişim gözden geçirmeleri için [gerekli bir gözden geçirme sıklığı](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-access-reviews-create) ayarlayın.
+   * Erişim gözden geçirmeleri için [gerekli bir gözden geçirme sıklığı](../governance/entitlement-management-access-reviews-create.md) ayarlayın.
 
-   * Tüm kullanıcıları tek bir iş ortağından gruplamak için [bağlı kuruluşlar](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-organization) kullanıyorsanız, iş sahibi ve iş ortağı temsilcisiyle düzenli İncelemeleri zamanlayın.
+   * Tüm kullanıcıları tek bir iş ortağından gruplamak için [bağlı kuruluşlar](../governance/entitlement-management-organization.md) kullanıyorsanız, iş sahibi ve iş ortağı temsilcisiyle düzenli İncelemeleri zamanlayın.
 
-* **Grupları Microsoft 365**. Dış kullanıcıların davet ettiği Microsoft 365 Gruplar için bir [Grup süre sonu ilkesi](https://docs.microsoft.com/microsoft-365/solutions/microsoft-365-groups-expiration-policy?view=o365-worldwide) ayarlayın. 
+* **Grupları Microsoft 365**. Dış kullanıcıların davet ettiği Microsoft 365 Gruplar için bir [Grup süre sonu ilkesi](/microsoft-365/solutions/microsoft-365-groups-expiration-policy?view=o365-worldwide) ayarlayın. 
 
 * **Diğer seçenekler**. Dış kullanıcıların, yetkilendirme yönetim erişimi paketleri veya Microsoft 365 gruplarının dışında erişimi varsa, hesapların ne zaman etkin hale getirilmeli veya silinmeleri gerektiğini gözden geçirmek için iş sürecini ayarlayın. Örneğin:
 
@@ -146,9 +146,9 @@ Kaynaklara erişimi gözden geçirmeniz gerektiğinde ve dış kullanıcılar i�
 
 Ne erişimi denetlemek istediğinize, bu varlıkların ortak erişim için nasıl gruplanacağına ve gerekli oturum açma ve erişim gözden geçirme ilkelerine sahip olduğunuza göre, planınızı nasıl gerçekleştireceğinize karar verebilirsiniz. 
 
-Örneğin, [Yetkilendirme Yönetimi](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview)gibi bazı işlevler yalnızca bir Azure AD Premium 2 (P2) lisanslarıyla kullanılabilir. Microsoft 365 E5 ve Office 365 E5 lisansları Azure AD P2 lisanslarını içerir. 
+Örneğin, [Yetkilendirme Yönetimi](../governance/entitlement-management-overview.md)gibi bazı işlevler yalnızca bir Azure AD Premium 2 (P2) lisanslarıyla kullanılabilir. Microsoft 365 E5 ve Office 365 E5 lisansları Azure AD P2 lisanslarını içerir. 
 
-Office 365 ve Azure AD Microsoft 365 'nin diğer birleşimleri, dış kullanıcıları yönetmeye yönelik bazı işlevleri de etkinleştirir. Daha fazla bilgi için bkz. [Information Protection](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-365-security-compliance-licensing-guidance) .
+Office 365 ve Azure AD Microsoft 365 'nin diğer birleşimleri, dış kullanıcıları yönetmeye yönelik bazı işlevleri de etkinleştirir. Daha fazla bilgi için bkz. [Information Protection](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-365-security-compliance-licensing-guidance) .
 
 > [!NOTE]
 > Lisanslar Kullanıcı başına. Bu nedenle, tüm kullanıcılar için bu lisansları etkinleştirmeden Yöneticiler ve iş sahipleri için erişim denetimi, Azure AD P2 veya Microsoft 365 E5 düzeyinde dahil olmak üzere belirli kullanıcılara sahip olabilirsiniz. İlk 50.000 dış kullanıcınız ücretsizdir. Diğer iç kullanıcılarınız için P2 lisanslarını etkinleştirmezseniz, erişim paketleri gibi yetkilendirme yönetimi işlevlerini kullanamazlar. 
@@ -180,7 +180,7 @@ Azure AD P2 ve Microsoft 365 E5, güvenlik ve idare araçlarının eksiksiz pake
 
 ### <a name="entitlement-management"></a>Yetkilendirme Yönetimi 
 
-[Yetkilendirme Yönetimi erişim paketleri](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-access-package-create) , gruplara ve takımlara, uygulamalara ve SharePoint sitelerine erişimi sağlamayı ve sağlamayı sağlamayı etkinleştirir. Hangi bağlı kuruluşların erişimine izin verileceğini, self servis isteklerine izin verilip verilmeyeceğini ve erişim vermek için hangi onay iş akışlarının (varsa) gerekli olduğunu tanımlayabilirsiniz. Erişimin gerekenden daha uzun süre kalmemesini sağlamak için, her bir erişim paketine yönelik süre sonu ilkelerini ve erişim incelemelerini tanımlayabilirsiniz. 
+[Yetkilendirme Yönetimi erişim paketleri](../governance/entitlement-management-access-package-create.md) , gruplara ve takımlara, uygulamalara ve SharePoint sitelerine erişimi sağlamayı ve sağlamayı sağlamayı etkinleştirir. Hangi bağlı kuruluşların erişimine izin verileceğini, self servis isteklerine izin verilip verilmeyeceğini ve erişim vermek için hangi onay iş akışlarının (varsa) gerekli olduğunu tanımlayabilirsiniz. Erişimin gerekenden daha uzun süre kalmemesini sağlamak için, her bir erişim paketine yönelik süre sonu ilkelerini ve erişim incelemelerini tanımlayabilirsiniz. 
 
  
 

@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: chenyl
-ms.openlocfilehash: 33df4410b9dd82fd0b1c732eb03ab5e0e77e9869
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 6752a9564dc0d9351d1c21f5be14eb626186ac0d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763124"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724073"
 ---
 # <a name="upstream-settings"></a>Yukarı akış ayarları
 
@@ -40,7 +40,7 @@ Farklı desenleri desteklemek için URL 'YI parametreleştirebilirsiniz. Öncede
 |alan| Bir kategori aşağıdaki değerlerden biri olabilir: <ul><li>**Bağlantılar**: bağlantı ömrü olayları. İstemci bağlantısı bağlandığında veya bağlantısı kesildiğinde tetiklenir. Bağlı ve bağlantısı kesilmiş olayları içerir.</li><li>**mesajlar**: istemciler bir hub yöntemi çağıryüklerken tetiklenir. **Bağlantılar** kategorisinden hariç olmak üzere diğer tüm olayları içerir.</li></ul>|
 |olay| **İletiler** kategorisi için, bir olay, istemcilerin gönderdikleri bir [çağırma iletisindeki](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding) hedeftir. **Bağlantılar** kategorisi için yalnızca *bağlı* ve *bağlantısı kesik* kullanılır.|
 
-Bu önceden tanımlanmış parametreler, URL modelinde kullanılabilir. Yukarı akış URL 'sini değerlendirirken Parametreler belirtilen değerle değiştirilmelidir. Örnek: 
+Bu önceden tanımlanmış parametreler, URL modelinde kullanılabilir. Yukarı akış URL 'sini değerlendirirken Parametreler belirtilen değerle değiştirilmelidir. Örneğin: 
 ```
 http://host.com/{hub}/api/{category}/{event}
 ```
@@ -59,7 +59,7 @@ Yukarı akış URL 'SI, bekleyen şifreleme değildir. Hassas bilgileriniz varsa
 
 1. Sistem tarafından atanan bir kimlik veya Kullanıcı tarafından atanan kimlik ekleyin. Bkz. [Azure portalında yönetilen kimlik ekleme](./howto-use-managed-identity.md#add-a-system-assigned-identity)
 
-2. Key Vault erişim ilkelerinde yönetilen kimlik için gizli okuma izni verin. Bkz [. Azure Portal kullanarak Key Vault erişim Ilkesi atama](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
+2. Key Vault erişim ilkelerinde yönetilen kimlik için gizli okuma izni verin. Bkz [. Azure Portal kullanarak Key Vault erişim Ilkesi atama](../key-vault/general/assign-access-policy-portal.md)
 
 3. Hassas metninizi, `{@Microsoft.KeyVault(SecretUri=<secret-identity>)}` yukarı akış URL 'Si deseninin sözdizimi ile değiştirin.
 
@@ -146,7 +146,7 @@ POST
 |X-ASRS-Kullanıcı talepleri |İstemci bağlantısının talep grubu.|
 |X-ASRS-Kullanıcı kimliği |İletiyi gönderen istemcinin kullanıcı kimliği.|
 |X-ASRS-Client-Query |İstemciler hizmete bağlandıklarında isteğin sorgusu.|
-|Kimlik doğrulaması |Kullanırken isteğe bağlı bir belirteç `ManagedIdentity` . |
+|Kimlik Doğrulaması |Kullanırken isteğe bağlı bir belirteç `ManagedIdentity` . |
 
 ### <a name="request-body"></a>İstek gövdesi
 
@@ -170,7 +170,7 @@ Content-Type: Application/JSON
 |---------|---------|---------|
 |Invocationıd |string | Bir çağrı iletisini temsil eden isteğe bağlı bir dize. [Etkinleştirmeleri](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocations)içindeki ayrıntıları bulun.|
 |Hedef |string | Olay ile aynı ve bir [çağırma iletisindeki](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)hedefle aynı. |
-|Arguments |Nesne dizisi |İçinde başvurulan yönteme uygulanacak bağımsız değişkenleri içeren bir dizi `Target` . |
+|Bağımsız değişkenler |Nesne dizisi |İçinde başvurulan yönteme uygulanacak bağımsız değişkenleri içeren bir dizi `Target` . |
 
 ### <a name="signature"></a>İmza
 

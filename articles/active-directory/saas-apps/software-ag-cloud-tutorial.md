@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/09/2020
 ms.author: jeedes
-ms.openlocfilehash: f6f56958fb63e73e254a45e7cf8ad457be8269ef
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: c2a2446da0e1ccf1b3dab88fe898b179291ddaba
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607652"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726176"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-software-ag-cloud"></a>Öğretici: Software AG bulutu ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -155,6 +155,4 @@ Microsoft Azure, yazılım AG bulutu 'nda bir sağlayıcı olarak yapılandırı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Software AG bulutu 'nı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+Software AG bulutu 'nı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).

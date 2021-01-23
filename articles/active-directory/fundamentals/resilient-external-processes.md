@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c96856c988cae891e64ddf460d61851102e4666c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 58ef522f5b048db0ef120625d9e894c8e14c070e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919817"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724416"
 ---
 # <a name="resilient-interfaces-with-external-processes"></a>Dış işlemlerle esnek arabirimler
 
@@ -28,7 +28,7 @@ Bu makalede, Kullanıcı yolculuğunda yeniden yapılan API 'Lerin nasıl planla
 
 ## <a name="ensure-correct-placement-of-the-apis"></a>API 'lerin doğru yerleştirmesini sağlayın
 
-Kimlik deneyimi çerçevesi (ıEF) ilkeleri, bir [RESTAN API teknik profili](https://docs.microsoft.com/azure/active-directory-b2c/restful-technical-profile)kullanarak bir dış sistemi çağırmanızı sağlar. Dış sistemler ıEF çalışma zamanı ortamı tarafından denetlenmez ve olası bir hata noktasıdır.
+Kimlik deneyimi çerçevesi (ıEF) ilkeleri, bir [RESTAN API teknik profili](../../active-directory-b2c/restful-technical-profile.md)kullanarak bir dış sistemi çağırmanızı sağlar. Dış sistemler ıEF çalışma zamanı ortamı tarafından denetlenmez ve olası bir hata noktasıdır.
 
 ### <a name="how-to-manage-external-systems-using-apis"></a>API 'Leri kullanarak dış sistemleri yönetme
 
@@ -38,11 +38,11 @@ Kimlik deneyimi çerçevesi (ıEF) ilkeleri, bir [RESTAN API teknik profili](htt
 
 - Mümkün olduğunda önceden kimliği doğrulanmış yoldan API çağrılarını kaldırın. Bu durumda, API 'lerinizin önünde hizmet reddi (DoS) ve dağıtılmış hizmet reddi (DDoS) saldırıları için katı korumalar yerleştirmeniz gerekir. Saldırganlar, oturum açma sayfasını yükleyebilir ve API 'nizi DoS saldırılarına ve uygulamanızı Cripple. Örneğin, oturum açma ortamınızda CAPTCHA 'yı kullanarak kaydolma akışı yardımcı olabilir.
 
-- [Yerleşik kaydolma Kullanıcı akışının API bağlayıcılarını,](https://docs.microsoft.com/azure/active-directory-b2c/api-connectors-overview) bir kimlik sağlayıcısıyla oturum açtıktan veya Kullanıcı oluşturmadan önce Web API 'leriyle tümleştirilebilen her yerde kullanın. Kullanıcı akışları zaten kapsamlı olarak test edildiğinden, büyük olasılıkla Kullanıcı akış düzeyinde işlevsel, performans veya ölçek testi gerçekleştirmeniz gerekmez. Uygulamalarınızın işlevselliği, performansı ve ölçeği için yine de test etmeniz gerekir.
+- [Yerleşik kaydolma Kullanıcı akışının API bağlayıcılarını,](../../active-directory-b2c/api-connectors-overview.md) bir kimlik sağlayıcısıyla oturum açtıktan veya Kullanıcı oluşturmadan önce Web API 'leriyle tümleştirilebilen her yerde kullanın. Kullanıcı akışları zaten kapsamlı olarak test edildiğinden, büyük olasılıkla Kullanıcı akış düzeyinde işlevsel, performans veya ölçek testi gerçekleştirmeniz gerekmez. Uygulamalarınızın işlevselliği, performansı ve ölçeği için yine de test etmeniz gerekir.
 
-- Azure AD Restsize API [Teknik profilleri](https://docs.microsoft.com/azure/active-directory-b2c/restful-technical-profile) , herhangi bir önbelleğe alma davranışı sağlamaz. Bunun yerine, yeniden deneme mantığı ve ilke içinde yerleşik bir zaman aşımı uygular.
+- Azure AD Restsize API [Teknik profilleri](../../active-directory-b2c/restful-technical-profile.md) , herhangi bir önbelleğe alma davranışı sağlamaz. Bunun yerine, yeniden deneme mantığı ve ilke içinde yerleşik bir zaman aşımı uygular.
 
-- Veri yazma ihtiyacı olan API 'Ler için bir görevi bir arka plan çalışanı tarafından yürütülen bu görevlere sahip olacak şekilde sıraya koyun. [Azure Kuyrukları](https://docs.microsoft.com/azure/storage/queues/storage-queues-introduction) gibi hizmetler kullanılabilir. Bu, API 'nin ilke yürütme performansını verimli bir şekilde artırarak dönmesini sağlar.  
+- Veri yazma ihtiyacı olan API 'Ler için bir görevi bir arka plan çalışanı tarafından yürütülen bu görevlere sahip olacak şekilde sıraya koyun. [Azure Kuyrukları](../../storage/queues/storage-queues-introduction.md) gibi hizmetler kullanılabilir. Bu, API 'nin ilke yürütme performansını verimli bir şekilde artırarak dönmesini sağlar.  
 
 ## <a name="api-error-handling"></a>API hata işleme
 
@@ -50,11 +50,11 @@ API 'Ler Azure AD B2C sistem dışında yaşar, teknik profilde doğru hata işl
 
 ### <a name="how-to-gracefully-handle-api-errors"></a>API hatalarını dikkatlice işleme
 
-- Bir API çeşitli nedenlerle başarısız olabilir, uygulamanızı bu hatalara karşı dayanıklı hale getirir. API isteği tamamlayamadıysanız [BIR http 4XX hata Iletisi döndürür](https://docs.microsoft.com/azure/active-directory-b2c/restful-technical-profile#returning-validation-error-message) . Azure AD B2C ilkesinde, API 'nin kullanım dışı olduğunu düzgün bir şekilde işlemeyi deneyin, belki de daha az bir deneyim işleyebilir.
+- Bir API çeşitli nedenlerle başarısız olabilir, uygulamanızı bu hatalara karşı dayanıklı hale getirir. API isteği tamamlayamadıysanız [BIR http 4XX hata Iletisi döndürür](../../active-directory-b2c/restful-technical-profile.md#returning-validation-error-message) . Azure AD B2C ilkesinde, API 'nin kullanım dışı olduğunu düzgün bir şekilde işlemeyi deneyin, belki de daha az bir deneyim işleyebilir.
 
-- [Geçici hataları sorunsuz](https://docs.microsoft.com/azure/active-directory-b2c/restful-technical-profile#error-handling)bir şekilde işleyin. Yenilenmiş API profili, çeşitli [devre kesicileri](https://docs.microsoft.com/azure/architecture/patterns/circuit-breaker)için hata mesajlarını yapılandırmanıza olanak tanır.
+- [Geçici hataları sorunsuz](../../active-directory-b2c/restful-technical-profile.md#error-handling)bir şekilde işleyin. Yenilenmiş API profili, çeşitli [devre kesicileri](/azure/architecture/patterns/circuit-breaker)için hata mesajlarını yapılandırmanıza olanak tanır.
 
-- Sürekli tümleştirme/sürekli teslim (CICD) proaktif olarak izleme ve kullanma, [Teknik profil altyapısı](https://docs.microsoft.com/azure/active-directory-b2c/restful-technical-profile)tarafından kullanılan parolalar ve SERTIFIKALAR gibi API erişimi kimlik bilgilerini döndürün.
+- Sürekli tümleştirme/sürekli teslim (CICD) proaktif olarak izleme ve kullanma, [Teknik profil altyapısı](../../active-directory-b2c/restful-technical-profile.md)tarafından kullanılan parolalar ve SERTIFIKALAR gibi API erişimi kimlik bilgilerini döndürün.
 
 ## <a name="api-management---best-practices"></a>API yönetimi-en iyi uygulamalar
 
@@ -64,7 +64,7 @@ REST API 'Leri dağıtırken ve yeniden elde edilen teknik profili yapılandırd
 
 - API Management (APıM), API 'lerinizi yayımlar, yönetir ve analiz eder. APıM, arka uç hizmetlerine ve mikro hizmetlere güvenli erişim sağlamak için kimlik doğrulamasını da işler. API dağıtımlarını, önbelleğe almayı ve yük dengelemeyi ölçeklendirmek için bir API ağ geçidi kullanın.
 
-- Öneri, her API için birden çok kez çağrı yapmak ve [bir Azure APIM API 'sini güvenli hale](https://docs.microsoft.com/azure/active-directory-b2c/secure-api-management?tabs=app-reg-ga)getirmek yerine Kullanıcı yolculuğunun başlangıcında doğru belirteci almak içindir.
+- Öneri, her API için birden çok kez çağrı yapmak ve [bir Azure APIM API 'sini güvenli hale](../../active-directory-b2c/secure-api-management.md?tabs=app-reg-ga)getirmek yerine Kullanıcı yolculuğunun başlangıcında doğru belirteci almak içindir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

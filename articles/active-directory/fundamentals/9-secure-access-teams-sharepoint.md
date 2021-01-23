@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18036644dc4df51bfacc5019f70ae7694757f753
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 218208891cccb4f606a574a9c1c09f30c4ac0b11
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222250"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725087"
 ---
 # <a name="secure-external-access-to-microsoft-teams-sharepoint-and-onedrive-for-business"></a>Microsoft ekiplerine, SharePoint 'e ve OneDrive Iş 'e güvenli dış erişim 
 
@@ -77,7 +77,7 @@ Konuk davet eden rolündeki yöneticilerin ve kullanıcıların davet edilmesini
 
 ## <a name="govern-access-in-teams"></a>Ekiplere erişimi yönetir
 
-[Takımlar harici kullanıcılar (kuruluşunuzun dışındaki herkes) ve Konuk kullanıcılar (Konuk hesapları olan) arasında farklılık](https://docs.microsoft.com/microsoftteams/communicate-with-users-from-other-organizations?WT.mc_id=TeamsAdminCenterCSH)gösterir. Kurumsal çapta ayarlar altında [takımlar yönetici portalında](https://admin.teams.microsoft.com/company-wide-settings/external-communications) işbirliği ayarını yönetirsiniz. 
+[Takımlar harici kullanıcılar (kuruluşunuzun dışındaki herkes) ve Konuk kullanıcılar (Konuk hesapları olan) arasında farklılık](/microsoftteams/communicate-with-users-from-other-organizations?WT.mc_id=TeamsAdminCenterCSH%e2%80%8b)gösterir. Kurumsal çapta ayarlar altında [takımlar yönetici portalında](https://admin.teams.microsoft.com/company-wide-settings/external-communications) işbirliği ayarını yönetirsiniz. 
 
 > [!NOTE]
 > Dış kimlikler işbirliği ayarları Azure Active Directory etkin izinleri denetler. Ekipteki kısıtlamaları artırabilir, ancak bunları Azure AD 'de ayarlandıklarından azaltamazsınız.
@@ -88,13 +88,13 @@ Konuk davet eden rolündeki yöneticilerin ve kullanıcıların davet edilmesini
 
 Ekiplerde dış erişimin yönetilmesi hakkında daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın.
 
-* [Microsoft ekiplerinde dış erişimi yönetme](https://docs.microsoft.com/microsoftteams/manage-external-access)
+* [Microsoft ekiplerinde dış erişimi yönetme](/microsoftteams/manage-external-access)
 
-* [Microsoft 365 kimlik modelleri ve Azure Active Directory](https://docs.microsoft.com/microsoft-365/enterprise/about-microsoft-365-identity?view=o365-worldwide)
+* [Microsoft 365 kimlik modelleri ve Azure Active Directory](/microsoft-365/enterprise/about-microsoft-365-identity?view=o365-worldwide)
 
-* [Microsoft ekipleri için kimlik modelleri ve kimlik doğrulaması](https://docs.microsoft.com/MicrosoftTeams/identify-models-authentication)
+* [Microsoft ekipleri için kimlik modelleri ve kimlik doğrulaması](/MicrosoftTeams/identify-models-authentication)
 
-* [Microsoft ekipleri için duyarlılık etiketleri](https://docs.microsoft.com/MicrosoftTeams/sensitivity-labels)
+* [Microsoft ekipleri için duyarlılık etiketleri](/MicrosoftTeams/sensitivity-labels)
 
 ## <a name="govern-access-in-sharepoint-and-onedrive"></a>SharePoint ve OneDrive 'da erişimi yönetir
 
@@ -102,9 +102,9 @@ SharePoint yöneticileri işbirliği için birçok ayarı vardır. Şirket genel
 
 ### <a name="integrating-sharepoint-and-one-drive-with-azure-ad-b2b"></a>Azure AD B2B ile SharePoint ve tek sürücülü tümleştirme
 
-Dış işbirliğini yönetmek için genel stratejinizin bir parçası olarak, [SharePoint ve OneDrive tümleştirmesinin Azure AD B2B Ile önizlemesini etkinleştirmenizi](https://docs.microsoft.com/sharepoint/sharepoint-azureb2b-integration-preview) öneririz.
+Dış işbirliğini yönetmek için genel stratejinizin bir parçası olarak, [SharePoint ve OneDrive tümleştirmesinin Azure AD B2B Ile önizlemesini etkinleştirmenizi](/sharepoint/sharepoint-azureb2b-integration-preview) öneririz.
 
-Azure AD B2B, konuk kullanıcıların kimlik doğrulaması ve yönetimi sağlar. SharePoint ve OneDrive tümleştirmesi sayesinde, dosyaların, klasörlerin, liste öğelerinin, belge kitaplıklarının ve sitelerin dışarıdan paylaşılması için [Azure AD B2B tek seferlik geçiş kodlarını](https://docs.microsoft.com/azure/active-directory/external-identities/one-time-passcode) kullanılır. Bu özellik, var olan [güvenli dış paylaşım alıcısı deneyiminden](https://docs.microsoft.com/sharepoint/what-s-new-in-sharing-in-targeted-release)yükseltilen bir deneyim sağlar.
+Azure AD B2B, konuk kullanıcıların kimlik doğrulaması ve yönetimi sağlar. SharePoint ve OneDrive tümleştirmesi sayesinde, dosyaların, klasörlerin, liste öğelerinin, belge kitaplıklarının ve sitelerin dışarıdan paylaşılması için [Azure AD B2B tek seferlik geçiş kodlarını](../external-identities/one-time-passcode.md) kullanılır. Bu özellik, var olan [güvenli dış paylaşım alıcısı deneyiminden](/sharepoint/what-s-new-in-sharing-in-targeted-release)yükseltilen bir deneyim sağlar.
 
 > [!NOTE]
 > Azure AD B2B tümleştirmesi için Önizlemeyi etkinleştirirseniz, SharePoint ve OneDrive paylaşımı, **Üyeler davet edebilir** ve **konuklarınız davet** edebilir.
@@ -171,9 +171,9 @@ Herhangi bir bağlantıyı etkinleştirmenizi önermeyiz. Bunu yaparsanız, bir 
 
 SharePoint 'e dış erişimi yönetmek hakkında daha fazla bilgi edinmek için aşağıdakilere bakın:
 
-* [SharePoint dış paylaşımına genel bakış](https://docs.microsoft.com/sharepoint/external-sharing-overview)
+* [SharePoint dış paylaşımına genel bakış](/sharepoint/external-sharing-overview)
 
-* [Azure AD B2B ile SharePoint ve OneDrive tümleştirmesi](https://docs.microsoft.com/sharepoint/sharepoint-azureb2b-integration-preview)
+* [Azure AD B2B ile SharePoint ve OneDrive tümleştirmesi](/sharepoint/sharepoint-azureb2b-integration-preview)
 
 #### <a name="next-steps"></a>Sonraki adımlar
 

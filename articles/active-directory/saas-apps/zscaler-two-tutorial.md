@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 971c093363ddbb4cbc6622be40479a108c16116f
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 8c3d76f24cce860538dc3bd5dcf29b59708bdb5d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936524"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726289"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-two"></a>Öğretici: Zscaler Iki ile tümleştirme Azure Active Directory
 
@@ -88,7 +88,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 6. Zscaler, yukarıdakine ek olarak, SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde AŞAĞıDAKI tabloda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin:
     
-    | Ad | Kaynak özniteliği |
+    | Name | Kaynak özniteliği |
     | ---------| ------------ |
     | Üyesi | Kullanıcı. atandroles |
 
@@ -109,7 +109,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     f. **Kaydet**’e tıklayın.
 
     > [!NOTE]
-    > Azure AD 'de rolün nasıl yapılandırılacağını öğrenmek için lütfen [buraya](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui) tıklayın.
+    > Azure AD 'de rolün nasıl yapılandırılacağını öğrenmek için lütfen [buraya](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview) tıklayın.
 
 7. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
@@ -247,7 +247,7 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 * Zscaler 'da doğrudan oturum açma URL 'sine gidin ve oturum akışını buradan başlatın.
 
-* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki Zscaler kutucuğunu tıklattığınızda, bu, Zscaler Iki oturum açma URL 'sine yeniden yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki Zscaler kutucuğunu tıklattığınızda, bu, Zscaler Iki oturum açma URL 'sine yeniden yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

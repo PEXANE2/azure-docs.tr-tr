@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
-ms.openlocfilehash: be966a651df0c896ac7e1973d7783bb7fb686be3
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 3a02876234d43df2e98a3a4e60453fc3f1f74ef6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676497"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724178"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Azure hizmetlerinin sunucuya erişmesine izin vermeden bir Azure SQL veritabanını içeri veya dışarı aktarma
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ Bu makalede, *Azure hizmetlerinin* sunucuda *devre dışı* olarak AYARLANDıĞ�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/)’ında oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 ## <a name="create-the-azure-virtual-machine"></a>Azure sanal makinesini oluşturma
 
@@ -46,22 +46,22 @@ Aşağıdaki adımlarda, Uzak Masaüstü bağlantısı kullanarak sanal makineni
 
    ![Ekran görüntüsünde, Bağlan düğmesine sahip bir sanal makineye genel bakış sayfası gösterilir.](./media/database-import-export-azure-services-off/vm.png)  
 
-2. **Bağlan** ’ı seçin.
+2. **Bağlan**’ı seçin.
 
    Bir Uzak Masaüstü Protokolü dosya (. rdp dosyası) formu, sanal makinenin genel IP adresi ve bağlantı noktası numarasıyla birlikte görüntülenir.
 
    ![RDP formu](./media/database-import-export-azure-services-off/rdp.png)  
 
-3. **RDP Dosyasını İndir** ’i seçin.
+3. **RDP Dosyasını İndir**’i seçin.
 
    > [!NOTE]
    > Sanal makinenize bağlanmak için SSH de kullanabilirsiniz.
 
 4. **Sanal makine bağlantısı** formunu kapatın.
 5. VM'nize bağlanmak için indirilen RDP dosyasını açın.
-6. İstendiğinde, **Bağlan** ' ı seçin. Mac bilgisayarlarda, Mac App Store’dan bu [Uzak Masaüstü İstemcisi](https://apps.apple.com/app/microsoft-remote-desktop-10/id1295203466?mt=12) gibi bir RDP istemcisi indirmeniz gerekir.
+6. İstendiğinde, **Bağlan**' ı seçin. Mac bilgisayarlarda, Mac App Store’dan bu [Uzak Masaüstü İstemcisi](https://apps.apple.com/app/microsoft-remote-desktop-10/id1295203466?mt=12) gibi bir RDP istemcisi indirmeniz gerekir.
 
-7. Sanal makineyi oluştururken belirttiğiniz kullanıcı adını ve parolayı girip **Tamam** ' ı seçin.
+7. Sanal makineyi oluştururken belirttiğiniz kullanıcı adını ve parolayı girip **Tamam**' ı seçin.
 
 8. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Bağlantıya devam etmek için **Evet** ' i veya **devam et** ' i seçin.
 
@@ -77,7 +77,7 @@ Sanal makinenin genel IP adresini sunucunun güvenlik duvarına ekleyin.
 
 Aşağıdaki adımlarda, sanal makinenizin genel IP adresi için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur ve sanal makine bağlantısı etkinleştirilir.
 
-1. Sol taraftaki menüden **SQL veritabanları** ' nı seçin ve ardından **SQL veritabanları** sayfasında veritabanınızı seçin. Veritabanınızın genel bakış sayfası açılır ve tam sunucu adı (örneğin, **ServerName.Database.Windows.net** ) görüntülenerek daha fazla yapılandırma seçeneği sunulur.
+1. Sol taraftaki menüden **SQL veritabanları** ' nı seçin ve ardından **SQL veritabanları** sayfasında veritabanınızı seçin. Veritabanınızın genel bakış sayfası açılır ve tam sunucu adı (örneğin, **ServerName.Database.Windows.net**) görüntülenerek daha fazla yapılandırma seçeneği sunulur.
 
 2. Sunucunuza ve veritabanlarına bağlanırken kullanmak için bu tam sunucu adını kopyalayın.
 
@@ -89,7 +89,7 @@ Aşağıdaki adımlarda, sanal makinenizin genel IP adresi için sunucu düzeyin
 
 4. Sanal makinenizin genel IP adresini yeni bir sunucu düzeyi IP güvenlik duvarı kuralına eklemek için araç çubuğunda **istemci IP 'Si Ekle** ' yi seçin. Sunucu düzeyinde bir IP güvenlik duvarı kuralı, tek bir IP adresi veya IP adresi aralığı için 1433 bağlantı noktasını açabilir.
 
-5. **Kaydet** ’i seçin. Sunucuda 1433 numaralı bağlantı noktasını açan sanal makinenizin genel IP adresi için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur.
+5. **Kaydet**’i seçin. Sunucuda 1433 numaralı bağlantı noktasını açan sanal makinenizin genel IP adresi için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur.
 
 6. **Güvenlik duvarı ayarları** sayfasını kapatın.
 
@@ -147,7 +147,7 @@ En iyi performansı elde etmek için Azure dosyaları 'nı kullanın. SqlPackage
 
 Maliyeti azaltmak için, Azure Bloblarını kullanın ve bu, Premium bir Azure dosya paylaşımından maliyeti azaltır. Ancak, öğesini kopyalamanız gerekir [. ](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) İçeri veya dışarı aktarma işleminden önce blob ve yerel dosya sistemi arasında BACPAC dosyası. Sonuç olarak, işlem daha uzun sürer.
 
-Yüklemek veya indirmek için. BACPAC dosyaları, bkz. [AzCopy ve BLOB Storage ile veri aktarma](../../storage/common/storage-use-azcopy-blobs.md)ve [AzCopy ve dosya depolama ile veri aktarma](../../storage/common/storage-use-azcopy-files.md).
+Yüklemek veya indirmek için. BACPAC dosyaları, bkz. [AzCopy ve BLOB Storage ile veri aktarma](../../storage/common/storage-use-azcopy-v10.md#transfer-data)ve [AzCopy ve dosya depolama ile veri aktarma](../../storage/common/storage-use-azcopy-files.md).
 
 Ortamınıza bağlı olarak, [Azure depolama güvenlik duvarlarını ve sanal ağlarını yapılandırmanız](../../storage/common/storage-network-security.md)gerekebilir.
 

@@ -5,21 +5,21 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/18/2020
+ms.date: 01/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdff7e62753e75a14d6711b77dd451603353dae5
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 6a5e8b933f617d767f017f73fb6778a45b5a1ce3
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012844"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725598"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Azure Active Directory-telefon seçeneklerinde kimlik doğrulama yöntemleri
 
-Metin iletisini kullanarak doğrudan kimlik doğrulama için, [SMS tabanlı kimlik doğrulaması (Önizleme) için kullanıcıları yapılandırabilir ve etkinleştirebilirsiniz](howto-authentication-sms-signin.md). SMS tabanlı oturum açma, ön satır çalışanları için harika. SMS tabanlı oturum açma sayesinde, kullanıcıların uygulama ve hizmetlere erişmek için bir Kullanıcı adı ve parola bilmeleri gerekmez. Bunun yerine Kullanıcı kayıtlı cep telefonu numarasını girer, doğrulama kodu içeren bir kısa mesaj alır ve oturum açma arabirimine girer.
+Metin iletisini kullanarak doğrudan kimlik doğrulama için, [SMS tabanlı kimlik doğrulaması için kullanıcıları yapılandırabilir ve etkinleştirebilirsiniz](howto-authentication-sms-signin.md). SMS tabanlı oturum açma, Frontline çalışanları için harika. SMS tabanlı oturum açma sayesinde, kullanıcıların uygulama ve hizmetlere erişmek için bir Kullanıcı adı ve parola bilmeleri gerekmez. Bunun yerine Kullanıcı kayıtlı cep telefonu numarasını girer, doğrulama kodu içeren bir kısa mesaj alır ve oturum açma arabirimine girer.
 
 Kullanıcılar ayrıca, Azure AD Multi-Factor Authentication veya self servis parola sıfırlama (SSPR) sırasında kullanılan ikincil kimlik doğrulama biçimi olarak bir cep telefonu veya ofis telefonu kullanarak kendilerini doğrulayabilirler.
 

@@ -14,12 +14,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 1/14/2020
-ms.openlocfilehash: d3bd63566daaf6e1d3e3343b5956d8a8d5fc8ea5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: b73e72969a851428034499d447ecb162a61aa9ab
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98224521"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725795"
 ---
 # <a name="understand-and-resolve-azure-sql-database-blocking-problems"></a>Azure SQL veritabanı engelleme sorunlarını anlama ve çözme
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -345,7 +345,7 @@ Aşağıdaki senaryolar bu senaryolarda genişletilir.
     Sunucuya bir sorgu gönderdikten sonra, tüm uygulamaların tüm sonuç satırlarını hemen tamamlamaya getirmesi gerekir. Bir uygulama tüm sonuç satırlarını getirmezse, kilitler tablolarda bırakılabilir ve diğer kullanıcıları engelliyor olabilir. Sunucuya saydam olarak SQL deyimleri gönderen bir uygulama kullanıyorsanız, uygulamanın tüm sonuç satırlarını getirmesi gerekir. Değilse (ve bunu yapmak için yapılandırılamıyor), engelleyici sorunu çözemeyebilirsiniz. Sorunu önlemek için, kötü davranmış uygulamaları raporlama veya karar destek veritabanıyla kısıtlayabilirsiniz.
     
     > [!NOTE]
-    > Bkz. Azure SQL veritabanı 'na bağlanan uygulamalar için [yeniden deneme mantığı Kılavuzu](/azure/azure-sql/database/troubleshoot-common-connectivity-issues#retry-logic-for-transient-errors) . 
+    > Bkz. Azure SQL veritabanı 'na bağlanan uygulamalar için [yeniden deneme mantığı Kılavuzu](./troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors) . 
     
     **Çözüm**: uygulamanın, sonucun tüm satırlarını tamamlamada getirmek için yeniden yazılması gerekir. Bu, sunucu tarafı sayfalama gerçekleştirmek için bir sorgunun [order by yan tümcesinde offset ve Fetch](/sql/t-sql/queries/select-order-by-clause-transact-sql#using-offset-and-fetch-to-limit-the-rows-returned) kullanımını denetlemez.
 
@@ -378,7 +378,7 @@ Aşağıdaki senaryolar bu senaryolarda genişletilir.
 * [Hızlı Başlangıç: SQL Server’da genişletilmiş olaylar](/sql/relational-databases/extended-events/quick-start-extended-events-in-sql-server)
 * [Veritabanı performansını izlemek ve sorunlarını gidermek için AI kullanarak Akıllı İçgörüler](intelligent-insights-overview.md)
 
-## <a name="learn-more"></a>Daha fazla bilgi edinin
+## <a name="learn-more"></a>Daha fazlasını öğrenin
 
 * [Azure SQL veritabanı: otomatik ayarlama ile performansı ayarlamayı artırma](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Improving-Performance-Tuning-with-Automatic-Tuning)
 * [Otomatik ayarlama ile Azure SQL veritabanı performansını iyileştirme](https://channel9.msdn.com/Shows/Azure-Friday/Improve-Azure-SQL-Database-Performance-with-Automatic-Tuning)
