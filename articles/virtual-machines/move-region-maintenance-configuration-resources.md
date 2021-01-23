@@ -6,12 +6,12 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: shants
-ms.openlocfilehash: 7c4d9f3a5f73e5832e9ff22ed2cd4c215811c845
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 88082c441dafdc7571f2b9775bfc07ebe3ca5aa4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197566"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730515"
 ---
 # <a name="move-resources-in-a-maintenance-control-configuration-to-another-region"></a>Bakım denetim yapılandırmasındaki kaynakları başka bir bölgeye taşıma
 
@@ -23,7 +23,7 @@ Bir bakım denetimi yapılandırmasıyla ilişkili kaynakları farklı bir Azure
 - Bakım denetimi yapılandırmanızı taşımak, ancak yapılandırmayla ilişkili kaynakları değil, [Bu yönergeleri](move-region-maintenance-configuration.md)izleyin.
 - Bakım yapılandırmasını ve bununla ilişkili kaynakları taşımak için önce [Bu yönergeleri](move-region-maintenance-configuration.md)uygulayın. Ardından, bu makaledeki yönergeleri izleyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bir bakım denetimi yapılandırmasıyla ilişkili kaynakları taşımaya başlamadan önce:
 
@@ -49,7 +49,7 @@ Bir bakım denetimi yapılandırmasıyla ilişkili kaynakları taşımaya başla
     $adh | Adanmış konak adı | "myHost"
     $adhParentName | Üst kaynak adı | HostGroup
     
-2. PowerShell [Get-Azconfigurationatama](/powershell/module/az.maintenance/get-azconfigurationassignment?view=azps-3.5.0) komutunu kullanarak bakım yapılandırmasını almak için:
+2. PowerShell [Get-Azconfigurationatama](/powershell/module/az.maintenance/get-azconfigurationassignment) komutunu kullanarak bakım yapılandırmasını almak için:
 
     - Azure ayrılmış konakları için şunu çalıştırın:
         ```

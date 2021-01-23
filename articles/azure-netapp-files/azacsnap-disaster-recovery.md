@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: c34ca08ae2ede9430804f6b8bb33f2bfcb0b39ab
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 70e1823b30814d7dc29fef69215fcb53a2a2ab96
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97633052"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730879"
 ---
 # <a name="disaster-recovery-using-azure-application-consistent-snapshot-tool-preview"></a>Azure uygulaması tutarlı anlık görüntü aracı (Önizleme) kullanılarak olağanüstü durum kurtarma
 
@@ -40,7 +40,7 @@ Olağanüstü durum kurtarma yük devretmesini planlayabilmeniz için aşağıda
 - Depolama çoğaltması çalışıyor. Microsoft operasyon ekibi, otomatik olarak DR sağlama sırasında depolama çoğaltma kurulumunu gerçekleştirir. DR sitesindeki komutunu kullanarak depolama çoğaltmasını izleyebilirsiniz `azacsnap -c details --details replication` .
 - Birincil konumda depolama anlık görüntülerini ayarlamış ve yapılandırmış olmanız gerekir.
 - Birincil örnekle aynı SID 'ye sahip olan DR sitesinde birincil için bir HANA örneği yüklü.
-- [Azure 'da yüksek kullanılabilirlik ve olağanüstü durum kurtarma SAP HANA büyük örnekleri](/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) açıklanan Dr yük devretme yordamını okur ve anlamış olursunuz
+- [Azure 'da yüksek kullanılabilirlik ve olağanüstü durum kurtarma SAP HANA büyük örnekleri](../virtual-machines/workloads/sap/hana-failover-procedure.md) açıklanan Dr yük devretme yordamını okur ve anlamış olursunuz
 - DR konumunda depolama anlık görüntülerini ayarlamış ve yapılandırmış olmanız gerekir.
 - Dr `DR.json` Storage birimleri ve Dr sunucusu 'ndaki ilişkili bilgilerle bir yapılandırma dosyası (örneğin,) oluşturulmuştur.
 - DR sitesindeki adımları şu şekilde tamamladınız:

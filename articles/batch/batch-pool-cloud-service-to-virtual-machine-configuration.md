@@ -3,16 +3,16 @@ title: Batch havuzu yapılandırmasını Cloud Services sanal makinelere geçir
 description: Havuz yapılandırmanızı en son ve önerilen yapılandırmaya güncelleştirme hakkında bilgi edinin
 ms.topic: how-to
 ms.date: 1/6/2021
-ms.openlocfilehash: d987a185efb6593fd541dd14fa74b6c4d3ca41be
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 417738be2c69101129079b8ff3a3d80634f9f99c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234316"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731508"
 ---
 # <a name="migrate-batch-pool-configuration-from-cloud-services-to-virtual-machines"></a>Batch havuzu yapılandırmasını Cloud Services sanal makinelere geçir
 
-Batch havuzları, [Cloudserviceconfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) ya da [virtualmachineconfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)kullanılarak oluşturulabilir. ' virtualMachineConfiguration ', tüm Batch yeteneklerini desteklediği için önerilen yapılandırmadır. ' cloudServiceConfiguration ' havuzları tüm özellikleri desteklemiyor ve yeni özellik planlanmıyor.
+Batch havuzları, [Cloudserviceconfiguration](/rest/api/batchservice/pool/add#cloudserviceconfiguration) ya da [virtualmachineconfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration)kullanılarak oluşturulabilir. ' virtualMachineConfiguration ', tüm Batch yeteneklerini desteklediği için önerilen yapılandırmadır. ' cloudServiceConfiguration ' havuzları tüm özellikleri desteklemiyor ve yeni özellik planlanmıyor.
 
 ' CloudServiceConfiguration ' havuzlarını kullanırsanız, ' virtualMachineConfiguration ' havuzlarının kullanılması kesinlikle önerilir. Bu, genişletilmiş [VM Serisi](batch-pool-vm-sizes.md), Linux VM 'ler, [kapsayıcılar](batch-docker-container-workloads.md), [Azure Resource Manager sanal ağlar](batch-virtual-network.md)ve [düğüm disk şifrelemesi](disk-encryption.md)gibi tüm Batch olanaklarından faydalanabilmeniz için size olanak sağlar.
 
@@ -41,4 +41,4 @@ Havuz yapılandırması güncelleştirilirken aşağıdakiler göz önünde bulu
 
 - [Havuz yapılandırması](nodes-and-pools.md#configurations)hakkında daha fazla bilgi edinin.
 - [Havuz en iyi uygulamaları](best-practices.md#pools)hakkında daha fazla bilgi edinin.
-- [Havuz ekleme](https://docs.microsoft.com/rest/api/batchservice/pool/add) ve [virtualmachineconfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)için REST API başvuru.
+- [Havuz ekleme](/rest/api/batchservice/pool/add) ve [virtualmachineconfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration)için REST API başvuru.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 1051859d514c77bad1aa5f14becc2218a923df44
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 17c29fdf88495f6ecc40963eda08858887173fd1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97633078"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730947"
 ---
 # <a name="back-up-using-azure-application-consistent-snapshot-tool-preview"></a>Azure uygulaması tutarlı anlık görüntü aracı 'nı (Önizleme) kullanarak yedekleme
 
@@ -143,7 +143,7 @@ Bu örnekteki *günlük dosyası* adı `azacsnap-backup-bootVol.log` .
 > Günlük dosyası adı "(komut adı-( `-c` seçenek)-(yapılandırma dosya adı)" öğesinden oluşur.  Örneğin, `-c backup` bir günlük dosyası adı ile seçeneğini kullanıyorsanız `h80.json` , günlük dosyası çağrılır `azacsnap-backup-h80.log` .  Ya da `-c test` seçeneği aynı yapılandırma dosyası ile kullanılıyorsa günlük dosyası çağrılır `azacsnap-test-h80.log` .
 
 - HANA büyük örnek türü: `TYPEI` `TYPEII` Hana büyük örnek birimine sahip veya bağımlı iki geçerli değer vardır.
-- Kullanılabilir SKU 'Ları onaylamak için bkz. [Hana büyük örnekleri Için kullanılabilir SKU 'lar](/azure/virtual-machines/workloads/sap/hana-available-skus) .
+- Kullanılabilir SKU 'Ları onaylamak için bkz. [Hana büyük örnekleri Için kullanılabilir SKU 'lar](../virtual-machines/workloads/sap/hana-available-skus.md) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

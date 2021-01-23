@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: article
 ms.date: 06/8/2020
 ms.author: chenyl
-ms.openlocfilehash: 4f70cbacf686210c1188cb0a87e6116af8ed4b01
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: dee15977318eda7bcd0b1950286bb33f621221dd
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763187"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731593"
 ---
 # <a name="managed-identities-for-azure-signalr-service"></a>Azure SignalR hizmeti için Yönetilen kimlikler
 
@@ -104,7 +104,7 @@ SignalR hizmeti, yönetilen kimliği kullanarak gizli dizi almak için Key Vault
 
 1. Azure SignalR hizmeti için sistem tarafından atanan bir kimlik veya Kullanıcı tarafından atanan kimlik ekleme.
 
-2. Key Vault erişim ilkelerinde yönetilen kimlik için gizli okuma izni verin. Bkz [. Azure Portal kullanarak Key Vault erişim Ilkesi atama](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
+2. Key Vault erişim ilkelerinde yönetilen kimlik için gizli okuma izni verin. Bkz [. Azure Portal kullanarak Key Vault erişim Ilkesi atama](../key-vault/general/assign-access-policy-portal.md)
 
 Şu anda bu özellik aşağıdaki senaryolarda kullanılabilir:
 

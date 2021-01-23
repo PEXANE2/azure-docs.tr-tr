@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2961f3f01f6ea4398fab6144b34fcb4409cdd96f
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: 84e177f1ce55d803f54bb2553078441557e5c191
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96318365"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730896"
 ---
 # <a name="tutorial-for-azure-active-directory-single-sign-on-integration-with-f5-big-ip-for-password-less-vpn"></a>Parola açısından daha az VPN için F5 BIG-IP ile çoklu oturum açma tümleştirmesi Azure Active Directory öğreticisi
 
@@ -24,13 +24,13 @@ Bu öğreticide, güvenli karma erişim (SHA) için Azure Active Directory (AD) 
 
 BÜYÜK IP SSL VPN 'yi Azure AD ile tümleştirmek, aşağıdakiler de dahil olmak üzere [birçok önemli avantaj](f5-aad-integration.md)sağlar:
 
-- [Azure AD ön kimlik doğrulama ve yetkilendirme](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) aracılığıyla geliştirilmiş sıfır güven
+- [Azure AD ön kimlik doğrulama ve yetkilendirme](../../app-service/overview-authentication-authorization.md) aracılığıyla geliştirilmiş sıfır güven
 
 - [VPN hizmetine parola-daha az kimlik doğrulama](https://www.microsoft.com/security/business/identity/passwordless)
 
 - Tek bir denetim düzleminden kimlikleri ve erişimi yönetme- [Azure Portal](https://portal.azure.com/#home)
 
-Bu harika değer eklemesine rağmen, klasik VPN, güvenilen bir ağ çevre kavramı üzerinde tahmine açık kalır. Şirket varlıkları artık kurumsal bir veri merkezinin duvarlarıyla sınırlandırmadıklarından, ancak sabit sınır olmadan çok bulut ortamlarında, bu model artık gerçek bir sıfır güven itimi elde etmek için geçerli değildir. Bu nedenle, müşterilerimizin [uygulama temelinde erişimi yönetme konusunda](https://docs.microsoft.com/azure/active-directory/fundamentals/five-steps-to-full-application-integration-with-azure-ad)daha fazla kimliğe dayalı bir yaklaşıma geçmeyi düşünmelerini öneririz.
+Bu harika değer eklemesine rağmen, klasik VPN, güvenilen bir ağ çevre kavramı üzerinde tahmine açık kalır. Şirket varlıkları artık kurumsal bir veri merkezinin duvarlarıyla sınırlandırmadıklarından, ancak sabit sınır olmadan çok bulut ortamlarında, bu model artık gerçek bir sıfır güven itimi elde etmek için geçerli değildir. Bu nedenle, müşterilerimizin [uygulama temelinde erişimi yönetme konusunda](../fundamentals/five-steps-to-full-application-integration-with-azure-ad.md)daha fazla kimliğe dayalı bir yaklaşıma geçmeyi düşünmelerini öneririz.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -41,15 +41,15 @@ Bu senaryoda, SSL-VPN hizmetinin büyük IP APM örneği bir SAML servis sağlay
 >[!NOTE]
 >Bu kılavuz boyunca başvurulan tüm örnek dizeler veya değerler gerçek ortamınız için olanlarla değiştirilmelidir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Önceki deneyim veya F5 BIG-IP bilgisi gerekli değildir, ancak şunları yapmanız gerekir:
 
 - Azure AD [ücretsiz aboneliği](https://azure.microsoft.com/trial/get-started-active-directory/) veya üzeri
 
-- Kullanıcı kimlikleri [, şirket içi dizinlerinden](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis) Azure AD 'ye eşitlenmelidir.
+- Kullanıcı kimlikleri [, şirket içi dizinlerinden](../hybrid/how-to-connect-sync-whatis.md) Azure AD 'ye eşitlenmelidir.
 
-- Azure AD uygulama Yöneticisi [izinlerine](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#application-administrator) sahip bir hesap
+- Azure AD uygulama Yöneticisi [izinlerine](../roles/permissions-reference.md#application-administrator) sahip bir hesap
 
 - BÜYÜK IP 'den gelen ve giden istemci trafiğinin yönlendirilmesini içeren mevcut bir büyük IP altyapısı veya [büyük IP sanal sürümünü Azure 'a dağıtın](f5-bigip-deployment-guide.md).
 
@@ -64,7 +64,7 @@ Bu senaryoda, SSL-VPN hizmetinin büyük IP APM örneği bir SAML servis sağlay
 
 ## <a name="add-f5-big-ip-from-the-azure-ad-gallery"></a>Azure AD Galerisi 'nden F5 BIG-IP ekleyin
 
-BÜYÜK IP arasında bir SAML Federasyonu güveni ayarlamak, Azure AD büyük IP 'nin yayımlanan VPN hizmetine erişim vermeden önce Azure AD 'ye ön kimlik doğrulama ve [koşullu erişim](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) olanağı sağlar.
+BÜYÜK IP arasında bir SAML Federasyonu güveni ayarlamak, Azure AD büyük IP 'nin yayımlanan VPN hizmetine erişim vermeden önce Azure AD 'ye ön kimlik doğrulama ve [koşullu erişim](../conditional-access/overview.md) olanağı sağlar.
 
 1. Uygulama yöneticisi haklarına sahip bir hesap kullanarak Azure AD portalında oturum açın
 
@@ -78,7 +78,7 @@ BÜYÜK IP arasında bir SAML Federasyonu güveni ayarlamak, Azure AD büyük IP
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-1. Yeni F5 uygulama özelliklerinizi görünümünde, **Manage**  >  **Çoklu oturum açmayı** Yönet ' e gidin.
+1. Yeni F5 uygulama özelliklerinizi görünümünde,   >  **Çoklu oturum açmayı** Yönet ' e gidin.
 
 2. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin. Hayır ' ı seçerek çoklu oturum açma ayarlarını kaydetme isteğini atlayın **, daha sonra Kaydet '** i seçin.
 
@@ -105,7 +105,7 @@ Azure AD, bunları büyük IP APM kimlik doğrulaması için kullanıcılara sun
 
 ![Görüntü, Kullanıcı öznitelikleri taleplerini gösterir](media/f5-sso-vpn/user-attributes-claims.png)
 
-BÜYÜK IP yayınlanan hizmetinizdeki diğer belirli talepleri ekleyebilirsiniz, ancak varsayılan kümesine ek olarak tanımlanan tüm talepler yalnızca Azure AD 'de varsa doldurulmuş öznitelikler olarak verilmek üzere de verilebilir. Aynı şekilde, Dizin [rolleri veya grup](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-group-claims) üyelikleri, bir talep olarak verilebilmesi IÇIN Azure AD 'de bir kullanıcı nesnesine karşı tanımlamayı de gerektirir.
+BÜYÜK IP yayınlanan hizmetinizdeki diğer belirli talepleri ekleyebilirsiniz, ancak varsayılan kümesine ek olarak tanımlanan tüm talepler yalnızca Azure AD 'de varsa doldurulmuş öznitelikler olarak verilmek üzere de verilebilir. Aynı şekilde, Dizin [rolleri veya grup](../hybrid/how-to-connect-fed-group-claims.md) üyelikleri, bir talep olarak verilebilmesi IÇIN Azure AD 'de bir kullanıcı nesnesine karşı tanımlamayı de gerektirir.
 
 ![Görüntü, Federasyon meta verileri indirme bağlantısını gösterir](media/f5-sso-vpn/saml-signing-certificate.png)
 
@@ -119,7 +119,7 @@ Varsayılan olarak, Azure AD yalnızca bir hizmete erişim izni verilen kullanı
 
 2. **+ Kullanıcı Ekle** ' yi seçin ve atama Ekle menüsünde **Kullanıcılar ve gruplar ' ı** seçin.
 
-3. **Kullanıcılar ve gruplar** iletişim kutusunda VPN 'e erişim yetkisi olan kullanıcı gruplarını ekleyin ve ardından ata ' yı **seçin**  >  **Assign** .
+3. **Kullanıcılar ve gruplar** iletişim kutusunda VPN 'e erişim yetkisi olan kullanıcı gruplarını ekleyin ve ardından ata ' yı **seçin**  >   .
 
 ![Görüntü Kullanıcı bağlantısı eklemeyi gösterir ](media/f5-sso-vpn/add-user-link.png)
 
@@ -131,7 +131,7 @@ Varsayılan olarak, Azure AD yalnızca bir hizmete erişim izni verilen kullanı
 
 Aşağıdaki bölümde, Azure AD ile VPN hizmetini federasyona eklemek için gereken büyük IP SAML hizmet sağlayıcısı ve karşılık gelen SAML ıDP nesneleri oluşturulur.
 
-1. **Access**  >  **Federasyon**  >  **SAML hizmeti sağlayıcısı**  >  **Yerel SP Hizmetleri** ' ne gidin ve **Oluştur** ' u seçin.
+1.   >  **Federasyon**  >  **SAML hizmeti sağlayıcısı**  >  **Yerel SP Hizmetleri** ' ne gidin ve **Oluştur** ' u seçin.
 
 ![Görüntüde büyük IP SAML yapılandırması gösteriliyor](media/f5-sso-vpn/bigip-saml-configuration.png)
 
@@ -163,7 +163,7 @@ Aşağıdaki bölümde, Azure AD ile VPN hizmetini federasyona eklemek için ger
 
 Aşağıdaki adımlar, SSL-VPN ' i büyük IP 'nin özel Web portalı aracılığıyla kullanıcılara sunulacak şekilde etkinleştirir.
 
-1. **Access**  >  **Webol**  >  **WebTop listelerine** erişin ve **Oluştur**' u seçin.
+1.   >  **Webol**  >  **WebTop listelerine** erişin ve **Oluştur**' u seçin.
 
 2. Portala bir ad verin ve türü **tam** olarak ayarlayın. Örneğin, `Contoso_webtop`.
 
@@ -299,11 +299,11 @@ Tüm ayarlar yerinde olduğunda APM artık, VPN 'ye bağlanan istemcileri dinlem
 
 - [Parolaların sonu, parolasız go](https://www.microsoft.com/security/business/identity/passwordless)
 
-- [Koşullu Erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Koşullu Erişim nedir?](../conditional-access/overview.md)
 
 - [Uzak çalışmayı etkinleştirmek için Microsoft sıfır güven çerçevesi](https://www.microsoft.com/security/blog/2020/04/02/announcing-microsoft-zero-trust-assessment-tool/)
 
-- [Azure AD ile tam uygulama tümleştirmesi için beş adım](https://docs.microsoft.com/azure/active-directory/fundamentals/five-steps-to-full-application-integration-with-azure-ad)
+- [Azure AD ile tam uygulama tümleştirmesi için beş adım](../fundamentals/five-steps-to-full-application-integration-with-azure-ad.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -312,4 +312,4 @@ Uzak bir Windows istemcisinde bir tarayıcı açın ve **büyük IP VPN hizmetin
 ![Görüntü VPN başlatıcısı 'nı gösterir](media/f5-sso-vpn/vpn-launcher.png)
 
 VPN kutucuğunu seçmek, büyük IP uç istemcisini yükler ve SHA için yapılandırılmış bir VPN bağlantısı kurar.
-F5 VPN uygulaması, Azure AD koşullu erişim 'de de hedef kaynak olarak görünür olmalıdır. Koşullu erişim ilkeleri oluşturmaya yönelik [kılavuzumuza](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policies) bakın ve ayrıca Azure AD [parola-daha az kimlik doğrulama](https://www.microsoft.com/security/business/identity/passwordless)için kullanıcıları etkinleştirin.
+F5 VPN uygulaması, Azure AD koşullu erişim 'de de hedef kaynak olarak görünür olmalıdır. Koşullu erişim ilkeleri oluşturmaya yönelik [kılavuzumuza](../conditional-access/concept-conditional-access-policies.md) bakın ve ayrıca Azure AD [parola-daha az kimlik doğrulama](https://www.microsoft.com/security/business/identity/passwordless)için kullanıcıları etkinleştirin.

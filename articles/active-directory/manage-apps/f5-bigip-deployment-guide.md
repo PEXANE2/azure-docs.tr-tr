@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c03009b08dcf33bf4b84bc91232af96e7ba2c71
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: f962bf131b87f17712186145b8c8b8e6090f7002
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095194"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730666"
 ---
 # <a name="tutorial-to-deploy-f5-big-ip-virtual-edition-vm-in-azure-iaas-for-secure-hybrid-access"></a>Güvenli karma erişim için Azure IaaS 'de F5 BIG-IP Virtual Edition VM dağıtma öğreticisi
 
@@ -26,7 +26,7 @@ Bu öğretici, Azure IaaS 'de büyük IP Vitürel sürümlerini (VE) dağıtman�
 
 - Yeni büyük IP sistem güncelleştirmelerini ve düzeltmeleri test etmek için kullanılan hazırlama örneği
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Önceki F5 büyük IP deneyimi veya bilgi gerekli değildir, ancak [F5 büyük IP terminolojisini](https://www.f5.com/services/resources/glossary)alıştırarak kendiniz öneririz. SHA için Azure 'da büyük IP dağıtımı şunları gerektirir:
 
@@ -107,7 +107,7 @@ BÜYÜK IP, farklı topolojilerde dağıtılabilir. Bu kılavuz, tek bir ağ ara
  |NIC ağ güvenlik grubu| Önceki adımlarda seçtiğiniz Azure alt ağı zaten bir ağ güvenlik grubu (NSG) ile ilişkilendirilmişse hiçbiri ' ni seçin; Aksi takdirde temel seçin|
  |Ağı hızlandırma| Kapalı |
  |**Yük dengeleme**|     |
- |Yük Dengeleme VM 'si| No|
+ |Yük Dengeleme VM 'si| Hayır|
 
 10. **İleri: yönetim** ' i seçin ve bu ayarları doldurun.
 
@@ -264,7 +264,7 @@ BÜYÜK bir IP sistemi, Web yapılandırma kullanıcı arabirimi aracılığıyl
 
 - BÜYÜK IP-VM 'nin iç ağına bağlı bir VPN istemcisinden
 
-- [Azure AD uygulama ara sunucusu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application) aracılığıyla yayımlandı
+- [Azure AD uygulama ara sunucusu](./application-proxy-add-on-premises-application.md) aracılığıyla yayımlandı
 
 Kalan yapılandırmalara geçebilmeniz için en uygun yönteme karar vermeniz gerekir. Gerekirse, büyük IP 'nin birincil IP 'sini genel bir IP ile yapılandırarak doğrudan internet 'ten Web config 'e bağlanabilirsiniz. Daha sonra bu birincil IP 'ye 8443 trafiğe izin vermek için bir NSG kuralı ekleyin. Kaynağı kendi güvenilen IP 'niz ile kısıtladığınızdan emin olun, aksi takdirde herkes bağlanabilir.
 
@@ -276,7 +276,7 @@ Daha sonra, büyük IP sanal makinesinin Web yapılandırmasına bağlanabildiğ
 
 BÜYÜK bir IP sistemi, genellikle komut satırı (CLı) görevleri ve kök düzeyinde erişim için kullanılan kendi temel SSH ortamı aracılığıyla da yönetilebilir. CLı 'ya bağlanmak için çeşitli seçenekler mevcuttur, örneğin:
 
-- [Azure savunma hizmeti](https://docs.microsoft.com/azure/bastion/bastion-overview): herhangi bir konumdan bir sanal ağ içindeki HERHANGI bir VM 'ye hızlı ve güvenli bağlantılara izin verir
+- [Azure savunma hizmeti](../../bastion/bastion-overview.md): herhangi bir konumdan bir sanal ağ içindeki HERHANGI bir VM 'ye hızlı ve güvenli bağlantılara izin verir
 
 - JıT yaklaşımı aracılığıyla PuTTY gibi bir SSH istemcisi aracılığıyla doğrudan bağlanın
 
@@ -423,7 +423,7 @@ BÜYÜK IP sistemi artık tam olarak sağlandığından, yapılandırmasının t
 
 6. Yedekleme bağlantısını seçip **İndir**' i seçerek Kullanıcı yapılandırma KÜMESI (UCS) arşivini yerel olarak kaydedin.
 
-İsteğe bağlı bir adım olarak, [Azure anlık görüntülerini](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk)kullanarak tüm sistem diskinin bir yedeğini alabilirsiniz. bu sayede, Web yapılandırma yedeğinin, tmos sürümleri arasında test için bir acil durum sağlayacağından ya da yeni bir sisteme geri dönme anlamına gelir.
+İsteğe bağlı bir adım olarak, [Azure anlık görüntülerini](../../virtual-machines/windows/snapshot-copy-managed-disk.md)kullanarak tüm sistem diskinin bir yedeğini alabilirsiniz. bu sayede, Web yapılandırma yedeğinin, tmos sürümleri arasında test için bir acil durum sağlayacağından ya da yeni bir sisteme geri dönme anlamına gelir.
 
 ```PowerShell
 # Install modules

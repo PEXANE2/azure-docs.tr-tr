@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 71f4cfa9e7b69e51bafa5364f857f8ab689f2ad0
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 928b8118c614d7d16293c8d6e0cec194a270314e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955476"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729932"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için ServiceNow 'ı yapılandırma
 
@@ -155,7 +155,7 @@ Hazırlama ayarlarını yapılandırdıktan sonra dağıtımınızı izlemek iç
 
 * **IP aralıkları** 
 
-   Azure AD sağlama hizmeti şu anda belirli bir IP aralığı altında çalışır. Gerekirse, diğer IP aralıklarını kısıtlayabilir ve bu belirli IP aralıklarını uygulamanızın izin öğesine ekleyerek Azure AD sağlama hizmeti 'nden uygulamanıza trafik akışına izin verebilirsiniz. [IP aralıklarında](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#ip-ranges)belgelere başvurun.
+   Azure AD sağlama hizmeti şu anda belirli bir IP aralığı altında çalışır. Gerekirse, diğer IP aralıklarını kısıtlayabilir ve bu belirli IP aralıklarını uygulamanızın izin öğesine ekleyerek Azure AD sağlama hizmeti 'nden uygulamanıza trafik akışına izin verebilirsiniz. [IP aralıklarında](../app-provisioning/use-scim-to-provision-users-and-groups.md#ip-ranges)belgelere başvurun.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

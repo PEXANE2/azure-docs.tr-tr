@@ -3,12 +3,12 @@ title: Azure Backup’taki yenilikler
 description: Azure Backup yeni özellikler hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: 62a6146990863c339917777b2624fee76ebe60d8
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 935c2a806ed3b08f19e680bf1522d98a9ad67666
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569428"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730298"
 ---
 # <a name="whats-new-in-azure-backup"></a>Azure Backup’taki yenilikler
 
@@ -37,7 +37,7 @@ Yeni yayınlar hakkında daha fazla bilgi edinmek için bu sayfayı kitap halind
 
 ## <a name="azure-disk-backup-in-preview"></a>Azure disk yedekleme (önizlemede)
 
-Azure disk yedekleme, düzenli anlık görüntü oluşturmayı otomatikleştirerek ve yedekleme ilkesini kullanarak yapılandırılmış bir süre boyunca tutarak [Azure yönetilen diskler](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview) için anlık görüntü yaşam döngüsü yönetimi sağlayan bir anahtar oluşturma çözümü sunmaktadır. Disk anlık görüntülerini sıfır altyapı maliyetiyle ve özel betik oluşturmaya veya herhangi bir yönetim yüküne gerek kalmadan yönetebilirsiniz. Bu, günde birden çok yedekleme desteği olan [Artımlı anlık görüntüleri](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots) kullanarak yönetilen bir diskin zaman içinde yedeğini alan çökme ile tutarlı bir yedekleme çözümüdür. Ayrıca, aynı zamanda aracılı bir çözümdür ve üretim uygulaması performansını etkilemez. Hem işletim sistemi hem de veri disklerinin (paylaşılan diskler dahil), çalışmakta olan bir Azure sanal makinesine bağlı olup olmadığına bakılmaksızın yedekleme ve geri yükleme desteği sağlar.
+Azure disk yedekleme, düzenli anlık görüntü oluşturmayı otomatikleştirerek ve yedekleme ilkesini kullanarak yapılandırılmış bir süre boyunca tutarak [Azure yönetilen diskler](../virtual-machines/managed-disks-overview.md) için anlık görüntü yaşam döngüsü yönetimi sağlayan bir anahtar oluşturma çözümü sunmaktadır. Disk anlık görüntülerini sıfır altyapı maliyetiyle ve özel betik oluşturmaya veya herhangi bir yönetim yüküne gerek kalmadan yönetebilirsiniz. Bu, günde birden çok yedekleme desteği olan [Artımlı anlık görüntüleri](../virtual-machines/disks-incremental-snapshots.md) kullanarak yönetilen bir diskin zaman içinde yedeğini alan çökme ile tutarlı bir yedekleme çözümüdür. Ayrıca, aynı zamanda aracılı bir çözümdür ve üretim uygulaması performansını etkilemez. Hem işletim sistemi hem de veri disklerinin (paylaşılan diskler dahil), çalışmakta olan bir Azure sanal makinesine bağlı olup olmadığına bakılmaksızın yedekleme ve geri yükleme desteği sağlar.
 
 Daha fazla bilgi için bkz. [Azure disk yedekleme (önizlemede)](disk-backup-overview.md).
 

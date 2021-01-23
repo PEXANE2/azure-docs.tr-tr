@@ -16,18 +16,18 @@ ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65fc0e84582c005c5796ceac86ee28fc46b2e1d8
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 36b7fce2e2ccb6f331e42e8052ef4fb75d35e831
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094225"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729999"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Önceki bir sürümden en son sürüme yükseltme
 Bu konuda, Azure Active Directory (Azure AD) Connect yüklemenizi en son sürüme yükseltmek için kullanabileceğiniz farklı yöntemler açıklanmaktadır.  Önemli bir yapılandırma değişikliği yaptığınızda, [esnek geçiş](#swing-migration) bölümündeki adımları da kullanabilirsiniz.
 
 >[!NOTE]
-> Sunucularınızın en son Azure AD Connect sürümleriyle güncel tutmanız önemlidir. AADConnect 'e sürekli olarak yükseltmeler yapıyoruz ve bu yükseltmeler güvenlik sorunları ve hataları ve bakım, performans ve ölçeklenebilirlik iyileştirmeleri için düzeltmeler içerir. En son sürümün ne olduğunu görmek ve sürümler arasında yapılan değişikliklerin ne olduğunu öğrenmek için lütfen [sürüm sürümü geçmişine](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-version-history) başvurun
+> Sunucularınızın en son Azure AD Connect sürümleriyle güncel tutmanız önemlidir. AADConnect 'e sürekli olarak yükseltmeler yapıyoruz ve bu yükseltmeler güvenlik sorunları ve hataları ve bakım, performans ve ölçeklenebilirlik iyileştirmeleri için düzeltmeler içerir. En son sürümün ne olduğunu görmek ve sürümler arasında yapılan değişikliklerin ne olduğunu öğrenmek için lütfen [sürüm sürümü geçmişine](./reference-connect-version-history.md) başvurun
 
 >[!NOTE]
 > Şu anda herhangi bir Azure AD Connect sürümünün geçerli sürüme yükseltilmesi desteklenmektedir. DirSync veya ADSync 'in yerinde yükseltmeleri desteklenmez ve bir esnek geçiş gereklidir.  DirSync 'ten yükseltmek istiyorsanız, bkz. [Azure AD eşitleme aracından yükseltme aracı (DirSync)](how-to-dirsync-upgrade-get-started.md) veya [esnek geçiş](#swing-migration) bölümü.  </br>Uygulamada, son derece eski sürümlerde bulunan müşteriler, Azure AD Connect doğrudan ilişkili olan sorunlarla karşılaşabilir. Birkaç yıl içinde üretimde olan sunucular, genellikle bu dosyalara uygulanan bazı düzeltme eklerine sahip olur ve bunların hepsi için de hesaba katılmaz.  Genellikle, 12-18 ay içinde yükseltmeyen müşteriler, en klasik ve en az riskli seçenektir. bunun yerine bir esnek yükseltme yapmayı düşünmelidir.

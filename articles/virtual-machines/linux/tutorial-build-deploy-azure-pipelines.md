@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-js
-ms.openlocfilehash: 3d26da693d83fd680c644849d581ea35ca7b49af
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 4ca431290fe168f8fc073908bb3735ecb5992562
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739714"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731259"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Öğretici: Azure DevOps Services ve Azure Pipelines kullanarak uygulamanızı Azure 'da Linux sanal makinelerine dağıtın
 
@@ -24,7 +24,7 @@ Sürekli tümleştirme (CI) ve sürekli dağıtım (CD) her kod yürütmesinden 
 
 Azure Pipelines, hem şirket içi hem de herhangi bir bulutta sanal makinelere dağıtımlar için tam ve tam özellikli bir CI/CD otomasyon araçları kümesi sağlar.
 
-Bu öğreticide bir YAML tabanlı CI/CD işlem hattı ayarlayarak, her biri uygulamayı çalıştırmak için Web sunucusu olarak görev yapacak şekilde Linux sanal makinelerinden oluşan bir Azure Pipelines [ortamına](/azure/devops/pipelines/process/environments?view=azure-devops) kaynak olarak dağıtırsınız.
+Bu öğreticide bir YAML tabanlı CI/CD işlem hattı ayarlayarak, her biri uygulamayı çalıştırmak için Web sunucusu olarak görev yapacak şekilde Linux sanal makinelerinden oluşan bir Azure Pipelines [ortamına](/azure/devops/pipelines/process/environments) kaynak olarak dağıtırsınız.
 
 Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
@@ -41,7 +41,7 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
   Ücretsiz bir [Azure DevOps Services kuruluşu](https://go.microsoft.com/fwlink/?LinkId=307137&clcid=0x409&wt.mc_id=o~msft~vscom~home-vsts-hero~27308&campaign=o~msft~vscom~home-vsts-hero~27308) edinebilirsiniz.
 
   > [!NOTE]
-  > Daha fazla bilgi için, bkz. [Azure DevOps Services’a bağlanma](/azure/devops/organizations/projects/connect-to-projects?view=vsts).
+  > Daha fazla bilgi için, bkz. [Azure DevOps Services’a bağlanma](/azure/devops/organizations/projects/connect-to-projects).
 
 *  Dağıtım hedefi için bir Linux sanal makinesi gerekir.  Daha fazla bilgi için bkz. [Azure CLI ile Linux sanal makineleri oluşturma ve yönetme](./tutorial-manage-vm.md).
 
@@ -222,7 +222,7 @@ Daha fazla bilgi için, [Gulp ile Node.js uygulamanızı oluşturma](/azure/devo
        tags: web
    ```
 2. Ortamdaki her bir sanal makine için tanımladığınız **etiketleri** belirterek dağıtımı almak için ortamdan belirli sanal makine kümelerini seçebilirsiniz.
-Dağıtım işi için tüm YAML şeması [aşağıda](/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job) verilmiştir.
+Dağıtım işi için tüm YAML şeması [aşağıda](/azure/devops/pipelines/yaml-schema?tabs=schema#deployment-job) verilmiştir.
 
 3. Dağıtım stratejisi ya da `runOnce` `rolling` olarak belirtebilirsiniz. 
 

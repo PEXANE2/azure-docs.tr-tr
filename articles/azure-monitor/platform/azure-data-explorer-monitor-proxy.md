@@ -7,16 +7,16 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 8942735ed65f8aa0cf6d315568e00412adcb353a
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: a31ef69d84f64e4bcaa46adac26a29d2cc367351
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060546"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731709"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Azure Veri Gezgini kullanarak Azure Izleyici 'de verileri sorgulama (Önizleme)
 
-Azure Veri Gezgini, Azure Veri Gezgini, [Application Insights (AI)](/azure/azure-monitor/app/app-insights-overview)ve [Log Analytics (La)](/azure/azure-monitor/platform/data-platform-logs)arasında çapraz hizmet sorgularını destekler. Daha sonra, Azure Veri Gezgini araçlarını kullanarak Log Analytics/Application Insights çalışma alanınızı sorgulayabilir ve bir çapraz hizmet sorgusunda buna başvurabilirsiniz. Makalede, bir çapraz hizmet sorgusunun nasıl yapılacağı ve Azure Veri Gezgini Web Kullanıcı arabirimine Log Analytics/Application Insights çalışma alanının nasıl ekleneceği gösterilmektedir.
+Azure Veri Gezgini, Azure Veri Gezgini, [Application Insights (AI)](../app/app-insights-overview.md)ve [Log Analytics (La)](./data-platform-logs.md)arasında çapraz hizmet sorgularını destekler. Daha sonra, Azure Veri Gezgini araçlarını kullanarak Log Analytics/Application Insights çalışma alanınızı sorgulayabilir ve bir çapraz hizmet sorgusunda buna başvurabilirsiniz. Makalede, bir çapraz hizmet sorgusunun nasıl yapılacağı ve Azure Veri Gezgini Web Kullanıcı arabirimine Log Analytics/Application Insights çalışma alanının nasıl ekleneceği gösterilmektedir.
 
 Azure Veri Gezgini çapraz hizmet sorguları akışı: :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-data-explorer-monitor-flow.png" alt-text="Azure Data Explorer proxy akışı.":::
 
@@ -62,7 +62,7 @@ Kusto sorgularını destekleyen istemci araçlarını kullanarak sorguları çal
 > * Veritabanı adı, çapraz hizmet sorgusunda belirtilen kaynakla aynı ada sahip olmalıdır. Adlar büyük/küçük harfe duyarlıdır.
 > * Küme içi sorgularda, Application Insights uygulamalar ve Log Analytics çalışma alanlarının adlandırılmasının doğru olduğundan emin olun.
 > * Adlar özel karakterler içeriyorsa, bunlar çapraz hizmet sorgusunda URL kodlaması ile değiştirilmiştir.
-> * Adlar, [KQL tanımlayıcı adı kurallarını](https://docs.microsoft.com/azure/data-explorer/kusto/query/schema-entities/entity-names)karşılamayan karakterler içeriyorsa, bunlar Dash **-** karakteriyle değiştirilmiştir.
+> * Adlar, [KQL tanımlayıcı adı kurallarını](/azure/data-explorer/kusto/query/schema-entities/entity-names)karşılamayan karakterler içeriyorsa, bunlar Dash **-** karakteriyle değiştirilmiştir.
 
 ### <a name="direct-query-on-your-log-analytics-or-application-insights-workspaces-from-azure-data-explorer-client-tools"></a>Azure Veri Gezgini istemci araçları 'ndan Log Analytics veya Application Insights çalışma alanlarınızdaki sorguyu doğrudan sorgulayın
 
@@ -90,7 +90,7 @@ union <Azure Data Explorer table>, cluster(CL1).database(<workspace-name>).<tabl
 
 :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-data-explorer-cross-query-proxy.png" alt-text="Azure Veri Gezgini çapraz hizmet sorgusu.":::
 
-Birleşim yerine [ `join` işleci](https://docs.microsoft.com/azure/data-explorer/kusto/query/joinoperator)kullanmak Için, bir [`hint`](https://docs.microsoft.com/azure/data-explorer/kusto/query/joinoperator#join-hints) Azure Veri Gezgini Native kümesinde çalıştırmak için bir de gerekebilir.
+Birleşim yerine [ `join` işleci](/azure/data-explorer/kusto/query/joinoperator)kullanmak Için, bir [`hint`](/azure/data-explorer/kusto/query/joinoperator#join-hints) Azure Veri Gezgini Native kümesinde çalıştırmak için bir de gerekebilir.
 
 ### <a name="join-data-from-an-azure-data-explorer-cluster-in-one-tenant-with-an-azure-monitor-resource-in-another"></a>Azure Izleyici kaynağı ile bir Kiracıdaki Azure Veri Gezgini kümesinden veri ekleme
 
@@ -98,9 +98,9 @@ Hizmetler arasında çapraz kiracı sorguları desteklenmez. Her iki kaynağı k
 
 Azure Veri Gezgini kaynağı ' A ' kiracısında ve Log Analytics çalışma alanı ' B ' kiracısında ise aşağıdaki iki yöntemden birini kullanın:
 
-1. Azure Veri Gezgini, farklı kiracılardaki sorumlular için roller eklemenize olanak tanır. ' B ' kiracısında Kullanıcı KIMLIĞINIZI Azure Veri Gezgini kümesinde yetkili bir kullanıcı olarak ekleyin. Azure Veri Gezgini kümesinde ' *[Trustedexternaltenant '](https://docs.microsoft.com/powershell/module/az.kusto/update-azkustocluster)* özelliğinin ' B ' kiracısı içerdiğini doğrulayın. Çapraz sorguyu ' B ' kiracısında tamamen çalıştırın.
+1. Azure Veri Gezgini, farklı kiracılardaki sorumlular için roller eklemenize olanak tanır. ' B ' kiracısında Kullanıcı KIMLIĞINIZI Azure Veri Gezgini kümesinde yetkili bir kullanıcı olarak ekleyin. Azure Veri Gezgini kümesinde ' *[Trustedexternaltenant '](/powershell/module/az.kusto/update-azkustocluster)* özelliğinin ' B ' kiracısı içerdiğini doğrulayın. Çapraz sorguyu ' B ' kiracısında tamamen çalıştırın.
 
-2. Azure Izleyici kaynağını ' A ' kiracısında görüntülemek için, açık [thouse](https://docs.microsoft.com/azure/lighthouse/) kullanın.
+2. Azure Izleyici kaynağını ' A ' kiracısında görüntülemek için, açık [thouse](../../lighthouse/index.yml) kullanın.
 ### <a name="connect-to-azure-data-explorer-clusters-from-different-tenants"></a>Farklı kiracılardan Azure Veri Gezgini kümelerine bağlanma
 
 Kusto Explorer, Kullanıcı hesabının ilk ait olduğu kiracıya otomatik olarak oturum açar. Aynı kullanıcı hesabına sahip diğer kiracılardaki kaynaklara erişmek için, `tenantId` bağlantı dizesinde açıkça belirtilmesi gerekir: `Data Source=https://ade.applicationinsights.io/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=` **tenantıd**
@@ -134,4 +134,4 @@ Log Analytics veya Application Insights kümelerini çağırırken aşağıdaki 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Log Analytics çalışma alanları ve Application Insights veri yapısı](data-platform-logs.md)hakkında daha fazla bilgi edinin.
-- [Azure Veri Gezgini sorguları yazmayı](https://docs.microsoft.com/azure/data-explorer/write-queries)öğrenin.
+- [Azure Veri Gezgini sorguları yazmayı](/azure/data-explorer/write-queries)öğrenin.
