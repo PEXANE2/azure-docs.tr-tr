@@ -3,12 +3,12 @@ title: Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verile
 description: Azure Backup, müşteri tarafından yönetilen anahtarları (CMK) kullanarak yedekleme verilerinizi şifrelemenize nasıl olanak sağladığını öğrenin.
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 30bcf907e1a2759c8a9977e50cb4880c2e254ca2
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: d5daa88475e3becde6e513391c555471f80396c5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562769"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735869"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak yedekleme verilerinin şifrelenmesi
 
@@ -77,7 +77,7 @@ Azure Backup, Azure Key Vault depolanan şifreleme anahtarlarına erişmek üzer
 
 **PowerShell ile:**
 
-Kurtarma Hizmetleri Kasası için sistem tarafından atanan yönetilen kimliği etkinleştirmek üzere [Update-Azrecoveryserviceskasa](https://docs.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesvault) komutunu kullanın.
+Kurtarma Hizmetleri Kasası için sistem tarafından atanan yönetilen kimliği etkinleştirmek üzere [Update-Azrecoveryserviceskasa](/powershell/module/az.recoveryservices/update-azrecoveryservicesvault) komutunu kullanın.
 
 Örnek:
 
@@ -121,7 +121,7 @@ Artık kurtarma hizmetleri kasasının şifreleme anahtarını içeren Azure Key
 
 **PowerShell ile**:
 
-Müşteri tarafından yönetilen anahtarlar kullanılarak şifrelemeyi etkinleştirmek ve kullanılacak şifreleme anahtarını atamak veya güncelleştirmek için [set-AzRecoveryServicesVaultProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) komutunu kullanın.
+Müşteri tarafından yönetilen anahtarlar kullanılarak şifrelemeyi etkinleştirmek ve kullanılacak şifreleme anahtarını atamak veya güncelleştirmek için [set-AzRecoveryServicesVaultProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) komutunu kullanın.
 
 Örnek:
 
@@ -290,7 +290,7 @@ Disk şifreleme kümesi, aşağıda gösterildiği gibi geri yükleme bölmesind
 
 **PowerShell ile**:
 
-[](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) `-DiskEncryptionSetId <string>` Geri yüklenen diski ŞIFRELEMEK için kullanılacak [des 'i belirtmek](https://docs.microsoft.com/powershell/module/az.compute/get-azdiskencryptionset) Için, [] parametresiyle Get-azrecoveryservicesbackupıtem komutunu kullanın. Diskleri VM yedeklemesinden geri yükleme hakkında daha fazla bilgi için [Bu makaleye](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-an-azure-vm)bakın.
+[](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) `-DiskEncryptionSetId <string>` Geri yüklenen diski ŞIFRELEMEK için kullanılacak [des 'i belirtmek](/powershell/module/az.compute/get-azdiskencryptionset) Için, [] parametresiyle Get-azrecoveryservicesbackupıtem komutunu kullanın. Diskleri VM yedeklemesinden geri yükleme hakkında daha fazla bilgi için [Bu makaleye](./backup-azure-vms-automation.md#restore-an-azure-vm)bakın.
 
 Örnek:
 

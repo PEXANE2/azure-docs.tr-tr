@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 31ae5b780bf451e29a97f04202f804db27fc387a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: bd6f32213a511987c0508dcc954252b2fd4e48f6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452939"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737600"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>FHıR için Azure API 'SI hakkında sık sorulan sorular
 
@@ -105,6 +105,12 @@ Bunun bazı örnekleri aşağıda verilmiştir:
 ### <a name="what-is-the-default-sort-when-searching-for-resources-in-azure-api-for-fhir"></a>FHıR için Azure API 'sindeki kaynakları ararken varsayılan sıralama nedir?
 
 Son güncelleştirilme tarihine göre sıralamayı destekliyoruz: _sort = _lastUpdated. Desteklenen diğer arama parametreleri hakkında daha fazla bilgi için, [desteklenen özellikler sayfamıza](./fhir-features-supported.md#search)göz atın.
+
+### <a name="does-the-azure-api-for-fhir-support-everything"></a>FHıR desteği $everything için Azure API 'SI mi? 
+
+Hayır. Bu anda $everything desteklemiyoruz. Ancak, iki API çağrısı ile elde edilebilir. Örneğin, hasta $ her şeyi elde etmek için, önce/Haent/[ID] kullanarak hasta kaydını alabilir ve ardından/Haent/[ID]/* kullanarak tüm hasta verilerini almak için ikinci bir çağrı yapabilirsiniz.
+
+Daha fazla ayrıntı için bu [topluluk gönderisini](https://chat.fhir.org/#narrow/stream/179166-implementers/topic/.24everything.20with.20_type)görebilirsiniz. 
 
 ### <a name="how-does-export-work"></a>$Export nasıl çalışır?
 

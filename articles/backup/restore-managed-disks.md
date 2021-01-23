@@ -3,12 +3,12 @@ title: Azure yönetilen disklerini geri yükleme
 description: Azure portal Azure yönetilen disklerini nasıl geri yükleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 848a7476b1c5095d4e4d3156d4c7ce33da777090
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: b9c9a22f25a8003151217bec15b618e3c380e67e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611143"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737385"
 ---
 # <a name="restore-azure-managed-disks-in-preview"></a>Azure yönetilen disklerini geri yükleme (önizlemede)
 
@@ -17,7 +17,7 @@ ms.locfileid: "98611143"
 >
 >Önizlemeye kaydolmak için [Bu formu doldurun](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) .
 
-Bu makalede, [Azure yönetilen disklerinin](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview) Azure Backup tarafından oluşturulan bir geri yükleme noktasından nasıl geri yükleneceği açıklanmaktadır.
+Bu makalede, [Azure yönetilen disklerinin](../virtual-machines/managed-disks-overview.md) Azure Backup tarafından oluşturulan bir geri yükleme noktasından nasıl geri yükleneceği açıklanmaktadır.
 
 Şu anda, yedeklemelerin alındığı kaynak diski değiştirerek geri yükleme Original-Location kurtarma (OLR) seçeneği desteklenmez. Aynı kaynak grubunda yedeklerin alındığı kaynak diskle veya başka bir kaynak grubunda yeni bir disk oluşturmak için bir kurtarma noktasından geri yükleme yapabilirsiniz. Bu, Alternate-Location kurtarma (ALR) olarak bilinir ve bu, hem kaynak diski hem de geri yüklenen (yeni) diski tutmaya yardımcı olur.
 
@@ -31,7 +31,7 @@ Bu makalede şunları yapmayı öğreneceksiniz:
 
 Yedekleme Kasası, diğer Azure kaynaklarına erişmek için yönetilen kimlik kullanır. Yedekten geri yüklemek için, yedekleme kasasının yönetilen kimliği, diskin geri yükleneceği kaynak grubunda bir izin kümesi gerektirir.
 
-Yedekleme Kasası, kaynak başına bir tane ile kısıtlanan ve bu kaynağın yaşam döngüsüne bağlı olan sistem tarafından atanmış bir yönetilen kimlik kullanır. Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak yönetilen kimliğe izin verebilirsiniz. Yönetilen kimlik, yalnızca Azure kaynaklarıyla kullanılabilecek özel bir türün hizmet sorumlusundan oluşur. [Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)hakkında daha fazla bilgi edinin.
+Yedekleme Kasası, kaynak başına bir tane ile kısıtlanan ve bu kaynağın yaşam döngüsüne bağlı olan sistem tarafından atanmış bir yönetilen kimlik kullanır. Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak yönetilen kimliğe izin verebilirsiniz. Yönetilen kimlik, yalnızca Azure kaynaklarıyla kullanılabilecek özel bir türün hizmet sorumlusundan oluşur. [Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md)hakkında daha fazla bilgi edinin.
 
 Geri yükleme işlemi gerçekleştirmek için aşağıdaki önkoşulların olması gerekir:
 
@@ -89,7 +89,7 @@ Geri yükleme işlemi gerçekleştirmek için aşağıdaki önkoşulların olmas
     ![Parametreleri geri yükle](./media/restore-managed-disks/restore-parameters.png)
 
     >[!TIP]
-    >Disk yedekleme çözümü kullanılarak Azure Backup yedeklenen diskler, kurtarma hizmetleri kasası ile Azure VM yedekleme çözümü kullanılarak Azure Backup tarafından da yedeklenebilir. Bu diskin eklendiği Azure VM korumasını yapılandırdıysanız, Azure VM geri yükleme işlemini de kullanabilirsiniz. VM 'yi veya disk dosyalarını veya klasörleri karşılık gelen Azure VM yedekleme örneğinin kurtarma noktasından geri yüklemeyi seçebilirsiniz. Daha fazla bilgi için bkz. [Azure VM yedeklemesi](https://docs.microsoft.com/azure/backup/about-azure-vm-restore).
+    >Disk yedekleme çözümü kullanılarak Azure Backup yedeklenen diskler, kurtarma hizmetleri kasası ile Azure VM yedekleme çözümü kullanılarak Azure Backup tarafından da yedeklenebilir. Bu diskin eklendiği Azure VM korumasını yapılandırdıysanız, Azure VM geri yükleme işlemini de kullanabilirsiniz. VM 'yi veya disk dosyalarını veya klasörleri karşılık gelen Azure VM yedekleme örneğinin kurtarma noktasından geri yüklemeyi seçebilirsiniz. Daha fazla bilgi için bkz. [Azure VM yedeklemesi](./about-azure-vm-restore.md).
 
 1. Doğrulama başarılı olduktan sonra geri yükleme işlemini **başlatmak için geri yükle '** yi seçin.
 
@@ -109,9 +109,9 @@ Geri yükleme, geri yükleme işlemi sırasında sağlanmış olan hedef kaynak 
 
     ![İşletim sistemi disklerini değiştirme](./media/restore-managed-disks/swap-os-disks.png)
 
-- Windows sanal makineler için, geri yüklenen disk bir veri diskise, [özgün veri diskini](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-the-portal) sanal makineden ayırmak için yönergeleri izleyin. Ardından [geri yüklenen diski](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal) sanal makineye ekleyin. Sanal makinenin [işletim sistemi diskini](https://docs.microsoft.com/azure/virtual-machines/windows/os-disk-swap) geri yüklenen diskle değiştirmek için yönergeleri izleyin.
+- Windows sanal makineler için, geri yüklenen disk bir veri diskise, [özgün veri diskini](../virtual-machines/windows/detach-disk.md#detach-a-data-disk-using-the-portal) sanal makineden ayırmak için yönergeleri izleyin. Ardından [geri yüklenen diski](../virtual-machines/windows/attach-managed-disk-portal.md) sanal makineye ekleyin. Sanal makinenin [işletim sistemi diskini](../virtual-machines/windows/os-disk-swap.md) geri yüklenen diskle değiştirmek için yönergeleri izleyin.
 
-- Linux sanal makineleri için, geri yüklenen disk bir veri diskise, [özgün veri diskini](https://docs.microsoft.com/azure/virtual-machines/linux/detach-disk#detach-a-data-disk-using-the-portal) sanal makineden ayırmak için yönergeleri izleyin. Ardından [geri yüklenen diski](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal#attach-an-existing-disk) sanal makineye ekleyin. Sanal makinenin [işletim sistemi diskini](https://docs.microsoft.com/azure/virtual-machines/linux/os-disk-swap) geri yüklenen diskle değiştirmek için yönergeleri izleyin.
+- Linux sanal makineleri için, geri yüklenen disk bir veri diskise, [özgün veri diskini](../virtual-machines/linux/detach-disk.md#detach-a-data-disk-using-the-portal) sanal makineden ayırmak için yönergeleri izleyin. Ardından [geri yüklenen diski](../virtual-machines/linux/attach-disk-portal.md#attach-an-existing-disk) sanal makineye ekleyin. Sanal makinenin [işletim sistemi diskini](../virtual-machines/linux/os-disk-swap.md) geri yüklenen diskle değiştirmek için yönergeleri izleyin.
 
 Geri yükleme işlemi başarıyla tamamlandıktan sonra, **hedef kaynak grubundaki** yedekleme kasasının yönetilen kimliğinden **disk geri yükleme işletmeni** rol atamasını iptal etmeniz önerilir.
 

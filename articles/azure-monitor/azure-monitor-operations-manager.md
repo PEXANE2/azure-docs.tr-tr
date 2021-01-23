@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2021
-ms.openlocfilehash: 877251ba7e0c1f3c33cab37e20d609479b69520c
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: c213a38286de05df5c3be8e3498bcca4ab6e1fbf
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251837"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736154"
 ---
 # <a name="azure-monitor-for-existing-operations-manager-customers"></a>Mevcut Operations Manager müşterileri için Azure Izleyici
-Bu makalede, şu anda [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/welcome) kullananlar ve iş uygulamalarını ve diğer kaynakları Azure 'A geçirirken [Azure izleyici](overview.md) 'ye geçiş planlıyor olan müşteriler için rehberlik sunulmaktadır. Son hedefiniz, Azure Izleyici ile mümkün olduğunca çok Operations Manager işlevselliği, işletmenizin ve BT operasyonel gereksinimlerinizle ödün vermeden değiştirerek buluta tam geçiş olduğunu varsayar. 
+Bu makalede, şu anda [System Center Operations Manager](/system-center/scom/welcome) kullananlar ve iş uygulamalarını ve diğer kaynakları Azure 'A geçirirken [Azure izleyici](overview.md) 'ye geçiş planlıyor olan müşteriler için rehberlik sunulmaktadır. Son hedefiniz, Azure Izleyici ile mümkün olduğunca çok Operations Manager işlevselliği, işletmenizin ve BT operasyonel gereksinimlerinizle ödün vermeden değiştirerek buluta tam geçiş olduğunu varsayar. 
 
 Bu makalede yapılan belirli öneriler Azure Izleyici olarak değişir ve Özellik Ekle Operations Manager. Temel strateji, tutarlı olmaya devam edecektir.
 
@@ -22,13 +22,13 @@ Bu makalede yapılan belirli öneriler Azure Izleyici olarak değişir ve Özell
 > Burada açıklanan çeşitli Azure Izleyici özelliklerinin uygulanması için bir maliyet vardır. bu nedenle, tüm ortamınız genelinde dağıtım yapmadan önce değerlerini değerlendirmelisiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
-Bu makalede, zaten [Operations Manager](https://docs.microsoft.com/system-center/scom) kullandığınızı ve en azından [Azure izleyici](overview.md)'nin temel olarak anlaşıldığını varsaymaktadır. İkisi arasındaki tüm karşılaştırmalar için bkz. [bulut izleme Kılavuzu: platformları izlemeye genel bakış](/azure/cloud-adoption-framework/manage/monitor/platform-overview). Bu makalede, aralarında yapılan önerilerin bazılarını anlamanıza yardımcı olmak için iki ile arasındaki belirli özellik farklılıkları ayrıntılı olarak açıklanmaktadır. 
+Bu makalede, zaten [Operations Manager](/system-center/scom) kullandığınızı ve en azından [Azure izleyici](overview.md)'nin temel olarak anlaşıldığını varsaymaktadır. İkisi arasındaki tüm karşılaştırmalar için bkz. [bulut izleme Kılavuzu: platformları izlemeye genel bakış](/azure/cloud-adoption-framework/manage/monitor/platform-overview). Bu makalede, aralarında yapılan önerilerin bazılarını anlamanıza yardımcı olmak için iki ile arasındaki belirli özellik farklılıkları ayrıntılı olarak açıklanmaktadır. 
 
 
 ## <a name="general-strategy"></a>Genel strateji
 Platformlar temelde farklı olduğundan, Operations Manager varlıkları Azure Izleyici 'ye dönüştürmeye yönelik geçiş araçları yoktur. Geçiş yapmanız bunun yerine, Operations Manager kullanmaya devam ederken [Standart bir Azure izleyici uygulamasını](deploy.md) oluşturur. Azure Izleyicisini farklı uygulamalar ve bileşenler için gereksinimlerinizi karşılayacak şekilde özelleştirdikten ve daha fazla özellik elde ettikten sonra, Operations Manager farklı yönetim paketlerini ve aracılarını devre dışı bırakmaya başlayabilirsiniz.
 
-Bu makalede önerilen genel strateji, buluta aşamalı geçiş yapmanızı sağlayan bir [karma bulut izleme](/azure/cloud-adoption-framework/manage/monitor/cloud-models-monitor-overview#hybrid-cloud-monitoring) stratejisi öneren [bulut izleme Kılavuzu](https://docs.microsoft.com/azure/cloud-adoption-framework/manage/monitor/)' nda olduğu gibidir. Bazı özellikler çakışsa da, bu strateji yeni platforma daha tanıdık geldiği sürece mevcut iş işlemlerinizi korumanıza olanak sağlar. Yalnızca Operations Manager işlevlerinden uzaklaştığından Azure Izleyici ile değiştirebilirsiniz. Birden çok izleme aracı kullanılması karmaşıklık ekler, ancak Azure Izleyici 'nin bir sonraki nesil bulut iş yüklerini izleyip, şirket içinde veya diğer bulutlarda olabilecek sunucu yazılımını ve altyapı bileşenlerini izleme Operations Manager korurken bir sonraki nesil bulut iş yüklerini izleme özelliğinden yararlanmanızı sağlar. 
+Bu makalede önerilen genel strateji, buluta aşamalı geçiş yapmanızı sağlayan bir [karma bulut izleme](/azure/cloud-adoption-framework/manage/monitor/cloud-models-monitor-overview#hybrid-cloud-monitoring) stratejisi öneren [bulut izleme Kılavuzu](/azure/cloud-adoption-framework/manage/monitor/)' nda olduğu gibidir. Bazı özellikler çakışsa da, bu strateji yeni platforma daha tanıdık geldiği sürece mevcut iş işlemlerinizi korumanıza olanak sağlar. Yalnızca Operations Manager işlevlerinden uzaklaştığından Azure Izleyici ile değiştirebilirsiniz. Birden çok izleme aracı kullanılması karmaşıklık ekler, ancak Azure Izleyici 'nin bir sonraki nesil bulut iş yüklerini izleyip, şirket içinde veya diğer bulutlarda olabilecek sunucu yazılımını ve altyapı bileşenlerini izleme Operations Manager korurken bir sonraki nesil bulut iş yüklerini izleme özelliğinden yararlanmanızı sağlar. 
 
 
 ## <a name="components-to-monitor"></a>İzlenecek bileşenler
@@ -37,7 +37,7 @@ Her biri için ayrı bir izleme stratejisi belirlemek üzere izlemeniz gereken f
 Buluttan önce, tüm katmanları izlemek için Operations Manager kullandınız. Bir hizmet olarak altyapı (IaaS) ile geçişinizi başlattığınızda, sanal makineleriniz için Operations Manager kullanmaya devam edersiniz, ancak Azure Izleyici 'yi bulut kaynaklarınız için kullanmaya başlayabilirsiniz. Hizmet olarak platform (PaaS) kullanarak modern uygulamalara daha fazla geçiş yaparken, Azure Izleyici 'de daha fazla odaklanarak Operations Manager işlevselliği devre dışı bırakmaya başlayabilirsiniz.
 
 
-![Bulut modelleri](https://docs.microsoft.com/azure/cloud-adoption-framework/strategy/media/monitoring-strategy/cloud-models.png)
+![Bulut modelleri](/azure/cloud-adoption-framework/strategy/media/monitoring-strategy/cloud-models.png)
 
 Bu katmanlar, bu makalenin geri kalanında açıklanan aşağıdaki kategorilerde basitleştirilebilir. Ortamınızdaki tüm izleme iş yükleri bu kategorilerden birine uygun şekilde sığmayabilir, ancak genel önerilerin uygulanabilmesi için her birinin belirli bir kategoriye yeterince yakın olması gerekir.
 

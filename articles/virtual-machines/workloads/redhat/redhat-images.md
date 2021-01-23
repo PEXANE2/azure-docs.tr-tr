@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: dbff136ac5787ef9549cca9dc8f946c56a138986
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 293245d6778a40e234cdca177905c15dc88dd04f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900510"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737770"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux görüntülerine genel bakış
 
@@ -60,8 +60,8 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:lat
 ```
 
 >[!NOTE]
-> Genel olarak, en son değerin [CompareTo yöntemi](/dotnet/api/system.version.compareto?view=netcore-3.1#system_version_compareto_system_version_)kurallarına göre belirlenmesi için sürümlerin karşılaştırması.
-Bu görüntü sürümü karşılaştırması, değerler bir dize olarak değil, bir [Sürüm](/dotnet/api/system.version.-ctor?view=netframework-4.8) nesnesi olarak karşılaştırılmasıyla yapılır.
+> Genel olarak, en son değerin [CompareTo yöntemi](/dotnet/api/system.version.compareto#system_version_compareto_system_version_)kurallarına göre belirlenmesi için sürümlerin karşılaştırması.
+Bu görüntü sürümü karşılaştırması, değerler bir dize olarak değil, bir [Sürüm](/dotnet/api/system.version.-ctor) nesnesi olarak karşılaştırılmasıyla yapılır.
 
 ## <a name="rhel-6-image-types"></a>RHEL 6 görüntü türleri
 

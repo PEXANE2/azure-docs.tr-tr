@@ -4,12 +4,12 @@ description: Uzun süreli saklama (Önizleme) ile PostgreSQL için Azure veritab
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: 628f43788c11558185a7b8a735373f0a663fdad1
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 1e2d83d4a5e21ed747ec9d4dcf2fa03d1e3935cc
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569496"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737582"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Uzun süreli saklama ile PostgreSQL için Azure veritabanı yedekleme (Önizleme)
 
@@ -31,7 +31,7 @@ Bu çözümü, Azure PostgreSQL tarafından sunulan ve 35 güne kadar bekletme s
 
 |Destek  |Ayrıntılar  |
 |---------|---------|
-|Desteklenen dağıtımlar   |  [PostgreSQL için Azure Veritabanı - Tek Sunucu](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server)     |
+|Desteklenen dağıtımlar   |  [PostgreSQL için Azure Veritabanı - Tek Sunucu](../postgresql/overview.md#azure-database-for-postgresql---single-server)     |
 |Desteklenen Azure bölgeleri |  Doğu ABD, Doğu ABD 2, Orta ABD, Orta Güney ABD, Batı ABD, Batı ABD 2, Orta Batı ABD, Brezilya Güney, Kanada Orta, Kuzey Avrupa, Batı Avrupa, UK Güney, UK Batı, Almanya Orta Batı, İsviçre Kuzey, İsviçre Batı, Doğu Asya, Güney Doğu Asya, Japonya Doğu, Japonya Batı, Kore orta, Kore Güney, Hindistan Orta, Avustralya Doğu, Avustralya Orta, Avustralya Orta 2, BAE Kuzey  |
 |Desteklenen Azure PostgreSQL sürümleri    |   9,5, 9,6, 10, 11      |
 

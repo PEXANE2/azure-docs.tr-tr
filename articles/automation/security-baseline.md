@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1626ee074d51048dbf45c629f261a550822d746c
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: ea984e527eb526e49c87ce5385ba5715803cc72d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200847"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737261"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Otomasyon için Azure Güvenlik temeli
 
@@ -556,7 +556,7 @@ Azure Güvenlik Merkezi önerilerini, varsa, bekleyen ve geçişte şifreleme i�
 
 * [Azure ile iletim sırasında şifrelemeyi anlama](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
-* [Azure Otomasyonu TLS 1,2 zorlaması](/azure/active-directory/hybrid/reference-connect-tls-enforcement)
+* [Azure Otomasyonu TLS 1,2 zorlaması](../active-directory/hybrid/reference-connect-tls-enforcement.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -938,7 +938,7 @@ Karma Runbook Worker özelliğini kullanırken, dağıtım için Azure sanal mak
 
 Çoğu senaryoda, Azure Otomasyonu durum yapılandırmasıyla birleştirilmiş Microsoft temel VM şablonları, güvenlik gereksinimlerinin karşılanmasına ve bakımında yardımcı olabilir.
 
-* [VM şablonunun nasıl indirileceği hakkında bilgi](../virtual-machines/windows/download-template.md)
+* [VM şablonunun nasıl indirileceği hakkında bilgi](/previous-versions/azure/virtual-machines/windows/download-template)
 
 * [ARM şablonları oluşturma hakkında bilgi](../virtual-machines/windows/ps-template.md)
 

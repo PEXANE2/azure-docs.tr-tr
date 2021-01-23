@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 6538243cf8fc12131e1480c8578bfa8739c4f561
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e3ebd83646353e34c239e7d1812e380b9e9d2e26
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676298"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737532"
 ---
 # <a name="dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-release-notes"></a>Azure SYNAPSE Analytics sürüm notlarında adanmış SQL Havuzu (eski adıyla SQL DW)
 
@@ -52,7 +52,7 @@ Araç geliştirmeleri için sürüm notunda belirtilen doğru sürümün yüklü
 | Hizmet geliştirmeleri | Ayrıntılar |
 | --- | --- |
 |**T-SQL satır Içi Table-Valued Işlevleri (Önizleme)**|Bu sürümle birlikte, artık Transact-SQL ile satır içi tablo değerli işlevler oluşturabilir ve sonuçlarını bir tablo gibi sorgulayabilirsiniz. Bu özellik şu anda önizleme aşamasındadır ve GA 'de araç çubuğunda desteklenecektir. Daha fazla bilgi için bkz. [create FUNCTION (Azure SYNAPSE Analytics)](/sql/t-sql/statements/create-function-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true).|
-|**BIrLEŞTIr komutu (Önizleme)**|Artık bir hedef tabloda, bir kaynak tabloyla bir birleşimin sonuçlarından INSERT, Update veya delete işlemleri çalıştırabilirsiniz. Örneğin, bir tablodaki satırları diğer tabloda bulunan farklılıklara göre ekleyerek, güncelleştirerek veya silerek iki tabloyu da eşitlenebilir.  Ayrıntılar için [birleştirmeyi](/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current) denetleyin.|
+|**BIrLEŞTIr komutu (Önizleme)**|Artık bir hedef tabloda, bir kaynak tabloyla bir birleşimin sonuçlarından INSERT, Update veya delete işlemleri çalıştırabilirsiniz. Örneğin, bir tablodaki satırları diğer tabloda bulunan farklılıklara göre ekleyerek, güncelleştirerek veya silerek iki tabloyu da eşitlenebilir.  Ayrıntılar için [birleştirmeyi](/sql/t-sql/statements/merge-transact-sql??view=azure-sqldw-latest&preserve-view=true) denetleyin.|
 
 ## <a name="aug-2020"></a>Ağu 2020
 
@@ -68,7 +68,7 @@ Araç geliştirmeleri için sürüm notunda belirtilen doğru sürümün yüklü
 |**Sütun düzeyinde şifreleme (Genel Önizleme)**|Transact-SQL kullanarak bir veri sütununa simetrik şifreleme uygulayarak Azure SYNAPSE Analizinizdeki hassas bilgileri koruyun. Sütun düzeyinde şifreleme, bir sertifika, parola, simetrik anahtar veya asimetrik anahtarla daha fazla korunan simetrik anahtarlar kullanarak verileri şifrelemek için kullanabileceğiniz yerleşik işlevlere sahiptir. Daha fazla bilgi için lütfen [bir veri sütununu şifreleyin](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest&preserve-view=true)' ı ziyaret edin.|
 |**Uyumluluk düzeyi desteği (GA)**|Bu sürümde, kullanıcılar artık bir veritabanının uyumluluk düzeyini, SYNAPSE SQL altyapısının belirli bir sürümünün Transact-SQL dilini ve sorgu işleme davranışlarını almak için ayarlayabilir. Daha fazla bilgi için bkz. [sys.database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ve [alter database kapsamlıdır Configuration](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).|
 |**Satır düzeyi güvenlik**|Bu sürüm, üzerinde RLS 'yi zorlanacak satırlarda güncelleştirme ve silme işlemlerine yönelik bir geliştirme içerir. Bu sürümde, iç işlevlerle ' is_rolemember ' gibi iç işlevler ile güncelleştirme ve silme işlemleri, iç işlem DML hedef tablosundaki herhangi bir sütuna başvurmadığında başarılı olur. Bu iyileştirmadan önce, bu işlemler temeldeki DML işlemlerinde sınırlama nedeniyle başarısız oldu.|
-|**DBCC SHRıNKDATABASE (GA)**|Artık belirtilen veritabanındaki verilerin ve günlük dosyalarının boyutunu küçültebilirsiniz. Daha fazla bilgi için [belgelerine](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=sql-server-ver15)bakın.|
+|**DBCC SHRıNKDATABASE (GA)**|Artık belirtilen veritabanındaki verilerin ve günlük dosyalarının boyutunu küçültebilirsiniz. Daha fazla bilgi için [belgelerine](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=azure-sqldw-latest&preserve-view=true)bakın.|
 
 ## <a name="may-2020"></a>Mayıs 2020
 

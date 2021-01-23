@@ -3,12 +3,12 @@ title: Azure Service Bus abonelik kuralı SQL filtresi sözdizimi | Microsoft Do
 description: Bu makalede SQL filtresi dilbilgisinde ayrıntılar sağlanmaktadır. SQL filtresi, SQL-92 standardının bir alt kümesini destekler.
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: 60f3cb6e85cef7a166c353f78cfb50405b962bdd
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 93739b0d64fb029f4d2af1d8dbbf91947085337d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633180"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737668"
 ---
 # <a name="subscription-rule-sql-filter-syntax"></a>Abonelik kuralı SQL filtresi sözdizimi
 
@@ -272,6 +272,65 @@ Aşağıdaki [Sqlfilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) s
 
 ## <a name="examples"></a>Örnekler
 
+### <a name="filter-on-system-properties"></a>Sistem özelliklerinde filtrele
+Bir filtre içindeki bir sistem özelliğine başvurmak için şu biçimi kullanın: `sys.<system-property-name>` . 
+
+```csharp
+sys.Label LIKE '%bus%'`
+sys.messageid = 'xxxx'
+sys.correlationid like 'abc-%'
+```
+
+## <a name="filter-on-message-properties"></a>İleti özelliklerini filtrele
+İleti özelliklerini bir filtrede kullanma örnekleri aşağıda verilmiştir. Yalnızca veya kullanarak ileti özelliklerine erişebilirsiniz `user.property-name` `property-name` .
+
+```csharp
+MessageProperty = 'A'
+SuperHero like 'SuperMan%'
+```
+
+### <a name="filter-on-message-properties-with-special-characters"></a>İleti özelliklerini özel karakterlerle filtrele
+İleti özelliğinin adı özel karakterler içeriyorsa, `"` özellik adını çevrelemek için Double tırnakları () kullanın. Örneğin, özellik adı ise, `"http://schemas.microsoft.com/xrm/2011/Claims/EntityLogicalName"` filtrede aşağıdaki sözdizimini kullanın. 
+
+```csharp
+"http://schemas.microsoft.com/xrm/2011/Claims/EntityLogicalName" = 'account'
+```
+
+### <a name="filter-on-message-properties-with-numeric-values"></a>İleti özelliklerini sayısal değerlerle filtrele
+Aşağıdaki örneklerde, filtrelerdeki sayısal değerlerle özellikleri nasıl kullanabileceğiniz gösterilmektedir. 
+
+```csharp
+MessageProperty = 1
+MessageProperty > 1
+MessageProperty > 2.08
+MessageProperty = 1 AND MessageProperty2 = 3
+MessageProperty = 1 OR MessageProperty2 = 3
+```
+
+### <a name="parameter-based-filters"></a>Parametre tabanlı filtreler
+Parametre tabanlı filtreleri kullanmanın birkaç örneği aşağıda verilmiştir. Bu örneklerde, `DataTimeMp` türünde bir ileti özelliği `DateTime` ve bir `@dtParam` nesne olarak filtreye geçirilen parametredir `DateTime` .
+
+```csharp
+DateTimeMp < @dtParam
+DateTimeMp > @dtParam
+
+(DateTimeMp2-DateTimeMp1) <= @timespan //@timespan is a parameter of type TimeSpan
+DateTimeMp2-DateTimeMp1 <= @timespan
+```
+
+### <a name="using-in-and-not-in"></a>İçinde DEĞIL, içinde kullanma
+
+```csharp
+StoreId IN('Store1', 'Store2', 'Store3')"
+
+sys.To IN ('Store5','Store6','Store7') OR StoreId = 'Store8'
+
+sys.To NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8') OR StoreId NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8')
+```
+
+Bir C# örneği için bkz. [GitHub 'Da konu filtreleri örneği](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Azure.Messaging.ServiceBus/BasicSendReceiveTutorialwithFilters).
+
+
 ### <a name="set-rule-action-for-a-sql-filter"></a>SQL filtresi için kural eylemi ayarlama
 
 ```csharp
@@ -296,30 +355,6 @@ var filterActionRule = new RuleDescription
 await this.mgmtClient.CreateRuleAsync(topicName, subscriptionName, filterActionRule);
 ```
 
-### <a name="sql-filter-on-a-system-property"></a>Bir sistem özelliğinde SQL filtresi
-
-```csharp
-sys.Label LIKE '%bus%'`
-```
-
-### <a name="using-or"></a>VEYA kullanma 
-
-```csharp
- sys.Label LIKE '%bus%'` OR `user.tag IN ('queue', 'topic', 'subscription')
-```
-
-### <a name="using-in-and-not-in"></a>İçinde DEĞIL, içinde kullanma
-
-```csharp
-StoreId IN('Store1', 'Store2', 'Store3')"
-
-sys.To IN ('Store5','Store6','Store7') OR StoreId = 'Store8'
-
-sys.To NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8') OR StoreId NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8')
-```
-
-Bir C# örneği için bkz. [GitHub 'Da konu filtreleri örneği](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Azure.Messaging.ServiceBus/BasicSendReceiveTutorialwithFilters).
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -327,5 +362,5 @@ Bir C# örneği için bkz. [GitHub 'Da konu filtreleri örneği](https://github.
 - [SQLFilter sınıfı (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlfilter)
 - [SqlFilter sınıfı (Java)](/java/api/com.microsoft.azure.servicebus.rules.SqlFilter)
 - [SqlRuleFilter (JavaScript)](/javascript/api/@azure/service-bus/sqlrulefilter)
-- [az ServiceBus konu abonelik kuralı](/cli/azure/servicebus/topic/subscription/rule)
+- [`az servicebus topic subscription rule`](/cli/azure/servicebus/topic/subscription/rule)
 - [New-AzServiceBusRule](/powershell/module/az.servicebus/new-azservicebusrule)

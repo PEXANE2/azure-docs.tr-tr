@@ -3,18 +3,18 @@ title: Azure portal için desteklenen tarayıcılar ve cihazlar
 description: Tüm modern cihazlarda ve en son tarayıcı sürümleriyle Azure portal kullanabilirsiniz. Tarayıcınızın desteklendiğinden emin olmak için bu makaleye başvurun.
 ms.assetid: 35fa18ec-21d8-41bf-af2b-e5e92703401d
 ms.topic: conceptual
-ms.date: 11/18/2020
+ms.date: 01/22/2021
 ms.custom: accessibility
-ms.openlocfilehash: 81c4ccef688622ec20d111383359053b82045996
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 2637dd6112d1cf1f9a3131cb9043a8b6aac2884f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938095"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735835"
 ---
 # <a name="supported-devices"></a>Desteklenen cihazlar
 
-[Azure Portal](https://portal.azure.com) Web tabanlı bir konsoldur ve tüm modern masaüstleri ve tablet cihazlarının tarayıcılarında çalışır. Portalı kullanmak için tarayıcınızda JavaScript 'in etkinleştirilmiş olması gerekir.
+[Azure Portal](https://portal.azure.com) Web tabanlı bir konsoldur ve tüm modern masaüstleri ve tablet cihazlarının tarayıcılarında çalışır. Portalı kullanmak için tarayıcınızda JavaScript 'in etkinleştirilmiş olması gerekir. Bazı Portal özellikleriyle ilgili sorunlara neden olabileceğinden, tarayıcınızda ad engelleyicilerini kullanmaktan önermiyoruz.
 
 Azure kaynaklarını bir mobil cihazdan yönetmeniz gerekiyorsa  [Azure mobil uygulaması](https://azure.microsoft.com/features/azure-portal/mobile-app/)deneyin. İOS ve Android için kullanılabilir.
 

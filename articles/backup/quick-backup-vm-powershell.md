@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 04/16/2019
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 5e83c599ceed76927f2a313f78c83638d708f1bb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 81005a3032355f566aef2a6794cf2ec5038b0dd8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90985138"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737125"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>PowerShell ile Azure'daki bir sanal makineyi yedekleme
 
@@ -18,7 +18,7 @@ ms.locfileid: "90985138"
 
 [Azure Backup](backup-overview.md) , şirket içi makineleri ve uygulamaları ve Azure VM 'lerini yedekler. Bu makalede, AZ modülle bir Azure VM 'yi nasıl yedekleyeceğiniz gösterilmektedir. Alternatif olarak, [Azure CLI](quick-backup-vm-cli.md)veya [Azure Portal](quick-backup-vm-portal.md)kullanarak bir VM 'yi yedekleyebilirsiniz.
 
-Bu hızlı başlangıç belgesi var olan bir Azure VM'de yedeklemeyi etkinleştirir. Bir sanal makine oluşturmanız gerekiyorsa [Azure PowerShell ile sanal makine oluşturabilirsiniz](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json).
+Bu hızlı başlangıç belgesi var olan bir Azure VM'de yedeklemeyi etkinleştirir. Bir sanal makine oluşturmanız gerekiyorsa [Azure PowerShell ile sanal makine oluşturabilirsiniz](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fpowershell%2fmodule%2ftoc.json).
 
 Bu hızlı başlangıç Azure PowerShell AZ Module Version 1.0.0 veya üstünü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure PowerShell Modülü yükleme](/powershell/azure/install-az-ps).
 
@@ -45,7 +45,7 @@ Bu hızlı başlangıç Azure PowerShell AZ Module Version 1.0.0 veya üstünü 
 Kasayı oluştururken:
 
 - Kaynak grubu ve konum için, yedeklemek istediğiniz sanal makinenin kaynak grubunu ve konumunu belirtin.
-- VM oluşturmak için bu [örnek betiği](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json) kullandıysanız kaynak grubu **myresourcegroup**, VM ***myvm**ve kaynaklar **westeurope** bölgedeyse.
+- VM oluşturmak için bu [örnek betiği](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fpowershell%2fmodule%2ftoc.json) kullandıysanız kaynak grubu **myresourcegroup**, VM **_myvm_* ve kaynaklar **westeurope** bölgedeyse.
 - Azure Backup, yedeklenen veriler için depolamayı otomatik olarak işler. Kasa, varsayılan olarak [coğrafi olarak yedekli depolama (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage)kullanır. Coğrafi yedeklilik, yedeklenen verilerin birincil bölgeden yüzlerce mil uzakta olan ikincil bir Azure bölgesine çoğaltılmasını sağlar.
 
 Şimdi bir kasa oluşturun:
@@ -139,7 +139,7 @@ Yedeklemeler, yedekleme ilkesinde belirtilen zamanlamaya göre çalışır. İst
     Get-AzRecoveryservicesBackupJob
     ```
 
-    Çıkış, işi **sürüyor**olarak gösteren aşağıdaki örneğe benzer:
+    Çıkış, işi **sürüyor** olarak gösteren aşağıdaki örneğe benzer:
 
     ```output
     WorkloadName   Operation         Status       StartTime              EndTime                JobID

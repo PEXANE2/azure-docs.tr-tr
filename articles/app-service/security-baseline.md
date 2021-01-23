@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1ea8f3bccd97e1aaa15a21ae605a163b11c8ae39
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 758f7de46c524406f31a40072250eb7d59745d42
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197940"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736097"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>App Service için Azure Güvenlik temeli
 
@@ -71,7 +71,7 @@ Azure Güvenlik Duvarı 'nı kullanarak trafik gönderin ve abonelikler ve sanal
 
 - [Azure Güvenlik Merkezi tarafından sunulan ağ güvenliğini anlama](../security-center/security-center-network-recommendations.md)
 
-- [App Service Izlemeyi ve korumayı etkinleştirme](/azure/security-center/defender-for-app-service-introduction)
+- [App Service Izlemeyi ve korumayı etkinleştirme](../security-center/defender-for-app-service-introduction.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -168,7 +168,7 @@ Ek bilgi için başvurulan bağlantıları gözden geçirin.
 
 - [Portal ile Application Gateway kullanarak uçtan uca TLS Yapılandırma](../application-gateway/end-to-end-ssl-portal.md)
 
-- [Bir App Service kilitleme konusunda açıklandığı gibi Ao 'un güvenliğini sağlama](/azure/app-service/environment/firewall-integration)
+- [Bir App Service kilitleme konusunda açıklandığı gibi Ao 'un güvenliğini sağlama](./environment/firewall-integration.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -205,7 +205,7 @@ Ek bilgi için başvurulan bağlantıları gözden geçirin.
 
 - [Portal ile Application Gateway kullanarak uçtan uca TLS Yapılandırma](../application-gateway/end-to-end-ssl-portal.md)
 
-- [Bir App Service kilitleme konusunda açıklandığı gibi Ao 'un güvenliğini sağlama](/azure/app-service/environment/firewall-integration)
+- [Bir App Service kilitleme konusunda açıklandığı gibi Ao 'un güvenliğini sağlama](./environment/firewall-integration.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -221,7 +221,7 @@ Tüm kaynakların etiketlerle oluşturulduğundan ve var olan etiketsiz kaynakla
 
 - [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
-- [Azure App Service erişim kısıtlamaları](/azure/app-service/app-service-ip-restrictions)
+- [Azure App Service erişim kısıtlamaları](./app-service-ip-restrictions.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 

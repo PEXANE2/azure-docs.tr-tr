@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 297efa83fb1563e3a360f652a6ac1bc2b1679998
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd8c079e91a6765dff8ad347085c44d0aa2f8d82
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941875"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737312"
 ---
 # <a name="create-an-azure-arc-data-controller-in-the-azure-portal"></a>Azure portal Azure Arc veri denetleyicisi oluşturma
 
@@ -40,12 +40,16 @@ Azure portal ve Azure Data Studio kullanarak Azure Arc veri denetleyicisi oluşt
 6. **Veri denetleyicisi ayrıntıları** düğmesine tıklayın.
 7. Azure portal oluşturduğunuz diğer tüm kaynaklar için yaptığınız gibi bir abonelik, kaynak grubu ve Azure konumu seçin. Bu durumda, seçtiğiniz Azure konumu kaynakla ilgili meta verilerin depolanacağı yeri olacaktır.  Kaynak, seçtiğiniz herhangi bir altyapıda oluşturulur. Azure altyapısında olması gerekmez.
 8. Veri denetleyiciniz için bir ad girin.
-9. Şu anda önizlemede yalnızca dolaylı olarak bağlı mod desteklenir.
-10. Bir dağıtım yapılandırma profili seçin.
-11. **Azure Studio 'Da aç** düğmesine tıklayın.
-12. Bir sonraki ekranda, seçimlerinizin ve oluşturulan bir not defterinizin özetini görürsünüz.  Not defterini indirmek için **sağlama Not defterini indir** düğmesine tıklayabilirsiniz.
-13. Azure Data Studio bölümünde Not defterini açın ve üstteki **Tümünü Çalıştır** düğmesine tıklayın.
-14. Veri denetleyicisi oluşturma işleminin tamamlanabilmesi için Not defteri 'ndeki komut istemlerini ve yönergeleri izleyin.
+9. Veri denetleyicisi için bağlantı modunu seçin. [Bağlantı modları ve gereksinimler](./connectivity.md)hakkında daha fazla bilgi edinin. 
+
+   > [!NOTE] 
+   > **Doğrudan** bağlantı modunu seçerseniz, hizmet sorumlusu kimlik bilgilerinin, [hizmet sorumlusu oluşturma](upload-metrics-and-logs-to-azure-monitor.md#create-service-principal)bölümünde açıklandığı gibi ortam değişkenleri aracılığıyla ayarlandığından emin olun. 
+
+1. Bir dağıtım yapılandırma profili seçin.
+1. **Azure Studio 'Da aç** düğmesine tıklayın.
+1. Bir sonraki ekranda, seçimlerinizin ve oluşturulan bir not defterinizin özetini görürsünüz.  Not defterini indirmek için **sağlama Not defterini indir** düğmesine tıklayabilirsiniz.
+1. Azure Data Studio bölümünde Not defterini açın ve üstteki **Tümünü Çalıştır** düğmesine tıklayın.
+1. Veri denetleyicisi oluşturma işleminin tamamlanabilmesi için Not defteri 'ndeki komut istemlerini ve yönergeleri izleyin.
 
 ## <a name="monitoring-the-creation-status"></a>Oluşturma durumunu izleme
 

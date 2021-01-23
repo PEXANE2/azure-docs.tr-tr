@@ -298,8 +298,6 @@
       href: template-best-practices.md
     - name: Sık sorulan sorular
       href: frequently-asked-questions.md
-    - name: Şablon Belirtimleri
-      href: template-specs.md
     - name: Bulut tutarlılığına yönelik şablonlar
       href: templates-cloud-consistency.md
     - name: Dağıtım modları
@@ -423,6 +421,12 @@
           href: test-toolkit.md
         - name: Test çalışmaları
           href: test-cases.md
+    - name: Şablon belirtimleri
+      items:
+        - name: Şablon belirtimlerini oluşturma ve dağıtma
+          href: template-specs.md
+        - name: Portal şablonu galerisini Dönüştür
+          href: convert-to-template-spec.md
     - name: CI/CD
       items:
         - name: İşlem hatları olan ARM şablonları

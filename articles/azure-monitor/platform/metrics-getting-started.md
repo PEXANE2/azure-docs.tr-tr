@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 2bf56379a32bf8035ea2d0d3fe797776ec6ba40d
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: e31eb8deb3102ab03809f01e33b1e6548113dae4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250409"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736398"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Azure Ölçüm Gezgini'ni kullanmaya başlama
 
@@ -29,7 +29,7 @@ Azure Izleyici Ölçüm Gezgini, grafikleri çizdirme, eğilimleri görsel olara
 
 Bir ölçüm grafiği oluşturmak için, kaynak, kaynak grubu, abonelik veya Azure Izleyici görünümünden **ölçümler** sekmesini açın ve şu adımları izleyin:
 
-1. Kaynak kapsamı seçicisini açmak için "kapsam seçin" düğmesine tıklayın. Bu, ölçümlerini görmek istediğiniz kaynakları seçmenizi sağlar. Kaynak menüsünden Ölçüm Gezgini 'ni açtıysanız kaynak zaten doldurulmalıdır. Birden çok kaynak arasında ölçümleri görüntülemeyi öğrenmek için [Bu makaleyi okuyun](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-dynamic-scope).
+1. Kaynak kapsamı seçicisini açmak için "kapsam seçin" düğmesine tıklayın. Bu, ölçümlerini görmek istediğiniz kaynakları seçmenizi sağlar. Kaynak menüsünden Ölçüm Gezgini 'ni açtıysanız kaynak zaten doldurulmalıdır. Birden çok kaynak arasında ölçümleri görüntülemeyi öğrenmek için [Bu makaleyi okuyun](./metrics-dynamic-scope.md).
     > ![Bir kaynak seçin](./media/metrics-getting-started/scope-picker.png)
 
 2. Bazı kaynaklar için bir ad alanı seçmelisiniz. Ad alanı, ölçümleri kolayca bulabilmeniz için, ölçümleri düzenlemenin bir yoludur. Örneğin, depolama hesaplarının dosya, tablo, blob 'Lar ve sıra ölçümlerini depolamak için ayrı ad alanları vardır. Birçok kaynak türünün yalnızca bir ad alanı vardır.

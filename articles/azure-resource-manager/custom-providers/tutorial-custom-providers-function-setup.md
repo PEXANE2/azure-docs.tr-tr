@@ -5,12 +5,12 @@ author: jjbfour
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: 6e11e08d861538ddf395f522495798546e04ca7c
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 55554678047faeedd16b78dea61a42d50fd59491
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948961"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737328"
 ---
 # <a name="set-up-azure-functions-for-azure-custom-providers"></a>Azure özel sağlayıcıları için Azure Işlevleri ayarlama
 
@@ -21,7 +21,7 @@ ms.locfileid: "91948961"
 > [!NOTE]
 > Bu öğreticide, bir Azure işlev uygulaması kullanan bir basit hizmet uç noktası oluşturacaksınız. Ancak, özel bir sağlayıcı herkese açık olarak erişilebilen herhangi bir uç noktası kullanabilir. Alternatifler Azure Logic Apps, Azure API Management ve Azure App Service Web Apps özelliğini içerir.
 
-Bu öğreticiyi başlatmak için öncelikle [Azure Portal Ilk Azure işlev uygulamanızı oluşturma](../../azure-functions/functions-create-first-azure-function.md)öğreticisini izlemelisiniz. Bu öğreticide, Azure portal değiştirilebilen bir .NET Core Web kancası işlevi oluşturulur. Bu, aynı zamanda geçerli öğreticinin temelidir.
+Bu öğreticiyi başlatmak için öncelikle [Azure Portal Ilk Azure işlev uygulamanızı oluşturma](../../azure-functions/functions-get-started.md)öğreticisini izlemelisiniz. Bu öğreticide, Azure portal değiştirilebilen bir .NET Core Web kancası işlevi oluşturulur. Bu, aynı zamanda geçerli öğreticinin temelidir.
 
 ## <a name="install-azure-table-storage-bindings"></a>Azure Tablo depolama bağlamalarını yükler
 
@@ -31,8 +31,8 @@ Azure Tablo depolama bağlamalarını yüklemek için:
 1. **+ Yeni giriş**' i seçin.
 1. **Azure Tablo depolama**' yı seçin.
 1. Zaten yüklenmemişse Microsoft. Azure. WebJobs. Extensions. Storage uzantısını yükleme.
-1. **Tablo parametresi adı** kutusuna **TableStorage**girin.
-1. **Tablo adı** kutusuna **mycustomresources**yazın.
+1. **Tablo parametresi adı** kutusuna **TableStorage** girin.
+1. **Tablo adı** kutusuna **mycustomresources** yazın.
 1. Güncelleştirilmiş giriş parametresini kaydetmek için **Kaydet** ' i seçin.
 
 ![Özel sağlayıcıya genel bakış tablo bağlamalarını gösterme](./media/create-custom-provider/azure-functions-table-bindings.png)
@@ -42,7 +42,7 @@ Azure Tablo depolama bağlamalarını yüklemek için:
 Azure işlevini, özel sağlayıcı yeniden deneme isteği yöntemlerini içerecek şekilde ayarlamak için:
 
 1. HttpTrigger için **tümleştir** sekmesine gidin.
-1. **SEÇILI http metotları**altında **Al**, **Postala**, **Sil**ve **koy**' u seçin.
+1. **SEÇILI http metotları** altında **Al**, **Postala**, **Sil** ve **koy**' u seçin.
 
 ![HTTP yöntemlerini gösteren özel sağlayıcıya genel bakış](./media/create-custom-provider/azure-functions-http-methods.png)
 

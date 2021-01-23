@@ -4,12 +4,12 @@ description: Azure Backup ile Azure VM 'lerinde SQL Server veritabanlarının ye
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 7518fc49f7d6d728bd8faa0de4cf0edc1c6d5831
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 56dcf29a5c703a72fd137a5f1bf129f568a03b4b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734122"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735818"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Azure VM yedeklemesi üzerinde çalışan SQL Server veritabanları hakkında SSS
 
@@ -108,7 +108,7 @@ Evet, Azure Backup SQL Server veritabanlarının veya TDE 'ın etkinleştirildi�
 
 ## <a name="does-azure-backup-perform-a-checksum-operation-on-the-data-stream"></a>Veri akışında bir sağlama toplamı işlemi mi Azure Backup?
 
-Veri akışında bir sağlama toplamı işlemi gerçekleştiririz. Ancak bu, [SQL sağlama toplamıyla](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server)karıştırılmamalıdır.
+Veri akışında bir sağlama toplamı işlemi gerçekleştiririz. Ancak bu, [SQL sağlama toplamıyla](/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server)karıştırılmamalıdır.
 Azure iş yükü yedeklemesi, veri akışındaki sağlama toplamını hesaplar ve yedekleme işlemi sırasında açıkça depolar. Bu sağlama toplamı akışı daha sonra bir başvuru olarak alınır ve verilerin tutarlı olduğundan emin olmak için geri yükleme işlemi sırasında veri akışının sağlaması sırasında çapraz doğrulanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar

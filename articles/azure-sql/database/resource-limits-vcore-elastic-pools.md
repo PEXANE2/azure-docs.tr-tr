@@ -10,13 +10,13 @@ ms.topic: reference
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 01/15/2021
-ms.openlocfilehash: 2daa07315be85e1fcd543480cd30a57c118d8547
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/22/2021
+ms.openlocfilehash: 619f4deee81c97f2d7a0b4359e2b999c476b1ae2
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251497"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737583"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Sanal çekirdek satın alma modelini kullanarak elastik havuzlar için kaynak sınırları
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -218,7 +218,7 @@ Hizmet katmanını, işlem boyutunu (hizmet hedefi) ve depolama miktarını [Azu
 |TempDB en fazla veri boyutu (GB)|83,25|92,5|111|148|166,5|333|
 |Depolama türü|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|
 |GÇ gecikme süresi (yaklaşık)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|
-|Havuz başına en fazla veri ıOPS <sup>2</sup>|5760|6400|7680|10240|11520|23040|
+|Havuz başına en fazla veri ıOPS <sup>2</sup>|5760|6400|7680|10240|11520|12800|
 |Havuz başına en fazla günlük hızı (MBps)|48|48|48|48|48|48|
 |Havuz başına en fazla eş zamanlı çalışan (istek) <sup>3</sup>|900|1000|1200|1600|1800|3600|
 |Havuz başına en fazla eşzamanlı oturum açma sayısı (istek) <sup>3</sup>|1800|2000|2400|3200|3600|7200|

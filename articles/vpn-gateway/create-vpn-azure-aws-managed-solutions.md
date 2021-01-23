@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: ricmmartins
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 01/15/2021
+ms.date: 01/22/2021
 ms.author: ricmart
-ms.openlocfilehash: 3b9e60eb037182318e9d1ef7336565908a9c8f32
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: a0655ce1d2e9939981bb4fd3280af80e359ea1e1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664792"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737753"
 ---
 # <a name="create-a-vpn-connection-between-azure-and-aws-using-managed-solutions"></a>Yönetilen çözümleri kullanarak Azure ile AWS arasında bir VPN bağlantısı oluşturma
 
@@ -42,6 +42,8 @@ Sanal ağınız için bir VPN Ağ Geçidi oluşturun. Yönergeler için bkz. [ö
 
 Bu makalede aşağıdaki örnek değerler ve ayarlar kullanılır:
 
+* **Ağ geçidi adı:** VPN-Azure-AWS
+* **Bölge:** Doğu ABD
 * **Ağ geçidi türü:** VPN
 * **VPN türü:** Rota tabanlı
 * **SKU:** VpnGw1
@@ -173,15 +175,13 @@ Bu bölümde, yüksek kullanılabilirlik sağlamak için ikinci bir bağlantı o
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/azure-tunnels.png" alt-text="Azure bağlantı durumu":::
 
-1. AWS bağlantılarını görüntüleyin.
+1. AWS bağlantılarını görüntüleyin. Bu örnekte, bağlantıların artık Kuruladığına bakabilirsiniz.
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/aws-tunnels.png" alt-text="AWS bağlantı durumu":::
 
-Bağlantılar artık oluşturulmuştur.
+## <a name="to-test-connections"></a>Bağlantıları test etmek için
 
-## <a name="test-connections"></a>Sınama bağlantıları
-
-1. AWS 'de VPC 'ye bir Internet ağ geçidi ekleyin. Internet ağ geçidi, bir Amazon VPN ve Internet arasındaki mantıksal bir bağlantıdır. Bu kaynak, Internet üzerinden AWS genel IP 'sinden test sanal makinesi üzerinden bağlanmanızı sağlar. Bu kaynak, VPN bağlantısı için gerekli değildir. Yalnızca test etmek için kullanıyoruz.
+1. AWS 'de VPC 'ye bir **İnternet ağ geçidi** ekleyin. İnternet ağ geçidi, bir Amazon VPN ve Internet arasındaki mantıksal bir bağlantıdır. Bu kaynak, Internet üzerinden AWS genel IP 'sinden test sanal makinesi üzerinden bağlanmanızı sağlar. Bu kaynak, VPN bağlantısı için gerekli değildir. Yalnızca test etmek için kullanıyoruz.
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/create-igw.png" alt-text="Internet ağ geçidini oluşturma":::
 
@@ -189,11 +189,11 @@ Bağlantılar artık oluşturulmuştur.
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/attach-igw.png" alt-text="Internet ağ geçidini VPC 'ye iliştirme":::
 
-1. Bir VPC seçin ve **Internet ağ geçidini iliştirin**.
+1. Bir VPC seçin ve **İnternet ağ geçidi ekleyin**.
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/attach-igw-2.png" alt-text="Ağ geçidini iliştirme":::
 
-1. Internet ağ geçidi üzerinden **0.0.0.0/0** (Internet) bağlantılarına izin vermek için bir yol oluşturun.
+1. İnternet ağ geçidi üzerinden **0.0.0.0/0** (Internet) bağlantılarına izin vermek için bir yol oluşturun.
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/allow-internet-igw.png" alt-text="Ağ Geçidi aracılığıyla rotayı yapılandırma":::
 
@@ -201,11 +201,11 @@ Bağlantılar artık oluşturulmuştur.
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/azure-effective-routes.png" alt-text="Geçerli rotaları denetleyin":::
 
-1. Azure 'daki bir Linux VM 'sinden ortam, aşağıdaki örneğe benzer.
+1. Bunu Azure 'da bir Linux VM 'den test edebilirsiniz. Sonuç, aşağıdaki örneğe benzer şekilde görünür.
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/azure-overview.png" alt-text="Linux VM 'den Azure 'a genel bakış":::
 
-1. AWS 'deki bir Linux VM 'den, ortam aşağıdaki örneğe benzer.
+1. Bunu ayrıca AWS 'deki bir Linux VM 'sinden test edebilirsiniz. Sonuç, aşağıdaki örneğe benzer şekilde görünür.
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/aws-overview.png" alt-text="Linux VM 'den AWS 'ye Genel Bakış":::
 

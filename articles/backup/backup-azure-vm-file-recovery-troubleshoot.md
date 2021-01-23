@@ -3,12 +3,12 @@ title: Azure VM dosya kurtarma sorunlarını giderme
 description: Azure VM yedeklemesinden dosya ve klasörleri kurtarırken karşılaşılan sorunları giderin.
 ms.topic: troubleshooting
 ms.date: 07/12/2020
-ms.openlocfilehash: aec69b91ad1dae5864e5e8fba61c53e6d15887f4
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: c4d0d233237cb477d72efea0b91d4e5288e2a302
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624515"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735886"
 ---
 # <a name="troubleshoot-issues-in-file-recovery-of-an-azure-vm-backup"></a>Azure VM yedeklemesinin dosya kurtarma sorunlarını giderme
 
@@ -46,7 +46,7 @@ Bu bölümde, dosya kurtarma için betiği indirirken ve yürütürken karşıla
 
 ### <a name="you-cant-download-the-script"></a>Betiği indirileyemiyorum
 
-1. [Betiği indirmek için gerekli izinlere](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#select-recovery-point-who-can-generate-script)sahip olduğunuzdan emin olun.
+1. [Betiği indirmek için gerekli izinlere](./backup-azure-restore-files-from-vm.md#select-recovery-point-who-can-generate-script)sahip olduğunuzdan emin olun.
 1. Azure hedef IP 'Lerinin bağlantısını doğrulayın. Yükseltilmiş bir komut isteminden aşağıdaki komutlardan birini çalıştırın:
 
    `nslookup download.microsoft.com`
@@ -67,7 +67,7 @@ SUSE Linux Enterprise Server 12 SP4 üzerinde öğe düzeyinde kurtarma (ıLR) i
 
 "Hedefe bağlanırken özel durum yakalandı" hata iletisini görebilirsiniz.
 
-1. Betiğin çalıştırıldığı makinenin [erişim gereksinimlerini](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-4-access-requirements-to-successfully-run-the-script)karşıladığından emin olun.
+1. Betiğin çalıştırıldığı makinenin [erişim gereksinimlerini](./backup-azure-restore-files-from-vm.md#step-4-access-requirements-to-successfully-run-the-script)karşıladığından emin olun.
 1. Azure hedef IP 'Lerinin bağlantısını doğrulayın. Yükseltilmiş bir komut isteminden aşağıdaki komutlardan birini çalıştırın:
 
    `nslookup download.microsoft.com`

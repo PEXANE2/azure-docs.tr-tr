@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 5c2182fc80c3745e0238c378c1cade0530393181
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 00aaa5bdc0d48adb735679fc4a71b3431970ef09
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97633053"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737176"
 ---
 # <a name="install-azure-application-consistent-snapshot-tool-preview"></a>Azure uygulaması tutarlı anlık görüntü aracı 'nı (Önizleme) yükler
 
@@ -34,9 +34,9 @@ Self-yükleyici, yüklemeyi gerçekleştiren kullanıcının yapılandırmasına
 
 Anlık görüntü ve olağanüstü durum kurtarma komutlarını ayarlamak ve yürütmek için yönergeleri izleyin. Anlık görüntü araçları yüklenmeden ve kullanılmadan önce aşağıdaki adımların kök olarak tamamlanması önerilir.
 
-1. **Işletim sistemine düzeltme eki** uygulanıyor: [Azure 'Da SAP HANA (büyük örnekler) yükleme ve yapılandırma](/azure/virtual-machines/workloads/sap/hana-installation#setting-up-smt-server-for-suse-linux)içindeki düzeltme eki uygulama ve SMT kurulumuna bakın.
+1. **Işletim sistemine düzeltme eki** uygulanıyor: [Azure 'Da SAP HANA (büyük örnekler) yükleme ve yapılandırma](../virtual-machines/workloads/sap/hana-installation.md#operating-system)içindeki düzeltme eki uygulama ve SMT kurulumuna bakın.
 1. **Zaman eşitleme ayarlanır**. Müşterinin NTP ile uyumlu bir saat sunucusu sağlaması ve işletim sistemini uygun şekilde yapılandırması gerekir.
-1. **Hana yüklendi** : [Hana veritabanı 'Nda SAP NetWeaver yüklemesinde](https://blogs.msdn.microsoft.com/saponsqlserver/2017/11/21/sap-netweaver-installation-on-hana-database/)Hana yükleme yönergelerine bakın.
+1. **Hana yüklendi** : [Hana veritabanı 'Nda SAP NetWeaver yüklemesinde](/archive/blogs/saponsqlserver/sap-netweaver-installation-on-hana-database)Hana yükleme yönergelerine bakın.
 1. **[Depolama ile Iletişimi etkinleştir](#enable-communication-with-storage)** (daha fazla ayrıntı için ayrı bölüme bakın): müşterinin bir özel/ortak anahtar ÇIFTIYLE SSH ayarlaması ve anlık görüntü araçlarının, depolama arka ucunda kurulum Için Microsoft işlemlerine yürütülecek şekilde planlandığı her düğüm için ortak anahtar sağlaması gerekir.
    1. **Azure NetApp Files için (Ayrıntılar için ayrı bölüme bakın)**: müşterinin hizmet sorumlusu kimlik doğrulama dosyasını oluşturması gerekir.
    1. **Azure büyük örnek için (Ayrıntılar için ayrı bir bölüme bakın)**: müşterinin bir özel/ortak anahtar ÇIFTIYLE SSH ayarlaması ve anlık görüntü araçlarının, depolama arka ucunda kurulum Için Microsoft işlemlerine yürütülecek şekilde planlandığı her düğüm için ortak anahtar sağlaması gerekir.

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 4a9663e1356f616ed5f428c993f3367ce67cdbb5
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: fb03d0f8c2dc1f3812d417bc5a5d49857f3c1051
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610921"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737685"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Bölgeler arası yük dengeleyici (Önizleme)
 
@@ -35,7 +35,7 @@ Azure Standart Load Balancer, coğrafi olarak yedekli HA senaryolarına olanak s
 * Öğrenme eğrisi olmadan [mevcut yük dengeleyici çözümünde derleme](#build-cross-region-solution-on-existing-azure-load-balancer)
 
 > [!IMPORTANT]
-> Bölgeler arası yük dengeleyici Şu anda önizleme aşamasındadır ve portalda dağıtılabilir. **https://portal.azure.com** Özelliği görüntülemek ve dağıtmak için oturum açın... </br> </br>
+> Bölgeler arası yük dengeleyici Şu anda önizleme aşamasındadır ve portalda dağıtılabilir. **https://preview.portal.azure.com** Özelliği görüntülemek ve dağıtmak için oturum açın... </br> </br>
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Bölgeler arası yük dengeleme, bölgesel standart yük dengeleyici olarak yüksek performanslı ve düşük gecikme süreleriyle aynı avantajları sunar. 
@@ -129,7 +129,7 @@ Bölgeler arası yük dengeleyici, trafiği uygun bölgesel yük dengeleyiciye y
 * Doğu Japonya 
 * Doğu Asya 
 * Orta Batı ABD 
-* Avustralya Güneydoğu 
+* Güneydoğu Avustralya 
 * Doğu Avustralya 
 * Orta Hindistan 
 

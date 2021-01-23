@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 83da8cbf3a87570cfb967e0a6c8da3f0f2ed1766
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: bbaf34c977546891c6ac05fbd4b5feb15f333e04
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486751"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737821"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 'da Oracle Database Enterprise Edition için başvuru mimarileri
 
@@ -207,12 +207,12 @@ Bu kurulum, örnek düzeyinde veya kullanılabilirlik bölgesi düzeyinde bir ha
 
 Oracle iş yüklerinizi Azure 'a dağıttığınızda, Microsoft tüm ana bilgisayar işletim sistemi düzeyinde düzeltme eki uygulamayı üstlenir. Planlı tüm işletim sistemi düzeyinde bakım, müşterilere bu planlı bakım için izin vermek üzere önceden gönderilir. İki farklı Kullanılabilirlik Alanları iki sunucu aynı anda hiçbir şekilde Düzeltme Eki. VM bakımı ve düzeltme eki uygulama hakkında daha fazla bilgi için bkz. [sanal makinelerin kullanılabilirliğini yönetme](../../manage-availability.md) . 
 
-Sanal makine işletim sisteminizin düzeltme eki uygulama, [Azure otomasyonu güncelleştirme yönetimi](../../../automation/update-management/overview.md)kullanılarak otomatikleştirilebilir. Devre dışı kalma süresini en aza indirmek için Oracle veritabanınızın düzeltme ve sürdürme [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) veya [Azure Otomasyonu güncelleştirme yönetimi](../../../automation/update-management/overview.md) kullanılarak otomatik ve zamanlanmış olabilir. Oracle veritabanlarınızın bağlamında nasıl kullanılabileceğini anlamak için [sürekli teslim ve mavi/yeşil dağıtımlar](/azure/devops/learn/what-is-continuous-delivery) konusuna bakın.
+Sanal makine işletim sisteminizin düzeltme eki uygulama, [Azure otomasyonu güncelleştirme yönetimi](../../../automation/update-management/overview.md)kullanılarak otomatikleştirilebilir. Devre dışı kalma süresini en aza indirmek için Oracle veritabanınızın düzeltme ve sürdürme [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) veya [Azure Otomasyonu güncelleştirme yönetimi](../../../automation/update-management/overview.md) kullanılarak otomatik ve zamanlanmış olabilir. Oracle veritabanlarınızın bağlamında nasıl kullanılabileceğini anlamak için [sürekli teslim ve mavi/yeşil dağıtımlar](/azure/devops/learn/what-is-continuous-delivery) konusuna bakın.
 
 ## <a name="architecture-and-design-considerations"></a>Mimari ve tasarım konuları
 
 - Lisanslama maliyetlerine kaydetmek ve performansı en üst düzeye çıkarmak için Oracle Database sanal makinenizin [kısıtlı çekirdek vCPU 'ları](../../../virtual-machines/constrained-vcpu.md) ile hiper iş parçacıklı [bellek için iyileştirilmiş sanal makine](../../sizes-memory.md) kullanmayı düşünün. Performans ve kullanılabilirlik için birden fazla Premium veya ultra disk (yönetilen diskler) kullanın.
-- Yönetilen diskler kullanılırken, yeniden başlatmalar üzerinde disk/cihaz adı değişebilir. Takmaların yeniden başlatmalar arasında kalıcı olmasını sağlamak için, ad yerine cihaz UUID 'sini kullanmanız önerilir. [Burada](/previous-versions/azure/virtual-machines/linux/configure-raid#add-the-new-file-system-to-etcfstab)daha fazla bilgi bulabilirsiniz.
+- Yönetilen diskler kullanılırken, yeniden başlatmalar üzerinde disk/cihaz adı değişebilir. Takmaların yeniden başlatmalar arasında kalıcı olmasını sağlamak için, ad yerine cihaz UUID 'sini kullanmanız önerilir. [Burada](/previous-versions/azure/virtual-machines/linux/configure-raid#add-the-new-file-system-to-etcfstab) daha fazla bilgi bulabilirsiniz.
 - Bölge içi yüksek kullanılabilirlik elde etmek için kullanılabilirlik alanlarını kullanın.
 - Oracle veritabanınız için Ultra diskler (kullanılabilir olduğunda) veya Premium diskler kullanmayı düşünün.
 - Oracle Data Guard kullanarak başka bir Azure bölgesinde bir bekleme Oracle veritabanı ayarlamayı düşünün.

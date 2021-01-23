@@ -3,18 +3,18 @@ title: Node.js için Azure Batch istemci kitaplığını kullanın
 description: Temel Azure Batch kavramlarını öğrenin ve Node.js kullanarak basit bir çözüm derleyin.
 ms.topic: how-to
 ms.date: 10/08/2020
-ms.openlocfilehash: 8d34d5bbb302e3781aabdd697de11d3d492b879a
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 36a127a20014e87554f0d3e3927b05679b6f72f1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106708"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737295"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Node.js için Batch SDK'sını kullanmaya başlama
 
 [Azure Batch Node.js SDK'sını](/javascript/api/overview/azure/batch) kullanarak Node.js’de Batch istemcisi oluşturma hakkında temel bilgileri öğrenin. Batch uygulaması için bir senaryoyu anlayıp ardından bir Node.js istemcisi kullanarak bu senaryoyu ayarlama adımlarından oluşan bir yaklaşım uyguluyoruz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede, Node.js hakkında bilgi sahibi olduğunuz ve Linux kullanmaya alışkın olduğunuz varsayılmaktadır. Ayrıca, Batch ve Depolama hizmetleri oluşturmak için erişim haklarına sahip bir Azure hesabınız olduğu varsayılmıştır.
 
@@ -38,7 +38,7 @@ Node.js istemcisi, toplu işi bir hazırlama göreviyle (daha sonra ayrıntılı
 
 > [!TIP]
 > Belirtilen bağlantıdaki Node.js istemcisi, Azure işlev uygulaması olarak dağıtılmasını sağlayacak ilgili kodu içermiyor. Bu kodu oluşturmak için aşağıdaki bağlantılardan yararlanabilirsiniz.
-> - [İşlev uygulaması oluşturma](../azure-functions/functions-create-first-azure-function.md)
+> - [İşlev uygulaması oluşturma](../azure-functions/functions-get-started.md)
 > - [Zamanlayıcı tetikleyicisi işlevi oluşturma](../azure-functions/functions-bindings-timer.md)
 
 ## <a name="build-the-application"></a>Uygulama oluşturma

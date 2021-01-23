@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 01/15/2021
-ms.openlocfilehash: 6589f451d4db8f2ed77ce70a2bdfa9d76927c1e2
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 35cdfdbdc04d0c88bc49c024ea7465537583e0d7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251225"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735520"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Sanal çekirdek modeline genel bakış-Azure SQL veritabanı ve Azure SQL yönetilen örneği 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -106,7 +106,7 @@ To enable M-series hardware for a subscription and region, a support request mus
 > DC-Series Şu anda **genel önizleme** aşamasındadır.
 
 - DC Serisi donanım, yazılım koruyucu uzantıları (Intel SGX) teknolojisine sahip Intel işlemcileri kullanır.
-- DC-Series, diğer donanım yapılandırmalarında desteklenmeyen [güvenli şifreleme ile Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves)için gereklidir.
+- DC-Series, diğer donanım yapılandırmalarında desteklenmeyen [güvenli şifreleme ile Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-enclaves)için gereklidir.
 - DC-Series, hassas verileri işleyen iş yükleri için ve güvenli şifreleme ile Always Encrypted tarafından sunulan isteğe bağlı gizli sorgu işleme yeteneklerini,
 - DC Serisi donanım, dengeli işlem ve bellek kaynakları sağlar.
 

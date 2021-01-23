@@ -5,19 +5,19 @@ ms.custom: subject-cost-optimization
 ms.service: app-service
 ms.topic: how-to
 ms.date: 01/01/2021
-ms.openlocfilehash: 85035ff894127df4e9eb8334702fd9546d7a63c3
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 9d742606435f62d48446bb8ad56ece7a31b76e47
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598699"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736230"
 ---
 # <a name="plan-and-manage-costs-for-azure-app-service"></a>Azure App Service maliyetlerini planlayın ve yönetin
 
 <!-- Check out the following published examples:
-- [https://docs.microsoft.com/azure/cosmos-db/plan-manage-costs](https://docs.microsoft.com/azure/cosmos-db/plan-manage-costs)
-- [https://docs.microsoft.com/azure/storage/common/storage-plan-manage-costs](https://docs.microsoft.com/azure/storage/common/storage-plan-manage-costs)
-- [https://docs.microsoft.com/azure/machine-learning/concept-plan-manage-cost](https://docs.microsoft.com/azure/machine-learning/concept-plan-manage-cost)
+- [https://docs.microsoft.com/azure/cosmos-db/plan-manage-costs](../cosmos-db/plan-manage-costs.md)
+- [https://docs.microsoft.com/azure/storage/common/storage-plan-manage-costs](../storage/common/storage-plan-manage-costs.md)
+- [https://docs.microsoft.com/azure/machine-learning/concept-plan-manage-cost](../machine-learning/concept-plan-manage-cost.md)
 -->
 
 <!-- Note for Azure service writer: Links to Cost Management articles are full URLS with the ?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn campaign suffix. Leave those URLs intact. They're used to measure traffic to Cost Management articles.
@@ -25,7 +25,7 @@ ms.locfileid: "98598699"
 
 <!-- Note for Azure service writer: Modify the following for your service. -->
 
-Bu makalede, Azure App Service maliyetlerini nasıl planlayabileceğinizi ve yönetebileceğiniz açıklanır. İlk olarak, maliyetleri tahmin etmek üzere hizmet için herhangi bir kaynak eklemeden önce App Service maliyetlerini planlamaya yardımcı olması için Azure Fiyatlandırma hesaplayıcısı ' nı kullanırsınız. Daha sonra, Azure kaynaklarını eklerken Tahmini maliyetleri gözden geçirin. App Service kaynaklarını kullanmaya başladıktan sonra, bütçe ayarlamak ve maliyetleri izlemek için [maliyet yönetimi](https://docs.microsoft.com/azure/cost-management-billing/?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) özelliklerini kullanın. Ayrıca Tahmini maliyetleri gözden geçirebilir ve hareket etmek isteyebileceğiniz yerleri belirlemek için harcama eğilimlerini belirleyebilirsiniz. Azure App Service maliyetleri, Azure faturanızda bulunan Aylık maliyetlerin yalnızca bir parçasıdır. Bu makalede App Service maliyetlerinin nasıl planlanacağı ve yönetileceği açıklanmakta olsa da, üçüncü taraf hizmetler de dahil olmak üzere Azure aboneliğinizde kullanılan tüm Azure hizmetleri ve kaynakları için faturalandırılırsınız.
+Bu makalede, Azure App Service maliyetlerini nasıl planlayabileceğinizi ve yönetebileceğiniz açıklanır. İlk olarak, maliyetleri tahmin etmek üzere hizmet için herhangi bir kaynak eklemeden önce App Service maliyetlerini planlamaya yardımcı olması için Azure Fiyatlandırma hesaplayıcısı ' nı kullanırsınız. Daha sonra, Azure kaynaklarını eklerken Tahmini maliyetleri gözden geçirin. App Service kaynaklarını kullanmaya başladıktan sonra, bütçe ayarlamak ve maliyetleri izlemek için [maliyet yönetimi](../cost-management-billing/index.yml?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) özelliklerini kullanın. Ayrıca Tahmini maliyetleri gözden geçirebilir ve hareket etmek isteyebileceğiniz yerleri belirlemek için harcama eğilimlerini belirleyebilirsiniz. Azure App Service maliyetleri, Azure faturanızda bulunan Aylık maliyetlerin yalnızca bir parçasıdır. Bu makalede App Service maliyetlerinin nasıl planlanacağı ve yönetileceği açıklanmakta olsa da, üçüncü taraf hizmetler de dahil olmak üzere Azure aboneliğinizde kullanılan tüm Azure hizmetleri ve kaynakları için faturalandırılırsınız.
 
 ## <a name="relevant-costs-for-app-service"></a>App Service ilgili maliyetler
 
@@ -36,10 +36,10 @@ App Service maliyeti tahakkuk eden Azure altyapısında çalışır. Ek altyapı
 App Service kullandığınız özelliğe bağlı olarak, aşağıdaki Maliyet tahakkuku kaynakları oluşturulabilir:
 
 - **App Service planı**  App Service uygulamasını barındırmak için gereklidir.
-- **Yalıtılmış katman**  App Service ortamı için bir [sanal ağ](/azure/virtual-network/) gereklidir.
-- **Yedekleme**  Yedeklemeleri yapmak için bir [depolama hesabı](/azure/storage/) gereklidir.
-- **Tanılama günlükleri**  [Depolama hesabı](/azure/storage/) ' nı günlüğe kaydetme seçeneği olarak seçebilir veya [Azure Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)ile tümleştirebilirsiniz.
-- **App Service sertifikaları**  Azure 'da satın aldığınız sertifikaların [Azure Key Vault](/azure/key-vault/)içinde tutulması gerekir.
+- **Yalıtılmış katman**  App Service ortamı için bir [sanal ağ](../virtual-network/index.yml) gereklidir.
+- **Yedekleme**  Yedeklemeleri yapmak için bir [depolama hesabı](../storage/index.yml) gereklidir.
+- **Tanılama günlükleri**  [Depolama hesabı](../storage/index.yml) ' nı günlüğe kaydetme seçeneği olarak seçebilir veya [Azure Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)ile tümleştirebilirsiniz.
+- **App Service sertifikaları**  Azure 'da satın aldığınız sertifikaların [Azure Key Vault](../key-vault/index.yml)içinde tutulması gerekir.
 
 App Service yönelik diğer maliyet kaynakları şunlardır: (Ayrıntılar için [App Service fiyatlandırmasına](https://azure.microsoft.com/pricing/details/app-service/) bakın):
 
@@ -51,7 +51,7 @@ App Service yönelik diğer maliyet kaynakları şunlardır: (Ayrıntılar için
 
 Bir App Service planındaki tüm uygulamaları sildiğinizde, plan, yapılandırılmış fiyatlandırma katmanına ve örnek sayısına göre ücretleri tahakkuk etmeye devam eder. İstenmeyen ücretlerden kaçınmak için planı silin veya **ücretsiz** katmana ölçeklendirin.
 
-Azure App Service kaynaklarını sildikten sonra, ilgili Azure hizmetlerinden kaynaklar mevcut olmaya devam edebilir. Bunlar silinene kadar maliyetleri tahakkuk ettirmeye devam eder. Örnek:
+Azure App Service kaynaklarını sildikten sonra, ilgili Azure hizmetlerinden kaynaklar mevcut olmaya devam edebilir. Bunlar silinene kadar maliyetleri tahakkuk ettirmeye devam eder. Örneğin:
 
 - **Yalıtılmış** bir katman App Service planı Için oluşturduğunuz sanal ağ
 - Yedeklemeleri veya tanılama günlüklerini depolamak için oluşturduğunuz depolama hesapları
@@ -155,7 +155,7 @@ Yalnızca App Service maliyetlerini gösteren bir örnek aşağıda verilmiştir
 
 <!-- Note to Azure service writer: Modify the following as needed for your service. -->
 
-Maliyetleri yönetmek için [bütçeler](../cost-management/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) oluşturabilir ve paydaşları harcama anormallikleri ve fazla harcama riskleri ile ilgili otomatik olarak bilgilendiren [uyarılar](../cost-management/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) oluşturabilirsiniz. Uyarılar, bütçe ve maliyet eşiklerine kıyasla harcamaya göre belirlenir. Bütçeler ve uyarılar Azure abonelikleri ve kaynak grupları için oluşturulur, bu nedenle genel maliyet izleme stratejisinin bir parçası olarak faydalıdır. 
+Maliyetleri yönetmek için [bütçeler](../cost-management-billing/costs/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) oluşturabilir ve paydaşları harcama anormallikleri ve fazla harcama riskleri ile ilgili otomatik olarak bilgilendiren [uyarılar](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) oluşturabilirsiniz. Uyarılar, bütçe ve maliyet eşiklerine kıyasla harcamaya göre belirlenir. Bütçeler ve uyarılar Azure abonelikleri ve kaynak grupları için oluşturulur, bu nedenle genel maliyet izleme stratejisinin bir parçası olarak faydalıdır. 
 
 İzlemekte daha fazla ayrıntı düzeyi istiyorsanız, Azure 'daki belirli kaynaklara veya hizmetlere yönelik filtrelerle bütçeler oluşturulabilir. Filtreler, yanlışlıkla ek para maliyeti sağlayan yeni kaynaklar oluşturmamasını sağlamaya yardımcı olur. Bir bütçe oluşturduğunuzda kullanılabilecek filtre seçenekleri hakkında daha fazla bilgi için bkz. [Grup ve filtre seçenekleri](../cost-management-billing/costs/group-filter.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 
@@ -168,8 +168,8 @@ Ayrıca, maliyet verilerinizi bir depolama hesabına [dışarı aktarabilirsiniz
 - Fiyatlandırma ile Azure depolama ile nasıl çalıştığı hakkında daha fazla bilgi edinin. [App Service fiyatlandırmasına](https://azure.microsoft.com/pricing/details/app-service/)bakın.
 - [Azure maliyet yönetimi ile bulut yatırımınızın nasıl iyileştirileceği hakkında](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)bilgi edinin.
 - [Maliyet Analizi](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)ile maliyetleri yönetme hakkında daha fazla bilgi edinin.
-- [Beklenmeyen maliyetlerin nasıl önleneceği](../cost-management-billing/manage/getting-started.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)hakkında bilgi edinin.
-- [Maliyet yönetimi](https://docs.microsoft.com/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) destekli öğrenme kursuna katılın.
+- [Beklenmeyen maliyetlerin nasıl önleneceği](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)hakkında bilgi edinin.
+- [Maliyet yönetimi](/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) destekli öğrenme kursuna katılın.
 
 <!-- Insert links to other articles that might help users save and manage costs for you service here.
 

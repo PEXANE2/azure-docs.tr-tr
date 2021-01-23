@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c27ef1af3e439b22f00f9247b5270118bbe9ca89
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 3678ead9f3e1ba2556fde3c2fbe30df4e7dc2225
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197719"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737244"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Batch için Azure Güvenlik temeli
 
@@ -62,9 +62,9 @@ Uygun olduğunda, özel bir uç nokta aracılığıyla Azure Batch hesabına ba�
 
 **Rehberlik**: DDoS saldırılarına karşı koruma için Azure Batch havuzunuzu koruyan sanal ağ üzerinde Azure DDoS (dağıtılmış hizmet reddi) standart korumasını etkinleştirin. Bilinen kötü amaçlı veya kullanılmayan Internet IP adresleriyle iletişimleri reddetmek için Azure Güvenlik Merkezi tümleşik tehdit zekasını kullanın.
 
-- [DDoS korumasını yapılandırma](/azure/virtual-network/manage-ddos-protection)
+- [DDoS korumasını yapılandırma](../ddos-protection/manage-ddos-protection.md)
 
-- [Azure Güvenlik Merkezi tümleşik tehdit zekasını anlama](/azure/security-center/security-center-alerts-service-layer)
+- [Azure Güvenlik Merkezi tümleşik tehdit zekasını anlama](../security-center/azure-defender.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -126,7 +126,7 @@ Tüm kaynakların etiketlerle oluşturulmasını ve mevcut etiketlenmemiş kayna
 
 Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzerinde arama yapabilir veya eylemler gerçekleştirebilirsiniz.
 
-- [Etiketler oluşturma ve kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 - [Sanal ağ oluşturma](../virtual-network/quick-create-portal.md)
 
@@ -140,7 +140,7 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzeri
 
 **Kılavuz**: Azure etkinlik günlüğü 'nü kullanarak ağ kaynak yapılandırmasını izleyin ve Azure Batch havuzlarınızla ilgili ağ kaynaklarına yönelik değişiklikleri tespit edin. Kritik ağ kaynaklarında yapılan değişiklikler yürürlüğe girdiğinde tetiklenecek Azure Izleyici içinde uyarılar oluşturun.
 
-- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](/azure/azure-monitor/platform/activity-log-view) 
+- [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log) 
 
 - [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -188,7 +188,7 @@ Gerekirse, yerel işletim sistemi günlüklerine erişmek için güvenli kabuk (
 
 - [Azure Batch hesabınızdan tanılama günlüklerini toplama](batch-diagnostics.md#batch-diagnostics)
 
-- [Azure Batch havuz düğümlerine uzaktan bağlanma](/azure/batch/batch-api-basics#error-handling)
+- [Azure Batch havuz düğümlerine uzaktan bağlanma](./batch-service-workflow-features.md#basic-workflow)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -260,9 +260,9 @@ Gerekirse, yerel işletim sistemi günlüklerine erişmek için güvenli kabuk (
 
 Ayrıca, Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini de kullanabilirsiniz.
 
-- [Azure AD 'de PowerShell ile dizin rolü alma](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [Azure AD 'de PowerShell ile dizin rolü alma](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [Azure AD 'de PowerShell ile bir dizin rolünün üyelerini alma](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Azure AD 'de PowerShell ile bir dizin rolünün üyelerini alma](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 - [Azure Güvenlik Merkezi ile kimlik ve erişimi izleme](../security-center/security-center-identity-access.md)
 
@@ -324,7 +324,7 @@ Ayrıca, Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini de kul
 
 **Rehberlik**: Azure Active Directory sahip Azure Batch uygulamalar için tümleşik kimlik doğrulaması yaptıysanız, ortamda şüpheli veya güvenli olmayan bir etkinlik olduğunda günlüklerin ve uyarıların üretilmesi için Azure Active Directory güvenlik raporları kullanın. Kimlik ve erişim etkinliğini izlemek için Azure Güvenlik Merkezi 'ni kullanın.
 
-- [Riskli etkinlik bayrağıyla işaretlenen Azure AD kullanıcılarını belirleme](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [Riskli etkinlik bayrağıyla işaretlenen Azure AD kullanıcılarını belirleme](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Azure Güvenlik Merkezi 'nde Kullanıcı kimliğini ve erişim etkinliğini izleme](../security-center/security-center-identity-access.md)
 
@@ -378,7 +378,7 @@ Ayrıca, Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini de kul
 
 **Rehberlik**: Kullanıcı kimlikleriyle ilgili şüpheli eylemleri algılanan otomatik yanıtları yapılandırmak Için Azure Active Directory risk algılamaları ve kimlik koruması özelliğini kullanın. Ayrıca, daha fazla araştırma için verileri Azure Sentinel 'e aktarabilirsiniz.
 
-- [Azure AD riskli oturum açma işlemlerini görüntüleme](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Azure AD riskli oturum açma işlemlerini görüntüleme](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Kimlik koruması risk ilkelerini yapılandırma ve etkinleştirme](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -406,7 +406,7 @@ Ayrıca, Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini de kul
 
 **Rehberlik**: hassas bilgileri depolayan veya işleyen Azure kaynaklarını izlemeye yardımcı olması için etiketleri kullanın.
 
-- [Etiketler oluşturma ve kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -418,7 +418,7 @@ Ayrıca, Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini de kul
 
 - [Sanal ağ içinde Azure Batch havuzu oluşturma](batch-virtual-network.md)
 
-- [Azure depolama hesaplarını güvenli hale getirme](/azure/storage/common/storage-security-guide)
+- [Azure depolama hesaplarını güvenli hale getirme](../storage/blobs/security-recommendations.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -434,7 +434,7 @@ Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm m�
 
 - [Azure’da müşteri verilerinin korunmasını anlama](../security/fundamentals/protection-customer-data.md)
 
-- [Azure depolama hesaplarını güvenli hale getirme](/azure/storage/common/storage-security-guide)
+- [Azure depolama hesaplarını güvenli hale getirme](../storage/blobs/security-recommendations.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -462,7 +462,7 @@ Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm m�
 
 - [Azure’da müşteri verilerinin korunmasını anlama](../security/fundamentals/protection-customer-data.md)
 
-- [Azure depolama hesaplarını güvenli hale getirme](/azure/storage/common/storage-security-guide)
+- [Azure depolama hesaplarını güvenli hale getirme](../storage/blobs/security-recommendations.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -498,9 +498,9 @@ Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm m�
 
 Azure disk şifrelemesi, kurumsal güvenlik ve uyumluluk taahhütlerini karşılamak üzere verilerinizin korunmasına ve korunmasını sağlamaya yardımcı olmak için kullanılabilir. Mevcut disklere yazılan tüm yönetilen diskler, anlık görüntüler, görüntüler ve veriler, platform tarafından yönetilen anahtarlarla otomatik olarak şifrelenir.
 
-- [Azure depolama hesapları için şifreleme anahtarlarını yönetme](/azure/storage/common/storage-encryption-keys-portal)
+- [Azure depolama hesapları için şifreleme anahtarlarını yönetme](../storage/common/customer-managed-keys-configure-key-vault.md)
 
-- [Müşteri tarafından yönetilen şifreleme anahtarlarını yapılandırma](/azure/storage/common/storage-encryption-keys-portal)
+- [Müşteri tarafından yönetilen şifreleme anahtarlarını yapılandırma](../storage/common/customer-managed-keys-configure-key-vault.md)
 
 - [Disk şifrelemesi etkinken havuz oluşturma](disk-encryption.md)
 
@@ -580,7 +580,7 @@ Klasik Azure kaynakları Azure Resource Graph Explorer aracılığıyla bulunabi
 
 - [Azure Kaynak Grafı Gezgini ile sorgu oluşturma](../governance/resource-graph/first-query-portal.md)
 
-- [Azure aboneliklerinizi görüntüleme](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure aboneliklerinizi görüntüleme](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Azure RBAC 'yi anlama](../role-based-access-control/overview.md)
 
@@ -592,7 +592,7 @@ Klasik Azure kaynakları Azure Resource Graph Explorer aracılığıyla bulunabi
 
 **Kılavuz**: Azure kaynaklarına Etiketler uygulayarak bunları bir taksonomi halinde mantıksal olarak organize etmek için meta veriler verirsiniz.
 
-- [Etiketler oluşturma ve kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
@@ -602,11 +602,11 @@ Klasik Azure kaynakları Azure Resource Graph Explorer aracılığıyla bulunabi
 
 **Rehberlik**: varlıkları düzenlemek ve izlemek için uygun yerlerde etiketleme, yönetim grupları ve ayrı abonelikler kullanın. Envanterin düzenli olarak mutabakatını yapın ve yetkisiz kaynakların aboneliğin zamanında silindiğinden emin olun.
 
-- [Ek Azure abonelikleri oluşturma](/azure/billing/billing-create-subscription)
+- [Ek Azure abonelikleri oluşturma](../cost-management-billing/manage/create-subscription.md)
 
-- [Yönetim Grupları oluşturma](/azure/governance/management-groups/create)
+- [Yönetim Grupları oluşturma](../governance/management-groups/create-management-group-portal.md)
 
-- [Etiketler oluşturma ve kullanma](/azure/azure-resource-manager/resource-group-using-tags)
+- [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -701,7 +701,7 @@ Aboneliklerinizin içindeki kaynakları sorgulamak/öğrenmek için Azure Kaynak
 
 **Rehberlik**: Azure Batch hesaplarınız ve havuzlarınızın yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak için "Microsoft.Batch" ad alanındaki Azure ilke diğer adlarını kullanın.
 
-- [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Azure İlkesi'ni yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
@@ -747,9 +747,9 @@ Aboneliklerinizin içindeki kaynakları sorgulamak/öğrenmek için Azure Kaynak
 
 **Rehberlik**: Azure Batch hesaplarınız, havuzlarınız veya ilgili kaynaklarınız Için özel Azure ilke tanımları kullanıyorsanız, kodunuzu güvenli bir şekilde depolamak ve yönetmek için Azure Repos kullanın.
 
-- [Azure DevOps 'da kod depolama](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Azure DevOps 'da kod depolama](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Azure Repos belgeleri](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Azure Repos belgeleri](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -791,7 +791,7 @@ Aboneliklerinizin içindeki kaynakları sorgulamak/öğrenmek için Azure Kaynak
 - Alt ağlar bir ağ güvenlik grubu ile ilişkilendirilmelidir-depolama hesapları bir sanal ağ hizmeti uç noktası kullanmalıdır
 - Batch hesaplarındaki tanılama günlükleri etkinleştirilmelidir
 
-- [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Azure İlkesi'ni yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
@@ -884,7 +884,7 @@ App Service, Data Lake Storage, BLOB depolama vb. gibi işlem dışı Azure kayn
 
 - [Azure depolama hesapları için depolama yedekliği nasıl yapılandırılır](../storage/common/storage-redundancy.md)
 
-- [Azure 'da Anahtar Kasası anahtarlarını yedekleme](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure 'da Anahtar Kasası anahtarlarını yedekleme](/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -894,9 +894,9 @@ App Service, Data Lake Storage, BLOB depolama vb. gibi işlem dışı Azure kayn
 
 **Kılavuz**: Azure depolama hesapları için kendi anahtarlarınızı veya Azure Batch uygulamanız ile ilgili başka bir kaynak yönetiyorsanız, yedeklenen anahtarların düzenli olarak geri yüklenmesini test edin.
 
-- [Azure 'da Anahtar Kasası anahtarlarını yedekleme](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure 'da Anahtar Kasası anahtarlarını yedekleme](/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
-- [Müşteri tarafından yönetilen anahtarı PowerShell ile geri yükleme](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Müşteri tarafından yönetilen anahtarı PowerShell ile geri yükleme](/powershell/module/az.keyvault/restore-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -906,7 +906,7 @@ App Service, Data Lake Storage, BLOB depolama vb. gibi işlem dışı Azure kayn
 
 **Rehberlik**: Azure Key Vault Azure Batch havuz depolama hesaplarıyla ilgili herhangi bir anahtarı tutmak için kullanılıyorsa, anahtarları yanlışlıkla veya kötü amaçlı silme ile korumak için Azure Key Vault Soft-Delete etkinleştirin.
 
-- [Azure Key Vault 'da geçici silme nasıl etkinleştirilir](/azure/key-vault/key-vault-soft-delete-powershell)
+- [Azure Key Vault 'da geçici silme nasıl etkinleştirilir](../key-vault/general/key-vault-recovery.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -994,5 +994,5 @@ Microsoft 'un Microsoft tarafından yönetilen bulut altyapısına, hizmetlerine
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Azure Güvenlik Karşılaştırması 2.0 sürümüne genel bakış](/azure/security/benchmarks/overview)
-- [Azure güvenlik temelleri](/azure/security/benchmarks/security-baselines-overview) hakkında daha fazla bilgi edinin
+- Bkz. [Azure Güvenlik Karşılaştırması 2.0 sürümüne genel bakış](../security/benchmarks/overview.md)
+- [Azure güvenlik temelleri](../security/benchmarks/security-baselines-overview.md) hakkında daha fazla bilgi edinin

@@ -7,12 +7,12 @@ ms.date: 10/02/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 7c937353c645ee5d977a52ec0f8e935eba19a940
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 73984694d764234e9e1ec11e6b189a9ad85d97a8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969985"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737413"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>Azure Image Builder hizmeti sorunlarını giderme
 
@@ -152,7 +152,7 @@ Get-AzImageBuilderTemplate -ImageTemplateName  <imageTemplateName> -ResourceGrou
 
 Görüntü derlemesi çalışırken, Günlükler oluşturulup bir depolama hesabında depolanır. Azure Image Builder, bir görüntü şablonu yapıtı oluştururken geçici kaynak grubunda depolama hesabı oluşturur.
 
-Depolama hesabı adı şu kalıbı kullanır: **IT_ \<ImageResourceGroupName\> _\<TemplateName\>_ \<GUID\> **
+Depolama hesabı adı şu kalıbı kullanır: **IT_ \<ImageResourceGroupName\> _\<TemplateName\>_ \<GUID\>**
 
 Örneğin, *IT_aibmdi_helloImageTemplateLinux01*.
 
@@ -209,7 +209,7 @@ Günlük ayrıntılıdır. Görüntü dağıtımında paylaşılan görüntü Ga
     ```
 5. Serbest sağlama aşaması. Azure görüntü Oluşturucu gizli bir Özelleştirici ekler. Bu geçersiz-sağlama adımı VM 'nin de sağlama için hazırlanmasından sorumludur. Windows Sysprep (c:\DeprovisioningScript.ps1 kullanarak) veya Linux waagent sağlamayı kaldırma (/TMP/deprovisioningscript.exe kullanarak) çalıştırır. 
 
-    Örnek:
+    Örneğin:
     ```text
     PACKER ERR 2020/03/04 23:05:04 [INFO] (telemetry) Starting provisioner powershell
     PACKER ERR 2020/03/04 23:05:04 packer: 2020/03/04 23:05:04 Found command: if( TEST-PATH c:\DeprovisioningScript.ps1 ){cat c:\DeprovisioningScript.ps1} else {echo "Deprovisioning script [c:\DeprovisioningScript.ps1] could not be found. Image build may fail or the VM created from the Image may not boot. Please make sure the deprovisioning script is not accidentally deleted by a Customizer in the Template."}
@@ -247,7 +247,7 @@ Günlük ayrıntılıdır. Görüntü dağıtımında paylaşılan görüntü Ga
 
 Özelleştiriciler başarısızlıklarını bulmak için günlüğü gözden geçirin. Arama *(telemetri)*. 
 
-Örnek:
+Örneğin:
 ```text
 (telemetry) Starting provisioner windows-update
 (telemetry) ending windows-update
@@ -320,7 +320,7 @@ Deployment failed. Correlation ID: XXXXXX-XXXX-XXXXXX-XXXX-XXXXXX. Failed in dis
 
 #### <a name="cause"></a>Nedeni
 
-Görüntü Oluşturucu görüntünün paylaşılan görüntü galerisine eklenmesini ve çoğaltılmasını beklerken zaman aşımına uğradı (SıG). Resim SıG öğesine eklendiğinde, resim yapısının başarılı olduğu kabul edilebilir. Ancak, genel işlem başarısız oldu, çünkü görüntü Oluşturucu çoğaltmayı tamamlayacak paylaşılan görüntü galerisini bekliyor. Yapı başarısız olsa bile çoğaltma devam eder. Dağıtım *Runoutput*öğesini denetleyerek görüntü sürümünün özelliklerini alabilirsiniz.
+Görüntü Oluşturucu görüntünün paylaşılan görüntü galerisine eklenmesini ve çoğaltılmasını beklerken zaman aşımına uğradı (SıG). Resim SıG öğesine eklendiğinde, resim yapısının başarılı olduğu kabul edilebilir. Ancak, genel işlem başarısız oldu, çünkü görüntü Oluşturucu çoğaltmayı tamamlayacak paylaşılan görüntü galerisini bekliyor. Yapı başarısız olsa bile çoğaltma devam eder. Dağıtım *Runoutput* öğesini denetleyerek görüntü sürümünün özelliklerini alabilirsiniz.
 
 ```bash
 $runOutputName=<distributionRunOutput>
@@ -331,7 +331,7 @@ az resource show \
 
 #### <a name="solution"></a>Çözüm
 
-**Buildtimeoutınminutes**değerini artırın.
+**Buildtimeoutınminutes** değerini artırın.
  
 ### <a name="low-windows-resource-information-events"></a>Düşük Windows kaynak bilgisi olayları
 
@@ -586,7 +586,7 @@ Başarılı derlemeleri araştırmanız gereken bazı durumlar olabilir ve günl
 
 Derleme bir kullanıcı tarafından iptal edilmediğinde, Azure DevOps Kullanıcı Aracısı tarafından iptal edildi. Büyük olasılıkla, Azure DevOps özellikleri nedeniyle 1 saatlik zaman aşımı oluştu. Özel bir proje ve aracı kullanıyorsanız, 60 dakikalık derleme zamanı alırsınız. Yapı zaman aşımını aşarsa, DevOps çalışan görevi iptal eder.
 
-Azure DevOps özellikleri ve sınırlamaları hakkında daha fazla bilgi için bkz. [Microsoft tarafından barındırılan aracılar](/azure/devops/pipelines/agents/hosted?view=azure-devops#capabilities-and-limitations)
+Azure DevOps özellikleri ve sınırlamaları hakkında daha fazla bilgi için bkz. [Microsoft tarafından barındırılan aracılar](/azure/devops/pipelines/agents/hosted#capabilities-and-limitations)
  
 #### <a name="solution"></a>Çözüm
 
@@ -659,7 +659,7 @@ Write-Output '>>> Sysprep complete ...'
 
 ### <a name="overriding-the-commands"></a>Komutları geçersiz kılma
 
-Komutları geçersiz kılmak için PowerShell veya Shell betik hazırlayıcılar ' ni kullanarak tam dosya adına sahip komut dosyalarını oluşturun ve bunları daha önce listelenen dizinlere yerleştirin. Azure Image Builder, bu komutları okur ve çıktı *Özelleştirme. log*dosyasına yazılır.
+Komutları geçersiz kılmak için PowerShell veya Shell betik hazırlayıcılar ' ni kullanarak tam dosya adına sahip komut dosyalarını oluşturun ve bunları daha önce listelenen dizinlere yerleştirin. Azure Image Builder, bu komutları okur ve çıktı *Özelleştirme. log* dosyasına yazılır.
 
 ## <a name="getting-support"></a>Destek Alma
 Kılavuza başvurdıysanız ve sorun giderme sorununuzu yaşamaya devam ediyorsanız bir destek talebi açabilirsiniz. Bunu yaparken, lütfen doğru ürün ve destek konusunu seçin; bunu yaptığınızda Azure VM görüntü Oluşturucu destek ekibi devreye alınacaktır.

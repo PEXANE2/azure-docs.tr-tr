@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 28b68178b98e53b7a7d4192ad20c05a667344969
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 37cb8f5a2ff0916f53ae50f5750664204ab1ba75
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356744"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737498"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Azure 'da SQL Server sanal makinesine bağlanma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -42,7 +42,7 @@ Bağlantı seçenekleriniz şunlardır:
 
 | Seçenek | Açıklama |
 |---|---|
-| **Geneldir** | İnternet üzerinden SQL Server 'e bağlanın. |
+| **Genel** | İnternet üzerinden SQL Server 'e bağlanın. |
 | **Özel** | Aynı sanal ağda SQL Server bağlanın. |
 | **Yerel** | Aynı sanal makinede yerel olarak SQL Server bağlantı. | 
 
@@ -82,7 +82,7 @@ Portalda **SQL bağlantı** türü için **özel** ' i seçtiğinizde, Azure aya
 > [!IMPORTANT]
 > SQL Server Developer ve Express sürümleri için sanal makine görüntüleri TCP/IP protokolünü otomatik olarak etkinleştirmez. Geliştirici ve Express sürümleri için, VM 'yi oluşturduktan sonra [TCP/IP protokolünü el ile etkinleştirmek](#manualtcp) üzere SQL Server Yapılandırma Yöneticisi kullanmanız gerekir.
 
-Özel bağlantı, genellikle çeşitli senaryolara izin veren bir [sanal ağ](../../../virtual-network/virtual-networks-overview.md)ile birlikte kullanılır. Aynı sanal ağdaki VM 'leri, bu VM 'Ler farklı kaynak gruplarında bulunsa bile bağlayabilirsiniz. [Siteden sıteye VPN](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)ile, şirket içi ağlar ve makinelerle VM 'leri bağlayan bir karma mimari de oluşturabilirsiniz.
+Özel bağlantı, genellikle çeşitli senaryolara izin veren bir [sanal ağ](../../../virtual-network/virtual-networks-overview.md)ile birlikte kullanılır. Aynı sanal ağdaki VM 'leri, bu VM 'Ler farklı kaynak gruplarında bulunsa bile bağlayabilirsiniz. [Siteden sıteye VPN](../../../vpn-gateway/tutorial-site-to-site-portal.md)ile, şirket içi ağlar ve makinelerle VM 'leri bağlayan bir karma mimari de oluşturabilirsiniz.
 
 Sanal ağlar Ayrıca, Azure VM 'lerinizi bir etki alanına katlamada sağlar. Bu, SQL Server için Windows kimlik doğrulaması kullanmanın tek yoludur. Diğer bağlantı senaryoları, Kullanıcı adları ve parolalarla SQL kimlik doğrulaması gerektirir.
 

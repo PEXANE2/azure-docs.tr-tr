@@ -3,12 +3,12 @@ title: Danışman ile Azure uygulamalarının performansını geliştirme
 description: İş açısından kritik uygulamalarınızın hızını ve yanıt hızını artırmak için Azure Danışmanı 'nda performans önerilerini kullanın.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: d7d4e87670ca529f38465e928c4067daec802b8f
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: f546527011402b9ea33321d56356d8aabe2412c1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98248437"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735537"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Azure Advisor 'ı kullanarak Azure uygulamalarının performansını geliştirme
 
@@ -179,7 +179,7 @@ Bu abonelik kapsamındaki kaynakların güncel olmayan Tam Ekran Okuyucu SDK’s
 
 Danışman, yük dengeleme algoritması olarak ilk ayarlanan derinliği olan bir konak havuzunuzun olduğunu ve ana bilgisayar havuzunun en fazla oturum sınırı 999999 ' den büyük veya buna eşit olduğunu algılar. Derinlik öncelikli yük dengeleme, tek bir oturum konağında eşzamanlı oturum açabilecek kullanıcı sayısı üst sınırını saptamak için en yüksek oturum sınırını kullanır. Maksimum oturum sınırı çok yüksekse, tüm Kullanıcı oturumları aynı oturum ana bilgisayarına yönlendirilir ve bu, performans ve güvenilirlik sorunlarına neden olur. Bu nedenle, bir konak havuzunu derinlemesine ilk yük dengelemeye sahip olacak şekilde ayarlarken, sanal makinelerinizin ve kapasitenizin yapılandırmasına göre uygun bir en fazla oturum sınırı ayarlamanız gerekir. 
 
-Windows sanal masaüstü 'nde yük dengeleme hakkında daha fazla bilgi için bkz. [Windows sanal masaüstü yük dengeleme yöntemini yapılandırma](/azure/virtual-desktop/troubleshoot-set-up-overview).
+Windows sanal masaüstü 'nde yük dengeleme hakkında daha fazla bilgi için bkz. [Windows sanal masaüstü yük dengeleme yöntemini yapılandırma](../virtual-desktop/troubleshoot-set-up-overview.md).
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Danışman 'de performans önerilerine erişme
 

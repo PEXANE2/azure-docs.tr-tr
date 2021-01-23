@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure Arc etkin bir Kubernetes kümesi (Önizleme) yapılandırmak için Gilar 'ı kullanma
 keywords: Gilar, Kubernetes, K8s, Azure, Arc, Azure Kubernetes hizmeti, AKS, kapsayıcılar
-ms.openlocfilehash: 751b274a9cae68f6bc9b1adc45804f2dd2ef4c72
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: a068ed90ea53b3b25a1f41cebd9a5b8e607afa54
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684766"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737193"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Arc özellikli Kubernetes kümesinde (Önizleme) GitOps kullanarak yapılandırmaları dağıtma
 
@@ -138,7 +138,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 > [!NOTE]
 > HTTPS helmrelease özel kimlik doğrulaması yalnızca Held operatörü grafik sürümü >= 1.2.0 ile desteklenir.  Sürüm 1.2.0 varsayılan olarak kullanılır.
 > Şu anda Azure Kubernetes Hizmetleri tarafından yönetilen kümeler için HTTPS helk sürümü özel kimlik doğrulaması desteklenmiyor.
-> Proxy 'niz aracılığıyla Git deposuna erişmek için Flox 'e ihtiyacınız varsa, Azure Arc aracılarını ara sunucu ayarlarıyla güncelleştirmeniz gerekecektir. [Daha fazla bilgi](https://docs.microsoft.com/azure/azure-arc/kubernetes/connect-cluster#connect-using-an-outbound-proxy-server)
+> Proxy 'niz aracılığıyla Git deposuna erişmek için Flox 'e ihtiyacınız varsa, Azure Arc aracılarını ara sunucu ayarlarıyla güncelleştirmeniz gerekecektir. [Daha fazla bilgi](./connect-cluster.md#connect-using-an-outbound-proxy-server)
 
 #### <a name="additional-parameters"></a>Ek parametreler
 

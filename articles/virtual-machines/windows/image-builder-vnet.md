@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: 94e3b95e5e1d3c65550046c5db56e0f783fd60c3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8ae41167b642be75c7bb99042bca829fd8c1728e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976310"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736381"
 ---
 # <a name="use-azure-image-builder-for-windows-vms-allowing-access-to-an-existing-azure-vnet"></a>Mevcut bir Azure sanal ağına erişime izin veren Windows VM 'Leri için Azure Image Builder 'ı kullanma
 
@@ -21,7 +21,7 @@ Bu makalede, bir sanal ağ üzerindeki mevcut kaynaklara erişimi olan temel öz
 
 > [!IMPORTANT]
 > Azure görüntü Oluşturucu Şu anda genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -90,7 +90,7 @@ Kaynak grubunu oluşturun.
 New-AzResourceGroup -Name $imageResourceGroup -Location $location
 ```
 
-## <a name="configure-networking"></a>Ağ yapılandırması
+## <a name="configure-networking"></a>Ağı yapılandırma
 
 Mevcut bir VNET\Subnet\NSG yoksa, bir tane oluşturmak için aşağıdaki betiği kullanın.
 
@@ -233,7 +233,7 @@ $buildJsonStatus
 
 ```
 
-Bu örnek için görüntü derlemesi yaklaşık 50 dakika sürer (birden çok yeniden başlatmalar, Windows Update yükleme/yeniden başlatma), durumu sorgulayıp, *aşağıda, oluşturma*işleminin hala çalıştığını gösterir, başarıyla tamamlanırsa ' başarılı ' olarak görünür.
+Bu örnek için görüntü derlemesi yaklaşık 50 dakika sürer (birden çok yeniden başlatmalar, Windows Update yükleme/yeniden başlatma), durumu sorgulayıp, *aşağıda, oluşturma* işleminin hala çalıştığını gösterir, başarıyla tamamlanırsa ' başarılı ' olarak görünür.
 
 ```text
   "lastRunStatus": {
@@ -258,7 +258,7 @@ $runOutJsonStatus
 ```
 ## <a name="create-a-vm"></a>VM oluşturma
 
-Şimdi derleme tamamlanmıştır, görüntüden bir VM oluşturabilirsiniz. [PowerShell New-AzVM belgelerindeki](/powershell/module/az.compute/new-azvm?view=azps-2.5.0#description)örnekleri kullanın.
+Şimdi derleme tamamlanmıştır, görüntüden bir VM oluşturabilirsiniz. [PowerShell New-AzVM belgelerindeki](/powershell/module/az.compute/new-azvm#description)örnekleri kullanın.
 
 ## <a name="clean-up"></a>Temizleme
 

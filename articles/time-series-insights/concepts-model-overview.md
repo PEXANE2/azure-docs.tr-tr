@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/01/2020
+ms.date: 01/22/2021
 ms.custom: seodec18
-ms.openlocfilehash: 0c201ce984a216a5cc62e221c0433f83a7eeabae
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 7b37934ff3b867b83c2c958d52bea2dd4db01354
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021771"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736810"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 içinde zaman serisi modeli
 
@@ -75,7 +75,7 @@ Bu bileşenler, zaman serisi modeli belirtmek ve verilerinizi düzenlemek için 
 
 [![Zaman serisi modeline genel bakış grafiği](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-Bir zaman serisi modeli [Azure Time Series Insights Gezgini]()aracılığıyla oluşturulup yönetilebilir. Zaman serisi modeli ayarları, [model ayarları API 'si](/rest/api/time-series-insights/reference-model-apis)aracılığıyla yönetilebilir.
+Bir zaman serisi modeli [Azure Time Series Insights Gezgini](https://docs.microsoft.com/azure/time-series-insights/concepts-ux-panels)aracılığıyla oluşturulup yönetilebilir. Zaman serisi modeli ayarları, [model ayarları API 'si](/rest/api/time-series-insights/reference-model-apis)aracılığıyla yönetilebilir.
 
 ## <a name="time-series-model-instances"></a>Zaman serisi model örnekleri
 

@@ -3,12 +3,12 @@ title: Azure yönetilen disklerini yedekleme
 description: Azure portal Azure yönetilen disklerini nasıl yedekleyeceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 2169e2f44e3ffb2c05c674d633efabed2c531878
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: ca86550c4dec4b51c60d9ecdef124e38783a3764
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573131"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98738161"
 ---
 # <a name="back-up-azure-managed-disks-in-preview"></a>Azure yönetilen disklerini yedekleme (önizlemede)
 
@@ -17,7 +17,7 @@ ms.locfileid: "98573131"
 >
 >Önizlemeye kaydolmak için [Bu formu doldurun](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) .
 
-Bu makalede, [Azure yönetilen diskin](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview) Azure Portal nasıl yedekleneceği açıklanır.
+Bu makalede, [Azure yönetilen diskin](../virtual-machines/managed-disks-overview.md) Azure Portal nasıl yedekleneceği açıklanır.
 
 Bu makalede şunları yapmayı öğreneceksiniz:
 
@@ -46,7 +46,7 @@ Yedekleme Kasası, Azure 'da PostgreSQL sunucuları ve Azure diskleri için Azur
 
    ![Başlat: kasa oluşturma](./media/backup-managed-disks/initiate-create-vault.png)
 
-1. **Temel bilgiler** sekmesinde abonelik, kaynak grubu, Yedekleme Kasası adı, bölge ve yedek depolama yedekliliği sağlayın. **Gözden geçir + oluştur** seçeneğini belirleyerek devam edin. [Yedekleme Kasası oluşturma](https://docs.microsoft.com/azure/backup/backup-vault-overview#create-a-backup-vault)hakkında daha fazla bilgi edinin.
+1. **Temel bilgiler** sekmesinde abonelik, kaynak grubu, Yedekleme Kasası adı, bölge ve yedek depolama yedekliliği sağlayın. **Gözden geçir + oluştur** seçeneğini belirleyerek devam edin. [Yedekleme Kasası oluşturma](./backup-vault-overview.md#create-a-backup-vault)hakkında daha fazla bilgi edinin.
 
    ![Kasayı gözden geçirin ve oluşturun](./media/backup-managed-disks/review-and-create.png)
 
@@ -67,7 +67,7 @@ Yedekleme Kasası, Azure 'da PostgreSQL sunucuları ve Azure diskleri için Azur
 
    ![Yedekleme zamanlama sıklığını seçin](./media/backup-managed-disks/backup-schedule-frequency.png)
 
-   Azure disk yedekleme günde birden çok yedekleme sunar. Daha sık yedeklemeler gerekiyorsa, **saatlik** yedekleme sıklığını her 4, 6, 8 veya 12 saat aralıklarıyla yedeklemeler alma özelliğiyle birlikte seçin. Yedeklemeler, seçilen **zaman** aralığı temelinde zamanlanır. Örneğin, **her 4 saatte** bir seçeneğini belirlerseniz yedeklemeler günde eşit olarak dağıtılırsa yedeklemeler her 4 saatte bir zaman aralığında alınır. Günde bir kez yedekleme yeterliyse **günlük** yedekleme sıklığını seçin. Günlük yedekleme sıklığında, yedeklemelerinizin alındığı günün saatini belirtebilirsiniz. Gün zamanının yedeklemenin tamamlandığı zaman değil, yedekleme başlangıç saatini gösterdiğine dikkat edin. Yedekleme işleminin tamamlanması için gereken süre, diskin boyutu ve ardışık yedeklemeler arasındaki dalgalanma oranı dahil olmak üzere çeşitli faktörlere bağımlıdır. Ancak, Azure disk yedekleme, üretim uygulaması performansını etkilemeyen [Artımlı anlık görüntüleri](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal)kullanan aracısız bir yedeğiniz.
+   Azure disk yedekleme günde birden çok yedekleme sunar. Daha sık yedeklemeler gerekiyorsa, **saatlik** yedekleme sıklığını her 4, 6, 8 veya 12 saat aralıklarıyla yedeklemeler alma özelliğiyle birlikte seçin. Yedeklemeler, seçilen **zaman** aralığı temelinde zamanlanır. Örneğin, **her 4 saatte** bir seçeneğini belirlerseniz yedeklemeler günde eşit olarak dağıtılırsa yedeklemeler her 4 saatte bir zaman aralığında alınır. Günde bir kez yedekleme yeterliyse **günlük** yedekleme sıklığını seçin. Günlük yedekleme sıklığında, yedeklemelerinizin alındığı günün saatini belirtebilirsiniz. Gün zamanının yedeklemenin tamamlandığı zaman değil, yedekleme başlangıç saatini gösterdiğine dikkat edin. Yedekleme işleminin tamamlanması için gereken süre, diskin boyutu ve ardışık yedeklemeler arasındaki dalgalanma oranı dahil olmak üzere çeşitli faktörlere bağımlıdır. Ancak, Azure disk yedekleme, üretim uygulaması performansını etkilemeyen [Artımlı anlık görüntüleri](../virtual-machines/disks-incremental-snapshots.md)kullanan aracısız bir yedeğiniz.
 
 1. **Yedekleme ilkesi** sekmesinde, kurtarma noktası hedefı (RPO) gereksinimini karşılayan bekletme ayarları ' nı seçin.
 
@@ -80,7 +80,7 @@ Yedekleme Kasası, Azure 'da PostgreSQL sunucuları ve Azure diskleri için Azur
    ![Bekletme ayarları](./media/backup-managed-disks/retention-settings.png)
 
    >[!NOTE]
-   >Yönetilen diskler için Azure Backup, disk başına 200 anlık görüntüsü ile sınırlı olan Artımlı anlık görüntüleri kullanır. Yedekleme ilkesi, zamanlanan yedeklemelerin dışında isteğe bağlı yedeklemeler yapmanıza olanak tanımak için toplam yedeklemeleri 180 olarak sınırlandırır. Yönetilen disk için [Artımlı anlık görüntüler](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) hakkında daha fazla bilgi edinin.
+   >Yönetilen diskler için Azure Backup, disk başına 200 anlık görüntüsü ile sınırlı olan Artımlı anlık görüntüleri kullanır. Yedekleme ilkesi, zamanlanan yedeklemelerin dışında isteğe bağlı yedeklemeler yapmanıza olanak tanımak için toplam yedeklemeleri 180 olarak sınırlandırır. Yönetilen disk için [Artımlı anlık görüntüler](../virtual-machines/disks-incremental-snapshots.md#restrictions) hakkında daha fazla bilgi edinin.
 
 1. Yedekleme ilkesi oluşturmayı **gözden geçir + oluştur** seçeneğini belirleyerek doldurun.
 
@@ -88,7 +88,7 @@ Yedekleme Kasası, Azure 'da PostgreSQL sunucuları ve Azure diskleri için Azur
 
 Yedekleme Kasası, diğer Azure kaynaklarına erişmek için yönetilen kimlik kullanır. Yönetilen disklerin yedeklemesini yapılandırmak için, yedekleme kasasının yönetilen kimliği, anlık görüntülerin oluşturulduğu ve yönetildiği kaynak disklerde ve kaynak gruplarında bir izin kümesi gerektirir.
 
-Sistem tarafından atanan yönetilen kimlik, kaynak başına bir kaynakla kısıtlıdır ve bu kaynağın yaşam döngüsüne bağlıdır. Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak yönetilen kimliğe izin verebilirsiniz. Yönetilen kimlik, yalnızca Azure kaynaklarıyla kullanılabilecek özel bir türün hizmet sorumlusundan oluşur. [Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)hakkında daha fazla bilgi edinin.
+Sistem tarafından atanan yönetilen kimlik, kaynak başına bir kaynakla kısıtlıdır ve bu kaynağın yaşam döngüsüne bağlıdır. Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak yönetilen kimliğe izin verebilirsiniz. Yönetilen kimlik, yalnızca Azure kaynaklarıyla kullanılabilecek özel bir türün hizmet sorumlusundan oluşur. [Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md)hakkında daha fazla bilgi edinin.
 
 Yönetilen disklerin yedeklemesini yapılandırmak için aşağıdaki Önkoşullar gereklidir:
 
@@ -115,7 +115,7 @@ Yönetilen disklerin yedeklemesini yapılandırmak için aşağıdaki Önkoşull
 
    - Bu kaynak grubunu, yedeklerinin yedeklendiği birden çok diskte anlık görüntüleri depolamak için kullanabilirsiniz.  
 
-   - Bu diskin aboneliği dışındaki belirli bir disk için artımlı bir anlık görüntü oluşturamazsınız. Bu nedenle, yedeklenecek diskle aynı abonelik içindeki kaynak grubunu seçin. Yönetilen diskler için [Artımlı anlık görüntü](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) hakkında daha fazla bilgi edinin.
+   - Bu diskin aboneliği dışındaki belirli bir disk için artımlı bir anlık görüntü oluşturamazsınız. Bu nedenle, yedeklenecek diskle aynı abonelik içindeki kaynak grubunu seçin. Yönetilen diskler için [Artımlı anlık görüntü](../virtual-machines/disks-incremental-snapshots.md#restrictions) hakkında daha fazla bilgi edinin.
 
    Rolü atamak için aşağıdaki adımları izleyin:
 
@@ -129,8 +129,6 @@ Yönetilen disklerin yedeklemesini yapılandırmak için aşağıdaki Önkoşull
    >Kasasının yönetilen kimliğini seçmek için Yedekleme Kasası adını yazın.
 
    ![Disk anlık görüntüsü katılımcısı rolü Ekle](./media/backup-managed-disks/disk-snapshot-contributor-role.png)
-
-1. Yedeklenecek disk, [müşteri tarafından yönetilen anahtarlarla (CMK)](https://docs.microsoft.com/azure/virtual-machines/disks-enable-customer-managed-keys-portal) şifrelenirse veya [platform tarafından yönetilen anahtarlar ve müşteri tarafından yönetilen anahtarlar kullanılarak Çift şifreleme](https://docs.microsoft.com/azure/virtual-machines/disks-enable-double-encryption-at-rest-portal)kullanıyorsa, bu durumda, **disk şifreleme kümesi** kaynağındaki yedekleme kasasının yönetilen kimliğine **okuyucu** rolü iznini atayın.
 
 1. Yedekleme kasasının yönetilen kimliğinin, anlık görüntü deposu görevi gören kaynak diskte ve kaynak grubunda doğru rol atamaları kümesine sahip olduğunu doğrulayın.
 
@@ -154,7 +152,7 @@ Yönetilen disklerin yedeklemesini yapılandırmak için aşağıdaki Önkoşull
    ![Azure diski seçin](./media/backup-managed-disks/select-azure-disk.png)
 
    >[!NOTE]
-   >Azure Backup, yönetilen disklerin [Artımlı anlık görüntülerini](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) kullanır ve bu, üst diskin depolama türünden bağımsız olarak, standart HDD depolama alanının son anlık görüntüsünden bu yana yalnızca diskte Delta değişikliklerini depolar. Daha fazla güvenilirlik için, ZRS 'yi destekleyen bölgelerde Artımlı anlık görüntüler bölge yedekli depolama (ZRS) üzerinde varsayılan olarak depolanır. Şu anda Azure disk yedekleme, yedeklemeleri Yedekleme Kasası deposuna kopyalamamakta olan yönetilen disklerin işletimsel yedeklemesini destekler. Bu nedenle yedekleme kasasının yedek depolama yedeklilik ayarı kurtarma noktaları için uygulanmaz.
+   >Azure Backup, yönetilen disklerin [Artımlı anlık görüntülerini](../virtual-machines/disks-incremental-snapshots.md#restrictions) kullanır ve bu, üst diskin depolama türünden bağımsız olarak, standart HDD depolama alanının son anlık görüntüsünden bu yana yalnızca diskte Delta değişikliklerini depolar. Daha fazla güvenilirlik için, ZRS 'yi destekleyen bölgelerde Artımlı anlık görüntüler bölge yedekli depolama (ZRS) üzerinde varsayılan olarak depolanır. Şu anda Azure disk yedekleme, yedeklemeleri Yedekleme Kasası deposuna kopyalamamakta olan yönetilen disklerin işletimsel yedeklemesini destekler. Bu nedenle yedekleme kasasının yedek depolama yedeklilik ayarı kurtarma noktaları için uygulanmaz.
 
 1. **Yedekleme ilkesi** sekmesinde, bir yedekleme ilkesi seçin.
 

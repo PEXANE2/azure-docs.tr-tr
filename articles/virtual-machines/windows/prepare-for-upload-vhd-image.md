@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 390cda604b71404735b7c14382d30067e154ef70
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e409211c167f7b29128faf9fdfc02aa5c0a7d0e3
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976203"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736263"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure’a yüklemek için Windows VHD veya VHDX’i hazırlama
 
@@ -92,7 +92,7 @@ SFC taraması tamamlandıktan sonra, Windows güncelleştirmelerini yükledikten
    DISKPART> exit
    ```
 
-1. Windows için Eşgüdümlü Evrensel Saat (UTC) süresini ayarlayın. Ayrıca, Windows Saat hizmeti **W32Time** başlangıç türünü **Otomatik**olarak ayarlayın:
+1. Windows için Eşgüdümlü Evrensel Saat (UTC) süresini ayarlayın. Ayrıca, Windows Saat hizmeti **W32Time** başlangıç türünü **Otomatik** olarak ayarlayın:
 
    ```powershell
    Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Control\TimeZoneInformation -Name RealTimeIsUniversal -Value 1 -Type DWord -Force
@@ -350,7 +350,7 @@ VM 'nin sağlıklı, güvenli ve RDP erişilebilir olduğundan emin olun:
 
 ### <a name="install-windows-updates"></a>Windows güncelleştirmelerini yükler
 
-İdeal olarak, makinenin *düzeltme eki düzeyine*güncelleştirilmesini sağlamanız gerekir, bu mümkün değilse, aşağıdaki güncelleştirmelerin yüklendiğinden emin olun. En son güncelleştirmeleri almak için Windows Update geçmiş sayfalarına bakın: [Windows 10 ve Windows server 2019](https://support.microsoft.com/help/4000825), [Windows 8.1, ve Windows Server 2012 R2](https://support.microsoft.com/help/4009470) ve Windows 7 SP1 ve WINDOWS Server [2008 R2 SP1](https://support.microsoft.com/help/4009469).
+İdeal olarak, makinenin *düzeltme eki düzeyine* güncelleştirilmesini sağlamanız gerekir, bu mümkün değilse, aşağıdaki güncelleştirmelerin yüklendiğinden emin olun. En son güncelleştirmeleri almak için Windows Update geçmiş sayfalarına bakın: [Windows 10 ve Windows server 2019](https://support.microsoft.com/help/4000825), [Windows 8.1, ve Windows Server 2012 R2](https://support.microsoft.com/help/4009470) ve Windows 7 SP1 ve WINDOWS Server [2008 R2 SP1](https://support.microsoft.com/help/4009469).
 
 <br />
 
@@ -400,9 +400,9 @@ VM 'nin sağlıklı, güvenli ve RDP erişilebilir olduğundan emin olun:
 Sistem Hazırlama Aracı ( `sysprep.exe` ), bir Windows yüklemesini sıfırlamak için çalıştırabileceğiniz bir işlemdir.
 Sysprep tüm kişisel verileri kaldırarak ve birçok bileşeni sıfırlayarak "kutudan çıkar" deneyimi sağlar.
 
-Genellikle, `sysprep.exe` belirli bir yapılandırmaya sahip olan birkaç diğer VM 'yi dağıtabileceğiniz bir şablon oluşturmak için ' i çalıştırırsınız. Şablon *Genelleştirilmiş görüntü*olarak adlandırılır.
+Genellikle, `sysprep.exe` belirli bir yapılandırmaya sahip olan birkaç diğer VM 'yi dağıtabileceğiniz bir şablon oluşturmak için ' i çalıştırırsınız. Şablon *Genelleştirilmiş görüntü* olarak adlandırılır.
 
-Bir diskten yalnızca bir VM oluşturmak için Sysprep 'i kullanmanız gerekmez. Bunun yerine, VM 'yi *özelleştirilmiş bir görüntüden*oluşturabilirsiniz. Özel bir diskten VM oluşturma hakkında daha fazla bilgi için, bkz:
+Bir diskten yalnızca bir VM oluşturmak için Sysprep 'i kullanmanız gerekmez. Bunun yerine, VM 'yi *özelleştirilmiş bir görüntüden* oluşturabilirsiniz. Özel bir diskten VM oluşturma hakkında daha fazla bilgi için, bkz:
 
 - [Özelleştirilmiş diskten VM oluşturma](create-vm-specialized.md)
 - [Özelleştirilmiş bir VHD diskinden VM oluşturma](./create-vm-specialized-portal.md)
@@ -433,7 +433,7 @@ Windows tabanlı bir bilgisayarda yüklü her rol veya uygulama Genelleştirilmi
 Artık VHD karşıya yüklenmeye hazırdır. Genelleştirilmiş bir diskten VM oluşturma hakkında daha fazla bilgi için bkz. [Genelleştirilmiş BIR VHD 'Yi karşıya yükleme ve Azure 'da yeni BIR VM oluşturmak için kullanma](/previous-versions/azure/virtual-machines/windows/sa-upload-generalized).
 
 >[!NOTE]
-> Özel bir *unattend.xml* dosyası desteklenmez. , [Microsoft-Windows-Shell-Setup](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) seçeneklerini Azure sağlama aracısının kullandığı *unattend.xml* dosyasına eklemek için yalnızca sınırlı destek sağlayan **additionalunattendcontent** özelliğini destekliyoruz. FirstLogonCommand ve LogonCommands eklemek için, örneğin, [Additionalunattendcontent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet&preserve-view=true) ' i kullanabilirsiniz. Daha fazla bilgi için bkz. [Additionalunattendcontent FirstLogonCommands örneği](https://github.com/Azure/azure-quickstart-templates/issues/1407).
+> Özel bir *unattend.xml* dosyası desteklenmez. , [Microsoft-Windows-Shell-Setup](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) seçeneklerini Azure sağlama aracısının kullandığı *unattend.xml* dosyasına eklemek için yalnızca sınırlı destek sağlayan **additionalunattendcontent** özelliğini destekliyoruz. FirstLogonCommand ve LogonCommands eklemek için, örneğin, [Additionalunattendcontent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent) ' i kullanabilirsiniz. Daha fazla bilgi için bkz. [Additionalunattendcontent FirstLogonCommands örneği](https://github.com/Azure/azure-quickstart-templates/issues/1407).
 
 ## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>Sanal diski sabit boyutlu bir VHD 'ye Dönüştür
 
@@ -460,11 +460,11 @@ Sanal diskinizi Azure için gereken biçime dönüştürmek ve yeniden boyutland
 
 1. Hyper-V Yöneticisi 'Ni açın ve sol tarafta yerel bilgisayarınızı seçin. Bilgisayar listesinin üzerindeki menüde, **işlem**  >  **Düzenle**' yi seçin.
 1. **Sanal sabit diski bul** sayfasında, sanal diskinizi seçin.
-1. **Eylem Seç** sayfasında, Sonrakini **Dönüştür**' ü seçin  >  **Next**.
-1. VHDX 'ten dönüştürmek için, sonraki **VHD**'yi seçin  >  **Next**.
-1. Dinamik olarak genişleyen bir diskten dönüştürmek için, sonraki **sabit boyut**' u seçin  >  **Next**.
+1. **Eylem Seç** sayfasında, Sonrakini **Dönüştür**' ü seçin  >  .
+1. VHDX 'ten dönüştürmek için, sonraki **VHD**'yi seçin  >  .
+1. Dinamik olarak genişleyen bir diskten dönüştürmek için, sonraki **sabit boyut**' u seçin  >  .
 1. Yeni VHD dosyasını kaydetmek için bir yol bulun ve seçin.
-1. **Son**’u seçin.
+1. **Son**'u seçin.
 
 ### <a name="use-powershell-to-convert-the-disk"></a>Diski dönüştürmek için PowerShell 'i kullanma
 
@@ -482,9 +482,9 @@ Bu örnekte, **yol** değerini dönüştürmek istediğiniz sanal sabit disk ile
 
 1. Hyper-V Yöneticisi 'Ni açın ve sol tarafta yerel bilgisayarınızı seçin. Bilgisayar listesinin üzerindeki menüde, **işlem**  >  **Düzenle**' yi seçin.
 1. **Sanal sabit diski bul** sayfasında, sanal diskinizi seçin.
-1. **Eylem Seç** sayfasında İleri **Genişlet**' i seçin  >  **Next**.
-1. **Sanal sabit diski bul** sayfasında, gib > yeni boyutunu **daha sonra**girin.
-1. **Son**’u seçin.
+1. **Eylem Seç** sayfasında İleri **Genişlet**' i seçin  >  .
+1. **Sanal sabit diski bul** sayfasında, gib > yeni boyutunu **daha sonra** girin.
+1. **Son**'u seçin.
 
 ### <a name="use-powershell-to-resize-the-disk"></a>Diski yeniden boyutlandırmak için PowerShell 'i kullanma
 
@@ -513,7 +513,7 @@ Aşağıdaki ayarlar, VHD karşıya yüklemeyi etkilemez. Ancak, bunları yapıl
   Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -Name PagingFiles -Value 'D:\pagefile.sys' -Type MultiString -Force
   ```
 
-  SANAL makineye bir veri diski eklenmişse, zamana bağlı sürücü biriminin harfi genellikle *D*olur. Ayarlarınıza ve kullanılabilir sürücü sayısına bağlı olarak bu atama farklı olabilir.
+  SANAL makineye bir veri diski eklenmişse, zamana bağlı sürücü biriminin harfi genellikle *D* olur. Ayarlarınıza ve kullanılabilir sürücü sayısına bağlı olarak bu atama farklı olabilir.
 
   - Virüsten koruma yazılımı tarafından sağlanmakta olabilecek komut dosyası engelleyicilerini devre dışı bırakmayı öneririz. Bu kişiler, yansımasından yeni bir VM dağıtırken yürütülen Windows sağlama Aracısı betikleri kesintiye uğratabilecek ve engelleyebilirler.
 

@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 26874c33c496b57bf6317a7b837b3afddc2f5e37
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 41457f26c22e3b8ed529ce77cfaf452618b03655
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955659"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737651"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Linux VM 'lerinde uzantıları yüklemeyi kısıtlamak için Azure Ilkesini kullanma
 
@@ -98,7 +98,7 @@ Aşağıdaki. json dosyasını kopyalayıp dosyaya yapıştırın.
 
 ## <a name="create-the-policy"></a>İlkeyi oluşturma
 
-İlke tanımı, kullanmak istediğiniz yapılandırmayı depolamak için kullanılan bir nesnedir. İlke tanımı, ilkeyi tanımlamak için kuralları ve parametreler dosyalarını kullanır. [Az Policy Definition Create](/cli/azure/role/assignment?view=azure-cli-latest)kullanarak ilke tanımını oluşturun.
+İlke tanımı, kullanmak istediğiniz yapılandırmayı depolamak için kullanılan bir nesnedir. İlke tanımı, ilkeyi tanımlamak için kuralları ve parametreler dosyalarını kullanır. [Az Policy Definition Create](/cli/azure/role/assignment)kullanarak ilke tanımını oluşturun.
 
 Bu örnekte, kurallar ve parametreler, oluşturduğunuz ve bulut kabuğunuzda. JSON dosyaları olarak depoladığınız dosyalardır.
 
@@ -117,7 +117,7 @@ az policy definition create \
 
 Bu örnek, [az Policy atama Create](/cli/azure/policy/assignment)kullanılarak ilkeyi bir kaynak grubuna atar. **Myresourcegroup** kaynak grubunda oluşturulan herhangi bir sanal makıne Linux VM erişimini veya Linux Için özel betik uzantılarını yükleyemeyecektir. İlkeyi atamadan önce kaynak grubunun mevcut olması gerekir.
 
-Abonelik KIMLIĞINIZI örnekteki bir yerde kullanmak üzere almak için [az Account List](/cli/azure/account?view=azure-cli-latest) kullanın.
+Abonelik KIMLIĞINIZI örnekteki bir yerde kullanmak üzere almak için [az Account List](/cli/azure/account) kullanın.
 
 
 ```azurecli-interactive

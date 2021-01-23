@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: bb40586a93a40c2aaa3f0f884a0e747f168c324b
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: db21f1170dacbfa1e4367e7f22143ec3d0b0f6e4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186112"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737345"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Uzamsal analiz kapsayıcısını (Önizleme) yükleyip çalıştırın
 
@@ -62,7 +62,7 @@ Bu makalede, aşağıdaki yazılım paketlerini indirip yükleyeceksiniz. Ana bi
 * [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) çalışma zamanı.
 
 #### <a name="azure-vm-with-gpu"></a>[GPU ile Azure VM](#tab/virtual-machine)
-Bizim örneğimizde, bir K80 GPU 'SU olan bir [NC serisi sanal makinesi](https://docs.microsoft.com/azure/virtual-machines/nc-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) kullanacağız.
+Bizim örneğimizde, bir K80 GPU 'SU olan bir [NC serisi sanal makinesi](../../virtual-machines/nc-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) kullanacağız.
 
 ---
 
@@ -309,13 +309,13 @@ Ana bilgisayarda  `/etc/iotedge/config.yaml` düzenlenmek üzere açın. `ADD DE
 sudo systemctl restart iotedge
 ```
 
-Uzamsal analiz kapsayıcısını, [Azure Portal](../../iot-edge/how-to-deploy-modules-portal.md) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows)'Dan ana bilgisayar üzerinde IoT modülü olarak dağıtın. Portalı kullanıyorsanız, görüntü URI 'sini Azure Container Registry konumuna ayarlayın. 
+Uzamsal analiz kapsayıcısını, [Azure Portal](../../iot-edge/how-to-deploy-modules-portal.md) veya [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows)'Dan ana bilgisayar üzerinde IoT modülü olarak dağıtın. Portalı kullanıyorsanız, görüntü URI 'sini Azure Container Registry konumuna ayarlayın. 
 
 Azure CLı kullanarak kapsayıcıyı dağıtmak için aşağıdaki adımları kullanın.
 
 #### <a name="azure-vm-with-gpu"></a>[GPU ile Azure VM](#tab/virtual-machine)
 
-GPU içeren bir Azure sanal makinesi, uzamsal analizler çalıştırmak için de kullanılabilir. Aşağıdaki örnekte, bir K80 GPU 'SU olan bir [NC serisi](https://docs.microsoft.com/azure/virtual-machines/nc-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) VM kullanılır.
+GPU içeren bir Azure sanal makinesi, uzamsal analizler çalıştırmak için de kullanılabilir. Aşağıdaki örnekte, bir K80 GPU 'SU olan bir [NC serisi](../../virtual-machines/nc-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) VM kullanılır.
 
 #### <a name="create-the-vm"></a>Sanal makineyi oluşturma
 
@@ -335,7 +335,7 @@ Ardından, **Nc6** veya **NC6_Promo** seçin.
 
 Sonra, VM 'yi oluşturun. Oluşturulduktan sonra, Azure portal VM kaynağına gidin ve `Extensions` sol bölmeden öğesini seçin. Uzantılar penceresi kullanılabilir tüm uzantılara sahip olacak şekilde görünür. Seç `NVIDIA GPU Driver Extension` ' e tıklayın, Oluştur ' a tıklayın ve Sihirbazı doldurun.
 
-Uzantı başarıyla uygulandıktan sonra, Azure portal VM ana sayfasına gidin ve ' a tıklayın `Connect` . SANAL makineye SSH ya da RDP aracılığıyla erişilebilir. Bu işlem, görselleştiricisi penceresinin (daha sonra açıklanacak) görüntülenmesini sağlayacak şekilde yararlı olacaktır. RDP erişimini, [Bu adımları](https://docs.microsoft.com/azure/virtual-machines/linux/use-remote-desktop) IZLEYEREK ve sanal makineye Uzak Masaüstü bağlantısı açarak yapılandırın.
+Uzantı başarıyla uygulandıktan sonra, Azure portal VM ana sayfasına gidin ve ' a tıklayın `Connect` . SANAL makineye SSH ya da RDP aracılığıyla erişilebilir. Bu işlem, görselleştiricisi penceresinin (daha sonra açıklanacak) görüntülenmesini sağlayacak şekilde yararlı olacaktır. RDP erişimini, [Bu adımları](../../virtual-machines/linux/use-remote-desktop.md) IZLEYEREK ve sanal makineye Uzak Masaüstü bağlantısı açarak yapılandırın.
 
 ### <a name="verify-graphics-drivers-are-installed"></a>Grafik sürücülerinin yüklü olduğunu doğrulama
 
@@ -426,7 +426,7 @@ Aşağıdaki tabloda IoT Edge modülü tarafından kullanılan çeşitli ortam d
 > [!IMPORTANT]
 > `Eula` `Billing` `ApiKey` Kapsayıcıyı çalıştırmak için, ve seçenekleri belirtilmelidir; Aksi takdirde kapsayıcı başlatılmaz.  Daha fazla bilgi için bkz. [faturalandırma](#billing).
 
-[Azure Stack Edge cihazları](https://go.microsoft.com/fwlink/?linkid=2142179), [bir masaüstü MAKINESI](https://go.microsoft.com/fwlink/?linkid=2152270) veya Azure VM için dağıtım bildirimini, kendi ayarlarınıza ve işlem seçiminize sahip [GPU ile](https://go.microsoft.com/fwlink/?linkid=2152189) güncelleştirdiğinizde, kapsayıcıyı ana bilgisayarda bir IoT Edge modülü olarak dağıtmak için aşağıdaki [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows) komutunu kullanabilirsiniz.
+[Azure Stack Edge cihazları](https://go.microsoft.com/fwlink/?linkid=2142179), [bir masaüstü MAKINESI](https://go.microsoft.com/fwlink/?linkid=2152270) veya Azure VM için dağıtım bildirimini, kendi ayarlarınıza ve işlem seçiminize sahip [GPU ile](https://go.microsoft.com/fwlink/?linkid=2152189) güncelleştirdiğinizde, kapsayıcıyı ana bilgisayarda bir IoT Edge modülü olarak dağıtmak için aşağıdaki [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows) komutunu kullanabilirsiniz.
 
 ```azurecli
 sudo az login
@@ -457,7 +457,7 @@ Kapsayıcıyı bağlı kameraları kullanacak şekilde yapılandırmak, işlemle
 
 ## <a name="redeploy-or-delete-the-deployment"></a>Dağıtımı yeniden dağıtma veya silme
 
-Dağıtımı güncelleştirmeniz gerekiyorsa, önceki dağıtımlarınızın başarılı bir şekilde dağıtıldığından emin olun veya tamamlanmamış IoT Edge cihaz dağıtımlarını silmeniz gerekir. Aksi takdirde, bu dağıtımlar devam eder ve sistem hatalı durumda bırakılır. Azure portal veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows)'yi kullanabilirsiniz.
+Dağıtımı güncelleştirmeniz gerekiyorsa, önceki dağıtımlarınızın başarılı bir şekilde dağıtıldığından emin olun veya tamamlanmamış IoT Edge cihaz dağıtımlarını silmeniz gerekir. Aksi takdirde, bu dağıtımlar devam eder ve sistem hatalı durumda bırakılır. Azure portal veya [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows)'yi kullanabilirsiniz.
 
 ## <a name="use-the-output-generated-by-the-container"></a>Kapsayıcı tarafından oluşturulan çıktıyı kullanın
 

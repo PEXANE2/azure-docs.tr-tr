@@ -5,13 +5,13 @@ author: shreyasharmamsft
 ms.author: shresha
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 10/01/2020
-ms.openlocfilehash: f1c394bb1a568d59e0821b61e7acfcf8f25290f7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 01/22/2021
+ms.openlocfilehash: fd08dc98fa47617bbc7c8d1fff895377837a7327
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020768"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736743"
 ---
 # <a name="time-series-model-variables"></a>Zaman serisi model değişkenleri
 
@@ -29,7 +29,7 @@ Aşağıdaki tabloda, her değişken türü için uygun olan özellikler görün
 
 ## <a name="numeric-variables"></a>Sayısal değişkenler
 
-| Variable Özelliği | Description |
+| Variable Özelliği | Açıklama |
 | --- | ---|
 | Değişken filtresi | Filtreler, hesaplama için göz önünde bulundurulmakta olan satır sayısını kısıtlamak için isteğe bağlı Koşullu yan tümcelerdir. |
 | Değişken değeri | Cihaz veya sensörlerden gelen ve zaman serisi Ifadeleri kullanılarak dönüştürülen hesaplama için kullanılan telemetri değerleri. Sayısal tür değişkenleri *Double* türünde olmalıdır.|
@@ -59,7 +59,7 @@ Değişkenler aşağıdaki JSON örneğine uyar:
 
 ## <a name="categorical-variables"></a>Kategorik değişkenler
 
-| Variable Özelliği | Description |
+| Variable Özelliği | Açıklama |
 | --- | ---|
 | Değişken filtresi | Filtreler, hesaplama için göz önünde bulundurulmakta olan satır sayısını kısıtlamak için isteğe bağlı Koşullu yan tümcelerdir. |
 | Değişken değeri | Cihazdan veya sensörlerden gelen hesaplama için kullanılan telemetri değerleri. Kategorik tür değişkenleri *Long* veya *String* olmalıdır. |
@@ -99,7 +99,7 @@ Değişkenler aşağıdaki JSON örneğine uyar:
 
 ## <a name="aggregate-variables"></a>Toplam değişkenleri
 
-| Variable Özelliği | Description |
+| Variable Özelliği | Açıklama |
 | --- | ---|
 | Değişken filtresi | Filtreler, hesaplama için göz önünde bulundurulmakta olan satır sayısını kısıtlamak için isteğe bağlı Koşullu yan tümcelerdir. |
 | Değişken toplama | [Toplu değişken türleri için desteklenen toplama işlevleri](/rest/api/time-series-insights/reference-time-series-expression-syntax#aggregate-variable-kind)aracılığıyla hesaplamalar gerçekleştirin. |

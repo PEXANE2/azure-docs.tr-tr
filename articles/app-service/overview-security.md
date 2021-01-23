@@ -5,14 +5,14 @@ keywords: Azure App Service, Web uygulaması, mobil uygulama, API uygulaması, i
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 55ffb2d03a42809a41583e6be25066b0b8e104b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61bffcfa8b98ed666e450c344023258b752e4880
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961508"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736114"
 ---
-# <a name="security-in-azure-app-service"></a>Azure App Service güvenlik
+# <a name="security-in-azure-app-service"></a>Azure App Service'te güvenlik
 
 Bu makalede, [Azure App Service](overview.md) Web uygulamanızın, mobil uygulamanızın arka UCUNUN, API uygulamanızın ve [işlev uygulamanızın](../azure-functions/index.yml)güvenliğinin sağlanmasına nasıl yardımcı olduğu gösterilmektedir. Ayrıca, yerleşik App Service özellikleriyle uygulamanızı nasıl daha güvenli hale kullanabileceğinizi gösterir.
 
@@ -43,7 +43,7 @@ App Service, dosyalarınızı dağıtmak için hem FTP hem de FTPS 'yi destekler
 
 Varsayılan olarak, App Service uygulamanız internet 'ten gelen tüm IP adreslerinden gelen istekleri kabul eder, ancak bu erişimi, IP adreslerinin küçük bir alt kümesiyle sınırlayabilirsiniz. Windows üzerinde App Service, uygulamanıza erişmelerine izin verilen IP adreslerinin bir listesini tanımlamanızı sağlar. İzin verilen liste, tek tek IP adreslerini veya bir alt ağ maskesi tarafından tanımlanan bir IP adresi aralığını içerebilir. Daha fazla bilgi için bkz. [Azure App Service STATIK IP kısıtlamaları](app-service-ip-restrictions.md).
 
-Windows üzerinde App Service için _web.config_yapılandırarak IP adreslerini dinamik olarak da kısıtlayabilirsiniz. Daha fazla bilgi için bkz. [dınamık IP \<dynamicIpSecurity> güvenliği ](/iis/configuration/system.webServer/security/dynamicIpSecurity/).
+Windows üzerinde App Service için _web.config_ yapılandırarak IP adreslerini dinamik olarak da kısıtlayabilirsiniz. Daha fazla bilgi için bkz. [dınamık IP \<dynamicIpSecurity> güvenliği](/iis/configuration/system.webServer/security/dynamicIpSecurity/).
 
 ## <a name="client-authentication-and-authorization"></a>İstemci kimlik doğrulaması ve yetkilendirme
 
@@ -85,8 +85,8 @@ Kaynak bağlantınızı Azure 'daki paylaşılan ağlardan tamamen yalıtmak iç
 Veritabanları gibi şirket içi kaynaklara üç yolla güvenle erişebilirsiniz: 
 
 - [Karma bağlantılar](app-service-hybrid-connections.md) -TCP tüneli aracılığıyla uzak kaynağınız için noktadan noktaya bağlantı kurar. TCP tüneli, paylaşılan erişim imzası (SAS) anahtarlarıyla TLS 1,2 kullanılarak oluşturulur.
-- Siteden siteye VPN ile [sanal ağ tümleştirmesi](web-sites-integrate-with-vnet.md) - [bir Azure sanal ağı Içindeki kaynaklarda](#resources-inside-an-azure-virtual-network)açıklandığı gibi, sanal ağ, [siteden siteye VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)aracılığıyla şirket içi ağınıza bağlanabilir. Bu ağ topolojisinde, uygulamanız sanal ağdaki diğer kaynaklar gibi şirket içi kaynaklara bağlanabilir.
-- [Bir Azure sanal ağı Içindeki kaynaklarda](#resources-inside-an-azure-virtual-network)açıklandığı gibi, sıteden siteye vpn ile [App Service ortamı](environment/intro.md) , ancak sanal ağ, [siteden siteye VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)aracılığıyla şirket içi ağınıza bağlanabilir. Bu ağ topolojisinde, uygulamanız sanal ağdaki diğer kaynaklar gibi şirket içi kaynaklara bağlanabilir.
+- Siteden siteye VPN ile [sanal ağ tümleştirmesi](web-sites-integrate-with-vnet.md) - [bir Azure sanal ağı Içindeki kaynaklarda](#resources-inside-an-azure-virtual-network)açıklandığı gibi, sanal ağ, [siteden siteye VPN](../vpn-gateway/tutorial-site-to-site-portal.md)aracılığıyla şirket içi ağınıza bağlanabilir. Bu ağ topolojisinde, uygulamanız sanal ağdaki diğer kaynaklar gibi şirket içi kaynaklara bağlanabilir.
+- [Bir Azure sanal ağı Içindeki kaynaklarda](#resources-inside-an-azure-virtual-network)açıklandığı gibi, sıteden siteye vpn ile [App Service ortamı](environment/intro.md) , ancak sanal ağ, [siteden siteye VPN](../vpn-gateway/tutorial-site-to-site-portal.md)aracılığıyla şirket içi ağınıza bağlanabilir. Bu ağ topolojisinde, uygulamanız sanal ağdaki diğer kaynaklar gibi şirket içi kaynaklara bağlanabilir.
 
 ## <a name="application-secrets"></a>Uygulama gizli dizileri
 

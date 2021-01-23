@@ -1,15 +1,15 @@
 ---
 title: Kaynakları yönetim gruplarıyla düzenleme-Azure Idare
 description: Yönetim grupları, izinlerinin nasıl çalıştığı ve bu grupların nasıl kullanıldığı hakkında bilgi edinin.
-ms.date: 11/17/2020
+ms.date: 01/22/2021
 ms.topic: overview
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 9f23a279733169f17f0f82cb80aa08bfafcd45d0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e86501527ff68319fc8d2e942e7ffa977dcecbe6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030680"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736331"
 ---
 # <a name="what-are-azure-management-groups"></a>Azure yönetim grupları nedir?
 
@@ -162,16 +162,16 @@ Bu senaryoyu gidermeye yönelik birkaç farklı seçenek vardır:
 - Aboneliği yeni bir üst MG öğesine taşımadan önce rol atamasını abonelikten kaldırın.
 - Aboneliği rol tanımının atanabilir kapsamına ekleyin.
 - Rol tanımı içindeki atanabilir kapsamı değiştirin. Yukarıdaki örnekte, bir şekilde atanabilir kapsamları, hiyerarşinin her iki dalı tarafından ulaşılabilmesi için, bir pazarlama üzerinden kök yönetim grubuna güncelleştirebilirsiniz.  
-- Diğer dalda tanımlanacak ek bir özel rol oluşturun. Bu yeni rol, rol atamasının abonelik üzerinde de değiştirilmesini gerektirir.  
+- Diğer dalda tanımlanmış başka bir özel rol oluşturun. Bu yeni rol, rol atamasının abonelik üzerinde de değiştirilmesini gerektirir.  
 
 ### <a name="limitations"></a>Sınırlamalar  
 
 Yönetim gruplarında özel roller kullanılırken var olan sınırlamalar vardır. 
 
  - Yalnızca bir yönetim grubunu, yeni bir rolün atanabilir kapsamlarında tanımlayabilirsiniz. Bu sınırlama, rol tanımlarının ve rol atamalarının kesilmediği durumların sayısını azaltmak için kullanılır. Bu durum, rol atamasının bulunduğu bir abonelik veya yönetim grubu, rol tanımına sahip olmayan farklı bir üst öğeye taşınırsa meydana gelir.  
- - Kaynak sağlayıcısı veri düzlemi eylemleri yönetim grubu özel rollerinde tanımlanamaz. Bu kısıtlama, veri düzlemi kaynak sağlayıcılarının güncelleştirilmesiyle ilgili bir gecikme sorunu olduğu için gerçekleştirilir.
-   Bu gecikme sorunu üzerinde çalışıyor ve tüm riskleri azaltmak için bu eylemler rol tanımından devre dışı bırakılacak.
+ - Kaynak sağlayıcısı veri düzlemi eylemleri yönetim grubu özel rollerinde tanımlanamaz. Bu kısıtlama, veri düzlemi kaynak sağlayıcılarının güncelleştirilmesiyle ilgili bir gecikme sorunu olduğu için gerçekleştirilir. Bu gecikme sorunu üzerinde çalışıyor ve tüm riskleri azaltmak için bu eylemler rol tanımından devre dışı bırakılacak.
  - Azure Resource Manager, rol tanımının atanabilir kapsamındaki yönetim grubunun varlığını doğrulamaz. Bir yazım hatası veya yanlış bir yönetim grubu kimliği listeleniyorsa, rol tanımı yine de oluşturulur.
+ - _Dataactions_ içeren bir rol için rol ataması desteklenmez. Bunun yerine abonelik kapsamında rol ataması oluşturun.
 
 > [!IMPORTANT]
 > ' Ye bir yönetim grubu eklemek `AssignableScopes` Şu anda önizlemededir. Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez.

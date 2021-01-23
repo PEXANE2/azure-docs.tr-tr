@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 0691411f57944f8203120ec2a6ed19013135458c
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 8db556709f68a1184046989a15fad147542a05a7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920262"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735750"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure Veritabanı - Tek Sunucu'da planlı bakım bildirimi
 
@@ -25,7 +25,7 @@ Planlı bakım, bu hizmet güncelleştirmeleri belirli bir Azure bölgesindeki s
 
 ## <a name="planned-maintenance---duration-and-customer-impact"></a>Planlı bakım-süre ve müşteri etkisi
 
-Belirli bir Azure bölgesinin planlı bir bakımının genellikle 15 saat çalıştırması beklenir. Bu pencere, gerekirse bir geri alma planının yürütülmesi için arabellek süresini de içerir. Planlı bakım sırasında, veritabanı sunucusu yeniden başlatmaları veya yük devretme işlemleri, son kullanıcılar için veritabanı sunucularının kısa bir kullanım dışı kalmasına yol açabilir. PostgreSQL için Azure veritabanı sunucuları kapsayıcılarda çalışmaktadır, böylece veritabanı sunucusu yeniden başlatmaları genellikle hızlı, genellikle 60-120 saniye içinde tamamlanır. Her sunucu yeniden başlatmalarının dahil olduğu tüm planlı bakım olayı, mühendislik ekibi tarafından dikkatle izlenir. Sunucu yük devretmesi süresi, veritabanı kurtarma zamanına bağlıdır. Bu, sunucuda yük devretme sırasında ağır işlem etkinliğinizi varsa veritabanının daha uzun sürmesine neden olabilir. Yeniden başlatma zamanından daha uzun bir süre önlemek için planlı bakım olayları sırasında çalışan uzun işlemleri (toplu yükleme) önlemek önerilir.
+Belirli bir Azure bölgesinin planlı bir bakımının genellikle 15 saat içinde tamamlandığı beklenmektedir. Bu zaman penceresinde, gerektiğinde geri alma planının yürütülmesi için arabellek süresi de bulunur. PostgreSQL için Azure veritabanı sunucuları, veritabanı sunucusunun yeniden başlatılması genellikle 60-120 saniye sürer, ancak bu 15 saat içinde bu süre içinde bilmeniz gereken belirleyici bir yol olmasa da sunucunuz etkilenecek. Her sunucu yeniden başlatmalarının dahil olduğu tüm planlı bakım olayı, mühendislik ekibi tarafından dikkatle izlenir. Sunucu yük devretme süresi, veritabanı kurtarmaya bağımlıdır ve bu, yük devretme sırasında sunucuda ağır işlem etkinliğinizi varsa veritabanının daha fazla çevrimiçi olmasına neden olabilir. Yeniden başlatma zamanından daha uzun bir süre önlemek için planlı bakım olayları sırasında çalışan uzun işlemleri (toplu yükleme) önlemek önerilir.
 
 Özet olarak, planlanan bakım olayı 15 saat boyunca çalışırken, tek tek sunucu etkisi, sunucudaki hareketsel etkinliğe bağlı olarak genellikle 60 saniye sürer. Planlı bakım başlamadan önce bir bildirim 72 takvim saati, belirli bir bölge için bakım devam ederken ise başka bir uyarı gönderilir.
 

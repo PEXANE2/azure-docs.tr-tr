@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: banders
-ms.openlocfilehash: 662e1bf721c93ee1d59946d2fd603551f3f88ad3
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
-ms.translationtype: HT
+ms.openlocfilehash: 0d0dd5342cfc57da776e38ddef3df3b9c2199ac2
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503803"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735784"
 ---
 # <a name="cancel-your-azure-subscription"></a>Azure aboneliğinizi iptal etme
 
@@ -79,7 +79,7 @@ Siparişiniz iptal edildikten sonra verilerinize erişmeniz gerekmesi veya fikri
 
 ## <a name="reactivate-a-subscription"></a>Aboneliği yeniden etkinleştirme
 
-Kullandıkça Öde fiyatlarına tabi aboneliğinizi yanlışlıkla iptal ederseniz, [Hesap Merkezinde bunu yeniden etkinleştirebilirsiniz](subscription-disabled.md).
+Aboneliğinizi Kullandıkça Öde tarifesine yanlışlıkla iptal ederseniz, [Azure Portal yeniden etkinleştirebilirsiniz](subscription-disabled.md).
 
 Aboneliğiniz, Kullandıkça Öde fiyatlarına tabi bir abonelik değilse, aboneliğinizi yeniden etkinleştirmek için iptali izleyen 90 gün içinde desteğe başvurun.
 
@@ -101,4 +101,4 @@ Aboneliği iptal etmek için gerekli izinlere sahip olmayabilirsiniz. Çeşitli 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Gerekirse kullandıkça öde aboneliğinizi [Hesap merkezinde](subscription-disabled.md) yeniden etkinleştirebilirsiniz.
+- Gerekirse, [Azure Portal](subscription-disabled.md)Kullandıkça Öde aboneliğini yeniden etkinleştirebilirsiniz.

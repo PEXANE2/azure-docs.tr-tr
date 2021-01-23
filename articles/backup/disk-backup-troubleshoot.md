@@ -3,12 +3,12 @@ title: Azure disk yedekleme 'de yedekleme hatalarıyla ilgili sorunları giderme
 description: Azure disk yedekleme 'de yedekleme hatalarıyla ilgili sorunları nasıl giderebileceğinizi öğrenin
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 3e7c81d70fc898528532a841a484bf6fff8b83a7
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 855c6c5b19b10bdb699a25f89ebc29001b7941ac
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611245"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737736"
 ---
 # <a name="troubleshooting-backup-failures-in-azure-disk-backup-in-preview"></a>Azure disk yedekleme 'de yedekleme hatalarının sorunlarını giderme (önizlemede)
 
@@ -115,7 +115,7 @@ Hata Iletisi: Azure Backup hizmeti bu işlemi yapmak için hedef kaynak grubunda
 
 Hata Iletisi: abonelikte disk kotası üst sınırına ulaşıldığından Işlem başarısız oldu.
 
-Önerilen eylem: daha fazla bilgi için [Azure aboneliğine ve hizmet sınırlarına ve kota belgelerine](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) bakın veya Microsoft desteği başvurun.
+Önerilen eylem: daha fazla bilgi için [Azure aboneliğine ve hizmet sınırlarına ve kota belgelerine](../azure-resource-manager/management/azure-subscription-service-limits.md) bakın veya Microsoft desteği başvurun.
 
 ### <a name="error-code-usererrordiskbackuprestorergormsipermissionsnotpresent"></a>Hata kodu: UserErrorDiskBackupRestoreRGOrMSIPermissionsNotPresent
 

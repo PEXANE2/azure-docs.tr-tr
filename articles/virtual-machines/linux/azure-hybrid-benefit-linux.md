@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 990c396c859477c83e0ef421659a299920ee0c35
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 44d78d9a47f86520a3a4778806c4ddc0f96eec94
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209143"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737906"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>Azure Hibrit Avantajı Linux sanal makineleri için nasıl uygulanır
 
@@ -227,4 +227,4 @@ Bu bölümde karşılaşabileceğiniz yaygın sorunlar ve hafifletme adımları 
 | "Kayıtlarımız Azure aboneliğinizde Red Hat bulutu erişimini başarıyla etkinleştirmediyseniz, bu eylem tamamlanamadı...." | RHEL VM 'lerle ilgili avantajını kullanmak için önce [Azure aboneliklerinizi Red Hat bulut erişimi ile kaydetmeniz](https://access.redhat.com/management/cloud)gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure CLı kullanarak VM oluşturma ve güncelleştirme ve Azure Hibrit Avantajı için lisans türleri (RHEL_BYOS SLES_BYOS) ekleme hakkında bilgi edinin](/cli/azure/vm?preserve-view=true&view=azure-cli-latest)
+* [Azure CLı kullanarak VM oluşturma ve güncelleştirme ve Azure Hibrit Avantajı için lisans türleri (RHEL_BYOS SLES_BYOS) ekleme hakkında bilgi edinin](/cli/azure/vm)

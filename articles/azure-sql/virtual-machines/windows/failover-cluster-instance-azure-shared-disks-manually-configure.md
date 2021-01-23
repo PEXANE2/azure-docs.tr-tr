@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: becf9f8c7f6a967ed63cfd3040de90de76e32fff
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 8daec71745c9eff9a7db5bb34cb3596973def4aa
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607278"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736423"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Azure Paylaşılan disklerle (Azure VM 'lerinde SQL Server) bir FCı oluşturma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -32,7 +32,7 @@ Daha fazla bilgi edinmek için bkz. Azure VM 'lerde ve [küme en iyi uygulamalar
 Bu makaledeki yönergeleri tamamlamadan önce Şu durumda olmalıdır:
 
 - Azure aboneliği. [Ücretsiz](https://azure.microsoft.com/free/)olarak kullanmaya başlayın. 
-- [İki veya daha fazla Windows Azure sanal makinesi](failover-cluster-instance-prepare-vm.md). Premium SSD ve [kullanılabilirlik alanları](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address) Için desteklenen [kullanılabilirlik kümeleri](../../../virtual-machines/windows/tutorial-availability-sets.md) ve [yakınlık yerleştirme grupları](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) (PPG 'ler), Ultra diskler için desteklenir. Bir PPG kullanırsanız, tüm düğümlerin aynı grupta mevcut olması gerekir.
+- [İki veya daha fazla Windows Azure sanal makinesi](failover-cluster-instance-prepare-vm.md). Premium SSD ve [kullanılabilirlik alanları](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address) Için desteklenen [kullanılabilirlik kümeleri](../../../virtual-machines/windows/tutorial-availability-sets.md) ve [yakınlık yerleştirme grupları](../../../virtual-machines/co-location.md#proximity-placement-groups) (PPG 'ler), Ultra diskler için desteklenir. Bir PPG kullanırsanız, tüm düğümlerin aynı grupta mevcut olması gerekir.
 - Hem Azure sanal makinelerinde hem de Active Directory nesne oluşturma izinlerine sahip olan bir hesap.
 - En son [PowerShell](/powershell/azure/install-az-ps)sürümü. 
 
@@ -219,6 +219,6 @@ Azure paylaşılan diskler sizin için uygun FCı depolama çözümü değilse, 
 
 Daha fazla bilgi edinmek için bkz. Azure VM 'lerde SQL Server ve [küme yapılandırması en iyi yöntemleri](hadr-cluster-best-practices.md) [ile FCI](failover-cluster-instance-overview.md) 'ye genel bakış.
 
-Daha fazla bilgi için bkz: 
+Daha fazla bilgi için bkz. 
 - [Windows küme teknolojileri](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server yük devretme kümesi örnekleri](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

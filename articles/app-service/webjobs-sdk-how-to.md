@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: f941c394c3dab0e5e6997898a48a248f6a0cfe42
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 5666a489cfd0f0d92120c9ec7e3c8d3c2d083b5e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352448"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737278"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Olay temelli arka plan işleme için Azure Web İşleri SDK'sını kullanma
 
@@ -794,7 +794,7 @@ public static void RemoveItem([QueueTrigger("remove-item")] string message)
 
 ### <a name="viewing-lease-blobs"></a>Kira bloblarını görüntüleme
 
-Web Işleri SDK 'Sı, dağıtılmış kilitlemeyi uygulamak için, kapakların altında [Azure Blob kiraları](../storage/common/storage-concurrency.md#pessimistic-concurrency-for-blobs) kullanır. Tek tarafından kullanılan kira Blobları, `azure-webjobs-host` `AzureWebJobsStorage` "kilitler" yolu altındaki depolama hesabındaki kapsayıcıda bulunabilir. Örneğin, daha önce gösterilen ilk örnek için kira blobu yolu olabilir `ProcessImage` `locks/061851c758f04938a4426aa9ab3869c0/WebJobs.Functions.ProcessImage` . Tüm yollar, bu durumda 061851c758f04938a4426aa9ab3860 ' da JobHost KIMLIĞINI içerir.
+Web Işleri SDK 'Sı, dağıtılmış kilitlemeyi uygulamak için, kapakların altında [Azure Blob kiraları](../storage/blobs/concurrency-manage.md#pessimistic-concurrency-for-blobs) kullanır. Tek tarafından kullanılan kira Blobları, `azure-webjobs-host` `AzureWebJobsStorage` "kilitler" yolu altındaki depolama hesabındaki kapsayıcıda bulunabilir. Örneğin, daha önce gösterilen ilk örnek için kira blobu yolu olabilir `ProcessImage` `locks/061851c758f04938a4426aa9ab3869c0/WebJobs.Functions.ProcessImage` . Tüm yollar, bu durumda 061851c758f04938a4426aa9ab3860 ' da JobHost KIMLIĞINI içerir.
 
 ## <a name="async-functions"></a>Zaman uyumsuz işlevler
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: riroloff
 ms.subservice: metrics
-ms.openlocfilehash: 4c895b287f72929e2a0571ccc2cae8cc4f673388
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 5f5f75e63a0b201144329a6e2b7c0d503de54692
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250494"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736482"
 ---
 # <a name="view-multiple-resources-in-the-azure-metrics-explorer"></a>Azure ölçümleri Gezgininde birden çok kaynağı görüntüleme
 
@@ -33,7 +33,7 @@ Bazı kaynak türleri, birden fazla kaynak üzerinde ölçümleri sorgulayabilir
 ![Birden çok kaynakla uyumlu kaynakların bir menüsünü gösteren ekran görüntüsü.](./media/metrics-charts/020.png)
 
 > [!WARNING] 
-> Birden çok kaynakta, kaynak grubunda veya abonelikte ölçümleri görselleştirmek için abonelik düzeyinde Izleme okuyucusu izninizin olması gerekir. Daha fazla bilgi için, bkz. [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+> Birden çok kaynakta, kaynak grubunda veya abonelikte ölçümleri görselleştirmek için abonelik düzeyinde Izleme okuyucusu izninizin olması gerekir. Daha fazla bilgi için, bkz. [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md).
 
 Birden çok kaynak üzerinde ölçümleri görselleştirmek için kaynak kapsamı seçicisinden birden çok kaynak seçerek başlayın. 
 
@@ -81,13 +81,12 @@ Bu örnekte, bir Uyarspintoysdemo tarafından filtreliyoruz. Burada, filtre,,,,,
 
 ## <a name="pin-multiple-resource-charts"></a>Birden çok Kaynak Grafiği sabitleme 
 
-Kaynak grupları ve abonelikler arasında ölçümleri görselleştirerek çoklu kaynak grafikleri, kullanıcının abonelik düzeyinde *Izleme okuyucusu* iznine sahip olmasını gerektirir. Birden çok kaynak grafiği sabitlemeyi planladığınız panolar için tüm kullanıcıların yeterli izinlere sahip olduğundan emin olun. Daha fazla bilgi için, bkz. [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+Kaynak grupları ve abonelikler arasında ölçümleri görselleştirerek çoklu kaynak grafikleri, kullanıcının abonelik düzeyinde *Izleme okuyucusu* iznine sahip olmasını gerektirir. Birden çok kaynak grafiği sabitlemeyi planladığınız panolar için tüm kullanıcıların yeterli izinlere sahip olduğundan emin olun. Daha fazla bilgi için, bkz. [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md).
 
-Çoklu kaynak grafiğinizi bir panoya sabitlemek için bkz. [panolara sabitleme](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts#pinning-to-dashboards). 
+Çoklu kaynak grafiğinizi bir panoya sabitlemek için bkz. [panolara sabitleme](./metrics-charts.md#pinning-to-dashboards). 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Ölçüm Gezgini sorunlarını giderme](metrics-troubleshoot.md)
 * [Azure hizmetleri için kullanılabilir ölçümlerin listesine bakın](metrics-supported.md)
 * [Yapılandırılmış grafik örneklerine bakın](metric-chart-samples.md)
-

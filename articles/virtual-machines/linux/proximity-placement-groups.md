@@ -1,5 +1,5 @@
 ---
-title: Yakınlık yerleştirme gruplarını kullan
+title: Yakın yerleştirilen grupları kullanma
 description: Azure 'da sanal makineler için yakınlık yerleşimi grupları oluşturma ve kullanma hakkında bilgi edinin.
 author: cynthn
 ms.service: virtual-machines
@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: cynthn
-ms.openlocfilehash: ee172203d6aa54b4b539356835f8a6bf2d21bad3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea50d0fdc5a772cae449951901af36eed4e93771
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87288425"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737634"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>Azure CLI'yı kullanarak sanal makineleri yakın yerleştirilen gruplara dağıtma
 
@@ -67,7 +67,7 @@ Ayrıca, yakınlık yerleşimi grubunuzda bir kullanılabilirlik kümesi oluştu
 
 ## <a name="scale-sets"></a>Ölçek kümeleri
 
-Ayrıca, yakınlık yerleştirme grubunuzda bir ölçek kümesi de oluşturabilirsiniz. `--ppg`Bir ölçek kümesi oluşturmak için [az VMSS Create](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create) ile aynı parametreyi kullanın ve tüm örnekler aynı yakınlık yerleşimi grubunda oluşturulur.
+Ayrıca, yakınlık yerleştirme grubunuzda bir ölçek kümesi de oluşturabilirsiniz. `--ppg`Bir ölçek kümesi oluşturmak için [az VMSS Create](/cli/azure/vmss#az_vmss_create) ile aynı parametreyi kullanın ve tüm örnekler aynı yakınlık yerleşimi grubunda oluşturulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

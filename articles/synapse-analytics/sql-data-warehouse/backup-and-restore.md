@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: d8c680ec30dcecc56c064f08e4690cbbde9c2377
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 842f2f92133664f58ca60d6d30181d48d63271eb
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98679922"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736314"
 ---
 # <a name="backup-and-restore-in-azure-synapse-dedicated-sql-pool"></a>Azure SYNAPSE adanmış SQL havuzunda yedekleme ve geri yükleme
 
@@ -71,8 +71,16 @@ Adanmış bir SQL havuzunu bıraktığınızda, son bir anlık görüntü oluşt
 
 Bir coğrafi yedekleme, [eşleştirilmiş bir veri merkezine](../../best-practices-availability-paired-regions.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)günde bir kez oluşturulur. Coğrafi geri yükleme için RPO 24 saattir. Coğrafi yedeklemeyi, adanmış SQL havuzunun desteklendiği herhangi bir bölgedeki bir sunucuya geri yükleyebilirsiniz. Coğrafi yedekleme, birincil bölgenizdeki geri yükleme noktalarına erişebilmek için veri ambarını geri yüklemenize da sağlar.
 
+Adanmış SQL havuzunuz için coğrafi yedeklemeler gerektirmiyorsa, bunları devre dışı bırakabilir ve olağanüstü durum kurtarma depolama maliyetlerine kaydedebilirsiniz. Bunu yapmak için [nasıl yapılır Kılavuzu: adanmış BIR SQL Havuzu (eski ADıYLA SQL DW) için coğrafi yedeklemeleri devre dışı bırakma](disable-geo-backup.md)konusuna bakın. Coğrafi yedeklemeleri devre dışı bıraktığınızda, birincil Azure veri merkezinizde kullanılamaz durumdaysa, ayrılmış SQL havuzunuzu eşleştirilmiş Azure bölgenize kurtaramayacağınızı unutmayın. 
+
 > [!NOTE]
 > Coğrafi yedeklemeler için daha kısa bir RPO gerekliyse, bu yetenek için [burada](https://feedback.azure.com/forums/307516-sql-data-warehouse)oy verin. Ayrıca, Kullanıcı tanımlı geri yükleme noktası oluşturabilir ve yeni oluşturulan geri yükleme noktasından farklı bir bölgedeki yeni bir veri ambarına geri yükleme yapabilirsiniz. Geri yükledikten sonra, veri ambarını çevrimiçi hale getirebilirsiniz ve işlem maliyetlerini kaydetmek için süresiz olarak duraklatırsınız. Duraklatılmış veritabanı, Azure Premium Depolama fiyatı üzerinden depolama ücretleri doğurur. Veri ambarının etkin bir kopyasına ihtiyacınız olması gerekir, bu işlem yalnızca birkaç dakika sürer.
+
+## <a name="data-residency"></a>Veri yerleşimi 
+
+Eşleştirilmiş veri merkezinizde Coğrafi sınırın dışında yer alıyorsa, coğrafi olarak yedekli depolamayı etkinleştirerek verilerinizin coğrafi sınırınızı içinde kalmasını sağlayabilirsiniz. Bu, adanmış bir SQL Havuzu (eski adıyla SQL DW) oluştururken veya geri yüklenirken coğrafi olarak yedekli depolama seçeneği aracılığıyla adanmış SQL havuzunuzu (eski adıyla SQL DW) sağlarken yapılabilir. 
+
+Eşleştirilmiş veri merkezinizi farklı bir ülkede olduğunu doğrulamak için [Azure eşlenmiş bölgeler](../../best-practices-availability-paired-regions.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)' e bakın.
 
 ## <a name="backup-and-restore-costs"></a>Yedekleme ve geri yükleme maliyetleri
 
