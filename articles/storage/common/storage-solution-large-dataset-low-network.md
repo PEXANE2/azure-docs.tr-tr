@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 8afedec224fed55f617340af512485726ff44326
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9b83ba106b35a0a3abd035e85f60c4c39bbadd3b
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792948"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704649"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>Bant genişliği düşük olduğunda veya hiç olmadığında büyük veri kümeleri için veri aktarımı
  
@@ -34,16 +34,16 @@ Fiziksel bir cihazın doğru seçenek olup olmadığını doğrulamak için aşa
 
 ![Ağ aktarımı veya çevrimdışı aktarım](media/storage-solution-large-dataset-low-network/storage-network-or-offline-transfer.png)
 
-## <a name="recommended-options"></a>Önerilen Seçenekler
+## <a name="recommended-options"></a>Önerilen seçenekler
 
 Bu senaryoda kullanılabilen seçenekler, Azure Data Box çevrimdışı aktarma veya Azure Içeri/dışarı aktarma için cihazlardır.
 
-- **Azure Data Box ailesi çevrimdışı aktarımlar için** : Microsoft tarafından sağlanan Data Box cihazlarındaki cihazları, zaman, ağ kullanılabilirliği veya maliyetlerle sınırlı olduğunuzda Azure 'a büyük miktarlarda veri taşımak için kullanın. Robocopy gibi araçları kullanarak şirket içi verileri kopyalayın. Aktarım için tasarlanan veri boyutuna bağlı olarak Data Box Disk, Data Box veya Data Box Heavy arasından seçim yapabilirsiniz.
-- **Azure içeri/dışarı aktarma** – büyük miktarlarda verileri Azure Blob depolama ve Azure dosyaları 'na güvenli bir şekilde aktarmak için kendi disk sürücülerinizi göndererek Azure Içeri/dışarı aktarma hizmetini kullanın. Bu hizmet Ayrıca, Azure Blob depolamadan disk sürücülerine veri aktarmak ve şirket içi sitelerinize göndermek için de kullanılabilir.
+- **Azure Data Box ailesi çevrimdışı aktarımlar için** : Microsoft tarafından sağlanan Data Box cihazlarındaki cihazları, zaman, ağ kullanılabilirliği veya maliyetlerle sınırlı olduğunuzda Azure 'a büyük miktarlarda veri taşımak için kullanın. Robocopy gibi araçlarla şirket içindeki verileri kopyalayın. Aktarmak istediğiniz verilerin boyutuna göre Data Box Disk, Data Box veya Data Box Heavy çözümlerinden birini seçebilirsiniz.
+- **Azure içeri/dışarı aktarma** – büyük miktarlarda verileri Azure Blob depolama ve Azure dosyaları 'na güvenli bir şekilde aktarmak için kendi disk sürücülerinizi göndererek Azure Içeri/dışarı aktarma hizmetini kullanın. Bu hizmeti ayrıca Azure Blob depolama alanınızdaki verileri disk sürücülerine aktarıp şirket içi ortamınıza göndermek için de kullanabilirsiniz.
 
 ## <a name="comparison-of-key-capabilities"></a>Anahtar özellikleri karşılaştırması
 
-Aşağıdaki tabloda, önemli özelliklerde farklılıklar özetlenmektedir.
+Aşağıdaki tabloda, temel özellikler arasındaki farklar özetlenmiştir.
 
 |                                     |    Data Box Disk      |    Data Box                                      |    Data Box Heavy              |    İçeri/Dışarı Aktarma                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
@@ -51,8 +51,8 @@ Aşağıdaki tabloda, önemli özelliklerde farklılıklar özetlenmektedir.
 |    **Veri türü**                    |    Azure Blobları                  |    Azure Blobları<br>Azure Dosyaları                    |    Azure Blobları<br>Azure Dosyaları            |    Azure Blobları<br>Azure Dosyaları          |
 |    **Form faktörü**                  |    sipariş başına 5 SSD             |    1 X 50-lbs. sipariş başına masaüstü boyutunda cihaz    |    1 X ~ 500-lbs. sipariş başına büyük cihaz    |    Sipariş başına en fazla 10 HDD/SSD        |
 |    **İlk kurulum saati**           |    Düşük <br>(15 dakika)            |    Düşük-orta <br> (<30 dakika)               |    Orta<br>(1-2 saat)               |    Orta-zor<br>değişken |
-|    **Verileri Azure 'a gönderme**           |    Evet                          |    Evet                                           |    Evet                                   |    Evet                                 |
-|    **Verileri Azure'dan dışarı aktarma**       |    Hayır                           |    Hayır                                            |    Hayır                                    |    Evet                                 |
+|    **Verileri Azure 'a gönderme**           |    Yes                          |    Yes                                           |    Yes                                   |    Yes                                 |
+|    **Verileri Azure'dan dışarı aktarma**       |    Hayır                           |    Hayır                                            |    Hayır                                    |    Yes                                 |
 |    **Şifreleme**                   |    AES 128 bit                  |    AES 256 bit                                   |    AES 256 bit                           |    AES 128 bit                         |
 |    **Donanım**                     |     Microsoft tarafından sağlanan          |    Microsoft tarafından sağlanan                            |    Microsoft tarafından sağlanan                    |    Müşteri sağlandı                   |
 |    **Ağ arabirimi**            |    USB 3.1/SATA                 |    RJ 45, SFP +                                   |    RJ45, QSFP +                           |    SATA ıı/SATA ııı                    |
@@ -68,4 +68,4 @@ Aşağıdaki tabloda, önemli özelliklerde farklılıklar özetlenmektedir.
 
     - [Data Box disk verileri aktarın](../../databox/data-box-disk-quickstart-portal.md).
     - [Data Box verileri aktarın](../../databox/data-box-quickstart-portal.md).
-    - [İçeri/dışarı aktarma ile veri aktarma](./storage-import-export-data-to-blobs.md).
+    - [İçeri/dışarı aktarma ile veri aktarma](../../import-export/storage-import-export-data-to-blobs.md).

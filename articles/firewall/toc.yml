@@ -58,6 +58,8 @@
       href: fqdn-filtering-network-rules.md
     - name: Güvenlik temeli
       href: security-baseline.md
+    - name: Etkin FTP desteği
+      href: active-ftp-support.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Azure PowerShell’i kullanarak dağıtma

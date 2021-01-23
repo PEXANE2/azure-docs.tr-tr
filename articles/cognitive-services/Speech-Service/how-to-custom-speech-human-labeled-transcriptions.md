@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: cc373a67ee0f4ed2e900e7b41cbcb96d31d67b34
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: eafdebc795d5bede7fa52a3562d33c806035697f
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98126895"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704440"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>İnsan etiketlendirmeleri oluşturma
 
@@ -47,6 +47,8 @@ Metin normalleştirme, bir modeli eğitmek için kullanılan tutarlı bir biçim
 - Alfabetik olmayan karakterler veya karışık alfasayısal karakterler aynı şekilde yerleştirilmelidir.
 - Sözcüklerin düzenlenmemesi gereken kısaltmalar ("Radar", "lazer", "RAM" veya "NATO" gibi).
 - Boşlukla ayrılmış olarak, her bir harfle ayrı harfler olarak uygulanan kısaltmalar yazın.
+- Ses kullanırsanız, ses ile eşleşen sözcükler olarak sayı (örneğin, "101", "1 0 1" veya "101") olarak kullanılabilir.
+- Karakterleri, kelimeleri veya sözcük gruplarını üç kereden fazla yinelemekten kaçının, örneğin "Yes Yes Yes Yes". Bu tür tekrarları olan satırlar konuşma hizmeti tarafından bırakılmış olabilir.
 
 Aşağıda, bir dökümde gerçekleştirmeniz gereken normalleştirmenin birkaç örneği verilmiştir:
 

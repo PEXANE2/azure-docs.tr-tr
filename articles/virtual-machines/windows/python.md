@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/22/2017
 ms.author: cynthn
 ms.custom: devx-track-python
-ms.openlocfilehash: 15714405c683889c0f783359011a0f0f5f9f3f43
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: d99f9326b3113742fdc0c14a4ae39d552df47edd
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201799"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730165"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Python kullanarak Azure 'da Windows VM 'Leri oluşturma ve yönetme
 
@@ -567,4 +567,4 @@ Azure 'da kullanılan kaynaklar için ücretlendirildiğiniz için, artık gerek
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Dağıtım ile ilgili sorunlar varsa, bir sonraki adım [Azure Portal ile kaynak grubu dağıtımlarını sorun giderme](../../azure-resource-manager/templates/deployment-history.md) bölümüne bakmak olacaktır.
-- [Azure Python kitaplığı](/python/api/overview/azure/?view=azure-python) hakkında daha fazla bilgi edinin
+- [Azure Python kitaplığı](/python/api/overview/azure/) hakkında daha fazla bilgi edinin

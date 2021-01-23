@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e991fb0c60e8f08eb43cb7799027d4200263c9b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bac3f53def6db1038a6dd7e45d7933daa22df9f0
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89659555"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703861"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Karma kimlik çözümünüz için veri koruma stratejisini tanımlama
 Bu görevde, karma kimlik çözümünüz için veri koruma stratejisini, içinde tanımladığınız iş gereksinimlerini karşılayacak şekilde tanımlayacaksınız:
@@ -37,7 +37,7 @@ Bu görevde, karma kimlik çözümünüz için veri koruma stratejisini, içinde
 
 Kimliği doğrulandıktan sonra, Kullanıcı asıl adı (UPN) kimlik doğrulama belirtecinden okundu. Ardından, yetkilendirme sistemi, çoğaltılan bölümü ve kullanıcının etki alanına karşılık gelen kapsayıcıyı belirler. Kullanıcının varlığı, etkin durumu ve rolü hakkındaki bilgiler, yetkilendirme sisteminin, bu oturumdaki Kullanıcı için hedef kiracıya erişimin yetkilendirilip yetkilendirilmediğini belirlemesine yardımcı olur. Belirli yetkili eylemler (özellikle, Kullanıcı ve parola sıfırlama oluşturma) bir kiracı yöneticisinin daha sonra uyumluluk çabalarını veya araştırmacıyı yönetmek için kullandığı bir denetim izi oluşturun.
 
-Şirket içi veri merkezinizdeki verileri bir Internet bağlantısı üzerinden Azure depolama 'ya taşımak, veri hacmi, bant genişliği kullanılabilirliği veya diğer konular nedeniyle her zaman uygulanabilir olmayabilir. [Azure Storage içeri/dışarı aktarma hizmeti](../../storage/common/storage-import-export-service.md) , blob depolamada büyük miktarlarda veri yerleştirme/alma için donanım tabanlı bir seçenek sağlar. Cloud [-şifrelenen](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn306081(v=ws.11)#BKMK_BL2012R2) sabit disk sürücülerinizi doğrudan bulut işletmenlerinin depolama hesabınıza yüklendiği bir Azure veri merkezine göndermenizi sağlar veya size dönmek için Azure verilerinizi sürücülerinizde indirebilir. Bu işlem için yalnızca şifrelenmiş diskler kabul edilir (iş kurulumu sırasında hizmet tarafından oluşturulan bir BitLocker anahtarı kullanılarak). BitLocker anahtarı ayrı olarak Azure 'a sağlanır ve bu sayede bant dışı anahtar paylaşımı sağlanır.
+Şirket içi veri merkezinizdeki verileri bir Internet bağlantısı üzerinden Azure depolama 'ya taşımak, veri hacmi, bant genişliği kullanılabilirliği veya diğer konular nedeniyle her zaman uygulanabilir olmayabilir. [Azure Storage içeri/dışarı aktarma hizmeti](../../import-export/storage-import-export-service.md) , blob depolamada büyük miktarlarda veri yerleştirme/alma için donanım tabanlı bir seçenek sağlar. Cloud [-şifrelenen](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn306081(v=ws.11)#BKMK_BL2012R2) sabit disk sürücülerinizi doğrudan bulut işletmenlerinin depolama hesabınıza yüklendiği bir Azure veri merkezine göndermenizi sağlar veya size dönmek için Azure verilerinizi sürücülerinizde indirebilir. Bu işlem için yalnızca şifrelenmiş diskler kabul edilir (iş kurulumu sırasında hizmet tarafından oluşturulan bir BitLocker anahtarı kullanılarak). BitLocker anahtarı ayrı olarak Azure 'a sağlanır ve bu sayede bant dışı anahtar paylaşımı sağlanır.
 
 Yoldaki veriler farklı senaryolarda gerçekleşeceğinizden, Ayrıca, Microsoft Azure kiracıların bir diğerinden yalıtmak için [sanal ağ](https://azure.microsoft.com/documentation/services/virtual-network/) kullandığını, ana bilgisayar ve konuk düzeyinde güvenlik DUVARLARı, IP paket filtrelemesi, bağlantı noktası engelleme ve HTTPS uç noktaları gibi ölçüler oluşturmayı da unutmayın. Ancak, Azure 'un altyapıdan altyapıya ve altyapıdan müşteriye (Şirket içi) de dahil olmak üzere iç iletişimleri büyük bir olasılıkla şifrelenir. Diğer önemli senaryolar, Azure veri merkezlerindeki iletişimlerdir; Microsoft, ağları, başka bir VM 'nin IP adresi üzerinde taklit veya gizlice dinmeyeceğini güvence altına almak için yönetir. Azure depolama veya SQL veritabanlarına erişirken veya Cloud Services bağlanırken TLS/SSL kullanılır. Bu durumda, müşteri yöneticisi bir TLS/SSL sertifikası edinmekten ve kiracı altyapısına dağıtmaya sorumludur. Aynı dağıtımdaki sanal makineler arasında veya Microsoft Azure Sanal Ağ aracılığıyla tek bir dağıtımda bulunan kiracılar arasında taşınan veri trafiği, HTTPS, SSL/TLS veya diğerleri gibi şifreli iletişim protokolleri aracılığıyla korunabilir.
 

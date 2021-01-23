@@ -1,0 +1,71 @@
+### YamlMime:Landing
+title: Azure Içeri/dışarı aktarma belgeleri-çevrimiçi aktarım
+summary: Azure Içeri/dışarı aktarma kullanarak büyük miktarlarda verileri Azure Blob depolama ve Azure dosyaları 'na aktararak, bir Azure veri merkezine disk sürücüleri aktarabilirsiniz.
+metadata:
+  title: Azure Içeri/dışarı aktarma belgeleri
+  description: Azure Içeri/dışarı aktarma belgeleri fiziksel disklerin sevk edilmesi için Azure veri merkezlerinden büyük miktarlarda verileri güvenli bir şekilde içeri/dışarı aktarma.
+  services: storage
+  ms.service: storage
+  ms.subservice: storage
+  ms.topic: landing-page
+  ms.collection: collection
+  author: v-dalc
+  ms.author: alkohli
+  ms.date: 01/08/201
+  ms.openlocfilehash: 5bccc4c64da4493e2f6d5e969949eb13df8bc1e7
+  ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+  ms.translationtype: MT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 01/22/2021
+  ms.locfileid: "98707941"
+landingContent:
+- title: Azure Içeri/dışarı aktarma hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Içeri/dışarı aktarma nedir?
+      url: storage-import-export-service.md
+  - linkListType: architecture
+    links:
+    - text: Veri aktarımı seçeneklerini belirtme
+      url: /azure/storage/common/storage-choose-data-transfer-solution
+    - text: Ağ aktarımını veya çevrimdışı aktarımı kullanma
+      url: /azure/storage/common/storage-solution-large-dataset-low-network#offline-transfer-or-network-transfer
+- title: Gereksinimler
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Gereksinimler
+      url: storage-import-export-requirements.md
+    - text: SSS
+      url: storage-import-export-service-faq.md
+- title: Dağıtma
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Verileri blob'larda içeri aktarma
+      url: storage-import-export-data-to-blobs.md
+    - text: Verileri dosyalarda içeri aktarma
+      url: storage-import-export-data-to-files.md
+    - text: Verileri blob'lardan dışarı aktarma
+      url: storage-import-export-data-from-blobs.md
+  - linkListType: learn
+    links:
+    - text: Içeri/dışarı aktarma ile verileri çevrimdışı dışarı aktarma
+      url: /learn/modules/export-data-with-azure-import-export/
+- title: İzleme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Sürücü durumunu görüntüleme
+      url: storage-import-export-view-drive-status.md
+    - text: İş durumunu gözden geçirme
+      url: storage-import-export-tool-reviewing-job-status-v1.md
+- title: Sorun giderme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Sorun giderme
+      url: storage-import-export-contact-microsoft-support.md
+    - text: Destek birimine başvurma
+      url: storage-import-export-contact-microsoft-support.md

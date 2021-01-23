@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault için sanal ağ hizmeti uç noktaları
+title: Azure Key Vault için sanal ağ hizmet uç noktaları
 description: Azure Key Vault için sanal ağ hizmet uç noktalarının, kullanım senaryoları da dahil olmak üzere belirli bir sanal ağa erişimi kısıtlamanıza nasıl izin sağladığını öğrenin.
 services: key-vault
 author: amitbapat
@@ -9,14 +9,14 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 9dcabe10822fd09c8f7a0da6259d81a089c1a042
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 4a817f386d68c144968540dd05f3fa6859bb0acc
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936303"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704178"
 ---
-# <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault için sanal ağ hizmeti uç noktaları
+# <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault için sanal ağ hizmet uç noktaları
 
 Azure Key Vault için sanal ağ hizmet uç noktaları, belirtilen sanal ağa erişimi kısıtlayabilmeniz için izin verir. Uç noktalar Ayrıca bir IPv4 (Internet Protokolü sürüm 4) adres aralığı listesine erişimi sınırlamanıza olanak tanır. Anahtar kasanıza bu kaynakların dışından bağlanan herhangi bir kullanıcının erişimi reddedilir.
 
@@ -43,7 +43,7 @@ Hizmet uç noktalarını nasıl kullanabileceğinizi gösteren bazı örnekler �
 | --- | --- |
 |Azure sanal makineler dağıtım hizmeti|[Sertifikaları, müşteri tarafından yönetilen Key Vault sanal makinelere dağıtın](/archive/blogs/kv/updated-deploy-certificates-to-vms-from-customer-managed-key-vault).|
 |Azure Resource Manager şablonu dağıtım hizmeti|[Dağıtım sırasında güvenli değerler geçirin](../../azure-resource-manager/templates/key-vault-parameter.md).|
-|Azure Application Gateway v2 SKU 'SU|[Key Vault sertifikalarla TLS sonlandırma](../../application-gateway/key-vault-certs.md)|
+|Azure Application Gateway v2 SKU 'SU|[Key Vault sertifikaları ile TLS sonlandırma](../../application-gateway/key-vault-certs.md)|
 |Azure disk şifreleme birimi şifreleme hizmeti|Sanal makine dağıtımı sırasında BitLocker anahtarına (Windows VM) veya DM parolasının (Linux VM) ve anahtar şifreleme anahtarına erişime izin verin. Bu, [Azure disk şifrelemesini](../../security/fundamentals/encryption-overview.md)mümkün bir şekilde sunar.|
 |Azure Backup|[Azure Backup](../../backup/backup-overview.md)kullanarak Azure sanal makineler yedeklemesi sırasında ilgili anahtarların ve parolaların yedeklenme ve geri yüklenmesine izin verin.|
 |Exchange Online & SharePoint Online|[Müşteri anahtarına](/microsoft-365/compliance/customer-key-overview)sahip Azure depolama hizmeti şifrelemesi müşteri anahtarına erişime izin verin.|
@@ -57,7 +57,7 @@ Hizmet uç noktalarını nasıl kullanabileceğinizi gösteren bazı örnekler �
 |Azure Data Factory|[Data Factory Key Vault veri deposu kimlik bilgilerini getir](https://go.microsoft.com/fwlink/?linkid=2109491)|
 |Azure Event Hubs|[Müşteri tarafından yönetilen anahtarlar senaryosu için anahtar kasasına erişime izin ver](../../event-hubs/configure-customer-managed-key.md)|
 |Azure Service Bus|[Müşteri tarafından yönetilen anahtarlar senaryosu için anahtar kasasına erişime izin ver](../../service-bus-messaging/configure-customer-managed-key.md)|
-|Azure İçeri/Dışarı Aktarma| [Içeri/dışarı aktarma hizmeti için Azure Key Vault 'de müşteri tarafından yönetilen anahtarları kullanın](../../storage/common/storage-import-export-encryption-key-portal.md)
+|Azure İçeri/Dışarı Aktarma| [Içeri/dışarı aktarma hizmeti için Azure Key Vault 'de müşteri tarafından yönetilen anahtarları kullanın](../../import-export/storage-import-export-encryption-key-portal.md)
 |Azure Container Registry|[Müşteri tarafından yönetilen anahtarları kullanarak kayıt defteri şifreleme](../../container-registry/container-registry-customer-managed-keys.md)
 
 > [!NOTE]

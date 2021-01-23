@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: ac86dfba02b54730773a1d243981e85d563517e7
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: aac1fb8e2da7a3c84b3abff47c8f476b9fb9049c
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183839"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704347"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box"></a>Öğretici: Azure Data Box için dışarı aktarma siparişi oluşturma
 
@@ -100,7 +100,7 @@ Cihaz sipariş etmek için Azure portalında aşağıdaki adımları izleyin.
     |---------|---------|
     |Depolama hesabı     | Verileri dışarı aktarmak istediğiniz Azure depolama hesabı. |
     |Dışarı aktarma türü     | **Tüm nesnelerden** dışarı aktarılacak verilerin türünü BELIRTIR ve **XML dosyası kullanır**.<ul><li> **Tüm nesneler** -Işin, **aktarım seçenekleri** için seçiminize bağlı olarak tüm verileri dışa aktarıp aktarcağını belirtir.</li><li> **XML dosyası kullan** – depolama hesabından dışarı aktarılacak blob 'lar ve/veya dosyalar için bir dizi yol ve önek IÇEREN bir XML dosyasını belirtir. XML dosyasının seçili depolama hesabının kapsayıcısında olması gerekir ve dosya paylaşımları arasından seçim şu anda desteklenmiyor. Dosyanın boş olmayan bir. xml dosyası olması gerekir.</li></ul>        |
-    |Aktarım seçenekleri     |  **Tümünü Seç**, **Tüm Bloblar** ve **tüm dosyalar**'daki veri aktarımı seçeneklerini belirtir. <ul><li> **Tümünü Seç** -tüm Blobların ve Azure dosyalarının verildiğini belirtir. Yalnızca Blobları (BLOB depolama hesabı) destekleyen bir depolama hesabı kullanıyorsanız, **tüm dosyalar** seçeneği seçilemeyecektir.</li><li> **Tüm Bloblar** -yalnızca blok ve sayfa bloblarının aktarıldığını belirtir.</li><li> **Tüm dosyalar** -tüm dosyaların blob 'lar hariç verildiğini belirtir. Sahip olduğunuz depolama hesabının türü (GPv1 ve GPv2, Premium Storage veya blob Storage), dışarı aktarmak istediğiniz veri türlerini belirler. Daha fazla bilgi için bkz. [dışa aktarma Için desteklenen depolama hesapları](../storage/common/storage-import-export-requirements.md#supported-storage-types).</li></ul>         |
+    |Aktarım seçenekleri     |  **Tümünü Seç**, **Tüm Bloblar** ve **tüm dosyalar**'daki veri aktarımı seçeneklerini belirtir. <ul><li> **Tümünü Seç** -tüm Blobların ve Azure dosyalarının verildiğini belirtir. Yalnızca Blobları (BLOB depolama hesabı) destekleyen bir depolama hesabı kullanıyorsanız, **tüm dosyalar** seçeneği seçilemeyecektir.</li><li> **Tüm Bloblar** -yalnızca blok ve sayfa bloblarının aktarıldığını belirtir.</li><li> **Tüm dosyalar** -tüm dosyaların blob 'lar hariç verildiğini belirtir. Sahip olduğunuz depolama hesabının türü (GPv1 ve GPv2, Premium Storage veya blob Storage), dışarı aktarmak istediğiniz veri türlerini belirler. Daha fazla bilgi için bkz. [dışa aktarma Için desteklenen depolama hesapları](../import-export/storage-import-export-requirements.md#supported-storage-types).</li></ul>         |
     |Ayrıntılı günlük Ekle     | Başarıyla aktarılmış tüm dosyaların listesini içeren ayrıntılı bir günlük dosyası isteyip istemediğinizi belirtir.        |
 
     > [!NOTE]
@@ -330,7 +330,7 @@ XML dosyalarına göre bazı önemli noktaları:
 
 Aşağıdaki tabloda geçerli blob yollarının örnekleri gösterilmektedir:
 
-   | Seçici | Blob yolu | Description |
+   | Seçici | Blob yolu | Açıklama |
    | --- | --- | --- |
    | İle başlar |/ |Depolama hesabındaki tüm Blobları dışa aktarır |
    | İle başlar |/$root/ |Kök kapsayıcıdaki tüm Blobları dışa aktarır |

@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 36c12fa7dd37ce1ffebde16cf6ca856d9fcdca0a
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 607b588d3371b20c2b3fa9854e27a7ccdfe2e551
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93392002"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703776"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>SQL yönetilen örneği & Azure SQL veritabanı 'ndaki yenilikler nelerdir?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -48,7 +48,7 @@ Bu tablo, terminoloji değişikliği için hızlı bir karşılaştırma sağlar
 
 ### <a name="azure-sql-database"></a>[Azure SQL Veritabanı](#tab/single-database)
 
-| Özellik | Ayrıntılar |
+| Öne çıkan özelliği | Ayrıntılar |
 | ---| --- |
 | Tek veritabanları ve elastik havuzlarla hızlandırılmış veritabanı kurtarma | Bilgi için bkz. [hızlandırılmış veritabanı kurtarma](../accelerated-database-recovery.md).|
 | Veri bulma ve sınıflandırma  |Bilgi için bkz. [Azure SQL veritabanı ve Azure SYNAPSE Analytics veri bulma & sınıflandırması](data-discovery-and-classification-overview.md).|
@@ -62,7 +62,7 @@ Bu tablo, terminoloji değişikliği için hızlı bir karşılaştırma sağlar
 
 ### <a name="azure-sql-managed-instance"></a>[Azure SQL Yönetilen Örnek](#tab/managed-instance)
 
-| Özellik | Ayrıntılar |
+| Öne çıkan özelliği | Ayrıntılar |
 | ---| --- |
 | <a href="/azure/azure-sql/database/elastic-transactions-overview">Dağıtılmış işlemler</a> | Yönetilen örnekler arasında dağıtılmış işlemler. |
 | <a href="/azure/sql-database/sql-database-instance-pools">Örnek havuzları</a> | Daha küçük SQL örneklerini buluta geçirmek için kullanışlı ve uygun maliyetli bir yol. |
@@ -78,7 +78,7 @@ Bu tablo, terminoloji değişikliği için hızlı bir karşılaştırma sağlar
 ### <a name="sql-managed-instance-h2-2019-updates"></a>SQL yönetilen örnek H2 2019 güncelleştirmeleri
 
 - [Hizmet destekli alt ağ yapılandırması](https://azure.microsoft.com/updates/service-aided-subnet-configuration-for-managed-instance-in-azure-sql-database-available/) , SQL yönetilen örneği, yönetim trafiğinin kesintisiz akışını sağlarken, veri trafiğini denetlediğiniz alt ağ yapılandırmasını yönetmenin güvenli ve uygun bir yoludur.
-- [Kendi anahtarını getir (BYOK) Ile saydam veri şifrelemesi (TDE](https://azure.microsoft.com/updates/general-avilability-transparent-data-encryption-with-customer-managed-keys-for-azure-sql-database-managed-instance/) ), bekleyen veri koruması için kendi anahtarını getır (bYok) senaryosunu sağlar ve kuruluşların anahtarlar ve veriler için yönetim görevlerini ayırmasını sağlar.
+- [Kendi anahtarını getir (BYOK) ile saydam veri şifrelemesi (TDE),](https://azure.microsoft.com/updates/general-avilability-transparent-data-encryption-with-customer-managed-keys-for-azure-sql-database-managed-instance/) bekleyen veri koruması için kendi anahtarını getır (bYok) senaryosunu sağlar ve kuruluşların anahtarlar ve veriler için yönetim görevlerini ayırmasını sağlar.
 - [Otomatik yük devretme grupları](https://azure.microsoft.com/updates/azure-sql-database-auto-failover-groups-feature-now-available-in-all-regions/) , birincil örnekten diğer bir bölgedeki ikincil örneğe tüm veritabanlarını çoğaltmanıza olanak sağlar.
 - [Genel izleme bayrakları](https://azure.microsoft.com/updates/global-trace-flags-are-now-available-in-azure-sql-database-managed-instance/) , SQL yönetilen örnek davranışını yapılandırmanızı sağlar.
 
@@ -92,15 +92,16 @@ Aşağıdaki özellikler, H1 2019 ' de SQL yönetilen örnek dağıtım modelind
   - SQL yönetilen örneğini [genel uç noktaları](../managed-instance/public-endpoint-configure.md)kullanacak şekilde yapılandırın, <a href="https://aka.ms/four-cores-sql-mi-update">5. nesil donanım oluşturma konusunda</a> daha iyi ağ performansı elde etmek için [proxy geçersiz kılma](connectivity-architecture.md#connection-policy) bağlantısı yapın veya en son nokta geri yükleme için <a href="/azure/azure-sql/database/automated-backups-overview">35 güne kadar yedekleme tutma 'yı yapılandırın</a> . [Uzun süreli yedek saklama](long-term-retention-overview.md#sql-managed-instance-support) (10 yıla kadar) Şu anda sınırlı genel önizleme aşamasındadır.  
   - Yeni işlevler, <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">PowerShell kullanarak veritabanınızı başka bir veri merkezine coğrafi olarak geri yükleme</a>, [veritabanını yeniden adlandırma](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/), [sanal kümeyi silme](../managed-instance/virtual-cluster-delete.md)olanağı sağlar.
   - Yeni yerleşik [örnek katılımcısı rolü](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) , güvenlik ilkelerine ve kurumsal standartlarla uyumluluğa sahip vergi (SOD) uyumluluğuna izin verebilir.
-  - SQL yönetilen örneği, aşağıdaki Azure Kamu bölgelerinde GA (US Gov Teksas, US Gov Arizona) ve Çin Kuzey 2 ve Çin Doğu 2 ' ye kadar sunulmaktadır. Ayrıca, şu ortak bölgelerde de mevcuttur: Avustralya Orta, Avustralya Orta 2, Brezilya Güney, Fransa Güney, BAE Orta, BAE Kuzey, Güney Afrika Kuzey, Güney Afrika Batı.
+  - SQL yönetilen örneği, aşağıdaki Azure Kamu bölgelerinde GA (US Gov Teksas, US Gov Arizona) ve Çin Kuzey 2 ve Çin Doğu 2 ' de kullanılabilir. Ayrıca, şu ortak bölgelerde de mevcuttur: Avustralya Orta, Avustralya Orta 2, Brezilya Güney, Fransa Güney, BAE Orta, BAE Kuzey, Güney Afrika Kuzey, Güney Afrika Batı.
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
 |Sorun  |Keşfedilen Tarih  |Durum  |Çözümlenme tarihi  |
 |---------|---------|---------|---------|
+|[Parametre kullanıldığında yordam sp_send_dbmail geçişli olarak başarısız olabilir @query](#procedure-sp_send_dbmail-may-transiently-fail-when--parameter-is-used)|Ocak 2021|Geçici çözüm vardır||
 |[Dağıtılmış işlemler, sunucu güven grubundan yönetilen örnek kaldırıldıktan sonra yürütülebilir](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|Eki 2020|Geçici çözüm vardır||
 |[Dağıtılmış işlemler, yönetilen örnek ölçeklendirme işleminden sonra yürütülemez](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|Eki 2020|Geçici çözüm vardır||
-|[bulk INSERT](/sql/t-sql/statements/bulk-insert-transact-sql) / [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15) Azure SQL 'de ve `BACKUP` / `RESTORE` yönetilen örnekteki deyimdeki OPENROWSET, Azure depolama 'da kimlik doğrulaması yapmak için Azure AD Yönetim kimliğini kullanamaz|Eyl 2020|Geçici çözüm vardır||
+|[bulk INSERT](/sql/t-sql/statements/bulk-insert-transact-sql) / [](/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15) Azure SQL 'de ve `BACKUP` / `RESTORE` yönetilen örnekteki deyimdeki OPENROWSET, Azure depolama 'da kimlik doğrulaması yapmak için Azure AD Yönetim kimliğini kullanamaz|Eyl 2020|Geçici çözüm vardır||
 |[Hizmet sorumlusu Azure AD 'ye ve AKV 'ye erişemiyor](#service-principal-cannot-access-azure-ad-and-akv)|Ağu 2020|Geçici çözüm vardır||
 |[SAĞLAMA TOPLAMı olmadan el ile yedeklemenin geri yüklenmesi başarısız olabilir](#restoring-manual-backup-without-checksum-might-fail)|Mayıs 2020|Çözümlendi|Haziran 2020|
 |[Aracı, mevcut işleri değiştirme, devre dışı bırakma veya etkinleştirme sırasında yanıt vermemeye başladı](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|Mayıs 2020|Çözümlendi|Haziran 2020|
@@ -115,7 +116,7 @@ Aşağıdaki özellikler, H1 2019 ' de SQL yönetilen örnek dağıtım modelind
 |[İş Açısından Kritik hizmet katmanındaki Resource Governor yük devretmeden sonra yeniden yapılandırılması gerekebilir](#resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover)|Eyl 2019|Geçici çözüm vardır||
 |[Çapraz veritabanı Hizmet Aracısı iletişim kutuları, hizmet katmanı yükseltmesinden sonra yeniden başlatılmalıdır](#cross-database-service-broker-dialogs-must-be-reinitialized-after-service-tier-upgrade)|Ağu 2019|Geçici çözüm vardır||
 |[Azure AD oturum açma türleri için kimliğe bürünme desteklenmiyor](#impersonation-of-azure-ad-login-types-is-not-supported)|2019 Tem|Geçici çözüm yok||
-|[@query sp_send_db_mail içinde parametre desteklenmiyor](#-parameter-not-supported-in-sp_send_db_mail)|2019 Nis|Geçici çözüm yok||
+|[@query sp_send_db_mail içinde parametre desteklenmiyor](#-parameter-not-supported-in-sp_send_db_mail)|2019 Nis|Çözümlendi|Ocak 2021|
 |[İşlemsel çoğaltmanın coğrafi Yük devretme sonrasında yeniden yapılandırılması gerekir](#transactional-replication-must-be-reconfigured-after-geo-failover)|Mar 2019|Geçici çözüm yok||
 |[GERI yükleme işlemi sırasında geçici veritabanı kullanılıyor](#temporary-database-is-used-during-restore-operation)||Geçici çözüm vardır||
 |[TEMPDB yapısı ve içerik yeniden oluşturuluyor](#tempdb-structure-and-content-is-re-created)||Geçici çözüm yok||
@@ -128,6 +129,29 @@ Aşağıdaki özellikler, H1 2019 ' de SQL yönetilen örnek dağıtım modelind
 |Kaynak veritabanında bellek içi OLTP nesneleri varsa, İş Açısından Kritik katmanından Genel Amaçlı katmana geri yükleme işlemi başarılı olmaz.||Çözümlendi|Eki 2019|
 |Güvenli bağlantı kullanan harici (Azure dışı) posta sunucularıyla veritabanı posta özelliği||Çözümlendi|Eki 2019|
 |Kapsanan veritabanları SQL yönetilen örneği 'nde desteklenmiyor||Çözümlendi|Ağu 2019|
+
+### <a name="procedure-sp_send_dbmail-may-transiently-fail-when-query-parameter-is-used"></a>Parametre kullanıldığında yordam sp_send_dbmail geçişli olarak başarısız olabilir @query
+
+Parametre kullanıldığında yordam sp_send_dbmail geçişli hale gelebilir `@query` . Bu sorun oluştuğunda, yordam sp_send_dbmail her ikinci yürütmesi hata ve iletiyle başarısız olur `Msg 22050, Level 16, State 1` `Failed to initialize sqlcmd library with error number -2147467259` . Bu hatayı doğru bir şekilde görebilmek için, yordam parametre için varsayılan 0 değeri ile çağrılmalıdır `@exclude_query_output` , aksi halde hata yayılmaz.
+Bu sorun, sp_send_dbmail kimliğe bürünme ve bağlantı havuzu kullanma ile ilgili bilinen bir hata nedeniyle oluşur.
+Bu sorunu geçici olarak çözmek için, çıkış parametresine dayanan bir yeniden deneme mantığına e-posta göndermek için sarmalama kodu `@mailitem_id` . Yürütme başarısız olursa parametre değeri NULL olur ve bir e-postayı başarıyla göndermek için sp_send_dbmail bir kez daha çağrılmalıdır. Bu yeniden deneme mantığı örneği aşağıda verilmiştir.
+```sql
+CREATE PROCEDURE send_dbmail_with_retry AS
+BEGIN
+    DECLARE @miid INT
+    EXEC msdb.dbo.sp_send_dbmail
+        @recipients = 'name@mail.com', @subject = 'Subject', @query = 'select * from dbo.test_table',
+        @profile_name ='AzureManagedInstance_dbmail_profile', @execute_query_database = 'testdb',
+        @mailitem_id = @miid OUTPUT
+
+    -- If sp_send_dbmail returned NULL @mailidem_id then retry sending email.
+    --
+    IF (@miid is NULL)
+    EXEC msdb.dbo.sp_send_dbmail
+        @recipients = 'name@mail.com', @subject = 'Subject', @query = 'select * from dbo.test_table',
+        @profile_name ='AzureManagedInstance_dbmail_profile', @execute_query_database = 'testdb',
+END
+```
 
 ### <a name="distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group"></a>Dağıtılmış işlemler, sunucu güven grubundan yönetilen örnek kaldırıldıktan sonra yürütülebilir
 
@@ -150,19 +174,19 @@ GO
 BULK INSERT Sales.Invoices FROM 'inv-2017-12-08.csv' WITH (DATA_SOURCE = 'MyAzureBlobStorage');
 ```
 
-**Geçici çözüm** : [depolama için kimlik doğrulaması yapmak üzere paylaşılan erişim imzasını](/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage)kullanın.
+**Geçici çözüm**: [depolama için kimlik doğrulaması yapmak üzere paylaşılan erişim imzasını](/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage)kullanın.
 
 ### <a name="service-principal-cannot-access-azure-ad-and-akv"></a>Hizmet sorumlusu Azure AD 'ye ve AKV 'ye erişemiyor
 
 Bazı durumlarda, Azure AD ve Azure Key Vault (AKV) hizmetlerine erişmek için kullanılan hizmet sorumlusu ile ilgili bir sorun var olabilir. Sonuç olarak, bu sorun SQL yönetilen örneği ile birlikte Azure AD kimlik doğrulaması ve saydam veritabanı şifrelemesi (TDE) kullanımını etkiler. Bu durum aralıklı bir bağlantı sorunu veya dış SAĞLAYıCıDAN oturum açma/Kullanıcı oluşturma ya da oturum açma/kullanıcı olarak yürütme gibi deyimleri çalıştırabilmeyebilir. Yeni bir Azure SQL yönetilen örneği üzerinde, müşteri tarafından yönetilen anahtarla TDE ayarlama, bazı durumlarda da çalışmayabilir.
 
-**Geçici çözüm** : herhangi bir güncelleştirme komutunu YÜRÜTMEDEN önce SQL yönetilen Örneğinizde bu sorunun oluşmasını önlemek için veya güncelleştirme komutlarından sonra bu sorunla karşılaştıysanız, Azure Portal gıdın, SQL yönetilen örneği [Active Directory Yönetim dikey penceresine](./authentication-aad-configure.md?tabs=azure-powershell#azure-portal)erişin. "Yönetilen örnek 'in Azure Active Directory erişmek için bir hizmet sorumlusu olması gerekir" hata iletisini görebildiğinizi doğrulayın. Hizmet sorumlusu oluşturmak için buraya tıklayın. Bu hata iletisiyle karşılaştıysanız, üzerine tıklayın ve bu hata çözümlenene kadar sunulan adım adım yönergeleri izleyin.
+**Geçici çözüm**: herhangi bir güncelleştirme komutunu YÜRÜTMEDEN önce SQL yönetilen Örneğinizde bu sorunun oluşmasını önlemek için veya güncelleştirme komutlarından sonra bu sorunla karşılaştıysanız, Azure Portal gıdın, SQL yönetilen örneği [Active Directory Yönetim dikey penceresine](./authentication-aad-configure.md?tabs=azure-powershell#azure-portal)erişin. "Yönetilen örnek 'in Azure Active Directory erişmek için bir hizmet sorumlusu olması gerekir" hata iletisini görebildiğinizi doğrulayın. Hizmet sorumlusu oluşturmak için buraya tıklayın. Bu hata iletisiyle karşılaştıysanız, üzerine tıklayın ve bu hata çözümlenene kadar sunulan adım adım yönergeleri izleyin.
 
 ### <a name="restoring-manual-backup-without-checksum-might-fail"></a>SAĞLAMA TOPLAMı olmadan el ile yedeklemenin geri yüklenmesi başarısız olabilir
 
 Bazı durumlarda, yönetilen bir örnek üzerinde sağlama TOPLAMı olmadan gerçekleştirilen veritabanlarının el ile yedeklenmesi geri yüklenemeyebilir. Bu gibi durumlarda, başarılı olana kadar yedeklemeyi geri yüklemeyi yeniden deneyin.
 
-**Geçici çözüm** : sağlama toplamı etkinken yönetilen örneklerde veritabanlarının el ile yedeklerini alın.
+**Geçici çözüm**: sağlama toplamı etkinken yönetilen örneklerde veritabanlarının el ile yedeklerini alın.
 
 ### <a name="agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs"></a>Aracı, mevcut işleri değiştirme, devre dışı bırakma veya etkinleştirme sırasında yanıt vermemeye başladı
 
@@ -172,19 +196,19 @@ Belirli durumlarda, var olan bir işi değiştirmek, devre dışı bırakmak vey
 
 SQL yönetilen örneği katkıda bulunan Azure rolü bir kaynak grubuna (RG) uygulandığında, SQL yönetilen örneğine uygulanmaz ve hiçbir etkisi olmaz.
 
-**Geçici çözüm** : kullanıcılar için abonelik DÜZEYINDE bir SQL yönetilen örnek katılımcısı rolü ayarlayın.
+**Geçici çözüm**: kullanıcılar için abonelik DÜZEYINDE bir SQL yönetilen örnek katılımcısı rolü ayarlayın.
 
 ### <a name="limitation-of-manual-failover-via-portal-for-failover-groups"></a>Yük devretme grupları için Portal aracılığıyla el ile yük devretme sınırlaması
 
 Yük devretme grubu farklı Azure aboneliklerindeki veya kaynak gruplarındaki örneklere yayılmışsa, yük devretme grubundaki birincil örnekten el ile yük devretme başlatılamaz.
 
-**Geçici çözüm** : coğrafi ikincil örnekten Portal aracılığıyla yük devretmeyi başlatın.
+**Geçici çözüm**: coğrafi ikincil örnekten Portal aracılığıyla yük devretmeyi başlatın.
 
 ### <a name="sql-agent-roles-need-explicit-execute-permissions-for-non-sysadmin-logins"></a>SQL Server Agent rolleri, sysadmin dışındaki oturum açma bilgileri için açık EXECUTE izinlerine ihtiyaç duyar
 
 Sysadmin olmayan oturumlar herhangi bir [SQL Agent sabit veritabanı rolüne](/sql/ssms/agent/sql-server-agent-fixed-database-roles)eklenirse, bu oturumların çalışması için ana saklı YORDAMLARA açık yürütme izinlerinin verilmesi gereken bir sorun vardır. Bu sorunla karşılaşılırsa, "nesne üzerinde yürütme izni reddedildi <object_name> (Microsoft SQL Server, hata: 229)" hata mesajını görürsünüz.
 
-**Geçici çözüm** : bir SQL Aracısı sabit veritabanı rolüne (SQLAgentUserRole, SQLAgentReaderRole veya da SQLAgentOperatorRole rolünün) oturum açma işlemleri yaptıktan sonra, bu rollere eklenen her oturum açma için, listelenen saklı YORDAMLARA açıkça yürütme izinleri vermek üzere aşağıdaki T-SQL betiğini yürütün.
+**Geçici çözüm**: bir SQL Aracısı sabit veritabanı rolüne (SQLAgentUserRole, SQLAgentReaderRole veya da SQLAgentOperatorRole rolünün) oturum açma işlemleri yaptıktan sonra, bu rollere eklenen her oturum açma için, listelenen saklı YORDAMLARA açıkça yürütme izinleri vermek üzere aşağıdaki T-SQL betiğini yürütün.
 
 ```tsql
 USE [master]
@@ -204,13 +228,13 @@ GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
 
 İş Açısından Kritik hizmet katmanı, bazı durumlarda [bellek için iyileştirilmiş nesneler için maksimum bellek sınırlarını](../managed-instance/resource-limits.md#in-memory-oltp-available-space) doğru bir şekilde uygulamacaktır. SQL yönetilen örneği, iş yükünün bellek içi OLTP işlemleri için daha fazla bellek kullanmasını sağlayabilir ve bu da örneğin kullanılabilirliğini ve kararlılığını etkileyebilir. Sınırlara ulaşan bellek içi OLTP sorguları hemen başarısız olmayabilir. Bu sorun yakında düzeltilecektir. Daha fazla bellek içi OLTP belleği kullanan sorgular [sınırlara](../managed-instance/resource-limits.md#in-memory-oltp-available-space)ulaştıklarında daha önce başarısız olur.
 
-**Geçici çözüm** : iş yükünün kullanılabilir bellekten daha fazlasını kullandığından emin olmak için [SQL Server Management Studio](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) kullanarak [bellek içi OLTP depolama kullanımını izleyin](../in-memory-oltp-monitor-space.md) . Sanal çekirdek sayısına bağlı olan bellek sınırlarını artırın veya daha az bellek kullanmak için iş yükünüzü iyileştirin.
+**Geçici çözüm**: iş yükünün kullanılabilir bellekten daha fazlasını kullandığından emin olmak için [SQL Server Management Studio](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) kullanarak [bellek içi OLTP depolama kullanımını izleyin](../in-memory-oltp-monitor-space.md) . Sanal çekirdek sayısına bağlı olan bellek sınırlarını artırın veya daha az bellek kullanmak için iş yükünüzü iyileştirin.
  
 ### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>Boş olmayan bir dosya kaldırılmaya çalışılırken hatalı hata döndürüldü
 
 SQL Server ve SQL yönetilen örneği [, kullanıcının boş olmayan bir dosyayı bırakmaya izin vermez](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites). Bir deyimleri kullanarak boş olmayan bir veri dosyasını kaldırmaya çalışırsanız `ALTER DATABASE REMOVE FILE` , hata `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` hemen döndürülmeyecektir. SQL yönetilen örneği dosyayı bırakmaya devam eder ve 30 dakika sonra işlem başarısız olur `Internal server error` .
 
-**Geçici çözüm** : komutunu kullanarak dosyanın içeriğini kaldırın `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` . Dosya grubundaki tek dosya ise, dosyayı daralmadan önce bu dosya grubuyla ilişkili tablodan veya bölümden verileri silmeniz ve isteğe bağlı olarak bu verileri başka bir tabloya/bölüme yüklemeniz gerekir.
+**Geçici çözüm**: komutunu kullanarak dosyanın içeriğini kaldırın `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` . Dosya grubundaki tek dosya ise, dosyayı daralmadan önce bu dosya grubuyla ilişkili tablodan veya bölümden verileri silmeniz ve isteğe bağlı olarak bu verileri başka bir tabloya/bölüme yüklemeniz gerekir.
 
 ### <a name="change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore"></a>Hizmet katmanını değiştirme ve örnek oluşturma işlemleri sürekli veritabanı geri yükleme tarafından engelleniyor
 
@@ -218,19 +242,19 @@ Devam eden `RESTORE` bildirim, veri geçiş hizmeti geçiş işlemi ve yerleşik
 
 Geri yükleme işlemi, bu işlemleri, geri yükleme işleminin çalıştırıldığı aynı alt ağdaki yönetilen örneklerde ve örnek havuzlarda engeller. Örnek havuzlardaki örnekler etkilenmez. Hizmet katmanı işlemleri oluşturma veya değiştirme işlemi başarısız olmayacak veya zaman aşımına uğrar. Geri yükleme işlemi tamamlandıktan veya iptal edildikten sonra devam eder.
 
-**Geçici çözüm** : geri yükleme işlemi tamamlanana kadar bekleyin veya oluşturma veya güncelleştirme-hizmet katmanı işlemi daha yüksek önceliğe sahipse geri yükleme işlemini iptal edin.
+**Geçici çözüm**: geri yükleme işlemi tamamlanana kadar bekleyin veya oluşturma veya güncelleştirme-hizmet katmanı işlemi daha yüksek önceliğe sahipse geri yükleme işlemini iptal edin.
 
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>İş Açısından Kritik hizmet katmanındaki Resource Governor yük devretmeden sonra yeniden yapılandırılması gerekebilir
 
 Kullanıcı iş yüküne atanan kaynakları sınırlandırmanızı sağlayan [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) özelliği, yük devretmeden sonra bazı Kullanıcı iş yükünü veya hizmet katmanının Kullanıcı tarafından başlatılan değişikliğini yanlış sınıflandırabilir (örneğin, en büyük Vcore veya en büyük örnek depolama boyutu değişikliği).
 
-**Geçici çözüm** : `ALTER RESOURCE GOVERNOR RECONFIGURE` [Resource Governor](/sql/relational-databases/resource-governor/resource-governor)kullanıyorsanız, örnek başlatıldığında SQL görevini yürüten SQL Aracısı işinin BIR parçası olarak veya bir SQL Agent işinin parçası olarak çalıştırın.
+**Geçici çözüm**: `ALTER RESOURCE GOVERNOR RECONFIGURE` [Resource Governor](/sql/relational-databases/resource-governor/resource-governor)kullanıyorsanız, örnek başlatıldığında SQL görevini yürüten SQL Aracısı işinin BIR parçası olarak veya bir SQL Agent işinin parçası olarak çalıştırın.
 
 ### <a name="cross-database-service-broker-dialogs-must-be-reinitialized-after-service-tier-upgrade"></a>Çapraz veritabanı Hizmet Aracısı iletişim kutuları, hizmet katmanı yükseltmesinden sonra yeniden başlatılmalıdır
 
 Çapraz veritabanı Hizmet Aracısı iletişim kutuları, hizmet katmanı işlemini değiştirdikten sonra iletileri diğer veritabanlarındaki hizmetlere teslim eder. İletiler *kaybolmaz* ve gönderici kuyruğunda bulunabilir. SQL yönetilen örneğindeki sanal çekirdekler veya örnek depolama boyutu değişiklikleri `service_broke_guid` [sys. databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) görünümündeki bir değerin tüm veritabanları için değiştirilmesine neden olur. `DIALOG`Diğer veritabanındaki hizmet aracılarına başvuran [BEGIN iletişim kutusu](/sql/t-sql/statements/begin-dialog-conversation-transact-sql) kullanılarak oluşturulan her türlü, hedef hizmete ileti teslimi durdurulur.
 
-**Geçici çözüm** : hizmet katmanını güncelleştirmeden önce veritabanları arası hizmet Aracısı iletişim kutusu konuşmaları kullanan tüm etkinlikleri durdurun ve daha sonra yeniden başlatın. Bir hizmet katmanı değişikliğinden sonra teslim edilmemiş kalan iletiler varsa, kaynak kuyruktaki iletileri okuyun ve hedef sıraya yeniden gönderin.
+**Geçici çözüm**: hizmet katmanını güncelleştirmeden önce veritabanları arası hizmet Aracısı iletişim kutusu konuşmaları kullanan tüm etkinlikleri durdurun ve daha sonra yeniden başlatın. Bir hizmet katmanı değişikliğinden sonra teslim edilmemiş kalan iletiler varsa, kaynak kuyruktaki iletileri okuyun ve hedef sıraya yeniden gönderin.
 
 ### <a name="impersonation-of-azure-ad-login-types-is-not-supported"></a>Azure AD oturum açma türleri için kimliğe bürünme desteklenmiyor
 
@@ -258,7 +282,7 @@ Bir veritabanı SQL yönetilen örneği 'ne geri yüklerken, geri yükleme hizme
 
 İlk aşamada, bir kullanıcı boş veritabanına erişebilir ve hatta tablo oluşturabilir veya bu veritabanında veri yükleyebilir. Bu geçici veritabanı, geri yükleme hizmeti ikinci aşamayı başlattığında bırakılacak.
 
-**Geçici çözüm** : geri yükleme işleminin tamamlandığını görene kadar geri yüklemekte olduğunuz veritabanına erişmeyin.
+**Geçici çözüm**: geri yükleme işleminin tamamlandığını görene kadar geri yüklemekte olduğunuz veritabanına erişmeyin.
 
 ### <a name="tempdb-structure-and-content-is-re-created"></a>TEMPDB yapısı ve içerik yeniden oluşturuluyor
 
@@ -285,7 +309,7 @@ Bu örnekte, mevcut veritabanları çalışmaya devam eder ve yeni dosyalar ekle
 
 Çeşitli sistem görünümleri, performans sayaçları, hata iletileri, XEvents ve hata günlüğü girdileri, gerçek veritabanı adları yerine GUID veritabanı tanımlayıcılarını görüntüler. Gelecekte gerçek veritabanı adlarıyla değiştirildiklerinden, bu GUID tanımlayıcılarına güvenmeyin.
 
-**Geçici çözüm** : GUID veritabanı tanımlayıcıları biçiminde belirtilen fiziksel veritabanı adından gerçek veritabanı adını çözümlemek için sys. databases görünümünü kullanın:
+**Geçici çözüm**: GUID veritabanı tanımlayıcıları biçiminde belirtilen fiziksel veritabanı adından gerçek veritabanı adını çözümlemek için sys. databases görünümünü kullanın:
 
 ```tsql
 SELECT name as ActualDatabaseName, physical_database_name as GUIDDatabaseIdentifier 
@@ -324,13 +348,13 @@ using (var scope = new TransactionScope())
 
 ```
 
-**Geçici çözüm (2020 Mart 'tan beri gerekmez)** : iki bağlantı kullanmak yerine başka bir veritabanını bir bağlantı bağlamında kullanmak için [SqlConnection. ChangeDatabase (dize)](/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) kullanın.
+**Geçici çözüm (2020 Mart 'tan beri gerekmez)**: iki bağlantı kullanmak yerine başka bir veritabanını bir bağlantı bağlamında kullanmak için [SqlConnection. ChangeDatabase (dize)](/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) kullanın.
 
 ### <a name="clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address"></a>CLR modülleri ve bağlı sunucular bazen yerel bir IP adresine başvuramaz
 
 SQL yönetilen örneği ve bağlı sunuculardaki CLR modülleri veya geçerli örneğe başvuran dağıtılmış sorgular bazen yerel bir örneğin IP 'sini çözemez. Bu hata, geçici bir sorundur.
 
-**Geçici çözüm** : mümkünse bir clr modülünde bağlam bağlantılarını kullanın.
+**Geçici çözüm**: mümkünse bir clr modülünde bağlam bağlantılarını kullanın.
 
 ## <a name="updates"></a>Güncelleştirmeler
 

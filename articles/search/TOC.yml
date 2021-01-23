@@ -5,9 +5,9 @@
   items:
     - name: Bilişsel Arama nedir?
       href: search-what-is-azure-search.md
-    - name: Bilişsel Arama’daki özellikler
+    - name: Özellik listesi
       href: search-features-list.md
-    - name: Bilişsel Arama’daki yenilikler
+    - name: Aramada yeni
       href: whats-new.md
 - name: Hızlı Başlangıçlar
   items:

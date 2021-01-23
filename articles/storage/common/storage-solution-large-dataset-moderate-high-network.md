@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: f1ded1ce87df1cb57960bbc99cd950ed7b3f97ee
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: cf0e423648db174433f0717f2e5971ac49697b42
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573944"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704632"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Bant genişliği orta veya yüksek olduğunda büyük veri kümeleri için veri aktarımı
  
@@ -68,8 +68,8 @@ Aşağıdaki tablolarda önerilen seçenekler için önemli olanaklarla ilgili f
 |    **Veri türü**                    |    Azure Blobları                  |    Azure Blobları<br>Azure Dosyaları                    |    Azure Blobları<br>Azure Dosyaları            |    Azure Blobları<br>Azure Dosyaları          |
 |    **Form faktörü**                  |    sipariş başına 5 SSD             |    1 X 50-lbs. sipariş başına masaüstü boyutunda cihaz    |    1 X ~ 500-lbs. sipariş başına büyük cihaz    |    Sipariş başına en fazla 10 HDD/SSD        |
 |    **İlk kurulum saati**               |    Düşük <br>(15 dakika)            |    Düşük-orta <br> (<30 dakika)               |    Orta<br>(1-2 saat)               |    Orta-zor<br>değişken |
-|    **Verileri Azure 'a gönderme**           |    Evet                          |    Evet                                           |    Evet                                   |    Evet                                 |
-|    **Verileri Azure’dan dışarı aktarma**           |    Hayır                           |    Hayır                                            |    Hayır                                    |    Evet                                 |
+|    **Verileri Azure 'a gönderme**           |    Yes                          |    Yes                                           |    Yes                                   |    Yes                                 |
+|    **Verileri Azure'dan dışarı aktarma**           |    Hayır                           |    Hayır                                            |    Hayır                                    |    Yes                                 |
 |    **Şifreleme**                   |    AES 128 bit                  |    AES 256 bit                                   |    AES 256 bit                           |    AES 128 bit                         |
 |    **Donanım**                     |     Microsoft tarafından sağlanan          |    Microsoft tarafından sağlanan                            |    Microsoft tarafından sağlanan                    |    Müşteri sağlandı                   |
 |    **Ağ arabirimi**            |    USB 3.1/SATA                 |    RJ 45, SFP +                                   |    RJ45, QSFP +                           |    SATA ıı/SATA ııı                    |
@@ -88,14 +88,14 @@ Aşağıdaki tablolarda önerilen seçenekler için önemli olanaklarla ilgili f
 |    **Veri türü**              |    Azure Blobları, Azure dosyaları, Azure tabloları    |    Azure Blobları, Azure dosyaları, Azure tabloları    |    Azure Blobları, Azure dosyaları                           |   Veri depoları ve biçimleri için 70 ' ten fazla veri Bağlayıcısı destekler    |
 |    **Form faktörü**            |    Komut satırı araçları                        |    Programlı arabirim                    |    Microsoft bir sanal <br>veya fiziksel cihaz     |    Azure portal hizmet                                            |
 |    **İlk bir kerelik kurulum** |    Kolaylık               |    Orta                       |    Kolay (<30 dakika)-Orta (1-2 saat)            |    Yaygın                                                          |
-|    **Verileri önceden işleme**          |    Hayır                                        |    Hayır                                        |    Evet (Edge işlem Ile)                               |    Evet                                                                |
-|    **Diğer bulutlardan aktar**   |    Hayır                                        |    Hayır                                        |    Hayır                                                    |    Evet                                                                |
+|    **Verileri önceden işleme**          |    Hayır                                        |    Hayır                                        |    Evet (Edge işlem Ile)                               |    Yes                                                                |
+|    **Diğer bulutlardan aktar**   |    Hayır                                        |    Hayır                                        |    Hayır                                                    |    Yes                                                                |
 |    **Kullanıcı türü**                    |    BT uzmanı veya geliştirme                                       |    Geliştirme                                       |    BT Profesyoneli                                                |    BT Profesyoneli                                                             |
 |    **Fiyatlandırma**                      |    Ücretsiz, veri çıkış ücretleri geçerlidir         |    Ücretsiz, veri çıkış ücretleri geçerlidir         |    [Fiyatlandırma](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                                               |    [Fiyatlandırma](https://azure.microsoft.com/pricing/details/data-factory/)                                                            |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [İçeri/dışarı aktarma ile veri aktarmayı öğrenin](./storage-import-export-data-to-blobs.md).
+- [İçeri/dışarı aktarma ile veri aktarmayı öğrenin](../../import-export/storage-import-export-data-to-blobs.md).
 - Nasıl yapılacağını öğrenin
 
     - [Data Box disk verileri aktarın](../../databox/data-box-disk-quickstart-portal.md).

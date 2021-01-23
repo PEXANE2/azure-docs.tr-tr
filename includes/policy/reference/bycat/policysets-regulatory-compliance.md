@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 3b537ad0100e285fe02f557b92d67e09ae615def
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 89ab040c7b585a8b85cf1b7eba9f96fcd63d10b0
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98046460"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704019"
 ---
 |Ad |Açıklama |İlkeler |Sürüm |
 |---|---|---|---|
@@ -18,7 +18,7 @@ ms.locfileid: "98046460"
 |[Azure Güvenlik kıyaslaması v1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_audit.json) |Bu girişim, Azure Security kıyaslama v1 önerilerinin bir alt kümesini ele alan denetim ve sanal makine uzantısı dağıtım ilkelerini içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/azsecbm](https://aka.ms/azsecbm) . |136 |6.1.1-Önizleme |
 |[Azure Güvenlik kıyaslaması v2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_v2.json) |Bu girişim, Azure Security kıyaslama v2 önerilerinin bir alt kümesini ele alan ilkeleri içerir. Gelecek sürümlerde ek ilkeler eklenebilir. Daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/azsecbm](https://aka.ms/azsecbm) . |181 |1.0.0-Önizleme |
 |[Kanada Federal PBMM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CanadaFederalPBMM_audit.json) |Bu girişim, Kanada Federal PBMM denetimlerinin bir alt kümesini ele alan denetim ve sanal makine uzantısı dağıtım ilkelerini içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/canadafederalpbmm-blueprint](https://aka.ms/canadafederalpbmm-blueprint) . |60 |3.0.0 |
-|[CIS Microsoft Azure Foundations Benchmark 1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0_audit.json) |Bu girişim, bir CIS alt kümesini ele alan, kıyaslama önerilerini Microsoft Azure olan denetim ilkelerini içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/cisazure-blueprint](https://aka.ms/cisazure-blueprint) . |87 |7.1.0 |
+|[CIS Microsoft Azure Foundations Benchmark 1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0.json) |Bu girişim, bir CIS alt kümesini ele alan, kıyaslama önerilerini temel alan ilkeler içerir Microsoft Azure. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/cisazure110-initiative](https://aka.ms/cisazure110-initiative) . |91 |8.0.0 |
 |[FedRAMP High](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_H_audit.json) |Bu girişim, Fedrampa H denetimlerinin bir alt kümesini ele alan denetim ve sanal makine uzantısı dağıtım ilkelerini içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/fedramph-blueprint](https://aka.ms/fedramph-blueprint) . |72 |3.0.1 |
 |[FedRAMP Moderate](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_M_audit.json) |Bu girişim, Fedrad denetimlerinin bir alt kümesini ele alan denetim ve sanal makine uzantısı dağıtım ilkelerini içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/fedrampm-blueprint](https://aka.ms/fedrampm-blueprint) . |62 |3.0.0 |
 |[HITRUST/HıPAA](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/HIPAA_HITRUST_audit.json) |Bu girişim, bir HITRUST/HIPAA denetimlerinin alt kümesini ele alan denetim ve sanal makine uzantısı dağıtım ilkelerini içerir. Gelecek sürümlerde ek ilkeler eklenecektir. Daha fazla bilgi için, adresini ziyaret edin [https://aka.ms/hipaa-blueprint](https://aka.ms/hipaa-blueprint) . |121 |4.1.0 |

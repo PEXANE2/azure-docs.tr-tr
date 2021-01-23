@@ -50,6 +50,8 @@
           href: create-data-controller-using-azdata.md
         - name: Kubernetes araçları
           href: create-data-controller-using-kubernetes-native-tools.md
+        - name: SCC uygulama (OpenShift)
+          href: how-to-apply-security-context-constraint.md
     - name: Azure Arc özellikli veri hizmetlerindeki yaygın deneyimler
       items:
         - name: Panolar ile izleme (Azure Data Studio)

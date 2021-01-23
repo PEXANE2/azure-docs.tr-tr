@@ -3,12 +3,12 @@ title: Azure VMware çözüm dağıtımını planlama
 description: Bu makalede bir Azure VMware Çözüm dağıtımı iş akışı özetlenmektedir.  Nihai sonuç, sanal makine (VM) oluşturma ve geçirme için hazırlanma ortamıdır.
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 2cc4d40fd8088a632e0c24e3c4b770ebdc9de2e8
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: cdf4ddd6166920fa7461bfd85e01ef0efd6dfbb9
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912742"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704579"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Azure VMware çözüm dağıtımını planlama
 
@@ -31,7 +31,7 @@ Azure VMware çözümünü dağıtmak için kullanmayı planladığınız abonel
 
 Azure VMware çözümünüz için kullanmak istediğiniz kaynak grubunu belirler.  Genellikle, Azure VMware çözümü için bir kaynak grubu oluşturulur, ancak var olan bir kaynak grubunu kullanabilirsiniz.
 
-## <a name="region"></a>Region
+## <a name="region"></a>Bölge
 
 Azure VMware çözümünün dağıtılmasını istediğiniz bölgeyi belirler.  Daha fazla bilgi için bkz. [bölgeye göre kullanılabilir Azure ürünleri kılavuzu](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=azure-vmware).
 
@@ -95,26 +95,32 @@ Ağ kesimlerini Şirket içinden Azure VMware çözümüne genişletebilirsiniz 
 
 ## <a name="azure-virtual-network-to-attach-azure-vmware-solution"></a>Azure VMware çözümü eklemek için Azure sanal ağı
 
-Azure VMware çözümünüz özel bulutunuza erişmek için Azure VMware çözümüyle birlikte sunulan ExpressRoute bağlantı hattının bir Azure sanal ağına eklenmesi gerekir.  Dağıtım sırasında yeni bir sanal ağ tanımlayabilir veya var olan bir ağı seçebilirsiniz.
+Bu adımda, bir ExpressRoute sanal ağ geçidi tanımlayabilir ve Azure VMware Solution ExpressRoute devresine bağlanmak için kullanılan Azure sanal ağını destektireceksiniz.  ExpressRoute bağlantı hattı, Azure VMware çözümü özel bulutuna ve diğer Azure hizmetlerine, Azure kaynaklarına ve şirket içi ortamlara yönelik bağlantıyı kolaylaştırır.
 
-Azure VMware çözümünün ExpressRoute devresi, bu adımda tanımladığınız Azure sanal ağındaki bir ExpressRoute ağ geçidine bağlanır.  
-
->[!IMPORTANT]
->Sanal ağ başına dört ExpressRoute bağlantı hattı sınırını aşmadığı sürece Azure VMware çözümüne bağlanmak için mevcut bir ExpressRoute ağ geçidini kullanabilirsiniz.  Bununla birlikte, ExpressRoute aracılığıyla şirket içi Azure VMware çözümüne erişmek için ExpressRoute Global Reach sahip olmanız gerekir. Bu, ExpressRoute ağ geçidi, bağlı olan devreler arasında geçişli yönlendirme sağlamamalıdır.  
-
-ExpressRoute bağlantı hattını Azure VMware çözümünden mevcut bir ExpressRoute ağ geçidine bağlamak istiyorsanız dağıtımdan sonra bunu yapabilirsiniz.  
-
-Bu nedenle, Özet bölümünde Azure VMware çözümünü mevcut bir Express Route ağ geçidine bağlamak istiyor musunuz?  
-
-* **Evet** = dağıtım sırasında kullanılmayan sanal ağı tanımla.
-* **Hayır** = var olan bir sanal ağı tanımla veya dağıtım sırasında yeni bir tane oluştur.
-
-Her iki şekilde de, bu adımda ne yapmak istediğinizi belgeleyin.
-
->[!NOTE]
->Bu sanal ağ, şirket içi ortamınız ve Azure VMware çözümünüz tarafından görülür, bu nedenle bu sanal ağda kullandığınız IP segmentinin ve alt ağların çakışmadığından emin olun.
+*Mevcut* veya *Yeni* bir ExpressRoute sanal ağ geçidi kullanabilirsiniz.
 
 :::image type="content" source="media/pre-deployment/azure-vmware-solution-expressroute-diagram.png" alt-text="Kimlik-Azure VMware çözümü eklemek için Azure sanal ağı" border="false":::
+
+### <a name="use-an-existing-expressroute-virtual-network-gateway"></a>Mevcut bir ExpressRoute sanal ağ geçidini kullanma
+
+*Mevcut* bir ExpressRoute sanal ağ geçidi kullanırsanız, özel bulut dağıttıktan sonra Azure VMware çözümü ExpressRoute bağlantı hattı oluşturulur.  Bu nedenle, **sanal ağ** alanını doldurmanız gerekmez.  
+
+Hangi ExpressRoute sanal ağ geçidini kullanacağınızı ve sonraki adıma devam etmeyi unutmayın.
+
+### <a name="create-a-new-expressroute-virtual-network-gateway"></a>Yeni bir ExpressRoute sanal ağ geçidi oluştur
+
+*Yeni* bir ExpressRoute sanal ağ geçidi oluşturuyorsanız, var olan bir Azure sanal ağı kullanılabilir veya yeni bir Azure sanal ağı oluşturulabilir.  
+
+Seçim var olan bir Azure sanal ağını kullanacaksanız, sanal ağda önceden var olan ExpressRoute sanal ağ geçitleri olmadığından emin olun ve özel bulut dağıtımı oluştur ekranının sanal ağ açılan menüsünde seçin.
+
+Seçim, yeni bir Azure sanal ağı oluşturmak için özel bulut dağıtımı oluşturma ekranının sanal ağ ' ın yeni seçeneğine tıklanarak bir süre önce veya dağıtım sırasında oluşturulabilir.
+
+Aşağıdaki başvuru için, **özel bulut dağıtımı oluşturma** ekranının bir görüntüsü aşağıda verilmiştir ve kırmızı renkle Seviyelendirilmiş, bu bölümün tamamında başvurulan Azure **sanal ağ** alanıdır.
+
+:::image type="content" source="media/pre-deployment/azure-vmware-solution-deployment-screen-vnet-circle.png" alt-text="Sanal ağ geçidi daire içinde Azure VMware Çözüm dağıtımı ekranının ekran görüntüsü.":::
+
+>[!NOTE]
+>Kullanılacak veya oluşturulacak sanal ağ, şirket içi ortamınız ve Azure VMware çözümünüz tarafından görülebilir, bu nedenle bu sanal ağda kullandığınız IP segmentinin ve alt ağların çakışmadığından emin olun.
 
 ## <a name="vmware-hcx-network-segments"></a>VMware HCX ağ kesimleri
 

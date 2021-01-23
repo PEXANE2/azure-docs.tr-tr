@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: b263d3e62ae97914fc8e06580486bddd0cb9b3b7
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 0b671fbdfe16848012ac94671ce68e8a33a8b3e8
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968458"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703878"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware geçişi için destek matrisi
 
@@ -166,7 +166,7 @@ Konuk işletim sistemi mimarisi | 64 bit.
 İşletim sistemi disk boyutu | 2.048 GB 'a kadar. 
 İşletim sistemi disk sayısı | 1 
 Veri diski sayısı | 64 veya daha az. 
-Veri diski boyutu | 8.095 GB 'a kadar
+Veri diski boyutu | 32 TB 'a kadar
 Ağ bağdaştırıcıları | Birden çok bağdaştırıcı desteklenir.
 Paylaşılan VHD | Desteklenmez. 
 FC diski | Desteklenmez. 

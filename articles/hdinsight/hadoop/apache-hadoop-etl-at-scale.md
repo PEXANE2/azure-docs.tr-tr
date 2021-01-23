@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: d6c3dbc28da7bee0bc24a6dc24608c78e480c20e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e7a8a72d0669f39cc27c997d83af1e6272d045a6
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462166"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704161"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Ölçeklendirerek ayıklama, dönüştürme ve yükleme (ETL)
 
@@ -27,7 +27,7 @@ Aşağıdaki bölümler ETL aşamalarını ve bunlarla ilişkili bileşenleri ke
 
 ## <a name="orchestration"></a>Düzenleme
 
-Düzenleme, ETL işlem hattının tüm aşamaları boyunca yayılır. HDInsight 'taki ETL işleri genellikle birbirleriyle birlikte çalışan birkaç farklı ürün içerir. Örnek:
+Düzenleme, ETL işlem hattının tüm aşamaları boyunca yayılır. HDInsight 'taki ETL işleri genellikle birbirleriyle birlikte çalışan birkaç farklı ürün içerir. Örneğin:
 
 - Verilerin bir bölümünü temizlemek için Apache Hive kullanabilirsiniz ve Apache Pig başka bir bölümü temizleyebilir.
 - Azure Data Lake Store Azure SQL veritabanı 'na veri yüklemek için Azure Data Factory kullanabilirsiniz.
@@ -56,7 +56,7 @@ Azure Data Factory hakkında daha fazla bilgi için [belgelerine](../../data-fac
 
 Kaynak veri dosyaları genellikle Azure Storage veya Azure Data Lake Storage bir konuma yüklenir. Dosyalar genellikle CSV gibi düz bir biçimde olur. Ancak, herhangi bir biçimde olabilir.
 
-### <a name="azure-storage"></a>Azure Depolama
+### <a name="azure-storage"></a>Azure Storage
 
 Azure depolama 'nın belirli uyarlanabilir hedefleri vardır. Daha fazla bilgi için bkz. [BLOB depolama Için ölçeklenebilirlik ve performans hedefleri](../../storage/blobs/scalability-targets.md) . Birçok analitik düğüm için Azure depolama, çok daha küçük dosyalarla ilgilenirken en iyi şekilde ölçeklendirilir. Hesap sınırlarınız dahilinde olduğunuz sürece Azure Storage, dosyaların ne kadar büyük olduğuna bakılmaksızın aynı performansı garanti eder. Terabaytlarca veri saklayabilir ve yine de tutarlı performans sağlayabilirsiniz. Bu ifade, bir alt küme veya tüm verileri kullanıp kullanmayacağınızı de doğrudur.
 
@@ -82,7 +82,7 @@ Veri kümelerini terabayt aralığında karşıya yüklemek için ağ gecikmesi 
 
 - **Azure ExpressRoute:** Azure veri merkezleri ve şirket içi altyapınız arasında özel bağlantılar oluşturun. Bu bağlantılar, büyük miktarlarda veri aktarmaya yönelik güvenilir bir seçenek sağlar. Daha fazla bilgi için bkz. [Azure ExpressRoute belgeleri](../../expressroute/expressroute-introduction.md).
 
-- **Sabit disk sürücülerinden karşıya veri yükleme:** Azure [içeri/dışarı aktarma hizmetini](../../storage/common/storage-import-export-service.md) kullanarak verilerinize bir Azure veri merkezine sabit disk sürücüleri gönderebilirsiniz. Verileriniz ilk olarak Azure Blob depolama alanına yüklenir. Daha sonra, Azure Blob depolamadan Data Lake Storage verileri kopyalamak için Azure Data Factory veya AdlCopy aracını kullanabilirsiniz.
+- **Sabit disk sürücülerinden karşıya veri yükleme:** Azure [içeri/dışarı aktarma hizmetini](../../import-export/storage-import-export-service.md) kullanarak verilerinize bir Azure veri merkezine sabit disk sürücüleri gönderebilirsiniz. Verileriniz ilk olarak Azure Blob depolama alanına yüklenir. Daha sonra, Azure Blob depolamadan Data Lake Storage verileri kopyalamak için Azure Data Factory veya AdlCopy aracını kullanabilirsiniz.
 
 ### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 

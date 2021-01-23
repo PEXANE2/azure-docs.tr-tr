@@ -1,16 +1,16 @@
 ---
 title: Bağlı Log Analytics çalışma alanı için desteklenen bölgeler
 description: Bu makalede, bir Otomasyon hesabı ile Log Analytics çalışma alanı arasındaki desteklenen bölge eşlemeleri, Azure Otomasyonu 'nun belirli özellikleriyle ilişkili olarak açıklanmaktadır.
-ms.date: 12/15/2020
+ms.date: 01/21/2021
 services: automation
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 95537bd54ecb476055608c89ac68a46d410288b6
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 3b744127b51b0e0db63c158feaf463af4cd0bdcf
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590894"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704330"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>Bağlı Log Analytics çalışma alanı için desteklenen bölgeler
 
@@ -32,13 +32,17 @@ Aşağıdaki tabloda desteklenen eşlemeler gösterilmektedir:
 |**ABD**||
 |EastUS<sup>1</sup>|EastUS2|
 |EastUS2<sup>2</sup>|EastUS|
+|WestUS|WestUS|
 |WestUS2|WestUS2|
+|CentralUS|CentralUS|
 |Güneydoğu ABD|Güneydoğu ABD|
 |WestCentralUS|WestCentralUS|
 |**Kanada**||
 |Canadaorta|Canadaorta|
 |**Asya Pasifik**||
+|AustraliaEast|AustraliaEast|
 |AustraliaSoutheast|AustraliaSoutheast|
+|Eastaya|Eastaya|
 |Güneydoğu|Güneydoğu|
 |Merkezileştirme Hindistan|Merkezileştirme Hindistan|
 |ChinaEast2<sup>3</sup>|ChinaEast2|

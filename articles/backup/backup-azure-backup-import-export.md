@@ -4,18 +4,18 @@ description: Azure Içeri/dışarı aktarma hizmetini kullanarak ağdan veri gö
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: f3cf44a34babab79d135923db040630a1c8e3dfe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ea470c2e732b7e0ef46e9e5fa78c744aa30c955
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88892023"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704372"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure Backup çevrimdışı yedekleme iş akışı
 
 Azure Backup, Azure 'a verilerin ilk tam yedeklemesi sırasında ağ ve depolama maliyetlerini kaydetmekle ilgili çeşitli yerleşik verimlilik içerir. İlk tam yedeklemeler genellikle büyük miktarda veriyi aktarır ve yalnızca deltas/artımlarsa aktarımı yapan sonraki yedeklemelerle karşılaştırıldığında daha fazla ağ bant genişliği gerektirir. Azure Backup çevrimdışı dağıtım sürecinde, çevrimdışı yedekleme verilerini Azure 'a yüklemek için diskleri kullanabilir.
 
-Azure Backup çevrimdışı dengeli dağıtım işlemi, [Azure içeri/dışarı aktarma hizmeti](../storage/common/storage-import-export-service.md)ile sıkı bir şekilde tümleşiktir. Bu hizmeti kullanarak, diskleri kullanarak ilk yedekleme verilerini Azure 'a aktarabilirsiniz. Yüksek gecikmeli ve düşük bant genişliğine sahip bir ağ üzerinden aktarılması gereken ilk yedekleme verilerinin terabayt (TBs) varsa, ilk yedekleme kopyasını bir veya daha fazla sabit sürücüde bir Azure veri merkezine göndermek için çevrimdışı dengeli dağıtım iş akışını kullanabilirsiniz. Aşağıdaki görüntüde, iş akışındaki adımlara bir genel bakış sunulmaktadır.
+Azure Backup çevrimdışı dengeli dağıtım işlemi, [Azure içeri/dışarı aktarma hizmeti](../import-export/storage-import-export-service.md)ile sıkı bir şekilde tümleşiktir. Bu hizmeti kullanarak, diskleri kullanarak ilk yedekleme verilerini Azure 'a aktarabilirsiniz. Yüksek gecikmeli ve düşük bant genişliğine sahip bir ağ üzerinden aktarılması gereken ilk yedekleme verilerinin terabayt (TBs) varsa, ilk yedekleme kopyasını bir veya daha fazla sabit sürücüde bir Azure veri merkezine göndermek için çevrimdışı dengeli dağıtım iş akışını kullanabilirsiniz. Aşağıdaki görüntüde, iş akışındaki adımlara bir genel bakış sunulmaktadır.
 
   ![Çevrimdışı içeri aktarma iş akışı işlemine genel bakış](./media/backup-azure-backup-import-export/offlinebackupworkflowoverview.png)
 
@@ -59,17 +59,17 @@ Aşağıdaki Azure Backup özellikleri veya iş yükleri, için çevrimdışı y
     1. Ana menüden **abonelikler**' i seçin.
     1. Birden çok aboneliğe abone değilseniz, çevrimdışı yedekleme için kullanmayı planladığınız aboneliği seçin. Yalnızca bir abonelik kullanıyorsanız, aboneliğiniz görüntülenir.
     1. Sağlayıcı listesini görüntülemek için abonelik menüsünde **kaynak sağlayıcıları** ' nı seçin.
-    1. Sağlayıcılar listesinde, *Microsoft. ımportexport*' a kaydırın. **Durum** **Notregistered**ise, **Kaydet**' i seçin.
+    1. Sağlayıcılar listesinde, *Microsoft. ımportexport*' a kaydırın. **Durum** **Notregistered** ise, **Kaydet**' i seçin.
 
         ![Kaynak sağlayıcısını kaydetme](./media/backup-azure-backup-import-export/registerimportexport.png)
 
 * İlk kopyanızı tutmak için yeterli disk alanına sahip bir ağ paylaşımının veya bilgisayarda, iç veya dış olan herhangi bir ek sürücü olabilen bir hazırlama konumu oluşturulur. Örneğin, bir 500 GB dosya sunucusunu yedeklemek istiyorsanız, hazırlama alanının en az 500 GB olduğundan emin olun. (Sıkıştırma nedeniyle daha küçük bir miktar kullanılır.)
-* Azure 'a disk gönderdiğinizde yalnızca 2,5 inç SSD veya 2,5-inç veya 3,5-inç SATA II/III iç sabit sürücü kullanın. Sabit sürücüleri 10 TB 'a kadar kullanabilirsiniz. Hizmetin desteklediği en son sürücü kümesi için [Azure içeri/dışarı aktarma hizmeti belgelerini](../storage/common/storage-import-export-requirements.md#supported-hardware) denetleyin.
-* SATA sürücülerin, hazırlama konumundan SATA sürücülere olan yedekleme verilerinin kopyasının yapıldığı bir bilgisayara ( *kopya bilgisayar*olarak adlandırılır) bağlanması gerekir. Kopya bilgisayarda BitLocker 'ın etkinleştirildiğinden emin olun.
+* Azure 'a disk gönderdiğinizde yalnızca 2,5 inç SSD veya 2,5-inç veya 3,5-inç SATA II/III iç sabit sürücü kullanın. Sabit sürücüleri 10 TB 'a kadar kullanabilirsiniz. Hizmetin desteklediği en son sürücü kümesi için [Azure içeri/dışarı aktarma hizmeti belgelerini](../import-export/storage-import-export-requirements.md#supported-hardware) denetleyin.
+* SATA sürücülerin, hazırlama konumundan SATA sürücülere olan yedekleme verilerinin kopyasının yapıldığı bir bilgisayara ( *kopya bilgisayar* olarak adlandırılır) bağlanması gerekir. Kopya bilgisayarda BitLocker 'ın etkinleştirildiğinden emin olun.
 
 ## <a name="workflow"></a>İş akışı
 
-Bu bölüm, verilerinizin bir Azure veri merkezine teslim edilebilmesi ve Azure depolama 'ya yüklenebilmesi için çevrimdışı yedekleme iş akışını açıklar. İçeri aktarma hizmeti veya işlemin herhangi bir yönü hakkında sorularınız varsa bkz. [Azure içeri/dışarı aktarma hizmeti genel bakış belgeleri](../storage/common/storage-import-export-service.md).
+Bu bölüm, verilerinizin bir Azure veri merkezine teslim edilebilmesi ve Azure depolama 'ya yüklenebilmesi için çevrimdışı yedekleme iş akışını açıklar. İçeri aktarma hizmeti veya işlemin herhangi bir yönü hakkında sorularınız varsa bkz. [Azure içeri/dışarı aktarma hizmeti genel bakış belgeleri](../import-export/storage-import-export-service.md).
 
 ## <a name="initiate-offline-backup"></a>Çevrimdışı Yedeklemeyi Başlat
 
@@ -77,7 +77,7 @@ Bu bölüm, verilerinizin bir Azure veri merkezine teslim edilebilmesi ve Azure 
 
     ![İçeri aktarma sayfası](./media/backup-azure-backup-import-export/offlinebackup_inputs.png)
 
-1. **Kendi disklerimi kullanarak Aktarım**seçeneğini belirleyin.
+1. **Kendi disklerimi kullanarak Aktarım** seçeneğini belirleyin.
 
     > [!NOTE]
     > İlk yedekleme verilerini çevrimdışı olarak aktarmak için Azure Data Box seçeneğini kullanın. Bu seçenek, Azure ile uyumlu disklerinizi temin etmek için gereken çabayı kaydeder. Yedekleme verilerinin kurtarma hizmetleri Aracısı tarafından doğrudan yazılabileceği Microsoft 'a özel, güvenli ve Wonu Azure Data Box cihazları sunar.
@@ -173,7 +173,7 @@ Aşağıdaki yordamda Azure içeri aktarma işi gönderme ayrıntıları güncel
 * Disklerinizin gönderim ayrıntılarını geri döndürür.
 
 1. Azure aboneliğinizde oturum açın.
-1. Ana menüden **tüm hizmetler**' i seçin. **Tüm hizmetler** Iletişim kutusunda **içeri aktar**' ı girin. **İçeri/dışarı aktarma işlerini**gördüğünüzde, seçin.
+1. Ana menüden **tüm hizmetler**' i seçin. **Tüm hizmetler** Iletişim kutusunda **içeri aktar**' ı girin. **İçeri/dışarı aktarma işlerini** gördüğünüzde, seçin.
 
     ![Sevkiyat bilgilerini girin](./media/backup-azure-backup-import-export/search-import-job.png)<br/>
 
@@ -202,7 +202,7 @@ Bir Azure içeri aktarma işinin işlenmesi için gereken süre farklılık gös
 
 ### <a name="monitor-azure-import-job-status"></a>Azure içeri aktarma işinin durumunu izleme
 
-Azure portal içeri aktarma işinizin durumunu izleyebilirsiniz. **Işleri içeri/dışarı aktarma** sayfasına gidin ve işinizi seçin. İçeri aktarma işlerinin durumu hakkında daha fazla bilgi için bkz. [Azure içeri/dışarı aktarma hizmeti nedir?](../storage/common/storage-import-export-service.md).
+Azure portal içeri aktarma işinizin durumunu izleyebilirsiniz. **Işleri içeri/dışarı aktarma** sayfasına gidin ve işinizi seçin. İçeri aktarma işlerinin durumu hakkında daha fazla bilgi için bkz. [Azure içeri/dışarı aktarma hizmeti nedir?](../import-export/storage-import-export-service.md).
 
 ### <a name="finish-the-workflow"></a>İş akışını tamamlama
 
@@ -218,4 +218,4 @@ Bir sonraki zamanlanmış yedekleme sırasında, Azure Backup artımlı yedeklem
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Içeri/dışarı aktarma hizmeti iş akışıyla ilgili herhangi bir soru için bkz. [BLOB depolama alanına veri aktarmak için Microsoft Azure içeri/dışarı aktarma hizmetini kullanma](../storage/common/storage-import-export-service.md).
+* Azure Içeri/dışarı aktarma hizmeti iş akışıyla ilgili herhangi bir soru için bkz. [BLOB depolama alanına veri aktarmak için Microsoft Azure içeri/dışarı aktarma hizmetini kullanma](../import-export/storage-import-export-service.md).

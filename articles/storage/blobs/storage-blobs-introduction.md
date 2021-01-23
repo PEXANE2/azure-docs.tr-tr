@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 06/24/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 8e3f0435d9856d2b602a4f2b6f604aee05e040ba
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: b55ea814214397e12e50e7bc5047988394623940
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505214"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703598"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob depolamaya giriş
 
@@ -70,7 +70,7 @@ Mevcut verilerin blob depolamaya geçirilmesi için bir dizi çözüm vardır:
 - **Azure Data Factory** , hesap anahtarı, paylaşılan erişim imzası, hizmet sorumlusu veya Azure kaynakları için Yönetilen kimlikler kullanarak blob depolamadan veri kopyalamayı destekler. Daha fazla bilgi için bkz. [Azure Data Factory kullanarak Azure Blob depolama alanına veya buradan veri kopyalama](../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 - **Blobsigortası** , Azure Blob depolama için bir sanal dosya sistemi sürücüsüdür. Blobsigortası kullanarak, Linux dosya sistemi aracılığıyla Depolama hesabınızdaki mevcut blok blob verilerinize erişebilirsiniz. Daha fazla bilgi için bkz. [BLOB depolamayı bir dosya sistemi olarak blobsigortası ile bağlama](storage-how-to-mount-container-linux.md).
 - **Azure Data Box** hizmet, büyük veri kümeleri veya ağ kısıtlamaları, verilerin gerçekçi olmayan şekilde karşıya yüklenmesini sağlamak için şirket Içi verileri blob depolamaya aktarmak için kullanılabilir. Veri boyutunuza bağlı olarak, Microsoft 'tan [Azure Data Box disk](../../databox/data-box-disk-overview.md), [Azure Data Box](../../databox/data-box-overview.md)veya [Azure Data Box Heavy](../../databox/data-box-heavy-overview.md) cihazları isteyebilirsiniz. Daha sonra verilerinizi bu cihazlara kopyalayabilir ve bunları blob depolamaya yüklemek üzere Microsoft 'a gönderebilirsiniz.
-- **Azure içeri/dışarı aktarma hizmeti** , sağladığınız sabit sürücüler kullanılarak depolama hesabınıza büyük miktarlarda verileri içeri veya dışarı aktarmak için bir yol sağlar. Daha fazla bilgi için bkz. [BLOB depolama alanına veri aktarmak için Microsoft Azure içeri/dışarı aktarma hizmetini kullanma](../common/storage-import-export-service.md).
+- **Azure içeri/dışarı aktarma hizmeti** , sağladığınız sabit sürücüler kullanılarak depolama hesabınıza büyük miktarlarda verileri içeri veya dışarı aktarmak için bir yol sağlar. Daha fazla bilgi için bkz. [BLOB depolama alanına veri aktarmak için Microsoft Azure içeri/dışarı aktarma hizmetini kullanma](../../import-export/storage-import-export-service.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 72c7f1dd6652a51a960c80829a697b97fd74f8de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c806e5d1d9c9242b6ba57496327c672d7fed0654
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500036"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704498"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>Öğretici: Azure CLI ile Linux sanal makineleri için Azure sanal ağlarını yönetme
 
@@ -300,7 +300,4 @@ Bu öğreticide sanal makinelerle ilgili Azure ağlarını oluşturup ve güvenl
 > * Ağ trafiğinin güvenliğini sağlama
 > * Arka uç VM’si oluşturma
 
-Azure Backup kullanarak sanal makinelerdeki verilerin güvenliğini sağlamayı öğrenmek için sonraki öğreticiye geçin. 
-
-> [!div class="nextstepaction"]
-> [Azure 'da Linux sanal makinelerini yedekleme](./tutorial-backup-vms.md)
+VM disklerinizi koruma hakkında bilgi edinmek için bkz. [diskler Için Yedekleme ve olağanüstü durum kurtarma](backup-and-disaster-recovery-for-azure-iaas-disks.md).

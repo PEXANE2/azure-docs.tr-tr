@@ -3,25 +3,25 @@ title: Visual Studio kaynak grubu projelerini oluşturma & dağıtma
 description: Azure Kaynak grubu projesi oluşturmak ve kaynakları Azure 'a dağıtmak için Visual Studio 'Yu kullanın.
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 479dbed1f288148c24fc8464f7895cd3e2b182f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1a06a3e89c5fd2ea8906ff9a438c170f135d6ec
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372655"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704423"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Visual Studio aracılığıyla Azure kaynak grupları oluşturma ve dağıtma
 
 Visual Studio ile altyapınızı ve kodlarınızı Azure’a dağıtan bir proje oluşturabilirsiniz. Örneğin, Web sitesi için Web konağını, Web sitesini ve kodu dağıtabilirsiniz. Visual Studio genelde karşılaşılan senaryoların dağıtılması için birçok farklı başlangıç şablonu sağlar. Bu makalede bir Web uygulaması dağıtırsınız.
 
-Bu makalede [, Visual Studio 2019 veya sonraki bir sürümünü kullanarak Azure geliştirme ve ASP.NET iş yükleri yüklü](/visualstudio/install/install-visual-studio?view=vs-2019)olarak açıklanmaktadır. Visual Studio 2017 kullanıyorsanız, deneyiminiz büyük ölçüde aynıdır.
+Bu makalede [, Visual Studio 2019 veya sonraki bir sürümünü kullanarak Azure geliştirme ve ASP.NET iş yükleri yüklü](/visualstudio/install/install-visual-studio)olarak açıklanmaktadır. Visual Studio 2017 kullanıyorsanız, deneyiminiz büyük ölçüde aynıdır.
 
 ## <a name="create-azure-resource-group-project"></a>Azure Kaynak Grubu projesi oluşturma
 
 Bu bölümde, bir **Web uygulaması** şablonuyla bir Azure Kaynak grubu projesi oluşturacaksınız.
 
 1. Visual Studio 'da **Dosya** > **Yeni** > **Proje**' yi seçin.
-1. **Azure Kaynak grubu** proje şablonunu ve Ileri ' **yi**seçin.
+1. **Azure Kaynak grubu** proje şablonunu ve Ileri ' **yi** seçin.
 
     ![Ekran görüntüsünde, Azure Kaynak grubu ile yeni bir proje oluştur penceresi ve sonraki düğme vurgulandığını gösterir.](./media/create-visual-studio-deployment-project/create-project.png)
 
@@ -53,7 +53,7 @@ Bu bölümde, bir **Web uygulaması** şablonuyla bir Azure Kaynak grubu projesi
 
 Dağıtım projesini, dağıtmak istediğiniz kaynakları açıklayan Kaynak Yöneticisi şablonunu değiştirerek özelleştirebilirsiniz. Resource Manager şablonu bileşenleri hakkında daha fazla bilgi edinmek için [Azure Resource Manager şablonları yazma](template-syntax.md).
 
-1. Şablonunuzda çalışmak için ** üzerindeWebSite.js**açın.
+1. Şablonunuzda çalışmak için **üzerindeWebSite.js** açın.
 
 1. Visual Studio düzenleyicisi, Resource Manager şablonu düzenleme konusunda size yardımcı olan araçlar sağlar. **JSON Ana Hattı** penceresi, şablonunuzda tanımlanan bileşenleri görmenizi kolaylaştırır.
 
@@ -103,7 +103,7 @@ Dağıtım projesini, dağıtmak istediğiniz kaynakları açıklayan Kaynak Yö
    }
    ```
 
-1. WebSite.parameters.jsdosya ** üzerinde** açın. Dağıtım sırasında dağıtılan kaynağı özelleştiren değerleri geçirmek için parametreler dosyasını kullanın. Barındırma planına bir ad verin ve dosyayı kaydedin.
+1. WebSite.parameters.jsdosya **üzerinde** açın. Dağıtım sırasında dağıtılan kaynağı özelleştiren değerleri geçirmek için parametreler dosyasını kullanın. Barındırma planına bir ad verin ve dosyayı kaydedin.
 
    ```json
    {
@@ -139,7 +139,7 @@ Az Module betiği için bir PowerShell konsolu açın ve şunu çalıştırın:
 
 Azurerd modül betiği için Visual Studio 'Yu kullanın:
 
-1. Dağıtım projesi düğümünün kısayol menüsünde Yeni **Dağıt**' ı seçin  >  **New**.
+1. Dağıtım projesi düğümünün kısayol menüsünde Yeni **Dağıt**' ı seçin  >  .
 
     ![Yeni dağıtım menü öğesi](./media/create-visual-studio-deployment-project/deploy.png)
 
@@ -167,11 +167,11 @@ Sonuçları kontrol edelim.
 
 Bu noktada, uygulamanız için altyapı dağıttınız, ancak proje ile dağıtılan gerçek bir kod yoktur.
 
-1. Visual Studio çözümünüze bir proje ekleyin. Çözüme sağ tıklayın ve **Add**  >  **Yeni proje**Ekle ' yi seçin.
+1. Visual Studio çözümünüze bir proje ekleyin. Çözüme sağ tıklayın ve   >  **Yeni proje** Ekle ' yi seçin.
 
     ![Proje Ekle](./media/create-visual-studio-deployment-project/add-project.png)
 
-1. ASP.NET Core bir **Web uygulaması**ekleyin.
+1. ASP.NET Core bir **Web uygulaması** ekleyin.
 
     ![Web uygulaması Ekle](./media/create-visual-studio-deployment-project/add-app.png)
 
@@ -209,7 +209,7 @@ Bu noktada, uygulamanız için altyapı dağıttınız, ancak proje ile dağıt�
 
    Şablonunuzu kaydedin.
 
-1. Şablonunuzda bazı yeni parametreler vardır. Önceki adımda eklenirler. **_ArtifactsLocation** veya **_artifactsLocationSasToken** için değer sağlamanız gerekmez, çünkü bu değerler otomatik olarak oluşturulur. Ancak, klasör ve dosya adını dağıtım paketini içeren yola ayarlamanız gerekir. Bu parametrelerin adları **PackageFolder** ve **packagefilename**ile biter. Adın ilk bölümü, eklediğiniz Web Dağıtımı kaynağının adıdır. Bu makalede, bunlar **Exampleapppackagefolder** ve **Exampleapppackagefilename**olarak adlandırılmaktadır.
+1. Şablonunuzda bazı yeni parametreler vardır. Önceki adımda eklenirler. **_ArtifactsLocation** veya **_artifactsLocationSasToken** için değer sağlamanız gerekmez, çünkü bu değerler otomatik olarak oluşturulur. Ancak, klasör ve dosya adını dağıtım paketini içeren yola ayarlamanız gerekir. Bu parametrelerin adları **PackageFolder** ve **packagefilename** ile biter. Adın ilk bölümü, eklediğiniz Web Dağıtımı kaynağının adıdır. Bu makalede, bunlar **Exampleapppackagefolder** ve **Exampleapppackagefilename** olarak adlandırılmaktadır.
 
    **Website.parameters.js** açın ve bu parametreleri başvuru özelliklerinde gördüğünüz değerlere ayarlayın. **Exampleapppackagefolder** değerini klasörün adına ayarlayın. **Exampleapppackagefilename** değerini ZIP dosyasının adına ayarlayın.
 
@@ -237,7 +237,7 @@ Projeye kod eklediyseniz, dağıtımınız bu kez biraz farklı olur. Dağıtım
 
 ### <a name="az-module-script"></a>Az Module betiği
 
-Az Module betiğini kullanıyorsanız, şablonunuzda yapmanız gereken küçük bir değişiklik vardır. Bu betik, yapıt konumuna eğik çizgi ekler, ancak şablonunuz bu eğik çizgiyi beklemez. Üzerinde WebSite.jsaçın ve MSDeploy uzantısının özelliklerini bulun. **PackageURI**adlı bir özelliğe sahiptir. Yapıt konumuyla paket klasörü arasındaki eğik çizgiyi kaldırın.
+Az Module betiğini kullanıyorsanız, şablonunuzda yapmanız gereken küçük bir değişiklik vardır. Bu betik, yapıt konumuna eğik çizgi ekler, ancak şablonunuz bu eğik çizgiyi beklemez. Üzerinde WebSite.jsaçın ve MSDeploy uzantısının özelliklerini bulun. **PackageURI** adlı bir özelliğe sahiptir. Yapıt konumuyla paket klasörü arasındaki eğik çizgiyi kaldırın.
 
 Şu şekilde görünmelidir:
 
@@ -263,7 +263,7 @@ Azurerd modül betiği için Visual Studio 'Yu kullanın:
 
     ![Projeyi yeniden Dağıt](./media/create-visual-studio-deployment-project/redeploy.png)
 
-1. **Yapıt depolama hesabı**için bu kaynak grubuyla dağıttığınız depolama hesabını seçin.
+1. **Yapıt depolama hesabı** için bu kaynak grubuyla dağıttığınız depolama hesabını seçin.
 
    ![Web dağıtımını yeniden Dağıt](./media/create-visual-studio-deployment-project/redeploy-web-app.png)
 

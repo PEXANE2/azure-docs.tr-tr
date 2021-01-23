@@ -3,12 +3,12 @@ title: Yaygın soruların yanıtları
 description: 'Kurtarma Hizmetleri kasaları, neleri yedekleyebilir, nasıl çalışır, şifreleme ve limitlerin dahil olduğu Azure Backup özellikleriyle ilgili yaygın soruların yanıtları. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: bd84ff553b486d200ec4501b89b42335335b223f
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: dbe6ce95427b559c037e38525f9f48195a2a76a4
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572536"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703428"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - Sık sorulan sorular
 
@@ -58,9 +58,9 @@ Yedeklemeyi zaten yapılandırdıysanız ve GRS 'den LRS 'ye geçiş yapmanız g
 - ILR, Azure VM yedeklemesi tarafından yedeklenen Azure VM'lerinde desteklenir. Daha fazla bilgi için şu [makaleye](backup-azure-restore-files-from-vm.md) bakın
 - ILR, Azure Backup Sunucusu (MABS) veya System Center DPM tarafından yedeklenen şirket içi VM 'lerin çevrimiçi kurtarma noktaları için desteklenmez.
 
-### <a name="how-can-i-move-data-from-the-recovery-services-vault-to-on-premises"></a>Verileri kurtarma hizmetleri kasasından şirket içine nasıl taşıyabilirim?
+### <a name="how-can-i-move-data-from-the-recovery-services-vault-to-on-premises"></a>Verileri Kurtarma Hizmetleri kasasından şirket içine nasıl taşıyabilirim?
 
-Data Box kullanarak doğrudan kurtarma hizmetleri kasasından şirket içine veri aktarmak desteklenmez. Veriler bir depolama hesabına geri yüklenmelidir ve sonra [Data Box](../databox/data-box-overview.md) veya [Içeri/dışarı aktarma](../storage/common/storage-import-export-service.md)aracılığıyla şirket içine taşınabilir.
+Data Box kullanarak doğrudan kurtarma hizmetleri kasasından şirket içine veri aktarmak desteklenmez. Veriler bir depolama hesabına geri yüklenmelidir ve sonra [Data Box](../databox/data-box-overview.md) veya [Içeri/dışarı aktarma](../import-export/storage-import-export-service.md)aracılığıyla şirket içine taşınabilir.
 
 ### <a name="what-is-the-difference-between-a-geo-redundant-storage-grs-vault-with-and-without-the-cross-region-restore-crr-capability-enabled"></a>Bölgeler arası geri yükleme (CRR) özelliği etkin olan ve olmayan coğrafi olarak yedekli depolama (GRS) Kasası arasındaki fark nedir?
 

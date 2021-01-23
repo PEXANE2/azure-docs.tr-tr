@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 453eaa816ad48626b476fa392999f44e3c1a10cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 536cd01fbcf2c5d18a8c12030b709427d9bb91b1
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714560"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703615"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli"></a>Azure CLı ile bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturma
 
@@ -38,7 +38,7 @@ Azure AD kimlik bilgilerinizle Azure CLı 'da oturum açın. Daha fazla bilgi i�
 
 ## <a name="assign-permissions-with-azure-rbac"></a>Azure RBAC ile izin atama
 
-Azure PowerShell bir Kullanıcı temsili SAS oluşturmak için Azure CLı 'de oturum açmak üzere kullanılan Azure AD hesabına **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** eylemini içeren bir rol atanmalıdır. Bu izin, Azure AD hesabının *Kullanıcı temsili anahtarını*istemesine olanak sağlar. Kullanıcı temsili anahtarı, Kullanıcı temsili SAS imzalamak için kullanılır. Depolama hesabı, kaynak grubu veya abonelik düzeyinde **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** eylemini sağlayan rolün atanması gerekir.
+Azure PowerShell bir Kullanıcı temsili SAS oluşturmak için Azure CLı 'de oturum açmak üzere kullanılan Azure AD hesabına **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** eylemini içeren bir rol atanmalıdır. Bu izin, Azure AD hesabının *Kullanıcı temsili anahtarını* istemesine olanak sağlar. Kullanıcı temsili anahtarı, Kullanıcı temsili SAS imzalamak için kullanılır. Depolama hesabı, kaynak grubu veya abonelik düzeyinde **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** eylemini sağlayan rolün atanması gerekir.
 
 Azure AD güvenlik sorumlusuna Azure rolleri atamak için yeterli izniniz yoksa, hesap sahibine veya yöneticiden gerekli izinleri atamasını isteyebilirsiniz.
 
@@ -61,7 +61,7 @@ Azure CLı ile bir Kullanıcı temsili SAS oluşturduğunuzda, SAS imzalamak iç
 
 Kullanıcı temsili anahtarının geçerli olduğu maksimum Aralık, başlangıç tarihinden itibaren 7 gün olduğundan, başlangıç zamanının 7 gün içinde olan SAS için bir süre sonu zamanı belirtmeniz gerekir. Kullanıcı temsili anahtarının süresi dolduktan sonra SAS geçersiz, bu nedenle süre sonu 7 günden daha fazla olan bir SAS yalnızca 7 gün için geçerli olacaktır.
 
-Bir Kullanıcı temsili SAS oluşturulurken, `--auth-mode login` ve `--as-user parameters` gereklidir. *login* `--auth-mode` Azure depolama 'Ya YAPıLAN isteklerin Azure AD kimlik bilgilerinizle yetkilendirilmesini sağlamak için parametresi için oturum açma belirtin. `--as-user`Döndürülen sa 'ların bir Kullanıcı TEMSILI SAS olması gerektiğini belirten parametreyi belirtin.
+Bir Kullanıcı temsili SAS oluşturulurken, `--auth-mode login` ve `--as-user parameters` gereklidir.  `--auth-mode` Azure depolama 'Ya YAPıLAN isteklerin Azure AD kimlik bilgilerinizle yetkilendirilmesini sağlamak için parametresi için oturum açma belirtin. `--as-user`Döndürülen sa 'ların bir Kullanıcı TEMSILI SAS olması gerektiğini belirten parametreyi belirtin.
 
 ### <a name="create-a-user-delegation-sas-for-a-container"></a>Bir kapsayıcı için Kullanıcı temsili SAS oluşturma
 
@@ -103,7 +103,7 @@ az storage blob generate-sas \
     --permissions acdrw \
     --expiry <date-time> \
     --auth-mode login \
-    --as-user
+    --as-user \
     --full-uri
 ```
 

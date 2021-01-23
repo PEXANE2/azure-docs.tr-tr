@@ -1,34 +1,1874 @@
 - name: Sanal Makineler Belgeleri
   href: index.yml
-- name: Azure’da Linux Sanal Makineleri
-  href: ./linux/index.yml
-- name: Azure’da Windows Sanal Makineleri
-  href: ./windows/index.yml
-- name: VM Uzantıları Belgeleri
-  href: ./extensions/overview.md
+- name: Genel Bakış
+  items:
+    - name: Linux Sanal Makineleri hakkında
+      href: ./linux/overview.md
+    - name: Windows Sanal Makineleri hakkında
+      href: ./windows/overview.md
+- name: Hızlı Başlangıçlar
+  items:
+    - name: Linux VM oluşturma
+      items:
+        - name: CLI
+          href: ./linux/quick-create-cli.md
+        - name: Portal
+          href: ./linux/quick-create-portal.md
+        - name: PowerShell
+          href: ./linux/quick-create-powershell.md
+        - name: ARM şablonu
+          displayName: 'Resource Manager, template, json'
+          href: ./linux/quick-create-template.md
+    - name: Windows VM oluşturma
+      items:
+        - name: CLI
+          href: ./windows/quick-create-cli.md
+        - name: Portal
+          href: ./windows/quick-create-portal.md
+        - name: PowerShell
+          href: ./windows/quick-create-powershell.md
+        - name: ARM şablonu
+          displayName: 'Resource Manager, template, json'
+          href: ./windows/quick-create-template.md
+  expanded: true
+- name: Öğreticiler
+  items:
+    - name: Linux
+      items:
+        - name: 1 - VM oluşturma / yönetme
+          href: ./linux/tutorial-manage-vm.md
+        - name: 2 - Disk oluşturma / yönetme
+          href: ./linux/tutorial-manage-disks.md
+        - name: 3 - Yapılandırmayı otomatikleştirme
+          href: ./linux/tutorial-automate-vm-deployment.md
+        - name: 4 - VM görüntüleri oluşturma
+          href: ./linux/tutorial-custom-images.md
+        - name: 5 - Yüksek oranda kullanılabilir VM’ler
+          href: ./linux/tutorial-availability-sets.md
+        - name: 6 - Ölçek kümesi oluşturma
+          href: ./linux/tutorial-create-vmss.md
+        - name: 7 - VM'ler için yük dengeleme
+          href: ./linux/tutorial-load-balancer.md
+        - name: 8 - Ağı yönetme
+          href: ./linux/tutorial-virtual-network.md
+    - name: Windows
+      items:
+        - name: 1 - VM oluşturma / yönetme
+          href: ./windows/tutorial-manage-vm.md
+        - name: 2 - Disk oluşturma / yönetme
+          href: ./windows/tutorial-manage-data-disk.md
+        - name: 3 - Yapılandırmayı otomatikleştirme
+          href: ./windows/tutorial-automate-vm-deployment.md
+        - name: 4 - VM görüntüleri oluşturma
+          href: ./windows/tutorial-custom-images.md
+        - name: 5 - Yüksek oranda kullanılabilir VM’ler
+          href: ./windows/tutorial-availability-sets.md
+        - name: 6 - Ölçek kümesi oluşturma
+          href: ./windows/tutorial-create-vmss.md
+        - name: 7 - VM'ler için yük dengeleme
+          href: ./windows/tutorial-load-balancer.md
+        - name: 8 - Ağı yönetme
+          href: ./windows/tutorial-virtual-network.md
 - name: İş yükleri
   items:
     - name: Red Hat
       href: ./workloads/redhat/overview.md
-    - name: Yüksek performanslı bilgi işlem
-      href: ./workloads/hpc/overview.md
-    - name: SAP
-      href: ./workloads/sap/get-started.md
+    - name: Cloud Foundry
+      href: ../cloudfoundry/index.yml
+    - name: Cassandra
+      href: /azure/architecture/reference-architectures/n-tier/n-tier-cassandra
+    - name: OpenShift
+      items:
+        - name: OpenShift’e genel bakış
+          href: ./linux/openshift-get-started.md
+        - name: OpenShift Kapsayıcı Platformu 4.x
+          href: ./linux/openshift-container-platform-4x.md
+        - name: OpenShift Kapsayıcı Platformu 3.11 önkoşulları
+          href: ./linux/openshift-container-platform-3x-prerequisites.md
+        - name: OpenShift Kapsayıcı Platformu 3.11
+          href: ./linux/openshift-container-platform-3x.md
+        - name: OpenShift Kapsayıcı Platformu 3.11 Kendi Kendini Yöneten Market
+          href: ./linux/openshift-container-platform-3x-marketplace-self-managed.md
+        - name: Azure Stack
+          href: ./linux/openshift-azure-stack.md
+        - name: OpenShift Kapsayıcı Platformu 3.11 dağıtım sonrası görevleri
+          href: ./linux/openshift-container-platform-3x-post-deployment.md
+        - name: OpenShift Kapsayıcı Platformu 3.11 dağıtımlarında sorun giderme
+          href: ./linux/openshift-container-platform-3x-troubleshooting.md
+        - name: OKD dağıtma
+          href: ./linux/openshift-okd.md
+    - name: Azure’da SAP
+      items:
+        - name: başlarken
+          href: ./workloads/sap/get-started.md
+        - name: Sertifikalar
+          href: ./workloads/sap/sap-certifications.md
+        - name: Azure’da SAP HANA (Büyük Örnekler)
+          items:
+            - name: Genel Bakış
+              items:
+                - name: Azure üzerinde SAP HANA (Büyük Örnekler) nedir?
+                  href: ./workloads/sap/hana-overview-architecture.md
+                - name: Terimleri öğrenme
+                  href: ./workloads/sap/hana-know-terms.md
+                - name: Sertifika
+                  href: ./workloads/sap/hana-certification.md
+                - name: HLI için kullanılabilir SKU'lar
+                  href: ./workloads/sap/hana-available-skus.md
+                - name: Boyutlandırma
+                  href: ./workloads/sap/hana-sizing.md
+                - name: Ekleme gereksinimleri
+                  href: ./workloads/sap/hana-onboarding-requirements.md
+                - name: SAP HANA veri katmanlama ve uzantı düğümleri
+                  href: ./workloads/sap/hana-data-tiering-extension-nodes.md
+                - name: İşlem modeli ve sorumluluklar
+                  href: ./workloads/sap/hana-operations-model.md
+                - name: Uyumlu İşletim Sistemleri
+                  href: ./workloads/sap/os-compatibility-matrix-hana-large-instance.md
+        - name: Mimari
+          items:
+            - name: Genel mimari
+              href: ./workloads/sap/hana-architecture.md
+            - name: Ağ mimarisi
+              href: ./workloads/sap/hana-network-architecture.md
+            - name: Depolama mimarisi
+              href: ./workloads/sap/hana-storage-architecture.md
+            - name: Desteklenen HLI senaryoları
+              href: ./workloads/sap/hana-supported-scenario.md
+        - name: Altyapı ve bağlantı
+          items:
+            - name: HLI dağıtımı
+              href: ./workloads/sap/hana-overview-infrastructure-connectivity.md
+            - name: Azure VM'lerini HANA Büyük Örnekleri'ne bağlama
+              href: ./workloads/sap/hana-connect-azure-vm-large-instances.md
+            - name: Sanal ağı HANA Büyük Örneği ExpressRoute'a bağlama
+              href: ./workloads/sap/hana-connect-vnet-express-route.md
+            - name: Ek ağ gereksinimleri
+              href: ./workloads/sap/hana-additional-network-requirements.md
+        - name: SAP HANA yükleme
+          items:
+            - name: Yapılandırmayı doğrulama
+              href: ./workloads/sap/hana-installation.md
+            - name: Örnek HANA Yüklemesi
+              href: ./workloads/sap/hana-example-installation.md
+        - name: Yüksek kullanılabilirlik ve olağanüstü durum kurtarma
+          items:
+            - name: Seçenekler ve önemli noktalar
+              href: ./workloads/sap/hana-overview-high-availability-disaster-recovery.md
+            - name: Yedekleme ve geri yükleme
+              href: ./workloads/sap/hana-backup-restore.md
+            - name: İlkeler ve hazırlık
+              href: ./workloads/sap/hana-concept-preparation.md
+            - name: Olağanüstü durum kurtarma yük devretme yordamı
+              href: ./workloads/sap/hana-failover-procedure.md
+        - name: Sorun giderme ve izleme
+          items:
+            - name: HLI'yi izleme
+              href: ./workloads/sap/troubleshooting-monitoring.md
+            - name: HANA tarafından izleme ve sorun giderme
+              href: ./workloads/sap/hana-monitor-troubleshoot.md
+        - name: Nasıl yapılır
+          items:
+            - name: Azure portalı üzerinden Azure HANA Büyük Örnekler denetimi
+              href: ./workloads/sap/hana-li-portal.md
+            - name: STONITH ile HA Kurulumu
+              href: ./workloads/sap/ha-setup-with-stonith.md
+            - name: Type II SKU'ları için İşletim Sistemi Yedeklemesi
+              href: ./workloads/sap/os-backup-type-ii-skus.md
+            - name: HANA büyük örnekleri için kdump 'ı etkinleştirin
+              href: ./workloads/sap/hana-large-instance-enable-kdump.md
+            - name: HANA Büyük Örnekleri için İşletim Sistemi Yükseltmesi
+              href: ./workloads/sap/os-upgrade-hana-large-instance.md
+            - name: SUSE Linux için SMT sunucusunu ayarlama
+              href: ./workloads/sap/hana-setup-smt.md
+            - name: HLI’dan Azure VM’ye geçiş
+              href: ./workloads/sap/hana-large-instance-virtual-machine-migration.md
+            - name: SAP HANA Büyük Örnekleri rezervasyonu satın alma
+              href: ../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md?context=/azure/virtual-machines/context/context
+    - name: Azure Sanal Makinelerde SAP HANA
+      items:
+        - name: Azure Sanal Makineler’de SAP HANA’yı yükleme
+          href: ./workloads/sap/hana-get-started.md
+        - name: S/4 HANA veya BW/4 HANA SAP CAL dağıtım kılavuzu
+          href: ./workloads/sap/cal-s4h.md
+        - name: Azure'da SAP HANA altyapı yapılandırmaları ve işlemleri
+          href: ./workloads/sap/hana-vm-operations.md
+        - name: SAP HANA Azure sanal makine depolama alanı yapılandırmaları
+          href: ./workloads/sap/hana-vm-operations-storage.md
+        - name: SAP HANA için Azure NetApp Files üzerinde NFS v4.1 birimleri
+          href: ./workloads/sap/hana-vm-operations-netapp.md
+        - name: Azure Sanal Makineler'de SAP HANA Kullanılabilirliği
+          items:
+            - name: Azure Kullanılabilirlik üzerinde SAP HANA'ya genel bakış
+              href: ./workloads/sap/sap-hana-availability-overview.md
+            - name: Azure bölgesi içindeki Azure Kullanılabilirlik üzerinde SAP HANA
+              href: ./workloads/sap/sap-hana-availability-one-region.md
+            - name: Azure bölgeleri arasındaki Azure Kullanılabilirlik üzerinde SAP HANA
+              href: ./workloads/sap/sap-hana-availability-across-regions.md
+            - name: SLES üzerinde SAP HANA Sistem Çoğaltması ayarlama
+              href: ./workloads/sap/sap-hana-high-availability.md
+            - name: RHEL üzerinde SAP HANA Sistem Çoğaltması ayarlama
+              href: ./workloads/sap/sap-hana-high-availability-rhel.md
+            - name: RHEL üzerinde ANF ile SAP HANA Sistem Çoğaltması ayarlama
+              href: ./workloads/sap/sap-hana-high-availability-netapp-files-red-hat.md
+            - name: SLES üzerinde SAP HANA ölçek genişletme ve Pacemaker sorunlarını giderme
+              href: ./workloads/sap/hana-vm-troubleshoot-scale-out-ha-on-sles.md
+            - name: RHEL üzerinde Pacemaker ile SAP HANA ölçeği genişletme HSR’si
+              href: ./workloads/sap/sap-hana-high-availability-scale-out-hsr-rhel.md
+            - name: SLES üzerinde Azure NetApp Files ile bekleme düğümüyle SAP HANA ölçeğini genişletme
+              href: ./workloads/sap/sap-hana-scale-out-standby-netapp-files-suse.md
+            - name: RHEL üzerinde Azure NetApp Files ile bekleme düğümüyle SAP HANA ölçeğini genişletme
+              href: ./workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel.md
+        - name: SAP HANA yedeklemesine genel bakış
+          href: ./workloads/sap/sap-hana-backup-guide.md
+        - name: SAP HANA dosya düzeyi yedeklemesi
+          href: ./workloads/sap/sap-hana-backup-file-level.md
+    - name: Azure Sanal Makineler üzerinde SAP NetWeaver ve Business One
+      items:
+        - name: SAP iş yükü planlama ve dağıtımı denetim listesi
+          href: ./workloads/sap/sap-deployment-checklist.md
+        - name: Azure üzerinde SAP NetWeaver'ı planlama ve gerçekleştirme
+          href: ./workloads/sap/planning-guide.md
+          items:
+            - name: SAP iş yükü için Azure Depolama türleri
+              href: ./workloads/sap/planning-guide-storage.md
+            - name: Azure sanal makinesi üzerinde SAP iş yüküne yönelik desteklenen senaryolar
+              href: ./workloads/sap/sap-planning-supported-configurations.md
+            - name: Azure dağıtımları için hangi SAP yazılımı desteklenir?
+              href: ./workloads/sap/sap-supported-product-on-azure.md
+        - name: SAP NetWeaver Dağıtım kılavuzu
+          href: ./workloads/sap/deployment-guide.md
+        - name: SAP iş yükü için DBMS dağıtım kılavuzları
+          items:
+            - name: SAP iş yükü için genel Azure Sanal Makineler DBMS dağıtımı
+              href: ./workloads/sap/dbms_guide_general.md
+            - name: SAP iş yükü için SQL Server Azure Sanal Makineler DBMS dağıtımı
+              href: ./workloads/sap/dbms_guide_sqlserver.md
+            - name: SAP iş yükü için Oracle Azure Sanal Makineler DBMS dağıtımı
+              href: ./workloads/sap/dbms_guide_oracle.md
+            - name: SAP iş yükü için IBM Db2 Azure Sanal Makineler DBMS dağıtımı
+              href: ./workloads/sap/dbms_guide_ibm.md
+            - name: SUSE Linux Enterprise Server üzerinde Azure VM’lerindeki IBM Db2 LUW’a yönelik yüksek kullanılabilirlik
+              href: ./workloads/sap/dbms-guide-ha-ibm.md
+            - name: Red Hat Enterprise Linux Server üzerinde Azure VM’lerindeki IBM Db2 LUW’a yönelik yüksek kullanılabilirlik
+              href: ./workloads/sap/high-availability-guide-rhel-ibm-db2-luw.md
+            - name: SAP iş yükü için SAP ASE Azure Sanal Makineler DBMS dağıtımı
+              href: ./workloads/sap/dbms_guide_sapase.md
+            - name: 'Azure''da SAP MaxDB, liveCache ve İçerik Sunucusu dağıtımı'
+              href: ./workloads/sap/dbms_guide_maxdb.md
+            - name: Azure Sanal Makineler'de SAP HANA Kullanılabilirliği
+              items:
+                - name: Azure Kullanılabilirlik üzerinde SAP HANA'ya genel bakış
+                  href: ./workloads/sap/sap-hana-availability-overview.md
+                - name: Azure bölgesi içindeki Azure Kullanılabilirlik üzerinde SAP HANA
+                  href: ./workloads/sap/sap-hana-availability-one-region.md
+                - name: Azure bölgeleri arasındaki Azure Kullanılabilirlik üzerinde SAP HANA
+                  href: ./workloads/sap/sap-hana-availability-across-regions.md
+        - name: Azure Sanal Makineler'de SAP Business One
+          href: ./workloads/sap/business-one-azure.md
+        - name: Windows/SQL Server SAP üzerinde SAP IDES CAL dağıtım kılavuzu
+          href: ./workloads/sap/cal-ides-erp6-erp7-sp3-sql.md
+        - name: Azure için SAP LaMa bağlayıcısı
+          href: ./workloads/sap/lama-installation.md
+        - name: Windows ve Linux üzerinde Yüksek Kullanılabilirlik (HA)
+          items:
+            - name: Genel Bakış
+              href: ./workloads/sap/sap-high-availability-guide-start.md
+            - name: Yüksek Kullanılabilirlik Mimarisi
+              items:
+                - name: HA Mimarisi ve Senaryoları
+                  href: ./workloads/sap/sap-high-availability-architecture-scenarios.md
+                - name: Yüksek Kullanılabilirlik Mimarisi ve Senaryoları
+                  href: ./workloads/sap/sap-higher-availability-architecture-scenarios.md
+                - name: Azure Kullanılabilirlik Alanlarıyla SAP iş yükü yapılandırmaları
+                  href: ./workloads/sap/sap-ha-availability-zones.md
+                - name: (A)SCS Örneği için Paylaşılan Diskle Windows üzerinde HA
+                  href: ./workloads/sap/sap-high-availability-guide-wsfc-shared-disk.md
+                - name: (A)SCS Örneği için OFS Dosya Paylaşımıyla Windows üzerinde HA
+                  href: ./workloads/sap/sap-high-availability-guide-wsfc-file-share.md
+                - name: Azure NetApp Files (SMB) ile Windows üzerinde SAP NetWeaver için HA
+                  href: ./workloads/sap/high-availability-guide-windows-netapp-files-smb.md
+                - name: (A)SCS Örneği için SUSE Linux üzerinde HA
+                  href: ./workloads/sap/high-availability-guide-suse.md
+                - name: Azure NetApp Files ile (A)SCS Örneği için SUSE Linux üzerinde HA
+                  href: ./workloads/sap/high-availability-guide-suse-netapp-files.md
+                - name: (A)SCS Örneği için Red Hat Enterprise Linux üzerinde HA
+                  href: ./workloads/sap/high-availability-guide-rhel.md
+                - name: Azure NetApp Files ile (A)SCS Örneği için Red Hat Enterprise Linux üzerinde HA
+                  href: ./workloads/sap/high-availability-guide-rhel-netapp-files.md
+            - name: Azure Altyapı Hazırlığı
+              items:
+                - name: (A)SCS Örneği için Paylaşılan Diskle Windows
+                  href: ./workloads/sap/sap-high-availability-infrastructure-wsfc-shared-disk.md
+                - name: (A)SCS Örneği için SOFS Dosya Paylaşımıyla Windows
+                  href: ./workloads/sap/sap-high-availability-infrastructure-wsfc-file-share.md
+                - name: SLES üzerinde Azure Sanal Makineler'de NFS için yüksek kullanılabilirlik
+                  href: ./workloads/sap/high-availability-guide-suse-nfs.md
+                - name: SAP NetWeaver için Red Hat Enterprise Linux üzerinde Azure Sanal Makineler'de GlusterFS
+                  href: ./workloads/sap/high-availability-guide-rhel-glusterfs.md
+                - name: SLES üzerinde Pacemaker
+                  href: ./workloads/sap/high-availability-guide-suse-pacemaker.md
+                - name: RHEL üzerinde Pacemaker
+                  href: ./workloads/sap/high-availability-guide-rhel-pacemaker.md
+                - name: SAP yüksek oranda kullanılabilirlik senaryolarında Azure Standart Load Balancer kullanan VM’ler için ortak uç nokta bağlantısı
+                  href: ./workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections.md
+            - name: SAP Yüklemesi
+              items:
+                - name: (A)SCS Örneği için Paylaşılan Diskle Windows
+                  href: ./workloads/sap/sap-high-availability-installation-wsfc-shared-disk.md
+                - name: (A)SCS Örneği için SOFS Dosya Paylaşımıyla Windows
+                  href: ./workloads/sap/sap-high-availability-installation-wsfc-file-share.md
+                - name: Azure NetApp Files (SMB) ile Windows üzerinde SAP NetWeaver için HA
+                  href: ./workloads/sap/high-availability-guide-windows-netapp-files-smb.md
+                - name: (A)SCS Örneği için NFS ile SUSE Linux
+                  href: ./workloads/sap/high-availability-guide-suse.md
+                - name: Azure NetApp Files ile (A)SCS Örneği için NFS ile SUSE Linux
+                  href: ./workloads/sap/high-availability-guide-suse-netapp-files.md
+                - name: Red Hat Enterprise Linux üzerinde SAP NetWeaver için yüksek kullanılabilirlik
+                  href: ./workloads/sap/high-availability-guide-rhel.md
+                - name: Azure NetApp Files ile (A)SCS Örneği için NFS ile Red Hat Enterprise Linux
+                  href: ./workloads/sap/high-availability-guide-rhel-netapp-files.md
+            - name: SAP Çoklu SID
+              items:
+                - name: (A)SCS Örneği için Azure Paylaşılan Diskiyle Windows
+                  href: ./workloads/sap/sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md
+                - name: (A)SCS Örneği için Paylaşılan Diskle Windows
+                  href: ./workloads/sap/sap-ascs-ha-multi-sid-wsfc-shared-disk.md
+                - name: (A)SCS Örneği için SOFS Dosya Paylaşımıyla Windows
+                  href: ./workloads/sap/sap-ascs-ha-multi-sid-wsfc-file-share.md
+                - name: A(SCS) Örneği için Pacemaker Çoklu SID ile SLES
+                  href: ./workloads/sap/high-availability-guide-suse-multi-sid.md
+                - name: A(SCS) Örneği için Pacemaker Çoklu SID ile RHEL
+                  href: ./workloads/sap/high-availability-guide-rhel-multi-sid.md
+        - name: SAP Olağanüstü Durum Kurtarma için Azure Site Recovery
+          href: ../site-recovery/site-recovery-workload.md#protect-sap
+        - name: SAP uygulamalarıyla en iyi ağ gecikme süresi için Azure Yakınlık Yerleştirme Grupları
+          href: ./workloads/sap/sap-proximity-placement-scenarios.md
+        - name: Azure’da SAP BusinessObjects İş Zekası platformu
+          items:
+            - name: Azure’da SAP BusinessObjects İş Zekası platformu planlama ve uygulama kılavuzu
+              href: ./workloads/sap/businessobjects-deployment-guide.md
+            - name: Azure’da Linux için SAP BusinessObjects İş Zekası platformu dağıtım kılavuzu
+              href: ./workloads/sap/businessobjects-deployment-guide-linux.md
+        - name: Azure AD'yi SAP uygulamalarıyla tümleştirme
+          items:
+            - name: SAP SuccessFactors’dan Active Directory’ye kullanıcıları sağlama
+              href: ../active-directory/saas-apps/sap-successfactors-inbound-provisioning-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: SAP SuccessFactors’dan Azure AD'ye kullanıcıları sağlama
+              href: ../active-directory/saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: Azure AD'den SAP SuccessFactors'a kullanıcıları geri yazma
+              href: ../active-directory/saas-apps/sap-successfactors-writeback-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: SAP Cloud Platform Kimlik Doğrulaması Hizmeti'ne kullanıcıları sağlama
+              href: ../active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: SAP Cloud Platform Kimlik Doğrulaması Hizmeti ile SSO'yu yapılandırma
+              href: ../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: SAP SuccessFactors ile SSO'yu yapılandırma
+              href: ../active-directory/saas-apps/successfactors-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: SAP Analytics Cloud ile SSO'yu yapılandırma
+              href: ../active-directory/saas-apps/sapboc-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: SAP Fiori ile SSO'yu yapılandırma
+              href: ../active-directory/saas-apps/sap-fiori-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: SAP Qualtrics ile SSO'yu yapılandırma
+              href: ../active-directory/saas-apps/qualtrics-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: SAP Ariba ile SSO'yu yapılandırma
+              href: ../active-directory/saas-apps/ariba-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: SAP Concur Travel and Expense ile SSO'yu yapılandırma
+              href: ../active-directory/saas-apps/concur-travel-and-expense-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: SAP Cloud Platform ile SSO'yu yapılandırma
+              href: ../active-directory/saas-apps/sap-hana-cloud-platform-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: SAP NetWeaver ile SSO'yu yapılandırma
+              href: ../active-directory/saas-apps/sap-netweaver-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: SAP Business ByDesign ile SSO'yu yapılandırma
+              href: ../active-directory/saas-apps/sapbusinessbydesign-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: SAP HANA ile SSO'yu yapılandırma
+              href: ../active-directory/saas-apps/saphana-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: SAP Cloud for Customer ile SSO'yu yapılandırma
+              href: ../active-directory/saas-apps/sap-customer-cloud-tutorial.md?context=/azure/virtual-machines/context/context
+            - name: SAP Fiori Launchpad ile SSO'yu yapılandırma
+              href: 'https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad'
+        - name: Azure Hizmetlerini SAP ile Tümleştirme
+          items:
+            - name: Power BI Desktop'ta SAP HANA Kullanma
+              href: /power-bi/desktop-sap-hana
+            - name: DirectQuery ve SAP HANA
+              href: /power-bi/desktop-directquery-sap-hana
+            - name: Power BI Desktop'ta SAP BW Bağlayıcısı'nı Kullanma
+              href: /power-bi/desktop-sap-bw-connector
+            - name: 'Azure Data Factory, SAP HANA ve Business Warehouse veri tümleştirmesi sunar'
+              href: 'https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration'
+        - name: SAP Çözümleri için Azure İzleyici
+          items:
+            - name: SAP Çözümleri için Azure İzleyici’ye Genel Bakış
+              href: ./workloads/sap/azure-monitor-overview.md
+            - name: SAP Çözümleri için Azure İzleyici Sağlayıcıları
+              href: ./workloads/sap/azure-monitor-providers.md
+            - name: SAP Çözümleri için Azure İzleyici’yi yapılandırma - Portal
+              href: ./workloads/sap/azure-monitor-sap-quickstart.md
+            - name: SAP Çözümleri için Azure İzleyici’yi yapılandırma - Azure PowerShell
+              href: ./workloads/sap/azure-monitor-sap-quickstart-powershell.md
+            - name: SAP Çözümleri için Azure İzleyici Hakkında SSS
+              href: ./workloads/sap/azure-monitor-faq.md
+        - name: Başvuru
+          items:
+            - name: Azure CLI
+              href: /cli/azure/ext/sap-hana/hanainstance
+            - name: Azure PowerShell
+              href: /powershell/module/az.hanaonazure/#sap-hana-on-azure
     - name: Oracle
-      href: ./workloads/oracle/oracle-overview.md
-    - name: Ana bilgisayar yeniden barındırma
-      href: ./workloads/mainframe-rehosting/overview.md
-- name: Klasik dağıtımlar
+      href: ./workloads/oracle/oracle-database-quick-create.md
+    - name: Elasticsearch
+      href: ./linux/tutorial-elasticsearch.md
+    - name: FreeBSD Paket Filtresi
+      href: ./linux/freebsd-pf-nat.md
+    - name: Veritabanları
+      items:
+        - name: SUSE üzerinde MySQL
+          href: ./linux/mysql-on-opensuse.md
+        - name: MongoDB
+          items:
+            - name: Linux
+              href: ./linux/install-mongodb.md
+            - name: Windows
+              href: ./windows/install-mongodb.md
+        - name: PostgreSQL
+          href: ./linux/postgresql-install.md
+        - name: Linux üzerinde MS SQL
+          href: /sql/linux/sql-server-linux-azure-virtual-machine
+    - name: Yüksek Performanslı Bilgi İşlem (HPC)
+      href: /azure/architecture/topics/high-performance-computing/
+    - name: IBM Db2 pureScale
+      items:
+        - name: Mimari
+          href: ./linux/ibm-db2-purescale-azure.md
+        - name: Dağıtım
+          href: ./linux/deploy-ibm-db2-purescale-azure.md
+    - name: Kapsayıcılar
+      items:
+        - name: Docker konağı oluşturma
+          href: 'https://github.com/Azure/azure-docker-extension/blob/master/README.md'
+        - name: Docker Makinesi kullanma
+          href: ./linux/docker-machine.md
+        - name: Docker Compose kullanma
+          href: ./linux/docker-compose-quickstart.md
+    - name: Visual Studio
+      href: ./windows/using-visual-studio-vm.md
+- name: Örnekler
   items:
-    - name: Klasik dağıtım kullanan Linux sanal makineleri
-      href: /previous-versions/azure/virtual-machines/linux/classic/
-    - name: Klasik dağıtım kullanan Windows sanal makineleri
-      href: /previous-versions/azure/virtual-machines/windows/classic/
+    - name: Boyutlar
+      items:
+        - name: Genel Bakış
+          href: sizes.md
+        - name: VM boyutunu değiştirme
+          items:
+            - name: CLI
+              href: ./linux/change-vm-size.md
+            - name: Portal veya PowerShell
+              href: ./windows/resize-vm.md
+        - name: 2. Nesil VM’ler
+          href: generation-2.md
+        - name: Genel amaçlı
+          items:
+            - name: Genel Bakış
+              href: sizes-general.md
+            - name: Av2 Serisi
+              href: av2-series.md
+            - name: B-series burstable
+              href: sizes-b-series-burstable.md
+            - name: DCv2 serisi
+              href: dcv2-series.md
+            - name: Dv2 ve DSv2 serisi
+              href: dv2-dsv2-series.md
+            - name: Dv3 ve Dsv3 serisi
+              href: dv3-dsv3-series.md
+            - name: Dav4 ve Dasv4 serisi
+              href: dav4-dasv4-series.md
+            - name: Ddv4 ve Ddsv4 serisi
+              href: ddv4-ddsv4-series.md
+            - name: Dv4 ve Dsv4 serisi
+              href: dv4-dsv4-series.md
+        - name: İşlem için iyileştirilmiş
+          items:
+            - name: Genel Bakış
+              href: sizes-compute.md
+            - name: Fsv2 serisi
+              href: fsv2-series.md
+        - name: Bellek için iyileştirilmiş
+          displayName: Esv3 Ev3 Easv4 Eav4 M-series GS G-series DSv2 Dv2
+          items:
+            - name: Genel Bakış
+              href: sizes-memory.md
+            - name: Dv2 ve DSv2 serisi 11-15
+              href: dv2-dsv2-series-memory.md
+            - name: Ev3 ve Esv3 serisi
+              href: ev3-esv3-series.md
+            - name: Eav4 ve Easv4 serisi
+              href: eav4-easv4-series.md
+            - name: Edv4 ve Edsv4 serisi
+              href: edv4-edsv4-series.md
+            - name: Ev4 ve Esv4 serisi
+              href: ev4-esv4-series.md
+            - name: M serisi
+              href: m-series.md
+            - name: Mv2 serisi
+              href: mv2-series.md
+            - name: Kısıtlanmış vCPU'lar
+              href: constrained-vcpu.md
+        - name: Depolama için iyileştirilmiş
+          items:
+            - name: Genel Bakış
+              href: sizes-storage.md
+            - name: Lsv2 serisi
+              href: lsv2-series.md
+            - name: Performansı iyileştirme
+              items:
+                - name: Linux
+                  href: ./linux/storage-performance.md
+                - name: Windows
+                  href: ./windows/storage-performance.md
+        - name: GPU - hızlandırılmış işlem
+          items:
+            - name: Genel Bakış
+              href: sizes-gpu.md?context=/azure/virtual-machines/context/context
+            - name: NC serisi
+              href: nc-series.md
+            - name: NCv2 serisi
+              href: ncv2-series.md
+            - name: NCv3 serisi
+              href: ncv3-series.md
+            - name: NCasT4_v3 serisi
+              href: nct4-v3-series.md
+            - name: ND serisi
+              href: nd-series.md
+            - name: NDv2 serisi
+              href: ndv2-series.md
+            - name: NV serisi
+              href: nv-series.md
+            - name: NVv3 serisi
+              href: nvv3-series.md
+            - name: NVv4 serisi
+              href: nvv4-series.md
+            - name: NVIDIA GPU sürücülerini ayarlama
+              items:
+                - name: Linux
+                  href: ./linux/n-series-driver-setup.md
+                - name: Windows
+                  href: ./windows/n-series-driver-setup.md
+            - name: AMD GPU sürücülerini kurma
+              href: ./windows/n-series-amd-driver-setup.md
+        - name: Yüksek performanslı işlem
+          displayName: H-series
+          items:
+            - name: Genel Bakış
+              href: sizes-hpc.md
+            - name: H Serisi
+              href: h-series.md
+            - name: HB serisi
+              href: hb-series.md
+            - name: HBv2 serisi
+              href: hbv2-series.md
+            - name: HC serisi
+              href: hc-series.md
+        - name: vCPU kotaları
+          items:
+            - name: CLI
+              href: ./linux/quotas.md
+            - name: PowerShell
+              href: ./windows/quotas.md
+        - name: Geçici diski olmayan Azure VM’leri
+          href: azure-vms-no-temp-disk.md
+        - name: Azure VM boyutlarını adlandırma kuralları
+          href: vm-naming-conventions.md
+        - name: Önceki nesiller
+          displayName: D-series Ds-series A-series Basic
+          href: sizes-previous-gen.md
+        - name: Yalıtılmış boyutlar
+          href: isolation.md
+        - name: Azure işlem birimleri (ACU)
+          href: acu.md
+        - name: Kıyaslama puanları
+          items:
+            - name: Linux
+              href: ./linux/compute-benchmark-scores.md
+            - name: Windows
+              href: ./windows/compute-benchmark-scores.md
+    - name: Ayrılmış konaklar
+      items:
+        - name: Genel Bakış
+          href: ./linux/dedicated-hosts.md
+        - name: CLI
+          href: ./linux/dedicated-hosts-cli.md
+        - name: Portal
+          href: dedicated-hosts-portal.md
+        - name: PowerShell
+          href: ./windows/dedicated-hosts-powershell.md
+    - name: Satın alma seçenekleri
+      items:
+        - name: Spot VM'ler
+          displayName: 'pre-empt, preempt, spot'
+          items:
+            - name: Genel Bakış
+              href: spot-vms.md
+            - name: CLI
+              href: ./linux/spot-cli.md
+            - name: Portal
+              href: spot-portal.md
+            - name: PowerShell
+              href: ./windows/spot-powershell.md
+            - name: ARM şablonu
+              displayName: template ARM
+              href: ./linux/spot-template.md
+            - name: Hata kodları
+              href: error-codes-spot.md
+        - name: Azure Hibrit Avantajı
+          items:
+            - name: Linux
+              href: ./linux/azure-hybrid-benefit-linux.md
+            - name: Windows
+              items:
+                - name: Azure Hibrit Avantajı lisansını kullanma
+                  href: ./windows/hybrid-use-benefit-licensing.md
+                - name: Windows 10 için Çok Kiracılı Barındırma Kuralları’nı kullanma
+                  href: ./windows/windows-desktop-multitenant-hosting-deployment.md
+        - name: Ayrılmış örnekler
+          items:
+            - name: VM'ler için ön ödeme yapma
+              href: ./linux/prepay-reserved-vm-instances.md
+            - name: Ayrılmış Konaklar için önceden ödeme
+              href: prepay-dedicated-hosts-reserved-instances.md
+            - name: Azure ayırmaları nedir?
+              href: ../cost-management-billing/reservations/save-compute-costs-reservations.md?context=/azure/virtual-machines/context/context
+            - name: Sanal makine örneği boyut esnekliği
+              href: reserved-vm-instance-size-flexibility.md
+    - name: Linux VM 'Leri oluşturma
+      items:
+        - name: Doğrulanan dağıtımlar
+          href: ./linux/endorsed-distros.md
+        - name: CLI kullanma
+          href: ./linux/create-cli-complete.md
+        - name: ARM şablonu kullanma
+          displayName: Azure Resource Manager
+          href: ./linux/create-ssh-secured-vm-from-template.md
+        - name: REST API’yi kullanma
+          href: ./linux/create-vm-rest-api.md
+        - name: CLı kullanarak VM kopyalama
+          href: ./linux/copy-vm.md
+        - name: Jenkins ile derleme
+          href: /azure/developer/jenkins/pipeline-with-github-and-docker
+        - name: Jenkins 'i Azure DevOps ile tümleştirme
+          href: /azure/developer/jenkins/deploy-to-linux-vm-using-azure-devops-services
+        - name: Sıralı dağıtım stratejisini yapılandırma
+          href: ./linux/tutorial-devops-azure-pipelines-classic.md
+        - name: Canary dağıtım stratejisini yapılandırma
+          href: ./linux/tutorial-azure-devops-canary-strategy.md
+        - name: Blue-Green dağıtım stratejisini yapılandırma
+          href: ./linux/tutorial-azure-devops-blue-green-strategy.md
+        - name: Azure Pipelines (YAML) ile CI/CD
+          href: ./linux/tutorial-build-deploy-azure-pipelines.md
+        - name: LAMBA yığını oluşturma
+          href: ./linux/tutorial-lamp-stack.md
+        - name: SSL ile web sunucusunun güvenliğini sağlama
+          items:
+            - name: Linux
+              href: ./linux/tutorial-secure-web-server.md
+            - name: Windows
+              href: ./windows/tutorial-secure-web-server.md
+    - name: Linux VM’lere bağlanma
+      items:
+        - name: Linux VM 'Leri için SSH
+          items:
+            - name: Linux veya macOS üzerinde
+              href: ./linux/mac-create-ssh-keys.md
+            - name: Windows üzerinde
+              href: ./linux/ssh-from-windows.md
+            - name: Portalda
+              href: ssh-keys-portal.md
+            - name: Ayrıntılı adımlar
+              href: ./linux/create-ssh-keys-detailed.md
+        - name: Linux için Uzak Masaüstü
+          href: ./linux/use-remote-desktop.md
+    - name: Windows VM 'Leri oluşturma
+      items:
+        - name: C# kullanma
+          href: ../azure-resource-manager/templates/deploy-rest.md?context=/azure/virtual-machines/context/context
+        - name: Özelleştirilmiş disk kullanma
+          items:
+            - name: Portal
+              href: ./windows/create-vm-specialized-portal.md
+            - name: PowerShell
+              href: ./windows/create-vm-specialized.md
+        - name: Chef ile VM oluşturma
+          href: /azure/developer/chef/windows-vm-configure
+        - name: Java kullanma
+          href: ./windows/java.md
+        - name: Python kullanma
+          href: ./windows/python.md
+        - name: ARM şablonu kullanma
+          displayName: Azure Resource Manager template
+          href: ./windows/ps-template.md
+    - name: Windows VM 'lerine bağlanma
+      href: ./windows/connect-logon.md
+      items:
+        - name: WinRM
+          href: ./windows/winrm.md
+    - name: Uzantıları
+      items:
+        - name: Genel Bakış
+          href: ./extensions/overview.md
+        - name: Linux
+          items:
+            - name: Linux özellikleri
+              href: ./extensions/features-linux.md
+            - name: Linux VM Aracısı
+              href: ./extensions/agent-linux.md
+        - name: Windows
+          items:
+            - name: Windows özellikleri
+              href: ./extensions/features-windows.md
+            - name: Windows VM Aracısı
+              href: ./extensions/agent-windows.md
+        - name: Azure Disk Şifrelemesi
+          items:
+            - name: Linux
+              href: ./extensions/azure-disk-enc-linux.md
+            - name: Windows
+              href: ./extensions/azure-disk-enc-windows.md
+        - name: Azure Key Vault
+          items:
+            - name: Linux
+              href: ./extensions/key-vault-linux.md
+            - name: Windows
+              href: ./extensions/key-vault-windows.md
+        - name: SQL Server için Azure Backup
+          items:
+            - name: SQL Server için Azure Backup
+              href: ./extensions/backup-azure-sql-server-running-azure-vm.md
+        - name: Özel Betik
+          items:
+            - name: Linux - sürüm 2
+              href: ./extensions/custom-script-linux.md
+            - name: Windows
+              href: ./extensions/custom-script-windows.md
+        - name: Windows için IaaS kötü amaçlı yazılımdan koruma
+          href: ./extensions/iaas-antimalware-windows.md
+        - name: Sanal makine anlık görüntüsü
+          items:
+            - name: Linux
+              href: ./extensions/vmsnapshot-linux.md
+            - name: Windows
+              href: ./extensions/vmsnapshot-windows.md
+        - name: Ağ İzleyicisi Uzantısı
+          items:
+            - name: Linux
+              href: ./extensions/network-watcher-linux.md
+            - name: Windows
+              href: ./extensions/network-watcher-windows.md
+            - name: En son sürüme güncelleştirme
+              href: ./extensions/network-watcher-update.md
+        - name: InfiniBand Drivers
+          items:
+            - name: Linux
+              href: ./extensions/hpc-compute-infiniband-linux.md
+            - name: Windows
+              href: ./extensions/hpc-compute-infiniband-windows.md
+        - name: NVIDIA GPU Sürücüleri
+          items:
+            - name: Linux
+              href: ./extensions/hpccompute-gpu-linux.md
+            - name: Windows
+              href: ./extensions/hpccompute-gpu-windows.md
+        - name: AMD GPU Sürücüleri
+          items:
+            - name: Windows
+              href: ./extensions/hpccompute-amd-gpu-windows.md
+        - name: Azure İzleyici
+          items:
+            - name: Azure İzleyici aracısı
+              href: ../azure-monitor/platform/azure-monitor-agent-install.md?context=/azure/virtual-machines/context/context
+            - name: Tanılama uzantısı
+              href: ../azure-monitor/platform/diagnostics-extension-overview.md?context=/azure/virtual-machines/context/context
+            - name: Log Analytics
+              items:
+                - name: Linux
+                  href: ./extensions/oms-linux.md
+                - name: Windows
+                  href: ./extensions/oms-windows.md
+            - name: VM'ler için Azure İzleyici
+              items:
+                - name: Linux Bağımlılık aracısı
+                  href: ./extensions/agent-dependency-linux.md
+                - name: Windows Bağımlılık aracısı
+                  href: ./extensions/agent-dependency-windows.md
+        - name: PowerShell DSC
+          href: ./extensions/dsc-overview.md
+          items:
+            - name: DSC ve Linux
+              href: ./extensions/dsc-linux.md
+            - name: DSC ve Windows
+              href: ./extensions/dsc-windows.md
+            - name: Kimlik bilgilerini işleme
+              href: ./extensions/dsc-credentials.md
+            - name: Şablon kullanma
+              href: ./extensions/dsc-template.md
+        - name: Sanal makine erişimi
+          href: ./extensions/vmaccess.md
+        - name: Üçüncü taraf uzantıları
+          items:
+            - name: Chef
+              href: ./extensions/chef.md
+            - name: Stackify Retrace
+              href: ./extensions/stackify-retrace-linux.md
+            - name: Symantec
+              href: ./extensions/symantec.md
+        - name: Uzantı yüklemesini kısıtlama
+          items:
+            - name: Linux
+              href: ./extensions/extensions-rmpolicy-howto-cli.md
+            - name: Windows
+              href: ./extensions/extensions-rmpolicy-howto-ps.md
+        - name: Linux aracısını güncelleştirme
+          href: ./extensions/update-linux-agent.md
+        - name: Uzantıları dışarı aktarma
+          href: ./extensions/export-templates.md
+        - name: Sorun giderme
+          href: ./extensions/troubleshoot.md
+        - name: Python 3 özellikli Linux sistemleri ile ilgili sorunlar
+          href: ./extensions/issues-using-vm-extensions-python-3.md
+    - name: Klasikten Azure Resource Manager’a geçiş
+      items:
+        - name: Kullanımdan kaldırma süreci 1 Mart 2023’te başlıyor
+          href: classic-vm-deprecation.md
+        - name: Geçişe Genel Bakış
+          href: migration-classic-resource-manager-overview.md
+        - name: Geçişe derinlemesine bakış
+          href: migration-classic-resource-manager-deep-dive.md
+        - name: Geçiş planlaması
+          href: migration-classic-resource-manager-plan.md
+        - name: CLI kullanarak geçirme
+          href: migration-classic-resource-manager-cli.md
+        - name: PowerShell kullanarak geçirme
+          href: migration-classic-resource-manager-ps.md
+        - name: Sık karşılaşılan geçiş hataları
+          href: migration-classic-resource-manager-errors.md
+        - name: Geçiş için topluluk araçları
+          href: migration-classic-resource-manager-community-tools.md
+        - name: SSS
+          href: migration-classic-resource-manager-faq.md
+    - name: Yönetim Temelleri
+      items:
+        - name: Kaynakları yönetme
+          items:
+            - name: Linux
+              href: ./linux/tutorial-govern-resources.md
+            - name: Windows
+              href: ./windows/tutorial-govern-resources.md
+        - name: Zaman eşitleme
+          items:
+            - name: Linux
+              href: ./linux/time-sync.md
+            - name: Windows
+              href: ./windows/time-sync.md
+        - name: Bir VM üzerinde betikleri çalıştırma
+          items:
+            - name: Özel Betik Uzantısı
+              items:
+                - name: Linux
+                  href: ./extensions/custom-script-linux.md
+                - name: Windows
+                  href: ./extensions/custom-script-windows.md
+            - name: Çalıştır Komutu
+              items:
+                - name: Linux
+                  href: ./linux/run-command.md
+                - name: Windows
+                  href: ./windows/run-command.md
+            - name: Karma Runbook Çalışanı
+              href: ../automation/automation-hybrid-runbook-worker.md
+            - name: Seri konsol
+              items:
+                - name: Linux
+                  href: ./troubleshooting/serial-console-linux.md
+                - name: Windows
+                  href: ./troubleshooting/serial-console-windows.md
+        - name: İç içe yerleştirilmiş sanallaştırmayı etkinleştirme
+          href: ./windows/nested-virtualization.md
+        - name: Dosya depolama
+          items:
+            - name: SMB kullanarak Linux bağlama
+              href: ./linux/mount-azure-file-storage-on-linux-using-smb.md
+            - name: Dosyaları bir Linux VM’ye kopyalama
+              href: ./linux/copy-files-to-linux-vm-using-scp.md
+        - name: Güncelleştirmeler ve düzeltme ekleri
+          items:
+            - name: Red Hat Güncelleştirme Altyapısı
+              href: ./workloads/redhat/redhat-rhui.md
+- name: Görüntüler
+  items:
+    - name: Market görüntüleri
+      items:
+        - name: Azure Marketi görüntülerini bulma
+          items:
+            - name: CLI
+              href: ./linux/cli-ps-findimage.md
+            - name: PowerShell
+              href: ./windows/cli-ps-findimage.md
+            - name: Windows istemci görüntüleri
+              href: ./windows/client-images.md
+    - name: Linux özel görüntüleri
+      items:
+        - name: Genel Bakış
+          href: ./linux/imaging.md
+        - name: Linux sağlama
+          href: ./linux/provisioning.md
+        - name: Linux dağıtımına özgü gereksinimler
+          items:
+            - name: Genel adımlar
+              href: ./linux/create-upload-generic.md
+            - name: CentOS
+              href: ./linux/create-upload-centos.md
+            - name: Debian
+              href: ./linux/debian-create-upload-vhd.md
+            - name: Flatcar Container Linux
+              href: ./linux/flatcar-create-upload-vhd.md
+            - name: FreeBSD
+              href: ./linux/freebsd-intro-on-azure.md
+            - name: Oracle Linux
+              href: ./linux/oracle-create-upload-vhd.md
+            - name: OpenBSD
+              href: ./linux/create-upload-openbsd.md
+            - name: Red Hat
+              href: ./linux/redhat-create-upload-vhd.md
+            - name: SUSE
+              href: ./linux/suse-create-upload-vhd.md
+            - name: Ubuntu
+              href: ./linux/create-upload-ubuntu.md
+        - name: Cloud-init kullanma
+          items:
+            - name: Cloud-init genel bakış
+              href: ./linux/using-cloud-init.md
+            - name: Derin dalış
+              href: ./linux/cloud-init-deep-dive.md
+            - name: Sorun giderme
+              href: ./linux/cloud-init-troubleshooting.md
+            - name: VM konak adını yapılandırma
+              href: ./linux/cloudinit-update-vm-hostname.md
+            - name: Bir VM içindeki güncelleştirme paketleri
+              href: ./linux/cloudinit-update-vm.md
+            - name: VM’ye kullanıcı ekleme
+              href: ./linux/cloudinit-add-user.md
+            - name: Takas dosyası yapılandırma
+              href: ./linux/cloudinit-configure-swapfile.md
+            - name: Mevcut bash betiğini çalıştırma
+              href: ./linux/cloudinit-bash-script.md
+            - name: Mevcut VM’yi cloud-init için hazırlama
+              href: ./linux/cloudinit-prepare-custom-image.md
+        - name: Sağlama Aracısı olmadan Linux görüntüleri oluşturma
+          href: ./linux/no-agent.md
+        - name: Linux Aracısı sağlamasını devre dışı bırakma
+          href: ./linux/disable-provisioning.md
+        - name: VM’yi yönetilen görüntüye yakalama
+          href: ./linux/capture-image.md
+    - name: Windows özel görüntüleri
+      items:
+        - name: Bir VHD 'yi karşıya yüklemek üzere hazırlama
+          href: ./windows/prepare-for-upload-vhd-image.md
+        - name: Bir VHD yükleyin ve yönetilen bir görüntü oluşturun
+          href: ./windows/upload-generalized-managed.md
+        - name: Yönetilen bir görüntü yakala
+          href: ./windows/capture-image-resource.md
+        - name: Yönetilen bir görüntüden VM oluşturma
+          href: ./windows/create-vm-generalized-managed.md
+    - name: Paylaşılan Görüntü Galerileri
+      items:
+        - name: Genel Bakış
+          href: ./linux/shared-image-galleries.md
+        - name: CLI
+          items:
+            - name: Galeri oluşturma
+              href: shared-images-cli.md
+            - name: Görüntü oluşturma
+              items:
+                - name: Sanal makineden
+                  href: image-version-vm-cli.md
+                - name: Yönetilen Disk’ten veya anlık görüntüden
+                  href: image-version-snapshot-cli.md
+                - name: Yönetilen bir görüntüyü klonlama
+                  href: image-version-managed-image-cli.md
+                - name: Başka bir galeriden kopyalama
+                  href: image-version-another-gallery-cli.md
+            - name: VM oluşturma
+              items:
+                - name: Genelleştirilmiş
+                  href: vm-generalized-image-version-cli.md
+                - name: Özelleştirilmiş
+                  href: vm-specialized-image-version-cli.md
+            - name: Görüntü kaynaklarını güncelleştirme
+              href: update-image-resources-cli.md
+            - name: Paylaşım için uygulama kaydı
+              items:
+                - name: Linux
+                  href: ./linux/share-images-across-tenants.md
+                - name: Windows
+                  href: ./windows/share-images-across-tenants.md
+        - name: PowerShell
+          items:
+            - name: Galeri oluşturma
+              href: shared-images-powershell.md
+            - name: Görüntü sürümü oluşturma
+              items:
+                - name: Sanal makineden
+                  href: image-version-vm-powershell.md
+                - name: Yönetilen Disk’ten veya anlık görüntüden
+                  href: image-version-snapshot-powershell.md
+                - name: Yönetilen bir görüntüyü klonlama
+                  href: image-version-managed-image-powershell.md
+                - name: Başka bir galeriden kopyalama
+                  href: image-version-another-gallery-powershell.md
+            - name: VM oluşturma
+              items:
+                - name: Genelleştirilmiş
+                  href: vm-generalized-image-version-powershell.md
+                - name: Özelleştirilmiş
+                  href: vm-specialized-image-version-powershell.md
+                - name: Görüntü kaynaklarını güncelleştirme
+                  href: update-image-resources-powershell.md
+                - name: Paylaşım için uygulama kaydı
+                  href: windows/share-images-across-tenants.md
+        - name: Portal
+          items:
+            - name: 'Galeri, görüntü ve sanal makine oluşturma'
+              items:
+                - name: Linux
+                  href: ./linux/shared-images-portal.md
+                - name: Windows
+                  href: ./windows/shared-images-portal.md
+        - name: Resource Manager Şablonları
+          items:
+            - name: Paylaşılan Görüntü Galerisi Oluşturma
+              href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
+            - name: Paylaşılan Görüntü Galerisinde Görüntü Tanımı Oluşturma
+              href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
+            - name: Paylaşılan Görüntü Galerisinde Görüntü Sürümü Oluşturma
+              href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
+            - name: Görüntü Sürümünden Sanal Makine Oluşturma
+              href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
+        - name: Paylaşılan görüntü sorunlarını giderme
+          href: troubleshooting-shared-images.md
+        - name: Müşteri tarafından yönetilen anahtarları kullanma
+          displayName: 'SSE, CMK, encrypt'
+          href: image-version-encryption.md
+        - name: Görüntü sürümünden yönetilen disk
+          href: managed-disk-from-image-version.md
+    - name: Görüntü oluşturucu (önizleme)
+      items:
+        - name: Genel Bakış
+          href: image-builder-overview.md
+        - name: CLI
+          items:
+            - name: Linux
+              href: ./linux/image-builder.md
+            - name: Windows
+              href: ./windows/image-builder.md
+        - name: PowerShell
+          href: ./windows/image-builder-powershell.md
+        - name: Sanal ağ kullanma
+          items:
+            - name: CLI
+              href: ./linux/image-builder-vnet.md
+            - name: PowerShell
+              href: ./windows/image-builder-vnet.md
+        - name: Ağ seçenekleri
+          href: ./linux/image-builder-networking.md
+        - name: İzinleri yapılandırma
+          items:
+            - name: CLI
+              href: ./linux/image-builder-permissions-cli.md
+            - name: PowerShell
+              href: ./linux/image-builder-permissions-powershell.md
+        - name: DevOps görevi
+          href: ./linux/image-builder-devops-task.md
+        - name: Görüntü Oluşturucu şablon başvurusu
+          displayName: json
+          href: ./linux/image-builder-json.md
+        - name: Görüntü galerileri için derleme
+          items:
+            - name: Linux
+              href: ./linux/image-builder-gallery.md
+            - name: Windows
+              href: ./windows/image-builder-gallery.md
+        - name: Mevcut görüntüyü güncelleştirme
+          items:
+            - name: Linux
+              href: ./linux/image-builder-gallery-update-image-version.md
+            - name: Windows
+              href: ./windows/image-builder-gallery-update-image-version.md
+        - name: Betikleri depolama
+          href: ./linux/image-builder-user-assigned-identity.md
+        - name: Sorun giderme
+          href: ./linux/image-builder-troubleshoot.md
+    - name: Satın alma planı bilgileri
+      href: marketplace-images.md
+    - name: Packer ile görüntü derleme
+      items:
+        - name: Linux
+          href: ./linux/build-image-with-packer.md
+        - name: Windows
+          href: ./windows/build-image-with-packer.md
+- name: Kullanılabilirlik ve ölçek
+  items:
+    - name: Ölçek kümeleri
+      href: ../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context
+    - name: Kullanılabilirlik
+      href: availability.md
+    - name: Birlikte bulunma
+      href: ./linux/co-location.md
+    - name: Ağ performansı
+      href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?context=/azure/virtual-machines/context/context
+    - name: Durumlar ve yaşam döngüsü
+      href: states-lifecycle.md
+    - name: Otomatik Ölçeklendirme
+      href: ../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context
+    - name: Yüksek kullanılabilirlik
+      href: manage-availability.md
+    - name: Kullanılabilirlik kümeleri
+      items:
+        - name: Linux
+          href: ./linux/tutorial-availability-sets.md
+        - name: Windows
+          items:
+            - name: Kullanılabilirlik kümesi oluşturma
+              href: ./windows/tutorial-availability-sets.md
+            - name: Kullanılabilirlik kümesini değiştirme
+              href: ./windows/change-availability-set.md
+    - name: Yakınlık yerleştirme grubu oluşturma
+      displayName: PPG aligned colocation co-location
+      items:
+        - name: CLI
+          href: ./linux/proximity-placement-groups.md
+        - name: Portal
+          href: ./windows/proximity-placement-groups-portal.md
+        - name: PowerShell
+          href: ./windows/proximity-placement-groups.md
+    - name: Kullanılabilirlik alanında VM oluşturma
+      href: ./linux/create-cli-availability-zone.md
+- name: Diskler
+  items:
+    - name: Yönetilen disklere giriş
+      href: managed-disks-overview.md
+    - name: IaaS VM’leri için disk türü seçme
+      href: disks-types.md
+    - name: Paylaşılan diskler
+      href: disks-shared.md
+    - name: Paylaşılan diskleri etkinleştirme
+      href: disks-shared-enable.md
+    - name: Şifreleme
+      items:
+        - name: Sunucu tarafı şifrelemesi
+          items:
+            - name: Sunucu tarafı şifrelemeye genel bakış
+              href: disk-encryption.md
+            - name: Müşteri tarafından yönetilen anahtarları etkinleştir
+              items:
+                - name: Portal
+                  href: disks-enable-customer-managed-keys-portal.md
+                - name: PowerShell
+                  href: windows/disks-enable-customer-managed-keys-powershell.md
+                - name: CLI
+                  href: linux/disks-enable-customer-managed-keys-cli.md
+            - name: Konakta şifrelemeyi etkinleştir
+              items:
+                - name: Portal
+                  href: disks-enable-host-based-encryption-portal.md
+                - name: PowerShell
+                  href: windows/disks-enable-host-based-encryption-powershell.md
+                - name: CLI
+                  href: linux/disks-enable-host-based-encryption-cli.md
+            - name: Bekleyen verilerde çift şifrelemeyi etkinleştirme
+              items:
+                - name: Portal
+                  href: disks-enable-double-encryption-at-rest-portal.md
+                - name: PowerShell
+                  href: windows/disks-enable-double-encryption-at-rest-powershell.md
+                - name: CLI
+                  href: linux/disks-enable-double-encryption-at-rest-cli.md
+        - name: Azure disk şifrelemesi senaryoları
+          items:
+            - name: Azure disk şifrelemesi genel bakış
+              items:
+                - name: Windows
+                - name: Linux
+            - name: Linux
+              href: ./linux/disk-encryption-linux.md
+            - name: Windows
+              href: ./windows/disk-encryption-windows.md
+            - name: CLI
+              items:
+                - name: Linux
+                  href: ./linux/disk-encryption-cli-quickstart.md
+                - name: Windows
+                  href: ./windows/disk-encryption-cli-quickstart.md
+            - name: PowerShell
+              items:
+                - name: Linux
+                  href: ./linux/disk-encryption-powershell-quickstart.md
+                - name: Windows
+                  href: ./windows/disk-encryption-powershell-quickstart.md
+            - name: Portal
+              items:
+                - name: Linux
+                  href: ./linux/disk-encryption-portal-quickstart.md
+                - name: Windows
+                  href: ./windows/disk-encryption-portal-quickstart.md
+            - name: Azure Disk Şifrelemesi için anahtar kasası
+              items:
+                - name: Linux
+                  href: ./linux/disk-encryption-key-vault.md
+                - name: Windows
+                  href: ./windows/disk-encryption-key-vault.md
+            - name: Örnek betikler
+              items:
+                - name: Linux
+                  href: ./linux/disk-encryption-sample-scripts.md
+                - name: Windows
+                  href: ./windows/disk-encryption-sample-scripts.md
+            - name: Yalıtılmış bir ağda Azure disk şifrelemesi
+              href: ./linux/disk-encryption-isolated-network.md
+            - name: Şifreleme durumunu doğrulama
+              href: ./linux/how-to-verify-encryption-status.md
+            - name: Şifrelemede LVM RAID’yi yapılandırma
+              href: ./linux/how-to-configure-lvm-raid-on-crypt.md
+            - name: Şifrelenmiş LVM birimlerini yeniden boyutlandırma
+              href: ./linux/how-to-resize-encrypted-lvm.md
+            - name: Linux GPT işletim sistemi bölümlerini yeniden boyutlandır
+              href: linux/resize-os-disk-gpt-partition.md
+            - name: sorun giderme
+              items:
+                - name: Linux
+                  href: ./linux/disk-encryption-troubleshooting.md
+                - name: Windows
+                  href: ./windows/disk-encryption-troubleshooting.md
+            - name: SSS
+              items:
+                - name: Linux
+                  href: ./linux/disk-encryption-faq.md
+                - name: Windows
+                  href: ./windows/disk-encryption-faq.md
+            - name: Azure disk şifrelemesi-önceki sürüm
+              items:
+                - name: Genel Bakış
+                  items:
+                    - name: Linux
+                      href: ./linux/disk-encryption-overview-aad.md
+                    - name: Windows
+                      href: ./windows/disk-encryption-overview-aad.md
+                - name: Azure Disk Şifrelemesi için anahtar kasası
+                  items:
+                    - name: Linux
+                      href: ./linux/disk-encryption-key-vault-aad.md
+                    - name: Windows
+                      href: ./windows/disk-encryption-key-vault-aad.md
+                - name: Disk şifreleme senaryoları
+                  items:
+                    - name: Linux
+                      href: ./linux/disk-encryption-linux-aad.md
+                    - name: Windows
+                      href: ./windows/disk-encryption-windows-aad.md
+    - name: Performans ve maliyet iyileştirmesi
+      items:
+        - name: Ultra diskler
+          href: disks-enable-ultra-ssd.md
+        - name: Sanal makine ve disk performansı
+          href: disks-performance.md
+        - name: Disk Depolama rezervasyonları
+          href: ../cost-management-billing/reservations/understand-disk-reservations.md?context=/azure/virtual-machines/context/context
+        - name: Disk Depolama rezervasyonu yapma
+          href: disks-reserved-capacity.md
+        - name: Yüksek performans tasarımı
+          href: premium-storage-performance.md
+        - name: Disk genişletme
+          href: disk-bursting.md
+        - name: Disk performans katmanları
+          href: disks-change-performance.md
+        - name: Disk performansı katmanını değiştirme
+          items:
+            - name: CLı ve PowerShell
+              href: disks-performance-tiers.md
+            - name: Portal
+              href: disks-performance-tiers-portal.md
+        - name: Yazma hızlandırıcıyı etkinleştirme
+          href: how-to-enable-write-accelerator.md
+        - name: Disk kıyaslama
+          href: disks-benchmarks.md
+    - name: Diskler için ölçeklenebilirlik hedefleri
+      href: disks-scalability-targets.md
+    - name: Yedekleme ve veri koruma
+      items:
+        - name: Diskler için yedekleme ve olağanüstü durum kurtarma
+          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+        - name: Artımlı anlık görüntüleri etkinleştir
+          href: disks-incremental-snapshots.md
+        - name: Bir disk için anlık görüntü oluşturma-CLı
+          href: ./linux/snapshot-copy-managed-disk.md
+        - name: Bir disk anlık görüntüsü oluşturma-PowerShell
+          href: ./windows/snapshot-copy-managed-disk.md
+        - name: Yönetilmeyen diskleri yedekleme
+          href: ./linux/incremental-snapshots.md
+    - name: Kısa ömürlü işletim sistemi diskleri
+      href: ephemeral-os-disks.md
+    - name: Geçiş ve dönüştürme
+      items:
+        - name: Standart ve Premium arasında disk dönüştürme
+          items:
+            - name: CLI
+              href: ./linux/convert-disk-storage.md
+            - name: PowerShell
+              href: ./windows/convert-disk-storage.md
+        - name: Azure Site Recovery ile Premium SSD 'Ler 'e geçiş
+          items:
+            - name: Linux
+              href: ./linux/migrate-to-premium-storage-using-azure-site-recovery.md
+            - name: Windows
+              href: ./windows/migrate-to-premium-storage-using-azure-site-recovery.md
+        - name: Yönetilen Disklere geçme
+          href: ./windows/migrate-to-managed-disks.md
+        - name: Yönetilmeyen VM’den Yönetilen Diskler’e
+          items:
+            - name: CLI
+              href: ./linux/convert-unmanaged-to-managed-disks.md
+            - name: PowerShell
+              href: ./windows/convert-unmanaged-to-managed-disks.md
+    - name: Veri diski ekleme
+      items:
+        - name: Linux
+          items:
+            - name: Azure CLI
+              href: ./linux/add-disk.md
+            - name: Azure portal
+              href: ./linux/attach-disk-portal.md
+        - name: Windows
+          items:
+            - name: Azure PowerShell
+              href: ./windows/attach-disk-ps.md
+            - name: Azure portal
+              href: ./windows/attach-managed-disk-portal.md
+            - name: Geçici disk sürücü harfini Değiştir
+              href: ./windows/change-drive-letter.md
+    - name: Disk ayırma
+      items:
+        - name: Linux
+          href: ./linux/detach-disk.md
+        - name: Windows
+          href: ./windows/detach-disk.md
+    - name: İşletim sistemi diskini genişletme
+      items:
+        - name: Linux
+          href: ./linux/expand-disks.md
+        - name: Windows
+          href: ./windows/expand-os-disk.md
+    - name: Depolamayı yönetme
+      items:
+        - name: ARM şablonu ile diskleri dağıtma
+          displayName: Azure Resource Manager
+          href: using-managed-disks-template-deployments.md
+        - name: Bir diski güvenle içeri/dışarı aktarma
+          items:
+            - name: Diskler için özel bağlantıları yapılandırma-CLı
+              href: ./linux/disks-export-import-private-links-cli.md
+            - name: Diskler için özel bağlantıları yapılandırma-Portal
+              href: disks-enable-private-links-for-import-export-portal.md
+            - name: Diske VHD yükleme - PowerShell
+              href: ./windows/disks-upload-vhd-to-managed-disk-powershell.md
+            - name: Diske VHD yükleme - CLI
+              href: ./linux/disks-upload-vhd-to-managed-disk-cli.md
+            - name: VHD indirme
+              items:
+                - name: Linux
+                  href: ./linux/download-vhd.md
+                - name: Windows
+                  href: ./windows/download-vhd.md
+        - name: Diskleri yönetmek için Depolama Gezgini kullanma
+          href: disks-use-storage-explorer-managed-disks.md
+        - name: İşletim sistemi diskini değiştirme-CLı
+          href: ./linux/os-disk-swap.md
+        - name: İşletim sistemi diskini değiştirme-PowerShell
+          href: ./windows/os-disk-swap.md
+        - name: Yönetilen diski Konuk disk ile eşle-Linux
+          href: ./linux/azure-to-guest-disk-mapping.md
+        - name: Yönetilen diski Konuk disk ile eşleme-Windows
+          href: ./windows/azure-to-guest-disk-mapping.md
+        - name: Kullanıma açılmamış diskleri bulma
+          items:
+            - name: CLI
+              href: ./linux/find-unattached-disks.md
+            - name: PowerShell
+              href: ./windows/find-unattached-disks.md
+            - name: Portal
+              href: disks-find-unattached-portal.md
+        - name: Disklerle ilgili SSS
+          href: faq-for-disks.md
+    - name: Kod örnekleri
+      items:
+        - name: CLI
+          items:
+            - name: VHD'den yönetilen disk oluşturma
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-vhd.md'
+            - name: Anlık görüntüden yönetilen disk oluşturma
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-snapshot.md'
+            - name: Yönetilen bir diski aynı veya farklı aboneliğe kopyalama
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md'
+            - name: Bir anlık görüntüyü aynı veya farklı aboneliğe kopyalama
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-snapshot-to-same-or-different-subscription.md'
+            - name: Anlık görüntüyü bir depolama hesabına VHD olarak dışarı aktarma
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-snapshot-to-storage-account.md'
+            - name: Yönetilen bir diski bir depolama hesabına VHD olarak dışarı aktarma
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-vhd.md'
+        - name: PowerShell
+          items:
+            - name: VHD'den yönetilen disk oluşturma
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-vhd.md'
+            - name: Anlık görüntüden yönetilen disk oluşturma
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-snapshot.md'
+            - name: Bir anlık görüntüyü aynı veya farklı aboneliğe kopyalama
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-same-or-different-subscription.md'
+            - name: Anlık görüntüyü bir depolama hesabına VHD olarak dışarı aktarma
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-storage-account.md'
+            - name: Yönetilen bir diski bir depolama hesabına VHD olarak dışarı aktarma
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-vhd.md'
+            - name: VHD’den anlık görüntü oluşturma
+              href: 'https://github.com/microsoft/azure-docs/blob/master/articles/virtual-machines/scripts/virtual-machines-linux-powershell-sample-create-snapshot-from-vhd.md'
+- name: Ağ
+  items:
+    - name: Genel Bakış
+      href: network-overview.md
+    - name: Sanal ağ oluşturma
+      href: ../virtual-network/quick-create-cli.md?context=/azure/virtual-machines/context/context
+    - name: Bağlantı noktalarını VM’ye açma
+      items:
+        - name: CLI
+          href: ./linux/nsg-quickstart.md
+        - name: PowerShell
+          href: ./windows/nsg-quickstart-powershell.md
+        - name: Portal
+          href: ./windows/nsg-quickstart-portal.md
+    - name: Genel IP adresi atama
+      href: ../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?context=/azure/virtual-machines/context/context
+    - name: Birden çok NIC kullanma
+      items:
+        - name: CLı kullanarak Linux
+          href: ./linux/multiple-nics.md
+        - name: PowerShell kullanarak Windows
+          href: ./windows/multiple-nics.md
+    - name: Hızlandırılmış ağ kullanma
+      href: ../virtual-network/create-vm-accelerated-networking-cli.md?context=/azure/virtual-machines/context/context
+    - name: Genel DNS adı atama
+      href: create-fqdn.md
+    - name: Eklenmemiş NIC’leri bulma ve silme
+      href: ./linux/find-unattached-nics.md
+    - name: DNS çözümleme
+      href: ./linux/azure-dns.md
+    - name: Dahili DNS kullanma
+      href: ./linux/static-dns-name-resolution-for-linux-on-azure.md
+- name: Güvenlik
+  items:
+    - name: Azure Güvenlik Merkezi
+      href: ../security-center/security-center-introduction.md
+    - name: Güvenlik temelleri
+      items:
+        - name: Linux
+          href: ./linux/security-baseline.md
+        - name: Windows
+          href: ./windows/security-baseline.md
+    - name: Öneriler
+      href: security-recommendations.md
+    - name: Tam zamanında erişim
+      href: ../security-center/security-center-just-in-time.md
+    - name: İlke
+      items:
+        - name: Genel Bakış
+          href: security-policy.md
+        - name: İlkeye göre denetimler
+          displayName: 'regulatory, compliance, standards, domains'
+          href: security-controls-policy.md
+        - name: İlke başvurusu
+          href: policy-reference.md
+        - name: İlkeleri kullanma
+          items:
+            - name: Linux
+              href: ./linux/policy.md
+            - name: Windows
+              href: ./windows/policy.md
+    - name: Bastion
+      items:
+        - name: Genel Bakış
+          href: ../bastion/bastion-overview.md
+        - name: Güçlendirilmiş erişim konağı oluşturma
+          items:
+            - name: Portal
+              href: ../bastion/bastion-create-host-portal.md
+            - name: PowerShell
+              href: ../bastion/bastion-create-host-powershell.md
+            - name: CLI
+              href: ../bastion/create-host-cli.md
+            - name: Bastion SSH bağlantısı
+              href: ../bastion/bastion-connect-vm-ssh.md
+              items: null
+            - name: Bastion RDP bağlantısı
+              href: ../bastion/bastion-connect-vm-rdp.md
+        - name: Erişim denetimleri kullanma
+          href: ../role-based-access-control/overview.md
+        - name: Anahtar kasası oluşturma
+          items:
+            - name: CLI
+              href: ./linux/key-vault-setup.md
+            - name: PowerShell
+              href: ./windows/key-vault-setup.md
+    - name: Kurgusal yürütmeyi azaltma
+      href: mitigate-se.md
+    - name: Azure Active Directory bir Linux VM 'ye katma
+      displayName: Azure AD
+      items:
+        - name: Red Hat Enterprise Linux
+          href: ../active-directory-domain-services/join-rhel-linux-vm.md
+        - name: CentOS
+          href: ../active-directory-domain-services/join-centos-linux-vm.md
+        - name: Ubuntu
+          href: ../active-directory-domain-services/join-ubuntu-linux-vm.md
+    - name: Yönetilen kimlikleri yapılandırma
+      items:
+        - name: Portal
+          href: ../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md?context=/azure/virtual-machines/context/context
+        - name: CLI
+          href: ../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md?context=/azure/virtual-machines/context/context
+        - name: PowerShell
+          href: ../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md?context=/azure/virtual-machines/context/context
+        - name: Azure Resource Manager Şablonu
+          displayName: ARM
+          href: ../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md?context=/azure/virtual-machines/context/context
+        - name: REST
+          href: ../active-directory/managed-identities-azure-resources/qs-configure-rest-vm.md?context=/azure/virtual-machines/context/context
+        - name: Azure SDK’ları
+          href: ../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md?context=/azure/virtual-machines/context/context
+    - name: Linux Active Directory oturum açma
+      href: ./linux/login-using-aad.md
+- name: Bakım ve güncelleştirmeler
+  items:
+    - name: Genel Bakış
+      href: maintenance-and-updates.md
+    - name: Otomatik VM konuk düzeltme eki uygulama (önizleme)
+      href: ./windows/automatic-vm-guest-patching.md
+    - name: Bakım denetimi
+      items:
+        - name: Bakım bildirimleri
+          items:
+            - name: Genel Bakış
+              href: maintenance-notifications.md
+            - name: CLI
+              href: maintenance-notifications-cli.md
+            - name: Portal
+              href: maintenance-notifications-portal.md
+            - name: PowerShell
+              href: maintenance-notifications-powershell.md
+        - name: Platform bakımı
+          items:
+            - name: Genel Bakış
+              href: maintenance-control.md
+            - name: CLI
+              href: maintenance-control-cli.md
+            - name: PowerShell
+              href: maintenance-control-powershell.md
+            - name: Portal
+              href: maintenance-control-portal.md
+        - name: Zamanlanmış olaylar
+          items:
+            - name: Linux
+              href: ./linux/scheduled-events.md
+            - name: Windows
+              href: ./windows/scheduled-events.md
+        - name: VM 'Leri izleme ve güncelleştirme
+          items:
+            - name: Linux
+              href: ./linux/tutorial-config-management.md
+            - name: Windows
+              href: ./windows/tutorial-config-management.md
+        - name: Sanal makine ölçek kümesi İşletim Sistemi görüntüsüne yönelik yükseltmeler
+          items:
+            - name: Otomatik işletim sistemi yükseltmeleri
+              href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md?context=/azure/virtual-machines/context/context
+            - name: Bakım denetimi
+              items:
+                - name: Genel Bakış (Önizleme)
+                  href: virtual-machine-scale-sets-maintenance-control.md
+                - name: PowerShell (Önizleme)
+                  href: virtual-machine-scale-sets-maintenance-control-powershell.md
+- name: İzleme
+  items:
+    - name: Genel Bakış
+      href: ../azure-monitor/insights/monitor-vm-azure.md?context=/azure/virtual-machines/context/context
+    - name: VM 'Leri izleme
+      items:
+        - name: Linux
+          href: ./linux/tutorial-monitor.md
+        - name: Windows
+          href: ./windows/tutorial-monitor.md
+    - name: Aracılar
+      items:
+        - name: Aracılara genel bakış
+          href: ../azure-monitor/platform/agents-overview.md?context=/azure/virtual-machines/context/context
+        - name: SSS
+          href: ../azure-monitor/faq.md?context=/azure/virtual-machines/context/context#agents
+        - name: Azure Tanılama uzantısı
+          items:
+            - name: Genel Bakış
+              href: ../azure-monitor/platform/diagnostics-extension-overview.md?context=/azure/virtual-machines/context/context
+            - name: Linux tanılama uzantısı
+              items:
+                - name: Genel Bakış
+                  href: ../virtual-machines/extensions/diagnostics-linux.md?context=/azure/virtual-machines/context/context
+                - name: Telegraf ile ölçümleri toplama
+                  href: ../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md?context=/azure/virtual-machines/context/context
+                  displayname: diagnostics extension
+        - name: Log Analytics aracısı
+          items:
+            - name: Genel Bakış
+              href: ../azure-monitor/platform/log-analytics-agent.md?context=/azure/virtual-machines/context/context
+            - name: Linux aracıları
+              href: ../azure-monitor/platform/agent-linux.md?context=/azure/virtual-machines/context/context
+            - name: Log Analytics ağ geçidi
+              href: ../azure-monitor/platform/gateway.md?context=/azure/virtual-machines/context/context
+            - name: Aracı yönetimi
+              href: ../azure-monitor/platform/agent-manage.md?context=/azure/virtual-machines/context/context
+            - name: Aracı Durumu
+              href: ../azure-monitor/insights/solution-agenthealth.md?context=/azure/virtual-machines/context/context
+            - name: Veri kaynakları
+              items:
+                - name: Genel Bakış
+                  href: ../azure-monitor/platform/agent-data-sources.md?context=/azure/virtual-machines/context/context
+                - name: Özel JSON verileri
+                  href: ../azure-monitor/platform/data-sources-json.md?context=/azure/virtual-machines/context/context
+                - name: toplanan performans verileri
+                  href: ../azure-monitor/platform/data-sources-collectd.md?context=/azure/virtual-machines/context/context
+                - name: Syslog
+                  href: ../azure-monitor/platform/data-sources-syslog.md?context=/azure/virtual-machines/context/context
+                - name: Performans sayaçları
+                  href: ../azure-monitor/platform/data-sources-performance-counters.md?context=/azure/virtual-machines/context/context
+                - name: Linux uygulama performansı
+                  href: ../azure-monitor/platform/data-sources-linux-applications.md?context=/azure/virtual-machines/context/context
+                - name: Özel günlükler
+                  href: ../azure-monitor/platform/data-sources-custom-logs.md?context=/azure/virtual-machines/context/context
+                - name: Özel alanlar
+                  href: ../azure-monitor/platform/custom-fields.md?context=/azure/virtual-machines/context/context
+        - name: Sorun giderme
+          items:
+            - name: Log Analytics VM Uzantısı
+              href: ../azure-monitor/platform/vmext-troubleshoot.md?context=/azure/virtual-machines/context/context
+              displayname: 'troubleshoot, troubleshooting'
+            - name: Log Analytics Linux aracısı
+              href: ../azure-monitor/platform/agent-linux-troubleshoot.md?context=/azure/virtual-machines/context/context
+              displayname: 'troubleshoot, troubleshooting'
+        - name: VM'ler için Azure İzleyici
+          items:
+            - name: Genel Bakış
+              href: ../azure-monitor/insights/vminsights-overview.md?context=/azure/virtual-machines/context/context
+            - name: Genel Kullanılabilirlik Hakkında SSS
+              href: ../azure-monitor/insights/vminsights-ga-release-faq.md?context=/azure/virtual-machines/context/context
+            - name: SSS
+              href: ../azure-monitor/faq.md?context=/azure/virtual-machines/context/context#azure-monitor-for-vms
+            - name: İzlemeyi etkinleştirme
+              items:
+                - name: İzlemeyi etkinleştirmeye genel bakış
+                  href: ../azure-monitor/insights/vminsights-enable-overview.md?context=/azure/virtual-machines/context/context
+                - name: Tek bir Azure VM için etkinleştirme
+                  href: ../azure-monitor/insights/vminsights-enable-portal.md?context=/azure/virtual-machines/context/context
+                - name: Azure İlkesi’ni kullanarak etkinleştirme
+                  href: ../azure-monitor/insights/vminsights-enable-policy.md?context=/azure/virtual-machines/context/context
+                - name: Azure PowerShell kullanarak etkinleştirme
+                  href: ../azure-monitor/insights/vminsights-enable-powershell.md?context=/azure/virtual-machines/context/context
+                - name: Hibrit ortam için etkinleştirme
+                  href: ../azure-monitor/insights/vminsights-enable-hybrid.md?context=/azure/virtual-machines/context/context
+            - name: Bağımlılıkları eşleme
+              href: ../azure-monitor/insights/vminsights-maps.md?context=/azure/virtual-machines/context/context
+            - name: Performansı izleme
+              href: ../azure-monitor/insights/vminsights-performance.md?context=/azure/virtual-machines/context/context
+            - name: Günlük sorgularıyla verileri çözümleme
+              href: ../azure-monitor/insights/vminsights-log-search.md?context=/azure/virtual-machines/context/context
+            - name: Çalışma kitapları ile verileri görselleştirme
+              href: ../azure-monitor/insights/vminsights-workbooks.md?context=/azure/virtual-machines/context/context
+            - name: Uyarı kuralları oluşturma
+              href: ../azure-monitor/insights/vminsights-alerts.md?context=/azure/virtual-machines/context/context
+            - name: Dependency Agent’ı yükseltme
+              href: ../azure-monitor/insights/vminsights-dependency-agent-maintenance.md?context=/azure/virtual-machines/context/context
+            - name: İzlemeyi devre dışı bırakma
+              href: ../azure-monitor/insights/vminsights-optout.md?context=/azure/virtual-machines/context/context
+    - name: VM kullanımı
+      href: vm-usage.md
+    - name: Bir VM’yi etiketleme
+      items:
+        - name: CLI
+          href: tag-cli.md
+        - name: Portal
+          href: tag-portal.md
+        - name: PowerShell
+          href: tag-powershell.md
+        - name: Şablon
+          href: tag-template.md
+    - name: Meta verileri izleme
+      items:
+        - name: CLI
+          href: ./linux/instance-metadata-service.md
+        - name: PowerShell
+          href: ./windows/instance-metadata-service.md
+    - name: REST ile kullanım ölçümleri alma
+      href: ./linux/metrics-vm-usage-rest.md
+    - name: Önyükleme tanılaması
+      href: boot-diagnostics.md
+- name: Yedekleme ve kurtarma
+  items:
+    - name: Genel Bakış
+      href: backup-recovery.md
+    - name: Hizmet kesintileri
+      href: virtual-machines-disaster-recovery-guidance.md
+    - name: VM’leri yedekleme
+      items:
+        - name: Genel Bakış
+          href: ../backup/backup-azure-vms-introduction.md
+        - name: Hızlı Başlangıçlar
+          items:
+            - name: CLI
+              href: ../backup/quick-backup-vm-cli.md
+            - name: PowerShell
+              href: ../backup/quick-backup-vm-powershell.md
+            - name: Portal
+              href: ../backup/quick-backup-vm-portal.md
+            - name: Şablon
+              href: ../backup/quick-backup-vm-template.md
+        - name: Birden fazla VM’yi yedekleme
+          href: ../backup/tutorial-backup-vm-at-scale.md
+        - name: Geri yükleme seçenekleri
+          href: /backup/backup-azure-arm-restore-vms.md
+        - name: Destek matrisi
+          href: ../backup/backup-support-matrix-iaas.md
+        - name: Fiyatlandırma
+          href: ../backup/azure-backup-pricing.md
+        - name: SSS
+          href: ../backup/backup-azure-vm-backup-faq.md
+    - name: Olağanüstü durum kurtarma
+      items:
+        - name: Genel Bakış
+          href: ../site-recovery/site-recovery-overview.md
+        - name: Olağanüstü durum kurtarmayı etkinleştir
+          items:
+            - name: Linux
+              href: ./linux/tutorial-disaster-recovery.md
+            - name: Windows
+              href: ./windows/tutorial-disaster-recovery.md
+        - name: VM'ler için olağanüstü durum kurtarmayı etkinleştirme
+          href: ../site-recovery/azure-to-azure-tutorial-enable-replication.md
+        - name: VM'ler için olağanüstü durum kurtarma tatbikatı çalıştırma
+          href: ../site-recovery/azure-to-azure-tutorial-dr-drill.md
+        - name: VM'nin yükünü başka bir bölgeye devretme
+          href: ../site-recovery/azure-to-azure-tutorial-failover-failback.md
+    - name: Sanal makineleri taşıma ve geçirme
+      items:
+        - name: Aboneliği veya kaynak grubunu değiştirme
+          items:
+            - name: CLI
+              href: ./linux/move-vm.md
+            - name: PowerShell
+              href: ./windows/move-vm.md
+        - name: VM'leri başka bir bölgeye taşıma
+          href: ../site-recovery/azure-to-azure-tutorial-migrate.md
+        - name: Kullanılabilirlik alanına taşıma
+          href: ../site-recovery/move-azure-vms-avset-azone.md
+        - name: Bakım Denetimi yapılandırmalarını başka bölgeye taşıma
+          href: move-region-maintenance-configuration.md
+        - name: Bakım Denetimi yapılandırma kaynaklarını başka bölgeye taşıma
+          href: move-region-maintenance-configuration-resources.md
+        - name: AWS’Den ve şirket içi VM’lerden geçiş
+          href: ./windows/on-prem-to-azure.md
+          items:
+            - name: Amazon Web Services’den (AWS) Azure’a geçiş
+              href: ./windows/aws-to-azure.md
+            - name: Şirket içi VM’yi karşıya yükleme
+              href: ./linux/upload-vhd.md
+            - name: Azure Site Recovery’yi kullanma
+              href: ../site-recovery/migrate-overview.md?context=/azure/virtual-machines/context/context
+- name: Altyapı otomasyonu
+  items:
+    - name: Genel Bakış
+      href: infrastructure-automation.md
+    - name: Özel veriler
+      href: custom-data.md
+    - name: Ansible
+      items:
+        - name: Yükleme ve yapılandırma
+          href: /azure/developer/ansible/install-on-linux-vm
+        - name: Linux VM oluşturma
+          href: /azure/developer/ansible/vm-configure
+        - name: Linux VM yönetme
+          href: /azure/developer/ansible/vm-manage
+    - name: Terraform
+      items:
+        - name: Yükleme ve yapılandırma
+          href: /azure/developer/terraform/install-configure
+        - name: Tam VM oluşturma
+          href: /azure/developer/terraform/create-linux-virtual-machine-with-infrastructure
+    - name: Jenkins
+      href: /azure/developer/jenkins/overview
+      items:
+        - name: Jenkins sunucusu oluşturma
+          href: /azure/developer/jenkins/configure-on-linux-vm
+        - name: VM aracılarıyla ölçeklendirme
+          href: /azure/developer/jenkins/scale-deployments-using-vm-agents
+        - name: Yapıtları Depolama alanında yayımlama
+          href: /azure/developer/jenkins/azure-storage-blobs-as-build-artifact-repository
+        - name: Jenkins güvenliğini sağlama
+          href: 'https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/'
+    - name: Azure DevOps
+      href: ./linux/tutorial-azure-devops-blue-green-strategy.md
+- name: Sorun giderme
+  href: ./troubleshooting/index.yml
 - name: Kaynaklar
   items:
+    - name: Bulut benimseme çerçevesi
+      href: /azure/cloud-adoption-framework/get-started/
+    - name: Mimari merkezi
+      href: /azure/architecture/
+    - name: Microsoft Soru-Cevap
+      href: /answers/topics/azure-virtual-machines.html
+    - name: Azure Hızlı Başlangıç şablonları
+      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular'
+    - name: Fiyatlandırma
+      href: 'https://azure.microsoft.com/pricing/details/#Linux'
+    - name: Bölgesel kullanılabilirlik
+      href: 'https://azure.microsoft.com/regions/services/'
     - name: Microsoft Learn ile becerilerinizi geliştirin
       href: /learn/browse/?products=azure-virtual-machines
     - name: Azure Yol Haritası
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: Fiyatlandırma hesaplayıcı
       href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Örnekler
+      items:
+        - name: Azure CLı örnek deposu
+          href: 'https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine'
+        - name: PowerShell örnekleri deposu
+          href: 'https://github.com/Azure/azure-docs-powershell-samples/tree/master/virtual-machine'
+    - name: Ortak CLı komutları
+      href: ./linux/cli-manage.md
+    - name: Ortak PowerShell komutları
+      href: ./windows/ps-common-ref.md
+    - name: Ortak ağ PowerShell komutları
+      href: ./windows/ps-common-network-ref.md
+    - name: VM şablonu açıklaması
+      href: ./windows/template-description.md
+    - name: Klasik dağıtımlar
+      items:
+        - name: Klasik dağıtım kullanan Linux sanal makineleri
+          href: /previous-versions/azure/virtual-machines/linux/classic/
+        - name: Klasik dağıtım kullanan Windows sanal makineleri
+          href: /previous-versions/azure/virtual-machines/windows/classic/
+    - name: SSS
+      items:
+        - name: Linux
+          href: ./linux/faq.md
+        - name: Windows
+          href: ./windows/faq.md

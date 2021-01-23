@@ -3,12 +3,12 @@ title: Azure VMware çözümü için Azure Backup Sunucusu ayarlama
 description: Azure Backup Sunucusu kullanarak sanal makineleri yedeklemek için Azure VMware Çözüm ortamınızı ayarlayın.
 ms.topic: how-to
 ms.date: 10/23/2020
-ms.openlocfilehash: e71ec19402d22643d51f1435d1abcf56b20a290b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7885c0bc73bd5f7cd802e76ed9db470f77eda30d
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517387"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703411"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Azure VMware çözümü için Azure Backup Sunucusu ayarlama
 
@@ -118,7 +118,7 @@ Yedekleme verilerini Azure 'da depolamak için bir kurtarma hizmetleri Kasası o
 
 Dağıtımınızı ölçeklendirmek istiyorsanız aşağıdaki seçeneklere sahip olursunuz:
 
-- **Ölçeği**artırma: Azure Backup sunucusu VM 'Nin boyutunu BIR serinin DS3 serisine artırın ve yerel depolamayı arttırın.
+- **Ölçeği** artırma: Azure Backup sunucusu VM 'Nin boyutunu BIR serinin DS3 serisine artırın ve yerel depolamayı arttırın.
 - **Yük boşaltma verileri**: eski verileri Azure 'a gönderin ve Azure Backup sunucusu makineye bağlı depolamada yalnızca en yeni verileri tutun.
 - **Ölçeği genişletme**: iş yüklerini korumak için daha fazla Azure Backup sunucusu makine ekleyin.
 
@@ -154,7 +154,7 @@ Kurtarma Hizmetleri Kasası, zaman içinde oluşturulan kurtarma noktalarını d
 
    **Kurtarma Hizmetleri kasası** iletişim kutusu açılır.
 
-1. **Ad**, **abonelik**, **kaynak grubu**ve **konum**için değerler girin.
+1. **Ad**, **abonelik**, **kaynak grubu** ve **konum** için değerler girin.
 
    ![Kurtarma Hizmetleri kasasını yapılandırın.](../backup/media/backup-create-rs-vault/create-new-vault-dialog.png)
 
@@ -178,9 +178,9 @@ Depolama çoğaltma seçeneği, coğrafi olarak yedekli depolama (varsayılan) v
 > [!IMPORTANT]
 > Bir kurtarma hizmetleri Kasası için **yerel olarak yedekli/coğrafi olarak yedekli depolama çoğaltma türü** ayarını değiştirmek, kasadaki yedeklemeleri yapılandırmadan önce yapılmalıdır. Yedeklemeleri yapılandırdıktan sonra, bunu değiştirme seçeneği devre dışı bırakılır ve depolama çoğaltma türünü değiştiremezsiniz.
 
-1. **Kurtarma Hizmetleri kasalarından**yeni kasayı seçin. 
+1. **Kurtarma Hizmetleri kasalarından** yeni kasayı seçin. 
 
-1. **Ayarlar** bölümünde **Özellikler**’i seçin. **Yedekleme yapılandırması**altında **Güncelleştir**' i seçin.
+1. **Ayarlar** bölümünde **Özellikler**’i seçin. **Yedekleme yapılandırması** altında **Güncelleştir**' i seçin.
 
 1. Depolama çoğaltma türünü seçin ve **Kaydet**' i seçin.
 
@@ -196,7 +196,7 @@ Yazılım paketini indirmek, ayıklamak ve yüklemek için bu bölümdeki adıml
 
    1. Kaynak listesinde **Kurtarma Hizmetleri**' ni girin.
 
-   1. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Kurtarma Hizmetleri kasalarını**gördüğünüzde, bunu seçin.
+   1. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Kurtarma Hizmetleri kasalarını** gördüğünüzde, bunu seçin.
 
    ![Kurtarma Hizmetleri Kasası oluşturma adımı 1](../backup/media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
 
@@ -218,21 +218,21 @@ Yazılım paketini indirmek, ayıklamak ve yüklemek için bu bölümdeki adıml
 
    1. **İş yükünüz nerede çalışıyor?** menüsünde **Şirket içi**' ı seçin.
 
-      :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-on-premises-workload.png" alt-text="Azure Backup Sunucusu, Azure VMware Çözüm VM 'lerini korumak için bir Azure hizmet olarak altyapı (IaaS) VM 'si olarak dağıtılır.":::
+      :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-on-premises-workload.png" alt-text="İş yükünüz nerede çalışıyor?":::
 
    1. **Neleri yedeklemek istiyorsunuz?** menüsünde, Azure Backup sunucusu kullanarak korumak istediğiniz iş yüklerini seçin.
 
    1. Azure Backup Sunucusu ve kasa kimlik bilgilerini indirmek ve yüklemek için **altyapıyı hazırla** ' yı seçin.
 
-      :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-prepare-infrastructure.png" alt-text="Azure Backup Sunucusu, Azure VMware Çözüm VM 'lerini korumak için bir Azure hizmet olarak altyapı (IaaS) VM 'si olarak dağıtılır.":::
+      :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-prepare-infrastructure.png" alt-text="Altyapıyı hazırla":::
 
 1. Açılan **altyapıyı hazırla** penceresinde:
 
    1. Azure Backup Sunucusu yüklemek için **indirme** bağlantısını seçin.
 
-   1. 1. Zaten indirilmiş ' i seçin **veya en son Azure Backup sunucusu yüklemesini kullanarak** kasa kimlik bilgilerini Indirmek için **indirin** . Kurtarma Hizmetleri kasasına Azure Backup Sunucusu kaydettiğinizde bu kimlik bilgilerini kullanacaksınız. Bağlantılar sizi, yazılım paketini indirdiğiniz Indirme merkezi 'ne götürür.
+   1. Zaten indirilmiş ' i seçin **veya en son Azure Backup sunucusu yüklemesini kullanarak** kasa kimlik bilgilerini Indirmek için **indirin** . Kurtarma Hizmetleri kasasına Azure Backup Sunucusu kaydettiğinizde bu kimlik bilgilerini kullanacaksınız. Bağlantılar sizi, yazılım paketini indirdiğiniz Indirme merkezi 'ne götürür.
 
-   :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-prepare-infrastructure2.png" alt-text="Azure Backup Sunucusu, Azure VMware Çözüm VM 'lerini korumak için bir Azure hizmet olarak altyapı (IaaS) VM 'si olarak dağıtılır.":::
+   :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-prepare-infrastructure2.png" alt-text="Altyapıyı hazırla-Azure Backup Sunucusu":::
 
 1. İndirme sayfasında, tüm dosyalar ' ı seçin ve **İleri**' yi seçin.
 
@@ -250,20 +250,20 @@ Yazılım paketini farklı bir sunucuya indirdiyseniz, dosyaları dağıtmak iç
 
 1. Tüm dosyaları indirdikten sonra, **Microsoft Azure Backup** Kurulum Sihirbazı 'nı açmak için **MicrosoftAzureBackupInstaller.exe** çift tıklayın ve ardından **İleri**' yi seçin.
 
-1. Dosyaların ayıklanacağı konumu seçin ve **İleri ' yi**seçin.
+1. Dosyaların ayıklanacağı konumu seçin ve **İleri ' yi** seçin.
 
 1. Ayıklama işlemini başlatmak için **Ayıkla** ' yı seçin.
 
    ![Ayıklama işlemini başlatmak için Ayıkla ' yı seçin.](../backup/media/backup-azure-microsoft-azure-backup/extract/03.png)
 
-1. Ayıklandıktan sonra **setup.exeyürütme ** seçeneğini belirleyip **son**' u seçin.
+1. Ayıklandıktan sonra **setup.exeyürütme** seçeneğini belirleyip **son**' u seçin.
 
 > [!TIP]
 > setup.exe dosyasını, yazılım paketini ayıkladığınız klasörden de bulabilirsiniz.
 
 ### <a name="install-the-software-package"></a>Yazılım paketini yükler
 
-1. **Yükleme**altındaki kurulum penceresinde, Kurulum Sihirbazı 'nı açmak için **Microsoft Azure Backup** ' yi seçin.
+1. **Yükleme** altındaki kurulum penceresinde, Kurulum Sihirbazı 'nı açmak için **Microsoft Azure Backup** ' yi seçin.
 
    ![Yükleme altındaki kurulum penceresinde, Kurulum Sihirbazı 'nı açmak için Microsoft Azure Backup ' yi seçin.](../backup/media/backup-azure-microsoft-azure-backup/launch-screen2.png)
 
@@ -288,7 +288,7 @@ Yazılım paketini farklı bir sunucuya indirdiyseniz, dosyaları dağıtmak iç
 
    **Raporlama Hizmetlerini SQL Server 2017 ile yapılandırma**
 
-   SQL Server 2017 örneğinizi kullanıyorsanız, SQL Server 2017 Raporlama Hizmetleri 'ni (SSRS) el ile yapılandırmanız gerekir. SSRS yapılandırıldıktan sonra, SSRS 'nin **IsInitialized** özelliğini **true**olarak ayarladığınızdan emin olun. **True**olarak AYARLANDıĞıNDA Azure Backup sunucusu SSRS 'nin zaten yapılandırıldığını VARSAYAR ve SSRS yapılandırmasını atlar.
+   SQL Server 2017 örneğinizi kullanıyorsanız, SQL Server 2017 Raporlama Hizmetleri 'ni (SSRS) el ile yapılandırmanız gerekir. SSRS yapılandırıldıktan sonra, SSRS 'nin **IsInitialized** özelliğini **true** olarak ayarladığınızdan emin olun. **True** olarak AYARLANDıĞıNDA Azure Backup sunucusu SSRS 'nin zaten yapılandırıldığını VARSAYAR ve SSRS yapılandırmasını atlar.
 
    SSRS yapılandırma durumunu denetlemek için şunu çalıştırın:
 
@@ -302,10 +302,10 @@ Yazılım paketini farklı bir sunucuya indirdiyseniz, dosyaları dağıtmak iç
 
    SSRS yapılandırması için aşağıdaki değerleri kullanın:
 
-   * **Hizmet hesabı**: **yerleşik hesap kullan** **ağ hizmeti**olmalıdır.
-   * **Web hizmeti URL 'si**: **sanal dizin** **ReportServer_ \<SQLInstanceName> **olmalıdır.
-   * **Veritabanı**: **DatabaseName** **ReportServer $ \<SQLInstanceName> **olmalıdır.
-   * **Web portalı URL 'si**: **sanal dizin** **Reports_ \<SQLInstanceName> **olmalıdır.
+   * **Hizmet hesabı**: **yerleşik hesap kullan** **ağ hizmeti** olmalıdır.
+   * **Web hizmeti URL 'si**: **sanal dizin** **ReportServer_ \<SQLInstanceName>** olmalıdır.
+   * **Veritabanı**: **DatabaseName** **ReportServer $ \<SQLInstanceName>** olmalıdır.
+   * **Web portalı URL 'si**: **sanal dizin** **Reports_ \<SQLInstanceName>** olmalıdır.
 
    SSRS yapılandırması hakkında [daha fazla bilgi edinin](/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode) .
 
@@ -332,7 +332,7 @@ Yazılım paketini farklı bir sunucuya indirdiyseniz, dosyaları dağıtmak iç
 
    ![Güncelleştirmeleri denetlemek için Microsoft Update kullanmak isteyip istemediğinizi seçin ve Ileri ' yi seçin.](../backup/media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
 
-1. **Ayarların özetini**gözden geçirin ve **yükler**' i seçin.
+1. **Ayarların özetini** gözden geçirin ve **yükler**' i seçin.
 
    Yükleme aşamalarda gerçekleşir. 
    - İlk aşamada Microsoft Azure Kurtarma Hizmetleri Aracısı yüklenir.
