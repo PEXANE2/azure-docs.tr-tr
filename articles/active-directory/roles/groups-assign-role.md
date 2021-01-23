@@ -2,23 +2,23 @@
 title: Azure Active Directory bir bulut grubuna rol atama | Microsoft Docs
 description: Azure portal, PowerShell veya Graph API rol atanabilir bir gruba bir Azure AD rolü atayın.
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb81b5dc98bf75a17e55abafdebfbeca68774a99
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 816009abb688525cd7663311c79300a6d12cf146
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379154"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742956"
 ---
 # <a name="assign-a-role-to-a-cloud-group-in-azure-active-directory"></a>Azure Active Directory bir bulut grubuna rol atama
 
@@ -30,7 +30,7 @@ Bir Azure AD rolüne Grup atamak, yalnızca rol atanabilir olan grupların kulla
 
 1. Azure AD kuruluşunda ayrıcalıklı rol yöneticisi veya genel yönetici izinleriyle [Azure AD Yönetim merkezinde](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) oturum açın.
 
-1. **Azure Active Directory**  >  **Roller ve yöneticiler** ' i seçin ve atamak istediğiniz rolü seçin.
+1. **Azure Active Directory**  >  **Roller ve yöneticiler**' i seçin ve atamak istediğiniz rolü seçin.
 
 1. **_Rol adı_*_ sayfasında > _ atama Ekle ' yi seçin***.
 
@@ -40,11 +40,11 @@ Bir Azure AD rolüne Grup atamak, yalnızca rol atanabilir olan grupların kulla
 
     [![Yalnızca atanabilen gruplar yeni bir rol ataması için gösterilir.](./media/groups-assign-role/eligible-groups.png "Yalnızca atanabilen gruplar yeni bir rol ataması için gösterilir.")](./media/groups-assign-role/eligible-groups.png#lightbox)
 
-1. **Ekle** ’yi seçin.
+1. **Ekle**’yi seçin.
 
 Rol izinleri atama hakkında daha fazla bilgi için bkz. [kullanıcılara yönetici ve yönetici olmayan roller atama](../fundamentals/active-directory-users-assign-role-azure-portal.md).
 
-## <a name="using-powershell"></a>PowerShell'i kullanma
+## <a name="using-powershell"></a>PowerShell’i kullanma
 
 ### <a name="create-a-group-that-can-be-assigned-to-role"></a>Role atanabilecek bir grup oluşturun
 

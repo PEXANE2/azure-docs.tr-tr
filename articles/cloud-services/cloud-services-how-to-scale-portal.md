@@ -1,20 +1,24 @@
 ---
-title: Portalda bir bulut hizmetini otomatik ölçeklendirme | Microsoft Docs
+title: Portalda bulut hizmetini otomatik ölçeklendirme (klasik) | Microsoft Docs
 description: Azure 'da bir bulut hizmeti Web rolü veya çalışan rolü için otomatik ölçek kurallarını yapılandırmak üzere portalını nasıl kullanacağınızı öğrenin.
-services: cloud-services
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 05/18/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 06a0209c2bbd0982054d33c199685d016f405b0c
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: a3e7f72dbe16c51280b922da2b5fc6550dee1d34
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165494"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743364"
 ---
-# <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Portalda bir bulut hizmeti için otomatik ölçeklendirmeyi yapılandırma
+# <a name="how-to-configure-auto-scaling-for-a-cloud-service-classic-in-the-portal"></a>Portalda bir bulut hizmeti için otomatik ölçeklendirmeyi yapılandırma (klasik)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
 
 Koşullar, bir ölçek genişletme veya genişletme işlemini tetikleyen bir bulut hizmeti çalışan rolü için ayarlanabilir. Rolün koşulları, rolün CPU, disk veya ağ yüküne bağlı olabilir. Ayrıca, bir ileti kuyruğuna veya aboneliğinizle ilişkili başka bir Azure kaynağının ölçüsüne göre bir koşul da ayarlayabilirsiniz.
 
@@ -34,7 +38,7 @@ Uygulamanız için ölçeklendirmeyi yapılandırmadan önce aşağıdaki bilgil
 
 * Uygulamanızın yüksek oranda kullanılabilir olmasını sağlamak için, bunun iki veya daha fazla rol örneğiyle dağıtıldığından emin olmanız gerekir. Daha fazla bilgi için bkz. [hizmet düzeyi sözleşmeleri](https://azure.microsoft.com/support/legal/sla/).
 
-* Otomatik ölçeklendirme, yalnızca tüm roller **hazırlanıyor** durumunda gerçekleşir.  
+* Otomatik ölçeklendirme, yalnızca tüm roller **hazırlanıyor** durumunda gerçekleşir.  
 
 
 ## <a name="where-scale-is-located"></a>Ölçek bulunduğu yer
@@ -49,11 +53,11 @@ Bulut hizmetinizi seçtikten sonra, bulut hizmeti dikey penceresinin görünür 
     ![Satış kutucuğu kırmızı renkle gösterilen Işlemler sayfasının ekran görüntüsü.](./media/cloud-services-how-to-scale-portal/scale-tile.png)
 
 ## <a name="automatic-scale"></a>Otomatik ölçeklendirme
-Bir rol için ölçek ayarlarını, iki moddan **el ile** veya **Otomatik**olarak yapılandırabilirsiniz. El ile beklenen, örneklerin mutlak sayısını ayarlarsınız. Otomatik olarak, ne kadar ölçeklendirmeniz gerektiğini belirleyen kurallar ayarlamanıza olanak sağlar.
+Bir rol için ölçek ayarlarını, iki moddan **el ile** veya **Otomatik** olarak yapılandırabilirsiniz. El ile beklenen, örneklerin mutlak sayısını ayarlarsınız. Otomatik olarak, ne kadar ölçeklendirmeniz gerektiğini belirleyen kurallar ayarlamanıza olanak sağlar.
 
-**Ölçek ölçütü** seçeneğini, **zamanlama ve performans kuralları**olarak ayarlayın.
+**Ölçek ölçütü** seçeneğini, **zamanlama ve performans kuralları** olarak ayarlayın.
 
-![Zamanlama ve performans kuralları seçeneğini gösteren ekran görüntüsü.](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
+![profil ve kuralla görüntü bulutu Hizmetleri ölçek ayarları](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
 
 1. Var olan bir profil.
 2. Üst profil için bir kural ekleyin.
@@ -94,7 +98,7 @@ Kural tetikleyicisi, koşullu bir değer ekleyebileceğiniz bulut hizmeti ölç�
 Kuralı yapılandırdıktan sonra, kural dikey penceresinin altındaki **Tamam** düğmesini seçin.
 
 ## <a name="back-to-manual-scale"></a>El ile ölçeğe geri dön
-[Ölçek ayarlarına](#where-scale-is-located) gidin ve **Ölçek ölçütü** seçeneğini, **el ile girdiğim bir örnek sayısı**olarak ayarlayın.
+[Ölçek ayarlarına](#where-scale-is-located) gidin ve **Ölçek ölçütü** seçeneğini, **el ile girdiğim bir örnek sayısı** olarak ayarlayın.
 
 ![Profil ve kuralla bulut hizmetleri ölçek ayarları](./media/cloud-services-how-to-scale-portal/manual-basics.png)
 

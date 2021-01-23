@@ -1,28 +1,27 @@
 ---
-title: Visual Studio 'yu kullanarak bir rol için Uzak Masaüstü 'Nü etkinleştirme (Azure Cloud Services)
+title: Visual Studio 'yu kullanarak bir rol için Uzak Masaüstü 'Nü etkinleştirme (Azure Cloud Services klasik)
 description: Azure bulut hizmeti uygulamanızı uzak masaüstü bağlantılarına izin verecek şekilde yapılandırma
-services: cloud-services
-author: ghogen
-manager: jillfra
-ms.assetid: f5727ebe-9f57-4d7d-aff1-58761e8de8c1
-ms.prod: visual-studio-dev15
-ms.technology: vs-azure
-ms.custom: vs-azure
-ms.topic: conceptual
-ms.workload: azure-vs
-ms.date: 03/06/2018
-ms.author: ghogen
-ms.openlocfilehash: f4622e44c795182ee68c617f335c9e1651d3adcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.topic: article
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: ad95cefbdf839c28b0979b051e217a1dfec76eea
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80294380"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743245"
 ---
-# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Visual Studio 'Yu kullanarak Azure Cloud Services bir rol için Uzak Masaüstü Bağlantısı etkinleştirme
+# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-classic-using-visual-studio"></a>Visual Studio 'Yu kullanarak Azure Cloud Services (klasik) bir rol için Uzak Masaüstü Bağlantısı etkinleştirme
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
 
 > [!div class="op_single_selector"]
-> * [Azure portalındaki](cloud-services-role-enable-remote-desktop-new-portal.md)
+> * [Azure portalı](cloud-services-role-enable-remote-desktop-new-portal.md)
 > * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 > * [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
@@ -38,7 +37,7 @@ Visual Studio 2017 sürüm 15,4 ve önceki sürümlerini kullanırken, Yayımla 
 
 1. Visual Studio 'da, Çözüm Gezgini ' de bulut hizmeti projenize sağ tıklayıp **Yayımla**' yı seçerek Yayımlama Sihirbazı ' nı başlatın.
 
-2. Gerekirse Azure aboneliğinizde oturum açın ve **İleri ' yi**seçin.
+2. Gerekirse Azure aboneliğinizde oturum açın ve **İleri ' yi** seçin.
 
 3. **Ayarlar** sayfasında, **tüm roller Için uzak masaüstünü etkinleştir**' i seçin ve ardından **ayarlar...** bağlantısını seçerek **Uzak Masaüstü yapılandırması** iletişim kutusunu açın.
 
@@ -47,7 +46,7 @@ Visual Studio 2017 sürüm 15,4 ve önceki sürümlerini kullanırken, Yayımla 
    > [!Note]
    > Uzak Masaüstü bağlantısı için gereken sertifikalar, diğer Azure işlemleri için kullandığınız sertifikalardan farklıdır. Uzaktan erişim sertifikası özel bir anahtara sahip olmalıdır.
 
-5. Listeden bir sertifika seçin veya ** &lt; Oluştur... &gt; **seçeneğini belirleyin. Yeni bir sertifika oluşturuyorsanız, istendiğinde yeni sertifika için bir kolay ad sağlayın ve **Tamam**' ı seçin. Yeni sertifika açılan liste kutusunda görünür.
+5. Listeden bir sertifika seçin veya **&lt; Oluştur... &gt;** seçeneğini belirleyin. Yeni bir sertifika oluşturuyorsanız, istendiğinde yeni sertifika için bir kolay ad sağlayın ve **Tamam**' ı seçin. Yeni sertifika açılan liste kutusunda görünür.
 
 6. Bir Kullanıcı adı ve parola belirtin. Mevcut bir hesabı kullanamazsınız. Yeni hesap için Kullanıcı adı olarak "Yönetici" kullanmayın.
 

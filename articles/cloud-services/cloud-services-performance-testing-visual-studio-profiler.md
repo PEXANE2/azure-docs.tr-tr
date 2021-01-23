@@ -1,27 +1,25 @@
 ---
-title: Işlem öykünücüsünde yerel olarak bir bulut hizmeti profili oluşturma | Microsoft Docs
-services: cloud-services
+title: Işlem öykünücüsünde yerel olarak bir bulut hizmeti (klasik) profili oluşturma | Microsoft Docs
 description: Visual Studio Profiler ile bulut hizmetlerindeki performans sorunlarını araştırın
-documentationcenter: ''
-author: mikejo
-manager: jillfra
-editor: ''
-tags: ''
-ms.assetid: 25e40bf3-eea0-4b0b-9f4a-91ffe797f6c3
-ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/18/2016
-ms.author: mikejo
-ms.openlocfilehash: 6b5707405879c462a1d919e04730d368332ba68c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 2f924d84967c1a1928a47b59fd3a8c28da091130
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077165"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743568"
 ---
-# <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Visual Studio Profiler kullanarak Azure Işlem öykünücüsünde yerel olarak bir bulut hizmetinin performansını test etme
+# <a name="testing-the-performance-of-a-cloud-service-classic-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Visual Studio Profiler kullanarak Azure Işlem öykünücüsünde bir bulut hizmeti (klasik) performansını yerel olarak test etme
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
+
 Bulut hizmetlerinin performansını test etmek için çeşitli araçlar ve teknikler mevcuttur.
 Azure 'Da bir bulut hizmeti yayımladığınızda, Visual Studio 'Nun profil oluşturma verilerini toplamasını ve sonra [Azure uygulamasında profil oluşturma][1]bölümünde açıklandığı gibi yerel olarak çözümlemenizi sağlayabilirsiniz.
 Ayrıca, [Azure 'da performans sayaçlarını kullanma][2]bölümünde açıklandığı gibi çeşitli performans sayaçlarını izlemek için tanılamayı da kullanabilirsiniz.
@@ -30,15 +28,15 @@ Ayrıca, Uygulamanızı buluta dağıtmadan önce işlem öykünücüsünde yere
 Bu makale, Öykünücüde yerel olarak yapılabilen profil oluşturma için CPU örnekleme yöntemini ele almaktadır. CPU örnekleme, profil oluşturmanın çok zorsız bir yöntemdir. Belirlenmiş bir örnekleme aralığı içinde profil oluşturucu, çağrı yığınının anlık görüntüsünü alır. Veriler bir süre içinde toplanır ve bir raporda gösterilir. Bu profil oluşturma yöntemi, CPU işinin büyük bir bölümünü yoğun şekilde yoğun bir uygulamada nerede yapıldığını belirtmek için eğilimi gösterir.  Bu, uygulamanızın en çok zaman harcaacağı "etkin yol" üzerine odaklanma fırsatı sağlar.
 
 ## <a name="1-configure-visual-studio-for-profiling"></a>1: Visual Studio 'Yu profil oluşturma için yapılandırma
-İlk olarak, profil oluşturma sırasında yararlı olabilecek birkaç Visual Studio yapılandırma seçeneği vardır. Profil oluşturma raporlarının anlamlı olması için, uygulamanız için semboller (. pdb dosyaları) ve ayrıca sistem kitaplıkları için semboller gerekir. Kullanılabilir sembol sunucularına başvurduğunuzdan emin olmak isteyeceksiniz. Bunu yapmak için, Visual Studio 'daki **Araçlar** menüsünde **Seçenekler**' i ve ardından **hata ayıklama**ve **semboller**' i seçin. Microsoft symbol sunucularının **sembol dosyası (. pdb) konumları**altında listelendiğinden emin olun.  Ayrıca https://referencesource.microsoft.com/symbols , ek sembol dosyalarına sahip olabilecek başvuru de oluşturabilirsiniz.
+İlk olarak, profil oluşturma sırasında yararlı olabilecek birkaç Visual Studio yapılandırma seçeneği vardır. Profil oluşturma raporlarının anlamlı olması için, uygulamanız için semboller (. pdb dosyaları) ve ayrıca sistem kitaplıkları için semboller gerekir. Kullanılabilir sembol sunucularına başvurduğunuzdan emin olmak isteyeceksiniz. Bunu yapmak için, Visual Studio 'daki **Araçlar** menüsünde **Seçenekler**' i ve ardından **hata ayıklama** ve **semboller**' i seçin. Microsoft symbol sunucularının **sembol dosyası (. pdb) konumları** altında listelendiğinden emin olun.  Ayrıca https://referencesource.microsoft.com/symbols , ek sembol dosyalarına sahip olabilecek başvuru de oluşturabilirsiniz.
 
 ![Sembol seçenekleri][4]
 
-İsterseniz, profil oluşturucunun oluşturduğu raporları Yalnızca kendi kodum ayarlayarak basitleştirebilirsiniz. Yalnızca kendi kodum etkinken, işlev çağrısı yığınları basitleştirilerek tamamen iç kitaplıklara çağrı yapılır ve .NET Framework raporlardan gizlenir. **Araçlar** menüsünde **Seçenekler**' i seçin. Ardından **performans araçları** düğümünü genişletin ve **genel**' i seçin. **Profil Oluşturucu raporları için yalnızca kendi kodum etkinleştir**onay kutusunu seçin.
+İsterseniz, profil oluşturucunun oluşturduğu raporları Yalnızca kendi kodum ayarlayarak basitleştirebilirsiniz. Yalnızca kendi kodum etkinken, işlev çağrısı yığınları basitleştirilerek tamamen iç kitaplıklara çağrı yapılır ve .NET Framework raporlardan gizlenir. **Araçlar** menüsünde **Seçenekler**' i seçin. Ardından **performans araçları** düğümünü genişletin ve **genel**' i seçin. **Profil Oluşturucu raporları için yalnızca kendi kodum etkinleştir** onay kutusunu seçin.
 
 ![Yalnızca kendi kodum seçenekleri][17]
 
-Bu yönergeleri mevcut bir projeyle veya yeni bir projeyle birlikte kullanabilirsiniz.  Aşağıda açıklanan teknikleri denemek için yeni bir proje oluşturursanız, bir C# **Azure bulut hizmeti** projesi seçin ve bir **Web rolü** ve bir **çalışan rolü**seçin.
+Bu yönergeleri mevcut bir projeyle veya yeni bir projeyle birlikte kullanabilirsiniz.  Aşağıda açıklanan teknikleri denemek için yeni bir proje oluşturursanız, bir C# **Azure bulut hizmeti** projesi seçin ve bir **Web rolü** ve bir **çalışan rolü** seçin.
 
 ![Azure bulut hizmeti proje rolleri][5]
 
@@ -74,7 +72,7 @@ private async Task RunAsync(CancellationToken cancellationToken)
 }
 ```
 
-Çözüm yapılandırması **yayın**olarak ayarlanmış şekilde, bulut hizmetinizi hata ayıklamadan (CTRL + F5) yerel olarak derleyin ve çalıştırın. Bu, uygulamayı yerel olarak çalıştırmak için tüm dosya ve klasörlerin oluşturulmasını sağlar ve tüm öykünücülerin başlatılmasını sağlar. Çalışan rolünüzün çalıştığını doğrulamak için görev çubuğundan Işlem öykünücüsü Kullanıcı arabirimini başlatın.
+Çözüm yapılandırması **yayın** olarak ayarlanmış şekilde, bulut hizmetinizi hata ayıklamadan (CTRL + F5) yerel olarak derleyin ve çalıştırın. Bu, uygulamayı yerel olarak çalıştırmak için tüm dosya ve klasörlerin oluşturulmasını sağlar ve tüm öykünücülerin başlatılmasını sağlar. Çalışan rolünüzün çalıştığını doğrulamak için görev çubuğundan Işlem öykünücüsü Kullanıcı arabirimini başlatın.
 
 ## <a name="2-attach-to-a-process"></a>2: bir işleme iliştirme
 Visual Studio 2010 IDE 'den başlatarak uygulamanın profilini oluşturmak yerine, profil oluşturucuyu çalışan bir işleme bağlamanız gerekir. 

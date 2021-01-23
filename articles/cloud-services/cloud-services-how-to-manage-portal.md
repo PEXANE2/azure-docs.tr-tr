@@ -1,21 +1,25 @@
 ---
 title: Ortak bulut hizmeti yönetim görevleri | Microsoft Docs
 description: Azure portal Cloud Services yönetmeyi öğrenin. Bu örnekler Azure portal kullanır.
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/05/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 84e450a55f9482c3a713943adfcc4d7940ab873f
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 306da8dae31c2bbdb487e7128e3a2e24424c239d
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076717"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743398"
 ---
-# <a name="manage-cloud-services-in-the-azure-portal"></a>Azure portal Cloud Services yönetme
+# <a name="manage-cloud-services-classic-in-the-azure-portal"></a>Azure portal Cloud Services (klasik) yönetme
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
+
 Azure portal **Cloud Services** alanında şunları yapabilirsiniz:
 
 * Bir hizmet rolünü veya dağıtımını güncelleştirin.
@@ -77,7 +81,7 @@ Başarılı bir dağıtım takası için iki temel önkoşul vardır:
 
 - Üretim yuvalarınız için statik bir IP adresi kullanmak istiyorsanız, hazırlama yuvalarınız için bir tane de ayırmanız gerekir. Aksi takdirde, değiştirme başarısız olur.
 
-- Değiştirme işlemini gerçekleştirebilmeniz için rollerinizin tüm örneklerinin çalışıyor olması gerekir. Örneklerinizin durumunu Azure portal **genel bakış** dikey penceresinde kontrol edebilirsiniz. Alternatif olarak, Windows PowerShell 'de [Get-AzureRole](/powershell/module/servicemanagement/azure.service/get-azurerole?view=azuresmps-3.7.0) komutunu da kullanabilirsiniz.
+- Değiştirme işlemini gerçekleştirebilmeniz için rollerinizin tüm örneklerinin çalışıyor olması gerekir. Örneklerinizin durumunu Azure portal **genel bakış** dikey penceresinde kontrol edebilirsiniz. Alternatif olarak, Windows PowerShell 'de [Get-AzureRole](/powershell/module/servicemanagement/azure.service/get-azurerole?view=azuresmps-3.7.0&preserve-view=true) komutunu da kullanabilirsiniz.
 
 Konuk işletim sistemi güncelleştirmelerinin ve hizmet düzeltme işlemlerinin de dağıtım yamasının başarısız olmasına neden olabileceğini unutmayın. Daha fazla bilgi için bkz. [Cloud Service dağıtım sorunlarını giderme](cloud-services-troubleshoot-deployment-problems.md).
 

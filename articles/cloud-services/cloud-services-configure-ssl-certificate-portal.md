@@ -1,21 +1,24 @@
 ---
 title: Bir bulut hizmeti için TLS Yapılandırma | Microsoft Docs
 description: Bir Web rolü için HTTPS uç noktası belirtme ve uygulamanızın güvenliğini sağlamak için TLS/SSL sertifikası yükleme hakkında bilgi edinin. Bu örnekler Azure portal kullanır.
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 05/26/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: c69b74cf91d8e097f8ad8a9ba2a16f3375f483ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 33aa088efd7768153d4a17472d82e0826f4ffa6b
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82024855"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742650"
 ---
 # <a name="configuring-tls-for-an-application-in-azure"></a>Azure 'da bir uygulama için TLS Yapılandırma
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
 
 Daha önce Güvenli Yuva Katmanı (SSL) şifrelemesi olarak bilinen Aktarım Katmanı Güvenliği (TLS), internet üzerinden gönderilen verilerin güvenliğini sağlamak için en yaygın kullanılan yöntemdir. Bu ortak görevde bir Web rolü için HTTPS uç noktasının nasıl kullanılacağı ve uygulamanızın güvenliğini sağlamak için bir TLS/SSL sertifikasının nasıl yükleneceği açıklanır.
 
@@ -34,10 +37,10 @@ Sertifika, Azure 'daki TLS/SSL sertifikaları için aşağıdaki gereksinimleri 
 
 * Sertifika, ortak anahtar içermelidir.
 * Sertifika, anahtar değişimi için, kişisel bilgi değişimi (. pfx) dosyasına verilebilir şekilde oluşturulmalıdır.
-* Sertifikanın konu adı, bulut hizmetine erişmek için kullanılan etki alanı ile aynı olmalıdır. Cloudapp.net etki alanı için bir sertifika yetkilisinden (CA) bir TLS/SSL sertifikası edinemezsiniz. Hizmetinize erişirken kullanmak için özel bir etki alanı adı almanız gerekir. CA 'dan bir sertifika istediğinizde, sertifikanın konu adı, uygulamanıza erişmek için kullanılan özel etki alanı adıyla aynı olmalıdır. Örneğin, özel etki alanı adınız **contoso.com** ise, "**. contoso.com** veya **www \. contoso.com**için CA 'nızdan bir sertifika istemeniz gerekir.
+* Sertifikanın konu adı, bulut hizmetine erişmek için kullanılan etki alanı ile aynı olmalıdır. Cloudapp.net etki alanı için bir sertifika yetkilisinden (CA) bir TLS/SSL sertifikası edinemezsiniz. Hizmetinize erişirken kullanmak için özel bir etki alanı adı almanız gerekir. CA 'dan bir sertifika istediğinizde, sertifikanın konu adı, uygulamanıza erişmek için kullanılan özel etki alanı adıyla aynı olmalıdır. Örneğin, özel etki alanı adınız **contoso.com** ise, "*_. contoso.com_* veya **www \. contoso.com** için CA 'nızdan bir sertifika istemeniz gerekir.
 * Sertifika en az 2048 bit şifreleme kullanmalıdır.
 
-Test amaçları için otomatik olarak imzalanan bir sertifika [oluşturup](cloud-services-certs-create.md) kullanabilirsiniz. Otomatik olarak imzalanan bir sertifika, CA aracılığıyla kimlik doğrulaması içermez ve cloudapp.net etki alanını Web sitesi URL 'SI olarak kullanabilir. Örneğin, aşağıdaki görev, sertifikada kullanılan ortak adın (CN) **sslexample.cloudapp.net**olduğu kendinden imzalı bir sertifika kullanır.
+Test amaçları için otomatik olarak imzalanan bir sertifika [oluşturup](cloud-services-certs-create.md) kullanabilirsiniz. Otomatik olarak imzalanan bir sertifika, CA aracılığıyla kimlik doğrulaması içermez ve cloudapp.net etki alanını Web sitesi URL 'SI olarak kullanabilir. Örneğin, aşağıdaki görev, sertifikada kullanılan ortak adın (CN) **sslexample.cloudapp.net** olduğu kendinden imzalı bir sertifika kullanır.
 
 Daha sonra, hizmet tanımınızda sertifika ile ilgili bilgileri ve hizmet yapılandırma dosyalarını dahil etmeniz gerekir.
 
@@ -130,7 +133,7 @@ Uygulamanızın sertifikayı kullanacak şekilde yapılandırılması ve bir HTT
 
 (Bu örnek, parmak izi algoritması için **SHA1** kullanır. Sertifikanızın parmak izi algoritmanız için uygun değeri belirtin.)
 
-Artık hizmet tanımı ve hizmet yapılandırma dosyaları güncelleştirildiğinden, dağıtımınızı Azure 'a yüklemek için paketleyin. **Cspack**kullanıyorsanız, az önce eklediğiniz sertifika bilgilerinin üzerine yazılacak şekilde **/Generateconfigurationfile** bayrağını kullanmayın.
+Artık hizmet tanımı ve hizmet yapılandırma dosyaları güncelleştirildiğinden, dağıtımınızı Azure 'a yüklemek için paketleyin. **Cspack** kullanıyorsanız, az önce eklediğiniz sertifika bilgilerinin üzerine yazılacak şekilde **/Generateconfigurationfile** bayrağını kullanmayın.
 
 ## <a name="step-3-upload-a-certificate"></a>3. Adım: bir sertifikayı karşıya yükleme
 Azure portal Bağlan ve...
@@ -147,7 +150,7 @@ Azure portal Bağlan ve...
 
     ![Karşıya Yükle menü öğesine tıklayın](media/cloud-services-configure-ssl-certificate-portal/Upload_menu.png)
 
-4. **Dosyayı**, **parolayı**girin ve ardından veri girişi alanının altındaki **karşıya yükle** ' ye tıklayın.
+4. **Dosyayı**, **parolayı** girin ve ardından veri girişi alanının altındaki **karşıya yükle** ' ye tıklayın.
 
 ## <a name="step-4-connect-to-the-role-instance-by-using-https"></a>4. Adım: rol örneğine HTTPS kullanarak bağlanma
 Artık dağıtımınız Azure 'da çalışır durumda olduğundan, HTTPS kullanarak buna bağlanabilirsiniz.
@@ -156,7 +159,7 @@ Artık dağıtımınız Azure 'da çalışır durumda olduğundan, HTTPS kullana
 
    ![Site URL 'sine tıklayın](media/cloud-services-configure-ssl-certificate-portal/navigate.png)
 
-2. Web tarayıcınızda, bağlantıyı **http**yerine **https** kullanacak şekilde değiştirin ve ardından sayfayı ziyaret edin.
+2. Web tarayıcınızda, bağlantıyı **http** yerine **https** kullanacak şekilde değiştirin ve ardından sayfayı ziyaret edin.
 
    > [!NOTE]
    > Kendinden imzalı bir sertifika kullanıyorsanız, otomatik olarak imzalanan sertifikayla ilişkili bir HTTPS uç noktasına gözattığınızda tarayıcıda bir sertifika hatası görebilirsiniz. Güvenilen bir sertifika yetkilisi tarafından imzalanan bir sertifika kullanmak bu sorunu ortadan kaldırır; Bu sırada, hatayı yoksayabilirsiniz. (Diğer bir seçenek de kullanıcının güvenilen sertifika yetkilisi sertifika deposuna otomatik olarak imzalanan sertifikayı eklemektir.)

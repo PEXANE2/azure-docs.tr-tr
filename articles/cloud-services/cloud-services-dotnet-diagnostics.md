@@ -1,34 +1,35 @@
 ---
-title: Azure tanılama 'yı (.NET) Cloud Services ile kullanma | Microsoft Docs
+title: Cloud Services (klasik) ile Azure tanılama (.NET) kullanma | Microsoft Docs
 description: Azure Tanılama kullanarak hata ayıklama, performans, izleme, trafik analizi ve daha fazlasını yapmak için Azure bulut hizmetlerinden veri toplayın.
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-manager: carmonm
-ms.service: cloud-services
-ms.devlang: dotnet
-ms.custom: devx-track-csharp
 ms.topic: article
-ms.date: 05/22/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 6a015a8d56cf3991d04b212db73d5b752c13a793
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 89ba50b91e8ff2e2d7a05d59f2b738a1f87a5fd2
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077550"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742157"
 ---
-# <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Azure Cloud Services Azure Tanılama etkinleştirme
-Azure Tanılama bir arka plana [Azure tanılama genel bakış](../azure-monitor/platform/diagnostics-extension-overview.md) konusuna bakın.
+# <a name="enabling-azure-diagnostics-in-azure-cloud-services-classic"></a>Azure Cloud Services Azure Tanılama etkinleştirme (klasik)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
+
+Azure Tanılama bir arka plana [Azure tanılama genel bakış](../azure-diagnostics.md) konusuna bakın.
 
 ## <a name="how-to-enable-diagnostics-in-a-worker-role"></a>Çalışan rolünde tanılamayı etkinleştirme
 Bu izlenecek yol, .NET EventSource sınıfını kullanarak telemetri verileri veren bir Azure Worker rolünün nasıl uygulanacağını açıklar. Azure Tanılama telemetri verilerini toplamak ve bir Azure depolama hesabında depolamak için kullanılır. Bir çalışan rolü oluştururken, Visual Studio, .NET 2,4 ve önceki sürümleri için Azure SDK 'larında çözümün parçası olarak tanılama 1,0 ' i otomatik olarak sunar. Aşağıdaki yönergeler, çalışan rolünü oluşturma, çözümünden tanılama 1,0 'yi devre dışı bırakma ve çalışan rolünüzde tanılama 1,2 ya da 1,3 dağıtma sürecini anlatmaktadır.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 Bu makalede bir Azure aboneliğiniz olduğunu ve Azure SDK ile Visual Studio 'Yu kullandığınızı varsaymaktadır. Azure aboneliğiniz yoksa [ücretsiz deneme sürümüne][Free Trial]kaydolabilirsiniz. [Azure PowerShell sürüm 0.8.7 veya üstünü][Install and configure Azure PowerShell version 0.8.7 or later]yüklediğinizden emin olun.
 
 ### <a name="step-1-create-a-worker-role"></a>1. Adım: çalışan rolü oluşturma
-1. **Visual Studio 'yu**başlatın.
+1. **Visual Studio 'yu** başlatın.
 2. **Bulut** şablonundan .NET Framework 4,5 ' i hedefleyen bir **Azure bulut hizmeti** projesi oluşturun.  Projeyi "WADEX," olarak adlandırın ve Tamam ' a tıklayın.
 3. **Çalışan rolü** ' nü seçin ve Tamam ' a tıklayın. Proje oluşturulur.
 4. **Çözüm Gezgini**, **WorkerRole1** Properties dosyasına çift tıklayın.
@@ -127,7 +128,7 @@ namespace WorkerRole1
 2. Aboneliğinizi seçin.
 3. **Microsoft Azure yayımlama ayarları** Iletişim kutusunda **Yeni oluştur...** seçeneğini belirleyin.
 4. **Bulut hizmeti ve depolama hesabı oluştur** iletişim kutusunda bir **ad** girin (örneğin, "wadexexample") ve bir bölge veya benzeşim grubu seçin.
-5. **Ortamı** **hazırlık**olarak ayarlayın.
+5. **Ortamı** **hazırlık** olarak ayarlayın.
 6. Diğer **ayarları** uygun şekilde değiştirip **Yayımla**' ya tıklayın.
 7. Dağıtım tamamlandıktan sonra, Azure portal bulut hizmetinizin **çalışır** durumda olduğunu doğrulayın.
 
@@ -137,7 +138,7 @@ namespace WorkerRole1
     ```powershell
     (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd'
     ```
-2. **WorkerRole1** projesine sağ tıklayıp **WorkerRole1** **Add**  ->  **Yeni öğe Ekle... öğesini** seçerek WorkerRole1 projenize bir XML dosyası ekleyin. -> **Visual C# öğeleri**  ->  **Veri**  ->  **XML dosyası**. "WadExample.xml" dosyasını adlandırın.
+2. **WorkerRole1** projesine sağ tıklayıp    ->  **Yeni öğe Ekle... öğesini** seçerek WorkerRole1 projenize bir XML dosyası ekleyin. -> **Visual C# öğeleri**  ->  **Veri**  ->  **XML dosyası**. "WadExample.xml" dosyasını adlandırın.
 
    ![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
 3. WadConfig. xsd dosyasını yapılandırma dosyası ile ilişkilendirin. WadExample.xml Düzenleyicisi penceresinin etkin pencere olduğundan emin olun. **Özellikler** penceresini açmak için **F4** tuşuna basın. **Özellikler** penceresinde **şemalar** özelliğine tıklayın. **..** . Öğesine tıklayın. **şema** özelliğinde. **Ekle...** öğesine tıklayın. düğmesine tıklayın ve XSD dosyasını kaydettiğiniz konuma gidin ve WadConfig. xsd dosyasını seçin. **Tamam**'a tıklayın.
@@ -183,7 +184,7 @@ Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -Diagnostic
 ```
 
 ### <a name="step-6-look-at-your-telemetry-data"></a>6. Adım: telemetri verilerinize bakın
-Visual Studio **Sunucu Gezgini**, WADEX, depolama hesabına gidin. Bulut hizmeti yaklaşık beş (5) dakika çalıştıktan sonra, **Wadenumstable**, **wadhighfreqtable**, **wadmessagetable**, **WADPerformanceCountersTable** ve **wadsetothertable**tablolarını görmeniz gerekir. Toplanan Telemetriyi görüntülemek için tablolardan birine çift tıklayın.
+Visual Studio **Sunucu Gezgini**, WADEX, depolama hesabına gidin. Bulut hizmeti yaklaşık beş (5) dakika çalıştıktan sonra, **Wadenumstable**, **wadhighfreqtable**, **wadmessagetable**, **WADPerformanceCountersTable** ve **wadsetothertable** tablolarını görmeniz gerekir. Toplanan Telemetriyi görüntülemek için tablolardan birine çift tıklayın.
 
 ![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
 

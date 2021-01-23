@@ -903,16 +903,14 @@
               href: ./workloads/redhat/redhat-rhui.md
 - name: Görüntüler
   items:
-    - name: Market görüntüleri
+    - name: Azure Marketi görüntülerini bulma
       items:
-        - name: Azure Marketi görüntülerini bulma
-          items:
-            - name: CLI
-              href: ./linux/cli-ps-findimage.md
-            - name: PowerShell
-              href: ./windows/cli-ps-findimage.md
-            - name: Windows istemci görüntüleri
-              href: ./windows/client-images.md
+        - name: CLI
+          href: ./linux/cli-ps-findimage.md
+        - name: PowerShell
+          href: ./windows/cli-ps-findimage.md
+        - name: Windows istemci görüntüleri
+          href: ./windows/client-images.md
     - name: Linux özel görüntüleri
       items:
         - name: Genel Bakış
@@ -1058,6 +1056,8 @@
           href: image-version-encryption.md
         - name: Görüntü sürümünden yönetilen disk
           href: managed-disk-from-image-version.md
+        - name: Satın alma planı bilgileri
+          href: marketplace-images.md
     - name: Görüntü oluşturucu (önizleme)
       items:
         - name: Genel Bakış
@@ -1105,8 +1105,6 @@
           href: ./linux/image-builder-user-assigned-identity.md
         - name: Sorun giderme
           href: ./linux/image-builder-troubleshoot.md
-    - name: Satın alma planı bilgileri
-      href: marketplace-images.md
     - name: Packer ile görüntü derleme
       items:
         - name: Linux

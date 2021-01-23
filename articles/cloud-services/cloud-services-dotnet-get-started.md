@@ -1,26 +1,27 @@
 ---
-title: Azure Cloud Services ve ASP.NET kullanmaya başlama | Microsoft Belgeleri
+title: Azure Cloud Services kullanmaya başlama (klasik) ve ASP.NET | Microsoft Docs
 description: ASP.NET MVC ve Azure kullanarak çok katmanlı bir uygulama oluşturma hakkında bilgi edinin. Uygulama, web rolü ve çalışan rolü ile birlikte bir bulut hizmetinde çalışır. Entity Framework, SQL Database ve Azure Storage kuyruklarını ve blob’larını kullanır.
-services: cloud-services, storage
-documentationcenter: .net
-author: tgore03
-manager: carmonm
+ms.topic: article
 ms.service: cloud-services
-ms.devlang: dotnet
-ms.custom: devx-track-csharp
-ms.topic: conceptual
-ms.date: 05/15/2017
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: a875c036c79419357f1134c32f62fdb060fec7c6
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: ae7fd5a7c9bc858cb18473374e7bd5589717eac6
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562302"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742089"
 ---
-# <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure Cloud Services ve ASP.NET kullanmaya başlama
+# <a name="get-started-with-azure-cloud-services-classic-and-aspnet"></a>Azure Cloud Services (klasik) ve ASP.NET kullanmaya başlama
 
 ## <a name="overview"></a>Genel Bakış
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
+
 Bu öğreticide ASP.NET MVC ön ucuyla çok katmanlı bir .NET uygulaması oluşturma ve bir [Azure bulut hizmetine](cloud-services-choose-me.md) dağıtma işlemi gösterilmektedir. Uygulama [Azure SQL Veritabanı](/previous-versions/azure/ee336279(v=azure.100)), [Azure Blob hizmeti](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) ve [Azure Queue hizmeti](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) kullanır. MSDN Kod Galerisi’nden [Visual Studio projesini](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) indirebilirsiniz.
 
 Öğreticide, uygulamayı yerel olarak oluşturup çalıştırma, Azure’a dağıtma ve bulutta çalıştırmanın yanı sıra sıfırdan oluşturma işlemleri de gösterilmektedir. Tercih ederseniz sıfırdan oluşturmaya başlayabilir ve ardından test ve dağıtım adımlarını gerçekleştirebilirsiniz.
@@ -28,7 +29,7 @@ Bu öğreticide ASP.NET MVC ön ucuyla çok katmanlı bir .NET uygulaması oluş
 ## <a name="contoso-ads-application"></a>Contoso Ads uygulaması
 Uygulama bir reklam bülteni panosudur. Kullanıcılar metin girerek ve görüntüyü karşıya yükleyerek bir reklam oluşturur. Küçük resim görüntüleriyle birlikte bir reklam listesi görebilir ve ayrıntılarını görmek üzere bir reklam seçtiklerinde tam boyutlu görüntüyü görebilirler.
 
-![Reklam listesi](./media/cloud-services-dotnet-get-started/list.png)
+![Görüntü, ad listesini gösterir](./media/cloud-services-dotnet-get-started/list.png)
 
 Uygulama bir arka uç işleminde küçük resim oluşturmaya yönelik CPU yoğunluklu iş yükünü azaltmak üzere [kuyruk merkezli çalışma deseni](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) kullanır.
 
@@ -43,7 +44,7 @@ Bu öğreticide bir Azure bulut hizmetinde hem ön ucun hem de arka ucun nasıl 
 * Dosyaları karşıya yükleme ve Azure Blob hizmetine depolama.
 * Katmanlar arasında iletişim için Azure Queue hizmetini kullanma.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Öğretici *web rolü* ve *çalışan rolü* terminolojisi gibi [Azure bulut hizmetleri hakkında temel kavramları](cloud-services-choose-me.md) anladığınızı varsayar.  Ayrıca Visual Studio’da [ASP.NET MVC](https://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) veya [Web Forms](https://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview) projeleri ile nasıl çalışılacağını bildiğinizi varsayar. Örnek uygulama MVC kullanır, ancak öğreticinin büyük bölümü Web Forms için de geçerlidir.
 
 Uygulamayı bir Azure aboneliği olmadan yerel olarak çalıştırabilirsiniz, ancak uygulamayı buluta dağıtmak için bir abonelik gerekecektir. Bir hesabınız yoksa, [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668) veya [ücretsiz deneme için kaydolabilirsiniz.](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A55E3C668)
@@ -60,7 +61,7 @@ Bunlardan birine sahip değilseniz Azure SDK'yı yüklediğinizde Visual Studio 
 ## <a name="application-architecture"></a>Uygulama mimarisi
 Uygulama, tablolar oluşturmak ve verilere erişmek için Entity Framework Code First kullanarak reklamları bir SQL veritabanına depolar. Her reklam için veritabanı, biri tam boyutlu görüntü ve diğeri küçük resim olmak üzere iki URL depolar.
 
-![Reklam tablosu](./media/cloud-services-dotnet-get-started/adtable.png)
+![Bu bir ad tablosunun görüntüsüdür](./media/cloud-services-dotnet-get-started/adtable.png)
 
 Bir kullanıcı görüntü yüklediğinde bir web rolünde çalışan ön uç görüntüyü bir [Azure blob](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)’a depolar ve reklam bilgilerini blob’u işaret eden bir URL ile birlikte veritabanına depolar. Aynı zamanda bir Azure kuyruğuna ileti yazar. Bir çalışan rolünde çalışan arka uç işlemi, kuyruğu yeni iletiler için düzenli olarak yoklar. Yeni bir ileti görüntülendiğinde çalışan rolü bu görüntü için bir küçük resim oluşturur ve küçük resim URL'si veritabanı alanını bu reklam için güncelleştirir. Aşağıdaki diyagramda uygulama bölümlerinin nasıl etkileşim kurduğu gösterilmektedir.
 
@@ -83,11 +84,11 @@ Bir kullanıcı görüntü yüklediğinde bir web rolünde çalışan ön uç g�
 
     Bir bulut hizmeti projesini ilk kez çalıştırdığınızda öykünücülerin başlatılması yaklaşık bir dakika sürer. Öykünücü başlatma tamamlandığında varsayılan tarayıcıda uygulama giriş sayfası açılır.
 
-    ![Contoso Ads mimarisi](./media/cloud-services-dotnet-get-started/home.png)
+    ![Contoso ads mimarisi 1](./media/cloud-services-dotnet-get-started/home.png)
 8. **Reklam Oluştur**'a tıklayın.
 9. Bazı test verilerini girin ve karşıya yüklenecek bir *.jpg* görüntüsü seçip **Oluştur**’a tıklayın.
 
-    ![Sayfa oluşturma](./media/cloud-services-dotnet-get-started/create.png)
+    ![Görüntü sayfa oluştur sayfasını gösterir](./media/cloud-services-dotnet-get-started/create.png)
 
     Uygulama Dizin sayfasına gider, ancak işleme henüz tamamlanmadığından yeni reklam için bir küçük resim göstermez.
 10. Biraz bekleyin ve ardından küçük resmi görmek için Dizin sayfasını yenileyin.
@@ -129,7 +130,7 @@ Azure bulut hizmeti, uygulamanın çalıştırılacağı ortamıdır.
 
     Aşağıdaki görüntüde bulut hizmeti CSvccontosoads.cloudapp.net URL’si ile oluşturulur.
 
-    ![Yeni Bulut Hizmeti](./media/cloud-services-dotnet-get-started/newcs.png)
+    ![Görüntüde yeni bulut hizmeti gösteriliyor](./media/cloud-services-dotnet-get-started/newcs.png)
 
 ### <a name="create-a-database-in-azure-sql-database"></a>Azure SQL veritabanı 'nda veritabanı oluşturma
 Uygulama bulutta çalıştırıldığında bulut tabanlı bir veritabanı kullanır.
@@ -230,7 +231,7 @@ Hem web rolü projesinin hem de çalışan rolü projesinin Azure Storage hesab�
 
 1. **Çözüm Gezgini**’nde **ContosoAdsCloudService** projesindeki **Roller** altında **ContosoAdsWeb**’e sağ tıklayın ve ardından **Özellikler**’e tıklayın.
 
-    ![Rol özellikleri](./media/cloud-services-dotnet-get-started/roleproperties.png)
+    ![Görüntü rol özelliklerini gösterir](./media/cloud-services-dotnet-get-started/roleproperties.png)
 2. **Ayarlar** sekmesine tıklayın. **Hizmet yapılandırması** açılan kutusunda **bulut**' u seçin.
 
     ![Bulut yapılandırması](./media/cloud-services-dotnet-get-started/sccloud.png)
@@ -378,7 +379,8 @@ Bu bölümde, yerel olarak test etmek amacıyla Azure Storage ve SQL bağlantı 
 2. Yaptığınız değişiklikleri kaydedin.
 3. ContosoAdsCloudService projesinde **Roller** altındaki ContosoAdsWeb öğesine sağ tıklayın ve ardından **Özellikler**’e tıklayın.
 
-    ![Roller altında Özellikler menü seçeneğini vurgulayan ekran görüntüsü.](./media/cloud-services-dotnet-get-started/roleproperties.png)
+    ![Rol özellikleri resmi](./media/cloud-services-dotnet-get-started/roleproperties.png)
+
 4. **Contosoadsweb [rol]** özellikleri penceresinde, **Ayarlar** sekmesine tıklayın ve ardından **Ayar ekle**' ye tıklayın.
 
     **Hizmet Yapılandırma** ayarını **Tüm Yapılandırmalar** olarak bırakın.

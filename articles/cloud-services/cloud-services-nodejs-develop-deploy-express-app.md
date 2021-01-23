@@ -1,24 +1,24 @@
 ---
-title: Node.js Express uygulaması oluşturun ve Azure 'a dağıtın Cloud Services
-titleSuffix: Azure Cloud Services
+title: Azure Cloud Services Node.js Express uygulaması oluşturma ve dağıtma (klasik)
 description: Node.js Web uygulamaları oluşturmak için bir MVC çerçevesi sağlayan Express modülünü kullanarak yeni bir uygulama oluşturmak için bu öğreticiyi kullanın.
-services: cloud-services
-documentationcenter: nodejs
-author: tgore03
-ms.service: cloud-services
-ms.devlang: nodejs
 ms.topic: article
-ms.date: 08/17/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.custom: devx-track-js
-ms.openlocfilehash: 7ecaccf36988e94d0cb1114bd04c5d571d4fe86d
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: e15af589b3a3c496738c97c0c2c6429ba708ba7e
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071872"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743347"
 ---
-# <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services"></a>Azure Cloud Services Express kullanarak Node.js Web uygulaması oluşturma ve dağıtma
+# <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services-classic"></a>Azure Cloud Services 'da Express kullanarak Node.js Web uygulaması oluşturma ve dağıtma (klasik)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
 
 Node.js, çekirdek çalışma zamanındaki en az bir işlev kümesi içerir.
 Geliştiriciler, genellikle Node.js bir uygulama geliştirirken ek işlevsellik sağlamak için 3. taraf modüllerini kullanır. Bu öğreticide, Node.js Web uygulamaları oluşturmak için bir MVC çerçevesi sağlayan [Express](https://github.com/expressjs/express) modülünü kullanarak yeni bir uygulama oluşturacaksınız.
@@ -35,7 +35,7 @@ Tamamlanan uygulamanın ekran görüntüsü aşağıda verilmiştir:
 1. **Başlat menüsünde** veya **Başlat ekranında**, **Windows PowerShell**' i arayın. Son olarak, **Windows PowerShell** ' e sağ tıklayın ve **yönetici olarak çalıştır**' ı seçin.
 
     ![Azure PowerShell simgesi](./media/cloud-services-nodejs-develop-deploy-express-app/azure-powershell-start.png)
-2. Dizinleri **c: \\ node** diziniyle değiştirin ve ardından, **WebRole1**adlı bir Web rolü olan **ifade** eden yeni bir çözüm oluşturmak için aşağıdaki komutları girin:
+2. Dizinleri **c: \\ node** diziniyle değiştirin ve ardından, **WebRole1** adlı bir Web rolü olan **ifade** eden yeni bir çözüm oluşturmak için aşağıdaki komutları girin:
 
    ```powershell
    PS C:\node> New-AzureServiceProject expressapp
@@ -74,7 +74,7 @@ Tamamlanan uygulamanın ekran görüntüsü aşağıda verilmiştir:
     ```
 
    ![NPM install komutunun çıktısı](./media/cloud-services-nodejs-develop-deploy-express-app/node26.png)
-4. **Bin/www** dosyasını **server.js**kopyalamak için aşağıdaki komutu kullanın. Bu, bulut hizmetinin bu uygulama için giriş noktasını bulabilmesini sağlayacak.
+4. **Bin/www** dosyasını **server.js** kopyalamak için aşağıdaki komutu kullanın. Bu, bulut hizmetinin bu uygulama için giriş noktasını bulabilmesini sağlayacak.
 
     ```powershell
     PS C:\node\expressapp\WebRole1> copy bin/www server.js

@@ -12,14 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 03/16/2020
 ms.author: tagore
-ms.openlocfilehash: ae284a6afa1f2e396aef8177229c344b569be6ec
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 70bcf5bce1c8c07633baf070149a9bb80c331d9c
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075680"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742582"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>TLS 1,2 desteklemeyen uygulamaların sorunlarını giderme
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
+
 Bu makalede, eski TLS protokollerinin (TLS 1,0 ve 1,1) nasıl etkinleştirileceği ve Windows Server 2019 bulut hizmeti Web ve çalışan rolleri üzerinde ek protokolleri desteklemek üzere eski şifre paketlerinin uygulanması açıklanmaktadır. 
 
 TLS 1,0 ve TLS 1,1 ' nin kullanım dışı bırakılması sırasında müşterilerimizin, kullanımdan kalkmayı planlayabilmeleri için eski protokolleri ve şifre paketlerini desteklemesi gerekebilecek bazı adımları anladık.  Bu eski değerleri yeniden etkinleştirmenizi önermeyiz, ancak müşterilere yardımcı olmaya yönelik rehberlik sunuyoruz. Müşterilerin bu makalede özetlenen değişiklikleri uygulamadan önce gerileme riskini değerlendirmelerini öneririz. 
@@ -342,7 +346,7 @@ Aşağıdaki kod parçacığını mevcut hizmet tanımı dosyanıza ekleyin.
 ## <a name="step-4-add-the-scripts-to-your-cloud-service"></a>4. Adım: komut dosyalarını bulut hizmetinize ekleme 
 
 1) Visual Studio 'da WebRole veya WorkerRole öğesine sağ tıklayın
-2) **Ekle** 'yi seçin
+2) **Ekle**’yi seçin
 3) **Varolan öğeyi** Seç
 4) Dosya Gezgini 'nde, **TLSsettings.ps1** ve **Runtlssettings. cmd** dosyalarını depoladığınız masaüstünüzde gezinin 
 5) Cloud Services projenize eklemek için iki dosyayı seçin

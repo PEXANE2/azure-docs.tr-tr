@@ -1,21 +1,24 @@
 ---
-title: Bulut hizmetini yapılandırma (portal) | Microsoft Docs
+title: Bulut hizmeti yapılandırma (klasik)-Portal | Microsoft Docs
 description: Azure 'da bulut hizmetlerini yapılandırmayı öğrenin. Bulut hizmeti yapılandırmasını güncelleştirmeyi ve rol örneklerine uzaktan erişimi yapılandırmayı öğrenin. Bu örnekler Azure portal kullanır.
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 12/07/2016
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 4f2b5716e253f2810ff953a10c879574c6a6c342
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: f16fcfe227663958279281659b09929a4cd2d386
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576668"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743432"
 ---
-# <a name="how-to-configure-cloud-services"></a>Cloud Services’ı Yapılandırma
+# <a name="how-to-configure-and-azure-cloud-service-classic"></a>Yapılandırma ve Azure bulut hizmeti (klasik)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
 
 Azure portal bir bulut hizmeti için en yaygın olarak kullanılan ayarları yapılandırabilirsiniz. Ya da yapılandırma dosyalarınızı doğrudan güncelleştirmek isterseniz, güncelleştirmek için bir hizmet yapılandırma dosyası indirin ve ardından güncelleştirilmiş dosyayı karşıya yükleyin ve bulut hizmetini yapılandırma değişiklikleriyle güncelleştirin. Her iki durumda da, yapılandırma güncelleştirmeleri tüm rol örneklerine gönderilir.
 
@@ -29,7 +32,7 @@ Azure, her rol için en az iki rol örneliğine sahipseniz, yapılandırma günc
 
 ![Ayarlar sayfası](./media/cloud-services-how-to-configure-portal/cloud-service.png)
 
-**Ayarlar** veya **Tüm ayarlar** bağlantıları, **özellikleri**değiştirmek, **yapılandırmayı**değiştirmek, **sertifikaları**yönetmek, **Uyarı kuralları**ayarlamak ve bu bulut hizmetine erişimi olan **kullanıcıları** yönetmek için **ayarları** açar.
+**Ayarlar** veya **Tüm ayarlar** bağlantıları, **özellikleri** değiştirmek, **yapılandırmayı** değiştirmek, **sertifikaları** yönetmek, **Uyarı kuralları** ayarlamak ve bu bulut hizmetine erişimi olan **kullanıcıları** yönetmek için **ayarları** açar.
 
 ![Azure bulut hizmeti ayarları](./media/cloud-services-how-to-configure-portal/cs-settings-blade.png)
 
@@ -37,7 +40,7 @@ Azure, her rol için en az iki rol örneliğine sahipseniz, yapılandırma günc
 
 Varsayılan olarak, Azure, Konuk işletim sistemini, Windows Server 2016 gibi hizmet yapılandırmanızda (. cscfg) belirttiğiniz işletim sistemi ailesinde bulunan en son desteklenen görüntüye düzenli olarak güncelleştirir.
 
-Belirli bir işletim sistemi sürümünü hedefliyorsanız, bu sürümü **yapılandırma**bölümünde ayarlayabilirsiniz.
+Belirli bir işletim sistemi sürümünü hedefliyorsanız, bu sürümü **yapılandırma** bölümünde ayarlayabilirsiniz.
 
 ![İşletim sistemi sürümünü ayarla](./media/cloud-services-how-to-configure-portal/cs-settings-config-guestosversion.png)
 
@@ -62,7 +65,7 @@ Buradan bir uyarı ayarlayabilirsiniz. **Ölçüm** açılan kutusuyla, aşağı
 
 ### <a name="configure-monitoring-from-a-metric-tile"></a>Ölçüm kutucuğundan izlemeyi yapılandırma
 
-**Ayarlar**  >  **Uyarı kurallarını**kullanmak yerine, bulut hizmetinin **izleme** bölümündeki ölçüm kutucuklarından birine tıklayabilirsiniz.
+**Ayarlar**  >  **Uyarı kurallarını** kullanmak yerine, bulut hizmetinin **izleme** bölümündeki ölçüm kutucuklarından birine tıklayabilirsiniz.
 
 ![Bulut hizmeti Izleme](./media/cloud-services-how-to-configure-portal/cs-monitoring.png)
 

@@ -1,23 +1,24 @@
 ---
 title: Socket.io-Azure kullanarak uygulama Node.js
-description: Bir yuvayı nasıl barındıracağınızı öğrenmek için bu öğreticiyi kullanın. Azure 'da GÇ tabanlı sohbet uygulaması. Socket.IO, bir node.js sunucusu ve istemcileri için gerçek zamanlı iletişim sağlar.
-services: cloud-services
-documentationcenter: nodejs
-author: tgore03
-ms.service: cloud-services
-ms.devlang: nodejs
+description: Bir yuvayı nasıl barındıracağınızı öğrenmek için bu öğreticiyi kullanın. Azure 'da GÇ tabanlı sohbet uygulaması. Socket.IO, node.js sunucusu ve istemcileri için gerçek zamanlı iletişim sağlar.
 ms.topic: article
-ms.date: 08/17/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.custom: devx-track-js
-ms.openlocfilehash: ef7325b53f7d6450acdff4664f3e338c31be9612
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: abc02769d7d978e14975d90ae0f98547bdc4faf7
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077227"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743330"
 ---
-# <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Azure bulut hizmetinde Socket.IO ile Node.js sohbet uygulaması oluşturma
+# <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service-classic"></a>Azure bulut hizmetinde Socket.IO ile Node.js sohbet uygulaması oluşturma (klasik)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
 
 Socket.IO, node.js sunucunuz ve istemcileriniz arasında gerçek zamanlı iletişim sağlar. Bu öğretici, bir yuva barındırırken size kılavuzluk eder. Azure 'da GÇ tabanlı sohbet uygulaması. Socket.IO hakkında daha fazla bilgi için bkz. [Socket.io](https://socket.io).
 
@@ -25,7 +26,7 @@ Tamamlanan uygulamanın ekran görüntüsü aşağıda verilmiştir:
 
 ![Azure 'da barındırılan hizmeti görüntüleyen bir tarayıcı penceresi][completed-app]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu makaledeki örneği başarıyla tamamlayabilmeniz için aşağıdaki ürünlerin ve sürümlerin yüklü olduğundan emin olun:
 
 * [Visual Studio 'yu](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx) yükler
@@ -38,7 +39,7 @@ Aşağıdaki adımlarda, Socket.IO uygulamasını barındıracak bulut hizmeti p
 1. **Başlat menüsünde** veya **Başlat ekranında**, **Windows PowerShell**' i arayın. Son olarak, **Windows PowerShell** ' e sağ tıklayın ve **yönetici olarak çalıştır**' ı seçin.
 
     ![Azure PowerShell simgesi][powershell-menu]
-2. **C: \\ node**adlı bir dizin oluşturun.
+2. **C: \\ node** adlı bir dizin oluşturun.
 
     ```powershell
     PS C:\> md node
@@ -50,7 +51,7 @@ Aşağıdaki adımlarda, Socket.IO uygulamasını barındıracak bulut hizmeti p
     PS C:\> cd node
     ```
 
-4. **Chatapp** adlı yeni bir çözüm ve **WorkerRole1**adlı bir çalışan rolü oluşturmak için aşağıdaki komutları girin:
+4. Adlı yeni bir çözüm `chatapp` ve adlı bir çalışan rolü oluşturmak için aşağıdaki komutları girin `WorkerRole1` :
 
     ```powershell
     PS C:\node> New-AzureServiceProject chatapp
@@ -72,7 +73,7 @@ Bu proje için, [Socket.IO GitHub deposundan]sohbet örneğini kullanacağız. �
    ![Gezgin, \\ arşivden ayıklanan örnek sohbet dizininin içeriğini görüntüleme][chat-contents]
 
    Yukarıdaki ekran görüntüsünde vurgulanan öğeler, **örnekler \\ sohbet** dizininden kopyalanan dosyalardır
-3. **C: \\ node \\ chatapp \\ WorkerRole1** dizininde **server.js** dosyasını silin ve **app.js** dosyasını **server.js**olarak yeniden adlandırın. Bu, daha önce **Add-AzureNodeWorkerRole** cmdlet 'i tarafından oluşturulan varsayılan **server.js** dosyasını kaldırır ve sohbet örneğinizden uygulama dosyası ile değiştirir.
+3. **C: \\ node \\ chatapp \\ WorkerRole1** dizininde **server.js** dosyasını silin ve **app.js** dosyasını **server.js** olarak yeniden adlandırın. Bu, daha önce **Add-AzureNodeWorkerRole** cmdlet 'i tarafından oluşturulan varsayılan **server.js** dosyasını kaldırır ve sohbet örneğinizden uygulama dosyası ile değiştirir.
 
 ### <a name="modify-serverjs-and-install-modules"></a>Server.js değiştirin ve modülleri yükler
 Azure öykünücüsünde uygulamayı test etmeden önce bazı küçük değişiklikler yapacağız. server.js dosyasında aşağıdaki adımları gerçekleştirin:
@@ -92,16 +93,16 @@ Azure öykünücüsünde uygulamayı test etmeden önce bazı küçük değişik
 3. Uygulamanın doğru bağlantı noktasını dinlediğinden emin olmak için, Not defteri 'nde veya en sevdiğiniz düzenleyicide server.js açın ve aşağıdaki satırı aşağıda gösterildiği gibi **Process. env. Port** ile **3000** değiştirerek aşağıdaki satırı değiştirin:
 
     ```js
-    //app.listen(3000, function () {            //Original
+    //app.listen(3000, function () {            //Original
     app.listen(process.env.port, function () {  //Updated
       var addr = app.address();
       console.log('   app listening on http://' + addr.address + ':' + addr.port);
     });
     ```
 
-Değişiklikleri **server.js**kaydettikten sonra, gerekli modülleri yüklemek için aşağıdaki adımları kullanın ve ardından uygulamayı Azure öykünücüsünde test edin:
+Değişiklikleri **server.js** kaydettikten sonra, gerekli modülleri yüklemek için aşağıdaki adımları kullanın ve ardından uygulamayı Azure öykünücüsünde test edin:
 
-1. **Azure PowerShell**kullanarak dizinleri **C: \\ node \\ chatapp \\ WorkerRole1** diziniyle değiştirin ve bu uygulamanın gerektirdiği modülleri yüklemek için şu komutu kullanın:
+1. **Azure PowerShell** kullanarak dizinleri **C: \\ node \\ chatapp \\ WorkerRole1** diziniyle değiştirin ve bu uygulamanın gerektirdiği modülleri yüklemek için şu komutu kullanın:
 
     ```powershell
     PS C:\node\chatapp\WorkerRole1> npm install
@@ -139,7 +140,7 @@ Değişiklikleri **server.js**kaydettikten sonra, gerekli modülleri yüklemek i
     PS C:\node\chatapp\WorkerRole1> Stop-AzureEmulator
     ```
 
-5. Uygulamayı Azure 'a dağıtmak için **Publish-AzureServiceProject** cmdlet 'ini kullanın. Örnek:
+5. Uygulamayı Azure 'a dağıtmak için **Publish-AzureServiceProject** cmdlet 'ini kullanın. Örneğin:
 
     ```powershell
     PS C:\node\chatapp\WorkerRole1> Publish-AzureServiceProject -ServiceName mychatapp -Location "East US" -Launch

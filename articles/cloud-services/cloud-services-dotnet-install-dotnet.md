@@ -1,24 +1,25 @@
 ---
-title: Azure Cloud Services rollerine .NET 'i yükler | Microsoft Docs
+title: Azure Cloud Services (klasik) rollerine .NET 'i yükler | Microsoft Docs
 description: Bu makalede, bulut hizmeti Web ve çalışan rollerinizin .NET Framework el ile nasıl yükleneceği açıklanır.
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-manager: carmonm
-ms.service: cloud-services
-ms.devlang: dotnet
-ms.custom: devx-track-dotnet
 ms.topic: article
-ms.date: 06/22/2018
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 6de4b79560557fc86edb9e1a25e32a6a1983ceb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 18665fabad079a8759f26be8834b2fe029ab5f49
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88932245"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742786"
 ---
-# <a name="install-net-on-azure-cloud-services-roles"></a>Azure Cloud Services rollerine .NET 'i yükler
+# <a name="install-net-on-azure-cloud-services-classic-roles"></a>Azure Cloud Services (klasik) rollerine .NET 'i yükler
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
+
 Bu makalede, Azure Konuk IŞLETIM sistemiyle birlikte gelmeyen .NET Framework sürümlerinin nasıl yükleneceği açıklanır. Bulut hizmeti Web ve çalışan rollerinizi yapılandırmak için konuk işletim sisteminde .NET kullanabilirsiniz.
 
 Örneğin, Konuk işletim sistemi aile 4 ' te .NET Framework 4.6.2 yükleyebilirsiniz ve bu, .NET Framework 4,6 ' un herhangi bir sürümüyle birlikte gelmeyecektir. (Konuk işletim sistemi ailesi 5, .NET Framework 4,6 ile gelir.) Azure Konuk işletim sistemi sürümleri hakkında en son bilgiler için bkz. [Azure Konuk işletim sistemi sürüm haberleri](cloud-services-guestos-update-matrix.md). 
@@ -36,11 +37,11 @@ Web ve çalışan rolleriniz üzerinde .NET yüklemek için, bulut hizmeti proje
 * [.NET Framework 4.6.2 Web Yükleyicisi](https://www.microsoft.com/download/details.aspx?id=53345)
 
 Bir *Web* rolü için yükleyiciyi eklemek için:
-  1. **Çözüm Gezgini**, bulut hizmeti projenizdeki **Roller** ' in altında *Web* rolünüze sağ tıklayıp **Add**  >  **Yeni klasör**Ekle ' yi seçin. **Bin**adlı bir klasör oluşturun.
-  2. Bin klasörüne sağ tıklayın ve **Add**  >  **Varolan öğe**Ekle ' yi seçin. .NET yükleyicisini seçin ve bin klasörüne ekleyin.
+  1. **Çözüm Gezgini**, bulut hizmeti projenizdeki **Roller** ' in altında *Web* rolünüze sağ tıklayıp   >  **Yeni klasör** Ekle ' yi seçin. **Bin** adlı bir klasör oluşturun.
+  2. Bin klasörüne sağ tıklayın ve   >  **Varolan öğe** Ekle ' yi seçin. .NET yükleyicisini seçin ve bin klasörüne ekleyin.
   
 Bir *çalışan* rolü için yükleyiciyi eklemek için:
-* *Çalışan* rolünüze sağ tıklayın ve **Add**  >  **Varolan öğe**Ekle ' yi seçin. .NET yükleyicisini seçin ve role ekleyin. 
+* *Çalışan* rolünüze sağ tıklayın ve   >  **Varolan öğe** Ekle ' yi seçin. .NET yükleyicisini seçin ve role ekleyin. 
 
 Bu şekilde, rol içerik klasörüne dosyalar eklendiğinde, bulut hizmeti paketinize otomatik olarak eklenir. Dosyalar daha sonra sanal makinede tutarlı bir konuma dağıtılır. Tüm rollerin yükleyicinin bir kopyasına sahip olması için bulut hizmetinizdeki her bir Web ve çalışan rolü için bu işlemi tekrarlayın.
 
@@ -74,7 +75,7 @@ Bir rol başlamadan önce işlemleri gerçekleştirmek için başlangıç görev
     </Startup>
     ```
    
-    Önceki yapılandırma, `install.cmd` .NET Framework yüklemek için konsol komutunu yönetici ayrıcalıklarıyla çalıştırır. Yapılandırma ayrıca **Netfxınstall**adlı bir **localStorage** öğesi oluşturur. Başlangıç betiği, bu yerel depolama kaynağını kullanmak için Temp klasörünü ayarlar. 
+    Önceki yapılandırma, `install.cmd` .NET Framework yüklemek için konsol komutunu yönetici ayrıcalıklarıyla çalıştırır. Yapılandırma ayrıca **Netfxınstall** adlı bir **localStorage** öğesi oluşturur. Başlangıç betiği, bu yerel depolama kaynağını kullanmak için Temp klasörünü ayarlar. 
     
     > [!IMPORTANT]
     > Framework 'ün doğru yüklemesini sağlamak için bu kaynağın boyutunu en az 1.024 MB olarak ayarlayın.
@@ -198,7 +199,7 @@ Bir rol başlamadan önce işlemleri gerçekleştirmek için başlangıç görev
    EXIT /B 0
    ```
 
-3. **Add**  >  Bu konunun önceki kısımlarında açıklandığı gibi **Çözüm Gezgini** ' de**var olan öğe** Ekle ' 'yi kullanarak her role Install. cmd dosyasını ekleyin. 
+3.   >  Bu konunun önceki kısımlarında açıklandığı gibi **Çözüm Gezgini** ' de **var olan öğe** Ekle ' 'yi kullanarak her role Install. cmd dosyasını ekleyin. 
 
     Bu adım tamamlandıktan sonra, tüm rollerin .NET yükleyici dosyası ve Install. cmd dosyası olması gerekir.
 

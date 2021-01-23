@@ -1,20 +1,25 @@
 ---
-title: Azure Cloud Services nedir? | Microsoft Docs
+title: Azure Cloud Services nedir (klasik) | Microsoft Docs
 description: Azure Cloud Services 'in ne olduğunu, özellikle ölçeklenebilir, güvenilir ve çalışır hale gelen uygulamaları destekleyecek şekilde tasarlanan hakkında bilgi edinin.
-services: cloud-services
-author: tgore03
-ms.service: multiple
 ms.topic: article
-ms.date: 04/19/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 0013a3a29bae9d2dde7896b3ae23d0d358946f2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: cbb9aae57b952c05aa722f81309158a11aef826b
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88224297"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742820"
 ---
-# <a name="overview-of-azure-cloud-services"></a>Azure Cloud Services 'ye Genel Bakış
+# <a name="overview-of-azure-cloud-services-classic"></a>Azure Cloud Services 'ye Genel Bakış (klasik)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
+
 Azure Cloud Services bir [hizmet olarak platform](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) örneğidir. [Azure App Service](../app-service/overview.md)gibi, bu teknoloji ölçeklenebilir, güvenilir ve çalışır maliyetli uygulamaları destekleyecek şekilde tasarlanmıştır. App Service sanal makinelerde (VM) barındırıldığından aynı şekilde Azure Cloud Services de aynı şekilde barındırılır. Ancak VM 'Lerde daha fazla denetiminiz vardır. Azure Cloud Services kullanan VM 'Lere kendi yazılımınızı yükleyebilir ve bunlara uzaktan erişebilirsiniz.
 
 ![Azure Cloud Services diyagramı](./media/cloud-services-choose-me/diagram.png)

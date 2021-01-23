@@ -1,0 +1,166 @@
+---
+title: Bulut hizmeti dağıtma (genişletilmiş destek)-PowerShell
+description: PowerShell kullanarak bir bulut hizmeti (genişletilmiş destek) dağıtma
+ms.topic: tutorial
+ms.service: cloud-services-extended-support
+author: gachandw
+ms.author: gachandw
+ms.reviewer: mimckitt
+ms.date: 10/13/2020
+ms.custom: ''
+ms.openlocfilehash: 325e9123dd3f121b88df6d03518cfd9300fe3be9
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98745216"
+---
+# <a name="create-a-cloud-service-extended-support-using-azure-powershell"></a>Azure PowerShell kullanarak bir bulut hizmeti (genişletilmiş destek) oluşturma
+
+Bu makalede, `Az.CloudService` Azure 'da birden çok rol (WebRole ve WorkerRole) ve Uzak Masaüstü uzantısı olan Cloud Services (genişletilmiş destek) dağıtmak için PowerShell modülünün nasıl kullanılacağı gösterilmektedir. 
+
+> [!IMPORTANT]
+> Cloud Services (genişletilmiş destek) Şu anda genel önizleme aşamasındadır.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+1. Cloud Services (genişletilmiş destek) için [dağıtım önkoşullarını](deploy-prerequisite.md) gözden geçirin ve ilişkili kaynakları oluşturun. 
+
+3. Install az. CloudService PowerShell Module  
+
+    ```powershell
+    Install-Module -Name Az.CloudService 
+    ```
+
+4. Yeni bir kaynak grubu oluşturma. Mevcut bir kaynak grubu kullanılıyorsa bu adım isteğe bağlıdır.   
+
+    ```powershell
+    New-AzResourceGroup -ResourceGroupName “ContosOrg” -Location “East US” 
+    ```
+
+5. Bulut hizmeti paketi (. cspkg) ve hizmet yapılandırma (. cscfg) dosyalarını depolamak için kullanılacak bir depolama hesabı ve kapsayıcı oluşturun. Depolama hesabı adı için benzersiz bir ad kullanmanız gerekir. 
+
+    ```powershell
+    $storageAccount = New-AzStorageAccount -ResourceGroupName “ContosOrg” -Name “contosostorageaccount” -Location “East US” -SkuName “Standard_RAGRS” -Kind “StorageV2” 
+    $container = New-AzStorageContainer -Name “ContosoContainer” -Context $storageAccount.Context -Permission Blob 
+    ```
+
+6. Bulut hizmeti paketinizi (cspkg) depolama hesabına yükleyin.
+
+    ```powershell
+    $tokenStartTime = Get-Date 
+    $tokenEndTime = $tokenStartTime.AddYears(1) 
+    $cspkgBlob = Set-AzStorageBlobContent -File “./ContosoApp/ContosoApp.cspkg” -Container “ContosoContainer” -Blob “ContosoApp.cspkg” -Context $storageAccount.Context 
+    $cspkgToken = New-AzStorageBlobSASToken -Container “ContosoContainer” -Blob $cspkgBlob.Name -Permission rwd -StartTime $tokenStartTime -ExpiryTime $tokenEndTime -Context $storageAccount.Context 
+    $cspkgUrl = $cspkgBlob.ICloudBlob.Uri.AbsoluteUri + $cspkgToken 
+    ```
+ 
+
+7.  Bulut hizmeti yapılandırmanızı (cscfg) depolama hesabına yükleyin. 
+
+    ```powershell
+    $cscfgBlob = Set-AzStorageBlobContent -File “./ContosoApp/ContosoApp.cscfg” -Container ContosoContainer -Blob “ContosoApp.cscfg” -Context $storageAccount.Context 
+    $cscfgToken = New-AzStorageBlobSASToken -Container “ContosoContainer” -Blob $cscfgBlob.Name -Permission rwd -StartTime $tokenStartTime -ExpiryTime $tokenEndTime -Context $storageAccount.Context 
+    $cscfgUrl = $cscfgBlob.ICloudBlob.Uri.AbsoluteUri + $cscfgToken 
+    ```
+
+8. Sanal ağı ve alt ağı oluşturun. Mevcut bir ağ ve alt ağ kullanılıyorsa bu adım isteğe bağlıdır. Bu örnek, hem bulut hizmeti rolleri (WebRole hem de WorkerRole) için tek bir sanal ağ ve alt ağ kullanır. 
+
+    ```powershell
+    $subnet = New-AzVirtualNetworkSubnetConfig -Name "ContosoWebTier1" -AddressPrefix "10.0.0.0/24" -WarningAction SilentlyContinue 
+    $virtualNetwork = New-AzVirtualNetwork -Name “ContosoVNet” -Location “East US” -ResourceGroupName “ContosOrg” -AddressPrefix "10.0.0.0/24" -Subnet $subnet 
+    ```
+ 
+9. Genel IP adresi oluşturun ve (isteğe bağlı olarak) genel IP adresinin DNS etiketi özelliğini ayarlayın. Statik IP kullanıyorsanız, hizmet yapılandırma dosyasında bir Ayrılmış IP olarak başvurulması gerekir.  
+
+    ```powershell
+    $publicIp = New-AzPublicIpAddress -Name “ContosIp” -ResourceGroupName “ContosOrg” -Location “East US” -AllocationMethod Dynamic -IpAddressVersion IPv4 -DomainNameLabel “contosoappdns” -Sku Basic 
+    ```
+
+10. Ağ profili nesnesi oluşturun ve genel IP adresini platform tarafından oluşturulan yük dengeleyicinin ön ucu ile ilişkilendirin.  
+
+    ```powershell
+    $publicIP = Get-AzPublicIpAddress -ResourceGroupName ContosOrg -Name ContosIp  
+    $feIpConfig = New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject -Name 'ContosoFe' -PublicIPAddressId $publicIP.Id 
+    $loadBalancerConfig = New-AzCloudServiceLoadBalancerConfigurationObject -Name 'ContosoLB' -FrontendIPConfiguration $feIpConfig 
+    $networkProfile = @{loadBalancerConfiguration = $loadBalancerConfig} 
+    ```
+ 
+11. Anahtar Kasası oluşturun. Bu Key Vault, bulut hizmeti (genişletilmiş destek) rolleriyle ilişkili sertifikaları depolamak için kullanılacaktır. Key Vault, bulut hizmeti ile aynı bölgede ve abonelikte yer almalıdır ve benzersiz bir ada sahip olmalıdır. Daha fazla bilgi için bkz. [Azure Cloud Services sertifikaları kullanma (genişletilmiş destek)](certificates-and-key-vault.md).
+
+    ```powershell
+    New-AzKeyVault -Name "ContosKeyVault” -ResourceGroupName “ContosoOrg” -Location “East US” 
+    ```
+
+13. Key Vault erişim ilkesini güncelleştirin ve Kullanıcı hesabınıza sertifika izinleri verin. 
+
+    ```powershell
+    Set-AzKeyVaultAccessPolicy -VaultName 'ContosKeyVault' -ResourceGroupName 'ContosoOrg' -UserPrincipalName 'user@domain.com' -PermissionsToCertificates create,get,list,delete 
+    ```
+
+    Alternatif olarak, erişim ilkesini ObjectID aracılığıyla (çalıştırılarak elde edilebilir `Get-AzADUser` ) ayarlayın 
+    
+    ```powershell
+    Set-AzKeyVaultAccessPolicy -VaultName 'ContosKeyVault' -ResourceGroupName 'ContosOrg' -ObjectId 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' -PermissionsToCertificates create,get,list,delete 
+    ```
+ 
+
+14. Bu örnekte, bir Key Vault otomatik olarak imzalanan bir sertifika ekleyeceğiz. Sertifika parmak izinin, bulut hizmeti rollerinde dağıtım için bulut hizmeti yapılandırma (. cscfg) dosyasına eklenmesi gerekir. 
+
+    ```powershell
+    $Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal 
+    Add-AzKeyVaultCertificate -VaultName "ContosKeyVault" -Name "ContosCert" -CertificatePolicy $Policy 
+    ```
+ 
+15. Bellek içi bir nesne için bir işletim sistemi profili oluşturun. İşletim sistemi profili, bulut hizmeti rolleriyle ilişkili sertifikaları belirtir. Bu, önceki adımda oluşturulan sertifika ile aynı olacaktır. 
+
+    ```powershell
+    $keyVault = Get-AzKeyVault -ResourceGroupName ContosOrg -VaultName ContosKeyVault 
+    $certificate = Get-AzKeyVaultCertificate -VaultName ContosKeyVault -Name ContosCert 
+    $secretGroup = New-AzCloudServiceVaultSecretGroupObject -Id $keyVault.ResourceId -CertificateUrl $certificate.SecretId 
+    $osProfile = @{secret = @($secretGroup)} 
+    ```
+
+16. Bellek içi nesne için bir rol profili oluşturun. Rol profili, ad, kapasite ve katman gibi bir rol SKU 'ya özgü özellikleri tanımlar. Bu örnekte, iki rol tanımlıyoruz: frontendRole ve backendRole. Rol profili bilgileri, yapılandırma (cscfg) dosya ve hizmet tanımı (csdef) dosyasında tanımlanan rol yapılandırması ile eşleşmelidir. 
+
+    ```powershell
+    $frontendRole = New-AzCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2 
+    $backendRole = New-AzCloudServiceRoleProfilePropertiesObject -Name 'ContosoBackend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2 
+    $roleProfile = @{role = @($frontendRole, $backendRole)} 
+    ```
+
+17. Seçim Bulut hizmetinize eklemek istediğiniz bir uzantı profili bellek içi nesnesi oluşturun. Bu örnekte, RDP uzantısı ekleyeceğiz. 
+
+    ```powershell
+    $credential = Get-Credential 
+    $expiration = (Get-Date).AddYears(1) 
+    $extension = New-AzCloudServiceRemoteDesktopExtensionObject -Name 'RDPExtension' -Credential $credential -Expiration $expiration -TypeHandlerVersion '1.2.1' 
+
+    $wadExtension = New-AzCloudServiceDiagnosticsExtension -Name "WADExtension" -ResourceGroupName "ContosOrg" -CloudServiceName "ContosCS" -StorageAccountName "ContosSA" -StorageAccountKey $storageAccountKey[0].Value -DiagnosticsConfigurationPath $configFile -TypeHandlerVersion "1.5" -AutoUpgradeMinorVersion $true 
+    $extensionProfile = @{extension = @($rdpExtension, $wadExtension)} 
+    ```
+18. Seçim Bulut hizmetinize eklemek istediğiniz etiketleri PowerShell karma tablosu olarak tanımlayın. 
+
+    ```powershell
+    $tag=@{"Owner" = "Contoso"} 
+    ```
+
+19. SAS URL 'Leri & profil nesneleri kullanarak bulut hizmeti dağıtımı oluşturun.
+
+    ```powershell
+    $cloudService = New-AzCloudService                                                  ` 
+    -Name “ContosoCS”                                           ` 
+    -ResourceGroupName “ContosOrg”                     ` 
+    -Location “East US”                                           ` 
+    -PackageUrl $cspkgUrl                       ` 
+    -ConfigurationUrl $cscfgUrl                                         ` 
+    -UpgradeMode 'Auto'                                           ` 
+    -RoleProfile $roleProfile                                       ` 
+    -NetworkProfile $networkProfile  ` 
+    -ExtensionProfile $extensionProfile ` 
+    -OSProfile $osProfile  
+    -Tag $tag 
+    ```
+
+## <a name="next-steps"></a>Sonraki adımlar 
+- Cloud Services için [sık sorulan soruları](faq.md) gözden geçirin (genişletilmiş destek).
+- [Azure Portal](deploy-portal.md), [PowerShell](deploy-powershell.md), [şablon](deploy-template.md) veya [Visual Studio](deploy-visual-studio.md)kullanarak bir bulut hizmeti (genişletilmiş destek) dağıtın.

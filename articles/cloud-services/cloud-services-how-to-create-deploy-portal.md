@@ -1,21 +1,25 @@
 ---
-title: Bulut hizmeti oluşturma ve dağıtma | Microsoft Docs
+title: Bulut hizmeti oluşturma ve dağıtma (klasik) | Microsoft Docs
 description: Bir bulut hizmeti oluşturmak için hızlı oluşturma yöntemini kullanmayı ve Azure 'da bir bulut hizmeti paketini yüklemek ve dağıtmak için karşıya yüklemeyi kullanmayı öğrenin.
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 05/18/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 66938975784f1de2abdc0ac22e62aaca82279f86
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 879b86714adf50b5a4da4398389405063ac046dc
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164173"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743415"
 ---
-# <a name="how-to-create-and-deploy-a-cloud-service"></a>Bulut hizmeti oluşturma ve dağıtma
+# <a name="how-to-create-and-deploy-an-azure-cloud-service-classic"></a>Azure bulut hizmeti oluşturma ve dağıtma (klasik)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
+
 Azure portal bulut hizmeti oluşturmanız ve dağıtmanız için iki yol sunar: *hızlı oluşturma* ve *özel oluşturma*.
 
 Bu makalede yeni bir bulut hizmeti oluşturmak için hızlı oluşturma yönteminin nasıl kullanılacağı ve sonra Azure 'da bir bulut hizmeti paketini karşıya yüklemek ve dağıtmak için **karşıya yükleme** işleminin nasıl yapılacağı açıklanır. Bu yöntemi kullandığınızda Azure portal, hareket halindeyken tüm gereksinimlerin tamamlanmasına yönelik uygun olan bağlantıları sağlar. Bulut hizmetinizi oluştururken dağıtmaya hazırsanız, her ikisini de özel oluştur 'u kullanarak yapabilirsiniz.
@@ -54,33 +58,34 @@ Web rollerinin veya çalışan rollerinin dağıtımlarıyla bir bulut hizmeti o
 
 ## <a name="create-and-deploy"></a>Oluşturma ve dağıtma
 1. [Azure Portal](https://portal.azure.com/)oturum açın.
-2. **İşlem > kaynak oluştur ' a**tıklayın, ardından aşağı kaydırarak **bulut hizmeti**' ne tıklayın.
+2. **İşlem > kaynak oluştur ' a** tıklayın, ardından aşağı kaydırarak **bulut hizmeti**' ne tıklayın.
 
-    ![Kaynak oluşturma > Işlem altında bulut hizmeti seçeneğini vurgulayan ekran görüntüsü.](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
-3. Yeni **bulut hizmeti** bölmesinde **DNS adı**için bir değer girin.
+    ![Cloud Service1 'ı yayımlayın](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
+
+3. Yeni **bulut hizmeti** bölmesinde **DNS adı** için bir değer girin.
 4. Yeni bir **kaynak grubu** oluşturun veya var olan bir grubu seçin.
-5. Bir **konum**seçin.
+5. Bir **konum** seçin.
 6. **Paket**' e tıklayın. Bu, **bir paket yükle** bölmesini açar. Gerekli alanları girin. Rollerinizin herhangi biri tek bir örnek içeriyorsa, **bir veya daha fazla rol tek bir örnek içeriyorsa bile dağıtıma** dikkat edin.
 7. **Dağıtımı Başlat** ' ın seçili olduğundan emin olun.
 8. **Tamam** ' **a tıklayarak bir paket yükle** bölmesini kapatacaktır.
 9. Eklemek için herhangi bir sertifikanız yoksa **Oluştur**' a tıklayın.
 
-    ![Bulut hizmetinizi yayımlayın](media/cloud-services-how-to-create-deploy-portal/select-package.png)
+    ![Cloud Service2 'ı yayımlayın](media/cloud-services-how-to-create-deploy-portal/select-package.png)
 
 ## <a name="upload-a-certificate"></a>Sertifikayı karşıya yükle
 Dağıtım paketiniz [sertifikaları kullanacak şekilde yapılandırıldıysa](cloud-services-configure-ssl-certificate-portal.md#modify), sertifikayı Şimdi karşıya yükleyebilirsiniz.
 
 1. **Sertifikalar**' ı seçin ve sertifika **Ekle** BÖLMESINDE, TLS/SSL sertifikası. pfx dosyasını seçin ve ardından sertifika için **parola** belirtin.
-2. **Sertifika**Ekle ' ye tıklayın ve ardından Sertifika **Ekle** bölmesinde **Tamam** ' a tıklayın.
+2. **Sertifika** Ekle ' ye tıklayın ve ardından Sertifika **Ekle** bölmesinde **Tamam** ' a tıklayın.
 3. **Bulut hizmeti** bölmesinde **Oluştur** ' a tıklayın. Dağıtım, **hazırlık** durumuna ulaştığında, sonraki adımlara geçebilirsiniz.
 
-    ![Sertifika yükleme sürecini vurgulayan ekran görüntüsü.](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
+    ![Cloud Service3 'ı yayımlayın](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
 
 ## <a name="verify-your-deployment-completed-successfully"></a>Dağıtımınızın başarıyla tamamlandığını doğrulayın
 1. Bulut hizmeti örneğine tıklayın.
 
-    Durum, hizmetin **çalıştığını**göstermelidir.
-2. **Essentials**altında, bulut hizmetinizi bir Web tarayıcısında açmak için **site URL 'sine** tıklayın.
+    Durum, hizmetin **çalıştığını** göstermelidir.
+2. **Essentials** altında, bulut hizmetinizi bir Web tarayıcısında açmak için **site URL 'sine** tıklayın.
 
     ![CloudServices_QuickGlance](./media/cloud-services-how-to-create-deploy-portal/running.png)
 

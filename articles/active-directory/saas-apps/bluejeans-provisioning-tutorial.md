@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 204cdc689d5a117df428bb314a81a35081f7b13c
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 8e155a253910cc5ee3f4fc71cf9ea66ced5cb46f
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357666"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742140"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için BlueJeans yapılandırma
 
@@ -25,7 +25,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları otomat
 > [!NOTE]
 > Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Hizmetin işlevleri ve çalışma şekli hakkında daha fazla bilgi edinmek ve sık sorulan soruları incelemek için bkz. [Azure Active Directory ile SaaS uygulamalarına kullanıcı hazırlama ve kaldırma işlemlerini otomatik hale getirme](../app-provisioning/user-provisioning.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, zaten aşağıdakilere sahip olduğunuzu varsayar:
 
@@ -42,11 +42,11 @@ Azure AD ile otomatik Kullanıcı sağlama için şema yapılandırmadan önce A
 
 **Azure AD Uygulama Galerisi 'nden şema eklemek için aşağıdaki adımları uygulayın:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** ' i seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -81,59 +81,61 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya gru
 
 ### <a name="to-configure-automatic-user-provisioning-for-bluejeans-in-azure-ad"></a>Azure AD 'de BlueJeans için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın ve **Kurumsal uygulamalar** ' ı seçin, **tüm uygulamalar** ' ı seçin ve ardından **BlueJeans** ' ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın ve **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **BlueJeans**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **BlueJeans** ' ı seçin.
+2. Uygulamalar listesinde, **BlueJeans**' ı seçin.
 
     ![Uygulamalar listesindeki BlueJeans bağlantısı](common/all-applications.png)
 
 3. **Hazırlama** sekmesini seçin.
 
-    ![Sağlama seçeneği vurgulanmış ve çağrılan BlueJeans Enterprise uygulaması kenar çubuğunun ekran görüntüsü.](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningTab.png)
+    ![Hazırlama sekmesi](common/provisioning.png)
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
-    ![Sağlama modu ve yönetici kimlik bilgileri bölümleri olarak adlandırılan sağlama sayfasının ekran görüntüsü.](./media/bluejeans-provisioning-tutorial/Bluejeans1.png)
+    ![Sekme otomatik sağlama](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümü altında, **Yönetici Kullanıcı adı** ' nı ve BlueJeans hesabınızın **yönetici parolasını** girin. Bu değerlere örnek olarak şunlar verilebilir:
+5. **Yönetici kimlik bilgileri** bölümü altında, BlueJeans kiracı URL 'Nizi ve gizli belirtecinizi girin. Azure AD 'in BlueJeans 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, BlueJeans hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-   * **Yönetici Kullanıcı adı** alanında yönetici hesabının kullanıcı adını BlueJeans kiracınızda doldurun. Örnek: admin@contoso.com.
+    ![Belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-   * **Yönetici parolası** alanında, yönetici kullanıcı adına karşılık gelen parolayı doldurun.
 
-6. Adım 5 ' te gösterilen alanlar doldurulmaya göre, Azure AD 'nin Bluejefıler 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, BlueJeans hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
-    ![Test bağlantısı seçeneği olarak adlandırılan yönetici kimlik bilgileri bölümünün ekran görüntüsü.](./media/bluejeans-provisioning-tutorial/BluejeansTestConnection.png)
+    ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
+7. **Kaydet**’e tıklayın.
 
-    ![Bildirim e-postası metin kutusunun ekran görüntüsü.](./media/bluejeans-provisioning-tutorial/BluejeansNotificationEmail.png)
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Bluelerile eşitler**' ı seçin.
 
-8. **Kaydet** ’e tıklayın.
+9. **Öznitelik eşleme** bölümünde Azure AD 'Den BlueJeans 'a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri için şema içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-9. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Bluelerile eşitler** ' ı seçin.
+|Öznitelik|Tür|Filtreleme için destekleniyor|
+|---|---|---|
+|userName|Dize|&check;|
+|active|Boole|
+|başlık|Dize|
+|emails[type eq "work"].value|Dize|
+|name.givenName|Dize|
+|name.familyName|Dize|
+|phoneNumbers[type eq "work"].value|Dize|
+|urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Manager|Dize|
 
-    ![Eşlemeleri Azure Active Directory Kullanıcıları BlueJeans seçeneği vurgulanmış şekilde eşlemeler bölümünün ekran görüntüsü.](./media/bluejeans-provisioning-tutorial/BluejeansMapping.png)
+10. Kapsam belirleme filtrelerini yapılandırmak için [Kapsam belirleme filtresi öğreticisi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) ile sunulan yönergeleri izleyin.
 
-10. **Öznitelik eşleme** bölümünde Azure AD 'Den BlueJeans 'a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri için şema içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+11. Şema için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Yedi eşleşme görüntülenirken öznitelik eşlemeleri bölümünün ekran görüntüsü.](./media/bluejeans-provisioning-tutorial/BluejeansUserMappingAtrributes.png)
+    ![Hazırlama Durumu Açık](common/provisioning-toggle-on.png)
 
-11. Kapsam belirleme filtrelerini yapılandırmak için [Kapsam belirleme filtresi öğreticisi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) ile sunulan yönergeleri izleyin.
+12. **Ayarlar** bölümünde **kapsam** içindeki istenen değerleri seçerek şema için sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-12. Şema için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
+    ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-    ![Sağlama durumu seçeneğinin açık olarak ayarlandığı Ayarlar bölümünün ekran görüntüsü.](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningStatus.png)
+13. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
-13. **Ayarlar** bölümünde **kapsam** içindeki istenen değerleri seçerek şema için sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
-
-    ![Kapsam ayarının yalnızca atanmış kullanıcıları ve grupları Eşitle seçeneğinin vurgulandığı ekran görüntüsü.](./media/bluejeans-provisioning-tutorial/UserGroupSelection.png)
-
-14. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
-
-    ![Kayıt seçeneği olarak adlandırılan BlueJeans kurumsal uygulama kenar çubuğunun ekran görüntüsü.](./media/bluejeans-provisioning-tutorial/SaveProvisioning.png)
+    ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 
 Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. **Eşitleme ayrıntıları** bölümünü kullanarak ilerlemeyi Izleyebilir ve Azure AD sağlama hizmeti tarafından, şema üzerinde gerçekleştirilen tüm eylemleri açıklayan, sağlama etkinlik raporuna ilişkin bağlantıları izleyebilirsiniz.
 

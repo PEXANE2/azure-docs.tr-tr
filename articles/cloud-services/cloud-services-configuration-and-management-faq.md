@@ -1,28 +1,24 @@
 ---
 title: Yapılandırma ve yönetim sorunları hakkında SSS
-titleSuffix: Azure Cloud Services
 description: Bu makalede Microsoft Azure Cloud Services yapılandırma ve yönetimi hakkında sık sorulan sorular listelenmektedir.
-services: cloud-services
-documentationcenter: ''
-author: genlin
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
-ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/23/2018
-ms.author: genli
-ms.openlocfilehash: c4497805e64ef303c9d7340c48a49027b3a26bef
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: c5dd09292897d69f90606e8661b4e6cb28090612
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011038"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742599"
 ---
-# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services için yapılandırma ve yönetim sorunları: sık sorulan sorular (SSS)
+# <a name="configuration-and-management-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Azure Cloud Services için yapılandırma ve yönetim sorunları (klasik): sık sorulan sorular (SSS)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
 
 Bu makalede [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services)yapılandırma ve yönetim sorunları hakkında sık sorulan sorular yer almaktadır. Boyut bilgileri için [Cloud SERVICES VM boyutu sayfasına](cloud-services-sizes-specs.md) de başvurabilirsiniz.
 
@@ -62,7 +58,7 @@ Bu makalede [Microsoft Azure Cloud Services](https://azure.microsoft.com/service
 
 **Genel**
 
-- ["Noalgılamasına f" i web siteme Nasıl yaparım? eklensin mi?](#how-do-i-add-nosniff-to-my-website)
+- [Nasıl yaparım? `nosniff` Web siteme eklensin mi?](#how-do-i-add-nosniff-to-my-website)
 - [Web rolü için IIS 'yi özelleştirmek Nasıl yaparım??](#how-do-i-customize-iis-for-a-web-role)
 - [Bulut hizmetimin kota sınırı nedir?](#what-is-the-quota-limit-for-my-cloud-service)
 - [Bulut hizmeti sanal makinemdeki sürücü neden çok az boş disk alanı gösteriyor?](#why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space)
@@ -128,7 +124,7 @@ $cert = New-SelfSignedCertificate -DnsName yourdomain.cloudapp.net -CertStoreLoc
 $password = ConvertTo-SecureString -String "your-password" -Force -AsPlainText
 Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $password
 ```
-Yalnızca bir blob veya yerel olarak, csdef ve cscfg karşıya yükleme konumunuz için yerel ' i seçebilme. [New-AzureDeployment](/powershell/module/servicemanagement/azure.service/new-azuredeployment?view=azuresmps-4.0.0)kullanarak her bir konum değerini belirleyebilirsiniz.
+Yalnızca bir blob veya yerel olarak, csdef ve cscfg karşıya yükleme konumunuz için yerel ' i seçebilme. [New-AzureDeployment](/powershell/module/servicemanagement/azure.service/new-azuredeployment?view=azuresmps-4.0.0&preserve-view=true)kullanarak her bir konum değerini belirleyebilirsiniz.
 
 Örnek düzeyinde ölçümleri izleme özelliği. Ek izleme özellikleri [Cloud Services izleme](cloud-services-how-to-monitor.md)bölümünde bulunur.
 
@@ -148,7 +144,7 @@ Aşağıdaki seçenekler aracılığıyla Windows Azure Tanılama (WAD) günlük
 2. [.NET kodu üzerinden etkinleştir](./cloud-services-dotnet-diagnostics.md)
 3. [PowerShell aracılığıyla etkinleştir](./cloud-services-diagnostics-powershell.md)
 
-Bulut hizmetinizin geçerli WAD ayarlarını almak için [Get-Azurezervicediagnokısextensions](./cloud-services-diagnostics-powershell.md#get-current-diagnostics-extension-configuration) PS cmd komutunu kullanabilir veya "Cloud Services--> Extensions" dikey penceresinden Portal üzerinden görüntüleyebilirsiniz.
+Bulut hizmetinizin geçerli WAD ayarlarını almak için, [Get-Azurezervicediagnoçıkartsextensions](./cloud-services-diagnostics-powershell.md#get-current-diagnostics-extension-configuration) PowerShell cmd ' yi kullanabilir veya "Cloud Services--> Extensions" dikey penceresinden Portal üzerinden görüntüleyebilirsiniz.
 
 
 ## <a name="network-configuration"></a>Ağ yapılandırması
@@ -254,7 +250,7 @@ Cloud Services için Azure Tanılama günlüğe kaydetmenin nasıl etkinleştiri
 
 ## <a name="generic"></a>Genel
 
-### <a name="how-do-i-add-nosniff-to-my-website"></a>"Noalgılamasına f" i web siteme Nasıl yaparım? eklensin mi?
+### <a name="how-do-i-add-nosniff-to-my-website"></a>Nasıl yaparım? `nosniff` Web siteme eklensin mi?
 İstemcilerin MIME türlerini algılaması için *web.config* dosyanıza bir ayar ekleyin.
 
 ```xml
@@ -284,11 +280,11 @@ Bkz. [hizmete özgü sınırlar](../azure-resource-manager/management/azure-subs
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>Bulut hizmeti sanal makinemdeki sürücü neden çok az boş disk alanı gösteriyor?
 Bu beklenen davranıştır ve uygulamanızda herhangi bir soruna neden olmaz. Azure PaaS VM 'lerinde% AppRoot% sürücüsü için günlük kaydı etkinleştirilir ve bu, temelde dosyaların normalde kapladığı alan miktarını iki katına tüketir. Bununla birlikte, dikkat etmeniz gereken birkaç nokta vardır.
 
-% AppRoot% sürücü boyutu, \<size of .cspkg + max journal size + a margin of free space> hangisi daha büyükse, 1,5 GB olarak hesaplanır. SANAL makinenizin boyutunun bu hesaplama için bir pul yok. (VM boyutu yalnızca geçici C: sürücüsünün boyutunu etkiler.) 
+% AppRoot% sürücü boyutu, <boyutu. cspkg + Max günlük boyutu + boş alan> veya 1,5 GB, hangisi daha büyük bir kenar boşluğu olarak hesaplanır. SANAL makinenizin boyutunun bu hesaplama için bir pul yok. (VM boyutu yalnızca geçici C: sürücüsünün boyutunu etkiler.) 
 
 % AppRoot% sürücüsüne yazmak desteklenmez. Azure VM 'ye yazıyorsanız, bunu geçici bir LocalStorage kaynağında (veya blob depolama, Azure dosyaları vb. gibi diğer bir seçeneğe) yapmanız gerekir. Bu nedenle% AppRoot% klasöründeki boş alan miktarı anlamlı değildir. Uygulamanızın% AppRoot% sürücüsüne yazıyor olduğundan emin değilseniz, hizmetinizin birkaç gün boyunca her zaman çalışmasına izin verebilir ve "önce" ve "sonra" boyutlarını karşılaştırabilirsiniz. 
 
-Azure,% AppRoot% sürücüsüne hiçbir şey yazmayacak. VHD,. cspkg 'nizden oluşturulduktan ve Azure VM 'ye takıldıktan sonra bu sürücüye yazgerekebilecek tek şey uygulamanız olur. 
+Azure,% AppRoot% sürücüsüne hiçbir şey yazmayacak. VHD 'nizden oluşturulduktan `.cspkg` ve Azure VM 'ye takıldıktan sonra bu sürücüye yazgerekebilecek tek şey uygulamanız olur. 
 
 Günlük ayarları yapılandırılamaz, bu nedenle devre dışı bırakabilirsiniz.
 
@@ -297,7 +293,7 @@ Günlük ayarları yapılandırılamaz, bu nedenle devre dışı bırakabilirsin
 Başlatma görevinde PowerShell betiği kullanarak kötü amaçlı yazılımdan koruma uzantısını etkinleştirebilirsiniz. Uygulamak için bu makalelerdeki adımları izleyin: 
  
 - [PowerShell başlangıç görevi oluşturma](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
-- [Set-AzureServiceAntimalwareExtension](/powershell/module/servicemanagement/azure.service/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
+- [Set-AzureServiceAntimalwareExtension](/powershell/module/servicemanagement/azure.service/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0&preserve-view=true)
 
 Kötü amaçlı yazılımdan koruma senaryoları ve portaldan nasıl etkinleştirileceği hakkında daha fazla bilgi için bkz. [kötü amaçlı yazılımdan koruma senaryoları](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios).
 

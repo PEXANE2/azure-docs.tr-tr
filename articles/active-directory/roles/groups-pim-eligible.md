@@ -2,23 +2,23 @@
 title: Azure AD 'de Privileged Identity Management kullanarak bir gruba rol atama | Microsoft Docs
 description: Azure AD Privileged Identity Management (PıM) kullanarak bir Azure Active Directory (Azure AD) rolünü bir gruba nasıl atayabileceğinizi öğrenin.
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74ad503374e0148e9813508b6c7f8b21e2dca7a3
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 10f179ab1bf328a2132c9206580dfa58efb80f1b
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379171"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741930"
 ---
 # <a name="assign-a-role-to-a-group-using-privileged-identity-management"></a>Privileged Identity Management kullanarak bir gruba rol atama
 
@@ -37,11 +37,11 @@ Bu makalede, bir Azure Active Directory (Azure AD) rolünü Azure AD Privileged 
 
     !["Rol Ekle" sayfasını ve "Select role" ve "Select member (s)" bölümünü gösteren ekran görüntüsü.](./media/groups-pim-eligible/select-member.png)
 
-1. İstenen üyelik ayarını seçin. Etkinleştirme gerektiren roller için **uygun** ' ı seçin. Varsayılan olarak, Kullanıcı kalıcı olarak uygun olacaktır, ancak kullanıcının uygunluğu için bir başlangıç ve bitiş saati de ayarlayabilirsiniz. Tamamlandıktan sonra, rol atamasını tamamladıktan sonra Kaydet ve Ekle ' ye basın.
+1. İstenen üyelik ayarını seçin. Etkinleştirme gerektiren roller için **uygun**' ı seçin. Varsayılan olarak, Kullanıcı kalıcı olarak uygun olacaktır, ancak kullanıcının uygunluğu için bir başlangıç ve bitiş saati de ayarlayabilirsiniz. Tamamlandıktan sonra, rol atamasını tamamladıktan sonra Kaydet ve Ekle ' ye basın.
 
     ![rolü atadığınız kullanıcıyı seçin](./media/groups-pim-eligible/set-assignment-settings.png)
 
-## <a name="using-powershell"></a>PowerShell'i kullanma
+## <a name="using-powershell"></a>PowerShell’i kullanma
 
 ### <a name="download-the-azure-ad-preview-powershell-module"></a>Azure AD önizleme PowerShell modülünü indirin
 

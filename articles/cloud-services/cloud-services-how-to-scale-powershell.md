@@ -1,21 +1,24 @@
 ---
-title: Windows PowerShell 'de Azure bulut hizmetini ölçeklendirme | Microsoft Docs
+title: Windows PowerShell 'de Azure bulut hizmetini (klasik) ölçeklendirme | Microsoft Docs
 description: Klasik Azure 'da bir Web rolünü veya çalışan rolünü ölçeklendirmek için PowerShell 'in nasıl kullanılacağını öğrenin.
-services: cloud-services
-author: mmccrory
-ms.service: cloud-services
 ms.topic: article
-ms.date: 12/01/2016
-ms.author: memccror
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c2cec08d86760694ec3c41a98af62c6b86e0a4c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: a090da1933b0fcd6edb5b2415c773f9efcb27387
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89071100"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743313"
 ---
-# <a name="how-to-scale-a-cloud-service-in-powershell"></a>PowerShell 'de bir bulut hizmetini ölçeklendirme
+# <a name="how-to-scale-an-azure-cloud-service-classic-in-powershell"></a>PowerShell 'de Azure bulut hizmetini (klasik) ölçeklendirme
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
 
 Örnek ekleyerek veya kaldırarak bir Web rolü veya çalışan rolünü ölçeklendirmek için Windows PowerShell kullanabilirsiniz.  
 

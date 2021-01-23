@@ -1,21 +1,24 @@
 ---
-title: Azure bulut hizmetini izleme | Microsoft Docs
+title: Azure bulut hizmetini izleme (klasik) | Microsoft Docs
 description: Bir Azure bulut hizmeti izlemenin ne olduğunu ve bazı seçeneklerinizin ne olduğunu açıklar.
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 01/29/2018
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 60f320f86860cca482cdf25c7d93f84dae8c4e5f
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85847238"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743381"
 ---
-# <a name="introduction-to-cloud-service-monitoring"></a>Bulut hizmeti Izlemeye giriş
+# <a name="introduction-to-cloud-service-classic-monitoring"></a>Bulut hizmeti (klasik) Izlemeye giriş
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
 
 Herhangi bir bulut hizmeti için önemli performans ölçümlerini izleyebilirsiniz. Her bulut hizmeti rolü en az veri toplar: CPU kullanımı, ağ kullanımı ve disk kullanımı. Bulut hizmetinde `Microsoft.Azure.Diagnostics` uzantı bir role uygulanmışsa, bu rol ek veri noktaları toplayabilir. Bu makalede Cloud Services için Azure Tanılama bir giriş sunulmaktadır.
 

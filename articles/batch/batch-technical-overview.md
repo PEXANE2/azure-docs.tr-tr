@@ -3,12 +3,12 @@ title: Azure Batch, bulutta büyük paralel işler çalıştırır
 description: Büyük ölçekli paralel ve HPC iş yükleri için Azure Batch hizmetini kullanma hakkında bilgi edinin
 ms.topic: overview
 ms.date: 07/30/2020
-ms.openlocfilehash: 93dcf19b3b6af0f369fe19b7823bf43d597a9c21
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: dbd27dc1a00966a2d71952335cfb47c7ca55bc24
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106657"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743109"
 ---
 # <a name="what-is-azure-batch"></a>Azure Batch nedir?
 
@@ -74,6 +74,9 @@ Aşağıdaki diyagramda, istemci uygulamasının yanı sıra paralel iş yükün
 Yukarıda açıklanan iş akışının Batch kullanmanın yalnızca bir yolu olduğunu ve birçok başka özellik ve seçenek olduğunu unutmayın. Örneğin, her işlem düğümünde [birden fazla görevi paralel olarak](batch-parallel-node-tasks.md) yürütebilirsiniz. Ya da [iş hazırlama ve tamamlama görevlerini](batch-job-prep-release.md) kullanarak işleriniz için düğümleri hazırlayın, ardından daha sonra temizleyebilirsiniz.
 
 Havuzlar, düğümler, işler ve görevler gibi özelliklere genel bir bakış için bkz. [Batch hizmeti iş akışı ve kaynakları](batch-service-workflow-features.md) . Ayrıca en son [Toplu İşlem hizmet güncelleştirmeleri](https://azure.microsoft.com/updates/?product=batch)’ne bakın.
+
+## <a name="in-region-data-residency"></a>Bölge içi veri yerleşimi
+Azure Batch, müşteri verilerini dağıtıldığı bölgenin dışına taşımaz veya depolamaz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

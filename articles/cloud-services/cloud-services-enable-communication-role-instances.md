@@ -1,23 +1,26 @@
 ---
-title: Cloud Services roller için iletişim | Microsoft Docs
+title: Cloud Services roller için iletişim (klasik) | Microsoft Docs
 description: Cloud Services rol örneklerinde, diğer rol örnekleri arasında veya aralarında iletişim kuran bu noktalar için tanımlı uç noktalar (http, https, TCP, UDP) bulunabilir.
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-manager: carmonm
-ms.service: cloud-services
 ms.topic: article
-ms.date: 12/14/2016
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 094e08becf4f3a60c98d89bfae7e7c3a69b677f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 82aa1579a1f7feb36732153341e1eacf266a7218
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75386349"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743041"
 ---
-# <a name="enable-communication-for-role-instances-in-azure"></a>Azure 'da rol örnekleri için iletişimi etkinleştirme
-Bulut hizmeti rolleri, iç ve dış bağlantılarla iletişim kurar. İç bağlantılara **iç uç noktalar**çağrıldığında dış bağlantılara **giriş uç noktaları** denir. Bu konuda, uç noktalar oluşturmak için [hizmet tanımının](cloud-services-model-and-package.md#csdef) nasıl değiştirileceği açıklanmaktadır.
+# <a name="enable-communication-for-role-instances-in-azure-cloud-services-classic"></a>Azure Cloud Services (klasik) rol örnekleri için iletişimi etkinleştirme
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
+
+Bulut hizmeti rolleri, iç ve dış bağlantılarla iletişim kurar. İç bağlantılara **iç uç noktalar** çağrıldığında dış bağlantılara **giriş uç noktaları** denir. Bu konuda, uç noktalar oluşturmak için [hizmet tanımının](cloud-services-model-and-package.md#csdef) nasıl değiştirileceği açıklanmaktadır.
 
 ## <a name="input-endpoint"></a>Giriş uç noktası
 Giriş uç noktası, dışarıdaki bir bağlantı noktasını kullanıma sunmak istediğinizde kullanılır. Uç nokta için hem dış hem de iç bağlantı noktası için geçerli olan protokol türünü ve uç noktası bağlantı noktasını belirtirsiniz. İsterseniz, uç nokta için [localport](/previous-versions/azure/reference/gg557552(v=azure.100)#inputendpoint) özniteliğiyle farklı bir iç bağlantı noktası belirtebilirsiniz.
@@ -106,7 +109,7 @@ int port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["StandardWeb"].
 > 
 > 
 
-Bir rol örneğindeki iç uç noktanın bağlantı noktası numarasını öğrenmek için, [ınstanceendpoints](/previous-versions/azure/reference/ee741917(v=azure.100)) özelliğini kullanarak uç nokta adlarını ve bunlara KARŞıLıK gelen IP adreslerini ve bağlantı noktalarını Içeren bir sözlük nesnesi döndürebilirsiniz. [IPEndPoint](/previous-versions/azure/reference/ee741919(v=azure.100)) özelliği, belirtilen uç nokta için IP adresini ve bağlantı noktasını döndürür. **Publicıpendpoint** özelliği, yük dengeli bir uç nokta için bağlantı noktasını döndürür. **Publicıpendpoint** özelliğinin IP adresi bölümü kullanılmıyor.
+Bir rol örneğindeki iç uç noktanın bağlantı noktası numarasını öğrenmek için, [`InstanceEndpoints`](/previous-versions/azure/reference/ee741917(v=azure.100)) özelliğini kullanarak uç nokta adlarını ve bunlara karşılık gelen IP adreslerini ve bağlantı noktalarını içeren bir sözlük nesnesi döndürebilirsiniz. [`IPEndpoint`](/previous-versions/azure/reference/ee741919(v=azure.100))Özelliği, belirtilen uç nokta IÇIN IP adresini ve bağlantı noktasını döndürür. `PublicIPEndpoint`Özelliği, yük dengeli bir uç nokta için bağlantı noktasını döndürür. Özelliğin IP adresi bölümü `PublicIPEndpoint` kullanılmıyor.
 
 Rol örneklerini tekrardan yineleyen bir örnek aşağıda verilmiştir.
 
@@ -256,7 +259,7 @@ Aşağıdaki kod örneğinde, önceki diyagramda gösterilen roller için rol ta
 Varsayılan olarak, bir iç uç nokta tanımlandıktan sonra, iletişim herhangi bir rolden herhangi bir kısıtlama olmadan bir rolün iç uç noktasına akabilir. İletişimi kısıtlamak için, hizmet tanımı dosyasındaki **ServiceDefinition** öğesine bir **NetworkTrafficRules** öğesi eklemeniz gerekir.
 
 ### <a name="scenario-1"></a>1\. Senaryo
-Yalnızca **WebRole1** ile **WorkerRole1**arasında ağ trafiğine izin verir.
+Yalnızca **WebRole1** ile **WorkerRole1** arasında ağ trafiğine izin verir.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -275,7 +278,7 @@ Yalnızca **WebRole1** ile **WorkerRole1**arasında ağ trafiğine izin verir.
 ```
 
 ### <a name="scenario-2"></a>2\. Senaryo
-Yalnızca **WebRole1** ile **WorkerRole1** ve **WorkerRole2**arasındaki ağ trafiğine izin verir.
+Yalnızca **WebRole1** ile **WorkerRole1** ve **WorkerRole2** arasındaki ağ trafiğine izin verir.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -294,7 +297,7 @@ Yalnızca **WebRole1** ile **WorkerRole1** ve **WorkerRole2**arasındaki ağ tra
 ```
 
 ### <a name="scenario-3"></a>3\. Senaryo
-Yalnızca **WebRole1** ile **WorkerRole1**ve **WorkerRole1** arasındaki ağ **trafiğine izin verir.**
+Yalnızca **WebRole1** ile **WorkerRole1** ve **WorkerRole1** arasındaki ağ **trafiğine izin verir.**
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -323,7 +326,7 @@ Yalnızca **WebRole1** ile **WorkerRole1**ve **WorkerRole1** arasındaki ağ **t
 ```
 
 ### <a name="scenario-4"></a>4\. Senaryo
-Yalnızca **WebRole1** ile **WorkerRole1**, **WebRole1** , **WorkerRole2**ve **WorkerRole1** arasında ağ **trafiğine izin verir.**
+Yalnızca **WebRole1** ile **WorkerRole1**, **WebRole1** , **WorkerRole2** ve **WorkerRole1** arasında ağ **trafiğine izin verir.**
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">

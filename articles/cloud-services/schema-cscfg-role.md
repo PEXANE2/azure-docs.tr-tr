@@ -1,22 +1,24 @@
 ---
-title: Azure Cloud Services rol şeması | Microsoft Docs
+title: Azure Cloud Services (klasik) rol şeması | Microsoft Docs
 description: Bir hizmet yapılandırma dosyasının rol öğesi, her rol, yapılandırma değeri ve sertifika parmak izleri için kaç tane rol örneğinin dağıtılacağını belirtir.
-ms.custom: ''
-ms.date: 12/07/2016
-services: cloud-services
+ms.topic: article
 ms.service: cloud-services
-ms.topic: reference
-caps.latest.revision: 12
-author: tgore03
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: b64f9d27e382a39b132593502fed32c565af473a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 2dc8e14a4e4d8855abb615632bb7d43b9034d360
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79528430"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743449"
 ---
-# <a name="azure-cloud-services-config-role-schema"></a>Azure Cloud Services yapılandırma rolü şeması
+# <a name="azure-cloud-services-classic-config-role-schema"></a>Azure Cloud Services (klasik) yapılandırma rolü şeması
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
 
 `Role`Yapılandırma dosyasının öğesi, hizmette her bir rol için dağıtılacak rol örneği sayısını, herhangi bir yapılandırma ayarlarının değerlerini ve bir rolle ilişkili tüm sertifikalar için parmak izlerini belirtir.
 

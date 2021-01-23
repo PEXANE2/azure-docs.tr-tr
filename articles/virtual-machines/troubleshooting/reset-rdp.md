@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: 2f242de3bfa6a2bc95dc46b4ca5c10222b755a2f
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 720d25079e1350315c9f403a8215f650db49ceb7
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200932"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743092"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Windows VM 'de Uzak Masaüstü Hizmetleri veya yönetici parolasını sıfırlama
 Bir Windows sanal makinesine (VM) bağlanamıyorsanız, yerel yönetici parolanızı sıfırlayabilir veya Uzak Masaüstü Hizmetleri yapılandırmayı sıfırlayabilirsiniz (Windows etki alanı denetleyicilerinde desteklenmez). Parolayı sıfırlamak için Azure portalı veya Azure PowerShell'deki VM Erişimi uzantısını kullanın. VM'de oturum açtıktan sonra yerel yönetici parolasını sıfırlayın.  
@@ -90,10 +90,14 @@ Bu işlem, sanal makinede Uzak Masaüstü hizmeti 'ni etkinleştirir ve varsayı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure VM erişimi uzantısı yanıt vermezse ve parolayı sıfırlayamazsa, [yerel Windows parolasını çevrimdışı olarak sıfırlayabilirsiniz](reset-local-password-without-agent.md). Bu yöntem daha gelişmiş bir yöntemdir ve sorunlu sanal makınenın sanal sabit diskini başka bir sanal makineye bağlamanız gerekir. Önce Bu makalede belgelenen adımları izleyin ve çevrimdışı parola sıfırlama yöntemini yalnızca bu adımlar çalışmazsa deneyin.
+
+- Azure VM erişimi uzantısı yüklenemediğinde, [sanal makine uzantısı sorunlarını giderebilirsiniz](../extensions/troubleshoot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+
+- VM erişimi uzantısını kullanarak parolayı sıfırlayamıyoruz, sonra [yerel Windows parolasını çevrimdışı olarak sıfırlayabilirsiniz](reset-local-password-without-agent.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Bu yöntem daha gelişmiş bir yöntemdir ve sorunlu sanal makınenın sanal sabit diskini başka bir sanal makineye bağlamanız gerekir. Önce Bu makalede belgelenen adımları izleyin ve çevrimdışı parola sıfırlama yöntemini yalnızca bu adımlar çalışmazsa deneyin.
 
 - [Azure VM uzantıları ve özellikleri hakkında bilgi edinin](../extensions/features-windows.md).
 
 - [RDP veya SSH ile bir Azure sanal makinesine bağlanın](/previous-versions/azure/dn535788(v=azure.100)).
 
-- [Windows tabanlı bir Azure sanal makinesine yönelik uzak masaüstü bağlantılarında sorun giderme](troubleshoot-rdp-connection.md).
+
+- [Windows tabanlı bir Azure sanal makinesine yönelik uzak masaüstü bağlantılarında sorun giderme](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

@@ -1,21 +1,25 @@
 ---
-title: Azure Cloud Services için sanal makine boyutları | Microsoft Docs
+title: Azure Cloud Services için sanal makine boyutları (klasik) | Microsoft Docs
 description: Azure bulut hizmeti Web ve çalışan rolleri için farklı sanal makine boyutlarını (ve kimliklerini) listeler.
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/18/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: b617ba8db8f9dbb1c25ac34aa879613c29c723b7
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 55fa3ab4e5bd4472f7dae9692ae3ac9bcfa8e2b6
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340297"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743177"
 ---
-# <a name="sizes-for-cloud-services"></a>Cloud Services için Boyutlar
+# <a name="sizes-for-cloud-services-classic"></a>Cloud Services için Boyutlar (klasik)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
+
 Bu konuda, bulut hizmeti rol örnekleri (Web rolleri ve çalışan rolleri) için kullanılabilen Boyutlar ve seçenekler açıklanmaktadır. Ayrıca, bu kaynakları kullanmayı planlarken göz önünde bulundurmanız gereken dağıtım konuları da sunar. Her boyutun, [hizmet tanımı dosyanıza](cloud-services-model-and-package.md#csdef)YERLEŞTIRDIĞINIZ bir kimliği vardır. Her boyutun fiyatları [Cloud Services fiyatlandırma](https://azure.microsoft.com/pricing/details/cloud-services/) sayfasında kullanılabilir.
 
 > [!NOTE]
@@ -58,12 +62,12 @@ Azure Işlem birimi (ACU) kavramını, Azure SKU 'Larında işlem (CPU) performa
 | [A5-7](#a-series) |100 |
 | [A8-A11](#a-series) |225* |
 | [Bir v2](#av2-series) |100 |
-| [D](#d-series) |160 |
+| [TID](#d-series) |160 |
 | [D v2](#dv2-series) |160-190 * |
 | [D v3](#dv3-series) |160-190 * |
 | [E v3](#ev3-series) |160-190 * |
-| [G](#g-series) |180-240* |
-| [H](#h-series) |290-300* |
+| [Acil](#g-series) |180-240* |
+| [Olsun](#h-series) |290-300* |
 
 * işaretli ACU'lar, CPU frekansını artırmak ve performans artışı sağlamak için Intel® Turbo Boost teknolojisinden faydalanır. Performans artışının oranı VM boyutuna, iş yüküne ve aynı ana bilgisayarda çalışan iş yüklerine göre değişiklik gösterebilir.
 

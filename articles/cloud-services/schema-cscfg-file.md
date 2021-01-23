@@ -1,22 +1,25 @@
 ---
-title: Azure Cloud Services Tanım Şeması (. cscfg dosyası) | Microsoft Docs
+title: Azure Cloud Services (klasik) Tanım Şeması (. cscfg dosyası) | Microsoft Docs
 description: Bir hizmet yapılandırma (. cscfg) dosyası, bir rol için her rol, yapılandırma değeri ve sertifika parmak izlerinin kaç rol örneğinin dağıtılacağını belirtir.
-services: cloud-services
-ms.custom: ''
-ms.date: 12/07/2016
+ms.topic: article
 ms.service: cloud-services
-ms.topic: reference
-caps.latest.revision: 35
-author: tgore03
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: cb77181e00c97b7f426429793f17af3cb5e84ebe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: ba933d4981fb7ed209a7fb5d5c41113750f312de
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79534754"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743483"
 ---
-# <a name="azure-cloud-services-config-schema-cscfg-file"></a>Azure Cloud Services config şeması (. cscfg dosyası)
+# <a name="azure-cloud-services-classic-config-schema-cscfg-file"></a>Azure Cloud Services (klasik) yapılandırma şeması (. cscfg dosyası)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
+
 Hizmet yapılandırma dosyası, hizmette her bir rol için dağıtılacak rol örneği sayısını, herhangi bir yapılandırma ayarlarının değerlerini ve bir rolle ilişkili tüm sertifikalar için parmak izlerini belirtir. Hizmet bir sanal ağın parçasıysa, hizmet yapılandırma dosyasında ve sanal ağ yapılandırma dosyasında ağ için yapılandırma bilgilerinin sağlanması gerekir. Hizmet yapılandırma dosyası için varsayılan uzantı. cscfg ' dir.
 
 Hizmet modeli, [bulut hizmeti (klasik) Tanım Şeması](schema-csdef-file.md)tarafından açıklanmıştır.

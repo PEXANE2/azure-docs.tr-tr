@@ -1,30 +1,30 @@
 ---
-title: PowerShell ile bir bulut hizmeti kapsayıcısı oluşturma | Microsoft Docs
+title: PowerShell ile bir bulut hizmeti (klasik) kapsayıcısı oluşturma | Microsoft Docs
 description: Bu makalede, PowerShell ile bir bulut hizmeti kapsayıcısının nasıl oluşturulacağı açıklanmaktadır. Kapsayıcı Web ve çalışan rollerini barındırır.
-services: cloud-services
-documentationcenter: .net
-author: cawaMS
-ms.service: cloud-services
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: powershell
-ms.workload: na
-ms.date: 11/18/2016
-ms.author: cawa
-ms.openlocfilehash: d40a5b64cc8018f45bf08158ce808b2baae27962
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: a8f06ce08c0df4cc86afe6fbbe7eb12fd866e61c
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87049096"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743279"
 ---
-# <a name="use-an-azure-powershell-command-to-create-an-empty-cloud-service-container"></a>Boş bir bulut hizmeti kapsayıcısı oluşturmak için bir Azure PowerShell komutu kullanın
+# <a name="use-an-azure-powershell-command-to-create-an-empty-cloud-service-classic-container"></a>Boş bir bulut hizmeti (klasik) kapsayıcısı oluşturmak için bir Azure PowerShell komutu kullanın
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
 
 Bu makalede Azure PowerShell cmdlet 'lerini kullanarak hızlı bir şekilde Cloud Services kapsayıcının nasıl oluşturulacağı açıklanmaktadır. Lütfen aşağıdaki adımları izleyin:
 
 1. [Azure PowerShell İndirmeleri](https://aka.ms/webpi-azps) sayfasından Microsoft Azure PowerShell cmdlet 'ini yükler.
 2. PowerShell komut istemi ' ni açın.
-3. Oturum açmak için [Add-AzureAccount](/powershell/module/servicemanagement/azure.service/add-azureaccount?view=azuresmps-4.0.0) kullanın.
+3. Oturum açmak için [Add-AzureAccount](/powershell/module/servicemanagement/azure.service/add-azureaccount?view=azuresmps-4.0.0&preserve-view=true) kullanın.
 
    > [!NOTE]
    > Azure PowerShell cmdlet 'ini yükleme ve Azure aboneliğinize bağlanma hakkında daha fazla yönerge için, [Azure PowerShell yükleme ve yapılandırma](/powershell/azure/)konusuna bakın.
@@ -51,5 +51,5 @@ Get-help New-AzureService
 
 ### <a name="next-steps"></a>Sonraki adımlar
 
-* Bulut hizmeti dağıtımını yönetmek için [Get-AzureService](/powershell/module/servicemanagement/azure.service/Get-AzureService?view=azuresmps-4.0.0), [Remove-AzureService](/powershell/module/servicemanagement/azure.service/Remove-AzureService?view=azuresmps-4.0.0)ve [set-AzureService](/powershell/module/servicemanagement/azure.service/set-azureservice?view=azuresmps-4.0.0) komutlarına bakın. Daha fazla bilgi için [Cloud Services 'ı yapılandırma](cloud-services-how-to-configure-portal.md) konusuna da başvurabilirsiniz.
+* Bulut hizmeti dağıtımını yönetmek için [Get-AzureService](/powershell/module/servicemanagement/azure.service/Get-AzureService?view=azuresmps-4.0.0&preserve-view=true), [Remove-AzureService](/powershell/module/servicemanagement/azure.service/Remove-AzureService?view=azuresmps-4.0.0&preserve-view=true)ve [set-AzureService](/powershell/module/servicemanagement/azure.service/set-azureservice?view=azuresmps-4.0.0&preserve-view=true) komutlarına bakın. Daha fazla bilgi için [Cloud Services 'ı yapılandırma](cloud-services-how-to-configure-portal.md) konusuna da başvurabilirsiniz.
 * Bulut hizmeti projenizi Azure 'da yayımlamak için [arşivlenmiş bulut hizmetleri deposundaki](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Scripts/cloud-services-continuous-delivery) **PublishCloudService.ps1** kod örneğine bakın.

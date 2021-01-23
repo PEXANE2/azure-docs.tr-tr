@@ -2,23 +2,23 @@
 title: Bulut grubuna atanan rol sorunlarını giderme SSS-Azure Active Directory | Microsoft Docs
 description: Azure Active Directory gruplara roller atamaya yönelik bazı yaygın sorular ve sorun giderme ipuçları hakkında bilgi edinin.
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8735a0d34b9fcf5b86b6592980ffc5c7c3e3073c
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 0ff906654dc91c7b1980292efd2a737503e684e9
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861944"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742922"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>Bulut gruplarına atanan rollerle ilgili sorunları giderme
 

@@ -1,20 +1,25 @@
 ---
-title: Bulut hizmetini özel bir etki alanı denetleyicisine bağlama | Microsoft Docs
+title: Bir bulut hizmetini (klasik) özel bir etki alanı denetleyicisine bağlama | Microsoft Docs
 description: PowerShell ve AD etki alanı uzantısını kullanarak Web/çalışan rollerinizi özel bir AD etki alanına bağlamayı öğrenin
-services: cloud-services
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/18/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: fa918a3a6894205ed36c4b576608e7a71e523a92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 8c2c8377944caa7ad28f6b379531e6d5bf44c9e7
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87092720"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742514"
 ---
-# <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Azure Cloud Services rollerini Azure 'da barındırılan özel bir AD etki alanı denetleyicisine bağlama
+# <a name="connecting-azure-cloud-services-classic-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Azure Cloud Services (klasik) rollerini Azure 'da barındırılan özel bir AD etki alanı denetleyicisine bağlama
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
+
 Önce Azure 'da bir sanal ağ (VNet) ayarlayacağız. Bundan sonra sanal ağa bir Active Directory Etki Alanı Denetleyicisi (Azure sanal makinesinde barındırılan) ekleyeceğiz. Daha sonra, önceden oluşturulmuş VNet 'e mevcut bulut hizmeti rollerini ekleyecek ve ardından bunları etki alanı denetleyicisine bağlayacağız.
 
 Başlamadan önce göz önünde bulundurmanız gereken birkaç şey vardır:
@@ -24,10 +29,10 @@ Başlamadan önce göz önünde bulundurmanız gereken birkaç şey vardır:
 
 Bu adım adım kılavuzu izleyin ve herhangi bir sorunla karşılaşırsanız makalenin sonunda bize bir yorum bırakın. Birisi sizi geri alacak (Evet, yorum okuyacağız).
 
-Bulut hizmeti tarafından başvurulan ağ, **Klasik bir sanal ağ**olmalıdır.
+Bulut hizmeti tarafından başvurulan ağ, **Klasik bir sanal ağ** olmalıdır.
 
 ## <a name="create-a-virtual-network"></a>Sanal Ağ Oluşturma
-Azure portal veya PowerShell kullanarak Azure Ağa gelen bir sanal oluşturabilirsiniz. Bu öğretici için PowerShell kullanılır. Azure portal kullanarak bir sanal ağ oluşturmak için, bkz. [sanal ağ oluşturma](../virtual-network/quick-create-portal.md). Makale bir sanal ağ (Kaynak Yöneticisi) oluşturmayı ele alır, ancak bulut hizmetleri için bir sanal ağ (klasik) oluşturmanız gerekir. Bunu yapmak için, portalda **kaynak oluştur**' u seçin, **arama** kutusuna *sanal ağ* yazın ve ardından **ENTER**tuşuna basın. Arama sonuçlarında, **her şey**altında **sanal ağ**' ı seçin. **Dağıtım modeli seçin**altında **Klasik**' i seçin ve ardından **Oluştur**' u seçin. Daha sonra makalesindeki adımları izleyebilirsiniz.
+Azure portal veya PowerShell kullanarak Azure Ağa gelen bir sanal oluşturabilirsiniz. Bu öğretici için PowerShell kullanılır. Azure portal kullanarak bir sanal ağ oluşturmak için, bkz. [sanal ağ oluşturma](../virtual-network/quick-create-portal.md). Makale bir sanal ağ (Kaynak Yöneticisi) oluşturmayı ele alır, ancak bulut hizmetleri için bir sanal ağ (klasik) oluşturmanız gerekir. Bunu yapmak için, portalda **kaynak oluştur**' u seçin, **arama** kutusuna *sanal ağ* yazın ve ardından **ENTER** tuşuna basın. Arama sonuçlarında, **her şey** altında **sanal ağ**' ı seçin. **Dağıtım modeli seçin** altında **Klasik**' i seçin ve ardından **Oluştur**' u seçin. Daha sonra makalesindeki adımları izleyebilirsiniz.
 
 ```powershell
 #Create Virtual Network

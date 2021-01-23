@@ -1,25 +1,27 @@
 ---
 title: Rol için Uzak Masaüstü 'Nü etkinleştirmek üzere portalı kullanma
-titleSuffix: Azure Cloud Services
 description: Azure bulut hizmeti uygulamanızı uzak masaüstü bağlantılarına izin verecek şekilde yapılandırma
-services: cloud-services
-documentationcenter: ''
-author: mmccrory
-ms.service: cloud-services
 ms.topic: article
-ms.date: 11/28/2016
-ms.author: memccror
-ms.openlocfilehash: 507af87c3126be00a802bcbc5170f8ad364c06fc
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 8fa0d3c0e29c53e6fe9cb32ddf02168686be1efe
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099326"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743262"
 ---
-# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services"></a>Azure Cloud Services bir rol için Uzak Masaüstü Bağlantısı etkinleştirin
+# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-classic"></a>Azure Cloud Services (klasik) bir rol için Uzak Masaüstü Bağlantısı etkinleştirme
+
+> [!IMPORTANT]
+> [Azure Cloud Services (genişletilmiş destek)](../cloud-services-extended-support/overview.md) , Azure Cloud Services ürünü için yeni bir Azure Resource Manager tabanlı dağıtım modelidir.Bu değişiklik ile Azure Service Manager tabanlı dağıtım modelinde çalışan Azure Cloud Services, Cloud Services (klasik) olarak yeniden adlandırıldı ve tüm Yeni dağıtımlar [Cloud Services kullanmalıdır (genişletilmiş destek)](../cloud-services-extended-support/overview.md).
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
+> * [Azure portalı](cloud-services-role-enable-remote-desktop-new-portal.md)
 > * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 > * [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
@@ -31,9 +33,9 @@ Hizmet tanımınıza uzak masaüstü modüllerini ekleyerek ve Uzak Masaüstü u
 
 Azure portal, Uzak Masaüstü uzantısı yaklaşımını kullanır, böylece uygulama dağıtıldıktan sonra bile uzak masaüstü 'Nü etkinleştirebilirsiniz. Bulut hizmetinizin **Uzak Masaüstü** ayarları uzak masaüstünü etkinleştirmenizi, sanal makinelere bağlanmak için kullanılan yerel yönetici hesabını değiştirmenize, kimlik doğrulamasında kullanılan sertifikayı değiştirmenize ve sona erme tarihini ayarlamanıza olanak tanır.
 
-1. **Cloud Services** ' ye tıklayın, bulut hizmetinin adını seçin ve ardından **Uzak Masaüstü** ' nü seçin.
+1. **Cloud Services**' ye tıklayın, bulut hizmetinin adını seçin ve ardından **Uzak Masaüstü**' nü seçin.
 
-    ![Uzak Masaüstü seçeneğini vurgulayan ekran görüntüsü.](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop.png)
+    ![görüntü, Cloud Services uzak masaüstü 'nü gösterir](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop.png)
 
 2. Tek bir rol veya tüm roller için Uzak Masaüstü 'Nü etkinleştirmek isteyip istemediğinizi seçin, sonra değiştiricinin değerini **etkin** olarak değiştirin.
 
@@ -44,9 +46,9 @@ Azure portal, Uzak Masaüstü uzantısı yaklaşımını kullanır, böylece uyg
    > [!WARNING]
    > Tüm rol örnekleri, uzak masaüstünü ilk kez etkinleştirdiğinizde yeniden başlatılır ve **Tamam** (onay işareti) seçeneğini belirleyin. Yeniden başlatmayı engellemek için, parolayı şifrelemek için kullanılan sertifikanın role yüklenmiş olması gerekir. Yeniden başlatmayı engellemek için, [bulut hizmeti için bir sertifika yükleyin](cloud-services-configure-ssl-certificate-portal.md#step-3-upload-a-certificate) ve ardından bu iletişim kutusuna geri dönün.
 
-4. **Roller** ' de, güncelleştirmek istediğiniz rolü seçin veya tüm roller için **Tümünü** seçin.
+4. **Roller**' de, güncelleştirmek istediğiniz rolü seçin veya tüm roller için **Tümünü** seçin.
 
-5. Yapılandırma güncelleştirmelerinizi bitirdiğinizde **Kaydet** ' i seçin. Rol örneklerinizin bağlantı almaya hazırlanmadan önce bu işlem birkaç dakika sürer.
+5. Yapılandırma güncelleştirmelerinizi bitirdiğinizde **Kaydet**' i seçin. Rol örneklerinizin bağlantı almaya hazırlanmadan önce bu işlem birkaç dakika sürer.
 
 ## <a name="remote-into-role-instances"></a>Rol örneklerine uzaktan
 
@@ -56,12 +58,12 @@ Roller üzerinde Uzak Masaüstü etkinleştirildikten sonra, Azure portal doğru
 2. Uzak Masaüstü 'Nün yapılandırıldığı bir rol örneği seçin.
 3. Rol örneği için bir RDP dosyası indirmek için **Bağlan** ' a tıklayın.
 
-    ![Bağlan düğmesini vurgulayan ekran görüntüsü.](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop_Connect.png)
+    ![Cloud Services uzak masaüstü görüntüsü](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop_Connect.png)
 
 4. **Aç** ' a ve ardından **Bağlan** ' a tıklayıp uzak masaüstü bağlantısını başlatın.
 
 >[!NOTE]
-> Bulut hizmetiniz bir NSG 'nin arkasında çalışıyorsa, **3389** ve **20000** bağlantı noktalarında trafiğe izin veren kurallar oluşturmanız gerekebilir.  Uzak Masaüstü **3389** numaralı bağlantı noktasını kullanır.  Bulut hizmeti örnekleri yük dengedir, bu nedenle hangi örneğin bağlanılacağını doğrudan kontrol edebilirsiniz.  *Remoteforwarder* ve *RemoteAccess* aracıları, RDP trafiğini YÖNETIR ve istemcinin bir RDP tanımlama bilgisi göndermesini ve bağlanılacak tek bir örnek belirtmesini sağlar.  *Remoteforwarder* ve *RemoteAccess* aracıları, **20000** * bağlantı noktasının açık olmasını gerektirir ve bu, bir NSG varsa engellenmiş olabilir.
+> Bulut hizmetiniz bir NSG 'nin arkasında çalışıyorsa, **3389** ve **20000** bağlantı noktalarında trafiğe izin veren kurallar oluşturmanız gerekebilir.  Uzak Masaüstü **3389** numaralı bağlantı noktasını kullanır.  Bulut hizmeti örnekleri yük dengedir, bu nedenle hangi örneğin bağlanılacağını doğrudan kontrol edebilirsiniz.  *Remoteforwarder* ve *RemoteAccess* aracıları, RDP trafiğini YÖNETIR ve istemcinin bir RDP tanımlama bilgisi göndermesini ve bağlanılacak tek bir örnek belirtmesini sağlar.  *Remoteforwarder* ve *RemoteAccess* aracıları, **20000*** bağlantı noktasının açık olmasını gerektirir ve bu, bir NSG varsa engellenmiş olabilir.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

@@ -3,12 +3,12 @@ title: Azure Service Bus abonelik kuralı SQL eylemi sözdizimi | Microsoft Docs
 description: Bu makale, SQL kuralı eylem sözdizimi için bir başvuru sağlar. Eylemler, bir iletiyle gerçekleştirilen SQL dil tabanlı söz dizimine yazılır.
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: 606281d42d5598d7f73312990d3a19775a202c08
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: f7b8cdfcccc22508b98a42391d2a0ef9955232d0
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632821"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742698"
 ---
 # <a name="subscription-rule-sql-action-syntax"></a>Abonelik kuralı SQL eylemi sözdizimi
 
@@ -53,7 +53,7 @@ Bir ileti bir abonelik kuralı filtresi tarafından seçildikten sonra ileti met
   
 ## <a name="arguments"></a>Bağımsız değişkenler  
   
--   `<scope>` , kapsamını belirten isteğe bağlı bir dizedir `<property_name>` . Geçerli değerler veya ' dir `sys` `user` . `sys`Değer, `<property_name>` [aracılı edmessage sınıfının](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)ortak özellik adı olan sistem kapsamını gösterir. `user` Kullanıcı kapsamını `<property_name>` , [aracılı Edmessage sınıf](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) sözlüğünün bir anahtarı olduğunu gösterir. `user` belirtilmemişse, kapsam varsayılan kapsamdır `<scope>` .  
+-   `<scope>` , kapsamını belirten isteğe bağlı bir dizedir `<property_name>` . Geçerli değerler veya ' dir `sys` `user` . `sys`Değer, `<property_name>` [aracılı edmessage sınıfının](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)ortak özellik adı olan sistem kapsamını gösterir. `user` Kullanıcı kapsamını `<property_name>` , [aracılı Edmessage sınıf](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) sözlüğünün bir anahtarı olduğunu gösterir. `user` belirtilmezse, kapsam varsayılan kapsamdır `<scope>` .  
   
 ### <a name="remarks"></a>Açıklamalar  
 
@@ -84,7 +84,7 @@ Var olmayan bir sistem özelliğine erişme girişimi bir hatadır, ancak varolm
   
  `[:IsDigit:]` ondalık basamak olarak kategorilere ayrılan herhangi bir Unicode karakter anlamına gelir. `System.Char.IsDigit(c)``true` `c` Unicode basamağı ise döndürür.  
   
- `<regular_identifier>`, Ayrılmış bir anahtar sözcük olamaz.  
+ , `<regular_identifier>` Ayrılmış bir anahtar sözcük olamaz.  
   
  `<delimited_identifier>` sol/sağ köşeli ayraç ([]) ile çevrelenen herhangi bir dizedir. Sağ köşeli ayraç iki sağ köşeli ayraç olarak gösterilir. Aşağıdakiler aşağıda verilmiştir `<delimited_identifier>` :  
   
@@ -137,7 +137,7 @@ Var olmayan bir sistem özelliğine erişme girişimi bir hatadır, ancak varolm
   
 ### <a name="arguments"></a>Bağımsız değişkenler  
   
--   `<integer_constant>` , tırnak işaretleri içine alınmış ve ondalık noktaları içermeyen sayıların bir dizesidir. Değerler dahili olarak depolanır `System.Int64` ve aynı aralığı izler.  
+-   `<integer_constant>` , tırnak işaretleri içine almayan ve ondalık noktaları içermeyen sayıların bir dizesidir. Değerler dahili olarak depolanır `System.Int64` ve aynı aralığı izler.  
   
      Aşağıda, uzun sabitler örnekleri verilmiştir:  
   
@@ -146,9 +146,9 @@ Var olmayan bir sistem özelliğine erişme girişimi bir hatadır, ancak varolm
     2  
     ```  
   
--   `<decimal_constant>` , tırnak işaretleri içine alınmış sayıların bir dizesidir ve bir ondalık noktası içerir. Değerler dahili olarak depolanır `System.Double` ve aynı aralığa/duyarlığa uyar.  
+-   `<decimal_constant>` , tırnak işaretleri içine almayan sayıların bir dizesidir ve bir ondalık noktası içerir. Değerler dahili olarak depolanır `System.Double` ve aynı aralığa/duyarlığa uyar.  
   
-     Gelecekteki bir sürümde, bu numara tam sayı semantiğini desteklemek için farklı bir veri türünde depolanabilir, bu nedenle temel alınan veri türünün için olduğu olguyu temel almamalıdır `System.Double` `<decimal_constant>` .  
+     Gelecekteki bir sürümde, bu numara tam sayı semantiğini desteklemek için farklı bir veri türünde depolanabilir, bu nedenle temel alınan veri türünün bir olgusuna güvenmemelisiniz `System.Double` `<decimal_constant>` .  
   
      Ondalık sabitlerin örnekleri aşağıda verilmiştir:  
   
@@ -195,9 +195,11 @@ Dize sabitleri tek tırnak işaretleri içine alınır ve geçerli Unicode karak
   
 ### <a name="remarks"></a>Açıklamalar  
 
-`newid()`İşlevi, yöntemi tarafından oluşturulan bir **System. Guid** döndürür `System.Guid.NewGuid()` .  
+`newid()`İşlevi `System.Guid` , yöntemi tarafından oluşturulan bir döndürür `System.Guid.NewGuid()` .  
   
 `property(name)`İşlevi tarafından başvurulan özelliğin değerini döndürür `name` . `name`Değer, bir dize değeri döndüren geçerli bir ifade olabilir.  
+
+[!INCLUDE [service-bus-filter-examples](../../includes/service-bus-filter-examples.md)]
   
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
@@ -214,5 +216,5 @@ Dize sabitleri tek tırnak işaretleri içine alınır ve geçerli Unicode karak
 - [SQLRuleAction sınıfı (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlruleaction)
 - [SqlRuleAction sınıfı (Java)](/java/api/com.microsoft.azure.servicebus.rules.sqlruleaction)
 - [SqlRuleAction (JavaScript)](/javascript/api/@azure/service-bus/sqlruleaction)
-- [az ServiceBus konu abonelik kuralı](/cli/azure/servicebus/topic/subscription/rule)
+- [`az servicebus topic subscription rule`](/cli/azure/servicebus/topic/subscription/rule)
 - [New-AzServiceBusRule](/powershell/module/az.servicebus/new-azservicebusrule)
