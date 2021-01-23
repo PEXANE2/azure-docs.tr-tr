@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 808357b95f4de904ead0741d848480d548a2e26a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: b6ecea10c884bffb10c936ca7c619d70d2449467
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030085"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728500"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Mevcut şirket içi proxy sunucularıyla çalışma
 
@@ -169,7 +169,7 @@ Bağlayıcı bağlantı sorunlarını belirlemek ve sorunlarını gidermek için
 Seçtiğiniz izleme aracını kullanabilirsiniz. Bu makalenin amaçları doğrultusunda, Microsoft Message Analyzer 'ı kullandık.
 
 > [!NOTE]
-> [Microsoft Message Analyzer (MMA) kullanımdan](https://docs.microsoft.com/openspecs/blog/ms-winintbloglp/dd98b93c-0a75-4eb0-b92e-e760c502394f) kaldırılmıştır ve indirme paketleri, Kasım 25 2019 ' deki Microsoft.com sitelerinden kaldırılmıştır.  Şu anda geliştirmede Microsoft Ileti Çözümleyicisi için Microsoft 'a yönelik bir Microsoft tarafından değişiklik bulunmamaktadır.  Benzer işlevler için lütfen Wireshark gibi bir 3. taraf ağ protokolü Çözümleyicisi aracı kullanmayı deneyin.
+> [Microsoft Message Analyzer (MMA) kullanımdan](/openspecs/blog/ms-winintbloglp/dd98b93c-0a75-4eb0-b92e-e760c502394f) kaldırılmıştır ve indirme paketleri, Kasım 25 2019 ' deki Microsoft.com sitelerinden kaldırılmıştır.  Şu anda geliştirmede Microsoft Ileti Çözümleyicisi için Microsoft 'a yönelik bir Microsoft tarafından değişiklik bulunmamaktadır.  Benzer işlevler için lütfen Wireshark gibi bir 3. taraf ağ protokolü Çözümleyicisi aracı kullanmayı deneyin.
 
 Aşağıdaki örnekler Ileti çözümleyici 'ye özgüdür, ancak ilkeler herhangi bir analiz aracına uygulanabilir.
 

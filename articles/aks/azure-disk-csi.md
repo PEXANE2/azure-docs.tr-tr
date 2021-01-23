@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 2dba9fbcbddbc7a66763636986f3d98f4f95332c
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: b75f4c85831fe66158da875c21af60ee73531026
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683140"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728265"
 ---
 # <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS) içindeki Azure disk kapsayıcısı depolama arabirimi (CSı) sürücülerini kullanma (Önizleme)
 Azure disk kapsayıcısı depolama arabirimi (CSı) sürücüsü, Azure disk yaşam döngüsünü yönetmek için Azure Kubernetes hizmeti (AKS) tarafından kullanılan bir [CSI belirtimiyle](https://github.com/container-storage-interface/spec/blob/master/spec.md)uyumlu bir sürücü.
@@ -101,7 +101,7 @@ storageclass.storage.k8s.io/azuredisk-csi-waitforfirstconsumer created
 
 ## <a name="volume-snapshots"></a>Birim anlık görüntüleri
 
-Azure disk CSı sürücüsü [kalıcı birimlerin anlık görüntülerini](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html)oluşturmayı destekler. Bu özelliğin bir parçası olarak, sürücü, parametrede ayarlanan değere (varsayılan olarak, true) bağlı olarak *tam* veya [ *artımlı* anlık görüntüler](../virtual-machines/windows/disks-incremental-snapshots.md) gerçekleştirebilir `incremental` .
+Azure disk CSı sürücüsü [kalıcı birimlerin anlık görüntülerini](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html)oluşturmayı destekler. Bu özelliğin bir parçası olarak, sürücü, parametrede ayarlanan değere (varsayılan olarak, true) bağlı olarak *tam* veya [ *artımlı* anlık görüntüler](../virtual-machines/disks-incremental-snapshots.md) gerçekleştirebilir `incremental` .
 
 Tüm parametrelerle ilgili ayrıntılar için bkz. [Volume Snapshot Class Parameters](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/docs/driver-parameters.md#volumesnapshotclass).
 
@@ -370,7 +370,7 @@ Son olarak, blok cihazını Pod içinde denetlim:
 
 Azure disk CSı sürücüsü ayrıca Windows düğümlerini ve kapsayıcıları destekler. Windows kapsayıcıları kullanmak istiyorsanız, Windows düğüm havuzu eklemek için [Windows kapsayıcıları öğreticisini](windows-container-cli.md) izleyin.
 
-Bir Windows düğüm havuzunuz olduktan sonra, gibi yerleşik depolama sınıflarını kullanabilirsiniz `managed-csi` . [Windows-based stateful set](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/windows/statefulset.yaml) `data.txt` Aşağıdaki komutu [kubectl Apply][kubectl-apply] komutuyla dağıtarak, zaman damgalarını dosyaya kaydeden, örnek bir Windows tabanlı durum bilgisi kümesi dağıtabilirsiniz:
+Bir Windows düğüm havuzunuz olduktan sonra, gibi yerleşik depolama sınıflarını kullanabilirsiniz `managed-csi` . [](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/windows/statefulset.yaml) `data.txt` Aşağıdaki komutu [kubectl Apply][kubectl-apply] komutuyla dağıtarak, zaman damgalarını dosyaya kaydeden, örnek bir Windows tabanlı durum bilgisi kümesi dağıtabilirsiniz:
 
  ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-csi-driver/master/deploy/example/windows/statefulset.yaml

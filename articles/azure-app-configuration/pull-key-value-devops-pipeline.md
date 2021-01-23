@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: drewbat
-ms.openlocfilehash: fbe517c766b3835bf4265a1309b8737a25925b7c
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 4d80c034ab03fed6b9ae2ed0c4c0420afe6f7e32
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914969"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728100"
 ---
 # <a name="pull-settings-to-app-configuration-with-azure-pipelines"></a>Azure Pipelines ile uygulama yapılandırmasına yönelik çekme ayarları
 
@@ -47,7 +47,7 @@ Hizmet bağlantınız oluşturuldığına göre, kendisine atanan hizmet sorumlu
 
 Görevin uygulama yapılandırma deposuna erişebilmesi için, görev içinde kullanılan hizmet bağlantısına uygun uygulama yapılandırma rolünü atayın.
 
-1. Hedef uygulama yapılandırma deponuza gidin. Bir uygulama yapılandırma deposu ayarlamaya yönelik bir anlatım için bkz. Azure Uygulama yapılandırması hızlı başlangıçlarından birinde [uygulama yapılandırma deposu oluşturma](/azure/azure-app-configuration/quickstart-dotnet-core-app#create-an-app-configuration-store) .
+1. Hedef uygulama yapılandırma deponuza gidin. Bir uygulama yapılandırma deposu ayarlamaya yönelik bir anlatım için bkz. Azure Uygulama yapılandırması hızlı başlangıçlarından birinde [uygulama yapılandırma deposu oluşturma](./quickstart-dotnet-core-app.md#create-an-app-configuration-store) .
 1. Sol tarafta **erişim denetimi (IAM)** seçeneğini belirleyin.
 1. En üstte **+ Ekle** ve **Rol Ekle atamasını** seçin.
 1. **Rol** altında **uygulama yapılandırma veri okuyucusu**' nu seçin. Bu rol, görevin uygulama yapılandırma deposundan okumasına izin verir. 

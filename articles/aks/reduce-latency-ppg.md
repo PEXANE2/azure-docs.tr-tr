@@ -5,19 +5,19 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 10/19/2020
-ms.openlocfilehash: fa81e293bc5e53a852bdb404f9e6d41c4297647b
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: c30051008474a32ae6c847ee3f840c8ae35b469b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93349044"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726823"
 ---
 # <a name="reduce-latency-with-proximity-placement-groups"></a>Yakınlık yerleştirme gruplarıyla gecikme süresini azaltma
 
 > [!Note]
 > AKS üzerinde yakınlık yerleşimi grupları kullanırken, birlikte bulundurma yalnızca aracı düğümleri için geçerlidir. Düğümden düğüme ve ilgili barındırılan Pod 'ın Pod gecikme süresine kadar geliştirildi. Birlikte bulundurma, kümenin denetim düzlemi yerleştirmesini etkilemez.
 
-Uygulamanızı Azure 'da dağıttığınızda, sanal makine (VM) örneklerinin bölgeler veya kullanılabilirlik alanları arasında yayılması ağ gecikmesi oluşturur ve bu da uygulamanızın genel performansını etkileyebilir. Yakınlık yerleşimi grubu, Azure işlem kaynaklarının fiziksel olarak birbirlerine yakın bir yerde bulunduğundan emin olmak için kullanılan mantıksal bir gruplandırmadır. Oyun, mühendislik benzetimleri ve yüksek frekanslı ticaret (HFT) gibi bazı uygulamalar, düşük gecikme süresi ve hızla tamamlanan görevler gerektirir. Bunlar gibi yüksek performanslı bilgi işlem (HPC) senaryolarında, kümenizin düğüm havuzları için [yakınlık yerleşimi grupları](../virtual-machines/linux/co-location.md#proximity-placement-groups) (PPG) kullanmayı düşünün.
+Uygulamanızı Azure 'da dağıttığınızda, sanal makine (VM) örneklerinin bölgeler veya kullanılabilirlik alanları arasında yayılması ağ gecikmesi oluşturur ve bu da uygulamanızın genel performansını etkileyebilir. Yakınlık yerleşimi grubu, Azure işlem kaynaklarının fiziksel olarak birbirlerine yakın bir yerde bulunduğundan emin olmak için kullanılan mantıksal bir gruplandırmadır. Oyun, mühendislik benzetimleri ve yüksek frekanslı ticaret (HFT) gibi bazı uygulamalar, düşük gecikme süresi ve hızla tamamlanan görevler gerektirir. Bunlar gibi yüksek performanslı bilgi işlem (HPC) senaryolarında, kümenizin düğüm havuzları için [yakınlık yerleşimi grupları](../virtual-machines/co-location.md#proximity-placement-groups) (PPG) kullanmayı düşünün.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -133,7 +133,7 @@ az group delete --name myResourceGroup --yes --no-wait
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[proximity-placement-groups]: ../virtual-machines/linux/co-location.md#proximity-placement-groups
+[proximity-placement-groups]: ../virtual-machines/co-location.md#proximity-placement-groups
 [az-aks-create]: /cli/azure/aks#az-aks-create
 [system-pool]: ./use-system-pools.md
 [az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-add

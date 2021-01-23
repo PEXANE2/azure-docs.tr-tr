@@ -12,12 +12,12 @@ ms.date: 01/20/2021
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 6b46a5ea71bf8c9705ffc3bc51ea48f4b0c28502
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 6f8fdb23222944eab4742d1e972280e1e27e30a3
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660772"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728523"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Öğretici: Azure Active Directory içindeki uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme
 
@@ -36,7 +36,7 @@ Bu öğreticide:
 > * Azure AD kiracınıza şirket içi bir uygulama ekler
 > * Bir sınama kullanıcısının Azure AD hesabı kullanarak uygulamada oturum açmasını doğrular
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD 'ye şirket içi bir uygulama eklemek için şunlar gerekir:
 
@@ -97,7 +97,7 @@ TLS 1,2 ' i etkinleştirmek için:
 1. Sunucuyu yeniden başlatın.
 
 > [!Note]
-> Microsoft, Azure hizmetlerini farklı bir kök sertifika yetkilisi (CA) kümesinden TLS sertifikaları kullanacak şekilde güncelleştiriyor. Geçerli CA sertifikaları CA/tarayıcı Forum temel gereksinimlerinden biriyle uyumlu olmadığından bu değişiklik yapılıyor. Daha fazla bilgi için bkz. [Azure TLS sertifikası değişiklikleri](https://docs.microsoft.com/azure/security/fundamentals/tls-certificate-changes) .
+> Microsoft, Azure hizmetlerini farklı bir kök sertifika yetkilisi (CA) kümesinden TLS sertifikaları kullanacak şekilde güncelleştiriyor. Geçerli CA sertifikaları CA/tarayıcı Forum temel gereksinimlerinden biriyle uyumlu olmadığından bu değişiklik yapılıyor. Daha fazla bilgi için bkz. [Azure TLS sertifikası değişiklikleri](../../security/fundamentals/tls-certificate-changes.md) .
 
 ## <a name="prepare-your-on-premises-environment"></a>Şirket içi ortamınızı hazırlama
 

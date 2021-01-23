@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: 87cdecd29d684c712853970c8246002132d274ac
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: a618a5d94513f7d648d118ae3bebdb34e4f5b1c4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094344"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728868"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics veri güvenliği
 Bu belge, [Azure Güven Merkezi](https://www.microsoft.com/en-us/trust-center?rtc=1)bilgileri tamamlayacak bir Azure izleyici özelliği olan Log Analytics özgü bilgiler sağlamaya yöneliktir.  
@@ -77,7 +77,7 @@ Aşağıdaki tabloda veri türü örnekleri gösterilmektedir:
 | Uyarı |Uyarı adı, uyarı açıklaması, BaseManagedEntityId, sorun KIMLIĞI, ısmonitoralert, RuleId, ResolutionState, Priority, önem derecesi, kategori, sahip, ResolvedBy, TimeRaised, TimeAdded, LastModified, LastModifiedBy, LastModifiedExceptRepeatCount, Timeresoliner, TimeResolutionStateLastModified, TimeResolutionStateLastModifiedInDB, RepeatCount |
 | Yapılandırma |CustomerID, bjecttype TID, EntityId, ManagedTypeId, Managedtypepropertyıd, CurrentValue, ChangeDate |
 | Olay |EventID, EventOriginalID, Basemanagedentityınternalıd, RuleId, PublisherId, PublisherName, FullNumber, Number, Category, ChannelLevel, LoggingComputer, EventData, EventParameters, TimeGenerated, TimeAdded <br>**Note:** Windows olay günlüğünde özel alanlarıyla olayları yazdığınızda, Log Analytics toplar. |
-| Meta Veriler |BaseManagedEntityId, ObjectStatus, OrganizationalUnit, ActiveDirectoryObjectSid, Physicalişlemcilerle, NetworkName, IPAddress, ForestDNSName, NetbiosComputerName, VirtualMachineName, Lastınventorydate, HostServerNameIsVirtualMachine, IP adresi, NetbiosDomainName, Logicalişlemciler, DNSName, DisplayName, DomainDnsName, ActiveDirectorySite, PrincipalName, OffsetInMinuteFromGreenwichTime |
+| Meta veri |BaseManagedEntityId, ObjectStatus, OrganizationalUnit, ActiveDirectoryObjectSid, Physicalişlemcilerle, NetworkName, IPAddress, ForestDNSName, NetbiosComputerName, VirtualMachineName, Lastınventorydate, HostServerNameIsVirtualMachine, IP adresi, NetbiosDomainName, Logicalişlemciler, DNSName, DisplayName, DomainDnsName, ActiveDirectorySite, PrincipalName, OffsetInMinuteFromGreenwichTime |
 | Performans |ObjectName, CounterName, Perfmonınstancename, Performancedataıd, performanslı Cesourceınternalıd, SampleValue, Timeörneklenmiş, TimeAdded |
 | Durum |Statechangeeventıd, stateId, NewHealthState, OldHealthState, Context, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, Monitorıd, HealthState, LastModified, Lastlıalertgenerated, DatabaseTimeModified |
 
@@ -183,11 +183,10 @@ Azure Izleyici/Log Analytics ortamınızı daha da güvenli hale getirmek için 
 - [Müşteri tarafından yönetilen (güvenlik) anahtarlar](customer-managed-keys.md) -Log Analytics çalışma alanlarınıza gönderilen verileri şifrelemek için müşteri tarafından yönetilen anahtarları kullanabilirsiniz. Azure Key Vault kullanımını gerektirir. 
 - [Özel/müşteri tarafından yönetilen depolama](private-storage.md) -kişisel şifreli depolama hesabınızı yönetin ve izleme verilerini depolamak için Log Analytics söyleyin 
 - [Özel bağlantı ağı](private-link-security.md) -Azure özel bağlantısı, Azure PaaS hizmetlerini (Azure izleyici dahil) özel uç noktaları kullanarak sanal ağınıza güvenli bir şekilde bağlayabilmeniz için izin verir. 
-- [Azure müşteri kasası](/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-preview) -müşteri kasası Microsoft Azure, müşterilerin müşteri verileri erişim isteklerini gözden geçirmesi ve onaylaması veya reddetmesi için bir arabirim sağlar. Bu arabirim Microsoft mühendisinin destek isteği sırasında müşterinin verilerine erişmesi gerektiğinde kullanılır.
+- [Azure müşteri kasası](../../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-preview) -müşteri kasası Microsoft Azure, müşterilerin müşteri verileri erişim isteklerini gözden geçirmesi ve onaylaması veya reddetmesi için bir arabirim sağlar. Bu arabirim Microsoft mühendisinin destek isteği sırasında müşterinin verilerine erişmesi gerektiğinde kullanılır.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Azure [VM hızlı başlangıç](../learn/quick-collect-azurevm.md)adımlarını izleyerek Azure VM 'leriniz için Log Analytics verileri nasıl toplayacağınızı öğrenin.  
 
 *  Ortamınızdaki fiziksel veya sanal Windows veya Linux bilgisayarlardan veri toplamak istiyorsanız bkz. [Linux bilgisayarları Için hızlı başlangıç](../learn/quick-collect-linux-computer.md) veya [Windows bilgisayarları için hızlı başlangıç](../learn/quick-collect-windows-computer.md)
-

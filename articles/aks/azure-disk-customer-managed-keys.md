@@ -4,12 +4,12 @@ description: AKS işletim sistemini ve veri disklerini şifrelemek için kendi a
 services: container-service
 ms.topic: article
 ms.date: 09/01/2020
-ms.openlocfilehash: c71052f44f6912006a952bae16fd89ec1dc937db
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 60a7e36039500ccb8a46fd1f5998c23c37174689
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607900"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728144"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki Azure diskleriyle kendi anahtarlarınızı (BYOK) getirin
 
@@ -19,7 +19,7 @@ Azure depolama, bekleyen bir depolama hesabındaki tüm verileri şifreler. Vars
 * Veri diski şifreleme desteği, Kubernetes sürüm 1,17 ve üstünü çalıştıran AKS kümeleriyle sınırlıdır.
 * Müşteri tarafından yönetilen anahtarlarla işletim sistemi ve veri diski şifrelemesi, yalnızca bir AKS kümesi oluşturulurken etkinleştirilebilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * Yönetilen diskleri şifrelemek için Key Vault kullanırken *Azure Key Vault* için geçici silme ve Temizleme korumasını etkinleştirmeniz gerekir.
 * Azure CLı sürüm 2.11.1 veya sonraki bir sürümü gereklidir.
 
@@ -155,4 +155,4 @@ kubectl apply -f byok-azure-disk.yaml
 [customer-managed-keys-windows]: ../virtual-machines/disk-encryption.md#customer-managed-keys
 [customer-managed-keys-linux]: ../virtual-machines/disk-encryption.md#customer-managed-keys
 [key-vault-generate]: ../key-vault/general/manage-with-cli2.md
-[supported-regions]: ../virtual-machines/windows/disk-encryption.md#supported-regions
+[supported-regions]: ../virtual-machines/disk-encryption.md#supported-regions

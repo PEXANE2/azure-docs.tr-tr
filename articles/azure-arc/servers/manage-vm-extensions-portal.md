@@ -1,14 +1,14 @@
 ---
 title: Azure portal 'ten VM uzantısını etkinleştir
 description: Bu makalede, karma bulut ortamlarında çalışan Azure Arc etkin sunucularına sanal makine uzantılarının Azure portal nasıl dağıtılacağı açıklanır.
-ms.date: 11/06/2020
+ms.date: 01/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 48d7d4085dce893d94436fe0c6be32cfeea9cda3
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 43bbcef28b77e7c7112880fdac1bbd4809791cef
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359094"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728965"
 ---
 # <a name="enable-azure-vm-extensions-from-the-azure-portal"></a>Azure portal Azure VM uzantılarını etkinleştirin
 
@@ -25,7 +25,7 @@ VM uzantıları, Azure portal aracılığıyla sunucu tarafından yönetilen mak
 
 2. Portalda, **sunucular-Azure Arc** ' a gidin ve listeden karma makinenizi seçin.
 
-3. **Uzantılar** ' ı seçin ve **Ekle** ' yi seçin. Kullanılabilir uzantılar listesinden istediğiniz uzantıyı seçin ve sihirbazdaki yönergeleri izleyin. Bu örnekte, Log Analytics VM uzantısını dağıtacağız.
+3. **Uzantılar**' ı seçin ve **Ekle**' yi seçin. Kullanılabilir uzantılar listesinden istediğiniz uzantıyı seçin ve sihirbazdaki yönergeleri izleyin. Bu örnekte, Log Analytics VM uzantısını dağıtacağız.
 
     ![Seçilen makine için VM Uzantısı Seç](./media/manage-vm-extensions/add-vm-extensions.png)
 
@@ -35,10 +35,22 @@ VM uzantıları, Azure portal aracılığıyla sunucu tarafından yönetilen mak
 
     Yüklemeyi gerçekleştirmek için çalışma alanı KIMLIĞI ve birincil anahtarı sağlamanız gerekir. Bu bilgilerin nasıl bulunacağını bilmiyorsanız bkz. [çalışma alanı kimliğini ve anahtarını alma](../../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key).
 
-4. Belirtilen gerekli bilgileri onayladıktan sonra **Oluştur** ' u seçin. Dağıtımın bir özeti görüntülenir ve dağıtımın durumunu gözden geçirebilirsiniz.
+4. Belirtilen gerekli bilgileri onayladıktan sonra **Oluştur**' u seçin. Dağıtımın bir özeti görüntülenir ve dağıtımın durumunu gözden geçirebilirsiniz.
 
 >[!NOTE]
 >Birden çok uzantı birlikte toplanmış ve işlenebilir olsa da, bunlar hizmet temelli olarak yüklenir. İlk uzantı yüklemesi tamamlandıktan sonra, sonraki uzantının yüklenmesi denenir.
+
+## <a name="list-extensions-installed"></a>Yüklü liste uzantıları
+
+Azure portal, Arc etkin sunucunuzdaki sanal makine uzantılarının bir listesini alabilir. Bunları görmek için aşağıdaki adımları gerçekleştirin.
+
+1. Tarayıcınızdan [Azure Portal](https://portal.azure.com)gidin.
+
+2. Portalda, **sunucular-Azure Arc** ' a gidin ve listeden karma makinenizi seçin.
+
+3. **Uzantılar**' ı seçin ve yüklü uzantıların listesi döndürülür.
+
+    ![Seçilen makineye dağıtılan VM uzantısını Listele](./media/manage-vm-extensions/list-vm-extensions.png)
 
 ## <a name="uninstall-extension"></a>Uzantıyı kaldır
 
@@ -48,7 +60,7 @@ Azure portal bir yay etkin sunucusundan bir veya daha fazla uzantıyı kaldırab
 
 2. Portalda, **sunucular-Azure Arc** ' a gidin ve listeden karma makinenizi seçin.
 
-3. **Uzantılar** ' ı seçin ve ardından yüklü uzantılar listesinden bir uzantı seçin.
+3. **Uzantılar**' ı seçin ve ardından yüklü uzantılar listesinden bir uzantı seçin.
 
 4. **Kaldır** ' ı seçin ve doğrulamanız istendiğinde, devam etmek için **Evet** ' i seçin.
 

@@ -3,12 +3,12 @@ title: Azure Işlevlerinde IP adresleri
 description: İşlev uygulamaları için gelen ve giden IP adreslerini bulmayı ve bunların değişmesine neden olduğunu öğrenin.
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: 291a1cda7b8a2acc5426ea255519e1c2e58a2d7c
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: fcc92e61e180d25bc67d5ca3f9e2bff4af01fd3f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936728"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726740"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Işlevlerinde IP adresleri
 
@@ -25,10 +25,9 @@ IP adresleri, bağımsız işlevlerle değil işlev uygulamalarıyla ilişkilend
 
 Her işlev uygulamasının tek bir gelen IP adresi vardır. Bu IP adresini bulmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. İşlev uygulamasına gidin.
-3. **Platform özellikleri**' ni seçin.
-4. **Özellikler**' i seçin ve **sanal IP adresı** altında gelen IP adresi görüntülenir.
+3. **Ayarlar** bölümünde **Özellikler**’i seçin. Gelen IP adresi, **sanal IP adresi** altında görünür.
 
 ## <a name="function-app-outbound-ip-addresses"></a><a name="find-outbound-ip-addresses"></a>İşlev uygulaması giden IP adresleri
 
@@ -116,7 +115,7 @@ Statik, ayrılmış IP adreslerine ihtiyacınız varsa [App Service ortamlar](..
 
 İşlev uygulamanızın bir App Service Ortamı çalışıp çalışmamasından daha fazla bilgi edinmek için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. İşlev uygulamasına gidin.
 3. **Genel Bakış** sekmesini seçin.
 4. App Service planı katmanı **App Service plan/fiyatlandırma katmanı** altında görünür. App Service Ortamı fiyatlandırma katmanı **yalıtılmıştır**.

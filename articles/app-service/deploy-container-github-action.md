@@ -7,12 +7,12 @@ ms.date: 12/04/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: 4f5deb33218c336da7a477b4f39cd45f7386debf
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: fec4ba8cba33a1d52d8f330308645fb616921ba4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97604983"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726822"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>GitHub eylemlerini kullanarak App Service özel kapsayıcı dağıtma
 
@@ -50,7 +50,7 @@ Yayımlama profili, uygulama düzeyinde bir kimlik bilgileridir. Yayımlama prof
 1. **Genel bakış** sayfasında, **Yayımlama profili al**' ı seçin.
 
     > [!NOTE]
-    > 2020 Ekim itibariyle Linux Web Apps, `WEBSITE_WEBDEPLOY_USE_SCM` `true` **dosyanın indirilmeden önce** uygulama ayarının ayarlanmış olması gerekir. Bu gereksinim gelecekte kaldırılacak. Ortak Web uygulaması ayarlarını yapılandırma hakkında bilgi edinmek için [Azure portal App Service uygulama yapılandırma](/azure/app-service/configure-common)konusuna bakın.  
+    > 2020 Ekim itibariyle Linux Web Apps, `WEBSITE_WEBDEPLOY_USE_SCM` `true` **dosyanın indirilmeden önce** uygulama ayarının ayarlanmış olması gerekir. Bu gereksinim gelecekte kaldırılacak. Ortak Web uygulaması ayarlarını yapılandırma hakkında bilgi edinmek için [Azure portal App Service uygulama yapılandırma](./configure-common.md)konusuna bakın.  
 
 1. İndirdiğiniz dosyayı kaydedin. Dosyanın içeriğini bir GitHub parolası oluşturmak için kullanacaksınız.
 
@@ -88,7 +88,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 [Uygulama düzeyi kimlik bilgilerini](#generate-deployment-credentials)kullanmak için, indirilen yayımlama profili dosyasının içeriğini gizli dizinin değer alanına yapıştırın. Parolayı adlandırın `AZURE_WEBAPP_PUBLISH_PROFILE` .
 
-GitHub iş akışınızı yapılandırırken, `AZURE_WEBAPP_PUBLISH_PROFILE` Azure Web uygulaması dağıtma eyleminde öğesini kullanırsınız. Örnek:
+GitHub iş akışınızı yapılandırırken, `AZURE_WEBAPP_PUBLISH_PROFILE` Azure Web uygulaması dağıtma eyleminde öğesini kullanırsınız. Örneğin:
     
 ```yaml
 - uses: azure/webapps-deploy@v2
@@ -102,7 +102,7 @@ GitHub iş akışınızı yapılandırırken, `AZURE_WEBAPP_PUBLISH_PROFILE` Azu
 
 [Kullanıcı düzeyi kimlik bilgilerini](#generate-deployment-credentials)kullanmak IÇIN Azure CLI KOMUTUNDAN tüm JSON çıkışını gizli dizi değeri alanına yapıştırın. Gizli dizi adını gibi verin `AZURE_CREDENTIALS` .
 
-Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure oturum açma eyleminin girişi için gizli anahtarı kullanırsınız. Örnek:
+Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure oturum açma eyleminin girişi için gizli anahtarı kullanırsınız. Örneğin:
 
 ```yaml
 - uses: azure/login@v1

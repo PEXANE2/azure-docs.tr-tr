@@ -3,12 +3,12 @@ title: Azure İşlevleri için uygulama ayarları başvurusu
 description: Azure Işlevleri uygulama ayarları veya ortam değişkenleri için başvuru belgeleri.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 72b42e392f350a8693ca8a052bdec1d5fd337234
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 80b2daebbd64f08dd4f5d728b2a9a4ee04b8952f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937119"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729001"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure İşlevleri için uygulama ayarları başvurusu
 
@@ -229,11 +229,13 @@ Bu anahtarın değeri `<DESTINATION>:<VERBOSITY>` , aşağıdaki şekilde tanım
 
 ## <a name="website_contentazurefileconnectionstring"></a>Web sItesI \_ CONTENTAZUREFILECONNECTIONSTRING
 
-Yalnızca tüketim & Premium planlar için. İşlev uygulaması kodu ve yapılandırmasının depolandığı depolama hesabı için bağlantı dizesi. Bkz. [işlev uygulaması oluşturma](functions-infrastructure-as-code.md#create-a-function-app).
+İşlev uygulaması kodu ve yapılandırmasının, Windows üzerinde çalışan olay odaklı ölçeklendirme planlarında depolandığı depolama hesabı için bağlantı dizesi. Daha fazla bilgi için bkz. [işlev uygulaması oluşturma](functions-infrastructure-as-code.md#windows).
 
 |Anahtar|Örnek değer|
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol = https; AccountName = [ad]; AccountKey = [anahtar]|
+
+Yalnızca Windows üzerinde çalışan bir tüketim veya Premium planlarına dağıtım yaparken kullanılır. Linux için desteklenmez. Bu ayarı değiştirmek veya kaldırmak, işlev uygulamanızın başlatılamamasına neden olabilir. Daha fazla bilgi için [Bu sorun giderme makalesine](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)bakın. 
 
 ## <a name="website_contentovervnet"></a>Web sItesI \_ contenentovervnet
 
@@ -245,11 +247,15 @@ Yalnızca Premium planlar için. Bir değeri, `1` depolama hesabınız bir sanal
 
 ## <a name="website_contentshare"></a>Web sItesI \_ contentshare
 
-Yalnızca tüketim & Premium planlar için. İşlev uygulaması kodu ve yapılandırmasının dosya yolu. WEBSITE_CONTENTAZUREFILECONNECTIONSTRING ile kullanılır. Varsayılan değer, işlev uygulaması adı ile başlayan benzersiz bir dizedir. Bkz. [işlev uygulaması oluşturma](functions-infrastructure-as-code.md#create-a-function-app).
+Windows üzerinde olay odaklı ölçeklendirme planında, işlev uygulaması kodu ve yapılandırmasının dosya yolu. WEBSITE_CONTENTAZUREFILECONNECTIONSTRING ile kullanılır. Varsayılan değer, işlev uygulaması adı ile başlayan benzersiz bir dizedir. Bkz. [işlev uygulaması oluşturma](functions-infrastructure-as-code.md#windows).
 
 |Anahtar|Örnek değer|
 |---|------------|
 |WEBSITE_CONTENTSHARE|functionapp091999e2|
+
+Yalnızca Windows üzerinde çalışan bir tüketim veya Premium planlardaki işlev uygulamaları tarafından kullanılır. Linux için desteklenmez. Bu ayarı değiştirmek veya kaldırmak, işlev uygulamanızın başlatılamamasına neden olabilir. Daha fazla bilgi için [Bu sorun giderme makalesine](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)bakın.
+
+Dağıtım sırasında bir işlev uygulaması oluşturmak için bir Azure Resource Manager kullanırken, şablonda WEBSITE_CONTENTSHARE eklemeyin. Bu uygulama ayarı dağıtım sırasında oluşturulur. Daha fazla bilgi için bkz. [işlev uygulamanız için kaynak dağıtımını otomatikleştirme](functions-infrastructure-as-code.md#windows).   
 
 ## <a name="website_max_dynamic_application_scale_out"></a>Web sItesI \_ en büyük \_ dinamik \_ uygulama \_ ölçeği \_ genişletme
 

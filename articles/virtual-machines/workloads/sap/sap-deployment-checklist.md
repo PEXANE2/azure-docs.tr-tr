@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 601f268f81c222ada5a4f99b05ae8ffcdfc13a23
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: ca2a844364d11dbb5ac2a244945e07d8ca725c1c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916295"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728449"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 'da SAP iş yükleri: planlama ve dağıtım denetim listesi
 
@@ -66,7 +66,7 @@ Bu aşamada, SAP iş yükünüzün geçişini Azure platformuna planlarsınız. 
     - Yüksek kullanılabilirlik ve olağanüstü durum kurtarma mimarisi.
         - RTO ve RPO temelinde, yüksek kullanılabilirlik ve olağanüstü durum kurtarma mimarisinin nasıl görünmesi gerektiğini tanımlayın.
         - Bir bölge içinde yüksek kullanılabilirlik için, istenen DBMS 'nin Azure 'da sunmasına ne olduğunu denetleyin. Çoğu DBMS paketi, üretim sistemleri için önerdiğimiz, zaman uyumlu bir etkin bekleme, zaman uyumlu yöntemler sunar. Ayrıca, [SAP iş yükleri ve ilgili belgeler Için Azure sanal MAKINELER DBMS dağıtımına ilişkin bazı hususlar](./dbms_guide_general.md) ile başlayan farklı VERITABANLARı için SAP ile ilgili belgelere bakın.
-           Örneğin [SQL Server açıklananlar](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017&preserve-view=true)gıbı, DBMS katmanının paylaşılan disk yapılandırmasıyla Windows Server Yük Devretme Kümelemesi kullanmak desteklenmez. Bunun yerine, şunun gibi çözümler kullanın:
+           Örneğin [SQL Server açıklananlar](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)gıbı, DBMS katmanının paylaşılan disk yapılandırmasıyla Windows Server Yük Devretme Kümelemesi kullanmak desteklenmez. Bunun yerine, şunun gibi çözümler kullanın:
            - [SQL Server Always On](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups)
            - [Oracle Data Guard](../oracle/configure-oracle-dataguard.md)
            - [HANA sistem çoğaltması](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)

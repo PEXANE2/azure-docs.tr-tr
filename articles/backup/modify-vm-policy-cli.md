@@ -3,12 +3,12 @@ title: CLı kullanarak mevcut VM yedekleme ilkesini güncelleştirme
 description: Azure CLı kullanarak mevcut VM yedekleme ilkesini güncelleştirmeyi öğrenin.
 ms.topic: conceptual
 ms.date: 12/31/2020
-ms.openlocfilehash: ba4ded4c82a1eaea7c20ea94da580a8702467b85
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 33083d6585d2b9296cd184ba258b8d2143d685b4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858844"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728587"
 ---
 # <a name="update-the-existing-vm-backup-policy-using-cli"></a>CLı kullanarak mevcut VM yedekleme ilkesini güncelleştirme
 
@@ -18,7 +18,7 @@ Azure CLı kullanarak var olan bir VM yedekleme ilkesini güncelleştirebilirsin
 
 Var olan bir VM yedekleme ilkesini değiştirmek için şu adımları izleyin:
 
-1. Güncelleştirmek istediğiniz ilkenin ayrıntılarını almak için [az Backup Policy Show](https://docs.microsoft.com/cli/azure/backup/policy#az_backup_policy_show) komutunu yürütün.
+1. Güncelleştirmek istediğiniz ilkenin ayrıntılarını almak için [az Backup Policy Show](/cli/azure/backup/policy#az_backup_policy_show) komutunu yürütün.
 
     Örnek:
 
@@ -101,14 +101,14 @@ Var olan bir VM yedekleme ilkesini değiştirmek için şu adımları izleyin:
     ```
 
 1. Değişiklikleri kaydedin.
-1. [Az Backup Policy set](https://docs.microsoft.com/cli/azure/backup/policy#az_backup_policy_set) komutunu yürütün ve güncelleştirilmiş JSON dosyasının tam yolunu **--Policy** parametresinin değeri olarak geçirin.
+1. [Az Backup Policy set](/cli/azure/backup/policy#az_backup_policy_set) komutunu yürütün ve güncelleştirilmiş JSON dosyasının tam yolunu **--Policy** parametresinin değeri olarak geçirin.
 
     ```azurecli
     az backup policy set --resource-group rg1234 --vault-name testvault --policy C:\temp2\Policy.json --name testing123
     ```
 
 >[!NOTE]
->Örnek JSON ilkesini, [az Backup Policy Get-default-for-VM](https://docs.microsoft.com/cli/azure/backup/policy#az_backup_policy_get_default_for_vm) komutunu yürüterek de alabilirsiniz.
+>Örnek JSON ilkesini, [az Backup Policy Get-default-for-VM](/cli/azure/backup/policy#az_backup_policy_get_default_for_vm) komutunu yürüterek de alabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
