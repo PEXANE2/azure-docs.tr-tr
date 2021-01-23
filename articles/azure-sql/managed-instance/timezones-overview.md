@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 ms.date: 10/12/2020
-ms.openlocfilehash: bf0cfd70c9850cc6a5ff4482b494d68700022ad8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8a4c1b2ac53679153c8d9485443a231b817df77a
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790636"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734588"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Azure SQL yönetilen örneği 'nde saat dilimleri
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ Eşgüdümlü Evrensel Saat (UTC), bulut çözümlerinin veri katmanı için ön
 
 Desteklenen bir saat dilimi kümesi, yönetilen örneğin temeldeki işletim sisteminden devralınır. Yeni saat dilimi tanımlarını almak ve var olan değişiklikleri yansıtmak için düzenli olarak güncelleştirilir.
 
-[Günışığından yararlanma zaman/saat dilimi değişiklikleri ilkesi](https://aka.ms/time) , 2010 ileri 'den geçmiş doğruluğu garanti eder.
+[Günışığından yararlanma zaman/saat dilimi değişiklikleri ilkesi](/troubleshoot/windows-client/system-management-components/daylight-saving-time-help-support) , 2010 ileri 'den geçmiş doğruluğu garanti eder.
 
 Desteklenen saat dilimlerinin adlarına sahip bir liste [sys.time_zone_info](/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) sistem görünümü aracılığıyla sunulur.
 

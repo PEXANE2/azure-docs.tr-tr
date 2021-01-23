@@ -6,12 +6,12 @@ ms.author: sread
 ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: b2cac7a8310482305467a1cb3ed3127eb18ae416
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 2d48c767b836771600b3491299e0bdb33aacb75b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915785"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733158"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Azure 'da Micro Focus Enterprise Developer 4,0 için Micro Focus CICS BankDemo ayarlama
 
@@ -28,7 +28,7 @@ CICS, çevrimiçi ana bilgisayar uygulamalarının birçoğu tarafından kullan�
 
 - [SQL Server 2017 Express Edition](https://www.microsoft.com/sql-server/sql-server-editions-express). Enterprise Developer VM üzerine indirin ve yükleyin. Enterprise Server, CICS Region yönetimi için bir veritabanı gerektirir ve BankDemo uygulaması da BANKDEMO adlı bir SQL Server veritabanı kullanır. Bu tanıtım, her iki veritabanı için SQL Server Express kullandığınızı varsayar. Yükleme sırasında temel yüklemeyi seçin.
 
-- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017&preserve-view=true) (SSMS). SSMS veritabanlarını yönetmek ve bir T-SQL betiği çalıştırmak için kullanılır. Enterprise Developer VM üzerine indirin ve yükleyin.
+- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS). SSMS veritabanlarını yönetmek ve bir T-SQL betiği çalıştırmak için kullanılır. Enterprise Developer VM üzerine indirin ve yükleyin.
 
 - Ücretsiz olarak indirebileceğiniz en son hizmet paketi veya [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/)Ile [Visual Studio 2019](https://azure.microsoft.com/downloads/) .
 

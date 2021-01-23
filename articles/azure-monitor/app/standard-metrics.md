@@ -5,12 +5,12 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 07/03/2019
 ms.subservice: application-insights
-ms.openlocfilehash: f59dce5a450cd745ad05ea3b53d85606706a8eaa
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 8da719f399c0c49efd478f05a0114d85233c880f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97513462"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732637"
 ---
 # <a name="application-insights-standard-metrics"></a>Standart ölçümleri Application Insights
 
@@ -56,31 +56,31 @@ Tarayıcı ölçümleri, gerçek Son Kullanıcı tarayıcılarından Application
 
 |Ölçü birimi|Desteklenen toplamalar| Desteklenen boyutlar|
 |---|---|---|
-|Mayacak|Ortalama, en düşük, en fazla|Hiçbiri|
+|Mayacak|Ortalama, en düşük, en fazla|Yok|
 
 ### <a name="client-processing-time-browsertimingprocessingduration"></a>İstemci işlem süresi (Browserzamanlaması/processingDuration)
 
 |Ölçü birimi|Desteklenen toplamalar|Desteklenen boyutlar|
 |---|---|---|
-|Mayacak|Ortalama, en düşük, en fazla|Hiçbiri|
+|Mayacak|Ortalama, en düşük, en fazla|Yok|
 
 ### <a name="page-load-network-connect-time-browsertimingsnetworkduration"></a>Sayfa yükleme ağ bağlantı süresi (Browserzamanlamalar/networkDuration)
 
 |Ölçü birimi|Desteklenen toplamalar| Desteklenen boyutlar|
 |---|---|---|
-|Mayacak|Ortalama, en düşük, en fazla|Hiçbiri|
+|Mayacak|Ortalama, en düşük, en fazla|Yok|
 
 ### <a name="receiving-response-time-browsertimingsreceiveduration"></a>Yanıt süresini alma (Browserzamanlamalar/receiveDuration)
 
 |Ölçü birimi|Desteklenen toplamalar| Desteklenen boyutlar|
 |---|---|---|
-|Mayacak|Ortalama, en düşük, en fazla|Hiçbiri|
+|Mayacak|Ortalama, en düşük, en fazla|Yok|
 
 ### <a name="send-request-time-browsertimingssendduration"></a>Gönderme isteği süresi (Browserzamanlamalar/sendDuration)
 
 |Ölçü birimi|Desteklenen toplamalar| Desteklenen boyutlar|
 |---|---|---|
-|Mayacak|Ortalama, en düşük, en fazla|Hiçbiri|
+|Mayacak|Ortalama, en düşük, en fazla|Yok|
 
 ## <a name="failure-metrics"></a>Hata ölçümleri
 
@@ -272,5 +272,5 @@ TrackTrace () Application Insights API çağrısıyla günlüğe kaydedilen izle
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlük tabanlı ve önceden toplanmış ölçümler](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics)hakkında bilgi edinin.
-* [Günlük tabanlı ölçüm sorguları ve tanımları](https://docs.microsoft.com/azure/azure-monitor/platform/app-insights-metrics).
+* [Günlük tabanlı ve önceden toplanmış ölçümler](./pre-aggregated-metrics-log-metrics.md)hakkında bilgi edinin.
+* [Günlük tabanlı ölçüm sorguları ve tanımları](../platform/app-insights-metrics.md).

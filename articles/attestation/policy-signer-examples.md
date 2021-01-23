@@ -7,17 +7,17 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 0b32158ad58a663f7d85b9814bb4f2c1c55e4178
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 5cb767c639c7ff1d9888085caa036571376cc596
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922452"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734162"
 ---
 # <a name="examples-of-an-attestation-policy-signer-certificate"></a>Kanıtlama ilkesi imzalayan sertifikası örnekleri
 
 Bir kanıtlama sağlayıcısıyla ilişkili ilke imzalayan sertifikaları, imzalı ilkeleri doğrulamak için Microsoft Azure kanıtlama tarafından kullanılır.
-[İlke imzalama avantajları](/azure/attestation/basic-concepts/#benefits-of-policy-signing) hakkında daha fazla bilgi edinin
+[İlke imzalama avantajları](./basic-concepts.md#benefits-of-policy-signing) hakkında daha fazla bilgi edinin
 
 **Sağlayıcı akışı oluşturma sırasında kullanılacak ilke imzalayan sertifika dosyası biçimi**
 

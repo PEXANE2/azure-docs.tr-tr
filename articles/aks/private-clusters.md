@@ -4,12 +4,12 @@ description: Özel bir Azure Kubernetes hizmeti (AKS) kümesi oluşturmayı öğ
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 2b0cc8a2fe9a45120bf0b74dbad5e107fd860845
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 66072032b3fd1ac33bef60922c62f73a8cfb11bd
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664376"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734673"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Özel bir Azure Kubernetes hizmet kümesi oluşturma
 
@@ -24,7 +24,7 @@ Denetim düzlemi veya API sunucusu, Azure Kubernetes hizmeti (AKS) tarafından y
 > [!NOTE]
 > Azure Kamu siteleri desteklenir, ancak eksik özel bağlantı desteği nedeniyle US Gov Teksas Şu anda desteklenmiyor.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure CLı sürüm 2.2.0 veya üzeri
 * Özel bağlantı hizmeti yalnızca standart Azure Load Balancer desteklenir. Temel Azure Load Balancer desteklenmez.  
@@ -74,7 +74,7 @@ az aks create \
 2. "None", AKS 'in bir Özel DNS bölgesi oluşturmayacağı anlamına gelir.  Bu, kendi DNS sunucunuzu yapmanızı ve özel FQDN için DNS çözümlemesini yapılandırmanızı gerektirir.  DNS çözümlemesini yapılandırmazsanız DNS yalnızca aracı düğümleri içinde çözülebilir ve dağıtımdan sonra küme sorunlarına neden olur.
 3. "Özel özel DNS bölge adı" Azure genel bulutu için bu biçimde olmalıdır: `privatelink.<region>.azmk8s.io` . Bu Özel DNS bölgesinin kaynak kimliği gerekir.  Ayrıca, `private dns zone contributor` özel özel DNS bölgesinin en azından rolüne sahip bir kullanıcı tarafından atanan kimliğe veya hizmet sorumlusuna sahip olmanız gerekir.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 * AKS önizleme sürümü 0.4.71 veya üzeri
 * API sürüm 2020-11-01 veya üzeri
@@ -121,18 +121,18 @@ Belirtildiği gibi, sanal ağ eşlemesi özel kümenize erişmenin bir yoludur. 
 3. Kümenizi içeren VNet 'in özel DNS ayarları (4) olduğu senaryolarda, özel DNS bölgesi özel DNS çözümleyicilerine (5) sahip olan VNet 'e bağlanmadığı takdirde küme dağıtımı başarısız olur. Bu bağlantı, Küme sağlama sırasında veya olay tabanlı dağıtım mekanizmaları (örneğin, Azure Event Grid ve Azure Işlevleri) kullanılarak bölge oluşturma algılandıktan sonra Otomasyon yoluyla, özel bölge oluşturulduktan sonra el ile oluşturulabilir.
 
 > [!NOTE]
-> [Kubernetes kullanan ile kendi yol tablonuzu getir](https://docs.microsoft.com/azure/aks/configure-kubenet#bring-your-own-subnet-and-route-table-with-kubenet) ve kendi DNS 'Nizi özel kümeyle getir ' i kullanıyorsanız, küme oluşturma işlemi başarısız olur. Oluşturma işleminin başarılı olması için, küme oluşturma işlemi başarısız olduktan sonra düğüm kaynak grubundaki [RouteTable](https://docs.microsoft.com/azure/aks/configure-kubenet#bring-your-own-subnet-and-route-table-with-kubenet) 'ı alt ağ ile ilişkilendirmeniz gerekir.
+> [Kubernetes kullanan ile kendi yol tablonuzu getir](./configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet) ve kendi DNS 'Nizi özel kümeyle getir ' i kullanıyorsanız, küme oluşturma işlemi başarısız olur. Oluşturma işleminin başarılı olması için, küme oluşturma işlemi başarısız olduktan sonra düğüm kaynak grubundaki [RouteTable](./configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet) 'ı alt ağ ile ilişkilendirmeniz gerekir.
 
 ## <a name="limitations"></a>Sınırlamalar 
 * IP yetkili aralıkları özel API sunucusu uç noktasına uygulanamıyor, yalnızca ortak API sunucusu için geçerlidir
 * [Azure özel bağlantı hizmeti sınırlamaları][private-link-service] özel kümeler için geçerlidir.
-* Özel kümelerle Azure DevOps Microsoft tarafından barındırılan aracılar için destek yoktur. [Şirket içinde barındırılan aracıları](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops&tabs=browser&preserve-view=true)kullanmayı göz önünde bulundurun. 
+* Özel kümelerle Azure DevOps Microsoft tarafından barındırılan aracılar için destek yoktur. [Şirket içinde barındırılan aracıları](/azure/devops/pipelines/agents/agents?preserve-view=true&tabs=browser&view=azure-devops)kullanmayı göz önünde bulundurun. 
 * Azure Container Registry özel AKS ile çalışmak üzere etkinleştirmesi gereken müşteriler için, Container Registry sanal ağı aracı kümesi sanal ağıyla eşlenmelidir.
 * Mevcut AKS kümelerini özel kümelere dönüştürme desteği yok
 * Müşteri alt ağındaki özel uç noktasını silmek veya değiştirmek kümenin çalışmayı durdurmasına neden olur. 
 * Kapsayıcılar için Azure Izleyici canlı veriler şu anda desteklenmiyor.
 * Müşteriler, kendi DNS sunucularındaki bir kaydı güncelleştirdikten sonra, bu FID 'ler, yeniden başlatılana kadar geçişten sonra apıver FQDN 'sini daha eski IP 'ye çözeceklerdir. Müşterilerin, denetim düzlemi geçişinden sonra hostNetwork pods ve default-DNSPolicy pods ' i yeniden başlatması gerekir.
-* Denetim düzlemine yönelik bakım durumunda [aks IP](https://docs.microsoft.com/azure/aks/limit-egress-traffic#:~:text=By%20default%2C%20AKS%20clusters%20have%20unrestricted%20outbound%20%28egress%29,be%20accessible%20to%20maintain%20healthy%20cluster%20maintenance%20tasks.) 'niz değişebilir. Bu durumda, özel DNS sunucunuzdaki API sunucusu özel IP 'sine işaret eden bir kaydı güncelleştirmeniz ve hostnetwork kullanarak tüm özel POD veya dağıtımları yeniden başlatmanız gerekir.
+* Denetim düzlemine yönelik bakım durumunda [aks IP](./limit-egress-traffic.md) 'niz değişebilir. Bu durumda, özel DNS sunucunuzdaki API sunucusu özel IP 'sine işaret eden bir kaydı güncelleştirmeniz ve hostnetwork kullanarak tüm özel POD veya dağıtımları yeniden başlatmanız gerekir.
 
 <!-- LINKS - internal -->
 [az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/05/2021
 author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: 6f25ff02dee16812898d77d0e801f927b354dc78
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 11e21f376ea3b5cf580d54780509529b4536718b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97918335"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734183"
 ---
 # <a name="azure-monitor-for-azure-data-explorer-preview"></a>Azure Veri Gezgini için Azure Izleyici (Önizleme)
 
@@ -49,7 +49,7 @@ Seçili aboneliğin **genel bakış** sekmesinde Tablo, abonelik Içinde gruplan
 
 Sayaç kutucuğu, açılan liste altında, seçilen aboneliklerdeki Azure Veri Gezgini kümelerinin toplam sayısını kaydeder ve kaç tane seçili olduğunu yansıtır. Sütunlar için koşullu renk kaynakları vardır: canlı tut, CPU, Alım kullanımı ve önbellek kullanımı. Turuncu kodlu hücrelerde, küme için sürdürülebilirlik olmayan değerler vardır. 
 
-Her bir ölçüm 'in neyi temsil ettiğini daha iyi anlamak için [Azure Veri Gezgini ölçümleriyle](https://docs.microsoft.com/azure/data-explorer/using-metrics#cluster-metrics)ilgili belgelerde okumanız önerilir.
+Her bir ölçüm 'in neyi temsil ettiğini daha iyi anlamak için [Azure Veri Gezgini ölçümleriyle](/azure/data-explorer/using-metrics#cluster-metrics)ilgili belgelerde okumanız önerilir.
 
 ### <a name="query-performance-tab"></a>Sorgu performansı sekmesi
 
@@ -81,7 +81,7 @@ Azure Veri Gezgini kümelerini Azure Izleyici 'ye doğrudan bir Azure Veri Gezgi
 
 Bu görünümlere Ayrıca Azure Monitor Insights görünümündeki Azure Veri Gezgini kümesinin kaynak adı seçilerek de erişilebilir.
 
-Azure Veri Gezgini için Azure Izleyici, genel bir izleme çözümü sağlamak için hem günlükleri hem de ölçümleri birleştirir. Günlük tabanlı görselleştirmelerin dahil edilmesi, kullanıcıların [Azure Veri Gezgini kümesinin tanılama günlüğünü etkinleştirmesini ve bir Log Analytics çalışma alanına göndermesini gerektirir.](https://docs.microsoft.com/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs) Etkinleştirilmesi gereken tanılama günlükleri şunlardır: **komut**, **sorgu**, **Tabloayrıntıları** ve **tableusagestatistik**.
+Azure Veri Gezgini için Azure Izleyici, genel bir izleme çözümü sağlamak için hem günlükleri hem de ölçümleri birleştirir. Günlük tabanlı görselleştirmelerin dahil edilmesi, kullanıcıların [Azure Veri Gezgini kümesinin tanılama günlüğünü etkinleştirmesini ve bir Log Analytics çalışma alanına göndermesini gerektirir.](/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs) Etkinleştirilmesi gereken tanılama günlükleri şunlardır: **komut**, **sorgu**, **Tabloayrıntıları** ve **tableusagestatistik**.
 
 !["Izleme için günlükleri etkinleştir" metnini görüntüleyen mavi düğme ekran görüntüsü](./media/data-explorer/enable-logs.png)
 
@@ -90,7 +90,7 @@ Azure Veri Gezgini için Azure Izleyici, genel bir izleme çözümü sağlamak i
 
 - Ölçüm kutucukları, sistem durumunu hızlı bir şekilde değerlendirmek için kümenin kullanılabilirliğini ve genel durumunu vurgular.
 
-- Etkin [danışman önerilerin](https://docs.microsoft.com/azure/data-explorer/azure-advisor) ve [kaynak sistem](https://docs.microsoft.com/azure/data-explorer/monitor-with-resource-health) durumunun özeti.
+- Etkin [danışman önerilerin](/azure/data-explorer/azure-advisor) ve [kaynak sistem](/azure/data-explorer/monitor-with-resource-health) durumunun özeti.
 
 - En yüksek CPU ve bellek tüketicilerini ve zaman içindeki benzersiz kullanıcı sayısını gösteren grafikler.
 
@@ -114,7 +114,7 @@ Azure Veri Gezgini için Azure Izleyici, genel bir izleme çözümü sağlamak i
 
 **Tablolar** sekmesi, kümedeki tabloların en son ve geçmiş özelliklerini gösterir. En fazla alanı hangi tabloların tükettiğini görebilirsiniz, büyüme geçmişini tablo boyutuna, sık verilere ve zaman içindeki satır sayısına göre takip edebilirsiniz.
 
-**Önbellek** sekmesi kullanıcıların gerçek sorgularını gözden geçirin ve bunları yapılandırılmış önbellek ilkesiyle karşılaştırın (her tablo için). En çok sorgu ve tablo tarafından kullanılan tabloları tanımlayabilir ve önbellek ilkesini buna uygun şekilde uyarlayabilir. Azure Advisor 'daki belirli tablolar üzerinde belirli bir önbellek ilkesi önerisi alabilirsiniz (Şu anda önbellek önerileri yalnızca [ana Azure Danışmanı panosundan](https://docs.microsoft.com/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations)kullanılabilir) ve sorguların en az %95 ' i için son 30 güne ve en iyi duruma getirilmiş bir önbellek ilkesine göre görünür. Azure Advisor 'daki önbellek azaltma önerileri, "verilere göre sınırlanmış" kümeler için kullanılabilir (kümenin düşük CPU ve düşük Alım kullanımı, ancak yüksek veri kapasitesi nedeniyle, küme ölçeklendiremez veya azaltılamamıştır).
+**Önbellek** sekmesi kullanıcıların gerçek sorgularını gözden geçirin ve bunları yapılandırılmış önbellek ilkesiyle karşılaştırın (her tablo için). En çok sorgu ve tablo tarafından kullanılan tabloları tanımlayabilir ve önbellek ilkesini buna uygun şekilde uyarlayabilir. Azure Advisor 'daki belirli tablolar üzerinde belirli bir önbellek ilkesi önerisi alabilirsiniz (Şu anda önbellek önerileri yalnızca [ana Azure Danışmanı panosundan](/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations)kullanılabilir) ve sorguların en az %95 ' i için son 30 güne ve en iyi duruma getirilmiş bir önbellek ilkesine göre görünür. Azure Advisor 'daki önbellek azaltma önerileri, "verilere göre sınırlanmış" kümeler için kullanılabilir (kümenin düşük CPU ve düşük Alım kullanımı, ancak yüksek veri kapasitesi nedeniyle, küme ölçeklendiremez veya azaltılamamıştır).
 
 [![Önbellek ayrıntılarının ekran görüntüsü](./media/data-explorer/cache-tab.png)](./media/data-explorer/cache-tab.png#lightbox)
 
@@ -153,7 +153,7 @@ Yalnızca Azure portal üstbilgisindeki "Dizin + abonelik" bölümünde seçilen
 
 ### <a name="why-do-i-not-see-any-data-for-my-azure-data-explorer-cluster-under-the-usage-tables-or-cache-sections"></a>Azure Veri Gezgini kümeniz için kullanım, tablolar veya önbellek bölümlerinde hiç bir veri görmüyorum?
 
-Günlük tabanlı verilerinizi görüntülemek için, izlemek istediğiniz her Azure Veri Gezgini kümesi için [tanılama günlüklerini etkinleştirmeniz](https://docs.microsoft.com/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs) gerekir. Bu, her küme için Tanılama ayarları altında yapılabilir. Verilerinizi bir Log Analytics çalışma alanına göndermeniz gerekecektir. Etkinleştirilmesi gereken tanılama günlükleri şunlardır: komut, sorgu, Tabloayrıntıları ve Tableusagestatistik.
+Günlük tabanlı verilerinizi görüntülemek için, izlemek istediğiniz her Azure Veri Gezgini kümesi için [tanılama günlüklerini etkinleştirmeniz](/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs) gerekir. Bu, her küme için Tanılama ayarları altında yapılabilir. Verilerinizi bir Log Analytics çalışma alanına göndermeniz gerekecektir. Etkinleştirilmesi gereken tanılama günlükleri şunlardır: komut, sorgu, Tabloayrıntıları ve Tableusagestatistik.
 
 ### <a name="i-have-already-enabled-logs-for-my-azure-data-explorer-cluster-why-am-i-still-unable-to-see-my-data-under-commands-and-queries"></a>Azure Veri Gezgini Kümem için günlükleri zaten etkinleştirdim, neden hala komut ve sorgu kapsamında verilerimi göremiyorum?
 

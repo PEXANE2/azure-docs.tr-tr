@@ -9,18 +9,18 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 986019ec4de2fc25b6d8714a8c687cc9342f47b8
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 3d2652d2f6c1bb56dd009a9e4de375c42786986d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696081"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735008"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>Azure Arc veri denetleyicisi 'ni kullanarak oluşturma [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Genel bakış bilgileri için [Azure Arc veri denetleyicisi oluşturma](create-data-controller.md) konusunu gözden geçirin.
 
@@ -59,7 +59,7 @@ kubectl config current-context
 
 ### <a name="connectivity-modes"></a>Bağlantı modları
 
-[Bağlantı modlarında ve gereksinimlerde](https://docs.microsoft.com/azure/azure-arc/data/connectivity)açıklandığı gibi, Azure Arc veri denetleyicisi ya da bağlantı modu ile dağıtılabilir `direct` `indirect` . `direct`Bağlantı modu ile kullanım verileri otomatik olarak ve sürekli olarak Azure 'a gönderilir. Bu makalelerde, örnekler `direct` bağlantı modunu aşağıda gösterildiği gibi belirtir:
+[Bağlantı modlarında ve gereksinimlerde](./connectivity.md)açıklandığı gibi, Azure Arc veri denetleyicisi ya da bağlantı modu ile dağıtılabilir `direct` `indirect` . `direct`Bağlantı modu ile kullanım verileri otomatik olarak ve sürekli olarak Azure 'a gönderilir. Bu makalelerde, örnekler `direct` bağlantı modunu aşağıda gösterildiği gibi belirtir:
 
    ```console
    --connectivity-mode direct

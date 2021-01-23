@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9500d682a99e6345289a83b4b3b2fc29ffe18457
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: b5025aa322ae26f9dd7c683d0e54762fd33eb355
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676893"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735390"
 ---
 # <a name="query-storage-files-with-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu ile depolama dosyalarını sorgulama
 
@@ -184,7 +184,7 @@ Varsayılan olarak, `OPENROWSET` IşLEVI WITH yan tümcesinde belirtilen sütun 
 - İşlev, Iç Içe geçmiş tür grubunda olmayan tüm Parquet türleri için, belirtilen öğeden ve belirtilen yoldaki int, Decimal ve varchar gibi bir skaler değer döndürür.
 - Yol, Iç Içe geçmiş bir türün bir öğesini işaret ediyorsa, işlev belirtilen yoldaki en üstteki öğeden başlayarak bir JSON parçası döndürür. JSON parçası varchar (8000) türündedir.
 - Özellik belirtilen column_name bulunamazsa, işlev bir hata döndürür.
-- Özellik, [yol moduna](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#PATHMODE)bağlı olarak belirtilen column_path bulunamazsa, işlev katı modda veya LAX modundayken null olduğunda bir hata döndürür.
+- Özellik, [yol moduna](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true#PATHMODE)bağlı olarak belirtilen column_path bulunamazsa, işlev katı modda veya LAX modundayken null olduğunda bir hata döndürür.
 
 Sorgu örnekleri için, [sorgu Parquet iç içe türler](query-parquet-nested-types.md#read-properties-from-nested-object-columns) makalesindeki iç içe geçmiş sütunlarda bulunan erişim öğeleri bölümünü gözden geçirin.
 
@@ -248,7 +248,7 @@ Demo verileri aşağıdaki veri kümelerini içerir:
 - İç içe geçmiş sütunlara sahip örnek Parquet dosyaları
 - JSON biçimindeki kitaplar
 
-| Klasör yolu                                                  | Description                                                  |
+| Klasör yolu                                                  | Açıklama                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | CSV                                                        | CSV biçimindeki veriler için üst klasör                         |
 | /csv/population/<br />/csv/population-unix/<br />/csv/population-unix-hdr/<br />/csv/population-unix-hdr-escape<br />/csv/population-unix-hdr-quoted | Farklı CSV biçimlerinde popülasyon veri dosyaları içeren klasörler. |

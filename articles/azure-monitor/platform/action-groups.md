@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 444b514dfb1798ff810e84fc4e9d50001dbaee1c
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 8e260ae8310807ef9e0dad7d4fe21df8caad9b48
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685797"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735303"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure portalında eylem gruplarını oluşturma ve yönetme
 Bir eylem grubu, bir Azure aboneliğinin sahibi tarafından tanımlanan bildirim tercihleri koleksiyonudur. Azure Izleyici ve hizmet durumu uyarıları, kullanıcılara bir uyarının tetiklendiğini bildirmek için eylem gruplarını kullanır. Çeşitli uyarılar, kullanıcının gereksinimlerine bağlı olarak aynı eylem grubunu veya farklı eylem gruplarını kullanabilir. 
@@ -148,7 +148,7 @@ Yalnızca *birincil e-posta* adresine bir bildirim e-postası gönderilir.
 Bir eylem grubunda sınırlı sayıda e-posta eylemi olabilir. Bkz. [hız sınırlandırma bilgileri](./alerts-rate-limiting.md) makalesi.
 
 ### <a name="function"></a>İşlev
-[Azure işlevlerinde](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app)var olan bir http tetikleyici uç noktasını çağırır.
+[Azure işlevlerinde](../../azure-functions/functions-get-started.md)var olan bir http tetikleyici uç noktasını çağırır.
 
 Bir eylem grubunda sınırlı sayıda Işlev eylemine sahip olabilirsiniz.
 

@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: 4c77103dbb043ef9d6af9a4078b3e574ab5f953f
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: ded1406c47bb3f00c366da7a5b28319f3712f8a7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253567"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733765"
 ---
 # <a name="enable-intel-sgx-for-your-azure-sql-database"></a>Azure SQL veritabanınız için Intel SGX 'yi etkinleştirme 
 
@@ -25,7 +25,7 @@ ms.locfileid: "98253567"
 > [!NOTE]
 > Azure SQL veritabanı için güvenli şifreleme ile Always Encrypted Şu anda **genel önizleme** aşamasındadır.
 
-Azure SQL veritabanı 'nda [güvenli şifrelerle Always Encrypted,](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves) [Intel Software Guard UZANTıLARı (Intel SGX)](https://itpeernetwork.intel.com/microsoft-azure-confidential-computing/) şifreleme kullanır. Intel SGX 'nin kullanılabilmesi için, veritabanının [Vcore modelini](service-tiers-vcore.md) ve [DC Serisi](service-tiers-vcore.md#dc-series) donanım üretimini kullanması gerekir.
+Azure SQL veritabanı 'nda [güvenli şifrelerle Always Encrypted,](/sql/relational-databases/security/encryption/always-encrypted-enclaves) [Intel Software Guard UZANTıLARı (Intel SGX)](https://itpeernetwork.intel.com/microsoft-azure-confidential-computing/) şifreleme kullanır. Intel SGX 'nin kullanılabilmesi için, veritabanının [Vcore modelini](service-tiers-vcore.md) ve [DC Serisi](service-tiers-vcore.md#dc-series) donanım üretimini kullanması gerekir.
 
 Intel SGX kuşağını etkinleştirmek için DC Serisi donanım oluşturmayı yapılandırma, Azure SQL veritabanı yöneticisinin sorumluluğundadır. [SGX şifreleme ve kanıtlama yapılandırılırken rol ve sorumluluklara](always-encrypted-enclaves-plan.md#roles-and-responsibilities-when-configuring-sgx-enclaves-and-attestation)bakın.
 

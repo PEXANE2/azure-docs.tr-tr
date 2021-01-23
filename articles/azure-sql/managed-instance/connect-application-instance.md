@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: dd5c6527cd6a0beea291dce94ff0e5949ba00671
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 965e765e22a4da8f2ac3b7151337cf62b65be4fe
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791265"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732620"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Uygulamanızı Azure SQL Yönetilen Örneği'ne bağlama
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -56,7 +56,7 @@ Eşleme, Microsoft omurga ağını kullandığından tercih edilir, bu nedenle b
 
 Şirket içinde bir Azure sanal ağına nasıl bağlanay, iki seçenek vardır:
 
-- Siteden siteye VPN bağlantısı ([Azure Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md), [POWERSHELL](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), [Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md))
+- Siteden siteye VPN bağlantısı ([Azure Portal](../../vpn-gateway/tutorial-site-to-site-portal.md), [POWERSHELL](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), [Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md))
 - [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) bağlantısı  
 
 Şirket içinde Azure bağlantısı kurmayı başarıyla yaptıysanız ve SQL yönetilen örneği ile bağlantı kuramıyoruz, güvenlik duvarınızın SQL bağlantı noktası 1433 ' de açık bir giden bağlantı olup olmadığını ve yeniden yönlendirme için 11000-11999 bağlantı noktası aralığını kontrol edin.
@@ -73,8 +73,8 @@ Müşteriler tarafından uygulanan başka bir senaryo, bir VPN ağ geçidinin ay
 
 Temel altyapıyı ayarladıktan sonra, VPN ağ geçidinin SQL yönetilen örneği barındıran sanal ağdaki IP adreslerini görebilmesi için bazı ayarları değiştirmeniz gerekir. Bunu yapmak için, **eşleme ayarları** altında aşağıdaki belirli değişiklikleri yapın.
 
-1. VPN ağ geçidini barındıran sanal ağda, eşlemeler **' e gidin** , SQL yönetilen örneği için eşlenen sanal ağ bağlantısına gidin ve **ağ geçidi aktarımına izin ver** ' e tıklayın.
-2. SQL yönetilen örneğini barındıran sanal **ağda, eşlemeler ' e gidin** , VPN ağ geçidinin eşlenen sanal ağ bağlantısına gidin ve **uzak ağ geçitlerini kullan** ' a tıklayın.
+1. VPN ağ geçidini barındıran sanal ağda, eşlemeler **' e gidin**, SQL yönetilen örneği için eşlenen sanal ağ bağlantısına gidin ve **ağ geçidi aktarımına izin ver**' e tıklayın.
+2. SQL yönetilen örneğini barındıran sanal **ağda, eşlemeler ' e gidin**, VPN ağ geçidinin eşlenen sanal ağ bağlantısına gidin ve **uzak ağ geçitlerini kullan**' a tıklayın.
 
 ## <a name="connect-azure-app-service"></a>Azure App Service Bağlan 
 

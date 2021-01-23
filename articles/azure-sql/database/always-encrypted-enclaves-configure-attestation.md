@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: e8cb423d4d700c4b6b6caa30a02eac3e7ef10cb6
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 51431bf0da9145e1b61da708942b675e4c3eea78
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253578"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733832"
 ---
 # <a name="configure-azure-attestation-for-your-azure-sql-logical-server"></a>Azure SQL mantıksal sunucunuz için Azure kanıtlama yapılandırma
 
@@ -27,7 +27,7 @@ ms.locfileid: "98253578"
 
 [Microsoft Azure kanıtlama](../../attestation/overview.md) , Intel Software Guard uzantıları (Intel SGX) şifrelemesi de dahil olmak üzere, güvenilir yürütme ortamlarının (TEEs) sızmasını sağlayan bir çözümdür. 
 
-Azure SQL veritabanı 'nda güvenli kuşışları [olan Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves) Için kullanılan Intel SGX şifrelemesi Için Azure kanıtlama 'nı kullanmak üzere şunları yapmanız gerekir:
+Azure SQL veritabanı 'nda güvenli kuşışları [olan Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-enclaves) Için kullanılan Intel SGX şifrelemesi Için Azure kanıtlama 'nı kullanmak üzere şunları yapmanız gerekir:
 
 1. Bir [kanıtlama sağlayıcısı](../../attestation/basic-concepts.md#attestation-provider) oluşturun ve önerilen kanıtlama ilkesiyle yapılandırın.
 
@@ -114,7 +114,7 @@ Kanıtlama iş akışı sırasında, veritabanınızı içeren Azure SQL mantık
 
 ### <a name="use-azure-portal-to-assign-permission"></a>İzin atamak için Azure portal kullanın
 
-Bir Azure SQL sunucusunun kimliğini kanıtlama sağlayıcısına yönelik kanıtlama okuyucusu rolüne atamak için, [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)konusundaki genel yönergeleri izleyin. **Rol ataması Ekle** bölmesindeyken:
+Bir Azure SQL sunucusunun kimliğini kanıtlama sağlayıcısına yönelik kanıtlama okuyucusu rolüne atamak için, [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md)konusundaki genel yönergeleri izleyin. **Rol ataması Ekle** bölmesindeyken:
 
 1. **Rol** açılır penceresinde, **kanıtlama okuyucusu** rolünü seçin.
 1. **Seç** alanına, arama yapmak IÇIN Azure SQL sunucunuzun adını girin.
@@ -143,11 +143,11 @@ $attestationResourceGroupName = "<attestation provider resource group name>"
 New-AzRoleAssignment -ObjectId $server.Identity.PrincipalId -RoleDefinitionName "Attestation Reader" -ResourceGroupName $attestationResourceGroupName
 ```
 
-Daha fazla bilgi için bkz. [Azure PowerShell kullanarak Azure rol atamaları ekleme veya kaldırma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell#add-a-role-assignment).
+Daha fazla bilgi için bkz. [Azure PowerShell kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-powershell.md#add-role-assignment-examples).
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-- [Güvenli kuşatmalarla Always Encrypted için anahtarları yönetme](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves-manage-keys)
+- [Güvenli kuşatmalarla Always Encrypted için anahtarları yönetme](/sql/relational-databases/security/encryption/always-encrypted-enclaves-manage-keys)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

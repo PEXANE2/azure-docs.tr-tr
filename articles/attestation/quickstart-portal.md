@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 52c0dd6825c8576d97e10d3f0568ca5fb81e789e
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 3ab1e6011a1c127c9ac5a2c7652a4bf458372e1e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210823"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733946"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-portal"></a>Hızlı başlangıç: Azure portal ile Azure kanıtlama ayarlama
 
@@ -58,7 +58,7 @@ Azure portal kullanarak bir kanıtlama sağlayıcısını yönetmek için aşağ
 
     d. **Konum**: bir konum seçin 
     
-    e. **İlke imzalayan sertifikaları dosyası**: kanıtlama sağlayıcısını ilke imzalama sertifikaları ile yapılandırmak için, CERT dosyasını yükleyin. Örneklere [buraya](/azure/attestation/policy-signer-examples) bakın 
+    e. **İlke imzalayan sertifikaları dosyası**: kanıtlama sağlayıcısını ilke imzalama sertifikaları ile yapılandırmak için, CERT dosyasını yükleyin. Örneklere [buraya](./policy-signer-examples.md) bakın 
 6.  Gerekli girişleri sağladıktan sonra, **gözden geçir + oluştur** ' a tıklayın.
 7.  Varsa doğrulama sorunlarını giderin ve **Oluştur**' a tıklayın.
 
@@ -98,7 +98,7 @@ a.  İndirilen sertifika sayısını ve sertifikaları doğrulayın.
 3.  Kanıtlama sağlayıcısını seçin ve genel bakış sayfasına gidin
 4.  Sol taraftaki kaynak menüsünde veya alt bölmedeki **ilke imzalayan sertifikalar** ' a tıklayın.
 5.  Üst menüden **Ekle** ' ye tıklayın (ilke imzalama gereksinimi olmadan oluşturulan kanıtlama sağlayıcıları için düğme devre dışı bırakılır)
-6.  İlke imzalayan sertifika dosyasını karşıya yükleyin ve **Ekle**' ye tıklayın. Örneklere [buraya](/azure/attestation/policy-signer-examples) bakın
+6.  İlke imzalayan sertifika dosyasını karşıya yükleyin ve **Ekle**' ye tıklayın. Örneklere [buraya](./policy-signer-examples.md) bakın
 
 ### <a name="delete-policy-signer-certificate"></a>İlke imzalayan sertifikasını Sil
 
@@ -107,7 +107,7 @@ a.  İndirilen sertifika sayısını ve sertifikaları doğrulayın.
 3.  Kanıtlama sağlayıcısını seçin ve genel bakış sayfasına gidin
 4.  Sol taraftaki kaynak menüsünde veya alt bölmedeki **ilke imzalayan sertifikalar** ' a tıklayın.
 5.  Üstteki menüden **Sil** ' e tıklayın (ilke imzalama gereksinimi olmadan oluşturulan kanıtlama sağlayıcıları için düğme devre dışı bırakılır)
-6.  İlke imzalayan sertifika dosyasını karşıya yükleyin ve **Sil**' e tıklayın. Örneklere [buraya](/azure/attestation/policy-signer-examples) bakın 
+6.  İlke imzalayan sertifika dosyasını karşıya yükleyin ve **Sil**' e tıklayın. Örneklere [buraya](./policy-signer-examples.md) bakın 
 
 ## <a name="attestation-policy"></a>Kanıtlama ilkesi
 
@@ -132,7 +132,7 @@ a.  İndirilen sertifika sayısını ve sertifikaları doğrulayın.
 5.  Üstteki menüden **Yapılandır** ' a tıklayın
 6.  Kanıtlama sağlayıcısı, ilke imzalama gereksinimi olmadan oluşturulduğunda, Kullanıcı bir ilkeyi **JWT** veya **metin** biçiminde karşıya yükleyebilir
 7.  **JWT** olarak **ilke biçimi** seçin
-8.  İlke dosyasını **imzasız/imzalı BIR JWT** biçiminde karşıya yükleyin ve **Kaydet**' e tıklayın. Örneklere [buraya](/azure/attestation/policy-examples) bakın
+8.  İlke dosyasını **imzasız/imzalı BIR JWT** biçiminde karşıya yükleyin ve **Kaydet**' e tıklayın. Örneklere [buraya](./policy-examples.md) bakın
     
     Karşıya dosya yükleme seçeneği için, ilke önizlemesi metin biçiminde gösterilir ve ilke önizlemesi düzenlenemez.
 
@@ -147,7 +147,7 @@ a.  İndirilen sertifika sayısını ve sertifikaları doğrulayın.
 5.  Üstteki menüden **Yapılandır** ' a tıklayın
 6.  Kanıtlama sağlayıcısı, ilke imzalama gereksinimi olmadan oluşturulduğunda, Kullanıcı bir ilkeyi **JWT** veya **metin** biçiminde karşıya yükleyebilir
 7.  **Ilke biçimini** **metin** olarak seçin
-8.  İlke dosyasını **metin** biçiminde içerikle karşıya yükleyin veya metin alanına ilke Içeriğini girip **Kaydet**' e tıklayın. Örneklere [buraya](/azure/attestation/policy-examples) bakın
+8.  İlke dosyasını **metin** biçiminde içerikle karşıya yükleyin veya metin alanına ilke Içeriğini girip **Kaydet**' e tıklayın. Örneklere [buraya](./policy-examples.md) bakın
 
     Karşıya dosya yükleme seçeneği için, ilke önizlemesi metin biçiminde gösterilir ve ilke önizlemesi düzenlenemez.
 
@@ -163,20 +163,9 @@ a.  İndirilen sertifika sayısını ve sertifikaları doğrulayın.
 4.  Sol taraftaki kaynak menüsünde veya alt bölmedeki **ilke** ' ye tıklayın.
 5.  Üstteki menüden **Yapılandır** ' a tıklayın
 6.  Kanıtlama sağlayıcısı ilke imzalama gereksinimiyle oluşturulduğunda, Kullanıcı yalnızca **IMZALı JWT biçiminde** bir ilkeyi karşıya yükleyebilir
-7.  Karşıya yükleme ilkesi dosyası **IMZALı JWT biçimidir** ve **Kaydet**' e tıklayın. Örneklere [buraya](/azure/attestation/policy-examples) bakın
+7.  Karşıya yükleme ilkesi dosyası **IMZALı JWT biçimidir** ve **Kaydet**' e tıklayın. Örneklere [buraya](./policy-examples.md) bakın
 
     Karşıya dosya yükleme seçeneği için, ilke önizlemesi metin biçiminde gösterilir ve ilke önizlemesi düzenlenemez.
     
 8.  Yapılandırılmış ilkeyi görüntülemek için **Yenile** 'ye tıklayın
-
- 
-
-
-
-
-
-
-
-
-
 

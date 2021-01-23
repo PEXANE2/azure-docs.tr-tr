@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2830d8b82f5b53300d0af3f48e55b573d78ad295
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 268f1c4bff84a2c9ef67c3f6b5749bc8d0b90e85
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287398"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735189"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Öğretici: Azure portal bir konak havuzu oluşturma
 
@@ -22,7 +22,7 @@ Konak havuzları, Windows sanal masaüstü ortamlarında bir veya daha fazla öz
 
 Bu makale, Azure portal aracılığıyla bir Windows sanal masaüstü ortamı için bir konak havuzu oluşturmaya yönelik kurulum sürecinde size yol gösterecektir. Bu yöntem, Windows sanal masaüstünde bir konak havuzu oluşturmak, bir Azure aboneliğinde VM 'Ler içeren bir kaynak grubu oluşturmak, bu VM 'Leri Azure Active Directory (AD) etki alanına eklemek ve VM 'Leri Windows sanal masaüstü ile kaydettirmek için tarayıcı tabanlı bir kullanıcı arabirimi sağlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bir konak havuzu oluşturmak için aşağıdaki parametreleri girmeniz gerekir:
 
@@ -68,7 +68,7 @@ Yeni konak havuzunuzu oluşturmaya başlamak için:
      > [!div class="mx-imgBorder"]
      > ![Konum alanını seçili Doğu ABD konumu ile gösteren Azure portal ekran görüntüsü. Alanın yanında, "meta veriler Doğu ABD depolanır." ifadesini görürsünüz.](media/portal-location-field.png)
 
-8. Konak havuzu türü altında, ana bilgisayar havuzunuzun **Kişisel** mi yoksa **havuza alınmış**mı olacağını seçin.
+8. Konak havuzu türü altında, ana bilgisayar havuzunuzun **Kişisel** mi yoksa **havuza alınmış** mı olacağını seçin.
 
     - **Kişisel**' i seçerseniz, atama türü alanında **Otomatik** veya **doğrudan** ' yi seçin.
 
@@ -77,8 +77,8 @@ Yeni konak havuzunuzu oluşturmaya başlamak için:
 
 9.  **Havuza alınmış**' ı seçerseniz, aşağıdaki bilgileri girin:
 
-     - **En fazla oturum sınırı**için, yük dengelenmesi istediğiniz en fazla kullanıcı sayısını tek bir oturum konağına girin.
-     - **Yük dengeleme algoritması**için, kullanım düzeninizi temel alarak, öncelikle, birinci veya derinlik seçeneklerinden birini belirleyin.
+     - **En fazla oturum sınırı** için, yük dengelenmesi istediğiniz en fazla kullanıcı sayısını tek bir oturum konağına girin.
+     - **Yük dengeleme algoritması** için, kullanım düzeninizi temel alarak, öncelikle, birinci veya derinlik seçeneklerinden birini belirleyin.
 
        > [!div class="mx-imgBorder"]
        > ![Atama türü alanının "havuza alınmış" seçiliyken bir ekran görüntüsü. Kullanıcı, Yük Dengeleme açılan menüsünde imlecini yukarı doğru üzerine alır.](media/pooled-assignment-type.png)
@@ -95,7 +95,7 @@ Yeni konak havuzunuzu oluşturmaya başlamak için:
 
 Sanal makinenizi konak Havuzu Kurulum işlemi içinde ayarlamak için:
 
-1. **Kaynak grubu**altında, sanal makineleri oluşturmak istediğiniz kaynak grubunu seçin. Bu, konak havuzu için kullanılandan farklı bir kaynak grubu olabilir.
+1. **Kaynak grubu** altında, sanal makineleri oluşturmak istediğiniz kaynak grubunu seçin. Bu, konak havuzu için kullanılandan farklı bir kaynak grubu olabilir.
 
 2. Sanal makineleri oluşturmak istediğiniz **sanal makine konumunu** seçin. Konak havuzu için seçtiğiniz bölgeden aynı veya farklı olabilir.
 
@@ -108,7 +108,7 @@ Sanal makinenizi konak Havuzu Kurulum işlemi içinde ayarlamak için:
 
 5. Bundan sonra, kurulum işleminin oluşturduğu sanal makineleri adlandırmak için bir **ad ön eki** sağlayın. Sonek `-` 0 ' dan başlayan sayılarla birlikte olacaktır.
 
-6. Sonra, sanal makineyi oluşturmak için kullanılması gereken görüntüyü seçin. **Galeri** veya **Depolama Blobu**seçeneklerinden birini belirleyebilirsiniz.
+6. Sonra, sanal makineyi oluşturmak için kullanılması gereken görüntüyü seçin. **Galeri** veya **Depolama Blobu** seçeneklerinden birini belirleyebilirsiniz.
 
     - **Galeri**' yi seçerseniz, açılan menüden önerilen görüntülerden birini seçin:
 
@@ -118,7 +118,7 @@ Sanal makinenizi konak Havuzu Kurulum işlemi içinde ayarlamak için:
       - Windows 10 Enterprise multi-session, sürüm 2004
       - Windows 10 Enterprise çoklu oturum, sürüm 2004 + Microsoft 365 uygulamalar
 
-     İstediğiniz görüntüyü görmüyorsanız, galerinizdeki başka bir görüntüyü ya da Microsoft ve diğer yayımcılar tarafından sunulan bir görüntüyü seçmenizi sağlayan **tüm görüntülere ve disklere gözatamazsınız**' ı seçin.
+     İstediğiniz görüntüyü görmüyorsanız, galerinizdeki başka bir görüntüyü ya da Microsoft ve diğer yayımcılar tarafından sunulan bir görüntüyü seçmenizi sağlayan **tüm görüntülere ve disklere gözatamazsınız**' ı seçin. Seçtiğiniz görüntünün [desteklenen işletim sistemi görüntülerinden](overview.md#supported-virtual-machine-os-images)biri olduğundan emin olun.
 
      > [!div class="mx-imgBorder"]
      > ![Microsoft 'un gösterildiği resimlerin listesini içeren Market 'in ekran görüntüsü.](media/marketplace-images.png)
@@ -136,9 +136,9 @@ Sanal makinenizi konak Havuzu Kurulum işlemi içinde ayarlamak için:
 
 9. Sonra, sanal makineler için genel IP isteyip istemediğinizi seçin. Özel bir IP daha güvenli olduğundan **Hayır** ' ı seçmenizi öneririz.
 
-10. İstediğiniz güvenlik grubu türünü seçin: **temel**, **Gelişmiş**veya **yok**.
+10. İstediğiniz güvenlik grubu türünü seçin: **temel**, **Gelişmiş** veya **yok**.
 
-    **Temel**seçeneğini belirlerseniz, herhangi bir gelen bağlantı noktasının açılmasını isteyip istemediğinizi seçmeniz gerekir. **Evet**' i seçerseniz, gelen bağlantılara izin vermek için standart bağlantı noktaları listesinden seçim yapın.
+    **Temel** seçeneğini belirlerseniz, herhangi bir gelen bağlantı noktasının açılmasını isteyip istemediğinizi seçmeniz gerekir. **Evet**' i seçerseniz, gelen bağlantılara izin vermek için standart bağlantı noktaları listesinden seçim yapın.
 
     >[!NOTE]
     >Daha fazla güvenlik için genel gelen bağlantı noktalarını açmemenizi öneririz.

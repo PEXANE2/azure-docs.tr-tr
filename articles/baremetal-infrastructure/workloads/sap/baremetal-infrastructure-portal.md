@@ -3,12 +3,12 @@ title: Azure 'da BareMetal örnek birimleri
 description: Azure portal aracılığıyla BareMetal örnek birimlerinin nasıl tanımlanacağına ve etkileşime gireceğini öğrenin.
 ms.topic: how-to
 ms.date: 1/4/2021
-ms.openlocfilehash: 30e1661e82546dbaf6d8dc4288ad896df89f401e
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: b089b45c35ff05f10ae59f8ce793645361be1e9b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861036"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733272"
 ---
 # <a name="manage-baremetal-instances-through-the-azure-portal"></a>BareMetal Örnekleri Azure portal aracılığıyla yönetme
  
@@ -21,7 +21,7 @@ BareMetal örnek kaynak sağlayıcısını kaydetmek için iki yol vardır:
  
 * [Azure CLI](#azure-cli)
  
-* [Azure Portal](#azure-portal)
+* [Azure portalı](#azure-portal)
  
 ### <a name="azure-cli"></a>Azure CLI
  
@@ -97,7 +97,7 @@ Olası donanım düzeltmeleri şunlardır:
 >[!NOTE]
 >Rev 4,2, var olan Rev 4 mimarisini kullanan en son yeniden markalı BareMetal altyapısıdır. Rev 4, Azure sanal makinesi (VM) konaklarına daha yakın bir yakınlık sağlar. Bu, Azure VM 'Ler ile karemetal örnek birimleri arasında, Rev 4 Damgalarında veya satırlarda dağıtılan ağ gecikmesi açısından önemli geliştirmeler sunar. BareMetal örneklerinizi Azure portal aracılığıyla erişebilir ve yönetebilirsiniz. Daha fazla bilgi için bkz. [Azure 'Da Baremetal altyapısı](baremetal-overview-architecture.md).
  
-Ayrıca, sağ tarafta, dağıtılan her BareMetal örnek birimi için otomatik olarak oluşturulan [Azure yakınlık yerleşimi grubunun](../../../virtual-machines/linux/co-location.md) adını bulacaksınız. Uygulama katmanını barındıran Azure VM 'lerini dağıtırken yakınlık yerleşimi grubuna başvurun. BareMetal örnek birimiyle ilişkili yakınlık yerleşimi grubunu kullandığınızda Azure VM 'lerinin BareMetal örnek birimine yakın bir şekilde dağıtılmasını sağlayabilirsiniz.
+Ayrıca, sağ tarafta, dağıtılan her BareMetal örnek birimi için otomatik olarak oluşturulan [Azure yakınlık yerleşimi grubunun](../../../virtual-machines/co-location.md) adını bulacaksınız. Uygulama katmanını barındıran Azure VM 'lerini dağıtırken yakınlık yerleşimi grubuna başvurun. BareMetal örnek birimiyle ilişkili yakınlık yerleşimi grubunu kullandığınızda Azure VM 'lerinin BareMetal örnek birimine yakın bir şekilde dağıtılmasını sağlayabilirsiniz.
  
 >[!TIP]
 >Uygulama katmanını düzeltme 4. x ile aynı Azure veri merkezinde bulmak için bkz. [en iyi ağ gecikmesi Için Azure yakınlık yerleşimi grupları](../../../virtual-machines/workloads/sap/sap-proximity-placement-scenarios.md).

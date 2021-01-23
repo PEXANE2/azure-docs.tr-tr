@@ -3,12 +3,12 @@ title: Azure VM yedeklemesi hakkında
 description: Bu makalede, Azure Backup hizmetinin Azure sanal makinelerini nasıl yedeklediği ve en iyi yöntemleri nasıl izledikleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 291c50d4ac52d34a218b1b7cc76d625da3119d25
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 691fe991ad141696c0c68e915d7225001a1befd0
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97969002"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733580"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM yedeklemesine genel bakış
 
@@ -64,7 +64,7 @@ BEKs da yedeklenir. Bu nedenle, BEKs kaybolursa yetkili kullanıcılar BEKs 'yi 
 
 Azure Backup, anlık görüntüleri yedekleme zamanlamalarına göre alır.
 
-- **Windows VM 'leri:** Windows VM 'lerinde yedekleme hizmeti, VM disklerinin uygulamayla tutarlı bir anlık görüntüsünü almak için VSS ile eşgüdümünü sağlar.  Varsayılan olarak, Azure Backup tam bir VSS yedeklemesi alır (uygulama düzeyi tutarlı yedeklemeyi almak için yedekleme sırasında SQL Server gibi uygulamanın günlüklerini keser).  Azure VM yedeklemesi ' nde bir SQL Server veritabanı kullanıyorsanız, bir VSS kopya yedeklemesi (günlükleri korumak için) almak için ayarı değiştirebilirsiniz. Daha fazla bilgi için [Bu makaleye](./backup-azure-vms-troubleshoot.md#troubleshoot-vm-snapshot-issues)bakın.
+- **Windows VM 'leri:** Windows VM 'lerinde yedekleme hizmeti, VM disklerinin uygulamayla tutarlı bir anlık görüntüsünü almak için VSS ile eşgüdümünü sağlar.  Varsayılan olarak, Azure Backup tam bir VSS yedeklemesi alır (uygulama düzeyi tutarlı yedeklemeyi almak için yedekleme sırasında SQL Server gibi uygulamanın günlüklerini keser).  Azure VM yedeklemesi ' nde bir SQL Server veritabanı kullanıyorsanız, bir VSS kopya yedeklemesi (günlükleri korumak için) almak için ayarı değiştirebilirsiniz. Daha fazla bilgi için [bu makaleye](./backup-azure-vms-troubleshoot.md#troubleshoot-vm-snapshot-issues) bakın.
 
 - **Linux VM 'leri:** Linux VM 'lerinin uygulamayla tutarlı anlık görüntülerini almak için, tutarlılık sağlamak üzere kendi özel betiklerinizi yazmak üzere Linux ön betik ve betik sonrası çerçevesini kullanın.
 
@@ -121,7 +121,7 @@ VM yedekleme yapılandırması sırasında aşağıdaki yöntemleri uygulamanız
 - VM 'Leri tek bir kasadan geri yüklüyorsanız, hedef depolama hesabının kısıtlanmasını sağlamak için farklı [genel amaçlı v2 depolama hesapları](../storage/common/storage-account-upgrade.md) kullanmanızı önemle tavsiye ederiz. Örneğin, her sanal makinenin farklı bir depolama hesabı olmalıdır. Örneğin, 10 VM geri yüklenirse, 10 farklı depolama hesabı kullanın.
 - Anlık geri yükleme ile Premium depolama kullanan VM 'lerin yedeklenmesi için, **yalnızca** ilk yedekleme için gerekli olan toplam ayrılan depolama alanının *%50* boş alanını ayırmayı öneririz. İlk yedekleme tamamlandıktan sonra %50 boş alan yedeklemeler için bir gereksinim değildir
 - Depolama hesabı başına disk sayısı sınırı, disklere hizmet olarak altyapı (IaaS) VM üzerinde çalışan uygulamalar tarafından hangi düzeyde erişim sağlandığına göre değişir. Genellikle tek bir depolama hesabında 5-10 arası veya daha fazla disk varsa bazı diskleri ayrı depolama hesaplarına taşıyarak yükü dengelemeniz önerilir.
-- PowerShell kullanarak VM 'Leri yönetilen disklere geri yüklemek için, yönetilen disklerin geri yükleneceği kaynak grubunu belirtmek üzere **_Targetresourcegroupname_* _ ek parametresini sağlayın, [daha fazla bilgi edinin](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-managed-disks).
+- PowerShell kullanarak VM 'Leri yönetilen disklere geri yüklemek için, yönetilen disklerin geri yükleneceği kaynak grubunu belirtmek üzere **_Targetresourcegroupname_* _ ek parametresini sağlayın, [daha fazla bilgi edinin](./backup-azure-vms-automation.md#restore-managed-disks).
 
 ## <a name="backup-costs"></a>Yedekleme maliyetleri
 

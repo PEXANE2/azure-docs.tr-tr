@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 472a7f128ea19cdcc9df5a03d171f345c7d601de
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 7a6fc27321fa924b7ef8f9bd39b5824bb6fe3c72
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616839"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732587"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Application Insights Agent sorunlarını giderme (eski adıyla Durum İzleyicisi v2)
 
@@ -55,7 +55,7 @@ Sentomatik davranışını görmek için sorun giderme araçları 'nı kullanabi
 ### <a name="powershell-versions"></a>PowerShell sürümleri
 Bu ürün, PowerShell v 5.1 kullanılarak yazılmıştır ve test edilmiştir.
 Bu modül, 6 veya 7 PowerShell sürümleriyle uyumlu değildir.
-PowerShell v 5.1 'yi daha yeni sürümlerle birlikte kullanmanızı öneririz. Daha fazla bilgi için bkz. PowerShell [5,1 Ile PowerShell 7 yan yana kullanımı](https://docs.microsoft.com/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7.1#using-powershell-7-side-by-side-with-windows-powershell-51).
+PowerShell v 5.1 'yi daha yeni sürümlerle birlikte kullanmanızı öneririz. Daha fazla bilgi için bkz. PowerShell [5,1 Ile PowerShell 7 yan yana kullanımı](/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7.1#using-powershell-7-side-by-side-with-windows-powershell-51).
 
 ### <a name="conflict-with-iis-shared-configuration"></a>IIS paylaşılan yapılandırmasıyla çakışma
 

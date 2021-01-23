@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
-ms.openlocfilehash: e4b555f4727d2d1fb5b64814ae07aa15b78da42c
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 4a273170a1f3842a9a11a61d41d4150eb98eace4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510932"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734166"
 ---
 # <a name="azure-monitor-for-networks"></a>Ağlar için Azure İzleyici
 
-Ağlar için Azure Izleyici, tüm dağıtılan ağ kaynakları için herhangi bir yapılandırma gerektirmeden [sistem durumu](../../service-health/resource-health-checks-resource-types.md) ve [ölçümlerinin](../platform/metrics-supported.md) kapsamlı bir görünümünü sağlar. Ayrıca [bağlantı izleyici](../../network-watcher/connection-monitor-preview.md), [ağ güvenlik grupları (NSG 'ler) için akış günlüğü](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)ve [Trafik Analizi](../../network-watcher/traffic-analytics.md)gibi ağ izleme özelliklerine erişim sağlar. Ayrıca, diğer ağ [Tanılama](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) özellikleri sağlar.
+Ağlar için Azure Izleyici, tüm dağıtılan ağ kaynakları için herhangi bir yapılandırma gerektirmeden [sistem durumu](../../service-health/resource-health-checks-resource-types.md) ve [ölçümlerinin](../platform/metrics-supported.md) kapsamlı bir görünümünü sağlar. Ayrıca [bağlantı izleyici](../../network-watcher/connection-monitor-overview.md), [ağ güvenlik grupları (NSG 'ler) için akış günlüğü](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)ve [Trafik Analizi](../../network-watcher/traffic-analytics.md)gibi ağ izleme özelliklerine erişim sağlar. Ayrıca, diğer ağ [Tanılama](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) özellikleri sağlar.
 
 Ağ için Azure Izleyici, izlemenin bu temel bileşenleri etrafında yapılandırılır:
 - [Ağ durumu ve ölçümleri](#networkhealth)

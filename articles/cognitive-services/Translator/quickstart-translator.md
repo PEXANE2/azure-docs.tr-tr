@@ -12,27 +12,27 @@ ms.date: 09/14/2020
 ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: Çevirmen, çevirmen hizmeti, çevirme metni, alfabedeki metin, dil algılama
-ms.openlocfilehash: 68bbb31ae87ebbb84cda752c2f4a7c1bd1116dda
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 38bd4d28a8ae4c737155cd74bcb39d1acfaf699c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369537"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733503"
 ---
 # <a name="quickstart-get-started-with-translator"></a>Hızlı başlangıç: çevirmenle çalışmaya başlama
 
 Bu hızlı başlangıçta, REST aracılığıyla Translator hizmetini kullanmayı öğreneceksiniz. Temel örneklerle başlayıp geliştirme sırasında yaygın olarak kullanılan bazı temel yapılandırma seçeneklerine geçebilirsiniz; örneğin:
 
-* [İde](#translate-text)
+* [Çeviri](#translate-text)
 * [Alfabeye çevirme](#transliterate-text)
 * [Dil tanımlama/algılama](#detect-language)
 * [Tümce uzunluğunu hesapla](#get-sentence-length)
 * Bir tümcede [alternatif çeviriler](#dictionary-lookup-alternate-translations) ve [sözcük kullanımının örneklerini](#dictionary-examples-translations-in-context) alın
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
-* Azure aboneliğiniz olduğunda, anahtarınızı ve uç noktanızı almak için Azure portal [bir çevirmen kaynağı oluşturun](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) . Dağıtıldıktan sonra **Kaynağa Git** ' i seçin.
+* Azure aboneliğiniz olduğunda, anahtarınızı ve uç noktanızı almak için Azure portal [bir çevirmen kaynağı oluşturun](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) . Dağıtıldıktan sonra **Kaynağa Git**' i seçin.
   * Uygulamanızı Translator hizmetine bağlamak için kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
   * Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını (F0) kullanabilirsiniz.
 
@@ -59,7 +59,7 @@ Bu hızlı başlangıçta, REST aracılığıyla Translator hizmetini kullanmay�
 # <a name="java"></a>[Java](#tab/java)
 
 * Projeniz için bir çalışma dizini oluşturun. Örneğin: `mkdir sample-project`.
-* Projenizi Gradle: ile başlatın `gradle init --type basic` . Bir **DSL** seçmeniz Istendiğinde, **Kotlin** ' ı seçin.
+* Projenizi Gradle: ile başlatın `gradle init --type basic` . Bir **DSL** seçmeniz Istendiğinde, **Kotlin**' ı seçin.
 * Güncelleştirin `build.gradle.kts` . Örneğe bağlı olarak güncelleştirmeniz gerektiğini aklınızda bulundurun `mainClassName` .
   ```java
   plugins {
@@ -102,7 +102,7 @@ Translator hizmetini REST aracılığıyla çağırırken, her istek için aşa�
 
 <table width="100%">
   <th width="20%">Üst Bilgiler</th>
-  <th>Description</th>
+  <th>Açıklama</th>
   <tr>
     <td>Kimlik doğrulama üst bilgisi</td>
     <td><em>Gerekli istek üst bilgisi</em>.<br/><code>Ocp-Apim-Subscription-Key</code><br/><br/>Bilişsel <em>Hizmetler kaynağı kullanılıyorsa gerekli istek üst bilgisi. Çevirmen kaynağı kullanılıyorsa isteğe bağlıdır.</em>..<br/><code>Ocp-Apim-Subscription-Region</code><br/><br/><a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Kimlik doğrulaması için kullanılabilen seçeneklere</a>bakın.</td>
@@ -968,7 +968,8 @@ Kaynağınıza göre farklı bir alfabeyi (veya phonemes) kullanan bir dilde çe
 
 Uç noktadan bir alfabe alfabmına ulaşmak için `translate` `toScript` parametresini kullanın.
 
-> ! NOTUN Kullanılabilir dillerin ve alfabedeki seçeneklerin tamamı listesi için bkz. [dil desteği](language-support.md).
+> [!NOTE]
+> Kullanılabilir dillerin ve alfabedeki seçeneklerin tamamı listesi için bkz. [dil desteği](language-support.md).
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -1247,7 +1248,8 @@ Başarılı bir çağrıdan sonra aşağıdaki yanıtı görmeniz gerekir. Biti�
 
 `transliterate`Bir alfabeye ulaşmak için uç noktasını da kullanabilirsiniz. Alfabe bitiş noktasını kullanırken, kaynak dilini ( `language` ), kaynak betiği/ `fromScript` alfabeyi () ve çıkış betiğini/alfabeyi ( `toScript` ) parametre olarak sağlamanız gerekir. Bu örnekte, สวัสดี için alfabeyi almaya devam ediyoruz. 
 
-> ! NOTUN Kullanılabilir dillerin ve alfabedeki seçeneklerin tamamı listesi için bkz. [dil desteği](language-support.md).
+> [!NOTE]
+> Kullanılabilir dillerin ve alfabedeki seçeneklerin tamamı listesi için bkz. [dil desteği](language-support.md).
 
 # <a name="c"></a>[C#](#tab/csharp)
 

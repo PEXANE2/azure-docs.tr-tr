@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 12/03/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: f1e9d65baacb9c712b92ef6f00abda169031b47e
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: d60a241506dbcf3e038f79c99830ef1a81c06b88
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96582962"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735273"
 ---
 # <a name="customize-node-configuration-for-azure-kubernetes-service-aks-node-pools-preview"></a>Azure Kubernetes Service (AKS) düğüm havuzları (Önizleme) için düğüm yapılandırmasını özelleştirme
 
@@ -67,7 +67,7 @@ Desteklenen Kubelet parametreleri ve kabul edilen değerler aşağıda listelenm
 | `imageGcHighThreshold` | 0-100 | 85 | Görüntü çöp toplamanın her zaman çalıştırılacağı disk kullanımının yüzdesi. Çöp **toplamayı tetikleyecek en** az disk kullanımı. Görüntü atık toplamayı devre dışı bırakmak için 100 olarak ayarlayın. | 
 | `imageGcLowThreshold` | 0-100, şundan yüksek değil `imageGcHighThreshold` | 80 | Görüntü çöp toplamanın hiçbir şekilde çalıştırılmayacağı disk kullanımının yüzdesi. Çöp toplamayı **tetikleyesağlayan** minimum disk kullanımı. |
 | `topologyManagerPolicy` | hiçbiri, en iyi çaba, sınırlı, tek NUMA düğümü | yok | NUMA düğümü hizalamasını iyileştirin, daha fazla bilgi için [buraya](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/)bakın. Yalnızca Kubernetes v 1.18 +. |
-| `allowedUnsafeSysctls` | `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, `net.*` | Hiçbiri | Güvenli olmayan Sysctls veya güvenli olmayan sysctl desenlerinin izin verilen listesi. | 
+| `allowedUnsafeSysctls` | `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, `net.*` | Yok | Güvenli olmayan Sysctls veya güvenli olmayan sysctl desenlerinin izin verilen listesi. | 
 
 ### <a name="linux-os-custom-configuration"></a>Linux işletim sistemi özel yapılandırması
 
@@ -127,12 +127,12 @@ Aşağıdaki ayarlar, Linux çekirdeğinin sanal bellek (VM) alt sisteminin ve k
 | `vm.max_map_count` |  65530-262144 | 65530 | Bu dosya, bir işlemin sahip olabileceği maksimum bellek eşleme alanı sayısını içerir. Bellek eşleme alanı, `malloc` doğrudan `mmap` ,, `mprotect` ve `madvise` , ve ayrıca paylaşılan kitaplıkları yüklerken çağırmanın yan etkisi olarak kullanılır. | 
 | `vm.vfs_cache_pressure` | 1 - 500 | 100 | Bu yüzde değeri, dizinin ve ıncode nesnelerinin önbelleğe alınması için kullanılan belleği geri kazanmak için çekirdeğin kullanımını denetler. |
 | `vm.swappiness` | 0 - 100 | 60 | Bu denetim, çekirdeğin bellek sayfalarını nasıl takacağınızı tanımlamak için kullanılır. Daha yüksek değerler kararlılığı arttıracaktır, daha düşük değerler değiştirme miktarını azaltır. 0 değeri, çekirdekte ve dosya yedekli sayfaların miktarı bir bölgedeki yüksek su işaretinden küçük olana kadar, çekirdeğe değiştirmeyi başlatmamasını sağlar. | 
-| `swapFileSizeMB` | 1 MB- [geçici diskin](../virtual-machines/managed-disks-overview.md#temporary-disk) boyutu (/dev/sdb) | Hiçbiri | SwapFileSizeMB, bu düğüm havuzundan aracı düğümlerinde bir takas dosyası boyutunun MB olarak oluşturulmasını belirtir. | 
+| `swapFileSizeMB` | 1 MB- [geçici diskin](../virtual-machines/managed-disks-overview.md#temporary-disk) boyutu (/dev/sdb) | Yok | SwapFileSizeMB, bu düğüm havuzundan aracı düğümlerinde bir takas dosyası boyutunun MB olarak oluşturulmasını belirtir. | 
 | `transparentHugePageEnabled` | `always`, `madvise`, `never` | `always` | [Saydam kubpages](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge) , işlemcinin bellek eşleme donanımınızın daha verimli bir şekilde kullanılmasını sağlayarak performansı artırmak için tasarlanan bir Linux çekirdek özelliğidir. Etkinleştirildiğinde, çekirdek, mümkün olduğunda ayırmayı dener `hugepages` ve herhangi bir Linux işlemi, `mmap` bölge 2 MB 'lik bir şekilde HIZALANMıŞSA 2 MB sayfa alır. Bazı durumlarda `hugepages` , sistem genelinde etkin olduğunda, uygulamalar daha fazla bellek kaynağı ayırmayı sonlandırabilir. Bir uygulama `mmap` büyük bir bölgedir ancak yalnızca 1 bayta dokunabilir, bu durumda herhangi bir nedenden dolayı 4k sayfası yerine 2 MB 'lik bir sayfa ayrılabilir. Bu senaryo, `hugepages` sistem genelinde veya yalnızca bölgeler içinde olacak şekilde devre dışı bırakmak mümkün değildir `MADV_HUGEPAGE madvise` . | 
 | `transparentHugePageDefrag` | `always`, `defer`, `defer+madvise`, `madvise`, `never` | `madvise` | Bu değer, daha fazla kullanılabilir hale getirmek için çekirdeğin bellek sıkıştırmasını açık bir şekilde kullanmasını sağlayıp yapmayacağını denetler `hugepages` . | 
 
 > [!IMPORTANT]
-> Arama ve okunabilirlik kolaylığı için, işletim sistemi ayarları bu belgede adlarıyla görüntülenir, ancak yapılandırma JSON dosyasına veya [camelCase aktifleştirme kuralını](https://docs.microsoft.com/dotnet/standard/design-guidelines/capitalization-conventions)kullanarak aks API 'sine eklenmelidir.
+> Arama ve okunabilirlik kolaylığı için, işletim sistemi ayarları bu belgede adlarıyla görüntülenir, ancak yapılandırma JSON dosyasına veya [camelCase aktifleştirme kuralını](/dotnet/standard/design-guidelines/capitalization-conventions)kullanarak aks API 'sine eklenmelidir.
 
 `kubeletconfig.json`Aşağıdaki içeriğe sahip bir dosya oluşturun:
 

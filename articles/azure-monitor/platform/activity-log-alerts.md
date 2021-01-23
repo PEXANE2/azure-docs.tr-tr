@@ -4,12 +4,12 @@ description: Etkinlik günlüğünde belirli olaylar meydana geldiğinde SMS, We
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: e0d71c014780637b490c745ed829078d138df675
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: 8a30c0a0527f98cc00f7888299c09f1f26c3dd09
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97708441"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735223"
 ---
 # <a name="alerts-on-activity-log"></a>Etkinlik günlüğü uyarıları
 
@@ -19,7 +19,7 @@ Etkinlik günlüğü uyarıları, uyarıda belirtilen koşullara uyan yeni bir [
 
 > [!NOTE]
 > * Etkinlik günlüğü uyarı kategorisinde olaylar **için uyarılar oluşturulamıyor** .
-> * Güvenlik kategorisi ile etkinlik günlüğü uyarıları, [Yeni yükseltilen bir akışta](https://docs.microsoft.com/azure/security-center/continuous-export?tabs=azure-portal) [ServiceNow](https://docs.microsoft.com/azure/security-center/export-to-siem) 'da da tanımlanabilir
+> * Güvenlik kategorisi ile etkinlik günlüğü uyarıları, [Yeni yükseltilen bir akışta](../../security-center/continuous-export.md?tabs=azure-portal) [ServiceNow](../../security-center/export-to-siem.md) 'da da tanımlanabilir
 
 Genellikle, şu durumlarda bildirim almak için etkinlik günlüğü uyarıları oluşturursunuz:
 
@@ -49,7 +49,7 @@ Etkinlik günlüğü uyarıları bazı yaygın seçeneklere sahiptir:
 > [!NOTE]
 > Bir abonelikte 100 ' e kadar uyarı kuralı, tek bir kaynak, kaynak grubundaki tüm kaynaklar (veya) tüm abonelik düzeyinde bir kapsam etkinliği için oluşturulabilir.
 
-Etkinlik günlüğü uyarısı etkinleştirildiğinde, eylemler veya bildirimler oluşturmak için bir eylem grubu kullanır. Eylem grubu, e-posta adresleri, Web kancası URL 'Leri veya SMS telefon numaraları gibi yeniden kullanılabilir bir bildirim alıcıları kümesidir. Alıcıların bildirim kanallarınızı merkezileştirmek ve gruplamak için birden çok uyarıdan başvurulabilirler. Etkinlik günlüğü uyarısını tanımlarken iki seçeneğiniz vardır. Şunları yapabilirsiniz:
+Etkinlik günlüğü uyarısı etkinleştirildiğinde, eylemler veya bildirimler oluşturmak için bir eylem grubu kullanır. Eylem grubu, e-posta adresleri, Web kancası URL 'Leri veya SMS telefon numaraları gibi yeniden kullanılabilir bir bildirim alıcıları kümesidir. Alıcıların bildirim kanallarınızı merkezileştirmek ve gruplamak için birden çok uyarıdan başvurulabilirler. Etkinlik günlüğü uyarısını tanımlarken iki seçeneğiniz vardır. Seçenekleriniz şunlardır:
 
 * Etkinlik günlüğü uyarısında mevcut bir eylem grubunu kullanın.
 * Yeni bir eylem grubu oluşturun.

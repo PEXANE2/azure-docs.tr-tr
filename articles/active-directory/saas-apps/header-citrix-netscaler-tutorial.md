@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 73e895928beee288a4531f00347832967d0eab15
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 9cab0597aeb3bc28f391de558240e5d894f5a49c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608264"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735256"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-adc-header-based-authentication"></a>Öğretici: Citrix ADC ile çoklu oturum açma tümleştirmesi Azure Active Directory (üst bilgi tabanlı kimlik doğrulaması)
 
@@ -183,13 +183,13 @@ Bir sanal sunucu oluşturmak için:
 
 1. **Trafik yönetimi**  >  **Yük Dengeleme**  >  **Hizmetleri**' ni seçin.
     
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**’yi seçin.
 
     ![Citrix ADC yapılandırma-hizmetler bölmesi](./media/header-citrix-netscaler-tutorial/web01.png)
 
 1. Uygulamaları çalıştıran Web sunucusu için aşağıdaki değerleri ayarlayın:
 
-   * **Hizmet Adı**
+   * **Hizmet adı**
    * **Sunucu IP/varolan sunucu**
    * **Protokol**
    * **Bağlantı noktası**
@@ -202,7 +202,7 @@ Yük dengeleyiciyi yapılandırmak için:
 
 1. **Trafik yönetimi**  >  **Yük Dengeleme**  >  **sanal sunucularına** gidin.
 
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**’yi seçin.
 
 1. Aşağıdaki değerleri aşağıdaki ekran görüntüsünde açıklandığı gibi ayarlayın:
 
@@ -249,7 +249,7 @@ Kimlik doğrulama ilkesi oluşturmak için:
 
 1. **Güvenlik**  >  **aaa – uygulama trafik**  >  **ilkeleri**  >  **kimlik** doğrulama  >  **ilkeleri**' ne gidin.
 
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**’yi seçin.
 
 1. **Kimlik doğrulama Ilkesi oluştur** bölmesinde, aşağıdaki değerleri girin veya seçin:
 
@@ -431,7 +431,7 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 * Doğrudan Citrix ADC oturum açma URL 'sine gidin ve oturum açma akışını buradan başlatın.
 
-* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki Citrix ADC kutucuğuna tıkladığınızda bu işlem Citrix ADC oturum açma URL 'sine yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki Citrix ADC kutucuğuna tıkladığınızda bu işlem Citrix ADC oturum açma URL 'sine yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

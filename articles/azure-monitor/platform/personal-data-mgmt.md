@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 2bb1e667758a1430e34d222b9a5c537381c07624
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 40ea367c1298a916df541d362b85e8d485d193f1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505282"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734941"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Log Analytics ve Application Insights'da depolanan kişisel veriler için kılavuz
 
@@ -91,7 +91,7 @@ Veri görüntüleme ve dışarı aktarma istekleri için [Log Analytics sorgu AP
 Bir *Temizleme* API 'si yolunu işlemenin bir parçası olarak kullanıma sunulmuştur. Bu yol, sorun ile ilişkili risk, olası performans etkisi ve Log Analytics verilerinizin diğer yönlerini, ölçümlerinin ve diğer yönlerini eğmek için potansiyel olarak kullanılmalıdır. Özel verileri işlemeye yönelik alternatif yaklaşımlar için [kişisel veri Işleme stratejisi](#strategy-for-personal-data-handling) bölümüne bakın.
 
 > [!NOTE]
-> Temizleme işlemi gerçekleştirildikten sonra, [Temizleme işlemi durumu](https://docs.microsoft.com/rest/api/loganalytics/workspacepurge/getpurgestatus) *beklenirken* verilere erişilemez. 
+> Temizleme işlemi gerçekleştirildikten sonra, [Temizleme işlemi durumu](/rest/api/loganalytics/workspacepurge/getpurgestatus) *beklenirken* verilere erişilemez. 
 
 Temizleme, Azure 'daki hiçbir uygulamanın veya kullanıcının (kaynak sahibi dahil) Azure Resource Manager içinde açıkça bir rol verilmeden yürütme izinlerine sahip olacağı yüksek ayrıcalıklı bir işlemdir. Bu rol _veri_ kaybı olur ve veri kaybı nedeniyle dikkatli bir şekilde temsil edilmelidir. 
 
@@ -129,4 +129,3 @@ Azure Resource Manager rolü atandıktan sonra iki yeni API yolu mevcuttur:
 ## <a name="next-steps"></a>Sonraki adımlar
 - Log Analytics verilerinin nasıl toplandığı, işlendiği ve güvenliğinin sağlandığı hakkında daha fazla bilgi edinmek için bkz. [Log Analytics veri güvenliği](./data-security.md).
 - Application Insights verilerinin nasıl toplandığı, işlendiği ve güvenliğinin sağlandığı hakkında daha fazla bilgi edinmek için bkz. [Application Insights veri güvenliği](../app/data-retention-privacy.md).
-

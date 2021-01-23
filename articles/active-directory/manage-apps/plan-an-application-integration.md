@@ -1,26 +1,22 @@
 ---
-title: Azure AD 'yi uygulamalarla tümleştirmeyle çalışmaya başlama | Microsoft Docs
+title: Azure AD 'yi uygulamalarla tümleştirmeyle çalışmaya başlama
 description: Bu makale, Azure Active Directory (AD) Şirket içi uygulamalarla ve bulut uygulamalarıyla tümleştirmek için bir başlangıç kılavuzudur.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
-ms.subservice: app-mgmt
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2018
 ms.author: kenwith
 ms.reviewer: asteen
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 913b7975de4598bba7240647c1d9e8c81cd1cec9
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: db3d3623e175d582a2fe271d73aa452ca07b8e8d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659106"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735075"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Azure Active Directory uygulamalar ile tümleştirme kılavuzunu kullanmaya başlama
 
@@ -77,9 +73,7 @@ Uygulamalarınızın her biri farklı kimlik doğrulama gereksinimlerine sahip o
 Microsoft Azure AD uygulama proxy 'Si ile, özel ağınızın içinde bulunan uygulamalara, her yerden ve herhangi bir cihazdan erişim sağlayabilirsiniz. Ortamınızda bir uygulama proxy Bağlayıcısı yükledikten sonra, Azure AD ile kolayca yapılandırılabilir.
 
 ### <a name="integrating-custom-applications"></a>Özel uygulamaları tümleştirme
-Yeni bir uygulama yazıyorsanız ve geliştiricilerin Azure AD 'nin gücünden yararlanmasına yardımcı olmak istiyorsanız, bkz. [geliştiricilere rehberlik](./developer-guidance-for-integrating-applications.md)etme.
-
-Özel uygulamanızı Azure Uygulama galerisine eklemek istiyorsanız, bkz. [Azure AD Self-Service SAML yapılandırması ile "kendi uygulamanızı getirme"](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/).
+Özel uygulamanızı Azure Uygulama galerisine eklemek istiyorsanız bkz. [uygulamanızı Azure AD uygulama galerisine yayımlama](../develop/v2-howto-app-gallery-listing.md).
 
 ## <a name="managing-access-to-applications"></a>Uygulamalara erişimi yönetme
 Aşağıdaki makalelerde, Azure AD bağlayıcıları ve Azure AD 'yi kullanarak Azure AD ile tümleştirildiğinde uygulamalara erişimi yönetme yolları açıklanır.
@@ -95,7 +89,7 @@ Ayrıntılı bilgi için, [GitHub](../fundamentals/active-directory-deployment-p
 
 Azure portal bir dağıtım planı indirmek için:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. **Kurumsal uygulamaları** seçin  |  **bir uygulama**  |  **dağıtım planı** seçin.
 
 Lütfen [dağıtım planı anketini](https://aka.ms/DeploymentPlanFeedback)alarak dağıtım planlarında geri bildirim sağlayın.

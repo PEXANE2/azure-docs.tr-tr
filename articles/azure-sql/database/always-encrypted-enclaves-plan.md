@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: c41856c394166f2e3b8fd3bde794f0f294ef6af9
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 4448ce051b0c9e73865e8057cc4f224c9cbeb571
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253566"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732753"
 ---
 # <a name="plan-for-intel-sgx-enclaves-and-attestation-in-azure-sql-database"></a>Azure SQL veritabanı 'nda Intel SGX şifreleme ve kanıtlama planlaması
 
@@ -25,7 +25,7 @@ ms.locfileid: "98253566"
 > [!NOTE]
 > Azure SQL veritabanı için güvenli şifreleme ile Always Encrypted Şu anda **genel önizleme** aşamasındadır.
 
-Azure SQL veritabanı 'nda [güvenli şifreleme ile Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves) , [Intel Software Guard UZANTıLARı (Intel SGX)](https://itpeernetwork.intel.com/microsoft-azure-confidential-computing/) kuşları kullanır ve [Microsoft Azure kanıtlama](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves#secure-enclave-attestation)gerektirir.
+Azure SQL veritabanı 'nda [güvenli şifreleme ile Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-enclaves) , [Intel Software Guard UZANTıLARı (Intel SGX)](https://itpeernetwork.intel.com/microsoft-azure-confidential-computing/) kuşları kullanır ve [Microsoft Azure kanıtlama](/sql/relational-databases/security/encryption/always-encrypted-enclaves#secure-enclave-attestation)gerektirir.
 
 ## <a name="plan-for-intel-sgx-in-azure-sql-database"></a>Azure SQL veritabanı 'nda Intel SGX planlaması
 

@@ -4,12 +4,12 @@ description: Destek ayarları ve kısıtlamaları için Azure disk yedekleme 'ni
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 099e83d8a2fb109da862657265dad8be8143f608
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 447283ba1d63267722e4167e0727a827e63d2e0d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624943"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732988"
 ---
 # <a name="azure-disk-backup-support-matrix-in-preview"></a>Azure disk yedekleme desteği matrisi (önizlemede)
 
@@ -18,7 +18,7 @@ ms.locfileid: "98624943"
 >
 >Önizlemeye kaydolmak için [Bu formu doldurun](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) .
 
-Azure disklerini korumak için [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) kullanabilirsiniz. Bu makalede bölge kullanılabilirliği, desteklenen senaryolar ve sınırlamalar özetlenmektedir.
+Azure disklerini korumak için [Azure Backup](./backup-overview.md) kullanabilirsiniz. Bu makalede bölge kullanılabilirliği, desteklenen senaryolar ve sınırlamalar özetlenmektedir.
 
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 
@@ -36,9 +36,9 @@ Kullanılabilir olduklarında daha fazla bölge duyurulacaktır.
 
 - Şu anda, mevcut kaynak disklerini yedeklerin alındığı yerden değiştirerek geri yükleme için Original-Location kurtarma (OLR) seçeneği desteklenmez. Kurtarma noktasından geri yükleme, yedeklemelerin alındığı kaynak disk ile aynı kaynak grubunda yeni bir disk oluşturmak için ya da başka bir kaynak grubunda geri yükleyebilirsiniz. Bu, Alternate-Location kurtarma (ALR) olarak bilinir.
 
-- Yönetilen diskler için Azure Backup, disk başına 200 anlık görüntüsü ile sınırlı olan Artımlı anlık görüntüleri kullanır. Yedekleme ilkesi, zamanlanan yedeklemelerin yanı sıra isteğe bağlı yedekleme yapmanıza olanak tanımak için toplam yedeklemeleri 180 olarak sınırlandırır. Yönetilen diskler için [Artımlı anlık görüntü](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) hakkında daha fazla bilgi edinin.
+- Yönetilen diskler için Azure Backup, disk başına 200 anlık görüntüsü ile sınırlı olan Artımlı anlık görüntüleri kullanır. Yedekleme ilkesi, zamanlanan yedeklemelerin yanı sıra isteğe bağlı yedekleme yapmanıza olanak tanımak için toplam yedeklemeleri 180 olarak sınırlandırır. Yönetilen diskler için [Artımlı anlık görüntü](../virtual-machines/disks-incremental-snapshots.md#restrictions) hakkında daha fazla bilgi edinin.
 
-- Azure [aboneliği ve hizmet limitleri](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#virtual-machine-disk-limits) , her abonelik için bölge başına düşen toplam disk anlık görüntüsü sayısı için geçerlidir.
+- Azure [aboneliği ve hizmet limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machine-disk-limits) , her abonelik için bölge başına düşen toplam disk anlık görüntüsü sayısı için geçerlidir.
 
 - Bir sanal makineye bağlı birden çok diskin noktadan noktaya anlık görüntüleri desteklenmez.
 
@@ -58,13 +58,13 @@ Kullanılabilir olduklarında daha fazla bölge duyurulacaktır.
 
 - Şu anda (Önizleme sırasında), diskleri yedeklemeyi ve geri yüklemeyi yapılandırmak için PowerShell ve Azure CLı kullanımı desteklenmez.
 
-- Yedekleme yapılandırılırken, yedeklenmek üzere seçilen disk ve anlık görüntülerin depolanacağı anlık görüntü kaynak grubu aynı aboneliğin bir parçası olmalıdır. Bu diskin aboneliği dışındaki belirli bir disk için artımlı bir anlık görüntü oluşturamazsınız. Yönetilen disk için [Artımlı anlık görüntüler](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) hakkında daha fazla bilgi edinin. Anlık görüntü kaynak grubu seçme hakkında daha fazla bilgi için bkz.  [yedeklemeyi yapılandırma](backup-managed-disks.md#configure-backup).
+- Yedekleme yapılandırılırken, yedeklenmek üzere seçilen disk ve anlık görüntülerin depolanacağı anlık görüntü kaynak grubu aynı aboneliğin bir parçası olmalıdır. Bu diskin aboneliği dışındaki belirli bir disk için artımlı bir anlık görüntü oluşturamazsınız. Yönetilen disk için [Artımlı anlık görüntüler](../virtual-machines/windows/disks-incremental-snapshots-portal.md#restrictions) hakkında daha fazla bilgi edinin. Anlık görüntü kaynak grubu seçme hakkında daha fazla bilgi için bkz.  [yedeklemeyi yapılandırma](backup-managed-disks.md#configure-backup).
 
 - Başarılı yedekleme ve geri yükleme işlemleri için, yedekleme kasasının yönetilen kimliği için rol atamaları gereklidir. Yalnızca belgelerde verilen rol tanımlarını kullanın. Sahip, katkıda bulunan vb. gibi diğer rollerin kullanılması desteklenmez. Rolleri atadıktan sonra yedekleme veya geri yükleme işlemlerini yapılandırmaya başladıysanız izin sorunları yaşayabilirsiniz. Bunun nedeni, rol atamalarının etkili olması birkaç dakika sürer.
 
-- Yönetilen diskler, dağıtım sırasında veya daha sonra diskin boyutunu değiştirmeden performans katmanını değiştirmeye izin verir. Azure disk yedekleme çözümü, yedeklenmekte olan kaynak diskte performans katmanı değişikliklerini destekler. Geri yükleme sırasında geri yüklenen diskin performans katmanı, yedekleme sırasında kaynak disk ile aynı olacaktır. Geri yükleme işleminden sonra diskinizin performans katmanını değiştirmek için [buradaki](https://docs.microsoft.com/azure/virtual-machines/disks-performance-tiers-portal) belgeleri izleyin.
+- Yönetilen diskler, dağıtım sırasında veya daha sonra diskin boyutunu değiştirmeden performans katmanını değiştirmeye izin verir. Azure disk yedekleme çözümü, yedeklenmekte olan kaynak diskte performans katmanı değişikliklerini destekler. Geri yükleme sırasında geri yüklenen diskin performans katmanı, yedekleme sırasında kaynak disk ile aynı olacaktır. Geri yükleme işleminden sonra diskinizin performans katmanını değiştirmek için [buradaki](../virtual-machines/disks-performance-tiers-portal.md) belgeleri izleyin.
 
-- Yönetilen diskler için [özel bağlantılar](https://docs.microsoft.com/azure/virtual-machines/disks-enable-private-links-for-import-export-portal) desteği, yönetilen disklerin içeri ve dışarı aktarılmasını yalnızca Azure sanal ağınızda gerçekleşmeyecek şekilde kısıtlamanıza olanak tanır. Azure disk yedekleme, Özel uç noktaları etkin olan disklerin yedeklenmesini destekler. Bu, Özel uç nokta aracılığıyla erişilebilen yedekleme verilerini veya anlık görüntüleri içermez.
+- Yönetilen diskler için [özel bağlantılar](../virtual-machines/disks-enable-private-links-for-import-export-portal.md) desteği, yönetilen disklerin içeri ve dışarı aktarılmasını yalnızca Azure sanal ağınızda gerçekleşmeyecek şekilde kısıtlamanıza olanak tanır. Azure disk yedekleme, Özel uç noktaları etkin olan disklerin yedeklenmesini destekler. Bu, Özel uç nokta aracılığıyla erişilebilen yedekleme verilerini veya anlık görüntüleri içermez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

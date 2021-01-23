@@ -10,13 +10,13 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 01/15/2021
-ms.openlocfilehash: db3b168826223e4eb958f7700e65623a115e5779
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/22/2021
+ms.openlocfilehash: a4be96d35116ed40ca61f00ed8f2ddd786760242
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251480"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735252"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Sanal çekirdek satın alma modeli kullanıldığında tek veritabanları için kaynak sınırları
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -411,7 +411,7 @@ Bir sunucudaki tek veritabanları için DTU satın alma model sınırları için
 |TempDB en fazla veri boyutu (GB)|83,25|92,5|111|148|166,5|333|
 |Depolama türü|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|Uzak SSD|
 |GÇ gecikme süresi (yaklaşık)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|5-7 MS (yazma)<br>5-10 MS (okuma)|
-|En fazla veri ıOPS *|5760|6400|7680|10240|11520|23040|
+|En fazla veri ıOPS *|5760|6400|7680|10240|11520|12800|
 |En fazla günlük hızı (MBps)|36|36|36|36|36|36|
 |Maksimum eş zamanlı çalışan (istek)|900|1000|1200|1600|1800|3600|
 |Maks. eş zamanlı oturum|1800|2000|2400|3200|3600|7200|

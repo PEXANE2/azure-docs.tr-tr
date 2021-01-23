@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 680b1f3b6af186eba27a4dd926016a04cd863760
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 0a1221a8de10fd18768a1a0f0ac08277dc2901d6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013501"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735042"
 ---
 # <a name="app-service-environment-networking"></a>App Service Ortamı ağı
 
@@ -52,7 +52,7 @@ ASEv2 aksine, ASEv3 ile ağ güvenlik grupları (NSG 'ler) ve yol tabloları (UD
 
 ## <a name="dns"></a>DNS
 
-ASE 'deki uygulamalar, sanal ağınızın yapılandırıldığı DNS 'i kullanacaktır. DNS sunucunuzu AŞIRINIZI işaret etmek üzere yapılandırmak için [App Service ortamı kullanma](https://docs.microsoft.com/azure/app-service/environment/using#dns-configuration) yönergelerini izleyin. Bazı uygulamaların sanal ağınızın yapılandırılmış olandan farklı bir DNS sunucusu kullanmasını istiyorsanız, uygulama ayarları WEBSITE_DNS_SERVER ve WEBSITE_DNS_ALT_SERVER ile uygulama başına el ile ayarlayabilirsiniz. WEBSITE_DNS_ALT_SERVER uygulama ayarı ikincil DNS sunucusunu yapılandırır. İkincil DNS sunucusu yalnızca birincil DNS sunucusundan yanıt olmadığında kullanılır. 
+ASE 'deki uygulamalar, sanal ağınızın yapılandırıldığı DNS 'i kullanacaktır. DNS sunucunuzu AŞIRINIZI işaret etmek üzere yapılandırmak için [App Service ortamı kullanma](./using.md#dns-configuration) yönergelerini izleyin. Bazı uygulamaların sanal ağınızın yapılandırılmış olandan farklı bir DNS sunucusu kullanmasını istiyorsanız, uygulama ayarları WEBSITE_DNS_SERVER ve WEBSITE_DNS_ALT_SERVER ile uygulama başına el ile ayarlayabilirsiniz. WEBSITE_DNS_ALT_SERVER uygulama ayarı ikincil DNS sunucusunu yapılandırır. İkincil DNS sunucusu yalnızca birincil DNS sunucusundan yanıt olmadığında kullanılır. 
 
 ## <a name="preview-limitation"></a>Önizleme sınırlaması
 
@@ -61,4 +61,3 @@ ASEv3 ile kullanılamayan birkaç ağ özelliği vardır.  ASEv3 ' de kullanıla
 • FTP • uzaktan hata ayıklama • dış yük dengeleyici dağıtımı • kapsayıcı dağıtımları için bir özel kapsayıcı kayıt defterine erişme özelliği • Global olarak eşlenmiş sanal ağlara çağrı yapma yeteneği • bir hizmet uç noktası veya özel uç nokta güvenliği depolama hesabı ile yedekleme/geri yükleme olanağı • hizmet uç noktası veya özel uç nokta güvenli Anahtar Kasası hesaplarında uygulama ayarlarına Anahtar Kasası başvuruları sağlamak • KCG 'yi bir hizmet uç noktasına veya özel uç nokta güvenliği depolama hesabına kullanabilme • ağ Izleyicisi veya giden trafik üzerinde NSG akışı kullanımı
     
     
-

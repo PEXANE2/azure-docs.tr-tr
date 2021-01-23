@@ -55,7 +55,7 @@
               href: manage-vm-extensions-powershell.md
             - name: Uzantıları ARM şablonunu kullanarak dağıtma
               href: manage-vm-extensions-template.md
-        - name: Sunucuda yönetilen kimlikleri kullanma
+        - name: Sunucuda yönetilen kimlikler kullanma
           href: managed-identity-authentication.md
         - name: Aracıyı yönetme
           href: manage-agent.md
@@ -82,7 +82,7 @@
     - name: .NET
       href: /dotnet/api/overview/azure/hybridcompute/management
     - name: Azure Stack HCI REST
-      href: 'https://docs.microsoft.com/rest/api/stackhci'
+      href: /rest/api/stackhci
     - name: REST
       href: /rest/api/hybridcompute
     - name: Başlayın
@@ -99,4 +99,4 @@
 - name: Kaynaklar
   items:
     - name: Azure Arc hızlı başlangıç
-      href: 'https://github.com/microsoft/azure_arc'
+      href: 'https://azurearcjumpstart.io'

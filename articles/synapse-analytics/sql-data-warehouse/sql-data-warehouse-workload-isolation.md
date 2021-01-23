@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: ce2451ddf775b7aff63b43ec02041ecd5440c580
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 506aed16f1b8a6c631a759bb1367aef8242859ac
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678398"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734789"
 ---
 # <a name="azure-synapse-analytics-workload-group-isolation"></a>Azure SYNAPSE Analytics iş yükü grubu yalıtımı
 
@@ -37,7 +37,7 @@ Aşağıdaki bölümler, iş yükü gruplarının yalıtım, kapsama, istek kayn
 [Garantili eşzamanlılık] = [ `MIN_PERCENTAGE_RESOURCE` ]/[ `REQUEST_MIN_RESOURCE_GRANT_PERCENT` ]
 
 > [!NOTE]
-> Min_percentage_resource için belirli hizmet düzeyi en düşük uygun değerler vardır.  Daha fazla bilgi için bkz. daha fazla ayrıntı için [geçerli değerler](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#effective-values) .
+> Min_percentage_resource için belirli hizmet düzeyi en düşük uygun değerler vardır.  Daha fazla bilgi için bkz. daha fazla ayrıntı için [geçerli değerler](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json?view=azure-sqldw-latest&preserve-view=true#effective-values) .
 
 İş yükü yalıtımı yokluğunda, istekler [paylaşılan kaynak havuzunda](#shared-pool-resources) çalışır.  Paylaşılan havuzdaki kaynaklara erişim garanti edilmez ve [önemli](sql-data-warehouse-workload-importance.md) temelinde atanır.
 

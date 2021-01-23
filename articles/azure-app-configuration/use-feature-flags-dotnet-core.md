@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 1794d5b15c724008d95cfc59b16960b7ae6a0783
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 2f141b896ef11fecdf156d062a78252ce6f7ffb3
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661577"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734991"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Öğretici: ASP.NET Core uygulamasında Özellik bayraklarını kullanma
 
@@ -105,7 +105,7 @@ ASP.NET Core uygulamanızı uygulama yapılandırmasına bağlanmanın en kolay 
               .UseStartup<Startup>();
    ```
 
-2. *Startup.cs* ' i açın ve `Configure` adlı yerleşik ara yazılımı eklemek için yöntemi güncelleştirin `UseAzureAppConfiguration` . Bu ara yazılım, ASP.NET Core Web uygulaması istekleri almaya devam ederken, özellik bayrağı değerlerinin yinelenen bir aralıkta yenilenmesini sağlar.
+2. *Startup.cs* ' i açın ve `Configure` `ConfigureServices` adlı yerleşik ara yazılımı eklemek için ve metodunu güncelleştirin `UseAzureAppConfiguration` . Bu ara yazılım, ASP.NET Core Web uygulaması istekleri almaya devam ederken, özellik bayrağı değerlerinin yinelenen bir aralıkta yenilenmesini sağlar.
 
    ```csharp
    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -115,6 +115,13 @@ ASP.NET Core uygulamanızı uygulama yapılandırmasına bağlanmanın en kolay 
    }
    ```
 
+   ```csharp
+   public void ConfigureServices(IServiceCollection services)
+   {
+       services.AddAzureAppConfiguration();
+   }
+   ```
+   
 Özellik bayrağı değerlerinin zaman içinde değiştirilmesi beklenmektedir. Varsayılan olarak, özellik bayrağı değerleri 30 saniyelik bir süre için önbelleğe alınır, bu nedenle, ara yazılım bir istek aldığında tetiklenen yenileme işlemi, önbelleğe alınan değerin süresi dolana kadar değeri güncelleştirmez. Aşağıdaki kod, önbellekte sona erme saati veya yoklama aralığının 5 dakikaya nasıl değiştirileceğini gösterir `options.UseFeatureFlags()` .
 
 ```csharp
@@ -172,7 +179,7 @@ public enum MyFeatureFlags
 
 ## <a name="feature-flag-checks"></a>Özellik bayrağı denetimleri
 
-Özellik yönetiminin temel stili, ilk olarak bir özellik bayrağının *Açık* olarak ayarlanmış olup olmadığını denetme. Bu durumda, Özellik Yöneticisi özelliğin içerdiği eylemleri çalıştırır. Örnek:
+Özellik yönetiminin temel stili, ilk olarak bir özellik bayrağının *Açık* olarak ayarlanmış olup olmadığını denetme. Bu durumda, Özellik Yöneticisi özelliğin içerdiği eylemleri çalıştırır. Örneğin:
 
 ```csharp
 IFeatureManager featureManager;

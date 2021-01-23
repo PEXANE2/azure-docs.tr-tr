@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/28/2020
 ms.author: jgao
-ms.openlocfilehash: 4d2a55355318a1bf916017fa77026a87a95b7f57
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.openlocfilehash: 574dcf50111c14f4924f009a74ed6f2ac2bb31e9
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97809726"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733849"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>ARM şablonlarında dağıtım betikleri kullanma
 
@@ -149,7 +149,7 @@ Aşağıdaki JSON bir örnektir. Daha fazla bilgi için bkz. en son [şablon şe
 
   Bağımsız değişkenler kaçış karakterleri içeriyorsa, karakterleri çift kaçış için [Jsonescaper](https://www.jsonescaper.com/) ' ı kullanın. Özgün atlanan dizeyi araca yapıştırın ve ardından **kaçış**' ı seçin.  Araç, Çift kaçan bir dize verir. Örneğin, önceki örnek şablonunda bağımsız değişken olur `-name \"John Dole\"` . Kaçan dize `-name \\\"John Dole\\\"` .
 
-  Object türünde bir ARM şablon parametresini bir bağımsız değişken olarak geçirmek için, [String ()](./template-functions-string.md#string) işlevini kullanarak nesneyi bir dizeye dönüştürün ve sonra replace [()](./template-functions-string.md#replace) işlevini kullanarak herhangi bir öğesini değiştirin `\"` `\\\"` . Örnek:
+  Object türünde bir ARM şablon parametresini bir bağımsız değişken olarak geçirmek için, [String ()](./template-functions-string.md#string) işlevini kullanarak nesneyi bir dizeye dönüştürün ve sonra replace [()](./template-functions-string.md#replace) işlevini kullanarak herhangi bir öğesini değiştirin `\"` `\\\"` . Örneğin:
 
   ```json
   replace(string(parameters('tables')), '\"', '\\\"')
@@ -204,7 +204,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="use-external-scripts"></a>Dış betikler kullanın
 
-Satır içi betiklerin yanı sıra dış betik dosyalarını da kullanabilirsiniz. Yalnızca _ps1_ dosya uzantısına sahip birincil PowerShell betikleri desteklenir. CLı betikleri için, betikler geçerli Bash betikleri olduğu sürece, birincil betiklerin uzantıları (veya uzantısı olmadan) olabilir. Dış betik dosyalarını kullanmak için ile değiştirin `scriptContent` `primaryScriptUri` . Örnek:
+Satır içi betiklerin yanı sıra dış betik dosyalarını da kullanabilirsiniz. Yalnızca _ps1_ dosya uzantısına sahip birincil PowerShell betikleri desteklenir. CLı betikleri için, betikler geçerli Bash betikleri olduğu sürece, birincil betiklerin uzantıları (veya uzantısı olmadan) olabilir. Dış betik dosyalarını kullanmak için ile değiştirin `scriptContent` `primaryScriptUri` . Örneğin:
 
 ```json
 "primaryScriptUri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
@@ -290,7 +290,7 @@ Mevcut bir depolama hesabını belirtmek için aşağıdaki JSON öğesini öğe
 ```
 
 - `storageAccountName`: depolama hesabının adını belirtin.
-- `storageAccountKey`: depolama hesabı anahtarlarından birini belirtin. Anahtarı almak için [ListKeys ()](./template-functions-resource.md#listkeys) işlevini kullanabilirsiniz. Örnek:
+- `storageAccountKey`: depolama hesabı anahtarlarından birini belirtin. Anahtarı almak için [ListKeys ()](./template-functions-resource.md#listkeys) işlevini kullanabilirsiniz. Örneğin:
 
     ```json
     "storageAccountSettings": {
@@ -542,7 +542,7 @@ Bu kaynakların yaşam döngüsü, şablondaki aşağıdaki özelliklerle denetl
 > [!NOTE]
 > Başka amaçlar için betik hizmeti tarafından oluşturulan depolama hesabı ve kapsayıcı örneği kullanılması önerilmez. İki kaynak, betik yaşam döngüsüne bağlı olarak kaldırılabilir.
 
-Kapsayıcı örneği ve depolama hesabı öğesine göre silinir `cleanupPreference` . Ancak, komut dosyası başarısız olursa ve `cleanupPreference` **her zaman** olarak ayarlanmamışsa, dağıtım işlemi kapsayıcıyı bir saat için otomatik olarak çalışır halde tutar. Komut dosyası sorunlarını gidermek için bu saati kullanabilirsiniz. Başarılı dağıtımlar sonrasında kapsayıcıyı çalıştırmaya devam etmek istiyorsanız, betiğe bir uyku adımı ekleyin. Örneğin, betiğinizin sonuna [Başlangıç Sleep](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep) ekleyin. Uyku adımını eklememeniz durumunda kapsayıcı bir Terminal durumuna ayarlanır ve henüz silinmemiş olsa bile erişilemez.
+Kapsayıcı örneği ve depolama hesabı öğesine göre silinir `cleanupPreference` . Ancak, komut dosyası başarısız olursa ve `cleanupPreference` **her zaman** olarak ayarlanmamışsa, dağıtım işlemi kapsayıcıyı bir saat için otomatik olarak çalışır halde tutar. Komut dosyası sorunlarını gidermek için bu saati kullanabilirsiniz. Başarılı dağıtımlar sonrasında kapsayıcıyı çalıştırmaya devam etmek istiyorsanız, betiğe bir uyku adımı ekleyin. Örneğin, betiğinizin sonuna [Başlangıç Sleep](/powershell/module/microsoft.powershell.utility/start-sleep) ekleyin. Uyku adımını eklememeniz durumunda kapsayıcı bir Terminal durumuna ayarlanır ve henüz silinmemiş olsa bile erişilemez.
 
 ## <a name="run-script-more-than-once"></a>Betiği birden çok kez çalıştır
 

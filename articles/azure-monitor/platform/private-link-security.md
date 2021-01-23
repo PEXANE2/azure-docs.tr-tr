@@ -6,12 +6,12 @@ ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: e8d0dcae81944d5799841c22093585b942934b79
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: 5008da99b63cabba41dade9a745fbd5853345737
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97732113"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734975"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Ağları Azure İzleyici'ye güvenle bağlamak için Azure Özel Bağlantı'yı kullanma
 
@@ -149,19 +149,19 @@ Azure Izleyici kaynaklarını (Log Analytics çalışma alanları ve Application
  
    b.    **Özel DNS bölgesi Ile tümleştirme** için **Evet** ' i seçin ve otomatik olarak yeni bir özel DNS bölgesi oluşturmasını sağlayın. Gerçek DNS bölgeleri aşağıdaki ekran görüntüsünde gösterilenden farklı olabilir. 
    > [!NOTE]
-   > **Hayır** ' ı SEÇIN ve DNS kayıtlarını el ile yönetmeyi tercih ederseniz, bu özel uç nokta ve ampls yapılandırması dahil olmak üzere, Ilk olarak özel bağlantınız kurulumunu tamamlayabilirsiniz. Ardından, DNS 'nizi [Azure özel uç nokta DNS yapılandırmasındaki](../../private-link/private-endpoint-dns.md)yönergelere göre yapılandırın. Özel bağlantı kurulumunuzu hazırlama olarak boş kayıtlar oluşturmadığından emin olun. Oluşturduğunuz DNS kayıtları var olan ayarları geçersiz kılabilir ve Azure Izleyici ile bağlantınızı etkileyebilir.
+   > **Hayır** ' ı SEÇIN ve DNS kayıtlarını el ile yönetmeyi tercih ederseniz, bu özel uç nokta ve ampls yapılandırması dahil olmak üzere, Ilk olarak özel bağlantınız kurulumunu tamamlayabilirsiniz. Ardından DNS'yi [Azure Özel Uç Nokta DNS yapılandırması](../../private-link/private-endpoint-dns.md) makalesinde yer alan yönergelere göre yapılandırın. Özel Bağlantı kurulumunuza hazırlık yaparken boş kayıtlar oluşturmadığınızdan emin olun. Oluşturduğunuz DNS kayıtları mevcut ayarları geçersiz kılabilir ve Azure İzleyici ile bağlantınızı etkileyebilir.
  
    c.    **Gözden geçir ve oluştur**’a tıklayın.
  
    d.    Doğrulama geçişine izin verin. 
  
-   e.    **Oluştur**'a tıklayın. 
+   e.    **Oluştur**’a tıklayın. 
 
     ![Create Private Endpoint2 Select ekran görüntüsü](./media/private-link-security/ampls-select-private-endpoint-create-5.png)
 
 Artık bu Azure Izleyici özel bağlantı kapsamına bağlı yeni bir özel uç nokta oluşturdunuz.
 
-## <a name="configure-log-analytics"></a>Log Analytics’i Yapılandır
+## <a name="configure-log-analytics"></a>Log Analytics’i Yapılandırma
 
 Azure portala gidin. Log Analytics çalışma alanı kaynağında, sol taraftaki bir menü öğesi **ağ yalıtımı** vardır. Bu menüden iki farklı durumu kontrol edebilirsiniz.
 
@@ -192,7 +192,7 @@ Log Analytics aracısının çözüm paketlerini indirmesini sağlamak için, uy
 |Azure Kamu | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Giden
 |Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Giden
 
-## <a name="configure-application-insights"></a>Application Insights Yapılandır
+## <a name="configure-application-insights"></a>Application Insights'ı Yapılandırma
 
 Azure portala gidin. Azure Izleyici Application Insights bileşen kaynağında, sol taraftaki bir menü öğesi **ağ yalıtımı** bulunur. Bu menüden iki farklı durumu kontrol edebilirsiniz.
 
@@ -217,7 +217,7 @@ Erişimin bu şekilde kısıtlanması yalnızca Application Insights kaynaktaki 
 
 Azure Resource Manager şablonları, REST ve komut satırı arabirimlerini kullanarak daha önce açıklanan işlemi otomatikleştirebilirsiniz.
 
-Özel bağlantı kapsamları oluşturup yönetmek için [REST API](https://docs.microsoft.com/rest/api/monitor/private%20link%20scopes%20(preview)) veya [Azure CLI (az Monitor Private-link-scope)](/cli/azure/monitor/private-link-scope?view=azure-cli-latest)kullanın.
+Özel bağlantı kapsamları oluşturup yönetmek için [REST API](/rest/api/monitor/private%20link%20scopes%20(preview)) veya [Azure CLI (az Monitor Private-link-scope)](/cli/azure/monitor/private-link-scope?view=azure-cli-latest)kullanın.
 
 Ağ erişimini yönetmek için, bayraklarını `[--ingestion-access {Disabled, Enabled}]` ve `[--query-access {Disabled, Enabled}]` [Log Analytics çalışma alanlarını](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest) veya [Application Insights bileşenlerini](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest)kullanın.
 

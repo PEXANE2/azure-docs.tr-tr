@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 02/10/2020
-ms.openlocfilehash: 3b321e318621c5687a2e3e5f0649985210a2d16c
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 6a461ad906f7611c8a13e2ee495f4d2f62fedd53
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019882"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734854"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure Stream Analytics’te gerçek zamanlı Twitter yaklaşım analizi
 
@@ -29,7 +29,7 @@ News medya web sitesi olan bir şirket, okuyucular üzerinde anında ilgili site
 
 Şirket içi konuları Twitter 'da gerçek zamanlı olarak belirlemek için, şirketin önemli konular hakkında tweet hacim ve yaklaşım hakkında gerçek zamanlı analizler olması gerekir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu nasıl yapılır kılavuzunda, Twitter 'a bağlanan ve belirli bir hashtags olan (ayarlayabileceğiniz) bir istemci uygulaması kullanırsınız. Uygulamayı çalıştırmak ve Azure Akış Analizi 'ni kullanarak fazla doldurulabilir olması için aşağıdakilere sahip olmanız gerekir:
 
@@ -40,6 +40,10 @@ Bu nasıl yapılır kılavuzunda, Twitter 'a bağlanan ve belirli bir hashtags o
 * Twitter akışını okuyan, dallı bir sanal çekirdek uygulaması. Bu uygulamayı almak için, [dallı Istemci çekirdeğini](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TwitterClientCore)indirin.
 
 * [.NET Core CLI](/dotnet/core/tools/?tabs=netcore2x) sürümünü 2.1.0 ' ü yükler.
+
+Uygulayabileceğiniz çözüm mimarisi aşağıda verilmiştir.
+
+   ![Çözümü oluşturmak için kullanılan farklı hizmet ve uygulama parçalarını gösteren bir diyagram.](./media/stream-analytics-twitter-sentiment-analysis-trends/solution-diagram.png "Çözüm diyagramı")
 
 ## <a name="create-an-event-hub-for-streaming-input"></a>Akış girişi için bir olay hub 'ı oluşturma
 

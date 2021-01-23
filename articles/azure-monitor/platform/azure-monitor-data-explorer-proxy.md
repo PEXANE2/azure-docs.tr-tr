@@ -7,15 +7,15 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: 1a35b80ceec12b378a01555f42b7a0500b8f6229
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 5671ec68901be289a87c23b6883160f9cda2b651
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060461"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733192"
 ---
 # <a name="cross-resource-query-azure-data-explorer-by-using-azure-monitor"></a>Azure Izleyici kullanarak Azure Veri Gezgini çapraz kaynak sorgulama
-Azure Izleyici, Azure Veri Gezgini, [Application Insights](/azure/azure-monitor/app/app-insights-overview)ve [Log Analytics](/azure/azure-monitor/platform/data-platform-logs)arasında çapraz hizmet sorgularını destekler. Daha sonra, Log Analytics/Application Insights araçlarını kullanarak Azure Veri Gezgini kümenizi sorgulayabilir ve bir çapraz hizmet sorgusunda buna başvurabilirsiniz. Makalesinde, bir çapraz hizmet sorgusunun nasıl yapılacağı gösterilir.
+Azure Izleyici, Azure Veri Gezgini, [Application Insights](../app/app-insights-overview.md)ve [Log Analytics](./data-platform-logs.md)arasında çapraz hizmet sorgularını destekler. Daha sonra, Log Analytics/Application Insights araçlarını kullanarak Azure Veri Gezgini kümenizi sorgulayabilir ve bir çapraz hizmet sorgusunda buna başvurabilirsiniz. Makalesinde, bir çapraz hizmet sorgusunun nasıl yapılacağı gösterilir.
 
 Aşağıdaki diyagramda Azure Izleyici çapraz hizmet akışı gösterilmektedir:
 
@@ -62,8 +62,8 @@ Hizmetler arasında çapraz kiracı sorguları desteklenmez. Her iki kaynağa ya
 
 Azure Veri Gezgini kaynağı kiracı A 'dedir ve Log Analytics çalışma alanı B kiracısında ise aşağıdaki yöntemlerden birini kullanın:
 
-*  Azure Veri Gezgini, farklı kiracılardaki sorumlular için roller eklemenize olanak tanır. Kullanıcı KIMLIĞINIZI Azure Veri Gezgini kümesinde yetkili bir kullanıcı olarak B kiracısına ekleyin. Azure Veri Gezgini kümesindeki [Trustedexternaltenant](https://docs.microsoft.com/powershell/module/az.kusto/update-azkustocluster) özelliğinin b kiracısı içerdiğini doğrulayın. çapraz sorguyu b kiracısı içinde tam olarak çalıştırın.
-*  Azure Izleyici kaynağını A kiracısına [eklemek için açık bir kullanım kullanın](https://docs.microsoft.com/azure/lighthouse/) .
+*  Azure Veri Gezgini, farklı kiracılardaki sorumlular için roller eklemenize olanak tanır. Kullanıcı KIMLIĞINIZI Azure Veri Gezgini kümesinde yetkili bir kullanıcı olarak B kiracısına ekleyin. Azure Veri Gezgini kümesindeki [Trustedexternaltenant](/powershell/module/az.kusto/update-azkustocluster) özelliğinin b kiracısı içerdiğini doğrulayın. çapraz sorguyu b kiracısı içinde tam olarak çalıştırın.
+*  Azure Izleyici kaynağını A kiracısına [eklemek için açık bir kullanım kullanın](../../lighthouse/index.yml) .
 
 ## <a name="connect-to-azure-data-explorer-clusters-from-different-tenants"></a>Farklı kiracılardan Azure Veri Gezgini kümelerine bağlanma
 
@@ -72,6 +72,6 @@ Kusto Explorer, Kullanıcı hesabının ilk ait olduğu kiracıya otomatik olara
 `Data Source=https://ade.applicationinsights.io/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=TenantId`
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Sorgu yazma](https://docs.microsoft.com/azure/data-explorer/write-queries)
-* [Azure Veri Gezgini kullanarak Azure Izleyici 'de verileri sorgulama](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)
-* [Azure Izleyici 'de çapraz kaynak günlük sorguları gerçekleştirme](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query)
+* [Sorgu yazma](/azure/data-explorer/write-queries)
+* [Azure Veri Gezgini kullanarak Azure Izleyici 'de verileri sorgulama](/azure/data-explorer/query-monitor-data)
+* [Azure Izleyici 'de çapraz kaynak günlük sorguları gerçekleştirme](../log-query/cross-workspace-query.md)

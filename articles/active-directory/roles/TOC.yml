@@ -11,9 +11,10 @@
     - name: Sınırsız uygulama kaydı oluşturma
       href: quickstart-app-registration-limits.md
 - name: Öğreticiler
+  expanded: true
   items:
-    - name: Dinamik grup oluşturma
-      href: ../enterprise-users/users-revoke-access.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
+    - name: Kullanıcıları yönetici rollerine atama
+      href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
 - name: Kavramlar
   expanded: true
   items:
@@ -28,18 +29,6 @@
 - name: Nasıl yapılır kılavuzları
   expanded: true
   items:
-    - name: Kullanıcılar ve roller
-      items:
-        - name: Kullanıcıları yönetici rollerine atama
-          href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-        - name: Kullanıcının erişimini iptal etme
-          href: ../enterprise-users/users-revoke-access.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-        - name: Konuk kullanıcıya rol atama
-          href: ../external-identities/add-guest-to-role.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-        - name: Konuk kullanıcının erişimini kısıtlama
-          href: ../enterprise-users/users-restrict-guest-permissions.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-        - name: Dinamik gruplar ve konuklar
-          href: ../external-identities/use-dynamic-groups.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
     - name: Roller ve izinler
       expanded: true
       items:
@@ -119,7 +108,7 @@
     - name: Microsoft 365 rol belgeleri
       href: m365-workload-docs.md
     - name: Graph API
-      href: /graph/api/resources/azure-ad-overview?view=graph-rest-1.0
+      href: /graph/api/resources/directoryrole?view=graph-rest-1.0
     - name: Azure AD CLI
       href: /cli/azure/ad
     - name: Graph için Azure AD PowerShell

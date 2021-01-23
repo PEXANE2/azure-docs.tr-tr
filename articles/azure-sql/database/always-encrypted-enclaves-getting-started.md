@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: 94923b13181290a290f13339da5b05f6fdddff38
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: d9c2bec575f2c7a948f3eb6e65be6a735a3c03e8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253748"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733826"
 ---
 # <a name="tutorial-getting-started-with-always-encrypted-with-secure-enclaves-in-azure-sql-database"></a>Öğretici: Azure SQL veritabanında güvenli şifreleme ile Always Encrypted kullanmaya başlama
 
@@ -25,7 +25,7 @@ ms.locfileid: "98253748"
 > [!NOTE]
 > Azure SQL veritabanı için güvenli şifreleme ile Always Encrypted Şu anda **genel önizleme** aşamasındadır.
 
-Bu öğreticide, Azure SQL veritabanı 'nda [güvenli şifreli Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves) kullanmaya nasıl başlacağınız öğretilir. Şu şekilde görünür:
+Bu öğreticide, Azure SQL veritabanı 'nda [güvenli şifreli Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-enclaves) kullanmaya nasıl başlacağınız öğretilir. Şu şekilde görünür:
 
 > [!div class="checklist"]
 > - Güvenli şifreleme ile Always Encrypted test etmek ve değerlendirmek için bir ortam oluşturma.
@@ -33,11 +33,11 @@ Bu öğreticide, Azure SQL veritabanı 'nda [güvenli şifreli Always Encrypted]
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğretici Azure PowerShell ve [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)gerektirir.
+Bu öğretici Azure PowerShell ve [SSMS](/sql/ssms/download-sql-server-management-studio-ssms)gerektirir.
 
 ### <a name="powershell-requirements"></a>PowerShell gereksinimleri
 
-Azure PowerShell nasıl yükleneceği ve çalıştırılacağı hakkında bilgi için bkz. [Azure PowerShell genel bakış](https://docs.microsoft.com/powershell/azure) . 
+Azure PowerShell nasıl yükleneceği ve çalıştırılacağı hakkında bilgi için bkz. [Azure PowerShell genel bakış](/powershell/azure) . 
 
 Kanıtlama işlemlerini desteklemek için gereken az modüllerin en düşük sürümü:
 
@@ -66,7 +66,7 @@ PowerShell Galerisi etkileşim kurmaya devam etmek için Install-Module komutlar
 
 ### <a name="ssms-requirements"></a>SSMS gereksinimleri
 
-SSMS 'nin nasıl indirileceği hakkında bilgi için bkz. [Download SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) .
+SSMS 'nin nasıl indirileceği hakkında bilgi için bkz. [Download SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) .
 
 SSMS 'nin gerekli en düşük sürümü 18,8 ' dir.
 
@@ -75,7 +75,7 @@ SSMS 'nin gerekli en düşük sürümü 18,8 ' dir.
 
  Bu adımda, DC Serisi donanım yapılandırmasını kullanarak yeni bir Azure SQL veritabanı mantıksal sunucusu ve yeni bir veritabanı oluşturacaksınız. Azure SQL veritabanı 'nda güvenli şifrelerle Always Encrypted, DC Serisi donanım yapılandırmasında desteklenen Intel SGX enclaven kullanır. Daha fazla bilgi için bkz. [DC-Series](service-tiers-vcore.md#dc-series).
 
-1. Bir PowerShell konsolu açın ve Azure 'da oturum açın. Gerekirse, bu öğretici için kullandığınız [aboneliğe geçin](https://docs.microsoft.com/powershell/azure/manage-subscriptions-azureps) .
+1. Bir PowerShell konsolu açın ve Azure 'da oturum açın. Gerekirse, bu öğretici için kullandığınız [aboneliğe geçin](/powershell/azure/manage-subscriptions-azureps) .
 
   ```PowerShell
   Connect-AzAccount
@@ -356,10 +356,10 @@ Bu adımda, sunucu tarafı şifrelemesi içindeki **SSK** ve **maaş** sütunlar
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu Öğreticiyi tamamladıktan sonra aşağıdaki öğreticilerden birine gidebilirsiniz:
-- [Öğretici: güvenli şifreleme ile Always Encrypted kullanarak bir .NET uygulaması geliştirin](https://docs.microsoft.com/sql/connect/ado-net/sql/tutorial-always-encrypted-enclaves-develop-net-apps)
-- [Öğretici: güvenli şifreleme ile Always Encrypted kullanarak .NET Framework uygulaması geliştirme](https://docs.microsoft.com/sql/relational-databases/security/tutorial-always-encrypted-enclaves-develop-net-framework-apps)
-- [Öğretici: rastgele şifreleme kullanarak şifreleme etkin sütunlarda dizinler oluşturma ve kullanma](https://docs.microsoft.com/sql/relational-databases/security/tutorial-creating-using-indexes-on-enclave-enabled-columns-using-randomized-encryption)
+- [Öğretici: güvenli şifreleme ile Always Encrypted kullanarak bir .NET uygulaması geliştirin](/sql/connect/ado-net/sql/tutorial-always-encrypted-enclaves-develop-net-apps)
+- [Öğretici: güvenli şifreleme ile Always Encrypted kullanarak .NET Framework uygulaması geliştirme](/sql/relational-databases/security/tutorial-always-encrypted-enclaves-develop-net-framework-apps)
+- [Öğretici: rastgele şifreleme kullanarak şifreleme etkin sütunlarda dizinler oluşturma ve kullanma](/sql/relational-databases/security/tutorial-creating-using-indexes-on-enclave-enabled-columns-using-randomized-encryption)
 
 ## <a name="see-also"></a>Ayrıca Bkz.
 
-- [Güvenli şifreleme ile Always Encrypted yapılandırma ve kullanma](https://docs.microsoft.com/sql/relational-databases/security/encryption/configure-always-encrypted-enclaves)
+- [Güvenli şifreleme ile Always Encrypted yapılandırma ve kullanma](/sql/relational-databases/security/encryption/configure-always-encrypted-enclaves)

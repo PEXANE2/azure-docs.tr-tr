@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 6599abd6282d0d1eb7cb81002c34ddd5158dab6b
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 4682396f68d6ff1af0b2fb6a5b1a8419d6963529
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511068"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735352"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-awarego"></a>Öğretici: AwareGo ile çoklu oturum açma tümleştirmesi Azure Active Directory
 
@@ -26,7 +26,7 @@ Bu öğreticide, AwareGo 'Yu Azure Active Directory (Azure AD) ile tümleştirme
 * Kullanıcılarınızın Azure AD hesaplarıyla AwareGo 'da otomatik olarak oturum açmalarına izin vermek.
 * Hesaplarınızı tek bir merkezi konumda yönetin, Azure portal.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -139,11 +139,9 @@ Bu bölümde, aşağıdakilerden birini yaparak Azure AD çoklu oturum açma yap
 
 * Doğrudan AwareGo oturum açma sayfasına gidin ve oturum açma akışını buradan başlatın.
 
-* Microsoft uygulamalarım ' a gidin. Uygulamamda **awarego** kutucuğunu seçtiğinizde, awarego oturum açma sayfasına yönlendirilirsiniz. Daha fazla bilgi için bkz. [uygulamalarım portalından oturum açma ve uygulamaları başlatma](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Microsoft uygulamalarım ' a gidin. Uygulamamda **awarego** kutucuğunu seçtiğinizde, awarego oturum açma sayfasına yönlendirilirsiniz. Daha fazla bilgi için bkz. [uygulamalarım portalından oturum açma ve uygulamaları başlatma](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-AwareGo yapılandırıldıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi Koşullu Erişim Uygulama Denetimi genişletiliyor. Daha fazla bilgi için bkz. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+AwareGo yapılandırıldıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi Koşullu Erişim Uygulama Denetimi genişletiliyor. Daha fazla bilgi için bkz. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).

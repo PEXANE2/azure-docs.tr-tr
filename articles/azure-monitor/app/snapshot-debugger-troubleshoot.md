@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 3e45b5a48f9a7fb66d7539e83f385203ae371ad7
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 6e926211a0d86fef55608ede574dca53487f267c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673561"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732736"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Application Insights Snapshot Debugger etkinleştirme veya anlık görüntüleri görüntüleme sorunlarını giderme
 Uygulamanız için Application Insights Snapshot Debugger etkinleştirdiyseniz, ancak özel durumlar için anlık görüntüler görmüyorsanız, bu yönergeleri kullanarak sorun giderme yapabilirsiniz.
@@ -272,4 +272,4 @@ Bu anlık görüntü KIMLIĞIYLE ilgili bir özel durum görmüyorsanız, özel 
 
 Uygulamanız bir ara sunucu veya güvenlik duvarı üzerinden Internet 'e bağlanırsa, Snapshot Debugger hizmetiyle iletişim kurmak için kuralları güncelleştirmeniz gerekebilir.
 
-Application Insights Snapshot Debugger tarafından kullanılan IP 'Ler Azure Izleyici hizmeti etiketine dahildir. Daha fazla bilgi için bkz. [hizmet etiketleri belgeleri](https://docs.microsoft.com/azure/virtual-network/service-tags-overview).
+Application Insights Snapshot Debugger tarafından kullanılan IP 'Ler Azure Izleyici hizmeti etiketine dahildir. Daha fazla bilgi için bkz. [hizmet etiketleri belgeleri](../../virtual-network/service-tags-overview.md).

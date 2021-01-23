@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 0db05c8caae8483de3b55448bfbe6b2bcfc23187
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: fdfb2470e83cefaeb6df35115f7bb46149d8ffe6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625290"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734013"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Öğretici: 2. Bölüm-yönlendirilmiş iletileri görüntüleme
 
@@ -48,7 +48,7 @@ Service Bus kuyruğu kritik olarak belirlenmiş iletileri almak için kullanıla
 
    **Konum**: Konumunuzu kullanın. Bu öğreticide **Batı ABD** kullanılır.
 
-   **Log Analytics**: Bu iki durumlu düğme kapalı konuma getirilmelidir.
+   **Log Analytics etkinleştir**: Bu geçiş kapalı olmalıdır.
 
    ![Mantıksal uygulama oluşturma ekranı](./media/tutorial-routing-view-message-routing-results/create-logic-app.png)
 
@@ -151,6 +151,8 @@ Verileri Power BI görselleştirmesinde görmek için, önce bir Stream Analytic
    **Veri kümesi adı**: Power BI'da kullanılacak veri kümesinin adı. Bu öğreticide **contosodataset** kullanılır. 
 
    **Tablo adı**: Power BI'da kullanılacak tablonun adı. Bu öğreticide **contosotable** kullanılır.
+
+  **Kimlik doğrulama modu**: kullanılacak modu seçin.
 
    Kalan alanlarda varsayılan değerleri kabul edin.
 
