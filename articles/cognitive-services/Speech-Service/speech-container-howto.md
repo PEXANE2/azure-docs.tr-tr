@@ -12,12 +12,12 @@ ms.date: 11/17/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: Şirket içi, Docker, kapsayıcı
-ms.openlocfilehash: 829514637b72582dbb317970b0d23f92eb11bcad
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 79e53bf39e411569f87a46bfc275c784ce84babc
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862291"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703335"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Konuşma hizmeti API 'Leri için Docker Kapsayıcıları yükleyip çalıştırın 
 
@@ -45,7 +45,7 @@ Konuşma kapsayıcıları, müşterilerin hem sağlam bulut özellikleri hem de 
 | Özel Konuşma Tanıma metin | [Özel konuşma tanıma portalından](https://speech.microsoft.com/customspeech)özel bir model kullanarak, sürekli gerçek zamanlı konuşmayı veya toplu ses kayıtlarını, ara sonuçlarla birlikte metne ekleyin. | 2.7.0 |
 | Metin okuma | Düz metin girişi veya konuşma birleştirme biçimlendirme dili (SSML) ile metni doğal-sounkonuşmaya dönüştürür. | 1.9.0 |
 | Özel metin okuma | [Özel ses portalından](https://aka.ms/custom-voice-portal)özel bir model kullanarak, düz metin girişi veya konuşma birleştirme biçimlendirme DILI (SSML) ile metni doğal-sounkonuşmaya dönüştürür. | 1.9.0 |
-| Konuşma Dil Algılama | Ses dosyalarında konuşulan dili algılayın. | 1,0 |
+| Konuşma Dil Algılama | Ses dosyalarında konuşulan dili algılayın. | 1.0 |
 | Sinir metin okuma | Derin sinir ağ teknolojisini kullanarak metni doğal-sounding konuşmaya dönüştürür. Bu, doğal olarak birleştirilmiş konuşmaya olanak sağlar. | 1.3.0 |
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
@@ -326,7 +326,7 @@ Konuşmadan metne kapsayıcının v 2.6.0 'den başlayarak, önizleme yerine Tex
 > [!NOTE]
 > Metin Analizi `v3.0` API 'si metin analizi ile geriye dönük olarak uyumlu değildir `v3.0-preview.1` . En son yaklaşım özelliği desteğini almak için, `v2.6.0` konuşmadan metne kapsayıcı görüntüsünü ve metin analizi kullanın `v3.0` .
 
-Konuşmayı metin kapsayıcısının 2.2.0 ' den başlayarak, çıkışta yaklaşım [Analizi v3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) 'sini çağırabilirsiniz. Yaklaşım analizini çağırmak için Metin Analizi API'si kaynak uç noktasına ihtiyacınız olacaktır. Örnek: 
+Konuşmayı metin kapsayıcısının 2.2.0 ' den başlayarak, çıkışta yaklaşım [Analizi v3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) 'sini çağırabilirsiniz. Yaklaşım analizini çağırmak için Metin Analizi API'si kaynak uç noktasına ihtiyacınız olacaktır. Örneğin: 
 * `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0-preview.1/sentiment`
 * `https://localhost:5000/text/analytics/v3.0-preview.1/sentiment`
 
@@ -355,7 +355,7 @@ Konuşma-metin kapsayıcısının 2.6.0 ' den başlayarak, kendi tümceciklerini
 
 * "Bu bir cümle, **Bu,** başka bir tümcedir."
 
-Bir tümcecik listesi yapılandırmak için, çağrıyı yaparken kendi tümceciklerinizi eklemeniz gerekir. Örnek:
+Bir tümcecik listesi yapılandırmak için, çağrıyı yaparken kendi tümceciklerinizi eklemeniz gerekir. Örneğin:
 
 ```python
     phrase="the tall man"
@@ -373,13 +373,6 @@ Eklenecek birden çok tümceciği varsa, `.addPhrase()` tümcecik listesine ekle
 # <a name="custom-speech-to-text"></a>[Özel Konuşma Tanıma metin](#tab/cstt)
 
 *Özel konuşma tanıma metin* kapsayıcısı özel bir konuşma modeline bağlıdır. Özel bir model [özel konuşma portalı](https://speech.microsoft.com/customspeech)kullanılarak [eğitilmiş](how-to-custom-speech-train-model.md) olmalıdır.
-
-> [!IMPORTANT]
-> Özel Konuşma Tanıma modelinin aşağıdaki model sürümlerinden birinden eğitilecek olması gerekir:
-> * **20181201 (v 3.3 Birleşik)**
-> * **20190520 (v 4.14 Birleşik)**
-> * **20190701 (v 4.17 Birleşik)**<br>
-> ![Özel Konuşma Tanıma kapsayıcı modeline eğitme](media/custom-speech/custom-speech-train-model-container-scoped.png)
 
 Kapsayıcıyı çalıştırmak için özel konuşma **MODELI kimliği** gereklidir. Özel konuşma portalının **eğitim** sayfasında bulunabilir. Özel konuşma portalından **eğitim** sayfasına gidin ve modeli seçin.
 <br>
@@ -424,7 +417,7 @@ ApiKey={API_KEY}
 
 
 #### <a name="base-model-download-on-the-custom-speech-to-text-container"></a>Özel konuşmaya metin kapsayıcısına temel model indirme  
-Özel konuşma-metin kapsayıcısının sanal 2.6.0 ' den başlayarak, kullanılabilir temel model bilgilerini seçeneğini kullanarak edinebilirsiniz `BaseModelLocale=<locale>` . Bu seçenek, size faturalandırma hesabınız kapsamındaki bu yerel ayar üzerinde bulunan temel modellerin bir listesini sağlar. Örnek:
+Özel konuşma-metin kapsayıcısının sanal 2.6.0 ' den başlayarak, kullanılabilir temel model bilgilerini seçeneğini kullanarak edinebilirsiniz `BaseModelLocale=<locale>` . Bu seçenek, size faturalandırma hesabınız kapsamındaki bu yerel ayar üzerinde bulunan temel modellerin bir listesini sağlar. Örneğin:
 
 ```bash
 docker run --rm -it \
@@ -440,7 +433,7 @@ ApiKey={API_KEY}
 * Kapsayıcı görüntüsünden *özel konuşma tanıma metin* kapsayıcısı çalıştırır.
 * Hedef yerel ayarın kullanılabilir temel modellerini denetleyin ve geri döndürün.
 
-Çıktı, bilgi yerel ayarları, model kimliği ve oluşturulma tarihi saati ile birlikte temel modellerin bir listesini sağlar. Tercih ettiğiniz belirli temel modeli indirmek ve kullanmak için model kimliğini kullanabilirsiniz. Örnek:
+Çıktı, bilgi yerel ayarları, model kimliği ve oluşturulma tarihi saati ile birlikte temel modellerin bir listesini sağlar. Tercih ettiğiniz belirli temel modeli indirmek ve kullanmak için model kimliğini kullanabilirsiniz. Örneğin:
 ```
 Checking available base model for en-us
 2020/10/30 21:54:20 [Info] Searching available base models for en-us

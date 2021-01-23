@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5bcc6503af5f5f685ee589ed7671b4715834fef
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 496a8dba9b9ea7fb82ad9016479154d6a61cb767
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779371"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703284"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Nasıl çalışır? Azure AD self servis parola sıfırlama
 
@@ -137,7 +137,7 @@ Microsoft Authenticator uygulaması gibi, parola sıfırlama yöntemi olarak bir
 Kullanıcılar, self servis parola sıfırlama için kaydolurken mobil uygulamalarını kaydetme seçeneğine sahip değildir [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) . Kullanıcılar mobil uygulamalarını konumunda [https://aka.ms/mfasetup](https://aka.ms/mfasetup) veya Birleşik güvenlik bilgileri kaydına kaydedebilir [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) .
 
 > [!IMPORTANT]
-> Yalnızca Yöntem gerekli olduğunda, Authenticator uygulaması tek kimlik doğrulama yöntemi olarak seçilemez. Benzer şekilde, iki yöntem gerektirmesi halinde Authenticator uygulaması ve yalnızca bir ek yöntem seçilemez.
+> Yalnızca bir yöntem gerekli olduğunda, Authenticator uygulaması tek kimlik doğrulama yöntemi olarak seçilemez. Benzer şekilde, iki yöntem gerektirmesi halinde Authenticator uygulaması ve yalnızca bir ek yöntem seçilemez.
 >
 > Bir yöntem olarak Authenticator uygulamasını içeren SSPR ilkelerini yapılandırırken, bir yöntem gerekli olduğunda en az bir ek yöntem seçilmelidir ve iki yöntemin yapılandırılması gerektiğinde en az iki ek yöntem seçilmelidir.
 >

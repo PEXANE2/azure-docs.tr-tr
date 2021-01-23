@@ -3,18 +3,18 @@ title: MARS Aracısı 'nı kullanarak Windows makinelerini yedekleme
 description: Windows makinelerini yedeklemek için Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını kullanın.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: d2cdd5d1fa98462a70d72fd9f8723685952b665a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54932192d61633da55657e2ba57adf4e30c4fbc7
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90052231"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702777"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>Windows Server dosyalarını ve klasörlerini Azure 'a yedekleme
 
 Bu makalede, Windows makinelerini [Azure Backup](backup-overview.md) hizmeti ve MICROSOFT Azure kurtarma HIZMETLERI (mars) Aracısı kullanılarak nasıl yedekleyeceğiniz açıklanmaktadır. MARS, Azure Backup Aracısı olarak da bilinir.
 
-Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
+Bu makalede şunları yapmayı öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -43,8 +43,8 @@ Yedekleme ilkesi oluşturmak için:
 1. **Eylemler**' in altında, **yedeklemeyi zamanla**' yı seçin.
 
     ![Windows Server yedeklemesini zamanlama](./media/backup-configure-vault/schedule-first-backup.png)
-1. Yedekleme zamanlaması sihirbazında, sonraki **Başlangıç**' ı seçin  >  **Next**.
-1. **Yedeklenecek öğeleri seçin**altında **öğe Ekle**' yi seçin.
+1. Yedekleme zamanlaması sihirbazında, sonraki **Başlangıç**' ı seçin  >  .
+1. **Yedeklenecek öğeleri seçin** altında **öğe Ekle**' yi seçin.
 
     ![Yedeklenecek öğeleri ekle](./media/backup-azure-manage-mars/select-item-to-backup.png)
 
@@ -79,7 +79,7 @@ Yedekleme ilkesi oluşturmak için:
 
         ![Bekletme ilkesi örneği](./media/backup-configure-vault/retention-example.png)
 
-1. **Ilk yedekleme türünü seçin** sayfasında, ilk yedeklemeyi ağ üzerinden mi yoksa çevrimdışı yedekleme mi kullanacağınızı belirleyin. İlk yedeklemeyi ağ üzerinden almak için, sonraki **ağ üzerinden otomatik olarak**' ı seçin  >  **Next**.
+1. **Ilk yedekleme türünü seçin** sayfasında, ilk yedeklemeyi ağ üzerinden mi yoksa çevrimdışı yedekleme mi kullanacağınızı belirleyin. İlk yedeklemeyi ağ üzerinden almak için, sonraki **ağ üzerinden otomatik olarak**' ı seçin  >  .
 
     Çevrimdışı yedekleme hakkında daha fazla bilgi için bkz. [çevrimdışı yedekleme için Azure Data Box kullanma](offline-backup-azure-data-box.md).
 
@@ -104,7 +104,7 @@ Bir ilk yedeklemeyi ağ üzerinden otomatik olarak çalıştırabilir veya çevr
 1. Yedekleme verilerini bir hazırlama konumuna yazın.
 1. Hazırlama konumundaki verileri bir veya daha fazla SATA diskine kopyalamak için AzureOfflineBackupDiskPrep aracını kullanın.
 
-    Araç bir Azure Içeri aktarma işi oluşturur. Daha fazla bilgi için bkz. [Azure içeri/dışarı aktarma hizmeti nedir?](../storage/common/storage-import-export-service.md)
+    Araç bir Azure Içeri aktarma işi oluşturur. Daha fazla bilgi için bkz. [Azure içeri/dışarı aktarma hizmeti nedir?](../import-export/storage-import-export-service.md)
 1. SATA disklerini bir Azure veri merkezine gönderin.
 
     Veri merkezinde, disk verileri bir Azure depolama hesabına kopyalanır. Azure Backup, verileri depolama hesabından kasaya kopyalar ve artımlı yedeklemeler zamanlanır.
@@ -125,7 +125,7 @@ Ağ azaltmayı etkinleştirmek için:
 1. **Daraltma** sekmesinde, **yedekleme işlemleri için internet bant genişliği kullanımını azaltmayı etkinleştir**' i seçin.
 
     ![Yedekleme işlemleri için ağ daraltma ayarlama](./media/backup-configure-vault/throttling-dialog.png)
-1. Çalışma saatleri ve çalışma dışı saatler sırasında izin verilen bant genişliğini belirtin. Bant genişliği değerleri 512 kbps ile başlar ve 1.023 Mbps 'e kadar gider. Ardından **Tamam**'ı seçin.
+1. Çalışma saatleri ve çalışma dışı saatler sırasında izin verilen bant genişliğini belirtin. Bant genişliği değerleri 512 kbps ile başlar ve 1.023 Mbps 'e kadar gider. Ardından **Tamam**’ı seçin.
 
 ## <a name="run-an-on-demand-backup"></a>İsteğe bağlı yedekleme çalıştırma
 

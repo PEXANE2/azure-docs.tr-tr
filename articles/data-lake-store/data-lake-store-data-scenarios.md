@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 702a59f768bfe978e1a7708d91c6b6b1bb9c92fe
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0bd895b0c19293a199b2a9b135915b7dc45b9e5e
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452237"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702506"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Büyük veri gereksinimleri için Azure Data Lake Storage 1. kullanma
 
@@ -88,7 +88,7 @@ Büyük miktarlarda veri, var olan Hadoop kümelerinde yerel olarak,,, işlem ku
 Birden çok terabayt içinde yer alan veri kümelerini yüklemek için yukarıda açıklanan yöntemleri kullanmak bazen yavaş ve maliyetli olabilir. Böyle durumlarda, aşağıdaki seçenekleri kullanabilirsiniz.
 
 * **Azure ExpressRoute kullanma**. Azure ExpressRoute, Azure veri merkezleri ve şirket içi altyapı arasında özel bağlantılar oluşturmanızı sağlar. Bu, büyük miktarlarda veri aktarmaya yönelik güvenilir bir seçenek sağlar. Daha fazla bilgi için bkz. [Azure ExpressRoute belgeleri](../expressroute/expressroute-introduction.md).
-* **Verilerin "çevrimdışı" yüklenmesi**. Azure ExpressRoute 'ın kullanılması herhangi bir nedenle uygun değilse, Azure [içeri/dışarı aktarma hizmeti](../storage/common/storage-import-export-service.md) 'ni kullanarak verilerinize bir Azure veri merkezine sabit disk sürücüleri gönderebilirsiniz. Verileriniz ilk olarak Azure Storage Bloblarına yüklenir. Daha sonra, Azure depolama Bloblarındaki verileri Data Lake Storage 1. kopyalamak için [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) veya [AdlCopy aracını](data-lake-store-copy-data-azure-storage-blob.md) kullanabilirsiniz.
+* **Verilerin "çevrimdışı" yüklenmesi**. Azure ExpressRoute 'ın kullanılması herhangi bir nedenle uygun değilse, Azure [içeri/dışarı aktarma hizmeti](../import-export/storage-import-export-service.md) 'ni kullanarak verilerinize bir Azure veri merkezine sabit disk sürücüleri gönderebilirsiniz. Verileriniz ilk olarak Azure Storage Bloblarına yüklenir. Daha sonra, Azure depolama Bloblarındaki verileri Data Lake Storage 1. kopyalamak için [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) veya [AdlCopy aracını](data-lake-store-copy-data-azure-storage-blob.md) kullanabilirsiniz.
 
   > [!NOTE]
   > Içeri/dışarı aktarma hizmetini kullanırken, Azure veri merkezi 'ne sevk ettiğiniz disklerdeki dosya boyutları 195 GB 'tan büyük olmamalıdır.

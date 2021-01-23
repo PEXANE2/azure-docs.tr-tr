@@ -4,15 +4,15 @@ description: Soru-Cevap Oluşturma, verileriniz üzerinde kolayca doğal bir kon
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 05/26/2020
+ms.date: 01/22/2021
 ms.custom: cog-serv-seo-aug-2020
 keywords: soru-cevap Oluşturucu, düşük kod sohbeti botları, çok yönlü konuşmalar
-ms.openlocfilehash: 9655f64da455fb7a7124a97e6dc2d1d8437d05b7
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 16f30801d52aa46184c4eb394f3d1cfebecd4be6
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353145"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98700758"
 ---
 # <a name="what-is-qna-maker"></a>Soru-Cevap Oluşturma nedir?
 
@@ -63,7 +63,7 @@ Bilgi tabanınız düzenlendikten sonra, Bilgi Bankası 'nı herhangi bir kod ya
 
 Soru-Cevap Oluşturma sistemi katmanlı bir derecelendirme yaklaşımıdır. Veriler, Azure Search 'te depolanır ve bu da ilk derecelendirme katmanı olarak da kullanılır. Azure Search 'un en iyi sonuçları, son sonuçları ve güvenirlik Puanını üretmek için Soru-Cevap Oluşturma NLP yeniden derecelendirme modelinden geçirilir.
 
-## <a name="multi-turn-conversations"></a>Çoklu açma konuşmaları
+## <a name="multi-turn-conversations"></a>Çok aşamalı konuşmalar
 
 Soru-Cevap Oluşturma, basit soru ve yanıt eşlerinizi iyileştirebilmeniz için çok yönlü istemler ve etkin öğrenme sağlar.
 
@@ -85,8 +85,6 @@ Her biri temel tasarım desenleri öğretmek ve kodu 10 dakikadan kısa bir sür
 
 * [Soru-Cevap Oluşturma istemci kitaplığı ile çalışmaya başlama](../quickstarts/quickstart-sdk.md)
 * [Soru-Cevap Oluşturma portalını kullanmaya başlama](../quickstarts/create-publish-knowledge-base.md)
-* [Soru-Cevap Oluşturma REST API 'Leri ile çalışmaya başlama](../quickstarts/quickstart-rest-curl.md)
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Soru-Cevap Oluşturma, özel bilgi tabanınızı oluşturmak, yönetmek ve dağıtmak için ihtiyacınız olan her şeyi sağlar.

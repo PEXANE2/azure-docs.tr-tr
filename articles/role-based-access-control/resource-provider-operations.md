@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 01/15/2021
 ms.custom: generated
-ms.openlocfilehash: 36f266a8402721dffecc9e80c4f769bd51b0e172
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: a521623447f4415e35a06c5c60e3723a69b4aa15
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539101"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98700610"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure Kaynak sağlayıcısı işlemleri
 
@@ -1464,7 +1464,7 @@ Azure hizmeti: [Azure Data Box](../databox/index.yml)
 
 ### <a name="microsoftimportexport"></a>Microsoft. ımportexport
 
-Azure hizmeti: [Azure içeri/dışarı aktarma](../storage/common/storage-import-export-service.md)
+Azure hizmeti: [Azure içeri/dışarı aktarma](../import-export/storage-import-export-service.md)
 
 > [!div class="mx-tableFixed"]
 > | Eylem | Açıklama |
@@ -1735,9 +1735,9 @@ Azure hizmeti: [StorSimple](../storsimple/index.yml)
 > | Microsoft. StorSimple/yöneticileri/yazma | Cihaz yöneticilerini oluşturma veya güncelleştirme |
 > | Microsoft. StorSimple/yöneticileri/configureDevice/Action | Bir cihazı yapılandırır |
 > | Microsoft. StorSimple/yöneticileri/migrateClassicToResourceManager/Action | Klasikten Resource Manager’a Geçiş |
-> | Microsoft. StorSimple/yöneticileri/listActivationKey/Action | StorSimple Aygıt Yöneticisi etkinleştirme anahtarını alır. |
-> | Microsoft. StorSimple/yöneticileri/regenerateActivationKey/Action | Mevcut bir StorSimple Aygıt Yöneticisi için etkinleştirme anahtarını yeniden oluşturun. |
-> | Microsoft. StorSimple/yöneticileri/listPublicEncryptionKey/Action | StorSimple Aygıt Yöneticisi ortak şifreleme anahtarlarını listeleyin. |
+> | Microsoft. StorSimple/yöneticileri/listActivationKey/Action | StorSimple Device Manager etkinleştirme anahtarını alır. |
+> | Microsoft. StorSimple/yöneticileri/regenerateActivationKey/Action | Mevcut bir StorSimple Device Manager için etkinleştirme anahtarını yeniden oluşturun. |
+> | Microsoft. StorSimple/yöneticileri/listPublicEncryptionKey/Action | StorSimple Device Manager ortak şifreleme anahtarlarını listeleyin. |
 > | Microsoft. StorSimple/yöneticileri/provisionCloudAppliance/eylem | Yeni bir bulut gereci oluşturun. |
 > | Microsoft. StorSimple/yöneticileri/yazma | Kasa oluşturma işlemi, ' kasa ' türünde bir Azure kaynağı oluşturur |
 > | Microsoft. StorSimple/yöneticileri/okuma | Kasayı al işlemi, ' kasa ' türündeki Azure kaynağını temsil eden bir nesneyi alır |
@@ -7730,7 +7730,7 @@ Azure hizmeti: [Azure geçişi](../migrate/migrate-services-overview.md)
 > | Microsoft. OffAzure/VMwareSites/vcenters/Read | VMware vCenter özelliklerini alır |
 > | Microsoft. OffAzure/VMwareSites/vcenters/Write | VMware vCenter 'ı oluşturur veya güncelleştirir |
 
-## <a name="monitor"></a>İzleyici
+## <a name="monitor"></a>İzleme
 
 ### <a name="microsoftalertsmanagement"></a>Microsoft. AlertsManagement
 

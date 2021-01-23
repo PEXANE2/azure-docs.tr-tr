@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 01/22/2021
 ms.author: mbullwin
-ms.openlocfilehash: 9457c610b256dd4602ef0dc51a47eeffb3c63b49
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: b0869335c386712e6b759bb0ced459ebd1bf383c
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705158"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702735"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Anomali algılayıcı API 'sini kullanmaya yönelik en iyi uygulamalar
 
@@ -34,9 +34,9 @@ Anomali algılayıcı API 'sinin toplu iş algılama uç noktası, tüm zaman se
 * Anormal bir zaman serisi, zaman zaman anormalileri.
 * Düz bir eğilim süresi serisi, zaman zaman ani artışlar/DIB 'ler. 
 
-Gerçek zamanlı veri izleme için Batch anomali algılama özelliğinin kullanılması veya bu özelliği yukarıdaki özelliklerin üzerinde olmayan zaman serisi verilerinde kullanmanız önerilmez. 
+Gerçek zamanlı veri izleme için Batch anomali algılama özelliğinin kullanılması veya yukarıdaki özelliklere sahip olmayan zaman serisi verilerinde kullanılması önerilmez. 
 
-* Toplu iş algılama yalnızca bir model oluşturur ve uygular, her bir nokta için algılama, tüm serinin bağlamında yapılır. Zaman serisi verileri mevsimsellik olmadan yukarı ve aşağı doğru eğilimler, model tarafından bazı değişiklik noktaları (veri içindeki artışlar ve ani artışlar) kaçırılmış olabilir. Benzer şekilde, veri kümesinde daha sonra daha fazla önemli olan bazı değişiklik noktaları, modele dahil edilecek kadar önemli olarak sayılmayabilir.
+* Toplu iş algılama yalnızca bir model oluşturur ve uygular, her bir noktanın algılanması tüm serinin bağlamında yapılır. Zaman serisi verileri mevsimsellik olmadan yukarı ve aşağı doğru eğilimler, model tarafından bazı değişiklik noktaları (veri içindeki artışlar ve ani artışlar) kaçırılmış olabilir. Benzer şekilde, veri kümesinde daha sonra daha fazla önemli olan bazı değişiklik noktaları, modele dahil edilecek kadar önemli olarak sayılmayabilir.
 
 * Toplu algılama, çözümlenmekte olan nokta sayısı nedeniyle gerçek zamanlı veri izleme yaparken en son noktanın anomali durumunu algılamada daha yavaştır.
 
@@ -50,11 +50,11 @@ Batch anomali algılama kullanılarak aynı veri kümesi aşağıda verilmiştir
 
 ![Batch metodunu kullanarak anomali algılamayı gösteren resim](../media/entire.png)
 
-## <a name="data-preparation"></a>Verileri hazırlama
+## <a name="data-preparation"></a>Veri hazırlama
 
 Anomali algılayıcı API 'SI, bir JSON istek nesnesi halinde biçimlendirilen zaman serisi verilerini kabul eder. Zaman serisi, zaman içinde sıralı olarak kaydedilmiş herhangi bir sayısal veri olabilir. API 'nin performansını geliştirmek için zaman serisi verilerinizin pencerelerini anomali algılayıcı API uç noktasına gönderebilirsiniz. Gönderebilmeniz gereken en az veri noktası sayısı 12, üst sınır 8640 puntodur. [Ayrıntı düzeyi](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) , verilerinizin örneklendiği hız olarak tanımlanmıştır. 
 
-Anomali algılayıcı API 'sine gönderilen veri noktaları, geçerli bir Eşgüdümlü Evrensel Saat (UTC) Zaman damgasına ve sayısal değere sahip olmalıdır. 
+Anomali algılayıcı API 'sine gönderilen veri noktaları, geçerli bir Eşgüdümlü Evrensel Saat (UTC) Zaman damgasına ve sayısal bir değere sahip olmalıdır. 
 
 ```json
 {
@@ -87,7 +87,7 @@ Eksik veri noktaları, özellikle ince ayrıntı düzeyi (küçük örnekleme ar
 
 ### <a name="aggregate-distributed-data"></a>Dağıtılmış verileri toplama
 
-Anomali algılayıcı API 'SI, eşit olarak dağıtılan bir zaman serisinde en iyi şekilde çalışmaktadır. Verileriniz rastgele dağıtılmışsa, bu süreyi dakika başına, saatlik veya her gün gibi bir zaman birimi ile toplamalısınız.
+Anomali algılayıcı API 'SI, eşit olarak dağıtılan bir zaman serisinde en iyi şekilde çalışmaktadır. Verileriniz rastgele dağıtılmışsa, bu süreyi dakika başına, saatlik veya günlük gibi bir zaman birimi ile toplamalısınız.
 
 ## <a name="anomaly-detection-on-data-with-seasonal-patterns"></a>Dönemsel desenlerle verilerde anomali algılama
 
@@ -95,7 +95,7 @@ Zaman serisi verilerinizin düzenli aralıklarla bir düzene sahip olduğunu bil
 
 `period`JSON isteğinizi oluştururken belirtme, anomali algılama gecikmesini %50 oranında azaltabilir. , `period` Zaman serisinin bir kalıbı yinelemek için kaç veri noktası olduğunu kabaca belirten bir tamsayıdır. Örneğin, günlük bir veri noktasına sahip bir zaman serisi bir `period` olarak olur `7` ve saat başına bir noktaya sahip bir zaman serisi (aynı haftalık desenli) ' a sahip olur `period`  `7*24` . Verilerinizin desenlerinden emin değilseniz, bu parametreyi belirtmeniz gerekmez.
 
-En iyi sonuçlar için, 4 `period` ' ün veri noktası ve ek bir tane girin. Örneğin, yukarıda açıklanan haftalık bir desenli saatlik veriler, istek gövdesinde () 673 veri noktası sağlamalıdır `7 * 24 * 4 + 1` .
+En iyi sonuçlar için, üç ve daha `period` fazla veri noktasına ek bir tane girin. Örneğin, yukarıda açıklanan haftalık bir desenli saatlik veriler, istek gövdesinde () 673 veri noktası sağlamalıdır `7 * 24 * 4 + 1` .
 
 ### <a name="sampling-data-for-real-time-monitoring"></a>Gerçek zamanlı izleme için örnekleme verileri
 

@@ -3,12 +3,12 @@ title: Data Protection Manager (DPM) ve Microsoft Azure Backup sunucusu (MABS) i
 description: Azure Backup, Azure Içeri/dışarı aktarma hizmetini kullanarak ağ üzerinden veri gönderebilirsiniz. Bu makalede, DPM 'nin önceki sürümleri ve Azure Backup Sunucusu için çevrimdışı yedekleme iş akışı açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: b747fd3c682dc1caf7312ba7279470a1e6b38bd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0405ab66b7714f00349419e94bb064267ca711a6
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88890102"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702194"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>DPM ve Azure Backup Sunucusu için çevrimdışı yedekleme iş akışı (önceki sürümler)
 
@@ -17,7 +17,7 @@ ms.locfileid: "88890102"
 
 Azure Backup, Azure 'a verilerin ilk tam yedeklemesi sırasında ağ ve depolama maliyetlerini kaydetmekle ilgili çeşitli yerleşik verimlilik içerir. İlk tam yedeklemeler genellikle büyük miktarda veriyi aktarır ve yalnızca deltas/artımlarsa aktarımı yapan sonraki yedeklemelerle karşılaştırıldığında daha fazla ağ bant genişliği gerektirir. Azure Backup ilk yedeklemeleri sıkıştırır. Azure Backup çevrimdışı dağıtım sürecinde, sıkıştırılmış ilk yedekleme verilerini çevrimdışı olarak Azure 'a yüklemek için diskleri kullanabilir.
 
-Azure Backup çevrimdışı dengeli işlem, [Azure içeri/dışarı aktarma hizmeti](../storage/common/storage-import-export-service.md)ile sıkı bir şekilde tümleşiktir. Bu hizmeti kullanarak, diskleri kullanarak Azure 'a veri aktarabilirsiniz. Yüksek gecikmeli ve düşük bant genişliğine sahip bir ağ üzerinden aktarılması gereken ilk yedekleme verilerinin terabayt (TBs) varsa, ilk yedekleme kopyasını bir veya daha fazla sabit sürücüye bir Azure veri merkezine göndermek için çevrimdışı dengeli dağıtım iş akışını kullanabilirsiniz. Bu makalede, System Center Data Protection Manager (DPM) ve Microsoft Azure Backup sunucusu (MABS) için bu iş akışını izleyen bir genel bakış ve diğer adımlar sağlanmaktadır.
+Azure Backup çevrimdışı dengeli işlem, [Azure içeri/dışarı aktarma hizmeti](../import-export/storage-import-export-service.md)ile sıkı bir şekilde tümleşiktir. Bu hizmeti kullanarak, diskleri kullanarak Azure 'a veri aktarabilirsiniz. Yüksek gecikmeli ve düşük bant genişliğine sahip bir ağ üzerinden aktarılması gereken ilk yedekleme verilerinin terabayt (TBs) varsa, ilk yedekleme kopyasını bir veya daha fazla sabit sürücüye bir Azure veri merkezine göndermek için çevrimdışı dengeli dağıtım iş akışını kullanabilirsiniz. Bu makalede, System Center Data Protection Manager (DPM) ve Microsoft Azure Backup sunucusu (MABS) için bu iş akışını izleyen bir genel bakış ve diğer adımlar sağlanmaktadır.
 
 > [!NOTE]
 > Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı için çevrimdışı yedekleme işlemi DPM 'den ve MABS 'den farklıdır. MARS aracısıyla çevrimdışı yedekleme kullanma hakkında bilgi için, bkz. [Azure Backup çevrimdışı yedekleme iş akışı](backup-azure-backup-import-export.md). Çevrimdışı yedekleme, Azure Backup Aracısı kullanılarak gerçekleştirilen sistem durumu yedeklemeleri için desteklenmez.
@@ -48,7 +48,7 @@ Azure Backup ve Azure Içeri/dışarı aktarma hizmeti 'nin çevrimdışı denge
 >[!NOTE]
 >Azure CSP abonelikleri, DPM 2019 RTM ve önceki sürümleri ve MABS v3 RTM ve önceki sürümleri için çevrimdışı dengeli dağıtım ile kullanım için desteklenmez. Ağ üzerinden çevrimiçi yedeklemeler hala desteklenmektedir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Çevrimdışı yedekleme iş akışını başlamadan önce aşağıdaki önkoşulların karşılandığından emin olun:
 
@@ -58,21 +58,21 @@ Azure Backup ve Azure Içeri/dışarı aktarma hizmeti 'nin çevrimdışı denge
 
     | Sovereign bulut bölgesi | Azure yayımlama ayarları dosyası bağlantısı |
     | --- | --- |
-    | Birleşik Devletler | [Bağlantısının](https://portal.azure.us#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
-    | Çin | [Bağlantısının](https://portal.azure.cn/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
+    | Birleşik Devletler | [Bağlantı](https://portal.azure.us#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
+    | Çin | [Bağlantı](https://portal.azure.cn/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
 
 * Yayımlama ayarları dosyasını indirdiğiniz abonelikte Kaynak Yöneticisi dağıtım modeliyle bir Azure depolama hesabı oluşturuldu. Depolama hesabında, hedef olarak kullanılacak yeni bir blob kapsayıcısı oluşturun.
 
   ![Kaynak Yöneticisi geliştirmeyle bir depolama hesabı oluşturma](./media/offline-backup-dpm-mabs-previous-versions/storage-account-resource-manager.png)
 
 * İlk kopyanızı tutmak için yeterli disk alanına sahip bir ağ paylaşımının veya bilgisayarda, iç veya dış olan herhangi bir ek sürücü olabilen bir hazırlama konumu oluşturulur. Örneğin, bir 500 GB dosya sunucusunu yedeklemek istiyorsanız, hazırlama alanının en az 500 GB olduğundan emin olun. (Sıkıştırma nedeniyle daha küçük bir miktar kullanılır.)
-* Azure 'a gönderilen diskler için yalnızca 2,5 inç SSD veya 2,5-inç veya 3,5-inç SATA II/III iç sabit disk sürücülerinin kullanıldığından emin olun. Sabit sürücüleri 10 TB 'a kadar kullanabilirsiniz. Hizmetin desteklediği en son sürücü kümesi için [Azure içeri/dışarı aktarma hizmeti belgelerini](../storage/common/storage-import-export-requirements.md#supported-hardware) denetleyin.
-* SATA sürücülerin, hazırlama konumundan SATA sürücülere olan yedekleme verilerinin kopyasının yapıldığı bir bilgisayara ( *kopya bilgisayar*olarak adlandırılır) bağlanması gerekir. Kopya bilgisayarda BitLocker 'ın etkinleştirildiğinden emin olun.
+* Azure 'a gönderilen diskler için yalnızca 2,5 inç SSD veya 2,5-inç veya 3,5-inç SATA II/III iç sabit disk sürücülerinin kullanıldığından emin olun. Sabit sürücüleri 10 TB 'a kadar kullanabilirsiniz. Hizmetin desteklediği en son sürücü kümesi için [Azure içeri/dışarı aktarma hizmeti belgelerini](../import-export/storage-import-export-requirements.md#supported-hardware) denetleyin.
+* SATA sürücülerin, hazırlama konumundan SATA sürücülere olan yedekleme verilerinin kopyasının yapıldığı bir bilgisayara ( *kopya bilgisayar* olarak adlandırılır) bağlanması gerekir. Kopya bilgisayarda BitLocker 'ın etkinleştirildiğinden emin olun.
 
 ## <a name="prepare-the-server-for-the-offline-backup-process"></a>Sunucuyu çevrimdışı yedekleme işlemi için hazırlama
 
 >[!NOTE]
-> *AzureOfflineBackupCertGen.exe*gibi listelenen yardımcı programları BULAMıYORSANıZ, Mars Aracısı yüklemenizde, AskAzureBackupTeam@microsoft.com bunlara erişim sağlamak için öğesine yazın.
+> *AzureOfflineBackupCertGen.exe* gibi listelenen yardımcı programları BULAMıYORSANıZ, Mars Aracısı yüklemenizde, AskAzureBackupTeam@microsoft.com bunlara erişim sağlamak için öğesine yazın.
 
 * Sunucuda yükseltilmiş bir komut istemi açın ve aşağıdaki komutu çalıştırın:
 
@@ -100,14 +100,14 @@ Azure Backup ve Azure Içeri/dışarı aktarma hizmeti 'nin çevrimdışı denge
 Çevrimdışı yedekleme sertifikasını çevrimdışı yedekleme için daha önce oluşturulmuş bir Azure Active Directory uygulamasına el ile yüklemek için aşağıdaki adımları izleyin.
 
 1. Azure Portal’da oturum açın.
-1. **Azure Active Directory**  >  **uygulama kayıtları**gidin.
+1. **Azure Active Directory**  >  **uygulama kayıtları** gidin.
 1. Sahip olan **uygulamalar** sekmesinde görünen ad biçimiyle bir uygulama bulun `AzureOfflineBackup _<Azure User Id` .
 
     ![Uygulamanın sahip olduğu uygulamalar sekmesinde bul](./media/offline-backup-dpm-mabs-previous-versions/owned-applications.png)
 
 1. Uygulamayı seçin. Sol bölmedeki **Yönet** ' ın altında **Sertifikalar & gizlilikler**' a gidin.
 1. Önceden var olan sertifikaları veya ortak anahtarları denetleyin. Hiçbiri yoksa, uygulamanın **genel bakış** sayfasında **Sil** düğmesini seçerek uygulamayı güvenle silebilirsiniz. Daha sonra, [sunucuyu çevrimdışı yedekleme işlemine hazırlamak](#prepare-the-server-for-the-offline-backup-process) için adımları yeniden deneyebilir ve aşağıdaki adımları atlayabilirsiniz. Aksi takdirde, çevrimdışı yedeklemeyi yapılandırmak istediğiniz DPM örneğinden veya Azure Backup sunucusundan bu adımları izlemeye devam edin.
-1. **Başlat** – **Çalıştır**' dan *Certlm. msc*yazın. **Sertifikalar-Yerel bilgisayar** penceresinde **Sertifikalar – Yerel bilgisayar**  >  **Kişisel** sekmesini seçin. ada sahip sertifikayı arayın `CB_AzureADCertforOfflineSeeding_<ResourceId>` .
+1. **Başlat** – **Çalıştır**' dan *Certlm. msc* yazın. **Sertifikalar-Yerel bilgisayar** penceresinde **Sertifikalar – Yerel bilgisayar**  >  **Kişisel** sekmesini seçin. ada sahip sertifikayı arayın `CB_AzureADCertforOfflineSeeding_<ResourceId>` .
 1. Sertifikayı seçin, **Tüm görevler**' e sağ tıklayın ve ardından özel anahtar olmadan. cer biçiminde **dışarı aktar**' ı seçin.
 1. Azure portal Azure çevrimdışı yedekleme uygulamasına gidin.
 1. Sertifikaları **Yönet**  >  **& gizlilikler**  >  **sertifikayı yükle**' yi seçin. Önceki adımda dışarıya aktarılmış sertifikayı karşıya yükleyin.
@@ -115,7 +115,7 @@ Azure Backup ve Azure Içeri/dışarı aktarma hizmeti 'nin çevrimdışı denge
     ![Sertifikayı güncelleştirin](./media/offline-backup-dpm-mabs-previous-versions/upload-certificate.png)
 
 1. Sunucusunda, Çalıştır penceresine **Regedit** ' i girerek kayıt defterini açın.
-1. *Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider*kayıt defteri girişine gidin.
+1. *Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider* kayıt defteri girişine gidin.
 1. **CloudBackupProvider**' a sağ tıklayın ve adıyla yeni bir dize değeri ekleyin `AzureADAppCertThumbprint_<Azure User Id>` .
 
     >[!NOTE]
@@ -124,7 +124,7 @@ Azure Backup ve Azure Içeri/dışarı aktarma hizmeti 'nin çevrimdışı denge
     >* Azure bağlı PowerShell 'den `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as appears in the portal"` komutunu çalıştırın.
     >* Kayıt defteri yoluna gidin `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup; Name: CurrentUserId;` .
 
-1. Önceki adımda eklenen dizeye sağ tıklayın ve **Değiştir**' i seçin. Değerde, 7. adımda verdiğiniz sertifikanın parmak izini girin. Ardından **Tamam**'ı seçin.
+1. Önceki adımda eklenen dizeye sağ tıklayın ve **Değiştir**' i seçin. Değerde, 7. adımda verdiğiniz sertifikanın parmak izini girin. Ardından **Tamam**’ı seçin.
 1. Parmak izi değerini almak için, sertifikaya çift tıklayın. **Ayrıntılar** sekmesini seçin ve parmak izi alanını görene kadar aşağı kaydırın. **Parmak izi**' ni seçin ve değeri kopyalayın.
 
     ![Parmak izi alanından değeri Kopyala](./media/offline-backup-dpm-mabs-previous-versions/thumbprint-field.png)
@@ -133,7 +133,7 @@ Azure Backup ve Azure Içeri/dışarı aktarma hizmeti 'nin çevrimdışı denge
 
 ## <a name="workflow"></a>İş akışı
 
-Bu bölümdeki bilgiler, verilerinizin bir Azure veri merkezine teslim edilebilmesi ve Azure depolama 'ya yüklenebilmesi için çevrimdışı yedekleme iş akışını bitirebilmenizi sağlar. İçeri aktarma hizmeti veya işlemin herhangi bir yönü hakkında sorularınız varsa, daha önce başvurulan [hizmete genel bakış belgelerine](../storage/common/storage-import-export-service.md) bakın.
+Bu bölümdeki bilgiler, verilerinizin bir Azure veri merkezine teslim edilebilmesi ve Azure depolama 'ya yüklenebilmesi için çevrimdışı yedekleme iş akışını bitirebilmenizi sağlar. İçeri aktarma hizmeti veya işlemin herhangi bir yönü hakkında sorularınız varsa, daha önce başvurulan [hizmete genel bakış belgelerine](../import-export/storage-import-export-service.md) bakın.
 
 ### <a name="initiate-offline-backup"></a>Çevrimdışı Yedeklemeyi Başlat
 
@@ -160,7 +160,7 @@ Bu bölümdeki bilgiler, verilerinizin bir Azure veri merkezine teslim edilebilm
 
     ![Şimdi Yedekle](./media/offline-backup-dpm-mabs-previous-versions/backup-now.png)
 
-    DPM veya Azure Backup Sunucusu ilgili iş akışını sona erdirmeyi sağlamak için **koruma grubuna**sağ tıklayın. **Kurtarma noktası oluştur** seçeneğini belirleyin. Sonra **çevrimiçi koruma** seçeneğini belirleyin.
+    DPM veya Azure Backup Sunucusu ilgili iş akışını sona erdirmeyi sağlamak için **koruma grubuna** sağ tıklayın. **Kurtarma noktası oluştur** seçeneğini belirleyin. Sonra **çevrimiçi koruma** seçeneğini belirleyin.
 
     ![DPM ve MABS Şimdi Yedekle](./media/offline-backup-dpm-mabs-previous-versions/dpm-backup-now.png)
 
@@ -238,7 +238,7 @@ En yakın Azure veri merkezine gönderilen SATA sürücüleri hazırlamak için 
 
     ![Sevkiyat bilgilerini girin](./media/offline-backup-dpm-mabs-previous-versions/shipping-inputs.png)<br/>
 
-1. Tüm girişler sağlandığında, ayrıntıları dikkatlice inceleyin ve **Evet**girerek verdiğiniz sevkiyat bilgilerini işleyin.
+1. Tüm girişler sağlandığında, ayrıntıları dikkatlice inceleyin ve **Evet** girerek verdiğiniz sevkiyat bilgilerini işleyin.
 
     ![Sevkiyat bilgilerini gözden geçirme](./media/offline-backup-dpm-mabs-previous-versions/review-shipping-information.png)<br/>
 
@@ -271,7 +271,7 @@ Sürücüleriniz aktarım sırasında veya Azure veri merkezinde depolama hesab�
 
     ![İçeri aktarma işinin durumunu denetle](./media/offline-backup-dpm-mabs-previous-versions/import-job-status-reporting.png)<br/>
 
-Azure içeri aktarma işinin çeşitli durumları hakkında daha fazla bilgi için bkz. [Azure içeri/dışarı aktarma işlerinin durumunu görüntüleme](../storage/common/storage-import-export-view-drive-status.md).
+Azure içeri aktarma işinin çeşitli durumları hakkında daha fazla bilgi için bkz. [Azure içeri/dışarı aktarma işlerinin durumunu görüntüleme](../import-export/storage-import-export-view-drive-status.md).
 
 ### <a name="finish-the-workflow"></a>İş akışını tamamlama
 
@@ -283,4 +283,4 @@ Sonraki zamanlanmış yedekleme sırasında, Azure Backup ilk yedekleme kopyası
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Içeri/dışarı aktarma hizmeti iş akışıyla ilgili herhangi bir soru için bkz. [BLOB depolama alanına veri aktarmak için Microsoft Azure içeri/dışarı aktarma hizmetini kullanma](../storage/common/storage-import-export-service.md).
+* Azure Içeri/dışarı aktarma hizmeti iş akışıyla ilgili herhangi bir soru için bkz. [BLOB depolama alanına veri aktarmak için Microsoft Azure içeri/dışarı aktarma hizmetini kullanma](../import-export/storage-import-export-service.md).

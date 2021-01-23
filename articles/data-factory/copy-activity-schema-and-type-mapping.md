@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: ce7c0cba4a231fbdb33679f8cdac7d57c79845f5
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: afcc7ad34807b74fa0b1ddaaa29223d8a6e25584
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968883"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702228"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>Kopyalama etkinliğinde şema ve veri türü eşleme
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -185,6 +185,9 @@ Data Factory yazma Kullanıcı arabiriminde bu eşlemeyi tanımlayabilirsiniz:
 2. Yinelemek istediğiniz diziyi seçin ve verileri ayıklayın. **Koleksiyon başvurusu** olarak otomatik olarak doldurulur. Note bu işlem için yalnızca tek bir dizi desteklenir.
 
 3. Gerekli alanları havuza eşleyin. Data Factory hiyerarşik kenar için karşılık gelen JSON yollarını otomatik olarak belirler.
+
+> [!NOTE]
+> Toplama başvurusu olarak işaretlenen dizinin boş olduğu ve onay kutusunun seçildiği kayıtlar için tüm kayıt atlanır.
 
 ![Kullanıcı arabirimini kullanarak hiyerarşik olarak tablolu eşleme](media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-ui.png)
 

@@ -1,20 +1,20 @@
 ---
-title: Azure 'da Windows VM 'leriniz için zamanlanmış olayları izleme
+title: Azure 'da VM 'niz için zamanlanmış olayları izleme
 description: Zamanlanan olaylar için Azure sanal makinelerinizi izlemeyi öğrenin.
 author: mysarn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: monitoring
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
-ms.openlocfilehash: 0d1edde5ac1b83feab458eb5d12d524163d3ffb1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e3e44019d09927ff700e74b713a1b02136fedbc1
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483309"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702279"
 ---
-# <a name="monitoring-scheduled-events"></a>İzleme Zamanlanan Olaylar
+# <a name="monitor-scheduled-events-for-your-azure-vms"></a>Azure VM 'leriniz için zamanlanmış olayları izleme
 
 Güncelleştirmeler, hizmetlerin güvenli ve güncel kalmasını sağlamak için her gün farklı Azure bölümlerine uygulanır. Planlı güncelleştirmelere ek olarak planlanmamış olaylar da oluşabilir. Örneğin, herhangi bir donanım performansında azalma veya hata algılanırsa Azure hizmetlerinin planlanmamış bakım gerçekleştirmesi gerekebilir. Dinamik geçiş, güncelleştirmeleri koruyan ve genel olarak güncelleştirmelerin etkisinden katı bir çubuk tutarak, bu olaylar çoğu zaman müşterilere saydamdır ve bir etkisi yoktur ve sanal makine donmasına neden olur. Ancak bazı uygulamalarda, sanal makine donmasına karşın birkaç saniye bir etkiye neden olabilir. Yaklaşan Azure bakımı hakkında daha fazla bilgi için bu uygulamalar için en iyi deneyimi elde etmek önemlidir. [Zamanlanan olaylar hizmeti](scheduled-events.md) , yaklaşan bakım hakkında bildirim almak için size bir programlama arabirimi sağlar ve bakımı sorunsuz bir şekilde işlemenizi sağlar. 
 
@@ -29,7 +29,7 @@ Bu makalede, Log Analytics için bakım Zamanlanan Olaylar yakalama konusunda si
 
 ![Olay yaşam döngüsünü gösteren diyagram](./media/notifications/events.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu örnekte, bir [kullanılabilirlik kümesinde bir Windows sanal makinesi](tutorial-availability-sets.md)oluşturmanız gerekecektir. Zamanlanan Olaylar, kullanılabilirlik kümesi, bulut hizmeti, sanal makine ölçek kümesi veya tek başına VM 'lerdeki sanal makinelerin hiçbirini etkileyebilecek değişiklikler hakkında bildirimler sağlar. Kullanılabilirlik kümesindeki diğer tüm VM 'lerin olaylarını almak için, toplayıcı olarak görev yapacak VM 'lerden birinde zamanlanan olayları yoklayan bir [hizmet](https://github.com/microsoft/AzureScheduledEventsService) çalıştıracağız.    
 
@@ -39,7 +39,7 @@ Ayrıca, kullanılabilirlik kümesindeki VM 'lerden bilgi toplamak için kullana
 
 ## <a name="set-up-the-environment"></a>Ortamı ayarlama
 
-Artık bir kullanılabilirlik kümesinde 2 başlangıç VM 'si olmalıdır. Artık aynı Kullanılabilirlik kümesinde myCollectorVM adlı bir 3. sanal makine oluşturuyoruz. 
+Artık bir kullanılabilirlik kümesinde 2 başlangıç VM 'si olmalıdır. Artık aynı Kullanılabilirlik kümesinde adlı bir 3. VM oluşturuyoruz `myCollectorVM` . 
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -150,7 +150,7 @@ Olaylar Log Analytics gönderildikten sonra, zamanlama olaylarını aramak için
     | project-away RenderedDescription,ReqJson
     ```
 
-1. **Kaydet**' i seçin ve ardından ad Için *Logquery* yazın, **sorgu** türü olarak bırakın, **Kategori** olarak *vmlogs* yazın ve ardından **Kaydet**' i seçin. 
+1. **Kaydet**' i seçin ve ardından `ogQuery` ad yazın, **sorguyu** tür olarak bırakın, `VMLogs` **Kategori** olarak yazın ve ardından **Kaydet**' i seçin. 
 
     ![Sorguyu Kaydet](./media/notifications/save-query.png)
 
@@ -160,7 +160,7 @@ Olaylar Log Analytics gönderildikten sonra, zamanlama olaylarını aramak için
 1. **Eşik değeri** altında *0* girin ve **bitti**' yi seçin.
 1. **Eylemler** altında **eylem grubu oluştur**' u seçin. **Eylem grubu Ekle** sayfası açılır.
 1. **Eylem grubu adı**' nda, *Myactiongroup* yazın.
-1. **Kısa ad** alanına **Myactiongroup** yazın.
+1. **Kısa ad** alanına *Myactiongroup* yazın.
 1. **Kaynak grubu**' nda **myResourceGroupAvailability**' yi seçin.
 1. Eylemler ' in altında, **eylem adı** tür **e-** postası ' na ve ardından **e-posta/SMS/Push/ses** **E-posta/SMS/Push/ses** sayfası açılır.
 1. **E-posta** seçeneğini belirleyin, e-posta adresinizi yazın ve **Tamam**' ı seçin.

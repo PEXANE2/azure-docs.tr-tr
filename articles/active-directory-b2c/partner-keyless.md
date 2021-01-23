@@ -11,14 +11,14 @@ ms.topic: how-to
 ms.date: 1/17/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 7e6f19e03eee6fb6ddf946ea79d197a231f5f113
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2ab1b5ae87cee6265c965c45b706c7fbf10dfe3f
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690636"
+ms.locfileid: "98702965"
 ---
-# <a name="tutorial-for-configuring-keyless-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile Keyless yapılandırma öğreticisi
+# <a name="tutorial-configure-keyless-with-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C ile Keyless yapılandırma
 
 Bu örnek öğreticide, [Keyless](https://keyless.io/)ile Azure ACTIVE DIRECTORY (ad) B2C 'yi yapılandırma hakkında rehberlik sağlıyoruz. Azure AD B2C, bir kimlik sağlayıcısı olarak, kullanıcılarınıza doğru parolasız kimlik doğrulama sağlamak için herhangi bir müşteri uygulamalarınızla Keyless tümleştirebilirsiniz.
 
@@ -50,7 +50,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 ![Görüntüde Keyless mimari diyagramı gösteriliyor](./media/partner-keyless/keyless-architecture-diagram.png)
 
-|Adım | Description |
+|Adım | Açıklama |
 |:-----| :-----------|
 | 1. | Kullanıcı bir oturum açma sayfasına ulaştı. Kullanıcılar oturum açma/kaydolma seçer ve Kullanıcı adını girer
 | 2. | Uygulama, kimlik doğrulaması için Kullanıcı özniteliklerini Azure AD B2C gönderir.

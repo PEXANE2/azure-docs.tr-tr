@@ -1,24 +1,24 @@
 ---
-title: Kurumsal Anlaşmalar için Azure rezervasyonlarının kullanımını anlama
-description: Kurumsal kaydınızda Azure rezervasyonunun nasıl uygulandığını anlamak için kullanım bilgilerinizi okumayı öğrenin.
+title: Kurumsal Anlaşma ve Microsoft müşteri anlaşması için Azure ayırmaları kullanımını anlayın
+description: Azure rezervasyonunun Kurumsal Anlaşma ve Microsoft müşteri anlaşması kullanımı için nasıl geçerli olduğunu anlamak üzere kullanım bilgilerinizi nasıl okuyacağınızı öğrenin.
 author: bandersmsft
 ms.reviewer: yashar
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 01/19/2020
 ms.author: banders
-ms.openlocfilehash: 874d5cb022a38b172bb37009bd86b5e6988f3204
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
-ms.translationtype: HT
+ms.openlocfilehash: 0c69e9533130d6ca70c57422c7cdd5fc75adff72
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545613"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683726"
 ---
-# <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Kurumsal Anlaşma rezervasyon maliyetlerini ve kullanımını alma
+# <a name="get-enterprise-agreement-and-microsoft-customer-agreement-reservation-costs-and-usage"></a>Kurumsal Anlaşma ve Microsoft müşteri anlaşması rezervasyon maliyetlerini ve kullanımını alın
 
-Kurumsal Anlaşma müşterileri için rezervasyon maliyetleri ve kullanım verileri Azure portalında ve REST API'lerde sağlanır. Bu makale şu konularda size yardımcı olur:
+Rezervasyon maliyetleri ve kullanımı için Gelişmiş veriler, maliyet yönetiminde Kurumsal Anlaşma (EA) ve Microsoft Müşteri Sözleşmesi (MCA) kullanımı için kullanılabilir. Bu makale şu konularda size yardımcı olur:
 
 - Rezervasyon satın alma verilerini alma
 - Hangi aboneliğin, kaynak grubunun veya kaynağın rezervasyonu kullandığını öğrenme
@@ -61,9 +61,7 @@ Azure kullanım verilerinde sağlanan diğer bilgiler değişmiştir:
 
 Verileri API'yi kullanarak alabilir veya Azure portalından indirebilirsiniz.
 
-Yeni verileri almak için [Kullanım Ayrıntıları API’sini](/rest/api/consumption/usagedetails/list) çağırırsınız. Terminolojiyle ilgili ayrıntılar için bkz. [Kullanım terimleri](../understand/understand-usage.md). Çağrıyı yapan kurumsal anlaşmanın Kuruluş Yöneticisi olmalı ve [EA portalını](https://ea.azure.com) kullanmalıdır. Salt okuma erişimli Kuruluş Yöneticileri de verileri alabilir.
-
-Bu verilerin [Kurumsal müşteriler için Raporlama API’leri - Kullanım Ayrıntıları](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail)’nda sağlanmadığını unutmayın.
+Yeni verileri almak için [Kullanım Ayrıntıları API’sini](/rest/api/consumption/usagedetails/list) çağırırsınız. Terminolojiyle ilgili ayrıntılar için bkz. [Kullanım terimleri](../understand/understand-usage.md).
 
 Aşağıda örnek bir Kullanım Ayrıntıları API’si çağrısı verilmiştir:
 
@@ -87,7 +85,7 @@ Aşağıdaki tabloda verilen ölçüm ve filtre bilgileri yaygın rezervasyon so
 
 ## <a name="download-the-usage-csv-file-with-new-data"></a>Yeni verileri içeren kullanım CSV dosyasını indirme
 
-EA yöneticisiyseniz yeni kullanım verilerini içeren CSV dosyasını Azure portalından indirebilirsiniz. Bu verilere EA portalından erişilemez (ea.azure.com). Yeni verileri görmek için Azure portalından (portal.azure.com) kullanım dosyasını indirmeniz gerekir.
+EA yöneticisiyseniz, Azure portal yeni kullanım verilerini içeren CSV dosyasını indirebilirsiniz. Bu verilere EA portalından erişilemez (ea.azure.com). Yeni verileri görmek için Azure portalından (portal.azure.com) kullanım dosyasını indirmeniz gerekir.
 
 Azure portalında [Maliyet yönetimi + faturalama](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts)'ya gidin.
 
@@ -150,7 +148,7 @@ Rezervasyon maliyetleri, [maliyet analizinde](https://aka.ms/costanalysis) kulla
 
 Kullanımın, satın almaların ve para iadelerinin dökümünü görmek için ücret türüne göre gruplandırın; rezervasyon ve isteğe bağlı maliyetlerin dökümü için rezervasyona göre gruplandırın. Gerçek maliyete baktığınızda göreceğiniz tek rezervasyon maliyetinin satın almalar olduğunu unutmayın. Ayrıca, amorti edilmiş maliyete baktığınızda maliyetler avantajı kullanan ayrı kaynaklara ayrılmış olacaktır. Amorti edilmiş maliyete baktığınızda bir de yeni **UnusedReservation** ücret türünü görürsünüz.
 
-## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bizimle iletişim kurun
 
 Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/17/2018
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: 5aa64671cddf2542972ac753c0132a5abebaebfb
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8ed57cd39580474925e781f3ec8fb05a2299a937
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "67188585"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98701653"
 ---
 Diskleri teslim ettikten sonra, Azure portal **içeri/dışarı aktarma** sayfasına geri dönün. 
 
@@ -24,6 +24,6 @@ Diskleri teslim ettikten sonra, Azure portal **içeri/dışarı aktarma** sayfas
  
 1. İşi seçin ve tıklayın.
 2. **Sürücüler sevk edildiğinde, iş durumunu güncelleştir ve bilgileri izleme**' ye tıklayın. 
-3. **Sevk edildi olarak işaretle**onay kutusunu seçin.
-4. **Taşıyıcı** ve **izleme numarası**sağlayın.
-5. Portal panosunda işin ilerlemesini izleyin. Her iş durumunun açıklaması için, [iş durumunuzu görüntüleme](../articles/storage/common/storage-import-export-view-drive-status.md)sayfasına gidin.
+3. **Sevk edildi olarak işaretle** onay kutusunu seçin.
+4. **Taşıyıcı** ve **izleme numarası** sağlayın.
+5. Portal panosunda işin ilerlemesini izleyin. Her iş durumunun açıklaması için, [iş durumunuzu görüntüleme](../articles/import-export/storage-import-export-view-drive-status.md)sayfasına gidin.

@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 6fb17ead2546875c0f334aae322f8fb070e8f1ea
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 6634ab3521fee3062ecee465eaf6dcda80ee6ff8
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684917"
+ms.locfileid: "98699523"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL yönetilen örneği arasındaki T-SQL farklılıkları
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -277,7 +277,7 @@ Aşağıdaki seçenekler değiştirilemez:
 - `SINGLE_USER`
 - `WITNESS`
 
-Bazı `ALTER DATABASE` deyimler (örn. [kapsama ayarla](https://docs.microsoft.com/sql/relational-databases/databases/migrate-to-a-partially-contained-database?#converting-a-database-to-partially-contained-using-transact-sql)), örneğin otomatik veritabanı yedeklemesi sırasında veya bir veritabanı oluşturulduktan sonra doğru bir şekilde geçiş yapabilir. Bu durumda `ALTER DATABASE` deyimde yeniden denenmelidir. İlgili hata iletileri hakkında daha ayrıntılı bilgi edinmek için bkz. [açıklamalar bölümü](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true&tabs=sqlpool#remarks-2).
+Bazı `ALTER DATABASE` deyimler (örneğin, [kapsama ayarla](https://docs.microsoft.com/sql/relational-databases/databases/migrate-to-a-partially-contained-database?#converting-a-database-to-partially-contained-using-transact-sql)), örneğin otomatik veritabanı yedeklemesi sırasında veya bir veritabanı oluşturulduktan sonra doğru bir şekilde geçiş yapabilir. Bu durumda `ALTER DATABASE` deyimde yeniden denenmelidir. İlgili hata iletileri hakkında daha fazla bilgi için, [açıklamalar bölümüne](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true&tabs=sqlpool#remarks-2)bakın.
 
 Daha fazla bilgi için bkz. [alter database](/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options).
 
@@ -305,7 +305,7 @@ Daha fazla bilgi için bkz. [alter database](/sql/t-sql/statements/alter-databas
   - Uyarılar henüz desteklenmiyor.
   - Proxy 'ler desteklenmez.
 - EventLog desteklenmiyor.
-- SQL Aracısı işleri oluşturmak, değiştirmek veya yürütmek için kullanıcının doğrudan Azure AD sunucu sorumlusu (oturum açma) ile eşlenmesi gerekir. Doğrudan eşlenmeyen kullanıcılar, örn. SQL Aracısı işleri oluşturma, değiştirme veya yürütme haklarına sahip olan bir Azure AD grubuna ait olan kullanıcılar bu işlemleri etkili bir şekilde gerçekleştiremez. Bunun nedeni yönetilen örnek kimliğe bürünme ve [yürütme olarak yürütme kısıtlamalarıdır](#logins-and-users).
+- SQL Aracısı işleri oluşturmak, değiştirmek veya yürütmek için kullanıcının doğrudan Azure AD sunucu sorumlusuna (oturum açma) eşlenmesi gerekir. Doğrudan eşlenmeyen kullanıcılar, örneğin, SQL Aracısı işleri oluşturma, değiştirme veya yürütme haklarına sahip olan bir Azure AD grubuna ait olan kullanıcılar bu işlemleri etkili bir şekilde gerçekleştiremez. Bunun nedeni yönetilen örnek kimliğe bürünme ve [yürütme olarak yürütme kısıtlamalarıdır](#logins-and-users).
 
 Aşağıdaki SQL Aracısı özellikleri şu anda desteklenmiyor:
 
@@ -400,12 +400,12 @@ Daha fazla bilgi için bkz. [FILESTREAM](/sql/relational-databases/blob/filestre
 SQL yönetilen örneğindeki bağlantılı sunucular, sınırlı sayıda hedefi destekler:
 
 - Desteklenen hedefler SQL yönetilen örneği, SQL veritabanı, Azure SYNAPSE SQL [sunucusuz](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) ve adanmış havuzlardır ve SQL Server örnekleridir. 
-- Bağlı sunucular dağıtılmış yazılabilir işlemleri (MS DTC) desteklemez.
+- Dağıtılmış yazılabilir işlemler yalnızca yönetilen örnekler arasında mümkündür. Daha fazla bilgi için bkz. [Dağıtılmış işlemler](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview). Ancak MS DTC desteklenmez.
 - Desteklenmeyen hedefler dosya, Analysis Services ve diğer RDBMS ' dir. Azure Blob Storage 'dan `BULK INSERT` veya `OPENROWSET` Dosya içeri aktarma için alternatif olarak veya [Azure SYNAPSE Analytics 'te SUNUCUSUZ bir SQL havuzu](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)kullanarak dosyaları yüklemeden yerel CSV içeri aktarmayı kullanmayı deneyin.
 
 İşlemler: 
 
-- Çapraz örnek yazma işlemleri desteklenmez.
+- [Çapraz örnek](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview) yazma Işlemleri yalnızca yönetilen örnekler için desteklenir.
 - `sp_dropserver` , bağlı bir sunucunun atılması için desteklenir. Bkz. [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
 - `OPENROWSET`İşlevi yalnızca SQL Server örneklerinde sorgu yürütmek için kullanılabilir. Bunlar yönetilen, şirket içi veya sanal makinelerde olabilir. Bkz. [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql).
 - `OPENDATASOURCE`İşlevi yalnızca SQL Server örneklerinde sorgu yürütmek için kullanılabilir. Bunlar yönetilen, şirket içi veya sanal makinelerde olabilir. Yalnızca `SQLNCLI` , `SQLNCLI11` ve `SQLOLEDB` değerleri sağlayıcı olarak desteklenir. `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee` bunun bir örneğidir. Bkz. [opendatasource](/sql/t-sql/functions/opendatasource-transact-sql).
@@ -413,7 +413,7 @@ SQL yönetilen örneğindeki bağlantılı sunucular, sınırlı sayıda hedefi 
 
 ### <a name="polybase"></a>PolyBase
 
-Mevcut dış kaynak türleri, Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE havuzu için RDBMS 'dir (genel önizlemede). [SYNAPSE Analytics 'te sunucusuz SQL havuzuna başvuran bir dış tabloyu](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/) , doğrudan Azure Storage 'Dan okuyan PolyBase dış tabloları için geçici bir çözüm olarak kullanabilirsiniz. Azure SQL yönetilen örneği 'nde, bağlı sunucuları [SYNAPSE Analytics 'te sunucusuz BIR SQL havuzunda](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) veya Azure depolama verilerini okumak için SQL Server kullanabilirsiniz.
+Mevcut dış kaynak türü, Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE havuzu için RDBMS 'dir (genel önizlemede). [SYNAPSE Analytics 'te sunucusuz SQL havuzuna başvuran bir dış tablo](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/) kullanarak doğrudan Azure Storage 'Dan okuyan PolyBase dış tabloları için geçici bir çözüm oluşturabilirsiniz. Azure SQL yönetilen örneği 'nde, bağlı sunucuları [SYNAPSE Analytics 'te sunucusuz BIR SQL havuzunda](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) veya Azure depolama verilerini okumak için SQL Server kullanabilirsiniz.
 PolyBase hakkında daha fazla bilgi için bkz. [PolyBase](/sql/relational-databases/polybase/polybase-guide).
 
 ### <a name="replication"></a>Çoğaltma

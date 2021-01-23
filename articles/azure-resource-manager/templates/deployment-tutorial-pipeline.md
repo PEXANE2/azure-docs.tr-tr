@@ -4,12 +4,12 @@ description: Azure Resource Manager şablonlarını sürekli oluşturma, test et
 ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8e9f047497f493752947d8115084dcfe86f5e040
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: e7e2cda0524e4d754fbf879c046fee2d43c44cb3
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588140"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98701720"
 ---
 # <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>Öğretici: Azure Pipelines ile ARM şablonlarının sürekli tümleştirilmesi
 
@@ -39,12 +39,12 @@ Bu makaleyi tamamlamak için gerekenler:
 
 * Şablonunuz için bir depo oluşturmak üzere kullandığınız **bir GitHub hesabı**. Microsoft hesabınız yoksa [ücretsiz olarak oluşturabilirsiniz](https://github.com). GitHub depoları kullanma hakkında daha fazla bilgi için bkz. [GitHub depoları oluşturma](/azure/devops/pipelines/repos/github).
 * **Git 'ı yükler**. Bu öğretici yönergesi, *Git Bash* veya *Git kabuğu* kullanır. Yönergeler için bkz. [Git 'ı Install](https://www.atlassian.com/git/tutorials/install-git).
-* **Azure DevOps organizasyonu**. Microsoft hesabınız yoksa ücretsiz olarak oluşturabilirsiniz. Bkz. [kuruluş veya proje koleksiyonu oluşturma](/azure/devops/organizations/accounts/create-organization?view=azure-devops).
+* **Azure DevOps organizasyonu**. Microsoft hesabınız yoksa ücretsiz olarak oluşturabilirsiniz. Bkz. [kuruluş veya proje koleksiyonu oluşturma](/azure/devops/organizations/accounts/create-organization).
 * seçim **Kaynak Yöneticisi Araçları uzantısı ile Visual Studio Code**. Bkz. [hızlı başlangıç: VISUAL STUDIO Code ARM şablonları oluşturma](quickstart-create-templates-use-visual-studio-code.md).
 
 ## <a name="prepare-a-github-repository"></a>GitHub deposu hazırlama
 
-GitHub, Kaynak Yöneticisi şablonları dahil olmak üzere proje kaynak kodunuzu depolamak için kullanılır. Desteklenen diğer depolar için bkz. [Azure DevOps tarafından desteklenen depolar](/azure/devops/pipelines/repos/?view=azure-devops).
+GitHub, Kaynak Yöneticisi şablonları dahil olmak üzere proje kaynak kodunuzu depolamak için kullanılır. Desteklenen diğer depolar için bkz. [Azure DevOps tarafından desteklenen depolar](/azure/devops/pipelines/repos/).
 
 ### <a name="create-a-github-repository"></a>GitHub deposu oluşturma
 
@@ -183,7 +183,7 @@ Bu aşamada, aşağıdaki görevleri tamamladınız.  GitHub ve DevOps hakkında
 
     ![Ekran görüntüsü, gerekli değerler girilen ARM şablonu dağıtım sayfasını gösterir.](./media/deployment-tutorial-pipeline/resource-manager-template-pipeline-configure.png)
 
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**’yi seçin.
 
     Görev hakkında daha fazla bilgi için bkz. [Azure Kaynak grubu dağıtım görevi](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)ve [Azure Resource Manager şablonu Dağıtım görevi](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md)
 

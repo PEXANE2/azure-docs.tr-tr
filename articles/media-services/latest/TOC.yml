@@ -258,14 +258,49 @@
               href: job-error-codes.md
         - name: Hesap kimlik bilgilerini sıfırlama
           href: cli-reset-account-credentials.md
-    - name: v2’den v3’e geçiş
+    - name: Geçiş kılavuzu
+      displayName: migration
       items:
-        - name: v2 ile v3 karşılaştırması
-          displayName: 'migrate, v2 to v3'
-          href: media-services-v2-vs-v3.md
-        - name: Geçiş kılavuzu
-          href: migrate-from-v2-to-v3.md
-          displayName: naming
+        - name: Geçiş Kılavuzu tanıtımı
+          href: migrate-v-2-v-3-migration-introduction.md
+          displayName: migration
+        - name: 1. adım-avantajlar
+          href: migrate-v-2-v-3-migration-benefits.md
+          displayName: 'migration, benefits'
+        - name: 2. adım-farklar
+          items:
+            - name: API erişimi
+              href: migrate-v-2-v-3-differences-api-access.md
+              displayName: 'migration, api'
+            - name: Özellik boşlukları
+              href: migrate-v-2-v-3-differences-feature-gaps.md
+              displayName: 'migration, features'
+            - name: Terminoloji ve varlık değişiklikleri
+              href: migrate-v-2-v-3-differences-terminology.md
+              displayName: 'migration, entity, api'
+        - name: 3. adım-SDK kurulumu
+          href: migrate-v-2-v-3-migration-setup.md
+          displayName: 'migration, SDK`'
+        - name: 4. adım-senaryo tabanlı geçiş kılavuzu
+          items:
+            - name: Encoding
+              href: migrate-v-2-v-3-migration-scenario-based-encoding.md
+              displayName: 'migration, encoding'
+            - name: Canlı akış
+              href: migrate-v-2-v-3-migration-scenario-based-live-streaming.md
+              displayName: 'migration, live streaming'
+            - name: Paketleme ve teslim
+              href: migrate-v-2-v-3-migration-scenario-based-publishing.md
+              displayName: 'migration, packaging, delivery, publishing'
+            - name: İçerik koruma
+              href: migrate-v-2-v-3-migration-scenario-based-content-protection.md
+              displayName: 'migration, content protection, DRM, digital rights management'
+            - name: Medya ayrılmış birimleri (MRU)
+              href: migrate-v-2-v-3-migration-scenario-based-media-reserved-units.md
+              displayName: 'migration, media reserved units'
+        - name: Örnek karşılaştırma
+          href: migrate-v-2-v-3-migration-samples.md
+          displayName: 'migration, samples'
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Varlıkları oluşturma ve medyayı karşıya yükleme
@@ -408,7 +443,7 @@
           href: /python/api/overview/azure/mediaservices/management
         - name: Node.js
           href: /javascript/api/overview/azure/mediaservices/management
-        - name: Go
+        - name: Başlayın
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.media/allversions

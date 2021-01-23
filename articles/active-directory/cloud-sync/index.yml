@@ -1,0 +1,50 @@
+### YamlMime:Landing
+title: Azure AD Connect bulut eşitleme belgeleri
+summary: Azure AD Connect bulut eşitleme, bu kullanıcıları mevcut AD ormanlarından eşitlemeye yönelik bulut tarafından yönetilen kurallar aracılığıyla Azure AD kullanıcılarının yönetimini basitleştirmeye ve otomatikleştirmenize yardımcı olur.
+metadata:
+  author: billmath
+  description: Bulut eşitleme, bu kullanıcıları mevcut AD ormanlarından eşitlemeye yönelik bulut tarafından yönetilen kurallar aracılığıyla Azure AD kullanıcılarının yönetimini basitleştirmeye ve otomatikleştirmenize yardımcı olur.
+  ms.author: billmath
+  ms.collection: na
+  ms.date: 09/05/2019
+  ms.service: active-directory
+  ms.subservice: na
+  ms.topic: landing-page
+  services: active-directory
+  ms.openlocfilehash: 52032c39e77fb4ebd6488f25d660428ba59dfbd3
+  ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+  ms.translationtype: MT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 01/20/2021
+  ms.locfileid: "98611788"
+landingContent:
+- title: Bulut eşitleme hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure AD Connect bulut eşitlemesi nedir?
+      url: what-is-cloud-sync.md
+- title: Kullanıcılarınızın ve gruplarınızın yaşam döngüsünü yönetmek için en iyi çözümü uygulamayı öğrenin
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Tek bir AD ormanını tek bir Azure AD kiracısı ile tümleştirme
+      url: tutorial-single-forest.md
+    - text: Mevcut bir ormanı ve yeni bir ormanı tek bir Azure AD kiracısı ile tümleştirme
+      url: tutorial-existing-forest.md
+    - text: Mevcut eşitlenmiş bir AD Ormanı için pilot bulut eşitlemesi
+      url: tutorial-pilot-aadc-aadccp.md
+- title: Bulut eşitleme ile çalışmaya başlama
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure AD Connect bulut eşitleme önkoşulları
+      url: how-to-prerequisites.md
+    - text: Azure AD Connect bulut eşitlemesini yükler
+      url: how-to-install.md
+    - text: Azure AD Connect sağlama Aracısı yapılandırması
+      url: how-to-configure.md
+  - linkListType: reference
+    links:
+    - text: Desteklenen topolojiler ve senaryolar
+      url: plan-cloud-sync-topologies.md

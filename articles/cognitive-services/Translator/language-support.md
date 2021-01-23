@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 60da61d094316b29c8fbc5454472bb898d693937
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e8e54a97c13a69fce2e80676fa68d6d795736a83
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681592"
+ms.locfileid: "98703131"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Metin ve konuşma çevirisi için dil ve bölge desteği
 
@@ -194,6 +194,7 @@ Alfabede bulunan yöntem aşağıdaki dilleri destekler. "To/from", "<-->", dili
 | Dil    | Dil kodu | Komut Dosyası | Hedef/Kaynak | Komut Dosyası|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | Arapça | `ar` | Arapça `Arab` | <--> | Tin `Latn` |
+| Assam | `as` | Bengali `Beng` | <--> | Tin `Latn` |
 | Bangla  | `bn` | Bengali `Beng` | <--> | Tin `Latn` |
 |Beyaz Rusça| `be` | V `Cyrl`  | <--> | Tin `Latn` |
 |Bulgarca| `bg` | V `Cyrl`  | <--> | Tin `Latn` |
@@ -208,6 +209,7 @@ Alfabede bulunan yöntem aşağıdaki dilleri destekler. "To/from", "<-->", dili
 | Japonca | `ja` | Japonca `Jpan` | <--> | Tin `Latn` |
 | Kannada dili | `kn` | Kannada dili `Knda` | <--> | Tin `Latn` |
 |Kazakça| `kk` | V `Cyrl`  | <--> | Tin `Latn` |
+|Korece| `ko` | Kore dili `Kore`  | <--> | Tin `Latn` |
 |Kırgızca| `ky` | V `Cyrl`  | <--> | Tin `Latn` |
 |CA| `mk` | V `Cyrl`  | <--> | Tin `Latn` |
 | Malayalam dili | `ml` | Malayalam dili `Mlym` | <--> | Tin `Latn` |
@@ -220,6 +222,7 @@ Alfabede bulunan yöntem aşağıdaki dilleri destekler. "To/from", "<-->", dili
 | Sırpça (Kiril) | `sr-Cyrl` | V `Cyrl`  | --> | Tin `Latn` |
 | Sırpça (Latin) | `sr-Latn` | Tin `Latn` | --> | V `Cyrl`|
 |Di| `sd` | Arapça `Arab`  | <--> | Tin `Latn` |
+|Sinhali| `si` | Sinhali `Sinh`  | <--> | Tin `Latn` |
 |İK| `tg` | V `Cyrl`  | <--> | Tin `Latn` |
 | Tamil dili | `ta` | Tamil dili `Taml` | <--> | Tin `Latn` |
 |Tatarca| `tt` | V `Cyrl`  | <--> | Tin `Latn` |

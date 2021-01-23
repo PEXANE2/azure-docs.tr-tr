@@ -6,20 +6,20 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: d04a5c0e53e9a5db8bba03a5a9e9d95b87a8b5a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 940b7ac90f85e0254d59459b70ccc15312cd69f4
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85855673"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98700848"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-storage-gen1"></a>Azure Içeri/dışarı aktarma hizmetini kullanarak verilerin çevrimdışı kopyası Data Lake Storage 1.
 
-Bu makalede, [Azure içeri/dışarı aktarma hizmeti](../storage/common/storage-import-export-service.md)gibi çevrimdışı kopyalama yöntemlerini kullanarak çok büyük veri kümelerini (>200 GB) Data Lake Storage 1. nasıl kopyalayacağınızı öğreneceksiniz. Özellikle, bu makalede örnek olarak kullanılan dosya 339.420.860.416 bayttır veya diskte 319 GB olur. Bu dosyayı 319GB. tsv dosyasına arayalım.
+Bu makalede, [Azure içeri/dışarı aktarma hizmeti](../import-export/storage-import-export-service.md)gibi çevrimdışı kopyalama yöntemlerini kullanarak çok büyük veri kümelerini (>200 GB) Data Lake Storage 1. nasıl kopyalayacağınızı öğreneceksiniz. Özellikle, bu makalede örnek olarak kullanılan dosya 339.420.860.416 bayttır veya diskte 319 GB olur. Bu dosyayı 319GB. tsv dosyasına arayalım.
 
 Azure Içeri/dışarı aktarma hizmeti, sabit disk sürücülerinizi bir Azure veri merkezine aktararak Azure Blob depolama alanına büyük miktarlarda veri aktarmanıza yardımcı olur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
@@ -44,7 +44,7 @@ Bölünen işlem, aşağıdaki adlara sahip dosyaları oluşturur.
 
 ## <a name="get-disks-ready-with-data"></a>Verilerle çalışmaya yönelik diskleri Al
 
-Sabit sürücülerinizi hazırlamak için [Azure içeri/dışarı aktarma hizmetini](../storage/common/storage-import-export-service.md) ( **sürücülerinizi hazırlama** bölümünde) kullanma bölümündeki yönergeleri izleyin. Genel sıra:
+Sabit sürücülerinizi hazırlamak için [Azure içeri/dışarı aktarma hizmetini](../import-export/storage-import-export-service.md) ( **sürücülerinizi hazırlama** bölümünde) kullanma bölümündeki yönergeleri izleyin. Genel sıra:
 
 1. Azure Içeri/dışarı aktarma hizmeti için kullanılacak gereksinimi karşılayan bir sabit disk temin edin.
 2. Verilerin Azure veri merkezine gönderildikten sonra kopyalanacağı bir Azure depolama hesabı belirler.
@@ -53,12 +53,12 @@ Sabit sürücülerinizi hazırlamak için [Azure içeri/dışarı aktarma hizmet
     ```
     WAImportExport PrepImport /sk:<StorageAccountKey> /t: <TargetDriveLetter> /format /encrypt /logdir:e:\myexportimportjob\logdir /j:e:\myexportimportjob\journal1.jrn /id:myexportimportjob /srcdir:F:\demo\ExImContainer /dstdir:importcontainer/vf1/
     ```
-    Daha fazla örnek kod parçacığı için bkz. [Azure içeri/dışarı aktarma hizmetini kullanma](../storage/common/storage-import-export-service.md) .
+    Daha fazla örnek kod parçacığı için bkz. [Azure içeri/dışarı aktarma hizmetini kullanma](../import-export/storage-import-export-service.md) .
 4. Yukarıdaki komut, belirtilen konumda bir günlük dosyası oluşturur. [Azure Portal](https://portal.azure.com)bir içeri aktarma işi oluşturmak için bu günlük dosyasını kullanın.
 
 ## <a name="create-an-import-job"></a>İçeri aktarma işi oluşturma
 
-Artık [Azure içeri/dışarı aktarma hizmetini](../storage/common/storage-import-export-service.md) ( **Içeri aktarma işi oluşturma** bölümünde) kullanarak bir içeri aktarma işi oluşturabilirsiniz. Bu içeri aktarma işi için, diğer ayrıntılarla birlikte disk sürücüleri hazırlanırken oluşturulan günlük dosyasını da belirtin.
+Artık [Azure içeri/dışarı aktarma hizmetini](../import-export/storage-import-export-service.md) ( **Içeri aktarma işi oluşturma** bölümünde) kullanarak bir içeri aktarma işi oluşturabilirsiniz. Bu içeri aktarma işi için, diğer ayrıntılarla birlikte disk sürücüleri hazırlanırken oluşturulan günlük dosyasını da belirtin.
 
 ## <a name="physically-ship-the-disks"></a>Diskleri fiziksel olarak teslim edin
 

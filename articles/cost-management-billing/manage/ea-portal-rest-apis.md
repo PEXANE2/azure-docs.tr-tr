@@ -3,17 +3,17 @@ title: Azure Kurumsal REST API'leri
 description: Bu makalede Azure kurumsal kaydınızla kullanılabilecek REST API'ler açıklanır.
 author: bandersmsft
 ms.author: banders
-ms.date: 09/03/2020
+ms.date: 01/21/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: c4c99142c64278514066efa8925ed8e3f6617235
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
-ms.translationtype: HT
+ms.openlocfilehash: 1fdf64053a55eb33d80ed461c231e8c6dd84d63b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132593"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677740"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Azure Kurumsal REST API'leri
 
@@ -93,17 +93,9 @@ Bir API kullanırken yanıt durum kodları gösterilir. Aşağıdaki tabloda bun
 
 Kullanım ve faturalama veri dosyaları, geçerli faturalama ayı için her 24 saatte bir güncelleştirilir. Öte yandan üç güne kadar veri gecikmesi oluşabilir. Örneğin kullanım Pazartesi günü tahakkuk ettiyse veriler Perşembe gününe kadar veri dosyasında görüntülenmeyebilir.
 
-### <a name="test-enrollment-for-development"></a>Geliştirme için test kaydı
-
-Azure kurumsal kaydı olmayan bir iş ortağı veya geliştiriciyseniz ve API'ye erişmek istiyorsanız test kaydını kullanabilirsiniz. Kayıt adı _EnrollmentNumber 100_ şeklindedir ve kullanım bilgilerini Haziran 2018'e kadar bulup test edebilirsiniz. Daha sonra API'yi çağırmak ve örnek verileri görmek için aşağıdaki anahtarı kullanabilirsiniz.
-
-```
-eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImpoeXA2UU9DWlZmY1pmdmhDVGR1OFdxeTJ5byJ9.eyJFbnJvbGxtZW50TnVtYmVyIjoiMTAwIiwiSWQiOiI1ZTc2ZmNiMy0xN2I4LTQ5ZDItYjdkOC0zMDU0YjUwOWY0MWYiLCJSZXBvcnRWaWV3IjoiU3lzdGVtIiwiUGFydG5lcklkIjoiIiwiRGVwYXJ0bWVudElkIjoiIiwiQWNjb3VudElkIjoiIiwiaXNzIjoiZWEubWljcm9zb2Z0YXp1cmUuY29tIiwiYXVkIjoiY2xpZW50LmVhLm1pY3Jvc29mdGF6dXJlLmNvbSIsImV4cCI6MTU4NjM5MDA2OSwibmJmIjoxNTcwNTc4ODY5fQ.lENR5pCBph6iZCVexUlN1b-j7StaILCyBewVHoILD-_fn8S2o2bHY1qUseGOkBwNlaFQfk2OZIo-jQYvnf3eP3UNrNVTCINT0APbc1RqgwSjZSxugVVHH9jnSzEjONkJaSKmi4tlidk6zkF1-uY-TPJkKxYN_9ar7BgLshF9JGXk7t8OZhxSCxDZc-smntu6ORFDl4gRZZVBKXhqOGjOAdYX5tPiGDF2Bxb68RSzh9Xyr5PXxKLx5yivZzUdo0-GFHo13V9w6a5VQM4R1w4_ro8jF8WAo3mpGZ_ovx_U5IY6zMNmi_AoA1mUyvTGotgcu94RragutoJRxAGHbNJZ0Q
-```
-
 ### <a name="azure-service-catalog"></a>Azure hizmet kataloğu
 
-Tüm Azure hizmetleri bir Azure depolama blogunda CSV biçimindeki bir kataloğa gönderilir. Sisteminiz için tüm Azure hizmetlerinin seçmeli bir kataloğunu oluşturmanız gerekiyorsa bu katalog yararlı olur. Geçerli katalog [https://azurecatalog.blob.core.windows.net/catalog/AzureCatalog.csv](https://azurecatalog.blob.core.windows.net/catalog/AzureCatalog.csv) konumundadır.
+Tüm Azure hizmetleri bir Azure depolama blogunda CSV biçimindeki bir kataloğa gönderilir. Sisteminiz için tüm Azure hizmetlerinin seçmeli bir kataloğunu oluşturmanız gerekiyorsa bu katalog yararlı olur. Geçerli katalog [https://azurecatalog.blob.core.windows.net/catalog/AzureCatalog.csv](https://azurecatalog.blob.core.windows.net/catalog/AzureCatalog.csv) .
 
 ### <a name="csv-data-file-details"></a>CSV veri dosyası ayrıntıları
 
@@ -113,12 +105,12 @@ Aşağıdaki bilgilerde API raporlarının özellikleri açıklanır.
 
 CSV raporundan JSON biçimi oluşturulur. Sonuç olarak bu biçim özet CSV biçimiyle aynıdır. Sütun adı korunur, dolayısıyla JSON özet verilerini kullanırken bir veri tablosunda seri durumdan çıkarmanız gerekir.
 
-| CSV sütun adı | JSON sütun adı | JSON yeni sütunu | Açıklama |
+| CSV sütun adı | JSON sütun adı | JSON yeni sütunu | Yorum |
 | --- | --- | --- | --- |
 | AccountOwnerId | AccountOwnerLiveId | AccountOwnerLiveId |   |
 | Hesap Adı | AccountName | AccountName |   |
-| HizmetYöneticisiKimliği | ServiceAdministratorLiveId | ServiceAdministratorLiveId |   |
-| kaynak grubundaki | kaynak grubundaki | kaynak grubundaki |   |
+| ServiceAdministratorId | ServiceAdministratorLiveId | ServiceAdministratorLiveId |   |
+| SubscriptionId | SubscriptionId | SubscriptionId |   |
 | SubscriptionGuid | MOCPSubscriptionGuid | SubscriptionGuid |   |
 | Abonelik Adı | SubscriptionName | SubscriptionName |   |
 | Tarih | Tarih | Tarih | Hizmet kataloğu raporunun çalıştırıldığı tarihi gösterir. Biçimi, zaman damgası içermeyen bir tarih dizesidir. |
@@ -126,25 +118,25 @@ CSV raporundan JSON biçimi oluşturulur. Sonuç olarak bu biçim özet CSV biç
 | Gün | Gün | Gün |   |
 | Yıl | Yıl | Yıl |   |
 | Ürün | BillableItemName | Ürün |   |
-| Ölçüm Kimliği | ResourceGUID | MeterId |   |
-| Ölçüm Kategorisi | Hizmet | MeterCategory | Hizmetleri bulmaya yardımcı olmak açısından yararlıdır. Birden çok ServiceType değeri olan hizmetler için uygundur. Örneğin Sanal Makineler. |
-| Ölçüm Alt Kategorisi | ServiceType | MeterSubCategory | Hizmet için ikinci bir ayrıntı düzeyi sağlar. Örneğin A1 VM (Windows Dışı).  |
-| Ölçüm Bölgesi | ServiceRegion | MeterRegion | Hizmet için gereken üçüncü ayrıntı düzeyi. ResourceGUID değerinin bölge bağlamını bulma açısından yararlıdır. |
-| Ölçüm Adı | ServiceResource | MeterName | Hizmetin adı. |
-| Kullanılan Miktar | ResourceQtyConsumed | ConsumedQuantity |   |
+| Ölçüm kimliği | ResourceGUID | MeterId |   |
+| Sayaç Kategorisi | Hizmet | MeterCategory | Hizmetleri bulmaya yardımcı olmak açısından yararlıdır. Birden çok ServiceType değeri olan hizmetler için uygundur. Örneğin Sanal Makineler. |
+| Sayaç Alt Kategorisi | ServiceType | MeterSubCategory | Hizmet için ikinci bir ayrıntı düzeyi sağlar. Örneğin A1 VM (Windows Dışı).  |
+| Tarife Bölgesi | ServiceRegion | MeterRegion | Hizmet için gereken üçüncü ayrıntı düzeyi. ResourceGUID değerinin bölge bağlamını bulma açısından yararlıdır. |
+| Sayaç Adı | ServiceResource | MeterName | Hizmetin adı. |
+| Tüketilen Miktar | ResourceQtyConsumed | ConsumedQuantity |   |
 | ResourceRate | ResourceRate | ResourceRate |   |
 | ExtendedCost | ExtendedCost | ExtendedCost |   |
 | Kaynak Konumu | ServiceSubRegion | ResourceLocation |   |
-| Kullanılan Hizmet | ServiceInfo | ConsumedService |   |
+| Tüketim Hizmeti | ServiceInfo | ConsumedService |   |
 | Örnek Kimliği | Bileşen | InstanceId |   |
 | ServiceInfo1 | ServiceInfo1 | ServiceInfo1 |   |
 | ServiceInfo2 | ServiceInfo2 | ServiceInfo2 |   |
 | AdditionalInfo | AdditionalInfo | AdditionalInfo |   |
 | Etiketler | Etiketler | Etiketler |   |
-| DepolamaHizmetiTanımlayıcısı   | OrderNumber | StoreServiceIdentifier   |   |
+| Depolama Hizmeti Tanımlayıcısı   | OrderNumber | StoreServiceIdentifier   |   |
 | Bölüm Adı | DepartmentName | DepartmentName |   |
 | Maliyet Merkezi | CostCenter | CostCenter |   |
-| Ölçü Birimi | UnitOfMeasure | UnitOfMeasure | Örnek değerler: Saatler, GB, Olaylar, Gönderimler, Birim, Birim Saatleri, MB, Günlük Birimler |
+| Ölçü Birimi | UnitOfMeasure | UnitOfMeasure | Örnek değerler: saatler, GB, olaylar, gönderim, birim, Birim Saatleri, MB, günlük birimler |
 | adlı yönetilen örnek, | adlı yönetilen örnek, | adlı yönetilen örnek, |   |
 
 #### <a name="azure-marketplace-report"></a>Azure Market raporu
@@ -153,18 +145,18 @@ CSV raporundan JSON biçimi oluşturulur. Sonuç olarak bu biçim özet CSV biç
 | --- | --- | --- |
 | AccountOwnerId | AccountOwnerId | AccountOwnerId |
 | Hesap Adı | AccountName | AccountName |
-| kaynak grubundaki | kaynak grubundaki | kaynak grubundaki |
+| SubscriptionId | SubscriptionId | SubscriptionId |
 | SubscriptionGuid | SubscriptionGuid | SubscriptionGuid |
 | Abonelik Adı | SubscriptionName |  SubscriptionName |
 | Tarih | BillingCycle |  Date (Yalnızca Tarih Dizesi. Zaman damgası yok)
 | Ay | Ay |  Ay |
 | Gün | Gün |  Gün |
 | Yıl | Yıl |  Yıl |
-| Ölçüm Kimliği | MeterResourceId |  MeterId |
+| Ölçüm kimliği | MeterResourceId |  MeterId |
 | Yayımcı Adı | PublisherFriendlyName |  PublisherName |
 | Teklif Adı | OfferFriendlyName |  OfferName |
 | Plan Adı | PlanFriendlyName |  PlanName |
-| Kullanılan Miktar | BilledQty |  ConsumedQuantity |
+| Tüketilen Miktar | BilledQty |  ConsumedQuantity |
 | ResourceRate | ResourceRate | ResourceRate |
 | ExtendedCost | ExtendedCost | ExtendedCost |
 | Ölçü Birimi | UnitOfMeasure | UnitOfMeasure |
@@ -178,7 +170,7 @@ CSV raporundan JSON biçimi oluşturulur. Sonuç olarak bu biçim özet CSV biç
 
 #### <a name="price-sheet"></a>Fiyat listesi
 
-| CSV sütun adı | JSON sütun adı | Açıklama |
+| CSV sütun adı | JSON sütun adı | Yorum |
 | --- | --- | --- |
 | Hizmet | Hizmet |  Fiyatta değişiklik yok |
 | Ölçü Birimi | UnitOfMeasure |   |

@@ -1,0 +1,88 @@
+- name: Bulut eşitleme
+  href: index.yml
+- name: Genel Bakış
+  items:
+    - name: Kimlik sağlama nedir?
+      href: what-is-provisioning.md
+    - name: Azure AD Connect bulut eşitlemesi nedir?
+      href: what-is-cloud-sync.md
+      maintainContext: true
+- name: Öğreticiler
+  expanded: true
+  items:
+    - name: Tek bir AD ormanını tek bir Azure AD kiracısı ile tümleştirme
+      href: tutorial-single-forest.md
+    - name: Mevcut bir ormanı ve yeni bir ormanı tek bir Azure AD kiracısı ile tümleştirme
+      href: tutorial-existing-forest.md
+    - name: Mevcut eşitlenmiş bir AD Ormanı için pilot bulut eşitlemesi
+      href: tutorial-pilot-aadc-aadccp.md
+- name: Kavramlar
+  items:
+    - name: Nasıl çalışır?
+      href: concept-how-it-works.md
+    - name: Parola karması eşitleme nedir?
+      href: ../hybrid/whatis-phs.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcloud-provisioning-context
+    - name: 'Azure AD şemasını, özniteliklerini ve ifadelerini anlama'
+      href: concept-attributes.md
+    - name: Azure Active Directory’de Öznitelik Eşlemeleri için İfadeler Yazma
+      href: reference-expressions.md
+- name: Nasıl yapılır kılavuzları
+  items:
+    - name: Yükleme ve yükseltme
+      items:
+        - name: Yükleme Önkoşulları
+          href: how-to-prerequisites.md
+        - name: Azure AD Connect bulut sağlama aracısını yükleme
+          href: how-to-install.md
+        - name: Bulut eşitleme yapılandırması
+          href: how-to-configure.md
+        - name: İsteğe bağlı sağlama
+          href: how-to-on-demand-provision.md
+        - name: Öznitelik eşlemesi
+          href: how-to-attribute-mapping.md
+        - name: Çoklu Oturum Açma Kullanma
+          href: how-to-sso.md
+    - name: Planlama ve tasarım
+      items:
+        - name: Azure AD Connect bulut eşitlemesi için topolojiler ve senaryolar
+          href: plan-cloud-sync-topologies.md
+    - name: Yönetme
+      items:
+        - name: Aracıyı otomatik yükseltme
+          href: how-to-automatic-upgrade.md
+        - name: Yanlışlıkla silme
+          href: how-to-accidental-deletes.md
+        - name: Aracı kayıt seçenekleri
+          href: how-to-manage-registry-options.md
+        - name: Aracı gMSA PowerShell cmdlet 'leri
+          href: how-to-gmsa-cmdlets.md
+        - name: PowerShell kullanarak sağlama aracısını yükler
+          href: how-to-install-pshell.md
+    - name: Geliştirme
+      items:
+        - name: Dönüşümler
+          href: how-to-transformation.md
+        - name: MS Graph API’siyle gelen eşitleme
+          href: how-to-inbound-synch-ms-graph.md
+        - name: Azure AD eşitleme API’si
+          href: /graph/api/resources/synchronization-overview
+    - name: Sorun giderme
+      items:
+        - name: Bulut eşitleme sorunlarını giderme
+          href: how-to-troubleshoot.md
+        - name: Yinelenen öznitelikler
+          href: ../hybrid/how-to-connect-syncservice-duplicate-attribute-resiliency.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
+- name: Başvuru
+  items:
+    - name: Azure AD Connect bulut sağlama aracısı sürüm geçmişi
+      href: reference-version-history.md
+    - name: Azure AD Connect bulut eşitleme hakkında SSS
+      href: reference-cloud-sync-faq.md
+    - name: AADCloudSyncTools PowerShell Module
+      href: reference-powershell.md
+    - name: Eşitlenen öznitelikler
+      href: ../hybrid/reference-connect-sync-attributes-synchronized.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
+    - name: Hata kodları ve açıklamaları
+      href: reference-error-codes.md
+    - name: Temel Active Directory ve Azure AD ortamı
+      href: tutorial-basic-ad-azure.md

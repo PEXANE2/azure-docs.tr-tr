@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
-ms.openlocfilehash: 4a9a6b61e392ed2efd68cdcb1cf7e53d6bde5ccd
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 8d984a303234a24423ceae100bd139cb484d6495
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249746"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702794"
 ---
 # <a name="estimate-and-manage-capacity-of-an-azure-cognitive-search-service"></a>Azure Bilişsel Arama hizmetinin kapasitesini tahmin edin ve yönetin
 
 Belirli bir fiyatlandırma katmanında [bir arama hizmeti](search-create-service-portal.md) ve kilitlemeyi sağlamadan önce, kapasitenin nasıl çalıştığını ve iş yükü dalgalanmasına uyum sağlamak için çoğaltmaları ve bölümleri nasıl ayarlayabileceğinizi anlamak için birkaç dakikanızı yararlanın.
 
-Kapasite, [hizmet katmanının](search-sku-tier.md)bir işlevidir. Katmanlar, en fazla depolama, bölüm başına depolama ve oluşturabileceğiniz nesne sayısı için en fazla sınıra göre farklılaştırılabilir. Temel katman, bir yüksek kullanılabilirlik yapılandırmasında (3 çoğaltma) çalışma olanağı sunan uygulamalar için tasarlanmıştır. Diğer katmanlar, çok kiracılı gibi belirli iş yükleri veya desenler için tasarlanmıştır. Dahili olarak, bu katmanlarda oluşturulan hizmetler bu senaryolara yardımcı olan donanımdan faydalanır.
+Kapasite, [hizmet katmanının](search-sku-tier.md)bir işlevidir, hizmet başına en fazla depolama alanı, bölüm başına ve oluşturabileceğiniz nesne sayısı üst sınırı. Temel katman, bir yüksek kullanılabilirlik yapılandırmasında (3 çoğaltma) çalışma olanağı sunan uygulamalar için tasarlanmıştır. Diğer katmanlar, çok kiracılı gibi belirli iş yükleri veya desenler için tasarlanmıştır. Dahili olarak, bu katmanlarda oluşturulan hizmetler bu senaryolara yardımcı olan donanımdan faydalanır.
 
 Azure Bilişsel Arama 'de ölçeklenebilirlik mimarisi, daha fazla sorgu veya dizin oluşturma gücü olmasına bağlı olarak kapasiteyi değiştirebilmeniz için çoğaltmaların ve bölümlerin esnek birleşimlerine dayanır. Bir hizmet oluşturulduktan sonra çoğaltma veya bölümlerin sayısını bağımsız olarak artırabilir veya azaltabilirsiniz. Maliyetler her ek fiziksel kaynakla çalışmaya devam eder, ancak büyük iş yükleri tamamlandığında faturanızı düşürmek için ölçeği azaltabilirsiniz. Katmana ve ayarlamanın boyutuna bağlı olarak, kapasite ekleme veya azaltma, 15 dakikadan birkaç saate kadar herhangi bir zaman alabilir.
 

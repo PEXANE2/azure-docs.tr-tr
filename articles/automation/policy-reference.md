@@ -1,15 +1,15 @@
 ---
 title: Azure Otomasyonu için yerleşik ilke tanımları
 description: Azure Otomasyonu için Azure Ilkesi yerleşik ilke tanımlarını listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızı yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 1e69f82ee48eb67b2b749d895483d35da91dbbde
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 0675ceffec064cac38e1a38a1dd68371df8c547e
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049409"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98700448"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-automation"></a>Azure Otomasyonu için Azure Ilkesi yerleşik tanımları
 

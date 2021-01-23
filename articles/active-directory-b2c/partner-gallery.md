@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9aca01bae7911d2b6234d48bedc14b116e911a79
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 6af68f51e76f60c807be2008ae61e27879ebbb11
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675393"
+ms.locfileid: "98703216"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV iş ortakları
 
@@ -40,7 +40,6 @@ Kimlik doğrulama ve sağlama için aşağıdaki ISV 'Lere sahip Microsoft iş o
 |![Bir Experian logosunun ekran görüntüsü.](./media/partner-gallery/experian-logo.png) | [Experian](./partner-experian.md) , sahtekarlık önlemek için Kullanıcı özniteliklerine dayalı risk değerlendirmeleri gerçekleştiren bir kimlik doğrulama ve sağlama sağlayıcıdır. |
 |![Bir IDology logosunun ekran görüntüsü.](./media/partner-gallery/idology-logo.png) | [IDology](./partner-idology.md) kimlik doğrulama çözümlerini, sahtekarlık önleme çözümlerini, uyumluluk çözümlerini ve diğerlerini içeren bir kimlik doğrulama ve sağlama sağlayıcıdır.|
 |![Jumio logosunun ekran görüntüsü.](./media/partner-gallery/jumio-logo.png) | [Jumio](./partner-jumio.md) , gerçek ZAMANLı otomatik kimlik doğrulamaya izin veren ve müşteri verilerini koruma sağlayan bir kimlik doğrulama hizmetidir. |
-|![Keyless logosunun ekran görüntüsü.](./media/partner-gallery/keyless-logo.png) | [Keyless](./partner-keyless.md) , yüz Biyometrik tarama biçiminde kimlik doğrulaması sağlayan ve sahtekarlık, kimlik avı ve kimlik bilgisi yeniden kullanımını ortadan KALDıRAN bir kimlik doğrulama hizmetidir.
 | ![Lexisnexof logosunun ekran görüntüsü.](./media/partner-gallery/lexisnexis-logo.png) | [Lexisnex,](./partner-lexisnexis.md) Kullanıcı kimliğini doğrulayan ve kullanıcının cihazına göre kapsamlı risk değerlendirmesi sağlayan bir profil oluşturma ve kimlik doğrulama sağlayıcısıdır. |
 | ![Onfido logosunun ekran görüntüsü](./media/partner-gallery/onfido-logo.png) | [Onfido](./partner-onfido.md) , şirketlerin müşteri ve kimlik gereksinimlerinizi gerçek zamanlı olarak *bilmesini* sağlayan bir belge kimliği ve yüz Biyometri doğrulama çözümüdür.  |
 
@@ -52,6 +51,7 @@ MFA ve passwordless kimlik doğrulaması için aşağıdaki ISV 'Ler ile Microso
 |:-------------------------|:--------------|
 | ![Hypr logosunun ekran görüntüsü](./media/partner-gallery/hypr-logo.png) | [Hypr](./partner-hypr.md) , ortak anahtar şifrelemeleri olan parolaların sahteciliği, kimlik avlarını ve kimlik bilgilerini yeniden kullanımını ortadan kaldıran, parolasız bir kimlik doğrulama sağlayıcısıdır. |
 | ![Itsme logosunun ekran görüntüsü](./media/partner-gallery/itsme-logo.png) | [ıtsme](./partner-itsme.md) , kullanıcıların kart okuyucuları, parolalar, iki öğeli kimlik doğrulaması ve bırden çok PIN kodu olmadan güvenli bir şekilde oturum açmalarına olanak tanımak Için bir elektronik tanımlama, kimlik doğrulama ve güven Hizmetleri (eidas) ile uyumlu dijital kimlik çözümüdür. |
+|![Keyless logosunun ekran görüntüsü.](./media/partner-gallery/keyless-logo.png) | [Keyless](./partner-keyless.md) , bir yüz Biyometrik tarama biçiminde kimlik doğrulaması sağlayan ve sahtekarlık, kimlik avı ve kimlik bilgisi yeniden kullanımını ortadan kaldıran, passwordless bir kimlik doğrulama sağlayıcısıdır.
 | ![Nevis logosunun ekran görüntüsü](./media/partner-gallery/nevis-logo.png) | [Nevis](./partner-nevis.md) , passwordless kimlik doğrulamasını sağlar ve güçlü müşteri kimlik doğrulaması IÇIN ve PSD2 işlem gereksinimleriyle uyum sağlamak üzere Nevis Access uygulamasıyla mobil ve tamamen markalı Son Kullanıcı deneyimi sağlar. |
 | ![Trusona logosunun ekran görüntüsü](./media/partner-gallery/trusona-logo.png) | [Truslonıntegration](./partner-trusona.md) , güvenli bir şekilde oturum açmanıza ve passwordless kimlik doğrulaması, MFA ve dijital lisans taramasını başlatmanıza yardımcı olur. |
 | ![Bir Twilio logosunun ekran görüntüsü.](./media/partner-gallery/twilio-logo.png) | [Twilio Verify App](./partner-twilio.md) , SMS tek seferlik parola (OTP), zaman tabanlı bir kerelik parola (TOTP) ve anında iletme BILDIRIMLERI aracılığıyla MFA 'yı ETKINLEŞTIRMEK ve PSD2 için SCA gereksinimleriyle uyum sağlamak için birden çok çözüm sağlar. |
