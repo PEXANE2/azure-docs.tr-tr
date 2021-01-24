@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/18/2021
+ms.date: 01/23/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2c7ea804e9e85578076969f0ec6bdf90b571bb75
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 906879c44a2d7a3248f3d3ac0c9fec7ced7f2a4f
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570091"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746552"
 ---
 # <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>SAP HANA için Azure NetApp Files üzerinde NFS v4.1 birimleri
 
@@ -62,7 +62,13 @@ Anlaşılması gereken, boyutun performans ilişkisine ve SVM 'nin (depolama san
 
 Aşağıdaki tabloda, yedeklemeleri depolamak için büyük bir "standart" birimi oluşturmak ve tek bir LIF 'ın fiziksel bant genişliği kapasitesi aşılacağı için 12 TB 'den büyük bir "Ultra" birim oluşturmak mantıklı değildir. 
 
-Bir LIF ve tek bir Linux oturumu için en yüksek aktarım hızı 1,2 ile 1,4 GB/sn arasındadır. 
+Bir LIF ve tek bir Linux oturumu için en yüksek aktarım hızı 1,2 ile 1,4 GB/sn arasındadır. /Hana/Data için daha fazla işleme ihtiyacınız varsa, veri yeniden yüklemesi sırasında g/ç etkinliğini veya birden çok NFS paylaşımındaki birden çok Hana veri dosyası üzerinde Hana işlemi 'i ayırmak için SAP HANA veri birimi bölümleme kullanabilirsiniz. HANA veri hacmi şeridi hakkında daha fazla bilgi için şu makaleleri okuyun:
+
+- [HANA Yönetici Kılavuzu](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.05/en-US/40b2b2a880ec4df7bac16eae3daef756.html?q=hana%20data%20volume%20partitioning)
+- [Blog hakkında SAP HANA – veri birimlerini bölümleme](https://blogs.sap.com/2020/10/07/sap-hana-partitioning-data-volumes/)
+- [SAP Note #2400005](https://launchpad.support.sap.com/#/notes/2400005)
+- [SAP Note #2700123](https://launchpad.support.sap.com/#/notes/2700123)
+
 
 | Boyut  | Aktarım hızı standart | Verimlilik Premium | Verimlilik Ultra |
 | --- | --- | --- | --- |

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 7336078d1f04b9dcb6c2f229654f1c36d9b3114b
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: bc229974cf14ba364e5e7111dc1d2704e03c3635
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96919966"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746807"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Izleyici sık sorulan sorular
 
@@ -177,7 +177,7 @@ Veri toplama durdurulduğunda bildirim almak için [Yeni bir günlük uyarısı 
 - **Uyarı ölçütleri** 
    - **Sinyal adı**: *özel günlük araması*
    - **Arama sorgusu**: `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
-   - **Uyarı mantığı**: **Based on** *sonuç sayısına* ve *şundan büyük* bir **koşula** göre **eşik değeri** *0*
+   - **Uyarı mantığı**:  *sonuç sayısına* ve *şundan büyük* bir **koşula** göre **eşik değeri** *0*
    - **Temelinde değerlendirilen**: **süresi (dakika)** *30*, **Sıklık (dakika)** *10*
 - **Uyarı ayrıntılarını tanımlama** 
    - **Ad**: *veri koleksiyonu durduruldu*
@@ -345,7 +345,9 @@ Bu, kodunuzun bu verileri göndermesi durumunda mümkündür. Yığın izlemeler
 
 Coğrafi konum öznitelikleri arandığında, istemci Web adresinin **Tüm** sekizliklerin her zaman 0 olarak ayarlanmış olması.
 
-### <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>Izleme anahtarım, Web sayfası kaynağı 'nda görünür. 
+[Application Insights JavaScript SDK 'sı](app/javascript.md) varsayılan olarak otomatik tamamlamada herhangi bir kişisel veri içermez. Ancak, uygulamanızda kullanılan bazı kişisel veriler SDK tarafından alınabilir (örneğin, içindeki tam adlar `window.title` veya XHR URL sorgu parametrelerinde hesap kimlikleri). Özel kişisel veri maskeleme için bir [telemetri başlatıcısı](app/api-filtering-sampling.md#javascript-web-applications)ekleyin.
+
+### <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>Izleme anahtarım, Web sayfası kaynağı 'nda görünür.
 
 * Bu, izleme çözümlerinde yaygın bir uygulamadır.
 * Verilerinizi çalmak için kullanılamaz.

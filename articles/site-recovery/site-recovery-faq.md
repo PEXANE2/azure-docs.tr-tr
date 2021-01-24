@@ -4,12 +4,12 @@ description: Bu makalede Azure Site Recovery hakkındaki popüler genel sorular 
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: add5874dc828f05c7c51f0f378988c94cbd42486
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: ca30f9ba190dfa3c7e224e47b90be4d3bc5d47ae
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109564"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746484"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery hakkındaki genel sorular
 
@@ -344,6 +344,14 @@ Evet, Azure 'dan farklı bir konağa yeniden çalışma yapmak için alternatif 
 
 * [VMware sanal makineleri için](concepts-types-of-failback.md#alternate-location-recovery-alr)
 * [Hyper-V sanal makineleri için](hyper-v-azure-failback.md#fail-back-to-an-alternate-location)
+
+### <a name="what-is-the-difference-between-complete-migration-commit-and-disable-replication"></a>Geçişi tamamlama, çoğaltmayı tamamlama ve devre dışı bırakma arasındaki fark nedir?
+
+Kaynak konumdan bir makine hedef konuma yük devrettikten sonra, aralarından seçim yapabileceğiniz üç seçenek bulunur. Üç farklı amaç sunar-
+
+1.  **Geçişin tamamı** artık kaynak konumuna geri dönmeyeceğiniz anlamına gelir. Hedef bölgeye geçiş yaptıysanız ve şimdi tamamladınız. Geçişin tamamını tamamlamak ve sonra da çoğaltmayı devre dışı bırakmak için öğesini tıklatın. 
+2.  **İşleme** , çoğaltma sürecinizin sona gerekmediği anlamına gelir. Tüm yapılandırma ile birlikte çoğaltma öğesi kalır ve makinelerinizin kaynak bölgeye çoğaltılmasını sağlamak için daha sonraki bir zaman noktasında **yeniden koruma** sağlayabilirsiniz. 
+3.  **Çoğaltmayı devre dışı bırak** , çoğaltmayı devre dışı bırakır ve ilgili tüm yapılandırmaları kaldırır. Hedef bölgede zaten mevcut olan makineyi etkilemez.
 
 ## <a name="automation"></a>Otomasyon
 

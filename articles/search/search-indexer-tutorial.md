@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 09/25/2020
+ms.date: 01/23/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 960657d27be4b9dab9f242428592bbb404a49d86
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: e2ca5f42120661b887d07e697596f41cb7a7fce4
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697178"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745775"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak Azure SQL verilerinin dizinini oluştur
 
@@ -107,14 +107,14 @@ API çağrıları, hizmet URL 'SI ve erişim anahtarı gerektirir. Her ikisiyle 
 
 1. Çözüm Gezgini, bağlantı bilgilerini sağlamak için **appsettings.js** açın.
 
-1. İçin, `searchServiceName` tam URL " https://my-demo-service.search.windows.net " ise, sağlanacak hizmet adı "My-demo-Service" olur.
+1. İçin `SearchServiceEndPoint` , hizmete Genel Bakış sayfasındaki tam URL " https://my-demo-service.search.windows.net " ise, sağlanacak değer URL 'dir.
 
 1. İçin `AzureSqlConnectionString` dize biçimi şuna benzerdir: `"Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"`
 
     ```json
     {
-      "SearchServiceName": "<placeholder-Azure-Search-service-name>",
-      "SearchServiceAdminApiKey": "<placeholder-admin-key-for-Azure-Search>",
+      "SearchServiceEndPoint": "<placeholder-search-url>",
+      "SearchServiceAdminApiKey": "<placeholder-admin-key-for-search-service>",
       "AzureSqlConnectionString": "<placeholder-ADO.NET-connection-string",
     }
     ```
@@ -130,11 +130,12 @@ Dizin oluşturucular bir veri kaynağı nesnesi ve bir dizin gerektirir. İlgili
 
 ### <a name="in-hotelcs"></a>Hotel.cs dosyasında
 
-Dizin şeması, aşağıdaki HotelName alan tanımında gösterildiği gibi alanın tam metin araması yapılabilir, filtrelenebilir veya sıralanabilir olup olmadığı gibi izin verilen işlemleri belirten öznitelikler de dahil olmak üzere alan koleksiyonunu tanımlar. 
+Dizin şeması, aşağıdaki HotelName alan tanımında gösterildiği gibi alanın tam metin araması yapılabilir, filtrelenebilir veya sıralanabilir olup olmadığı gibi izin verilen işlemleri belirten öznitelikler de dahil olmak üzere alan koleksiyonunu tanımlar. Bir [Searchablefield](/dotnet/api/azure.search.documents.indexes.models.searchablefield) , tanım ile aranabilir tam metin. Diğer öznitelikler açıkça atanır.
 
 ```csharp
 . . . 
-[IsSearchable, IsFilterable, IsSortable]
+[SearchableField(IsFilterable = true, IsSortable = true)]
+[JsonPropertyName("hotelName")]
 public string HotelName { get; set; }
 . . .
 ```
@@ -143,59 +144,73 @@ public string HotelName { get; set; }
 
 ### <a name="in-programcs"></a>Program.cs dosyasında
 
-Ana program, bir istemci, dizin, veri kaynağı ve Dizin Oluşturucu oluşturma mantığını içerir. Kod, bu programı birden çok kez çalıştırabileceğiniz varsayımıyla, aynı adı taşıyan kaynakları denetler ve siler.
+Ana program dizin [Oluşturucu istemci](/dotnet/api/azure.search.documents.indexes.models.searchindexer), dizin, veri kaynağı ve Dizin Oluşturucu oluşturma mantığını içerir. Kod, bu programı birden çok kez çalıştırabileceğiniz varsayımıyla, aynı adı taşıyan kaynakları denetler ve siler.
 
-Veri kaynağı nesnesi, Azure SQL 'in yerleşik [değişiklik algılama özelliklerinden](/sql/relational-databases/track-changes/about-change-tracking-sql-server) yararlanmak için [kısmi veya artımlı dizin oluşturma](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) da dahIl olmak üzere Azure SQL veritabanı kaynaklarına özgü ayarlarla yapılandırılır. Azure SQL 'deki demo oteller veritabanının **IsDeleted** adlı "geçici silme" sütunu vardır. Bu sütun veritabanında true olarak ayarlandığında, Dizin Oluşturucu ilgili belgeyi Azure Bilişsel Arama dizininden kaldırır.
+Veri kaynağı nesnesi, Azure SQL 'in yerleşik [değişiklik algılama özelliklerinden](/sql/relational-databases/track-changes/about-change-tracking-sql-server) yararlanmak için [kısmi veya artımlı dizin oluşturma](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) da dahIl olmak üzere Azure SQL veritabanı kaynaklarına özgü ayarlarla yapılandırılır. Azure SQL 'deki kaynak tanıtım oteller veritabanının **IsDeleted** adlı bir "geçici silme" sütunu vardır. Bu sütun veritabanında true olarak ayarlandığında, Dizin Oluşturucu ilgili belgeyi Azure Bilişsel Arama dizininden kaldırır.
 
-  ```csharp
-  Console.WriteLine("Creating data source...");
+```csharp
+Console.WriteLine("Creating data source...");
 
-  DataSource dataSource = DataSource.AzureSql(
-      name: "azure-sql",
-      sqlConnectionString: configuration["AzureSQLConnectionString"],
-      tableOrViewName: "hotels",
-      deletionDetectionPolicy: new SoftDeleteColumnDeletionDetectionPolicy(
-          softDeleteColumnName: "IsDeleted",
-          softDeleteMarkerValue: "true"));
-  dataSource.DataChangeDetectionPolicy = new SqlIntegratedChangeTrackingPolicy();
+var dataSource =
+      new SearchIndexerDataSourceConnection(
+         "hotels-sql-ds",
+         SearchIndexerDataSourceType.AzureSql,
+         configuration["AzureSQLConnectionString"],
+         new SearchIndexerDataContainer("hotels"));
 
-  searchService.DataSources.CreateOrUpdateAsync(dataSource).Wait();
-  ```
+indexerClient.CreateOrUpdateDataSourceConnection(dataSource);
+```
 
-Dizin Oluşturucu nesnesi, yapılandırma, zamanlama ve çağrının kaynağa bakılmaksızın aynı olduğu platformdan bağımsız bir platformdur. Bu örnek Dizin Oluşturucu bir zamanlama, Dizin Oluşturucu geçmişini temizleyen bir sıfırlama seçeneği içerir ve Dizin oluşturucuyu hemen oluşturmak ve çalıştırmak için bir yöntem çağırır.
+Dizin Oluşturucu nesnesi, yapılandırma, zamanlama ve çağrının kaynağa bakılmaksızın aynı olduğu platformdan bağımsız bir platformdur. Bu örnek Dizin Oluşturucu bir zamanlama, Dizin Oluşturucu geçmişini temizleyen bir sıfırlama seçeneği içerir ve Dizin oluşturucuyu hemen oluşturmak ve çalıştırmak için bir yöntem çağırır. Bir dizin oluşturucu oluşturmak veya güncelleştirmek için [Createorupdateındexsilinebilir Sync](/dotnet/api/azure.search.documents.indexes.searchindexerclient.createorupdateindexerasync)kullanın.
 
-  ```csharp
-  Console.WriteLine("Creating Azure SQL indexer...");
-  Indexer indexer = new Indexer(
-      name: "azure-sql-indexer",
-      dataSourceName: dataSource.Name,
-      targetIndexName: index.Name,
-      schedule: new IndexingSchedule(TimeSpan.FromDays(1)));
-  // Indexers contain metadata about how much they have already indexed
-  // If we already ran the sample, the indexer will remember that it already
-  // indexed the sample data and not run again
-  // To avoid this, reset the indexer if it exists
-  exists = await searchService.Indexers.ExistsAsync(indexer.Name);
-  if (exists)
-  {
-      await searchService.Indexers.ResetAsync(indexer.Name);
-  }
+```csharp
+Console.WriteLine("Creating Azure SQL indexer...");
 
-  await searchService.Indexers.CreateOrUpdateAsync(indexer);
+var schedule = new IndexingSchedule(TimeSpan.FromDays(1))
+{
+      StartTime = DateTimeOffset.Now
+};
 
-  // We created the indexer with a schedule, but we also
-  // want to run it immediately
-  Console.WriteLine("Running Azure SQL indexer...");
+var parameters = new IndexingParameters()
+{
+      BatchSize = 100,
+      MaxFailedItems = 0,
+      MaxFailedItemsPerBatch = 0
+};
 
-  try
-  {
-      await searchService.Indexers.RunAsync(indexer.Name);
-  }
-  catch (CloudException e) when (e.Response.StatusCode == (HttpStatusCode)429)
-  {
+// Indexer declarations require a data source and search index.
+// Common optional properties include a schedule, parameters, and field mappings
+// The field mappings below are redundant due to how the Hotel class is defined, but 
+// we included them anyway to show the syntax 
+var indexer = new SearchIndexer("hotels-sql-idxr", dataSource.Name, searchIndex.Name)
+{
+      Description = "Data indexer",
+      Schedule = schedule,
+      Parameters = parameters,
+      FieldMappings =
+      {
+         new FieldMapping("_id") {TargetFieldName = "HotelId"},
+         new FieldMapping("Amenities") {TargetFieldName = "Tags"}
+      }
+};
+
+await indexerClient.CreateOrUpdateIndexerAsync(indexer);
+```
+
+Dizin Oluşturucu çalıştırmaları genellikle zamanlanır, ancak geliştirme sırasında [Runındexsilinebilir eşitlemesini](/dotnet/api/azure.search.documents.indexes.searchindexerclient.runindexerasync)kullanarak Dizin oluşturucuyu hemen çalıştırmak isteyebilirsiniz.
+
+```csharp
+Console.WriteLine("Running Azure SQL indexer...");
+
+try
+{
+      await indexerClient.RunIndexerAsync(indexer.Name);
+}
+catch (CloudException e) when (e.Response.StatusCode == (HttpStatusCode)429)
+{
       Console.WriteLine("Failed to run indexer: {0}", e.Response.Content);
-  }
-  ```
+}
+```
 
 ## <a name="4---build-the-solution"></a>4-çözümü oluşturma
 
@@ -205,9 +220,9 @@ Dizin Oluşturucu nesnesi, yapılandırma, zamanlama ve çağrının kaynağa ba
 
 Kodunuz Visual Studio 'da yerel olarak çalışarak Azure 'da arama hizmetinize bağlanarak Azure SQL veritabanına bağlanır ve veri kümesini alır. Bu çok işlem sayesinde birkaç olası hata noktası vardır. Bir hata alırsanız, önce aşağıdaki koşulları kontrol edin:
 
-+ Sağladığınız arama hizmeti bağlantı bilgileri, bu öğreticide hizmet adıyla sınırlıdır. Tam URL girdiyseniz, dizin oluşturma aşamasında bağlantı hatasıyla işlemler durdurulur.
++ Sağladığınız arama hizmeti bağlantı bilgileri tam URL 'dir. Yalnızca hizmet adını girdiyseniz, işlemler dizin oluşturma sırasında durdurulur ve hata bağlantısı başarısız olacaktır.
 
-+ **Appsettings.json** dosyasındaki veritabanı bağlantı bilgileri. Bu, portaldan alınmış ve veritabanınız için geçerli kullanıcı adı ve parolayı içerecek şekilde değiştirilmiş ADO.NET bağlantı dizesi olmalıdır. Kullanıcı hesabının verileri alma izni olmalıdır. Yerel istemci IP adresiniz izin verilen erişim iznine sahip olmalıdır.
++ **Appsettings.json** dosyasındaki veritabanı bağlantı bilgileri. Bu, portaldan alınmış ve veritabanınız için geçerli kullanıcı adı ve parolayı içerecek şekilde değiştirilmiş ADO.NET bağlantı dizesi olmalıdır. Kullanıcı hesabının verileri alma izni olmalıdır. Yerel istemci IP adresiniz güvenlik duvarı üzerinden gelen erişime izin verilmelidir.
 
 + Kaynak sınırları. Ücretsiz katmanın 3 dizin, Dizin Oluşturucu ve veri kaynağı sınırlarına sahip olduğunu hatırlayın. Sınırına dayanmış bir hizmet yeni nesneler oluşturamaz.
 

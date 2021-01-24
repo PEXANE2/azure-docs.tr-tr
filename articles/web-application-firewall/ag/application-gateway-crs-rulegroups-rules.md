@@ -8,19 +8,16 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 890e2b972818cf9805623d94709ce5631b50aaf5
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: e2c88091072921f1ca674868e401c34d354418de
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608614"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746518"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web uygulaması güvenlik duvarı, kural grupları ve kuralları
 
 Application Gateway Web uygulaması güvenlik duvarı (WAF), Web uygulamalarını ortak güvenlik açıklarına ve açıklardan yararlanan korur. Bu, OWASP Core kural kümelerine 3,1, 3,0 veya 2.2.9 göre tanımlanan kurallar aracılığıyla yapılır. Bu kurallar kural temelinde devre dışı bırakılabilir. Bu makale, sunulan geçerli kuralları ve kural kümelerini içerir.
-
-> [!NOTE]
-> Bu makale, Microsoft 'un artık kullanmadığını gösteren bir terim olan *kara liste* dönemi başvuruları içerir. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
 
 ## <a name="core-rule-sets"></a>Çekirdek kural kümeleri
 
@@ -262,7 +259,7 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 |941150|XSS filtresi-kategori 5 = Izin verilmeyen HTML öznitelikleri|
 |941160|NoScript XSS ınjectionchecker: HTML ekleme|
 |941170|NoScript XSS ınjectionchecker: öznitelik ekleme|
-|941180|Node-Validator kara anahtar sözcükleri|
+|941180|Node-Validator Blocklist anahtar sözcükleri|
 |941190|Stil sayfalarını kullanarak XSS|
 |941200|VML çerçevelerini kullanarak XSS|
 |941210|Karıştırılmış JavaScript kullanılarak XSS|
@@ -490,7 +487,7 @@ Application Gateway üzerinde Web uygulaması güvenlik duvarı kullanılırken 
 |941130|XSS filtresi-kategori 3 = öznitelik vektörü|
 |941140|XSS filtresi-kategori 4 = JavaScript URI vektörü|
 |941150|XSS filtresi-kategori 5 = Izin verilmeyen HTML öznitelikleri|
-|941180|Node-Validator kara anahtar sözcükleri|
+|941180|Node-Validator Blocklist anahtar sözcükleri|
 |941190|Stil sayfalarını kullanarak XSS|
 |941200|VML çerçevelerini kullanarak XSS|
 |941210|Karıştırılmış JavaScript kullanılarak XSS|

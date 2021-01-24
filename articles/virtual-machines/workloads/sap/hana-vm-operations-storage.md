@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/26/2020
+ms.date: 01/23/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8c4aa608e892867daaf954284a9dfce997a9ae1f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 01c6a2eb53e82965dd96deaa1a09afb1e70dda24
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484286"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746756"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure sanal makine depolama alanı yapılandırmaları
 
@@ -63,10 +63,22 @@ HANA için depolama yapılandırmanızı seçerken kullanabileceğiniz bazı tem
 - [SAP iş yükü Için Azure depolama türlerini](./planning-guide-storage.md) temel alan depolama türüne karar verin ve [bir disk türü seçin](../../disks-types.md)
 - VM için boyutlandırma veya karar verirken genel VM g/ç verimlilik ve ıOPS sınırları göz önünde bulundurun. Genel VM depolama aktarım hızı, [bellek için iyileştirilmiş sanal makine boyutlarında](../../sizes-memory.md) belgelenmiştir
 - Depolama yapılandırmasına karar verirken, **/Hana/Data** Volume yapılandırmanızda VM 'nin Genel aktarım hızını aşmaya çalışın. Savepoints yazmak SAP HANA, g/ç agresif yayınlanıyor olabilir. Bir kayıt noktası yazarken **/Hana/Data** hacminin üretilen iş limitlerinin gönderimi kolayca mümkündür. **/Hana/Data** birimini oluşturan DISKLERINIZ, sanal makinenizin izin verdiğinden daha yüksek bir aktarım hızına sahip olursa, yazma noktası tarafından kullanılan aktarım hızı, yineleme günlüğü yazmaları için üretilen iş taleplerini kesintiye uğratan bir şekilde çalışabilir. Uygulama verimini etkileyebilecek bir durum
-- Azure Premium Storage kullanıyorsanız, en az maliyetli yapılandırma, **/Hana/Data** ve **/Hana/log** birimlerini oluşturmak üzere dizili kümeler oluşturmak için mantıksal birim yöneticilerini kullanmaktır
+
 
 > [!IMPORTANT]
 > Depolama yapılandırmalarına yönelik öneriler, ile başlamak için yönergeler olarak tasarlanmıştır. İş yükünü çalıştırma ve depolama kullanımı düzenlerini çözümleme, belirtilen tüm depolama bant genişliğini veya ıOPS 'yi kullanmıyorsanız emin olabilirsiniz. Depolama sırasında daha sonra yeniden boyutlandırmayı düşünebilirsiniz. Veya aksine, iş yükünüzün bu yapılandırmalarda önerilenden daha fazla depolama verimi olması gerekebilir. Sonuç olarak, daha fazla kapasite, ıOPS veya aktarım hızı dağıtmanız gerekebilir. Depolama kapasitesi gerekli, depolama gecikme süresi gerekli, depolama aktarım hızı ve ıOPS ve en az pahalı yapılandırma arasındaki geçiş alanında, Azure, sizin ve HANA iş yükünüz için doğru güvenliğin aşılmasına ve bu açığı fark etmek üzere farklı yeteneklere ve farklı fiyat noktalarına sahip yeterli sayıda farklı depolama türü sunar.
+
+
+## <a name="stripe-sets-versus-sap-hana-data-volume-partitioning"></a>SAP HANA veri birimi bölümlemeye karşı dizili kümeler
+Azure Premium depolamayı kullanarak, birden çok Azure diskinde **/Hana/Data** ve/veya **/Hana/log** birimini dizili en iyi fiyat/performans oranına sahip olabilirsiniz. Daha büyük disk birimlerini dağıtmak yerine, ıOPS veya üretilen iş verimini daha fazlasını sağlar. Şimdiye kadar bu, Linux 'un bir parçası olan LVM ve MDADDM birimi yöneticileriyle birlikte gerçekleştirildi. Diskleri dizme yöntemi, eski ve iyi bilinen bir yöntemdir. Bu şeritli birimler, ihtiyacınız olabilecek ıOPS veya işleme özelliklerine ulaştığından, bu Şeritli birimleri yönetme konusunda karmaşıklıkları ekler. Özellikle, birimlerin kapasiteye göre uzatılihtiyacı olan durumlarda. En azından **/Hana/Data** için SAP, birden çok Azure diskinde şeritleme ile aynı hedefi karşılayan alternatif bir yöntem sunmuştur. SAP HANA 2,0 SPS03 bu yana, HANA ındexserver, farklı Azure disklerinde bulunan birden çok HANA veri dosyasına g/ç etkinliğini şeritleyebiliyor. Bunun avantajı, farklı Azure disklerinde dizili bir birim oluşturma ve yönetme konusunda endişelenmeniz gerekmez. Veri birimi bölümlemenin SAP HANA işlevselliği bölümünde ayrıntılı olarak açıklanmıştır:
+
+- [HANA Yönetici Kılavuzu](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.05/en-US/40b2b2a880ec4df7bac16eae3daef756.html?q=hana%20data%20volume%20partitioning)
+- [Blog hakkında SAP HANA – veri birimlerini bölümleme](https://blogs.sap.com/2020/10/07/sap-hana-partitioning-data-volumes/)
+- [SAP Note #2400005](https://launchpad.support.sap.com/#/notes/2400005)
+- [SAP Note #2700123](https://launchpad.support.sap.com/#/notes/2700123)
+
+Ayrıntılar arasında okuma, bu işlevin kullanılmasıyla ilgili, birim Yöneticisi tabanlı dizili kümeler arasındaki karmaşıklıkları göz önüne alır. Ayrıca, HANA veri birimi bölümlemenin yalnızca Azure Premium depolama gibi Azure blok depolama için çalışmadığını fark edersiniz. Bu paylaşımların ıOPS veya işleme sınırlamaları olması durumunda, bu işlevselliği ve NFS paylaşımlarında Stripe ile de kullanabilirsiniz.  
+
 
 ## <a name="linux-io-scheduler-mode"></a>Linux g/ç zamanlayıcı modu
 Linux 'ta birkaç farklı g/ç zamanlama modu vardır. Linux satıcıları ve SAP aracılığıyla sık görülen öneriler, disk birimleri için g/ç Zamanlayıcı modunu, **MQ-son tarih** veya **Kyber** modundayken Noop (multiqueue) **veya for (** multiqueue) moduna yeniden **yapılandırmadır** . [SAP Note #1984787](https://launchpad.support.sap.com/#/notes/1984787)ayrıntılara başvurulur. 

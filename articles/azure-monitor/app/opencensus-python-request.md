@@ -6,21 +6,18 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 4b88550ad489607bb66eb737067190d45a466a43
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 4abb795335bfcb2c9b335d4fb09ddc9fdb2476b4
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607084"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746586"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>OpenCensus Python ile gelen istekleri izleme
 
 Gelen istek verileri, OpenCensus Python ve çeşitli tümleştirmeler kullanılarak toplanır. Popüler Web çerçeveleri ve üzerinde oluşturulmuş Web uygulamalarınıza gönderilen gelen istek verilerini izleyin `django` `flask` `pyramid` . Veriler daha sonra Azure Izleyici altında telemetri olarak Application Insights gönderilir `requests` .
 
 İlk olarak, Python uygulamanızı en son [Opencensus Python SDK 'sı](./opencensus-python.md)ile işaretleyin.
-
-> [!NOTE]
-> Bu makale, Microsoft 'un artık kullanmadığını gösteren bir terim olan *kara liste* dönemi başvuruları içerir. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
 
 ## <a name="tracking-django-applications"></a>Docgo uygulamalarını izleme
 
@@ -36,7 +33,7 @@ Gelen istek verileri, OpenCensus Python ve çeşitli tümleştirmeler kullanıla
     )
     ```
 
-3. AzureExporter 'in altında düzgün şekilde yapılandırıldığından emin olun `settings.py` `OPENCENSUS` . İzlemek istemediğiniz URL 'lerden gelen istekler için, onları öğesine ekleyin `BLACKLIST_PATHS` .
+3. AzureExporter 'in altında düzgün şekilde yapılandırıldığından emin olun `settings.py` `OPENCENSUS` . İzlemek istemediğiniz URL 'lerden gelen istekler için, onları öğesine ekleyin `EXCLUDELIST_PATHS` .
 
     ```python
     OPENCENSUS = {
@@ -45,7 +42,7 @@ Gelen istek verileri, OpenCensus Python ve çeşitli tümleştirmeler kullanıla
             'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
                 connection_string="InstrumentationKey=<your-ikey-here>"
             )''',
-            'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
+            'EXCLUDELIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
         }
     }
     ```
@@ -77,7 +74,7 @@ Gelen istek verileri, OpenCensus Python ve çeşitli tümleştirmeler kullanıla
     
     ```
 
-2. `flask`Uygulamanızı aracılığıyla da yapılandırabilirsiniz `app.config` . İzlemek istemediğiniz URL 'lerden gelen istekler için, onları öğesine ekleyin `BLACKLIST_PATHS` .
+2. `flask`Uygulamanızı aracılığıyla da yapılandırabilirsiniz `app.config` . İzlemek istemediğiniz URL 'lerden gelen istekler için, onları öğesine ekleyin `EXCLUDELIST_PATHS` .
 
     ```python
     app.config['OPENCENSUS'] = {
@@ -86,7 +83,7 @@ Gelen istek verileri, OpenCensus Python ve çeşitli tümleştirmeler kullanıla
             'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
                 connection_string="InstrumentationKey=<your-ikey-here>",
             )''',
-            'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
+            'EXCLUDELIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
         }
     }
     ```
@@ -103,7 +100,7 @@ Gelen istek verileri, OpenCensus Python ve çeşitli tümleştirmeler kullanıla
                          '.pyramid_middleware.OpenCensusTweenFactory')
     ```
 
-2. `pyramid`Arayı doğrudan kodda yapılandırabilirsiniz. İzlemek istemediğiniz URL 'lerden gelen istekler için, onları öğesine ekleyin `BLACKLIST_PATHS` .
+2. `pyramid`Arayı doğrudan kodda yapılandırabilirsiniz. İzlemek istemediğiniz URL 'lerden gelen istekler için, onları öğesine ekleyin `EXCLUDELIST_PATHS` .
 
     ```python
     settings = {
@@ -113,7 +110,7 @@ Gelen istek verileri, OpenCensus Python ve çeşitli tümleştirmeler kullanıla
                 'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
                     connection_string="InstrumentationKey=<your-ikey-here>",
                 )''',
-                'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
+                'EXCLUDELIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
             }
         }
     }

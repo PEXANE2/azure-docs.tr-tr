@@ -73,6 +73,8 @@
       href: sample-reset-cloud-service.md
 - name: Başvuru
   items:
+    - name: Örnek dağıtım dosyaları
+      href: 'https://github.com/Azure-Samples/cloud-services-extended-support'
     - name: Az. CloudService modülü
       href: 'https://www.powershellgallery.com/packages/Az.CloudService/0.1.0'
     - name: PowerShell cmdlet'leri

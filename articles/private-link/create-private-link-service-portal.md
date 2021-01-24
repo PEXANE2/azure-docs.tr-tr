@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 01/18/2021
 ms.author: allensu
-ms.openlocfilehash: 3e9ade329d2b26d36763db579b0fcec03e938aad
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: d394a475c5121607f70c03437382e104a5d0cbee
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555466"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746416"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak özel bir bağlantı hizmeti oluşturma
 
@@ -171,7 +171,7 @@ Bu bölümde, bir yük dengeleyici kuralı oluşturacaksınız:
 
 4. Kalan varsayılan değerleri bırakın ve **Tamam**' ı seçin.
 
-## <a name="create-a-private-link-service"></a>Özel Bağlantı hizmeti oluşturma
+## <a name="create-a-private-link-service"></a>Özel bağlantı hizmeti oluşturma
 
 Bu bölümde, standart bir yük dengeleyicinin arkasında bir özel bağlantı hizmeti oluşturacaksınız.
 
@@ -217,6 +217,112 @@ Bu bölümde, standart bir yük dengeleyicinin arkasında bir özel bağlantı h
 
 12. **Gözden geçir + oluştur** sekmesinde **Oluştur** ' u seçin.
 
+Özel bağlantı hizmetiniz oluşturulur ve trafik alabilir. Trafik akışlarını görmek istiyorsanız uygulamanızı standart yük dengeleyicinizin arkasında yapılandırın.
+
+
+## <a name="create-private-endpoint"></a>Özel uç nokta oluştur
+
+Bu bölümde özel bağlantı hizmetini özel bir uç nokta ile eşlersiniz. Bir sanal ağ, özel bağlantı hizmetinin özel uç noktasını içerir. Bu sanal ağ, özel bağlantı hizmetinize erişecek kaynakları içerir.
+
+### <a name="create-private-endpoint-virtual-network"></a>Özel uç nokta sanal ağı oluştur
+
+1. Ekranın sol üst kısmındaki **Kaynak oluştur > Ağ > Sanal ağ** seçeneğini belirleyin veya arama kutusuna **Sanal ağ** yazarak arama yapın.
+
+2. **Sanal ağ oluştur**' da, **temel** bilgiler sekmesinde bu bilgileri girin veya seçin:
+
+    | **Ayar**          | **Değer**                                                           |
+    |------------------|-----------------------------------------------------------------|
+    | **Proje ayrıntıları**  |                                                                 |
+    | Abonelik     | Azure aboneliğinizi seçin                                  |
+    | Kaynak Grubu   | **Createprılinkservice-RG** seçin |
+    | **Örnek ayrıntıları** |                                                                 |
+    | Name             | **Myvnetpe** girin                                    |
+    | Bölge           | **Doğu ABD 2** seçin |
+
+3. **IP adresleri** sekmesini seçin veya sayfanın altındaki **Sonraki: IP adresleri** düğmesini seçin.
+
+4. **IP adresleri** sekmesinde şu bilgileri girin:
+
+    | Ayar            | Değer                      |
+    |--------------------|----------------------------|
+    | IPv4 adres alanı | **11.1.0.0/16** girin |
+
+5. **Alt ağ adı** altında, **varsayılan** sözcük ' ı seçin.
+
+6. **Alt ağı Düzenle**' de şu bilgileri girin:
+
+    | Ayar            | Değer                      |
+    |--------------------|----------------------------|
+    | Alt ağ adı | **Mysubnetpe** girin |
+    | Alt ağ adres aralığı | **11.1.0.0/24** girin |
+
+7. **Kaydet**’i seçin.
+
+8. **Gözden geçir + oluştur** sekmesini seçin ya da **gözden geçir + oluştur** düğmesini seçin.
+
+9. **Oluştur**’u seçin.
+
+### <a name="create-private-endpoint"></a>Özel uç nokta oluştur
+
+1. Portaldaki ekranın sol üst kısmında, **kaynak oluştur**  >  **ağ**  >  **özel bağlantısı**' nı seçin veya arama kutusuna **özel bağlantı** girin.
+
+2. **Oluştur**’u seçin.
+
+3. **Özel bağlantı merkezi**'nde, sol taraftaki menüden **Özel uç noktalar** ' ı seçin.
+
+4. **Özel uç noktalarında** **+ Ekle**' yi seçin.
+
+5. **Özel uç nokta oluştur**' un **temel bilgiler** sekmesinde, girin veya bu bilgileri seçin:
+
+    | Ayar | Değer |
+    | ------- | ----- |
+    | **Proje ayrıntıları** | |
+    | Abonelik | Aboneliğinizi seçin. |
+    | Kaynak grubu | **Createprılinkservice-RG** öğesini seçin. Bu kaynak grubunu önceki bölümde oluşturdunuz.|
+    | **Örnek ayrıntıları** |  |
+    | Name  | **myPrivateEndpoint** değerini girin. |
+    | Bölge | **Doğu ABD 2**’yi seçin. |
+
+6. Sayfanın alt kısmındaki **kaynak** sekmesini veya **Sonraki: kaynak** düğmesini seçin.
+    
+7. **Kaynak** bölümünde, bu bilgileri girin veya seçin:
+
+    | Ayar | Değer |
+    | ------- | ----- |
+    | Bağlantı yöntemi | **Dizinimde bir Azure kaynağına bağlan '** ı seçin. |
+    | Abonelik | Aboneliğinizi seçin. |
+    | Kaynak türü | **Microsoft. Network/privateLinkServices** öğesini seçin. |
+    | Kaynak | **Myprivatelinkservice** öğesini seçin. |
+
+8. Ekranın alt kısmındaki **yapılandırma** sekmesini veya **Sonraki: yapılandırma** düğmesini seçin.
+
+9. **Yapılandırma**' da bu bilgileri girin veya seçin:
+
+    | Ayar | Değer |
+    | ------- | ----- |
+    | **Ağ** |  |
+    | Sanal Ağ | **Myvnetpe**' yi seçin. |
+    | Alt ağ | **Mysubnetpe**' yi seçin. |
+
+10. Ekranın alt kısmındaki **gözden geçir + oluştur** sekmesini veya **gözden geçir + oluştur** düğmesini seçin.
+
+11. **Oluştur**’u seçin.
+
+### <a name="ip-address-of-private-endpoint"></a>Özel uç noktanın IP adresi
+
+Bu bölümde, yük dengeleyici ve özel bağlantı hizmetine karşılık gelen özel uç noktanın IP adresini bulacaksınız.
+
+1. Azure portal sol taraftaki sütununda **kaynak grupları**' nı seçin.
+
+2. **Createprılinkservice-RG** kaynak grubunu seçin.
+
+3. **Createprılinkservice-RG** kaynak grubunda, **Myprivateendpoint** öğesini seçin.
+
+4. **Myprivateendpoint** **genel bakış** sayfasında, Özel uç noktayla ilişkili ağ arabiriminin adını seçin.  Ağ arabirimi adı **Myprivateendpoint. NIC** ile başlar.
+
+5. Özel uç nokta NIC 'in **genel bakış** sayfasında, uç noktanın IP adresı **özel IP adresi** olarak görüntülenir.
+    
+
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Özel bağlantı hizmetini kullanarak işiniz bittiğinde, bu hızlı başlangıçta kullanılan kaynakları temizlemek için kaynak grubunu silin.
@@ -231,7 +337,8 @@ Bu bölümde, standart bir yük dengeleyicinin arkasında bir özel bağlantı h
 Bu hızlı başlangıçta:
 
 * Bir sanal ağ ve dahili Azure Load Balancer oluşturulur.
-* Özel bir bağlantı hizmeti oluşturuldu
+* Özel bir bağlantı hizmeti oluşturuldu.
+* Özel bağlantı hizmeti için bir sanal ağ ve özel uç nokta oluşturuldu.
 
 Azure özel uç noktası hakkında daha fazla bilgi edinmek için devam edin:
 > [!div class="nextstepaction"]

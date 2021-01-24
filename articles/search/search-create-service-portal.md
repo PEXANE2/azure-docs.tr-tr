@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 10/14/2020
-ms.openlocfilehash: 3f55e2a7d62d2f32173d382dc9be0d6eb4f83fae
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/23/2021
+ms.openlocfilehash: 57867cc4fb539b07fc1e4117f6e956078c41e2c6
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249763"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746705"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Hızlı Başlangıç: Portalda Azure Bilişsel Arama hizmeti oluşturma
 
-Azure Bilişsel Arama, bir arama deneyimini özel uygulamalara bağlamak için kullanılan tek başına kaynaktır. Bilişsel Arama, diğer Azure hizmetleriyle, ağ sunucularındaki uygulamalarla veya diğer bulut platformlarında çalışan yazılımlarla kolayca tümleştirilir.
+[Azure bilişsel arama](search-what-is-azure-search.md) , özel uygulamalara tam metin arama deneyimi eklemek için kullanılan bir Azure kaynağıdır. Veri veya ek işlem sağlayan diğer Azure hizmetleriyle, ağ sunucularındaki uygulamalarla veya diğer bulut platformlarında çalışan yazılımlarla kolayca tümleştirilebilir.
 
-Bu makalede [Azure Portal](https://portal.azure.com/)kaynak oluşturmayı öğrenin.
+Bu makalede, [Azure Portal](https://portal.azure.com/)arama hizmeti oluşturmayı öğrenin.
 
 [![Animasyonlu GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
@@ -31,7 +31,7 @@ Aşağıdaki hizmet özellikleri, hizmetin kullanım ömrü boyunca düzeltilir;
 
 * Hizmet adı URL uç noktasının bir parçası olur (faydalı hizmet adları için[ipuçları gözden geçirin](#name-the-service) ).
 * [Hizmet katmanı](search-sku-tier.md) , faturalandırmayı etkiler ve kapasite üzerinde yukarı bir sınır ayarlar. Ücretsiz katmanda bazı özellikler kullanılamaz.
-* Hizmet bölgesi belirli senaryoların kullanılabilirliğini tespit edebilir. [Yüksek güvenlik özellikleri](search-security-overview.md) veya [AI zenginleştirmesi](cognitive-search-concept-intro.md)gerekiyorsa, Azure bilişsel arama diğer hizmetlerle aynı bölgeye veya söz konusu özelliği sağlayan bölgelere yerleştirmeniz gerekir. 
+* Hizmet bölgesi belirli senaryoların kullanılabilirliğini tespit edebilir. [Yüksek güvenlik özellikleri](search-security-overview.md) veya [AI zenginleştirmesi](cognitive-search-concept-intro.md)gerekiyorsa, diğer hizmetlerle aynı bölgede veya söz konusu özelliği sağlayan bölgelerde Azure bilişsel arama oluşturmanız gerekir. 
 
 ## <a name="subscribe-free-or-paid"></a>Abone olma (ücretsiz veya ücretli)
 
@@ -43,7 +43,7 @@ Alternatif olarak, [MSDN abone avantajlarınızı etkinleştirin](https://azure.
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
-1. Sol üst köşedeki artı işaretine ("+ kaynak oluştur") tıklayın.
+1. Sol üst köşedeki artı işaretine (**"+ kaynak oluştur"**) tıklayın.
 
 1. "Azure bilişsel arama" bulmak için arama çubuğunu kullanın veya **Web**  >  **Azure bilişsel arama** üzerinden kaynağa gidin.
 

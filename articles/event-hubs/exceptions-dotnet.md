@@ -3,8 +3,7 @@ title: Azure Event Hubs-.NET özel durumları
 description: Bu makale, Azure Event Hubs .NET ileti özel durumlarının ve önerilen eylemlerin bir listesini sağlar.
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
+author: spelluru
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
@@ -12,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
 ms.date: 09/23/2020
-ms.author: shvija
-ms.openlocfilehash: 6a1d7c969d31033ae9d00d212cc8f1a45abbeda1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: spelluru
+ms.openlocfilehash: af2d820fd255d041ade21a00d7d7a9ac6b12fcba
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91347398"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745911"
 ---
 # <a name="eventhubsexception---net"></a>EventHubsException-.NET
 Bir **Eventhubsexception** , Event Hubs öğesine özgü bir işlem, hizmette ve istemciye özgü hatalar da dahil olmak üzere bir soruna neden olduğunda tetiklenir. 

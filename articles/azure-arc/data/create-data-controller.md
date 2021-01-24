@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: b9a41f4d4bb10599d50e58ad6f08d61aaba7ecfc
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: cd41f740d3cdb8130199a5dda6e73209637d5142
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608791"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745943"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Azure Arc veri denetleyicisi oluşturma
 
@@ -26,7 +26,7 @@ Azure Arc etkin veri Hizmetleri, birden fazla farklı yaklaşım kullanılarak b
 
 Şu anda, Kubernetes Hizmetleri ve dağıtımların desteklenen listesi şunlardır:
 
-- Azure Kubernetes Hizmeti (AKS)
+- Azure Kubernetes Service (AKS)
 - Azure Stack 'de Azure Kubernetes hizmet altyapısı (AKS motoru)
 - Azure Stack CI üzerinde Azure Kubernetes hizmeti
 - Azure RedHat OpenShift (ARO)
@@ -54,7 +54,7 @@ Seçtiğiniz seçenek ne olursa olsun, oluşturma işlemi sırasında aşağıda
 - **Veri denetleyicisi Kullanıcı adı** -veri denetleyicisi Yönetici kullanıcısı için herhangi bir Kullanıcı adı.
 - **Veri denetleyicisi parolası** -veri denetleyicisi Yönetici kullanıcısı için bir parola.
 - **Kubernetes ad alanı adı** -içinde veri denetleyicisi oluşturmak Istediğiniz Kubernetes ad alanının adı.
-- **Bağlantı modu** -kümenizin [bağlantı modu](./connectivity.md) . Şu anda yalnızca "dolaylı" desteklenir.
+- **Bağlantı modu** -bağlantı modu, Azure Arc etkin veri Hizmetleri ortamınızdan Azure 'a bağlantı derecesini belirler. Önizleme Şu anda yalnızca dolaylı olarak bağlı ve doğrudan bağlı modlarını destekler.  Bilgi için bkz. [bağlantı modu](./connectivity.md). 
 - **Azure ABONELIK kimliği** -Azure 'da veri denetleyicisi kaynağının oluşturulmasını istediğiniz Azure abonelik GUID 'si.
 - **Azure Kaynak grubu adı** -Azure 'da veri denetleyicisi kaynağının oluşturulmasını istediğiniz kaynak grubunun adı.
 - **Azure konumu** -veri denetleyicisi kaynak meta verilerinin Azure 'Da depolanacağı Azure konumu. Kullanılabilir bölgelerin listesi için bkz. [bölgeye göre Azure genel altyapısı/ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc).

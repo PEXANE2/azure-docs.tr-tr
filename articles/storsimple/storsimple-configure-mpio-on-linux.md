@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 6584b2ecc54efd257bb30c479fd0f22150e8d9e1
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 2b7ddf6423db4c471ee2065635f4e3e89f7eb7b2
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608597"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745742"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>CentOS çalıştıran bir StorSimple ana bilgisayarında MPIO yapılandırma
 Bu makalede, CentOS 6,6 ana sunucunuzda çok paiz ıO (MPIO) yapılandırmak için gereken adımlar açıklanmaktadır. Ana bilgisayar sunucusu, Iscsı başlatıcıları aracılığıyla yüksek kullanılabilirlik için Microsoft Azure StorSimple cihazınıza bağlanır. Bu, çok yollu cihazların otomatik olarak keşfedilmesi ve yalnızca StorSimple birimleri için belirli kurulumun ayrıntılarını açıklar.
@@ -21,10 +21,6 @@ Bu yordam, StorSimple 8000 serisi cihazların tüm modellerine uygulanabilir.
 
 > [!NOTE]
 > Bu yordam bir StorSimple Cloud Appliance için kullanılamaz. Daha fazla bilgi için bkz. bulut gereciniz için konak sunucularını yapılandırma.
-
-> [!NOTE]
-> Bu makale, Microsoft 'un artık kullanmadığını gösteren bir terim olan *kara liste* dönemi başvuruları içerir. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
-
 
 ## <a name="about-multipathing"></a>Çoklu yol hakkında
 Çoklu yol özelliği, bir konak sunucusu ile depolama cihazı arasında birden fazla g/ç yolunu yapılandırmanıza olanak tanır. Bu g/ç yolları, ayrı kablolar, anahtarlar, ağ arabirimleri ve denetleyiciler içerebilen fiziksel SAN bağlantılarıdır. Çoklu yol, tüm toplanmış yollarla ilişkili yeni bir cihaz yapılandırmak için g/ç yollarını toplar.
@@ -54,7 +50,7 @@ Yapılandırma dosyası çok `/etc/multipath.conf` sayıda çoklu yol özelliği
 
 - **Sistem düzeyi Varsayılanları** *(Varsayılanlar)*: sistem düzeyi varsayılanlarını geçersiz kılabilirsiniz.
 - **Kara listelenen cihazlar** *(kara liste)*: cihaz Eşleyici tarafından denetlenmemelidir cihazların listesini belirtebilirsiniz.
-- **Kara liste özel durumları** *(blacklist_exceptions)*: listede listelense bile, belirli cihazların çok yollu cihazlar olarak kabul edilecek şekilde tanımlayabilirsiniz.
+- **Kara liste özel durumları** *(blacklist_exceptions)*: engelleme listesinde listelense bile, belirli cihazların çok yollu cihazlar olarak değerlendirileceğini belirleyebilirsiniz.
 - **Depolama denetleyicisine özgü ayarlar** *(cihazlar)*: satıcı ve ürün bilgilerine sahip cihazlara uygulanacak yapılandırma ayarlarını belirtebilirsiniz.
 - **Cihaza özgü ayarlar** *(multipaths)*: Bu bölümü, ayrı LUN 'lara yönelik yapılandırma ayarlarını ince ayar yapmak için kullanabilirsiniz.
 
@@ -63,7 +59,7 @@ Linux ana bilgisayarına bağlı bir StorSimple cihazı, yüksek kullanılabilir
 
 Aşağıdaki yordamda, iki ağ arabirimi olan bir StorSimple cihazı iki ağ arabirimi içeren bir konağa bağlı olduğunda çoklu pasıların nasıl yapılandırılacağı açıklanmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu bölümde, CentOS sunucusu ve StorSimple cihazınız için yapılandırma önkoşulları ayrıntılı olarak yapılır.
 
 ### <a name="on-centos-host"></a>CentOS ana bilgisayarında
@@ -215,12 +211,12 @@ Yukarıdaki yapılandırma, konak ve veri arabirimleri yönlendirilebilir ise, c
     ```
 
 ### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>2. Adım: StorSimple birimlerine yönelik çoklu paşeyi yapılandırma
-Varsayılan olarak, tüm cihazlar çok yollu. conf dosyasında listelenir ve atlanır. StorSimple cihazlarından birimlerde çok sayıda duruma izin vermek için kara liste özel durumları oluşturmanız gerekir.
+Varsayılan olarak, tüm cihazlar çok yollu. conf dosyasında listelenir ve atlanır. StorSimple cihazlarından birimlerde çok sayıda duruma izin vermek için engelleme listesi özel durumları oluşturmanız gerekir.
 
 1. `/etc/mulitpath.conf` dosyasını düzenleyin. Şunu yazın:
    
     `vi /etc/multipath.conf`
-1. Çok yollu. conf dosyasındaki blacklist_exceptions bölümünü bulun. StorSimple cihazınızın bu bölümde bir kara liste özel durumu olarak listelenmesi gerekir. Bu dosyadaki ilgili satırların açıklamasını aşağıda gösterildiği gibi değiştirebilirsiniz (yalnızca kullandığınız cihazın özel modelini kullanın):
+1. Çok yollu. conf dosyasındaki blacklist_exceptions bölümünü bulun. StorSimple cihazınızın bu bölümde bir blok listesi özel durumu olarak listelenmesi gerekir. Bu dosyadaki ilgili satırların açıklamasını aşağıda gösterildiği gibi değiştirebilirsiniz (yalnızca kullandığınız cihazın özel modelini kullanın):
    
     ```config
     blacklist_exceptions {

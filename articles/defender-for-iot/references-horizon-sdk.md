@@ -1,5 +1,5 @@
 ---
-title: Ufuk SDK 'Sı
+title: Horizon SDK’sı
 titleSuffix: Azure Defender for IoT
 description: Ufıt SDK 'Sı, IoT geliştiricilerin IoT Ağ Analizi programları için otomatik Defender tarafından işlenebilmesi için, IoT geliştiricilerine yönelik olarak ağ trafiğinin kodunu çözen bir sektör eklentileri tasarlamasına olanak tanır.
 author: shhazam-ms
@@ -8,12 +8,12 @@ ms.author: shhazam
 ms.date: 1/13/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: d6105f65508eff59164246020d9a3f286b68c5a1
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 53aafc4146680c89dd01174ec5fde765f1cc0c01
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210752"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746028"
 ---
 # <a name="horizon-proprietary-protocol-dissector"></a>Ufuk özel protokol dissektör
 
@@ -320,13 +320,13 @@ Bu bölümde temel parametreler açıklanmaktadır.
 | **sanity_failure_codes** | Bunlar, kodun kimliğiyle ilgili bir sanlık çakışması olduğunda Ayrıştırıcıdan döndürülen kodlardır. C++ bölümünde sihirli sayı doğrulaması ' na bakın. | Dize |
 | **malformed_codes** | Bunlar düzgün tanımlanmış kodlardır, ancak bir hata algılanır. Örneğin, alan uzunluğu çok kısa veya uzunsa ya da bir değer geçersizdir. | Dize |
 | **dissect_as** | Belirli protokol trafiğinin nereden gelmesi gerektiğini tanımlayan bir dizi. | TCP/UDP, bağlantı noktası vb. |
-| **alanını** | Trafikten hangi alanların ayıklanabileceği bildirimi. Her alanın kendi KIMLIĞI (ad) ve türü (sayısal, dize, ham, dizi, karmaşık) vardır. Örneğin, uygulama ayrıştırıcı dosyasında ayıklanan alan [işlevi](https://docs.google.com/document/d/14nm8cyoGiaE0ODOYQd_xjULxVz9U_bjfPKkcDhOFr5Q/edit#bookmark=id.6s1zcxa9184k) . Yapılandırma dosyasında yazılan alanlar katmana eklenebilecek tek alanlardır. |  |
+| **fields** | Trafikten hangi alanların ayıklanabileceği bildirimi. Her alanın kendi KIMLIĞI (ad) ve türü (sayısal, dize, ham, dizi, karmaşık) vardır. Örneğin, uygulama ayrıştırıcı dosyasında ayıklanan alan [işlevi](https://docs.google.com/document/d/14nm8cyoGiaE0ODOYQd_xjULxVz9U_bjfPKkcDhOFr5Q/edit#bookmark=id.6s1zcxa9184k) . Yapılandırma dosyasında yazılan alanlar katmana eklenebilecek tek alanlardır. |  |
 
 ### <a name="other-advanced-fields"></a>Diğer Gelişmiş alanlar 
 
 Bu bölümde diğer alanlar açıklanmaktadır.
 
-| Parametre etiketi | Description |
+| Parametre etiketi | Açıklama |
 |-----------------|--------|
 | **listelere izin ver** | Protokol değerlerini dizinedebilir ve bunları veri araştırma raporlarında görüntüleyebilirsiniz. Bu raporlar, ağ temelinizi yansıtır. :::image type="content" source="media/references-horizon-sdk/data-mining.png" alt-text="Veri araştırma görünümü örneği."::: <br /> Daha fazla bilgi için bkz. Ayrıntılar için [Dizin oluşturma hizmetine (Baseline) bağlanma](#connect-to-an-indexing-service-baseline) . |
 | **yazılımında** | Bellenim bilgilerini ayıklayabilir, dizin değerlerini tanımlayabilir ve eklenti protokolü için bellenim uyarılarını tetikleyebilirsiniz. Daha fazla bilgi için bkz. Ayrıntılar için [bellenim verilerini ayıklama](#extract-firmware-data) . |
@@ -817,7 +817,7 @@ Bazı protokoller işlev kodu bir hata gösterebilir. Örneğin, protokol her za
 
 Bu bölümde JSON yapılandırma alanları açıklanmaktadır. 
 
-| Alan adı | Description | Olası değerler |
+| Alan adı | Açıklama | Olası değerler |
 |--|--|--|
 | **ID** | Tek bir uyarı KIMLIĞINI temsil eder. Bu bağlamda benzersiz olmalıdır. | Sayısal değer 0-10000 |
 | **İleti** | Kullanıcıya görüntülenecek bilgiler. Bu alan, farklı alanlar kullanmanıza izin verir. | Protokolinizdeki herhangi bir alanı veya herhangi bir alt katman protokolünü kullanın. |
@@ -885,7 +885,7 @@ Daha önce ek bilgi ayıklamak için ayrıştırılabilen protokollerin değerle
 
 Örneğin, TCP 'yi temel alan değer için IPv4 katmanından değerleri kullanabilirsiniz. Bu katmandan paketin kaynağı ve hedef gibi değerleri ayıklayabilirsiniz.
 
-Bunu başarmak için, JSON yapılandırma dosyasının özelliği kullanılarak güncelleştirilmesi gerekir `whitelist` .
+Bunu başarmak için, JSON yapılandırma dosyasının özelliği kullanılarak güncelleştirilmesi gerekir `whitelists` .
 
 ## <a name="allow-list-data-mining-fields"></a>İzin verilenler listesi (veri madenciliği) alanları
 

@@ -1,23 +1,23 @@
 ---
-title: 'Öğretici: Azure Machine Learning ile özel bir yetenek oluşturma ve dağıtma'
+title: 'Örnek: Azure Machine Learning ile özel bir yetenek oluşturma ve dağıtma'
 titleSuffix: Azure Cognitive Search
-description: Bu öğreticide, Azure Bilişsel Arama AI zenginleştirme işlem hattı için özel bir yetenek derlemek ve dağıtmak üzere Azure Machine Learning nasıl kullanılacağı gösterilmektedir.
+description: Bu örnekte, Azure Bilişsel Arama 'ın AI zenginleştirme işlem hattı için özel bir yetenek derlemek ve dağıtmak üzere Azure Machine Learning nasıl kullanılacağı gösterilmektedir.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: fa961a5a6d3a3b827a082fbac2acc3431ac40949
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 98d8395236bf955eed88f36c03c96981fa0e4b6b
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057612"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745642"
 ---
-# <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Öğretici: Azure Machine Learning ile özel bir yetenek derleme ve dağıtma 
+# <a name="example-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Örnek: Azure Machine Learning ile özel bir yetenek oluşturun ve dağıtın 
 
-Bu öğreticide, incelemelerden en boy tabanlı yaklaşımı ayıklamak üzere Azure Machine Learning kullanarak [özel bir yetenek](./cognitive-search-aml-skill.md) oluşturmak için [otel İncelemeleri veri kümesini](https://www.kaggle.com/datafiniti/hotel-reviews) (CREATIVE Commons LISANS [CC BY-NC-SA 4,0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt)altında dağıtılır) kullanacaksınız. Bu, aynı gözden geçirme içindeki olumlu ve olumsuz yaklaşım atamasının, personel, oda, giriş veya havuz gibi tanımlanan varlıklara doğru şekilde atanmasını sağlar.
+Bu örnekte, incelemelerden en boy tabanlı yaklaşımı çıkarmak için Azure Machine Learning kullanarak [özel bir yetenek](./cognitive-search-aml-skill.md) oluşturmak için [otel İncelemeleri veri kümesini](https://www.kaggle.com/datafiniti/hotel-reviews) (CREATIVE Commons LISANS [CC BY-NC-SA 4,0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt)altında dağıtılır) kullanacaksınız. Bu, aynı gözden geçirme içindeki olumlu ve olumsuz yaklaşım atamasının, personel, oda, giriş veya havuz gibi tanımlanan varlıklara doğru şekilde atanmasını sağlar.
 
 Azure Machine Learning ' de en boy tabanlı yaklaşım modelini eğitmek için, [NLP tariflerinin deposunu](https://github.com/microsoft/nlp-recipes/tree/master/examples/sentiment_analysis/absa)kullanacaksınız. Model daha sonra bir Azure Kubernetes kümesinde bir uç nokta olarak dağıtılır. Dağıtım yapıldıktan sonra, uç nokta, Bilişsel Arama hizmeti tarafından kullanılmak üzere bir AML yeteneği olarak enzenginleştirme ardışık düzenine eklenir.
 
@@ -31,14 +31,14 @@ Belirtilen iki veri kümesi vardır. Modeli kendiniz eğmek istiyorsanız hotel_
 > * Dağıtılan modelden özel bir beceri olarak çıkış alma
 
 > [!IMPORTANT] 
-> Bu yetenek Şu anda genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Şu anda .NET SDK desteği yok.
+> Bu yetenek Şu anda genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Şu anda .NET SDK desteği yok.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği-ücretsiz bir [abonelik](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)alın.
 * [Bilişsel Arama hizmeti](./search-get-started-arm.md)
 * [Bilişsel hizmetler kaynağı](../cognitive-services/cognitive-services-apis-create-account.md?tabs=multiservice%2cwindows)
-* [Azure depolama hesabı](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [Azure Storage hesabı](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [Azure Machine Learning çalışma alanı](../machine-learning/how-to-manage-workspace.md)
 
 ## <a name="setup"></a>Kurulum

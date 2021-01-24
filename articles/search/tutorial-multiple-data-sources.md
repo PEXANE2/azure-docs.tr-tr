@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 10/13/2020
+ms.date: 01/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c9d9c43ae1be755ccb30fc377692257a81332ea8
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: b8711fa468cf361a42ed996c5b5dc50372d6cf90
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593731"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746161"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak birden çok veri kaynağından Dizin
 
@@ -66,7 +66,7 @@ Bu örnek, yedi kurgusal oteli tanımlayan iki küçük veri kümesini kullanır
 
 1. [Azure Portal](https://portal.azure.com)oturum açın ve Azure Cosmos DB hesabınıza genel bakış sayfasına gidin.
 
-1. **Veri Gezgini** ' yi seçin ve ardından **Yeni veritabanı** ' nı seçin.
+1. **Veri Gezgini** ' yi seçin ve ardından **Yeni veritabanı**' nı seçin.
 
    :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-newdb.png" alt-text="Yeni veritabanı oluşturma" border="false":::
 
@@ -88,13 +88,13 @@ Bu örnek, yedi kurgusal oteli tanımlayan iki küçük veri kümesini kullanır
 
 ### <a name="azure-blob-storage"></a>Azure Blob depolama
 
-1. [Azure Portal](https://portal.azure.com)oturum açın, Azure depolama hesabınıza gidin, **Bloblar** ' a tıklayın ve ardından **+ Container** ' a tıklayın.
+1. [Azure Portal](https://portal.azure.com)oturum açın, Azure depolama hesabınıza gidin, **Bloblar**' a tıklayın ve ardından **+ Container**' a tıklayın.
 
 1. Örnek otel odası JSON dosyalarını depolamak için **otel odaları** adlı [bir blob kapsayıcısı oluşturun](../storage/blobs/storage-quickstart-blobs-portal.md) . Ortak erişim düzeyini geçerli değerlerinden herhangi birine ayarlayabilirsiniz.
 
    :::image type="content" source="media/tutorial-multiple-data-sources/blob-add-container.png" alt-text="Blob kapsayıcısı oluşturma" border="false":::
 
-1. Kapsayıcı oluşturulduktan sonra açın ve komut çubuğunda **karşıya yükle** ' yi seçin. Örnek dosyaları içeren klasöre gidin. Tümünü seçip **karşıya yükle** ' ye tıklayın.
+1. Kapsayıcı oluşturulduktan sonra açın ve komut çubuğunda **karşıya yükle** ' yi seçin. Örnek dosyaları içeren klasöre gidin. Tümünü seçip **karşıya yükle**' ye tıklayın.
 
    :::image type="content" source="media/tutorial-multiple-data-sources/blob-upload.png" alt-text="Dosyaları karşıya yükleme" border="false":::
 
@@ -110,7 +110,7 @@ Arama hizmetinize kimlik doğrulaması yapmak için, hizmet URL 'SI ve erişim a
 
 1. [Azure Portal oturum açın](https://portal.azure.com/)ve arama hizmetine **genel bakış** sayfasında URL 'yi alın. Örnek uç nokta `https://mydemo.search.windows.net` şeklinde görünebilir.
 
-1. **Ayarlar**  >  **anahtarlar** ' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
+1. **Ayarlar**  >  **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
 
    :::image type="content" source="media/search-get-started-javascript/service-name-and-keys.png" alt-text="Hizmet adı ve yönetici ve sorgu anahtarlarını alın" border="false":::
 

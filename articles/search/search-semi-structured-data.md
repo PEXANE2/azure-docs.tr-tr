@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 09/25/2020
-ms.openlocfilehash: 7c88aea6aff942cdcf5cbc022df8f07cfe0d4cce
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.date: 01/25/2021
+ms.openlocfilehash: a7a010e3c60d6b96947597878fcd870e9845b2b3
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701288"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746145"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>Öğretici: REST kullanarak Azure Storage 'dan JSON bloblarını dizine
 
@@ -98,13 +98,13 @@ REST çağrıları için her istekte hizmet URL'sinin ve bir erişim anahtarın�
 
 1. **Ayarlar**  >  **anahtarlar**' da, hizmette tam haklar için bir yönetici anahtarı alın. Üzerinde bir tane almanız gereken iş sürekliliği için iki adet değiştirilebilir yönetici anahtarı vardır. Nesneleri eklemek, değiştirmek ve silmek için isteklerde birincil veya ikincil anahtarı kullanabilirsiniz.
 
-:::image type="content" source="media/search-get-started-rest/get-url-key.png" alt-text="HTTP uç noktası ve erişim anahtarı al" border="false":::
+   :::image type="content" source="media/search-get-started-rest/get-url-key.png" alt-text="HTTP uç noktası ve erişim anahtarı al" border="false":::
 
 Tüm istekler hizmetinize gönderilen her istekte bir API anahtarı gerektirir. İstek başına geçerli bir anahtara sahip olmak, isteği gönderen uygulama ve bunu işleyen hizmet arasında güven oluşturur.
 
 ## <a name="2---set-up-postman"></a>2-Postman 'ı ayarlama
 
-Postman’i başlatın ve bir HTTP isteği ayarlayın. Bu araçla ilgili bilgi sahibi değilseniz bkz. [Azure BILIŞSEL arama REST API 'Lerini araştırma](search-get-started-rest.md).
+Postman’i başlatın ve bir HTTP isteği ayarlayın. Bu araçla ilgili bilgi sahibi değilseniz bkz. [REST API 'leri kullanarak arama dizini oluşturma](search-get-started-rest.md).
 
 Bu öğreticideki her çağrının istek yöntemleri **gönderi** ve **Get**' dir. Bir veri kaynağı, dizin ve Dizin Oluşturucu oluşturmak için arama hizmetinize üç API çağrısı yaparsınız. Veri kaynağı, depolama hesabınıza ve JSON verilerinize yönelik bir işaretçi içerir. Arama hizmetiniz, veriler yüklenirken bağlantı kurar.
 
@@ -158,7 +158,7 @@ URI 'Ler bir api sürümü belirtmeli ve her çağrının **oluşturulan bir 201
     ```
 
 ## <a name="4---create-an-index"></a>4-dizin oluşturma
-    
+
 İkinci çağrı, tüm aranabilir verileri depolayan bir Azure Bilişsel Arama dizini oluşturan [Dizin API 'Si oluşturur](/rest/api/searchservice/create-index). Dizin, tüm parametreleri ve parametrelerin özniteliklerini belirtir.
 
 1. Bu çağrının uç noktasını olarak ayarlayın `https://[service name].search.windows.net/indexes?api-version=2020-06-30` . `[service name]` değerini, arama hizmetinizin adıyla değiştirin.

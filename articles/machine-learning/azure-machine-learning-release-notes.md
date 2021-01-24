@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 38f37ff2fe150a9e1998fbe5e963b8737a6e1533
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 11aa739beeb07c3de056d8a2430b556fcc40b178
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737974"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746739"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
@@ -493,8 +493,8 @@ Veri etiketlemesi içindeki görüntü örneği segmentleme (Çokgen ek açıkla
     + Kullanıcılar artık parametresini kullanarak tahmin görevleri için bir zaman serisi frekansı belirtebilir `freq` .
   + **azureml-train-automl-runtime**
     + En iyi model açıklamaları başarısız olduğunda, geliştirilmiş konsol çıkışı.
-    + "Backlist_models" giriş parametresi "blocked_models" olarak yeniden adlandırıldı.
-      + "Whitelist_models" giriş parametresi "allowed_models" olarak yeniden adlandırıldı.
+    + Hassas bir terimi kaldırmak için giriş parametresi "blocked_models" olarak yeniden adlandırıldı.
+      + Hassas bir terimi kaldırmak için giriş parametresi "allowed_models" olarak yeniden adlandırıldı.
     + Kullanıcılar artık parametresini kullanarak tahmin görevleri için bir zaman serisi frekansı belirtebilir `freq` .
 
   

@@ -65,10 +65,12 @@
       href: howto-manage-digital-twin.md
     - name: Cihazı sertifikalama
       href: howto-certify-device.md
-    - name: IoT Tak Çalıştır köprüsünü yükleme ve kullanma
+    - name: IoT Tak ve Kullan köprüsü örneğine bağlama
       href: howto-use-iot-pnp-bridge.md
-    - name: 'IoT Tak Çalıştır köprüsünü oluşturma, dağıtma ve genişletme'
+    - name: IoT Tak ve Kullan köprüsü oluşturma ve dağıtma
       href: howto-build-deploy-extend-pnp-bridge.md
+    - name: IoT Tak ve Kullan köprü genişletme
+      href: howto-author-pnp-bridge-adapter.md
 - name: Başvuru
   items:
     - name: Kitaplıklar ve SDK’lar

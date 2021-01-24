@@ -11,19 +11,16 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d436414393d77c83acc835110f17e55e491dce1
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 695261ceae9d64be9395e6de082f97be04292078
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503498"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745995"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Multi-Factor Authentication NPS uzantısı için gelişmiş yapılandırma seçenekleri
 
 Ağ Ilkesi sunucusu (NPS) uzantısı, bulut tabanlı Azure AD Multi-Factor Authentication özelliklerinizi şirket içi altyapınızla genişletir. Bu makalede, uzantının zaten yüklü olduğu varsayılır ve şimdi, uzantıyı gereksinimlerinize göre nasıl özelleştireceğinizi öğrenmek istiyorsunuz.
-
-> [!NOTE]
-> Bu makalede, Microsoft tarafından kullanılmayan bir terim olan *beyaz liste* teriminin başvuruları yer almaktadır. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
 
 ## <a name="alternate-login-id"></a>Alternatif oturum açma KIMLIĞI
 
@@ -33,7 +30,7 @@ NPS uzantısı içinde Azure AD Multi-Factor Authentication için UPN yerine kul
 
 Alternatif oturum açma kimliklerini yapılandırmak için `HKLM\SOFTWARE\Microsoft\AzureMfa` aşağıdaki kayıt defteri değerlerini adresine gidin ve düzenleyin:
 
-| Ad | Tür | Varsayılan değer | Description |
+| Ad | Tür | Varsayılan değer | Açıklama |
 | ---- | ---- | ------------- | ----------- |
 | LDAP_ALTERNATE_LOGINID_ATTRIBUTE | string | Olmamalıdır | UPN yerine kullanmak istediğiniz Active Directory özniteliğin adını belirleyin. Bu öznitelik AlternateLoginID özniteliği olarak kullanılır. Bu kayıt defteri değeri [geçerli bir Active Directory özniteliğine](/windows/win32/adschema/attributes-all) ayarlandıysa (örneğin, posta veya DisplayName), kimlik doğrulaması IÇIN kullanıcının UPN 'si yerine özniteliğin değeri kullanılır. Bu kayıt defteri değeri boş veya yapılandırılmamışsa, AlternateLoginID devre dışıdır ve kullanıcının UPN 'si kimlik doğrulaması için kullanılır. |
 | LDAP_FORCE_GLOBAL_CATALOG | boolean | Yanlış | AlternateLoginID aranırken LDAP aramaları için genel kataloğun kullanımını zorlamak üzere bu bayrağı kullanın. Bir etki alanı denetleyicisini genel katalog olarak yapılandırın, AlternateLoginID özniteliğini genel kataloğa ekleyin ve bu bayrağı etkinleştirin. <br><br> LDAP_LOOKUP_FORESTS yapılandırıldıysa (boş değil), kayıt defteri ayarı değeri ne olursa olsun, **Bu bayrak true olarak zorlanır**. Bu durumda, NPS uzantısı genel kataloğun her orman için AlternateLoginID özniteliğiyle yapılandırılmasını gerektirir. |
@@ -47,14 +44,14 @@ Sunucu kullanılabilirliğini izlemeniz gerekiyorsa, yük dengeleyiciler, iş y�
 
 IP izin verilen listesini yapılandırmak için `HKLM\SOFTWARE\Microsoft\AzureMfa` aşağıdaki kayıt defteri değerini adresine gidin ve yapılandırın:
 
-| Ad | Tür | Varsayılan değer | Description |
+| Ad | Tür | Varsayılan değer | Açıklama |
 | ---- | ---- | ------------- | ----------- |
 | IP_WHITELIST | string | Olmamalıdır | IP adreslerinin noktalı virgülle ayrılmış bir listesini sağlar. NAS/VPN sunucusu gibi hizmet isteklerinin gerçekleştiği makinelerin IP adreslerini ekleyin. IP aralıkları ve alt ağları desteklenmez. <br><br> Örneğin, *10.0.0.1; 10.0.0.2; 10.0.0.3*.
 
 > [!NOTE]
 > Bu kayıt defteri anahtarı yükleyici tarafından varsayılan olarak oluşturulmaz ve hizmet yeniden başlatıldığında AuthZOptCh günlüğünde bir hata görünür. Günlükteki bu hata yoksayılabilir, ancak bu kayıt defteri anahtarı oluşturulup boş bırakılırsa, hata iletisi döndürmez.
 
-Bir istek içinde bulunan bir IP adresinden geldiğinde `IP_WHITELIST` , iki adımlı doğrulama atlanır. IP listesi, RADIUS isteğinin *Clientnasıpaddress* ÖZNITELIĞINDE belirtilen IP adresiyle karşılaştırılır. Bir RADIUS isteği, bir Ginasıpaddress özniteliği olmadan geliyorsa, şu uyarı günlüğe kaydedilir: "P_WHITE_LIST_WARNING:: IP beyaz listesi, Nasıpaddress özniteliğinde RADIUS isteğindeki kaynak IP eksik olduğu için yok sayılıyor."
+Bir istek içinde bulunan bir IP adresinden geldiğinde `IP_WHITELIST` , iki adımlı doğrulama atlanır. IP listesi, RADIUS isteğinin *Clientnasıpaddress* ÖZNITELIĞINDE belirtilen IP adresiyle karşılaştırılır. Bir RADIUS isteği, bir Ginasıpaddress özniteliği olmadan geliyorsa, bir uyarı günlüğe kaydedilir: "IP_WHITE_LIST_WARNING:: IP beyaz listesi, RADIUS istek Nasıpaddress özniteliğinde kaynak IP eksik olduğu için yoksayılıyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

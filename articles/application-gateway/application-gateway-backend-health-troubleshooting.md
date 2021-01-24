@@ -7,23 +7,20 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: 05df2144b892aed764f9606fb19bd6a3242b97f3
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 5e5be79371b640431603409a34b1a7812ed5c2a3
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934909"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746113"
 ---
-<a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Application Gateway arka uç sistem durumu sorunlarını giderme
+<a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Application Gateway'de arka uç durumu sorunlarını giderme
 ==================================================
 
 <a name="overview"></a>Genel Bakış
 --------
 
 Varsayılan olarak Azure Application Gateway, arka uç sunucularını inceleyerek sistem durumunu denetler ve istekleri sunmaya hazır olup olmadığını kontrol eder. Kullanıcılar ayrıca ana bilgisayar adından, araştırılan yoldan ve durum kodlarından sağlıklı olarak kabul edileceği özel yoklamalar oluşturabilir. Her durumda, arka uç sunucusu başarıyla yanıt vermezse, Application Gateway sunucuyu sağlıksız olarak işaretler ve istekleri sunucuya iletmeyi sonlandırır. Sunucu başarıyla yanıt vermeye başladıktan sonra Application Gateway istekleri iletmeyi sürdürür.
-
-> [!NOTE]
-> Bu makalede, Microsoft tarafından kullanılmayan bir terim olan *beyaz liste* teriminin başvuruları yer almaktadır. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
 
 ### <a name="how-to-check-backend-health"></a>Arka uç durumunu denetleme
 
@@ -245,7 +242,7 @@ Güvenilen kök sertifikaların Application Gateway nasıl ayıklanıp yüklenem
 
 #### <a name="trusted-root-certificate-mismatch"></a>Güvenilen kök sertifika uyumsuzluğu
 
-**İleti:** Arka uç tarafından kullanılan sunucu sertifikasının kök sertifikası, uygulama ağ geçidine eklenmiş olan güvenilen kök sertifika ile eşleşmiyor. Arka ucun beyaz listeye doğru kök sertifikayı eklemediğinizden emin olun
+**İleti:** Arka uç tarafından kullanılan sunucu sertifikasının kök sertifikası, uygulama ağ geçidine eklenmiş olan güvenilen kök sertifika ile eşleşmiyor. Arka ucun izin öğesine doğru kök sertifikayı eklemediğinizden emin olun.
 
 **Neden:** Application Gateway v2 ile uçtan uca SSL, sunucunun sağlıklı bir şekilde çıkarılması için arka uç sunucusunun sertifikasının doğrulanmasını gerektirir.
 Bir TLS/SSL sertifikasının güvenilir olması için, arka uç sunucu sertifikasının Application Gateway güvenilir deposunda bulunan bir CA tarafından verilmesi gerekir. Sertifika, güvenilir bir CA (örneğin, kendinden imzalı bir sertifika kullanıldıysa) tarafından verilmediyse, kullanıcıların sertifikayı verenin sertifikasını Application Gateway yüklemesi gerekir.
@@ -357,8 +354,8 @@ Bu davranış, aşağıdakilerden biri veya birkaçı nedeniyle oluşabilir:
 1.  Application Gateway alt ağındaki NSG, "Internet" üzerinden 65503-65534 (v1 SKU) veya 65200-65535 (v2 SKU) bağlantı noktalarına gelen erişimi engelliyor.
 1.  Application Gateway alt ağındaki UDR, varsayılan yol (0.0.0.0/0) olarak ayarlanır ve sonraki atlama "Internet" olarak belirtilmez.
 1.  Varsayılan yol, BGP üzerinden sanal ağa yönelik bir ExpressRoute/VPN bağlantısı tarafından tanıtılabilir.
-1.  Özel DNS sunucusu, ortak etki alanı adlarını giderebilecek bir sanal ağ üzerinde yapılandırılır.
-1.  Application Gateway sağlıksız bir durumda.
+1.  Özel DNS sunucusu ortak etki alanı adlarını çözümleyemeyen bir sanal ağda yapılandırıldı.
+1.  Application Gateway İyi Durumda Değil.
 
 **Çözüm:**
 

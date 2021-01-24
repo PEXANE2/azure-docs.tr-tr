@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/25/2020
-ms.openlocfilehash: b69feec7249c80fc63d803a14f360614bcf880fa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 01/23/2021
+ms.openlocfilehash: 590afe4c396942c5179826cd831908e37f48c3e4
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91399831"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745759"
 ---
 # <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>Hızlı başlangıç: portalda bir demo uygulaması oluşturma (Azure Bilişsel Arama)
 
@@ -21,7 +21,7 @@ Bir tarayıcıda çalışan indirilebilir, "localhost" stilinde bir Web uygulama
 
 Demo uygulaması, bir dizinin bir istemci uygulamasında nasıl çalıştığını görselleştirmenize yardımcı olabilir, ancak üretim senaryoları için tasarlanmamıştır. İstemci uygulamaları, oluşturulan HTML sayfasının sağlamadığı güvenlik, hata işleme ve barındırma mantığını içermelidir. Bir istemci uygulaması oluşturmaya hazırsanız, sonraki adımlar için [.NET SDK kullanarak ilk arama uygulamanızı oluşturma](tutorial-csharp-create-first-app.md) bölümüne bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
@@ -55,13 +55,13 @@ Dizin kullanıma hazırsa, sonraki adıma geçin.
 
 Sihirbaz, bir küçük resim görüntüsü, başlık ve açıklama için boşluk içeren işlenmiş arama sonuçları için temel bir düzen sağlar. Bu öğelerin her birini yedeklemek, dizininizdeki verileri sağlayan bir alandır. 
 
-1. Küçük resim bölümünde *reatastate-US-Sample* dizinindeki *küçük resim* alanını seçin. Bu örnek, resim küçük resimlerini, *küçük resim*adlı bir alanda depolanan url ile adreslenen görüntüler biçiminde eklemek için oluşur. Dizininizdeki görüntü yoksa, bu alanı boş bırakın.
+1. Küçük resim bölümünde *reatastate-US-Sample* dizinindeki *küçük resim* alanını seçin. Bu örnek, resim küçük resimlerini, *küçük resim* adlı bir alanda depolanan url ile adreslenen görüntüler biçiminde eklemek için oluşur. Dizininizdeki görüntü yoksa, bu alanı boş bırakın.
 
 1. Başlık bölümünde her bir belgenin benzersizlik alanını ileten bir alan seçin. Bu örnekte, liste KIMLIĞI makul bir seçimdir.
 
 1. Açıklama ' da, birisinin belirli bir belgeye tıklamaya karar vermesine yardımcı olabilecek ayrıntılar sağlayan bir alan seçin.
 
-   :::image type="content" source="media/search-create-app-portal/configure-results.png" alt-text="örnek veriler için veri kaynağı sayfası" border="false":::
+   :::image type="content" source="media/search-create-app-portal/configure-results.png" alt-text="örnek veriler için sonuçları yapılandırma" border="false":::
 
 ## <a name="add-a-sidebar"></a>Kenar çubuğu ekle
 
@@ -72,8 +72,9 @@ Azure Bilişsel Arama 'de, çok yönlü gezinme bir toplu filtreleme deneyimidir
 > [!TIP]
 > Tam dizin şemasını portalda görüntüleyebilirsiniz. Her dizinin Genel Bakış sayfasındaki **Dizin tanımı (JSON)** bağlantısını bulun. Çok yönlü gezintiye uygun olan alanlarda "filtrelenebilir: true" ve "çok yönlü tablo: true" öznitelikleri vardır.
 
-Geçerli model seçimini kabul edin ve sonraki sayfaya devam edin.
+1. Sihirbazda, sayfanın üst kısmındaki **kenar çubuğu** sekmesini seçin. Dizinde filtrelenebilir ve çok yönlü tablo olarak öznitelikli tüm alanların listesini görürsünüz.
 
+1. Çok yönlü olan alanların geçerli seçimini kabul edin ve sonraki sayfaya devam edin.
 
 ## <a name="add-typeahead"></a>Typeahead Ekle
 
@@ -83,20 +84,44 @@ Typeahead işlevselliği otomatik tamamlama ve sorgu önerileri biçiminde kulla
 
 Aşağıdaki ekran görüntüsünde, sihirbazda bulunan işlenmiş bir sayfayla birlikte, sihirbazdaki seçenekler gösterilmektedir. Alan seçimlerinin nasıl kullanıldığını ve öneri içindeki etiketlemeyi dahil etmek veya hariç tutmak için "alan adını göster" seçeneğini görebilirsiniz.
 
-:::image type="content" source="media/search-create-app-portal/suggestions.png" alt-text="örnek veriler için veri kaynağı sayfası":::
+:::image type="content" source="media/search-create-app-portal/suggestions.png" alt-text="Sorgu önerisi yapılandırması":::
+
+## <a name="add-suggestions"></a>Öneri ekleme
+
+Öneriler, arama kutusuna eklenen otomatikleştirilmiş sorgu istemlerine başvurur. Bilişsel Arama, kısmen girilen bir arama teriminin *Otomatik tamamlamayı* destekler ve olası eşleşen belgelerin bir açılan listesi için *öneriler* .
+
+Sihirbaz önerileri destekler ve önerilen sonuçlar sağlayabilen alanlar, dizindeki bir yapıdan türetilir [`Suggesters`](index-add-suggesters.md) :
+
+```JSON
+  "suggesters": [
+    {
+      "name": "sg",
+      "searchMode": "analyzingInfixMatching",
+      "sourceFields": [
+        "number",
+        "street",
+        "city",
+        "region",
+        "postCode",
+        "tags"
+      ]
+```
+
+1. Sihirbazda, sayfanın üst kısmındaki **öneriler** sekmesini seçin. Öneri sağlayıcıları olarak dizin şemasında belirtilen tüm alanların listesini görürsünüz.
+
+1. Geçerli seçimi kabul edin ve sonraki sayfaya devam edin.
 
 ## <a name="create-download-and-execute"></a>Oluşturma, indirme ve yürütme
 
-1. HTML dosyasını oluşturmak için **demo uygulaması oluştur** ' u seçin.
+1. HTML dosyasını oluşturmak için sayfanın alt kısmındaki **demo uygulaması oluştur** ' u seçin.
 
 1. İstendiğinde, dosyayı indirmek için **uygulamanızı indir** ' i seçin.
 
-1. Dosyayı açın. Aşağıdaki ekran görüntüsüne benzer bir sayfa görmeniz gerekir. Bir terim girin ve sonuçları daraltmak için filtreleri kullanın. 
+1. Dosyayı açın ve Ara düğmesine tıklayın. Bu eylem, `*` rastgele bir sonuç kümesi döndüren boş bir sorgu () olabilen bir sorguyu yürütür. Sayfa aşağıdaki ekran görüntüsüne benzer görünmelidir. Bir terim girin ve sonuçları daraltmak için filtreleri kullanın. 
 
 Temel alınan dizin, belgeler arasında çoğaltılan kurgusal, oluşturulan verilerden oluşur ve açıklamalar bazen görüntüyle eşleşmez. Kendi dizinlerinizi temel alan bir uygulama oluştururken daha açık bir deneyim de bekleyebilir.
 
-:::image type="content" source="media/search-create-app-portal/run-app.png" alt-text="örnek veriler için veri kaynağı sayfası":::
-
+:::image type="content" source="media/search-create-app-portal/run-app.png" alt-text="Uygulamayı çalıştırma":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -108,7 +133,7 @@ Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlant�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Varsayılan uygulama ilk keşif ve küçük görevler için yararlı olsa da, API 'Lerin erken şekilde incelenmesi, kavram ve iş akışını daha derin bir düzeyde anlamanıza yardımcı olur:
+Demo uygulaması, prototip veya ön uç kodu yazmak zorunda kalmadan bir son kullanıcı deneyiminin benzetimini yapmanıza olanak tanıdığından, prototip yazma için faydalıdır. Ön uç özellikleri hakkında daha fazla bilgi için, çok yönlü gezinme ile başlayın:
 
 > [!div class="nextstepaction"]
-> [.NET SDK kullanarak dizin oluşturma](./search-get-started-dotnet.md)
+> [Model filtresi oluşturma](search-filters-facets.md)

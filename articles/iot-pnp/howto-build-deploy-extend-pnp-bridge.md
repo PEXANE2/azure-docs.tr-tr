@@ -1,27 +1,26 @@
 ---
-title: IoT Tak ve Kullan köprüsü oluşturma, dağıtma ve genişletme | Microsoft Docs
-description: IoT Tak ve Kullan köprü bileşenlerini belirler. Köprüyü genişletmeyi ve IoT cihazlarında, ağ geçitlerinde ve bir IoT Edge modülü olarak nasıl çalıştırılacağını öğrenin.
+title: IoT Tak ve Kullan köprüsü oluşturma ve dağıtma | Microsoft Docs
+description: IoT Tak ve Kullan köprü bileşenlerini belirler. IoT cihazlarında, ağ geçitlerinde ve IoT Edge modülü olarak nasıl çalıştırılacağını öğrenin.
 author: usivagna
 ms.author: ugans
-ms.date: 12/11/2020
+ms.date: 1/20/2021
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 43c89b0fac08bf9f2c72f885fbf4788371876b17
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: b7947eab93ebc8e523e163af601893522132e06a
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678585"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745676"
 ---
-# <a name="build-deploy-and-extend-the-iot-plug-and-play-bridge"></a>IoT Tak ve Kullan köprüsü oluşturma, dağıtma ve genişletme
+# <a name="build-and-deploy-the-iot-plug-and-play-bridge"></a>IoT Tak ve Kullan köprüsü oluşturma ve dağıtma
 
-IoT Tak ve Kullan Köprüsü, bir ağ geçidine bağlı mevcut Cihazları IoT Hub 'ınıza bağlamanıza olanak tanır. IoT Tak ve Kullan arabirimlerini iliştirilmiş cihazlara eşlemek için köprü kullanırsınız. IoT Tak ve Kullan arabirimi, bir cihazın gönderdiği Telemetriyi, cihaz ile bulut arasında eşitlenen özellikleri ve cihazın yanıt verdiği komutları tanımlar. Açık kaynaklı köprü uygulamasını Windows veya Linux ağ geçitlerine yükleyebilir ve yapılandırabilirsiniz.
+[Iot Tak ve Kullan köprüsü](concepts-iot-pnp-bridge.md#iot-plug-and-play-bridge-architecture) , bir ağ geçidine bağlı mevcut Cihazları IoT Hub 'ınıza bağlamanıza olanak tanır. IoT Tak ve Kullan arabirimlerini iliştirilmiş cihazlara eşlemek için köprü kullanırsınız. IoT Tak ve Kullan arabirimi, bir cihazın gönderdiği Telemetriyi, cihaz ile bulut arasında eşitlenen özellikleri ve cihazın yanıt verdiği komutları tanımlar. Açık kaynaklı köprü uygulamasını Windows veya Linux ağ geçitlerine yükleyebilir ve yapılandırabilirsiniz. Ayrıca, köprü Azure IoT Edge çalışma zamanı modülü olarak çalıştırılabilir.
 
 Bu makalede nasıl yapılacağını ayrıntılı olarak açıklanmaktadır:
 
 - Köprü yapılandırın.
-- Yeni bağdaştırıcılar oluşturarak bir köprüyü genişletin.
 - Farklı ortamlarda köprü oluşturma ve çalıştırma.
 
 Köprünün nasıl kullanılacağını gösteren basit bir örnek için bkz. [Linux veya Windows üzerinde çalışan ıot Tak ve Kullan köprüsü örneğini IoT Hub olarak bağlama](howto-use-iot-pnp-bridge.md).
@@ -78,97 +77,6 @@ Yapılandırma dosyasını köprüye sağlamak için aşağıdaki seçeneklerden
 
 Köprü, bir IoT Edge çalışma zamanı üzerinde IoT Edge modülü olarak çalıştırıldığında, yapılandırma dosyası buluttan istenen özelliğe yönelik bir güncelleştirme olarak gönderilir `PnpBridgeConfig` . Köprü, bağdaştırıcılar ve bileşenleri yapılandırmadan önce bu özellik güncelleştirmesini bekler.
 
-## <a name="extend-the-bridge"></a>Köprüyü genişletme
-
-Köprünün yeteneklerini genişletmek için kendi köprü bağdaştırıcılarınızı yazabilirsiniz.
-
-Köprü bağdaştırıcıları şu amaçlarla kullanır:
-
-- Bir cihaz ile bulut arasında bağlantı kurun.
-- Bir cihaz ile bulut arasında veri akışını etkinleştirin.
-- Cihaz yönetimini buluttan etkinleştirin.
-
-Her köprü bağdaştırıcısında şunları yapmanız gerekir:
-
-- Dijital bir TWINS arabirimi oluşturun.
-- Cihaz tarafı işlevselliğini telemetri, Özellikler ve komutlar gibi bulut tabanlı yeteneklere bağlamak için arabirimini kullanın.
-- Cihaz donanımı veya üretici yazılımıyla denetim ve veri iletişimi kurun.
-
-Her köprü bağdaştırıcısı, bağdaştırıcının cihaza bağlanıp cihazla etkileşime girdiği belirli bir cihaz türü ile etkileşime girer. Bir cihazla iletişim, bir anlaşma Protokolü kullandığından bile, bir köprü bağdaştırıcısında verileri cihazdan yorumlayacağınız birden çok yol olabilir. Bu senaryoda, Köprü bağdaştırıcısı bağdaştırıcının verileri ayrıştırmak için kullanması gereken *arabirim yapılandırmasını* belirleyebilmek için yapılandırma dosyasındaki bağdaştırıcının bilgilerini kullanır.
-
-Bir köprü bağdaştırıcısı, cihazla etkileşim kurmak için cihaz ve API 'Ler tarafından desteklenen bir iletişim protokolü ve temel alınan işletim sistemi ya da cihaz satıcısı tarafından kullanılır.
-
-Bir köprü bağdaştırıcısı, bulutla etkileşimde bulunmak için Azure IoT cihaz C SDK 'Sı tarafından telemetri göndermek, dijital ikizi arabirimleri oluşturmak, özellik güncelleştirmeleri göndermek ve özellik güncelleştirmeleri ve komutları için geri çağırma işlevleri oluşturmak için tarafından sunulan API 'Leri kullanır.
-
-### <a name="create-a-bridge-adapter"></a>Köprü bağdaştırıcısı oluşturma
-
-Köprü, [_PNP_ADAPTER](https://github.com/Azure/iot-plug-and-play-bridge/blob/9964f7f9f77ecbf4db3b60960b69af57fd83a871/pnpbridge/src/pnpbridge/inc/pnpadapter_api.h#L296) arabiriminde tanımlanan API 'leri uygulamak için bir köprü bağdaştırıcısı bekler:
-
-```c
-typedef struct _PNP_ADAPTER {
-  // Identity of the IoT Plug and Play adapter that is retrieved from the config
-  const char* identity;
-
-  PNPBRIDGE_ADAPTER_CREATE createAdapter;
-  PNPBRIDGE_COMPONENT_CREATE createPnpComponent;
-  PNPBRIDGE_COMPONENT_START startPnpComponent;
-  PNPBRIDGE_COMPONENT_STOP stopPnpComponent;
-  PNPBRIDGE_COMPONENT_DESTROY destroyPnpComponent;
-  PNPBRIDGE_ADAPTER_DESTOY destroyAdapter;
-} PNP_ADAPTER, * PPNP_ADAPTER;
-```
-
-Bu arabirimde:
-
-- `PNPBRIDGE_ADAPTER_CREATE` bağdaştırıcıyı oluşturur ve arabirim Yönetimi kaynaklarını ayarlar. Bağdaştırıcı ayrıca bağdaştırıcı oluşturmak için genel bağdaştırıcı parametrelerine de sahip olabilir. Bu işlev, tek bir bağdaştırıcı için bir kez çağrılır.
-- `PNPBRIDGE_COMPONENT_CREATE` Dijital ikizi istemci arabirimlerini oluşturur ve geri çağırma işlevlerini bağlar. Bağdaştırıcı, cihaza iletişim kanalını başlatır. Bağdaştırıcı, telemetri akışını etkinleştirmek için kaynakları ayarlayabilir, ancak çağrılana kadar raporlama telemetrisi başlatamaz `PNPBRIDGE_COMPONENT_START` . Bu işlev, yapılandırma dosyasındaki her arabirim bileşeni için bir kez çağrılır.
-- `PNPBRIDGE_COMPONENT_START` Köprü bağdaştırıcısının, cihazdan dijital ikizi istemcisine telemetri iletmeye başlamasını sağlamak için çağrılır. Bu işlev, yapılandırma dosyasındaki her arabirim bileşeni için bir kez çağrılır.
-- `PNPBRIDGE_COMPONENT_STOP` Telemetri akışını sonlandırır.
-- `PNPBRIDGE_COMPONENT_DESTROY` Digital ikizi istemcisini ve ilişkili arabirim kaynaklarını yok eder. Bu işlev, köprü bozuk olduğunda veya önemli bir hata oluştuğunda yapılandırma dosyasındaki her arabirim bileşeni için bir kez çağrılır.
-- `PNPBRIDGE_ADAPTER_DESTROY` Köprü bağdaştırıcısı kaynaklarını temizler.
-
-### <a name="bridge-core-interaction-with-bridge-adapters"></a>Köprü bağdaştırıcıları ile Köprü çekirdek etkileşimi
-
-Aşağıdaki listede köprü başlatıldığında ne olacağı özetlenmektedir.
-
-1. Köprü başlatıldığında, köprü bağdaştırıcı Yöneticisi yapılandırma dosyasında tanımlanan her arabirim bileşenini arar ve `PNPBRIDGE_ADAPTER_CREATE` uygun bağdaştırıcı üzerinde çağırır. Bağdaştırıcı, çeşitli *arabirim yapılandırmalarını* destekleyecek kaynakları ayarlamak için genel bağdaştırıcı yapılandırma parametrelerini kullanabilir.
-1. Yapılandırma dosyasındaki her cihaz için, köprü Yöneticisi uygun köprü bağdaştırıcısını çağırarak arabirim oluşturmayı başlatır `PNPBRIDGE_COMPONENT_CREATE` .
-1. Bağdaştırıcı, arabirim bileşeni için tüm isteğe bağlı bağdaştırıcı yapılandırma ayarlarını alır ve bu bilgileri cihazla bağlantı kurmak için kullanır.
-1. Bağdaştırıcı, dijital ikizi istemci arabirimlerini oluşturur ve özellik güncelleştirmeleri ve komutları için geri çağırma işlevlerini bağlar. Cihaz bağlantıları kurulması, dijital ikizi arabirimi oluşturma başarılı olduktan sonra geri çağırmaların döndürülmesini engellemez. Etkin cihaz bağlantısı, köprünün oluşturduğu etkin arabirim istemcisinden bağımsızdır. Bağlantı başarısız olursa, bağdaştırıcı cihazın etkin olmadığını varsayar. Köprü bağdaştırıcısı bu bağlantıyı yapmayı yeniden denemeyi tercih edebilir.
-1. Köprü bağdaştırıcısı Yöneticisi, yapılandırma dosyasında belirtilen tüm arabirim bileşenlerini oluşturduktan sonra, tüm arabirimleri Azure IoT Hub kaydeder. Kayıt, engelleyici, zaman uyumsuz bir çağrıdır. Arama tamamlandığında, köprü bağdaştırıcısında, buluttan özellik ve komut geri çağırmaları işlemeye başlayabileceğiniz bir geri çağırma tetikler.
-1. Daha sonra köprü bağdaştırıcısı Yöneticisi `PNPBRIDGE_INTERFACE_START` her bileşeni çağırır ve Köprü bağdaştırıcısı, dijital ikizi istemcisine rapor Telemetriyi başlatır.
-
-### <a name="design-guidelines"></a>Tasarım yönergeleri
-
-Yeni bir köprü bağdaştırıcısı geliştirirken aşağıdaki yönergeleri izleyin:
-
-- Hangi cihaz yeteneklerinin desteklendiğini ve bu bağdaştırıcıyı kullanan bileşenlerin arabirim tanımının nasıl göründüğünü saptayın.
-- Bağdaştırıcınızda yapılandırma dosyasında tanımlanan arabirim ve genel parametreleri saptayın.
-- Bileşen özelliklerini ve komutlarını desteklemek için gereken alt düzey cihaz iletişimini belirler.
-- Bağdaştırıcının ham verileri cihazdan nasıl ayrıştıracağını ve IoT Tak ve Kullan arabirim tanımının belirttiği telemetri türlerine nasıl dönüştürüleceğini belirler.
-- Daha önce açıklanan Köprü bağdaştırıcısı arabirimini uygulayın.
-- Yeni bağdaştırıcıyı bağdaştırıcı bildirimine ekleyin ve köprü oluşturun.
-
-### <a name="enable-a-new-bridge-adapter"></a>Yeni bir köprü bağdaştırıcısını etkinleştir
-
-[Adapter_manifest. c](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/src/adapters/src/shared/adapter_manifest.c)' de bir başvuru ekleyerek, köprüdeki bağdaştırıcıları etkinleştirebilirsiniz:
-
-```c
-  extern PNP_ADAPTER MyPnpAdapter;
-  PPNP_ADAPTER PNP_ADAPTER_MANIFEST[] = {
-    .
-    .
-    &MyPnpAdapter
-  }
-```
-
-> [!IMPORTANT]
-> Köprü bağdaştırıcısı geri çağırmaları ardışık olarak çağrılır. Bu, köprü çekirdeğin ilerleme yapmasını önlediği için, bir bağdaştırıcı geri çağırma işlemini engelmemelidir.
-
-### <a name="sample-camera-adapter"></a>Örnek kamera bağdaştırıcısı
-
-[Kamera bağdaştırıcısı Benioku dosyası](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/src/adapters/src/Camera/readme.md) , etkinleştirebileceğiniz bir örnek kamera bağdaştırıcısı tanımlar.
-
 ## <a name="build-and-run-the-bridge-on-an-iot-device-or-gateway"></a>Bir IoT cihazında veya ağ geçidinde köprü oluşturma ve çalıştırma
 
 | Platform | Desteklenir |
@@ -176,7 +84,7 @@ Yeni bir köprü bağdaştırıcısı geliştirirken aşağıdaki yönergeleri i
 | Windows |  Yes |
 | Linux | Yes |
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Bu bölümü gerçekleştirmek için, yerel makinenize aşağıdaki yazılımı yüklemeniz gerekir:
 
@@ -295,10 +203,10 @@ Debug\pnpbridge_bin.exe
 
 | Platform | Desteklenir |
 | :-----------: | :-----------: |
-| Windows |  No |
+| Windows |  Hayır |
 | Linux | Yes |
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Bu bölümü gerçekleştirmek için ücretsiz veya Standart katmanlı bir Azure IoT Hub 'ına ihtiyacınız vardır. IoT Hub oluşturma hakkında bilgi almak için bkz. [IoT Hub oluşturma](../iot-hub/iot-hub-create-through-portal.md).
 
@@ -378,7 +286,6 @@ VS Code başlatın, komut paletini açın, *WSL 'de uzak WSL: Open klasörünü*
 *Pnpköprü\dockerfile.exe* dosyasını açın. Ortam değişkeni tanımlarını aşağıdaki gibi düzenleyin:
 
 ```dockerfile
-ENV IOTHUB_DEVICE_CONNECTION_STRING="{Add your device connection string here}"
 ENV PNP_BRIDGE_ROOT_MODEL_ID="dtmi:com:example:RootPnpBridgeSampleDevice;1"
 ENV PNP_BRIDGE_HUB_TRACING_ENABLED="false"
 ENV IOTEDGE_WORKLOADURI="something"

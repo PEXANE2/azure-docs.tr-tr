@@ -3,17 +3,17 @@ title: IoT Tak ve Kullan Köprüsü | Microsoft Docs
 description: IoT Tak ve Kullan köprüsünü ve Windows veya Linux ağ geçidine bağlı mevcut Cihazları IoT Tak ve Kullan cihazları olarak bağlamak için nasıl kullanacağınızı anlayın.
 author: usivagna
 ms.author: ugans
-ms.date: 09/22/2020
+ms.date: 1/20/2021
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 34af380d057ad47811e394da1e7a29198e102920
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 05b9df2c5083d24ae6a78212bdd29cd1c740e1d1
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672789"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746501"
 ---
 # <a name="iot-plug-and-play-bridge"></a>IoT Tak Çalıştır köprüsü
 
@@ -36,7 +36,7 @@ IoT Tak ve Kullan Köprüsü, bağdaştırıcı belgelerinin bağlantılarıyla 
 |[Serialpnp bağdaştırıcısı](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/serialpnp/Readme.md) , bir seri bağlantı üzerinden iletişim kuran cihazları bağlar.               |Yes|Yes|
 |[WINDOWS USB çevre birimleri](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/coredevicehealth_adapter.md) , belirli BIR donanım kimliği olan cihazları bağlamak için bağdaştırıcı tarafından desteklenen cihaz arabirimi sınıflarının listesini kullanır.  |Yes|Geçerli değil|
 
-IoT Tak ve Kullan köprüsünü ek cihaz protokollerini destekleyecek şekilde genişletmeyi öğrenmek için bkz. [ıot Tak ve kullan köprüsünü oluşturma, dağıtma ve genişletme](howto-build-deploy-extend-pnp-bridge.md).
+IoT Tak ve Kullan köprüsünü ek cihaz protokollerini destekleyecek şekilde genişletmeyi öğrenmek için bkz. [ıot Tak ve kullan köprüsünü genişletme](howto-author-pnp-bridge-adapter.md). IoT Tak ve Kullan köprüsü oluşturma ve dağıtma hakkında bilgi edinmek için bkz. [ıot Tak ve kullan köprüsünü derleme ve dağıtma](howto-build-deploy-extend-pnp-bridge.md).
 
 ## <a name="iot-plug-and-play-bridge-architecture"></a>IoT Tak ve Kullan köprü mimarisi
 
@@ -148,6 +148,7 @@ Ayrıca, [GitHub 'Daki ıot Tak ve kullan köprüsünün](https://github.com/Azu
 
 IoT Tak ve Kullan köprüsü mimarisine genel bir bakış edinolduğunuza göre, sonraki adımlar hakkında daha fazla bilgi edinebilirsiniz:
 
-- [IoT Tak ve Kullan köprüsü kullanma](./howto-use-iot-pnp-bridge.md)
-- [IoT Tak ve Kullan köprüsü oluşturma, dağıtma ve genişletme](howto-build-deploy-extend-pnp-bridge.md)
+- [Linux veya Windows üzerinde çalışan bir IoT Tak ve Kullan köprüsü örneğini IoT Hub 'a bağlama](./howto-use-iot-pnp-bridge.md)
+- [IoT Tak ve Kullan köprüsü oluşturma ve dağıtma](howto-build-deploy-extend-pnp-bridge.md)
+- [IoT Tak ve Kullan köprü genişletme](howto-build-deploy-extend-pnp-bridge.md)
 - [GitHub 'da IoT Tak ve Kullan Köprüsü](https://github.com/Azure/iot-plug-and-play-bridge)
