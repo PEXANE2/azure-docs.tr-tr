@@ -13,12 +13,12 @@ ms.date: 05/19/2020
 ms.author: hirsin
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 064c9a00e1cd7c139f3f42a053dcf8a5db13f161
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: eed4e919684575bb2c63170d91517b661fac4acf
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104589"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753971"
 ---
 # <a name="handle-itp-in-safari-and-other-browsers-where-third-party-cookies-are-blocked"></a>Safari 'de ve üçüncü taraf tanımlama bilgilerinin engellendiği diğer tarayıcılarda ıOP 'yi işleme
 
@@ -26,7 +26,7 @@ Günümüzde birçok tarayıcı, üçüncü taraf tanımlama bilgilerini (taray�
 
 ## <a name="what-is-intelligent-tracking-protection-itp"></a>Akıllı Izleme koruması (ıOP) nedir?
 
-Apple Safari, [akıllı Izleme koruması](https://webkit.org/tracking-prevention-policy/)veya *IOP*adlı bir varsayılan gizlilik koruması özelliğine sahiptir. IOP, "üçüncü taraf" tanımlama bilgilerini, etki alanlarını çapraz istekler üzerinde tanımlama bilgilerini engeller.
+Apple Safari, [akıllı Izleme koruması](https://webkit.org/tracking-prevention-policy/)veya *IOP* adlı bir varsayılan gizlilik koruması özelliğine sahiptir. IOP, "üçüncü taraf" tanımlama bilgilerini, etki alanlarını çapraz istekler üzerinde tanımlama bilgilerini engeller.
 
 Yaygın olarak kullanılan bir kullanıcı izleme formu, arka planda üçüncü taraf siteye bir iframe yükleyerek ve kullanıcının Internet üzerinden ilişkilendirilmesi için tanımlama bilgilerinin kullanılmasına göre yapılır. Ne yazık ki bu model ayrıca tek sayfalı uygulamalarda (maça) [örtük akışı](v2-oauth2-implicit-grant-flow.md) uygulamanın standart yoludur. Tarayıcı, üçüncü taraf tanımlama bilgilerini Kullanıcı izlemeyi engelleyecek şekilde engellediğinde, maça da bozulur.
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 9ffb77db4f7bcd5a07e25085eed17e8972aa9a33
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 3a26157949ff6ef69c9c009dfdd40781b47bc761
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683768"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753576"
 ---
 # <a name="protected-web-api-code-configuration"></a>Korumalı Web API 'SI: kod yapılandırması
 
@@ -55,7 +55,7 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 ```
 
 > [!IMPORTANT]
-> İstemci uygulaması, *Web API 'si Için* Microsoft Identity platform uç noktasına taşıyıcı belirtecini ister. Web API 'SI, belirtecin doğrulanması ve içerdiği talepleri görüntülemesi gereken tek uygulamadır. İstemci uygulamaları, belirteçlerdeki talepleri incelemeye asla denememelidir.
+> İstemci uygulaması, *Web API 'si Için* Microsoft Identity platformu için taşıyıcı belirtecini ister. Web API 'SI, belirtecin doğrulanması ve içerdiği talepleri görüntülemesi gereken tek uygulamadır. İstemci uygulamaları, belirteçlerdeki talepleri incelemeye asla denememelidir.
 >
 > Gelecekte, Web API 'SI belirtecin şifrelenmesini gerektirebilir. Bu gereksinim, erişim belirteçlerini görüntüleyebilen istemci uygulamalarına erişimi engeller.
 
@@ -140,7 +140,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
- Şu anda ASP.NET Core şablonları, kuruluşunuzdaki veya herhangi bir kuruluşun içindeki kullanıcıların oturum açmasını sağlayan Azure Active Directory (Azure AD) Web API 'Leri oluşturur. Kişisel hesaplarla kullanıcıları oturum açtıklarında oturum açabilirler. Ancak, *Startup.cs*' deki kodu değiştirerek [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) kullanarak şablonları Microsoft Identity platform uç noktasını kullanacak şekilde değiştirebilirsiniz:
+ Şu anda ASP.NET Core şablonları, kuruluşunuzdaki veya herhangi bir kuruluşun içindeki kullanıcıların oturum açmasını sağlayan Azure Active Directory (Azure AD) Web API 'Leri oluşturur. Kişisel hesaplarla kullanıcıları oturum açtıklarında oturum açabilirler. Ancak, *Startup.cs*' deki kodu değiştirerek Microsoft [. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) kullanarak şablonları Microsoft Identity platformu kullanacak şekilde değiştirebilirsiniz:
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -195,7 +195,7 @@ Doğrulama adımları, .NET açık kaynak kitaplığı [Için Microsoft Identity
 
 Bu tabloda doğrulayıcılar açıklanmaktadır:
 
-| Doğrulayıcı | Description |
+| Doğrulayıcı | Açıklama |
 |---------|---------|
 | **ValidateAudience** | Belirtecin sizin için belirteci doğrulayan uygulamanın olduğundan emin olur. |
 | **Validateıssuer** | Belirtecin güvenilir bir STS tarafından verildiğini ve güvendiğiniz bir kişiden geldiğini sağlar. |

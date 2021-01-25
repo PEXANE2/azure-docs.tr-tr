@@ -13,12 +13,12 @@ ms.date: 09/21/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 8f3fd462a52b035cd5b5447560e5472b41f237fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3bd0621d607b121f19bc47c717343b8e2e39b04f
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653239"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752726"
 ---
 # <a name="microsoft-identity-platform-userinfo-endpoint"></a>Microsoft Identity platform UserInfo uç noktası
 
@@ -28,7 +28,7 @@ UserInfo uç noktası, kimliği doğrulanmış kullanıcı hakkında talepler d�
 
 Üzerinde OpenID Connect bulma belgesini kullanarak, UserInfo uç noktasını programlı bir şekilde keşfedebilirsiniz `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration` . `userinfo_endpoint`Bu, alanında listelenir ve sağ uç noktayı işaret eden bulutlar arasında bu model kullanılabilir.  Uygulamanızda UserInfo uç noktasının sabit kodlanmasını önermeyiz. bu uç noktayı bunun yerine çalışma zamanında bulmak için OıDC bulma belgesini kullanın.
 
-OpenID Connect belirtiminin bir parçası olarak, Kullanıcı hakkında bilgi almak için, UserInfo uç noktası genellikle [OIDC uyumlu kitaplıklar](https://openid.net/developers/certified/)  tarafından otomatik olarak çağırılır.  Bu tür bir uç nokta barındırmadan, Microsoft Identity platform standartlara uyumlu olmaz ve bazı kitaplıklar başarısız olur.  [OıDC standardında tanımlanan talepler listesinden](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) , kullanılabilir ve için kabul edildiğinde talepler, konu talebi ve e-posta şeklinde bir ad üretir.  
+OpenID Connect belirtiminin bir parçası olarak, Kullanıcı hakkında bilgi almak için, UserInfo uç noktası genellikle [OIDC uyumlu kitaplıklar](https://openid.net/developers/certified/)  tarafından otomatik olarak çağırılır.  Bu tür bir uç nokta barındırmadan, Microsoft Identity platformu standartlara uygun değildir ve bazı kitaplıklar başarısız olur.  [OıDC standardında tanımlanan talepler listesinden](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) , kullanılabilir ve için kabul edildiğinde talepler, konu talebi ve e-posta şeklinde bir ad üretir.  
 
 ## <a name="consider-use-an-id-token-instead"></a>Göz önünde bulundurun: bunun yerine bir KIMLIK belirteci kullanın
 

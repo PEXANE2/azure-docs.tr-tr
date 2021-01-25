@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2021
 ms.author: memildin
-ms.openlocfilehash: 1e6b66fce6b22dfd12c162d469ce44137c94ab87
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: e881c61d16cd167ace78abb96dca7e714436cfc0
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916380"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752210"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik puanı
 
@@ -54,7 +54,7 @@ Aşağıdaki bölümlerde açıklandığı gibi, genel olarak güvenli puanını
 
 ### <a name="get-your-secure-score-from-the-portal"></a>Portaldan güvenli puanınızı alın
 
-Güvenlik Merkezi, puanınızı portalda göze çarpacak şekilde görüntüler: Güvenlik Merkezi 'ne genel bakış sayfası ilk ana kutucuğudur. Bu kutucuğu seçtiğinizde, puanı abonelik tarafından kesilen puanı görebileceğiniz adanmış güvenli puan sayfasına götürür. Önceliklendirilmiş önerilerin ayrıntılı listesini görmek için tek bir abonelik seçin ve aboneliğin puanına sahip olacağını belirten olası etkileri görebilirsiniz.
+Güvenlik Merkezi, puanınızı portalda göze çarpacak şekilde görüntüler: Güvenlik Merkezi 'ne genel bakış sayfası ilk ana kutucuğudur. Bu kutucuğu seçtiğinizde, puanı abonelik tarafından kesilen puanı görebileceğiniz adanmış güvenli puan sayfasına götürür. Önceliklendirilmiş önerilerin ayrıntılı listesini görmek için tek bir abonelik seçin ve aboneliğin puanına sahip olacağını belirten olası etkileri görebilirsiniz. 
 
 Daha sonra, güvenli puanınız Güvenlik Merkezi 'nin Portal sayfalarında aşağıdaki konumlarda gösterilmiştir.
 
@@ -62,9 +62,14 @@ Daha sonra, güvenli puanınız Güvenlik Merkezi 'nin Portal sayfalarında aşa
 
     :::image type="content" source="./media/secure-score-security-controls/score-on-main-dashboard.png" alt-text="Güvenlik Merkezi 'ndeki panoda güvenli puan":::
 
-- Adanmış **güvenli Puanlama** sayfasında:
+- Adanmış **güvenli Puanlama** sayfasında, aboneliğiniz ve yönetim gruplarınız için güvenli puanı görebilirsiniz:
 
-    :::image type="content" source="./media/secure-score-security-controls/score-on-dedicated-dashboard.png" alt-text="Güvenlik Merkezi 'nin güvenli Puanlama sayfasında güvenli puan":::
+    :::image type="content" source="./media/secure-score-security-controls/score-on-dedicated-dashboard.png" alt-text="Güvenlik Merkezi 'nin güvenli Puanlama sayfasında abonelikler için güvenli puan":::
+
+    :::image type="content" source="./media/secure-score-security-controls/secure-score-management-groups.png" alt-text="Güvenlik Merkezi 'nin güvenli Puanlama sayfasında yönetim gruplarının güvenli puanı":::
+
+    > [!NOTE]
+    > Yeterli izinlere sahip olmadığınız herhangi bir yönetim grubu puanlarını "kısıtlı" olarak gösterir. 
 
 - **Öneriler** sayfasının en üstünde:
 
@@ -125,7 +130,7 @@ Pano, güvenlik durumunuzu çözümlemenize yardımcı olacak aşağıdaki iki r
 - **Kaynaklar Özeti** -kaynaklarınızın sistem durumuyla ilgili özetlenen verileri sağlar.
 - **Güvenli puan özeti** -puanınızın ilerleme durumuyla ilgili özetlenmiş veriler sağlar. Puandaki değişiklikleri görüntülemek için "abonelik başına süre içinde güvenli puan" grafiğini kullanın. Puanınızın önemli bir değişikliği fark ederseniz, değişikliğe neden olabilecek değişiklikler için "güvenli puanınızı etkileyebilecek algılanan değişiklikler" tablosunu kontrol edin. Bu tablo, önerilerden biri için silinen kaynakları, yeni dağıtılan kaynakları veya güvenlik durumunun değiştiği kaynakları gösterir.
 
-:::image type="content" source="./media/secure-score-security-controls/power-bi-secure-score-dashboard.png" alt-text="Zaman içinde güvenli puanınızı izlemek ve değişiklikleri araştırmak için zaman Içinde isteğe bağlı güvenli puan":::
+:::image type="content" source="./media/secure-score-security-controls/power-bi-secure-score-dashboard.png" alt-text="Zamana göre güvenli puanınızı izlemek ve değişiklikleri araştırmak için zaman Içinde isteğe bağlı güvenli Puanlama Power BI panosu":::
 
 
 
@@ -152,7 +157,7 @@ Bu denetim için en yüksek puan, sistem güncelleştirmelerini Uygula, her zama
 
 ### <a name="calculations---understanding-your-score"></a>Hesaplamalar-puanınızı anlama
 
-|Ölçüm|Formül ve örnek|
+|Metric|Formül ve örnek|
 |-|-|
 |**Güvenlik denetiminin geçerli puanı**|<br>![Güvenlik denetiminin Puanını hesaplama denklemi](media/secure-score-security-controls/secure-score-equation-single-control.png)<br><br>Her bireysel güvenlik denetimi güvenlik puanına katkıda bulunur. Denetim içindeki bir öneriden etkilenen her kaynak, denetimin geçerli puanına doğru katkıda bulunur. Her denetim için geçerli *puan, denetimdeki kaynakların durumunun* ölçüsüdür.<br>![Güvenlik denetiminin geçerli puanı hesaplanırken kullanılan değerleri gösteren araç ipuçları](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>Bu örnekte, sağlıklı ve sağlıksız kaynakların toplamı olduğundan, 6 ' nın en fazla puanı 78 olarak bölünür.<br>6/78 = 0,0769<br>Sağlıklı kaynak sayısına (4) göre çarpılması geçerli puanın sonucunu elde ediyor:<br>0,0769 * 4 = **0,31**<br><br>|
 |**Güvenlik puanı**<br>Tek abonelik|<br>![Aboneliğin güvenli Puanını hesaplama denklemi](media/secure-score-security-controls/secure-score-equation-single-sub.png)<br><br>![Tüm denetimler etkin olan tek abonelik güvenli puanı](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>Bu örnekte, kullanılabilen tüm güvenlik denetimlerine sahip tek bir abonelik vardır (en fazla 60 punto puanı). Puan, olası bir 60 28 noktayı gösterir ve kalan 32 noktaları, güvenlik denetimlerinin "potansiyel puan artışı" biçiminde yansıtılır.<br>![Denetimlerin listesi ve olası puan artışı](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|

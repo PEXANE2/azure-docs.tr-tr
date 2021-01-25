@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f60e21f98092df65ef01e68fe9c2e64833a24855
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: a678e8545f761e98abbdf026886afa624f9d2b4e
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063221"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753637"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>Senaryo: Web API 'Lerini çağıran mobil uygulama
 
@@ -34,7 +34,7 @@ Henüz yapmadıysanız, bir hızlı başlangıcı tamamlayarak ilk uygulamanız�
 
 ## <a name="overview"></a>Genel Bakış
 
-Kişiselleştirilmiş, sorunsuz bir kullanıcı deneyimi, mobil uygulamalar için gereklidir.  Microsoft Identity platform, mobil geliştiricilerin iOS ve Android kullanıcıları için bu deneyimi oluşturmalarına olanak sağlar. Uygulamanız Azure Active Directory (Azure AD) kullanıcıları, kişisel Microsoft hesabı kullanıcıları ve Azure AD B2C kullanıcıları için oturum açabilir. Ayrıca, bir Web API 'sini adına çağırmak için belirteçleri de alabilir. Bu akışları uygulamak için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanacağız. MSAL, sektör standardı [OAuth 2.0 yetkilendirme kodu akışını](v2-oauth2-auth-code-flow.md)uygular.
+Kişiselleştirilmiş, sorunsuz bir kullanıcı deneyimi, mobil uygulamalar için gereklidir. Microsoft Identity platformu, mobil geliştiricilerin iOS ve Android kullanıcıları için bu deneyimi oluşturmalarına olanak sağlar. Uygulamanız Azure Active Directory (Azure AD) kullanıcıları, kişisel Microsoft hesabı kullanıcıları ve Azure AD B2C kullanıcıları için oturum açabilir. Ayrıca, bir Web API 'sini adına çağırmak için belirteçleri de alabilir. Bu akışları uygulamak için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanacağız. MSAL, sektör standardı [OAuth 2.0 yetkilendirme kodu akışını](v2-oauth2-auth-code-flow.md)uygular.
 
 ![Daemon uygulamaları](./media/scenarios/mobile-app.svg)
 

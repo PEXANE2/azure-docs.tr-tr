@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.author: memildin
-ms.openlocfilehash: d171e3a7f1f0d63d0a5d130c6e19b246bf0cd795
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 349f0b72ad7f3cb98e8f4ae9105efa9718f0b11b
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661823"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752271"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -33,13 +33,40 @@ Güvenlik Merkezi 'ne yakında çıkacak *planlı* değişiklikler hakkında bil
 
 ## <a name="january-2021"></a>Ocak 2021
 
-Aralık ayında güncelleştirmeler şunlardır:
+Ocak ayında güncelleştirmeler şunları içerir:
 
+- [Azure Güvenlik kıyaslaması artık Azure Güvenlik Merkezi için varsayılan ilke girişimidir](#azure-security-benchmark-is-now-the-default-policy-initiative-for-azure-security-center)
 - [Şirket içi ve çoklu bulut makinelerinde güvenlik açığı değerlendirmesi, genel kullanıma sunuldu (GA)](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga)
+- [Yönetim grupları için güvenli puan şimdi önizlemede kullanılabilir](#secure-score-for-management-groups-is-now-available-in-preview)
 - [Güvenli puan API 'SI genel kullanıma sunuldu (GA)](#secure-score-api-is-released-for-general-availability-ga)
+- [Çoklu bulut bağlayıcıları genel kullanıma sunuldu (GA)](#multi-cloud-connectors-are-released-for-general-availability-ga)
+- [Abonelikler ve yönetim grupları için tüm önerileri güvenli puanınızdan muaf tutma](#exempt-entire-recommendations-from-your-secure-score-for-subscriptions-and-management-groups)
+- [Kullanıcılar artık genel yöneticlerinden kiracı genelinde görünürlük isteğinde bulunabilir](#users-can-now-request-tenant-wide-visibility-from-their-global-administrator)
+- [Azure Güvenlik kıyaslamasının kapsamını artırmak için 35 önizleme önerisi eklendi](#35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
 - [Filtrelenmiş öneriler listesinin CSV dışa aktarılması](#csv-export-of-filtered-list-of-recommendations)
 - ["Uygulanamaz" kaynakları artık Azure Ilke değerlendirmelerinde "uyumlu" olarak bildirildi](#not-applicable-resources-now-reported-as-compliant-in-azure-policy-assessments)
 
+
+### <a name="azure-security-benchmark-is-now-the-default-policy-initiative-for-azure-security-center"></a>Azure Güvenlik kıyaslaması artık Azure Güvenlik Merkezi için varsayılan ilke girişimidir
+
+Azure Güvenlik kıyaslaması, yaygın uyumluluk çerçevelerine göre güvenlik ve uyum en iyi uygulamaları için Microsoft tarafından yazılan, Azure 'a özgü bir dizi kılavuzlardır. Bu, yaygın olarak kullanılan kıyaslama, [Internet güvenliği (CIS) Için merkezden](https://www.cisecurity.org/benchmark/azure/) ve [ulusal standartlar ve teknolojı Enstitüsü (NIST)](https://www.nist.gov/) ile bulut merkezli güvenliğe odaklanarak yapılar oluşturur.
+
+Son aylarda Güvenlik Merkezi 'nin yerleşik güvenlik önerileri listesi, Bu kıyaslama kapsamımızın kapsamını genişletmenizi önemli ölçüde artmıştır.
+
+Bu sürümden, kıyaslama, güvenlik merkezi 'nin önerilerinden ve varsayılan ilke girişimi olarak tam tümleştirilen bir temelidir. 
+
+Tüm Azure hizmetlerinin belgelerinde güvenlik temeli sayfası vardır. Örneğin, [Bu güvenlik merkezi 'nin temelini](security-baseline.md). Bu temeller Azure Güvenlik kıyaslaması üzerine kurulmuştur.
+
+Güvenlik Merkezi 'nin mevzuat uyumluluk panosunu kullanıyorsanız, bir geçiş dönemi boyunca kıyaslamaya ait iki örnek görürsünüz:
+
+:::image type="content" source="media/release-notes/regulatory-compliance-with-azure-security-benchmark.png" alt-text="Azure Güvenlik Merkezi 'nin Azure Güvenlik kıyaslaması gösteren yasal uyumluluk panosu":::
+
+Mevcut öneriler etkilenmemiştir ve kıyaslama arttıkça, değişiklikler otomatik olarak güvenlik merkezi 'nde yansıtılır. 
+
+Daha fazla bilgi edinmek için aşağıdaki sayfalara bakın:
+
+- [Azure Güvenlik kıyaslaması hakkında daha fazla bilgi](../security/benchmarks/introduction.md)
+- [Yasal uyumluluk panonuzda standartlar kümesini özelleştirme](update-regulatory-compliance-packages.md)
 
 ### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga"></a>Şirket içi ve çoklu bulut makinelerinde güvenlik açığı değerlendirmesi, genel kullanıma sunuldu (GA)
 
@@ -63,6 +90,14 @@ Ana yetenekler:
 [Azure Arc etkin sunucuları hakkında daha fazla bilgi edinin](../azure-arc/servers/index.yml).
 
 
+### <a name="secure-score-for-management-groups-is-now-available-in-preview"></a>Yönetim grupları için güvenli puan şimdi önizlemede kullanılabilir
+
+Güvenli puan sayfası artık abonelik düzeyine ek olarak yönetim gruplarınız için toplanmış güvenli puanları gösterir. Böylece artık kuruluşunuzdaki yönetim gruplarının listesini ve her bir yönetim grubunun Puanını görebilirsiniz.
+
+:::image type="content" source="media/secure-score-security-controls/secure-score-management-groups.png" alt-text="Yönetim gruplarınız için güvenli puanları görüntüleme.":::
+
+[Azure Güvenlik Merkezi 'nde güvenli puan ve güvenlik denetimleri](secure-score-security-controls.md)hakkında daha fazla bilgi edinin.
+
 ### <a name="secure-score-api-is-released-for-general-availability-ga"></a>Güvenli puan API 'SI genel kullanıma sunuldu (GA)
 
 Artık puanınızı [güvenli Puanlama API 'si](/rest/api/securitycenter/securescores/)aracılığıyla erişebilirsiniz. API yöntemleri, verileri sorgulama ve zaman içinde güvenli Puanlarınızın kendi raporlama mekanizmanızı oluşturma esnekliğini sağlar. Örneğin, belirli bir aboneliğin Puanını almak için **güvenli puanlar** API 'sini kullanabilirsiniz. Ayrıca, güvenlik denetimlerini ve aboneliklerinizin geçerli Puanını listelemek için **güvenli puan denetimleri** API 'sini de kullanabilirsiniz.
@@ -70,6 +105,87 @@ Artık puanınızı [güvenli Puanlama API 'si](/rest/api/securitycenter/secures
 Güvenli Puanlama API 'SI ile mümkün olan dış araçların örnekleri için [GitHub topluluğumuzın güvenli Puanlama alanına](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)bakın.
 
 [Azure Güvenlik Merkezi 'nde güvenli puan ve güvenlik denetimleri](secure-score-security-controls.md)hakkında daha fazla bilgi edinin.
+
+
+### <a name="multi-cloud-connectors-are-released-for-general-availability-ga"></a>Çoklu bulut bağlayıcıları genel kullanıma sunuldu (GA)
+
+Bulut güvenlik hizmetleri genellikle birden çok bulut platformunu kapsayan bulut iş yükleri ile aynı olmalıdır.
+
+Azure Güvenlik Merkezi, Azure, Amazon Web Services (AWS) ve Google Cloud Platform (GCP) iş yüklerini korur.
+
+AWS veya GCP hesaplarınızı bağlamak, AWS güvenlik merkezi ve GCP güvenlik komut merkezi gibi yerel güvenlik araçlarını Azure Güvenlik Merkezi 'ne tümleştirir.
+
+Bu özellik, güvenlik merkezi 'nin tüm büyük bulut ortamlarında görünürlük ve koruma sağladığı anlamına gelir. Bu tümleştirmenin avantajlarından bazıları şunlardır:
+
+- Otomatik aracı sağlama-Güvenlik Merkezi, Log Analytics aracısını AWS örneklerinizi dağıtmak için Azure yay kullanır
+- İlke yönetimi
+- Güvenlik açığı yönetimi
+- Gömülü uç nokta algılama ve yanıtı (EDR)
+- Güvenlik yapılandırması hataları algılanamadı
+- Tüm bulut sağlayıcılarından gelen güvenlik önerilerini gösteren tek bir görünüm
+- Tüm kaynaklarınızı Güvenlik Merkezi 'nin güvenli puan hesaplamalarına dahil edin
+- AWS ve GCP kaynaklarınızın yasal uyumluluk değerlendirmeleri
+
+Güvenlik Merkezi 'nin menüsünden **çoklu bulut bağlayıcıları** ' nı seçin ve yeni bağlayıcılar oluşturma seçeneklerini görürsünüz:
+
+:::image type="content" source="./media/quickstart-onboard-aws/add-aws-account.png" alt-text="Güvenlik Merkezi 'nin çoklu bulut bağlayıcıları sayfasına AWS hesabı Ekle düğmesi":::
+
+Daha fazlasını öğrenin:
+- [AWS hesaplarınızı Azure Güvenlik Merkezi 'ne bağlama](quickstart-onboard-aws.md)
+- [GCP hesaplarınızı Azure Güvenlik Merkezi 'ne bağlama](quickstart-onboard-gcp.md)
+
+
+### <a name="exempt-entire-recommendations-from-your-secure-score-for-subscriptions-and-management-groups"></a>Abonelikler ve yönetim grupları için tüm önerileri güvenli puanınızdan muaf tutma
+
+Tüm önerilerin dahil olduğu istisna özelliğini genişletiyoruz. Güvenlik Merkezi 'nin abonelikleriniz, yönetim grubunuz veya kaynaklarınız için yaptığı güvenlik önerilerini hassas bir şekilde ayarlamaya yönelik daha fazla seçenek sağlar.
+
+Bazen, sorunu Güvenlik Merkezi 'nin algıladığı üçüncü taraf bir araçla çözeceğinizde, bir kaynak sağlıksız olarak listelenecektir. Ya da bir öneri, ait olmadığı yerde bir kapsamda gösterilecektir. Öneri, belirli bir abonelik için uygun olmayabilir. Ya da kuruluşunuz yalnızca belirli kaynakla veya öneriyle ilgili riskleri kabul etmeye karar verdi.
+
+Bu önizleme özelliğiyle artık öneri için bir istisna oluşturabilirsiniz:
+
+- İleride sağlıksız kaynaklarla listelenmediğinden emin olmak için **bir kaynağı muaf tut** ve güvenli puanınızı etkilemez. Kaynak geçerli değil olarak listelenecektir ve bu nedenle seçtiğiniz belirli bir gerekçe ile "muaf tutulan" olarak gösterilir.
+
+- Önerinin güvenli puanınızı etkilememesini sağlamak için **bir aboneliği veya yönetim grubunu muaf tut** ve gelecekte abonelik veya yönetim grubu için gösterilmeyecektir. Bu, mevcut kaynaklarla ve gelecekte oluşturduğunuz herhangi bir kaynak ile ilgilidir. Öneri, seçtiğiniz kapsam için seçtiğiniz belirli bir gerekçe ile işaretlenir.
+
+[Güvenli puanınızdan kaynakları ve önerileri muaf tutmak](exempt-resource.md)için daha fazla bilgi edinin.
+
+
+
+### <a name="users-can-now-request-tenant-wide-visibility-from-their-global-administrator"></a>Kullanıcılar artık genel yöneticlerinden kiracı genelinde görünürlük isteğinde bulunabilir
+
+Bir kullanıcının güvenlik merkezi verilerini görme izni yoksa, kuruluşunuzun genel yöneticisinden bir bağlantı isteği izinleri görür. İstek, beğendikleri rolü ve neden gerekli olduğu konusunda gerekçe içerir.
+
+:::image type="content" source="media/security-center-management-groups/request-tenant-permissions.png" alt-text="Kullanıcıya kiracı genelinde izinler isteyebilecekleri bir başlık bildiren başlık.":::
+
+[Sizinki yetersiz olduğunda kiracı genelinde Izin iste](security-center-management-groups.md#request-tenant-wide-permissions-when-yours-are-insufficient) hakkında daha fazla bilgi edinin.
+
+
+### <a name="35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>Azure Güvenlik kıyaslamasının kapsamını artırmak için 35 önizleme önerisi eklendi
+
+Azure Güvenlik kıyaslaması, Azure Güvenlik Merkezi 'ndeki varsayılan ilke girişimidir. 
+
+Bu kıyaslama kapsamını artırmak için, güvenlik merkezi 'ne aşağıdaki 35 önizleme önerileri eklenmiştir.
+
+> [!TIP]
+> Önizleme önerileri bir kaynağı sağlıksız bir şekilde işlemez ve güvenli puanınızın hesaplamalarına dahil değildir. Önizleme dönemi sona erdiğinde puanınızın altına katkıda bulunmak için bunları mümkün olduğunda düzeltin. [Azure Güvenlik Merkezi 'ndeki önerileri düzeltin](security-center-remediate-recommendations.md)bölümünde bu önerilere yanıt verme hakkında daha fazla bilgi edinin.
+
+| Güvenlik denetimi                     | Yeni öneriler                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+|--------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Bekleyen şifrelemeyi etkinleştir            | -Azure Cosmos DB hesapları, bekleyen verileri şifrelemek için müşteri tarafından yönetilen anahtarları kullanmalıdır<br>-Azure Machine Learning çalışma alanları, müşteri tarafından yönetilen bir anahtarla şifrelenmelidir (CMK)<br>-MySQL sunucuları için kendi anahtar veri korumanın etkinleştirilmesi gerekir<br>-PostgreSQL sunucuları için kendi anahtar veri korumanızı getir özelliği etkinleştirilmelidir<br>Bilişsel hizmetler hesapları, müşteri tarafından yönetilen bir anahtarla (CMK) veri şifrelemeyi etkinleştirmelidir<br>-Kapsayıcı kayıt defterleri, müşteri tarafından yönetilen bir anahtarla şifrelenmelidir (CMK)<br>-SQL yönetilen örnekler, bekleyen verileri şifrelemek için müşteri tarafından yönetilen anahtarları kullanmalıdır<br>-SQL sunucuları, bekleyen verileri şifrelemek için müşteri tarafından yönetilen anahtarları kullanmalıdır<br>-Depolama hesapları, şifreleme için müşteri tarafından yönetilen anahtar (CMK) kullanmalıdır                                                                                                                                                              |
+| En iyi güvenlik uygulamalarını uygulayın    | -Abonelikler güvenlik sorunları için bir iletişim e-posta adresine sahip olmalıdır<br> -Log Analytics aracısının otomatik olarak sağlanması aboneliğinizde etkinleştirilmelidir<br> -Yüksek önem derecesine sahip uyarılar için e-posta bildirimi etkinleştirilmelidir<br> -Yüksek önem derecesi uyarıları için abonelik sahibine e-posta bildirimi etkinleştirilmelidir<br> -Anahtar kasaları Temizleme koruması etkinleştirilmelidir<br> -Anahtar kasaları geçici silme etkin olmalıdır |
+| Erişimi ve izinleri yönetme        | -Function uygulamalarında ' Istemci sertifikaları (gelen istemci sertifikaları) ' etkin olmalıdır |
+| DDoS saldırılarına karşı uygulamaları koruma | -Web uygulaması güvenlik duvarı (WAF) Application Gateway için etkinleştirilmelidir<br> -Azure ön kapı hizmeti hizmeti için Web uygulaması güvenlik duvarı (WAF) etkinleştirilmelidir |
+| Yetkisiz ağ erişimini kısıtla | -Güvenlik duvarının Key Vault üzerinde etkinleştirilmesi gerekir<br> -Özel uç nokta Key Vault için yapılandırılmalıdır<br> -Uygulama yapılandırması özel bağlantı kullanmalıdır<br> -Redsıs için Azure önbelleği bir sanal ağ içinde yer almalıdır<br> -Azure Event Grid etki alanları özel bağlantı kullanmalıdır<br> -Azure Event Grid konular özel bağlantı kullanmalıdır<br> -Azure Machine Learning çalışma alanları özel bağlantı kullanmalıdır<br> -Azure SignalR hizmeti özel bağlantı kullanmalıdır<br> -Azure yay bulutu, ağ ekleme kullanmalıdır<br> -Kapsayıcı kayıt defterleri Kısıtlanmamış ağ erişimine izin vermiyor<br> -Kapsayıcı kayıt defterleri özel bağlantı kullanmalıdır<br> -MariaDB sunucuları için genel ağ erişimi devre dışı bırakılmalıdır<br> -MySQL sunucuları için genel ağ erişimi devre dışı bırakılmalıdır<br> -PostgreSQL sunucuları için genel ağ erişimi devre dışı bırakılmalıdır<br> -Depolama hesabı bir özel bağlantı bağlantısı kullanmalıdır<br> -Depolama hesapları, sanal ağ kurallarını kullanarak ağ erişimini kısıtlamalı<br> -VM görüntü Oluşturucu şablonlarının özel bağlantı kullanması gerekir|
+|                                      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+
+İlgili bağlantılar:
+
+- [Azure Güvenlik kıyaslaması hakkında daha fazla bilgi](../security/benchmarks/introduction.md)
+- [MariaDB için Azure veritabanı hakkında daha fazla bilgi edinin](../mariadb/overview.md)
+- [MySQL için Azure veritabanı hakkında daha fazla bilgi edinin](../mysql/overview.md)
+- [PostgreSQL için Azure veritabanı hakkında daha fazla bilgi edinin](../postgresql/overview.md)
+
+
 
 
 ### <a name="csv-export-of-filtered-list-of-recommendations"></a>Filtrelenmiş öneriler listesinin CSV dışa aktarılması 
@@ -439,7 +555,7 @@ Pano, varsayılan bir mevzuat standartları kümesi içerir. Sağlanan standartl
 
 Azure Kaynak Grafiği, ortamınızı etkili bir şekilde yönetebilmeniz için belirli bir abonelik kümesi genelinde ölçeği sorgulama özelliği ile verimli kaynak araştırması sağlamak üzere tasarlanan Azure hizmetidir. 
 
-Azure Güvenlik Merkezi için bağımsız değişken ve [kusto sorgu dili (KQL)](/azure/data-explorer/kusto/query/) kullanarak çok çeşitli güvenlik sonrası verileri sorgulayabilirsiniz. Örnek:
+Azure Güvenlik Merkezi için bağımsız değişken ve [kusto sorgu dili (KQL)](/azure/data-explorer/kusto/query/) kullanarak çok çeşitli güvenlik sonrası verileri sorgulayabilirsiniz. Örneğin:
 
 - Varlık envanteri kullanır (bağımsız değişken)
 - [Multi-Factor Authentication (MFA) etkin olmayan hesapların nasıl tanımlanacağına](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled) yönelik örnek bir bağımsız değişken sorgusu belgeliyoruz

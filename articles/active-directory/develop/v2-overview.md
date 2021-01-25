@@ -13,12 +13,12 @@ ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: identityplatformtop40, contperf-fy21q2
-ms.openlocfilehash: e5a9292097933ff35eb8b77445f07f10def6e5c3
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 662523b1544fe3ca9e8bda993efa7b578b9f69cc
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029626"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752584"
 ---
 # <a name="what-is-the-microsoft-identity-platform"></a>Microsoft kimlik platformu nedir?
 
@@ -39,14 +39,14 @@ Geliştiriciler için, Microsoft Identity platformu, kimlik ve güvenlik alanın
 
 Microsoft Identity platformu ile kodu bir kez yazabilir ve herhangi bir kullanıcıya ulaşabilirsiniz. Bir uygulamayı bir kez oluşturup çok sayıda platformda çalışır hale getirebilirsiniz veya istemci olarak bir kaynak uygulaması (API) olarak işlev gören bir uygulama oluşturabilirsiniz.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 Derlemek istediğiniz [uygulama senaryosunu](authentication-flows-app-scenarios.md) seçin. Bu senaryo yollarının her biri, bir genel bakış ile başlar ve hızlı başlangıç bağlantısı ile çalışmaya başlamanıza yardımcı olur:
 
 - [Tek sayfalı uygulama (SPA)](scenario-spa-overview.md)
-- [Kullanıcıların oturum açtığı web uygulaması](scenario-web-app-sign-user-overview.md)
-- [Web API'lerini çağıran web uygulaması](scenario-web-app-call-api-overview.md)
-- [Korumalı web API'si](scenario-protected-web-api-overview.md)
+- [Kullanıcılar için oturum açan web uygulaması](scenario-web-app-sign-user-overview.md)
+- [Web API’lerini çağıran web uygulaması](scenario-web-app-call-api-overview.md)
+- [Korumalı web API’si](scenario-protected-web-api-overview.md)
 - [Web API'lerini çağıran web API'si](scenario-web-api-call-api-overview.md)
 - [Masaüstü uygulaması](scenario-desktop-overview.md)
 - [Daemon uygulaması](scenario-daemon-overview.md)

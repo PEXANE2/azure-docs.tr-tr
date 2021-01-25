@@ -1,5 +1,6 @@
 ---
-title: Bir Web uygulamasından Kullanıcı oturum açma-Microsoft Identity platform | Mavisi
+title: Web uygulamasından Kullanıcı oturum açma | Mavisi
+titleSuffix: Microsoft identity platform
 description: Kullanıcılara oturum açan bir Web uygulaması oluşturma hakkında bilgi edinin (genel bakış)
 services: active-directory
 author: jmprieur
@@ -11,18 +12,18 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 38ed7fb2930463e6657422e851a73f2b3b011f35
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: a7e33f950bc5f13372962694abc8e3e40d8ad5c0
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443594"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753244"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>Senaryo: kullanıcılarda oturum açan Web uygulaması
 
 Kullanıcıların oturum açması için Microsoft Identity platformunu kullanan bir Web uygulaması oluşturmak için ihtiyacınız olan tüm kullanıcıları öğrenin.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 

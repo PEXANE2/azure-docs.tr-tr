@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: acaa87f44fbd496aea843de673c0b2d7652fe542
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: b6e83f8c4ba00f64bd924ce7b404cd3acfcecd14
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681052"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754206"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-an-angular-spa-using-the-auth-code-flow"></a>Hızlı başlangıç: kimlik doğrulama kod akışını kullanarak bir angular SPA 'da oturum açma ve erişim belirteci edinme
 
@@ -27,7 +27,7 @@ Bu hızlı başlangıçta, JavaScript angular tek sayfalı uygulama (SPA), kulla
 
 Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL angular v2 kullanılır. Örtük Flow ile MSAL angular 1. x kullanan benzer bir hızlı başlangıç için bkz. [hızlı başlangıç: JavaScript tek sayfalı uygulamalarda oturum açma](./quickstart-v2-angular.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz bir Azure aboneliği oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Node.js](https://nodejs.org/en/download/)
@@ -39,9 +39,7 @@ Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL angular v2 kullan�
 >
 > ### <a name="option-1-express-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Seçenek 1 (Express): uygulamanızı kaydedin ve otomatik olarak yapılandırın ve ardından kod örneğinizi indirin
 >
-> 1. [Azure portalında](https://portal.azure.com) oturum açın.
-> 1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst kısımdaki hesabınızı seçin ve ardından Portal oturumunuzu kullanmak istediğiniz Azure AD kiracısı olarak ayarlayın.
-> 1. [Uygulama kayıtları](https://aka.ms/AAatehv)’nı seçin.
+> 1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Azure portal uygulama kayıtları <span class="docon docon-navigate-external x-hidden-focus"></span> </a> hızlı başlangıç deneyimine gidin.
 > 1. Uygulamanız için bir ad girin.
 > 1. **Desteklenen hesap türleri** altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
 > 1. **Kaydet**’i seçin.
@@ -51,18 +49,17 @@ Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL angular v2 kullan�
 >
 > #### <a name="step-1-register-your-application"></a>1. Adım: Uygulamanızı kaydetme
 >
-> 1. [Azure portalında](https://portal.azure.com) oturum açın.
-> 1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst kısımdaki hesabınızı seçin ve ardından Portal oturumunuzu kullanmak istediğiniz Azure Active Directory (Azure AD) kiracısına ayarlayın.
-> 1. [Uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908)’nı seçin.
-> 1. **Yeni kayıt** seçeneğini belirleyin.
-> 1. **Uygulamayı kaydet** sayfası görüntülendiğinde, uygulamanız için ad girin.
+> 1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
+> 1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
+> 1. **Azure Active Directory**'yi bulun ve seçin.
+> 1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
+> 1. Uygulamanız için bir **ad** girin. Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
 > 1. **Desteklenen hesap türleri** altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
 > 1. **Kaydet**’i seçin. Uygulamaya **genel bakış** sayfasında, daha sonra kullanılmak üzere **uygulama (istemci) kimliği** değerini aklınızda edin.
-> 1. Kayıtlı uygulamanın sol bölmesinde **kimlik doğrulaması**' nı seçin.
-> 1. **Platform yapılandırması** altında öğesini seçin `Add a platform` .
-> 1. Ortaya çıkan pencerede **tek sayfalı uygulama**' yı seçin.
+> 1. **Yönet** altında **kimlik doğrulaması**' nı seçin.
+> 1. **Platform yapılandırması** altında **Platform Ekle**' yi seçin. Açılan bölmedeki **tek sayfalı uygulama** Seç ' i seçin.
 > 1. **Yeniden yönlendirme URI** değerlerini olarak ayarlayın `http://localhost:4200/` . Bu, NodeJS ' nin yerel makinenizde dinleyeceği varsayılan bağlantı noktasıdır. Kullanıcının kimliğini başarıyla doğruladıktan sonra bu URI 'ye kimlik doğrulama yanıtı döndürüyoruz. 
-> 1. Değişiklikleri uygulamak için **Yapılandır** düğmesine tıklayın.
+> 1. Değişiklikleri uygulamak için **Yapılandır** ' ı seçin.
 > 1. **Platform yapılandırması** ' nın altında **tek sayfalı uygulama**' yı genişletin.
 > 1.  ![ Yeniden yönlendirme URI 'nizi zaten yapılandırılmış olan sağlama türleri altında ](media/quickstart-v2-javascript/green-check.png) , yetkilendirme kodu akışı için PKI CE 'nin uygun olduğunu doğrulayın.
 
@@ -181,7 +178,7 @@ Node.js kullanarak projeyi bir Web sunucusuyla çalıştırın:
 
 ### <a name="msaljs"></a>msal.js
 
-MSAL.js kitaplığı, kullanıcıları imzalar ve Microsoft Identity platform tarafından korunan bir API 'ye erişmek için kullanılan belirteçleri ister. 
+MSAL.js kitaplığı, kullanıcıları imzalar ve Microsoft Identity platformu tarafından korunan bir API 'ye erişmek için kullanılan belirteçleri ister. 
 
 Node.js yüklüyse, Node.js paket yöneticisini (NPM) kullanarak en son sürümü indirebilirsiniz:
 

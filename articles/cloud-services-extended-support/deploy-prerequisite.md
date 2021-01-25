@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 45f2b75be9a0090b883c5cc62a0886366e81a302
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 28c7f2c0a61150b2014f669f37ac84ee3a94aebf
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744673"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752152"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Azure Cloud Services dağıtımı önkoşulları (genişletilmiş destek)
 
@@ -42,12 +42,12 @@ CloudServices           Microsoft.Compute    Registered
 ## <a name="required-service-configuration-cscfg-file-updates"></a>Gerekli hizmet yapılandırma (. cscfg) dosya güncelleştirmeleri
 
 ### <a name="1-virtual-network"></a>1) sanal ağ
-Bulut hizmeti (genişletilmiş destek) dağıtımları bir sanal ağda olmalıdır. Sanal ağ [Azure Portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal), [POWERSHELL](https://docs.microsoft.com/azure/virtual-network/quick-create-powershell), [Azure CLI](https://docs.microsoft.com/azure/virtual-network/quick-create-cli) veya [ARM şablonu](https://docs.microsoft.com/azure/virtual-network/quick-create-template)aracılığıyla oluşturulabilir. Sanal ağ ve alt ağlara ayrıca bölümünde hizmet yapılandırması 'nda (. cscfg) başvurulmalıdır `NetworkConfiguration` . 
+Bulut hizmeti (genişletilmiş destek) dağıtımları bir sanal ağda olmalıdır. Sanal ağ [Azure Portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal), [POWERSHELL](https://docs.microsoft.com/azure/virtual-network/quick-create-powershell), [Azure CLI](https://docs.microsoft.com/azure/virtual-network/quick-create-cli) veya [ARM şablonu](https://docs.microsoft.com/azure/virtual-network/quick-create-template)aracılığıyla oluşturulabilir. Sanal ağ ve alt ağlara, [NetworkConfiguration](schema-cscfg-networkconfiguration.md) bölümünde hizmet yapılandırması 'nda (. cscfg) de başvurulmalıdır. 
 
 Bulut hizmeti ile aynı kaynak grubuna ait olan sanal ağlar için, yalnızca hizmet yapılandırma (. cscfg) dosyasındaki sanal ağ adına başvurulmaya yeterlidir. Sanal ağ ve bulut hizmeti iki farklı kaynak grubunda yer alıyorsa, sanal ağın tüm Azure Resource Manager KIMLIĞININ hizmet yapılandırma (. cscfg) dosyasında belirtilmesi gerekir.
  
 #### <a name="virtual-network-located-in-same-resource-group"></a>Aynı kaynak grubunda bulunan sanal ağ
-```json
+```xml
 <VirtualNetworkSite name="<vnet-name>"/> 
 <AddressAssignments> 
 <InstanceAddress roleName="<role-name>"> 
@@ -58,8 +58,8 @@ Bulut hizmeti ile aynı kaynak grubuna ait olan sanal ağlar için, yalnızca hi
 ```
 
 #### <a name="virtual-network-located-in-different-resource-group"></a>Farklı kaynak grubunda bulunan sanal ağ
-```json
-“/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>/> 
+```xml
+<VirtualNetworkSite name="/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>"/> 
 <AddressAssignments> 
 <InstanceAddress roleName="<role-name>"> 
 <Subnets> 

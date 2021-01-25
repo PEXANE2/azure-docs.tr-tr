@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 532fcc7db849af192ceddb1c239e99f31a2a3088
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: b475d8072c4103e8a532cdf703e2d75b0c8aafa2
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178475"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754152"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Hızlı başlangıç: bir JavaScript SPA 'da Kullanıcı oturumu açma ve erişim belirteci edinme
 
@@ -54,7 +54,7 @@ Bu hızlı başlangıçta, JavaScript tek sayfalı uygulamanın (SPA) kullanıc�
 > 1. Uygulamanız için bir **ad** girin. Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
 > 1. **Desteklenen hesap türleri** altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
 > 1. **Kaydet**’i seçin. Uygulamaya **genel bakış** sayfasında, daha sonra kullanılmak üzere **uygulama (istemci) kimliği** değerini aklınızda edin.
-> 1. Bu hızlı başlangıç, [örtük izin akışının](v2-oauth2-implicit-grant-flow.md) etkinleştirilmesini gerektirir. Kayıtlı uygulamanın sol bölmesinde **kimlik doğrulaması**' nı seçin.
+> 1. Bu hızlı başlangıç, [örtük izin akışının](v2-oauth2-implicit-grant-flow.md) etkinleştirilmesini gerektirir. **Yönet** altında **kimlik doğrulaması**' nı seçin.
 > 1. **Platform yapılandırması** altında **Platform Ekle**' yi seçin. Sol tarafta bir panel açılır. Burada **Web uygulamaları** bölgesini seçin.
 > 1. Hala solda, **yeniden YÖNLENDIRME URI** değerini olarak ayarlayın `http://localhost:3000/` . Ardından, **erişim belirteci** ve **kimlik belirteci**' ni seçin.
 > 1. **Yapılandır**'ı seçin.
@@ -107,7 +107,7 @@ Bu hızlı başlangıçta, JavaScript tek sayfalı uygulamanın (SPA) kullanıc�
 
 > [!div renderon="docs"]
 >
-> Burada:
+> Konum:
 > - *\<Enter_the_Application_Id_Here>* , kaydettiğiniz uygulamanın **uygulama (istemci) kimliğidir** .
 > - *\<Enter_the_Cloud_Instance_Id_Here>* , Azure bulutu örneğidir. Ana veya küresel Azure bulutu için yalnızca girmeniz yeterlidir *https://login.microsoftonline.com* . **Ulusal** bulutlar (örneğin, Çin) için bkz. [Ulusal bulutlar](./authentication-national-cloud.md).
 > - *\<Enter_the_Tenant_info_here>* Aşağıdaki seçeneklerden birine ayarlanır:
@@ -141,7 +141,7 @@ Bu hızlı başlangıçta, JavaScript tek sayfalı uygulamanın (SPA) kullanıc�
 
 > [!div renderon="docs"]
 >
-> Burada:
+> Konum:
 > - *\<Enter_the_Graph_Endpoint_Here>* , API çağrılarının üzerinde hale getirilme bitiş noktasıdır. Ana veya küresel Microsoft Graph API hizmeti için yalnızca girmeniz yeterlidir `https://graph.microsoft.com` . Daha fazla bilgi için bkz. [Ulusal bulut dağıtımı](/graph/deployments)
 >
 > #### <a name="step-4-run-the-project"></a>4. Adım: projeyi çalıştırma
@@ -202,7 +202,7 @@ Hızlı başlangıç kodu ayrıca MSAL kitaplığının nasıl başlatılacağı
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
 
-> |Konum  | Description |
+> |Konum  | Açıklama |
 > |---------|---------|
 > |`clientId`     | Azure portal kayıtlı uygulamanın uygulama KIMLIĞI.|
 > |`authority`    | Seçim Daha önce yapılandırma bölümünde açıklandığı gibi, hesap türlerini destekleyen yetkili URL 'SI. Varsayılan yetkili `https://login.microsoftonline.com/common` . |
@@ -230,7 +230,7 @@ myMSALObj.loginPopup(loginRequest)
 });
 ```
 
-> |Konum  | Description |
+> |Konum  | Açıklama |
 > |---------|---------|
 > | `scopes`   | Seçim Oturum açma sırasında kullanıcı onayı için istenen kapsamları içerir. Örneğin, `[ "user.read" ]` Microsoft Graph veya `[ "<Application ID URL>/scope" ]` özel Web API 'leri için (yani, `api://<Application ID>/access_as_user` ). |
 
@@ -260,20 +260,20 @@ myMSALObj.acquireTokenSilent(tokenRequest)
     });
 ```
 
-> |Konum  | Description |
+> |Konum  | Açıklama |
 > |---------|---------|
 > | `scopes`   | API için erişim belirtecine döndürülmek istenen kapsamları içerir. Örneğin, `[ "mail.read" ]` Microsoft Graph veya `[ "<Application ID URL>/scope" ]` özel Web API 'leri için (yani, `api://<Application ID>/access_as_user` ).|
 
 #### <a name="get-a-user-token-interactively"></a>Etkileşimli olarak kullanıcı belirteci alma
 
-Kullanıcıları Microsoft Identity platform uç noktasıyla etkileşimde bulunmak için zorlamanız gereken durumlar vardır. Örnek:
+Kullanıcıları Microsoft Identity platformu ile etkileşimde bulunmak için zorlamanız gereken durumlar vardır. Örneğin:
 * Parolasının süresi sona erdiği için kullanıcıların kimlik bilgilerini yeniden girmesi gerekebilir.
 * Uygulamanız, kullanıcının onaylaması gereken ek kaynak kapsamlarına erişim istiyor.
 * İki öğeli kimlik doğrulaması gereklidir.
 
 Çoğu uygulama için olağan olarak önerilen desenler ilk olarak çağrı yapılır `acquireTokenSilent` , sonra özel durumu yakalar ve sonra `acquireTokenPopup` `acquireTokenRedirect` etkileşimli bir istek başlatmak için (veya) çağırır.
 
-`acquireTokenPopup`Oturum açmak için sonuçları açılan pencerede çağırma. (Veya `acquireTokenRedirect` kullanıcıları Microsoft Identity platform uç noktasına yönlendirmeye neden olur.) Bu pencerede, kullanıcıların kimlik bilgilerini onaylayarak, gerekli kaynağa onay vererek veya iki öğeli kimlik doğrulamasını tamamlayarak etkileşimde olmaları gerekir.
+`acquireTokenPopup`Oturum açmak için sonuçları açılan pencerede çağırma. (Veya `acquireTokenRedirect` kullanıcıları Microsoft Identity platformu 'na yönlendirmeye de neden olur). Bu pencerede, kullanıcıların kimlik bilgilerini onaylayarak, gerekli kaynağa onay vererek veya iki öğeli kimlik doğrulamasını tamamlayarak etkileşimde olmaları gerekir.
 
 ```javascript
 // Add here scopes for access token to be used at MS Graph API endpoints.

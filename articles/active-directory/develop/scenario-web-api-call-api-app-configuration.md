@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 4a888c3ad771e4a7edbd7110ba584050fe68e810
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: b8360a22c815fa28626bb07a1518bd82ba6e3e46
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443798"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753511"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Web API 'Leri çağıran bir Web API 'SI: kod yapılandırması
 
@@ -88,7 +88,7 @@ Microsoft. Identity. Web, sertifikaları yapılandırma veya koda göre tanımla
 
 ## <a name="startupcs"></a>Startup.cs
 
-Web API 'nizin aşağı akış API 'SI için bir belirteç edinmesi gerekir. `.EnableTokenAcquisitionToCallDownstreamApi()`Sonra satırı ekleyerek belirlersiniz `.AddMicrosoftIdentityWebApi(Configuration)` . Bu satır `ITokenAcquisition` , denetleyici/sayfalar eylemlerinizde kullanabileceğiniz hizmeti sunar. Bununla birlikte, sonraki iki madde işareti noktasında göreceğiniz gibi daha da kolay hale getirebilirsiniz. Ayrıca, Startup.cs içinde bir belirteç önbelleği uygulamasını seçmeniz gerekir `.AddInMemoryTokenCaches()` : *Startup.cs*
+Web API 'nizin aşağı akış API 'SI için bir belirteç edinmesi gerekir. `.EnableTokenAcquisitionToCallDownstreamApi()`Sonra satırı ekleyerek belirlersiniz `.AddMicrosoftIdentityWebApi(Configuration)` . Bu satır `ITokenAcquisition` , denetleyici/sayfalar eylemlerinizde kullanabileceğiniz hizmeti sunar. Bununla birlikte, sonraki iki madde işareti noktasında göreceğiniz gibi daha da kolay hale getirebilirsiniz. Ayrıca, Startup.cs içinde bir belirteç önbelleği uygulamasını seçmeniz gerekir `.AddInMemoryTokenCaches()` : 
 
 ```csharp
 using Microsoft.Identity.Web;

@@ -1,5 +1,6 @@
 ---
-title: Desteklenen hesap türlerine göre doğrulama farklılıkları-Microsoft Identity platform | Mavisi
+title: Desteklenen hesap türlerine göre doğrulama farklılıkları | Mavisi
+titleSuffix: Microsoft identity platform
 description: Uygulamanızı Microsoft Identity platformu ile kaydederken desteklenen farklı hesap türleri için çeşitli özelliklerin doğrulama farklılıkları hakkında bilgi edinin.
 author: SureshJa
 ms.author: sureshja
@@ -10,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: e794e277f6731c7b6e57a4710eea437f65be0340
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77521150e73014c5568003597059a9d32f6e80ee
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87336353"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752964"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>Desteklenen hesap türlerine (Signınaudience) göre doğrulama farklılıkları
 
@@ -27,7 +28,7 @@ Seçenekler şunları içerir:
 - *Azureadmultipleorgs*: herhangi bir kuruluş dizinindeki (çok kiracılı) hesaplar
 - *Azureadandpersonmicrosoftaccount*: herhangi bir kurumsal dizin (çok kiracılı) ve kişisel Microsoft hesabı (örneğin, Skype, Xbox ve Outlook.com) hesapları
 
-Kayıtlı uygulamalar için, desteklenen hesap türleri için değeri bir uygulamanın **kimlik doğrulama** bölümünde bulabilirsiniz. `signInAudience` **Bildirimin**özelliği altında de bulabilirsiniz.
+Kayıtlı uygulamalar için, desteklenen hesap türleri için değeri bir uygulamanın **kimlik doğrulama** bölümünde bulabilirsiniz. `signInAudience` **Bildirimin** özelliği altında de bulabilirsiniz.
 
 Bu özellik için seçtiğiniz değer diğer uygulama nesnesi özelliklerinde etkileri vardır. Sonuç olarak, bu özelliği değiştirirseniz, önce diğer özellikleri değiştirmeniz gerekebilir.
 

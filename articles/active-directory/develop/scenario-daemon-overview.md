@@ -1,5 +1,6 @@
 ---
-title: Web API 'Leri çağıran bir Daemon uygulaması oluşturma-Microsoft Identity platform | Mavisi
+title: Web API 'Lerini çağıran bir Daemon uygulaması oluşturun | Mavisi
+titleSuffix: Microsoft identity platform
 description: Web API 'Lerini çağıran bir Daemon uygulaması derlemeyi öğrenin
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 01/31/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e63a948260863c93a92e4241044be5e0baf8afca
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 45af940382a261f1793583e471871b9cceed0a57
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443271"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753832"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>Senaryo: Web API 'Lerini çağıran Daemon uygulaması
 
@@ -45,7 +46,7 @@ Kendi kimlikleri için belirteç elde eden uygulamalar:
 
 > [!IMPORTANT]
 >
-> - Kullanıcılar bir Daemon uygulamasıyla etkileşime giremiyorum. Bir Daemon uygulaması kendi kimliğini gerektirir. Bu tür bir uygulama, uygulama kimliğini kullanarak bir erişim belirteci ister ve uygulama KIMLIĞI, kimlik bilgileri (parola veya sertifika) ve uygulama KIMLIĞI URI 'sini Azure AD 'ye sunuyor. Başarılı kimlik doğrulamasından sonra, Daemon, Microsoft Identity platform uç noktasından bir erişim belirteci (ve yenileme belirteci) alır. Bu belirteç daha sonra Web API 'sini çağırmak için kullanılır (ve gerektiğinde yenilenir).
+> - Kullanıcılar bir Daemon uygulamasıyla etkileşime giremiyorum. Bir Daemon uygulaması kendi kimliğini gerektirir. Bu tür bir uygulama, uygulama kimliğini kullanarak bir erişim belirteci ister ve uygulama KIMLIĞI, kimlik bilgileri (parola veya sertifika) ve uygulama KIMLIĞI URI 'sini Azure AD 'ye sunuyor. Başarılı kimlik doğrulamasından sonra, Daemon, Microsoft Identity platformundan bir erişim belirteci (ve yenileme belirteci) alır. Bu belirteç daha sonra Web API 'sini çağırmak için kullanılır (ve gerektiğinde yenilenir).
 > - Kullanıcılar DAEMON uygulamalarıyla etkileşime giremediği için artımlı onay mümkün değildir. Tüm gerekli API izinlerinin uygulama kaydında yapılandırılması gerekir. Uygulamanın kodu yalnızca statik olarak tanımlanan izinleri ister. Bu Ayrıca, Daemon uygulamalarının artımlı onayı desteklememe anlamına gelir.
 
 Geliştiriciler için, bu senaryoya yönelik uçtan uca deneyim aşağıdaki yönlere sahiptir:

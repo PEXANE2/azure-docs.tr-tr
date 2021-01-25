@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/12/2021
 ms.author: yelevin
-ms.openlocfilehash: 989520e079988e1821d8bb9a936f857e1f62c11a
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 5c7491a0e0ba2a3bf604988c613e1fd8937f277d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567758"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752166"
 ---
 # <a name="connect-your-trend-micro-tippingpoint-solution-to-azure-sentinel"></a>Trend mikro TippingPoint çözümünüzü Azure Sentinel 'e bağlama
 
 > [!IMPORTANT]
 > Trend mikro TippingPoint Bağlayıcısı Şu anda **Önizleme** aşamasındadır. Beta, önizleme veya henüz genel kullanıma sunulmayan Azure özelliklerine uygulanan ek koşullar için [Microsoft Azure önizlemeleri için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 'na bakın.
 
-Bu makalede, Trend mikro TippingPoint tehdit koruması sistem çözümünüzün Azure Sentinel 'e nasıl bağlanacağı açıklanır. Trend mikro TippingPoint veri Bağlayıcısı, çalışma kitaplarında verileri görüntüleyebilmeniz, özel uyarılar oluşturmak için onu kullanarak ve araştırmayı iyileştirebilmeniz için, Azure Sentinel ile TippingPoint güvenlik yönetimi sistemi (SMS) günlüklerinizi kolayca bağlamanıza olanak tanır. 
+Bu makalede, Trend mikro TippingPoint tehdit koruması sistem çözümünüzün Azure Sentinel 'e nasıl bağlanacağı açıklanır. Trend mikro TippingPoint veri Bağlayıcısı, çalışma kitaplarında verileri görüntüleyebilmeniz, özel uyarılar oluşturmak için onu kullanarak ve araştırmayı iyileştirebilmeniz için, Azure Sentinel ile TippingPoint güvenlik yönetimi sistemi (SMS) günlüklerinizi kolayca bağlamanıza olanak tanır.
 
 > [!NOTE]
 > Veriler, Azure Sentinel çalıştırdığınız çalışma alanının coğrafi konumunda depolanır.
@@ -40,7 +40,7 @@ Bu makalede, Trend mikro TippingPoint tehdit koruması sistem çözümünüzün 
 
 ## <a name="send-trend-micro-tippingpoint-logs-to-azure-sentinel"></a>Eğilim mikro TippingPoint günlüklerini Azure Sentinel 'e gönder
 
-Günlüklerini Azure Sentinel 'e almak için, TippingPoint TPS çözümünüzü, CEF biçiminde bir Linux tabanlı günlük iletme sunucusuna (rsyslog veya Syslog-ng çalıştıran) Syslog iletileri gönderecek şekilde yapılandırın. Bu sunucuda Log Analytics Aracısı yüklü olacaktır ve Aracı günlükleri Azure Sentinel çalışma alanınıza iletir.
+Günlüklerini Azure Sentinel 'e almak için, TippingPoint TPS çözümünüzü, CEF biçiminde bir Linux tabanlı günlük iletme sunucusuna (rsyslog veya Syslog-ng çalıştıran) Syslog iletileri gönderecek şekilde yapılandırın. Bu sunucuda Log Analytics Aracısı yüklü olacaktır ve Aracı günlükleri Azure Sentinel çalışma alanınıza iletir. Bağlayıcı, aldığı verileri normalleştirilmiş bir şemaya dönüştürmek için bir Ayrıştırıcı işlevi kullanır. 
 
 1. Azure Sentinel gezinti menüsünde **veri bağlayıcıları**' nı seçin.
 
@@ -64,11 +64,11 @@ Günlüklerini Azure Sentinel 'e almak için, TippingPoint TPS çözümünüzü,
 
 Başarılı bir bağlantı kurulduktan sonra, veriler **günlüklerde**, **Azure Sentinel** bölümünde, *commonsecuritylog* tablosunda görünür.
 
-Log Analytics 'de TrendMicro TippingPoint verilerini sorgulamak için, aşağıdakileri yaptığınız gibi diğer filtreleri uygulayarak sorgu penceresine kopyalayın:
+Log Analytics eğilim mikro TippingPoint verilerini almak için tablo yerine ayrıştırıcı işlevini sorgulayın. Aşağıdakileri seçtiğiniz şekilde, diğer filtreleri uygulayarak sorgu penceresine kopyalayın:
 
 ```kusto
-CommonSecurityLog 
-| where DeviceVendor == "TrendMicroTippingPoint"
+TrendMicroTippingPoint
+| sort by TimeGenerated
 ```
 
 Daha fazla sorgu örneği için bağlayıcı sayfasındaki **sonraki adımlar** sekmesine bakın.
@@ -76,6 +76,7 @@ Daha fazla sorgu örneği için bağlayıcı sayfasındaki **sonraki adımlar** 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu belgede, Trend mikro TippingPoint 'ı Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
 - [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
 - Verilerinizi izlemek için [çalışma kitaplarını kullanın](tutorial-monitor-your-data.md) .

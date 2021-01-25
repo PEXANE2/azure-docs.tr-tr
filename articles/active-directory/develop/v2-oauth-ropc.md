@@ -13,23 +13,23 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 39cd25c2c84e92a0b06bc2ee6c6229ecb2d296d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0282e4f52db8557364cdabe197fa0da63204e42
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91812548"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752638"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft Identity platform ve OAuth 2,0 kaynak sahibi parolası kimlik bilgileri
 
-Microsoft Identity platform, bir uygulamanın kullanıcının parolasını doğrudan işleyerek oturum açmasına izin veren [OAuth 2,0 kaynak sahibi parola kimlik bilgileri (ROPC) vermeyi](https://tools.ietf.org/html/rfc6749#section-4.3)destekler.  Bu makalede, uygulamanızdaki protokolde doğrudan programlanın nasıl yapılacağı açıklanır.  Mümkün olduğunda, [belirteçleri edinmek ve güvenli Web API 'lerini çağırmak](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)Için desteklenen Microsoft kimlik doğrulama KITAPLıKLARıNı (msal) kullanmanızı öneririz.  Ayrıca [, msal kullanan örnek uygulamalara](sample-v2-code.md)göz atın.
+Microsoft Identity platformu, bir uygulamanın kullanıcının parolasını doğrudan işleyerek oturum açmasına izin veren [OAuth 2,0 kaynak sahibi parola kimlik bilgileri (ROPC) vermeyi](https://tools.ietf.org/html/rfc6749#section-4.3)destekler.  Bu makalede, uygulamanızdaki protokolde doğrudan programlanın nasıl yapılacağı açıklanır.  Mümkün olduğunda, [belirteçleri edinmek ve güvenli Web API 'lerini çağırmak](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)Için desteklenen Microsoft kimlik doğrulama KITAPLıKLARıNı (msal) kullanmanızı öneririz.  Ayrıca [, msal kullanan örnek uygulamalara](sample-v2-code.md)göz atın.
 
 > [!WARNING]
 > Microsoft, ROPC _akışını kullanmanıza tavsiye_ eder. Çoğu senaryoda, daha güvenli alternatifler kullanılabilir ve önerilir. Bu akış uygulamada çok yüksek düzeyde güven gerektirir ve diğer akışlarda bulunmayan riskleri taşır. Bu akışı yalnızca daha fazla güvenli akış kullanılmıyorsa kullanmanız gerekir.
 
 > [!IMPORTANT]
 >
-> * Microsoft Identity platform uç noktası, kişisel hesaplara değil yalnızca Azure AD kiracılar için ROPC 'yi destekler. Bu, kiracıya özgü bir uç nokta ( `https://login.microsoftonline.com/{TenantId_or_Name}` ) veya uç nokta kullanmanız gerektiği anlamına gelir `organizations` .
+> * Microsoft Identity platformu, kişisel hesaplara değil yalnızca Azure AD kiracılar için ROPC 'yi destekler. Bu, kiracıya özgü bir uç nokta ( `https://login.microsoftonline.com/{TenantId_or_Name}` ) veya uç nokta kullanmanız gerektiği anlamına gelir `organizations` .
 > * Bir Azure AD kiracısına davet edilen kişisel hesaplar ROPC kullanamaz.
 > * Parolası olmayan hesaplar ROPC aracılığıyla oturum açamaz. Bu senaryo için, bunun yerine uygulamanız için farklı bir akış kullanmanızı öneririz.
 > * Kullanıcıların uygulamada oturum açmak için [Multi-Factor Authentication (MFA)](../authentication/concept-mfa-howitworks.md) kullanması gerekiyorsa, bunun yerine engellenecektir.
@@ -110,6 +110,6 @@ Kullanıcı doğru Kullanıcı adını veya parolayı sağlamadıysa veya istemc
 | `invalid_grant` | Kimlik doğrulaması başarısız oldu | Kimlik bilgileri hatalıydı veya istemcinin istenen kapsamlar için izni yok. Kapsamlar verilmezse bir `consent_required` hata döndürülür. Bu durum oluşursa, istemci bir Web görünümü veya tarayıcı kullanarak kullanıcıyı etkileşimli bir istemde göndermelidir. |
 | `invalid_request` | İstek yanlış oluşturulmuş | İzin türü `/common` veya `/consumers` kimlik doğrulama bağlamlarında desteklenmiyor.  `/organizations`Bunun yerine veya bir KIRACı kimliği kullanın. |
 
-## <a name="learn-more"></a>Daha fazla bilgi edinin
+## <a name="learn-more"></a>Daha fazlasını öğrenin
 
 ROPC kullanma örneği için GitHub 'daki [.NET Core konsol uygulaması](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2) kod örneğine bakın.

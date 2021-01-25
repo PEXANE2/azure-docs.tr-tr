@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: dcb8675350442274418920bb9439b65643f1b046
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 8b12df62a7080e57e47b52cb79ed8a67e12bd526
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178254"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753092"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Öğretici: Microsoft 'a bir ASP.NET Web uygulamasına oturum açma ekleme
 
 Bu öğreticide, .NET (OWıN) ara yazılımı ve Microsoft Identity platformu için açık Web arabirimi kullanarak kullanıcılara oturum açan bir ASP.NET MVC web uygulaması oluşturacaksınız.
 
-Bu kılavuzu tamamladığınızda, uygulamanız kişisel hesapların oturum açma işlemlerini outlook.com ve live.com beğeni kabul edebilir. Ayrıca, Microsoft Identity platformu ile tümleştirilen herhangi bir şirketten veya kuruluştan iş ve okul hesapları, uygulamanızda oturum açabiliyor.
+Bu kılavuzu tamamladığınızda, uygulamanız kişisel hesapların oturum açma işlemlerini outlook.com ve live.com beğeni kabul edebilir. Ayrıca, Microsoft Identity platformu ile tümleştirilmiş olan herhangi bir şirketten veya kuruluştan iş ve okul hesapları, uygulamanızda oturum açabiliyor.
 
 Bu öğreticide:
 
@@ -48,7 +48,7 @@ Oluşturduğunuz örnek uygulama, kullanıcının oturum açma düğmesiyle kiml
 
 Bu kılavuz aşağıdaki kitaplıkları kullanır:
 
-|Kitaplık|Description|
+|Kitaplık|Açıklama|
 |---|---|
 |[Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/)|Uygulamanın kimlik doğrulaması için OpenIdConnect kullanmasını sağlayan ara yazılım|
 |[Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies)|Bir uygulamanın tanımlama bilgilerini kullanarak bir Kullanıcı oturumu korumasına olanak tanıyan ara yazılım|
@@ -119,7 +119,7 @@ Aşağıdaki adımlar, OpenID Connect kimlik doğrulamasını yapılandırmak i�
         // Tenant is the tenant ID (e.g. contoso.onmicrosoft.com, or 'common' for multi-tenant)
         static string tenant = System.Configuration.ConfigurationManager.AppSettings["Tenant"];
 
-        // Authority is the URL for authority, composed by Microsoft identity platform endpoint and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
+        // Authority is the URL for authority, composed of the Microsoft identity platform and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
         string authority = String.Format(System.Globalization.CultureInfo.InvariantCulture, System.Configuration.ConfigurationManager.AppSettings["Authority"], tenant);
 
         /// <summary>
@@ -406,14 +406,13 @@ Testinizi çalıştırmaya hazırsanız bir Azure AD hesabı (iş veya okul hesa
 <br/><br/>
 ![Microsoft hesabı oturum açın](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
-#### <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft kimlik platformu uç noktasında izinler ve onay
-
-Microsoft Identity platformu ile tümleştirilen uygulamalar, kullanıcılara ve yöneticilere verilere nasıl erişilebileceği üzerinde denetim sağlayan bir yetkilendirme modeli izler. Bir Kullanıcı bu uygulamaya erişmek için Microsoft Identity platform ile kimlik doğrulamasından geçtikten sonra, uygulama tarafından istenen izinleri onaylaması istenir ("temel profilinizi görüntüleyin" ve "erişim vermiş olduğunuz verilere erişimi korur"). Bu izinleri kabul ettikten sonra, Kullanıcı uygulama sonuçlarına devam edecektir. Bununla birlikte, aşağıdakilerden biri gerçekleştiğinde kullanıcıya **Yönetici onay sayfası gereksinimi** istenebilir:
+#### <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Microsoft Identity platformunda izinler ve onay
+Microsoft Identity platformu ile tümleştirilen uygulamalar, kullanıcılara ve yöneticilere verilere nasıl erişilebileceği üzerinde denetim sağlayan bir yetkilendirme modeli izler. Bir Kullanıcı bu uygulamaya erişmek için Microsoft Identity platformu ile kimlik doğrulamasından geçtikten sonra, uygulama tarafından istenen izinleri onaylaması istenir ("temel profilinizi görüntüleyin" ve "erişim vermiş olduğunuz verilere erişimi korur"). Bu izinleri kabul ettikten sonra, Kullanıcı uygulama sonuçlarına devam edecektir. Bununla birlikte, aşağıdakilerden biri gerçekleştiğinde kullanıcıya **Yönetici onay sayfası gereksinimi** istenebilir:
 
 - Uygulama geliştiricisi, **yönetici onayı** gerektiren herhangi bir ek izin ekler.
 - Ya da kiracı, kullanıcıların kendi adına şirket verilerine erişen uygulamalara izin veremediği ( **Kurumsal uygulamalarda > Kullanıcı ayarları**) yapılandırılır.
 
-Daha fazla bilgi için [Microsoft Identity platform uç noktasındaki izinler ve onay](./v2-permissions-and-consent.md)bölümüne bakın.
+Daha fazla bilgi için [Microsoft Identity platformunda izinler ve onay](./v2-permissions-and-consent.md)bölümüne bakın.
 
 ### <a name="view-application-results"></a>Uygulama sonuçlarını görüntüle
 

@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 946908bf28a50bc8b523c4efd853e8720b115c7b
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: c071cb9a8a27964a93e039e4d1536e078730bfc9
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063085"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753627"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Web API 'Lerini çağıran bir mobil uygulama için belirteç alın
 
@@ -243,7 +243,7 @@ Sınıfı aşağıdaki sabitleri tanımlar:
 
 ##### <a name="withextrascopetoconsent"></a>Withextrascopetoonay
 
-Değiştirici, `WithExtraScopeToConsent` kullanıcının birkaç kaynağa ön onay sağlamasını istediğiniz gelişmiş bir senaryoda kullanın. Bu değiştiriciyi, genellikle MSAL.NET veya Microsoft Identity Platform 2,0 ile kullanılan artımlı izin kullanmak istemediğinizde kullanabilirsiniz. Daha fazla bilgi için, bkz. [birkaç kaynak için Kullanıcı onayını ön](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources)alma.
+Değiştirici, `WithExtraScopeToConsent` kullanıcının birkaç kaynağa ön onay sağlamasını istediğiniz gelişmiş bir senaryoda kullanın. Bu değiştiriciyi, genellikle MSAL.NET veya Microsoft Identity platformu ile kullanılan artımlı izin kullanmak istemediğinizde kullanabilirsiniz. Daha fazla bilgi için, bkz. [birkaç kaynak için Kullanıcı onayını ön](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources)alma.
 
 Aşağıda bir kod örneği verilmiştir:
 

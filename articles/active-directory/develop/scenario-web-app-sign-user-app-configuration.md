@@ -1,5 +1,6 @@
 ---
-title: Kullanıcılar tarafından oturum açan bir Web uygulamasını yapılandırma-Microsoft Identity platform | Mavisi
+title: Kullanıcılara oturum açan bir Web uygulaması yapılandırma | Mavisi
+titleSuffix: Microsoft identity platform
 description: Kullanıcılara oturum açan bir Web uygulaması oluşturma hakkında bilgi edinin (kod yapılandırması)
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: dad7b0563fd1ca0dbf60403bc6172e7616e278b2
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 45f3a066283a921f60909a4aa3cfdc76f3faad06
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443662"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753270"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Kullanıcılara oturum açan Web uygulaması: kod yapılandırması
 
@@ -202,7 +203,7 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
 
 ## <a name="initialization-code"></a>Başlatma kodu
 
-Başlatma kodu platforma bağlı olarak farklılık açmış. ASP.NET Core ve ASP.NET için, kullanıcıların oturum açması, OpenID Connect ara yazılımı için temsilci olarak oluşturulur. ASP.NET veya ASP.NET Core şablonu, Azure Active Directory (Azure AD) v 1.0 uç noktası için Web uygulamaları oluşturur. Bunları Microsoft Identity platform (v 2.0) uç noktasına uyarlamak için bazı yapılandırmalar gerekir. Java söz konusu olduğunda, uygulamanın iş birliği ile Spring tarafından işlenir.
+Başlatma kodu platforma bağlı olarak farklılık açmış. ASP.NET Core ve ASP.NET için, kullanıcıların oturum açması, OpenID Connect ara yazılımı için temsilci olarak oluşturulur. ASP.NET veya ASP.NET Core şablonu, Azure Active Directory (Azure AD) v 1.0 uç noktası için Web uygulamaları oluşturur. Bu yapılandırma, Microsoft Identity platformu 'na uyum sağlamak için gereklidir. Java söz konusu olduğunda, uygulamanın iş birliği ile Spring tarafından işlenir.
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -262,7 +263,7 @@ Yukarıdaki kodda:
 - `AddMicrosoftIdentityWebAppAuthentication`Uzantı yöntemi **Microsoft. Identity. Web** içinde tanımlanmıştır. İçerdiği
   - Kimlik doğrulama hizmetini ekler.
   - Yapılandırma dosyasını okuma seçeneklerini yapılandırır (burada "AzureAD" bölümünden)
-  - OpenID Connect seçeneklerini, yetkilinin Microsoft Identity platform uç noktası olmasını sağlayacak şekilde yapılandırır.
+  - OpenID Connect seçeneklerini, yetkilinin Microsoft Identity platformu olmasını sağlayacak şekilde yapılandırır.
   - Belirtecin vereni doğrular.
   - Ada karşılık gelen taleplerin `preferred_username` kimlik belirtecindeki talepten eşlenmesini sağlar.
 
@@ -291,7 +292,7 @@ Bir ASP.NET Web uygulamasında ve Web API 'Lerinde kimlik doğrulamasıyla ilgil
   app.UseOpenIdConnectAuthentication(
     new OpenIdConnectAuthenticationOptions
     {
-     // `Authority` represents the identity platform endpoint - https://login.microsoftonline.com/common/v2.0.
+     // Authority` represents the identity platform endpoint - https://login.microsoftonline.com/common/v2.0.
      // `Scope` describes the initial permissions that your app will need.
      //  See https://azure.microsoft.com/documentation/articles/active-directory-v2-scopes/.
      ClientId = clientId,

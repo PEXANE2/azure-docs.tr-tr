@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
 ROBOTS: NOINDEX
-ms.openlocfilehash: 62f4f629e44d317d36e182adb48f8f00b9f1c2b3
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 4665e4240d7563a585b7c224365172d69d7efddf
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063068"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753877"
 ---
 # <a name="how-to-configure-single-sign-on-for-an-application"></a>Bir uygulama için çoklu oturum açmayı yapılandırma
 
@@ -41,6 +41,6 @@ Android için bkz. [Android 'de uygulamalar arası SSO 'Yu etkinleştirme](../az
 
 [Uygulamaları AzureAD ile tümleştirme](./quickstart-register-app.md)<br>
 
-[Microsoft kimlik platformu uç noktasında izinler ve onay](./v2-permissions-and-consent.md)<br>
+[Microsoft Identity platformunda izinler ve onay](./v2-permissions-and-consent.md)<br>
 
 [AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

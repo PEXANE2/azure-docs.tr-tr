@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 51b548beae57ce1da32006b61dfd222b0a4e6218
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 874488e5de7888edad5310afce1afd1baec4ece0
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015870"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753073"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Öğretici: Kullanıcı oturum açma ve JavaScript tek sayfalı uygulamadan (SPA) Microsoft Graph API 'sini çağırma
 
@@ -35,7 +35,7 @@ Bu öğreticide:
 >[!TIP]
 > Bu öğretici, tek sayfalı uygulamalar için örtük verme akışını kullanmayla sınırlı olan v1. x MSAL.js kullanır. Bunun yerine tüm yeni uygulamaların [ ,MSAL.js 2. x ve yetkilendirme kodu akışını PKCE ve CORS](tutorial-v2-javascript-auth-code.md) desteğiyle kullanması önerilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Yerel bir Web sunucusu çalıştırmak için [Node.js](https://nodejs.org/en/download/) .
 * Proje dosyalarını değiştirmek için [Visual Studio Code](https://code.visualstudio.com/download) veya başka bir düzenleyici.
@@ -45,7 +45,7 @@ Bu öğreticide:
 
 ![Bu öğretici tarafından oluşturulan örnek uygulamanın nasıl çalıştığını gösterir](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
 
-Bu kılavuz tarafından oluşturulan örnek uygulama, JavaScript SPA 'nın Microsoft Graph API 'sini veya Microsoft Identity platform uç noktasından belirteçleri kabul eden bir Web API 'sini sorgulamasına olanak sağlar. Bu senaryoda, bir Kullanıcı oturum açtıktan sonra, yetkilendirme üst bilgisi aracılığıyla bir erişim belirteci istenir ve HTTP isteklerine eklenir. Bu belirteç, kullanıcının profilini ve postalarını **MS Graph API** aracılığıyla almak için kullanılacaktır.
+Bu kılavuz tarafından oluşturulan örnek uygulama, JavaScript SPA 'nın Microsoft Graph API 'sini veya Microsoft Identity platformundan belirteçleri kabul eden bir Web API 'sini sorgulamasına olanak sağlar. Bu senaryoda, bir Kullanıcı oturum açtıktan sonra, yetkilendirme üst bilgisi aracılığıyla bir erişim belirteci istenir ve HTTP isteklerine eklenir. Bu belirteç, kullanıcının profilini ve postalarını **MS Graph API** aracılığıyla almak için kullanılacaktır.
 
 Belirteç alma ve yenileme, [JavaScript Için Microsoft kimlik doğrulama kitaplığı (msal)](https://github.com/AzureAD/microsoft-authentication-library-for-js)tarafından işlenir.
 
@@ -413,13 +413,13 @@ Bu kılavuz tarafından oluşturulan SPA, `acquireTokenSilent` `acquireTokenPopu
 
 #### <a name="get-a-user-token-interactively"></a>Etkileşimli olarak kullanıcı belirteci alma
 
-İlk oturum açma işleminden sonra, kullanıcılardan bir kaynağa erişmek için bir belirteç isteme ihtiyacı olan her seferinde yeniden kimlik doğrulaması yapmasını istemeniz gerekmez. Bu nedenle, en çok belirteçleri almak için *Acquiretokensilent* kullanılması gerekir. Ancak, kullanıcıların Microsoft Identity platform uç noktasıyla etkileşime geçmesini zorunlu hale getirmeniz gereken durumlar vardır. Örnekler arasında şunlar yer almaktadır:
+İlk oturum açma işleminden sonra, kullanıcılardan bir kaynağa erişmek için bir belirteç isteme ihtiyacı olan her seferinde yeniden kimlik doğrulaması yapmasını istemeniz gerekmez. Bu nedenle, en çok belirteçleri almak için *Acquiretokensilent* kullanılması gerekir. Ancak, kullanıcıların Microsoft Identity platformu ile etkileşime geçmesini zorunlu hale getirmeniz gereken durumlar vardır. Örnekler arasında şunlar yer almaktadır:
 
 - Parolanın süresi sona erdiği için kullanıcıların kimlik bilgilerini yeniden girmesi gerekir.
 - Uygulamanız bir kaynağa erişim istiyor ve kullanıcının izni gerekiyor.
 - İki öğeli kimlik doğrulaması gereklidir.
 
-*Acquiretokenpopup* çağrısı, bir açılır pencere açar (veya *Acquiretokenredirect* kullanıcıları Microsoft Identity platform uç noktasına yönlendirir). Bu pencerede, kullanıcıların kimlik bilgilerini onaylayarak, gerekli kaynağa onay vererek veya iki öğeli kimlik doğrulamasını tamamlayarak etkileşimde olmaları gerekir.
+*Acquiretokenpopup* çağrısı, bir açılır pencere açar (veya *Acquiretokenredirect* kullanıcıları Microsoft Identity platform 'a yönlendirir). Bu pencerede, kullanıcıların kimlik bilgilerini onaylayarak, gerekli kaynağa onay vererek veya iki öğeli kimlik doğrulamasını tamamlayarak etkileşimde olmaları gerekir.
 
 #### <a name="get-a-user-token-silently"></a>Kullanıcı belirtecini sessizce alma
 
@@ -483,7 +483,7 @@ Bu kılavuz tarafından oluşturulan örnek uygulamada, `callMSGraph()` yöntemi
    ```
 1. Tarayıcınızda, veya yazın; **http://localhost:3000** **http://localhost:{port}** burada *bağlantı noktası* , Web sunucunuzun dinlediği bağlantı noktasıdır. *index.html* dosyanızın Içeriğini ve **oturum aç** düğmesini görmeniz gerekir.
 
-Tarayıcı *index.html* dosyanızı yükledikten sonra **oturum aç**' ı seçin. Microsoft Identity platform uç noktası ile oturum açmanız istenir:
+Tarayıcı *index.html* dosyanızı yükledikten sonra **oturum aç**' ı seçin. Microsoft Identity platformu ile oturum açmanız istenir:
 
 ![JavaScript SPA hesabı oturum açma penceresi](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
 

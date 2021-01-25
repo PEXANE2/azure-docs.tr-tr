@@ -13,18 +13,18 @@ ms.date: 05/22/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 71e930898f1f86622357f9e02da69be7bf2f8088
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de1fcdc259de3f72e35feb411bcc836354352eb4
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91256594"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752592"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft Identity platform ve OpenID Connect Protokolü
 
-OpenID Connect (OıDC), bir kullanıcıyı bir uygulamada güvenli bir şekilde oturum açmak için kullanabileceğiniz, OAuth 2,0 üzerinde oluşturulmuş bir kimlik doğrulama protokolüdür. OpenID Connect 'in Microsoft Identity platform uç noktasının uygulamasını kullandığınızda uygulamalarınıza oturum açma ve API erişimi ekleyebilirsiniz. Bu makalede, bu dilden bağımsız olarak nasıl yapılacağı ve herhangi bir [Microsoft açık kaynak kitaplığı](reference-v2-libraries.md)kullanmadan http iletileri gönderme ve alma işlemlerinin nasıl yapılacağı açıklanır.
+OpenID Connect (OıDC), bir kullanıcıyı bir uygulamada güvenli bir şekilde oturum açmak için kullanabileceğiniz, OAuth 2,0 üzerinde oluşturulmuş bir kimlik doğrulama protokolüdür. Microsoft Identity platformunun OpenID Connect uygulamasını kullandığınızda uygulamalarınıza oturum açma ve API erişimi ekleyebilirsiniz. Bu makalede, bu dilden bağımsız olarak nasıl yapılacağı ve herhangi bir [Microsoft açık kaynak kitaplığı](reference-v2-libraries.md)kullanmadan http iletileri gönderme ve alma işlemlerinin nasıl yapılacağı açıklanır.
 
-[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) , OAuth 2,0 *Yetkilendirme* protokolünü *kimlik doğrulama* protokolü olarak kullanılmak üzere genişletir. böylece, OAuth kullanarak çoklu oturum açma yapabilirsiniz. OpenID Connect, istemcinin kullanıcı kimliğini doğrulamasına izin veren bir güvenlik belirteci olan *kimlik belirteci*kavramını tanıtır. KIMLIK belirteci, kullanıcı hakkındaki temel profil bilgilerini de alır. Ayrıca, Kullanıcı hakkında bilgi döndüren bir API olan [UserInfo uç noktasını](userinfo.md)da tanıtır. 
+[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) , OAuth 2,0 *Yetkilendirme* protokolünü *kimlik doğrulama* protokolü olarak kullanılmak üzere genişletir. böylece, OAuth kullanarak çoklu oturum açma yapabilirsiniz. OpenID Connect, istemcinin kullanıcı kimliğini doğrulamasına izin veren bir güvenlik belirteci olan *kimlik belirteci* kavramını tanıtır. KIMLIK belirteci, kullanıcı hakkındaki temel profil bilgilerini de alır. Ayrıca, Kullanıcı hakkında bilgi döndüren bir API olan [UserInfo uç noktasını](userinfo.md)da tanıtır. 
 
 
 ## <a name="protocol-diagram-sign-in"></a>Protokol diyagramı: oturum açma
@@ -88,7 +88,7 @@ Meta veriler basit bir JavaScript Nesne Gösterimi (JSON) belgesidir. Örnek iç
 
 Uygulamanızda, [talep eşleme](active-directory-claims-mapping.md) özelliğini kullanmanın bir sonucu olarak özel İmzalama anahtarları varsa, `appid` `jwks_uri` uygulamanızın imzalama anahtarı bilgilerine Işaret etmek için uygulama kimliğini içeren bir sorgu parametresi eklemeniz gerekir. Örneğin: `https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` bir içerir `jwks_uri` `https://login.microsoftonline.com/{tenant}/discovery/v2.0/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e` .
 
-Genellikle, bu meta veri belgesini bir OpenID Connect kitaplığı veya SDK 'Sı yapılandırmak için kullanacaksınız; Kitaplık, işini yapmak için meta verileri kullanır. Ancak, önceden oluşturulmuş bir OpenID Connect kitaplığı kullanmıyorsanız, Microsoft Identity platform uç noktasını kullanarak bir Web uygulamasında oturum açmak için bu makalenin geri kalanında bulunan adımları izleyebilirsiniz.
+Genellikle, bu meta veri belgesini bir OpenID Connect kitaplığı veya SDK 'Sı yapılandırmak için kullanacaksınız; Kitaplık, işini yapmak için meta verileri kullanır. Ancak, önceden oluşturulmuş bir OpenID Connect kitaplığı kullanmıyorsanız, Microsoft Identity platformunu kullanarak bir Web uygulamasında oturum açmak için bu makalenin geri kalanında bulunan adımları izleyebilirsiniz.
 
 ## <a name="send-the-sign-in-request"></a>Oturum açma isteğini gönder
 
@@ -126,13 +126,13 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `nonce` | Gerekli | Talep olarak sonuçta elde edilen id_token değerine dahil edilecek, uygulama tarafından oluşturulan, isteğe dahil edilen bir değer. Uygulama, belirteç yeniden yürütme saldırılarını azaltmak için bu değeri doğrulayabilirler. Değer genellikle, isteğin kaynağını belirlemek için kullanılabilecek rastgele, benzersiz bir dizedir. |
 | `response_mode` | Önerilen | Elde edilen yetkilendirme kodunu uygulamanıza geri göndermek için kullanılması gereken yöntemi belirtir. `form_post` veya `fragment` olabilir. Web uygulamaları için, `response_mode=form_post` belirteçlerin uygulamanıza en güvenli şekilde aktarılmasını sağlamak üzere kullanmanızı öneririz. |
 | `state` | Önerilen | İstekte bulunan ve belirteç yanıtında de döndürülen bir değer. İstediğiniz herhangi bir içerik dizesi olabilir. Genellikle, [siteler arası istek sahteciliği saldırıları engellemek](https://tools.ietf.org/html/rfc6749#section-10.12)için rastgele oluşturulan benzersiz bir değer kullanılır. Durum Ayrıca, kullanıcının uygulamadaki durumuyla ilgili bilgileri, örneğin, Kullanıcı veya görüntüleme gibi kimlik doğrulama isteği yapılmadan önce kodlamak için de kullanılır. |
-| `prompt` | İsteğe Bağlı | Gerekli kullanıcı etkileşiminin türünü gösterir. Şu anda yalnızca geçerli değerler `login` , ve ' dir `none` `consent` . `prompt=login`Talep, kullanıcıyı bu istek üzerine kimlik bilgilerini girmeye zorlar ve çoklu oturum açma işlemini geçersiz kılar. `prompt=none`Talep, tersidir. Bu talep, kullanıcının ' de etkileşimli bir istem ile sunulmamasını sağlar. İstek çoklu oturum açma yoluyla sessizce tamamlanamayacak, Microsoft Identity platform uç noktası bir hata döndürür. `prompt=consent`Talep, Kullanıcı oturum açtıktan sonra OAuth onay iletişim kutusunu tetikler. İletişim kutusu kullanıcıdan uygulamaya izin vermesini ister. |
+| `prompt` | İsteğe Bağlı | Gerekli kullanıcı etkileşiminin türünü gösterir. Şu anda yalnızca geçerli değerler `login` , ve ' dir `none` `consent` . `prompt=login`Talep, kullanıcıyı bu istek üzerine kimlik bilgilerini girmeye zorlar ve çoklu oturum açma işlemini geçersiz kılar. `prompt=none`Talep, tersidir. Bu talep, kullanıcının ' de etkileşimli bir istem ile sunulmamasını sağlar. İstek çoklu oturum açma yoluyla sessizce tamamlanamayacak, Microsoft Identity platform bir hata döndürür. `prompt=consent`Talep, Kullanıcı oturum açtıktan sonra OAuth onay iletişim kutusunu tetikler. İletişim kutusu kullanıcıdan uygulamaya izin vermesini ister. |
 | `login_hint` | İsteğe Bağlı | Bu parametreyi, kullanıcının Kullanıcı adı ve e-posta adresi alanını daha önce biliyorsanız, Kullanıcı için oturum açma sayfasının Kullanıcı adı ve e-posta adresi alanını önceden doldurmanız için kullanabilirsiniz. Uygulamalar genellikle bu parametreyi, talebi kullanarak daha önceki bir oturum açma işleminden zaten ayıklandıktan sonra yeniden kimlik doğrulama sırasında kullanır `preferred_username` . |
 | `domain_hint` | İsteğe Bağlı | Bir Federasyon dizinindeki kullanıcının bölgesi.  Bu, kullanıcının oturum açma sayfasında, biraz daha kolay bir kullanıcı deneyimi için gittiği e-posta tabanlı bulma işlemini atlar. AD FS gibi şirket içi bir dizin aracılığıyla federe olan kiracılar için, bu genellikle mevcut oturum açma oturumu nedeniyle sorunsuz bir oturum açma ile sonuçlanır. |
 
-Bu noktada kullanıcıdan kimlik bilgilerini girmesi ve kimlik doğrulamasını tamamlaması istenir. Microsoft Identity platform uç noktası, kullanıcının sorgu parametresinde belirtilen izinlere onay verildiğini doğrular `scope` . Kullanıcı bu izinlerden birine onay vermediyse, Microsoft Identity platform uç noktası kullanıcıdan gerekli izinleri vermesini ister. [İzinler, onay ve çok kiracılı uygulamalar](v2-permissions-and-consent.md)hakkında daha fazla bilgi edinebilirsiniz.
+Bu noktada kullanıcıdan kimlik bilgilerini girmesi ve kimlik doğrulamasını tamamlaması istenir. Microsoft Identity platformu, kullanıcının sorgu parametresinde belirtilen izinlere onay verildiğini doğrular `scope` . Kullanıcı bu izinlerden birine onay vermediyse, Microsoft Identity platform kullanıcıdan gerekli izinleri vermesini ister. [İzinler, onay ve çok kiracılı uygulamalar](v2-permissions-and-consent.md)hakkında daha fazla bilgi edinebilirsiniz.
 
-Kullanıcı kimlik doğrulamasından ve onay verdikten sonra, parametrede belirtilen yöntemi kullanarak, belirtilen yeniden yönlendirme URI 'sindeki uygulamanıza bir yanıt döndürür `response_mode` .
+Kullanıcı kimlik doğrulamasından ve izin verdikten sonra, Microsoft Identity platformu, parametresinde belirtilen yöntemi kullanarak, belirtilen yeniden yönlendirme URI 'sindeki uygulamanıza bir yanıt döndürür `response_mode` .
 
 ### <a name="successful-response"></a>Başarılı yanıt
 
@@ -184,7 +184,7 @@ Aşağıdaki tabloda hata yanıtının parametresinde döndürülebilecek hata k
 
 ## <a name="validate-the-id-token"></a>KIMLIK belirtecini doğrulama
 
-Yalnızca id_token alma, kullanıcının kimliğini doğrulamak için her zaman yeterli değildir; Ayrıca, id_token imzasını doğrulamanız ve uygulamanızın gereksinimleri uyarınca belirteçteki talepleri doğrulamanız gerekebilir. Tüm OıDC platformları gibi, Microsoft Identity platform uç noktası, KIMLIK belirteçlerini imzalamak ve bunların geçerli olduğunu doğrulamak için [JSON Web belirteçleri (JWTs)](https://tools.ietf.org/html/rfc7519) ve ortak anahtar şifrelemesi kullanır.
+Yalnızca id_token alma, kullanıcının kimliğini doğrulamak için her zaman yeterli değildir; Ayrıca, id_token imzasını doğrulamanız ve uygulamanızın gereksinimleri uyarınca belirteçteki talepleri doğrulamanız gerekebilir. Tüm OıDC platformları gibi, Microsoft Identity platformu KIMLIK belirteçlerini imzalamak ve bunların geçerli olduğunu doğrulamak için [JSON Web belirteçleri (JWTs)](https://tools.ietf.org/html/rfc7519) ve ortak anahtar şifrelemesi kullanır.
 
 Tüm uygulamalar, KIMLIK belirtecinin yerel uygulamalarını ve tek sayfa uygulamalarını doğrulamadan faydalanır, örneğin, KIMLIK belirtecini doğrulamadan nadiren yarar vardır.  Cihaza (veya tarayıcıya) fiziksel erişimi olan birisi, doğrulama mantığını atlamak için uygulamada hata ayıklamaya yönelik sahte belirteçler ve anahtarlar sağlamak üzere Web trafiğini cihaza düzenlemekten birçok şekilde doğrulamayı atlayabilir.  Diğer yandan, bir KIMLIK belirtecini yetkilendirme için kullanan Web uygulamaları ve API 'Lerin, verilere erişimi ele aldıklarından KIMLIK belirtecini dikkatle doğrulaması gerekir.
 
@@ -283,7 +283,7 @@ UserInfo uç noktasını bu belirteçle çağırma hakkında bilgi almak için [
 
 ## <a name="send-a-sign-out-request"></a>Oturum kapatma isteği gönder
 
-Kullanıcının uygulamanızdan oturumu kapatmak istediğinizde, uygulamanızın tanımlama bilgilerini temizlemek veya Kullanıcı oturumunu sonlandırmak yeterli değildir. Ayrıca oturumu kapatmak için kullanıcıyı Microsoft Identity platform uç noktasına yönlendirmeniz gerekir. Bunu yapmazsanız, Kullanıcı Microsoft Identity platform uç noktasıyla geçerli bir çoklu oturum açma oturumuna sahip olduklarından, kimlik bilgilerini tekrar girmeden uygulamanızı yeniden doğrular.
+Kullanıcının uygulamanızdan oturumu kapatmak istediğinizde, uygulamanızın tanımlama bilgilerini temizlemek veya Kullanıcı oturumunu sonlandırmak yeterli değildir. Oturumu kapatmak için kullanıcıyı Microsoft Identity platformuna yönlendirmeniz de gerekir. Bunu yapmazsanız, Kullanıcı Microsoft Identity platformu ile geçerli bir çoklu oturum açma oturumuna sahip olacağından, kimlik bilgilerini tekrar girmeden uygulamanızı yeniden doğrular.
 
 Kullanıcıyı `end_session_endpoint` OpenID Connect meta veri belgesinde listelenen öğesine yeniden yönlendirebilirsiniz:
 
@@ -294,11 +294,11 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 | Parametre | Koşul | Açıklama |
 | ----------------------- | ------------------------------- | ------------ |
-| `post_logout_redirect_uri` | Önerilen | Başarıyla oturum kapatıldıktan sonra kullanıcının yeniden yönlendirildiği URL. Parametresi dahil edilmemişse, kullanıcıya Microsoft Identity platform uç noktası tarafından oluşturulan genel bir ileti gösterilir. Bu URL, uygulama kayıt portalı 'nda uygulamanız için kayıtlı olan yeniden yönlendirme URI 'lerinden biriyle aynı olmalıdır. |
+| `post_logout_redirect_uri` | Önerilen | Başarıyla oturum kapatıldıktan sonra kullanıcının yeniden yönlendirildiği URL. Parametresi dahil edilmemişse, kullanıcıya Microsoft Identity platform tarafından oluşturulan genel bir ileti gösterilir. Bu URL, uygulama kayıt portalı 'nda uygulamanız için kayıtlı olan yeniden yönlendirme URI 'lerinden biriyle aynı olmalıdır. |
 
 ## <a name="single-sign-out"></a>Çoklu oturum kapatma
 
-Kullanıcıyı uygulamasına yönlendirirseniz `end_session_endpoint` , Microsoft Identity platform uç noktası kullanıcının oturumunu tarayıcıdan temizler. Ancak Kullanıcı, kimlik doğrulaması için Microsoft hesapları kullanan diğer uygulamalarda oturum açmış olabilir. Bu uygulamaların kullanıcı tarafından aynı anda oturum açmasını sağlamak için, Microsoft Identity platform uç noktası, `LogoutUrl` kullanıcının şu anda oturum açmış olduğu tüm uygulamalara kayıtlı BIR http get isteği gönderir. Uygulamalar, kullanıcıyı tanıtan ve yanıt döndüren tüm oturumları temizleyerek bu isteğe yanıt vermelidir `200` . Uygulamanızda çoklu oturum açmayı desteklemek istiyorsanız, uygulamanızın kodunda böyle bir uygulama uygulamanız gerekir `LogoutUrl` . `LogoutUrl`Uygulamasını uygulama kayıt portalından ayarlayabilirsiniz.
+Kullanıcıyı uygulamasına yönlendirirseniz `end_session_endpoint` , Microsoft Identity platform kullanıcının oturumunu tarayıcıdan temizler. Ancak Kullanıcı, kimlik doğrulaması için Microsoft hesapları kullanan diğer uygulamalarda oturum açmış olabilir. Bu uygulamaların kullanıcıyı aynı anda imzalamasını sağlamak için, Microsoft Identity platformu, `LogoutUrl` kullanıcının şu anda oturum açmış olduğu tüm uygulamalara kayıtlı BIR http get isteği gönderir. Uygulamalar, kullanıcıyı tanıtan ve yanıt döndüren tüm oturumları temizleyerek bu isteğe yanıt vermelidir `200` . Uygulamanızda çoklu oturum açmayı desteklemek istiyorsanız, uygulamanızın kodunda böyle bir uygulama uygulamanız gerekir `LogoutUrl` . `LogoutUrl`Uygulamasını uygulama kayıt portalından ayarlayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

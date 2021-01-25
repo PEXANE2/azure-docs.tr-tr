@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: c4d77d1eb532aa18dcc575ffcc093587b69c94d9
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: f9c9cb3b1891383d4c1f0d579cf5990eee9f7826
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017451"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754163"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>Hızlı başlangıç: Kullanıcı oturum açma ve kimlik doğrulama kod akışını kullanarak JavaScript SPA 'da erişim belirteci edinme
 
@@ -27,7 +27,7 @@ Bu hızlı başlangıçta, JavaScript tek sayfalı uygulamanın (SPA) Kullanıc�
 
 Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL.js 2,0 kullanılır. Örtük akışta MSAL.js 1,0 kullanan benzer bir hızlı başlangıç için bkz. [hızlı başlangıç: JavaScript tek sayfalı uygulamalarda oturum açma kullanıcıları](./quickstart-v2-javascript.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz bir Azure aboneliği oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Node.js](https://nodejs.org/en/download/)
@@ -39,9 +39,7 @@ Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL.js 2,0 kullanılı
 >
 > ### <a name="option-1-express-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Seçenek 1 (Express): uygulamanızı kaydedin ve otomatik olarak yapılandırın ve ardından kod örneğinizi indirin
 >
-> 1. <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
-> 1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst kısımdaki hesabı seçin ve ardından Portal oturumunuzu kullanmak istediğiniz Azure Active Directory (Azure AD) kiracısına ayarlayın.
-> 1. [Uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs)’nı seçin.
+> 1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Azure portal uygulama kayıtları <span class="docon docon-navigate-external x-hidden-focus"></span> </a>gidin.
 > 1. Uygulamanız için bir ad girin.
 > 1. **Desteklenen hesap türleri** altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
 > 1. **Kaydet**’i seçin.
@@ -58,7 +56,7 @@ Bu hızlı başlangıçta yetkilendirme kodu akışıyla MSAL.js 2,0 kullanılı
 > 1. Uygulamanız için bir **ad** girin. Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
 > 1. **Desteklenen hesap türleri** altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
 > 1. **Kaydet**’i seçin. Uygulamaya **genel bakış** sayfasında, daha sonra kullanılmak üzere **uygulama (istemci) kimliği** değerini aklınızda edin.
-> 1. Kayıtlı uygulamanın sol bölmesinde **kimlik doğrulaması**' nı seçin.
+> 1. **Yönet** altında **kimlik doğrulaması**' nı seçin.
 > 1. **Platform yapılandırması** altında **Platform Ekle**' yi seçin. Açılan bölmedeki **tek sayfalı uygulama** Seç ' i seçin.
 > 1. **Yeniden YÖNLENDIRME URI** değerini olarak ayarlayın `http://localhost:3000/` .
 > 1. **Yapılandır**'ı seçin.

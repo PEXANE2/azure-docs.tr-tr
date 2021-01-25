@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0d759b3af097067ba0c9215b65b212d50474d571
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 5bfdf90ddbd500fd9d1c504bd37ed4ac35d8bf70
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178356"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752758"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Öğretici: Windows masaüstü uygulamasından Microsoft Graph API 'sini çağırma
 
@@ -47,7 +47,7 @@ Bu kılavuzla oluşturduğunuz örnek uygulama, Microsoft Graph API 'sini veya M
 
 ## <a name="handling-token-acquisition-for-accessing-protected-web-apis"></a>Korumalı Web API 'Lerine erişim için belirteç alımı işleme
 
-Kullanıcının kimliği doğrulandıktan sonra örnek uygulama, Microsoft Graph API 'sini veya geliştiriciler için Microsoft Identity platform tarafından güvenliği sağlanmış bir Web API 'sini sorgulamak için kullanabileceğiniz bir belirteç alır.
+Kullanıcının kimliği doğrulandıktan sonra örnek uygulama, Microsoft Graph API 'sini veya Microsoft Identity platformu tarafından güvenliği sağlanan bir Web API 'sini sorgulamak için kullanabileceğiniz bir belirteç alır.
 
 Microsoft Graph gibi API 'Ler, belirli kaynaklara erişim izni vermek için bir belirteç gerektirir. Örneğin, bir kullanıcının profilini okumak, kullanıcının takvimine erişmek veya e-posta göndermek için bir belirteç gerekir. Uygulamanız, API kapsamları belirterek bu kaynaklara erişmek için MSAL kullanarak bir erişim belirteci isteyebilir. Bu erişim belirteci daha sonra, korunan kaynakta yapılan her çağrının HTTP yetkilendirme üstbilgisine eklenir.
 
@@ -57,7 +57,7 @@ MSAL, uygulamanızın ihtiyaç duymaması için, erişim belirteçlerini önbell
 
 Bu kılavuzda aşağıdaki NuGet paketleri kullanılmaktadır:
 
-|Kitaplık|Description|
+|Kitaplık|Açıklama|
 |---|---|
 |[Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft kimlik doğrulama kitaplığı (MSAL.NET)|
 

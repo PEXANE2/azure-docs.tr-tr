@@ -1,6 +1,6 @@
 ---
 title: 'Hızlı başlangıç: Kullanıcı oturum açma ve Evrensel Windows Platformu masaüstü uygulamasında Microsoft Graph çağırma | Mavisi'
-description: Bu hızlı başlangıçta, bir Windows Masaüstü .NET (XAML) uygulamasının bir erişim belirtecini nasıl alabileceğinizi ve bir Microsoft Identity platform uç noktası tarafından korunan bir API 'YI nasıl çağırabileceğinizi öğrenin
+description: Bu hızlı başlangıçta, bir Windows Masaüstü .NET (XAML) uygulamasının bir erişim belirtecini nasıl alabileceğinizi ve Microsoft Identity platformu tarafından korunan bir API 'YI nasıl çağırabileceğinizi öğrenin.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1cac8ab4ccf23047bd5eb2d15c174a2009f2864a
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: b54438441b0e34cccda7fbec37dc1d1740101e9e
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178305"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754002"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Hızlı Başlangıç: Bir belirteç alma ve bir Windows masaüstü uygulamasından Microsoft Graph API'si çağırma
 
@@ -95,7 +95,7 @@ Bu hızlı başlangıçta, bir Windows Masaüstü .NET (WPF) uygulamasının kul
 >    private static string Tenant = "Enter_the_Tenant_Info_Here";
 >    ```
 >
-> Burada:
+> Konum:
 > - `Enter_the_Application_Id_here` - kaydettiğiniz uygulamanın **Uygulama (istemci) Kimliği** değeridir.
 > - `Enter_the_Tenant_Info_Here` - aşağıdaki seçeneklerden birine ayarlanır:
 >   - Uygulamanız **Bu kuruluş dizinindeki hesapları** destekliyorsa, bu değeri **Kiracı Kimliği** veya **Kiracı adı** (örneğin, contoso.microsoft.com) ile değiştirin
@@ -135,7 +135,7 @@ PublicClientApplicationBuilder.Create(ClientId)
                 .Build();
 ```
 
-> |Burada: | Description |
+> |Konum: | Açıklama |
 > |---------|---------|
 > | `ClientId` | **Uygulama (istemci) Kimliği**, Azure portalda kayıtlı uygulamadır. Bu değeri Azure portalda uygulamanın **Genel bakış** sayfasında bulabilirsiniz. |
 
@@ -145,7 +145,7 @@ MSAL, belirteç almak için iki yönteme sahiptir: `AcquireTokenInteractive` ve 
 
 #### <a name="get-a-user-token-interactively"></a>Etkileşimli olarak kullanıcı belirteci alma
 
-Bazı durumlar, kullanıcıların kimlik bilgilerini doğrulamak veya onay vermek üzere bir açılan pencere aracılığıyla Microsoft Identity platform uç noktasıyla etkileşime geçmesini zorunlu kılıyor. Bazı örnekler:
+Bazı durumlar, kullanıcıların kimlik bilgilerini doğrulamak veya onay vermek üzere bir açılan pencere aracılığıyla Microsoft Identity platformu ile etkileşime geçmesini gerektirir. Bazı örnekler:
 
 - Kullanıcılar uygulamada ilk kez oturum açtığında
 - Parolanın süresi dolduğundan kullanıcıların kimlik bilgilerini yeniden girmesi gerektiğinde
@@ -157,7 +157,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
                                       .ExecuteAsync();
 ```
 
-> |Burada:| Description |
+> |Konum:| Açıklama |
 > |---------|---------|
 > | `_scopes` | `{ "user.read" }`Microsoft Graph veya `{ "api://<Application ID>/access_as_user" }` özel Web API 'leri için istenen kapsamları içerir. |
 
@@ -172,7 +172,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |Burada: | Description |
+> |Konum: | Açıklama |
 > |---------|---------|
 > | `scopes` | `{ "user.read" }`Microsoft Graph veya `{ "api://<Application ID>/access_as_user" }` özel Web API 'leri için istenen kapsamları içerir. |
 > | `firstAccount` | Önbellekteki ilk kullanıcıyı belirtir (MSAL destekleyen birden çok kullanıcı tek bir uygulama olarak). |

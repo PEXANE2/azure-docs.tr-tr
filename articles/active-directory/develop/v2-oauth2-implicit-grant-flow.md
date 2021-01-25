@@ -1,5 +1,5 @@
 ---
-title: OAuth 2,0 örtük verme akışı-Microsoft Identity platform | Mavisi
+title: OAuth 2,0 örtük izin verme akışı-Microsoft Identity platform | Mavisi
 description: Microsoft Identity platform örtük akışını kullanarak tek sayfalı uygulamaları güvenli hale getirin.
 services: active-directory
 author: hpsin
@@ -12,12 +12,12 @@ ms.date: 11/30/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4b5465cc5c1c3447af5303a5c0bfe82874705362
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 97f4642d69d4a432b823bd1cd7cdbdd9fc7f270d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511207"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752746"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft Identity platform ve örtük verme akışı
 
@@ -41,7 +41,7 @@ Aşağıdaki diyagramda, tüm örtük oturum açma akışının nasıl göründ�
 
 ## <a name="send-the-sign-in-request"></a>Oturum açma isteğini gönder
 
-Kullanıcıyı uygulamanızda ilk kez imzalamak için, bir [OpenID Connect](v2-protocols-oidc.md) kimlik doğrulama isteği gönderebilir ve `id_token` Microsoft Identity platform uç noktasından alabilirsiniz.
+Kullanıcıyı uygulamanızda ilk kez imzalamak için, bir [OpenID Connect](v2-protocols-oidc.md) kimlik doğrulama isteği gönderebilir ve `id_token` Microsoft Identity platformundan bir bağlantı alabilirsiniz.
 
 > [!IMPORTANT]
 > KIMLIK belirteci ve/veya erişim belirtecini başarıyla istemek için, [Azure portal uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasındaki uygulama kaydında, **Kimlik belirteçleri** ve ' ı seçerek ve **örtülü izin** bölümünün altındaki **belirteçlere erişim** için, karşılık gelen örtük izin akışının etkinleştirilmiş olması gerekir. Etkin değilse bir `unsupported_response` hata döndürülür: **' response_type ' giriş parametresi için sağlanan değere bu istemci için izin verilmiyor. Beklenen değer ' Code '**
@@ -73,13 +73,13 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `response_mode` | isteğe bağlı |Elde edilen belirteci uygulamanıza geri göndermek için kullanılması gereken yöntemi belirtir. Yalnızca bir erişim belirtecinin sorgulaması yapılır, ancak istek bir id_token içeriyorsa parçalara ayırma olur. |
 | `state` | Önerilen |İsteğin belirteç yanıtında de döndürülecek bir değer. Bu, istediğiniz herhangi bir içerik dizesi olabilir. Rastgele oluşturulan benzersiz bir değer genellikle [siteler arası istek sahteciliği saldırılarını önlemek](https://tools.ietf.org/html/rfc6749#section-10.12)için kullanılır. Durum Ayrıca, kullanıcının uygulamadaki durumu hakkında bilgi kodlamak için kullanılır; Örneğin, bulunan sayfa veya görünüm gibi kimlik doğrulama isteği gerçekleştirilmeden önce. |
 | `nonce` | gerekli |Uygulama tarafından oluşturulan, sonuçta elde edilen id_token talep olarak dahil edilecek bir değer. Daha sonra uygulama, belirteç yeniden yürütme saldırılarını azaltmak için bu değeri doğrulayabilirler. Değer genellikle, isteğin kaynağını belirlemek için kullanılabilecek rastgele, benzersiz bir dizedir. Yalnızca bir id_token istendiğinde gereklidir. |
-| `prompt` | isteğe bağlı |Gerekli kullanıcı etkileşiminin türünü gösterir. Şu anda yalnızca geçerli değerler: ' login', ' none ', ' select_account ' ve ' onay '. `prompt=login` , kullanıcıyı bu istek üzerine kimlik bilgilerini girmeye zorlar ve çoklu oturum açma 'yı yok eder. `prompt=none` Bunun tersi, kullanıcının herhangi bir etkileşimli istem ile sunulmayacağını garanti eder. İstek, tek oturum açma yoluyla sessizce tamamlanamayacak, Microsoft Identity platform uç noktası bir hata döndürür. `prompt=select_account` kullanıcıyı, oturumda hatırlanan tüm hesapların görüneceği bir hesap seçicisine gönderir. `prompt=consent` Kullanıcı oturum açtıktan sonra OAuth onay iletişim kutusunu tetikler, böylece kullanıcıdan uygulamaya izin vermesini istenir. |
+| `prompt` | isteğe bağlı |Gerekli kullanıcı etkileşiminin türünü gösterir. Şu anda yalnızca geçerli değerler: ' login', ' none ', ' select_account ' ve ' onay '. `prompt=login` , kullanıcıyı bu istek üzerine kimlik bilgilerini girmeye zorlar ve çoklu oturum açma 'yı yok eder. `prompt=none` Bunun tersi, kullanıcının herhangi bir etkileşimli istem ile sunulmayacağını garanti eder. İstek, tek oturum açma yoluyla sessizce tamamlanamayacak, Microsoft Identity platform bir hata döndürür. `prompt=select_account` kullanıcıyı, oturumda hatırlanan tüm hesapların görüneceği bir hesap seçicisine gönderir. `prompt=consent` Kullanıcı oturum açtıktan sonra OAuth onay iletişim kutusunu tetikler, böylece kullanıcıdan uygulamaya izin vermesini istenir. |
 | `login_hint`  |isteğe bağlı |Kullanıcı adını zaman önce biliyorsanız, Kullanıcı için oturum açma sayfasının Kullanıcı adı/e-posta adresi alanını önceden doldurabilirsiniz. Genellikle bu parametre, talebi kullanarak önceki bir oturum açma işleminden zaten ayıklanan uygulamalar, yeniden kimlik doğrulama sırasında kullanılır `preferred_username` .|
 | `domain_hint` | isteğe bağlı |Dahil edilse, kullanıcının oturum açma sayfasında, daha kolay bir kullanıcı deneyimi için önde gelen e-posta tabanlı bulma işlemini atlar. Bu parametre genellikle tek bir kiracıya çalışan Iş kolu uygulamaları için kullanılır. burada, belirli bir kiracıda bir etki alanı adı sunduklarında, kullanıcıyı söz konusu kiracıya ait Federasyon sağlayıcısına ileten.  Bu ipucunun konukların bu uygulamada oturum açmasını önlediği ve FIDO gibi bulut kimlik bilgilerinin kullanımını sınırlayan unutulmamalıdır.  |
 
-Bu noktada, kullanıcıdan kimlik bilgilerini girmesi ve kimlik doğrulamasını tamamlaması istenir. Microsoft Identity platform uç noktası ayrıca kullanıcının sorgu parametresinde belirtilen izinlere onay aldığından emin olur `scope` . Kullanıcı bu izinlerden **hiçbirine** izin vermişse, kullanıcıdan gerekli izinleri vermesini ister. Daha fazla bilgi için bkz. [izinler, onay ve çok kiracılı uygulamalar](v2-permissions-and-consent.md).
+Bu noktada, kullanıcıdan kimlik bilgilerini girmesi ve kimlik doğrulamasını tamamlaması istenir. Microsoft Identity platformu, kullanıcının sorgu parametresinde belirtilen izinlere de sahip olduğundan emin olur `scope` . Kullanıcı bu izinlerden **hiçbirine** izin vermişse, kullanıcıdan gerekli izinleri vermesini ister. Daha fazla bilgi için bkz. [izinler, onay ve çok kiracılı uygulamalar](v2-permissions-and-consent.md).
 
-Kullanıcı kimlik doğrulamasından ve izin verdiğinde, Microsoft Identity platform uç noktası, `redirect_uri` parametresinde belirtilen yöntemi kullanarak, belirtilen şekilde uygulamanıza bir yanıt döndürür `response_mode` .
+Kullanıcı kimlik doğrulamasından ve izin verdiğinde, Microsoft Identity platformu, `redirect_uri` parametresinde belirtilen yöntemi kullanarak, belirtilen şekilde uygulamanıza bir yanıt döndürür `response_mode` .
 
 #### <a name="successful-response"></a>Başarılı yanıt
 
@@ -199,7 +199,7 @@ error=user_authentication_required
 
 ## <a name="send-a-sign-out-request"></a>Oturum kapatma isteği gönder
 
-OpenID Connect, `end_session_endpoint` uygulamanızın bir kullanıcının oturumunu sona erdirmek ve Microsoft Identity platform uç noktası tarafından ayarlanan tanımlama bilgilerini temizlemek Için Microsoft Identity platform uç noktasına bir istek göndermesini sağlar. Bir kullanıcıyı bir Web uygulamasından tam olarak imzalamak için, uygulamanız kullanıcıyla kendi oturumunu sonlandırmalıdır (genellikle bir belirteç önbelleğini temizleyerek veya tanımlama bilgilerini bırakarak) ve ardından tarayıcıyı şuraya yönlendirmelidir:
+OpenID Connect, `end_session_endpoint` uygulamanızın bir kullanıcının oturumunu sona erdirmek ve Microsoft Identity platformu tarafından ayarlanan tanımlama bilgilerini temizlemek Için Microsoft Identity platformu 'na bir istek göndermesini sağlar. Bir kullanıcıyı bir Web uygulamasından tam olarak imzalamak için, uygulamanız kullanıcıyla kendi oturumunu sonlandırmalıdır (genellikle bir belirteç önbelleğini temizleyerek veya tanımlama bilgilerini bırakarak) ve ardından tarayıcıyı şuraya yönlendirmelidir:
 
 ```
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redirect_uri=https://localhost/myapp/
@@ -208,7 +208,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redire
 | Parametre | Tür | Açıklama |
 | --- | --- | --- |
 | `tenant` |gerekli |`{tenant}`İsteğin yolundaki değeri, uygulamada kimlerin oturum açmasını denetlemek için kullanılabilir. İzin verilen değerler, `common` , `organizations` `consumers` ve kiracı tanımlayıcılarıdır. Daha fazla ayrıntı için bkz. [protokol temelleri](active-directory-v2-protocols.md#endpoints). |
-| `post_logout_redirect_uri` | Önerilen | Oturum kapatma tamamlandıktan sonra kullanıcının geri döndürülmesi gereken URL. Bu değer, uygulama için kaydedilmiş yeniden yönlendirme URI 'lerinden biriyle aynı olmalıdır. Dahil edilmezse, kullanıcıya Microsoft Identity platform uç noktası tarafından genel bir ileti gösterilir. |
+| `post_logout_redirect_uri` | Önerilen | Oturum kapatma tamamlandıktan sonra kullanıcının geri döndürülmesi gereken URL. Bu değer, uygulama için kaydedilmiş yeniden yönlendirme URI 'lerinden biriyle aynı olmalıdır. Dahil edilmezse, kullanıcıya Microsoft Identity platformu tarafından genel bir ileti gösterilir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
