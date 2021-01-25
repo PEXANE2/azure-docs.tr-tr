@@ -1,0 +1,54 @@
+- name: Azure Içeri/dışarı aktarma belgeleri
+  href: ./index.yml
+- name: Genel Bakış
+  expanded: true
+  items:
+    - name: Içeri/dışarı aktarma nedir?
+      href: storage-import-export-service.md
+- name: Kavramlar
+  items:
+    - name: Gereksinimleri inceleme
+      href: storage-import-export-requirements.md
+    - name: SSS
+      href: storage-import-export-service-faq.md
+- name: Nasıl yapılır
+  expanded: true
+  items:
+    - name: Dağıtma
+      items:
+        - name: Verileri blob'larda içeri aktarma
+          href: storage-import-export-data-to-blobs.md
+        - name: Verileri dosyalarda içeri aktarma
+          href: storage-import-export-data-to-files.md
+        - name: Verileri blob'lardan dışarı aktarma
+          href: storage-import-export-data-from-blobs.md
+    - name: Müşteri tarafından yönetilen anahtarları kullan
+      href: storage-import-export-encryption-key-portal.md
+    - name: İzleme
+      items:
+        - name: Sürücü durumunu görüntüleme
+          href: storage-import-export-view-drive-status.md
+        - name: İş durumunu gözden geçirme
+          href: storage-import-export-tool-reviewing-job-status-v1.md
+    - name: Sorun giderme
+      items:
+        - name: Sık karşılaşılan hataları giderme
+          href: storage-import-export-tool-troubleshooting-v1.md
+        - name: İçeri aktarma işini onarma
+          href: storage-import-export-tool-repairing-an-import-job-v1.md
+        - name: Dışarı aktarma işini onarma
+          href: storage-import-export-tool-repairing-an-export-job-v1.md
+        - name: Destek birimine başvurma
+          href: storage-import-export-contact-microsoft-support.md
+- name: Başvuru
+  items:
+    - name: REST API
+      href: /rest/api/storageimportexport/jobs
+    - name: Azure PowerShell
+      href: /powershell/module/Az.ImportExport
+- name: Kaynaklar
+  items:
+    - name: Verileri çevrimdışı dışarı aktarma
+      href: /learn/modules/export-data-with-azure-import-export
+    - name: Diğer çevrimdışı aktarım seçenekleri
+      href: ../databox/index.yml

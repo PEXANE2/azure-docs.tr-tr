@@ -109,8 +109,8 @@
               href: tutorial-data-flow.md
             - name: Eşleme veri akışı video öğreticileri
               href: data-flow-tutorials.md
-        - name: Hazırlama veri akışlarıyla verileri hazırlama
-          href: wrangling-data-flow-tutorial.md
+        - name: Denetimi ile veri hazırlama
+          href: wrangling-tutorial.md
         - name: Dış hizmetler kullanma
           items:
             - name: HDInsight Spark
@@ -197,12 +197,12 @@
               href: concepts-data-flow-expression-builder.md
             - name: İfade dili
               href: data-flow-expression-functions.md
-        - name: Hazırlama veri akışlarıyla verileri hazırlama
+        - name: Power Query veri ile veri hazırlama
           items:
-            - name: Hazırlama veri akışına genel bakış
-              href: wrangling-data-flow-overview.md
+            - name: Veri denetimi genel bakış
+              href: wrangling-overview.md
             - name: Desteklenen işlevler
-              href: wrangling-data-flow-functions.md
+              href: wrangling-functions.md
     - name: Roller ve izinler
       href: concepts-roles-permissions.md
     - name: Adlandırma kuralları
@@ -464,6 +464,8 @@
       items:
         - name: Veri Akışı Etkinliğini Yürütme
           href: control-flow-execute-data-flow-activity.md
+        - name: Power Query etkinliğini yürütme
+          href: control-flow-power-query-activity.md
         - name: Azure İşlev Etkinliği
           href: control-flow-azure-function-activity.md
         - name: Özel Etkinlik

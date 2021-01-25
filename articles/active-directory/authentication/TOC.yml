@@ -154,9 +154,9 @@
           href: howto-password-ban-bad-on-premises-faq.md
         - name: Aracı sürümü geçmişi
           href: howto-password-ban-bad-on-premises-agent-versions.md
-    - name: SMS tabanlı kimlik doğrulaması kullanma (önizleme)
+    - name: SMS tabanlı kimlik doğrulaması kullan
       href: howto-authentication-sms-signin.md
-    - name: E-posta adresiyle oturum açmayı kullanma (önizleme)
+    - name: E-posta adresi oturum açma kullan
       href: howto-authentication-use-email-signin.md
     - name: Azure AD akıllı kilitleme
       href: howto-password-smart-lockout.md

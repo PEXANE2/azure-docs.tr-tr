@@ -14,9 +14,7 @@
           href: Quickstarts/create-publish-knowledge-base.md
         - name: Bilgi bankasına sorgu yapma
           href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
-    - name: REST kullanma
-      href: Quickstarts/quickstart-rest-curl.md
-    - name: SDK’yı kullanma
+    - name: İstemci kitaplıklarını veya REST API kullanma
       href: Quickstarts/quickstart-sdk.md
 - name: Öğreticiler
   items:

@@ -38,7 +38,7 @@
           href: ../containers/index.yml
 - name: Kavramlar
   items:
-    - name: Anomali Algılama API'si en iyi yöntemleri
+    - name: Anomali algılayıcı API en iyi uygulamaları
       href: concepts/anomaly-detection-best-practices.md
 - name: Başvuru
   items:

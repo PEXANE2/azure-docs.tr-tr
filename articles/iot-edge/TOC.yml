@@ -17,9 +17,9 @@
   items:
     - name: Geliştirme ortamı ayarlama
       items:
-        - name: Linux cihazları için geliştirme
+        - name: Linux kapsayıcılarıyla geliştirme
           href: tutorial-develop-for-linux.md
-        - name: Windows cihazları için geliştirme
+        - name: Windows kapsayıcıları ile geliştirme
           href: tutorial-develop-for-windows.md
     - name: Özel kod modülleri geliştirme
       items:
@@ -77,6 +77,8 @@
   items:
     - name: IoT Edge çalışma zamanı
       href: iot-edge-runtime.md
+    - name: Windows üzerinde Linux için IoT Edge
+      href: iot-edge-for-linux-on-windows.md
     - name: IoT Edge modülleri
       items:
         - name: Azure IoT Edge modüllerini anlama
@@ -119,23 +121,25 @@
   items:
     - name: IoT Edge cihazı oluşturma
       items:
-        - name: Çalışma zamanı yükleme
-          href: how-to-install-iot-edge.md
-        - name: Cihazı kaydetme ve kimliğini doğrulama
+        - name: Cihazı IoT Hub kaydetme
+          href: how-to-register-device.md
+        - name: IoT Edge yükleyip sağlama
           items:
-            - name: Simetrik anahtar kimlik doğrulaması
-              href: how-to-manual-provision-symmetric-key.md
-            - name: X.509 sertifikası kimlik doğrulaması
-              href: how-to-manual-provision-x509.md
+            - name: Linux için IoT Edge 'i yükler
+              href: how-to-install-iot-edge.md
+            - name: Windows 'da Linux için IoT Edge çalıştırma
+              href: how-to-install-iot-edge-on-windows.md
         - name: Çalışma zamanını güncelleştirme
           href: how-to-update-iot-edge.md
         - name: Cihaz sertifikalarını yönetme
           href: how-to-manage-device-certificates.md
-        - name: Test sertifikaları oluşturma
-          href: how-to-create-test-certificates.md
-        - name: Kubernetes üzerinde IoT Edge
+    - name: Alternatif cihaz senaryoları
+      items:
+        - name: Windows kapsayıcıları ile IoT Edge çalıştırma
+          href: how-to-install-iot-edge-windows-on-windows.md
+        - name: Kubernetes üzerinde IoT Edge çalıştırma
           href: how-to-install-iot-edge-kubernetes.md
-        - name: ARM şablonunun kullanıldığı IoT Edge sanal makinesi
+        - name: ARM şablonunu kullanarak IoT Edge VM dağıtma
           href: how-to-install-iot-edge-ubuntuvm.md
     - name: DPS ile otomatik sağlama
       items:
@@ -243,6 +247,8 @@
           href: troubleshoot-common-errors.md
 - name: Başvuru
   items:
+    - name: Test sertifikaları oluşturma
+      href: how-to-create-test-certificates.md
     - name: Windows cihaz yönetimi betikleri
       href: reference-windows-scripts.md
     - name: Azure CLI

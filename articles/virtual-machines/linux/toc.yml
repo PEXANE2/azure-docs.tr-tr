@@ -1,0 +1,1106 @@
+- name: Linux VM’leri ile İlgili Belgeler
+  href: index.yml
+- name: Genel Bakış
+  items:
+    - name: Sanal Makineler hakkında
+      href: overview.md
+- name: Hızlı Başlangıçlar
+  items:
+    - name: VM Oluşturma - Azure CLI
+      href: quick-create-cli.md
+    - name: VM Oluşturma - Portal
+      href: quick-create-portal.md
+    - name: VM Oluşturma - Azure PowerShell
+      href: quick-create-powershell.md
+    - name: VM oluşturma - ARM şablonu
+      displayName: 'Resource Manager, template, json'
+      href: quick-create-template.md
+  expanded: true
+- name: Öğreticiler
+  items:
+    - name: VM oluşturma/yönetme
+      href: tutorial-manage-vm.md
+    - name: Disk oluşturma/yönetme
+      href: tutorial-manage-disks.md
+    - name: Yapılandırmayı otomatikleştirme
+      href: tutorial-automate-vm-deployment.md
+    - name: VM görüntüleri oluşturma
+      href: tutorial-custom-images.md
+    - name: Yüksek oranda kullanılabilir VM’ler
+      href: tutorial-availability-sets.md
+    - name: Ölçek kümesi oluşturma
+      href: tutorial-create-vmss.md
+    - name: VM'lerde yük dengeleme
+      href: tutorial-load-balancer.md
+    - name: Ağı yönetme
+      href: tutorial-virtual-network.md
+    - name: Olağanüstü durum kurtarmayı etkinleştir
+      href: tutorial-disaster-recovery.md
+    - name: VM’leri yönetme
+      href: tutorial-govern-resources.md
+    - name: VM 'Leri izleme ve güncelleştirme
+      href: tutorial-config-management.md
+    - name: VM’leri izleme
+      href: tutorial-monitor.md
+    - name: Jenkins ile derleme
+      href: /azure/developer/jenkins/pipeline-with-github-and-docker
+    - name: Jenkins 'i Azure DevOps ile tümleştirme
+      href: /azure/developer/jenkins/deploy-to-linux-vm-using-azure-devops-services
+    - name: Sıralı dağıtım stratejisini yapılandırma
+      href: tutorial-devops-azure-pipelines-classic.md
+    - name: Canary dağıtım stratejisini yapılandırma
+      href: tutorial-azure-devops-canary-strategy.md
+    - name: Blue-Green dağıtım stratejisini yapılandırma
+      href: tutorial-azure-devops-blue-green-strategy.md
+    - name: Azure Pipelines (YAML) ile CI/CD
+      href: tutorial-build-deploy-azure-pipelines.md
+    - name: LAMBA yığını oluşturma
+      href: tutorial-lamp-stack.md
+    - name: SSL ile web sunucusunun güvenliğini sağlama
+      href: tutorial-secure-web-server.md
+- name: Kavramlar
+  items:
+    - name: Görüntü oluşturma
+      items:
+        - name: Genel Bakış
+          href: imaging.md
+        - name: Sağlama
+          href: provisioning.md
+        - name: Paylaşılan görüntü galerileri
+          href: ../shared-image-galleries.md
+        - name: Görüntü Oluşturucu
+          href: ../image-builder-overview.md
+    - name: Azure Resource Manager
+      href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Bölgeler
+      href: ../regions.md
+    - name: Uzantılar
+      items:
+        - name: Azure Uzantıları hakkında
+          href: ../extensions/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Linux VM Aracısı
+          href: ../extensions/agent-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Özellikler
+          href: ../extensions/features-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Kullanılabilirlik ve performans
+      items:
+        - name: Kullanılabilirlik
+          href: ../availability.md
+        - name: Birlikte bulunma
+          href: ../co-location.md
+        - name: Ağ performansı
+          href: ../..//virtual-network/virtual-network-optimize-network-bandwidth.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: VM türleri ve boyutları
+      items:
+        - name: VM boyutları
+          href: ../sizes.md
+        - name: 2. Nesil VM’ler
+          href: ../generation-2.md
+        - name: Genel amaçlı
+          items:
+            - name: Genel Bakış
+              href: ../sizes-general.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Av2 Serisi
+              href: ../av2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: B-series burstable
+              href: ../sizes-b-series-burstable.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: DCv2 serisi
+              href: ../dcv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Dv2 ve DSv2 serisi
+              href: ../dv2-dsv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Dv3 ve Dsv3 serisi
+              href: ../dv3-dsv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Dav4 ve Dasv4 serisi
+              href: ../dav4-dasv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Ddv4 ve Ddsv4 serisi
+              href: ../ddv4-ddsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Dv4 ve Dsv4 serisi
+              href: ../dv4-dsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: İşlem için iyileştirilmiş
+          items:
+            - name: Genel Bakış
+              href: ../sizes-compute.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Fsv2 serisi
+              href: ../fsv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Bellek için iyileştirilmiş
+          displayName: Esv3 Ev3 M-series GS G-series DSv2 Dv2
+          items:
+            - name: Genel Bakış
+              href: ../sizes-memory.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Dv2 ve DSv2 serisi 11-15
+              href: ../dv2-dsv2-series-memory.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Ev3 ve Esv3 serisi
+              href: ../ev3-esv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Eav4 ve Easv4 serisi
+              href: ../eav4-easv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Edv4 ve Edsv4 serisi
+              href: ../edv4-edsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Ev4 ve Esv4 serisi
+              href: ../ev4-esv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: M serisi
+              href: ../m-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Mv2 serisi
+              href: ../mv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Kısıtlanmış vCPU'lar
+              href: ../constrained-vcpu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Depolama için iyileştirilmiş
+          items:
+            - name: Genel Bakış
+              href: ../sizes-storage.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Lsv2 serisi
+              href: ../lsv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Performansı iyileştirme
+              href: storage-performance.md
+        - name: GPU - hızlandırılmış işlem
+          items:
+            - name: Genel Bakış
+              href: ../sizes-gpu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: NC serisi
+              href: ../nc-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: NCv2 serisi
+              href: ../ncv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: NCv3 serisi
+              href: ../ncv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: NCasT4_v3 serisi
+              href: ../nct4-v3-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: ND serisi
+              href: ../nd-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: NDv2 serisi
+              href: ../ndv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: NV serisi
+              href: ../nv-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: NVv3 serisi
+              href: ../nvv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: NVv4 serisi
+              href: ../nvv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: NVIDIA GPU sürücülerini ayarlama
+              href: n-series-driver-setup.md
+        - name: Yüksek performanslı işlem
+          displayName: H-series
+          items:
+            - name: Genel Bakış
+              href: ../sizes-hpc.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: H Serisi
+              href: ../h-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: HB serisi
+              href: ../hb-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: HBv2 serisi
+              href: ../hbv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: HC serisi
+              href: ../hc-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Ayrılmış örnekler
+          items:
+            - name: VM'ler için ön ödeme yapma
+              href: ../prepay-reserved-vm-instances.md
+            - name: Ayrılmış Konaklar için önceden ödeme
+              href: ../prepay-dedicated-hosts-reserved-instances.md
+            - name: Azure ayırmaları nedir?
+              href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md?toc=/azure/virtual-machines/linux/toc.json
+            - name: Sanal makine örneği boyut esnekliği
+              href: ../reserved-vm-instance-size-flexibility.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Spot VM'ler
+          displayName: 'pre-empt, preempt, spot'
+          href: ../spot-vms.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Geçici diski olmayan Azure VM’leri
+          href: ../azure-vms-no-temp-disk.md
+        - name: Azure VM boyutlarını adlandırma kuralları
+          href: ../vm-naming-conventions.md
+        - name: Önceki nesiller
+          href: ../sizes-previous-gen.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Yalıtılmış boyutlar
+          href: ../isolation.md
+        - name: Azure işlem birimleri (ACU)
+          href: ../acu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: vCPU kotaları
+          href: quotas.md
+        - name: Kıyaslama puanları
+          href: compute-benchmark-scores.md
+    - name: Doğrulanan dağıtımlar
+      href: endorsed-distros.md
+    - name: Bakım ve güncelleştirmeler
+      href: ../maintenance-and-updates.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Disk depolama
+      items:
+        - name: Yönetilen disklere giriş
+          href: ../managed-disks-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: IaaS VM’leri için disk türü seçme
+          href: ../disks-types.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Şifreleme
+          href: ../disk-encryption.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Disk Depolama rezervasyonları
+          href: ../../cost-management-billing/reservations/understand-disk-reservations.md
+        - name: Sanal makine ve disk performansı
+          href: ../disks-performance.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Yüksek performansa uygun tasarım yapma
+          href: ../premium-storage-performance.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Disk genişletme
+          href: ../disk-bursting.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Diskler için ölçeklenebilirlik hedefleri
+          href: ../disks-scalability-targets.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Diskler için yedekleme ve olağanüstü durum kurtarma
+          href: ../backup-and-disaster-recovery-for-azure-iaas-disks.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Paylaşılan diskler
+          href: ../disks-shared.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Disk performans katmanları
+          href: ../disks-change-performance.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Kısa ömürlü işletim sistemi diskleri
+          href: ../ephemeral-os-disks.md
+    - name: Ağ
+      href: ../network-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Ölçek kümeleri
+      href: ../../virtual-machine-scale-sets/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Altyapı otomasyonu
+      href: ../infrastructure-automation.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Güvenlik
+      items:
+        - name: Güvenlik ve ilke
+          href: ../security-policy.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Azure Disk Şifrelemesi
+          href: disk-encryption-overview.md
+        - name: Azure İlkesi’ne göre güvenlik denetimleri
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ../security-controls-policy.md
+        - name: Azure Güvenlik Karşılaştırması için güvenlik taban çizgisi
+          href: security-baseline.md
+        - name: Bastion
+          href: ../../bastion/bastion-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Durumlar ve yaşam döngüsü
+      href: ../states-lifecycle.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Oluşturma veya güncelleştirme işlemlerine yönelik PUT çağrıları
+      href: ../put-calls-create-or-update.md
+      maintainContext: true
+    - name: İzleme
+      href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Önyükleme tanılaması
+      href: ../../virtual-machines/boot-diagnostics.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Yedekleme ve kurtarma
+      href: ../backup-recovery.md
+    - name: Bulut benimseme çerçevesi
+      href: /azure/cloud-adoption-framework/get-started/
+    - name: Mimari merkezi
+      href: /azure/architecture/
+    - name: Azure Hibrit Avantajı
+      href: azure-hybrid-benefit-linux.md
+- name: Nasıl yapılır kılavuzları
+  items:
+    - name: VM oluşturma
+      items:
+        - name: CLI kullanma
+          href: create-cli-complete.md
+        - name: ARM şablonu kullanma
+          displayName: Azure Resource Manager
+          href: create-ssh-secured-vm-from-template.md
+        - name: REST API’yi kullanma
+          href: create-vm-rest-api.md
+        - name: Bir VM’yi kopyalama
+          href: copy-vm.md
+        - name: Ayrılmış konakları kullanma
+          href: ../dedicated-hosts.md
+          items:
+            - name: CLI
+              href: dedicated-hosts-cli.md
+            - name: Portal
+              href: ../dedicated-hosts-portal.md
+        - name: Spot VM’leri dağıtma
+          items:
+            - name: CLI
+              href: spot-cli.md
+            - name: Portal
+              href: ../spot-portal.md?toc=/azure/virtual-machines/linux/toc.json
+            - name: ARM şablonu
+              displayName: Azure Resource Manager
+              href: spot-template.md
+            - name: Hata kodları
+              href: ../error-codes-spot.md?toc=/azure/virtual-machines/linux/toc.json
+    - name: Klasikten Azure Resource Manager’a geçiş
+      items:
+        - name: Kullanımdan kaldırma süreci 1 Mart 2023’te başlıyor
+          href: ../classic-vm-deprecation.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Geçişe Genel Bakış
+          href: ../migration-classic-resource-manager-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Geçişe derinlemesine bakış
+          href: ../migration-classic-resource-manager-deep-dive.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Geçiş planlaması
+          href: ../migration-classic-resource-manager-plan.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: CLI kullanarak geçirme
+          href: ../migration-classic-resource-manager-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Sık karşılaşılan geçiş hataları
+          href: ../migration-classic-resource-manager-errors.md
+        - name: Geçiş için topluluk araçları
+          href: ../migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: SSS
+          href: ../migration-classic-resource-manager-faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Görüntüleri Kullanma
+      displayName: 'SIG, AMI, image'
+      items:
+        - name: Dağıtıma özgü gereksinimler
+          items:
+            - name: Genel adımlar
+              href: create-upload-generic.md
+            - name: CentOS
+              href: create-upload-centos.md
+            - name: Debian
+              href: debian-create-upload-vhd.md
+            - name: Flatcar Container Linux
+              href: flatcar-create-upload-vhd.md
+            - name: FreeBSD
+              href: freebsd-intro-on-azure.md
+            - name: Oracle Linux
+              href: oracle-create-upload-vhd.md
+            - name: OpenBSD
+              href: create-upload-openbsd.md
+            - name: Red Hat
+              href: redhat-create-upload-vhd.md
+            - name: SUSE
+              href: suse-create-upload-vhd.md
+            - name: Ubuntu
+              href: create-upload-ubuntu.md
+        - name: Cloud-init kullanma
+          items:
+            - name: Cloud-init genel bakış
+              href: using-cloud-init.md
+            - name: Derin dalış
+              href: cloud-init-deep-dive.md
+            - name: Sorun giderme
+              href: cloud-init-troubleshooting.md
+            - name: VM konak adını yapılandırma
+              href: cloudinit-update-vm-hostname.md
+            - name: Bir VM içindeki güncelleştirme paketleri
+              href: cloudinit-update-vm.md
+            - name: VM’ye kullanıcı ekleme
+              href: cloudinit-add-user.md
+            - name: Takas dosyası yapılandırma
+              href: cloudinit-configure-swapfile.md
+            - name: Mevcut bash betiğini çalıştırma
+              href: cloudinit-bash-script.md
+            - name: Mevcut VM’yi cloud-init için hazırlama
+              href: cloudinit-prepare-custom-image.md
+        - name: Sağlama aracısı olmadan görüntü oluşturma
+          href: no-agent.md
+        - name: Linux Aracısı sağlamasını devre dışı bırakma
+          href: disable-provisioning.md
+        - name: Paylaşılan Görüntü Galerileri
+          items:
+            - name: CLI
+              items:
+                - name: Galeri oluşturma
+                  href: ../shared-images-cli.md
+                - name: Görüntü oluşturma
+                  items:
+                    - name: Sanal makineden
+                      href: ../image-version-vm-cli.md
+                    - name: Yönetilen Disk’ten veya anlık görüntüden
+                      href: ../image-version-snapshot-cli.md
+                    - name: Yönetilen bir görüntüyü klonlama
+                      href: ../image-version-managed-image-cli.md
+                    - name: Başka bir galeriden kopyalama
+                      href: ../image-version-another-gallery-cli.md
+                - name: VM oluşturma
+                  items:
+                    - name: Genelleştirilmiş
+                      href: ../vm-generalized-image-version-cli.md
+                    - name: Özelleştirilmiş
+                      href: ../vm-specialized-image-version-cli.md
+                - name: Görüntü kaynaklarını güncelleştirme
+                  href: ../update-image-resources-cli.md
+                - name: Paylaşım için uygulama kaydı
+                  href: share-images-across-tenants.md
+            - name: PowerShell
+              items:
+                - name: Galeri oluşturma
+                  href: ../shared-images-powershell.md
+                - name: Görüntü sürümü oluşturma
+                  items:
+                    - name: Sanal makineden
+                      href: ../image-version-vm-powershell.md
+                    - name: Yönetilen Disk’ten veya anlık görüntüden
+                      href: ../image-version-snapshot-powershell.md
+                    - name: Yönetilen bir görüntüyü klonlama
+                      href: ../image-version-managed-image-powershell.md
+                    - name: Başka bir galeriden kopyalama
+                      href: ../image-version-another-gallery-powershell.md
+                - name: VM oluşturma
+                  items:
+                    - name: Genelleştirilmiş
+                      href: ../vm-generalized-image-version-powershell.md
+                    - name: Özelleştirilmiş
+                      href: ../vm-specialized-image-version-powershell.md
+                - name: Görüntü kaynaklarını güncelleştirme
+                  href: ../update-image-resources-powershell.md
+                - name: Paylaşım için uygulama kaydı
+                  href: ../windows/share-images-across-tenants.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Portal
+              items:
+                - name: 'Galeri, görüntü ve sanal makine oluşturma'
+                  href: shared-images-portal.md
+            - name: Resource Manager Şablonları
+              items:
+                - name: Paylaşılan Görüntü Galerisi Oluşturma
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
+                - name: Paylaşılan Görüntü Galerisinde Görüntü Tanımı Oluşturma
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
+                - name: Paylaşılan Görüntü Galerisinde Görüntü Sürümü Oluşturma
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
+                - name: Görüntü Sürümünden Sanal Makine Oluşturma
+                  href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
+            - name: Paylaşılan görüntü sorunlarını giderme
+              href: ../troubleshooting-shared-images.md
+            - name: Müşteri tarafından yönetilen anahtarları kullanma
+              displayName: 'SSE, CMK, encrypt'
+              href: ../image-version-encryption.md
+        - name: Görüntü oluşturucu (önizleme)
+          items:
+            - name: Genel Bakış
+              href: image-builder-overview.md
+            - name: Azure CLI kullanma
+              href: image-builder.md
+            - name: Sanal ağ kullanma - CLI
+              href: image-builder-vnet.md
+            - name: Ağ seçenekleri
+              href: image-builder-networking.md
+            - name: İzinleri yapılandırma
+              items:
+                - name: CLI
+                  href: image-builder-permissions-cli.md
+                - name: PowerShell
+                  href: image-builder-permissions-powershell.md
+            - name: DevOps görevi
+              href: image-builder-devops-task.md
+            - name: Görüntü Oluşturucu şablon başvurusu
+              displayName: json
+              href: image-builder-json.md
+            - name: Görüntü galerileri için derleme
+              href: image-builder-gallery.md
+            - name: Mevcut görüntüyü güncelleştirme
+              href: image-builder-gallery-update-image-version.md
+            - name: Sorun giderme
+              href: image-builder-troubleshoot.md
+        - name: Görüntüleri bulma ve kullanma
+          href: cli-ps-findimage.md
+        - name: Satın alma planı bilgileri
+          href: ../marketplace-images.md
+        - name: VM’yi yönetilen görüntüye yakalama
+          href: capture-image.md
+        - name: Packer ile görüntü derleme
+          href: build-image-with-packer.md
+        - name: Mevcut bir diski indirme
+          href: download-vhd.md
+        - name: Görüntü sürümünden yönetilen disk
+          href: ../managed-disk-from-image-version.md
+    - name: VM’leri koruma
+      items:
+        - name: Öneriler
+          href: ../security-recommendations.md
+        - name: Tam zamanında erişim
+          href: ../../security-center/security-center-just-in-time.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Bastion kullanma
+          items:
+            - name: Güçlendirilmiş erişim konağı oluşturma
+              items:
+                - name: Portal
+                  href: ../../bastion/tutorial-create-host-portal.md
+                - name: PowerShell
+                  href: ../../bastion/bastion-create-host-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: CLI
+                  href: ../../bastion/create-host-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Bağlanmak için Bastion kullanma
+              href: ../../bastion/bastion-connect-vm-ssh.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Şifreleme
+          items:
+            - name: Linux için disk şifreleme senaryoları
+              href: disk-encryption-linux.md
+            - name: Azure CLI ile VM şifreleme
+              href: disk-encryption-cli-quickstart.md
+            - name: PowerShell ile VM şifreleme
+              href: disk-encryption-powershell-quickstart.md
+            - name: Azure portalıyla VM şifreleme
+              href: disk-encryption-portal-quickstart.md
+            - name: Azure Disk Şifrelemesi için anahtar kasası
+              href: disk-encryption-key-vault.md
+            - name: Disk şifrelemesi örnek betikleri
+              href: disk-encryption-sample-scripts.md
+            - name: Yalıtılmış bir ağda disk şifrelemesi
+              href: disk-encryption-isolated-network.md
+            - name: Şifreleme durumunu doğrulama
+              href: how-to-verify-encryption-status.md
+            - name: Şifrelemede LVM RAID’yi yapılandırma
+              href: how-to-configure-lvm-raid-on-crypt.md
+            - name: Şifrelenmiş LVM birimlerini yeniden boyutlandırma
+              href: how-to-resize-encrypted-lvm.md
+            - name: Disk şifrelemesi sorunlarını giderme
+              href: disk-encryption-troubleshooting.md
+            - name: Disk şifrelemesi hakkında SSS
+              href: disk-encryption-faq.md
+            - name: Disk şifrelemesi - önceki sürüm
+              items:
+                - name: Genel Bakış
+                  href: disk-encryption-overview-aad.md
+                - name: Azure Disk Şifrelemesi için anahtar kasası
+                  href: disk-encryption-key-vault-aad.md
+                - name: Linux için disk şifreleme senaryoları
+                  href: disk-encryption-linux-aad.md
+        - name: Erişim denetimleri kullanma
+          href: ../../role-based-access-control/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: İlkeleri kullanma
+          href: policy.md
+        - name: Anahtar kasası oluşturma
+          href: key-vault-setup.md
+        - name: SSH anahtarlarını oluşturma ve kullanma
+          displayName: ssh keys ssh openssh
+          items:
+            - name: Linux veya macOS üzerinde
+              href: mac-create-ssh-keys.md
+            - name: Windows üzerinde
+              href: ssh-from-windows.md
+            - name: Portalda
+              href: ../ssh-keys-portal.md
+            - name: Ayrıntılı adımlar
+              href: create-ssh-keys-detailed.md
+    - name: VM’leri koruma
+      items:
+        - name: Olağanüstü durum kurtarma
+          href: ../virtual-machines-disaster-recovery-guidance.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: VM’leri yedekleme
+          href: ../../backup/backup-overview.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json
+          items:
+            - name: Tek bir VM’yi yedekleme
+              href: ../../backup/quick-backup-vm-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Birden fazla VM’yi yedekleme
+              href: ../../backup/tutorial-backup-vm-at-scale.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Diski geri yükleme
+              href: ../../backup/tutorial-restore-disk.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Dosyaları tek tek geri yükleme
+              href: ../../backup/tutorial-restore-files.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: VM'ler için olağanüstü durum kurtarmayı ayarlama
+          href: ../../site-recovery/site-recovery-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          items:
+            - name: VM'ler için olağanüstü durum kurtarmayı etkinleştirme
+              href: ../../site-recovery/azure-to-azure-tutorial-enable-replication.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: VM'ler için olağanüstü durum kurtarma tatbikatı çalıştırma
+              href: ../../site-recovery/azure-to-azure-tutorial-dr-drill.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: VM'nin yükünü başka bir bölgeye devretme
+              href: ../../site-recovery/azure-to-azure-tutorial-failover-failback.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: VM’leri yönetme
+      items:
+        - name: VM kullanımı
+          href: ../vm-usage.md
+        - name: Ortak CLI görevleri
+          href: cli-manage.md
+        - name: VM boyutunu değiştirme
+          href: change-vm-size.md
+        - name: İşletim sistemi diskini değiştirme
+          href: os-disk-swap.md
+        - name: Zaman eşitleme
+          href: time-sync.md
+        - name: Bir VM’yi etiketleme
+          items:
+            - name: CLI
+              href: ../tag-cli.md
+            - name: Portal
+              href: ../tag-portal.md
+            - name: PowerShell
+              href: ../tag-powershell.md
+            - name: Şablon
+              href: ../tag-template.md
+        - name: Bir VM üzerinde betikleri çalıştırma
+          href: run-scripts-in-vm.md
+          items:
+            - name: Özel Betik Uzantısı
+              href: ../extensions/custom-script-linux.md
+            - name: Çalıştır Komutu
+              href: run-command.md
+        - name: Uzak Masaüstü kullanma
+          href: use-remote-desktop.md
+        - name: VM’yi Azure Active Directory’e ekleme
+          displayName: Azure AD
+          items:
+            - name: Red Hat Enterprise Linux
+              href: ../../active-directory-domain-services/join-rhel-linux-vm.md
+            - name: CentOS
+              href: ../../active-directory-domain-services/join-centos-linux-vm.md
+            - name: Ubuntu
+              href: ../../active-directory-domain-services/join-ubuntu-linux-vm.md
+        - name: Azure Active Directory kimlik bilgileriyle oturum açma
+          href: login-using-aad.md
+        - name: Güncelleştirmeler ve düzeltme ekleri
+          items:
+            - name: Red Hat Güncelleştirme Altyapısı
+              href: ../workloads/redhat/redhat-rhui.md
+        - name: Azure VM aracısı
+          items:
+            - name: Genel Bakış
+              href: ../extensions/agent-linux.md
+            - name: Aracı güncelleştirmesi
+              href: ../extensions/update-linux-agent.md
+        - name: Kurgusal yürütmeyi azaltma
+          href: ../mitigate-se.md
+        - name: Meta verileri izleme
+          href: instance-metadata-service.md
+        - name: REST ile kullanım ölçümleri alma
+          href: metrics-vm-usage-rest.md
+    - name: Bakım denetimi
+      items:
+        - name: Bakım bildirimleri
+          items:
+            - name: Genel Bakış
+              href: ../maintenance-notifications.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: CLI
+              href: ../maintenance-notifications-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Portal
+              href: ../maintenance-notifications-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: PowerShell
+              href: ../maintenance-notifications-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Platform bakımı
+          items:
+            - name: Genel Bakış
+              href: ../maintenance-control.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: CLI
+              href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: PowerShell
+              href: ../maintenance-control-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Portal
+              href: ../maintenance-control-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Zamanlanmış olaylar
+          href: scheduled-events.md
+        - name: Sanal makine ölçek kümesi İşletim Sistemi görüntüsüne yönelik yükseltmeler
+          items:
+            - name: Otomatik işletim sistemi yükseltmeleri
+              href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Bakım denetimi
+              items:
+                - name: Genel Bakış (Önizleme)
+                  href: ../virtual-machine-scale-sets-maintenance-control.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: PowerShell (Önizleme)
+                  href: ../virtual-machine-scale-sets-maintenance-control-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: VM’leri izleme
+      items:
+        - name: Aracılar
+          items:
+            - name: Aracılara genel bakış
+              href: ../../azure-monitor/platform/agents-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: SSS
+              href: ../../azure-monitor/faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#agents
+            - name: Azure Tanılama uzantısı
+              items:
+                - name: Genel Bakış
+                  href: ../../azure-monitor/platform/diagnostics-extension-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: Linux tanılama uzantısı
+                  items:
+                    - name: Genel Bakış
+                      href: ../../azure-monitor/../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json?toc=/azure/azure-monitor/toc.json
+                    - name: Telegraf ile ölçümleri toplama
+                      href: ../../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                  displayname: diagnostics extension
+            - name: Log Analytics aracısı
+              items:
+                - name: Genel Bakış
+                  href: ../../azure-monitor/platform/log-analytics-agent.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: Linux aracıları
+                  href: ../../azure-monitor/platform/agent-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: Log Analytics ağ geçidi
+                  href: ../../azure-monitor/platform/gateway.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: Aracı yönetimi
+                  href: ../../azure-monitor/platform/agent-manage.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: Aracı Durumu
+                  href: ../../azure-monitor/insights/solution-agenthealth.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: Veri kaynakları
+                  items:
+                    - name: Genel Bakış
+                      href: ../../azure-monitor/platform/agent-data-sources.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                    - name: Özel JSON verileri
+                      href: ../../azure-monitor/platform/data-sources-json.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                    - name: toplanan performans verileri
+                      href: ../../azure-monitor/platform/data-sources-collectd.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                    - name: Syslog
+                      href: ../../azure-monitor/platform/data-sources-syslog.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                    - name: Performans sayaçları
+                      href: ../../azure-monitor/platform/data-sources-performance-counters.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                    - name: Linux uygulama performansı
+                      href: ../../azure-monitor/platform/data-sources-linux-applications.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                    - name: Özel günlükler
+                      href: ../../azure-monitor/platform/data-sources-custom-logs.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                    - name: Özel alanlar
+                      href: ../../azure-monitor/platform/custom-fields.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Sorun giderme
+              items:
+                - name: Log Analytics VM Uzantısı
+                  href: ../../azure-monitor/platform/vmext-troubleshoot.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                  displayname: 'troubleshoot, troubleshooting'
+                - name: Log Analytics Linux aracısı
+                  href: ../../azure-monitor/platform/agent-linux-troubleshoot.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                  displayname: 'troubleshoot, troubleshooting'
+        - name: VM'ler için Azure İzleyici
+          items:
+            - name: Genel Bakış
+              href: ../../azure-monitor/insights/vminsights-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Genel Kullanılabilirlik Hakkında SSS
+              href: ../../azure-monitor/insights/vminsights-ga-release-faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: SSS
+              href: ../../azure-monitor/faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#azure-monitor-for-vms
+            - name: İzlemeyi etkinleştirme
+              items:
+                - name: İzlemeyi etkinleştirmeye genel bakış
+                  href: ../../azure-monitor/insights/vminsights-enable-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: Tek bir Azure VM için etkinleştirme
+                  href: ../../azure-monitor/insights/vminsights-enable-portal.md
+                - name: Azure İlkesi’ni kullanarak etkinleştirme
+                  href: ../../azure-monitor/insights/vminsights-enable-policy.md
+                - name: Azure PowerShell kullanarak etkinleştirme
+                  href: ../../azure-monitor/insights/vminsights-enable-powershell.md
+                - name: Hibrit ortam için etkinleştirme
+                  href: ../../azure-monitor/insights/vminsights-enable-hybrid.md
+            - name: Bağımlılıkları eşleme
+              href: ../../azure-monitor/insights/vminsights-maps.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Performansı izleme
+              href: ../../azure-monitor/insights/vminsights-performance.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Günlük sorgularıyla verileri çözümleme
+              href: ../../azure-monitor/insights/vminsights-log-search.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Çalışma kitapları ile verileri görselleştirme
+              href: ../../azure-monitor/insights/vminsights-workbooks.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Uyarı kuralları oluşturma
+              href: ../../azure-monitor/insights/vminsights-alerts.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Dependency Agent’ı yükseltme
+              href: ../../azure-monitor/insights/vminsights-dependency-agent-maintenance.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: İzlemeyi devre dışı bırakma
+              href: ../../azure-monitor/insights/vminsights-optout.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Kullanılabilirlik ve ölçek
+      items:
+        - name: Otomatik Ölçeklendirme
+          href: ../../virtual-machine-scale-sets/overview.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json
+        - name: Yüksek kullanılabilirlik
+          href: ../manage-availability.md
+        - name: Kullanılabilirlik kümesini değiştirme
+          href: ../windows/change-availability-set.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Yakınlık yerleştirme grubu oluşturma
+          displayName: PPG aligned colocation co-location
+          items:
+            - name: CLI
+              href: proximity-placement-groups.md
+            - name: Portal
+              href: ../windows/proximity-placement-groups-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Kullanılabilirlik alanında VM oluşturma
+          href: create-cli-availability-zone.md
+    - name: Otomasyon araçları kullanma
+      items:
+        - name: Özel veriler
+          href: ../custom-data.md
+        - name: Ansible
+          items:
+            - name: Yükleme ve yapılandırma
+              href: /azure/developer/ansible/install-on-linux-vm
+            - name: Linux VM oluşturma
+              href: /azure/developer/ansible/vm-configure
+            - name: Linux VM yönetme
+              href: /azure/developer/ansible/vm-manage
+        - name: Terraform
+          items:
+            - name: Yükleme ve yapılandırma
+              href: /azure/developer/terraform/install-configure
+            - name: Tam VM oluşturma
+              href: /azure/developer/terraform/create-linux-virtual-machine-with-infrastructure
+        - name: Jenkins
+          href: /azure/developer/jenkins/overview
+          items:
+            - name: Jenkins sunucusu oluşturma
+              href: /azure/developer/jenkins/configure-on-linux-vm
+            - name: VM aracılarıyla ölçeklendirme
+              href: /azure/developer/jenkins/scale-deployments-using-vm-agents
+            - name: Yapıtları Depolama alanında yayımlama
+              href: /azure/developer/jenkins/azure-storage-blobs-as-build-artifact-repository
+            - name: Jenkins güvenliğini sağlama
+              href: 'https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/'
+    - name: Kapsayıcıları çalıştırma
+      items:
+        - name: Docker konağı oluşturma
+          href: 'https://github.com/Azure/azure-docker-extension/blob/master/README.md'
+        - name: Docker Makinesi kullanma
+          href: docker-machine.md
+        - name: Docker Compose kullanma
+          href: docker-compose-quickstart.md
+    - name: Uygulamaları çalıştırma
+      items:
+        - name: Red Hat
+          href: ../workloads/redhat/overview.md
+        - name: Cloud Foundry
+          href: ../../cloudfoundry/index.yml
+        - name: Cassandra
+          href: /azure/architecture/reference-architectures/n-tier/n-tier-cassandra?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: OpenShift
+          items:
+            - name: OpenShift’e genel bakış
+              href: openshift-get-started.md
+            - name: OpenShift Kapsayıcı Platformu 4.x
+              href: openshift-container-platform-4x.md
+            - name: OpenShift Kapsayıcı Platformu 3.11 önkoşulları
+              href: openshift-container-platform-3x-prerequisites.md
+            - name: OpenShift Kapsayıcı Platformu 3.11
+              href: openshift-container-platform-3x.md
+            - name: OpenShift Kapsayıcı Platformu 3.11 Kendi Kendini Yöneten Market
+              href: openshift-container-platform-3x-marketplace-self-managed.md
+            - name: Azure Stack
+              href: openshift-azure-stack.md
+            - name: OpenShift Kapsayıcı Platformu 3.11 dağıtım sonrası görevleri
+              href: openshift-container-platform-3x-post-deployment.md
+            - name: OpenShift Kapsayıcı Platformu 3.11 dağıtımlarında sorun giderme
+              href: openshift-container-platform-3x-troubleshooting.md
+        - name: Azure’da SAP
+          href: ../workloads/sap/get-started.md
+        - name: Oracle
+          href: ../workloads/oracle/oracle-database-quick-create.md
+        - name: Elasticsearch
+          href: tutorial-elasticsearch.md
+        - name: FreeBSD Paket Filtresi
+          href: freebsd-pf-nat.md
+        - name: Veritabanları
+          items:
+            - name: SUSE üzerinde MySQL
+              href: mysql-on-opensuse.md
+            - name: MongoDB
+              href: install-mongodb.md
+            - name: PostgreSQL
+              href: postgresql-install.md
+            - name: Linux üzerinde MS SQL
+              href: /sql/linux/sql-server-linux-azure-virtual-machine
+        - name: Yüksek Performanslı Bilgi İşlem (HPC)
+          href: /azure/architecture/topics/high-performance-computing/
+        - name: IBM Db2 pureScale
+          items:
+            - name: Mimari
+              href: ibm-db2-purescale-azure.md
+            - name: Dağıtım
+              href: deploy-ibm-db2-purescale-azure.md
+    - name: Depolamayı yönetme
+      items:
+        - name: Disk ekleme
+          items:
+            - name: Azure CLI
+              href: add-disk.md
+            - name: Azure portalı
+              href: attach-disk-portal.md
+        - name: Disk katmanını değiştirme - PowerShell/CLI
+          href: ../disks-performance-tiers.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Disk katmanını değiştirme - Portal
+          href: ../disks-performance-tiers-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Disk ayırma
+          href: detach-disk.md
+        - name: ARM şablonu ile diskleri dağıtma
+          displayName: 'Azure Resource Manager, ARM'
+          href: ../using-managed-disks-template-deployments.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Paylaşılan diskleri etkinleştirme
+          href: ../disks-shared-enable.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Diske VHD yükleme - CLI
+          href: disks-upload-vhd-to-managed-disk-cli.md
+        - name: Diski güvenli bir şekilde içeri/dışarı aktarma - CLI
+          href: disks-export-import-private-links-cli.md
+        - name: Diski güvenli bir şekilde içeri/dışarı aktarma - Portal
+          href: ../disks-enable-private-links-for-import-export-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Bir diski yeniden boyutlandırma
+          href: expand-disks.md
+        - name: Diskleri yönetmek için Depolama Gezgini kullanma
+          href: ../disks-use-storage-explorer-managed-disks.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Bir diskin anlık görüntüsünü alma
+          href: snapshot-copy-managed-disk.md
+        - name: Disk Depolama rezervasyonu yapma
+          href: ../disks-reserved-capacity.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Artımlı anlık görüntü oluşturma
+          href: ../disks-incremental-snapshots.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Yönetilmeyen diskleri yedekleme
+          href: incremental-snapshots.md
+        - name: Şifreleme
+          items:
+            - name: Konakta şifrelemeyi etkinleştirme - CLI
+              href: disks-enable-host-based-encryption-cli.md
+            - name: Konakta şifrelemeyi etkinleştirme - Portal
+              href: ../disks-enable-host-based-encryption-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Müşteri tarafından yönetilen anahtarları etkinleştirme - CLI
+              href: disks-enable-customer-managed-keys-cli.md
+            - name: Müşteri tarafından yönetilen anahtarları etkinleştirme - Portal
+              href: ../disks-enable-customer-managed-keys-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Bekleyen verilerde çift şifrelemeyi etkinleştirme - CLI
+              href: disks-enable-double-encryption-at-rest-cli.md
+            - name: Bekleyen verilerde çift şifrelemeyi etkinleştirme - Portal
+              href: ../disks-enable-double-encryption-at-rest-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Geçiş ve dönüştürme
+          items:
+            - name: Azure Site Recovery ile Premium depolamaya geçiş
+              href: migrate-to-premium-storage-using-azure-site-recovery.md
+            - name: Yönetilen Disklere dönüştürme
+              href: convert-unmanaged-to-managed-disks.md
+            - name: Standart ve Premium arasında disk dönüştürme
+              href: convert-disk-storage.md
+        - name: Dosyaları bir VM’ye kopyalama
+          href: copy-files-to-linux-vm-using-scp.md
+        - name: Performans
+          items:
+            - name: Yazma hızlandırıcıyı kullanma
+              href: ../how-to-enable-write-accelerator.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Ultra diskleri kullanma
+              href: ../disks-enable-ultra-ssd.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Disk kıyaslama
+              href: ../disks-benchmarks.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Kullanıma açılmamış diskleri bulma - CLI
+          href: find-unattached-disks.md
+        - name: Kullanıma açılmamış diskleri bulma - Portal
+          href: ../disks-find-unattached-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Azure Disklerini Konuk Disklerine eşleme
+          href: azure-to-guest-disk-mapping.md
+        - name: Dosya depolamayı kullanma
+          href: mount-azure-file-storage-on-linux-using-smb.md
+        - name: Disklerle ilgili SSS
+          href: ../faq-for-disks.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Ağı yönetme
+      items:
+        - name: Sanal ağ oluşturma
+          href: ../../virtual-network/quick-create-cli.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json
+        - name: Bağlantı noktalarını VM’ye açma
+          href: nsg-quickstart.md
+        - name: Genel IP adresi atama
+          href: ../../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Birden çok NIC kullanma
+          href: multiple-nics.md
+        - name: Hızlandırılmış ağ kullanma
+          href: ../../virtual-network/create-vm-accelerated-networking-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Genel DNS adı atama
+          href: ../create-fqdn.md
+        - name: Eklenmemiş NIC’leri bulma ve silme
+          href: find-unattached-nics.md
+        - name: DNS çözümleme
+          href: azure-dns.md
+          items:
+            - name: Dahili DNS kullanma
+              href: static-dns-name-resolution-for-linux-on-azure.md
+    - name: Yönetilen kimlikleri yapılandırma
+      items:
+        - name: Portal
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: CLI
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: PowerShell
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Azure Resource Manager Şablonu
+          displayName: ARM
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: REST
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-rest-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Azure SDK’ları
+          href: ../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: VM uzantılarını kullanma
+      items:
+        - name: Uzantı yüklemesini kısıtlama
+          href: ../extensions/extensions-rmpolicy-howto-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Linux aracısını güncelleştirme
+          href: ../extensions/update-linux-agent.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Uzantıları dışarı aktarma
+          href: ../extensions/export-templates.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Sorun giderme
+          href: ../extensions/troubleshoot.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Python 3 özellikli Linux sistemleri ile ilgili sorunlar
+          href: ../extensions/issues-using-vm-extensions-python-3.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Azure Disk Şifrelemesi
+          href: ../extensions/azure-disk-enc-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Azure Key Vault
+          href: ../extensions/key-vault-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Özel Betik
+          href: ../extensions/custom-script-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Sanal makine anlık görüntüsü
+          href: ../extensions/vmsnapshot-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Ağ İzleyicisi Aracısı
+          href: ../extensions/network-watcher-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: NVIDIA GPU Sürücüleri
+          href: ../extensions/hpccompute-gpu-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Azure İzleyici
+          items:
+            - name: Tanılama uzantısı
+              href: ../extensions/diagnostics-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Log Analytics
+              href: ../extensions/oms-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Azure İzleyici Linux Bağımlılık aracısı
+              href: ../extensions/agent-dependency-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: PowerShell DSC
+          href: ../extensions/dsc-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          items:
+            - name: DSC ve Linux
+              href: ../extensions/dsc-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Kimlik bilgilerini işleme
+              href: ../extensions/dsc-credentials.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Şablon kullanma
+              href: ../extensions/dsc-template.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Sanal makine erişimi
+          href: ../extensions/vmaccess.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Chef
+          href: ../extensions/chef.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Stackify Retrace
+          href: ../extensions/stackify-retrace-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Symantec
+          href: ../extensions/symantec.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: Sanal makineleri taşıma ve geçirme
+      items:
+        - name: Aboneliği veya kaynak grubunu değiştirme
+          href: move-vm.md
+        - name: VM'leri başka bir bölgeye taşıma
+          href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Kullanılabilirlik alanına taşıma
+          href: ../../site-recovery/move-azure-vms-avset-azone.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Bakım Denetimi yapılandırmalarını başka bölgeye taşıma
+          href: ../move-region-maintenance-configuration.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Bakım Denetimi yapılandırma kaynaklarını başka bölgeye taşıma
+          href: ../move-region-maintenance-configuration-resources.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: AWS’Den ve şirket içi VM’lerden geçiş
+          href: ../windows/on-prem-to-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          items:
+            - name: Amazon Web Services’den (AWS) Azure’a geçiş
+              href: ../windows/aws-to-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Şirket içi VM’yi karşıya yükleme
+              href: upload-vhd.md
+            - name: Azure Site Recovery’yi kullanma
+              href: ../../site-recovery/migrate-overview.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json
+        - name: WebLogic’i Azure’a geçirme
+          href: /azure/developer/java/migration/migrate-weblogic-to-virtual-machines
+- name: Başvuru
+  items:
+    - name: Azure CLI
+      href: /cli/azure/vm
+    - name: PowerShell
+      href: /powershell/azure/
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.compute
+    - name: Java
+      href: /java/api
+    - name: Node.js
+      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: REST
+      href: /rest/api/compute
+    - name: Resource Manager şablonu
+      displayName: ARM
+      href: /azure/templates/microsoft.compute/allversions
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ../policy-reference.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+- name: Kaynaklar
+  items:
+    - name: Soru-Cevap
+      href: /answers/topics/azure-virtual-machines.html
+    - name: ARM şablonlarını yazma
+      displayName: 'Azure Resource Manager, ARM'
+      href: ../../azure-resource-manager/index.yml
+    - name: Microsoft Learn ile becerilerinizi geliştirin
+      href: /learn/browse/?products=azure-virtual-machines
+    - name: Azure Yol Haritası
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Azure Hızlı Başlangıç şablonları
+      displayName: 'Azure Resource Manager, ARM'
+      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular'
+    - name: Fiyatlandırma
+      href: 'https://azure.microsoft.com/pricing/details/#Linux'
+    - name: Bölgesel kullanılabilirlik
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-virtual-machine'
+    - name: Videolar
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines'
+    - name: SSS
+      href: faq.md
+- name: Sorun giderme
+  href: ../troubleshooting/index.yml

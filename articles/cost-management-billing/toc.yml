@@ -98,7 +98,7 @@
           href: reservations/reserved-instance-windows-software-costs.md?toc=/azure/cost-management-billing/toc.json
         - name: Bireysel aboneliklere yönelik kullanım verileri
           href: reservations/understand-reserved-instance-usage.md?toc=/azure/cost-management-billing/toc.json
-        - name: Kurumsal müşterilere yönelik kullanım verileri
+        - name: Kurumsal ve Microsoft Müşteri Sözleşmesi kullanım verileri
           href: reservations/understand-reserved-instance-usage-ea.md?toc=/azure/cost-management-billing/toc.json
     - name: Faturalandırma
       items:
