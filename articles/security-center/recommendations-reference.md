@@ -4,22 +4,21 @@ description: Bu makalede, Azure Güvenlik Merkezi 'nin kaynaklarınızı koruman
 author: memildin
 ms.service: security-center
 ms.topic: reference
-ms.date: 01/12/2021
+ms.date: 01/24/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 11d4830908b4e86da12cd5e40cc26b1c1b1aecbd
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: cd72e904f659b7bd9c7e2df86b46fe20bd26ec33
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133056"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757106"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Güvenlik önerileri - başvuru kılavuzu
 
 Bu makalede, Azure Güvenlik Merkezi 'nde görebileceğiniz öneriler listelenir. Ortamınızda gösterilen öneriler, koruduğunuz kaynaklara ve özelleştirilmiş yapılandırmanıza bağlıdır.
 
-Güvenlik Merkezi'nin önerileri en iyi yöntemlere dayanır. Bazıları genel uyumluluk çerçevelerine göre güvenlik ve uyumluluk için en iyi uygulamalara yönelik, Microsoft tarafından yazılmış ve Azure'a özgü yönergeler olan **Azure Güvenlik Karşılaştırması**'na uygundur.
-[Azure Güvenlik Karşılaştırması hakkında daha fazla bilgi edinin](../security/benchmarks/introduction.md).
+Güvenlik Merkezi 'nin önerileri, [Azure Güvenlik kıyaslaması](../security/benchmarks/introduction.md)temel alınarak hesaplanır. Azure Güvenlik kıyaslaması, yaygın uyumluluk çerçevelerine göre güvenlik ve uyum en iyi uygulamaları için Microsoft tarafından yazılan, Azure 'a özgü bir dizi kılavuzlardır. Bu, yaygın olarak kullanılan kıyaslama, [Internet güvenliği (CIS) Için merkezden](https://www.cisecurity.org/benchmark/azure/) ve [ulusal standartlar ve teknolojı Enstitüsü (NIST)](https://www.nist.gov/) ile bulut merkezli güvenliğe odaklanarak yapılar oluşturur.
 
 Bu önerilere yanıt verme hakkında bilgi edinmek için bkz. [Azure Güvenlik Merkezi 'nde önerileri düzeltme](security-center-remediate-recommendations.md).
 

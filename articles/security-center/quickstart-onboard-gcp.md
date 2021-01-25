@@ -3,16 +3,16 @@ title: GCP hesabınızı Azure Güvenlik Merkezi 'ne bağlama
 description: Azure Güvenlik Merkezi 'nden GCP kaynaklarınızı izleme
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 01/24/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 1095222f332e7a66f684feddf1fdab17704ca658
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: d5f8278765c3f62fded44e4b89fb5fded6137c94
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573553"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757619"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>GCP hesaplarınızı Azure Güvenlik Merkezi 'ne bağlama
 
@@ -36,10 +36,10 @@ Aşağıdaki ekran görüntüsünde, güvenlik merkezi 'nin genel bakış panosu
 
 |Görünüş|Ayrıntılar|
 |----|:----|
-|Yayın durumu:|Önizleme<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|Yayın durumu:|Genel kullanılabilirlik (GA)|
 |Fiyat|[Sunucular Için Azure Defender](defender-for-servers-introduction.md) gerekir|
 |Gerekli roller ve izinler:|İlgili Azure aboneliğinde **sahip** veya **katkıda** bulunan|
-|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 ## <a name="connect-your-gcp-account"></a>GCP hesabınıza bağlanma
@@ -75,7 +75,7 @@ Güvenlik sistem durumu analizlerini ilk kez etkinleştirdiğinizde, verilerin k
 1. **HIZMET hesabı oluştur**' u seçin.
 1. Hesap adı girin ve **Oluştur**' u seçin.
 1. **Rolü** **Güvenlik Merkezi yönetici Görüntüleyicisi** olarak belirtin ve **devam**' ı seçin.
-1. **Kullanıcılara bu hizmet hesabına erişim Izni ver** bölümü isteğe bağlıdır. **Bitti**’yi seçin.
+1. **Kullanıcılara bu hizmet hesabına erişim Izni ver** bölümü isteğe bağlıdır. **Bitti** seçeneğini belirleyin.
 1. Oluşturulan hizmet hesabının **e-posta değerini** kopyalayın ve daha sonra kullanmak üzere kaydedin.
 1. **Gezinti menüsünde**, **IAM & yönetici** seçenekleri altında **IAM** ' i seçin.
     1. Kuruluş düzeyine geçin.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 60e86c7c849bf09b3a5577453a6935466ab447f6
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 4312a819f8fd41805dca095556efdc6189f23af9
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95483922"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757128"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Azure Sentinel’i çalışma alanlarına ve kiracılara genişletme
 
@@ -34,7 +34,7 @@ Tek çalışma alanı kullanırken Azure Sentinel deneyiminin tüm avantajların
 | Sogemenlik ve mevzuat uyumluluğu | Çalışma alanı belirli bir bölgeye bağlıdır. Yasal gereksinimleri karşılamak için verilerin farklı [Azure coğrafi](https://azure.microsoft.com/global-infrastructure/geographies/) bölgelerde tutulması gerekiyorsa, bu, ayrı çalışma alanlarına bölünmelidir. |  |
 | Veri sahipliği | Veri sahiplerinin sınırları (örneğin, yan kuruluşlar veya bağlı şirketler), ayrı çalışma alanları kullanılarak daha iyi bir şekilde ayarlanır. |  |
 | Birden çok Azure kiracısından | Azure Sentinel, Microsoft ve Azure SaaS kaynaklarından yalnızca kendi Azure Active Directory (Azure AD) kiracı sınırının içindeki veri toplamayı destekler. Bu nedenle her Azure AD kiracısına ayrı çalışma alanı gerekir. |  |
-| Ayrıntılı veri erişim denetimi | Kuruluşun, Azure Sentinel tarafından toplanan bazı verilere erişmesi için kuruluş içinde veya dışında farklı gruplara izin vermeniz gerekebilir. Örnek:<br><ul><li>Kaynak sahiplerinin, kaynaklarıyla ilgili verilere erişimi</li><li>Bölgesel veya yan kuruluşların, kuruluşun bölümleriyle ilgili verilere erişimi</li></ul> | [Kaynak Azure RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/controlling-access-to-azure-sentinel-data-resource-rbac/ba-p/1301463) veya [tablo düzeyinde Azure RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) kullanma |
+| Ayrıntılı veri erişim denetimi | Kuruluşun, Azure Sentinel tarafından toplanan bazı verilere erişmesi için kuruluş içinde veya dışında farklı gruplara izin vermeniz gerekebilir. Örneğin:<br><ul><li>Kaynak sahiplerinin, kaynaklarıyla ilgili verilere erişimi</li><li>Bölgesel veya yan kuruluşların, kuruluşun bölümleriyle ilgili verilere erişimi</li></ul> | [Kaynak Azure RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/controlling-access-to-azure-sentinel-data-resource-rbac/ba-p/1301463) veya [tablo düzeyinde Azure RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) kullanma |
 | Ayrıntılı saklama ayarları | Tarihsel olarak, farklı veri türleri için farklı saklama dönemleri belirlemenin tek yolu birden çok çalışma alanı vardı. Bu, daha fazla durumda, tablo düzeyinde bekletme ayarlarının tanıtımı sayesinde artık gerekli değildir. | [Tablo düzeyinde bekletme ayarlarını](https://techcommunity.microsoft.com/t5/azure-sentinel/new-per-data-type-retention-is-now-available-for-azure-sentinel/ba-p/917316) kullan veya [veri silmeyi](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data) otomatik hale getir |
 | Bölünmüş faturalama | Çalışma alanlarını ayrı aboneliklere yerleştirerek farklı taraflara faturalandırılabilirler. | Kullanım raporlama ve çapraz ücretlendirme |
 | Eski mimari | Birden çok çalışma alanının kullanımı, daha önce doğru olmayan önemli sınırlamalara veya en iyi uygulamalara geçen bir geçmiş tasarımdan ayrılabilir. Ayrıca Azure Sentinel'e daha iyi uyum sağlamak üzere değiştirilebilecek rastgele bir tasarım seçimi de olabilir.<br><br>Örnekler arasında şunlar yer almaktadır:<br><ul><li>Azure Güvenlik Merkezi 'Ni dağıttığınızda, abonelik başına varsayılan çalışma alanını kullanma</li><li>Ayrıntılı erişim denetimi veya bekletme ayarları için gerekenler, görece yeni olan çözümler</li></ul> | Çalışma alanlarının mimarisini yenileme |
@@ -94,18 +94,18 @@ Bir işlev, yaygın olarak kullanılan bir UNION 'yi de basitleştirir. Örneği
 
 Sonra, ile başlayarak her iki çalışma alanı arasında bir sorgu yazabilirsiniz `unionSecurityEvent | where ...` .
 
-#### <a name="scheduled-alerts"></a>Zamanlanan uyarılar
+#### <a name="cross-workspace-analytics-rules"></a>Çapraz çalışma alanı analiz kuralları<a name="scheduled-alerts"></a>
+<!-- Bookmark added for backward compatibility with old heading -->
+Çoklu çalışma alanları, artık aşağıdaki sınırlamalara tabi olarak zamanlanmış analiz kurallarına dahil edilebilir:
 
-Çapraz çalışma alanı sorguları artık analiz kurallarında zamanlanan uyarılara dahil edilebilir ve aşağıdaki sınırlamalara tabidir:
-
-- 10 ' a kadar çalışma alanı tek bir sorguya dahil edilebilir.
+- En fazla 15 çalışma alanı tek bir sorguya dahil edilebilir.
 - Sorguda başvurulan her çalışma alanına Azure Sentinel 'in dağıtılması gerekir.
 
 > [!NOTE] 
 > Aynı sorgudaki birden çok çalışma alanını sorgulamak performansı etkileyebilir ve bu nedenle yalnızca mantık bu işlevi gerektirdiğinde önerilir.
 
-### <a name="using-cross-workspace-workbooks"></a>Çalışma alanları arası çalışma kitaplarını kullanma
-
+#### <a name="cross-workspace-workbooks"></a>Çalışma alanları arası çalışma kitapları<a name="using-cross-workspace-workbooks"></a>
+<!-- Bookmark added for backward compatibility with old heading -->
 [Çalışma kitapları](./overview.md#workbooks) , Azure Sentinel 'e panolar ve uygulamalar sağlar. Birden çok çalışma alanıyla çalışırken, çalışma alanları arasında izleme ve eylemler sağlar.
 
 Çalışma kitapları, her biri farklı düzeylerde Son Kullanıcı uzmanlığına sahip olan üç yöntemden birine yönelik çoklu çalışma alanları sorguları sağlayabilir:
@@ -117,7 +117,7 @@ Sonra, ile başlayarak her iki çalışma alanı arasında bir sorgu yazabilirsi
 | Çalışma kitabını etkileşimli olarak düzenleme | Var olan bir çalışma kitabını değiştiren gelişmiş bir Kullanıcı, içindeki sorguları düzenleyerek, düzenleyicideki çalışma alanı seçicisini kullanarak hedef çalışma alanlarını seçebilirsiniz. | Bu seçenek, bir Power User 'ın, mevcut çalışma kitaplarını birden çok çalışma alanıyla çalışacak şekilde kolayca değiştirmesini sağlar. |
 |
 
-### <a name="cross-workspace-hunting"></a>Çoklu çalışma alanları arası arama
+#### <a name="cross-workspace-hunting"></a>Çoklu çalışma alanları arası arama
 
 Azure Sentinel, başlamanızı sağlamak için tasarlanan önceden yüklenmiş sorgu örnekleri sağlar ve tabloları ve sorgu dilini öğrenirsiniz. Bu yerleşik arama sorguları, Microsoft güvenlik araştırmacıları tarafından sürekli olarak geliştirilmiştir, her ikisi de yeni bir sorgu ekler ve mevcut sorguları ince ayar yaparak yeni algılamaları aramak ve güvenlik araçlarınız tarafından algılanmamış yetkisiz giriş işaretlerini belirlemek için bir giriş noktası sağlar.  
 

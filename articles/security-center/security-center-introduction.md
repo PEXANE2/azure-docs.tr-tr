@@ -12,18 +12,16 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: b52fbd820c4b4603481f585ea0b0983720cabb22
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: 3ed290cc35195dfb02db9fbb72f092f6f4688291
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709103"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757314"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Güvenlik Merkezi nedir?
-
-[!INCLUDE [Solorigate banner](../../includes/security-center-solorigate.md)]
 
 Azure Güvenlik Merkezi, veri merkezlerinizin güvenlik duruşunu güçlendirir ve Azure 'da olup olmadıkları ve şirket içi iş yükleriniz arasında gelişmiş tehdit koruması sağlayan Birleşik bir altyapı güvenliği yönetim sistemidir.
 
@@ -74,7 +72,7 @@ Güvenlik Merkezi, **Gölge BT aboneliklerini belirlemenize** yardımcı olur. P
 
 ### <a name="continuous-assessments"></a>Sürekli değerlendirmeler
 
-Güvenlik Merkezi, iş yükleriniz genelinde dağıtılan yeni kaynakları sürekli olarak bulur ve bunların en iyi güvenlik uygulamalarına göre yapılandırılıp yapılandırılmadığını değerlendirir, bunlar işaretlenir ve makinelerinizi korumak için neleri çözmeniz gerektiği hakkında önerilerin öncelikli bir listesini alırsınız.
+Güvenlik Merkezi, iş yükleriniz genelinde dağıtılan yeni kaynakları sürekli olarak bulur ve bunların en iyi güvenlik uygulamalarına göre yapılandırılıp yapılandırılmadığını değerlendirir, bunlar işaretlenir ve makinelerinizi korumak için neleri çözmeniz gerektiği hakkında önerilerin öncelikli bir listesini alırsınız. Bu öneriler listesi, genel uyumluluk çerçevelerine dayalı olarak güvenlik ve uyum en iyi uygulamaları için Microsoft tarafından yazılan ve Azure 'a özgü bir dizi kılavuz olan [Azure Güvenlik kıyaslaması](../security/benchmarks/introduction.md)tarafından etkinleştirilir ve desteklenir. Bu, yaygın olarak kullanılan kıyaslama, [Internet güvenliği (CIS) Için merkezden](https://www.cisecurity.org/benchmark/azure/) ve [ulusal standartlar ve teknolojı Enstitüsü (NIST)](https://www.nist.gov/) ile bulut merkezli güvenliğe odaklanarak yapılar oluşturur.
 
 Güvenlik Merkezi, her bir önerinin genel güvenlik durinize ne kadar önemli olduğunu anlamanıza yardımcı olmak için önerileri güvenlik denetimlerine gruplandırır ve her denetime **güvenli bir puan** değeri ekler. Bu, **güvenlik çalışmalarınızı önceliklendirmenize olanak tanımak** için önemlidir.
 

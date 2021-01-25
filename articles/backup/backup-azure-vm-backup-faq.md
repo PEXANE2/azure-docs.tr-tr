@@ -3,12 +3,12 @@ title: SSS-Azure sanal makinelerini yedekleme
 description: Bu makalede, Azure VM 'Leri Azure Backup hizmetiyle yedekleme hakkında sık sorulan soruların yanıtlarını bulun.
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: ba2779305302e91f68cb2664c90f53fdf9a9ca55
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: edc48aaf0a05867de81bd7d5f64f8be4e54ddb8a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008359"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757517"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Sık sorulan sorular-Azure VM 'lerini yedekleme
 
@@ -113,6 +113,10 @@ Azure Backup artık, Azure sanal makine yedekleme çözümünü kullanarak Seçm
 ### <a name="are-managed-identities-preserved-if-a-tenant-change-occurs-during-backup"></a>Yönetilen kimlikler, yedekleme sırasında bir kiracı değişikliği gerçekleşirse saklanır mi?
 
 [Kiracı değişikliği](/azure/devops/organizations/accounts/change-azure-ad-connection) gerçekleşirse, yedeklemelerin yeniden çalışması için [yönetilen kimlikleri](../active-directory/managed-identities-azure-resources/overview.md) devre dışı bırakıp yeniden etkinleştirmeniz gerekir.
+
+### <a name="does-azure-backup-support-backing-up-nfs-files-mounted-from-storage"></a>Azure Backup, depolamadan bağlanmış NFS dosyalarını yedeklemeyi destekliyor mu?
+
+Azure Backup, depolama alanından veya diğer herhangi bir NFS sunucusundan Linux veya Windows makinelerine bağlı NFS dosyalarını yedeklemeyi desteklemez. Yalnızca VM 'ye yerel olarak bağlı olan diskleri yedekler.
 
 ## <a name="restore"></a>Geri Yükleme
 

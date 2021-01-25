@@ -5,14 +5,14 @@ services: data-factory
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 11/17/2020
+ms.date: 01/25/2021
 ms.author: lle
-ms.openlocfilehash: ccebdbf428180f8ff4ab10dc6007c3ec35a66362
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: e81a12f4c5d817670fe1f7968184bcc97e78a53c
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503599"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757687"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı sorunlarını giderme
 
@@ -67,31 +67,6 @@ IR makinesi kopan yüksek bellek kullanımı yaşıyorsa yeni bir etkinlik OOM h
 #### <a name="resolution"></a>Çözüm
 
 IR düğümünde kaynak kullanımını ve eşzamanlı etkinlik yürütmesini denetleyin. Tek bir IR düğümünde aynı anda çok fazla yürütmeyi önlemek için etkinlik çalıştırmalarının dahili ve tetikleme süresini ayarlayın.
-
-
-### <a name="ssltls-certificate-issue"></a>SSL/TLS sertifika sorunu
-
-#### <a name="symptoms"></a>Belirtiler
-
-Sertifikayı seçerek bir Güvenli Yuva Katmanı (SSL)/Aktarım Katmanı Güvenliği (TLS) sertifikası (Gelişmiş) etkinleştirmeyi denediğinizde (intranetten **Şirket içinde barındırılan IR Configuration Manager**  >  **Uzaktan erişim**' i seçtikten sonra) aşağıdaki hatayı alırsınız:
-
-"Uzaktan erişim ayarları geçersiz. Kimlik denetimi giden ileti için başarısız oldu. Uzak uç noktanın beklenen DNS kimliği ' abc.microsoft.com ', ancak uzak uç nokta ' microsoft.com ' DNS talebini sağladı. Bu yasal bir uzak uç nokta ise, kanal proxy 'si oluştururken ' microsoft.com ' DNS kimliğini EndpointAddress Identity özelliği olarak açıkça belirterek sorunu çözebilirsiniz. "
-
-Yukarıdaki örnekte, seçilen sertifikaya "microsoft.com" eklenmiş.
-
-#### <a name="cause"></a>Nedeni
-
-Bu, Windows Communication Foundation (WCF) ' de bilinen bir sorundur. WCF SSL/TLS doğrulaması yalnızca **konu alternatif adı** (San) alanındaki son DnsName 'yi denetler. 
-
-#### <a name="resolution"></a>Çözüm
-
-Bir joker sertifika Azure Data Factory v2 şirket içinde barındırılan IR 'de desteklenir. Bu sorun normalde SSL sertifikası yanlış olduğu için oluşur. SAN 'daki son DNSName geçerli olmalıdır. 
-
-DNSName 'yi doğrulamak ve düzeltmek için şunları yapın: 
-
-1. Yönetim Konsolu 'Nu açın.
-1. **Sertifika ayrıntıları**' nın altında, hem **Konu** hem **konu alternatif adı** kutularında değeri çift işaretleyin. Örneğin, "DNS Name = microsoft.com.com" geçerli bir ad değil.
-1. Yanlış DNSName 'nin kaldırılmasını sağlamak için şirkete sertifika veren sertifikaya başvurun.
 
 ### <a name="concurrent-jobs-limit-issue"></a>Eşzamanlı işleri sınırlama sorunu
 
@@ -465,7 +440,7 @@ Sertifika, henüz desteklenmeyen anahtar depolama sağlayıcısı (KSP) depolama
 
 Bu durumda CSP sertifikalarını kullanmanızı öneririz.
 
-**1\. Çözüm** 
+**Çözüm 1** 
 
 Sertifikayı içeri aktarmak için aşağıdaki komutu çalıştırın:
 
@@ -473,7 +448,7 @@ Sertifikayı içeri aktarmak için aşağıdaki komutu çalıştırın:
 
 ![Sertifikayı içeri aktarmaya yönelik certutil komutunun ekran görüntüsü.](media/self-hosted-integration-runtime-troubleshoot-guide/use-certutil.png)
 
-**2\. Çözüm** 
+**Çözüm 2** 
 
 Sertifikayı dönüştürmek için aşağıdaki komutları çalıştırın:
 

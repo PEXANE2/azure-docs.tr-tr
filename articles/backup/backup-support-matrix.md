@@ -4,12 +4,12 @@ description: Azure Backup hizmeti için destek ayarlarının ve sınırlamaları
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: be0c576da6e38233423a79f562f767de806d7640
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 833837c317d22bf031aee4608ff4c93775736a34
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008376"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757449"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup için destek matrisi
 
@@ -56,7 +56,7 @@ Aşağıdaki tabloda, kurtarma hizmetleri kasalarının özellikleri açıklanma
 
 ### <a name="azure-vm-limits"></a>Azure VM sınırları
 
-**Sınır** | **Ayrıntılar**
+**Sınırlı** | **Ayrıntılar**
 --- | ---
 **Azure VM veri diskleri** | Bkz. [Azure VM yedeklemesi için destek matrisi](./backup-support-matrix-iaas.md#vm-storage-support).
 **Azure VM veri diski boyutu** | Tek bir disk boyutu 32 TB 'a kadar ve bir VM 'deki tüm diskler için en fazla 256 TB olabilir.
@@ -150,10 +150,10 @@ Azure Backup, veri kullanılabilirliğini ve dayanıklılık özelliğini güçl
 
 | Yedekleme yönetimi türü | Desteklenir                                                    | Desteklenen bölgeler |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | Evet.   4 TB 'den az diski olan şifrelenmiş VM 'ler ve VM 'Ler için desteklenir | Tüm Azure ortak bölgeleri.  |
+| Azure VM               | Hem yönetilen hem de yönetilmeyen diskler içeren Azure VM 'Leri için desteklenir. Klasik VM 'Ler için desteklenmez. | Tüm Azure ortak bölgeleri.  |
 | SQL/SAP HANA | Yes                                                          | Fransa hariç tüm ortak bölgeler |
-| MARS Aracısı/şirket içi  | No                                                           | Yok               |
-| AFS (Azure dosya paylaşımları)                 | No                                                           | Yok               |
+| MARS Aracısı/şirket içi  | Hayır                                                           | Yok               |
+| AFS (Azure dosya paylaşımları)                 | Hayır                                                           | Yok               |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

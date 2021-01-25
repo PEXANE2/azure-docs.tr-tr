@@ -1,30 +1,32 @@
 ---
-title: Azure Güvenlik Merkezi güvenlik önerilerini ve güvenli puanı bir kaynağı muaf tutma
-description: Bir kaynağı güvenlik önerilerinden ve güvenli puanın dışında bırakma hakkında bilgi edinin
+title: Bir kaynak, abonelik, yönetim grubu ve güvenli puanın Azure Güvenlik Merkezi önerisini muaf tutma
+description: Aboneliklerden veya yönetim gruplarından güvenlik önerilerini muaf tutmak ve bunların güvenli puanınızı etkilemelerini engellemek için kurallar oluşturmayı öğrenin
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 01/22/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: b7780a0ef70a89a88070d5883cc840319a67fa3d
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 4012c7417345678717800f4fdede95947e00b828
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122358"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756781"
 ---
-# <a name="exempt-a-resource-from-recommendations-and-secure-score"></a>Kaynağı önerilerden ve güvenlik puanından muaf tutma
+# <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>Güvenli puanınızdan kaynakları ve önerileri muaf tutma 
 
-Her güvenlik ekibinin temel önceliği, analistlerin kuruluşa bağlı görevlere ve olaylara odaklanabildiğinden emin olmanıza çalışıyor. Güvenlik Merkezi, en çok önceliklendirilmesini ve güvenli puanınızın kuruluşunuzun güvenlik kararlarının geçerli bir yansıması olmasını sağlamak için birçok özelliğe sahiptir. Kaynakları muaf tutmak bu tür bir özelliktir.
+Her güvenlik ekibinin temel önceliği, analistlerin kuruluşa bağlı görevlere ve olaylara odaklanabildiğinden emin olunması sağlamaktır. Güvenlik Merkezi, deneyimi özelleştirmek ve güvenli puanınızın kuruluşunuzun güvenlik önceliklerini yansıttığından emin olmak için birçok özelliğe sahiptir. **Muaf** seçeneği bu tür bir özelliktir.
 
-Azure Güvenlik Merkezi 'nde bir güvenlik önerisi araştırdığınızda, gözden geçirenlerin ilk bilgi parçalarından biri etkilenen kaynakların listesidir.
+Azure Güvenlik Merkezi 'nde güvenlik önerilerinizi araştırdığınızda, gözden geçirenlerin ilk bilgi parçalarından biri etkilenen kaynakların listesidir.
 
-Bazen, dahil edilmemeniz gerektiğini belirten bir kaynak listelenecektir. Güvenlik Merkezi tarafından izlenmeyen bir işlem tarafından düzeltilebilir olabilir. Ya da kuruluşunuz söz konusu kaynak için riski kabul etmeye karar verdi. 
+Bazen, dahil edilmemeniz gerektiğini belirten bir kaynak listelenecektir. Ya da bir öneri, ait olmadığı yerde bir kapsamda gösterilecektir. Kaynak, Güvenlik Merkezi tarafından izlenmeyen bir işlem tarafından düzeltildi olabilir. Öneri, belirli bir abonelik için uygun olmayabilir. Ya da kuruluşunuz yalnızca belirli kaynakla veya öneriyle ilgili riskleri kabul etmeye karar verdi.
 
-Böyle durumlarda, bir istisna kuralı oluşturabilir ve kaynağın gelecekte sağlıksız kaynaklarla listelenmemesini sağlayabilir ve güvenli puanınızı etkilemez. 
+Bu gibi durumlarda öneri için bir istisna oluşturabilirsiniz:
 
-Kaynak geçerli değil olarak listelenecektir ve bu nedenle seçtiğiniz gerekçe içeren "muaf tutulan" olarak gösterilir.
+- İleride sağlıksız kaynaklarla listelenmediğinden emin olmak için **bir kaynağı muaf tut** ve güvenli puanınızı etkilemez. Kaynak geçerli değil olarak listelenecektir ve bu nedenle seçtiğiniz belirli bir gerekçe ile "muaf tutulan" olarak gösterilir.
+
+- Önerinin güvenli puanınızı etkilememesini sağlamak için **bir aboneliği veya yönetim grubunu muaf tut** ve gelecekte abonelik veya yönetim grubu için gösterilmeyecektir. Bu, mevcut kaynaklarla ve gelecekte oluşturduğunuz herhangi bir kaynak ile ilgilidir. Öneri, seçtiğiniz kapsam için seçtiğiniz belirli bir gerekçe ile işaretlenir.
 
 ## <a name="availability"></a>Kullanılabilirlik
 
@@ -33,32 +35,58 @@ Kaynak geçerli değil olarak listelenecektir ve bu nedenle seçtiğiniz gerekç
 |Yayın durumu:|Önizleme<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Fiyat|Bu, Azure Defender müşterileri için ek ücret ödemeden sunulan bir Premium Azure ilke özelliğidir. Diğer kullanıcılar için ücretler gelecekte uygulanabilir.|
 |Gerekli roller ve izinler:|Muafiyet oluşturmak için **abonelik sahibi** veya **ilke katılımcısı**<br>Bir kural oluşturmak için Azure Ilkesinde ilkeleri düzenleme izinlerinizin olması gerekir.<br>Azure [Ilkesinde Azure RBAC izinleri](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy)hakkında daha fazla bilgi edinin.|
-|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
+## <a name="define-an-exemption"></a>İstisna tanımlama
 
-## <a name="create-an-exemption-rule"></a>Muafiyet kuralı oluşturma
+Güvenlik Merkezi 'nin abonelikleriniz, yönetim grubunuz veya kaynaklarınız için yaptığı güvenlik önerilerini hassas bir şekilde ayarlamak için, aşağıdakileri yapmak için bir muafiyet kuralı oluşturabilirsiniz:
 
-1. Sağlıksız kaynaklar listesinde, muaf tutmak istediğiniz kaynak için üç nokta menüsünü ("...") seçin.
+- Belirli bir **öneriyi** veya "azaltıldığında" veya "risk kabul edildi" olarak işaretleyin. Bir abonelik, birden çok abonelik veya bir yönetim grubu için öneri muafiyetleri oluşturabilirsiniz.
+- Belirli bir öneri için **bir veya daha fazla kaynağı** "azaltıldığında" veya "risk kabul edildi" olarak işaretleyin.
 
-    :::image type="content" source="./media/exempt-resource/create-exemption.png" alt-text="Bağlam menüsünden muafiyet seçeneği oluştur":::
+> [!TIP]
+> Ayrıca API kullanarak dışarıda bırakma oluşturabilirsiniz. Bir JSON örneği ve ilgili yapıların açıklaması için bkz. [Azure ilke muafiyet yapısı](../governance/policy/concepts/exemption-structure.md).
 
-    Muafiyet oluştur bölmesi açılır.
+Muafiyet kuralı oluşturmak için:
 
-    :::image type="content" source="./media/exempt-resource/exemption-rule-options.png" alt-text="Muafiyet bölmesi oluştur":::
+1. Belirli bir öneri için öneriler ayrıntıları sayfasını açın.
 
-1. Ölçütlerinizi girin ve bu kaynağın neden dışlandığı için bir ölçüt seçin:
-    - **Azaltıldığında** , bu sorun, önerilenden farklı bir araç veya işlem tarafından işlendiği için kaynakla ilgili değildir
-    - **Feragat aldığınız** -bu kaynak için risk kabul ediliyor
-1. **Kaydet**’i seçin.
-1. Bir süre sonra (24 saate kadar sürebilir):
-    - Kaynak, güvenli puanınızı etkilemez.
-    - Kaynak, öneri Ayrıntıları sayfasının **geçerli değil** sekmesinde listelenir
-    - Öneri Ayrıntıları sayfasının en üstündeki bilgi şeridi, muaf tutulan kaynakların sayısını listeler:
+1. Sayfanın üst kısmındaki araç çubuğundan **muaf tut**' u seçin.
+
+    :::image type="content" source="media/exempt-resource/exempting-recommendation.png" alt-text="Bir aboneliğin veya yönetim grubunun dışında tutulan bir öneri için muafiyet kuralı oluşturun.":::
+
+1. **Dışlama** bölmesinde:
+    1. Bu muafiyet kuralının kapsamını seçin:
+        - Bir yönetim grubu seçerseniz, öneri bu grup içindeki tüm aboneliklerden muaf tutulur
+        - Bu kuralı bir veya daha fazla kaynağın öneriden muaf tutulması için oluşturuyorsanız, "Seçili kaynaklar" ı seçin ve listeden ilgili olanları seçin
+
+    1. Bu muafiyet kuralı için bir ad girin.
+    1. İsteğe bağlı olarak, bir sona erme tarihi ayarlayın.
+    1. Muafiyet kategorisini seçin:
+        - **3. taraf üzerinden çözüldü (** azaltılan): Güvenlik Merkezi 'nin tanımlanmayan üçüncü taraf bir hizmet kullanıyorsanız. 
+
+            > [!NOTE]
+            > Öneriyi azaltılan olarak muaf bulundurarak, güvenli puanınızın altına işaret vermemesini sağlayabilirsiniz. Ancak, uygun olmayan kaynaklar için noktaların *kaldırılmadığı* için sonuç puanınızın artması olur.
+
+        - **Risk kabul edildi (feragat aldığınız)** – bu öneriyi azaltıcı riski kabul etmeye karar verdiyseniz
+    1. İsteğe bağlı olarak bir açıklama girin.
+    1. **Oluştur**’u seçin.
+
+    :::image type="content" source="media/exempt-resource/defining-recommendation-exemption.png" alt-text="Aboneliğinizi veya yönetim grubunuzu bir öneriyi muaf tutmak için muafiyet kuralı oluşturma adımları":::
+
+    Muafiyet yürürlüğe girer (30 dakikaya kadar sürebilir):
+    - Öneri veya kaynaklar, güvenli puanınızı etkilemez.
+    - Belirli kaynakları muaf Tutuldıysanız, bunlar öneri Ayrıntıları sayfasının **geçerli değil** sekmesinde listelenecektir.
+    - Bir öneriyi muaf tutarak, güvenlik merkezi 'nin öneriler sayfasında varsayılan olarak gizlenir. Bunun nedeni, söz konusu sayfadaki **öneri durumu** filtresinin varsayılan seçeneklerinin, **uygulanamaz** önerilerin dışlanmasını sağlar. Bir güvenlik denetimindeki tüm önerileri muaf tutmak için de aynı değer geçerlidir.
+
+        :::image type="content" source="media/exempt-resource/recommendations-filters-hiding-not-applicable.png" alt-text="Azure Güvenlik Merkezi 'nin öneriler sayfasında varsayılan filtreler uygulanabilir değil önerilerini ve güvenlik denetimlerini gizleyin":::
+
+    - Öneri Ayrıntıları sayfasının en üstündeki bilgi şeridi, muaf tutulan kaynakların sayısını güncelleştirir:
         
         :::image type="content" source="./media/exempt-resource/info-banner.png" alt-text="Muaf tutulan kaynak sayısı":::
 
-1. Muaf tutulan kaynaklarınızı gözden geçirmek için, **geçerli değil** sekmesini açın.
+1. Muaf tutulan kaynaklarınızı gözden geçirmek için, **geçerli değil** sekmesini açın:
 
     :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="Muafiyeti değiştirme":::
 
@@ -66,15 +94,90 @@ Kaynak geçerli değil olarak listelenecektir ve bu nedenle seçtiğiniz gerekç
 
     Bir istisnayı değiştirmek veya silmek için (2) gösterildiği gibi üç nokta menüsünü ("...") seçin.
 
+1. Aboneliğinizdeki tüm muafiyet kurallarını gözden geçirmek için, bilgi şeridinde **muafiyetleri görüntüle** ' yi seçin:
 
-## <a name="review-all-of-the-exemption-rules-on-your-subscription"></a>Aboneliğinizdeki tüm muafiyet kurallarını gözden geçirin
+    > [!IMPORTANT]
+    > Bir öneriyle ilgili belirli muafiyetleri görmek için listeyi ilgili kapsama ve öneri adına göre filtreleyin.
 
-İstisna kuralları, ilke atamasında kaynak için bir istisna oluşturmak üzere Azure ilkesi 'ni kullanır.
+    :::image type="content" source="./media/exempt-resource/policy-page-exemption.png" alt-text="Azure Ilkesinin muafiyet sayfası":::
 
-**Muafiyet** sayfasında tüm muafiyetinizi Izlemek Için Azure ilkesi 'ni kullanabilirsiniz:
+    > [!TIP]
+    > Alternatif olarak, [Muafiyetli öneriler bulmak Için Azure Kaynak Grafiği](#find-recommendations-with-exemptions-using-azure-resource-graph)' ni kullanın.
 
-:::image type="content" source="./media/exempt-resource/policy-page-exemption.png" alt-text="Azure Ilkesinin muafiyet sayfası":::
+## <a name="monitor-exemptions-created-in-your-subscriptions"></a>Aboneliklerinizde oluşturulan, izleme muafiyetleri
 
+Bu sayfada daha önce anlatıldığı gibi istisna kuralları, aboneliklerinizde ve yönetim gruplarındaki kaynakları etkileyen öneriler üzerinde ayrıntılı denetim sağlayan güçlü bir araçtır. 
+
+Kullanıcılarınızın bu yeteneği nasıl kullandığını izlemek için, bir istisna oluşturulduğunda size bildirimde bulunan bir Logic App PlayBook 'u ve gerekli tüm API bağlantılarını dağıtan bir Azure Resource Manager (ARM) şablonu oluşturduk.
+
+- PlayBook hakkında daha fazla bilgi edinmek için bkz. [Tech Community bloglarında](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-keep-track-of-resource-exemptions-in-azure-security/ba-p/1770580) bu gönderi
+- ARM şablonunu [Azure Güvenlik Merkezi GitHub deposunda](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation/Notify-ResourceExemption) bulacaksınız
+- Gerekli tüm bileşenleri dağıtmak için [buraya](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Security-Center%2Fmaster%2FWorkflow%2520automation%2FNotify-ResourceExemption%2Fazuredeploy.json) tıklayabilirsiniz 
+
+
+## <a name="find-recommendations-with-exemptions-using-azure-resource-graph"></a>Azure Kaynak Grafını kullanarak muafiyetle öneriler bulma
+
+Azure Kaynak Grafiği (ARG), güçlü filtreleme, gruplama ve sıralama özelliklerine sahip bulut ortamlarınızdaki kaynak bilgilerine anında erişim sağlar. Azure aboneliklerindeki bilgileri programlı olarak veya Azure portal içinden sorgulamak için hızlı ve verimli bir yoldur.
+
+Muafiyet kuralları olan tüm önerileri görüntülemek için:
+
+1. **Azure Kaynak Grafiği Gezginini** açın.
+
+    :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="Azure Kaynak Grafiği Gezgini * * öneri sayfası başlatılıyor" :::
+
+1. Aşağıdaki sorguyu girin ve **Sorguyu Çalıştır**' ı seçin.
+
+    ```kusto
+    securityresources
+    | where type == "microsoft.security/assessments"
+    // Get recommendations in useful format
+    | project
+    ['TenantID'] = tenantId,
+    ['SubscriptionID'] = subscriptionId,
+    ['AssessmentID'] = name,
+    ['DisplayName'] = properties.displayName,
+    ['ResourceType'] = tolower(split(properties.resourceDetails.Id,"/").[7]),
+    ['ResourceName'] = tolower(split(properties.resourceDetails.Id,"/").[8]),
+    ['ResourceGroup'] = resourceGroup,
+    ['ContainsNestedRecom'] = tostring(properties.additionalData.subAssessmentsLink),
+    ['StatusCode'] = properties.status.code,
+    ['StatusDescription'] = properties.status.description,
+    ['PolicyDefID'] = properties.metadata.policyDefinitionId,
+    ['Description'] = properties.metadata.description,
+    ['RecomType'] = properties.metadata.assessmentType,
+    ['Remediation'] = properties.metadata.remediationDescription,
+    ['Severity'] = properties.metadata.severity,
+    ['Link'] = properties.links.azurePortal
+    | where StatusDescription contains "Exempt"    
+    ```
+
+
+Aşağıdaki sayfalarda daha fazla bilgi edinin:
+- [Azure Kaynak Grafiği hakkında daha fazla bilgi edinin](../governance/resource-graph/index.yml).
+- [Azure Kaynak Grafı Gezgini ile sorgu oluşturma](../governance/resource-graph/first-query-portal.md)
+- [Kusto Sorgu Dili (KQL)](/azure/data-explorer/kusto/query/)
+
+
+
+
+
+## <a name="exemption-rule-faq"></a>Muafiyet kuralı SSS
+
+### <a name="what-happens-when-one-recommendation-is-in-multiple-policy-initiatives"></a>Bir öneri birden çok ilke girişimleriyle olduğunda ne olur?
+
+Bazen, bir güvenlik önerisi birden fazla ilke girişimi içinde görünür. Aynı öneriyi aynı aboneliğe atanmış birden fazla örneğe sahipseniz ve öneri için bir istisna oluşturursanız, düzenleme izniniz olan tüm girişimleri etkiler. 
+
+Örneğin, * * * * önerisi, Azure Güvenlik Merkezi tarafından tüm Azure aboneliklerine atanan varsayılan ilke girişiminin bir parçasıdır. Ayrıca, XXXXX ' de de olur.
+
+Bu öneri için bir istisna oluşturmaya çalışırsanız aşağıdaki iki iletiden birini görürsünüz:
+
+- Her iki girişimi de düzenlemek için gerekli izinlere sahipseniz şunları görürsünüz:
+
+    *Bu öneri çeşitli ilke girişimleriyle birlikte bulunur: [virgülle ayrılmış girişim adları]. Muafiyetler Bunların tümünde oluşturulur.*  
+
+- Her iki girişim üzerinde yeterli izniniz yoksa, bunun yerine şu iletiyi görürsünüz:
+
+    *Tüm ilke girişimlerinde muafiyeti uygulamak için sınırlı izinleriniz vardır. muafiyet yalnızca yeterli izinlere sahip girişimlerle oluşturulacaktır.*
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 12943d5d22a9e81c7e99522fa4728f4798549682
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 01a88be9c54a2701130daace26c44159ee364e4c
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499960"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757252"
 ---
 # <a name="configure-ip-firewall-rules-to-allow-indexer-connections-azure-cognitive-search"></a>Dizin Oluşturucu bağlantılarına izin vermek için IP güvenlik duvarı kurallarını yapılandırma (Azure Bilişsel Arama)
 
@@ -30,7 +30,7 @@ Arama hizmetinizin tam etki alanı adını (FQDN) alın. Bu, şöyle görünecek
 
    ![Hizmet FQDN 'SI al](media\search-indexer-howto-secure-access\search-service-portal.png "Hizmet FQDN 'SI al")
 
-Arama hizmetinin IP adresi, `nslookup` FQDN 'nin bir (veya a) gerçekleştirerek elde edilebilir `ping` . Aşağıdaki örnekte, Azure Storage güvenlik duvarında gelen bir kurala "10.50.10.50" ekleyeceksiniz.
+Arama hizmetinin IP adresi, `nslookup` FQDN 'nin bir (veya a) gerçekleştirerek elde edilebilir `ping` . Aşağıdaki örnekte, Azure Storage güvenlik duvarında gelen bir kurala "150.0.0.1" ekleyeceksiniz. Azure depolama hesabına erişebilmek için, arama hizmeti dizin oluşturucunun güvenlik duvarı ayarları güncelleştirildikten sonra 15 dakika kadar sürebilir.
 
 ```azurepowershell
 

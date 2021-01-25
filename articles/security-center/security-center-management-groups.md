@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2020
 ms.author: memildin
-ms.openlocfilehash: d03177e3224bbd3f53320871efc6a0d6b3ea479d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 5b257e45a86a7b22e9064fcfc6092b3c946ae99b
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922645"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757656"
 ---
 # <a name="organize-management-groups-subscriptions-and-tenant-wide-visibility"></a>Yönetim gruplarını, abonelikleri ve kiracı genelinde görünürlüğü düzenleme
 
@@ -36,7 +36,7 @@ Azure Yönetim grupları, abonelik gruplarında erişimi, ilkeleri ve raporlamay
 Her Azure AD kiracısına **kök yönetim grubu** adlı tek bir en üst düzey yönetim grubu verilir. Diğer tüm yönetim grupları ve abonelikler hiyerarşide en üstte yer alan bu kök yönetim grubunun altındadır. Bu grup, genel ilkelerin ve Azure rol atamalarının dizin düzeyinde uygulanmasını sağlar. 
 
 Kök yönetim grubu, aşağıdaki eylemlerden herhangi birini gerçekleştirdiğinizde otomatik olarak oluşturulur: 
-- Azure portal **Yönetim grupları** açın. [Azure portal](https://portal.azure.com)
+- Azure portal **Yönetim grupları** açın. [](https://portal.azure.com)
 - API çağrısıyla bir yönetim grubu oluşturun.
 - PowerShell ile bir yönetim grubu oluşturun. PowerShell yönergeleri için bkz. [kaynak ve kuruluş yönetimi için yönetim grupları oluşturma](../governance/management-groups/create-management-group-portal.md).
 
@@ -107,6 +107,36 @@ Kendi kiracı düzeyi izinlerini atamak için:
 
 1. Erişimi yükselttikten sonra Azure AD kiracınız kapsamındaki tüm aboneliklerde görünürlük olduğunu doğrulamak için Azure Güvenlik Merkezi 'ni açın veya yenileyin. 
 
+
+## <a name="request-tenant-wide-permissions-when-yours-are-insufficient"></a>Sizinki yetersizse kiracı genelinde izinler isteyin
+
+Güvenlik Merkezi 'Nde oturum açarsanız ve görünümlerinizin sınırlı olduğunu söyleyen bir başlık görürseniz, kuruluşunuzun genel yöneticisine bir istek göndermek için öğesine tıklayabilirsiniz. İstekte, atanmasını istediğiniz rolü dahil edebilir ve genel yönetici hangi rolün verilmesi gerektiğini bir karar verir. 
+
+Bu istekleri kabul etmek veya reddetmek için genel yönetici karardır. 
+
+> [!IMPORTANT]
+> Her yedi günde bir istek gönderebilirsiniz.
+
+Genel yöneticinizden yükseltilmiş izinler istemek için:
+
+1. Azure portal Azure Güvenlik Merkezi ' ni açın.
+
+1. "Sınırlı bilgileri görüyorsunuz" başlığını görürseniz. Bunu seçin.
+
+    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions.png" alt-text="Kullanıcıya kiracı genelinde izinler isteyebilecekleri bir başlık bildiren başlık.":::
+
+1. Ayrıntılı istek formunda, istenen rolü ve neden bu izinlere ihtiyacınız olduğunu doğrulama ' yı seçin.
+
+    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions-details.png" alt-text="Azure genel yöneticinizden kiracı genelinde izin istemek için Ayrıntılar sayfası":::
+
+1. **Erişim iste**' yi seçin.
+
+    Genel yöneticiye bir e-posta gönderilir. E-posta, isteği onaylayabilecekleri veya reddedebilecekleri Güvenlik Merkezi 'ne bir bağlantı içerir.
+
+    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions-email.png" alt-text="Yeni izinler için genel yöneticiye e-posta gönder":::
+
+    Genel yönetici, **Isteği gözden geçir** ' i seçtikten sonra işlemi tamamladıktan sonra, karar istekte bulunan kullanıcıya e-posta ile gönderilir. 
+
 ## <a name="assign-azure-roles-to-other-users"></a>Diğer kullanıcılara Azure rolleri atama
 
 ### <a name="assign-azure-roles-to-users-through-the-azure-portal"></a>Azure portal aracılığıyla kullanıcılara Azure rolleri atama: 
@@ -149,6 +179,7 @@ Kendi kiracı düzeyi izinlerini atamak için:
     ```
 
 ## <a name="remove-elevated-access"></a>Yükseltilmiş erişimi kaldır 
+
 Kullanıcılara Azure rolleri atandıktan sonra, kiracı yöneticisinin kendisini Kullanıcı erişimi yönetici rolünden kaldırması gerekir.
 
 1. [Azure Portal](https://portal.azure.com) veya [Azure Active Directory Yönetim merkezinde](https://aad.portal.azure.com)oturum açın.

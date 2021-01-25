@@ -21,10 +21,10 @@
   expanded: true
 - name: Kavramlar
   items:
+    - name: Uzantıları
+      href: extensions.md
     - name: Kullanılabilir VM boyutları
       href: available-sizes.md
-    - name: Sık Sorulan Sorular
-      href: faq.md
     - name: Konuk işletim sistemi yamaları
       href: ../cloud-services/cloud-services-guestos-msrc-releases.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
     - name: Konuk işletim sistemini kullanımdan kaldırma
@@ -49,10 +49,10 @@
           href: schema-cscfg-role.md
         - name: NetworkConfiguration şeması
           href: schema-cscfg-networkconfiguration.md
+    - name: Sık Sorulan Sorular
+      href: faq.md
 - name: Nasıl yapılır
   items:
-    - name: Uzantılara genel bakış
-      href: extensions.md
     - name: Uzak Masaüstü uzantısını Uygula
       href: enable-rdp.md
     - name: WAD uzantısını Uygula
@@ -83,6 +83,8 @@
       href: 'https://docs.microsoft.com/azure/templates/microsoft.compute/cloudservices'
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/compute/cloudservices'
+    - name: SDK
+      href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Compute/43.0.0-preview'
 - name: Kaynaklar
   items:
     - name: Azure Yol Haritası

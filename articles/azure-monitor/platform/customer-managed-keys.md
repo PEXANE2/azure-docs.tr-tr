@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: f2807501b1e18d4cbffaa34d70bccf8d70565266
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: b6836eee7e0e6ccbfa2628e0e371152f31ddf9d2
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747232"
+ms.locfileid: "98757551"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure İzleyici müşteri tarafından yönetilen anahtar 
 
@@ -126,7 +126,7 @@ Bu ayarlar, CLı ve PowerShell aracılığıyla Key Vault güncelleştirilebilen
 ## <a name="create-cluster"></a>Küme oluşturma
 
 Kümeler iki [yönetilen kimlik türünü](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)destekler: sistem tarafından atanan ve Kullanıcı tarafından atanan, senaryonuza bağlı olarak bir kümede tek bir kimlik tanımlanabilir. 
-- Kimlik `type` "*Systemassigned*" olarak ayarlandığında, sistem tarafından atanan yönetilen kimlik daha basittir ve küme oluşturma ile otomatik olarak oluşturulur. Bu kimlik daha sonra Key Vault kümeye erişim sağlamak için kullanılabilir. 
+- Kimlik `type` "*Systemassigned*" olarak ayarlandığında, sistem tarafından atanan yönetilen kimlik daha basittir ve küme oluşturma ile otomatik olarak oluşturulur. Bu kimlik daha sonra, sarmalama ve sarmalama işlemleri için Key Vault depolama erişimi vermek üzere kullanılabilir. 
   
   Sistem tarafından atanan yönetilen kimlik için kümede kimlik ayarları
   ```json
@@ -137,7 +137,7 @@ Kümeler iki [yönetilen kimlik türünü](../../active-directory/managed-identi
   }
   ```
 
-- Küme oluştururken müşteri tarafından yönetilen anahtarı yapılandırmak istiyorsanız, önceden Key Vault için bir anahtar ve Kullanıcı tarafından atanan bir kimliğiniz olmalıdır ve sonra bu ayarlarla kümeyi oluşturmanız gerekir: kimlik `type` kaynak kimliği ile "*userassigned*" olarak kimliği `UserAssignedIdentities` .
+- Küme oluştururken müşteri tarafından yönetilen anahtarı yapılandırmak istiyorsanız, önceden Key Vault için bir anahtar ve Kullanıcı tarafından atanan bir kimliğiniz olmalıdır ve sonra bu ayarlarla kümeyi oluşturmanız gerekir: kimlik, `type`  `UserAssignedIdentities` kimliğiniz *kaynak kimliğiyle* birlikte "userassigned" olarak atanır.
 
   Kullanıcı tarafından atanan yönetilen kimlik için kümede kimlik ayarları
   ```json
@@ -151,27 +151,7 @@ Kümeler iki [yönetilen kimlik türünü](../../active-directory/managed-identi
   ```
 
 > [!IMPORTANT]
-> Key Vault Private-Link (vNet) ise, Kullanıcı tarafından yönetilen anahtarı Kullanıcı tarafından atanan yönetilen kimlikle kullanamazsınız. Bu senaryoda, sistem tarafından atanan yönetilen kimliği kullanabilirsiniz.
-
-```json
-{
-  "identity": {
-    "type": "SystemAssigned"
-}
-```
- 
-Şununla:
-
-```json
-{
-  "identity": {
-  "type": "UserAssigned",
-    "userAssignedIdentities": {
-      "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft. ManagedIdentity/UserAssignedIdentities/<user-assigned-managed-identity-name>"
-      }
-}
-```
-
+> Key Vault Private-Link (vNet) ise, Kullanıcı tarafından atanan yönetilen kimliği kullanamazsınız. Bu senaryoda, sistem tarafından atanan yönetilen kimliği kullanabilirsiniz.
 
 [Adanmış kümeler](../log-query/logs-dedicated-clusters.md#creating-a-cluster)makalesinde gösterilen yordamı izleyin. 
 

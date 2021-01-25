@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: c2eddf75f99b751773220ae677d66fe8c09abb0e
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: f9029a36dc3b778e139b4553524e8e2ca6b4bbad
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744830"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757178"
 ---
 # <a name="extensions-for-cloud-services-extended-support"></a>Cloud Services uzantıları (genişletilmiş destek)
 
@@ -35,7 +35,7 @@ Temel izleme ile, rol örneklerinden alınan performans sayacı verileri, 3 daki
 
 Gelişmiş izleme sayesinde ek ölçümler, 5 dakika, 1 saat ve 12 saat aralıklarıyla örneklenir ve toplanır. Toplanan veriler bir depolama hesabında, tablolarda depolanır ve 10 gün sonra temizlenir. Kullanılan depolama hesabı role göre yapılandırılır; farklı roller için farklı depolama hesapları kullanabilirsiniz. 
 
-Windows Azure Tanılama uzantısı, [PowerShell](deploy-powershell.md) veya [ARM şablonu](deploy-template.md) aracılığıyla Cloud Services (genişletilmiş destek) için etkinleştirilebilir
+Daha fazla bilgi için bkz [. Cloud Services Windows Azure tanılama uzantısı 'Nı uygulama (genişletilmiş destek)](enable-wad.md)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar 
