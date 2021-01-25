@@ -12,12 +12,12 @@ ms.date: 11/25/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 61d07c1ba912a0e24b2f4e5fa67243b4525db367
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b35b39d7072b22d9cc3f7b4f4ef8886431b06f69
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81536191"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754667"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>V 1.0 belirteçlerini kabul eden bir Web API 'SI için kapsamlar
 
@@ -64,7 +64,7 @@ var result = await app.AcquireTokenInteractive(scopes).ExecuteAsync();
 Azure AD tarafından kullanılan mantık şunlardır:
 
 - Bir v 1.0 erişim belirtecine sahip ADAL (Azure AD v 1.0) uç noktası (tek olası), AUD = kaynağı için
-- MSAL (Microsoft Identity platform (v 2.0)) için, v 2.0 belirteçlerini kabul eden bir kaynak için erişim belirteci isteyen uç nokta `aud=resource.AppId`
+- V 2.0 belirteçlerini kabul eden bir kaynak için erişim belirteci isteyen MSAL (Microsoft Identity Platform) için `aud=resource.AppId`
 - MSAL (v 2.0 uç noktası) için, bir v 1.0 erişim belirtecini kabul eden bir kaynak için erişim belirteci isteyen (Yukarıdaki durum), Azure AD, son eğik çizgiden önce her şeyi alıp kaynak tanımlayıcısı olarak kullanarak istenen kitleyi istenen kapsamdan ayrıştırır. Bu nedenle, https: \/ /Database.Windows.net "https:/Database.Windows.net/" kitlesini beklediğinde \/ , "https: \/ /Database.Windows.net//.default" kapsamını istemeniz gerekir. Ayrıca bkz. GitHub sorunu [#747: kaynak URL 'sinin sondaki eğik çizgi, SQL kimlik doğrulama hatasına neden oldu](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
 
 ## <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>Bir v 1.0 uygulamasının tüm izinlerine erişim istemek için kapsamlar

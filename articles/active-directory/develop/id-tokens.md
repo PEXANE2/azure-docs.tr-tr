@@ -14,12 +14,12 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: eec24ca19af8c41a842b1db3db4b9e16f748f029
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 6a1f4a02ebf42c0f181b595aae0a5fa0bcc9b41d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653260"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755908"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity platform KIMLIĞI belirteçleri
 
@@ -89,7 +89,7 @@ Bu liste varsayılan olarak en çok id_tokens olan JWT taleplerini gösterir (ak
 |`groups:src1`|JSON nesnesi | Sınırlı olmayan Belirteç istekleri ( `hasgroups` yukarıya bakın), ancak belirteç için hala çok büyük olması için, kullanıcının tam gruplar listesine bir bağlantı dahil edilir. Cwts için, talep yerine yeni bir talep olarak SAML için dağıtılmış bir talep olarak `groups` . <br><br>**Örnek JWT değeri**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }`<br><br> Daha fazla bilgi için bkz. [Grup fazla kullanım talebi](#groups-overage-claim).|
 
 > [!NOTE]
-> V 1.0 ve v 2.0 id_token, yukarıdaki örneklerden görüldüğü gibi taşıyabilecekleri bilgi miktarındaki farklara sahiptir. Sürüm, istenen bitiş noktasına göre belirlenir. Mevcut uygulamalar muhtemelen Azure AD uç noktasını kullanırken, yeni uygulamalar v 2.0 "Microsoft Identity platform" uç noktasını kullanmalıdır.
+> V 1.0 ve v 2.0 id_token, yukarıdaki örneklerden görüldüğü gibi taşıyabilecekleri bilgi miktarındaki farklara sahiptir. Sürüm, istenen bitiş noktasına göre belirlenir. Mevcut uygulamalar büyük olasılıkla Azure AD uç noktasını kullanıyor olsa da yeni uygulamalar "Microsoft Identity platform" öğesini kullanmalıdır.
 >
 > - v 1.0: Azure AD uç noktaları: `https://login.microsoftonline.com/common/oauth2/authorize`
 > - v 2.0: Microsoft Identity platform uç noktaları: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize`

@@ -12,19 +12,19 @@ ms.workload: identity
 ms.date: 09/22/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: ca22d4f1ff48222b33030eb44d7feb62b1d154cd
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 7d38ee1782987afce703fbd8b4203186bbcbb505
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011893"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754476"
 ---
 # <a name="quickstart-protect-an-aspnet-core-web-api-with-microsoft-identity-platform"></a>Hızlı başlangıç: ASP.NET Core Web API 'sini Microsoft Identity platformu ile koruma
 
 Bu hızlı başlangıçta, bir ASP.NET Core Web API kodu örneği indirir ve bu kodu, kaynaklara erişimi yalnızca yetkili hesaplara kısıtlayan kod gözden geçirdiniz. Örnek, tüm Azure Active Directory (Azure AD) kuruluşunda kişisel Microsoft hesaplarının ve hesaplarının yetkilendirmesini destekler.
 
 > [!div renderon="docs"]
-> ## <a name="prerequisites"></a>Önkoşullar
+> ## <a name="prerequisites"></a>Ön koşullar
 >
 > - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 > - [Azure Active Directory kiracı](quickstart-create-new-tenant.md)
@@ -96,7 +96,7 @@ Web API 'SI bir istemci uygulamasından bir belirteç alır ve Web API 'sindeki 
 
 `AddAuthentication()`Yöntemi, hizmeti Jwttaşıyıcı tabanlı kimlik doğrulaması ekleyecek şekilde yapılandırır.
 
-İçeren çizgi, `.AddMicrosoftIdentityWebApi` Web API 'Nize Microsoft Identity platform yetkilendirmesi ekler. Daha sonra, `AzureAD` yapılandırma dosyası *appsettings.js* bölümündeki bilgileri temel alarak Microsoft Identity platform uç noktası tarafından verilen erişim belirteçlerini doğrulamak üzere yapılandırılmıştır:
+İçeren satır, `.AddMicrosoftIdentityWebApi` Web API 'Nize Microsoft Identity platform yetkilendirmesi ekler. Daha sonra, `AzureAD` yapılandırma dosyası *appsettings.js* bölümündeki bilgileri temel alarak Microsoft Identity platformu tarafından verilen erişim belirteçlerini doğrulamak üzere yapılandırılmıştır:
 
 | *appsettings.js* anahtarda | Açıklama                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|

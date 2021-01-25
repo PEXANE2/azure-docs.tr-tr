@@ -1,6 +1,6 @@
 ---
 title: Microsoft Identity platform kimlik doğrulama kitaplıkları
-description: Microsoft Identity platform uç noktası için ilgili kitaplık, kaynak ve örnek bağlantılarla birlikte uyumlu istemci kitaplıkları ve sunucu ara yazılım kitaplıkları.
+description: Microsoft Identity platformu için ilgili kitaplık, kaynak ve örnek bağlantılarla birlikte uyumlu istemci kitaplıkları ve sunucu ara yazılım kitaplıkları.
 services: active-directory
 author: negoe
 manager: CelesteDG
@@ -12,16 +12,16 @@ ms.date: 07/25/2019
 ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: a7792e989444c87ba80088f8a850cacb4aa0dc3c
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 51b60d7b81d7402f69415b79cd575f51915dc38f
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064581"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756662"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Microsoft Identity platform kimlik doğrulama kitaplıkları
 
-[Microsoft Identity platform uç noktası](../azuread-dev/azure-ad-endpoint-comparison.md) , sektör standardı OAuth 2,0 ve OpenID Connect 1,0 protokollerini destekler. Microsoft kimlik doğrulama kitaplığı (MSAL), Microsoft Identity platform uç noktasıyla çalışacak şekilde tasarlanmıştır. OAuth 2,0 ve OpenID Connect 1,0 ' i destekleyen açık kaynaklı kitaplıkları da kullanabilirsiniz.
+[Microsoft Identity platformu](../azuread-dev/azure-ad-endpoint-comparison.md) , sektör standardı OAuth 2,0 ve OpenID Connect 1,0 protokollerini destekler. Microsoft kimlik doğrulama kitaplığı (MSAL), Microsoft Identity platformu ile çalışacak şekilde tasarlanmıştır. OAuth 2,0 ve OpenID Connect 1,0 ' i destekleyen açık kaynaklı kitaplıkları da kullanabilirsiniz.
 
 Güvenlik geliştirme yaşam döngüsü (SDL) metodolojisini izleyen protokol etki alanı uzmanları tarafından yazılmış kitaplıkları kullanmanızı öneririz. Bu tür yöntemler [, Microsoft 'un izlediği bir][Microsoft-SDL]yöntem içerir. Protokoller için kod kullandıysanız, Microsoft SDL gibi bir metodolojiyi izlemelisiniz. Her protokol için standartlar belirtimlerinde güvenlik açısından dikkat edilmesi gereken noktaları ödeyin.
 
@@ -30,7 +30,7 @@ Güvenlik geliştirme yaşam döngüsü (SDL) metodolojisini izleyen protokol et
 
 ## <a name="types-of-libraries"></a>Kitaplık türleri
 
-Microsoft Identity platform uç noktası iki tür kitaplık ile çalışmaktadır:
+Microsoft Identity platform iki tür kitaplık ile birlikte kullanılabilir:
 
 * **İstemci kitaplıkları**: yerel istemciler ve sunucular, Microsoft Graph gibi bir kaynağı çağırmak için erişim belirteçleri elde etmek üzere istemci kitaplıklarını kullanır.
 * **Sunucu ara yazılım kitaplıkları**: Web Apps, Kullanıcı oturum açma için sunucu ara yazılım kitaplıklarını kullanır. Web API 'Leri, yerel istemciler veya diğer sunucular tarafından gönderilen belirteçleri doğrulamak için sunucu ara yazılım kitaplıklarını kullanır.
@@ -40,15 +40,15 @@ Microsoft Identity platform uç noktası iki tür kitaplık ile çalışmaktadı
 Kitaplıklar iki destek kategorisinde gelir:
 
 * **Microsoft tarafından desteklenen**: Microsoft, bu kitaplıklara yönelik düzeltmeler sağlar ve bu kitaplıklarda, bu kitaplıklara yönelik olarak bir işlem yapılmakta.
-* **Uyumlu**: Microsoft bu kitaplıkları temel senaryolarda test etmiştir ve Microsoft Identity platform uç noktasıyla çalıştığını doğruladı. Microsoft bu kitaplıklara yönelik düzeltmeler sağlamaz ve bu kitaplıkların gözden geçirilmesini gerçekleştirmemiştir. Sorunlar ve özellik istekleri kitaplığın açık kaynaklı projesine yönlendirilmelidir.
+* **Uyumlu**: Microsoft bu kitaplıkları temel senaryolarda test etmiştir ve Microsoft Identity platformu ile çalıştığını doğruladı. Microsoft bu kitaplıklara yönelik düzeltmeler sağlamaz ve bu kitaplıkların gözden geçirilmesini gerçekleştirmemiştir. Sorunlar ve özellik istekleri kitaplığın açık kaynaklı projesine yönlendirilmelidir.
 
-Microsoft Identity platform uç noktasıyla çalışan kitaplıkların listesi için aşağıdaki bölümlere bakın.
+Microsoft Identity platformu ile çalışan kitaplıkların listesi için aşağıdaki bölümlere bakın.
 
 ## <a name="microsoft-supported-client-libraries"></a>Microsoft tarafından desteklenen istemci kitaplıkları
 
 Korumalı bir Web API 'SI çağırmak için bir belirteç almak üzere istemci kimlik doğrulama kitaplıklarını kullanın.
 
-| Platform | Kitaplık | İndirme | Kaynak kod | Örnek | Başvuru | Kavramsal belge | Yol Haritası |
+| Platform | Kitaplık | İndir | Kaynak kod | Örnek | Başvuru | Kavramsal belge | Yol Haritası |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | ![JavaScript](media/sample-v2-code/logo_js.png) | MSAL.js  | [NPM](https://www.npmjs.com/package/msal) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/README.md) |  [Tek sayfalı uygulama](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) | [Başvuru](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/) | [Kavramsal belgeler](msal-overview.md)| [Yol Haritası](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
 ![Angular](media/sample-v2-code/logo_angular.png) | MSAL angular | [NPM](https://www.npmjs.com/package/@azure/msal-angular) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | [Angular SPA](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) | [Başvuru](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-angular/) | [Kavramsal belgeler](msal-overview.md) | [Yol Haritası](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
@@ -63,7 +63,7 @@ Korumalı bir Web API 'SI çağırmak için bir belirteç almak üzere istemci k
 
 Web uygulamalarını ve Web API 'Lerini korumaya yardımcı olması için ara yazılım kitaplıklarını kullanın. ASP.NET veya ASP.NET Core yazılmış Web uygulamaları veya Web API 'Leri, ara yazılım kitaplıklarını kullanır.
 
-| Platform | Kitaplık | İndirme | Kaynak kodu | Örnek | Başvuru
+| Platform | Kitaplık | İndir | Kaynak kodu | Örnek | Başvuru
 | --- | --- | --- | --- | --- | --- |
 | ![.NET](media/sample-v2-code/logo_NET.png) ![.NET Core](media/sample-v2-code/logo_NETcore.png) | ASP.NET güvenliği |[NuGet](https://www.nuget.org/packages/Microsoft.AspNet.Mvc/) |[GitHub](https://github.com/aspnet/AspNetCore) |[MVC uygulaması](quickstart-v2-aspnet-webapp.md) |[ASP.NET API başvurusu](/dotnet/api/?view=aspnetcore-2.0&preserve-view=true) |
 | ![.NET](media/sample-v2-code/logo_NET.png)| .NET için IdentityModel uzantıları| |[GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | [MVC uygulaması](quickstart-v2-aspnet-webapp.md) |[Başvuru](/dotnet/api/overview/azure/activedirectory/client?view=azure-dotnet&preserve-view=true) |
@@ -98,16 +98,16 @@ Ayrıca bkz. [Desteklenen platformlar ve dillere göre senaryolar](authenticatio
 | ![Ruby](media/sample-v2-code/logo_ruby.png) |[OmniAuth](https://github.com/omniauth/omniauth/wiki) |omniauth: 1.3.1<br />omniauth-OAuth2:1.4.0 |[OmniAuth](https://github.com/omniauth/omniauth)<br />[OmniAuth OAuth2](https://github.com/intridea/omniauth-oauth2) |  |
 | iOS, macOS, & Android  | [Yerel uygulama kimlik doğrulamasını tepki verme](https://github.com/FormidableLabs/react-native-app-auth) | [Sürüm 4.2.0](https://github.com/FormidableLabs/react-native-app-auth/releases/tag/v4.2.0) | [Yerel uygulama kimlik doğrulamasını tepki verme](https://github.com/FormidableLabs/react-native-app-auth) | |
 
-Standartlarla uyumlu herhangi bir kitaplık için Microsoft Identity platform uç noktasını kullanabilirsiniz. Destek için Nereye gidebileceğinizi bilmemiz önemlidir:
+Standartlarla uyumlu herhangi bir kitaplık için Microsoft Identity platformunu kullanabilirsiniz. Destek için Nereye gidebileceğinizi bilmemiz önemlidir:
 
 * Kitaplık kodundaki sorunlar ve yeni özellik istekleri için kitaplık sahibine başvurun.
 * Hizmet tarafı protokol uygulamasındaki sorunlar ve yeni özellik istekleri için Microsoft ile iletişim kurun.
 * Protokolde görmek istediğiniz ek özellikler için [bir özellik isteği](https://feedback.azure.com/forums/169401-azure-active-directory) yapın.
-* Microsoft Identity platform uç noktasının OAuth 2,0 veya OpenID Connect 1,0 ile uyumlu olmadığı bir sorun bulursanız [bir destek Isteği oluşturun](../../azure-portal/supportability/how-to-create-azure-support-request.md) .
+* Microsoft Identity platformunun OAuth 2,0 veya OpenID Connect 1,0 ile uyumlu olmadığı bir sorun bulursanız [bir destek Isteği oluşturun](../../azure-portal/supportability/how-to-create-azure-support-request.md) .
 
 ## <a name="related-content"></a>İlgili içerik
 
-Microsoft Identity platform uç noktası hakkında daha fazla bilgi için bkz. [Microsoft Identity platform 'a genel bakış][AAD-App-Model-V2-Overview].
+Microsoft Identity platformu hakkında daha fazla bilgi için bkz. [Microsoft Identity platform genel bakış][AAD-App-Model-V2-Overview].
 
 <!--Image references-->
 

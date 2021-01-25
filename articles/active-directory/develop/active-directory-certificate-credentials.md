@@ -13,16 +13,16 @@ ms.date: 12/3/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f3222c790ccd0cee936b246253a16b5c434c61c8
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 50a2f56824db67b73199439922e662339ff30872
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602215"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755285"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft Identity Platform uygulaması kimlik doğrulama sertifikası kimlik bilgileri
 
-Microsoft Identity platform, bir uygulamanın kimlik doğrulaması için kendi kimlik bilgilerini kullanmasını sağlar; örneğin, OAuth 2,0  [istemci kimlik bilgileri verme](v2-oauth2-client-creds-grant-flow.md) akışı ve [Şirket adına](v2-oauth2-on-behalf-of-flow.md) (OBO) akışı.
+Microsoft Identity platformu, bir uygulamanın kimlik doğrulaması için kendi kimlik bilgilerini kullanmasını sağlar; örneğin, OAuth 2,0  [istemci kimlik bilgileri verme](v2-oauth2-client-creds-grant-flow.md) akışı ve [Şirket adına](v2-oauth2-on-behalf-of-flow.md) (OBO) akışı.
 
 Uygulamanın kimlik doğrulaması için kullanabileceği bir kimlik bilgisi biçimi, uygulamanın sahip olduğu bir sertifikayla imzalanmış bir [JSON Web Token](./security-tokens.md#json-web-tokens-jwts-and-claims) (JWT) onaysıdır.
 

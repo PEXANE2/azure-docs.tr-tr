@@ -1,7 +1,7 @@
 ---
-title: Microsoft Identity platform ile uygulama oturum açma akışı | Mavisi
+title: Microsoft Identity platformu ile uygulama oturum açma akışı | Mavisi
 titleSuffix: Microsoft identity platform
-description: Web, masaüstü ve mobil uygulamaların Microsoft Identity platformunda (v 2.0) oturum açma akışı hakkında bilgi edinin.
+description: Web, masaüstü ve mobil uygulamaların Microsoft Identity platformu 'nda oturum açma akışı hakkında bilgi edinin.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,14 +13,14 @@ ms.date: 05/18/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: af5b27dc85a276c731a61135ab59ab81f5aaf3c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f9f330ab140fa66b5a66a112c47ca2a68ba56bf
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83772208"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755698"
 ---
-# <a name="app-sign-in-flow-with-microsoft-identity-platform"></a>Microsoft Identity platform ile uygulama oturum açma akışı
+# <a name="app-sign-in-flow-with-the-microsoft-identity-platform"></a>Microsoft Identity platformu ile uygulama oturum açma akışı
 
 Bu konuda, Microsoft Identity platform kullanılarak Web, masaüstü ve mobil uygulamalar için temel oturum açma akışı ele alınmaktadır. Microsoft Identity platform tarafından desteklenen oturum açma senaryoları hakkında bilgi edinmek için bkz. [kimlik doğrulama akışları ve uygulama senaryoları](authentication-flows-app-scenarios.md) .
 
@@ -34,8 +34,8 @@ Bir kullanıcı tarayıcıda bir Web uygulamasına gittiğinde aşağıdakiler o
 
 Kullanıcının kimliği başarıyla doğrulandı:
 
-* Microsoft Identity platform, Web uygulamasına bir belirteç gönderir.
-* Kullanıcının tarayıcı tanımlama bilgisi jar içindeki kimliğini içeren Azure AD 'nin etki alanı ile ilişkili bir tanımlama bilgisi kaydedilir. Bir uygulama Microsoft Identity platform yetkilendirme uç noktasına gitmek için tarayıcıyı bir sonraki sefer kullandığında, tarayıcı tanımlama bilgisini Kullanıcı yeniden oturum açmak zorunda kalmayacak şekilde gösterir. Bu, SSO 'nun elde edilmesi için de bir yoldur. Tanımlama bilgisi Azure AD tarafından üretilir ve yalnızca Azure AD tarafından anlaşılabilirler.
+* Microsoft Identity platformu, Web uygulamasına bir belirteç gönderir.
+* Kullanıcının tarayıcı tanımlama bilgisi jar içindeki kimliğini içeren Azure AD 'nin etki alanı ile ilişkili bir tanımlama bilgisi kaydedilir. Bir uygulama Microsoft Identity platform yetkilendirme uç noktasına gitmek için tarayıcıyı bir dahaki sefer kullandığında, tarayıcıda Kullanıcı yeniden oturum açmak zorunda kalmaması için tanımlama bilgisi sunulur. Bu, SSO 'nun elde edilmesi için de bir yoldur. Tanımlama bilgisi Azure AD tarafından üretilir ve yalnızca Azure AD tarafından anlaşılabilirler.
 * Web uygulaması, belirteci doğrular. Doğrulama başarılı olursa, Web uygulaması korumalı sayfayı görüntüler ve tarayıcının tanımlama bilgisi jar 'e bir oturum tanımlama bilgisi kaydeder. Kullanıcı başka bir sayfaya gittiğinde, Web uygulaması, oturum tanımlama bilgisine göre kullanıcının kimliğinin doğrulandığını bilir.
 
 Aşağıdaki sıra diyagramı bu etkileşimi özetler:
@@ -48,12 +48,12 @@ Web uygulaması geliştiricileri, kimlik doğrulaması gerektirdiğini veya yaln
 
 Bu öznitelik, ASP.NET Kullanıcı kimliğini içeren bir oturum tanımlama bilgisinin varlığını denetlamasına neden olur. Bir tanımlama bilgisi yoksa, ASP.NET kimlik doğrulamasını belirtilen kimlik sağlayıcısına yönlendirir. Kimlik sağlayıcısı Azure AD ise, Web uygulaması, `https://login.microsoftonline.com` oturum açma iletişim kutusunu gösteren kimlik doğrulamasını yeniden yönlendirir.
 
-### <a name="how-a-web-app-delegates-sign-in-to-microsoft-identity-platform-and-obtains-a-token"></a>Web uygulamasının Microsoft Identity platformunda oturum açması ve bir belirteç alacağı
+### <a name="how-a-web-app-delegates-sign-in-to-the-microsoft-identity-platform-and-obtains-a-token"></a>Bir Web uygulamasının Microsoft Identity platformunda oturum açması ve bir belirteç alacağı
 
 Tarayıcı aracılığıyla Kullanıcı kimlik doğrulaması gerçekleşir. OpenID Protokolü standart HTTP protokol iletilerini kullanır.
 
 * Web uygulaması, Microsoft Identity platform 'ı kullanmak için tarayıcıya bir HTTP 302 (Redirect) gönderir.
-* Kullanıcının kimliği doğrulandığında, Microsoft Identity platform tarayıcı aracılığıyla yeniden yönlendirme kullanarak belirteci Web uygulamasına gönderir.
+* Kullanıcının kimlik doğrulaması yapıldığında, Microsoft Identity platformu tarayıcı aracılığıyla yeniden yönlendirme kullanarak belirteci Web uygulamasına gönderir.
 * Yeniden yönlendirme, Web uygulaması tarafından yeniden yönlendirme URI 'SI biçiminde sağlanır. Bu yeniden yönlendirme URI 'SI, Azure AD uygulama nesnesi ile kaydedilir. Uygulama çeşitli URL 'Lerde dağıtılabilmesi için birkaç yeniden yönlendirme URI 'si olabilir. Bu nedenle, Web uygulamasının kullanılacak yeniden yönlendirme URI 'sini belirtmesi de gerekecektir.
 * Azure AD, Web uygulaması tarafından gönderilen yeniden yönlendirme URI 'sinin, uygulamanın kayıtlı yeniden yönlendirme URI 'lerinden biri olduğunu doğrular.
 

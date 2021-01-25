@@ -11,39 +11,44 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/15/2020
+ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: e7e1567a487dc6cadc94a42f02c597ff0e02665b
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 6fb2e5c0193bc4e66f8fb4215732a69c43731146
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372770"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756607"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Yasal uyumluluk panonuzda standartlar kümesini özelleştirme
 
-Azure Güvenlik Merkezi, kaynaklarınızın yapılandırmalarını endüstri standartları, yönetmelikler ve kıyaslamalar ile sürekli olarak karşılaştırır. **Mevzuat uyumluluk panosu** , uyumluluk denetimi ve gereksinimleri nasıl karşıladığınızı temel alarak uyumlulukla ilgili öngörüler sağlar.
+Azure Güvenlik Merkezi, kaynaklarınızın yapılandırmalarını endüstri standartları, yönetmelikler ve kıyaslamalar ile sürekli olarak karşılaştırır. **Mevzuat uyumluluk panosu** , uyumluluk için özel uyumluluk gereksinimlerini nasıl karşıladığınızı temel alarak öngörülerinizi açıklar.
 
 
-## <a name="overview-of-compliance-packages"></a>Uyumluluk paketlerine genel bakış
+## <a name="how-are-regulatory-compliance-standards-represented-in-security-center"></a>Yasal uyumluluk standartları Güvenlik Merkezi 'nde nasıl temsil edilir?
 
-Endüstri standartları, mevzuat standartları ve değerlendirmeleri, güvenlik merkezi 'nde *uyumluluk paketleri* olarak temsil edilir.  Her paket Azure Ilkesinde tanımlanan bir girişimdir. Panonuzda değerlendirmelere eşlenen uyumluluk verilerini görmek için, **güvenlik ilkesi** sayfasından yönetim grubunuza veya aboneliğinize bir uyumluluk paketi ekleyin. (Azure Ilkesi ve [güvenlik Ilkeleriyle çalışma](tutorial-security-policy.md)girişimleri hakkında daha fazla bilgi edinin.)
+Endüstri standartları, mevzuat standartları ve kıyaslamalar, güvenlik merkezi 'nin mevzuat uyumluluk panosunda temsil edilir. Her standart Azure Ilkesinde tanımlanan bir girişimdir.
 
-Seçtiğiniz kapsamınızda bir standart veya kıyaslama eklendi aldığınızda, girişimi kapsama atar ve standart, mevzuat uyumluluk panonuzda değerlendirmelere eşlenen tüm ilişkili uyumluluk verileriyle birlikte görünür. Ayrıca, eklendi olan standartlardan herhangi biri için Özet raporlar indirebilirsiniz.
+Panonuzda değerlendirmelere eşlenen uyumluluk verilerini görmek için, **güvenlik ilkesi** sayfasından yönetim grubunuza veya aboneliğinize bir uyumluluk standardı ekleyin. Azure Ilkesi ve girişimleri hakkında daha fazla bilgi edinmek için bkz. [güvenlik Ilkeleriyle çalışma](tutorial-security-policy.md).
 
-Microsoft ayrıca yasal düzenleme standartlarını de izler ve zaman içindeki bazı paketlerdeki kapsamı otomatik olarak geliştirir. Microsoft, girişim için yeni içerik yayımlarsa (Standart içindeki daha fazla denetim ile eşlenen yeni ilkeler), panonuzda ek içerik otomatik olarak görünür.
+Seçtiğiniz kapsamınızda bir standart veya kıyaslama atadıktan sonra, tüm ilişkili uyumluluk verileriyle değerlendirmelere eşlenen standart, mevzuat uyumluluk panonuzda görünür. Atanan standartların herhangi biri için Özet raporları da indirebilirsiniz.
 
-> [!TIP]
-> Microsoft 'un yeni içerik yayımlaması için zaman içinde gelişdiği bir standart, **Azure CIS 1.1.0 (yeni)** (daha resmi olarak [Microsoft Azure, CIS, kıyaslama sürümü 1.1.0](https://www.cisecurity.org/benchmark/azure/)). Bunu panonuza "Azure CIS 1.1.0", her güvenlik merkezi ortamında varsayılan olarak yapılandırılan Azure CIS 'nin temsili ile eklemeniz gerekir. Bu paket, bir statik kural kümesine bağlıdır. Daha yeni paket daha fazla ilke içerir ve zaman içinde otomatik olarak güncelleştirilecek. Aşağıda açıklandığı gibi yeni dinamik pakete güncelleştirin.
+Microsoft, mevzuat standartlarının kendisini izler ve zaman içindeki bazı paketlerdeki kapsamını otomatik olarak geliştirir. Microsoft, girişim için yeni içerik yayımlarsa, panoda, standart denetimlere eşlenen yeni ilkeler olarak otomatik olarak görünür.
 
 
-## <a name="available-packages"></a>Kullanılabilir paketler
+## <a name="what-regulatory-compliance-standards-are-available-in-security-center"></a>Güvenlik Merkezi 'nde hangi yasal uyumluluk standartları mevcuttur?
 
-NıST SP 800-53 R4, SWIFT CSP CSCF-V2020, UK resmi ve UK NHS, Kanada Federal PBMM ve Azure CIS 1.1.0 (yeni) gibi standartları ekleyerek Azure CIS 1.1.0 'in daha kapsamlı bir gösterimidir. 
+Varsayılan olarak, her abonelikte **Azure Güvenlik kıyaslaması** atanır. Bu, yaygın uyumluluk çerçevelerine göre güvenlik ve uyum en iyi uygulamaları için Microsoft tarafından yazılan, Azure 'a özgü kılavuzlardır. [Azure Güvenlik Karşılaştırması hakkında daha fazla bilgi edinin](../security/benchmarks/introduction.md).
 
-Ayrıca, genel uyumluluk çerçevelerine göre güvenlik ve uyum için en iyi uygulamalar için Microsoft tarafından yazılmış, Azure 'a özgü yönergeler olan **Azure Güvenlik kıyaslaması** ekleyebilirsiniz. ([Azure Güvenlik kıyaslaması hakkında daha fazla bilgi edinin](../security/benchmarks/introduction.md).)
+Ayrıca, gibi standartlar da ekleyebilirsiniz:
 
-Panoda kullanılabilir hale geldiğinde ek standartlar desteklenecektir. 
+- NIST SP 800-53 R4
+- SWIFT CSP CSCF-V2020
+- UK resmi ve UK NHS
+- Kanada Federal PBMM
+- Azure CIS 1.1.0
+
+Standartlar, kullanılabilir hale geldiğinde panoya eklenir.
 
 
 ## <a name="add-a-regulatory-standard-to-your-dashboard"></a>Panonuza bir düzenleme standardı ekleme
@@ -51,35 +56,34 @@ Panoda kullanılabilir hale geldiğinde ek standartlar desteklenecektir.
 Aşağıdaki adımlarda, desteklenen mevzuata standartlarından biriyle uyumluluğunuzu izlemek için bir paket ekleme açıklanmaktadır.
 
 > [!NOTE]
-> Yalnızca sahibi veya ilke katılımcısı olan kullanıcılar uyumluluk standartları eklemek için gerekli izinlere sahiptir. 
+> Panonuza standartlar eklemek için abonelikte Azure Defender etkinleştirilmiş olmalıdır. Ayrıca, yalnızca sahibi veya ilke katılımcısı olan kullanıcılar uyumluluk standartları eklemek için gerekli izinlere sahiptir. 
 
 1. Güvenlik Merkezi 'nin kenar çubuğundan, mevzuat uyumluluk panosunu açmak için **mevzuata uyumluluğu** ' nu seçin. Burada şu anda seçili olan aboneliklerde Şu anda atanmış olan uyumluluk standartlarını görebilirsiniz.   
 
-1. Sayfanın üst kısmından **Uyumluluk Ilkelerini Yönet** ' i seçin. Ilke Yönetimi sayfası görüntülenir.
+1. Sayfanın üst kısmından **Uyumluluk Ilkelerini Yönet**' i seçin. Ilke Yönetimi sayfası görüntülenir.
 
 1. Mevzuat uyumluluk duruşunu yönetmek istediğiniz aboneliği veya yönetim grubunu seçin. 
 
     > [!TIP]
     > Tüm iç içe geçmiş kaynaklar için uyumluluk verilerinin toplanması ve izlenmesi için standart için geçerli olan en yüksek kapsamı seçmenizi öneririz. 
 
-1. Kuruluşunuza uygun standartları eklemek için **daha fazla standartlar Ekle** ' ye tıklayın. 
+1. Kuruluşunuza uygun standartları eklemek için **daha fazla standartlar Ekle**' ye tıklayın. 
 
-1. **Yasal uyumluluk standartları Ekle** sayfasında, kullanılabilir standartlardan herhangi birine yönelik paketleri arayabilirsiniz. Kullanılabilir standartların bazıları şunlardır:
+1. **Yasal uyumluluk standartları Ekle** sayfasında, aşağıdakiler dahil olmak üzere kullanılabilir standartlardan herhangi birini arayabilirsiniz:
 
-    - **Azure Güvenlik Karşılaştırması**
     - **NIST SP 800-53 R4**
-    - **NıST SP 800 171 R2**
+    - **NIST SP 800 171 R2**
     - **SWIFT CSP CSCF-V2020**
     - **UKO ve UK NHS**
     - **Kanada PBMM**
     
-    ![Azure Güvenlik Merkezi 'nin mevzuat uyumluluk panosuna mevzuat paketleri ekleme](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
+    ![Azure Güvenlik Merkezi 'nin mevzuat uyumluluk panosuna mevzuat standartları ekleme](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
 
 1. **Ekle** ' yi seçin ve belirli bir girişim için kapsam, parametre ve düzeltme gibi tüm gerekli ayrıntıları girin.
 
 1. Güvenlik Merkezi 'nin kenar çubuğundan, mevzuat uyumluluk panosuna geri dönmek için **yasal uyumluluk** ' i seçin.
-    * Yeni standart, sektör & mevzuat standartları listenizde görünür. 
-    * **Azure CIS 1.1.0 (yeni)** eklediyseniz, Azure CIS 1.1.0 uyumluluğun orijinal *statik* görünümü de bunun yanında kalır. Gelecekte otomatik olarak kaldırılabilir.
+
+    Yeni standart, sektör & mevzuat standartları listenizde görünür. 
 
     > [!NOTE]
     > Yeni eklenen bir standart, uyumluluk panosu 'nda görünmesi birkaç saat sürebilir.
@@ -89,11 +93,11 @@ Aşağıdaki adımlarda, desteklenen mevzuata standartlarından biriyle uyumlulu
 
 ## <a name="removing-a-standard-from-your-dashboard"></a>Panonuzdan bir standart kaldırma
 
-Sağlanan yasal düzenleme standartlarından herhangi biri kuruluşunuzla ilgili değilse, bunları kullanıcı arabiriminden kaldırmak basit bir işlemdir. Bu, mevzuat uyumluluk panosunu daha da özelleştirmenize ve yalnızca sizin için geçerli olan standartlara odaklanmanıza olanak tanır.
+Sağlanan yönetmelik standartlarından herhangi biri kuruluşunuzla ilgili değilse, bunları kullanıcı arabiriminden kaldırmak basit bir işlemdir. Bu, mevzuat uyumluluk panosunu daha da özelleştirmenize ve yalnızca sizin için geçerli olan standartlara odaklanmanıza olanak tanır.
 
 Standart bir kaldırma:
 
-1. Güvenlik Merkezi menüsünde **güvenlik ilkesi** ' ni seçin.
+1. Güvenlik Merkezi menüsünde **güvenlik ilkesi**' ni seçin.
 
 1. Standart kaldırmak istediğiniz aboneliği seçin.
 
@@ -104,18 +108,18 @@ Standart bir kaldırma:
 
     :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard.png" alt-text="Azure Güvenlik Merkezi 'nde mevzuat uyumluluk panonuzdan bir yasal düzenleme standardı kaldırma":::
 
-1. Kaldırmak istediğiniz standart için **devre dışı bırak** ' ı seçin. Bir onay penceresi görüntülenir.
+1. Kaldırmak istediğiniz standart için **devre dışı bırak**' ı seçin. Bir onay penceresi görüntülenir.
 
     :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard-confirm.png" alt-text="Seçtiğiniz mevzuat standardını gerçekten kaldırmak istediğinizi onaylayın":::
 
-1. **Evet** ’i seçin. Standart kaldırılacak. 
+1. **Evet**’i seçin. Standart kaldırılacak. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, ek standartlarla uyumluluğunuzu izlemek için **uyumluluk paketleri eklemeyi** öğrendiniz. 
+Bu makalede, mevzuat ve sektör standartları ile uyumluluğunuzu izlemek için **uyumluluk standartları ekleme** hakkında daha fazla öğrendiniz.
 
-Diğer ilgili malzemeler için aşağıdaki makalelere bakın: 
+İlgili malzemeler için aşağıdaki sayfalara bakın:
 
 - [Azure Güvenlik Karşılaştırması](../security/benchmarks/introduction.md)
 - [Güvenlik Merkezi mevzuata uyumluluğu panosu](security-center-compliance-dashboard.md)

@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-java
 - devx-track-azurecli
-ms.openlocfilehash: 504d3a834760605149c93c0beea84bbe1b59e263
-ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
+ms.openlocfilehash: 5ebb30101d191bb254017db7b0de2f9b8bce145d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97707563"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755165"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>Hızlı başlangıç: komut satırından Azure 'da Java işlevi oluşturma
 
@@ -73,7 +73,7 @@ Azure Işlevlerinde bir işlev projesi, her birinin belirli bir tetikleyiciye ya
     ---
 
     > [!IMPORTANT]
-    > + `-DjavaVersion=11`İşlevlerinizin Java 11 ' de çalışmasını istiyorsanız kullanın. Daha fazla bilgi için bkz. [Java sürümleri](functions-reference-java.md#java-versions). 
+    > + İşlevlerinizin Java 11 üzerinde çalışmasını istiyorsanız `-DjavaVersion=11` ifadesini kullanın. Daha fazla bilgi için bkz. [Java sürümleri](functions-reference-java.md#java-versions). 
     > + `JAVA_HOME`Bu makaleyi tamamlayabilmeniz için ortam değişkeni, JDK 'nin doğru sürümünün yükleneceği konum olarak ayarlanmalıdır.
 
 1. Maven, dağıtımda projenin oluşturulmasını tamamlaması için gereken değerleri ister.   
@@ -113,7 +113,7 @@ Yanıt iletisi [HttpResponseMessage. Builder](/java/api/com.microsoft.azure.func
 
 Uygulamanızı barındırmak üzere oluşturulan Azure kaynakları için ayarlar, eklentinin **yapılandırma** öğesinde oluşturulan pom.xml dosyasında bir **GroupID** ile tanımlanmıştır `com.microsoft.azure` . Örneğin, aşağıdaki yapılandırma öğesi, bir Maven tabanlı dağıtıma `java-functions-group` bölge içindeki kaynak grubunda bir işlev uygulaması oluşturmasını söyler `westus` . İşlev uygulaması, planda barındırılan Windows üzerinde çalışır `java-functions-app-service-plan` ; Bu, varsayılan olarak sunucusuz bir tüketim plandır.
 
-:::code language="java" source="~/azure-functions-samples-java/pom.xml" range="62-102":::
+:::code language="java" source="~/azure-functions-samples-java/pom.xml" range="62-107":::
 
 Bu ayarları, kaynakların Azure 'da nasıl oluşturulduğunu denetlemek için, `runtime.os` `windows` ilk dağıtımdan önce ' dan önce ' ye geçiş yaparak yapabilirsiniz `linux` . Maven eklentisi tarafından desteklenen ayarların tam listesi için [yapılandırma ayrıntılarına](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details)bakın.
 

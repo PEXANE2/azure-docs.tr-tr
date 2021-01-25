@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 2c03e6940d392e3e2c03bf6508de41a7a19aef3b
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: e6bbebafab45080a2076f33d66dd96296a761e4f
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063782"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754946"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>Bir JavaScript tek sayfalı uygulamayı örtük kimlik doğrulama kod akışına geçirme
 
@@ -90,7 +90,7 @@ Tüm uygulamalarınızı MSAL.js 2. x ve [Publicclientapplication][msal-js-publi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Örtülü ve kimlik doğrulama kod akışları arasındaki farklılıklar da dahil olmak üzere yetkilendirme kodu akışı hakkında daha fazla bilgi edinmek için bkz. [Microsoft Identity platform ve OAuth 2,0 yetkilendirme kodu akışı](v2-oauth2-auth-code-flow.md).
+Örtülü ve kimlik doğrulama kod akışları arasındaki farklılıklar da dahil olmak üzere, yetkilendirme kodu akışı hakkında daha fazla bilgi edinmek için bkz. [Microsoft Identity platform ve OAuth 2,0 yetkilendirme kodu akışı](v2-oauth2-auth-code-flow.md).
 
 Microsoft Identity platformunda JavaScript tek sayfalı uygulama geliştirmeyi daha ayrıntılı bir şekilde incelemek isterseniz, çok parçalı [Senaryo: tek sayfalı uygulama](scenario-spa-overview.md) bir makale serisi, başlamanıza yardımcı olabilir.
 

@@ -1,6 +1,7 @@
 ---
-title: Yayımcı doğrulama sorunlarını giderme-Microsoft Identity platform | Mavisi
-description: Microsoft Graph API 'Leri çağırarak Microsoft Identity platform için yayımcı doğrulaması sorunlarını nasıl giderebileceğinizi açıklar.
+title: Yayımcı doğrulaması sorunlarını giderme | Mavisi
+titleSuffix: Microsoft identity platform
+description: Microsoft Graph API 'Leri çağırarak Microsoft Identity platformu için yayımcı doğrulaması sorunlarını nasıl giderebileceğinizi açıklar.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,12 +13,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 857659cdd97666dba585c1ec22c750e29bf28879
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 10609f2706d257dbe5d8f43b85da5f06cb986cae
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169180"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756182"
 ---
 # <a name="troubleshoot-publisher-verification"></a>Yayımcı doğrulaması ile ilgili sorunları giderme
 Bu işlemi tamamlayamadıysanız veya [yayımcı doğrulaması](publisher-verification-overview.md)ile ilgili beklenmeyen davranışlarla karşılaşıyorsanız, hata alıyorsanız veya beklenmeyen davranışı görüyorsanız aşağıdakileri yaparak başlatmanız gerekir: 
@@ -30,7 +31,7 @@ Bu işlemi tamamlayamadıysanız veya [yayımcı doğrulaması](publisher-verifi
 
 1. Ek bilgi toplamak ve Kullanıcı arabirimindeki sorunları gidermek için [grafik Gezginini](#making-microsoft-graph-api-calls) kullanarak isteği yeniden üretin.
 
-## <a name="common-issues"></a>Genel Sorunlar
+## <a name="common-issues"></a>Sık Karşılaşılan Sorunlar
 İşlem sırasında oluşabilecek bazı yaygın sorunlar aşağıda verilmiştir. 
 
 - **Microsoft İş Ortağı Ağı kimliğimi (MPN ID) bilmiyorum veya hesap için birincil ilgili kişinin kim olduğunu bilmiyorum** 
@@ -234,7 +235,7 @@ Görüntülenecek hata iletisi: "yöneticiniz tarafından gerçekleştirilen bir
 
 Önceki bilgilerin tümünü gözden geçirdiğinizi ve Microsoft Graph hala bir hata alıyorsanız, başarısız istekle ilgili olarak aşağıdaki bilgilerin çoğunu toplayın ve [Microsoft desteği 'ne başvurun](developer-support-help-options.md#open-a-support-request).
 
-- Zaman damgası 
+- Timestamp 
 - CorrelationId 
 - Oturum açmış kullanıcının ObjectID veya UserPrincipalName 
 - Hedef uygulama ObjectID

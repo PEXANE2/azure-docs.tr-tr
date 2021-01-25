@@ -13,23 +13,23 @@ ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: 033d5cfa5dbe5e0010bc1182f54643ec04db3ce3
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 24c29d34c14e6237bc79e38741ea244da5429e9e
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017621"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754548"
 ---
 # <a name="how-to-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Microsoft Identity platformu ile kaydedilen bir uygulamayı kaldırma
 
-Microsoft kimlik platformuna kayıtlı uygulamaları olan kurumsal geliştiricilerin ve hizmet olarak yazılım (SaaS) sağlayıcılarının bir uygulamanın kaydını kaldırması gerekebilir.
+Microsoft Identity platformu ile kayıtlı uygulamaları olan kurumsal geliştiriciler ve hizmet olarak yazılım (SaaS) sağlayıcılarının bir uygulamanın kaydını kaldırması gerekebilir.
 
 Aşağıdaki bölümlerde, aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 * Kendiniz veya kuruluşunuz tarafından yazılmış bir uygulamayı kaldırma
 * Başka bir kuruluş tarafından yazılmış bir uygulamayı kaldırma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Azure AD kiracınızda kayıtlı bir uygulama](quickstart-register-app.md)
 

@@ -1,7 +1,7 @@
 ---
 title: Uygulama modeli | Mavisi
 titleSuffix: Microsoft identity platform
-description: Uygulamanızı Microsoft Identity platform (v 2.0) ile tümleştirilebilen şekilde kaydetme süreci hakkında bilgi edinin.
+description: Uygulamanızı Microsoft Identity platform ile tümleştirilebilen şekilde kaydetme süreci hakkında bilgi edinin.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 04/28/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 5aca96a9c3bc4e8f1061f677e316565b10014ac9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ba41e36d12b58da2e572cf870195716eacaddef
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88117490"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755681"
 ---
 # <a name="application-model"></a>Uygulama modeli
 
@@ -32,16 +32,16 @@ Bir kimlik sağlayıcısının bir kullanıcının belirli bir uygulamaya erişi
 * Kullanıcıların yalnızca kuruluşunuza ait olmaları durumunda oturum açmalarına izin vermek istediğinize karar verin. Bu tek kiracılı bir uygulamadır. Ya da kullanıcıların herhangi bir iş veya okul hesabını kullanarak oturum açmalarına izin verin. Bu, çok kiracılı bir uygulamadır. Ayrıca, kişisel Microsoft hesaplarına veya bir sosyal hesaba LinkedIn, Google, vb. izin verebilirsiniz.
 * Kapsam izinleri iste. Örneğin, oturum açmış kullanıcının profilini okuma izni veren "User. Read" kapsamını isteyebilirsiniz.
 * Web API 'nize erişimi tanımlayan kapsamları tanımlayın. Genellikle, bir uygulama API 'nize erişmek istediğinde tanımladığınız kapsamlar için izin istemesi gerekecektir.
-* Uygulamanın kimliğini kanıtlayan Microsoft Identity platformu ile bir gizli dizi paylaşma.  Bu, uygulamanın gizli bir istemci uygulaması olduğu durum ile ilgilidir. Gizli bir istemci uygulaması, kimlik bilgilerini güvenli bir şekilde tutan bir uygulamadır. Kimlik bilgilerini depolamak için güvenilir bir arka uç sunucusu gerekir.
+* Uygulamanın kimliğini karşılayan Microsoft Identity platformu ile gizli anahtar paylaşma.  Bu, uygulamanın gizli bir istemci uygulaması olduğu durum ile ilgilidir. Gizli bir istemci uygulaması, kimlik bilgilerini güvenli bir şekilde tutan bir uygulamadır. Kimlik bilgilerini depolamak için güvenilir bir arka uç sunucusu gerekir.
 
-Kaydolduktan sonra uygulamaya, belirteç istediğinde uygulamanın Microsoft Identity platform ile paylaştığı benzersiz bir tanımlayıcı verilir. Uygulama [gizli bir istemci uygulaması](developer-glossary.md#client-application)ise, sertifikaların veya gizli anahtarların kullanılıp kullanıldığına bağlı olarak gizli anahtar veya ortak anahtarı da paylaşır.
+Kaydolduktan sonra uygulamaya, belirteç istediğinde uygulamanın Microsoft Identity platformu ile paylaştığı benzersiz bir tanımlayıcı verilir. Uygulama [gizli bir istemci uygulaması](developer-glossary.md#client-application)ise, sertifikaların veya gizli anahtarların kullanılıp kullanıldığına bağlı olarak gizli anahtar veya ortak anahtarı da paylaşır.
 
 Microsoft Identity platform iki ana işlevi yerine getiren bir modeli kullanarak uygulamaları temsil eder:
 
 * Uygulamayı desteklediği kimlik doğrulama protokollerine göre tanımla
 * Kimlik doğrulaması için gereken tüm tanımlayıcıları, URL 'Leri, gizli dizileri ve ilgili bilgileri sağlayın
 
-Microsoft Identity Platform:
+Microsoft Identity platformu:
 
 * Çalışma zamanında kimlik doğrulamasını desteklemek için gereken tüm verileri tutar
 * Bir uygulamanın erişmesi gerekebilecek kaynakları ve belirli bir isteğin yerine getirilmesi gereken koşulları belirlemek için tüm verileri tutar
@@ -55,7 +55,7 @@ Microsoft Identity Platform:
 
 ## <a name="multi-tenant-apps"></a>Çok kiracılı uygulamalar
 
-Microsoft Identity platformunda bir [uygulama nesnesi](developer-glossary.md#application-object) bir uygulamayı açıklar. Dağıtım zamanında, Microsoft Identity platform bir dizin veya kiracı içindeki bir uygulamanın somut örneğini temsil eden bir [hizmet sorumlusu](developer-glossary.md#service-principal-object)oluşturmak için uygulama nesnesini bir şema olarak kullanır. Hizmet sorumlusu, uygulamanın belirli bir hedef dizinde gerçekten ne yapabileceğini, bunu kullanabilecek kaynakları, hangi kaynakların erişebileceğini ve bu şekilde olduğunu tanımlar. Microsoft Identity platform bir uygulama nesnesinden [onay](developer-glossary.md#consent)aracılığıyla bir hizmet sorumlusu oluşturur.
+Microsoft Identity platformunda bir [uygulama nesnesi](developer-glossary.md#application-object) bir uygulamayı açıklar. Dağıtım zamanında, Microsoft Identity platform bir dizin veya kiracı içindeki bir uygulamanın somut örneğini temsil eden bir [hizmet sorumlusu](developer-glossary.md#service-principal-object)oluşturmak için uygulama nesnesini bir şema olarak kullanır. Hizmet sorumlusu, uygulamanın belirli bir hedef dizinde gerçekten ne yapabileceğini, bunu kullanabilecek kaynakları, hangi kaynakların erişebileceğini ve bu şekilde olduğunu tanımlar. Microsoft Identity platformu, bir uygulama nesnesinden [onay](developer-glossary.md#consent)aracılığıyla bir hizmet sorumlusu oluşturur.
 
 Aşağıdaki diyagramda, izin tarafından yönetilen basitleştirilmiş bir Microsoft Identity platformu sağlama akışı gösterilmektedir. İki kiracı gösterir: *A* ve *B*.
 

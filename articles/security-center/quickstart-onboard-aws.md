@@ -3,16 +3,16 @@ title: AWS hesabınızı Azure Güvenlik Merkezi 'ne bağlama
 description: AWS kaynaklarınızı Azure Güvenlik Merkezi 'nden izleme
 author: memildin
 ms.author: memildin
-ms.date: 12/29/2020
+ms.date: 01/24/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 4c919115efb39a8e8c008eab69dc087792f7b105
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 2ad3ab8c39d9f9a29e74bd139fb5ddd1e5faeff9
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814321"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755154"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>AWS hesaplarınızı Azure Güvenlik Merkezi 'ne bağlama
 
@@ -33,13 +33,13 @@ AWS hesabınızı Güvenlik Merkezi 'ne ekleme, AWS güvenlik hub 'ını ve Azur
 
 Aşağıdaki ekran görüntüsünde, güvenlik merkezi 'nin genel bakış panosunda görünen AWS hesaplarını görebilirsiniz.
 
-:::image type="content" source="./media/quickstart-onboard-aws/aws-account-in-overview.png" alt-text="Güvenlik Merkezi 'nin genel bakış panosunda listelenen 3 GCP projesi" lightbox="./media/quickstart-onboard-gcp/gcp-account-in-overview.png":::
+:::image type="content" source="./media/quickstart-onboard-aws/aws-account-in-overview.png" alt-text="Güvenlik Merkezi 'nin genel bakış panosunda listelenen üç GCP projesi" lightbox="./media/quickstart-onboard-gcp/gcp-account-in-overview.png":::
 
 ## <a name="availability"></a>Kullanılabilirlik
 
 |Görünüş|Ayrıntılar|
 |----|:----|
-|Yayın durumu:|Önizleme<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|Yayın durumu:|Genel kullanılabilirlik (GA)|
 |Fiyat|[Sunucular Için Azure Defender](defender-for-servers-introduction.md) gerekir|
 |Gerekli roller ve izinler:|İlgili Azure aboneliğindeki **sahibi**<br>Bir sahip hizmet sorumlusu ayrıntılarını sağlıyorsa **katkıda bulunan** bir AWS hesabı da bağlanabilir|
 |Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
@@ -136,9 +136,9 @@ AWS sistem yöneticisi, AWS kaynaklarınızın tamamında görevleri otomatikle�
 1. **AWS kimlik doğrulama** sekmesindeki seçenekleri yapılandırın:
     1. Bağlayıcı için bir **görünen ad** girin.
     1. Aboneliğin doğru olduğunu onaylayın. Bu, bağlayıcı ve AWS Güvenlik Merkezi önerilerini içerecek olan abonelikdir.
-    1. 2. adımda seçtiğiniz kimlik doğrulama seçeneğine bağlı olarak [. AWS 'de Güvenlik Merkezi için kimlik doğrulamasını ayarlama](#step-2-set-up-authentication-for-security-center-in-aws):
+    1. Kimlik doğrulama seçeneğine bağlı olarak, adım 2 ' de seçmiş olursunuz [. AWS 'de Güvenlik Merkezi için kimlik doğrulamasını ayarlama](#step-2-set-up-authentication-for-security-center-in-aws):
         - **Rolü varsay** ' ı seçin ve [güvenlik MERKEZI için bir IAM rolü oluşturun](#create-an-iam-role-for-security-center)ve Arn 'yi yapıştırın.
-            :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="Azure portalında AWS bağlantı sihirbazının ilgili alanına ARN dosyasını yapıştırma":::
+            :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="ARN dosyasını Azure portal AWS bağlantı sihirbazının ilgili alanına yapıştırma":::
 
             VEYA
 
@@ -164,7 +164,7 @@ AWS sistem yöneticisi, AWS kaynaklarınızın tamamında görevleri otomatikle�
 
 ### <a name="step-6-confirmation"></a>6. Adım. Onay
 
-Bağlayıcı başarıyla oluşturulduğunda ve AWS Güvenlik Merkezi düzgün şekilde yapılandırıldığında:
+Bağlayıcı başarıyla oluşturulduğunda ve AWS Güvenlik Merkezi düzgün şekilde yapılandırılmıştır:
 
 - Güvenlik Merkezi, AWS EC2 örnekleri için ortamı tarar, Azure Arc 'a ekleyerek Log Analytics aracısını yüklemeyi ve tehdit koruması ve güvenlik önerileri sağlamayı sağlar. 
 - ASC hizmeti, her 6 saatte bir yeni AWS EC2 örneğini tarar ve bunları yapılandırmaya göre yapar.

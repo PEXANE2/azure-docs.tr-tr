@@ -14,12 +14,12 @@ ms.date: 11/04/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev, devx-track-java
-ms.openlocfilehash: 0183471db274bb7fca59ed8f24aa87b2bf997fb6
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 1d1512447b5d0474f8fabe92dbc7a36259f4618c
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063748"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754981"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>Java için ADAL MSAL geçiş kılavuzu
 
@@ -29,7 +29,7 @@ Hem Java için Microsoft kimlik doğrulama kitaplığı (MSAL4J) hem de Java iç
 
 MSAL aşağıdaki avantajları sunar:
 
-- Daha yeni Microsoft Identity platform uç noktasını kullandığından, Azure AD Iş ve tüketici (B2C) aracılığıyla Azure AD kimlikleri, Microsoft hesapları ve sosyal ve yerel hesaplar gibi daha geniş bir dizi Microsoft kimliği için kimlik doğrulaması yapabilirsiniz.
+- Daha yeni Microsoft Identity platformunu kullandığından, Azure AD Iş ve tüketici (B2C) aracılığıyla Azure AD kimlikleri, Microsoft hesapları ve sosyal ve yerel hesaplar gibi daha geniş bir dizi Microsoft kimliği için kimlik doğrulaması yapabilirsiniz.
 - Kullanıcılarınız en iyi çoklu oturum açma deneyimini alacak.
 - Uygulamanız artımlı onayı etkinleştirebilir ve Koşullu erişimin desteklenmesi daha kolay olabilir.
 
@@ -37,13 +37,13 @@ Java için MSAL, Microsoft Identity platformu ile kullanmanızı önerdiğimiz k
 
 ## <a name="differences"></a>Farklılıklar
 
-Geliştiriciler için Azure AD (v 1.0) uç noktası (ve ADAL4J) ile çalışıyorsanız, [Microsoft Identity platform (v 2.0) uç noktası hakkında ne kadar farklı olduğunu](../azuread-dev/azure-ad-endpoint-comparison.md)okumak isteyebilirsiniz.
+Geliştiriciler için Azure AD (v 1.0) uç noktası (ve ADAL4J) ile çalışıyorsanız, [Microsoft Identity platformu hakkında ne kadar farklı olduğunu](../azuread-dev/azure-ad-endpoint-comparison.md)okumak isteyebilirsiniz.
 
 ## <a name="scopes-not-resources"></a>Kapsam kaynakları değil
 
 ADAL4J, for Java için MSAL for Java için belirteçleri edinme Java sınıfları için bir dizi MSAL, bir kapsamlar parametresi gerektirir. Bu parametre, istenen izinleri ve istenen kaynakları bildiren dizelerin bir listesidir. Örnek kapsamları görmek için [Microsoft Graph kapsamlarına](/graph/permissions-reference) bakın.
 
-`/.default`Uygulamalarınızı v 1.0 uç noktasından (ADAL) Microsoft Identity platform uç noktasına (msal) geçirmeye yardımcı olması için kapsam sonekini kaynağa ekleyebilirsiniz. Örneğin, kaynak değeri için `https://graph.microsoft.com` , eşdeğer kapsam değeri `https://graph.microsoft.com/.default` .  Kaynak URL biçiminde değilse, ancak formun kaynak KIMLIĞI ise `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` , kapsam değerini kullanmaya devam edebilirsiniz `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` .
+`/.default`UYGULAMALARıNıZı adal 'DAN msal 'e geçirmeye yardımcı olması için kapsam sonekini kaynağa ekleyebilirsiniz. Örneğin, kaynak değeri için `https://graph.microsoft.com` , eşdeğer kapsam değeri `https://graph.microsoft.com/.default` .  Kaynak URL biçiminde değilse, ancak formun kaynak KIMLIĞI ise `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` , kapsam değerini kullanmaya devam edebilirsiniz `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` .
 
 Farklı kapsam türleri hakkında daha fazla bilgi için [Microsoft Identity platformunda izinler ve onay](./v2-permissions-and-consent.md) ' i ve [v 1.0 belirteçleri 'ni kabul eden bir Web API 'si için kapsamları](./msal-v1-app-scopes.md) inceleyin.
 

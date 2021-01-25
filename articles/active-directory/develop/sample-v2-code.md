@@ -1,6 +1,6 @@
 ---
 title: Microsoft Identity platform için kod örnekleri
-description: Senaryoya göre düzenlenmiş kullanılabilir Microsoft Identity platform (v 2.0 uç noktası) kod örneklerinin bir dizinini sağlar.
+description: Senaryoya göre düzenlenmiş, kullanılabilir Microsoft Identity platform kod örneklerinin bir dizinini sağlar.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 3baeb87bf3fe1cdcd5e9f27aed2587eed060c5a8
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 368a1acdfda66c3714979d27037737a75bbada5a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064530"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756648"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity platform kodu örnekleri (v 2.0 uç noktası)
 
@@ -26,9 +26,9 @@ Microsoft Identity platformunu kullanarak şunları yapabilirsiniz:
 - Web uygulamalarınıza ve Web API 'Lerine kimlik doğrulaması ve yetkilendirme ekleyin.
 - Korumalı bir Web API 'sine erişmek için erişim belirteci gerektir.
 
-Bu makalede kısaca Microsoft Identity platform uç noktası için örneklere bağlantılar sunulmaktadır. Bu örnekler, bunun nasıl yapıldığını gösterir ve uygulamalarınızda kullanabileceğiniz kod parçacıklarını da sağlar. Kod örneği sayfasında gereksinimler, yükleme ve Kuruluma yardımcı olacak ayrıntılı Benioku konuları bulacaksınız. Kod içindeki açıklamalar kritik bölümleri anlamanıza yardımcı olur.
+Bu makalede kısaca Microsoft Identity platformu örneklerine yönelik bağlantılar sunulmaktadır. Bu örnekler, bunun nasıl yapıldığını gösterir ve uygulamalarınızda kullanabileceğiniz kod parçacıklarını da sağlar. Kod örneği sayfasında gereksinimler, yükleme ve Kuruluma yardımcı olacak ayrıntılı Benioku konuları bulacaksınız. Kod içindeki açıklamalar kritik bölümleri anlamanıza yardımcı olur.
 
-Her örnek tür için temel senaryoyu anlamak üzere bkz. [Microsoft Identity platform uç noktası Için uygulama türleri](v2-app-types.md).
+Her örnek tür için temel senaryoyu anlamak üzere bkz. [Microsoft Identity platform Için uygulama türleri](v2-app-types.md).
 
 GitHub 'daki örneklere da katkıda bulunabilirsiniz. Nasıl yapılacağını öğrenmek için bkz. [Microsoft Azure Active Directory örnekleri ve belgeleri](https://github.com/Azure-Samples?page=3&query=active-directory).
 
@@ -56,8 +56,8 @@ Aşağıdaki örneklerde, kullanıcıların oturum açmasını sağlayan Web uyg
 
 | Platform | Yalnızca kullanıcılar oturum açar | Kullanıcılar ve çağrılar Microsoft Graph imzalar |
 | -------- | ------------------- | --------------------------------- |
-| ![Bu görüntüde ASP.NET Core logosu gösterilmektedir](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Çekirdeği | [ASP.NET Core WebApp oturum açan kullanıcılar öğreticisi](https://aka.ms/aspnetcore-webapp-sign-in) | [ASP.NET Core Web uygulaması çağrılarındaki](https://aka.ms/aspnetcore-webapp-call-msgraph) aynı örnek Microsoft Graph aşaması</p>[Arka plan uygulamaları, API 'ler ve hizmetlerden gelen, oturum açmış kullanıcının belirteç önbelleğine erişen](https://github.com/Azure-Samples/ms-identity-dotnet-advanced-token-cache) gelişmiş örnek |
-| ![Bu görüntüde ASP.NET Framework logosu gösterilmektedir](media/sample-v2-code/logo_NETframework.png)</p>ASP.NET Çekirdeği | Geliştiricilerin Active Directory Federasyon Hizmetleri (AD FS) (AD FS) ile tümleştirilmiş uygulamalarınızı Azure Active Directory (Azure AD) ile güvenli ve güvenli bir şekilde nasıl geçirebileceğinizi öğrenmek için [Azure AD uygulama geçişi PlayBook 'a AD FS](https://github.com/Azure-Samples/ms-identity-dotnet-adfs-to-aad) | |
+| ![Bu görüntüde ASP.NET Core logosu gösterilmektedir](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | [ASP.NET Core WebApp oturum açan kullanıcılar öğreticisi](https://aka.ms/aspnetcore-webapp-sign-in) | [ASP.NET Core Web uygulaması çağrılarındaki](https://aka.ms/aspnetcore-webapp-call-msgraph) aynı örnek Microsoft Graph aşaması</p>[Arka plan uygulamaları, API 'ler ve hizmetlerden gelen, oturum açmış kullanıcının belirteç önbelleğine erişen](https://github.com/Azure-Samples/ms-identity-dotnet-advanced-token-cache) gelişmiş örnek |
+| ![Bu görüntüde ASP.NET Framework logosu gösterilmektedir](media/sample-v2-code/logo_NETframework.png)</p>ASP.NET Core | Geliştiricilerin Active Directory Federasyon Hizmetleri (AD FS) (AD FS) ile tümleştirilmiş uygulamalarınızı Azure Active Directory (Azure AD) ile güvenli ve güvenli bir şekilde nasıl geçirebileceğinizi öğrenmek için [Azure AD uygulama geçişi PlayBook 'a AD FS](https://github.com/Azure-Samples/ms-identity-dotnet-adfs-to-aad) | |
 | ![Bu görüntüde ASP.NET Framework logosu gösterilmektedir](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [ASP.NET hızlı başlangıç](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [DotNet-WebApp-openıdconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [DotNet-Yönetici-kısıtlı-kapsamlar-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> |[MSGraph-eğitim-aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
 | ![Bu görüntüde Java logosu gösterilir](media/sample-v2-code/logo_java.png)  |                   | [MS-Identity-Java-WebApp](https://github.com/Azure-Samples/ms-identity-java-webapp) |
 | ![Bu görüntüde Java logosu gösterilir](media/sample-v2-code/logo_java.png)  | [MS-Identity-B2C-Java-Servlet-WebApp-Authentication](https://github.com/Azure-Samples/ms-identity-b2c-java-servlet-webapp-authentication)|  |
@@ -121,11 +121,11 @@ Aşağıdaki örneklerde, uygulamanızın herhangi bir Azure Active Directory (A
 
 ## <a name="web-apis"></a>Web API'leri
 
-Aşağıdaki örneklerde, bir Web API 'sinin Microsoft Identity platform uç noktası ile nasıl korunacağı ve Web API 'sinden bir aşağı akış API 'sinin nasıl çağrılacağını gösterilmektedir.
+Aşağıdaki örneklerde, bir Web API 'sinin Microsoft Identity platformu ile nasıl korunacağı ve Web API 'sinden bir aşağı akış API 'sinin nasıl çağrılacağını gösterilmektedir.
 
 | Platform | Örnek |
 | -------- | ------------------- |
-| ![Bu görüntüde ASP.NET Core logosu gösterilmektedir](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Çekirdeği | [DotNet-Native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi-calls-msgraph) ASP.NET Core Web API (hizmeti)  |
+| ![Bu görüntüde ASP.NET Core logosu gösterilmektedir](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | [DotNet-Native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi-calls-msgraph) ASP.NET Core Web API (hizmeti)  |
 | ![Bu görüntüde ASP.NET logosu gösterilmektedir](media/sample-v2-code/logo_NET.png)</p>ASP.NET MVC | [MS-Identity-ASPNET-WebApi-OnBehalfOf](https://github.com/Azure-Samples/ms-identity-aspnet-webapi-onbehalfof) Web API (hizmeti) |
 | ![Bu görüntüde Java logosu gösterilir](media/sample-v2-code/logo_java.png) | [MS-Identity-Java-WebApi](https://github.com/Azure-Samples/ms-identity-java-webapi) Web API (hizmeti) |
 | ![Bu görüntüde Node.js logosu gösterilmektedir](media/sample-v2-code/logo_nodejs.png) | [Active-Directory-JavaScript-NodeJS-WebApi-v2](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2) Web API (hizmeti) |
@@ -133,11 +133,11 @@ Aşağıdaki örneklerde, bir Web API 'sinin Microsoft Identity platform uç nok
 
 ## <a name="azure-functions-as-web-apis"></a>Web API 'Leri olarak Azure Işlevleri
 
-Aşağıdaki örneklerde HttpTrigger kullanılarak bir Azure Işlevinin nasıl korunacağı ve Microsoft Identity platform uç noktasıyla bir Web API 'sinin nasıl yapılacağı ve Web API 'sinden bir aşağı akış API 'sinin nasıl çağrılacağını gösterilmektedir.
+Aşağıdaki örneklerde, HttpTrigger kullanarak bir Azure Işlevinin nasıl korunacağı ve Microsoft Identity platformu ile bir Web API 'sinin nasıl yapılacağı ve Web API 'sinden bir aşağı akış API 'sinin nasıl çağrılacağını gösterilmektedir.
 
 | Platform | Örnek |
 | -------- | ------------------- |
-| ![Bu görüntüde ASP.NET Core logosu gösterilmektedir](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Çekirdeği | ASP.NET Core Web API (hizmet) Azure Işlevi [DotNet-Native-aspnetcore-v2](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions)  |
+| ![Bu görüntüde ASP.NET Core logosu gösterilmektedir](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | ASP.NET Core Web API (hizmet) Azure Işlevi [DotNet-Native-aspnetcore-v2](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions)  |
 | ![Bu görüntüde Python logosu gösterilmektedir](media/sample-v2-code/logo_python.png)</p>Python | [Python](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions) 'un Web API 'si (hizmeti) |
 | ![Bu görüntüde Node.js logosu gösterilmektedir](media/sample-v2-code/logo_nodejs.png)</p>Node.js | Node.js ve Passport için Web API (hizmeti) [ -Azure-AD](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions) |
 | ![Bu görüntüde Node.js logosu gösterilmektedir](media/sample-v2-code/logo_nodejs.png)</p>Node.js | Node.js ve Passport için Web API (hizmeti) [ -Azure-AD adına using](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions) |

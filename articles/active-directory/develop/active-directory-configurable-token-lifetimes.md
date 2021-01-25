@@ -13,14 +13,14 @@ ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 33dffa40e0236483d641c2e2bbe318bb62a7724d
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f4ae26a489b823e2347841cf72690d6cd8462611
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678196"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755315"
 ---
-# <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft Identity platformunda yapılandırılabilir belirteç yaşam süreleri (Önizleme)
+# <a name="configurable-token-lifetimes-in-the-microsoft-identity-platform-preview"></a>Microsoft Identity platformunda yapılandırılabilir belirteç yaşam süreleri (Önizleme)
 
 Microsoft Identity platform tarafından verilen erişim, KIMLIK veya SAML belirtecinin ömrünü belirtebilirsiniz. Kuruluşunuzdaki tüm uygulamalar, çok kiracılı (çok kuruluşlu) bir uygulama veya belirli bir hizmet sorumlusu için belirteç ömrünü ayarlayabilirsiniz. Ancak, şu anda [yönetilen kimlik hizmeti sorumluları](../managed-identities-azure-resources/overview.md)için belirteç yaşam sürelerini yapılandırmayı desteklemiyoruz.
 
@@ -50,7 +50,7 @@ Erişim belirteçleri, SAML belirteçleri ve KIMLIK belirteçleri için belirte�
 
 ### <a name="saml-tokens"></a>SAML belirteçleri
 
-SAML belirteçleri, Web tabanlı birçok SAAS uygulaması tarafından kullanılır ve Azure Active Directory SAML2 protokol uç noktası kullanılarak elde edilir. Bunlar, WS-Federation kullanan uygulamalar tarafından da kullanılır. Belirtecin varsayılan yaşam süresi 1 saattir. Bir uygulamanın perspektifinden, belirtecin geçerlilik süresi belirteçteki öğenin NotOnOrAfter değeri ile belirtilir `<conditions …>` . Belirtecin geçerlilik süresi sona erdikten sonra, istemcinin yeni bir kimlik doğrulama isteği başlatması gerekir. Bu, genellikle çoklu oturum açma (SSO) oturum belirtecinin bir sonucu olarak etkileşimli oturum açmadan memnun olur.
+SAML belirteçleri, Web tabanlı birçok SaaS uygulaması tarafından kullanılır ve Azure Active Directory SAML2 protokol uç noktası kullanılarak elde edilir. Bunlar, WS-Federation kullanan uygulamalar tarafından da kullanılır. Belirtecin varsayılan yaşam süresi 1 saattir. Bir uygulamanın perspektifinden, belirtecin geçerlilik süresi belirteçteki öğenin NotOnOrAfter değeri ile belirtilir `<conditions …>` . Belirtecin geçerlilik süresi sona erdikten sonra, istemcinin yeni bir kimlik doğrulama isteği başlatması gerekir. Bu, genellikle çoklu oturum açma (SSO) oturum belirtecinin bir sonucu olarak etkileşimli oturum açmadan memnun olur.
 
 NotOnOrAfter değeri, `AccessTokenLifetime` içindeki parametresi kullanılarak değiştirilebilir `TokenLifetimePolicy` . Varsa, ilkede yapılandırılan yaşam süresine ayarlanır ve beş dakikalık bir saat eğriltme faktörü olur.
 
@@ -58,7 +58,7 @@ NotOnOrAfter değeri, `AccessTokenLifetime` içindeki parametresi kullanılarak 
 
 ### <a name="id-tokens"></a>Kimlik belirteçleri
 
-KIMLIK belirteçleri Web sitelerine ve yerel istemcilere geçirilir. KIMLIK belirteçleri bir kullanıcıyla ilgili profil bilgilerini içerir. KIMLIK belirteci, belirli bir Kullanıcı ve istemci birleşimine bağlanır. KIMLIK belirteçleri, süresi doluncaya kadar geçerli kabul edilir. Genellikle, bir Web uygulaması, kullanıcının uygulamadaki oturum ömrünü Kullanıcı için verilen KIMLIK belirtecinin ömrü boyunca eşleştirir. Web uygulamasının uygulama oturumunun ne sıklıkta dolacağını ve kullanıcının Microsoft Identity platformu ile yeniden kimlik doğrulaması gerektirdiğini denetlemek için bir KIMLIK belirtecinin ömrünü ayarlayabilirsiniz (sessizce veya etkileşimli olarak).
+KIMLIK belirteçleri Web sitelerine ve yerel istemcilere geçirilir. KIMLIK belirteçleri bir kullanıcıyla ilgili profil bilgilerini içerir. KIMLIK belirteci, belirli bir Kullanıcı ve istemci birleşimine bağlanır. KIMLIK belirteçleri, süresi doluncaya kadar geçerli kabul edilir. Genellikle, bir Web uygulaması, kullanıcının uygulamadaki oturum ömrünü Kullanıcı için verilen KIMLIK belirtecinin ömrü boyunca eşleştirir. Web uygulamasının uygulama oturumunun ne sıklıkta dolacağını ve kullanıcının Microsoft Identity platformu ile yeniden kimlik doğrulaması gerektirdiğini (sessizce veya etkileşimli olarak) denetlemek için bir KIMLIK belirtecinin ömrünü ayarlayabilirsiniz.
 
 ### <a name="token-lifetime-policy-properties"></a>Belirteç ömür ilkesi özellikleri
 
@@ -108,7 +108,7 @@ Maksimum yaş özelliği, tek bir belirtecin kullanılabileceği sürenin uzunlu
 ### <a name="single-sign-on-session-tokens"></a>Çoklu oturum açma oturum belirteçleri
 Bir Kullanıcı Microsoft Identity platformu ile kimlik doğruladığında, kullanıcının tarayıcısı ve Microsoft Identity platformu ile çoklu oturum açma oturumu (SSO) oluşturulur. Bir tanımlama bilgisi biçimindeki SSO belirteci bu oturumu temsil eder. SSO oturum belirteci belirli bir kaynak/istemci uygulamasına bağlanmamış. SSO oturum belirteçleri iptal edilebilir ve bunların geçerlilik süresi her kullanıldığında denetlenir.
 
-Microsoft Identity platform iki tür SSO oturum belirteci kullanır: kalıcı ve kalıcı olmayan. Kalıcı oturum belirteçleri, tarayıcı tarafından kalıcı tanımlama bilgileri olarak depolanır. Kalıcı olmayan oturum belirteçleri oturum tanımlama bilgileri olarak depolanır. (Tarayıcı kapalıyken oturum tanımlama bilgileri yok edilir.) Genellikle kalıcı olmayan bir oturum belirteci depolanır. Ancak Kullanıcı kimlik doğrulaması sırasında Oturumumu **açık tut** onay kutusunu seçtiğinde kalıcı bir oturum belirteci depolanır.
+Microsoft Identity platformu iki tür SSO oturum belirteci kullanır: kalıcı ve kalıcı olmayan. Kalıcı oturum belirteçleri, tarayıcı tarafından kalıcı tanımlama bilgileri olarak depolanır. Kalıcı olmayan oturum belirteçleri oturum tanımlama bilgileri olarak depolanır. (Tarayıcı kapalıyken oturum tanımlama bilgileri yok edilir.) Genellikle kalıcı olmayan bir oturum belirteci depolanır. Ancak Kullanıcı kimlik doğrulaması sırasında Oturumumu **açık tut** onay kutusunu seçtiğinde kalıcı bir oturum belirteci depolanır.
 
 Kalıcı olmayan oturum belirteçlerinin 24 saat ömrü vardır. Kalıcı belirteçlerde 90 gün ömrü vardır. Geçerlilik süresi içinde SSO oturumu belirteci kullanıldığında, belirteç türüne bağlı olarak, geçerlilik süresi bir 24 saat veya 90 gün daha genişletilir. Bir SSO oturum belirteci geçerlilik süresi içinde kullanılmıyorsa, süresi dolmuş olarak kabul edilir ve artık kabul edilmez.
 
@@ -232,13 +232,13 @@ Etmen
 * Web uygulaması, düzenli olarak kullanılan bir Web uygulamasıdır ve hiçbir ilkeye bağlanmaz.
 * Web uygulaması B, son derece duyarlı süreçler için kullanılır. Hizmet sorumlusu, en fazla 30 dakikalık bir oturum belirteci olan belirteç ömür Ilkesi 2 ' ye bağlıdır.
 
-12:00 PM 'de Kullanıcı yeni bir tarayıcı oturumu başlatır ve Web uygulamasına erişmeye çalışır. Kullanıcı Microsoft Identity platformu 'na yönlendirilir ve oturum açması istenir. Bu, tarayıcıda oturum belirtecine sahip bir tanımlama bilgisi oluşturur. Kullanıcı, kullanıcının uygulamaya erişmesine izin veren bir KIMLIK belirteciyle bir Web uygulamasına yeniden yönlendirilir.
+12:00 PM 'de Kullanıcı yeni bir tarayıcı oturumu başlatır ve Web uygulamasına erişmeye çalışır. Kullanıcı Microsoft Identity platformuna yönlendirilir ve oturum açması istenir. Bu, tarayıcıda oturum belirtecine sahip bir tanımlama bilgisi oluşturur. Kullanıcı, kullanıcının uygulamaya erişmesine izin veren bir KIMLIK belirteciyle bir Web uygulamasına yeniden yönlendirilir.
 
-12:15 ' de, Kullanıcı B Web uygulamasına erişmeye çalışır. Tarayıcı, oturum tanımlama bilgisini algılayan Microsoft Identity platform 'a yeniden yönlendirir. Web uygulaması B 'nin hizmet sorumlusu, belirteç ömür Ilkesi 2 ' ye bağlıdır, ancak aynı zamanda üst kuruluşun bir parçasıdır ve varsayılan belirteç yaşam süresi Ilke 1 ' dir. Belirteç yaşam süresi Ilkesi 2, hizmet sorumlularıyla bağlantılı ilkelerin kuruluş varsayılan ilkelerine kıyasla daha yüksek bir önceliğe sahip olduğu için devreye girer. Oturum belirteci ilk olarak son 30 dakika içinde verildi, bu nedenle geçerli kabul edilir. Kullanıcı, erişim izni veren bir KIMLIK belirteciyle B Web uygulamasına yeniden yönlendirilir.
+12:15 ' de, Kullanıcı B Web uygulamasına erişmeye çalışır. Tarayıcı, oturum tanımlama bilgisini algılayan Microsoft Identity platformu 'na yeniden yönlendirir. Web uygulaması B 'nin hizmet sorumlusu, belirteç ömür Ilkesi 2 ' ye bağlıdır, ancak aynı zamanda üst kuruluşun bir parçasıdır ve varsayılan belirteç yaşam süresi Ilke 1 ' dir. Belirteç yaşam süresi Ilkesi 2, hizmet sorumlularıyla bağlantılı ilkelerin kuruluş varsayılan ilkelerine kıyasla daha yüksek bir önceliğe sahip olduğu için devreye girer. Oturum belirteci ilk olarak son 30 dakika içinde verildi, bu nedenle geçerli kabul edilir. Kullanıcı, erişim izni veren bir KIMLIK belirteciyle B Web uygulamasına yeniden yönlendirilir.
 
-1:00 ' de, Kullanıcı A Web uygulamasına erişmeyi dener. Kullanıcı Microsoft Identity platform 'a yönlendirilir. A Web uygulaması hiçbir ilkeyle bağlantılı değildir, ancak varsayılan belirteç ömür Ilkesi 1 olan bir kuruluşta olduğundan, bu ilke geçerli olur. Son sekiz saat içinde ilk olarak verilen oturum tanımlama bilgisi algılanır. Kullanıcı yeni bir KIMLIK belirteci ile sessizce Web uygulamasına geri yönlendirilir. Kullanıcının kimlik doğrulaması için gerekli değildir.
+1:00 ' de, Kullanıcı A Web uygulamasına erişmeyi dener. Kullanıcı Microsoft Identity platformuna yönlendirilir. A Web uygulaması hiçbir ilkeyle bağlantılı değildir, ancak varsayılan belirteç ömür Ilkesi 1 olan bir kuruluşta olduğundan, bu ilke geçerli olur. Son sekiz saat içinde ilk olarak verilen oturum tanımlama bilgisi algılanır. Kullanıcı yeni bir KIMLIK belirteci ile sessizce Web uygulamasına geri yönlendirilir. Kullanıcının kimlik doğrulaması için gerekli değildir.
 
-Daha sonra Kullanıcı, B Web uygulamasına erişmeye çalışır. Kullanıcı Microsoft Identity platform 'a yönlendirilir. Daha önce olduğu gibi, belirteç ömür Ilkesi 2 etkili olur. Belirteç 30 dakikadan önce verildiği için kullanıcıdan oturum açma kimlik bilgilerini yeniden girmesi istenir. Yepyeni bir oturum belirteci ve KIMLIK belirteci verilir. Kullanıcı daha sonra B Web uygulamasına erişebilir.
+Daha sonra Kullanıcı, B Web uygulamasına erişmeye çalışır. Kullanıcı Microsoft Identity platformuna yönlendirilir. Daha önce olduğu gibi, belirteç ömür Ilkesi 2 etkili olur. Belirteç 30 dakikadan önce verildiği için kullanıcıdan oturum açma kimlik bilgilerini yeniden girmesi istenir. Yepyeni bir oturum belirteci ve KIMLIK belirteci verilir. Kullanıcı daha sonra B Web uygulamasına erişebilir.
 
 ## <a name="cmdlet-reference"></a>Cmdlet başvurusu
 

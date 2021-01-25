@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: c4c7d021c7c3a5a32d537a50fa45449fdee7e817
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 105353598a2af60c407bacf02b4527b2de84e450
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979938"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756149"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Öğretici: Kullanıcı oturum açma ve angular tek sayfalı uygulamadan Microsoft Graph API 'sini çağırma
 
@@ -49,7 +49,7 @@ Bu senaryoda, bir Kullanıcı oturum açtıktan sonra, yetkilendirme üst bilgis
 
 Bu öğretici aşağıdaki kitaplığı kullanır:
 
-|Kitaplık|Description|
+|Kitaplık|Açıklama|
 |---|---|
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|JavaScript angular sarmalayıcı için Microsoft kimlik doğrulama kitaplığı|
 
@@ -264,14 +264,14 @@ this.authService.acquireTokenSilent(requestObj).then(function (tokenResponse) {
 
 Bu kodda, `scopes` API için erişim belirtecinde döndürülmek istenen kapsamları içerir.
 
-Örnek:
+Örneğin:
 
 * `["user.read"]` Microsoft Graph için
 * `["<Application ID URL>/scope"]` Özel Web API 'Leri için (yani, `api://<Application ID>/access_as_user` )
 
 #### <a name="get-a-user-token-interactively"></a>Etkileşimli olarak kullanıcı belirteci alma
 
-Bazen kullanıcının Microsoft Identity platform uç noktasıyla etkileşim kurması gerekir. Örnek:
+Bazen kullanıcının Microsoft Identity platformu ile etkileşim kurması gerekir. Örneğin:
 
 * Parolasının süresi sona erdiği için kullanıcıların kimlik bilgilerini yeniden girmesi gerekebilir.
 * Uygulamanız, kullanıcının onaylaması gereken ek kaynak kapsamlarına erişim istiyor.
@@ -279,7 +279,7 @@ Bazen kullanıcının Microsoft Identity platform uç noktasıyla etkileşim kur
 
 Çoğu uygulama için önerilen model ilk olarak çağrı yapmak `acquireTokenSilent` , sonra özel durumu yakalamak ve sonra `acquireTokenPopup` `acquireTokenRedirect` etkileşimli bir istek başlatmak için (veya) çağırır.
 
-`acquireTokenPopup`Sonuçları açılan bir oturum açma penceresinde çağırma. Alternatif olarak, `acquireTokenRedirect` kullanıcıları Microsoft Identity platform uç noktasına yönlendirir. Bu pencerede, kullanıcıların kimlik bilgilerini onaylaması, gerekli kaynağa onay vermesi veya iki öğeli kimlik doğrulamayı tamamlaması gerekir.
+`acquireTokenPopup`Sonuçları açılan bir oturum açma penceresinde çağırma. Alternatif olarak, `acquireTokenRedirect` kullanıcıları Microsoft Identity platformuna yeniden yönlendirir. Bu pencerede, kullanıcıların kimlik bilgilerini onaylaması, gerekli kaynağa onay vermesi veya iki öğeli kimlik doğrulamayı tamamlaması gerekir.
 
 ```javascript
   const requestObj = {

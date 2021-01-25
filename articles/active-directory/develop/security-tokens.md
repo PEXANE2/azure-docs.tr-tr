@@ -1,7 +1,7 @@
 ---
 title: Güvenlik belirteçleri | Mavisi
 titleSuffix: Microsoft identity platform
-description: Microsoft Identity platform (v 2.0) içindeki güvenlik belirteçlerinin temelleri hakkında bilgi edinin.
+description: Microsoft Identity platformunda güvenlik belirteçlerinin temelleri hakkında bilgi edinin.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,18 +13,18 @@ ms.date: 05/11/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 88dc4bb86459cd0390c4c01deb871aa93e39c6d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9668d3b0b57e36fb95421f8b502b9b743be8eb31
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84266755"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756219"
 ---
 # <a name="security-tokens"></a>Güvenlik belirteçleri
 
-Merkezi bir kimlik sağlayıcısı özellikle, dünyanın dört bir yanındaki, kuruluşun ağından oturum açması gerekmeyen kullanıcılar için yararlıdır. Microsoft Identity platform kullanıcıların kimliğini doğrular ve bir [istemci uygulamasının](developer-glossary.md#client-application) bir [kaynak sunucusundaki](developer-glossary.md#resource-server)korumalı kaynaklara erişmesine izin veren [erişim belirteci](developer-glossary.md#access-token), [yenileme belirteci](developer-glossary.md#refresh-token)ve [kimlik belirteci](developer-glossary.md#id-token)gibi güvenlik belirteçleri sağlar.
+Merkezi bir kimlik sağlayıcısı özellikle, dünyanın dört bir yanındaki, kuruluşun ağından oturum açması gerekmeyen kullanıcılar için yararlıdır. Microsoft Identity platformu kullanıcıların kimliğini doğrular ve [erişim belirteci](developer-glossary.md#access-token), [yenileme belirteci](developer-glossary.md#refresh-token)ve [kimlik belirteci](developer-glossary.md#id-token)gibi güvenlik belirteçleri sağlar ve bu sayede bir [istemci uygulamasının](developer-glossary.md#client-application) bir [kaynak sunucusundaki](developer-glossary.md#resource-server)korumalı kaynaklara erişmesine izin verilir.
 
-**Erişim belirteci** , bir [yetkilendirme sunucusu](developer-glossary.md#authorization-server) tarafından [OAuth 2,0](active-directory-v2-protocols.md) akışının bir parçası olarak verilen bir güvenlik belirtecidir. Kullanıcının ve belirtecin hedeflenen uygulamayla ilgili bilgiler içerir; Web API 'Lerine ve diğer korumalı kaynaklara erişmek için kullanılabilir. Microsoft Identity platform 'un erişim belirteçleri hakkında daha fazla bilgi edinmek için bkz. [erişim belirteçleri](access-tokens.md).
+**Erişim belirteci** , bir [yetkilendirme sunucusu](developer-glossary.md#authorization-server) tarafından [OAuth 2,0](active-directory-v2-protocols.md) akışının bir parçası olarak verilen bir güvenlik belirtecidir. Kullanıcının ve belirtecin hedeflenen uygulamayla ilgili bilgiler içerir; Web API 'Lerine ve diğer korumalı kaynaklara erişmek için kullanılabilir. Microsoft kimlik platformunun erişim belirteçleri hakkında daha fazla bilgi edinmek için bkz. [erişim belirteçleri](access-tokens.md).
 
 Erişim belirteçleri yalnızca kısa bir süre için geçerlidir. bu nedenle, yetkilendirme sunucuları bazen erişim belirteci verildiği sırada bir **yenileme belirteci** verir. İstemci uygulaması daha sonra gerektiğinde yeni bir erişim belirteci için bu yenileme belirtecini değiştirebilir. Microsoft Identity platformunun izinleri iptal etmek için yenileme belirteçleri kullanma hakkında daha fazla bilgi edinmek için bkz. [belirteç iptali](access-tokens.md#token-revocation).
 
@@ -46,7 +46,7 @@ Erişim belirteçleri, üst bilgide taşıyıcı belirteci olarak bir Web API 's
 
 ## <a name="json-web-tokens-jwts-and-claims"></a>JSON Web belirteçleri (JWTs) ve talepleri
 
-Microsoft Identity platformu, **talepler**Içeren **JSON Web belirteçleri (jwts)** olarak güvenlik belirteçleri uygular. JWTs güvenlik belirteçleri olarak kullanıldığından, bu kimlik doğrulama biçimi bazen **JWT kimlik doğrulaması**olarak adlandırılır.
+Microsoft Identity platformu, **talepleri** Içeren **JSON Web belirteçleri (jwts)** olarak güvenlik belirteçleri uygular. JWTs güvenlik belirteçleri olarak kullanıldığından, bu kimlik doğrulama biçimi bazen **JWT kimlik doğrulaması** olarak adlandırılır.
 
 Bir [talep](developer-glossary.md#claim) , bir istemci uygulaması veya [kaynak sahibi](developer-glossary.md#resource-owner)gibi bir varlık hakkında, kaynak sunucusu gibi başka bir varlığa onay verir. Bir talep, JWT talebi veya JSON Web Token talebi olarak da adlandırılabilir.
 
@@ -67,7 +67,7 @@ Bir talep, şu gibi bilgiler sağlayan anahtar-değer çiftlerinden oluşur:
 * Belirtecin oluşturulduğu uygulama olan hedef kitle
 * Belirteç için istenen uygulama (istemci). Web uygulamaları söz konusu olduğunda, bu, hedef kitle ile aynı olabilir
 
-Microsoft kimlik platformunun belirteçleri ve talep bilgilerini nasıl uyguladığı hakkında daha fazla bilgi edinmek için bkz. [erişim belirteçleri](access-tokens.md) ve [Kimlik belirteçleri](id-tokens.md).
+Microsoft Identity platformunun belirteçleri ve talep bilgilerini nasıl uyguladığı hakkında daha fazla bilgi edinmek için bkz. [erişim belirteçleri](access-tokens.md) ve [Kimlik belirteçleri](id-tokens.md).
 
 ## <a name="how-each-flow-emits-tokens-and-codes"></a>Her akışın belirteçleri ve kodları nasıl yayar
 

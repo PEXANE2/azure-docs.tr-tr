@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 8861e641f5ee6a10576425a7702ba02da297a0bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0127c8d796126d1e99b1fa38a9506df477c7eb49
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631282"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755740"
 ---
 # <a name="using-directory-schema-extension-attributes-in-claims"></a>Taleplerde dizin şema uzantısı özniteliklerini kullanma
 
@@ -29,7 +29,7 @@ Dizin şeması uzantı öznitelikleri, kullanıcı nesnelerinde Azure Active Dir
 
 Dizin şeması uzantı öznitelikleri her zaman Kiracıdaki bir uygulamayla ilişkilendirilir ve kendi adında uygulamanın *ApplicationId* 'si tarafından başvurulur.
 
-Bir dizin şeması uzantısı özniteliği için tanımlayıcı *Extension_xxxxxxxxx_AttributeName*formundadır.  Burada *xxxxxxxxx* , uzantının tanımlandığı uygulamanın *ApplicationId* olduğu yerdir.
+Bir dizin şeması uzantısı özniteliği için tanımlayıcı *Extension_xxxxxxxxx_AttributeName* formundadır.  Burada *xxxxxxxxx* , uzantının tanımlandığı uygulamanın *ApplicationId* olduğu yerdir.
 
 ## <a name="registering-and-using-directory-schema-extensions"></a>Dizin şema uzantılarını kaydetme ve kullanma
 Dizin şeması uzantı öznitelikleri, iki şekilde kaydedilebilir ve doldurulabilir:
@@ -38,10 +38,10 @@ Dizin şeması uzantı öznitelikleri, iki şekilde kaydedilebilir ve doldurulab
 - Kaydetmek için Microsoft Graph kullanarak, değerlerini ayarlayın ve [şema uzantılarından](/graph/extensibility-overview)oku. [PowerShell cmdlet 'leri](/powershell/azure/active-directory/using-extension-attributes-sample) de kullanılabilir.
 
 ### <a name="emitting-claims-with-data-from-directory-schema-extension-attributes-created-with-ad-connect"></a>AD Connect ile oluşturulan dizin şeması uzantısı özniteliklerinden gelen verilerle talepleri yayma
-AD Connect kullanılarak oluşturulan ve eşitlenen Dizin şeması uzantı öznitelikleri, her zaman AD Connect tarafından kullanılan uygulama KIMLIĞIYLE ilişkilendirilir. Bunlar her ikisi de talepler için Portal Kullanıcı arabirimindeki **Kurumsal** uygulamalar yapılandırmasında bir kaynak olarak ve **Kurumsal uygulamalar**altında Galeri dışı uygulama yapılandırma deneyimi ve uygulama kayıt deneyimi aracılığıyla kaydedilen uygulamalar için bir talep eşleme ilkesi aracılığıyla kullanılabilir.  AD Connect aracılığıyla oluşturulan dizin uzantısı özniteliği dizinde olduğunda, SAML SSO talep yapılandırması Kullanıcı arabiriminde gösterilir.
+AD Connect kullanılarak oluşturulan ve eşitlenen Dizin şeması uzantı öznitelikleri, her zaman AD Connect tarafından kullanılan uygulama KIMLIĞIYLE ilişkilendirilir. Bunlar her ikisi de talepler için Portal Kullanıcı arabirimindeki **Kurumsal** uygulamalar yapılandırmasında bir kaynak olarak ve **Kurumsal uygulamalar** altında Galeri dışı uygulama yapılandırma deneyimi ve uygulama kayıt deneyimi aracılığıyla kaydedilen uygulamalar için bir talep eşleme ilkesi aracılığıyla kullanılabilir.  AD Connect aracılığıyla oluşturulan dizin uzantısı özniteliği dizinde olduğunda, SAML SSO talep yapılandırması Kullanıcı arabiriminde gösterilir.
 
 ### <a name="emitting-claims-with-data-from-directory-schema-extension-attributes-created-for-an-application-using-graph-or-powershell"></a>Graph veya PowerShell kullanarak bir uygulama için oluşturulan dizin şeması uzantı özniteliklerinden gelen verilerle talepleri yayma
-Bir dizin şeması uzantısı özniteliği Microsoft Graph veya PowerShell kullanan bir uygulama için kayıtlıysa (bir uygulamalar ilk kurulumu veya örnek için sağlama adımı aracılığıyla), aynı uygulama, Kullanıcı oturum açtığında bir talep içindeki bir kullanıcı nesnesinden bu öznitelik içindeki verileri almak üzere Azure Active Directory yapılandırılabilir.  Uygulama, [isteğe bağlı talepler](active-directory-optional-claims.md#configuring-directory-extension-optional-claims)kullanılarak aynı uygulamada kayıtlı olan dizin şema uzantılarında veri alacak şekilde yapılandırılabilir.  Bunlar uygulama bildiriminde ayarlanabilir.  Bu, çok kiracılı bir uygulamanın, kendi kullanımı için Dizin şeması uzantısı özniteliklerini kaydetmesini sağlar. Uygulama bir kiracıya sağlandığında, ilişkili dizin şeması uzantıları söz konusu Kiracıdaki kullanıcılara ayarlanabilir ve tüketilebilir.  Kiracıda yapılandırıldıktan ve onay verildiğinde, verileri Graph aracılığıyla depolamak ve almak ve Microsoft Identity platform 'ın uygulamalara yaydığı belirteçlerdeki taleplerle eşlemek için kullanılabilir.
+Bir dizin şeması uzantısı özniteliği Microsoft Graph veya PowerShell kullanan bir uygulama için kayıtlıysa (bir uygulamalar ilk kurulumu veya örnek için sağlama adımı aracılığıyla), aynı uygulama, Kullanıcı oturum açtığında bir talep içindeki bir kullanıcı nesnesinden bu öznitelik içindeki verileri almak üzere Azure Active Directory yapılandırılabilir.  Uygulama, [isteğe bağlı talepler](active-directory-optional-claims.md#configuring-directory-extension-optional-claims)kullanılarak aynı uygulamada kayıtlı olan dizin şema uzantılarında veri alacak şekilde yapılandırılabilir.  Bunlar uygulama bildiriminde ayarlanabilir.  Bu, çok kiracılı bir uygulamanın, kendi kullanımı için Dizin şeması uzantısı özniteliklerini kaydetmesini sağlar. Uygulama bir kiracıya sağlandığında, ilişkili dizin şeması uzantıları söz konusu Kiracıdaki kullanıcılara ayarlanabilir ve tüketilebilir.  Kiracıda yapılandırıldıktan ve onay verildiğinde, verileri Graph aracılığıyla depolamak ve almak ve Microsoft kimlik platformunun uygulamalara yaydığı belirteçlerdeki taleplerle eşlemek için kullanılabilir.
 
 Dizin şeması uzantı öznitelikleri, herhangi bir uygulama için kaydedilebilir ve doldurulabilir.
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 5f2560cdc062edb41ecda935eb9b8efe630949dc
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 7d34039a5d56feb42473b1a2b24def5244ec3e04
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015955"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756136"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Öğretici: Microsoft Identity platformunu kullanan çok kiracılı bir Daemon oluşturma
 
@@ -33,7 +33,7 @@ Bu öğreticide:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Visual Studio 2017 veya 2019](https://visualstudio.microsoft.com/downloads/).
 - Azure AD kiracısı. Daha fazla bilgi için bkz. [Azure AD kiracısı alma](quickstart-create-new-tenant.md).
@@ -49,7 +49,7 @@ Uygulama, Microsoft iş müşterilerine yönelik çok kiracılı bir uygulama ol
 
 ![Diyagram, başlangıç noktası kimlik doğrulaması ile Azure 'a bağlanmak için bir belirteç almak üzere Azure A, AccountController 'ın Azure a 'ya bağlanmasına yönelik yönetici onayı alma ve Microsoft Graph bağlanmak üzere kullanıcıyı okuma ile eşitleme için bir belirteç alma ile UserSync uygulamasını gösterir.](./media/tutorial-v2-aspnet-daemon-webapp/topology.png)
 
-Bu örnekte kullanılan kavramlar hakkında daha fazla bilgi için [kimlik platformu uç noktası için istemci kimlik bilgileri Protokolü belgelerini](v2-oauth2-client-creds-grant-flow.md)okuyun.
+Bu örnekte kullanılan kavramlar hakkında daha fazla bilgi için [kimlik platformunun istemci kimlik bilgileri Protokolü belgelerini](v2-oauth2-client-creds-grant-flow.md)okuyun.
 
 ## <a name="clone-or-download-this-repository"></a>Bu depoyu Kopyala veya indir
 

@@ -1,5 +1,6 @@
 ---
-title: Desteklenen hesap türleri-Microsoft Identity platform | Mavisi
+title: Desteklenen hesap türleri | Mavisi
+titleSuffix: Microsoft identity platform
 description: Uygulamalarda izleyiciler ve desteklenen hesap türleri hakkında kavramsal belgeler
 services: active-directory
 author: jmprieur
@@ -12,12 +13,12 @@ ms.date: 07/14/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f0895cfc14b0237db8f2f762602fee949354e6cb
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: d6c184e2983a072dec4b3021a1b58a61cd206dba
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347464"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755993"
 ---
 # <a name="supported-account-types"></a>Desteklenen hesap türleri
 

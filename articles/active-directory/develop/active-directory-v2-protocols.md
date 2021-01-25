@@ -1,7 +1,7 @@
 ---
 title: Microsoft Identity platformunda OAuth 2,0 ve OpenID Connect protokolleri | Mavisi
 titleSuffix: Microsoft identity platform
-description: Microsoft Identity platform uç noktası tarafından desteklenen OAuth 2,0 ve OpenID Connect protokollerine yönelik bir kılavuz.
+description: Microsoft Identity platformu tarafından desteklenen OAuth 2,0 ve OpenID Connect protokollerine yönelik bir kılavuz.
 services: active-directory
 author: hpsin
 manager: CelesteDG
@@ -13,14 +13,14 @@ ms.date: 07/21/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 12edbcda7354d9d6d4b03ebe32304d988b2eb579
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 765c363542b07deac44d47b94731e1109fcba045
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88751451"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755752"
 ---
-# <a name="oauth-20-and-openid-connect-protocols-on-microsoft-identity-platform"></a>Microsoft Identity platformunda OAuth 2,0 ve OpenID Connect protokolleri
+# <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>Microsoft Identity platformunda OAuth 2,0 ve OpenID Connect protokolleri
 
 Hizmet olarak kimlik için Microsoft Identity platform uç noktası, sırasıyla OpenID Connect (OıDC) ve OAuth 2,0 endüstri standardı protokolleriyle kimlik doğrulama ve yetkilendirme uygular. Hizmet standartlarla uyumlu olsa da, bu protokollerin iki uygulaması arasında hafif farklar olabilir. Buradaki bilgiler, HTTP isteklerini doğrudan gönderip işleyerek veya [Açık kaynaklı kitaplıklarımızın](reference-v2-libraries.md)birini kullanmak yerine bir üçüncü taraf açık kaynak kitaplığı kullanarak kodunuzu yazmayı tercih ediyorsanız yararlı olacaktır.
 
@@ -30,7 +30,7 @@ Neredeyse tüm OAuth 2,0 ve OpenID Connect akışlarında, Exchange 'e dahil edi
 
 ![OAuth 2,0 rollerinin gösterildiği diyagram](./media/active-directory-v2-flows/protocols-roles.svg)
 
-* **Yetkilendirme sunucusu** , Microsoft Identity platform uç noktasıdır ve kullanıcının kimliğini sağlamaktan, kaynaklara erişim verme ve iptal etme ve belirteçleri verme konusunda sorumludur. Kimlik sağlayıcısı olarak da bilinen yetkilendirme sunucusu, kullanıcının bilgileri, erişimleri ve bir akıştaki taraflar arasındaki güven ilişkileri ile yapılan her şeyi güvenli bir şekilde işler.
+* **Yetkilendirme sunucusu** Microsoft Identity platformudur ve kullanıcının kimliğini sağlamaktan, kaynaklara erişim verme ve iptal etme ve belirteç verme konusunda sorumludur. Kimlik sağlayıcısı olarak da bilinen yetkilendirme sunucusu, kullanıcının bilgileri, erişimleri ve bir akıştaki taraflar arasındaki güven ilişkileri ile yapılan her şeyi güvenli bir şekilde işler.
 * **Kaynak sahibi** genellikle Son Kullanıcı olur. Bu, verilerin sahibi olan ve istemcilerin bu verilere veya kaynağa erişmesine izin veren bir güce sahip olan taraftır.
 * **OAuth istemcisi** , uygulama kimliğiyle tanımlanan uygulamanız. OAuth istemcisi genellikle son kullanıcının etkileşime girdiği tarafdır ve yetkilendirme sunucusundan belirteçler ister. İstemciye kaynak sahibi tarafından kaynağa erişim izni verilmesi gerekir.
 * Kaynak **sunucu** , kaynağın veya verilerin bulunduğu yerdir. OAuth Istemcisini güvenli şekilde doğrulamak ve yetkilendirmek için yetkilendirme sunucusuna güvenir ve bir kaynağa erişimin verilmesini sağlamak için taşıyıcı erişim belirteçlerini kullanır.
@@ -66,11 +66,11 @@ Burada `{tenant}` dört farklı değerden birini alabilir:
 Bu uç noktalarla nasıl etkileşim kuracağınızı öğrenmek için, [protokoller](#protocols) bölümünde belirli bir uygulama türü seçin ve daha fazla bilgi için bağlantıları izleyin.
 
 > [!TIP]
-> Azure AD 'de kayıtlı tüm uygulamalar, kişisel hesaplara kaydolmasa bile Microsoft Identity platform uç noktasını kullanabilir.  Bu şekilde, uygulamanızı yeniden oluşturmadan mevcut uygulamaları Microsoft Identity platform ve [msal](reference-v2-libraries.md) 'a geçirebilirsiniz.
+> Azure AD 'de kayıtlı tüm uygulamalar, kişisel hesaplara kaydolmasa bile Microsoft Identity platformunu kullanabilir.  Bu şekilde, mevcut uygulamaları uygulamanızı yeniden oluşturmadan Microsoft Identity platformu ve [msal](reference-v2-libraries.md) geçirebilirsiniz.
 
 ## <a name="tokens"></a>Belirteçler
 
-OAuth 2,0 ve OpenID Connect, genellikle [Jwts (JSON Web belirteçleri)](https://tools.ietf.org/html/rfc7519)olarak temsil edilen **taşıyıcı belirteçlerinin**yoğun bir şekilde kullanılmasını kolaylaştırır. Taşıyıcı belirteç, korunan bir kaynağa "taşıyıcı" erişimini sağlayan hafif bir güvenlik belirtecidir. Bu anlamda, "taşıyıcı" belirtecin bir kopyasını alan herkes olur. Bir tarafın, taşıyıcı belirtecini almak için öncelikle Microsoft Identity platformunda kimlik doğrulaması yapması gerekir, ancak gerekli adımlar iletim ve depolama alanındaki belirtecin güvenliğini sağlamak için alınmadığından, istenmeyen bir taraf tarafından yakalanabilir ve kullanılabilir. Bazı güvenlik belirteçlerinin, yetkisiz tarafların onları kullanmasını önlemek için yerleşik bir mekanizması vardır ancak, taşıyıcı belirteçleri bu mekanizmaya sahip değildir ve Aktarım Katmanı Güvenliği (HTTPS) gibi güvenli bir kanalda aktarılmalıdır. Bir taşıyıcı belirteci açık bir şekilde iletilebilise, kötü amaçlı bir taraf, belirteci almak ve korumalı bir kaynağa yetkisiz erişim için kullanmak üzere bir ortadaki adam saldırısı kullanabilir. Aynı güvenlik ilkeleri, daha sonra kullanılmak üzere taşıyıcı belirteçleri depolarken veya önbelleğe alırken geçerlidir. Her zaman uygulamanızın taşıyıcı belirteçlerini güvenli bir şekilde ilettiğinden ve depoladığından emin olun. Taşıyıcı belirteçleriyle ilgili daha fazla bilgi için bkz. [RFC 6750 Bölüm 5](https://tools.ietf.org/html/rfc6750).
+OAuth 2,0 ve OpenID Connect, genellikle [Jwts (JSON Web belirteçleri)](https://tools.ietf.org/html/rfc7519)olarak temsil edilen **taşıyıcı belirteçlerinin** yoğun bir şekilde kullanılmasını kolaylaştırır. Taşıyıcı belirteç, korunan bir kaynağa "taşıyıcı" erişimini sağlayan hafif bir güvenlik belirtecidir. Bu anlamda, "taşıyıcı" belirtecin bir kopyasını alan herkes olur. Bir tarafın, taşıyıcı belirtecini almak için Microsoft Identity platformunda kimlik doğrulaması yapması gerekir, ancak gerekli adımlar iletim ve depolama alanındaki belirtecin güvenliğini sağlamak için alınmadığından, istenmeyen bir taraf tarafından yakalanabilir ve kullanılabilir. Bazı güvenlik belirteçlerinin, yetkisiz tarafların onları kullanmasını önlemek için yerleşik bir mekanizması vardır ancak, taşıyıcı belirteçleri bu mekanizmaya sahip değildir ve Aktarım Katmanı Güvenliği (HTTPS) gibi güvenli bir kanalda aktarılmalıdır. Bir taşıyıcı belirteci açık bir şekilde iletilebilise, kötü amaçlı bir taraf, belirteci almak ve korumalı bir kaynağa yetkisiz erişim için kullanmak üzere bir ortadaki adam saldırısı kullanabilir. Aynı güvenlik ilkeleri, daha sonra kullanılmak üzere taşıyıcı belirteçleri depolarken veya önbelleğe alırken geçerlidir. Her zaman uygulamanızın taşıyıcı belirteçlerini güvenli bir şekilde ilettiğinden ve depoladığından emin olun. Taşıyıcı belirteçleriyle ilgili daha fazla bilgi için bkz. [RFC 6750 Bölüm 5](https://tools.ietf.org/html/rfc6750).
 
 OAuth 2,0/OıDC içinde birincil olarak 3 tür belirteç vardır:
 

@@ -13,18 +13,18 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: c6049bf55e379a2629e8cd4ef1427f91fc31d2cd
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: b437efcfa2b0bb2a725929ae0253f48d97d11552
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063612"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754826"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Uygulamaları MSAL.NET 'a geçirme
 
 Hem .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) hem de .NET için Azure AD kimlik doğrulama kitaplığı (ADAL.NET), Azure AD varlıklarının kimliğini doğrulamak ve Azure AD 'de belirteçleri istemek için kullanılır. Bu aşamada, çoğu geliştirici Azure AD kimlik doğrulama kitaplığı (ADAL) kullanarak belirteçleri isteyerek Azure AD kimliklerinin (iş ve okul hesapları) kimliğini doğrulamak için Azure AD 'de geliştiriciler platformu (v 1.0) ile çalıştık. MSAL kullanma:
 
-- Microsoft Identity platform uç noktasını kullandığından, daha geniş bir Microsoft kimliği kümesinin (Azure AD kimlikleri ve Microsoft hesapları ve sosyal ve yerel hesaplar Azure AD B2C aracılığıyla) kimlik doğrulaması yapabilirsiniz.
+- Microsoft Identity platformunu kullandığından, daha geniş bir Microsoft kimliği kümesinin (Azure AD kimlikleri ve Microsoft hesapları ve sosyal ve yerel hesaplar Azure AD B2C aracılığıyla) kimlik doğrulaması yapabilirsiniz.
 - Kullanıcılarınız en iyi çoklu oturum açma deneyimini alacak.
 - Uygulamanız artımlı onayı etkinleştirebilir ve Koşullu erişimin desteklenmesi daha kolay olabilir
 - yeniliğin avantajlarından yararlanabilirsiniz.
@@ -35,9 +35,9 @@ Bu makalede, .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ve .
 
 ## <a name="differences-between-adal-and-msal-apps"></a>ADAL ve MSAL uygulamaları arasındaki farklılıklar
 
-Çoğu durumda, Microsoft kimlik doğrulama kitaplıklarının en son nesli olan MSAL.NET ve Microsoft Identity platform uç noktasını kullanmak istersiniz. MSAL.NET kullanarak, Azure AD (iş ve okul hesapları), Microsoft (kişisel) hesapları (MSA) veya Azure AD B2C ile uygulamanıza oturum açan kullanıcılar için belirteçler elde edersiniz.
+Çoğu durumda, Microsoft kimlik doğrulama kitaplıklarının en son nesli olan MSAL.NET ve Microsoft Identity platformunu kullanmak istersiniz. MSAL.NET kullanarak, Azure AD (iş ve okul hesapları), Microsoft (kişisel) hesapları (MSA) veya Azure AD B2C ile uygulamanıza oturum açan kullanıcılar için belirteçler elde edersiniz.
 
-Geliştiriciler için Azure AD (v 1.0) uç noktası (ve ADAL.NET) hakkında zaten bilgi sahibiyseniz, [Microsoft Identity platform (v 2.0) uç noktası hakkında ne kadar farklı olduğunu](../azuread-dev/azure-ad-endpoint-comparison.md)okumak isteyebilirsiniz.
+Azure AD for Developers (v 1.0) uç noktası (ve ADAL.NET) hakkında zaten bilgi sahibiyseniz, [Microsoft Identity platformu hakkında ne kadar farklı olduğunu](../azuread-dev/azure-ad-endpoint-comparison.md)okumak isteyebilirsiniz.
 
 Ancak, uygulamanızın daha önceki [Active Directory Federasyon Hizmetleri (AD FS) (ADFS)](/windows-server/identity/active-directory-federation-services)sürümleriyle oturum açması gerekiyorsa adal.NET kullanmanız gerekir. Daha fazla bilgi için bkz. [ADFS desteği](https://aka.ms/msal-net-adfs-support).
 
@@ -69,7 +69,7 @@ MSAL.NET 2. x artık hesap kavramını (IAccount arabirimi aracılığıyla) tan
 
 IUser ve IAccount arasındaki farklar hakkında daha fazla bilgi için bkz. [msal.NET 2. x](https://aka.ms/msal-net-2-released).
 
-### <a name="exceptions"></a>Özel Durumlar
+### <a name="exceptions"></a>Özel durumlar
 
 #### <a name="interaction-required-exceptions"></a>Etkileşim gerekli özel durumları
 
@@ -266,4 +266,4 @@ Ayrıca, kullanılabilir yenileme belirteciniz olan çeşitli tümleştirme sena
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Microsoft Identity platform uç noktasındaki kapsamlar, izinler ve onay](v2-permissions-and-consent.md) içindeki kapsamlar hakkında daha fazla bilgi edinebilirsiniz
+[Microsoft Identity platformunda kapsamlar, izinler ve onay](v2-permissions-and-consent.md) içindeki kapsamlar hakkında daha fazla bilgi edinebilirsiniz

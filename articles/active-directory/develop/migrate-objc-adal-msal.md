@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: fb66d8a4bf97a6f8a10534c9c4459123ad6a2654
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 7dc3241198fbc6eeddba059251f28c6dc35c8a29
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107931"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754943"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>İOS ve macOS için uygulamaları MSAL 'e geçirme
 
@@ -38,14 +38,14 @@ Microsoft Identity platformu Azure Active Directory v 1.0 ile birkaç önemli fa
 
 ### <a name="standards-compliance"></a>Standartlar uyumluluğu
 
-* Microsoft Identity platform uç noktası, OAuth 2,0 ve OpenID Connect standartlarını izler.
+* Microsoft Identity platformu, OAuth 2,0 ve OpenID Connect standartlarını izler.
 
 ### <a name="incremental-and-dynamic-consent"></a>Artımlı ve dinamik onay
 
 * Azure Active Directory v 1.0 uç noktası, uygulama kaydı sırasında tüm izinlerin önceden bildirilmesini gerektirir. Bu, izinlerin statik olduğu anlamına gelir.
 * Microsoft Identity platformu izinleri dinamik olarak isteyebilmesini sağlar. Uygulamalar, izinleri yalnızca gerekli olduğu gibi isteyebilir ve uygulama onlara ihtiyaç duyarken daha fazla istekte bulunabilir.
 
-Azure Active Directory v 1.0 ile Microsoft Identity platformu arasındaki farklılıklar hakkında daha fazla bilgi için bkz. [Microsoft Identity platform (v 2.0) güncelleştirmesi nedir?](../azuread-dev/azure-ad-endpoint-comparison.md).
+Azure Active Directory v 1.0 ve Microsoft Identity platformu arasındaki farklılıklar hakkında daha fazla bilgi için, bkz. [neden Microsoft Identity platform güncelleştirmesi?](../azuread-dev/azure-ad-endpoint-comparison.md).
 
 ## <a name="adal-and-msal-library-differences"></a>ADAL ve MSAL kitaplığı farklılıkları
 

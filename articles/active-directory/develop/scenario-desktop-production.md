@@ -1,5 +1,6 @@
 ---
-title: Web API 'Lerini üretime çağıran masaüstü uygulamasını taşıma-Microsoft Identity platform | Mavisi
+title: Web API 'Lerini üretime çağıran masaüstü uygulamasını taşıma | Mavisi
+titleSuffix: Microsoft identity platform
 description: Web API 'Lerini üretime çağıran bir masaüstü uygulamasını nasıl taşıyacağınızı öğrenin
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 325f95f2830ef021a4ac79de48695dda570f7817
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 05b93848bff66adc49d2855ee98fff6c9b7a2d3d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629791"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756507"
 ---
 # <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Web API 'Lerini çağıran masaüstü uygulaması: üretime taşı
 
@@ -29,9 +30,9 @@ Farklı akışlarda, kod parçacıkları bölümünde gösterildiği gibi sessiz
 ## <a name="have-the-user-consent-upfront-for-several-resources"></a>Kullanıcı onayını birkaç kaynağın önüne alma
 
 > [!NOTE]
-> Birkaç kaynağa onay alınması Microsoft Identity platform için geçerlidir ancak Azure Active Directory (Azure AD) B2C için değildir. Azure AD B2C, Kullanıcı onayını değil yalnızca yönetici onayını destekler.
+> Birkaç kaynağa onay alınması Microsoft Identity platformu için geçerlidir ancak Azure Active Directory (Azure AD) B2C için değildir. Azure AD B2C, Kullanıcı onayını değil yalnızca yönetici onayını destekler.
 
-Microsoft Identity platform (v 2.0) uç noktası ile aynı anda birkaç kaynak için bir belirteç alamazsınız. `scopes`Parametresi yalnızca tek bir kaynak için kapsam içerebilir. Kullanıcının parametresini kullanarak birkaç kaynağa ön onay vererek emin olabilirsiniz `extraScopesToConsent` .
+Microsoft Identity platformu ile aynı anda birkaç kaynak için bir belirteç alamazsınız. `scopes`Parametresi yalnızca tek bir kaynak için kapsam içerebilir. Kullanıcının parametresini kullanarak birkaç kaynağa ön onay vererek emin olabilirsiniz `extraScopesToConsent` .
 
 Örneğin, her biri iki kapsamın bulunduğu iki kaynak olabilir:
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/15/2019
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: f5909a3a824149d9bb4247c78eaaa895b040c6f2
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 42a054f211d2509dee4e9e55eeb3ea82fa46da9d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95993984"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754573"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Hızlı başlangıç: Android uygulamasından kullanıcıların oturum açma ve Microsoft Graph API'sini çağırma
 
@@ -27,7 +27,7 @@ Bu hızlı başlangıçta, bir Android uygulamasının kullanıcılara nasıl ot
 
 Uygulamalar, Microsoft Identity platformunun uygulamanıza belirteç sağlayabilmesi için Azure Active Directory bir uygulama nesnesi tarafından temsil etmelidir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Android Studio
@@ -110,7 +110,7 @@ Kod, tek ve birden çok hesap MSAL uygulamasının nasıl yazılacağını göst
 
 ### <a name="adding-msal-to-the-app"></a>Uygulamaya MSAL ekleme
 
-MSAL ([com. Microsoft. Identity. Client](https://javadoc.io/doc/com.microsoft.identity.client/msal)), kullanıcıların oturum açmasını ve Microsoft Identity platformu tarafından korunan bir API 'ye erişmek için kullanılan belirteçleri ister. Gradle 3.0 +, bağımlılıklar altında **Gradle komut dosyası**  >  **Build. Gradle (Module: App)** öğesine aşağıdakileri eklediğinizde kitaplığı kurar: **Dependencies**
+MSAL ([com. Microsoft. Identity. Client](https://javadoc.io/doc/com.microsoft.identity.client/msal)), kullanıcıların oturum açmasını ve Microsoft Identity platformu tarafından korunan bir API 'ye erişmek için kullanılan belirteçleri ister. Gradle 3.0 +, bağımlılıklar altında **Gradle komut dosyası**  >  **Build. Gradle (Module: App)** öğesine aşağıdakileri eklediğinizde kitaplığı kurar: 
 
 ```gradle
 implementation 'com.microsoft.identity.client:msal:2.+'

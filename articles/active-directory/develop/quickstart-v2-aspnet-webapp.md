@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
-ms.openlocfilehash: dbddf35b0aa1494ef719803fa84cafae04f3ec50
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: e2a71313294457e09e2bb152dea98c84b7730236
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178594"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754413"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Hızlı başlangıç: ASP.NET Web uygulamasına Microsoft Identity platformu oturum açma ekleme
 
@@ -94,7 +94,7 @@ Bu hızlı başlangıçta, bir ASP.NET Web uygulamasının kullanıcılara herha
 >    <add key="ClientId" value="Enter_the_Application_Id_here" />
 >    <add key="Tenant" value="Enter_the_Tenant_Info_Here" />
 >    ```
->    Burada:
+>    Konum:
 > - `Enter_the_Application_Id_here` - Kaydettiğiniz uygulamanın Uygulama Kimliği değeridir.
 > - `Enter_the_Tenant_Info_Here` - Aşağıdaki seçeneklerden biridir:
 >   - Uygulamanız **yalnızca Kuruluşumu** destekliyorsa, bu değeri **Kiracı kimliği** veya **kiracı adıyla** değiştirin (örneğin, contoso.onmicrosoft.com)
@@ -165,11 +165,11 @@ public void Configuration(IAppBuilder app)
 }
 ```
 
-> |Konum  | Description |
+> |Konum  | Açıklama |
 > |---------|---------|
 > | `ClientId`     | Azure portalına kaydedilen uygulamaya ait Uygulama Kimliği |
 > | `Authority`    | Kimlik doğrulaması yapılacak kullanıcı için STS uç noktası. Çoğunlukla, genel bulut için `https://login.microsoftonline.com/{tenant}/v2.0`; burada {tenant}, kiracınızın adı, kiracınızın kimliği veya ortak uç noktaya başvuru olarak *common* değeridir (çok kiracılı uygulamalarda kullanılır) |
-> | `RedirectUri`  | Microsoft Identity platform uç noktasında kimlik doğrulamasından sonra kullanıcıların gönderildiği URL |
+> | `RedirectUri`  | Microsoft Identity platformunda kimlik doğrulamasından sonra kullanıcıların gönderildiği URL |
 > | `PostLogoutRedirectUri`     | Oturum kapatıldıktan sonra kullanıcıların gönderildiği URL |
 > | `Scope`     | İstenen kapsamların listesi, boşlukla ayrılmış |
 > | `ResponseType`     | Kimlik doğrulamadan gelen yanıtın kimlik belirteci içerdiği istek |

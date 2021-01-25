@@ -11,30 +11,39 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/25/2020
+ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 115d89783a849a9c4c7adb2fceceaf8d1575c785
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: dbda0aecdadd81da0f7681a5fc9b140157d5e8f3
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795997"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756811"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik önerileri 
+
 Bu konu başlığı altında, Azure Güvenlik Merkezi 'nde Azure kaynaklarınızı korumanıza yardımcı olan önerilerin nasıl görüntüleneceği ve anlayabileceği açıklanmaktadır.
 
 
 ## <a name="what-are-security-recommendations"></a>Güvenlik önerileri nelerdir?
 
-Önerileriniz kaynaklarınızın güvenliğini sağlamak için yapmanız gereken eylemlerdir.
-
 Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için Azure kaynaklarınızın güvenlik durumunu düzenli olarak analiz eder. Daha sonra bu güvenlik açıklarını nasıl düzeltebileceğiniz konusunda öneriler sağlar.
+
+Önerilerin kaynakları güvenli ve zarar vermek için uygulamanız gereken eylemlerdir. 
 
 Her öneri şunları sağlar:
 
 - Sorunun kısa bir açıklaması
 - Öneriyi uygulamak için gerçekleştirilecek düzeltme adımları
 - Etkilenen kaynaklar
+
+## <a name="how-does-microsoft-decide-what-needs-securing-and-hardening"></a>Microsoft 'un neyi güvenli hale getirme ve sağlamlaştırma hakkında nasıl karar veriyor?
+
+Güvenlik Merkezi 'nin önerileri, Azure Güvenlik kıyaslaması temel alınarak hesaplanır. 
+
+Azure Güvenlik kıyaslaması, yaygın uyumluluk çerçevelerine göre güvenlik ve uyum en iyi uygulamaları için Microsoft tarafından yazılan, Azure 'a özgü bir dizi kılavuzlardır. Bu, yaygın olarak kullanılan kıyaslama, [Internet güvenliği (CIS) Için merkezden](https://www.cisecurity.org/benchmark/azure/) ve [ulusal standartlar ve teknolojı Enstitüsü (NIST)](https://www.nist.gov/) ile bulut merkezli güvenliğe odaklanarak yapılar oluşturur.
+
+[Azure Güvenlik Karşılaştırması](../security/benchmarks/introduction.md) hakkında daha fazla bilgi edinin.
 
 ## <a name="monitor-recommendations"></a>İzleme önerileri <a name="monitor-recommendations"></a>
 

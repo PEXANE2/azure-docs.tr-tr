@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/08/2020
+ms.date: 01/25/2021
 ms.author: marsma
 ms.reviewer: saeeda
-ms.openlocfilehash: 4a902ed53e92cd073d81626e80bdb3c8629ad072
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78932e5852453fe996e26a278f8a1859a8ecf546
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89437879"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755016"
 ---
 # <a name="authentication-flows"></a>Kimlik doğrulama akışları
 
@@ -53,9 +53,9 @@ Microsoft kimlik doğrulama kitaplığı (MSAL), farklı uygulama senaryolarınd
 Bu akışların bazıları hem etkileşimli hem de etkileşimli olmayan belirteç alımını destekler.
 
   - **Etkileşimli** , kullanıcıdan giriş istenmeyeceği anlamına gelir. Örneğin, kullanıcıdan oturum açmasını, Multi-Factor Authentication (MFA) gerçekleştirmesini veya kaynaklara ek izin vermesini isteme.
-  - **Etkileşimli olmayan**veya *sessiz*, kimlik doğrulama, oturum açma sunucusunun kullanıcıdan ek bilgi *istemeyen* bir şekilde belirteç edinmeye çalışır.
+  - **Etkileşimli olmayan** veya *sessiz*, kimlik doğrulama, oturum açma sunucusunun kullanıcıdan ek bilgi *istemeyen* bir şekilde belirteç edinmeye çalışır.
 
-MSAL tabanlı uygulamanız öncelikle bir belirteci *sessizce*ve etkileşimli olmayan yöntem başarısız olursa etkileşimli olarak almayı denemelidir. Bu model hakkında daha fazla bilgi için bkz. [Microsoft kimlik doğrulama kitaplığı 'nı (msal) kullanarak belirteçleri alma ve önbelleğe](msal-acquire-cache-tokens.md)alma.
+MSAL tabanlı uygulamanız öncelikle bir belirteci *sessizce* ve etkileşimli olmayan yöntem başarısız olursa etkileşimli olarak almayı denemelidir. Bu model hakkında daha fazla bilgi için bkz. [Microsoft kimlik doğrulama kitaplığı 'nı (msal) kullanarak belirteçleri alma ve önbelleğe](msal-acquire-cache-tokens.md)alma.
 
 ## <a name="authorization-code"></a>Yetkilendirme kodu
 
@@ -78,7 +78,7 @@ Kullanıcılar Web uygulamalarında (Web siteleri) oturum açtığında, Web uyg
 
 ## <a name="client-credentials"></a>İstemci kimlik bilgileri
 
-[OAuth 2 istemci kimlik bilgileri akışı](v2-oauth2-client-creds-grant-flow.md) , bir uygulamanın kimliğini kullanarak Web 'de barındırılan kaynaklara erişmenizi sağlar. Bu tür bir izin, genellikle bir kullanıcıyla etkileşimde bulunmadan, arka planda çalışması gereken sunucu-sunucu etkileşimleri için kullanılır. Bu tür uygulamalar genellikle Daemon 'ları veya hizmet hesapları olarak adlandırılır.
+[OAuth 2 istemci kimlik bilgileri akışı](v2-oauth2-client-creds-grant-flow.md) , bir uygulamanın kimliğini kullanarak Web 'de barındırılan kaynaklara erişmenizi sağlar. Kullanıcının anında etkileşime geçmesi gerekmeyen ve arka planda çalışması gereken sunucular arası etkileşimler için genellikle bu izin türü kullanılır. Bu tür uygulamalar genellikle daemon veya hizmet hesabı olarak adlandırılır.
 
 İstemci kimlik bilgileri verme akışı, bir Web hizmetinin (gizli bir istemci) başka bir Web hizmetini çağırırken kimlik doğrulaması yapmak yerine kendi kimlik bilgilerini kullanmasına izin verir. Bu senaryoda, istemci genellikle bir orta katman Web hizmeti, bir Daemon hizmeti veya bir Web sitesidir. Daha yüksek bir güvence düzeyi için, Microsoft Identity platformu, çağıran hizmetin kimlik bilgileri olarak bir sertifika (paylaşılan gizlilik yerine) kullanmasına de olanak tanır.
 
@@ -223,7 +223,7 @@ Bu, aşağıdakilerden birinin doğru olduğu anlamına gelir:
 - Kullanıcıların uygulamayı kabul etmek için bir yol sağladınız; bkz. [bireysel kullanıcı Izni isteme](v2-permissions-and-consent.md#requesting-individual-user-consent).
 - Kiracı yöneticisinin uygulamayı kabul etmek için bir yol sağladınız; bkz. [yönetici onayı](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
 
-IWA Flow, .NET Masaüstü, .NET Core ve Windows Evrensel platform uygulamaları için etkinleştirilmiştir. .NET Core 'da, .NET Core işletim sisteminden Kullanıcı adları edinemediği için ıWA için Kullanıcı adı sağlamanız gerekir.
+IWA Flow, .NET Masaüstü, .NET Core ve Windows Evrensel platform uygulamaları için etkinleştirilmiştir.
 
 Onay hakkında daha fazla bilgi için bkz. [v 2.0 izinleri ve onayı](v2-permissions-and-consent.md).
 

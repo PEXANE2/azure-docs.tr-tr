@@ -12,16 +12,16 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: 35499810ae13a8ddc5b7bb6306deafef0ef24e0f
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: aa8c00d1ee2a0dc3d019cc75b4e411ede984e74a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246800"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756062"
 ---
-# <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft kimlik platformu uç noktasında izinler ve onay
+# <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Microsoft Identity platformunda izinler ve onay
 
-Microsoft Identity platformu ile tümleştirilen uygulamalar, kullanıcılara ve yöneticilere verilere nasıl erişilebileceği üzerinde denetim sağlayan bir yetkilendirme modeli izler. Yetkilendirme modelinin uygulanması Microsoft Identity platform uç noktasında güncelleştirildi. Uygulamanın Microsoft Identity platformu ile nasıl etkileşim kurması gerektiğini değiştirir. Bu makalede kapsamlar, izinler ve onay dahil olmak üzere bu yetkilendirme modelinin temel kavramları ele alınmaktadır.
+Microsoft Identity platformu ile tümleştirilen uygulamalar, kullanıcılara ve yöneticilere verilere nasıl erişilebileceği üzerinde denetim sağlayan bir yetkilendirme modeli izler. Yetkilendirme modelinin uygulanması Microsoft Identity platformunda güncelleştirildi. Uygulamanın Microsoft Identity platformu ile nasıl etkileşim kurması gerektiğini değiştirir. Bu makalede kapsamlar, izinler ve onay dahil olmak üzere bu yetkilendirme modelinin temel kavramları ele alınmaktadır.
 
 ## <a name="scopes-and-permissions"></a>Kapsamlar ve izinler
 
@@ -53,7 +53,7 @@ Bu izinleri en yaygın olarak, Microsoft Identity platform yetkilendirme uç nok
 
 ## <a name="permission-types"></a>İzin türleri
 
-Microsoft Identity platform iki tür izni destekler: *temsilci izinleri* ve *Uygulama izinleri*.
+Microsoft Identity platformu iki tür izni destekler: *temsilci izinleri* ve *Uygulama izinleri*.
 
 * **Temsilci izinleri** , oturum açmış bir Kullanıcı bulunan uygulamalar tarafından kullanılır. Bu uygulamalar için, Kullanıcı ya da yönetici, uygulamanın istediği izinleri onaylar. Uygulama, hedef kaynağa çağrılar yaptığında oturum açmış kullanıcı olarak görev yapmak için izin verildi. 
 
@@ -128,7 +128,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 
 `scope`Parametresi, uygulamanın istediği atanan izinlerin boşlukla ayrılmış bir listesidir. Her izin, izin değeri kaynağın tanımlayıcısına eklenerek belirtilir (uygulama KIMLIĞI URI 'SI). İstek örneğinde, uygulamanın kullanıcının takvimini okumak ve Kullanıcı olarak e-posta göndermek için izin gerekir.
 
-Kullanıcı kimlik bilgilerini girdikten sonra, Microsoft Identity platform Endpoint, eşleşen bir *Kullanıcı onayı* kaydı olup olmadığını denetler. Kullanıcı geçmişte istenen izinlerden herhangi birine onay vermezse ve yönetici tüm kuruluş adına bu izinlere ayrılmamışsa, Microsoft Identity platform uç noktası kullanıcıdan istenen izinleri vermesini ister.
+Kullanıcı kimlik bilgilerini girdikten sonra, Microsoft Identity platformu eşleşen bir *Kullanıcı izni* kaydını denetler. Kullanıcı geçmişte istenen izinlerden herhangi birine onay vermezse ve yönetici tüm kuruluş adına bu izinlere ayrılmamışsa, Microsoft Identity platformu kullanıcıdan istenen izinleri vermesini ister. bu
 
 Şu anda, `offline_access` ("erişim vermiş olduğunuz verilere erişimi koru") izni ve `user.read` ("profilinizi oturum açma ve profilinizi okuma") izni, bir uygulamaya ilk onaylamada otomatik olarak eklenir.  Bu izinler genellikle uygun uygulama işlevleri için gereklidir. Bu `offline_access` izin, uygulamanın yerel uygulamalar ve Web uygulamaları için kritik olan belirteçleri yenileme erişimi sağlar. `user.read`İzin, talebe erişim sağlar `sub` . İstemci veya uygulamanın zaman içinde kullanıcıyı doğru şekilde tanımlamasına ve ilkel Kullanıcı bilgilerine erişmesine izin verir.
 
@@ -164,7 +164,7 @@ Uygulama, uygulama izinlerini isterse ve bir yönetici bu izinleri yönetici ona
 
 Yönetici onayı vermek için yönetici onay uç noktasını kullandıktan sonra işiniz tamamlanmıştır. Kullanıcıların başka bir işlem yapması gerekmez. Yönetici izni verildiğinde, kullanıcılar tipik bir kimlik doğrulama akışı aracılığıyla erişim belirteci alabilir. Elde edilen erişim belirtecinin, onaylanan izinleri vardır.
 
-Bir şirket yöneticisi uygulamanızı kullandığında ve yetkilendirme uç noktasına yönlendirildiğine göre, Microsoft Identity platform kullanıcının rolünü algılar. Şirket yöneticisinin istediğiniz izinler için tüm kiracının adına onay vermesini isteyip istemediğini sorar. Bunun yerine, bir yöneticinin tüm kiracı adına izin vermesini sağlamak için bir özel yönetici onay uç noktası kullanabilirsiniz. Bu uç nokta, uygulama izinleri istemek için de gereklidir. Uygulama izinleri yetkilendirme uç noktası kullanılarak istenemez.
+Bir şirket yöneticisi uygulamanızı kullandığında ve yetkilendirme uç noktasına yönlendirildiğine göre, Microsoft Identity platformu kullanıcının rolünü algılar. Şirket yöneticisinin istediğiniz izinler için tüm kiracının adına onay vermesini isteyip istemediğini sorar. Bunun yerine, bir yöneticinin tüm kiracı adına izin vermesini sağlamak için bir özel yönetici onay uç noktası kullanabilirsiniz. Bu uç nokta, uygulama izinleri istemek için de gereklidir. Uygulama izinleri yetkilendirme uç noktası kullanılarak istenemez.
 
 Bu adımları izlerseniz, uygulamanız, yönetici tarafından kısıtlanmış kapsamlar dahil olmak üzere bir Kiracıdaki tüm kullanıcılar için izinler isteyebilir. Bu işlem yüksek ayrıcalıkdır. İşlemi yalnızca senaryonuz için gerekliyse kullanın.
 
@@ -335,7 +335,7 @@ response_type=token            //Code or a hybrid flow is also possible here
 
 Bu kod örneği, önceki onay açıklamaları ve senaryoya uygulanacaksa tüm kayıtlı izinler için bir onay sayfası oluşturur `/.default` . Daha sonra kod `id_token` , erişim belirteci yerine bir döndürür.  
 
-Bu davranış, Azure AD kimlik doğrulama kitaplığı 'ndan (ADAL) Microsoft kimlik doğrulama kitaplığı 'na (MSAL) taşınan bazı eski istemcileri de karşılar. Bu kurulum, Microsoft Identity platform uç noktasını hedefleyen yeni istemciler *tarafından kullanılmamalıdır.*
+Bu davranış, Azure AD kimlik doğrulama kitaplığı 'ndan (ADAL) Microsoft kimlik doğrulama kitaplığı 'na (MSAL) taşınan bazı eski istemcileri de karşılar. Bu kurulum, Microsoft Identity platformunu hedefleyen yeni istemciler *tarafından kullanılmamalıdır.*
 
 ### <a name="client-credentials-grant-flow-and-default"></a>İstemci kimlik bilgileri verme akışı ve/.exe varsayılan  
 
@@ -358,4 +358,4 @@ Sorun giderme adımları için bkz. [bir uygulamaya izin uygularken beklenmeyen 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Microsoft Identity platformunda KIMLIK belirteçleri](id-tokens.md)
-* [Microsoft Identity platformunda erişim belirteçleri](access-tokens.md)
+* [Microsoft Identity platformunda belirteçleri erişim](access-tokens.md)

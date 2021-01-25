@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 011acdf98c8430bfb7ba1b02ec24a170f829e48f
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: cefcf6b1bcd7ac5f81fa4e872b30660183a46a82
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063799"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755260"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft Identity platform en iyi uygulamaları ve önerileri
 
@@ -104,7 +104,7 @@ Uygulamanızın [Microsoft Identity platformu](./index.yml)ile etkin bir şekild
 
 V2.0 hakkında ayrıntılı bilgileri keşfedin:
 
-* [Microsoft Identity platform (v 2.0 genel bakış)](v2-overview.md)
+* [Microsoft Identity platformu (genel bakış)](v2-overview.md)
 * [Microsoft Identity platform protokolleri başvurusu](active-directory-v2-protocols.md)
 * [Erişim belirteçleri başvurusu](access-tokens.md)
 * [Kimlik belirteçleri başvurusu](id-tokens.md)

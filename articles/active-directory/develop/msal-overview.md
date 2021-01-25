@@ -13,15 +13,15 @@ ms.date: 10/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 2b6266f308fce75f136aa4a2482c5b1be6eedb8e
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: c16eb2af5dfb103541c2eac207eb8ee5c303168f
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063374"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754722"
 ---
 # <a name="overview-of-the-microsoft-authentication-library-msal"></a>Microsoft kimlik doğrulama kitaplığı 'na genel bakış (MSAL)
-Microsoft kimlik doğrulama kitaplığı (MSAL), geliştiricilerin kullanıcıların kimliğini doğrulamak ve güvenli Web API 'Lerine erişmek için Microsoft Identity platform uç noktasından [belirteçleri](developer-glossary.md#security-token) almasına olanak sağlar. Microsoft Graph, diğer Microsoft API 'Leri, üçüncü taraf Web API 'Lerine veya kendi Web API 'nize güvenli erişim sağlamak için kullanılabilir. MSAL, .NET, JavaScript, Java, Python, Android ve iOS dahil birçok farklı uygulama mimarilerini ve platformunu destekler.
+Microsoft kimlik doğrulama kitaplığı (MSAL), geliştiricilerin kullanıcıların kimliğini doğrulamak ve güvenli Web API 'Lerine erişmek için Microsoft Identity platformundan [belirteçler](developer-glossary.md#security-token) almasına olanak sağlar. Microsoft Graph, diğer Microsoft API 'Leri, üçüncü taraf Web API 'Lerine veya kendi Web API 'nize güvenli erişim sağlamak için kullanılabilir. MSAL, .NET, JavaScript, Java, Python, Android ve iOS dahil birçok farklı uygulama mimarilerini ve platformunu destekler.
 
 MSAL, çeşitli platformlar için tutarlı bir API ile belirteç almanın birçok yolunu sağlar. MSAL kullanmak aşağıdaki avantajları sağlar:
 
@@ -59,6 +59,6 @@ MSAL, aşağıdakiler dahil birçok uygulama senaryosunda kullanılabilir:
 
 ## <a name="differences-between-adal-and-msal"></a>ADAL ve MSAL arasındaki farklar
 
-Active Directory Authentication Library (ADAL), MSAL Microsoft Identity platform (v 2.0) uç noktasıyla tümleştirilebilen geliştiriciler için Azure AD (v 1.0) uç noktası ile tümleşir. V 1.0 uç noktası, kişisel hesapları değil, iş hesaplarını destekler. V 2.0 uç noktası, Microsoft kişisel hesaplarının ve iş hesaplarının tek bir kimlik doğrulama sisteminde bir birleşme noktasıdır. Ayrıca, MSAL ile Azure AD B2C için kimlik doğrulamaları da alabilirsiniz.
+Active Directory Authentication Library (ADAL), MSAL Microsoft Identity platformu ile tümleştirilebilen geliştiriciler için Azure AD (v 1.0) uç noktası ile tümleşir. V 1.0 uç noktası, kişisel hesapları değil, iş hesaplarını destekler. V 2.0 uç noktası, Microsoft kişisel hesaplarının ve iş hesaplarının tek bir kimlik doğrulama sisteminde bir birleşme noktasıdır. Ayrıca, MSAL ile Azure AD B2C için kimlik doğrulamaları da alabilirsiniz.
 
 Daha ayrıntılı bilgi için, [adal.net adresinden msal.net 'e geçme](msal-net-migration.md) ve [ADAL.jsMSAL.js geçiş ](msal-compare-msal-js-and-adal-js.md)hakkında bilgi edinin.

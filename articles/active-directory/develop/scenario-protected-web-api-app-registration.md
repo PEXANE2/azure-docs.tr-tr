@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7a38e2384c5f24bc3a72e1ef8e8f7119b2db0f2f
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: c3d9cd5e710eb263707e87c4afe0f08809b8d50c
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443951"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756455"
 ---
 # <a name="protected-web-api-app-registration"></a>Korumalı Web API 'SI: uygulama kaydı
 
@@ -27,24 +27,24 @@ Bir uygulamayı kaydetmeye yönelik ortak adımlar için bkz. [hızlı başlang�
 
 ## <a name="accepted-token-version"></a>Kabul edilen belirteç sürümü
 
-Microsoft Identity platform uç noktası, v 1.0 belirteçlerini ve v 2.0 belirteçlerini verebilir. Bu belirteçler hakkında daha fazla bilgi için bkz. [erişim belirteçleri](access-tokens.md).
+Microsoft Identity platformu, v 1.0 belirteçlerini ve v 2.0 belirteçlerini verebilir. Bu belirteçler hakkında daha fazla bilgi için bkz. [erişim belirteçleri](access-tokens.md).
 
 API 'nizin kabul edebileceği belirteç sürümü, Azure portal Web API uygulaması kaydınızı oluştururken **Desteklenen hesap türleri** seçimine bağlıdır.
 
-- **Desteklenen hesap türlerinin** değeri **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında (örn. Skype, Xbox, Outlook.com) hesaplardır** , kabul edilen belirteç sürümü v 2.0 olmalıdır.
+- **Desteklenen hesap türlerinin** değeri **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında (örn. Skype, Xbox, Outlook.com) hesaplardır**, kabul edilen belirteç sürümü v 2.0 olmalıdır.
 - Aksi takdirde, kabul edilen belirteç sürümü v 1.0 olabilir.
 
 Uygulamayı oluşturduktan sonra, aşağıdaki adımları izleyerek kabul edilen belirteç sürümünü belirleyebilir veya değiştirebilirsiniz:
 
-1. Azure portal, uygulamanızı seçin ve ardından **bildirim** ' ı seçin.
+1. Azure portal, uygulamanızı seçin ve ardından **bildirim**' ı seçin.
 1. Bildirimde **Accesstokenacceptedversion** özelliğini bulun.
 1. Değer, Web API 'sinin kabul ettiği belirteç sürümünün Azure Active Directory (Azure AD) olduğunu belirtir.
     - Değer 2 ise, Web API 'SI v 2.0 belirteçlerini kabul eder.
     - Değer **null** ise, Web API 'si v 1.0 belirteçlerini kabul eder.
-1. Belirteç sürümünü değiştirdiyseniz **Kaydet** ' i seçin.
+1. Belirteç sürümünü değiştirdiyseniz **Kaydet**' i seçin.
 
 > [!NOTE]
-> Web API 'SI, kabul ettiği belirteç sürümünü belirtir. İstemci, Microsoft Identity platform (v 2.0) uç noktasından Web API 'niz için bir belirteç istediğinde, istemci, Web API 'sinin hangi belirteç sürümünü kabul ettiğini belirten bir belirteç alır.
+> Web API 'SI, kabul ettiği belirteç sürümünü belirtir. İstemci, Microsoft kimlik platformundan Web API 'niz için bir belirteç istediğinde, istemci, Web API 'sinin hangi belirteç sürümünü kabul ettiğini belirten bir belirteç alır.
 
 ## <a name="no-redirect-uri"></a>Yeniden yönlendirme URI 'SI yok
 
@@ -78,8 +78,8 @@ Uygulama rolleri bir kullanıcı tarafından alınamaz (kendi adına Web API 'si
 ### <a name="exposing-delegated-permissions-scopes"></a>Temsilci izinleri gösterme (kapsamlar)
 
 1. Uygulama kaydında **BIR API 'Yi kullanıma** sunma ' yı seçin.
-1. **Kapsam ekle** ’yi seçin.
-1. İstenirse, `api://{clientId}` **Kaydet ve devam et** ' i seçerek ÖNERILEN uygulama kimliği URI 'sini () kabul edin.
+1. **Kapsam ekle**’yi seçin.
+1. İstenirse, `api://{clientId}` **Kaydet ve devam et**' i seçerek ÖNERILEN uygulama kimliği URI 'sini () kabul edin.
 1. Şu değerleri belirtin:
     - **Kapsam adı** ' nı seçin ve **access_as_user** girin.
     - **Kimlerin izin verebilir** ' i seçin ve **yöneticilerin ve kullanıcıların** seçili olduğundan emin olun.
@@ -88,7 +88,7 @@ Uygulama rolleri bir kullanıcı tarafından alınamaz (kendi adına Web API 'si
     - **Kullanıcı onayı görünen adı** ' nı seçin ve **Kullanıcı olarak erişim TodoListService** girin.
     - **Kullanıcı onay açıklaması** ' nı seçin ve **TodoListService Web API 'Sine Kullanıcı olarak erişir** yazın.
     - **Durum** değerini **etkin** olarak bırakın.
- 1. **Kapsam Ekle** ' yi seçin.
+ 1. **Kapsam Ekle**' yi seçin.
 
 ### <a name="if-your-web-api-is-called-by-a-daemon-app"></a>Web API 'niz bir Daemon uygulaması tarafından çağrılırsa
 
@@ -101,7 +101,7 @@ Bu bölümde, Daemon uygulamalarının güvenli bir şekilde çağırabilmesi i�
 
 Uygulama izinlerini göstermek için bildirimi düzenlemeniz gerekir.
 
-1. Uygulamanız için uygulama kaydında, **bildirim** ' ı seçin.
+1. Uygulamanız için uygulama kaydında, **bildirim**' ı seçin.
 1. Bildirimi düzenlemek için `appRoles` ayarı bulun ve uygulama rollerini ekleyin. Rol tanımları aşağıdaki örnek JSON bloğunda verilmiştir.
 1. Yalnızca ' a `allowedMemberTypes` ayarlı bırakın `"Application"` .
 1. `id`Benzersiz BIR GUID olduğundan emin olun.
@@ -149,7 +149,7 @@ Bu artırılmış güvenliği eklemek için:
    >
    > Ancak, önceki bölümde açıklandığı gibi, Web API 'niz uygulamanın kiracı yöneticisi tarafından yetkilendirilen doğru rolün olduğunu her zaman doğrulayabilirler. API, erişim belirtecinin bir rol talebine sahip olduğunu ve bu talebin değerinin doğru olduğunu doğrulayarak bu doğrulamayı gerçekleştirir. Önceki JSON örneğinde, değeri `access_as_application` .
 
-1. **Kaydet** ’i seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

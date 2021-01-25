@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 0c4299bc41a656fd678c14d63ae1d4987dba327b
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: a4838dd6e8f9f4959fc1e4d0dc8dbc2218a30f30
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060648"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755474"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Azure yay bulutu için ölçümleri anlama
 
@@ -89,16 +89,17 @@ Aşağıdaki tablolarda kullanılabilir ölçümler ve Ayrıntılar gösterilmek
 
 ### <a name="error"></a>Hata
 >[!div class="mx-tdCol2BreakAll"]
->| Ad | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
+>| Name | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
 >|----|----|----|------------|
 >| Tomcat. Global. Error | Tomcat. Global. Error | Count | İşlenen isteklerde oluşan hata sayısı |
 
 ### <a name="performance"></a>Performans
 >[!div class="mx-tdCol2BreakAll"]
->| Ad | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
+>| Name | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
 >|----|----|----|------------|
->| System. CPU. Usage | System. CPU. Usage | Yüzde | Tüm sistem için en son CPU kullanımı. Bu değer [0.0, 1.0] aralığındaki bir Double değeridir. 0,0 değeri, izlenen son süre boyunca tüm CPU 'ların boşta kaldığı, 1,0 değeri, tüm CPU 'ların, en son dönemde geçen sürenin %100 ' i etkin bir şekilde çalıştırdığı anlamına gelir.|
->| Process. CPU. Usage | Uygulama CPU kullanım yüzdesi | Yüzde | Java Sanal Makinesi işlemi için en son CPU kullanımı. Bu değer [0.0, 1.0] aralığındaki bir Double değeridir. 0,0 değeri, en son geçen süre boyunca JVM işlemindeki iş parçacıklarını hiçbir CPU 'nun çalıştırmadığı anlamına gelir, 1,0 değeri, tüm CPU 'ların, en son dönemde geçen sürenin% JVM 100% ' den etkin bir şekilde çalıştığı anlamına gelir. JVM 'deki iş parçacıkları, uygulama iş parçacıklarını ve JVM iç iş parçacıklarını içerir.|
+>| System. CPU. Usage | System. CPU. Usage | Yüzde | Tüm sistem için en son CPU kullanımı (kullanılmıyor ve kullanmayı önermeyin). Bu değer [0.0, 1.0] aralığındaki bir Double değeridir. 0,0 değeri, izlenen son süre boyunca tüm CPU 'ların boşta kaldığı, 1,0 değeri, tüm CPU 'ların, en son dönemde geçen sürenin %100 ' i etkin bir şekilde çalıştırdığı anlamına gelir.|
+>| Process. CPU. Usage | Uygulama CPU kullanım yüzdesi | Yüzde | Java Sanal Makinesi işlemi için son CPU kullanımı (kullanılmıyor ve kullanmayı önermeyin). Bu değer [0.0, 1.0] aralığındaki bir Double değeridir. 0,0 değeri, en son geçen süre boyunca JVM işlemindeki iş parçacıklarını hiçbir CPU 'nun çalıştırmadığı anlamına gelir, 1,0 değeri, tüm CPU 'ların, en son dönemde geçen sürenin% JVM 100% ' den etkin bir şekilde çalıştığı anlamına gelir. JVM 'deki iş parçacıkları, uygulama iş parçacıklarını ve JVM iç iş parçacıklarını içerir.|
+>| AppCpuUsage | Uygulama CPU kullanımı (Önizleme) | Yüzde | Bu uygulamaya ayrılan CPU 'ya karşı JVM işleminin en son CPU kullanımı, [0.0, 1.0] arasında çift tür değeri. 0,0 değeri, en son geçen süre boyunca JVM işlemindeki iş parçacıklarını hiçbir CPU 'nun çalıştırmadığı anlamına gelir, 1,0 değeri, tüm CPU 'ların, en son dönemde geçen sürenin% JVM 100% ' den etkin bir şekilde çalıştığı anlamına gelir. JVM 'deki iş parçacıkları, uygulama iş parçacıklarını ve JVM iç iş parçacıklarını içerir.|
 >| JVM. Memory. taahhüt | JVM. Memory. taahhüt | Bayt | JVM tarafından kullanılabilecek garanti edilen bellek miktarını temsil eder. JVM, belleği sisteme bırakabilir ve yürütme init 'ten az olabilir. taahhüt edilen her zaman en fazla veya daha büyük olur. |
 >| JVM. Memory. kullanıldı | JVM. Memory. kullanıldı | Bayt | Bayt cinsinden şu anda kullanılan bellek miktarını temsil eder. |
 >| JVM. Memory. Max | JVM. Memory. Max | Bayt | Bellek yönetimi için kullanılabilecek maksimum bellek miktarını temsil eder. En büyük değer tanımlanırsa, kullanılan ve kaydedilmiş bellek miktarı her zaman en fazla eşit veya daha düşük olacaktır. Kullanılan > kullanılan belleği artırmayı denerse bir bellek ayırma başarısız olabilir. <= Max kullanılması hala true (örneğin, sistem sanal belleği düşük olduğunda). |
@@ -112,7 +113,7 @@ Aşağıdaki tablolarda kullanılabilir ölçümler ve Ayrıntılar gösterilmek
 ### <a name="performance-net"></a>Performans (.NET)
 
 >[!div class="mx-tdCol2BreakAll"]
->| Ad | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
+>| Name | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
 >|------|-----------------------------|------|---------|
 >| CPU kullanımı       | CPU kullanımı      | Yüzde      | İşlemin CPU kullanımının tüm sistem CPU kaynaklarına göre yüzdesi [0-100]. |
 >| Çalışma kümesi     | çalışma kümesi    | TI    | İşlem tarafından kullanılan çalışma kümesi miktarı. |
@@ -137,7 +138,7 @@ Daha fazla bilgi için bkz. [DotNet sayaçları](/dotnet/core/diagnostics/dotnet
 
 ### <a name="request"></a>İstek
 >[!div class="mx-tdCol2BreakAll"]
->| Ad | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
+>| Name | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
 >|----|----|----|------------|
 >| Tomcat. Global. gönderildi | Tomcat. Global. gönderildi | Bayt | Gönderilen veri miktarı Tomcat Web sunucusu |
 >| Tomcat. Global. alındı | Tomcat. Global. alındı | Bayt | Alınan veri miktarı Tomcat Web sunucusu |
@@ -147,7 +148,7 @@ Daha fazla bilgi için bkz. [DotNet sayaçları](/dotnet/core/diagnostics/dotnet
 ### <a name="request-net"></a>İstek (.NET)
 
 >[!div class="mx-tdCol2BreakAll"]
->| Ad | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
+>| Name | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
 >|------|-----------------------------|------|---------|
 >| Saniyedeki istek | saniye başına istek sayısı | Count | İstek hızı. |
 >| Toplam istek sayısı | toplam istek sayısı | Count | Toplam istek sayısı. |
@@ -158,7 +159,7 @@ Daha fazla bilgi için bkz. [DotNet sayaçları](/dotnet/core/diagnostics/dotnet
 
 ### <a name="session"></a>Oturum
 >[!div class="mx-tdCol2BreakAll"]
->| Ad | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
+>| Name | Spring çalıştırıcı ölçüm adı | Birim | Ayrıntılar |
 >|----|----|----|------------|
 >| Tomcat. Sessions. Active. Max | Tomcat. Sessions. Active. Max | Count | Aynı anda etkin olan en fazla oturum sayısı |
 >| Tomcat. Sessions. canlı. Max | Tomcat. Sessions. canlı. Max | Mayacak | Süresi biten bir oturumun etkin olduğu en uzun süre (saniye cinsinden) |

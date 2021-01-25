@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: ryanwi
 ms.reviewer: marsma, jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 22d6cacc36363b17f9bc32d354982eb71974b31d
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 4f87c3fd0cfda2db535b2c8f7f7330a273e6b767
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779762"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755341"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Nasıl yapılır: Çok kiracılı uygulama desenini kullanarak istediğiniz bir Azure Active Directory kullanıcısıyla oturum açma
 
@@ -110,7 +110,7 @@ Bir kullanıcının Azure AD 'de bir uygulamada oturum açması için, uygulaman
 
 ![Tek katmanlı uygulamaya onay gösterir][Consent-Single-Tier]
 
-Bu onay deneyimi, uygulama tarafından istenen izinlerden etkilenir. Microsoft Identity platform iki tür izni destekler, yalnızca uygulama ve Temsilcili.
+Bu onay deneyimi, uygulama tarafından istenen izinlerden etkilenir. Microsoft Identity platformu, yalnızca uygulama ve temsilci olarak iki tür izinleri destekler.
 
 * Temsilci atanan izin, bir uygulamaya kullanıcının yapabildiği öğelerin bir alt kümesi için oturum açmış bir kullanıcı olarak davranma olanağı verir. Örneğin, bir uygulamaya, oturum açan kullanıcının takvimini okumak için temsilci izni verebilirsiniz.
 * Yalnızca uygulama izni, uygulamanın kimliğine doğrudan verilir. Örneğin, uygulamaya kimin oturum açtığından bağımsız olarak, bir Kiracıdaki kullanıcıların listesini okumak için uygulamaya yalnızca uygulamaya izin verebilirsiniz.
@@ -139,7 +139,7 @@ Uygulamanızın her biri Azure AD 'de kendi kaydıyla temsil edilen birden çok 
 
 #### <a name="multiple-tiers-in-a-single-tenant"></a>Tek bir kiracıda birden çok katman
 
-Mantıksal uygulamanız iki veya daha fazla uygulama kaydı içeriyorsa (örneğin, ayrı bir istemci ve kaynak) Bu bir sorun olabilir. İlk olarak kaynağı Müşteri kiracısına nasıl alabilirim? Azure AD, istemci ve kaynağın tek bir adımda toplanmasına olanak tanıyarak bu durumu ele alır. Kullanıcı, izin sayfasında hem istemci hem de kaynak tarafından istenen izinlerin toplam toplamını görür. Bu davranışı etkinleştirmek için, kaynağın uygulama kaydı, uygulamanın uygulama KIMLIĞINI `knownClientApplications` [uygulama bildiriminde][AAD-App-Manifest]bir olarak içermelidir. Örnek:
+Mantıksal uygulamanız iki veya daha fazla uygulama kaydı içeriyorsa (örneğin, ayrı bir istemci ve kaynak) Bu bir sorun olabilir. İlk olarak kaynağı Müşteri kiracısına nasıl alabilirim? Azure AD, istemci ve kaynağın tek bir adımda toplanmasına olanak tanıyarak bu durumu ele alır. Kullanıcı, izin sayfasında hem istemci hem de kaynak tarafından istenen izinlerin toplam toplamını görür. Bu davranışı etkinleştirmek için, kaynağın uygulama kaydı, uygulamanın uygulama KIMLIĞINI `knownClientApplications` [uygulama bildiriminde][AAD-App-Manifest]bir olarak içermelidir. Örneğin:
 
 ```json
 "knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]

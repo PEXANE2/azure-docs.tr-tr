@@ -3,12 +3,12 @@ title: Kurtarma Hizmetleri kasalarına genel bakış
 description: Kurtarma Hizmetleri kasalarına genel bakış.
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: ab6b27bdc7ac9b01385ed43830d0af5900210d43
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0ed37446e1ccf0780f924143c8f063964adf0004
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017330"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755117"
 ---
 # <a name="recovery-services-vaults-overview"></a>Kurtarma Hizmetleri kasalarına genel bakış
 
@@ -22,7 +22,7 @@ Bu makalede, bir kurtarma hizmetleri kasasının özellikleri açıklanmaktadır
 
 - **Geçici silme**: kötü bir aktör bir yedeği silse (veya yedekleme verileri yanlışlıkla silinse), yedekleme verileri 14 ek gün boyunca tutulur ve bu yedekleme öğesinin veri kaybı olmadan kurtarılmasını sağlar. "Geçici silme" durumundaki yedekleme verileri için 14 günlük ek bekletme, size herhangi bir maliyet vermez. [Daha fazla bilgi edinin](backup-azure-security-feature-cloud.md).
 
-- **Çapraz bölge geri yükleme**: çapraz bölge geri yükleme (CRR) Azure sanal makinelerini Azure eşlenmiş bölgesi olan ikincil bir bölgede geri yüklemenize olanak tanır. Azure birincil bölgede bir olağanüstü durum bildiriyorsa, ikincil bölgede çoğaltılan veriler, ortamları için birincil bölgedeki gerçek kalma süresi olağanüstü durumdan etkilenmeden ikincil bölgeye geri yüklenebilir. [Daha fazla bilgi edinin](backup-azure-arm-restore-vms.md#cross-region-restore).
+- **Çapraz bölge geri yükleme**: çapraz bölge geri yükleme (CRR) Azure sanal makinelerini Azure eşlenmiş bölgesi olan ikincil bir bölgede geri yüklemenize olanak tanır. Bu özelliği [kasa düzeyinde](backup-create-rs-vault.md#set-cross-region-restore)etkinleştirerek, çoğaltılan verileri ikincil bölgedeki herhangi bir zamanda (seçtiğiniz zaman) geri yükleyebilirsiniz. Bu, Azure 'un bir olağanüstü durum bildirimini (kasaların GRS ayarlarından farklı olarak) beklemek zorunda kalmadan denetim uyumluluğuna ve kesinti senaryolarında ikincil bölge verilerini geri yüklemenize olanak sağlar. [Daha fazla bilgi edinin](backup-azure-arm-restore-vms.md#cross-region-restore).
 
 ## <a name="storage-settings-in-the-recovery-services-vault"></a>Kurtarma Hizmetleri kasasındaki depolama ayarları
 
@@ -46,13 +46,13 @@ Verilerinizi sahip olduğunuz ve yönetilen şifreleme anahtarlarını kullanara
 
 [Müşteri tarafından yönetilen anahtarları kullanarak](encryption-at-rest-with-cmk.md)yedekleme verilerinizi şifrelemek hakkında daha fazla bilgi edinin.
 
-## <a name="azure-advisor"></a>Azure Danışmanı
+## <a name="azure-advisor"></a>Azure Advisor
 
 [Azure Danışmanı](../advisor/index.yml) , Azure 'un kullanımını iyileştirmenize yardımcı olan kişiselleştirilmiş bir bulut danışmanıdır. Azure kullanımınızı analiz eder ve dağıtımlarınızı iyileştirmek ve güvence altına almak için zamanında öneriler sağlar. Dört kategoride öneriler sağlar: yüksek kullanılabilirlik, güvenlik, performans ve maliyet.
 
 Azure Danışmanı, yedeklenmeyen VM 'Ler için saatlik [öneriler](../advisor/advisor-high-availability-recommendations.md#protect-your-virtual-machine-data-from-accidental-deletion) sağlar, bu nedenle önemli VM 'leri yedeklemeyi hiç kaçırmayın. Ayrıca, önerileri erteleniyor göre de denetleyebilirsiniz.  Kasayı (yedeklemelerin depolanacağı yer) ve yedekleme ilkesini (yedek kopyaların yedeklerini ve bekletilmesini) belirterek, öneriyi seçebilir ve sanal makinelerde yedeklemeyi etkinleştirebilirsiniz.
 
-![Azure Danışmanı](./media/backup-azure-recovery-services-vault-overview/azure-advisor.png)
+![Azure Advisor](./media/backup-azure-recovery-services-vault-overview/azure-advisor.png)
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

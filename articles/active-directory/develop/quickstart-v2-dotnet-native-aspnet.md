@@ -1,7 +1,7 @@
 ---
-title: "Hızlı başlangıç: Microsoft Identity platform tarafından korunan bir ASP.NET Web API 'SI çağırın | Mavisi"
+title: "Hızlı başlangıç: Microsoft Identity platformu tarafından korunan bir ASP.NET Web API 'SI çağırın | Mavisi"
 titleSuffix: Microsoft identity platform
-description: Bu hızlı başlangıçta, bir Windows Masaüstü (WPF) uygulamasından Microsoft Identity platform tarafından korunan bir ASP.NET Web API 'SI çağırma hakkında bilgi edinin.
+description: Bu hızlı başlangıçta, bir Windows Masaüstü (WPF) uygulamasından Microsoft Identity platformu tarafından korunan bir ASP.NET Web API 'SI çağırma hakkında bilgi edinin.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/05/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 2967476d06b8f6f88b740f811a94c5fdb4284b4d
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: ec8fd05c0661178cc07b9165793c9f34f2463948
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011875"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754313"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-thats-protected-by-microsoft-identity-platform"></a>Hızlı başlangıç: Microsoft Identity platform tarafından korunan bir ASP.NET Web API 'SI çağırma
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, kaynaklarına erişimi yalnızca yetkili hesaplara k�
 
 Makale Ayrıca bir Web API 'sine erişmek için bir erişim belirteci isteme yöntemini göstermek için bir Windows Presentation Foundation (WPF) uygulaması kullanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Visual Studio 2017 veya 2019. [Visual Studio 'yu ücretsiz](https://www.visualstudio.com/downloads/)indirin.

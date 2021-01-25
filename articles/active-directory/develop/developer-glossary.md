@@ -12,12 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: b02329d624eda440230fb99e02e08c841c5580f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77a4e7389952b81df13dae929dc1aec664fcc0b7
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706005"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755640"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft Identity Platform geliştirici sözlüğü
 
@@ -34,7 +34,7 @@ Erişim belirteçleri, temsil edilen kimlik bilgilerine bağlı olarak bazen "Ku
 * ["Yetkilendirme kodu" yetkilendirmesi verme](#authorization-grant), Son Kullanıcı ilk olarak kaynak sahibi olarak kimlik doğrulaması yapar, kaynağa erişmek için istemciye yetkilendirme yetkisi verir. İstemci, erişim belirtecini alırken daha sonra kimliğini doğrular. Belirteç bazen "Kullanıcı + uygulama" belirteci olarak daha belirgin bir şekilde adlandırılır, bu da hem istemci uygulamasını yetkili olan kullanıcıyı hem de uygulamayı temsil eder.
 * ["İstemci kimlik bilgileri" yetkilendirmesi verme](#authorization-grant), istemci tek kimlik doğrulamasını kaynak sahibinin kimlik doğrulaması/yetkilendirme olmadan çalışır, bu nedenle belirteç bazen "yalnızca uygulama" belirteci olarak adlandırılabilir.
 
-Daha fazla bilgi için bkz. [Microsoft Identity platform belirteci başvurusu][AAD-Tokens-Claims] .
+Daha fazla ayrıntı için bkz. [Microsoft Identity platform belirteci başvurusu][AAD-Tokens-Claims] .
 
 ## <a name="application-id-client-id"></a>uygulama KIMLIĞI (istemci KIMLIĞI)
 
@@ -89,13 +89,13 @@ Daha fazla ayrıntı için OAuth2 belirtiminin [Yetkilendirme verme türleri][OA
 
 [OAuth2 yetkilendirme çerçevesi][OAuth2-Role-Def]tarafından tanımlandığı gibi, [kaynak sahibine](#resource-owner) başarıyla kimlik doğrulamasından ve yetkilendirmesini aldıktan sonra, [istemciye](#client-application) erişim belirteçleri vermekten sorumlu sunucu. [İstemci uygulaması](#client-application) , OAuth2 tanımlı [Yetkilendirme onayları](#authorization-grant)doğrultusunda yetkilendirme ve [belirteç](#token-endpoint) uç noktaları aracılığıyla çalışma [zamanında yetkilendirme sunucusuyla](#authorization-endpoint) etkileşime girer.
 
-Microsoft Identity Platform uygulaması tümleştirmesinde Microsoft Identity platformu, Azure AD uygulamaları ve Microsoft hizmet API 'Leri için yetkilendirme sunucusu rolünü uygular, örneğin [Microsoft Graph API 'leri][Microsoft-Graph].
+Microsoft Identity Platform uygulaması tümleştirmesi söz konusu olduğunda, Microsoft Identity platformu, Azure AD uygulamaları ve Microsoft hizmet API 'Leri için yetkilendirme sunucusu rolünü uygular, örneğin [Microsoft Graph API 'leri][Microsoft-Graph].
 
 ## <a name="claim"></a>talep
 
 Bir [güvenlik belirteci](#security-token) , bir varlığa (örneğin, bir [istemci uygulaması](#client-application) veya [kaynak sahibi](#resource-owner)) başka bir varlığa (örneğin, [kaynak sunucusu](#resource-server)) yönelik onaylar sağlayan talepler içerir. Talepler, belirteç konusuyla ilgili olguları (örneğin, [yetkilendirme sunucusu](#authorization-server)tarafından kimliği doğrulanmış güvenlik sorumlusu) geçirerek ad/değer çiftleridir. Belirli bir belirteçte mevcut talepler, belirteç türü, konunun kimliğini doğrulamak için kullanılan kimlik bilgisi türü, uygulama yapılandırması vb. gibi çeşitli değişkenlere bağımlıdır.
 
-Daha fazla bilgi için bkz. [Microsoft Identity platform belirteci başvurusu][AAD-Tokens-Claims] .
+Daha fazla ayrıntı için bkz. [Microsoft Identity platform belirteci başvurusu][AAD-Tokens-Claims] .
 
 ## <a name="client-application"></a>istemci uygulaması
 
@@ -113,11 +113,11 @@ Daha fazla bilgi için bkz. [onay çerçevesi](consent-framework.md) .
 
 Bir son kullanıcı [kaynak sahibinin](#resource-owner)kimlik doğrulamasıyla ilgili [talepleri](#claim) içeren bir [Yetkilendirme sunucusunun](#authorization-server) [Yetkilendirme uç noktası](#authorization-endpoint)tarafından sağlanmış bir [OpenID Connect][OpenIDConnect-ID-Token] [güvenlik belirteci](#security-token) . Erişim belirteci gibi, KIMLIK belirteçleri de dijital olarak imzalanmış [JSON Web token (JWT)][JWT]olarak gösterilir. Ancak, bir erişim belirtecinin aksine, kaynak erişimiyle ve özellikle erişim denetimiyle ilgili amaçlar için KIMLIK belirtecinin talepleri kullanılmaz.
 
-Daha fazla bilgi için bkz. [Microsoft Identity platform belirteci başvurusu][AAD-Tokens-Claims] .
+Daha fazla ayrıntı için bkz. [Microsoft Identity platform belirteci başvurusu][AAD-Tokens-Claims] .
 
 ## <a name="microsoft-identity-platform"></a>Microsoft kimlik platformu
 
-Microsoft Identity Platform, Azure Active Directory (Azure AD) kimlik hizmeti ve geliştirici platformunun geliştirilmesiyle ortaya çıkmıştır. Bu platform geliştiricilerin tüm Microsoft kimlikleriyle oturum açan ve Microsoft Graph veya diğer Microsoft API'leri ya da geliştiricilerin derlemiş olduğu API'lere çağrı göndermek için gerekli belirteçleri alan uygulamalar derlemesini sağlar. Bu, bir kimlik doğrulama hizmeti, kitaplıklar, uygulama kaydı ve yapılandırma, tam geliştirici belgeleri, kod örnekleri ve diğer geliştirici içeriğinden oluşan tam özellikli bir platformdur. Microsoft Identity Platform OAuth 2.0 ve OpenID Connect gibi sektör standardı protokolleri destekler.
+Microsoft Identity platformu, Azure Active Directory (Azure AD) kimlik hizmeti ve geliştirici platformunun bir evmidir. Bu platform geliştiricilerin tüm Microsoft kimlikleriyle oturum açan ve Microsoft Graph veya diğer Microsoft API'leri ya da geliştiricilerin derlemiş olduğu API'lere çağrı göndermek için gerekli belirteçleri alan uygulamalar derlemesini sağlar. Bu, bir kimlik doğrulama hizmeti, kitaplıklar, uygulama kaydı ve yapılandırma, tam geliştirici belgeleri, kod örnekleri ve diğer geliştirici içeriğinden oluşan tam özellikli bir platformdur. Microsoft Identity Platform OAuth 2.0 ve OpenID Connect gibi sektör standardı protokolleri destekler.
 
 ## <a name="multi-tenant-application"></a>çok kiracılı uygulama
 
@@ -222,7 +222,7 @@ Bir Web sunucusundaki tüm kodu yürüten ve kimlik bilgilerini sunucuda güvenl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Microsoft Identity platform Geliştirici Kılavuzu][AAD-Dev-Guide] , [uygulama tümleştirmeye][AAD-How-To-Integrate] genel bakış ve [Microsoft Identity platform kimlik doğrulaması ve desteklenen kimlik doğrulama senaryolarının][AAD-Auth-Scenarios]temelleri de dahil olmak üzere tüm Microsoft kimlik platformu geliştirmeyle ilgili konular için kullanılacak giriş sayfasıdır. Ayrıca, [GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=)'da hızlıca çalışmaya başlama hakkında öğreticiler & kod örnekleri bulabilirsiniz.
+[Microsoft Identity platform Geliştirici Kılavuzu][AAD-Dev-Guide] , [uygulama tümleştirmesine][AAD-How-To-Integrate] genel bakış ve [Microsoft Identity platform kimlik doğrulaması ve desteklenen kimlik doğrulama senaryolarının][AAD-Auth-Scenarios]temelleri de dahil olmak üzere tüm Microsoft kimlik platformu geliştirmeyle ilgili konular için kullanılacak giriş sayfasıdır. Ayrıca, [GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=)'da hızlıca çalışmaya başlama hakkında öğreticiler & kod örnekleri bulabilirsiniz.
 
 Yeni tanımlara yönelik istekler de dahil olmak üzere bu içeriği iyileştirmek ve şekillendirmek için aşağıdaki açıklamalar bölümünü kullanın!
 
@@ -235,7 +235,7 @@ Yeni tanımlara yönelik istekler de dahil olmak üzere bu içeriği iyileştirm
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
 [Graph-Perm-Scopes]: /graph/permissions-reference
 [Graph-App-Resource]: /graph/api/resources/application
-[Graph-Sp-Resource]: /graph/api/resources/serviceprincipal?view=graph-rest-beta
+[Graph-Sp-Resource]: /graph/api/resources/serviceprincipal?view=graph-rest-beta&preserve-view=true
 [Graph-User-Resource]: /graph/api/resources/user
 [AAD-How-Subscriptions-Assoc]:../fundamentals/active-directory-how-subscriptions-associated-directory.md
 [AAD-How-To-Integrate]: ./active-directory-how-to-integrate.md

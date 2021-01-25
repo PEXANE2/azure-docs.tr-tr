@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: b7d14ee321a1160420d106151276ae6aef513c5b
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 1ec046ca6b42a5ca8f33b0347c562c85abd42684
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064411"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756171"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>Öğretici: Kullanıcı oturum açma ve kimlik doğrulama kod akışı kullanarak JavaScript tek sayfalı uygulama (SPA) Microsoft Graph API 'sini çağırma
 
@@ -28,11 +28,11 @@ Bu öğreticide:
 > * PCE ile OAuth 2,0 yetkilendirme kodu akışını gerçekleştirme
 > * Kişisel Microsoft hesaplarında ve iş ve okul hesaplarında oturum açın
 > * Erişim belirteci alma
-> * Microsoft Identity platform uç noktasından alınan erişim belirteçleri gerektiren Microsoft Graph veya kendi API 'nizi çağırın
+> * Microsoft Identity platform 'dan elde edilen erişim belirteçleri gerektiren Microsoft Graph veya kendi API 'nizi çağırın
 
 MSAL.js 2,0, örtük izin akışı yerine tarayıcıda yetkilendirme kodu akışını destekleyerek MSAL.js 1,0 ' de geliştirilir. MSAL.js **2,0, örtük akışı desteklemez.**
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Yerel Web sunucusu çalıştırmak için [Node.js](https://nodejs.org/en/download/)
 * [Visual Studio Code](https://code.visualstudio.com/download) veya başka bir kod Düzenleyicisi
@@ -41,7 +41,7 @@ MSAL.js 2,0, örtük izin akışı yerine tarayıcıda yetkilendirme kodu akış
 
 :::image type="content" source="media/tutorial-v2-javascript-auth-code/diagram-01-auth-code-flow.png" alt-text="Tek sayfalı bir uygulamada yetkilendirme kodu akışını gösteren diyagram":::
 
-Bu öğreticide oluşturduğunuz uygulama, JavaScript SPA 'nın, Microsoft Identity platform uç noktasından güvenlik belirteçleri alarak Microsoft Graph API 'sini sorgulamasını sağlar. Bu senaryoda, bir Kullanıcı oturum açtıktan sonra yetkilendirme üstbilgisindeki HTTP isteklerine bir erişim belirteci istenir ve eklenir. Belirteç alma ve yenileme, JavaScript (MSAL.js) için Microsoft kimlik doğrulama kitaplığı tarafından işlenir.
+Bu öğreticide oluşturduğunuz uygulama, JavaScript SPA 'nın Microsoft Identity platformundan güvenlik belirteçleri alarak Microsoft Graph API 'sini sorgulamasını sağlar. Bu senaryoda, bir Kullanıcı oturum açtıktan sonra yetkilendirme üstbilgisindeki HTTP isteklerine bir erişim belirteci istenir ve eklenir. Belirteç alma ve yenileme, JavaScript (MSAL.js) için Microsoft kimlik doğrulama kitaplığı tarafından işlenir.
 
 Bu öğretici aşağıdaki kitaplığı kullanır:
 
@@ -558,13 +558,13 @@ Bu öğreticide oluşturduğunuz SPA, `acquireTokenSilent` `acquireTokenPopup` K
 
 #### <a name="get-a-user-token-interactively"></a>Etkileşimli olarak kullanıcı belirteci alma
 
-İlk oturum açma işleminden sonra uygulamanız, kullanıcılardan korumalı bir kaynağa erişmesi gereken her seferinde (bir belirteç istemek için) kimlik doğrulaması yapmasını istemez. Bu tür yeniden kimlik doğrulama isteklerini engellemek için çağrısı yapın `acquireTokenSilent` . Ancak, kullanıcıların Microsoft Identity platform uç noktasıyla etkileşime geçmesini zorunlu hale getirmeniz gerekebilecek bazı durumlar vardır. Örneğin:
+İlk oturum açma işleminden sonra uygulamanız, kullanıcılardan korumalı bir kaynağa erişmesi gereken her seferinde (bir belirteç istemek için) kimlik doğrulaması yapmasını istemez. Bu tür yeniden kimlik doğrulama isteklerini engellemek için çağrısı yapın `acquireTokenSilent` . Ancak, kullanıcıların Microsoft Identity platformu ile etkileşime geçmesini zorunlu kılmak isteyebileceğiniz bazı durumlar vardır. Örneğin:
 
 - Parolanın süresi sona erdiği için kullanıcıların kimlik bilgilerini yeniden girmesi gerekir.
 - Uygulamanız bir kaynağa erişim istiyor ve kullanıcının izni gerekiyor.
 - İki öğeli kimlik doğrulaması gereklidir.
 
-Çağırma `acquireTokenPopup` bir açılır pencere açar (veya `acquireTokenRedirect` kullanıcıları Microsoft Identity platform uç noktasına yönlendirir). Bu pencerede, kullanıcıların kimlik bilgilerini onaylayarak, gerekli kaynağa onay vererek veya iki öğeli kimlik doğrulamasını tamamlayarak etkileşimde olmaları gerekir.
+Çağırma `acquireTokenPopup` bir açılır pencere açar (veya `acquireTokenRedirect` kullanıcıları Microsoft Identity platformu 'na yönlendirir). Bu pencerede, kullanıcıların kimlik bilgilerini onaylayarak, gerekli kaynağa onay vererek veya iki öğeli kimlik doğrulamasını tamamlayarak etkileşimde olmaları gerekir.
 
 #### <a name="get-a-user-token-silently"></a>Kullanıcı belirtecini sessizce alma
 
@@ -618,7 +618,7 @@ Uygulamanın oluşturulmasını tamamladınız ve artık Node.js Web sunucusunu 
 
 ### <a name="sign-in-to-the-application"></a>Uygulamada oturum açma
 
-Tarayıcı *index.html* dosyanızı yükledikten sonra **oturum aç**' ı seçin. Microsoft Identity platform uç noktası ile oturum açmanız istenir:
+Tarayıcı *index.html* dosyanızı yükledikten sonra **oturum aç**' ı seçin. Microsoft Identity platformu ile oturum açmanız istenir:
 
 :::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="Oturum açma iletişim kutusunu görüntüleyen Web tarayıcısı":::
 

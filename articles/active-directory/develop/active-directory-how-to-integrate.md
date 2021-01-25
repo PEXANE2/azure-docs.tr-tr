@@ -1,7 +1,7 @@
 ---
-title: Microsoft Identity platform ile tümleştirme | Mavisi
+title: Microsoft Identity platformu ile tümleştirme | Mavisi
 titleSuffix: Microsoft identity platform
-description: Uygulamanızı Microsoft Identity platformu ile tümleştirmeyle ilgili avantajları öğrenin ve Basitleştirilmiş oturum açma, kimlik yönetimi, çok faktörlü kimlik doğrulaması ve erişim denetimi gibi özellikler için kaynaklar alın.
+description: Uygulamanızı Microsoft Identity platformu ile tümleştirmeyle ilgili avantajları öğrenin ve Basitleştirilmiş oturum açma, kimlik yönetimi, çok faktörlü kimlik doğrulaması ve erişim denetimi gibi özelliklerle ilgili kaynakları edinin.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -14,28 +14,28 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: deb923a52e5d6cd5384dbf94d2249572b25b1a61
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: b7ee283ff61753a060e49a3340cd0a795b04faf9
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063850"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755938"
 ---
-# <a name="integrating-with-microsoft-identity-platform"></a>Microsoft Identity platformu ile tümleştirme
+# <a name="integrating-with-the-microsoft-identity-platform"></a>Microsoft Identity platformu ile tümleştirme
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-Bu makalede, uygulamanızı Microsoft Identity platformu ile tümleştirme ve tümleştirme için kaynakları alma avantajları hakkında bilgi edinirsiniz. Microsoft Identity platform ve Azure Active Directory (AD), kuruluşlara bulut uygulamaları için kurumsal düzeyde kimlik yönetimi sağlar. Microsoft Identity platform tümleştirmesi kullanıcılarınıza kolay bir oturum açma deneyimi sağlar ve uygulamanızın BT ilkesine uymasını sağlar.
+Bu makalede, uygulamanızı Microsoft Identity platformu ile tümleştirme ve tümleştirme için kaynaklar alma avantajları hakkında bilgi edinirsiniz. Microsoft Identity platform ve Azure Active Directory (AD), kuruluşlara bulut uygulamaları için kurumsal düzeyde kimlik yönetimi sağlar. Microsoft Identity platform tümleştirmesi kullanıcılarınıza kolay bir oturum açma deneyimi sağlar ve uygulamanızın BT ilkesine uymasını sağlar.
 
 ## <a name="how-to-integrate"></a>Nasıl tümleştirilir
 
 Uygulamanızın Microsoft Identity platformu ile tümleştirilmesine yönelik çeşitli yollar vardır. Uygulamanız için uygun olan bu senaryolardan çok sayıda veya daha az yararlanın.
 
-### <a name="support-microsoft-identity-platform-as-a-way-to-sign-in-to-your-application"></a>Uygulamanızda oturum açmak için bir yol olarak Microsoft Identity platformunu destekleme
+### <a name="support-the-microsoft-identity-platform-as-a-way-to-sign-in-to-your-application"></a>Uygulamanızda oturum açmak için bir yol olarak Microsoft Identity platformunu destekleme
 
-**Oturum açma ve destek maliyetlerini azaltma.** Uygulamanızda oturum açmak için Microsoft Identity platform 'u kullanarak, kullanıcılarınız hatırlayamayacak bir ad ve parolaya sahip olmayacaktır. Bir geliştirici olarak depolamak ve korumak için bir parola daha az olacaktır. Unutulmuş parola sıfırlamaları işlemek gerekmez, tek başına önemli bir tasarruf olabilir. Microsoft Identity platform güçleri, Microsoft 365 ve Microsoft Azure dahil olmak üzere dünyanın en popüler bulut uygulamaları için oturum açın. Milyonlarca kuruluşun yüz milyonlarca kullanıcısı sayesinde, kullanıcılarınız zaten Microsoft Identity platformunda oturum açtı. [Microsoft Identity Platform oturum açma desteği ekleme](./authentication-vs-authorization.md)hakkında daha fazla bilgi edinin.
+**Oturum açma ve destek maliyetlerini azaltma.** Uygulamanızda oturum açmak için Microsoft Identity platformunu kullanarak, kullanıcılarınız hatırlayamayacak bir ad ve parolaya sahip olmayacaktır. Bir geliştirici olarak depolamak ve korumak için bir parola daha az olacaktır. Unutulmuş parola sıfırlamaları işlemek gerekmez, tek başına önemli bir tasarruf olabilir. Microsoft Identity platform, Microsoft 365 ve Microsoft Azure de dahil olmak üzere dünyanın en popüler bulut uygulamaları için oturum açın. Milyonlarca kuruluşun yüzlerce milyonlarca kullanıcı sayesinde, kullanıcılarınız Microsoft Identity platformunda zaten oturum açtı. [Microsoft Identity Platform oturum açma desteği ekleme](./authentication-vs-authorization.md)hakkında daha fazla bilgi edinin.
 
-**Uygulamanıza kaydolmayı kolaylaştırın.**  Uygulamanıza kaydolma sırasında Microsoft Identity platform, kayıt formunuzu önceden doldurabilmeniz veya tamamen ortadan kaldırabilmeniz için bir kullanıcı hakkında önemli bilgiler gönderebilir. Kullanıcılar, sosyal medya ve mobil uygulamalarda bulunanlara benzer tanıdık bir onay deneyimi aracılığıyla Azure AD hesabını kullanarak uygulamanıza kaydolabilir. Herhangi bir Kullanıcı, BT katılımı gerekmeden Microsoft Identity platform ile tümleştirilmiş bir uygulamaya kaydolabilir ve oturum açabilir. [Azure AD hesabı oturum açma için uygulamanızı imzalama](../../app-service/configure-authentication-provider-aad.md)hakkında daha fazla bilgi edinin.
+**Uygulamanıza kaydolmayı kolaylaştırın.**  Uygulamanıza kaydolma sırasında Microsoft Identity platformu, kayıt formunuzu önceden doldurabilmeniz veya tamamen ortadan kaldırabilmeniz için bir kullanıcı hakkında önemli bilgiler gönderebilir. Kullanıcılar, sosyal medya ve mobil uygulamalarda bulunanlara benzer tanıdık bir onay deneyimi aracılığıyla Azure AD hesabını kullanarak uygulamanıza kaydolabilir. Herhangi bir Kullanıcı, BT katılımı gerekmeden Microsoft Identity platformu ile tümleştirilmiş bir uygulamaya kaydolabilir ve oturum açabilir. [Azure AD hesabı oturum açma için uygulamanızı imzalama](../../app-service/configure-authentication-provider-aad.md)hakkında daha fazla bilgi edinin.
 
 ### <a name="browse-for-users-manage-user-provisioning-and-control-access-to-your-application"></a>Kullanıcılara gidin, Kullanıcı sağlamasını yönetin ve uygulamanıza erişimi denetleyin
 
@@ -43,9 +43,9 @@ Uygulamanızın Microsoft Identity platformu ile tümleştirilmesine yönelik ç
 
 **Müşterinizin zaten yönettiği Active Directory grupları ve dağıtım listelerini yeniden kullanın.**  Azure AD, müşterinizin e-posta dağıtımı ve erişim yönetimi için zaten kullandığı grupları içerir. Microsoft Graph API 'sini kullanarak, müşterinizin uygulamanızda ayrı gruplar kümesi oluşturmasını ve yönetmesini istemek yerine bu grupları yeniden kullanın. Grup bilgileri de uygulamanıza oturum açma belirteçlerinde gönderilebilir. [Microsoft Graph API 'si](/graph/overview)hakkında daha fazla bilgi edinin.
 
-**Uygulamanıza kimlerin erişebileceğini denetlemek için Microsoft Identity platform ' i kullanın.**  Azure AD 'deki Yöneticiler ve uygulama sahipleri, belirli kullanıcılara ve gruplara uygulamalara erişim atayabilir. Microsoft Graph API 'sini kullanarak, bu listeyi okuyabilir ve uygulama içinde kaynakların sağlanması ve sağlanması ve erişiminin kaldırılması denetlemek için kullanabilirsiniz.
+**Uygulamanıza kimlerin erişebileceğini denetlemek için Microsoft Identity platformunu kullanın.**  Azure AD 'deki Yöneticiler ve uygulama sahipleri, belirli kullanıcılara ve gruplara uygulamalara erişim atayabilir. Microsoft Graph API 'sini kullanarak, bu listeyi okuyabilir ve uygulama içinde kaynakların sağlanması ve sağlanması ve erişiminin kaldırılması denetlemek için kullanabilirsiniz.
 
-**Rol tabanlı Access Control için Microsoft Identity platformu kullanın.**  Yöneticiler ve uygulama sahipleri, uygulamanızı Microsoft Identity platform 'a kaydettiğinizde tanımladığınız rollere kullanıcılar ve gruplar atayabilir. Rol bilgileri, uygulamanıza oturum açma belirteçlerinde gönderilir ve ayrıca Microsoft Graph API kullanılarak okunabilir. [Yetkilendirme Için Microsoft Identity platform kullanma](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/)hakkında daha fazla bilgi edinin.
+**Rol tabanlı Access Control için Microsoft Identity platformunu kullanın.**  Yöneticiler ve uygulama sahipleri, uygulamanızı Microsoft Identity platform 'a kaydettiğinizde tanımladığınız rollere kullanıcılar ve gruplar atayabilir. Rol bilgileri, uygulamanıza oturum açma belirteçlerinde gönderilir ve ayrıca Microsoft Graph API kullanılarak okunabilir. [Yetkilendirme Için Microsoft Identity platformu kullanma](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/)hakkında daha fazla bilgi edinin.
 
 ### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>Kullanıcıların profiline, takvimine, e-postaya, kişilere, dosyalarına ve daha fazlasına erişim sağlayın
 
@@ -59,11 +59,11 @@ Uygulamanızın Microsoft Identity platformu ile tümleştirilmesine yönelik ç
 
 ### <a name="secure-device-to-service-and-service-to-service-communication"></a>Cihazdan hizmete ve hizmetten hizmete iletişimi güvenli hale getirme
 
-**Hizmet ve cihazların kimlik yönetimi için Microsoft Identity platform kullanılması, yazmanız gereken kodu azaltır ve erişimi yönetmesini sağlar.**  Hizmet ve cihazlar, OAuth kullanarak Microsoft Identity platformundan belirteçler alabilir ve bu belirteçleri Web API 'Lerine erişmek için kullanabilir. Microsoft Identity platformu ' nu kullanarak karmaşık kimlik doğrulama kodu yazmadan kaçınabilirsiniz. Hizmet ve cihazların kimlikleri Azure AD 'de depolandığından, bunu uygulamanızda ayrı yapmak yerine anahtarları yönetebilir ve tek bir yerde iptal edebilirsiniz.
+**Hizmet ve cihazların kimlik yönetimi için Microsoft Identity platform kullanımı, yazmanız gereken kodu azaltır ve erişimi yönetmesini sağlar.**  Hizmet ve cihazlar, OAuth kullanarak Microsoft Identity platformundan belirteçler alabilir ve bu belirteçleri Web API 'Lerine erişmek için kullanabilir. Microsoft Identity platformunu kullanarak, karmaşık kimlik doğrulama kodu yazmadan kaçınabilirsiniz. Hizmet ve cihazların kimlikleri Azure AD 'de depolandığından, bunu uygulamanızda ayrı yapmak yerine anahtarları yönetebilir ve tek bir yerde iptal edebilirsiniz.
 
 ## <a name="benefits-of-integration"></a>Tümleştirmenin avantajları
 
-Microsoft Identity platform ile tümleştirme, ek kod yazmanızı gerektirmeyen avantajlarla birlikte gelir.
+Microsoft Identity platformu ile tümleştirme, ek kod yazmanızı gerektirmeyen avantajlarla birlikte gelir.
 
 ### <a name="integration-with-enterprise-identity-management"></a>Kurumsal kimlik yönetimi ile tümleştirme
 
@@ -75,7 +75,7 @@ Microsoft Identity platform ile tümleştirme, ek kod yazmanızı gerektirmeyen 
 
 **Multi-Factor Authentication.**  Microsoft Identity platformu, yerel Multi-Factor Authentication sağlar. BT yöneticileri uygulamanıza erişmek için çok faktörlü kimlik doğrulamasının yapılmasını gerektirebilir. bu sayede, bu desteği kendiniz kodlamayın. [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)hakkında daha fazla bilgi edinin.
 
-**Anormal oturum açma algılaması.**  Microsoft Identity platform günde bir milyardan fazla oturum açma işlemi, şüpheli etkinlikleri algılamak ve BT yöneticilerine olası sorunları bildirmek için makine öğrenimi algoritmalarını kullanmaktır. Microsoft Identity Platform oturum açma 'yı destekleyerek, uygulamanız bu korumanın avantajını alır. [Azure Active Directory Access raporunu görüntüleme](../reports-monitoring/overview-reports.md)hakkında daha fazla bilgi edinin.
+**Anormal oturum açma algılaması.**  Microsoft Identity platformu, şüpheli etkinlikleri algılamak ve BT yöneticilerine olası sorunları bildirmek için makine öğrenimi algoritmalarını kullanırken, günde bir milyardan fazla oturum açma işlemini işler. Microsoft Identity Platform oturum açma 'yı destekleyerek, uygulamanız bu korumanın avantajını alır. [Azure Active Directory Access raporunu görüntüleme](../reports-monitoring/overview-reports.md)hakkında daha fazla bilgi edinin.
 
 **Koşullu erişim.**  Çok faktörlü kimlik doğrulamasına ek olarak Yöneticiler, kullanıcıların uygulamanızda oturum açmasını sağlamak için belirli koşulların karşılanmasını gerektirebilir. Ayarlanabilir koşullar, istemci cihazlarının IP adresi aralığını, belirtilen grupların üyeliğini ve erişim için kullanılan cihazın durumunu içerir. [Koşullu erişim Azure Active Directory](../conditional-access/overview.md)hakkında daha fazla bilgi edinin.
 
@@ -93,4 +93,4 @@ Microsoft Identity platform ile tümleştirme, ek kod yazmanızı gerektirmeyen 
 
 [Kod yazmaya başlayın](v2-overview.md#getting-started).
 
-[Kullanıcıları Microsoft Identity platformu kullanarak imzalama](./authentication-vs-authorization.md)
+[Kullanıcıları Microsoft Identity platformunu kullanarak imzalama](./authentication-vs-authorization.md)

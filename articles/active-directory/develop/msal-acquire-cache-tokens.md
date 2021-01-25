@@ -13,12 +13,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 34cdaa42f3a41ae04c73c570bb4fede01a786af2
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 98ae81626db637f5b0bd6bfe9e294c32293d09e5
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107847"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755065"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Microsoft kimlik doğrulama kitaplığı (MSAL) kullanarak belirteçleri alma ve önbelleğe alma
 
@@ -30,7 +30,7 @@ Ayrıca, hesapları önbellekten kaldırarak elde edilen belirteç önbelleğini
 
 ## <a name="scopes-when-acquiring-tokens"></a>Belirteçleri alırken kapsamlar
 
-[Kapsamlar](v2-permissions-and-consent.md) , BIR Web API 'sinin istemci uygulamaların erişim isteyebilmesini sağlayan izinlerdir. İstemci uygulamaları, Web API 'Lerine erişmek için belirteçleri almak üzere kimlik doğrulama istekleri yaparken kullanıcının bu kapsamlar için izin vermesini ister. MSAL, geliştiriciler için Azure AD 'ye (v 1.0) ve Microsoft Identity platform (v 2.0) API 'Lerine erişme belirteçleri almanızı sağlar. v 2.0 protokolü isteklerde kaynak yerine kapsamları kullanır. Daha fazla bilgi için, [v 1.0 ve v 2.0 karşılaştırması](../azuread-dev/azure-ad-endpoint-comparison.md)makalesini okuyun. Web API 'sinin kabul ettiği belirteç sürümünün yapılandırmasına bağlı olarak, v 2.0 uç noktası erişim belirtecini MSAL öğesine döndürür.
+[Kapsamlar](v2-permissions-and-consent.md) , BIR Web API 'sinin istemci uygulamaların erişim isteyebilmesini sağlayan izinlerdir. İstemci uygulamaları, Web API 'Lerine erişmek için belirteçleri almak üzere kimlik doğrulama istekleri yaparken kullanıcının bu kapsamlar için izin vermesini ister. MSAL, geliştiriciler için Azure AD 'ye (v 1.0) ve Microsoft Identity platform API 'Lerine erişme belirteçleri almanızı sağlar. v 2.0 protokolü isteklerde kaynak yerine kapsamları kullanır. Daha fazla bilgi için, [v 1.0 ve v 2.0 karşılaştırması](../azuread-dev/azure-ad-endpoint-comparison.md)makalesini okuyun. Web API 'sinin kabul ettiği belirteç sürümünün yapılandırmasına bağlı olarak, v 2.0 uç noktası erişim belirtecini MSAL öğesine döndürür.
 
 MSAL 'ın belirteç alma yöntemlerinden birkaçı için bir `scopes` parametre gerekir. Parametresi, istenen `scopes` izinleri ve istenen kaynakları bildiren dizelerin bir listesidir. İyi bilinen kapsamlar [Microsoft Graph izinleridir](/graph/permissions-reference).
 

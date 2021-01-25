@@ -14,12 +14,12 @@ ms.date: 11/11/2019
 ms.author: rayluo
 ms.reviewer: marsma, rayluo, nacanuma
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 213184409c9f5ee21ac9f61be1ad138fbbaa3590
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 42ffc7ffba20868b23675fd8613fd3ef11b0924a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107864"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755053"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>Python için ADAL MSAL geçiş kılavuzu
 
@@ -38,13 +38,13 @@ Desteklememektedir
   - OAuth v 2.0
   - OpenID Connect (OıDC)
 
-Daha fazla ayrıntı için bkz. [Microsoft Identity platform (v 2.0) uç noktası hakkında ne fark var?](../azuread-dev/azure-ad-endpoint-comparison.md)
+Daha fazla ayrıntı için bkz. [Microsoft Identity platformu hakkında ne fark var?](../azuread-dev/azure-ad-endpoint-comparison.md)
 
 ### <a name="scopes-not-resources"></a>Kapsam kaynakları değil
 
 ADAL Python, kaynaklar için belirteçleri alır, ancak MSAL Python kapsamlar için belirteçleri alır. MSAL Python 'daki API yüzeyinde artık kaynak parametresi yok. İstenen izinleri ve istenen kaynakları bildiren dizelerin bir listesi olarak kapsamlar sağlamanız gerekir. Kapsamların bir örneğini görmek için bkz. [Microsoft Graph kapsamları](/graph/permissions-reference).
 
-`/.default`Uygulamalarınızı v 1.0 uç noktasından (ADAL) Microsoft Identity platform uç noktasına (msal) geçirmeye yardımcı olması için kapsam sonekini kaynağa ekleyebilirsiniz. Örneğin, kaynak değeri için `https://graph.microsoft.com` , eşdeğer kapsam değeri `https://graph.microsoft.com/.default` .  Kaynak URL biçiminde değilse, ancak formun kaynak KIMLIĞI ise `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` , kapsam değerini kullanmaya devam edebilirsiniz `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` .
+`/.default`Uygulamalarınızı v 1.0 uç noktasından (ADAL) Microsoft Identity platformu 'na (msal) geçirmeye yardımcı olması için kapsam sonekini kaynağa ekleyebilirsiniz. Örneğin, kaynak değeri için `https://graph.microsoft.com` , eşdeğer kapsam değeri `https://graph.microsoft.com/.default` .  Kaynak URL biçiminde değilse, ancak formun kaynak KIMLIĞI ise `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` , kapsam değerini kullanmaya devam edebilirsiniz `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` .
 
 Farklı kapsam türleri hakkında daha fazla bilgi için [Microsoft Identity platformunda izinler ve onay](./v2-permissions-and-consent.md) ' i ve [v 1.0 belirteçleri 'ni kabul eden bir Web API 'si için kapsamları](./msal-v1-app-scopes.md) inceleyin.
 
@@ -92,7 +92,7 @@ def get_preexisting_rt_and_their_scopes_from_elsewhere():
     # You may be able to append "/.default" to your v1 resource to form a scope
     # See https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#the-default-scope
 
-    # Or maybe you have an app already talking to Microsoft identity platform v2,
+    # Or maybe you have an app already talking to the Microsoft identity platform,
     # powered by some 3rd-party auth library, and persist its tokens somehow.
 
     # Either way, you need to extract RTs from there, and return them like this.

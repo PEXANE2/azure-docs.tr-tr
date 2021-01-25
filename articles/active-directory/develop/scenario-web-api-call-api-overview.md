@@ -1,5 +1,6 @@
 ---
-title: Web API 'Lerini çağıran bir Web API 'SI oluşturma-Microsoft Identity platform | Mavisi
+title: Web API 'Lerini çağıran bir Web API 'SI oluşturun | Mavisi
+titleSuffix: Microsoft identity platform
 description: Aşağı akış Web API 'Lerini (genel bakış) çağıran bir Web API 'SI oluşturmayı öğrenin.
 services: active-directory
 author: jmprieur
@@ -11,18 +12,18 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ee9d879849a94ac255a0967ad4fbc762417f8cd4
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: a66f0a2de1d8239baffbe53dfb5d6f2dd275d448
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442659"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756340"
 ---
 # <a name="scenario-a-web-api-that-calls-web-apis"></a>Senaryo: Web API 'Lerini çağıran bir Web API 'SI
 
 Web API 'Lerini çağıran bir Web API 'SI oluşturmak için bilmeniz gerekenleri öğrenin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu senaryo, korumalı bir Web API 'sinin diğer Web API 'Lerini çağırdığı, senaryo üzerinde derlemeler [: korumalı Web API](scenario-protected-web-api-overview.md)'si.
 

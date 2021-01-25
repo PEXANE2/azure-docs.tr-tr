@@ -13,16 +13,16 @@ ms.date: 04/10/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 6894d84f489d3719f1106ba4de79cb85fa45c5ed
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: a1ec8c31681ab6c0ac40ba33e94f33057ee948e7
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064959"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754804"
 ---
 # <a name="differences-between-msaljs-and-adaljs"></a>MSAL.js ve ADAL.js arasındaki farklar
 
-JavaScript için Microsoft kimlik doğrulama kitaplığı (MSAL.js) ve JavaScript (ADAL.js) için Azure AD kimlik doğrulama kitaplığı, Azure AD varlıklarının kimliğini doğrulamak ve Azure AD 'de belirteçleri istemek için kullanılır. Bu aşamada, çoğu geliştirici, ADAL kullanarak belirteçleri isteyerek Azure AD kimliklerinin (iş ve okul hesapları) kimliğini doğrulamak üzere geliştiriciler için Azure AD (v 1.0) ile çalıştık. Artık MSAL.js kullanarak Microsoft Identity platform (v 2.0) aracılığıyla daha geniş bir Microsoft kimliği kümesinin (Azure AD kimlikleri ve Microsoft hesapları ve sosyal ve yerel hesaplar Azure AD B2C aracılığıyla) kimlik doğrulaması yapabilirsiniz.
+JavaScript için Microsoft kimlik doğrulama kitaplığı (MSAL.js) ve JavaScript (ADAL.js) için Azure AD kimlik doğrulama kitaplığı, Azure AD varlıklarının kimliğini doğrulamak ve Azure AD 'de belirteçleri istemek için kullanılır. Bu aşamada, çoğu geliştirici, ADAL kullanarak belirteçleri isteyerek Azure AD kimliklerinin (iş ve okul hesapları) kimliğini doğrulamak üzere geliştiriciler için Azure AD (v 1.0) ile çalıştık. Artık MSAL.js kullanarak Microsoft Identity platformu aracılığıyla daha geniş bir Microsoft kimlikleri kümesinin (Azure AD kimlikleri ve Microsoft hesapları ve sosyal ve yerel hesaplar Azure AD B2C aracılığıyla) kimlik doğrulaması yapabilirsiniz.
 
 Bu makalede JavaScript (MSAL.js) için Microsoft kimlik doğrulama kitaplığı ve JavaScript (ADAL.js) için Azure AD kimlik doğrulama kitaplığı arasından seçim yapabileceğiniz ve iki kitaplığı karşılaştıran açıklanır.
 

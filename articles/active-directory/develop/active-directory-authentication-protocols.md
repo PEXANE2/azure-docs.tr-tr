@@ -13,16 +13,16 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: ffd9b415d3b2a8e1aa716caa0e8289c6ae127b71
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 803f52666fb09a836eae3294410584ebbd71a1b6
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065091"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755891"
 ---
 # <a name="microsoft-identity-platform-authentication-protocols"></a>Microsoft Identity platform kimlik doğrulama protokolleri
 
-Microsoft Identity platform, en yaygın olarak kullanılan kimlik doğrulama ve yetkilendirme protokollerinden birkaçını destekler. Bu bölümdeki konularda desteklenen protokoller ve bunların uygulamaları Microsoft Identity platformunda açıklanır. Konular, desteklenen talep türlerini gözden geçirme, Federasyon meta verilerinin kullanımına giriş, ayrıntılı OAuth 2,0. ve SAML 2,0 protokol başvurusu belgeleri ve sorun giderme bölümü.
+Microsoft Identity platformu, en yaygın olarak kullanılan kimlik doğrulama ve yetkilendirme protokollerinden birkaçını destekler. Bu bölümdeki konularda desteklenen protokoller ve bunların uygulamaları Microsoft Identity platformunda açıklanır. Konular, desteklenen talep türlerini gözden geçirme, Federasyon meta verilerinin kullanımına giriş, ayrıntılı OAuth 2,0. ve SAML 2,0 protokol başvurusu belgeleri ve sorun giderme bölümü.
 
 ## <a name="authentication-protocols-articles-and-reference"></a>Kimlik doğrulama protokolleri makaleleri ve başvurusu
 

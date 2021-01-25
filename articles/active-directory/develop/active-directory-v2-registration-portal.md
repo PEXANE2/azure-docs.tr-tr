@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: b165cd4abd55026e10aa43eb20faa85b887de194
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 6a33da602eaa9bee20f155eaa550e558e5dcbeca
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065052"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755570"
 ---
 # <a name="app-registration-reference"></a>Uygulama kayıt başvurusu
 
@@ -27,7 +27,7 @@ Bu belge, Azure portal [uygulama kayıtları](https://aka.ms/appregistrations) d
 
 ## <a name="my-applications-or-converged-applications"></a>Uygulamalarım veya yakınsanmış uygulamalar
 
-Bu liste, Microsoft Identity platform (v 2.0) uç noktasıyla birlikte kullanılmak üzere kaydedilen tüm uygulamalarınızı içerir. Bu uygulamalar, kullanıcıların hem kişisel Microsoft hesapları hem de iş/okul hesaplarıyla Azure Active Directory oturum açabilme özelliğine sahiptir. Kimlik platformu uç noktası hakkında daha fazla bilgi edinmek için bkz. [v 2.0 genel bakış](./v2-overview.md). Bu uygulamalar, Microsoft hesabı kimlik doğrulama uç noktası ile tümleştirme için de kullanılabilir `https://login.live.com` .
+Bu liste, Microsoft Identity platformu ile birlikte kullanılmak üzere kaydedilen tüm uygulamalarınızı içerir. Bu uygulamalar, kullanıcıların hem kişisel Microsoft hesapları hem de iş/okul hesaplarıyla Azure Active Directory oturum açabilme özelliğine sahiptir. Microsoft Identity platformu hakkında daha fazla bilgi edinmek için bkz. [v 2.0 genel bakış](./v2-overview.md). Bu uygulamalar, Microsoft hesabı kimlik doğrulama uç noktası ile tümleştirme için de kullanılabilir `https://login.live.com` .
 
 ## <a name="azure-ad-only-applications"></a>Yalnızca Azure AD uygulamaları
 
@@ -39,7 +39,7 @@ Bu liste, yalnızca Microsoft hesabı ile kullanım için kaydedilmiş tüm uygu
 
 ## <a name="application-secrets"></a>Uygulama gizli dizileri
 
-Uygulama gizli dizileri, uygulamanızın Microsoft Identity platformu ile güvenilir [istemci kimlik doğrulaması](https://tools.ietf.org/html/rfc6749#section-2.3) gerçekleştirmesini sağlayan kimlik bilgileridir. OAuth & OpenID Connect içinde, uygulama gizli dizisi genellikle bir olarak adlandırılır `client_secret` . V 2.0 protokolünde, bir Web adreslenebilir konumda (bir şema kullanılarak) bir güvenlik belirteci alan tüm uygulamalar, `https` Bu güvenlik belirtecinin kullanım sonrasında kendisini Microsoft Identity platformu 'na tanıtmak için bir uygulama gizli anahtarı kullanmalıdır. Ayrıca, bir cihazda belirteçleri alan tüm yerel istemcilerin, istemci kimlik doğrulaması gerçekleştirmek için bir uygulama gizli anahtarı kullanılması yasaktır. Bu etkilenmeden, güvenli olmayan ortamlarda gizli dizi depolanmasını ister.
+Uygulama gizli dizileri, uygulamanızın Microsoft Identity platformu ile güvenilir [istemci kimlik doğrulaması](https://tools.ietf.org/html/rfc6749#section-2.3) gerçekleştirmesini sağlayan kimlik bilgileridir. OAuth & OpenID Connect içinde, uygulama gizli dizisi genellikle bir olarak adlandırılır `client_secret` . V 2.0 protokolünde, bir Web adreslenebilir konumda (bir şema kullanılarak) bir güvenlik belirteci alan herhangi bir uygulama, `https` Bu güvenlik belirtecinin kullanıma alınması sırasında kendisini Microsoft Identity platformu için tanımlamak üzere bir uygulama gizli anahtarı kullanmalıdır. Ayrıca, bir cihazda belirteçleri alan tüm yerel istemcilerin, istemci kimlik doğrulaması gerçekleştirmek için bir uygulama gizli anahtarı kullanılması yasaktır. Bu etkilenmeden, güvenli olmayan ortamlarda gizli dizi depolanmasını ister.
 
 Her bir uygulama, belirli bir zamanda iki geçerli uygulama parolası içerebilir. İki gizli dizi tutarak, uygulamanızın tamamı boyunca düzenli anahtar geçişi gerçekleştirebilirsiniz. Uygulamanızı tamamen yeni bir gizli dizi ile geçirdikten sonra, eski parolayı silip yeni bir parola sağlayabilirsiniz.
 

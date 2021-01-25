@@ -1,5 +1,6 @@
 ---
-title: JavaScript tek sayfalı uygulama senaryosu-Microsoft Identity platform | Mavisi
+title: JavaScript tek sayfalı uygulama senaryosu
+titleSuffix: Microsoft identity platform
 description: Microsoft Identity platformunu kullanarak tek sayfalı uygulama (senaryoya genel bakış) oluşturmayı öğrenin.
 services: active-directory
 author: navyasric
@@ -11,18 +12,18 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 17acb2bc5e96a136f31371c0be912c2c758c0f76
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 47b8c8c074a5e0ce3ed73a2a9a4b06aa307cdff3
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443866"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756418"
 ---
 # <a name="scenario-single-page-application"></a>Senaryo: tek sayfalı uygulama
 
 Tek sayfalı uygulama (SPA) oluşturmak için ihtiyacınız olan tüm uygulamaları öğrenin.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 Henüz yapmadıysanız, JavaScript SPA hızlı başlangıcı ' nı tamamlayarak ilk uygulamanızı oluşturun:
 
