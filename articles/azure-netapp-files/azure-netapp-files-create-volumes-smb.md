@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: b-juche
-ms.openlocfilehash: cd2a293ebcc35d4884211f50783738a502dcc7de
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 48ee05eebd91c60fa2cfecc80898d3be54367269
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854834"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762677"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files için SMB birimi oluşturma
 
@@ -74,7 +74,7 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
 
     Bkz. AD siteleri ve hizmetleriyle ilgili [site topolojisini tasarlama](/windows-server/identity/ad-ds/plan/designing-the-site-topology) . 
     
-* Bir SMB birimi için, [birleşimi Active Directory](#create-an-active-directory-connection) penceresindeki **AES şifreleme** kutusunu işaretleyerek, AES şifrelemesini etkinleştirebilirsiniz. Azure NetApp Files DES, Kerberos AES 128 ve Kerberos AES 256 şifreleme türlerini (en az güvenli olan en az güvenli) destekler. AES şifrelemesini etkinleştirirseniz Active Directory birleştirmek için kullanılan Kullanıcı kimlik bilgileri, Active Directory için etkinleştirilen yetenekler ile eşleşen en yüksek karşılık gelen hesap seçeneğine sahip olmalıdır.    
+* [Active Directory Birleştir](#create-an-active-directory-connection) penceresinde **AES ŞIFRELEME** kutusunu işaretleyerek ad kimlik doğrulaması için AES şifrelemeyi etkinleştirebilirsiniz. Azure NetApp Files DES, Kerberos AES 128 ve Kerberos AES 256 şifreleme türlerini (en az güvenli olan en az güvenli) destekler. AES şifrelemesini etkinleştirirseniz Active Directory birleştirmek için kullanılan Kullanıcı kimlik bilgileri, Active Directory için etkinleştirilen yetenekler ile eşleşen en yüksek karşılık gelen hesap seçeneğine sahip olmalıdır.    
 
     Örneğin, Active Directory yalnızca AES-128 özelliğine sahipse, Kullanıcı kimlik bilgileri için AES-128 hesabı seçeneğini etkinleştirmeniz gerekir. Active Directory AES-256 özelliğine sahipse, AES-256 hesabı seçeneğini etkinleştirmeniz gerekir (Bu da AES-128 ' i destekler). Active Directory herhangi bir Kerberos şifreleme özelliği yoksa, Azure NetApp Files varsayılan olarak DES kullanır.  
 

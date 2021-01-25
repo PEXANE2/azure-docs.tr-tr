@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d348b8c2325c7bc2cdaa28356151647a9430684f
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 10fe3b895ea5084247822f1c35275e68d80b73fa
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247055"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762987"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Hazırlanan piyasaya çıkma kullanarak bulut kimlik doğrulamasına geçiş (Önizleme)
 
@@ -61,7 +61,10 @@ Hazırlanan dağıtım için aşağıdaki senaryolar desteklenir. Özelliği yal
 - Azure AD Connect kullanılarak Azure AD 'ye sağlanan kullanıcılar. Yalnızca bulutta bulunan kullanıcılar için geçerlidir.
 
 - Tarayıcılarda ve *modern kimlik doğrulama* istemcilerinde Kullanıcı oturum açma trafiği. Eski kimlik doğrulaması kullanan uygulamalar veya bulut Hizmetleri, federal kimlik doğrulama akışlarına geri döner. Bir örnek, modern kimlik doğrulaması kapalı veya modern kimlik doğrulamayı desteklemeyen Outlook 2010 ile Exchange Online olabilir.
+
 - Grup boyutu şu anda 50.000 kullanıcıyla sınırlıdır.  Daha büyük ve 50.000 Kullanıcı gruplarınız varsa, bu grubu hazırlanmış dağıtım için birden çok gruba bölmeniz önerilir.
+
+- Windows 10 karma birleşimi veya Azure AD 'ye katılarak birincil yenileme belirteci alımı, Windows 10 sürüm 1903 ve daha yeni bir sürümü için federasyon sunucusuna, Kullanıcı UPN 'si yönlendirilebilir olduğunda ve Azure AD 'de etki alanı son eki doğrulandığında, ön ek.
 
 ## <a name="unsupported-scenarios"></a>Desteklenmeyen senaryolar
 
@@ -87,6 +90,10 @@ Aşağıdaki senaryolar hazırlanan dağıtım için desteklenmez:
 - Hazırlanmış dağıtım için ilk olarak bir güvenlik grubu eklediğinizde, bir UX zaman aşımını önlemek için 200 kullanıcıyla sınırlı olursunuz. Grubu ekledikten sonra, gerektiğinde doğrudan buna daha fazla kullanıcı ekleyebilirsiniz.
 
 - Kullanıcılar hazırlanan piyasaya sürülirken, Enforcecıpasswordpolicyforpasswordsyncedusers etkinleştirildiğinde parola süre sonu ilkesi, özelleştirme seçeneği olmadan 90 gün olarak ayarlanır. 
+
+- Windows 10 karma birleşimi veya Azure AD 'ye katılması birincil yenileme belirteci 1903 'den eski Windows 10 sürümü için alma. Bu senaryo, oturum açan kullanıcı tarafından hazırlanan dağıtım kapsamında olsa bile, Federasyon sunucusunun WS-Trust uç noktasına geri döner.
+
+- Windows 10 hibrit JOIN veya Azure AD JOIN birincil yenileme belirteci alma, kullanıcının şirket içi UPN 'si yönlendirilebilir olmadığında. Bu senaryo, hazırlanan dağıtım modundayken WS-Trust uç noktasına geri dönecektir, ancak hazırlanan geçiş tamamlandığında ve Kullanıcı oturum açma artık federasyon sunucusuna bağlı olmadığında çalışmayı durduracaktır.
 
 
 ## <a name="get-started-with-staged-rollout"></a>Hazırlanan piyasaya çıkma ile çalışmaya başlama

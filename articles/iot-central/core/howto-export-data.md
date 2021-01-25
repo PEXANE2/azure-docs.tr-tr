@@ -8,12 +8,12 @@ ms.date: 11/05/2020
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 3079b8384a24642322d6f6eb86e2ca7f0927db15
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 74de0481bf6786d245fb96f5d102ab72a00031c8
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065397"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760899"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>Veri dışarı aktarma kullanarak IoT verilerini bulut hedeflerine dışarı aktarma
 
@@ -32,9 +32,11 @@ Bu makalede, Azure IoT Central 'de yeni veri dışa aktarma özelliğinin nasıl
 > [!Tip]
 > Veri dışarı aktarmayı açtığınızda, bu andan itibaren yalnızca verileri alırsınız. Şu anda veri dışa aktarma kapalı olduğunda veriler bir saat için alınamaz. Daha fazla geçmiş verileri sürdürmek için, verilerin dışarı aktarılmasını erken açın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Veri dışa aktarma özelliklerini kullanmak için bir [v3 uygulamasına](howto-get-app-info.md)sahip olmanız ve [veri dışa aktarma](howto-manage-users-roles.md) izninizin olması gerekir.
+
+V2 uygulamanız varsa, bkz. [v2 IoT Central uygulamanızı v3 'e geçirme](howto-migrate.md).
 
 ## <a name="set-up-export-destination"></a>Dışarı aktarma hedefini ayarla
 
@@ -276,8 +278,8 @@ Aşağıdaki tabloda, [eski veri dışa aktarma](howto-export-data-legacy.md) ve
 | Özellikler  | Eski veri dışa aktarma | Yeni veri dışa aktarma |
 | :------------- | :---------- | :----------- |
 | Kullanılabilir veri türleri | Telemetri, cihazlar, cihaz şablonları | Telemetri, özellik değişiklikleri |
-| Filtreleme | Hiçbiri | , Dışarıya aktarılmış veri türüne bağlıdır. Telemetri için telemetri, ileti özellikleri, özellik değerleri ile filtreleme |
-| Zenginleştirmeleri | Hiçbiri | Cihazdaki özel bir dize veya özellik değeri ile zenginleştirme |
+| Filtreleme | Yok | , Dışarıya aktarılmış veri türüne bağlıdır. Telemetri için telemetri, ileti özellikleri, özellik değerleri ile filtreleme |
+| Zenginleştirmeleri | Yok | Cihazdaki özel bir dize veya özellik değeri ile zenginleştirme |
 | Hedefler | Azure Event Hubs, Azure Service Bus kuyruklar ve konular, Azure Blob depolama | Eski veri dışa aktarma ve Web kancaları ile aynı|
 | Desteklenen uygulama sürümleri | V2, V3 | Yalnızca v3 |
 | Önemli sınırlar | her uygulama için 5 dışarı aktarım, dışarı aktarma başına 1 hedef | 10 dışarı aktarmalar-uygulama başına hedef bağlantı |

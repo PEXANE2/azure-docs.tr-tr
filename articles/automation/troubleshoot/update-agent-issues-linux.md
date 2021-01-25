@@ -4,17 +4,17 @@ description: Bu makalede, Güncelleştirme Yönetimi 'de Linux Windows Update Ar
 services: automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 12/03/2019
+ms.date: 01/25/2021
 ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: f1351b29a0102a374b75d832687d66c3b5572c75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7ac5e8324d9979b17ee93d16b3e007fe7916a8a
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83680865"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762627"
 ---
 # <a name="troubleshoot-linux-update-agent-issues"></a>Linux Update aracı sorunlarını giderme
 
@@ -27,7 +27,7 @@ Güncelleştirme Yönetimi ' de makinenizin (sağlıklı) olarak görünmesinin 
 > [!NOTE]
 > Azure portal gösterdiği ve makinenin geçerli durumu arasında hafif bir gecikme olabilir.
 
-Bu makalede, [çevrimdışı senaryodaki](#troubleshoot-offline)Azure Portal ve Azure dışı makinelerden Azure makinelerinde sorun gidericinin nasıl çalıştırılacağı açıklanmaktadır. 
+Bu makalede, [çevrimdışı senaryodaki](#troubleshoot-offline)Azure Portal ve Azure dışı makinelerden Azure makinelerinde sorun gidericinin nasıl çalıştırılacağı açıklanmaktadır.
 
 > [!NOTE]
 > Sorun giderici betiği, bir proxy sunucusu yapılandırılmışsa trafiği Şu anda yönlendirmez.
@@ -90,7 +90,6 @@ Güncelleştirme Yönetimi, karma Runbook Worker paketlerini işlemler uç nokta
 
 Bu denetim, karma Runbook Worker 'ın makinede çalıştığından emin olmanızı sağlar. Karma Runbook Worker doğru çalışıyorsa aşağıdaki örnekteki işlemlerin mevcut olması gerekir.
 
-
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
 nxautom+   8593      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/state/automationworker/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
@@ -129,7 +128,7 @@ Bu denetim, makinenizin Log Analytics Aracısı tarafından gereken uç noktalar
 
 ## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>Çevrimdışı sorun giderme
 
-Betiği yerel olarak çalıştırarak bir karma runbook çalışanında sorun gidericiyi çevrimdışı olarak kullanabilirsiniz. Python betiği [update_mgmt_health_check. Kopyala](https://gallery.technet.microsoft.com/scriptcenter/Troubleshooting-utility-3bcbefe6), betik merkezi 'nde bulunabilir. Aşağıdaki örnekte, bu betiğin çıktısının bir örneği gösterilmektedir:
+Betiği yerel olarak çalıştırarak bir karma runbook çalışanında sorun gidericiyi çevrimdışı olarak kullanabilirsiniz. Python betiği [UM_Linux_Troubleshooter_Offline. Kopyala](https://github.com/Azure/updatemanagement/blob/main/UM_Linux_Troubleshooter_Offline.py), GitHub ' da bulunabilir. Aşağıdaki örnekte, bu betiğin çıktısının bir örneği gösterilmektedir:
 
 ```output
 Debug: Machine Information:   Static hostname: LinuxVM2

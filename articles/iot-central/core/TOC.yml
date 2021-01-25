@@ -157,6 +157,8 @@
               href: howto-use-app-templates.md
             - name: Uygulamanın durumunu izleme
               href: howto-monitor-application-health.md
+            - name: V2 'yi v3 uygulamasına geçir
+              href: howto-migrate.md
             - name: Uygulamanız hakkında
               href: howto-get-app-info.md
             - name: Roll X.509 sertifikaları

@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 11/06/2020
 ms.author: atulmal
 ms.custom: github-actions-azure
-ms.openlocfilehash: d03acab340e593a925f042ca41f9e8967b468858
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 94134360de49a066f825cbb0c85712995d90b37f
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605454"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761465"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>Kubernetes hizmetine dağıtmaya yönelik GitHub eylemleri
 
-[GitHub eylemleri](https://docs.github.com/en/free-pro-team@latest/actions) size otomatik yazılım geliştirme yaşam döngüsü iş akışı oluşturma esnekliği sağlar. GitHub eylemleri ile Azure Kubernetes hizmetine Azure Container Registry kapsayıcılara dağıtmak için birden fazla Kubernetes eylemini kullanabilirsiniz. 
+[GitHub eylemleri](https://docs.github.com/en/actions) size otomatik yazılım geliştirme yaşam döngüsü iş akışı oluşturma esnekliği sağlar. GitHub eylemleri ile Azure Kubernetes hizmetine Azure Container Registry kapsayıcılara dağıtmak için birden fazla Kubernetes eylemini kullanabilirsiniz. 
 
 ## <a name="prerequisites"></a>Ön koşullar 
 

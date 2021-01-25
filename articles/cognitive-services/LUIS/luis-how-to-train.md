@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.openlocfilehash: a53857061110d5a77ac3d166277e7076f4f7f9c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47b006932aace3149dd94e136e334c1b6e5bfcef
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541382"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762709"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>LUSıS uygulamasının etkin sürümünü eğitme
 
@@ -40,9 +40,15 @@ Eğitim tarihi ve saati GMT + 2 ' dir.
 
 ## <a name="train-with-all-data"></a>Tüm verilerle eğitme
 
-Eğitim, negatif örnekleme küçük bir yüzdesini kullanır. Küçük negatif örnekleme yerine tüm verileri kullanmak istiyorsanız, [API](#version-settings-api-use-of-usealltrainingdata)'yi kullanın.
+Eğitim, negatif örnekleme küçük bir yüzdesini kullanır. Portal veya API 'YI kullanarak bunun yerine tüm kullanılabilir verileri kullanabilirsiniz. 
 
-### <a name="version-settings-api-use-of-usealltrainingdata"></a>Sürüm Ayarları API 'SI Usealltraıningdata kullanımı
+### <a name="using-the-luis-portal"></a>LUO portalını kullanma
+
+[Luo portalında](https://www.luis.ai/) oturum açın ve uygulamanıza tıklayın. Ekranın üst kısmında **Yönet** ' i seçin ve ardından **Ayarlar** ' ı seçin ve **kullanım belirleyici eğitim** seçeneğini etkinleştirin veya devre dışı bırakın. Devre dışı bırakıldığında, eğitim tüm kullanılabilir verileri kullanır.
+
+![Belirleyici olmayan eğitimi etkinleştirmek veya devre dışı bırakmak için bir düğme](./media/non-determinstic-training.png)
+
+### <a name="using-the-version-settings-api"></a>Sürüm Ayarları API 'sini kullanma
 
 Bu özelliği kapatmak için [Sürüm Ayarları API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) 'sini `UseAllTrainingData` true olarak ayarla ' yı kullanın.
 

@@ -7,16 +7,16 @@ ms.date: 12/04/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: fec4ba8cba33a1d52d8f330308645fb616921ba4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 1fe09970bcb9b9432b9b6f22de04bb24f1e84fa8
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98726822"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761760"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>GitHub eylemlerini kullanarak App Service özel kapsayıcı dağıtma
 
-[GitHub eylemleri](https://docs.github.com/en/free-pro-team@latest/actions) , otomatik yazılım geliştirme iş akışı oluşturma esnekliği sağlar. [Azure Web dağıtımı eylemiyle](https://github.com/Azure/webapps-deploy), GitHub eylemlerini kullanarak [App Service](overview.md) için özel kapsayıcılar dağıtmak üzere iş akışınızı otomatik hale getirebilirsiniz.
+[GitHub eylemleri](https://docs.github.com/en/actions) , otomatik yazılım geliştirme iş akışı oluşturma esnekliği sağlar. [Azure Web dağıtımı eylemiyle](https://github.com/Azure/webapps-deploy), GitHub eylemlerini kullanarak [App Service](overview.md) için özel kapsayıcılar dağıtmak üzere iş akışınızı otomatik hale getirebilirsiniz.
 
 Bir iş akışı, deponuzdaki yoldaki bir YAML (. yıml) dosyası tarafından tanımlanır `/.github/workflows/` . Bu tanım, iş akışındaki çeşitli adımları ve parametreleri içerir.
 
@@ -39,7 +39,7 @@ Azure App Service kapsayıcı iş akışı için, dosyanın üç bölümü vard�
 
 GitHub eylemleri için Azure App Services ile kimlik doğrulamak için önerilen yol, bir yayımlama profiliyle birlikte bulunur. Hizmet sorumlusu ile de kimlik doğrulaması yapabilirsiniz ancak işlem daha fazla adım gerektirir. 
 
-Yayımlama profili kimlik bilgilerinizi veya hizmet sorumlunuzu Azure ile kimlik doğrulamak için [GitHub gizli anahtarı](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets) olarak kaydedin. Gizli anahtar, iş akışınız dahilinde. 
+Yayımlama profili kimlik bilgilerinizi veya hizmet sorumlunuzu Azure ile kimlik doğrulamak için [GitHub gizli anahtarı](https://docs.github.com/en/actions/reference/encrypted-secrets) olarak kaydedin. Gizli anahtar, iş akışınız dahilinde. 
 
 # <a name="publish-profile"></a>[Profili Yayımla](#tab/publish-profile)
 
@@ -273,7 +273,7 @@ GitHub 'daki farklı depolarda gruplanmış eylem listemizi, her biri, CI/CD iç
 
 - [Docker oturum açma/kapatma](https://github.com/Azure/docker-login)
 
-- [İş akışlarını tetikleyen olaylar](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
+- [İş akışlarını tetikleyen olaylar](https://docs.github.com/en/actions/reference/events-that-trigger-workflows)
 
 - [K8s dağıtımı](https://github.com/Azure/k8s-deploy)
 

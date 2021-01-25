@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/04/2021
+ms.date: 01/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro R so I can use it to transfer data to Azure.
-ms.openlocfilehash: dd0b6833c4c51c218497cea4fec04390200edff4
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 5c668783232533098822cca982f1af9008f13640
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935365"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761736"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-r"></a>Öğretici: Azure Stack Edge Pro R 'yi dağıtmaya hazırlanma
 
@@ -117,7 +117,7 @@ Azure Stack Edge kaynağı oluşturmak için Azure portal aşağıdaki adımlar�
     |Ayar  |Değer  |
     |---------|---------|
     |Ad   | Kaynağı tanımlamak için kolay bir ad.<br>Ad 2 ile 50 karakter arasında olmalı, harf, rakam ve kısa çizgilerden oluşmalıdır.<br> Ad bir harf veya rakamla başlar ve biter.        |
-    |Region     |Azure Stack Edge kaynağının kullanılabildiği tüm bölgelerin listesi için bkz. [bölgeye göre kullanılabilir Azure ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Kamu kullanıyorsanız, tüm kamu bölgeleri [Azure bölgelerinde](https://azure.microsoft.com/global-infrastructure/regions/)gösterildiği gibi kullanılabilir.<br> Cihazınızı dağıtmak istediğiniz coğrafi bölgeye yakın bir konum seçin.|
+    |Bölge     |Azure Stack Edge kaynağının kullanılabildiği tüm bölgelerin listesi için bkz. [bölgeye göre kullanılabilir Azure ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Kamu kullanıyorsanız, tüm kamu bölgeleri [Azure bölgelerinde](https://azure.microsoft.com/global-infrastructure/regions/)gösterildiği gibi kullanılabilir.<br> Cihazınızı dağıtmak istediğiniz coğrafi bölgeye yakın bir konum seçin.|
 
     ![Kaynak oluşturma 4](media/azure-stack-edge-pro-r-deploy-prep/create-resource-4.png)
 
@@ -142,15 +142,18 @@ Azure Stack Edge kaynağı oluşturmak için Azure portal aşağıdaki adımlar�
 
 11. **Oluştur**’u seçin.
 
-Kaynağın oluşturulması birkaç dakika sürer. Azure Stack Edge cihazının Azure 'da kaynak sağlayıcısıyla iletişim kurmasına imkan tanıyan bir MSI de oluşturulur.
+    Kaynağın oluşturulması birkaç dakika sürer. Azure Stack Edge cihazının Azure 'da kaynak sağlayıcısıyla iletişim kurmasına imkan tanıyan bir MSI de oluşturulur.
 
-Kaynak başarıyla oluşturulup dağıtıldıktan sonra bilgilendirirsiniz. **Kaynağa git**’i seçin.
+    Kaynak başarıyla oluşturulup dağıtıldıktan sonra bilgilendirirsiniz. **Kaynağa git**’i seçin.
 
-![Azure Stack Edge Pro kaynağına git](media/azure-stack-edge-pro-r-deploy-prep/azure-stack-edge-resource-1.png)
+    ![Azure Stack Edge Pro kaynağına git](media/azure-stack-edge-pro-r-deploy-prep/azure-stack-edge-resource-1.png)
 
 Sipariş yerleştirildikten sonra, Microsoft siparişi inceler ve gönderim ayrıntıları ile size (e-posta aracılığıyla) ulaşır.
 
 <!--![Notification for review of the Azure Stack Edge Pro order](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png) - If this is restored, it must go above "After the resource is successfully created." The azure-stack-edge-resource-1.png would seem superfluous in that case.--> 
+
+> [!NOTE]
+> Aynı anda birden çok sipariş oluşturmak veya var olan bir siparişi kopyalamak istiyorsanız, [Azure örnekleri içindeki betikleri](https://github.com/Azure-Samples/azure-stack-edge-order)kullanabilirsiniz. Daha fazla bilgi için bkz. README dosyası.
 
 Sipariş işlemi sırasında herhangi bir sorunla karşılaşırsanız, bkz. [sorun giderme sorunları giderme](azure-stack-edge-troubleshoot-ordering.md).
 

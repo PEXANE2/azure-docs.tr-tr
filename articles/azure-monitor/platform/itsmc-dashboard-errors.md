@@ -6,20 +6,20 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: 9521c13b21317bb0a782b0bea0b08312ff24b113
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: c3e6408a6a3473380edbe2966eba41970bd73562
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610361"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762763"
 ---
-# <a name="errors-in-the-connector-status"></a>Bağlayıcı durumundaki hatalar
+# <a name="errors-in-the-connector-status-section"></a>Bağlayıcı durumu bölümündeki hatalar
 
-Bağlayıcı durum listesinde, ıTSM bağlayıcıınızın sorunlarını gidermenize yardımcı olabilecek hatalar bulabilirsiniz.
+Panodaki bağlayıcı durumu listesi bölümünde, ıTSM bağlayıcıınızın sorunlarını gidermenize yardımcı olabilecek hatalar bulabilirsiniz.
 
 ## <a name="status-common-errors"></a>Durum yaygın hataları
 
-Bu bölümde, bağlayıcı durumu bölümünde sunulan yaygın hataları ve çözümü nasıl çözebileceğinizi bulabilirsiniz:
+Bu bölümde, bağlayıcı durumu bölümünde sunulan yaygın hataları ve bunları nasıl çözebileceğinizi bulabilirsiniz:
 
 * **Hata**: "ServiceNow 'dan beklenmeyen yanıt durum kodu ile birlikte. Yanıt: {"import_set": "{import_set_id}", "staging_table": "x_mioms_microsoft_oms_incident", "sonuç": [{"transform_map": "OMS olayı", "Table": "olay", "durum": "hata", "error_message": "{hedef kayıt bulunamadı | Geçersiz tablo | "}" Hazırlama tablosu geçersiz
 
@@ -27,7 +27,7 @@ Bu bölümde, bağlayıcı durumu bölümünde sunulan yaygın hataları ve çö
   * ServiceNow örneğinde dağıtılan özel bir betik olayların yoksayılmasına neden olur.
   * "OMS tümleştirici uygulaması" kodu ServiceNow tarafında değiştirilmiştir, örneğin, onBefore betiği.
 
-  **Çözüm**: veri içeri aktarma yolundaki tüm özel betikleri veya kod değişikliklerini devre dışı bırakın.
+  **Çözüm**: tüm özel betikleri veya kod değişikliklerini devre dışı bırakın.
 
 * **Hata**: "{" Error ": {" Message ":" Işlem başarısız oldu "," ayrıntı ":" güvenlik KıSıTLAMALARı nedeniyle ACL özel durum güncelleştirmesi başarısız oldu "}"
 
@@ -58,7 +58,7 @@ Bu bölümde, bağlayıcı durumu bölümünde sunulan yaygın hataları ve çö
     **Neden**: ITSM Bağlayıcısı silindi.
 
     **Çözüm**: ITSM Bağlayıcısı silinmiş, ancak onunla ilişkili hala ıtssm eylem grupları var. Bu sorunu gidermek için 2 seçenek vardır:
-  * Bu eylemi bul ve devre dışı bırak veya Sil
+  * Bu tür eylem gruplarını bul ve devre dışı bırak veya Sil
   * [Eylem grubunu](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts) mevcut bir ITSM Bağlayıcısı kullanacak şekilde yeniden yapılandırın.
   * [Yeni BIR ITSM Bağlayıcısı oluşturun](./itsmc-definition.md#create-an-itsm-connection) ve [Eylem grubunu kullanmak için yeniden yapılandırın](itsmc-definition.md#create-itsm-work-items-from-azure-alerts).
 

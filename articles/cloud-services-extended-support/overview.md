@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: cf7c4b881697b664403d8c817c3b9e48fb48944d
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 969f60cd92e8c1cbe93f1646cccd08c942ad9923
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746773"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762837"
 ---
 # <a name="about-azure-cloud-services-extended-support"></a>Azure Cloud Services hakkında (genişletilmiş destek)
 
@@ -27,9 +27,11 @@ Bu değişiklik ile, Cloud Services için Azure Service Manager tabanlı dağıt
 
 ## <a name="what-does-not-change"></a>Ne değiştirmiyor 
 - Kodu oluşturur, konfigürasyonları tanımlayabilir ve Azure 'a dağıtırsınız. Azure, işlem ortamını ayarlar, kodunuzu çalıştırır ve sizin için saklar.
-- Cloud Services (genişletilmiş destek) iki tür rol, [Web ve çalışan](../cloud-services/cloud-services-choose-me.md)da destekler. 
-- Bulut hizmetinin üç bileşeni, hizmet tanımı (. csdef), hizmet yapılandırması (. cscfg) ve bir hizmet paketi (. cspkg) ileri taşınır ve [biçimlerinde](cloud-services-model-and-package.md)hiçbir değişiklik yapılmaz. 
-- Veri düzlemi aynı olduğundan ve denetim düzlemi yalnızca değişmekte olduğundan çalışma zamanı kodu için herhangi bir değişiklik yapılması gerekmez.  
+- Cloud Services (genişletilmiş destek) iki tür rol, [Web ve çalışan](../cloud-services/cloud-services-choose-me.md)da destekler. Web ve çalışan rollerinin tasarımında, mimarisinde veya bileşenlerinde değişiklik yoktur. 
+- Bulut hizmetinin üç bileşeni olan hizmet tanımı (. csdef), hizmet yapılandırma (. cscfg) ve hizmet paketi (. cspkg) ileri taşınır ve [biçimlerinde](cloud-services-model-and-package.md)hiçbir değişiklik yapılmaz. 
+- Veri düzlemi aynı olduğundan ve denetim düzlemi yalnızca değişmekte olduğundan çalışma zamanı kodu için herhangi bir değişiklik yapılması gerekmez. 
+- Azure GuestOS yayınları ve ilişkili güncelleştirmeler Cloud Services (klasik) ile hizalanır
+- Güncelleştirme etki alanlarına göre temel alınan güncelleştirme işlemi, güncelleştirme sırasında yükseltme devam etme, geri alma ve izin verilen hizmet değişiklikleri değiştirme
 
 ## <a name="changes-in-deployment-model"></a>Dağıtım modelindeki değişiklikler
 

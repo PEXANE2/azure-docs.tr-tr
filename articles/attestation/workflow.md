@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 09d793f3d8ed544a386a362677f24be6d18673d7
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 27a97ceb2ca9a7b58df7200930e4e47d89c9ae89
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96748745"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762210"
 ---
 # <a name="workflow"></a>İş akışı
 
@@ -38,6 +38,18 @@ Tipik bir SGX şifreleme iş akışındaki (Azure kanıtlama kullanarak) genel a
 
 > [!Note]
 > [2018-09-01-Preview](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/attestation/data-plane/Microsoft.Attestation/stable/2018-09-01-preview) API sürümünde kanıtlama istekleri gönderdiğinizde, ISTEMCININ Azure AD erişim belirteciyle birlikte Azure kanıtlama 'na kanıt gönderebilmesi gerekir.
+
+## <a name="trusted-platform-module-tpm-enclave-validation-work-flow"></a>Güvenilir Platform Modülü (TPM) şifreleme doğrulama iş akışı
+
+Tipik bir TPM şifrelemesi kanıtlama iş akışındaki (Azure kanıtlama kullanarak) genel adımlar aşağıda verilmiştir:
+
+1.  Cihaz/platform önyüklemesi üzerinde, TPM tarafından desteklenen ve güvenli bir şekilde saklanan ve (TCG günlüğü) çeşitli önyükleme yükleyicileri ve önyükleme hizmetleri tarafından ölçü olayları işlenir.
+2.  İstemci, cihaz ve TPM tırnağından gelen TCG günlüklerini toplar. Bu, kanıtlama kanıtını üstlenir.
+3.  İstemcinin bir Azure kanıtlama örneğine başvuran bir URI 'SI vardır. İstemci Azure kanıtlama için kanıt gönderir. Sağlayıcıya gönderilen tam bilgiler platforma bağlıdır.
+4.  Azure kanıtlama gönderilen bilgileri doğrular ve yapılandırılan bir ilkeye göre değerlendirir. Doğrulama başarılı olursa, Azure kanıtlama bir kanıtlama belirteci yayınlar ve istemciye döndürür. Bu adım başarısız olursa, Azure kanıtlama istemciye bir hata bildirir. İstemci ve kanıtlama hizmeti arasındaki iletişim Azure kanıtlama TPM protokolü tarafından belirlenir.
+5.  İstemci daha sonra kanıtlama belirtecini bağlı olan tarafa gönderir. Bağlı olan taraf, imzalama sertifikalarını almak için Azure kanıtlama 'nın ortak anahtar meta veri uç noktasını çağırır. Bağlı olan taraf daha sonra kanıtlama belirtecinin imzasını doğrular ve platformların güvenilirliğini sağlar.
+
+![TPM doğrulama akışı](./media/tpm-validation-flow.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Kanıtlama ilkesi yazma ve imzalama](author-sign-policy.md)

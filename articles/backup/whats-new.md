@@ -3,12 +3,12 @@ title: Azure Backup’taki yenilikler
 description: Azure Backup yeni özellikler hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: 935c2a806ed3b08f19e680bf1522d98a9ad67666
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 5343ec2ae04853492abbaace2432cf94c9fb5a07
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98730298"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762368"
 ---
 # <a name="whats-new-in-azure-backup"></a>Azure Backup’taki yenilikler
 
@@ -19,20 +19,20 @@ Yeni yayınlar hakkında daha fazla bilgi edinmek için bu sayfayı kitap halind
 ## <a name="updates-summary"></a>Güncelleştirme Özeti
 
 - Ocak 2021
-  - [Azure disk yedekleme (önizlemede)](disk-backup-overview.md)
-  - [Müşteri tarafından yönetilen anahtarlar kullanılarak bekleyen şifreleme artık genel kullanıma sunuldu](encryption-at-rest-with-cmk.md)
+  - [Azure disk yedekleme (önizlemede)](#azure-disk-backup-in-preview)
+  - [Müşteri tarafından yönetilen anahtarları kullanarak bekleyen şifreleme (genel kullanılabilirlik)](#encryption-at-rest-using-customer-managed-keys)
 - Kasım 2020
   - [Azure dosya paylaşma (AFS) yedeklemesi için Azure Resource Manager şablonu](#azure-resource-manager-template-for-afs-backup)
-  - [Azure VM 'lerinde SAP HANA veritabanları için artımlı yedeklemeler](#incremental-backups-for-sap-hana-databases)
+  - [Azure VM 'lerinde SAP HANA veritabanları için artımlı yedeklemeler (önizlemede)](#incremental-backups-for-sap-hana-databases-in-preview)
 - Eylül 2020
-  - [Yedekleme Merkezi](#backup-center)
-  - [PostgreSQL için Azure Veritabanı’nı Yedekleme](#backup-azure-database-for-postgresql)
+  - [Yedekleme merkezi (önizlemede)](#backup-center-in-preview)
+  - [PostgreSQL için Azure veritabanı 'nı yedekleme (önizlemede)](#backup-azure-database-for-postgresql-in-preview)
   - [Seçmeli disk yedekleme ve geri yükleme](#selective-disk-backup-and-restore)
-  - [Azure VM 'lerinde SQL Server ve SAP HANA veritabanları için çapraz bölge geri yükleme](#cross-region-restore-for-sql-server-and-sap-hana)
-  - [En fazla 32 diski olan VM 'lerin yedeklenmesi için destek](#support-for-backup-of-vms-with-up-to-32-disks)
+  - [Azure VM 'lerinde SQL Server ve SAP HANA veritabanları için çapraz bölge geri yükleme (önizlemede)](#cross-region-restore-for-sql-server-and-sap-hana-in-preview)
+  - [En çok 32 diske sahip VM 'lerin yedeklenmesi için destek (genel kullanılabilirlik)](#support-for-backup-of-vms-with-up-to-32-disks)
   - [Azure VM 'lerinde SQL için Basitleştirilmiş yedekleme yapılandırma deneyimi](#simpler-backup-configuration-for-sql-in-azure-vms)
-  - [RHEL Azure sanal makinelerinde yedekleme SAP HANA](#backup-sap-hana-in-rhel-azure-virtual-machines)
-  - [Yedekleme verileri için bölge yedekli depolama (ZRS)](#zone-redundant-storage-zrs-for-backup-data)
+  - [RHEL Azure sanal makinelerinde yedekleme SAP HANA (önizlemede)](#backup-sap-hana-in-rhel-azure-virtual-machines-in-preview)
+  - [Yedekleme verileri için bölge yedekli depolama (ZRS) (önizlemede)](#zone-redundant-storage-zrs-for-backup-data-in-preview)
   - [Azure VM 'lerinde SQL Server ve SAP HANA iş yükleri için geçici silme](#soft-delete-for-sql-server-and-sap-hana-workloads)
 
 ## <a name="azure-disk-backup-in-preview"></a>Azure disk yedekleme (önizlemede)
@@ -53,13 +53,13 @@ Azure Backup artık Azure Resource Manager (ARM) şablonu kullanarak mevcut Azur
 
 Daha fazla bilgi için bkz. [Azure Backup için Azure Resource Manager şablonları](backup-rm-template-samples.md).
 
-## <a name="incremental-backups-for-sap-hana-databases"></a>SAP HANA veritabanları için artımlı yedeklemeler
+## <a name="incremental-backups-for-sap-hana-databases-in-preview"></a>SAP HANA veritabanları için artımlı yedeklemeler (önizlemede)
 
 Azure Backup artık Azure VM 'lerinde barındırılan SAP HANA veritabanları için artımlı yedeklemeleri desteklemektedir. Bu, SAP HANA verilerinizin daha hızlı ve daha verimli yedeklemeler sağlar.
 
 Daha fazla bilgi için bkz. [yedekleme ilkesi oluşturma sırasında kullanılabilen çeşitli seçenekler](sap-hana-faq-backup-azure-vm.md#policy) ve [SAP HANA veritabanları için yedekleme ilkesi oluşturma](tutorial-backup-sap-hana-db.md#creating-a-backup-policy).
 
-## <a name="backup-center"></a>Yedekleme Merkezi
+## <a name="backup-center-in-preview"></a>Yedekleme merkezi (önizlemede)
 
 Azure Backup, bir merkezi konsolundan tüm yedeklemelerinizi yönetmek için yeni bir yerel yönetim özelliği etkinleştirdi. Yedekleme merkezi, Azure 'un yerel yönetim deneyimleri ile tutarlı bir şekilde ölçeklenebilir bir şekilde veri korumayı izleme, çalıştırma, yönetme ve iyileştirmenize olanak tanır.
 
@@ -67,7 +67,7 @@ Yedekleme merkezi ile abonelikler, konumlar, kaynak grupları, kasaların ve hat
 
 Daha fazla bilgi için bkz. [yedekleme merkezine genel bakış](backup-center-overview.md).
 
-## <a name="backup-azure-database-for-postgresql"></a>PostgreSQL için Azure Veritabanı’nı Yedekleme
+## <a name="backup-azure-database-for-postgresql-in-preview"></a>PostgreSQL için Azure veritabanı 'nı yedekleme (önizlemede)
 
 Azure Backup ve Azure veritabanı Hizmetleri, Azure PostgreSQL için kurumsal sınıf bir yedekleme çözümü oluşturmak üzere bir araya geliyor (şimdi önizlemede). Artık, yedeklemelerin 10 yıla kadar bekletilmesini sağlayan müşteri denetimli bir yedekleme ilkesiyle veri koruma ve uyumluluk ihtiyaçlarınızı karşılayabilirsiniz. Bu şekilde, yedekleme ve geri yükleme işlemlerini ayrı veritabanı düzeyinde yönetmeye yönelik ayrıntılı denetime sahip olursunuz. Benzer şekilde, bir PostgreSQL sürümüne veya blob depolama alanına kolayca geri yükleyebilirsiniz.
 
@@ -79,7 +79,7 @@ Azure Backup, sanal makine yedekleme çözümünü kullanarak bir VM 'deki tüm 
 
 Daha fazla bilgi için bkz. [Azure sanal makineleri Için seçmeli disk yedekleme ve geri yükleme](selective-disk-backup-restore.md).
 
-## <a name="cross-region-restore-for-sql-server-and-sap-hana"></a>SQL Server ve SAP HANA için çapraz bölge geri yükleme
+## <a name="cross-region-restore-for-sql-server-and-sap-hana-in-preview"></a>SQL Server ve SAP HANA için çapraz bölge geri yüklemesi (önizlemede)
 
 Bölgeler arası geri yükleme 'nin kullanıma sunulmasıyla birlikte, ortamınızda bir birincil bölgedeki gerçek kalma süresi sorunlarını azaltmak için, artık ikincil bir bölgedeki geri yüklemeleri başlatabilirsiniz. Bu, ikincil bölgenin tamamen müşterinin denetimi geri yüklemelerini sağlar. Azure Backup, bu geri yüklemeler için ikincil bölgeye çoğaltılan yedeklenen verileri kullanır.
 
@@ -99,13 +99,13 @@ Azure VM 'lerinde SQL Server yedeklemeleri yapılandırmak, Azure portal VM böl
 
 Daha fazla bilgi için bkz. [VM bölmesinden bir SQL Server yedekleme](backup-sql-server-vm-from-vm-pane.md).
 
-## <a name="backup-sap-hana-in-rhel-azure-virtual-machines"></a>RHEL Azure sanal makinelerinde yedekleme SAP HANA
+## <a name="backup-sap-hana-in-rhel-azure-virtual-machines-in-preview"></a>RHEL Azure sanal makinelerinde yedekleme SAP HANA (önizlemede)
 
 Azure Backup, Azure için yerel yedekleme çözümüdür ve SAP tarafından geri sertifikalı olarak sertifikalıdır. Azure Backup, SAP HANA çalıştıran en yaygın Linux işletim sistemlerinden biri olan Red Hat Enterprise Linux (RHEL) için destek eklemiştir.
 
 Daha fazla bilgi için [SAP HANA veritabanı yedekleme senaryosu destek matrisine](sap-hana-backup-support-matrix.md#scenario-support)bakın.
 
-## <a name="zone-redundant-storage-zrs-for-backup-data"></a>Yedekleme verileri için bölge yedekli depolama (ZRS)
+## <a name="zone-redundant-storage-zrs-for-backup-data-in-preview"></a>Yedekleme verileri için bölge yedekli depolama (ZRS) (önizlemede)
 
 Azure depolama, değişen artıklık seçenekleriyle yüksek performans, yüksek kullanılabilirlik ve yüksek veri dayanıklılığı için harika bir denge sağlar. Azure Backup, yedeklemelerinizi yerel olarak yedekli depolama (LRS) ve coğrafi olarak yedekli depolama (GRS) olarak depolamak için bu avantajları, yedekleme verilerini de genişletmenizi sağlar. Artık, bölgesel olarak yedekli depolama (ZRS) desteğiyle ilgili ek dayanıklılık seçenekleri mevcuttur.
 

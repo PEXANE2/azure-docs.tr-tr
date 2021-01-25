@@ -9,16 +9,16 @@ ms.reviewer: dineshm
 ms.date: 01/11/2021
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: d8727bd747ef6d035cabbccf2ad42b80937a06a8
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: d3aa0ca83b28708fde81cba12993ac6e79e79a88
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180219"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760609"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>Azure Storage 'da statik Web sitenizi dağıtmak için bir GitHub eylemleri iş akışı ayarlama
 
-Bir Azure depolama hesabına statik bir site dağıtmak için bir iş akışı kullanarak [GitHub eylemleri](https://docs.github.com/en/free-pro-team@latest/actions) ile çalışmaya başlayın. GitHub eylemleri iş akışını ayarladıktan sonra, sitenizin kodunda değişiklik yaptığınızda sitenizi GitHub 'dan otomatik olarak Azure 'a dağıtabilirsiniz.
+Bir Azure depolama hesabına statik bir site dağıtmak için bir iş akışı kullanarak [GitHub eylemleri](https://docs.github.com/en/actions) ile çalışmaya başlayın. GitHub eylemleri iş akışını ayarladıktan sonra, sitenizin kodunda değişiklik yaptığınızda sitenizi GitHub 'dan otomatik olarak Azure 'a dağıtabilirsiniz.
 
 > [!NOTE]
 > [Azure statik Web Apps](../../static-web-apps/index.yml)kullanıyorsanız, El Ile GitHub eylemleri iş akışını ayarlamanıza gerek yoktur.
@@ -68,7 +68,7 @@ Yukarıdaki örnekte yer tutucuları abonelik KIMLIĞINIZ ve kaynak grubu adıyl
 
 1. Azure CLı komutundan tüm JSON çıkışını gizli dizi değeri alanına yapıştırın. Gizli dizi gibi bir ad verin `AZURE_CREDENTIALS` .
 
-    Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure oturum açma eyleminin girişi için gizli anahtarı kullanırsınız. Örnek:
+    Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure oturum açma eyleminin girişi için gizli anahtarı kullanırsınız. Örneğin:
 
     ```yaml
     - uses: azure/login@v1

@@ -13,20 +13,20 @@ ms.date: 11/20/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 9ec8a5fe5de751e40ebaa17629ff72c5f6b2adca
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 46626c3ebe9d70600be1cc5f73c43677f67bcd09
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979996"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761367"
 ---
 # <a name="application-configuration-options"></a>Uygulama yapılandırma seçenekleri
 
 Belirteçlerin kimliğini doğrulamak ve almak için kodunuzda yeni bir ortak veya gizli istemci uygulaması başlatın. İstemci uygulamasını Microsoft kimlik doğrulama kitaplığı 'nda (MSAL) başlatırken birçok yapılandırma seçeneği belirleyebilirsiniz. Bu seçenekler iki gruba ayrılır:
 
 - Kayıt seçenekleri, şunlar dahildir:
-  - Yetkili (kimlik sağlayıcı [örneğinden](#cloud-instance) ve uygulama için oturum açma [izleyicisiyle](#authority) ve muhtemelen kiracı kimliğinde) oluşur [audience](#application-audience)
-  - [İstemci KIMLIĞI](#client-id)
+  - Yetkili (kimlik sağlayıcı [örneğinden](#cloud-instance) ve uygulama için oturum açma [izleyicisiyle](#authority) ve muhtemelen kiracı kimliğinde) oluşur [](#application-audience)
+  - [İstemci Kimliği](#client-id)
   - [Yönlendirme URI'si](#redirect-uri)
   - [İstemci gizli](#client-secret) dizisi (gizli istemci uygulamaları için)
 - Günlük düzeyi, kişisel verilerin denetimi ve kitaplığı kullanarak bileşen adı dahil olmak üzere [günlüğe kaydetme seçenekleri](#logging)
@@ -147,8 +147,20 @@ Daemon uygulamaları için bir yeniden yönlendirme URI 'SI belirtmeniz gerekmez
 Bu seçenek, gizli istemci uygulaması için istemci parolasını belirtir. Bu gizli dizi (uygulama parolası) uygulama kayıt portalı tarafından sağlanır veya PowerShell AzureAD, PowerShell Azurerd veya Azure CLı ile uygulama kaydı sırasında Azure AD 'ye sağlanır.
 
 ## <a name="logging"></a>Günlüğe Kaydetme
+Hata ayıklama ve kimlik doğrulama sırasında hata giderme senaryolarında, Microsoft kimlik doğrulama kitaplığı yerleşik günlük desteği sağlar. Günlüğe kaydetme her bir kitaplık aşağıdaki makalelerde ele alınmıştır:
 
-Diğer yapılandırma seçenekleri günlüğe kaydetme ve sorun gidermeyi etkinleştirir. Nasıl kullanılacağına ilişkin ayrıntılar için [günlüğe kaydetme](msal-logging.md) makalesine bakın.
+:::row:::
+    :::column:::
+        - [MSAL.NET’te oturum açma](msal-logging-dotnet.md)
+        - [Android için MSAL’de oturum açma](msal-logging-android.md)
+        - [MSAL.js’de oturum açma](msal-logging-js.md)
+    :::column-end:::
+    :::column:::
+        - [iOS/macOS için MSAL’de oturum açma](msal-logging-ios.md)
+        - [Java için MSAL’de oturum açma](msal-logging-java.md)
+        - [Python için MSAL’de oturum açma](msal-logging-python.md)
+    :::column-end:::
+:::row-end:::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

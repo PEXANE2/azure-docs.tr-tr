@@ -4,16 +4,16 @@ description: Azure Container Instances bir kapsayıcı görüntüsü oluşturma,
 ms.topic: article
 ms.date: 08/20/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: c6c030e05953dc98c82c573704018c3b482d2fea
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 1409d8fc1430cd9bf67bd735d9826a74979d495b
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814287"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762960"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>Kapsayıcı örneği oluşturmak için bir GitHub eylemi yapılandırma
 
-[GitHub eylemleri](https://docs.github.com/en/free-pro-team@latest/actions) , yazılım geliştirme iş akışlarınızı aynı yerde otomatik hale getirmek için GitHub 'daki bir özellik paketidir. böylece, çekme istekleri ve sorunları üzerinde kod depolar ve işbirliği yapın.
+[GitHub eylemleri](https://docs.github.com/en/actions) , yazılım geliştirme iş akışlarınızı aynı yerde otomatik hale getirmek için GitHub 'daki bir özellik paketidir. böylece, çekme istekleri ve sorunları üzerinde kod depolar ve işbirliği yapın.
 
 Tek bir kapsayıcının Azure Container Instances dağıtımını otomatik hale getirmek için GitHub [Azure Container Instances Için dağıt](https://github.com/azure/aci-deploy) eylemini kullanın. Bu eylem, [az Container Create][az-container-create] komutuyla benzer bir kapsayıcı örneği için özellikler ayarlamanıza olanak sağlar.
 
@@ -31,7 +31,7 @@ Bu makalede, iş akışını kurmanın iki yolu gösterilmektedir:
 > [!IMPORTANT]
 > Azure Container Instances için GitHub eylemi şu anda önizlemededir. Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * **GitHub hesabı** -henüz yoksa bir hesap oluşturun https://github.com .
 * **Azure CLI** -Azure CLI adımlarını tamamlayabilmeniz için Azure Cloud Shell veya yerel BIR Azure CLI yüklemesi kullanabilirsiniz. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
@@ -177,7 +177,7 @@ jobs:
 
 ![İş akışı ilerlemesini görüntüleme](./media/container-instances-github-action/github-action-progress.png)
 
-İş akışınızda her adımın durumunu ve sonuçlarını görüntüleme hakkında bilgi için bkz. [iş akışı çalıştırma geçmişini görüntüleme](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/viewing-workflow-run-history) . İş akışı tamamlanmazsa, bkz. [sorunları tanılamak için günlükleri görüntüleme](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/using-workflow-run-logs#viewing-logs-to-diagnose-failures).
+İş akışınızda her adımın durumunu ve sonuçlarını görüntüleme hakkında bilgi için bkz. [iş akışı çalıştırma geçmişini görüntüleme](https://docs.github.com/en/actions/managing-workflow-runs/viewing-workflow-run-history) . İş akışı tamamlanmazsa, bkz. [sorunları tanılamak için günlükleri görüntüleme](https://docs.github.com/en/actions/managing-workflow-runs/using-workflow-run-logs#viewing-logs-to-diagnose-failures).
 
 İş akışı başarıyla tamamlandığında, [az Container Show][az-container-show] komutunu çalıştırarak *aci-SampleApp* adlı kapsayıcı örneği hakkında bilgi alın. Kaynak grubunuzun adını değiştirin: 
 
@@ -237,7 +237,7 @@ az container app up \
 
 ### <a name="command-progress"></a>Komut ilerleme durumu
 
-* İstendiğinde GitHub kimlik bilgilerinizi sağlayın veya GitHub hesabınızda kimlik doğrulaması yapmak için *Depo* ve *Kullanıcı* kapsamlarına sahip bir [GitHub kişisel erişim belirteci](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token) (Pat) sağlayın. GitHub kimlik bilgilerini sağlarsanız, komut sizin için bir PAT oluşturur. İş akışını yapılandırmak için ek istemleri izleyin.
+* İstendiğinde GitHub kimlik bilgilerinizi sağlayın veya GitHub hesabınızda kimlik doğrulaması yapmak için *Depo* ve *Kullanıcı* kapsamlarına sahip bir [GitHub kişisel erişim belirteci](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) (Pat) sağlayın. GitHub kimlik bilgilerini sağlarsanız, komut sizin için bir PAT oluşturur. İş akışını yapılandırmak için ek istemleri izleyin.
 
 * Komut iş akışı için depo gizli dizileri oluşturur:
 
@@ -258,7 +258,7 @@ Workflow succeeded
 Your app is deployed at:  http://acr-build-helloworld-node.eastus.azurecontainer.io:8080/
 ```
 
-GitHub Kullanıcı arabirimindeki her adımın iş akışı durumunu ve sonuçlarını görüntülemek için bkz. [iş akışı çalıştırma geçmişini görüntüleme](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/viewing-workflow-run-history).
+GitHub Kullanıcı arabirimindeki her adımın iş akışı durumunu ve sonuçlarını görüntülemek için bkz. [iş akışı çalıştırma geçmişini görüntüleme](https://docs.github.com/en/actions/managing-workflow-runs/viewing-workflow-run-history).
 
 ### <a name="validate-workflow"></a>İş akışını doğrula
 

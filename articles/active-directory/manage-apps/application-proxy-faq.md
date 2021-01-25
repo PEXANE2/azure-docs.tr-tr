@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 49388ee75fa3e5570a906998fdeaa579208fd636
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: f1a1d43f9bfc960628447a3c20e7dab2ac701dc5
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588599"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762570"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) uygulama proxy 'Si hakkında sık sorulan sorular
 
@@ -101,6 +101,10 @@ Bu hatayı gidermek için bazı ipuçları aşağıda verilmiştir:
 ### <a name="what-is-the-length-of-the-default-and-long-back-end-timeout-can-the-timeout-be-extended"></a>Varsayılan ve "uzun" arka uç zaman aşımı uzunluğu nedir? Zaman aşımı genişletilmiş olabilir mi?
 
 Varsayılan uzunluk 85 saniyedir. "Long" ayarı 180 saniyedir. Zaman aşımı sınırı genişletilemiyor.
+
+### <a name="can-a-service-principal-manage-application-proxy-using-powershell-or-microsoft-graph-apis"></a>Bir hizmet sorumlusu, PowerShell veya Microsoft Graph API 'Leri kullanarak uygulama ara sunucusunu yönetebilir mi?
+
+Hayır, bu şu anda desteklenmiyor.
 
 ### <a name="how-do-i-change-the-landing-page-my-application-loads"></a>Uygulamamın giriş sayfasını Nasıl yaparım? değiştirmek mi?
 

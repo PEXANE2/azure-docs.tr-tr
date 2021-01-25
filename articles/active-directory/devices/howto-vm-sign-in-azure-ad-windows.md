@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22a4bdc92ea2a91425c1070a5837c672307de665
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 3e22e5fc4bc7211d905dbe8775b0ef6e893bd2cc
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683785"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761003"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure 'da Azure Active Directory kimlik doğrulaması (Önizleme) kullanarak Windows sanal makinesinde oturum açma
 
@@ -350,7 +350,9 @@ Uzak Masaüstü bağlantısını başlatmak için kullandığınız Windows 10 b
 > [!NOTE]
 > Windows 10 derleme 20H1, VM 'nize RDP bağlantısı başlatacak bir Azure AD kayıtlı BILGISAYARı için destek eklendi. VM 'nize bağlantıları başlatmak üzere RDP istemcisi olarak Azure AD 'ye kayıtlı (Azure AD 'ye katılmış veya karma Azure AD 'ye katılmış) bilgisayar kullanırken, kimlik bilgilerini AzureAD\UPn (ör.) biçiminde girmeniz gerekir AzureAD\john@contoso.com .
 
-Ayrıca, Azure AD katılımı tamamlandıktan sonra AADLoginForWindows uzantısının kaldırılmadığından emin olun.
+Azure AD JOIN işlemi tamamlandıktan sonra AADLoginForWindows uzantısının kaldırılmadığından emin olun.
+
+Ayrıca, "ağ güvenliği: güvenlik ilkesi 'nin bu bilgisayara çevrimiçi kimlikleri kullanmasına Izin ver" güvenlik ilkesinin hem sunucuda *hem* de istemcide etkinleştirildiğinden emin olun.
  
 #### <a name="mfa-sign-in-method-required"></a>MFA oturum açma yöntemi gerekli
 

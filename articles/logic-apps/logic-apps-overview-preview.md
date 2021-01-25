@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 12/07/2020
-ms.openlocfilehash: 7c15b3a854b533d93bc05f7e5302671711da75c2
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 01/22/2021
+ms.openlocfilehash: a4d1543c5c4ce7a44825a879b838e7829b8c84fd
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936133"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760625"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Genel Bakış: Azure Logic Apps Önizleme
 
@@ -139,6 +139,8 @@ Azure Logic Apps önizleme birçok geçerli ve ek özellik içerir, örneğin:
 
 * Azure aboneliğiniz ve mantıksal uygulama ayarlarınız tarafından desteklenerek [Application Insights](../azure-monitor/app/app-insights-overview.md) kullanarak mantıksal uygulamanız için tanılama günlüğü ve izleme özelliklerini etkinleştirin.
 
+* **Mantıksal uygulama (Önizleme)** kaynağında bireysel iş akışları tarafından kullanılan yönetilen bağlantılar için erişim anahtarlarını yeniden oluşturun. Bu görev için, mantıksal uygulama kaynak düzeyi değil, [ **Logic Apps** kaynağı için aynı adımları izleyin](logic-apps-securing-a-logic-app.md#regenerate-access-keys).
+
 > [!NOTE]
 > Bilinen güncel sorunlar hakkında daha fazla bilgi için [GitHub 'Daki bilinen sorunlar Logic Apps Genel Önizleme sayfasını](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)gözden geçirin.
 
@@ -165,7 +167,7 @@ Bu yeni kaynak türüne uygulanan fiyatlandırma modelleri hakkında daha fazla 
 
 ## <a name="changed-limited-unavailable-or-unsupported-capabilities"></a>Değiştirilmiş, sınırlı, kullanılamayan veya desteklenmeyen yetenekler
 
-Azure Logic Apps önizlemede, bu yetenekler değişir veya şu anda sınırlı, kullanılamaz veya desteklenmez:
+Azure Logic Apps önizlemede, bu yetenekler değiştirilmiştir veya şu anda sınırlı, kullanılamaz veya desteklenmez:
 
 * **Tetikleyiciler ve eylemler**: kayan pencere ve toplu iş gibi bazı yerleşik Tetikleyiciler kullanılamaz. İş akışınızı başlatmak için [yerleşik yinelenme, istek, http, http Web kancası, Event Hubs veya Service Bus tetikleyicisini](../connectors/apis-list.md)kullanın. Yerleşik Tetikleyiciler ve eylemler Azure Logic Apps Önizleme çalışma zamanında yerel olarak çalışır, ancak yönetilen bağlayıcılar Azure 'da dağıtılır. Tasarımcıda yerleşik Tetikleyiciler ve eylemler **yerleşik** sekmesinde görünür, ancak yönetilen bağlayıcı Tetikleyicileri ve eylemler **Azure** sekmesinin altında görüntülenir.
 

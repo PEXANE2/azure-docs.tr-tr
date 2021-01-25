@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 25356e7101293fc27d4107b3a618cfc481aee969
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 223d119786d99eac611ece597fc0e8de4fcaf6bd
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779592"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762409"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management'ta hizmet yedekleme ve geri yükleme işlevlerini kullanarak acil durumda kurtarma
 
@@ -55,7 +55,7 @@ Azure Resource Manager kullanan kaynaklarda yaptığınız tüm görevlerin aşa
 
 ### <a name="create-an-azure-active-directory-application"></a>Azure Active Directory uygulaması oluşturma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. API Management hizmeti örneğinizi içeren aboneliği kullanarak **Azure Active Directory** (Azure Active Directory > yönet/Uygulama kayıtları) **uygulama kayıtları** sekmesine gidin.
 
     > [!NOTE]
@@ -67,7 +67,7 @@ Azure Resource Manager kullanan kaynaklarda yaptığınız tüm görevlerin aşa
 
 4. Uygulama için bir ad girin.
 5. Uygulama türü için **Yerel**' i seçin.
-6. Yeniden yönlendirme URI 'si gibi bir yer tutucu URL 'si girin `http://resources` , çünkü bu gerekli bir alandır, ancak değer daha sonra kullanılmaz. **Redirect URI** Uygulamayı kaydetmek için onay kutusuna tıklayın.
+6. Yeniden yönlendirme URI 'si gibi bir yer tutucu URL 'si girin `http://resources` , çünkü bu gerekli bir alandır, ancak değer daha sonra kullanılmaz.  Uygulamayı kaydetmek için onay kutusuna tıklayın.
 7. **Oluştur**’a tıklayın.
 
 ### <a name="add-an-application"></a>Uygulama ekleme
@@ -221,8 +221,8 @@ Restore, tamamlanması 30 veya daha fazla dakika süren uzun süredir çalışan
 
 ## <a name="what-is-not-backed-up"></a>Yedeklenmeyen
 -   Analiz raporları oluşturmak için kullanılan **kullanım verileri** yedeklemeye **dahil değildir** . [Azure API Management REST API][azure api management rest api] kullanarak safekeeping için analiz raporlarını düzenli aralıklarla alın.
--   [Özel etki alanı TLS/SSL](configure-custom-domain.md) sertifikaları
--   Müşteri tarafından karşıya yüklenen ara veya kök sertifikaları içeren [özel CA sertifikası](api-management-howto-ca-certificates.md)
+-   [Özel etki alanı TLS/SSL](configure-custom-domain.md) sertifikaları.
+-   Müşteri tarafından karşıya yüklenen ara veya kök sertifikaları içeren [özel CA sertifikası](api-management-howto-ca-certificates.md).
 -   [Sanal ağ](api-management-using-with-vnet.md) tümleştirme ayarları.
 -   [Yönetilen kimlik](api-management-howto-use-managed-service-identity.md) yapılandırması.
 -   [Azure Izleyici tanısı](api-management-howto-use-azure-monitor.md) Yapılandırmada.

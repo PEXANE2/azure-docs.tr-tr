@@ -16,21 +16,18 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eadb20bc570545356508d82c05e1746424a14b71
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 59cc50274b291c23aeec4620ec7a09312cc0c1fb
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504398"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762251"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Kesintisiz çoklu oturum açma Azure Active Directory: hızlı başlangıç
 
 ## <a name="deploy-seamless-single-sign-on"></a>Kesintisiz tek Sign-On dağıtma
 
 Azure Active Directory (Azure AD) sorunsuz tek Sign-On (sorunsuz SSO), kullanıcılar şirket ağınıza bağlı olan kurumsal masaüstlerinde olduklarında otomatik olarak oturum açar. Sorunsuz SSO, kullanıcılarınıza ek şirket içi bileşenlere gerek duymadan bulut tabanlı uygulamalarınıza kolay erişim sağlar.
-
-> [!NOTE]
-> Bu makalede, Microsoft tarafından kullanılmayan bir terim olan *beyaz liste* teriminin başvuruları yer almaktadır. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
 
 Sorunsuz SSO dağıtmak için aşağıdaki adımları izleyin.
 
@@ -40,7 +37,7 @@ Aşağıdaki önkoşulların yerinde olduğundan emin olun:
 
 * **Azure AD Connect sunucunuzu ayarlama**: [geçiş kimlik doğrulamasını](how-to-connect-pta.md) oturum açma yönteminiz olarak kullanırsanız, ek önkoşul denetimi gerekli değildir. Oturum açma yönteminiz olarak [Parola karması eşitlemesi](how-to-connect-password-hash-synchronization.md) kullanıyorsanız ve Azure AD Connect Ile Azure AD arasında bir güvenlik duvarı varsa, aşağıdakileri doğrulayın:
    - Azure AD Connect sürüm 1.1.644.0 veya üstünü kullanıyorsunuz. 
-   - Güvenlik duvarınız veya ara sunucunuz izin veriyorsa, bağlantı noktası 443 üzerinden **\* . Msappproxy.net** URL 'leri için izin verilen listeye bağlantı ekleyin. Aksi takdirde, haftalık olarak güncellenen [Azure veri MERKEZI IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)erişime izin verin. Bu önkoşul yalnızca özelliği etkinleştirdiğinizde geçerlidir. Bu, gerçek Kullanıcı oturum açma işlemleri için gerekli değildir.
+   - Güvenlik duvarınız veya ara sunucunuz izin veriyorsa, bağlantı noktası 443 üzerinden **\* . Msappproxy.net** URL 'leri için izin verilen listeye bağlantı ekleyin. Proxy yapılandırması için bir joker karakter yerine belirli bir URL gerekiyorsa, **tenantid.Registration.msappproxy.net** yapılandırabilirsiniz; burada tenantıd, özelliği yapılandırdığınız KIRACıNıN GUID 'sidir. Kuruluşunuzda URL tabanlı ara sunucu özel durumları mümkün değilse, bunun yerine haftalık olarak güncellenen [Azure veri MERKEZI IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)erişime izin verebilirsiniz. Bu önkoşul yalnızca özelliği etkinleştirdiğinizde geçerlidir. Bu, gerçek Kullanıcı oturum açma işlemleri için gerekli değildir.
 
     >[!NOTE]
     >Azure AD Connect sürümleri 1.1.557.0, 1.1.558.0, 1.1.561.0 ve 1.1.614.0, Parola karması eşitlemeyle ilgili bir sorun var. Parola karması eşitlemesini doğrudan kimlik doğrulamasıyla birlikte _kullanmayı düşünmüyorsanız,_ daha fazla bilgi edinmek için [Azure AD Connect sürüm notlarını](./reference-connect-version-history.md) okuyun.

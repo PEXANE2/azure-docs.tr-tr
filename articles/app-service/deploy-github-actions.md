@@ -7,16 +7,16 @@ ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 0c10cc683d8c8c2496ca8fdbd00f0e5065e2db35
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 59eb56dd188edf258c3631cde957c0864454ad76
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97604932"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762657"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>GitHub Actions kullanarak App Service'e dağıtma
 
-İş akışınızı otomatik hale getirmek ve GitHub 'dan [Azure App Service](overview.md) dağıtmak Için [GitHub eylemleri](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions) ile çalışmaya başlayın. 
+İş akışınızı otomatik hale getirmek ve GitHub 'dan [Azure App Service](overview.md) dağıtmak Için [GitHub eylemleri](https://docs.github.com/en/actions/learn-github-actions) ile çalışmaya başlayın. 
 
 ## <a name="prerequisites"></a>Ön koşullar 
 
@@ -63,7 +63,7 @@ Ayrıca, dağıtım merkezini kullanmadan bir iş akışı dağıtabilirsiniz. B
 
 GitHub eylemleri için Azure App Services ile kimlik doğrulamak için önerilen yol, bir yayımlama profiliyle birlikte bulunur. Hizmet sorumlusu ile de kimlik doğrulaması yapabilirsiniz ancak işlem daha fazla adım gerektirir. 
 
-Yayımlama profili kimlik bilgilerinizi veya hizmet sorumlunuzu Azure ile kimlik doğrulamak için [GitHub gizli anahtarı](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets) olarak kaydedin. Gizli anahtar, iş akışınız dahilinde. 
+Yayımlama profili kimlik bilgilerinizi veya hizmet sorumlunuzu Azure ile kimlik doğrulamak için [GitHub gizli anahtarı](https://docs.github.com/en/actions/reference/encrypted-secrets) olarak kaydedin. Gizli anahtar, iş akışınız dahilinde. 
 
 # <a name="publish-profile"></a>[Profili Yayımla](#tab/applevel)
 
@@ -114,7 +114,7 @@ Yukarıdaki örnekte yer tutucuları abonelik KIMLIĞINIZ, kaynak grubu adı ve 
 
 [Uygulama düzeyi kimlik bilgilerini](#generate-deployment-credentials)kullanmak için, indirilen yayımlama profili dosyasının içeriğini gizli dizinin değer alanına yapıştırın. Parolayı adlandırın `AZURE_WEBAPP_PUBLISH_PROFILE` .
 
-GitHub iş akışınızı yapılandırırken, `AZURE_WEBAPP_PUBLISH_PROFILE` Azure Web uygulaması dağıtma eyleminde öğesini kullanırsınız. Örnek:
+GitHub iş akışınızı yapılandırırken, `AZURE_WEBAPP_PUBLISH_PROFILE` Azure Web uygulaması dağıtma eyleminde öğesini kullanırsınız. Örneğin:
     
 ```yaml
 - uses: azure/webapps-deploy@v2
@@ -128,7 +128,7 @@ GitHub iş akışınızı yapılandırırken, `AZURE_WEBAPP_PUBLISH_PROFILE` Azu
 
 [Kullanıcı düzeyi kimlik bilgilerini](#generate-deployment-credentials)kullanmak IÇIN Azure CLI KOMUTUNDAN tüm JSON çıkışını gizli dizi değeri alanına yapıştırın. Gizli dizi adını verin `AZURE_CREDENTIALS` .
 
-Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure oturum açma eyleminin girişi için gizli anahtarı kullanırsınız. Örnek:
+Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure oturum açma eyleminin girişi için gizli anahtarı kullanırsınız. Örneğin:
 
 ```yaml
 - uses: azure/login@v1
@@ -746,7 +746,7 @@ GitHub 'daki farklı depolarda gruplanmış eylem listemizi, her biri, CI/CD iç
 
 - [Docker oturum açma/kapatma](https://github.com/Azure/docker-login)
 
-- [İş akışlarını tetikleyen olaylar](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
+- [İş akışlarını tetikleyen olaylar](https://docs.github.com/en/actions/reference/events-that-trigger-workflows)
 
 - [K8s dağıtımı](https://github.com/Azure/k8s-deploy)
 

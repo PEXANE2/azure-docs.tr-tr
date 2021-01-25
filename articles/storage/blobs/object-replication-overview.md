@@ -10,12 +10,12 @@ ms.date: 01/13/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ff2408e35d76a6ea0d5221e04c7a41ed6cde7ac9
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: e7fa6b1ee7c92f82c3e15335991f5a240c7acc52
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178985"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762877"
 ---
 # <a name="object-replication-for-block-blobs"></a>Blok Blobları için nesne çoğaltma
 
@@ -88,7 +88,9 @@ Bir çoğaltma kuralı oluşturduğunuzda, varsayılan olarak yalnızca kaynak k
 
 Ayrıca, blok bloblarını ön eke göre filtrelemek için bir çoğaltma kuralının bir parçası olarak bir veya daha fazla filtre belirtebilirsiniz. Bir ön ek belirttiğinizde, yalnızca kaynak kapsayıcıda bu önekle eşleşen Bloblar hedef kapsayıcıya kopyalanacaktır.
 
-Kaynak ve hedef kapsayıcıların her ikisi de bir kuralda belirtmeleri için mevcut olmalıdır. Çoğaltma ilkesini oluşturduktan sonra hedef kapsayıcı salt okunur duruma gelir. Hedef kapsayıcıya yazma girişimleri hata kodu 409 (Çakışma) vererek başarısız olur. Ancak, [BLOB katmanını ayarla](/rest/api/storageservices/set-blob-tier) işlemini arşiv katmanına taşımak için hedef kapsayıcıdaki bir blob üzerinde çağırabilirsiniz. Arşiv katmanı hakkında daha fazla bilgi için bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](storage-blob-storage-tiers.md#archive-access-tier).
+Kaynak ve hedef kapsayıcıların her ikisi de bir kuralda belirtmeleri için mevcut olmalıdır. Çoğaltma ilkesini oluşturduktan sonra, hedef kapsayıcıya yazma işlemlerine izin verilmez. Hedef kapsayıcıya yazma girişimleri hata kodu 409 (Çakışma) vererek başarısız olur. Çoğaltma kuralının yapılandırıldığı bir hedef kapsayıcıya yazmak için, bu kapsayıcı için yapılandırılmış kuralı silmeniz veya çoğaltma ilkesini kaldırmanız gerekir. Çoğaltma ilkesi etkin olduğunda hedef kapsayıcıya yönelik okuma ve silme işlemlerine izin verilir.
+
+[BLOB katmanını ayarla](/rest/api/storageservices/set-blob-tier) işlemini arşiv katmanına taşımak için hedef kapsayıcıdaki bir blob üzerinde çağırabilirsiniz. Arşiv katmanı hakkında daha fazla bilgi için bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](storage-blob-storage-tiers.md#archive-access-tier).
 
 ## <a name="replication-status"></a>Çoğaltma durumu
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 10/07/2020
+ms.date: 01/21/2021
 ms.author: alkohli
-ms.openlocfilehash: d07d9dccb0aa273f79b251f2ffb4a920f3cac2e7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0976dd9f3c4d0228ec0f170a755ec13800da435b
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447617"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761539"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazındaki sorunları giderme 
 
@@ -26,7 +26,7 @@ Bu makalede Azure Stack Edge Pro GPU cihazınızdaki sorunların nasıl giderile
 
 Cihaz hatalarını tanılamak ve gidermek için tanılama testlerini çalıştırabilirsiniz. Tanılama testlerini çalıştırmak için cihazınızın yerel web arabiriminde aşağıdaki adımları gerçekleştirin.
 
-1. Yerel web arabiriminde **Sorun giderme > Tanılama testleri** sayfasına gidin. Çalıştırmak istediğiniz testi seçin ve **Test Çalıştır**' ı seçin. Bunu yaptığınızda ağ, cihaz, web proxy, saat veya bulut ayarlarınızdaki sorunların tanılanmasına yönelik testler çalıştırılır. Cihazın testleri çalıştırdığı bildirilir.
+1. Yerel web arabiriminde **Sorun giderme > Tanılama testleri** sayfasına gidin. Çalıştırmak istediğiniz testi seçin ve **Test Çalıştır**' ı seçin. Test ağınız, cihazınız, Web proxy, zaman veya bulut ayarlarınızdaki olası sorunları tanılar. Cihazın testleri çalıştırdığı bildirilir.
 
     ![Testleri seçin ](media/azure-stack-edge-gpu-troubleshoot/run-diag-1.png)
  
@@ -97,7 +97,7 @@ Cihazda herhangi bir donanımı izinsiz olarak belirlemek için, şu anda kasa a
 
 - Cihazdaki sistem olay günlüğü, `racadm` cmdlet 'i kullanılarak okundu. Bu olaylar daha sonra bir dosya için ' de kasaya ilgili olay için filtrelenir `HWIntrusion.txt` .
 
-- Destek paketini yalnızca donanım yetkisiz giriş günlüğüne almak için, `-Include HWSelLog` destek paketini oluştururken seçeneğini kullanın. 
+- Destek paketinde yalnızca donanıma yetkisiz giriş günlüğü almak için, `-Include HWSelLog` destek paketini oluştururken seçeneğini kullanın. 
 
 - Belirli bir içerme seçeneği sağlanmazsa, donanım yetkisiz giriş günlüğü destek paketinde varsayılan olarak dahil edilir.
 
@@ -167,7 +167,7 @@ Cihazınıza erişmek için Azure Resource Manager yapılandırması sırasında
 
 2. Doğru PowerShell modüllerinin [burada](azure-stack-edge-j-series-connect-resource-manager.md#step-4-set-up-azure-powershell-on-the-client)bahsedilen şekilde yüklendiğini doğrulayın.
 
-3. Azure Resource Manager ve oturum açma uç noktalarına erişilebildiğini doğrulayın. Uç noktalara ping yapmayı deneyebilirsiniz. Örnek:
+3. Azure Resource Manager ve oturum açma uç noktalarına erişilebildiğini doğrulayın. Uç noktalara ping yapmayı deneyebilirsiniz. Örneğin:
 
    `ping management.28bmdw2-bb9.microsoftdatabox.com`
    `ping login.28bmdw2-bb9.microsoftdatabox.com`
@@ -187,7 +187,7 @@ Azure Stack Edge Pro/Data Box Gateway cihazında blob depolamayla ilgili hatalar
 | **Sorun/hatalar** |  **Çözünürlük** | 
 |--------------------|-----------------|
 |Alt kaynaklar alınamıyor. HTTP başlıklarındaki bir değer doğru biçimde değil.| **Düzenle** menüsünde **hedef Azure Stack API 'leri**' ni seçin. Sonra Azure Depolama Gezgini yeniden başlatın.|
-|GetAddrInfo ENOTFOUND <accountname> . blob. <serialnumber> microsoftdatabox.com|Uç nokta adının `<accountname>.blob.<serialnumber>.microsoftdatabox.com` Bu yoldaki Hosts dosyasına eklendiğinden emin olun: `C:\Windows\System32\drivers\etc\hosts` Windows veya `/etc/hosts` Linux üzerinde.|
+|`getaddrinfo ENOTFOUND <accountname>.blob.<serialnumber>.microsoftdatabox.com`|Uç nokta adının `<accountname>.blob.<serialnumber>.microsoftdatabox.com` Bu yoldaki Hosts dosyasına eklendiğinden emin olun: `C:\Windows\System32\drivers\etc\hosts` Windows veya `/etc/hosts` Linux üzerinde.|
 |Alt kaynaklar alınamıyor.<br> Ayrıntılar: otomatik olarak imzalanan sertifika |Cihazınızın SSL sertifikasını Azure Depolama Gezgini içine aktarın: <ol><li>Azure portal sertifikayı indirin. Daha fazla bilgi için bkz. [sertifikayı indirme](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate).</li><li>**Düzenle** menüsünde SSL sertifikaları ' nı seçin ve ardından **sertifikaları içeri aktar**' ı seçin.</li></ol>|
 |AzCopy komutu, bu hatayı görüntülemeden önce bir dakika boyunca yanıt vermeyi durdurmuş gibi görünüyor:<br>`Failed to enumerate directory https://… The remote name could not be resolved <accountname>.blob.<serialnumber>.microsoftdatabox.com`|Uç nokta adının `<accountname>.blob.<serialnumber>.microsoftdatabox.com` Şu adreste bulunan Hosts dosyasına eklendiğinden emin olun: `C:\Windows\System32\drivers\etc\hosts` .|
 |AzCopy komutu, bu hatayı görüntülemeden önce bir dakika boyunca yanıt vermeyi durdurmuş gibi görünüyor:<br>`Error parsing source location. The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel`. |Cihazınızın SSL sertifikasını sistemin sertifika deposuna aktarın. Daha fazla bilgi için bkz. [sertifikayı indirme](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate).|
@@ -196,9 +196,12 @@ Azure Stack Edge Pro/Data Box Gateway cihazında blob depolamayla ilgili hatalar
 |AzCopy komutu, bu hatayı görüntülemeden önce 20 dakika boyunca yanıt vermeyi durdurmuş gibi görünüyor:<br>`Error parsing source location https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>. No such device or address`|Uç nokta adının `<accountname>.blob.<serialnumber>.microsoftdatabox.com` Şu adreste bulunan Hosts dosyasına eklendiğinden emin olun: `/etc/hosts` .|
 |AzCopy komutu, bu hatayı görüntülemeden önce 20 dakika boyunca yanıt vermeyi durdurmuş gibi görünüyor: `Error parsing source location… The SSL connection could not be established` .|Cihazınızın SSL sertifikasını sistemin sertifika deposuna aktarın. Daha fazla bilgi için bkz. [sertifikayı indirme](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate).|
 |HTTP başlıklarındaki bir değer doğru biçimde değil.|Python için Microsoft Azure Depolama kitaplığının yüklü sürümü Data Box tarafından desteklenmiyor. Desteklenen sürümler için Azure Data Box BLOB depolama gereksinimleri bölümüne bakın.|
-|… [SSL: CERTIFICATE_VERIFY_FAILED]...| Python 'u çalıştırmadan önce, REQUESTS_CA_BUNDLE ortam değişkenini Base64 kodlamalı SSL sertifika dosyasının yoluna ayarlayın (bkz. [sertifikayı indirme](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate). Örnek:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>Alternatif olarak, sertifikayı sistemin sertifika deposuna ekleyin ve bu ortam değişkenini bu deponun yoluna ayarlayın. Örneğin, Ubuntu üzerinde:<br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`.|
+|… [SSL: CERTIFICATE_VERIFY_FAILED]...| Python 'u çalıştırmadan önce, REQUESTS_CA_BUNDLE ortam değişkenini Base64 kodlamalı SSL sertifika dosyasının yoluna ayarlayın (bkz. [sertifikayı indirme](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate). Örneğin:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>Alternatif olarak, sertifikayı sistemin sertifika deposuna ekleyin ve bu ortam değişkenini bu deponun yoluna ayarlayın. Örneğin, Ubuntu üzerinde:<br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`.|
 |Bağlantı zaman aşımına uğrar.|Azure Stack Edge Pro 'da oturum açın ve sonra kilidinin açık olup olmadığını kontrol edin. Cihaz her yeniden başlatıldığında, birisi oturum açana kadar kilitli kalır.|
 
+## <a name="troubleshoot-iot-edge-errors"></a>IoT Edge hatalarında sorun giderme
+
+[!INCLUDE [Troubleshoot IoT Edge runtime](../../includes/azure-stack-edge-iot-troubleshoot-compute.md)]
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

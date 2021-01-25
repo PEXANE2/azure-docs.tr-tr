@@ -9,14 +9,14 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: bebc7dcbc18a25b0d6d0761a8ca3ac476e83e581
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4534a315429a120af45dfd495df4a8c29b233de7
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183048"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98763039"
 ---
-# <a name="using-private-endpoints-for-azure-web-app"></a>Azure Web App için özel uç noktaları kullanma
+# <a name="using-private-endpoints-for-azure-web-app"></a>Azure Web App için Özel Uç Noktaları Kullanma
 
 > [!IMPORTANT]
 > Özel uç nokta bu App Service planlarında barındırılan, Kapsayıcılı veya olmayan Windows ve Linux Web uygulaması için kullanılabilir: **yalıtılmış**, **PremiumV2**, **PremiumV3**, **işlevler Premium** (bazen elastik Premium plan olarak adlandırılır). 

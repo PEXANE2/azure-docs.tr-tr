@@ -3,12 +3,12 @@ title: Azure VMware çözüm dağıtımını planlama
 description: Bu makalede bir Azure VMware Çözüm dağıtımı iş akışı özetlenmektedir.  Nihai sonuç, sanal makine (VM) oluşturma ve geçirme için hazırlanma ortamıdır.
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: cdf4ddd6166920fa7461bfd85e01ef0efd6dfbb9
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 8b1d69f3f953b43177a3b1d0611b51ca2cfb1a75
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98704579"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762863"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Azure VMware çözüm dağıtımını planlama
 
@@ -93,7 +93,7 @@ Ağ kesimlerini Şirket içinden Azure VMware çözümüne genişletebilirsiniz 
 - Ağları Şirket içinden genişletmeyi planlıyorsanız, bu ağlar şirket içi VMware ortamınızda bir [vSphere dağıtılmış anahtarına (vDS)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-B15C6A13-797E-4BCB-B9D9-5CBC5A60C3A6.html) bağlanmalıdır.  
 - Bir [vSphere standart anahtarında](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-350344DE-483A-42ED-B0E2-C811EE927D59.html)canlı genişletmek istediğiniz ağ (ler) i yoksa genişletilemez.
 
-## <a name="azure-virtual-network-to-attach-azure-vmware-solution"></a>Azure VMware çözümü eklemek için Azure sanal ağı
+## <a name="attach-virtual-network-to-azure-vmware-solution"></a>Azure VMware çözümüne sanal ağ iliştirme
 
 Bu adımda, bir ExpressRoute sanal ağ geçidi tanımlayabilir ve Azure VMware Solution ExpressRoute devresine bağlanmak için kullanılan Azure sanal ağını destektireceksiniz.  ExpressRoute bağlantı hattı, Azure VMware çözümü özel bulutuna ve diğer Azure hizmetlerine, Azure kaynaklarına ve şirket içi ortamlara yönelik bağlantıyı kolaylaştırır.
 
@@ -103,21 +103,23 @@ Bu adımda, bir ExpressRoute sanal ağ geçidi tanımlayabilir ve Azure VMware S
 
 ### <a name="use-an-existing-expressroute-virtual-network-gateway"></a>Mevcut bir ExpressRoute sanal ağ geçidini kullanma
 
-*Mevcut* bir ExpressRoute sanal ağ geçidi kullanırsanız, özel bulut dağıttıktan sonra Azure VMware çözümü ExpressRoute bağlantı hattı oluşturulur.  Bu nedenle, **sanal ağ** alanını doldurmanız gerekmez.  
+*Mevcut* bir ExpressRoute sanal ağ geçidi kullanırsanız, özel bulut dağıttıktan sonra Azure VMware çözümü ExpressRoute bağlantı hattı oluşturulur. Bu durumda, **sanal ağ** alanını boş bırakın.  
 
 Hangi ExpressRoute sanal ağ geçidini kullanacağınızı ve sonraki adıma devam etmeyi unutmayın.
 
 ### <a name="create-a-new-expressroute-virtual-network-gateway"></a>Yeni bir ExpressRoute sanal ağ geçidi oluştur
 
-*Yeni* bir ExpressRoute sanal ağ geçidi oluşturuyorsanız, var olan bir Azure sanal ağı kullanılabilir veya yeni bir Azure sanal ağı oluşturulabilir.  
+*Yeni* bir ExpressRoute sanal ağ geçidi oluşturduğunuzda, var olan bir Azure sanal ağını kullanabilir veya yeni bir tane oluşturabilirsiniz.  
 
-Seçim var olan bir Azure sanal ağını kullanacaksanız, sanal ağda önceden var olan ExpressRoute sanal ağ geçitleri olmadığından emin olun ve özel bulut dağıtımı oluştur ekranının sanal ağ açılan menüsünde seçin.
+- Mevcut bir Azure sanal ağı için:
+   1. Sanal ağda önceden var olan ExpressRoute sanal ağ geçitleri olmadığından emin olun. 
+   1. **Sanal ağ** listesinden mevcut Azure sanal ağını seçin.
 
-Seçim, yeni bir Azure sanal ağı oluşturmak için özel bulut dağıtımı oluşturma ekranının sanal ağ ' ın yeni seçeneğine tıklanarak bir süre önce veya dağıtım sırasında oluşturulabilir.
+- Yeni bir Azure sanal ağı için daha önce veya dağıtım sırasında oluşturabilirsiniz. **Sanal ağ** listesi altında **Yeni oluştur** bağlantısını seçin.
 
-Aşağıdaki başvuru için, **özel bulut dağıtımı oluşturma** ekranının bir görüntüsü aşağıda verilmiştir ve kırmızı renkle Seviyelendirilmiş, bu bölümün tamamında başvurulan Azure **sanal ağ** alanıdır.
+Aşağıdaki görüntüde, **sanal ağ** alanı vurgulanmış şekilde **özel bir bulut dağıtımı oluşturma** ekranı gösterilmektedir.
 
-:::image type="content" source="media/pre-deployment/azure-vmware-solution-deployment-screen-vnet-circle.png" alt-text="Sanal ağ geçidi daire içinde Azure VMware Çözüm dağıtımı ekranının ekran görüntüsü.":::
+:::image type="content" source="media/pre-deployment/azure-vmware-solution-deployment-screen-vnet-circle.png" alt-text="Sanal ağ alanı vurgulanmış şekilde Azure VMware Çözüm dağıtımı ekranının ekran görüntüsü.":::
 
 >[!NOTE]
 >Kullanılacak veya oluşturulacak sanal ağ, şirket içi ortamınız ve Azure VMware çözümünüz tarafından görülebilir, bu nedenle bu sanal ağda kullandığınız IP segmentinin ve alt ağların çakışmadığından emin olun.

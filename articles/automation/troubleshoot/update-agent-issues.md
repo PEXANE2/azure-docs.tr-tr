@@ -4,17 +4,17 @@ description: Bu makalede, Güncelleştirme Yönetimi sırasında Windows Update 
 services: automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 01/16/2020
+ms.date: 01/25/2020
 ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 92020313fccf1b8be0add58a7bafab62b5daa4d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5c2cc014c87a345507e9c0f99c507d151d59b86
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187141"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762117"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>Windows Update aracı sorunlarını giderme
 
@@ -27,10 +27,10 @@ Güncelleştirme Yönetimi dağıtımı sırasında makinenizin, (sağlıklı) o
 > [!NOTE]
 > Azure portal gösterdiği ve makinenin geçerli durumu arasında hafif bir gecikme olabilir.
 
-Bu makalede, Azure makineler için sorun gidericinin Azure portal, [çevrimdışı senaryoda](#troubleshoot-offline)Azure dışı makinelerden nasıl çalıştırılacağı açıklanmaktadır. 
+Bu makalede, Azure makineler için sorun gidericinin Azure portal, [çevrimdışı senaryoda](#troubleshoot-offline)Azure dışı makinelerden nasıl çalıştırılacağı açıklanmaktadır.
 
 > [!NOTE]
-> Sorun giderici betiği artık Windows Server Update Services (WSUS) ve oto indir ve yükle anahtarları için denetimler içerir. 
+> Sorun giderici betiği artık Windows Server Update Services (WSUS) ve oto indir ve yükle anahtarları için denetimler içerir.
 
 ## <a name="start-the-troubleshooter"></a>Sorun gidericiyi Başlat
 
@@ -110,7 +110,7 @@ Bu olay hakkında daha fazla bilgi edinmek için bu olayın [Operations Manager 
 
 ## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>Çevrimdışı sorun giderme
 
-Betiği yerel olarak çalıştırarak karma Runbook Worker 'daki sorun gidericiyi çevrimdışı olarak kullanabilirsiniz. PowerShell Galerisi şu betiği alın: [sorun giderme-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration). Betiği çalıştırmak için WMF 4,0 veya sonraki bir sürümünün yüklü olması gerekir. PowerShell 'in en son sürümünü indirmek için bkz. [PowerShell 'in çeşitli sürümlerini yükleme](/powershell/scripting/install/installing-powershell).
+Betiği yerel olarak çalıştırarak karma Runbook Worker 'daki sorun gidericiyi çevrimdışı olarak kullanabilirsiniz. GitHub 'dan şu betiği alın: [UM_Windows_Troubleshooter_Offline.ps1](https://github.com/Azure/updatemanagement/blob/main/UM_Windows_Troubleshooter_Offline.ps1). Betiği çalıştırmak için WMF 4,0 veya sonraki bir sürümünün yüklü olması gerekir. PowerShell 'in en son sürümünü indirmek için bkz. [PowerShell 'in çeşitli sürümlerini yükleme](/powershell/scripting/install/installing-powershell).
 
 Bu Betiğin çıktısı aşağıdaki örneğe benzer şekilde görünür:
 

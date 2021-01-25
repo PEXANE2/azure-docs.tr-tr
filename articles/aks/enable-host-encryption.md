@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) kümesinde konak tabanlı şifreleme
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 14ec39272bf2f434aaa57217a90667a62e82901a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 6b23bf285d89a5f3285825feef849b3d168ed62f
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183303"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762043"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes hizmeti (AKS) üzerinde ana bilgisayar tabanlı şifreleme (Önizleme)
 
@@ -26,34 +26,32 @@ Bu özellik yalnızca küme oluşturma veya düğüm havuzu oluşturma zamanınd
 ### <a name="prerequisites"></a>Ön koşullar
 
 - `aks-preview`CLI uzantısının v 0.4.55 veya üzeri yüklü olduğundan emin olun
-- `EncryptionAtHost`Özellik bayrağının etkin ' in altında olduğundan emin olun `Microsoft.Compute` .
 - `EnableEncryptionAtHostPreview`Özellik bayrağının etkin ' in altında olduğundan emin olun `Microsoft.ContainerService` .
 
+VM 'niz veya sanal makine ölçek kümeleriniz için konakta şifrelemeyi kullanabilmeniz için, özelliği aboneliğinizde etkinleştirilmiş olarak almanız gerekir. encryptionAtHost@microsoft.comAbonelikleriniz için etkin özelliği sağlamak üzere abonelik kimliklerinizle e-posta gönderin.
+
 ### <a name="register-encryptionathost--preview-features"></a>`EncryptionAtHost`Önizleme özelliklerini Kaydet
+
+> [!IMPORTANT]
+> encryptionAtHost@microsoftİşlem kaynakları için etkinleştirilen özelliği almak için abonelik kimlikleriniz ile e-posta gönderin. Bu kaynaklar için kendiniz etkinleştiremezsiniz. Bunları kapsayıcı hizmetinde kendiniz etkinleştirebilirsiniz.
 
 Konak tabanlı şifreleme kullanan bir AKS kümesi oluşturmak için `EnableEncryptionAtHostPreview` `EncryptionAtHost` aboneliğinizdeki ve özellik bayraklarını etkinleştirmeniz gerekir.
 
 `EncryptionAtHost`Aşağıdaki örnekte gösterildiği gibi [az Feature Register][az-feature-register] komutunu kullanarak özellik bayrağını kaydedin:
 
 ```azurecli-interactive
-az feature register --namespace "Microsoft.Compute" --name "EncryptionAtHost"
-
 az feature register --namespace "Microsoft.ContainerService"  --name "EnableEncryptionAtHostPreview"
 ```
 
 Durumun *kayıtlı* gösterilmesi birkaç dakika sürer. [Az Feature List][az-feature-list] komutunu kullanarak kayıt durumunu denetleyebilirsiniz:
 
 ```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.Compute/EncryptionAtHost')].{Name:name,State:properties.state}"
-
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEncryptionAtHostPreview')].{Name:name,State:properties.state}"
 ```
 
 Hazırlanıyor, `Microsoft.ContainerService` `Microsoft.Compute` [az Provider Register][az-provider-register] komutunu kullanarak ve kaynak sağlayıcılarının kaydını yenileyin:
 
 ```azurecli-interactive
-az provider register --namespace Microsoft.Compute
-
 az provider register --namespace Microsoft.ContainerService
 ```
 

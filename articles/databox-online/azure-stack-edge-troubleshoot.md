@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 08/11/2020
+ms.date: 01/21/2021
 ms.author: alkohli
-ms.openlocfilehash: f668136713024ba57d72bf5a457cd249742a3b11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09325289dd5cb83bfc26dd26b266d50b622fe098
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742036"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98763086"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-pro-issues"></a>Azure Stack Edge Pro sorunlarınızı giderme
 
@@ -26,6 +26,7 @@ Bu makalede şunları öğreneceksiniz:
 > * Tanılama çalıştırma
 > * Destek paketi toplama
 > * Sorun gidermek için günlükleri kullanma
+> * IoT Edge hatalarında sorun giderme
 
 ## <a name="run-diagnostics"></a>Tanılama çalıştırma
 
@@ -65,7 +66,7 @@ Yükleme ve yenileme işlemlerinde karşılaşılan hatalar ilgili hata dosyalar
 
       ![Paylaşılan içeriğe bağlanma ve içeriği görüntüleme](media/azure-stack-edge-troubleshoot/troubleshoot-logs-1.png)
 
-2. _Microsoft Azure Stack Edge Pro klasörünü_seçin. Bu klasör iki alt klasör içerir:
+2. _Microsoft Azure Stack Edge Pro klasörünü_ seçin. Bu klasör iki alt klasör içerir:
 
     * Karşıya yükleme hatalarının bulunduğu Upload klasörü.
     * Yenileme sırasında karşılaşılan hataların bulunduğu Refresh klasörü.
@@ -81,6 +82,10 @@ Yükleme ve yenileme işlemlerinde karşılaşılan hatalar ilgili hata dosyalar
 3. Bu dosyada bir hata gördüğünüzde (örnekte vurgulanan), bu örnekte 16001, hata kodunu göz önünde bulabilirsiniz. Hata kodunun açıklamasını aşağıdaki hata başvurusu bölümünde bulabilirsiniz.
 
     [!INCLUDE [data-box-edge-edge-upload-error-reference](../../includes/data-box-edge-gateway-upload-error-reference.md)]
+
+## <a name="troubleshoot-iot-edge-errors"></a>IoT Edge hatalarında sorun giderme
+
+[!INCLUDE [Troubleshoot IoT Edge runtime](../../includes/azure-stack-edge-iot-troubleshoot-compute.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

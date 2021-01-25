@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 44f23e4f5b3f65fb4f3c69b2ddc55af8c983aa23
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: d73024c6c227a0ef0b05a871b455411e93cb70ba
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98043736"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761776"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>Hero örneği çağıran grup ile çalışmaya başlama
 
@@ -56,7 +56,7 @@ Ana arama ekranının bileşenleri:
 
 Aşağıda, önkoşulları ve örneği ayarlama adımlarını hakkında daha fazla bilgi bulacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin abonelikle bir Azure hesabı oluşturun. Ayrıntılar için bkz. [ücretsiz hesap oluşturma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - [Node.js (12.18.4 ve üzeri)](https://nodejs.org/en/download/)
@@ -109,6 +109,7 @@ Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Çağıran istemci kitaplığını kullanma](../quickstarts/voice-video-calling/calling-client-samples.md) hakkında bilgi edinin
 - [Nasıl çalıştığını çağırma](../concepts/voice-video-calling/about-call-types.md) hakkında daha fazla bilgi edinin
+- [Contoso Med uygulama](https://github.com/Azure-Samples/communication-services-contoso-med-app) örneğini gözden geçirme
 
 ## <a name="additional-reading"></a>Ek okuma
 

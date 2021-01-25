@@ -1,17 +1,17 @@
 ---
 title: Azure geçişi 'nde VMware değerlendirmesi desteği
 description: Azure geçişi sunucu değerlendirmesi ile VMware VM değerlendirmesi desteği hakkında bilgi edinin.
-author: rashi-ms
-ms.author: rajosh
+author: vineetvikram
+ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: 02757477ca4a07f4526df0339291122eda57c9b5
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: ce8a1d77ae74a3946174ef58abf9add2e81eb90b
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567429"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98763005"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware değerlendirmesi için destek matrisi 
 
@@ -37,7 +37,7 @@ Değerlendirmeler hakkında [daha fazla bilgi edinin](concepts-assessment-calcul
 **VMware** | **Ayrıntılar**
 --- | ---
 **vCenter Server** | Keşfetmek ve değerlendirmek istediğiniz makineler vCenter Server sürüm 5,5, 6,0, 6,5, 6,7 veya 7,0 tarafından yönetilmelidir.<br/><br/> Gereç içinde ESXi ana bilgisayar ayrıntıları sağlayarak VMware VM 'lerinin bulunması Şu anda desteklenmiyor.
-**İzinler** | Sunucu değerlendirmesi bulma ve değerlendirme için vCenter Server salt okuma hesabına ihtiyaç duyuyor.<br/><br/> Uygulama bulma veya bağımlılık görselleştirmesi yapmak istiyorsanız, **sanal makinelerin**  >  **Konuk işlemlerinde** ayrıcalıkların etkinleştirilmesi gerekir.
+**İzinler** | Sunucu değerlendirmesi bulma ve değerlendirme için vCenter Server salt okuma hesabına ihtiyaç duyuyor.<br/><br/> Uygulama bulma veya bağımlılık görselleştirmesi yapmak istiyorsanız, hesabın **sanal makineler**  >  **Konuk işlemleri** için etkinleştirilmiş ayrıcalıkları olması gerekir.
 
 ## <a name="vm-requirements"></a>VM gereksinimleri
 **VMware** | **Ayrıntılar**

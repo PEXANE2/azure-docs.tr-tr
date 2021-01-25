@@ -7,18 +7,18 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: f62ca85bd4e027595103b738c23c9997a05cc85c
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 5b59b395084e3f2c4e7ccb7f1e6db0e46de256b1
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132826"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98763008"
 ---
 # <a name="quickstart-use-github-actions-to-connect-to-azure-mysql"></a>Hızlı başlangıç: Azure MySQL 'e bağlanmak için GitHub eylemlerini kullanma
 
 **Uygulama hedefi**: :::image type="icon" source="./media/applies-to/yes.png" border="false"::: MySQL için Azure veritabanı-tek sunucu :::image type="icon" source="./media/applies-to/yes.png" border="false"::: MySQL Için Azure veritabanı-esnek sunucu
 
-[MySQL Için Azure veritabanı](https://azure.microsoft.com/services/mysql/)'na veritabanı güncelleştirmelerini dağıtmak üzere bir iş akışı kullanarak [GitHub eylemleri](https://docs.github.com/en/free-pro-team@latest/actions) ile çalışmaya başlayın.
+[MySQL Için Azure veritabanı](https://azure.microsoft.com/services/mysql/)'na veritabanı güncelleştirmelerini dağıtmak üzere bir iş akışı kullanarak [GitHub eylemleri](https://docs.github.com/en/actions) ile çalışmaya başlayın.
 
 
 ## <a name="prerequisites"></a>Ön koşullar
@@ -89,7 +89,7 @@ Bağlantı dizesini GitHub parolası olarak kullanacaksınız.
 
 1. Azure CLı komutundan tüm JSON çıkışını gizli dizi değeri alanına yapıştırın. Gizli dizi adını verin `AZURE_CREDENTIALS` .
 
-    Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure oturum açma eyleminin girişi için gizli anahtarı kullanırsınız. Örnek:
+    Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure oturum açma eyleminin girişi için gizli anahtarı kullanırsınız. Örneğin:
 
     ```yaml
     - uses: azure/login@v1

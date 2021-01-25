@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: bc80a4f5c6c2919f0cb3faa15958fb75eed70270
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: cc356b307a752b10ba6f1c1a7151381c5644ca1e
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035232"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762733"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>GitHub eylemini kullanarak sürekli teslim
 
 Azure Işlevleri 'nde işlev uygulamanıza otomatik olarak kod derlemek ve dağıtmak için bir iş akışı tanımlamak üzere [GitHub eylemlerini](https://github.com/features/actions) kullanın. 
 
-GitHub eylemlerinde, bir [iş akışı](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions) GitHub deponuzda tanımladığınız otomatikleştirilmiş bir işlemdir. Bu süreç, GitHub 'da işlev uygulama projenizi nasıl derleyip dağıtacağınızı gösterir. 
+GitHub eylemlerinde, bir [iş akışı](https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions) GitHub deponuzda tanımladığınız otomatikleştirilmiş bir işlemdir. Bu süreç, GitHub 'da işlev uygulama projenizi nasıl derleyip dağıtacağınızı gösterir. 
 
 Bir iş akışı, deponuzdaki yoldaki bir YAML (. yıml) dosyası tarafından tanımlanır `/.github/workflows/` . Bu tanım, iş akışını oluşturan çeşitli adımları ve parametreleri içerir. 
 
@@ -29,7 +29,7 @@ Azure Işlevleri iş akışı için, dosyanın üç bölümü vardır:
 | **Derleme** | Ortamı ayarlayın.<br/>İşlev uygulamasını oluşturun.|
 | **Dağıtma** | İşlev uygulamasını dağıtın.|
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - GitHub hesabı. Bir hesabınız yoksa [ücretsiz](https://github.com/join)kaydolun.  
@@ -40,7 +40,7 @@ Azure Işlevleri iş akışı için, dosyanın üç bölümü vardır:
 
 GitHub eylemleri için Azure Işlevleri ile kimlik doğrulamak için önerilen yol, bir yayımlama profili kullanmaktır. Hizmet sorumlusu ile de kimlik doğrulaması yapabilirsiniz. Daha fazla bilgi edinmek için [Bu GitHub eylemleri deposuna](https://github.com/Azure/functions-action)bakın. 
 
-Yayımlama profili kimlik bilgilerinizi [GitHub gizli anahtarı](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets)olarak kaydettikten sonra Azure ile kimlik doğrulamak için bu gizli anahtarı iş akışınız dahilinde kullanacaksınız. 
+Yayımlama profili kimlik bilgilerinizi [GitHub gizli anahtarı](https://docs.github.com/en/actions/reference/encrypted-secrets)olarak kaydettikten sonra Azure ile kimlik doğrulamak için bu gizli anahtarı iş akışınız dahilinde kullanacaksınız. 
 
 #### <a name="download-your-publish-profile"></a>Yayımlama profilinizi indirin
 

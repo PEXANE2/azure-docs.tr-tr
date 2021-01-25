@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: afe2cf288cd4a15091e8278309b3ecf74a2d35a4
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: eb08bb262806cb662822a75898196546a5c1058e
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572757"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762535"
 ---
 # <a name="claim-sets"></a>Talep kümeleri
 
@@ -55,6 +55,12 @@ policy_signer | x-MS-Policy-imzalayan
 [IETF yemek](https://tools.ietf.org/html/draft-ietf-rats-eat-03#page-9) tarafından tanımlanan ve yanıt nesnesinde Azure kanıtlama tarafından kullanılan talepler aşağıda verilmiştir:
 - **"Nonce talebi" (nonce)**
 
+Aşağıdaki talepler, gelen taleplere göre varsayılan olarak oluşturulur
+- **x-MS-ver**: JWT şema sürümü ("1,0" olması bekleniyor)
+- **x-MS-kanıtlama-türü**: kanıtlama türünü temsil eden dize değeri 
+- **x-MS-Policy-Hash**: BASE64URL tarafından hesaplanan Ilke metninin SHA256 karmasını içeren dize DEĞERI (SHA256 (UTF8 (BASE64URL (UTF8 (ilke metni))))
+- **x-MS-Policy-imzalayan**: ortak anahtara veya imzalı ilke üstbilgisinde bulunan sertifika zincirine sahip bir JWK içerir. x-MS-Policy-imzalayan yalnızca, ilke imzalanmışsa eklenir
+
 ## <a name="claims-specific-to-sgx-enclaves"></a>SGX şifrelere özgü talepler
 
 ### <a name="incoming-claims-specific-to-sgx-attestation"></a>SGX kanıtlama için özel gelen talepler
@@ -71,7 +77,6 @@ Aşağıdaki talepler, hizmet tarafından SGX kanıtlama için oluşturulur ve b
 Aşağıdaki talepler hizmet tarafından oluşturulur ve SGX kanıtlama için yanıt nesnesine dahil edilmiştir:
 - **x-MS-SGX-,-hata ayıklanabilir**: bir Boolean değeri, kuşmanın hata ayıklamasının etkin olup olmadığını belirtir
 - **x-MS-SGX-ürün kimliği**
-- **x-MS-ver**
 - **x-MS-SGX-mrimzalayan**: teklifin "mrimzalayan" alanının onaltılık kodlanmış değeri
 - **x-MS-SGX-mrenclave**: teklifin "mrenclave" alanının onaltılık kodlu değeri
 - **x-MS-SGX-SVN**: teklifte kodlanmış güvenlik sürümü numarası 
@@ -99,36 +104,39 @@ Maa-EHD | x-MS-SGX-EHD
 AAS-EHD | x-MS-SGX-EHD
 maa-attestationcollateral | x-MS-SGX-yardımcı
 
-## <a name="claims-issued-specific-to-trusted-platform-module-tpm-attestation"></a>Güvenilir Platform Modülü (TPM) kanıtlaması için verilen talepler
+## <a name="claims-specific-to-trusted-platform-module-tpm-vbs-attestation"></a>Güvenilir Platform Modülü (TPM)/VBS kanıtlama 'ya özgü talepler
 
-### <a name="incoming-claims-can-also-be-used-as-outgoing-claims"></a>Gelen talepler (giden talepler olarak da kullanılabilir)
+### <a name="incoming-claims-for-tpm-attestation"></a>TPM kanıtlama için gelen talepler
 
-- **Aıkdoğrulanan**: kanıtlama kimlik anahtarı (AIK) sertifikası doğrulandıktan sonra bilgi içeren Boole değeri.
-- **Aıkpubhash**: Base64 (SHA256 (AIK ortak anahtarı, der biçiminde) içeren dize).
-- **Tpmversion**: GÜVENILIR Platform Modülü (TPM) ana sürümünü içeren tamsayı değeri.
-- **secureBootEnabled**: güvenli önyüklemenin etkin olup olmadığını gösteren Boolean değeri.
-- **Iommuenabled**: giriş çıkış belleği yönetim biriminin (IOMMU) etkin olup olmadığını gösteren Boole değeri.
-- **bootDebuggingDisabled**: önyükleme hata ayıklamanın devre dışı olup olmadığını belirten Boole değeri.
-- **notSafeMode**: Windows 'un güvenli modda çalışıp çalışmadığını gösteren Boole değeri.
-- **Notwinpe**: Windows 'un WinPE modunda çalışıp çalışmadığını gösteren Boolean değeri.
-- **Vbsenabled**: VBS 'nın etkin olup olmadığını gösteren Boole değeri.
-- **Vbsreportsun**: VBS enckıve raporunun kullanılabilir olup olmadığını gösteren Boolean değeri.
-- **enclaveauthorıd**: kuşatma Author ID değerinin Base64Url kodlamalı değerini içeren dize değeri-kuşatma için birincil modülün yazar tanımlayıcısı.
-- **enclaveımageıd**: kuşatma Image ID 'nin Base64Url kodlamalı değerini içeren dize değeri-kuşatma için birincil modülün görüntü tanımlayıcısı.
-- **enclaveownerıd**: kuşatma Owner ID 'nin Base64Url kodlamalı değerini içeren dize değeri-kuşatma için sahibin tanımlayıcısı.
-- **enclaveFamilyId**: kuşatma Family ID 'nin Base64Url kodlamalı değerini içeren String değeri. Şifreleme için birincil modülün aile tanımlayıcısı.
-- **Enclavesvn**: şifreleme için birincil modülün güvenlik sürüm numarasını içeren tamsayı değeri.
-- **Enclaveplatformsvn**: kuşları barındıran platformun güvenlik sürüm numarasını içeren tamsayı değeri.
-- **enclaveflags**: enclaveflags Claim, şifreleme için çalışma zamanı Ilkesini tanımlayan bayrakları Içeren bir tamsayı değeridir.
-  
-### <a name="outgoing-claims-specific-to-tpm-attestation"></a>TPM kanıtlama için özel giden talepler
+TPM kanıtlama için Azure kanıtlama tarafından verilen talepler. Taleplerin kullanılabilirliği kanıtlama için belirtilen kanıta bağımlıdır.
 
-- **policy_hash**: BASE64URL tarafından hesaplanan Ilke metninin SHA256 karmasını içeren dize DEĞERI (SHA256 (BASE64URL (UTF8 (ilke metni)))).
-- **policy_signer**: imzalı ilke üstbilgisinde ortak anahtara veya sertifika zincirine sahip bir JWK içeriyor.
-- **ver (sürüm)**: raporun sürümünü içeren dize değeri. Şu anda 1,0.
-- **CNF (onay) talebi**: "CNF" talebi, elinde bulunan anahtarı belirlemek için kullanılır. RFC 7800 ' de tanımlanan onay talepleri, bir JSON Web anahtarı (JWK) nesnesi (RFC 7517) olarak temsil edilen atsınıtik kuşve anahtarının genel bölümünü içerir.
-- **rp_data (bağlı olan taraf verileri)**: istekte belirtilen, varsa bağlı olan taraf verileri, raporun yeniliği güvence altına almak için bir kerelik anahtar olarak kullanılır.
-- **"JTI" (JWT kimliği) talebi**: "JTI" (JWT ID) TALEBI, JWT için benzersiz bir tanımlayıcı sağlar. Tanımlayıcı değeri, aynı değerin yanlışlıkla farklı bir veri nesnesine atanabileceği bir olasılık olmasını sağlayacak şekilde atanır.
+- **Aıkdoğrulanan**: kanıtlama kimlik anahtarı (AIK) sertifikası doğrulandığında veya yoksa bilgi içeren Boole değeri
+- **Aıkpubhash**: Base64 (SHA256 (AIK ortak anahtarı, der biçiminde) içeren dize)
+- **Tpmversion**: GÜVENILIR Platform Modülü (TPM) ana sürümünü içeren tamsayı değeri
+- **secureBootEnabled**: güvenli önyüklemenin etkin olup olmadığını belirten Boole değeri
+- **Iommuenabled**: giriş çıkış belleği yönetim biriminin (IOMMU) etkin olup olmadığını gösteren Boole değeri
+- **bootDebuggingDisabled**: önyükleme hata ayıklamanın devre dışı olup olmadığını belirten Boole değeri
+- **notSafeMode**: Windows 'un güvenli modda çalışıp çalışmadığını belirten Boole değeri
+- **Notwinpe**: Windows 'un WinPE modunda çalışıp çalışmadığını gösteren Boolean değeri
+- **vbsenabled**: VBS 'nın etkin olup olmadığını gösteren Boole değeri
+- **Vbsreportsun**: VBS enckıve raporunun kullanılabilir olup olmadığını gösteren Boole değeri
+
+### <a name="incoming-claims-for-vbs-attestation"></a>VBS kanıtlama için gelen talepler
+
+VBS kanıtlama için Azure kanıtlama tarafından verilen talepler, TPM kanıtlama için sunulan taleplere ek olarak sunulur. Taleplerin kullanılabilirliği kanıtlama için belirtilen kanıta bağımlıdır.
+
+- **enclaveauthorıd**: kuşatma Author ID değerinin Base64Url kodlamalı değerini içeren dize değeri-kuşatma için birincil modülün yazar tanımlayıcısı
+- **enclaveımageıd**: kuşatma Image ID 'nin Base64Url kodlamalı değerini içeren dize değeri-şifreleme için birincil modülün görüntü tanımlayıcısı
+- **enclaveownerıd**: kuşatma Owner ID 'nin Base64Url kodlamalı değerini içeren String değeri-kuşatma için sahibin tanımlayıcısı
+- **enclaveFamilyId**: kuşatma Family ID 'nin Base64Url kodlamalı değerini içeren String değeri. Şifreleme için birincil modülün aile tanımlayıcısı
+- **Enclavesvn**: şifreleme için birincil modülün güvenlik sürüm numarasını içeren tamsayı değeri
+- **Enclaveplatformsvn**: şifreleme barındıran platformun güvenlik sürümü numarasını içeren tamsayı değeri
+- **enclaveflags**: enclaveflags Claim, şifreleme için çalışma zamanı Ilkesini tanımlayan bayrakları Içeren bir tamsayı değeridir
+
+### <a name="outgoing-claims-specific-to-tpm-and-vbs-attestation"></a>TPM ve VBS kanıtlama için özel giden talepler
+
+- **CNF (onay)**: "CNF" talebi, elinde bulunan anahtarı belirlemek için kullanılır. RFC 7800 ' de tanımlanan onay talebi, bir JSON Web anahtarı (JWK) nesnesi (RFC 7517) olarak temsil edilen attest kuşkuşve anahtarının genel bölümünü içerir.
+- **rp_data (bağlı olan taraf verileri)**: istekte belirtilen, varsa bağlı olan taraf verileri, raporun yeniliği güvence altına almak için bir kerelik anahtar olarak kullanılır. rp_data yalnızca varsa eklenir rp_data
 
 ### <a name="property-claims"></a>Özellik talepleri
 

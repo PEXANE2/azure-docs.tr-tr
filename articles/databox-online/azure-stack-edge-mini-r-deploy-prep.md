@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/05/2021
+ms.date: 01/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Mini R device so I can use it to transfer data to Azure.
-ms.openlocfilehash: 4535368b7d8d044469a4b0effee914176aca78e4
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: b6745ed879f02a341027417b54eb459b5bfed705
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935416"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762953"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-mini-r"></a>Öğretici: Azure Stack Edge Mini R 'yi dağıtmaya hazırlanma
 
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure Stack Edge Mini R dağıtmak için, önceden tanımlanmış sırada aşağıdaki öğreticilere bakın.
 
-| Adım | Description |
+| Adım | Açıklama |
 | --- | --- |
 | **Hazırlama** |Bu adımların, yaklaşan dağıtım için hazırlanmasından tamamlanması gerekir. |
 | **[Dağıtım yapılandırma denetim listesi](#deployment-configuration-checklist)** |Dağıtımdan önce ve dağıtım sırasında bilgi toplamak ve bilgileri kaydetmek için bu denetim listesini kullanın. |
@@ -114,18 +114,18 @@ Azure Stack Edge kaynağı oluşturmak için Azure portal aşağıdaki adımlar�
     |Ayar  |Değer  |
     |---------|---------|
     |Ad   | Kaynağı tanımlamak için kolay bir ad.<br>Ad, harf, sayı ve kısa çizgi içeren 2 ile 50 karakter arasında bir addır.<br> Ad bir harf veya rakamla başlar ve biter.        |
-    |Region     |Azure Stack Edge kaynağının kullanılabildiği tüm bölgelerin listesi için bkz. [bölgeye göre kullanılabilir Azure ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Kamu kullanıyorsanız, tüm kamu bölgeleri [Azure bölgelerinde](https://azure.microsoft.com/global-infrastructure/regions/)gösterildiği gibi kullanılabilir.<br> Cihazınızı dağıtmak istediğiniz coğrafi bölgeye yakın bir konum seçin.|
+    |Bölge     |Azure Stack Edge kaynağının kullanılabildiği tüm bölgelerin listesi için bkz. [bölgeye göre kullanılabilir Azure ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Kamu kullanıyorsanız, tüm kamu bölgeleri [Azure bölgelerinde](https://azure.microsoft.com/global-infrastructure/regions/)gösterildiği gibi kullanılabilir.<br> Cihazınızı dağıtmak istediğiniz coğrafi bölgeye yakın bir konum seçin.|
 
     ![Kaynak oluşturma 4](media/azure-stack-edge-mini-r-deploy-prep/create-resource-4.png)
 
 
 7. **İleri ' yi seçin: sevkiyat adresi**.
 
-    - Zaten bir cihazınız varsa, **zaten bir cihazım varsa** Birleşik giriş kutusunu seçin.
+   - Zaten bir cihazınız varsa, **zaten bir cihazım varsa** Birleşik giriş kutusunu seçin.
 
      ![Kaynak oluştur 5](media/azure-stack-edge-mini-r-deploy-prep/create-resource-5.png)
 
-    - Bu, sipariş ettiğiniz yeni bir cihaz ise, ilgili kişi adını, şirketi, cihazı teslim etmek için adresi ve iletişim bilgilerini girin.
+   - Bu, sipariş ettiğiniz yeni bir cihaz ise, ilgili kişi adını, şirketi, cihazı teslim etmek için adresi ve iletişim bilgilerini girin.
 
      ![Kaynak oluştur 6](media/azure-stack-edge-mini-r-deploy-prep/create-resource-6.png)
 
@@ -145,9 +145,12 @@ Azure Stack Edge kaynağı oluşturmak için Azure portal aşağıdaki adımlar�
     
     ![Azure Stack Edge Pro kaynağına git](media/azure-stack-edge-mini-r-deploy-prep/azure-stack-edge-resource-1.png)
     
-    Sipariş yerleştirildikten sonra, Microsoft siparişi inceler ve gönderim ayrıntıları ile size (e-posta aracılığıyla) ulaşır.
+Sipariş yerleştirildikten sonra, Microsoft siparişi inceler ve gönderim ayrıntıları ile size (e-posta aracılığıyla) ulaşır.
 
-   Sipariş işlemi sırasında herhangi bir sorunla karşılaşırsanız, bkz. [sorun giderme sorunları giderme](azure-stack-edge-troubleshoot-ordering.md).
+> [!NOTE]
+> Aynı anda birden çok sipariş oluşturmak veya var olan bir siparişi kopyalamak istiyorsanız, [Azure örnekleri içindeki betikleri](https://github.com/Azure-Samples/azure-stack-edge-order)kullanabilirsiniz. Daha fazla bilgi için bkz. README dosyası.
+
+Sipariş işlemi sırasında herhangi bir sorunla karşılaşırsanız, bkz. [sorun giderme sorunları giderme](azure-stack-edge-troubleshoot-ordering.md).
 
 ## <a name="get-the-activation-key"></a>Etkinleştirme anahtarı alma
 

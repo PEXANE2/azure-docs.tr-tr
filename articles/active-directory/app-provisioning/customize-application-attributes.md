@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/10/2020
+ms.date: 1/25/2021
 ms.author: kenwith
-ms.openlocfilehash: efdbec10c74a6b1892df13b8308538e61f42f679
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2a27124ea76d6e5aaa7ec4b8ca36c388718ffb94
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98673510"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761307"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Öğretici-Kullanıcı sağlama özniteliğini özelleştirme-Azure Active Directory SaaS uygulamaları için eşlemeler
 
@@ -75,7 +75,7 @@ Bu özellik ile birlikte, öznitelik eşlemeleri de aşağıdaki öznitelikleri 
   - **Yalnızca oluşturma sırasında** -bu eşlemeyi yalnızca Kullanıcı oluşturma eylemlerinde uygulayın.
 
 ## <a name="matching-users-in-the-source-and-target--systems"></a>Kaynak ve hedef sistemlerdeki eşleşen kullanıcılar
-Azure AD sağlama hizmeti hem "doğa alan" senaryolarında (kullanıcıların hedef sistemde çıkmadığı) ve "brownfield" senaryolarından (kullanıcıların hedef sistemde zaten mevcut olduğu) dağıtılabilir. Her iki senaryoyu de desteklemek için sağlama hizmeti, eşleşen öznitelikler kavramını kullanır. Eşleşen öznitelikler, kaynak içindeki bir kullanıcıyı benzersiz bir şekilde belirlemeyi ve hedefteki kullanıcıyla eşleştirmeyi belirlemenizi sağlar. Dağıtımınızı planlamanın bir parçası olarak, kaynak ve hedef sistemlerdeki bir kullanıcıyı benzersiz şekilde tanımlamak için kullanılabilecek özniteliği tanımlar. Dikkat edilmesi gerekenler:
+Azure AD sağlama hizmeti hem "yeşil alan" senaryolarında (kullanıcıların hedef sistemde çıkmadığı) ve "brownfield" senaryolarından (kullanıcıların hedef sistemde zaten mevcut olduğu) dağıtılabilir. Her iki senaryoyu de desteklemek için sağlama hizmeti, eşleşen öznitelikler kavramını kullanır. Eşleşen öznitelikler, kaynak içindeki bir kullanıcıyı benzersiz bir şekilde belirlemeyi ve hedefteki kullanıcıyla eşleştirmeyi belirlemenizi sağlar. Dağıtımınızı planlamanın bir parçası olarak, kaynak ve hedef sistemlerdeki bir kullanıcıyı benzersiz şekilde tanımlamak için kullanılabilecek özniteliği tanımlar. Dikkat edilmesi gerekenler:
 
 - **Eşleşen öznitelikler benzersiz olmalıdır:** Müşteriler genellikle, eşleşen öznitelik olarak userPrincipalName, posta veya nesne KIMLIĞI gibi öznitelikleri kullanır.
 - **Eşleşen öznitelikler olarak birden çok öznitelik kullanılabilir:** Kullanıcıları ve değerlendirildikleri sırayı (Kullanıcı arabiriminde eşleşen öncelik olarak tanımlanır) eşleştirirken değerlendirilecek birden çok öznitelik tanımlayabilirsiniz. Örneğin, eşleşen öznitelikler olarak üç öznitelik tanımlayabilir ve bir Kullanıcı, ilk iki öznitelik hesaplandıktan sonra benzersiz bir şekilde eşleşirse, hizmet üçüncü özniteliği değerlendirmeyecektir. Hizmet, eşleşen öznitelikleri belirtilen sırada değerlendirir ve bir eşleşme bulunduğunda değerlendirmeyi durdurur.  
@@ -156,6 +156,7 @@ Bu yönergeler yalnızca SCıM özellikli uygulamalar için geçerlidir. Service
       "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
       "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User"],
      "userName":"bjensen",
+     "id": "48af03ac28ad4fb88478",
      "externalId":"bjensen",
      "name":{
        "formatted":"Ms. Barbara J Jensen III",

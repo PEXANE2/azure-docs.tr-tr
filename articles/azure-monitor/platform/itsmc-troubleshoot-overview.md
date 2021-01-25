@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: a4a7b7a4008d5cc4636e2d533c225a618f35af05
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: e43c5fb36c5395e12fd0b9c2c67b787a1137f5d0
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611194"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761990"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>ITSM Bağlayıcısındaki sorunları giderme
 
@@ -43,24 +43,23 @@ Hizmet Eşlemesi kullanıyorsanız, ıTSM çözümlerinde oluşturulan hizmet Ma
 
 ![Log Analytics ekranını gösteren ekran görüntüsü.](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
 
-## <a name="troubleshoot-itsm-connections"></a>ITSM bağlantılarında sorun giderme
-
-- Bağlantı ıTSM sistemine bağlanamazsa ve **bağlantı iletisini kaydederken bir hata** alırsanız, aşağıdaki adımları uygulayın:
-   - ServiceNow, Cherwell ve Provance bağlantıları için:  
-     - Bağlantıların her biri için Kullanıcı adını, parolayı, istemci KIMLIĞINI ve istemci gizli anahtarını doğru girdiğinizden emin olun.  
-     - Bağlantıyı yapmak için karşılık gelen ıTSM ürününde yeterli ayrıcalıklara sahip olduğunuzdan emin olun.  
-   - Service Manager bağlantıları için:  
-     - Web uygulamasının başarıyla dağıtıldığından ve karma bağlantının oluşturulduğundan emin olun. Bağlantının şirket içi Service Manager bilgisayarla başarıyla yapıldığını doğrulamak için [karma bağlantı](./itsmc-connections-scsm.md#configure-the-hybrid-connection)oluşturma belgelerinde açıklandığı gibi Web uygulaması URL 'sine gidin.  
-
-- Log Analytics uyarılar harekete geçmemişse ancak ıTSM ürününde iş öğeleri oluşturulmadıysa, yapılandırma öğeleri iş öğelerine oluşturulmaz/bağlanmadıysa veya diğer bilgiler için şu kaynaklara bakın:
-   -  ISMC: çözüm, bağlantıların, iş öğelerinin, bilgisayarların ve daha fazlasını bir [Özet](itsmc-dashboard.md)gösterir. **Bağlayıcı durumu** etiketine sahip kutucuğu seçin. Bunu yapmak ilgili sorguyla **aramayı günlüğe kaydetmek** için yönlendirir. `LogType_S`Daha fazla bilgi için ' a sahip günlük kayıtlarına bakın `ERROR` .
-   Tablodaki iletilerle ilgili ayrıntıları [burada](itsmc-dashboard-errors.md)görebilirsiniz.
-   - **Günlük arama** sayfası: doğrudan sorgu kullanarak hataları ve Ilgili bilgileri görüntüleyin `*ServiceDeskLog_CL*` .
-
 ## <a name="common-symptoms---how-should-it-be-resolved"></a>Ortak belirtiler-nasıl çözülmesi gerekir?
 
 Aşağıdaki liste, yaygın belirtileri ve nasıl çözümlenmelidir:
 
+* **Belirti**: bağlantı ITSM sistemine bağlanamazsa ve **bağlantı Iletisini kaydederken bir hata** alırsanız.
+
+    **Neden**: neden seçeneklerden biri olabilir:
+    * Yanlış kimlik bilgileri
+     * Yetersiz ayrıcalıklar
+     * Web uygulamasının doğru bir şekilde dağıtılması gerekir
+
+    **Çözüm**:
+    * ServiceNow, Cherwell ve Provance bağlantıları için:
+        * Bağlantıların her biri için Kullanıcı adını, parolayı, istemci KIMLIĞINI ve istemci gizli anahtarını doğru girdiğinizden emin olun.  
+        * ServiceNow için: bağlantıyı [belirtildiği](itsmc-connections-servicenow.md#install-the-user-app-and-create-the-user-role)gibi yapmak için KARŞıLıK gelen ITSM ürününde yeterli ayrıcalıklara sahip olduğunuzdan emin olun.
+  * Service Manager bağlantıları için:  
+      * Web uygulamasının başarıyla dağıtıldığından ve karma bağlantının oluşturulduğundan emin olun. Bağlantının şirket içi Service Manager bilgisayarla başarıyla yapıldığını doğrulamak için [karma bağlantı](./itsmc-connections-scsm.md#configure-the-hybrid-connection)oluşturma belgelerinde açıklandığı gibi Web uygulaması URL 'sine gidin.  
 * **Belirti**: yinelenen iş öğeleri oluşturuldu
 
     **Neden**: neden iki seçenekten biri olabilir:

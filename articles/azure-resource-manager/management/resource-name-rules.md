@@ -3,12 +3,12 @@ title: Kaynak adlandırma kısıtlamaları
 description: Azure kaynaklarını adlandırmayla ilgili kuralları ve kısıtlamaları gösterir.
 ms.topic: conceptual
 ms.date: 12/29/2020
-ms.openlocfilehash: 59babd9298fdca96b450b2dc67832c86c043c49c
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: bd8ba72d43b7e3e5a9145d756741436f0a49e18b
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132758"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762475"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure kaynaklarına yönelik adlandırma kuralları ve kısıtlamaları
 
@@ -633,9 +633,9 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > [!div class="mx-tableFixed"]
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | ManagedInstances | global | 1-63 | Küçük harfler, rakamlar ve kısa çizgiler.<br><br>Kısa çizgi ile başlayamaz veya bitemez. |
+> | ManagedInstances | global | 1-63 | Küçük harfler, rakamlar ve kısa çizgiler.<br><br>Kısa çizgi ile başlayamaz veya bitemez. <br><br> Gibi özel karakterler içeremez `@` . |
 > | larý | global | 1-63 | Küçük harfler, rakamlar ve kısa çizgiler.<br><br>Kısa çizgi ile başlayamaz veya bitemez. |
-> | sunucular/Yöneticiler | sunucu |  | Olmalıdır `ActiveDirectory` . |
+> | sunucular/Yöneticiler | sunucu |  | Olmalıdır `ActiveDirectory` . <br><br> Gibi özel karakterler içeremez `@` .|
 > | sunucular/veritabanları | sunucu | 1-128 | Şu kullanılamıyor:<br>`<>*%&:\/?`<br><br>Nokta veya boşluk ile bitemez. |
 > | sunucular/veritabanları/syncGroups | database | 1-150 | Alfasayısal karakterler, kısa çizgiler ve alt çizgiler. |
 > | sunucular/Elaun havuzları | sunucu | 1-128 | Şu kullanılamıyor:<br>`<>*%&:\/?`<br><br>Nokta veya boşluk ile bitemez. |

@@ -2,14 +2,14 @@
 title: Kullanılabilirlik ve tutarlılık-Azure Event Hubs | Microsoft Docs
 description: Bölümler kullanılarak Azure Event Hubs maksimum kullanılabilirlik ve tutarlılık sağlama.
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 01/25/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7b97d76f29ee8b7e44373c865baa09ba5ea4dd23
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 5ffa2df992eb0c22aafbbb7436250405998d8073
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631928"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762818"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Event Hubs’da kullanılabilirlik ve tutarlılık
 
@@ -22,6 +22,11 @@ Brewer 'in bu, tutarlılığı ve kullanılabilirliği aşağıdaki şekilde tan
 * Bölüm toleransı: bir bölüm hatası oluşması durumunda bile veri işleme sisteminin veri işlemeye devam etmesi özelliği.
 * Kullanılabilirlik: başarısız olmayan bir düğüm makul bir süre içinde makul bir yanıt döndürür (hata veya zaman aşımları olmadan).
 * Tutarlılık: belirli bir istemci için en son yazmayı döndürecek bir okuma garantisi vardır.
+
+> [!NOTE]
+> Terim **bölümü** Event Hubs ve üst sınır içindeki farklı bağlamlarda kullanılır. 
+> - Olayları bir veya daha fazla bölüme göre düzenler **Event Hubs** . Bölümler birbirinden bağımsızdır ve kendi veri dizisini içerir, genellikle farklı oranlarda artar. Daha fazla bilgi için bkz. [bölümler](event-hubs-features.md#partitions).
+> - Büyük harfli bir bölüm, dağıtılmış bir sistemdeki düğümler arasında bir iletişim **kesgisidır**.
 
 ## <a name="partition-tolerance"></a>Bölüm toleransı
 Event Hubs, bölümlenmiş bir veri modelinin üzerine kurulmuştur. Kurulum sırasında olay hub 'ınızdaki bölüm sayısını yapılandırabilirsiniz, ancak daha sonra bu değeri değiştiremezsiniz. Event Hubs olan bölümleri kullanmanız gerektiğinden, uygulamanız için kullanılabilirlik ve tutarlılık hakkında bir karar vermeniz gerekir.
