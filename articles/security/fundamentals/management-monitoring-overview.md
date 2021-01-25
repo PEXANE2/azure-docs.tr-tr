@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2019
+ms.date: 01/24/2021
 ms.author: terrylan
-ms.openlocfilehash: 038f30ee186a5b3a9d87d64054726324051c37b4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d85b1fdd433c372bb41adec6e3d33013f19363f0
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842762"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747182"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure Güvenlik yönetimi ve izlemeye genel bakış
 Bu makalede, Azure 'un Azure Cloud Services ve sanal makinelerin yönetimine ve izlenmesine yardımcı olmak için Azure 'un sağladığı güvenlik özelliklerine ve hizmetlerine genel bir bakış sunulmaktadır.
@@ -62,7 +62,7 @@ Daha fazla bilgi edinin:
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
 * [Azure AD Multi-Factor Authentication nedir?](../../active-directory/authentication/concept-mfa-howitworks.md)
-* [Azure AD Multi-Factor Authentication nasıl çalışacaktır?](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Azure AD Multi-Factor Authentication nasıl çalışır?](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="expressroute"></a>ExpressRoute
 
@@ -85,7 +85,7 @@ Azure sanal ağ geçitleri olarak da bilinen VPN ağ geçitleri, sanal ağlar ve
 Daha fazla bilgi edinin:
 
 * [VPN ağ geçitleri hakkında](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
-* [Azure ağ güvenliğine genel bakış](network-overview.md)
+* [Azure ile ağ güvenliğine genel bakış](network-overview.md)
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
 
@@ -117,15 +117,18 @@ Daha fazla bilgi edinin:
 
 ## <a name="security-center"></a>Güvenlik Merkezi
 
-Azure Güvenlik Merkezi, tehditleri önlemenize, algılamanıza ve yanıtlamanıza yardımcı olur. Güvenlik Merkezi, Azure kaynaklarınızın güvenliğini ve üzerinde daha fazla görünürlük elde etmenizi sağlar. Azure abonelikleriniz genelinde tümleşik güvenlik izleme ve ilke yönetimi sağlar. Başka türlü fark edilmemiş tehditleri algılamaya yardımcı olur ve güvenlik çözümlerinin geniş bir ekosistemiyle birlikte çalışabilir.
+Azure Güvenlik Merkezi, tehditleri önlemenize, algılamanıza ve yanıtlamanıza yardımcı olur. Güvenlik Merkezi, Azure kaynaklarınızın yanı sıra hibrit bulut ortamınızdan daha fazla görünürlük ve denetim sahibi olmanızı sağlar. 
+
+Güvenlik Merkezi, bağlantılı kaynaklarınızın sürekli güvenlik değerlendirmelerini gerçekleştirir ve ortamınız için uygun olan ayrıntılı güvenlik önerileri sağlamak üzere yapılandırma ve dağıtımını [Azure Güvenlik kıyaslaması](../benchmarks/introduction.md) ile karşılaştırır.
 
 Güvenlik Merkezi, Azure kaynaklarınızın güvenliğini iyileştirebilmenizi ve bunları izlemenize yardımcı olur:
 
-* Azure abonelik kaynaklarınızın ilkelerini şunlara göre tanımlamanızı sağlama:
-  * Şirketinizin güvenlik ihtiyaçları.
-  * Her abonelikteki verilerin ya da veri hassasiyetini.
-* Azure sanal makinelerinizin, ağ ve uygulamalarınızın durumunu izleme.
-* Tümleşik iş ortağı çözümlerinden gelen uyarılar da dahil olmak üzere, öncelikli güvenlik uyarılarının bir listesini sağlama. Ayrıca, bir saldırının hızlı bir şekilde araştırılması için ihtiyaç duyduğunuz bilgileri ve nasıl düzeltileceğine ilişkin önerileri de sağlar.
+- Azure abonelik kaynaklarınızın ilkelerini şunlara göre tanımlamanızı sağlama:
+    - Kuruluşunuzun güvenlik ihtiyaçları.
+    - Her abonelikteki verilerin ya da veri hassasiyetini.
+    - Abonelikleriniz için uyguladığınız tüm sektör veya yasal standartlar veya kıyaslamalar. 
+- Azure sanal makinelerinizin, ağ ve uygulamalarınızın durumunu izleme.
+- Tümleşik iş ortağı çözümlerinden gelen uyarılar da dahil olmak üzere, öncelikli güvenlik uyarılarının bir listesini sağlama. Ayrıca, bir saldırının hızlı bir şekilde araştırılması için ihtiyaç duyduğunuz bilgileri ve nasıl düzeltileceğine ilişkin önerileri de sağlar.
 
 Daha fazla bilgi edinin:
 

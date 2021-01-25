@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 553151aebeadf4ad4764e747b1bf6dcd8c552721
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 9fde0ecd8b6670e43aa3970b2df27a402b9c1a5c
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98126861"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747249"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Güvenlik Merkezi 'nin tümleşik EDR çözümü ile uç noktalarınızı koruyun: uç nokta için Microsoft Defender
 
@@ -45,7 +45,7 @@ Uç nokta için Microsoft Defender, bütünsel, bulut tarafından sunulan bir u�
 | Desteklenen platformlar:            | Windows çalıştıran Azure makineleri<br>Windows çalıştıran Azure Arc makineleri|
 | Desteklenen Windows sürümleri:  |  • Güvenlik Merkezi Windows Server 2016, 2012 R2 ve 2008 R2 SP1 'de algılamayı destekler<br> • Bu tümleştirmeyi kullanan sunucu uç noktası izleme Office 365 GCC müşterileri için devre dışı bırakılmıştır<br> • Windows Server 2019, Windows 10 1703 (ve daha yeni) veya Linux desteği yoktur|
 | Gerekli roller ve izinler: | Tümleştirmeyi etkinleştirmek/devre dışı bırakmak için: **Güvenlik Yöneticisi** veya **sahibi**<br>Güvenlik Merkezi 'nde MDADTP uyarılarını görüntülemek için: **güvenlik okuyucu**, **okuyucu**, **kaynak grubu katılımcısı**, **kaynak grubu sahibi**, **Güvenlik Yöneticisi**, **abonelik sahibi** veya **abonelik katılımcısı**|
-| Larının                         | ![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov<br>![No](./media/icons/no-icon.png) Küresel Azure bulutlarında iş yüklerini çalıştıran GCC müşterileri                                                        |
+| Larının                         | ![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov<br>![Hayır](./media/icons/no-icon.png) Küresel Azure bulutlarında iş yüklerini çalıştıran GCC müşterileri                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
 
 
@@ -118,6 +118,8 @@ Uç nokta sınama uyarısı için bir zararsız Microsoft Defender oluşturmak i
 1. Güvenlik Merkezi 'nde uyarıyı gözden geçirmek için **güvenlik uyarıları**  >  **şüpheli PowerShell komut satırı** bölümüne gidin.
 1. Araştırma penceresinde, uç nokta portalı için Microsoft Defender 'a gitmek üzere bağlantıyı seçin.
 
+    > [!TIP]
+    > Uyarı, **bilgilendirme** önem derecesine sahip olarak tetiklenir.
 
 ## <a name="faq-for-security-centers-integrated-microsoft-defender-for-endpoint"></a>Güvenlik Merkezi 'nin uç nokta için tümleşik Microsoft Defender hakkında SSS
 

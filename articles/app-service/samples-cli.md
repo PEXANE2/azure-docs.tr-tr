@@ -6,12 +6,12 @@ ms.assetid: 53e6a15a-370a-48df-8618-c6737e26acec
 ms.topic: sample
 ms.date: 07/07/2020
 ms.custom: mvc
-ms.openlocfilehash: beab87618b97da4e61b0525c0c5a6bdd134fb7f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61ce290f8ed5e8ad919a253d426d3278233caa3f
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86169451"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747298"
 ---
 # <a name="cli-samples-for-azure-app-service"></a>Azure App Service için CLı örnekleri
 
@@ -40,7 +40,7 @@ Aşağıdaki tablo, Azure CLI’si kullanılarak oluşturulan bash komut dosyala
 | [Bir uygulamayı depolama hesabına bağlama](./scripts/cli-connect-to-storage.md?toc=%2fcli%2fazure%2ftoc.json)| Bir App Service uygulaması ve depolama hesabı oluşturur, ardından depolama bağlantı dizesini uygulama ayarlarına ekler. |
 | [Redsıs için bir uygulamayı Azure önbelleğine bağlama](./scripts/cli-connect-to-redis.md?toc=%2fcli%2fazure%2ftoc.json) | Redsıs için bir App Service uygulaması ve Azure önbelleği oluşturur, ardından uygulama ayarlarına redsıs bağlantı ayrıntılarını ekler.) |
 | [Uygulamayı Cosmos DB bağlama](./scripts/cli-connect-to-documentdb.md?toc=%2fcli%2fazure%2ftoc.json) | App Service bir uygulama ve bir Cosmos DB oluşturur ve Cosmos DB bağlantı ayrıntılarını uygulama ayarlarına ekler. |
-|**Uygulamayı yedekleme ve geri yükleme**||
+|**Yedekleme ve geri yükleme uygulaması**||
 | [Uygulama yedekleme](./scripts/cli-backup-onetime.md?toc=%2fcli%2fazure%2ftoc.json) | Bir App Service uygulaması oluşturur ve bu uygulama için bir kerelik yedekleme oluşturur. |
 | [Bir uygulama için zamanlanmış yedekleme oluşturma](./scripts/cli-backup-scheduled.md?toc=%2fcli%2fazure%2ftoc.json) | Bir App Service uygulaması oluşturur ve bu uygulama için zamanlanmış bir yedekleme oluşturur. |
 | [Bir uygulamayı yedekten geri yükler](./scripts/cli-backup-restore.md?toc=%2fcli%2fazure%2ftoc.json) | Bir App Service uygulamasını yedekten geri yükler. |

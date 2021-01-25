@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/21/2021
 ms.author: cavoeg
-ms.openlocfilehash: 43372eb0a9f7c08f6957627950769c1941580bd8
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 28c01e99c0e8708750341b445b4a31f6eaeab3ce
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98745876"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747534"
 ---
 # <a name="features"></a>Özellikler
 
@@ -147,12 +147,14 @@ FHıR sunucusu, Access Control için [Azure Active Directory](https://azure.micr
 
 Sistemin performansı, RUs sayısına, eşzamanlı bağlantılara ve gerçekleştirdiğiniz işlem türüne (put, Post, vb.) bağlıdır. Aşağıda, yapılandırılmış RUs 'e göre beklediklerinize ilişkin bazı genel aralıklar verilmiştir. Genel olarak, performans, ru 'daki bir artış ile doğrusal şekilde ölçeklendirilir:
 
-| RUs | Kaynak/sn |
-|----------|---------------|
-| 400      | 5-10          |
-| 1.000    | 100-150       |
-| 10,000   | 225-400       |
-| 100.000  | 2500-4000   |
+| RUs | Kaynak/sn |    En fazla depolama alanı (GB) *    |
+|----------|---------------|--------|                 
+| 400      | 5-10          |     40   |
+| 1.000    | 100-150       |      100  |
+| 10,000   | 225-400       |      1.000  |
+| 100.000  | 2500-4000   |      10,000  |
+
+Note: Cosmos DB gereksinimi başına, GB depolama alanı başına en az 10 RU/sn 'lik verimlilik gereksinimi vardır. Daha fazla bilgi için [Cosmos DB hizmet kotaları](../cosmos-db/concepts-limits.md)' na göz atın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

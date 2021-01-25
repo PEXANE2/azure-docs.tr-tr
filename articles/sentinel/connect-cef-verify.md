@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2021
 ms.author: yelevin
-ms.openlocfilehash: 557f53e39781406674b9903dcf0bb3cb536cd804
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: f9fb1c917a0719cb9d250b997329d3415b5872eb
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897493"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747483"
 ---
 # <a name="step-3-validate-connectivity"></a>3. Adım: bağlantıyı doğrulama
 
 Günlük ileticinizi dağıttıktan sonra (adım 1 ' de) ve Güvenlik çözümünüzü BT CEF iletileri gönderecek şekilde yapılandırdıysanız (adım 2 ' de), güvenlik çözümünüz ile Azure Sentinel arasındaki bağlantıyı doğrulamak için bu yönergeleri izleyin. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Günlük ileticisi makinenizde yükseltilmiş izinleriniz (sudo) olmalıdır.
 
@@ -44,7 +44,7 @@ Günlüklerinizin **Log Analytics** görünmeye başlaması için 20 dakika sür
 1. Güvenlik çözümünüz, günlük ileticisi ve Azure Sentinel arasındaki bağlantıyı denetlemek için günlük ileticisinde (yer tutucunun yerine çalışma alanı KIMLIĞINI uygulama) aşağıdaki betiği çalıştırın. Bu betik, arka plan programının doğru şekilde yapılandırıldığını ve arka plan programı ile Log Analytics Aracısı arasındaki iletişimi engellemediğini kontrol eder. Ayrıca, uçtan uca bağlantıyı denetlemek için ' TestCommonEventFormat ' adlı sahte iletiler gönderir. <br>
 
     ```bash
-    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]
+    sudo wget -O cef_troubleshoot.py https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]
     ```
 
    - ***Bilgisayar* alanının eşlemesiyle** bir sorunu düzeltmek için bir komut çalıştırmanızı yönlendiren bir ileti alabilirsiniz. Ayrıntılar için [doğrulama betiğinin](#mapping-command) açıklamasına bakın.

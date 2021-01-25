@@ -973,6 +973,8 @@
           href: managed-instance/virtual-cluster-delete.md
         - name: Özel API'yi yapılandırma
           href: managed-instance/custom-dns-configure.md
+        - name: DNS yapılandırmasını Eşitle
+          href: managed-instance/synchronize-vnet-dns-servers-setting-on-virtual-cluster.md
         - name: Eşitleme ağı yapılandırması
           href: managed-instance/azure-app-sync-network-configuration.md
         - name: Yönetim uç noktası IP adresini bulma

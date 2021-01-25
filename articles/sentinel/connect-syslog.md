@@ -1,6 +1,6 @@
 ---
 title: Syslog verilerini Azure Sentinel 'e bağlama | Microsoft Docs
-description: Bir Linux makinesinde gereç ve Sentinel arasında bir aracı kullanarak Syslog 'yi destekleyen herhangi bir makine veya gereci Azure Sentinel 'e bağlayın. 
+description: Bir Linux makinesinde gereç ve Sentinel arasında bir aracı kullanarak Syslog 'yi destekleyen herhangi bir makine veya gereci Azure Sentinel 'e bağlayın.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 7670d00a2dd25961a51d18c50c102e0f92b30975
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c3cf4c3c135b3f275542af4f531d1071e180ebe
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88566157"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747199"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Syslog kullanarak Linux tabanlı kaynaklardan veri toplama
 
@@ -32,7 +32,7 @@ Linux tabanlı, syslog destekleyen makinelerden veya gereçlerden, Linux için L
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
-**Syslog** , Linux için ortak olan bir olay günlüğü protokolüdür. **Linux için Log Analytics ARACıSı** sanal makinenize veya gerecinize yüklendiğinde, yükleme yordamı, iletileri TCP bağlantı noktası 25224 ' deki aracıya iletmek Için yerel Syslog arka plan programını yapılandırır. Aracı daha sonra iletiyi HTTPS üzerinden Log Analytics çalışma alanınıza gönderir ve burada **Azure Sentinel > günlüklerinde**Syslog tablosunda bir olay günlüğü girişi olarak ayrıştırılır.
+**Syslog** , Linux için ortak olan bir olay günlüğü protokolüdür. **Linux için Log Analytics ARACıSı** sanal makinenize veya gerecinize yüklendiğinde, yükleme yordamı, iletileri TCP bağlantı noktası 25224 ' deki aracıya iletmek Için yerel Syslog arka plan programını yapılandırır. Aracı daha sonra iletiyi HTTPS üzerinden Log Analytics çalışma alanınıza gönderir ve burada **Azure Sentinel > günlüklerinde** Syslog tablosunda bir olay günlüğü girişi olarak ayrıştırılır.
 
 Daha fazla bilgi için bkz. [Azure izleyici 'de Syslog veri kaynakları](../azure-monitor/platform/data-sources-syslog.md).
 
@@ -48,7 +48,7 @@ Daha fazla bilgi için bkz. [Azure izleyici 'de Syslog veri kaynakları](../azur
     
     **Bir Azure Linux sanal makinesi için:**
       
-    1. **Aracıyı Azure Linux sanal makinesine yüklemeyi**seçin.
+    1. **Aracıyı Azure Linux sanal makinesine yüklemeyi** seçin.
     
     1. **Azure Linux sanal makineleri Için indirme & yükleme aracısı >** bağlantısına tıklayın. 
     
@@ -67,21 +67,21 @@ Daha fazla bilgi için bkz. [Azure izleyici 'de Syslog veri kaynakları](../azur
 
 ### <a name="configure-the-log-analytics-agent"></a>Log Analytics aracısını yapılandırma
 
-1. Syslog Bağlayıcısı dikey penceresinin alt kısmında, **çalışma alanınızın Gelişmiş ayarlar yapılandırma >bağlantısını aç ** bağlantısına tıklayın.
+1. Syslog Bağlayıcısı dikey penceresinin alt kısmında, **çalışma alanınızın Gelişmiş ayarlar yapılandırma >bağlantısını aç** bağlantısına tıklayın.
 
-1. **Gelişmiş ayarlar** dikey penceresinde **veri**  >  **Syslog**öğesini seçin. Ardından, bağlayıcının toplanacak tesisleri ekleyin.
+1. **Gelişmiş ayarlar** dikey penceresinde **veri**  >  **Syslog** öğesini seçin. Ardından, bağlayıcının toplanacak tesisleri ekleyin.
     
     - Syslog gerecinizin günlük üst bilgilerinde içerdiği tesisleri ekleyin. 
     
-    - Topladığımız verilerle anormal SSH oturum açma algılaması kullanmak istiyorsanız, **AUTH** ve **authprıv**ekleyin. Daha fazla bilgi için [aşağıdaki bölüme](#configure-the-syslog-connector-for-anomalous-ssh-login-detection) bakın.
+    - Topladığımız verilerle anormal SSH oturum açma algılaması kullanmak istiyorsanız, **AUTH** ve **authprıv** ekleyin. Daha fazla bilgi için [aşağıdaki bölüme](#configure-the-syslog-connector-for-anomalous-ssh-login-detection) bakın.
 
-1. İzlemek istediğiniz tüm özellikleri eklediğinizde ve her biri için herhangi bir önem derecesi belirlediyseniz, bu onay kutusunu **makinelerime aşağıdaki yapılandırmayı Uygula**seçeneğini belirleyin.
+1. İzlemek istediğiniz tüm özellikleri eklediğinizde ve her biri için herhangi bir önem derecesi belirlediyseniz, bu onay kutusunu **makinelerime aşağıdaki yapılandırmayı Uygula** seçeneğini belirleyin.
 
 1. **Kaydet**’i seçin. 
 
 1. VM 'niz veya gerecinizde belirttiğiniz olanakları gönderdiğinizden emin olun.
 
-1. **Günlüklerde**Syslog günlük verilerini sorgulamak için, `Syslog` sorgu penceresine yazın.
+1. **Günlüklerde** Syslog günlük verilerini sorgulamak için, `Syslog` sorgu penceresine yazın.
 
 1. Syslog iletilerinizi ayrıştırmak için [Azure izleyici günlük sorgularındaki Işlevleri kullanma](../azure-monitor/log-query/functions.md) bölümünde açıklanan sorgu parametrelerini kullanabilirsiniz. Sonra sorguyu yeni bir Log Analytics işlevi olarak kaydedebilir ve yeni bir veri türü olarak kullanabilirsiniz.
 
@@ -104,7 +104,7 @@ Daha fazla bilgi için bkz. [Azure izleyici 'de Syslog veri kaynakları](../azur
 > [!IMPORTANT]
 > Anomalous SSH oturum açma algılaması Şu anda genel önizlemededir.
 > Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez.
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Azure Sentinel, anormal Secure Shell (SSH) oturum açma etkinliğini belirlemek için Syslog verilerine makine öğrenimi (ML) uygulayabilir. Senaryolar şunlardır:
 
@@ -120,8 +120,12 @@ Bu algılama, syslog veri bağlayıcısının belirli bir yapılandırmasını g
 
 2. Syslog bilgilerinin toplanması için yeterli zaman kullanılmasına izin verin. Ardından, **Azure Sentinel-logs**' a gidin ve aşağıdaki sorguyu kopyalayıp yapıştırın:
     
-    ```console
-    Syslog |  where Facility in ("authpriv","auth")| extend c = extract( "Accepted\\s(publickey|password|keyboard-interactive/pam)\\sfor ([^\\s]+)",1,SyslogMessage)| where isnotempty(c) | count 
+    ```kusto
+    Syslog
+    | where Facility in ("authpriv","auth")
+    | extend c = extract( "Accepted\\s(publickey|password|keyboard-interactive/pam)\\sfor ([^\\s]+)",1,SyslogMessage)
+    | where isnotempty(c)
+    | count 
     ```
     
     Gerekirse **zaman aralığını** değiştirin ve **Çalıştır**' ı seçin.

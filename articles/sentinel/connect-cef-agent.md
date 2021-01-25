@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2021
 ms.author: yelevin
-ms.openlocfilehash: 617599e3eb6dcca74324a7bdfd51e604904a2fa1
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 8261856598a155e97f90ea350cedcd4c10e6893c
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897510"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747315"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>1. Adım: günlük ileticisini dağıtma
 
@@ -34,13 +34,18 @@ Bu adımda, günlükleri güvenlik çözümünüzden Azure Sentinel çalışma a
     - TCP bağlantı noktası 514 ' deki güvenlik çözümlerinizde syslog iletilerini dinleme
     - TCP bağlantı noktası 25226 kullanarak yalnızca, CEF olarak tanımladığı iletileri localhost üzerinde Log Analytics aracısına iletme
  
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Belirlenen Linux makinenizde yükseltilmiş izinleriniz (sudo) olmalıdır.
 
 - Linux makinesinde **python 2,7** veya **3** ' ün yüklü olması gerekir.<br>`python -version`Denetlemek için komutunu kullanın.
 
 - Log Analytics aracısını yüklemeden önce Linux makinenin herhangi bir Azure çalışma alanına bağlı olmaması gerekir.
+
+- Linux makinenizin en az **4 CPU çekirdeği ve 8 GB RAM** olması gerekir.
+
+    > [!NOTE]
+    > - **Rsyslog** Daemon kullanan tek bir günlük iletici makinesi, toplanan **saniyede 8500 olay kadar (EPS)** desteklenen kapasiteye sahiptir.
 
 - Bu işlemin bir noktasında çalışma alanı KIMLIĞI ve çalışma alanı birincil anahtarına ihtiyacınız olabilir. Onları çalışma alanı kaynağında, **aracılar yönetimi** altında bulabilirsiniz.
 
@@ -51,7 +56,7 @@ Bu adımda, günlükleri güvenlik çözümünüzden Azure Sentinel çalışma a
 1. 1,2 altında, **CEF toplayıcısını Linux makinesine yüklemek** için aşağıdaki betiği Çalıştır altında belirtilen bağlantıyı kopyalayın **ve CEF toplayıcısı 'nı yüklemek ve uygulamak için aşağıdaki** METINDEN (çalışma alanı kimliğini ve birincil anahtarı yer tutucuları yerine uygulayarak) uygulayın:
 
     ```bash
-    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]
+    sudo wget -O cef_installer.py https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]
     ```
 
 1. Betik çalışırken, herhangi bir hata veya uyarı iletisi aldığınızdan emin olmak için kontrol edin.
@@ -73,7 +78,7 @@ Bu adımda, günlükleri güvenlik çözümünüzden Azure Sentinel çalışma a
 > [!NOTE]
 > **TimeGenerated alanının kaynağını değiştirme**
 >
-> - Varsayılan olarak, Log Analytics Aracısı şemadaki *TimeGenerated* alanını, aracının Syslog arka plan programından olayı aldığı zamana göre doldurur. Sonuç olarak, olayın kaynak sistemde oluşturulduğu zaman Azure Sentinel 'de kaydedilmez.
+> - Varsayılan olarak, Log Analytics Aracısı şemadaki *TimeGenerated* alanını, aracının Syslog arka plan programından olayı aldığı zamana göre doldurur. Sonuç olarak kaynak sistemde olayın oluşturulma zamanı Azure Sentinel'de kaydedilmez.
 >
 > - Ancak, komut dosyasını indirecek ve çalıştıracak aşağıdaki komutu çalıştırabilirsiniz `TimeGenerated.py` . Bu betik, Log Analytics aracısını aracı tarafından alındığı zaman yerine, *TimeGenerated* alanını olayın kaynak sistemindeki özgün zamanına göre doldurmak üzere yapılandırır.
 >
@@ -94,8 +99,8 @@ Uygun açıklamayı görmek için bir Syslog Daemon seçin.
     - Log Analytics (OMS) Linux aracısının yükleme betiğini indirir.
 
         ```bash
-        wget -O https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
-            onboard_agent.sh
+        wget -O onboard_agent.sh https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/
+            master/installer/scripts/onboard_agent.sh
         ```
 
     - Log Analytics aracısını yükleme.
@@ -160,8 +165,8 @@ Uygun açıklamayı görmek için bir Syslog Daemon seçin.
     - Log Analytics (OMS) Linux aracısının yükleme betiğini indirir.
 
         ```bash
-        wget -O https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
-            onboard_agent.sh
+        wget -O onboard_agent.sh https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/
+            master/installer/scripts/onboard_agent.sh
         ```
 
     - Log Analytics aracısını yükleme.

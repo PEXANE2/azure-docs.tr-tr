@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 6061980ec556fccde3de882a291bc390b88c5a24
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: f2807501b1e18d4cbffaa34d70bccf8d70565266
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611092"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747232"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure İzleyici müşteri tarafından yönetilen anahtar 
 
@@ -125,11 +125,53 @@ Bu ayarlar, CLı ve PowerShell aracılığıyla Key Vault güncelleştirilebilen
 
 ## <a name="create-cluster"></a>Küme oluşturma
 
-> [!NOTE]
-> Kümeler iki [yönetilen kimlik türünü](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)destekler: sistem tarafından atanan ve Kullanıcı tarafından atanan ve her biri senaryonuz temelinde olabilir. Sistem tarafından atanan yönetilen kimlik daha basittir ve kimlik `type` "*Systemassigned*" olarak ayarlandığında küme oluşturma ile otomatik olarak oluşturulur. bu kimlik daha sonra Key Vault kümeye erişim vermek için kullanılabilir. Küme oluşturma zamanında müşteri tarafından yönetilen anahtar tanımlandığında bir küme oluşturmak istiyorsanız, önceden Key Vault bir anahtar tanımlı ve Kullanıcı tarafından atanan bir kimliğiniz olmalıdır ve sonra bu ayarlarla kümeyi oluşturmanız gerekir: kimlik, `type`  `UserAssignedIdentities` kimliğin kaynak kimliği ve `keyVaultProperties` anahtar ayrıntıları ile.
+Kümeler iki [yönetilen kimlik türünü](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)destekler: sistem tarafından atanan ve Kullanıcı tarafından atanan, senaryonuza bağlı olarak bir kümede tek bir kimlik tanımlanabilir. 
+- Kimlik `type` "*Systemassigned*" olarak ayarlandığında, sistem tarafından atanan yönetilen kimlik daha basittir ve küme oluşturma ile otomatik olarak oluşturulur. Bu kimlik daha sonra Key Vault kümeye erişim sağlamak için kullanılabilir. 
+  
+  Sistem tarafından atanan yönetilen kimlik için kümede kimlik ayarları
+  ```json
+  {
+    "identity": {
+      "type": "SystemAssigned"
+      }
+  }
+  ```
+
+- Küme oluştururken müşteri tarafından yönetilen anahtarı yapılandırmak istiyorsanız, önceden Key Vault için bir anahtar ve Kullanıcı tarafından atanan bir kimliğiniz olmalıdır ve sonra bu ayarlarla kümeyi oluşturmanız gerekir: kimlik `type` kaynak kimliği ile "*userassigned*" olarak kimliği `UserAssignedIdentities` .
+
+  Kullanıcı tarafından atanan yönetilen kimlik için kümede kimlik ayarları
+  ```json
+  {
+  "identity": {
+  "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft. ManagedIdentity/UserAssignedIdentities/<cluster-assigned-managed-identity>"
+      }
+  }
+  ```
 
 > [!IMPORTANT]
-> Şu anda Key Vault Private-Link (vNet) içinde yer alıyorsa ve bu durumda sistem tarafından atanan yönetilen kimlik ile müşteri tarafından yönetilen anahtar tanımlanamıyor.
+> Key Vault Private-Link (vNet) ise, Kullanıcı tarafından yönetilen anahtarı Kullanıcı tarafından atanan yönetilen kimlikle kullanamazsınız. Bu senaryoda, sistem tarafından atanan yönetilen kimliği kullanabilirsiniz.
+
+```json
+{
+  "identity": {
+    "type": "SystemAssigned"
+}
+```
+ 
+Şununla:
+
+```json
+{
+  "identity": {
+  "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft. ManagedIdentity/UserAssignedIdentities/<user-assigned-managed-identity-name>"
+      }
+}
+```
+
 
 [Adanmış kümeler](../log-query/logs-dedicated-clusters.md#creating-a-cluster)makalesinde gösterilen yordamı izleyin. 
 
@@ -243,15 +285,13 @@ Ve dahil olmak üzere bu işlemi gerçekleştirmek için hem çalışma alanın�
 
 ## <a name="key-revocation"></a>Anahtar iptali
 
-Anahtarınızı devre dışı bırakarak veya Key Vault kümenin erişim ilkesini silerek verilere erişimi iptal edebilirsiniz. 
-
 > [!IMPORTANT]
-> - Kümeniz Kullanıcı tarafından atanan yönetilen kimlik ile ayarlandıysa, `UserAssignedIdentities` ile ayarı `None` kümeyi askıya alır ve verilerinize erişimi önler, ancak iptali iptal edin ve destek isteği açılmadan kümeyi etkinleştirin. Bu sınırlama, sistem tarafından atanan yönetilen kimliğe uygulanmaz.
-> - Önerilen anahtar iptali eylemi, Key Vault anahtarınızı devre dışı bırakarak yapılır.
+> - Verilerinize erişimi iptal etmenin önerilen yolu, Key Vault anahtarınızı devre dışı bırakarak veya erişim ilkesini silmenizi sağlar.
+> - Kümenin `identity` `type` "none" olarak ayarlanması aynı zamanda verilerinize erişimi de iptal eder, ancak bu yaklaşım, destek isteği açılmadan restating içinde, iptal etme işleminden dönmemek için bu yaklaşım önerilmez `identity` .
 
-Küme depolama, her zaman bir saat veya daha kısa bir süre içinde anahtar izinlerinde yapılacak değişikliklere göre değişir ve depolama alanı kullanılamaz hale gelir. Kümenizle bağlantılı çalışma alanlarına alınan yeni veriler bırakılır ve geri alınamaz, verilerin erişilemez hale gelir ve bu çalışma alanlarındaki sorgular başarısız olur. Önceden alınan veriler, kümeniz ve çalışma alanlarınız silinmediği sürece depolamada kalır. Erişilemeyen veriler veri bekletme ilkesine tabidir ve bekletmeye ulaşıldığında temizlenir. Son 14 gün içinde alınan veriler, verimli sorgu altyapısı işlemi için etkin-önbellek (SSD-desteklenen) olarak da tutulur. Bu, anahtar iptali işleminde silinir ve erişilmez hale gelir.
+Küme depolama, her zaman bir saat veya daha kısa bir süre içinde anahtar izinlerinde yapılacak değişikliklere göre değişir ve depolama alanı kullanılamaz hale gelir. Kümenizle bağlantılı çalışma alanlarına alınan yeni veriler bırakılır ve geri alınamaz, verilerin erişilemez hale gelir ve bu çalışma alanlarındaki sorgular başarısız olur. Önceden alınan veriler, kümeniz ve çalışma alanlarınız silinmediği sürece depolamada kalır. Erişilemeyen veriler veri bekletme ilkesine tabidir ve bekletmeye ulaşıldığında temizlenir. Son 14 gün içinde alınan veriler, verimli sorgu altyapısı işlemi için etkin-önbellek (SSD-desteklenen) olarak da tutulur. Bu, anahtar iptali işleminde silinir ve erişilemez duruma gelir.
 
-Küme depolama, şifreleme anahtarını sarmalamadan ve erişildikten sonra 30 dakika içinde veri alımı ve sorgu sürdürülmeye çalışmak için Key Vault düzenli olarak yoklar.
+Küme depolama, şifreleme anahtarını sarmalamadan ve erişildikten sonra, verilerin alımı ve sorgusunun 30 dakika içinde sürdürülmeye çalışılması için Key Vault düzenli olarak denetler.
 
 ## <a name="key-rotation"></a>Anahtar döndürme
 
@@ -259,7 +299,7 @@ Müşteri tarafından yönetilen anahtar döndürme, Azure Key Vault yeni anahta
 
 Verilerin her zaman Key Vault ' de yeni anahtar şifreleme anahtarı (KEK) ile şifrelenmesi sırasında, veriler her zaman hesap şifreleme anahtarıyla (AEK) şifrelendiğinden, tüm verileriniz anahtar döndürme işleminden sonra erişilebilir durumda kalır.
 
-## <a name="customer-managed-key-for-queries"></a>Sorgular için müşteri tarafından yönetilen anahtar
+## <a name="customer-managed-key-for-saved-queries"></a>Kayıtlı sorgular için müşteri tarafından yönetilen anahtar
 
 Log Analytics ' de kullanılan sorgu dili ifade edilebilir ve sorgulara eklediğiniz açıklamalarda veya sorgu söz diziminde gizli bilgiler içerebilir. Bazı kuruluşlar, bu tür bilgilerin müşteri tarafından yönetilen anahtar ilkesi altında korunmasını gerektirir ve sorgularınızı anahtarınızla şifreli olarak kaydetmeniz gerekir. Azure Izleyici, çalışma alanınıza bağlıyken kendi depolama hesabınızda anahtarınızla şifrelenen *kayıtlı aramaları* ve *günlük uyarıları* sorgularını depolamanıza olanak sağlar. 
 
@@ -410,7 +450,7 @@ Customer-Managed anahtar adanmış kümede verilmiştir ve bu işlemlere [adanm�
 
   - Kümeniz Kullanıcı tarafından atanan yönetilen kimlik ile ayarlandıysa, `UserAssignedIdentities` ile ayarı `None` kümeyi askıya alır ve verilerinize erişimi önler, ancak iptali iptal edin ve destek isteği açılmadan kümeyi etkinleştirin. Bu sınırlama, sistem tarafından atanan yönetilen kimliğe uygulandı.
 
-  - Şu anda Key Vault Private-Link (vNet) içinde yer alıyorsa ve bu durumda sistem tarafından atanan yönetilen kimlik ile müşteri tarafından yönetilen anahtar tanımlanamıyor.
+  - Key Vault Private-Link (vNet) ise, Kullanıcı tarafından yönetilen anahtarı Kullanıcı tarafından atanan yönetilen kimlikle kullanamazsınız. Bu senaryoda, sistem tarafından atanan yönetilen kimliği kullanabilirsiniz.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 

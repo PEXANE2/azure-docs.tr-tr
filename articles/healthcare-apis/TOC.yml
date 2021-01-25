@@ -93,6 +93,11 @@
           href: export-data.md
         - name: Tanımlanmamış dışarı aktarma
           href: de-identified-export.md
+    - name: Verileri Dönüştür
+      expanded: false
+      items:
+        - name: $convert-Data ve FHıR dönüştürücü uzantı şablonları
+          href: convert-data.md
     - name: Kimlik nesnesi kimliklerini bulma
       href: find-identity-object-ids.md
     - name: Tanılama günlüğüne kaydetme ve ölçümler

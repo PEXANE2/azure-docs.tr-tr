@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 4b34477a40530a0e6f26b59dd9707c019418b2a4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 6010242e7fbd14aa117c481dee0d05e92928ef1b
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655859"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747500"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Ortak olay biçimini kullanarak dış çözümünüzü bağlama
 
@@ -48,7 +48,7 @@ Makinenin güvenliğini kuruluşunuzun güvenlik ilkesine göre yapılandırdı�
 
 Syslog kaynağı ve Syslog Ileticisi arasındaki TLS iletişimini kullanmak için Syslog Daemon 'u (rsyslog veya Syslog-ng) TLS 'de iletişim kurmak üzere yapılandırmanız gerekir: TLS [-rsyslog Ile Syslog trafiğini şifreleme](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), [günlük iletilerini TLS – Syslog-NG ile şifreleme](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
  
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Günlük ileticisi olarak kullandığınız Linux makinenin aşağıdaki işletim sistemlerinden birini çalıştırdığından emin olun:
 
@@ -77,6 +77,12 @@ Günlük ileticisi olarak kullandığınız Linux makinenin aşağıdaki işleti
   - Syslog RFC 5424
  
 Makinenizin aynı zamanda aşağıdaki gereksinimleri karşıladığından emin olun: 
+
+- Kapasite
+  - Makinenizin en az **4 CPU çekirdeği ve 8 GB RAM** olması gerekir.
+
+    > [!NOTE]
+    > - **Rsyslog** Daemon kullanan tek bir günlük iletici makinesi, toplanan **saniyede 8500 olay kadar (EPS)** desteklenen kapasiteye sahiptir.
 
 - İzinler
   - Makinenizde yükseltilmiş izinleriniz (sudo) olmalıdır. 

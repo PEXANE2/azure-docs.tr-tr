@@ -8,20 +8,21 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: aeb53e722eae588b7d5e2963afe67f299c2c3565
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: dfbae5144ec19b795463bd44f1e84fcf2516c267
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98745215"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747215"
 ---
 # <a name="create-a-cloud-service-extended-support-using-arm-templates"></a>ARM şablonları kullanarak bir bulut hizmeti (genişletilmiş destek) oluşturma
+
+Bu öğreticide, [ARM şablonları](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)kullanarak bir bulut hizmeti (genişletilmiş destek) dağıtımı oluşturma açıklanmaktadır. 
 
 > [!IMPORTANT]
 > Cloud Services (genişletilmiş destek) Şu anda genel önizleme aşamasındadır.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Bu öğreticide, [ARM şablonları](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)kullanarak bir bulut hizmeti (genişletilmiş destek) dağıtımı oluşturma açıklanmaktadır. 
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 1. Cloud Services (genişletilmiş destek) için [dağıtım önkoşullarını](deploy-prerequisite.md) gözden geçirin ve ilişkili kaynakları oluşturun. 

@@ -9,16 +9,16 @@ ms.workload: azure-vs
 ms.topic: tutorial
 ms.date: 10/5/2020
 ms.author: ghogen
-ms.openlocfilehash: 1c2264cb76e062f5f22c0460572ec01750086a04
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: b12f8beeee054e547a6b58750d8482d32ee14453
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98745078"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747265"
 ---
 # <a name="create-and-deploy-a-azure-cloud-service-extended-support-using-visual-studio"></a>Visual Studio kullanarak bir Azure bulut hizmeti (genişletilmiş destek) oluşturma ve dağıtma
 
-Visual Studio 2019 sürüm 16,9 Preview 1 ' den itibaren, Azure kaynaklarının bakımını ve yönetimini büyük ölçüde kolaylaştıran ve modernmek için Azure Resource Manager kullanarak Cloud Services (genişletilmiş destek) ile çalışabilirsiniz. Ayrıca, var olan bir bulut hizmeti projesini genişletilmiş destek bulut hizmeti projesine dönüştürebilirsiniz.
+[Visual Studio 2019 sürüm 16,9](https://visualstudio.microsoft.com/vs/preview/) (Şu anda önizleme aşamasında) ile başlayarak, Azure kaynaklarının bakımını ve yönetimini büyük ölçüde kolaylaştıran ve moderntiren Azure Resource Manager (ARM) kullanarak bulut hizmetleriyle çalışabilirsiniz. Bu, Cloud Services (genişletilmiş destek) olarak adlandırılan yeni bir Azure hizmeti tarafından etkinleştirilir. Mevcut bir bulut hizmetini Cloud Services (genişletilmiş destek) olarak yayımlayabilirsiniz. Bu Azure hizmeti hakkında daha fazla bilgi için bkz. [Cloud Services (genişletilmiş destek) belgeleri](overview.md).
 
 > [!IMPORTANT]
 > Cloud Services (genişletilmiş destek) Şu anda genel önizleme aşamasındadır.
