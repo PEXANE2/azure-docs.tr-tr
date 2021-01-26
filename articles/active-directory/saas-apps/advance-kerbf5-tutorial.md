@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 8d24ed014dd66235383b58cbcb7404aaf00f863e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 217872586d09531926b43a13d826efe559c70597
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92308972"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796766"
 ---
 # <a name="tutorial-azure-active-directory-ad-single-sign-on-sso-integration-with-f5"></a>Öğretici: F5 ile Azure Active Directory (AD) çoklu oturum açma (SSO) Tümleştirmesi
 
@@ -28,7 +28,7 @@ Bu öğreticide, F5 'i Azure Active Directory (Azure AD) ile tümleştirmeyi ö�
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -62,7 +62,7 @@ F5 'in tümleştirmesini Azure AD 'ye göre yapılandırmak için Galeri 'den y�
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-f5"></a>F5 için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu F5 ile yapılandırın ve test edin. SSO 'nun çalışması için, F5 'teki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu F5 ile yapılandırın ve test edin. SSO 'nun çalışması için, F5 'teki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu F5 ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -170,7 +170,7 @@ Bu bölümde, F5 'e erişim vererek Azure çoklu oturum açma özelliğini kulla
  
 1. **Tamam**'a tıklayın.
 
-1. SP yapılandırması ' nı seçin ve **IDP bağlayıcılarını çöz/Kaldır ' a**tıklayın.
+1. SP yapılandırması ' nı seçin ve **IDP bağlayıcılarını çöz/Kaldır ' a** tıklayın.
 
      ![SAML hizmeti sağlayıcısını gösteren ekran görüntüsü.](./media/advance-kerbf5-tutorial/configure09.png)
  
@@ -221,7 +221,7 @@ Bu bölümde, F5 'e erişim vererek Azure çoklu oturum açma özelliğini kulla
     * mcget {Session. Logon. Last. UserName}
     * mcget {Session. Logon. Last. Password}
 
-1. Yeni düğüm eklemek için, **düğüm listesi > + ' > yerel trafik > düğümlere**gidin.
+1. Yeni düğüm eklemek için, **düğüm listesi > + ' > yerel trafik > düğümlere** gidin.
 
     ![Yerel trafik > düğümlerini vurgulayan ekran görüntüsü.](./media/advance-kerbf5-tutorial/configure21.png)
  
@@ -229,7 +229,7 @@ Bu bölümde, F5 'e erişim vererek Azure çoklu oturum açma özelliğini kulla
 
      ![Yerel trafik > havuzlarını vurgulayan ekran görüntüsü.](./media/advance-kerbf5-tutorial/configure22.png)
 
- 1. Yeni bir sanal sunucu oluşturmak için, sanal **sunucular > sanal sunucu listesi > + > yerel trafiğe**gidin.
+ 1. Yeni bir sanal sunucu oluşturmak için, sanal **sunucular > sanal sunucu listesi > + > yerel trafiğe** gidin.
 
     ![Sanal sunucuları > yerel trafiği vurgulayan ekran görüntüsü.](./media/advance-kerbf5-tutorial/configure23.png)
 
@@ -314,7 +314,7 @@ Bu bölümde, F5 'e erişim vererek Azure çoklu oturum açma özelliğini kulla
 
 ### <a name="create-f5-test-user"></a>F5 test kullanıcısı oluştur
 
-Bu bölümde, F5 'te B. Simon adlı bir Kullanıcı oluşturacaksınız. F5 platformunda kullanıcıları eklemek için [F5 istemci destek ekibi](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir. 
+Bu bölümde, F5 'te B. Simon adlı bir Kullanıcı oluşturacaksınız. F5 platformunda kullanıcıları eklemek için [F5 istemci destek ekibi](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir. 
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
@@ -335,3 +335,9 @@ Erişim panelinde F5 kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız 
 - [Üst bilgi tabanlı uygulama için F5 çoklu oturum açmayı yapılandırma](headerf5-tutorial.md)
 
 - [Kerberos uygulaması için F5 çoklu oturum açmayı yapılandırma](kerbf5-tutorial.md)
+
+- [F5 BIG-IP APM ve güvenli karma erişim için Azure AD tümleştirmesi](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-integration)
+
+- [Güvenli karma erişim için Azure IaaS 'de F5 BIG-IP Virtual Edition VM dağıtma öğreticisi](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-bigip-deployment-guide)
+
+- [Parola açısından daha az VPN için F5 BIG-IP ile çoklu oturum açma tümleştirmesi Azure Active Directory öğreticisi](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-password-less-vpn)

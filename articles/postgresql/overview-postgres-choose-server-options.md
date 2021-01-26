@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: 8bc303f619d145cc280e6caab65781bd42d1b314
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: db80ae66761e49ce90f25a22f0e74cf8a1300796
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489702"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797241"
 ---
 # <a name="choose-the-right-postgresql-server-option-in-azure"></a>Azure 'da doğru PostgreSQL sunucu seçeneğini belirleyin
 
@@ -21,7 +21,7 @@ Azure ile PostgreSQL sunucu iş yükleriniz, barındırılan bir sanal makine al
 Kararınız yaparken PaaS veya diğer yandan Azure VM 'lerinde (IaaS) çalışan aşağıdaki üç seçeneği göz önünde bulundurun
 - [PostgreSQL için Azure veritabanı tek sunucu](./overview-single-server.md)
 - [PostgreSQL için Azure veritabanı esnek sunucu](./flexible-server/overview.md)
-- [PostgreSQL için Azure veritabanı hiper ölçek (Citus)]()
+- [PostgreSQL için Azure veritabanı hiper ölçek (Citus)](hyperscale/index.yml)
 
 **Azure VM 'Lerinde PostgreSQL** seçeneği IaaS sektör kategorisine denk gelir. Bu hizmetle, PostgreSQL sunucusunu Azure bulut platformunda tam olarak yönetilen bir sanal makine içinde çalıştırabilirsiniz. PostgreSQL 'in tüm son sürümleri, IaaS sanal makinesine yüklenebilir. PostgreSQL için Azure veritabanı 'nın en önemli farkından, Azure VM 'lerinde PostgreSQL, veritabanı altyapısı üzerinde denetim sağlar. Ancak, bu denetim, VM 'Leri ve birçok veritabanı yönetimi (DBA) görevini yönetme sorumluluğunda gelir. Bu görevler veritabanı sunucularını, veritabanı kurtarmayı ve yüksek kullanılabilirlik tasarımını koruma ve düzeltme eki uygulama içerir.
 
@@ -44,7 +44,7 @@ Bu seçenekler arasındaki temel farklılıklar aşağıdaki tabloda listelenmi�
 
 TCO genellikle veritabanlarınızı barındırmak için en iyi çözümü belirleyen birincil noktadır. Bu, sıkı bütçe kısıtlamaları altında çalışan kurulu bir şirkette çok az nakit veya ekip ile bir başlangıç yaptığınız için geçerlidir. Bu bölümde Azure sanal makinelerinde PostgreSQL için Azure veritabanı ve PostgreSQL için Azure veritabanı 'na uygulanan faturalandırma ve lisans temelleri açıklanmaktadır.
 
-## <a name="billing"></a>Faturalama
+## <a name="billing"></a>Faturalandırma
 
 PostgreSQL için Azure veritabanı şu anda birkaç katmanda kaynaklar için farklı fiyatlarla bir hizmet olarak sunulmaktadır. Tüm kaynaklar, saatlik olarak sabit bir fiyat üzerinden faturalandırılır. Şu anda desteklenen hizmet katmanları, işlem boyutları ve depolama tutarları hakkında en son bilgiler için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/postgresql/server/) , hizmet katmanlarını ve işlem boyutlarını uygulamanızın değişen aktarım hızı gereksinimleriyle eşleşecek şekilde dinamik olarak ayarlamanıza olanak sağlar. Giden Internet trafiği için düzenli [veri aktarımı fiyatları](https://azure.microsoft.com/pricing/details/data-transfers/)üzerinden faturalandırılırsınız.
 

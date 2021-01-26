@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/13/2021
 ms.author: alkohli
-ms.openlocfilehash: 4c44fca7b443a4d289b7ac7e2e507a3c3f305089
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 26e8f08d4b901a9ea57da826d9441d23508c4a4c
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790791"
+ms.locfileid: "98797611"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Öğretici: Azure Data Box sipariş etme
 
@@ -231,7 +231,7 @@ Bir cihazı sıralamak için Azure portal aşağıdaki adımları uygulayın.
     |Kaynak ülke/bölge    |    Verilerinizin bulunduğu ülkeyi/bölgeyi seçin.         |
     |Hedef Azure bölgesi     |     Verileri aktarmak istediğiniz Azure bölgesini seçin. <br> Daha fazla bilgi için [bölge kullanılabilirliği](data-box-overview.md#region-availability)’ne gidin.            |
 
-    ![Azure Data Box içeri aktarma sırası başlatılıyor](media/data-box-deploy-ordered/select-data-box-import-04-b.png#lightbox)
+    [![Azure Data Box içeri aktarma sırası ](media/data-box-deploy-ordered/select-data-box-import-04-b.png) başlatılıyor](media/data-box-deploy-ordered/select-data-box-import-04-b.png#lightbox)
 
 5. **Data Box**'ı seçin. Tek bir sipariş için kullanılabilir maksimum kapasite 80 TB 'tır. Daha büyük veri boyutları için birden fazla sipariş oluşturabilirsiniz.
 
@@ -413,7 +413,7 @@ Bir cihaz sıralamak için Azure CLı kullanarak aşağıdaki adımları uygulay
 
 1. Data Box siparişiniz için ayarlarınızı yazın. Bu ayarlar kişisel/iş bilgilerinizi, abonelik adınızı, cihaz bilgilerini ve gönderi bilgilerini içerir. Data Box sırasını oluşturmak için CLı komutunu çalıştırırken bu ayarları parametre olarak kullanmanız gerekir. Aşağıdaki tabloda, için kullanılan parametre ayarları gösterilmektedir `az databox job create` :
 
-   | Ayar (parametre) | Açıklama |  Örnek değer |
+   | Ayar (parametre) | Description |  Örnek değer |
    |---|---|---|
    |resource-group| Var olan bir taneyi kullanın veya yenisini oluşturun. Kaynak grubu, birlikte yönetilebilen ve ya dağıtılabilen kaynaklardan oluşan mantıksal kapsayıcıdır. | myresourcegroup|
    |name| Oluşturmakta olduğunuz siparişin adı. | "mydataboxorder"|
@@ -532,7 +532,7 @@ Bir cihazı sıralamak için Azure PowerShell kullanarak aşağıdaki adımları
 
 2. Data Box siparişiniz için ayarlarınızı yazın. Bu ayarlar kişisel/iş bilgilerinizi, abonelik adınızı, cihaz bilgilerini ve gönderi bilgilerini içerir. Data Box sırasını oluşturmak için PowerShell komutunu çalıştırırken bu ayarları parametre olarak kullanmanız gerekir. Aşağıdaki tabloda [New-AzDataBoxJob](/powershell/module/az.databox/New-AzDataBoxJob)için kullanılan parametre ayarları gösterilmektedir.
 
-    | Ayar (parametre) | Açıklama |  Örnek değer |
+    | Ayar (parametre) | Description |  Örnek değer |
     |---|---|---|
     |ResourceGroupName [gerekli]| Mevcut bir kaynak grubunu kullanın. Kaynak grubu, birlikte yönetilebilen ve ya dağıtılabilen kaynaklardan oluşan mantıksal kapsayıcıdır. | myresourcegroup|
     |Ad [gerekli]| Oluşturmakta olduğunuz siparişin adı. | "mydataboxorder"|

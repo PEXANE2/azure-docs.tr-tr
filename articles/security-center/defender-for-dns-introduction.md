@@ -7,12 +7,12 @@ ms.date: 12/07/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 18d9cb3c64eb41b33a58b248f3826bd9a80c6d90
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 957e39f7629337182c3e19a1a514c42883666301
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754934"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796993"
 ---
 # <a name="introduction-to-azure-defender-for-dns"></a>DNS için Azure Defender 'a giriş
 
@@ -29,7 +29,7 @@ DNS için Azure Defender, bulut kaynaklarınız için ek bir koruma katmanı sa�
 |----|:----|
 |Yayın durumu:|Önizleme<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Fiyat|**DNS Için Azure Defender** , [fiyatlandırma sayfasında](security-center-pricing.md) gösterildiği gibi faturalandırılır|
-|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-dns"></a>DNS için Azure Defender 'ın avantajları nelerdir?
@@ -47,7 +47,7 @@ DNS için Azure Defender tarafından sunulan uyarıların tam listesi, [Uyarıla
 
 DNS için Azure Defender hiçbir aracı kullanmaz. 
 
-DNS katmanınızı korumak için [Azure Defender 'ı etkinleştirme](security-center-pricing.md)bölümünde anlatıldığı şekilde aboneliklerinizin her biri Için Azure Defender 'ı etkinleştirin.
+DNS katmanınızı korumak için [Azure Defender 'ı etkinleştirme](security-center-pricing.md#enable-azure-defender)bölümünde anlatıldığı şekilde aboneliklerinizin her biri Için Azure Defender 'ı etkinleştirin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -57,4 +57,4 @@ Bu makalede, DNS için Azure Defender hakkında bilgi edindiniz. İlgili malzeme
 - Güvenlik uyarıları Güvenlik Merkezi tarafından üretilebilir veya Güvenlik Merkezi tarafından farklı güvenlik ürünlerinden alınabilir. Bu uyarıların tümünü Azure Sentinel 'e, herhangi bir üçüncü taraf SıEM 'e veya herhangi bir harici araca aktarmak için [uyarıları BIR SıEM 'ye aktarma](continuous-export.md)konusundaki yönergeleri izleyin.
 
 - > [!div class="nextstepaction"]
-    > [Azure Defender’ı etkinleştirme](security-center-pricing.md)
+    > [Azure Defender’ı etkinleştirme](security-center-pricing.md#enable-azure-defender)

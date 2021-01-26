@@ -8,22 +8,18 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 1f1a74f3a26a079039e68eb8e59fac4c18ff0c32
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 3564609d869bef090f0a3db5e6040ba0f5ad80b0
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219751"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796968"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Azure SYNAPSE Studio 'da kaynak denetimi
 
-Varsayılan olarak, Azure SYNAPSE Studio yazarları doğrudan SYNAPSE hizmetine karşı yazar. Ancak, bu deneyim aşağıdaki sınırlamalara sahiptir:
+Varsayılan olarak, Azure SYNAPSE Studio yazarları doğrudan SYNAPSE hizmetine karşı yazar. Kaynak denetimi için Git kullanarak işbirliği yapmanız gerekiyorsa SYNAPSE Studio, çalışma alanınızı bir git deposu, Azure DevOps veya GitHub ile ilişkilendirmenize olanak tanır. 
 
-- SYNAPSE Studio, yaptığınız değişiklikleri depolamak için geçici bir depolama alanı içermez. Değişiklikleri kaydetmek ve paylaşmak için tek yol **Yayımlama** yoluyla yapılır ve tüm değişiklikler doğrudan SYNAPSE hizmetine yayımlanır.
-
-- SYNAPSE Studio, işbirliği ve sürüm denetimi için en iyi duruma getirilmemiştir.
-
-Kaynak denetim yeteneği sağlamak için, SYNAPSE Studio, çalışma alanınızı bir git deposu, Azure DevOps veya GitHub ile ilişkilendirmenize olanak tanır. Bu makale, git deposunun etkin olduğu bir Synapse çalışma alanında nasıl yapılandırılacağını ve çalıştığını özetler. Ayrıca, bazı en iyi uygulamalar ve sorun giderme kılavuzu da vurgularız.
+Bu makale, git deposunun etkin olduğu bir Synapse çalışma alanında nasıl yapılandırılacağını ve çalıştığını özetler. Ayrıca, bazı en iyi uygulamalar ve sorun giderme kılavuzu da vurgularız.
 
 > [!NOTE]
 > Azure SYNAPSE Studio git tümleştirmesi, Azure Kamu Bulutu 'nda bulunmamaktadır.

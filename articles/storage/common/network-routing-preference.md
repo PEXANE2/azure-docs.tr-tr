@@ -10,12 +10,13 @@ ms.date: 05/12/2020
 ms.author: santoshc
 ms.reviewer: tamram
 ms.subservice: common
-ms.openlocfilehash: 5b4a1b1f27dff059090d78e24a6a0eca0bbbf01f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions
+ms.openlocfilehash: 9afe58434d60280f635deab75b763077bc76b93c
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514199"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797628"
 ---
 # <a name="configure-network-routing-preference-for-azure-storage-preview"></a>Azure depolama için ağ yönlendirme tercihini yapılandırma (Önizleme)
 
@@ -46,7 +47,7 @@ Depolama hesabınız için rotaya özgü uç noktaları da yayımlayabilirsiniz.
 | Depolama hizmeti        | Rotaya özgü uç nokta                                  |
 | :--------------------- | :------------------------------------------------------- |
 | Blob hizmeti           | `StorageAccountA-internetrouting.blob.core.windows.net`  |
-| Data Lake Storage Gen2 | `StorageAccountA-internetrouting.dfs.core.windows.net`   |
+| Data Lake Storage 2. Nesil | `StorageAccountA-internetrouting.dfs.core.windows.net`   |
 | Dosya hizmeti           | `StorageAccountA-internetrouting.file.core.windows.net`  |
 | Statik Web siteleri        | `StorageAccountA-internetrouting.web.core.windows.net`   |
 
@@ -55,7 +56,7 @@ Bir Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) veya Okuma Erişim
 | Depolama hizmeti        | Rotaya özgü salt okunurdur ikincil uç nokta                        |
 | :--------------------- | :----------------------------------------------------------------- |
 | Blob hizmeti           | `StorageAccountA-internetrouting-secondary.blob.core.windows.net`  |
-| Data Lake Storage Gen2 | `StorageAccountA-internetrouting-secondary.dfs.core.windows.net`   |
+| Data Lake Storage 2. Nesil | `StorageAccountA-internetrouting-secondary.dfs.core.windows.net`   |
 | Dosya hizmeti           | `StorageAccountA-internetrouting-secondary.file.core.windows.net`  |
 | Statik Web siteleri        | `StorageAccountA-internetrouting-secondary.web.core.windows.net`   |
 
@@ -65,9 +66,36 @@ Yayımlanan rotaya özgü uç noktalara yönelik bağlantı dizeleri [Azure Port
 
 Azure depolama için yönlendirme tercihi aşağıdaki bölgelerde kullanılabilir:
 
-- Güney Fransa
-- Orta Kuzey ABD
+- Central US 
+- EUAP Orta ABD
+- Doğu ABD 
+- Doğu ABD 2
+- Doğu ABD 2 
+- EUAP Doğu ABD 2
+- Orta Güney ABD
 - Orta Batı ABD
+- Batı ABD 
+- Batı ABD 2 
+- Orta Fransa 
+- Güney Fransa 
+- Almanya Kuzey 
+- Almanya Orta Batı 
+- Orta Kuzey ABD
+- Kuzey Avrupa 
+- Norveç Doğu 
+- İsviçre Kuzey
+- İsviçre Batı
+- Güney Birleşik Krallık 
+- Batı Birleşik Krallık 
+- West Europe 
+- BAE Orta
+- Doğu Asya 
+- Güneydoğu Asya 
+- Doğu Japonya 
+- Batı Japonya 
+- Batı Hindistan
+- Doğu Avustralya 
+- Güneydoğu Avustralya 
 
 Aşağıdaki bilinen sorunlar Azure Storage için yönlendirme tercih önizlemeyi etkiler:
 

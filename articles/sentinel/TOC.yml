@@ -223,14 +223,26 @@
           href: bookmarks.md
         - name: Avlanmak için canlı akış kullanma
           href: livestream.md
-        - name: REST-API ile avlanma sorgularını yönetme
-          href: hunting-with-rest-api.md
     - name: Azure Sentinel’ı kaldırma
       href: offboard.md
 - name: Başvuru (Yeni!)
   items:
+    - name: Azure RBAC rolleri
+      items:
+        - name: Tüm Azure rolleri
+          href: /azure/role-based-access-control/built-in-roles#all
+        - name: Azure Sentinel rolleri
+          href: /azure/role-based-access-control/built-in-roles#security
     - name: REST API'leri
-      href: /rest/api/securityinsights/
+      items:
+        - name: Azure Sentinel REST-API
+          href: /rest/api/securityinsights/
+        - name: REST-API ile avlanma sorgularını yönetme
+          href: hunting-with-rest-api.md
+        - name: REST API ile Watchlists yönetme
+          href: watchlist-with-rest-api.md
+    - name: Azure Sentinel Logic Apps bağlayıcısı
+      href: /connectors/azuresentinel/
     - name: Ağ normalleştirme şeması
       href: normalization-schema.md
     - name: UEBA zenginleştirmeleri

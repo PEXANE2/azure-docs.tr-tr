@@ -12,17 +12,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 11/13/2020
-ms.openlocfilehash: a70571dcf380fc2186565a40778991ac70a218d6
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 0c3db3b3f22f9f2639012068924708537f9ada77
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797222"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98795328"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Otomatik veritabanı yedeklemeleri kullanarak kurtarma-SQL yönetilen örnek & Azure SQL veritabanı
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-[Otomatik veritabanı yedeklemeleri](automated-backups-overview.md)kullanılarak veritabanı kurtarma için aşağıdaki seçenekler kullanılabilir. Şunları yapabilirsiniz:
+[Otomatik veritabanı yedeklemeleri](automated-backups-overview.md)kullanılarak veritabanı kurtarma için aşağıdaki seçenekler kullanılabilir. Seçenekleriniz şunlardır:
 
 - Aynı sunucuda, bekletme döneminde belirtilen bir zaman noktasına kurtarılan yeni bir veritabanı oluşturun.
 - Silinen bir veritabanı için silme zamanına kurtarıldığı aynı sunucuda bir veritabanı oluşturun.
@@ -53,8 +53,8 @@ Tek bir abonelik için, eş zamanlı geri yükleme isteği sayısında sınırla
 
 | **Dağıtım seçeneği** | **İşlenmekte olan eşzamanlı istek sayısı üst sınırı** | **Gönderilen en fazla eşzamanlı istek sayısı** |
 | :--- | --: | --: |
-|**Tek veritabanı (abonelik başına)**|10|60|
-|**Elastik havuz (havuz başına)**|4|200|
+|**Tek veritabanı (abonelik başına)**|30|100|
+|**Elastik havuz (havuz başına)**|4|2000|
 
 
 Sunucunun tamamını geri yüklemek için yerleşik bir yöntem yoktur. Bu görevi nasıl gerçekleştireceğinizi gösteren bir örnek için bkz. [Azure SQL veritabanı: tam sunucu kurtarma](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666).
@@ -168,7 +168,7 @@ Yedeklemeden yeni bir veritabanı oluşturma işlemini tamamlar. Azure SQL verit
 
 #### <a name="sql-managed-instance"></a>SQL Yönetilen Örnek
 
-Yönetilen bir örnek veritabanını Azure portal tercih ettiğiniz bir bölgede varolan bir yönetilen örneğe coğrafi olarak geri yüklemek için veritabanının geri yüklenmesini istediğiniz yönetilen örneği seçin. Şu adımları izleyin:
+Yönetilen bir örnek veritabanını Azure portal tercih ettiğiniz bir bölgede varolan bir yönetilen örneğe coğrafi olarak geri yüklemek için veritabanının geri yüklenmesini istediğiniz yönetilen örneği seçin. Şu adımları uygulayın:
 
 1. **Yeni veritabanı**' nı seçin.
 2. İstenen bir veritabanı adı yazın.
@@ -243,7 +243,7 @@ REST API kullanarak bir veritabanını geri yüklemek için:
 | [REST (createMode = kurtarma)](/rest/api/sql/databases) |Bir veritabanını geri yükler. |
 | [Veritabanı oluşturma veya güncelleştirme durumunu al](/rest/api/sql/operations) |Geri yükleme işlemi sırasında durumu döndürür. |
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 #### <a name="sql-database"></a>SQL Veritabanı
 

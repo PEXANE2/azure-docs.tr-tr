@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: troubleshooting
-ms.date: 04/19/2019
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: b950f80ba8c2bdbaf7a515dc1ce127b934723177
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17b8d6de198746a79a50c4fbda805b364212e3c4
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85558566"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796048"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-blob-storage"></a>Azure Data Box blob depolamayla ilgili sorunları giderme
 
@@ -65,6 +65,7 @@ Bu hatalar herhangi bir uygulamaya özgü değildir.
 |Hata iletisi  |Önerilen eylem |
 |---------|---------|
 |Bağlantı zaman aşımına uğrar. |Data Box cihazda oturum açın ve kilidinin açık olup olmadığını denetleyin. Cihaz her yeniden başlatıldığında, birisi oturum açana kadar kilitli kalır.|
+|REST API kimlik doğrulaması hata vererek başarısız oldu: Sunucu isteğin kimliğini doğrulayamadı. Yetkilendirme üstbilgisinin değerinin imza dahil doğru biçimlendirildiğinden emin olun. Hata kodu: AuthenticationFailed. |Bunun neden gerçekleşebileceği nedenlerden biri, cihaz saatinin Azure ile eşitlenmemiş olması nedenleridir. Büyük bir zaman çarpıklığı varsa, verileri REST API aracılığıyla Data Box kopyalamaya çalışırken REST API kimlik doğrulaması kesilir. Bu durumda, erişimine izin vermek için giden UDP 123 bağlantı noktasını açabilirsiniz `time.windows.com` . Cihaz saati Azure ile eşitlendiğinde, kimlik doğrulaması başarılı olmalıdır. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

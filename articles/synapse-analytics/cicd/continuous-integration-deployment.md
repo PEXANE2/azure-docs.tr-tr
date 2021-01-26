@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 7a665bf05167a6bdf20c7325c66a5d0e439aa7f1
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: ba5286b16b6e640e968b50174e39a05328e750a4
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223695"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797303"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Azure SYNAPSE çalışma alanı için sürekli tümleştirme ve teslim
 
@@ -25,7 +25,7 @@ Azure SYNAPSE çalışma alanı için, sürekli tümleştirme ve teslim (CI/CD) 
 
 Bu makale, bir Synapse çalışma alanının birden çok ortama dağıtımını otomatik hale getirmek için Azure sürüm ardışık düzeni kullanılarak ana hatlarıyla sunulacaktır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 -   Geliştirme için kullanılan çalışma alanı Studio 'daki bir git deposu ile yapılandırılmış, bkz. [SYNAPSE Studio 'Da kaynak denetimi](source-control.md).
 -   Bir Azure DevOps projesi, yayın işlem hattını çalıştırmak için hazırlandı.
@@ -134,3 +134,13 @@ SYNAPSE çalışma alanınız ile git tümleştirmesi kullanıyorsanız ve deği
 -   **Yapıları yapıtları geçişten önce hazırlayın**. Geliştirme çalışma alanındaki havuzlara eklenmiş SQL betiği veya Not defteriniz varsa, farklı ortamlardaki havuzların adı da beklenmektedir. 
 -   **Kod olarak altyapı (IAC)**. Bir açıklayıcı modelde altyapının (ağlar, sanal makineler, yük dengeleyiciler ve bağlantı topolojisi) yönetimi, DevOps ekibinin kaynak kodu için kullandığı sürüm oluşturma 'yı kullanır. 
 -   **Diğerleri**. Bkz. [ADF yapıtları için en iyi uygulamalar](../../data-factory/continuous-integration-deployment.md#best-practices-for-cicd)
+
+## <a name="troubleshooting-artifacts-deployment"></a>Yapıt dağıtımı sorunlarını giderme 
+
+### <a name="use-the-synapse-workspace-deployment-task"></a>SYNAPSE çalışma alanı dağıtım görevini kullanın
+
+SYNAPSE ' de, tüm yapıt türleri, ADF ile farklı olan ARM kaynakları değildir. SYNAPSE yapılarını dağıtmak için ARM şablonu dağıtım görevini kullanamazsınız
+ 
+### <a name="unexpected-token-error-in-release"></a>Yayında beklenmeyen belirteç hatası
+
+Parametre dosyanızda, kaçış olmayan parametre değerleri varsa, yayın işlem hattı dosyayı beklenmeyen belirteçle oluşan hata ile ayrıştırmayabilir. Parametreleri almak için parametreleri veya Keykasasını geçersiz kılmanızı öneririz. Geçici çözüm olarak da çift kaçış yapabilirsiniz.

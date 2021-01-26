@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 35469c7a11d47e586187b55bde1e8ad8a0c94f5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc54cc8dfc34db8aa88690c03ef0b18991e60776
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448407"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797124"
 ---
 # <a name="the-azure-defender-dashboard"></a>Azure Defender panosu
 
@@ -33,11 +33,11 @@ Pano aşağıdaki bölümleri içerir:
 
 1. **Azure Defender kapsamı** -burada, aboneliğinizdeki kaynak türlerini görebilir ve Azure Defender tarafından korumaya uygun hale getirebilirsiniz. Her ne olursa olsun, yükseltme seçeneğine sahip olacaksınız. Tüm olası uygun kaynakları yükseltmek istiyorsanız **Tümünü Yükselt**' i seçin.
 
-1. **Güvenlik uyarıları alanı** -Azure Defender, ortamınızın herhangi bir alanında tehdit algıladığında bir uyarı oluşturur. Bu uyarılar, etkilenen kaynakların ayrıntılarını, önerilen düzeltme adımlarını ve bazı durumlarda bir mantıksal uygulamayı yanıt olarak tetiklemeye yönelik bir seçenek anlatmaktadır. Bu grafikte herhangi bir yeri seçmek **güvenlik uyarıları sayfasını**açar.
+1. **Güvenlik uyarıları alanı** -Azure Defender, ortamınızın herhangi bir alanında tehdit algıladığında bir uyarı oluşturur. Bu uyarılar, etkilenen kaynakların ayrıntılarını, önerilen düzeltme adımlarını ve bazı durumlarda bir mantıksal uygulamayı yanıt olarak tetiklemeye yönelik bir seçenek anlatmaktadır. Bu grafikte herhangi bir yeri seçmek **güvenlik uyarıları sayfasını** açar.
 
 1. **Gelişmiş koruma** -Azure Defender, sanal MAKINELER, SQL veritabanları, kapsayıcılar, Web uygulamaları, ağınız ve daha fazlası için birçok gelişmiş tehdit koruması özelliği içerir. Bu gelişmiş koruma bölümünde, bu korumaların her biri için seçili aboneliklerinizde kaynakların durumunu görebilirsiniz. Bu koruma türünün yapılandırma alanına doğrudan gitmek için bunlardan herhangi birini seçin.
 
-1. İçgörüler **-Haberler** , önerilen okuma ve yüksek öncelikli uyarıların bu sıralı bölmesi, güvenlik merkezi 'nin öngörülerini, sizin ve aboneliğiniz ile ilgili güvenliğin önemli bir şekilde kullanılmasına olanak tanır. Bir güvenlik açığı çözümleme aracı tarafından sanal makinelerinizde bulunan yüksek önem derecelerinden veya güvenlik merkezi ekibinin bir üyesi tarafından yeni bir blog gönderisine sahip olup olmadığı, burada **Azure Defender panonuzun**Öngörüler bölmesinde bulabilirsiniz.
+1. İçgörüler **-Haberler** , önerilen okuma ve yüksek öncelikli uyarıların bu sıralı bölmesi, güvenlik merkezi 'nin öngörülerini, sizin ve aboneliğiniz ile ilgili güvenliğin önemli bir şekilde kullanılmasına olanak tanır. Bir güvenlik açığı çözümleme aracı tarafından sanal makinelerinizde bulunan yüksek önem derecelerinden veya güvenlik merkezi ekibinin bir üyesi tarafından yeni bir blog gönderisine sahip olup olmadığı, burada **Azure Defender panonuzun** Öngörüler bölmesinde bulabilirsiniz.
 
 
 
@@ -49,4 +49,4 @@ Bu makalede, Azure Defender panosu hakkında bilgi edindiniz.
 Azure Defender hakkında daha fazla bilgi için bkz. [Azure Defender 'A giriş](azure-defender.md)
 
 > [!div class="nextstepaction"]
-> [Azure Defender 'ı etkinleştir](security-center-pricing.md)
+> [Azure Defender’ı etkinleştirme](security-center-pricing.md#enable-azure-defender)

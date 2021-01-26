@@ -229,3 +229,5 @@
       href: ../../virtual-wan/security-baseline.md
     - name: VPN Gateway güvenlik temeli
       href: ../../vpn-gateway/security-baseline.md
+    - name: Windows sanal masaüstü güvenlik temeli
+      href: ../../virtual-desktop/security-baseline.md

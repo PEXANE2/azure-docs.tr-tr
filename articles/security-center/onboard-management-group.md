@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2020
 ms.author: memildin
-ms.openlocfilehash: 4ecd436b548c29c520a7538970d4d703cc8488d2
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 31472b0a0eedee03d5cfcb6ff47a97033a8c78e0
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027576"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796075"
 ---
 # <a name="enable-security-center-on-all-subscriptions-in-a-management-group"></a>Yönetim grubundaki tüm aboneliklerde güvenlik merkezini etkinleştir
 
@@ -25,20 +25,26 @@ Azure Güvenlik Merkezi 'ni aynı yönetim grubu (MG) içindeki tüm Azure abone
 
 Bir yönetim grubunu ve tüm aboneliklerini eklemek için:
 
-1. **Güvenlik Yöneticisi** izinlerine sahip bir kullanıcı olarak Azure ilkesini açın ve **aboneliğinizde Azure Güvenlik Merkezi 'ni etkinleştirin** ' i arayın.
+1. **Güvenlik Yöneticisi** izinlerine sahip bir kullanıcı olarak Azure ilkesini açın ve **aboneliğinizde Azure Güvenlik Merkezi 'ni etkinleştirin**' i arayın.
 
     :::image type="content" source="./media/security-center-get-started/enable-security-center-policy.png" alt-text="Azure Ilke tanımı aboneliğinizde Azure Güvenlik Merkezi 'ni etkinleştirin":::
 
 1. **Ata** ' yı seçin ve kapsamı mg düzeyine ayarlamış olduğunuzdan emin olun.
 
-    :::image type="content" source="./media/security-center-get-started/assign-policy.png" alt-text="Azure Ilke tanımı aboneliğinizde Azure Güvenlik Merkezi 'ni etkinleştirin":::
+    :::image type="content" source="./media/security-center-get-started/assign-policy.png" alt-text="Tanımı atama aboneliğinizde Azure Güvenlik Merkezi 'ni etkinleştirme":::
 
     > [!TIP]
     > Kapsam dışında, gerekli parametreler yoktur.
 
 1. Güvenlik Merkezi 'nin etkinleştirildiği tüm mevcut aboneliklerinizin eklendi almasını sağlamak için **Düzeltme görevi oluştur** ' u seçin.
 
-    :::image type="content" source="./media/security-center-get-started/remediation-task.png" alt-text="Azure Ilke tanımı aboneliğinizde Azure Güvenlik Merkezi 'ni etkinleştirin" olarak işaretleyin.
+    :::image type="content" source="./media/security-center-get-started/remediation-task.png" alt-text="Azure Ilke tanımı için bir düzeltme görevi oluşturma aboneliğinizde Azure Güvenlik Merkezi 'ni etkinleştirin":::
+
+1. Tanım atandığında şunları yapmanız gerekir:
+
+    1. Yalnızca güvenlik merkezi 'ne kayıtlı olmayan MG içindeki tüm abonelikleri algıla.
+    1. Bu abonelikleri "uyumlu değil" olarak işaretleyin.
+    1. Tüm kayıtlı abonelikler (Azure Defender 'ın açık veya kapalı olmasından bağımsız olarak) "uyumlu" olarak işaretleyin.
 
     Ardından düzeltme görevi, uyumlu olmayan aboneliklerde güvenlik merkezini ücretsiz olarak etkinleştirir.
 
@@ -92,4 +98,4 @@ Azure Ilke tanımını değiştirmek için seçebileceğiniz çeşitli yollar va
 Artık bir yönetim grubunun tamamını eklendi, Azure Defender 'ın gelişmiş korumalarını etkinleştirin. 
 
 > [!div class="nextstepaction"]
-> [Azure Defender 'ı etkinleştir](security-center-pricing.md)
+> [Azure Defender’ı etkinleştirme](security-center-pricing.md#enable-azure-defender)

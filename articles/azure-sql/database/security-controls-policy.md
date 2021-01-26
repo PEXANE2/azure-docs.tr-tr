@@ -1,18 +1,18 @@
 ---
 title: Azure SQL veritabanı için Azure Ilke mevzuat uyumluluk denetimleri
 description: Azure SQL veritabanı ve SQL yönetilen örneği için kullanılabilen Azure Ilke mevzuat uyumluluk denetimlerini listeler. Bu yerleşik ilke tanımları, Azure kaynaklarınızın uyumluluğunu yönetmek için yaygın yaklaşımlar sağlar.
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.topic: sample
 author: stevestein
 ms.author: sstein
 ms.service: sql-database
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 33f4269709dce214c3c2c0d6fe4e2c07479532aa
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 8ba93dab9be31b4ce72ba5074fe03f059d56e8ec
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684948"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797649"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-sql-database--sql-managed-instance"></a>Azure SQL veritabanı & SQL yönetilen örneği için Azure Ilke mevzuat uyumluluk denetimleri
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

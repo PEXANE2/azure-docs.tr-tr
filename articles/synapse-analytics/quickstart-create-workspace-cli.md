@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 08/25/2020
 ms.author: alehall
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2658240e670e617f7296881f733ff369b9bf8f87
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: d4beef9383b8e51e1295639c18e745fd0fdf8588
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219054"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796945"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile Azure SYNAPSE çalışma alanı oluşturma
 
@@ -24,7 +24,7 @@ Bu hızlı başlangıçta, Azure CLı kullanarak bir Synapse çalışma alanı o
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Hafif ve esnek bir komut satırı JSON işlemcisi olan [JQ](https://stedolan.github.io/jq/download/)'yi indirin ve yükleyin
 - [Azure Data Lake Storage 2. depolama hesabı](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
@@ -50,31 +50,12 @@ Bu hızlı başlangıçta, Azure CLı kullanarak bir Synapse çalışma alanı o
     |SQLPassword de belirtilmelidir| Güvenli bir parola seçin.|
     |||
 
-2. Azure SYNAPSE çalışma alanınız için kapsayıcı olarak bir kaynak grubu oluşturun:
+1. Azure SYNAPSE çalışma alanınız için kapsayıcı olarak bir kaynak grubu oluşturun:
     ```azurecli
     az group create --name $SynapseResourceGroup --location $Region
     ```
-3. ADLS Gen 2 depolama hesabı anahtarını alın:
-    ```azurecli
-    StorageAccountKey=$(az storage account keys list \
-      --account-name $StorageAccountName \
-      | jq -r '.[0] | .value')
-    ```
-4. ADLS Gen 2 depolama uç noktası URL 'sini alın:
-    ```azurecli
-    StorageEndpointUrl=$(az storage account show \
-      --name $StorageAccountName \
-      --resource-group $StorageAccountResourceGroup \
-      | jq -r '.primaryEndpoints | .dfs')
-    ```
 
-5. Seçim ADLS 2. depolama hesabı anahtarınızın ve uç noktasının ne olduğunu her zaman kontrol edebilirsiniz:
-    ```azurecli
-    echo "Storage Account Key: $StorageAccountKey"
-    echo "Storage Endpoint URL: $StorageEndpointUrl"
-    ```
-
-6. Azure SYNAPSE çalışma alanı oluşturma:
+1. Azure SYNAPSE çalışma alanı oluşturma:
     ```azurecli
     az synapse workspace create \
       --name $SynapseWorkspaceName \
@@ -86,14 +67,14 @@ Bu hızlı başlangıçta, Azure CLı kullanarak bir Synapse çalışma alanı o
       --location $Region
     ```
 
-7. Azure SYNAPSE çalışma alanı için Web ve dev URL 'sini alın:
+1. Azure SYNAPSE çalışma alanı için Web ve dev URL 'sini alın:
     ```azurecli
     WorkspaceWeb=$(az synapse workspace show --name $SynapseWorkspaceName --resource-group $SynapseResourceGroup | jq -r '.connectivityEndpoints | .web')
 
     WorkspaceDev=$(az synapse workspace show --name $SynapseWorkspaceName --resource-group $SynapseResourceGroup | jq -r '.connectivityEndpoints | .dev')
     ```
 
-8. Makinenizden Azure SYNAPSE çalışma alanına erişmenize izin vermek için bir güvenlik duvarı kuralı oluşturun:
+1. Makinenizden Azure SYNAPSE çalışma alanına erişmenize izin vermek için bir güvenlik duvarı kuralı oluşturun:
 
     ```azurecli
     ClientIP=$(curl -sb -H "Accept: application/json" "$WorkspaceDev" | jq -r '.message')
@@ -103,7 +84,7 @@ Bu hızlı başlangıçta, Azure CLı kullanarak bir Synapse çalışma alanı o
     az synapse workspace firewall-rule create --end-ip-address $ClientIP --start-ip-address $ClientIP --name "Allow Client IP" --resource-group $SynapseResourceGroup --workspace-name $SynapseWorkspaceName
     ```
 
-9. Çalışma alanınıza erişmek için ortam değişkeninde depolanan Azure SYNAPSE Workspace Web URL adresini açın `WorkspaceWeb` :
+1. Çalışma alanınıza erişmek için ortam değişkeninde depolanan Azure SYNAPSE Workspace Web URL adresini açın `WorkspaceWeb` :
 
     ```azurecli
     echo "Open your Azure Synapse Workspace Web URL in the browser: $WorkspaceWeb"

@@ -5,46 +5,85 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 09/11/2017
+ms.date: 01/21/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eccbbb22814788aaf06fa6fd10d8c376203c1d49
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 42b3c3d4d474c61cbe472b4122ac2f80f218bf8d
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92892460"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797276"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>B2B işbirliği kullanıcıları için koşullu erişim
 
-## <a name="multi-factor-authentication-for-b2b-users"></a>B2B kullanıcıları için Multi-Factor Authentication
-Azure AD B2B işbirliğiyle kuruluşlar, B2B kullanıcıları için Multi-Factor Authentication (MFA) ilkelerini uygulayabilir. Bu ilkeler, kiracı, uygulama veya bireysel kullanıcı düzeyinde, kuruluşun tam zamanlı çalışanları ve üyeleri için etkinleştirildikleri şekilde zorlanabilir. MFA ilkeleri, kaynak kuruluşta zorlanır.
+Bu makalede, kuruluşların, B2B Konuk kullanıcılarına kaynaklarına erişmesi için koşullu erişim (CA) ilkelerini nasıl kapsam altında olduğu açıklanır.
+>[!NOTE]
+>Bu kimlik doğrulama veya yetkilendirme akışı, Konuk kullanıcılar için bu kimlik sağlayıcısının (IDP) var olan kullanıcılarından farklı bir bit.
 
-Örnek:
-1. Şirket B 'deki yönetici veya bilgi çalışanı, Şirket A 'ya ait bir kullanıcı olan Şirket A 'da *foo* bir uygulamaya davet eder.
-2. A şirketindeki *bir uygulama,* erişimde MFA gerektirecek şekilde yapılandırılmıştır.
-3. Şirket B 'deki Kullanıcı, Şirket A kiracısında *foo* uygulamasına erişmeye çalıştığında, bir MFA sınamasını tamamlamaları istenir.
-4. Kullanıcı, kendi MFA 'yı Şirket A ile ayarlayabilir ve MFA seçeneğini tercih edebilir.
-5. Bu senaryo tüm kimlik (Azure AD veya MSA) için çalışarak (örneğin, B şirketindeki kullanıcılar sosyal KIMLIK kimlik doğrulamasını kullanıyorsa)
-6. Şirket A 'nın MFA 'yı destekleyen yeterli Premium Azure AD Lisansı olmalıdır. Şirket B 'deki Kullanıcı, A şirketinin bu lisansını kullanır.
+## <a name="authentication-flow-for-b2b-guest-users-from-an-external-directory"></a>B2B Konuk kullanıcıları için bir dış dizinden kimlik doğrulama akışı
 
-İş ortağı kuruluşun MFA özelliklerine sahip olsa bile, kiralamanın, iş ortağı kuruluştan kullanıcılara MFA 'dan her zaman sorumludur.
+Aşağıdaki diyagramda akış gösterilmektedir: görüntü, ![ B2B Konuk kullanıcıları için bir dış dizinden kimlik doğrulama akışını gösterir](./media/conditional-access-b2b/authentication-flow-b2b-guests.png)
 
-### <a name="setting-up-mfa-for-b2b-collaboration-users"></a>B2B işbirliği kullanıcıları için MFA ayarlama
-B2B işbirliği kullanıcıları için MFA 'yı ayarlamaya ne kadar kolay olduğunu öğrenmek için aşağıdaki videoda nasıl yapılacağını öğrenin:
+| Adım | Description |
+|--------------|-----------------------|
+| 1. | B2B Konuk Kullanıcı, bir kaynağa erişim ister. Kaynak, kullanıcıyı güvenilir bir IDP olan kaynak kiracıya yönlendirir.|
+| 2. | Kaynak kiracı kullanıcıyı dış olarak tanımlar ve kullanıcıyı B2B Konuk kullanıcısının IDP 'ye yönlendirir. Kullanıcı IDP 'de birincil kimlik doğrulaması gerçekleştirir.
+| 3. | B2B Konuk kullanıcının IDP 'si kullanıcıya bir belirteç yayınlar. Kullanıcı, belirteç ile kaynak kiracıya yeniden yönlendirilir. Kaynak kiracı belirteci doğrular ve ardından kullanıcıyı CA ilkelerine göre değerlendirir. Örneğin, kaynak kiracısı kullanıcının Azure Active Directory (AD) Multi-Factor Authentication gerçekleştirmesini gerektirebilir.
+| 4. | Tüm kaynak kiracı CA ilkeleri karşılandıktan sonra kaynak kiracının kendi belirtecini yayınlar ve kullanıcıyı kaynağına yeniden yönlendirir.
+
+## <a name="authentication-flow-for-b2b-guest-users-with-one-time-passcode"></a>Bir kerelik geçiş kodu ile B2B Konuk kullanıcıları için kimlik doğrulama akışı
+
+Aşağıdaki diyagramda akış gösterilmektedir: ![ görüntüde bir kerelik geçiş kodu bulunan B2B Konuk kullanıcıları Için kimlik doğrulama akışı gösterilmektedir](./media/conditional-access-b2b/authentication-flow-b2b-guests-otp.png)
+
+| Adım | Description |
+|--------------|-----------------------|
+| 1. |Kullanıcı başka bir Kiracıdaki bir kaynağa erişim istiyor. Kaynak, kullanıcıyı güvenilir bir IDP olan kaynak kiracıya yönlendirir.|
+| 2. | Kaynak kiracısı, kullanıcıyı [dış e-posta bir kerelik geçiş kodu (OTP) kullanıcısı](https://docs.microsoft.com/azure/active-directory/external-identities/one-time-passcode) olarak tanımlar ve kullanıcıya OTP ile bir e-posta gönderir.|
+| 3. | Kullanıcı OTP 'yi alır ve kodu gönderir. Kaynak kiracısı, kullanıcıyı CA ilkelerine göre değerlendirir.
+| 4. | Tüm CA ilkeleri karşılandıktan sonra, kaynak kiracı bir belirteç yayınlar ve kullanıcıyı kaynağına yönlendirir. |
+
+>[!NOTE]
+>Kullanıcı bir dış kaynak kiracısından ise, B2B Konuk kullanıcısının IDP CA ilkelerinin de değerlendirilmesi mümkün değildir. Bugün itibariyle, yalnızca kaynak kiracının CA ilkeleri konukları için geçerlidir.
+
+## <a name="azure-ad-multi-factor-authentication-for-b2b-users"></a>B2B kullanıcıları için Azure AD Multi-Factor Authentication
+
+Kuruluşlar, B2B Konuk kullanıcıları için birden çok Azure AD Multi-Factor Authentication ilkesi uygulayabilir. Bu ilkeler, kiracı, uygulama veya bireysel kullanıcı düzeyinde, kuruluşun tam zamanlı çalışanları ve üyeleri için etkinleştirildikleri şekilde zorlanabilir.
+Konuk kullanıcının kuruluşunda Multi-Factor Authentication özellikleri olsa bile, kullanıcılar için Azure AD Multi-Factor Authentication kaynak kiracıya her zaman sorumludur. Örnek olarak
+
+1. Fabrikam adlı bir şirketteki yönetici veya bilgi çalışanı, Application Woodgrove uygulamasını kullanmak için Contoso adlı başka bir şirketten Kullanıcı davet eder.
+
+2. Fabrikam 'daki Woodgrove uygulaması, erişim için Azure AD Multi-Factor Authentication gerektirecek şekilde yapılandırılmıştır.
+
+3. Contoso 'dan B2B Konuk kullanıcısı fabrikam kiracısında Woodgrove 'a erişmeyi denediğinde, Azure AD Multi-Factor Authentication Challenge ' ı tamamlamaları istenir.
+
+4. Konuk Kullanıcı daha sonra Azure AD Multi-Factor Authentication 'yi fabrikam ile ayarlayabilir ve seçenekleri seçebilir.
+
+5. Bu senaryo her türlü kimlik için (Azure AD veya kişisel Microsoft hesabı (MSA) geçerlidir. Örneğin, contoso 'daki Kullanıcı sosyal KIMLIK kullanarak kimlik doğrulaması gerçekleştiriyorsa.
+
+6. Fabrikam, Azure AD Multi-Factor Authentication destekleyen, yeterli Premium Azure AD lisanslarına sahip olmalıdır. Contoso kullanıcısı bundan sonra Fabrikam ' dan bu lisansı kullanır. B2B lisanslaması hakkında bilgi için bkz. [Azure AD dış kimlikleri için faturalandırma modeli](https://docs.microsoft.com/azure/active-directory/external-identities/external-identities-pricing) .
+
+>[!NOTE]
+>Azure AD Multi-Factor Authentication, öngörülebilirlik sağlamak için kaynak kiralamanın üzerinde yapılır.
+
+### <a name="set-up-azure-ad-multi-factor-authentication-for-b2b-users"></a>B2B kullanıcıları için Azure AD Multi-Factor Authentication ayarlama
+
+B2B işbirliği kullanıcıları için Azure AD Multi-Factor Authentication ayarlamak için şu videoyu izleyin:
 
 >[!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-conditional-access-setup/Player]
 
-### <a name="b2b-users-mfa-experience-for-offer-redemption"></a>B2B kullanıcıları teklifi satın alma için MFA deneyimi
-Kullanım deneyimini görmek için aşağıdaki animasyonu inceleyin:
+### <a name="b2b-users-azure-ad-multi-factor-authentication-for-offer-redemption"></a>B2B kullanıcıları Azure AD Multi-Factor Authentication teklif teklifi için
+
+Azure AD Multi-Factor Authentication kullanım deneyimi hakkında daha fazla bilgi edinmek için şu videoyu izleyin:
 
 >[!VIDEO https://channel9.msdn.com/Blogs/Azure/MFA-redemption/Player]
 
-### <a name="mfa-reset-for-b2b-collaboration-users"></a>B2B işbirliği kullanıcıları için MFA sıfırlaması
-Şu anda yönetici, B2B işbirliği kullanıcılarının yalnızca aşağıdaki PowerShell cmdlet 'lerini kullanarak yeniden kanıt sağlamasını gerektirebilir:
+### <a name="azure-ad-multi-factor-authentication-reset-for-b2b-users"></a>B2B kullanıcıları için Azure AD Multi-Factor Authentication sıfırlama
+
+Şimdi, B2B Konuk kullanıcıları için aşağıdaki PowerShell cmdlet 'leri kullanıma sunulmuştur:
 
 1. Azure AD'ye Bağlanma
 
@@ -63,52 +102,57 @@ Kullanım deneyimini görmek için aşağıdaki animasyonu inceleyin:
    Get-MsolUser | where { $_.StrongAuthenticationMethods} | select UserPrincipalName, @{n="Methods";e={($_.StrongAuthenticationMethods).MethodType}}
    ```
 
-3. Belirli bir kullanıcının, B2B işbirliği kullanıcısına düzeltme yöntemlerini yeniden ayarlaması için MFA yöntemini sıfırlayın. Örnek:
+3. Belirli bir kullanıcı için Azure AD Multi-Factor Authentication yöntemini sıfırlayın, B2B işbirliği kullanıcısının, düzeltme yöntemlerini yeniden ayarlaması gerekir. 
+   Aşağıda bir örnek verilmiştir:
 
    ```
    Reset-MsolStrongAuthenticationMethodByUpn -UserPrincipalName gsamoogle_gmail.com#EXT#@ WoodGroveAzureAD.onmicrosoft.com
    ```
 
-### <a name="why-do-we-perform-mfa-at-the-resource-tenancy"></a>Kaynak kiralamamız neden MFA gerçekleştirdik?
+## <a name="conditional-access-for-b2b-users"></a>B2B kullanıcıları için koşullu erişim
 
-Geçerli yayında MFA, tahmine dayalı nedenlerle her zaman kaynak kiralandır. Örneğin, bir contoso kullanıcısı (Sally) Fabrikam 'a davet edildiklerini ve Fabrikam 'ın B2B kullanıcıları için MFA 'yı etkinleştirdiklerini varsayalım.
+B2B Konuk kullanıcıları için CA ilkelerini etkileyen çeşitli faktörler vardır.
 
-Contoso, APP1 için MFA ilkesi etkinleştirmişse, app2 değil ise, belirteçte contoso MFA talebine baktığımızda, aşağıdaki sorunu görebiliriz:
+### <a name="device-based-conditional-access"></a>Cihaz tabanlı Koşullu Erişim
 
-* Gün 1: bir Kullanıcı contoso 'da MFA 'ya sahiptir ve APP1 'e erişiyor, ardından fabrikam 'da ek MFA istemi gösterilmez.
+CA 'da, kullanıcının [cihazının uyumlu olmasını veya karma Azure AD 'ye katılmış](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#device-state-preview)olmasını gerektirme seçeneği vardır. B2B Konuk kullanıcıları yalnızca kaynak kiracının cihazlarını yönetebilmesi durumunda uyumluluk sağlayabilir. Cihazlar aynı anda birden fazla kuruluş tarafından yönetilemez. B2B Konuk kullanıcıları, şirket içi bir AD hesabı olmadığından karma Azure AD JOIN 'i karşılayamaz. Yalnızca Konuk kullanıcının cihazı yönetilmiyorsa, cihazlarını kaynak kiracısına kaydedebilir veya kaydedebilir ve sonra cihazı uyumlu hale getirebilirsiniz. Kullanıcı daha sonra izin denetimini karşılayamaz.
 
-* 2. gün: Kullanıcı, contoso 'da uygulama 2 ' ye erişmiş, bu nedenle fabrikam 'a erişirken, burada MFA 'ya kaydolmalıdır.
+>[!Note]
+>Dış kullanıcılar için yönetilen bir cihazın kullanılması önerilmez.
 
-Bu işlem kafa karıştırıcı olabilir ve oturum açma tamamlanmalarından sonra bırakmaya yol açabilir.
+### <a name="mobile-application-management-policies"></a>Mobil uygulama yönetim ilkeleri
 
-Üstelik, contoso MFA özelliğine sahip olsa bile, Fabrikam 'ın contoso MFA ilkesine güveneceği her zaman böyle değildir.
+CA, **onaylanan istemci uygulamaları iste** gibi denetimler verir ve **Uygulama koruma ilkelerinin** cihazın kiracıya kaydedilmesini gerektirir. Bu denetimler yalnızca [iOS ve Android cihazlarına](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#device-platforms)uygulanabilir. Ancak, kullanıcının cihazı zaten başka bir kuruluş tarafından yönetilmiyorsa, bu denetimlerden hiçbiri B2B Konuk kullanıcılarına uygulanamaz. Bir mobil cihaz, bir seferde birden fazla kiracıya kaydedilemez. Mobil cihaz başka bir kuruluş tarafından yönetilmiyorsa, Kullanıcı engellenecektir. Yalnızca Konuk kullanıcının cihazı yönetilmiyorsa, cihazlarını kaynak kiracısına kaydedebilirler. Kullanıcı daha sonra izin denetimini karşılayamaz.  
 
-Son olarak, kaynak kiracı MFA aynı zamanda MSAs ve sosyal kimlikler ve MFA 'nın ayarlanmayan iş ortakları için de çalışır.
+>[!NOTE]
+>Dış kullanıcılar için bir uygulama koruma ilkesi kullanılması önerilmez.
 
-Bu nedenle, B2B kullanıcıları için MFA önerisi her zaman davet kiracısında MFA gerektirdir. Bu gereksinim, bazı durumlarda çift MFA 'ya yol açabilir, ancak davet kiracıya erişirken son kullanıcıların deneyimi tahmin edilebilir: Sally, davet eden kiracı ile MFA için kaydedilmelidir.
+### <a name="location-based-conditional-access"></a>Konum tabanlı koşullu erişim
 
-### <a name="device-based-location-based-and-risk-based-conditional-access-for-b2b-users"></a>B2B kullanıcıları için cihaz tabanlı, konum tabanlı ve risk tabanlı koşullu erişim
+Davet edilen kuruluş, iş ortağı kuruluşlarını tanımlayan güvenilir bir IP adresi aralığı oluşturabileceğini IP aralıklarına dayalı [konum tabanlı ilke](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#locations) uygulanabilir.
 
-Contoso, kurumsal verileri için cihaz tabanlı koşullu erişim ilkeleri etkinleştirdiğinde, contoso tarafından yönetilmeyen ve contoso cihaz ilkeleriyle uyumlu olmayan cihazlardan erişim engellenir.
+İlkeler, **coğrafi konumlara** göre de zorlanabilir.
 
-B2B kullanıcısının aygıtı contoso tarafından yönetilmemişse, iş ortağı kuruluşlarından B2B kullanıcılarının erişimi, bu ilkelerin zorlandığı bağlamda engellenirler. Ancak contoso, belirli iş ortağı kullanıcılarını içeren dışlama listeleri oluşturabilir ve bunları cihaz tabanlı koşullu erişim ilkesinden hariç tutabilir.
+### <a name="risk-based-conditional-access"></a>Risk tabanlı Koşullu Erişim
 
-#### <a name="mobile-application-management-policies-for-b2b"></a>B2B için mobil uygulama yönetimi ilkeleri
+B2B Konuk Kullanıcı izin denetimini karşılıyorsa, [oturum açma risk ilkesi](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#sign-in-risk) zorlanır. Örneğin, bir kuruluş, orta veya yüksek oturum açma riski için Azure AD Multi-Factor Authentication gerektirebilir. Ancak, bir Kullanıcı, kaynak kiracısında daha önce Azure AD Multi-Factor Authentication kaydolmamışsa, Kullanıcı engellenecektir. Bu, kötü amaçlı kullanıcıların, meşru bir kullanıcının parolasının güvenliğini tehlikeye adıkları olayda kendi Azure AD Multi-Factor Authentication kimlik bilgilerini kaydetmesini engellemek için yapılır.
 
-Koşullu erişim uygulama koruma ilkeleri B2B kullanıcılarına uygulanamıyor çünkü bu, davet eden kuruluşun B2B kullanıcısının ana kuruluşuna görünürlüğü yoktur.
+Ancak, [Kullanıcı risk ilkesi](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#user-risk) , kaynak kiracısında çözümlenemez. Örneğin, yüksek riskli Konuk kullanıcılar için parola değişikliği yapmanız gerekiyorsa, kaynak dizinindeki parolaları sıfırlayamamasından dolayı bunlar engellenir.
 
-#### <a name="location-based-conditional-access-for-b2b"></a>B2B için konum tabanlı koşullu erişim
+### <a name="conditional-access-client-apps-condition"></a>Koşullu erişim istemci uygulamaları koşulu
 
-Davet edilen kuruluş, iş ortağı kuruluşlarını tanımlayan güvenilir bir IP adresi aralığı oluşturabiliyorsa B2B kullanıcıları için konum tabanlı koşullu erişim ilkeleri zorlanabilir.
+[İstemci uygulamaları koşulları](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps) , diğer kullanıcı türleri için YAPTıKLARı gibi B2B Konuk kullanıcıları için de aynı şekilde davranır. Örneğin, konuk kullanıcıların eski kimlik doğrulama protokollerini kullanmasını engelleyebilirsiniz.
 
-#### <a name="risk-based-conditional-access-for-b2b"></a>B2B için risk tabanlı koşullu erişim
+### <a name="conditional-access-session-controls"></a>Koşullu erişim oturum denetimleri
 
-Şu anda, B2B kullanıcısının ana kuruluşunda risk değerlendirmesi gerçekleştirildiğinden, risk tabanlı oturum açma ilkeleri B2B kullanıcılarına uygulanamıyor.
+[Oturum denetimleri](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-session) , B2B Konuk kullanıcıları için diğer kullanıcı türleri için aynı şekilde davranır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure AD B2B işbirliği ile ilgili aşağıdaki makalelere bakın:
+Daha fazla bilgi için Azure AD B2B işbirliği ile ilgili aşağıdaki makalelere bakın:
 
-* [Azure AD B2B işbirliği nedir?](what-is-b2b.md)
-* [Dış Kimlikler fiyatlandırması](external-identities-pricing.md)
-* [Azure Active Directory B2B işbirliği hakkında sık sorulan sorular (SSS)](faq.md)
+- [Azure AD B2B işbirliği nedir?](https://docs.microsoft.com/azure/active-directory/external-identities/what-is-b2b)
+- [Kimlik Koruması ve B2B kullanıcıları](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-b2b)
+- [Dış Kimlikler fiyatlandırması](https://azure.microsoft.com/pricing/details/active-directory/)
+- [Sık sorulan sorular (SSS)](https://docs.microsoft.com/azure/active-directory/external-identities/faq)
+

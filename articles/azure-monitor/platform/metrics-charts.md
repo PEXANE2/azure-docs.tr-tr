@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: b4feb177abbdbfb9666be0ea0746c8316acdf5ae
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 2f8dc9f53c36f59a152fc34361b3726ea2cc001c
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250766"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797053"
 ---
 # <a name="advanced-features-of-the-azure-metrics-explorer"></a>Azure Ölçüm Gezgini 'nin gelişmiş özellikleri
 
@@ -129,16 +129,19 @@ Bir grafikte farklı toplamalar kullanmadan önce, Ölçüm Gezgini 'nin bunlar�
 
    ![Filtreleyebileceğiniz boyutları (özellikleri) gösteren ekran görüntüsü.](./media/metrics-charts/028.png)
 
-3. Grafiği çizerseniz dahil etmek istediğiniz boyut değerlerini seçin. Aşağıdaki örnek başarılı depolama işlemlerini filtreler:
+3. Boyut (özellik) için uygulamak istediğiniz işleci seçin. Varsayılan işleç = (eşittir)
+
+   ![Filtreyle kullanabileceğiniz operatörü gösteren ekran görüntüsü.](./media/metrics-charts/filter-operator.png)
+
+4. Grafiği çizdirme sırasında filtreye uygulamak istediğiniz boyut değerlerini seçin (Bu örnek, başarılı depolama işlemlerinin filtrelenmesini gösterir):
 
    ![Başarılı filtrelenmiş depolama işlemlerini gösteren ekran görüntüsü.](./media/metrics-charts/029.png)
 
-4. Kapatmak için **filtre seçicinin** dışında bir seçim yapın. Artık grafik, kaç depolama işlemi başarısız olduğunu gösterir:
+5. Filtre değerlerini seçtikten sonra, kapatmak için filtre seçicideki dışarıda ' ı tıklatın. Artık grafik, kaç depolama işlemi başarısız olduğunu gösterir:
 
    ![Kaç depolama hareketinin başarısız olduğunu gösteren ekran görüntüsü.](./media/metrics-charts/030.png)
 
-Aynı grafiklere birden çok filtre uygulamak için bu adımları yineleyebilirsiniz.
-
+6. Aynı grafiklere birden çok filtre uygulamak için 1-5 adımlarını tekrarlayabilirsiniz.
 
 
 ## <a name="metric-splitting"></a>Ölçüm bölme
@@ -158,9 +161,18 @@ Aynı grafiklere birden çok filtre uygulamak için bu adımları yineleyebilirs
 
    Grafik artık her boyut segmenti için bir tane olmak üzere birden çok satır gösterir:
 
-   ![Her boyut segmenti için satırları gösteren ekran görüntüsü.](./media/metrics-charts/032.png)
+   ![Her boyutun segmenti için bir tane olmak üzere birden çok satırı gösteren ekran görüntüsü.](./media/metrics-charts/segment-dimension.png)
+   
+3. Seçili boyut bölündikten sonra görüntülenecek değer sayısı için bir sınır seçin. Varsayılan sınır, yukarıdaki grafikte gösterildiği gibi 10 ' dur. Sınır aralığı 1-50 ' dir.
+   
+   ![Bölme sınırını gösteren ekran görüntüsü, bölme işleminden sonra değer sayısını kısıtlar.](./media/metrics-charts/segment-dimension-limit.png)
+   
+4. Kesimlerde sıralama düzenini seçin: artan veya azalan. Varsayılan seçim azalan şekilde belirlenir.
+   
+   ![Bölünmüş değerlerde sıralama düzenini gösteren ekran görüntüsü.](./media/metrics-charts/segment-dimension-sort.png)
 
-3. Kapatmak için **Gruplandırma seçicinin** dışında bir seçim yapın.
+5. Bunu kapatmak için **Gruplandırma seçicisindeki** uzakta ' ye tıklayın.
+   
 
    > [!NOTE]
    > Senaryolarınız için ilgisiz olan kesimleri gizlemek ve grafiklerinizi okumayı kolaylaştırmak için, hem filtreleme hem de aynı boyutta bölme kullanın.

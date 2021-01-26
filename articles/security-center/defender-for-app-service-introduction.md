@@ -7,12 +7,12 @@ ms.date: 01/25/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: c6d62cf7b93255336d87cec1d0fef2c567cde9f2
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 200e1fd7bfffef403fa459d3de13dc31145b8a33
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791852"
+ms.locfileid: "98796626"
 ---
 # <a name="introduction-to-azure-defender-for-app-service"></a>App Service için Azure Defender 'a giriş
 
@@ -62,9 +62,9 @@ Azure Defender, App Service kaynaklarınızda birçok tehdit izler. Uyarılar, C
 
 ### <a name="dangling-dns-detection"></a>DNS algılamasını çözme
 
-App Service için Azure Defender, App Service bir Web sitesi kullanımdan çalıştırıldığında DNS kaydedicinizdeki tüm DNS girdilerini de tanımlar. Bunlar, salgze DNS girişleri olarak bilinir. Şu anda, DNS girişi var olmayan bir kaynağa işaret ediyor ve alt etki alanınızın yük devri ile açık olması. Azure Defender, *mevcut* salgze DNS GIRIŞLERI için DNS kaydedicinizi taramaz; bir App Service Web sitesi kullanımdan çalıştırıldığında ve özel etki alanı (DNS girdisi) silinmediğinde sizi uyarır.
+App Service için Azure Defender, App Service bir Web sitesi kullanımdan çalıştırıldığında DNS kaydedicinizdeki tüm DNS girdilerini de tanımlar. Bunlar, salgze DNS girişleri olarak bilinir. Bir Web sitesini kaldırdığınızda ve özel etki alanını DNS kaydedicinizden kaldırdığınızda, DNS girişi var olmayan bir kaynağa işaret eder ve alt etki alanınız bir yük devri ile savunmasızdır. Azure Defender, *mevcut* salgze DNS GIRIŞLERI için DNS kaydedicinizi taramaz; bir App Service Web sitesi kullanımdan çalıştırıldığında ve özel etki alanı (DNS girdisi) silinmediğinde sizi uyarır.
 
-Alt etki alanı kuruluşları, kuruluşlar için ortak ve yüksek öneme sahip bir tehdittir. Bir tehdit aktör bir tehlike DNS girişi algıladığında, hedef adreste kendi sitesini oluşturur. Kuruluşun etki alanı için tasarlanan trafik daha sonra tehdit aktörün sitesine yönlendirilir ve bu trafiği çok çeşitli kötü amaçlı etkinlikler için kullanabilir. 
+Alt etki alanı kuruluşları, kuruluşlar için ortak ve yüksek öneme sahip bir tehdittir. Bir tehdit aktör bir tehlike DNS girişi algıladığında, hedef adreste kendi sitesini oluşturur. Kuruluşun etki alanı için tasarlanan trafik daha sonra tehdit aktörün sitesine yönlendirilir ve bu trafiği çok çeşitli kötü amaçlı etkinlikler için kullanabilir.
 
 Etki alanlarınızın Azure DNS veya dış etki alanı kaydedicisi ile yönetilip yönetilmediği ve hem Windows hem de Linux 'ta App Service için geçerli olup olmadığı, tehlike altında olan DNS koruması kullanılabilir.
 
@@ -100,4 +100,4 @@ Bu makalede, App Service için Azure Defender hakkında bilgi edindiniz.
 - Azure Defender App Service uyarıları listesi için, [Uyarı tablosuna](alerts-reference.md#alerts-azureappserv)bakın.
 - App Service planları hakkında daha fazla bilgi için bkz. [App Service planları](https://azure.microsoft.com/pricing/details/app-service/plans/).
 > [!div class="nextstepaction"]
-> [Azure Defender’ı etkinleştirme](security-center-pricing.md)
+> [Azure Defender’ı etkinleştirme](security-center-pricing.md#enable-azure-defender)

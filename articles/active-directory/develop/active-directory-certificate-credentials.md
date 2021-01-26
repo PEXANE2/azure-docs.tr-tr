@@ -13,18 +13,18 @@ ms.date: 12/3/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 50a2f56824db67b73199439922e662339ff30872
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 22352f6d0c7dc48b98be5fcb4101f262adc480d6
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755285"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98795620"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft Identity Platform uygulaması kimlik doğrulama sertifikası kimlik bilgileri
 
 Microsoft Identity platformu, bir uygulamanın kimlik doğrulaması için kendi kimlik bilgilerini kullanmasını sağlar; örneğin, OAuth 2,0  [istemci kimlik bilgileri verme](v2-oauth2-client-creds-grant-flow.md) akışı ve [Şirket adına](v2-oauth2-on-behalf-of-flow.md) (OBO) akışı.
 
-Uygulamanın kimlik doğrulaması için kullanabileceği bir kimlik bilgisi biçimi, uygulamanın sahip olduğu bir sertifikayla imzalanmış bir [JSON Web Token](./security-tokens.md#json-web-tokens-jwts-and-claims) (JWT) onaysıdır.
+Uygulamanın kimlik doğrulaması için kullanabileceği bir kimlik bilgisi biçimi, uygulamanın sahip olduğu bir sertifikayla imzalanmış bir [JSON Web Token](./security-tokens.md#json-web-tokens-and-claims) (JWT) onaysıdır.
 
 ## <a name="assertion-format"></a>Onaylama biçimi
 

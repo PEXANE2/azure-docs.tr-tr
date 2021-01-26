@@ -10,14 +10,17 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
-ms.openlocfilehash: fd3c8a08e5512d15be4dfb26ca3eff151d08386f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: e31128687cfcc1f4e32879328ad3227182efb9ce
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651375"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797333"
 ---
 # <a name="use-azure-sentinel-watchlists"></a>Azure Sentinel Watchlists kullanma
+
+> [!IMPORTANT]
+> Watchlists özelliği şu anda **önizlemededir**. Beta, önizleme veya henüz genel kullanıma sunulmayan Azure özelliklerine uygulanan ek koşullar için [Microsoft Azure önizlemeleri için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 'na bakın.
 
 Azure Sentinel Watchlists, Azure Sentinel ortamınızdaki olaylarla bağıntı için dış veri kaynaklarından veri toplamayı etkinleştirir. Oluşturulduktan sonra, arama, algılama kuralları, tehdit araması ve yanıt PlayBook 'lerinizde Watchlists kullanabilirsiniz. Watchlists, Azure Sentinel çalışma alanınızda ad-değer çiftleri olarak depolanır ve en iyi sorgu performansı ve düşük gecikme süresi için önbelleğe alınır.
 
@@ -73,11 +76,43 @@ Watchlists kullanmaya yönelik yaygın senaryolar şunlardır:
 
     :::image type="content" source="./media/watchlists/sentinel-watchlist-queries-fields.png" alt-text="listem alanları olan sorgular" lightbox="./media/watchlists/sentinel-watchlist-queries-fields.png":::
     
+1. Listem, birleştirmeler ve aramalar için tablo olarak davranarak herhangi bir tablodaki verileri bir listem verileri ile sorgulayabilirsiniz.
+
+    ```kusto
+    Heartbeat
+    | lookup kind=leftouter _GetWatchlist('IPlist') 
+     on $left.ComputerIP == $right.IPAddress
+    ```
+    :::image type="content" source="./media/watchlists/sentinel-watchlist-queries-join.png" alt-text="arama olarak listem 'e yönelik sorgular":::
+
 ## <a name="use-watchlists-in-analytics-rules"></a>Analiz kurallarında Watchlists kullanma
 
 Watchlists 'i analiz kurallarında kullanmak için Azure Portal **Azure Sentinel**  >  **yapılandırma**  >  **Analizi**' ne gidin ve sorgudaki işlevi kullanarak bir kural oluşturun `_GetWatchlist('<watchlist>')` .
 
-:::image type="content" source="./media/watchlists/sentinel-watchlist-analytics-rule.png" alt-text="analiz kurallarında Watchlists kullanma" lightbox="./media/watchlists/sentinel-watchlist-analytics-rule.png":::
+1. Bu örnekte, aşağıdaki değerlerle "ipwatchlist" adlı bir listem oluşturun:
+
+    :::image type="content" source="./media/watchlists/create-watchlist.png" alt-text="listem için dört öğe listesi":::
+
+    :::image type="content" source="./media/watchlists/sentinel-watchlist-new-2.png" alt-text="dört öğeyle listem oluşturma":::
+
+1. Ardından, analiz kuralını oluşturun.  Bu örnekte, listem içindeki IP adreslerinden gelen olayları yalnızca dahil eteceğiz:
+
+    ```kusto
+    //Watchlist as a variable
+    let watchlist = (_GetWatchlist('ipwatchlist') | project IPAddress);
+    Heartbeat
+    | where ComputerIP in (watchlist)
+    ```
+    ```kusto
+    //Watchlist inline with the query
+    Heartbeat
+    | where ComputerIP in ( 
+        (_GetWatchlist('ipwatchlist')
+        | project IPAddress)
+    )
+    ```
+
+:::image type="content" source="./media/watchlists/sentinel-watchlist-analytics-rule-2.png" alt-text="analiz kurallarında Watchlists kullanma":::
 
 ## <a name="view-list-of-watchlists-aliases"></a>Watchlists diğer ad listesini görüntüle
 
