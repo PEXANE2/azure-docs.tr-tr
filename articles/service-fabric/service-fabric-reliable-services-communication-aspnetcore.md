@@ -4,12 +4,12 @@ description: Durum bilgisiz ve durum bilgisi olan Azure Service Fabric Reliable 
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ba5626d477bbd6aa07d89703cc37b157f4cfd4d5
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: a125c6a1972b51f518175a4c69248119f71ada7c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576800"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791603"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>Azure Service Fabric ASP.NET Core Reliable Services
 
@@ -190,7 +190,7 @@ Bir yapılandırma tarafından ayrılan dinamik bir bağlantı noktası `Endpoin
 ## <a name="kestrel-in-reliable-services"></a>Reliable Services Kestrel
 **Microsoft. ServiceFabric. AspNetCore. Kestrel** NuGet paketini içeri aktararak Reliable Services 'de Kestrel kullanabilirsiniz. Bu paket `KestrelCommunicationListener` , uygulamasının bir uygulamasını içerir `ICommunicationListener` . `KestrelCommunicationListener` Web sunucusu olarak Kestrel kullanarak güvenilir bir hizmetin içinde ASP.NET Core WebHost oluşturmanıza olanak sağlar.
 
-Kestrel, ASP.NET Core için platformlar arası Web sunucusudur. HTTP.sys aksine, Kestrel merkezi bir uç nokta Yöneticisi kullanmaz. Ayrıca, HTTP.sys aksine, Kestrel birden çok işlem arasında bağlantı noktası paylaşmayı desteklemez. Her bir Kestrel örneğinin benzersiz bir bağlantı noktası kullanması gerekir. Kestrel hakkında daha fazla bilgi için [uygulama ayrıntılarına](/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2)bakın.
+Kestrel, ASP.NET Core için platformlar arası Web sunucusudur. HTTP.sys aksine, Kestrel merkezi bir uç nokta Yöneticisi kullanmaz. Ayrıca, HTTP.sys aksine, Kestrel birden çok işlem arasında bağlantı noktası paylaşmayı desteklemez. Her bir Kestrel örneğinin benzersiz bir bağlantı noktası kullanması gerekir. Kestrel hakkında daha fazla bilgi için [uygulama ayrıntılarına](/aspnet/core/fundamentals/servers/kestrel)bakın.
 
 ![Kestrel diyagramı][4]
 
@@ -247,7 +247,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 Bu örnekte, tek bir örneği `IReliableStateManager` Webhost bağımlılığı ekleme kapsayıcısına sağlanır. Bu kesinlikle gerekli değildir, ancak `IReliableStateManager` MVC denetleyici eylem yöntemlerinde ve güvenilir koleksiyonları kullanmanıza olanak tanır.
 
-`Endpoint` *not* `KestrelCommunicationListener` Durum bilgisi olan bir hizmette yapılandırma adı sağlanmaz. Bu, aşağıdaki bölümde daha ayrıntılı olarak açıklanmıştır.
+`Endpoint`  `KestrelCommunicationListener` Durum bilgisi olan bir hizmette yapılandırma adı sağlanmaz. Bu, aşağıdaki bölümde daha ayrıntılı olarak açıklanmıştır.
 
 ### <a name="configure-kestrel-to-use-https"></a>Kestrel’i HTTPS kullanacak şekilde yapılandırma
 Hizmetinize Kestrel ile HTTPS 'yi etkinleştirirken birkaç dinleme seçeneği ayarlamanız gerekir. `ServiceInstanceListener`Bir *EndpointHttps* uç noktası kullanmak ve belirli bir bağlantı noktasını dinlemek için (bağlantı noktası 443) öğesini güncelleştirin. Web konağını Kestrel Web sunucusunu kullanacak şekilde yapılandırırken, Kestrel 'i tüm ağ arabirimlerinde IPv6 adreslerini dinleyecek şekilde yapılandırmanız gerekir: 
@@ -473,7 +473,7 @@ Kestrel, dış, internet 'e yönelik HTTP uç noktalarını kullanıma sunan ön
 | ---- | -------------- | ----- |
 | Web sunucusu | Kestrel | Kestrel, Windows ve Linux genelinde desteklendiğinden tercih edilen Web sunucusudur. |
 | Bağlantı noktası yapılandırması | static | ServiceManifest.xml yapılandırmasında iyi bilinen bir statik bağlantı noktası `Endpoints` , https için 80, http veya 443 için gibi yapılandırılmalıdır. |
-| Servicefabricıntegrationoptions | Hiçbiri | `ServiceFabricIntegrationOptions.None`Hizmetin, benzersiz bir tanımlayıcı için gelen istekleri doğrulamaya kalkışmasını sağlamak üzere Service Fabric tümleştirme ara yazılımını yapılandırırken bu seçeneği kullanın. Uygulamanızın dış kullanıcıları, ara yazılım tarafından kullanılan benzersiz tanımlama bilgilerini bilmez. |
+| Servicefabricıntegrationoptions | Yok | `ServiceFabricIntegrationOptions.None`Hizmetin, benzersiz bir tanımlayıcı için gelen istekleri doğrulamaya kalkışmasını sağlamak üzere Service Fabric tümleştirme ara yazılımını yapılandırırken bu seçeneği kullanın. Uygulamanızın dış kullanıcıları, ara yazılım tarafından kullanılan benzersiz tanımlama bilgilerini bilmez. |
 | Örnek Sayısı | -1 | Tipik kullanım durumlarında, örnek sayısı ayarı *-1* olarak ayarlanmalıdır. Bu, bir yük dengeleyiciden trafik alan tüm düğümlerde bir örnek kullanılabilmesi için yapılır. |
 
 Birden fazla dışarıdan sunulan hizmet aynı düğüm kümesini paylaşıyorsa, benzersiz ancak kararlı bir URL yoluyla HTTP.sys kullanabilirsiniz. Bunu, ıwebhost yapılandırılırken belirtilen URL 'YI değiştirerek gerçekleştirebilirsiniz. Bunun yalnızca HTTP.sys için geçerli olduğunu unutmayın.

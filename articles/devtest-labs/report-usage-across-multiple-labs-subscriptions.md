@@ -3,12 +3,12 @@ title: Birden çok laboratuvarda ve aboneliğe Azure DevTest Labs kullanımı
 description: Birden çok laboratuvarda ve aboneliğe Azure DevTest Labs kullanımı rapor etme hakkında bilgi edinin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 9640dc3fd74095a737f382994201dc5610af921a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: d789b9849ec798a396e99420649792937422470f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152202"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789947"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>Birden çok laboratuvarda ve aboneliğe ilişkin Azure DevTest Labs kullanımını raporla
 
@@ -75,12 +75,12 @@ Tek bir konum arabirimindeki kaynaklarınızı oluşturmak, bağlamak ve yönetm
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Sistem kurulduktan ve veriler uzun süreli depolamaya taşındıktan sonra, bir sonraki adım, verilerin yanıt vermesi gereken sorularla karşılaşmaktır. Örnek: 
+Sistem kurulduktan ve veriler uzun süreli depolamaya taşındıktan sonra, bir sonraki adım, verilerin yanıt vermesi gereken sorularla karşılaşmaktır. Örneğin: 
 
 -   VM boyutu kullanımı nedir?
 
     Kullanıcılar yüksek performanslı (daha pahalı) VM boyutlarını seçmidir?
 -   Hangi Market görüntüleri kullanılıyor?
 
-    Özel görüntüler en yaygın VM tabanıyla, ortak bir görüntü deposu [paylaşılan görüntü Galerisi](../virtual-machines/windows/shared-image-galleries.md) veya [görüntü fabrikası](image-factory-create.md)gibi inşa edilmelidir.
+    Özel görüntüler en yaygın VM tabanıyla, ortak bir görüntü deposu [paylaşılan görüntü Galerisi](../virtual-machines/shared-image-galleries.md) veya [görüntü fabrikası](image-factory-create.md)gibi inşa edilmelidir.
 -   Hangi özel görüntüler kullanılıyor veya kullanılmıyor?

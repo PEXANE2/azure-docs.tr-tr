@@ -4,18 +4,18 @@ description: Bu öğreticide Azure'da barındırılan bir Service Fabric kümesi
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: aa5b09b627db6bd3a3d573c32e7e68a359e2c04d
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 60c43adddd4799a639c2d58e0293086eb1776588
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738995"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791096"
 ---
 # <a name="tutorial-remove-a-service-fabric-cluster-running-in-azure"></a>Öğretici: Azure'da çalışan bir Service Fabric kümesini kaldırma
 
 Bu öğretici bir serinin beş bölümüdür ve Azure 'da çalışan bir Service Fabric kümesinin nasıl silineceğini gösterir. Bir Service Fabric kümesini tamamen silmek için küme tarafından kullanılan tüm kaynakları da silmeniz gerekir. İki seçeneğiniz vardır: kümenin bulunduğu kaynak grubunu silmek (küme kaynağını ve kaynak grubundaki diğer tüm kaynakları siler) veya özel olarak küme kaynağını ve (kaynak grubundaki diğer kaynakları silmeden) kümenin ilişkili kaynaklarını silmek.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Bir kaynak grubunu ve tüm kaynaklarını silmek
@@ -43,7 +43,7 @@ Bu öğreticiye başlamadan önce:
 ## <a name="delete-the-resource-group-containing-the-service-fabric-cluster"></a>Service Fabric kümesini içeren kaynak grubunu silme
 Kümeyi ve kullandığı tüm kaynakları silmenin en basit yolu, kaynak grubunun silinmesidir.
 
-Azure 'da oturum açın ve kümeyi kaldırmak istediğiniz abonelik KIMLIĞINI seçin.  Abonelik kimliğinizi, [Azure portalında](https://portal.azure.com) oturum açarak öğrenebilirsiniz. [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) cmdlet 'ini veya [az Group Delete](/cli/azure/group?view=azure-cli-latest) komutunu kullanarak kaynak grubunu ve tüm küme kaynaklarını silin.
+Azure 'da oturum açın ve kümeyi kaldırmak istediğiniz abonelik KIMLIĞINI seçin.  Abonelik kimliğinizi, [Azure portalında](https://portal.azure.com) oturum açarak öğrenebilirsiniz. [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) cmdlet 'ini veya [az Group Delete](/cli/azure/group) komutunu kullanarak kaynak grubunu ve tüm küme kaynaklarını silin.
 
 ```powershell
 Connect-AzAccount

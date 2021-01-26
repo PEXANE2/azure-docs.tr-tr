@@ -3,12 +3,12 @@ title: Kubernetes için Azure Ilkesi öğrenin
 description: Azure Ilkesi 'nin Azure 'da veya şirket içinde Kubernetes çalıştıran kümeleri yönetmek için rego 'ı ve açık Ilke aracısını nasıl kullandığını öğrenin.
 ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: e2b9253d8ce60d5dc77d406e3c9d0469539f2c77
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: f25b64bc28535d125c7883f16c9e747d6250ca96
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511340"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789747"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Kubernetes kümeleri için Azure İlkesi'ni anlama
 
@@ -22,19 +22,19 @@ Kubernetes için Azure Ilkesi aşağıdaki küme ortamlarını destekler:
 
 - [Azure Kubernetes Service (AKS)](../../../aks/intro-kubernetes.md)
 - [Azure Arc özellikli Kubernetes](../../../azure-arc/kubernetes/overview.md)
-- [AKS altyapısı](https://github.com/Azure/aks-engine/blob/master/docs/README.md)
+- [AKS Engine](https://github.com/Azure/aks-engine/blob/master/docs/README.md)
 
 > [!IMPORTANT]
 > AKS altyapısı ve Arc etkin Kubernetes eklentileri **önizlemededir**. Kubernetes için Azure Ilkesi yalnızca Linux düğüm havuzlarını ve yerleşik ilke tanımlarını destekler. Yerleşik ilke tanımları **Kubernetes** kategorisinde bulunur. **Enforceopaconstraint** ve **Enforceregopolicy** efektli sınırlı önizleme Ilkesi tanımları ve Ilgili **Kubernetes hizmet** kategorisi _kullanım dışıdır_. Bunun yerine, efekt _denetimi_ ve kaynak sağlayıcısı ile _reddetme_ modunu kullanın `Microsoft.Kubernetes.Data` .
 
-## <a name="overview"></a>Genel bakış
+## <a name="overview"></a>Genel Bakış
 
 Azure Ilkesini Kubernetes kümenizle etkinleştirmek ve kullanmak için aşağıdaki işlemleri gerçekleştirin:
 
 1. Kubernetes kümenizi yapılandırın ve eklentiyi yükledikten sonra:
    - [Azure Kubernetes Service (AKS)](#install-azure-policy-add-on-for-aks)
    - [Azure Arc özellikli Kubernetes](#install-azure-policy-add-on-for-azure-arc-enabled-kubernetes)
-   - [AKS altyapısı](#install-azure-policy-add-on-for-aks-engine)
+   - [AKS Engine](#install-azure-policy-add-on-for-aks-engine)
 
    > [!NOTE]
    > Yüklemeyle ilgili yaygın sorunlar için bkz. [sorun giderme-Azure Ilke eklentisi](../troubleshoot/general.md#add-on-for-kubernetes-installation-errors).
@@ -463,7 +463,7 @@ Daha fazla bilgi için bkz. Gatekeeper belgelerindeki [hata ayıklama ağ](https
 
 ## <a name="troubleshooting-the-add-on"></a>Eklenti sorunlarını giderme
 
-Kubernetes eklentisinin sorunlarını giderme hakkında daha fazla bilgi için, Azure Ilkesi sorun giderme makalesindeki [Kubernetes bölümüne](/azure/governance/policy/troubleshoot/general#add-on-for-kubernetes-general-errors) bakın.
+Kubernetes eklentisinin sorunlarını giderme hakkında daha fazla bilgi için, Azure Ilkesi sorun giderme makalesindeki [Kubernetes bölümüne](../troubleshoot/general.md#add-on-for-kubernetes-general-errors) bakın.
 
 ## <a name="remove-the-add-on"></a>Eklentiyi kaldır
 

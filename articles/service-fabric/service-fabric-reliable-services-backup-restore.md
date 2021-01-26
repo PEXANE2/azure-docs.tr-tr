@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: mcoskun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a60ebff06562c12415b2a106a9a11127feb94dab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2674d1285544e4bc9b6fcb3d0b2e6f4b607786a2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021995"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791620"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Reliable Services ve Reliable Actors yedekleme ve geri yükleme
 Azure Service Fabric, bu yüksek kullanılabilirliği korumak için durumu birden çok düğüm genelinde çoğaltan yüksek kullanılabilirliğe sahip bir platformdur.  Bu nedenle, kümedeki bir düğüm başarısız olsa bile hizmetler kullanılabilir olmaya devam eder. Platform tarafından sunulan bu yerleşik yedeklik, bazı durumlarda hizmetin verileri (bir dış depoya) yedeklemesi için gerekli olabilir.
@@ -150,7 +150,7 @@ Ayrıca, `ArgumentException` `BackupFolderPath` bir artımlı yedekleme zinciri 
 > 
 
 ## <a name="deleted-or-lost-service"></a>Silinen veya kayıp hizmet
-Bir hizmet kaldırılırsa, verilerin geri yüklenebilmesi için önce hizmeti yeniden oluşturmanız gerekir.  Verilerin sorunsuz bir şekilde geri yüklenebilmesi için, aynı yapılandırmayla (örneğin bölümlendirme şeması) birlikte hizmetin oluşturulması önemlidir.  Hizmet kurulduktan sonra, bu hizmetin her bölümünde verileri geri yükleme ( `OnDataLossAsync` yukarıda) API 'sinin çağrılması gerekir. Bunu sağlamanın bir yolu, her bölümde [FabricClient. TestManagementClient. StartPartitionDataLossAsync](/dotnet/api/system.fabric.fabricclient.testmanagementclient?view=azure-dotnet#System_Fabric_FabricClient_TestManagementClient_StartPartitionDataLossAsync_System_Guid_System_Fabric_PartitionSelector_System_Fabric_DataLossMode_) ' i kullanmaktır.  
+Bir hizmet kaldırılırsa, verilerin geri yüklenebilmesi için önce hizmeti yeniden oluşturmanız gerekir.  Verilerin sorunsuz bir şekilde geri yüklenebilmesi için, aynı yapılandırmayla (örneğin bölümlendirme şeması) birlikte hizmetin oluşturulması önemlidir.  Hizmet kurulduktan sonra, bu hizmetin her bölümünde verileri geri yükleme ( `OnDataLossAsync` yukarıda) API 'sinin çağrılması gerekir. Bunu sağlamanın bir yolu, her bölümde [FabricClient. TestManagementClient. StartPartitionDataLossAsync](/dotnet/api/system.fabric.fabricclient.testmanagementclient#System_Fabric_FabricClient_TestManagementClient_StartPartitionDataLossAsync_System_Guid_System_Fabric_PartitionSelector_System_Fabric_DataLossMode_) ' i kullanmaktır.  
 
 Bu noktada, uygulama yukarıdaki senaryodakiyle aynıdır. Her bölümün, son ilgili yedeklemenin dış depodan geri yüklenmesi gerekir. Tek bir desteklenmediği uyarısıyla, çalışma zamanı bölüm kimliklerini dinamik olarak oluşturduğundan bölüm KIMLIĞININ artık değişmiş olabilir. Bu nedenle, her bölüm için geri yüklenecek doğru en son yedeği tanımlamak üzere hizmetin uygun bölüm bilgilerini ve hizmet adını depolaması gerekir.
 
@@ -259,5 +259,5 @@ Bir hizmet bu API 'YI başarılı bir şekilde tamamlayana kadar (doğru veya ya
   - [Hızlı başlangıç Reliable Services](service-fabric-reliable-services-quick-start.md)
   - [Reliable Services bildirimleri](service-fabric-reliable-services-notifications.md)
   - [Reliable Services yapılandırması](service-fabric-reliable-services-configuration.md)
-  - [Güvenilir koleksiyonlar için geliştirici başvurusu](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+  - [Güvenilir koleksiyonlar için geliştirici başvurusu](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)
   - [Azure Service Fabric’te düzenli yedekleme ve geri yükleme](service-fabric-backuprestoreservice-quickstart-azurecluster.md)

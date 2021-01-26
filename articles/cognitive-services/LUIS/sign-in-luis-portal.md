@@ -9,12 +9,12 @@ ms.date: 09/08/2020
 ms.topic: how-to
 ms.author: nitinme
 author: nitinme
-ms.openlocfilehash: b8382b76496976054ebb452e39866765d986ccbb
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 8a4b86fb8fa5a87283178d957e07617b908e6286
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368193"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790910"
 ---
 # <a name="sign-in-to-luis-portal"></a>LUIS portalında oturum açma
 
@@ -47,8 +47,8 @@ LUO portalını kullanmaya başlamak ve bir yazma kaynağı oluşturmak için bu
     * **Kiracı adı** -Azure aboneliğinizin ilişkilendirildiği kiracı. Mevcut pencereden kiracılar arasında geçiş yapamazsınız. Bu pencereyi kapatarak ve ekran harflerinizi içeren ekranın sağ üst köşesindeki avatar öğesini seçerek kiracılar arasında geçiş yapabilirsiniz. Pencereyi yeniden açmak için yukarıdan **farklı bir yazma kaynağı seçin öğesini** seçin.
     * **Azure Kaynak grubu adı** -aboneliğinizde seçtiğiniz özel bir kaynak grubu adı. Kaynak grupları, erişim ve yönetim için Azure kaynaklarını gruplandıreklemenize olanak tanır. Şu anda aboneliğinizde bir kaynak grubunuz yoksa, LUı portalında bir tane oluşturmanıza izin verilmez. Bir tane oluşturmak için [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.ResourceGroup) gidin ve oturum açma işlemine devam etmek için lusıs 'e gidin.
     * **Azure Kaynak adı** -seçtiğiniz özel bir ad, yazma IŞLEMLERINIZ için URL 'nin bir parçası olarak kullanılır. Kaynak adınız yalnızca alfasayısal karakterler içerebilir, `-` ile başlayamaz veya bitemez `-` . Adda başka semboller varsa, kaynak oluşturma işlemi başarısız olur.
-    * **Konum** -Şu anda lubu tarafından desteklenen [üç yazma](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions) konumundan birinde uygulamalarınızı yazmak Için seçin: Batı ABD, Batı Avrupa ve Doğu Avustralya
-    * **Fiyatlandırma katmanı** varsayılan olarak, F0 Authoring fiyatlandırma katmanı, önerilen şekilde seçilir. Ek bir güvenlik katmanı arıyorsanız Azure portal [müşterinin yönettiği bir anahtar](https://docs.microsoft.com/azure/cognitive-services/luis/luis-encryption-of-data-at-rest#customer-managed-keys-for-language-understanding) oluşturun.
+    * **Konum** -Şu anda lubu tarafından desteklenen [üç yazma](./luis-reference-regions.md) konumundan birinde uygulamalarınızı yazmak Için seçin: Batı ABD, Batı Avrupa ve Doğu Avustralya
+    * **Fiyatlandırma katmanı** varsayılan olarak, F0 Authoring fiyatlandırma katmanı, önerilen şekilde seçilir. Ek bir güvenlik katmanı arıyorsanız Azure portal [müşterinin yönettiği bir anahtar](./luis-encryption-of-data-at-rest.md#customer-managed-keys-for-language-understanding) oluşturun.
 8. Artık LUO 'da oturumunuz başarıyla açıldı. Artık uygulama oluşturmaya başlayabilirsiniz.
 
 ## <a name="troubleshooting"></a>Sorun giderme

@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: victorh
-ms.openlocfilehash: e51cc8905a7b4a88bb7f7dabaf24bb30159ff86c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77e36d5ab98f1177b5a0b89ee10b3e6bd22560c2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83655075"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791468"
 ---
 # <a name="azure-firewall-threat-intelligence-based-filtering"></a>Azure Güvenlik Duvarı tehdit zekası tabanlı filtreleme
 
@@ -27,7 +27,7 @@ Bir kural tetiklendiğinde yalnızca bir uyarıyı günlüğe kaydedebilir veya 
 
 Varsayılan olarak, tehdit zekası tabanlı filtreleme, uyarı modunda etkindir. Bu özelliği kapatamaz veya Portal arabirimi bölgenizde kullanılabilir hale gelene kadar modu değiştiremezsiniz.
 
-:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="Güvenlik Duvarı tehdit bilgileri":::
+:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="Tehdit zekası tabanlı filtreleme portalı arabirimi":::
 
 ## <a name="logs"></a>Günlükler
 
@@ -45,7 +45,7 @@ Aşağıdaki günlük alıntısı tetiklenen bir kural gösterir:
 }
 ```
 
-## <a name="testing"></a>Test Etme
+## <a name="testing"></a>Sınama
 
 - **Giden sınama** -giden trafik uyarıları nadir bir oluşum olmalıdır, çünkü ortamınız tehlikede olduğu anlamına gelir. Giden uyarıların test sağlanmasına yardımcı olmak için bir uyarıyı tetikleyen bir test FQDN 'SI oluşturulmuştur. Giden testleriniz için **testmaliciousdomain.eastus.cloudapp.Azure.com** kullanın.
 
@@ -53,6 +53,6 @@ Aşağıdaki günlük alıntısı tetiklenen bir kural gösterir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Azure Güvenlik duvarı Log Analytics örnekleri](log-analytics-samples.md)
+- Bkz. [Azure Güvenlik duvarı Log Analytics örnekleri](./firewall-workbook.md)
 - [Azure Güvenlik duvarını dağıtmayı ve yapılandırmayı](tutorial-firewall-deploy-portal.md) öğrenin
 - [Microsoft Güvenlik Zekası raporunu](https://www.microsoft.com/en-us/security/operations/security-intelligence-report) gözden geçirin

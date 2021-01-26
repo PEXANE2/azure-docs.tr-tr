@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 16e60b5015107c5f99e63f15bb21c5a375f05340
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 74d2654c54d1ab2ac5d47aa24449c41c20a90b74
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123261"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791147"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure Veritabanı fiyatlandırma katmanları - Tek Sunucu
 
@@ -51,7 +51,7 @@ Sağladığınız depolama alanı, PostgreSQL için Azure veritabanı sunucunuza
 | IOPS | Değişken |3 ıOPS/GB<br/>Minimum 100 ıOPS<br/>Maksimum 20.000 ıOPS | 3 ıOPS/GB<br/>Minimum 100 ıOPS<br/>Maksimum 20.000 ıOPS |
 
 > [!NOTE]
-> 16 TB 'a kadar depolama alanı ve 20.000 ıOPS, şu bölgelerde desteklenir: Doğu ABD, Doğu ABD 2, Brezilya Güney, Orta ABD, Batı ABD, Orta Kuzey ABD, Orta Güney ABD, Kuzey Avrupa, Batı Avrupa, UK Güney, UK Batı, Güneydoğu Asya, Doğu Asya, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Avustralya Doğu, Avustralya Güney Doğu, Batı ABD 2, Orta Batı ABD , Kanada Doğu ve Kanada Orta.
+> 16 TB 'a kadar depolama alanı ve 20.000 ıOPS, şu bölgelerde desteklenir: Avustralya Doğu, Avustralya Güney Doğu, Brezilya Güney, Kanada Orta, Kanada Doğu, Orta ABD, Çin Doğu 2, Çin Kuzey 2, Doğu Asya, Doğu ABD, Doğu ABD 1, Doğu ABD 2, Japonya Doğu, Japonya Batı, Kore orta, Kore Güney, Orta Kuzey ABD, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, İsviçre Kuzey İsviçre Batı, US Gov Doğu, US Gov Güneydoğu, US Gov güneybatı, UK Güney, UK Batı, Batı Avrupa, Orta Batı ABD, Batı ABD ve Batı ABD 2.
 >
 > Tüm diğer bölgeler 4TB 'a kadar depolama ve 6000 ıOPS 'yi destekler.
 >

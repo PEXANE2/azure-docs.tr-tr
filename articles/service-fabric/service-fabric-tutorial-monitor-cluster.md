@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: f9ad0f443b1647499f7085693f34f4da9ec85398
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: ecd05a838425d57e0eaff2fa571d72b5a87e92a6
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332000"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791786"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>Öğretici: Azure 'da bir Service Fabric kümesini Izleme
 
@@ -74,7 +74,7 @@ Aşağıdaki görüntüde Service Fabric Analytics çözümünün giriş sayfas�
 
 ### <a name="view-service-fabric-events-including-actions-on-nodes"></a>Düğümlerde eylemler dahil Service Fabric olaylarını görüntüleme
 
-Service Fabric Analytics sayfasında, **küme olayları**grafiğine tıklayın.  Toplanan tüm sistem olaylarının günlükleri görünür. Bu, Azure depolama hesabındaki **Wadservicefabricsystemeventstable** ve benzer şekilde daha sonra gördüğünüz güvenilir hizmetler ve aktör olayları bu ilgili tablolardan alınan bir başvurudur.
+Service Fabric Analytics sayfasında, **küme olayları** grafiğine tıklayın.  Toplanan tüm sistem olaylarının günlükleri görünür. Bu, Azure depolama hesabındaki **Wadservicefabricsystemeventstable** ve benzer şekilde daha sonra gördüğünüz güvenilir hizmetler ve aktör olayları bu ilgili tablolardan alınan bir başvurudur.
     
 ![Işlem kanalını sorgula](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-events.png)
 
@@ -183,7 +183,7 @@ app('PlunkoServiceFabricCluster').traces
 
 ### <a name="view-service-fabric-application-events"></a>Service Fabric uygulama olaylarını görüntüle
 
-Kümede dağıtılan güvenilir hizmetler ve güvenilir aktör uygulamalarının olaylarını görüntüleyebilirsiniz.  Service Fabric Analytics sayfasında, **uygulama olayları**grafiğine tıklayın.
+Kümede dağıtılan güvenilir hizmetler ve güvenilir aktör uygulamalarının olaylarını görüntüleyebilirsiniz.  Service Fabric Analytics sayfasında, **uygulama olayları** grafiğine tıklayın.
 
 Güvenilir hizmetler uygulamalarınızdan olayları görüntülemek için aşağıdaki sorguyu çalıştırın:
 ```kusto
@@ -227,20 +227,20 @@ Güvenilir aktörler için daha ayrıntılı olaylar yapılandırmak üzere, `sc
 ## <a name="view-performance-counters-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile performans sayaçlarını görüntüleme
 Performans sayaçlarını görüntülemek için, Service Fabric Analytics çözümünü oluşturduğunuz [Azure Portal](https://portal.azure.com) ve kaynak grubuna gidin. 
 
-Kaynak **Servicefabric (Kapsamım)**, ardından **Log Analytics çalışma alanı**ve **Gelişmiş ayarlar**' ı seçin.
+Kaynak **Servicefabric (Kapsamım)**, ardından **Log Analytics çalışma alanı** ve **Gelişmiş ayarlar**' ı seçin.
 
 **Veriler**' e ve ardından **Windows performans sayaçları**' na tıklayın. Etkinleştirmek için seçebileceğiniz varsayılan sayaçların bir listesi vardır ve koleksiyon aralığını da ayarlayabilirsiniz. Ayrıca, toplanacak [ek performans sayaçları](service-fabric-diagnostics-event-generation-perf.md) ekleyebilirsiniz. Bu [makalede](/windows/desktop/PerfCtrs/specifying-a-counter-path)doğru biçime başvurulur. **Kaydet**' e ve ardından **Tamam**' a tıklayın.
 
 Gelişmiş ayarlar dikey penceresini kapatın ve **genel** başlık altında **çalışma alanı Özeti** ' ni seçin. Etkin çözümlerin her biri için, Service Fabric gibi bir grafik kutucuğu vardır. Service Fabric Analytics çözümüne devam etmek için **Service Fabric** grafiğine tıklayın.
 
-İşlemsel kanal ve güvenilir hizmet olayları için grafik kutucukları vardır. Seçtiğiniz sayaçlar için akan verilerin grafik gösterimi, **düğüm ölçümleri**altında görünür. 
+İşlemsel kanal ve güvenilir hizmet olayları için grafik kutucukları vardır. Seçtiğiniz sayaçlar için akan verilerin grafik gösterimi, **düğüm ölçümleri** altında görünür. 
 
 Ek ayrıntıları görmek için **kapsayıcı ölçümü** grafiğini seçin. Ayrıca, küme olaylarına benzer şekilde performans sayacı verilerini sorgulayabilir ve düğümler, performans sayacı adı ve değerler üzerinde kusto sorgu dilini kullanarak filtre uygulayabilirsiniz.
 
 ## <a name="query-the-eventstore-service"></a>EventStore hizmetini sorgulama
 [Eventstore hizmeti](service-fabric-diagnostics-eventstore.md) , belirli bir noktadaki kümenizin veya iş yüklerinizin durumunu anlamak için bir yol sağlar. EventStore, kümeden olayları tutan, durum bilgisi olan bir Service Fabric hizmetidir. Olaylar [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md), REST ve API 'ler aracılığıyla sunulur. EventStore, olayınızda bulunan tüm olayların tam listesini görmek Için kümedeki herhangi bir varlıkta tanılama verilerini almak üzere kümeyi doğrudan sorgular. [Service Fabric olayları](service-fabric-diagnostics-event-generation-operational.md)' na bakın.
 
-EventStore API 'Leri, [Service Fabric istemci kitaplığı](/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library)kullanılarak programlı bir şekilde sorgulanabilir.
+EventStore API 'Leri, [Service Fabric istemci kitaplığı](/dotnet/api/overview/azure/service-fabric#client-library)kullanılarak programlı bir şekilde sorgulanabilir.
 
 GetClusterEventListAsync işlevi aracılığıyla 2018-04-03T18:00:00Z ve 2018-04-04T18:00:00Z arasındaki tüm küme olayları için örnek bir istek aşağıda verilmiştir.
 
@@ -299,10 +299,10 @@ Service Fabric, sistem bileşenlerinin ve Watchdogs izlemedikleri yerel koşulla
 
 Küme, sistem bileşenleri tarafından gönderilen sistem durumu raporlarıyla otomatik olarak doldurulur. [Sorun gidermek için sistem durumu raporlarını kullanma](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)hakkında daha fazla bilgi edinin.
 
-Service Fabric, desteklenen [varlık türlerinin](service-fabric-health-introduction.md#health-entities-and-hierarchy)her biri için sistem durumu sorgularını kullanıma sunar. [FabricClient. HealthManager](/dotnet/api/system.fabric.fabricclient.healthmanager?view=azure-dotnet), PowerShell cmdlet 'LERI ve REST üzerindeki yöntemler kullanılarak API aracılığıyla erişilebilir. Bu sorgular, varlıkla ilgili tüm sistem durumu bilgilerini döndürür: toplu sistem durumu, varlık sistem durumu olayları, alt sistem durumu durumları (varsa), sağlıksız değerlendirmeler (varlık sağlıklı olmadığında) ve alt durum istatistikleri (varsa).
+Service Fabric, desteklenen [varlık türlerinin](service-fabric-health-introduction.md#health-entities-and-hierarchy)her biri için sistem durumu sorgularını kullanıma sunar. [FabricClient. HealthManager](/dotnet/api/system.fabric.fabricclient.healthmanager), PowerShell cmdlet 'LERI ve REST üzerindeki yöntemler kullanılarak API aracılığıyla erişilebilir. Bu sorgular, varlıkla ilgili tüm sistem durumu bilgilerini döndürür: toplu sistem durumu, varlık sistem durumu olayları, alt sistem durumu durumları (varsa), sağlıksız değerlendirmeler (varlık sağlıklı olmadığında) ve alt durum istatistikleri (varsa).
 
 ### <a name="get-cluster-health"></a>Küme durumunu al
-[Get-ServiceFabricClusterHealth cmdlet 'i](/powershell/module/servicefabric/get-servicefabricclusterhealth) , küme varlığının sistem durumunu döndürür ve uygulamaların ve düğümlerin (kümenin alt öğeleri) sistem durumu durumlarını içerir.  İlk olarak, [Connect-ServiceFabricCluster cmdlet 'ini](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps)kullanarak kümeye bağlanın.
+[Get-ServiceFabricClusterHealth cmdlet 'i](/powershell/module/servicefabric/get-servicefabricclusterhealth) , küme varlığının sistem durumunu döndürür ve uygulamaların ve düğümlerin (kümenin alt öğeleri) sistem durumu durumlarını içerir.  İlk olarak, [Connect-ServiceFabricCluster cmdlet 'ini](/powershell/module/servicefabric/connect-servicefabriccluster)kullanarak kümeye bağlanın.
 
 Kümenin durumu 11 düğüm, sistem uygulaması ve doku:/oylama açıklandığı şekilde yapılandırılmıştır.
 
@@ -454,7 +454,7 @@ HealthEvents            : None
 ```
 
 ### <a name="get-node-health"></a>Düğüm durumunu al
-[Get-ServiceFabricNodeHealth cmdlet 'i](/powershell/module/servicefabric/get-servicefabricnodehealth) bir düğüm varlığının sistem durumunu döndürür ve düğümde bildirilen sistem durumu olaylarını içerir. İlk olarak, [Connect-ServiceFabricCluster cmdlet 'ini](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps)kullanarak kümeye bağlanın. Aşağıdaki örnek, varsayılan sistem durumu ilkelerini kullanarak belirli bir düğümün sistem durumunu alır:
+[Get-ServiceFabricNodeHealth cmdlet 'i](/powershell/module/servicefabric/get-servicefabricnodehealth) bir düğüm varlığının sistem durumunu döndürür ve düğümde bildirilen sistem durumu olaylarını içerir. İlk olarak, [Connect-ServiceFabricCluster cmdlet 'ini](/powershell/module/servicefabric/connect-servicefabriccluster)kullanarak kümeye bağlanın. Aşağıdaki örnek, varsayılan sistem durumu ilkelerini kullanarak belirli bir düğümün sistem durumunu alır:
 
 ```powershell
 Get-ServiceFabricNodeHealth _nt1vm_3

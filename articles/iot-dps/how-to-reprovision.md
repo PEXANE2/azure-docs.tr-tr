@@ -3,30 +3,22 @@ title: Azure IoT Hub cihaz sağlama hizmeti 'nde cihazları yeniden sağlama
 description: Cihaz sağlama hizmeti (DPS) örneğinizle cihazların yeniden nasıl sağlanacağını ve neden bunu yapmanız gerekeceğinizi öğrenin.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/04/2019
+ms.date: 01/25/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: e5cc5b557aa4dff793f7e87093eeb65028da4f8c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d704e8f9687f3987d80018d84b41c0fd519da172
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010954"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791905"
 ---
 # <a name="how-to-reprovision-devices"></a>Cihazları yeniden sağlama
 
-IoT çözümünün yaşam döngüsü boyunca Cihazları IoT Hub 'ları arasında taşımak yaygındır. Bu taşımanın nedenleri aşağıdaki senaryolara dahil olabilir:
+IoT çözümünün yaşam döngüsü boyunca Cihazları IoT Hub 'ları arasında taşımak yaygındır. Bu konu, çözüm işleçlerinin yeniden sağlama ilkelerini yapılandırmaya yardımcı olmak için yazılmıştır.
 
-* **Coğrafi konum**: bir cihaz konumlar arasında taşındığında, cihazın her konuma yakın bir IoT Hub 'ına geçirilmesi halinde ağ gecikmesi geliştirilmiştir.
-
-* **Çoklu kiracı**: bir cihaz aynı IoT çözümünde kullanılabilir, ancak yeni bir müşteri veya müşteri sitesi için yeniden atandı veya kiralanır. Bu yeni müşteri farklı bir IoT Hub 'ı kullanılarak hizmet verebilir.
-
-* **Çözüm değişikliği**: bir cihaz yeni veya güncelleştirilmiş bir IoT çözümüne taşınabilir. Bu yeniden atama, cihazın diğer arka uç bileşenlerine bağlı yeni bir IoT Hub ile iletişim kurmasını gerektirebilir. 
-
-* **Karantina**: bir çözüm değişikliğine benzer. Hatalı çalışan, güvenliği aşılmış veya güncel olmayan bir cihaz, hepsi güncelleyebildiği ve uyumluluk için geri alabileceğiniz bir IoT Hub 'ına yeniden atanabilir. Cihaz düzgün şekilde çalıştıktan sonra ana hub 'ına geri geçirilir.
-
-Yeniden hazırlama hakkında daha ayrıntılı bilgi için bkz. [cihaz yeniden sağlama kavramlarını IoT Hub](concepts-device-reprovision.md).
+Yeniden sağlama senaryolarına daha ayrıntılı bir genel bakış için bkz. [cihaz yeniden sağlama kavramlarını IoT Hub](concepts-device-reprovision.md).
 
 
 ## <a name="configure-the-enrollment-allocation-policy"></a>Kayıt ayırma ilkesini yapılandırma

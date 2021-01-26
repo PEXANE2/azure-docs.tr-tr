@@ -3,12 +3,12 @@ title: Service Fabric yönetilen kümenin düğüm türlerini ekleme ve kaldırm
 description: Bu öğreticide, Service Fabric yönetilen bir kümenin düğüm türlerini ekleme ve kaldırma hakkında bilgi edinin.
 ms.topic: tutorial
 ms.date: 09/28/2020
-ms.openlocfilehash: 51cc83b4accae5f2791ce378e30f6fa692446b1c
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: bb33512652677fc4e46d8ba3668dca985bbcfe01
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316203"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791248"
 ---
 # <a name="tutorial-add-and-remove-node-types-from-a-service-fabric-managed-cluster-preview"></a>Öğretici: Service Fabric yönetilen bir kümeden düğüm türleri ekleme ve kaldırma (Önizleme)
 
@@ -29,7 +29,7 @@ Serinin bu bölümü aşağıdaki konuları içerir:
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Service Fabric yönetilen bir küme (bkz. [*yönetilen küme dağıtma*](tutorial-managed-cluster-deploy.md)).
-* [Azure PowerShell 4.7.0](/powershell/azure/release-notes-azureps?preserve-view=true&view=azps-4.7.0#azservicefabric) veya üzeri (bkz. [*Install Azure PowerShell*](/powershell/azure/install-az-ps?preserve-view=true&view=azps-4.7.0)).
+* [Azure PowerShell 4.7.0](/powershell/azure/release-notes-azureps#azservicefabric) veya üzeri (bkz. [*Install Azure PowerShell*](/powershell/azure/install-az-ps)).
 
 ## <a name="add-a-node-type-to-a-service-fabric-managed-cluster"></a>Service Fabric yönetilen bir kümeye düğüm türü ekleme
 

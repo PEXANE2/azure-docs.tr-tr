@@ -4,12 +4,12 @@ description: Reliable Actors Reliable Services nasıl katmanlanmakta olduğunu v
 ms.topic: conceptual
 ms.date: 3/9/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c3bd67e0f71e20a8b5a74b4b38e5b423a14dc08d
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: e204b47b7fa9f528341507c315c926159d524e13
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575627"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789591"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Reliable Actors Service Fabric platformunu kullanma
 Bu makalede Reliable Actors Azure Service Fabric platformunda nasıl çalıştığı açıklanmaktadır. Reliable Actors, *aktör hizmeti* olarak adlandırılan durum bilgisi olan güvenilir bir hizmetin uygulamasında barındırılan bir çerçevede çalışır. Aktör hizmeti, Aktörlerinizin yaşam döngüsünü ve ileti dağıtımını yönetmek için gerekli tüm bileşenleri içerir:
@@ -89,7 +89,7 @@ GUID/UUID 'ler ve dizeler kullanırken, değerler bir Int64 için karma hale get
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Aktör durumu yönetimi](service-fabric-reliable-actors-state-management.md)
 * [Aktör yaşam döngüsü ve çöp toplama](service-fabric-reliable-actors-lifecycle.md)
-* [Aktör API 'SI başvuru belgeleri](/dotnet/api/microsoft.servicefabric.actors?view=azure-dotnet)
+* [Aktör API 'SI başvuru belgeleri](/dotnet/api/microsoft.servicefabric.actors)
 * [.NET örnek kodu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java örnek kodu](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

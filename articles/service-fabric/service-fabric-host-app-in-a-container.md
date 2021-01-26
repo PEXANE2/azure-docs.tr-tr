@@ -3,12 +3,12 @@ title: Bir kapsayıcıda .NET uygulamasını Azure Service Fabric dağıtma
 description: Visual Studio'yu ve Service Fabric'teki hata ayıklama kapsayıcılarını yerel olarak kullanıp mevcut .NET uygulamasını kapsayıcılı hale getirmeyi öğrenin. Kapsayıcılı hale getirilen uygulama Azure Container Registry'ye gönderilir ve Service Fabric kümesine dağıtılır. Azure'a dağıtıldığında, verilerin kalıcı olmasını sağlamak için uygulama Azure SQL veritabanını kullanır.
 ms.topic: tutorial
 ms.date: 07/08/2019
-ms.openlocfilehash: 8be9de495fa6bc5689a2dba5384f5df3112cbb38
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 85e9b553000c52131c04502d496aa050b73d6d8a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485561"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791670"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Öğretici: Azure Service Fabric’e Windows kapsayıcısındaki bir .NET uygulamasını dağıtma
 
@@ -25,13 +25,14 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-1. Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-2. Windows 10’da kapsayıcıları çalıştırabilmek için [Docker Windows CE](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)’yi yükleyin.
-3. [Service Fabric çalışma zamanı sürümü 6.2 veya üstünü](service-fabric-get-started.md) ve [Service Fabric SDK sürüm 3.1](service-fabric-get-started.md) veya üstünü yükleyin.
-4. **Azure geliştirme** ve **ASP.net ve Web geliştirme** Iş yükleriyle [Visual Studio 2019 sürüm 16,1](https://www.visualstudio.com/) veya üstünü yükledikten sonra.
-5. [Azure PowerShell][link-azure-powershell-install] yüklensin
+1. Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+2. Windows özellikleri **Hyper-V** ve **kapsayıcıları** etkinleştirin.
+3. Windows 10’da kapsayıcıları çalıştırabilmek için [Docker Windows CE](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)’yi yükleyin.
+4. [Service Fabric çalışma zamanı sürümü 6.2 veya üstünü](service-fabric-get-started.md) ve [Service Fabric SDK sürüm 3.1](service-fabric-get-started.md) veya üstünü yükleyin.
+5. **Azure geliştirme** ve **ASP.net ve Web geliştirme** Iş yükleriyle [Visual Studio 2019 sürüm 16,1](https://www.visualstudio.com/) veya üstünü yükledikten sonra.
+6. [Azure PowerShell][link-azure-powershell-install] yüklensin
 
 ## <a name="download-and-run-fabrikam-fiber-callcenter"></a>Fabrikam Fiber CallCenter'ı indirme ve çalıştırma
 
@@ -40,16 +41,6 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 2. Fabrikam Fiber CallCenter uygulamasının hatasız derlendiğinden ve çalıştırıldığından emin olun.  Visual Studio’yu **yönetici** olarak başlatın ve [FabrikamFiber.CallCenter.sln][link-fabrikam-github] dosyasını açın.  Uygulamada hata ayıklaması yapmak ve uygulamayı çalıştırmak için F5'e basın.
 
    ![Yerel konakta çalışan Fabrikam Fiber CallCenter uygulaması ana sayfasının ekran görüntüsü. Sayfada, destek çağrıları listesi içeren bir pano görüntülenir.][fabrikam-web-page]
-
-## <a name="containerize-the-application"></a>Uygulamayı kapsayıcılı hale getirme
-
-1. **FabrikamFiber.Web** projesi > **Ekle** > **Container Orchestrator Desteği**'ne sağ tıklayın.  Kapsayıcı düzenleyicisi olarak **Service Fabric**'i seçin ve **Tamam**'a tıklayın.
-
-2. İstenirse, Docker 'ı Windows kapsayıcılarına şimdi değiştirmek için **Evet** ' e tıklayın.
-
-   Çözümde yeni bir Service Fabric uygulama projesi (**FabrikamFiber.CallCenterApplication**) oluşturulur.  Mevcut **FabrikamFiber.Web** projesine bir Dockerfile eklenir.  Ayrıca **FabrikamFiber.Web** projesine bir **PackageRoot** dizini de eklenir ve bu dizin yeni FabrikamFiber.Web hizmetinin hizmet bildirimiyle ayarlarını içerir.
-
-   Artık kapsayıcı, Service Fabric uygulamasında oluşturulup paketlenmeye hazırdır. Makinenizde kapsayıcı görüntüsü oluşturulduğunda, bu görüntüyü herhangi bir kapsayıcı kayıt defterine gönderebilir ve çalıştırmak için herhangi bir ana bilgisayara çekebilirsiniz.
 
 ## <a name="create-an-azure-sql-db"></a>Azure SQL Veritabanı oluşturma
 
@@ -120,9 +111,42 @@ Write-Host "Server name is $servername"
 >[!NOTE]
 >Ana bilgisayarınızdan erişilebilir olduğu sürece, yerel hata ayıklama için tercih ettiğiniz herhangi bir SQL Server’ı kullanabilirsiniz. Ancak **localdb**, `container -> host` iletişimini desteklemez. Web uygulamanızın sürüm derlemesini oluştururken farklı bir SQL veritabanı kullanmak isterseniz, *web.release.config* dosyasına başka bir bağlantı dizesi ekleyin.
 
+## <a name="containerize-the-application"></a>Uygulamayı kapsayıcılı hale getirme
+
+1. **FabrikamFiber.Web** projesi > **Ekle** > **Container Orchestrator Desteği**'ne sağ tıklayın.  Kapsayıcı düzenleyicisi olarak **Service Fabric**'i seçin ve **Tamam**'a tıklayın.
+
+2. İstenirse, Docker 'ı Windows kapsayıcılarına şimdi değiştirmek için **Evet** ' e tıklayın.
+
+   Çözümde yeni bir Service Fabric uygulama projesi (**FabrikamFiber.CallCenterApplication**) oluşturulur.  Mevcut **FabrikamFiber.Web** projesine bir Dockerfile eklenir.  Ayrıca **FabrikamFiber.Web** projesine bir **PackageRoot** dizini de eklenir ve bu dizin yeni FabrikamFiber.Web hizmetinin hizmet bildirimiyle ayarlarını içerir.
+
+   Artık kapsayıcı, Service Fabric uygulamasında oluşturulup paketlenmeye hazırdır. Makinenizde kapsayıcı görüntüsü oluşturulduğunda, bu görüntüyü herhangi bir kapsayıcı kayıt defterine gönderebilir ve çalıştırmak için herhangi bir ana bilgisayara çekebilirsiniz.
+
 ## <a name="run-the-containerized-application-locally"></a>Kapsayıcılı hale getirilen uygulamayı yerel olarak çalıştırma
 
 Uygulamayı yerel Service Fabric geliştirme kümesindeki bir kapsayıcıda çalıştırmak ve hatalarını ayıklamak için **F5** tuşuna basın. 'ServiceFabricAllowedUsers' grubuna, Visual Studio proje dizininize yönelik okuma ve yürütme izni verilmesini isteyen bir ileti kutusu sunulursa **Evet**’e tıklayın.
+
+F5 Run, aşağıdaki gibi bir özel durum oluşturursa, Azure veritabanı güvenlik duvarı 'na doğru IP eklenmemiş demektir.
+
+```text
+System.Data.SqlClient.SqlException
+HResult=0x80131904
+Message=Cannot open server 'fab-fiber-751718376' requested by the login. Client with IP address '123.456.789.012' is not allowed to access the server.  To enable access, use the Windows Azure Management Portal or run sp_set_firewall_rule on the master database to create a firewall rule for this IP address or address range.  It may take up to five minutes for this change to take effect.
+Source=.Net SqlClient Data Provider
+StackTrace:
+<Cannot evaluate the exception stack trace>
+```
+
+Azure veritabanı güvenlik duvarı 'na uygun IP eklemek için aşağıdaki komutu çalıştırın.
+
+```powershell
+# The IP address of your development computer that accesses the SQL DB.
+$clientIPNew = "<client IP from the Error Message>"
+
+# Create the firewall rule to allow your development computer to access the server.
+New-AzSqlServerFirewallRule -ResourceGroupName $dbresourcegroupname `
+    -ServerName $servername `
+    -FirewallRuleName "AllowClientNew" -StartIpAddress $clientIPNew -EndIpAddress $clientIPNew
+```
 
 ## <a name="create-a-container-registry"></a>Kapsayıcı kayıt defteri oluşturma
 
@@ -144,14 +168,14 @@ $registry = New-AzContainerRegistry -ResourceGroupName $acrresourcegroupname -Na
 
 Service Fabric uygulamaları, ağ bağlantılı sanal veya fiziksel makinelerin bulunduğu bir kümede çalışır.  Uygulamayı Azure 'a dağıtabilmeniz için önce Azure 'da bir Service Fabric kümesi oluşturun.
 
-Şunları yapabilirsiniz:
+Seçenekleriniz şunlardır:
 
 * Visual Studio'dan test kümesi oluşturma. Bu seçenek doğrudan Visual Studio'dan tercih ettiğiniz yapılandırmalarla güvenli bir küme oluşturmanızı sağlar.
 * [Şablondan güvenli bir küme oluşturma](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 
 Bu öğretici Visual Studio'dan bir küme oluşturur; bu test senaryoları için idealdir. Başka herhangi bir yolla küme oluşturursanız veya mevcut kümelerden birini kullanırsanız, bağlantı uç noktanızı kopyalayıp yapıştırabilir veya aboneliğinizden seçebilirsiniz.
 
-Başlamadan önce, Çözüm Gezgini içinde FabrikamFiber. Web->PackageRoot->ServiceManifest.xml açın. **Uç noktada** listelenen Web ön ucunun bağlantı noktasını bir yere göz atın.
+Başlamadan önce, Çözüm Gezgini içinde FabrikamFiber. Web-> PackageRoot-> ServiceManifest.xml açın. **Uç noktada** listelenen Web ön ucunun bağlantı noktasını bir yere göz atın.
 
 Küme oluşturulurken:
 
@@ -166,6 +190,9 @@ Küme oluşturulurken:
 
     c. **Sertifika** sekmesini seçin. Bu sekmede, kümenizin sertifikasını güvenli hale getirmek için kullanılacak bir parola yazın. Bu sertifika, kümenizin güvenliğine yardımcı olur. Ayrıca sertifikayı kaydetmek istediğiniz yolu da değiştirebilirsiniz. Visual Studio sertifikayı sizin için içeri aktarabilir, çünkü uygulamayı kümeye yayımlarken bu gerekli bir adımdır.
 
+    >[!NOTE]
+    >Bu sertifikanın içeri aktarıldığı klasör yolunu bir yere göz önünde bulundurun. Küme oluşturulduktan sonraki adım bu sertifikayı içeri aktarırsınız.
+
     d. **VM ayrıntısı** sekmesini seçin. Kümeyi oluşturan sanal makineler (VM) için kullanmak istediğiniz parolayı belirtin. Kullanıcı adı ve parola, VM'lere uzaktan bağlanmak için kullanılabilir. Ayrıca VM makine boyutu da seçmelisiniz ve gerekirse VM görüntüsü değiştirebilirsiniz.
 
     > [!IMPORTANT]
@@ -176,6 +203,12 @@ Küme oluşturulurken:
     f. Ayarları değiştirmeyi tamamladığınızda **Oluştur** düğmesini seçin.
 
 5. Oluşturma işleminin tamamlanması birkaç dakika sürer; çıkış penceresinde kümenin ne zaman tam olarak oluşturulduğu gösterilir.
+
+## <a name="install-the-imported-certificate"></a>İçeri aktarılan sertifikayı yükler
+
+Küme oluşturma adımının bir parçası olarak içeri aktarılan sertifikayı **Geçerli Kullanıcı** deposu konumuna yükler ve sağladığınız özel anahtar parolasını girin.
+
+Denetim masasından **Kullanıcı sertifikalarını Yönet** ' i açarak yüklemeyi doğrulayabilirsiniz ve sertifikanın **Sertifikalar-Geçerli Kullanıcı**  ->  **Kişisel**  ->  **sertifikaları** altında yüklü olduğunu onaylayın. Sertifika *[küme adı]* gibi olmalıdır. *[Küme konumu]*. cloudapp.Azure.com, ör. *fabrikamfibercallcenter.southcentralus.cloudapp.Azure.com*. 
 
 ## <a name="allow-your-application-running-in-azure-to-access-sql-database"></a>Azure 'da çalışan uygulamanızın SQL veritabanına erişmesine izin verin
 
@@ -233,9 +266,11 @@ Uygulama hazır olduğuna göre, doğrudan Visual Studio'dan Azure'daki bir küm
 
 ![Uygulama yayımlama][publish-app]
 
-Çıkış penceresinde dağıtımın ilerleme durumunu izleyin. Uygulama dağıtıldığında, tarayıcıyı açın ve küme adresiyle uygulama bağlantı noktasını yazın. Örneğin, `https://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/`.
+Çıkış penceresinde dağıtımın ilerleme durumunu izleyin. Uygulama dağıtıldığında, tarayıcıyı açın ve küme adresiyle uygulama bağlantı noktasını yazın. Örneğin, `http://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/`.
 
 ![Azure.com üzerinde çalışan Fabrikam Fiber CallCenter uygulama ana sayfasının ekran görüntüsü. Sayfada, destek çağrıları listesi içeren bir pano görüntülenir.][fabrikam-web-page-deployed]
+
+Sayfa yüklenemezse veya sertifikayı soramazsa, örneğin, Gezgin yolunu açmayı deneyin `https://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:19080/Explorer` ve yeni yüklenen sertifikayı seçin.
 
 ## <a name="set-up-continuous-integration-and-deployment-cicd-with-a-service-fabric-cluster"></a>Service Fabric kümesi ile Sürekli Tümleştirme ve Dağıtımı (CI/CD) ayarlama
 

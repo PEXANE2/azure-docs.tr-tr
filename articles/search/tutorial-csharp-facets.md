@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 10/01/2020
+ms.date: 01/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ab15af07c5f63d375d8fdb4fc38e0853e207a0be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44a05ed5b4386f2787a1c84dfeb61a5d539c7cb5
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667291"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789811"
 ---
 # <a name="tutorial-add-faceted-navigation-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak çok yönlü gezinti ekleme
 
@@ -35,7 +35,7 @@ Bu öğreticideki kodun tamamlanmış bir sürümü aşağıdaki projede bulunab
 
 * [4-Add-model-gezinti (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/4-add-facet-navigation)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [2A-Add-sayfalama (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/2a-add-paging) çözümü. Bu proje, önceki öğreticiden ya da GitHub 'dan bir kopyadan oluşturulmuş kendi sürümünüz olabilir.
 
@@ -43,9 +43,9 @@ Bu öğretici, [Azure.Search.Documstalar (sürüm 11)](https://www.nuget.org/pac
 
 ## <a name="set-model-properties-as-isfacetable"></a>Model özelliklerini ıscetable olarak ayarlama
 
-Model özelliğinin bir model aramasında bulunması için **ıbıı tablosuyla**etiketlenmesi gerekir.
+Model özelliğinin bir model aramasında bulunması için **ıbıı tablosuyla** etiketlenmesi gerekir.
 
-1. **Otel** sınıfını inceleyin. **Kategori** ve **Etiketler**, örneğin, **ıbıı tablosu**olarak etiketlenebilir, ancak **hoteladı** ve **Açıklama** değildir. 
+1. **Otel** sınıfını inceleyin. **Kategori** ve **Etiketler**, örneğin, **ıbıı tablosu** olarak etiketlenebilir, ancak **hoteladı** ve **Açıklama** değildir. 
 
     ```cs
     public partial class Hotel
@@ -111,7 +111,7 @@ Bu, görünümün iş, görünüme model listelerini geçirme işleridir. Arama 
 
 ### <a name="add-the-facet-action-method"></a>Model eylem yöntemini ekleyin
 
-Ana denetleyicinin mevcut **Dizin** ve **sayfa** eylemlerine ve **runqueryasync** yöntemine yönelik yeni bir eylem, **model**ve güncelleştirme olması gerekir.
+Ana denetleyicinin mevcut **Dizin** ve **sayfa** eylemlerine ve **runqueryasync** yöntemine yönelik yeni bir eylem, **model** ve güncelleştirme olması gerekir.
 
 <!-- 1. Open the home controller file, and add the **using** statement, to enable the **List&lt;string&gt;** construct.
 
@@ -234,7 +234,7 @@ Ana denetleyicinin mevcut **Dizin** ve **sayfa** eylemlerine ve **runqueryasync*
 
 ### <a name="set-up-the-search-filter"></a>Arama filtresini ayarlama
 
-Bir Kullanıcı belirli bir modeli seçtiğinde, örneğin, **çare ve Spa** kategorisine tıkladığınızda yalnızca bu kategori olarak belirtilen oteller sonuçlarda döndürülmelidir. Bu şekilde bir aramayı daraltmak için bir _filtre_ayarlaması gerekiyor.
+Bir Kullanıcı belirli bir modeli seçtiğinde, örneğin, **çare ve Spa** kategorisine tıkladığınızda yalnızca bu kategori olarak belirtilen oteller sonuçlarda döndürülmelidir. Bu şekilde bir aramayı daraltmak için bir _filtre_ ayarlaması gerekiyor.
 
 1. **Runqueryasync** yöntemini aşağıdaki kodla değiştirin. Birincil olarak, bir kategori filtre dizesi ve bir düzeltme filtre dizesi alır ve **SearchOptions**'ın **filtre** parametresini ayarlar.
 

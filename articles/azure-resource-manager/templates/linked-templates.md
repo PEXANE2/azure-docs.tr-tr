@@ -2,13 +2,13 @@
 title: Dağıtım için şablonları bağlama
 description: Modüler şablon çözümü oluşturmak için bir Azure Resource Manager şablonunda (ARM şablonu) bağlantılı şablonların nasıl kullanılacağını açıklar. Parametre değerlerinin nasıl geçirileceğini, bir parametre dosyası ve dinamik olarak oluşturulan URL 'Leri gösterir.
 ms.topic: conceptual
-ms.date: 01/20/2021
-ms.openlocfilehash: dd810167e07f1bb23f9563936cb481652953ccd1
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.date: 01/25/2021
+ms.openlocfilehash: 7d4df67b7f69b3e58799f45ad72bd9ed68540dc2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624867"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790944"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Azure kaynaklarını dağıtırken bağlı ve iç içe şablonları kullanma
 
@@ -111,6 +111,10 @@ Kapsamını özelliği aracılığıyla ayarlarsınız `expressionEvaluationOpti
   },
   ...
 ```
+
+> [!NOTE]
+>
+> Kapsam olarak ayarlandığında `outer` , `reference` iç içe yerleştirilmiş şablonda dağıttığınız bir kaynak için iç içe şablonun çıktılar bölümünde işlevini kullanamazsınız. Dağıtılan bir kaynağın değerlerini iç içe geçmiş bir şablonda döndürmek için `inner` kapsam kullanın veya iç içe geçmiş şablonunuzu bağlı bir şablona dönüştürün.
 
 Aşağıdaki şablon, şablon ifadelerinin kapsama göre nasıl çözümlendiğini gösterir. `exampleVar`Hem üst şablonda hem de iç içe yerleştirilmiş şablonda tanımlı adlı bir değişken içerir. Değişkenin değerini döndürür.
 
@@ -400,10 +404,6 @@ Aşağıdaki alıntıda hangi değerlerin güvenli olduğunu ve bunların güven
 }
 ```
 
-> [!NOTE]
->
-> Kapsam olarak ayarlandığında `outer` , `reference` iç içe yerleştirilmiş şablonda dağıttığınız bir kaynak için iç içe şablonun çıktılar bölümünde işlevini kullanamazsınız. Dağıtılan bir kaynağın değerlerini iç içe geçmiş bir şablonda döndürmek için `inner` kapsam kullanın veya iç içe geçmiş şablonunuzu bağlı bir şablona dönüştürün.
-
 ## <a name="linked-template"></a>Bağlantılı şablon
 
 Bir şablonu bağlamak için ana şablonunuza bir [dağıtımlar kaynağı](/azure/templates/microsoft.resources/deployments) ekleyin. `templateLink`Özelliğinde, dahil edilecek ŞABLONUN URI 'sini belirtin. Aşağıdaki örnek, bir depolama hesabındaki bir şablona bağlantı sağlar.
@@ -500,7 +500,7 @@ Hem satır içi parametreleri hem de bir parametre dosyası bağlantısını kul
 
 Bağlı şablonlarınızı erişilebilir bir uç noktada tutmak yerine, ana şablonu ve onun bağlantılı şablonlarını dağıtabileceğiniz tek bir varlığa paketleyen bir [şablon belirtimi](template-specs.md) oluşturabilirsiniz. Şablon belirtimi, Azure aboneliğinizdeki bir kaynaktır. Şablonu kuruluşunuzdaki kullanıcılarla güvenli bir şekilde paylaşmayı kolaylaştırır. Şablon belirtimine erişim sağlamak için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanırsınız. Bu özellik şu anda önizleme aşamasındadır.
 
-Daha fazla bilgi için bkz:
+Daha fazla bilgi için bkz.
 
 - [Öğretici: bağlantılı şablonlarla bir şablon belirtimi oluşturun](./template-specs-create-linked.md).
 - [Öğretici: bir şablon belirtimini bağlantılı şablon olarak dağıtın](./template-specs-deploy-linked-template.md).
@@ -797,7 +797,7 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 
 Aşağıdaki örneklerde, bağlantılı şablonların yaygın kullanımları gösterilmektedir.
 
-|Ana şablon  |Bağlantılı şablon |Description  |
+|Ana şablon  |Bağlantılı şablon |Açıklama  |
 |---------|---------| ---------|
 |[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[bağlantılı şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Bağlantılı şablondan dize döndürür. |
 |[Genel IP adresi ile Load Balancer](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[bağlantılı şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |Bağlı şablondan ortak IP adresini döndürür ve yük dengeleyicide bu değeri ayarlar. |

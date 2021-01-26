@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 7d43c128f0f587a32cc4b8673727579043f268eb
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: ed1fe2885b1be28a03251bcfcecd08bdbd35adcf
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629604"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790081"
 ---
 # <a name="set-up-logging-to-monitor-logic-apps-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde mantıksal uygulamaları izlemek için günlüğü ayarlama
 
@@ -24,7 +24,7 @@ Logic Apps kaynaklarınızı [Microsoft Azure Güvenlik Merkezi](../security-cen
 
 * Azure aboneliği. Aboneliğiniz yoksa, başlamadan önce [ücretsiz bir Azure hesabı oluşturun](https://azure.microsoft.com/free/) .
 * [Tanılama günlüğü etkin](#enable-diagnostic-logging)olan mevcut mantıksal uygulamalar.
-* Mantıksal uygulamanız için günlüğe kaydetmeyi etkinleştirmek için gereken bir Log Analytics çalışma alanı. Çalışma alanınız yoksa, önce [çalışma alanınızı oluşturun](/azure/azure-monitor/learn/quick-create-workspace).
+* Mantıksal uygulamanız için günlüğe kaydetmeyi etkinleştirmek için gereken bir Log Analytics çalışma alanı. Çalışma alanınız yoksa, önce [çalışma alanınızı oluşturun](../azure-monitor/learn/quick-create-workspace.md).
 
 ## <a name="enable-diagnostic-logging"></a>Tanılama günlüğünü etkinleştirme
 
@@ -69,7 +69,7 @@ Logic Apps tanılama günlüklerinizin hedefi olarak Log Analytics veya Event Hu
 1. Tanılama günlüklerini etkinleştirdiğini onaylamak için Tanılama ayarları `logs.enabled` alanının olarak ayarlandığından emin olun `true` . 
 1. Bunun yerine, hedef olarak bir depolama hesabı ayarlamadıysanız emin olmak için `storageAccountId` alanın olarak ayarlandığından emin olun `false` .
 
-Örnek:
+Örneğin:
 
 ```json
 "allOf": [

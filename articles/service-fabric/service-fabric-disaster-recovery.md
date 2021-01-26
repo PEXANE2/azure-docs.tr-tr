@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 9c258d8d0a7aa26c96ab4f64017770ebdd153e60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d99b4d1fbf227d850de387b7ca24dcd3fd40646
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86257517"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791164"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Azure Service Fabric olağanüstü durum kurtarma
 Yüksek kullanılabilirlik sunmaya yönelik kritik bir bölüm, hizmetlerin tüm farklı türdeki hataların varlığını sürdürmesini sağlamaktır. Bu özellikle, planlanmamış ve denetiminizin dışından oluşan hatalarda önemlidir. 
@@ -63,7 +63,7 @@ Hizmetin türü ne olursa olsun, tek bir örnek çalıştırıldığında kodun 
 Tek bir hatayı işlemek için, yapabileceğiniz en basit şey, hizmetlerinizin varsayılan olarak birden fazla düğüm üzerinde çalışmasını sağlamaktır. Durum bilgisi olmayan hizmetler için 1 ' `InstanceCount` den büyük olduğundan emin olun. Durum bilgisi olan hizmetler için en düşük öneri, `TargetReplicaSetSize` `MinReplicaSetSize` her ikisi de 3 olarak ayarlanmıştır. Hizmet kodunuzun daha fazla kopyasını çalıştırmak, hizmetinizin tek bir hatayı otomatik olarak işlemesini sağlar. 
 
 ### <a name="handling-coordinated-failures"></a>Eşgüdümlü sorunları işleme
-Küme içindeki Eşgüdümlü hatalara, planlı veya planlanmamış altyapı hatalarından ve değişikliklerden veya planlı yazılım değişikliklerinden kaynaklanabilir. Service Fabric, *hata etki alanları*olarak Eşgüdümlü hatalarla karşılaşan altyapı bölgelerini modelleyin. Koordine edilen yazılım değişikliklerini deneyime yönelik alanlara *yükseltme etki alanları*olarak modellenir. Hata etki alanları, yükseltme etki alanları ve küme topolojisi hakkında daha fazla bilgi için bkz. [küme kaynak yöneticisi kullanarak Service Fabric kümesi tanımlama](service-fabric-cluster-resource-manager-cluster-description.md).
+Küme içindeki Eşgüdümlü hatalara, planlı veya planlanmamış altyapı hatalarından ve değişikliklerden veya planlı yazılım değişikliklerinden kaynaklanabilir. Service Fabric, *hata etki alanları* olarak Eşgüdümlü hatalarla karşılaşan altyapı bölgelerini modelleyin. Koordine edilen yazılım değişikliklerini deneyime yönelik alanlara *yükseltme etki alanları* olarak modellenir. Hata etki alanları, yükseltme etki alanları ve küme topolojisi hakkında daha fazla bilgi için bkz. [küme kaynak yöneticisi kullanarak Service Fabric kümesi tanımlama](service-fabric-cluster-resource-manager-cluster-description.md).
 
 Service Fabric, hizmetlerinizin nerede çalışacağını planlarken, hata ve yükseltme etki alanlarını varsayılan olarak değerlendirir. Service Fabric, varsayılan olarak, hizmetlerinizin birkaç hata ve yükseltme etki alanında çalıştığından emin olmaya çalışır, böylece planlanmış veya planlanmamış değişiklikler meydana geliyorsa, hizmetleriniz kullanılabilir kalır. 
 
@@ -120,7 +120,7 @@ Durum bilgisi olan bir hizmet için olağanüstü durum olup olmadığını beli
    Çoğu zaman, başarısızlıklar geçicidir. İşlem yeniden başlatıldı, düğümler yeniden başlatıldı, sanal makineler geri alınıyor ve ağ bölümleri de aynı. Bazen, sorunlar kalıcı olabilir. Hataların kalıcı olup olmadığı veya olmaması, durum bilgisi olan hizmetin durumunu veya yalnızca bellekte tutulmasını ister. 
    
    - Kalıcı duruma sahip olmayan hizmetler için, çekirdek veya daha fazla çoğaltmalardan oluşan bir hata _hemen_ kalıcı çekirdek kaybına neden olur. Service Fabric, durum bilgisi olmayan kalıcı olmayan bir hizmette çekirdek kaybını algıladığında, anında (potansiyel) veri kaybı bildirerek 3. adıma geçer. Service Fabric çoğaltmaların geri dönmesi beklenmediğini bildiğinden, veri kaybına devam etmek anlamlı hale gelir. Kurtarıldıklarında bile, hizmetin kalıcı olmayan yapısı nedeniyle veriler kaybolur.
-   - Durum bilgisi olmayan kalıcı hizmetler için bir çekirdekte veya daha fazla çoğaltmalardan oluşan bir hata, çoğaltmaların geri dönüp çekirdeği geri yükleme işleminin beklemesini Service Fabric neden olur. Bu durum, hizmetin etkilenen bölüme (veya "çoğaltma kümesi") herhangi bir _yazma işlemleri_ için bir hizmet kesintisine neden olur. Ancak, daha düşük tutarlılık garantisi ile okuma yapılabilmeye devam edebilir. Service Fabric, çekirdeğin geri yüklenmesini bekleyeceği varsayılan süre *sonsuzdur*çünkü devam eden bir (potansiyel) veri kaybı olayı ve diğer riskleri taşır. Bu, bir yönetici veri kaybını bildirmek için işlem yapmadığınız takdirde Service Fabric sonraki adıma ilerleyemez.
+   - Durum bilgisi olmayan kalıcı hizmetler için bir çekirdekte veya daha fazla çoğaltmalardan oluşan bir hata, çoğaltmaların geri dönüp çekirdeği geri yükleme işleminin beklemesini Service Fabric neden olur. Bu durum, hizmetin etkilenen bölüme (veya "çoğaltma kümesi") herhangi bir _yazma işlemleri_ için bir hizmet kesintisine neden olur. Ancak, daha düşük tutarlılık garantisi ile okuma yapılabilmeye devam edebilir. Service Fabric, çekirdeğin geri yüklenmesini bekleyeceği varsayılan süre *sonsuzdur* çünkü devam eden bir (potansiyel) veri kaybı olayı ve diğer riskleri taşır. Bu, bir yönetici veri kaybını bildirmek için işlem yapmadığınız takdirde Service Fabric sonraki adıma ilerleyemez.
 3. Verilerin kayıp olup olmadığını belirleme ve yedeklerden geri yükleme.
 
    Çekirdek kaybı bildirilirse (otomatik olarak veya yönetim eylemi aracılığıyla), Service Fabric ve hizmetler, verilerin gerçekten kayıp olup olmadığını belirlemek için taşınır. Bu noktada, Service Fabric diğer çoğaltmaların geri geldiğini de biliyor. Bu, çekirdek kaybının kendisini çözümlemek için beklemeyi durdurduğumızda yapılan karardır. Hizmet için en iyi eylem, genellikle donabilir ve belirli yönetim müdahalesini bekler.
@@ -136,7 +136,7 @@ Durum bilgisi olan bir hizmet için olağanüstü durum olup olmadığını beli
       Örneğin, iki farklı hizmetin bilgileri koordine etmesidir, geri yükleme yapıldıktan sonra, bu iki hizmetin ilgilendiğinden emin olmak için bu yedeklemelerin değiştirilmesi gerekebilir. 
    1. Genellikle başka bir telemetri veya hizmetten söz konusu olabilir. Bu meta veriler diğer hizmetlerde veya günlüklerde bulunabilir. Bu bilgiler, yedekte bulunmayan ve bu belirli çoğaltmaya çoğaltılan birincil konumda alınan ve işlenen herhangi bir çağrı olup olmadığını öğrenmek için gerektiği şekilde kullanılabilir. Geri yükleme mümkün olmadan önce bu çağrıların yeniden yürütülmesi veya yedeklemeye eklenmesi gerekebilir.  
    1. Uygulama, kalan çoğaltmanın durumunu kullanılabilir yedeklemelerde bulunan ile karşılaştırır. Service Fabric güvenilir koleksiyonlar kullanıyorsanız, bu işlemi gerçekleştirmek için kullanabileceğiniz [Araçlar ve süreçler](service-fabric-reliable-services-backup-restore.md) vardır. Amaç, çoğaltmanın içindeki durumunun yeterli olup olmadığını ve yedeklemenin eksik olabileceğini görmenizi sağlamaktır.
-   1. Karşılaştırma yapıldıktan sonra ve geri yükleme tamamlandıktan sonra (gerekliyse), herhangi bir durum değişikliği yapılırsa hizmet kodu **true** döndürmelidir. Çoğaltma, durumun en iyi kullanılabilir kopyası olduğunu tespit ederseniz ve hiçbir değişiklik yapmamışsa, kod **false**döndürür. 
+   1. Karşılaştırma yapıldıktan sonra ve geri yükleme tamamlandıktan sonra (gerekliyse), herhangi bir durum değişikliği yapılırsa hizmet kodu **true** döndürmelidir. Çoğaltma, durumun en iyi kullanılabilir kopyası olduğunu tespit ederseniz ve hiçbir değişiklik yapmamışsa, kod **false** döndürür. 
    
       **True** değeri, kalan _diğer_ çoğaltmaların artık bununla tutarsız olabileceğini gösterir. Bunlar bu çoğaltmadan bırakılır ve yeniden oluşturulur. **Yanlış** değeri, hiçbir durum değişikliği yapılmadığını gösterir, bu nedenle diğer çoğaltmalar onların neleri tutabileceklerini tutabilir. 
 
@@ -172,7 +172,7 @@ Aşağıdaki eylemler veri kaybına neden olabilir. İzlemeden önce denetleyin.
 >
 
 - `Repair-ServiceFabricPartition -PartitionId`Veya `System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)` API 'yi kullanın. Bu API, çekirdek kaybını ve olası veri kaybını taşımak için bölüm KIMLIĞININ belirtilmesine izin verir.
-- Kümeniz, hizmetlerin bir çekirdek kaybı durumuna geçmesine neden olan ve olası _veri kaybı kabul edilebilir olduğunda_, uygun bir [QuorumLossWaitDuration](/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) değeri belirtmek hizmetinizin otomatik olarak kurtarılmasına yardımcı olabilir. Service Fabric, `QuorumLossWaitDuration` Kurtarma gerçekleştirilmeden önce, girilen değeri (varsayılan değer sonsuzdur) bekleyecek. Beklenmedik veri kayıplarının oluşmasına neden olabileceğinden, bu *yöntemi önermiyoruz.*
+- Kümeniz, hizmetlerin bir çekirdek kaybı durumuna geçmesine neden olan ve olası _veri kaybı kabul edilebilir olduğunda_, uygun bir [QuorumLossWaitDuration](/powershell/module/servicefabric/update-servicefabricservice) değeri belirtmek hizmetinizin otomatik olarak kurtarılmasına yardımcı olabilir. Service Fabric, `QuorumLossWaitDuration` Kurtarma gerçekleştirilmeden önce, girilen değeri (varsayılan değer sonsuzdur) bekleyecek. Beklenmedik veri kayıplarının oluşmasına neden olabileceğinden, bu *yöntemi önermiyoruz.*
 
 ## <a name="availability-of-the-service-fabric-cluster"></a>Service Fabric kümesinin kullanılabilirliği
 Genel olarak Service Fabric kümesi, tek hata noktası olmayan, yüksek oranda dağıtılmış bir ortamdır. Birincil olarak, Service Fabric sistem hizmetleri daha önce sunulan yönergeleri izlediğinden, herhangi bir düğüm, kümede kullanılabilirlik veya güvenilirlik sorunlarına yol açmaz. Diğer bir deyişle, her zaman varsayılan olarak üç veya daha fazla çoğaltma ve durum bilgisiz olmayan sistem hizmetleri tüm düğümlerde çalışır. 
@@ -196,11 +196,11 @@ Tek bir veri merkezinde veya bölgede kalıcı veya sürekli başarısızlığı
   Bu tür kümede Hizmetleri çalıştırabilmek için ilkeler hakkında daha fazla bilgi için bkz. [Service Fabric Hizmetleri Için yerleştirme ilkeleri](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md).
 
 ### <a name="random-failures-that-lead-to-cluster-failures"></a>Küme hatalarına neden olan rastgele sorunlar
-Service Fabric *çekirdek düğümleri*kavramıdır. Bunlar, temel alınan kümenin kullanılabilirliğini sürdürdüğüm olan düğümlerdir. 
+Service Fabric *çekirdek düğümleri* kavramıdır. Bunlar, temel alınan kümenin kullanılabilirliğini sürdürdüğüm olan düğümlerdir. 
 
 Çekirdek düğümleri, diğer düğümlerle Kiralama kurarak ve belirli başarısızlık türleri sırasında tiebreaklikler gören kümenin açık kalmasını sağlamaya yardımcı olur. Rastgele arızalar kümedeki çekirdek düğümlerin çoğunu kaldırlarsa ve hızlı bir şekilde geri getirilmezse kümeniz otomatik olarak kapanır. Küme daha sonra başarısız olur. 
 
-Azure 'da Service Fabric kaynak sağlayıcısı Service Fabric küme yapılandırmasını yönetir. Varsayılan olarak, kaynak sağlayıcısı çekirdek düğümlerini hata ve yükseltme etki alanlarına *birincil düğüm türü*boyunca dağıtır. Birincil düğüm türü gümüş veya altın dayanıklılık olarak işaretlenmişse, bir çekirdek düğümünü kaldırdığınızda (birincil düğüm türünde ölçeklendirerek veya el ile kaldırarak), küme, birincil düğüm türünün kullanılabilir kapasitesinden başka çekirdek olmayan bir düğümü yükseltmeye çalışır. Bu deneme, küme güvenilirlik düzeyinden daha az kullanılabilir kapasiteye sahipseniz, birincil düğüm türü için gerekli olduğundan başarısız olur.
+Azure 'da Service Fabric kaynak sağlayıcısı Service Fabric küme yapılandırmasını yönetir. Varsayılan olarak, kaynak sağlayıcısı çekirdek düğümlerini hata ve yükseltme etki alanlarına *birincil düğüm türü* boyunca dağıtır. Birincil düğüm türü gümüş veya altın dayanıklılık olarak işaretlenmişse, bir çekirdek düğümünü kaldırdığınızda (birincil düğüm türünde ölçeklendirerek veya el ile kaldırarak), küme, birincil düğüm türünün kullanılabilir kapasitesinden başka çekirdek olmayan bir düğümü yükseltmeye çalışır. Bu deneme, küme güvenilirlik düzeyinden daha az kullanılabilir kapasiteye sahipseniz, birincil düğüm türü için gerekli olduğundan başarısız olur.
 
 Tek başına Service Fabric kümelerinde ve Azure 'da, birincil düğüm türü, Seeds 'yi çalıştıran bir ektir. Birincil düğüm türünü tanımlarken Service Fabric, en fazla dokuz temel düğüm ve her sistem hizmeti için yedi çoğaltma oluşturarak, belirtilen düğüm sayısından otomatik olarak yararlanır. Rastgele bir başarısızlık kümesi bu çoğaltmaların büyük bir bölümünü aynı anda alırsa, sistem hizmetleri çekirdek kaybına girer. Çekirdek düğümlerin çoğunluğu kaybolmuşsa, küme yakında kapatılacak.
 

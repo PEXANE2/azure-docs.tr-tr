@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: fd04e5a7f084de7a95f20b54b99a9e4590f10cd7
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 7df9f7d072af7c5f6523fd1be0432ce51954fa10
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034773"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791888"
 ---
 # <a name="call-functions-from-azure-logic-apps"></a>Azure Logic Apps işlevleri çağırma
 
@@ -31,7 +31,7 @@ Azure Işlevleri 'ni kullanmadan kod parçacıklarını çalıştırmak için [s
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
-* Azure Işlevleri 'nde oluşturulmuş bir işlev için, oluşturduğunuz işlevle birlikte bir kapsayıcı olan bir işlev uygulaması. Bir işlev uygulamanız yoksa, [önce işlev uygulamanızı oluşturun](../azure-functions/functions-create-first-azure-function.md). Daha sonra işlevinizi Azure portal mantıksal uygulamanızın dışında veya mantıksal uygulama Tasarımcısı 'nda [mantıksal](#create-function-designer) uygulamanızın içinden oluşturabilirsiniz.
+* Azure Işlevleri 'nde oluşturulmuş bir işlev için, oluşturduğunuz işlevle birlikte bir kapsayıcı olan bir işlev uygulaması. Bir işlev uygulamanız yoksa, [önce işlev uygulamanızı oluşturun](../azure-functions/functions-get-started.md). Daha sonra işlevinizi Azure portal mantıksal uygulamanızın dışında veya mantıksal uygulama Tasarımcısı 'nda [mantıksal](#create-function-designer) uygulamanızın içinden oluşturabilirsiniz.
 
 * Logic Apps ile çalışırken, mevcut veya yeni mi olduğunu bağımsız olarak işlev uygulamalarına ve işlevlere aynı gereksinimleri uygular:
 
@@ -102,9 +102,9 @@ Artık Azure 'da işlevinizi oluşturduğunuza göre [Logic Apps 'e işlevler ek
 
 ## <a name="create-functions-inside-logic-apps"></a>Logic Apps içinde işlevler oluşturma
 
-Logic App Designer 'daki yerleşik Azure Işlevleri eylemini kullanarak doğrudan mantıksal uygulamanızın iş akışından işlevler oluşturabilirsiniz, ancak bu yöntemi yalnızca JavaScript 'te yazılan işlevler için kullanabilirsiniz. Diğer diller için Azure portal Azure Işlevleri deneyimiyle işlevleri oluşturabilirsiniz. Daha fazla bilgi için, [Azure Portal ilk işlevinizi oluşturma](../azure-functions/functions-create-first-azure-function.md)bölümüne bakın.
+Logic App Designer 'daki yerleşik Azure Işlevleri eylemini kullanarak doğrudan mantıksal uygulamanızın iş akışından işlevler oluşturabilirsiniz, ancak bu yöntemi yalnızca JavaScript 'te yazılan işlevler için kullanabilirsiniz. Diğer diller için Azure portal Azure Işlevleri deneyimiyle işlevleri oluşturabilirsiniz. Daha fazla bilgi için, [Azure Portal ilk işlevinizi oluşturma](../azure-functions/functions-get-started.md)bölümüne bakın.
 
-Ancak, Azure 'da işlevinizi oluşturabilmeniz için önce işlevleriniz için bir kapsayıcı olan bir işlev uygulamasına sahip olmanız gerekir. Bir işlev uygulamanız yoksa, önce bu işlev uygulamasını oluşturun. Bkz. [Azure Portal ilk işlevinizi oluşturma](../azure-functions/functions-create-first-azure-function.md).
+Ancak, Azure 'da işlevinizi oluşturabilmeniz için önce işlevleriniz için bir kapsayıcı olan bir işlev uygulamasına sahip olmanız gerekir. Bir işlev uygulamanız yoksa, önce bu işlev uygulamasını oluşturun. Bkz. [Azure Portal ilk işlevinizi oluşturma](../azure-functions/functions-get-started.md).
 
 1. [Azure Portal](https://portal.azure.com)mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
 

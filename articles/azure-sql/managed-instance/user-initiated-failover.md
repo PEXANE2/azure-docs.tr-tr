@@ -9,13 +9,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 12/16/2020
-ms.openlocfilehash: 4b1c98d8621267b300a82b697bce66a6b94e82f3
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.date: 01/25/2021
+ms.openlocfilehash: c12e1f4b01b0e2dd7fa21808cf33f45f9a5be59b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825931"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789981"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL Yönetilen Örneği'nde kullanıcı tarafından başlatılan el ile yük devretme
 
@@ -143,6 +143,7 @@ Daha önce BC için gösterilen GP hizmet katmanıyla aynı çıktıyı göremez
 > - Her **15 dakikada** bir yönetilen örnek üzerinde bir (1) yük devretme başlatılmış olabilir.
 > - BC örnekleri için, yük devretme isteğinin kabul edilmesi için mevcut çoğaltmaların çekirdeği olması gerekir.
 > - BC örnekleri için, hangi okunabilir ikincil çoğaltmanın üzerinde yük devretmeyi başlatacağını belirtmek mümkün değildir.
+> - Yeni bir veritabanı için ilk tam yedekleme otomatik yedekleme sistemleri tarafından tamamlanana kadar yük devretmeye izin verilmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5fcb3226eebf39ab18fb3bb24f0521a0523748d4
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: bc9601dbea5c73c6909bd658f322c345143a526c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134186"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790283"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault günlüğü
 
@@ -59,7 +59,7 @@ Tek tek bloblar JSON blobu olarak biçimlendirilip metin olarak depolanır. Bir 
 
 Aşağıdaki tabloda alan adları ve açıklamaları listelenmektedir:
 
-| Alan adı | Description |
+| Alan adı | Açıklama |
 | --- | --- |
 | **ışınızda** |UTC olarak tarih ve saat. |
 | **RESOURCEID** |Azure Resource Manager kaynak KIMLIĞI. Key Vault günlükleri için, her zaman Key Vault kaynak KIMLIĞI olur. |
@@ -75,7 +75,7 @@ Aşağıdaki tabloda alan adları ve açıklamaları listelenmektedir:
 | **IDENTITY** |REST API isteğinde sunulan belirteçten kimlik. Bu, genellikle bir "Kullanıcı," bir "hizmet sorumlusu" veya "Kullanıcı + AppID" birleşimidir ve bir Azure PowerShell cmdlet 'inin sonucu olan bir istekte bulunur. |
 | **özelliklerinin** |İşleme göre farklılık gösteren bilgiler (**OperationName**). Çoğu durumda bu alan istemci bilgilerini (istemci tarafından geçirilen kullanıcı aracısı dizesi), tam REST API istek URI 'sini ve HTTP durum kodunu içerir. Ayrıca, bir nesne bir isteğin sonucu olarak döndürüldüğünde (örneğin, **Keycreate** veya **vaultget**), anahtar URI (as `id` ), kasa URI 'si veya gizli URI 'yi de içerir. |
 
-**OperationName** alan değerleri *objectverb* biçimindedir. Örnek:
+**OperationName** alan değerleri *objectverb* biçimindedir. Örneğin:
 
 * Tüm Anahtar Kasası işlemleri `Vault<action>` , ve gibi biçimdedir `VaultGet` `VaultCreate` .
 * Tüm anahtar işlemleri `Key<action>` , ve gibi biçimdedir `KeySign` `KeyList` .
@@ -194,7 +194,7 @@ Bunu ayarlama dahil daha fazla bilgi için bkz. [Azure izleyici 'de Azure Key Va
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Key Vault günlüğü etkinleştirme](howto-logging.md)
-- [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/)
+- [Azure izleyici](../../azure-monitor/index.yml)
 - .NET Web uygulamasında Azure Key Vault kullanan bir öğretici için bkz. [bir Web uygulamasından Azure Key Vault kullanma](tutorial-net-create-vault-azure-web-app.md).
 - Programlama başvuruları için bkz. [Azure Anahtar Kasası geliştirici kılavuzu](developers-guide.md).
 - Azure Key Vault için Azure PowerShell 1,0 cmdlet 'lerinin bir listesi için bkz. [Azure Key Vault cmdlet 'leri](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault).

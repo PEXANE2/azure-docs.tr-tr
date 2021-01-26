@@ -4,12 +4,12 @@ description: Service Fabric uzaktan iletişim, istemcilerin ve hizmetlerin uzak 
 ms.topic: conceptual
 ms.date: 09/20/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c3659fea73abae3c9c5264f227b90d0af95a93e7
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: a0486a27d76c978a65c4a3cfd81df52a12e4ea1d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576664"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791586"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Reliable Services Ile C# ' de hizmet uzaktan iletişimi
 
@@ -160,7 +160,7 @@ Bu adımlar, açık v2 sınıfları kullanarak v2 yığınını kullanmak için 
    </Resources>
    ```
 
-2. Ad alanından [Fabrictransportserviceremotinglistener](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet) kullanın `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` .
+2. Ad alanından [Fabrictransportserviceremotinglistener](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener) kullanın `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` .
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -176,7 +176,7 @@ Bu adımlar, açık v2 sınıfları kullanarak v2 yığınını kullanmak için 
     }
    ```
 
-3. İstemcileri oluşturmak için ad alanından [Fabrictransportserviceremotingclientfactory](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) komutunu kullanın `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` .
+3. İstemcileri oluşturmak için ad alanından [Fabrictransportserviceremotingclientfactory](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory) komutunu kullanın `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` .
 
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
@@ -255,7 +255,7 @@ V2_1 yığınına geçmek için aşağıdaki adımları izleyin.
     }
    ```
 
-3. Uzaktan iletişim arabirimlerine bir [derleme özniteliği](/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute?view=azure-dotnet) ekleyin.
+3. Uzaktan iletişim arabirimlerine bir [derleme özniteliği](/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute) ekleyin.
 
    ```csharp
     [assembly:  FabricTransportServiceRemotingProvider(RemotingListenerVersion=  RemotingListenerVersion.V2_1, RemotingClientVersion= RemotingClientVersion.V2_1)]
@@ -267,7 +267,7 @@ V2_1 yığınına geçmek için aşağıdaki adımları izleyin.
 
 ### <a name="use-explicit-remoting-classes-to-create-a-listenerclient-factory-for-the-v2-interface-compatible-version"></a>V2 (arabirim ile uyumlu) sürümü için bir dinleyici/istemci fabrikası oluşturmak üzere açık uzaktan iletişim sınıfları kullanın
 
-Şu adımları izleyin:
+Şu adımları uygulayın:
 
 1. Hizmet bildiriminde "ServiceEndpointV2_1" adlı bir uç nokta kaynağı ekleyin.
 
@@ -279,7 +279,7 @@ V2_1 yığınına geçmek için aşağıdaki adımları izleyin.
    </Resources>
    ```
 
-2. [Remoting v2 dinleyicisini](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet)kullanın. Kullanılan varsayılan hizmet uç noktası kaynak adı "ServiceEndpointV2_1" dir. Hizmet bildiriminde tanımlanmalıdır.
+2. [Remoting v2 dinleyicisini](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener)kullanın. Kullanılan varsayılan hizmet uç noktası kaynak adı "ServiceEndpointV2_1" dir. Hizmet bildiriminde tanımlanmalıdır.
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -297,7 +297,7 @@ V2_1 yığınına geçmek için aşağıdaki adımları izleyin.
     }
    ```
 
-3. V2 [istemci fabrikası](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet)' nu kullanın.
+3. V2 [istemci fabrikası](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory)' nu kullanın.
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
           {
@@ -356,7 +356,7 @@ Bu adım, hizmetin yalnızca v2 dinleyicisine dinlediğinden emin olmanızı sa�
 ### <a name="use-custom-serialization-with-a-remoting-wrapped-message"></a>Uzaktan, Sarmalanan bir ileti ile özel serileştirme kullanma
 
 Uzaktan iletişim sarmalanmış bir ileti için, içinde bir alan olarak tüm parametreleri içeren tek bir Sarmalanan nesne oluşturacağız.
-Şu adımları izleyin:
+Şu adımları uygulayın:
 
 1. `IServiceRemotingMessageSerializationProvider`Özel serileştirme için uygulama sağlamak üzere arabirimini uygulayın.
     Bu kod parçacığı, uygulamanın nasıl göründüğünü gösterir.

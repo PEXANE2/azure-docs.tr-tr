@@ -1,5 +1,5 @@
 ---
-title: Sanal makine ölçek kümesi tarafından kullanılan mevcut Azure Load Balancer güncelleştirme veya silme
+title: Sanal Makine Ölçek Kümesi tarafından kullanılan mevcut Azure Load Balancer’ı güncelleştirme veya silme
 titleSuffix: Update or delete existing Azure Load Balancer used by Virtual Machine Scale Set
 description: Bu nasıl yapılır makalesi sayesinde Azure Standart Load Balancer ve sanal makine ölçek kümelerini kullanmaya başlayın.
 services: load-balancer
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/30/2020
 ms.author: irenehua
-ms.openlocfilehash: f8f664375e53a1cef28b0c7b95207770434f67fa
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: d5614490bfd2cfb67b6b7afd7b7b8643bbf754bd
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97893286"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790098"
 ---
 # <a name="how-to-updatedelete-azure-load-balancer-used-by-virtual-machine-scale-sets"></a>Sanal makine ölçek kümeleri tarafından kullanılan Azure Load Balancer güncelleştirme/silme
 
 ## <a name="how-to-set-up-azure-load-balancer-for-scaling-out-virtual-machine-scale-sets"></a>Sanal makine ölçek kümelerinin ölçeğini genişletmek için Azure Load Balancer ayarlama
-  * Load Balancer [gelen NAT havuzu](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest) ayarlanmış olduğundan ve sanal makine ölçek kümesinin Load Balancer arka uç havuzunda bulunduğundan emin olun. Azure Load Balancer, sanal makine ölçek kümesine yeni sanal makine örnekleri eklendiğinde, gelen NAT havuzunda otomatik olarak yeni gelen NAT kuralları oluşturur. 
+  * Load Balancer [gelen NAT havuzu](/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest) ayarlanmış olduğundan ve sanal makine ölçek kümesinin Load Balancer arka uç havuzunda bulunduğundan emin olun. Azure Load Balancer, sanal makine ölçek kümesine yeni sanal makine örnekleri eklendiğinde, gelen NAT havuzunda otomatik olarak yeni gelen NAT kuralları oluşturur. 
   * Gelen NAT havuzunun düzgün ayarlanıp ayarlanmadığını denetlemek için 
   1. https://portal.azure.com adresinden Azure portalında oturum açın.
   
@@ -35,7 +35,7 @@ Sağ bölmede, sanal makine ölçek kümesindeki her bir örnek için oluşturul
 ## <a name="how-to-add-inbound-nat-rules"></a>Gelen NAT kuralları nasıl eklenir? 
   * Tek bir gelen NAT kuralı eklenemez. Ancak, sanal makine ölçek kümesindeki tüm örnekler için tanımlı ön uç bağlantı noktası aralığı ve arka uç bağlantı noktası içeren bir dizi gelen NAT kuralı ekleyebilirsiniz.
   * Sanal Makine Ölçek Kümeleri için bir bütün gelen NAT kuralı kümesini eklemek için, önce Load Balancer bir gelen NAT havuzu oluşturmanız ve ardından sanal makine ölçek kümesinin ağ profilinden gelen NAT havuzuna başvurmanız gerekir. CLı kullanan tam bir örnek aşağıda gösterilmiştir.
-  * Yeni gelen NAT havuzu, mevcut gelen NAT havuzlarıyla çakışan ön uç bağlantı noktası aralığına sahip olmamalıdır. Ayarlanmış olan gelen NAT havuzlarını görüntülemek için bu [CLI komutunu](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest#az_network_lb_inbound_nat_pool_list) kullanabilirsiniz
+  * Yeni gelen NAT havuzu, mevcut gelen NAT havuzlarıyla çakışan ön uç bağlantı noktası aralığına sahip olmamalıdır. Ayarlanmış olan gelen NAT havuzlarını görüntülemek için bu [CLI komutunu](/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest#az_network_lb_inbound_nat_pool_list) kullanabilirsiniz
 ```azurecli-interactive
 az network lb inbound-nat-pool create 
         -g MyResourceGroup 
@@ -92,7 +92,7 @@ az network lb inbound-nat-pool update
    
 1. **Ön uç IP adresi ekle** sayfasında, değerleri yazın ve **Tamam** ' ı seçin.
 
-1. Yeni Yük Dengeleme kuralları gerekiyorsa, bu öğreticide [5](https://docs.microsoft.com/azure/load-balancer/load-balancer-multiple-ip#step-5-configure-the-health-probe) . ve [6](https://docs.microsoft.com/azure/load-balancer/load-balancer-multiple-ip#step-5-configure-the-health-probe) . adım ' a uyun
+1. Yeni Yük Dengeleme kuralları gerekiyorsa, bu öğreticide [5](./load-balancer-multiple-ip.md#step-5-configure-the-health-probe) . ve [6](./load-balancer-multiple-ip.md#step-5-configure-the-health-probe) . adım ' a uyun
 
 1. Gerekirse yeni oluşturulan ön uç IP yapılandırmasını kullanarak yeni bir gelen NAT kuralları kümesi oluşturun. Örnek burada [önceki bölümde] bulunabilir.
 

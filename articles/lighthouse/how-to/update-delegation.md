@@ -3,12 +3,12 @@ title: Temsilciyi güncelleştirme
 description: Azure 'da daha önce eklendi bir müşteri için bir temsilciyi güncelleştirme hakkında bilgi edinin.
 ms.date: 12/03/2020
 ms.topic: how-to
-ms.openlocfilehash: e204d1f3546e6e978f91c7e808065a388a4af4b3
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: eec5d1f2d34e8e3c9e0ded59cb111624b1981873
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093426"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791348"
 ---
 # <a name="update-a-delegation"></a>Temsilciyi güncelleştirme
 
@@ -58,9 +58,9 @@ Dağıtım tamamlandıktan sonra, [başarılı olduğunu doğrulayın](onboard-c
 
 ## <a name="updating-managed-service-offers"></a>Yönetilen hizmet tekliflerini güncelleştirme
 
-Müşterinizin Azure Marketi 'Nde yayınlanan yönetilen bir hizmet teklifiyle eklendi ve yetkilendirmeleri güncelleştirmek istiyorsanız, bu müşterinin planında güncelleştirilmesini istediğiniz [yetkilendirmeler](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#authorization) ile [teklifinizin yeni bir sürümünü yayımlayarak](../../marketplace/partner-center-portal/update-existing-offer.md) temsilciyi güncelleştirebilirsiniz. Müşteri daha sonra Azure portal en yeni sürüme güncelleştirebilir.
+Müşterinizin Azure Marketi 'Nde yayınlanan yönetilen bir hizmet teklifiyle eklendi ve yetkilendirmeleri güncelleştirmek istiyorsanız, bu müşterinin planında güncelleştirilmesini istediğiniz [yetkilendirmeler](../../marketplace/plan-managed-service-offer.md) ile [teklifinizin yeni bir sürümünü yayımlayarak](../../marketplace/partner-center-portal/update-existing-offer.md) temsilciyi güncelleştirebilirsiniz. Müşteri daha sonra Azure portal en yeni sürüme güncelleştirebilir.
 
-Yönetim kiracısını değiştirmek istiyorsanız müşterinin kabul etmesi için [Yeni bir yönetilen hizmet teklifi oluşturmanız ve yayımlamanız](../../marketplace/partner-center-portal/create-new-managed-service-offer.md) gerekir.
+Yönetim kiracısını değiştirmek istiyorsanız müşterinin kabul etmesi için [Yeni bir yönetilen hizmet teklifi oluşturmanız ve yayımlamanız](../../marketplace/plan-managed-service-offer.md) gerekir.
 
 > [!TIP]
 > Daha önce belirtildiği gibi, aynı müşteri ve kiracı yönetimi arasında birden çok farklı teklif kullanmanıza gerek kalmaz. Aynı müşteri için aynı yönetim kiracısını kullanan yeni bir teklif yayımlarsanız, müşteri daha yeni teklifi kabul etmeden önce önceki teklifin kaldırıldığından emin olun.

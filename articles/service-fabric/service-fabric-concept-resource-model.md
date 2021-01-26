@@ -3,12 +3,12 @@ title: Azure Service Fabric uygulama kaynak modeli
 description: Bu makalede, Azure Resource Manager kullanarak bir Azure Service Fabric uygulamasının yönetilmesine ilişkin bir genel bakış sunulmaktadır.
 ms.topic: conceptual
 ms.date: 10/21/2019
-ms.openlocfilehash: f4fbd775ab479437c350dc24b9b5511f7a614c8b
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 0019f154f301d2b688d4c16c9adb36ec386adef2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576103"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790732"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric uygulama kaynak modeli
 
@@ -171,13 +171,13 @@ Aşağıdaki nedenlerden biri için zaten Service Fabric bir kümeye dağıtılm
 
 Kaynak Yöneticisi içindeki uygulama kaynak modeli kullanılarak dağıtılan bir uygulamayı silmek için:
 
-1. Uygulamanın kaynak KIMLIĞINI almak için [Get-AzResource](/powershell/module/az.resources/get-azresource?view=azps-2.5.0) cmdlet 'ini kullanın:
+1. Uygulamanın kaynak KIMLIĞINI almak için [Get-AzResource](/powershell/module/az.resources/get-azresource) cmdlet 'ini kullanın:
 
     ```powershell
     Get-AzResource  -Name <String> | f1
     ```
 
-1. Uygulama kaynaklarını silmek için [Remove-AzResource](/powershell/module/az.resources/remove-azresource?view=azps-2.5.0) cmdlet 'ini kullanın:
+1. Uygulama kaynaklarını silmek için [Remove-AzResource](/powershell/module/az.resources/remove-azresource) cmdlet 'ini kullanın:
 
     ```powershell
     Remove-AzResource  -ResourceId <String> [-Force] [-ApiVersion <String>]

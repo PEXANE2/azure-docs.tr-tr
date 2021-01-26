@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: 8f92501bdb8261a67d3dc2b8aefbe1fb1498ef1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d64c6383b9a83b759dd8368a4e3e0f1847b5ee16
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445892"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791232"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric kümenizdeki Windows işletim sistemini düzeltme eki uygulama
 
@@ -77,7 +77,7 @@ POA, küme üzerinde Onarım Yöneticisi hizmetinin etkinleştirilmesini gerekti
 Gümüş dayanıklılık katmanındaki Azure kümelerinin varsayılan olarak Onarım Yöneticisi hizmeti etkinleştirilmiştir. Altın dayanıklılık katmanındaki Azure kümeleri, bu kümelerin ne zaman oluşturulduğuna bağlı olarak Onarım Yöneticisi hizmeti etkin olabilir veya olmayabilir. Varsayılan olarak, bronz dayanıklılık katmanındaki Azure kümelerinin Onarım Yöneticisi hizmeti etkin değildir. Hizmet zaten etkinleştirilmişse, Service Fabric Explorer ' deki Sistem Hizmetleri bölümünde çalıştığını görebilirsiniz.
 
 ##### <a name="the-azure-portal"></a>Azure portal
-Kümeyi ayarlarken Azure portal Onarım Yöneticisi etkinleştirebilirsiniz. Kümeyi yapılandırırken, **eklenti özellikleri**altında **içerme onarım Yöneticisi** seçeneğini belirleyin.
+Kümeyi ayarlarken Azure portal Onarım Yöneticisi etkinleştirebilirsiniz. Kümeyi yapılandırırken, **eklenti özellikleri** altında **içerme onarım Yöneticisi** seçeneğini belirleyin.
 
 ![Azure portal Onarım Yöneticisi etkinleştirme görüntüsü](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
 
@@ -141,7 +141,7 @@ Onarım Yöneticisi hizmetini etkinleştirmek için:
 
 1. Güncelleştirilmiş küme bildirimini kullanarak bu değişikliklerle küme bildiriminizi güncelleştirin [Yeni bir küme oluşturun](./service-fabric-cluster-creation-for-windows-server.md) veya [küme yapılandırmasını yükseltin](./service-fabric-cluster-upgrade-windows-server.md). 
 
-   Küme, güncelleştirilmiş bir küme bildirimiyle çalıştıktan sonra, kümenizde çalışan Onarım Yöneticisi hizmetini görebilirsiniz. *Fabric:/System/RepairManagerService*olarak adlandırılır ve bu, Service Fabric Explorer sistem hizmetleri bölümünde yer alabilir.
+   Küme, güncelleştirilmiş bir küme bildirimiyle çalıştıktan sonra, kümenizde çalışan Onarım Yöneticisi hizmetini görebilirsiniz. *Fabric:/System/RepairManagerService* olarak adlandırılır ve bu, Service Fabric Explorer sistem hizmetleri bölümünde yer alabilir.
 
 ### <a name="configure-windows-updates-for-all-nodes"></a>Tüm düğümler için Windows güncelleştirmelerini yapılandırma
 
@@ -165,11 +165,11 @@ Gereksinimlerinizi karşılamak için POA davranışını yapılandırabilirsini
 | Wuoperationtimeoutınminutes | int <br>(Varsayılan: *90*)                   | Herhangi bir Windows Update işlemi için (arama veya indirme veya yükleme) zaman aşımını belirtir. İşlem belirtilen zaman aşımı süresi içinde tamamlanmazsa, durdurulur.       |
 | WURescheduleCount     | int <br> (Varsayılan: *5*)                  | Bir işlemin kalıcı olarak başarısız olması halinde hizmetin Windows Update müşteri sizinle randevusunu en fazla kaç kez başarısız olduğunu.          |
 | WURescheduleTimeInMinutes | int <br>(Varsayılan: *30*) | Hata devam ederse hizmetin Windows güncelleştirmelerini müşteri sizinle randevusunu zaman aralığı. |
-| WUFrequency           | Virgülle ayrılmış dize (varsayılan: *haftalık, Çarşamba, 7:00:00*)     | Windows güncelleştirmelerini yükleme sıklığı. Biçim ve olası değerler şunlardır: <br>-Aylık, gg, ss: DD: SS (örnek: *aylık, 5, 12:22:32*). Alan _gg_ (gün) için izin verilen değerler 1 ile 28 arasında ve _son_sayılardır. <br>-Haftalık, gün, ss: DD: SS (örnek: *haftalık, Salı, 12:22:32*)  <br>-Günlük, ss: DD: SS (örnek: *günlük, 12:22:32*)  <br>-Hafta, gün, ss: DD: SS (örnek: *2, Cuma, 21:00:00* her ayın 2. haftası ÜZERINDE 9:00 PM UTC 'yi gösterir) <br>- *Hiçbiri* Windows güncelleştirmelerinin yapılmayacağını gösterir.  <br><br> Süreler UTC olarak.|
+| WUFrequency           | Virgülle ayrılmış dize (varsayılan: *haftalık, Çarşamba, 7:00:00*)     | Windows güncelleştirmelerini yükleme sıklığı. Biçim ve olası değerler şunlardır: <br>-Aylık, gg, ss: DD: SS (örnek: *aylık, 5, 12:22:32*). Alan _gg_ (gün) için izin verilen değerler 1 ile 28 arasında ve _son_ sayılardır. <br>-Haftalık, gün, ss: DD: SS (örnek: *haftalık, Salı, 12:22:32*)  <br>-Günlük, ss: DD: SS (örnek: *günlük, 12:22:32*)  <br>-Hafta, gün, ss: DD: SS (örnek: *2, Cuma, 21:00:00* her ayın 2. haftası ÜZERINDE 9:00 PM UTC 'yi gösterir) <br>- *Hiçbiri* Windows güncelleştirmelerinin yapılmayacağını gösterir.  <br><br> Süreler UTC olarak.|
 | AcceptWindowsUpdateEula | Boole <br>(Varsayılan: *true*) | Bu bayrak ayarlanarak uygulama, makinenin sahibi adına Windows Update için End-User lisans anlaşmasını kabul eder.              |
 
 > [!TIP]
-> Windows güncelleştirmelerinin hemen gerçekleşmesini istiyorsanız `WUFrequency` uygulama dağıtım zamanına göre ayarlayın. Örneğin, beş düğümlü bir test kümeniz olduğunu ve uygulamayı 5:00 PM UTC 'de dağıtmayı planladığınızı varsayalım. Uygulama yükseltme veya dağıtımın en fazla 30 dakika sürdüğünü varsaydıysanız, WUFrequency *'Yi günlük, 17:30:00*olarak ayarlayın.
+> Windows güncelleştirmelerinin hemen gerçekleşmesini istiyorsanız `WUFrequency` uygulama dağıtım zamanına göre ayarlayın. Örneğin, beş düğümlü bir test kümeniz olduğunu ve uygulamayı 5:00 PM UTC 'de dağıtmayı planladığınızı varsayalım. Uygulama yükseltme veya dağıtımın en fazla 30 dakika sürdüğünü varsaydıysanız, WUFrequency *'Yi günlük, 17:30:00* olarak ayarlayın.
 
 ## <a name="deploy-poa"></a>POA dağıtma
 
@@ -256,7 +256,7 @@ Koordinatör hizmeti için REST uç noktası dinamik bir bağlantı noktasına s
 
 Kümede ters proxy etkinse, URL 'ye küme dışından da erişebilirsiniz.
 
-İsabet etmeniz gereken uç nokta *http:// &lt; SERVERURL &gt; : &lt; smarproxyport &gt; /Patchorchestrationapplication/koordinattorservice/v1/getwindowsupdateresults*şeklindedir.
+İsabet etmeniz gereken uç nokta *http:// &lt; SERVERURL &gt; : &lt; smarproxyport &gt; /Patchorchestrationapplication/koordinattorservice/v1/getwindowsupdateresults* şeklindedir.
 
 Kümede ters proxy 'yi etkinleştirmek için [Azure Service Fabric 'de ters proxy](./service-fabric-reverseproxy.md)'deki yönergeleri izleyin. 
 
@@ -271,17 +271,17 @@ Bu bölümde, Service Fabric kümelerinde POA üzerinden düzeltme eki güncelle
 > [!NOTE]
 > Aşağıdaki, kendinden fazla tanılama geliştirmelerinden çoğunu almak için, POA sürüm 1.4.0 veya daha yeni BIR sürümü yüklemiş olmanız gerekir.
 
-NTService düğüm Aracısı, düğümlere güncelleştirme yüklemek için [onarım görevleri](/dotnet/api/system.fabric.repair.repairtask?view=azure-dotnet) oluşturuyor. Her görev daha sonra, görev onay ilkesine göre Düzenleyici hizmeti tarafından hazırlanır. Son olarak, hazırlanan görevler Onarım Yöneticisi tarafından onaylanır ve bu, küme sağlıksız durumdaysa hiçbir görevi onaylamaz. 
+NTService düğüm Aracısı, düğümlere güncelleştirme yüklemek için [onarım görevleri](/dotnet/api/system.fabric.repair.repairtask) oluşturuyor. Her görev daha sonra, görev onay ilkesine göre Düzenleyici hizmeti tarafından hazırlanır. Son olarak, hazırlanan görevler Onarım Yöneticisi tarafından onaylanır ve bu, küme sağlıksız durumdaysa hiçbir görevi onaylamaz. 
 
 Güncelleştirmelerin düğüm üzerinde nasıl ilerleyerek anlamanıza yardımcı olmak için adım adım:
 
 1. Her düğümde çalışan NodeAgentNTService, zamanlanan zamanda kullanılabilir Windows güncelleştirmelerini arar. Güncelleştirmeler varsa, bunları düğümüne indirir.
 
-1. Güncelleştirmeler indirildikten sonra, NTService düğüm Aracısı, *POS___ \<unique_id> *adlı düğüm için karşılık gelen bir onarım görevi oluşturur. Bu onarım görevlerini [Get-ServiceFabricRepairTask](/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) cmdlet 'ini kullanarak veya düğüm ayrıntıları bölümünde SFX ' i kullanarak görüntüleyebilirsiniz. Onarım görevi oluşturulduktan sonra hızlı bir şekilde, [ *talep* edilen duruma](/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet)gider.
+1. Güncelleştirmeler indirildikten sonra, NTService düğüm Aracısı, *POS___ \<unique_id>* adlı düğüm için karşılık gelen bir onarım görevi oluşturur. Bu onarım görevlerini [Get-ServiceFabricRepairTask](/powershell/module/servicefabric/get-servicefabricrepairtask) cmdlet 'ini kullanarak veya düğüm ayrıntıları bölümünde SFX ' i kullanarak görüntüleyebilirsiniz. Onarım görevi oluşturulduktan sonra hızlı bir şekilde, [ *talep* edilen duruma](/dotnet/api/system.fabric.repair.repairtaskstate)gider.
 
-1. Koordinatör hizmeti, belirli *bir durumdaki onarım* görevlerini düzenli aralıklarla arar ve ardından TaskApprovalPolicy 'e göre durumu *hazırlamaya* yönelik olarak güncelleştirir. TaskApprovalPolicy NodeWise olacak şekilde yapılandırıldıysa, bir düğüme karşılık gelen bir onarım görevi yalnızca *hazırlama*, *onaylanan*, *yürütme*veya *geri yükleme* durumunda başka bir onarım görevi yoksa hazırlanır. 
+1. Koordinatör hizmeti, belirli *bir durumdaki onarım* görevlerini düzenli aralıklarla arar ve ardından TaskApprovalPolicy 'e göre durumu *hazırlamaya* yönelik olarak güncelleştirir. TaskApprovalPolicy NodeWise olacak şekilde yapılandırıldıysa, bir düğüme karşılık gelen bir onarım görevi yalnızca *hazırlama*, *onaylanan*, *yürütme* veya *geri yükleme* durumunda başka bir onarım görevi yoksa hazırlanır. 
 
-   Benzer şekilde, UpgradeWise TaskApprovalPolicy söz konusu olduğunda, önceki durumlarda yalnızca aynı güncelleştirme etki alanına ait düğümler için görevler vardır. Bir onarım görevi *hazırlama* durumuna taşındıktan sonra, karşılık gelen Service Fabric düğümü, amaç *yeniden başlatılacak*şekilde ayarlanmış olarak [devre dışıdır](/powershell/module/servicefabric/disable-servicefabricnode?view=azureservicefabricps) .
+   Benzer şekilde, UpgradeWise TaskApprovalPolicy söz konusu olduğunda, önceki durumlarda yalnızca aynı güncelleştirme etki alanına ait düğümler için görevler vardır. Bir onarım görevi *hazırlama* durumuna taşındıktan sonra, karşılık gelen Service Fabric düğümü, amaç *yeniden başlatılacak* şekilde ayarlanmış olarak [devre dışıdır](/powershell/module/servicefabric/disable-servicefabricnode) .
 
    POA sürümleri 1.4.0 ve üzeri, düzeltme eki eklenen düğümleri göstermek için Koordinatör Torservice üzerindeki ClusterPatchingStatus özelliğiyle olayları nakleder. Güncelleştirmeler, aşağıdaki görüntüde gösterildiği gibi _poanode_0 yüklenir:
 
@@ -294,13 +294,13 @@ Güncelleştirmelerin düğüm üzerinde nasıl ilerleyerek anlamanıza yardımc
 
 1. Onarım görevi *yürütme* durumundaysa, bu düğümdeki düzeltme eki yüklemesi başlar. Düzeltme eki yüklendikten sonra, düzeltme ekine bağlı olarak düğüm yeniden başlatılmamış olabilir veya başlatılamayabilir. Ardından, onarım görevi, düğümü yeniden sağlayan *geri yükleme* durumuna taşınır. Onarım görevi daha sonra tamamlandı olarak işaretlenir.
 
-   POA sürümlerinde, 1.4.0 ve üzeri sürümlerde, WUOperationStatus-Property ile NodeAgentService üzerindeki sistem durumu olaylarını görüntüleyerek güncelleştirme durumunu bulabilirsiniz \<NodeName> . Aşağıdaki resimlerde vurgulanan bölümler, *poanode_0* ve *poanode_2*düğümlerde Windows güncelleştirmelerinin durumunu gösterir:
+   POA sürümlerinde, 1.4.0 ve üzeri sürümlerde, WUOperationStatus-Property ile NodeAgentService üzerindeki sistem durumu olaylarını görüntüleyerek güncelleştirme durumunu bulabilirsiniz \<NodeName> . Aşağıdaki resimlerde vurgulanan bölümler, *poanode_0* ve *poanode_2* düğümlerde Windows güncelleştirmelerinin durumunu gösterir:
 
    [![Ekran görüntüsü poanode_0 vurgulanmış Windows Update işlem durumunun konsol penceresini gösterir.](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
 
    [![Ekran görüntüsü poanode_1 vurgulanmış Windows Update işlem durumunun konsol penceresini gösterir.](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
 
-   Ayrıca, PowerShell 'i kullanarak da Ayrıntılar alabilirsiniz. Bunu yapmak için kümeye bağlanır ve [Get-ServiceFabricRepairTask](/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps)kullanarak onarım görevinin durumunu getirebilirsiniz. 
+   Ayrıca, PowerShell 'i kullanarak da Ayrıntılar alabilirsiniz. Bunu yapmak için kümeye bağlanır ve [Get-ServiceFabricRepairTask](/powershell/module/servicefabric/get-servicefabricrepairtask)kullanarak onarım görevinin durumunu getirebilirsiniz. 
    
    Aşağıdaki örnekte, "POS__poanode_2_125f2969-933c-4774-85D1-ebdf85e79f15" görevi *Downloadtamamlanma* durumunda. Bu, güncelleştirmelerin *poanode_2* düğümüne indirildiği anlamına gelir ve görev *yürütme* durumuna geçerse yükleme denenir.
 
@@ -334,7 +334,7 @@ Güncelleştirmelerin düğüm üzerinde nasıl ilerleyerek anlamanıza yardımc
 
 Düzeltme Eki düzenleme uygulama günlükleri Service Fabric çalışma zamanı günlüklerinin bir parçası olarak toplanır.
 
-Tanılama aracını veya tercih ettiğiniz işlem hattını kullanarak günlükleri yakalayabilirsiniz. POA olayları [olay kaynağı](/dotnet/api/system.diagnostics.tracing.eventsource?view=netframework-4.5.1)aracılığıyla günlüğe kaydetmek için aşağıdaki sabit sağlayıcı kimliklerini kullanır:
+Tanılama aracını veya tercih ettiğiniz işlem hattını kullanarak günlükleri yakalayabilirsiniz. POA olayları [olay kaynağı](/dotnet/api/system.diagnostics.tracing.eventsource)aracılığıyla günlüğe kaydetmek için aşağıdaki sabit sağlayıcı kimliklerini kullanır:
 
 - e39b723c-590c-4090-abb0-11e3e6616346
 - fc0028ff-bfdc-499f-80dc-ed922c52c5e9
@@ -379,7 +379,7 @@ Y: POA, küme sağlıksız olduğu sürece güncelleştirmeleri yüklemez. POA i
 
 **S: Kümem için TaskApprovalPolicy "NodeWise" veya "UpgradeDomainWise" olarak ayarlanmalıdır mi?**
 
-Y: "UpgradeDomainWise" ayarı, bir güncelleştirme etki alanına ait tüm düğümlerde paralel olarak düzeltme eki uygulayarak tüm küme onarımını hızlandırır. İşlem sırasında, bir güncelleştirme etki alanının tamamına ait olan düğümler kullanılamaz ( [ *devre dışı* durumda](/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled)).
+Y: "UpgradeDomainWise" ayarı, bir güncelleştirme etki alanına ait tüm düğümlerde paralel olarak düzeltme eki uygulayarak tüm küme onarımını hızlandırır. İşlem sırasında, bir güncelleştirme etki alanının tamamına ait olan düğümler kullanılamaz ( [ *devre dışı* durumda](/dotnet/api/system.fabric.query.nodestatus#System_Fabric_Query_NodeStatus_Disabled)).
 
 Buna karşılık, "NodeWise" ayarı, tek seferde yalnızca bir düğümün düzeltme eklerini ekler ve bu da genel küme düzeltme eki uygulama işleminin daha uzun sürebileceğini göstermez. Ancak, düzeltme eki uygulama sırasında en fazla yalnızca bir düğüm kullanılamaz ( *devre dışı* durumda).
 
@@ -405,9 +405,9 @@ Y: bir kümenin tamamına yama yapmak için gereken süre şunlara bağlıdır:
     - "NodeWise" için: ~ 20 saat.
     - "UpgradeDomainWise" için: ~ 5 saat.
 
-- Küme yükü. Düzeltme eki uygulama işlemi, müşteri iş yükünün kümedeki diğer kullanılabilir düğümlere yeniden konumlandırması gerektirir. Düzeltme Eki eklenen bir düğüm, bu süre içinde [durumu *devre dışı bırakmak* ](/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabling) için kullanılabilir. Küme yoğun yük yakın çalışıyorsa, devre dışı bırakma işlemi daha uzun sürer. Bu nedenle, düzeltme eki uygulama işlemi, bu tür bir işlem koşullarında yavaş görünüyor olabilir.
+- Küme yükü. Düzeltme eki uygulama işlemi, müşteri iş yükünün kümedeki diğer kullanılabilir düğümlere yeniden konumlandırması gerektirir. Düzeltme Eki eklenen bir düğüm, bu süre içinde [durumu *devre dışı bırakmak*](/dotnet/api/system.fabric.query.nodestatus#System_Fabric_Query_NodeStatus_Disabling) için kullanılabilir. Küme yoğun yük yakın çalışıyorsa, devre dışı bırakma işlemi daha uzun sürer. Bu nedenle, düzeltme eki uygulama işlemi, bu tür bir işlem koşullarında yavaş görünüyor olabilir.
 
-- Düzeltme eki sırasında küme sistem durumu sorunları. [Kümenin sistem](./service-fabric-health-introduction.md) durumunda herhangi bir [azalma](/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet#System_Fabric_Health_HealthState_Error) , düzeltme eki uygulama işlemini kesintiye uğratır. Bu sorun, tüm kümeyi düzeltme için gereken toplam zamanı ekler.
+- Düzeltme eki sırasında küme sistem durumu sorunları. [Kümenin sistem](./service-fabric-health-introduction.md) durumunda herhangi bir [azalma](/dotnet/api/system.fabric.health.healthstate#System_Fabric_Health_HealthState_Error) , düzeltme eki uygulama işlemini kesintiye uğratır. Bu sorun, tüm kümeyi düzeltme için gereken toplam zamanı ekler.
 
 **S: neden Windows Update sonuçlarında REST API, ancak makinede Windows Update geçmişi altında bulunmayan bazı güncelleştirmeler görüyorum?**
 

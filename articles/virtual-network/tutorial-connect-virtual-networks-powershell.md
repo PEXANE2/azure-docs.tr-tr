@@ -15,16 +15,14 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6ec552ea525abe6a84bb5e34e00ad317cae038bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d93efaedbb0596382b0601a17098311e075618b7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89077866"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791989"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-powershell"></a>PowerShell kullanarak sanal ağ eşlemesi ile sanal ağları bağlama
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Sanal ağ eşlemesi ile sanal ağları birbirine bağlayabilirsiniz. Sanal ağlar eşlendikten sonra, kaynaklar aynı sanal ağ üzerindeymiş gibi, aynı gecikme süresi ve bant genişliği ile her iki sanal ağdaki kaynaklar birbiriyle iletişim kurabilir. Bu makalede şunları öğreneceksiniz:
 
@@ -47,7 +45,7 @@ Bir sanal ağ oluşturmadan önce, sanal ağ ve bu makalede oluşturulan tüm di
 New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
-[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)ile bir sanal ağ oluşturun. Aşağıdaki örnek, *10.0.0.0/16*adres ön ekine sahip *myVirtualNetwork1* adlı bir sanal ağ oluşturur.
+[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)ile bir sanal ağ oluşturun. Aşağıdaki örnek, *10.0.0.0/16* adres ön ekine sahip *myVirtualNetwork1* adlı bir sanal ağ oluşturur.
 
 ```azurepowershell-interactive
 $virtualNetwork1 = New-AzVirtualNetwork `
@@ -94,7 +92,7 @@ $virtualNetwork2 | Set-AzVirtualNetwork
 
 ## <a name="peer-virtual-networks"></a>Sanal ağları eşleme
 
-[Add-Azvirtualnetworkeşlemesiyle](/powershell/module/az.network/add-azvirtualnetworkpeering)bir eşleme oluşturun. Aşağıdaki örnek, *myVirtualNetwork1* ile *myVirtualNetwork2*eşler.
+[Add-Azvirtualnetworkeşlemesiyle](/powershell/module/az.network/add-azvirtualnetworkpeering)bir eşleme oluşturun. Aşağıdaki örnek, *myVirtualNetwork1* ile *myVirtualNetwork2* eşler.
 
 ```azurepowershell-interactive
 Add-AzVirtualNetworkPeering `
@@ -103,7 +101,7 @@ Add-AzVirtualNetworkPeering `
   -RemoteVirtualNetworkId $virtualNetwork2.Id
 ```
 
-Önceki komut yürütüldükten sonra döndürülen çıktıda, **Peeringstate** öğesinin *başlatıldığını*görürsünüz. Eşleme, *myVirtualNetwork2* ile *myVirtualNetwork1*arasında eşleme oluşturulana kadar *başlatılmış* durumda kalır. *MyVirtualNetwork2* ile *myVirtualNetwork1*arasında bir eşleme oluşturun.
+Önceki komut yürütüldükten sonra döndürülen çıktıda, **Peeringstate** öğesinin *başlatıldığını* görürsünüz. Eşleme, *myVirtualNetwork2* ile *myVirtualNetwork1* arasında eşleme oluşturulana kadar *başlatılmış* durumda kalır. *MyVirtualNetwork2* ile *myVirtualNetwork1* arasında bir eşleme oluşturun.
 
 ```azurepowershell-interactive
 Add-AzVirtualNetworkPeering `
@@ -112,7 +110,7 @@ Add-AzVirtualNetworkPeering `
   -RemoteVirtualNetworkId $virtualNetwork1.Id
 ```
 
-Önceki komut yürütüldükten sonra döndürülen çıktıda, **Peeringstate** ' in *bağlı*olduğunu görürsünüz. Azure ayrıca *myVirtualNetwork1-myVirtualNetwork2* eşlemesinin eşleme durumunu *bağlı*olarak değiştirdi. *MyVirtualNetwork1-myVirtualNetwork2* eşlemesinin eşleme durumunun [Get-Azvirtualnetworkeşlemesiyle](/powershell/module/az.network/get-azvirtualnetworkpeering) *bağlantılı* olarak değiştirildiğini doğrulayın.
+Önceki komut yürütüldükten sonra döndürülen çıktıda, **Peeringstate** ' in *bağlı* olduğunu görürsünüz. Azure ayrıca *myVirtualNetwork1-myVirtualNetwork2* eşlemesinin eşleme durumunu *bağlı* olarak değiştirdi. *MyVirtualNetwork1-myVirtualNetwork2* eşlemesinin eşleme durumunun [Get-Azvirtualnetworkeşlemesiyle](/powershell/module/az.network/get-azvirtualnetworkpeering) *bağlantılı* olarak değiştirildiğini doğrulayın.
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkPeering `
@@ -121,7 +119,7 @@ Get-AzVirtualNetworkPeering `
   | Select PeeringState
 ```
 
-Bir sanal ağdaki kaynaklar, her iki sanal ağ içindeki eşler için **Peeringstate** *bağlı*olana kadar diğer sanal ağdaki kaynaklarla iletişim kuramaz.
+Bir sanal ağdaki kaynaklar, her iki sanal ağ içindeki eşler için **Peeringstate** *bağlı* olana kadar diğer sanal ağdaki kaynaklarla iletişim kuramaz.
 
 ## <a name="create-virtual-machines"></a>Sanal makineler oluşturma
 
@@ -172,7 +170,7 @@ Yerel bilgisayarınızdan *myVm1* VM ile bir Uzak Masaüstü oturumu oluşturmak
 mstsc /v:<publicIpAddress>
 ```
 
-Bir Uzak Masaüstü Protokolü (. rdp) dosyası oluşturulur, bilgisayarınıza indirilir ve açılır. Kullanıcı adını ve parolayı girin ( **daha fazla seçenek**belirlemeniz, sonra **farklı bir hesap kullanmanız**, VM oluştururken girdiğiniz kimlik bilgilerini belirtmek Için) ve ardından **Tamam**' a tıklayın. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Bağlantıya devam etmek için **Evet** veya **Devam**’a tıklayın.
+Bir Uzak Masaüstü Protokolü (. rdp) dosyası oluşturulur, bilgisayarınıza indirilir ve açılır. Kullanıcı adını ve parolayı girin ( **daha fazla seçenek** belirlemeniz, sonra **farklı bir hesap kullanmanız**, VM oluştururken girdiğiniz kimlik bilgilerini belirtmek Için) ve ardından **Tamam**' a tıklayın. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Bağlantıya devam etmek için **Evet** veya **Devam**’a tıklayın.
 
 *MyVm1* VM 'de, Windows Güvenlik Duvarı üzerinden Internet Denetim Iletisi Protokolü 'NÜ (ICMP) etkinleştirin. böylece, PowerShell kullanarak bu VM 'yi daha sonraki bir adımda *myVm2* 'den ping hale getirebilirsiniz:
 
@@ -188,7 +186,7 @@ Bu makaledeki VM 'Ler arasında iletişim kurmak için PING kullanılmasına kar
 mstsc /v:10.1.0.4
 ```
 
-*MyVm1*üzerinde ping 'yı etkinleştirdiğiniz Için artık *myVm2* VM 'DEKI bir komut isteminden IP adresine göre ping işlemi yapabilirsiniz:
+*MyVm1* üzerinde ping 'yı etkinleştirdiğiniz Için artık *myVm2* VM 'DEKI bir komut isteminden IP adresine göre ping işlemi yapabilirsiniz:
 
 ```
 ping 10.0.0.4

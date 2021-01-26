@@ -3,12 +3,12 @@ title: Sertifikaları kullanarak Windows 'da küme güvenliğini sağlama
 description: Azure Service Fabric tek başına veya şirket içi küme içinde ve istemciler ile küme arasında güvenli iletişim.
 ms.topic: conceptual
 ms.date: 10/15/2017
-ms.openlocfilehash: 34ba457ce0f39705393962d5c5ec8fa11668f413
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: d75c644be47ea44f6a8a6ccac91b785af0132833
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686132"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791046"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>X. 509.440 sertifikalarını kullanarak Windows 'da tek başına kümeyi güvenli hale getirme
 Bu makalede, tek başına Windows kümenizin çeşitli düğümleri arasındaki iletişimin nasıl güvenliği sağlanacağı açıklanır. Ayrıca, X. 509.440 sertifikalarını kullanarak bu kümeye bağlanan istemcilerin kimliğini nasıl doğrulayacağınızı açıklar. Kimlik doğrulaması yalnızca yetkili kullanıcıların kümeye ve dağıtılan uygulamalara erişip yönetim görevlerini gerçekleştirmesini sağlar. Küme oluşturulduğunda, kümede sertifika güvenliği etkinleştirilmelidir.  
@@ -302,7 +302,7 @@ Sertifikalarınızın ardından bunları küme düğümlerine yükleyebilirsiniz
     $PfxFilePath ="C:\mypfx.pfx"
     Import-PfxCertificate -Exportable -CertStoreLocation Cert:\LocalMachine\My -FilePath $PfxFilePath -Password (ConvertTo-SecureString -String $pswd -AsPlainText -Force)
     ```
-3. Ağ hizmeti hesabı altında çalışan Service Fabric işlemin aşağıdaki betiği çalıştırarak kullanabilmesi için, bu sertifikadaki erişim denetimini ayarlayın. Hizmet hesabı için sertifika ve **ağ hizmetinin** parmak izini girin. Sertifika üzerindeki ACL 'lerin, **Start**  >  **bilgisayar sertifikalarını Yönet** ' de sertifikayı açarak ve **All Tasks**  >  **özel anahtarları Yönet**' in tüm görevlere bakarak doğru olup olmadığını kontrol edebilirsiniz.
+3. Ağ hizmeti hesabı altında çalışan Service Fabric işlemin aşağıdaki betiği çalıştırarak kullanabilmesi için, bu sertifikadaki erişim denetimini ayarlayın. Hizmet hesabı için sertifika ve **ağ hizmetinin** parmak izini girin. Sertifika üzerindeki ACL 'lerin,   >  **bilgisayar sertifikalarını Yönet** ' de sertifikayı açarak ve   >  **özel anahtarları Yönet**' in tüm görevlere bakarak doğru olup olmadığını kontrol edebilirsiniz.
    
     ```powershell
     param
@@ -348,14 +348,14 @@ Dosyadaki ClusterConfig.X509.MultiMachine.jsgüvenlik bölümünü yapılandırd
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json
 ```
 
-Güvenli tek başına Windows kümesinin başarıyla çalışmasını ve bu sunucuya bağlanmak için kimliği doğrulanmış istemcileri ayarlamayı doğruladıktan sonra, bağlanmak için [PowerShell kullanarak bir kümeye bağlanma](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-powershell) bölümündeki adımları izleyin. Örnek:
+Güvenli tek başına Windows kümesinin başarıyla çalışmasını ve bu sunucuya bağlanmak için kimliği doğrulanmış istemcileri ayarlamayı doğruladıktan sonra, bağlanmak için [PowerShell kullanarak bir kümeye bağlanma](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-powershell) bölümündeki adımları izleyin. Örneğin:
 
 ```powershell
 $ConnectArgs = @{  ConnectionEndpoint = '10.7.0.5:19000';  X509Credential = $True;  StoreLocation = 'LocalMachine';  StoreName = "MY";  ServerCertThumbprint = "057b9544a6f2733e0c8d3a60013a58948213f551";  FindType = 'FindByThumbprint';  FindValue = "057b9544a6f2733e0c8d3a60013a58948213f551"   }
 Connect-ServiceFabricCluster $ConnectArgs
 ```
 
-Daha sonra bu kümeyle çalışmak için diğer PowerShell komutlarını çalıştırabilirsiniz. Örneğin, bu güvenli kümedeki düğümlerin listesini göstermek için [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) komutunu çalıştırabilirsiniz.
+Daha sonra bu kümeyle çalışmak için diğer PowerShell komutlarını çalıştırabilirsiniz. Örneğin, bu güvenli kümedeki düğümlerin listesini göstermek için [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode) komutunu çalıştırabilirsiniz.
 
 
 Kümeyi kaldırmak için, Service Fabric paketini indirdiğiniz kümedeki düğüme bağlanın, bir komut satırı açın ve paket klasörüne gidin. Şimdi şu komutu çalıştırın:

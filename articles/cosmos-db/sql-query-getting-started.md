@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.author: tisande
-ms.openlocfilehash: c78e15a0656abd510bbc241d39ffd026afddfd96
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c687b5b18c9cf7b0920b23f49e3c7a2607e0a89f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353672"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791029"
 ---
 # <a name="getting-started-with-sql-queries"></a>SQL sorgularını kullanmaya başlama
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -187,7 +187,7 @@ Yukarıdaki örneklerde Cosmos DB sorgu dilinin çeşitli yönleri gösterilmekt
 
 * Azure Cosmos DB yalnızca katı JSON öğelerini destekler. Tür sistemi ve ifadeleri yalnızca JSON türleriyle çalışacak şekilde kısıtlanmıştır. Daha fazla bilgi için bkz. [JSON belirtimi](https://www.json.org/).  
 
-* Cosmos kapsayıcısı, JSON öğelerinin şema içermeyen bir koleksiyonudur. Kapsayıcı öğeleri içindeki ve içindeki ilişkiler, birincil anahtar ve yabancı anahtar ilişkilerine göre değil, kapsama göre örtük olarak yakalanır. Bu özellik, bu makalenin ilerleyen kısımlarında açıklanan öğe içi birleşimler için önemlidir.
+* Cosmos kapsayıcısı, JSON öğelerinin şema içermeyen bir koleksiyonudur. Kapsayıcı öğeleri içindeki ve içindeki ilişkiler, birincil anahtar ve yabancı anahtar ilişkilerine göre değil, kapsama göre örtük olarak yakalanır. Bu özellik, [Azure Cosmos DB birleştirmelerde](sql-query-join.md)açıklanan öğe içi birleştirmeler için önemlidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

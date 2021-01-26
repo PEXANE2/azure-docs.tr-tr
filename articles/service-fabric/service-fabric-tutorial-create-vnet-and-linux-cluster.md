@@ -4,12 +4,12 @@ description: Azure CLI kullanarak mevcut bir Azure sanal ağına Linux Service F
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 52eba2e5780b1a66f3884a764631908335372273
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 77cc49c1b79e5c24e78a67a69493aa0b0059d565
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738959"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791080"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Azure sanal ağına bir Linux Service Fabric kümesi dağıtma
 
@@ -106,7 +106,7 @@ Bu makaledeki şablon, küme sertifikasını tanımlamak için sertifika parmak 
 
 ### <a name="create-a-cluster-using-an-existing-certificate"></a>Mevcut bir sertifikayı kullanarak küme oluşturma
 
-Aşağıdaki betik, mevcut bir sertifikayla güvenliği sağlanmış yeni bir küme dağıtmak için [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest) komutunu ve şablonunu kullanır. Ayrıca, komut tarafından Azure’da yeni bir anahtar kasası oluşturulur ve sertifikanız karşıya yüklenir.
+Aşağıdaki betik, mevcut bir sertifikayla güvenliği sağlanmış yeni bir küme dağıtmak için [az sf cluster create](/cli/azure/sf/cluster) komutunu ve şablonunu kullanır. Ayrıca, komut tarafından Azure’da yeni bir anahtar kasası oluşturulur ve sertifikanız karşıya yüklenir.
 
 ```azurecli
 ResourceGroupName="sflinuxclustergroup"
@@ -132,7 +132,7 @@ az sf cluster create --resource-group $ResourceGroupName --location $Location \
 
 ### <a name="create-a-cluster-using-a-new-self-signed-certificate"></a>Yeni ve otomatik olarak imzalanan bir sertifika ile küme oluşturma
 
-Aşağıdaki betik, Azure'a yeni bir küme dağıtmak için [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest) komutunu ve bir şablonu kullanır. Komut ayrıca Azure 'da yeni bir Anahtar Kasası oluşturur, anahtar kasasına yeni bir kendinden imzalı sertifika ekler ve sertifika dosyasını yerel olarak indirir.
+Aşağıdaki betik, Azure'a yeni bir küme dağıtmak için [az sf cluster create](/cli/azure/sf/cluster) komutunu ve bir şablonu kullanır. Komut ayrıca Azure 'da yeni bir Anahtar Kasası oluşturur, anahtar kasasına yeni bir kendinden imzalı sertifika ekler ve sertifika dosyasını yerel olarak indirir.
 
 ```azurecli
 ResourceGroupName="sflinuxclustergroup"

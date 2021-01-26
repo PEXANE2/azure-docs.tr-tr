@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/18/2021
-ms.openlocfilehash: 3314053e5b81c597d6d29015a5ebda6e171731d1
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: c0ad769ceba4fc3fa7f602d70188ea1942ca73aa
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98634408"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791703"
 ---
 # <a name="power-query-activity-in-data-factory"></a>Data Factory 'de Power Query etkinliği
 
@@ -22,6 +22,8 @@ Power Query etkinliği, bir Data Factory işlem hattında ölçeklendirmekte ola
 ![Fabrika kaynakları bölmesinde Power Query gösteren ekran görüntüsü.](media/data-flow/power-query-wrangling.png)
 
 Daha önce Azure Data Factory içindeki veri denetimi veri akışı menü seçeneğinden yazıldı. Bu, yeni bir Power Query etkinliğinden yazmak üzere değiştirilmiştir. Etkileşimli veri araştırması gerçekleştirmek ve sonra çalışmanızı kaydetmek için Power Query Mash Düzenleyicisi içinde doğrudan çalışabilirsiniz. Tamamlandıktan sonra Power Query etkinliğinizi alabilir ve bir işlem hattına ekleyebilirsiniz. Azure Data Factory, verileri otomatik olarak ölçeklendirecek ve Azure Data Factory veri akışı Spark ortamını kullanarak veri wrangini kullanıma sunacaktır.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4MFYn]
 
 ## <a name="translation-to-data-flow-script"></a>Veri akışı betiğine çeviri
 

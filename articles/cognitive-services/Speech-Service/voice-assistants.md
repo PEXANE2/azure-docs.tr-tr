@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 09859be61029242e987603e01b5c3fba8dffb2ca
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: fc85eec008ef099d63d538e4871a1a84573f5a18
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483895"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790454"
 ---
 # <a name="what-is-a-voice-assistant"></a>Ses yardımcısı nedir?
 
@@ -47,7 +47,7 @@ Yardımcınızın hangi özellikleri işlemesini istediğinizi bilmiyorsanız en
 
 Yardımcı etkileşimlerinizi oluşturmak için [doğrudan hat konuşmayı](direct-line-speech.md) veya [özel komutlar](custom-commands.md) seçin, yardımcınızı marka, ürün ve kişiliğinizi özelleştirmek için zengin bir özelleştirme özellikleri kümesi kullanabilirsiniz.
 
-| Category | Özellikler |
+| Kategori | Özellikler |
 |----------|----------|
 |[Özel anahtar sözcük](./custom-keyword-basics.md) | Kullanıcılar, "Hey contoso" gibi özel bir anahtar sözcükle konuşmaları kullanarak konuşmalar başlatabilir. Uygulama bunu konuşma SDK 'sında özel bir anahtar sözcük altyapısı ile yapar ve [burada oluşturabileceğiniz](./custom-keyword-basics.md)özel bir anahtar sözcükle yapılandırılabilir. Sesli yardımcılar, anahtar sözcük etkinleştirmenin doğruluğunu artırmak için hizmet tarafı anahtar sözcük doğrulamasını kullanabilir (tek başına cihaz).
 |[Konuşmayı metne dönüştürme](speech-to-text.md) | Ses yardımcıları, konuşma hizmetinden [konuşmaya metin](speech-to-text.md) kullanarak gerçek zamanlı sesi tanınan metne dönüştürür. Bu metin, hem yardımcınızın hem de istemci uygulamanızın bulunduğu bir şekilde kullanılabilir.
@@ -66,7 +66,7 @@ Bir ses Yardımcısı oluşturmaya yönelik örnek kod GitHub ' da kullanılabil
 
 * [GitHub 'da sesli yardım örnekleri](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant)
 * [Öğretici: C# konuşma SDK 'Sı ile Azure bot hizmeti kullanılarak geliştirilmiş yardımcınızı etkinleştirin](tutorial-voice-enable-your-bot-speech-sdk.md)
-* [Öğretici: basit sesli komutlarla özel bir komut uygulaması oluşturma](how-to-custom-commands-create-application-with-simple-commands.md)
+* [Öğretici: basit sesli komutlarla özel bir komut uygulaması oluşturma](./how-to-develop-custom-commands-application.md)
 
 ## <a name="customization"></a>Özelleştirme
 

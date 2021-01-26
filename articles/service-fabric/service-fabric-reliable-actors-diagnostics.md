@@ -5,22 +5,22 @@ author: abhishekram
 ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: abhisram
-ms.openlocfilehash: a38a11d9cf062cd0a45890d43afe9b2530b2b7bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebaedb5369f3b39372262bfde526706e8d069418
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258464"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789625"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Reliable Actors için tanılama ve performans izlemesi
-Reliable Actors Runtime, [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) olaylarını ve [performans sayaçlarını](/dotnet/api/system.diagnostics.performancecounter?view=dotnet-plat-ext-3.1)yayar. Bunlar, çalışma zamanının nasıl çalıştığı hakkında Öngörüler ve sorun giderme ve performans izleme konularında yardım sağlar.
+Reliable Actors Runtime, [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource) olaylarını ve [performans sayaçlarını](/dotnet/api/system.diagnostics.performancecounter)yayar. Bunlar, çalışma zamanının nasıl çalıştığı hakkında Öngörüler ve sorun giderme ve performans izleme konularında yardım sağlar.
 
 ## <a name="eventsource-events"></a>EventSource olayları
 Reliable Actors Runtime için EventSource sağlayıcı adı "Microsoft-ServiceFabric-aktör" ' dir. Bu olay kaynağının olayları, aktör uygulamasının [Visual Studio 'da hata ayıklaması](service-fabric-debugging-your-application.md)yapıldığında [Tanılama olayları](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio) penceresinde görüntülenir.
 
 EventSource olaylarını toplama ve/veya görüntüleme konusunda yardımcı olan araç ve teknolojilerin örnekleri şunlardır. [PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [Azure tanılama](../cloud-services/cloud-services-dotnet-diagnostics.md), [anlam günlüğü](/previous-versions/msp-n-p/dn774980(v=pandp.10))ve [Microsoft TraceEvent Library](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
 
-### <a name="keywords"></a>Anahtar Sözcükler
+### <a name="keywords"></a>Anahtar sözcükler
 Reliable Actors EventSource 'e ait olan tüm olaylar bir veya daha fazla anahtar sözcük ile ilişkilendirilir. Bu, toplanan olayların filtrelenmesini mümkün bir şekilde sunar. Aşağıdaki anahtar sözcük bitleri tanımlanmıştır.
 
 | Sürümleri | Açıklama |
@@ -50,7 +50,7 @@ Kategori için `Service Fabric Actor` , sayaç örneği adları aşağıdaki bi�
 
 `ServiceFabricPartitionID_ActorsRuntimeInternalID`
 
-*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili, [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) Biçim belirleyicisi "D" olan yöntem aracılığıyla oluşturulur.
+*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili, [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) Biçim belirleyicisi "D" olan yöntem aracılığıyla oluşturulur.
 
 *Actorruntimeınternalıd* , iç kullanımı Için yapı aktörleri çalışma zamanı tarafından oluşturulan 64 bitlik bir tamsayının dize gösterimidir. Bu, benzersizlik sağlamak ve diğer performans sayacı örneği adlarıyla çakışmamak için performans sayacı örneği adına dahildir. Kullanıcılar, performans sayacı örneği adının bu bölümünü yorumlama denememelidir.
 
@@ -69,7 +69,7 @@ Kategori için `Service Fabric Actor Method` , sayaç örneği adları aşağıd
 
 *Actorsruntimemethodıd* , iç kullanımı Için yapı aktör çalışma zamanı tarafından oluşturulan 32 bitlik bir tamsayının dize gösterimidir. Bu, benzersizlik sağlamak ve diğer performans sayacı örneği adlarıyla çakışmamak için performans sayacı örneği adına dahildir. Kullanıcılar, performans sayacı örneği adının bu bölümünü yorumlama denememelidir.
 
-*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili, [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) Biçim belirleyicisi "D" olan yöntem aracılığıyla oluşturulur.
+*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili, [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) Biçim belirleyicisi "D" olan yöntem aracılığıyla oluşturulur.
 
 *Actorruntimeınternalıd* , iç kullanımı Için yapı aktörleri çalışma zamanı tarafından oluşturulan 64 bitlik bir tamsayının dize gösterimidir. Bu, benzersizlik sağlamak ve diğer performans sayacı örneği adlarıyla çakışmamak için performans sayacı örneği adına dahildir. Kullanıcılar, performans sayacı örneği adının bu bölümünü yorumlama denememelidir.
 
@@ -83,7 +83,7 @@ Yukarıdaki örnekte, `ivoicemailboxactor.leavemessageasync` Yöntem adı, `2` �
 ### <a name="actor-method-events-and-performance-counters"></a>Aktör yöntemi olayları ve performans sayaçları
 Reliable Actors Runtime, [aktör yöntemleriyle](service-fabric-reliable-actors-introduction.md)ilgili aşağıdaki olayları yayar.
 
-| Olay adı | Olay Kimliği | Düzey | Sözcükle | Açıklama |
+| Olay adı | Olay Kimliği | Level | Sözcükle | Açıklama |
 | --- | --- | --- | --- | --- |
 | ActorMethodStart |7 |Ayrıntılı |0x2 |Aktör çalışma zamanı bir aktör yöntemi çağırmak için. |
 | ActorMethodStop |8 |Ayrıntılı |0x2 |Aktör yöntemi yürütmeyi bitirdi. Diğer bir deyişle, çalışma zamanının aktör metoduna zaman uyumsuz çağrısı döndürülür ve aktör yöntemi tarafından döndürülen görev tamamlanmıştır. |
@@ -100,7 +100,7 @@ Reliable Actors Runtime, aktör yöntemlerinin yürütülmesi ile ilgili aşağ�
 ### <a name="concurrency-events-and-performance-counters"></a>Eşzamanlılık olayları ve performans sayaçları
 Reliable Actors Runtime [eşzamanlılık](service-fabric-reliable-actors-introduction.md#concurrency)ile ilgili aşağıdaki olayları yayar.
 
-| Olay adı | Olay Kimliği | Düzey | Sözcükle | Açıklama |
+| Olay adı | Olay Kimliği | Level | Sözcükle | Açıklama |
 | --- | --- | --- | --- | --- |
 | ActorMethodCallsWaitingForLock |12 |Ayrıntılı |0x8 |Bu olay, bir aktör içindeki her yeni bir öğenin başlangıcında yazılır. Bu, çift tabanlı eşzamanlılık uygulayan aktör başına kilidi almak için bekleyen, bekleyen aktör çağrılarının sayısını içerir. |
 
@@ -115,7 +115,7 @@ Reliable Actors Runtime eşzamanlılık ile ilgili aşağıdaki performans saya�
 ### <a name="actor-state-management-events-and-performance-counters"></a>Aktör durumu yönetim olayları ve performans sayaçları
 Reliable Actors Runtime, [aktör durumu yönetimiyle](service-fabric-reliable-actors-state-management.md)ilgili aşağıdaki olayları yayar.
 
-| Olay adı | Olay Kimliği | Düzey | Sözcükle | Açıklama |
+| Olay adı | Olay Kimliği | Level | Sözcükle | Açıklama |
 | --- | --- | --- | --- | --- |
 | ActorSaveStateStart |10 |Ayrıntılı |4, |Aktör çalışma zamanı aktör durumunu kaydetmek için kullanılır. |
 | ActorSaveStateStop |11 |Ayrıntılı |4, |Aktör çalışma zamanı aktör durumunu kaydetmeyi tamamladı. |
@@ -130,7 +130,7 @@ Reliable Actors Runtime, aktör durumu yönetimiyle ilgili aşağıdaki performa
 ### <a name="events-related-to-actor-replicas"></a>Aktör çoğaltmalarıyla ilgili olaylar
 Reliable Actors Runtime, [aktör çoğaltmalarıyla](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors)ilgili aşağıdaki olayları yayar.
 
-| Olay adı | Olay Kimliği | Düzey | Sözcükle | Açıklama |
+| Olay adı | Olay Kimliği | Level | Sözcükle | Açıklama |
 | --- | --- | --- | --- | --- |
 | Replicachangeroletoprımary |1 |Bilgilendirici |0x1 |Aktör çoğaltma rolü birincil olarak değiştirildi. Bu, bu bölümün aktörleri bu çoğaltma içinde oluşturulacak anlamına gelir. |
 | ReplicaChangeRoleFromPrimary |2 |Bilgilendirici |0x1 |Aktör çoğaltma rolü birincil olmayan olarak değiştirildi. Bu, bu bölümün aktörlerin artık bu çoğaltma içinde oluşturulmayacağı anlamına gelir. Bu çoğaltma içinde önceden oluşturulmuş aktörler için yeni istek teslim edilecek. Tüm sürmekte olan istekler tamamlandıktan sonra aktörler yok edilir. |
@@ -138,7 +138,7 @@ Reliable Actors Runtime, [aktör çoğaltmalarıyla](service-fabric-reliable-act
 ### <a name="actor-activation-and-deactivation-events-and-performance-counters"></a>Aktör etkinleştirme ve devre dışı bırakma olayları ve performans sayaçları
 Reliable Actors Runtime, [aktör etkinleştirme ve devre dışı bırakma](service-fabric-reliable-actors-lifecycle.md)ile ilgili aşağıdaki olayları yayar.
 
-| Olay adı | Olay Kimliği | Düzey | Sözcükle | Açıklama |
+| Olay adı | Olay Kimliği | Level | Sözcükle | Açıklama |
 | --- | --- | --- | --- | --- |
 | ActorActivated |5 |Bilgilendirici |0x1 |Aktör etkinleştirildi. |
 | Actora devre dışı |6 |Bilgilendirici |0x1 |Aktör devre dışı bırakıldı. |

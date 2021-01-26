@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 25d084b8af148707685b2cbb4368394a12d99db2
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 64064a584681d84eb6ba023c4777c0fdc4e6ec3d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97005316"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791938"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>Öğretici: kayıt grupları kullanarak birden çok X. 509.440 cihazı sağlama
 
@@ -42,11 +42,11 @@ Bu öğreticide, aşağıdaki hedefleri tamamlayacaksınız:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Aşağıdaki Önkoşullar bir Windows geliştirme ortamı içindir. Linux veya macOS için SDK belgelerinde [geliştirme ortamınızı hazırlama](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) konusunun ilgili bölümüne bakın.
 
-* [' C++ Ile masaüstü geliştirme '](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) iş yükünün etkin olduğu [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019. Visual Studio 2015 ve Visual Studio 2017 de desteklenir.
+* [' C++ Ile masaüstü geliştirme '](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) iş yükünün etkin olduğu [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019. Visual Studio 2015 ve Visual Studio 2017 de desteklenir.
 
 * [Git](https://git-scm.com/download/)'in en son sürümünün yüklemesi.
 
@@ -56,7 +56,7 @@ Bu bölümde, [Azure IoT C SDK'sını](https://github.com/Azure/azure-iot-sdk-c)
 
 1. [CMake derleme sistemini](https://cmake.org/download/)indirin.
 
-    Yüklemeye **başlamadan önce** Visual Studio önkoşullarının ([Visual Studio](https://visualstudio.microsoft.com/vs/) ve [' C++ ile masaüstü geliştirme '](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) iş yükünün) makinenizde yüklü olması önemlidir `CMake` . Önkoşullar sağlandıktan ve indirme doğrulandıktan sonra, CMake derleme sistemini yükleyin.
+    Yüklemeye **başlamadan önce** Visual Studio önkoşullarının ([Visual Studio](https://visualstudio.microsoft.com/vs/) ve [' C++ ile masaüstü geliştirme '](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) iş yükünün) makinenizde yüklü olması önemlidir `CMake` . Önkoşullar sağlandıktan ve indirme doğrulandıktan sonra, CMake derleme sistemini yükleyin.
 
 2. Azure IoT C SDK 'sının [en son sürümü](https://github.com/Azure/azure-iot-sdk-c/releases/latest) için etiket adını bulun.
 
@@ -87,7 +87,7 @@ Bu bölümde, [Azure IoT C SDK'sını](https://github.com/Azure/azure-iot-sdk-c)
     $ cmake -Duse_prov_client:BOOL=ON -Dhsm_custom_lib=/d/azure-iot-sdk-c/cmake/provisioning_client/samples/custom_hsm_example/Debug/custom_hsm_example.lib ..
     ```
 
-    `cmake`, C++ derleyicinizi bulamazsa yukarıdaki komutu çalıştırırken derleme hatalarıyla karşılaşabilirsiniz. Bu durumda bu komutu [Visual Studio komut isteminde](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs) çalıştırmayı deneyin.
+    `cmake`, C++ derleyicinizi bulamazsa yukarıdaki komutu çalıştırırken derleme hatalarıyla karşılaşabilirsiniz. Bu durumda bu komutu [Visual Studio komut isteminde](/dotnet/framework/tools/developer-command-prompt-for-vs) çalıştırmayı deneyin.
 
     Oluşturma işlemi başarılı olduktan sonra, dizininizde bir Visual Studio çözümü oluşturulacaktır `cmake` . Son birkaç çıktı satırı aşağıdaki çıktıya benzer şekilde görünür:
 
@@ -351,7 +351,7 @@ Bu öğreticinin özel HSM saplama kodunu güncelleştirmek için:
 
 Windows dışı cihazlarda, sertifika zincirini koddan sertifika deposu olarak geçirebilirsiniz.
 
-Windows tabanlı cihazlarda, imzalama sertifikalarını (root ve ara) bir Windows [sertifika deposuna](https://docs.microsoft.com/windows/win32/secauthn/certificate-stores)eklemeniz gerekir. Aksi takdirde, imzalama sertifikaları, Aktarım Katmanı Güvenliği (TLS) ile güvenli bir kanal tarafından DPS 'e aktarılmayacaktır.
+Windows tabanlı cihazlarda, imzalama sertifikalarını (root ve ara) bir Windows [sertifika deposuna](/windows/win32/secauthn/certificate-stores)eklemeniz gerekir. Aksi takdirde, imzalama sertifikaları, Aktarım Katmanı Güvenliği (TLS) ile güvenli bir kanal tarafından DPS 'e aktarılmayacaktır.
 
 Windows tabanlı cihazlarda sertifika deposuna imzalama sertifikaları eklemek için:
 

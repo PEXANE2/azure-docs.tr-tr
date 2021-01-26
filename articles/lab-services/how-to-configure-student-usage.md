@@ -3,12 +3,12 @@ title: Azure Lab Services laboratuvarlarında kullanım ayarlarını yapılandı
 description: Bir laboratuvarda öğrenci sayısını yapılandırmayı, laboratuvara kaydolmasını ve VM 'nin kullanabileceği saat sayısını denetlemeyi ve daha fazlasını öğrenin.
 ms.topic: article
 ms.date: 12/01/2020
-ms.openlocfilehash: 3b05246445aea708312891ec631a35da3bc1eb8e
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 380a587eecb276c457b93ca3c3f3ac08b2239275
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602640"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791972"
 ---
 # <a name="add-and-manage-lab-users"></a>Laboratuvar kullanıcılarını ekleme ve yönetme
 
@@ -24,7 +24,7 @@ Bu makalede, bir laboratuvara Kullanıcı ekleme gösterilmektedir.
 
 Artık kullanıcıları el ile eklemek veya silmek zorunda kalmaması için bir laboratuar Kullanıcı listesini mevcut bir Azure Active Directory (Azure AD) grubuyla eşitleyebilirsiniz. 
 
-Kurumsal kaynaklara ve bulut tabanlı uygulamalara erişimi yönetmek için kuruluşunuzun Azure Active Directory içinde bir Azure AD grubu oluşturulabilir. Daha fazla bilgi için bkz. [Azure AD grupları](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups). Kuruluşunuz Microsoft Office 365 veya Azure hizmetlerini kullanıyorsa, kuruluşunuzda Azure Active Directory yönettiğiniz Yöneticiler zaten olur. 
+Kurumsal kaynaklara ve bulut tabanlı uygulamalara erişimi yönetmek için kuruluşunuzun Azure Active Directory içinde bir Azure AD grubu oluşturulabilir. Daha fazla bilgi için bkz. [Azure AD grupları](../active-directory/fundamentals/active-directory-manage-groups.md). Kuruluşunuz Microsoft Office 365 veya Azure hizmetlerini kullanıyorsa, kuruluşunuzda Azure Active Directory yönettiğiniz Yöneticiler zaten olur. 
 
 ### <a name="sync-users-with-azure-ad-group"></a>Kullanıcıları Azure AD grubuyla eşitleme
 

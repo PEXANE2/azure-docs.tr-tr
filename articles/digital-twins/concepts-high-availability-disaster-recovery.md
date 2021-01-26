@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 35f4aae246f105d832aaf92c5c5797c8a65b44f1
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 3336a086fbe8f4291f752836a610cd80b773ec2d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938555"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790825"
 ---
 # <a name="azure-digital-twins-high-availability-and-disaster-recovery"></a>Azure dijital TWINS yüksek kullanılabilirlik ve olağanüstü durum kurtarma
 
@@ -41,7 +41,7 @@ Veri Merkezi, bölgedeki güç arızalarına veya diğer olaylara karşı geniş
 
 ## <a name="monitor-service-health"></a>Hizmet durumunu izleme
 
-Azure dijital TWINS örnekleri yük devretdiği ve kurtarıldığı için, [Azure hizmet durumu](https://docs.microsoft.com/azure/service-health/service-health-overview) aracını kullanarak işlemi izleyebilirsiniz. Hizmet durumu, farklı bölgelerde ve aboneliklerde Azure hizmetlerinizin sistem durumunu izler ve kesintiler ve kaymalar hakkında hizmet tarafından etkileyen iletişimleri paylaşır.
+Azure dijital TWINS örnekleri yük devretdiği ve kurtarıldığı için, [Azure hizmet durumu](../service-health/service-health-overview.md) aracını kullanarak işlemi izleyebilirsiniz. Hizmet durumu, farklı bölgelerde ve aboneliklerde Azure hizmetlerinizin sistem durumunu izler ve kesintiler ve kaymalar hakkında hizmet tarafından etkileyen iletişimleri paylaşır.
 
 Bir yük devretme olayı sırasında hizmet durumu, hizmetinizin ne zaman ve ne zaman yedekleneceği hakkında bir gösterge sağlayabilir.
 

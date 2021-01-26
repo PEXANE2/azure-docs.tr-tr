@@ -3,12 +3,12 @@ title: Azure DevTest Labs için Azure Güvenlik temeli
 description: Azure DevTest Labs için Azure Güvenlik temeli
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: eabb55956f97f40312c894ccabd7a341ecc5688c
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 09b4e28437c79961d53cf07b068e3169d20fe0c4
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202020"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789913"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs için Azure Güvenlik temeli
 
@@ -619,7 +619,7 @@ Ayrıca, Microsoft tarafından yayımlanan Azure Market sanal makine görüntül
 
 - [Azure Güvenlik Merkezi güvenlik açığı değerlendirmesi önerilerini uygulama](../security-center/deploy-vulnerability-assessment-vm.md)
 - [Azure Otomasyonu durum yapılandırmasına genel bakış](../automation/automation-dsc-overview.md)
-- [Bir VHD’yi Azure’a yüklemek ve yeni bir sanal makine oluşturmak için örnek betik](../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
+- [Bir VHD’yi Azure’a yüklemek ve yeni bir sanal makine oluşturmak için örnek betik](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
 - [DevTest Labs 'de görüntü fabrikası oluşturma](image-factory-create.md)
 
 **Azure Güvenlik Merkezi izleme:** Yes

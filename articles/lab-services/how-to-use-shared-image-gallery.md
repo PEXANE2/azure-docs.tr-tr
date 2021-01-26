@@ -3,15 +3,15 @@ title: Azure Lab Services paylaşılan görüntü galerisini kullanma | Microsof
 description: Bir laboratuvar hesabını paylaşılan görüntü Galerisi 'ni kullanmak üzere yapılandırmayı öğrenin, böylece Kullanıcı bir görüntüyü başkalarıyla paylaşabilir ve başka bir Kullanıcı, laboratuvarda bir şablon VM oluşturmak için görüntüyü kullanabilir.
 ms.topic: article
 ms.date: 09/11/2020
-ms.openlocfilehash: d9f4e75163f591680cc8f85ac42c1b6ada5f2365
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 984cb4c47099928ffab327895a728cbe8a8f9604
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647775"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791399"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Azure Lab Services paylaşılan görüntü galerisini kullanma
-Bu makalede, eğitimciler/Lab yöneticilerinin bir şablon sanal makine görüntüsünü [paylaşılan bir görüntü galerisine](../virtual-machines/windows/shared-image-galleries.md) nasıl kaydedebilmesi, böylece diğerleri tarafından laboratuvarları oluşturmak için kullanılabilir. 
+Bu makalede, eğitimciler/Lab yöneticilerinin bir şablon sanal makine görüntüsünü [paylaşılan bir görüntü galerisine](../virtual-machines/shared-image-galleries.md) nasıl kaydedebilmesi, böylece diğerleri tarafından laboratuvarları oluşturmak için kullanılabilir. 
 
 > [!IMPORTANT]
 > Paylaşılan bir görüntü Galerisi kullanılırken, Azure Lab Services yalnızca 128 GB 'den az işletim sistemi disk alanı olan görüntüleri destekler. 128 GB 'den fazla disk alanı veya birden fazla disk içeren görüntüler, Laboratuvar oluşturma sırasında sanal makine görüntüleri listesinde gösterilmez.
@@ -24,7 +24,7 @@ Bu özellik tarafından desteklenen birkaç senaryo şunlardır:
 
     Bir görüntü paylaşılan bir görüntü galerisine kaydedildiğinde, Azure Lab Services kaydedilen görüntüyü aynı [Coğrafya](https://azure.microsoft.com/global-infrastructure/geographies/)'da bulunan diğer bölgelere çoğaltır. Görüntünün aynı coğrafya içindeki diğer bölgelerde oluşturulan laboratuvarlarda kullanılabilir olmasını sağlar. Resimleri paylaşılan bir görüntü galerisine kaydetmek, çoğaltılan tüm görüntülerin maliyetini içeren ek bir maliyet doğurur. Bu maliyet Azure Lab Services kullanım maliyetinden ayrıdır. Paylaşılan görüntü Galerisi fiyatlandırması hakkında daha fazla bilgi için bkz. [paylaşılan görüntü Galerisi – faturalandırma]( https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#billing).
     
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 - [Azure PowerShell](../virtual-machines/shared-images-powershell.md) veya [Azure CLI](../virtual-machines/shared-images-cli.md)kullanarak paylaşılan bir görüntü galerisi oluşturun.
 - Paylaşılan görüntü galerisini laboratuvar hesabına eklemiş olabilirsiniz. Adım adım yönergeler için bkz. [paylaşılan görüntü Galerisi 'ni bağlama veya ayırma](how-to-attach-detach-shared-image-gallery.md).
 
@@ -48,7 +48,7 @@ Paylaşılan görüntü Galerisi eklendikten sonra, bir laboratuar hesabı Yöne
     Görüntüyü paylaşılan görüntü galerisine kaydettikten sonra, başka bir laboratuvar oluştururken bu görüntüyü Galeriden kullanabilirsiniz. Ayrıca, bir laboratuvar bağlamı dışında paylaşılan görüntü galerisine bir görüntü yükleyebilirsiniz. Daha fazla bilgi için bkz. [paylaşılan görüntü galerisine genel bakış](../virtual-machines/shared-images-powershell.md). 
 
     > [!IMPORTANT]
-    > Bir [laboratuvarın şablon görüntüsünü](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery) paylaşılan bir görüntü galerisine Azure Lab Services kaydettiğinizde, görüntü galeriye **özelleştirilmiş bir görüntü** olarak yüklenir. [Özel görüntüler](../virtual-machines/windows/shared-image-galleries.md#generalized-and-specialized-images) makineye özgü bilgileri ve Kullanıcı profillerini saklar. Genelleştirilmiş bir görüntüyü yine de Azure Lab Services dışında galeriye doğrudan yükleyebilirsiniz.    
+    > Bir [laboratuvarın şablon görüntüsünü](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery) paylaşılan bir görüntü galerisine Azure Lab Services kaydettiğinizde, görüntü galeriye **özelleştirilmiş bir görüntü** olarak yüklenir. [Özel görüntüler](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images) makineye özgü bilgileri ve Kullanıcı profillerini saklar. Genelleştirilmiş bir görüntüyü yine de Azure Lab Services dışında galeriye doğrudan yükleyebilirsiniz.    
 
 ## <a name="use-an-image-from-the-shared-image-gallery"></a>Paylaşılan görüntü galerisinden bir görüntü kullanma
 Bir eğitimci, yeni laboratuvar oluşturma sırasında şablon için paylaşılan görüntü galerisinde bulunan özel bir görüntü seçebilir.
@@ -60,4 +60,4 @@ Bir eğitimci, yeni laboratuvar oluşturma sırasında şablon için paylaşıla
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Paylaşılan görüntü galerileri hakkında daha fazla bilgi için bkz. [paylaşılan görüntü Galerisi](../virtual-machines/windows/shared-image-galleries.md).
+Paylaşılan görüntü galerileri hakkında daha fazla bilgi için bkz. [paylaşılan görüntü Galerisi](../virtual-machines/shared-image-galleries.md).

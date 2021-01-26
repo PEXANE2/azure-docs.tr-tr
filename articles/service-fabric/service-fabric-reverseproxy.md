@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: bharatn
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fd8e6dd712801de49971c1ef27cea664d73a4cb0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 012a49762596adee39988614ed0c1020cd8bc104
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005920"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791113"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric ters proxy
 Azure 'da yerleşik olarak bulunan ters proxy Service Fabric, bir Service Fabric kümesinde çalışan mikro hizmetlerin HTTP uç noktalarına sahip diğer hizmetleri bulmasına ve iletişim kurmasına yardımcı olur.
@@ -33,7 +33,7 @@ Ters proxy, istemci hizmetlerinin diğer hizmetlere istek göndermek için kulla
 ![İç iletişim][1]
 
 > [!NOTE]
-> **Desteklenen Platformlar**
+> **Desteklenen platformlar**
 >
 > Service Fabric ters proxy Şu anda aşağıdaki platformları desteklemektedir
 > * *Windows kümesi*: Windows 8 ve üzeri ya da windows Server 2012 ve üzeri
@@ -118,7 +118,7 @@ Ters proxy Service Fabric, bir hizmet adresini yeniden çözümlemeye çalışı
 
 Ancak, çoğaltmalar veya hizmet örnekleri bir konak işlemini paylaşabilir ve ayrıca, http.sys tabanlı bir Web sunucusu tarafından barındırıldığı sırada bir bağlantı noktası paylaşabilir:
 
-* [System .net. HttpListener](/dotnet/api/system.net.httplistener?view=netcore-3.1)
+* [System .net. HttpListener](/dotnet/api/system.net.httplistener)
 * [WebListener ASP.NET Core](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
 * [Katana](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.OwinSelfHost/)
 

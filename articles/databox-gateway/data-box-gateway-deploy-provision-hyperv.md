@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 12/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 9d1d22d57464266239aea96f427020351eb749d5
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 22d7ee518a458143fe25b677b680a964c538904f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740666"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791569"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>Öğretici: Hyper-V ' d a Azure Data Box Gateway sağlama
 
@@ -23,7 +23,7 @@ Bu öğreticide Data Box Gateway'i Windows Server 2016, Windows Server 2012 R2 v
 
 Sanal cihaz sağlamak ve yapılandırmak için yönetici ayrıcalıklarına sahip olmanız gerekir. Sağlama ve ilk kurulum adımlarını tamamlamak yaklaşık 10 dakika sürecektir. 
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -83,8 +83,8 @@ Sanal cihaz oluşturmak için şunlara ihtiyacınız vardır:
 
 ## <a name="bitlocker-considerations"></a>BitLocker konuları
 
-* Data Box Gateway sanal makinenizde BitLocker 'ı etkinleştirmenizi öneririz. Varsayılan olarak, BitLocker etkin değildir. Daha fazla bilgi için bkz:
-  * [Hyper-V Yöneticisi 'nde şifreleme desteği ayarları](hhttps://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
+* Data Box Gateway sanal makinenizde BitLocker 'ı etkinleştirmenizi öneririz. Varsayılan olarak, BitLocker etkin değildir. Daha fazla bilgi için bkz.
+  * [Hyper-V Yöneticisi 'nde şifreleme desteği ayarları](/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
   * [Sanal makinede BitLocker desteği](https://kb.vmware.com/s/article/2036142)
 
 ## <a name="provision-a-virtual-device-in-hypervisor"></a>Hiper yöneticide bir sanal cihaz sağlama

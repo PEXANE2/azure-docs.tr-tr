@@ -10,22 +10,22 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5025c4ad81433b6eb18f5beded860625791ffce5
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 4747c958b5e592458c14bbf4244953564c252678
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445107"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790132"
 ---
 # <a name="about-azure-key-vault"></a>Azure Key Vault hakkında
 
 Azure Key Vault aşağıdaki sorunları çözmeye yardımcı olur:
 
-- **Gizli Dizi Yönetimi** : Belirteçleri, parolaları, sertifikaları, API anahtarlarını ve diğer gizli dizileri Güvenle depolamak ve bunlara erişimi sıkı bir şekilde denetlemek için Azure Key Vault kullanılabilir.
-- **Anahtar Yönetimi** : Azure Key Vault, Anahtar Yönetimi çözümü olarak da kullanılabilir. Azure Key Vault, verilerinizi şifrelemek için kullanılan şifreleme anahtarlarını oluşturmayı ve denetlemeyi kolaylaştırır. 
+- **Gizli Dizi Yönetimi**: Belirteçleri, parolaları, sertifikaları, API anahtarlarını ve diğer gizli dizileri Güvenle depolamak ve bunlara erişimi sıkı bir şekilde denetlemek için Azure Key Vault kullanılabilir.
+- **Anahtar Yönetimi**: Azure Key Vault, Anahtar Yönetimi çözümü olarak da kullanılabilir. Azure Key Vault, verilerinizi şifrelemek için kullanılan şifreleme anahtarlarını oluşturmayı ve denetlemeyi kolaylaştırır. 
 - **Sertifika yönetimi** -Azure Key Vault Ayrıca Azure ve iç bağlı kaynaklarınız ile kullanmak üzere genel ve özel aktarım katmanı güvenlik/GÜVENLI yuva KATMANı (TLS/SSL) sertifikalarını kolayca sağlamanıza, yönetmenize ve dağıtmanıza olanak tanıyan bir hizmettir.
 
-Azure Key Vault iki hizmet katmanına sahiptir: bir yazılım anahtarıyla şifreleyen standart ve HSM korumalı anahtarlar içeren Premium katman. Standart ve Premium Katmanlar arasındaki karşılaştırmayı görmek için [Azure Key Vault fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/key-vault/)bakın.
+Azure Key Vault iki hizmet katmanına sahiptir: bir yazılım anahtarıyla şifreleyen standart ve donanım güvenlik modülü (HSM) ile korunan anahtarlar içeren bir Premium katman. Standart ve Premium Katmanlar arasındaki karşılaştırmayı görmek için [Azure Key Vault fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/key-vault/)bakın.
 
 ## <a name="why-use-azure-key-vault"></a>Neden Azure Key Vault kullanmalıyım?
 

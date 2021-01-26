@@ -17,16 +17,14 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
-ms.openlocfilehash: 1d4fcc280ba2e34d2fa81584846441ad6fe81431
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8e300c9be8f3e59dc9443bf1f1806e4228992ad
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84708204"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790402"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-azure-powershell"></a>Azure PowerShell kullanarak sanal ağ hizmeti uç noktası ilkeleri ile Azure depolama hesaplarına veri alımını yönetme
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Sanal ağ hizmeti uç noktası ilkeleri, Azure depolama hesaplarında hizmet uç noktaları üzerinden bir sanal ağ içinden erişim denetimi uygulamanıza olanak tanır. Bu, iş yüklerinizi güvenli hale getirmenin, hangi depolama hesaplarına izin verileceğini ve veri ayıklanma izin verileceğini yönetme anahtarıdır.
 Bu makalede şunları öğreneceksiniz:
@@ -39,6 +37,8 @@ Bu makalede şunları öğreneceksiniz:
 * Alt ağdan izin verilen depolama hesabına erişimi onaylayın.
 * Alt ağdan izin verilmeyen depolama hesabına erişimin reddedildiğini doğrulayın.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -47,7 +47,7 @@ PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz, bu makale Azu
 
 ## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
-Bir sanal ağ oluşturmadan önce, sanal ağ ve bu makalede oluşturulan tüm diğer kaynaklar için bir kaynak grubu oluşturmanız gerekir. [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)ile bir kaynak grubu oluşturun. Aşağıdaki örnek, *Myresourcegroup*adlı bir kaynak grubu oluşturur: 
+Bir sanal ağ oluşturmadan önce, sanal ağ ve bu makalede oluşturulan tüm diğer kaynaklar için bir kaynak grubu oluşturmanız gerekir. [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)ile bir kaynak grubu oluşturun. Aşağıdaki örnek, *Myresourcegroup* adlı bir kaynak grubu oluşturur: 
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -55,7 +55,7 @@ New-AzResourceGroup `
   -Location EastUS
 ```
 
-[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)ile bir sanal ağ oluşturun. Aşağıdaki örnek, *10.0.0.0/16*adres ön ekine sahip *myVirtualNetwork* adlı bir sanal ağ oluşturur.
+[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)ile bir sanal ağ oluşturun. Aşağıdaki örnek, *10.0.0.0/16* adres ön ekine sahip *myVirtualNetwork* adlı bir sanal ağ oluşturur.
 
 ```azurepowershell-interactive
 $virtualNetwork = New-AzVirtualNetwork `
@@ -67,7 +67,7 @@ $virtualNetwork = New-AzVirtualNetwork `
 
 ## <a name="enable-a-service-endpoint"></a>Hizmet uç noktasını girin
 
-Sanal ağda bir alt ağ oluşturun. Bu örnekte, *özel* adlı bir alt ağ, *Microsoft. Storage*için bir hizmet uç noktası ile oluşturulur: 
+Sanal ağda bir alt ağ oluşturun. Bu örnekte, *özel* adlı bir alt ağ, *Microsoft. Storage* için bir hizmet uç noktası ile oluşturulur: 
 
 ```azurepowershell-interactive
 $subnetConfigPrivate = Add-AzVirtualNetworkSubnetConfig `
@@ -124,7 +124,7 @@ $rule3 = New-AzNetworkSecurityRuleConfig `
   -SourcePortRange *
 ```
 
-[New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup)ile bir ağ güvenlik grubu oluşturun. Aşağıdaki örnek, *Mynsgprivate*adlı bir ağ güvenlik grubu oluşturur.
+[New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup)ile bir ağ güvenlik grubu oluşturun. Aşağıdaki örnek, *Mynsgprivate* adlı bir ağ güvenlik grubu oluşturur.
 
 ```azurepowershell-interactive
 $nsg = New-AzNetworkSecurityGroup `

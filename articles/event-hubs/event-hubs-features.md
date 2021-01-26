@@ -3,12 +3,12 @@ title: Özelliklere genel bakış-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, Azure Event Hubs özellikleri ve terminolojisi hakkında ayrıntılar sağlanmaktadır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 60dc964d1b827eec75ee4f65a5776710e57fd6eb
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 8860a8aa83a17b12236dd47d79479a82846fa8a8
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195798"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791955"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure Event Hubs'ın özellikleri ve terminolojisi
 
@@ -56,7 +56,7 @@ Yayımlanan olaylar yapılandırılabilir, süreli tabanlı bir bekletme ilkesin
 >
 > [Event Hubs yakalama](event-hubs-capture-overview.md) , doğrudan Azure Blob depolama ve Azure Data Lake Storage ile tümleşir ve bu tümleştirme aracılığıyla [doğrudan Azure SYNAPSE 'e akan olayları](store-captured-data-data-warehouse.md)da sunar.
 >
-> Uygulamanız için [olay](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) kaynağını belirleme düzenini kullanmak istiyorsanız, anlık görüntü stratejinizi Event Hubs bekletme limitleriyle hizalamanız gerekir. Ham olaylardaki gerçekleştirilmiş görünümleri, zaman başından başlayarak yeniden oluşturmayı Hedeflemeyin. Uygulamanız bir süredir üretimde olduğunda ve iyi kullanıldığında ve projeksiyon oluşturucunun en son ve devam eden değişikliklere yönelik olarak değişiklik olayları arasında dalgalanmak zorunda kaldıktan sonra bu tür bir stratejiye katılın. 
+> Uygulamanız için [olay](/azure/architecture/patterns/event-sourcing) kaynağını belirleme düzenini kullanmak istiyorsanız, anlık görüntü stratejinizi Event Hubs bekletme limitleriyle hizalamanız gerekir. Ham olaylardaki gerçekleştirilmiş görünümleri, zaman başından başlayarak yeniden oluşturmayı Hedeflemeyin. Uygulamanız bir süredir üretimde olduğunda ve iyi kullanıldığında ve projeksiyon oluşturucunun en son ve devam eden değişikliklere yönelik olarak değişiklik olayları arasında dalgalanmak zorunda kaldıktan sonra bu tür bir stratejiye katılın. 
 
 
 ### <a name="publisher-policy"></a>Yayımcı ilkesi

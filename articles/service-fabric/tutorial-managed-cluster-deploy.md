@@ -4,12 +4,12 @@ description: Bu öğreticide, test için Service Fabric yönetilen bir küme da�
 ms.topic: tutorial
 ms.date: 08/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: 0265a1393c697cbd767de13df1064a5eea957380
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: fd54e6f8c5272c3a8fe0e0162ca2e57968b24642
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316178"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791719"
 ---
 # <a name="tutorial-deploy-a-service-fabric-managed-cluster-preview"></a>Öğretici: Service Fabric yönetilen bir küme dağıtma (Önizleme)
 
@@ -37,7 +37,7 @@ Bu öğreticiye başlamadan önce:
 
 * [SERVICE fabrıc SDK ve PowerShell modülünü](service-fabric-get-started.md)yükler.
 
-* [Azure PowerShell 4.7.0](/powershell/azure/release-notes-azureps?preserve-view=true&view=azps-4.7.0#azservicefabric) (veya üzeri) uygulamasını yükler.
+* [Azure PowerShell 4.7.0](/powershell/azure/release-notes-azureps#azservicefabric) (veya üzeri) uygulamasını yükler.
 
 ## <a name="connect-to-your-azure-account"></a>Azure hesabınıza bağlanma
 
@@ -71,7 +71,7 @@ Bu adımda, New-AzServiceFabricManagedCluster PowerShell komutunu kullanarak Ser
 
 Bu adım için aşağıdaki parametreler için kendi değerlerinizi sağlayın:
 
-* **Küme adı**: kümeniz için, *hayal fcluster*gibi benzersiz bir ad girin.
+* **Küme adı**: kümeniz için, *hayal fcluster* gibi benzersiz bir ad girin.
 * **Yönetici parolası**: yöneticinin, kümedeki temel alınan VM 'lerde RDP için kullanılacak bir parola girin.
 * **Istemci sertifikası parmak izi**: kümenize erişmek için kullanmak istediğiniz istemci sertifikasının parmak izini sağlayın. Bir sertifikanız yoksa, otomatik olarak imzalanan sertifika oluşturmak için [set ve bir sertifika al](../key-vault/certificates/quick-create-portal.md) ' ı izleyin.
 * **Küme SKU 'su**: dağıtılacak [Service Fabric yönetilen kümenin türünü](overview-managed-cluster.md#service-fabric-managed-cluster-skus) belirtin. *Temel* SKU kümeleri yalnızca test dağıtımları için tasarlanmıştır ve düğüm türü ekleme veya kaldırma için izin vermez.

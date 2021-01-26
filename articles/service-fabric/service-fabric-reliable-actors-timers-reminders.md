@@ -4,12 +4,12 @@ description: Her birinin ne zaman kullanılacağı hakkında rehberlik dahil olm
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2b97b15ca4eb287f8d8f2c1af932f22acafae546
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f77eb29c9146fe66d5d2b6073c33e30fbab649c2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89016555"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791803"
 ---
 # <a name="actor-timers-and-reminders"></a>Aktör zamanlayıcılar ve anımsatıcıları
 Aktör, zamanlayıcılar veya anımsatıcılar kaydederek kendi üzerinde düzenli işler zamanlayabilir. Bu makalede, zamanlayıcılar ve anımsatıcıların nasıl kullanılacağı gösterilir ve aralarındaki farklar açıklanmaktadır.
@@ -126,12 +126,12 @@ Aktör çalışma zamanı, geri çağırma tamamlandığında aktörün durum y�
 Aktör çöp toplama işleminin parçası olarak devre dışı bırakıldığında tüm zamanlayıcılar durdurulur. Sonrasında hiçbir süreölçer geri çağırma çağrılmaz. Ayrıca, aktör çalışma zamanı devre dışı bırakmadan önce çalışmakta olan zamanlayıcılar hakkındaki bilgileri korumaz. Bu, gelecekte yeniden etkinleştirildiğinde ihtiyacı olan tüm zamanlayıcıları kaydetmek için aktöre kadar. Daha fazla bilgi için [aktör çöp toplamanın](service-fabric-reliable-actors-lifecycle.md)bölümüne bakın.
 
 ## <a name="actor-reminders"></a>Aktör anımsatıcıları
-Anımsatıcılar, bir aktör üzerinde belirtilen zamanlarda kalıcı geri çağırmaları tetiklemeye yönelik bir mekanizmadır. İşlevleri zamanlayıcılar ile benzerdir. Ancak zamanlayıcılar aksine, aktör açıkça silinmediği veya aktör açıkça silinene kadar tüm koşullarda anımsatıcılar tetiklenir. Özellikle de, aktör çalışma zamanı aktör durumu sağlayıcısı kullanarak aktörün anımsatıcıları hakkında bilgi sağladığından, bir aktör ve yük devretmeler genelinde uyarı tetiklenir. Ayrıca, zamanlayıcılar aksine, var olan anımsatıcılar, kayıt yöntemi ( `RegisterReminderAsync` ), aynı uyarı *adı*kullanılarak tekrar çağırarak güncelleştirilemeyebilir.
+Anımsatıcılar, bir aktör üzerinde belirtilen zamanlarda kalıcı geri çağırmaları tetiklemeye yönelik bir mekanizmadır. İşlevleri zamanlayıcılar ile benzerdir. Ancak zamanlayıcılar aksine, aktör açıkça silinmediği veya aktör açıkça silinene kadar tüm koşullarda anımsatıcılar tetiklenir. Özellikle de, aktör çalışma zamanı aktör durumu sağlayıcısı kullanarak aktörün anımsatıcıları hakkında bilgi sağladığından, bir aktör ve yük devretmeler genelinde uyarı tetiklenir. Ayrıca, zamanlayıcılar aksine, var olan anımsatıcılar, kayıt yöntemi ( `RegisterReminderAsync` ), aynı uyarı *adı* kullanılarak tekrar çağırarak güncelleştirilemeyebilir.
 
 > [!NOTE]
-> Anımsatıcıların güvenilirliği, aktör durumu sağlayıcısı tarafından sunulan durum güvenilirliği garantisi ile bağlantılıdır. Bu, durum kalıcılığı *yok*olarak ayarlanmış aktörler için, bir yük devretmeden sonra, anımsatıcıların tetikleneceği anlamına gelir.
+> Anımsatıcıların güvenilirliği, aktör durumu sağlayıcısı tarafından sunulan durum güvenilirliği garantisi ile bağlantılıdır. Bu, durum kalıcılığı *yok* olarak ayarlanmış aktörler için, bir yük devretmeden sonra, anımsatıcıların tetikleneceği anlamına gelir.
 
-Bir anımsatıcıyı kaydetmek için bir aktör, [`RegisterReminderAsync`](/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync?view=azure-dotnet#remarks) Aşağıdaki örnekte gösterildiği gibi temel sınıfta verilen yöntemi çağırır:
+Bir anımsatıcıyı kaydetmek için bir aktör, [`RegisterReminderAsync`](/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync#remarks) Aşağıdaki örnekte gösterildiği gibi temel sınıfta verilen yöntemi çağırır:
 
 ```csharp
 protected override async Task OnActivateAsync()

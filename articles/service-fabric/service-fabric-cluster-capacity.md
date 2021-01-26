@@ -4,12 +4,12 @@ description: Service Fabric kümenizi planlarken dikkate alınması gereken dü�
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
-ms.openlocfilehash: 731dcfdf25efc4b2f44669dacd8a400037ed47f4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 03ec9b411f13f22a74b864a745acfed922e78b12
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576341"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790707"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric küme kapasitesi planlama konuları
 
@@ -146,7 +146,7 @@ Güvenilirlik katmanını seçme önerisi aşağıda verilmiştir. Çekirdek dü
 | 7 veya 8 | Gold |
 | 9 ve yukarı | PLA |
 
-Kümenizin boyutunu (tüm düğüm türlerindeki sanal makine örneklerinin toplamı) artırdığınızda veya azaltırsanız, kümenizin bir katmandan diğerine güvenilirliğini güncelleştirmeyi göz önünde bulundurun. Bunun yapılması, Sistem Hizmetleri çoğaltma kümesi sayısını değiştirmek için gereken küme yükseltmelerini tetikler. Kümede düğüm ekleme gibi başka herhangi bir değişiklik yapmadan önce yükseltme işleminin tamamlanmasını bekleyin.  Service Fabric Explorer veya [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps) komutunu çalıştırarak yükseltmenin ilerlemesini izleyebilirsiniz
+Kümenizin boyutunu (tüm düğüm türlerindeki sanal makine örneklerinin toplamı) artırdığınızda veya azaltırsanız, kümenizin bir katmandan diğerine güvenilirliğini güncelleştirmeyi göz önünde bulundurun. Bunun yapılması, Sistem Hizmetleri çoğaltma kümesi sayısını değiştirmek için gereken küme yükseltmelerini tetikler. Kümede düğüm ekleme gibi başka herhangi bir değişiklik yapmadan önce yükseltme işleminin tamamlanmasını bekleyin.  Service Fabric Explorer veya [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade) komutunu çalıştırarak yükseltmenin ilerlemesini izleyebilirsiniz
 
 ### <a name="capacity-planning-for-reliability"></a>Güvenilirlik için kapasite planlaması
 

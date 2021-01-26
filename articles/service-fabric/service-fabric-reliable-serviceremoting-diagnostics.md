@@ -5,15 +5,15 @@ author: suchiagicha
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: pepogors
-ms.openlocfilehash: 89a7a545dd334f892ee27b97995de40d7b6416dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c7d466d6e8fd36b4445966b92ee753becf96c64
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86245934"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791770"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Güvenilir hizmet uzaktan Iletişimi için tanılama ve performans izleme
-Güvenilir ServiceRemoting çalışma zamanı,  [performans sayaçlarını](/dotnet/api/system.diagnostics.performancecounter?view=dotnet-plat-ext-3.1)yayar. Bunlar ServiceRemoting 'in nasıl çalıştığı hakkında Öngörüler ve sorun giderme ve performans izleme konularında yardım sağlar.
+Güvenilir ServiceRemoting çalışma zamanı,  [performans sayaçlarını](/dotnet/api/system.diagnostics.performancecounter)yayar. Bunlar ServiceRemoting 'in nasıl çalıştığı hakkında Öngörüler ve sorun giderme ve performans izleme konularında yardım sağlar.
 
 
 ## <a name="performance-counters"></a>Performans sayaçları
@@ -36,7 +36,7 @@ Kategori için `Service Fabric Service` , sayaç örneği adları aşağıdaki b
 
 `ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
-*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili, [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) Biçim belirleyicisi "D" olan yöntem aracılığıyla oluşturulur.
+*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili, [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) Biçim belirleyicisi "D" olan yöntem aracılığıyla oluşturulur.
 
 *Servicerepereporınstanceıd* , performans sayacı örneğinin Ilişkilendirildiği Service Fabric çoğaltma/örnek kimliğinin dize gösterimidir.
 
@@ -57,7 +57,7 @@ Kategori için `Service Fabric Service Method` , sayaç örneği adları aşağ�
 
 *Serviceruntimemethodıd* , iç kullanımı Için yapı hizmeti çalışma zamanı tarafından oluşturulan 32 bitlik bir tamsayının dize gösterimidir. Bu, benzersizlik sağlamak ve diğer performans sayacı örneği adlarıyla çakışmamak için performans sayacı örneği adına dahildir. Kullanıcılar, performans sayacı örneği adının bu bölümünü yorumlama denememelidir.
 
-*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili, [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) Biçim belirleyicisi "D" olan yöntem aracılığıyla oluşturulur.
+*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili, [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) Biçim belirleyicisi "D" olan yöntem aracılığıyla oluşturulur.
 
 *Servicerepereporınstanceıd* , performans sayacı örneğinin Ilişkilendirildiği Service Fabric çoğaltma/örnek kimliğinin dize gösterimidir.
 

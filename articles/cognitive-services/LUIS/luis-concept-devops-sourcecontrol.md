@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 1f5c0c7a877964eeb480fa958c7e76eb5706122f
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 0466105ab99d191b5dd9beab1d5d5b61f4b3225e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561282"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790893"
 ---
 # <a name="devops-practices-for-luis"></a>LUSıS için DevOps uygulamaları
 
@@ -34,7 +34,7 @@ Bu belgede açıklanan kavramları ve yönergeleri kullanarak, bir kaynak deneti
   - Yeniden temellendirme veya Merge aracılığıyla bir daldaki bir dalla yapılan değişiklikleri bir dalla bütünleştirmek mümkündür.
   - Geliştiriciler bir PR 'yi üst dala birleştirebilirler.
 
-- **Sürüm oluşturma**
+- **Sürüm Oluşturma**
   - Büyük bir uygulamadaki her bileşeni bağımsız olarak sürümlenmiş olmalıdır, böylece geliştiricilerin sürüm numarasına bakarak yalnızca önemli değişiklikleri veya güncelleştirmeleri algılamasına izin verir.
 
 - **Kod Incelemeleri**
@@ -72,7 +72,7 @@ LUSıS uygulamanız için aşağıdaki dosya türleri kaynak denetimi altında t
 
 - [Birim testi tanım dosyaları](luis-concept-devops-testing.md#writing-tests) (utterslar ve beklenen sonuçlar)
 
-- Performans testi için kullanılan [toplu işlem test dosyaları](./luis-concept-batch-test.md#batch-file-format) (utterslar ve beklenen sonuçlar)
+- Performans testi için kullanılan [toplu işlem test dosyaları](./luis-how-to-batch-test.md#batch-test-file) (utterslar ve beklenen sonuçlar)
 
 ### <a name="credentials-and-keys-are-not-checked-in"></a>Kimlik bilgileri ve anahtarlar iade edilmedi
 
@@ -181,7 +181,7 @@ LUO DevOps için test etme hakkında daha fazla bilgi için bkz. [Lufor DevOps I
 
 Luu biçimindeki bir LUO uygulaması, gözden geçirime uygun bir PR 'deki değişikliklerin iletişimini destekleyen insandır. Birim test dosyaları da Luaşağı biçiminde yazılır ve ayrıca bir PR 'de kolayca yeniden görüntülenebilir.
 
-## <a name="versioning"></a>Sürüm oluşturma
+## <a name="versioning"></a>Sürüm Oluşturma
 
 Bir uygulama, [Azure bot hizmetinde](/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)çalışan bir bot, [soru-cevap oluşturma](https://www.qnamaker.ai/), [Azure konuşma hizmeti](../speech-service/overview.md)ve daha fazlası gibi işlemleri içerebilen birden çok bileşenden oluşur. Gevşek olarak bağlanmış uygulamaların amacını elde etmek için, bir uygulamanın her bileşeninin bağımsız olarak sürümü oluşturulmuş olması için [Sürüm denetimini](/azure/devops/learn/git/what-is-version-control) kullanın, böylece geliştiricilerin sürüm numarasına bakarak, önemli değişiklikleri veya güncelleştirmeleri algılamasına izin vermiş olur. LUSıS uygulamanızı kendi depolarından korumak için diğer bileşenlerden bağımsız olarak kolayca yükleyebilirsiniz.
 

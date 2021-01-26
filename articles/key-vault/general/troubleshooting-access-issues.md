@@ -7,19 +7,19 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 8e4e64cd872794354479c29d4aaa000cee45c5a3
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: c5fab8b856ff9c82a0de887dc9c322dbf541348b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901224"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791416"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Azure Anahtar Kasası erişim ilkesi sorunlarını giderme
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
 ### <a name="i-am-not-able-to-list-or-get-secretskeyscertificate-i-am-seeing-something-went-wrong-error"></a>Gizli dizileri/anahtarları/sertifikaları listeedemiyorum veya alamıyoruz. "Bir sorun oluştu.." görüyorum Hatayla.
-Gizli anahtarı listeleme/alma/oluşturma veya erişimle ilgili sorun yaşıyorsanız, bu işlemi gerçekleştirmek için tanımlanmış erişim ilkesine sahip olduğunuzdan emin olun: [Key Vault erişim ilkeleri](https://docs.microsoft.com/azure/key-vault/general/group-permissions-for-apps)
+Gizli anahtarı listeleme/alma/oluşturma veya erişimle ilgili sorun yaşıyorsanız, bu işlemi gerçekleştirmek için tanımlanmış erişim ilkesine sahip olduğunuzdan emin olun: [Key Vault erişim ilkeleri](./assign-access-policy-cli.md)
 
 ### <a name="how-can-i-identify-how-and-when-key-vaults-are-accessed"></a>Anahtar kasalarına nasıl ve ne zaman erişildiğini nasıl tanımlayabilirim?
 

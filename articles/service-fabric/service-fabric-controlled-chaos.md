@@ -6,17 +6,17 @@ ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: motanv
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9e9127d9776169131c2ed7f4778052646e84f8b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34ec43593d50e359f09059cd3d51522df62cf567
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89013121"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789660"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Service Fabric kümelerinde ı, kontrollü Chaos
 Bulut altyapıları gibi büyük ölçekli dağıtılmış sistemler, doğal olarak güvenilir değildir. Azure Service Fabric, geliştiricilerin güvenilir olmayan bir altyapının üzerine güvenilir dağıtılmış hizmetler yazmasını sağlar. Güvenilir olmayan bir altyapının üzerine sağlam dağıtılmış hizmetler yazmak için, geliştiricilerin hizmetin kararlılığını test edebilmeleri gerekir, çünkü temeldeki güvenilir olmayan altyapı hatalar nedeniyle karmaşık durum geçişleri ile devam edebilir.
 
-[Hata ekleme ve küme analizi hizmeti](./service-fabric-testability-overview.md) (hata analizi hizmeti olarak da bilinir), geliştiricilere hizmetlerini test etmek için hata alma olanağı sağlar. [Bir bölümü yeniden başlatma](/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps)gibi hedeflenmiş bu sanal hatalar, en yaygın durum geçişlerini çalıştırmaya yardımcı olabilir. Ancak hedeflenen benzetimli hatalar tanımına göre gezinilmiştir ve bu nedenle yalnızca donanımdan tahmin edilen, uzun ve karmaşık durum geçişleri sırasını gösteren hataları kaçırmayabilir. Taraflı olmayan bir test için Chaos kullanabilirsiniz.
+[Hata ekleme ve küme analizi hizmeti](./service-fabric-testability-overview.md) (hata analizi hizmeti olarak da bilinir), geliştiricilere hizmetlerini test etmek için hata alma olanağı sağlar. [Bir bölümü yeniden başlatma](/powershell/module/servicefabric/start-servicefabricpartitionrestart)gibi hedeflenmiş bu sanal hatalar, en yaygın durum geçişlerini çalıştırmaya yardımcı olabilir. Ancak hedeflenen benzetimli hatalar tanımına göre gezinilmiştir ve bu nedenle yalnızca donanımdan tahmin edilen, uzun ve karmaşık durum geçişleri sırasını gösteren hataları kaçırmayabilir. Taraflı olmayan bir test için Chaos kullanabilirsiniz.
 
 Chaos, küme boyunca uzun süre boyunca düzenli ve araya eklemeli hataların (hem düzgün kapanma hem de düzgün şekilde değil) benzetimini yapar. Hatalı bir hata, bir Service Fabric API çağrısı kümesinden oluşur; Örneğin, yeniden başlatma çoğaltma hatası, bu bir yakın ve bir çoğaltma üzerinde açık olan bir kapatma olduğundan, kapanma hatası. Çoğaltmayı kaldırın, birincil çoğaltmayı taşıyın ve ikincil çoğaltmayı taşıyın, Chaos tarafından uygulanan diğer düzgün çalışan hatalardır. Yeniden başlatma düğümü ve kod paketini yeniden Başlat gibi düzgün olmayan hatalar işlemden çıkılıyor. 
 

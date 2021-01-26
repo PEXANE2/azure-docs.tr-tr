@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: bb7708514de6a1d68ecad0c142d68c321293d728
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 41aa7f251bc12fd889a71f65da83c4730ebda9a7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219632"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789642"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric yayınları
 
@@ -18,7 +18,7 @@ ms.locfileid: "98219632"
 - <a href="https://github.com/Azure/service-fabric-issues" target="blank">Sorun Izleme</a> 
 - <a href="/azure/service-fabric/service-fabric-support" target="blank">Destek Seçenekleri</a> 
 - <a href="/azure/service-fabric/service-fabric-versions" target="blank">Desteklenen sürümler</a> 
-- <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">Kod Örnekleri</a>
+- <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">Kod örnekleri</a>
 
 Bu makalede, Service Fabric çalışma zamanına ve SDK 'lara yönelik en son yayınlar ve güncelleştirmeler hakkında daha fazla bilgi sağlanmaktadır.
 
@@ -117,7 +117,7 @@ Ayrıca, bu ilkenin dikkate alınması gerektiğini göstermek için planlanmı�
 #### <a name="key-announcements"></a>Anahtar Duyurular
  - [**Uygulama gizli dizileri Için Keyvaultreference desteği (Önizleme)**](./service-fabric-keyvault-references.md): Service Fabric [yönetilen kimlikleri](./concepts-managed-identity.md) etkinleştirilmiş olan uygulamalar artık bir Key Vault gizli URL 'sine doğrudan bir ortam değişkeni, uygulama parametresi veya kapsayıcı deposu kimlik bilgileri olarak başvurabilir. Service Fabric, uygulamanın yönetilen kimliğini kullanarak gizli anahtarı otomatik olarak çözer. 
      
-- **Durum bilgisi olmayan hizmetler Için geliştirilmiş yükseltme güvenliği**: bir uygulama yükseltmesi sırasında kullanılabilirliği garantilemek için, [durum bilgisi olmayan hizmetler için en az sayıda örnek](/dotnet/api/system.fabric.description.statelessservicedescription?view=azure-dotnet) belirlemek için kullanılabilir kabul edilecek yeni yapılandırmaların tanıtıldık. Bu değer daha önce tüm hizmetler için 1 idi ve değiştirilemez. Bu yeni hizmet başına güvenlik denetimi sayesinde, hizmetlerinizin uygulama yükseltmeleri sırasında, küme yükseltmeleri sırasında ve Service Fabric sistem durumu ve güvenlik denetimlerine dayanan diğer bakımda en az sayıda örnek korumasını sağlayabilirsiniz.
+- **Durum bilgisi olmayan hizmetler Için geliştirilmiş yükseltme güvenliği**: bir uygulama yükseltmesi sırasında kullanılabilirliği garantilemek için, [durum bilgisi olmayan hizmetler için en az sayıda örnek](/dotnet/api/system.fabric.description.statelessservicedescription) belirlemek için kullanılabilir kabul edilecek yeni yapılandırmaların tanıtıldık. Bu değer daha önce tüm hizmetler için 1 idi ve değiştirilemez. Bu yeni hizmet başına güvenlik denetimi sayesinde, hizmetlerinizin uygulama yükseltmeleri sırasında, küme yükseltmeleri sırasında ve Service Fabric sistem durumu ve güvenlik denetimlerine dayanan diğer bakımda en az sayıda örnek korumasını sağlayabilirsiniz.
   
 - [**Kullanıcı Hizmetleri Için kaynak sınırları**](./service-fabric-resource-governance.md#enforcing-the-resource-limits-for-user-services): kullanıcılar, Service Fabric sistem hizmetlerinin kaynak tükenmesi gibi senaryoları engellemek için bir düğümdeki Kullanıcı Hizmetleri için kaynak sınırları ayarlayabilir. 
   

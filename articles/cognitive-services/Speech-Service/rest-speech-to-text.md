@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1577d63822bdb21eff7fcbb3e1343243a3004409
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 70c5593f29b5e83d5d3f318179d365a9235849ca
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033651"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790622"
 ---
 # <a name="speech-to-text-rest-api"></a>Konuşmayı metne dönüştürme REST API'si
 
 Konuşmadan metne iki farklı REST API 'si vardır. Her API özel amacını sunar ve farklı uç noktaları kümelerini kullanır.
 
 Konuşmadan metne REST API 'Leri şunlardır:
-- [Okuma-metin REST API v 3.0](#speech-to-text-rest-api-v30) , [toplu iş dökümü](batch-transcription.md) ve [özel konuşma tanıma](custom-speech-overview.md)için kullanılır. v 3.0, [v 2.0 'ın bir ardıldır](/azure/cognitive-services/speech-service/migrate-v2-to-v3).
+- [Okuma-metin REST API v 3.0](#speech-to-text-rest-api-v30) , [toplu iş dökümü](batch-transcription.md) ve [özel konuşma tanıma](custom-speech-overview.md)için kullanılır. v 3.0, [v 2.0 'ın bir ardıldır](./migrate-v2-to-v3.md).
 - [Kısa seste konuşmadan metne REST API](#speech-to-text-rest-api-for-short-audio) , [konuşma SDK 'sının](speech-sdk.md)bir alternatifi olarak çevrimiçi döküm için kullanılır. Bu API kullanan istekler, istek başına yalnızca en fazla 60 saniyelik ses aktarabilir. 
 
 ## <a name="speech-to-text-rest-api-v30"></a>Konuşmayı metne REST API v 3.0
@@ -45,7 +45,7 @@ REST API v 3.0, şu özelliklere sahiptir:
 
 Toplu Iş dökümü [Bu makalele](batch-transcription.md)birlikte REST API v 3.0 kullanma örneklerine bakın.
 
-Konuşmayı metne REST API v 2.0 kullanıyorsanız, [Bu kılavuzdaki](/azure/cognitive-services/speech-service/migrate-v2-to-v3)v 3.0 'a nasıl geçirebileceğiniz konusuna bakın.
+Konuşmayı metne REST API v 2.0 kullanıyorsanız, [Bu kılavuzdaki](./migrate-v2-to-v3.md)v 3.0 'a nasıl geçirebileceğiniz konusuna bakın.
 
 Tam konuşmadan metne REST API v 3.0 başvurusunu [buraya](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)bakın.
 

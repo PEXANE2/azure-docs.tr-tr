@@ -8,12 +8,12 @@ ms.author: mbaldwin
 author: msmbaldwin
 manager: rkarlin
 ms.date: 09/30/2020
-ms.openlocfilehash: 4a6b3e4c6354c292d000a307bc25f8532aa9a096
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: a8e8e791f0dbe18322ad43364ae4ffd09b430caf
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250800"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790393"
 ---
 # <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>Geçici silme ve Temizleme koruması ile kurtarma yönetimi Azure Key Vault
 
@@ -26,10 +26,15 @@ Key Vault hakkında daha fazla bilgi için bkz.
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/dotnet)
-* [PowerShell modülü](https://docs.microsoft.com/powershell/azure/install-az-ps).
+* [PowerShell modülü](/powershell/azure/install-az-ps).
 * [Azure CLI](/cli/azure/install-azure-cli)
 * Key Vault- [Azure clı](../general/quick-create-cli.md) [Azure Portal](../general/quick-create-portal.md) veya [Azure PowerShell](../general/quick-create-powershell.md) kullanarak bir tane oluşturabilirsiniz.
-* Kullanıcının, geçici olarak silinen kasalarla ilgili işlemler gerçekleştirmek için aşağıdaki izinlere (abonelik düzeyinde) ihtiyacı olacak: | Microsoft. Keykasası/konumlar/Silinkaults/okuma | Geçici olarak silinen bir anahtar kasasının özelliklerini görüntüleyin | | Microsoft. Keykasası/konumlar/Silinkaults/Temizleme/eylem | Geçici olarak silinen bir anahtar kasasını Temizleme |
+* Kullanıcı, geçici olarak silinen kasaların işlemlerini gerçekleştirmek için aşağıdaki izinlere (abonelik düzeyinde) gerek duyar:
+
+  | İzin | Açıklama |
+  |---|---|
+  |Microsoft. Keykasası/konumlar/Silinkaults/okuma|Geçici olarak silinen bir anahtar kasasının özelliklerini görüntüleyin|
+  |Microsoft. Keykasası/konumlar/Silinkaults/Temizleme/eylem|Geçici olarak silinen bir anahtar kasasını temizle|
 
 
 ## <a name="what-are-soft-delete-and-purge-protection"></a>Geçici silme ve Temizleme koruması nedir?
@@ -390,8 +395,8 @@ Geçici silme hakkında daha fazla bilgi için bkz. [Azure Key Vault geçici gen
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Key Vault PowerShell cmdlet 'leri](https://docs.microsoft.com/powershell/module/az.keyvault)
-- [Azure CLı komutlarını Key Vault](https://docs.microsoft.com/cli/azure/keyvault)
+- [Azure Key Vault PowerShell cmdlet 'leri](/powershell/module/az.keyvault)
+- [Azure CLı komutlarını Key Vault](/cli/azure/keyvault)
 - [Azure Key Vault yedekleme](backup.md)
 - [Key Vault günlüğü etkinleştirme](howto-logging.md)
 - [Anahtar kasasına erişimin güvenliğini sağlama](secure-your-key-vault.md)

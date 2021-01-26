@@ -3,12 +3,12 @@ title: Temsilci erişimini kaldırma
 description: Azure açık Thouse için bir hizmet sağlayıcısına temsilci atanmış kaynaklara erişimi kaldırmayı öğrenin.
 ms.date: 12/03/2020
 ms.topic: how-to
-ms.openlocfilehash: d3442bb9fd2f6e7423fd4bf28cace1f7fd91ad80
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 7218c8829c9b2500e8311fbb3d5e9ff4eb986529
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608461"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791365"
 ---
 # <a name="remove-access-to-a-delegation"></a>Temsilci erişimini kaldırma
 
@@ -41,11 +41,11 @@ Aşağıdaki örnekte, [ekleme işlemi](onboard-customer.md)sırasında bir para
     ] 
 ```
 
-Bu rol, Azure Market 'te yayımlanacak [bir yönetilen hizmet teklifi oluştururken](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#authorization) de bir **yetkilendirmede** seçilebilir.
+Bu rol, Azure Market 'te yayımlanacak [bir yönetilen hizmet teklifi oluştururken](../../marketplace/plan-managed-service-offer.md) de bir **yetkilendirmede** seçilebilir.
 
 Bu izne sahip bir Kullanıcı, aşağıdaki yollarla bir temsilciyi kaldırabilir.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 1. [Müşterilerimiz sayfasına](view-manage-customers.md)gidin.
 2. **Temsilciler**' ı seçin.

@@ -3,18 +3,18 @@ title: Uygulama yükseltmesini Service Fabric
 description: Bu makalede, yükseltme modlarını seçme ve sistem durumu denetimleri gerçekleştirme dahil olmak üzere Service Fabric uygulamasını yükseltmeye yönelik bir giriş sunulmaktadır.
 ms.topic: conceptual
 ms.date: 8/5/2020
-ms.openlocfilehash: 8eecd923b009ecbe9f4e607ad57a99b3f20955b9
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: f3fad8d0ede92004706d9a1f4e14353715361b63
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309844"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792023"
 ---
 # <a name="service-fabric-application-upgrade"></a>Uygulama yükseltmesini Service Fabric
 Azure Service Fabric uygulaması, bir hizmet koleksiyonudur. Yükseltme sırasında, Service Fabric yeni [uygulama bildirimini](service-fabric-application-and-service-manifests.md) önceki sürümle karşılaştırır ve uygulamadaki hangi hizmetlerin güncelleştirme gerektirdiğini belirler. Service Fabric, hizmet bildirimlerinde sürüm numaralarını önceki sürümdeki sürüm numaralarıyla karşılaştırır. Bir hizmet değiştirilmemiştir, bu hizmet yükseltilmemiştir.
 
 > [!NOTE]
-> [Applicationparameter](/dotnet/api/system.fabric.description.applicationdescription.applicationparameters?view=azure-dotnet#System_Fabric_Description_ApplicationDescription_ApplicationParameters)'lar bir uygulama yükseltmesinde korunmaz. Geçerli uygulama parametrelerini korumak için Kullanıcı öncelikle parametreleri almalıdır ve bunları aşağıdaki gibi yükseltme API 'SI çağrısına iletmelidir:
+> [Applicationparameter](/dotnet/api/system.fabric.description.applicationdescription.applicationparameters#System_Fabric_Description_ApplicationDescription_ApplicationParameters)'lar bir uygulama yükseltmesinde korunmaz. Geçerli uygulama parametrelerini korumak için Kullanıcı öncelikle parametreleri almalıdır ve bunları aşağıdaki gibi yükseltme API 'SI çağrısına iletmelidir:
 ```powershell
 $myApplication = Get-ServiceFabricApplication -ApplicationName fabric:/myApplication
 $appParamCollection = $myApplication.ApplicationParameters
@@ -40,7 +40,7 @@ Yükseltme, kümedeki tüm düğümlere uygulanırsa, uygulamanın yalnızca bir
 Yükseltme tamamlandıktan sonra, tüm hizmetler ve çoğaltmalar (örnekler) aynı sürüm-i. e içinde kalır. yükseltme başarılı olursa, yeni sürüme güncelleştirilecektir; yükseltme başarısız olursa ve geri alınırsa, eski sürüme geri alınacaktır.
 
 ## <a name="health-checks-during-upgrades"></a>Yükseltmeler sırasında durum denetimleri
-Bir yükseltme için, sistem durumu ilkeleri ayarlanmalıdır (veya varsayılan değerler kullanılabilir). Tüm güncelleştirme etki alanları belirtilen zaman aşımları içinde yükseltildiğinde ve tüm güncelleştirme etki alanları sağlıklı olarak kabul edildiğinde yükseltme başarılı olur.  Sağlıklı güncelleştirme etki alanı, güncelleştirme etki alanının sistem durumu ilkesinde belirtilen tüm durum denetimlerini geçirdiğini gösterir. Örneğin, sistem durumu Service Fabric tarafından tanımlandığından, bir sistem durumu ilkesi, bir uygulama örneğindeki tüm hizmetlerin *sağlıklı*olması gereken bir durum olabilir.
+Bir yükseltme için, sistem durumu ilkeleri ayarlanmalıdır (veya varsayılan değerler kullanılabilir). Tüm güncelleştirme etki alanları belirtilen zaman aşımları içinde yükseltildiğinde ve tüm güncelleştirme etki alanları sağlıklı olarak kabul edildiğinde yükseltme başarılı olur.  Sağlıklı güncelleştirme etki alanı, güncelleştirme etki alanının sistem durumu ilkesinde belirtilen tüm durum denetimlerini geçirdiğini gösterir. Örneğin, sistem durumu Service Fabric tarafından tanımlandığından, bir sistem durumu ilkesi, bir uygulama örneğindeki tüm hizmetlerin *sağlıklı* olması gereken bir durum olabilir.
 
 Service Fabric tarafından yükseltme sırasında sistem durumu ilkeleri ve denetimleri hizmet ve uygulama belirsiz bir uygulamadır. Diğer bir deyişle, hizmete özgü testler yapılmaz.  Örneğin, hizmetiniz bir verimlilik gereksinimlerine sahip olabilir, ancak Service Fabric aktarım hızını denetlemek için bilgilere sahip değildir. Gerçekleştirilen denetimler için [sistem durumu makalelerine](service-fabric-health-introduction.md) bakın. Yükseltme sırasında gerçekleşen denetimler, uygulama paketinin doğru kopyalanıp kopyalanmayacağını, örneğin başlatılmış olup olmadığı için testleri içerir.
 
@@ -52,7 +52,7 @@ Uygulama yükseltme için önerdiğimiz mod, yaygın olarak kullanılan mod olan
 İzlenmeyen el ile modu, bir güncelleştirme etki alanındaki her yükseltmeden sonra, sonraki güncelleştirme etki alanındaki yükseltmeyi açmak için el ile müdahale gerektirir. Service Fabric sistem durumu denetimi yapılmaz. Yönetici, sonraki güncelleştirme etki alanında yükseltmeyi başlatmadan önce sistem durumunu veya durum denetimlerini gerçekleştirir.
 
 ## <a name="upgrade-default-services"></a>Varsayılan Hizmetleri yükselt
-[Uygulama bildiriminde](service-fabric-application-and-service-manifests.md) tanımlanan bazı varsayılan hizmet parametreleri, uygulama yükseltmesinin bir parçası olarak da yükseltilebilir. Yükseltmenin bir parçası olarak yalnızca [Update-ServiceFabricService](/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) aracılığıyla değiştirilmesini destekleyen hizmet parametreleri değiştirilebilir. Uygulama yükseltme sırasında varsayılan Hizmetleri değiştirmenin davranışı aşağıdaki gibidir:
+[Uygulama bildiriminde](service-fabric-application-and-service-manifests.md) tanımlanan bazı varsayılan hizmet parametreleri, uygulama yükseltmesinin bir parçası olarak da yükseltilebilir. Yükseltmenin bir parçası olarak yalnızca [Update-ServiceFabricService](/powershell/module/servicefabric/update-servicefabricservice) aracılığıyla değiştirilmesini destekleyen hizmet parametreleri değiştirilebilir. Uygulama yükseltme sırasında varsayılan Hizmetleri değiştirmenin davranışı aşağıdaki gibidir:
 
 1. Yeni uygulama bildiriminde, kümede zaten bulunmayan varsayılan hizmetler oluşturulur.
 2. Önceki ve yeni uygulama bildirimlerinde bulunan varsayılan hizmetler güncellenir. Yeni uygulama bildirimindeki varsayılan hizmetin parametreleri var olan hizmetin parametrelerinin üzerine yazar. Varsayılan bir hizmetin güncelleştirilmesi başarısız olursa uygulama yükseltme otomatik olarak geri alınacaktır.
@@ -64,14 +64,14 @@ Uygulama yükseltmesi geri alındığında, yükseltme başlatılmadan önce var
 > Yukarıda bulunan kuralları 2) ve 3) üzerinde etkinleştirmek için [Enabledefaultservicesupgrade](service-fabric-cluster-fabric-settings.md) küme yapılandırma ayarı *doğru* olmalıdır (varsayılan hizmet güncelleştirmesi ve silme). Bu özellik Service Fabric sürüm 5,5 ' den itibaren desteklenir.
 
 ## <a name="upgrading-multiple-applications-with-https-endpoints"></a>HTTPS uç noktaları ile birden çok uygulamayı yükseltme
-HTTP**S**kullanırken aynı uygulamanın farklı örnekleri için **aynı bağlantı noktasını** kullanmamaya dikkat etmeniz gerekir. Bunun nedeni Service Fabric uygulama örneklerinden biri için sertifikayı yükseltemeyecektir. Örneğin, uygulama 1 veya uygulama 2 ' nin her ikisi de CERT 1 ' i CERT 2 ' ye yükseltmek ister. Yükseltme gerçekleştiğinde Service Fabric, diğer uygulama hala kullandığından bile sertifika 1 kaydını http.sys ile temizlemiş olabilir. Bunu engellemek için Service Fabric, sertifika ile bağlantı noktasında kayıtlı başka bir uygulama örneğinin zaten bulunduğunu algılar (http.sys) ve işlem başarısız olur.
+HTTP **S** kullanırken aynı uygulamanın farklı örnekleri için **aynı bağlantı noktasını** kullanmamaya dikkat etmeniz gerekir. Bunun nedeni Service Fabric uygulama örneklerinden biri için sertifikayı yükseltemeyecektir. Örneğin, uygulama 1 veya uygulama 2 ' nin her ikisi de CERT 1 ' i CERT 2 ' ye yükseltmek ister. Yükseltme gerçekleştiğinde Service Fabric, diğer uygulama hala kullandığından bile sertifika 1 kaydını http.sys ile temizlemiş olabilir. Bunu engellemek için Service Fabric, sertifika ile bağlantı noktasında kayıtlı başka bir uygulama örneğinin zaten bulunduğunu algılar (http.sys) ve işlem başarısız olur.
 
 Bu nedenle Service Fabric, farklı uygulama örneklerinde **aynı bağlantı noktasını** kullanarak iki farklı hizmetin yükseltilmesini desteklemez. Diğer bir deyişle, aynı sertifikayı aynı bağlantı noktasında farklı hizmetlerde kullanamazsınız. Aynı bağlantı noktasında paylaşılan bir sertifikanız olması gerekiyorsa, hizmetlerin yerleştirme kısıtlamalarına sahip farklı makinelere yerleştirildiğinden emin olmanız gerekir. Ya da her bir uygulama örneğindeki her bir hizmet için mümkünse Service Fabric dinamik bağlantı noktaları kullanmayı düşünün. 
 
 Https ile bir yükseltme başarısız görürseniz, "Windows HTTP sunucu API 'SI bir bağlantı noktasını paylaşan uygulamalar için birden çok sertifikayı desteklemez" hatası bildiren bir hata uyarısı.
 
 ## <a name="application-upgrade-flowchart"></a>Uygulama yükseltme akış çizelgesi
-Bu paragrafı izleyen akış çizelgesi, bir Service Fabric uygulamasının yükseltme işlemini anlamanıza yardımcı olabilir. Özellikle, akış, bir güncelleştirme etki alanında yükseltmenin başarılı veya başarısız olduğu kabul edildiğinde *Healthcheckstableduration*, *healthcheckretrytimeout*ve *upgradehealthcheckınterval*dahil olmak üzere zaman aşımlarını açıklar.
+Bu paragrafı izleyen akış çizelgesi, bir Service Fabric uygulamasının yükseltme işlemini anlamanıza yardımcı olabilir. Özellikle, akış, bir güncelleştirme etki alanında yükseltmenin başarılı veya başarısız olduğu kabul edildiğinde *Healthcheckstableduration*, *healthcheckretrytimeout* ve *upgradehealthcheckınterval* dahil olmak üzere zaman aşımlarını açıklar.
 
 ![Service Fabric bir uygulama için yükseltme işlemi][image]
 

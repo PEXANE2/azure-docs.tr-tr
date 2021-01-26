@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: d858474eca34243a007d0d0ac1e023a4a0fab8ec
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 53be2f6795593bf44cafde149242b13ed4fdfe50
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572349"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790486"
 ---
 # <a name="text-to-speech-rest-api"></a>Metin okuma REST API'si
 
@@ -48,7 +48,7 @@ Bu API 'yi kullanmadan önce şunları anlayın:
 | Bölge | Uç Nokta |
 |--------|----------|
 | Doğu Avustralya | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Brezilya Güney | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Güney Brezilya | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Orta Kanada | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Central US | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Doğu Asya | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -60,11 +60,9 @@ Bu API 'yi kullanmadan önce şunları anlayın:
 | Güney Kore - Orta | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Orta Kuzey ABD | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Kuzey Avrupa | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Güney Afrika - Kuzey | `https://southafricanorth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Orta Güney ABD | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Güneydoğu Asya | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Güney Birleşik Krallık | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Orta Batı ABD | `https://westcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | West Europe | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Batı ABD | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Batı ABD 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -279,5 +277,5 @@ HTTP durumu ise `200 OK` , yanıt gövdesi istenen biçimde bir ses dosyası iç
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Ücretsiz bir Azure hesabı oluşturma](https://azure.microsoft.com/free/cognitive-services/)
-- [Uzun biçimli ses için zaman uyumsuz sensıs](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
+- [Uzun biçimli ses için zaman uyumsuz sensıs](./long-audio-api.md)
 - [Özel Ses’i kullanmaya başlama](how-to-custom-voice.md)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 286c59938413a912c005181fca12f6698a7bc55e
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 6bed26227542cbf3ffc13ecc018aef9e659d026e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042896"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791637"
 ---
 # <a name="query-eventstore-apis-for-cluster-events"></a>Küme olayları için EventStore API 'Lerini sorgulama
 
@@ -111,7 +111,7 @@ Bu şekilde, ve arasında, `2018-04-03T18:00:00Z` `2018-04-04T18:00:00Z` Bu küm
 
 ## <a name="query-the-eventstore-programmatically"></a>EventStore 'u programlı olarak sorgulama
 
-Ayrıca, [Service Fabric istemci kitaplığı](/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library)aracılığıyla eventstore 'u programlı bir şekilde sorgulayabilirsiniz.
+Ayrıca, [Service Fabric istemci kitaplığı](/dotnet/api/overview/azure/service-fabric#client-library)aracılığıyla eventstore 'u programlı bir şekilde sorgulayabilirsiniz.
 
 Service Fabric Istemcinizi ayarladıktan sonra, aşağıdaki gibi EventStore 'a erişerek olayları sorgulayabilirsiniz: `sfhttpClient.EventStore.<request>`
 

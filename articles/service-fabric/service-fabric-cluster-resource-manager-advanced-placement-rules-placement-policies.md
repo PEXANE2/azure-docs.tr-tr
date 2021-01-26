@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5a4586c9c1be51b0ebbdebcf0c23289fc39f9eda
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 263e45928642aa74d682fc490e424a24deeb8076
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485510"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790690"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Service Fabric Hizmetleri için yerleştirme ilkeleri
 Yerleştirme ilkeleri, hizmet yerleşimini bazı belirli, daha az yaygın senaryolarda yönetmek için kullanılabilecek ek kurallardır. Bu senaryolara örnek olarak şunlar verilebilir:
@@ -150,7 +150,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 >
 
 > [!NOTE]
-> Şu anda ilke yalnızca ExclusiveProcess [hizmet paketi etkinleştirme modu](/dotnet/api/system.fabric.description.servicepackageactivationmode?view=azure-dotnet)Ile durum bilgisi olmayan hizmetler için desteklenir.
+> Şu anda ilke yalnızca ExclusiveProcess [hizmet paketi etkinleştirme modu](/dotnet/api/system.fabric.description.servicepackageactivationmode)Ile durum bilgisi olmayan hizmetler için desteklenir.
 >
 
 > [!WARNING]
@@ -158,7 +158,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 >
 
 > [!NOTE]
-> Bu yerleştirme ilkesiyle yüksek bir [Minınstancecount](/dotnet/api/system.fabric.description.statelessservicedescription.mininstancecount?view=azure-dotnet) değeri kullanılması, takılı uygulama yükseltmelerine yol açabilir. Örneğin, beş düğümlü bir kümeniz varsa ve InstanceCount = 10 ' u ayarladıysanız, her düğümde iki örneğe sahip olursunuz. Minınstancecount = 9 ' u ayarlarsanız, denenen bir uygulama yükseltmesi takılmasına sahip olabilir; Minınstancecount = 8 ile bu kaçınılabilir.
+> Bu yerleştirme ilkesiyle yüksek bir [Minınstancecount](/dotnet/api/system.fabric.description.statelessservicedescription.mininstancecount) değeri kullanılması, takılı uygulama yükseltmelerine yol açabilir. Örneğin, beş düğümlü bir kümeniz varsa ve InstanceCount = 10 ' u ayarladıysanız, her düğümde iki örneğe sahip olursunuz. Minınstancecount = 9 ' u ayarlarsanız, denenen bir uygulama yükseltmesi takılmasına sahip olabilir; Minınstancecount = 8 ile bu kaçınılabilir.
 >
 
 ## <a name="next-steps"></a>Sonraki adımlar

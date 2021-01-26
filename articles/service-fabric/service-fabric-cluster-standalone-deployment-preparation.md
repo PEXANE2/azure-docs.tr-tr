@@ -3,12 +3,12 @@ title: Tek başına küme dağıtımı hazırlığı
 description: Ortamı hazırlamaya ve küme yapılandırması oluşturmaya ilişkin belgeler, bir üretim iş yükünü işlemeye yönelik bir kümeyi dağıtmadan önce göz önünde bulundurulmalıdır.
 ms.topic: conceptual
 ms.date: 9/11/2018
-ms.openlocfilehash: 277c7e047815b3b4171f7cced203ecbe5b68b155
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 18b8b0ce8c0e877bf9dd274596b19f85b1febe12
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509181"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790961"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Service Fabric tek başına küme dağıtımınızı planlayın ve hazırlayın
 
@@ -57,7 +57,7 @@ Bir Service Fabric kümesindeki makineler için önerilen özellikler aşağıda
 * Tüm makineler için güvenli ağ veya ağlarla bağlantı
 * Windows Server işletim sistemi yüklü (geçerli sürümler: 2012 R2, 2016, 1709 veya 1803). Service Fabric Version 6.4.654.9590 ve üzeri, Server 2019 ve 1809 sürümlerini de destekler.
 * [.NET Framework 4.5.1 veya üzeri](https://www.microsoft.com/download/details.aspx?id=40773), tam yüklemesi
-* [Windows PowerShell 3.0](/powershell/scripting/windows-powershell/install/installing-windows-powershell?view=powershell-7)
+* [Windows PowerShell 3.0](/powershell/scripting/windows-powershell/install/installing-windows-powershell)
 * [RemoteRegistry hizmetinin](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754820(v=ws.11)) tüm makinelerde çalışıyor olması gerekir
 * **Service Fabric yükleme sürücüsü NTFS dosya sistemi olmalıdır**
 * **Windows Hizmetleri *performans günlükleri & uyarıları* ve *Windows olay günlüğü* [etkin](/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/cc755249(v=ws.11))olmalıdır**.
@@ -79,7 +79,7 @@ Bu dosyadaki bölümlerle ilgili ayrıntılar için bkz. [tek başına Windows k
 | **Yapılandırma ayarı** | **Açıklama** |
 | --- | --- |
 | **NodeTypes** |Düğüm türleri, küme düğümlerinizi çeşitli gruplar halinde ayırmanızı sağlar. Bir kümenin en az bir NodeType olması gerekir. Bir gruptaki tüm düğümler aşağıdaki ortak özelliklere sahiptir: <br> **Ad** -bu düğüm türü adıdır. <br>**Uç nokta bağlantı noktaları** -bu düğüm türüyle ilişkili çeşitli adlandırılmış uç noktaları (bağlantı noktaları) vardır. İstediğiniz herhangi bir bağlantı noktası numarasını, bu bildirimde başka hiçbir şeyle çakışmadığı ve makine/VM üzerinde çalışan başka bir uygulama tarafından kullanımda olmadığı sürece kullanabilirsiniz. <br> **Yerleştirme özellikleri** -bu düğüm türü için, sistem hizmetleri veya hizmetleriniz için yerleştirme kısıtlamaları olarak kullandığınız özellikler açıklanır. Bu özellikler, belirli bir düğüm için ek meta veri sağlayan Kullanıcı tanımlı anahtar/değer çiftleridir. Düğüm özelliklerinin örnekleri, düğümün sabit sürücü veya grafik kartına sahip olup olmadığı, sabit sürücü, çekirdek sayısı ve diğer fiziksel özelliklerle ilgili olarak bulunduğu sayıdır. <br> **Kapasiteler** -düğüm kapasiteleri, belirli bir düğümün tüketim için kullanabileceği belirli bir kaynağın adını ve miktarını tanımlar. Örneğin, bir düğüm, "MemoryMB" adlı bir ölçüm için kapasiteye sahip olduğunu ve varsayılan olarak 2048 MB olduğunu tanımlayabilir. Bu kapasiteler, belirli miktarlarda kaynak gerektiren hizmetlerin gerekli miktarlarda kullanılabilir kaynakları bulunan düğümlere yerleştirildiğinden emin olmak için çalışma zamanında kullanılır.<br>**IsPrimary** -birden fazla NodeType tanımlı ise, sistem hizmetlerinin çalıştığı, *doğru* değeri olan yalnızca bir tane birincil olarak ayarlandığından emin olun. Diğer tüm düğüm türleri *false* değerine ayarlanmalıdır |
-| **Düğümlerini** |Bunlar kümenin parçası olan düğümlerin (düğüm türü, düğüm adı, IP adresi, hata etki alanı ve yükseltme etki alanı) her biri için ayrıntılardır. Kümenin oluşturulmasını istediğiniz makinelerin, IP adresleriyle birlikte burada listelenmesi gerekir. <br> Tüm düğümler için aynı IP adresini kullanırsanız, test amacıyla kullanabileceğiniz bir tek Box kümesi oluşturulur. Üretim iş yüklerini dağıtmak için tek Box kümeleri kullanmayın. |
+| **Düğümler** |Bunlar kümenin parçası olan düğümlerin (düğüm türü, düğüm adı, IP adresi, hata etki alanı ve yükseltme etki alanı) her biri için ayrıntılardır. Kümenin oluşturulmasını istediğiniz makinelerin, IP adresleriyle birlikte burada listelenmesi gerekir. <br> Tüm düğümler için aynı IP adresini kullanırsanız, test amacıyla kullanabileceğiniz bir tek Box kümesi oluşturulur. Üretim iş yüklerini dağıtmak için tek Box kümeleri kullanmayın. |
 
 Küme yapılandırmasının tüm ayarları ortama yapılandırıldıktan sonra, küme ortamına karşı test edilebilir (adım 7).
 

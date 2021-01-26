@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 11/23/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: fb36ab8a86a89d6383f93ad58c23956472841de2
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: f21a2cc8218dde8b0cf7203a1fcb1f5cfb9424a2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95539269"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790876"
 ---
 # <a name="what-is-language-understanding-luis"></a>Language Understanding (LUIS) nedir?
 
@@ -66,7 +66,7 @@ Modellerinizi, **[Amaç](luis-concept-intent.md "hedefleri")** olarak adlandır�
 |`When does your store open?`|StoreHoursAndLocation|open|
 |`Schedule a meeting at 1pm with Bob in Distribution`|ScheduleMeeting|13, Bob|
 
-Modeli [yazma](https://go.microsoft.com/fwlink/?linkid=2092087 "authoring") API 'leri, ya da **[LUIS portalı](https://www.luis.ai "LUIS portalı")** veya her ikisiyle birlikte oluşturun. [Portal](get-started-portal-build-app.md "portal") ve [SDK istemci kitaplıkları](azure-sdk-quickstart.md "SDK istemci kitaplıkları")ile derleme hakkında daha fazla bilgi edinin.
+Modeli [yazma](https://go.microsoft.com/fwlink/?linkid=2092087 "authoring") API 'leri, ya da **[LUIS portalı](https://www.luis.ai "LUIS portalı")** veya her ikisiyle birlikte oluşturun. [Portal](get-started-portal-build-app.md "portal") ve [SDK istemci kitaplıkları](./client-libraries-rest-api.md?pivots=rest-api "SDK istemci kitaplıkları")ile derleme hakkında daha fazla bilgi edinin.
 
 ## <a name="step-2-get-the-query-prediction"></a>2. Adım: sorgu tahminini alın
 
@@ -128,7 +128,7 @@ LUO, var olan LUSıS kaynaklarınızın bir parçası olarak Metin Analizi işle
 
 ## <a name="learn-with-the-quickstarts"></a>Hızlı başlangıçlarla öğrenin
 
-[Portalı](get-started-portal-build-app.md "portal") ve [SDK istemci kitaplıklarını](azure-sdk-quickstart.md "SDK istemci kitaplıkları")kullanarak UYGULAMALı hızlı başlangıçlarla halsıs hakkında bilgi edinin.
+[Portalı](get-started-portal-build-app.md "portal") ve [SDK istemci kitaplıklarını](./client-libraries-rest-api.md?pivots=rest-api "SDK istemci kitaplıkları")kullanarak UYGULAMALı hızlı başlangıçlarla halsıs hakkında bilgi edinin.
 
 
 ## <a name="deploy-on-premises-using-docker-containers"></a>Docker kapsayıcılarını kullanarak şirket içinde dağıtma

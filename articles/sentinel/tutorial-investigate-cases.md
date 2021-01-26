@@ -12,20 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: aa9160f01ed0040123bd8ac932cfd2443f557bb6
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 8853f3774bb35361746c8b706f38bc54079d74f7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511738"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790995"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Öğretici: Azure Sentinel ile olayları araştırın
 
 > [!IMPORTANT]
-> Araştırma grafı Şu anda **Önizleme** aşamasındadır. Beta, önizleme veya henüz genel kullanıma sunulmayan Azure özelliklerine uygulanan ek koşullar için [Microsoft Azure önizlemeleri için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 'na bakın.
-
+> Araştırma grafiği artık **genel kullanıma** sunulmuştur. 
 
 Bu öğretici, Azure Sentinel ile olayları araştırmanıza yardımcı olur. Veri kaynaklarınızı Azure Sentinel 'e bağladıktan sonra, şüpheli bir sorun olduğunda bildirim almak istersiniz. Bunu yapmanızı sağlamak için Azure Sentinel, atayabileceğiniz ve araştırmanız gereken olayları üreten gelişmiş uyarı kuralları oluşturmanıza olanak sağlar.
 
@@ -37,7 +36,7 @@ Bu makalede şunları ele alınmaktadır:
 
 Bir olay birden çok uyarı içerebilir. Bu, belirli bir araştırma için ilgili tüm kanıtın bir toplamadır. **Analiz** sayfasında oluşturduğunuz analiz kuralları temel alınarak bir olay oluşturulur. Önem ve durum gibi uyarılarla ilgili özellikler olay düzeyinde ayarlanır. Azure Sentinel 'e hangi tür tehditleri aradığınızı ve bunların nasıl bulunacağını öğrendikten sonra, olayları inceleyerek algılanan tehditleri izleyebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 - Yalnızca analiz kuralınızı ayarlarken varlık eşleme alanlarını kullandıysanız olayı araştırabileceksiniz. Araştırma grafiğinde, özgün olaylarınızın varlıkları içermesi gerekir.
 
 - Olayları atamak için gereken bir Konuk kullanıcı varsa, kullanıcının Azure AD kiracınızda [Dizin okuyucu](../active-directory/roles/permissions-reference.md#directory-readers) rolüne atanması gerekir. Normal (konuk olmayan) kullanıcılara varsayılan olarak bu rol atanır.
@@ -113,11 +112,11 @@ Araştırma grafiğini kullanmak için:
 
 Belirli bir olayı çöztikten sonra (örneğin, araştırmanızın sonucu geldiğinde), olayın durumunu **kapalı** olarak ayarlamanız gerekir. Bunu yaptığınızda, bunu kapatmanızın nedenini belirterek olayı sınıflamak isteyip istemediğiniz sorulur. Bu adım zorunludur. **Sınıflandırmayı Seç** ' e tıklayın ve açılan listeden aşağıdakilerden birini seçin:
 
-- Doğru pozitif-şüpheli etkinlik
-- Benign pozitif-şüpheli ancak beklenen
-- Yanlış pozitif-hatalı uyarı mantığı
-- Yanlış pozitif-hatalı veriler
-- Saptan
+- Doğru Pozitif: Şüpheli etkinlik
+- Zararsız Pozitif: Şüpheli ancak beklenen
+- Hatalı Pozitif: Hatalı uyarı mantığı
+- Hatalı Pozitif: Hatalı veri
+- Belirsiz
 
 :::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="Sınıflandırma seçme listesinde bulunan sınıflandırmaların vurgualdığı ekran görüntüsü.":::
 

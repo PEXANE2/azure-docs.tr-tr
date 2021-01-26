@@ -3,17 +3,17 @@ title: Azure Service Fabric kümesi oluşturma
 description: Azure 'da Azure Resource Manager kullanarak güvenli bir Service Fabric kümesi ayarlamayı öğrenin.  Varsayılan bir şablon kullanarak veya kendi küme şablonunuzu kullanarak bir küme oluşturabilirsiniz.
 ms.topic: conceptual
 ms.date: 08/16/2018
-ms.openlocfilehash: fd2c472d24f305e42f1706e5fc49168ccde2a580
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d4daa75fd9383bc19da1b09104ebddff5712c5b4
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008676"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791820"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Azure Resource Manager kullanarak Service Fabric kümesi oluşturma 
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure Portal](service-fabric-cluster-creation-via-portal.md)
+> * [Azure portalı](service-fabric-cluster-creation-via-portal.md)
 >
 >
 
@@ -26,7 +26,7 @@ Kümenin güvenliğini sağlamak için seçilen güvenlik türü (örn.: Windows
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 Bu makalede, bir kümeyi dağıtmak için Service Fabric RM PowerShell veya Azure CLı modüllerini kullanın:
 
 * [Azure PowerShell 4,1 ve üzeri][azure-powershell]
@@ -34,7 +34,7 @@ Bu makalede, bir kümeyi dağıtmak için Service Fabric RM PowerShell veya Azur
 
 Service Fabric modülleriyle ilgili başvuru belgelerini buradan bulabilirsiniz:
 * [Az.ServiceFabric](/powershell/module/az.servicefabric)
-* [az SF CLı modülü](/cli/azure/sf?view=azure-cli-latest)
+* [az SF CLı modülü](/cli/azure/sf)
 
 ### <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -285,6 +285,6 @@ JSON sözdizimi ve özellikler için bir şablon kullanmak için bkz. [Microsoft
 
 <!-- Links -->
 [azure-powershell]:https://docs.microsoft.com/powershell/azure/install-Az-ps
-[azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest
+[azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [customize-your-cluster-template]: service-fabric-cluster-creation-create-template.md

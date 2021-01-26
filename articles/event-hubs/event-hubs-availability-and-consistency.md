@@ -4,12 +4,12 @@ description: Bölümler kullanılarak Azure Event Hubs maksimum kullanılabilirl
 ms.topic: article
 ms.date: 01/25/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5ffa2df992eb0c22aafbbb7436250405998d8073
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 884fe878b9524dcf8d97d1123dce35e02af34a24
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762818"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790758"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Event Hubs’da kullanılabilirlik ve tutarlılık
 

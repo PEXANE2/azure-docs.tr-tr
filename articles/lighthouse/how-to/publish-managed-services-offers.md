@@ -3,12 +3,12 @@ title: Azure Market 'Te yönetilen hizmet teklifi yayımlama
 description: Onpanolar müşterilerinin Azure 'da kullanımı için bir yönetilen hizmet teklifini nasıl yayımlayacağınızı öğrenin.
 ms.date: 12/17/2020
 ms.topic: how-to
-ms.openlocfilehash: a003e671631e9f23654eb524c7c2d937339a9588
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: f6bd504185fab3fc698019a3eb8c530ba93f8abc
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673163"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791382"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Azure Market 'Te yönetilen hizmet teklifi yayımlama
 
@@ -18,7 +18,7 @@ Bu makalede ortak veya özel yönetilen hizmet teklifini Iş Ortağı Merkezi 'n
 
 Teklif oluşturmak ve yayımlamak için [Iş Ortağı Merkezi 'nde](../../marketplace/partner-center-portal/create-account.md) geçerli bir hesabınız olması gerekir. Zaten bir hesabınız yoksa [kaydolma işlemi](https://aka.ms/joinmarketplace) , Iş Ortağı Merkezi 'nde hesap oluşturma ve ticari Market programına kaydolma adımlarında size yol açacaktır.
 
-Yönetilen hizmet [teklifi sertifika gereksinimleri](/legal/marketplace/certification-policies#7004-business-requirements)uyarınca, yönetilen bir hizmet teklifi yayımlamak için [gümüş veya altın bir bulut platformu uzmanlığına](/partner-center/learn-about-competencies) sahip olmanız veya bir [Azure uzman msp](https://partner.microsoft.com/membership/azure-expert-msp) olmanız gerekir. Müşterinin teklifinizi dağıttığı her seferinde [CRM sisteminizde bir kayıt oluşturacak bir müşteri adayı hedefi de girmeniz](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#customer-leads) gerekir.
+Yönetilen hizmet [teklifi sertifika gereksinimleri](/legal/marketplace/certification-policies#7004-business-requirements)uyarınca, yönetilen bir hizmet teklifi yayımlamak için [gümüş veya altın bir bulut platformu uzmanlığına](/partner-center/learn-about-competencies) sahip olmanız veya bir [Azure uzman msp](https://partner.microsoft.com/membership/azure-expert-msp) olmanız gerekir. Müşterinin teklifinizi dağıttığı her seferinde [CRM sisteminizde bir kayıt oluşturacak bir müşteri adayı hedefi de girmeniz](../../marketplace/plan-managed-service-offer.md#customer-leads) gerekir.
 
 Microsoft İş Ortağı Ağı (MPN) KIMLIĞINIZ, müşteri görevlendirmeleri genelinde etkilerini izlemek için yayımladığınız tekliflerle [otomatik olarak ilişkilendirilir](../../cost-management-billing/manage/link-partner-id.md) .
 
@@ -38,7 +38,7 @@ Aşağıdaki tablo, yönetilen bir hizmet teklifini yayımlayarak veya Azure Res
 
 ## <a name="create-your-offer"></a>Teklifinizi oluşturma
 
-Sağlamanız gereken tüm bilgiler ve varlıklar dahil olmak üzere teklifinizi oluşturma hakkında ayrıntılı yönergeler için bkz. [yönetilen hizmet teklifi oluşturma](../../marketplace/partner-center-portal/create-new-managed-service-offer.md).
+Sağlamanız gereken tüm bilgiler ve varlıklar dahil olmak üzere teklifinizi oluşturma hakkında ayrıntılı yönergeler için bkz. [yönetilen hizmet teklifi oluşturma](../../marketplace/plan-managed-service-offer.md).
 
 Genel yayımlama süreci hakkında bilgi edinmek için bkz. [Azure Marketi ve AppSource Yayımlama Kılavuzu](../../marketplace/overview.md). Ayrıca, özellikle [yönetilen hizmetler](/legal/marketplace/certification-policies#700-managed-services) bölümünü [ticari Market sertifika ilkelerini](/legal/marketplace/certification-policies)gözden geçirmeniz gerekir.
 
@@ -49,7 +49,7 @@ Müşteri teklifinizi ekledikten sonra, bir veya daha fazla abonelik veya kaynak
 
 ## <a name="publish-your-offer"></a>Teklifinizi yayımlayın
 
-Tüm bölümleri tamamladıktan sonra, bir sonraki adımınız teklifi Azure Marketi 'ne yayımlamaktır. Teklifinizi canlı hale getirme sürecini başlatmak için **Yayımla** düğmesini seçin. Bu süreç hakkında daha fazla bilgi için [burada](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#publish)bulunabilir. 
+Tüm bölümleri tamamladıktan sonra, bir sonraki adımınız teklifi Azure Marketi 'ne yayımlamaktır. Teklifinizi canlı hale getirme sürecini başlatmak için **Yayımla** düğmesini seçin. Bu süreç hakkında daha fazla bilgi için [burada](../../marketplace/plan-managed-service-offer.md)bulunabilir. 
 
 [Teklifinizin güncelleştirilmiş bir sürümünü](../..//marketplace/partner-center-portal/update-existing-offer.md) dilediğiniz zaman yayımlayabilirsiniz. Örneğin, daha önce yayımlanmış bir teklifine yeni bir rol tanımı eklemek isteyebilirsiniz. Bunu yaptığınızda, teklifi zaten eklemiş olan müşteriler, bir güncelleştirmenin kullanılabildiğini bilmesini sağlayan Azure portal [**hizmet sağlayıcıları**](view-manage-service-providers.md) sayfasında bir simge görür. Her müşteri [, değişiklikleri gözden](view-manage-service-providers.md#update-service-provider-offers) geçirebilecek ve yeni sürüme güncelleştirmek isteyip istemediğinize karar verecek. 
 
