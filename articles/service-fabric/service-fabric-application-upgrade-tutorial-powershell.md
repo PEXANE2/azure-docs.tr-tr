@@ -4,12 +4,12 @@ description: Bu makalede, bir Service Fabric uygulaması dağıtma, kodu değiş
 ms.topic: conceptual
 ms.date: 8/5/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ee040916ae1ce6ac931abc1fc07021b08cdbf895
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 4b038f4a41ee02960a02c4445b65eb2360a75761
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309066"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792040"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>PowerShell kullanarak uygulama yükseltmesini Service Fabric
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ Yönetilen veya yerel API 'Ler, PowerShell, Azure CLı, Java veya REST kullanıl
 Service Fabric izlenen yükseltmelerde, uygulama Yöneticisi Service Fabric uygulamanın sağlıklı olup olmadığını belirlemede sistem durumu değerlendirme ilkesini yapılandırabilir. Ayrıca, yönetici, sistem durumu değerlendirmesi başarısız olduğunda (örneğin, otomatik geri alma işlemi yapıldığında) yapılacak eylemi yapılandırabilir. Bu bölüm, PowerShell kullanan SDK örneklerinden biri için izlenen bir yükseltmeyi açıklar. 
 
 > [!NOTE]
-> [Applicationparameter](/dotnet/api/system.fabric.description.applicationdescription.applicationparameters?view=azure-dotnet#System_Fabric_Description_ApplicationDescription_ApplicationParameters)'lar bir uygulama yükseltmesinde korunmaz. Geçerli uygulama parametrelerini korumak için Kullanıcı öncelikle parametreleri almalıdır ve bunları aşağıdaki gibi yükseltme API 'SI çağrısına iletmelidir:
+> [Applicationparameter](/dotnet/api/system.fabric.description.applicationdescription.applicationparameters#System_Fabric_Description_ApplicationDescription_ApplicationParameters)'lar bir uygulama yükseltmesinde korunmaz. Geçerli uygulama parametrelerini korumak için Kullanıcı öncelikle parametreleri almalıdır ve bunları aşağıdaki gibi yükseltme API 'SI çağrısına iletmelidir:
 ```powershell
 $myApplication = Get-ServiceFabricApplication -ApplicationName fabric:/myApplication
 $appParamCollection = $myApplication.ApplicationParameters
@@ -49,9 +49,9 @@ Uygulama Projesi, **Visualobjectsapplication** öğesine sağ tıklayıp **Yayı
 > 
 > 
 
-Visual Studio 'da projeyi oluşturduktan sonra, uygulama paketini ımabir görüntü oluşturmaya kopyalamak için [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) PowerShell komutunu kullanabilirsiniz. Uygulama paketini yerel olarak doğrulamak istiyorsanız, [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage) cmdlet 'ini kullanın. Sonraki adım, [register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype) cmdlet 'ini kullanarak uygulamayı Service Fabric çalışma zamanına kaydetkullanmaktır. Aşağıdaki adım, [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) cmdlet 'ini kullanarak uygulamanın bir örneğini başlatkullanmaktır.  Bu üç adım, Visual Studio 'da **Dağıt** menü öğesinin kullanılmasıyla benzerdir.  Sağlama tamamlandıktan sonra, tüketilen kaynakları azaltmak için, görüntü deposundan kopyalanmış uygulama paketini temizlemeniz gerekir.  Bir uygulama türü artık gerekmiyorsa, aynı nedenden dolayı bunun kaydı kaldırılmalıdır. Daha fazla bilgi için bkz. [PowerShell kullanarak uygulama dağıtma ve kaldırma](service-fabric-application-upgrade-tutorial-powershell.md) .
+Visual Studio 'da projeyi oluşturduktan sonra, uygulama paketini ımabir görüntü oluşturmaya kopyalamak için [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) PowerShell komutunu kullanabilirsiniz. Uygulama paketini yerel olarak doğrulamak istiyorsanız, [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage) cmdlet 'ini kullanın. Sonraki adım, [register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype) cmdlet 'ini kullanarak uygulamayı Service Fabric çalışma zamanına kaydetkullanmaktır. Aşağıdaki adım, [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication) cmdlet 'ini kullanarak uygulamanın bir örneğini başlatkullanmaktır.  Bu üç adım, Visual Studio 'da **Dağıt** menü öğesinin kullanılmasıyla benzerdir.  Sağlama tamamlandıktan sonra, tüketilen kaynakları azaltmak için, görüntü deposundan kopyalanmış uygulama paketini temizlemeniz gerekir.  Bir uygulama türü artık gerekmiyorsa, aynı nedenden dolayı bunun kaydı kaldırılmalıdır. Daha fazla bilgi için bkz. [PowerShell kullanarak uygulama dağıtma ve kaldırma](service-fabric-application-upgrade-tutorial-powershell.md) .
 
-Şimdi [kümeyi ve uygulamayı görüntülemek için Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)kullanabilirsiniz. Uygulamanın, adres çubuğuna yazarak Internet Explorer 'da gezinilebiliyor bir Web hizmeti vardır `http://localhost:8081/visualobjects` .  Ekranda hareket eden bazı kayan görsel nesneleri görmeniz gerekir.  Ayrıca, uygulama durumunu denetlemek için [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) komutunu kullanabilirsiniz.
+Şimdi [kümeyi ve uygulamayı görüntülemek için Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)kullanabilirsiniz. Uygulamanın, adres çubuğuna yazarak Internet Explorer 'da gezinilebiliyor bir Web hizmeti vardır `http://localhost:8081/visualobjects` .  Ekranda hareket eden bazı kayan görsel nesneleri görmeniz gerekir.  Ayrıca, uygulama durumunu denetlemek için [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication) komutunu kullanabilirsiniz.
 
 ## <a name="step-2-update-the-visual-objects-sample"></a>2. Adım: görsel nesneler örneğini güncelleştirme
 Adım 1 ' de dağıtılan sürümde, görsel nesnelerin döndürüleceğini fark edebilirsiniz. Bu uygulamayı görsel nesnelerin de her yerde de döndürelim.
@@ -77,7 +77,7 @@ Artık *ApplicationManifest.xml* dosyası ( **Visualobjects** çözümünün alt
  <ServiceManifestRefServiceManifestName="VisualObjects.ActorService" ServiceManifestVersion="2.0" />
 ```
 
-Şimdi yalnızca **Actorservice** projesini seçerek projeyi derleyin ve ardından Visual Studio 'da **Build** seçeneğini sağ tıklayıp seçin. **Tümünü yeniden derle**' yi seçerseniz, kod değiştirildiğinden, tüm projeler için sürümleri güncelleştirmeniz gerekir. Daha sonra, ***Visualobjectsapplication***' a sağ tıklayıp Service Fabric menüsünü seçip **paket**' i seçerek güncelleştirilmiş uygulamayı paketlim. Bu eylem, dağıtılabilecek bir uygulama paketi oluşturur.  Güncelleştirilmiş uygulamanız dağıtılmaya hazırlanıyor.
+Şimdi yalnızca **Actorservice** projesini seçerek projeyi derleyin ve ardından Visual Studio 'da **Build** seçeneğini sağ tıklayıp seçin. **Tümünü yeniden derle**' yi seçerseniz, kod değiştirildiğinden, tüm projeler için sürümleri güncelleştirmeniz gerekir. Daha sonra, **_Visualobjectsapplication_ _ öğesine sağ tıklayıp *Service Fabric menüsünü seçip _ Package öğesini seçerek*** güncelleştirilmiş uygulamayı paketlim. Bu eylem, dağıtılabilecek bir uygulama paketi oluşturur.  Güncelleştirilmiş uygulamanız dağıtılmaya hazırlanıyor.
 
 ## <a name="step-3--decide-on-health-policies-and-upgrade-parameters"></a>3. Adım: sistem durumu ilkelerine ve yükseltme parametrelerine karar verme
 Çeşitli yükseltme parametreleri, zaman aşımları ve sistem durumu ölçütünün uygulanmasını iyi anlamak için [uygulama yükseltme parametreleri](service-fabric-application-upgrade-parameters.md) ve [yükseltme süreci](service-fabric-application-upgrade.md) hakkında bilgi edinin. Bu kılavuzda, hizmet durumu değerlendirmesi ölçütü varsayılan (ve önerilen) değerlerine ayarlanır; bu da yükseltme sonrasında tüm hizmetler ve örneklerin *sağlıklı* olması gerektiği anlamına gelir.  
@@ -95,9 +95,9 @@ UpgradeDomainTimeoutSec = 1200
 UpgradeTimeout = 3000
 
 ## <a name="step-4-prepare-application-for-upgrade"></a>4. Adım: uygulamayı yükseltme için hazırlama
-Artık uygulama oluşturulmuştur ve yükseltilmeye hazırdır. Yönetici olarak bir PowerShell penceresi açar ve [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps)yazarsanız, dağıtılan **visualobjects** 'in uygulama türü 1.0.0.0 olduğunu bilmenizi sağlamalıdır.  
+Artık uygulama oluşturulmuştur ve yükseltilmeye hazırdır. Yönetici olarak bir PowerShell penceresi açar ve [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication)yazarsanız, dağıtılan **visualobjects** 'in uygulama türü 1.0.0.0 olduğunu bilmenizi sağlamalıdır.  
 
-Uygulama paketi, Service Fabric SDK- *Samples\services\stateful\visualobjects\visualobjects\obj\x64\debug*öğesini sıkıştırdığınızda aşağıdaki göreli yol altında depolanır. Bu dizinde uygulama paketinin depolandığı bir "paket" klasörü bulmalısınız. En son derleme olduğundan emin olmak için zaman damgalarını denetleyin (yolları uygun şekilde değiştirmeniz gerekebilir).
+Uygulama paketi, Service Fabric SDK- *Samples\services\stateful\visualobjects\visualobjects\obj\x64\debug* öğesini sıkıştırdığınızda aşağıdaki göreli yol altında depolanır. Bu dizinde uygulama paketinin depolandığı bir "paket" klasörü bulmalısınız. En son derleme olduğundan emin olmak için zaman damgalarını denetleyin (yolları uygun şekilde değiştirmeniz gerekebilir).
 
 Şimdi güncelleştirilmiş uygulama paketini ımagesme Service Fabric kopyalayalim (uygulama paketlerinin Service Fabric tarafından depolandığı yer). *Applicationpackagepathınımaitstore* parametresi, uygulama paketini bulabileceği Service Fabric bilgilendirir. Güncelleştirilmiş uygulamayı aşağıdaki komutla "VisualObjects v2" içine yerleştirdik \_ (yolları doğru bir şekilde değiştirmeniz gerekebilir).
 
@@ -105,7 +105,7 @@ Uygulama paketi, Service Fabric SDK- *Samples\services\stateful\visualobjects\vi
 Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\Samples\Services\Stateful\VisualObjects\VisualObjects\obj\x64\Debug\Package -ApplicationPackagePathInImageStore "VisualObjects\_V2"
 ```
 
-Sonraki adım, bu uygulamayı [register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) komutu kullanılarak gerçekleştirilebilecek Service Fabric kaydetmelidir:
+Sonraki adım, bu uygulamayı [register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype) komutu kullanılarak gerçekleştirilebilecek Service Fabric kaydetmelidir:
 
 ```powershell
 Register-ServiceFabricApplicationType -ApplicationPathInImageStore "VisualObjects\_V2"
@@ -120,7 +120,7 @@ Remove-ServiceFabricApplicationPackage -ApplicationPackagePathInImageStore "Visu
 ```
 
 ## <a name="step-5-start-the-application-upgrade"></a>5. Adım: uygulama yükseltmesini başlatma
-Şimdi, [Başlat-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps) komutunu kullanarak uygulama yükseltmesini başlatacak şekilde ayarlanıyoruz:
+Şimdi, [Başlat-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade) komutunu kullanarak uygulama yükseltmesini başlatacak şekilde ayarlanıyoruz:
 
 ```powershell
 Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -ApplicationTypeVersion 2.0.0.0 -HealthCheckStableDurationSec 60 -UpgradeDomainTimeoutSec 1200 -UpgradeTimeout 3000   -FailureAction Rollback -Monitored
@@ -129,7 +129,7 @@ Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -Ap
 
 Uygulama adı *ApplicationManifest.xml* dosyasında açıklananla aynıdır. Service Fabric hangi uygulamanın yükseltildiğini belirlemek için bu adı kullanır. Zaman aşımlarını çok kısa olacak şekilde ayarlarsanız, sorunu belirten bir hata iletisiyle karşılaşabilirsiniz. Sorun giderme bölümüne bakın veya zaman aşımlarını artırın.
 
-Uygulama yükseltmesi devam ettikçe, Service Fabric Explorer kullanarak veya [Get-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/get-servicefabricapplicationupgrade?view=azureservicefabricps) PowerShell komutunu kullanarak bunu izleyebilirsiniz: 
+Uygulama yükseltmesi devam ettikçe, Service Fabric Explorer kullanarak veya [Get-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/get-servicefabricapplicationupgrade) PowerShell komutunu kullanarak bunu izleyebilirsiniz: 
 
 ```powershell
 Get-ServiceFabricApplicationUpgrade fabric:/VisualObjects

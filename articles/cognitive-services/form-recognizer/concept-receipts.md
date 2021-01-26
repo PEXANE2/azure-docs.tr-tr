@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 43eae43d11a48ee6c395e4a86b8e8c1353843991
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 7173efd3dab0e8d2fd3c948a3a9bac07641e78f3
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131466"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792091"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>Form tanıyıcı önceden oluşturulmuş makbuz modeli
 
-Azure form tanıyıcı, önceden oluşturulmuş giriş modelini kullanarak satış makbuzlarından bilgi çözümleyebilir ve ayıklayabilir. Güçlü [optik karakter tanıma (OCR)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) olanaklarımızı, giriş bilgilerini İngilizce olarak Makbuzlardan ayıklamak için derin öğrenme modellerini anlama ile birleştirir. Makbuz API 'SI, satış makbuzlarından ana bilgileri ticari ad, işlem tarihi, işlem toplamı, satır öğeleri ve daha fazlası gibi Ingilizce olarak ayıklar. 
+Azure form tanıyıcı, önceden oluşturulmuş giriş modelini kullanarak satış makbuzlarından bilgi çözümleyebilir ve ayıklayabilir. Güçlü [optik karakter tanıma (OCR)](../computer-vision/concept-recognizing-text.md) olanaklarımızı, giriş bilgilerini İngilizce olarak Makbuzlardan ayıklamak için derin öğrenme modellerini anlama ile birleştirir. Makbuz API 'SI, satış makbuzlarından ana bilgileri ticari ad, işlem tarihi, işlem toplamı, satır öğeleri ve daha fazlası gibi Ingilizce olarak ayıklar. 
 
 ## <a name="understanding-receipts"></a>Alındıları anlama 
 
@@ -38,7 +38,7 @@ Giriş API 'SI, optik karakter tanıma (OCR) ve önceden oluşturulmuş alış i
 
 ### <a name="fields-extracted"></a>Ayıklanan alanlar
 
-|Ad| Tür | Description | Metin | Değer (standartlaştırılmış çıkış) |
+|Ad| Tür | Açıklama | Metin | Değer (standartlaştırılmış çıkış) |
 |:-----|:----|:----|:----| :----|
 | Pottype | string | Satış alındısı türü | 'Nün |  |
 | MerchantName | string | Okundu bilgisini veren satıcı adı | Contoso |  |
@@ -51,7 +51,7 @@ Giriş API 'SI, optik karakter tanıma (OCR) ve önceden oluşturulmuş alış i
 | Vergi | sayı | Makbuzdaki vergi, genellikle satış vergisi veya eşdeğer | 2,00 USD | 2,00 |
 | İpucu | sayı | Alıcı tarafından dahil edilen İpucu | $1,00 | 1,00 |
 | Öğeler | nesne dizisi | Ad, miktar, birim fiyat ve ayıklanan Toplam fiyattan oluşan satır öğeleri ayıklandı | |
-| Ad | string | Öğe adı | Surface Pro 6 | |
+| Name | string | Öğe adı | Surface Pro 6 | |
 | Miktar | sayı | Her öğenin miktarı | 1 | |
 | Fiyat | sayı | Her öğe biriminin ayrı fiyatı | $999,00 | 999,00 |
 | Toplam Fiyat | sayı | Satır öğesinin toplam fiyatı | $999,00 | 999,00 |

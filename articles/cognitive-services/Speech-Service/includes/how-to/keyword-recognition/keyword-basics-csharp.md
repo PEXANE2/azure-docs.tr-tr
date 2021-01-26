@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/04/2021
 ms.author: trbye
-ms.openlocfilehash: 786f9587ab223cf87a48cd791f366049b94af59b
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: c770ca3d619ea443fd5a320f91f3bfae56732bac
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97866054"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792459"
 ---
 İlk olarak, `FromFile()` bir döndüren statik işlevini kullanarak anahtar sözcük modeli dosyanızı yükleyin `KeywordRecognitionModel` . `.table`Konuşma Studio 'dan indirdiğiniz dosyanın yolunu kullanın. Ayrıca, `AudioConfig` varsayılan mikrofonu kullanarak bir oluşturun ve ardından Ses Yapılandırması ' nı kullanarak yeni bir örneğini oluşturun `KeywordRecognizer` .
 
@@ -35,6 +35,6 @@ KeywordRecognitionResult result = await keywordRecognizer.RecognizeOnceAsync(key
 
 Konuşma SDK 'sında diğer sınıflar, anahtar sözcük tanıma özelliği ile sürekli tanımayı destekler (hem konuşma hem de amaç tanıma için). Bu, `.table` anahtar sözcük modelinize yönelik bir dosyaya başvuruda bulunmak için normalde sürekli tanıma için kullandığınız kodu kullanmanıza olanak sağlar.
 
-Konuşmayı metne dönüştürme için [hızlı başlangıç](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started-speech-to-text?tabs=script%2Cbrowser%2Cwindowsinstall&pivots=programming-language-csharp#continuous-recognition) bölümünde gösterilen tasarım deseninin aynısını izleyerek sürekli tanımayı ayarlayın. Sonra, ile olan çağrısını değiştirin `recognizer.StartContinuousRecognitionAsync()` `recognizer.StartKeywordRecognitionAsync(KeywordRecognitionModel)` ve `KeywordRecognitionModel` nesneniz geçirin. Anahtar sözcük biriktirimiyle sürekli tanımayı durdurmak için yerine kullanın `recognizer.StopKeywordRecognitionAsync()` `recognizer.StopContinuousRecognitionAsync()` .
+Konuşmayı metne dönüştürme için [hızlı başlangıç](../../../get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=script%2cbrowser%2cwindowsinstall#continuous-recognition) bölümünde gösterilen tasarım deseninin aynısını izleyerek sürekli tanımayı ayarlayın. Sonra, ile olan çağrısını değiştirin `recognizer.StartContinuousRecognitionAsync()` `recognizer.StartKeywordRecognitionAsync(KeywordRecognitionModel)` ve `KeywordRecognitionModel` nesneniz geçirin. Anahtar sözcük biriktirimiyle sürekli tanımayı durdurmak için yerine kullanın `recognizer.StopKeywordRecognitionAsync()` `recognizer.StopContinuousRecognitionAsync()` .
 
-Amaç tanıma, ve işlevleri ile özdeş bir model kullanır [`StartKeywordRecognitionAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.intent.intentrecognizer.startkeywordrecognitionasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Intent_IntentRecognizer_StartKeywordRecognitionAsync_Microsoft_CognitiveServices_Speech_KeywordRecognitionModel_) [`StopKeywordRecognitionAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.intent.intentrecognizer.stopkeywordrecognitionasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Intent_IntentRecognizer_StopKeywordRecognitionAsync) .
+Amaç tanıma, ve işlevleri ile özdeş bir model kullanır [`StartKeywordRecognitionAsync`](/dotnet/api/microsoft.cognitiveservices.speech.intent.intentrecognizer.startkeywordrecognitionasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Intent_IntentRecognizer_StartKeywordRecognitionAsync_Microsoft_CognitiveServices_Speech_KeywordRecognitionModel_) [`StopKeywordRecognitionAsync`](/dotnet/api/microsoft.cognitiveservices.speech.intent.intentrecognizer.stopkeywordrecognitionasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Intent_IntentRecognizer_StopKeywordRecognitionAsync) .

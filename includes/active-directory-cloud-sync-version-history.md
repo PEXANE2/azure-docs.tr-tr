@@ -1,14 +1,42 @@
 ---
-ms.openlocfilehash: 77866fcb72515d5167d9f06b7d9ad91c59bc7945
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 35cb7ba4523cfbc88daf958fd972b127519385ce
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97700590"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792453"
 ---
 Bu makalede, yayımlanan Azure Active Directory Connect sağlama aracısının sürümleri ve özellikleri listelenmektedir. Azure AD ekibi, sağlama aracısını yeni özellikler ve işlevlerle düzenli olarak güncelleştirir. Yeni bir sürüm yayınlandığında sağlama Aracısı otomatik olarak güncelleştirilir. 
 
 Microsoft, en son aracı sürümü ve bir sürümü için doğrudan destek sağlar.
+
+## <a name="113540"></a>1.1.354.0
+
+20 Ocak 2021: indirilmek üzere yayınlandı
+
+### <a name="new-features-and-improvements"></a>Yeni özellikler ve geliştirmeler
+- Önceden özel oluşturulmuş GMSA hesabı desteği dahil, GMSA deneyimine iyileştirme
+- GMSA kurulumu için [PowerShell cmdlet 'leri](../articles/active-directory/cloud-sync/how-to-gmsa-cmdlets.md) desteği
+- Aracı yüklemesi için [CLI desteği](../articles/active-directory/cloud-sync/how-to-install-pshell.md) (sessiz yükleme)
+- Aracı kaynak karantina sorunları için ek Tanılamalar
+- OU kapsam filtrelerinin bellek kullanımını azaltmayı içeren hata düzeltmeleri, yalnızca kapsamdaki kullanıcılar için PHS, OU kapsamı kullanılırken OU 'da iç içe nesnelerin işlenmesi. 
+
+
+### <a name="fixed-issues"></a>Düzeltilen sorunlar
+-    Kapsam grubu kapsam dışı olduğunda karantinaya almayı önle
+-   kapsam filtreleri yapılandırıldığında-PHS işi şimdi yalnızca kapsamdaki kullanıcılar için çalışır
+-   Aracı yükseltme sırasında bir süre askıda kalıyor
+-   OU kapsamı kullanılırken iç içe yerleştirilmiş nesneler için ilk eşitleme
+-   Repair-AADCloudSyncToolsAccount daha sağlam hale getirme
+-   OU kapsam filtrelerinin büyük bellek kullanımını azaltma
+-   Rol üyeleri bir güvenlik grubu içeriyorsa yönetici rolü denetimi başarısız olur
+-   Aracı sertifikası yenilemeyi engelleyen GMSA klasörü izin sorununu düzeltir
+
+
+
+
+
+
 
 ## <a name="112810"></a>1.1.281.0
 
@@ -18,18 +46,18 @@ Microsoft, en son aracı sürümü ve bir sürümü için doğrudan destek sağl
 
 ### <a name="new-features-and-improvements"></a>Yeni özellikler ve geliştirmeler
 
-* [GMSA](../articles/active-directory/cloud-provisioning/how-to-prerequisites.md#group-managed-service-accounts) desteği
+* [GMSA](../articles/active-directory/cloud-sync/how-to-prerequisites.md#group-managed-service-accounts) desteği
 * Artımlı veya Delta eşitleme çevrimi sırasında 1500 ' den az üyeye kadar olan gruplar için destek. Bu, Grup kapsamı filtresi kullanılırken geçerlidir
 * En fazla 15K 'ye üye boyutu olan büyük gruplar için destek
 * İlk eşitleme geliştirmeleri
 * Gelişmiş ayrıntılı günlük kaydı
-* [Aadcloudsynctools PowerShell modülünün](../articles/active-directory/cloud-provisioning/reference-powershell.md) tanıtımı
+* [Aadcloudsynctools PowerShell modülünün](../articles/active-directory/cloud-sync/reference-powershell.md) tanıtımı
 * Ingilizce olmayan sunucuda aracının yüklenmesine izin veren bir kısıtlama düzeltildi
 * Yalnızca kapsamdaki nesneler için PHS filtreleme desteği (başlangıçta tüm nesneler için parola karmaları eşitliyoruz)
 * Aracıdaki bellek sızıntısı sorunu düzeltildi
 * Geliştirilmiş sağlama günlükleri
-* [LDAP bağlantısı zaman aşımını](../articles/active-directory/cloud-provisioning/how-to-manage-registry-options.md#configure-ldap-connection-timeout) yapılandırma desteği 
-* [Başvuru](../articles/active-directory/cloud-provisioning/how-to-manage-registry-options.md#configure-referral-chasing) oluşturma yapılandırması için destek 
+* [LDAP bağlantısı zaman aşımını](../articles/active-directory/cloud-sync/how-to-manage-registry-options.md#configure-ldap-connection-timeout) yapılandırma desteği 
+* [Başvuru](../articles/active-directory/cloud-sync/how-to-manage-registry-options.md#configure-referral-chasing) oluşturma yapılandırması için destek 
 
 
 ## <a name="11960"></a>1.1.96.0
@@ -40,7 +68,7 @@ Microsoft, en son aracı sürümü ve bir sürümü için doğrudan destek sağl
 
 ### <a name="new-features-and-improvements"></a>Yeni özellikler ve geliştirmeler
 
-* Kullanıcıyı eşitlemeye yönelik [Azure AD Connect bulut sağlama](../articles/active-directory/cloud-provisioning/what-is-cloud-provisioning.md) , şirket içi Active Directory Ile Azure AD arasında iletişim kurma ve veri gruplama için destek içerir
+* Kullanıcıyı eşitlemek, şirket içi Active Directory Azure AD 'ye iletişim kurmak ve verileri gruplamak için [Azure AD Connect bulut eşitlemesi](../articles/active-directory/cloud-sync/what-is-cloud-sync.md) desteğini içerir
 
 
 ## <a name="11670"></a>1.1.67.0
