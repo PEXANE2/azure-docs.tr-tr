@@ -3,12 +3,12 @@ title: Azure abonelik limitleri ve kotaları
 description: Ortak Azure aboneliği ve hizmet sınırları, Kotalar ve kısıtlamaların bir listesini sağlar. Bu makale, limitlerin en yüksek değerleriyle birlikte nasıl artabileceğine ilişkin bilgiler içerir.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 20de08ee30deae74954f2857b4de756b8cf46f08
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: baef641a741d12185029436e5a74039427c69f68
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964204"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802894"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure aboneliği ve hizmet limitleri, kotalar ve kısıtlamalar
 
@@ -402,7 +402,7 @@ Daha fazla bilgi için bkz. [sanal makine boyutları](../../virtual-machines/siz
 
 #### <a name="disk-encryption-sets"></a>Disk şifreleme kümeleri
 
-Her abonelik için bölge başına 50 disk şifreleme kümesi sınırlaması vardır. Daha fazla bilgi için bkz. [Linux](../../virtual-machines/disk-encryption.md#restrictions) veya [Windows](../../virtual-machines/disk-encryption.md#restrictions) sanal makineleri için şifreleme belgeleri. Kotayı artırmanız gerekiyorsa Azure desteği 'ne başvurun.
+Her abonelik için bölge başına 1000 disk şifreleme kümesi sınırlaması vardır. Daha fazla bilgi için bkz. [Linux](../../virtual-machines/disk-encryption.md#restrictions) veya [Windows](../../virtual-machines/disk-encryption.md#restrictions) sanal makineleri için şifreleme belgeleri. Kotayı artırmanız gerekiyorsa Azure desteği 'ne başvurun.
 
 ### <a name="managed-virtual-machine-disks"></a>Yönetilen sanal makine diskleri
 

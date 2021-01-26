@@ -191,7 +191,7 @@
           href: luis-how-to-azure-subscription.md
         - name: Uygulama ve sürüm ayarları
           href: how-to-application-settings-portal.md
-        - name: Yazarlar ve ortak çalışanlar
+        - name: Yazarlar ve katkıda bulunanlar
           displayName: 'access, transfer, AAD, tenant, Azure AD, consent, RBAC, admin, role-based access control, ownership, import'
           href: luis-how-to-collaborate.md
         - name: Sürümler ile

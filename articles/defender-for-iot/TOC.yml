@@ -3,13 +3,12 @@
 - name: Genel Bakış
   href: overview.md
   items:
-    - name: Yenilikler
-      href: release-notes.md
     - name: Çözüm mimarisi
       href: architecture.md
-- name: Hızlı Başlangıçlar
-  expanded: true
-  items:
+    - name: Yenilikler
+      href: release-notes.md
+    - name: Hızlı Başlangıçlar
+      expanded: true
     - name: Kuruluşlar için Aracısız Çözüm
       items:
         - name: Sistem önkoşulları
@@ -154,6 +153,16 @@
           href: how-to-gain-insight-into-global-regional-and-local-threats.md
         - name: Şirket içi yönetim konsolunda uyarılarla çalışma
           href: how-to-work-with-alerts-on-premises-management-console.md
+        - name: Rapor oluşturma
+          items:
+            - name: Risk değerlendirmesi raporları oluşturma
+              href: how-to-create-risk-assessment-reports.md
+            - name: Saldırı vektör raporları oluşturma
+              href: how-to-create-attack-vector-reports.md
+            - name: Veri araştırma raporları oluşturma
+              href: how-to-create-data-mining-queries.md
+            - name: Eğilimler ve istatistik raporları oluşturma
+              href: how-to-create-data-mining-queries.md
         - name: Cihaz bilgilerini zenginleştirme
           items:
             - name: Cihaz bildirimleri ile çalışma
@@ -168,8 +177,6 @@
         - name: Algılayıcı etkinliğini izleme
           href: how-to-track-sensor-activity.md
           displayName: 'timeline, time line, time-line, event'
-        - name: Rapor oluştur
-          href: how-to-generate-reports.md
         - name: Algılayıcı ve şirket içi yönetim konsolunda sorun giderme
           href: how-to-troubleshoot-the-sensor-and-on-premises-management-console.md
         - name: SNMP MIB izlemesini ayarlama

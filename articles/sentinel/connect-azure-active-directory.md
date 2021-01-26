@@ -15,20 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/20/2021
 ms.author: yelevin
-ms.openlocfilehash: 409a316bd9c4222dd9b8ff30e42e37d23805c38b
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: eb89d2a4e719e34ad5ea31656dc9e3c02472b07d
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757771"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802247"
 ---
 # <a name="connect-data-from-azure-active-directory-azure-ad"></a>Azure Active Directory verileri bağlama (Azure AD)
 
 Azure Sentinel 'in yerleşik bağlayıcısını kullanarak [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) verileri toplayıp Azure Sentinel 'e aktarabilirsiniz. Bağlayıcı, [oturum açma günlüklerini](../active-directory/reports-monitoring/concept-sign-ins.md) ve [Denetim günlüklerini](../active-directory/reports-monitoring/concept-audit-logs.md)akışla kullanmanıza olanak sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- Herhangi bir Azure AD lisansı (ücretsiz/O365/P1/P2), oturum açma günlüklerini Azure Sentinel 'e almak için yeterlidir. Azure Izleyici (Log Analytics) ve Azure Sentinel için ek gigabayt başına ücretler uygulanabilir.
+- Azure Sentinel 'de oturum açma günlüklerini almak için bir [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) aboneliğine sahip olmanız gerekir. Azure Izleyici (Log Analytics) ve Azure Sentinel için ek gigabayt başına ücretler uygulanabilir.
 
 - Kullanıcı çalışma alanında Azure Sentinel katılımcısı rolüne atanmalıdır.
 
@@ -46,10 +46,6 @@ Azure Sentinel 'in yerleşik bağlayıcısını kullanarak [Azure Active Directo
 
     - **Oturum açma günlükleri**: yönetilen uygulamaların kullanımı ve Kullanıcı oturum açma etkinlikleri hakkında bilgi.
     - **Denetim günlükleri**: Kullanıcı ve Grup Yönetimi, yönetilen uygulamalar ve Dizin etkinlikleri hakkında sistem etkinliği bilgileri.
-    - **Etkileşimli olmayan kullanıcı oturum açma günlükleri**: Kullanıcı adına bir istemci tarafından gerçekleştirilen oturum açma işlemleri hakkında bilgiler, kullanıcıdan herhangi bir etkileşim veya kimlik doğrulama faktörü gerektirmez.
-    - **Hizmet sorumlusu oturum açma günlükleri**: herhangi bir Kullanıcı içermeyen uygulamalar ve hizmet sorumluları tarafından gerçekleştirilen oturum açma bilgileri. Bu oturum açma işlemleri sırasında, uygulama veya hizmet, kaynakların kimliğini doğrulamak veya kaynaklara erişmek için kendi adına bir kimlik bilgisi sağlar.
-    - **Yönetilen kimlik oturum açma günlükleri**: Azure tarafından yönetilen gizli dizileri olan Azure kaynaklarında oturum açma işlemleri.
-    - **Sağlama günlükleri**: Azure AD sağlama hizmeti tarafından sağlanan kullanıcılar, gruplar ve roller hakkında sistem etkinliği bilgileri.
 
 ## <a name="find-your-data"></a>Verilerinizi bulun
 
@@ -57,10 +53,6 @@ Başarılı bir bağlantı kurulduktan sonra, veriler **günlüklerde**, **logma
 
 - `SigninLogs`
 - `AuditLogs`
-- `AADNonInteractiveUserSignInLogs`
-- `AADServicePrincipalSignInLogs`
-- `AADManagedIdentitySignInLogs`
-- `AADProvisioningLogs`
 
 Azure AD günlüklerini sorgulamak için, sorgu penceresinin üst kısmında ilgili tablo adını girin.
 

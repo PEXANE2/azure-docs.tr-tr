@@ -11,12 +11,12 @@ metadata:
   author: mlottner
   ms.author: mlottner
   ms.date: 09/07/2020
-  ms.openlocfilehash: 89bab2cde338cdabe47f70ee084aa5365b1f1877
-  ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
-  ms.translationtype: HT
+  ms.openlocfilehash: a56e82d81839d94029bc34dcdec30544e7158ea1
+  ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+  ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 01/06/2021
-  ms.locfileid: "97935980"
+  ms.lasthandoff: 01/26/2021
+  ms.locfileid: "98802680"
 landingContent:
 - title: IoT için Azure Defender’ı Kullanmaya Başlama
   linkLists:
@@ -24,9 +24,9 @@ landingContent:
     links:
     - text: IoT için Azure Defender nedir?
       url: overview.md
-    - text: Çözüm Mimarisi
+    - text: Çözüm mimarisi
       url: architecture.md
-    - text: Kuruluma Genel Bakış
+    - text: Çözüm kurulumuna genel bakış
       url: getting-started.md
     - text: Yenilikler
       url: release-notes.md
@@ -50,8 +50,6 @@ landingContent:
       url: how-to-investigate-sensor-detections-in-a-device-inventory.md
     - text: Uyarıları Araştırma
       url: how-to-work-with-alerts-on-your-sensor.md
-    - text: Rapor Oluşturma
-      url: how-to-generate-reports.md
     - text: Hangi Trafiğin Algılanacağını Denetleme
       url: how-to-control-what-traffic-is-monitored.md
     - text: Azure Sentinel’e bağlanma
